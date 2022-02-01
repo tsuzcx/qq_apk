@@ -4,7 +4,7 @@ import android.os.Bundle;
 import com.tencent.luggage.d.p;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.webview_impl.a;
+import com.tencent.mm.plugin.webview.luggage.d.a;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
@@ -14,13 +14,13 @@ public final class b
   {
     super(paramj, null, paramBundle);
     AppMethodBeat.i(83122);
-    ega();
-    gbD();
-    LK();
+    ePB();
+    gUy();
+    OB();
     AppMethodBeat.o(83122);
   }
   
-  public final boolean cpz()
+  public final boolean cDX()
   {
     return false;
   }
@@ -29,23 +29,23 @@ public final class b
   {
     AppMethodBeat.i(83124);
     Log.i("MicroMsg.GameInsertWebPage", "onBackground");
-    aYq("onPause");
-    this.ITd.onPause();
+    bkl("onPause");
+    this.PPv.onPause();
     AppMethodBeat.o(83124);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(83125);
-    if (!this.xzH)
+    if (!this.CDM)
     {
-      this.xzH = true;
+      this.CDM = true;
       Log.i("MicroMsg.GameInsertWebPage", "onDestroy");
-      aYq("onDestroy");
-      this.ITo.ISU = null;
+      bkl("onDestroy");
+      this.PPG.PPn = null;
       com.tencent.mm.plugin.webview.luggage.j.c(this);
-      this.ITv.IJS = true;
-      this.ctS.destroy();
+      this.PPN.PFQ = true;
+      this.crX.destroy();
     }
     AppMethodBeat.o(83125);
   }
@@ -54,8 +54,8 @@ public final class b
   {
     AppMethodBeat.i(83123);
     Log.i("MicroMsg.GameInsertWebPage", "onForeground");
-    aYq("onResume");
-    this.ITd.onResume();
+    bkl("onResume");
+    this.PPv.onResume();
     AppMethodBeat.o(83123);
   }
 }

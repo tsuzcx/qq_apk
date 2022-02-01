@@ -3,5 +3,5 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:textSize="@dimen/l" android:textStyle="bold" android:textColor="@color/a2x" android:id="@id/i77" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hge" />
     <TextView android:id="@id/i6x" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hgd" android:layout_centerInParent="true" android:layout_marginStart="@dimen/hs" android:layout_marginEnd="@dimen/hs" />
-    <android.support.v7.widget.RecyclerView android:id="@id/i72" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/i77" android:overScrollMode="never" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/i72" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/i77" android:overScrollMode="never" />
 </merge>

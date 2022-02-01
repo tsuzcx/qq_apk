@@ -2,63 +2,68 @@ package com.tencent.mm.plugin.vlog.util;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Point;
+import android.graphics.RectF;
 import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.vlog.ui.plugin.f;
+import com.tencent.mm.plugin.vlog.ui.plugin.e;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.ax;
+import com.tencent.mm.vfs.u;
 import java.nio.ByteBuffer;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/util/FinderEditUtil;", "", "()V", "FULLSCREEN_RATIO", "", "getFULLSCREEN_RATIO", "()F", "MIN_RATIO", "NORMAL_RATIO", "getNORMAL_RATIO", "RATIO_TOLERANCE", "SUPPORT_RATIO", "TAG", "", "cropThumb", "Landroid/graphics/Bitmap;", "thumb", "cropRect", "Landroid/graphics/Rect;", "getGOPSize", "", "path", "getRatio", "width", "height", "keepPhotoExifInfo", "", "source", "dst", "makePhotoSizeConformity", "maxSize", "", "quality", "bitmap", "savePhotoThumbNail", "compressQuality", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/util/FinderEditUtil;", "", "()V", "FULLSCREEN_RATIO", "", "getFULLSCREEN_RATIO", "()F", "MIN_RATIO", "NORMAL_RATIO", "getNORMAL_RATIO", "RATIO_TOLERANCE", "SUPPORT_RATIO", "TAG", "", "calculateEnhancementLimitRect", "Landroid/graphics/RectF;", "valid", "getGOPSize", "", "path", "getRatio", "width", "height", "getVideoCompositionThumb", "", "composition", "Lcom/tencent/mm/videocomposition/VideoComposition;", "callback", "Lkotlin/Function2;", "", "Landroid/graphics/Bitmap;", "Lcom/tencent/mm/videocomposition/ThumbCallback;", "keepPhotoExifInfo", "source", "dst", "makePhotoSizeConformity", "maxSize", "quality", "bitmap", "savePhotoThumbNail", "compressQuality", "plugin-vlog_release"})
 public final class a
 {
-  private static final float GQB;
-  public static final a GQC;
+  private static final float NGM;
+  public static final a NGN;
   
   static
   {
-    AppMethodBeat.i(192226);
-    GQC = new a();
-    GQB = ((b)g.af(b.class)).a(b.a.snK, 1.777778F);
-    AppMethodBeat.o(192226);
+    AppMethodBeat.i(233331);
+    NGN = new a();
+    NGM = ((b)h.ae(b.class)).a(b.a.vYZ, 1.777778F);
+    AppMethodBeat.o(233331);
   }
   
   public static void a(int paramInt, Bitmap paramBitmap, String paramString)
   {
-    AppMethodBeat.i(192223);
-    p.h(paramBitmap, "bitmap");
-    p.h(paramString, "path");
+    AppMethodBeat.i(233323);
+    p.k(paramBitmap, "bitmap");
+    p.k(paramString, "path");
     BitmapUtil.saveBitmapToImage(paramBitmap, paramInt, Bitmap.CompressFormat.JPEG, paramString, false);
     int j = 0;
     int i = paramInt;
     paramInt = j;
-    while ((0L > 0L) && (s.boW(paramString) > 0L) && (i > 0) && (paramInt <= 5))
+    while ((0L > 0L) && (u.bBQ(paramString) > 0L) && (i > 0) && (paramInt <= 5))
     {
       i -= 5;
       BitmapUtil.saveBitmapToImage(paramBitmap, i, Bitmap.CompressFormat.JPEG, paramString, false);
       paramInt += 1;
     }
-    Log.i("MicroMsg.FinderEditUtil", "makePhotoSizeConformity  maxSize:0  compressQuality:" + i + " size:" + s.YS(paramString));
-    AppMethodBeat.o(192223);
+    Log.i("MicroMsg.FinderEditUtil", "makePhotoSizeConformity  maxSize:0  compressQuality:" + i + " size:" + u.agG(paramString));
+    AppMethodBeat.o(233323);
   }
   
-  public static int aUr(String paramString)
+  public static int bfV(String paramString)
   {
     int k = 0;
-    AppMethodBeat.i(192225);
-    p.h(paramString, "path");
-    boolean bool = ((b)g.af(b.class)).a(b.a.slH, true);
+    AppMethodBeat.i(233326);
+    p.k(paramString, "path");
+    boolean bool = ((b)h.ae(b.class)).a(b.a.vWu, true);
     Log.i("MicroMsg.FinderEditUtil", "getGOPSize path:" + paramString + " enable:" + bool);
-    if ((!s.YS(paramString)) && (bool))
+    if ((!u.agG(paramString)) && (bool))
     {
-      AppMethodBeat.o(192225);
+      AppMethodBeat.o(233326);
       return 0;
     }
     localc = new com.tencent.mm.compatible.i.c();
@@ -84,20 +89,20 @@ public final class a
     finally
     {
       localc.release();
-      AppMethodBeat.o(192225);
+      AppMethodBeat.o(233326);
     }
     if (j < m)
     {
       i = k;
       localObject = localc.getTrackFormat(j);
       i = k;
-      p.g(localObject, "extractor.getTrackFormat(i)");
+      p.j(localObject, "extractor.getTrackFormat(i)");
       i = k;
       localObject = ((MediaFormat)localObject).getString("mime");
       if (localObject != null)
       {
         i = k;
-        if (n.e((CharSequence)localObject, (CharSequence)"video") == true)
+        if (n.g((CharSequence)localObject, (CharSequence)"video") == true)
         {
           i = k;
           localc.selectTrack(j);
@@ -113,37 +118,49 @@ public final class a
     }
   }
   
-  public static float fEA()
+  public static float gwN()
   {
-    AppMethodBeat.i(192222);
-    f localf = f.GHk;
-    if (f.fDl())
+    AppMethodBeat.i(233318);
+    e locale = e.NuX;
+    if (e.gvk())
     {
-      AppMethodBeat.o(192222);
+      AppMethodBeat.o(233318);
       return 1.333333F;
     }
-    AppMethodBeat.o(192222);
+    AppMethodBeat.o(233318);
     return 1.166667F;
   }
   
-  public static float fEB()
+  public static float gwO()
   {
-    return GQB;
+    return NGM;
   }
   
-  public static void lm(String paramString1, String paramString2)
+  public static void hL(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192224);
-    p.h(paramString1, "source");
-    p.h(paramString2, "dst");
-    com.tencent.mm.plugin.gallery.picker.b.c localc = com.tencent.mm.plugin.gallery.picker.b.c.Uqd;
-    com.tencent.mm.plugin.gallery.picker.b.c.lm(paramString1, paramString2);
-    AppMethodBeat.o(192224);
+    AppMethodBeat.i(233325);
+    p.k(paramString1, "source");
+    p.k(paramString2, "dst");
+    com.tencent.mm.plugin.gallery.picker.b.c localc = com.tencent.mm.plugin.gallery.picker.b.c.BXE;
+    com.tencent.mm.plugin.gallery.picker.b.c.hL(paramString1, paramString2);
+    AppMethodBeat.o(233325);
+  }
+  
+  public static RectF j(RectF paramRectF)
+  {
+    AppMethodBeat.i(233328);
+    p.k(paramRectF, "valid");
+    int i = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 208);
+    int j = ar.au(MMApplicationContext.getContext()).y;
+    int k = ax.aB(MMApplicationContext.getContext());
+    paramRectF = new RectF(0.0F, paramRectF.top, paramRectF.right, Math.min(j - i - k, paramRectF.bottom));
+    AppMethodBeat.o(233328);
+    return paramRectF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.util.a
  * JD-Core Version:    0.7.0.1
  */

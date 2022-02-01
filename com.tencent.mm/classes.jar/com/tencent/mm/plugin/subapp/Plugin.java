@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.subapp;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.model.be;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.sdk.platformtools.Log;
 
@@ -26,7 +26,7 @@ public final class Plugin
     return localb;
   }
   
-  public final bd createSubCore()
+  public final be createSubCore()
   {
     AppMethodBeat.i(28831);
     Log.i("MicroMsg.Plugin.subapp", "subapp createSubCore " + System.currentTimeMillis());

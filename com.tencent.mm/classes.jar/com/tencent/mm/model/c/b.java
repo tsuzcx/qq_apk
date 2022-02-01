@@ -1,17 +1,17 @@
 package com.tencent.mm.model.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.aa;
-import com.tencent.mm.ak.aa.a;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.akc;
-import com.tencent.mm.protocal.protobuf.bhl;
-import com.tencent.mm.protocal.protobuf.bhm;
+import com.tencent.mm.an.aa;
+import com.tencent.mm.an.aa.a;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.protocal.protobuf.alf;
+import com.tencent.mm.protocal.protobuf.bow;
+import com.tencent.mm.protocal.protobuf.box;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
@@ -21,27 +21,27 @@ import java.util.Random;
 
 public final class b
 {
-  private static boolean gc = false;
+  private static boolean Tb = false;
   
-  static void aXm()
+  static void bgt()
   {
     int j = 1;
     AppMethodBeat.i(153110);
-    if (!g.aAc())
+    if (!h.aHB())
     {
       Log.i("MicroMsg.ABTestUpdater", "Update aborted, Account not ready.");
       AppMethodBeat.o(153110);
       return;
     }
-    Object localObject = (Long)g.aAh().azQ().get(ar.a.NUI, null);
+    Object localObject = (Long)h.aHG().aHp().get(ar.a.ViI, null);
     if (localObject == null) {}
     int i;
     for (long l1 = 0L; l1 == 0L; l1 = ((Long)localObject).longValue())
     {
       i = new Random().nextInt(86400);
-      sy(i);
-      aXo();
-      aXq();
+      vv(i);
+      bgv();
+      bgx();
       Log.i("MicroMsg.ABTestUpdater", "First update ignored. Next update: %d", new Object[] { Integer.valueOf(i) });
       i = j;
       if (i != 0) {
@@ -51,7 +51,7 @@ public final class b
       AppMethodBeat.o(153110);
       return;
     }
-    localObject = (Integer)g.aAh().azQ().get(ar.a.NUJ, null);
+    localObject = (Integer)h.aHG().aHp().get(ar.a.ViJ, null);
     label160:
     long l2;
     long l3;
@@ -78,7 +78,7 @@ public final class b
       break label160;
     }
     label260:
-    if (gc)
+    if (Tb)
     {
       Log.i("MicroMsg.ABTestUpdater", "Updating");
       AppMethodBeat.o(153110);
@@ -88,16 +88,16 @@ public final class b
     AppMethodBeat.o(153110);
   }
   
-  static void aXn()
+  static void bgu()
   {
     AppMethodBeat.i(153111);
-    if (!g.aAc())
+    if (!h.aHB())
     {
       Log.i("MicroMsg.ABTestUpdater", "UpdateWithoutIntervalLimit aborted, Account not ready.");
       AppMethodBeat.o(153111);
       return;
     }
-    if (gc)
+    if (Tb)
     {
       Log.i("MicroMsg.ABTestUpdater", "UpdateWithoutIntervalLimit, Already Updating");
       AppMethodBeat.o(153111);
@@ -108,18 +108,18 @@ public final class b
     AppMethodBeat.o(153111);
   }
   
-  private static void aXo()
+  private static void bgv()
   {
     AppMethodBeat.i(153114);
     long l = System.currentTimeMillis() / 1000L;
-    g.aAh().azQ().set(ar.a.NUI, Long.valueOf(l));
+    h.aHG().aHp().set(ar.a.ViI, Long.valueOf(l));
     AppMethodBeat.o(153114);
   }
   
-  private static int aXp()
+  private static int bgw()
   {
     AppMethodBeat.i(153116);
-    Integer localInteger = (Integer)g.aAh().azQ().get(ar.a.NUH, null);
+    Integer localInteger = (Integer)h.aHG().aHp().get(ar.a.ViH, null);
     if (localInteger == null)
     {
       AppMethodBeat.o(153116);
@@ -130,26 +130,71 @@ public final class b
     return i;
   }
   
-  private static void aXq()
+  private static void bgx()
   {
     AppMethodBeat.i(153117);
-    g.aAh().azQ().gBI();
+    h.aHG().aHp().hxT();
     AppMethodBeat.o(153117);
   }
   
-  private static String c(LinkedList<akc> paramLinkedList)
+  private static String c(LinkedList<alf> paramLinkedList)
   {
     AppMethodBeat.i(153112);
     Iterator localIterator = paramLinkedList.iterator();
-    akc localakc;
-    for (paramLinkedList = ""; localIterator.hasNext(); paramLinkedList = paramLinkedList + localakc.Lqu + ":" + localakc.priority + "|") {
-      localakc = (akc)localIterator.next();
+    alf localalf;
+    for (paramLinkedList = ""; localIterator.hasNext(); paramLinkedList = paramLinkedList + localalf.SrR + ":" + localalf.priority + "|") {
+      localalf = (alf)localIterator.next();
     }
     AppMethodBeat.o(153112);
     return paramLinkedList;
   }
   
-  private static void sy(int paramInt)
+  private static void update()
+  {
+    AppMethodBeat.i(153113);
+    Tb = true;
+    Object localObject = new d.a();
+    ((d.a)localObject).lBU = new bow();
+    ((d.a)localObject).lBV = new box();
+    ((d.a)localObject).uri = "/cgi-bin/mmux-bin/getabtest";
+    ((d.a)localObject).funcId = 1801;
+    localObject = ((d.a)localObject).bgN();
+    bow localbow = (bow)d.b.b(((com.tencent.mm.an.d)localObject).lBR);
+    localbow.TaH = bgw();
+    localbow.TaI = d.bgB().hvx();
+    localbow.TaI.addAll(d.bgC().hvx());
+    Log.i("MicroMsg.ABTestUpdater", "update abtest: %s", new Object[] { c(localbow.TaI) });
+    aa.a((com.tencent.mm.an.d)localObject, new aa.a()
+    {
+      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.an.d paramAnonymousd, q paramAnonymousq)
+      {
+        AppMethodBeat.i(153109);
+        b.Yy();
+        if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+        {
+          Log.e("MicroMsg.ABTestUpdater", "Update Error: %d, %d, next update will be performed %d(s) later", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(86400) });
+          b.access$100();
+          b.access$200(86400);
+          b.access$300();
+          AppMethodBeat.o(153109);
+          return 0;
+        }
+        paramAnonymousString = (box)d.c.b(paramAnonymousd.lBS);
+        b.access$100();
+        b.vx(paramAnonymousString.Svi);
+        b.access$200(paramAnonymousString.TaL);
+        b.ar(paramAnonymousString.TaM);
+        b.as(paramAnonymousString.TaK);
+        b.access$300();
+        Log.i("MicroMsg.ABTestUpdater", "Update Interval: %d", new Object[] { Integer.valueOf(paramAnonymousString.TaL) });
+        AppMethodBeat.o(153109);
+        return 0;
+      }
+    }, true);
+    AppMethodBeat.o(153113);
+  }
+  
+  private static void vv(int paramInt)
   {
     AppMethodBeat.i(153115);
     int i = 0;
@@ -157,61 +202,16 @@ public final class b
     for (i = 86400;; i = new Random().nextInt(126000) + 3600) {
       do
       {
-        g.aAh().azQ().set(ar.a.NUJ, Integer.valueOf(i));
+        h.aHG().aHp().set(ar.a.ViJ, Integer.valueOf(i));
         AppMethodBeat.o(153115);
         return;
       } while ((paramInt >= 3600) && (paramInt <= 129600));
     }
   }
-  
-  private static void update()
-  {
-    AppMethodBeat.i(153113);
-    gc = true;
-    Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bhl();
-    ((d.a)localObject).iLO = new bhm();
-    ((d.a)localObject).uri = "/cgi-bin/mmux-bin/getabtest";
-    ((d.a)localObject).funcId = 1801;
-    localObject = ((d.a)localObject).aXF();
-    bhl localbhl = (bhl)((com.tencent.mm.ak.d)localObject).iLK.iLR;
-    localbhl.LRW = aXp();
-    localbhl.LRX = d.aXu().gzx();
-    localbhl.LRX.addAll(d.aXv().gzx());
-    Log.i("MicroMsg.ABTestUpdater", "update abtest: %s", new Object[] { c(localbhl.LRX) });
-    aa.a((com.tencent.mm.ak.d)localObject, new aa.a()
-    {
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.d paramAnonymousd, q paramAnonymousq)
-      {
-        AppMethodBeat.i(153109);
-        b.TT();
-        if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
-        {
-          Log.e("MicroMsg.ABTestUpdater", "Update Error: %d, %d, next update will be performed %d(s) later", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(86400) });
-          b.access$100();
-          b.sz(86400);
-          b.access$300();
-          AppMethodBeat.o(153109);
-          return 0;
-        }
-        paramAnonymousString = (bhm)paramAnonymousd.iLL.iLR;
-        b.access$100();
-        b.sA(paramAnonymousString.Timestamp);
-        b.sz(paramAnonymousString.LSa);
-        b.at(paramAnonymousString.LSb);
-        b.au(paramAnonymousString.LRZ);
-        b.access$300();
-        Log.i("MicroMsg.ABTestUpdater", "Update Interval: %d", new Object[] { Integer.valueOf(paramAnonymousString.LSa) });
-        AppMethodBeat.o(153109);
-        return 0;
-      }
-    }, true);
-    AppMethodBeat.o(153113);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.c.b
  * JD-Core Version:    0.7.0.1
  */

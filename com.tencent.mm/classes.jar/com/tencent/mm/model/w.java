@@ -1,44 +1,42 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.k.a.a.a;
-import com.tencent.mm.plugin.chatroom.a.b;
-import com.tencent.mm.protocal.protobuf.xg;
+import com.tencent.mm.protocal.protobuf.xm;
 import com.tencent.mm.sdk.event.IEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class w
-  implements b
+  implements com.tencent.mm.plugin.chatroom.a.a
 {
-  public final List<String> Ic(String paramString)
+  public final List<String> Ps(String paramString)
   {
     AppMethodBeat.i(101776);
-    paramString = v.Ic(paramString);
+    paramString = v.Ps(paramString);
     AppMethodBeat.o(101776);
     return paramString;
   }
   
-  public final int Ie(String paramString)
+  public final int Pu(String paramString)
   {
     AppMethodBeat.i(101777);
-    int i = v.Ie(paramString);
+    int i = v.Pu(paramString);
     AppMethodBeat.o(101777);
     return i;
   }
   
-  public final boolean Ih(String paramString)
+  public final boolean Px(String paramString)
   {
-    AppMethodBeat.i(194529);
-    boolean bool = v.Ih(paramString);
-    AppMethodBeat.o(194529);
+    AppMethodBeat.i(258788);
+    boolean bool = v.Px(paramString);
+    AppMethodBeat.o(258788);
     return bool;
   }
   
-  public final boolean a(String paramString1, String paramString2, xg paramxg, String paramString3, a parama, IEvent paramIEvent)
+  public final boolean a(String paramString1, String paramString2, xm paramxm, String paramString3, com.tencent.mm.k.a.a.a parama, IEvent paramIEvent)
   {
     AppMethodBeat.i(101781);
-    boolean bool = v.a(paramString1, paramString2, paramxg, 0, -1, paramString3, parama, paramIEvent);
+    boolean bool = v.a(paramString1, paramString2, paramxm, 0, -1, paramString3, parama, paramIEvent);
     AppMethodBeat.o(101781);
     return bool;
   }
@@ -51,7 +49,7 @@ public final class w
     return bool;
   }
   
-  public final String ao(List<String> paramList)
+  public final String am(List<String> paramList)
   {
     AppMethodBeat.i(101779);
     paramList = v.e(paramList, -1);
@@ -61,7 +59,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.model.w
  * JD-Core Version:    0.7.0.1
  */

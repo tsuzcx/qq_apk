@@ -15,7 +15,7 @@ public final class s$1
     if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
     }
-    this.yVY.cancel();
+    this.EAb.cancel();
     AppMethodBeat.o(163568);
   }
 }

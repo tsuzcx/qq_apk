@@ -4,36 +4,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c<T>
 {
-  private static final c<Void> UjR;
-  private final a UjQ;
+  private static final c<Void> abNm;
+  private final a abNl;
   public final Throwable throwable = null;
   private final T value = null;
   
   static
   {
     AppMethodBeat.i(90087);
-    UjR = new c(a.UjU);
+    abNm = new c(a.abNp);
     AppMethodBeat.o(90087);
   }
   
   private c(a parama)
   {
-    this.UjQ = parama;
+    this.abNl = parama;
   }
   
-  private boolean hQx()
+  private boolean iIU()
   {
-    if (this.UjQ == a.UjT) {}
-    for (int i = 1; (i != 0) && (this.throwable != null); i = 0) {
+    if (this.abNl == a.abNn) {}
+    for (int i = 1; (i != 0) && (this.value != null); i = 0) {
       return true;
     }
     return false;
   }
   
-  private boolean hasValue()
+  private boolean iVG()
   {
-    if (this.UjQ == a.UjS) {}
-    for (int i = 1; (i != 0) && (this.value != null); i = 0) {
+    if (this.abNl == a.abNo) {}
+    for (int i = 1; (i != 0) && (this.throwable != null); i = 0) {
       return true;
     }
     return false;
@@ -58,7 +58,7 @@ public final class c<T>
       return false;
     }
     paramObject = (c)paramObject;
-    if (paramObject.UjQ != this.UjQ)
+    if (paramObject.abNl != this.abNl)
     {
       AppMethodBeat.o(90086);
       return false;
@@ -80,13 +80,13 @@ public final class c<T>
   public final int hashCode()
   {
     AppMethodBeat.i(90085);
-    int j = this.UjQ.hashCode();
+    int j = this.abNl.hashCode();
     int i = j;
-    if (hasValue()) {
+    if (iIU()) {
       i = j * 31 + this.value.hashCode();
     }
     j = i;
-    if (hQx()) {
+    if (iVG()) {
       j = i * 31 + this.throwable.hashCode();
     }
     AppMethodBeat.o(90085);
@@ -96,11 +96,11 @@ public final class c<T>
   public final String toString()
   {
     AppMethodBeat.i(90084);
-    Object localObject = new StringBuilder(64).append('[').append(super.toString()).append(' ').append(this.UjQ);
-    if (hasValue()) {
+    Object localObject = new StringBuilder(64).append('[').append(super.toString()).append(' ').append(this.abNl);
+    if (iIU()) {
       ((StringBuilder)localObject).append(' ').append(this.value);
     }
-    if (hQx()) {
+    if (iVG()) {
       ((StringBuilder)localObject).append(' ').append(this.throwable.getMessage());
     }
     ((StringBuilder)localObject).append(']');
@@ -114,10 +114,10 @@ public final class c<T>
     static
     {
       AppMethodBeat.i(90083);
-      UjS = new a("OnNext", 0);
-      UjT = new a("OnError", 1);
-      UjU = new a("OnCompleted", 2);
-      UjV = new a[] { UjS, UjT, UjU };
+      abNn = new a("OnNext", 0);
+      abNo = new a("OnError", 1);
+      abNp = new a("OnCompleted", 2);
+      abNq = new a[] { abNn, abNo, abNp };
       AppMethodBeat.o(90083);
     }
     
@@ -126,7 +126,7 @@ public final class c<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     rx.c
  * JD-Core Version:    0.7.0.1
  */

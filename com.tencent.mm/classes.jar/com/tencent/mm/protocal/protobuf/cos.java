@@ -3,57 +3,49 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cos
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String ixw;
-  public String pqv;
-  public String url;
+  public String CRg;
+  public String Izj;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72514);
+    AppMethodBeat.i(91529);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.pqv != null) {
-        paramVarArgs.e(1, this.pqv);
+      if (this.CRg != null) {
+        paramVarArgs.f(1, this.CRg);
       }
-      if (this.ixw != null) {
-        paramVarArgs.e(2, this.ixw);
+      if (this.Izj != null) {
+        paramVarArgs.f(2, this.Izj);
       }
-      if (this.url != null) {
-        paramVarArgs.e(4, this.url);
-      }
-      AppMethodBeat.o(72514);
+      AppMethodBeat.o(91529);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.pqv == null) {
-        break label338;
+      if (this.CRg == null) {
+        break label274;
       }
     }
-    label338:
-    for (int i = g.a.a.b.b.a.f(1, this.pqv) + 0;; i = 0)
+    label274:
+    for (paramInt = g.a.a.b.b.a.g(1, this.CRg) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.ixw != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.ixw);
+      int i = paramInt;
+      if (this.Izj != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.Izj);
       }
-      i = paramInt;
-      if (this.url != null) {
-        i = paramInt + g.a.a.b.b.a.f(4, this.url);
-      }
-      AppMethodBeat.o(72514);
+      AppMethodBeat.o(91529);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(72514);
+        AppMethodBeat.o(91529);
         return 0;
       }
       if (paramInt == 3)
@@ -62,24 +54,19 @@ public final class cos
         cos localcos = (cos)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
-        case 3: 
         default: 
-          AppMethodBeat.o(72514);
+          AppMethodBeat.o(91529);
           return -1;
         case 1: 
-          localcos.pqv = locala.UbS.readString();
-          AppMethodBeat.o(72514);
-          return 0;
-        case 2: 
-          localcos.ixw = locala.UbS.readString();
-          AppMethodBeat.o(72514);
+          localcos.CRg = locala.abFh.readString();
+          AppMethodBeat.o(91529);
           return 0;
         }
-        localcos.url = locala.UbS.readString();
-        AppMethodBeat.o(72514);
+        localcos.Izj = locala.abFh.readString();
+        AppMethodBeat.o(91529);
         return 0;
       }
-      AppMethodBeat.o(72514);
+      AppMethodBeat.o(91529);
       return -1;
     }
   }

@@ -6,7 +6,7 @@ import java.util.LinkedList;
 public final class l
   extends j
 {
-  public com.tencent.mm.bw.b oTm;
+  public com.tencent.mm.cd.b rVk;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -14,34 +14,34 @@ public final class l
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.rCc == null)
+      if (this.vhK == null)
       {
         paramVarArgs = new g.a.a.b("Not all required fields were included: BaseResponse");
         AppMethodBeat.o(23494);
         throw paramVarArgs;
       }
-      if (this.rCc != null)
+      if (this.vhK != null)
       {
-        paramVarArgs.ni(1, this.rCc.computeSize());
-        this.rCc.writeFields(paramVarArgs);
+        paramVarArgs.oE(1, this.vhK.computeSize());
+        this.vhK.writeFields(paramVarArgs);
       }
-      if (this.oTm != null) {
-        paramVarArgs.c(2, this.oTm);
+      if (this.rVk != null) {
+        paramVarArgs.c(2, this.rVk);
       }
       AppMethodBeat.o(23494);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.rCc == null) {
-        break label430;
+      if (this.vhK == null) {
+        break label408;
       }
     }
-    label430:
-    for (paramInt = g.a.a.a.nh(1, this.rCc.computeSize()) + 0;; paramInt = 0)
+    label408:
+    for (paramInt = g.a.a.a.oD(1, this.vhK.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.oTm != null) {
-        i = paramInt + g.a.a.b.b.a.b(2, this.oTm);
+      if (this.rVk != null) {
+        i = paramInt + g.a.a.b.b.a.b(2, this.rVk);
       }
       AppMethodBeat.o(23494);
       return i;
@@ -50,10 +50,10 @@ public final class l
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = j.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = j.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.rCc == null)
+        if (this.vhK == null)
         {
           paramVarArgs = new g.a.a.b("Not all required fields were included: BaseResponse");
           AppMethodBeat.o(23494);
@@ -64,7 +64,7 @@ public final class l
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         l locall = (l)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
@@ -73,22 +73,23 @@ public final class l
           AppMethodBeat.o(23494);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new e();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((e)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, j.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            locall.rCc = ((e)localObject1);
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            e locale = new e();
+            if ((localObject != null) && (localObject.length > 0)) {
+              locale.parseFrom((byte[])localObject);
+            }
+            locall.vhK = locale;
             paramInt += 1;
           }
           AppMethodBeat.o(23494);
           return 0;
         }
-        locall.oTm = ((g.a.a.a.a)localObject1).UbS.hPo();
+        locall.rVk = ((g.a.a.a.a)localObject).abFh.iUw();
         AppMethodBeat.o(23494);
         return 0;
       }
@@ -99,7 +100,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.f.l
  * JD-Core Version:    0.7.0.1
  */

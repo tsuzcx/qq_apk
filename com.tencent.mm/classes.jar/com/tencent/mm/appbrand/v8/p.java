@@ -1,22 +1,22 @@
 package com.tencent.mm.appbrand.v8;
 
-import com.eclipsesource.v8.JavaCallback;
-import com.eclipsesource.v8.JavaVoidCallback;
-import com.eclipsesource.v8.V8Array;
-import com.eclipsesource.v8.V8ArrayBuffer;
-import com.eclipsesource.v8.V8Context;
-import com.eclipsesource.v8.V8Object;
+import com.eclipsesource.mmv8.JavaCallback;
+import com.eclipsesource.mmv8.JavaVoidCallback;
+import com.eclipsesource.mmv8.V8Array;
+import com.eclipsesource.mmv8.V8ArrayBuffer;
+import com.eclipsesource.mmv8.V8Context;
+import com.eclipsesource.mmv8.V8Object;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 
 final class p
   extends o
 {
-  e doV;
+  e fhB;
   
   p(e parame)
   {
-    this.doV = parame;
+    this.fhB = parame;
   }
   
   protected final void a(final m paramm, V8Object paramV8Object)
@@ -27,7 +27,7 @@ final class p
       public final Object invoke(V8Object paramAnonymousV8Object, V8Array paramAnonymousV8Array)
       {
         AppMethodBeat.i(144073);
-        paramAnonymousV8Object = Integer.valueOf(p.this.doV.generateId());
+        paramAnonymousV8Object = Integer.valueOf(p.this.fhB.generateId());
         Log.d("V8DirectApiBuffer", "generateId:%d", new Object[] { paramAnonymousV8Object });
         AppMethodBeat.o(144073);
         return paramAnonymousV8Object;
@@ -45,14 +45,14 @@ final class p
           return null;
         }
         Log.d("V8DirectApiBuffer", "getNativeBuffer, id:%d", new Object[] { Integer.valueOf(paramAnonymousV8Array.getInteger(0)) });
-        paramAnonymousV8Object = p.this.doV.getBuffer(paramAnonymousV8Array.getInteger(0), false);
+        paramAnonymousV8Object = p.this.fhB.getBuffer(paramAnonymousV8Array.getInteger(0), false);
         if (paramAnonymousV8Object == null)
         {
           Log.w("V8DirectApiBuffer", "getNativeBuffer bb null");
           AppMethodBeat.o(144074);
           return null;
         }
-        paramAnonymousV8Object = paramm.XJ().newV8ArrayBuffer(paramAnonymousV8Object);
+        paramAnonymousV8Object = paramm.acm().newV8ArrayBuffer(paramAnonymousV8Object);
         AppMethodBeat.o(144074);
         return paramAnonymousV8Object;
       }
@@ -72,7 +72,7 @@ final class p
         paramAnonymousV8Object = (V8ArrayBuffer)paramAnonymousV8Array.get(1);
         if (paramAnonymousV8Object != null)
         {
-          p.this.doV.setBuffer(paramAnonymousV8Array.getInteger(0), paramAnonymousV8Object.getBackingStore());
+          p.this.fhB.setBuffer(paramAnonymousV8Array.getInteger(0), paramAnonymousV8Object.getBackingStore());
           paramAnonymousV8Object.release();
           AppMethodBeat.o(144075);
           return;
@@ -88,7 +88,7 @@ final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.p
  * JD-Core Version:    0.7.0.1
  */

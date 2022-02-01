@@ -2,11 +2,10 @@ package kotlin.k;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/ranges/ClosedFloatingPointRange;", "T", "", "Lkotlin/ranges/ClosedRange;", "contains", "", "value", "(Ljava/lang/Comparable;)Z", "isEmpty", "lessThanOrEquals", "a", "b", "(Ljava/lang/Comparable;Ljava/lang/Comparable;)Z", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/ranges/ClosedFloatingPointRange;", "T", "", "Lkotlin/ranges/ClosedRange;", "contains", "", "value", "(Ljava/lang/Comparable;)Z", "isEmpty", "lessThanOrEquals", "a", "b", "(Ljava/lang/Comparable;Ljava/lang/Comparable;)Z", "kotlin-stdlib"})
 public abstract interface b<T extends Comparable<? super T>>
-  extends c<T>
 {
-  public abstract boolean contains(T paramT);
+  public abstract boolean g(T paramT);
 }
 
 

@@ -18,6 +18,9 @@ public class TXLiteAVCode
   public static final int ERR_GET_RTMP_ACC_URL_FAIL = -2302;
   public static final int ERR_GET_VODFILE_MEDIAINFO_FAIL = -2306;
   public static final int ERR_HEVC_DECODE_FAIL = -2304;
+  public static final int ERR_HEVC_ENCODE_FAIL = -2310;
+  public static final int ERR_HEVC_ENCODE_NOT_SUPPORT = -2311;
+  public static final int ERR_HEVC_SOFTDECODER_START_FAIL = -2312;
   public static final int ERR_MIC_NOT_AUTHORIZED = -1317;
   public static final int ERR_MIC_OCCUPY = -1319;
   public static final int ERR_MIC_SET_PARAM_FAIL = -1318;
@@ -247,6 +250,8 @@ public class TXLiteAVCode
   public static final int WARNING_AUDIO_FRAME_DECODE_FAIL = 2102;
   public static final int WARNING_AUDIO_RECORDING_WRITE_FAIL = 7001;
   public static final int WARNING_CAMERA_DEVICE_EMPTY = 1111;
+  public static final int WARNING_CURRENT_ENCODE_TYPE = 1104;
+  public static final int WARNING_CURRENT_ENCODE_TYPE_CHANGED = 1104;
   public static final int WARNING_HW_DECODER_START_FAIL = 2106;
   public static final int WARNING_HW_ENCODER_START_FAIL = 1103;
   public static final int WARNING_IGNORE_UPSTREAM_FOR_AUDIENCE = 6001;

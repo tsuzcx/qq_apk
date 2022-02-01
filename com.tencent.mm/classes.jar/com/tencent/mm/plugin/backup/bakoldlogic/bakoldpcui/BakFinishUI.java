@@ -9,6 +9,9 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.e.e;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -20,8 +23,8 @@ public class BakFinishUI
   implements e.e
 {
   private MMHandler handler;
-  private TextView hbm;
-  private int oSz;
+  private TextView jMw;
+  private int rUy;
   
   public BakFinishUI()
   {
@@ -30,7 +33,7 @@ public class BakFinishUI
     AppMethodBeat.o(21980);
   }
   
-  public final void chp()
+  public final void cuA()
   {
     AppMethodBeat.i(21985);
     this.handler.post(new Runnable()
@@ -38,7 +41,7 @@ public class BakFinishUI
       public final void run()
       {
         AppMethodBeat.i(21978);
-        a.cgZ().cha().oRS = -1;
+        a.cuk().cul().rTR = -1;
         BakFinishUI.b(BakFinishUI.this);
         AppMethodBeat.o(21978);
       }
@@ -48,16 +51,16 @@ public class BakFinishUI
   
   public int getLayoutId()
   {
-    return 2131493185;
+    return R.i.ebW;
   }
   
   public void initView()
   {
     AppMethodBeat.i(21982);
-    setMMTitle(2131756443);
-    this.hbm = ((TextView)findViewById(2131297219));
-    if (6 == this.oSz) {
-      this.hbm.setText(getString(2131756439));
+    setMMTitle(R.l.esv);
+    this.jMw = ((TextView)findViewById(R.h.dsQ));
+    if (6 == this.rUy) {
+      this.jMw.setText(getString(R.l.esu));
     }
     for (;;)
     {
@@ -66,7 +69,7 @@ public class BakFinishUI
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(21977);
-          a.cgZ().cha().oRS = -1;
+          a.cuk().cul().rTR = -1;
           BakFinishUI.a(BakFinishUI.this);
           AppMethodBeat.o(21977);
           return true;
@@ -74,10 +77,27 @@ public class BakFinishUI
       });
       AppMethodBeat.o(21982);
       return;
-      if (1 == this.oSz) {
-        this.hbm.setText(getString(2131756430));
+      if (1 == this.rUy) {
+        this.jMw.setText(getString(R.l.esn));
       }
     }
+  }
+  
+  public final void kv(int paramInt)
+  {
+    AppMethodBeat.i(21986);
+    this.handler.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(21979);
+        Log.d("MicroMsg.BakFinishUI", "BakFinishUI onCloseSocket");
+        Intent localIntent = new Intent(BakFinishUI.this, BakConnErrorUI.class);
+        MMWizardActivity.aH(BakFinishUI.this, localIntent);
+        AppMethodBeat.o(21979);
+      }
+    });
+    AppMethodBeat.o(21986);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -89,10 +109,10 @@ public class BakFinishUI
       AppMethodBeat.o(21981);
       return;
     }
-    this.oSz = getIntent().getIntExtra("cmd", -1);
-    Log.i("MicroMsg.BakFinishUI", "BakFinishUI onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.oSz) });
+    this.rUy = getIntent().getIntExtra("cmd", -1);
+    Log.i("MicroMsg.BakFinishUI", "BakFinishUI onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.rUy) });
     initView();
-    a.cgZ().cha().oRK = this;
+    a.cuk().cul().rTJ = this;
     AppMethodBeat.o(21981);
   }
   
@@ -100,26 +120,9 @@ public class BakFinishUI
   {
     AppMethodBeat.i(21983);
     super.onDestroy();
-    a.cgZ().cha().oRK = null;
-    Log.i("MicroMsg.BakFinishUI", "BakFinishUI onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.oSz) });
+    a.cuk().cul().rTJ = null;
+    Log.i("MicroMsg.BakFinishUI", "BakFinishUI onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.rUy) });
     AppMethodBeat.o(21983);
-  }
-  
-  public final void onError(int paramInt)
-  {
-    AppMethodBeat.i(21986);
-    this.handler.post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(21979);
-        Log.d("MicroMsg.BakFinishUI", "BakFinishUI onCloseSocket");
-        Intent localIntent = new Intent(BakFinishUI.this, BakConnErrorUI.class);
-        MMWizardActivity.ay(BakFinishUI.this, localIntent);
-        AppMethodBeat.o(21979);
-      }
-    });
-    AppMethodBeat.o(21986);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -127,8 +130,8 @@ public class BakFinishUI
     AppMethodBeat.i(21984);
     if (paramInt == 4)
     {
-      a.cgZ().cha().oRS = -1;
-      ala(1);
+      a.cuk().cul().rTR = -1;
+      atX(1);
       AppMethodBeat.o(21984);
       return true;
     }
@@ -145,7 +148,7 @@ public class BakFinishUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui.BakFinishUI
  * JD-Core Version:    0.7.0.1
  */

@@ -7,45 +7,45 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class l
 {
-  private static AtomicInteger nhX;
-  public HashMap<String, d> nhY;
+  private static AtomicInteger qiG;
+  public HashMap<String, d> qiH;
   
   static
   {
     AppMethodBeat.i(144424);
-    nhX = new AtomicInteger(1);
+    qiG = new AtomicInteger(1);
     AppMethodBeat.o(144424);
   }
   
   private l()
   {
     AppMethodBeat.i(144420);
-    this.nhY = new HashMap();
+    this.qiH = new HashMap();
     AppMethodBeat.o(144420);
   }
   
-  public static l bPF()
-  {
-    AppMethodBeat.i(144421);
-    l locall = a.bPG();
-    AppMethodBeat.o(144421);
-    return locall;
-  }
-  
-  public static int bPw()
+  public static int cbN()
   {
     AppMethodBeat.i(144423);
-    int i = nhX.incrementAndGet();
+    int i = qiG.incrementAndGet();
     AppMethodBeat.o(144423);
     return i;
   }
   
-  public final d adh(String paramString)
+  public static l cbW()
+  {
+    AppMethodBeat.i(144421);
+    l locall = a.cbX();
+    AppMethodBeat.o(144421);
+    return locall;
+  }
+  
+  public final d ala(String paramString)
   {
     AppMethodBeat.i(144422);
-    if (this.nhY.containsKey(paramString))
+    if (this.qiH.containsKey(paramString))
     {
-      paramString = (d)this.nhY.get(paramString);
+      paramString = (d)this.qiH.get(paramString);
       AppMethodBeat.o(144422);
       return paramString;
     }
@@ -55,19 +55,19 @@ public final class l
   
   static final class a
   {
-    private static l niP;
+    private static l qjA;
     
     static
     {
       AppMethodBeat.i(144419);
-      niP = new l((byte)0);
+      qjA = new l((byte)0);
       AppMethodBeat.o(144419);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.s.l
  * JD-Core Version:    0.7.0.1
  */

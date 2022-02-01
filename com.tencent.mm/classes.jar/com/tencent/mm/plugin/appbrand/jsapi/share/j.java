@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.appbrand.jsapi.share;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16})
+@l(iBK={1, 1, 16})
 public final class j {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.j
  * JD-Core Version:    0.7.0.1
  */

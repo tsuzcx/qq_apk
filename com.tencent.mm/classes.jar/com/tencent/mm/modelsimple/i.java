@@ -1,23 +1,23 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.agb;
-import com.tencent.mm.protocal.protobuf.agc;
+import com.tencent.mm.protocal.protobuf.agk;
+import com.tencent.mm.protocal.protobuf.agl;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class i
   extends q
   implements m
 {
-  private com.tencent.mm.ak.i callback;
+  private com.tencent.mm.an.i callback;
   private final d rr;
   
   public i(String paramString)
@@ -25,20 +25,20 @@ public final class i
     AppMethodBeat.i(20609);
     Log.i("MicroMsg.NetSceneDelTempSession", "NetSceneDelTempSession %s", new Object[] { paramString });
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new agb();
-    ((d.a)localObject).iLO = new agc();
+    ((d.a)localObject).lBU = new agk();
+    ((d.a)localObject).lBV = new agl();
     ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/deltempsession";
     ((d.a)localObject).funcId = 1067;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (agb)this.rr.iLK.iLR;
-    ((agb)localObject).KSV = paramString;
-    ((agb)localObject).Lqr = b.cD(new byte[0]);
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (agk)d.b.b(this.rr.lBR);
+    ((agk)localObject).RTS = paramString;
+    ((agk)localObject).SrO = b.cU(new byte[0]);
     AppMethodBeat.o(20609);
   }
   
-  public final int doScene(g paramg, com.tencent.mm.ak.i parami)
+  public final int doScene(g paramg, com.tencent.mm.an.i parami)
   {
     AppMethodBeat.i(20610);
     this.callback = parami;
@@ -62,7 +62,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.modelsimple.i
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
@@ -15,12 +15,12 @@ import com.tencent.mm.pluginsdk.ui.applet.w;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class JsApiPrivateAddContact
-  extends d<k>
+  extends c<j>
 {
   public static final int CTRL_INDEX = 407;
   public static final String NAME = "private_addContact";
   
-  protected int bEp()
+  protected int bPP()
   {
     return 1;
   }
@@ -29,7 +29,7 @@ public class JsApiPrivateAddContact
     extends AppBrandProxyUIProcessTask.ProcessRequest
   {
     public static final Parcelable.Creator<AddContactRequest> CREATOR;
-    int lBy;
+    int owO;
     int scene;
     String userName;
     
@@ -49,7 +49,7 @@ public class JsApiPrivateAddContact
       AppMethodBeat.o(45604);
     }
     
-    public final Class<? extends AppBrandProxyUIProcessTask> bCJ()
+    public final Class<? extends AppBrandProxyUIProcessTask> bOe()
     {
       return JsApiPrivateAddContact.a.class;
     }
@@ -59,7 +59,7 @@ public class JsApiPrivateAddContact
       AppMethodBeat.i(45605);
       this.userName = paramParcel.readString();
       this.scene = paramParcel.readInt();
-      this.lBy = paramParcel.readInt();
+      this.owO = paramParcel.readInt();
       AppMethodBeat.o(45605);
     }
     
@@ -68,7 +68,7 @@ public class JsApiPrivateAddContact
       AppMethodBeat.i(45606);
       paramParcel.writeString(this.userName);
       paramParcel.writeInt(this.scene);
-      paramParcel.writeInt(this.lBy);
+      paramParcel.writeInt(this.owO);
       AppMethodBeat.o(45606);
     }
   }
@@ -133,13 +133,13 @@ public class JsApiPrivateAddContact
       }
       paramProcessRequest = (JsApiPrivateAddContact.AddContactRequest)paramProcessRequest;
       a locala = new a();
-      if (paramProcessRequest.lBy == 1) {}
+      if (paramProcessRequest.owO == 1) {}
       for (;;)
       {
-        locala.JSl = bool;
-        ((i)g.af(i.class)).a(bDF(), paramProcessRequest.userName, paramProcessRequest.scene, new v()
+        locala.QRq = bool;
+        ((i)h.ae(i.class)).a(bPf(), paramProcessRequest.userName, paramProcessRequest.scene, new v()
         {
-          public final void wK(int paramAnonymousInt)
+          public final void zZ(int paramAnonymousInt)
           {
             AppMethodBeat.i(45613);
             Log.i("MicroMsg.JsApiPrivateAddContact", "onAddContact resultCode:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
@@ -157,7 +157,7 @@ public class JsApiPrivateAddContact
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiPrivateAddContact
  * JD-Core Version:    0.7.0.1
  */

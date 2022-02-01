@@ -1,111 +1,45 @@
 package com.tencent.mm.ui.contact;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.model.aa;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.v;
-import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.storage.as;
-import java.util.List;
+import com.tencent.mm.f.b.a.fn;
+import com.tencent.mm.plugin.report.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.n;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/contact/ForwardReporter;", "", "()V", "TAG", "", "report23009", "", "msgTypeList", "receiverType", "", "userListSeq", "recentListSeq", "createNew", "isMultiSelect", "scene", "clickZone", "toUser", "appMsgInnerTypeList", "topSessionCount", "costTime", "logVersion", "structLog", "struct", "Lcom/tencent/mm/plugin/report/AbsReportStruct;", "ui-selectcontact_release"})
 public final class m
-  extends BaseAdapter
 {
-  private List<String> PVI;
-  private boolean PVJ;
-  private Context context;
-  private List<as> gxh;
+  public static final m Xsx;
   
-  public m(Context paramContext, List<as> paramList, List<String> paramList1, boolean paramBoolean)
+  static
   {
-    this.gxh = paramList;
-    this.context = paramContext;
-    this.PVJ = paramBoolean;
-    this.PVI = paramList1;
+    AppMethodBeat.i(186354);
+    Xsx = new m();
+    AppMethodBeat.o(186354);
   }
   
-  public final int getCount()
+  public static final void a(String paramString1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, String paramString2, String paramString3, long paramLong8, long paramLong9, long paramLong10)
   {
-    AppMethodBeat.i(37849);
-    int i = this.gxh.size();
-    AppMethodBeat.o(37849);
-    return i;
-  }
-  
-  public final Object getItem(int paramInt)
-  {
-    AppMethodBeat.i(37850);
-    Object localObject = this.gxh.get(paramInt);
-    AppMethodBeat.o(37850);
-    return localObject;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(37848);
-    as localas = (as)this.gxh.get(paramInt);
-    if (paramView == null)
-    {
-      paramViewGroup = new GroupCardSelectUI.a();
-      paramView = View.inflate(this.context, 2131494995, null);
-      paramViewGroup.yDA = ((TextView)paramView.findViewById(2131302179));
-      paramViewGroup.PVW = ((TextView)paramView.findViewById(2131302180));
-      paramViewGroup.keC = ((ImageView)paramView.findViewById(2131302178));
-      paramViewGroup.BaJ = ((CheckBox)paramView.findViewById(2131307508));
-      paramView.setTag(paramViewGroup);
-      a.b.c(paramViewGroup.keC, localas.field_username);
-      paramViewGroup.PVW.setText(l.e(this.context, aa.getDisplayName(localas.field_username), a.aG(this.context, 2131165535)));
-      paramViewGroup.yDA.setText("(" + v.Ie(localas.field_username) + ")");
-      if (!ab.Iz(localas.field_username)) {
-        break label290;
-      }
-      Drawable localDrawable = this.context.getResources().getDrawable(2131691298);
-      localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      paramViewGroup.PVW.setCompoundDrawablesWithIntrinsicBounds(null, null, localDrawable, null);
-      label232:
-      if (this.PVJ)
-      {
-        paramViewGroup.BaJ.setVisibility(0);
-        if (!this.PVI.contains(localas.field_username)) {
-          break label304;
-        }
-        paramViewGroup.BaJ.setChecked(true);
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(37848);
-      return paramView;
-      paramViewGroup = (GroupCardSelectUI.a)paramView.getTag();
-      break;
-      label290:
-      paramViewGroup.PVW.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-      break label232;
-      label304:
-      paramViewGroup.BaJ.setChecked(false);
-    }
+    AppMethodBeat.i(293067);
+    p.k(paramString1, "msgTypeList");
+    p.k(paramString2, "toUser");
+    p.k(paramString3, "appMsgInnerTypeList");
+    paramString1 = new fn().uR(paramString1).oh(paramLong1).oi(paramLong2).oj(paramLong3).ok(paramLong4).ol(paramLong5).om(paramLong6).on(paramLong7).uS(paramString2).uT(paramString3).oo(paramLong8).LM(paramLong9).SE(paramLong10);
+    paramString1.bpa();
+    p.j(paramString1, "it");
+    paramString1 = (a)paramString1;
+    int i = paramString1.getId();
+    paramString1 = paramString1.agI();
+    p.j(paramString1, "struct.toShowString()");
+    Log.i("ForwardReporter", "report%s %s", new Object[] { Integer.valueOf(i), n.l(paramString1, "\r\n", " ", false) });
+    AppMethodBeat.o(293067);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.contact.m
  * JD-Core Version:    0.7.0.1
  */

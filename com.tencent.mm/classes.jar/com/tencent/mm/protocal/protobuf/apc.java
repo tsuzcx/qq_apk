@@ -1,182 +1,99 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import g.a.a.b;
 
 public final class apc
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String LBe;
-  public int LBf;
-  public LinkedList<aqj> LBg;
-  public LinkedList<String> LBh;
-  public LinkedList<arc> LBi;
-  public String deviceBrand;
-  public String deviceModel;
-  public int netType;
-  public String osName;
-  public String osVersion;
-  
-  public apc()
-  {
-    AppMethodBeat.i(184195);
-    this.LBg = new LinkedList();
-    this.LBh = new LinkedList();
-    this.LBi = new LinkedList();
-    AppMethodBeat.o(184195);
-  }
+  public String key;
+  public String value;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(184196);
+    AppMethodBeat.i(110848);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.netType);
-      if (this.LBe != null) {
-        paramVarArgs.e(2, this.LBe);
-      }
-      paramVarArgs.aM(3, this.LBf);
-      paramVarArgs.e(4, 8, this.LBg);
-      if (this.deviceModel != null) {
-        paramVarArgs.e(5, this.deviceModel);
-      }
-      if (this.deviceBrand != null) {
-        paramVarArgs.e(6, this.deviceBrand);
-      }
-      if (this.osName != null) {
-        paramVarArgs.e(7, this.osName);
-      }
-      if (this.osVersion != null) {
-        paramVarArgs.e(8, this.osVersion);
-      }
-      paramVarArgs.e(9, 1, this.LBh);
-      paramVarArgs.e(10, 8, this.LBi);
-      AppMethodBeat.o(184196);
-      return 0;
-    }
-    int i;
-    if (paramInt == 1)
-    {
-      i = g.a.a.b.b.a.bu(1, this.netType) + 0;
-      paramInt = i;
-      if (this.LBe != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.LBe);
-      }
-      i = paramInt + g.a.a.b.b.a.bu(3, this.LBf) + g.a.a.a.c(4, 8, this.LBg);
-      paramInt = i;
-      if (this.deviceModel != null) {
-        paramInt = i + g.a.a.b.b.a.f(5, this.deviceModel);
-      }
-      i = paramInt;
-      if (this.deviceBrand != null) {
-        i = paramInt + g.a.a.b.b.a.f(6, this.deviceBrand);
-      }
-      paramInt = i;
-      if (this.osName != null) {
-        paramInt = i + g.a.a.b.b.a.f(7, this.osName);
-      }
-      i = paramInt;
-      if (this.osVersion != null) {
-        i = paramInt + g.a.a.b.b.a.f(8, this.osVersion);
-      }
-      paramInt = g.a.a.a.c(9, 1, this.LBh);
-      int j = g.a.a.a.c(10, 8, this.LBi);
-      AppMethodBeat.o(184196);
-      return i + paramInt + j;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.LBg.clear();
-      this.LBh.clear();
-      this.LBi.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
-      }
-      AppMethodBeat.o(184196);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-      apc localapc = (apc)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      Object localObject2;
-      boolean bool;
-      switch (paramInt)
+      if (this.key == null)
       {
-      default: 
-        AppMethodBeat.o(184196);
-        return -1;
-      case 1: 
-        localapc.netType = ((g.a.a.a.a)localObject1).UbS.zi();
-        AppMethodBeat.o(184196);
-        return 0;
-      case 2: 
-        localapc.LBe = ((g.a.a.a.a)localObject1).UbS.readString();
-        AppMethodBeat.o(184196);
-        return 0;
-      case 3: 
-        localapc.LBf = ((g.a.a.a.a)localObject1).UbS.zi();
-        AppMethodBeat.o(184196);
-        return 0;
-      case 4: 
-        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
+        paramVarArgs = new b("Not all required fields were included: key");
+        AppMethodBeat.o(110848);
+        throw paramVarArgs;
+      }
+      if (this.value == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: value");
+        AppMethodBeat.o(110848);
+        throw paramVarArgs;
+      }
+      if (this.key != null) {
+        paramVarArgs.f(1, this.key);
+      }
+      if (this.value != null) {
+        paramVarArgs.f(2, this.value);
+      }
+      AppMethodBeat.o(110848);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.key == null) {
+        break label370;
+      }
+    }
+    label370:
+    for (paramInt = g.a.a.b.b.a.g(1, this.key) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.value != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.value);
+      }
+      AppMethodBeat.o(110848);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
+        }
+        if (this.key == null)
         {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new aqj();
-          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((aqj)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-          localapc.LBg.add(localObject1);
-          paramInt += 1;
+          paramVarArgs = new b("Not all required fields were included: key");
+          AppMethodBeat.o(110848);
+          throw paramVarArgs;
         }
-        AppMethodBeat.o(184196);
-        return 0;
-      case 5: 
-        localapc.deviceModel = ((g.a.a.a.a)localObject1).UbS.readString();
-        AppMethodBeat.o(184196);
-        return 0;
-      case 6: 
-        localapc.deviceBrand = ((g.a.a.a.a)localObject1).UbS.readString();
-        AppMethodBeat.o(184196);
-        return 0;
-      case 7: 
-        localapc.osName = ((g.a.a.a.a)localObject1).UbS.readString();
-        AppMethodBeat.o(184196);
-        return 0;
-      case 8: 
-        localapc.osVersion = ((g.a.a.a.a)localObject1).UbS.readString();
-        AppMethodBeat.o(184196);
-        return 0;
-      case 9: 
-        localapc.LBh.add(((g.a.a.a.a)localObject1).UbS.readString());
-        AppMethodBeat.o(184196);
+        if (this.value == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: value");
+          AppMethodBeat.o(110848);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(110848);
         return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
+      if (paramInt == 3)
       {
-        localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new arc();
-        localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (bool = true; bool; bool = ((arc)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-        localapc.LBi.add(localObject1);
-        paramInt += 1;
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        apc localapc = (apc)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(110848);
+          return -1;
+        case 1: 
+          localapc.key = locala.abFh.readString();
+          AppMethodBeat.o(110848);
+          return 0;
+        }
+        localapc.value = locala.abFh.readString();
+        AppMethodBeat.o(110848);
+        return 0;
       }
-      AppMethodBeat.o(184196);
-      return 0;
+      AppMethodBeat.o(110848);
+      return -1;
     }
-    AppMethodBeat.o(184196);
-    return -1;
   }
 }
 

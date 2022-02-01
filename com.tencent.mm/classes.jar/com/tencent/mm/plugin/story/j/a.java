@@ -6,19 +6,19 @@ import com.tencent.mm.loader.g.a.f;
 import com.tencent.mm.loader.g.a.g;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/task/StoryCleanTask;", "", "()V", "CLEAN_LIMIT", "", "TAG", "", "cleanQueue", "Lcom/tencent/mm/loader/loader/LoaderCore;", "Lcom/tencent/mm/plugin/story/task/StoryCleanTask$CleanTask;", "isStop", "", "stopLock", "Ljava/lang/Object;", "checkLoopClean", "", "list", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "Lkotlin/collections/ArrayList;", "startClean", "stopClean", "CleanTask", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/task/StoryCleanTask;", "", "()V", "CLEAN_LIMIT", "", "TAG", "", "cleanQueue", "Lcom/tencent/mm/loader/loader/LoaderCore;", "Lcom/tencent/mm/plugin/story/task/StoryCleanTask$CleanTask;", "isStop", "", "stopLock", "Ljava/lang/Object;", "checkLoopClean", "", "list", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "Lkotlin/collections/ArrayList;", "startClean", "stopClean", "CleanTask", "plugin-story_release"})
 public final class a
 {
-  private static com.tencent.mm.loader.g.d<Object> FwI;
-  public static final a FwJ;
-  private static final Object stopLock;
+  private static com.tencent.mm.loader.g.d<Object> LQK;
+  public static final a LQL;
+  private static final Object aFF;
   
   static
   {
     AppMethodBeat.i(119611);
-    FwJ = new a();
-    FwI = new com.tencent.mm.loader.g.d((com.tencent.mm.loader.g.a.d)new f((c)new com.tencent.mm.loader.g.a.a(5), new g(1, (byte)0), 1, "storyCleanQueue"));
-    stopLock = new Object();
+    LQL = new a();
+    LQK = new com.tencent.mm.loader.g.d((com.tencent.mm.loader.g.a.d)new f((c)new com.tencent.mm.loader.g.a.a(5), new g(1, (byte)0), 1, "storyCleanQueue"));
+    aFF = new Object();
     AppMethodBeat.o(119611);
   }
 }

@@ -6,9 +6,9 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory.Options;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vq;
-import com.tencent.mm.g.a.vq.b;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.f.a.wv;
+import com.tencent.mm.f.a.wv.b;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
 import com.tencent.mm.opensdk.modelmsg.WXGameVideoFileObject;
@@ -25,27 +25,27 @@ import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.util.Set;
 
 public final class a
 {
-  public static Set<String> jkO;
+  public static Set<String> maP;
   
-  private static Bitmap PF(String paramString)
+  private static Bitmap Xd(String paramString)
   {
     AppMethodBeat.i(20652);
-    vq localvq = new vq();
-    localvq.ebN.ebP = paramString;
-    EventCenter.instance.publish(localvq);
-    paramString = (Bitmap)localvq.ebO.result;
+    wv localwv = new wv();
+    localwv.fVP.fVR = paramString;
+    EventCenter.instance.publish(localwv);
+    paramString = (Bitmap)localwv.fVQ.result;
     AppMethodBeat.o(20652);
     return paramString;
   }
   
   public static Intent a(int paramInt, WXMediaMessage paramWXMediaMessage, String paramString1, String paramString2, boolean paramBoolean, Bundle paramBundle)
   {
-    AppMethodBeat.i(231571);
+    AppMethodBeat.i(249305);
     Log.d("MicroMsg.ShareSnsImpl", "appmsg.description " + paramWXMediaMessage.description);
     Log.d("MicroMsg.ShareSnsImpl", "appmsg.title " + paramWXMediaMessage.title);
     Object localObject1 = paramWXMediaMessage.mediaObject;
@@ -76,7 +76,7 @@ public final class a
         break;
       }
       Log.d("MicroMsg.ShareSnsImpl", "timeLineType is invalid");
-      AppMethodBeat.o(231571);
+      AppMethodBeat.o(249305);
       return null;
       i = 2;
       continue;
@@ -98,12 +98,12 @@ public final class a
     {
     default: 
       Log.e("MicroMsg.ShareSnsImpl", "none type not support!");
-      AppMethodBeat.o(231571);
+      AppMethodBeat.o(249305);
       return null;
     case 1: 
       localIntent.putExtra("Kdescription", ((WXTextObject)localObject1).text);
       localIntent.putExtra("Ksnsupload_type", 8);
-      AppMethodBeat.o(231571);
+      AppMethodBeat.o(249305);
       return localIntent;
     case 3: 
       paramString1 = (WXMusicObject)localObject1;
@@ -111,11 +111,11 @@ public final class a
       for (paramWXMediaMessage = paramString1.musicUrl;; paramWXMediaMessage = paramString1.musicLowBandUrl)
       {
         paramString2 = Util.nullAs(paramWXMediaMessage, "");
-        if (tN(3) != -1) {
+        if (wN(3) != -1) {
           break;
         }
         Log.d("MicroMsg.ShareSnsImpl", "mediaType is invalid");
-        AppMethodBeat.o(231571);
+        AppMethodBeat.o(249305);
         return null;
       }
       if (!Util.isNullOrNil(paramString1.musicDataUrl))
@@ -133,17 +133,17 @@ public final class a
         localIntent.putExtra("Ksnsupload_title", "");
         localIntent.putExtra("Ksnsupload_type", 2);
         localIntent.putExtra("ksnsis_music", true);
-        AppMethodBeat.o(231571);
+        AppMethodBeat.o(249305);
         return localIntent;
         paramWXMediaMessage = paramString1.musicUrl;
         break;
       }
     case 76: 
       paramWXMediaMessage = Util.nullAs(((WXMusicVideoObject)localObject1).musicUrl, "");
-      if (tN(76) == -1)
+      if (wN(76) == -1)
       {
         Log.d("MicroMsg.ShareSnsImpl", "mediaType is invalid");
-        AppMethodBeat.o(231571);
+        AppMethodBeat.o(249305);
         return null;
       }
       localIntent.putExtra("Ksnsupload_link", paramWXMediaMessage);
@@ -153,25 +153,25 @@ public final class a
       if (paramBundle != null) {
         localIntent.putExtra("music_mv_cover_url", paramBundle.getString("music_mv_cover_url", ""));
       }
-      AppMethodBeat.o(231571);
+      AppMethodBeat.o(249305);
       return localIntent;
     case 2: 
       paramWXMediaMessage = (WXImageObject)localObject1;
       localIntent.putExtra("KBlockAdd", true);
       localIntent.putExtra("Ksnsupload_type", 0);
       localIntent.putExtra("sns_kemdia_path", paramWXMediaMessage.imagePath);
-      AppMethodBeat.o(231571);
+      AppMethodBeat.o(249305);
       return localIntent;
     case 5: 
       localIntent.putExtra("Ksnsupload_link", ((WXWebpageObject)localObject1).webpageUrl);
       localIntent.putExtra("Ksnsupload_title", Util.nullAs(paramWXMediaMessage.title, ""));
       localIntent.putExtra("Ksnsupload_imgbuf", paramWXMediaMessage.thumbData);
       localIntent.putExtra("Ksnsupload_type", 1);
-      AppMethodBeat.o(231571);
+      AppMethodBeat.o(249305);
       return localIntent;
     case 6: 
       Log.e("MicroMsg.ShareSnsImpl", "file is not support!");
-      AppMethodBeat.o(231571);
+      AppMethodBeat.o(249305);
       return null;
     case 4: 
       paramWXMediaMessage = (WXVideoObject)localObject1;
@@ -179,18 +179,18 @@ public final class a
       for (paramWXMediaMessage = paramWXMediaMessage.videoUrl;; paramWXMediaMessage = paramWXMediaMessage.videoLowBandUrl)
       {
         paramWXMediaMessage = Util.nullAs(paramWXMediaMessage, "");
-        if (tN(3) != -1) {
+        if (wN(3) != -1) {
           break;
         }
         Log.d("MicroMsg.ShareSnsImpl", "mediaType is invalid");
-        AppMethodBeat.o(231571);
+        AppMethodBeat.o(249305);
         return null;
       }
       localIntent.putExtra("Ksnsupload_link", paramWXMediaMessage);
       localIntent.putExtra("Ksnsupload_title", "");
       localIntent.putExtra("Ksnsupload_type", 1);
       localIntent.putExtra("ksnsis_video", true);
-      AppMethodBeat.o(231571);
+      AppMethodBeat.o(249305);
       return localIntent;
     case 38: 
       paramWXMediaMessage = (WXVideoFileObject)localObject1;
@@ -198,16 +198,16 @@ public final class a
       localIntent.putExtra("Ksnsupload_type", 14);
       paramString1 = paramWXMediaMessage.filePath;
       paramWXMediaMessage = "";
-      paramString2 = s.bhK(paramString1);
-      if ((Util.isNullOrNil("")) || (!s.YS("")))
+      paramString2 = u.buc(paramString1);
+      if ((Util.isNullOrNil("")) || (!u.agG("")))
       {
         paramWXMediaMessage = new StringBuilder();
-        bg.aVF();
+        bh.beI();
         paramWXMediaMessage = c.getAccSnsTmpPath() + paramString2;
       }
       try
       {
-        paramBundle = PF(paramString1);
+        paramBundle = Xd(paramString1);
         if (paramBundle == null) {
           break label1229;
         }
@@ -226,10 +226,10 @@ public final class a
       localIntent.putExtra("KSightPath", paramString1);
       localIntent.putExtra("KSightThumbPath", paramWXMediaMessage);
       localIntent.putExtra("sight_md5", paramString2);
-      AppMethodBeat.o(231571);
+      AppMethodBeat.o(249305);
       return localIntent;
       Log.e("MicroMsg.ShareSnsImpl", "thumb null , videoPath %s ", new Object[] { paramString1 });
-      AppMethodBeat.o(231571);
+      AppMethodBeat.o(249305);
       return null;
     case 39: 
       label675:
@@ -241,11 +241,11 @@ public final class a
       paramString2 = paramWXMediaMessage.videoUrl;
       paramBundle = paramWXMediaMessage.thumbUrl;
       Log.i("MicroMsg.ShareSnsImpl", "videoPath %s,thumbPath %s,cdnUrl %s,cdnThumbUrl %s", new Object[] { paramString1, "", paramString2, paramBundle });
-      localObject1 = s.bhK(paramString1);
-      if ((Util.isNullOrNil("")) || (!s.YS("")))
+      localObject1 = u.buc(paramString1);
+      if ((Util.isNullOrNil("")) || (!u.agG("")))
       {
         paramWXMediaMessage = new StringBuilder();
-        bg.aVF();
+        bh.beI();
       }
       break;
     }
@@ -253,7 +253,7 @@ public final class a
     {
       try
       {
-        Object localObject2 = PF(paramString1);
+        Object localObject2 = Xd(paramString1);
         if (localObject2 == null) {
           break label1556;
         }
@@ -275,17 +275,17 @@ public final class a
       localIntent.putExtra("sight_md5", (String)localObject1);
       localIntent.putExtra("KSightCdnUrl", paramString2);
       localIntent.putExtra("KSightCdnThumbUrl", paramBundle);
-      AppMethodBeat.o(231571);
+      AppMethodBeat.o(249305);
       return localIntent;
       Log.e("MicroMsg.ShareSnsImpl", "thumb null , videoPath %s ", new Object[] { paramString1 });
-      AppMethodBeat.o(231571);
+      AppMethodBeat.o(249305);
       return null;
-      AppMethodBeat.o(231571);
+      AppMethodBeat.o(249305);
       return null;
     }
   }
   
-  private static int tN(int paramInt)
+  private static int wN(int paramInt)
   {
     switch (paramInt)
     {
@@ -307,7 +307,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsns.a
  * JD-Core Version:    0.7.0.1
  */

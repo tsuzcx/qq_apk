@@ -1,6 +1,6 @@
 package com.tencent.luggage.d;
 
-abstract interface c {}
+public abstract interface c {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

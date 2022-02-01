@@ -1,21 +1,25 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
+import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.service.r;
+import com.tencent.mm.plugin.webview.luggage.c.c;
+import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public class ah
-  extends bs<com.tencent.mm.plugin.webview.luggage.g>
+  extends bs<g>
 {
   public final void a(Context paramContext, String paramString, br.a parama)
   {
     int j = 1;
     AppMethodBeat.i(78578);
     Log.i("MicroMsg.JsApiLaunchMiniProgram", "invoke");
-    JSONObject localJSONObject = com.tencent.mm.plugin.webview.luggage.c.b.Zc(paramString);
+    JSONObject localJSONObject = c.agO(paramString);
     if (localJSONObject == null)
     {
       Log.e("MicroMsg.JsApiLaunchMiniProgram", "data is null");
@@ -55,7 +59,7 @@ public class ah
     for (j = 0;; j = 2)
     {
       str1 = localJSONObject.optString("path");
-      ((r)com.tencent.mm.kernel.g.af(r.class)).b(paramContext, str3, paramString, str2, j, str1, 0);
+      ((r)h.ae(r.class)).b(paramContext, str3, paramString, str2, j, str1, 0);
       parama.i(null, null);
       AppMethodBeat.o(78578);
       return;
@@ -72,9 +76,9 @@ public class ah
     }
   }
   
-  public final void b(com.tencent.luggage.d.b<com.tencent.mm.plugin.webview.luggage.g>.a paramb) {}
+  public final void b(b<g>.a paramb) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 2;
   }

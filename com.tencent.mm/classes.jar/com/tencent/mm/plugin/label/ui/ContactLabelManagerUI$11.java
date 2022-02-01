@@ -1,30 +1,25 @@
 package com.tencent.mm.plugin.label.ui;
 
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ContactLabelManagerUI$11
-  implements View.OnTouchListener
+  implements MenuItem.OnMenuItemClickListener
 {
   ContactLabelManagerUI$11(ContactLabelManagerUI paramContactLabelManagerUI) {}
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(26218);
-    if (paramMotionEvent.getAction() == 0)
-    {
-      ContactLabelManagerUI.a(this.yCF, (int)paramMotionEvent.getRawX());
-      ContactLabelManagerUI.b(this.yCF, (int)paramMotionEvent.getRawY());
-    }
-    AppMethodBeat.o(26218);
+    AppMethodBeat.i(26217);
+    this.EdX.finish();
+    AppMethodBeat.o(26217);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.label.ui.ContactLabelManagerUI.11
  * JD-Core Version:    0.7.0.1
  */

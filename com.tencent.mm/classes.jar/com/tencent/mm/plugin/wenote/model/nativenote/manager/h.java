@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wenote.model.nativenote.manager;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.wenote.model.a.q;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -11,11 +11,11 @@ import com.tencent.mm.storage.ar.a;
 
 public class h
 {
-  private static volatile h JIn = null;
-  private q JIo = null;
+  private static volatile h QHF = null;
+  private q QHG = null;
   
   /* Error */
-  private static q cA(byte[] paramArrayOfByte)
+  private static q cR(byte[] paramArrayOfByte)
   {
     // Byte code:
     //   0: sipush 30476
@@ -367,16 +367,16 @@ public class h
     //   65	70	246	java/lang/Exception
   }
   
-  public static h gjO()
+  public static h hdC()
   {
     AppMethodBeat.i(30473);
-    if (JIn == null) {}
+    if (QHF == null) {}
     try
     {
-      if (JIn == null) {
-        JIn = new h();
+      if (QHF == null) {
+        QHF = new h();
       }
-      h localh = JIn;
+      h localh = QHF;
       AppMethodBeat.o(30473);
       return localh;
     }
@@ -389,8 +389,8 @@ public class h
   public final void c(q paramq)
   {
     AppMethodBeat.i(30475);
-    this.JIo = paramq;
-    byte[] arrayOfByte = d(this.JIo);
+    this.QHG = paramq;
+    byte[] arrayOfByte = d(this.QHG);
     String str = "";
     paramq = str;
     if (arrayOfByte != null)
@@ -400,29 +400,29 @@ public class h
         paramq = Util.encodeHexString(arrayOfByte);
       }
     }
-    if (this.JIo != null) {}
-    for (str = this.JIo.gjG();; str = "null")
+    if (this.QHG != null) {}
+    for (str = this.QHG.hdu();; str = "null")
     {
       Log.i("WNNoteKeepTopManager", "setCurrentTopItem item: %s", new Object[] { str });
       Log.i("WNNoteKeepTopManager", "setCurrentTopItem itemStr: %s", new Object[] { paramq });
-      bg.aVF();
-      c.azQ().set(ar.a.Oci, Util.nullAsNil(paramq));
+      bh.beI();
+      c.aHp().set(ar.a.Vql, Util.nullAsNil(paramq));
       AppMethodBeat.o(30475);
       return;
     }
   }
   
-  public final q gjP()
+  public final q hdD()
   {
     AppMethodBeat.i(30474);
-    if (this.JIo != null)
+    if (this.QHG != null)
     {
-      localObject = this.JIo;
+      localObject = this.QHG;
       AppMethodBeat.o(30474);
       return localObject;
     }
-    bg.aVF();
-    Object localObject = (String)c.azQ().get(ar.a.Oci, "");
+    bh.beI();
+    Object localObject = (String)c.aHp().get(ar.a.Vql, "");
     Log.d("WNNoteKeepTopManager", "getCurrentTopItem itemStr: %s", new Object[] { localObject });
     if (Util.isNullOrNil((String)localObject))
     {
@@ -435,12 +435,12 @@ public class h
       AppMethodBeat.o(30474);
       return null;
     }
-    this.JIo = cA((byte[])localObject);
-    if (this.JIo != null) {}
-    for (localObject = this.JIo.gjG();; localObject = "null")
+    this.QHG = cR((byte[])localObject);
+    if (this.QHG != null) {}
+    for (localObject = this.QHG.hdu();; localObject = "null")
     {
       Log.d("WNNoteKeepTopManager", "getCurrentTopItem item: %s", new Object[] { localObject });
-      localObject = this.JIo;
+      localObject = this.QHG;
       AppMethodBeat.o(30474);
       return localObject;
     }
@@ -448,7 +448,7 @@ public class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.manager.h
  * JD-Core Version:    0.7.0.1
  */

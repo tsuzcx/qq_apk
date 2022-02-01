@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.translate.a;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bp;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.eks;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.model.bq;
+import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.eux;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
@@ -18,20 +19,20 @@ import java.util.Set;
 public final class c
   implements a
 {
-  public final d[] Gtl;
-  public Queue<c> Gtm;
-  public HashMap<String, Integer> Gtn;
-  public int gVP;
+  public final d[] NfX;
+  public Queue<c> NfY;
+  public HashMap<String, Integer> NfZ;
+  public int jGL;
   public ArrayList<a> listeners;
   
   private c()
   {
     AppMethodBeat.i(29744);
-    this.gVP = 0;
+    this.jGL = 0;
     this.listeners = new ArrayList(1);
-    this.Gtm = new LinkedList();
-    this.Gtn = new HashMap();
-    this.Gtl = new d[1];
+    this.NfY = new LinkedList();
+    this.NfZ = new HashMap();
+    this.NfX = new d[1];
     AppMethodBeat.o(29744);
   }
   
@@ -45,10 +46,10 @@ public final class c
     AppMethodBeat.o(29745);
   }
   
-  public final void a(int paramInt, SparseArray<c> paramSparseArray, LinkedList<eks> paramLinkedList)
+  public final void a(int paramInt, SparseArray<c> paramSparseArray, LinkedList<eux> paramLinkedList)
   {
     AppMethodBeat.i(29748);
-    this.gVP -= 1;
+    this.jGL -= 1;
     Object localObject;
     int i;
     if ((paramLinkedList == null) || (paramSparseArray.size() != paramLinkedList.size()))
@@ -58,7 +59,7 @@ public final class c
       i = 0;
       while (i < paramSparseArray.size())
       {
-        ((HashMap)localObject).put(((c)paramSparseArray.valueAt(i)).id, Integer.valueOf(((c)paramSparseArray.valueAt(i)).Gtp));
+        ((HashMap)localObject).put(((c)paramSparseArray.valueAt(i)).id, Integer.valueOf(((c)paramSparseArray.valueAt(i)).Ngb));
         i += 1;
       }
     }
@@ -67,36 +68,36 @@ public final class c
       if (paramLinkedList != null)
       {
         Iterator localIterator = paramLinkedList.iterator();
-        eks localeks;
+        eux localeux;
         c localc;
         for (;;)
         {
           if (!localIterator.hasNext()) {
-            break label408;
+            break label411;
           }
-          localeks = (eks)localIterator.next();
-          localc = (c)paramSparseArray.get(localeks.NjV);
+          localeux = (eux)localIterator.next();
+          localc = (c)paramSparseArray.get(localeux.UwE);
           if (localc != null) {
             break;
           }
-          Log.w("MicroMsg.TranslateServiceManager", "[onTranslateEnd] message is null! %s %s %s", new Object[] { Integer.valueOf(localeks.NjV), Integer.valueOf(localeks.Ret), Util.secPrint(localeks.NjY) });
+          Log.w("MicroMsg.TranslateServiceManager", "[onTranslateEnd] message is null! %s %s %s", new Object[] { Integer.valueOf(localeux.UwE), Integer.valueOf(localeux.CqV), Util.secPrint(localeux.UwH) });
         }
-        String str = localeks.NjY;
+        String str = localeux.UwH;
         paramLinkedList = str;
         if (localc.type == 1)
         {
-          paramLinkedList = bp.aP(str, localc.Gtq);
-          localc.eeq = bp.aP(localc.eeq, localc.Gtq);
+          paramLinkedList = bq.aT(str, localc.Ngc);
+          localc.fYF = bq.aT(localc.fYF, localc.Ngc);
         }
-        localc.eez = paramLinkedList;
-        localc.ret = localeks.Ret;
-        localc.ecu = localeks.Myy;
-        if ((localeks.LRE != null) && (localeks.LRE.getBuffer() != null)) {}
-        for (paramLinkedList = localeks.LRE.getBufferToBytes();; paramLinkedList = null)
+        localc.fYO = paramLinkedList;
+        localc.ret = localeux.CqV;
+        localc.fWy = localeux.TJZ;
+        if ((localeux.Taj != null) && (localeux.Taj.Tkb != null)) {}
+        for (paramLinkedList = localeux.Taj.Tkb.UH;; paramLinkedList = null)
         {
-          localc.fRc = paramLinkedList;
-          localc.eeA = localeks.NjZ;
-          this.Gtn.remove(localc.id);
+          localc.ils = paramLinkedList;
+          localc.fYP = localeux.UwI;
+          this.NfZ.remove(localc.id);
           if (localObject == null) {
             break;
           }
@@ -109,57 +110,57 @@ public final class c
       {
         paramLinkedList = (c)paramSparseArray.valueAt(i);
         if (paramLinkedList.type == 1) {
-          paramLinkedList.eeq = bp.aP(paramLinkedList.eeq, paramLinkedList.Gtq);
+          paramLinkedList.fYF = bq.aT(paramLinkedList.fYF, paramLinkedList.Ngc);
         }
         i += 1;
       }
-      label408:
+      label411:
       if ((localObject != null) && (((HashMap)localObject).size() > 0))
       {
         paramLinkedList = ((HashMap)localObject).entrySet().iterator();
         while (paramLinkedList.hasNext())
         {
           localObject = (Map.Entry)paramLinkedList.next();
-          this.Gtn.remove(((Map.Entry)localObject).getKey());
+          this.NfZ.remove(((Map.Entry)localObject).getKey());
           Log.d("MicroMsg.TranslateServiceManager", "we found missing translate, msgId : %s, clientId : %s", new Object[] { ((Map.Entry)localObject).getKey(), ((Map.Entry)localObject).getValue() });
         }
       }
       b(paramInt, paramSparseArray);
-      fAo();
+      gsp();
       AppMethodBeat.o(29748);
       return;
       localObject = null;
     }
   }
   
-  public final boolean aTM(String paramString)
+  public final boolean bfk(String paramString)
   {
     AppMethodBeat.i(29747);
-    boolean bool = this.Gtn.containsKey(paramString);
+    boolean bool = this.NfZ.containsKey(paramString);
     AppMethodBeat.o(29747);
     return bool;
   }
   
-  public final void fAo()
+  public final void gsp()
   {
     int i = 0;
     AppMethodBeat.i(29746);
-    Log.d("MicroMsg.TranslateServiceManager", "current waitings : %s", new Object[] { Integer.valueOf(this.Gtm.size()) });
-    if (this.Gtm.size() == 0)
+    Log.d("MicroMsg.TranslateServiceManager", "current waitings : %s", new Object[] { Integer.valueOf(this.NfY.size()) });
+    if (this.NfY.size() == 0)
     {
       AppMethodBeat.o(29746);
       return;
     }
-    if (this.gVP <= this.Gtl.length) {
-      while (i < this.Gtl.length)
+    if (this.jGL <= this.NfX.length) {
+      while (i < this.NfX.length)
       {
-        if (this.Gtl[i] == null)
+        if (this.NfX[i] == null)
         {
-          this.Gtl[i] = new d(i, this);
-          this.Gtl[i].init();
+          this.NfX[i] = new d(i, this);
+          this.NfX[i].init();
         }
-        if ((!this.Gtl[i].Gtt) && (this.Gtl[i].e(this.Gtm))) {
-          this.gVP += 1;
+        if ((!this.NfX[i].Ngf) && (this.NfX[i].e(this.NfY))) {
+          this.jGL += 1;
         }
         i += 1;
       }
@@ -174,27 +175,27 @@ public final class c
   
   public static final class b
   {
-    public static final c Gto;
+    public static final c Nga;
     
     static
     {
       AppMethodBeat.i(29742);
-      Gto = new c((byte)0);
+      Nga = new c((byte)0);
       AppMethodBeat.o(29742);
     }
   }
   
   public static final class c
   {
-    private static int Gtr = 0;
-    public int Gtp;
-    public String Gtq;
-    public String ecu;
-    public int eeA;
-    public String eeq;
-    public String eez;
-    public byte[] fRc;
+    private static int Ngd = 0;
+    public int Ngb;
+    public String Ngc;
+    public String fWy;
+    public String fYF;
+    public String fYO;
+    public int fYP;
     public String id;
+    public byte[] ils;
     public int ret;
     public String source;
     public int type;
@@ -202,27 +203,27 @@ public final class c
     public c(String paramString1, String paramString2, int paramInt, String paramString3, byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(29743);
-      this.eeq = paramString1;
+      this.fYF = paramString1;
       this.id = paramString2;
       this.type = paramInt;
       this.source = paramString3;
-      this.fRc = paramArrayOfByte;
-      if (Gtr == 2147483647) {
-        Gtr = 0;
+      this.ils = paramArrayOfByte;
+      if (Ngd == 2147483647) {
+        Ngd = 0;
       }
-      int i = Gtr + 1;
-      Gtr = i;
-      this.Gtp = i;
+      int i = Ngd + 1;
+      Ngd = i;
+      this.Ngb = i;
       if (paramInt == 1)
       {
-        paramInt = bp.Kp(paramString1);
+        paramInt = bq.RI(paramString1);
         if (paramInt != -1)
         {
           paramString2 = paramString1.substring(0, paramInt).trim();
           if ((paramString2 != null) && (paramString2.length() > 0))
           {
-            this.Gtq = paramString2;
-            this.eeq = paramString1.substring(paramInt + 1).trim();
+            this.Ngc = paramString2;
+            this.fYF = paramString1.substring(paramInt + 1).trim();
           }
         }
       }
@@ -232,7 +233,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.translate.a.c
  * JD-Core Version:    0.7.0.1
  */

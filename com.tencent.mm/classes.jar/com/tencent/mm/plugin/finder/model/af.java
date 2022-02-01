@@ -1,34 +1,22 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.api.g;
-import com.tencent.mm.view.recyclerview.a;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/FinderFollowData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "contact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "(Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;)V", "getContact", "()Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "getItemId", "", "getItemType", "", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderFeedVideo;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "hasShowLongVideoGuide", "", "getHasShowLongVideoGuide", "()Z", "setHasShowLongVideoGuide", "(Z)V", "isShowFullscreen", "setShowFullscreen", "videoHasCompleted", "getVideoHasCompleted", "setVideoHasCompleted", "plugin-finder_release"})
 public final class af
-  implements a
+  extends BaseFinderFeed
 {
-  public final g contact;
+  public boolean zAG;
+  public boolean zAH;
+  public boolean zAI;
   
-  public af(g paramg)
+  public af(FinderItem paramFinderItem)
   {
-    AppMethodBeat.i(248754);
-    this.contact = paramg;
-    AppMethodBeat.o(248754);
-  }
-  
-  public final int cxn()
-  {
-    AppMethodBeat.i(248753);
-    int i = af.class.getName().hashCode();
-    AppMethodBeat.o(248753);
-    return i;
-  }
-  
-  public final long lT()
-  {
-    return 0L;
+    super(paramFinderItem);
+    AppMethodBeat.i(166389);
+    AppMethodBeat.o(166389);
   }
 }
 

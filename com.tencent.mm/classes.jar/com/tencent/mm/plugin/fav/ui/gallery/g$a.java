@@ -1,38 +1,39 @@
 package com.tencent.mm.plugin.fav.ui.gallery;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.h;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.h;
+import com.tencent.mm.plugin.fav.ui.o;
 
 public abstract interface g$a
   extends a<g.b>
 {
-  public abstract void G(boolean paramBoolean, int paramInt);
+  public abstract void K(boolean paramBoolean, int paramInt);
   
-  public abstract void Ig(int paramInt);
+  public abstract void LQ(int paramInt);
   
   public abstract void a(f.b paramb);
   
-  public abstract boolean cWG();
+  public abstract RecyclerView.a c(o paramo);
   
-  public abstract void cWH();
+  public abstract boolean dlO();
   
-  public abstract void cWI();
+  public abstract void dlP();
   
-  public abstract <T extends RecyclerView.a> T cWP();
+  public abstract void dlQ();
   
-  public abstract RecyclerView.a cyF();
+  public abstract <T extends RecyclerView.a> T dlX();
   
-  public abstract <T extends RecyclerView.LayoutManager> T eS(Context paramContext);
+  public abstract <T extends RecyclerView.LayoutManager> T eW(Context paramContext);
   
-  public abstract RecyclerView.h fi(Context paramContext);
+  public abstract RecyclerView.h fn(Context paramContext);
   
   public abstract void onResume();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.gallery.g.a
  * JD-Core Version:    0.7.0.1
  */

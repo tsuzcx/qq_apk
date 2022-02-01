@@ -11,19 +11,20 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.e;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 
 public class TabIconView
   extends ImageView
 {
-  private int OLA = 0;
-  private Bitmap OLu;
-  private Bitmap OLv;
-  private Bitmap OLw;
-  private Rect OLx;
-  private Rect OLy;
-  private Rect OLz;
-  private Paint bBJ;
+  private Bitmap WeT;
+  private Bitmap WeU;
+  private Bitmap WeV;
+  private Rect WeW;
+  private Rect WeX;
+  private Rect WeY;
+  private int WeZ = 0;
+  private Paint bll;
   private Context mContext;
   private Paint paint;
   private float scale = 1.166667F;
@@ -46,22 +47,22 @@ public class TabIconView
     if (paramBoolean) {
       this.scale *= 1.2F;
     }
-    this.OLu = BitmapUtil.getBitmapNative(paramInt1, this.scale);
-    this.OLv = BitmapUtil.getBitmapNative(paramInt3, this.scale);
-    this.OLw = BitmapUtil.getBitmapNative(paramInt2, this.scale);
-    if (this.OLu != null) {
-      this.OLx = new Rect(0, 0, this.OLu.getWidth(), this.OLu.getHeight());
+    this.WeT = BitmapUtil.getBitmapNative(paramInt1, this.scale);
+    this.WeU = BitmapUtil.getBitmapNative(paramInt3, this.scale);
+    this.WeV = BitmapUtil.getBitmapNative(paramInt2, this.scale);
+    if (this.WeT != null) {
+      this.WeW = new Rect(0, 0, this.WeT.getWidth(), this.WeT.getHeight());
     }
-    if (this.OLv != null) {
-      this.OLy = new Rect(0, 0, this.OLv.getWidth(), this.OLv.getHeight());
+    if (this.WeU != null) {
+      this.WeX = new Rect(0, 0, this.WeU.getWidth(), this.WeU.getHeight());
     }
-    if (this.OLw != null) {
-      this.OLz = new Rect(0, 0, this.OLw.getWidth(), this.OLw.getHeight());
+    if (this.WeV != null) {
+      this.WeY = new Rect(0, 0, this.WeV.getWidth(), this.WeV.getHeight());
     }
     this.paint = new Paint(1);
-    this.bBJ = new Paint(1);
-    this.bBJ.setColorFilter(new PorterDuffColorFilter(this.mContext.getResources().getColor(2131099746), PorterDuff.Mode.SRC_ATOP));
-    this.paint.setColorFilter(new PorterDuffColorFilter(this.mContext.getResources().getColor(2131101414), PorterDuff.Mode.SRC_ATOP));
+    this.bll = new Paint(1);
+    this.bll.setColorFilter(new PorterDuffColorFilter(this.mContext.getResources().getColor(R.e.FG_0), PorterDuff.Mode.SRC_ATOP));
+    this.paint.setColorFilter(new PorterDuffColorFilter(this.mContext.getResources().getColor(R.e.wechat_green), PorterDuff.Mode.SRC_ATOP));
     AppMethodBeat.o(33778);
   }
   
@@ -74,33 +75,33 @@ public class TabIconView
       AppMethodBeat.o(33780);
       return;
     }
-    if (this.OLA < 128)
+    if (this.WeZ < 128)
     {
-      this.bBJ.setAlpha(255 - this.OLA);
-      paramCanvas.drawBitmap(this.OLv, null, this.OLy, this.bBJ);
-      this.paint.setAlpha(this.OLA);
-      paramCanvas.drawBitmap(this.OLw, null, this.OLz, this.paint);
+      this.bll.setAlpha(255 - this.WeZ);
+      paramCanvas.drawBitmap(this.WeU, null, this.WeX, this.bll);
+      this.paint.setAlpha(this.WeZ);
+      paramCanvas.drawBitmap(this.WeV, null, this.WeY, this.paint);
       AppMethodBeat.o(33780);
       return;
     }
-    this.paint.setAlpha(255 - this.OLA);
-    paramCanvas.drawBitmap(this.OLw, null, this.OLz, this.paint);
-    this.paint.setAlpha(this.OLA);
-    paramCanvas.drawBitmap(this.OLu, null, this.OLx, this.paint);
+    this.paint.setAlpha(255 - this.WeZ);
+    paramCanvas.drawBitmap(this.WeV, null, this.WeY, this.paint);
+    this.paint.setAlpha(this.WeZ);
+    paramCanvas.drawBitmap(this.WeT, null, this.WeW, this.paint);
     AppMethodBeat.o(33780);
   }
   
   public void setFocusAlpha(int paramInt)
   {
     AppMethodBeat.i(33779);
-    this.OLA = paramInt;
+    this.WeZ = paramInt;
     invalidate();
     AppMethodBeat.o(33779);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.TabIconView
  * JD-Core Version:    0.7.0.1
  */

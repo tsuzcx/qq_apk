@@ -1,42 +1,24 @@
 package com.tencent.mm.plugin.eggspring.ui;
 
-import com.tencent.mm.t.a.j;
+import com.tencent.mm.t.a.n;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"isCoupon", "", "Lcom/tencent/mm/eggspring/model/Material;", "isGoods", "isGreeting", "isMoney", "isRedPackage", "plugin-eggspring_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"isCoupon", "", "Lcom/tencent/mm/eggspring/model/Material;", "isGoods", "isGreeting", "isMoney", "isRedPackage", "plugin-eggspring_release"})
 public final class a
 {
-  public static final boolean a(j paramj)
+  public static final boolean a(n paramn)
   {
-    if (paramj == null) {}
-    while ((paramj.gTr != 2) && (paramj.gTr != 1)) {
+    if (paramn == null) {}
+    while ((paramn.jDT != 2) && (paramn.jDT != 1)) {
       return false;
     }
     return true;
   }
   
-  public static final boolean b(j paramj)
+  public static final boolean b(n paramn)
   {
-    if (paramj == null) {}
-    while (paramj.gTr != 6) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static final boolean c(j paramj)
-  {
-    if (paramj == null) {}
-    while (paramj.gTr != 4) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static final boolean d(j paramj)
-  {
-    if (paramj == null) {}
-    while (paramj.gTr != 3) {
+    if (paramn == null) {}
+    while (paramn.jDT != 6) {
       return false;
     }
     return true;
@@ -44,7 +26,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.eggspring.ui.a
  * JD-Core Version:    0.7.0.1
  */

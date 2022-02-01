@@ -2,14 +2,17 @@ package com.tencent.mm.ui.contact.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.selectcontact.a.c;
+import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.storage.bv;
 
 public final class b
-  extends f
+  extends g
 {
-  private boolean Qaf;
+  private boolean Xxx;
   public String nickName;
   public int resId = 0;
   
@@ -23,33 +26,33 @@ public final class b
     AppMethodBeat.i(102933);
     if ((this.resId != 0) && (this.nickName != null))
     {
-      this.Qay = this.resId;
-      this.Qax = this.nickName;
+      this.XxV = this.resId;
+      this.XxU = this.nickName;
       AppMethodBeat.o(102933);
       return;
     }
     parama = this.contact;
-    if (!this.Qaf)
+    if (!this.Xxx)
     {
-      g.aAi();
-      parama = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(this.username);
+      h.aHH();
+      parama = ((n)h.ae(n.class)).bbL().RG(this.username);
       this.contact = parama;
-      this.Qaf = true;
+      this.Xxx = true;
     }
     if (parama == null)
     {
-      this.jVL = "";
+      this.mMY = "";
       AppMethodBeat.o(102933);
       return;
     }
-    this.jVL = com.tencent.mm.pluginsdk.ui.span.l.e(paramContext, ((com.tencent.mm.plugin.messenger.a.b)g.af(com.tencent.mm.plugin.messenger.a.b.class)).b(parama), com.tencent.mm.cb.a.aG(paramContext, 2131165535));
+    this.mMY = l.d(paramContext, ((com.tencent.mm.plugin.messenger.a.b)h.ae(com.tencent.mm.plugin.messenger.a.b.class)).b(parama), com.tencent.mm.ci.a.aY(paramContext, a.c.NormalTextSize));
     this.username = parama.field_username;
     AppMethodBeat.o(102933);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.a.b
  * JD-Core Version:    0.7.0.1
  */

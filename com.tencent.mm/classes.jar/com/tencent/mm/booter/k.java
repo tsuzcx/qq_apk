@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.i;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.n.f;
 import com.tencent.mm.n.h;
@@ -20,15 +20,15 @@ public final class k
   public static void run()
   {
     AppMethodBeat.i(19890);
-    int i = h.aqJ().getInt("EnableForgroundService", 0);
-    bg.aVF();
-    int j = i.ch(c.getUin(), 101);
+    int i = h.axc().getInt("EnableForgroundService", 0);
+    bh.beI();
+    int j = i.cA(c.getUin(), 101);
     if ((CrashReportFactory.hasDebuger()) || ((i > 0) && (j >= 0) && (j <= i))) {}
     for (boolean bool2 = true;; bool2 = false)
     {
       boolean bool1 = bool2;
       if (!bool2) {
-        bool1 = d.KyR;
+        bool1 = d.RAG;
       }
       bool2 = bool1;
       if (!bool1) {
@@ -38,7 +38,7 @@ public final class k
         bool2 = false;
       }
       MMApplicationContext.getContext().getSharedPreferences("system_config_prefs", 0).edit().putBoolean("set_service", bool2).commit();
-      Log.i("MicroMsg.PostTaskSetPushForegroundService", "Set service, userHash:%d, prob:%d, enabled: %b  isalpha:%b channel:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool2), Boolean.valueOf(d.KyR), Integer.valueOf(ChannelUtil.channelId) });
+      Log.i("MicroMsg.PostTaskSetPushForegroundService", "Set service, userHash:%d, prob:%d, enabled: %b  isalpha:%b channel:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool2), Boolean.valueOf(d.RAG), Integer.valueOf(ChannelUtil.channelId) });
       AppMethodBeat.o(19890);
       return;
     }

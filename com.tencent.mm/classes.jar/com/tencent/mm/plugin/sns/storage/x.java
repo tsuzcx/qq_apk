@@ -9,45 +9,45 @@ import com.tencent.mm.storagebase.h;
 public final class x
   extends MAutoStorage<w>
 {
-  public static int EmU;
+  public static int KAd;
   public static final String[] SQL_CREATE;
-  public static int STATE_DEFAULT;
-  public h iFy;
+  public static int zci;
+  public h lvy;
   
   static
   {
-    AppMethodBeat.i(203224);
-    STATE_DEFAULT = 0;
-    EmU = 1;
+    AppMethodBeat.i(196048);
+    zci = 0;
+    KAd = 1;
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(w.info, "SnsWsFoldGroup") };
-    AppMethodBeat.o(203224);
+    AppMethodBeat.o(196048);
   }
   
   public x(h paramh)
   {
     super(paramh, s.info, "SnsWsFoldGroup", null);
-    this.iFy = paramh;
+    this.lvy = paramh;
   }
   
   public final boolean a(w paramw)
   {
-    AppMethodBeat.i(203223);
-    if (paramw.field_size >= ah.DKg) {
-      paramw.field_state = EmU;
+    AppMethodBeat.i(196046);
+    if (paramw.field_size >= ah.JXi) {
+      paramw.field_state = KAd;
     }
     paramw = paramw.convertTo();
-    if (this.iFy.replace("SnsWsFoldGroup", "bottom", paramw) > 0L) {}
+    if (this.lvy.replace("SnsWsFoldGroup", "bottom", paramw) > 0L) {}
     for (boolean bool = true;; bool = false)
     {
       Log.d("MicroMsg.SnsWsFoldGroupStorage", "SnsWsFoldGroup replace result ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(203223);
+      AppMethodBeat.o(196046);
       return bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.x
  * JD-Core Version:    0.7.0.1
  */

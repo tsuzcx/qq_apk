@@ -5,17 +5,17 @@ import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
 final class KidsWatchRegMobileVerifyUI$g
   implements DialogInterface.OnCancelListener
 {
-  public static final g yBF;
+  public static final g EcV;
   
   static
   {
-    AppMethodBeat.i(256343);
-    yBF = new g();
-    AppMethodBeat.o(256343);
+    AppMethodBeat.i(252051);
+    EcV = new g();
+    AppMethodBeat.o(252051);
   }
   
   public final void onCancel(DialogInterface paramDialogInterface) {}

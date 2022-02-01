@@ -1,256 +1,217 @@
 package com.tencent.mm.plugin.appbrand.widget.dialog;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnDismissListener;
-import android.media.AudioManager;
+import android.content.DialogInterface.OnShowListener;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.RatingBar;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
-import android.widget.Toast;
+import com.tencent.luggage.l.a.d;
+import com.tencent.luggage.l.a.e;
+import com.tencent.luggage.l.a.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.protocal.protobuf.ajt;
-import com.tencent.mm.protocal.protobuf.cxp;
-import com.tencent.mm.protocal.protobuf.eey;
-import com.tencent.mm.protocal.protobuf.eez;
-import com.tencent.mm.protocal.protobuf.emo;
-import com.tencent.mm.protocal.protobuf.emp;
-import com.tencent.mm.protocal.protobuf.fdj;
-import com.tencent.mm.protocal.protobuf.ffc;
-import com.tencent.mm.protocal.protobuf.ffd;
-import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.LinkedList;
+import com.tencent.mm.ui.widget.a.j;
+import com.tencent.mm.ui.widget.loading.MMProgressLoading;
 
 public final class f
+  extends j
+  implements j.a
 {
-  public boolean GfH;
-  int GhC;
-  public RatingBar HZZ;
-  public TextView Iaa;
-  public LinearLayout Iab;
-  public LinearLayout Iac;
-  boolean Iad;
-  public String appId;
-  public String dCx;
-  public Dialog dialog;
-  public com.tencent.mm.plugin.appbrand.report.b lrj;
-  public int mEO;
-  public TextView oqv;
-  public int scene;
-  public String sessionId;
-  public String userName;
+  private boolean bxO;
+  private boolean bxP;
+  private View contentView;
+  private l msa;
+  private DialogInterface.OnCancelListener nbU;
+  private DialogInterface.OnShowListener rrR;
+  private DialogInterface.OnDismissListener rrn;
+  private TextView rus;
+  private MMProgressLoading rut;
   
-  public f(c paramc)
+  public f(Context paramContext)
   {
-    AppMethodBeat.i(49886);
-    this.GfH = false;
-    this.GhC = 0;
-    this.mEO = -1;
-    this.Iad = false;
-    paramc = (com.tencent.mm.plugin.appbrand.game.b)paramc.S(com.tencent.mm.plugin.appbrand.game.b.class);
-    if (paramc != null) {
-      this.lrj = paramc.bCV();
-    }
-    AppMethodBeat.o(49886);
-  }
-  
-  public static Dialog z(Context paramContext, boolean paramBoolean)
-  {
-    AppMethodBeat.i(49887);
-    paramContext = new com.tencent.mm.plugin.crashfix.b.a(paramContext, 2131820559);
-    paramContext.setCancelable(true);
-    paramContext.setCanceledOnTouchOutside(paramBoolean);
-    Window localWindow = paramContext.getWindow();
-    if (localWindow != null)
+    super(paramContext, a.h.mmalertdialog);
+    AppMethodBeat.i(147741);
+    this.bxO = true;
+    try
     {
-      localWindow.getDecorView().setPadding(0, 0, 0, 0);
-      WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
-      localLayoutParams.gravity = 81;
-      localLayoutParams.height = -2;
-      localLayoutParams.width = -1;
-      localWindow.setAttributes(localLayoutParams);
-      localWindow.setWindowAnimations(2131820558);
-    }
-    AppMethodBeat.o(49887);
-    return paramContext;
-  }
-  
-  final void a(q paramq, boolean paramBoolean, cxp paramcxp, ffc paramffc)
-  {
-    AppMethodBeat.i(175092);
-    if (this.Iad)
-    {
-      AppMethodBeat.o(175092);
+      onCreate(null);
+      label23:
+      setContentView(a.e.wxa_progress_dialog);
+      AppMethodBeat.o(147741);
       return;
     }
-    this.Iad = true;
-    int i;
-    if (paramcxp == null)
+    catch (Exception paramContext)
     {
-      i = 0;
-      paramcxp = (AudioManager)paramq.mContext.getSystemService("audio");
-      if (paramcxp == null) {
-        break label387;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        j = paramcxp.getStreamVolume(3);
-        fdj localfdj = new fdj();
-        if (j != 0) {
-          break label393;
-        }
-        bool = true;
-        localfdj.NyU = bool;
-        paramcxp = com.tencent.mm.plugin.music.b.h.esI();
-        str1 = paramq.mAppId;
-        localfdj.NyV = paramcxp.AgW.contains(str1);
-        localfdj.NyW = (this.mEO / 1000);
-        if (!paramBoolean) {
-          break label399;
-        }
-        paramcxp = "true";
-        String str3 = paramffc.NAt;
-        if (j != 0) {
-          break label406;
-        }
-        str1 = "true";
-        if (!localfdj.NyV) {
-          break label414;
-        }
-        str2 = "true";
-        Log.i("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "submitGameEvaluateResult reject[%s] questionId[%s] optionId[%d] isMute[%s] isPlayMusic[%s] playSeconds[%d]", new Object[] { paramcxp, str3, Integer.valueOf(i), str1, str2, Integer.valueOf(localfdj.NyW) });
-        paramcxp = new ffd();
-        paramcxp.NAy = paramBoolean;
-        paramcxp.MCa = i;
-        paramcxp.NAt = paramffc.NAt;
-        paramffc = new eey();
-        paramffc.jfi = paramq.mAppId;
-        paramffc.MeL = this.lrj.nGb;
-        paramffc.MeK = this.lrj.nGc;
-        paramffc.MeM = localfdj;
-        paramffc.NeT = paramcxp;
-        paramq = new d.a();
-        paramq.funcId = 2772;
-        paramq.uri = "/cgi-bin/mmgame-bin/submitoriginalreview";
-        paramq.iLN = paramffc;
-        paramq.iLO = new eez();
-        IPCRunCgi.a(paramq.aXF(), new f.14(this));
-        AppMethodBeat.o(175092);
-        return;
-      }
-      catch (Exception paramcxp)
-      {
-        Log.e("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "currentVolume get error: %s", new Object[] { paramcxp.toString() });
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1237L, 6L, 1L, false);
-      }
-      i = paramcxp.MCa;
-      break;
-      label387:
-      int j = 0;
-      continue;
-      label393:
-      boolean bool = false;
-      continue;
-      label399:
-      paramcxp = "false";
-      continue;
-      label406:
-      String str1 = "false";
-      continue;
-      label414:
-      String str2 = "false";
+      break label23;
     }
   }
   
-  final void a(emo paramemo)
+  public final void a(l paraml)
   {
-    AppMethodBeat.i(49888);
-    d.a locala = new d.a();
-    locala.funcId = 2521;
-    locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/updateevaluate";
-    locala.iLN = paramemo;
-    locala.iLO = new emp();
-    IPCRunCgi.a(locala.aXF(), new f.5(this));
-    AppMethodBeat.o(49888);
+    AppMethodBeat.i(147742);
+    if (this.rrR != null) {
+      this.rrR.onShow(this);
+    }
+    this.msa = paraml;
+    AppMethodBeat.o(147742);
   }
   
-  final void akp(int paramInt)
+  public final boolean bsB()
   {
-    int j = 2131755451;
-    AppMethodBeat.i(49890);
-    int i = j;
-    switch (paramInt)
-    {
-    default: 
-      i = j;
-    }
-    for (;;)
-    {
-      this.Iaa.setText(i);
-      AppMethodBeat.o(49890);
-      return;
-      i = 2131755453;
-      continue;
-      i = 2131755452;
-      continue;
-      i = 2131755450;
-      continue;
-      i = 2131755449;
-    }
+    return false;
+  }
+  
+  public final boolean bsC()
+  {
+    return this.bxP;
   }
   
   public final void dismiss()
   {
-    AppMethodBeat.i(49892);
-    if (this.dialog != null)
+    AppMethodBeat.i(147747);
+    if (this.msa != null)
     {
-      this.dialog.dismiss();
-      this.dialog = null;
+      this.msa.b(this);
+      if (this.rrn != null) {
+        this.rrn.onDismiss(this);
+      }
     }
-    AppMethodBeat.o(49892);
+    AppMethodBeat.o(147747);
   }
   
-  public final void eI(int paramInt1, int paramInt2)
+  public final View getContentView()
   {
-    AppMethodBeat.i(49893);
-    if (Util.isNullOrNil(this.appId))
+    return this.contentView;
+  }
+  
+  public final int getPosition()
+  {
+    return 1;
+  }
+  
+  public final boolean isCancelable()
+  {
+    return this.bxO;
+  }
+  
+  public final void onCancel()
+  {
+    AppMethodBeat.i(147746);
+    if (this.nbU != null) {
+      this.nbU.onCancel(this);
+    }
+    AppMethodBeat.o(147746);
+  }
+  
+  public final void setCancelable(boolean paramBoolean)
+  {
+    AppMethodBeat.i(147750);
+    super.setCancelable(paramBoolean);
+    this.bxO = paramBoolean;
+    AppMethodBeat.o(147750);
+  }
+  
+  public final void setCanceledOnTouchOutside(boolean paramBoolean)
+  {
+    AppMethodBeat.i(147749);
+    super.setCanceledOnTouchOutside(paramBoolean);
+    this.bxP = paramBoolean;
+    AppMethodBeat.o(147749);
+  }
+  
+  public final void setContentView(int paramInt)
+  {
+    AppMethodBeat.i(147743);
+    setContentView(LayoutInflater.from(getContext()).inflate(paramInt, null));
+    AppMethodBeat.o(147743);
+  }
+  
+  public final void setContentView(View paramView)
+  {
+    AppMethodBeat.i(248476);
+    this.contentView = paramView;
+    this.rus = ((TextView)this.contentView.findViewById(a.d.wxa_progress_dialog_msg));
+    AppMethodBeat.o(248476);
+  }
+  
+  public final void setContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    AppMethodBeat.i(147744);
+    if (paramLayoutParams != null) {
+      paramView.setLayoutParams(paramLayoutParams);
+    }
+    setContentView(paramView);
+    AppMethodBeat.o(147744);
+  }
+  
+  public final void setMessage(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(248481);
+    this.rus.setText(paramCharSequence);
+    AppMethodBeat.o(248481);
+  }
+  
+  public final void setOnCancelListener(DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    AppMethodBeat.i(147751);
+    super.setOnCancelListener(paramOnCancelListener);
+    this.nbU = paramOnCancelListener;
+    AppMethodBeat.o(147751);
+  }
+  
+  public final void setOnDismissListener(DialogInterface.OnDismissListener paramOnDismissListener)
+  {
+    AppMethodBeat.i(147748);
+    super.setOnDismissListener(paramOnDismissListener);
+    this.rrn = paramOnDismissListener;
+    AppMethodBeat.o(147748);
+  }
+  
+  public final void setOnShowListener(DialogInterface.OnShowListener paramOnShowListener)
+  {
+    AppMethodBeat.i(147745);
+    super.setOnShowListener(paramOnShowListener);
+    this.rrR = paramOnShowListener;
+    AppMethodBeat.o(147745);
+  }
+  
+  public final void setProgress(final int paramInt)
+  {
+    AppMethodBeat.i(248483);
+    if (!MMHandlerThread.isMainThread())
     {
-      Log.e("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "operateReport, no app id");
-      AppMethodBeat.o(49893);
+      this.contentView.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(238646);
+          f.this.setProgress(paramInt);
+          AppMethodBeat.o(238646);
+        }
+      });
+      AppMethodBeat.o(248483);
       return;
     }
-    Log.i("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "operateReport, appId:%s, eventId:%s, session:%s, score:%s, scene:%s, result:%s, path:%s", new Object[] { this.appId, Integer.valueOf(paramInt1), this.sessionId, Integer.valueOf(this.GhC), Integer.valueOf(this.scene), Integer.valueOf(paramInt2), this.dCx });
-    com.tencent.mm.plugin.report.service.h.CyF.a(16176, new Object[] { this.appId, Integer.valueOf(paramInt1), Long.valueOf(Util.nowSecond()), Integer.valueOf(this.GhC), this.sessionId, this.dCx, Integer.valueOf(this.scene), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(49893);
+    if (this.rut == null)
+    {
+      this.rut = ((MMProgressLoading)this.contentView.findViewById(a.d.wxa_progress_dialog_progress_loading));
+      this.rut.setVisibility(0);
+      this.contentView.findViewById(a.d.wxa_progress_dialog_indeterminate_loading).setVisibility(8);
+    }
+    this.rut.setProgress(paramInt);
+    AppMethodBeat.o(248483);
   }
   
-  public final void show()
-  {
-    AppMethodBeat.i(49891);
-    if (this.dialog != null) {
-      this.dialog.show();
-    }
-    AppMethodBeat.o(49891);
-  }
+  public final void show() {}
+  
+  public final void xu(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.f
  * JD-Core Version:    0.7.0.1
  */

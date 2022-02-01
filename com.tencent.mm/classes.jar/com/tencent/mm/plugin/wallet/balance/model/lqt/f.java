@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.protocal.protobuf.abb;
-import com.tencent.mm.protocal.protobuf.abc;
+import com.tencent.mm.an.c;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.protocal.protobuf.abi;
+import com.tencent.mm.protocal.protobuf.abj;
 
 public final class f
-  extends c<abc>
+  extends c<abj>
 {
   public f(String paramString, int paramInt)
   {
     AppMethodBeat.i(68403);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new abb();
-    ((d.a)localObject).iLO = new abc();
+    ((d.a)localObject).lBU = new abi();
+    ((d.a)localObject).lBV = new abj();
     ((d.a)localObject).funcId = 1386;
     ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/closefundaccount";
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    localObject = ((d.a)localObject).aXF();
-    abb localabb = (abb)((d)localObject).iLK.iLR;
-    localabb.Lmm = paramString;
-    localabb.yba = paramInt;
-    localabb.HuS = ag.fNb();
+    localObject = ((d.a)localObject).bgN();
+    abi localabi = (abi)d.b.b(((d)localObject).lBR);
+    localabi.SnA = paramString;
+    localabi.DgI = paramInt;
+    localabi.OmF = ah.gFF();
     c((d)localObject);
     AppMethodBeat.o(68403);
   }

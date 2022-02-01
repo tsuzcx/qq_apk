@@ -11,68 +11,68 @@ import com.tencent.mm.view.recyclerview.f;
 import java.util.ArrayList;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderFavMegaVideoUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "feedLoader", "Lcom/tencent/mm/plugin/finder/megavideo/loader/FinderFavMegaVideoLoader;", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/megavideo/loader/FinderFavMegaVideoLoader;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "initViewCallback", "", "loadInitData", "loadMoreData", "refreshRV", "data", "Landroid/content/Intent;", "requestRefresh", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderFavMegaVideoUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "feedLoader", "Lcom/tencent/mm/plugin/finder/megavideo/loader/FinderFavMegaVideoLoader;", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/megavideo/loader/FinderFavMegaVideoLoader;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "initViewCallback", "", "loadInitData", "loadMoreData", "refreshRV", "data", "Landroid/content/Intent;", "requestRefresh", "plugin-finder_release"})
 public final class b$a
   extends a.a
 {
   public b$a(MMActivity paramMMActivity, FinderFavMegaVideoLoader paramFinderFavMegaVideoLoader)
   {
     super(paramMMActivity, (BaseMegaVideoLoader)paramFinderFavMegaVideoLoader);
-    AppMethodBeat.i(248489);
-    AppMethodBeat.o(248489);
+    AppMethodBeat.i(291184);
+    AppMethodBeat.o(291184);
   }
   
-  public final void boE()
+  public final void byN()
   {
-    AppMethodBeat.i(248485);
-    this.uLF.requestLoadMore();
-    AppMethodBeat.o(248485);
+    AppMethodBeat.i(291179);
+    this.zxg.requestLoadMore();
+    AppMethodBeat.o(291179);
   }
   
-  public final void dcb()
+  public final void dsF()
   {
-    AppMethodBeat.i(248488);
-    a.b localb = this.uLE;
+    AppMethodBeat.i(291181);
+    BaseFeedLoader.requestInit$default(this.zxg, false, 1, null);
+    AppMethodBeat.o(291181);
+  }
+  
+  public final void dsr()
+  {
+    AppMethodBeat.i(291183);
+    a.b localb = this.zxf;
     if (localb != null)
     {
-      localb.ab((ArrayList)this.uLF.getDataListJustForAdapter());
-      AppMethodBeat.o(248488);
+      localb.ab((ArrayList)this.zxg.getDataListJustForAdapter());
+      AppMethodBeat.o(291183);
       return;
     }
-    AppMethodBeat.o(248488);
+    AppMethodBeat.o(291183);
   }
   
-  public final f dce()
+  public final f dsu()
   {
-    AppMethodBeat.i(248487);
+    AppMethodBeat.i(291182);
     f localf = (f)new a();
-    AppMethodBeat.o(248487);
+    AppMethodBeat.o(291182);
     return localf;
-  }
-  
-  public final void dcp()
-  {
-    AppMethodBeat.i(248486);
-    BaseFeedLoader.requestInit$default(this.uLF, false, 1, null);
-    AppMethodBeat.o(248486);
   }
   
   public final void requestRefresh()
   {
-    AppMethodBeat.i(248484);
-    this.uLF.requestRefresh();
-    AppMethodBeat.o(248484);
+    AppMethodBeat.i(291178);
+    this.zxg.requestRefresh();
+    AppMethodBeat.o(291178);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/megavideo/ui/FinderFavMegaVideoUIContract$Presenter$buildItemCoverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/megavideo/ui/FinderFavMegaVideoUIContract$Presenter$buildItemCoverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
   public static final class a
     implements f
   {
-    public final e<?> EC(int paramInt)
+    public final e<?> yx(int paramInt)
     {
-      AppMethodBeat.i(248483);
+      AppMethodBeat.i(282856);
       e locale = (e)new b();
-      AppMethodBeat.o(248483);
+      AppMethodBeat.o(282856);
       return locale;
     }
   }

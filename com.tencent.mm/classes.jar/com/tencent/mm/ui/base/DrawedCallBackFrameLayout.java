@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class DrawedCallBackFrameLayout
   extends FrameLayout
 {
-  private a OOc;
+  private a Whn;
   
   public DrawedCallBackFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,10 +23,10 @@ public class DrawedCallBackFrameLayout
     {
       super.dispatchDraw(paramCanvas);
       label10:
-      if (this.OOc != null)
+      if (this.Whn != null)
       {
-        this.OOc.dSa();
-        this.OOc = null;
+        this.Whn.euB();
+        this.Whn = null;
       }
       AppMethodBeat.o(141624);
       return;
@@ -46,17 +46,17 @@ public class DrawedCallBackFrameLayout
   
   public void setListener(a parama)
   {
-    this.OOc = parama;
+    this.Whn = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void dSa();
+    public abstract void euB();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.DrawedCallBackFrameLayout
  * JD-Core Version:    0.7.0.1
  */

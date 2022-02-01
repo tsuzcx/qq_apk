@@ -3,80 +3,85 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.i;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.brandservice.a.e;
-import com.tencent.mm.plugin.brandservice.a.e.a;
+import com.tencent.mm.plugin.brandservice.a.f.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.List;
+import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.n.n;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "WebPagePrefetchTask", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "WebPagePrefetchTask", "plugin-appbrand-integration_release"})
 public final class JsApiOnWebPageUrlExposed
-  extends d<f>
+  extends c<e>
 {
   public static final int CTRL_INDEX = 865;
   public static final String NAME = "private_onWebPageUrlExposed";
-  public static final a lAI;
+  public static final a ovZ;
   
   static
   {
-    AppMethodBeat.i(228294);
-    lAI = new a((byte)0);
-    AppMethodBeat.o(228294);
+    AppMethodBeat.i(277954);
+    ovZ = new a((byte)0);
+    AppMethodBeat.o(277954);
   }
   
-  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
+  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(228293);
+    AppMethodBeat.i(277953);
     Log.d("MicroMsg.JsApiOnWebPageUrlExposed", "invoke");
+    String str;
     if (paramJSONObject != null) {
-      paramJSONObject = paramJSONObject.optString("urlList");
+      str = paramJSONObject.optString("urlList");
     }
-    while (Util.isNullOrNil(paramJSONObject))
+    while (Util.isNullOrNil(str))
     {
       Log.i("MicroMsg.JsApiOnWebPageUrlExposed", "fail:urlList is null");
-      if (paramf != null)
+      if (parame != null)
       {
-        paramf.i(paramInt, Zf("fail:urlList is null"));
-        AppMethodBeat.o(228293);
+        parame.j(paramInt, agS("fail:urlList is null"));
+        AppMethodBeat.o(277953);
         return;
-        paramJSONObject = null;
+        str = null;
       }
       else
       {
-        AppMethodBeat.o(228293);
+        AppMethodBeat.o(277953);
         return;
       }
     }
-    paramf = new WebPagePrefetchTask((p)this, paramf, paramInt, paramJSONObject);
-    paramf.bDJ();
-    paramf.bjm();
-    AppMethodBeat.o(228293);
+    if (paramJSONObject != null) {}
+    for (int i = paramJSONObject.optInt("bizType");; i = 0)
+    {
+      new WebPagePrefetchTask((o)this, parame, paramInt, str, i).bsM();
+      AppMethodBeat.o(277953);
+      return;
+    }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$WebPagePrefetchTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/MainProcessTask;", "api", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "callbackId", "", "urlListStr", "", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;ILjava/lang/String;)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "errMsg", "jsApi", "success", "", "describeContents", "doOnWebPageUrlExposed", "", "parseFromParcel", "in", "runInClientProcess", "runInMainProcess", "writeToParcel", "flags", "CREATOR", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$WebPagePrefetchTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/MainProcessTask;", "api", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "callbackId", "", "urlListStr", "", "bizType", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;ILjava/lang/String;I)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "errMsg", "jsApi", "success", "", "describeContents", "doOnWebPageUrlExposed", "", "parseFromParcel", "in", "runInClientProcess", "runInMainProcess", "writeToParcel", "flags", "CREATOR", "plugin-appbrand-integration_release"})
   static final class WebPagePrefetchTask
     extends MainProcessTask
   {
     public static final a CREATOR;
     private String errMsg;
-    private String lAJ;
-    private int lqe;
-    private p lqf;
-    private f lqg;
+    private int hDp;
+    private int okO;
+    private o okP;
+    private e okQ;
+    private String owa;
     private boolean success;
     
     static
     {
-      AppMethodBeat.i(228292);
+      AppMethodBeat.i(279011);
       CREATOR = new a((byte)0);
-      AppMethodBeat.o(228292);
+      AppMethodBeat.o(279011);
     }
     
     public WebPagePrefetchTask() {}
@@ -84,46 +89,48 @@ public final class JsApiOnWebPageUrlExposed
     public WebPagePrefetchTask(Parcel paramParcel)
     {
       this();
-      AppMethodBeat.i(228291);
-      this.lAJ = paramParcel.readString();
+      AppMethodBeat.i(279010);
+      this.owa = paramParcel.readString();
       if (paramParcel.readInt() == 1) {}
       for (;;)
       {
         this.success = bool;
-        AppMethodBeat.o(228291);
+        this.hDp = paramParcel.readInt();
+        AppMethodBeat.o(279010);
         return;
         bool = false;
       }
     }
     
-    public WebPagePrefetchTask(p paramp, f paramf, int paramInt, String paramString)
+    public WebPagePrefetchTask(o paramo, e parame, int paramInt1, String paramString, int paramInt2)
     {
       this();
-      this.lqf = paramp;
-      this.lqg = paramf;
-      this.lqe = paramInt;
-      this.lAJ = paramString;
+      this.okP = paramo;
+      this.okQ = parame;
+      this.okO = paramInt1;
+      this.owa = paramString;
+      this.hDp = paramInt2;
     }
     
-    public final void bjj()
+    public final void RW()
     {
-      AppMethodBeat.i(228287);
+      AppMethodBeat.i(279006);
       this.success = false;
-      if (Util.isNullOrNil(this.lAJ))
+      if (Util.isNullOrNil(this.owa))
       {
         this.errMsg = "fail:urlList is null";
         Log.i("MicroMsg.JsApiOnWebPageUrlExposed.WebPagePrefetchTask", this.errMsg);
       }
-      com.tencent.mm.ab.f localf;
+      com.tencent.mm.ad.f localf;
       for (;;)
       {
-        bDU();
-        AppMethodBeat.o(228287);
+        bPt();
+        AppMethodBeat.o(279006);
         return;
         ArrayList localArrayList = new ArrayList();
         try
         {
-          localf = new com.tencent.mm.ab.f(this.lAJ);
+          localf = new com.tencent.mm.ad.f(this.owa);
           if (localf.length() > 0) {
             break;
           }
@@ -142,9 +149,9 @@ public final class JsApiOnWebPageUrlExposed
       {
         if (i < j)
         {
-          Object localObject = localf.pZ(i);
+          Object localObject = localf.sy(i);
           String str = ((i)localObject).optString("url");
-          if ((str != null) && (n.aL((CharSequence)str) == true))
+          if ((str != null) && (n.ba((CharSequence)str) == true))
           {
             Log.i("MicroMsg.JsApiOnWebPageUrlExposed.WebPagePrefetchTask", "decode url is empty");
           }
@@ -152,11 +159,11 @@ public final class JsApiOnWebPageUrlExposed
           {
             int k = ((i)localObject).optInt("bizScene");
             localObject = ((i)localObject).optString("extInfo");
-            e.a locala = new e.a();
+            f.a locala = new f.a();
             locala.url = str;
             locala.extInfo = ((String)localObject);
-            locala.pmM = 177;
-            locala.pmN = k;
+            locala.svv = 177;
+            locala.svw = k;
             localException.add(locala);
           }
         }
@@ -168,67 +175,74 @@ public final class JsApiOnWebPageUrlExposed
             Log.i("MicroMsg.JsApiOnWebPageUrlExposed.WebPagePrefetchTask", this.errMsg);
             break;
           }
-          ((e)g.af(e.class)).cu((List)localException);
-          this.errMsg = "ok";
-          this.success = true;
-          break;
+          Log.i("MicroMsg.JsApiOnWebPageUrlExposed.WebPagePrefetchTask", "doOnWebPageUrlExposed  bizType:" + this.hDp);
+          if (this.hDp == 1) {
+            ((com.tencent.mm.plugin.brandservice.a.f)h.ae(com.tencent.mm.plugin.brandservice.a.f.class)).cr((List)localException);
+          }
+          for (;;)
+          {
+            this.errMsg = "ok";
+            this.success = true;
+            break;
+            ((com.tencent.mm.plugin.brandservice.a.f)h.ae(com.tencent.mm.plugin.brandservice.a.f.class)).cq((List)localException);
+          }
         }
         i += 1;
       }
     }
     
-    public final void bjk()
+    public final void bsK()
     {
       String str2 = null;
       String str1 = null;
-      AppMethodBeat.i(228288);
-      super.bjk();
-      bDK();
+      AppMethodBeat.i(279007);
+      super.bsK();
+      bPk();
       int i;
-      p localp;
+      o localo;
       if (this.success)
       {
-        localf = this.lqg;
-        if (localf != null)
+        locale = this.okQ;
+        if (locale != null)
         {
-          i = this.lqe;
-          localp = this.lqf;
-          if (localp != null)
+          i = this.okO;
+          localo = this.okP;
+          if (localo != null)
           {
             str2 = this.errMsg;
             str1 = str2;
             if (str2 == null) {
               str1 = "ok";
             }
-            str1 = localp.Zf(str1);
+            str1 = localo.agS(str1);
           }
-          localf.i(i, str1);
-          AppMethodBeat.o(228288);
+          locale.j(i, str1);
+          AppMethodBeat.o(279007);
           return;
         }
-        AppMethodBeat.o(228288);
+        AppMethodBeat.o(279007);
         return;
       }
-      f localf = this.lqg;
-      if (localf != null)
+      e locale = this.okQ;
+      if (locale != null)
       {
-        i = this.lqe;
-        localp = this.lqf;
+        i = this.okO;
+        localo = this.okP;
         str1 = str2;
-        if (localp != null)
+        if (localo != null)
         {
           str2 = this.errMsg;
           str1 = str2;
           if (str2 == null) {
             str1 = "fail";
           }
-          str1 = localp.Zf(str1);
+          str1 = localo.agS(str1);
         }
-        localf.i(i, str1);
-        AppMethodBeat.o(228288);
+        locale.j(i, str1);
+        AppMethodBeat.o(279007);
         return;
       }
-      AppMethodBeat.o(228288);
+      AppMethodBeat.o(279007);
     }
     
     public final int describeContents()
@@ -238,22 +252,27 @@ public final class JsApiOnWebPageUrlExposed
     
     public final void f(Parcel paramParcel)
     {
-      AppMethodBeat.i(228289);
+      int i = 0;
+      AppMethodBeat.i(279008);
       super.f(paramParcel);
       String str;
       if (paramParcel != null)
       {
         str = paramParcel.readString();
-        this.lAJ = str;
+        this.owa = str;
         if ((paramParcel == null) || (paramParcel.readInt() != 1)) {
-          break label54;
+          break label73;
         }
       }
-      label54:
+      label73:
       for (boolean bool = true;; bool = false)
       {
         this.success = bool;
-        AppMethodBeat.o(228289);
+        if (paramParcel != null) {
+          i = paramParcel.readInt();
+        }
+        this.hDp = i;
+        AppMethodBeat.o(279008);
         return;
         str = null;
         break;
@@ -262,31 +281,32 @@ public final class JsApiOnWebPageUrlExposed
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(228290);
-      kotlin.g.b.p.h(paramParcel, "parcel");
+      AppMethodBeat.i(279009);
+      p.k(paramParcel, "parcel");
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeString(this.lAJ);
+      paramParcel.writeString(this.owa);
       if (this.success) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
-        AppMethodBeat.o(228290);
+        paramParcel.writeInt(this.hDp);
+        AppMethodBeat.o(279009);
         return;
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$WebPagePrefetchTask$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$WebPagePrefetchTask;", "()V", "TAG", "", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$WebPagePrefetchTask;", "plugin-appbrand-integration_release"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$WebPagePrefetchTask$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$WebPagePrefetchTask;", "()V", "TAG", "", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$WebPagePrefetchTask;", "plugin-appbrand-integration_release"})
     public static final class a
       implements Parcelable.Creator<JsApiOnWebPageUrlExposed.WebPagePrefetchTask>
     {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$Companion;", "", "()V", "BIZ_TYPE_PREFETCH_WEB_PAGE", "", "BIZ_TYPE_PRELOAD_VIDEO", "CTRL_INDEX", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiOnWebPageUrlExposed
  * JD-Core Version:    0.7.0.1
  */

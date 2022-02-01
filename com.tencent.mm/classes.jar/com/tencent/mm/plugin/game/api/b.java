@@ -4,9 +4,9 @@ import android.content.Context;
 
 public abstract interface b
 {
-  public abstract void NX(int paramInt);
+  public abstract void Tm(int paramInt);
   
-  public abstract void O(long paramLong, int paramInt);
+  public abstract void V(long paramLong, int paramInt);
   
   public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6);
   
@@ -16,40 +16,40 @@ public abstract interface b
   
   public abstract void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, long paramLong, String paramString4, int paramInt3);
   
-  public abstract void am(String paramString, int paramInt1, int paramInt2);
+  public abstract void aIK(String paramString);
   
-  public abstract void azk(String paramString);
+  public abstract void ao(String paramString, int paramInt1, int paramInt2);
   
-  public abstract boolean dSE();
+  public abstract boolean evh();
   
-  public abstract String dSF();
+  public abstract String evi();
   
-  public abstract void fU(Context paramContext);
+  public abstract void gn(Context paramContext);
   
   public abstract void k(Context paramContext, String paramString1, String paramString2);
   
   public abstract void k(String paramString1, String paramString2, String paramString3);
   
-  public abstract void pG(boolean paramBoolean);
+  public abstract void sb(boolean paramBoolean);
   
   public static final class a
   {
-    private static b xtY = null;
+    private static b Cqp = null;
     
     public static void a(b paramb)
     {
-      xtY = paramb;
+      Cqp = paramb;
     }
     
-    public static b dSQ()
+    public static b evu()
     {
-      return xtY;
+      return Cqp;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.api.b
  * JD-Core Version:    0.7.0.1
  */

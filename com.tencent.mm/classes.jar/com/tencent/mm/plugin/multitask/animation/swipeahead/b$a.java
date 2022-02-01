@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.multitask.animation.swipeahead;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorController$Companion;", "", "()V", "HIDE_INDICATOR_SWIPE_PERCENT", "", "SHOW_FULL_INDICATOR_SWIPE_PERCENT", "SHOW_INDICATOR_SWIPE_DURATION_THRESHOLD", "", "SHOW_INDICATOR_SWIPE_PERCENT", "TAG", "", "plugin-multitask_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorController$Companion;", "", "()V", "HIDE_INDICATOR_SWIPE_PERCENT", "", "SHOW_FULL_INDICATOR_SWIPE_PERCENT", "SHOW_INDICATOR_SWIPE_DURATION_THRESHOLD", "", "SHOW_INDICATOR_SWIPE_PERCENT", "TAG", "", "plugin-multitask_release"})
 public final class b$a {}
 
 

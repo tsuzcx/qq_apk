@@ -47,6 +47,9 @@ var WeixinJSCoreAndroid = (function(global) {
             if (typeof global.__wxConfig === 'undefined') {
                 global.__wxConfig = {}
             }
+            if (global.NativeGlobal !== undefined) {
+                global.NativeGlobal.hasInitializedWxConfig = true;
+            }
             Object.assign(global.__wxConfig, data)
             return
         }

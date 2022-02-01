@@ -2,19 +2,18 @@ package com.tencent.mm.plugin.sns.model.a;
 
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.sns.data.n;
-import com.tencent.mm.plugin.sns.k.c;
+import com.tencent.mm.plugin.sns.data.p;
+import com.tencent.mm.plugin.sns.data.t;
 import com.tencent.mm.plugin.sns.model.aj;
-import com.tencent.mm.protocal.protobuf.cnb;
+import com.tencent.mm.plugin.sns.storage.r;
+import com.tencent.mm.protocal.protobuf.cvt;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMNativeJpeg;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 
 public final class e
   extends f
@@ -24,17 +23,17 @@ public final class e
     super(parama, parama1);
   }
   
-  private static void a(a parama, cnb paramcnb, String paramString, float paramFloat)
+  private static void a(a parama, cvt paramcvt, String paramString, float paramFloat)
   {
-    AppMethodBeat.i(202798);
-    paramcnb = com.tencent.mm.plugin.sns.data.r.f(paramcnb);
-    if (!s.YS(parama.getPath() + paramcnb)) {
-      com.tencent.mm.plugin.sns.storage.r.b(parama.getPath(), paramString, paramcnb, paramFloat);
+    AppMethodBeat.i(220857);
+    paramcvt = t.e(paramcvt);
+    if (!u.agG(parama.getPath() + paramcvt)) {
+      r.b(parama.getPath(), paramString, paramcvt, paramFloat);
     }
-    AppMethodBeat.o(202798);
+    AppMethodBeat.o(220857);
   }
   
-  public final boolean fbX()
+  public final boolean fPQ()
   {
     AppMethodBeat.i(96071);
     long l1 = -1L;
@@ -45,14 +44,14 @@ public final class e
     Object localObject;
     label124:
     long l3;
-    if ((!Util.isNullOrNil(this.DPt.DEt)) && (!Util.isNullOrNil(this.DPt.DEu)))
+    if ((!Util.isNullOrNil(this.KcA.JRo)) && (!Util.isNullOrNil(this.KcA.JRp)))
     {
       i = 1;
       if (i == 0) {
         break label480;
       }
-      str1 = this.DPt.DEu;
-      String str2 = this.DPt.getPath() + this.DPt.fbV();
+      str1 = this.KcA.JRp;
+      String str2 = this.KcA.getPath() + this.KcA.fPO();
       localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = true;
       BitmapUtil.decodeFile(str2, localOptions);
@@ -60,8 +59,8 @@ public final class e
         break label492;
       }
       localObject = localOptions.outMimeType.toLowerCase();
-      l3 = s.boW(str2);
-      if ((!this.DPU) && (!((String)localObject).contains("webp"))) {
+      l3 = u.bBQ(str2);
+      if ((!this.Kdb) && (!((String)localObject).contains("webp"))) {
         break label499;
       }
       i = 0;
@@ -83,20 +82,20 @@ public final class e
         {
           bool = true;
           Log.i("MicroMsg.SnsDownloadImage", bool);
-          l2 = s.boW(this.DPt.getPath() + str1);
-          h.CyF.a(11696, new Object[] { Integer.valueOf(3), Long.valueOf(l1), Long.valueOf(l2), Thread.currentThread().getName(), aj.fbh(), com.tencent.mm.loader.j.b.aKD() });
-          if (this.DPt.DPo == 3) {
+          l2 = u.bBQ(this.KcA.getPath() + str1);
+          com.tencent.mm.plugin.report.service.h.IzE.a(11696, new Object[] { Integer.valueOf(3), Long.valueOf(l1), Long.valueOf(l2), Thread.currentThread().getName(), aj.fPb(), com.tencent.mm.loader.j.b.aSF() });
+          if (this.KcA.Kcv == 3) {
             break label1328;
           }
           i = 1;
           j = i;
-          if (this.DPt.DDH != null)
+          if (this.KcA.JQm != null)
           {
             j = i;
-            if (this.DPt.DDH.DEs != 4)
+            if (this.KcA.JQm.JRn != 4)
             {
               j = i;
-              if (this.DPt.DDH.DEs != 5) {
+              if (this.KcA.JQm.JRn != 5) {
                 j = 0;
               }
             }
@@ -104,8 +103,8 @@ public final class e
           if (j == 0) {
             break label1533;
           }
-          localObject = com.tencent.mm.plugin.sns.data.r.e(this.ebR);
-          if (1 != ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rPP, 0)) {
+          localObject = t.d(this.fVT);
+          if (1 != ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vwa, 0)) {
             break label1333;
           }
         }
@@ -118,22 +117,22 @@ public final class e
         if ((BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG)) {
           i = 1;
         }
-        if ((i == 0) || (!s.YS(this.DPt.getPath() + (String)localObject))) {
+        if ((i == 0) || (!u.agG(this.KcA.getPath() + (String)localObject))) {
           break label1338;
         }
-        a(this.DPt, this.ebR, str1, aj.fbb());
+        a(this.KcA, this.fVT, str1, aj.fOV());
         AppMethodBeat.o(96071);
         return true;
         i = 0;
         break;
         label480:
-        str1 = com.tencent.mm.plugin.sns.data.r.l(this.ebR);
+        str1 = t.k(this.fVT);
         break label51;
         label492:
         localObject = "";
         break label124;
         label499:
-        if ((this.DPV) || (((String)localObject).contains("vcodec")))
+        if ((this.Kdc) || (((String)localObject).contains("vcodec")))
         {
           i = 1;
           break label150;
@@ -143,48 +142,48 @@ public final class e
         }
         i = 3;
         break label150;
-        h.CyF.idkeyStat(22L, 64L, 1L, true);
-        s.deleteFile(this.DPt.getPath() + str1);
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(22L, 64L, 1L, true);
+        u.deleteFile(this.KcA.getPath() + str1);
         l1 = Util.currentTicks();
-        com.tencent.mm.plugin.sns.storage.r.f(this.DPt.getPath(), this.DPt.getPath() + this.DPt.fbV(), str1, false);
+        r.h(this.KcA.getPath(), this.KcA.getPath() + this.KcA.fPO(), str1, false);
         l2 = Util.ticksToNow(l1);
-        s.deleteFile(this.DPt.getPath() + this.DPt.fbV());
+        u.deleteFile(this.KcA.getPath() + this.KcA.fPO());
         l1 = Util.ticksToNow(l1);
-        c.a(this.DPt.getPath() + str1, this.DPt.url, 0, localOptions.outMimeType, localOptions.outWidth, localOptions.outHeight, -1, l3, l2);
+        com.tencent.mm.plugin.sns.k.e.a(this.KcA.getPath() + str1, this.KcA.url, 0, localOptions.outMimeType, localOptions.outWidth, localOptions.outHeight, -1, l3, l2);
         break label180;
-        Log.i("MicroMsg.SnsDownloadImage", "found vcodec:%s, reencoded.", new Object[] { this.DPt.getPath() + this.DPt.fbV() });
-        s.deleteFile(this.DPt.getPath() + str1);
+        Log.i("MicroMsg.SnsDownloadImage", "found vcodec:%s, reencoded.", new Object[] { this.KcA.getPath() + this.KcA.fPO() });
+        u.deleteFile(this.KcA.getPath() + str1);
         l1 = Util.currentTicks();
-        com.tencent.mm.plugin.sns.storage.r.f(this.DPt.getPath(), this.DPt.getPath() + this.DPt.fbV(), str1, false);
+        r.h(this.KcA.getPath(), this.KcA.getPath() + this.KcA.fPO(), str1, false);
         l2 = Util.ticksToNow(l1);
-        s.deleteFile(this.DPt.getPath() + this.DPt.fbV());
+        u.deleteFile(this.KcA.getPath() + this.KcA.fPO());
         l1 = Util.ticksToNow(l1);
-        c.a(this.DPt.getPath() + str1, this.DPt.url, 0, localOptions.outMimeType, localOptions.outWidth, localOptions.outHeight, -1, l3, l2);
+        com.tencent.mm.plugin.sns.k.e.a(this.KcA.getPath() + str1, this.KcA.url, 0, localOptions.outMimeType, localOptions.outWidth, localOptions.outHeight, -1, l3, l2);
         break label180;
         l2 = -1L;
-        if (com.tencent.mm.plugin.sns.data.r.aOv(this.DPt.getPath() + this.DPt.fbV()))
+        if (t.aZr(this.KcA.getPath() + this.KcA.fPO()))
         {
-          Log.w("MicroMsg.SnsDownloadImage", "the " + this.DPt.mediaId + " is too max ! " + this.DPt.url);
-          s.deleteFile(this.DPt.getPath() + str1);
+          Log.w("MicroMsg.SnsDownloadImage", "the " + this.KcA.mediaId + " is too max ! " + this.KcA.url);
+          u.deleteFile(this.KcA.getPath() + str1);
           l1 = Util.currentTicks();
-          com.tencent.mm.plugin.sns.storage.r.f(this.DPt.getPath(), this.DPt.getPath() + this.DPt.fbV(), str1, false);
+          r.h(this.KcA.getPath(), this.KcA.getPath() + this.KcA.fPO(), str1, false);
           l2 = Util.ticksToNow(l1);
-          s.deleteFile(this.DPt.getPath() + this.DPt.fbV());
+          u.deleteFile(this.KcA.getPath() + this.KcA.fPO());
         }
         for (l1 = Util.ticksToNow(l1);; l1 = 0L)
         {
           j = -1;
           if ((((String)localObject).contains("jpg")) || (((String)localObject).contains("jpeg")))
           {
-            int k = MMNativeJpeg.queryQuality(this.DPt.getPath() + str1);
+            int k = MMNativeJpeg.queryQuality(this.KcA.getPath() + str1);
             j = k;
             if (k == 0) {
               j = -1;
             }
           }
-          c.a(this.DPt.getPath() + str1, this.DPt.url, 0, localOptions.outMimeType, localOptions.outWidth, localOptions.outHeight, j, l3, l2);
+          com.tencent.mm.plugin.sns.k.e.a(this.KcA.getPath() + str1, this.KcA.url, 0, localOptions.outMimeType, localOptions.outWidth, localOptions.outHeight, j, l3, l2);
           break;
-          s.bo(this.DPt.getPath(), this.DPt.fbV(), str1);
+          u.bj(this.KcA.getPath(), this.KcA.fPO(), str1);
         }
         bool = false;
         break label198;
@@ -192,15 +191,15 @@ public final class e
         break label314;
       }
       label1338:
-      if (s.YS(this.DPt.getPath() + (String)localObject)) {
-        s.deleteFile(this.DPt.getPath() + (String)localObject);
+      if (u.agG(this.KcA.getPath() + (String)localObject)) {
+        u.deleteFile(this.KcA.getPath() + (String)localObject);
       }
       l1 = Util.currentTicks();
-      com.tencent.mm.plugin.sns.storage.r.a(this.DPt.getPath(), str1, (String)localObject, aj.fbc());
+      r.a(this.KcA.getPath(), str1, (String)localObject, aj.fOW());
       l1 = Util.ticksToNow(l1);
-      s.boW(this.DPt.getPath() + (String)localObject);
-      h.CyF.a(11696, new Object[] { Integer.valueOf(3), Long.valueOf(l1), Long.valueOf(l2), Thread.currentThread().getName(), aj.fbh(), com.tencent.mm.loader.j.b.aKD() });
-      a(this.DPt, this.ebR, str1, aj.fbb());
+      u.bBQ(this.KcA.getPath() + (String)localObject);
+      com.tencent.mm.plugin.report.service.h.IzE.a(11696, new Object[] { Integer.valueOf(3), Long.valueOf(l1), Long.valueOf(l2), Thread.currentThread().getName(), aj.fPb(), com.tencent.mm.loader.j.b.aSF() });
+      a(this.KcA, this.fVT, str1, aj.fOV());
       label1533:
       AppMethodBeat.o(96071);
       return true;
@@ -216,7 +215,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,117 +1,118 @@
 package com.tencent.mm.plugin.vlog.ui.thumb;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.k;
-import android.support.v7.widget.RecyclerView.l;
-import android.support.v7.widget.RecyclerView.q;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.k;
+import androidx.recyclerview.widget.RecyclerView.l;
+import androidx.recyclerview.widget.RecyclerView.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.mmsight.segment.SliderSeekBar;
 import com.tencent.mm.plugin.mmsight.segment.SliderSeekBar.a;
+import com.tencent.mm.plugin.vlog.a.f;
 import com.tencent.mm.plugin.vlog.model.ad;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.videocomposition.d;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "callback", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$OnCropCallback;", "getCallback", "()Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$OnCropCallback;", "setCallback", "(Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$OnCropCallback;)V", "cutCnt", "getCutCnt", "()I", "setCutCnt", "(I)V", "dragCnt", "getDragCnt", "setDragCnt", "duration", "", "endEmptyTrack", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackThumbInfo;", "endInTrack", "frameAdapter", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;", "lastTime", "layoutManager", "Landroid/support/v7/widget/LinearLayoutManager;", "maxCropDuration", "padding", "playWaitIdle", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "runOnSize", "Ljava/lang/Runnable;", "<set-?>", "Lcom/tencent/mm/plugin/mmsight/segment/SliderSeekBar;", "seekSlider", "getSeekSlider", "()Lcom/tencent/mm/plugin/mmsight/segment/SliderSeekBar;", "seekSliderListener", "Lcom/tencent/mm/plugin/mmsight/segment/SliderSeekBar$OnSliderTouchListener;", "seekSliderReady", "sizePerTime", "", "startEmptyTrack", "startInTrack", "thumbCropMaxWidth", "thumbDisplayWidth", "thumbHeight", "thumbWidth", "totalWidth", "getScrollTime", "onFinishInflate", "", "setEnableLengthEdit", "enable", "setProgress", "timeMs", "setTrack", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "initStart", "initEnd", "updateTrackCrop", "OnCropCallback", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "callback", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$OnCropCallback;", "getCallback", "()Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$OnCropCallback;", "setCallback", "(Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$OnCropCallback;)V", "cutCnt", "getCutCnt", "()I", "setCutCnt", "(I)V", "dragCnt", "getDragCnt", "setDragCnt", "duration", "", "endEmptyTrack", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackThumbInfo;", "endInTrack", "frameAdapter", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameListAdapter;", "lastTime", "layoutManager", "Landroidx/recyclerview/widget/LinearLayoutManager;", "maxCropDuration", "padding", "playWaitIdle", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "runOnSize", "Ljava/lang/Runnable;", "<set-?>", "Lcom/tencent/mm/plugin/mmsight/segment/SliderSeekBar;", "seekSlider", "getSeekSlider", "()Lcom/tencent/mm/plugin/mmsight/segment/SliderSeekBar;", "seekSliderListener", "Lcom/tencent/mm/plugin/mmsight/segment/SliderSeekBar$OnSliderTouchListener;", "seekSliderReady", "sizePerTime", "", "startEmptyTrack", "startInTrack", "thumbCropMaxWidth", "thumbDisplayWidth", "thumbHeight", "thumbWidth", "totalWidth", "getScrollTime", "onFinishInflate", "", "setEnableLengthEdit", "enable", "setProgress", "timeMs", "setTrack", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "initStart", "initEnd", "Lcom/tencent/mm/videocomposition/VideoComposition;", "updateTrackCrop", "OnCropCallback", "plugin-vlog_release"})
 public final class TrackCropView
   extends FrameLayout
 {
-  private float Avf;
-  private f GIX;
-  private int GJa;
-  private Runnable GJd;
-  private final h GJf;
-  private boolean GJk;
-  private long GMh;
-  private long GMi;
-  private long GMj;
-  private int GMk;
-  private int GMl;
-  private final h GMm;
-  private int GMn;
-  private int GMo;
-  private SliderSeekBar GPR;
-  private boolean GPT;
-  private SliderSeekBar.a GPU;
-  private a GPV;
+  private LinearLayoutManager Arh;
+  private float Gly;
+  private boolean NDA;
+  private SliderSeekBar.a NDB;
+  private a NDC;
+  private boolean NDk;
+  private SliderSeekBar NDz;
+  private f NzK;
+  private int NzM;
+  private long NzN;
+  private long NzO;
+  private long NzP;
+  private int NzQ;
+  private int NzR;
+  private final h NzS;
+  private final h NzT;
+  private int NzU;
+  private int NzV;
+  private Runnable NzW;
   private final String TAG;
   private long duration;
-  private RecyclerView hak;
-  private long hwQ;
+  private RecyclerView jLl;
+  private long kje;
   private int padding;
   private int thumbHeight;
   private int thumbWidth;
-  private LinearLayoutManager vKp;
   
   public TrackCropView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(192157);
-    AppMethodBeat.o(192157);
+    AppMethodBeat.i(227465);
+    AppMethodBeat.o(227465);
   }
   
   public TrackCropView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(192156);
+    AppMethodBeat.i(227463);
     this.TAG = "MicroMsg.TrackCropView";
-    this.vKp = new LinearLayoutManager(0, false);
-    this.GIX = new f();
+    this.Arh = new LinearLayoutManager(0, false);
+    this.NzK = new f();
     this.thumbHeight = 112;
     this.thumbWidth = 63;
-    this.GJa = 1;
-    this.GMj = 1L;
-    this.Avf = 1.0F;
-    paramContext = h.GQe;
-    this.GMm = h.a.fEy();
-    paramContext = h.GQe;
-    this.GJf = h.a.fEy();
-    AppMethodBeat.o(192156);
+    this.NzM = 1;
+    this.NzP = 1L;
+    this.Gly = 1.0F;
+    paramContext = h.NDK;
+    this.NzS = h.a.gwz();
+    paramContext = h.NDK;
+    this.NzT = h.a.gwz();
+    AppMethodBeat.o(227463);
   }
   
   private final long getScrollTime()
   {
-    AppMethodBeat.i(192155);
+    AppMethodBeat.i(227460);
     Object localObject1 = null;
-    Object localObject2 = this.hak;
+    Object localObject2 = this.jLl;
     if (localObject2 == null) {
-      p.btv("recyclerView");
+      p.bGy("recyclerView");
     }
     int j = ((RecyclerView)localObject2).getChildCount();
     int i = 0;
     long l;
     if (i < j)
     {
-      localObject2 = this.hak;
+      localObject2 = this.jLl;
       if (localObject2 == null) {
-        p.btv("recyclerView");
+        p.bGy("recyclerView");
       }
       localObject2 = ((RecyclerView)localObject2).getChildAt(i);
       if ((localObject2 instanceof FrameListView))
       {
-        if (this.hak == null) {
-          p.btv("recyclerView");
+        if (this.jLl == null) {
+          p.bGy("recyclerView");
         }
-        int k = RecyclerView.bw((View)localObject2);
+        int k = RecyclerView.bh((View)localObject2);
         localObject1 = localObject2;
         if (k >= 0)
         {
           localObject1 = localObject2;
-          if (k < this.GIX.getItemCount()) {
-            l = this.GIX.acK(k).GQc.GzA.startTimeMs;
+          if (k < this.NzK.getItemCount()) {
+            l = this.NzK.akt(k).getStartTimeMs();
           }
         }
       }
@@ -120,13 +121,13 @@ public final class TrackCropView
     {
       if (localObject2 == null)
       {
-        AppMethodBeat.o(192155);
+        AppMethodBeat.o(227460);
         return 0L;
         i += 1;
         break;
       }
-      l = (-((View)localObject2).getLeft() / this.Avf + (float)l);
-      AppMethodBeat.o(192155);
+      l = (-((View)localObject2).getLeft() / this.Gly + (float)l);
+      AppMethodBeat.o(227460);
       return l;
       l = 0L;
       localObject2 = localObject1;
@@ -135,311 +136,389 @@ public final class TrackCropView
   
   public final a getCallback()
   {
-    return this.GPV;
+    return this.NDC;
   }
   
   public final int getCutCnt()
   {
-    return this.GMo;
+    return this.NzV;
   }
   
   public final int getDragCnt()
   {
-    return this.GMn;
+    return this.NzU;
   }
   
   public final SliderSeekBar getSeekSlider()
   {
-    return this.GPR;
+    return this.NDz;
   }
   
   protected final void onFinishInflate()
   {
-    AppMethodBeat.i(192151);
+    AppMethodBeat.i(227433);
     super.onFinishInflate();
-    Object localObject = findViewById(2131309378);
-    p.g(localObject, "findViewById(R.id.track_crop_thumb_recycler)");
-    this.hak = ((RecyclerView)localObject);
-    this.GPR = ((SliderSeekBar)findViewById(2131309377));
-    localObject = this.GPR;
+    Object localObject = findViewById(a.f.track_crop_thumb_recycler);
+    p.j(localObject, "findViewById(R.id.track_crop_thumb_recycler)");
+    this.jLl = ((RecyclerView)localObject);
+    this.NDz = ((SliderSeekBar)findViewById(a.f.track_crop_slider_seek));
+    localObject = this.NDz;
     if (localObject != null) {
       ((SliderSeekBar)localObject).setMaskColor(1999383596);
     }
-    localObject = this.GPR;
+    localObject = this.NDz;
     if (localObject != null) {
       ((SliderSeekBar)localObject).setEnableHapticAtEdge(true);
     }
-    localObject = this.hak;
+    localObject = this.jLl;
     if (localObject == null) {
-      p.btv("recyclerView");
+      p.bGy("recyclerView");
     }
-    ((RecyclerView)localObject).setLayoutManager((RecyclerView.LayoutManager)this.vKp);
-    localObject = this.hak;
+    ((RecyclerView)localObject).setLayoutManager((RecyclerView.LayoutManager)this.Arh);
+    localObject = this.jLl;
     if (localObject == null) {
-      p.btv("recyclerView");
+      p.bGy("recyclerView");
     }
-    ((RecyclerView)localObject).setAdapter((RecyclerView.a)this.GIX);
-    localObject = this.hak;
+    ((RecyclerView)localObject).setAdapter((RecyclerView.a)this.NzK);
+    localObject = this.jLl;
     if (localObject == null) {
-      p.btv("recyclerView");
+      p.bGy("recyclerView");
     }
     ((RecyclerView)localObject).setItemAnimator(null);
-    localObject = this.hak;
+    localObject = this.jLl;
     if (localObject == null) {
-      p.btv("recyclerView");
+      p.bGy("recyclerView");
     }
     ((RecyclerView)localObject).a((RecyclerView.l)new b(this));
-    localObject = this.hak;
+    localObject = this.jLl;
     if (localObject == null) {
-      p.btv("recyclerView");
+      p.bGy("recyclerView");
     }
     ((RecyclerView)localObject).a((RecyclerView.k)new c(this));
-    this.GPU = ((SliderSeekBar.a)new d(this));
-    localObject = this.GPR;
+    this.NDB = ((SliderSeekBar.a)new d(this));
+    localObject = this.NDz;
     if (localObject != null)
     {
-      ((SliderSeekBar)localObject).setOnSliderTouchListener(this.GPU);
-      AppMethodBeat.o(192151);
+      ((SliderSeekBar)localObject).setOnSliderTouchListener(this.NDB);
+      AppMethodBeat.o(227433);
       return;
     }
-    AppMethodBeat.o(192151);
+    AppMethodBeat.o(227433);
   }
   
   public final void setCallback(a parama)
   {
-    this.GPV = parama;
+    this.NDC = parama;
   }
   
   public final void setCutCnt(int paramInt)
   {
-    this.GMo = paramInt;
+    this.NzV = paramInt;
   }
   
   public final void setDragCnt(int paramInt)
   {
-    this.GMn = paramInt;
+    this.NzU = paramInt;
   }
   
   public final void setEnableLengthEdit(boolean paramBoolean)
   {
-    AppMethodBeat.i(192152);
+    AppMethodBeat.i(227434);
     if (paramBoolean)
     {
-      localSliderSeekBar = this.GPR;
+      localSliderSeekBar = this.NDz;
       if (localSliderSeekBar != null)
       {
-        localSliderSeekBar.ekB();
-        AppMethodBeat.o(192152);
+        localSliderSeekBar.eUj();
+        AppMethodBeat.o(227434);
         return;
       }
-      AppMethodBeat.o(192152);
+      AppMethodBeat.o(227434);
       return;
     }
-    SliderSeekBar localSliderSeekBar = this.GPR;
+    SliderSeekBar localSliderSeekBar = this.NDz;
     if (localSliderSeekBar != null)
     {
-      localSliderSeekBar.ekA();
-      AppMethodBeat.o(192152);
+      localSliderSeekBar.eUi();
+      AppMethodBeat.o(227434);
       return;
     }
-    AppMethodBeat.o(192152);
+    AppMethodBeat.o(227434);
   }
   
   public final void setProgress(long paramLong)
   {
-    AppMethodBeat.i(192154);
-    float f = this.padding / this.Avf;
-    SliderSeekBar localSliderSeekBar = this.GPR;
+    AppMethodBeat.i(227456);
+    float f = this.padding / this.Gly;
+    SliderSeekBar localSliderSeekBar = this.NDz;
     if (localSliderSeekBar != null)
     {
-      localSliderSeekBar.setCursorPos((float)(paramLong - getScrollTime()) / (f * 2.0F + (float)this.GMh));
-      AppMethodBeat.o(192154);
+      localSliderSeekBar.setCursorPos((float)(paramLong - getScrollTime()) / (f * 2.0F + (float)this.NzN));
+      AppMethodBeat.o(227456);
       return;
     }
-    AppMethodBeat.o(192154);
+    AppMethodBeat.o(227456);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$OnCropCallback;", "", "onCrop", "", "start", "", "end", "onUpdate", "pause", "seekTo", "time", "plugin-vlog_release"})
+  public final void setTrack(com.tencent.mm.videocomposition.j paramj)
+  {
+    AppMethodBeat.i(227440);
+    p.k(paramj, "composition");
+    this.NzU = 0;
+    this.NzV = 0;
+    final LinkedList localLinkedList = new LinkedList();
+    this.NzM = 0;
+    this.kje = 0L;
+    long l2 = ((com.tencent.mm.videocomposition.b)kotlin.a.j.lo((List)paramj.MQY)).MQV;
+    long l3 = paramj.getSourceDuration();
+    this.duration = (((com.tencent.mm.videocomposition.b)kotlin.a.j.lq((List)paramj.MQY)).NwS - ((com.tencent.mm.videocomposition.b)kotlin.a.j.lq((List)paramj.MQY)).MQW + (paramj.getSourceDuration() + l2));
+    long l1;
+    Collection localCollection;
+    int i;
+    label187:
+    Object localObject2;
+    boolean bool1;
+    if (this.duration > 60000L)
+    {
+      l1 = 60000L;
+      this.NzN = l1;
+      this.NzO = l2;
+      this.NzP = (l2 + l3);
+      Object localObject1 = (Iterable)paramj.MQY;
+      localCollection = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject1, 10));
+      localObject1 = ((Iterable)localObject1).iterator();
+      i = 0;
+      if (!((Iterator)localObject1).hasNext()) {
+        break label324;
+      }
+      localObject2 = ((Iterator)localObject1).next();
+      if (i < 0) {
+        kotlin.a.j.iBO();
+      }
+      localObject2 = (com.tencent.mm.videocomposition.b)localObject2;
+      if (i != 0) {
+        break label312;
+      }
+      bool1 = true;
+      label227:
+      if (i != ((List)paramj.MQY).size() - 1) {
+        break label318;
+      }
+    }
+    label312:
+    label318:
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      localObject2 = new h((com.tencent.mm.videocomposition.b)localObject2, bool1, bool2);
+      ((a)localObject2).trackIndex = i;
+      ((a)localObject2).height = this.thumbHeight;
+      ((a)localObject2).width = this.thumbWidth;
+      localCollection.add(localObject2);
+      i += 1;
+      break label187;
+      l1 = this.duration;
+      break;
+      bool1 = false;
+      break label227;
+    }
+    label324:
+    localLinkedList.addAll((Collection)localCollection);
+    if (localLinkedList.size() == 1) {
+      localLinkedList.get(0);
+    }
+    this.NDA = false;
+    this.NzW = ((Runnable)new e(this, localLinkedList));
+    paramj = this.NzW;
+    if (paramj != null)
+    {
+      paramj.run();
+      AppMethodBeat.o(227440);
+      return;
+    }
+    AppMethodBeat.o(227440);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$OnCropCallback;", "", "onCrop", "", "start", "", "end", "onUpdate", "pause", "seekTo", "time", "plugin-vlog_release"})
   public static abstract interface a
   {
-    public abstract void ay(long paramLong1, long paramLong2);
+    public abstract void aN(long paramLong1, long paramLong2);
     
-    public abstract void az(long paramLong1, long paramLong2);
+    public abstract void aO(long paramLong1, long paramLong2);
     
     public abstract void pause();
     
     public abstract void seekTo(long paramLong);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$onFinishInflate$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "dragScroll", "", "onScrollStateChanged", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "newState", "", "onScrolled", "dx", "dy", "plugin-vlog_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$onFinishInflate$1", "Landroidx/recyclerview/widget/RecyclerView$OnScrollListener;", "dragScroll", "", "onScrollStateChanged", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "newState", "", "onScrolled", "dx", "dy", "plugin-vlog_release"})
   public static final class b
     extends RecyclerView.l
   {
-    private boolean GJq;
+    private boolean NDD;
     
     public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
     {
-      AppMethodBeat.i(192143);
-      b localb = new b();
-      localb.bm(paramRecyclerView);
-      localb.pH(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$onFinishInflate$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.axR());
-      p.h(paramRecyclerView, "recyclerView");
-      Log.i(TrackCropView.a(this.GPW), "onScrollStateChanged: ".concat(String.valueOf(paramInt)));
+      AppMethodBeat.i(225680);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bn(paramRecyclerView);
+      localb.sg(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$onFinishInflate$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
+      p.k(paramRecyclerView, "recyclerView");
+      Log.i(TrackCropView.a(this.NDE), "onScrollStateChanged: ".concat(String.valueOf(paramInt)));
       super.onScrollStateChanged(paramRecyclerView, paramInt);
       if (paramInt == 0)
       {
-        TrackCropView.b(this.GPW);
-        Log.i(TrackCropView.a(this.GPW), "onScrollStateChanged: " + TrackCropView.c(this.GPW) + ", " + TrackCropView.d(this.GPW));
-        paramRecyclerView = this.GPW.getCallback();
+        TrackCropView.b(this.NDE);
+        Log.i(TrackCropView.a(this.NDE), "onScrollStateChanged: " + TrackCropView.c(this.NDE) + ", " + TrackCropView.d(this.NDE));
+        paramRecyclerView = this.NDE.getCallback();
         if (paramRecyclerView != null) {
-          paramRecyclerView.ay(TrackCropView.c(this.GPW), TrackCropView.d(this.GPW));
+          paramRecyclerView.aN(TrackCropView.c(this.NDE), TrackCropView.d(this.NDE));
         }
-        TrackCropView.a(this.GPW, false);
-        this.GJq = false;
+        TrackCropView.a(this.NDE, false);
+        this.NDD = false;
       }
       for (;;)
       {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$onFinishInflate$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-        AppMethodBeat.o(192143);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$onFinishInflate$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
+        AppMethodBeat.o(225680);
         return;
         if (paramInt == 1)
         {
-          if (!this.GJq)
+          if (!this.NDD)
           {
-            paramRecyclerView = this.GPW;
+            paramRecyclerView = this.NDE;
             paramRecyclerView.setDragCnt(paramRecyclerView.getDragCnt() + 1);
           }
-          this.GJq = true;
+          this.NDD = true;
         }
       }
     }
     
     public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(192144);
-      b localb = new b();
-      localb.bm(paramRecyclerView);
-      localb.pH(paramInt1);
-      localb.pH(paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$onFinishInflate$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.axR());
-      p.h(paramRecyclerView, "recyclerView");
+      AppMethodBeat.i(225682);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bn(paramRecyclerView);
+      localb.sg(paramInt1);
+      localb.sg(paramInt2);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$onFinishInflate$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
+      p.k(paramRecyclerView, "recyclerView");
       super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-      TrackCropView.b(this.GPW);
-      Log.i(TrackCropView.a(this.GPW), "onScroll: range: " + TrackCropView.c(this.GPW) + ", " + TrackCropView.d(this.GPW));
-      paramRecyclerView = this.GPW.getCallback();
+      TrackCropView.b(this.NDE);
+      Log.i(TrackCropView.a(this.NDE), "onScroll: range: " + TrackCropView.c(this.NDE) + ", " + TrackCropView.d(this.NDE));
+      paramRecyclerView = this.NDE.getCallback();
       if (paramRecyclerView != null) {
-        paramRecyclerView.seekTo(TrackCropView.c(this.GPW));
+        paramRecyclerView.seekTo(TrackCropView.c(this.NDE));
       }
-      this.GPW.setProgress(TrackCropView.c(this.GPW));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$onFinishInflate$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-      AppMethodBeat.o(192144);
+      this.NDE.setProgress(TrackCropView.c(this.NDE));
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$onFinishInflate$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
+      AppMethodBeat.o(225682);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$onFinishInflate$2", "Landroid/support/v7/widget/RecyclerView$SimpleOnItemTouchListener;", "onInterceptTouchEvent", "", "rv", "Landroid/support/v7/widget/RecyclerView;", "e", "Landroid/view/MotionEvent;", "plugin-vlog_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$onFinishInflate$2", "Landroidx/recyclerview/widget/RecyclerView$SimpleOnItemTouchListener;", "onInterceptTouchEvent", "", "rv", "Landroidx/recyclerview/widget/RecyclerView;", "e", "Landroid/view/MotionEvent;", "plugin-vlog_release"})
   public static final class c
     extends RecyclerView.q
   {
     public final boolean a(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(192145);
-      p.h(paramRecyclerView, "rv");
-      p.h(paramMotionEvent, "e");
+      AppMethodBeat.i(244108);
+      p.k(paramRecyclerView, "rv");
+      p.k(paramMotionEvent, "e");
       switch (paramMotionEvent.getAction())
       {
       }
       for (;;)
       {
-        AppMethodBeat.o(192145);
+        AppMethodBeat.o(244108);
         return false;
-        paramRecyclerView = this.GPW.getCallback();
+        paramRecyclerView = this.NDE.getCallback();
         if (paramRecyclerView != null)
         {
           paramRecyclerView.pause();
           continue;
-          if (TrackCropView.e(this.GPW).getScrollState() == 0)
+          if (TrackCropView.e(this.NDE).getScrollState() == 0)
           {
-            TrackCropView.b(this.GPW);
-            Log.i(TrackCropView.a(this.GPW), "onInterceptTouchEvent crop: " + TrackCropView.c(this.GPW) + ", " + TrackCropView.d(this.GPW));
-            paramRecyclerView = this.GPW.getCallback();
+            TrackCropView.b(this.NDE);
+            Log.i(TrackCropView.a(this.NDE), "onInterceptTouchEvent crop: " + TrackCropView.c(this.NDE) + ", " + TrackCropView.d(this.NDE));
+            paramRecyclerView = this.NDE.getCallback();
             if (paramRecyclerView != null) {
-              paramRecyclerView.ay(TrackCropView.c(this.GPW), TrackCropView.d(this.GPW));
+              paramRecyclerView.aN(TrackCropView.c(this.NDE), TrackCropView.d(this.NDE));
             }
-            TrackCropView.a(this.GPW, false);
+            TrackCropView.a(this.NDE, false);
           }
           else
           {
-            TrackCropView.a(this.GPW, true);
+            TrackCropView.a(this.NDE, true);
           }
         }
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$onFinishInflate$3", "Lcom/tencent/mm/plugin/mmsight/segment/SliderSeekBar$OnSliderTouchListener;", "onDown", "", "left", "", "onMove", "onUp", "plugin-vlog_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$onFinishInflate$3", "Lcom/tencent/mm/plugin/mmsight/segment/SliderSeekBar$OnSliderTouchListener;", "onDown", "", "left", "", "onMove", "onUp", "plugin-vlog_release"})
   public static final class d
     implements SliderSeekBar.a
   {
-    public final void eky()
+    public final void eUg()
     {
-      AppMethodBeat.i(192146);
-      TrackCropView.a locala = this.GPW.getCallback();
+      AppMethodBeat.i(234443);
+      TrackCropView.a locala = this.NDE.getCallback();
       if (locala != null)
       {
         locala.pause();
-        AppMethodBeat.o(192146);
+        AppMethodBeat.o(234443);
         return;
       }
-      AppMethodBeat.o(192146);
+      AppMethodBeat.o(234443);
     }
     
-    public final void ekz()
+    public final void eUh()
     {
-      AppMethodBeat.i(192147);
-      Object localObject = this.GPW;
+      AppMethodBeat.i(234445);
+      Object localObject = this.NDE;
       ((TrackCropView)localObject).setCutCnt(((TrackCropView)localObject).getCutCnt() + 1);
-      TrackCropView.b(this.GPW);
-      Log.i(TrackCropView.a(this.GPW), "onScrollStateChanged: " + TrackCropView.c(this.GPW) + ", " + TrackCropView.d(this.GPW));
-      localObject = this.GPW.getCallback();
+      TrackCropView.b(this.NDE);
+      Log.i(TrackCropView.a(this.NDE), "onScrollStateChanged: " + TrackCropView.c(this.NDE) + ", " + TrackCropView.d(this.NDE));
+      localObject = this.NDE.getCallback();
       if (localObject != null)
       {
-        ((TrackCropView.a)localObject).ay(TrackCropView.c(this.GPW), TrackCropView.d(this.GPW));
-        AppMethodBeat.o(192147);
+        ((TrackCropView.a)localObject).aN(TrackCropView.c(this.NDE), TrackCropView.d(this.NDE));
+        AppMethodBeat.o(234445);
         return;
       }
-      AppMethodBeat.o(192147);
+      AppMethodBeat.o(234445);
     }
     
-    public final void rj(boolean paramBoolean)
+    public final void un(boolean paramBoolean)
     {
-      AppMethodBeat.i(192148);
-      TrackCropView.b(this.GPW);
-      Log.i(TrackCropView.a(this.GPW), "onMove: " + paramBoolean + ", " + TrackCropView.c(this.GPW) + ", " + TrackCropView.d(this.GPW));
-      TrackCropView.a locala = this.GPW.getCallback();
+      AppMethodBeat.i(234447);
+      TrackCropView.b(this.NDE);
+      Log.i(TrackCropView.a(this.NDE), "onMove: " + paramBoolean + ", " + TrackCropView.c(this.NDE) + ", " + TrackCropView.d(this.NDE));
+      TrackCropView.a locala = this.NDE.getCallback();
       if (locala != null) {
-        locala.az(TrackCropView.c(this.GPW), TrackCropView.d(this.GPW));
+        locala.aO(TrackCropView.c(this.NDE), TrackCropView.d(this.NDE));
       }
       if (paramBoolean)
       {
-        locala = this.GPW.getCallback();
+        locala = this.NDE.getCallback();
         if (locala != null) {
-          locala.seekTo(TrackCropView.c(this.GPW));
+          locala.seekTo(TrackCropView.c(this.NDE));
         }
-        this.GPW.setProgress(TrackCropView.c(this.GPW));
-        AppMethodBeat.o(192148);
+        this.NDE.setProgress(TrackCropView.c(this.NDE));
+        AppMethodBeat.o(234447);
         return;
       }
-      locala = this.GPW.getCallback();
+      locala = this.NDE.getCallback();
       if (locala != null) {
-        locala.seekTo(TrackCropView.d(this.GPW));
+        locala.seekTo(TrackCropView.d(this.NDE));
       }
-      this.GPW.setProgress(TrackCropView.d(this.GPW));
-      AppMethodBeat.o(192148);
+      this.NDE.setProgress(TrackCropView.d(this.NDE));
+      AppMethodBeat.o(234447);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class e
     implements Runnable
   {
@@ -447,73 +526,145 @@ public final class TrackCropView
     
     public final void run()
     {
-      AppMethodBeat.i(192150);
-      if (TrackCropView.e(this.GPW).getWidth() <= 0)
+      AppMethodBeat.i(228256);
+      if (TrackCropView.e(this.NDE).getWidth() <= 0)
       {
-        TrackCropView.e(this.GPW).post(TrackCropView.f(this.GPW));
-        AppMethodBeat.o(192150);
+        TrackCropView.e(this.NDE).post(TrackCropView.f(this.NDE));
+        AppMethodBeat.o(228256);
         return;
       }
-      TrackCropView.a(this.GPW, com.tencent.mm.cb.a.fromDPToPix(this.GPW.getContext(), 40));
-      float f = TrackCropView.e(this.GPW).getHeight() * 1.0F / TrackCropView.h(this.GPW);
-      TrackCropView.b(this.GPW, TrackCropView.e(this.GPW).getWidth() - TrackCropView.g(this.GPW) * 2);
-      TrackCropView.a(this.GPW, TrackCropView.i(this.GPW) * 1.0F / (float)TrackCropView.k(this.GPW));
-      TrackCropView.c(this.GPW, (int)(TrackCropView.j(this.GPW) * (float)TrackCropView.m(this.GPW)));
-      f = TrackCropView.l(this.GPW) / (f * TrackCropView.n(this.GPW));
-      Object localObject = ((Iterable)this.GMt).iterator();
+      TrackCropView.a(this.NDE, com.tencent.mm.ci.a.fromDPToPix(this.NDE.getContext(), 40));
+      float f = TrackCropView.e(this.NDE).getHeight() * 1.0F / TrackCropView.h(this.NDE);
+      TrackCropView.b(this.NDE, TrackCropView.e(this.NDE).getWidth() - TrackCropView.g(this.NDE) * 2);
+      TrackCropView.a(this.NDE, TrackCropView.i(this.NDE) * 1.0F / (float)TrackCropView.k(this.NDE));
+      TrackCropView.c(this.NDE, (int)(TrackCropView.j(this.NDE) * (float)TrackCropView.m(this.NDE)));
+      f = TrackCropView.l(this.NDE) / (f * TrackCropView.n(this.NDE));
+      Object localObject = ((Iterable)localLinkedList).iterator();
       while (((Iterator)localObject).hasNext())
       {
         h localh = (h)((Iterator)localObject).next();
-        localh.GOF = (f / (float)TrackCropView.m(this.GPW) * (float)localh.fEu() / localh.GQc.GzA.mwH);
-        localh.fEv();
-        Log.d(TrackCropView.a(this.GPW), "build thumbInfo index:" + localh.trackIndex + ", frameCount:" + localh.GOF + ", frameDuration:" + localh.fEu() + ", frameWidth:" + (float)localh.fEu() * TrackCropView.j(this.GPW));
+        localh.NCl = (f / (float)TrackCropView.m(this.NDE) * (float)localh.gwv() / localh.NDI.Nng.pvh);
+        localh.gww();
+        Log.d(TrackCropView.a(this.NDE), "build thumbInfo index:" + localh.trackIndex + ", frameCount:" + localh.NCl + ", frameDuration:" + localh.gwv() + ", frameWidth:" + (float)localh.gwv() * TrackCropView.j(this.NDE));
       }
-      TrackCropView.o(this.GPW).hEp = TrackCropView.g(this.GPW);
-      TrackCropView.p(this.GPW).hEp = TrackCropView.g(this.GPW);
-      final int i = Math.max(0, Math.min((int)((float)TrackCropView.c(this.GPW) * TrackCropView.j(this.GPW)), (int)((float)TrackCropView.d(this.GPW) * TrackCropView.j(this.GPW) - TrackCropView.i(this.GPW))));
-      TrackCropView.q(this.GPW).ah(0, -i);
-      this.GMt.add(0, TrackCropView.o(this.GPW));
-      this.GMt.add(TrackCropView.p(this.GPW));
-      TrackCropView.r(this.GPW).hw((List)this.GMt);
-      TrackCropView.r(this.GPW).notifyDataSetChanged();
-      localObject = this.GPW.getSeekSlider();
+      TrackCropView.o(this.NDE).ksu = TrackCropView.g(this.NDE);
+      TrackCropView.p(this.NDE).ksu = TrackCropView.g(this.NDE);
+      final int i = Math.max(0, Math.min((int)((float)TrackCropView.c(this.NDE) * TrackCropView.j(this.NDE)), (int)((float)TrackCropView.d(this.NDE) * TrackCropView.j(this.NDE) - TrackCropView.i(this.NDE))));
+      TrackCropView.q(this.NDE).au(0, -i);
+      localLinkedList.add(0, TrackCropView.o(this.NDE));
+      localLinkedList.add(TrackCropView.p(this.NDE));
+      TrackCropView.r(this.NDE).gg((List)localLinkedList);
+      TrackCropView.r(this.NDE).notifyDataSetChanged();
+      localObject = this.NDE.getSeekSlider();
       if (localObject != null) {
-        ((SliderSeekBar)localObject).ao(TrackCropView.e(this.GPW).getWidth() - TrackCropView.g(this.GPW) * 2, (int)((float)this.GMu * TrackCropView.j(this.GPW)), TrackCropView.g(this.GPW));
+        ((SliderSeekBar)localObject).at(TrackCropView.e(this.NDE).getWidth() - TrackCropView.g(this.NDE) * 2, (int)((float)this.NAc * TrackCropView.j(this.NDE)), TrackCropView.g(this.NDE));
       }
-      localObject = this.GPW.getSeekSlider();
+      localObject = this.NDE.getSeekSlider();
       if (localObject != null) {
         ((SliderSeekBar)localObject).setCursorPos(0.0F);
       }
-      localObject = this.GPW.getSeekSlider();
+      localObject = this.NDE.getSeekSlider();
       if (localObject != null)
       {
         ((SliderSeekBar)localObject).post((Runnable)new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(192149);
-            SliderSeekBar localSliderSeekBar = this.GPX.GPW.getSeekSlider();
+            AppMethodBeat.i(229073);
+            SliderSeekBar localSliderSeekBar = this.NDF.NDE.getSeekSlider();
             if (localSliderSeekBar != null) {
-              localSliderSeekBar.b(true, TrackCropView.g(this.GPX.GPW) + (float)TrackCropView.c(this.GPX.GPW) * TrackCropView.j(this.GPX.GPW) - i);
+              localSliderSeekBar.b(true, TrackCropView.g(this.NDF.NDE) + (float)TrackCropView.c(this.NDF.NDE) * TrackCropView.j(this.NDF.NDE) - i);
             }
-            localSliderSeekBar = this.GPX.GPW.getSeekSlider();
+            localSliderSeekBar = this.NDF.NDE.getSeekSlider();
             if (localSliderSeekBar != null) {
-              localSliderSeekBar.b(false, TrackCropView.g(this.GPX.GPW) + (float)TrackCropView.d(this.GPX.GPW) * TrackCropView.j(this.GPX.GPW) - i);
+              localSliderSeekBar.b(false, TrackCropView.g(this.NDF.NDE) + (float)TrackCropView.d(this.NDF.NDE) * TrackCropView.j(this.NDF.NDE) - i);
             }
-            TrackCropView.s(this.GPX.GPW);
-            AppMethodBeat.o(192149);
+            TrackCropView.s(this.NDF.NDE);
+            AppMethodBeat.o(229073);
           }
         });
-        AppMethodBeat.o(192150);
+        AppMethodBeat.o(228256);
         return;
       }
-      AppMethodBeat.o(192150);
+      AppMethodBeat.o(228256);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  static final class f
+    implements Runnable
+  {
+    f(TrackCropView paramTrackCropView, LinkedList paramLinkedList) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(228204);
+      if (TrackCropView.e(this.NDE).getWidth() <= 0)
+      {
+        TrackCropView.e(this.NDE).post(TrackCropView.f(this.NDE));
+        AppMethodBeat.o(228204);
+        return;
+      }
+      TrackCropView.a(this.NDE, com.tencent.mm.ci.a.fromDPToPix(this.NDE.getContext(), 40));
+      float f = TrackCropView.e(this.NDE).getHeight() * 1.0F / TrackCropView.h(this.NDE);
+      TrackCropView.b(this.NDE, TrackCropView.e(this.NDE).getWidth() - TrackCropView.g(this.NDE) * 2);
+      TrackCropView.a(this.NDE, TrackCropView.i(this.NDE) * 1.0F / (float)TrackCropView.k(this.NDE));
+      TrackCropView.c(this.NDE, (int)(TrackCropView.j(this.NDE) * (float)TrackCropView.m(this.NDE)));
+      f = TrackCropView.l(this.NDE) / (f * TrackCropView.n(this.NDE));
+      Object localObject = ((Iterable)this.NAb).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        h localh = (h)((Iterator)localObject).next();
+        localh.NCl = (f / (float)TrackCropView.m(this.NDE) * (float)localh.gwv() / localh.NDI.Nng.pvh);
+        localh.gww();
+        Log.d(TrackCropView.a(this.NDE), "build thumbInfo index:" + localh.trackIndex + ", frameCount:" + localh.NCl + ", frameDuration:" + localh.gwv() + ", frameWidth:" + (float)localh.gwv() * TrackCropView.j(this.NDE));
+      }
+      TrackCropView.o(this.NDE).ksu = TrackCropView.g(this.NDE);
+      TrackCropView.p(this.NDE).ksu = TrackCropView.g(this.NDE);
+      final int i = Math.max(0, Math.min((int)((float)TrackCropView.c(this.NDE) * TrackCropView.j(this.NDE)), (int)((float)TrackCropView.d(this.NDE) * TrackCropView.j(this.NDE) - TrackCropView.i(this.NDE))));
+      TrackCropView.q(this.NDE).au(0, -i);
+      this.NAb.add(0, TrackCropView.o(this.NDE));
+      this.NAb.add(TrackCropView.p(this.NDE));
+      TrackCropView.r(this.NDE).gg((List)this.NAb);
+      TrackCropView.r(this.NDE).notifyDataSetChanged();
+      localObject = this.NDE.getSeekSlider();
+      if (localObject != null) {
+        ((SliderSeekBar)localObject).at(TrackCropView.e(this.NDE).getWidth() - TrackCropView.g(this.NDE) * 2, (int)((float)this.NAc * TrackCropView.j(this.NDE)), TrackCropView.g(this.NDE));
+      }
+      localObject = this.NDE.getSeekSlider();
+      if (localObject != null) {
+        ((SliderSeekBar)localObject).setCursorPos(0.0F);
+      }
+      localObject = this.NDE.getSeekSlider();
+      if (localObject != null)
+      {
+        ((SliderSeekBar)localObject).post((Runnable)new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(233282);
+            SliderSeekBar localSliderSeekBar = this.NDH.NDE.getSeekSlider();
+            if (localSliderSeekBar != null) {
+              localSliderSeekBar.b(true, TrackCropView.g(this.NDH.NDE) + (float)TrackCropView.c(this.NDH.NDE) * TrackCropView.j(this.NDH.NDE) - i);
+            }
+            localSliderSeekBar = this.NDH.NDE.getSeekSlider();
+            if (localSliderSeekBar != null) {
+              localSliderSeekBar.b(false, TrackCropView.g(this.NDH.NDE) + (float)TrackCropView.d(this.NDH.NDE) * TrackCropView.j(this.NDH.NDE) - i);
+            }
+            TrackCropView.s(this.NDH.NDE);
+            AppMethodBeat.o(233282);
+          }
+        });
+        AppMethodBeat.o(228204);
+        return;
+      }
+      AppMethodBeat.o(228204);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.thumb.TrackCropView
  * JD-Core Version:    0.7.0.1
  */

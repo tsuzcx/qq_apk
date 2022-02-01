@@ -1,149 +1,119 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a;
 
-import android.bluetooth.BluetoothAdapter;
+import android.annotation.TargetApi;
 import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattService;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.d;
+import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.f;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
-import java.util.concurrent.atomic.AtomicBoolean;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.UUID;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/connect/action/SetMtuAction;", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/model/Action;", "mtuSize", "", "deviceId", "", "(Ljava/lang/Integer;Ljava/lang/String;)V", "getDeviceId", "()Ljava/lang/String;", "isTimeOut", "Ljava/util/concurrent/atomic/AtomicBoolean;", "Ljava/lang/Integer;", "timerHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "doActionImpl", "", "getName", "onMtuChanged", "gatt", "Landroid/bluetooth/BluetoothGatt;", "mtu", "status", "luggage-commons-jsapi-connectivity-ext_release"})
+@TargetApi(18)
 public final class h
   extends com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.a
 {
-  private final String dGL;
-  final AtomicBoolean lMX;
-  private final Integer lMY;
-  private final MTimerHandler timerHandler;
+  private final String oJh;
+  private final String oeZ;
   
-  public h(Integer paramInteger, String paramString)
+  public h(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(144794);
-    this.lMY = paramInteger;
-    this.dGL = paramString;
-    this.timerHandler = new MTimerHandler((MTimerHandler.CallBack)new a(this), false);
-    this.lMX = new AtomicBoolean(false);
-    AppMethodBeat.o(144794);
+    this.oeZ = paramString1;
+    this.oJh = paramString2;
   }
   
-  public final void bFt()
+  public final void bQZ()
   {
-    AppMethodBeat.i(144792);
-    if (c.bFC() == null)
+    AppMethodBeat.i(144582);
+    BluetoothGatt localBluetoothGatt = this.oJp.oIW;
+    if (localBluetoothGatt == null)
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s, bluetoothGatt is null", new Object[] { this });
-      a(j.lNC);
+      a(j.oJQ);
       done();
-      AppMethodBeat.o(144792);
+      AppMethodBeat.o(144582);
       return;
     }
-    if ((this.dGL == null) || (!BluetoothAdapter.checkBluetoothAddress(this.dGL)) || (this.lMY == null))
+    if (!c.ahv(this.oeZ))
     {
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w("MicroMsg.Ble.Action", "action:%s, unspecified deviceId", new Object[] { this });
-      a(j.lNL);
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s, serviceId is illegal", new Object[] { this });
+      a(j.oJO);
       done();
-      AppMethodBeat.o(144792);
+      AppMethodBeat.o(144582);
       return;
     }
-    if (!c.bFE())
-    {
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "bluetooth is not enable.", new Object[0]);
-      a(j.lNx);
-      done();
-      AppMethodBeat.o(144792);
-      return;
-    }
-    Object localObject = this.lNb;
-    p.g(localObject, "worker");
-    localObject = ((d)localObject).bFr();
+    Object localObject = localBluetoothGatt.getService(UUID.fromString(this.oeZ));
     if (localObject == null)
     {
-      a(j.lNC);
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s, gattService is null", new Object[] { this });
+      a(j.oJO);
       done();
-      AppMethodBeat.o(144792);
+      AppMethodBeat.o(144582);
       return;
     }
-    if (this.lMY.intValue() > 512)
+    if (!c.ahv(this.oJh))
     {
-      a(new j(10013, "fail:invalid data, DEFAULT_MAX_MTU = 512"));
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s, characteristicId is illegal", new Object[] { this });
+      a(j.oJP);
       done();
-      AppMethodBeat.o(144792);
+      AppMethodBeat.o(144582);
       return;
     }
-    if (this.lMY.intValue() < 23)
+    localObject = ((BluetoothGattService)localObject).getCharacteristic(UUID.fromString(this.oJh));
+    if (localObject == null)
     {
-      a(new j(10013, "fail:invalid data, DEFAULT_MIN_MTU = 23"));
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s, gattCharacteristic is null", new Object[] { this });
+      a(j.oJP);
       done();
-      AppMethodBeat.o(144792);
+      AppMethodBeat.o(144582);
       return;
     }
-    if (!((BluetoothGatt)localObject).requestMtu(this.lMY.intValue()))
+    if (!c.Ak(((BluetoothGattCharacteristic)localObject).getProperties()))
     {
-      a(j.lNE);
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s, not support read", new Object[] { this });
+      a(j.oJR);
       done();
-      AppMethodBeat.o(144792);
+      AppMethodBeat.o(144582);
       return;
     }
-    this.timerHandler.startTimer(500L, 9223372036854775807L);
-    AppMethodBeat.o(144792);
+    if (!localBluetoothGatt.readCharacteristic((BluetoothGattCharacteristic)localObject))
+    {
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s bluetoothGatt.readCharacteristic fail", new Object[] { this });
+      a(j.oJS);
+      done();
+      AppMethodBeat.o(144582);
+      return;
+    }
+    a(j.oJI);
+    AppMethodBeat.o(144582);
   }
   
   public final String getName()
   {
-    return "SetMtuAction";
+    return "ReadCharacteristicAction";
   }
   
-  public final void onMtuChanged(BluetoothGatt paramBluetoothGatt, int paramInt1, int paramInt2)
+  public final void onCharacteristicRead(BluetoothGatt paramBluetoothGatt, BluetoothGattCharacteristic paramBluetoothGattCharacteristic, int paramInt)
   {
-    AppMethodBeat.i(144793);
-    p.h(paramBluetoothGatt, "gatt");
-    super.onMtuChanged(paramBluetoothGatt, paramInt1, paramInt2);
-    if (this.lMX.get())
-    {
-      this.lMX.set(false);
-      AppMethodBeat.o(144793);
-      return;
-    }
-    Log.d("MicroMsg.Ble.Action", "onMtuChanged: mtu = %d, status = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    paramBluetoothGatt = this.lMY;
-    if (paramBluetoothGatt == null) {}
-    while ((paramInt1 != paramBluetoothGatt.intValue()) || (paramInt2 != 0))
-    {
-      a(j.lNv);
-      done();
-      AppMethodBeat.o(144793);
-      return;
-    }
-    a(j.lNu);
+    AppMethodBeat.i(144583);
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.Action", "action:%s onCharacteristicRead status:%s", new Object[] { this, f.Ah(paramInt) });
     done();
-    AppMethodBeat.o(144793);
+    AppMethodBeat.o(144583);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onTimerExpired"})
-  static final class a
-    implements MTimerHandler.CallBack
+  public final String toString()
   {
-    a(h paramh) {}
-    
-    public final boolean onTimerExpired()
-    {
-      AppMethodBeat.i(144791);
-      this.lMZ.lMX.set(true);
-      this.lMZ.a(j.lNJ);
-      AppMethodBeat.o(144791);
-      return false;
-    }
+    AppMethodBeat.i(144584);
+    String str = "ReadCharacteristicAction#" + this.oJw + "{serviceId='" + this.oeZ + '\'' + ", characteristicId='" + this.oJh + '\'' + ", debug=" + this.aGM + ", mainThread=" + this.oIw + ", serial=" + this.oIy + '}';
+    AppMethodBeat.o(144584);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a.h
  * JD-Core Version:    0.7.0.1
  */

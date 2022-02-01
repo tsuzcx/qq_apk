@@ -19,22 +19,22 @@ public class s
   
   private s(Context paramContext)
   {
-    AppMethodBeat.i(193537);
+    AppMethodBeat.i(236567);
     this.b = "JudeCpuAbiHandler";
     this.e = "armeabi";
     this.a = 4;
     c = paramContext;
     this.e = b(paramContext);
     this.a = a(this.e);
-    AppMethodBeat.o(193537);
+    AppMethodBeat.o(236567);
   }
   
   private static int a(String paramString)
   {
-    AppMethodBeat.i(193540);
+    AppMethodBeat.i(236571);
     if (paramString == null)
     {
-      AppMethodBeat.o(193540);
+      AppMethodBeat.o(236571);
       return 4;
     }
     int i = 0;
@@ -42,37 +42,37 @@ public class s
     {
       if (paramString.equals(t.F[i]))
       {
-        AppMethodBeat.o(193540);
+        AppMethodBeat.o(236571);
         return i;
       }
       i += 1;
     }
-    AppMethodBeat.o(193540);
+    AppMethodBeat.o(236571);
     return -1;
   }
   
   public static s a(Context paramContext)
   {
-    AppMethodBeat.i(193538);
+    AppMethodBeat.i(236568);
     try
     {
       if (d == null) {
         d = new s(paramContext);
       }
       paramContext = d;
-      AppMethodBeat.o(193538);
+      AppMethodBeat.o(236568);
       return paramContext;
     }
     finally
     {
-      AppMethodBeat.o(193538);
+      AppMethodBeat.o(236568);
     }
   }
   
   private static String b(Context paramContext)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(193539);
+    AppMethodBeat.i(236570);
     for (;;)
     {
       try
@@ -84,7 +84,7 @@ public class s
             break label179;
           }
           paramContext = Build.SUPPORTED_64_BIT_ABIS[0];
-          AppMethodBeat.o(193539);
+          AppMethodBeat.o(236570);
           return paramContext;
         }
         if (Build.VERSION.SDK_INT < 21) {
@@ -112,13 +112,13 @@ public class s
         if (paramContext.equals("getError"))
         {
           paramContext = new Exception("getError");
-          AppMethodBeat.o(193539);
+          AppMethodBeat.o(236570);
           throw paramContext;
         }
       }
       catch (Throwable paramContext)
       {
-        AppMethodBeat.o(193539);
+        AppMethodBeat.o(236570);
         return "armeabi";
       }
       boolean bool1 = bool2;
@@ -137,26 +137,26 @@ public class s
   
   private static String c(Context paramContext)
   {
-    AppMethodBeat.i(193541);
+    AppMethodBeat.i(236573);
     try
     {
       paramContext = paramContext.getApplicationContext().getPackageManager().getApplicationInfo(paramContext.getApplicationContext().getPackageName(), 0);
       Field localField = ApplicationInfo.class.getDeclaredField("primaryCpuAbi");
       localField.setAccessible(true);
       paramContext = (String)localField.get(paramContext);
-      AppMethodBeat.o(193541);
+      AppMethodBeat.o(236573);
       return paramContext;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(193541);
+      AppMethodBeat.o(236573);
     }
     return "getError";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.map.tools.internal.s
  * JD-Core Version:    0.7.0.1
  */

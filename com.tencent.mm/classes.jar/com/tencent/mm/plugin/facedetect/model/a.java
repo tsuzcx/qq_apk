@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.facedetect.model;
 
 public final class a
 {
-  public static boolean sQx = false;
+  public static boolean uBl = false;
 }
 
 

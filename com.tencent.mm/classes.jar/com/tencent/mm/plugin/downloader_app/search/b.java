@@ -15,12 +15,12 @@ public final class b
   String iconUrl;
   String jumpUrl;
   int position;
-  String qLO;
-  String qLP;
-  List<String> qLQ;
   long size;
   int state;
   int type;
+  String una;
+  String unb;
+  List<String> unc;
   
   public static void au(Context paramContext, String paramString)
   {
@@ -64,7 +64,7 @@ public final class b
     AppMethodBeat.o(8957);
   }
   
-  public static List<b> eX(Context paramContext)
+  public static List<b> fb(Context paramContext)
   {
     AppMethodBeat.i(8955);
     ArrayList localArrayList = new ArrayList();
@@ -86,7 +86,7 @@ public final class b
       {
         b localb = new b();
         localb.type = 2;
-        localb.qLO = new String(Base64.decode(str, 0));
+        localb.una = new String(Base64.decode(str, 0));
         k = j + 1;
         localb.position = k;
         localArrayList.add(localb);
@@ -106,9 +106,9 @@ public final class b
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(8954);
-    if (((paramObject instanceof b)) && (((b)paramObject).qLO != null))
+    if (((paramObject instanceof b)) && (((b)paramObject).una != null))
     {
-      bool = ((b)paramObject).qLO.equals(this.qLO);
+      bool = ((b)paramObject).una.equals(this.una);
       AppMethodBeat.o(8954);
       return bool;
     }
@@ -119,7 +119,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.search.b
  * JD-Core Version:    0.7.0.1
  */

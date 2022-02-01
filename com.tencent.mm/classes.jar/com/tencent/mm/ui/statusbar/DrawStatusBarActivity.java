@@ -10,7 +10,7 @@ import com.tencent.mm.ui.widget.SwipeBackLayout;
 public abstract class DrawStatusBarActivity
   extends MMActivity
 {
-  private b Qoh = null;
+  private b XMm = null;
   
   public void initSwipeBack()
   {
@@ -19,10 +19,10 @@ public abstract class DrawStatusBarActivity
     {
       View localView = getSwipeBackLayout().getChildAt(0);
       getSwipeBackLayout().removeView(localView);
-      this.Qoh = new b(this);
-      this.Qoh.addView(localView, new FrameLayout.LayoutParams(-1, -1));
-      getSwipeBackLayout().addView(this.Qoh);
-      getSwipeBackLayout().setContentView(this.Qoh);
+      this.XMm = new b(this);
+      this.XMm.addView(localView, new FrameLayout.LayoutParams(-1, -1));
+      getSwipeBackLayout().addView(this.XMm);
+      getSwipeBackLayout().setContentView(this.XMm);
     }
   }
   
@@ -34,7 +34,7 @@ public abstract class DrawStatusBarActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.statusbar.DrawStatusBarActivity
  * JD-Core Version:    0.7.0.1
  */

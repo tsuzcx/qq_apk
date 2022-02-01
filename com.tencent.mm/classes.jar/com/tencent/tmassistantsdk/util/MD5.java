@@ -212,7 +212,7 @@ public class MD5
     //   2: ldc 168
     //   4: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: invokestatic 174	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   8: invokestatic 174	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
     //   11: astore_0
     //   12: sipush 1024
     //   15: newarray byte
@@ -585,7 +585,7 @@ public class MD5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tmassistantsdk.util.MD5
  * JD-Core Version:    0.7.0.1
  */

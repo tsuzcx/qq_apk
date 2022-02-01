@@ -13,6 +13,9 @@ import com.tencent.qqmusic.mediaplayer.seektable.SeekTable;
 import com.tencent.qqmusic.mediaplayer.upstream.IDataSource;
 import com.tencent.qqmusic.mediaplayer.upstream.INativeDataSource;
 import com.tencent.qqmusic.mediaplayer.util.Logger;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 class CorePlayer
@@ -20,12 +23,14 @@ class CorePlayer
 {
   private static final AtomicInteger PLAYER_ID_CREATOR;
   private static final String TAG = "CorePlayer";
+  final List<IAudioListener> mAudioEffectList;
   private final PlayerCallback mCallback;
   private IDataSource mDataSource;
   private final BaseDecoder mDecoder;
   private final Handler mEventHandler;
   private final QMThreadExecutor mExecutor;
   protected AudioInformation mInformation;
+  private boolean mIsAudioEffectParamPrepared;
   volatile boolean mIsExit;
   private INativeDataSource mNativeDataSource;
   private BaseDecodeDataComponent mPcmCompnent;
@@ -34,6 +39,8 @@ class CorePlayer
   private int mPlayerMode;
   private Float mSpeedToSet;
   private final PlayerStateRunner mStateRunner;
+  private int mTargetBitDepth;
+  final List<IAudioListener> mTerminalAudioEffectList;
   private String mThreadName;
   private PerformanceTracer performanceTracer;
   
@@ -47,8 +54,12 @@ class CorePlayer
   CorePlayer(IDataSource paramIDataSource, INativeDataSource paramINativeDataSource, PlayerCallback paramPlayerCallback, Looper paramLooper, BaseDecoder paramBaseDecoder, QMThreadExecutor paramQMThreadExecutor)
   {
     AppMethodBeat.i(76677);
+    this.mTargetBitDepth = 2;
+    this.mIsAudioEffectParamPrepared = false;
     this.mStateRunner = new PlayerStateRunner(Integer.valueOf(0));
     this.mPlayerID = PLAYER_ID_CREATOR.addAndGet(1);
+    this.mAudioEffectList = new CopyOnWriteArrayList();
+    this.mTerminalAudioEffectList = new CopyOnWriteArrayList();
     this.mSpeedToSet = null;
     this.mThreadName = "Unnamed";
     this.mPlayerMode = 0;
@@ -183,9 +194,41 @@ class CorePlayer
   void addAudioListener(IAudioListener paramIAudioListener)
   {
     AppMethodBeat.i(76693);
-    if (this.mPcmCompnent != null) {
-      this.mPcmCompnent.addAudioListener(paramIAudioListener);
+    if (paramIAudioListener.isTerminal()) {
+      if (!this.mTerminalAudioEffectList.contains(paramIAudioListener))
+      {
+        this.mTerminalAudioEffectList.add(paramIAudioListener);
+        Logger.i("CorePlayer", "[addAudioListener] terminal audio added: ".concat(String.valueOf(paramIAudioListener)));
+      }
     }
+    for (;;)
+    {
+      if (this.mIsAudioEffectParamPrepared) {
+        try
+        {
+          l = paramIAudioListener.onPlayerReady(this.mTargetBitDepth, this.mInformation, getCurPosition());
+          if (l != 0L) {
+            Logger.e("CorePlayer", "[addAudioListener] failed to init audio %s, ret: %d", new Object[] { paramIAudioListener, Long.valueOf(l) });
+          }
+          AppMethodBeat.o(76693);
+          return;
+          if (!this.mAudioEffectList.contains(paramIAudioListener))
+          {
+            this.mAudioEffectList.add(paramIAudioListener);
+            Logger.i("CorePlayer", "[addAudioListener] audio added: ".concat(String.valueOf(paramIAudioListener)));
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            Logger.e("CorePlayer", "[addAudioListener] failed to init audio: ".concat(String.valueOf(paramIAudioListener)), localThrowable);
+            long l = 0L;
+          }
+        }
+      }
+    }
+    Logger.i("CorePlayer", "[addAudioListener] audio information not ready. init will be delayed.");
     AppMethodBeat.o(76693);
   }
   
@@ -327,14 +370,14 @@ class CorePlayer
   
   float getSpeed()
   {
-    AppMethodBeat.i(190287);
+    AppMethodBeat.i(244510);
     float f = 1.0F;
     if (this.mPcmCompnent != null) {
       f = this.mPcmCompnent.getSpeed();
     }
     for (;;)
     {
-      AppMethodBeat.o(190287);
+      AppMethodBeat.o(244510);
       return f;
       if (this.mSpeedToSet != null) {
         f = this.mSpeedToSet.floatValue();
@@ -348,25 +391,25 @@ class CorePlayer
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 333
-    //   5: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 392
+    //   5: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   9: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
     //   12: ifnonnull +15 -> 27
     //   15: iconst_0
     //   16: istore_1
-    //   17: ldc_w 333
-    //   20: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   17: ldc_w 392
+    //   20: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   23: aload_0
     //   24: monitorexit
     //   25: iload_1
     //   26: ireturn
     //   27: aload_0
-    //   28: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   31: invokevirtual 335	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:hasDecodeData	()Z
+    //   28: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   31: invokevirtual 394	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:hasDecodeData	()Z
     //   34: istore_1
-    //   35: ldc_w 333
-    //   38: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   35: ldc_w 392
+    //   38: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   41: goto -18 -> 23
     //   44: astore_2
     //   45: aload_0
@@ -391,25 +434,25 @@ class CorePlayer
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 336
-    //   5: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 395
+    //   5: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   9: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
     //   12: ifnonnull +15 -> 27
     //   15: iconst_0
     //   16: istore_1
-    //   17: ldc_w 336
-    //   20: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   17: ldc_w 395
+    //   20: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   23: aload_0
     //   24: monitorexit
     //   25: iload_1
     //   26: ireturn
     //   27: aload_0
-    //   28: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   31: invokevirtual 215	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:hasDecodeDataSuccess	()Z
+    //   28: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   31: invokevirtual 239	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:hasDecodeDataSuccess	()Z
     //   34: istore_1
-    //   35: ldc_w 336
-    //   38: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   35: ldc_w 395
+    //   38: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   41: goto -18 -> 23
     //   44: astore_2
     //   45: aload_0
@@ -514,8 +557,11 @@ class CorePlayer
   void removeAudioListener(IAudioListener paramIAudioListener)
   {
     AppMethodBeat.i(76694);
-    if (this.mPcmCompnent != null) {
-      this.mPcmCompnent.removeAudioListener(paramIAudioListener);
+    if (this.mAudioEffectList.remove(paramIAudioListener)) {
+      Logger.i("CorePlayer", "[removeAudioListener] audio removed: ".concat(String.valueOf(paramIAudioListener)));
+    }
+    if (this.mTerminalAudioEffectList.remove(paramIAudioListener)) {
+      Logger.i("CorePlayer", "[removeAudioListener] terminal audio removed: ".concat(String.valueOf(paramIAudioListener)));
     }
     AppMethodBeat.o(76694);
   }
@@ -524,763 +570,783 @@ class CorePlayer
   public void run()
   {
     // Byte code:
-    //   0: ldc_w 394
-    //   3: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 399	com/tencent/qqmusic/mediaplayer/util/CpuInfoUtil:startProcessInfoOutput	()V
-    //   9: ldc 14
+    //   0: ldc_w 458
+    //   3: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: invokestatic 463	com/tencent/qqmusic/mediaplayer/util/CpuInfoUtil:startProcessInfoOutput	()V
+    //   9: ldc 17
     //   11: aload_0
-    //   12: new 135	java/lang/StringBuilder
+    //   12: new 159	java/lang/StringBuilder
     //   15: dup
-    //   16: ldc_w 401
-    //   19: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   22: invokestatic 407	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   25: invokevirtual 410	java/lang/Thread:getName	()Ljava/lang/String;
-    //   28: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   31: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   34: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   37: invokestatic 223	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   16: ldc_w 465
+    //   19: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   22: invokestatic 471	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   25: invokevirtual 474	java/lang/Thread:getName	()Ljava/lang/String;
+    //   28: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   31: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   34: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   37: invokestatic 247	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   40: aload_0
-    //   41: getfield 124	com/tencent/qqmusic/mediaplayer/CorePlayer:mCallback	Lcom/tencent/qqmusic/mediaplayer/PlayerCallback;
+    //   41: getfield 144	com/tencent/qqmusic/mediaplayer/CorePlayer:mCallback	Lcom/tencent/qqmusic/mediaplayer/PlayerCallback;
     //   44: aload_0
-    //   45: invokeinterface 414 2 0
+    //   45: invokeinterface 478 2 0
     //   50: aload_0
-    //   51: getfield 120	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
-    //   54: ifnull +350 -> 404
+    //   51: getfield 140	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
+    //   54: ifnull +368 -> 422
     //   57: aload_0
-    //   58: getfield 118	com/tencent/qqmusic/mediaplayer/CorePlayer:mDecoder	Lcom/tencent/qqmusic/mediaplayer/codec/BaseDecoder;
+    //   58: getfield 138	com/tencent/qqmusic/mediaplayer/CorePlayer:mDecoder	Lcom/tencent/qqmusic/mediaplayer/codec/BaseDecoder;
     //   61: aload_0
-    //   62: getfield 120	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
-    //   65: invokevirtual 418	com/tencent/qqmusic/mediaplayer/codec/BaseDecoder:init	(Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;)I
+    //   62: getfield 140	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
+    //   65: invokevirtual 482	com/tencent/qqmusic/mediaplayer/codec/BaseDecoder:init	(Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;)I
     //   68: istore_1
-    //   69: ldc 14
+    //   69: ldc 17
     //   71: aload_0
-    //   72: ldc_w 420
+    //   72: ldc_w 484
     //   75: iload_1
-    //   76: invokestatic 423	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   79: invokevirtual 426	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   82: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   85: invokestatic 223	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   76: invokestatic 487	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   79: invokevirtual 313	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   82: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   85: invokestatic 247	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   88: iload_1
     //   89: bipush 247
-    //   91: if_icmpne +680 -> 771
-    //   94: ldc 14
+    //   91: if_icmpne +698 -> 789
+    //   94: ldc 17
     //   96: aload_0
-    //   97: ldc_w 428
-    //   100: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   103: invokestatic 184	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   97: ldc_w 489
+    //   100: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   103: invokestatic 208	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   106: aload_0
-    //   107: getfield 80	com/tencent/qqmusic/mediaplayer/CorePlayer:mStateRunner	Lcom/tencent/qqmusic/mediaplayer/PlayerStateRunner;
+    //   107: getfield 93	com/tencent/qqmusic/mediaplayer/CorePlayer:mStateRunner	Lcom/tencent/qqmusic/mediaplayer/PlayerStateRunner;
     //   110: bipush 9
-    //   112: invokestatic 75	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   115: invokevirtual 128	com/tencent/qqmusic/mediaplayer/PlayerStateRunner:transfer	(Ljava/lang/Integer;)Ljava/lang/Integer;
+    //   112: invokestatic 88	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   115: invokevirtual 148	com/tencent/qqmusic/mediaplayer/PlayerStateRunner:transfer	(Ljava/lang/Integer;)Ljava/lang/Integer;
     //   118: pop
     //   119: aload_0
-    //   120: getfield 100	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayPath	Ljava/lang/String;
-    //   123: invokestatic 238	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   126: ifne +633 -> 759
+    //   120: getfield 120	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayPath	Ljava/lang/String;
+    //   123: invokestatic 262	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   126: ifne +651 -> 777
     //   129: aload_0
     //   130: aload_0
-    //   131: getfield 100	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayPath	Ljava/lang/String;
-    //   134: invokespecial 242	com/tencent/qqmusic/mediaplayer/CorePlayer:isPathExternalStorage	(Ljava/lang/String;)Z
-    //   137: ifeq +622 -> 759
+    //   131: getfield 120	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayPath	Ljava/lang/String;
+    //   134: invokespecial 266	com/tencent/qqmusic/mediaplayer/CorePlayer:isPathExternalStorage	(Ljava/lang/String;)Z
+    //   137: ifeq +640 -> 777
     //   140: aload_0
     //   141: bipush 91
     //   143: bipush 100
-    //   145: invokespecial 430	com/tencent/qqmusic/mediaplayer/CorePlayer:callExceptionCallback	(II)V
-    //   148: invokestatic 436	com/tencent/qqmusic/mediaplayer/PlayerConfigManager:getInstance	()Lcom/tencent/qqmusic/mediaplayer/PlayerConfigManager;
+    //   145: invokespecial 491	com/tencent/qqmusic/mediaplayer/CorePlayer:callExceptionCallback	(II)V
+    //   148: invokestatic 497	com/tencent/qqmusic/mediaplayer/PlayerConfigManager:getInstance	()Lcom/tencent/qqmusic/mediaplayer/PlayerConfigManager;
     //   151: aload_0
-    //   152: invokevirtual 439	com/tencent/qqmusic/mediaplayer/PlayerConfigManager:setCommonPlayerRef	(Lcom/tencent/qqmusic/mediaplayer/CorePlayer;)V
+    //   152: invokevirtual 500	com/tencent/qqmusic/mediaplayer/PlayerConfigManager:setCommonPlayerRef	(Lcom/tencent/qqmusic/mediaplayer/CorePlayer;)V
     //   155: aload_0
-    //   156: getfield 186	com/tencent/qqmusic/mediaplayer/CorePlayer:mInformation	Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
-    //   159: ifnull +111 -> 270
+    //   156: getfield 210	com/tencent/qqmusic/mediaplayer/CorePlayer:mInformation	Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
+    //   159: ifnull +129 -> 288
     //   162: aload_0
-    //   163: getfield 96	com/tencent/qqmusic/mediaplayer/CorePlayer:mIsExit	Z
-    //   166: ifne +104 -> 270
+    //   163: getfield 116	com/tencent/qqmusic/mediaplayer/CorePlayer:mIsExit	Z
+    //   166: ifne +122 -> 288
     //   169: aload_0
-    //   170: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   173: ifnonnull +97 -> 270
+    //   170: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   173: ifnonnull +115 -> 288
     //   176: aload_0
-    //   177: getfield 186	com/tencent/qqmusic/mediaplayer/CorePlayer:mInformation	Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
-    //   180: invokevirtual 204	com/tencent/qqmusic/mediaplayer/AudioInformation:getDuration	()J
-    //   183: ldc2_w 440
+    //   177: getfield 210	com/tencent/qqmusic/mediaplayer/CorePlayer:mInformation	Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
+    //   180: invokevirtual 228	com/tencent/qqmusic/mediaplayer/AudioInformation:getDuration	()J
+    //   183: ldc2_w 501
     //   186: lcmp
     //   187: iflt +11 -> 198
     //   190: aload_0
-    //   191: getfield 94	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerMode	I
+    //   191: getfield 114	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerMode	I
     //   194: iconst_1
-    //   195: if_icmpne +969 -> 1164
+    //   195: if_icmpne +987 -> 1182
     //   198: aload_0
-    //   199: getfield 94	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerMode	I
+    //   199: getfield 114	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerMode	I
     //   202: iconst_1
     //   203: if_icmpeq +8 -> 211
     //   206: aload_0
     //   207: iconst_1
-    //   208: putfield 94	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerMode	I
+    //   208: putfield 114	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerMode	I
     //   211: aload_0
-    //   212: new 443	com/tencent/qqmusic/mediaplayer/StaticDecodeDataComponent
+    //   212: new 504	com/tencent/qqmusic/mediaplayer/StaticDecodeDataComponent
     //   215: dup
     //   216: aload_0
     //   217: aload_0
-    //   218: getfield 80	com/tencent/qqmusic/mediaplayer/CorePlayer:mStateRunner	Lcom/tencent/qqmusic/mediaplayer/PlayerStateRunner;
+    //   218: getfield 93	com/tencent/qqmusic/mediaplayer/CorePlayer:mStateRunner	Lcom/tencent/qqmusic/mediaplayer/PlayerStateRunner;
     //   221: aload_0
-    //   222: getfield 186	com/tencent/qqmusic/mediaplayer/CorePlayer:mInformation	Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
+    //   222: getfield 210	com/tencent/qqmusic/mediaplayer/CorePlayer:mInformation	Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
     //   225: aload_0
-    //   226: getfield 124	com/tencent/qqmusic/mediaplayer/CorePlayer:mCallback	Lcom/tencent/qqmusic/mediaplayer/PlayerCallback;
+    //   226: getfield 144	com/tencent/qqmusic/mediaplayer/CorePlayer:mCallback	Lcom/tencent/qqmusic/mediaplayer/PlayerCallback;
     //   229: aload_0
     //   230: aload_0
-    //   231: getfield 116	com/tencent/qqmusic/mediaplayer/CorePlayer:mEventHandler	Landroid/os/Handler;
+    //   231: getfield 136	com/tencent/qqmusic/mediaplayer/CorePlayer:mEventHandler	Landroid/os/Handler;
     //   234: aload_0
-    //   235: getfield 86	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerID	I
-    //   238: invokespecial 446	com/tencent/qqmusic/mediaplayer/StaticDecodeDataComponent:<init>	(Lcom/tencent/qqmusic/mediaplayer/CorePlayer;Lcom/tencent/qqmusic/mediaplayer/PlayerStateRunner;Lcom/tencent/qqmusic/mediaplayer/AudioInformation;Lcom/tencent/qqmusic/mediaplayer/PlayerCallback;Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent$HandleDecodeDataCallback;Landroid/os/Handler;I)V
-    //   241: putfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   244: aload_0
-    //   245: getfield 88	com/tencent/qqmusic/mediaplayer/CorePlayer:mSpeedToSet	Ljava/lang/Float;
-    //   248: ifnull +22 -> 270
+    //   235: getfield 99	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerID	I
+    //   238: new 10	com/tencent/qqmusic/mediaplayer/CorePlayer$AudioListenerDelegate
+    //   241: dup
+    //   242: aload_0
+    //   243: iconst_0
+    //   244: invokespecial 507	com/tencent/qqmusic/mediaplayer/CorePlayer$AudioListenerDelegate:<init>	(Lcom/tencent/qqmusic/mediaplayer/CorePlayer;Z)V
+    //   247: new 10	com/tencent/qqmusic/mediaplayer/CorePlayer$AudioListenerDelegate
+    //   250: dup
     //   251: aload_0
-    //   252: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   255: aload_0
-    //   256: getfield 88	com/tencent/qqmusic/mediaplayer/CorePlayer:mSpeedToSet	Ljava/lang/Float;
-    //   259: invokevirtual 331	java/lang/Float:floatValue	()F
-    //   262: invokevirtual 450	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:setSpeed	(F)V
-    //   265: aload_0
-    //   266: aconst_null
-    //   267: putfield 88	com/tencent/qqmusic/mediaplayer/CorePlayer:mSpeedToSet	Ljava/lang/Float;
-    //   270: aload_0
-    //   271: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   274: ifnull +10 -> 284
-    //   277: aload_0
-    //   278: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   281: invokevirtual 453	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:handleDecodeData	()V
-    //   284: aload_0
-    //   285: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   288: ifnull +1039 -> 1327
-    //   291: ldc 14
-    //   293: aload_0
-    //   294: new 135	java/lang/StringBuilder
-    //   297: dup
-    //   298: ldc_w 455
-    //   301: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   304: aload_0
-    //   305: getfield 96	com/tencent/qqmusic/mediaplayer/CorePlayer:mIsExit	Z
-    //   308: invokevirtual 458	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   311: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   314: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   317: invokestatic 223	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   320: invokestatic 461	com/tencent/qqmusic/mediaplayer/util/CpuInfoUtil:stopProcessInfoOutput	()V
-    //   323: aload_0
-    //   324: getfield 118	com/tencent/qqmusic/mediaplayer/CorePlayer:mDecoder	Lcom/tencent/qqmusic/mediaplayer/codec/BaseDecoder;
-    //   327: invokevirtual 463	com/tencent/qqmusic/mediaplayer/codec/BaseDecoder:release	()I
-    //   330: pop
-    //   331: aload_0
-    //   332: getfield 120	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
-    //   335: ifnull +12 -> 347
-    //   338: aload_0
-    //   339: getfield 120	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
-    //   342: invokeinterface 468 1 0
-    //   347: aload_0
-    //   348: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   351: ifnull +10 -> 361
-    //   354: aload_0
-    //   355: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   358: invokevirtual 470	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:release	()V
-    //   361: aload_0
-    //   362: iconst_0
-    //   363: putfield 94	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerMode	I
-    //   366: ldc 14
-    //   368: aload_0
-    //   369: new 135	java/lang/StringBuilder
-    //   372: dup
-    //   373: ldc_w 472
-    //   376: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   379: invokestatic 407	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   382: invokevirtual 410	java/lang/Thread:getName	()Ljava/lang/String;
-    //   385: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   388: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   391: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   394: invokestatic 223	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   397: ldc_w 394
-    //   400: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   403: return
-    //   404: aload_0
-    //   405: getfield 122	com/tencent/qqmusic/mediaplayer/CorePlayer:mNativeDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/INativeDataSource;
-    //   408: ifnull +212 -> 620
-    //   411: aload_0
-    //   412: getfield 118	com/tencent/qqmusic/mediaplayer/CorePlayer:mDecoder	Lcom/tencent/qqmusic/mediaplayer/codec/BaseDecoder;
-    //   415: aload_0
-    //   416: getfield 122	com/tencent/qqmusic/mediaplayer/CorePlayer:mNativeDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/INativeDataSource;
-    //   419: invokevirtual 475	com/tencent/qqmusic/mediaplayer/codec/BaseDecoder:init	(Lcom/tencent/qqmusic/mediaplayer/upstream/INativeDataSource;)I
-    //   422: istore_1
-    //   423: ldc 14
-    //   425: aload_0
-    //   426: ldc_w 477
-    //   429: iload_1
-    //   430: invokestatic 423	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   433: invokevirtual 426	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   436: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   439: invokestatic 223	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   442: goto -354 -> 88
-    //   445: astore_3
-    //   446: bipush 62
-    //   448: istore_1
-    //   449: aload_3
-    //   450: instanceof 298
-    //   453: ifeq +613 -> 1066
-    //   456: bipush 69
-    //   458: istore_1
-    //   459: ldc 14
-    //   461: aload_0
-    //   462: ldc_w 479
-    //   465: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   468: invokestatic 184	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   471: aload_0
-    //   472: getfield 80	com/tencent/qqmusic/mediaplayer/CorePlayer:mStateRunner	Lcom/tencent/qqmusic/mediaplayer/PlayerStateRunner;
-    //   475: bipush 9
-    //   477: invokestatic 75	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   480: invokevirtual 128	com/tencent/qqmusic/mediaplayer/PlayerStateRunner:transfer	(Ljava/lang/Integer;)Ljava/lang/Integer;
-    //   483: pop
-    //   484: aload_0
-    //   485: bipush 91
-    //   487: iload_1
-    //   488: invokespecial 430	com/tencent/qqmusic/mediaplayer/CorePlayer:callExceptionCallback	(II)V
-    //   491: ldc 14
-    //   493: ldc_w 481
-    //   496: aload_3
-    //   497: invokestatic 304	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   500: aload_0
-    //   501: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   504: ifnull +577 -> 1081
-    //   507: ldc 14
-    //   509: aload_0
-    //   510: new 135	java/lang/StringBuilder
-    //   513: dup
-    //   514: ldc_w 455
-    //   517: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   520: aload_0
-    //   521: getfield 96	com/tencent/qqmusic/mediaplayer/CorePlayer:mIsExit	Z
-    //   524: invokevirtual 458	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   527: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   530: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   533: invokestatic 223	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   536: invokestatic 461	com/tencent/qqmusic/mediaplayer/util/CpuInfoUtil:stopProcessInfoOutput	()V
-    //   539: aload_0
-    //   540: getfield 118	com/tencent/qqmusic/mediaplayer/CorePlayer:mDecoder	Lcom/tencent/qqmusic/mediaplayer/codec/BaseDecoder;
-    //   543: invokevirtual 463	com/tencent/qqmusic/mediaplayer/codec/BaseDecoder:release	()I
-    //   546: pop
-    //   547: aload_0
-    //   548: getfield 120	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
-    //   551: ifnull +12 -> 563
-    //   554: aload_0
-    //   555: getfield 120	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
-    //   558: invokeinterface 468 1 0
-    //   563: aload_0
-    //   564: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   567: ifnull +10 -> 577
-    //   570: aload_0
-    //   571: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   574: invokevirtual 470	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:release	()V
-    //   577: aload_0
-    //   578: iconst_0
-    //   579: putfield 94	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerMode	I
-    //   582: ldc 14
-    //   584: aload_0
-    //   585: new 135	java/lang/StringBuilder
-    //   588: dup
-    //   589: ldc_w 472
-    //   592: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   595: invokestatic 407	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   598: invokevirtual 410	java/lang/Thread:getName	()Ljava/lang/String;
-    //   601: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   604: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   607: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   610: invokestatic 223	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   613: ldc_w 394
-    //   616: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   619: return
-    //   620: iconst_m1
-    //   621: istore_1
-    //   622: ldc 14
-    //   624: aload_0
-    //   625: ldc_w 483
-    //   628: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   631: invokestatic 223	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   634: goto -546 -> 88
-    //   637: astore_3
-    //   638: aload_0
-    //   639: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   642: ifnull +851 -> 1493
-    //   645: ldc 14
-    //   647: aload_0
-    //   648: new 135	java/lang/StringBuilder
-    //   651: dup
-    //   652: ldc_w 455
-    //   655: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   658: aload_0
-    //   659: getfield 96	com/tencent/qqmusic/mediaplayer/CorePlayer:mIsExit	Z
-    //   662: invokevirtual 458	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   665: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   668: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   671: invokestatic 223	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   674: invokestatic 461	com/tencent/qqmusic/mediaplayer/util/CpuInfoUtil:stopProcessInfoOutput	()V
-    //   677: aload_0
-    //   678: getfield 118	com/tencent/qqmusic/mediaplayer/CorePlayer:mDecoder	Lcom/tencent/qqmusic/mediaplayer/codec/BaseDecoder;
-    //   681: invokevirtual 463	com/tencent/qqmusic/mediaplayer/codec/BaseDecoder:release	()I
-    //   684: pop
-    //   685: aload_0
-    //   686: getfield 120	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
-    //   689: ifnull +12 -> 701
-    //   692: aload_0
-    //   693: getfield 120	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
-    //   696: invokeinterface 468 1 0
-    //   701: aload_0
-    //   702: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   705: ifnull +10 -> 715
-    //   708: aload_0
-    //   709: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   712: invokevirtual 470	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:release	()V
-    //   715: aload_0
-    //   716: iconst_0
-    //   717: putfield 94	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerMode	I
-    //   720: ldc 14
-    //   722: aload_0
-    //   723: new 135	java/lang/StringBuilder
-    //   726: dup
-    //   727: ldc_w 472
-    //   730: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   733: invokestatic 407	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   736: invokevirtual 410	java/lang/Thread:getName	()Ljava/lang/String;
-    //   739: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   742: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   745: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   748: invokestatic 223	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   751: ldc_w 394
-    //   754: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   757: aload_3
-    //   758: athrow
-    //   759: aload_0
-    //   760: bipush 91
-    //   762: sipush 200
-    //   765: invokespecial 430	com/tencent/qqmusic/mediaplayer/CorePlayer:callExceptionCallback	(II)V
-    //   768: goto -620 -> 148
-    //   771: iload_1
-    //   772: ifeq +280 -> 1052
-    //   775: ldc 14
+    //   252: iconst_1
+    //   253: invokespecial 507	com/tencent/qqmusic/mediaplayer/CorePlayer$AudioListenerDelegate:<init>	(Lcom/tencent/qqmusic/mediaplayer/CorePlayer;Z)V
+    //   256: invokespecial 510	com/tencent/qqmusic/mediaplayer/StaticDecodeDataComponent:<init>	(Lcom/tencent/qqmusic/mediaplayer/CorePlayer;Lcom/tencent/qqmusic/mediaplayer/PlayerStateRunner;Lcom/tencent/qqmusic/mediaplayer/AudioInformation;Lcom/tencent/qqmusic/mediaplayer/PlayerCallback;Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent$HandleDecodeDataCallback;Landroid/os/Handler;ILcom/tencent/qqmusic/mediaplayer/audiofx/IAudioListener;Lcom/tencent/qqmusic/mediaplayer/audiofx/IAudioListener;)V
+    //   259: putfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   262: aload_0
+    //   263: getfield 108	com/tencent/qqmusic/mediaplayer/CorePlayer:mSpeedToSet	Ljava/lang/Float;
+    //   266: ifnull +22 -> 288
+    //   269: aload_0
+    //   270: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   273: aload_0
+    //   274: getfield 108	com/tencent/qqmusic/mediaplayer/CorePlayer:mSpeedToSet	Ljava/lang/Float;
+    //   277: invokevirtual 390	java/lang/Float:floatValue	()F
+    //   280: invokevirtual 514	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:setSpeed	(F)V
+    //   283: aload_0
+    //   284: aconst_null
+    //   285: putfield 108	com/tencent/qqmusic/mediaplayer/CorePlayer:mSpeedToSet	Ljava/lang/Float;
+    //   288: aload_0
+    //   289: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   292: ifnull +10 -> 302
+    //   295: aload_0
+    //   296: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   299: invokevirtual 517	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:handleDecodeData	()V
+    //   302: aload_0
+    //   303: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   306: ifnull +1057 -> 1363
+    //   309: ldc 17
+    //   311: aload_0
+    //   312: new 159	java/lang/StringBuilder
+    //   315: dup
+    //   316: ldc_w 519
+    //   319: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   322: aload_0
+    //   323: getfield 116	com/tencent/qqmusic/mediaplayer/CorePlayer:mIsExit	Z
+    //   326: invokevirtual 522	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   329: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   332: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   335: invokestatic 247	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   338: invokestatic 525	com/tencent/qqmusic/mediaplayer/util/CpuInfoUtil:stopProcessInfoOutput	()V
+    //   341: aload_0
+    //   342: getfield 138	com/tencent/qqmusic/mediaplayer/CorePlayer:mDecoder	Lcom/tencent/qqmusic/mediaplayer/codec/BaseDecoder;
+    //   345: invokevirtual 527	com/tencent/qqmusic/mediaplayer/codec/BaseDecoder:release	()I
+    //   348: pop
+    //   349: aload_0
+    //   350: getfield 140	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
+    //   353: ifnull +12 -> 365
+    //   356: aload_0
+    //   357: getfield 140	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
+    //   360: invokeinterface 532 1 0
+    //   365: aload_0
+    //   366: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   369: ifnull +10 -> 379
+    //   372: aload_0
+    //   373: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   376: invokevirtual 534	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:release	()V
+    //   379: aload_0
+    //   380: iconst_0
+    //   381: putfield 114	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerMode	I
+    //   384: ldc 17
+    //   386: aload_0
+    //   387: new 159	java/lang/StringBuilder
+    //   390: dup
+    //   391: ldc_w 536
+    //   394: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   397: invokestatic 471	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   400: invokevirtual 474	java/lang/Thread:getName	()Ljava/lang/String;
+    //   403: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   406: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   409: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   412: invokestatic 247	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   415: ldc_w 458
+    //   418: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   421: return
+    //   422: aload_0
+    //   423: getfield 142	com/tencent/qqmusic/mediaplayer/CorePlayer:mNativeDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/INativeDataSource;
+    //   426: ifnull +212 -> 638
+    //   429: aload_0
+    //   430: getfield 138	com/tencent/qqmusic/mediaplayer/CorePlayer:mDecoder	Lcom/tencent/qqmusic/mediaplayer/codec/BaseDecoder;
+    //   433: aload_0
+    //   434: getfield 142	com/tencent/qqmusic/mediaplayer/CorePlayer:mNativeDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/INativeDataSource;
+    //   437: invokevirtual 539	com/tencent/qqmusic/mediaplayer/codec/BaseDecoder:init	(Lcom/tencent/qqmusic/mediaplayer/upstream/INativeDataSource;)I
+    //   440: istore_1
+    //   441: ldc 17
+    //   443: aload_0
+    //   444: ldc_w 541
+    //   447: iload_1
+    //   448: invokestatic 487	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   451: invokevirtual 313	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   454: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   457: invokestatic 247	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   460: goto -372 -> 88
+    //   463: astore_3
+    //   464: bipush 62
+    //   466: istore_1
+    //   467: aload_3
+    //   468: instanceof 360
+    //   471: ifeq +613 -> 1084
+    //   474: bipush 69
+    //   476: istore_1
+    //   477: ldc 17
+    //   479: aload_0
+    //   480: ldc_w 543
+    //   483: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   486: invokestatic 208	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   489: aload_0
+    //   490: getfield 93	com/tencent/qqmusic/mediaplayer/CorePlayer:mStateRunner	Lcom/tencent/qqmusic/mediaplayer/PlayerStateRunner;
+    //   493: bipush 9
+    //   495: invokestatic 88	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   498: invokevirtual 148	com/tencent/qqmusic/mediaplayer/PlayerStateRunner:transfer	(Ljava/lang/Integer;)Ljava/lang/Integer;
+    //   501: pop
+    //   502: aload_0
+    //   503: bipush 91
+    //   505: iload_1
+    //   506: invokespecial 491	com/tencent/qqmusic/mediaplayer/CorePlayer:callExceptionCallback	(II)V
+    //   509: ldc 17
+    //   511: ldc_w 545
+    //   514: aload_3
+    //   515: invokestatic 332	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   518: aload_0
+    //   519: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   522: ifnull +577 -> 1099
+    //   525: ldc 17
+    //   527: aload_0
+    //   528: new 159	java/lang/StringBuilder
+    //   531: dup
+    //   532: ldc_w 519
+    //   535: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   538: aload_0
+    //   539: getfield 116	com/tencent/qqmusic/mediaplayer/CorePlayer:mIsExit	Z
+    //   542: invokevirtual 522	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   545: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   548: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   551: invokestatic 247	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   554: invokestatic 525	com/tencent/qqmusic/mediaplayer/util/CpuInfoUtil:stopProcessInfoOutput	()V
+    //   557: aload_0
+    //   558: getfield 138	com/tencent/qqmusic/mediaplayer/CorePlayer:mDecoder	Lcom/tencent/qqmusic/mediaplayer/codec/BaseDecoder;
+    //   561: invokevirtual 527	com/tencent/qqmusic/mediaplayer/codec/BaseDecoder:release	()I
+    //   564: pop
+    //   565: aload_0
+    //   566: getfield 140	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
+    //   569: ifnull +12 -> 581
+    //   572: aload_0
+    //   573: getfield 140	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
+    //   576: invokeinterface 532 1 0
+    //   581: aload_0
+    //   582: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   585: ifnull +10 -> 595
+    //   588: aload_0
+    //   589: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   592: invokevirtual 534	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:release	()V
+    //   595: aload_0
+    //   596: iconst_0
+    //   597: putfield 114	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerMode	I
+    //   600: ldc 17
+    //   602: aload_0
+    //   603: new 159	java/lang/StringBuilder
+    //   606: dup
+    //   607: ldc_w 536
+    //   610: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   613: invokestatic 471	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   616: invokevirtual 474	java/lang/Thread:getName	()Ljava/lang/String;
+    //   619: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   622: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   625: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   628: invokestatic 247	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   631: ldc_w 458
+    //   634: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   637: return
+    //   638: iconst_m1
+    //   639: istore_1
+    //   640: ldc 17
+    //   642: aload_0
+    //   643: ldc_w 547
+    //   646: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   649: invokestatic 247	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   652: goto -564 -> 88
+    //   655: astore_3
+    //   656: aload_0
+    //   657: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   660: ifnull +869 -> 1529
+    //   663: ldc 17
+    //   665: aload_0
+    //   666: new 159	java/lang/StringBuilder
+    //   669: dup
+    //   670: ldc_w 519
+    //   673: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   676: aload_0
+    //   677: getfield 116	com/tencent/qqmusic/mediaplayer/CorePlayer:mIsExit	Z
+    //   680: invokevirtual 522	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   683: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   686: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   689: invokestatic 247	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   692: invokestatic 525	com/tencent/qqmusic/mediaplayer/util/CpuInfoUtil:stopProcessInfoOutput	()V
+    //   695: aload_0
+    //   696: getfield 138	com/tencent/qqmusic/mediaplayer/CorePlayer:mDecoder	Lcom/tencent/qqmusic/mediaplayer/codec/BaseDecoder;
+    //   699: invokevirtual 527	com/tencent/qqmusic/mediaplayer/codec/BaseDecoder:release	()I
+    //   702: pop
+    //   703: aload_0
+    //   704: getfield 140	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
+    //   707: ifnull +12 -> 719
+    //   710: aload_0
+    //   711: getfield 140	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
+    //   714: invokeinterface 532 1 0
+    //   719: aload_0
+    //   720: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   723: ifnull +10 -> 733
+    //   726: aload_0
+    //   727: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   730: invokevirtual 534	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:release	()V
+    //   733: aload_0
+    //   734: iconst_0
+    //   735: putfield 114	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerMode	I
+    //   738: ldc 17
+    //   740: aload_0
+    //   741: new 159	java/lang/StringBuilder
+    //   744: dup
+    //   745: ldc_w 536
+    //   748: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   751: invokestatic 471	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   754: invokevirtual 474	java/lang/Thread:getName	()Ljava/lang/String;
+    //   757: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   760: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   763: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   766: invokestatic 247	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   769: ldc_w 458
+    //   772: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   775: aload_3
+    //   776: athrow
     //   777: aload_0
-    //   778: ldc_w 485
-    //   781: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   784: invokestatic 184	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   787: aload_0
-    //   788: getfield 80	com/tencent/qqmusic/mediaplayer/CorePlayer:mStateRunner	Lcom/tencent/qqmusic/mediaplayer/PlayerStateRunner;
-    //   791: bipush 9
-    //   793: invokestatic 75	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   796: invokevirtual 128	com/tencent/qqmusic/mediaplayer/PlayerStateRunner:transfer	(Ljava/lang/Integer;)Ljava/lang/Integer;
-    //   799: pop
-    //   800: iload_1
-    //   801: bipush 254
-    //   803: if_icmpne +160 -> 963
-    //   806: aload_0
-    //   807: getfield 100	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayPath	Ljava/lang/String;
-    //   810: invokestatic 238	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   813: ifne +144 -> 957
-    //   816: aload_0
-    //   817: aload_0
-    //   818: getfield 100	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayPath	Ljava/lang/String;
-    //   821: invokespecial 242	com/tencent/qqmusic/mediaplayer/CorePlayer:isPathExternalStorage	(Ljava/lang/String;)Z
-    //   824: ifeq +133 -> 957
-    //   827: bipush 56
-    //   829: istore_1
-    //   830: aload_0
-    //   831: bipush 91
-    //   833: iload_1
-    //   834: invokespecial 430	com/tencent/qqmusic/mediaplayer/CorePlayer:callExceptionCallback	(II)V
-    //   837: aload_0
-    //   838: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   841: ifnull +128 -> 969
-    //   844: ldc 14
-    //   846: aload_0
-    //   847: new 135	java/lang/StringBuilder
-    //   850: dup
-    //   851: ldc_w 455
-    //   854: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   857: aload_0
-    //   858: getfield 96	com/tencent/qqmusic/mediaplayer/CorePlayer:mIsExit	Z
-    //   861: invokevirtual 458	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   864: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   867: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   870: invokestatic 223	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   873: invokestatic 461	com/tencent/qqmusic/mediaplayer/util/CpuInfoUtil:stopProcessInfoOutput	()V
-    //   876: aload_0
-    //   877: getfield 118	com/tencent/qqmusic/mediaplayer/CorePlayer:mDecoder	Lcom/tencent/qqmusic/mediaplayer/codec/BaseDecoder;
-    //   880: invokevirtual 463	com/tencent/qqmusic/mediaplayer/codec/BaseDecoder:release	()I
-    //   883: pop
-    //   884: aload_0
-    //   885: getfield 120	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
-    //   888: ifnull +12 -> 900
-    //   891: aload_0
-    //   892: getfield 120	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
-    //   895: invokeinterface 468 1 0
-    //   900: aload_0
-    //   901: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   904: ifnull +10 -> 914
-    //   907: aload_0
-    //   908: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   911: invokevirtual 470	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:release	()V
-    //   914: aload_0
-    //   915: iconst_0
-    //   916: putfield 94	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerMode	I
-    //   919: ldc 14
-    //   921: aload_0
-    //   922: new 135	java/lang/StringBuilder
-    //   925: dup
-    //   926: ldc_w 472
-    //   929: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   932: invokestatic 407	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   935: invokevirtual 410	java/lang/Thread:getName	()Ljava/lang/String;
-    //   938: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   941: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   944: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   947: invokestatic 223	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   950: ldc_w 394
-    //   953: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   956: return
-    //   957: bipush 55
-    //   959: istore_1
-    //   960: goto -130 -> 830
-    //   963: bipush 62
-    //   965: istore_1
-    //   966: goto -136 -> 830
-    //   969: ldc 14
-    //   971: aload_0
-    //   972: ldc_w 487
-    //   975: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   978: invokestatic 184	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   981: goto -108 -> 873
-    //   984: astore_3
-    //   985: ldc 14
-    //   987: aload_0
-    //   988: new 135	java/lang/StringBuilder
-    //   991: dup
-    //   992: ldc_w 489
-    //   995: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   998: aload_3
-    //   999: invokevirtual 492	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   1002: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1005: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1008: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   1011: aload_3
-    //   1012: invokestatic 304	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1015: goto -131 -> 884
-    //   1018: astore_3
-    //   1019: ldc 14
-    //   1021: aload_0
-    //   1022: new 135	java/lang/StringBuilder
-    //   1025: dup
-    //   1026: ldc_w 494
-    //   1029: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1032: aload_3
-    //   1033: invokevirtual 495	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   1036: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1039: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1042: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   1045: aload_3
-    //   1046: invokestatic 304	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1049: goto -149 -> 900
-    //   1052: aload_0
-    //   1053: aload_0
-    //   1054: getfield 118	com/tencent/qqmusic/mediaplayer/CorePlayer:mDecoder	Lcom/tencent/qqmusic/mediaplayer/codec/BaseDecoder;
-    //   1057: invokevirtual 498	com/tencent/qqmusic/mediaplayer/codec/BaseDecoder:getAudioInformation	()Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
-    //   1060: putfield 186	com/tencent/qqmusic/mediaplayer/CorePlayer:mInformation	Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
-    //   1063: goto -915 -> 148
-    //   1066: aload_3
-    //   1067: instanceof 500
-    //   1070: istore_2
-    //   1071: iload_2
-    //   1072: ifeq -613 -> 459
-    //   1075: bipush 60
-    //   1077: istore_1
-    //   1078: goto -619 -> 459
-    //   1081: ldc 14
-    //   1083: aload_0
-    //   1084: ldc_w 487
-    //   1087: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   1090: invokestatic 184	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1093: goto -557 -> 536
-    //   1096: astore_3
-    //   1097: ldc 14
-    //   1099: aload_0
-    //   1100: new 135	java/lang/StringBuilder
-    //   1103: dup
-    //   1104: ldc_w 489
-    //   1107: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1110: aload_3
-    //   1111: invokevirtual 492	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   1114: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1117: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1120: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   1123: aload_3
-    //   1124: invokestatic 304	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1127: goto -580 -> 547
-    //   1130: astore_3
-    //   1131: ldc 14
-    //   1133: aload_0
-    //   1134: new 135	java/lang/StringBuilder
-    //   1137: dup
-    //   1138: ldc_w 494
-    //   1141: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1144: aload_3
-    //   1145: invokevirtual 495	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   1148: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1151: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1154: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   1157: aload_3
-    //   1158: invokestatic 304	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1161: goto -598 -> 563
-    //   1164: aload_0
-    //   1165: new 502	com/tencent/qqmusic/mediaplayer/StreamDecodeDataComponent
-    //   1168: dup
-    //   1169: aload_0
-    //   1170: aload_0
-    //   1171: getfield 80	com/tencent/qqmusic/mediaplayer/CorePlayer:mStateRunner	Lcom/tencent/qqmusic/mediaplayer/PlayerStateRunner;
-    //   1174: aload_0
-    //   1175: getfield 186	com/tencent/qqmusic/mediaplayer/CorePlayer:mInformation	Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
-    //   1178: aload_0
-    //   1179: getfield 124	com/tencent/qqmusic/mediaplayer/CorePlayer:mCallback	Lcom/tencent/qqmusic/mediaplayer/PlayerCallback;
+    //   778: bipush 91
+    //   780: sipush 200
+    //   783: invokespecial 491	com/tencent/qqmusic/mediaplayer/CorePlayer:callExceptionCallback	(II)V
+    //   786: goto -638 -> 148
+    //   789: iload_1
+    //   790: ifeq +280 -> 1070
+    //   793: ldc 17
+    //   795: aload_0
+    //   796: ldc_w 549
+    //   799: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   802: invokestatic 208	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   805: aload_0
+    //   806: getfield 93	com/tencent/qqmusic/mediaplayer/CorePlayer:mStateRunner	Lcom/tencent/qqmusic/mediaplayer/PlayerStateRunner;
+    //   809: bipush 9
+    //   811: invokestatic 88	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   814: invokevirtual 148	com/tencent/qqmusic/mediaplayer/PlayerStateRunner:transfer	(Ljava/lang/Integer;)Ljava/lang/Integer;
+    //   817: pop
+    //   818: iload_1
+    //   819: bipush 254
+    //   821: if_icmpne +160 -> 981
+    //   824: aload_0
+    //   825: getfield 120	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayPath	Ljava/lang/String;
+    //   828: invokestatic 262	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   831: ifne +144 -> 975
+    //   834: aload_0
+    //   835: aload_0
+    //   836: getfield 120	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayPath	Ljava/lang/String;
+    //   839: invokespecial 266	com/tencent/qqmusic/mediaplayer/CorePlayer:isPathExternalStorage	(Ljava/lang/String;)Z
+    //   842: ifeq +133 -> 975
+    //   845: bipush 56
+    //   847: istore_1
+    //   848: aload_0
+    //   849: bipush 91
+    //   851: iload_1
+    //   852: invokespecial 491	com/tencent/qqmusic/mediaplayer/CorePlayer:callExceptionCallback	(II)V
+    //   855: aload_0
+    //   856: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   859: ifnull +128 -> 987
+    //   862: ldc 17
+    //   864: aload_0
+    //   865: new 159	java/lang/StringBuilder
+    //   868: dup
+    //   869: ldc_w 519
+    //   872: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   875: aload_0
+    //   876: getfield 116	com/tencent/qqmusic/mediaplayer/CorePlayer:mIsExit	Z
+    //   879: invokevirtual 522	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   882: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   885: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   888: invokestatic 247	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   891: invokestatic 525	com/tencent/qqmusic/mediaplayer/util/CpuInfoUtil:stopProcessInfoOutput	()V
+    //   894: aload_0
+    //   895: getfield 138	com/tencent/qqmusic/mediaplayer/CorePlayer:mDecoder	Lcom/tencent/qqmusic/mediaplayer/codec/BaseDecoder;
+    //   898: invokevirtual 527	com/tencent/qqmusic/mediaplayer/codec/BaseDecoder:release	()I
+    //   901: pop
+    //   902: aload_0
+    //   903: getfield 140	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
+    //   906: ifnull +12 -> 918
+    //   909: aload_0
+    //   910: getfield 140	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
+    //   913: invokeinterface 532 1 0
+    //   918: aload_0
+    //   919: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   922: ifnull +10 -> 932
+    //   925: aload_0
+    //   926: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   929: invokevirtual 534	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:release	()V
+    //   932: aload_0
+    //   933: iconst_0
+    //   934: putfield 114	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerMode	I
+    //   937: ldc 17
+    //   939: aload_0
+    //   940: new 159	java/lang/StringBuilder
+    //   943: dup
+    //   944: ldc_w 536
+    //   947: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   950: invokestatic 471	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   953: invokevirtual 474	java/lang/Thread:getName	()Ljava/lang/String;
+    //   956: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   959: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   962: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   965: invokestatic 247	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   968: ldc_w 458
+    //   971: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   974: return
+    //   975: bipush 55
+    //   977: istore_1
+    //   978: goto -130 -> 848
+    //   981: bipush 62
+    //   983: istore_1
+    //   984: goto -136 -> 848
+    //   987: ldc 17
+    //   989: aload_0
+    //   990: ldc_w 551
+    //   993: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   996: invokestatic 208	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   999: goto -108 -> 891
+    //   1002: astore_3
+    //   1003: ldc 17
+    //   1005: aload_0
+    //   1006: new 159	java/lang/StringBuilder
+    //   1009: dup
+    //   1010: ldc_w 553
+    //   1013: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1016: aload_3
+    //   1017: invokevirtual 556	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   1020: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1023: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1026: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   1029: aload_3
+    //   1030: invokestatic 332	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1033: goto -131 -> 902
+    //   1036: astore_3
+    //   1037: ldc 17
+    //   1039: aload_0
+    //   1040: new 159	java/lang/StringBuilder
+    //   1043: dup
+    //   1044: ldc_w 558
+    //   1047: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1050: aload_3
+    //   1051: invokevirtual 559	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   1054: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1057: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1060: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   1063: aload_3
+    //   1064: invokestatic 332	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1067: goto -149 -> 918
+    //   1070: aload_0
+    //   1071: aload_0
+    //   1072: getfield 138	com/tencent/qqmusic/mediaplayer/CorePlayer:mDecoder	Lcom/tencent/qqmusic/mediaplayer/codec/BaseDecoder;
+    //   1075: invokevirtual 562	com/tencent/qqmusic/mediaplayer/codec/BaseDecoder:getAudioInformation	()Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
+    //   1078: putfield 210	com/tencent/qqmusic/mediaplayer/CorePlayer:mInformation	Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
+    //   1081: goto -933 -> 148
+    //   1084: aload_3
+    //   1085: instanceof 564
+    //   1088: istore_2
+    //   1089: iload_2
+    //   1090: ifeq -613 -> 477
+    //   1093: bipush 60
+    //   1095: istore_1
+    //   1096: goto -619 -> 477
+    //   1099: ldc 17
+    //   1101: aload_0
+    //   1102: ldc_w 551
+    //   1105: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   1108: invokestatic 208	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1111: goto -557 -> 554
+    //   1114: astore_3
+    //   1115: ldc 17
+    //   1117: aload_0
+    //   1118: new 159	java/lang/StringBuilder
+    //   1121: dup
+    //   1122: ldc_w 553
+    //   1125: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1128: aload_3
+    //   1129: invokevirtual 556	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   1132: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1135: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1138: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   1141: aload_3
+    //   1142: invokestatic 332	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1145: goto -580 -> 565
+    //   1148: astore_3
+    //   1149: ldc 17
+    //   1151: aload_0
+    //   1152: new 159	java/lang/StringBuilder
+    //   1155: dup
+    //   1156: ldc_w 558
+    //   1159: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1162: aload_3
+    //   1163: invokevirtual 559	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   1166: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1169: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1172: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   1175: aload_3
+    //   1176: invokestatic 332	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1179: goto -598 -> 581
     //   1182: aload_0
-    //   1183: aload_0
-    //   1184: getfield 116	com/tencent/qqmusic/mediaplayer/CorePlayer:mEventHandler	Landroid/os/Handler;
+    //   1183: new 566	com/tencent/qqmusic/mediaplayer/StreamDecodeDataComponent
+    //   1186: dup
     //   1187: aload_0
-    //   1188: getfield 86	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerID	I
-    //   1191: invokespecial 503	com/tencent/qqmusic/mediaplayer/StreamDecodeDataComponent:<init>	(Lcom/tencent/qqmusic/mediaplayer/CorePlayer;Lcom/tencent/qqmusic/mediaplayer/PlayerStateRunner;Lcom/tencent/qqmusic/mediaplayer/AudioInformation;Lcom/tencent/qqmusic/mediaplayer/PlayerCallback;Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent$HandleDecodeDataCallback;Landroid/os/Handler;I)V
-    //   1194: putfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   1197: goto -953 -> 244
-    //   1200: astore_3
-    //   1201: ldc 14
-    //   1203: aload_3
-    //   1204: invokestatic 255	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1207: aload_0
-    //   1208: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   1211: ifnull +199 -> 1410
-    //   1214: ldc 14
-    //   1216: aload_0
-    //   1217: new 135	java/lang/StringBuilder
-    //   1220: dup
-    //   1221: ldc_w 455
-    //   1224: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1227: aload_0
-    //   1228: getfield 96	com/tencent/qqmusic/mediaplayer/CorePlayer:mIsExit	Z
-    //   1231: invokevirtual 458	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1234: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1237: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   1240: invokestatic 223	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1243: invokestatic 461	com/tencent/qqmusic/mediaplayer/util/CpuInfoUtil:stopProcessInfoOutput	()V
-    //   1246: aload_0
-    //   1247: getfield 118	com/tencent/qqmusic/mediaplayer/CorePlayer:mDecoder	Lcom/tencent/qqmusic/mediaplayer/codec/BaseDecoder;
-    //   1250: invokevirtual 463	com/tencent/qqmusic/mediaplayer/codec/BaseDecoder:release	()I
-    //   1253: pop
-    //   1254: aload_0
-    //   1255: getfield 120	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
-    //   1258: ifnull +12 -> 1270
-    //   1261: aload_0
-    //   1262: getfield 120	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
-    //   1265: invokeinterface 468 1 0
-    //   1270: aload_0
-    //   1271: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   1274: ifnull +10 -> 1284
-    //   1277: aload_0
-    //   1278: getfield 179	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
-    //   1281: invokevirtual 470	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:release	()V
-    //   1284: aload_0
-    //   1285: iconst_0
-    //   1286: putfield 94	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerMode	I
-    //   1289: ldc 14
-    //   1291: aload_0
-    //   1292: new 135	java/lang/StringBuilder
-    //   1295: dup
-    //   1296: ldc_w 472
-    //   1299: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1302: invokestatic 407	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   1305: invokevirtual 410	java/lang/Thread:getName	()Ljava/lang/String;
-    //   1308: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1311: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1314: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   1317: invokestatic 223	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1320: ldc_w 394
-    //   1323: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1326: return
-    //   1327: ldc 14
-    //   1329: aload_0
-    //   1330: ldc_w 487
-    //   1333: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   1336: invokestatic 184	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1339: goto -1019 -> 320
-    //   1342: astore_3
-    //   1343: ldc 14
-    //   1345: aload_0
-    //   1346: new 135	java/lang/StringBuilder
-    //   1349: dup
-    //   1350: ldc_w 489
-    //   1353: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1356: aload_3
-    //   1357: invokevirtual 492	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   1360: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1363: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1366: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   1369: aload_3
-    //   1370: invokestatic 304	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1373: goto -1042 -> 331
-    //   1376: astore_3
-    //   1377: ldc 14
-    //   1379: aload_0
-    //   1380: new 135	java/lang/StringBuilder
-    //   1383: dup
-    //   1384: ldc_w 494
-    //   1387: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1390: aload_3
-    //   1391: invokevirtual 495	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   1394: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1397: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1400: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   1403: aload_3
-    //   1404: invokestatic 304	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1407: goto -1060 -> 347
-    //   1410: ldc 14
-    //   1412: aload_0
-    //   1413: ldc_w 487
-    //   1416: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   1419: invokestatic 184	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1422: goto -179 -> 1243
-    //   1425: astore_3
-    //   1426: ldc 14
-    //   1428: aload_0
-    //   1429: new 135	java/lang/StringBuilder
-    //   1432: dup
-    //   1433: ldc_w 489
-    //   1436: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1188: aload_0
+    //   1189: getfield 93	com/tencent/qqmusic/mediaplayer/CorePlayer:mStateRunner	Lcom/tencent/qqmusic/mediaplayer/PlayerStateRunner;
+    //   1192: aload_0
+    //   1193: getfield 210	com/tencent/qqmusic/mediaplayer/CorePlayer:mInformation	Lcom/tencent/qqmusic/mediaplayer/AudioInformation;
+    //   1196: aload_0
+    //   1197: getfield 144	com/tencent/qqmusic/mediaplayer/CorePlayer:mCallback	Lcom/tencent/qqmusic/mediaplayer/PlayerCallback;
+    //   1200: aload_0
+    //   1201: aload_0
+    //   1202: getfield 136	com/tencent/qqmusic/mediaplayer/CorePlayer:mEventHandler	Landroid/os/Handler;
+    //   1205: aload_0
+    //   1206: getfield 99	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerID	I
+    //   1209: new 10	com/tencent/qqmusic/mediaplayer/CorePlayer$AudioListenerDelegate
+    //   1212: dup
+    //   1213: aload_0
+    //   1214: iconst_0
+    //   1215: invokespecial 507	com/tencent/qqmusic/mediaplayer/CorePlayer$AudioListenerDelegate:<init>	(Lcom/tencent/qqmusic/mediaplayer/CorePlayer;Z)V
+    //   1218: new 10	com/tencent/qqmusic/mediaplayer/CorePlayer$AudioListenerDelegate
+    //   1221: dup
+    //   1222: aload_0
+    //   1223: iconst_1
+    //   1224: invokespecial 507	com/tencent/qqmusic/mediaplayer/CorePlayer$AudioListenerDelegate:<init>	(Lcom/tencent/qqmusic/mediaplayer/CorePlayer;Z)V
+    //   1227: invokespecial 567	com/tencent/qqmusic/mediaplayer/StreamDecodeDataComponent:<init>	(Lcom/tencent/qqmusic/mediaplayer/CorePlayer;Lcom/tencent/qqmusic/mediaplayer/PlayerStateRunner;Lcom/tencent/qqmusic/mediaplayer/AudioInformation;Lcom/tencent/qqmusic/mediaplayer/PlayerCallback;Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent$HandleDecodeDataCallback;Landroid/os/Handler;ILcom/tencent/qqmusic/mediaplayer/audiofx/IAudioListener;Lcom/tencent/qqmusic/mediaplayer/audiofx/IAudioListener;)V
+    //   1230: putfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   1233: goto -971 -> 262
+    //   1236: astore_3
+    //   1237: ldc 17
+    //   1239: aload_3
+    //   1240: invokestatic 279	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1243: aload_0
+    //   1244: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   1247: ifnull +199 -> 1446
+    //   1250: ldc 17
+    //   1252: aload_0
+    //   1253: new 159	java/lang/StringBuilder
+    //   1256: dup
+    //   1257: ldc_w 519
+    //   1260: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1263: aload_0
+    //   1264: getfield 116	com/tencent/qqmusic/mediaplayer/CorePlayer:mIsExit	Z
+    //   1267: invokevirtual 522	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1270: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1273: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   1276: invokestatic 247	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1279: invokestatic 525	com/tencent/qqmusic/mediaplayer/util/CpuInfoUtil:stopProcessInfoOutput	()V
+    //   1282: aload_0
+    //   1283: getfield 138	com/tencent/qqmusic/mediaplayer/CorePlayer:mDecoder	Lcom/tencent/qqmusic/mediaplayer/codec/BaseDecoder;
+    //   1286: invokevirtual 527	com/tencent/qqmusic/mediaplayer/codec/BaseDecoder:release	()I
+    //   1289: pop
+    //   1290: aload_0
+    //   1291: getfield 140	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
+    //   1294: ifnull +12 -> 1306
+    //   1297: aload_0
+    //   1298: getfield 140	com/tencent/qqmusic/mediaplayer/CorePlayer:mDataSource	Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;
+    //   1301: invokeinterface 532 1 0
+    //   1306: aload_0
+    //   1307: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   1310: ifnull +10 -> 1320
+    //   1313: aload_0
+    //   1314: getfield 203	com/tencent/qqmusic/mediaplayer/CorePlayer:mPcmCompnent	Lcom/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent;
+    //   1317: invokevirtual 534	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:release	()V
+    //   1320: aload_0
+    //   1321: iconst_0
+    //   1322: putfield 114	com/tencent/qqmusic/mediaplayer/CorePlayer:mPlayerMode	I
+    //   1325: ldc 17
+    //   1327: aload_0
+    //   1328: new 159	java/lang/StringBuilder
+    //   1331: dup
+    //   1332: ldc_w 536
+    //   1335: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1338: invokestatic 471	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   1341: invokevirtual 474	java/lang/Thread:getName	()Ljava/lang/String;
+    //   1344: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1347: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1350: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   1353: invokestatic 247	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1356: ldc_w 458
+    //   1359: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1362: return
+    //   1363: ldc 17
+    //   1365: aload_0
+    //   1366: ldc_w 551
+    //   1369: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   1372: invokestatic 208	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1375: goto -1037 -> 338
+    //   1378: astore_3
+    //   1379: ldc 17
+    //   1381: aload_0
+    //   1382: new 159	java/lang/StringBuilder
+    //   1385: dup
+    //   1386: ldc_w 553
+    //   1389: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1392: aload_3
+    //   1393: invokevirtual 556	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   1396: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1399: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1402: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   1405: aload_3
+    //   1406: invokestatic 332	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1409: goto -1060 -> 349
+    //   1412: astore_3
+    //   1413: ldc 17
+    //   1415: aload_0
+    //   1416: new 159	java/lang/StringBuilder
+    //   1419: dup
+    //   1420: ldc_w 558
+    //   1423: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1426: aload_3
+    //   1427: invokevirtual 559	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   1430: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1433: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1436: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
     //   1439: aload_3
-    //   1440: invokevirtual 492	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   1443: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1446: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1449: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   1452: aload_3
-    //   1453: invokestatic 304	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1456: goto -202 -> 1254
-    //   1459: astore_3
-    //   1460: ldc 14
-    //   1462: aload_0
-    //   1463: new 135	java/lang/StringBuilder
-    //   1466: dup
-    //   1467: ldc_w 494
-    //   1470: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1473: aload_3
-    //   1474: invokevirtual 495	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   1477: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1480: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1483: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   1486: aload_3
-    //   1487: invokestatic 304	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1490: goto -220 -> 1270
-    //   1493: ldc 14
-    //   1495: aload_0
-    //   1496: ldc_w 487
-    //   1499: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   1502: invokestatic 184	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1505: goto -831 -> 674
-    //   1508: astore 4
-    //   1510: ldc 14
-    //   1512: aload_0
-    //   1513: new 135	java/lang/StringBuilder
-    //   1516: dup
-    //   1517: ldc_w 489
-    //   1520: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1523: aload 4
-    //   1525: invokevirtual 492	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   1528: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1531: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1534: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   1537: aload 4
-    //   1539: invokestatic 304	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1542: goto -857 -> 685
-    //   1545: astore 4
-    //   1547: ldc 14
-    //   1549: aload_0
-    //   1550: new 135	java/lang/StringBuilder
-    //   1553: dup
-    //   1554: ldc_w 494
-    //   1557: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1560: aload 4
-    //   1562: invokevirtual 495	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   1565: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1568: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1571: invokespecial 171	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
-    //   1574: aload 4
-    //   1576: invokestatic 304	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1579: goto -878 -> 701
+    //   1440: invokestatic 332	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1443: goto -1078 -> 365
+    //   1446: ldc 17
+    //   1448: aload_0
+    //   1449: ldc_w 551
+    //   1452: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   1455: invokestatic 208	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1458: goto -179 -> 1279
+    //   1461: astore_3
+    //   1462: ldc 17
+    //   1464: aload_0
+    //   1465: new 159	java/lang/StringBuilder
+    //   1468: dup
+    //   1469: ldc_w 553
+    //   1472: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1475: aload_3
+    //   1476: invokevirtual 556	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   1479: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1482: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1485: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   1488: aload_3
+    //   1489: invokestatic 332	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1492: goto -202 -> 1290
+    //   1495: astore_3
+    //   1496: ldc 17
+    //   1498: aload_0
+    //   1499: new 159	java/lang/StringBuilder
+    //   1502: dup
+    //   1503: ldc_w 558
+    //   1506: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1509: aload_3
+    //   1510: invokevirtual 559	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   1513: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1516: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1519: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   1522: aload_3
+    //   1523: invokestatic 332	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1526: goto -220 -> 1306
+    //   1529: ldc 17
+    //   1531: aload_0
+    //   1532: ldc_w 551
+    //   1535: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   1538: invokestatic 208	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1541: goto -849 -> 692
+    //   1544: astore 4
+    //   1546: ldc 17
+    //   1548: aload_0
+    //   1549: new 159	java/lang/StringBuilder
+    //   1552: dup
+    //   1553: ldc_w 553
+    //   1556: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1559: aload 4
+    //   1561: invokevirtual 556	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   1564: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1567: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1570: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   1573: aload 4
+    //   1575: invokestatic 332	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1578: goto -875 -> 703
+    //   1581: astore 4
+    //   1583: ldc 17
+    //   1585: aload_0
+    //   1586: new 159	java/lang/StringBuilder
+    //   1589: dup
+    //   1590: ldc_w 558
+    //   1593: invokespecial 162	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1596: aload 4
+    //   1598: invokevirtual 559	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   1601: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1604: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1607: invokespecial 195	com/tencent/qqmusic/mediaplayer/CorePlayer:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   1610: aload 4
+    //   1612: invokestatic 332	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1615: goto -896 -> 719
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1582	0	this	CorePlayer
-    //   68	1010	1	i	int
-    //   1070	2	2	bool	boolean
-    //   445	52	3	localThrowable1	Throwable
-    //   637	121	3	localObject	Object
-    //   984	28	3	localThrowable2	Throwable
-    //   1018	49	3	localIOException1	java.io.IOException
-    //   1096	28	3	localThrowable3	Throwable
-    //   1130	28	3	localIOException2	java.io.IOException
-    //   1200	4	3	localThrowable4	Throwable
-    //   1342	28	3	localThrowable5	Throwable
-    //   1376	28	3	localIOException3	java.io.IOException
-    //   1425	28	3	localThrowable6	Throwable
-    //   1459	28	3	localIOException4	java.io.IOException
-    //   1508	30	4	localThrowable7	Throwable
-    //   1545	30	4	localIOException5	java.io.IOException
+    //   0	1618	0	this	CorePlayer
+    //   68	1028	1	i	int
+    //   1088	2	2	bool	boolean
+    //   463	52	3	localThrowable1	Throwable
+    //   655	121	3	localObject	Object
+    //   1002	28	3	localThrowable2	Throwable
+    //   1036	49	3	localIOException1	java.io.IOException
+    //   1114	28	3	localThrowable3	Throwable
+    //   1148	28	3	localIOException2	java.io.IOException
+    //   1236	4	3	localThrowable4	Throwable
+    //   1378	28	3	localThrowable5	Throwable
+    //   1412	28	3	localIOException3	java.io.IOException
+    //   1461	28	3	localThrowable6	Throwable
+    //   1495	28	3	localIOException4	java.io.IOException
+    //   1544	30	4	localThrowable7	Throwable
+    //   1581	30	4	localIOException5	java.io.IOException
     // Exception table:
     //   from	to	target	type
-    //   40	88	445	java/lang/Throwable
-    //   94	148	445	java/lang/Throwable
-    //   404	442	445	java/lang/Throwable
-    //   622	634	445	java/lang/Throwable
-    //   759	768	445	java/lang/Throwable
-    //   775	800	445	java/lang/Throwable
-    //   806	827	445	java/lang/Throwable
-    //   830	837	445	java/lang/Throwable
-    //   1052	1063	445	java/lang/Throwable
-    //   40	88	637	finally
-    //   94	148	637	finally
-    //   148	198	637	finally
-    //   198	211	637	finally
-    //   211	244	637	finally
-    //   244	270	637	finally
-    //   270	284	637	finally
-    //   404	442	637	finally
-    //   449	456	637	finally
-    //   459	500	637	finally
-    //   622	634	637	finally
-    //   759	768	637	finally
-    //   775	800	637	finally
-    //   806	827	637	finally
-    //   830	837	637	finally
-    //   1052	1063	637	finally
-    //   1066	1071	637	finally
-    //   1164	1197	637	finally
-    //   1201	1207	637	finally
-    //   876	884	984	java/lang/Throwable
-    //   891	900	1018	java/io/IOException
-    //   539	547	1096	java/lang/Throwable
-    //   554	563	1130	java/io/IOException
-    //   148	198	1200	java/lang/Throwable
-    //   198	211	1200	java/lang/Throwable
-    //   211	244	1200	java/lang/Throwable
-    //   244	270	1200	java/lang/Throwable
-    //   270	284	1200	java/lang/Throwable
-    //   449	456	1200	java/lang/Throwable
-    //   459	500	1200	java/lang/Throwable
-    //   1066	1071	1200	java/lang/Throwable
-    //   1164	1197	1200	java/lang/Throwable
-    //   323	331	1342	java/lang/Throwable
-    //   338	347	1376	java/io/IOException
-    //   1246	1254	1425	java/lang/Throwable
-    //   1261	1270	1459	java/io/IOException
-    //   677	685	1508	java/lang/Throwable
-    //   692	701	1545	java/io/IOException
+    //   40	88	463	java/lang/Throwable
+    //   94	148	463	java/lang/Throwable
+    //   422	460	463	java/lang/Throwable
+    //   640	652	463	java/lang/Throwable
+    //   777	786	463	java/lang/Throwable
+    //   793	818	463	java/lang/Throwable
+    //   824	845	463	java/lang/Throwable
+    //   848	855	463	java/lang/Throwable
+    //   1070	1081	463	java/lang/Throwable
+    //   40	88	655	finally
+    //   94	148	655	finally
+    //   148	198	655	finally
+    //   198	211	655	finally
+    //   211	262	655	finally
+    //   262	288	655	finally
+    //   288	302	655	finally
+    //   422	460	655	finally
+    //   467	474	655	finally
+    //   477	518	655	finally
+    //   640	652	655	finally
+    //   777	786	655	finally
+    //   793	818	655	finally
+    //   824	845	655	finally
+    //   848	855	655	finally
+    //   1070	1081	655	finally
+    //   1084	1089	655	finally
+    //   1182	1233	655	finally
+    //   1237	1243	655	finally
+    //   894	902	1002	java/lang/Throwable
+    //   909	918	1036	java/io/IOException
+    //   557	565	1114	java/lang/Throwable
+    //   572	581	1148	java/io/IOException
+    //   148	198	1236	java/lang/Throwable
+    //   198	211	1236	java/lang/Throwable
+    //   211	262	1236	java/lang/Throwable
+    //   262	288	1236	java/lang/Throwable
+    //   288	302	1236	java/lang/Throwable
+    //   467	474	1236	java/lang/Throwable
+    //   477	518	1236	java/lang/Throwable
+    //   1084	1089	1236	java/lang/Throwable
+    //   1182	1233	1236	java/lang/Throwable
+    //   341	349	1378	java/lang/Throwable
+    //   356	365	1412	java/io/IOException
+    //   1282	1290	1461	java/lang/Throwable
+    //   1297	1306	1495	java/io/IOException
+    //   695	703	1544	java/lang/Throwable
+    //   710	719	1581	java/io/IOException
   }
   
   public void seek(int paramInt)
@@ -1368,10 +1434,287 @@ class CorePlayer
     this.mPcmCompnent.stop();
     AppMethodBeat.o(76698);
   }
+  
+  class AudioListenerDelegate
+    implements IAudioListener
+  {
+    private final boolean mIsTerminal;
+    
+    AudioListenerDelegate(boolean paramBoolean)
+    {
+      this.mIsTerminal = paramBoolean;
+    }
+    
+    public long getActualTime(long paramLong)
+    {
+      AppMethodBeat.i(244491);
+      Iterator localIterator = getAudioListeners().iterator();
+      while (localIterator.hasNext()) {
+        paramLong = ((IAudioListener)localIterator.next()).getActualTime(paramLong);
+      }
+      AppMethodBeat.o(244491);
+      return paramLong;
+    }
+    
+    List<IAudioListener> getAudioListeners()
+    {
+      if (this.mIsTerminal) {
+        return CorePlayer.this.mTerminalAudioEffectList;
+      }
+      return CorePlayer.this.mAudioEffectList;
+    }
+    
+    public boolean isEnabled()
+    {
+      AppMethodBeat.i(244483);
+      Iterator localIterator = getAudioListeners().iterator();
+      while (localIterator.hasNext()) {
+        if (((IAudioListener)localIterator.next()).isEnabled())
+        {
+          AppMethodBeat.o(244483);
+          return true;
+        }
+      }
+      AppMethodBeat.o(244483);
+      return false;
+    }
+    
+    public boolean isTerminal()
+    {
+      return this.mIsTerminal;
+    }
+    
+    public boolean onPcm(BufferInfo paramBufferInfo1, BufferInfo paramBufferInfo2, long paramLong)
+    {
+      AppMethodBeat.i(244484);
+      Object localObject1;
+      if (!this.mIsTerminal)
+      {
+        localObject1 = CorePlayer.this.mAudioEffectList;
+        if (((List)localObject1).size() == 0) {
+          paramBufferInfo1.fillInto(paramBufferInfo2);
+        }
+      }
+      Object localObject2;
+      boolean bool;
+      for (;;)
+      {
+        AppMethodBeat.o(244484);
+        return true;
+        Iterator localIterator = ((List)localObject1).iterator();
+        localObject1 = paramBufferInfo2;
+        localObject2 = paramBufferInfo1;
+        while (localIterator.hasNext())
+        {
+          Object localObject3 = (IAudioListener)localIterator.next();
+          if (((IAudioListener)localObject3).isEnabled()) {
+            try
+            {
+              ((BufferInfo)localObject1).setByteBufferCapacity(((BufferInfo)localObject2).bufferSize);
+              bool = ((IAudioListener)localObject3).onPcm((BufferInfo)localObject2, (BufferInfo)localObject1, paramLong);
+              if (bool)
+              {
+                localObject3 = localObject1;
+                localObject1 = localObject2;
+                localObject2 = localObject3;
+              }
+            }
+            catch (Throwable localThrowable2)
+            {
+              for (;;)
+              {
+                Logger.e("CorePlayer", "[onPcm] failed. audio: " + localObject3 + " e: " + localThrowable2);
+                bool = false;
+              }
+              ((BufferInfo)localObject2).fillInto((BufferInfo)localObject1);
+            }
+          } else {
+            ((BufferInfo)localObject2).fillInto((BufferInfo)localObject1);
+          }
+        }
+        if (localObject2 == paramBufferInfo1)
+        {
+          paramBufferInfo1.fillInto(paramBufferInfo2);
+          continue;
+          localObject2 = CorePlayer.this.mTerminalAudioEffectList;
+          if (((List)localObject2).size() != 0) {
+            break;
+          }
+          paramBufferInfo1.fillInto(paramBufferInfo2);
+        }
+      }
+      int i = ((List)localObject2).size() - 1;
+      label251:
+      if (i >= 0)
+      {
+        localObject1 = (IAudioListener)((List)localObject2).get(i);
+        if (!((IAudioListener)localObject1).isEnabled()) {}
+      }
+      for (;;)
+      {
+        try
+        {
+          paramBufferInfo2.setByteBufferCapacity(paramBufferInfo1.bufferSize);
+          bool = ((IAudioListener)localObject1).onPcm(paramBufferInfo1, paramBufferInfo2, paramLong);
+          if (bool)
+          {
+            localObject1 = paramBufferInfo2;
+            if (localObject1 != paramBufferInfo1) {
+              break;
+            }
+            paramBufferInfo1.fillInto(paramBufferInfo2);
+          }
+        }
+        catch (Throwable localThrowable1)
+        {
+          Logger.e("CorePlayer", "[onPcm] failed. audio: " + localObject1 + " e: " + localThrowable1);
+          bool = false;
+          continue;
+          paramBufferInfo1.fillInto(paramBufferInfo2);
+          localObject1 = paramBufferInfo1;
+          continue;
+        }
+        paramBufferInfo1.fillInto(paramBufferInfo2);
+        i -= 1;
+        break label251;
+        localObject1 = paramBufferInfo1;
+      }
+    }
+    
+    public boolean onPcm(FloatBufferInfo paramFloatBufferInfo1, FloatBufferInfo paramFloatBufferInfo2, long paramLong)
+    {
+      AppMethodBeat.i(244487);
+      Object localObject1;
+      if (!this.mIsTerminal)
+      {
+        localObject1 = CorePlayer.this.mAudioEffectList;
+        if (((List)localObject1).size() == 0) {
+          paramFloatBufferInfo1.copy(paramFloatBufferInfo2);
+        }
+      }
+      Object localObject2;
+      boolean bool;
+      for (;;)
+      {
+        AppMethodBeat.o(244487);
+        return true;
+        Iterator localIterator = ((List)localObject1).iterator();
+        localObject1 = paramFloatBufferInfo2;
+        localObject2 = paramFloatBufferInfo1;
+        while (localIterator.hasNext())
+        {
+          Object localObject3 = (IAudioListener)localIterator.next();
+          if (((IAudioListener)localObject3).isEnabled()) {
+            try
+            {
+              ((FloatBufferInfo)localObject1).setFloatBufferCapacity(((FloatBufferInfo)localObject2).bufferSize);
+              bool = ((IAudioListener)localObject3).onPcm((FloatBufferInfo)localObject2, (FloatBufferInfo)localObject1, paramLong);
+              if (bool)
+              {
+                localObject3 = localObject1;
+                localObject1 = localObject2;
+                localObject2 = localObject3;
+              }
+            }
+            catch (Throwable localThrowable2)
+            {
+              for (;;)
+              {
+                Logger.e("CorePlayer", "[onPcm] failed. audio: " + localObject3 + " e: " + localThrowable2);
+                bool = false;
+              }
+              ((FloatBufferInfo)localObject2).copy((FloatBufferInfo)localObject1);
+            }
+          } else {
+            ((FloatBufferInfo)localObject2).copy((FloatBufferInfo)localObject1);
+          }
+        }
+        if (localObject2 == paramFloatBufferInfo1)
+        {
+          paramFloatBufferInfo1.copy(paramFloatBufferInfo2);
+          continue;
+          localObject2 = CorePlayer.this.mTerminalAudioEffectList;
+          if (((List)localObject2).size() != 0) {
+            break;
+          }
+          paramFloatBufferInfo1.copy(paramFloatBufferInfo2);
+        }
+      }
+      int i = ((List)localObject2).size() - 1;
+      label251:
+      if (i >= 0)
+      {
+        localObject1 = (IAudioListener)((List)localObject2).get(i);
+        if (!((IAudioListener)localObject1).isEnabled()) {}
+      }
+      for (;;)
+      {
+        try
+        {
+          paramFloatBufferInfo2.setFloatBufferCapacity(paramFloatBufferInfo1.bufferSize);
+          bool = ((IAudioListener)localObject1).onPcm(paramFloatBufferInfo1, paramFloatBufferInfo2, paramLong);
+          if (bool)
+          {
+            localObject1 = paramFloatBufferInfo2;
+            if (localObject1 != paramFloatBufferInfo1) {
+              break;
+            }
+            paramFloatBufferInfo1.copy(paramFloatBufferInfo2);
+          }
+        }
+        catch (Throwable localThrowable1)
+        {
+          Logger.e("CorePlayer", "[onPcm] failed. audio: " + localObject1 + " e: " + localThrowable1);
+          bool = false;
+          continue;
+          paramFloatBufferInfo1.copy(paramFloatBufferInfo2);
+          localObject1 = paramFloatBufferInfo1;
+          continue;
+        }
+        paramFloatBufferInfo1.copy(paramFloatBufferInfo2);
+        i -= 1;
+        break label251;
+        localObject1 = paramFloatBufferInfo1;
+      }
+    }
+    
+    public long onPlayerReady(int paramInt, AudioInformation paramAudioInformation, long paramLong)
+    {
+      AppMethodBeat.i(244488);
+      CorePlayer.access$002(CorePlayer.this, paramInt);
+      CorePlayer.access$102(CorePlayer.this, true);
+      Iterator localIterator = getAudioListeners().iterator();
+      while (localIterator.hasNext()) {
+        ((IAudioListener)localIterator.next()).onPlayerReady(paramInt, paramAudioInformation, paramLong);
+      }
+      AppMethodBeat.o(244488);
+      return 0L;
+    }
+    
+    public void onPlayerSeekComplete(long paramLong)
+    {
+      AppMethodBeat.i(244489);
+      Iterator localIterator = getAudioListeners().iterator();
+      while (localIterator.hasNext()) {
+        ((IAudioListener)localIterator.next()).onPlayerSeekComplete(paramLong);
+      }
+      AppMethodBeat.o(244489);
+    }
+    
+    public void onPlayerStopped()
+    {
+      AppMethodBeat.i(244490);
+      Iterator localIterator = getAudioListeners().iterator();
+      while (localIterator.hasNext()) {
+        ((IAudioListener)localIterator.next()).onPlayerStopped();
+      }
+      AppMethodBeat.o(244490);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.CorePlayer
  * JD-Core Version:    0.7.0.1
  */

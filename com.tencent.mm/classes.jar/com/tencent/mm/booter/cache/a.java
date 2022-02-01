@@ -17,8 +17,8 @@ import java.util.Map;
 public final class a
   extends h.a
 {
-  public static a gnv;
-  private final f<String, Bitmap> gnw;
+  public static a iRE;
+  private final f<String, Bitmap> iRF;
   
   private a()
   {
@@ -31,7 +31,7 @@ public final class a
       if (com.tencent.mm.platformtools.a.a.values == null)
       {
         localContext = null;
-        this.gnw = new b(Util.getInt(localContext, 2000), getClass());
+        this.iRF = new b(Util.getInt(localContext, 2000), getClass());
         AppMethodBeat.o(19918);
         return;
       }
@@ -50,25 +50,34 @@ public final class a
   public static void destroy()
   {
     AppMethodBeat.i(19920);
-    if (gnv == null)
+    if (iRE == null)
     {
       AppMethodBeat.o(19920);
       return;
     }
-    gnv.gnw.clear();
+    iRE.iRF.clear();
     AppMethodBeat.o(19920);
   }
   
   public static void prepare()
   {
     AppMethodBeat.i(19919);
-    if (gnv == null) {
-      gnv = new a();
+    if (iRE == null) {
+      iRE = new a();
     }
     AppMethodBeat.o(19919);
   }
   
-  public final MCacheItem CV(String paramString)
+  public final Bitmap JL(String paramString)
+  {
+    AppMethodBeat.i(19921);
+    Log.v("MicroMsg.MMCacheImpl", "getting bitmap: %s", new Object[] { paramString });
+    paramString = (Bitmap)this.iRF.get(paramString);
+    AppMethodBeat.o(19921);
+    return paramString;
+  }
+  
+  public final MCacheItem JM(String paramString)
   {
     AppMethodBeat.i(19922);
     Log.v("MicroMsg.MMCacheImpl", "getting cache item: %s", new Object[] { paramString });
@@ -76,7 +85,7 @@ public final class a
     return null;
   }
   
-  public final void CW(String paramString)
+  public final void JN(String paramString)
   {
     AppMethodBeat.i(19924);
     Log.v("MicroMsg.MMCacheImpl", "setting cache item: %s", new Object[] { paramString });
@@ -87,22 +96,13 @@ public final class a
   {
     AppMethodBeat.i(19923);
     Log.v("MicroMsg.MMCacheImpl", "setting bitmap: %s", new Object[] { paramString });
-    this.gnw.x(paramString, paramBitmap);
+    this.iRF.q(paramString, paramBitmap);
     AppMethodBeat.o(19923);
-  }
-  
-  public final Bitmap getBitmap(String paramString)
-  {
-    AppMethodBeat.i(19921);
-    Log.v("MicroMsg.MMCacheImpl", "getting bitmap: %s", new Object[] { paramString });
-    paramString = (Bitmap)this.gnw.get(paramString);
-    AppMethodBeat.o(19921);
-    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.booter.cache.a
  * JD-Core Version:    0.7.0.1
  */

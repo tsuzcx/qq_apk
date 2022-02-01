@@ -141,7 +141,7 @@ public class sns_img_delete
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.sns_img_delete
  * JD-Core Version:    0.7.0.1
  */

@@ -26,6 +26,7 @@ import android.view.accessibility.AccessibilityNodeInfo.CollectionInfo;
 import android.view.accessibility.AccessibilityNodeProvider;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import io.flutter.a.c;
+import io.flutter.b;
 import io.flutter.embedding.engine.FlutterJNI;
 import io.flutter.plugin.platform.g;
 import java.nio.ByteBuffer;
@@ -43,72 +44,74 @@ import java.util.Set;
 public final class a
   extends AccessibilityNodeProvider
 {
-  private static int STR = 267386881;
-  private final io.flutter.embedding.engine.c.a SNY;
-  public e SNu;
-  public final AccessibilityViewEmbedder STS;
-  final g STT;
-  final Map<Integer, f> STU;
-  private final Map<Integer, c> STV;
-  public f STW;
-  public Integer STX;
-  public Integer STY;
-  private int STZ;
-  public f SUa;
-  f SUb;
-  public f SUc;
-  final List<Integer> SUd;
-  int SUe;
-  Integer SUf;
-  private final io.flutter.embedding.engine.c.a.a SUg;
-  private final AccessibilityManager.AccessibilityStateChangeListener SUh;
+  private static int aawE = 267386881;
+  private final io.flutter.embedding.engine.b.a aapW;
+  public e aaps;
+  public final AccessibilityViewEmbedder aawF;
+  final g aawG;
+  private final ContentResolver aawH;
+  final Map<Integer, f> aawI;
+  private final Map<Integer, c> aawJ;
+  public f aawK;
+  public Integer aawL;
+  public Integer aawM;
+  private int aawN;
+  public f aawO;
+  f aawP;
+  public f aawQ;
+  final List<Integer> aawR;
+  int aawS;
+  Integer aawT;
+  private final io.flutter.embedding.engine.b.a.a aawU;
+  private final AccessibilityManager.AccessibilityStateChangeListener aawV;
   @TargetApi(19)
-  private final AccessibilityManager.TouchExplorationStateChangeListener SUi;
-  private final ContentObserver SUj;
-  private final ContentResolver aFp;
-  public final AccessibilityManager nC;
+  private final AccessibilityManager.TouchExplorationStateChangeListener aawW;
+  private final ContentObserver aawX;
+  public final AccessibilityManager bEA;
+  private boolean isReleased;
   final View rootAccessibilityView;
   
-  public a(View paramView, io.flutter.embedding.engine.c.a parama, AccessibilityManager paramAccessibilityManager, ContentResolver paramContentResolver, g paramg)
+  public a(View paramView, io.flutter.embedding.engine.b.a parama, AccessibilityManager paramAccessibilityManager, ContentResolver paramContentResolver, g paramg)
   {
     this(paramView, parama, paramAccessibilityManager, paramContentResolver, new AccessibilityViewEmbedder(paramView, 65536), paramg);
     AppMethodBeat.i(9750);
     AppMethodBeat.o(9750);
   }
   
-  private a(View paramView, io.flutter.embedding.engine.c.a parama, final AccessibilityManager paramAccessibilityManager, ContentResolver paramContentResolver, AccessibilityViewEmbedder paramAccessibilityViewEmbedder, g paramg)
+  private a(View paramView, io.flutter.embedding.engine.b.a parama, final AccessibilityManager paramAccessibilityManager, ContentResolver paramContentResolver, AccessibilityViewEmbedder paramAccessibilityViewEmbedder, g paramg)
   {
-    AppMethodBeat.i(214926);
-    this.STU = new HashMap();
-    this.STV = new HashMap();
-    this.STZ = 0;
-    this.SUd = new ArrayList();
-    this.SUe = 0;
-    this.SUf = Integer.valueOf(0);
-    this.SUg = new io.flutter.embedding.engine.c.a.a()
+    AppMethodBeat.i(254441);
+    this.aawI = new HashMap();
+    this.aawJ = new HashMap();
+    this.aawN = 0;
+    this.aawR = new ArrayList();
+    this.aawS = 0;
+    this.aawT = Integer.valueOf(0);
+    this.isReleased = false;
+    this.aawU = new io.flutter.embedding.engine.b.a.a()
     {
-      public final void atq(int paramAnonymousInt)
+      public final void aDl(int paramAnonymousInt)
       {
         AppMethodBeat.i(9689);
         a.a(a.this, paramAnonymousInt, 1);
         AppMethodBeat.o(9689);
       }
       
-      public final void atr(int paramAnonymousInt)
+      public final void aDm(int paramAnonymousInt)
       {
         AppMethodBeat.i(9690);
         a.a(a.this, paramAnonymousInt, 2);
         AppMethodBeat.o(9690);
       }
       
-      public final void bte(String paramAnonymousString)
+      public final void bGg(String paramAnonymousString)
       {
         AppMethodBeat.i(9688);
         a.b(a.this).announceForAccessibility(paramAnonymousString);
         AppMethodBeat.o(9688);
       }
       
-      public final void btf(String paramAnonymousString)
+      public final void bGh(String paramAnonymousString)
       {
         AppMethodBeat.i(9691);
         AccessibilityEvent localAccessibilityEvent = a.c(a.this);
@@ -124,8 +127,8 @@ public final class a
         a locala = a.this;
         if (paramAnonymousByteBuffer.hasRemaining())
         {
-          a.c localc = locala.atG(paramAnonymousByteBuffer.getInt());
-          localc.SUN = paramAnonymousByteBuffer.getInt();
+          a.c localc = locala.aDA(paramAnonymousByteBuffer.getInt());
+          localc.aaxA = paramAnonymousByteBuffer.getInt();
           int i = paramAnonymousByteBuffer.getInt();
           if (i == -1)
           {
@@ -157,20 +160,20 @@ public final class a
         Object localObject1 = new ArrayList();
         while (paramAnonymousByteBuffer.hasRemaining())
         {
-          localObject2 = locala.atF(paramAnonymousByteBuffer.getInt());
+          localObject2 = locala.aDz(paramAnonymousByteBuffer.getInt());
           ((a.f)localObject2).a(paramAnonymousByteBuffer, paramAnonymousArrayOfString);
-          if (!((a.f)localObject2).a(a.d.SVb))
+          if (!((a.f)localObject2).a(a.d.aaxO))
           {
-            if (((a.f)localObject2).a(a.d.SUT)) {
-              locala.SUa = ((a.f)localObject2);
+            if (((a.f)localObject2).a(a.d.aaxG)) {
+              locala.aawO = ((a.f)localObject2);
             }
-            if (((a.f)localObject2).SVz) {
+            if (((a.f)localObject2).aayl) {
               ((ArrayList)localObject1).add(localObject2);
             }
           }
         }
         Object localObject2 = new HashSet();
-        paramAnonymousByteBuffer = locala.hxv();
+        paramAnonymousByteBuffer = locala.iBz();
         ArrayList localArrayList = new ArrayList();
         if (paramAnonymousByteBuffer != null)
         {
@@ -181,30 +184,31 @@ public final class a
             localObject3 = locala.rootAccessibilityView.getRootWindowInsets();
             if (localObject3 != null)
             {
-              if (!locala.SUf.equals(Integer.valueOf(((WindowInsets)localObject3).getSystemWindowInsetLeft())))
+              if (!locala.aawT.equals(Integer.valueOf(((WindowInsets)localObject3).getSystemWindowInsetLeft())))
               {
-                paramAnonymousByteBuffer.SVR = true;
-                paramAnonymousByteBuffer.SVP = true;
+                paramAnonymousByteBuffer.aayD = true;
+                paramAnonymousByteBuffer.aayB = true;
               }
-              locala.SUf = Integer.valueOf(((WindowInsets)localObject3).getSystemWindowInsetLeft());
-              Matrix.translateM(paramAnonymousArrayOfString, 0, locala.SUf.intValue(), 0.0F, 0.0F);
+              locala.aawT = Integer.valueOf(((WindowInsets)localObject3).getSystemWindowInsetLeft());
+              Matrix.translateM(paramAnonymousArrayOfString, 0, locala.aawT.intValue(), 0.0F, 0.0F);
             }
           }
           paramAnonymousByteBuffer.a(paramAnonymousArrayOfString, (Set)localObject2, false);
-          paramAnonymousByteBuffer.kp(localArrayList);
+          paramAnonymousByteBuffer.lj(localArrayList);
         }
         paramAnonymousByteBuffer = null;
         Object localObject3 = localArrayList.iterator();
         if (((Iterator)localObject3).hasNext())
         {
           paramAnonymousArrayOfString = (a.f)((Iterator)localObject3).next();
-          if (locala.SUd.contains(Integer.valueOf(paramAnonymousArrayOfString.id))) {
-            break label1541;
+          if (locala.aawR.contains(Integer.valueOf(paramAnonymousArrayOfString.id))) {
+            break label1573;
           }
           paramAnonymousByteBuffer = paramAnonymousArrayOfString;
         }
-        label1284:
-        label1541:
+        label913:
+        label1316:
+        label1573:
         for (;;)
         {
           break;
@@ -216,68 +220,72 @@ public final class a
               paramAnonymousArrayOfString = (a.f)localArrayList.get(localArrayList.size() - 1);
             }
           }
-          if ((paramAnonymousArrayOfString != null) && (paramAnonymousArrayOfString.id != locala.SUe))
+          if ((paramAnonymousArrayOfString != null) && ((paramAnonymousArrayOfString.id != locala.aawS) || (localArrayList.size() != locala.aawR.size())))
           {
-            locala.SUe = paramAnonymousArrayOfString.id;
-            paramAnonymousByteBuffer = locala.mV(paramAnonymousArrayOfString.id, 32);
-            paramAnonymousArrayOfString = paramAnonymousArrayOfString.hxx();
-            paramAnonymousByteBuffer.getText().add(paramAnonymousArrayOfString);
-            locala.sendAccessibilityEvent(paramAnonymousByteBuffer);
+            locala.aawS = paramAnonymousArrayOfString.id;
+            localObject3 = locala.op(paramAnonymousArrayOfString.id, 32);
+            paramAnonymousArrayOfString = paramAnonymousArrayOfString.iBC();
+            paramAnonymousByteBuffer = paramAnonymousArrayOfString;
+            if (paramAnonymousArrayOfString == null) {
+              paramAnonymousByteBuffer = " ";
+            }
+            ((AccessibilityEvent)localObject3).getText().add(paramAnonymousByteBuffer);
+            locala.a((AccessibilityEvent)localObject3);
           }
-          locala.SUd.clear();
+          locala.aawR.clear();
           paramAnonymousByteBuffer = localArrayList.iterator();
           while (paramAnonymousByteBuffer.hasNext())
           {
             paramAnonymousArrayOfString = (a.f)paramAnonymousByteBuffer.next();
-            locala.SUd.add(Integer.valueOf(paramAnonymousArrayOfString.id));
+            locala.aawR.add(Integer.valueOf(paramAnonymousArrayOfString.id));
           }
-          paramAnonymousByteBuffer = locala.STU.entrySet().iterator();
+          paramAnonymousByteBuffer = locala.aawI.entrySet().iterator();
           while (paramAnonymousByteBuffer.hasNext())
           {
             paramAnonymousArrayOfString = (a.f)((Map.Entry)paramAnonymousByteBuffer.next()).getValue();
             if (!((Set)localObject2).contains(paramAnonymousArrayOfString))
             {
-              paramAnonymousArrayOfString.SVJ = null;
-              if ((paramAnonymousArrayOfString.SVq != -1) && (locala.STX != null) && (locala.STS.platformViewOfNode(locala.STX.intValue()) == locala.STT.r(Integer.valueOf(paramAnonymousArrayOfString.SVq))))
+              paramAnonymousArrayOfString.aayv = null;
+              if ((paramAnonymousArrayOfString.aayc != -1) && (locala.aawL != null) && (locala.aawF.platformViewOfNode(locala.aawL.intValue()) == locala.aawG.z(Integer.valueOf(paramAnonymousArrayOfString.aayc))))
               {
-                locala.mU(locala.STX.intValue(), 65536);
-                locala.STX = null;
+                locala.oo(locala.aawL.intValue(), 65536);
+                locala.aawL = null;
               }
-              if (locala.STW == paramAnonymousArrayOfString)
+              if (locala.aawK == paramAnonymousArrayOfString)
               {
-                locala.mU(locala.STW.id, 65536);
-                locala.STW = null;
+                locala.oo(locala.aawK.id, 65536);
+                locala.aawK = null;
               }
-              if (locala.SUa == paramAnonymousArrayOfString) {
-                locala.SUa = null;
+              if (locala.aawO == paramAnonymousArrayOfString) {
+                locala.aawO = null;
               }
-              if (locala.SUc == paramAnonymousArrayOfString) {
-                locala.SUc = null;
+              if (locala.aawQ == paramAnonymousArrayOfString) {
+                locala.aawQ = null;
               }
               paramAnonymousByteBuffer.remove();
             }
           }
-          locala.atH(0);
+          locala.aDB(0);
           localObject1 = ((ArrayList)localObject1).iterator();
           int i;
-          label724:
+          label756:
           float f3;
           float f2;
           float f1;
           if (((Iterator)localObject1).hasNext())
           {
             localObject2 = (a.f)((Iterator)localObject1).next();
-            if ((!Float.isNaN(((a.f)localObject2).SVt)) && (!Float.isNaN(((a.f)localObject2).SVE)) && (((a.f)localObject2).SVE != ((a.f)localObject2).SVt))
+            if ((!Float.isNaN(((a.f)localObject2).aayf)) && (!Float.isNaN(((a.f)localObject2).aayq)) && (((a.f)localObject2).aayq != ((a.f)localObject2).aayf))
             {
               i = 1;
               if (i == 0) {
-                break label1050;
+                break label1082;
               }
-              paramAnonymousByteBuffer = locala.mV(((a.f)localObject2).id, 4096);
-              f3 = ((a.f)localObject2).SVt;
-              f2 = ((a.f)localObject2).SVu;
+              paramAnonymousByteBuffer = locala.op(((a.f)localObject2).id, 4096);
+              f3 = ((a.f)localObject2).aayf;
+              f2 = ((a.f)localObject2).aayg;
               f1 = f3;
-              if (Float.isInfinite(((a.f)localObject2).SVu))
+              if (Float.isInfinite(((a.f)localObject2).aayg))
               {
                 float f4 = 100000.0F;
                 f2 = f4;
@@ -288,8 +296,8 @@ public final class a
                   f2 = f4;
                 }
               }
-              if (!Float.isInfinite(((a.f)localObject2).SVv)) {
-                break label963;
+              if (!Float.isInfinite(((a.f)localObject2).aayh)) {
+                break label995;
               }
               f3 = f2 + 100000.0F;
               f2 = f1;
@@ -298,116 +306,111 @@ public final class a
               }
               f2 += 100000.0F;
               f1 = f3;
-              label846:
-              if ((!((a.f)localObject2).b(a.b.SUu)) && (!((a.f)localObject2).b(a.b.SUv))) {
-                break label992;
+              label878:
+              if ((!((a.f)localObject2).b(a.b.aaxi)) && (!((a.f)localObject2).b(a.b.aaxj))) {
+                break label1024;
               }
               paramAnonymousByteBuffer.setScrollY((int)f2);
               paramAnonymousByteBuffer.setMaxScrollY((int)f1);
-              label881:
-              if (((a.f)localObject2).SVr <= 0) {
-                break label1044;
+              if (((a.f)localObject2).aayd <= 0) {
+                break label1076;
               }
-              paramAnonymousByteBuffer.setItemCount(((a.f)localObject2).SVr);
-              paramAnonymousByteBuffer.setFromIndex(((a.f)localObject2).SVs);
-              paramAnonymousArrayOfString = ((a.f)localObject2).SVL.iterator();
+              paramAnonymousByteBuffer.setItemCount(((a.f)localObject2).aayd);
+              paramAnonymousByteBuffer.setFromIndex(((a.f)localObject2).aaye);
+              paramAnonymousArrayOfString = ((a.f)localObject2).aayx.iterator();
               i = 0;
-              label921:
+              label953:
               if (!paramAnonymousArrayOfString.hasNext()) {
-                break label1030;
+                break label1062;
               }
-              if (((a.f)paramAnonymousArrayOfString.next()).a(a.d.SVb)) {
-                break label1538;
+              if (((a.f)paramAnonymousArrayOfString.next()).a(a.d.aaxO)) {
+                break label1570;
               }
               i += 1;
             }
           }
           for (;;)
           {
-            break label921;
+            break label953;
             i = 0;
-            break label724;
-            label963:
-            f2 -= ((a.f)localObject2).SVv;
-            f3 = f1 - ((a.f)localObject2).SVv;
+            break label756;
+            label995:
+            f2 -= ((a.f)localObject2).aayh;
+            f3 = f1 - ((a.f)localObject2).aayh;
             f1 = f2;
             f2 = f3;
-            break label846;
-            label992:
-            if ((!((a.f)localObject2).b(a.b.SUs)) && (!((a.f)localObject2).b(a.b.SUt))) {
-              break label881;
+            break label878;
+            if ((!((a.f)localObject2).b(a.b.aaxg)) && (!((a.f)localObject2).b(a.b.aaxh))) {
+              break label913;
             }
             paramAnonymousByteBuffer.setScrollX((int)f2);
             paramAnonymousByteBuffer.setMaxScrollX((int)f1);
-            break label881;
-            label1030:
-            paramAnonymousByteBuffer.setToIndex(((a.f)localObject2).SVs + i - 1);
-            label1044:
-            locala.sendAccessibilityEvent(paramAnonymousByteBuffer);
-            label1050:
-            if (((a.f)localObject2).a(a.d.SVd))
+            break label913;
+            label1062:
+            paramAnonymousByteBuffer.setToIndex(((a.f)localObject2).aaye + i - 1);
+            label1076:
+            locala.a(paramAnonymousByteBuffer);
+            label1082:
+            if (((a.f)localObject2).a(a.d.aaxQ))
             {
-              if (((((a.f)localObject2).label == null) && (((a.f)localObject2).SVI == null)) || ((((a.f)localObject2).label != null) && (((a.f)localObject2).SVI != null) && (((a.f)localObject2).label.equals(((a.f)localObject2).SVI)))) {
-                break label1494;
+              if (((((a.f)localObject2).label == null) && (((a.f)localObject2).aayu == null)) || ((((a.f)localObject2).label != null) && (((a.f)localObject2).aayu != null) && (((a.f)localObject2).label.equals(((a.f)localObject2).aayu)))) {
+                break label1526;
               }
               i = 1;
-              label1112:
+              label1144:
               if (i != 0) {
-                locala.atH(((a.f)localObject2).id);
+                locala.aDB(((a.f)localObject2).id);
               }
             }
-            if ((locala.STW != null) && (locala.STW.id == ((a.f)localObject2).id) && (!((a.f)localObject2).b(a.d.SUQ)) && (((a.f)localObject2).a(a.d.SUQ)))
+            if ((locala.aawK != null) && (locala.aawK.id == ((a.f)localObject2).id) && (!((a.f)localObject2).b(a.d.aaxD)) && (((a.f)localObject2).a(a.d.aaxD)))
             {
-              paramAnonymousByteBuffer = locala.mV(((a.f)localObject2).id, 4);
+              paramAnonymousByteBuffer = locala.op(((a.f)localObject2).id, 4);
               paramAnonymousByteBuffer.getText().add(((a.f)localObject2).label);
-              locala.sendAccessibilityEvent(paramAnonymousByteBuffer);
+              locala.a(paramAnonymousByteBuffer);
             }
-            if ((locala.SUa != null) && (locala.SUa.id == ((a.f)localObject2).id) && ((locala.SUb == null) || (locala.SUb.id != locala.SUa.id)))
+            if ((locala.aawO != null) && (locala.aawO.id == ((a.f)localObject2).id) && ((locala.aawP == null) || (locala.aawP.id != locala.aawO.id)))
             {
-              locala.SUb = locala.SUa;
-              locala.sendAccessibilityEvent(locala.mV(((a.f)localObject2).id, 8));
-              if ((locala.SUa == null) || (locala.SUa.id != ((a.f)localObject2).id) || (!((a.f)localObject2).b(a.d.SUS)) || (!((a.f)localObject2).a(a.d.SUS)) || ((locala.STW != null) && (locala.STW.id != locala.SUa.id))) {
-                break label1515;
+              locala.aawP = locala.aawO;
+              locala.a(locala.op(((a.f)localObject2).id, 8));
+              if ((locala.aawO == null) || (locala.aawO.id != ((a.f)localObject2).id) || (!((a.f)localObject2).b(a.d.aaxF)) || (!((a.f)localObject2).a(a.d.aaxF)) || ((locala.aawK != null) && (locala.aawK.id != locala.aawO.id))) {
+                break label1547;
               }
-              if (((a.f)localObject2).SVH == null) {
-                break label1517;
+              if (((a.f)localObject2).aayt == null) {
+                break label1549;
               }
-              paramAnonymousByteBuffer = ((a.f)localObject2).SVH;
-              label1371:
+              paramAnonymousByteBuffer = ((a.f)localObject2).aayt;
+              label1403:
               if (((a.f)localObject2).value == null) {
-                break label1524;
+                break label1556;
               }
             }
-            label1494:
-            label1515:
-            label1517:
-            label1524:
             for (paramAnonymousArrayOfString = ((a.f)localObject2).value;; paramAnonymousArrayOfString = "")
             {
-              paramAnonymousByteBuffer = locala.ae(((a.f)localObject2).id, paramAnonymousByteBuffer, paramAnonymousArrayOfString);
+              paramAnonymousByteBuffer = locala.aj(((a.f)localObject2).id, paramAnonymousByteBuffer, paramAnonymousArrayOfString);
               if (paramAnonymousByteBuffer != null) {
-                locala.sendAccessibilityEvent(paramAnonymousByteBuffer);
+                locala.a(paramAnonymousByteBuffer);
               }
-              if ((((a.f)localObject2).SVC == ((a.f)localObject2).SVo) && (((a.f)localObject2).SVD == ((a.f)localObject2).SVp)) {
+              if ((((a.f)localObject2).aayo == ((a.f)localObject2).aaya) && (((a.f)localObject2).aayp == ((a.f)localObject2).aayb)) {
                 break;
               }
-              paramAnonymousByteBuffer = locala.mV(((a.f)localObject2).id, 8192);
+              paramAnonymousByteBuffer = locala.op(((a.f)localObject2).id, 8192);
               paramAnonymousByteBuffer.getText().add(paramAnonymousArrayOfString);
-              paramAnonymousByteBuffer.setFromIndex(((a.f)localObject2).SVo);
-              paramAnonymousByteBuffer.setToIndex(((a.f)localObject2).SVp);
+              paramAnonymousByteBuffer.setFromIndex(((a.f)localObject2).aaya);
+              paramAnonymousByteBuffer.setToIndex(((a.f)localObject2).aayb);
               paramAnonymousByteBuffer.setItemCount(paramAnonymousArrayOfString.length());
-              locala.sendAccessibilityEvent(paramAnonymousByteBuffer);
+              locala.a(paramAnonymousByteBuffer);
               break;
+              label1526:
               i = 0;
-              break label1112;
-              if (locala.SUa != null) {
-                break label1284;
+              break label1144;
+              if (locala.aawO != null) {
+                break label1316;
               }
-              locala.SUb = null;
-              break label1284;
+              locala.aawP = null;
+              break label1316;
               break;
               paramAnonymousByteBuffer = "";
-              break label1371;
+              break label1403;
             }
             AppMethodBeat.o(9693);
             return;
@@ -415,29 +418,34 @@ public final class a
         }
       }
     };
-    this.SUh = new AccessibilityManager.AccessibilityStateChangeListener()
+    this.aawV = new AccessibilityManager.AccessibilityStateChangeListener()
     {
       public final void onAccessibilityStateChanged(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(9797);
+        if (a.d(a.this))
+        {
+          AppMethodBeat.o(9797);
+          return;
+        }
         if (paramAnonymousBoolean)
         {
-          a.e(a.this).a(a.d(a.this));
-          a.e(a.this).SNV.setSemanticsEnabled(true);
+          a.f(a.this).a(a.e(a.this));
+          a.f(a.this).aapT.setSemanticsEnabled(true);
         }
         for (;;)
         {
-          if (a.f(a.this) != null) {
-            a.f(a.this).bm(paramAnonymousBoolean, a.g(a.this).isTouchExplorationEnabled());
+          if (a.g(a.this) != null) {
+            a.g(a.this).bw(paramAnonymousBoolean, a.h(a.this).isTouchExplorationEnabled());
           }
           AppMethodBeat.o(9797);
           return;
-          a.e(a.this).a(null);
-          a.e(a.this).SNV.setSemanticsEnabled(false);
+          a.f(a.this).a(null);
+          a.f(a.this).aapT.setSemanticsEnabled(false);
         }
       }
     };
-    this.SUj = new ContentObserver(new Handler())
+    this.aawX = new ContentObserver(new Handler())
     {
       public final void onChange(boolean paramAnonymousBoolean)
       {
@@ -449,90 +457,100 @@ public final class a
       public final void onChange(boolean paramAnonymousBoolean, Uri paramAnonymousUri)
       {
         AppMethodBeat.i(9777);
+        if (a.d(a.this))
+        {
+          AppMethodBeat.o(9777);
+          return;
+        }
         int i;
         if (Build.VERSION.SDK_INT < 17)
         {
           paramAnonymousUri = null;
           if ((paramAnonymousUri == null) || (!paramAnonymousUri.equals("0"))) {
-            break label87;
+            break label104;
           }
           i = 1;
-          label31:
+          label48:
           if (i == 0) {
-            break label92;
+            break label109;
           }
-          a.a(a.this, a.i(a.this) | a.a.SUo.value);
+          a.a(a.this, a.j(a.this) | a.a.aaxc.value);
         }
         for (;;)
         {
-          a.j(a.this);
+          a.k(a.this);
           AppMethodBeat.o(9777);
           return;
-          paramAnonymousUri = Settings.Global.getString(a.h(a.this), "transition_animation_scale");
+          paramAnonymousUri = Settings.Global.getString(a.i(a.this), "transition_animation_scale");
           break;
-          label87:
+          label104:
           i = 0;
-          break label31;
-          label92:
-          a.a(a.this, a.i(a.this) & (a.a.SUo.value ^ 0xFFFFFFFF));
+          break label48;
+          label109:
+          a.a(a.this, a.j(a.this) & (a.a.aaxc.value ^ 0xFFFFFFFF));
         }
       }
     };
     this.rootAccessibilityView = paramView;
-    this.SNY = parama;
-    this.nC = paramAccessibilityManager;
-    this.aFp = paramContentResolver;
-    this.STS = paramAccessibilityViewEmbedder;
-    this.STT = paramg;
-    this.SUh.onAccessibilityStateChanged(paramAccessibilityManager.isEnabled());
-    this.nC.addAccessibilityStateChangeListener(this.SUh);
+    this.aapW = parama;
+    this.bEA = paramAccessibilityManager;
+    this.aawH = paramContentResolver;
+    this.aawF = paramAccessibilityViewEmbedder;
+    this.aawG = paramg;
+    this.aawV.onAccessibilityStateChanged(paramAccessibilityManager.isEnabled());
+    this.bEA.addAccessibilityStateChangeListener(this.aawV);
     if (Build.VERSION.SDK_INT >= 19)
     {
-      this.SUi = new AccessibilityManager.TouchExplorationStateChangeListener()
+      this.aawW = new AccessibilityManager.TouchExplorationStateChangeListener()
       {
         public final void onTouchExplorationStateChanged(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(9778);
+          if (a.d(a.this))
+          {
+            AppMethodBeat.o(9778);
+            return;
+          }
           if (paramAnonymousBoolean) {
-            a.a(a.this, a.i(a.this) | a.a.SUm.value);
+            a.a(a.this, a.j(a.this) | a.a.aaxa.value);
           }
           for (;;)
           {
-            a.j(a.this);
-            if (a.f(a.this) != null) {
-              a.f(a.this).bm(paramAccessibilityManager.isEnabled(), paramAnonymousBoolean);
+            a.k(a.this);
+            if (a.g(a.this) != null) {
+              a.g(a.this).bw(paramAccessibilityManager.isEnabled(), paramAnonymousBoolean);
             }
             AppMethodBeat.o(9778);
             return;
-            a.k(a.this);
-            a.a(a.this, a.i(a.this) & (a.a.SUm.value ^ 0xFFFFFFFF));
+            a.l(a.this);
+            a.a(a.this, a.j(a.this) & (a.a.aaxa.value ^ 0xFFFFFFFF));
           }
         }
       };
-      this.SUi.onTouchExplorationStateChanged(paramAccessibilityManager.isTouchExplorationEnabled());
-      this.nC.addTouchExplorationStateChangeListener(this.SUi);
+      this.aawW.onTouchExplorationStateChanged(paramAccessibilityManager.isTouchExplorationEnabled());
+      this.bEA.addTouchExplorationStateChangeListener(this.aawW);
     }
     for (;;)
     {
       if (Build.VERSION.SDK_INT >= 17)
       {
-        this.SUj.onChange(false);
+        this.aawX.onChange(false);
         paramView = Settings.Global.getUriFor("transition_animation_scale");
-        this.aFp.registerContentObserver(paramView, false, this.SUj);
+        this.aawH.registerContentObserver(paramView, false, this.aawX);
       }
       if (paramg != null) {
         paramg.a(this);
       }
-      AppMethodBeat.o(214926);
+      AppMethodBeat.o(254441);
       return;
-      this.SUi = null;
+      this.aawW = null;
     }
   }
   
   private boolean a(final f paramf)
   {
     AppMethodBeat.i(9752);
-    if ((paramf.SVr > 0) && ((f.a(this.STW, new c() {})) || (!f.a(this.STW, new c() {}))))
+    if ((paramf.aayd > 0) && ((f.a(this.aawK, new c() {})) || (!f.a(this.aawK, new c() {}))))
     {
       AppMethodBeat.o(9752);
       return true;
@@ -556,83 +574,137 @@ public final class a
       {
         AppMethodBeat.o(9755);
         return false;
-        if ((paramBoolean) && (paramf.a(b.SUz)))
+        if ((paramBoolean) && (paramf.a(b.aaxn)))
         {
-          this.SNY.dispatchSemanticsAction(paramInt, b.SUz, Boolean.valueOf(bool));
+          this.aapW.dispatchSemanticsAction(paramInt, b.aaxn, Boolean.valueOf(bool));
           AppMethodBeat.o(9755);
           return true;
         }
-      } while ((paramBoolean) || (!paramf.a(b.SUA)));
-      this.SNY.dispatchSemanticsAction(paramInt, b.SUA, Boolean.valueOf(bool));
+      } while ((paramBoolean) || (!paramf.a(b.aaxo)));
+      this.aapW.dispatchSemanticsAction(paramInt, b.aaxo, Boolean.valueOf(bool));
       AppMethodBeat.o(9755);
       return true;
-      if ((paramBoolean) && (paramf.a(b.SUK)))
+      if ((paramBoolean) && (paramf.a(b.aaxx)))
       {
-        this.SNY.dispatchSemanticsAction(paramInt, b.SUK, Boolean.valueOf(bool));
+        this.aapW.dispatchSemanticsAction(paramInt, b.aaxx, Boolean.valueOf(bool));
         AppMethodBeat.o(9755);
         return true;
       }
-    } while ((paramBoolean) || (!paramf.a(b.SUL)));
-    this.SNY.dispatchSemanticsAction(paramInt, b.SUL, Boolean.valueOf(bool));
+    } while ((paramBoolean) || (!paramf.a(b.aaxy)));
+    this.aapW.dispatchSemanticsAction(paramInt, b.aaxy, Boolean.valueOf(bool));
     AppMethodBeat.o(9755);
     return true;
   }
   
-  private void aH(float paramFloat1, float paramFloat2)
+  private void aO(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(9762);
-    if (this.STU.isEmpty())
+    if (this.aawI.isEmpty())
     {
       AppMethodBeat.o(9762);
       return;
     }
-    f localf = hxv().r(new float[] { paramFloat1, paramFloat2, 0.0F, 1.0F });
-    if (localf != this.SUc)
+    f localf = iBz().s(new float[] { paramFloat1, paramFloat2, 0.0F, 1.0F });
+    if (localf != this.aawQ)
     {
       if (localf != null) {
-        mU(localf.id, 128);
+        oo(localf.id, 128);
       }
-      if (this.SUc != null) {
-        mU(this.SUc.id, 256);
+      if (this.aawQ != null) {
+        oo(this.aawQ.id, 256);
       }
-      this.SUc = localf;
+      this.aawQ = localf;
     }
     AppMethodBeat.o(9762);
   }
   
-  private void hxw()
+  private void iBA()
   {
     AppMethodBeat.i(9761);
-    if (this.SUc != null)
+    if (this.aawQ != null)
     {
-      mU(this.SUc.id, 256);
-      this.SUc = null;
+      oo(this.aawQ.id, 256);
+      this.aawQ = null;
     }
     AppMethodBeat.o(9761);
   }
   
-  public final boolean aE(MotionEvent paramMotionEvent)
+  final void a(AccessibilityEvent paramAccessibilityEvent)
+  {
+    AppMethodBeat.i(9765);
+    if (!this.bEA.isEnabled())
+    {
+      AppMethodBeat.o(9765);
+      return;
+    }
+    this.rootAccessibilityView.getParent().requestSendAccessibilityEvent(this.rootAccessibilityView, paramAccessibilityEvent);
+    AppMethodBeat.o(9765);
+  }
+  
+  final c aDA(int paramInt)
+  {
+    AppMethodBeat.i(9759);
+    c localc2 = (c)this.aawJ.get(Integer.valueOf(paramInt));
+    c localc1 = localc2;
+    if (localc2 == null)
+    {
+      localc1 = new c();
+      localc1.id = paramInt;
+      localc1.Ezt = (aawE + paramInt);
+      this.aawJ.put(Integer.valueOf(paramInt), localc1);
+    }
+    AppMethodBeat.o(9759);
+    return localc1;
+  }
+  
+  final void aDB(int paramInt)
+  {
+    AppMethodBeat.i(254475);
+    AccessibilityEvent localAccessibilityEvent = op(paramInt, 2048);
+    if (Build.VERSION.SDK_INT >= 19) {
+      localAccessibilityEvent.setContentChangeTypes(1);
+    }
+    a(localAccessibilityEvent);
+    AppMethodBeat.o(254475);
+  }
+  
+  final f aDz(int paramInt)
+  {
+    AppMethodBeat.i(9758);
+    f localf2 = (f)this.aawI.get(Integer.valueOf(paramInt));
+    f localf1 = localf2;
+    if (localf2 == null)
+    {
+      localf1 = new f(this);
+      localf1.id = paramInt;
+      this.aawI.put(Integer.valueOf(paramInt), localf1);
+    }
+    AppMethodBeat.o(9758);
+    return localf1;
+  }
+  
+  public final boolean aM(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(9760);
-    if (!this.nC.isTouchExplorationEnabled())
+    if (!this.bEA.isTouchExplorationEnabled())
     {
       AppMethodBeat.o(9760);
       return false;
     }
-    if (this.STU.isEmpty())
+    if (this.aawI.isEmpty())
     {
       AppMethodBeat.o(9760);
       return false;
     }
-    f localf = hxv().r(new float[] { paramMotionEvent.getX(), paramMotionEvent.getY(), 0.0F, 1.0F });
-    if ((localf != null) && (localf.SVq != -1))
+    f localf = iBz().s(new float[] { paramMotionEvent.getX(), paramMotionEvent.getY(), 0.0F, 1.0F });
+    if ((localf != null) && (localf.aayc != -1))
     {
-      boolean bool = this.STS.onAccessibilityHoverEvent(localf.id, paramMotionEvent);
+      boolean bool = this.aawF.onAccessibilityHoverEvent(localf.id, paramMotionEvent);
       AppMethodBeat.o(9760);
       return bool;
     }
     if ((paramMotionEvent.getAction() == 9) || (paramMotionEvent.getAction() == 7)) {
-      aH(paramMotionEvent.getX(), paramMotionEvent.getY());
+      aO(paramMotionEvent.getX(), paramMotionEvent.getY());
     }
     for (;;)
     {
@@ -641,17 +713,18 @@ public final class a
       if (paramMotionEvent.getAction() != 10) {
         break;
       }
-      hxw();
+      iBA();
     }
     new StringBuilder("unexpected accessibility hover event: ").append(paramMotionEvent);
+    b.iAe();
     AppMethodBeat.o(9760);
     return false;
   }
   
-  final AccessibilityEvent ae(int paramInt, String paramString1, String paramString2)
+  final AccessibilityEvent aj(int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(9763);
-    AccessibilityEvent localAccessibilityEvent = mV(paramInt, 16);
+    AccessibilityEvent localAccessibilityEvent = op(paramInt, 16);
     localAccessibilityEvent.setBeforeText(paramString1);
     localAccessibilityEvent.getText().add(paramString2);
     paramInt = 0;
@@ -677,48 +750,6 @@ public final class a
     return localAccessibilityEvent;
   }
   
-  final f atF(int paramInt)
-  {
-    AppMethodBeat.i(9758);
-    f localf2 = (f)this.STU.get(Integer.valueOf(paramInt));
-    f localf1 = localf2;
-    if (localf2 == null)
-    {
-      localf1 = new f(this);
-      localf1.id = paramInt;
-      this.STU.put(Integer.valueOf(paramInt), localf1);
-    }
-    AppMethodBeat.o(9758);
-    return localf1;
-  }
-  
-  final c atG(int paramInt)
-  {
-    AppMethodBeat.i(9759);
-    c localc2 = (c)this.STV.get(Integer.valueOf(paramInt));
-    c localc1 = localc2;
-    if (localc2 == null)
-    {
-      localc1 = new c();
-      localc1.id = paramInt;
-      localc1.resourceId = (STR + paramInt);
-      this.STV.put(Integer.valueOf(paramInt), localc1);
-    }
-    AppMethodBeat.o(9759);
-    return localc1;
-  }
-  
-  final void atH(int paramInt)
-  {
-    AppMethodBeat.i(214927);
-    AccessibilityEvent localAccessibilityEvent = mV(paramInt, 2048);
-    if (Build.VERSION.SDK_INT >= 19) {
-      localAccessibilityEvent.setContentChangeTypes(1);
-    }
-    sendAccessibilityEvent(localAccessibilityEvent);
-    AppMethodBeat.o(214927);
-  }
-  
   @SuppressLint({"NewApi"})
   public final AccessibilityNodeInfo createAccessibilityNodeInfo(int paramInt)
   {
@@ -726,7 +757,7 @@ public final class a
     AppMethodBeat.i(9753);
     if (paramInt >= 65536)
     {
-      localObject1 = this.STS.createAccessibilityNodeInfo(paramInt);
+      localObject1 = this.aawF.createAccessibilityNodeInfo(paramInt);
       AppMethodBeat.o(9753);
       return localObject1;
     }
@@ -734,227 +765,226 @@ public final class a
     {
       localObject1 = AccessibilityNodeInfo.obtain(this.rootAccessibilityView);
       this.rootAccessibilityView.onInitializeAccessibilityNodeInfo((AccessibilityNodeInfo)localObject1);
-      if (this.STU.containsKey(Integer.valueOf(0))) {
+      if (this.aawI.containsKey(Integer.valueOf(0))) {
         ((AccessibilityNodeInfo)localObject1).addChild(this.rootAccessibilityView, 0);
       }
       AppMethodBeat.o(9753);
       return localObject1;
     }
-    Object localObject1 = (f)this.STU.get(Integer.valueOf(paramInt));
-    if (localObject1 == null)
+    Object localObject2 = (f)this.aawI.get(Integer.valueOf(paramInt));
+    if (localObject2 == null)
     {
       AppMethodBeat.o(9753);
       return null;
     }
     Object localObject3;
-    if (((f)localObject1).SVq != -1)
+    if (((f)localObject2).aayc != -1)
     {
-      localObject2 = this.STT.r(Integer.valueOf(((f)localObject1).SVq));
-      localObject3 = ((f)localObject1).SVT;
-      localObject1 = this.STS.getRootNode((View)localObject2, ((f)localObject1).id, (Rect)localObject3);
-      AppMethodBeat.o(9753);
-      return localObject1;
-    }
-    Object localObject2 = AccessibilityNodeInfo.obtain(this.rootAccessibilityView, paramInt);
-    if (Build.VERSION.SDK_INT >= 18) {
-      ((AccessibilityNodeInfo)localObject2).setViewIdResourceName("");
-    }
-    ((AccessibilityNodeInfo)localObject2).setPackageName(this.rootAccessibilityView.getContext().getPackageName());
-    ((AccessibilityNodeInfo)localObject2).setClassName("android.view.View");
-    ((AccessibilityNodeInfo)localObject2).setSource(this.rootAccessibilityView, paramInt);
-    boolean bool1;
-    if (!((f)localObject1).a(d.SUZ)) {
-      if (((f)localObject1).a(d.SVi))
+      localObject1 = this.aawG.z(Integer.valueOf(((f)localObject2).aayc));
+      if (this.aawG.A(Integer.valueOf(((f)localObject2).aayc)))
       {
-        bool1 = true;
-        ((AccessibilityNodeInfo)localObject2).setFocusable(bool1);
-        if (this.SUa != null)
-        {
-          if (this.SUa.id != paramInt) {
-            break label1636;
-          }
-          bool1 = true;
-          label297:
-          ((AccessibilityNodeInfo)localObject2).setFocused(bool1);
-        }
-        if (this.STW != null)
-        {
-          if (this.STW.id != paramInt) {
-            break label1642;
-          }
-          bool1 = true;
-          label325:
-          ((AccessibilityNodeInfo)localObject2).setAccessibilityFocused(bool1);
-        }
-        if (((f)localObject1).a(d.SUS))
-        {
-          ((AccessibilityNodeInfo)localObject2).setPassword(((f)localObject1).a(d.SUY));
-          if (!((f)localObject1).a(d.SVh)) {
-            ((AccessibilityNodeInfo)localObject2).setClassName("android.widget.EditText");
-          }
-          if (Build.VERSION.SDK_INT >= 18)
-          {
-            if (((f)localObject1).a(d.SVh)) {
-              break label1648;
-            }
-            bool1 = true;
-            label397:
-            ((AccessibilityNodeInfo)localObject2).setEditable(bool1);
-            if ((((f)localObject1).SVo != -1) && (((f)localObject1).SVp != -1)) {
-              ((AccessibilityNodeInfo)localObject2).setTextSelection(((f)localObject1).SVo, ((f)localObject1).SVp);
-            }
-            if ((Build.VERSION.SDK_INT > 18) && (this.STW != null) && (this.STW.id == paramInt)) {
-              ((AccessibilityNodeInfo)localObject2).setLiveRegion(1);
-            }
-          }
-          if (!((f)localObject1).a(b.SUz)) {
-            break label1928;
-          }
-          ((AccessibilityNodeInfo)localObject2).addAction(256);
-        }
+        localObject3 = ((f)localObject2).aayF;
+        localObject1 = this.aawF.getRootNode((View)localObject1, ((f)localObject2).id, (Rect)localObject3);
+        AppMethodBeat.o(9753);
+        return localObject1;
       }
     }
-    label899:
-    label1928:
+    Object localObject1 = AccessibilityNodeInfo.obtain(this.rootAccessibilityView, paramInt);
+    if (Build.VERSION.SDK_INT >= 18) {
+      ((AccessibilityNodeInfo)localObject1).setViewIdResourceName("");
+    }
+    ((AccessibilityNodeInfo)localObject1).setPackageName(this.rootAccessibilityView.getContext().getPackageName());
+    ((AccessibilityNodeInfo)localObject1).setClassName("android.view.View");
+    ((AccessibilityNodeInfo)localObject1).setSource(this.rootAccessibilityView, paramInt);
+    ((AccessibilityNodeInfo)localObject1).setFocusable(((f)localObject2).iBB());
+    boolean bool1;
+    if (this.aawO != null)
+    {
+      if (this.aawO.id == paramInt)
+      {
+        bool1 = true;
+        ((AccessibilityNodeInfo)localObject1).setFocused(bool1);
+      }
+    }
+    else
+    {
+      if (this.aawK != null)
+      {
+        if (this.aawK.id != paramInt) {
+          break label1525;
+        }
+        bool1 = true;
+        label323:
+        ((AccessibilityNodeInfo)localObject1).setAccessibilityFocused(bool1);
+      }
+      if (((f)localObject2).a(d.aaxF))
+      {
+        ((AccessibilityNodeInfo)localObject1).setPassword(((f)localObject2).a(d.aaxL));
+        if (!((f)localObject2).a(d.aaxU)) {
+          ((AccessibilityNodeInfo)localObject1).setClassName("android.widget.EditText");
+        }
+        if (Build.VERSION.SDK_INT >= 18)
+        {
+          if (((f)localObject2).a(d.aaxU)) {
+            break label1531;
+          }
+          bool1 = true;
+          label395:
+          ((AccessibilityNodeInfo)localObject1).setEditable(bool1);
+          if ((((f)localObject2).aaya != -1) && (((f)localObject2).aayb != -1)) {
+            ((AccessibilityNodeInfo)localObject1).setTextSelection(((f)localObject2).aaya, ((f)localObject2).aayb);
+          }
+          if ((Build.VERSION.SDK_INT > 18) && (this.aawK != null) && (this.aawK.id == paramInt)) {
+            ((AccessibilityNodeInfo)localObject1).setLiveRegion(1);
+          }
+        }
+        if (!((f)localObject2).a(b.aaxn)) {
+          break label1869;
+        }
+        ((AccessibilityNodeInfo)localObject1).addAction(256);
+      }
+    }
+    label799:
+    label959:
+    label1609:
+    label1740:
+    label1869:
     for (int j = 1;; j = 0)
     {
-      if (((f)localObject1).a(b.SUA))
+      if (((f)localObject2).a(b.aaxo))
       {
-        ((AccessibilityNodeInfo)localObject2).addAction(512);
+        ((AccessibilityNodeInfo)localObject1).addAction(512);
         j = 1;
       }
       int i = j;
-      if (((f)localObject1).a(b.SUK))
+      if (((f)localObject2).a(b.aaxx))
       {
-        ((AccessibilityNodeInfo)localObject2).addAction(256);
+        ((AccessibilityNodeInfo)localObject1).addAction(256);
         i = j | 0x2;
       }
       j = i;
-      if (((f)localObject1).a(b.SUL))
+      if (((f)localObject2).a(b.aaxy))
       {
-        ((AccessibilityNodeInfo)localObject2).addAction(512);
+        ((AccessibilityNodeInfo)localObject1).addAction(512);
         j = i | 0x2;
       }
-      ((AccessibilityNodeInfo)localObject2).setMovementGranularities(j);
-      label593:
+      ((AccessibilityNodeInfo)localObject1).setMovementGranularities(j);
+      label591:
       Object localObject4;
-      label801:
-      label861:
-      label1016:
+      label859:
+      label1014:
       boolean bool4;
-      if ((Build.VERSION.SDK_INT >= 21) && (((f)localObject1).SVm >= 0))
+      if ((Build.VERSION.SDK_INT >= 21) && (((f)localObject2).aaxY >= 0))
       {
-        if (((f)localObject1).value == null)
+        if (((f)localObject2).value == null)
         {
           i = 0;
-          ((AccessibilityNodeInfo)localObject2).setMaxTextLength(i - ((f)localObject1).SVn + ((f)localObject1).SVm);
+          ((AccessibilityNodeInfo)localObject1).setMaxTextLength(i - ((f)localObject2).aaxZ + ((f)localObject2).aaxY);
         }
       }
       else
       {
         if (Build.VERSION.SDK_INT > 18)
         {
-          if (((f)localObject1).a(b.SUC)) {
-            ((AccessibilityNodeInfo)localObject2).addAction(131072);
+          if (((f)localObject2).a(b.aaxp)) {
+            ((AccessibilityNodeInfo)localObject1).addAction(131072);
           }
-          if (((f)localObject1).a(b.SUD)) {
-            ((AccessibilityNodeInfo)localObject2).addAction(16384);
+          if (((f)localObject2).a(b.aaxq)) {
+            ((AccessibilityNodeInfo)localObject1).addAction(16384);
           }
-          if (((f)localObject1).a(b.SUE)) {
-            ((AccessibilityNodeInfo)localObject2).addAction(65536);
+          if (((f)localObject2).a(b.aaxr)) {
+            ((AccessibilityNodeInfo)localObject1).addAction(65536);
           }
-          if (((f)localObject1).a(b.SUF)) {
-            ((AccessibilityNodeInfo)localObject2).addAction(32768);
+          if (((f)localObject2).a(b.aaxs)) {
+            ((AccessibilityNodeInfo)localObject1).addAction(32768);
           }
         }
-        if ((((f)localObject1).a(d.SUR)) || (((f)localObject1).a(d.SVj))) {
-          ((AccessibilityNodeInfo)localObject2).setClassName("android.widget.Button");
+        if ((((f)localObject2).a(d.aaxE)) || (((f)localObject2).a(d.aaxW))) {
+          ((AccessibilityNodeInfo)localObject1).setClassName("android.widget.Button");
         }
-        if (((f)localObject1).a(d.SVc)) {
-          ((AccessibilityNodeInfo)localObject2).setClassName("android.widget.ImageView");
+        if (((f)localObject2).a(d.aaxP)) {
+          ((AccessibilityNodeInfo)localObject1).setClassName("android.widget.ImageView");
         }
-        if ((Build.VERSION.SDK_INT > 18) && (((f)localObject1).a(b.SUJ)))
+        if ((Build.VERSION.SDK_INT > 18) && (((f)localObject2).a(b.aaxw)))
         {
-          ((AccessibilityNodeInfo)localObject2).setDismissable(true);
-          ((AccessibilityNodeInfo)localObject2).addAction(1048576);
+          ((AccessibilityNodeInfo)localObject1).setDismissable(true);
+          ((AccessibilityNodeInfo)localObject1).addAction(1048576);
         }
-        if (((f)localObject1).SVJ == null) {
-          break label1666;
+        if (((f)localObject2).aayv == null) {
+          break label1549;
         }
-        ((AccessibilityNodeInfo)localObject2).setParent(this.rootAccessibilityView, ((f)localObject1).SVJ.id);
-        localObject3 = ((f)localObject1).SVT;
-        if (((f)localObject1).SVJ == null) {
-          break label1678;
+        ((AccessibilityNodeInfo)localObject1).setParent(this.rootAccessibilityView, ((f)localObject2).aayv.id);
+        localObject3 = ((f)localObject2).aayF;
+        if (((f)localObject2).aayv == null) {
+          break label1561;
         }
-        localObject4 = ((f)localObject1).SVJ.SVT;
+        localObject4 = ((f)localObject2).aayv.aayF;
         Rect localRect = new Rect((Rect)localObject3);
         localRect.offset(-((Rect)localObject4).left, -((Rect)localObject4).top);
-        ((AccessibilityNodeInfo)localObject2).setBoundsInParent(localRect);
-        ((AccessibilityNodeInfo)localObject2).setBoundsInScreen((Rect)localObject3);
-        ((AccessibilityNodeInfo)localObject2).setVisibleToUser(true);
-        if ((((f)localObject1).a(d.SUU)) && (!((f)localObject1).a(d.SUV))) {
-          break label1688;
+        ((AccessibilityNodeInfo)localObject1).setBoundsInParent(localRect);
+        ((AccessibilityNodeInfo)localObject1).setBoundsInScreen((Rect)localObject3);
+        ((AccessibilityNodeInfo)localObject1).setVisibleToUser(true);
+        if ((((f)localObject2).a(d.aaxH)) && (!((f)localObject2).a(d.aaxI))) {
+          break label1571;
         }
         bool1 = true;
-        ((AccessibilityNodeInfo)localObject2).setEnabled(bool1);
-        if (((f)localObject1).a(b.SUq))
+        ((AccessibilityNodeInfo)localObject1).setEnabled(bool1);
+        if (((f)localObject2).a(b.aaxe))
         {
-          if ((Build.VERSION.SDK_INT < 21) || (((f)localObject1).SVN == null)) {
-            break label1694;
+          if ((Build.VERSION.SDK_INT < 21) || (((f)localObject2).aayz == null)) {
+            break label1577;
           }
-          ((AccessibilityNodeInfo)localObject2).addAction(new AccessibilityNodeInfo.AccessibilityAction(16, ((f)localObject1).SVN.hint));
-          ((AccessibilityNodeInfo)localObject2).setClickable(true);
+          ((AccessibilityNodeInfo)localObject1).addAction(new AccessibilityNodeInfo.AccessibilityAction(16, ((f)localObject2).aayz.hint));
+          ((AccessibilityNodeInfo)localObject1).setClickable(true);
         }
-        label961:
-        if (((f)localObject1).a(b.SUr))
+        if (((f)localObject2).a(b.aaxf))
         {
-          if ((Build.VERSION.SDK_INT < 21) || (((f)localObject1).SVO == null)) {
-            break label1710;
+          if ((Build.VERSION.SDK_INT < 21) || (((f)localObject2).aayA == null)) {
+            break label1593;
           }
-          ((AccessibilityNodeInfo)localObject2).addAction(new AccessibilityNodeInfo.AccessibilityAction(32, ((f)localObject1).SVO.hint));
-          ((AccessibilityNodeInfo)localObject2).setLongClickable(true);
+          ((AccessibilityNodeInfo)localObject1).addAction(new AccessibilityNodeInfo.AccessibilityAction(32, ((f)localObject2).aayA.hint));
+          ((AccessibilityNodeInfo)localObject1).setLongClickable(true);
         }
-        if ((((f)localObject1).a(b.SUs)) || (((f)localObject1).a(b.SUu)) || (((f)localObject1).a(b.SUt)) || (((f)localObject1).a(b.SUv)))
+        if ((((f)localObject2).a(b.aaxg)) || (((f)localObject2).a(b.aaxi)) || (((f)localObject2).a(b.aaxh)) || (((f)localObject2).a(b.aaxj)))
         {
-          ((AccessibilityNodeInfo)localObject2).setScrollable(true);
-          if (((f)localObject1).a(d.SVg))
+          ((AccessibilityNodeInfo)localObject1).setScrollable(true);
+          if (((f)localObject2).a(d.aaxT))
           {
-            if ((!((f)localObject1).a(b.SUs)) && (!((f)localObject1).a(b.SUt))) {
-              break label1737;
+            if ((!((f)localObject2).a(b.aaxg)) && (!((f)localObject2).a(b.aaxh))) {
+              break label1620;
             }
-            if ((Build.VERSION.SDK_INT <= 19) || (!a((f)localObject1))) {
-              break label1726;
+            if ((Build.VERSION.SDK_INT <= 19) || (!a((f)localObject2))) {
+              break label1609;
             }
-            ((AccessibilityNodeInfo)localObject2).setCollectionInfo(AccessibilityNodeInfo.CollectionInfo.obtain(0, ((f)localObject1).SVr, false));
+            ((AccessibilityNodeInfo)localObject1).setCollectionInfo(AccessibilityNodeInfo.CollectionInfo.obtain(0, ((f)localObject2).aayd, false));
           }
-          label1131:
-          if ((((f)localObject1).a(b.SUs)) || (((f)localObject1).a(b.SUu))) {
-            ((AccessibilityNodeInfo)localObject2).addAction(4096);
+          label1129:
+          if ((((f)localObject2).a(b.aaxg)) || (((f)localObject2).a(b.aaxi))) {
+            ((AccessibilityNodeInfo)localObject1).addAction(4096);
           }
-          if ((((f)localObject1).a(b.SUt)) || (((f)localObject1).a(b.SUv))) {
-            ((AccessibilityNodeInfo)localObject2).addAction(8192);
+          if ((((f)localObject2).a(b.aaxh)) || (((f)localObject2).a(b.aaxj))) {
+            ((AccessibilityNodeInfo)localObject1).addAction(8192);
           }
         }
-        if ((((f)localObject1).a(b.SUw)) || (((f)localObject1).a(b.SUx)))
+        if ((((f)localObject2).a(b.aaxk)) || (((f)localObject2).a(b.aaxl)))
         {
-          ((AccessibilityNodeInfo)localObject2).setClassName("android.widget.SeekBar");
-          if (((f)localObject1).a(b.SUw)) {
-            ((AccessibilityNodeInfo)localObject2).addAction(4096);
+          ((AccessibilityNodeInfo)localObject1).setClassName("android.widget.SeekBar");
+          if (((f)localObject2).a(b.aaxk)) {
+            ((AccessibilityNodeInfo)localObject1).addAction(4096);
           }
-          if (((f)localObject1).a(b.SUx)) {
-            ((AccessibilityNodeInfo)localObject2).addAction(8192);
+          if (((f)localObject2).a(b.aaxl)) {
+            ((AccessibilityNodeInfo)localObject1).addAction(8192);
           }
         }
-        if ((((f)localObject1).a(d.SVd)) && (Build.VERSION.SDK_INT > 18)) {
-          ((AccessibilityNodeInfo)localObject2).setLiveRegion(1);
+        if ((((f)localObject2).a(d.aaxQ)) && (Build.VERSION.SDK_INT > 18)) {
+          ((AccessibilityNodeInfo)localObject1).setLiveRegion(1);
         }
-        if (!((f)localObject1).a(d.SUS)) {
-          break label1783;
+        if (!((f)localObject2).a(d.aaxF)) {
+          break label1666;
         }
-        ((AccessibilityNodeInfo)localObject2).setText(f.b((f)localObject1));
-        label1305:
-        boolean bool3 = ((f)localObject1).a(d.SUO);
-        bool4 = ((f)localObject1).a(d.SVe);
+        ((AccessibilityNodeInfo)localObject1).setText(f.b((f)localObject2));
+        boolean bool3 = ((f)localObject2).a(d.aaxB);
+        bool4 = ((f)localObject2).a(d.aaxR);
         if (!bool3)
         {
           bool1 = bool2;
@@ -964,111 +994,103 @@ public final class a
         {
           bool1 = true;
         }
-        ((AccessibilityNodeInfo)localObject2).setCheckable(bool1);
+        ((AccessibilityNodeInfo)localObject1).setCheckable(bool1);
         if (!bool3) {
-          break label1818;
+          break label1701;
         }
-        ((AccessibilityNodeInfo)localObject2).setChecked(((f)localObject1).a(d.SUP));
-        if (!((f)localObject1).a(d.SUW)) {
-          break label1807;
+        ((AccessibilityNodeInfo)localObject1).setChecked(((f)localObject2).a(d.aaxC));
+        if (!((f)localObject2).a(d.aaxJ)) {
+          break label1690;
         }
-        ((AccessibilityNodeInfo)localObject2).setClassName("android.widget.RadioButton");
-        label1386:
-        ((AccessibilityNodeInfo)localObject2).setSelected(((f)localObject1).a(d.SUQ));
+        ((AccessibilityNodeInfo)localObject1).setClassName("android.widget.RadioButton");
+        label1384:
+        ((AccessibilityNodeInfo)localObject1).setSelected(((f)localObject2).a(d.aaxD));
         if (Build.VERSION.SDK_INT >= 28) {
-          ((AccessibilityNodeInfo)localObject2).setHeading(((f)localObject1).a(d.SUX));
+          ((AccessibilityNodeInfo)localObject1).setHeading(((f)localObject2).a(d.aaxK));
         }
-        if ((this.STW == null) || (this.STW.id != paramInt)) {
-          break label1847;
+        if ((this.aawK == null) || (this.aawK.id != paramInt)) {
+          break label1730;
         }
-        ((AccessibilityNodeInfo)localObject2).addAction(128);
+        ((AccessibilityNodeInfo)localObject1).addAction(128);
       }
       for (;;)
       {
-        if ((Build.VERSION.SDK_INT < 21) || (((f)localObject1).SVM == null)) {
-          break label1857;
+        if ((Build.VERSION.SDK_INT < 21) || (((f)localObject2).aayy == null)) {
+          break label1740;
         }
-        localObject3 = ((f)localObject1).SVM.iterator();
+        localObject3 = ((f)localObject2).aayy.iterator();
         while (((Iterator)localObject3).hasNext())
         {
           localObject4 = (c)((Iterator)localObject3).next();
-          ((AccessibilityNodeInfo)localObject2).addAction(new AccessibilityNodeInfo.AccessibilityAction(((c)localObject4).resourceId, ((c)localObject4).label));
-        }
-        if (((((b.SUt.value | b.SUs.value | b.SUu.value | b.SUv.value) ^ 0xFFFFFFFF) & ((f)localObject1).SVl) != 0) || (((f)localObject1).flags != 0) || ((((f)localObject1).label != null) && (!((f)localObject1).label.isEmpty())) || ((((f)localObject1).value != null) && (!((f)localObject1).value.isEmpty())) || ((((f)localObject1).hint != null) && (!((f)localObject1).hint.isEmpty())))
-        {
-          bool1 = true;
-          break;
+          ((AccessibilityNodeInfo)localObject1).addAction(new AccessibilityNodeInfo.AccessibilityAction(((c)localObject4).Ezt, ((c)localObject4).label));
         }
         bool1 = false;
         break;
-        label1636:
+        label1525:
         bool1 = false;
-        break label297;
-        label1642:
+        break label323;
+        label1531:
         bool1 = false;
-        break label325;
-        label1648:
+        break label395;
+        i = ((f)localObject2).value.length();
+        break label591;
+        ((AccessibilityNodeInfo)localObject1).setParent(this.rootAccessibilityView);
+        break label799;
+        ((AccessibilityNodeInfo)localObject1).setBoundsInParent((Rect)localObject3);
+        break label859;
         bool1 = false;
-        break label397;
-        i = ((f)localObject1).value.length();
-        break label593;
-        ((AccessibilityNodeInfo)localObject2).setParent(this.rootAccessibilityView);
-        break label801;
-        label1678:
-        ((AccessibilityNodeInfo)localObject2).setBoundsInParent((Rect)localObject3);
-        break label861;
-        label1688:
-        bool1 = false;
-        break label899;
-        label1694:
-        ((AccessibilityNodeInfo)localObject2).addAction(16);
-        ((AccessibilityNodeInfo)localObject2).setClickable(true);
-        break label961;
-        label1710:
-        ((AccessibilityNodeInfo)localObject2).addAction(32);
-        ((AccessibilityNodeInfo)localObject2).setLongClickable(true);
-        break label1016;
-        label1726:
-        ((AccessibilityNodeInfo)localObject2).setClassName("android.widget.HorizontalScrollView");
-        break label1131;
-        label1737:
-        if ((Build.VERSION.SDK_INT > 18) && (a((f)localObject1)))
+        break label897;
+        ((AccessibilityNodeInfo)localObject1).addAction(16);
+        ((AccessibilityNodeInfo)localObject1).setClickable(true);
+        break label959;
+        ((AccessibilityNodeInfo)localObject1).addAction(32);
+        ((AccessibilityNodeInfo)localObject1).setLongClickable(true);
+        break label1014;
+        ((AccessibilityNodeInfo)localObject1).setClassName("android.widget.HorizontalScrollView");
+        break label1129;
+        label1620:
+        if ((Build.VERSION.SDK_INT > 18) && (a((f)localObject2)))
         {
-          ((AccessibilityNodeInfo)localObject2).setCollectionInfo(AccessibilityNodeInfo.CollectionInfo.obtain(((f)localObject1).SVr, 0, false));
-          break label1131;
+          ((AccessibilityNodeInfo)localObject1).setCollectionInfo(AccessibilityNodeInfo.CollectionInfo.obtain(((f)localObject2).aayd, 0, false));
+          break label1129;
         }
-        ((AccessibilityNodeInfo)localObject2).setClassName("android.widget.ScrollView");
-        break label1131;
-        label1783:
-        if (((f)localObject1).a(d.SUZ)) {
-          break label1305;
+        ((AccessibilityNodeInfo)localObject1).setClassName("android.widget.ScrollView");
+        break label1129;
+        if (((f)localObject2).a(d.aaxM)) {
+          break label1303;
         }
-        ((AccessibilityNodeInfo)localObject2).setContentDescription(f.b((f)localObject1));
-        break label1305;
-        label1807:
-        ((AccessibilityNodeInfo)localObject2).setClassName("android.widget.CheckBox");
-        break label1386;
-        label1818:
+        ((AccessibilityNodeInfo)localObject1).setContentDescription(f.b((f)localObject2));
+        break label1303;
+        ((AccessibilityNodeInfo)localObject1).setClassName("android.widget.CheckBox");
+        break label1384;
         if (!bool4) {
-          break label1386;
+          break label1384;
         }
-        ((AccessibilityNodeInfo)localObject2).setChecked(((f)localObject1).a(d.SVf));
-        ((AccessibilityNodeInfo)localObject2).setClassName("android.widget.Switch");
-        break label1386;
-        label1847:
-        ((AccessibilityNodeInfo)localObject2).addAction(64);
+        ((AccessibilityNodeInfo)localObject1).setChecked(((f)localObject2).a(d.aaxS));
+        ((AccessibilityNodeInfo)localObject1).setClassName("android.widget.Switch");
+        break label1384;
+        ((AccessibilityNodeInfo)localObject1).addAction(64);
       }
-      label1857:
-      localObject1 = ((f)localObject1).SVK.iterator();
-      while (((Iterator)localObject1).hasNext())
+      localObject2 = ((f)localObject2).aayw.iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        localObject3 = (f)((Iterator)localObject1).next();
-        if (!((f)localObject3).a(d.SVb)) {
-          ((AccessibilityNodeInfo)localObject2).addChild(this.rootAccessibilityView, ((f)localObject3).id);
+        localObject3 = (f)((Iterator)localObject2).next();
+        if (!((f)localObject3).a(d.aaxO))
+        {
+          if (((f)localObject3).aayc != -1)
+          {
+            localObject4 = this.aawG.z(Integer.valueOf(((f)localObject3).aayc));
+            if (!this.aawG.A(Integer.valueOf(((f)localObject3).aayc)))
+            {
+              ((AccessibilityNodeInfo)localObject1).addChild((View)localObject4);
+              continue;
+            }
+          }
+          ((AccessibilityNodeInfo)localObject1).addChild(this.rootAccessibilityView, ((f)localObject3).id);
         }
       }
       AppMethodBeat.o(9753);
-      return localObject2;
+      return localObject1;
     }
   }
   
@@ -1082,51 +1104,51 @@ public final class a
     {
       AppMethodBeat.o(9756);
       return null;
-      if (this.SUa != null)
+      if (this.aawO != null)
       {
-        localAccessibilityNodeInfo = createAccessibilityNodeInfo(this.SUa.id);
+        localAccessibilityNodeInfo = createAccessibilityNodeInfo(this.aawO.id);
         AppMethodBeat.o(9756);
         return localAccessibilityNodeInfo;
       }
-      if (this.STY != null)
+      if (this.aawM != null)
       {
-        localAccessibilityNodeInfo = createAccessibilityNodeInfo(this.STY.intValue());
+        localAccessibilityNodeInfo = createAccessibilityNodeInfo(this.aawM.intValue());
         AppMethodBeat.o(9756);
         return localAccessibilityNodeInfo;
       }
-      if (this.STW != null)
+      if (this.aawK != null)
       {
-        localAccessibilityNodeInfo = createAccessibilityNodeInfo(this.STW.id);
+        localAccessibilityNodeInfo = createAccessibilityNodeInfo(this.aawK.id);
         AppMethodBeat.o(9756);
         return localAccessibilityNodeInfo;
       }
-    } while (this.STX == null);
-    AccessibilityNodeInfo localAccessibilityNodeInfo = createAccessibilityNodeInfo(this.STX.intValue());
+    } while (this.aawL == null);
+    AccessibilityNodeInfo localAccessibilityNodeInfo = createAccessibilityNodeInfo(this.aawL.intValue());
     AppMethodBeat.o(9756);
     return localAccessibilityNodeInfo;
   }
   
-  final f hxv()
+  final f iBz()
   {
     AppMethodBeat.i(9757);
-    f localf = (f)this.STU.get(Integer.valueOf(0));
+    f localf = (f)this.aawI.get(Integer.valueOf(0));
     AppMethodBeat.o(9757);
     return localf;
   }
   
-  final void mU(int paramInt1, int paramInt2)
+  final void oo(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(9764);
-    if (!this.nC.isEnabled())
+    if (!this.bEA.isEnabled())
     {
       AppMethodBeat.o(9764);
       return;
     }
-    sendAccessibilityEvent(mV(paramInt1, paramInt2));
+    a(op(paramInt1, paramInt2));
     AppMethodBeat.o(9764);
   }
   
-  final AccessibilityEvent mV(int paramInt1, int paramInt2)
+  final AccessibilityEvent op(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(9766);
     AccessibilityEvent localAccessibilityEvent = AccessibilityEvent.obtain(paramInt2);
@@ -1143,14 +1165,14 @@ public final class a
     boolean bool;
     if (paramInt1 >= 65536)
     {
-      bool = this.STS.performAction(paramInt1, paramInt2, paramBundle);
+      bool = this.aawF.performAction(paramInt1, paramInt2, paramBundle);
       if ((bool) && (paramInt2 == 128)) {
-        this.STX = null;
+        this.aawL = null;
       }
       AppMethodBeat.o(9754);
       return bool;
     }
-    f localf = (f)this.STU.get(Integer.valueOf(paramInt1));
+    f localf = (f)this.aawI.get(Integer.valueOf(paramInt1));
     if (localf == null)
     {
       AppMethodBeat.o(9754);
@@ -1159,67 +1181,67 @@ public final class a
     switch (paramInt2)
     {
     default: 
-      i = STR;
-      paramBundle = (c)this.STV.get(Integer.valueOf(paramInt2 - i));
+      i = aawE;
+      paramBundle = (c)this.aawJ.get(Integer.valueOf(paramInt2 - i));
       if (paramBundle != null)
       {
-        this.SNY.dispatchSemanticsAction(paramInt1, b.SUI, Integer.valueOf(paramBundle.id));
+        this.aapW.dispatchSemanticsAction(paramInt1, b.aaxv, Integer.valueOf(paramBundle.id));
         AppMethodBeat.o(9754);
         return true;
       }
       break;
     case 16: 
-      this.SNY.dispatchSemanticsAction(paramInt1, b.SUq);
+      this.aapW.dispatchSemanticsAction(paramInt1, b.aaxe);
       AppMethodBeat.o(9754);
       return true;
     case 32: 
-      this.SNY.dispatchSemanticsAction(paramInt1, b.SUr);
+      this.aapW.dispatchSemanticsAction(paramInt1, b.aaxf);
       AppMethodBeat.o(9754);
       return true;
     case 4096: 
-      if (localf.a(b.SUu)) {
-        this.SNY.dispatchSemanticsAction(paramInt1, b.SUu);
+      if (localf.a(b.aaxi)) {
+        this.aapW.dispatchSemanticsAction(paramInt1, b.aaxi);
       }
       for (;;)
       {
         AppMethodBeat.o(9754);
         return true;
-        if (localf.a(b.SUs))
+        if (localf.a(b.aaxg))
         {
-          this.SNY.dispatchSemanticsAction(paramInt1, b.SUs);
+          this.aapW.dispatchSemanticsAction(paramInt1, b.aaxg);
         }
         else
         {
-          if (!localf.a(b.SUw)) {
+          if (!localf.a(b.aaxk)) {
             break;
           }
-          localf.value = localf.SVw;
-          mU(paramInt1, 4);
-          this.SNY.dispatchSemanticsAction(paramInt1, b.SUw);
+          localf.value = localf.aayi;
+          oo(paramInt1, 4);
+          this.aapW.dispatchSemanticsAction(paramInt1, b.aaxk);
         }
       }
       AppMethodBeat.o(9754);
       return false;
     case 8192: 
-      if (localf.a(b.SUv)) {
-        this.SNY.dispatchSemanticsAction(paramInt1, b.SUv);
+      if (localf.a(b.aaxj)) {
+        this.aapW.dispatchSemanticsAction(paramInt1, b.aaxj);
       }
       for (;;)
       {
         AppMethodBeat.o(9754);
         return true;
-        if (localf.a(b.SUt))
+        if (localf.a(b.aaxh))
         {
-          this.SNY.dispatchSemanticsAction(paramInt1, b.SUt);
+          this.aapW.dispatchSemanticsAction(paramInt1, b.aaxh);
         }
         else
         {
-          if (!localf.a(b.SUx)) {
+          if (!localf.a(b.aaxl)) {
             break;
           }
-          localf.value = localf.SVx;
-          mU(paramInt1, 4);
-          this.SNY.dispatchSemanticsAction(paramInt1, b.SUx);
+          localf.value = localf.aayj;
+          oo(paramInt1, 4);
+          this.aapW.dispatchSemanticsAction(paramInt1, b.aaxl);
         }
       }
       AppMethodBeat.o(9754);
@@ -1243,26 +1265,26 @@ public final class a
       AppMethodBeat.o(9754);
       return bool;
     case 128: 
-      this.SNY.dispatchSemanticsAction(paramInt1, b.SUH);
-      mU(paramInt1, 65536);
-      this.STW = null;
-      this.STX = null;
+      this.aapW.dispatchSemanticsAction(paramInt1, b.aaxu);
+      oo(paramInt1, 65536);
+      this.aawK = null;
+      this.aawL = null;
       AppMethodBeat.o(9754);
       return true;
     case 64: 
-      this.SNY.dispatchSemanticsAction(paramInt1, b.SUG);
-      mU(paramInt1, 32768);
-      if (this.STW == null) {
+      this.aapW.dispatchSemanticsAction(paramInt1, b.aaxt);
+      oo(paramInt1, 32768);
+      if (this.aawK == null) {
         this.rootAccessibilityView.invalidate();
       }
-      this.STW = localf;
-      if ((localf.a(b.SUw)) || (localf.a(b.SUx))) {
-        mU(paramInt1, 4);
+      this.aawK = localf;
+      if ((localf.a(b.aaxk)) || (localf.a(b.aaxl))) {
+        oo(paramInt1, 4);
       }
       AppMethodBeat.o(9754);
       return true;
     case 16908342: 
-      this.SNY.dispatchSemanticsAction(paramInt1, b.SUy);
+      this.aapW.dispatchSemanticsAction(paramInt1, b.aaxm);
       AppMethodBeat.o(9754);
       return true;
     case 131072: 
@@ -1291,26 +1313,26 @@ public final class a
       }
       for (;;)
       {
-        this.SNY.dispatchSemanticsAction(paramInt1, b.SUC, localHashMap);
+        this.aapW.dispatchSemanticsAction(paramInt1, b.aaxp, localHashMap);
         AppMethodBeat.o(9754);
         return true;
-        localHashMap.put("base", Integer.valueOf(localf.SVp));
-        localHashMap.put("extent", Integer.valueOf(localf.SVp));
+        localHashMap.put("base", Integer.valueOf(localf.aayb));
+        localHashMap.put("extent", Integer.valueOf(localf.aayb));
       }
     case 16384: 
-      this.SNY.dispatchSemanticsAction(paramInt1, b.SUD);
+      this.aapW.dispatchSemanticsAction(paramInt1, b.aaxq);
       AppMethodBeat.o(9754);
       return true;
     case 65536: 
-      this.SNY.dispatchSemanticsAction(paramInt1, b.SUE);
+      this.aapW.dispatchSemanticsAction(paramInt1, b.aaxr);
       AppMethodBeat.o(9754);
       return true;
     case 32768: 
-      this.SNY.dispatchSemanticsAction(paramInt1, b.SUF);
+      this.aapW.dispatchSemanticsAction(paramInt1, b.aaxs);
       AppMethodBeat.o(9754);
       return true;
     case 1048576: 
-      this.SNY.dispatchSemanticsAction(paramInt1, b.SUJ);
+      this.aapW.dispatchSemanticsAction(paramInt1, b.aaxw);
       AppMethodBeat.o(9754);
       return true;
     }
@@ -1321,42 +1343,31 @@ public final class a
   public final void release()
   {
     AppMethodBeat.i(9751);
-    if (this.STT != null) {
-      this.STT.hxq();
+    this.isReleased = true;
+    if (this.aawG != null) {
+      this.aawG.iBu();
     }
-    this.SNu = null;
-    this.nC.removeAccessibilityStateChangeListener(this.SUh);
+    this.aaps = null;
+    this.bEA.removeAccessibilityStateChangeListener(this.aawV);
     if (Build.VERSION.SDK_INT >= 19) {
-      this.nC.removeTouchExplorationStateChangeListener(this.SUi);
+      this.bEA.removeTouchExplorationStateChangeListener(this.aawW);
     }
-    this.aFp.unregisterContentObserver(this.SUj);
-    this.SNY.a(null);
+    this.aawH.unregisterContentObserver(this.aawX);
+    this.aapW.a(null);
     AppMethodBeat.o(9751);
   }
   
   public final void reset()
   {
     AppMethodBeat.i(9767);
-    this.STU.clear();
-    if (this.STW != null) {
-      mU(this.STW.id, 65536);
+    this.aawI.clear();
+    if (this.aawK != null) {
+      oo(this.aawK.id, 65536);
     }
-    this.STW = null;
-    this.SUc = null;
-    atH(0);
+    this.aawK = null;
+    this.aawQ = null;
+    aDB(0);
     AppMethodBeat.o(9767);
-  }
-  
-  final void sendAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
-  {
-    AppMethodBeat.i(9765);
-    if (!this.nC.isEnabled())
-    {
-      AppMethodBeat.o(9765);
-      return;
-    }
-    this.rootAccessibilityView.getParent().requestSendAccessibilityEvent(this.rootAccessibilityView, paramAccessibilityEvent);
-    AppMethodBeat.o(9765);
   }
   
   public static enum b
@@ -1366,28 +1377,28 @@ public final class a
     static
     {
       AppMethodBeat.i(9783);
-      SUq = new b("TAP", 0, 1);
-      SUr = new b("LONG_PRESS", 1, 2);
-      SUs = new b("SCROLL_LEFT", 2, 4);
-      SUt = new b("SCROLL_RIGHT", 3, 8);
-      SUu = new b("SCROLL_UP", 4, 16);
-      SUv = new b("SCROLL_DOWN", 5, 32);
-      SUw = new b("INCREASE", 6, 64);
-      SUx = new b("DECREASE", 7, 128);
-      SUy = new b("SHOW_ON_SCREEN", 8, 256);
-      SUz = new b("MOVE_CURSOR_FORWARD_BY_CHARACTER", 9, 512);
-      SUA = new b("MOVE_CURSOR_BACKWARD_BY_CHARACTER", 10, 1024);
-      SUC = new b("SET_SELECTION", 11, 2048);
-      SUD = new b("COPY", 12, 4096);
-      SUE = new b("CUT", 13, 8192);
-      SUF = new b("PASTE", 14, 16384);
-      SUG = new b("DID_GAIN_ACCESSIBILITY_FOCUS", 15, 32768);
-      SUH = new b("DID_LOSE_ACCESSIBILITY_FOCUS", 16, 65536);
-      SUI = new b("CUSTOM_ACTION", 17, 131072);
-      SUJ = new b("DISMISS", 18, 262144);
-      SUK = new b("MOVE_CURSOR_FORWARD_BY_WORD", 19, 524288);
-      SUL = new b("MOVE_CURSOR_BACKWARD_BY_WORD", 20, 1048576);
-      SUM = new b[] { SUq, SUr, SUs, SUt, SUu, SUv, SUw, SUx, SUy, SUz, SUA, SUC, SUD, SUE, SUF, SUG, SUH, SUI, SUJ, SUK, SUL };
+      aaxe = new b("TAP", 0, 1);
+      aaxf = new b("LONG_PRESS", 1, 2);
+      aaxg = new b("SCROLL_LEFT", 2, 4);
+      aaxh = new b("SCROLL_RIGHT", 3, 8);
+      aaxi = new b("SCROLL_UP", 4, 16);
+      aaxj = new b("SCROLL_DOWN", 5, 32);
+      aaxk = new b("INCREASE", 6, 64);
+      aaxl = new b("DECREASE", 7, 128);
+      aaxm = new b("SHOW_ON_SCREEN", 8, 256);
+      aaxn = new b("MOVE_CURSOR_FORWARD_BY_CHARACTER", 9, 512);
+      aaxo = new b("MOVE_CURSOR_BACKWARD_BY_CHARACTER", 10, 1024);
+      aaxp = new b("SET_SELECTION", 11, 2048);
+      aaxq = new b("COPY", 12, 4096);
+      aaxr = new b("CUT", 13, 8192);
+      aaxs = new b("PASTE", 14, 16384);
+      aaxt = new b("DID_GAIN_ACCESSIBILITY_FOCUS", 15, 32768);
+      aaxu = new b("DID_LOSE_ACCESSIBILITY_FOCUS", 16, 65536);
+      aaxv = new b("CUSTOM_ACTION", 17, 131072);
+      aaxw = new b("DISMISS", 18, 262144);
+      aaxx = new b("MOVE_CURSOR_FORWARD_BY_WORD", 19, 524288);
+      aaxy = new b("MOVE_CURSOR_BACKWARD_BY_WORD", 20, 1048576);
+      aaxz = new b[] { aaxe, aaxf, aaxg, aaxh, aaxi, aaxj, aaxk, aaxl, aaxm, aaxn, aaxo, aaxp, aaxq, aaxr, aaxs, aaxt, aaxu, aaxv, aaxw, aaxx, aaxy };
       AppMethodBeat.o(9783);
     }
     
@@ -1399,11 +1410,11 @@ public final class a
   
   static final class c
   {
-    int SUN = -1;
+    int Ezt = -1;
+    int aaxA = -1;
     String hint;
     int id = -1;
     String label;
-    int resourceId = -1;
   }
   
   static enum d
@@ -1413,29 +1424,29 @@ public final class a
     static
     {
       AppMethodBeat.i(9679);
-      SUO = new d("HAS_CHECKED_STATE", 0, 1);
-      SUP = new d("IS_CHECKED", 1, 2);
-      SUQ = new d("IS_SELECTED", 2, 4);
-      SUR = new d("IS_BUTTON", 3, 8);
-      SUS = new d("IS_TEXT_FIELD", 4, 16);
-      SUT = new d("IS_FOCUSED", 5, 32);
-      SUU = new d("HAS_ENABLED_STATE", 6, 64);
-      SUV = new d("IS_ENABLED", 7, 128);
-      SUW = new d("IS_IN_MUTUALLY_EXCLUSIVE_GROUP", 8, 256);
-      SUX = new d("IS_HEADER", 9, 512);
-      SUY = new d("IS_OBSCURED", 10, 1024);
-      SUZ = new d("SCOPES_ROUTE", 11, 2048);
-      SVa = new d("NAMES_ROUTE", 12, 4096);
-      SVb = new d("IS_HIDDEN", 13, 8192);
-      SVc = new d("IS_IMAGE", 14, 16384);
-      SVd = new d("IS_LIVE_REGION", 15, 32768);
-      SVe = new d("HAS_TOGGLED_STATE", 16, 65536);
-      SVf = new d("IS_TOGGLED", 17, 131072);
-      SVg = new d("HAS_IMPLICIT_SCROLLING", 18, 262144);
-      SVh = new d("IS_READ_ONLY", 19, 1048576);
-      SVi = new d("IS_FOCUSABLE", 20, 2097152);
-      SVj = new d("IS_LINK", 21, 4194304);
-      SVk = new d[] { SUO, SUP, SUQ, SUR, SUS, SUT, SUU, SUV, SUW, SUX, SUY, SUZ, SVa, SVb, SVc, SVd, SVe, SVf, SVg, SVh, SVi, SVj };
+      aaxB = new d("HAS_CHECKED_STATE", 0, 1);
+      aaxC = new d("IS_CHECKED", 1, 2);
+      aaxD = new d("IS_SELECTED", 2, 4);
+      aaxE = new d("IS_BUTTON", 3, 8);
+      aaxF = new d("IS_TEXT_FIELD", 4, 16);
+      aaxG = new d("IS_FOCUSED", 5, 32);
+      aaxH = new d("HAS_ENABLED_STATE", 6, 64);
+      aaxI = new d("IS_ENABLED", 7, 128);
+      aaxJ = new d("IS_IN_MUTUALLY_EXCLUSIVE_GROUP", 8, 256);
+      aaxK = new d("IS_HEADER", 9, 512);
+      aaxL = new d("IS_OBSCURED", 10, 1024);
+      aaxM = new d("SCOPES_ROUTE", 11, 2048);
+      aaxN = new d("NAMES_ROUTE", 12, 4096);
+      aaxO = new d("IS_HIDDEN", 13, 8192);
+      aaxP = new d("IS_IMAGE", 14, 16384);
+      aaxQ = new d("IS_LIVE_REGION", 15, 32768);
+      aaxR = new d("HAS_TOGGLED_STATE", 16, 65536);
+      aaxS = new d("IS_TOGGLED", 17, 131072);
+      aaxT = new d("HAS_IMPLICIT_SCROLLING", 18, 262144);
+      aaxU = new d("IS_READ_ONLY", 19, 1048576);
+      aaxV = new d("IS_FOCUSABLE", 20, 2097152);
+      aaxW = new d("IS_LINK", 21, 4194304);
+      aaxX = new d[] { aaxB, aaxC, aaxD, aaxE, aaxF, aaxG, aaxH, aaxI, aaxJ, aaxK, aaxL, aaxM, aaxN, aaxO, aaxP, aaxQ, aaxR, aaxS, aaxT, aaxU, aaxV, aaxW };
       AppMethodBeat.o(9679);
     }
     
@@ -1447,50 +1458,50 @@ public final class a
   
   public static abstract interface e
   {
-    public abstract void bm(boolean paramBoolean1, boolean paramBoolean2);
+    public abstract void bw(boolean paramBoolean1, boolean paramBoolean2);
   }
   
   static final class f
   {
-    final a SNs;
-    private int SVA;
-    private int SVB;
-    int SVC;
-    int SVD;
-    float SVE;
-    private float SVF;
-    private float SVG;
-    String SVH;
-    String SVI;
-    f SVJ;
-    List<f> SVK;
-    List<f> SVL;
-    List<a.c> SVM;
-    a.c SVN;
-    a.c SVO;
-    boolean SVP;
-    private float[] SVQ;
-    boolean SVR;
-    private float[] SVS;
-    Rect SVT;
-    int SVl;
-    int SVm;
-    int SVn;
-    int SVo;
-    int SVp;
-    int SVq;
-    int SVr;
-    int SVs;
-    float SVt;
-    float SVu;
-    float SVv;
-    String SVw;
-    String SVx;
-    private a.g SVy;
-    boolean SVz;
+    final a aapq;
+    int aaxY;
+    int aaxZ;
+    a.c aayA;
+    boolean aayB;
+    private float[] aayC;
+    boolean aayD;
+    private float[] aayE;
+    Rect aayF;
+    int aaya;
+    int aayb;
+    int aayc;
+    int aayd;
+    int aaye;
+    float aayf;
+    float aayg;
+    float aayh;
+    String aayi;
+    String aayj;
+    private a.g aayk;
+    boolean aayl;
+    private int aaym;
+    private int aayn;
+    int aayo;
+    int aayp;
+    float aayq;
+    private float aayr;
+    private float aays;
+    String aayt;
+    String aayu;
+    f aayv;
+    List<f> aayw;
+    List<f> aayx;
+    List<a.c> aayy;
+    a.c aayz;
+    private int actions;
     private float bottom;
-    int flags;
-    String hint;
+    private int flags;
+    private String hint;
     int id;
     String label;
     private float left;
@@ -1503,12 +1514,12 @@ public final class a
     {
       AppMethodBeat.i(9803);
       this.id = -1;
-      this.SVz = false;
-      this.SVK = new ArrayList();
-      this.SVL = new ArrayList();
-      this.SVP = true;
-      this.SVR = true;
-      this.SNs = parama;
+      this.aayl = false;
+      this.aayw = new ArrayList();
+      this.aayx = new ArrayList();
+      this.aayB = true;
+      this.aayD = true;
+      this.aapq = parama;
       AppMethodBeat.o(9803);
     }
     
@@ -1517,9 +1528,9 @@ public final class a
       AppMethodBeat.i(9802);
       if (paramf != null)
       {
-        paramf = paramf.SVJ;
+        paramf = paramf.aayv;
         if (paramf != null) {
-          if (!paramc.test(paramf)) {}
+          if (!paramc.eX(paramf)) {}
         }
         for (;;)
         {
@@ -1528,7 +1539,7 @@ public final class a
           }
           AppMethodBeat.o(9802);
           return true;
-          paramf = paramf.SVJ;
+          paramf = paramf.aayv;
           break;
           paramf = null;
         }
@@ -1538,7 +1549,7 @@ public final class a
       return false;
     }
     
-    private static void c(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3)
+    private static void b(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3)
     {
       AppMethodBeat.i(9809);
       Matrix.multiplyMV(paramArrayOfFloat1, 0, paramArrayOfFloat2, 0, paramArrayOfFloat3, 0);
@@ -1550,15 +1561,7 @@ public final class a
       AppMethodBeat.o(9809);
     }
     
-    private static float d(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-    {
-      AppMethodBeat.i(9811);
-      paramFloat1 = Math.max(paramFloat1, Math.max(paramFloat2, Math.max(paramFloat3, paramFloat4)));
-      AppMethodBeat.o(9811);
-      return paramFloat1;
-    }
-    
-    private String hxy()
+    private String iBD()
     {
       int i = 0;
       AppMethodBeat.i(9812);
@@ -1588,7 +1591,15 @@ public final class a
       return null;
     }
     
-    private static float t(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+    private static float j(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+    {
+      AppMethodBeat.i(9811);
+      paramFloat1 = Math.max(paramFloat1, Math.max(paramFloat2, Math.max(paramFloat3, paramFloat4)));
+      AppMethodBeat.o(9811);
+      return paramFloat1;
+    }
+    
+    private static float w(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
     {
       AppMethodBeat.i(9810);
       paramFloat1 = Math.min(paramFloat1, Math.min(paramFloat2, Math.min(paramFloat3, paramFloat4)));
@@ -1599,28 +1610,28 @@ public final class a
     final void a(ByteBuffer paramByteBuffer, String[] paramArrayOfString)
     {
       AppMethodBeat.i(9804);
-      this.SVz = true;
-      this.SVH = this.value;
-      this.SVI = this.label;
-      this.SVA = this.flags;
-      this.SVB = this.SVl;
-      this.SVC = this.SVo;
-      this.SVD = this.SVp;
-      this.SVE = this.SVt;
-      this.SVF = this.SVu;
-      this.SVG = this.SVv;
+      this.aayl = true;
+      this.aayt = this.value;
+      this.aayu = this.label;
+      this.aaym = this.flags;
+      this.aayn = this.actions;
+      this.aayo = this.aaya;
+      this.aayp = this.aayb;
+      this.aayq = this.aayf;
+      this.aayr = this.aayg;
+      this.aays = this.aayh;
       this.flags = paramByteBuffer.getInt();
-      this.SVl = paramByteBuffer.getInt();
-      this.SVm = paramByteBuffer.getInt();
-      this.SVn = paramByteBuffer.getInt();
-      this.SVo = paramByteBuffer.getInt();
-      this.SVp = paramByteBuffer.getInt();
-      this.SVq = paramByteBuffer.getInt();
-      this.SVr = paramByteBuffer.getInt();
-      this.SVs = paramByteBuffer.getInt();
-      this.SVt = paramByteBuffer.getFloat();
-      this.SVu = paramByteBuffer.getFloat();
-      this.SVv = paramByteBuffer.getFloat();
+      this.actions = paramByteBuffer.getInt();
+      this.aaxY = paramByteBuffer.getInt();
+      this.aaxZ = paramByteBuffer.getInt();
+      this.aaya = paramByteBuffer.getInt();
+      this.aayb = paramByteBuffer.getInt();
+      this.aayc = paramByteBuffer.getInt();
+      this.aayd = paramByteBuffer.getInt();
+      this.aaye = paramByteBuffer.getInt();
+      this.aayf = paramByteBuffer.getFloat();
+      this.aayg = paramByteBuffer.getFloat();
+      this.aayh = paramByteBuffer.getFloat();
       int i = paramByteBuffer.getInt();
       String str;
       if (i == -1)
@@ -1640,14 +1651,14 @@ public final class a
         }
         str = null;
         label230:
-        this.SVw = str;
+        this.aayi = str;
         i = paramByteBuffer.getInt();
         if (i != -1) {
           break label379;
         }
         str = null;
         label249:
-        this.SVx = str;
+        this.aayj = str;
         i = paramByteBuffer.getInt();
         if (i != -1) {
           break label387;
@@ -1657,7 +1668,7 @@ public final class a
       for (paramArrayOfString = null;; paramArrayOfString = paramArrayOfString[i])
       {
         this.hint = paramArrayOfString;
-        this.SVy = a.g.atI(paramByteBuffer.getInt());
+        this.aayk = a.g.aDC(paramByteBuffer.getInt());
         this.left = paramByteBuffer.getFloat();
         this.top = paramByteBuffer.getFloat();
         this.right = paramByteBuffer.getFloat();
@@ -1683,60 +1694,60 @@ public final class a
         str = paramArrayOfString[i];
         break label249;
       }
-      this.SVP = true;
-      this.SVR = true;
+      this.aayB = true;
+      this.aayD = true;
       int j = paramByteBuffer.getInt();
-      this.SVK.clear();
-      this.SVL.clear();
+      this.aayw.clear();
+      this.aayx.clear();
       i = 0;
       while (i < j)
       {
-        paramArrayOfString = a.b(this.SNs, paramByteBuffer.getInt());
-        paramArrayOfString.SVJ = this;
-        this.SVK.add(paramArrayOfString);
+        paramArrayOfString = a.b(this.aapq, paramByteBuffer.getInt());
+        paramArrayOfString.aayv = this;
+        this.aayw.add(paramArrayOfString);
         i += 1;
       }
       i = 0;
       while (i < j)
       {
-        paramArrayOfString = a.b(this.SNs, paramByteBuffer.getInt());
-        paramArrayOfString.SVJ = this;
-        this.SVL.add(paramArrayOfString);
+        paramArrayOfString = a.b(this.aapq, paramByteBuffer.getInt());
+        paramArrayOfString.aayv = this;
+        this.aayx.add(paramArrayOfString);
         i += 1;
       }
       j = paramByteBuffer.getInt();
       if (j == 0)
       {
-        this.SVM = null;
+        this.aayy = null;
         AppMethodBeat.o(9804);
         return;
       }
-      if (this.SVM == null)
+      if (this.aayy == null)
       {
-        this.SVM = new ArrayList(j);
+        this.aayy = new ArrayList(j);
         i = 0;
         label559:
         if (i >= j) {
           break label660;
         }
-        paramArrayOfString = a.c(this.SNs, paramByteBuffer.getInt());
-        if (paramArrayOfString.SUN != a.b.SUq.value) {
+        paramArrayOfString = a.c(this.aapq, paramByteBuffer.getInt());
+        if (paramArrayOfString.aaxA != a.b.aaxe.value) {
           break label625;
         }
-        this.SVN = paramArrayOfString;
+        this.aayz = paramArrayOfString;
       }
       for (;;)
       {
-        this.SVM.add(paramArrayOfString);
+        this.aayy.add(paramArrayOfString);
         i += 1;
         break label559;
-        this.SVM.clear();
+        this.aayy.clear();
         break;
         label625:
-        if (paramArrayOfString.SUN == a.b.SUr.value) {
-          this.SVO = paramArrayOfString;
+        if (paramArrayOfString.aaxA == a.b.aaxf.value) {
+          this.aayA = paramArrayOfString;
         } else {
-          this.SVM.add(paramArrayOfString);
+          this.aayy.add(paramArrayOfString);
         }
       }
       label660:
@@ -1747,15 +1758,15 @@ public final class a
     {
       AppMethodBeat.i(9808);
       paramSet.add(this);
-      if (this.SVR) {
+      if (this.aayD) {
         paramBoolean = true;
       }
       if (paramBoolean)
       {
-        if (this.SVS == null) {
-          this.SVS = new float[16];
+        if (this.aayE == null) {
+          this.aayE = new float[16];
         }
-        Matrix.multiplyMM(this.SVS, 0, paramArrayOfFloat, 0, this.transform, 0);
+        Matrix.multiplyMM(this.aayE, 0, paramArrayOfFloat, 0, this.transform, 0);
         paramArrayOfFloat = new float[4];
         paramArrayOfFloat[2] = 0.0F;
         paramArrayOfFloat[3] = 1.0F;
@@ -1765,32 +1776,32 @@ public final class a
         float[] arrayOfFloat4 = new float[4];
         paramArrayOfFloat[0] = this.left;
         paramArrayOfFloat[1] = this.top;
-        c(arrayOfFloat1, this.SVS, paramArrayOfFloat);
+        b(arrayOfFloat1, this.aayE, paramArrayOfFloat);
         paramArrayOfFloat[0] = this.right;
         paramArrayOfFloat[1] = this.top;
-        c(arrayOfFloat2, this.SVS, paramArrayOfFloat);
+        b(arrayOfFloat2, this.aayE, paramArrayOfFloat);
         paramArrayOfFloat[0] = this.right;
         paramArrayOfFloat[1] = this.bottom;
-        c(arrayOfFloat3, this.SVS, paramArrayOfFloat);
+        b(arrayOfFloat3, this.aayE, paramArrayOfFloat);
         paramArrayOfFloat[0] = this.left;
         paramArrayOfFloat[1] = this.bottom;
-        c(arrayOfFloat4, this.SVS, paramArrayOfFloat);
-        if (this.SVT == null) {
-          this.SVT = new Rect();
+        b(arrayOfFloat4, this.aayE, paramArrayOfFloat);
+        if (this.aayF == null) {
+          this.aayF = new Rect();
         }
-        this.SVT.set(Math.round(t(arrayOfFloat1[0], arrayOfFloat2[0], arrayOfFloat3[0], arrayOfFloat4[0])), Math.round(t(arrayOfFloat1[1], arrayOfFloat2[1], arrayOfFloat3[1], arrayOfFloat4[1])), Math.round(d(arrayOfFloat1[0], arrayOfFloat2[0], arrayOfFloat3[0], arrayOfFloat4[0])), Math.round(d(arrayOfFloat1[1], arrayOfFloat2[1], arrayOfFloat3[1], arrayOfFloat4[1])));
-        this.SVR = false;
+        this.aayF.set(Math.round(w(arrayOfFloat1[0], arrayOfFloat2[0], arrayOfFloat3[0], arrayOfFloat4[0])), Math.round(w(arrayOfFloat1[1], arrayOfFloat2[1], arrayOfFloat3[1], arrayOfFloat4[1])), Math.round(j(arrayOfFloat1[0], arrayOfFloat2[0], arrayOfFloat3[0], arrayOfFloat4[0])), Math.round(j(arrayOfFloat1[1], arrayOfFloat2[1], arrayOfFloat3[1], arrayOfFloat4[1])));
+        this.aayD = false;
       }
-      paramArrayOfFloat = this.SVK.iterator();
+      paramArrayOfFloat = this.aayw.iterator();
       while (paramArrayOfFloat.hasNext()) {
-        ((f)paramArrayOfFloat.next()).a(this.SVS, paramSet, paramBoolean);
+        ((f)paramArrayOfFloat.next()).a(this.aayE, paramSet, paramBoolean);
       }
       AppMethodBeat.o(9808);
     }
     
     final boolean a(a.b paramb)
     {
-      return (this.SVl & paramb.value) != 0;
+      return (this.actions & paramb.value) != 0;
     }
     
     final boolean a(a.d paramd)
@@ -1800,27 +1811,49 @@ public final class a
     
     final boolean b(a.b paramb)
     {
-      return (this.SVB & paramb.value) != 0;
+      return (this.aayn & paramb.value) != 0;
     }
     
     final boolean b(a.d paramd)
     {
-      return (this.SVA & paramd.value) != 0;
+      return (this.aaym & paramd.value) != 0;
     }
     
-    final String hxx()
+    final boolean iBB()
+    {
+      AppMethodBeat.i(254582);
+      if (a(a.d.aaxM))
+      {
+        AppMethodBeat.o(254582);
+        return false;
+      }
+      if (a(a.d.aaxV))
+      {
+        AppMethodBeat.o(254582);
+        return true;
+      }
+      if (((((a.b.aaxh.value | a.b.aaxg.value | a.b.aaxi.value | a.b.aaxj.value) ^ 0xFFFFFFFF) & this.actions) != 0) || (this.flags != 0) || ((this.label != null) && (!this.label.isEmpty())) || ((this.value != null) && (!this.value.isEmpty())) || ((this.hint != null) && (!this.hint.isEmpty())))
+      {
+        AppMethodBeat.o(254582);
+        return true;
+      }
+      AppMethodBeat.o(254582);
+      return false;
+    }
+    
+    final String iBC()
     {
       AppMethodBeat.i(9807);
-      if ((a(a.d.SVa)) && (this.label != null) && (!this.label.isEmpty()))
+      if ((a(a.d.aaxN)) && (this.label != null) && (!this.label.isEmpty()))
       {
         localObject = this.label;
         AppMethodBeat.o(9807);
         return localObject;
       }
-      Object localObject = this.SVK.iterator();
+      Object localObject = this.aayw.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        String str = ((f)((Iterator)localObject).next()).hxx();
+        String str = ((f)((Iterator)localObject).next()).iBC();
         if ((str != null) && (!str.isEmpty()))
         {
           AppMethodBeat.o(9807);
@@ -1831,20 +1864,20 @@ public final class a
       return null;
     }
     
-    final void kp(List<f> paramList)
+    final void lj(List<f> paramList)
     {
       AppMethodBeat.i(9806);
-      if (a(a.d.SUZ)) {
+      if (a(a.d.aaxM)) {
         paramList.add(this);
       }
-      Iterator localIterator = this.SVK.iterator();
+      Iterator localIterator = this.aayw.iterator();
       while (localIterator.hasNext()) {
-        ((f)localIterator.next()).kp(paramList);
+        ((f)localIterator.next()).lj(paramList);
       }
       AppMethodBeat.o(9806);
     }
     
-    final f r(float[] paramArrayOfFloat)
+    final f s(float[] paramArrayOfFloat)
     {
       AppMethodBeat.i(9805);
       float f2 = paramArrayOfFloat[3];
@@ -1856,24 +1889,24 @@ public final class a
         return null;
       }
       float[] arrayOfFloat = new float[4];
-      Iterator localIterator = this.SVL.iterator();
+      Iterator localIterator = this.aayx.iterator();
       while (localIterator.hasNext())
       {
         f localf = (f)localIterator.next();
-        if (!localf.a(a.d.SVb))
+        if (!localf.a(a.d.aaxO))
         {
-          if (localf.SVP)
+          if (localf.aayB)
           {
-            localf.SVP = false;
-            if (localf.SVQ == null) {
-              localf.SVQ = new float[16];
+            localf.aayB = false;
+            if (localf.aayC == null) {
+              localf.aayC = new float[16];
             }
-            if (!Matrix.invertM(localf.SVQ, 0, localf.transform, 0)) {
-              Arrays.fill(localf.SVQ, 0.0F);
+            if (!Matrix.invertM(localf.aayC, 0, localf.transform, 0)) {
+              Arrays.fill(localf.aayC, 0.0F);
             }
           }
-          Matrix.multiplyMV(arrayOfFloat, 0, localf.SVQ, 0, paramArrayOfFloat, 0);
-          localf = localf.r(arrayOfFloat);
+          Matrix.multiplyMV(arrayOfFloat, 0, localf.aayC, 0, paramArrayOfFloat, 0);
+          localf = localf.s(arrayOfFloat);
           if (localf != null)
           {
             AppMethodBeat.o(9805);
@@ -1881,8 +1914,13 @@ public final class a
           }
         }
       }
+      if (iBB())
+      {
+        AppMethodBeat.o(9805);
+        return this;
+      }
       AppMethodBeat.o(9805);
-      return this;
+      return null;
     }
   }
 }

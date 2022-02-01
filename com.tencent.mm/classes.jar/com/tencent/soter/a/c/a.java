@@ -7,12 +7,12 @@ import java.util.HashMap;
 
 public final class a
 {
-  private static HashMap<Class, a> RQv;
+  private static HashMap<Class, a> ZsZ;
   
   static
   {
     AppMethodBeat.i(15);
-    RQv = new HashMap();
+    ZsZ = new HashMap();
     AppMethodBeat.o(15);
   }
   
@@ -24,24 +24,24 @@ public final class a
       AppMethodBeat.o(14);
       return false;
     }
-    a locala = (a)RQv.get(paramClass);
+    a locala = (a)ZsZ.get(paramClass);
     if (locala == null)
     {
       locala = new a((byte)0);
       locala.a(paramf);
-      RQv.put(paramClass, locala);
+      ZsZ.put(paramClass, locala);
       paramClass = locala;
     }
     for (;;)
     {
-      d.d("Soter.RemoveASKStrategy", "error counter: %s", new Object[] { Integer.valueOf(paramClass.cBY) });
+      d.d("Soter.RemoveASKStrategy", "error counter: %s", new Object[] { Integer.valueOf(paramClass.cCC) });
       AppMethodBeat.o(14);
       return false;
       if ((paramf.errCode == locala.errCode) && (paramf.errMsg.equals(locala.errMsg)))
       {
-        locala.cBY += 1;
+        locala.cCC += 1;
         paramClass = locala;
-        if (locala.cBY >= 2)
+        if (locala.cCC >= 2)
         {
           AppMethodBeat.o(14);
           return true;
@@ -57,7 +57,7 @@ public final class a
   
   static final class a
   {
-    int cBY;
+    int cCC;
     int errCode;
     String errMsg;
     
@@ -65,13 +65,13 @@ public final class a
     {
       this.errCode = paramf.errCode;
       this.errMsg = paramf.errMsg;
-      this.cBY = 1;
+      this.cCC = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.soter.a.c.a
  * JD-Core Version:    0.7.0.1
  */

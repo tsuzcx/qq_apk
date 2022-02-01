@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import io.flutter.b;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -11,13 +12,13 @@ import java.lang.reflect.Method;
 final class SingleViewPresentation$f
   implements InvocationHandler
 {
-  private final WindowManager STH;
-  SingleViewPresentation.b STI;
+  private final WindowManager aawt;
+  SingleViewPresentation.b aawu;
   
   SingleViewPresentation$f(WindowManager paramWindowManager, SingleViewPresentation.b paramb)
   {
-    this.STH = paramWindowManager;
-    this.STI = paramb;
+    this.aawt = paramWindowManager;
+    this.aawu = paramb;
   }
   
   public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
@@ -35,7 +36,7 @@ final class SingleViewPresentation$f
       }
       try
       {
-        paramObject = paramMethod.invoke(this.STH, paramArrayOfObject);
+        paramObject = paramMethod.invoke(this.aawt, paramArrayOfObject);
         AppMethodBeat.o(9922);
         return paramObject;
       }
@@ -64,42 +65,54 @@ final class SingleViewPresentation$f
         }
       }
     }
-    if (this.STI != null)
+    if (this.aawu == null) {
+      b.iAf();
+    }
+    for (;;)
     {
+      AppMethodBeat.o(9922);
+      return null;
       paramObject = (View)paramArrayOfObject[0];
       paramMethod = (WindowManager.LayoutParams)paramArrayOfObject[1];
-      this.STI.addView(paramObject, paramMethod);
+      this.aawu.addView(paramObject, paramMethod);
     }
-    AppMethodBeat.o(9922);
-    return null;
-    if (this.STI != null)
+    if (this.aawu == null) {
+      b.iAf();
+    }
+    for (;;)
     {
+      AppMethodBeat.o(9922);
+      return null;
       paramObject = (View)paramArrayOfObject[0];
-      this.STI.removeView(paramObject);
+      this.aawu.removeView(paramObject);
     }
-    AppMethodBeat.o(9922);
-    return null;
-    if (this.STI != null)
+    if (this.aawu == null) {
+      b.iAf();
+    }
+    for (;;)
     {
+      AppMethodBeat.o(9922);
+      return null;
       paramObject = (View)paramArrayOfObject[0];
       paramObject.clearAnimation();
-      this.STI.removeView(paramObject);
+      this.aawu.removeView(paramObject);
     }
-    AppMethodBeat.o(9922);
-    return null;
-    if (this.STI != null)
+    if (this.aawu == null) {
+      b.iAf();
+    }
+    for (;;)
     {
+      AppMethodBeat.o(9922);
+      return null;
       paramObject = (View)paramArrayOfObject[0];
       paramMethod = (WindowManager.LayoutParams)paramArrayOfObject[1];
-      this.STI.updateViewLayout(paramObject, paramMethod);
+      this.aawu.updateViewLayout(paramObject, paramMethod);
     }
-    AppMethodBeat.o(9922);
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     io.flutter.plugin.platform.SingleViewPresentation.f
  * JD-Core Version:    0.7.0.1
  */

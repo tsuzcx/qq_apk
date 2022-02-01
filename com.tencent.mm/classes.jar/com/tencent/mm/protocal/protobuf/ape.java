@@ -1,57 +1,107 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
 import java.util.LinkedList;
 
 public final class ape
-  extends dpc
+  extends com.tencent.mm.cd.a
 {
-  public int LBk;
-  public int LBl;
-  public int LBm;
-  public int LBn;
+  public int RLs;
+  public String SCg;
+  public long SCh;
+  public String SCi;
+  public LinkedList<apc> SCj;
+  public bnq SCk;
+  public int rWo;
+  
+  public ape()
+  {
+    AppMethodBeat.i(110849);
+    this.SCj = new LinkedList();
+    AppMethodBeat.o(110849);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209348);
+    AppMethodBeat.i(110850);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse != null)
+      if (this.SCg == null)
       {
-        paramVarArgs.ni(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: Rid");
+        AppMethodBeat.o(110850);
+        throw paramVarArgs;
       }
-      paramVarArgs.aM(2, this.LBk);
-      paramVarArgs.aM(3, this.LBl);
-      paramVarArgs.aM(4, this.LBm);
-      paramVarArgs.aM(5, this.LBn);
-      AppMethodBeat.o(209348);
+      if (this.SCi == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: MimeType");
+        AppMethodBeat.o(110850);
+        throw paramVarArgs;
+      }
+      if (this.SCg != null) {
+        paramVarArgs.f(1, this.SCg);
+      }
+      paramVarArgs.bm(2, this.SCh);
+      paramVarArgs.aY(3, this.rWo);
+      if (this.SCi != null) {
+        paramVarArgs.f(4, this.SCi);
+      }
+      paramVarArgs.e(5, 8, this.SCj);
+      if (this.SCk != null)
+      {
+        paramVarArgs.oE(6, this.SCk.computeSize());
+        this.SCk.writeFields(paramVarArgs);
+      }
+      paramVarArgs.aY(7, this.RLs);
+      AppMethodBeat.o(110850);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label494;
+      if (this.SCg == null) {
+        break label758;
       }
     }
-    label494:
-    for (paramInt = g.a.a.a.nh(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label758:
+    for (paramInt = g.a.a.b.b.a.g(1, this.SCg) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bu(2, this.LBk);
-      int j = g.a.a.b.b.a.bu(3, this.LBl);
-      int k = g.a.a.b.b.a.bu(4, this.LBm);
-      int m = g.a.a.b.b.a.bu(5, this.LBn);
-      AppMethodBeat.o(209348);
-      return paramInt + i + j + k + m;
+      int i = paramInt + g.a.a.b.b.a.p(2, this.SCh) + g.a.a.b.b.a.bM(3, this.rWo);
+      paramInt = i;
+      if (this.SCi != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.SCi);
+      }
+      i = paramInt + g.a.a.a.c(5, 8, this.SCj);
+      paramInt = i;
+      if (this.SCk != null) {
+        paramInt = i + g.a.a.a.oD(6, this.SCk.computeSize());
+      }
+      i = g.a.a.b.b.a.bM(7, this.RLs);
+      AppMethodBeat.o(110850);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dpc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dpc.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.SCj.clear();
+        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(209348);
+        if (this.SCg == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Rid");
+          AppMethodBeat.o(110850);
+          throw paramVarArgs;
+        }
+        if (this.SCi == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: MimeType");
+          AppMethodBeat.o(110850);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(110850);
         return 0;
       }
       if (paramInt == 3)
@@ -59,51 +109,73 @@ public final class ape
         Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         ape localape = (ape)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(209348);
+          AppMethodBeat.o(110850);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          localape.SCg = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(110850);
+          return 0;
+        case 2: 
+          localape.SCh = ((g.a.a.a.a)localObject1).abFh.AN();
+          AppMethodBeat.o(110850);
+          return 0;
+        case 3: 
+          localape.rWo = ((g.a.a.a.a)localObject1).abFh.AK();
+          AppMethodBeat.o(110850);
+          return 0;
+        case 4: 
+          localape.SCi = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(110850);
+          return 0;
+        case 5: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localape.BaseResponse = ((BaseResponse)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new apc();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((apc)localObject2).parseFrom((byte[])localObject1);
+            }
+            localape.SCj.add(localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(209348);
+          AppMethodBeat.o(110850);
           return 0;
-        case 2: 
-          localape.LBk = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(209348);
-          return 0;
-        case 3: 
-          localape.LBl = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(209348);
-          return 0;
-        case 4: 
-          localape.LBm = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(209348);
+        case 6: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new bnq();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((bnq)localObject2).parseFrom((byte[])localObject1);
+            }
+            localape.SCk = ((bnq)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(110850);
           return 0;
         }
-        localape.LBn = ((g.a.a.a.a)localObject1).UbS.zi();
-        AppMethodBeat.o(209348);
+        localape.RLs = ((g.a.a.a.a)localObject1).abFh.AK();
+        AppMethodBeat.o(110850);
         return 0;
       }
-      AppMethodBeat.o(209348);
+      AppMethodBeat.o(110850);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ape
  * JD-Core Version:    0.7.0.1
  */

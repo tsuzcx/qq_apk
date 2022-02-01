@@ -12,8 +12,8 @@ class MMSightRecordTextureView
   extends MMTextureView
   implements TextureView.SurfaceTextureListener
 {
-  private d kyk;
-  private c kyl;
+  private d nrk;
+  private c nrl;
   private int surfaceHeight;
   private int surfaceWidth;
   
@@ -39,22 +39,22 @@ class MMSightRecordTextureView
     Log.i("MicroMsg.MMSightRecordTextureViewImpl", "onSurfaceTextureAvailable, surface: %s, width: %s, height: %s", new Object[] { paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     this.surfaceWidth = paramInt1;
     this.surfaceHeight = paramInt2;
-    this.kyk = new d();
-    this.kyl = new c(paramSurfaceTexture, this.kyk);
-    this.kyk.dL(paramInt1, paramInt2);
-    this.kyl.kym = true;
-    this.kyl.start();
+    this.nrk = new d();
+    this.nrl = new c(paramSurfaceTexture, this.nrk);
+    this.nrk.ej(paramInt1, paramInt2);
+    this.nrl.nrm = true;
+    this.nrl.start();
     AppMethodBeat.o(89212);
   }
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(89214);
-    this.kyl.kym = false;
+    this.nrl.nrm = false;
     try
     {
-      this.kyl.join();
-      this.kyl = null;
+      this.nrl.join();
+      this.nrl = null;
       AppMethodBeat.o(89214);
       return false;
     }
@@ -73,7 +73,7 @@ class MMSightRecordTextureView
     Log.i("MicroMsg.MMSightRecordTextureViewImpl", "onSurfaceTextureSizeChanged, surface: %s, width: %s, height: %s", new Object[] { paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     this.surfaceWidth = paramInt1;
     this.surfaceHeight = paramInt2;
-    this.kyk.dL(paramInt1, paramInt2);
+    this.nrk.ej(paramInt1, paramInt2);
     AppMethodBeat.o(89213);
   }
   

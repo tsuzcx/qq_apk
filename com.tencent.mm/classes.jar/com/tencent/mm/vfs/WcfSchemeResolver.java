@@ -17,41 +17,41 @@ public final class WcfSchemeResolver
     AppMethodBeat.o(13337);
   }
   
-  static m hdX()
+  static n iff()
   {
-    return a.Rbl;
+    return a.YBF;
   }
   
-  public final Pair<FileSystem.b, String> a(k paramk, Uri paramUri)
+  public final Pair<FileSystem.b, String> a(l paraml, Uri paramUri)
   {
-    AppMethodBeat.i(187768);
-    FileSystem.b localb = ((l)paramk).boT(paramUri.getAuthority());
-    paramk = paramUri.getPath();
-    if (paramk == null) {}
-    for (paramk = "";; paramk = aa.q(paramk, true, true))
+    AppMethodBeat.i(237000);
+    FileSystem.b localb = ((m)paraml).bBL(paramUri.getAuthority());
+    paraml = paramUri.getPath();
+    if (paraml == null) {}
+    for (paraml = "";; paraml = ad.r(paraml, true, true))
     {
-      paramk = new Pair(localb, paramk);
-      AppMethodBeat.o(187768);
-      return paramk;
+      paraml = new Pair(localb, paraml);
+      AppMethodBeat.o(237000);
+      return paraml;
     }
   }
   
-  static final class a
+  static class a
     implements Parcelable.Creator<WcfSchemeResolver>
   {
-    static final m Rbl;
+    static final n YBF;
     
     static
     {
       AppMethodBeat.i(13335);
-      Rbl = new m(new WcfSchemeResolver((byte)0));
+      YBF = new n(new WcfSchemeResolver((byte)0));
       AppMethodBeat.o(13335);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vfs.WcfSchemeResolver
  * JD-Core Version:    0.7.0.1
  */

@@ -6,25 +6,25 @@ import java.util.LinkedList;
 
 public final class aq
 {
-  private static LinkedList<View> Ple;
-  private static LinkedList<View> Plf;
-  private static LinkedList<View> Plg;
+  private static LinkedList<View> WEO;
+  private static LinkedList<View> WEP;
+  private static LinkedList<View> WEQ;
   
   static
   {
     AppMethodBeat.i(123728);
-    Ple = new LinkedList();
-    Plf = new LinkedList();
-    Plg = new LinkedList();
+    WEO = new LinkedList();
+    WEP = new LinkedList();
+    WEQ = new LinkedList();
     AppMethodBeat.o(123728);
   }
   
-  public static void aH(View paramView, int paramInt)
+  public static void aM(View paramView, int paramInt)
   {
     AppMethodBeat.i(123726);
     LinkedList localLinkedList;
     if (paramInt == 1) {
-      localLinkedList = Ple;
+      localLinkedList = WEO;
     }
     for (;;)
     {
@@ -35,19 +35,19 @@ public final class aq
       AppMethodBeat.o(123726);
       return;
       if (paramInt == 2) {
-        localLinkedList = Plf;
+        localLinkedList = WEP;
       } else {
-        localLinkedList = Plg;
+        localLinkedList = WEQ;
       }
     }
   }
   
-  public static View ams(int paramInt)
+  public static View avs(int paramInt)
   {
     AppMethodBeat.i(123725);
     Object localObject;
     if (paramInt == 1) {
-      localObject = Ple;
+      localObject = WEO;
     }
     while (((LinkedList)localObject).size() != 0)
     {
@@ -55,9 +55,9 @@ public final class aq
       AppMethodBeat.o(123725);
       return localObject;
       if (paramInt == 2) {
-        localObject = Plf;
+        localObject = WEP;
       } else {
-        localObject = Plg;
+        localObject = WEQ;
       }
     }
     AppMethodBeat.o(123725);
@@ -67,15 +67,15 @@ public final class aq
   public static void clear()
   {
     AppMethodBeat.i(123727);
-    Ple.clear();
-    Plf.clear();
-    Plg.clear();
+    WEO.clear();
+    WEP.clear();
+    WEQ.clear();
     AppMethodBeat.o(123727);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.aq
  * JD-Core Version:    0.7.0.1
  */

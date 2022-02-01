@@ -6,15 +6,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
-public final class d
+public class d
   extends OrientationEventListener
 {
+  private int EZf = -1;
+  private long EZg = 0L;
+  private long EZh = 0L;
+  public a EZi;
+  private int FO = -1;
   private int lastOrientation = -1;
-  private int orientation = -1;
-  private int ztE = -1;
-  private long ztF = 0L;
-  private long ztG = 0L;
-  public a ztH;
   
   public d(Context paramContext)
   {
@@ -28,10 +28,10 @@ public final class d
   
   public final void a(a parama)
   {
-    this.ztH = parama;
+    this.EZi = parama;
   }
   
-  public final int ejw()
+  public final int eTd()
   {
     AppMethodBeat.i(89358);
     int i = getOrientation();
@@ -52,47 +52,47 @@ public final class d
     }
   }
   
-  public final void enable()
+  public void enable()
   {
     AppMethodBeat.i(89357);
-    Log.i("MicroMsg.DeviceOrientationListener", "enable, config isEnableLandscapeMode: %s", new Object[] { Boolean.valueOf(k.zuv) });
-    if (k.zuv)
+    Log.i("MicroMsg.DeviceOrientationListener", "enable, config isEnableLandscapeMode: %s", new Object[] { Boolean.valueOf(j.EZU) });
+    if (j.EZU)
     {
       super.enable();
-      this.ztG = Util.currentTicks();
+      this.EZh = Util.currentTicks();
     }
     AppMethodBeat.o(89357);
   }
   
   public final int getOrientation()
   {
-    if (!k.zuv) {
+    if (!j.EZU) {
       return 0;
     }
-    return this.orientation;
+    return this.FO;
   }
   
   public final boolean isLandscape()
   {
     AppMethodBeat.i(89359);
-    if (!k.zuv)
+    if (!j.EZU)
     {
       AppMethodBeat.o(89359);
       return false;
     }
-    long l = Util.ticksToNow(this.ztG);
-    Log.i("MicroMsg.DeviceOrientationListener", "isLandscape, tickToNow: %s, orientation: %s", new Object[] { Long.valueOf(l), Integer.valueOf(this.orientation) });
+    long l = Util.ticksToNow(this.EZh);
+    Log.i("MicroMsg.DeviceOrientationListener", "isLandscape, tickToNow: %s, orientation: %s", new Object[] { Long.valueOf(l), Integer.valueOf(this.FO) });
     if (l < 2000L)
     {
       AppMethodBeat.o(89359);
       return false;
     }
-    if (this.orientation < 0)
+    if (this.FO < 0)
     {
       AppMethodBeat.o(89359);
       return false;
     }
-    if ((this.orientation == 90) || (this.orientation == 270))
+    if ((this.FO == 90) || (this.FO == 270))
     {
       AppMethodBeat.o(89359);
       return true;
@@ -101,15 +101,15 @@ public final class d
     return false;
   }
   
-  public final void onOrientationChanged(int paramInt)
+  public void onOrientationChanged(int paramInt)
   {
     AppMethodBeat.i(89356);
-    if (!k.zuv)
+    if (!j.EZU)
     {
       AppMethodBeat.o(89356);
       return;
     }
-    if (Util.ticksToNow(this.ztG) < 2000L)
+    if (Util.ticksToNow(this.EZh) < 2000L)
     {
       Log.v("MicroMsg.DeviceOrientationListener", "onOrientationChanged, not reach DETECT_THRESHOLD");
       AppMethodBeat.o(89356);
@@ -121,21 +121,21 @@ public final class d
       AppMethodBeat.o(89356);
       return;
     }
-    if ((Math.abs(this.ztE - paramInt) >= 30) || (Util.ticksToNow(this.ztF) >= 300L))
+    if ((Math.abs(this.EZf - paramInt) >= 30) || (Util.ticksToNow(this.EZg) >= 300L))
     {
-      this.ztE = paramInt;
-      this.ztF = Util.currentTicks();
+      this.EZf = paramInt;
+      this.EZg = Util.currentTicks();
       if ((paramInt > 60) && (paramInt < 300)) {
         break label165;
       }
       if ((paramInt <= 30) || (paramInt >= 330)) {
-        this.orientation = 0;
+        this.FO = 0;
       }
     }
     for (;;)
     {
-      if (this.ztH != null) {
-        this.ztH.onOrientationChange(this.orientation);
+      if (this.EZi != null) {
+        this.EZi.onOrientationChange(this.FO);
       }
       AppMethodBeat.o(89356);
       return;
@@ -143,17 +143,17 @@ public final class d
       if ((paramInt >= 30) && (paramInt <= 150))
       {
         if ((paramInt >= 60) && (paramInt <= 120)) {
-          this.orientation = 90;
+          this.FO = 90;
         }
       }
       else if ((paramInt >= 120) && (paramInt <= 240))
       {
         if ((paramInt >= 150) && (paramInt <= 210)) {
-          this.orientation = 180;
+          this.FO = 180;
         }
       }
       else if ((paramInt >= 210) && (paramInt <= 330) && (paramInt >= 240) && (paramInt <= 300)) {
-        this.orientation = 270;
+        this.FO = 270;
       }
     }
   }
@@ -163,8 +163,8 @@ public final class d
     AppMethodBeat.i(89360);
     Log.i("MicroMsg.DeviceOrientationListener", "reset");
     this.lastOrientation = -1;
-    this.orientation = -1;
-    this.ztE = -1;
+    this.FO = -1;
+    this.EZf = -1;
     AppMethodBeat.o(89360);
   }
   
@@ -175,7 +175,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.d
  * JD-Core Version:    0.7.0.1
  */

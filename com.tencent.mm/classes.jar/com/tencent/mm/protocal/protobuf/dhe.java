@@ -1,86 +1,181 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
-public final class dhe
-  extends dop
+public class dhe
+  extends com.tencent.mm.cd.a
 {
-  public String LWD;
+  public String CMP;
+  public String GtP;
+  public double RVy;
+  public double RVz;
+  public String Srf;
+  public String Srg;
+  public String TOk;
+  public String TOl;
+  public String TOm;
+  public String TOn;
+  public String mVA;
+  public String mVz;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72559);
+    AppMethodBeat.i(56257);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      if (this.CMP != null) {
+        paramVarArgs.f(1, this.CMP);
       }
-      if (this.LWD != null) {
-        paramVarArgs.e(2, this.LWD);
+      if (this.TOk != null) {
+        paramVarArgs.f(2, this.TOk);
       }
-      AppMethodBeat.o(72559);
+      paramVarArgs.e(3, this.RVy);
+      paramVarArgs.e(4, this.RVz);
+      if (this.TOl != null) {
+        paramVarArgs.f(5, this.TOl);
+      }
+      if (this.GtP != null) {
+        paramVarArgs.f(6, this.GtP);
+      }
+      if (this.TOm != null) {
+        paramVarArgs.f(7, this.TOm);
+      }
+      if (this.mVz != null) {
+        paramVarArgs.f(8, this.mVz);
+      }
+      if (this.mVA != null) {
+        paramVarArgs.f(9, this.mVA);
+      }
+      if (this.Srf != null) {
+        paramVarArgs.f(10, this.Srf);
+      }
+      if (this.Srg != null) {
+        paramVarArgs.f(11, this.Srg);
+      }
+      if (this.TOn != null) {
+        paramVarArgs.f(12, this.TOn);
+      }
+      AppMethodBeat.o(56257);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label370;
+      if (this.CMP == null) {
+        break label860;
       }
     }
-    label370:
-    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label860:
+    for (paramInt = g.a.a.b.b.a.g(1, this.CMP) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.LWD != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.LWD);
+      if (this.TOk != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.TOk);
       }
-      AppMethodBeat.o(72559);
+      i = i + (g.a.a.b.b.a.gL(3) + 8) + (g.a.a.b.b.a.gL(4) + 8);
+      paramInt = i;
+      if (this.TOl != null) {
+        paramInt = i + g.a.a.b.b.a.g(5, this.TOl);
+      }
+      i = paramInt;
+      if (this.GtP != null) {
+        i = paramInt + g.a.a.b.b.a.g(6, this.GtP);
+      }
+      paramInt = i;
+      if (this.TOm != null) {
+        paramInt = i + g.a.a.b.b.a.g(7, this.TOm);
+      }
+      i = paramInt;
+      if (this.mVz != null) {
+        i = paramInt + g.a.a.b.b.a.g(8, this.mVz);
+      }
+      paramInt = i;
+      if (this.mVA != null) {
+        paramInt = i + g.a.a.b.b.a.g(9, this.mVA);
+      }
+      i = paramInt;
+      if (this.Srf != null) {
+        i = paramInt + g.a.a.b.b.a.g(10, this.Srf);
+      }
+      paramInt = i;
+      if (this.Srg != null) {
+        paramInt = i + g.a.a.b.b.a.g(11, this.Srg);
+      }
+      i = paramInt;
+      if (this.TOn != null) {
+        i = paramInt + g.a.a.b.b.a.g(12, this.TOn);
+      }
+      AppMethodBeat.o(56257);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(72559);
+        AppMethodBeat.o(56257);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         dhe localdhe = (dhe)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(72559);
+          AppMethodBeat.o(56257);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localdhe.BaseRequest = ((jr)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(72559);
+          localdhe.CMP = locala.abFh.readString();
+          AppMethodBeat.o(56257);
+          return 0;
+        case 2: 
+          localdhe.TOk = locala.abFh.readString();
+          AppMethodBeat.o(56257);
+          return 0;
+        case 3: 
+          localdhe.RVy = Double.longBitsToDouble(locala.abFh.AP());
+          AppMethodBeat.o(56257);
+          return 0;
+        case 4: 
+          localdhe.RVz = Double.longBitsToDouble(locala.abFh.AP());
+          AppMethodBeat.o(56257);
+          return 0;
+        case 5: 
+          localdhe.TOl = locala.abFh.readString();
+          AppMethodBeat.o(56257);
+          return 0;
+        case 6: 
+          localdhe.GtP = locala.abFh.readString();
+          AppMethodBeat.o(56257);
+          return 0;
+        case 7: 
+          localdhe.TOm = locala.abFh.readString();
+          AppMethodBeat.o(56257);
+          return 0;
+        case 8: 
+          localdhe.mVz = locala.abFh.readString();
+          AppMethodBeat.o(56257);
+          return 0;
+        case 9: 
+          localdhe.mVA = locala.abFh.readString();
+          AppMethodBeat.o(56257);
+          return 0;
+        case 10: 
+          localdhe.Srf = locala.abFh.readString();
+          AppMethodBeat.o(56257);
+          return 0;
+        case 11: 
+          localdhe.Srg = locala.abFh.readString();
+          AppMethodBeat.o(56257);
           return 0;
         }
-        localdhe.LWD = ((g.a.a.a.a)localObject1).UbS.readString();
-        AppMethodBeat.o(72559);
+        localdhe.TOn = locala.abFh.readString();
+        AppMethodBeat.o(56257);
         return 0;
       }
-      AppMethodBeat.o(72559);
+      AppMethodBeat.o(56257);
       return -1;
     }
   }

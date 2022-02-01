@@ -3,33 +3,32 @@ package com.tencent.mm.plugin.recordvideo.background.b;
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class a
 {
-  protected int BLb;
+  protected int HHm;
   
-  private static void Vy(int paramInt)
+  private static void acg(int paramInt)
   {
     GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
   }
   
-  public static int h(Bitmap paramBitmap, int paramInt)
+  public static int i(Bitmap paramBitmap, int paramInt)
   {
     if (paramInt > 0) {
       return paramInt;
     }
-    return i(paramBitmap, paramInt);
+    return j(paramBitmap, paramInt);
   }
   
-  public static int i(Bitmap paramBitmap, int paramInt)
+  public static int j(Bitmap paramBitmap, int paramInt)
   {
     Log.i("MicroMsg.Story.AbsShader", "loadTexture");
     if (paramBitmap != null)
     {
       if (paramInt > 0) {
-        Vy(paramInt);
+        acg(paramInt);
       }
       int[] arrayOfInt = new int[1];
       GLES20.glGenTextures(1, arrayOfInt, 0);
@@ -66,29 +65,14 @@ public abstract class a
     return paramInt;
   }
   
-  public final void eJh()
+  public final void fvk()
   {
-    GLES20.glUseProgram(this.BLb);
-  }
-  
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(74994);
-      BLc = new a("Default", 0);
-      BLd = new a("CenterCrop", 1);
-      BLe = new a("CenterInside", 2);
-      BLf = new a[] { BLc, BLd, BLe };
-      AppMethodBeat.o(74994);
-    }
-    
-    private a() {}
+    GLES20.glUseProgram(this.HHm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.background.b.a
  * JD-Core Version:    0.7.0.1
  */

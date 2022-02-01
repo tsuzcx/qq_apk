@@ -3,20 +3,18 @@ package com.tencent.mm.plugin.location.model;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.t;
 import com.tencent.mm.model.z;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.plugin.location.model.a.c;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.aka;
-import com.tencent.mm.protocal.protobuf.ddj;
-import com.tencent.mm.protocal.protobuf.dmb;
-import com.tencent.mm.protocal.protobuf.ejg;
-import com.tencent.mm.protocal.protobuf.eox;
+import com.tencent.mm.protocal.protobuf.ald;
+import com.tencent.mm.protocal.protobuf.dmz;
+import com.tencent.mm.protocal.protobuf.dvt;
+import com.tencent.mm.protocal.protobuf.eti;
+import com.tencent.mm.protocal.protobuf.ezh;
+import com.tencent.mm.protocal.protobuf.jh;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -27,60 +25,60 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class q
-  implements i, com.tencent.mm.bi.b
+  implements i, com.tencent.mm.bk.b
 {
-  public b.a gmA;
-  public com.tencent.mm.modelgeo.d iOv;
+  private String Ejl;
+  public double Ejn;
+  public double Ejo;
+  public int Ejp;
+  public k EkA;
+  public HashSet<WeakReference<b>> EkB;
+  public int EkC;
+  public ezh EkD;
+  public LocationInfo EkE;
+  public boolean EkF;
+  public boolean EkG;
+  public int EkH;
+  boolean EkI;
+  public a EkJ;
+  public int EkK;
+  public boolean EkL;
+  public long EkM;
+  private long EkN;
+  public k.a EkO;
+  private int Eky;
+  private int Ekz;
+  private int dXr;
+  public b.a iQJ;
   public boolean isStart;
   public boolean isTimeout;
+  public com.tencent.mm.modelgeo.d lEL;
   MMHandler mHandler;
-  private int qwL;
-  public String rgD;
-  private String yFs;
-  public double yFu;
-  public double yFv;
-  public int yFw;
-  private int yGE;
-  private int yGF;
-  public k yGG;
-  public HashSet<WeakReference<b>> yGH;
-  public int yGI;
-  public eox yGJ;
-  public LocationInfo yGK;
-  public boolean yGL;
-  public boolean yGM;
-  public int yGN;
-  boolean yGO;
-  public a yGP;
-  public int yGQ;
-  public boolean yGR;
-  public long yGS;
-  long yGT;
-  public k.a yGU;
+  public String uJM;
   
   public q()
   {
     AppMethodBeat.i(55760);
-    this.yGE = 0;
-    this.yGF = 1000;
-    this.yGH = new HashSet();
-    this.yGI = 1;
-    this.yGK = new LocationInfo((byte)0);
-    this.yGL = false;
-    this.yGM = false;
+    this.Eky = 0;
+    this.Ekz = 1000;
+    this.EkB = new HashSet();
+    this.EkC = 1;
+    this.EkE = new LocationInfo((byte)0);
+    this.EkF = false;
+    this.EkG = false;
     this.isStart = false;
-    this.yGN = this.yGI;
-    this.rgD = "";
+    this.EkH = this.EkC;
+    this.uJM = "";
     this.isTimeout = false;
-    this.yGO = false;
-    this.yGP = null;
-    this.yGQ = -1;
-    this.yGR = true;
-    this.yGS = 0L;
-    this.yGT = 0L;
-    this.yFu = -1000.0D;
-    this.yFv = -1000.0D;
-    this.yFw = -1;
+    this.EkI = false;
+    this.EkJ = null;
+    this.EkK = -1;
+    this.EkL = true;
+    this.EkM = 0L;
+    this.EkN = 0L;
+    this.Ejn = -1000.0D;
+    this.Ejo = -1000.0D;
+    this.Ejp = -1;
     this.mHandler = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
@@ -92,19 +90,11 @@ public final class q
           AppMethodBeat.o(55758);
           return;
         }
-        q localq = q.this;
-        switch (paramAnonymousMessage.what)
-        {
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(55758);
-          return;
-          localq.eda();
-        }
+        q.a(q.this, paramAnonymousMessage);
+        AppMethodBeat.o(55758);
       }
     };
-    this.gmA = new b.a()
+    this.iQJ = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -115,101 +105,103 @@ public final class q
           return false;
         }
         Log.d("MicorMsg.TrackRefreshManager", "onGetlocatoin fLongitude:%f, fLatitude:%f, locType:%d, speed:%f", new Object[] { Float.valueOf(paramAnonymousFloat1), Float.valueOf(paramAnonymousFloat2), Integer.valueOf(paramAnonymousInt), Double.valueOf(paramAnonymousDouble1) });
-        if (q.this.yGR)
+        if (q.a(q.this))
         {
-          q.this.yGR = false;
-          q.this.yGT = System.currentTimeMillis();
-          long l = q.this.yGT - q.this.yGS;
+          q.b(q.this);
+          q.a(q.this, System.currentTimeMillis());
+          long l = q.c(q.this) - q.d(q.this);
           Log.d("MicorMsg.TrackRefreshManager", "locate time:%d", new Object[] { Long.valueOf(l) });
-          h.CyF.a(10997, new Object[] { "10", "", Integer.valueOf(0), Long.valueOf(l) });
+          com.tencent.mm.plugin.report.service.h.IzE.a(10997, new Object[] { "10", "", Integer.valueOf(0), Long.valueOf(l) });
         }
-        if ((q.this.yGJ != null) && (q.this.yGJ.NmV != null))
+        if ((q.e(q.this) != null) && (q.e(q.this).UzK != null))
         {
-          q.this.yGJ.NmV.KUu = paramAnonymousFloat2;
-          q.this.yGJ.NmV.KUt = paramAnonymousFloat1;
+          q.e(q.this).UzK.RVz = paramAnonymousFloat2;
+          q.e(q.this).UzK.RVy = paramAnonymousFloat1;
         }
         AppMethodBeat.o(55759);
         return true;
       }
     };
-    this.yGU = new k.a()
+    this.EkO = new k.a()
     {
-      public final void w(double paramAnonymousDouble)
+      public final void x(double paramAnonymousDouble)
       {
-        if (q.this.yGJ != null) {
-          q.this.yGJ.NmV.MIv = paramAnonymousDouble;
+        AppMethodBeat.i(245347);
+        if (q.e(q.this) != null) {
+          q.e(q.this).UzK.TUj = paramAnonymousDouble;
         }
+        AppMethodBeat.o(245347);
       }
     };
     AppMethodBeat.o(55760);
   }
   
-  private void ecW()
+  private void eMp()
   {
     AppMethodBeat.i(55765);
     Log.d("MicorMsg.TrackRefreshManager", "trigerRefresh");
-    if (edb())
+    if (eMu())
     {
       Log.d("MicorMsg.TrackRefreshManager", "trigerRefresh, joinSuccess");
-      this.iOv = com.tencent.mm.modelgeo.d.bca();
-      this.iOv.b(this.gmA, true);
-      if (this.yGG == null) {
-        this.yGG = n.ecT();
+      this.lEL = com.tencent.mm.modelgeo.d.blq();
+      this.lEL.b(this.iQJ, true);
+      if (this.EkA == null) {
+        this.EkA = n.eMl();
       }
-      this.yGG.a(this.yGU);
-      eda();
+      this.EkA.a(this.EkO);
+      eMt();
     }
     AppMethodBeat.o(55765);
   }
   
-  private void et(String paramString, int paramInt)
+  private void eU(String paramString, int paramInt)
   {
     AppMethodBeat.i(55763);
     Log.d("MicorMsg.TrackRefreshManager", "exitTrack, scene=%d", new Object[] { Integer.valueOf(paramInt) });
     paramString = new com.tencent.mm.plugin.location.model.a.a(paramString);
-    ((aka)paramString.rr.iLK.iLR).Scene = paramInt;
-    g.azz().a(paramString, 0);
-    this.yFs = "";
+    ((ald)d.b.b(paramString.rr.lBR)).CPw = paramInt;
+    com.tencent.mm.kernel.h.aGY().a(paramString, 0);
+    this.Ejl = "";
     AppMethodBeat.o(55763);
   }
   
-  public final void Px(int paramInt)
+  public final void VG(int paramInt)
   {
     AppMethodBeat.i(55764);
     Log.i("MicorMsg.TrackRefreshManager", "track endTrack");
-    if (edb()) {
-      et(this.yFs, paramInt);
+    if (eMu()) {
+      eU(this.Ejl, paramInt);
     }
-    if (!Util.isNullOrNil(this.rgD))
+    if (!Util.isNullOrNil(this.uJM))
     {
-      com.tencent.mm.plugin.location.a.a locala = n.ecS().aCZ(this.rgD);
+      com.tencent.mm.plugin.location.a.a locala = n.eMk().aNj(this.uJM);
       if (locala != null)
       {
-        locala.dTe.remove(z.aTY());
-        n.ecS().a(this.rgD, locala.dTe, locala.latitude, locala.longitude, locala.yFq, null, null);
+        locala.fMA.remove(z.bcZ());
+        n.eMk().a(this.uJM, locala.fMA, locala.latitude, locala.longitude, locala.Ejj, null, null);
       }
     }
-    n.ecS().aDa("");
-    this.yFs = "";
-    this.rgD = "";
-    this.yGL = false;
-    this.yGM = false;
-    this.yFu = -1000.0D;
-    this.yFv = -1000.0D;
-    this.yFw = -1;
-    this.yGQ = -1;
+    n.eMk().aNk("");
+    this.Ejl = "";
+    this.uJM = "";
+    this.EkF = false;
+    this.EkG = false;
+    this.Ejn = -1000.0D;
+    this.Ejo = -1000.0D;
+    this.Ejp = -1;
+    this.EkK = -1;
     AppMethodBeat.o(55764);
   }
   
-  public final String bgL()
+  public final String bqa()
   {
-    return this.rgD;
+    return this.uJM;
   }
   
-  public final boolean ecV()
+  public final boolean eMo()
   {
     AppMethodBeat.i(55762);
-    if ((edb()) && (this.yGL))
+    if ((eMu()) && (this.EkF))
     {
       AppMethodBeat.o(55762);
       return true;
@@ -218,42 +210,42 @@ public final class q
     return false;
   }
   
-  public final void ecX()
+  public final void eMq()
   {
     AppMethodBeat.i(55766);
     Log.d("MicorMsg.TrackRefreshManager", "resume refresh");
-    this.yGO = false;
-    ecW();
+    this.EkI = false;
+    eMp();
     AppMethodBeat.o(55766);
   }
   
-  public final List<String> ecY()
+  public final List<String> eMr()
   {
     AppMethodBeat.i(55767);
-    LinkedList localLinkedList = n.ecS().PY(this.rgD);
+    LinkedList localLinkedList = n.eMk().Xv(this.uJM);
     AppMethodBeat.o(55767);
     return localLinkedList;
   }
   
-  public final void ecZ()
+  public final void eMs()
   {
-    if (this.yGI == 1) {
-      this.yGI = 3;
+    if (this.EkC == 1) {
+      this.EkC = 3;
     }
-    while (this.yGI != 3) {
+    while (this.EkC != 3) {
       return;
     }
-    this.yGI = 2;
+    this.EkC = 2;
   }
   
-  public final void eda()
+  public final void eMt()
   {
     boolean bool = true;
     AppMethodBeat.i(55768);
-    if ((!this.isStart) || (!this.yGL) || (this.yGK == null))
+    if ((!this.isStart) || (!this.EkF) || (this.EkE == null))
     {
-      localObject1 = new StringBuilder("error to exit refresh isStart: ").append(this.isStart).append(" isShared: ").append(this.yGL).append(" ");
-      if (this.yGK == null) {}
+      localObject1 = new StringBuilder("error to exit refresh isStart: ").append(this.isStart).append(" isShared: ").append(this.EkF).append(" ");
+      if (this.EkE == null) {}
       for (;;)
       {
         Log.e("MicorMsg.TrackRefreshManager", bool);
@@ -262,37 +254,37 @@ public final class q
         bool = false;
       }
     }
-    if ((this.yGJ == null) || (this.yGJ.NmV.KUu == -1000.0D) || (this.yGJ.NmV.KUt == -1000.0D))
+    if ((this.EkD == null) || (this.EkD.UzK.RVz == -1000.0D) || (this.EkD.UzK.RVy == -1000.0D))
     {
       Log.e("MicorMsg.TrackRefreshManager", "error to get my location ");
-      this.mHandler.sendEmptyMessageDelayed(1, this.yGF);
+      this.mHandler.sendEmptyMessageDelayed(1, this.Ekz);
       AppMethodBeat.o(55768);
       return;
     }
-    Object localObject2 = z.aTY();
-    Object localObject1 = new ejg();
-    ((ejg)localObject1).MCE = this.yGK.yFx;
-    ((ejg)localObject1).KUu = this.yGK.yFu;
-    ((ejg)localObject1).KUt = this.yGK.yFv;
-    ((ejg)localObject1).Name = ((String)localObject2);
-    this.yGJ.Username = ((String)localObject2);
-    this.yGJ.NmV.MIv = n.ecT().ecL();
+    Object localObject2 = z.bcZ();
+    Object localObject1 = new eti();
+    ((eti)localObject1).TOk = this.EkE.Ejq;
+    ((eti)localObject1).RVz = this.EkE.Ejn;
+    ((eti)localObject1).RVy = this.EkE.Ejo;
+    ((eti)localObject1).CMP = ((String)localObject2);
+    this.EkD.Username = ((String)localObject2);
+    this.EkD.UzK.TUj = n.eMl().eMd();
     localObject2 = new StringBuffer();
-    ((StringBuffer)localObject2).append("refreshLoopImpl, [trackRoomId:" + this.yFs + "]");
-    switch (this.yGI)
+    ((StringBuffer)localObject2).append("refreshLoopImpl, [trackRoomId:" + this.Ejl + "]");
+    switch (this.EkC)
     {
     }
     for (;;)
     {
-      ((StringBuffer)localObject2).append("[ mMyPosiItem " + this.yGJ.NmV.KUu + " " + this.yGJ.NmV.KUt + " " + this.yGJ.NmV.MIv + " ]");
+      ((StringBuffer)localObject2).append("[ mMyPosiItem " + this.EkD.UzK.RVz + " " + this.EkD.UzK.RVy + " " + this.EkD.UzK.TUj + " ]");
       Log.d("MicorMsg.TrackRefreshManager", ((StringBuffer)localObject2).toString());
-      localObject2 = this.yFs;
-      int i = this.yGI;
-      eox localeox = this.yGJ;
-      int j = this.qwL + 1;
-      this.qwL = j;
-      localObject1 = new c((String)localObject2, i, localeox, j, (ejg)localObject1);
-      g.azz().a((com.tencent.mm.ak.q)localObject1, 0);
+      localObject2 = this.Ejl;
+      int i = this.EkC;
+      ezh localezh = this.EkD;
+      int j = this.dXr + 1;
+      this.dXr = j;
+      localObject1 = new c((String)localObject2, i, localezh, j, (eti)localObject1);
+      com.tencent.mm.kernel.h.aGY().a((com.tencent.mm.an.q)localObject1, 0);
       AppMethodBeat.o(55768);
       return;
       ((StringBuffer)localObject2).append("track upload_status  MMRefreshTrackRoomUpload ");
@@ -302,14 +294,14 @@ public final class q
       ((StringBuffer)localObject2).append("track upload_status  MMRefreshTrackRoomUploadAndDownLoad ");
       continue;
       ((StringBuffer)localObject2).append("track upload_status  MMRefreshTrackRoomFirstUpload ");
-      ((StringBuffer)localObject2).append("[ trackItem " + ((ejg)localObject1).KUu + " " + ((ejg)localObject1).KUt + " ]");
+      ((StringBuffer)localObject2).append("[ trackItem " + ((eti)localObject1).RVz + " " + ((eti)localObject1).RVy + " ]");
     }
   }
   
-  public final boolean edb()
+  public final boolean eMu()
   {
     AppMethodBeat.i(55769);
-    if (!Util.isNullOrNil(this.yFs))
+    if (!Util.isNullOrNil(this.Ejl))
     {
       AppMethodBeat.o(55769);
       return true;
@@ -318,7 +310,7 @@ public final class q
     return false;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
   {
     AppMethodBeat.i(55770);
     Log.d("MicorMsg.TrackRefreshManager", "onSceneEnd scene type %d errType %d errCode %d", new Object[] { Integer.valueOf(paramq.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
@@ -327,53 +319,53 @@ public final class q
     {
       if ((paramInt2 == 0) || (paramInt2 >= 1000))
       {
-        this.yFs = ((com.tencent.mm.plugin.location.model.a.b)paramq).yFs;
-        n.ecS().aDa(this.yFs);
-        if (edb())
+        this.Ejl = ((com.tencent.mm.plugin.location.model.a.b)paramq).Ejl;
+        n.eMk().aNk(this.Ejl);
+        if (eMu())
         {
-          Log.i("MicorMsg.TrackRefreshManager", "join sucess %s", new Object[] { this.yFs });
-          paramString = com.tencent.mm.bi.d.jpA.PY(this.rgD);
-          paramString.add(z.aTY());
-          if (this.yGK != null) {
-            com.tencent.mm.bi.d.jpA.a(this.rgD, paramString, this.yGK.yFu, this.yGK.yFv, this.yGK.yFx, "", "");
+          Log.i("MicorMsg.TrackRefreshManager", "join sucess %s", new Object[] { this.Ejl });
+          paramString = com.tencent.mm.bk.d.meV.Xv(this.uJM);
+          paramString.add(z.bcZ());
+          if (this.EkE != null) {
+            com.tencent.mm.bk.d.meV.a(this.uJM, paramString, this.EkE.Ejn, this.EkE.Ejo, this.EkE.Ejq, "", "");
           }
-          while (this.yGH != null)
+          while (this.EkB != null)
           {
-            paramString = this.yGH.iterator();
+            paramString = this.EkB.iterator();
             while (paramString.hasNext())
             {
               paramq = (WeakReference)paramString.next();
               if ((paramq != null) && (paramq.get() != null)) {
-                ((b)paramq.get()).edc();
+                ((b)paramq.get()).eMv();
               }
             }
-            com.tencent.mm.bi.d.jpA.a(this.rgD, paramString, -1000.0D, -1000.0D, "", "", "");
+            com.tencent.mm.bk.d.meV.a(this.uJM, paramString, -1000.0D, -1000.0D, "", "", "");
           }
-          eda();
+          eMt();
           AppMethodBeat.o(55770);
         }
       }
       else
       {
-        if ((paramInt2 == 17) && (this.yGH != null))
+        if ((paramInt2 == 17) && (this.EkB != null))
         {
-          paramString = this.yGH.iterator();
+          paramString = this.EkB.iterator();
           while (paramString.hasNext())
           {
             localWeakReference = (WeakReference)paramString.next();
             if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-              ((b)localWeakReference.get()).edd();
+              ((b)localWeakReference.get()).eMw();
             }
           }
         }
-        if (this.yGH != null)
+        if (this.EkB != null)
         {
-          paramString = this.yGH.iterator();
+          paramString = this.EkB.iterator();
           while (paramString.hasNext())
           {
             localWeakReference = (WeakReference)paramString.next();
             if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-              ((b)localWeakReference.get()).onError(0, ((com.tencent.mm.plugin.location.model.a.b)paramq).qwG);
+              ((b)localWeakReference.get()).onError(0, ((com.tencent.mm.plugin.location.model.a.b)paramq).tVH);
             }
           }
           AppMethodBeat.o(55770);
@@ -384,42 +376,42 @@ public final class q
     {
       if (paramq.getType() == 492)
       {
-        this.yGE += 1;
+        this.Eky += 1;
         this.mHandler.removeMessages(1);
-        if (this.yGE >= 10)
+        if (this.Eky >= 10)
         {
           this.mHandler.removeMessages(1);
-          if (this.yGH != null)
+          if (this.EkB != null)
           {
-            paramString = this.yGH.iterator();
+            paramString = this.EkB.iterator();
             while (paramString.hasNext())
             {
               localWeakReference = (WeakReference)paramString.next();
               if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-                ((b)localWeakReference.get()).onError(1, ((c)paramq).qwG);
+                ((b)localWeakReference.get()).onError(1, ((c)paramq).tVH);
               }
             }
             AppMethodBeat.o(55770);
           }
         }
-        else if ((edb()) && (!this.yGO))
+        else if ((eMu()) && (!this.EkI))
         {
-          paramString = ((c)paramq).yHe;
+          paramString = ((c)paramq).EkY;
           if ((paramString != null) && (paramString.BaseResponse != null))
           {
-            if (paramString.BaseResponse.Ret != 12) {
+            if (paramString.BaseResponse.CqV != 12) {
               break label696;
             }
             this.isTimeout = true;
-            if (this.yGP != null) {
-              this.yGP.bTS();
+            if (this.EkJ != null) {
+              this.EkJ.onTimeout();
             }
           }
           for (;;)
           {
-            Log.d("MicorMsg.TrackRefreshManager", "refresh track room, in error status, timeout = %b, ret = %d", new Object[] { Boolean.valueOf(this.isTimeout), Integer.valueOf(paramString.BaseResponse.Ret) });
+            Log.d("MicorMsg.TrackRefreshManager", "refresh track room, in error status, timeout = %b, ret = %d", new Object[] { Boolean.valueOf(this.isTimeout), Integer.valueOf(paramString.BaseResponse.CqV) });
             if (!this.isTimeout) {
-              this.mHandler.sendEmptyMessageDelayed(1, this.yGF);
+              this.mHandler.sendEmptyMessageDelayed(1, this.Ekz);
             }
             AppMethodBeat.o(55770);
             return;
@@ -433,56 +425,56 @@ public final class q
     {
       if (paramq.getType() == 492)
       {
-        paramString = ((c)paramq).yHe;
+        paramString = ((c)paramq).EkY;
         if ((paramString != null) && (paramString.BaseResponse != null))
         {
-          if (paramString.BaseResponse.Ret != 12) {
+          if (paramString.BaseResponse.CqV != 12) {
             break label964;
           }
           this.isTimeout = true;
-          if (this.yGP != null) {
-            this.yGP.bTS();
+          if (this.EkJ != null) {
+            this.EkJ.onTimeout();
           }
         }
         for (;;)
         {
-          Log.d("MicorMsg.TrackRefreshManager", "refresh track room, timeout = %b, ret = %d", new Object[] { Boolean.valueOf(this.isTimeout), Integer.valueOf(paramString.BaseResponse.Ret) });
-          if (this.yGE > 0) {
-            h.CyF.a(10997, new Object[] { "9", "", Integer.valueOf(this.yGE), Integer.valueOf(0) });
+          Log.d("MicorMsg.TrackRefreshManager", "refresh track room, timeout = %b, ret = %d", new Object[] { Boolean.valueOf(this.isTimeout), Integer.valueOf(paramString.BaseResponse.CqV) });
+          if (this.Eky > 0) {
+            com.tencent.mm.plugin.report.service.h.IzE.a(10997, new Object[] { "9", "", Integer.valueOf(this.Eky), Integer.valueOf(0) });
           }
-          this.yGE = 0;
-          this.yGF = ((c)paramq).yHb;
-          paramInt1 = ((c)paramq).yHf;
-          if ((this.yGH == null) || ((paramInt1 != 2) && (paramInt1 != 1) && (paramInt1 != 3))) {
+          this.Eky = 0;
+          this.Ekz = ((c)paramq).EkV;
+          paramInt1 = ((c)paramq).EkZ;
+          if ((this.EkB == null) || ((paramInt1 != 2) && (paramInt1 != 1) && (paramInt1 != 3))) {
             break;
           }
-          paramString = this.yGH.iterator();
+          paramString = this.EkB.iterator();
           while (paramString.hasNext())
           {
             localWeakReference = (WeakReference)paramString.next();
             if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-              ((b)localWeakReference.get()).a(((c)paramq).yHe);
+              ((b)localWeakReference.get()).a(((c)paramq).EkY);
             }
           }
           label964:
           this.isTimeout = false;
         }
-        if (this.yGI == 1) {}
+        if (this.EkC == 1) {}
         for (paramInt1 = 1;; paramInt1 = 0)
         {
           if (paramInt1 == 0) {
-            ecZ();
+            eMs();
           }
           this.mHandler.removeMessages(1);
-          if ((edb()) && (!this.yGO) && (!this.isTimeout)) {
-            this.mHandler.sendEmptyMessageDelayed(1, this.yGF);
+          if ((eMu()) && (!this.EkI) && (!this.isTimeout)) {
+            this.mHandler.sendEmptyMessageDelayed(1, this.Ekz);
           }
           AppMethodBeat.o(55770);
           return;
         }
       }
       if (paramq.getType() == 491) {
-        n.ecS().aDa("");
+        n.eMk().aNk("");
       }
     }
     AppMethodBeat.o(55770);
@@ -492,40 +484,40 @@ public final class q
   {
     AppMethodBeat.i(55761);
     Log.i("MicorMsg.TrackRefreshManager", "stop location");
-    if (this.iOv != null) {
-      this.iOv.c(this.gmA);
+    if (this.lEL != null) {
+      this.lEL.b(this.iQJ);
     }
-    if (this.yGG != null) {
-      this.yGG.b(this.yGU);
+    if (this.EkA != null) {
+      this.EkA.b(this.EkO);
     }
-    g.azz().b(492, this);
-    g.azz().b(490, this);
-    g.azz().b(491, this);
-    this.yGI = 1;
+    com.tencent.mm.kernel.h.aGY().b(492, this);
+    com.tencent.mm.kernel.h.aGY().b(490, this);
+    com.tencent.mm.kernel.h.aGY().b(491, this);
+    this.EkC = 1;
     this.isStart = false;
-    this.yGQ = -1;
+    this.EkK = -1;
     AppMethodBeat.o(55761);
   }
   
   public static abstract interface a
   {
-    public abstract void bTS();
+    public abstract void onTimeout();
   }
   
   public static abstract interface b
   {
-    public abstract void a(dmb paramdmb);
+    public abstract void a(dvt paramdvt);
     
-    public abstract void edc();
+    public abstract void eMv();
     
-    public abstract void edd();
+    public abstract void eMw();
     
     public abstract void onError(int paramInt, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.q
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.duo;
-import com.tencent.mm.protocal.protobuf.dup;
-import com.tencent.mm.protocal.protobuf.ewh;
+import com.tencent.mm.protocal.protobuf.ees;
+import com.tencent.mm.protocal.protobuf.eet;
+import com.tencent.mm.protocal.protobuf.fgt;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
@@ -19,30 +19,30 @@ public final class m
   extends q
   implements com.tencent.mm.network.m
 {
+  private ees DRO;
+  public eet DRP;
   private i callback;
   private d rr;
-  private duo yrM;
-  public dup yrN;
   
-  public m(int paramInt1, int paramInt2, LinkedList<ewh> paramLinkedList)
+  public m(int paramInt1, int paramInt2, LinkedList<fgt> paramLinkedList)
   {
     AppMethodBeat.i(25487);
     this.rr = null;
-    this.yrM = null;
-    this.yrN = null;
+    this.DRO = null;
+    this.DRP = null;
     d.a locala = new d.a();
-    locala.iLN = new duo();
-    locala.iLO = new dup();
+    locala.lBU = new ees();
+    locala.lBV = new eet();
     locala.funcId = 871;
     locala.uri = "/cgi-bin/micromsg-bin/sendwcofeedback";
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    this.yrM = ((duo)this.rr.iLK.iLR);
-    this.yrM.Mvj = paramInt2;
-    this.yrM.MVU = paramLinkedList;
-    this.yrM.MVT = paramLinkedList.size();
-    this.yrM.MVV = paramInt1;
+    this.rr = locala.bgN();
+    this.DRO = ((ees)d.b.b(this.rr.lBR));
+    this.DRO.TGh = paramInt2;
+    this.DRO.Uip = paramLinkedList;
+    this.DRO.Uio = paramLinkedList.size();
+    this.DRO.Uiq = paramInt1;
     Log.i("MicroMsg.NetSceneIPCallSendFeedback", "NetSceneIPCallSendFeedback roomid=%d, level=%d, feedbackCount=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramLinkedList.size()) });
     AppMethodBeat.o(25487);
   }
@@ -65,7 +65,7 @@ public final class m
   {
     AppMethodBeat.i(25489);
     Log.i("MicroMsg.NetSceneIPCallSendFeedback", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.yrN = ((dup)((d)params).iLL.iLR);
+    this.DRP = ((eet)d.c.b(((d)params).lBS));
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

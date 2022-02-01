@@ -8,93 +8,94 @@ import android.os.HandlerThread;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 import android.view.View;
-import com.tencent.f.c.d;
+import com.tencent.e.c.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.aa;
-import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.compatible.deviceinfo.ab;
+import com.tencent.mm.compatible.deviceinfo.af;
 import com.tencent.mm.compatible.i.c;
 import com.tencent.mm.plugin.finder.view.FinderVideoFrameView;
-import com.tencent.mm.plugin.finder.view.m;
-import com.tencent.mm.plugin.finder.view.m.a;
-import com.tencent.mm.protocal.protobuf.cjl;
+import com.tencent.mm.plugin.finder.view.s;
+import com.tencent.mm.plugin.finder.view.s.a;
+import com.tencent.mm.protocal.protobuf.csg;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.FileDescriptor;
 import java.io.RandomAccessFile;
 import kotlin.g.a.a;
 import kotlin.g.a.b;
+import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.n.n;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/FinderNormalVideoCoverPreview;", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoCoverPreview;", "context", "Landroid/content/Context;", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;)V", "frameView", "Lcom/tencent/mm/plugin/finder/view/FinderVideoFrameView;", "seeker", "Lcom/tencent/mm/plugin/finder/view/FinderVideoFrameSeeker;", "destroy", "", "getBitmap", "Landroid/graphics/Bitmap;", "width", "", "height", "getView", "Landroid/view/View;", "seekTo", "timeMs", "", "start", "onReady", "Lkotlin/Function0;", "onDestroy", "onSeekFrame", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "frameUs", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/FinderNormalVideoCoverPreview;", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoCoverPreview;", "context", "Landroid/content/Context;", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;)V", "frameView", "Lcom/tencent/mm/plugin/finder/view/FinderVideoFrameView;", "seeker", "Lcom/tencent/mm/plugin/finder/view/FinderVideoFrameSeeker;", "destroy", "", "getBitmap", "Landroid/graphics/Bitmap;", "width", "", "height", "getView", "Landroid/view/View;", "seekTo", "timeMs", "", "start", "onReady", "Lkotlin/Function0;", "onDestroy", "onSeekFrame", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "frameUs", "plugin-finder_release"})
 public final class f
-  implements p
+  implements q
 {
-  private FinderVideoFrameView wcP;
-  private m wcQ;
+  private FinderVideoFrameView ALy;
+  private s ALz;
   
-  public f(Context paramContext, cjl paramcjl)
+  public f(Context paramContext, csg paramcsg)
   {
-    AppMethodBeat.i(254064);
-    this.wcP = new FinderVideoFrameView(paramContext);
-    paramcjl = paramcjl.url;
-    paramContext = paramcjl;
-    if (paramcjl == null) {
+    AppMethodBeat.i(285427);
+    this.ALy = new FinderVideoFrameView(paramContext);
+    paramcsg = paramcsg.url;
+    paramContext = paramcsg;
+    if (paramcsg == null) {
       paramContext = "";
     }
-    this.wcQ = new m(paramContext, this.wcP.getTextureView());
-    AppMethodBeat.o(254064);
+    this.ALz = new s(paramContext, this.ALy.getTextureView());
+    AppMethodBeat.o(285427);
   }
   
   public final void a(a<x> parama1, a<x> parama2, b<? super Long, x> paramb)
   {
-    AppMethodBeat.i(254060);
-    kotlin.g.b.p.h(parama1, "onReady");
-    kotlin.g.b.p.h(parama2, "onDestroy");
-    kotlin.g.b.p.h(paramb, "onSeekFrame");
-    m localm = this.wcQ;
-    kotlin.g.b.p.h(parama1, "onTextureReady");
-    kotlin.g.b.p.h(parama2, "onTextureDestroy");
-    kotlin.g.b.p.h(paramb, "onSeekFrame");
-    Object localObject = d.hz("FinderVideoFrameSeeker_renderThread" + localm.hashCode(), -2);
-    kotlin.g.b.p.g(localObject, "SpecialThreadFactory.cre…READ_PRIORITY_FOREGROUND)");
-    localm.wpM = ((HandlerThread)localObject);
-    localObject = localm.wpM;
+    AppMethodBeat.i(285423);
+    p.k(parama1, "onReady");
+    p.k(parama2, "onDestroy");
+    p.k(paramb, "onSeekFrame");
+    s locals = this.ALz;
+    p.k(parama1, "onTextureReady");
+    p.k(parama2, "onTextureDestroy");
+    p.k(paramb, "onSeekFrame");
+    Object localObject = d.ij("FinderVideoFrameSeeker_renderThread" + locals.hashCode(), -2);
+    p.j(localObject, "SpecialThreadFactory.cre…READ_PRIORITY_FOREGROUND)");
+    locals.Bbu = ((HandlerThread)localObject);
+    localObject = locals.Bbu;
     if (localObject == null) {
-      kotlin.g.b.p.btv("ht");
+      p.bGy("ht");
     }
     ((HandlerThread)localObject).start();
-    localObject = localm.wpM;
+    localObject = locals.Bbu;
     if (localObject == null) {
-      kotlin.g.b.p.btv("ht");
+      p.bGy("ht");
     }
-    localm.handler = new MMHandler(((HandlerThread)localObject).getLooper());
-    localm.jto = new c();
-    localm.wpL = new c();
-    localObject = s.dB(localm.path, false);
-    kotlin.g.b.p.g(localObject, "VFSFileOp.openRandomAccess(path, false)");
+    locals.handler = new MMHandler(((HandlerThread)localObject).getLooper());
+    locals.miS = new c();
+    locals.Bbt = new c();
+    localObject = u.dO(locals.path, false);
+    p.j(localObject, "VFSFileOp.openRandomAccess(path, false)");
     FileDescriptor localFileDescriptor = ((RandomAccessFile)localObject).getFD();
     c localc;
     int j;
     int i;
-    if (ae.gKv.gKi == 1)
+    if (af.juJ.juw == 1)
     {
-      localc = localm.jto;
+      localc = locals.miS;
       if (localc == null) {
-        kotlin.g.b.p.btv("extractor");
+        p.bGy("extractor");
       }
-      localc.setDataSource(localFileDescriptor, 0L, s.boW(localm.path));
-      localc = localm.wpL;
+      localc.setDataSource(localFileDescriptor, 0L, u.bBQ(locals.path));
+      localc = locals.Bbt;
       if (localc == null) {
-        kotlin.g.b.p.btv("frameFlagExtractor");
+        p.bGy("frameFlagExtractor");
       }
-      localc.setDataSource(localFileDescriptor, 0L, s.boW(localm.path));
+      localc.setDataSource(localFileDescriptor, 0L, u.bBQ(locals.path));
       ((RandomAccessFile)localObject).close();
-      localObject = localm.jto;
+      localObject = locals.miS;
       if (localObject == null) {
-        kotlin.g.b.p.btv("extractor");
+        p.bGy("extractor");
       }
       j = ((c)localObject).getTrackCount();
       i = 0;
@@ -103,51 +104,51 @@ public final class f
     {
       if (i < j)
       {
-        localObject = localm.jto;
+        localObject = locals.miS;
         if (localObject == null) {
-          kotlin.g.b.p.btv("extractor");
+          p.bGy("extractor");
         }
         localObject = ((c)localObject).getTrackFormat(i);
-        kotlin.g.b.p.g(localObject, "extractor.getTrackFormat(i)");
-        localm.mediaFormat = ((MediaFormat)localObject);
-        localObject = localm.mediaFormat;
+        p.j(localObject, "extractor.getTrackFormat(i)");
+        locals.mediaFormat = ((MediaFormat)localObject);
+        localObject = locals.mediaFormat;
         if (localObject == null) {
-          kotlin.g.b.p.btv("mediaFormat");
+          p.bGy("mediaFormat");
         }
         localObject = ((MediaFormat)localObject).getString("mime");
-        kotlin.g.b.p.g(localObject, "mediaFormat.getString(MediaFormat.KEY_MIME)");
-        localm.mime = ((String)localObject);
-        localObject = localm.mime;
+        p.j(localObject, "mediaFormat.getString(MediaFormat.KEY_MIME)");
+        locals.aFM = ((String)localObject);
+        localObject = locals.aFM;
         if (localObject == null) {
-          kotlin.g.b.p.btv("mime");
+          p.bGy("mime");
         }
-        if (n.J((String)localObject, "video/", false))
+        if (n.M((String)localObject, "video/", false))
         {
-          localObject = localm.jto;
+          localObject = locals.miS;
           if (localObject == null) {
-            kotlin.g.b.p.btv("extractor");
+            p.bGy("extractor");
           }
           ((c)localObject).selectTrack(i);
-          localObject = localm.wpL;
+          localObject = locals.Bbt;
           if (localObject == null) {
-            kotlin.g.b.p.btv("frameFlagExtractor");
+            p.bGy("frameFlagExtractor");
           }
           ((c)localObject).selectTrack(i);
         }
       }
       else
       {
-        localm.bec.setSurfaceTextureListener((TextureView.SurfaceTextureListener)new m.a(localm, parama2, paramb, parama1));
-        AppMethodBeat.o(254060);
+        locals.aND.setSurfaceTextureListener((TextureView.SurfaceTextureListener)new s.a(locals, parama2, paramb, parama1));
+        AppMethodBeat.o(285423);
         return;
-        localc = localm.jto;
+        localc = locals.miS;
         if (localc == null) {
-          kotlin.g.b.p.btv("extractor");
+          p.bGy("extractor");
         }
         localc.setDataSource(localFileDescriptor);
-        localc = localm.wpL;
+        localc = locals.Bbt;
         if (localc == null) {
-          kotlin.g.b.p.btv("frameFlagExtractor");
+          p.bGy("frameFlagExtractor");
         }
         localc.setDataSource(localFileDescriptor);
         break;
@@ -158,97 +159,97 @@ public final class f
   
   public final void destroy()
   {
-    AppMethodBeat.i(254062);
-    Object localObject = this.wcQ;
-    ((m)localObject).releaseDecoder();
-    c localc = ((m)localObject).jto;
+    AppMethodBeat.i(285425);
+    Object localObject = this.ALz;
+    ((s)localObject).releaseDecoder();
+    c localc = ((s)localObject).miS;
     if (localc == null) {
-      kotlin.g.b.p.btv("extractor");
+      p.bGy("extractor");
     }
     localc.release();
-    localc = ((m)localObject).wpL;
+    localc = ((s)localObject).Bbt;
     if (localc == null) {
-      kotlin.g.b.p.btv("frameFlagExtractor");
+      p.bGy("frameFlagExtractor");
     }
     localc.release();
-    localObject = ((m)localObject).wpM;
+    localObject = ((s)localObject).Bbu;
     if (localObject == null) {
-      kotlin.g.b.p.btv("ht");
+      p.bGy("ht");
     }
     ((HandlerThread)localObject).quit();
-    AppMethodBeat.o(254062);
+    AppMethodBeat.o(285425);
   }
   
   public final Bitmap getBitmap()
   {
-    AppMethodBeat.i(254063);
-    Bitmap localBitmap = this.wcP.getTextureView().getBitmap();
-    AppMethodBeat.o(254063);
+    AppMethodBeat.i(285426);
+    Bitmap localBitmap = this.ALy.getTextureView().getBitmap();
+    AppMethodBeat.o(285426);
     return localBitmap;
   }
   
   public final View getView()
   {
-    return (View)this.wcP;
+    return (View)this.ALy;
   }
   
   public final void seekTo(long paramLong)
   {
-    AppMethodBeat.i(254061);
-    Object localObject2 = this.wcQ;
-    synchronized (((m)localObject2).lock)
+    AppMethodBeat.i(285424);
+    Object localObject2 = this.ALz;
+    synchronized (((s)localObject2).lock)
     {
-      ((m)localObject2).wpN = paramLong;
-      Object localObject4 = ((m)localObject2).wpL;
+      ((s)localObject2).Bbv = paramLong;
+      Object localObject4 = ((s)localObject2).Bbt;
       if (localObject4 == null) {
-        kotlin.g.b.p.btv("frameFlagExtractor");
+        p.bGy("frameFlagExtractor");
       }
-      ((c)localObject4).seekTo(((m)localObject2).wpN * 1000L, 0);
-      localObject4 = ((m)localObject2).wpL;
+      ((c)localObject4).seekTo(((s)localObject2).Bbv * 1000L, 0);
+      localObject4 = ((s)localObject2).Bbt;
       if (localObject4 == null) {
-        kotlin.g.b.p.btv("frameFlagExtractor");
+        p.bGy("frameFlagExtractor");
       }
       long l = ((c)localObject4).getSampleTime();
-      if ((l == ((m)localObject2).wpO) && (((m)localObject2).wpQ >= 0L) && (((m)localObject2).wpQ < paramLong * 1000L))
+      if ((l == ((s)localObject2).Bbw) && (((s)localObject2).Bby >= 0L) && (((s)localObject2).Bby < paramLong * 1000L))
       {
-        Log.i(((m)localObject2).TAG, "lxl same taget~");
-        if (!((m)localObject2).hki)
+        Log.i(((s)localObject2).TAG, "lxl same taget~");
+        if (!((s)localObject2).jVR)
         {
-          localObject4 = ((m)localObject2).decoder;
+          localObject4 = ((s)localObject2).decoder;
           if (localObject4 != null) {
             ((MediaCodec)localObject4).start();
           }
-          ((m)localObject2).hki = true;
+          ((s)localObject2).jVR = true;
         }
-        ((m)localObject2).lock.notify();
-        localObject2 = x.SXb;
-        AppMethodBeat.o(254061);
+        ((s)localObject2).lock.notify();
+        localObject2 = x.aazN;
+        AppMethodBeat.o(285424);
         return;
       }
-      ((m)localObject2).wpO = l;
-      localObject4 = ((m)localObject2).jto;
+      ((s)localObject2).Bbw = l;
+      localObject4 = ((s)localObject2).miS;
       if (localObject4 == null) {
-        kotlin.g.b.p.btv("extractor");
+        p.bGy("extractor");
       }
-      ((c)localObject4).seekTo(((m)localObject2).wpN * 1000L, 0);
-      if (((m)localObject2).hki)
+      ((c)localObject4).seekTo(((s)localObject2).Bbv * 1000L, 0);
+      if (((s)localObject2).jVR)
       {
-        localObject4 = ((m)localObject2).decoder;
+        localObject4 = ((s)localObject2).decoder;
         if (localObject4 != null) {
           ((MediaCodec)localObject4).flush();
         }
-        localObject4 = ((m)localObject2).decoder;
+        localObject4 = ((s)localObject2).decoder;
         if (localObject4 != null) {
           ((MediaCodec)localObject4).start();
         }
       }
-      Log.i(((m)localObject2).TAG, "lxl change taget, start sync time:" + ((m)localObject2).wpO / 1000L + ", target time:" + paramLong + ", flush:" + ((m)localObject2).hki);
+      Log.i(((s)localObject2).TAG, "lxl change taget, start sync time:" + ((s)localObject2).Bbw / 1000L + ", target time:" + paramLong + ", flush:" + ((s)localObject2).jVR);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.f
  * JD-Core Version:    0.7.0.1
  */

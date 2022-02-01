@@ -1,13 +1,13 @@
 package com.tencent.mm.wallet_core.c;
 
 import android.os.Bundle;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.ad.a.a;
+import com.tencent.mm.plugin.ad.a.c;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.t.a.a;
-import com.tencent.mm.plugin.t.a.c;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 
@@ -45,7 +45,7 @@ public abstract class w
         localObject1 = str2;
       }
     }
-    h.CyF.a(11170, new Object[] { Integer.valueOf(getType()), Integer.valueOf(this.mCmdId), Long.valueOf(l1), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(NetStatusUtil.getNetType(MMApplicationContext.getContext())), this.mProcessName, localObject2, localObject1, Long.valueOf(this.sessionId), Long.valueOf(l2) });
+    h.IzE.a(11170, new Object[] { Integer.valueOf(getType()), Integer.valueOf(this.mCmdId), Long.valueOf(l1), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(NetStatusUtil.getNetType(MMApplicationContext.getContext())), this.mProcessName, localObject2, localObject1, Long.valueOf(this.sessionId), Long.valueOf(l2) });
     ab.a(getType(), getCgicmdForKV(), paramInt1, paramInt2, l1, this.mScene, this.mProcessName);
     return l1;
   }
@@ -53,7 +53,7 @@ public abstract class w
   public int dispatch(g paramg, s params, m paramm)
   {
     this.mRequestTime = System.currentTimeMillis();
-    c.eBv().sC(false);
+    c.fnc().vR(false);
     return super.dispatch(paramg, params, paramm);
   }
   
@@ -96,7 +96,7 @@ public abstract class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.w
  * JD-Core Version:    0.7.0.1
  */

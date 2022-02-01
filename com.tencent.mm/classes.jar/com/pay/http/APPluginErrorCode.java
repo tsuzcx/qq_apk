@@ -22,9 +22,9 @@ public class APPluginErrorCode
   
   public static String getErrorCode(int paramInt)
   {
-    AppMethodBeat.i(193259);
+    AppMethodBeat.i(253695);
     String str = "(100-100-" + paramInt + ")";
-    AppMethodBeat.o(193259);
+    AppMethodBeat.o(253695);
     return str;
   }
 }

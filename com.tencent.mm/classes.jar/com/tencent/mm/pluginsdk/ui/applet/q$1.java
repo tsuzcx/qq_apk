@@ -16,8 +16,8 @@ final class q$1
   {
     AppMethodBeat.i(152179);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/pluginsdk/ui/applet/ContactListAnchor$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    localb.bn(paramView);
+    a.c("com/tencent/mm/pluginsdk/ui/applet/ContactListAnchor$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
     Log.d("MicroMsg.ContactListArchor", "OnClickListener = onClick ");
     a.a(this, "com/tencent/mm/pluginsdk/ui/applet/ContactListAnchor$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(152179);

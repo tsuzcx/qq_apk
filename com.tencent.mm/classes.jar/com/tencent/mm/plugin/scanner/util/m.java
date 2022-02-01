@@ -2,355 +2,233 @@ package com.tencent.mm.plugin.scanner.util;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
-import android.animation.TimeInterpolator;
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.graphics.PointF;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.animation.AnimatorListenerAdapter;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
-import android.view.animation.LinearInterpolator;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
+import com.tencent.e.h;
+import com.tencent.e.i;
+import com.tencent.e.i.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.g;
-import kotlin.g.a.a;
-import kotlin.g.a.b;
 import kotlin.g.b.p;
-import kotlin.g.b.z.f;
 import kotlin.l;
-import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/util/ScanViewUtils;", "", "()V", "TAG", "", "animateAlpha", "", "view", "Landroid/view/View;", "show", "", "animatorListener", "Landroid/animation/Animator$AnimatorListener;", "fromAlpha", "", "targetAlpha", "duration", "", "convertToImageCoordinate", "Landroid/graphics/PointF;", "imageView", "x", "y", "Landroid/widget/ImageView;", "imageWidth", "", "imageHeight", "fitBitmapBottom", "bitmap", "Landroid/graphics/Bitmap;", "viewWidth", "viewHeight", "getBlurBitmap", "async", "callback", "Lkotlin/Function1;", "getRoundBitmap", "invertMapPoint", "matrix", "Landroid/graphics/Matrix;", "srcPoints", "", "scan-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/util/ScanViewShowAnimationTask;", "", "()V", "animationDuration", "", "isTimerCancelled", "", "showDuration", "targetView", "Landroid/view/View;", "taskFuture", "Lcom/tencent/threadpool/runnable/FutureEx;", "taskListener", "Lcom/tencent/mm/plugin/scanner/util/ScanViewShowAnimationTask$ScanViewAnimationTaskListener;", "cancel", "", "cancelShowAnimation", "cancelTaskTimer", "setShowAnimationDuration", "setTaskListener", "listener", "duration", "startAnimationTask", "withShowAnimation", "startShowAnimation", "show", "startTaskTimer", "view", "Companion", "ScanViewAnimationTaskListener", "scan-sdk_release"})
 public final class m
 {
-  public static final m CUv;
+  public static final m.a IZN;
+  private long IZI;
+  private long IZJ;
+  public b IZK;
+  private d<?> IZL;
+  private boolean IZM;
+  private View kJL;
   
   static
   {
-    AppMethodBeat.i(194806);
-    CUv = new m();
-    AppMethodBeat.o(194806);
+    AppMethodBeat.i(193132);
+    IZN = new m.a((byte)0);
+    AppMethodBeat.o(193132);
   }
   
-  public static final PointF a(ImageView paramImageView, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
+  private final void fEZ()
   {
-    AppMethodBeat.i(194805);
-    if (paramImageView == null)
-    {
-      AppMethodBeat.o(194805);
-      return null;
-    }
-    if ((paramInt1 <= 0) || (paramInt2 <= 0))
-    {
-      AppMethodBeat.o(194805);
-      return null;
-    }
-    float[] arrayOfFloat = new float[2];
-    arrayOfFloat[0] = paramFloat1;
-    arrayOfFloat[1] = paramFloat2;
-    Object localObject = paramImageView.getImageMatrix();
-    paramImageView = paramImageView.getDrawable();
-    int i;
-    label77:
-    int j;
-    if (paramImageView != null)
-    {
-      paramImageView = paramImageView.getBounds();
-      if (paramImageView == null) {
-        break label202;
-      }
-      i = paramImageView.width();
-      if (paramImageView == null) {
-        break label208;
-      }
-      j = paramImageView.height();
-      label87:
-      if (localObject != null) {
-        break label215;
-      }
-      paramImageView = null;
-    }
-    for (;;)
-    {
-      if (paramImageView != null)
-      {
-        paramImageView.x /= i;
-        paramImageView.y /= j;
-        Log.i("MicroMsg.ScanViewUtils", "alvinluo convertScreenToImageCoordinate screenCoordinate x: %s, y: %s, imageCoordinate: %s, imageWidth: %s, imageHeight: %s, show: %s, %s", new Object[] { Float.valueOf(arrayOfFloat[0]), Float.valueOf(arrayOfFloat[1]), paramImageView, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i), Integer.valueOf(j) });
-      }
-      AppMethodBeat.o(194805);
-      return paramImageView;
-      paramImageView = null;
-      break;
-      label202:
-      i = paramInt1;
-      break label77;
-      label208:
-      j = paramInt2;
-      break label87;
-      label215:
-      paramImageView = new Matrix();
-      if (!((Matrix)localObject).invert(paramImageView))
-      {
-        Log.e("MicroMsg.ScanViewUtils", "invertMapPoint invert matrix failed");
-        paramImageView = null;
-      }
-      else
-      {
-        localObject = new float[2];
-        paramImageView.mapPoints((float[])localObject, arrayOfFloat);
-        paramImageView = new PointF(localObject[0], localObject[1]);
-      }
-    }
+    AppMethodBeat.i(193120);
+    Log.d("MicroMsg.ScanViewAnimationTask", "alvinluo startTaskTimer");
+    fFa();
+    this.IZL = h.ZvG.n((Runnable)new d(this), this.IZI);
+    this.IZM = false;
+    AppMethodBeat.o(193120);
   }
   
-  public static final void a(Bitmap paramBitmap, b<? super Bitmap, x> paramb)
+  private final void fFa()
   {
-    AppMethodBeat.i(194803);
-    p.h(paramb, "callback");
-    z.f localf = new z.f();
-    localf.SYG = null;
-    ((a)new m.b(localf, paramBitmap, paramb)).invoke();
-    AppMethodBeat.o(194803);
+    AppMethodBeat.i(193124);
+    Log.d("MicroMsg.ScanViewAnimationTask", "alvinluo cancelTaskTimer");
+    this.IZM = true;
+    d locald = this.IZL;
+    if (locald != null)
+    {
+      locald.cancel(false);
+      AppMethodBeat.o(193124);
+      return;
+    }
+    AppMethodBeat.o(193124);
   }
   
-  public static final void a(View paramView, float paramFloat1, float paramFloat2, long paramLong, Animator.AnimatorListener paramAnimatorListener)
+  private final void fFb()
   {
-    AppMethodBeat.i(194802);
-    Log.v("MicroMsg.ScanViewUtils", "alvinluo animateAlpha view: %s, fromAlpha: %s, targetAlpha: %s", new Object[] { paramView, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
-    if (paramView != null)
+    AppMethodBeat.i(193130);
+    Object localObject = this.kJL;
+    if (localObject != null)
     {
-      ViewPropertyAnimator localViewPropertyAnimator = paramView.animate();
-      if (localViewPropertyAnimator != null)
+      localObject = ((View)localObject).animate();
+      if (localObject != null)
       {
-        localViewPropertyAnimator = localViewPropertyAnimator.setListener(null);
-        if (localViewPropertyAnimator != null)
+        localObject = ((ViewPropertyAnimator)localObject).setListener(null);
+        if (localObject != null)
         {
-          localViewPropertyAnimator = localViewPropertyAnimator.setUpdateListener(null);
-          if (localViewPropertyAnimator != null) {
-            localViewPropertyAnimator.cancel();
-          }
-        }
-      }
-    }
-    if (paramView != null) {
-      paramView.setAlpha(paramFloat1);
-    }
-    if (paramView != null)
-    {
-      paramView = paramView.animate();
-      if (paramView != null)
-      {
-        paramView = paramView.alpha(paramFloat2);
-        if (paramView != null)
-        {
-          paramView = paramView.setDuration(paramLong);
-          if (paramView != null)
+          localObject = ((ViewPropertyAnimator)localObject).setUpdateListener(null);
+          if (localObject != null)
           {
-            paramView = paramView.setInterpolator((TimeInterpolator)new LinearInterpolator());
-            if (paramView != null)
-            {
-              paramView = paramView.setListener(paramAnimatorListener);
-              if (paramView != null)
-              {
-                paramView.start();
-                AppMethodBeat.o(194802);
-                return;
-              }
-            }
+            ((ViewPropertyAnimator)localObject).cancel();
+            AppMethodBeat.o(193130);
+            return;
           }
         }
       }
     }
-    AppMethodBeat.o(194802);
+    AppMethodBeat.o(193130);
   }
   
-  public static final void a(final View paramView, final boolean paramBoolean, Animator.AnimatorListener paramAnimatorListener)
+  private final void xK(final boolean paramBoolean)
   {
     float f2 = 1.0F;
-    AppMethodBeat.i(194801);
-    if (paramView == null)
-    {
-      AppMethodBeat.o(194801);
-      return;
+    AppMethodBeat.i(193128);
+    Log.v("MicroMsg.ScanViewAnimationTask", "alvinluo startShowAnimation show: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    Object localObject = this.kJL;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(0);
     }
-    if ((paramBoolean) && (paramView.getAlpha() != 0.0F))
-    {
-      Log.w("MicroMsg.ScanViewUtils", "alvinluo animateAlpha show ignore, view: %s", new Object[] { paramView });
-      AppMethodBeat.o(194801);
-      return;
+    localObject = this.IZK;
+    if (localObject != null) {
+      ((b)localObject).fEH();
     }
-    if ((!paramBoolean) && (paramView.getAlpha() != 1.0F))
-    {
-      Log.w("MicroMsg.ScanViewUtils", "alvinluo animateAlpha hide ignore, view: %s", new Object[] { paramView });
-      AppMethodBeat.o(194801);
-      return;
-    }
-    Log.v("MicroMsg.ScanViewUtils", "alvinluo animateAlpha show: %b, view: %s", new Object[] { Boolean.valueOf(paramBoolean), paramView });
-    paramAnimatorListener = (Animator.AnimatorListener)new a(paramAnimatorListener, paramView, paramBoolean);
-    paramView.setVisibility(0);
+    localObject = this.kJL;
     float f1;
     if (paramBoolean)
     {
       f1 = 0.0F;
       if (!paramBoolean) {
-        break label159;
+        break label109;
       }
     }
     for (;;)
     {
-      a(paramView, f1, f2, 200L, paramAnimatorListener);
-      AppMethodBeat.o(194801);
+      n.a((View)localObject, f1, f2, 200L, (Animator.AnimatorListener)new c(this, paramBoolean));
+      AppMethodBeat.o(193128);
       return;
       f1 = 1.0F;
       break;
-      label159:
+      label109:
       f2 = 0.0F;
     }
   }
   
-  public static boolean a(Bitmap paramBitmap, ImageView paramImageView, int paramInt1, int paramInt2)
+  public final void cancel()
   {
-    AppMethodBeat.i(194799);
-    p.h(paramImageView, "imageView");
-    if ((paramBitmap == null) || (paramBitmap.isRecycled()))
-    {
-      paramImageView.setImageBitmap(null);
-      AppMethodBeat.o(194799);
-      return false;
-    }
-    paramImageView.setImageBitmap(paramBitmap);
-    Matrix localMatrix1 = new Matrix();
-    paramImageView.setScaleType(ImageView.ScaleType.MATRIX);
-    Matrix localMatrix2 = paramImageView.getImageMatrix();
-    float f1 = 1.0F * paramInt1 / paramBitmap.getWidth();
-    float f2 = paramInt2 - paramBitmap.getHeight() * f1;
-    Log.d("MicroMsg.ScanViewUtils", "alvinluo fitBitmapBottom bitmap: %d, %d, scale: %f, translationY: %f, width: %d, height: %d", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    localMatrix2.postScale(f1, f1);
-    localMatrix2.postTranslate(0.0F, f2);
-    localMatrix1.set(localMatrix2);
-    paramImageView.setImageMatrix(localMatrix1);
-    AppMethodBeat.o(194799);
-    return true;
+    AppMethodBeat.i(193116);
+    fFa();
+    fFb();
+    AppMethodBeat.o(193116);
   }
   
-  public static Bitmap ar(Bitmap paramBitmap)
+  public final m fEX()
   {
-    AppMethodBeat.i(194800);
-    if (paramBitmap != null) {}
-    try
-    {
-      if (!paramBitmap.isRecycled())
-      {
-        if (paramBitmap.getWidth() > paramBitmap.getHeight()) {}
-        for (double d = Math.floor(paramBitmap.getWidth() / 2.0D + 0.5D);; d = Math.floor(paramBitmap.getHeight() / 2.0D + 0.5D))
-        {
-          paramBitmap = BitmapUtil.getRoundedCornerBitmap(paramBitmap, false, (float)d);
-          AppMethodBeat.o(194800);
-          return paramBitmap;
-        }
-      }
-      AppMethodBeat.o(194800);
-      return paramBitmap;
-    }
-    catch (Exception paramBitmap)
-    {
-      Log.printErrStackTrace("MicroMsg.ScanViewUtils", (Throwable)paramBitmap, "alvinluo decodeRoundBitmap exception", new Object[0]);
-      AppMethodBeat.o(194800);
-    }
-    return null;
+    this.IZI = 2000L;
+    return this;
   }
   
-  public static final PointF e(View paramView, float paramFloat1, float paramFloat2)
+  public final m fEY()
   {
-    AppMethodBeat.i(194804);
-    PointF localPointF = new PointF(paramFloat1, paramFloat2);
-    if ((paramView instanceof g))
-    {
-      paramView = ((g)paramView).c(localPointF);
-      AppMethodBeat.o(194804);
-      return paramView;
-    }
-    AppMethodBeat.o(194804);
-    return null;
+    this.IZJ = 150L;
+    return this;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/util/ScanViewUtils$animateAlpha$listener$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "scan-sdk_release"})
-  public static final class a
-    implements Animator.AnimatorListener
+  public final m fZ(View paramView)
   {
-    a(Animator.AnimatorListener paramAnimatorListener, View paramView, boolean paramBoolean) {}
+    AppMethodBeat.i(193094);
+    p.k(paramView, "view");
+    this.kJL = paramView;
+    AppMethodBeat.o(193094);
+    return this;
+  }
+  
+  public final void xJ(boolean paramBoolean)
+  {
+    AppMethodBeat.i(193112);
+    Log.d("MicroMsg.ScanViewAnimationTask", "alvinluo startAnimationTask view: %s, withShowAnimation: %b", new Object[] { this.kJL, Boolean.valueOf(paramBoolean) });
+    Object localObject = this.IZK;
+    if (localObject != null) {
+      ((b)localObject).fEI();
+    }
+    if (paramBoolean)
+    {
+      xK(true);
+      AppMethodBeat.o(193112);
+      return;
+    }
+    localObject = this.kJL;
+    if (localObject != null)
+    {
+      ((View)localObject).setVisibility(0);
+      ((View)localObject).setAlpha(1.0F);
+    }
+    fEZ();
+    AppMethodBeat.o(193112);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/util/ScanViewShowAnimationTask$ScanViewAnimationTaskListener;", "", "onShowAnimationEnd", "", "show", "", "onShowAnimationStart", "onShowTaskEnd", "onShowTaskStart", "withShowAnimation", "scan-sdk_release"})
+  public static abstract interface b
+  {
+    public abstract void fEH();
     
-    public final void onAnimationCancel(Animator paramAnimator)
-    {
-      AppMethodBeat.i(194795);
-      p.h(paramAnimator, "animation");
-      Animator.AnimatorListener localAnimatorListener = this.CPk;
-      if (localAnimatorListener != null)
-      {
-        localAnimatorListener.onAnimationCancel(paramAnimator);
-        AppMethodBeat.o(194795);
-        return;
-      }
-      AppMethodBeat.o(194795);
-    }
+    public abstract void fEI();
+    
+    public abstract void fEJ();
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/util/ScanViewShowAnimationTask$startShowAnimation$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "scan-sdk_release"})
+  public static final class c
+    extends AnimatorListenerAdapter
+  {
+    c(boolean paramBoolean) {}
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(194794);
-      p.h(paramAnimator, "animation");
-      Object localObject = paramView;
-      if (paramBoolean) {}
-      for (int i = 0;; i = 8)
+      AppMethodBeat.i(193733);
+      super.onAnimationEnd(paramAnimator);
+      Log.d("MicroMsg.ScanViewAnimationTask", "alvinluo onShowAnimationEnd show: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+      m.d(this.IZO);
+      if (paramBoolean)
       {
-        ((View)localObject).setVisibility(i);
-        localObject = this.CPk;
-        if (localObject == null) {
-          break;
-        }
-        ((Animator.AnimatorListener)localObject).onAnimationEnd(paramAnimator);
-        AppMethodBeat.o(194794);
+        m.e(this.IZO);
+        AppMethodBeat.o(193733);
         return;
       }
-      AppMethodBeat.o(194794);
+      paramAnimator = m.d(this.IZO);
+      if (paramAnimator != null)
+      {
+        paramAnimator.fEJ();
+        AppMethodBeat.o(193733);
+        return;
+      }
+      AppMethodBeat.o(193733);
     }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  static final class d
+    implements Runnable
+  {
+    d(m paramm) {}
     
-    public final void onAnimationRepeat(Animator paramAnimator)
+    public final void run()
     {
-      AppMethodBeat.i(194796);
-      p.h(paramAnimator, "animation");
-      Animator.AnimatorListener localAnimatorListener = this.CPk;
-      if (localAnimatorListener != null)
+      AppMethodBeat.i(193706);
+      if (m.b(this.IZO))
       {
-        localAnimatorListener.onAnimationRepeat(paramAnimator);
-        AppMethodBeat.o(194796);
+        AppMethodBeat.o(193706);
         return;
       }
-      AppMethodBeat.o(194796);
-    }
-    
-    public final void onAnimationStart(Animator paramAnimator)
-    {
-      AppMethodBeat.i(194793);
-      p.h(paramAnimator, "animation");
-      Animator.AnimatorListener localAnimatorListener = this.CPk;
-      if (localAnimatorListener != null)
-      {
-        localAnimatorListener.onAnimationStart(paramAnimator);
-        AppMethodBeat.o(194793);
-        return;
-      }
-      AppMethodBeat.o(194793);
+      m.c(this.IZO);
+      AppMethodBeat.o(193706);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.m
  * JD-Core Version:    0.7.0.1
  */

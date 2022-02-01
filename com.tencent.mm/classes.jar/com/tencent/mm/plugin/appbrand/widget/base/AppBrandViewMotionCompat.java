@@ -3,23 +3,67 @@ package com.tencent.mm.plugin.appbrand.widget.base;
 import android.annotation.TargetApi;
 import android.graphics.Matrix;
 import android.os.Looper;
-import android.support.annotation.Keep;
 import android.view.MotionEvent;
 import android.view.MotionEvent.PointerCoords;
 import android.view.MotionEvent.PointerProperties;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.annotation.Keep;
+import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class AppBrandViewMotionCompat
 {
-  private static int[] omA;
-  private static MotionEvent.PointerCoords[] omy;
-  private static MotionEvent.PointerProperties[] omz;
+  private static MotionEvent.PointerCoords[] rpa;
+  private static MotionEvent.PointerProperties[] rpb;
+  private static int[] rpc;
+  
+  private static MotionEvent.PointerProperties[] DA(int paramInt)
+  {
+    AppMethodBeat.i(174631);
+    MotionEvent.PointerProperties[] arrayOfPointerProperties = new MotionEvent.PointerProperties[paramInt];
+    int i = 0;
+    while (i < paramInt)
+    {
+      arrayOfPointerProperties[i] = new MotionEvent.PointerProperties();
+      i += 1;
+    }
+    AppMethodBeat.o(174631);
+    return arrayOfPointerProperties;
+  }
+  
+  private static void Dz(int paramInt)
+  {
+    AppMethodBeat.i(174630);
+    if ((rpa == null) || (rpa.length < paramInt))
+    {
+      int i;
+      if (rpa != null) {
+        i = rpa.length;
+      }
+      while (i < paramInt)
+      {
+        i *= 2;
+        continue;
+        i = 8;
+      }
+      MotionEvent.PointerCoords[] arrayOfPointerCoords = new MotionEvent.PointerCoords[i];
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        arrayOfPointerCoords[paramInt] = new MotionEvent.PointerCoords();
+        paramInt += 1;
+      }
+      rpa = arrayOfPointerCoords;
+      rpb = DA(i);
+      rpc = new int[i];
+    }
+    AppMethodBeat.o(174630);
+  }
   
   @TargetApi(5)
-  public static int J(MotionEvent paramMotionEvent)
+  public static int K(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(174629);
     int k = paramMotionEvent.getPointerCount();
@@ -61,10 +105,10 @@ public final class AppBrandViewMotionCompat
     return false;
   }
   
-  public static boolean cM(View paramView)
+  public static boolean dg(View paramView)
   {
     AppMethodBeat.i(140870);
-    if ((paramView != null) && ((paramView instanceof c)) && (((c)paramView).caj()))
+    if ((paramView != null) && ((paramView instanceof c)) && (((c)paramView).cnj()))
     {
       AppMethodBeat.o(140870);
       return true;
@@ -73,7 +117,7 @@ public final class AppBrandViewMotionCompat
     return false;
   }
   
-  public static boolean cN(View paramView)
+  public static boolean dh(View paramView)
   {
     AppMethodBeat.i(140871);
     if ((paramView.getVisibility() == 0) || (paramView.getAnimation() != null))
@@ -86,32 +130,12 @@ public final class AppBrandViewMotionCompat
   }
   
   @TargetApi(11)
-  public static boolean cO(View paramView)
+  public static boolean di(View paramView)
   {
     AppMethodBeat.i(174627);
     boolean bool = paramView.getMatrix().isIdentity();
     AppMethodBeat.o(174627);
     return bool;
-  }
-  
-  public static Matrix cP(View paramView)
-  {
-    AppMethodBeat.i(174628);
-    if (paramView == null)
-    {
-      AppMethodBeat.o(174628);
-      return null;
-    }
-    Matrix localMatrix2 = (Matrix)paramView.getTag(2131297003);
-    Matrix localMatrix1 = localMatrix2;
-    if (localMatrix2 == null)
-    {
-      localMatrix1 = new Matrix();
-      paramView.setTag(2131297003, localMatrix1);
-    }
-    paramView.getMatrix().invert(localMatrix1);
-    AppMethodBeat.o(174628);
-    return localMatrix1;
   }
   
   @TargetApi(11)
@@ -138,7 +162,7 @@ public final class AppBrandViewMotionCompat
       AppMethodBeat.o(140873);
       return paramBoolean;
     }
-    i = J(paramMotionEvent);
+    i = K(paramMotionEvent);
     paramInt = i & paramInt;
     if (paramInt == 0)
     {
@@ -192,6 +216,27 @@ public final class AppBrandViewMotionCompat
     return paramBoolean;
   }
   
+  public static Matrix dj(View paramView)
+  {
+    AppMethodBeat.i(174628);
+    if (paramView == null)
+    {
+      AppMethodBeat.o(174628);
+      return null;
+    }
+    int i = a.e.appbrand_view_motion_compat_inverse_matrix_held_by_view_tag;
+    Matrix localMatrix2 = (Matrix)paramView.getTag(i);
+    Matrix localMatrix1 = localMatrix2;
+    if (localMatrix2 == null)
+    {
+      localMatrix1 = new Matrix();
+      paramView.setTag(i, localMatrix1);
+    }
+    paramView.getMatrix().invert(localMatrix1);
+    AppMethodBeat.o(174628);
+    return localMatrix1;
+  }
+  
   @TargetApi(14)
   public static MotionEvent g(MotionEvent paramMotionEvent, int paramInt)
   {
@@ -203,10 +248,10 @@ public final class AppBrandViewMotionCompat
       throw paramMotionEvent;
     }
     int i3 = paramMotionEvent.getPointerCount();
-    zQ(i3);
-    MotionEvent.PointerProperties[] arrayOfPointerProperties = omz;
-    MotionEvent.PointerCoords[] arrayOfPointerCoords = omy;
-    int[] arrayOfInt = omA;
+    Dz(i3);
+    MotionEvent.PointerProperties[] arrayOfPointerProperties = rpb;
+    MotionEvent.PointerCoords[] arrayOfPointerCoords = rpa;
+    int[] arrayOfInt = rpc;
     int i1 = paramMotionEvent.getAction();
     int i2 = i1 & 0xFF;
     int j = -1;
@@ -290,53 +335,10 @@ public final class AppBrandViewMotionCompat
     AppMethodBeat.o(174632);
     return localMotionEvent;
   }
-  
-  private static void zQ(int paramInt)
-  {
-    AppMethodBeat.i(174630);
-    if ((omy == null) || (omy.length < paramInt))
-    {
-      int i;
-      if (omy != null) {
-        i = omy.length;
-      }
-      while (i < paramInt)
-      {
-        i *= 2;
-        continue;
-        i = 8;
-      }
-      MotionEvent.PointerCoords[] arrayOfPointerCoords = new MotionEvent.PointerCoords[i];
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        arrayOfPointerCoords[paramInt] = new MotionEvent.PointerCoords();
-        paramInt += 1;
-      }
-      omy = arrayOfPointerCoords;
-      omz = zR(i);
-      omA = new int[i];
-    }
-    AppMethodBeat.o(174630);
-  }
-  
-  private static MotionEvent.PointerProperties[] zR(int paramInt)
-  {
-    AppMethodBeat.i(174631);
-    MotionEvent.PointerProperties[] arrayOfPointerProperties = new MotionEvent.PointerProperties[paramInt];
-    int i = 0;
-    while (i < paramInt)
-    {
-      arrayOfPointerProperties[i] = new MotionEvent.PointerProperties();
-      i += 1;
-    }
-    AppMethodBeat.o(174631);
-    return arrayOfPointerProperties;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.base.AppBrandViewMotionCompat
  * JD-Core Version:    0.7.0.1
  */

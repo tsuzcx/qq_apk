@@ -4,13 +4,13 @@ import org.json.JSONObject;
 
 public final class g
 {
-  public JSONObject lnV;
+  public JSONObject oiG;
   public String pageId;
   
   public g(String paramString, JSONObject paramJSONObject)
   {
     this.pageId = paramString;
-    this.lnV = paramJSONObject;
+    this.oiG = paramJSONObject;
   }
 }
 

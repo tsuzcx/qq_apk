@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.wallet_payu.order.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.daq;
-import com.tencent.mm.protocal.protobuf.dba;
-import com.tencent.mm.protocal.protobuf.dbb;
+import com.tencent.mm.protocal.protobuf.dke;
+import com.tencent.mm.protocal.protobuf.dko;
+import com.tencent.mm.protocal.protobuf.dkp;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.c.w;
@@ -18,25 +18,25 @@ import com.tencent.mm.wallet_core.c.w;
 public final class c
   extends w
 {
-  public daq ItB;
+  public dke Pml;
   private i callback;
   private d rr;
   
   public c(String paramString)
   {
     AppMethodBeat.i(72062);
-    this.ItB = null;
+    this.Pml = null;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new dba();
-    ((d.a)localObject).iLO = new dbb();
+    ((d.a)localObject).lBU = new dko();
+    ((d.a)localObject).lBV = new dkp();
     ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/payuqueryuserroll";
     ((d.a)localObject).funcId = 1520;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (dba)this.rr.iLK.iLR;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (dko)d.b.b(this.rr.lBR);
     if (!Util.isNullOrNil(paramString)) {
-      ((dba)localObject).AOT = paramString;
+      ((dko)localObject).GIh = paramString;
     }
     AppMethodBeat.o(72062);
   }
@@ -62,11 +62,11 @@ public final class c
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramString = (dbb)((d)params).iLL.iLR;
-      this.ItB = paramString.MGb;
-      if (paramString.MGb != null)
+      paramString = (dkp)d.c.b(((d)params).lBS);
+      this.Pml = paramString.TRO;
+      if (paramString.TRO != null)
       {
-        Log.d("MicroMsg.NetScenePayUQueryUserRoll", "rr" + paramString.MGb.AOT);
+        Log.d("MicroMsg.NetScenePayUQueryUserRoll", "rr" + paramString.TRO.GIh);
         AppMethodBeat.o(72064);
         return;
       }

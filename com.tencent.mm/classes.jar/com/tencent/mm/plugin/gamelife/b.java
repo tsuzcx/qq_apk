@@ -7,46 +7,46 @@ import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/GameLifeUtil;", "", "()V", "Companion", "plugin-gamelife_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/GameLifeUtil;", "", "()V", "Companion", "plugin-gamelife_release"})
 public final class b
 {
-  public static final a xZZ;
+  public static final a DeG;
   
   static
   {
-    AppMethodBeat.i(241190);
-    xZZ = new a((byte)0);
-    AppMethodBeat.o(241190);
+    AppMethodBeat.i(203161);
+    DeG = new a((byte)0);
+    AppMethodBeat.o(203161);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/GameLifeUtil$Companion;", "", "()V", "checkSessionId", "", "sessionId", "", "genStringArray", "stringList", "", "plugin-gamelife_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/GameLifeUtil$Companion;", "", "()V", "checkSessionId", "", "sessionId", "", "genStringArray", "stringList", "", "plugin-gamelife_release"})
   public static final class a
   {
-    public static boolean aAQ(String paramString)
+    public static boolean aKC(String paramString)
     {
-      AppMethodBeat.i(241188);
+      AppMethodBeat.i(203466);
       if (paramString != null)
       {
-        if (as.bju(paramString))
+        if (as.bvQ(paramString))
         {
-          AppMethodBeat.o(241188);
+          AppMethodBeat.o(203466);
           return true;
         }
         Log.i("GameLife.PluginGameLife", "check sessionId failed");
-        AppMethodBeat.o(241188);
+        AppMethodBeat.o(203466);
         return false;
       }
-      AppMethodBeat.o(241188);
+      AppMethodBeat.o(203466);
       return false;
     }
     
-    public static String fc(List<String> paramList)
+    public static String fq(List<String> paramList)
     {
-      AppMethodBeat.i(241189);
-      p.h(paramList, "stringList");
+      AppMethodBeat.i(203475);
+      p.k(paramList, "stringList");
       if (paramList.isEmpty())
       {
-        AppMethodBeat.o(241189);
+        AppMethodBeat.o(203475);
         return "()";
       }
       StringBuilder localStringBuilder = new StringBuilder();
@@ -60,15 +60,15 @@ public final class b
       }
       localStringBuilder.append("'").append((String)paramList.get(paramList.size() - 1)).append("')");
       paramList = localStringBuilder.toString();
-      p.g(paramList, "sb.toString()");
-      AppMethodBeat.o(241189);
+      p.j(paramList, "sb.toString()");
+      AppMethodBeat.o(203475);
       return paramList;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.b
  * JD-Core Version:    0.7.0.1
  */

@@ -3,107 +3,72 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dfy
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public boolean LXH;
-  public int MKJ;
-  public String dPS;
-  public String md5;
-  public String url;
-  public int version;
+  public int SEk;
+  public String fHp;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123639);
+    AppMethodBeat.i(152654);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.cc(1, this.LXH);
-      if (this.url != null) {
-        paramVarArgs.e(2, this.url);
+      if (this.fHp != null) {
+        paramVarArgs.f(1, this.fHp);
       }
-      if (this.md5 != null) {
-        paramVarArgs.e(3, this.md5);
-      }
-      paramVarArgs.aM(4, this.version);
-      paramVarArgs.aM(5, this.MKJ);
-      if (this.dPS != null) {
-        paramVarArgs.e(6, this.dPS);
-      }
-      AppMethodBeat.o(123639);
+      paramVarArgs.aY(2, this.SEk);
+      AppMethodBeat.o(152654);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.fS(1) + 1 + 0;
-      paramInt = i;
-      if (this.url != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.url);
+    if (paramInt == 1) {
+      if (this.fHp == null) {
+        break label258;
       }
-      i = paramInt;
-      if (this.md5 != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.md5);
-      }
-      i = i + g.a.a.b.b.a.bu(4, this.version) + g.a.a.b.b.a.bu(5, this.MKJ);
-      paramInt = i;
-      if (this.dPS != null) {
-        paramInt = i + g.a.a.b.b.a.f(6, this.dPS);
-      }
-      AppMethodBeat.o(123639);
-      return paramInt;
     }
-    if (paramInt == 2)
+    label258:
+    for (paramInt = g.a.a.b.b.a.g(1, this.fHp) + 0;; paramInt = 0)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
-      }
-      AppMethodBeat.o(123639);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      dfy localdfy = (dfy)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      int i = g.a.a.b.b.a.bM(2, this.SEk);
+      AppMethodBeat.o(152654);
+      return paramInt + i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(123639);
-        return -1;
-      case 1: 
-        localdfy.LXH = locala.UbS.yZ();
-        AppMethodBeat.o(123639);
-        return 0;
-      case 2: 
-        localdfy.url = locala.UbS.readString();
-        AppMethodBeat.o(123639);
-        return 0;
-      case 3: 
-        localdfy.md5 = locala.UbS.readString();
-        AppMethodBeat.o(123639);
-        return 0;
-      case 4: 
-        localdfy.version = locala.UbS.zi();
-        AppMethodBeat.o(123639);
-        return 0;
-      case 5: 
-        localdfy.MKJ = locala.UbS.zi();
-        AppMethodBeat.o(123639);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
+        }
+        AppMethodBeat.o(152654);
         return 0;
       }
-      localdfy.dPS = locala.UbS.readString();
-      AppMethodBeat.o(123639);
-      return 0;
+      if (paramInt == 3)
+      {
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        dfy localdfy = (dfy)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(152654);
+          return -1;
+        case 1: 
+          localdfy.fHp = locala.abFh.readString();
+          AppMethodBeat.o(152654);
+          return 0;
+        }
+        localdfy.SEk = locala.abFh.AK();
+        AppMethodBeat.o(152654);
+        return 0;
+      }
+      AppMethodBeat.o(152654);
+      return -1;
     }
-    AppMethodBeat.o(123639);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dfy
  * JD-Core Version:    0.7.0.1
  */

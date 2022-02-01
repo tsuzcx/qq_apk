@@ -6,16 +6,16 @@ import java.io.Writer;
 final class m
   extends Writer
 {
-  private final char[] aZS;
-  private int aZU;
-  private final Writer bag;
+  private final Writer aJC;
+  private final char[] aJp;
+  private int fill;
   
   m(Writer paramWriter)
   {
     AppMethodBeat.i(74795);
-    this.aZU = 0;
-    this.bag = paramWriter;
-    this.aZS = new char[''];
+    this.fill = 0;
+    this.aJC = paramWriter;
+    this.aJp = new char[''];
     AppMethodBeat.o(74795);
   }
   
@@ -24,20 +24,20 @@ final class m
   public final void flush()
   {
     AppMethodBeat.i(74799);
-    this.bag.write(this.aZS, 0, this.aZU);
-    this.aZU = 0;
+    this.aJC.write(this.aJp, 0, this.fill);
+    this.fill = 0;
     AppMethodBeat.o(74799);
   }
   
   public final void write(int paramInt)
   {
     AppMethodBeat.i(74796);
-    if (this.aZU > this.aZS.length - 1) {
+    if (this.fill > this.aJp.length - 1) {
       flush();
     }
-    char[] arrayOfChar = this.aZS;
-    int i = this.aZU;
-    this.aZU = (i + 1);
+    char[] arrayOfChar = this.aJp;
+    int i = this.fill;
+    this.fill = (i + 1);
     arrayOfChar[i] = ((char)paramInt);
     AppMethodBeat.o(74796);
   }
@@ -45,42 +45,42 @@ final class m
   public final void write(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(74798);
-    if (this.aZU > this.aZS.length - paramInt2)
+    if (this.fill > this.aJp.length - paramInt2)
     {
       flush();
-      if (paramInt2 > this.aZS.length)
+      if (paramInt2 > this.aJp.length)
       {
-        this.bag.write(paramString, paramInt1, paramInt2);
+        this.aJC.write(paramString, paramInt1, paramInt2);
         AppMethodBeat.o(74798);
         return;
       }
     }
-    paramString.getChars(paramInt1, paramInt1 + paramInt2, this.aZS, this.aZU);
-    this.aZU += paramInt2;
+    paramString.getChars(paramInt1, paramInt1 + paramInt2, this.aJp, this.fill);
+    this.fill += paramInt2;
     AppMethodBeat.o(74798);
   }
   
   public final void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(74797);
-    if (this.aZU > this.aZS.length - paramInt2)
+    if (this.fill > this.aJp.length - paramInt2)
     {
       flush();
-      if (paramInt2 > this.aZS.length)
+      if (paramInt2 > this.aJp.length)
       {
-        this.bag.write(paramArrayOfChar, paramInt1, paramInt2);
+        this.aJC.write(paramArrayOfChar, paramInt1, paramInt2);
         AppMethodBeat.o(74797);
         return;
       }
     }
-    System.arraycopy(paramArrayOfChar, paramInt1, this.aZS, this.aZU, paramInt2);
-    this.aZU += paramInt2;
+    System.arraycopy(paramArrayOfChar, paramInt1, this.aJp, this.fill, paramInt2);
+    this.fill += paramInt2;
     AppMethodBeat.o(74797);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.eclipsesource.a.m
  * JD-Core Version:    0.7.0.1
  */

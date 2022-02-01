@@ -1,8 +1,17 @@
 package com.tencent.mm.vfs;
 
-public abstract interface w
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.FilterOutputStream;
+
+public final class w
+  extends FilterOutputStream
 {
-  public abstract boolean accept(o paramo, String paramString);
+  public w(String paramString)
+  {
+    super(u.dI(paramString, false));
+    AppMethodBeat.i(13305);
+    AppMethodBeat.o(13305);
+  }
 }
 
 

@@ -5,9 +5,9 @@
         <item quantity="one">%d group</item>
     </plurals>
     <plurals name="b">
-        <item quantity="other">%d contacts</item>
-        <item quantity="zero">%d contacts</item>
-        <item quantity="one">%d contact</item>
+        <item quantity="other">%d friends</item>
+        <item quantity="zero">%d friends</item>
+        <item quantity="one">%d friend</item>
     </plurals>
     <plurals name="c">
         <item quantity="other">%d seconds left</item>

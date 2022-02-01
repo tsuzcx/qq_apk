@@ -6,20 +6,25 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.topstory.ui.c.e;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.t;
+import com.tencent.mm.ui.w;
+import com.tencent.xweb.WebView.PreInitCallback;
+import com.tencent.xweb.WebView.c;
 
+@com.tencent.mm.ui.widget.pulldown.c(0)
 public class TopStoryHomeUI
   extends MMActivity
 {
-  private b Gkl;
+  private b MWZ;
   
   public TopStoryHomeUI()
   {
     AppMethodBeat.i(125906);
-    this.Gkl = new b(this, true);
+    this.MWZ = new b(this, true);
     AppMethodBeat.o(125906);
   }
   
@@ -45,22 +50,22 @@ public class TopStoryHomeUI
   
   public int getLayoutId()
   {
-    return 2131496744;
+    return c.e.top_story_home_ui;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(125917);
-    this.Gkl.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.MWZ.onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(125917);
   }
   
   public void onBackPressed()
   {
     AppMethodBeat.i(125914);
-    b localb = this.Gkl;
-    if (localb.Gky) {
-      localb.fyo();
+    b localb = this.MWZ;
+    if (localb.MXl) {
+      localb.gql();
     }
     for (int i = 0;; i = 1)
     {
@@ -85,14 +90,35 @@ public class TopStoryHomeUI
     fixStatusbar(true);
     super.onCreate(paramBundle);
     Log.i("MicroMsg.TopStory.TopStoryHomeUI", "use TopStoryHomeUI");
-    this.Gkl.onCreate(paramBundle);
+    if (!BuildInfo.IS_ARM64)
+    {
+      WebView.c localc = WebView.c.aabm;
+      com.tencent.mm.xwebutil.c.a(localc, new WebView.PreInitCallback()
+      {
+        public final void bEj()
+        {
+          AppMethodBeat.i(202976);
+          Log.i("MicroMsg.TopStory.TopStoryHomeUI", "onCoreInitFailed");
+          AppMethodBeat.o(202976);
+        }
+        
+        public final void onCoreInitFinished()
+        {
+          AppMethodBeat.i(202973);
+          Log.i("MicroMsg.TopStory.TopStoryHomeUI", "onCoreInitFinished");
+          AppMethodBeat.o(202973);
+        }
+      });
+      Log.i("MicroMsg.TopStory.TopStoryHomeUI", "Start To Load WebView %s", new Object[] { localc.name() });
+    }
+    this.MWZ.onCreate(paramBundle);
     AppMethodBeat.o(125907);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(125911);
-    this.Gkl.onDestroy();
+    this.MWZ.onDestroy();
     super.onDestroy();
     AppMethodBeat.o(125911);
   }
@@ -100,7 +126,7 @@ public class TopStoryHomeUI
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(125908);
-    if (this.Gkl.abS(paramInt))
+    if (this.MWZ.ajx(paramInt))
     {
       AppMethodBeat.o(125908);
       return true;
@@ -113,7 +139,7 @@ public class TopStoryHomeUI
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(125912);
-    this.Gkl.onNewIntent(paramIntent);
+    this.MWZ.onNewIntent(paramIntent);
     super.onNewIntent(paramIntent);
     AppMethodBeat.o(125912);
   }
@@ -121,7 +147,7 @@ public class TopStoryHomeUI
   public void onPause()
   {
     AppMethodBeat.i(125910);
-    this.Gkl.onPause();
+    this.MWZ.onPause();
     super.onPause();
     AppMethodBeat.o(125910);
   }
@@ -130,7 +156,7 @@ public class TopStoryHomeUI
   {
     AppMethodBeat.i(125909);
     super.onResume();
-    this.Gkl.onResume();
+    this.MWZ.onResume();
     AppMethodBeat.o(125909);
   }
   
@@ -138,7 +164,7 @@ public class TopStoryHomeUI
   {
     AppMethodBeat.i(125913);
     super.onSaveInstanceState(paramBundle);
-    this.Gkl.onSaveInstanceState(paramBundle);
+    this.MWZ.onSaveInstanceState(paramBundle);
     AppMethodBeat.o(125913);
   }
   
@@ -150,7 +176,7 @@ public class TopStoryHomeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.home.TopStoryHomeUI
  * JD-Core Version:    0.7.0.1
  */

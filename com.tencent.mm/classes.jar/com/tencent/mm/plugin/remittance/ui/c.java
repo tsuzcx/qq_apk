@@ -12,19 +12,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.le;
-import com.tencent.mm.plugin.remittance.model.w;
-import com.tencent.mm.protocal.protobuf.zd;
+import com.tencent.mm.f.b.a.oa;
+import com.tencent.mm.plugin.remittance.model.ae;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.protocal.protobuf.zh;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.tools.g.a;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.ui.widget.a.f.a;
 import com.tencent.mm.ui.widget.a.f.c;
 
 public final class c
 {
-  private zd Cpw;
-  public a CqB;
+  private zh ImL;
+  public a Ioa;
   public Context mContext;
   
   public c(Context paramContext)
@@ -32,38 +38,38 @@ public final class c
     this.mContext = paramContext;
   }
   
-  public final void a(final w paramw, final zd paramzd, final a parama)
+  public final void a(final ae paramae, final zh paramzh, final a parama)
   {
     AppMethodBeat.i(67940);
-    this.CqB = parama;
-    this.Cpw = paramzd;
-    Object localObject = View.inflate(this.mContext, 2131496041, null);
-    TextView localTextView = (TextView)((View)localObject).findViewById(2131303013);
-    parama = (EditText)((View)localObject).findViewById(2131301551);
-    ((MMNeat7extView)((View)localObject).findViewById(2131299180)).aw(this.Cpw.dQx);
-    localTextView.setText(paramzd.AOv);
-    paramzd = new com.tencent.mm.ui.widget.a.f.a(this.mContext);
-    paramzd.aC(this.Cpw.title).hu((View)localObject);
-    paramzd.boA(this.mContext.getResources().getString(2131755995));
-    com.tencent.mm.ui.tools.b.c.f(parama).a(com.tencent.mm.ui.tools.f.a.Quh).lv(1, 1).CN(false).a(null);
+    this.Ioa = parama;
+    this.ImL = paramzh;
+    Object localObject = View.inflate(this.mContext, a.g.real_name_check_dialog, null);
+    TextView localTextView = (TextView)((View)localObject).findViewById(a.f.last_name);
+    parama = (EditText)((View)localObject).findViewById(a.f.first_name);
+    ((MMNeat7extView)((View)localObject).findViewById(a.f.content)).aL(this.ImL.wording);
+    localTextView.setText(paramzh.GHJ);
+    paramzh = new f.a(this.mContext);
+    paramzh.aR(this.ImL.title).iK((View)localObject);
+    paramzh.bBp(this.mContext.getResources().getString(a.i.app_sure));
+    com.tencent.mm.ui.tools.b.c.i(parama).b(g.a.XSt).mM(1, 1).Hh(false).a(null);
     parama.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
-        AppMethodBeat.i(213751);
-        if (paramzd.kdo != null)
+        AppMethodBeat.i(186871);
+        if (paramzh.mUO != null)
         {
           if (parama.length() > 0)
           {
-            paramzd.kdo.ajL(c.this.mContext.getResources().getColor(2131099784));
-            paramzd.kdo.getButton(-1).setEnabled(true);
-            AppMethodBeat.o(213751);
+            paramzh.mUO.asd(c.this.mContext.getResources().getColor(a.c.Link_100));
+            paramzh.mUO.ayb(-1).setEnabled(true);
+            AppMethodBeat.o(186871);
             return;
           }
-          paramzd.kdo.ajL(-2141754475);
-          paramzd.kdo.getButton(-1).setEnabled(false);
+          paramzh.mUO.asd(-2141754475);
+          paramzh.mUO.ayb(-1).setEnabled(false);
         }
-        AppMethodBeat.o(213751);
+        AppMethodBeat.o(186871);
       }
       
       public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
@@ -74,53 +80,53 @@ public final class c
     {
       public final void run()
       {
-        AppMethodBeat.i(213754);
+        AppMethodBeat.i(211052);
         parama.requestFocus();
         ((InputMethodManager)c.this.mContext.getSystemService("input_method")).showSoftInput(parama, 0);
-        AppMethodBeat.o(213754);
+        AppMethodBeat.o(211052);
       }
     }, 200L);
-    localObject = new le();
-    ((le)localObject).eXN = paramw.yRL;
-    localObject = ((le)localObject).yr(paramw.username);
-    ((le)localObject).eXG = 1L;
-    ((le)localObject).bfK();
-    paramzd.c(new f.c()
+    localObject = new oa();
+    ((oa)localObject).has = paramae.amount;
+    localObject = ((oa)localObject).EJ(paramae.username);
+    ((oa)localObject).hal = 1L;
+    ((oa)localObject).bpa();
+    paramzh.c(new f.c()
     {
-      public final void e(boolean paramAnonymousBoolean, String paramAnonymousString)
+      public final void g(boolean paramAnonymousBoolean, String paramAnonymousString)
       {
-        AppMethodBeat.i(213755);
+        AppMethodBeat.i(270905);
         if (paramAnonymousBoolean)
         {
-          paramAnonymousString = new le();
-          paramAnonymousString.eXN = paramw.yRL;
-          paramAnonymousString = paramAnonymousString.yr(paramw.username);
-          paramAnonymousString.eXG = 3L;
-          paramAnonymousString.bfK();
-          c.this.CqB.aMb(parama.getText().toString());
-          AppMethodBeat.o(213755);
+          paramAnonymousString = new oa();
+          paramAnonymousString.has = paramae.amount;
+          paramAnonymousString = paramAnonymousString.EJ(paramae.username);
+          paramAnonymousString.hal = 3L;
+          paramAnonymousString.bpa();
+          c.this.Ioa.aWF(parama.getText().toString());
+          AppMethodBeat.o(270905);
           return;
         }
-        paramAnonymousString = new le();
-        paramAnonymousString.eXN = paramw.yRL;
-        paramAnonymousString = paramAnonymousString.yr(paramw.username);
-        paramAnonymousString.eXG = 2L;
-        paramAnonymousString.bfK();
-        c.this.CqB.onCancel();
-        AppMethodBeat.o(213755);
+        paramAnonymousString = new oa();
+        paramAnonymousString.has = paramae.amount;
+        paramAnonymousString = paramAnonymousString.EJ(paramae.username);
+        paramAnonymousString.hal = 2L;
+        paramAnonymousString.bpa();
+        c.this.Ioa.onCancel();
+        AppMethodBeat.o(270905);
       }
     }).show();
-    if ((paramzd.kdo != null) && (Util.isNullOrNil(parama.getText())))
+    if ((paramzh.mUO != null) && (Util.isNullOrNil(parama.getText())))
     {
-      paramzd.kdo.getButton(-1).setEnabled(false);
-      paramzd.kdo.ajL(-2141754475);
+      paramzh.mUO.ayb(-1).setEnabled(false);
+      paramzh.mUO.asd(-2141754475);
     }
     AppMethodBeat.o(67940);
   }
   
   public static abstract interface a
   {
-    public abstract void aMb(String paramString);
+    public abstract void aWF(String paramString);
     
     public abstract void onCancel();
   }

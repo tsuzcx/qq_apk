@@ -1,64 +1,52 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.res.Resources;
+import android.content.Context;
 import android.text.Editable;
-import android.text.Spannable;
-import android.text.TextWatcher;
-import android.text.style.ForegroundColorSpan;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.pluginsdk.ui.span.k.a;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.cm;
+import com.tencent.mm.plugin.sns.i.j;
+import com.tencent.mm.ui.widget.edittext.a.c;
+import com.tencent.mm.ui.widget.edittext.a.e;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 final class SnsUploadUI$9
-  implements TextWatcher
+  implements a.e
 {
-  private List<ForegroundColorSpan> EDf;
-  
   SnsUploadUI$9(SnsUploadUI paramSnsUploadUI)
   {
-    AppMethodBeat.i(203767);
-    this.EDf = new LinkedList();
-    AppMethodBeat.o(203767);
+    AppMethodBeat.i(219422);
+    AppMethodBeat.o(219422);
   }
   
-  public final void afterTextChanged(Editable paramEditable)
+  public final void B(List<a.c> paramList, int paramInt)
   {
-    AppMethodBeat.i(203768);
-    paramEditable = SnsUploadUI.a(this.EPZ).getText();
-    Object localObject = this.EDf.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      paramEditable.removeSpan((ForegroundColorSpan)((Iterator)localObject).next());
-    }
-    this.EDf.clear();
-    localObject = SnsUploadUI.a(this.EPZ).getText().toString();
-    if (((com.tencent.mm.plugin.websearch.api.c)g.ah(com.tencent.mm.plugin.websearch.api.c.class)).isOpenInlineSnsTag())
+    AppMethodBeat.i(292929);
+    long l = cm.bfF();
+    if ((((com.tencent.mm.plugin.websearch.api.c)h.ag(com.tencent.mm.plugin.websearch.api.c.class)).isOpenInlineSnsTag()) && (paramInt != 8) && (paramInt != 1))
     {
-      localObject = k.a.Krb.matcher((CharSequence)localObject);
-      while (((Matcher)localObject).find())
-      {
-        ((Matcher)localObject).group();
-        int i = ((Matcher)localObject).start();
-        int j = ((Matcher)localObject).end();
-        ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(this.EPZ.getResources().getColor(2131099784));
-        this.EDf.add(localForegroundColorSpan);
-        paramEditable.setSpan(localForegroundColorSpan, i, j, 33);
-      }
+      paramList.add(new a.c(SnsUploadUI.a(this.LdU).hZC().getString(i.j.tag_search_word), 2));
+      SnsUploadUI.a(1, "", "", l, SnsUploadUI.N(this.LdU));
     }
-    AppMethodBeat.o(203768);
+    AppMethodBeat.o(292929);
   }
   
-  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public final void a(View paramView, a.c paramc, String paramString)
+  {
+    AppMethodBeat.i(292930);
+    long l = cm.bfF();
+    if (paramc.id == 2)
+    {
+      SnsUploadUI.a(this.LdU).getText().insert(SnsUploadUI.a(this.LdU).getSelectionStart(), SnsUploadUI.a(this.LdU).hZC().getString(i.j.tag_search_word));
+      SnsUploadUI.a(2, "", "", l, SnsUploadUI.N(this.LdU));
+    }
+    AppMethodBeat.o(292930);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUploadUI.9
  * JD-Core Version:    0.7.0.1
  */

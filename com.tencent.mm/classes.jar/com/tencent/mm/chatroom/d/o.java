@@ -1,16 +1,18 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bzx;
-import com.tencent.mm.protocal.protobuf.bzy;
+import com.tencent.mm.protocal.protobuf.chs;
+import com.tencent.mm.protocal.protobuf.cht;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 
@@ -26,19 +28,19 @@ public final class o
     AppMethodBeat.i(12482);
     this.callback = null;
     d.a locala = new d.a();
-    locala.iLN = new bzx();
-    locala.iLO = new bzy();
+    locala.lBU = new chs();
+    locala.lBV = new cht();
     locala.uri = "/cgi-bin/micromsg-bin/grantbigchatroom";
     locala.funcId = 339;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    ((bzx)this.rr.iLK.iLR).xNG = paramString;
+    this.rr = locala.bgN();
+    ((chs)d.b.b(this.rr.lBR)).CRQ = paramString;
     Log.d("MicroMsg.NetSceneGrantBigChatRoom", "grant to userName :".concat(String.valueOf(paramString)));
     AppMethodBeat.o(12482);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(12483);
     this.callback = parami;
@@ -62,9 +64,9 @@ public final class o
       AppMethodBeat.o(12484);
       return;
     }
-    paramInt1 = ((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(135176, Integer.valueOf(0))).intValue();
+    paramInt1 = ((Integer)h.aHG().aHp().b(135176, Integer.valueOf(0))).intValue();
     if (paramInt1 - 1 >= 0) {
-      com.tencent.mm.kernel.g.aAh().azQ().set(135176, Integer.valueOf(paramInt1 - 1));
+      h.aHG().aHp().i(135176, Integer.valueOf(paramInt1 - 1));
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(12484);

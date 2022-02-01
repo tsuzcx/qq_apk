@@ -9,19 +9,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cr.a.c;
+import com.tencent.mm.cr.a.f;
+import com.tencent.mm.cr.a.g;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 
 public class CheckBoxPreference
   extends Preference
 {
-  private int HIJ;
-  private String HIK;
-  private int HIL;
-  private TextView HMo;
+  private int OAB;
+  private String OAC;
+  private int OAD;
+  private TextView OEk;
+  boolean bBh;
   private View mView;
-  boolean oD;
-  private MMSwitchBtn sLW;
+  private MMSwitchBtn wrR;
   
   public CheckBoxPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,38 +35,49 @@ public class CheckBoxPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159986);
-    this.oD = false;
-    this.HIJ = -1;
-    this.HIK = "";
-    this.HIL = 8;
-    setLayoutResource(2131495538);
+    this.bBh = false;
+    this.OAB = -1;
+    this.OAC = "";
+    this.OAD = 8;
+    setLayoutResource(a.g.mm_preference);
     AppMethodBeat.o(159986);
   }
   
-  public final void aez(int paramInt)
+  public final void BT(boolean paramBoolean)
   {
-    AppMethodBeat.i(198548);
-    this.HIL = paramInt;
-    if (this.HMo != null) {
-      this.HMo.setVisibility(this.HIL);
+    AppMethodBeat.i(249529);
+    if (this.wrR != null)
+    {
+      this.bBh = paramBoolean;
+      this.wrR.setCheck(paramBoolean);
     }
-    AppMethodBeat.o(198548);
+    AppMethodBeat.o(249529);
+  }
+  
+  public final void amm(int paramInt)
+  {
+    AppMethodBeat.i(249530);
+    this.OAD = paramInt;
+    if (this.OEk != null) {
+      this.OEk.setVisibility(this.OAD);
+    }
+    AppMethodBeat.o(249530);
   }
   
   public final boolean isChecked()
   {
-    if (this.sLW != null) {
-      return this.sLW.QDw;
+    if (this.wrR != null) {
+      return this.wrR.YbZ;
     }
-    return this.oD;
+    return this.bBh;
   }
   
   public void onBindView(View paramView)
   {
     AppMethodBeat.i(159988);
     super.onBindView(paramView);
-    this.sLW = ((MMSwitchBtn)paramView.findViewById(2131298639));
-    this.sLW.setSwitchListener(new MMSwitchBtn.a()
+    this.wrR = ((MMSwitchBtn)paramView.findViewById(a.f.checkbox));
+    this.wrR.setSwitchListener(new MMSwitchBtn.a()
     {
       public final void onStatusChange(boolean paramAnonymousBoolean)
       {
@@ -72,27 +86,27 @@ public class CheckBoxPreference
         AppMethodBeat.o(159985);
       }
     });
-    this.sLW.setCheck(this.oD);
+    this.wrR.setCheck(this.bBh);
     if (!isEnabled())
     {
-      this.sLW.setEnabled(false);
-      ((TextView)paramView.findViewById(16908310)).setTextColor(paramView.getResources().getColor(2131100048));
+      this.wrR.setEnabled(false);
+      ((TextView)paramView.findViewById(16908310)).setTextColor(paramView.getResources().getColor(a.c.black_text_color_disabled));
     }
-    this.HMo = ((TextView)paramView.findViewById(2131309166));
-    paramView = this.HIK;
-    int i = this.HIJ;
-    this.HIJ = i;
-    this.HIK = paramView;
-    if (this.HMo != null)
+    this.OEk = ((TextView)paramView.findViewById(a.f.tipicon));
+    paramView = this.OAC;
+    int i = this.OAB;
+    this.OAB = i;
+    this.OAC = paramView;
+    if (this.OEk != null)
     {
       if (i > 0) {
-        this.HMo.setBackgroundResource(this.HIJ);
+        this.OEk.setBackgroundResource(this.OAB);
       }
-      if (!TextUtils.isEmpty(this.HIK)) {
-        this.HMo.setText(this.HIK);
+      if (!TextUtils.isEmpty(this.OAC)) {
+        this.OEk.setText(this.OAC);
       }
     }
-    aez(this.HIL);
+    amm(this.OAD);
     AppMethodBeat.o(159988);
   }
   
@@ -100,9 +114,9 @@ public class CheckBoxPreference
   {
     AppMethodBeat.i(159987);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.f.content);
     localViewGroup.removeAllViews();
-    View.inflate(getContext(), 2131495627, localViewGroup);
+    View.inflate(getContext(), a.g.mm_preference_summary_checkbox, localViewGroup);
     this.mView = paramViewGroup;
     paramViewGroup = this.mView;
     AppMethodBeat.o(159987);
@@ -111,23 +125,12 @@ public class CheckBoxPreference
   
   public final void setChecked(boolean paramBoolean)
   {
-    this.oD = paramBoolean;
-  }
-  
-  public final void xZ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(198547);
-    if (this.sLW != null)
-    {
-      this.oD = paramBoolean;
-      this.sLW.setCheck(paramBoolean);
-    }
-    AppMethodBeat.o(198547);
+    this.bBh = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.weui.base.preference.CheckBoxPreference
  * JD-Core Version:    0.7.0.1
  */

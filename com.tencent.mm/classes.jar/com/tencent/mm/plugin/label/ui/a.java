@@ -6,34 +6,37 @@ import android.database.Cursor;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.o;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.ao.o;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.model.aa;
-import com.tencent.mm.model.ay.a;
-import com.tencent.mm.model.ay.c;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.az.a;
+import com.tencent.mm.model.az.c;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.AddressView;
 import com.tencent.mm.ui.contact.f;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.ui.v;
 import java.util.List;
 import java.util.Map;
 
 public final class a
-  extends s<f>
+  extends v<f>
 {
-  public static final ColorStateList yCN;
-  public static final ColorStateList yCO;
-  List<String> yCP;
+  public static final ColorStateList Eeh;
+  public static final ColorStateList Eei;
+  List<String> Eej;
   
   static
   {
     AppMethodBeat.i(26260);
-    yCN = com.tencent.mm.cb.a.m(MMApplicationContext.getContext(), 2131100808);
-    yCO = com.tencent.mm.cb.a.m(MMApplicationContext.getContext(), 2131100594);
+    Eeh = com.tencent.mm.ci.a.l(MMApplicationContext.getContext(), R.e.mm_list_textcolor_one);
+    Eei = com.tencent.mm.ci.a.l(MMApplicationContext.getContext(), R.e.hint_text_color);
     AppMethodBeat.o(26260);
   }
   
@@ -51,13 +54,13 @@ public final class a
     if (paramf == null) {
       localf = new f();
     }
-    bg.aVF();
-    paramf = com.tencent.mm.model.c.aSN().bjF(as.p(paramCursor));
+    bh.beI();
+    paramf = com.tencent.mm.model.c.bbL().bwc(as.s(paramCursor));
     if (paramf == null)
     {
       localf.contact.convertFrom(paramCursor);
-      bg.aVF();
-      com.tencent.mm.model.c.aSN().am(localf.contact);
+      bh.beI();
+      com.tencent.mm.model.c.bbL().as(localf.contact);
     }
     for (;;)
     {
@@ -67,91 +70,91 @@ public final class a
     }
   }
   
-  public final f Pu(int paramInt)
+  public final f VD(int paramInt)
   {
     AppMethodBeat.i(26252);
-    if (Ox(paramInt))
+    if (TR(paramInt))
     {
-      localf = (f)dWw();
+      localf = (f)ezC();
       AppMethodBeat.o(26252);
       return localf;
     }
-    if (this.OFH != null)
+    if (this.VZb != null)
     {
-      localf = (f)this.OFH.get(Integer.valueOf(paramInt));
+      localf = (f)this.VZb.get(Integer.valueOf(paramInt));
       if (localf != null)
       {
         AppMethodBeat.o(26252);
         return localf;
       }
     }
-    if ((paramInt < 0) || (!getCursor().moveToPosition(paramInt)))
+    if ((paramInt < 0) || (!hK().moveToPosition(paramInt)))
     {
       AppMethodBeat.o(26252);
       return null;
     }
-    f localf = a(null, getCursor());
-    if (this.OFH == null) {
-      Bh(true);
+    f localf = a(null, hK());
+    if (this.VZb == null) {
+      Fx(true);
     }
-    if (this.OFH != null) {
-      this.OFH.put(Integer.valueOf(paramInt), localf);
+    if (this.VZb != null) {
+      this.VZb.put(Integer.valueOf(paramInt), localf);
     }
     AppMethodBeat.o(26252);
     return localf;
   }
   
   /* Error */
-  public final void anp()
+  public final void atr()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: sipush 26254
     //   5: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 145	android/os/Looper:myLooper	()Landroid/os/Looper;
-    //   11: invokestatic 148	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   8: invokestatic 152	android/os/Looper:myLooper	()Landroid/os/Looper;
+    //   11: invokestatic 155	android/os/Looper:getMainLooper	()Landroid/os/Looper;
     //   14: if_acmpne +59 -> 73
     //   17: iconst_1
     //   18: istore_1
     //   19: aload_0
-    //   20: getfield 150	com/tencent/mm/plugin/label/ui/a:yCP	Ljava/util/List;
+    //   20: getfield 157	com/tencent/mm/plugin/label/ui/a:Eej	Ljava/util/List;
     //   23: ifnull +55 -> 78
     //   26: aload_0
-    //   27: getfield 150	com/tencent/mm/plugin/label/ui/a:yCP	Ljava/util/List;
-    //   30: invokeinterface 156 1 0
+    //   27: getfield 157	com/tencent/mm/plugin/label/ui/a:Eej	Ljava/util/List;
+    //   30: invokeinterface 163 1 0
     //   35: ifle +43 -> 78
-    //   38: invokestatic 62	com/tencent/mm/model/bg:aVF	()Lcom/tencent/mm/model/c;
+    //   38: invokestatic 69	com/tencent/mm/model/bh:beI	()Lcom/tencent/mm/model/c;
     //   41: pop
-    //   42: invokestatic 68	com/tencent/mm/model/c:aSN	()Lcom/tencent/mm/storage/bv;
+    //   42: invokestatic 75	com/tencent/mm/model/c:bbL	()Lcom/tencent/mm/storage/bv;
     //   45: aload_0
-    //   46: getfield 150	com/tencent/mm/plugin/label/ui/a:yCP	Ljava/util/List;
-    //   49: invokeinterface 160 2 0
+    //   46: getfield 157	com/tencent/mm/plugin/label/ui/a:Eej	Ljava/util/List;
+    //   49: invokeinterface 167 2 0
     //   54: astore_2
     //   55: iload_1
     //   56: ifeq +29 -> 85
     //   59: aload_0
     //   60: aload_2
-    //   61: invokevirtual 163	com/tencent/mm/plugin/label/ui/a:j	(Landroid/database/Cursor;)V
+    //   61: invokevirtual 170	com/tencent/mm/plugin/label/ui/a:m	(Landroid/database/Cursor;)V
     //   64: sipush 26254
-    //   67: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   67: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   70: aload_0
     //   71: monitorexit
     //   72: return
     //   73: iconst_0
     //   74: istore_1
     //   75: goto -56 -> 19
-    //   78: invokestatic 168	com/tencent/mm/storagebase/d:gFu	()Landroid/database/Cursor;
+    //   78: invokestatic 175	com/tencent/mm/storagebase/d:hBM	()Landroid/database/Cursor;
     //   81: astore_2
     //   82: goto -27 -> 55
     //   85: new 7	com/tencent/mm/plugin/label/ui/a$1
     //   88: dup
     //   89: aload_0
     //   90: aload_2
-    //   91: invokespecial 171	com/tencent/mm/plugin/label/ui/a$1:<init>	(Lcom/tencent/mm/plugin/label/ui/a;Landroid/database/Cursor;)V
-    //   94: invokestatic 177	com/tencent/mm/sdk/platformtools/MMHandlerThread:postToMainThread	(Ljava/lang/Runnable;)V
+    //   91: invokespecial 178	com/tencent/mm/plugin/label/ui/a$1:<init>	(Lcom/tencent/mm/plugin/label/ui/a;Landroid/database/Cursor;)V
+    //   94: invokestatic 184	com/tencent/mm/sdk/platformtools/MMHandlerThread:postToMainThread	(Ljava/lang/Runnable;)V
     //   97: sipush 26254
-    //   100: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   100: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   103: goto -33 -> 70
     //   106: astore_2
     //   107: aload_0
@@ -173,10 +176,10 @@ public final class a
     //   85	103	106	finally
   }
   
-  public final void anq()
+  public final void ats()
   {
     AppMethodBeat.i(26255);
-    anp();
+    atr();
     AppMethodBeat.o(26255);
   }
   
@@ -191,53 +194,53 @@ public final class a
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(26253);
-    as localas = Pu(paramInt).contact;
+    as localas = VD(paramInt).contact;
     View localView;
     Object localObject2;
     float f;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      localView = View.inflate(this.context, 2131493779, null);
+      localView = View.inflate(this.context, R.i.efw, null);
       paramViewGroup = new a(localView);
       localView.setTag(paramViewGroup);
-      localObject1 = paramViewGroup.yCS;
+      localObject1 = paramViewGroup.Eem;
       localObject2 = localas.field_username;
-      f = com.tencent.mm.pluginsdk.ui.a.ppN;
+      f = com.tencent.mm.pluginsdk.ui.a.syM;
       paramView = ((com.tencent.mm.pluginsdk.ui.a.a)localObject1).getDrawable();
       if ((paramView == null) || (!(paramView instanceof com.tencent.mm.pluginsdk.ui.c))) {
-        break label361;
+        break label362;
       }
       paramView = (com.tencent.mm.pluginsdk.ui.c)paramView;
-      label97:
+      label98:
       paramView.setTag((String)localObject2);
       ((com.tencent.mm.pluginsdk.ui.a.a)localObject1).setImageDrawable(paramView);
       ((com.tencent.mm.pluginsdk.ui.a.a)localObject1).doInvalidate();
       if (localas.field_verifyFlag == 0) {
-        break label387;
+        break label388;
       }
-      paramView = ay.a.iDs.rW(localas.field_verifyFlag);
+      paramView = az.a.ltt.uT(localas.field_verifyFlag);
       if (paramView == null) {
-        break label376;
+        break label377;
       }
-      paramView = o.Nw(paramView);
-      paramViewGroup.yCS.setMaskBitmap(paramView);
-      label157:
+      paramView = o.US(paramView);
+      paramViewGroup.Eem.setMaskBitmap(paramView);
+      label158:
       if (localas.field_deleteFlag != 1) {
-        break label398;
+        break label399;
       }
-      paramViewGroup.yCS.setNickNameTextColor(yCO);
-      label176:
-      paramViewGroup.yCS.updateTextColors();
-      paramViewGroup.yCS.setMergeCallback(null);
-      paramView = localas.NON;
+      paramViewGroup.Eem.setNickNameTextColor(Eei);
+      label177:
+      paramViewGroup.Eem.updateTextColors();
+      paramViewGroup.Eem.setMergeCallback(null);
+      paramView = localas.Vcw;
       if (paramView != null) {
-        break label417;
+        break label418;
       }
     }
     try
     {
       localObject2 = this.context;
-      localObject1 = aa.getDisplayName(localas.field_username);
+      localObject1 = aa.PJ(localas.field_username);
       paramView = (View)localObject1;
       if ("".length() > 0)
       {
@@ -252,7 +255,7 @@ public final class a
           paramView = paramView.toString();
         }
       }
-      paramView = l.b((Context)localObject2, paramView, paramViewGroup.yCS.getNickNameSize());
+      paramView = l.b((Context)localObject2, paramView, paramViewGroup.Eem.getNickNameSize());
     }
     catch (Exception paramView)
     {
@@ -265,57 +268,57 @@ public final class a
     if (paramView == null) {
       localObject1 = "";
     }
-    paramViewGroup.yCS.setName((CharSequence)localObject1);
-    localas.NON = ((CharSequence)localObject1);
+    paramViewGroup.Eem.setName((CharSequence)localObject1);
+    localas.Vcw = ((CharSequence)localObject1);
     for (;;)
     {
-      paramViewGroup.yCS.updatePositionFlag();
+      paramViewGroup.Eem.updatePositionFlag();
       AppMethodBeat.o(26253);
       return localView;
       paramViewGroup = (a)paramView.getTag();
       localView = paramView;
       break;
-      label361:
+      label362:
       paramView = new com.tencent.mm.pluginsdk.ui.c((String)localObject2, f);
-      break label97;
-      label376:
-      paramViewGroup.yCS.setMaskBitmap(null);
-      break label157;
-      label387:
-      paramViewGroup.yCS.setMaskBitmap(null);
-      break label157;
-      label398:
-      paramViewGroup.yCS.setNickNameTextColor(yCN);
-      break label176;
-      label417:
-      paramViewGroup.yCS.setName(paramView);
+      break label98;
+      label377:
+      paramViewGroup.Eem.setMaskBitmap(null);
+      break label158;
+      label388:
+      paramViewGroup.Eem.setMaskBitmap(null);
+      break label158;
+      label399:
+      paramViewGroup.Eem.setNickNameTextColor(Eeh);
+      break label177;
+      label418:
+      paramViewGroup.Eem.setName(paramView);
     }
   }
   
-  public final void j(Cursor paramCursor)
+  public final void m(Cursor paramCursor)
   {
     AppMethodBeat.i(26257);
-    ebf();
-    setCursor(paramCursor);
+    eKd();
+    v(paramCursor);
     notifyDataSetChanged();
     AppMethodBeat.o(26257);
   }
   
   protected static final class a
   {
-    public AddressView yCS;
+    public AddressView Eem;
     
     public a(View paramView)
     {
       AppMethodBeat.i(26249);
-      this.yCS = ((AddressView)paramView.findViewById(2131305207));
+      this.Eem = ((AddressView)paramView.findViewById(R.h.dNc));
       AppMethodBeat.o(26249);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.label.ui.a
  * JD-Core Version:    0.7.0.1
  */

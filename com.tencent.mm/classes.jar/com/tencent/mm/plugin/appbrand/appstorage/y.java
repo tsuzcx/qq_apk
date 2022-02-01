@@ -1,34 +1,23 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
-public class y
-  implements q.a
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.appcache.bf;
+import java.util.LinkedList;
+
+public final class y
+  extends x
 {
-  public String dJX;
-  public String gCr;
-  public String iGf;
-  public long jPY;
-  public boolean kSa;
-  public long kSb;
-  public String mimeType;
-  
-  public final long bxm()
+  public y(AppBrandRuntime paramAppBrandRuntime)
   {
-    return this.jPY;
-  }
-  
-  public final String getFileName()
-  {
-    return this.dJX;
-  }
-  
-  public final long lastModified()
-  {
-    return this.kSb;
+    super(new LinkedList() {});
+    AppMethodBeat.i(134746);
+    AppMethodBeat.o(134746);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.y
  * JD-Core Version:    0.7.0.1
  */

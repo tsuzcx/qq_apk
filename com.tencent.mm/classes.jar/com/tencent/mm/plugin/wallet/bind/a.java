@@ -3,31 +3,34 @@ package com.tencent.mm.plugin.wallet.bind;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.og;
+import com.tencent.mm.an.q;
+import com.tencent.mm.f.a.pd;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.wallet.bind.ui.WalletBankcardDetailUI;
-import com.tencent.mm.plugin.wallet_core.c.ad;
+import com.tencent.mm.plugin.wallet_core.c.ae;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 public class a
   extends com.tencent.mm.wallet_core.d
 {
-  public com.tencent.mm.wallet_core.d.g a(MMActivity paramMMActivity, i parami)
+  public g a(MMActivity paramMMActivity, i parami)
   {
     AppMethodBeat.i(69060);
     if ((paramMMActivity instanceof WalletCheckPwdUI))
     {
-      paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
+      paramMMActivity = new g(paramMMActivity, parami)
       {
-        private String dDL = null;
+        private String fwv = null;
         
         public final boolean A(Object... paramAnonymousVarArgs)
         {
@@ -35,7 +38,7 @@ public class a
           Object localObject = (Bankcard)a.a(a.this).getParcelable("key_bankcard");
           if ((localObject != null) && (((Bankcard)localObject).field_bankcardState == 1))
           {
-            paramAnonymousVarArgs = this.Ruz;
+            paramAnonymousVarArgs = this.YVX;
             String str = ((Bankcard)localObject).field_bankcardType;
             localObject = ((Bankcard)localObject).field_bindSerial;
             if (a.b(a.this).getInt("scene", -1) == 2) {}
@@ -47,7 +50,7 @@ public class a
               return true;
             }
           }
-          a.this.dQL.putInt("key_process_result_code", 1);
+          a.this.fKb.putInt("key_process_result_code", 1);
           boolean bool = super.A(paramAnonymousVarArgs);
           AppMethodBeat.o(69052);
           return bool;
@@ -63,7 +66,7 @@ public class a
             AppMethodBeat.o(69054);
             return localObject;
           }
-          Object localObject = this.activity.getString(2131767763);
+          Object localObject = this.activity.getString(a.i.wallet_index_ui_unbind_bankcard_title);
           AppMethodBeat.o(69054);
           return localObject;
         }
@@ -75,9 +78,9 @@ public class a
           {
             if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
             {
-              a.this.dQL.putInt("key_process_result_code", -1);
+              a.this.fKb.putInt("key_process_result_code", -1);
               if (a.this.c(this.activity, null)) {
-                this.Ruz.a(new ad(this.dDL, 14), true, 1);
+                this.YVX.a(new ae(this.fwv, 14), true, 1);
               }
               for (;;)
               {
@@ -90,7 +93,7 @@ public class a
                 this.activity.finish();
               }
             }
-            a.this.dQL.putInt("key_process_result_code", 1);
+            a.this.fKb.putInt("key_process_result_code", 1);
           }
           AppMethodBeat.o(69051);
           return false;
@@ -101,10 +104,10 @@ public class a
           AppMethodBeat.i(69053);
           Object localObject = (Bankcard)a.d(a.this).getParcelable("key_bankcard");
           String str1 = (String)paramAnonymousVarArgs[0];
-          this.dDL = ((String)paramAnonymousVarArgs[1]);
+          this.fwv = ((String)paramAnonymousVarArgs[1]);
           if (localObject != null)
           {
-            paramAnonymousVarArgs = this.Ruz;
+            paramAnonymousVarArgs = this.YVX;
             String str2 = ((Bankcard)localObject).field_bankcardType;
             localObject = ((Bankcard)localObject).field_bindSerial;
             if (a.e(a.this).getInt("scene", -1) == 2) {}
@@ -115,7 +118,7 @@ public class a
               return true;
             }
           }
-          a.this.dQL.putInt("key_process_result_code", 1);
+          a.this.fKb.putInt("key_process_result_code", 1);
           AppMethodBeat.o(69053);
           return false;
         }
@@ -161,45 +164,40 @@ public class a
   public void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(69059);
-    if (this.dQL.getInt("scene", -1) == 1)
+    if (this.fKb.getInt("scene", -1) == 1)
     {
       int i = paramBundle.getInt("key_process_result_code", 0);
       a(paramActivity, "wallet", ".bind.ui.WalletUnbindBankCardProxyUI", i, false);
       if (i == -1)
       {
-        paramActivity = new og();
-        paramActivity.dUv.scene = 2;
+        paramActivity = new pd();
+        paramActivity.fNX.scene = 2;
         EventCenter.instance.publish(paramActivity);
       }
       AppMethodBeat.o(69059);
       return;
     }
-    if (this.dQL.getInt("scene", -1) == 2)
+    if (this.fKb.getInt("scene", -1) == 2)
     {
-      e(paramActivity, "wallet", ".balance.ui.WalletBalanceManagerUI");
+      h(paramActivity, "wallet", ".balance.ui.WalletBalanceManagerUI");
       AppMethodBeat.o(69059);
       return;
     }
-    boolean bool = ((b)com.tencent.mm.kernel.g.af(b.class)).a(b.a.sad, true);
+    boolean bool = ((b)h.ae(b.class)).a(b.a.vHh, true);
     Log.i("MicroMsg.ProcessManager", " walletMallV2 switch is ：%s", new Object[] { Boolean.valueOf(bool) });
     if (bool)
     {
-      e(paramActivity, "mall", ".ui.MallIndexUIv2");
+      h(paramActivity, "mall", ".ui.MallIndexUIv2");
       AppMethodBeat.o(69059);
       return;
     }
-    e(paramActivity, "mall", ".ui.MallIndexUI");
+    h(paramActivity, "mall", ".ui.MallIndexUI");
     AppMethodBeat.o(69059);
   }
   
   public boolean c(Activity paramActivity, Bundle paramBundle)
   {
     return (paramActivity instanceof WalletCheckPwdUI);
-  }
-  
-  public final String dKC()
-  {
-    return "UnbindProcess";
   }
   
   protected void e(Activity paramActivity, Bundle paramBundle)
@@ -209,10 +207,15 @@ public class a
     AppMethodBeat.o(69056);
   }
   
-  public final void g(Activity paramActivity, int paramInt)
+  public final String epb()
+  {
+    return "UnbindProcess";
+  }
+  
+  public final void h(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(69058);
-    P(paramActivity);
+    Q(paramActivity);
     AppMethodBeat.o(69058);
   }
 }

@@ -2,40 +2,40 @@ package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class bp
+public class bp
 {
-  public static final bp Oql;
-  public static final bp Oqm;
-  public static final bp Oqn;
-  public static final bp Oqo;
-  public static final bp Oqp;
-  public static final bp Oqq;
-  public static final bp Oqr;
-  public static final bp Oqs;
-  public static final bp Oqt;
-  public static final bp Oqu;
-  public static final bp Oqv;
-  public static final bp Oqw;
-  public static final bp Oqx;
-  public int hXs = 0;
+  public static final bp VGh;
+  public static final bp VGi;
+  public static final bp VGj;
+  public static final bp VGk;
+  public static final bp VGl;
+  public static final bp VGm;
+  public static final bp VGn;
+  public static final bp VGo;
+  public static final bp VGp;
+  public static final bp VGq;
+  public static final bp VGr;
+  public static final bp VGs;
+  public static final bp VGt;
   public String tag = "";
+  public int time = 0;
   
   static
   {
     AppMethodBeat.i(133298);
-    Oql = new bp("timeline");
-    Oqm = new bp("album_friend");
-    Oqn = new bp("album_self");
-    Oqo = new bp("album_stranger");
-    Oqp = new bp("profile_friend");
-    Oqq = new bp("profile_stranger");
-    Oqr = new bp("comment");
-    Oqs = new bp("comment_detail");
-    Oqt = new bp("other");
-    Oqu = new bp("snssight");
-    Oqv = new bp("fts");
-    Oqw = new bp("storysight");
-    Oqx = new bp("storyalbum");
+    VGh = new bp("timeline");
+    VGi = new bp("album_friend");
+    VGj = new bp("album_self");
+    VGk = new bp("album_stranger");
+    VGl = new bp("profile_friend");
+    VGm = new bp("profile_stranger");
+    VGn = new bp("comment");
+    VGo = new bp("comment_detail");
+    VGp = new bp("other");
+    VGq = new bp("snssight");
+    VGr = new bp("fts");
+    VGs = new bp("storysight");
+    VGt = new bp("storyalbum");
     AppMethodBeat.o(133298);
   }
   
@@ -48,12 +48,12 @@ public final class bp
   {
     AppMethodBeat.i(133295);
     parambp = new bp(parambp.tag);
-    parambp.hXs = paramInt;
+    parambp.time = paramInt;
     AppMethodBeat.o(133295);
     return parambp;
   }
   
-  public static bp gCU()
+  public static bp hzh()
   {
     AppMethodBeat.i(133288);
     bp localbp = new bp("timeline");
@@ -61,7 +61,7 @@ public final class bp
     return localbp;
   }
   
-  public static bp gCV()
+  public static bp hzi()
   {
     AppMethodBeat.i(133289);
     bp localbp = new bp("album_friend");
@@ -69,7 +69,7 @@ public final class bp
     return localbp;
   }
   
-  public static bp gCW()
+  public static bp hzj()
   {
     AppMethodBeat.i(133290);
     bp localbp = new bp("album_self");
@@ -77,7 +77,7 @@ public final class bp
     return localbp;
   }
   
-  public static bp gCX()
+  public static bp hzk()
   {
     AppMethodBeat.i(133291);
     bp localbp = new bp("album_stranger");
@@ -85,7 +85,7 @@ public final class bp
     return localbp;
   }
   
-  public static bp gCY()
+  public static bp hzl()
   {
     AppMethodBeat.i(133292);
     bp localbp = new bp("comment_detail");
@@ -93,7 +93,7 @@ public final class bp
     return localbp;
   }
   
-  public static bp gCZ()
+  public static bp hzm()
   {
     AppMethodBeat.i(133293);
     bp localbp = new bp("snssight");
@@ -101,7 +101,7 @@ public final class bp
     return localbp;
   }
   
-  public static bp gDa()
+  public static bp hzn()
   {
     AppMethodBeat.i(133294);
     bp localbp = new bp("storysight");
@@ -109,13 +109,13 @@ public final class bp
     return localbp;
   }
   
-  public final bp akk(int paramInt)
+  public final bp asH(int paramInt)
   {
-    this.hXs = paramInt;
+    this.time = paramInt;
     return this;
   }
   
-  public final boolean equals(Object paramObject)
+  public boolean equals(Object paramObject)
   {
     AppMethodBeat.i(133296);
     if ((paramObject instanceof bp))
@@ -129,17 +129,17 @@ public final class bp
     return bool;
   }
   
-  public final String toString()
+  public String toString()
   {
     AppMethodBeat.i(133297);
-    String str = this.tag + "@" + this.hXs;
+    String str = this.tag + "@" + this.time;
     AppMethodBeat.o(133297);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.bp
  * JD-Core Version:    0.7.0.1
  */

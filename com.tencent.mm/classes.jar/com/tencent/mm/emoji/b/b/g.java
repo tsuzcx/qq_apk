@@ -2,10 +2,10 @@ package com.tencent.mm.emoji.b.b;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/model/panel/DataUpdateListener;", "", "onUpdateData", "", "data", "Lcom/tencent/mm/emoji/model/panel/IEmojiPanelData;", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/model/panel/DataUpdateListener;", "", "onUpdateData", "", "data", "Lcom/tencent/mm/emoji/model/panel/IEmojiPanelData;", "plugin-emojisdk_release"})
 public abstract interface g
 {
-  public abstract void a(v paramv);
+  public abstract void a(x paramx);
 }
 
 

@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.expt.hellhound.a.a.b;
 
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ca;
-import com.tencent.mm.kernel.b.h;
-import com.tencent.mm.kernel.d;
-import com.tencent.mm.protocal.protobuf.ebf;
+import com.tencent.mm.f.b.a.cr;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.protocal.protobuf.elf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.vending.j.b;
 import com.tencent.mm.vending.j.c;
@@ -16,22 +16,22 @@ import org.json.JSONArray;
 
 public final class a
 {
-  private static int sCq = 0;
+  private static int wil = 0;
   
-  private static List<ca> a(ca paramca)
+  private static List<cr> a(cr paramcr)
   {
     AppMethodBeat.i(169319);
     ArrayList localArrayList = new ArrayList();
-    Object localObject3 = paramca.abV().getBytes();
+    Object localObject3 = paramcr.agH().getBytes();
     if (localObject3.length <= 5120)
     {
-      paramca.euD = 0;
-      paramca.euE = 1;
-      localArrayList.add(paramca);
+      paramcr.gqJ = 0;
+      paramcr.gqK = 1;
+      localArrayList.add(paramcr);
       AppMethodBeat.o(169319);
       return localArrayList;
     }
-    Object localObject1 = paramca.euA;
+    Object localObject1 = paramcr.gqG;
     try
     {
       localObject1 = new JSONArray((String)localObject1);
@@ -63,16 +63,16 @@ public final class a
       int m = 0;
       while (m < d)
       {
-        localObject3 = new ca();
-        ((ca)localObject3).euv = paramca.euv;
-        ((ca)localObject3).kI(paramca.euw);
-        ((ca)localObject3).kJ(paramca.ekG);
-        ((ca)localObject3).kK(paramca.euG);
-        ((ca)localObject3).kL(paramca.euH);
-        ((ca)localObject3).eux = paramca.eux;
-        ((ca)localObject3).euy = paramca.euy;
-        ((ca)localObject3).euz = paramca.euz;
-        ((ca)localObject3).euC = paramca.euC;
+        localObject3 = new cr();
+        ((cr)localObject3).gqB = paramcr.gqB;
+        ((cr)localObject3).mY(paramcr.gqC);
+        ((cr)localObject3).mZ(paramcr.gfl);
+        ((cr)localObject3).na(paramcr.gqM);
+        ((cr)localObject3).nb(paramcr.gqN);
+        ((cr)localObject3).gqD = paramcr.gqD;
+        ((cr)localObject3).gqE = paramcr.gqE;
+        ((cr)localObject3).gqF = paramcr.gqF;
+        ((cr)localObject3).gqI = paramcr.gqI;
         JSONArray localJSONArray = new JSONArray();
         i = m * i1;
         while ((i < (m + 1) * i1) && (i < n - i2))
@@ -80,36 +80,36 @@ public final class a
           localJSONArray.put(localObject2.opt(i));
           i += 1;
         }
-        ((ca)localObject3).euA = localJSONArray.toString();
-        ((ca)localObject3).euB = localJSONArray.length();
-        ((ca)localObject3).euD = k;
-        ((ca)localObject3).euE = j;
+        ((cr)localObject3).gqG = localJSONArray.toString();
+        ((cr)localObject3).gqH = localJSONArray.length();
+        ((cr)localObject3).gqJ = k;
+        ((cr)localObject3).gqK = j;
         localArrayList.add(localObject3);
         m += 1;
         k += 1;
       }
       if (i2 > 0)
       {
-        localObject3 = new ca();
-        ((ca)localObject3).euv = paramca.euv;
-        ((ca)localObject3).kI(paramca.euw);
-        ((ca)localObject3).kJ(paramca.ekG);
-        ((ca)localObject3).kK(paramca.euG);
-        ((ca)localObject3).kL(paramca.euH);
-        ((ca)localObject3).eux = paramca.eux;
-        ((ca)localObject3).euy = paramca.euy;
-        ((ca)localObject3).euz = paramca.euz;
-        ((ca)localObject3).euC = paramca.euC;
-        paramca = new JSONArray();
+        localObject3 = new cr();
+        ((cr)localObject3).gqB = paramcr.gqB;
+        ((cr)localObject3).mY(paramcr.gqC);
+        ((cr)localObject3).mZ(paramcr.gfl);
+        ((cr)localObject3).na(paramcr.gqM);
+        ((cr)localObject3).nb(paramcr.gqN);
+        ((cr)localObject3).gqD = paramcr.gqD;
+        ((cr)localObject3).gqE = paramcr.gqE;
+        ((cr)localObject3).gqF = paramcr.gqF;
+        ((cr)localObject3).gqI = paramcr.gqI;
+        paramcr = new JSONArray();
         while (i < n)
         {
-          paramca.put(localObject2.opt(i));
+          paramcr.put(localObject2.opt(i));
           i += 1;
         }
-        ((ca)localObject3).euA = paramca.toString();
-        ((ca)localObject3).euB = paramca.length();
-        ((ca)localObject3).euD = k;
-        ((ca)localObject3).euE = j;
+        ((cr)localObject3).gqG = paramcr.toString();
+        ((cr)localObject3).gqH = paramcr.length();
+        ((cr)localObject3).gqJ = k;
+        ((cr)localObject3).gqK = j;
         localArrayList.add(localObject3);
       }
       AppMethodBeat.o(169319);
@@ -117,45 +117,45 @@ public final class a
     return localArrayList;
   }
   
-  public static void a(ebf paramebf, c<String, Integer> paramc)
+  public static void a(elf paramelf, c<String, Integer> paramc)
   {
     AppMethodBeat.i(169318);
-    if ((paramebf == null) || (paramc == null))
+    if ((paramelf == null) || (paramc == null))
     {
       AppMethodBeat.o(169318);
       return;
     }
-    ca localca1 = new ca();
-    localca1.euv = Process.myPid();
-    ca localca2 = localca1.kI(((h)com.tencent.mm.kernel.g.aAe().azG()).mProcessName).kJ(paramebf.dRM).kK(paramebf.dPM).kL(paramebf.NaW);
-    localca2.eux = paramebf.NaS;
-    localca2.euy = paramebf.NaT;
-    localca2.euz = paramebf.NaU;
-    localca2.euA = ((String)paramc.get(0));
-    localca2.euB = ((Integer)paramc.get(1)).intValue();
-    int i = sCq;
-    sCq = i + 1;
-    localca2.euC = i;
-    paramebf = a(localca1);
-    if (paramebf == null)
+    cr localcr1 = new cr();
+    localcr1.gqB = Process.myPid();
+    cr localcr2 = localcr1.mY(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).mProcessName).mZ(paramelf.fLj).na(paramelf.fJc).nb(paramelf.Unq);
+    localcr2.gqD = paramelf.Unm;
+    localcr2.gqE = paramelf.Unn;
+    localcr2.gqF = paramelf.Uno;
+    localcr2.gqG = ((String)paramc.get(0));
+    localcr2.gqH = ((Integer)paramc.get(1)).intValue();
+    int i = wil;
+    wil = i + 1;
+    localcr2.gqI = i;
+    paramelf = a(localcr1);
+    if (paramelf == null)
     {
       AppMethodBeat.o(169318);
       return;
     }
-    paramebf = paramebf.iterator();
-    while (paramebf.hasNext())
+    paramelf = paramelf.iterator();
+    while (paramelf.hasNext())
     {
-      paramc = (ca)paramebf.next();
-      paramc.euA = paramc.euA.replace(",", "#");
-      paramc.bfK();
-      Log.i("HABBYGE-MALI.FinderReport", "FinderReport-report-sub: %s", new Object[] { paramc.abV() });
+      paramc = (cr)paramelf.next();
+      paramc.gqG = paramc.gqG.replace(",", "#");
+      paramc.bpa();
+      Log.i("HABBYGE-MALI.FinderReport", "FinderReport-report-sub: %s", new Object[] { paramc.agH() });
     }
     AppMethodBeat.o(169318);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.a.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -13,20 +13,20 @@ public abstract interface c
   public static final class a
     implements c
   {
-    public static final a TjQ;
+    public static final a aaMK;
     
     static
     {
       AppMethodBeat.i(56988);
-      TjQ = new a();
+      aaMK = new a();
       AppMethodBeat.o(56988);
     }
     
     public final boolean a(e parame, am paramam)
     {
       AppMethodBeat.i(56987);
-      p.h(parame, "classDescriptor");
-      p.h(paramam, "functionDescriptor");
+      p.k(parame, "classDescriptor");
+      p.k(paramam, "functionDescriptor");
       AppMethodBeat.o(56987);
       return true;
     }
@@ -35,21 +35,21 @@ public abstract interface c
   public static final class b
     implements c
   {
-    public static final b TjR;
+    public static final b aaML;
     
     static
     {
       AppMethodBeat.i(56990);
-      TjR = new b();
+      aaML = new b();
       AppMethodBeat.o(56990);
     }
     
     public final boolean a(e parame, am paramam)
     {
       AppMethodBeat.i(56989);
-      p.h(parame, "classDescriptor");
-      p.h(paramam, "functionDescriptor");
-      if (!paramam.hzL().h(d.hBQ()))
+      p.k(parame, "classDescriptor");
+      p.k(paramam, "functionDescriptor");
+      if (!paramam.iDY().h(d.iGf()))
       {
         AppMethodBeat.o(56989);
         return true;
@@ -61,7 +61,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.b.c
  * JD-Core Version:    0.7.0.1
  */

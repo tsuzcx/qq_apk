@@ -3,14 +3,15 @@ package com.tencent.magicbrush;
 import kotlin.g.b.u;
 import kotlin.l;
 import kotlin.l.d;
+import kotlin.l.j;
 
-@l(hxD={1, 1, 16})
+@l(iBK={1, 1, 16})
 final class h
   extends u
 {
-  public static final kotlin.l.h cMy;
+  public static final j cNl;
   
-  public final d Rs() {}
+  public final d Vc() {}
   
   public final Object get(Object arg1) {}
   
@@ -22,7 +23,7 @@ final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.magicbrush.h
  * JD-Core Version:    0.7.0.1
  */

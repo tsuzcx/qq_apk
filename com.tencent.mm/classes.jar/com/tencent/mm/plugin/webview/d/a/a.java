@@ -2,87 +2,87 @@ package com.tencent.mm.plugin.webview.d.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.eu;
-import com.tencent.mm.g.a.eu.b;
-import com.tencent.mm.g.a.fa;
-import com.tencent.mm.g.a.fa.b;
-import com.tencent.mm.pluginsdk.ui.tools.y.a;
+import com.tencent.mm.f.a.fb;
+import com.tencent.mm.f.a.fb.b;
+import com.tencent.mm.f.a.fh;
+import com.tencent.mm.f.a.fh.b;
+import com.tencent.mm.pluginsdk.ui.tools.aa.a;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
-  implements y.a
+  implements aa.a
 {
-  private static a ISr;
-  private static final byte[] rAD = { -2, 1, 1 };
-  public a.a ISq;
-  public byte[] ISs = null;
-  public int ISt = -1;
-  public boolean ISu = false;
-  public boolean ISv = false;
-  public String brandName;
+  private static a POK;
+  private static final byte[] vgk = { -2, 1, 1 };
+  public a.a POJ;
+  public byte[] POL = null;
+  public int POM = -1;
+  public boolean PON = false;
+  public boolean POO = false;
+  public String fzM;
   public boolean hasInit = false;
   
-  public static boolean cz(byte[] paramArrayOfByte)
+  public static boolean cQ(byte[] paramArrayOfByte)
   {
     return (paramArrayOfByte != null) && (paramArrayOfByte.length >= 9) && (paramArrayOfByte[(paramArrayOfByte.length - 7)] == 1) && (paramArrayOfByte[(paramArrayOfByte.length - 8)] == 1) && (paramArrayOfByte[(paramArrayOfByte.length - 9)] == -2);
   }
   
-  public static a gbs()
+  public static a gUm()
   {
-    AppMethodBeat.i(224451);
-    if (ISr == null) {
-      ISr = new a();
+    AppMethodBeat.i(207482);
+    if (POK == null) {
+      POK = new a();
     }
-    a locala = ISr;
-    AppMethodBeat.o(224451);
+    a locala = POK;
+    AppMethodBeat.o(207482);
     return locala;
   }
   
-  public final void gbt()
+  public final void gUn()
   {
-    AppMethodBeat.i(224452);
-    Log.i("MicroMsg.webview.WebViewExDeviceMgr", "stopPlugin, isScaning = %s", new Object[] { Boolean.valueOf(this.ISu) });
-    if (this.ISu)
+    AppMethodBeat.i(207484);
+    Log.i("MicroMsg.webview.WebViewExDeviceMgr", "stopPlugin, isScaning = %s", new Object[] { Boolean.valueOf(this.PON) });
+    if (this.PON)
     {
-      localObject = new eu();
-      ((eu)localObject).dIc.dGW = false;
-      ((eu)localObject).dIc.brandName = this.brandName;
+      localObject = new fb();
+      ((fb)localObject).fAT.fzN = false;
+      ((fb)localObject).fAT.fzM = this.fzM;
       EventCenter.instance.publish((IEvent)localObject);
-      if (!((eu)localObject).dId.dGX) {
+      if (!((fb)localObject).fAU.fzO) {
         Log.e("MicroMsg.webview.WebViewExDeviceMgr", "stopScanWXDevice fail");
       }
-      this.ISu = false;
+      this.PON = false;
     }
     this.hasInit = false;
-    if (this.ISq != null)
+    if (this.POJ != null)
     {
-      EventCenter.instance.removeListener(this.ISq.ISx);
-      EventCenter.instance.removeListener(this.ISq.ISy);
-      EventCenter.instance.removeListener(this.ISq.ISA);
-      EventCenter.instance.removeListener(this.ISq.ISz);
-      EventCenter.instance.removeListener(this.ISq.Dlh);
-      this.ISq = null;
+      EventCenter.instance.removeListener(this.POJ.POQ);
+      EventCenter.instance.removeListener(this.POJ.POR);
+      EventCenter.instance.removeListener(this.POJ.POT);
+      EventCenter.instance.removeListener(this.POJ.POS);
+      EventCenter.instance.removeListener(this.POJ.JqJ);
+      this.POJ = null;
     }
-    this.ISs = null;
-    Object localObject = new fa();
-    ((fa)localObject).dIs.dGL = "";
-    ((fa)localObject).dIs.direction = 0;
-    ((fa)localObject).dIs.clear = true;
+    this.POL = null;
+    Object localObject = new fh();
+    ((fh)localObject).fBj.fzB = "";
+    ((fh)localObject).fBj.direction = 0;
+    ((fh)localObject).fBj.clear = true;
     EventCenter.instance.publish((IEvent)localObject);
-    Log.i("MicroMsg.webview.WebViewExDeviceMgr", "stop EcDeviceMgr for webview %s", new Object[] { Boolean.valueOf(((fa)localObject).dIt.dGX) });
-    AppMethodBeat.o(224452);
+    Log.i("MicroMsg.webview.WebViewExDeviceMgr", "stop EcDeviceMgr for webview %s", new Object[] { Boolean.valueOf(((fh)localObject).fBk.fzO) });
+    AppMethodBeat.o(207484);
   }
   
-  public final void gbu() {}
+  public final void gUo() {}
   
   public final String getName()
   {
     return "WebViewExDeviceMgr";
   }
   
-  public final void hU(Context paramContext) {}
+  public final void iZ(Context paramContext) {}
 }
 
 

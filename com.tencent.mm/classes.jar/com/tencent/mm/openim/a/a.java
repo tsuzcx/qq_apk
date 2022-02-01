@@ -5,14 +5,16 @@ import android.graphics.Bitmap;
 import android.text.SpannableString;
 import android.text.style.TextAppearanceSpan;
 import android.widget.TextView;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.i;
 
 public abstract interface a
   extends i, com.tencent.mm.kernel.c.a
 {
-  public abstract Bitmap RY(String paramString);
+  public abstract Bitmap ZA(String paramString);
   
-  public abstract int RZ(String paramString);
+  public abstract int ZB(String paramString);
+  
+  public abstract TextAppearanceSpan a(Context paramContext, String paramString, int paramInt1, int paramInt2);
   
   public abstract CharSequence a(Context paramContext, CharSequence paramCharSequence);
   
@@ -26,19 +28,17 @@ public abstract interface a
   
   public abstract String b(String paramString1, String paramString2, a.a parama);
   
-  public abstract void bM(String paramString1, String paramString2);
+  public abstract void bQ(String paramString1, String paramString2);
   
-  public abstract String bN(String paramString1, String paramString2);
+  public abstract String bR(String paramString1, String paramString2);
   
-  public abstract void bkB();
+  public abstract void bup();
   
   public abstract String c(String paramString1, String paramString2, a.a parama);
   
   public abstract SpannableString e(Context paramContext, String paramString, int paramInt);
   
-  public abstract TextAppearanceSpan f(Context paramContext, String paramString, int paramInt);
-  
-  public abstract void s(String paramString1, String paramString2, String paramString3);
+  public abstract void v(String paramString1, String paramString2, String paramString3);
 }
 
 

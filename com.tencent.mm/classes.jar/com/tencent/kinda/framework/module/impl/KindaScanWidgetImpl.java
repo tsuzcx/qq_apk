@@ -8,11 +8,11 @@ import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.gen.KScanWidget;
 import com.tencent.kinda.gen.VoidStringStringBinaryCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
-import com.tencent.mm.g.a.tf;
-import com.tencent.mm.g.a.tf.a;
-import com.tencent.mm.g.a.tg;
-import com.tencent.mm.g.a.tg.a;
+import com.tencent.mm.by.c;
+import com.tencent.mm.f.a.ug;
+import com.tencent.mm.f.a.ug.a;
+import com.tencent.mm.f.a.uh;
+import com.tencent.mm.f.a.uh.a;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -37,15 +37,15 @@ public class KindaScanWidgetImpl
     this.isDismissOnScanFinish = true;
     this.scanBankCardConfirmResultListener = new IListener()
     {
-      public boolean callback(tf paramAnonymoustf)
+      public boolean callback(ug paramAnonymousug)
       {
         AppMethodBeat.i(18647);
-        if ((paramAnonymoustf.dZF.action == 1) && (!Util.isNullOrNil(paramAnonymoustf.dZF.cardNum)) && (KindaScanWidgetImpl.this.mCallback != null))
+        if ((paramAnonymousug.fTz.action == 1) && (!Util.isNullOrNil(paramAnonymousug.fTz.cardNum)) && (KindaScanWidgetImpl.this.mCallback != null))
         {
-          String str = paramAnonymoustf.dZF.cardNum;
-          paramAnonymoustf = paramAnonymoustf.dZF.dZG;
+          String str = paramAnonymousug.fTz.cardNum;
+          paramAnonymousug = paramAnonymousug.fTz.fTA;
           str = str.replaceAll("-", "").replaceAll(" ", "");
-          KindaScanWidgetImpl.this.mCallback.call(KindaScanWidgetImpl.access$100(KindaScanWidgetImpl.this, str), str, KindaScanWidgetImpl.this.getBitmapByte(paramAnonymoustf));
+          KindaScanWidgetImpl.this.mCallback.call(KindaScanWidgetImpl.access$100(KindaScanWidgetImpl.this, str), str, KindaScanWidgetImpl.this.getBitmapByte(paramAnonymousug));
         }
         KindaScanWidgetImpl.this.scanBankCardConfirmResultListener.dead();
         AppMethodBeat.o(18647);
@@ -54,15 +54,15 @@ public class KindaScanWidgetImpl
     };
     this.mScanBankCardResultListener = new IListener()
     {
-      public boolean callback(tg paramAnonymoustg)
+      public boolean callback(uh paramAnonymousuh)
       {
         AppMethodBeat.i(18649);
-        if ((!Util.isNullOrNil(paramAnonymoustg.dZH.cardId)) && (KindaScanWidgetImpl.this.mCallback != null))
+        if ((!Util.isNullOrNil(paramAnonymousuh.fTB.cardId)) && (KindaScanWidgetImpl.this.mCallback != null))
         {
-          String str = paramAnonymoustg.dZH.cardId;
-          paramAnonymoustg = paramAnonymoustg.dZH.dZI;
+          String str = paramAnonymousuh.fTB.cardId;
+          paramAnonymousuh = paramAnonymousuh.fTB.fTC;
           str = str.replaceAll("-", "").replaceAll(" ", "");
-          KindaScanWidgetImpl.this.mCallback.call(KindaScanWidgetImpl.access$100(KindaScanWidgetImpl.this, str), str, KindaScanWidgetImpl.this.getBitmapByte(paramAnonymoustg));
+          KindaScanWidgetImpl.this.mCallback.call(KindaScanWidgetImpl.access$100(KindaScanWidgetImpl.this, str), str, KindaScanWidgetImpl.this.getBitmapByte(paramAnonymousuh));
         }
         KindaScanWidgetImpl.this.mScanBankCardResultListener.dead();
         AppMethodBeat.o(18649);
@@ -81,9 +81,9 @@ public class KindaScanWidgetImpl
       return null;
     }
     Encrypt localEncrypt = new Encrypt();
-    localEncrypt.setTimeStamp(y.hhp());
-    b.hgC();
-    if (b.hgD())
+    localEncrypt.setTimeStamp(y.iiR());
+    b.iie();
+    if (b.iif())
     {
       paramString = localEncrypt.encryptPasswdWithRSA2048(paramString);
       AppMethodBeat.o(18653);
@@ -152,7 +152,7 @@ public class KindaScanWidgetImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.KindaScanWidgetImpl
  * JD-Core Version:    0.7.0.1
  */

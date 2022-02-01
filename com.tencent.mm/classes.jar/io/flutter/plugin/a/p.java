@@ -7,18 +7,18 @@ import java.nio.charset.Charset;
 public final class p
   implements i<String>
 {
-  private static final Charset RAF;
-  public static final p SSt;
+  private static final Charset Zcl;
+  public static final p aauU;
   
   static
   {
     AppMethodBeat.i(9849);
-    RAF = Charset.forName("UTF8");
-    SSt = new p();
+    Zcl = Charset.forName("UTF8");
+    aauU = new p();
     AppMethodBeat.o(9849);
   }
   
-  public static String P(ByteBuffer paramByteBuffer)
+  public static String L(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(9846);
     if (paramByteBuffer == null)
@@ -36,7 +36,7 @@ public final class p
     }
     for (paramByteBuffer = arrayOfByte;; paramByteBuffer = arrayOfByte)
     {
-      paramByteBuffer = new String(paramByteBuffer, i, j, RAF);
+      paramByteBuffer = new String(paramByteBuffer, i, j, Zcl);
       AppMethodBeat.o(9846);
       return paramByteBuffer;
       arrayOfByte = new byte[j];
@@ -45,7 +45,7 @@ public final class p
     }
   }
   
-  public static ByteBuffer btr(String paramString)
+  public static ByteBuffer bGu(String paramString)
   {
     AppMethodBeat.i(9845);
     if (paramString == null)
@@ -53,7 +53,7 @@ public final class p
       AppMethodBeat.o(9845);
       return null;
     }
-    paramString = paramString.getBytes(RAF);
+    paramString = paramString.getBytes(Zcl);
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(paramString.length);
     localByteBuffer.put(paramString);
     AppMethodBeat.o(9845);
@@ -62,7 +62,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.plugin.a.p
  * JD-Core Version:    0.7.0.1
  */

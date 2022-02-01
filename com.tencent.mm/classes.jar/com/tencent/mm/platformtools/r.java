@@ -3,12 +3,8 @@ package com.tencent.mm.platformtools;
 import android.util.SparseBooleanArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storagebase.h;
 import com.tencent.mm.storagebase.h.b;
 import java.util.Collection;
 import java.util.HashMap;
@@ -18,12 +14,12 @@ import junit.framework.Assert;
 
 public final class r
 {
-  private static ConcurrentHashMap<Integer, a> jNf;
+  private static ConcurrentHashMap<Integer, a> mEn;
   
   static
   {
     AppMethodBeat.i(132975);
-    jNf = new ConcurrentHashMap();
+    mEn = new ConcurrentHashMap();
     AppMethodBeat.o(132975);
   }
   
@@ -38,7 +34,7 @@ public final class r
     {
       Assert.assertTrue(bool);
       i = paramString.hashCode();
-      locala = (a)jNf.get(Integer.valueOf(i));
+      locala = (a)mEn.get(Integer.valueOf(i));
       if (locala != null) {
         break label198;
       }
@@ -46,32 +42,32 @@ public final class r
       if (!paramBoolean) {
         break;
       }
-      g.aAf();
-      l = a.getUin();
-      q.dr(true);
+      com.tencent.mm.kernel.h.aHE();
+      l = com.tencent.mm.kernel.b.getUin();
+      q.dR(true);
       if (locala.b("", paramString, "", l, paramHashMap, true)) {
         break label147;
       }
-      paramString = new b((byte)0);
+      paramString = new com.tencent.mm.model.b((byte)0);
       AppMethodBeat.o(132974);
       throw paramString;
     }
     if (!locala.a(paramString, paramHashMap, false))
     {
-      paramString = new b((byte)0);
+      paramString = new com.tencent.mm.model.b((byte)0);
       AppMethodBeat.o(132974);
       throw paramString;
     }
     label147:
-    jNf.put(Integer.valueOf(i), locala);
+    mEn.put(Integer.valueOf(i), locala);
     for (paramString = locala;; paramString = locala)
     {
       Log.d("MicroMsg.GeneralDBHelper", "addRef %d", new Object[] { Integer.valueOf(paramInt) });
-      paramString.jNg.put(paramInt, true);
+      paramString.mEo.put(paramInt, true);
       AppMethodBeat.o(132974);
       return paramString;
       label198:
-      if (paramBoolean == locala.bGA) {
+      if (paramBoolean == locala.bqe) {
         paramBoolean = true;
       }
       for (;;)
@@ -114,29 +110,29 @@ public final class r
   }
   
   public static final class a
-    extends h
+    extends com.tencent.mm.storagebase.h
   {
-    public final boolean bGA;
-    SparseBooleanArray jNg;
+    public final boolean bqe;
+    SparseBooleanArray mEo;
     private final String path;
     
     public a(String paramString, boolean paramBoolean)
     {
       AppMethodBeat.i(132970);
-      this.jNg = new SparseBooleanArray();
+      this.mEo = new SparseBooleanArray();
       Log.d("MicroMsg.GeneralDBHelper", "create db %s", new Object[] { paramString });
-      this.bGA = paramBoolean;
+      this.bqe = paramBoolean;
       this.path = paramString;
       AppMethodBeat.o(132970);
     }
     
     @Deprecated
-    public final void CL(String paramString)
+    public final void JA(String paramString)
     {
       AppMethodBeat.i(132973);
       Log.e("MicroMsg.GeneralDBHelper", "forbid to use this method");
-      if (this.jNg.size() <= 1) {
-        super.CL(paramString);
+      if (this.mEo.size() <= 1) {
+        super.JA(paramString);
       }
       AppMethodBeat.o(132973);
     }
@@ -146,22 +142,22 @@ public final class r
     {
       AppMethodBeat.i(132972);
       Log.e("MicroMsg.GeneralDBHelper", "forbid to use this method %s", new Object[] { Util.getStack() });
-      if (this.jNg.size() <= 1) {
+      if (this.mEo.size() <= 1) {
         super.closeDB();
       }
       AppMethodBeat.o(132972);
     }
     
-    public final void uS(int paramInt)
+    public final void xW(int paramInt)
     {
       AppMethodBeat.i(132971);
       Log.d("MicroMsg.GeneralDBHelper", "try close db %d", new Object[] { Integer.valueOf(paramInt) });
-      this.jNg.delete(paramInt);
-      if (this.jNg.size() <= 0)
+      this.mEo.delete(paramInt);
+      if (this.mEo.size() <= 0)
       {
         Log.d("MicroMsg.GeneralDBHelper", "close db %d succ", new Object[] { Integer.valueOf(paramInt) });
         super.closeDB();
-        r.bly().remove(Integer.valueOf(this.path.hashCode()));
+        r.bvo().remove(Integer.valueOf(this.path.hashCode()));
       }
       AppMethodBeat.o(132971);
     }
@@ -169,7 +165,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.platformtools.r
  * JD-Core Version:    0.7.0.1
  */

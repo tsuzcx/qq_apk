@@ -15,12 +15,12 @@ public final class a
     this.mContext = paramContext;
   }
   
-  public final String Pl()
+  public final String SK()
   {
     return "^luggage://bridge$";
   }
   
-  public final WebResourceResponse cX(String paramString)
+  public final WebResourceResponse dx(String paramString)
   {
     AppMethodBeat.i(140556);
     try

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.b.b.a;
+import com.tencent.mm.ac.b.b.a;
 import com.tencent.mm.model.ad.b;
 import com.tencent.mm.plugin.appbrand.dynamic.WxaWidgetContext;
 import com.tencent.mm.plugin.appbrand.dynamic.k.b;
@@ -19,20 +19,20 @@ public final class k
     super("reportKeyValue", paramInt);
   }
   
-  public final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.ac.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121332);
-    parama = com.tencent.mm.plugin.appbrand.dynamic.k.Ys(parama.ayQ().getString("__page_view_id", null));
+    parama = com.tencent.mm.plugin.appbrand.dynamic.k.agg(parama.aGj().getString("__page_view_id", null));
     if (parama == null)
     {
-      parama1.bt(a(false, "JsApi Framework Context is null", null));
+      parama1.bt(i(false, "JsApi Framework Context is null"));
       AppMethodBeat.o(121332);
       return;
     }
     paramJSONObject = paramJSONObject.optJSONArray("dataArray");
     if (paramJSONObject == null)
     {
-      parama1.bt(a(false, "dataArray is null", null));
+      parama1.bt(i(false, "dataArray is null"));
       AppMethodBeat.o(121332);
       return;
     }
@@ -40,7 +40,7 @@ public final class k
     for (;;)
     {
       if (i >= paramJSONObject.length()) {
-        break label212;
+        break label210;
       }
       try
       {
@@ -48,7 +48,7 @@ public final class k
         int j = ((JSONObject)localObject).optInt("key");
         localObject = ((JSONObject)localObject).optString("value");
         if ((j > 0) && (!Util.isNullOrNil((String)localObject))) {
-          h.CyF.a(j, new Object[] { parama.getAppId(), Integer.valueOf(parama.bBQ()), Integer.valueOf(b.wq(parama.bvh()) + 1), localObject });
+          h.IzE.a(j, new Object[] { parama.getAppId(), Integer.valueOf(parama.bNm()), Integer.valueOf(b.zD(parama.bGn()) + 1), localObject });
         }
       }
       catch (Exception localException)
@@ -60,14 +60,14 @@ public final class k
       }
       i += 1;
     }
-    label212:
-    parama1.bt(a(true, "", null));
+    label210:
+    parama1.bt(i(true, ""));
     AppMethodBeat.o(121332);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.k
  * JD-Core Version:    0.7.0.1
  */

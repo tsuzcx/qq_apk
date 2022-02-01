@@ -8,14 +8,14 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class a
   extends FileObserver
 {
-  private String qFa;
+  private String ueb;
   
   public a(String paramString)
   {
-    super(q.k(paramString, false), 618);
-    AppMethodBeat.i(192243);
-    this.qFa = paramString;
-    AppMethodBeat.o(192243);
+    super(q.n(paramString, false), 618);
+    AppMethodBeat.i(218892);
+    this.ueb = paramString;
+    AppMethodBeat.o(218892);
   }
   
   public final void onEvent(int paramInt, String paramString)
@@ -27,7 +27,7 @@ public final class a
       AppMethodBeat.o(88814);
       return;
     }
-    paramString = this.qFa + paramString;
+    paramString = this.ueb + paramString;
     switch (paramInt)
     {
     }
@@ -50,7 +50,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.a
  * JD-Core Version:    0.7.0.1
  */

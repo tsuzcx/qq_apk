@@ -1,29 +1,51 @@
 package com.tencent.mm.compatible.deviceinfo;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class ad
 {
-  public boolean edB = false;
-  public int gKq = 0;
-  boolean gKr = false;
+  public final int height;
+  public final int width;
   
-  public final void apf()
+  public ad(int paramInt1, int paramInt2)
   {
-    this.gKr = true;
+    this.width = paramInt1;
+    this.height = paramInt2;
   }
   
-  public final void dt(boolean paramBoolean)
+  public final boolean equals(Object paramObject)
   {
-    this.edB = paramBoolean;
+    if (paramObject == null) {}
+    do
+    {
+      do
+      {
+        return false;
+        if (this == paramObject) {
+          return true;
+        }
+      } while (!(paramObject instanceof ad));
+      paramObject = (ad)paramObject;
+    } while ((this.width != paramObject.width) || (this.height != paramObject.height));
+    return true;
   }
   
-  public final void oB(int paramInt)
+  public final int hashCode()
   {
-    this.gKq = paramInt;
+    return this.height ^ (this.width << 16 | this.width >>> 16);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(155822);
+    String str = this.width + "x" + this.height;
+    AppMethodBeat.o(155822);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.ad
  * JD-Core Version:    0.7.0.1
  */

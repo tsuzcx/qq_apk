@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.webview.a;
 
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
@@ -10,30 +10,30 @@ import com.tencent.mm.pluginsdk.n;
 public final class a
   implements n
 {
-  public static m jRt;
-  public static l jRu;
+  public static m mIG;
+  public static l mIH;
   
-  public static void aj(Runnable paramRunnable)
+  public static void am(Runnable paramRunnable)
   {
     AppMethodBeat.i(77826);
     if (0L > 0L)
     {
-      h.RTc.a(paramRunnable, 0L, "WebViewWorkerThread");
+      h.ZvG.a(paramRunnable, 0L, "WebViewWorkerThread");
       AppMethodBeat.o(77826);
       return;
     }
-    h.RTc.b(paramRunnable, "WebViewWorkerThread");
+    h.ZvG.d(paramRunnable, "WebViewWorkerThread");
     AppMethodBeat.o(77826);
   }
   
   public final void a(l paraml)
   {
-    jRu = paraml;
+    mIH = paraml;
   }
   
   public final void a(m paramm)
   {
-    jRt = paramm;
+    mIG = paramm;
   }
 }
 

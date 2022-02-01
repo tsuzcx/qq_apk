@@ -1,18 +1,18 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
-import com.tencent.mm.protocal.protobuf.cwk;
-import com.tencent.mm.protocal.protobuf.cwl;
+import com.tencent.mm.protocal.protobuf.dfu;
+import com.tencent.mm.protocal.protobuf.dfv;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class l
@@ -20,7 +20,7 @@ public final class l
   implements m
 {
   private i callback;
-  public k.b jHe;
+  public k.b myi;
   private int opType;
   private final d rr;
   
@@ -28,17 +28,17 @@ public final class l
   {
     AppMethodBeat.i(116859);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new cwk();
-    ((d.a)localObject).iLO = new cwl();
+    ((d.a)localObject).lBU = new dfu();
+    ((d.a)localObject).lBV = new dfv();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/openimoplog";
     ((d.a)localObject).funcId = 806;
-    this.rr = ((d.a)localObject).aXF();
-    this.opType = paramb.zqr;
-    this.jHe = paramb;
+    this.rr = ((d.a)localObject).bgN();
+    this.opType = paramb.EVQ;
+    this.myi = paramb;
     Log.i("MicroMsg.Openim.NetSceneOpenIMOPLog", "type: %d", new Object[] { Integer.valueOf(this.opType) });
-    localObject = (cwk)this.rr.iLK.iLR;
-    ((cwk)localObject).type = this.opType;
-    ((cwk)localObject).MBx = new b(paramb.getBuffer());
+    localObject = (dfu)d.b.b(this.rr.lBR);
+    ((dfu)localObject).type = this.opType;
+    ((dfu)localObject).TNe = new b(paramb.getBuffer());
     AppMethodBeat.o(116859);
   }
   

@@ -7,31 +7,31 @@ import com.tencent.qbar.QbarNative.QBarPoint;
 
 public abstract class c
 {
-  private boolean dLD = false;
-  public a lQL;
+  private boolean fEs = false;
+  public a oNg;
   
   public final void b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, Point paramPoint, Rect paramRect, int paramInt5, int paramInt6)
   {
-    if (this.dLD) {}
+    if (this.fEs) {}
     b localb;
     do
     {
       return;
-      localb = bGb();
+      localb = bRL();
     } while (paramArrayOfByte == null);
-    localb.lQu.postToWorker(new b.1(localb, paramArrayOfByte, paramInt5, paramInt1, paramInt2, paramInt3, paramInt4, paramPoint, paramRect, paramInt6));
+    localb.oMP.postToWorker(new b.1(localb, paramArrayOfByte, paramInt5, paramInt1, paramInt2, paramInt3, paramInt4, paramPoint, paramRect, paramInt6));
   }
   
-  protected abstract b bGb();
+  protected abstract b bRL();
   
   public final void init()
   {
-    bGb().init();
+    bRL().init();
   }
   
   public final void release()
   {
-    bGb().release();
+    bRL().release();
   }
   
   public static abstract interface a

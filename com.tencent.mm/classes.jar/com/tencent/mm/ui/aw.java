@@ -1,167 +1,130 @@
 package com.tencent.mm.ui;
 
 import android.content.Context;
-import android.content.res.Configuration;
+import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.os.Bundle;
-import com.huawei.easygo.sdk.EasyGo;
-import com.huawei.easygo.sdk.module.EasyGoRet;
+import android.content.res.Resources.Theme;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
+import android.util.SparseIntArray;
+import android.util.TypedValue;
+import androidx.core.content.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public final class aw
 {
-  private static EasyGo easyGoManager = null;
-  private static List<Integer> qQz;
+  private static SparseIntArray cqh;
+  private static float density;
+  private static float scale;
   
-  public static int a(EasyGo paramEasyGo, int paramInt)
+  static
   {
-    AppMethodBeat.i(205309);
-    if (paramEasyGo == null)
-    {
-      AppMethodBeat.o(205309);
-      return -1;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("@int:taskId", paramInt);
-      paramEasyGo = paramEasyGo.invokeSync("magicwindow", "getTaskPosition", localJSONObject, null);
-      Log.i("EasyGo", paramEasyGo.code);
-      paramInt = paramEasyGo.result.getInt("int");
-      Log.e("EasyGo", "getTaskPosition".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(205309);
-      return paramInt;
-    }
-    catch (JSONException paramEasyGo)
-    {
-      Log.e("EasyGo", paramEasyGo.getMessage());
-      AppMethodBeat.o(205309);
-    }
-    return -1;
+    AppMethodBeat.i(159132);
+    density = -1.0F;
+    scale = 0.0F;
+    cqh = new SparseIntArray();
+    AppMethodBeat.o(159132);
   }
   
-  public static void a(EasyGo paramEasyGo, int paramInt1, int paramInt2)
+  public static int H(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(205310);
-    if (paramEasyGo == null)
+    AppMethodBeat.i(250493);
+    paramInt = Math.round(paramInt / getDensity(paramContext));
+    AppMethodBeat.o(250493);
+    return paramInt;
+  }
+  
+  public static int aZ(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(159126);
+    if (paramContext == null)
     {
-      AppMethodBeat.o(205310);
-      return;
+      av.e("WeUIResHelper", "get dimension pixel size, resId %d, but context is null".concat(String.valueOf(paramInt)), new Object[0]);
+      AppMethodBeat.o(159126);
+      return 0;
     }
-    JSONObject localJSONObject = new JSONObject();
-    try
+    int j = cqh.get(paramInt, 0);
+    int i = j;
+    if (j == 0)
     {
-      localJSONObject.put("@int:taskId", paramInt1);
-      localJSONObject.put("@int:targetPosition", paramInt2);
-      paramEasyGo = paramEasyGo.invokeSync("magicwindow", "setTaskPosition", localJSONObject, null);
-      Log.i("EasyGo", paramEasyGo.code);
-      AppMethodBeat.o(205310);
-      return;
+      i = paramContext.getResources().getDimensionPixelSize(paramInt);
+      cqh.put(paramInt, i);
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        Log.e("EasyGo", localJSONException.getMessage());
+    AppMethodBeat.o(159126);
+    return i;
+  }
+  
+  public static Drawable bf(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(159129);
+    paramContext = paramContext.obtainStyledAttributes(new int[] { paramInt });
+    Drawable localDrawable = paramContext.getDrawable(0);
+    paramContext.recycle();
+    AppMethodBeat.o(159129);
+    return localDrawable;
+  }
+  
+  public static int bg(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(159130);
+    TypedValue localTypedValue = new TypedValue();
+    paramContext.getTheme().resolveAttribute(paramInt, localTypedValue, true);
+    paramInt = localTypedValue.data;
+    AppMethodBeat.o(159130);
+    return paramInt;
+  }
+  
+  public static ColorStateList bh(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(250498);
+    TypedValue localTypedValue = new TypedValue();
+    paramContext.getTheme().resolveAttribute(paramInt, localTypedValue, true);
+    paramContext = a.l(paramContext, localTypedValue.resourceId);
+    AppMethodBeat.o(250498);
+    return paramContext;
+  }
+  
+  public static float ez(Context paramContext)
+  {
+    AppMethodBeat.i(159128);
+    if (scale == 0.0F) {
+      if (paramContext != null) {
+        break label32;
       }
     }
-  }
-  
-  public static void aoh(int paramInt)
-  {
-    AppMethodBeat.i(205311);
-    if (easyGoManager == null)
+    label32:
+    for (scale = 1.0F;; scale = paramContext.getSharedPreferences("com.tencent.mm_preferences", 0).getFloat("text_size_scale_key", 1.0F))
     {
-      AppMethodBeat.o(205311);
-      return;
-    }
-    Object localObject = new JSONObject();
-    try
-    {
-      ((JSONObject)localObject).put("@int:loginStatus", paramInt);
-      localObject = easyGoManager.invokeSync("magicwindow", "setLoginStatus", (JSONObject)localObject, null);
-      Log.i("EasyGo", " setLoginStatus ret " + ((EasyGoRet)localObject).code);
-      AppMethodBeat.o(205311);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      Log.e("EasyGo", localJSONException.getMessage());
-      AppMethodBeat.o(205311);
+      float f = scale;
+      AppMethodBeat.o(159128);
+      return f;
     }
   }
   
-  public static boolean b(EasyGo paramEasyGo, int paramInt)
+  public static int fromDPToPix(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(205312);
-    if (a(paramEasyGo, paramInt) == -1)
-    {
-      AppMethodBeat.o(205312);
-      return false;
-    }
-    AppMethodBeat.o(205312);
-    return true;
+    AppMethodBeat.i(159125);
+    paramInt = Math.round(getDensity(paramContext) * paramInt);
+    AppMethodBeat.o(159125);
+    return paramInt;
   }
   
-  public static boolean gWx()
+  public static float getDensity(Context paramContext)
   {
-    boolean bool2 = false;
-    AppMethodBeat.i(205308);
-    boolean bool1 = bool2;
-    if (qQz != null)
-    {
-      bool1 = bool2;
-      if (qQz.size() > 0)
-      {
-        Log.d("huaweiUtil", "dancy test retList get(0):%s", new Object[] { qQz.get(0) });
-        if (((Integer)qQz.get(0)).intValue() != 0) {
-          break label78;
-        }
-      }
+    AppMethodBeat.i(159127);
+    if ((paramContext != null) && (density < 0.0F)) {
+      density = paramContext.getResources().getDisplayMetrics().density;
     }
-    label78:
-    for (bool1 = true;; bool1 = false)
-    {
-      AppMethodBeat.o(205308);
-      return bool1;
-    }
-  }
-  
-  public static EasyGo gWy()
-  {
-    return easyGoManager;
-  }
-  
-  public static void kA(Context paramContext)
-  {
-    AppMethodBeat.i(205307);
-    if (easyGoManager == null) {
-      easyGoManager = new EasyGo(paramContext);
-    }
-    qQz = easyGoManager.init(new String[] { "magicwindow" });
-    AppMethodBeat.o(205307);
-  }
-  
-  public static boolean kB(Context paramContext)
-  {
-    AppMethodBeat.i(205313);
-    paramContext = paramContext.getResources().getConfiguration().toString();
-    if ((paramContext.contains("hwMultiwindow-magic")) || (paramContext.contains("hw-magic-windows")))
-    {
-      AppMethodBeat.o(205313);
-      return true;
-    }
-    AppMethodBeat.o(205313);
-    return false;
+    float f = density;
+    AppMethodBeat.o(159127);
+    return f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.aw
  * JD-Core Version:    0.7.0.1
  */

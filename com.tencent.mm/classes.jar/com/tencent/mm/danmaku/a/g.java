@@ -2,7 +2,6 @@ package com.tencent.mm.danmaku.a;
 
 import android.graphics.Point;
 import android.os.Handler;
-import android.os.Message;
 import android.util.SparseArray;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,20 +18,36 @@ import java.util.concurrent.LinkedBlockingQueue;
 public final class g
   implements View.OnTouchListener
 {
-  private d gOr;
+  private d jyM;
   
   public g(View paramView, com.tencent.mm.danmaku.c.a parama)
   {
-    AppMethodBeat.i(241645);
-    this.gOr = new d(paramView, parama);
-    AppMethodBeat.o(241645);
+    AppMethodBeat.i(276429);
+    this.jyM = new d(paramView, parama);
+    AppMethodBeat.o(276429);
   }
   
-  public final com.tencent.mm.danmaku.b.a aW(Object paramObject)
+  public final void Y(List<com.tencent.mm.danmaku.b.a> paramList)
   {
-    AppMethodBeat.i(241656);
-    Object localObject3 = this.gOr.gNG;
-    Object localObject2 = (BlockingQueue)((f)localObject3).gOp.get(0);
+    AppMethodBeat.i(276446);
+    Object localObject = this.jyM;
+    h localh = ((d)localObject).jyc;
+    localObject = new d.3((d)localObject);
+    if (!com.tencent.mm.danmaku.f.d.isEmpty(paramList))
+    {
+      Handler localHandler = localh.azc();
+      if (localHandler != null) {
+        localHandler.post(new h.1(localh, paramList, (h.a)localObject));
+      }
+    }
+    AppMethodBeat.o(276446);
+  }
+  
+  public final com.tencent.mm.danmaku.b.a aZ(Object paramObject)
+  {
+    AppMethodBeat.i(276449);
+    Object localObject3 = this.jyM.jyb;
+    Object localObject2 = (BlockingQueue)((f)localObject3).jyK.get(0);
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new LinkedBlockingQueue();
@@ -40,10 +55,10 @@ public final class g
     localObject2 = (com.tencent.mm.danmaku.b.a)((BlockingQueue)localObject1).poll();
     if (localObject2 == null)
     {
-      localObject3 = ((f)localObject3).gNt;
+      localObject3 = ((f)localObject3).jxO;
       localObject1 = null;
-      if (((com.tencent.mm.danmaku.c.a)localObject3).gPz != null) {
-        localObject1 = ((com.tencent.mm.danmaku.c.a)localObject3).gPz.a((com.tencent.mm.danmaku.c.a)localObject3);
+      if (((com.tencent.mm.danmaku.c.a)localObject3).jzS != null) {
+        localObject1 = ((com.tencent.mm.danmaku.c.a)localObject3).jzS.a((com.tencent.mm.danmaku.c.a)localObject3);
       }
       localObject2 = localObject1;
       if (localObject1 == null) {
@@ -54,112 +69,109 @@ public final class g
     for (;;)
     {
       ((com.tencent.mm.danmaku.b.a)localObject2).reset();
-      if ((!c.gNA) || (paramObject != null)) {
+      if ((!c.jxV) || (paramObject != null)) {
         break;
       }
       paramObject = new RuntimeException("Danmaku data should been null");
-      AppMethodBeat.o(241656);
+      AppMethodBeat.o(276449);
       throw paramObject;
       e.v("DanmakuFactory", new Object[] { localObject2, " is reused " });
     }
     ((com.tencent.mm.danmaku.b.a)localObject2).mData = paramObject;
-    ((com.tencent.mm.danmaku.b.a)localObject2).gPe = true;
-    AppMethodBeat.o(241656);
+    ((com.tencent.mm.danmaku.b.a)localObject2).jzy = true;
+    AppMethodBeat.o(276449);
     return localObject2;
   }
   
-  public final void ab(List<com.tencent.mm.danmaku.b.a> paramList)
+  public final void ayG()
   {
-    AppMethodBeat.i(241655);
-    Object localObject = this.gOr;
-    h localh = ((d)localObject).gNH;
-    localObject = new d.4((d)localObject);
-    if (!com.tencent.mm.danmaku.f.d.isEmpty(paramList))
-    {
-      Handler localHandler = localh.aso();
-      if (localHandler != null) {
-        localHandler.post(new h.2(localh, paramList, (h.a)localObject));
-      }
-    }
-    AppMethodBeat.o(241655);
+    AppMethodBeat.i(276435);
+    this.jyM.ayG();
+    AppMethodBeat.o(276435);
+  }
+  
+  public final void ayH()
+  {
+    AppMethodBeat.i(276444);
+    this.jyM.ayH();
+    AppMethodBeat.o(276444);
+  }
+  
+  public final void azb()
+  {
+    AppMethodBeat.i(276432);
+    this.jyM.start(0L);
+    AppMethodBeat.o(276432);
   }
   
   public final void c(Point paramPoint)
   {
-    AppMethodBeat.i(241647);
-    this.gOr.c(paramPoint);
-    AppMethodBeat.o(241647);
+    AppMethodBeat.i(276431);
+    this.jyM.c(paramPoint);
+    AppMethodBeat.o(276431);
   }
   
   public final void clear()
   {
-    AppMethodBeat.i(241651);
-    this.gOr.clear();
-    AppMethodBeat.o(241651);
-  }
-  
-  public final void d(com.tencent.mm.danmaku.b.a parama)
-  {
-    AppMethodBeat.i(241654);
-    Object localObject = this.gOr;
-    parama.setTime(((d)localObject).gNv.gQA);
-    h localh = ((d)localObject).gNH;
-    localObject = new d.3((d)localObject);
-    Handler localHandler = localh.aso();
-    if (localHandler != null) {
-      localHandler.post(new h.1(localh, parama, (h.a)localObject));
-    }
-    AppMethodBeat.o(241654);
+    AppMethodBeat.i(276439);
+    this.jyM.clear();
+    AppMethodBeat.o(276439);
   }
   
   public final boolean isPlaying()
   {
-    AppMethodBeat.i(241653);
-    boolean bool = this.gOr.isPlaying();
-    AppMethodBeat.o(241653);
+    AppMethodBeat.i(276445);
+    boolean bool = this.jyM.isPlaying();
+    AppMethodBeat.o(276445);
     return bool;
+  }
+  
+  public final boolean isStarted()
+  {
+    return !this.jyM.jxW;
   }
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(241646);
-    boolean bool = this.gOr.onTouch(paramView, paramMotionEvent);
-    AppMethodBeat.o(241646);
+    AppMethodBeat.i(276430);
+    boolean bool = this.jyM.onTouch(paramView, paramMotionEvent);
+    AppMethodBeat.o(276430);
     return bool;
   }
   
   public final void pause()
   {
-    AppMethodBeat.i(241649);
-    this.gOr.pause();
-    AppMethodBeat.o(241649);
+    AppMethodBeat.i(276434);
+    this.jyM.pause();
+    AppMethodBeat.o(276434);
+  }
+  
+  public final void quit()
+  {
+    AppMethodBeat.i(276441);
+    this.jyM.quit();
+    AppMethodBeat.o(276441);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(241652);
-    this.gOr.release();
-    AppMethodBeat.o(241652);
+    AppMethodBeat.i(276442);
+    this.jyM.release();
+    AppMethodBeat.o(276442);
   }
   
   public final void resume()
   {
-    AppMethodBeat.i(241648);
-    this.gOr.resume();
-    AppMethodBeat.o(241648);
+    AppMethodBeat.i(276433);
+    this.jyM.resume();
+    AppMethodBeat.o(276433);
   }
   
   public final void seek(long paramLong)
   {
-    AppMethodBeat.i(241650);
-    Object localObject = this.gOr;
-    e.v("DanmakuManager", "seek(): postime = ".concat(String.valueOf(paramLong)));
-    localObject = ((d)localObject).gOc;
-    Message localMessage = Message.obtain();
-    localMessage.what = 5;
-    localMessage.obj = Long.valueOf(paramLong);
-    ((i)localObject).sendMessage(localMessage);
-    AppMethodBeat.o(241650);
+    AppMethodBeat.i(276437);
+    this.jyM.seek(paramLong);
+    AppMethodBeat.o(276437);
   }
   
   public static final class a

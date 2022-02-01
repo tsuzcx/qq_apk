@@ -9,7 +9,7 @@ import java.util.HashMap;
 public abstract class b
   implements k
 {
-  private boolean dbG;
+  private boolean dfI;
   
   public b()
   {
@@ -23,19 +23,19 @@ public abstract class b
   
   public void a(String paramString, m paramm, int paramInt, HashMap<String, String> paramHashMap) {}
   
-  public void addSOSHistory(String paramString1, String paramString2) {}
+  protected abstract boolean aEt();
   
-  protected abstract boolean axa();
+  public void addSOSHistory(String paramString1, String paramString2) {}
   
   public final void create()
   {
     try
     {
-      Log.i("MicroMsg.FTS.BaseFTS5SearchLogic", "OnCreate %s | isCreated =%b", new Object[] { getName(), Boolean.valueOf(this.dbG) });
-      if ((!this.dbG) && (onCreate()))
+      Log.i("MicroMsg.FTS.BaseFTS5SearchLogic", "OnCreate %s | isCreated =%b", new Object[] { getName(), Boolean.valueOf(this.dfI) });
+      if ((!this.dfI) && (onCreate()))
       {
         Log.i("MicroMsg.FTS.BaseFTS5SearchLogic", "SetCreated");
-        this.dbG = true;
+        this.dfI = true;
       }
       return;
     }
@@ -52,24 +52,24 @@ public abstract class b
   
   public final void destroy()
   {
-    Log.i("MicroMsg.FTS.BaseFTS5SearchLogic", "OnDestroy %s | isCreated %b", new Object[] { getName(), Boolean.valueOf(this.dbG) });
-    if ((this.dbG) && (axa()))
+    Log.i("MicroMsg.FTS.BaseFTS5SearchLogic", "OnDestroy %s | isCreated %b", new Object[] { getName(), Boolean.valueOf(this.dfI) });
+    if ((this.dfI) && (aEt()))
     {
       Log.i("MicroMsg.FTS.BaseFTS5SearchLogic", "SetDestroyed");
-      this.dbG = false;
+      this.dfI = false;
     }
   }
   
   public final boolean isCreated()
   {
-    return this.dbG;
+    return this.dfI;
   }
   
   protected abstract boolean onCreate();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.finder.ui;
 import com.tencent.mm.storage.as;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationBlackUI$ContactItem;", "Lcom/tencent/mm/storage/Contact;", "()V", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationBlackUI$ContactItem;", "Lcom/tencent/mm/storage/Contact;", "()V", "plugin-finder_release"})
 public final class FinderConversationBlackUI$e
   extends as
 {}

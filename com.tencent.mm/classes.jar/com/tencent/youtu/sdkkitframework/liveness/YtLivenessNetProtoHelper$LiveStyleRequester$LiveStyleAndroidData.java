@@ -18,7 +18,7 @@ public class YtLivenessNetProtoHelper$LiveStyleRequester$LiveStyleAndroidData
   
   public YtLivenessNetProtoHelper$LiveStyleRequester$LiveStyleAndroidData()
   {
-    AppMethodBeat.i(187294);
+    AppMethodBeat.i(247504);
     this.lux = 0.0F;
     this.build_brand = Build.BRAND;
     this.build_model = Build.MODEL;
@@ -28,12 +28,12 @@ public class YtLivenessNetProtoHelper$LiveStyleRequester$LiveStyleAndroidData
     this.build_device = Build.DEVICE;
     this.android_apilevel = Build.VERSION.SDK_INT;
     this.android_version = Build.VERSION.RELEASE;
-    AppMethodBeat.o(187294);
+    AppMethodBeat.o(247504);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.YtLivenessNetProtoHelper.LiveStyleRequester.LiveStyleAndroidData
  * JD-Core Version:    0.7.0.1
  */

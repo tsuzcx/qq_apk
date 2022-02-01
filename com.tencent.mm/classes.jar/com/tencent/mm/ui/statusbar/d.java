@@ -7,10 +7,10 @@ import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.system.AndroidContextUtil;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.t;
 
 public final class d
-  extends r
+  extends t
 {
   public static void e(Window paramWindow)
   {
@@ -46,11 +46,11 @@ public final class d
     return false;
   }
   
-  public static Activity kD(Context paramContext)
+  public static Activity lz(Context paramContext)
   {
-    AppMethodBeat.i(258478);
+    AppMethodBeat.i(292914);
     paramContext = AndroidContextUtil.castActivityOrNull(paramContext);
-    AppMethodBeat.o(258478);
+    AppMethodBeat.o(292914);
     return paramContext;
   }
 }

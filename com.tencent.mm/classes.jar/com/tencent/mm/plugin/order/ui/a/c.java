@@ -8,16 +8,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.wxpay.a.d;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class c
   extends Preference
 {
-  private TextView ALg;
-  private ImageView AQx;
-  String AQy;
-  Bitmap iKs;
+  private TextView GEr;
+  private ImageView GJI;
+  String GJJ;
+  Bitmap lAx;
   View.OnClickListener mOnClickListener;
   private View mView;
   
@@ -26,13 +29,13 @@ public final class c
     super(paramContext);
     AppMethodBeat.i(66805);
     this.mView = null;
-    this.AQy = "";
-    this.iKs = null;
-    setLayoutResource(2131495435);
+    this.GJJ = "";
+    this.lAx = null;
+    setLayoutResource(a.g.mall_order_barcode_pref);
     AppMethodBeat.o(66805);
   }
   
-  public final View getView(View paramView, ViewGroup paramViewGroup)
+  public final View c(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(66806);
     if (this.mView == null) {
@@ -48,20 +51,20 @@ public final class c
   {
     AppMethodBeat.i(66807);
     super.onBindView(paramView);
-    this.ALg = ((TextView)paramView.findViewById(2131304366));
-    this.AQx = ((ImageView)paramView.findViewById(2131304365));
-    this.ALg.setText(this.AQy);
-    this.AQx.setImageBitmap(this.iKs);
-    this.AQx.setOnClickListener(this.mOnClickListener);
-    if ((this.AQy != null) && (this.AQy.length() > 48)) {
-      this.ALg.setTextSize(0, a.aG(this.mContext, 2131165482));
+    this.GEr = ((TextView)paramView.findViewById(a.f.mall_order_barcode_num));
+    this.GJI = ((ImageView)paramView.findViewById(a.f.mall_order_barcode_iv));
+    this.GEr.setText(this.GJJ);
+    this.GJI.setImageBitmap(this.lAx);
+    this.GJI.setOnClickListener(this.mOnClickListener);
+    if ((this.GJJ != null) && (this.GJJ.length() > 48)) {
+      this.GEr.setTextSize(0, a.aY(this.mContext, a.d.HintTextSize));
     }
     AppMethodBeat.o(66807);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.c
  * JD-Core Version:    0.7.0.1
  */

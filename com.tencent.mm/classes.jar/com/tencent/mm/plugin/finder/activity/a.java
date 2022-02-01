@@ -4,25 +4,25 @@ import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/activity/ActivityParamStore;", "", "()V", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/activity/ActivityParamStore;", "", "()V", "Companion", "plugin-finder_release"})
 public final class a
 {
-  private static Intent tqe;
-  public static final a tqf;
+  private static Intent wWI;
+  public static final a wWJ;
   
   static
   {
-    AppMethodBeat.i(241997);
-    tqf = new a((byte)0);
-    AppMethodBeat.o(241997);
+    AppMethodBeat.i(243119);
+    wWJ = new a((byte)0);
+    AppMethodBeat.o(243119);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/activity/ActivityParamStore$Companion;", "", "()V", "TAG", "", "storeIntent", "Landroid/content/Intent;", "getStoreIntent", "()Landroid/content/Intent;", "setStoreIntent", "(Landroid/content/Intent;)V", "reset", "", "restore", "intent", "save", "setActivityParam", "srcIntent", "dstIntent", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/activity/ActivityParamStore$Companion;", "", "()V", "TAG", "", "storeIntent", "Landroid/content/Intent;", "getStoreIntent", "()Landroid/content/Intent;", "setStoreIntent", "(Landroid/content/Intent;)V", "reset", "", "restore", "intent", "save", "setActivityParam", "srcIntent", "dstIntent", "plugin-finder_release"})
   public static final class a
   {
     public static void a(Intent paramIntent1, Intent paramIntent2)
     {
-      AppMethodBeat.i(241996);
+      AppMethodBeat.i(281994);
       int i = paramIntent1.getIntExtra("key_activity_type", 0);
       boolean bool = paramIntent1.getBooleanExtra("saveActivity", false);
       if ((i == 102) && (bool))
@@ -67,7 +67,7 @@ public final class a
         }
         paramIntent2.putExtra("key_activity_desc", paramIntent1);
       }
-      AppMethodBeat.o(241996);
+      AppMethodBeat.o(281994);
     }
   }
 }

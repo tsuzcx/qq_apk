@@ -3,20 +3,19 @@ package com.tencent.mm.plugin.priority.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.util.Calendar;
 
 public final class a
 {
-  public static String aB(String paramString1, String paramString2, String paramString3)
+  public static String aw(String paramString1, String paramString2, String paramString3)
   {
     int i = 1;
     AppMethodBeat.i(40495);
-    Object localObject = new o(paramString1);
-    if (!((o)localObject).exists()) {
-      ((o)localObject).mkdirs();
+    Object localObject = new q(paramString1);
+    if (!((q)localObject).ifE()) {
+      ((q)localObject).ifL();
     }
     if (Util.isNullOrNil(paramString2))
     {
@@ -31,7 +30,7 @@ public final class a
       localObject = paramString2;
       try
       {
-        if (!aa.z(new o(paramString2).heq().her()).equalsIgnoreCase(aa.z(new o(paramString1).her())))
+        if (!new q(paramString2).ifB().bOF().equalsIgnoreCase(new q(paramString1).bOF()))
         {
           localObject = paramString1 + "da_" + Util.nowMilliSecond();
           Log.w("MicroMsg.Priority.PriorityUtil", "maybe DirTraversal attach. %s", new Object[] { localObject });
@@ -48,7 +47,7 @@ public final class a
         }
         String str = paramString1 + (String)localObject;
         paramString2 = str;
-        if (!s.YS(str)) {
+        if (!u.agG(str)) {
           continue;
         }
         for (;;)
@@ -56,7 +55,7 @@ public final class a
           paramString2 = str;
           if (i < 20)
           {
-            if (!s.YS(paramString1 + i + "_" + (String)localObject)) {
+            if (!u.agG(paramString1 + i + "_" + (String)localObject)) {
               paramString2 = paramString1 + i + "_" + (String)localObject;
             }
           }
@@ -91,7 +90,7 @@ public final class a
     }
   }
   
-  public static long eCQ()
+  public static long foJ()
   {
     AppMethodBeat.i(40496);
     Calendar localCalendar = Calendar.getInstance();
@@ -104,7 +103,7 @@ public final class a
     return l;
   }
   
-  public static final boolean hL(int paramInt1, int paramInt2)
+  public static final boolean iQ(int paramInt1, int paramInt2)
   {
     return (paramInt1 & paramInt2) > 0;
   }

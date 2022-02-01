@@ -62,7 +62,7 @@ public abstract class IListener<T extends IEvent>
     {
       if (this.mCallbackProperty != null)
       {
-        ListenerInstanceMonitor.markInstanceUnregistered((IListener)this.mCallbackProperty.QZG);
+        ListenerInstanceMonitor.markInstanceUnregistered((IListener)this.mCallbackProperty.YzW);
         this.mCallbackProperty.dead();
         this.mCallbackProperty = null;
       }
@@ -82,7 +82,7 @@ public abstract class IListener<T extends IEvent>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.event.IListener
  * JD-Core Version:    0.7.0.1
  */

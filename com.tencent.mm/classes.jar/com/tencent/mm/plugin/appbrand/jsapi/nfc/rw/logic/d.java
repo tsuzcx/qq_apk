@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.logic;
 
-import com.tencent.mm.plugin.appbrand.h.a;
+import com.tencent.mm.plugin.appbrand.k.a;
 import kotlin.g.a.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16})
+@l(iBK={1, 1, 16})
 final class d
-  implements h.a
+  implements k.a
 {
   d(b paramb)
   {
-    this.hXF = paramb;
+    this.kMk = paramb;
   }
 }
 

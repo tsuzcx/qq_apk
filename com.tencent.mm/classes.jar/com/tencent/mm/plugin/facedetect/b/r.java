@@ -1,16 +1,17 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.amc;
-import com.tencent.mm.protocal.protobuf.amd;
+import com.tencent.mm.protocal.protobuf.epr;
+import com.tencent.mm.protocal.protobuf.eps;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class r
@@ -18,57 +19,57 @@ public final class r
   implements m
 {
   private i callback;
-  public String mFileName;
   private d rr;
+  public boolean wwd;
+  public boolean wwe;
   
-  public r(String paramString1, long paramLong, String paramString2, String paramString3, String paramString4)
+  public r(int paramInt)
   {
-    AppMethodBeat.i(103623);
-    this.mFileName = "";
+    AppMethodBeat.i(103620);
+    this.wwd = false;
+    this.wwe = false;
     d.a locala = new d.a();
-    locala.iLN = new amc();
-    locala.iLO = new amd();
-    locala.uri = "/cgi-bin/mmbiz-bin/usrmsg/facevideobindbioid";
+    locala.lBU = new epr();
+    locala.lBV = new eps();
+    locala.uri = "/cgi-bin/micromsg-bin/switchopface";
     locala.funcId = getType();
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    this.mFileName = paramString1;
-    paramString1 = (amc)this.rr.iLK.iLR;
-    paramString1.dNI = paramString2;
-    paramString1.LuJ = paramLong;
-    paramString1.LuK = paramString4;
-    paramString1.LuR = paramString3;
-    AppMethodBeat.o(103623);
+    this.rr = locala.bgN();
+    ((epr)d.b.b(this.rr.lBR)).RLe = paramInt;
+    AppMethodBeat.o(103620);
   }
   
   public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(103624);
+    AppMethodBeat.i(103621);
     this.callback = parami;
     int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(103624);
+    AppMethodBeat.o(103621);
     return i;
   }
   
   public final int getType()
   {
-    return 1197;
+    return 938;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(103625);
-    Log.d("MicroMsg.NetSceneFaceThirdBindVideo", "hy:  errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(103622);
+    params = (eps)d.c.b(((d)params).lBS);
+    this.wwd = params.Usn;
+    this.wwe = params.Uso;
+    Log.i("MicroMsg.NetSceneFaceSwitchOpFace", "hy: NetSceneFaceSwitchOpFace errType: %d, errCode: %d, errMsg: %s, hasBio: %b, isOpen: %b", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Boolean.valueOf(this.wwd), Boolean.valueOf(this.wwe) });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(103625);
+    AppMethodBeat.o(103622);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.r
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.akc;
+import com.tencent.mm.protocal.protobuf.alf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -33,21 +33,7 @@ public final class d
     this.db = paramISQLiteDatabase;
   }
   
-  public final c Fu(String paramString)
-  {
-    AppMethodBeat.i(153161);
-    c localc = new c();
-    localc.field_layerId = paramString;
-    boolean bool = super.get(localc, new String[0]);
-    if ((bool) && (localc.field_endTime == 0L)) {
-      localc.field_endTime = 9223372036854775807L;
-    }
-    Log.i("MicroMsg.ABTestStorage", "getByLayerId, id: %s, return: %b", new Object[] { paramString, Boolean.valueOf(bool) });
-    AppMethodBeat.o(153161);
-    return localc;
-  }
-  
-  public final void H(List<c> paramList, int paramInt)
+  public final void I(List<c> paramList, int paramInt)
   {
     AppMethodBeat.i(153163);
     int i = 0;
@@ -106,7 +92,21 @@ public final class d
     }
   }
   
-  public final Map<String, c> biC(String paramString)
+  public final c Mu(String paramString)
+  {
+    AppMethodBeat.i(153161);
+    c localc = new c();
+    localc.field_layerId = paramString;
+    boolean bool = super.get(localc, new String[0]);
+    if ((bool) && (localc.field_endTime == 0L)) {
+      localc.field_endTime = 9223372036854775807L;
+    }
+    Log.i("MicroMsg.ABTestStorage", "getByLayerId, id: %s, return: %b", new Object[] { paramString, Boolean.valueOf(bool) });
+    AppMethodBeat.o(153161);
+    return localc;
+  }
+  
+  public final Map<String, c> buV(String paramString)
   {
     AppMethodBeat.i(153162);
     if (Util.isNullOrNil(paramString)) {}
@@ -131,7 +131,7 @@ public final class d
     return localHashMap;
   }
   
-  public final LinkedList<akc> gzx()
+  public final LinkedList<alf> hvx()
   {
     AppMethodBeat.i(153165);
     LinkedList localLinkedList = new LinkedList();
@@ -145,12 +145,12 @@ public final class d
     for (;;)
     {
       localc.convertFrom(localCursor);
-      akc localakc = new akc();
+      alf localalf = new alf();
       try
       {
-        localakc.Lqu = Util.getInt(localc.field_expId, 0);
-        localakc.priority = localc.field_prioritylevel;
-        localLinkedList.add(localakc);
+        localalf.SrR = Util.getInt(localc.field_expId, 0);
+        localalf.priority = localc.field_prioritylevel;
+        localLinkedList.add(localalf);
         if (localCursor.moveToNext()) {
           continue;
         }
@@ -168,7 +168,7 @@ public final class d
     }
   }
   
-  public final String gzy()
+  public final String hvy()
   {
     AppMethodBeat.i(153164);
     Object localObject = getAll();
@@ -202,7 +202,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.d
  * JD-Core Version:    0.7.0.1
  */

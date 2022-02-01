@@ -7,27 +7,27 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class a$i$a
   implements View.OnClickListener
 {
-  public static final a GME;
+  public static final a NAm;
   
   static
   {
-    AppMethodBeat.i(191833);
-    GME = new a();
-    AppMethodBeat.o(191833);
+    AppMethodBeat.i(236947);
+    NAm = new a();
+    AppMethodBeat.o(236947);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(191832);
+    AppMethodBeat.i(236945);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin$panelRoot$2$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin$panelRoot$2$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
     a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/timecrop/VLogTimeEditPlugin$panelRoot$2$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(191832);
+    AppMethodBeat.o(236945);
   }
 }
 

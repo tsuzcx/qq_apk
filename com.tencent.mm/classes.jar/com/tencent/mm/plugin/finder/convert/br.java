@@ -1,20 +1,21 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import com.tencent.mm.plugin.finder.model.bb;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.model.bc;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgMentionedConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMsgConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMsgMentioned;", "scene", "", "(I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getScene", "()I", "convertMsg", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgFriendObjectRecommendLikeNewConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMsgConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMsgFriendObjectRecommendLike;", "scene", "", "(I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getScene", "()I", "convertMsg", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "plugin-finder_release"})
 public final class br
-  extends bh<bb>
+  extends bj<bc>
 {
   private final String TAG;
   private final int scene;
   
   public br(int paramInt)
   {
-    super(2131494534, paramInt);
+    super(b.g.finder_msg_item_of_friend_object_recommend_like_new, paramInt);
     this.scene = paramInt;
-    this.TAG = "Finder.FinderMsgMentionedConvert";
+    this.TAG = "Finder.FinderMsgFriendObjectRecommendLikeConvert";
   }
 }
 

@@ -2,7 +2,7 @@ package kotlin.a;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"forEach", "", "T", "", "operation", "Lkotlin/Function1;", "iterator", "withIndex", "Lkotlin/collections/IndexedValue;", "kotlin-stdlib"}, hxG=1)
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"forEach", "", "T", "", "operation", "Lkotlin/Function1;", "iterator", "withIndex", "Lkotlin/collections/IndexedValue;", "kotlin-stdlib"}, iBN=1)
 public class o
   extends n
 {}

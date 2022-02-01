@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
 import com.tencent.mm.plugin.exdevice.b.b;
-import com.tencent.mm.plugin.exdevice.g.a.h;
+import com.tencent.mm.plugin.exdevice.g.a.g;
 
 final class ExdeviceProfileUI$2
-  implements b<h>
+  implements b<g>
 {
   ExdeviceProfileUI$2(ExdeviceProfileUI paramExdeviceProfileUI) {}
 }

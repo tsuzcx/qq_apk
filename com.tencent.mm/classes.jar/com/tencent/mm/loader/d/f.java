@@ -4,10 +4,10 @@ import com.tencent.mm.loader.e.b.g;
 import com.tencent.mm.loader.h.e;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/loader/common/ITranscoderProducer;", "INPUT", "RESOURCE", "", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "asResourceName", "", "source", "whenDecode", "whenDownload", "whenLoad", "libimageloader_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/loader/common/ITranscoderProducer;", "INPUT", "RESOURCE", "", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "asResourceName", "", "source", "whenDecode", "whenDownload", "whenLoad", "libimageloader_release"})
 public abstract interface f<INPUT, RESOURCE>
 {
-  public abstract String Hi(String paramString);
+  public abstract String Ot(String paramString);
   
   public abstract e<? extends RESOURCE> a(g<?> paramg, com.tencent.mm.loader.f<?, RESOURCE> paramf, e<INPUT> parame);
 }

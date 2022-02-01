@@ -5,11 +5,11 @@ import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.b;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.e;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/appcamera/AppBrandRecordVieDelegateFactory;", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$ImplFactory;", "()V", "createImpl", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$MMSightRecordViewDelegate;", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/appcamera/AppBrandRecordVieDelegateFactory;", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$ImplFactory;", "()V", "createImpl", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$MMSightRecordViewDelegate;", "plugin-recordvideo_release"})
 public final class c
   implements MMSightRecordView.b
 {
-  public final MMSightRecordView.e bqH()
+  public final MMSightRecordView.e bBw()
   {
     AppMethodBeat.i(75112);
     MMSightRecordView.e locale = (MMSightRecordView.e)new d();
@@ -19,7 +19,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.appcamera.c
  * JD-Core Version:    0.7.0.1
  */

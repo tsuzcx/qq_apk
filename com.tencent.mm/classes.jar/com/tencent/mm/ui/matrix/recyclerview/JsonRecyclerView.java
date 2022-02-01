@@ -1,22 +1,22 @@
 package com.tencent.mm.ui.matrix.recyclerview;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.k;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 
 public class JsonRecyclerView
   extends RecyclerView
 {
-  private a Qnj;
-  float Qnk;
-  private RecyclerView.k Qnl;
+  private a XLi;
+  float XLj;
+  private RecyclerView.k XLk;
   int mode;
   
   public JsonRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
@@ -28,17 +28,17 @@ public class JsonRecyclerView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(38910);
-    this.Qnl = new RecyclerView.k()
+    this.XLk = new RecyclerView.k()
     {
       public final boolean a(RecyclerView paramAnonymousRecyclerView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(234461);
+        AppMethodBeat.i(203893);
         switch (paramAnonymousMotionEvent.getAction() & paramAnonymousMotionEvent.getActionMasked())
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(234461);
+          AppMethodBeat.o(203893);
           return false;
           JsonRecyclerView.this.mode = 1;
           continue;
@@ -47,33 +47,33 @@ public class JsonRecyclerView
           paramAnonymousRecyclerView = JsonRecyclerView.this;
           paramAnonymousRecyclerView.mode -= 1;
           continue;
-          JsonRecyclerView.this.Qnk = JsonRecyclerView.ak(paramAnonymousMotionEvent);
+          JsonRecyclerView.this.XLj = JsonRecyclerView.as(paramAnonymousMotionEvent);
           paramAnonymousRecyclerView = JsonRecyclerView.this;
           paramAnonymousRecyclerView.mode += 1;
           continue;
           if (JsonRecyclerView.this.mode >= 2)
           {
-            float f = JsonRecyclerView.ak(paramAnonymousMotionEvent);
-            if (Math.abs(f - JsonRecyclerView.this.Qnk) > 0.5F)
+            float f = JsonRecyclerView.as(paramAnonymousMotionEvent);
+            if (Math.abs(f - JsonRecyclerView.this.XLj) > 0.5F)
             {
-              JsonRecyclerView.a(JsonRecyclerView.this, f / JsonRecyclerView.this.Qnk);
-              JsonRecyclerView.this.Qnk = f;
+              JsonRecyclerView.a(JsonRecyclerView.this, f / JsonRecyclerView.this.XLj);
+              JsonRecyclerView.this.XLj = f;
             }
           }
         }
       }
       
-      public final void ah(boolean paramAnonymousBoolean) {}
+      public final void ao(boolean paramAnonymousBoolean) {}
       
       public final void b(RecyclerView paramAnonymousRecyclerView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(234462);
+        AppMethodBeat.i(203894);
         b localb = new b();
-        localb.bm(paramAnonymousRecyclerView);
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/matrix/recyclerview/JsonRecyclerView$1", "android/support/v7/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroid/support/v7/widget/RecyclerView;Landroid/view/MotionEvent;)V", this, localb.axR());
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/matrix/recyclerview/JsonRecyclerView$1", "android/support/v7/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroid/support/v7/widget/RecyclerView;Landroid/view/MotionEvent;)V");
-        AppMethodBeat.o(234462);
+        localb.bn(paramAnonymousRecyclerView);
+        localb.bn(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/matrix/recyclerview/JsonRecyclerView$1", "androidx/recyclerview/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroidx/recyclerview/widget/RecyclerView;Landroid/view/MotionEvent;)V", this, localb.aFi());
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/matrix/recyclerview/JsonRecyclerView$1", "androidx/recyclerview/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroidx/recyclerview/widget/RecyclerView;Landroid/view/MotionEvent;)V");
+        AppMethodBeat.o(203894);
       }
     };
     getContext();
@@ -101,12 +101,12 @@ public class JsonRecyclerView
   
   public void setBracesColor(int paramInt)
   {
-    a.Qnd = paramInt;
+    a.XLc = paramInt;
   }
   
   public void setKeyColor(int paramInt)
   {
-    a.QmX = paramInt;
+    a.XKW = paramInt;
   }
   
   public void setScaleEnable(boolean paramBoolean)
@@ -114,11 +114,11 @@ public class JsonRecyclerView
     AppMethodBeat.i(38912);
     if (paramBoolean)
     {
-      a(this.Qnl);
+      a(this.XLk);
       AppMethodBeat.o(38912);
       return;
     }
-    b(this.Qnl);
+    b(this.XLk);
     AppMethodBeat.o(38912);
   }
   
@@ -129,10 +129,10 @@ public class JsonRecyclerView
     if (paramFloat < 10.0F) {
       f = 10.0F;
     }
-    while (a.Qne != f)
+    while (a.XLd != f)
     {
-      a.Qne = f;
-      if (this.Qnj == null) {
+      a.XLd = f;
+      if (this.XLi == null) {
         break;
       }
       RecyclerView.LayoutManager localLayoutManager = getLayoutManager();
@@ -153,32 +153,32 @@ public class JsonRecyclerView
   
   public void setValueBooleanColor(int paramInt)
   {
-    a.Qna = paramInt;
+    a.XKZ = paramInt;
   }
   
   public void setValueNullColor(int paramInt)
   {
-    a.QmZ = paramInt;
+    a.XKY = paramInt;
   }
   
   public void setValueNumberColor(int paramInt)
   {
-    a.QmZ = paramInt;
+    a.XKY = paramInt;
   }
   
   public void setValueTextColor(int paramInt)
   {
-    a.QmY = paramInt;
+    a.XKX = paramInt;
   }
   
   public void setValueUrlColor(int paramInt)
   {
-    a.Qnb = paramInt;
+    a.XLa = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.matrix.recyclerview.JsonRecyclerView
  * JD-Core Version:    0.7.0.1
  */

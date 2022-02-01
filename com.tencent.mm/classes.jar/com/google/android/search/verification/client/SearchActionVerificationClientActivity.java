@@ -12,7 +12,7 @@ public abstract class SearchActionVerificationClientActivity
   public final void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = new Intent(this, xP());
+    paramBundle = new Intent(this, yj());
     paramBundle.putExtra("SearchActionVerificationClientExtraIntent", getIntent());
     startService(paramBundle);
     finish();
@@ -24,7 +24,7 @@ public abstract class SearchActionVerificationClientActivity
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public abstract Class<? extends SearchActionVerificationClientService> xP();
+  public abstract Class<? extends SearchActionVerificationClientService> yj();
 }
 
 

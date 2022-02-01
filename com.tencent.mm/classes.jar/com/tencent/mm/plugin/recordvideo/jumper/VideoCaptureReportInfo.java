@@ -9,9 +9,9 @@ public class VideoCaptureReportInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<VideoCaptureReportInfo> CREATOR;
-  public int rna;
-  public int sQn;
-  public long twG;
+  public long HLs;
+  public int uQm;
+  public int wwk;
   
   static
   {
@@ -22,20 +22,20 @@ public class VideoCaptureReportInfo
   
   public VideoCaptureReportInfo()
   {
-    this.sQn = -1;
-    this.rna = -1;
-    this.twG = -1L;
+    this.wwk = -1;
+    this.uQm = -1;
+    this.HLs = -1L;
   }
   
   public VideoCaptureReportInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(101524);
-    this.sQn = -1;
-    this.rna = -1;
-    this.twG = -1L;
-    this.sQn = paramParcel.readInt();
-    this.rna = paramParcel.readInt();
-    this.twG = paramParcel.readLong();
+    this.wwk = -1;
+    this.uQm = -1;
+    this.HLs = -1L;
+    this.wwk = paramParcel.readInt();
+    this.uQm = paramParcel.readInt();
+    this.HLs = paramParcel.readLong();
     AppMethodBeat.o(101524);
   }
   
@@ -47,9 +47,9 @@ public class VideoCaptureReportInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(101525);
-    paramParcel.writeInt(this.sQn);
-    paramParcel.writeInt(this.rna);
-    paramParcel.writeLong(this.twG);
+    paramParcel.writeInt(this.wwk);
+    paramParcel.writeInt(this.uQm);
+    paramParcel.writeLong(this.HLs);
     AppMethodBeat.o(101525);
   }
 }

@@ -1,18 +1,23 @@
 package com.tencent.mm.model;
 
+import android.os.Bundle;
+import android.os.Looper;
+import com.tencent.mm.storage.ca;
+import java.util.List;
+
 public abstract interface bb
 {
-  public abstract void aVs();
+  public abstract void P(List<ca> paramList);
   
-  public abstract void aVt();
+  public abstract void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle);
   
-  public abstract void aVu();
+  public abstract void a(ca paramca);
   
-  public abstract void aVv();
+  public abstract Looper getLooper();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.bb
  * JD-Core Version:    0.7.0.1
  */

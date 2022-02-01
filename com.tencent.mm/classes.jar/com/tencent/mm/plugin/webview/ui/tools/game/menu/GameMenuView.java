@@ -12,33 +12,35 @@ import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.ui.base.n;
+import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.plugin.webview.c.g;
+import com.tencent.mm.ui.base.p;
 
 public class GameMenuView
   extends LinearLayout
 {
-  private View Jse;
-  private LinearLayout Jsf;
-  private LinearLayout Jsg;
-  private f Jsh;
-  private b.c Jsi;
-  private b.a Jsj;
+  private View QpB;
+  private LinearLayout QpC;
+  private LinearLayout QpD;
+  private f QpE;
+  private b.c QpF;
+  private b.a QpG;
   private Context mContext;
   private LayoutInflater mInflater;
-  private boolean mLL;
+  private boolean pMD;
   
   public GameMenuView(Context paramContext)
   {
     super(paramContext, null);
     AppMethodBeat.i(80983);
-    this.mLL = false;
+    this.pMD = false;
     this.mContext = paramContext;
     this.mInflater = LayoutInflater.from(this.mContext);
     paramContext = this.mContext.getResources().getDisplayMetrics();
     if (paramContext.widthPixels > paramContext.heightPixels) {
       bool = true;
     }
-    this.mLL = bool;
+    this.pMD = bool;
     initView();
     AppMethodBeat.o(80983);
   }
@@ -47,7 +49,7 @@ public class GameMenuView
   {
     super(paramContext, paramAttributeSet, 0);
     AppMethodBeat.i(80985);
-    this.mLL = false;
+    this.pMD = false;
     this.mContext = paramContext;
     initView();
     AppMethodBeat.o(80985);
@@ -56,27 +58,27 @@ public class GameMenuView
   private void initView()
   {
     AppMethodBeat.i(80986);
-    if (this.mLL)
+    if (this.pMD)
     {
       setOrientation(0);
-      this.mInflater.inflate(2131494914, this, true);
+      this.mInflater.inflate(c.g.game_menu_split_style_landscape, this, true);
     }
-    for (View localView = this.mInflater.inflate(2131494911, this, true);; localView = this.mInflater.inflate(2131494912, this, true))
+    for (View localView = this.mInflater.inflate(c.g.game_menu_layout_landscape, this, true);; localView = this.mInflater.inflate(c.g.game_menu_layout_portrait, this, true))
     {
-      this.Jse = localView.findViewById(2131302035);
-      this.Jsf = ((LinearLayout)localView.findViewById(2131302034));
-      this.Jsg = ((LinearLayout)localView.findViewById(2131302036));
+      this.QpB = localView.findViewById(c.f.game_menu_layout);
+      this.QpC = ((LinearLayout)localView.findViewById(c.f.game_menu_first_line));
+      this.QpD = ((LinearLayout)localView.findViewById(c.f.game_menu_second_line));
       AppMethodBeat.o(80986);
       return;
       setOrientation(1);
-      this.mInflater.inflate(2131494915, this, true);
+      this.mInflater.inflate(c.g.game_menu_split_style_portrait, this, true);
     }
   }
   
   public void setAdapter(f paramf)
   {
     AppMethodBeat.i(80984);
-    this.Jsh = paramf;
+    this.QpE = paramf;
     paramf.registerDataSetObserver(new DataSetObserver()
     {
       public final void onChanged()
@@ -99,12 +101,12 @@ public class GameMenuView
   
   public void setDismissListener(b.a parama)
   {
-    this.Jsj = parama;
+    this.QpG = parama;
   }
   
   public void setGameMenuItemSelectedListener(b.c paramc)
   {
-    this.Jsi = paramc;
+    this.QpF = paramc;
   }
 }
 

@@ -1,90 +1,123 @@
 package com.tencent.mm.aj;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.q.b;
-import com.tencent.mm.compatible.util.f;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ccz;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.kq;
-import com.tencent.mm.protocal.protobuf.kr;
+import com.tencent.mm.cw.c;
+import com.tencent.mm.f.c.z;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import junit.framework.Assert;
 
 public final class k
-  extends q
-  implements m
+  extends z
 {
-  private i callback;
-  LinkedList<dqi> iLb = null;
-  LinkedList<ccz> iLc = null;
+  public static IAutoDBItem.MAutoDBInfo info;
   
-  public k(LinkedList<dqi> paramLinkedList)
+  static
   {
-    this.iLb = paramLinkedList;
-  }
-  
-  public final int doScene(g paramg, i parami)
-  {
-    AppMethodBeat.i(150294);
-    if ((this.iLb == null) || (this.iLb.size() <= 0))
-    {
-      Log.e("MicroMsg.NetSceneBatchGetHeadImg", f.apq() + "doScene ReqSize==0");
-      AppMethodBeat.o(150294);
-      return -1;
+    AppMethodBeat.i(150130);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[7];
+    localMAutoDBInfo.columns = new String[8];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localMAutoDBInfo.columns[0] = "msgId";
+    localMAutoDBInfo.colsMap.put("msgId", "LONG default '0'  PRIMARY KEY ");
+    localStringBuilder.append(" msgId LONG default '0'  PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.primaryKey = "msgId";
+    localMAutoDBInfo.columns[1] = "xml";
+    localMAutoDBInfo.colsMap.put("xml", "TEXT");
+    localStringBuilder.append(" xml TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[2] = "appId";
+    localMAutoDBInfo.colsMap.put("appId", "TEXT");
+    localStringBuilder.append(" appId TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[3] = "title";
+    localMAutoDBInfo.colsMap.put("title", "TEXT");
+    localStringBuilder.append(" title TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[4] = "description";
+    localMAutoDBInfo.colsMap.put("description", "TEXT");
+    localStringBuilder.append(" description TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[5] = "source";
+    localMAutoDBInfo.colsMap.put("source", "TEXT");
+    localStringBuilder.append(" source TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[6] = "type";
+    localMAutoDBInfo.colsMap.put("type", "INTEGER");
+    localStringBuilder.append(" type INTEGER");
+    localMAutoDBInfo.columns[7] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
+    if (CrashReportFactory.hasDebuger()) {
+      Assert.assertTrue(bbq());
     }
-    this.callback = parami;
-    parami = new d.a();
-    parami.iLN = new kq();
-    parami.iLO = new kr();
-    parami.uri = "/cgi-bin/micromsg-bin/batchgetheadimg";
-    parami.funcId = 123;
-    parami.iLP = 15;
-    parami.respCmdId = 1000000015;
-    parami = parami.aXF();
-    kq localkq = (kq)parami.iLK.iLR;
-    localkq.KGP = this.iLb;
-    localkq.oTz = this.iLb.size();
-    int i = dispatch(paramg, parami, this);
-    AppMethodBeat.o(150294);
-    return i;
+    AppMethodBeat.o(150130);
   }
   
-  public final int getType()
+  private static final boolean bbq()
   {
-    return 123;
+    AppMethodBeat.i(150129);
+    Field[] arrayOfField = k.b.class.getDeclaredFields();
+    int i = 0;
+    int k;
+    for (int j = 0; i < arrayOfField.length; j = k)
+    {
+      k = j;
+      if (!Modifier.isStatic(arrayOfField[i].getModifiers())) {
+        k = j + 1;
+      }
+      i += 1;
+    }
+    if (j > 207)
+    {
+      Log.e("MicroMsg.AppMessage", "AppMessage.Content should not add new field!!! (%d) is over the limit(%d)!!!", new Object[] { Integer.valueOf(j), Integer.valueOf(207) });
+      AppMethodBeat.o(150129);
+      return false;
+    }
+    Log.i("MicroMsg.AppMessage", "AppMessage.Content nonStaticFieldCount: %d", new Object[] { Integer.valueOf(j) });
+    AppMethodBeat.o(150129);
+    return true;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(150295);
-    Log.d("MicroMsg.NetSceneBatchGetHeadImg", "errType:" + paramInt2 + " errCode:" + paramInt3);
-    this.iLc = ((kr)((d)params).iLL.iLR).KOI;
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(150295);
+    return info;
   }
   
-  public final int securityLimitCount()
+  public static final class c
   {
-    return 20;
-  }
-  
-  public final q.b securityVerificationChecked(s params)
-  {
-    return q.b.iMq;
+    private static final List<c<? extends f>> lpk;
+    private static final HashMap<Integer, c<? extends f>> lpl;
+    
+    static
+    {
+      AppMethodBeat.i(150128);
+      lpk = Collections.synchronizedList(new ArrayList());
+      lpl = new HashMap();
+      AppMethodBeat.o(150128);
+    }
+    
+    public static void a(c<? extends f> paramc)
+    {
+      AppMethodBeat.i(150126);
+      lpk.add(paramc);
+      AppMethodBeat.o(150126);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.aj.k
  * JD-Core Version:    0.7.0.1
  */

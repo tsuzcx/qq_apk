@@ -6,19 +6,18 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.cgi.cn;
-import com.tencent.mm.plugin.music.model.e.a;
+import com.tencent.mm.plugin.finder.cgi.cr;
 import com.tencent.mm.protocal.protobuf.FinderMedia;
 import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
 import com.tencent.mm.protocal.protobuf.FinderUserPageResponse;
-import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.protocal.protobuf.bid;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import java.util.ArrayList;
@@ -29,73 +28,73 @@ import kotlin.a.j;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabMyPostFragment;", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getFeedFrom", "onDestroy", "", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "syncGetFeeds", "music", "Lcom/tencent/mm/plugin/music/model/storage/Music;", "keyword", "Companion", "plugin-mv_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabMyPostFragment;", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getFeedFrom", "getType", "onDestroy", "", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "syncGetFeeds", "music", "Lcom/tencent/mm/plugin/music/model/storage/Music;", "keyword", "Companion", "plugin-mv_release"})
 public final class MusicMvTabMyPostFragment
   extends MusicMvTabFragment
   implements i
 {
-  public static final a Azp;
+  public static final MusicMvTabMyPostFragment.a GpW;
   private HashMap _$_findViewCache;
   private b lastBuffer;
   
   static
   {
-    AppMethodBeat.i(257714);
-    Azp = new a((byte)0);
-    AppMethodBeat.o(257714);
+    AppMethodBeat.i(235972);
+    GpW = new MusicMvTabMyPostFragment.a((byte)0);
+    AppMethodBeat.o(235972);
   }
   
   public MusicMvTabMyPostFragment(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(257711);
-    AppMethodBeat.o(257711);
+    AppMethodBeat.i(235968);
+    AppMethodBeat.o(235968);
   }
   
   public MusicMvTabMyPostFragment(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     this(paramContext, paramAttributeSet, paramInt, (byte)0);
-    AppMethodBeat.i(257712);
-    AppMethodBeat.o(257712);
+    AppMethodBeat.i(235969);
+    AppMethodBeat.o(235969);
   }
   
   private MusicMvTabMyPostFragment(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, (byte)0);
-    AppMethodBeat.i(257713);
-    g.azz().a(3736, (i)this);
-    AppMethodBeat.o(257713);
+    AppMethodBeat.i(235970);
+    h.aGY().a(3736, (i)this);
+    AppMethodBeat.o(235970);
   }
   
-  public final void a(a parama, String paramString)
+  public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(257709);
-    super.a(parama, paramString);
-    parama = z.aUg();
-    paramString = new bbn();
-    paramString.tCE = 93;
-    paramString.tyh = 93;
-    p.g(parama, "finderUsername");
-    parama = new cn(parama, 0L, this.lastBuffer, 0, paramString, 0, 0L);
-    g.azz().b((q)parama);
-    AppMethodBeat.o(257709);
-  }
-  
-  public final View ewN()
-  {
-    AppMethodBeat.i(257715);
+    AppMethodBeat.i(235973);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(2131305082));
+    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
     View localView1 = localView2;
     if (localView2 == null)
     {
-      localView1 = findViewById(2131305082);
-      this._$_findViewCache.put(Integer.valueOf(2131305082), localView1);
+      localView1 = findViewById(paramInt);
+      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(257715);
+    AppMethodBeat.o(235973);
     return localView1;
+  }
+  
+  public final void a(com.tencent.mm.plugin.music.model.e.a parama, String paramString)
+  {
+    AppMethodBeat.i(235962);
+    super.a(parama, paramString);
+    parama = z.bdh();
+    paramString = new bid();
+    paramString.xkX = 93;
+    paramString.fGo = 93;
+    p.j(parama, "finderUsername");
+    parama = new cr(parama, 0L, this.lastBuffer, 0, paramString, 0, 0L);
+    h.aGY().b((q)parama);
+    AppMethodBeat.o(235962);
   }
   
   public final int getFeedFrom()
@@ -103,32 +102,36 @@ public final class MusicMvTabMyPostFragment
     return 4;
   }
   
+  public final int getType()
+  {
+    return 2;
+  }
+  
   public final void onDestroy()
   {
-    AppMethodBeat.i(257708);
+    AppMethodBeat.i(235958);
     super.onDestroy();
-    g.azz().b(3736, (i)this);
-    AppMethodBeat.o(257708);
+    h.aGY().b(3736, (i)this);
+    AppMethodBeat.o(235958);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    AppMethodBeat.i(257710);
-    if (((paramq instanceof cn)) && (paramInt1 == 0) && (paramInt2 == 0))
+    AppMethodBeat.i(235964);
+    if (((paramq instanceof cr)) && (paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.lastBuffer = ((cn)paramq).getLastBuffer();
-      paramString = ((cn)paramq).rr.aYK();
+      this.lastBuffer = ((cr)paramq).getLastBuffer();
+      paramString = ((cr)paramq).rr.bhY();
       if (paramString == null)
       {
         paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderUserPageResponse");
-        AppMethodBeat.o(257710);
+        AppMethodBeat.o(235964);
         throw paramString;
       }
       paramString = (List)((FinderUserPageResponse)paramString).object;
       if (paramString != null)
       {
         paramString = paramString.iterator();
-        label233:
         while (paramString.hasNext())
         {
           FinderObject localFinderObject = (FinderObject)paramString.next();
@@ -140,40 +143,47 @@ public final class MusicMvTabMyPostFragment
               localObject = ((FinderObjectDesc)localObject).media;
               if (localObject != null)
               {
-                localObject = (FinderMedia)j.kt((List)localObject);
+                localObject = (FinderMedia)j.lp((List)localObject);
                 if ((localObject == null) || (((FinderMedia)localObject).mediaType != 2)) {}
               }
             }
             for (paramInt1 = 0;; paramInt1 = 1)
             {
+              if (localFinderObject.privateFlag == 1) {
+                paramInt1 = 0;
+              }
               if (paramInt1 == 0) {
-                break label233;
+                break;
               }
               long l = localFinderObject.id;
               localObject = localFinderObject.objectNonceId;
               if (getFeedIdMap().contains(Long.valueOf(l))) {
                 break;
               }
-              getDataList().add(new MusicMvTabFragment.d(new MusicMvTabFragment.f(l, (String)localObject, localFinderObject)));
+              getDataList().add(new MusicMvTabFragment.d(new MusicMvTabFragment.f(l, (String)localObject, localFinderObject, (byte)0)));
               break;
             }
           }
         }
         getAdapter().notifyDataSetChanged();
+        paramString = getOnSceneEndListener();
+        if (paramString != null) {
+          paramString.invoke();
+        }
       }
-      setHasMore(((cn)paramq).tuG);
+      setHasMore(((cr)paramq).xcp);
     }
-    getRlLayout().apT(0);
+    getRlLayout().azs(0);
     paramString = getResultListener();
     if (paramString != null) {
-      paramString.hx(1, getAdapter().getItemCount());
+      paramString.iC(1, getAdapter().getItemCount());
     }
     paramString = getAdapter();
     if (paramString != null)
     {
       paramString = Integer.valueOf(paramString.getItemCount());
       if (paramString.intValue() != 0) {
-        break label349;
+        break label377;
       }
       paramString = getEmptyLL();
       if (paramString != null) {
@@ -184,29 +194,26 @@ public final class MusicMvTabMyPostFragment
     {
       paramString = getLoadingTv();
       if (paramString == null) {
-        break label367;
+        break label395;
       }
       paramString.setVisibility(8);
-      AppMethodBeat.o(257710);
+      AppMethodBeat.o(235964);
       return;
       paramString = null;
       break;
-      label349:
+      label377:
       paramString = getEmptyLL();
       if (paramString != null) {
         paramString.setVisibility(8);
       }
     }
-    label367:
-    AppMethodBeat.o(257710);
+    label395:
+    AppMethodBeat.o(235964);
   }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabMyPostFragment$Companion;", "", "()V", "type", "", "plugin-mv_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.view.MusicMvTabMyPostFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -2,80 +2,88 @@ package com.tencent.mm.plugin.music.ui.view;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-import com.tencent.e.f.h;
+import com.tencent.d.f.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.music.a.d;
+import com.tencent.mm.plugin.music.a.e;
+import com.tencent.mm.plugin.music.a.g;
 import java.util.HashMap;
+import kotlin.g.b.aa.f;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/music/ui/view/MusicMainSeekBar;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isSeeking", "", "()Z", "setSeeking", "(Z)V", "maxDuration", "maxDurationStr", "", "onSeekBarChange", "Lcom/tencent/mm/plugin/music/ui/view/MusicMainSeekBar$OnSeekBarChange;", "initView", "", "setMaxProgress", "totalDuration", "setOnSeekBarChange", "setProgress", "currentPos", "updateTimeInfoText", "Companion", "OnSeekBarChange", "plugin-music_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/ui/view/MusicMainSeekBar;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isSeeking", "", "()Z", "setSeeking", "(Z)V", "maxDuration", "maxDurationStr", "", "onSeekBarChange", "Lcom/tencent/mm/plugin/music/ui/view/MusicMainSeekBar$OnSeekBarChange;", "initView", "", "setMaxProgress", "totalDuration", "setOnSeekBarChange", "setProgress", "currentPos", "updateTimeInfoText", "Companion", "OnSeekBarChange", "plugin-music_release"})
 public final class MusicMainSeekBar
   extends FrameLayout
 {
-  public static final a Aon;
-  private b Aol;
-  private String Aom;
+  public static final a FVt;
+  private b FVr;
+  private String FVs;
   private HashMap _$_findViewCache;
   private int maxDuration;
-  private boolean oyR;
+  private boolean rjZ;
   
   static
   {
-    AppMethodBeat.i(220050);
-    Aon = new a((byte)0);
-    AppMethodBeat.o(220050);
+    AppMethodBeat.i(260630);
+    FVt = new a((byte)0);
+    AppMethodBeat.o(260630);
   }
   
   public MusicMainSeekBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(220049);
-    AppMethodBeat.o(220049);
+    AppMethodBeat.i(260628);
+    AppMethodBeat.o(260628);
   }
   
-  public MusicMainSeekBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public MusicMainSeekBar(final Context paramContext, final AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(220048);
-    this.Aom = "04:00";
-    View.inflate(getContext(), 2131495777, (ViewGroup)this);
-    getResources().getDrawable(2131234195);
-    ((SeekBar)_$_findCachedViewById(2131307481)).setOnSeekBarChangeListener((SeekBar.OnSeekBarChangeListener)new c(this));
-    ((SeekBar)_$_findCachedViewById(2131307481)).setOnTouchListener((View.OnTouchListener)d.Aop);
-    AppMethodBeat.o(220048);
+    AppMethodBeat.i(260627);
+    this.FVs = "04:00";
+    View.inflate(getContext(), a.g.music_main_seek_bar, (ViewGroup)this);
+    paramContext = getResources().getDrawable(a.d.music_main_seek_bar_thumb);
+    paramAttributeSet = new aa.f();
+    paramAttributeSet.aaBC = getResources().getDrawable(a.d.music_main_seek_bar_thumb2);
+    ((LinearLayout)_$_findCachedViewById(a.e.parentLayout)).setOnTouchListener((View.OnTouchListener)new c(this));
+    ((SeekBar)_$_findCachedViewById(a.e.seekBar)).setOnSeekBarChangeListener((SeekBar.OnSeekBarChangeListener)new d(this, paramAttributeSet, paramContext));
+    ((SeekBar)_$_findCachedViewById(a.e.seekBar)).setOnTouchListener((View.OnTouchListener)MusicMainSeekBar.e.FVx);
+    AppMethodBeat.o(260627);
   }
   
-  private final void Tf(int paramInt)
+  private final void Zz(int paramInt)
   {
-    AppMethodBeat.i(220046);
-    TextView localTextView = (TextView)_$_findCachedViewById(2131309087);
+    AppMethodBeat.i(260623);
+    TextView localTextView = (TextView)_$_findCachedViewById(a.e.timeStart);
     if (localTextView != null) {
-      localTextView.setText((CharSequence)a.Ar(paramInt));
+      localTextView.setText((CharSequence)a.DY(paramInt));
     }
-    localTextView = (TextView)_$_findCachedViewById(2131309088);
+    localTextView = (TextView)_$_findCachedViewById(a.e.timeEnd);
     if (localTextView != null)
     {
-      localTextView.setText((CharSequence)(" / " + this.Aom));
-      AppMethodBeat.o(220046);
+      localTextView.setText((CharSequence)String.valueOf(this.FVs));
+      AppMethodBeat.o(260623);
       return;
     }
-    AppMethodBeat.o(220046);
+    AppMethodBeat.o(260623);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(220052);
+    AppMethodBeat.i(260634);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -86,57 +94,57 @@ public final class MusicMainSeekBar
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(220052);
+    AppMethodBeat.o(260634);
     return localView1;
   }
   
   public final void setMaxProgress(int paramInt)
   {
-    AppMethodBeat.i(220047);
+    AppMethodBeat.i(260624);
     this.maxDuration = paramInt;
-    this.Aom = a.Ar(paramInt);
-    SeekBar localSeekBar = (SeekBar)_$_findCachedViewById(2131307481);
-    p.g(localSeekBar, "seekBar");
+    this.FVs = a.DY(paramInt);
+    SeekBar localSeekBar = (SeekBar)_$_findCachedViewById(a.e.seekBar);
+    p.j(localSeekBar, "seekBar");
     localSeekBar.setMax(paramInt);
-    new StringBuilder("maxDuration:").append(this.Aom).append(", ").append(paramInt);
-    h.hkS();
-    AppMethodBeat.o(220047);
+    new StringBuilder("maxDuration:").append(this.FVs).append(", ").append(paramInt);
+    h.ioq();
+    AppMethodBeat.o(260624);
   }
   
   public final void setOnSeekBarChange(b paramb)
   {
-    AppMethodBeat.i(220044);
-    p.h(paramb, "onSeekBarChange");
-    this.Aol = paramb;
-    AppMethodBeat.o(220044);
+    AppMethodBeat.i(260618);
+    p.k(paramb, "onSeekBarChange");
+    this.FVr = paramb;
+    AppMethodBeat.o(260618);
   }
   
   public final void setProgress(int paramInt)
   {
-    AppMethodBeat.i(220045);
-    if (this.oyR)
+    AppMethodBeat.i(260620);
+    if (this.rjZ)
     {
-      AppMethodBeat.o(220045);
+      AppMethodBeat.o(260620);
       return;
     }
-    Tf(paramInt);
-    SeekBar localSeekBar = (SeekBar)_$_findCachedViewById(2131307481);
-    p.g(localSeekBar, "seekBar");
+    Zz(paramInt);
+    SeekBar localSeekBar = (SeekBar)_$_findCachedViewById(a.e.seekBar);
+    p.j(localSeekBar, "seekBar");
     localSeekBar.setProgress(paramInt);
-    AppMethodBeat.o(220045);
+    AppMethodBeat.o(260620);
   }
   
   public final void setSeeking(boolean paramBoolean)
   {
-    this.oyR = paramBoolean;
+    this.rjZ = paramBoolean;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/music/ui/view/MusicMainSeekBar$Companion;", "", "()V", "TAG", "", "timeParse", "duration", "", "plugin-music_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/ui/view/MusicMainSeekBar$Companion;", "", "()V", "TAG", "", "timeParse", "duration", "", "plugin-music_release"})
   public static final class a
   {
-    public static String Ar(int paramInt)
+    public static String DY(int paramInt)
     {
-      AppMethodBeat.i(220038);
+      AppMethodBeat.i(260236);
       Object localObject = new StringBuilder();
       long l1 = paramInt / 60000L;
       long l2 = Math.floor(paramInt % 60000L / 1000.0D);
@@ -149,127 +157,136 @@ public final class MusicMainSeekBar
       }
       ((StringBuilder)localObject).append(l2);
       localObject = ((StringBuilder)localObject).toString();
-      p.g(localObject, "time.toString()");
-      AppMethodBeat.o(220038);
+      p.j(localObject, "time.toString()");
+      AppMethodBeat.o(260236);
       return localObject;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/music/ui/view/MusicMainSeekBar$OnSeekBarChange;", "", "onSeekBarChange", "", "seekPosition", "", "max", "onSeekEnd", "onSeekStart", "plugin-music_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/ui/view/MusicMainSeekBar$OnSeekBarChange;", "", "onSeekBarChange", "", "seekPosition", "", "max", "onSeekEnd", "onSeekStart", "plugin-music_release"})
   public static abstract interface b
   {
-    public abstract void evo();
+    public abstract void ffH();
     
-    public abstract void hv(int paramInt1, int paramInt2);
+    public abstract void iA(int paramInt1, int paramInt2);
     
-    public abstract void hw(int paramInt1, int paramInt2);
+    public abstract void iz(int paramInt1, int paramInt2);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/music/ui/view/MusicMainSeekBar$initView$1", "Landroid/widget/SeekBar$OnSeekBarChangeListener;", "onProgressChanged", "", "seekBar", "Landroid/widget/SeekBar;", "progress", "", "fromUser", "", "onStartTrackingTouch", "onStopTrackingTouch", "plugin-music_release"})
-  public static final class c
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
+  static final class c
+    implements View.OnTouchListener
+  {
+    c(MusicMainSeekBar paramMusicMainSeekBar) {}
+    
+    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+    {
+      float f1 = 0.0F;
+      AppMethodBeat.i(260386);
+      paramView = new Rect();
+      ((SeekBar)this.FVu._$_findCachedViewById(a.e.seekBar)).getHitRect(paramView);
+      p.j(paramMotionEvent, "event");
+      float f3;
+      float f2;
+      if ((paramMotionEvent.getY() >= paramView.top - 500) && (paramMotionEvent.getY() <= paramView.bottom + 500))
+      {
+        f3 = paramView.top + paramView.height() / 2;
+        f2 = paramMotionEvent.getX() - paramView.left;
+        if (f2 >= 0.0F) {}
+      }
+      for (;;)
+      {
+        paramView = MotionEvent.obtain(paramMotionEvent.getDownTime(), paramMotionEvent.getEventTime(), paramMotionEvent.getAction(), f1, f3, paramMotionEvent.getMetaState());
+        boolean bool = ((SeekBar)this.FVu._$_findCachedViewById(a.e.seekBar)).onTouchEvent(paramView);
+        AppMethodBeat.o(260386);
+        return bool;
+        if (f2 > paramView.width())
+        {
+          f1 = paramView.width();
+          continue;
+          AppMethodBeat.o(260386);
+          return false;
+        }
+        else
+        {
+          f1 = f2;
+        }
+      }
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/music/ui/view/MusicMainSeekBar$initView$2", "Landroid/widget/SeekBar$OnSeekBarChangeListener;", "onProgressChanged", "", "seekBar", "Landroid/widget/SeekBar;", "progress", "", "fromUser", "", "onStartTrackingTouch", "onStopTrackingTouch", "plugin-music_release"})
+  public static final class d
     implements SeekBar.OnSeekBarChangeListener
   {
+    d(aa.f paramf, Drawable paramDrawable) {}
+    
     public final void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
     {
-      AppMethodBeat.i(220039);
+      AppMethodBeat.i(259559);
       if (paramBoolean)
       {
-        MusicMainSeekBar.a(this.Aoo, paramInt);
+        MusicMainSeekBar.a(this.FVu, paramInt);
         if (paramSeekBar != null)
         {
-          MusicMainSeekBar.b localb = MusicMainSeekBar.a(this.Aoo);
+          MusicMainSeekBar.b localb = MusicMainSeekBar.a(this.FVu);
           if (localb != null)
           {
-            localb.hw(paramSeekBar.getProgress(), paramSeekBar.getMax());
-            AppMethodBeat.o(220039);
+            localb.iA(paramSeekBar.getProgress(), paramSeekBar.getMax());
+            AppMethodBeat.o(259559);
             return;
           }
-          AppMethodBeat.o(220039);
+          AppMethodBeat.o(259559);
           return;
         }
       }
-      AppMethodBeat.o(220039);
+      AppMethodBeat.o(259559);
     }
     
     public final void onStartTrackingTouch(SeekBar paramSeekBar)
     {
-      AppMethodBeat.i(220040);
-      this.Aoo.setSeeking(true);
-      paramSeekBar = (LinearLayout)this.Aoo._$_findCachedViewById(2131309089);
-      if (paramSeekBar != null) {
-        paramSeekBar.setVisibility(0);
-      }
-      paramSeekBar = MusicMainSeekBar.a(this.Aoo);
-      if (paramSeekBar != null)
+      AppMethodBeat.i(259562);
+      this.FVu.setSeeking(true);
+      Object localObject = this.FVu;
+      if (paramSeekBar != null) {}
+      for (int i = paramSeekBar.getProgress();; i = 0)
       {
-        paramSeekBar.evo();
-        AppMethodBeat.o(220040);
+        MusicMainSeekBar.a((MusicMainSeekBar)localObject, i);
+        localObject = MusicMainSeekBar.a(this.FVu);
+        if (localObject != null) {
+          ((MusicMainSeekBar.b)localObject).ffH();
+        }
+        if (paramSeekBar == null) {
+          break;
+        }
+        paramSeekBar.setThumb((Drawable)paramAttributeSet.aaBC);
+        AppMethodBeat.o(259562);
         return;
       }
-      AppMethodBeat.o(220040);
+      AppMethodBeat.o(259562);
     }
     
     public final void onStopTrackingTouch(SeekBar paramSeekBar)
     {
-      AppMethodBeat.i(220041);
-      this.Aoo.setSeeking(false);
-      Object localObject = (LinearLayout)this.Aoo._$_findCachedViewById(2131309089);
-      if (localObject != null) {
-        ((LinearLayout)localObject).setVisibility(4);
-      }
+      AppMethodBeat.i(259565);
+      this.FVu.setSeeking(false);
       if (paramSeekBar != null)
       {
-        localObject = MusicMainSeekBar.a(this.Aoo);
-        if (localObject != null)
-        {
-          ((MusicMainSeekBar.b)localObject).hv(paramSeekBar.getProgress(), paramSeekBar.getMax());
-          AppMethodBeat.o(220041);
-          return;
+        MusicMainSeekBar.b localb = MusicMainSeekBar.a(this.FVu);
+        if (localb != null) {
+          localb.iz(paramSeekBar.getProgress(), paramSeekBar.getMax());
         }
-        AppMethodBeat.o(220041);
+        paramSeekBar.setThumb(paramContext);
+        AppMethodBeat.o(259565);
         return;
       }
-      AppMethodBeat.o(220041);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
-  static final class d
-    implements View.OnTouchListener
-  {
-    public static final d Aop;
-    
-    static
-    {
-      AppMethodBeat.i(220043);
-      Aop = new d();
-      AppMethodBeat.o(220043);
-    }
-    
-    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-    {
-      AppMethodBeat.i(220042);
-      p.g(paramMotionEvent, "event");
-      switch (paramMotionEvent.getAction())
-      {
-      }
-      for (;;)
-      {
-        paramView.onTouchEvent(paramMotionEvent);
-        AppMethodBeat.o(220042);
-        return true;
-        p.g(paramView, "v");
-        paramView.getParent().requestDisallowInterceptTouchEvent(true);
-        continue;
-        p.g(paramView, "v");
-        paramView.getParent().requestDisallowInterceptTouchEvent(true);
-      }
+      AppMethodBeat.o(259565);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.view.MusicMainSeekBar
  * JD-Core Version:    0.7.0.1
  */

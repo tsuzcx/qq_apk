@@ -14,7 +14,7 @@ final class d$6
   {
     AppMethodBeat.i(113759);
     paramDialogInterface.dismiss();
-    if (this.qkY) {
+    if (this.tGU) {
       this.val$activity.finish();
     }
     AppMethodBeat.o(113759);
@@ -22,7 +22,7 @@ final class d$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.d.6
  * JD-Core Version:    0.7.0.1
  */

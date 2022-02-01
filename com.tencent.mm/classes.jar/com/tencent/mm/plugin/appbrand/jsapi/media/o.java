@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.media;
 import android.content.Context;
 import android.text.TextUtils;
 import android.widget.Toast;
+import com.tencent.luggage.b.a.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -15,7 +16,7 @@ public final class o
   public static final int CTRL_INDEX = 216;
   public static final String NAME = "saveVideoToPhotosAlbum";
   
-  final boolean aaa(String paramString)
+  final boolean ahR(String paramString)
   {
     AppMethodBeat.i(139885);
     boolean bool = Util.nullAsNil(paramString).toLowerCase().contains("video");
@@ -23,7 +24,7 @@ public final class o
     return bool;
   }
   
-  final String aab(String paramString)
+  final String ahS(String paramString)
   {
     AppMethodBeat.i(139886);
     String str = paramString;
@@ -35,7 +36,7 @@ public final class o
     return paramString;
   }
   
-  final void aac(final String paramString)
+  final void ahT(final String paramString)
   {
     AppMethodBeat.i(139887);
     MMHandlerThread.postToMainThread(new Runnable()
@@ -43,7 +44,7 @@ public final class o
       public final void run()
       {
         AppMethodBeat.i(139884);
-        Toast.makeText(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(2131767076, new Object[] { AndroidMediaUtil.getFriendlySdcardPath(paramString) }), 1).show();
+        Toast.makeText(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(a.g.video_file_saved, new Object[] { AndroidMediaUtil.getFriendlySdcardPath(paramString) }), 1).show();
         AppMethodBeat.o(139884);
       }
     });
@@ -52,7 +53,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.o
  * JD-Core Version:    0.7.0.1
  */

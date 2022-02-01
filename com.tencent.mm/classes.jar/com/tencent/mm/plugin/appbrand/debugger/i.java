@@ -1,107 +1,73 @@
 package com.tencent.mm.plugin.appbrand.debugger;
 
+import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.be.c;
-import com.tencent.mm.plugin.appbrand.appusage.an;
-import com.tencent.mm.plugin.appbrand.config.y;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.launching.c.e;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.f;
+import kotlin.g;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
 import kotlin.l;
-import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/debugger/MonkeyUpdateWxaUsageListNotify;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgPushingXmlHandler$IMessageHandler;", "()V", "SAMPLE", "", "handleMessage", "", "xml", "parsedKV", "", "nilAs", "as", "Lkotlin/Function0;", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/debugger/MockScanCodeUrl;", "Lcom/tencent/mm/plugin/appbrand/debugger/DebuggerShell$DebuggerAction;", "()V", "handler", "Lcom/tencent/mm/plugin/appbrand/launching/links/DebugCmdLinkOpener;", "getHandler", "()Lcom/tencent/mm/plugin/appbrand/launching/links/DebugCmdLinkOpener;", "handler$delegate", "Lkotlin/Lazy;", "name", "", "onAction", "", "intent", "Landroid/content/Intent;", "plugin-appbrand-integration_release"})
 public final class i
-  implements be.c
+  implements DebuggerShell.a
 {
-  private final String kNz = "<sysmsg type=\"AppBrandTestUpdateWxaUsageListNotify\">\n\n<AppBrandTestUpdateWxaUsageListNotify>\n\n    <DeleteCount></DeleteCount>\n\n    <DeleteList>\n\n        <DeleteAppInfo>\n\n            <UserName>%s</UserName>\n\n            <AppID>%s</AppID>\n\n            <AppType>%d</AppType>\n\n        </DeleteAppInfo>\n\n    </DeleteList>\n\n</AppBrandTestUpdateWxaUsageListNotify></sysmsg>";
+  private final f ocu;
   
-  public final void l(String paramString, Map<String, String> paramMap)
+  public i()
   {
-    AppMethodBeat.i(228194);
-    if (paramMap == null)
+    AppMethodBeat.i(50350);
+    this.ocu = g.ar((a)a.ocv);
+    AppMethodBeat.o(50350);
+  }
+  
+  public final void B(Intent paramIntent)
+  {
+    AppMethodBeat.i(50349);
+    if (paramIntent != null)
     {
-      AppMethodBeat.o(228194);
-      return;
-    }
-    int k = Util.getInt((String)paramMap.get(".sysmsg.AppBrandTestUpdateWxaUsageListNotify" + ".DeleteCount"), 0);
-    if (k <= 0)
-    {
-      AppMethodBeat.o(228194);
-      return;
-    }
-    if (k >= 0)
-    {
-      int i = 0;
-      for (;;)
+      paramIntent = paramIntent.getStringExtra("url");
+      if (paramIntent != null)
       {
-        Object localObject1 = new StringBuilder().append(".sysmsg.AppBrandTestUpdateWxaUsageListNotify").append(".DeleteList.DeleteAppInfo");
-        int m;
-        if (i == 0)
-        {
-          paramString = "";
-          Object localObject2 = paramString;
-          paramString = (String)paramMap.get((String)localObject2 + ".UserName");
-          localObject1 = (String)paramMap.get((String)localObject2 + ".AppID");
-          m = Util.getInt((String)paramMap.get((String)localObject2 + ".AppType"), 0);
-          localObject2 = (CharSequence)paramString;
-          if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
-            break label325;
-          }
-          j = 1;
-          label225:
-          if (j != 0)
-          {
-            localObject2 = (CharSequence)localObject1;
-            if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
-              break label331;
-            }
-            j = 1;
-            label255:
-            if (j != 0) {
-              break label351;
-            }
-          }
-          localObject2 = (CharSequence)paramString;
-          if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
-            break label337;
-          }
-        }
-        label325:
-        label331:
-        label337:
-        for (int j = 1;; j = 0)
-        {
-          if (j != 0) {
-            paramString = y.Xy((String)localObject1);
-          }
-          if (localObject1 != null) {
-            break label343;
-          }
-          paramString = new t("null cannot be cast to non-null type kotlin.String");
-          AppMethodBeat.o(228194);
-          throw paramString;
-          paramString = Integer.valueOf(i);
-          break;
-          j = 0;
-          break label225;
-          j = 0;
-          break label255;
-        }
-        label343:
-        an.u(paramString, (String)localObject1, m);
-        label351:
-        if (i == k) {
-          break;
-        }
-        i += 1;
+        ((e)this.ocu.getValue()).a(MMApplicationContext.getContext(), paramIntent, 1011, new Bundle(), null);
+        AppMethodBeat.o(50349);
+        return;
       }
     }
-    AppMethodBeat.o(228194);
+    AppMethodBeat.o(50349);
+  }
+  
+  public final String name()
+  {
+    return "MockScanCodeUrl";
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/launching/links/DebugCmdLinkOpener;", "invoke"})
+  static final class a
+    extends q
+    implements a<e>
+  {
+    public static final a ocv;
+    
+    static
+    {
+      AppMethodBeat.i(50347);
+      ocv = new a();
+      AppMethodBeat.o(50347);
+    }
+    
+    a()
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.i
  * JD-Core Version:    0.7.0.1
  */

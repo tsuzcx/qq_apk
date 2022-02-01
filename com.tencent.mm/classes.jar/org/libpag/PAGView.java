@@ -39,21 +39,23 @@ public class PAGView
   private static final int MSG_FLUSH = 0;
   private static final int MSG_HANDLER_THREAD_QUITE = 2;
   private static final int MSG_SURFACE_DESTROY = 1;
-  private static String TAG;
+  private static final String TAG = "PAGView";
   private static final Object g_HandlerLock;
   private static volatile int g_HandlerThreadCount;
   private static PAGRendererHandler g_PAGRendererHandler;
   private static HandlerThread g_PAGRendererThread;
+  private Boolean _isAnimatorPreRunning;
   private boolean _isPlaying;
   private ValueAnimator animator;
-  private volatile float animatorProgress;
+  private volatile double animatorProgress;
+  private volatile long currentPlayTime;
   private String filePath;
   private SparseArray<PAGImage> imageReplacementMap;
   private boolean isAttachedToWindow;
   private Runnable mAnimatorCancelRunnable;
-  private AnimatorListenerAdapter mAnimatorListenerAdapter;
+  private final AnimatorListenerAdapter mAnimatorListenerAdapter;
   private Runnable mAnimatorStartRunnable;
-  private ValueAnimator.AnimatorUpdateListener mAnimatorUpdateListener;
+  private final ValueAnimator.AnimatorUpdateListener mAnimatorUpdateListener;
   private TextureView.SurfaceTextureListener mListener;
   private ArrayList<PAGFlushListener> mPAGFlushListeners;
   private boolean mSaveVisibleState;
@@ -61,22 +63,22 @@ public class PAGView
   private PAGFile pagFile;
   private PAGPlayer pagPlayer;
   private PAGSurface pagSurface;
+  private boolean preAggregatedVisible;
   private EGLContext sharedContext;
   private SparseArray<PAGText> textReplacementMap;
   
   static
   {
-    AppMethodBeat.i(237014);
-    TAG = "PAGView";
+    AppMethodBeat.i(195508);
     g_HandlerLock = new Object();
     g_PAGRendererHandler = null;
     g_PAGRendererThread = null;
     g_HandlerThreadCount = 0;
-    Object localObject = a.hPU();
-    if (((a)localObject).UhY == null)
+    Object localObject = a.iVd();
+    if (((a)localObject).abLt == null)
     {
-      ((a)localObject).UhY = new ScreenBroadcastReceiver((ScreenBroadcastReceiver.a)localObject);
-      localObject = ((a)localObject).UhY;
+      ((a)localObject).abLt = new ScreenBroadcastReceiver((ScreenBroadcastReceiver.a)localObject);
+      localObject = ((a)localObject).abLt;
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.intent.action.SCREEN_ON");
       localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
@@ -86,19 +88,20 @@ public class PAGView
         if (localContext != null) {
           localContext.registerReceiver((BroadcastReceiver)localObject, localIntentFilter);
         }
-        AppMethodBeat.o(237014);
+        AppMethodBeat.o(195508);
         return;
       }
       catch (Exception localException) {}
     }
-    AppMethodBeat.o(237014);
+    AppMethodBeat.o(195508);
   }
   
   public PAGView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(236954);
+    AppMethodBeat.i(195345);
     this._isPlaying = false;
+    this._isAnimatorPreRunning = null;
     this.filePath = "";
     this.isAttachedToWindow = false;
     this.sharedContext = null;
@@ -110,102 +113,102 @@ public class PAGView
     {
       public void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
-        AppMethodBeat.i(236937);
-        PAGView.access$202(PAGView.this, ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue());
-        PAGView.access$300(PAGView.this);
-        AppMethodBeat.o(236937);
+        AppMethodBeat.i(195304);
+        PAGView.access$202(PAGView.this, paramAnonymousValueAnimator.getCurrentPlayTime());
+        PAGView.access$400(PAGView.this, ((Float)PAGView.this.animator.getAnimatedValue()).floatValue());
+        AppMethodBeat.o(195304);
       }
     };
     this.mAnimatorListenerAdapter = new AnimatorListenerAdapter()
     {
       public void onAnimationCancel(Animator arg1)
       {
-        AppMethodBeat.i(236940);
+        AppMethodBeat.i(195317);
         super.onAnimationCancel(???);
         synchronized (PAGView.this)
         {
-          Iterator localIterator = PAGView.this.mViewListeners.iterator();
-          if (localIterator.hasNext()) {
-            ((PAGView.PAGViewListener)localIterator.next()).onAnimationCancel(PAGView.this);
+          ArrayList localArrayList = new ArrayList(PAGView.this.mViewListeners);
+          ??? = localArrayList.iterator();
+          if (???.hasNext()) {
+            ((PAGView.PAGViewListener)???.next()).onAnimationCancel(PAGView.this);
           }
         }
-        AppMethodBeat.o(236940);
       }
       
       public void onAnimationEnd(Animator arg1)
       {
-        AppMethodBeat.i(236939);
+        AppMethodBeat.i(195316);
         super.onAnimationEnd(???);
         synchronized (PAGView.this)
         {
-          Iterator localIterator = PAGView.this.mViewListeners.iterator();
-          if (localIterator.hasNext()) {
-            ((PAGView.PAGViewListener)localIterator.next()).onAnimationEnd(PAGView.this);
+          ArrayList localArrayList = new ArrayList(PAGView.this.mViewListeners);
+          ??? = localArrayList.iterator();
+          if (???.hasNext()) {
+            ((PAGView.PAGViewListener)???.next()).onAnimationEnd(PAGView.this);
           }
         }
-        AppMethodBeat.o(236939);
       }
       
       public void onAnimationRepeat(Animator arg1)
       {
-        AppMethodBeat.i(236941);
+        AppMethodBeat.i(195319);
         super.onAnimationRepeat(???);
         synchronized (PAGView.this)
         {
-          Iterator localIterator = PAGView.this.mViewListeners.iterator();
-          if (localIterator.hasNext()) {
-            ((PAGView.PAGViewListener)localIterator.next()).onAnimationRepeat(PAGView.this);
+          ArrayList localArrayList = new ArrayList(PAGView.this.mViewListeners);
+          ??? = localArrayList.iterator();
+          if (???.hasNext()) {
+            ((PAGView.PAGViewListener)???.next()).onAnimationRepeat(PAGView.this);
           }
         }
-        AppMethodBeat.o(236941);
       }
       
       public void onAnimationStart(Animator arg1)
       {
-        AppMethodBeat.i(236938);
+        AppMethodBeat.i(195311);
         super.onAnimationStart(???);
         synchronized (PAGView.this)
         {
-          Iterator localIterator = PAGView.this.mViewListeners.iterator();
-          if (localIterator.hasNext()) {
-            ((PAGView.PAGViewListener)localIterator.next()).onAnimationStart(PAGView.this);
+          ArrayList localArrayList = new ArrayList(PAGView.this.mViewListeners);
+          ??? = localArrayList.iterator();
+          if (???.hasNext()) {
+            ((PAGView.PAGViewListener)???.next()).onAnimationStart(PAGView.this);
           }
         }
-        AppMethodBeat.o(236938);
       }
     };
     this.mAnimatorStartRunnable = new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(236943);
-        if (PAGView.this.isAttachedToWindow)
-        {
+        AppMethodBeat.i(195325);
+        if (PAGView.this.isAttachedToWindow) {
           PAGView.this.animator.start();
-          AppMethodBeat.o(236943);
-          return;
         }
-        AppMethodBeat.o(236943);
+        AppMethodBeat.o(195325);
       }
     };
     this.mAnimatorCancelRunnable = new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(236944);
+        AppMethodBeat.i(195327);
+        PAGView.access$202(PAGView.this, PAGView.this.animator.getCurrentPlayTime());
         PAGView.this.animator.cancel();
-        AppMethodBeat.o(236944);
+        AppMethodBeat.o(195327);
       }
     };
+    this.preAggregatedVisible = true;
     setupSurfaceTexture();
-    AppMethodBeat.o(236954);
+    AppMethodBeat.o(195345);
   }
   
   public PAGView(Context paramContext, EGLContext paramEGLContext)
   {
     super(paramContext);
-    AppMethodBeat.i(236955);
+    AppMethodBeat.i(195346);
     this._isPlaying = false;
+    this._isAnimatorPreRunning = null;
     this.filePath = "";
     this.isAttachedToWindow = false;
     this.sharedContext = null;
@@ -217,103 +220,103 @@ public class PAGView
     {
       public void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
-        AppMethodBeat.i(236937);
-        PAGView.access$202(PAGView.this, ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue());
-        PAGView.access$300(PAGView.this);
-        AppMethodBeat.o(236937);
+        AppMethodBeat.i(195304);
+        PAGView.access$202(PAGView.this, paramAnonymousValueAnimator.getCurrentPlayTime());
+        PAGView.access$400(PAGView.this, ((Float)PAGView.this.animator.getAnimatedValue()).floatValue());
+        AppMethodBeat.o(195304);
       }
     };
     this.mAnimatorListenerAdapter = new AnimatorListenerAdapter()
     {
       public void onAnimationCancel(Animator arg1)
       {
-        AppMethodBeat.i(236940);
+        AppMethodBeat.i(195317);
         super.onAnimationCancel(???);
         synchronized (PAGView.this)
         {
-          Iterator localIterator = PAGView.this.mViewListeners.iterator();
-          if (localIterator.hasNext()) {
-            ((PAGView.PAGViewListener)localIterator.next()).onAnimationCancel(PAGView.this);
+          ArrayList localArrayList = new ArrayList(PAGView.this.mViewListeners);
+          ??? = localArrayList.iterator();
+          if (???.hasNext()) {
+            ((PAGView.PAGViewListener)???.next()).onAnimationCancel(PAGView.this);
           }
         }
-        AppMethodBeat.o(236940);
       }
       
       public void onAnimationEnd(Animator arg1)
       {
-        AppMethodBeat.i(236939);
+        AppMethodBeat.i(195316);
         super.onAnimationEnd(???);
         synchronized (PAGView.this)
         {
-          Iterator localIterator = PAGView.this.mViewListeners.iterator();
-          if (localIterator.hasNext()) {
-            ((PAGView.PAGViewListener)localIterator.next()).onAnimationEnd(PAGView.this);
+          ArrayList localArrayList = new ArrayList(PAGView.this.mViewListeners);
+          ??? = localArrayList.iterator();
+          if (???.hasNext()) {
+            ((PAGView.PAGViewListener)???.next()).onAnimationEnd(PAGView.this);
           }
         }
-        AppMethodBeat.o(236939);
       }
       
       public void onAnimationRepeat(Animator arg1)
       {
-        AppMethodBeat.i(236941);
+        AppMethodBeat.i(195319);
         super.onAnimationRepeat(???);
         synchronized (PAGView.this)
         {
-          Iterator localIterator = PAGView.this.mViewListeners.iterator();
-          if (localIterator.hasNext()) {
-            ((PAGView.PAGViewListener)localIterator.next()).onAnimationRepeat(PAGView.this);
+          ArrayList localArrayList = new ArrayList(PAGView.this.mViewListeners);
+          ??? = localArrayList.iterator();
+          if (???.hasNext()) {
+            ((PAGView.PAGViewListener)???.next()).onAnimationRepeat(PAGView.this);
           }
         }
-        AppMethodBeat.o(236941);
       }
       
       public void onAnimationStart(Animator arg1)
       {
-        AppMethodBeat.i(236938);
+        AppMethodBeat.i(195311);
         super.onAnimationStart(???);
         synchronized (PAGView.this)
         {
-          Iterator localIterator = PAGView.this.mViewListeners.iterator();
-          if (localIterator.hasNext()) {
-            ((PAGView.PAGViewListener)localIterator.next()).onAnimationStart(PAGView.this);
+          ArrayList localArrayList = new ArrayList(PAGView.this.mViewListeners);
+          ??? = localArrayList.iterator();
+          if (???.hasNext()) {
+            ((PAGView.PAGViewListener)???.next()).onAnimationStart(PAGView.this);
           }
         }
-        AppMethodBeat.o(236938);
       }
     };
     this.mAnimatorStartRunnable = new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(236943);
-        if (PAGView.this.isAttachedToWindow)
-        {
+        AppMethodBeat.i(195325);
+        if (PAGView.this.isAttachedToWindow) {
           PAGView.this.animator.start();
-          AppMethodBeat.o(236943);
-          return;
         }
-        AppMethodBeat.o(236943);
+        AppMethodBeat.o(195325);
       }
     };
     this.mAnimatorCancelRunnable = new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(236944);
+        AppMethodBeat.i(195327);
+        PAGView.access$202(PAGView.this, PAGView.this.animator.getCurrentPlayTime());
         PAGView.this.animator.cancel();
-        AppMethodBeat.o(236944);
+        AppMethodBeat.o(195327);
       }
     };
+    this.preAggregatedVisible = true;
     this.sharedContext = paramEGLContext;
     setupSurfaceTexture();
-    AppMethodBeat.o(236955);
+    AppMethodBeat.o(195346);
   }
   
   public PAGView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(236956);
+    AppMethodBeat.i(195348);
     this._isPlaying = false;
+    this._isAnimatorPreRunning = null;
     this.filePath = "";
     this.isAttachedToWindow = false;
     this.sharedContext = null;
@@ -325,102 +328,102 @@ public class PAGView
     {
       public void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
-        AppMethodBeat.i(236937);
-        PAGView.access$202(PAGView.this, ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue());
-        PAGView.access$300(PAGView.this);
-        AppMethodBeat.o(236937);
+        AppMethodBeat.i(195304);
+        PAGView.access$202(PAGView.this, paramAnonymousValueAnimator.getCurrentPlayTime());
+        PAGView.access$400(PAGView.this, ((Float)PAGView.this.animator.getAnimatedValue()).floatValue());
+        AppMethodBeat.o(195304);
       }
     };
     this.mAnimatorListenerAdapter = new AnimatorListenerAdapter()
     {
       public void onAnimationCancel(Animator arg1)
       {
-        AppMethodBeat.i(236940);
+        AppMethodBeat.i(195317);
         super.onAnimationCancel(???);
         synchronized (PAGView.this)
         {
-          Iterator localIterator = PAGView.this.mViewListeners.iterator();
-          if (localIterator.hasNext()) {
-            ((PAGView.PAGViewListener)localIterator.next()).onAnimationCancel(PAGView.this);
+          ArrayList localArrayList = new ArrayList(PAGView.this.mViewListeners);
+          ??? = localArrayList.iterator();
+          if (???.hasNext()) {
+            ((PAGView.PAGViewListener)???.next()).onAnimationCancel(PAGView.this);
           }
         }
-        AppMethodBeat.o(236940);
       }
       
       public void onAnimationEnd(Animator arg1)
       {
-        AppMethodBeat.i(236939);
+        AppMethodBeat.i(195316);
         super.onAnimationEnd(???);
         synchronized (PAGView.this)
         {
-          Iterator localIterator = PAGView.this.mViewListeners.iterator();
-          if (localIterator.hasNext()) {
-            ((PAGView.PAGViewListener)localIterator.next()).onAnimationEnd(PAGView.this);
+          ArrayList localArrayList = new ArrayList(PAGView.this.mViewListeners);
+          ??? = localArrayList.iterator();
+          if (???.hasNext()) {
+            ((PAGView.PAGViewListener)???.next()).onAnimationEnd(PAGView.this);
           }
         }
-        AppMethodBeat.o(236939);
       }
       
       public void onAnimationRepeat(Animator arg1)
       {
-        AppMethodBeat.i(236941);
+        AppMethodBeat.i(195319);
         super.onAnimationRepeat(???);
         synchronized (PAGView.this)
         {
-          Iterator localIterator = PAGView.this.mViewListeners.iterator();
-          if (localIterator.hasNext()) {
-            ((PAGView.PAGViewListener)localIterator.next()).onAnimationRepeat(PAGView.this);
+          ArrayList localArrayList = new ArrayList(PAGView.this.mViewListeners);
+          ??? = localArrayList.iterator();
+          if (???.hasNext()) {
+            ((PAGView.PAGViewListener)???.next()).onAnimationRepeat(PAGView.this);
           }
         }
-        AppMethodBeat.o(236941);
       }
       
       public void onAnimationStart(Animator arg1)
       {
-        AppMethodBeat.i(236938);
+        AppMethodBeat.i(195311);
         super.onAnimationStart(???);
         synchronized (PAGView.this)
         {
-          Iterator localIterator = PAGView.this.mViewListeners.iterator();
-          if (localIterator.hasNext()) {
-            ((PAGView.PAGViewListener)localIterator.next()).onAnimationStart(PAGView.this);
+          ArrayList localArrayList = new ArrayList(PAGView.this.mViewListeners);
+          ??? = localArrayList.iterator();
+          if (???.hasNext()) {
+            ((PAGView.PAGViewListener)???.next()).onAnimationStart(PAGView.this);
           }
         }
-        AppMethodBeat.o(236938);
       }
     };
     this.mAnimatorStartRunnable = new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(236943);
-        if (PAGView.this.isAttachedToWindow)
-        {
+        AppMethodBeat.i(195325);
+        if (PAGView.this.isAttachedToWindow) {
           PAGView.this.animator.start();
-          AppMethodBeat.o(236943);
-          return;
         }
-        AppMethodBeat.o(236943);
+        AppMethodBeat.o(195325);
       }
     };
     this.mAnimatorCancelRunnable = new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(236944);
+        AppMethodBeat.i(195327);
+        PAGView.access$202(PAGView.this, PAGView.this.animator.getCurrentPlayTime());
         PAGView.this.animator.cancel();
-        AppMethodBeat.o(236944);
+        AppMethodBeat.o(195327);
       }
     };
+    this.preAggregatedVisible = true;
     setupSurfaceTexture();
-    AppMethodBeat.o(236956);
+    AppMethodBeat.o(195348);
   }
   
   public PAGView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(236957);
+    AppMethodBeat.i(195349);
     this._isPlaying = false;
+    this._isAnimatorPreRunning = null;
     this.filePath = "";
     this.isAttachedToWindow = false;
     this.sharedContext = null;
@@ -432,95 +435,94 @@ public class PAGView
     {
       public void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
-        AppMethodBeat.i(236937);
-        PAGView.access$202(PAGView.this, ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue());
-        PAGView.access$300(PAGView.this);
-        AppMethodBeat.o(236937);
+        AppMethodBeat.i(195304);
+        PAGView.access$202(PAGView.this, paramAnonymousValueAnimator.getCurrentPlayTime());
+        PAGView.access$400(PAGView.this, ((Float)PAGView.this.animator.getAnimatedValue()).floatValue());
+        AppMethodBeat.o(195304);
       }
     };
     this.mAnimatorListenerAdapter = new AnimatorListenerAdapter()
     {
       public void onAnimationCancel(Animator arg1)
       {
-        AppMethodBeat.i(236940);
+        AppMethodBeat.i(195317);
         super.onAnimationCancel(???);
         synchronized (PAGView.this)
         {
-          Iterator localIterator = PAGView.this.mViewListeners.iterator();
-          if (localIterator.hasNext()) {
-            ((PAGView.PAGViewListener)localIterator.next()).onAnimationCancel(PAGView.this);
+          ArrayList localArrayList = new ArrayList(PAGView.this.mViewListeners);
+          ??? = localArrayList.iterator();
+          if (???.hasNext()) {
+            ((PAGView.PAGViewListener)???.next()).onAnimationCancel(PAGView.this);
           }
         }
-        AppMethodBeat.o(236940);
       }
       
       public void onAnimationEnd(Animator arg1)
       {
-        AppMethodBeat.i(236939);
+        AppMethodBeat.i(195316);
         super.onAnimationEnd(???);
         synchronized (PAGView.this)
         {
-          Iterator localIterator = PAGView.this.mViewListeners.iterator();
-          if (localIterator.hasNext()) {
-            ((PAGView.PAGViewListener)localIterator.next()).onAnimationEnd(PAGView.this);
+          ArrayList localArrayList = new ArrayList(PAGView.this.mViewListeners);
+          ??? = localArrayList.iterator();
+          if (???.hasNext()) {
+            ((PAGView.PAGViewListener)???.next()).onAnimationEnd(PAGView.this);
           }
         }
-        AppMethodBeat.o(236939);
       }
       
       public void onAnimationRepeat(Animator arg1)
       {
-        AppMethodBeat.i(236941);
+        AppMethodBeat.i(195319);
         super.onAnimationRepeat(???);
         synchronized (PAGView.this)
         {
-          Iterator localIterator = PAGView.this.mViewListeners.iterator();
-          if (localIterator.hasNext()) {
-            ((PAGView.PAGViewListener)localIterator.next()).onAnimationRepeat(PAGView.this);
+          ArrayList localArrayList = new ArrayList(PAGView.this.mViewListeners);
+          ??? = localArrayList.iterator();
+          if (???.hasNext()) {
+            ((PAGView.PAGViewListener)???.next()).onAnimationRepeat(PAGView.this);
           }
         }
-        AppMethodBeat.o(236941);
       }
       
       public void onAnimationStart(Animator arg1)
       {
-        AppMethodBeat.i(236938);
+        AppMethodBeat.i(195311);
         super.onAnimationStart(???);
         synchronized (PAGView.this)
         {
-          Iterator localIterator = PAGView.this.mViewListeners.iterator();
-          if (localIterator.hasNext()) {
-            ((PAGView.PAGViewListener)localIterator.next()).onAnimationStart(PAGView.this);
+          ArrayList localArrayList = new ArrayList(PAGView.this.mViewListeners);
+          ??? = localArrayList.iterator();
+          if (???.hasNext()) {
+            ((PAGView.PAGViewListener)???.next()).onAnimationStart(PAGView.this);
           }
         }
-        AppMethodBeat.o(236938);
       }
     };
     this.mAnimatorStartRunnable = new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(236943);
-        if (PAGView.this.isAttachedToWindow)
-        {
+        AppMethodBeat.i(195325);
+        if (PAGView.this.isAttachedToWindow) {
           PAGView.this.animator.start();
-          AppMethodBeat.o(236943);
-          return;
         }
-        AppMethodBeat.o(236943);
+        AppMethodBeat.o(195325);
       }
     };
     this.mAnimatorCancelRunnable = new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(236944);
+        AppMethodBeat.i(195327);
+        PAGView.access$202(PAGView.this, PAGView.this.animator.getCurrentPlayTime());
         PAGView.this.animator.cancel();
-        AppMethodBeat.o(236944);
+        AppMethodBeat.o(195327);
       }
     };
+    this.preAggregatedVisible = true;
     setupSurfaceTexture();
-    AppMethodBeat.o(236957);
+    AppMethodBeat.o(195349);
   }
   
   private static void DestroyHandlerThread()
@@ -529,17 +531,17 @@ public class PAGView
     {
       try
       {
-        AppMethodBeat.i(236950);
+        AppMethodBeat.i(195338);
         int i = g_HandlerThreadCount - 1;
         g_HandlerThreadCount = i;
         if (i != 0)
         {
-          AppMethodBeat.o(236950);
+          AppMethodBeat.o(195338);
           return;
         }
         if ((g_PAGRendererHandler == null) || (g_PAGRendererThread == null))
         {
-          AppMethodBeat.o(236950);
+          AppMethodBeat.o(195338);
           continue;
         }
         if (g_PAGRendererThread.isAlive()) {
@@ -547,30 +549,30 @@ public class PAGView
         }
       }
       finally {}
-      AppMethodBeat.o(236950);
+      AppMethodBeat.o(195338);
       continue;
       label74:
       SendMessage(2, null);
-      AppMethodBeat.o(236950);
+      AppMethodBeat.o(195338);
     }
   }
   
   private static void HandlerThreadQuit()
   {
-    AppMethodBeat.i(236953);
+    AppMethodBeat.i(195344);
     if (g_HandlerThreadCount != 0)
     {
-      AppMethodBeat.o(236953);
+      AppMethodBeat.o(195344);
       return;
     }
     if ((g_PAGRendererHandler == null) || (g_PAGRendererThread == null))
     {
-      AppMethodBeat.o(236953);
+      AppMethodBeat.o(195344);
       return;
     }
     if (!g_PAGRendererThread.isAlive())
     {
-      AppMethodBeat.o(236953);
+      AppMethodBeat.o(195344);
       return;
     }
     g_PAGRendererHandler.removeCallbacksAndMessages(null);
@@ -581,7 +583,7 @@ public class PAGView
     {
       g_PAGRendererThread = null;
       g_PAGRendererHandler = null;
-      AppMethodBeat.o(236953);
+      AppMethodBeat.o(195344);
       return;
       g_PAGRendererThread.quit();
     }
@@ -589,22 +591,22 @@ public class PAGView
   
   private static void NeedsUpdateView(PAGView paramPAGView)
   {
-    AppMethodBeat.i(236952);
+    AppMethodBeat.i(195343);
     if (g_PAGRendererHandler == null)
     {
-      AppMethodBeat.o(236952);
+      AppMethodBeat.o(195343);
       return;
     }
     g_PAGRendererHandler.needsUpdateView(paramPAGView);
-    AppMethodBeat.o(236952);
+    AppMethodBeat.o(195343);
   }
   
   private static void SendMessage(int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(236951);
+    AppMethodBeat.i(195341);
     if (g_PAGRendererHandler == null)
     {
-      AppMethodBeat.o(236951);
+      AppMethodBeat.o(195341);
       return;
     }
     Message localMessage = g_PAGRendererHandler.obtainMessage();
@@ -613,14 +615,14 @@ public class PAGView
       localMessage.obj = paramObject;
     }
     g_PAGRendererHandler.sendMessage(localMessage);
-    AppMethodBeat.o(236951);
+    AppMethodBeat.o(195341);
   }
   
   private static void StartHandlerThread()
   {
     try
     {
-      AppMethodBeat.i(236949);
+      AppMethodBeat.i(195337);
       g_HandlerThreadCount += 1;
       if (g_PAGRendererThread == null)
       {
@@ -631,7 +633,7 @@ public class PAGView
       if (g_PAGRendererHandler == null) {
         g_PAGRendererHandler = new PAGRendererHandler(g_PAGRendererThread.getLooper());
       }
-      AppMethodBeat.o(236949);
+      AppMethodBeat.o(195337);
       return;
     }
     finally {}
@@ -640,11 +642,11 @@ public class PAGView
   private void applyReplacements()
   {
     int j = 0;
-    AppMethodBeat.i(237007);
+    AppMethodBeat.i(195478);
     PAGFile localPAGFile = (PAGFile)this.pagPlayer.getComposition();
     if (localPAGFile == null)
     {
-      AppMethodBeat.o(237007);
+      AppMethodBeat.o(195478);
       return;
     }
     int i = 0;
@@ -661,113 +663,150 @@ public class PAGView
       i += 1;
     }
     this.imageReplacementMap.clear();
-    AppMethodBeat.o(237007);
+    AppMethodBeat.o(195478);
   }
   
   private void cancelAnimator()
   {
-    AppMethodBeat.i(236973);
+    AppMethodBeat.i(195400);
     if (isMainThread())
     {
+      this.currentPlayTime = this.animator.getCurrentPlayTime();
       this.animator.cancel();
-      AppMethodBeat.o(236973);
+      AppMethodBeat.o(195400);
       return;
     }
     removeCallbacks(this.mAnimatorStartRunnable);
     post(this.mAnimatorCancelRunnable);
-    AppMethodBeat.o(236973);
+    AppMethodBeat.o(195400);
   }
   
   private void doPlay()
   {
-    AppMethodBeat.i(236969);
+    AppMethodBeat.i(195392);
     if (!this.isAttachedToWindow)
     {
-      AppMethodBeat.o(236969);
+      AppMethodBeat.o(195392);
       return;
     }
-    double d = this.pagPlayer.getProgress();
-    this.animator.setCurrentPlayTime((d * this.animator.getDuration()));
+    this.animator.setCurrentPlayTime(this.currentPlayTime);
     startAnimator();
-    AppMethodBeat.o(236969);
+    AppMethodBeat.o(195392);
   }
   
   private boolean isMainThread()
   {
-    AppMethodBeat.i(236971);
+    AppMethodBeat.i(195395);
     if (Looper.getMainLooper().getThread() == Thread.currentThread())
     {
-      AppMethodBeat.o(236971);
+      AppMethodBeat.o(195395);
       return true;
     }
-    AppMethodBeat.o(236971);
+    AppMethodBeat.o(195395);
     return false;
+  }
+  
+  private void onAnimationUpdate(double paramDouble)
+  {
+    AppMethodBeat.i(195351);
+    this.animatorProgress = paramDouble;
+    NeedsUpdateView(this);
+    AppMethodBeat.o(195351);
+  }
+  
+  private void pauseAnimator()
+  {
+    AppMethodBeat.i(195493);
+    if (this._isAnimatorPreRunning == null) {
+      this._isAnimatorPreRunning = Boolean.valueOf(this.animator.isRunning());
+    }
+    if (this.animator.isRunning()) {
+      cancelAnimator();
+    }
+    AppMethodBeat.o(195493);
+  }
+  
+  private void resumeAnimator()
+  {
+    AppMethodBeat.i(195495);
+    if ((!this._isPlaying) || (this.animator.isRunning()) || ((this._isAnimatorPreRunning != null) && (!this._isAnimatorPreRunning.booleanValue())))
+    {
+      this._isAnimatorPreRunning = null;
+      AppMethodBeat.o(195495);
+      return;
+    }
+    this._isAnimatorPreRunning = null;
+    doPlay();
+    AppMethodBeat.o(195495);
   }
   
   private void setupSurfaceTexture()
   {
-    AppMethodBeat.i(236958);
+    AppMethodBeat.i(195353);
     setOpaque(false);
     this.pagPlayer = new PAGPlayer();
     setSurfaceTextureListener(this);
     this.animator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     this.animator.setRepeatCount(0);
     this.animator.setInterpolator(new LinearInterpolator());
-    AppMethodBeat.o(236958);
+    AppMethodBeat.o(195353);
   }
   
   private void startAnimator()
   {
-    AppMethodBeat.i(236972);
+    AppMethodBeat.i(195396);
     if (isMainThread())
     {
       this.animator.start();
-      AppMethodBeat.o(236972);
+      AppMethodBeat.o(195396);
       return;
     }
     removeCallbacks(this.mAnimatorCancelRunnable);
     post(this.mAnimatorStartRunnable);
-    AppMethodBeat.o(236972);
+    AppMethodBeat.o(195396);
   }
   
   private void updateView()
   {
-    AppMethodBeat.i(236959);
+    AppMethodBeat.i(195355);
     if (!this.isAttachedToWindow)
     {
-      AppMethodBeat.o(236959);
+      AppMethodBeat.o(195355);
       return;
     }
-    setProgress(this.animatorProgress);
+    this.pagPlayer.setProgress(this.animatorProgress);
     flush();
     if (!this.mPAGFlushListeners.isEmpty()) {
       post(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(236942);
-          Iterator localIterator = PAGView.this.mPAGFlushListeners.iterator();
-          while (localIterator.hasNext()) {
-            ((PAGView.PAGFlushListener)localIterator.next()).onFlush();
+          AppMethodBeat.i(195322);
+          synchronized (PAGView.this)
+          {
+            ArrayList localArrayList = new ArrayList(PAGView.this.mPAGFlushListeners);
+            ??? = localArrayList.iterator();
+            if (((Iterator)???).hasNext()) {
+              ((PAGView.PAGFlushListener)((Iterator)???).next()).onFlush();
+            }
           }
-          AppMethodBeat.o(236942);
         }
       });
     }
-    AppMethodBeat.o(236959);
+    AppMethodBeat.o(195355);
   }
   
   @Deprecated
   public void addListener(Animator.AnimatorListener paramAnimatorListener)
   {
-    AppMethodBeat.i(236979);
+    AppMethodBeat.i(195411);
     this.animator.addListener(paramAnimatorListener);
-    AppMethodBeat.o(236979);
+    AppMethodBeat.o(195411);
   }
   
   public void addListener(PAGViewListener paramPAGViewListener)
   {
-    AppMethodBeat.i(236975);
+    AppMethodBeat.i(195405);
     try
     {
       this.mViewListeners.add(paramPAGViewListener);
@@ -775,13 +814,13 @@ public class PAGView
     }
     finally
     {
-      AppMethodBeat.o(236975);
+      AppMethodBeat.o(195405);
     }
   }
   
   public void addPAGFlushListener(PAGFlushListener paramPAGFlushListener)
   {
-    AppMethodBeat.i(236977);
+    AppMethodBeat.i(195408);
     try
     {
       this.mPAGFlushListeners.add(paramPAGFlushListener);
@@ -789,65 +828,65 @@ public class PAGView
     }
     finally
     {
-      AppMethodBeat.o(236977);
+      AppMethodBeat.o(195408);
     }
   }
   
   public boolean cacheEnabled()
   {
-    AppMethodBeat.i(236986);
+    AppMethodBeat.i(195433);
     boolean bool = this.pagPlayer.cacheEnabled();
-    AppMethodBeat.o(236986);
+    AppMethodBeat.o(195433);
     return bool;
   }
   
   public float cacheScale()
   {
-    AppMethodBeat.i(236988);
+    AppMethodBeat.i(195436);
     float f = this.pagPlayer.cacheScale();
-    AppMethodBeat.o(236988);
+    AppMethodBeat.o(195436);
     return f;
   }
   
   public long duration()
   {
-    AppMethodBeat.i(236996);
+    AppMethodBeat.i(195451);
     long l = this.pagPlayer.duration();
-    AppMethodBeat.o(236996);
+    AppMethodBeat.o(195451);
     return l;
   }
   
   public boolean flush()
   {
-    AppMethodBeat.i(236999);
+    AppMethodBeat.i(195456);
     boolean bool = this.pagPlayer.flush();
-    AppMethodBeat.o(236999);
+    AppMethodBeat.o(195456);
     return bool;
   }
   
   @Deprecated
   public boolean flush(boolean paramBoolean)
   {
-    AppMethodBeat.i(237004);
+    AppMethodBeat.i(195466);
     paramBoolean = flush();
-    AppMethodBeat.o(237004);
+    AppMethodBeat.o(195466);
     return paramBoolean;
   }
   
   public void freeCache()
   {
-    AppMethodBeat.i(237001);
+    AppMethodBeat.i(195459);
     if (this.pagSurface != null) {
       this.pagSurface.freeCache();
     }
-    AppMethodBeat.o(237001);
+    AppMethodBeat.o(195459);
   }
   
   public PAGComposition getComposition()
   {
-    AppMethodBeat.i(236982);
+    AppMethodBeat.i(195423);
     PAGComposition localPAGComposition = this.pagPlayer.getComposition();
-    AppMethodBeat.o(236982);
+    AppMethodBeat.o(195423);
     return localPAGComposition;
   }
   
@@ -859,9 +898,9 @@ public class PAGView
   
   public PAGLayer[] getLayersUnderPoint(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(237000);
+    AppMethodBeat.i(195458);
     PAGLayer[] arrayOfPAGLayer = this.pagPlayer.getLayersUnderPoint(paramFloat1, paramFloat2);
-    AppMethodBeat.o(237000);
+    AppMethodBeat.o(195458);
     return arrayOfPAGLayer;
   }
   
@@ -872,64 +911,64 @@ public class PAGView
   
   public double getProgress()
   {
-    AppMethodBeat.i(236997);
+    AppMethodBeat.i(195452);
     double d = this.pagPlayer.getProgress();
-    AppMethodBeat.o(236997);
+    AppMethodBeat.o(195452);
     return d;
   }
   
   @Deprecated
   public PAGComposition getRootComposition()
   {
-    AppMethodBeat.i(237003);
+    AppMethodBeat.i(195465);
     PAGComposition localPAGComposition = this.pagPlayer.getComposition();
-    AppMethodBeat.o(237003);
+    AppMethodBeat.o(195465);
     return localPAGComposition;
   }
   
   public boolean isPlaying()
   {
-    AppMethodBeat.i(236967);
+    AppMethodBeat.i(195386);
     if (this.animator != null)
     {
       boolean bool = this.animator.isRunning();
-      AppMethodBeat.o(236967);
+      AppMethodBeat.o(195386);
       return bool;
     }
-    AppMethodBeat.o(236967);
+    AppMethodBeat.o(195386);
     return false;
   }
   
   public Matrix matrix()
   {
-    AppMethodBeat.i(236994);
+    AppMethodBeat.i(195448);
     Matrix localMatrix = this.pagPlayer.matrix();
-    AppMethodBeat.o(236994);
+    AppMethodBeat.o(195448);
     return localMatrix;
   }
   
   public float maxFrameRate()
   {
-    AppMethodBeat.i(236990);
+    AppMethodBeat.i(195438);
     float f = this.pagPlayer.maxFrameRate();
-    AppMethodBeat.o(236990);
+    AppMethodBeat.o(195438);
     return f;
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(236964);
+    AppMethodBeat.i(195375);
     this.isAttachedToWindow = true;
     super.onAttachedToWindow();
     this.animator.addListener(this.mAnimatorListenerAdapter);
-    ??? = a.hPU();
+    ??? = a.iVd();
     Object localObject2;
-    if (((a)???).UhY != null)
+    if (((a)???).abLt != null)
     {
-      ((a)???).hPV();
-      synchronized (((a)???).UhX)
+      ((a)???).iVe();
+      synchronized (((a)???).abLs)
       {
-        localObject2 = a.opg.iterator();
+        localObject2 = a.rEV.iterator();
         do
         {
           if (!((Iterator)localObject2).hasNext()) {
@@ -943,100 +982,91 @@ public class PAGView
       for (;;)
       {
         StartHandlerThread();
-        if (this._isPlaying) {
-          doPlay();
-        }
-        AppMethodBeat.o(236964);
+        resumeAnimator();
+        AppMethodBeat.o(195375);
         return;
         localObject2 = new WeakReference(this);
-        a.opg.add(localObject2);
+        a.rEV.add(localObject2);
       }
       localObject3 = finally;
-      AppMethodBeat.o(236964);
+      AppMethodBeat.o(195375);
       throw localObject3;
     }
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(236965);
+    AppMethodBeat.i(195381);
     this.isAttachedToWindow = false;
     super.onDetachedFromWindow();
-    ??? = a.hPU();
-    if (((a)???).UhY != null) {
-      ((a)???).hPV();
+    ??? = a.iVd();
+    if (((a)???).abLt != null) {
+      ((a)???).iVe();
     }
-    label214:
+    label181:
     for (;;)
     {
-      boolean bool;
-      synchronized (((a)???).UhX)
+      synchronized (((a)???).abLs)
       {
-        Iterator localIterator = a.opg.iterator();
+        Iterator localIterator = a.rEV.iterator();
         ??? = null;
         if (localIterator.hasNext())
         {
           WeakReference localWeakReference = (WeakReference)localIterator.next();
           if (this != localWeakReference.get()) {
-            break label214;
+            break label181;
           }
           ??? = localWeakReference;
-          break label214;
+          break label181;
         }
         if (??? != null) {
-          a.opg.remove(???);
+          a.rEV.remove(???);
         }
         if (this.pagSurface != null)
         {
           this.pagSurface.release();
           this.pagSurface = null;
         }
-        if ((this._isPlaying) && (this.animator.isRunning()))
-        {
-          bool = true;
-          this._isPlaying = bool;
-          cancelAnimator();
-          if (Build.VERSION.SDK_INT >= 26) {}
-        }
+        pauseAnimator();
+        if (Build.VERSION.SDK_INT >= 26) {}
       }
       synchronized (g_HandlerLock)
       {
         DestroyHandlerThread();
         this.animator.removeListener(this.mAnimatorListenerAdapter);
-        AppMethodBeat.o(236965);
+        AppMethodBeat.o(195381);
         return;
         localObject2 = finally;
-        AppMethodBeat.o(236965);
+        AppMethodBeat.o(195381);
         throw localObject2;
-        bool = false;
       }
     }
   }
   
   public void onScreenOff()
   {
-    AppMethodBeat.i(237008);
+    AppMethodBeat.i(195481);
     if (getVisibility() == 0)
     {
       this.mSaveVisibleState = true;
       setVisibility(4);
     }
-    AppMethodBeat.o(237008);
+    AppMethodBeat.o(195481);
   }
   
   public void onScreenOn()
   {
-    AppMethodBeat.i(237009);
+    AppMethodBeat.i(195485);
     if (this.mSaveVisibleState) {
       setVisibility(0);
     }
     this.mSaveVisibleState = false;
-    AppMethodBeat.o(237009);
+    AppMethodBeat.o(195485);
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(236961);
+    AppMethodBeat.i(195362);
     if (this.pagSurface != null)
     {
       this.pagSurface.release();
@@ -1046,7 +1076,7 @@ public class PAGView
     this.pagPlayer.setSurface(this.pagSurface);
     if (this.pagSurface == null)
     {
-      AppMethodBeat.o(236961);
+      AppMethodBeat.o(195362);
       return;
     }
     this.animator.addUpdateListener(this.mAnimatorUpdateListener);
@@ -1060,7 +1090,7 @@ public class PAGView
       if (this.mListener != null) {
         this.mListener.onSurfaceTextureAvailable(paramSurfaceTexture, paramInt1, paramInt2);
       }
-      AppMethodBeat.o(236961);
+      AppMethodBeat.o(195362);
       return;
       flush();
     }
@@ -1069,7 +1099,7 @@ public class PAGView
   public boolean onSurfaceTextureDestroyed(SurfaceTexture arg1)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(236963);
+    AppMethodBeat.i(195373);
     this.pagPlayer.setSurface(null);
     if (this.mListener != null) {
       this.mListener.onSurfaceTextureDestroyed(???);
@@ -1092,14 +1122,14 @@ public class PAGView
     synchronized (g_HandlerLock)
     {
       DestroyHandlerThread();
-      AppMethodBeat.o(236963);
+      AppMethodBeat.o(195373);
       return bool1;
     }
   }
   
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(236962);
+    AppMethodBeat.i(195367);
     if (this.pagSurface != null)
     {
       this.pagSurface.updateSize();
@@ -1114,7 +1144,7 @@ public class PAGView
       if (this.mListener != null) {
         this.mListener.onSurfaceTextureSizeChanged(paramSurfaceTexture, paramInt1, paramInt2);
       }
-      AppMethodBeat.o(236962);
+      AppMethodBeat.o(195367);
       return;
       label68:
       flush();
@@ -1123,32 +1153,53 @@ public class PAGView
   
   public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(236966);
+    AppMethodBeat.i(195382);
     if (this.mListener != null) {
       this.mListener.onSurfaceTextureUpdated(paramSurfaceTexture);
     }
-    AppMethodBeat.o(236966);
+    AppMethodBeat.o(195382);
+  }
+  
+  public void onVisibilityAggregated(boolean paramBoolean)
+  {
+    AppMethodBeat.i(195491);
+    super.onVisibilityAggregated(paramBoolean);
+    if (this.preAggregatedVisible == paramBoolean)
+    {
+      AppMethodBeat.o(195491);
+      return;
+    }
+    this.preAggregatedVisible = paramBoolean;
+    if (paramBoolean)
+    {
+      resumeAnimator();
+      AppMethodBeat.o(195491);
+      return;
+    }
+    pauseAnimator();
+    AppMethodBeat.o(195491);
   }
   
   public void play()
   {
-    AppMethodBeat.i(236968);
+    AppMethodBeat.i(195388);
     this._isPlaying = true;
+    this._isAnimatorPreRunning = null;
     doPlay();
-    AppMethodBeat.o(236968);
+    AppMethodBeat.o(195388);
   }
   
   @Deprecated
   public void removeListener(Animator.AnimatorListener paramAnimatorListener)
   {
-    AppMethodBeat.i(236980);
+    AppMethodBeat.i(195414);
     this.animator.removeListener(paramAnimatorListener);
-    AppMethodBeat.o(236980);
+    AppMethodBeat.o(195414);
   }
   
   public void removeListener(PAGViewListener paramPAGViewListener)
   {
-    AppMethodBeat.i(236976);
+    AppMethodBeat.i(195407);
     try
     {
       this.mViewListeners.remove(paramPAGViewListener);
@@ -1156,13 +1207,13 @@ public class PAGView
     }
     finally
     {
-      AppMethodBeat.o(236976);
+      AppMethodBeat.o(195407);
     }
   }
   
   public void removePAGFlushListener(PAGFlushListener paramPAGFlushListener)
   {
-    AppMethodBeat.i(236978);
+    AppMethodBeat.i(195410);
     try
     {
       this.mPAGFlushListeners.remove(paramPAGFlushListener);
@@ -1170,76 +1221,76 @@ public class PAGView
     }
     finally
     {
-      AppMethodBeat.o(236978);
+      AppMethodBeat.o(195410);
     }
   }
   
   @Deprecated
   public void replaceImage(int paramInt, PAGImage paramPAGImage)
   {
-    AppMethodBeat.i(237006);
+    AppMethodBeat.i(195474);
     PAGComposition localPAGComposition = this.pagPlayer.getComposition();
     if ((localPAGComposition != null) && (this.pagFile == null))
     {
-      AppMethodBeat.o(237006);
+      AppMethodBeat.o(195474);
       return;
     }
     if (localPAGComposition != null)
     {
       ((PAGFile)localPAGComposition).replaceImage(paramInt, paramPAGImage);
-      AppMethodBeat.o(237006);
+      AppMethodBeat.o(195474);
       return;
     }
     this.imageReplacementMap.put(paramInt, paramPAGImage);
-    AppMethodBeat.o(237006);
+    AppMethodBeat.o(195474);
   }
   
   public int scaleMode()
   {
-    AppMethodBeat.i(236992);
+    AppMethodBeat.i(195443);
     int i = this.pagPlayer.scaleMode();
-    AppMethodBeat.o(236992);
+    AppMethodBeat.o(195443);
     return i;
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(237010);
+    AppMethodBeat.i(195489);
     if ((Build.VERSION.SDK_INT < 24) && (paramDrawable != null)) {
       super.setBackgroundDrawable(paramDrawable);
     }
-    AppMethodBeat.o(237010);
+    AppMethodBeat.o(195489);
   }
   
   public void setCacheEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(236987);
+    AppMethodBeat.i(195435);
     this.pagPlayer.setCacheEnabled(paramBoolean);
-    AppMethodBeat.o(236987);
+    AppMethodBeat.o(195435);
   }
   
   public void setCacheScale(float paramFloat)
   {
-    AppMethodBeat.i(236989);
+    AppMethodBeat.i(195437);
     this.pagPlayer.setCacheScale(paramFloat);
-    AppMethodBeat.o(236989);
+    AppMethodBeat.o(195437);
   }
   
   public void setComposition(PAGComposition paramPAGComposition)
   {
-    AppMethodBeat.i(236983);
+    AppMethodBeat.i(195426);
     this.filePath = null;
     this.pagFile = null;
     this.pagPlayer.setComposition(paramPAGComposition);
     long l = this.pagPlayer.duration();
     this.animator.setDuration(l / 1000L);
-    AppMethodBeat.o(236983);
+    AppMethodBeat.o(195426);
   }
   
   @Deprecated
   public void setFile(PAGFile paramPAGFile)
   {
-    AppMethodBeat.i(237002);
+    AppMethodBeat.i(195462);
     if (paramPAGFile != null) {}
     for (PAGFile localPAGFile = paramPAGFile.copyOriginal();; localPAGFile = null)
     {
@@ -1248,28 +1299,28 @@ public class PAGView
       if (this.pagFile != null) {
         applyReplacements();
       }
-      AppMethodBeat.o(237002);
+      AppMethodBeat.o(195462);
       return;
     }
   }
   
   public void setMatrix(Matrix paramMatrix)
   {
-    AppMethodBeat.i(236995);
+    AppMethodBeat.i(195450);
     this.pagPlayer.setMatrix(paramMatrix);
-    AppMethodBeat.o(236995);
+    AppMethodBeat.o(195450);
   }
   
   public void setMaxFrameRate(float paramFloat)
   {
-    AppMethodBeat.i(236991);
+    AppMethodBeat.i(195441);
     this.pagPlayer.setMaxFrameRate(paramFloat);
-    AppMethodBeat.o(236991);
+    AppMethodBeat.o(195441);
   }
   
   public boolean setPath(String paramString)
   {
-    AppMethodBeat.i(236981);
+    AppMethodBeat.i(195417);
     if ((paramString != null) && (paramString.startsWith("assets://"))) {}
     for (PAGFile localPAGFile = PAGFile.Load(getContext().getAssets(), paramString.substring(9));; localPAGFile = PAGFile.Load(paramString))
     {
@@ -1278,98 +1329,95 @@ public class PAGView
       if (localPAGFile == null) {
         break;
       }
-      AppMethodBeat.o(236981);
+      AppMethodBeat.o(195417);
       return true;
     }
-    AppMethodBeat.o(236981);
+    AppMethodBeat.o(195417);
     return false;
   }
   
   public void setProgress(double paramDouble)
   {
-    AppMethodBeat.i(236998);
-    if (this.animatorProgress != (float)paramDouble)
-    {
-      this.animatorProgress = ((float)paramDouble);
-      if (Build.VERSION.SDK_INT >= 22) {
-        this.animator.setCurrentFraction(this.animatorProgress);
-      }
-    }
-    this.pagPlayer.setProgress(paramDouble);
-    AppMethodBeat.o(236998);
+    AppMethodBeat.i(195455);
+    paramDouble = Math.max(0.0D, Math.min(paramDouble, 1.0D));
+    this.currentPlayTime = ((this.animator.getDuration() * paramDouble));
+    this.animator.setCurrentPlayTime(this.currentPlayTime);
+    onAnimationUpdate(paramDouble);
+    AppMethodBeat.o(195455);
   }
   
   public void setRepeatCount(int paramInt)
   {
-    AppMethodBeat.i(236974);
+    AppMethodBeat.i(195403);
     int i = paramInt;
     if (paramInt < 0) {
       i = 0;
     }
     this.animator.setRepeatCount(i - 1);
-    AppMethodBeat.o(236974);
+    AppMethodBeat.o(195403);
   }
   
   public void setScaleMode(int paramInt)
   {
-    AppMethodBeat.i(236993);
+    AppMethodBeat.i(195445);
     this.pagPlayer.setScaleMode(paramInt);
-    AppMethodBeat.o(236993);
+    AppMethodBeat.o(195445);
   }
   
   public void setSurfaceTextureListener(TextureView.SurfaceTextureListener paramSurfaceTextureListener)
   {
-    AppMethodBeat.i(236960);
+    AppMethodBeat.i(195356);
     if (paramSurfaceTextureListener == this)
     {
       super.setSurfaceTextureListener(paramSurfaceTextureListener);
-      AppMethodBeat.o(236960);
+      AppMethodBeat.o(195356);
       return;
     }
     this.mListener = paramSurfaceTextureListener;
-    AppMethodBeat.o(236960);
+    AppMethodBeat.o(195356);
   }
   
   @Deprecated
   public void setTextData(int paramInt, PAGText paramPAGText)
   {
-    AppMethodBeat.i(237005);
+    AppMethodBeat.i(195470);
     PAGComposition localPAGComposition = this.pagPlayer.getComposition();
     if ((localPAGComposition != null) && (this.pagFile == null))
     {
-      AppMethodBeat.o(237005);
+      AppMethodBeat.o(195470);
       return;
     }
     if (localPAGComposition != null)
     {
       ((PAGFile)localPAGComposition).replaceText(paramInt, paramPAGText);
-      AppMethodBeat.o(237005);
+      AppMethodBeat.o(195470);
       return;
     }
     this.textReplacementMap.put(paramInt, paramPAGText);
-    AppMethodBeat.o(237005);
+    AppMethodBeat.o(195470);
   }
   
   public void setVideoEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(236985);
+    AppMethodBeat.i(195431);
     this.pagPlayer.setVideoEnabled(paramBoolean);
-    AppMethodBeat.o(236985);
+    AppMethodBeat.o(195431);
   }
   
   public void stop()
   {
-    AppMethodBeat.i(236970);
+    AppMethodBeat.i(195393);
     this._isPlaying = false;
+    this._isAnimatorPreRunning = null;
     cancelAnimator();
-    AppMethodBeat.o(236970);
+    AppMethodBeat.o(195393);
   }
   
   public boolean videoEnabled()
   {
-    AppMethodBeat.i(236984);
+    AppMethodBeat.i(195428);
     boolean bool = this.pagPlayer.videoEnabled();
-    AppMethodBeat.o(236984);
+    AppMethodBeat.o(195428);
     return bool;
   }
   
@@ -1387,22 +1435,22 @@ public class PAGView
     PAGRendererHandler(Looper paramLooper)
     {
       super();
-      AppMethodBeat.i(236946);
+      AppMethodBeat.i(195329);
       this.lock = new Object();
       this.needsUpdateViews = new ArrayList();
-      AppMethodBeat.o(236946);
+      AppMethodBeat.o(195329);
     }
     
     public void handleMessage(Message arg1)
     {
-      AppMethodBeat.i(236948);
+      AppMethodBeat.i(195332);
       super.handleMessage(???);
       switch (???.arg1)
       {
       }
       for (;;)
       {
-        AppMethodBeat.o(236948);
+        AppMethodBeat.o(195332);
         return;
         synchronized (this.lock)
         {
@@ -1424,23 +1472,21 @@ public class PAGView
             }
           }
         }
-        AppMethodBeat.o(236948);
-        return;
         if (!(???.obj instanceof SurfaceTexture))
         {
-          AppMethodBeat.o(236948);
+          AppMethodBeat.o(195332);
           return;
         }
         ((SurfaceTexture)???.obj).release();
-        AppMethodBeat.o(236948);
+        AppMethodBeat.o(195332);
         return;
         new Handler(Looper.getMainLooper()).post(new Runnable()
         {
           public void run()
           {
-            AppMethodBeat.i(236945);
+            AppMethodBeat.i(195328);
             PAGView.access$100();
-            AppMethodBeat.o(236945);
+            AppMethodBeat.o(195328);
           }
         });
       }
@@ -1448,7 +1494,7 @@ public class PAGView
     
     void needsUpdateView(PAGView paramPAGView)
     {
-      AppMethodBeat.i(236947);
+      AppMethodBeat.i(195330);
       synchronized (this.lock)
       {
         if (this.needsUpdateViews.isEmpty())
@@ -1458,7 +1504,7 @@ public class PAGView
           sendMessage(localMessage);
         }
         this.needsUpdateViews.add(paramPAGView);
-        AppMethodBeat.o(236947);
+        AppMethodBeat.o(195330);
         return;
       }
     }
@@ -1477,7 +1523,7 @@ public class PAGView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     org.libpag.PAGView
  * JD-Core Version:    0.7.0.1
  */

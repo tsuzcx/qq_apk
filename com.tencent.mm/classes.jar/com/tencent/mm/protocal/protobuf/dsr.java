@@ -1,129 +1,138 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import java.util.LinkedList;
 
 public final class dsr
-  extends com.tencent.mm.bw.a
+  extends dyl
 {
-  public int MJT;
-  public String MUT;
-  public b MUU;
-  public String Mba;
-  public String Mbb;
-  public String SessionId;
-  public int xMB;
+  public int RLe;
+  public float ScO;
+  public float ScP;
+  public int Sxt;
+  public String Sxu;
+  public String Sxv;
+  public int Sxw;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(187884);
+    AppMethodBeat.i(127296);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.SessionId != null) {
-        paramVarArgs.e(1, this.SessionId);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.Mbb != null) {
-        paramVarArgs.e(2, this.Mbb);
+      paramVarArgs.aY(2, this.RLe);
+      paramVarArgs.i(3, this.ScO);
+      paramVarArgs.i(4, this.ScP);
+      paramVarArgs.aY(5, this.Sxt);
+      if (this.Sxu != null) {
+        paramVarArgs.f(6, this.Sxu);
       }
-      if (this.Mba != null) {
-        paramVarArgs.e(3, this.Mba);
+      if (this.Sxv != null) {
+        paramVarArgs.f(7, this.Sxv);
       }
-      paramVarArgs.aM(4, this.xMB);
-      paramVarArgs.aM(5, this.MJT);
-      if (this.MUT != null) {
-        paramVarArgs.e(6, this.MUT);
-      }
-      if (this.MUU != null) {
-        paramVarArgs.c(7, this.MUU);
-      }
-      AppMethodBeat.o(187884);
+      paramVarArgs.aY(8, this.Sxw);
+      AppMethodBeat.o(127296);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.SessionId == null) {
-        break label546;
+      if (this.BaseRequest == null) {
+        break label630;
       }
     }
-    label546:
-    for (int i = g.a.a.b.b.a.f(1, this.SessionId) + 0;; i = 0)
+    label630:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
+      int i = paramInt + g.a.a.b.b.a.bM(2, this.RLe) + (g.a.a.b.b.a.gL(3) + 4) + (g.a.a.b.b.a.gL(4) + 4) + g.a.a.b.b.a.bM(5, this.Sxt);
       paramInt = i;
-      if (this.Mbb != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.Mbb);
+      if (this.Sxu != null) {
+        paramInt = i + g.a.a.b.b.a.g(6, this.Sxu);
       }
       i = paramInt;
-      if (this.Mba != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.Mba);
+      if (this.Sxv != null) {
+        i = paramInt + g.a.a.b.b.a.g(7, this.Sxv);
       }
-      i = i + g.a.a.b.b.a.bu(4, this.xMB) + g.a.a.b.b.a.bu(5, this.MJT);
-      paramInt = i;
-      if (this.MUT != null) {
-        paramInt = i + g.a.a.b.b.a.f(6, this.MUT);
-      }
-      i = paramInt;
-      if (this.MUU != null) {
-        i = paramInt + g.a.a.b.b.a.b(7, this.MUU);
-      }
-      AppMethodBeat.o(187884);
-      return i;
+      paramInt = g.a.a.b.b.a.bM(8, this.Sxw);
+      AppMethodBeat.o(127296);
+      return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(187884);
+        AppMethodBeat.o(127296);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         dsr localdsr = (dsr)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(187884);
+          AppMethodBeat.o(127296);
           return -1;
         case 1: 
-          localdsr.SessionId = locala.UbS.readString();
-          AppMethodBeat.o(187884);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            jg localjg = new jg();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localjg.parseFrom((byte[])localObject);
+            }
+            localdsr.BaseRequest = localjg;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(127296);
           return 0;
         case 2: 
-          localdsr.Mbb = locala.UbS.readString();
-          AppMethodBeat.o(187884);
+          localdsr.RLe = ((g.a.a.a.a)localObject).abFh.AK();
+          AppMethodBeat.o(127296);
           return 0;
         case 3: 
-          localdsr.Mba = locala.UbS.readString();
-          AppMethodBeat.o(187884);
+          localdsr.ScO = Float.intBitsToFloat(((g.a.a.a.a)localObject).abFh.AO());
+          AppMethodBeat.o(127296);
           return 0;
         case 4: 
-          localdsr.xMB = locala.UbS.zi();
-          AppMethodBeat.o(187884);
+          localdsr.ScP = Float.intBitsToFloat(((g.a.a.a.a)localObject).abFh.AO());
+          AppMethodBeat.o(127296);
           return 0;
         case 5: 
-          localdsr.MJT = locala.UbS.zi();
-          AppMethodBeat.o(187884);
+          localdsr.Sxt = ((g.a.a.a.a)localObject).abFh.AK();
+          AppMethodBeat.o(127296);
           return 0;
         case 6: 
-          localdsr.MUT = locala.UbS.readString();
-          AppMethodBeat.o(187884);
+          localdsr.Sxu = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(127296);
+          return 0;
+        case 7: 
+          localdsr.Sxv = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(127296);
           return 0;
         }
-        localdsr.MUU = locala.UbS.hPo();
-        AppMethodBeat.o(187884);
+        localdsr.Sxw = ((g.a.a.a.a)localObject).abFh.AK();
+        AppMethodBeat.o(127296);
         return 0;
       }
-      AppMethodBeat.o(187884);
+      AppMethodBeat.o(127296);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dsr
  * JD-Core Version:    0.7.0.1
  */

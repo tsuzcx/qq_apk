@@ -1,27 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/kb"
+<LinearLayout android:id="@id/krx" android:background="@drawable/d1i" android:paddingLeft="5.0dip" android:paddingTop="5.0dip" android:paddingRight="8.0dip" android:paddingBottom="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:src="@drawable/bdz" style="@style/k2" />
-    <TextView android:text="@string/dho" style="@style/ki" />
-    <LinearLayout android:id="@id/da0" android:layout_marginTop="@dimen/er" style="@style/kf">
-        <RelativeLayout android:id="@id/d_z" style="@style/kc">
-            <TextView android:id="@id/da1" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" style="@style/ke" />
-            <CheckBox android:id="@id/d_y" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:checked="false" android:text="@string/di6" android:layout_alignParentRight="true" style="@style/p9" />
-        </RelativeLayout>
-    </LinearLayout>
-    <LinearLayout android:id="@id/d_v" style="@style/kf">
-        <LinearLayout android:background="@null" style="@style/ka">
-            <TextView android:id="@id/d_w" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/kd" />
-        </LinearLayout>
-    </LinearLayout>
-    <RelativeLayout android:id="@id/da2" android:visibility="gone" android:layout_marginTop="@dimen/er" style="@style/kg">
-        <TextView android:id="@id/d_x" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" style="@style/ke" />
-        <TextView android:id="@id/da3" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/div" android:layout_alignParentRight="true" style="@style/kh" />
-    </RelativeLayout>
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:layout_marginTop="@dimen/ep" style="@style/nl">
-        <Button android:id="@id/b_r" android:text="@string/di4" style="@style/kn" />
-    </LinearLayout>
-    <RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <Button android:id="@id/da4" android:visibility="gone" android:layout_height="20.0dip" android:layout_marginBottom="0.0dip" android:text="查看更多三星服务" android:layout_alignParentBottom="true" style="@style/kj" />
-    </RelativeLayout>
+    <ImageView android:id="@id/kry" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" />
+    <TextView android:textSize="@dimen/a_" android:textColor="@color/BW_0_Alpha_0_3" android:id="@id/krz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bt" android:text="@string/jzg" />
 </LinearLayout>

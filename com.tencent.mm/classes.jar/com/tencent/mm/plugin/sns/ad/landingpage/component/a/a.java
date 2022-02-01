@@ -6,77 +6,77 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.plugin.sns.ad.i.i.a;
-import com.tencent.mm.plugin.sns.data.k;
-import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.an.i;
+import com.tencent.mm.plugin.sns.ad.i.j.a;
+import com.tencent.mm.plugin.sns.data.m;
+import com.tencent.mm.plugin.sns.i.j;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah;
-import com.tencent.mm.protocal.protobuf.bvk;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
+import com.tencent.mm.protocal.protobuf.cdc;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.u;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.w;
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
 
 public final class a
   extends com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.q
 {
-  com.tencent.mm.plugin.sns.ad.landingpage.component.b.a Dtk;
-  private com.tencent.mm.ui.base.q Dtl;
+  com.tencent.mm.plugin.sns.ad.landingpage.component.b.a JAb;
+  private s JAc;
   
   public a(Context paramContext, com.tencent.mm.plugin.sns.ad.landingpage.component.b.a parama, ViewGroup paramViewGroup)
   {
     super(paramContext, parama, paramViewGroup);
-    AppMethodBeat.i(201955);
-    this.Dtk = parama;
+    AppMethodBeat.i(225010);
+    this.JAb = parama;
     try
     {
-      if ((this.Edn != null) && (this.Dtk != null))
+      if ((this.KqQ != null) && (this.JAb != null))
       {
-        this.Edn.kv("appId", this.Dtk.couponAppId);
-        this.Edn.kv("stockId", this.Dtk.couponStockId);
+        this.KqQ.kQ("appId", this.JAb.JxS);
+        this.KqQ.kQ("stockId", this.JAb.JxT);
       }
-      AppMethodBeat.o(201955);
+      AppMethodBeat.o(225010);
       return;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(201955);
+      AppMethodBeat.o(225010);
     }
   }
   
-  private void cp(int paramInt, String paramString)
+  private void co(int paramInt, String paramString)
   {
-    AppMethodBeat.i(201957);
+    AppMethodBeat.i(225019);
     if (paramInt == 0)
     {
       str = paramString;
       if (TextUtils.isEmpty(paramString)) {
-        str = this.context.getString(2131765945);
+        str = this.context.getString(i.j.sns_ad_coupon_success);
       }
-      u.cG(this.context, str);
-      AppMethodBeat.o(201957);
+      w.cR(this.context, str);
+      AppMethodBeat.o(225019);
       return;
     }
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = this.context.getString(2131765944);
+      str = this.context.getString(i.j.sns_ad_coupon_error);
     }
-    u.cH(this.context, str);
-    AppMethodBeat.o(201957);
+    w.cS(this.context, str);
+    AppMethodBeat.o(225019);
   }
   
-  public final void eWS()
+  public final void fKd()
   {
-    AppMethodBeat.i(201956);
+    AppMethodBeat.i(225016);
     try
     {
       Object localObject1 = new com.tencent.mm.plugin.sns.ad.remote.a();
-      ((com.tencent.mm.plugin.sns.ad.remote.a)localObject1).Dxn = new c();
-      ((com.tencent.mm.plugin.sns.ad.remote.a)localObject1).Dxm = new b(this);
-      com.tencent.mm.plugin.sns.ad.remote.ipc.a locala = ((com.tencent.mm.plugin.sns.ad.remote.a)localObject1).eXy();
+      ((com.tencent.mm.plugin.sns.ad.remote.a)localObject1).JGU = new c();
+      ((com.tencent.mm.plugin.sns.ad.remote.a)localObject1).JGT = new b(this);
+      com.tencent.mm.plugin.sns.ad.remote.ipc.a locala = ((com.tencent.mm.plugin.sns.ad.remote.a)localObject1).fKZ();
       if (locala != null)
       {
         if ((this.context instanceof Activity))
@@ -84,42 +84,42 @@ public final class a
           localObject1 = (Activity)this.context;
           if ((!((Activity)localObject1).isFinishing()) && (!((Activity)localObject1).isDestroyed()))
           {
-            if (this.Dtl == null) {
-              this.Dtl = com.tencent.mm.plugin.sns.ad.landingpage.a.a.ap(this.context, 2131765961);
+            if (this.JAc == null) {
+              this.JAc = com.tencent.mm.plugin.sns.ad.landingpage.a.a.aH(this.context, i.j.sns_ad_landing_coupon_loading);
             }
-            if ((this.Dtl != null) && (!this.Dtl.isShowing())) {
-              this.Dtl.show();
+            if ((this.JAc != null) && (!this.JAc.isShowing())) {
+              this.JAc.show();
             }
           }
         }
-        localObject1 = this.Dtk;
+        localObject1 = this.JAb;
         Object localObject2;
         if (localObject1 == null) {
           localObject2 = null;
         }
         for (;;)
         {
-          locala.aA((Bundle)localObject2);
-          AppMethodBeat.o(201956);
+          locala.aw((Bundle)localObject2);
+          AppMethodBeat.o(225016);
           return;
           Bundle localBundle = new Bundle();
-          if (!TextUtils.isEmpty(((com.tencent.mm.plugin.sns.ad.landingpage.component.b.a)localObject1).couponAppId)) {
-            localBundle.putString("COUPON_APP_ID", ((com.tencent.mm.plugin.sns.ad.landingpage.component.b.a)localObject1).couponAppId);
+          if (!TextUtils.isEmpty(((com.tencent.mm.plugin.sns.ad.landingpage.component.b.a)localObject1).JxS)) {
+            localBundle.putString("COUPON_APP_ID", ((com.tencent.mm.plugin.sns.ad.landingpage.component.b.a)localObject1).JxS);
           }
-          if (!TextUtils.isEmpty(((com.tencent.mm.plugin.sns.ad.landingpage.component.b.a)localObject1).couponStockId)) {
-            localBundle.putString("COUPON_STOCK_ID", ((com.tencent.mm.plugin.sns.ad.landingpage.component.b.a)localObject1).couponStockId);
+          if (!TextUtils.isEmpty(((com.tencent.mm.plugin.sns.ad.landingpage.component.b.a)localObject1).JxT)) {
+            localBundle.putString("COUPON_STOCK_ID", ((com.tencent.mm.plugin.sns.ad.landingpage.component.b.a)localObject1).JxT);
           }
-          if (!TextUtils.isEmpty(((com.tencent.mm.plugin.sns.ad.landingpage.component.b.a)localObject1).DZi)) {
-            localBundle.putString("COMP_ID", ((com.tencent.mm.plugin.sns.ad.landingpage.component.b.a)localObject1).DZi);
+          if (!TextUtils.isEmpty(((com.tencent.mm.plugin.sns.ad.landingpage.component.b.a)localObject1).KmB)) {
+            localBundle.putString("COMP_ID", ((com.tencent.mm.plugin.sns.ad.landingpage.component.b.a)localObject1).KmB);
           }
-          ah localah = fds();
+          ai localai = fRp();
           localObject2 = localBundle;
-          if (localah != null)
+          if (localai != null)
           {
-            localObject2 = localah.DZW;
+            localObject2 = localai.fQE();
             localObject1 = localObject2;
             if (TextUtils.isEmpty((CharSequence)localObject2)) {
-              localObject1 = localah.uxInfo;
+              localObject1 = localai.uxInfo;
             }
             localObject2 = localBundle;
             if (!TextUtils.isEmpty((CharSequence)localObject1))
@@ -134,19 +134,19 @@ public final class a
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(201956);
+      AppMethodBeat.o(225016);
       return;
     }
-    AppMethodBeat.o(201956);
+    AppMethodBeat.o(225016);
   }
   
   public static class a
-    implements i.a
+    implements j.a
   {
     protected String adExtInfo;
     protected String appId;
-    protected String dRS;
-    protected String gTp;
+    protected String fLp;
+    protected String jDR;
     protected String msg;
     protected int result;
     protected int source;
@@ -154,54 +154,54 @@ public final class a
     
     protected a(int paramInt, String paramString)
     {
-      AppMethodBeat.i(201947);
+      AppMethodBeat.i(199332);
       this.result = paramInt;
       this.msg = Util.nullAs(paramString, "");
-      AppMethodBeat.o(201947);
+      AppMethodBeat.o(199332);
     }
     
     protected a(a parama, int paramInt, String paramString)
     {
-      AppMethodBeat.i(201949);
-      ah localah = parama.fds();
-      if (localah != null)
+      AppMethodBeat.i(199334);
+      ai localai = parama.fRp();
+      if (localai != null)
       {
-        this.dRS = aNI(localah.getSnsId());
-        this.adExtInfo = Util.nullAs(localah.adExtInfo, "");
-        this.uxInfo = Util.nullAs(localah.DZW, "");
+        this.fLp = aYt(localai.getSnsId());
+        this.adExtInfo = Util.nullAs(localai.adExtInfo, "");
+        this.uxInfo = Util.nullAs(localai.fQE(), "");
         if (TextUtils.isEmpty(this.uxInfo)) {
-          this.uxInfo = Util.nullAs(localah.uxInfo, "");
+          this.uxInfo = Util.nullAs(localai.uxInfo, "");
         }
       }
-      parama = parama.Dtk;
+      parama = parama.JAb;
       if (parama != null)
       {
-        this.appId = parama.couponAppId;
-        this.gTp = parama.couponStockId;
+        this.appId = parama.JxS;
+        this.jDR = parama.JxT;
       }
       this.source = 0;
       this.result = paramInt;
       this.msg = Util.nullAs(paramString, "");
-      AppMethodBeat.o(201949);
+      AppMethodBeat.o(199334);
     }
     
-    private static String aNI(String paramString)
+    private static String aYt(String paramString)
     {
-      AppMethodBeat.i(201948);
+      AppMethodBeat.i(199333);
       try
       {
-        paramString = r.Jb(k.aOa(paramString));
-        AppMethodBeat.o(201948);
+        paramString = com.tencent.mm.plugin.sns.data.t.Qu(m.aYS(paramString));
+        AppMethodBeat.o(199333);
         return paramString;
       }
       catch (Throwable paramString)
       {
-        AppMethodBeat.o(201948);
+        AppMethodBeat.o(199333);
       }
       return "";
     }
     
-    public final String eWH()
+    public final String fJK()
     {
       return "sns_ad_native_landing_page_coupon";
     }
@@ -219,7 +219,7 @@ public final class a
       //   13: aload_1
       //   14: ldc 123
       //   16: aload_0
-      //   17: getfield 65	com/tencent/mm/plugin/sns/ad/landingpage/component/a/a$a:dRS	Ljava/lang/String;
+      //   17: getfield 65	com/tencent/mm/plugin/sns/ad/landingpage/component/a/a$a:fLp	Ljava/lang/String;
       //   20: invokevirtual 127	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
       //   23: pop
       //   24: aload_1
@@ -252,7 +252,7 @@ public final class a
       //   73: aload_2
       //   74: ldc 135
       //   76: aload_0
-      //   77: getfield 96	com/tencent/mm/plugin/sns/ad/landingpage/component/a/a$a:gTp	Ljava/lang/String;
+      //   77: getfield 96	com/tencent/mm/plugin/sns/ad/landingpage/component/a/a$a:jDR	Ljava/lang/String;
       //   80: invokevirtual 127	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
       //   83: pop
       //   84: aload_2
@@ -303,23 +303,23 @@ public final class a
   static final class b
     implements com.tencent.mm.plugin.sns.ad.remote.a.a
   {
-    WeakReference<a> Dtm;
+    WeakReference<a> JAd;
     
     b(a parama)
     {
-      AppMethodBeat.i(201951);
-      this.Dtm = new WeakReference(parama);
-      AppMethodBeat.o(201951);
+      AppMethodBeat.i(238054);
+      this.JAd = new WeakReference(parama);
+      AppMethodBeat.o(238054);
     }
     
     @com.tencent.mm.plugin.sns.ad.remote.b
-    public final void az(Bundle paramBundle)
+    public final void av(Bundle paramBundle)
     {
-      AppMethodBeat.i(201952);
+      AppMethodBeat.i(238057);
       Log.d("SnsAd.CouponCardBtnComp", "the onCallbackFromServer running!");
       try
       {
-        Object localObject = this.Dtm;
+        Object localObject = this.JAd;
         if (localObject != null)
         {
           localObject = (a)((Reference)localObject).get();
@@ -327,13 +327,13 @@ public final class a
             a.a((a)localObject, paramBundle);
           }
         }
-        AppMethodBeat.o(201952);
+        AppMethodBeat.o(238057);
         return;
       }
       catch (Throwable paramBundle)
       {
         Log.d("SnsAd.CouponCardBtnComp", "there is something wrong in client!");
-        AppMethodBeat.o(201952);
+        AppMethodBeat.o(238057);
       }
     }
   }
@@ -341,23 +341,23 @@ public final class a
   public static final class c
     implements i, com.tencent.mm.plugin.sns.ad.remote.a.b
   {
-    com.tencent.mm.plugin.sns.ad.remote.ipc.b Dtn;
+    com.tencent.mm.plugin.sns.ad.remote.ipc.b JAe;
     
     public final Bundle a(com.tencent.mm.plugin.sns.ad.remote.ipc.b paramb, Bundle paramBundle)
     {
-      AppMethodBeat.i(201953);
+      AppMethodBeat.i(211676);
       try
       {
-        String str1 = com.tencent.mm.plugin.sns.ad.i.g.getString(paramBundle, "COUPON_APP_ID");
-        String str2 = com.tencent.mm.plugin.sns.ad.i.g.getString(paramBundle, "COUPON_STOCK_ID");
-        String str3 = com.tencent.mm.plugin.sns.ad.i.g.getString(paramBundle, "COMP_ID");
-        paramBundle = com.tencent.mm.plugin.sns.ad.i.g.getString(paramBundle, "UX_INFO");
-        this.Dtn = paramb;
+        String str1 = com.tencent.mm.plugin.sns.ad.i.h.getString(paramBundle, "COUPON_APP_ID");
+        String str2 = com.tencent.mm.plugin.sns.ad.i.h.getString(paramBundle, "COUPON_STOCK_ID");
+        String str3 = com.tencent.mm.plugin.sns.ad.i.h.getString(paramBundle, "COMP_ID");
+        paramBundle = com.tencent.mm.plugin.sns.ad.i.h.getString(paramBundle, "UX_INFO");
+        this.JAe = paramb;
         long l = System.currentTimeMillis();
-        com.tencent.mm.kernel.g.azz().a(4743, this);
-        com.tencent.mm.kernel.g.azz().a(new com.tencent.mm.plugin.sns.ad.h.b(str1, str2, paramBundle, str3), 0);
+        com.tencent.mm.kernel.h.aGY().a(4743, this);
+        com.tencent.mm.kernel.h.aGY().a(new com.tencent.mm.plugin.sns.ad.g.b(str1, str2, paramBundle, str3), 0);
         Log.d("SnsAd.CouponCardBtnComp", "CouponRemoteCall::the onServerCall is end, take time: " + (System.currentTimeMillis() - l) + " ms");
-        AppMethodBeat.o(201953);
+        AppMethodBeat.o(211676);
         return null;
       }
       catch (Throwable paramb)
@@ -369,28 +369,28 @@ public final class a
       }
     }
     
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
     {
-      AppMethodBeat.i(201954);
+      AppMethodBeat.i(211677);
       for (;;)
       {
         try
         {
           paramString = new Bundle();
-          com.tencent.mm.kernel.g.azz().b(4743, this);
-          if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramq instanceof com.tencent.mm.plugin.sns.ad.h.b)))
+          com.tencent.mm.kernel.h.aGY().b(4743, this);
+          if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramq instanceof com.tencent.mm.plugin.sns.ad.g.b)))
           {
-            paramq = (bvk)((com.tencent.mm.plugin.sns.ad.h.b)paramq).eXx();
+            paramq = (cdc)((com.tencent.mm.plugin.sns.ad.g.b)paramq).fKY();
             if (paramq != null)
             {
               paramString.putInt("ret", paramq.ret);
               if (!TextUtils.isEmpty(paramq.msg)) {
                 paramString.putString("msg", paramq.msg);
               }
-              if (this.Dtn != null) {
-                this.Dtn.aB(paramString);
+              if (this.JAe != null) {
+                this.JAe.ax(paramString);
               }
-              AppMethodBeat.o(201954);
+              AppMethodBeat.o(211677);
               return;
             }
             Log.e("SnsAd.CouponCardBtnComp", "CouponRemoteCall::onSceneEnd, the response is null!!!!");
@@ -402,7 +402,7 @@ public final class a
         catch (Throwable paramString)
         {
           Log.e("SnsAd.CouponCardBtnComp", "CouponRemoteCall::onSceneEnd has something invalid!");
-          AppMethodBeat.o(201954);
+          AppMethodBeat.o(211677);
           return;
         }
         paramString.putInt("call_ipc_result_key", -1);
@@ -412,7 +412,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.landingpage.component.a.a
  * JD-Core Version:    0.7.0.1
  */

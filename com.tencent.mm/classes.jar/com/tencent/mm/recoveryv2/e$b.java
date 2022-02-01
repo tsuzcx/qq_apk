@@ -8,8 +8,8 @@ import java.util.List;
 public abstract class e$b
   implements e
 {
-  protected final List<a> Bar = new ArrayList();
-  protected final StringBuilder NBD = new StringBuilder();
+  protected final List<a> GUp = new ArrayList();
+  protected final StringBuilder UPg = new StringBuilder();
   final String mName;
   
   public e$b(String paramString)
@@ -17,27 +17,27 @@ public abstract class e$b
     this.mName = paramString;
   }
   
-  protected final b bhA(String paramString)
+  protected final b btR(String paramString)
   {
-    this.Bar.add(new b(paramString));
+    this.GUp.add(new c(paramString));
     return this;
   }
   
-  protected final b bhz(String paramString)
+  protected final b btS(String paramString)
   {
-    this.Bar.add(new c(paramString));
+    this.GUp.add(new b(paramString));
     return this;
   }
   
   public final String getDescription()
   {
-    return this.NBD.toString();
+    return this.UPg.toString();
   }
   
   public static abstract class a
     implements e.a
   {
-    public SharedPreferences.Editor NBE;
+    SharedPreferences.Editor cZX;
     String key;
     Object value;
     
@@ -47,14 +47,20 @@ public abstract class e$b
       this.value = paramObject;
     }
     
-    protected abstract void a(SharedPreferences.Editor paramEditor);
+    public final a a(SharedPreferences.Editor paramEditor)
+    {
+      this.cZX = paramEditor;
+      return this;
+    }
+    
+    protected abstract void b(SharedPreferences.Editor paramEditor);
     
     public final void perform()
     {
-      if (this.NBE == null) {
+      if (this.cZX == null) {
         throw new IllegalStateException("Call #attach first!");
       }
-      a(this.NBE);
+      b(this.cZX);
     }
   }
   
@@ -66,18 +72,18 @@ public abstract class e$b
       super(Boolean.FALSE);
     }
     
-    public final void a(SharedPreferences.Editor paramEditor)
+    public final void b(SharedPreferences.Editor paramEditor)
     {
-      AppMethodBeat.i(193779);
+      AppMethodBeat.i(189989);
       paramEditor.putBoolean(this.key, ((Boolean)this.value).booleanValue());
-      AppMethodBeat.o(193779);
+      AppMethodBeat.o(189989);
     }
     
     public final String getDescription()
     {
-      AppMethodBeat.i(193780);
+      AppMethodBeat.i(189993);
       String str = "putBoolean(" + this.key + ", " + this.value + ")";
-      AppMethodBeat.o(193780);
+      AppMethodBeat.o(189993);
       return str;
     }
   }
@@ -88,29 +94,29 @@ public abstract class e$b
     public c(String paramString)
     {
       super(Integer.valueOf(2147483647));
-      AppMethodBeat.i(193781);
-      AppMethodBeat.o(193781);
+      AppMethodBeat.i(189999);
+      AppMethodBeat.o(189999);
     }
     
-    public final void a(SharedPreferences.Editor paramEditor)
+    public final void b(SharedPreferences.Editor paramEditor)
     {
-      AppMethodBeat.i(193782);
+      AppMethodBeat.i(190002);
       paramEditor.putInt(this.key, ((Integer)this.value).intValue());
-      AppMethodBeat.o(193782);
+      AppMethodBeat.o(190002);
     }
     
     public final String getDescription()
     {
-      AppMethodBeat.i(193783);
+      AppMethodBeat.i(190006);
       String str = "putInt(" + this.key + ", " + this.value + ")";
-      AppMethodBeat.o(193783);
+      AppMethodBeat.o(190006);
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.recoveryv2.e.b
  * JD-Core Version:    0.7.0.1
  */

@@ -6,9 +6,9 @@ import com.tencent.mm.n.f;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract f aqJ();
+  public abstract f axc();
   
-  public abstract d aqK();
+  public abstract d axd();
 }
 
 

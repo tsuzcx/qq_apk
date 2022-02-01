@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.model.app;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aa;
+import com.tencent.mm.f.c.aa;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
@@ -32,7 +32,7 @@ public final class p
     AppMethodBeat.o(31044);
   }
   
-  public final List<String> Mq(long paramLong)
+  public final List<String> TT(long paramLong)
   {
     AppMethodBeat.i(31045);
     ArrayList localArrayList = new ArrayList();
@@ -68,7 +68,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.p
  * JD-Core Version:    0.7.0.1
  */

@@ -7,30 +7,35 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.component.api.jumper.UICustomParam;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.recordvideo.b.k;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
 import com.tencent.mm.plugin.recordvideo.model.audio.AudioCacheInfo;
-import com.tencent.mm.plugin.recordvideo.plugin.f;
-import com.tencent.mm.plugin.recordvideo.plugin.h;
+import com.tencent.mm.plugin.recordvideo.plugin.g;
+import com.tencent.mm.plugin.recordvideo.plugin.i;
+import com.tencent.mm.plugin.recordvideo.plugin.j;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.BaseEditVideoPluginLayout;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
+import com.tencent.mm.plugin.recordvideo.plugin.s;
 import com.tencent.mm.plugin.recordvideo.ui.editor.EditorAudioView;
+import com.tencent.mm.plugin.vlog.a.i;
 import com.tencent.mm.plugin.vlog.model.ae;
 import com.tencent.mm.plugin.vlog.model.ah;
 import com.tencent.mm.plugin.vlog.model.al;
+import com.tencent.mm.plugin.vlog.remux.e;
 import com.tencent.mm.plugin.vlog.ui.manager.a.b;
 import com.tencent.mm.plugin.vlog.ui.manager.a.d;
 import com.tencent.mm.plugin.vlog.ui.manager.a.e;
-import com.tencent.mm.plugin.vlog.ui.plugin.ag;
+import com.tencent.mm.plugin.vlog.ui.plugin.af;
 import com.tencent.mm.plugin.vlog.ui.preview.VLogPreloadPlayView;
-import com.tencent.mm.protocal.protobuf.aar;
-import com.tencent.mm.protocal.protobuf.bha;
-import com.tencent.mm.protocal.protobuf.csq;
-import com.tencent.mm.protocal.protobuf.erh;
-import com.tencent.mm.protocal.protobuf.ln;
+import com.tencent.mm.protocal.protobuf.aaw;
+import com.tencent.mm.protocal.protobuf.boi;
+import com.tencent.mm.protocal.protobuf.dbp;
+import com.tencent.mm.protocal.protobuf.fbs;
+import com.tencent.mm.protocal.protobuf.ld;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.storage.ao;
@@ -39,24 +44,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import kotlin.g.a.m;
+import kotlin.g.a.r;
+import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/VLogPreviewPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BaseEditVideoPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "previewPlayerPlugin", "Lcom/tencent/mm/plugin/vlog/ui/plugin/VLogPreviewPlayerPlugin;", "vLogDataManager", "Lcom/tencent/mm/plugin/vlog/model/VLogDataManager;", "vLogGenerateManager", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager;", "videoGenerateCallback", "Lkotlin/Function3;", "", "", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$VLogOutputInfo;", "", "getPlayerView", "Landroid/view/View;", "initLogic", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "loadCurrentPage", "model", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "onBackPress", "release", "requestVLogScript", "sid", "fid", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "Companion", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/VLogPreviewPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BaseEditVideoPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "previewPlayerPlugin", "Lcom/tencent/mm/plugin/vlog/ui/plugin/VLogPreviewPlayerPlugin;", "vLogDataManager", "Lcom/tencent/mm/plugin/vlog/model/VLogDataManager;", "vLogGenerateManager", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager;", "videoGenerateCallback", "Lkotlin/Function3;", "", "", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$VLogOutputInfo;", "", "getPlayerView", "Landroid/view/View;", "initLogic", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "loadCurrentPage", "model", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "onBackPress", "release", "requestVLogScript", "sid", "fid", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "Companion", "plugin-vlog_release"})
 public final class VLogPreviewPluginLayout
   extends BaseEditVideoPluginLayout
   implements com.tencent.mm.plugin.recordvideo.plugin.parent.d
 {
-  public static final VLogPreviewPluginLayout.a GFM;
-  private kotlin.g.a.q<? super Boolean, ? super Integer, ? super a.b, x> GFI;
-  private ag GFJ;
-  private com.tencent.mm.plugin.vlog.ui.manager.a GFK;
-  private final ae GFL;
+  public static final a NtD;
+  private af NtA;
+  private com.tencent.mm.plugin.vlog.ui.manager.a NtB;
+  private final ae NtC;
+  private kotlin.g.a.q<? super Boolean, ? super Integer, ? super a.b, x> Ntz;
   
   static
   {
     AppMethodBeat.i(111121);
-    GFM = new VLogPreviewPluginLayout.a((byte)0);
+    NtD = new a((byte)0);
     AppMethodBeat.o(111121);
   }
   
@@ -64,9 +71,9 @@ public final class VLogPreviewPluginLayout
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(111120);
-    this.GFI = ((kotlin.g.a.q)new c(this, paramContext));
-    paramContext = com.tencent.mm.plugin.vlog.ui.manager.c.GGi;
-    this.GFL = com.tencent.mm.plugin.vlog.ui.manager.c.fCM();
+    this.Ntz = ((kotlin.g.a.q)new c(this, paramContext));
+    paramContext = com.tencent.mm.plugin.vlog.ui.manager.c.NtZ;
+    this.NtC = com.tencent.mm.plugin.vlog.ui.manager.c.guL();
     Log.i("MicroMsg.VLogPreviewPluginLayout", "VLogPreviewPluginLayout invoke init");
     AppMethodBeat.o(111120);
   }
@@ -76,7 +83,7 @@ public final class VLogPreviewPluginLayout
     AppMethodBeat.i(111115);
     Log.i("MicroMsg.VLogPreviewPluginLayout", "loadCurrentPage model:".concat(String.valueOf(paramb)));
     super.a(paramb);
-    d.b.a(this, d.c.BVW);
+    d.b.a(this, d.c.HSK);
     AppMethodBeat.o(111115);
   }
   
@@ -84,12 +91,12 @@ public final class VLogPreviewPluginLayout
   {
     Object localObject4 = null;
     AppMethodBeat.i(111114);
-    kotlin.g.b.p.h(parama, "navigator");
-    kotlin.g.b.p.h(paramRecordConfigProvider, "configProvider");
+    p.k(parama, "navigator");
+    p.k(paramRecordConfigProvider, "configProvider");
     super.a(parama, paramRecordConfigProvider);
     getCropVideoPlugin().setVisibility(8);
-    f localf = getEditFinishPlugin();
-    parama = paramRecordConfigProvider.BOn;
+    g localg = getEditFinishPlugin();
+    parama = paramRecordConfigProvider.HKT;
     Object localObject1;
     label79:
     Object localObject2;
@@ -97,63 +104,63 @@ public final class VLogPreviewPluginLayout
     Object localObject3;
     if (parama != null)
     {
-      parama = Integer.valueOf(parama.gLM);
-      localObject1 = paramRecordConfigProvider.BOn;
+      parama = Integer.valueOf(parama.jwb);
+      localObject1 = paramRecordConfigProvider.HKT;
       if (localObject1 == null) {
         break label326;
       }
-      localObject1 = Integer.valueOf(((UICustomParam)localObject1).gLN);
-      localObject2 = paramRecordConfigProvider.BOn;
+      localObject1 = Integer.valueOf(((UICustomParam)localObject1).jwc);
+      localObject2 = paramRecordConfigProvider.HKT;
       if (localObject2 == null) {
         break label332;
       }
       localObject2 = ((UICustomParam)localObject2).text;
-      localObject3 = paramRecordConfigProvider.BOn;
+      localObject3 = paramRecordConfigProvider.HKT;
       if (localObject3 == null) {
         break label338;
       }
-      localObject3 = Integer.valueOf(((UICustomParam)localObject3).gLO);
+      localObject3 = Integer.valueOf(((UICustomParam)localObject3).jwd);
       label118:
-      localf.a(parama, (Integer)localObject1, (String)localObject2, (Integer)localObject3);
+      localg.a(parama, (Integer)localObject1, (String)localObject2, (Integer)localObject3);
       localObject2 = getAddMusicPlugin();
-      parama = paramRecordConfigProvider.BOn;
+      parama = paramRecordConfigProvider.HKT;
       if (parama == null) {
         break label344;
       }
-      parama = Integer.valueOf(parama.gLM);
+      parama = Integer.valueOf(parama.jwb);
       label153:
-      localObject1 = paramRecordConfigProvider.BOn;
+      localObject1 = paramRecordConfigProvider.HKT;
       if (localObject1 == null) {
         break label349;
       }
-      localObject1 = Integer.valueOf(((UICustomParam)localObject1).gLN);
+      localObject1 = Integer.valueOf(((UICustomParam)localObject1).jwc);
       label174:
       com.tencent.mm.plugin.recordvideo.plugin.a.a.a((com.tencent.mm.plugin.recordvideo.plugin.a.a)localObject2, parama, (Integer)localObject1);
       localObject1 = getAddonTextPlugin();
-      parama = paramRecordConfigProvider.BOn;
+      parama = paramRecordConfigProvider.HKT;
       if (parama == null) {
         break label355;
       }
-      parama = parama.gLP;
+      parama = parama.jwe;
       label202:
-      ((com.tencent.mm.plugin.recordvideo.plugin.p)localObject1).setText(parama);
+      ((com.tencent.mm.plugin.recordvideo.plugin.q)localObject1).setText(parama);
       localObject2 = getAddTextPlugin();
-      parama = paramRecordConfigProvider.BOn;
+      parama = paramRecordConfigProvider.HKT;
       if (parama == null) {
         break label360;
       }
-      parama = Integer.valueOf(parama.gLM);
+      parama = Integer.valueOf(parama.jwb);
       label231:
-      localObject3 = paramRecordConfigProvider.BOn;
+      localObject3 = paramRecordConfigProvider.HKT;
       localObject1 = localObject4;
       if (localObject3 != null) {
-        localObject1 = Integer.valueOf(((UICustomParam)localObject3).gLN);
+        localObject1 = Integer.valueOf(((UICustomParam)localObject3).jwc);
       }
-      ((com.tencent.mm.plugin.recordvideo.plugin.c)localObject2).a(parama, (Integer)localObject1);
+      ((com.tencent.mm.plugin.recordvideo.plugin.d)localObject2).a(parama, (Integer)localObject1);
       getMoreMenuPlugin().setScene(paramRecordConfigProvider.scene);
       parama = getAddTipPlugin();
-      paramRecordConfigProvider = paramRecordConfigProvider.BOn.gLL;
-      kotlin.g.b.p.g(paramRecordConfigProvider, "configProvider.uiParam.pluginHiddenMap");
+      paramRecordConfigProvider = paramRecordConfigProvider.HKT.jwa;
+      p.j(paramRecordConfigProvider, "configProvider.uiParam.pluginHiddenMap");
       if (!paramRecordConfigProvider.containsKey("plugin_tip")) {
         break label365;
       }
@@ -168,7 +175,7 @@ public final class VLogPreviewPluginLayout
     label365:
     for (int i = 8;; i = 0)
     {
-      parama.BQc = i;
+      parama.HMQ = i;
       AppMethodBeat.o(111114);
       return;
       parama = null;
@@ -195,7 +202,7 @@ public final class VLogPreviewPluginLayout
     boolean bool = true;
     int i = 1;
     AppMethodBeat.i(111116);
-    kotlin.g.b.p.h(paramc, "status");
+    p.k(paramc, "status");
     Log.i("MicroMsg.VLogPreviewPluginLayout", "statusChange " + paramc + "  param:" + paramBundle);
     Object localObject;
     label199:
@@ -220,7 +227,7 @@ public final class VLogPreviewPluginLayout
       getVideoControlContainerPlugin().setVisibility(0);
       localObject = getAddMusicPlugin();
       paramc = getConfigProvider();
-      if (!this.GFL.GzH)
+      if (!this.NtC.Nnn)
       {
         i = 1;
         paramBundle = new com.tencent.mm.plugin.recordvideo.b.d();
@@ -239,20 +246,20 @@ public final class VLogPreviewPluginLayout
           break label356;
         }
         ((com.tencent.mm.plugin.recordvideo.plugin.a.a)localObject).setPlayMusicWhenSearchFinish(false);
-        paramc = ((com.tencent.mm.plugin.recordvideo.plugin.a.a)localObject).wgL;
-        kotlin.g.b.p.h(paramBundle, "config");
+        paramc = ((com.tencent.mm.plugin.recordvideo.plugin.a.a)localObject).AQb;
+        p.k(paramBundle, "config");
         paramc.b(paramBundle);
         paramc.a(paramBundle);
-        paramc.Cce.setSelection(Integer.valueOf(-1));
+        paramc.HYt.setSelection(Integer.valueOf(-1));
         if (i == 0) {
           break label386;
         }
-        paramc.Cbk.setVisibility(0);
+        paramc.HYb.setVisibility(0);
       }
       for (;;)
       {
-        paramc.eLS();
-        getAddMusicPlugin().gh(this.GFL.eua());
+        paramc.fyn();
+        getAddMusicPlugin().gL(this.NtC.fek());
         AppMethodBeat.o(111116);
         return;
         i = 0;
@@ -262,25 +269,25 @@ public final class VLogPreviewPluginLayout
         if (paramc.intValue() != 2) {
           break label203;
         }
-        paramBundle.a(com.tencent.mm.plugin.recordvideo.b.i.BNz);
-        paramBundle.BNc = true;
-        paramBundle.BNb = true;
+        paramBundle.a(k.HKi);
+        paramBundle.HJH = true;
+        paramBundle.HJG = true;
         break label211;
         if (paramc.intValue() != 3) {
           break label207;
         }
-        paramBundle.a(com.tencent.mm.plugin.recordvideo.b.i.BNy);
-        paramBundle.BNb = true;
-        paramBundle.BNc = true;
+        paramBundle.a(k.HKh);
+        paramBundle.HJG = true;
+        paramBundle.HJH = true;
         break label211;
         if (paramc.intValue() != 11) {
           break label211;
         }
-        paramBundle.a(com.tencent.mm.plugin.recordvideo.b.i.BNI);
-        paramBundle.BNb = true;
-        paramBundle.BNc = true;
+        paramBundle.a(k.HKr);
+        paramBundle.HJG = true;
+        paramBundle.HJH = true;
         break label211;
-        paramc.Cbk.setVisibility(8);
+        paramc.HYb.setVisibility(8);
       }
     case 2: 
       if (paramBundle != null)
@@ -289,33 +296,33 @@ public final class VLogPreviewPluginLayout
         if (paramBundle != null)
         {
           i = paramBundle.source;
-          paramc = AudioCacheInfo.BPo;
-          if (i == AudioCacheInfo.eKb())
+          paramc = AudioCacheInfo.HMa;
+          if (i == AudioCacheInfo.fwo())
           {
             Log.i("MicroMsg.VLogPreviewPluginLayout", "current script index is :" + paramBundle.position);
-            paramc = this.GFL;
+            paramc = this.NtC;
             paramc.currentIndex = paramBundle.position;
-            l = ((erh)paramc.GzG.get(paramc.currentIndex)).KPe;
-            paramBundle = paramc.a((erh)paramc.GzG.get(paramc.currentIndex));
-            localObject = ((erh)paramc.GzG.get(paramc.currentIndex)).NoU.MqU;
-            kotlin.g.b.p.g(localObject, "scripts[currentIndex].music.music_url");
-            paramc = new ah(l, paramBundle, (String)localObject, (erh)paramc.GzG.get(paramc.currentIndex));
-            paramBundle = this.GFJ;
+            l = ((fbs)paramc.Nnm.get(paramc.currentIndex)).RQc;
+            paramBundle = paramc.a((fbs)paramc.Nnm.get(paramc.currentIndex));
+            localObject = ((fbs)paramc.Nnm.get(paramc.currentIndex)).UBQ.TCi;
+            p.j(localObject, "scripts[currentIndex].music.music_url");
+            paramc = new ah(l, paramBundle, (String)localObject, (fbs)paramc.Nnm.get(paramc.currentIndex));
+            paramBundle = this.NtA;
             if (paramBundle == null) {
-              kotlin.g.b.p.btv("previewPlayerPlugin");
+              p.bGy("previewPlayerPlugin");
             }
-            kotlin.g.b.p.h(paramc, "model");
-            paramBundle = paramBundle.GIT;
-            kotlin.g.b.p.h(paramc, "model");
+            p.k(paramc, "model");
+            paramBundle = paramBundle.NwI;
+            p.k(paramc, "model");
             Log.i("MicroMsg.VLogPreloadPlayView", "renderScript:".concat(String.valueOf(paramc)));
-            if (paramBundle.GCP == null) {
-              paramBundle.GFW = paramc;
+            if (paramBundle.Nqz == null) {
+              paramBundle.NtN = paramc;
             }
-            paramBundle = paramBundle.GCP;
+            paramBundle = paramBundle.Nqz;
             if (paramBundle != null) {
-              paramBundle.a(paramc, paramc.getVideoDurationMs(), paramc.GzR);
+              paramBundle.a(paramc, paramc.getVideoDurationMs(), paramc.Nnx);
             }
-            paramBundle = al.GAc;
+            paramBundle = al.NnI;
             al.a(paramc);
           }
           AppMethodBeat.o(111116);
@@ -330,18 +337,18 @@ public final class VLogPreviewPluginLayout
         paramc = (AudioCacheInfo)paramBundle.getParcelable("EDIT_VLOG_SEARCH_MUSIC_FINISH_PARCELABLE");
         if (paramc != null)
         {
-          j = paramc.BOX;
+          j = paramc.HLC;
           Log.i("MicroMsg.VLogPreviewPluginLayout", "requestVLogScript prepare:true");
-          paramc = getContext().getString(2131767138);
-          kotlin.g.b.p.g(paramc, "context.getString(R.string.vlog_dialog_tip)");
-          aLt(paramc);
-          paramc = this.GFL;
-          paramc.GzF = ((kotlin.g.a.b)new b(this));
-          paramc.DYl = j;
+          paramc = getContext().getString(a.i.vlog_dialog_tip);
+          p.j(paramc, "context.getString(R.string.vlog_dialog_tip)");
+          aVX(paramc);
+          paramc = this.NtC;
+          paramc.Nnl = ((kotlin.g.a.b)new b(this));
+          paramc.KlE = j;
           if (j == 0) {
-            paramc.GzG.clear();
+            paramc.Nnm.clear();
           }
-          paramBundle = paramc.cQe.decodeBytes("VLOG_CONF");
+          paramBundle = paramc.cQO.decodeBytes("VLOG_CONF");
           if (paramBundle != null) {
             if (paramBundle.length != 0) {
               break label826;
@@ -350,20 +357,20 @@ public final class VLogPreviewPluginLayout
           while (i != 0)
           {
             paramc = new com.tencent.mm.plugin.vlog.model.cgi.b();
-            g.azz().b((com.tencent.mm.ak.q)paramc);
+            h.aGY().b((com.tencent.mm.an.q)paramc);
             AppMethodBeat.o(111116);
             return;
             i = 0;
           }
-          paramBundle = new aar().parseFrom(paramBundle);
+          paramBundle = new aaw().parseFrom(paramBundle);
           if (paramBundle == null)
           {
             paramc = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.ClientConfFromServer");
             AppMethodBeat.o(111116);
             throw paramc;
           }
-          paramc.GzD = ((aar)paramBundle);
-          paramc.hN((List)paramc.Gyw);
+          paramc.Nnj = ((aaw)paramBundle);
+          paramc.iC((List)paramc.NlY);
           AppMethodBeat.o(111116);
           return;
         }
@@ -371,61 +378,61 @@ public final class VLogPreviewPluginLayout
       AppMethodBeat.o(111116);
       return;
     case 4: 
-      getAddMusicPlugin().gi(this.GFL.eua());
+      getAddMusicPlugin().gM(this.NtC.fek());
       AppMethodBeat.o(111116);
       return;
     case 5: 
       label386:
       label826:
-      paramc = al.GAc;
-      paramc = al.GAb;
+      paramc = al.NnI;
+      paramc = al.NnH;
       if (paramc != null)
       {
         al.a(null);
-        paramBundle = al.GAc;
-        kotlin.g.b.p.h(paramc, "vLogScriptModel");
-        paramBundle = new ln();
-        paramBundle.KPe = paramc.GzP;
-        paramBundle.KPf = 2L;
-        paramBundle.KPh = System.currentTimeMillis();
-        paramBundle.dNP = paramc.fBK();
-        paramBundle.DYl = paramc.fBJ();
-        paramBundle.KPi = paramc.fBL();
-        al.GAa.add(paramBundle);
+        paramBundle = al.NnI;
+        p.k(paramc, "vLogScriptModel");
+        paramBundle = new ld();
+        paramBundle.RQc = paramc.Nnv;
+        paramBundle.RQd = 2L;
+        paramBundle.RQf = System.currentTimeMillis();
+        paramBundle.fHa = paramc.gtH();
+        paramBundle.KlE = paramc.gtG();
+        paramBundle.RQg = paramc.gtI();
+        al.NnG.add(paramBundle);
         Log.i(al.TAG, "record select: vlogScriptModel = ".concat(String.valueOf(paramc)));
         al.a(paramc);
       }
       Log.i(al.TAG, "record send");
-      al.eKh();
+      al.fwx();
       onPause();
-      paramc = this.GFK;
+      paramc = this.NtB;
       if (paramc != null)
       {
         Log.i("MicroMsg.VLogGenerateManager", "release");
-        paramc.GFT.release();
+        paramc.NtK.release();
       }
-      if (!getMoreMenuPlugin().BQn) {
+      if (!getMoreMenuPlugin().HNb) {
         break;
       }
     }
     for (i = 1;; i = 0)
     {
-      paramc = CaptureDataManager.BOb;
-      kotlin.g.b.p.g(paramc, "CaptureDataManager.INSTANCE");
+      paramc = CaptureDataManager.HKJ;
+      p.j(paramc, "CaptureDataManager.INSTANCE");
       paramc.getExtData().putInt("key_extra_feature_flag", i);
-      if (getMoreMenuPlugin().bxP == 2)
+      if (getMoreMenuPlugin().bhr == 2)
       {
-        paramc = CaptureDataManager.BOb;
-        kotlin.g.b.p.g(paramc, "CaptureDataManager.INSTANCE");
-        paramc.getExtData().putString("key_group_list", getMoreMenuPlugin().eKy());
-        paramc = this.GFL;
-        if (!paramc.GzG.isEmpty()) {
+        paramc = CaptureDataManager.HKJ;
+        p.j(paramc, "CaptureDataManager.INSTANCE");
+        paramc.getExtData().putString("key_group_list", getMoreMenuPlugin().fwQ());
+        paramc = this.NtC;
+        if (!paramc.Nnm.isEmpty()) {
           break label1270;
         }
-        paramc = ah.GzT;
-        paramc = new ah(0L, (List)new ArrayList(), "", new erh());
+        paramc = ah.Nnz;
+        paramc = new ah(0L, (List)new ArrayList(), "", new fbs());
         label1195:
-        if (paramc.GzQ.isEmpty()) {
+        if (paramc.Nnw.isEmpty()) {
           break label1376;
         }
       }
@@ -438,43 +445,43 @@ public final class VLogPreviewPluginLayout
         Log.e("MicroMsg.VLogPreviewPluginLayout", "model is not valid");
         AppMethodBeat.o(111116);
         return;
-        if (getMoreMenuPlugin().bxP != 3) {
+        if (getMoreMenuPlugin().bhr != 3) {
           break;
         }
-        paramc = CaptureDataManager.BOb;
-        kotlin.g.b.p.g(paramc, "CaptureDataManager.INSTANCE");
-        paramc.getExtData().putString("key_black_list", getMoreMenuPlugin().eKy());
+        paramc = CaptureDataManager.HKJ;
+        p.j(paramc, "CaptureDataManager.INSTANCE");
+        paramc.getExtData().putString("key_black_list", getMoreMenuPlugin().fwQ());
         break;
         label1270:
-        l = ((erh)paramc.GzG.get(paramc.currentIndex)).KPe;
-        paramBundle = paramc.a((erh)paramc.GzG.get(paramc.currentIndex));
-        localObject = ((erh)paramc.GzG.get(paramc.currentIndex)).NoU.MqU;
-        kotlin.g.b.p.g(localObject, "scripts[currentIndex].music.music_url");
-        paramc = new ah(l, paramBundle, (String)localObject, (erh)paramc.GzG.get(paramc.currentIndex));
+        l = ((fbs)paramc.Nnm.get(paramc.currentIndex)).RQc;
+        paramBundle = paramc.a((fbs)paramc.Nnm.get(paramc.currentIndex));
+        localObject = ((fbs)paramc.Nnm.get(paramc.currentIndex)).UBQ.TCi;
+        p.j(localObject, "scripts[currentIndex].music.music_url");
+        paramc = new ah(l, paramBundle, (String)localObject, (fbs)paramc.Nnm.get(paramc.currentIndex));
         break label1195;
       }
       label1381:
-      paramc.p(getItemContainerPlugin().eKr());
+      paramc.q(getItemContainerPlugin().fwI());
       getItemContainerPlugin();
-      paramc.BKW = h.eKs();
+      paramc.HHh = i.fwJ();
       paramBundle = getItemContainerPlugin().getEditorDataList();
-      kotlin.g.b.p.h(paramBundle, "<set-?>");
-      paramc.BNo = paramBundle;
-      paramc.aT(h.a(getItemContainerPlugin()));
+      p.k(paramBundle, "<set-?>");
+      paramc.HJW = paramBundle;
+      paramc.bh(i.a(getItemContainerPlugin()));
       if (getContext() != null)
       {
         paramBundle = getContext();
         localObject = getConfigProvider();
         if (localObject == null) {
-          kotlin.g.b.p.hyc();
+          p.iCn();
         }
-        this.GFK = new com.tencent.mm.plugin.vlog.ui.manager.a(paramBundle, paramc, (RecordConfigProvider)localObject, getAddMusicPlugin().wgL.getMuteOrigin(), getAddMusicPlugin().wgG);
-        paramc = getContext().getString(2131767138);
-        kotlin.g.b.p.g(paramc, "context.getString(R.string.vlog_dialog_tip)");
-        aLt(paramc);
-        paramc = g.aAh();
-        kotlin.g.b.p.g(paramc, "MMKernel.storage()");
-        i = paramc.azQ().getInt(ar.a.OfX, 0);
+        this.NtB = new com.tencent.mm.plugin.vlog.ui.manager.a(paramBundle, paramc, (RecordConfigProvider)localObject, getAddMusicPlugin().AQb.getMuteOrigin(), getAddMusicPlugin().AQf);
+        paramc = getContext().getString(a.i.vlog_dialog_tip);
+        p.j(paramc, "context.getString(R.string.vlog_dialog_tip)");
+        aVX(paramc);
+        paramc = h.aHG();
+        p.j(paramc, "MMKernel.storage()");
+        i = paramc.aHp().getInt(ar.a.Vun, 0);
         paramc = new StringBuilder("remux foreground? ");
         if (i == 0) {}
         for (;;)
@@ -483,59 +490,59 @@ public final class VLogPreviewPluginLayout
           if (i != 0) {
             break label1763;
           }
-          paramc = this.GFK;
+          paramc = this.NtB;
           if (paramc == null) {
             break label1756;
           }
-          paramBundle = this.GFJ;
+          paramBundle = this.NtA;
           if (paramBundle == null) {
-            kotlin.g.b.p.btv("previewPlayerPlugin");
+            p.bGy("previewPlayerPlugin");
           }
-          i = paramBundle.GIT.getWidth();
-          paramBundle = this.GFJ;
+          i = paramBundle.NwI.getWidth();
+          paramBundle = this.NtA;
           if (paramBundle == null) {
-            kotlin.g.b.p.btv("previewPlayerPlugin");
+            p.bGy("previewPlayerPlugin");
           }
-          j = paramBundle.GIT.getHeight();
-          paramBundle = this.GFI;
-          kotlin.g.b.p.h(paramBundle, "callback");
-          Log.i("MicroMsg.VLogGenerateManager", "generate path :" + paramc.wdm.BOA);
-          paramc.xlr = paramBundle;
-          paramc.GFT.jw(i, j);
-          if (!TextUtils.isEmpty((CharSequence)paramc.GFW.GzR)) {
+          j = paramBundle.NwI.getHeight();
+          paramBundle = this.Ntz;
+          p.k(paramBundle, "callback");
+          Log.i("MicroMsg.VLogGenerateManager", "generate path :" + paramc.ALV.HLg);
+          paramc.nmO = paramBundle;
+          paramc.NtK.kJ(i, j);
+          if (!TextUtils.isEmpty((CharSequence)paramc.NtN.Nnx)) {
             break;
           }
-          paramc.GFT.e(paramc.GFV);
+          paramc.NtK.e(paramc.NtM);
           AppMethodBeat.o(111116);
           return;
           bool = false;
         }
-        paramc.GFS.d(paramc.GFW.GzR, (m)new a.e(paramc));
+        paramc.NtJ.c(paramc.NtN.Nnx, (m)new a.e(paramc));
         AppMethodBeat.o(111116);
         return;
         label1756:
         AppMethodBeat.o(111116);
         return;
         label1763:
-        paramc = this.GFK;
+        paramc = this.NtB;
         if (paramc != null)
         {
-          paramBundle = this.GFJ;
+          paramBundle = this.NtA;
           if (paramBundle == null) {
-            kotlin.g.b.p.btv("previewPlayerPlugin");
+            p.bGy("previewPlayerPlugin");
           }
-          i = paramBundle.GIT.getWidth();
-          paramBundle = this.GFJ;
+          i = paramBundle.NwI.getWidth();
+          paramBundle = this.NtA;
           if (paramBundle == null) {
-            kotlin.g.b.p.btv("previewPlayerPlugin");
+            p.bGy("previewPlayerPlugin");
           }
-          j = paramBundle.GIT.getHeight();
-          paramBundle = this.GFI;
-          kotlin.g.b.p.h(paramBundle, "callback");
-          Log.i("MicroMsg.VLogGenerateManager", "generate path :" + paramc.wdm.BOA);
-          paramc.xlr = paramBundle;
-          paramc.GFT.jw(i, j);
-          com.tencent.mm.plugin.vlog.remux.d.a(paramc.GFT, (kotlin.g.a.r)new a.d(paramc, i, j));
+          j = paramBundle.NwI.getHeight();
+          paramBundle = this.Ntz;
+          p.k(paramBundle, "callback");
+          Log.i("MicroMsg.VLogGenerateManager", "generate path :" + paramc.ALV.HLg);
+          paramc.nmO = paramBundle;
+          paramc.NtK.kJ(i, j);
+          e.a(paramc.NtK, (r)new a.d(paramc, i, j));
           AppMethodBeat.o(111116);
           return;
         }
@@ -545,11 +552,11 @@ public final class VLogPreviewPluginLayout
       if (paramBundle != null)
       {
         bool = paramBundle.getBoolean("PARAM_EDIT_ORIGIN_VOICE_MUTE_BOOLEAN");
-        paramc = this.GFJ;
+        paramc = this.NtA;
         if (paramc == null) {
-          kotlin.g.b.p.btv("previewPlayerPlugin");
+          p.bGy("previewPlayerPlugin");
         }
-        paramc.GIT.setMute(bool);
+        paramc.NwI.setMute(bool);
         AppMethodBeat.o(111116);
         return;
       }
@@ -562,13 +569,13 @@ public final class VLogPreviewPluginLayout
   {
     AppMethodBeat.i(111117);
     Object localObject = new VLogPreloadPlayView(getContext());
-    this.GFJ = new ag((VLogPreloadPlayView)localObject, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this);
+    this.NtA = new af((VLogPreloadPlayView)localObject, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this);
     ArrayList localArrayList = getPluginList();
-    ag localag = this.GFJ;
-    if (localag == null) {
-      kotlin.g.b.p.btv("previewPlayerPlugin");
+    af localaf = this.NtA;
+    if (localaf == null) {
+      p.bGy("previewPlayerPlugin");
     }
-    localArrayList.add(localag);
+    localArrayList.add(localaf);
     localObject = (View)localObject;
     AppMethodBeat.o(111117);
     return localObject;
@@ -580,10 +587,10 @@ public final class VLogPreviewPluginLayout
     Log.i("MicroMsg.VLogPreviewPluginLayout", "onBackPress");
     if (!super.onBackPress())
     {
-      Object localObject = al.GAc;
+      Object localObject = al.NnI;
       al.a(null);
       Log.i(al.TAG, "record cancel");
-      al.eKh();
+      al.fwx();
       localObject = getNavigator();
       if (localObject != null) {
         ((com.tencent.mm.plugin.recordvideo.activity.a)localObject).a(0, null);
@@ -600,10 +607,13 @@ public final class VLogPreviewPluginLayout
     AppMethodBeat.o(111119);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/GenerateVlogRespBody;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/VLogPreviewPluginLayout$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
+  public static final class a {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/GenerateVlogRespBody;", "invoke"})
   static final class b
     extends kotlin.g.b.q
-    implements kotlin.g.a.b<bha, x>
+    implements kotlin.g.a.b<boi, x>
   {
     b(VLogPreviewPluginLayout paramVLogPreviewPluginLayout)
     {
@@ -611,7 +621,7 @@ public final class VLogPreviewPluginLayout
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "success", "", "errorCode", "", "model", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$VLogOutputInfo;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "success", "", "errorCode", "", "model", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$VLogOutputInfo;", "invoke"})
   static final class c
     extends kotlin.g.b.q
     implements kotlin.g.a.q<Boolean, Integer, a.b, x>
@@ -624,7 +634,7 @@ public final class VLogPreviewPluginLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.VLogPreviewPluginLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@
     <Preference mm:key="settings_finder_recent_like" mm:layout="@layout/b8j" mm:title="@string/gp3" />
     <Preference mm:key="settings_more_info" mm:layout="@layout/b8j" mm:title="@string/wp" />
     <PreferenceSmallCategory />
-    <Preference mm:key="settings_wecoin" mm:layout="@layout/b8j" mm:title="@string/gqe" />
+    <com.tencent.mm.ui.base.preference.SummaryTextPreference mm:key="settings_wecoin" mm:layout="@layout/b8j" mm:title="@string/gqe" />
     <PreferenceSmallCategory />
     <Preference mm:key="settings_address" mm:layout="@layout/b8j" mm:title="@string/gnc" />
     <Preference mm:key="settings_invoice" mm:layout="@layout/b8j" mm:title="@string/gpg" />

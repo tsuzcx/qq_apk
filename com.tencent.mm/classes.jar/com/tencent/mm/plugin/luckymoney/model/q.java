@@ -4,57 +4,59 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class q
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int egY;
-  public int egZ;
-  public int eha;
-  public long eht;
-  public int qwe;
-  public int resourceId;
-  public String yPK;
-  public String yQE;
-  public int yRN;
-  public String yRO;
-  public String yRP;
-  public String yRQ;
-  public String yVA;
-  public String yVB;
-  public String yVC;
-  public String yVD;
-  public j yVE;
-  public String yVF;
-  public String yVb;
-  public String yVc;
-  public String yVd;
-  public String yVe;
-  public String yVf;
-  public String yVg;
-  public long yVh;
-  public long yVi;
-  public long yVj;
-  public String yVk;
-  public int yVl;
-  public int yVm;
-  public int yVn;
-  public String yVo;
-  public int yVp;
-  public i yVq;
-  public LinkedList<bg> yVr;
-  public bg yVs;
-  public String yVt;
-  public String yVu;
-  public int yVv;
-  public LinkedList<ad> yVw;
-  public String yVx;
-  public String yVy;
-  public int yVz;
+  public String EtJ;
+  public int EvK;
+  public String EvL;
+  public String EvM;
+  public String EvN;
+  public String EyY;
+  public String EyZ;
+  public String EzA;
+  public String EzB;
+  public j EzC;
+  public String EzD;
+  public boolean EzE;
+  public int EzF;
+  public String Eza;
+  public String Ezb;
+  public String Ezc;
+  public String Ezd;
+  public long Eze;
+  public long Ezf;
+  public long Ezg;
+  public String Ezh;
+  public int Ezi;
+  public int Ezj;
+  public int Ezk;
+  public String Ezl;
+  public int Ezm;
+  public i Ezn;
+  public LinkedList<bh> Ezo;
+  public bh Ezp;
+  public String Ezq;
+  public String Ezr;
+  public int Ezs;
+  public int Ezt;
+  public LinkedList<ae> Ezu;
+  public String Ezv;
+  public String Ezw;
+  public int Ezx;
+  public String Ezy;
+  public String Ezz;
+  public long gbJ;
+  public int gbo;
+  public int gbp;
+  public int gbq;
+  public int tVd;
+  public String ybP;
   
   public q()
   {
     AppMethodBeat.i(91253);
-    this.yVr = new LinkedList();
-    this.yVw = new LinkedList();
+    this.Ezo = new LinkedList();
+    this.Ezu = new LinkedList();
     AppMethodBeat.o(91253);
   }
   
@@ -64,232 +66,236 @@ public final class q
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.egY);
-      paramVarArgs.aM(2, this.egZ);
-      if (this.yVb != null) {
-        paramVarArgs.e(3, this.yVb);
+      paramVarArgs.aY(1, this.gbo);
+      paramVarArgs.aY(2, this.gbp);
+      if (this.EyY != null) {
+        paramVarArgs.f(3, this.EyY);
       }
-      if (this.yVc != null) {
-        paramVarArgs.e(4, this.yVc);
+      if (this.EyZ != null) {
+        paramVarArgs.f(4, this.EyZ);
       }
-      if (this.yPK != null) {
-        paramVarArgs.e(5, this.yPK);
+      if (this.EtJ != null) {
+        paramVarArgs.f(5, this.EtJ);
       }
-      if (this.yVd != null) {
-        paramVarArgs.e(6, this.yVd);
+      if (this.Eza != null) {
+        paramVarArgs.f(6, this.Eza);
       }
-      if (this.yVe != null) {
-        paramVarArgs.e(7, this.yVe);
+      if (this.Ezb != null) {
+        paramVarArgs.f(7, this.Ezb);
       }
-      if (this.yQE != null) {
-        paramVarArgs.e(8, this.yQE);
+      if (this.ybP != null) {
+        paramVarArgs.f(8, this.ybP);
       }
-      if (this.yVf != null) {
-        paramVarArgs.e(9, this.yVf);
+      if (this.Ezc != null) {
+        paramVarArgs.f(9, this.Ezc);
       }
-      if (this.yVg != null) {
-        paramVarArgs.e(10, this.yVg);
+      if (this.Ezd != null) {
+        paramVarArgs.f(10, this.Ezd);
       }
-      paramVarArgs.bb(11, this.eht);
-      paramVarArgs.bb(12, this.yVh);
-      paramVarArgs.bb(13, this.yVi);
-      paramVarArgs.aM(14, this.qwe);
-      paramVarArgs.bb(15, this.yVj);
-      if (this.yVk != null) {
-        paramVarArgs.e(16, this.yVk);
+      paramVarArgs.bm(11, this.gbJ);
+      paramVarArgs.bm(12, this.Eze);
+      paramVarArgs.bm(13, this.Ezf);
+      paramVarArgs.aY(14, this.tVd);
+      paramVarArgs.bm(15, this.Ezg);
+      if (this.Ezh != null) {
+        paramVarArgs.f(16, this.Ezh);
       }
-      paramVarArgs.aM(17, this.yVl);
-      paramVarArgs.aM(18, this.yVm);
-      paramVarArgs.aM(19, this.yVn);
-      if (this.yVo != null) {
-        paramVarArgs.e(20, this.yVo);
+      paramVarArgs.aY(17, this.Ezi);
+      paramVarArgs.aY(18, this.Ezj);
+      paramVarArgs.aY(19, this.Ezk);
+      if (this.Ezl != null) {
+        paramVarArgs.f(20, this.Ezl);
       }
-      paramVarArgs.aM(21, this.eha);
-      paramVarArgs.aM(22, this.yVp);
-      if (this.yVq != null)
+      paramVarArgs.aY(21, this.gbq);
+      paramVarArgs.aY(22, this.Ezm);
+      if (this.Ezn != null)
       {
-        paramVarArgs.ni(23, this.yVq.computeSize());
-        this.yVq.writeFields(paramVarArgs);
+        paramVarArgs.oE(23, this.Ezn.computeSize());
+        this.Ezn.writeFields(paramVarArgs);
       }
-      paramVarArgs.aM(24, this.yRN);
-      if (this.yRP != null) {
-        paramVarArgs.e(25, this.yRP);
+      paramVarArgs.aY(24, this.EvK);
+      if (this.EvM != null) {
+        paramVarArgs.f(25, this.EvM);
       }
-      paramVarArgs.e(26, 8, this.yVr);
-      if (this.yVs != null)
+      paramVarArgs.e(26, 8, this.Ezo);
+      if (this.Ezp != null)
       {
-        paramVarArgs.ni(27, this.yVs.computeSize());
-        this.yVs.writeFields(paramVarArgs);
+        paramVarArgs.oE(27, this.Ezp.computeSize());
+        this.Ezp.writeFields(paramVarArgs);
       }
-      if (this.yVt != null) {
-        paramVarArgs.e(28, this.yVt);
+      if (this.Ezq != null) {
+        paramVarArgs.f(28, this.Ezq);
       }
-      if (this.yVu != null) {
-        paramVarArgs.e(29, this.yVu);
+      if (this.Ezr != null) {
+        paramVarArgs.f(29, this.Ezr);
       }
-      paramVarArgs.aM(30, this.yVv);
-      paramVarArgs.aM(31, this.resourceId);
-      if (this.yRQ != null) {
-        paramVarArgs.e(32, this.yRQ);
+      paramVarArgs.aY(30, this.Ezs);
+      paramVarArgs.aY(31, this.Ezt);
+      if (this.EvN != null) {
+        paramVarArgs.f(32, this.EvN);
       }
-      paramVarArgs.e(33, 8, this.yVw);
-      if (this.yRO != null) {
-        paramVarArgs.e(34, this.yRO);
+      paramVarArgs.e(33, 8, this.Ezu);
+      if (this.EvL != null) {
+        paramVarArgs.f(34, this.EvL);
       }
-      if (this.yVx != null) {
-        paramVarArgs.e(35, this.yVx);
+      if (this.Ezv != null) {
+        paramVarArgs.f(35, this.Ezv);
       }
-      if (this.yVy != null) {
-        paramVarArgs.e(36, this.yVy);
+      if (this.Ezw != null) {
+        paramVarArgs.f(36, this.Ezw);
       }
-      paramVarArgs.aM(37, this.yVz);
-      if (this.yVA != null) {
-        paramVarArgs.e(38, this.yVA);
+      paramVarArgs.aY(37, this.Ezx);
+      if (this.Ezy != null) {
+        paramVarArgs.f(38, this.Ezy);
       }
-      if (this.yVB != null) {
-        paramVarArgs.e(39, this.yVB);
+      if (this.Ezz != null) {
+        paramVarArgs.f(39, this.Ezz);
       }
-      if (this.yVC != null) {
-        paramVarArgs.e(40, this.yVC);
+      if (this.EzA != null) {
+        paramVarArgs.f(40, this.EzA);
       }
-      if (this.yVD != null) {
-        paramVarArgs.e(41, this.yVD);
+      if (this.EzB != null) {
+        paramVarArgs.f(41, this.EzB);
       }
-      if (this.yVE != null)
+      if (this.EzC != null)
       {
-        paramVarArgs.ni(42, this.yVE.computeSize());
-        this.yVE.writeFields(paramVarArgs);
+        paramVarArgs.oE(42, this.EzC.computeSize());
+        this.EzC.writeFields(paramVarArgs);
       }
-      if (this.yVF != null) {
-        paramVarArgs.e(43, this.yVF);
+      if (this.EzD != null) {
+        paramVarArgs.f(43, this.EzD);
       }
+      paramVarArgs.co(44, this.EzE);
+      paramVarArgs.aY(45, this.EzF);
       AppMethodBeat.o(91254);
       return 0;
     }
     int i;
     if (paramInt == 1)
     {
-      i = g.a.a.b.b.a.bu(1, this.egY) + 0 + g.a.a.b.b.a.bu(2, this.egZ);
+      i = g.a.a.b.b.a.bM(1, this.gbo) + 0 + g.a.a.b.b.a.bM(2, this.gbp);
       paramInt = i;
-      if (this.yVb != null) {
-        paramInt = i + g.a.a.b.b.a.f(3, this.yVb);
+      if (this.EyY != null) {
+        paramInt = i + g.a.a.b.b.a.g(3, this.EyY);
       }
       i = paramInt;
-      if (this.yVc != null) {
-        i = paramInt + g.a.a.b.b.a.f(4, this.yVc);
+      if (this.EyZ != null) {
+        i = paramInt + g.a.a.b.b.a.g(4, this.EyZ);
       }
       paramInt = i;
-      if (this.yPK != null) {
-        paramInt = i + g.a.a.b.b.a.f(5, this.yPK);
+      if (this.EtJ != null) {
+        paramInt = i + g.a.a.b.b.a.g(5, this.EtJ);
       }
       i = paramInt;
-      if (this.yVd != null) {
-        i = paramInt + g.a.a.b.b.a.f(6, this.yVd);
+      if (this.Eza != null) {
+        i = paramInt + g.a.a.b.b.a.g(6, this.Eza);
       }
       paramInt = i;
-      if (this.yVe != null) {
-        paramInt = i + g.a.a.b.b.a.f(7, this.yVe);
+      if (this.Ezb != null) {
+        paramInt = i + g.a.a.b.b.a.g(7, this.Ezb);
       }
       i = paramInt;
-      if (this.yQE != null) {
-        i = paramInt + g.a.a.b.b.a.f(8, this.yQE);
+      if (this.ybP != null) {
+        i = paramInt + g.a.a.b.b.a.g(8, this.ybP);
       }
       paramInt = i;
-      if (this.yVf != null) {
-        paramInt = i + g.a.a.b.b.a.f(9, this.yVf);
+      if (this.Ezc != null) {
+        paramInt = i + g.a.a.b.b.a.g(9, this.Ezc);
       }
       i = paramInt;
-      if (this.yVg != null) {
-        i = paramInt + g.a.a.b.b.a.f(10, this.yVg);
+      if (this.Ezd != null) {
+        i = paramInt + g.a.a.b.b.a.g(10, this.Ezd);
       }
-      i = i + g.a.a.b.b.a.r(11, this.eht) + g.a.a.b.b.a.r(12, this.yVh) + g.a.a.b.b.a.r(13, this.yVi) + g.a.a.b.b.a.bu(14, this.qwe) + g.a.a.b.b.a.r(15, this.yVj);
+      i = i + g.a.a.b.b.a.p(11, this.gbJ) + g.a.a.b.b.a.p(12, this.Eze) + g.a.a.b.b.a.p(13, this.Ezf) + g.a.a.b.b.a.bM(14, this.tVd) + g.a.a.b.b.a.p(15, this.Ezg);
       paramInt = i;
-      if (this.yVk != null) {
-        paramInt = i + g.a.a.b.b.a.f(16, this.yVk);
+      if (this.Ezh != null) {
+        paramInt = i + g.a.a.b.b.a.g(16, this.Ezh);
       }
-      i = paramInt + g.a.a.b.b.a.bu(17, this.yVl) + g.a.a.b.b.a.bu(18, this.yVm) + g.a.a.b.b.a.bu(19, this.yVn);
+      i = paramInt + g.a.a.b.b.a.bM(17, this.Ezi) + g.a.a.b.b.a.bM(18, this.Ezj) + g.a.a.b.b.a.bM(19, this.Ezk);
       paramInt = i;
-      if (this.yVo != null) {
-        paramInt = i + g.a.a.b.b.a.f(20, this.yVo);
+      if (this.Ezl != null) {
+        paramInt = i + g.a.a.b.b.a.g(20, this.Ezl);
       }
-      i = paramInt + g.a.a.b.b.a.bu(21, this.eha) + g.a.a.b.b.a.bu(22, this.yVp);
+      i = paramInt + g.a.a.b.b.a.bM(21, this.gbq) + g.a.a.b.b.a.bM(22, this.Ezm);
       paramInt = i;
-      if (this.yVq != null) {
-        paramInt = i + g.a.a.a.nh(23, this.yVq.computeSize());
+      if (this.Ezn != null) {
+        paramInt = i + g.a.a.a.oD(23, this.Ezn.computeSize());
       }
-      i = paramInt + g.a.a.b.b.a.bu(24, this.yRN);
+      i = paramInt + g.a.a.b.b.a.bM(24, this.EvK);
       paramInt = i;
-      if (this.yRP != null) {
-        paramInt = i + g.a.a.b.b.a.f(25, this.yRP);
+      if (this.EvM != null) {
+        paramInt = i + g.a.a.b.b.a.g(25, this.EvM);
       }
-      i = paramInt + g.a.a.a.c(26, 8, this.yVr);
+      i = paramInt + g.a.a.a.c(26, 8, this.Ezo);
       paramInt = i;
-      if (this.yVs != null) {
-        paramInt = i + g.a.a.a.nh(27, this.yVs.computeSize());
+      if (this.Ezp != null) {
+        paramInt = i + g.a.a.a.oD(27, this.Ezp.computeSize());
       }
       i = paramInt;
-      if (this.yVt != null) {
-        i = paramInt + g.a.a.b.b.a.f(28, this.yVt);
+      if (this.Ezq != null) {
+        i = paramInt + g.a.a.b.b.a.g(28, this.Ezq);
       }
       paramInt = i;
-      if (this.yVu != null) {
-        paramInt = i + g.a.a.b.b.a.f(29, this.yVu);
+      if (this.Ezr != null) {
+        paramInt = i + g.a.a.b.b.a.g(29, this.Ezr);
       }
-      i = paramInt + g.a.a.b.b.a.bu(30, this.yVv) + g.a.a.b.b.a.bu(31, this.resourceId);
+      i = paramInt + g.a.a.b.b.a.bM(30, this.Ezs) + g.a.a.b.b.a.bM(31, this.Ezt);
       paramInt = i;
-      if (this.yRQ != null) {
-        paramInt = i + g.a.a.b.b.a.f(32, this.yRQ);
+      if (this.EvN != null) {
+        paramInt = i + g.a.a.b.b.a.g(32, this.EvN);
       }
-      i = paramInt + g.a.a.a.c(33, 8, this.yVw);
+      i = paramInt + g.a.a.a.c(33, 8, this.Ezu);
       paramInt = i;
-      if (this.yRO != null) {
-        paramInt = i + g.a.a.b.b.a.f(34, this.yRO);
+      if (this.EvL != null) {
+        paramInt = i + g.a.a.b.b.a.g(34, this.EvL);
       }
       i = paramInt;
-      if (this.yVx != null) {
-        i = paramInt + g.a.a.b.b.a.f(35, this.yVx);
+      if (this.Ezv != null) {
+        i = paramInt + g.a.a.b.b.a.g(35, this.Ezv);
       }
       paramInt = i;
-      if (this.yVy != null) {
-        paramInt = i + g.a.a.b.b.a.f(36, this.yVy);
+      if (this.Ezw != null) {
+        paramInt = i + g.a.a.b.b.a.g(36, this.Ezw);
       }
-      i = paramInt + g.a.a.b.b.a.bu(37, this.yVz);
+      i = paramInt + g.a.a.b.b.a.bM(37, this.Ezx);
       paramInt = i;
-      if (this.yVA != null) {
-        paramInt = i + g.a.a.b.b.a.f(38, this.yVA);
+      if (this.Ezy != null) {
+        paramInt = i + g.a.a.b.b.a.g(38, this.Ezy);
       }
       i = paramInt;
-      if (this.yVB != null) {
-        i = paramInt + g.a.a.b.b.a.f(39, this.yVB);
+      if (this.Ezz != null) {
+        i = paramInt + g.a.a.b.b.a.g(39, this.Ezz);
       }
       paramInt = i;
-      if (this.yVC != null) {
-        paramInt = i + g.a.a.b.b.a.f(40, this.yVC);
+      if (this.EzA != null) {
+        paramInt = i + g.a.a.b.b.a.g(40, this.EzA);
       }
       i = paramInt;
-      if (this.yVD != null) {
-        i = paramInt + g.a.a.b.b.a.f(41, this.yVD);
+      if (this.EzB != null) {
+        i = paramInt + g.a.a.b.b.a.g(41, this.EzB);
       }
       paramInt = i;
-      if (this.yVE != null) {
-        paramInt = i + g.a.a.a.nh(42, this.yVE.computeSize());
+      if (this.EzC != null) {
+        paramInt = i + g.a.a.a.oD(42, this.EzC.computeSize());
       }
       i = paramInt;
-      if (this.yVF != null) {
-        i = paramInt + g.a.a.b.b.a.f(43, this.yVF);
+      if (this.EzD != null) {
+        i = paramInt + g.a.a.b.b.a.g(43, this.EzD);
       }
+      paramInt = g.a.a.b.b.a.gL(44);
+      int j = g.a.a.b.b.a.bM(45, this.EzF);
       AppMethodBeat.o(91254);
-      return i;
+      return i + (paramInt + 1) + j;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.yVr.clear();
-      this.yVw.clear();
+      this.Ezo.clear();
+      this.Ezu.clear();
       paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
       AppMethodBeat.o(91254);
@@ -301,237 +307,249 @@ public final class q
       q localq = (q)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       Object localObject2;
-      boolean bool;
       switch (paramInt)
       {
       default: 
         AppMethodBeat.o(91254);
         return -1;
       case 1: 
-        localq.egY = ((g.a.a.a.a)localObject1).UbS.zi();
+        localq.gbo = ((g.a.a.a.a)localObject1).abFh.AK();
         AppMethodBeat.o(91254);
         return 0;
       case 2: 
-        localq.egZ = ((g.a.a.a.a)localObject1).UbS.zi();
+        localq.gbp = ((g.a.a.a.a)localObject1).abFh.AK();
         AppMethodBeat.o(91254);
         return 0;
       case 3: 
-        localq.yVb = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.EyY = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 4: 
-        localq.yVc = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.EyZ = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 5: 
-        localq.yPK = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.EtJ = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 6: 
-        localq.yVd = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.Eza = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 7: 
-        localq.yVe = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.Ezb = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 8: 
-        localq.yQE = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.ybP = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 9: 
-        localq.yVf = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.Ezc = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 10: 
-        localq.yVg = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.Ezd = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 11: 
-        localq.eht = ((g.a.a.a.a)localObject1).UbS.zl();
+        localq.gbJ = ((g.a.a.a.a)localObject1).abFh.AN();
         AppMethodBeat.o(91254);
         return 0;
       case 12: 
-        localq.yVh = ((g.a.a.a.a)localObject1).UbS.zl();
+        localq.Eze = ((g.a.a.a.a)localObject1).abFh.AN();
         AppMethodBeat.o(91254);
         return 0;
       case 13: 
-        localq.yVi = ((g.a.a.a.a)localObject1).UbS.zl();
+        localq.Ezf = ((g.a.a.a.a)localObject1).abFh.AN();
         AppMethodBeat.o(91254);
         return 0;
       case 14: 
-        localq.qwe = ((g.a.a.a.a)localObject1).UbS.zi();
+        localq.tVd = ((g.a.a.a.a)localObject1).abFh.AK();
         AppMethodBeat.o(91254);
         return 0;
       case 15: 
-        localq.yVj = ((g.a.a.a.a)localObject1).UbS.zl();
+        localq.Ezg = ((g.a.a.a.a)localObject1).abFh.AN();
         AppMethodBeat.o(91254);
         return 0;
       case 16: 
-        localq.yVk = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.Ezh = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 17: 
-        localq.yVl = ((g.a.a.a.a)localObject1).UbS.zi();
+        localq.Ezi = ((g.a.a.a.a)localObject1).abFh.AK();
         AppMethodBeat.o(91254);
         return 0;
       case 18: 
-        localq.yVm = ((g.a.a.a.a)localObject1).UbS.zi();
+        localq.Ezj = ((g.a.a.a.a)localObject1).abFh.AK();
         AppMethodBeat.o(91254);
         return 0;
       case 19: 
-        localq.yVn = ((g.a.a.a.a)localObject1).UbS.zi();
+        localq.Ezk = ((g.a.a.a.a)localObject1).abFh.AK();
         AppMethodBeat.o(91254);
         return 0;
       case 20: 
-        localq.yVo = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.Ezl = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 21: 
-        localq.eha = ((g.a.a.a.a)localObject1).UbS.zi();
+        localq.gbq = ((g.a.a.a.a)localObject1).abFh.AK();
         AppMethodBeat.o(91254);
         return 0;
       case 22: 
-        localq.yVp = ((g.a.a.a.a)localObject1).UbS.zi();
+        localq.Ezm = ((g.a.a.a.a)localObject1).abFh.AK();
         AppMethodBeat.o(91254);
         return 0;
       case 23: 
-        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new i();
-          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((i)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-          localq.yVq = ((i)localObject1);
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new i();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((i)localObject2).parseFrom((byte[])localObject1);
+          }
+          localq.Ezn = ((i)localObject2);
           paramInt += 1;
         }
         AppMethodBeat.o(91254);
         return 0;
       case 24: 
-        localq.yRN = ((g.a.a.a.a)localObject1).UbS.zi();
+        localq.EvK = ((g.a.a.a.a)localObject1).abFh.AK();
         AppMethodBeat.o(91254);
         return 0;
       case 25: 
-        localq.yRP = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.EvM = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 26: 
-        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new bg();
-          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((bg)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-          localq.yVr.add(localObject1);
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new bh();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((bh)localObject2).parseFrom((byte[])localObject1);
+          }
+          localq.Ezo.add(localObject2);
           paramInt += 1;
         }
         AppMethodBeat.o(91254);
         return 0;
       case 27: 
-        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new bg();
-          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((bg)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-          localq.yVs = ((bg)localObject1);
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new bh();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((bh)localObject2).parseFrom((byte[])localObject1);
+          }
+          localq.Ezp = ((bh)localObject2);
           paramInt += 1;
         }
         AppMethodBeat.o(91254);
         return 0;
       case 28: 
-        localq.yVt = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.Ezq = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 29: 
-        localq.yVu = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.Ezr = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 30: 
-        localq.yVv = ((g.a.a.a.a)localObject1).UbS.zi();
+        localq.Ezs = ((g.a.a.a.a)localObject1).abFh.AK();
         AppMethodBeat.o(91254);
         return 0;
       case 31: 
-        localq.resourceId = ((g.a.a.a.a)localObject1).UbS.zi();
+        localq.Ezt = ((g.a.a.a.a)localObject1).abFh.AK();
         AppMethodBeat.o(91254);
         return 0;
       case 32: 
-        localq.yRQ = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.EvN = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 33: 
-        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new ad();
-          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((ad)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-          localq.yVw.add(localObject1);
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new ae();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((ae)localObject2).parseFrom((byte[])localObject1);
+          }
+          localq.Ezu.add(localObject2);
           paramInt += 1;
         }
         AppMethodBeat.o(91254);
         return 0;
       case 34: 
-        localq.yRO = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.EvL = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 35: 
-        localq.yVx = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.Ezv = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 36: 
-        localq.yVy = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.Ezw = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 37: 
-        localq.yVz = ((g.a.a.a.a)localObject1).UbS.zi();
+        localq.Ezx = ((g.a.a.a.a)localObject1).abFh.AK();
         AppMethodBeat.o(91254);
         return 0;
       case 38: 
-        localq.yVA = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.Ezy = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 39: 
-        localq.yVB = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.Ezz = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 40: 
-        localq.yVC = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.EzA = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 41: 
-        localq.yVD = ((g.a.a.a.a)localObject1).UbS.readString();
+        localq.EzB = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(91254);
         return 0;
       case 42: 
-        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new j();
-          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((j)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-          localq.yVE = ((j)localObject1);
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new j();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((j)localObject2).parseFrom((byte[])localObject1);
+          }
+          localq.EzC = ((j)localObject2);
           paramInt += 1;
         }
         AppMethodBeat.o(91254);
         return 0;
+      case 43: 
+        localq.EzD = ((g.a.a.a.a)localObject1).abFh.readString();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 44: 
+        localq.EzE = ((g.a.a.a.a)localObject1).abFh.AB();
+        AppMethodBeat.o(91254);
+        return 0;
       }
-      localq.yVF = ((g.a.a.a.a)localObject1).UbS.readString();
+      localq.EzF = ((g.a.a.a.a)localObject1).abFh.AK();
       AppMethodBeat.o(91254);
       return 0;
     }
@@ -541,7 +559,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.q
  * JD-Core Version:    0.7.0.1
  */

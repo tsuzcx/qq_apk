@@ -8,11 +8,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.a.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/mv/ui/view/InterceptRelativeLayout;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "beforeDispatchTouchEvent", "Lkotlin/Function1;", "Landroid/view/MotionEvent;", "Lkotlin/ParameterName;", "name", "ev", "", "getBeforeDispatchTouchEvent", "()Lkotlin/jvm/functions/Function1;", "setBeforeDispatchTouchEvent", "(Lkotlin/jvm/functions/Function1;)V", "onInterceptTouchEvent", "plugin-mv_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/InterceptRelativeLayout;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "beforeDispatchTouchEvent", "Lkotlin/Function1;", "Landroid/view/MotionEvent;", "Lkotlin/ParameterName;", "name", "ev", "", "getBeforeDispatchTouchEvent", "()Lkotlin/jvm/functions/Function1;", "setBeforeDispatchTouchEvent", "(Lkotlin/jvm/functions/Function1;)V", "onInterceptTouchEvent", "plugin-mv_release"})
 public final class InterceptRelativeLayout
   extends RelativeLayout
 {
-  private b<? super MotionEvent, Boolean> AwA;
+  private b<? super MotionEvent, Boolean> Gnk;
   
   public InterceptRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,30 +26,30 @@ public final class InterceptRelativeLayout
   
   public final b<MotionEvent, Boolean> getBeforeDispatchTouchEvent()
   {
-    return this.AwA;
+    return this.Gnk;
   }
   
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(257402);
-    b localb = this.AwA;
+    AppMethodBeat.i(229368);
+    b localb = this.Gnk;
     if (localb != null)
     {
       paramMotionEvent = (Boolean)localb.invoke(paramMotionEvent);
       if (paramMotionEvent != null)
       {
         boolean bool = paramMotionEvent.booleanValue();
-        AppMethodBeat.o(257402);
+        AppMethodBeat.o(229368);
         return bool;
       }
     }
-    AppMethodBeat.o(257402);
+    AppMethodBeat.o(229368);
     return false;
   }
   
   public final void setBeforeDispatchTouchEvent(b<? super MotionEvent, Boolean> paramb)
   {
-    this.AwA = paramb;
+    this.Gnk = paramb;
   }
 }
 

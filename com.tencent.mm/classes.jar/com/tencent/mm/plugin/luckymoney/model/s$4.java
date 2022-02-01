@@ -12,14 +12,14 @@ final class s$4
 {
   s$4(AtomicInteger paramAtomicInteger, Handler.Callback paramCallback) {}
   
-  public final void ei(boolean paramBoolean)
+  public final void eG(boolean paramBoolean)
   {
     AppMethodBeat.i(163573);
     Log.d("MicroMsg.LuckyMoneyEnvelopePreview", "load ok : %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.yWb.incrementAndGet();
+    this.EAe.incrementAndGet();
     Message localMessage = Message.obtain();
-    localMessage.arg1 = this.yWb.get();
-    this.yWc.handleMessage(localMessage);
+    localMessage.arg1 = this.EAe.get();
+    this.EAf.handleMessage(localMessage);
     AppMethodBeat.o(163573);
   }
 }

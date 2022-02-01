@@ -17,13 +17,13 @@ final class SnsStrangerCommentDetailUI$a$1
   {
     AppMethodBeat.i(99150);
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsStrangerCommentDetailUI$CommentListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+    ((b)localObject).bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ui/SnsStrangerCommentDetailUI$CommentListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
     paramView = (String)paramView.getTag();
     Log.d("MicroMsg.SnsStrangerCommentDetailUI", "onCommentClick:".concat(String.valueOf(paramView)));
     localObject = new Intent();
     ((Intent)localObject).putExtra("Contact_User", paramView);
-    com.tencent.mm.plugin.sns.c.a.jRt.c((Intent)localObject, SnsStrangerCommentDetailUI.a.a(this.EJU));
+    com.tencent.mm.plugin.sns.c.a.mIG.c((Intent)localObject, SnsStrangerCommentDetailUI.a.a(this.KXV));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/SnsStrangerCommentDetailUI$CommentListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(99150);
   }

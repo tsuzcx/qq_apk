@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class i$b
 {
-  int Elu;
-  int Elv;
-  int Elw;
+  int KyB;
+  int KyC;
+  int KyD;
   
   public final boolean equals(Object paramObject)
   {
@@ -16,13 +16,13 @@ final class i$b
     {
       paramObject = (b)paramObject;
       bool1 = bool2;
-      if (paramObject.Elu == this.Elu)
+      if (paramObject.KyB == this.KyB)
       {
         bool1 = bool2;
-        if (paramObject.Elv == this.Elv)
+        if (paramObject.KyC == this.KyC)
         {
           bool1 = bool2;
-          if (paramObject.Elw == this.Elw) {
+          if (paramObject.KyD == this.KyD) {
             bool1 = true;
           }
         }
@@ -33,20 +33,20 @@ final class i$b
   
   public final int hashCode()
   {
-    return this.Elu + this.Elv + this.Elw;
+    return this.KyB + this.KyC + this.KyD;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(97331);
-    String str = "[nodeType=" + this.Elu + ",compType=" + this.Elv + ",subCompType=" + this.Elw + "]";
+    String str = "[nodeType=" + this.KyB + ",compType=" + this.KyC + ",subCompType=" + this.KyD + "]";
     AppMethodBeat.o(97331);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i.b
  * JD-Core Version:    0.7.0.1
  */

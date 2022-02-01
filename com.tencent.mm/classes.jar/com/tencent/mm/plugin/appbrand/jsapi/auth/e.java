@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
 public abstract interface e
 {
-  public abstract void bEE();
+  public abstract void bQe();
 }
 
 

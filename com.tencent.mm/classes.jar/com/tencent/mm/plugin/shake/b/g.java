@@ -29,15 +29,6 @@ public final class g
     this.db = paramISQLiteDatabase;
   }
   
-  public final Cursor Xw(int paramInt)
-  {
-    AppMethodBeat.i(28130);
-    Object localObject = "SELECT * FROM " + getTableName() + " ORDER BY rowid DESC LIMIT " + paramInt;
-    localObject = this.db.rawQuery((String)localObject, null);
-    AppMethodBeat.o(28130);
-    return localObject;
-  }
-  
   public final boolean a(f paramf)
   {
     AppMethodBeat.i(28129);
@@ -57,7 +48,16 @@ public final class g
     return false;
   }
   
-  public final int ctM()
+  public final Cursor aev(int paramInt)
+  {
+    AppMethodBeat.i(28130);
+    Object localObject = "SELECT * FROM " + getTableName() + " ORDER BY rowid DESC LIMIT " + paramInt;
+    localObject = this.db.rawQuery((String)localObject, null);
+    AppMethodBeat.o(28130);
+    return localObject;
+  }
+  
+  public final int cHo()
   {
     AppMethodBeat.i(28131);
     Cursor localCursor = this.db.rawQuery("select count(*) from " + getTableName() + " where status != 1", null, 2);
@@ -75,7 +75,7 @@ public final class g
     }
   }
   
-  public final f eUd()
+  public final f fHf()
   {
     f localf = null;
     AppMethodBeat.i(28132);
@@ -96,7 +96,7 @@ public final class g
     return localf;
   }
   
-  public final List<f> eUe()
+  public final List<f> fHg()
   {
     AppMethodBeat.i(28133);
     ArrayList localArrayList = new ArrayList();
@@ -118,7 +118,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.b.g
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.video.videoview;
 
 public abstract interface a
 {
-  public abstract void d(double paramDouble, boolean paramBoolean);
+  public abstract void b(double paramDouble, boolean paramBoolean);
   
   public abstract int getCurrentPosition();
   
@@ -36,38 +36,38 @@ public abstract interface a
   
   public static abstract interface a
   {
-    public abstract void eo(int paramInt1, int paramInt2);
+    public abstract void eM(int paramInt1, int paramInt2);
     
     public abstract void onCompletion();
     
     public abstract void onError(int paramInt1, int paramInt2);
     
-    public abstract void tf();
+    public abstract void qX();
   }
   
   public static abstract interface b
   {
-    public abstract void ep(int paramInt1, int paramInt2);
+    public abstract void eN(int paramInt1, int paramInt2);
   }
   
   public static abstract interface c
   {
-    public abstract void fN(boolean paramBoolean);
+    public abstract void gz(boolean paramBoolean);
   }
   
   public static abstract interface d
   {
-    public abstract void bgX();
+    public abstract void bqp();
   }
   
   public static abstract interface e
   {
-    public abstract void bLh();
+    public abstract void bXh();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.videoview.a
  * JD-Core Version:    0.7.0.1
  */

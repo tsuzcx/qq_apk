@@ -1,118 +1,98 @@
 package com.tencent.mm.plugin.finder.utils;
 
-import android.content.Context;
-import com.tencent.f.h;
-import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.ref.WeakReference;
-import kotlin.g.a.a;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.plugin.finder.storage.FeedData;
+import com.tencent.mm.view.recyclerview.i;
+import java.util.LinkedList;
 import kotlin.g.b.p;
-import kotlin.g.b.q;
 import kotlin.l;
-import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/utils/DelayLoadingComponent;", "", "()V", "context", "Ljava/lang/ref/WeakReference;", "Landroid/content/Context;", "getContext", "()Ljava/lang/ref/WeakReference;", "setContext", "(Ljava/lang/ref/WeakReference;)V", "delay", "", "getDelay", "()J", "setDelay", "(J)V", "dialogRunnable", "Lcom/tencent/threadpool/runnable/FutureEx;", "getDialogRunnable", "()Lcom/tencent/threadpool/runnable/FutureEx;", "setDialogRunnable", "(Lcom/tencent/threadpool/runnable/FutureEx;)V", "loadingWidget", "Lcom/tencent/mm/plugin/finder/utils/LoadingWidget;", "getLoadingWidget", "()Lcom/tencent/mm/plugin/finder/utils/LoadingWidget;", "setLoadingWidget", "(Lcom/tencent/mm/plugin/finder/utils/LoadingWidget;)V", "begin", "", "end", "Companion", "plugin-finder_release"})
-public class b
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/CenterFeed;", "", "isValid", "", "feedId", "", "mediaId", "", "feed", "Lcom/tencent/mm/plugin/finder/storage/FeedData;", "feedType", "", "feedPosition", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "(ZJLjava/lang/String;Lcom/tencent/mm/plugin/finder/storage/FeedData;IILcom/tencent/mm/view/recyclerview/SimpleViewHolder;)V", "currentVisibleFeedList", "Ljava/util/LinkedList;", "getCurrentVisibleFeedList", "()Ljava/util/LinkedList;", "getFeed", "()Lcom/tencent/mm/plugin/finder/storage/FeedData;", "setFeed", "(Lcom/tencent/mm/plugin/finder/storage/FeedData;)V", "getFeedId", "()J", "setFeedId", "(J)V", "getFeedPosition", "()I", "setFeedPosition", "(I)V", "getFeedType", "setFeedType", "getHolder", "()Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "setHolder", "(Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;)V", "()Z", "setValid", "(Z)V", "getMediaId", "()Ljava/lang/String;", "setMediaId", "(Ljava/lang/String;)V", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "copy", "equals", "other", "hashCode", "toString", "plugin-finder-base_release"})
+public final class b
 {
-  public static final a vVa;
-  com.tencent.f.i.d<?> dialogRunnable;
-  public long gY = 500L;
-  public WeakReference<Context> lAM;
-  public ai vUZ;
+  public final LinkedList<b> ACP;
+  public int ACQ;
+  public int ACR;
+  public boolean cSY;
+  public FeedData feed;
+  public long feedId;
+  public String mediaId;
+  public i xhX;
   
-  static
+  public b()
   {
-    AppMethodBeat.i(253353);
-    vVa = new a((byte)0);
-    AppMethodBeat.o(253353);
+    this(false, null, 127);
   }
   
-  public void begin()
+  private b(boolean paramBoolean, long paramLong, String paramString, FeedData paramFeedData, int paramInt1, int paramInt2, i parami)
   {
-    try
-    {
-      AppMethodBeat.i(253351);
-      com.tencent.f.i.d locald = this.dialogRunnable;
-      if (locald != null) {
-        locald.cancel(false);
-      }
-      this.dialogRunnable = h.RTc.n((Runnable)new b(this), this.gY);
-      AppMethodBeat.o(253351);
-      return;
-    }
-    finally {}
+    AppMethodBeat.i(263089);
+    this.cSY = paramBoolean;
+    this.feedId = paramLong;
+    this.mediaId = paramString;
+    this.feed = paramFeedData;
+    this.ACQ = paramInt1;
+    this.ACR = paramInt2;
+    this.xhX = parami;
+    this.ACP = new LinkedList();
+    AppMethodBeat.o(263089);
   }
   
-  public void end()
+  public final boolean equals(Object paramObject)
   {
-    try
+    AppMethodBeat.i(263098);
+    if (this != paramObject)
     {
-      AppMethodBeat.i(253352);
-      com.tencent.f.i.d locald = this.dialogRunnable;
-      if (locald != null) {
-        locald.cancel(false);
-      }
-      com.tencent.mm.ac.d.h((a)new c(this));
-      AppMethodBeat.o(253352);
-      return;
-    }
-    finally {}
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/utils/DelayLoadingComponent$Companion;", "", "()V", "createLoadingDialog", "Lcom/tencent/mm/plugin/finder/utils/DelayLoadingComponent;", "context", "Landroid/content/Context;", "wording", "", "delay", "", "onCancelListener", "Landroid/content/DialogInterface$OnCancelListener;", "createLoadingProgressBar", "progressBar", "Landroid/widget/ProgressBar;", "plugin-finder_release"})
-  public static final class a
-  {
-    public static b e(Context paramContext, String paramString, long paramLong)
-    {
-      AppMethodBeat.i(253348);
-      p.h(paramContext, "context");
-      b localb = new b();
-      localb.gY = paramLong;
-      localb.lAM = new WeakReference(paramContext);
-      ag localag = new ag();
-      if (paramString != null) {
-        localag.awz(paramString);
-      }
-      localag.kke = null;
-      localag.lAM = new WeakReference(paramContext);
-      localb.vUZ = ((ai)localag);
-      AppMethodBeat.o(253348);
-      return localb;
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(b paramb) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(253349);
-      ai localai = this.vVb.vUZ;
-      if (localai != null) {
-        localai.dismiss();
-      }
-      localai = this.vVb.vUZ;
-      if (localai != null)
+      if ((paramObject instanceof b))
       {
-        localai.show();
-        AppMethodBeat.o(253349);
-        return;
+        paramObject = (b)paramObject;
+        if ((this.cSY != paramObject.cSY) || (this.feedId != paramObject.feedId) || (!p.h(this.mediaId, paramObject.mediaId)) || (!p.h(this.feed, paramObject.feed)) || (this.ACQ != paramObject.ACQ) || (this.ACR != paramObject.ACR) || (!p.h(this.xhX, paramObject.xhX))) {}
       }
-      AppMethodBeat.o(253349);
     }
+    else
+    {
+      AppMethodBeat.o(263098);
+      return true;
+    }
+    AppMethodBeat.o(263098);
+    return false;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
-  static final class c
-    extends q
-    implements a<x>
+  public final int hashCode()
   {
-    c(b paramb)
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  public final void setMediaId(String paramString)
+  {
+    AppMethodBeat.i(263086);
+    p.k(paramString, "<set-?>");
+    this.mediaId = paramString;
+    AppMethodBeat.o(263086);
+  }
+  
+  public final String toString()
+  {
+    boolean bool2 = true;
+    AppMethodBeat.i(263083);
+    Object localObject = new StringBuilder("isValid=").append(this.cSY).append(" feedType=").append(this.ACQ).append(" feedPosition=").append(this.ACR).append(" feedId=").append(d.Fw(this.feedId)).append(" mediaId=").append(this.mediaId).append(" holder=");
+    if (this.xhX != null)
     {
-      super();
+      bool1 = true;
+      localObject = ((StringBuilder)localObject).append(bool1).append(" centerList=").append(this.ACP.size()).append(" feed=");
+      if (this.feed != null) {
+        break label145;
+      }
+    }
+    label145:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localObject = bool1;
+      AppMethodBeat.o(263083);
+      return localObject;
+      bool1 = false;
+      break;
     }
   }
 }

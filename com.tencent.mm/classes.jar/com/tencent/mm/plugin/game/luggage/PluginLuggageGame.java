@@ -5,92 +5,91 @@ import android.content.IntentFilter;
 import android.content.res.Configuration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.api.bucket.ApplicationLifeCycleBucket;
-import com.tencent.mm.kernel.api.bucket.c;
+import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.c.e;
-import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.network.p;
 import com.tencent.mm.network.p.a;
 import com.tencent.mm.plugin.game.luggage.c.a.1;
 import com.tencent.mm.plugin.game.luggage.i.a.7;
 import com.tencent.mm.plugin.multitask.PluginMultiTask;
-import com.tencent.mm.plugin.webview.luggage.webview_impl.LuggageWebMultiTaskUIC;
-import com.tencent.mm.plugin.webview.ui.tools.game.BatteryManager;
-import com.tencent.mm.plugin.webview.ui.tools.game.BatteryManager.BatteryChangedReceiver;
+import com.tencent.mm.plugin.webview.ui.tools.game.a.a;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 
 public class PluginLuggageGame
   extends com.tencent.mm.kernel.b.f
-  implements ApplicationLifeCycleBucket, c, com.tencent.mm.plugin.game.luggage.a.b
+  implements ApplicationLifeCycleBucket, com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.plugin.game.luggage.a.b
 {
   private p netChanged;
   
   public PluginLuggageGame()
   {
-    AppMethodBeat.i(186843);
+    AppMethodBeat.i(232124);
     this.netChanged = new p.a()
     {
-      private final byte[] glH;
+      private final byte[] iPP;
       
       public final void onNetworkChange(int paramAnonymousInt)
       {
-        AppMethodBeat.i(186842);
-        synchronized (this.glH)
+        AppMethodBeat.i(231979);
+        synchronized (this.iPP)
         {
-          if (com.tencent.mm.plugin.game.luggage.i.a.dTW() != null)
+          if (com.tencent.mm.plugin.game.luggage.i.a.exd() != null)
           {
-            com.tencent.mm.plugin.game.luggage.i.a locala = com.tencent.mm.plugin.game.luggage.i.a.dTW();
+            com.tencent.mm.plugin.game.luggage.i.a locala = com.tencent.mm.plugin.game.luggage.i.a.exd();
             String str = NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext());
-            locala.xzn.b(new a.7(locala, str));
-            locala.xzo.evaluateJavascript(String.format("if (SystemInfo == 'undefined' || SystemInfo.networkType == 'undefined) {return;} SystemInfo.networkType=\"%s\"; console.log(SystemInfo.networkType);", new Object[] { str }), null);
+            locala.CDs.b(new a.7(locala, str));
+            locala.CDt.evaluateJavascript(String.format("if (SystemInfo == 'undefined' || SystemInfo.networkType == 'undefined) {return;} SystemInfo.networkType=\"%s\"; console.log(SystemInfo.networkType);", new Object[] { str }), null);
           }
-          AppMethodBeat.o(186842);
+          AppMethodBeat.o(231979);
           return;
         }
       }
     };
-    AppMethodBeat.o(186843);
+    AppMethodBeat.o(232124);
   }
   
-  public void execute(com.tencent.mm.kernel.b.g paramg)
+  public void execute(g paramg)
   {
     AppMethodBeat.i(83013);
-    if ((paramg.aBb()) || (paramg.FY(":tools")) || (paramg.FY(":toolsmp")) || (paramg.FY(":lite"))) {
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.game.luggage.a.a.class, new e(new d()));
+    if ((paramg.aIE()) || (paramg.MY(":tools")) || (paramg.MY(":toolsmp")) || (paramg.MY(":lite"))) {
+      h.a(com.tencent.mm.plugin.game.luggage.a.a.class, new e(new d()));
     }
     AppMethodBeat.o(83013);
   }
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(83014);
-    if (BatteryManager.JpJ == null) {
-      BatteryManager.JpJ = new BatteryManager.BatteryChangedReceiver((byte)0);
+    if (com.tencent.mm.plugin.webview.ui.tools.game.a.Qne == null) {
+      com.tencent.mm.plugin.webview.ui.tools.game.a.Qne = new a.a((byte)0);
     }
     paramc = new IntentFilter();
     paramc.addAction("android.intent.action.BATTERY_OKAY");
     paramc.addAction("android.intent.action.BATTERY_LOW");
-    MMApplicationContext.getContext().registerReceiver(BatteryManager.JpJ, paramc);
-    com.tencent.mm.kernel.g.aAg().a(this.netChanged);
-    ((PluginMultiTask)com.tencent.mm.kernel.g.ah(PluginMultiTask.class)).registerMultiTaskUIC(5, LuggageWebMultiTaskUIC.class);
-    if (com.tencent.mm.plugin.game.luggage.c.a.xxj == null) {
-      com.tencent.mm.plugin.game.luggage.c.a.xxj = new a.1();
+    MMApplicationContext.getContext().registerReceiver(com.tencent.mm.plugin.webview.ui.tools.game.a.Qne, paramc);
+    h.aHF().a(this.netChanged);
+    ((PluginMultiTask)h.ag(PluginMultiTask.class)).registerMultiTaskUIC(5, com.tencent.mm.plugin.webview.luggage.d.b.class);
+    if (com.tencent.mm.plugin.game.luggage.c.a.CBs == null) {
+      com.tencent.mm.plugin.game.luggage.c.a.CBs = new a.1();
     }
-    com.tencent.mm.plugin.downloader.b.a.a(com.tencent.mm.plugin.game.luggage.c.a.xxj);
+    com.tencent.mm.plugin.downloader.b.a.a(com.tencent.mm.plugin.game.luggage.c.a.CBs);
     AppMethodBeat.o(83014);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(83015);
-    if (BatteryManager.JpJ != null) {
-      MMApplicationContext.getContext().unregisterReceiver(BatteryManager.JpJ);
+    if (com.tencent.mm.plugin.webview.ui.tools.game.a.Qne != null) {
+      MMApplicationContext.getContext().unregisterReceiver(com.tencent.mm.plugin.webview.ui.tools.game.a.Qne);
     }
-    BatteryManager.JpJ = null;
-    com.tencent.mm.kernel.g.aAg().b(this.netChanged);
-    com.tencent.mm.plugin.downloader.b.a.b(com.tencent.mm.plugin.game.luggage.c.a.xxj);
-    com.tencent.mm.plugin.game.luggage.c.a.xxj = null;
+    com.tencent.mm.plugin.webview.ui.tools.game.a.Qne = null;
+    h.aHF().b(this.netChanged);
+    com.tencent.mm.plugin.downloader.b.a.b(com.tencent.mm.plugin.game.luggage.c.a.CBs);
+    com.tencent.mm.plugin.game.luggage.c.a.CBs = null;
     AppMethodBeat.o(83015);
   }
   
@@ -98,15 +97,15 @@ public class PluginLuggageGame
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(186844);
-    if ((ao.awS()) && (ao.awN()))
+    AppMethodBeat.i(232138);
+    if ((ar.aEk()) && (ar.aEf()))
     {
-      paramConfiguration = com.tencent.mm.plugin.game.luggage.i.a.dTW();
+      paramConfiguration = com.tencent.mm.plugin.game.luggage.i.a.exd();
       if (paramConfiguration != null) {
-        paramConfiguration.xzo.evaluateJavascript(String.format("if (SystemInfo == 'undefined' || SystemInfo.isDarkMode == 'undefined) {return;} SystemInfo.isDarkMode=%b; console.log(SystemInfo.isDarkMode);", new Object[] { Boolean.valueOf(ao.isDarkMode()) }), null);
+        paramConfiguration.CDt.evaluateJavascript(String.format("if (SystemInfo == 'undefined' || SystemInfo.isDarkMode == 'undefined) {return;} SystemInfo.isDarkMode=%b; console.log(SystemInfo.isDarkMode);", new Object[] { Boolean.valueOf(ar.isDarkMode()) }), null);
       }
     }
-    AppMethodBeat.o(186844);
+    AppMethodBeat.o(232138);
   }
   
   public void onCreate() {}

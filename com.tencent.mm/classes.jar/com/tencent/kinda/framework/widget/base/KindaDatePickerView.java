@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
 import android.widget.LinearLayout;
+import com.tencent.kinda.framework.R.color;
+import com.tencent.kinda.framework.R.string;
 import com.tencent.kinda.framework.widget.tools.MMKViewUtil;
 import com.tencent.kinda.gen.DatePickerType;
 import com.tencent.kinda.gen.KDate;
@@ -14,8 +16,8 @@ import com.tencent.mm.framework.app.UIPageFragmentActivity;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.widget.picker.b;
-import com.tencent.mm.ui.widget.picker.b.a;
+import com.tencent.mm.ui.widget.picker.a;
+import com.tencent.mm.ui.widget.picker.a.a;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -29,7 +31,7 @@ public class KindaDatePickerView
   private static final String TAG = "KindaDatePickerView";
   private UIPageFragmentActivity activity;
   private KDatePickerViewOnSelectCallback callback;
-  private b datePicker;
+  private a datePicker;
   private boolean isLongTerm = false;
   private Calendar mCalendar;
   private int mDay = -1;
@@ -41,12 +43,12 @@ public class KindaDatePickerView
   
   private Calendar calendar()
   {
-    AppMethodBeat.i(214474);
+    AppMethodBeat.i(264036);
     if (this.mCalendar == null) {
       this.mCalendar = Calendar.getInstance();
     }
     Calendar localCalendar = this.mCalendar;
-    AppMethodBeat.o(214474);
+    AppMethodBeat.o(264036);
     return localCalendar;
   }
   
@@ -73,7 +75,7 @@ public class KindaDatePickerView
       AppMethodBeat.o(18910);
       return;
     }
-    this.datePicker = new b(this.activity);
+    this.datePicker = new a(this.activity);
     AppMethodBeat.o(18910);
   }
   
@@ -98,11 +100,11 @@ public class KindaDatePickerView
     }
     if (paramDatePickerType == DatePickerType.BIRTH_DAY)
     {
-      this.datePicker.aY(1900, 1, 1);
+      this.datePicker.bc(1900, 1, 1);
       paramDatePickerType = new Date();
       paramDatePickerType = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format(paramDatePickerType).split("-");
       if (paramDatePickerType.length >= 3) {
-        this.datePicker.aZ(Util.safeParseInt(paramDatePickerType[0]), Util.safeParseInt(paramDatePickerType[1]), Util.safeParseInt(paramDatePickerType[2]));
+        this.datePicker.bd(Util.safeParseInt(paramDatePickerType[0]), Util.safeParseInt(paramDatePickerType[1]), Util.safeParseInt(paramDatePickerType[2]));
       }
       AppMethodBeat.o(18911);
       return;
@@ -113,8 +115,8 @@ public class KindaDatePickerView
       paramDatePickerType = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format(paramDatePickerType).split("-");
       if (paramDatePickerType.length >= 3)
       {
-        this.datePicker.aY(Util.safeParseInt(paramDatePickerType[0]), Util.safeParseInt(paramDatePickerType[1]), Util.safeParseInt(paramDatePickerType[2]));
-        this.datePicker.aZ(Util.safeParseInt(paramDatePickerType[0]) + 100, 12, 31);
+        this.datePicker.bc(Util.safeParseInt(paramDatePickerType[0]), Util.safeParseInt(paramDatePickerType[1]), Util.safeParseInt(paramDatePickerType[2]));
+        this.datePicker.bd(Util.safeParseInt(paramDatePickerType[0]) + 100, 12, 31);
       }
       if (this.isLongTerm) {
         this.datePicker.setLongTermYear(true);
@@ -128,13 +130,13 @@ public class KindaDatePickerView
       paramDatePickerType = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format(paramDatePickerType).split("-");
       if (paramDatePickerType.length >= 3)
       {
-        this.datePicker.aZ(Util.safeParseInt(paramDatePickerType[0]), Util.safeParseInt(paramDatePickerType[1]), Util.safeParseInt(paramDatePickerType[2]));
+        this.datePicker.bd(Util.safeParseInt(paramDatePickerType[0]), Util.safeParseInt(paramDatePickerType[1]), Util.safeParseInt(paramDatePickerType[2]));
         int j = Util.safeParseInt(paramDatePickerType[0]) - 100;
         int i = j;
         if (j <= 0) {
           i = 1;
         }
-        this.datePicker.aY(i, 1, 1);
+        this.datePicker.bc(i, 1, 1);
       }
     }
     AppMethodBeat.o(18911);
@@ -142,31 +144,31 @@ public class KindaDatePickerView
   
   public LinearLayout createView(Context paramContext)
   {
-    AppMethodBeat.i(214468);
+    AppMethodBeat.i(264021);
     this.mEditText = new TenpaySecureEditText(paramContext);
     this.mEditText.setInputType(0);
     this.mEditText.setFocusable(false);
     this.mEditText.setBackground(null);
     this.mEditText.setTextSize(0, MMKViewUtil.dpToPx(MMApplicationContext.getContext(), 17.0F));
     this.mEditText.setPadding(0, 0, 0, 0);
-    this.mEditText.setTextColor(paramContext.getResources().getColor(2131101347));
+    this.mEditText.setTextColor(paramContext.getResources().getColor(R.color.wallet_common_clickable_text_color));
     if ((paramContext instanceof UIPageFragmentActivity)) {
       this.activity = ((UIPageFragmentActivity)paramContext);
     }
     initDatePickerData();
     initDatePicker();
     paramContext = new LayoutWrapper(paramContext, this.mEditText);
-    AppMethodBeat.o(214468);
+    AppMethodBeat.o(264021);
     return paramContext;
   }
   
   public KDate currentDate()
   {
-    AppMethodBeat.i(214473);
+    AppMethodBeat.i(264035);
     Object localObject = calendar();
     ((Calendar)localObject).setTimeInMillis(System.currentTimeMillis());
     localObject = new KDate(((Calendar)localObject).get(1), ((Calendar)localObject).get(2) + 1, ((Calendar)localObject).get(5));
-    AppMethodBeat.o(214473);
+    AppMethodBeat.o(264035);
     return localObject;
   }
   
@@ -190,9 +192,9 @@ public class KindaDatePickerView
   
   public KDate getSelectedDate()
   {
-    AppMethodBeat.i(214470);
+    AppMethodBeat.i(264032);
     KDate localKDate = new KDate(this.mYear, this.mMonthOfYear, this.mDay);
-    AppMethodBeat.o(214470);
+    AppMethodBeat.o(264032);
     return localKDate;
   }
   
@@ -216,10 +218,10 @@ public class KindaDatePickerView
   
   public void setCanBeLongTerm(boolean paramBoolean)
   {
-    AppMethodBeat.i(214469);
+    AppMethodBeat.i(264025);
     this.isLongTerm = paramBoolean;
     this.datePicker.setLongTermYear(paramBoolean);
-    AppMethodBeat.o(214469);
+    AppMethodBeat.o(264025);
   }
   
   public void setEndDate(KDate paramKDate) {}
@@ -237,10 +239,10 @@ public class KindaDatePickerView
       }
       this.activity.hideVKB();
       this.activity.hideTenpayKB();
-      this.datePicker = new b(this.activity);
+      this.datePicker = new a(this.activity);
       setMinAndMaxDate(this.mType);
-      this.datePicker.bg(true, true);
-      this.datePicker.QSU = new b.a()
+      this.datePicker.bq(true, true);
+      this.datePicker.YrF = new a.a()
       {
         public void onResult(boolean paramAnonymousBoolean, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
         {
@@ -253,12 +255,12 @@ public class KindaDatePickerView
           if (paramAnonymousBoolean)
           {
             if ((!KindaDatePickerView.this.isLongTerm) || (paramAnonymousInt1 != 1)) {
-              break label200;
+              break label201;
             }
             KindaDatePickerView.access$102(KindaDatePickerView.this, 9999);
             KindaDatePickerView.access$202(KindaDatePickerView.this, 12);
             KindaDatePickerView.access$302(KindaDatePickerView.this, 31);
-            KindaDatePickerView.access$502(KindaDatePickerView.this, MMApplicationContext.getContext().getString(2131768510));
+            KindaDatePickerView.access$502(KindaDatePickerView.this, MMApplicationContext.getContext().getString(R.string.wc_pay_realname_input_long_term_hint_text_1));
           }
           for (;;)
           {
@@ -266,7 +268,7 @@ public class KindaDatePickerView
             KindaDatePickerView.this.callback.onSelect(KindaDatePickerView.access$700(KindaDatePickerView.this));
             AppMethodBeat.o(18902);
             return;
-            label200:
+            label201:
             KindaDatePickerView.access$502(KindaDatePickerView.this, String.format("%04d/%02d/%02d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3) }));
           }
         }
@@ -274,14 +276,14 @@ public class KindaDatePickerView
       if (this.mYear == 9999)
       {
         Log.i("KindaDatePickerView", "init long term");
-        this.datePicker.aX(1, 1, 1);
+        this.datePicker.bb(1, 1, 1);
       }
       for (;;)
       {
         this.datePicker.show();
         AppMethodBeat.o(18905);
         return;
-        this.datePicker.aX(this.mYear, this.mMonthOfYear, this.mDay);
+        this.datePicker.bb(this.mYear, this.mMonthOfYear, this.mDay);
       }
     }
     if (this.datePicker != null) {
@@ -312,7 +314,7 @@ public class KindaDatePickerView
     this.mDay = paramInt3;
     if ((this.isLongTerm) && (paramInt1 == 9999))
     {
-      this.mShowResult = MMApplicationContext.getContext().getString(2131768510);
+      this.mShowResult = MMApplicationContext.getContext().getString(R.string.wc_pay_realname_input_long_term_hint_text_1);
       this.mEditText.setText(this.mShowResult);
       AppMethodBeat.o(18904);
       return;
@@ -329,7 +331,7 @@ public class KindaDatePickerView
     AppMethodBeat.i(18907);
     this.mType = paramDatePickerType;
     if (paramDatePickerType == DatePickerType.BIRTH_DAY) {
-      this.mEditText.setHint(2131767607);
+      this.mEditText.setHint(R.string.wallet_card_private_info_birthday_hint);
     }
     for (;;)
     {
@@ -337,7 +339,7 @@ public class KindaDatePickerView
       AppMethodBeat.o(18907);
       return;
       if (paramDatePickerType == DatePickerType.IDENTITY_VALID_DATE) {
-        this.mEditText.setHint(2131767552);
+        this.mEditText.setHint(R.string.wallet_card_cre_valid_date_hint);
       }
     }
   }
@@ -346,33 +348,33 @@ public class KindaDatePickerView
   
   public long timeForDate(KDate paramKDate)
   {
-    AppMethodBeat.i(214471);
+    AppMethodBeat.i(264033);
     if (paramKDate != null)
     {
       Calendar localCalendar = calendar();
       localCalendar.clear();
       localCalendar.set(paramKDate.mYear, paramKDate.mMonth - 1, paramKDate.mDay);
       long l = localCalendar.getTimeInMillis();
-      AppMethodBeat.o(214471);
+      AppMethodBeat.o(264033);
       return l;
     }
-    AppMethodBeat.o(214471);
+    AppMethodBeat.o(264033);
     return 0L;
   }
   
   public int yearOfNow()
   {
-    AppMethodBeat.i(214472);
+    AppMethodBeat.i(264034);
     Calendar localCalendar = calendar();
     localCalendar.setTimeInMillis(System.currentTimeMillis());
     int i = localCalendar.get(1);
-    AppMethodBeat.o(214472);
+    AppMethodBeat.o(264034);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaDatePickerView
  * JD-Core Version:    0.7.0.1
  */

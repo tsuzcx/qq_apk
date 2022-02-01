@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.plugin.voip.b.e;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.etk;
-import com.tencent.mm.protocal.protobuf.etl;
-import com.tencent.mm.protocal.protobuf.eus;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.plugin.voip.c.e;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.fdv;
+import com.tencent.mm.protocal.protobuf.fdw;
+import com.tencent.mm.protocal.protobuf.ffd;
 
 public final class c
-  extends n<etk, etl>
+  extends n<fdv, fdw>
 {
   public c(int paramInt1, long paramLong, String paramString1, String paramString2, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(115222);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new etk();
-    ((d.a)localObject).iLO = new etl();
+    ((d.a)localObject).lBU = new fdv();
+    ((d.a)localObject).lBV = new fdw();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/voipcancelinvite";
     ((d.a)localObject).funcId = 171;
-    ((d.a)localObject).iLP = 64;
+    ((d.a)localObject).lBW = 64;
     ((d.a)localObject).respCmdId = 1000000064;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (etk)this.rr.iLK.iLR;
-    ((etk)localObject).LsZ = paramInt1;
-    ((etk)localObject).Lta = paramLong;
-    ((etk)localObject).xNG = paramString1;
-    ((etk)localObject).MKg = paramInt2;
-    paramString1 = new eus();
-    dqi localdqi = new dqi();
-    localdqi.bhy(paramString2);
-    paramString1.NgE = localdqi;
-    ((etk)localObject).NqI = paramString1;
-    ((etk)localObject).NpN = System.currentTimeMillis();
-    ((etk)localObject).NqK = paramInt3;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (fdv)d.b.b(this.rr.lBR);
+    ((fdv)localObject).Svu = paramInt1;
+    ((fdv)localObject).Svv = paramLong;
+    ((fdv)localObject).CRQ = paramString1;
+    ((fdv)localObject).TWa = paramInt2;
+    paramString1 = new ffd();
+    eaf localeaf = new eaf();
+    localeaf.btQ(paramString2);
+    paramString1.Uti = localeaf;
+    ((fdv)localObject).UDE = paramString1;
+    ((fdv)localObject).UCJ = System.currentTimeMillis();
+    ((fdv)localObject).UDG = paramInt3;
     AppMethodBeat.o(115222);
   }
   
-  public final i fIF()
+  public final i gAU()
   {
     AppMethodBeat.i(115224);
     i local1 = new i()
@@ -57,11 +57,11 @@ public final class c
     return local1;
   }
   
-  public final int fIG()
+  public final int gAV()
   {
     AppMethodBeat.i(115223);
-    etk localetk = (etk)fIK();
-    if ((localetk.LsZ == 0) && (localetk.MKg == 0))
+    fdv localfdv = (fdv)gAZ();
+    if ((localfdv.Svu == 0) && (localfdv.TWa == 0))
     {
       AppMethodBeat.o(115223);
       return -1;
@@ -77,7 +77,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.a.c
  * JD-Core Version:    0.7.0.1
  */

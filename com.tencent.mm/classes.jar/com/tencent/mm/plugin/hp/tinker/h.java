@@ -11,7 +11,28 @@ import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
 
 public final class h
 {
-  public static boolean aU(Context paramContext, String paramString)
+  public static void aA(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(117508);
+    paramContext.getSharedPreferences("tinker_patch_share_config", 4).edit().putInt("tinker_node_retry_time", paramInt).apply();
+    AppMethodBeat.o(117508);
+  }
+  
+  private static void az(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(117505);
+    if (paramInt < 0)
+    {
+      Log.i("MicroMsg.Tinker.TinkerPatchSharedPreferencesUtil", "saveTinkerCheckUpdateTinker hours < 0 ");
+      AppMethodBeat.o(117505);
+      return;
+    }
+    Log.i("MicroMsg.Tinker.TinkerPatchSharedPreferencesUtil", "saveTinkerCheckUpdateTinker hours:%d", new Object[] { Integer.valueOf(paramInt) });
+    paramContext.getSharedPreferences("tinker_patch_share_config", 4).edit().putInt("check_tinker_update_interval", paramInt).apply();
+    AppMethodBeat.o(117505);
+  }
+  
+  public static boolean bg(Context paramContext, String paramString)
   {
     AppMethodBeat.i(117502);
     paramContext = paramContext.getSharedPreferences("tinker_patch_share_config", 4).getString("tinker_before_install", "");
@@ -30,63 +51,42 @@ public final class h
     return false;
   }
   
-  public static void aV(Context paramContext, String paramString)
+  public static void bh(Context paramContext, String paramString)
   {
     AppMethodBeat.i(117503);
     paramContext.getSharedPreferences("tinker_patch_share_config", 4).edit().putString("tinker_before_install", paramString).apply();
     AppMethodBeat.o(117503);
   }
   
-  public static void aW(Context paramContext, String paramString)
+  public static void bi(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(196797);
+    AppMethodBeat.i(195176);
     paramContext.getSharedPreferences("tinker_patch_share_config", 4).edit().putString("tinker_patch_msg_key", paramString).apply();
-    AppMethodBeat.o(196797);
+    AppMethodBeat.o(195176);
   }
   
-  public static void aX(Context paramContext, String paramString)
+  public static void bj(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(196798);
+    AppMethodBeat.i(195178);
     paramContext.getSharedPreferences("tinker_patch_share_config", 4).edit().putString("tinker_patch_version_key", paramString).apply();
-    AppMethodBeat.o(196798);
+    AppMethodBeat.o(195178);
   }
   
-  public static void aY(Context paramContext, String paramString)
+  public static void bk(Context paramContext, String paramString)
   {
     AppMethodBeat.i(117507);
     paramContext.getSharedPreferences("tinker_patch_share_config", 4).edit().putString("tinker_node", paramString).apply();
     AppMethodBeat.o(117507);
   }
   
-  private static void ai(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(117505);
-    if (paramInt < 0)
-    {
-      Log.i("MicroMsg.Tinker.TinkerPatchSharedPreferencesUtil", "saveTinkerCheckUpdateTinker hours < 0 ");
-      AppMethodBeat.o(117505);
-      return;
-    }
-    Log.i("MicroMsg.Tinker.TinkerPatchSharedPreferencesUtil", "saveTinkerCheckUpdateTinker hours:%d", new Object[] { Integer.valueOf(paramInt) });
-    paramContext.getSharedPreferences("tinker_patch_share_config", 4).edit().putInt("check_tinker_update_interval", paramInt).apply();
-    AppMethodBeat.o(117505);
-  }
-  
-  public static void aj(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(117508);
-    paramContext.getSharedPreferences("tinker_patch_share_config", 4).edit().putInt("tinker_node_retry_time", paramInt).apply();
-    AppMethodBeat.o(117508);
-  }
-  
-  public static void gn(Context paramContext)
+  public static void hk(Context paramContext)
   {
     AppMethodBeat.i(117504);
-    ai(paramContext, com.tencent.mm.n.h.aqJ().getInt("TinkerCheckUpdateInterval", 12));
+    az(paramContext, com.tencent.mm.n.h.axc().getInt("TinkerCheckUpdateInterval", 12));
     AppMethodBeat.o(117504);
   }
   
-  public static int go(Context paramContext)
+  public static int hl(Context paramContext)
   {
     AppMethodBeat.i(117506);
     int i = paramContext.getSharedPreferences("tinker_patch_share_config", 4).getInt("check_tinker_update_interval", 12);
@@ -96,7 +96,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.tinker.h
  * JD-Core Version:    0.7.0.1
  */

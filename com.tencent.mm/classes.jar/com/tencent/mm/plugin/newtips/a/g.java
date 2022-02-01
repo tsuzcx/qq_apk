@@ -2,28 +2,31 @@ package com.tencent.mm.plugin.newtips.a;
 
 import android.util.Pair;
 import android.view.View;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.plugin.newtips.b.c;
 import com.tencent.mm.plugin.newtips.b.e;
-import com.tencent.mm.protocal.protobuf.ehv;
+import com.tencent.mm.protocal.protobuf.erx;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.io.Serializable;
 
 public final class g
 {
-  public static String a(ehv paramehv)
+  public static String a(erx paramerx)
   {
     AppMethodBeat.i(127237);
-    if (paramehv == null)
+    if (paramerx == null)
     {
       AppMethodBeat.o(127237);
       return "null";
     }
-    paramehv = "TipsInfo{num=" + paramehv.ibS + ", title='" + paramehv.title + '\'' + ", url='" + paramehv.url + '\'' + '}';
+    paramerx = "TipsInfo{num=" + paramerx.num + ", title='" + paramerx.title + '\'' + ", url='" + paramerx.url + '\'' + '}';
     AppMethodBeat.o(127237);
-    return paramehv;
+    return paramerx;
   }
   
   public static void a(a parama)
@@ -35,16 +38,16 @@ public final class g
       AppMethodBeat.o(127227);
       return;
     }
-    parama.a(k.ADG, false);
-    parama.a(k.ADH, false);
-    parama.a(k.ADI, false);
-    parama.a(k.ADJ, false);
-    parama.a(k.ADK, false);
-    parama.a(k.ADL, false);
+    parama.a(k.GwK, false);
+    parama.a(k.GwL, false);
+    parama.a(k.GwM, false);
+    parama.a(k.GwN, false);
+    parama.a(k.GwO, false);
+    parama.a(k.GwP, false);
     AppMethodBeat.o(127227);
   }
   
-  private static boolean a(a parama, Pair<k, ehv> paramPair)
+  private static boolean a(a parama, Pair<k, erx> paramPair)
   {
     AppMethodBeat.i(127225);
     if (parama == null)
@@ -57,13 +60,13 @@ public final class g
     if (paramPair.first != null) {}
     for (parama = (Serializable)paramPair.first;; parama = "null")
     {
-      Log.i("MicroMsg.NewTips.NewTipsHelper", "showNewTips() path:%s pair:(%s, %s) show:%s state:%s result:%s", new Object[] { str, parama, a((ehv)paramPair.second), Boolean.FALSE, localPair.first, localPair.second });
+      Log.i("MicroMsg.NewTips.NewTipsHelper", "showNewTips() path:%s pair:(%s, %s) show:%s state:%s result:%s", new Object[] { str, parama, a((erx)paramPair.second), Boolean.FALSE, localPair.first, localPair.second });
       AppMethodBeat.o(127225);
       return true;
     }
   }
   
-  public static boolean a(a parama, final Pair<k, ehv> paramPair, final boolean paramBoolean)
+  public static boolean a(a parama, final Pair<k, erx> paramPair, final boolean paramBoolean)
   {
     AppMethodBeat.i(127224);
     if ((parama == null) || (paramPair == null))
@@ -71,17 +74,17 @@ public final class g
       AppMethodBeat.o(127224);
       return false;
     }
-    h.RTc.aV(new Runnable()
+    h.ZvG.bc(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(127221);
-        Pair localPair = g.b(this.ADw, paramPair, paramBoolean);
-        String str = this.ADw.getPath();
+        Pair localPair = g.b(this.GwB, paramPair, paramBoolean);
+        String str = this.GwB.getPath();
         if (paramPair.first != null) {}
         for (Object localObject = (Serializable)paramPair.first;; localObject = "null")
         {
-          Log.i("MicroMsg.NewTips.NewTipsHelper", "showNewTipsMainThread() path:%s pair:(%s, %s) show:%s state:%s result:%s", new Object[] { str, localObject, g.a((ehv)paramPair.second), Boolean.valueOf(paramBoolean), localPair.first, localPair.second });
+          Log.i("MicroMsg.NewTips.NewTipsHelper", "showNewTipsMainThread() path:%s pair:(%s, %s) show:%s state:%s result:%s", new Object[] { str, localObject, g.a((erx)paramPair.second), Boolean.valueOf(paramBoolean), localPair.first, localPair.second });
           AppMethodBeat.o(127221);
           return;
         }
@@ -101,13 +104,13 @@ public final class g
     }
     try
     {
-      b = ((Byte)parama.getRoot().getTag(2131305372)).byteValue();
+      b = ((Byte)parama.getRoot().getTag(b.c.new_tips_tag_show_type_old)).byteValue();
       Log.d("MicroMsg.NewTips.NewTipsHelper", "editOldNewTipsTag() path:%s origin state:%s", new Object[] { parama.getPath(), Long.toBinaryString(b) });
-      switch (2.ADy[paramk.ordinal()])
+      switch (2.GwD[paramk.ordinal()])
       {
       default: 
-        parama.getRoot().setTag(2131305372, Byte.valueOf(b));
-        Log.d("MicroMsg.NewTips.NewTipsHelper", "editOldNewTipsTag() path:%s showType:%s result:%s", new Object[] { parama.getPath(), paramk.ADM, Long.toBinaryString(b) });
+        parama.getRoot().setTag(b.c.new_tips_tag_show_type_old, Byte.valueOf(b));
+        Log.d("MicroMsg.NewTips.NewTipsHelper", "editOldNewTipsTag() path:%s showType:%s result:%s", new Object[] { parama.getPath(), paramk.GwQ, Long.toBinaryString(b) });
         AppMethodBeat.o(127223);
         return true;
       }
@@ -183,81 +186,83 @@ public final class g
         do
         {
           return false;
-          if (parame.ADS) {
+          if (parame.GwW) {
             return true;
           }
           int i = parame.path;
-          if (paramk == k.ADF) {
+          if (paramk == k.GwJ) {
             return true;
           }
           switch (i)
           {
           case 23: 
+          case 28: 
+          case 29: 
           default: 
             return false;
           }
-        } while ((paramk != k.ADG) && (paramk != k.ADH) && (paramk != k.ADL));
+        } while ((paramk != k.GwK) && (paramk != k.GwL) && (paramk != k.GwP));
         return true;
-      } while ((paramk != k.ADG) && (paramk != k.ADH) && (paramk != k.ADL));
+      } while ((paramk != k.GwK) && (paramk != k.GwL) && (paramk != k.GwP));
       return true;
-    } while (paramk != k.ADG);
+    } while (paramk != k.GwK);
     for (;;)
     {
       return true;
-      if ((paramk != k.ADG) && (paramk != k.ADH) && (paramk != k.ADL)) {
+      if ((paramk != k.GwK) && (paramk != k.GwL) && (paramk != k.GwP)) {
         break;
       }
       return true;
-      if ((paramk != k.ADG) && (paramk != k.ADH) && (paramk != k.ADL)) {
+      if ((paramk != k.GwK) && (paramk != k.GwL) && (paramk != k.GwP)) {
         break;
       }
       return true;
-      if ((paramk != k.ADG) && (paramk != k.ADH) && (paramk != k.ADI) && (paramk != k.ADJ) && (paramk != k.ADK) && (paramk != k.ADL)) {
+      if ((paramk != k.GwK) && (paramk != k.GwL) && (paramk != k.GwM) && (paramk != k.GwN) && (paramk != k.GwO) && (paramk != k.GwP)) {
         break;
       }
       return true;
-      if ((paramk != k.ADG) && (paramk != k.ADH) && (paramk != k.ADL)) {
+      if ((paramk != k.GwK) && (paramk != k.GwL) && (paramk != k.GwP)) {
         break;
       }
       return true;
-      if ((paramk != k.ADG) && (paramk != k.ADH) && (paramk != k.ADL)) {
+      if ((paramk != k.GwK) && (paramk != k.GwL) && (paramk != k.GwP)) {
         break;
       }
       return true;
-      if ((paramk != k.ADG) && (paramk != k.ADH) && (paramk != k.ADI) && (paramk != k.ADJ) && (paramk != k.ADK) && (paramk != k.ADL)) {
+      if ((paramk != k.GwK) && (paramk != k.GwL) && (paramk != k.GwM) && (paramk != k.GwN) && (paramk != k.GwO) && (paramk != k.GwP)) {
         break;
       }
       return true;
-      if ((paramk != k.ADG) && (paramk != k.ADH) && (paramk != k.ADI) && (paramk != k.ADJ) && (paramk != k.ADK) && (paramk != k.ADL)) {
+      if ((paramk != k.GwK) && (paramk != k.GwL) && (paramk != k.GwM) && (paramk != k.GwN) && (paramk != k.GwO) && (paramk != k.GwP)) {
         break;
       }
       return true;
-      if ((paramk != k.ADG) && (paramk != k.ADH) && (paramk != k.ADI) && (paramk != k.ADJ) && (paramk != k.ADK) && (paramk != k.ADL)) {
+      if ((paramk != k.GwK) && (paramk != k.GwL) && (paramk != k.GwM) && (paramk != k.GwN) && (paramk != k.GwO) && (paramk != k.GwP)) {
         break;
       }
       return true;
-      if ((paramk != k.ADG) && (paramk != k.ADH) && (paramk != k.ADI) && (paramk != k.ADJ) && (paramk != k.ADK) && (paramk != k.ADL)) {
+      if ((paramk != k.GwK) && (paramk != k.GwL) && (paramk != k.GwM) && (paramk != k.GwN) && (paramk != k.GwO) && (paramk != k.GwP)) {
         break;
       }
       return true;
-      if ((paramk != k.ADG) && (paramk != k.ADH) && (paramk != k.ADI) && (paramk != k.ADJ) && (paramk != k.ADK) && (paramk != k.ADL)) {
+      if ((paramk != k.GwK) && (paramk != k.GwL) && (paramk != k.GwM) && (paramk != k.GwN) && (paramk != k.GwO) && (paramk != k.GwP)) {
         break;
       }
       return true;
-      if ((paramk != k.ADG) && (paramk != k.ADH) && (paramk != k.ADI) && (paramk != k.ADJ) && (paramk != k.ADK) && (paramk != k.ADL)) {
+      if ((paramk != k.GwK) && (paramk != k.GwL) && (paramk != k.GwM) && (paramk != k.GwN) && (paramk != k.GwO) && (paramk != k.GwP)) {
         break;
       }
       return true;
-      if ((paramk != k.ADG) && (paramk != k.ADH) && (paramk != k.ADL)) {
+      if ((paramk != k.GwK) && (paramk != k.GwL) && (paramk != k.GwP)) {
         break;
       }
       return true;
-      if ((paramk != k.ADG) && (paramk != k.ADH) && (paramk != k.ADI)) {
+      if ((paramk != k.GwK) && (paramk != k.GwL) && (paramk != k.GwM)) {
         break;
       }
       return true;
-      if ((paramk != k.ADG) && (paramk != k.ADH) && (paramk != k.ADI) && (paramk != k.ADJ) && (paramk != k.ADK)) {
-        if (paramk != k.ADL) {
+      if ((paramk != k.GwK) && (paramk != k.GwL) && (paramk != k.GwM) && (paramk != k.GwN) && (paramk != k.GwO)) {
+        if (paramk != k.GwP) {
           break;
         }
       }
@@ -282,7 +287,15 @@ public final class g
     return false;
   }
   
-  public static int aIB(String paramString)
+  public static boolean aSV(String paramString)
+  {
+    AppMethodBeat.i(186358);
+    boolean bool = getKV().getBoolean(paramString, false);
+    AppMethodBeat.o(186358);
+    return bool;
+  }
+  
+  public static int aSW(String paramString)
   {
     AppMethodBeat.i(127230);
     if (Util.isEqual(paramString, "me"))
@@ -425,16 +438,46 @@ public final class g
       AppMethodBeat.o(127230);
       return 29;
     }
+    if (Util.isEqual(paramString, "screenShare"))
+    {
+      AppMethodBeat.o(127230);
+      return 35;
+    }
+    if (Util.isEqual(paramString, "setting"))
+    {
+      AppMethodBeat.o(127230);
+      return 30;
+    }
+    if (Util.isEqual(paramString, "general"))
+    {
+      AppMethodBeat.o(127230);
+      return 31;
+    }
+    if (Util.isEqual(paramString, "wechattools"))
+    {
+      AppMethodBeat.o(127230);
+      return 32;
+    }
+    if (Util.isEqual(paramString, "inputmethod"))
+    {
+      AppMethodBeat.o(127230);
+      return 33;
+    }
+    if (Util.isEqual(paramString, "plugin"))
+    {
+      AppMethodBeat.o(127230);
+      return 34;
+    }
     AppMethodBeat.o(127230);
     return 0;
   }
   
-  static Pair<Byte, Boolean> b(a parama, Pair<k, ehv> paramPair, boolean paramBoolean)
+  static Pair<Byte, Boolean> b(a parama, Pair<k, erx> paramPair, boolean paramBoolean)
   {
     AppMethodBeat.i(127226);
     boolean bool1;
     byte b;
-    switch (2.ADy[((k)paramPair.first).ordinal()])
+    switch (2.GwD[((k)paramPair.first).ordinal()])
     {
     default: 
       bool1 = false;
@@ -445,8 +488,8 @@ public final class g
       Object localObject = paramPair.first;
       if (paramBoolean)
       {
-        parama.getRoot().setTag(2131305370, Byte.valueOf(b));
-        parama.getRoot().setTag(2131305371, paramPair.second);
+        parama.getRoot().setTag(b.c.new_tips_tag_show_type_new, Byte.valueOf(b));
+        parama.getRoot().setTag(b.c.new_tips_tag_show_type_new_tipsinfo, paramPair.second);
       }
       for (;;)
       {
@@ -457,7 +500,7 @@ public final class g
         bool1 = false;
         b = 0;
         break;
-        boolean bool2 = parama.qW(paramBoolean);
+        boolean bool2 = parama.tY(paramBoolean);
         bool1 = bool2;
         if (!bool2) {
           break label376;
@@ -469,7 +512,7 @@ public final class g
         b = 32;
         bool1 = bool2;
         break;
-        bool2 = parama.qX(paramBoolean);
+        bool2 = parama.tZ(paramBoolean);
         bool1 = bool2;
         if (!paramBoolean) {
           break label376;
@@ -477,7 +520,7 @@ public final class g
         b = 16;
         bool1 = bool2;
         break;
-        bool2 = parama.a(paramBoolean, (ehv)paramPair.second);
+        bool2 = parama.a(paramBoolean, (erx)paramPair.second);
         bool1 = bool2;
         if (!paramBoolean) {
           break label376;
@@ -485,7 +528,7 @@ public final class g
         b = 8;
         bool1 = bool2;
         break;
-        bool2 = parama.b(paramBoolean, (ehv)paramPair.second);
+        bool2 = parama.b(paramBoolean, (erx)paramPair.second);
         bool1 = bool2;
         if (!paramBoolean) {
           break label376;
@@ -493,7 +536,7 @@ public final class g
         b = 4;
         bool1 = bool2;
         break;
-        bool2 = parama.c(paramBoolean, (ehv)paramPair.second);
+        bool2 = parama.c(paramBoolean, (erx)paramPair.second);
         bool1 = bool2;
         if (!paramBoolean) {
           break label376;
@@ -501,7 +544,7 @@ public final class g
         b = 2;
         bool1 = bool2;
         break;
-        bool2 = parama.d(paramBoolean, (ehv)paramPair.second);
+        bool2 = parama.d(paramBoolean, (erx)paramPair.second);
         bool1 = bool2;
         if (!paramBoolean) {
           break label376;
@@ -509,8 +552,8 @@ public final class g
         b = 1;
         bool1 = bool2;
         break;
-        parama.getRoot().setTag(2131305370, Integer.valueOf(0));
-        parama.getRoot().setTag(2131305371, null);
+        parama.getRoot().setTag(b.c.new_tips_tag_show_type_new, Integer.valueOf(0));
+        parama.getRoot().setTag(b.c.new_tips_tag_show_type_new_tipsinfo, null);
       }
       label376:
       b = 0;
@@ -546,7 +589,7 @@ public final class g
     }
     try
     {
-      i = ((Byte)parama.getRoot().getTag(2131305372)).byteValue();
+      i = ((Byte)parama.getRoot().getTag(b.c.new_tips_tag_show_type_old)).byteValue();
       Log.i("MicroMsg.NewTips.NewTipsHelper", "isShowCompateNewTips() path:%s state:%s", new Object[] { parama.getPath(), Long.toBinaryString(i) });
       if (i != 0)
       {
@@ -566,7 +609,7 @@ public final class g
     return false;
   }
   
-  private static boolean d(a parama)
+  public static boolean d(a parama)
   {
     AppMethodBeat.i(127232);
     if (parama == null)
@@ -583,7 +626,7 @@ public final class g
     }
     try
     {
-      i = ((Byte)parama.getRoot().getTag(2131305370)).byteValue();
+      i = ((Byte)parama.getRoot().getTag(b.c.new_tips_tag_show_type_new)).byteValue();
       Log.i("MicroMsg.NewTips.NewTipsHelper", "isShowNewTips() path:%s state:%s", new Object[] { parama.getPath(), Long.toBinaryString(i) });
       if (i != 0)
       {
@@ -609,25 +652,25 @@ public final class g
     if (parama == null)
     {
       Log.i("MicroMsg.NewTips.NewTipsHelper", "getShowNewTipsShowType() curNewTip is null");
-      parama = k.ADF;
+      parama = k.GwJ;
       AppMethodBeat.o(127233);
       return parama;
     }
     if (parama.getRoot() == null)
     {
       Log.i("MicroMsg.NewTips.NewTipsHelper", "getShowNewTipsShowType() path:%s root is null", new Object[] { parama.getPath() });
-      parama = k.ADF;
+      parama = k.GwJ;
       AppMethodBeat.o(127233);
       return parama;
     }
     try
     {
-      i = ((Byte)parama.getRoot().getTag(2131305370)).byteValue();
+      i = ((Byte)parama.getRoot().getTag(b.c.new_tips_tag_show_type_new)).byteValue();
       Log.i("MicroMsg.NewTips.NewTipsHelper", "getShowNewTipsShowType() path:%s state:%s", new Object[] { parama.getPath(), Long.toBinaryString(i) });
       switch (i)
       {
       default: 
-        parama = k.ADF;
+        parama = k.GwJ;
         AppMethodBeat.o(127233);
         return parama;
       }
@@ -639,22 +682,22 @@ public final class g
         Log.e("MicroMsg.NewTips.NewTipsHelper", "getShowNewTipsShowType() getTag(R.id.new_tips_tag_show_type_new) [%s]", new Object[] { localException.toString() });
         int i = 0;
         continue;
-        parama = k.ADG;
+        parama = k.GwK;
         continue;
-        parama = k.ADH;
+        parama = k.GwL;
         continue;
-        parama = k.ADI;
+        parama = k.GwM;
         continue;
-        parama = k.ADJ;
+        parama = k.GwN;
         continue;
-        parama = k.ADK;
+        parama = k.GwO;
         continue;
-        parama = k.ADL;
+        parama = k.GwP;
       }
     }
   }
   
-  public static ehv f(a parama)
+  public static erx f(a parama)
   {
     AppMethodBeat.i(127234);
     if (parama == null)
@@ -671,10 +714,10 @@ public final class g
     }
     try
     {
-      ehv localehv = (ehv)parama.getRoot().getTag(2131305370);
-      Log.i("MicroMsg.NewTips.NewTipsHelper", "getCurNewTipsShowTypeAboutInfo() path:%s tipsInfo:%s", new Object[] { parama.getPath(), a(localehv) });
+      erx localerx = (erx)parama.getRoot().getTag(b.c.new_tips_tag_show_type_new);
+      Log.i("MicroMsg.NewTips.NewTipsHelper", "getCurNewTipsShowTypeAboutInfo() path:%s tipsInfo:%s", new Object[] { parama.getPath(), a(localerx) });
       AppMethodBeat.o(127234);
-      return localehv;
+      return localerx;
     }
     catch (Exception localException)
     {
@@ -690,15 +733,23 @@ public final class g
   {
     AppMethodBeat.i(127236);
     k localk = e(parama);
-    if (localk != k.ADF) {
-      a(parama, new Pair(localk, new ehv()));
+    if (localk != k.GwJ) {
+      a(parama, new Pair(localk, new erx()));
     }
     AppMethodBeat.o(127236);
+  }
+  
+  public static MultiProcessMMKV getKV()
+  {
+    AppMethodBeat.i(186356);
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("new_tips_" + b.aGP());
+    AppMethodBeat.o(186356);
+    return localMultiProcessMMKV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.a.g
  * JD-Core Version:    0.7.0.1
  */

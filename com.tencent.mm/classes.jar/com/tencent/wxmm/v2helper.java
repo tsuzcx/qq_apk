@@ -34,6 +34,7 @@ public class v2helper
   public static final int AUDIO_RECORDER_SUCCESS = 0;
   public static final int BUESINESS_TYPE_PSTN = 4;
   public static final int BUESINESS_TYPE_VOIP = 0;
+  public static final int EMethodAudioRecordAction = 928;
   public static final int EMethodEhanceHeadsetEC = 416;
   public static final int EMethodEnableSpeakerEnhanceEC = 419;
   public static final int EMethodGetIosMicAbCheckFlag = 430;
@@ -183,6 +184,7 @@ public class v2helper
   public static final int WXCONF_EVENT_JOIN_FAIL = 4;
   public static final int WXCONF_EVENT_JOIN_SUCC = 3;
   public static final int WXCONF_EVENT_MEMBER_CHANGE = 20;
+  public static final int WXCONF_EVENT_RECV_CMDMSG = 28;
   public static final int WXCONF_EVENT_RECV_INVITE = 8;
   public static final int WXCONF_EVENT_RECV_INVITE_BUSY = 9;
   public static final int WXCONF_EVENT_RECV_NOTIFY_FAIL = 11;
@@ -339,7 +341,7 @@ public class v2helper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wxmm.v2helper
  * JD-Core Version:    0.7.0.1
  */

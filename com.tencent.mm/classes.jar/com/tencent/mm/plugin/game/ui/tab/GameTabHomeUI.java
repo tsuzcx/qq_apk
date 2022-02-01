@@ -10,7 +10,9 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
+import com.tencent.mm.plugin.game.g.a;
+import com.tencent.mm.plugin.game.g.e;
 import com.tencent.mm.plugin.game.model.GameTabData;
 import com.tencent.mm.plugin.game.ui.GameCenterUI5;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -20,13 +22,13 @@ import com.tencent.mm.ui.widget.SwipeBackLayout;
 public class GameTabHomeUI
   extends GameCenterUI5
 {
-  private BroadcastReceiver xWV;
-  public String xXH;
+  private BroadcastReceiver Dbh;
+  public String Dcm;
   
   public GameTabHomeUI()
   {
     AppMethodBeat.i(42450);
-    this.xWV = new BroadcastReceiver()
+    this.Dbh = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
@@ -42,7 +44,7 @@ public class GameTabHomeUI
     AppMethodBeat.o(42450);
   }
   
-  private void dWK()
+  private void ezS()
   {
     AppMethodBeat.i(42457);
     if (Util.nullAsNil(getIntent().getStringExtra("jump_find_more_friends")).equals("jump_find_more_friends"))
@@ -52,7 +54,7 @@ public class GameTabHomeUI
       localIntent.putExtra("preferred_tab", 2);
       c.f(this, ".ui.LauncherUI", localIntent);
       finish();
-      overridePendingTransition(2130772165, 2130772170);
+      overridePendingTransition(g.a.slide_left_in, g.a.slide_right_out);
       Log.i("MicroMsg.GameTabHomeUI", "back to FindMoreFriendsUI");
     }
     AppMethodBeat.o(42457);
@@ -62,8 +64,8 @@ public class GameTabHomeUI
   {
     AppMethodBeat.i(42456);
     Log.i("MicroMsg.GameTabHomeUI", "GameTabHomeUI goBack!");
-    dWK();
-    sendBroadcast(new Intent("com.tencent.mm.game.ACTION_EXIT"), com.tencent.mm.plugin.game.a.xtn);
+    ezS();
+    sendBroadcast(new Intent("com.tencent.mm.game.ACTION_EXIT"), com.tencent.mm.plugin.game.a.CfL);
     AppMethodBeat.o(42456);
   }
   
@@ -73,14 +75,14 @@ public class GameTabHomeUI
     super.onCreate(paramBundle);
     Log.i("MicroMsg.GameTabHomeUI", "%s create", new Object[] { getClass().getSimpleName() });
     paramBundle = (GameTabData)getIntent().getParcelableExtra("tab_data");
-    this.xXH = getIntent().getStringExtra("tab_key");
-    GameTabWidget localGameTabWidget = (GameTabWidget)findViewById(2131308849);
+    this.Dcm = getIntent().getStringExtra("tab_key");
+    GameTabWidget localGameTabWidget = (GameTabWidget)findViewById(g.e.ClO);
     a locala = new a(this);
     localGameTabWidget.setAdapter(locala);
-    locala.a(paramBundle, this.xXH);
+    locala.a(paramBundle, this.Dcm);
     paramBundle = new IntentFilter();
     paramBundle.addAction("com.tencent.mm.game.ACTION_EXIT");
-    registerReceiver(this.xWV, paramBundle, com.tencent.mm.plugin.game.a.xtn, null);
+    registerReceiver(this.Dbh, paramBundle, com.tencent.mm.plugin.game.a.CfL, null);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -98,7 +100,7 @@ public class GameTabHomeUI
   {
     AppMethodBeat.i(42454);
     super.onDestroy();
-    unregisterReceiver(this.xWV);
+    unregisterReceiver(this.Dbh);
     AppMethodBeat.o(42454);
   }
   
@@ -127,16 +129,17 @@ public class GameTabHomeUI
     }
     setIntent(paramIntent);
     String str = paramIntent.getStringExtra("tab_key");
-    if (!Util.nullAsNil(this.xXH).equals(str))
+    if (!Util.nullAsNil(this.Dcm).equals(str))
     {
-      Log.i("MicroMsg.GameTabHomeUI", "reload %s. current_key:%s, next_key:%s", new Object[] { getClass().getSimpleName(), this.xXH, str });
+      Log.i("MicroMsg.GameTabHomeUI", "reload %s. current_key:%s, next_key:%s", new Object[] { getClass().getSimpleName(), this.Dcm, str });
       finish();
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.axQ(), "com/tencent/mm/plugin/game/ui/tab/GameTabHomeUI", "onNewIntent", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramIntent.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/tab/GameTabHomeUI", "onNewIntent", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(this, paramIntent.aFh(), "com/tencent/mm/plugin/game/ui/tab/GameTabHomeUI", "onNewIntent", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramIntent.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/game/ui/tab/GameTabHomeUI", "onNewIntent", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
-    overridePendingTransition(2130772082, 2130772082);
+    int i = g.a.Cgw;
+    overridePendingTransition(i, i);
     AppMethodBeat.o(42453);
   }
   
@@ -158,7 +161,7 @@ public class GameTabHomeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.tab.GameTabHomeUI
  * JD-Core Version:    0.7.0.1
  */

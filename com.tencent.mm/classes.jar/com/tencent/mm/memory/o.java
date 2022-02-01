@@ -6,21 +6,35 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class o
   extends e<Bitmap, b>
 {
-  public static o itM;
+  public static o liV;
   
   static
   {
     AppMethodBeat.i(156463);
-    itM = new o();
+    liV = new o();
     AppMethodBeat.o(156463);
   }
   
   private static Bitmap b(b paramb)
   {
     AppMethodBeat.i(156456);
-    paramb = Bitmap.createBitmap(paramb.width, paramb.height, k.itA);
+    paramb = Bitmap.createBitmap(paramb.width, paramb.height, k.liJ);
     AppMethodBeat.o(156456);
     return paramb;
+  }
+  
+  public final void E(Bitmap paramBitmap)
+  {
+    try
+    {
+      AppMethodBeat.i(156455);
+      if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
+        super.bU(paramBitmap);
+      }
+      AppMethodBeat.o(156455);
+      return;
+    }
+    finally {}
   }
   
   public final Bitmap a(b paramb)
@@ -45,28 +59,14 @@ public final class o
     finally {}
   }
   
-  protected final long aRP()
+  protected final long baJ()
   {
     return 1228800L;
   }
   
-  protected final long aRQ()
+  protected final long baK()
   {
     return 307200L;
-  }
-  
-  public final void f(Bitmap paramBitmap)
-  {
-    try
-    {
-      AppMethodBeat.i(156455);
-      if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-        super.bU(paramBitmap);
-      }
-      AppMethodBeat.o(156455);
-      return;
-    }
-    finally {}
   }
   
   static final class a
@@ -82,7 +82,7 @@ public final class o
     implements Comparable
   {
     public int height;
-    private String itN;
+    private String liW;
     public int width;
     
     public b(int paramInt1, int paramInt2)
@@ -90,7 +90,7 @@ public final class o
       AppMethodBeat.i(156453);
       this.width = paramInt1;
       this.height = paramInt2;
-      this.itN = String.format("SightBitmapSize: [%s, %s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      this.liW = String.format("SightBitmapSize: [%s, %s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       AppMethodBeat.o(156453);
     }
     
@@ -115,13 +115,13 @@ public final class o
     
     public final String toString()
     {
-      return this.itN;
+      return this.liW;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.memory.o
  * JD-Core Version:    0.7.0.1
  */

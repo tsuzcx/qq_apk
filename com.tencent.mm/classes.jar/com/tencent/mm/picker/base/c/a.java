@@ -9,26 +9,26 @@ import java.util.concurrent.TimeUnit;
 public final class a
   implements b
 {
-  private final ScheduledExecutorService jKb;
+  private final ScheduledExecutorService mBe;
   
   public a()
   {
-    AppMethodBeat.i(204554);
-    this.jKb = Executors.newSingleThreadScheduledExecutor();
-    AppMethodBeat.o(204554);
+    AppMethodBeat.i(249655);
+    this.mBe = Executors.newSingleThreadScheduledExecutor();
+    AppMethodBeat.o(249655);
   }
   
-  public final Future<?> h(Runnable paramRunnable, long paramLong)
+  public final Future<?> e(Runnable paramRunnable, long paramLong)
   {
-    AppMethodBeat.i(204555);
-    paramRunnable = this.jKb.scheduleWithFixedDelay(paramRunnable, 0L, paramLong, TimeUnit.MILLISECONDS);
-    AppMethodBeat.o(204555);
+    AppMethodBeat.i(249656);
+    paramRunnable = this.mBe.scheduleWithFixedDelay(paramRunnable, 0L, paramLong, TimeUnit.MILLISECONDS);
+    AppMethodBeat.o(249656);
     return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.picker.base.c.a
  * JD-Core Version:    0.7.0.1
  */

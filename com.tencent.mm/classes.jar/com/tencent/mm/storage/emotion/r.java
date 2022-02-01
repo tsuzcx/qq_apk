@@ -2,13 +2,13 @@ package com.tencent.mm.storage.emotion;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dg;
+import com.tencent.mm.f.c.dk;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class r
-  extends dg
+  extends dk
 {
   public static IAutoDBItem.MAutoDBInfo info;
   
@@ -58,7 +58,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.r
  * JD-Core Version:    0.7.0.1
  */

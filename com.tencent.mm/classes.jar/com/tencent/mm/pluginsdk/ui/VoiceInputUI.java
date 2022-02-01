@@ -18,8 +18,11 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.i;
-import com.tencent.mm.g.a.yz;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.f.a.aag;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.report.kvdata.VoiceInputBehavior;
 import com.tencent.mm.plugin.report.kvdata.log_13905;
@@ -29,40 +32,39 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMStack;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.tools.g;
 import com.tencent.mm.ui.widget.MMEditText;
 
 @com.tencent.mm.ui.base.a(3)
 public class VoiceInputUI
   extends MMActivity
-  implements g
+  implements com.tencent.mm.ui.tools.h
 {
-  private MMEditText KdO;
-  private VoiceInputFooter KdP;
-  private String KdQ;
-  private long KdR;
-  private boolean KdS;
-  private boolean KdT;
-  private View.OnTouchListener KdU;
-  private MenuItem.OnMenuItemClickListener KdV;
-  private VoiceInputFooter.a KdW;
-  boolean KdX;
-  com.tencent.mm.ui.tools.h gyh;
+  boolean FeO;
+  private boolean ReA;
+  private View.OnTouchListener ReB;
+  private MenuItem.OnMenuItemClickListener ReC;
+  private VoiceInputFooter.a ReD;
+  boolean ReE;
+  private MMEditText Rev;
+  private VoiceInputFooter Rew;
+  private String Rex;
+  private long Rey;
+  private boolean Rez;
+  com.tencent.mm.ui.tools.i jij;
   private String msg;
   private int offset;
-  private Button rjk;
   private int textChangeCount;
+  private Button uMw;
   private String userCode;
-  boolean zzU;
   
   public VoiceInputUI()
   {
     AppMethodBeat.i(31316);
-    this.KdR = 0L;
+    this.Rey = 0L;
     this.textChangeCount = 0;
-    this.KdS = true;
-    this.KdT = false;
-    this.KdU = new View.OnTouchListener()
+    this.Rez = true;
+    this.ReA = false;
+    this.ReB = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -76,49 +78,42 @@ public class VoiceInputUI
           return false;
           if (paramAnonymousMotionEvent.getAction() == 1)
           {
-            if (VoiceInputUI.b(VoiceInputUI.this).gpa())
+            if (VoiceInputUI.b(VoiceInputUI.this).hjT())
             {
               paramAnonymousView = VoiceInputUI.b(VoiceInputUI.this);
-              paramAnonymousView.gpb();
+              paramAnonymousView.hjU();
               paramAnonymousView.setVisibility(8);
             }
-            if (VoiceInputUI.b(VoiceInputUI.this).fjI())
+            if (VoiceInputUI.b(VoiceInputUI.this).fXU())
             {
               paramAnonymousView = VoiceInputUI.b(VoiceInputUI.this);
-              paramAnonymousView.cbM();
+              paramAnonymousView.aDL();
               paramAnonymousView.setVisibility(8);
             }
             paramAnonymousView = VoiceInputUI.b(VoiceInputUI.this);
             paramAnonymousView.setVisibility(0);
-            if (paramAnonymousView.Kdq != null) {
-              paramAnonymousView.Kdq.setImageResource(2131231772);
+            if (paramAnonymousView.RdW != null) {
+              paramAnonymousView.RdW.setImageResource(R.g.chatting_setmode_biaoqing_btn);
             }
           }
         }
       }
     };
-    this.KdV = new MenuItem.OnMenuItemClickListener()
+    this.ReC = new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(31311);
         VoiceInputUI.c(VoiceInputUI.this).setText("");
         VoiceInputUI.d(VoiceInputUI.this);
-        VoiceInputUI.this.vA(6);
+        VoiceInputUI.this.aqe(6);
         AppMethodBeat.o(31311);
         return true;
       }
     };
-    this.KdW = new VoiceInputFooter.a()
+    this.ReD = new VoiceInputFooter.a()
     {
-      public final void gpd()
-      {
-        AppMethodBeat.i(31313);
-        VoiceInputUI.this.vA(8);
-        AppMethodBeat.o(31313);
-      }
-      
-      public final void zR(boolean paramAnonymousBoolean)
+      public final void DW(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(31312);
         if (paramAnonymousBoolean)
@@ -130,9 +125,16 @@ public class VoiceInputUI
         VoiceInputUI.e(VoiceInputUI.this).setVisibility(0);
         AppMethodBeat.o(31312);
       }
+      
+      public final void hjW()
+      {
+        AppMethodBeat.i(31313);
+        VoiceInputUI.this.aqe(8);
+        AppMethodBeat.o(31313);
+      }
     };
-    this.zzU = false;
-    this.KdX = false;
+    this.FeO = false;
+    this.ReE = false;
     AppMethodBeat.o(31316);
   }
   
@@ -142,28 +144,94 @@ public class VoiceInputUI
     Log.i("VoiceInputUI", "report cancel = %s send = %s click = %s longClick = %s longClickTime = %s textClick = %s textChangeCount = %s textChangeTime = %s textChangeReturn = %s voiceInputTime = %s fail = %s clear = %s smileIconClick = %s voiceIconClick = %s fullScreenVoiceLongClick = %s fullScreenVoiceLongClickTime = %s", new Object[] { Integer.valueOf(paramVoiceInputBehavior.cancel), Integer.valueOf(paramVoiceInputBehavior.send), Integer.valueOf(paramVoiceInputBehavior.click), Integer.valueOf(paramVoiceInputBehavior.longClick), Long.valueOf(paramVoiceInputBehavior.longClickTime), Integer.valueOf(paramVoiceInputBehavior.textClick), Integer.valueOf(paramVoiceInputBehavior.textChangeCount), Long.valueOf(paramVoiceInputBehavior.textChangeTime), Integer.valueOf(paramVoiceInputBehavior.textChangeReturn), Long.valueOf(paramVoiceInputBehavior.voiceInputTime), Integer.valueOf(paramVoiceInputBehavior.fail), Integer.valueOf(paramVoiceInputBehavior.clear), Integer.valueOf(paramVoiceInputBehavior.smileIconClick), Integer.valueOf(paramVoiceInputBehavior.voiceIconClick), Integer.valueOf(paramVoiceInputBehavior.fullScreenVoiceLongClick), Long.valueOf(paramVoiceInputBehavior.fullScreenVoiceLongClickTime) });
     log_13905 locallog_13905 = new log_13905();
     locallog_13905.viOp_ = paramVoiceInputBehavior;
-    com.tencent.mm.plugin.report.service.h.CyF.c(13905, locallog_13905);
+    com.tencent.mm.plugin.report.service.h.IzE.c(13905, locallog_13905);
     AppMethodBeat.o(31324);
   }
   
-  private void pl(int paramInt)
+  private void rE(int paramInt)
   {
     AppMethodBeat.i(31325);
     VoiceInputBehavior localVoiceInputBehavior = new VoiceInputBehavior();
     localVoiceInputBehavior.textChangeCount = this.textChangeCount;
     localVoiceInputBehavior.textChangeReturn = paramInt;
-    if (this.KdR != 0L)
+    if (this.Rey != 0L)
     {
-      localVoiceInputBehavior.textChangeTime = Util.ticksToNow(this.KdR);
-      this.KdR = 0L;
+      localVoiceInputBehavior.textChangeTime = Util.ticksToNow(this.Rey);
+      this.Rey = 0L;
     }
     a(localVoiceInputBehavior);
     AppMethodBeat.o(31325);
   }
   
+  public final void A(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(179757);
+    if (paramInt <= 0)
+    {
+      this.ReE = true;
+      if (this.FeO)
+      {
+        super.finish();
+        AppMethodBeat.o(179757);
+      }
+    }
+    else
+    {
+      this.ReE = false;
+    }
+    AppMethodBeat.o(179757);
+  }
+  
+  public final void aqe(int paramInt)
+  {
+    AppMethodBeat.i(31323);
+    Log.i("VoiceInputUI", "alvinluo voiceinputui finish type: %d, call stack: %s", new Object[] { Integer.valueOf(paramInt), Util.getStack().toString() });
+    this.FeO = true;
+    aag localaag;
+    if (paramInt == 8)
+    {
+      rE(7);
+      localaag = new aag();
+      if (paramInt != 7) {
+        break label171;
+      }
+      localaag.fZx.action = 1;
+      label72:
+      if (!this.ReA) {
+        break label199;
+      }
+    }
+    label171:
+    label199:
+    for (localaag.fZx.fZy = 1;; localaag.fZx.fZy = 2)
+    {
+      localaag.fZx.result = this.Rev.getText().toString();
+      localaag.fZx.userCode = this.userCode;
+      if (this.Rew != null) {
+        this.Rew.release();
+      }
+      EventCenter.instance.publish(localaag);
+      Util.hideVKB(this.Rev);
+      if (this.ReE) {
+        super.finish();
+      }
+      AppMethodBeat.o(31323);
+      return;
+      rE(paramInt);
+      break;
+      if (paramInt == 8)
+      {
+        localaag.fZx.action = 4;
+        break label72;
+      }
+      localaag.fZx.action = 2;
+      break label72;
+    }
+  }
+  
   public int getLayoutId()
   {
-    return 2131496840;
+    return R.i.elO;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -176,16 +244,16 @@ public class VoiceInputUI
     {
       this.msg = paramBundle.getStringExtra("text");
       this.offset = paramBundle.getIntExtra("offset", -1);
-      this.KdQ = paramBundle.getStringExtra("punctuation");
+      this.Rex = paramBundle.getStringExtra("punctuation");
       this.userCode = paramBundle.getStringExtra("userCode");
     }
-    this.KdR = Util.currentTicks();
+    this.Rey = Util.currentTicks();
     this.textChangeCount = 0;
-    this.KdT = false;
-    this.KdS = true;
-    this.KdO = ((MMEditText)findViewById(2131309949));
-    this.rjk = ((Button)findViewById(2131309948));
-    this.KdO.addTextChangedListener(new TextWatcher()
+    this.ReA = false;
+    this.Rez = true;
+    this.Rev = ((MMEditText)findViewById(R.h.dZX));
+    this.uMw = ((Button)findViewById(R.h.dZW));
+    this.Rev.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -206,78 +274,78 @@ public class VoiceInputUI
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    this.rjk.setOnClickListener(new View.OnClickListener()
+    this.uMw.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(31315);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/VoiceInputUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/VoiceInputUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         paramAnonymousView = new VoiceInputBehavior();
         paramAnonymousView.send = 3;
         VoiceInputUI.b(paramAnonymousView);
-        VoiceInputUI.this.vA(7);
+        VoiceInputUI.this.aqe(7);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/VoiceInputUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(31315);
       }
     });
-    setMMTitle(getString(2131767166));
+    setMMTitle(getString(R.l.eUS));
     enableOptionMenu(true);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(31309);
-        VoiceInputUI.this.vA(1);
+        VoiceInputUI.this.aqe(1);
         AppMethodBeat.o(31309);
         return true;
       }
     });
-    this.KdO.setOnTouchListener(this.KdU);
-    this.KdO.bol(this.msg);
+    this.Rev.setOnTouchListener(this.ReB);
+    this.Rev.bBa(this.msg);
     if (this.offset != -1) {
-      this.KdO.setSelection(this.offset);
+      this.Rev.setSelection(this.offset);
     }
-    this.KdP = ((VoiceInputFooter)findViewById(2131307218));
-    VoiceInputFooter localVoiceInputFooter = this.KdP;
-    paramBundle = this.KdO;
-    String str1 = this.KdQ;
+    this.Rew = ((VoiceInputFooter)findViewById(R.h.say_footer));
+    VoiceInputFooter localVoiceInputFooter = this.Rew;
+    paramBundle = this.Rev;
+    String str1 = this.Rex;
     String str2 = this.userCode;
-    localVoiceInputFooter.EJt = paramBundle;
+    localVoiceInputFooter.KXu = paramBundle;
     paramBundle.setOnClickListener(new VoiceInputFooter.1(localVoiceInputFooter));
     paramBundle.setOnEditorActionListener(new VoiceInputFooter.2(localVoiceInputFooter));
-    if (localVoiceInputFooter.Kdp == null)
+    if (localVoiceInputFooter.RdV == null)
     {
-      localVoiceInputFooter.Kdp = new n(localVoiceInputFooter.getContext(), true, localVoiceInputFooter.EJt);
-      localVoiceInputFooter.Kdp.setCallback(new VoiceInputFooter.6(localVoiceInputFooter));
-      localVoiceInputFooter.Kdp.setPortHeightPX(i.getValidPanelHeight(localVoiceInputFooter.getContext()));
+      localVoiceInputFooter.RdV = new n(localVoiceInputFooter.getContext(), true, localVoiceInputFooter.KXu);
+      localVoiceInputFooter.RdV.setCallback(new VoiceInputFooter.6(localVoiceInputFooter));
+      localVoiceInputFooter.RdV.setPortHeightPX(com.tencent.mm.compatible.util.i.getValidPanelHeight(localVoiceInputFooter.getContext()));
     }
-    localVoiceInputFooter.Kdp.grz();
-    n localn = localVoiceInputFooter.Kdp;
-    Log.d("MicroMsg.VoiceInputPanel", "refreshHeight DISPLAY_HEIGHT_PORT_IN_PX %s,needRefreshProtHeight %s", new Object[] { Integer.valueOf(localn.Khj), Boolean.valueOf(localn.Koo) });
-    if (localn.Koo)
+    localVoiceInputFooter.RdV.hmy();
+    n localn = localVoiceInputFooter.RdV;
+    Log.d("MicroMsg.VoiceInputPanel", "refreshHeight DISPLAY_HEIGHT_PORT_IN_PX %s,needRefreshProtHeight %s", new Object[] { Integer.valueOf(localn.RhU), Boolean.valueOf(localn.Rpa) });
+    if (localn.Rpa)
     {
-      localn.Koo = false;
-      View localView = localn.findViewById(2131309955);
+      localn.Rpa = false;
+      View localView = localn.findViewById(R.h.eaa);
       ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
-      int i = localn.Khj;
+      int i = localn.RhU;
       paramBundle = localLayoutParams;
       if (localLayoutParams == null) {
         paramBundle = new LinearLayout.LayoutParams(-1, i);
       }
       paramBundle.height = i;
       localView.setLayoutParams(paramBundle);
-      localn.grB();
+      localn.hmA();
       localn.requestLayout();
     }
-    localVoiceInputFooter.Kdp.setVisibility(8);
-    localVoiceInputFooter.Kdp.setToUser(str2);
-    localVoiceInputFooter.Kdp.setFullScreenData(str1);
-    localVoiceInputFooter.zDZ.addView(localVoiceInputFooter.Kdp, -1, 0);
-    this.KdP.setVoiceInputFooterListener(this.KdW);
-    this.gyh = new com.tencent.mm.ui.tools.h(this);
-    this.gyh.Quk = this;
+    localVoiceInputFooter.RdV.setVisibility(8);
+    localVoiceInputFooter.RdV.setToUser(str2);
+    localVoiceInputFooter.RdV.setFullScreenData(str1);
+    localVoiceInputFooter.FiY.addView(localVoiceInputFooter.RdV, -1, 0);
+    this.Rew.setVoiceInputFooterListener(this.ReD);
+    this.jij = new com.tencent.mm.ui.tools.i(this);
+    this.jij.XSx = this;
     AppMethodBeat.o(31317);
   }
   
@@ -292,7 +360,7 @@ public class VoiceInputUI
   {
     AppMethodBeat.i(31322);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0)) {
-      vA(2);
+      aqe(2);
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
     AppMethodBeat.o(31322);
@@ -303,7 +371,7 @@ public class VoiceInputUI
   {
     AppMethodBeat.i(31319);
     super.onPause();
-    this.gyh.close();
+    this.jij.close();
     AppMethodBeat.o(31319);
   }
   
@@ -311,15 +379,15 @@ public class VoiceInputUI
   {
     AppMethodBeat.i(31318);
     super.onResume();
-    this.KdO.requestFocus();
-    this.gyh.start();
+    this.Rev.requestFocus();
+    this.jij.start();
     AppMethodBeat.o(31318);
   }
   
   public void onSwipeBack()
   {
     AppMethodBeat.i(31321);
-    vA(3);
+    aqe(3);
     super.onSwipeBack();
     AppMethodBeat.o(31321);
   }
@@ -330,83 +398,17 @@ public class VoiceInputUI
     AppMethodBeat.at(this, paramBoolean);
     if (paramBoolean)
     {
-      this.gyh.start();
+      this.jij.start();
       AppMethodBeat.o(179756);
       return;
     }
-    this.gyh.close();
+    this.jij.close();
     AppMethodBeat.o(179756);
-  }
-  
-  public final void vA(int paramInt)
-  {
-    AppMethodBeat.i(31323);
-    Log.i("VoiceInputUI", "alvinluo voiceinputui finish type: %d, call stack: %s", new Object[] { Integer.valueOf(paramInt), Util.getStack().toString() });
-    this.zzU = true;
-    yz localyz;
-    if (paramInt == 8)
-    {
-      pl(7);
-      localyz = new yz();
-      if (paramInt != 7) {
-        break label172;
-      }
-      localyz.efi.action = 1;
-      label73:
-      if (!this.KdT) {
-        break label200;
-      }
-    }
-    label172:
-    label200:
-    for (localyz.efi.efj = 1;; localyz.efi.efj = 2)
-    {
-      localyz.efi.result = this.KdO.getText().toString();
-      localyz.efi.userCode = this.userCode;
-      if (this.KdP != null) {
-        this.KdP.release();
-      }
-      EventCenter.instance.publish(localyz);
-      Util.hideVKB(this.KdO);
-      if (this.KdX) {
-        super.finish();
-      }
-      AppMethodBeat.o(31323);
-      return;
-      pl(paramInt);
-      break;
-      if (paramInt == 8)
-      {
-        localyz.efi.action = 4;
-        break label73;
-      }
-      localyz.efi.action = 2;
-      break label73;
-    }
-  }
-  
-  public final void y(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(179757);
-    if (paramInt <= 0)
-    {
-      this.KdX = true;
-      if (this.zzU)
-      {
-        super.finish();
-        AppMethodBeat.o(179757);
-      }
-    }
-    else
-    {
-      this.KdX = false;
-    }
-    AppMethodBeat.o(179757);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.VoiceInputUI
  * JD-Core Version:    0.7.0.1
  */

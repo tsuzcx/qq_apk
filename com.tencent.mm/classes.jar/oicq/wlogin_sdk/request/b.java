@@ -10,117 +10,117 @@ import oicq.wlogin_sdk.tools.util;
 
 public final class b
 {
-  public i UbW;
-  private j UbX;
-  private f UbY;
-  private g UbZ;
-  private h Uca;
-  private e Ucb;
-  public d Ucc;
-  private int Ucd;
-  private int Uce;
+  public i abFl;
+  private j abFm;
+  private f abFn;
+  private g abFo;
+  private h abFp;
+  private e abFq;
+  public d abFr;
+  private int abFs;
+  private int abFt;
   private Context mContext;
   
   public b(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(88047);
-    this.UbW = new i();
-    this.UbX = new j(this.UbW);
-    this.UbY = new f(this.UbW);
-    this.UbZ = new g(this.UbW);
-    this.Uca = new h(this.UbW);
-    this.Ucb = new e(this.UbW);
-    this.Ucc = null;
+    this.abFl = new i();
+    this.abFm = new j(this.abFl);
+    this.abFn = new f(this.abFl);
+    this.abFo = new g(this.abFl);
+    this.abFp = new h(this.abFl);
+    this.abFq = new e(this.abFl);
+    this.abFr = null;
     this.mContext = null;
-    this.Ucd = 66560;
-    this.Uce = 1404;
+    this.abFs = 66560;
+    this.abFt = 1404;
     this.mContext = paramContext;
-    i locali = this.UbW;
+    i locali = this.abFl;
     locali._context = paramContext;
-    locali.UcK = paramInt;
-    locali.Ude = new c(paramContext);
+    locali.abFZ = paramInt;
+    locali.abGt = new c(paramContext);
     paramContext = new byte[16];
-    locali.UcB.nextBytes(paramContext);
-    System.arraycopy(paramContext, 0, locali.UcE, 0, 16);
-    hPv();
+    locali.abFQ.nextBytes(paramContext);
+    System.arraycopy(paramContext, 0, locali.abFT, 0, 16);
+    iUD();
     AppMethodBeat.o(88047);
   }
   
-  private int hPv()
+  private int iUD()
   {
     AppMethodBeat.i(88052);
     for (;;)
     {
       try
       {
-        Object localObject1 = util.lZ(this.mContext);
+        Object localObject1 = util.mW(this.mContext);
         if ((localObject1 == null) || (localObject1.length <= 0))
         {
-          localObject1 = util.lS(this.mContext);
+          localObject1 = util.mP(this.mContext);
           if ((localObject1 == null) || (localObject1.length <= 0))
           {
             localObject1 = new String("%4;7t>;28<fc.5*6").getBytes();
-            this.UbW.UcX = 0;
+            this.abFl.abGm = 0;
             util.b(this.mContext, (byte[])localObject1);
-            this.UbW.UcW = 1;
-            this.UbW.UcY = 1;
-            this.UbW.UcL = new byte[localObject1.length];
-            System.arraycopy(localObject1, 0, this.UbW.UcL, 0, localObject1.length);
+            this.abFl.abGl = 1;
+            this.abFl.abGn = 1;
+            this.abFl.abGa = new byte[localObject1.length];
+            System.arraycopy(localObject1, 0, this.abFl.abGa, 0, localObject1.length);
             Object localObject3 = new byte[localObject1.length + 1];
             localObject3[0] = 35;
             System.arraycopy(localObject1, 0, localObject3, 1, localObject1.length);
-            this.UbW.UcC = util.dv((byte[])localObject3);
-            i.UcM = (byte[])this.UbW.UcL.clone();
-            this.UbW.UcN = util.lT(this.mContext);
-            i = util.lV(this.mContext);
-            this.UbW.UcO = util.lU(this.mContext);
-            if (i != this.UbW.UcO)
+            this.abFl.abFR = util.dU((byte[])localObject3);
+            i.abGb = (byte[])this.abFl.abGa.clone();
+            this.abFl.abGc = util.mQ(this.mContext);
+            i = util.mS(this.mContext);
+            this.abFl.abGd = util.mR(this.mContext);
+            if (i != this.abFl.abGd)
             {
-              util.lW(this.mContext);
-              util.aY(this.mContext, this.UbW.UcO);
+              util.mT(this.mContext);
+              util.br(this.mContext, this.abFl.abGd);
             }
-            this.UbW.UcQ = util.lX(this.mContext).getBytes();
-            this.UbW.UcZ = util.lY(this.mContext);
-            this.UbW.UcP = util.ma(this.mContext);
-            this.UbW.UcS = util.df(this.mContext, new String(this.UbW.UcP));
-            this.UbW.UcT = util.dg(this.mContext, new String(this.UbW.UcP));
+            this.abFl.abGf = util.mU(this.mContext).getBytes();
+            this.abFl.abGo = util.mV(this.mContext);
+            this.abFl.abGe = util.mX(this.mContext);
+            this.abFl.abGh = util.dp(this.mContext, new String(this.abFl.abGe));
+            this.abFl.abGi = util.dq(this.mContext, new String(this.abFl.abGe));
             localObject1 = Build.MODEL;
             if (localObject1 != null) {
               break label492;
             }
-            this.UbW.UcU = new byte[0];
+            this.abFl.abGj = new byte[0];
             if ((util.isFileExist("/system/bin/su")) || (util.isFileExist("/system/xbin/su")) || (util.isFileExist("/sbin/su"))) {
               break label506;
             }
             i = 0;
-            localObject1 = this.UbW;
+            localObject1 = this.abFl;
             if (i == 0) {
               break label511;
             }
             i = 1;
-            ((i)localObject1).UcV = i;
+            ((i)localObject1).abGk = i;
             localObject3 = Build.VERSION.RELEASE;
             localObject1 = localObject3;
             if (localObject3 == null) {
               localObject1 = "";
             }
-            util.buY("WtloginHelper init ok: android version:" + (String)localObject1 + " release time:" + util.hPM());
+            util.bIb("WtloginHelper init ok: android version:" + (String)localObject1 + " release time:" + util.iUU());
             return 0;
           }
-          this.UbW.UcX = 1;
+          this.abFl.abGm = 1;
           continue;
         }
-        this.UbW.UcX = 1;
+        this.abFl.abGm = 1;
       }
       finally
       {
         AppMethodBeat.o(88052);
       }
-      this.UbW.UcW = 0;
-      this.UbW.UcY = 0;
+      this.abFl.abGl = 0;
+      this.abFl.abGn = 0;
       continue;
       label492:
-      this.UbW.UcU = localObject2.getBytes();
+      this.abFl.abGj = localObject2.getBytes();
       continue;
       label506:
       int i = 1;
@@ -131,7 +131,7 @@ public final class b
   }
   
   /* Error */
-  public final byte[] Pr(long paramLong)
+  public final byte[] XH(long paramLong)
   {
     // Byte code:
     //   0: ldc_w 309
@@ -139,15 +139,15 @@ public final class b
     //   6: aload_0
     //   7: monitorenter
     //   8: aload_0
-    //   9: getfield 45	oicq/wlogin_sdk/request/b:UbW	Loicq/wlogin_sdk/request/i;
-    //   12: getfield 313	oicq/wlogin_sdk/request/i:UcG	Loicq/wlogin_sdk/a/g;
+    //   9: getfield 45	oicq/wlogin_sdk/request/b:abFl	Loicq/wlogin_sdk/request/i;
+    //   12: getfield 313	oicq/wlogin_sdk/request/i:abFV	Loicq/wlogin_sdk/a/g;
     //   15: astore_3
     //   16: aload_3
-    //   17: getfield 318	oicq/wlogin_sdk/a/g:Udr	I
+    //   17: getfield 318	oicq/wlogin_sdk/a/g:abGG	I
     //   20: newarray byte
     //   22: astore 4
     //   24: aload_3
-    //   25: getfield 318	oicq/wlogin_sdk/a/g:Udr	I
+    //   25: getfield 318	oicq/wlogin_sdk/a/g:abGG	I
     //   28: ifgt +46 -> 74
     //   31: aload_0
     //   32: monitorexit
@@ -163,19 +163,19 @@ public final class b
     //   55: arraylength
     //   56: invokevirtual 328	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   59: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   62: invokestatic 282	oicq/wlogin_sdk/tools/util:buY	(Ljava/lang/String;)V
+    //   62: invokestatic 282	oicq/wlogin_sdk/tools/util:bIb	(Ljava/lang/String;)V
     //   65: ldc_w 309
     //   68: invokestatic 123	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   71: aload 4
     //   73: areturn
     //   74: aload_3
-    //   75: getfield 331	oicq/wlogin_sdk/a/g:Ucr	[B
+    //   75: getfield 331	oicq/wlogin_sdk/a/g:abFG	[B
     //   78: aload_3
-    //   79: getfield 334	oicq/wlogin_sdk/a/g:Udt	I
+    //   79: getfield 334	oicq/wlogin_sdk/a/g:abGI	I
     //   82: aload 4
     //   84: iconst_0
     //   85: aload_3
-    //   86: getfield 318	oicq/wlogin_sdk/a/g:Udr	I
+    //   86: getfield 318	oicq/wlogin_sdk/a/g:abGG	I
     //   89: invokestatic 116	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
     //   92: goto -61 -> 31
     //   95: astore_3
@@ -197,65 +197,59 @@ public final class b
     //   8	31	95	finally
     //   31	33	95	finally
     //   74	92	95	finally
-    //   96	98	95	finally
   }
   
-  public final void Ps(long paramLong)
+  public final void XI(long paramLong)
   {
     AppMethodBeat.i(88051);
-    util.buY("user:" + paramLong + " ClearUserSigInfo");
-    this.UbW.q(Long.valueOf(paramLong));
+    util.bIb("user:" + paramLong + " ClearUserSigInfo");
+    this.abFl.p(Long.valueOf(paramLong));
     AppMethodBeat.o(88051);
   }
   
   public final byte[] a(long paramLong, a parama, String paramString)
   {
     AppMethodBeat.i(88048);
-    util.buY("wtlogin login with GetStWithPasswd:user:" + paramLong + " appid:522017402 dwSigMap:8256 ...");
+    util.bIb("wtlogin login with GetStWithPasswd:user:" + paramLong + " appid:522017402 dwSigMap:8256 ...");
     String str = paramString;
     if (paramString.length() > 16) {
       str = paramString.substring(0, 16);
     }
-    try
+    for (;;)
     {
-      switch (hPw()[parama.ordinal()])
+      try
       {
-      case 1: 
-        return null;
-      }
-    }
-    finally
-    {
-      AppMethodBeat.o(88048);
-    }
-    if ((str == null) || (str.length() == 0))
-    {
-      util.buY("USER_WITH_PWD userPasswd null");
-      AppMethodBeat.o(88048);
-      return null;
-    }
-    parama = oicq.wlogin_sdk.tools.c.buW(str);
-    for (int i = 0;; i = 1)
-    {
-      this.UbW.UcO = util.lU(this.mContext);
-      this.UbW.UcQ = util.lX(this.mContext).getBytes();
-      this.UbW._uin = paramLong;
-      this.UbW.UcH = 522017402L;
-      this.UbW.UcI = 8256;
-      this.UbW.UcF = new oicq.wlogin_sdk.a.f();
-      this.Ucc = this.UbX;
-      if (i != 0) {}
-      for (parama = this.UbX.a(paramLong, this.UbW.Udc, parama, this.Uce, this.Ucd, this.UbW.UcZ);; parama = this.UbX.a(paramLong, this.UbW.Udc, paramString, parama, this.Uce, this.Ucd, this.UbW.UcZ))
-      {
-        for (;;)
+        int i = iUE()[parama.ordinal()];
+        switch (i)
         {
-          util.buY("wtlogin login with GetStWithPasswd:user:" + paramLong + " appid:522017402 dwSigMap:8256 end");
-          AppMethodBeat.o(88048);
-          return parama;
+        default: 
+          return null;
+        case 1: 
           if ((str == null) || (str.length() == 0))
           {
-            util.buY("USER_WITH_MD5 userPasswd null");
-            AppMethodBeat.o(88048);
+            util.bIb("USER_WITH_PWD userPasswd null");
+            return null;
+          }
+          parama = oicq.wlogin_sdk.tools.c.bHZ(str);
+          i = 0;
+          this.abFl.abGd = util.mR(this.mContext);
+          this.abFl.abGf = util.mU(this.mContext).getBytes();
+          this.abFl._uin = paramLong;
+          this.abFl.abFW = 522017402L;
+          this.abFl.abFX = 8256;
+          this.abFl.abFU = new oicq.wlogin_sdk.a.f();
+          this.abFr = this.abFm;
+          if (i == 0) {
+            continue;
+          }
+          parama = this.abFm.a(paramLong, this.abFl.abGr, parama, this.abFt, this.abFs, this.abFl.abGo);
+          util.bIb("wtlogin login with GetStWithPasswd:user:" + paramLong + " appid:522017402 dwSigMap:8256 end");
+          AppMethodBeat.o(88048);
+          return parama;
+        case 2: 
+          if ((str == null) || (str.length() == 0))
+          {
+            util.bIb("USER_WITH_MD5 userPasswd null");
             return null;
           }
           try
@@ -265,25 +259,36 @@ public final class b
           }
           catch (Exception parama)
           {
-            AppMethodBeat.o(88048);
             return null;
           }
         }
-        parama = this.UbW.Pu(paramLong);
-        if ((parama == null) || (parama._en_A1 == null) || (parama._en_A1.length <= 0)) {
-          util.buY("userAccount:" + paramLong + " appid:522017402 GetA1ByAccount return: null");
-        }
-        for (parama = null; (parama == null) || (parama.length < 16); parama = (byte[])parama._en_A1.clone())
+        parama = this.abFl.XK(paramLong);
+        if ((parama == null) || (parama._en_A1 == null) || (parama._en_A1.length <= 0))
         {
-          util.buY("USER_WITH_A1 tmp_pwd null");
-          AppMethodBeat.o(88048);
-          return null;
-          util.buY("userAccount:" + paramLong + " appid:522017402 GetA1ByAccount return: not null");
+          util.bIb("userAccount:" + paramLong + " appid:522017402 GetA1ByAccount return: null");
+          parama = null;
+          if ((parama == null) || (parama.length < 16))
+          {
+            util.bIb("USER_WITH_A1 tmp_pwd null");
+            return null;
+          }
         }
-        paramString = new byte[4];
-        util.d(paramString, 0, i.hPz());
+        else
+        {
+          util.bIb("userAccount:" + paramLong + " appid:522017402 GetA1ByAccount return: not null");
+          parama = (byte[])parama._en_A1.clone();
+          continue;
+          paramString = new byte[4];
+          util.d(paramString, 0, i.iUH());
+          parama = this.abFm.a(paramLong, this.abFl.abGr, paramString, parama, this.abFt, this.abFs, this.abFl.abGo);
+          continue;
+        }
+        i = 1;
       }
-      break;
+      finally
+      {
+        AppMethodBeat.o(88048);
+      }
     }
   }
   
@@ -295,12 +300,12 @@ public final class b
       AppMethodBeat.o(88049);
       return null;
     }
-    util.buY("user:" + paramLong + " CheckPicture ...");
+    util.bIb("user:" + paramLong + " CheckPicture ...");
     try
     {
-      this.Ucc = this.UbZ;
-      paramArrayOfByte = this.UbZ.dn(paramArrayOfByte);
-      util.buY("user:" + paramLong + " CheckPicture end");
+      this.abFr = this.abFo;
+      paramArrayOfByte = this.abFo.dM(paramArrayOfByte);
+      util.bIb("user:" + paramLong + " CheckPicture end");
       AppMethodBeat.o(88049);
       return paramArrayOfByte;
     }
@@ -315,17 +320,17 @@ public final class b
     static
     {
       AppMethodBeat.i(88044);
-      Ucg = new a("USER_WITH_PWD", 0);
-      Uch = new a("USER_WITH_MD5", 1);
-      Uci = new a("USER_WITH_A1", 2);
-      Ucj = new a[] { Ucg, Uch, Uci };
+      abFv = new a("USER_WITH_PWD", 0);
+      abFw = new a("USER_WITH_MD5", 1);
+      abFx = new a("USER_WITH_A1", 2);
+      abFy = new a[] { abFv, abFw, abFx };
       AppMethodBeat.o(88044);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     oicq.wlogin_sdk.request.b
  * JD-Core Version:    0.7.0.1
  */

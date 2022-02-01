@@ -1,9 +1,11 @@
 package com.tencent.mm.plugin.voip.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.ball.a.f;
 import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.plugin.ball.service.a;
+import com.tencent.mm.plugin.ball.service.FloatBallHelper;
+import com.tencent.mm.plugin.ball.service.e;
 import com.tencent.mm.plugin.voip.c;
 import com.tencent.mm.plugin.voip.model.l;
 import com.tencent.mm.plugin.voip.model.u;
@@ -11,77 +13,77 @@ import com.tencent.mm.plugin.voip.model.v;
 import com.tencent.mm.plugin.voip.model.v2protocal;
 
 public final class b
-  extends com.tencent.mm.plugin.ball.service.f
+  extends e
 {
-  public b(com.tencent.mm.plugin.ball.a.f paramf)
+  public b(f paramf)
   {
     super(paramf);
   }
   
-  public final void G(int paramInt, String paramString)
+  public final void I(int paramInt, String paramString)
   {
     AppMethodBeat.i(184045);
-    super.G(paramInt, paramString);
-    ciw().hDa = 10;
-    if (c.fFg() != null) {
-      ciw().dPJ = String.valueOf(c.fFg().GYS.GSZ.GVV.ypH);
+    super.I(paramInt, paramString);
+    cvL().kqZ = 10;
+    if (c.gxs() != null) {
+      cvL().fIZ = String.valueOf(c.gxs().NPf.NJk.NMi.DPJ);
     }
-    cit();
+    cvG();
     AppMethodBeat.o(184045);
   }
   
-  public final void aGf()
+  public final void aOf()
   {
-    AppMethodBeat.i(235478);
-    ((com.tencent.mm.plugin.ball.c.b)g.af(com.tencent.mm.plugin.ball.c.b.class)).jS(true);
-    super.aGf();
-    AppMethodBeat.o(235478);
+    AppMethodBeat.i(242937);
+    ((com.tencent.mm.plugin.ball.c.b)h.ae(com.tencent.mm.plugin.ball.c.b.class)).ld(true);
+    super.aOf();
+    AppMethodBeat.o(242937);
   }
   
-  public final boolean aGg()
-  {
-    return false;
-  }
-  
-  public final boolean aGh()
+  public final boolean aOg()
   {
     return false;
   }
   
-  public final void aGi()
+  public final boolean aOh()
+  {
+    return false;
+  }
+  
+  public final void aOi()
   {
     AppMethodBeat.i(184047);
-    super.aGi();
-    this.oXA.hb(false);
+    super.aOi();
+    this.rZC.hS(false);
     AppMethodBeat.o(184047);
   }
   
-  public final void aGj()
+  public final void aOj()
   {
     AppMethodBeat.i(184048);
-    ((com.tencent.mm.plugin.ball.c.b)g.af(com.tencent.mm.plugin.ball.c.b.class)).jS(false);
-    this.oWE.oWs.opType = 4;
-    if (this.oWG != null) {
-      this.oWG.q(this.oWE);
+    ((com.tencent.mm.plugin.ball.c.b)h.ae(com.tencent.mm.plugin.ball.c.b.class)).ld(false);
+    this.rYE.rYs.opType = 4;
+    if (this.rYG != null) {
+      this.rYG.q(this.rYE);
     }
     AppMethodBeat.o(184048);
   }
   
-  public final void fFm()
+  public final void gxy()
   {
-    AppMethodBeat.i(235479);
-    ((com.tencent.mm.plugin.ball.c.b)g.af(com.tencent.mm.plugin.ball.c.b.class)).jS(true);
-    this.oWE.oWs.opType = 4;
-    if (this.oWG != null) {
-      this.oWG.q(this.oWE);
+    AppMethodBeat.i(242942);
+    ((com.tencent.mm.plugin.ball.c.b)h.ae(com.tencent.mm.plugin.ball.c.b.class)).ld(true);
+    this.rYE.rYs.opType = 4;
+    if (this.rYG != null) {
+      this.rYG.q(this.rYE);
     }
-    AppMethodBeat.o(235479);
+    AppMethodBeat.o(242942);
   }
   
-  public final boolean wu(int paramInt)
+  public final boolean zH(int paramInt)
   {
     AppMethodBeat.i(184046);
-    boolean bool = super.wu(paramInt);
+    boolean bool = super.zH(paramInt);
     AppMethodBeat.o(184046);
     return bool;
   }

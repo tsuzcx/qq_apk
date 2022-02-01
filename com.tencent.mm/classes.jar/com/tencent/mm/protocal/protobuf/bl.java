@@ -1,139 +1,139 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class bl
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String Hwr;
-  public String Hws;
-  public String IhY;
-  public int IhZ;
-  public String dQx;
-  public String icon;
-  public String title;
-  public String url;
+  public String RGA = "";
+  public String RGB = "";
+  public long RGC = 0L;
+  public int RGD = 0;
+  public esj RGy;
+  public String RGz = "";
+  public int flags = -1;
+  public int state = -1;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91345);
+    AppMethodBeat.i(122482);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.url != null) {
-        paramVarArgs.e(1, this.url);
+      if (this.RGy != null)
+      {
+        paramVarArgs.oE(1, this.RGy.computeSize());
+        this.RGy.writeFields(paramVarArgs);
       }
-      if (this.dQx != null) {
-        paramVarArgs.e(2, this.dQx);
+      paramVarArgs.aY(2, this.flags);
+      paramVarArgs.aY(3, this.state);
+      if (this.RGz != null) {
+        paramVarArgs.f(4, this.RGz);
       }
-      if (this.icon != null) {
-        paramVarArgs.e(3, this.icon);
+      if (this.RGA != null) {
+        paramVarArgs.f(5, this.RGA);
       }
-      if (this.IhY != null) {
-        paramVarArgs.e(4, this.IhY);
+      if (this.RGB != null) {
+        paramVarArgs.f(6, this.RGB);
       }
-      if (this.title != null) {
-        paramVarArgs.e(5, this.title);
-      }
-      if (this.Hwr != null) {
-        paramVarArgs.e(6, this.Hwr);
-      }
-      if (this.Hws != null) {
-        paramVarArgs.e(7, this.Hws);
-      }
-      paramVarArgs.aM(8, this.IhZ);
-      AppMethodBeat.o(91345);
+      paramVarArgs.bm(7, this.RGC);
+      paramVarArgs.aY(8, this.RGD);
+      AppMethodBeat.o(122482);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.url == null) {
-        break label626;
+      if (this.RGy == null) {
+        break label652;
       }
     }
-    label626:
-    for (int i = g.a.a.b.b.a.f(1, this.url) + 0;; i = 0)
+    label652:
+    for (paramInt = g.a.a.a.oD(1, this.RGy.computeSize()) + 0;; paramInt = 0)
     {
+      int i = paramInt + g.a.a.b.b.a.bM(2, this.flags) + g.a.a.b.b.a.bM(3, this.state);
       paramInt = i;
-      if (this.dQx != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.dQx);
+      if (this.RGz != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.RGz);
       }
       i = paramInt;
-      if (this.icon != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.icon);
+      if (this.RGA != null) {
+        i = paramInt + g.a.a.b.b.a.g(5, this.RGA);
       }
       paramInt = i;
-      if (this.IhY != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.IhY);
+      if (this.RGB != null) {
+        paramInt = i + g.a.a.b.b.a.g(6, this.RGB);
       }
-      i = paramInt;
-      if (this.title != null) {
-        i = paramInt + g.a.a.b.b.a.f(5, this.title);
-      }
-      paramInt = i;
-      if (this.Hwr != null) {
-        paramInt = i + g.a.a.b.b.a.f(6, this.Hwr);
-      }
-      i = paramInt;
-      if (this.Hws != null) {
-        i = paramInt + g.a.a.b.b.a.f(7, this.Hws);
-      }
-      paramInt = g.a.a.b.b.a.bu(8, this.IhZ);
-      AppMethodBeat.o(91345);
-      return i + paramInt;
+      i = g.a.a.b.b.a.p(7, this.RGC);
+      int j = g.a.a.b.b.a.bM(8, this.RGD);
+      AppMethodBeat.o(122482);
+      return paramInt + i + j;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(91345);
+        AppMethodBeat.o(122482);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         bl localbl = (bl)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(91345);
+          AppMethodBeat.o(122482);
           return -1;
         case 1: 
-          localbl.url = locala.UbS.readString();
-          AppMethodBeat.o(91345);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            esj localesj = new esj();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localesj.parseFrom((byte[])localObject);
+            }
+            localbl.RGy = localesj;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(122482);
           return 0;
         case 2: 
-          localbl.dQx = locala.UbS.readString();
-          AppMethodBeat.o(91345);
+          localbl.flags = ((g.a.a.a.a)localObject).abFh.AK();
+          AppMethodBeat.o(122482);
           return 0;
         case 3: 
-          localbl.icon = locala.UbS.readString();
-          AppMethodBeat.o(91345);
+          localbl.state = ((g.a.a.a.a)localObject).abFh.AK();
+          AppMethodBeat.o(122482);
           return 0;
         case 4: 
-          localbl.IhY = locala.UbS.readString();
-          AppMethodBeat.o(91345);
+          localbl.RGz = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(122482);
           return 0;
         case 5: 
-          localbl.title = locala.UbS.readString();
-          AppMethodBeat.o(91345);
+          localbl.RGA = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(122482);
           return 0;
         case 6: 
-          localbl.Hwr = locala.UbS.readString();
-          AppMethodBeat.o(91345);
+          localbl.RGB = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(122482);
           return 0;
         case 7: 
-          localbl.Hws = locala.UbS.readString();
-          AppMethodBeat.o(91345);
+          localbl.RGC = ((g.a.a.a.a)localObject).abFh.AN();
+          AppMethodBeat.o(122482);
           return 0;
         }
-        localbl.IhZ = locala.UbS.zi();
-        AppMethodBeat.o(91345);
+        localbl.RGD = ((g.a.a.a.a)localObject).abFh.AK();
+        AppMethodBeat.o(122482);
         return 0;
       }
-      AppMethodBeat.o(91345);
+      AppMethodBeat.o(122482);
       return -1;
     }
   }

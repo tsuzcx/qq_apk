@@ -14,12 +14,13 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.multitalk.model.ac;
-import com.tencent.mm.plugin.multitalk.model.ae;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.multitalk.a.e;
+import com.tencent.mm.plugin.multitalk.a.f;
+import com.tencent.mm.plugin.multitalk.model.ad;
+import com.tencent.mm.plugin.multitalk.model.af;
 import com.tencent.mm.plugin.multitalk.model.f;
 import com.tencent.mm.plugin.multitalk.model.q;
 import com.tencent.mm.plugin.voip.video.OpenGlRender;
@@ -30,87 +31,88 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/ui/widget/MultitalkFrameView;", "Lcom/tencent/mm/plugin/multitalk/model/IRenderTarget;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attr", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "avatarIv", "Landroid/widget/ImageView;", "debugInfo", "Landroid/widget/TextView;", "drawPaint", "Landroid/graphics/Paint;", "elementPrev", "Lcom/tencent/mm/plugin/multitalk/ui/widget/MultitalkFrameView$PrevBitmapDataClass;", "getElementPrev", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/MultitalkFrameView$PrevBitmapDataClass;", "setElementPrev", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/MultitalkFrameView$PrevBitmapDataClass;)V", "index", "", "getIndex", "()I", "setIndex", "(I)V", "mILinkMode", "", "mId", "getMId", "setMId", "mPrevBitmap", "Landroid/graphics/Bitmap;", "mPrevBitmapAngle", "mPrevBitmapMirror", "mRecvFps", "mShowDebugInfo", "mVideoHeight", "mVideoWidth", "nickName", "", "position", "getPosition", "setPosition", "renderView", "Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderTextureView;", "status", "Lcom/tencent/mm/plugin/multitalk/ui/widget/MultitalkFrameView$Status;", "getStatus", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/MultitalkFrameView$Status;", "setStatus", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/MultitalkFrameView$Status;)V", "username", "changeToAvatar", "", "changeToNone", "changeToScreenCast", "changeToVideo", "changeUser", "mid", "drawAvatar", "drawBitmap", "bitmap", "angle", "mirror", "canvas", "Landroid/graphics/Canvas;", "pureDraw", "userName", "bm", "drawBitmapPrev", "drawPrevBitmap", "drawVideo", "img", "finish", "getAvatarIv", "getBitmapMatrix", "Landroid/graphics/Matrix;", "displayWidth", "displayHeight", "bmWidth", "bmHeight", "getCurrentSnapShot", "getNickName", "getUsername", "isAvatarMode", "isScreenCast", "isVideoMode", "refreshDebugInfo", "refreshView", "showVideoInfo", "updateAvatarBitmap", "Companion", "PrevBitmapDataClass", "Status", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/MultitalkFrameView;", "Lcom/tencent/mm/plugin/multitalk/model/IRenderTarget;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attr", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "avatarIv", "Landroid/widget/ImageView;", "debugInfo", "Landroid/widget/TextView;", "drawPaint", "Landroid/graphics/Paint;", "elementPrev", "Lcom/tencent/mm/plugin/multitalk/ui/widget/MultitalkFrameView$PrevBitmapDataClass;", "getElementPrev", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/MultitalkFrameView$PrevBitmapDataClass;", "setElementPrev", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/MultitalkFrameView$PrevBitmapDataClass;)V", "index", "", "getIndex", "()I", "setIndex", "(I)V", "mILinkMode", "", "mId", "getMId", "setMId", "mPrevBitmap", "Landroid/graphics/Bitmap;", "mPrevBitmapAngle", "mPrevBitmapMirror", "mRecvFps", "mShowDebugInfo", "mVideoHeight", "mVideoWidth", "nickName", "", "position", "getPosition", "setPosition", "renderView", "Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderTextureView;", "status", "Lcom/tencent/mm/plugin/multitalk/ui/widget/MultitalkFrameView$Status;", "getStatus", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/MultitalkFrameView$Status;", "setStatus", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/MultitalkFrameView$Status;)V", "username", "changeToAvatar", "", "changeToNone", "changeToScreenCast", "changeToVideo", "changeUser", "mid", "drawAvatar", "drawBitmap", "bitmap", "angle", "mirror", "canvas", "Landroid/graphics/Canvas;", "pureDraw", "userName", "bm", "drawBitmapPrev", "drawPrevBitmap", "drawVideo", "img", "finish", "getAvatarIv", "getBitmapMatrix", "Landroid/graphics/Matrix;", "displayWidth", "displayHeight", "bmWidth", "bmHeight", "getCurrentSnapShot", "getNickName", "getUsername", "isAvatarMode", "isScreenCast", "isVideoMode", "refreshDebugInfo", "refreshView", "showVideoInfo", "updateAvatarBitmap", "Companion", "PrevBitmapDataClass", "Status", "plugin-multitalk_release"})
 public final class MultitalkFrameView
   extends FrameLayout
   implements f
 {
-  public static final MultitalkFrameView.a zUV;
-  private ImageView gyr;
+  public static final MultitalkFrameView.a FAE;
+  private TextView FAA;
+  private MultitalkFrameView.c FAB;
+  private boolean FAC;
+  private b FAD;
+  private VoIPRenderTextureView FyB;
   private int index;
+  private ImageView jiu;
   private int mId;
   private int mVideoHeight;
   private int mVideoWidth;
   private String nickName;
   private int position;
-  private Paint qvj;
-  private int qvm;
-  public boolean qvn;
+  private Paint tUe;
+  private int tUh;
+  public boolean tUi;
   private String username;
-  private VoIPRenderTextureView zSZ;
-  private TextView zUR;
-  private MultitalkFrameView.c zUS;
-  private boolean zUT;
-  private b zUU;
   
   static
   {
-    AppMethodBeat.i(239890);
-    zUV = new MultitalkFrameView.a((byte)0);
-    AppMethodBeat.o(239890);
+    AppMethodBeat.i(202504);
+    FAE = new MultitalkFrameView.a((byte)0);
+    AppMethodBeat.o(202504);
   }
   
   public MultitalkFrameView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(239889);
-    this.zUS = MultitalkFrameView.c.zVc;
+    AppMethodBeat.i(202502);
+    this.FAB = MultitalkFrameView.c.FAL;
     if ((BuildInfo.IS_FLAVOR_RED) || (WeChatEnvironment.hasDebugger())) {}
     for (boolean bool = true;; bool = false)
     {
-      this.qvn = bool;
+      this.tUi = bool;
       this.mId = -1;
-      paramAttributeSet = ac.eom();
-      kotlin.g.b.p.g(paramAttributeSet, "SubCoreMultiTalk.getMultiTalkManager()");
-      this.zUT = paramAttributeSet.ens();
+      paramAttributeSet = ad.eYc();
+      kotlin.g.b.p.j(paramAttributeSet, "SubCoreMultiTalk.getMultiTalkManager()");
+      this.FAC = paramAttributeSet.eXg();
       this.mVideoWidth = getMeasuredWidth();
       this.mVideoHeight = getMeasuredHeight();
       Log.printInfoStack("MicroMsg.MultitalkFrameView", "MultitalkFrameView init " + hashCode(), new Object[0]);
-      LayoutInflater.from(paramContext).inflate(2131495725, (ViewGroup)this);
-      this.zSZ = ((VoIPRenderTextureView)getRootView().findViewById(2131301719));
-      this.gyr = ((ImageView)getRootView().findViewById(2131301715));
-      this.zUR = ((TextView)getRootView().findViewById(2131299430));
-      this.qvj = new Paint();
-      paramContext = this.qvj;
+      LayoutInflater.from(paramContext).inflate(a.f.multitalk_frame_layout, (ViewGroup)this);
+      this.FyB = ((VoIPRenderTextureView)getRootView().findViewById(a.e.frame_video));
+      this.jiu = ((ImageView)getRootView().findViewById(a.e.frame_avatar));
+      this.FAA = ((TextView)getRootView().findViewById(a.e.debug_info));
+      this.tUe = new Paint();
+      paramContext = this.tUe;
       if (paramContext != null) {
         paramContext.setColor(-16777216);
       }
-      paramContext = this.qvj;
+      paramContext = this.tUe;
       if (paramContext != null) {
         paramContext.setFilterBitmap(false);
       }
-      paramContext = this.qvj;
+      paramContext = this.tUe;
       if (paramContext != null) {
         paramContext.setTextSize(40.0F);
       }
-      this.zUU = new b();
-      AppMethodBeat.o(239889);
+      this.FAD = new b();
+      AppMethodBeat.o(202502);
       return;
     }
   }
   
   public final void a(b paramb)
   {
-    AppMethodBeat.i(239888);
+    AppMethodBeat.i(202485);
     if (paramb != null) {}
-    for (Object localObject1 = paramb.zUW;; localObject1 = null)
+    for (Object localObject1 = paramb.FAF;; localObject1 = null)
     {
       if (localObject1 != null)
       {
-        localObject1 = paramb.zUW;
+        localObject1 = paramb.FAF;
         if (localObject1 == null) {
-          kotlin.g.b.p.hyc();
+          kotlin.g.b.p.iCn();
         }
         if (!((Bitmap)localObject1).isRecycled())
         {
@@ -119,147 +121,130 @@ public final class MultitalkFrameView
           if (localObject2 == null) {
             localObject1 = "";
           }
-          localObject2 = paramb.zUW;
+          localObject2 = paramb.FAF;
           if (localObject2 == null) {
-            kotlin.g.b.p.hyc();
+            kotlin.g.b.p.iCn();
           }
-          a((String)localObject1, (Bitmap)localObject2, paramb.zUX, paramb.zUY);
+          a((String)localObject1, (Bitmap)localObject2, paramb.FAG, paramb.FAH);
         }
       }
-      AppMethodBeat.o(239888);
+      AppMethodBeat.o(202485);
       return;
     }
   }
   
   public final void a(String paramString, final Bitmap paramBitmap, final int paramInt1, final int paramInt2)
   {
-    AppMethodBeat.i(239880);
-    kotlin.g.b.p.h(paramString, "userName");
-    kotlin.g.b.p.h(paramBitmap, "bm");
-    h.RTc.aV((Runnable)new d(this, paramBitmap, paramInt1, paramInt2));
-    AppMethodBeat.o(239880);
+    AppMethodBeat.i(202439);
+    kotlin.g.b.p.k(paramString, "userName");
+    kotlin.g.b.p.k(paramBitmap, "bm");
+    com.tencent.e.h.ZvG.bc((Runnable)new d(this, paramBitmap, paramInt1, paramInt2));
+    AppMethodBeat.o(202439);
   }
   
-  public final void eN(String paramString, int paramInt)
+  public final void eWn()
   {
-    AppMethodBeat.i(239886);
-    Log.i("MicroMsg.MultitalkFrameView", "changeUser from %s to %s", new Object[] { this.username, paramString });
-    this.username = paramString;
-    Object localObject = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-    kotlin.g.b.p.g(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-    localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).aSN().Kn(paramString);
-    if (localObject != null) {}
-    for (this.nickName = ((as)localObject).arI();; this.nickName = paramString)
-    {
-      this.mId = paramInt;
-      AppMethodBeat.o(239886);
-      return;
-    }
-  }
-  
-  public final void emz()
-  {
-    AppMethodBeat.i(239881);
-    Object localObject = this.gyr;
+    AppMethodBeat.i(202443);
+    Object localObject = this.jiu;
     if (localObject != null) {
       ((ImageView)localObject).setVisibility(0);
     }
-    localObject = this.zSZ;
+    localObject = this.FyB;
     if (localObject != null)
     {
       ((VoIPRenderTextureView)localObject).setVisibility(8);
-      AppMethodBeat.o(239881);
+      AppMethodBeat.o(202443);
       return;
     }
-    AppMethodBeat.o(239881);
+    AppMethodBeat.o(202443);
   }
   
-  public final boolean enp()
+  public final boolean eXd()
   {
-    return this.zUS == MultitalkFrameView.c.zVa;
+    return this.FAB == MultitalkFrameView.c.FAJ;
   }
   
-  public final void eoX()
+  public final void eYN()
   {
-    AppMethodBeat.i(239882);
-    if (epc())
+    AppMethodBeat.i(202453);
+    if (eYS())
     {
-      q localq = ac.eom();
-      kotlin.g.b.p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
-      localq.enz();
-      ae.a((f)this);
+      q localq = ad.eYc();
+      kotlin.g.b.p.j(localq, "SubCoreMultiTalk.getMultiTalkManager()");
+      localq.eXp();
+      af.a((f)this);
     }
-    AppMethodBeat.o(239882);
+    AppMethodBeat.o(202453);
   }
   
-  public final void eoY()
+  public final void eYO()
   {
-    AppMethodBeat.i(239883);
+    AppMethodBeat.i(202460);
     if (Util.isNullOrNil(getUsername()))
     {
-      AppMethodBeat.o(239883);
+      AppMethodBeat.o(202460);
       return;
     }
-    Log.printInfoStack("MicroMsg.MultitalkFrameView", "changeToAvatar %s from %s", new Object[] { getUsername(), this.zUS.name() });
-    this.zUS = MultitalkFrameView.c.zUZ;
-    eoX();
-    AppMethodBeat.o(239883);
+    Log.printInfoStack("MicroMsg.MultitalkFrameView", "changeToAvatar %s from %s", new Object[] { getUsername(), this.FAB.name() });
+    this.FAB = MultitalkFrameView.c.FAI;
+    eYN();
+    AppMethodBeat.o(202460);
   }
   
-  public final void eoZ()
+  public final void eYP()
   {
-    AppMethodBeat.i(239884);
-    Log.printInfoStack("MicroMsg.MultitalkFrameView", "changeToVideo %s from %s", new Object[] { getUsername(), this.zUS.name() });
-    this.zUS = MultitalkFrameView.c.zVa;
-    a(this.zUU);
-    AppMethodBeat.o(239884);
+    AppMethodBeat.i(202463);
+    Log.printInfoStack("MicroMsg.MultitalkFrameView", "changeToVideo %s from %s", new Object[] { getUsername(), this.FAB.name() });
+    this.FAB = MultitalkFrameView.c.FAJ;
+    a(this.FAD);
+    AppMethodBeat.o(202463);
   }
   
-  public final void epa()
+  public final void eYQ()
   {
-    this.zUS = MultitalkFrameView.c.zVb;
-    this.zUU.zUW = null;
+    this.FAB = MultitalkFrameView.c.FAK;
+    this.FAD.FAF = null;
   }
   
-  public final void epb()
+  public final void eYR()
   {
-    AppMethodBeat.i(239885);
-    Log.i("MicroMsg.MultitalkFrameView", "changeToNone %s from %s", new Object[] { getUsername(), this.zUS.name() });
-    this.zUS = MultitalkFrameView.c.zVc;
-    eN("", -1);
-    AppMethodBeat.o(239885);
+    AppMethodBeat.i(202468);
+    Log.i("MicroMsg.MultitalkFrameView", "changeToNone %s from %s", new Object[] { getUsername(), this.FAB.name() });
+    this.FAB = MultitalkFrameView.c.FAL;
+    fo("", -1);
+    AppMethodBeat.o(202468);
   }
   
-  public final boolean epc()
+  public final boolean eYS()
   {
-    return this.zUS == MultitalkFrameView.c.zUZ;
+    return this.FAB == MultitalkFrameView.c.FAI;
   }
   
-  public final boolean epd()
+  public final boolean eYT()
   {
-    return this.zUS == MultitalkFrameView.c.zVb;
+    return this.FAB == MultitalkFrameView.c.FAK;
   }
   
   public final void f(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
     try
     {
-      AppMethodBeat.i(239879);
+      AppMethodBeat.i(202435);
       if ((paramBitmap == null) || (paramBitmap.isRecycled()))
       {
         Log.e("MicroMsg.MultitalkFrameView", "DrawBitmap, bitmap is null or recycled");
-        com.tencent.mm.plugin.multitalk.model.p.emX();
-        AppMethodBeat.o(239879);
+        com.tencent.mm.plugin.multitalk.model.p.eWM();
+        AppMethodBeat.o(202435);
       }
       for (;;)
       {
         return;
-        if (this.zSZ != null) {
+        if (this.FyB != null) {
           break;
         }
-        AppMethodBeat.o(239879);
+        AppMethodBeat.o(202435);
       }
-      localObject = this.zSZ;
+      localObject = this.FyB;
     }
     finally {}
     if (localObject != null) {}
@@ -268,7 +253,7 @@ public final class MultitalkFrameView
       if (localObject == null)
       {
         Log.e("MicroMsg.MultitalkFrameView", "getCanvasError");
-        AppMethodBeat.o(239879);
+        AppMethodBeat.o(202435);
         break;
       }
       int k = ((Canvas)localObject).getWidth();
@@ -311,20 +296,20 @@ public final class MultitalkFrameView
           {
             for (;;)
             {
-              ((Canvas)localObject).drawBitmap(paramBitmap, localMatrix, this.qvj);
+              ((Canvas)localObject).drawBitmap(paramBitmap, localMatrix, this.tUe);
               try
               {
-                paramBitmap = this.zSZ;
+                paramBitmap = this.FyB;
                 if (paramBitmap != null) {
                   paramBitmap.unlockCanvasAndPost((Canvas)localObject);
                 }
-                this.qvm += 1;
-                AppMethodBeat.o(239879);
+                this.tUh += 1;
+                AppMethodBeat.o(202435);
               }
               catch (Exception paramBitmap)
               {
                 Log.printErrStackTrace("MicroMsg.MultitalkFrameView", (Throwable)paramBitmap, "drawBitmap unlockCanvasAndPost crash", new Object[0]);
-                AppMethodBeat.o(239879);
+                AppMethodBeat.o(202435);
               }
             }
             if ((paramInt1 != OpenGlRender.FLAG_Angle90) && (paramInt1 != 90)) {
@@ -360,19 +345,36 @@ public final class MultitalkFrameView
     }
   }
   
+  public final void fo(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(202473);
+    Log.i("MicroMsg.MultitalkFrameView", "changeUser from %s to %s", new Object[] { this.username, paramString });
+    this.username = paramString;
+    Object localObject = com.tencent.mm.kernel.h.ae(n.class);
+    kotlin.g.b.p.j(localObject, "MMKernel.service(IMessengerStorage::class.java)");
+    localObject = ((n)localObject).bbL().RG(paramString);
+    if (localObject != null) {}
+    for (this.nickName = ((as)localObject).ayr();; this.nickName = paramString)
+    {
+      this.mId = paramInt;
+      AppMethodBeat.o(202473);
+      return;
+    }
+  }
+  
   public final ImageView getAvatarIv()
   {
-    return this.gyr;
+    return this.jiu;
   }
   
   public final b getCurrentSnapShot()
   {
-    return this.zUU;
+    return this.FAD;
   }
   
   public final b getElementPrev()
   {
-    return this.zUU;
+    return this.FAD;
   }
   
   public final int getIndex()
@@ -397,7 +399,7 @@ public final class MultitalkFrameView
   
   public final MultitalkFrameView.c getStatus()
   {
-    return this.zUS;
+    return this.FAB;
   }
   
   public final String getUsername()
@@ -412,10 +414,10 @@ public final class MultitalkFrameView
   
   public final void setElementPrev(b paramb)
   {
-    AppMethodBeat.i(239887);
-    kotlin.g.b.p.h(paramb, "<set-?>");
-    this.zUU = paramb;
-    AppMethodBeat.o(239887);
+    AppMethodBeat.i(202480);
+    kotlin.g.b.p.k(paramb, "<set-?>");
+    this.FAD = paramb;
+    AppMethodBeat.o(202480);
   }
   
   public final void setIndex(int paramInt)
@@ -435,21 +437,21 @@ public final class MultitalkFrameView
   
   public final void setStatus(MultitalkFrameView.c paramc)
   {
-    AppMethodBeat.i(239878);
-    kotlin.g.b.p.h(paramc, "<set-?>");
-    this.zUS = paramc;
-    AppMethodBeat.o(239878);
+    AppMethodBeat.i(202410);
+    kotlin.g.b.p.k(paramc, "<set-?>");
+    this.FAB = paramc;
+    AppMethodBeat.o(202410);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/ui/widget/MultitalkFrameView$PrevBitmapDataClass;", "", "()V", "currentBitmap", "Landroid/graphics/Bitmap;", "getCurrentBitmap", "()Landroid/graphics/Bitmap;", "setCurrentBitmap", "(Landroid/graphics/Bitmap;)V", "prevAngle", "", "getPrevAngle", "()I", "setPrevAngle", "(I)V", "prevMirror", "getPrevMirror", "setPrevMirror", "plugin-multitalk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/MultitalkFrameView$PrevBitmapDataClass;", "", "()V", "currentBitmap", "Landroid/graphics/Bitmap;", "getCurrentBitmap", "()Landroid/graphics/Bitmap;", "setCurrentBitmap", "(Landroid/graphics/Bitmap;)V", "prevAngle", "", "getPrevAngle", "()I", "setPrevAngle", "(I)V", "prevMirror", "getPrevMirror", "setPrevMirror", "plugin-multitalk_release"})
   public static final class b
   {
-    Bitmap zUW;
-    int zUX;
-    int zUY;
+    Bitmap FAF;
+    int FAG;
+    int FAH;
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -457,38 +459,23 @@ public final class MultitalkFrameView
     
     public final void run()
     {
-      AppMethodBeat.i(239876);
-      Object localObject = MultitalkFrameView.b(this.zVe);
+      AppMethodBeat.i(204096);
+      Object localObject = MultitalkFrameView.b(this.FAN);
       if (localObject != null) {
         ((ImageView)localObject).setVisibility(8);
       }
-      localObject = MultitalkFrameView.c(this.zVe);
+      localObject = MultitalkFrameView.c(this.FAN);
       if (localObject != null) {
         ((VoIPRenderTextureView)localObject).setVisibility(0);
       }
-      this.zVe.f(paramBitmap, paramInt1, paramInt2);
-      AppMethodBeat.o(239876);
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  public static final class e
-    implements Runnable
-  {
-    public e(MultitalkFrameView paramMultitalkFrameView) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(239877);
-      Log.i("MicroMsg.MultitalkFrameView", "log location 2");
-      MultitalkFrameView.a(this.zVe);
-      AppMethodBeat.o(239877);
+      this.FAN.f(paramBitmap, paramInt1, paramInt2);
+      AppMethodBeat.o(204096);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.MultitalkFrameView
  * JD-Core Version:    0.7.0.1
  */

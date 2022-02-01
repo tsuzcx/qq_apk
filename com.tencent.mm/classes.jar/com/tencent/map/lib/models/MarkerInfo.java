@@ -1,6 +1,6 @@
 package com.tencent.map.lib.models;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tencentmap.mapsdk.maps.model.OverlayLevel;
 
@@ -150,9 +150,9 @@ public class MarkerInfo
   
   public String toString()
   {
-    AppMethodBeat.i(193499);
+    AppMethodBeat.i(236003);
     String str = "MarkerInfo{type=" + this.type + ", iconName='" + this.iconName + '\'' + ", latitude=" + this.latitude + ", longitude=" + this.longitude + ", anchorX=" + this.anchorX + ", anchorY=" + this.anchorY + ", angle=" + this.angle + ", alpha=" + this.alpha + ", scaleX=" + this.scaleX + ", scaleY=" + this.scaleY + ", avoidAnnotation=" + this.avoidAnnotation + ", interactive=" + this.interactive + ", displayLevel=" + this.displayLevel + ", priority=" + this.priority + ", forceLoad=" + this.forceLoad + ", minScaleLevel=" + this.minScaleLevel + ", maxScaleLevel=" + this.maxScaleLevel + ", visibility=" + this.visibility + ", avoidOtherMarker=" + this.avoidOtherMarker + ", iconWidth=" + this.iconWidth + ", iconHeight=" + this.iconHeight + ", mSubMarkerInfo=" + this.mSubMarkerInfo + '}';
-    AppMethodBeat.o(193499);
+    AppMethodBeat.o(236003);
     return str;
   }
   
@@ -170,7 +170,7 @@ public class MarkerInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.map.lib.models.MarkerInfo
  * JD-Core Version:    0.7.0.1
  */

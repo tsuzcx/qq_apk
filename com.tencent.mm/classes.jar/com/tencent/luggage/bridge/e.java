@@ -10,21 +10,21 @@ class e
   protected e(b paramb)
   {
     AppMethodBeat.i(140317);
-    this.csh = paramb;
-    this.csi = new JSONObject();
+    this.cqm = paramb;
+    this.cqn = new JSONObject();
     AppMethodBeat.o(140317);
   }
   
-  final void b(JSONObject paramJSONObject)
-  {
-    this.csi = paramJSONObject;
-  }
-  
-  final void l(Map<String, Object> paramMap)
+  final void d(Map<String, Object> paramMap)
   {
     AppMethodBeat.i(140318);
-    this.csi = new JSONObject(paramMap);
+    this.cqn = new JSONObject(paramMap);
     AppMethodBeat.o(140318);
+  }
+  
+  final void d(JSONObject paramJSONObject)
+  {
+    this.cqn = paramJSONObject;
   }
 }
 

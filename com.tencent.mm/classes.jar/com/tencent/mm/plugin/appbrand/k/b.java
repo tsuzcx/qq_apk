@@ -2,24 +2,24 @@ package com.tencent.mm.plugin.appbrand.k;
 
 public abstract interface b
 {
-  public static final b lvC = new b()
+  public static final b oqy = new b()
   {
-    public final void Uo(String paramAnonymousString) {}
+    public final void abX(String paramAnonymousString) {}
     
-    public final void aK(String paramAnonymousString, int paramAnonymousInt) {}
+    public final void bDR() {}
     
-    public final void bsP() {}
+    public final void bd(String paramAnonymousString, int paramAnonymousInt) {}
   };
   
-  public abstract void Uo(String paramString);
+  public abstract void abX(String paramString);
   
-  public abstract void aK(String paramString, int paramInt);
+  public abstract void bDR();
   
-  public abstract void bsP();
+  public abstract void bd(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.k.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.model.app;
 
 import android.content.ContentValues;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.y;
+import com.tencent.mm.f.c.y;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
@@ -11,19 +11,19 @@ import java.util.Map;
 public class g
   extends y
 {
-  public static String JVR;
-  public static String JVS;
-  public static String JVT;
-  public static String JVU;
+  public static String QWe;
+  public static String QWf;
+  public static String QWg;
+  public static String QWh;
   protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(151678);
-    JVR = "wxce6f23b478a3a2a2";
-    JVS = "wx7302cee7c7d6d7d6";
-    JVT = "wx6fa7e3bab7e15415";
-    JVU = "wx3cc22b542de028d4";
+    QWe = "wxce6f23b478a3a2a2";
+    QWf = "wx7302cee7c7d6d7d6";
+    QWg = "wx6fa7e3bab7e15415";
+    QWh = "wx3cc22b542de028d4";
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
     localMAutoDBInfo.fields = new Field[26];
     localMAutoDBInfo.columns = new String[27];
@@ -162,17 +162,16 @@ public class g
     this.field_openId = "";
     this.field_authFlag = 0;
     this.field_appInfoFlag = 0;
-    Bk("");
-    this.fmC = "";
-    this.fma = true;
-    Bl("");
-    Bp("");
-    Bq("");
-    Br("");
+    HY("");
+    HX("");
+    HZ("");
+    Id("");
+    Ie("");
+    If("");
     AppMethodBeat.o(151672);
   }
   
-  public final boolean NA()
+  public final boolean Qv()
   {
     AppMethodBeat.i(151673);
     if (Util.isNullOrNil(this.field_appType))
@@ -240,28 +239,6 @@ public class g
     return info;
   }
   
-  public final boolean gmR()
-  {
-    return this.field_serviceAppType != 0;
-  }
-  
-  public final boolean gmS()
-  {
-    return (this.field_serviceAppInfoFlag & 0x2) != 0;
-  }
-  
-  public final boolean gmT()
-  {
-    AppMethodBeat.i(151674);
-    if (JVS.equals(this.field_appId))
-    {
-      AppMethodBeat.o(151674);
-      return true;
-    }
-    AppMethodBeat.o(151674);
-    return false;
-  }
-  
   public int hashCode()
   {
     AppMethodBeat.i(151677);
@@ -275,10 +252,32 @@ public class g
     AppMethodBeat.o(151677);
     return i;
   }
+  
+  public final boolean hhs()
+  {
+    return this.field_serviceAppType != 0;
+  }
+  
+  public final boolean hht()
+  {
+    return (this.field_serviceAppInfoFlag & 0x2) != 0;
+  }
+  
+  public final boolean hhu()
+  {
+    AppMethodBeat.i(151674);
+    if (QWf.equals(this.field_appId))
+    {
+      AppMethodBeat.o(151674);
+      return true;
+    }
+    AppMethodBeat.o(151674);
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.g
  * JD-Core Version:    0.7.0.1
  */

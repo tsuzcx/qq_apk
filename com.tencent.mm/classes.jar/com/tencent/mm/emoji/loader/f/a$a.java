@@ -7,18 +7,18 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "invoke"})
 final class a$a
   extends q
   implements m<Boolean, e, x>
 {
-  public static final a gWP;
+  public static final a jHN;
   
   static
   {
-    AppMethodBeat.i(199907);
-    gWP = new a();
-    AppMethodBeat.o(199907);
+    AppMethodBeat.i(233001);
+    jHN = new a();
+    AppMethodBeat.o(233001);
   }
   
   a$a()

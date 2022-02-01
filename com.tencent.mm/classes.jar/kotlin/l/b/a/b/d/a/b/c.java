@@ -12,8 +12,8 @@ public class c
   extends kotlin.l.b.a.b.b.c.f
   implements b
 {
-  private Boolean Tqx;
-  private Boolean Tqy;
+  private Boolean aaTr;
+  private Boolean aaTs;
   
   static
   {
@@ -31,8 +31,8 @@ public class c
   {
     super(parame, paramc, paramg, paramBoolean, parama, paraman);
     AppMethodBeat.i(57696);
-    this.Tqx = null;
-    this.Tqy = null;
+    this.aaTr = null;
+    this.aaTs = null;
     AppMethodBeat.o(57696);
   }
   
@@ -40,15 +40,15 @@ public class c
   {
     AppMethodBeat.i(57697);
     if (parame == null) {
-      atM(4);
+      aDG(4);
     }
     if (paramg == null) {
-      atM(5);
+      aDG(5);
     }
     if (paraman == null) {
-      atM(6);
+      aDG(6);
     }
-    parame = new c(parame, null, paramg, paramBoolean, b.a.TgW, paraman);
+    parame = new c(parame, null, paramg, paramBoolean, b.a.aaJQ, paraman);
     AppMethodBeat.o(57697);
     return parame;
   }
@@ -57,18 +57,18 @@ public class c
   {
     AppMethodBeat.i(57702);
     if (paraml == null) {
-      atM(7);
+      aDG(7);
     }
     if (parama == null) {
-      atM(8);
+      aDG(8);
     }
     if (paramg == null) {
-      atM(9);
+      aDG(9);
     }
     if (paraman == null) {
-      atM(10);
+      aDG(10);
     }
-    if ((parama != b.a.TgW) && (parama != b.a.TgZ))
+    if ((parama != b.a.aaJQ) && (parama != b.a.aaJT))
     {
       paraml = new IllegalStateException("Attempt at creating a constructor that is not a declaration: \ncopy from: " + this + "\nnewOwner: " + paraml + "\nkind: " + parama);
       AppMethodBeat.o(57702);
@@ -83,69 +83,69 @@ public class c
     paraml = (e)paraml;
     paramt = (c)paramt;
     if (paraml == null) {
-      atM(12);
+      aDG(12);
     }
     if (parama == null) {
-      atM(13);
+      aDG(13);
     }
     if (paraman == null) {
-      atM(14);
+      aDG(14);
     }
     if (paramg == null) {
-      atM(15);
+      aDG(15);
     }
-    paraml = new c(paraml, paramt, paramg, this.lNt, parama, paraman);
-    paraml.EC(hCc());
-    paraml.ED(hAx());
+    paraml = new c(paraml, paramt, paramg, this.oJH, parama, paraman);
+    paraml.Ji(iGr());
+    paraml.Jj(iEK());
     AppMethodBeat.o(57702);
     return paraml;
   }
   
-  public final void EC(boolean paramBoolean)
+  public final void Ji(boolean paramBoolean)
   {
     AppMethodBeat.i(57699);
-    this.Tqx = Boolean.valueOf(paramBoolean);
+    this.aaTr = Boolean.valueOf(paramBoolean);
     AppMethodBeat.o(57699);
   }
   
-  public final void ED(boolean paramBoolean)
+  public final void Jj(boolean paramBoolean)
   {
     AppMethodBeat.i(57701);
-    this.Tqy = Boolean.valueOf(paramBoolean);
+    this.aaTs = Boolean.valueOf(paramBoolean);
     AppMethodBeat.o(57701);
   }
   
-  public final boolean hAx()
+  public final boolean iEK()
   {
     AppMethodBeat.i(57700);
-    if ((!$assertionsDisabled) && (this.Tqy == null))
+    if ((!$assertionsDisabled) && (this.aaTs == null))
     {
       AssertionError localAssertionError = new AssertionError("hasSynthesizedParameterNames was not set: ".concat(String.valueOf(this)));
       AppMethodBeat.o(57700);
       throw localAssertionError;
     }
-    boolean bool = this.Tqy.booleanValue();
+    boolean bool = this.aaTs.booleanValue();
     AppMethodBeat.o(57700);
     return bool;
   }
   
-  public final boolean hCc()
+  public final boolean iGr()
   {
     AppMethodBeat.i(57698);
-    if ((!$assertionsDisabled) && (this.Tqx == null))
+    if ((!$assertionsDisabled) && (this.aaTr == null))
     {
       AssertionError localAssertionError = new AssertionError("hasStableParameterNames was not set: ".concat(String.valueOf(this)));
       AppMethodBeat.o(57698);
       throw localAssertionError;
     }
-    boolean bool = this.Tqx.booleanValue();
+    boolean bool = this.aaTr.booleanValue();
     AppMethodBeat.o(57698);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.b.c
  * JD-Core Version:    0.7.0.1
  */

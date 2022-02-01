@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.fingerprint.d;
 
 public abstract interface c
 {
-  public abstract void gz(int paramInt1, int paramInt2);
+  public abstract void hu(int paramInt1, int paramInt2);
 }
 
 

@@ -50,7 +50,7 @@ public class TagDecrypter
         i = Integer.valueOf(localObject2[0]).intValue();
         localObject2 = str1.substring(str2.length() + 1, str2.length() + 1 + i);
         str2 = str1.substring(i + (str2.length() + 1));
-        str2 = this.des.fa((String)localObject2) + str2;
+        str2 = this.des.fQ((String)localObject2) + str2;
         this.tagLruCache.put(paramString, str2);
         AppMethodBeat.o(157842);
         return str2;
@@ -73,7 +73,7 @@ public class TagDecrypter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.TagDecrypter
  * JD-Core Version:    0.7.0.1
  */

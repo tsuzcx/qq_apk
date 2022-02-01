@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/c2j" android:clickable="true" android:layout_width="fill_parent" android:layout_height="130.0dip" android:minHeight="130.0dip" />
+    <View android:id="@id/bfi" android:background="@drawable/cub" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/c2j" android:layout_alignParentBottom="true" />
+</RelativeLayout>

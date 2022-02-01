@@ -5,31 +5,31 @@ import rx.b.e;
 
 public final class b
 {
-  static final b UjM;
-  static final b UjN;
-  private final a UjL;
+  static final b abNh;
+  static final b abNi;
+  private final a abNg;
   
   static
   {
     AppMethodBeat.i(90077);
-    UjM = new b(new a() {}, (byte)0);
-    UjN = new b(new a() {}, (byte)0);
+    abNh = new b(new a() {}, (byte)0);
+    abNi = new b(new a() {}, (byte)0);
     AppMethodBeat.o(90077);
   }
   
   private b(a parama)
   {
     AppMethodBeat.i(90075);
-    this.UjL = rx.d.c.b(parama);
+    this.abNg = rx.d.c.b(parama);
     AppMethodBeat.o(90075);
   }
   
   private b(a parama, byte paramByte)
   {
-    this.UjL = parama;
+    this.abNg = parama;
   }
   
-  private static NullPointerException K(Throwable paramThrowable)
+  private static NullPointerException O(Throwable paramThrowable)
   {
     AppMethodBeat.i(90074);
     NullPointerException localNullPointerException = new NullPointerException("Actually not, but can't pass out an exception otherwise...");
@@ -41,7 +41,7 @@ public final class b
   public static b a(a parama)
   {
     AppMethodBeat.i(90072);
-    requireNonNull(parama);
+    hd(parama);
     try
     {
       parama = new b(parama);
@@ -55,14 +55,14 @@ public final class b
     }
     catch (Throwable parama)
     {
-      rx.d.c.onError(parama);
-      parama = K(parama);
+      rx.d.c.c(parama);
+      parama = O(parama);
       AppMethodBeat.o(90072);
       throw parama;
     }
   }
   
-  private static <T> T requireNonNull(T paramT)
+  private static <T> T hd(T paramT)
   {
     AppMethodBeat.i(90073);
     if (paramT == null)
@@ -75,7 +75,7 @@ public final class b
     return paramT;
   }
   
-  public final j hQv()
+  public final j iVF()
   {
     AppMethodBeat.i(90076);
     final rx.f.c localc = new rx.f.c();
@@ -88,17 +88,17 @@ public final class b
         AppMethodBeat.o(90071);
       }
       
-      public final void hQw()
+      public final void fUB()
       {
         AppMethodBeat.i(90070);
-        localc.hQA();
+        localc.iVJ();
         AppMethodBeat.o(90070);
       }
     };
-    requireNonNull(local3);
+    hd(local3);
     try
     {
-      rx.d.c.a(this, this.UjL).cA(local3);
+      rx.d.c.a(this, this.abNg).cA(local3);
       AppMethodBeat.o(90076);
       return localc;
     }
@@ -109,10 +109,10 @@ public final class b
     }
     catch (Throwable localThrowable)
     {
-      rx.a.b.N(localThrowable);
-      Object localObject = rx.d.c.W(localThrowable);
-      rx.d.c.onError((Throwable)localObject);
-      localObject = K((Throwable)localObject);
+      rx.a.b.R(localThrowable);
+      Object localObject = rx.d.c.aa(localThrowable);
+      rx.d.c.c((Throwable)localObject);
+      localObject = O((Throwable)localObject);
       AppMethodBeat.o(90076);
       throw ((Throwable)localObject);
     }
@@ -130,12 +130,12 @@ public final class b
   {
     public abstract void a(j paramj);
     
-    public abstract void hQw();
+    public abstract void fUB();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.b
  * JD-Core Version:    0.7.0.1
  */

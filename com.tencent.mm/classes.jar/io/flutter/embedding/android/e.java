@@ -1,16 +1,21 @@
 package io.flutter.embedding.android;
 
-import io.flutter.embedding.engine.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract interface e
+public final class e
 {
-  public abstract void b(a parama);
+  static final String cpb;
   
-  public abstract void c(a parama);
+  static
+  {
+    AppMethodBeat.i(255798);
+    cpb = e.a.aaoG.name();
+    AppMethodBeat.o(255798);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     io.flutter.embedding.android.e
  * JD-Core Version:    0.7.0.1
  */

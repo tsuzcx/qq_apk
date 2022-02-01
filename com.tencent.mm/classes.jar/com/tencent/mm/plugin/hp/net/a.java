@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.hp.net;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cxu;
-import com.tencent.mm.protocal.protobuf.cxv;
-import com.tencent.mm.protocal.protobuf.cxw;
+import com.tencent.mm.protocal.protobuf.dhf;
+import com.tencent.mm.protocal.protobuf.dhg;
+import com.tencent.mm.protocal.protobuf.dhh;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
@@ -19,31 +19,31 @@ public class a
   extends q
   implements m
 {
+  protected String DMR;
+  protected String DMS;
+  protected LinkedList<dhf> DMT;
+  protected int DMU;
   protected i callback;
   protected int mScene;
-  protected LinkedList<cxv> pUc;
   protected final d rr;
+  protected LinkedList<dhg> tqd;
   protected String type;
-  protected String ymP;
-  protected String ymQ;
-  protected LinkedList<cxu> ymR;
-  protected int ymS;
   
   public a()
   {
     AppMethodBeat.i(117444);
-    this.ymR = new LinkedList();
-    this.pUc = new LinkedList();
-    this.ymS = 0;
+    this.DMT = new LinkedList();
+    this.tqd = new LinkedList();
+    this.DMU = 0;
     this.mScene = 0;
     d.a locala = new d.a();
-    locala.iLN = new cxv();
-    locala.iLO = new cxw();
+    locala.lBU = new dhg();
+    locala.lBV = new dhh();
     locala.uri = "/cgi-bin/micromsg-bin/prconfig";
     locala.funcId = 3899;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
+    this.rr = locala.bgN();
     AppMethodBeat.o(117444);
   }
   
@@ -51,14 +51,14 @@ public class a
   {
     AppMethodBeat.i(117445);
     this.callback = parami;
-    parami = (cxv)this.rr.iLK.iLR;
-    parami.MCI = this.ymP;
-    parami.APx = this.ymQ;
-    parami.MCJ = this.ymR;
+    parami = (dhg)d.b.b(this.rr.lBR);
+    parami.TOo = this.DMR;
+    parami.GIL = this.DMS;
+    parami.TOp = this.DMT;
     parami.type = this.type;
-    parami.Iow = this.pUc;
-    parami.MCK = this.ymS;
-    parami.MCL = this.mScene;
+    parami.PgO = this.tqd;
+    parami.TOq = this.DMU;
+    parami.TOr = this.mScene;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(117445);
     return i;
@@ -79,7 +79,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.net.a
  * JD-Core Version:    0.7.0.1
  */

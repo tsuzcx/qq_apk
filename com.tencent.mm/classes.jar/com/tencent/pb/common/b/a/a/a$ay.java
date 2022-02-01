@@ -1,120 +1,235 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.e;
+import com.google.b.a.g;
+import java.util.Arrays;
 
 public final class a$ay
   extends e
 {
-  public int RFA = 0;
-  public int RFB = 0;
-  public int RFC = 0;
-  public int RFD = 0;
-  public int RFE = 0;
-  public int RFF = 0;
-  public int RFG = 0;
-  public int RFx = 0;
-  public int RFy = 0;
-  public int RFz = 0;
-  public int iTa = 0;
-  public int iTb = 0;
+  public byte[] ZhA = g.ccX;
+  public int ZhB = 0;
+  public byte[] ZhC = g.ccX;
+  public byte[] ZhD = g.ccX;
+  public byte[] ZhE = g.ccX;
+  public int ZhF = 0;
+  public a.p[] ZhG = a.p.ikM();
+  public byte[] Zhm = g.ccX;
+  public long Zhn = 0L;
+  public byte[] Zho = g.ccX;
+  public byte[] Zhp = g.ccX;
+  public byte[] Zhq = g.ccX;
+  public a.bc Zhr = null;
+  public byte[] Zhs = g.ccX;
+  public a.au Zht = null;
+  public String Zhu = "";
+  public String Zhv = "";
+  public long Zhw = 0L;
+  public byte[] Zhx = g.ccX;
+  public byte[] Zhy = g.ccX;
+  public byte[] Zhz = g.ccX;
+  public int fEi = 0;
+  public String name = "";
   
   public a$ay()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int j = super.Ig();
+    int j = super.JG();
     int i = j;
-    if (this.RFx != 0) {
-      i = j + b.bu(1, this.RFx);
+    if (!this.name.equals("")) {
+      i = j + b.g(1, this.name);
     }
     j = i;
-    if (this.iTa != 0) {
-      j = i + b.bu(2, this.iTa);
+    if (!Arrays.equals(this.Zhm, g.ccX)) {
+      j = i + b.c(2, this.Zhm);
     }
     i = j;
-    if (this.iTb != 0) {
-      i = j + b.bu(3, this.iTb);
+    if (this.fEi != 0) {
+      i = j + b.bM(3, this.fEi);
     }
     j = i;
-    if (this.RFy != 0) {
-      j = i + b.bu(4, this.RFy);
+    if (this.Zhn != 0L) {
+      j = i + b.q(4, this.Zhn);
     }
     i = j;
-    if (this.RFz != 0) {
-      i = j + b.bu(5, this.RFz);
+    if (!Arrays.equals(this.Zho, g.ccX)) {
+      i = j + b.c(5, this.Zho);
     }
     j = i;
-    if (this.RFA != 0) {
-      j = i + b.bu(6, this.RFA);
+    if (!Arrays.equals(this.Zhp, g.ccX)) {
+      j = i + b.c(6, this.Zhp);
     }
     i = j;
-    if (this.RFB != 0) {
-      i = j + b.bu(7, this.RFB);
+    if (!Arrays.equals(this.Zhq, g.ccX)) {
+      i = j + b.c(7, this.Zhq);
     }
     j = i;
-    if (this.RFC != 0) {
-      j = i + b.bu(8, this.RFC);
+    if (this.Zhr != null) {
+      j = i + b.b(8, this.Zhr);
     }
     i = j;
-    if (this.RFD != 0) {
-      i = j + b.bu(9, this.RFD);
+    if (!Arrays.equals(this.Zhs, g.ccX)) {
+      i = j + b.c(9, this.Zhs);
     }
     j = i;
-    if (this.RFE != 0) {
-      j = i + b.bu(10, this.RFE);
+    if (this.Zht != null) {
+      j = i + b.b(10, this.Zht);
     }
     i = j;
-    if (this.RFF != 0) {
-      i = j + b.bu(11, this.RFF);
+    if (!this.Zhu.equals("")) {
+      i = j + b.g(100, this.Zhu);
     }
     j = i;
-    if (this.RFG != 0) {
-      j = i + b.bu(12, this.RFG);
+    if (!this.Zhv.equals("")) {
+      j = i + b.g(101, this.Zhv);
+    }
+    i = j;
+    if (this.Zhw != 0L) {
+      i = j + b.q(200, this.Zhw);
+    }
+    j = i;
+    if (!Arrays.equals(this.Zhx, g.ccX)) {
+      j = i + b.c(201, this.Zhx);
+    }
+    i = j;
+    if (!Arrays.equals(this.Zhy, g.ccX)) {
+      i = j + b.c(202, this.Zhy);
+    }
+    j = i;
+    if (!Arrays.equals(this.Zhz, g.ccX)) {
+      j = i + b.c(203, this.Zhz);
+    }
+    i = j;
+    if (!Arrays.equals(this.ZhA, g.ccX)) {
+      i = j + b.c(204, this.ZhA);
+    }
+    j = i;
+    if (this.ZhB != 0) {
+      j = i + b.bM(220, this.ZhB);
+    }
+    i = j;
+    if (!Arrays.equals(this.ZhC, g.ccX)) {
+      i = j + b.c(221, this.ZhC);
+    }
+    j = i;
+    if (!Arrays.equals(this.ZhD, g.ccX)) {
+      j = i + b.c(222, this.ZhD);
+    }
+    int k = j;
+    if (!Arrays.equals(this.ZhE, g.ccX)) {
+      k = j + b.c(223, this.ZhE);
+    }
+    i = k;
+    if (this.ZhF != 0) {
+      i = k + b.bN(224, this.ZhF);
+    }
+    j = i;
+    if (this.ZhG != null)
+    {
+      j = i;
+      if (this.ZhG.length > 0)
+      {
+        j = 0;
+        while (j < this.ZhG.length)
+        {
+          a.p localp = this.ZhG[j];
+          k = i;
+          if (localp != null) {
+            k = i + b.b(225, localp);
+          }
+          j += 1;
+          i = k;
+        }
+        j = i;
+      }
     }
     return j;
   }
   
   public final void a(b paramb)
   {
-    if (this.RFx != 0) {
-      paramb.bs(1, this.RFx);
+    if (!this.name.equals("")) {
+      paramb.f(1, this.name);
     }
-    if (this.iTa != 0) {
-      paramb.bs(2, this.iTa);
+    if (!Arrays.equals(this.Zhm, g.ccX)) {
+      paramb.b(2, this.Zhm);
     }
-    if (this.iTb != 0) {
-      paramb.bs(3, this.iTb);
+    if (this.fEi != 0) {
+      paramb.bJ(3, this.fEi);
     }
-    if (this.RFy != 0) {
-      paramb.bs(4, this.RFy);
+    if (this.Zhn != 0L) {
+      paramb.n(4, this.Zhn);
     }
-    if (this.RFz != 0) {
-      paramb.bs(5, this.RFz);
+    if (!Arrays.equals(this.Zho, g.ccX)) {
+      paramb.b(5, this.Zho);
     }
-    if (this.RFA != 0) {
-      paramb.bs(6, this.RFA);
+    if (!Arrays.equals(this.Zhp, g.ccX)) {
+      paramb.b(6, this.Zhp);
     }
-    if (this.RFB != 0) {
-      paramb.bs(7, this.RFB);
+    if (!Arrays.equals(this.Zhq, g.ccX)) {
+      paramb.b(7, this.Zhq);
     }
-    if (this.RFC != 0) {
-      paramb.bs(8, this.RFC);
+    if (this.Zhr != null) {
+      paramb.a(8, this.Zhr);
     }
-    if (this.RFD != 0) {
-      paramb.bs(9, this.RFD);
+    if (!Arrays.equals(this.Zhs, g.ccX)) {
+      paramb.b(9, this.Zhs);
     }
-    if (this.RFE != 0) {
-      paramb.bs(10, this.RFE);
+    if (this.Zht != null) {
+      paramb.a(10, this.Zht);
     }
-    if (this.RFF != 0) {
-      paramb.bs(11, this.RFF);
+    if (!this.Zhu.equals("")) {
+      paramb.f(100, this.Zhu);
     }
-    if (this.RFG != 0) {
-      paramb.bs(12, this.RFG);
+    if (!this.Zhv.equals("")) {
+      paramb.f(101, this.Zhv);
+    }
+    if (this.Zhw != 0L) {
+      paramb.n(200, this.Zhw);
+    }
+    if (!Arrays.equals(this.Zhx, g.ccX)) {
+      paramb.b(201, this.Zhx);
+    }
+    if (!Arrays.equals(this.Zhy, g.ccX)) {
+      paramb.b(202, this.Zhy);
+    }
+    if (!Arrays.equals(this.Zhz, g.ccX)) {
+      paramb.b(203, this.Zhz);
+    }
+    if (!Arrays.equals(this.ZhA, g.ccX)) {
+      paramb.b(204, this.ZhA);
+    }
+    if (this.ZhB != 0) {
+      paramb.bJ(220, this.ZhB);
+    }
+    if (!Arrays.equals(this.ZhC, g.ccX)) {
+      paramb.b(221, this.ZhC);
+    }
+    if (!Arrays.equals(this.ZhD, g.ccX)) {
+      paramb.b(222, this.ZhD);
+    }
+    if (!Arrays.equals(this.ZhE, g.ccX)) {
+      paramb.b(223, this.ZhE);
+    }
+    if (this.ZhF != 0) {
+      paramb.bK(224, this.ZhF);
+    }
+    if ((this.ZhG != null) && (this.ZhG.length > 0))
+    {
+      int i = 0;
+      while (i < this.ZhG.length)
+      {
+        a.p localp = this.ZhG[i];
+        if (localp != null) {
+          paramb.a(225, localp);
+        }
+        i += 1;
+      }
     }
     super.a(paramb);
   }

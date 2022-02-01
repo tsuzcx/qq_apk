@@ -22,7 +22,7 @@ public abstract interface c
       attachInterface(this, "com.tencent.mm.remoteservice.ICommRemoteServer");
     }
     
-    public static c L(IBinder paramIBinder)
+    public static c P(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -34,9 +34,9 @@ public abstract interface c
       return new a(paramIBinder);
     }
     
-    public static c gvb()
+    public static c hqV()
     {
-      return a.NCy;
+      return a.UQa;
     }
     
     public IBinder asBinder()
@@ -82,7 +82,7 @@ public abstract interface c
     static final class a
       implements c
     {
-      public static c NCy;
+      public static c UQa;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -110,10 +110,10 @@ public abstract interface c
               {
                 localIBinder = paramb.asBinder();
                 localParcel1.writeStrongBinder(localIBinder);
-                if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (c.a.gvb() == null)) {
+                if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (c.a.hqV() == null)) {
                   break;
                 }
-                c.a.gvb().a(paramString1, paramString2, paramBundle, paramb);
+                c.a.hqV().a(paramString1, paramString2, paramBundle, paramb);
               }
             }
             else
@@ -148,7 +148,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.remoteservice.c
  * JD-Core Version:    0.7.0.1
  */

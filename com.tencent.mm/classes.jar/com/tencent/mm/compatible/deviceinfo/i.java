@@ -4,6 +4,7 @@ import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 
 final class i
@@ -13,11 +14,11 @@ final class i
   {
     AppMethodBeat.i(155652);
     d.a.a locala = new d.a.a();
-    locala.gGr = null;
+    locala.jqD = null;
     try
     {
-      locala.gGr = w.b(paramInt, paramLooper);
-      if (locala.gGr == null)
+      locala.jqD = x.b(paramInt, paramLooper);
+      if (locala.jqD == null)
       {
         AppMethodBeat.o(155652);
         return null;
@@ -28,65 +29,71 @@ final class i
       AppMethodBeat.o(155652);
       return null;
     }
-    locala.dYT = 0;
-    Log.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.hasVRInfo " + ae.gKt.gFI);
-    Log.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.mVRFaceRotate " + ae.gKt.gFJ);
-    Log.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.mVRFaceDisplayOrientation " + ae.gKt.gFK);
-    Log.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.mVRBackRotate " + ae.gKt.gFL);
-    Log.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.mVRBackDisplayOrientation " + ae.gKt.gFM);
-    if (getNumberOfCameras() > 1) {}
+    locala.fSM = 0;
+    Log.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.hasVRInfo " + af.juH.jpS);
+    Log.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.mVRFaceRotate " + af.juH.jpT);
+    Log.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.mVRFaceDisplayOrientation " + af.juH.jpU);
+    Log.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.mVRBackRotate " + af.juH.jpV);
+    Log.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.mVRBackDisplayOrientation " + af.juH.jpW);
+    if (auj() > 1) {}
     for (;;)
     {
       try
       {
         paramLooper = new Camera.CameraInfo();
-        Camera.getCameraInfo(paramInt, paramLooper);
+        if (!d.gaj) {
+          continue;
+        }
+        paramLooper = a.jnC.qJ(paramInt);
         Log.d("CameraUtilImplConfig", "info.facing " + paramLooper.facing);
         if (paramLooper.facing != 1) {
           continue;
         }
-        if ((ae.gKt.gFI) && (ae.gKt.gFJ != -1)) {
-          locala.dYT = ae.gKt.gFJ;
+        if ((af.juH.jpS) && (af.juH.jpT != -1)) {
+          locala.fSM = af.juH.jpT;
         }
-        if ((ae.gKt.gFI) && (ae.gKt.gFK != -1)) {
-          locala.gGr.setDisplayOrientation(ae.gKt.gFK);
+        if ((af.juH.jpS) && (af.juH.jpU != -1)) {
+          locala.jqD.qO(af.juH.jpU);
         }
       }
       catch (Exception paramLooper)
       {
         Log.printErrStackTrace("CameraUtilImplConfig", paramLooper, "", new Object[0]);
         continue;
+        if ((!af.juH.jpS) || (af.juH.jpV == -1)) {
+          continue;
+        }
+        locala.fSM = af.juH.jpV;
+        if ((!af.juH.jpS) || (af.juH.jpW == -1)) {
+          continue;
+        }
+        locala.jqD.qO(af.juH.jpW);
+        continue;
       }
       AppMethodBeat.o(155652);
       return locala;
-      if ((ae.gKt.gFI) && (ae.gKt.gFL != -1)) {
-        locala.dYT = ae.gKt.gFL;
+      Camera.getCameraInfo(paramInt, paramLooper);
+      continue;
+      if ((af.juH.jpS) && (af.juH.jpV != -1)) {
+        locala.fSM = af.juH.jpV;
       }
-      if ((ae.gKt.gFI) && (ae.gKt.gFM != -1))
-      {
-        locala.gGr.setDisplayOrientation(ae.gKt.gFM);
-        continue;
-        if ((ae.gKt.gFI) && (ae.gKt.gFL != -1)) {
-          locala.dYT = ae.gKt.gFL;
-        }
-        if ((ae.gKt.gFI) && (ae.gKt.gFM != -1)) {
-          locala.gGr.setDisplayOrientation(ae.gKt.gFM);
-        }
+      if ((af.juH.jpS) && (af.juH.jpW != -1)) {
+        locala.jqD.qO(af.juH.jpW);
       }
     }
   }
   
-  public static int getNumberOfCameras()
+  public static int auj()
   {
     AppMethodBeat.i(155651);
-    if ((ae.gKt.gFO) && (ae.gKt.gFN != -1))
+    if ((af.juH.jpY) && (af.juH.jpX != -1))
     {
-      i = ae.gKt.gFN;
+      i = af.juH.jpX;
       Log.d("CameraUtilImplConfig", "mVRCameraNum ".concat(String.valueOf(i)));
       AppMethodBeat.o(155651);
       return i;
     }
-    int i = d.getNumberOfCameras();
+    int i = d.auj();
     Log.d("CameraUtilImplConfig", "getNumberOfCameras ".concat(String.valueOf(i)));
     if (i > 1)
     {

@@ -9,9 +9,9 @@ public class AppBrandBackgroundFetchDataParcel
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandBackgroundFetchDataParcel> CREATOR;
-  public long crj;
+  public long coZ;
   public String data;
-  public int kXP;
+  public int nSb;
   public String path;
   public String query;
   public int scene;
@@ -30,12 +30,12 @@ public class AppBrandBackgroundFetchDataParcel
   {
     AppMethodBeat.i(44702);
     this.username = paramParcel.readString();
-    this.kXP = paramParcel.readInt();
+    this.nSb = paramParcel.readInt();
     this.path = paramParcel.readString();
     this.query = paramParcel.readString();
     this.data = paramParcel.readString();
     this.scene = paramParcel.readInt();
-    this.crj = paramParcel.readLong();
+    this.coZ = paramParcel.readLong();
     AppMethodBeat.o(44702);
   }
   
@@ -48,18 +48,18 @@ public class AppBrandBackgroundFetchDataParcel
   {
     AppMethodBeat.i(44701);
     paramParcel.writeString(this.username);
-    paramParcel.writeInt(this.kXP);
+    paramParcel.writeInt(this.nSb);
     paramParcel.writeString(this.path);
     paramParcel.writeString(this.query);
     paramParcel.writeString(this.data);
     paramParcel.writeInt(this.scene);
-    paramParcel.writeLong(this.crj);
+    paramParcel.writeLong(this.coZ);
     AppMethodBeat.o(44701);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundfetch.AppBrandBackgroundFetchDataParcel
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/loader/task/EmojiLoadTask;", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "checkCache", "", "getTaskKey", "run", "", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/loader/task/EmojiLoadTask;", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "checkCache", "", "getTaskKey", "run", "", "plugin-emojisdk_release"})
 public final class b
   extends c
 {
@@ -24,11 +24,11 @@ public final class b
     AppMethodBeat.o(105480);
   }
   
-  public final String auJ()
+  public final String aBF()
   {
     AppMethodBeat.i(105478);
-    String str = this.gWm.getMd5();
-    p.g(str, "emojiInfo.md5");
+    String str = this.jHh.getMd5();
+    p.j(str, "emojiInfo.md5");
     AppMethodBeat.o(105478);
     return str;
   }
@@ -37,26 +37,26 @@ public final class b
   {
     AppMethodBeat.i(105479);
     super.run();
-    if (this.gWm.hRx())
+    if (this.jHh.hBp())
     {
-      dQ(true);
+      ep(true);
       AppMethodBeat.o(105479);
       return;
     }
-    Object localObject = e.gVM;
-    if (e.auB())
+    Object localObject = e.jGI;
+    if (e.aBw())
     {
-      Log.w(this.TAG, this.gWm.getMd5() + ": mock download fail");
-      dQ(false);
+      Log.w(this.TAG, this.jHh.getMd5() + ": mock download fail");
+      ep(false);
       AppMethodBeat.o(105479);
       return;
     }
-    localObject = h.gWs;
-    h.d(this.gWm, (kotlin.g.a.b)new a(this));
+    localObject = h.jHn;
+    h.c(this.jHh, (kotlin.g.a.b)new a(this));
     AppMethodBeat.o(105479);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
   static final class a
     extends q
     implements kotlin.g.a.b<Boolean, x>
@@ -69,7 +69,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.e.b
  * JD-Core Version:    0.7.0.1
  */

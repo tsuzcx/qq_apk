@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.game.g;
 
 public abstract interface c$a
 {
-  public abstract String getAbsolutePath();
+  public abstract String bOF();
 }
 
 

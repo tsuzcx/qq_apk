@@ -4,11 +4,11 @@ import com.tencent.mm.plugin.appbrand.jsapi.video.b.b.e;
 
 public abstract interface a
 {
-  public abstract e dO(String paramString1, String paramString2);
+  public abstract e dZ(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.c.a
  * JD-Core Version:    0.7.0.1
  */

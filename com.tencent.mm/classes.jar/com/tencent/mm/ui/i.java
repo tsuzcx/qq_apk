@@ -1,310 +1,322 @@
 package com.tencent.mm.ui;
 
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.g.a.bo;
-import com.tencent.mm.g.a.kk;
-import com.tencent.mm.g.a.kk.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.modelsimple.BindWordingContent;
-import com.tencent.mm.modelsimple.ad;
-import com.tencent.mm.platformtools.af;
-import com.tencent.mm.plugin.account.bind.ui.BindMobileUI;
-import com.tencent.mm.plugin.account.ui.RegByMobileSetPwdUI;
-import com.tencent.mm.protocal.b.a.b;
-import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.R.l;
+import com.tencent.mm.an.t;
+import com.tencent.mm.ao.af;
+import com.tencent.mm.ao.d;
+import com.tencent.mm.ao.e;
+import com.tencent.mm.ao.x;
+import com.tencent.mm.plugin.appbrand.ac.b;
+import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.ui.base.u;
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.widget.a.d.a;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.widget.a.f.a;
 import com.tencent.mm.ui.widget.a.f.c;
-import java.util.LinkedList;
+import com.tencent.mm.vfs.u;
 
 public final class i
 {
-  private View DaW;
-  private TextView DaX;
-  EditText DaY;
-  boolean DaZ;
-  LauncherUI.b OBZ;
-  kk.a OCa;
-  com.tencent.mm.ak.i OCb;
-  boolean OCc;
-  boolean OCd;
-  IListener OCe;
-  IListener<bo> OCf;
-  int dEM;
-  ProgressDialog gtM;
-  d kdA;
-  MMFragmentActivity uLr;
+  private static final String fgQ;
   
-  public i(MMFragmentActivity paramMMFragmentActivity, LauncherUI.b paramb)
+  static
   {
-    AppMethodBeat.i(33160);
-    this.OCa = null;
-    this.OCc = false;
-    this.OCd = false;
-    this.OCe = new IListener() {};
-    this.dEM = 0;
-    this.OCf = new i.3(this);
-    this.uLr = paramMMFragmentActivity;
-    this.OBZ = paramb;
-    AppMethodBeat.o(33160);
+    AppMethodBeat.i(243255);
+    fgQ = "https://" + WeChatHosts.domainString(R.l.host_work_weixin_qq_com) + "/wework_admin/commdownload?from=conv%s";
+    AppMethodBeat.o(243255);
   }
   
-  final void AZ(boolean paramBoolean)
+  private static int aR(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(33163);
-    Log.d("MicroMsg.LauncherUI.GlobalAlertMgr", "summeralert handlePassword ".concat(String.valueOf(paramBoolean)));
-    if (paramBoolean)
-    {
-      gHO();
-      AppMethodBeat.o(33163);
-      return;
+    AppMethodBeat.i(33029);
+    com.tencent.mm.api.c localc = af.bjv().Uo(paramString);
+    if (localc.YY()) {
+      paramString = localc.Zf();
     }
-    Object localObject = new Intent(this.uLr, RegByMobileSetPwdUI.class);
-    ((Intent)localObject).putExtra("kintent_hint", getString(2131765477));
-    MMFragmentActivity localMMFragmentActivity = this.uLr;
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(localMMFragmentActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/ui/GlobalAlertMgr", "handlePassword", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localMMFragmentActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(localMMFragmentActivity, "com/tencent/mm/ui/GlobalAlertMgr", "handlePassword", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(33163);
-  }
-  
-  final boolean a(final kk.a parama)
-  {
-    AppMethodBeat.i(33161);
-    if ((parama == null) || (parama.dPx == null) || (parama.dPx.KBq == null) || (parama.dPx.KBq.size() == 0))
+    paramString = af.bjF().Uj(paramString);
+    int i;
+    int j;
+    label55:
+    long l1;
+    if (paramString != null)
     {
-      AppMethodBeat.o(33161);
-      return false;
-    }
-    final int i = parama.dPx.id;
-    String str1 = parama.dPx.title;
-    String str2 = parama.dPx.msg;
-    int j = parama.type;
-    int k = parama.dPx.KBq.size();
-    if (j == 0) {
-      if (k == 1)
-      {
-        parama = (com.tencent.mm.protocal.b.a.a)parama.dPx.KBq.get(0);
-        Log.i("MicroMsg.LauncherUI.GlobalAlertMgr", "summeralert id[%d], title[%s], msg[%s], id[%d], action[%d], btnstr[%s], btnurl[%s]", new Object[] { Integer.valueOf(i), str1, str2, Integer.valueOf(parama.id), Integer.valueOf(parama.actionType), parama.KBo, parama.KBp });
-        com.tencent.mm.ui.base.h.a(this.uLr, str2, str1, parama.KBo, false, new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(33151);
-            i.a(i.this, i, parama.actionType, parama.id, parama.KBp);
-            paramAnonymousDialogInterface.dismiss();
-            AppMethodBeat.o(33151);
-          }
-        });
+      i = paramString.field_qyUin;
+      if (paramString == null) {
+        break label203;
       }
+      j = paramString.field_userUin;
+      if (paramString == null) {
+        break label209;
+      }
+      l1 = paramString.field_wwCorpId;
+      label65:
+      if (paramString == null) {
+        break label215;
+      }
+    }
+    label203:
+    label209:
+    label215:
+    for (long l2 = paramString.field_wwUserVid;; l2 = 0L)
+    {
+      com.tencent.mm.plugin.report.service.h.IzE.a(13656, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(l1), Long.valueOf(l2) });
+      Log.d("MicroMsg.EnterpriseHelper", "enterprise wework action report: %s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(l1), Long.valueOf(l2) });
+      AppMethodBeat.o(33029);
+      return paramInt2;
+      i = 0;
+      break;
+      j = 0;
+      break label55;
+      l1 = 0L;
+      break label65;
+    }
+  }
+  
+  public static void aS(String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(33031);
+    Object localObject = af.bjv().Uo(paramString);
+    if (paramInt2 == 3) {
+      paramInt2 = 2;
     }
     for (;;)
     {
-      AppMethodBeat.o(33161);
-      return true;
-      final com.tencent.mm.protocal.b.a.a locala1 = (com.tencent.mm.protocal.b.a.a)parama.dPx.KBq.get(1);
-      parama = (com.tencent.mm.protocal.b.a.a)parama.dPx.KBq.get(0);
-      Log.i("MicroMsg.LauncherUI.GlobalAlertMgr", "summeralert title[%s], msg[%s], id1[%d], action1[%d], btnstr1[%s],btnurl1[%s], id2[%d], action2[%d], btnstr2[%s], btnurl2[%s]", new Object[] { str1, str2, Integer.valueOf(locala1.id), Integer.valueOf(locala1.actionType), locala1.KBo, locala1.KBp, Integer.valueOf(parama.id), Integer.valueOf(parama.actionType), parama.KBo, parama.KBp });
-      com.tencent.mm.ui.base.h.a(this.uLr, str2, str1, locala1.KBo, parama.KBo, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      int i = paramInt2;
+      if (paramInt2 == 4) {
+        i = 3;
+      }
+      if (((com.tencent.mm.api.c)localObject).YY()) {
+        paramString = ((com.tencent.mm.api.c)localObject).Zf();
+      }
+      paramString = af.bjF().Uj(paramString);
+      localObject = new x(paramString, paramInt1, i, new Object());
+      com.tencent.mm.kernel.h.aHF().kcd.a((com.tencent.mm.an.q)localObject, 0);
+      if (paramString.field_chatOpen)
       {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(33152);
-          i.a(i.this, i, locala1.actionType, locala1.id, locala1.KBp);
-          paramAnonymousDialogInterface.dismiss();
-          AppMethodBeat.o(33152);
+        paramInt2 = 1;
+        if (!paramString.field_show_confirm) {
+          break label199;
         }
-      }, new DialogInterface.OnClickListener()
+      }
+      label199:
+      for (int j = 1;; j = 0)
       {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(33153);
-          i.a(i.this, i, parama.actionType, parama.id, parama.KBp);
-          paramAnonymousDialogInterface.dismiss();
-          AppMethodBeat.o(33153);
-        }
-      });
-      continue;
-      if (j == 1)
-      {
-        locala1 = (com.tencent.mm.protocal.b.a.a)parama.dPx.KBq.get(0);
-        com.tencent.mm.protocal.b.a.a locala2 = (com.tencent.mm.protocal.b.a.a)parama.dPx.KBq.get(1);
-        com.tencent.mm.ui.base.h.a(this.uLr, str2, str1, locala1.KBo, locala2.KBo, false, parama.dPy, parama.dPz);
+        com.tencent.mm.plugin.report.service.h.IzE.a(15162, new Object[] { Long.valueOf(paramString.field_wwCorpId), Long.valueOf(paramString.field_wwUserVid), Integer.valueOf(paramInt2), Integer.valueOf(paramString.field_wwUnreadCnt), Integer.valueOf(j), Integer.valueOf(paramString.field_userType), Integer.valueOf(paramInt1), Integer.valueOf(i) });
+        AppMethodBeat.o(33031);
+        return;
+        paramInt2 = 0;
+        break;
       }
     }
   }
   
-  final com.tencent.mm.ak.i gHN()
+  public static int cI(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(33162);
-    if (this.OCb == null) {
-      this.OCb = new com.tencent.mm.ak.i()
-      {
-        public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
-        {
-          AppMethodBeat.i(33156);
-          Log.i("MicroMsg.LauncherUI.GlobalAlertMgr", "summeralert onSceneEnd " + paramAnonymousInt1 + " errCode " + paramAnonymousInt2 + " errMsg " + paramAnonymousString + "  " + paramAnonymousq.getType());
-          if (i.this.gtM != null)
-          {
-            i.this.gtM.dismiss();
-            i.this.gtM = null;
-          }
-          if (paramAnonymousq.getType() == 255)
-          {
-            bg.azz().b(255, i.this.OCb);
-            if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
-            {
-              i.this.AZ(true);
-              AppMethodBeat.o(33156);
-              return;
-            }
-            if (z.a.a(i.this.uLr, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, 4))
-            {
-              AppMethodBeat.o(33156);
-              return;
-            }
-            i.this.AZ(false);
-            AppMethodBeat.o(33156);
-            return;
-          }
-          if (paramAnonymousq.getType() == 384)
-          {
-            if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
-            {
-              bg.aVF();
-              com.tencent.mm.model.c.azQ().set(77830, ((ad)paramAnonymousq).bbG());
-              paramAnonymousq = new Intent(i.this.uLr, RegByMobileSetPwdUI.class);
-              paramAnonymousq.putExtra("kintent_hint", i.this.getString(2131765477));
-              paramAnonymousString = i.this.uLr;
-              paramAnonymousq = new com.tencent.mm.hellhoundlib.b.a().bl(paramAnonymousq);
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousString, paramAnonymousq.axQ(), "com/tencent/mm/ui/GlobalAlertMgr$7", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              paramAnonymousString.startActivity((Intent)paramAnonymousq.pG(0));
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousString, "com/tencent/mm/ui/GlobalAlertMgr$7", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              AppMethodBeat.o(33156);
-              return;
-            }
-            i.this.DaZ = true;
-            com.tencent.mm.ui.base.h.a(i.this.uLr, 2131765521, 2131755998, new DialogInterface.OnClickListener()
-            {
-              public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-              {
-                AppMethodBeat.i(33155);
-                i.this.gHO();
-                AppMethodBeat.o(33155);
-              }
-            });
-          }
-          AppMethodBeat.o(33156);
-        }
-      };
+    AppMethodBeat.i(33024);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(33024);
+      return 0;
     }
-    com.tencent.mm.ak.i locali = this.OCb;
-    AppMethodBeat.o(33162);
-    return locali;
+    paramString = af.bjF().Uj(paramString);
+    int i;
+    if ((paramString != null) && ((paramString.field_userFlag & 0x2) != 0)) {
+      i = 1;
+    }
+    while (i != 0) {
+      if ((paramString.field_wwExposeTimes < paramString.field_wwMaxExposeTimes) || (com.tencent.mm.pluginsdk.model.app.q.u(paramContext, "com.tencent.wework")))
+      {
+        AppMethodBeat.o(33024);
+        return 2;
+        i = 0;
+      }
+      else
+      {
+        AppMethodBeat.o(33024);
+        return 1;
+      }
+    }
+    AppMethodBeat.o(33024);
+    return 0;
   }
   
-  final void gHO()
+  public static void cJ(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(33164);
-    if (this.kdA != null)
+    AppMethodBeat.i(33025);
+    if (Util.isNullOrNil(paramString))
     {
-      this.kdA.show();
-      AppMethodBeat.o(33164);
+      AppMethodBeat.o(33025);
       return;
     }
-    if (this.DaW == null)
-    {
-      this.DaW = View.inflate(this.uLr, 2131496232, null);
-      this.DaX = ((TextView)this.DaW.findViewById(2131307637));
-      this.DaX.setText(getString(2131765414));
-      this.DaY = ((EditText)this.DaW.findViewById(2131307636));
-      this.DaY.setInputType(129);
+    if (!com.tencent.mm.pluginsdk.model.app.q.u(paramContext, "com.tencent.wework")) {
+      af.bjF().Um(paramString);
     }
-    this.kdA = com.tencent.mm.ui.base.h.a(this.uLr, null, this.DaW, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-    {
-      public final void onClick(final DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(33158);
-        paramAnonymousDialogInterface = i.this.DaY.getText().toString();
-        i.this.DaY.setText("");
-        i.this.DaY.clearFocus();
-        af.a(i.this.uLr, i.this.DaY);
-        if ((paramAnonymousDialogInterface == null) || (paramAnonymousDialogInterface.equals("")))
-        {
-          com.tencent.mm.ui.base.h.a(i.this.uLr, 2131767029, 2131755998, new DialogInterface.OnClickListener()
-          {
-            public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
-          });
-          AppMethodBeat.o(33158);
-          return;
-        }
-        i.this.gHN();
-        bg.azz().a(384, i.this.OCb);
-        paramAnonymousDialogInterface = new ad(paramAnonymousDialogInterface, "", "", "");
-        bg.azz().a(paramAnonymousDialogInterface, 0);
-        i locali = i.this;
-        MMFragmentActivity localMMFragmentActivity = i.this.uLr;
-        i.this.getString(2131755998);
-        locali.gtM = com.tencent.mm.ui.base.h.a(localMMFragmentActivity, i.this.getString(2131765431), true, new DialogInterface.OnCancelListener()
-        {
-          public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
-          {
-            AppMethodBeat.i(33157);
-            bg.azz().b(384, i.this.OCb);
-            i.this.OCb = null;
-            bg.azz().a(paramAnonymousDialogInterface);
-            AppMethodBeat.o(33157);
-          }
-        });
-        AppMethodBeat.o(33158);
-      }
-    }, new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(33159);
-        i.this.DaY.setText("");
-        i.this.kdA.dismiss();
-        AppMethodBeat.o(33159);
-      }
-    });
-    AppMethodBeat.o(33164);
+    AppMethodBeat.o(33025);
   }
   
-  final String getString(int paramInt)
+  public static void t(Context paramContext, String paramString, int paramInt)
   {
-    AppMethodBeat.i(33165);
-    String str = this.uLr.getString(paramInt);
-    AppMethodBeat.o(33165);
-    return str;
+    AppMethodBeat.i(33026);
+    if (com.tencent.mm.pluginsdk.model.app.q.u(paramContext, "com.tencent.wework"))
+    {
+      aR(paramString, 4, paramInt);
+      AppMethodBeat.o(33026);
+      return;
+    }
+    aR(paramString, 5, paramInt);
+    AppMethodBeat.o(33026);
+  }
+  
+  public static void u(Context paramContext, final String paramString, final int paramInt)
+  {
+    AppMethodBeat.i(33027);
+    aR(paramString, 1, paramInt);
+    aS(paramString, 2, paramInt);
+    d locald = af.bjF().Uk(paramString);
+    Object localObject = null;
+    String str;
+    if ((4 == paramInt) || (3 == paramInt))
+    {
+      af.bjF();
+      str = e.biQ();
+      localObject = str;
+      if (str != null)
+      {
+        localObject = str;
+        if (str.length() > 0)
+        {
+          localObject = str;
+          if (str.toLowerCase().startsWith("http"))
+          {
+            paramString = new Intent();
+            paramString.putExtra("rawUrl", str);
+            com.tencent.mm.by.c.b(paramContext, "webview", ".ui.tools.WebViewUI", paramString);
+            AppMethodBeat.o(33027);
+            return;
+          }
+        }
+      }
+    }
+    if (com.tencent.mm.pluginsdk.model.app.q.u(paramContext, "com.tencent.wework"))
+    {
+      aR(paramString, 2, paramInt);
+      paramString = b.getPackageInfo(paramContext, "com.tencent.wework");
+      if ((!Util.isNullOrNil(paramString.versionName)) && (paramString.versionName.compareTo("1.3.3") >= 0))
+      {
+        paramString = new Intent();
+        paramString.setAction("android.intent.action.VIEW");
+        if (((paramInt == 4) || (3 == paramInt)) && (localObject != null) && (((String)localObject).length() > 0)) {
+          paramString.setData(Uri.parse((String)localObject));
+        }
+      }
+      for (;;)
+      {
+        com.tencent.mm.co.a.post(new i.4(paramContext, paramString));
+        AppMethodBeat.o(33027);
+        return;
+        if ((paramInt == 2) || (paramInt == 4) || (paramInt == 6)) {}
+        for (localObject = "wxwork://createconversation";; localObject = "wxwork://conversationlist")
+        {
+          paramString.setData(Uri.parse((String)localObject));
+          break;
+        }
+        paramString = paramContext.getPackageManager().getLaunchIntentForPackage("com.tencent.wework");
+      }
+    }
+    if (locald.field_use_preset_banner_tips)
+    {
+      com.tencent.mm.ui.base.h.a(paramContext, R.l.eCB, 0, R.l.eCA, R.l.app_cancel, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(33021);
+          i.v(this.val$context, paramString, paramInt);
+          AppMethodBeat.o(33021);
+        }
+      }, null);
+      AppMethodBeat.o(33027);
+      return;
+    }
+    if (locald.field_show_confirm)
+    {
+      localObject = new f.a(paramContext);
+      ((f.a)localObject).bBq(paramContext.getString(R.l.app_cancel));
+      ((f.a)localObject).ayp(R.l.eCA);
+      af.bjF();
+      af.bjF();
+      str = e.vJ(1);
+      if (str == null) {
+        ((f.a)localObject).bBl(paramContext.getString(R.l.eCB));
+      }
+      for (;;)
+      {
+        ((f.a)localObject).a(new f.c()new f.c
+        {
+          public final void g(boolean paramAnonymousBoolean, String paramAnonymousString) {}
+        }, new f.c()
+        {
+          public final void g(boolean paramAnonymousBoolean, String paramAnonymousString)
+          {
+            AppMethodBeat.i(33022);
+            i.v(this.val$context, paramString, paramInt);
+            AppMethodBeat.o(33022);
+          }
+        }).show();
+        AppMethodBeat.o(33027);
+        return;
+        ((f.a)localObject).bBl(str);
+      }
+    }
+    v(paramContext, paramString, paramInt);
+    AppMethodBeat.o(33027);
+  }
+  
+  public static void v(Context paramContext, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(33028);
+    aR(paramString, 3, paramInt);
+    aS(paramString, 3, paramInt);
+    af.bjv();
+    paramString = com.tencent.mm.ao.f.Ut(paramString);
+    Object localObject = fgQ;
+    if (Util.isNullOrNil(paramString)) {}
+    for (paramString = "off";; paramString = "on")
+    {
+      paramString = String.format((String)localObject, new Object[] { paramString });
+      localObject = com.tencent.mm.plugin.downloader.model.f.cPZ().ata(paramString);
+      if ((localObject != null) && (((FileDownloadTaskInfo)localObject).status == 3) && (u.agG(((FileDownloadTaskInfo)localObject).path))) {
+        u.deleteFile(((FileDownloadTaskInfo)localObject).path);
+      }
+      w.makeText(paramContext, paramContext.getString(R.l.eCC), 2000).show();
+      localObject = new Intent();
+      ((Intent)localObject).setClassName(paramContext, "com.tencent.mm.plugin.webview.ui.tools.WebViewDownloadUI");
+      ((Intent)localObject).putExtra("task_name", paramContext.getString(R.l.eCy));
+      ((Intent)localObject).putExtra("title", paramContext.getString(R.l.eCy));
+      ((Intent)localObject).putExtra("task_url", paramString);
+      ((Intent)localObject).putExtra("fileType", 1);
+      ((Intent)localObject).putExtra("package_name", "com.tencent.wework");
+      paramString = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramString.aFh(), "com/tencent/mm/ui/EnterpriseHelper", "goToWwDownload", "(Landroid/content/Context;Ljava/lang/String;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramString.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/ui/EnterpriseHelper", "goToWwDownload", "(Landroid/content/Context;Ljava/lang/String;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(33028);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.i
  * JD-Core Version:    0.7.0.1
  */

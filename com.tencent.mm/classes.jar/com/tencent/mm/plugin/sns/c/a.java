@@ -7,19 +7,19 @@ import com.tencent.mm.pluginsdk.n;
 public final class a
   implements n
 {
-  public static int DCT = 2147483647;
-  public static String DCU = "";
-  public static m jRt;
-  public static l jRu;
+  public static int JPj = 2147483647;
+  public static String JPk = "";
+  public static m mIG;
+  public static l mIH;
   
   public final void a(l paraml)
   {
-    jRu = paraml;
+    mIH = paraml;
   }
   
   public final void a(m paramm)
   {
-    jRt = paramm;
+    mIG = paramm;
   }
 }
 

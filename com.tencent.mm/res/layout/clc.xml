@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/cis" android:background="@color/a" android:paddingLeft="@dimen/c5" android:paddingTop="@dimen/ct" android:paddingRight="@dimen/c5" android:paddingBottom="@dimen/ct" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</FrameLayout>

@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.ipcall.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.c;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.cj.a;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.c;
+import com.tencent.mm.an.t;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.ck.a;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.ipcall.model.e.g;
-import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.protocal.protobuf.db;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
 import java.util.Map;
 
 final class i$3
-  implements cj.a
+  implements ck.a
 {
   i$3(i parami) {}
   
@@ -23,7 +23,7 @@ final class i$3
   {
     AppMethodBeat.i(25384);
     Log.i("MicroMsg.SubCoreIPCall", "WCONotify onRecieveMsg");
-    parama = z.a(parama.heO.KHn);
+    parama = z.a(parama.jQG.RIF);
     if ((parama == null) || (parama.length() == 0))
     {
       Log.e("MicroMsg.SubCoreIPCall", "WCONotify onReceiveMsg, msgContent is null");
@@ -44,7 +44,7 @@ final class i$3
       if (i > 0)
       {
         parama = new g(2);
-        bg.azz().a(parama, 0);
+        bh.aGY().a(parama, 0);
       }
     }
     AppMethodBeat.o(25384);

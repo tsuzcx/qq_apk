@@ -4,6 +4,7 @@ import android.widget.LinearLayout;
 import com.tencent.kinda.gen.ClearButtonMode;
 import com.tencent.kinda.gen.DynamicColor;
 import com.tencent.kinda.gen.EditTextRestrictType;
+import com.tencent.kinda.gen.KEditTextOnEditorActionCallback;
 import com.tencent.kinda.gen.KEditTextOnTextBeginChangeCallback;
 import com.tencent.kinda.gen.KEditTextOnTextChangedCallback;
 import com.tencent.kinda.gen.KEditTextOnTextEndEditingCallback;
@@ -16,6 +17,8 @@ public class KindaPayEditTextImpl
   extends MMKView<LinearLayout>
   implements KPayEditText
 {
+  public void enableConfirmBtn(boolean paramBoolean) {}
+  
   public String encryptWith3Des()
   {
     return "";
@@ -127,6 +130,8 @@ public class KindaPayEditTextImpl
   
   public void setMaxLength(int paramInt) {}
   
+  public void setOnEditorActionCallback(KEditTextOnEditorActionCallback paramKEditTextOnEditorActionCallback) {}
+  
   public void setOnTextBeginChangeCallback(KEditTextOnTextBeginChangeCallback paramKEditTextOnTextBeginChangeCallback) {}
   
   public void setOnTextChangedCallback(KEditTextOnTextChangedCallback paramKEditTextOnTextChangedCallback) {}
@@ -153,7 +158,7 @@ public class KindaPayEditTextImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaPayEditTextImpl
  * JD-Core Version:    0.7.0.1
  */

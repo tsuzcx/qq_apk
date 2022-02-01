@@ -91,7 +91,7 @@ public class GcmListenerService
     }
     localObject2 = paramIntent.getExtras();
     ((Bundle)localObject2).remove("message_type");
-    ((Bundle)localObject2).remove("android.support.content.wakelockid");
+    ((Bundle)localObject2).remove("androidx.contentpager.content.wakelockid");
     if (("1".equals(zzd.zzd((Bundle)localObject2, "gcm.n.e"))) || (zzd.zzd((Bundle)localObject2, "gcm.n.icon") != null))
     {
       i = 1;
@@ -199,7 +199,7 @@ public class GcmListenerService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.gcm.GcmListenerService
  * JD-Core Version:    0.7.0.1
  */

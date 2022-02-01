@@ -1,76 +1,48 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.luggage.h.f;
-import com.tencent.luggage.h.f.c;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.s;
-import com.tencent.mm.sdk.system.AndroidContextUtil;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.v;
+import java.util.Map;
 import org.json.JSONObject;
 
 public abstract class q
-  extends r
 {
-  protected Activity activity;
-  int lxP;
+  protected v nAz;
+  private int okO;
+  private o okP;
+  protected ad osE;
+  protected JSONObject osF;
   
-  public q(p paramp, s params, ac paramac, JSONObject paramJSONObject, int paramInt)
+  public q(o paramo, v paramv, ad paramad, JSONObject paramJSONObject, int paramInt)
   {
-    super(paramp, params, paramac, paramJSONObject, paramInt);
-    this.activity = AndroidContextUtil.castActivityOrNull(params.getRuntime().mContext);
-    if (this.activity == null) {
-      throw new IllegalArgumentException("JsApiActivityResultRequest. Activity is null");
+    if ((paramo == null) || (paramv == null) || (paramJSONObject == null)) {
+      throw new IllegalArgumentException("JsApiAsyncRequest");
     }
-    this.lxP = (paramp.hashCode() & 0xFFFF);
+    this.okP = paramo;
+    this.nAz = paramv;
+    this.osE = paramad;
+    this.okO = paramInt;
+    this.osF = paramJSONObject;
   }
   
-  protected abstract void C(Intent paramIntent);
-  
-  protected abstract boolean a(Activity paramActivity, JSONObject paramJSONObject, int paramInt);
-  
-  public final void d(int paramInt1, int paramInt2, Intent paramIntent)
+  protected final void C(Map<String, ? extends Object> paramMap)
   {
-    if (this.lxP != paramInt1) {
-      return;
-    }
-    if (paramInt2 == -1)
-    {
-      C(paramIntent);
-      return;
-    }
-    if ((paramIntent != null) && (paramIntent.hasExtra("result_error_msg")))
-    {
-      onError(paramIntent.getIntExtra("result_error_code", -1), paramIntent.getStringExtra("result_error_msg"));
-      return;
-    }
-    onError(-1, "fail:system error {{unknow error}}");
+    this.nAz.j(this.okO, this.okP.m("ok", paramMap));
   }
   
-  protected abstract void onError(int paramInt, String paramString);
-  
-  public final void run()
+  public final v QW()
   {
-    f.aK(this.activity).b(new f.c()
-    {
-      public final boolean c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
-      {
-        AppMethodBeat.i(174747);
-        if (paramAnonymousInt1 == q.this.lxP)
-        {
-          q.this.d(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
-          AppMethodBeat.o(174747);
-          return true;
-        }
-        AppMethodBeat.o(174747);
-        return false;
-      }
-    });
-    if (!a(this.activity, bEj(), this.lxP)) {
-      onError(-1, "fail:system error {{launch fail}}");
-    }
+    return this.nAz;
+  }
+  
+  public final JSONObject bPH()
+  {
+    return this.osF;
+  }
+  
+  protected final void n(String paramString, Map<String, ? extends Object> paramMap)
+  {
+    this.nAz.j(this.okO, this.okP.m(paramString, paramMap));
   }
 }
 

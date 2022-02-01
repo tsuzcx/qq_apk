@@ -5,7 +5,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  public static int SS(int paramInt)
+  public static int Zn(int paramInt)
   {
     AppMethodBeat.i(63137);
     Log.i("MicroMsg.Music.ExoPlayIdkeyReport", "getExoMusicPlayerSumidKeyByMusicType, musicType:".concat(String.valueOf(paramInt)));

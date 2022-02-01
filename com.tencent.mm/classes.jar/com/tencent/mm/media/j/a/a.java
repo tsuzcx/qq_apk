@@ -7,31 +7,31 @@ import java.util.Arrays;
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLDisplay;
-import kotlin.g.b.ae;
+import kotlin.g.b.af;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/render/config/RenderConfigChooser;", "Landroid/opengl/GLSurfaceView$EGLConfigChooser;", "mRedSize", "", "mGreenSize", "mBlueSize", "mAlphaSize", "mDepthSize", "mStencilSize", "(IIIIII)V", "EGL_OPENGL_ES2_BIT", "TAG", "", "TAG$1", "getMAlphaSize", "()I", "setMAlphaSize", "(I)V", "getMBlueSize", "setMBlueSize", "getMDepthSize", "setMDepthSize", "getMGreenSize", "setMGreenSize", "getMRedSize", "setMRedSize", "getMStencilSize", "setMStencilSize", "mValue", "", "s_configAttribs2", "chooseConfig", "Ljavax/microedition/khronos/egl/EGLConfig;", "egl", "Ljavax/microedition/khronos/egl/EGL10;", "display", "Ljavax/microedition/khronos/egl/EGLDisplay;", "configs", "", "(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;[Ljavax/microedition/khronos/egl/EGLConfig;)Ljavax/microedition/khronos/egl/EGLConfig;", "findConfigAttrib", "config", "attribute", "defaultValue", "printConfig", "", "printConfigs", "(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;[Ljavax/microedition/khronos/egl/EGLConfig;)V", "Companion", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/render/config/RenderConfigChooser;", "Landroid/opengl/GLSurfaceView$EGLConfigChooser;", "mRedSize", "", "mGreenSize", "mBlueSize", "mAlphaSize", "mDepthSize", "mStencilSize", "(IIIIII)V", "EGL_OPENGL_ES2_BIT", "TAG", "", "TAG$1", "getMAlphaSize", "()I", "setMAlphaSize", "(I)V", "getMBlueSize", "setMBlueSize", "getMDepthSize", "setMDepthSize", "getMGreenSize", "setMGreenSize", "getMRedSize", "setMRedSize", "getMStencilSize", "setMStencilSize", "mValue", "", "s_configAttribs2", "chooseConfig", "Ljavax/microedition/khronos/egl/EGLConfig;", "egl", "Ljavax/microedition/khronos/egl/EGL10;", "display", "Ljavax/microedition/khronos/egl/EGLDisplay;", "configs", "", "(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;[Ljavax/microedition/khronos/egl/EGLConfig;)Ljavax/microedition/khronos/egl/EGLConfig;", "findConfigAttrib", "config", "attribute", "defaultValue", "printConfig", "", "printConfigs", "(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;[Ljavax/microedition/khronos/egl/EGLConfig;)V", "Companion", "plugin-mediaeditor_release"})
 public final class a
   implements GLSurfaceView.EGLConfigChooser
 {
   private static final String TAG = "GLConfigChooser";
-  public static final a.a ijC;
+  public static final a.a kYw;
   private final int EGL_OPENGL_ES2_BIT;
-  private final int[] gSm;
-  private int gSn;
-  private int gSo;
-  private int gSp;
-  private int gSq;
-  private int gSr;
-  private int gSs;
-  private final String gVB;
-  private final int[] ijB;
+  private final int[] jCM;
+  private int jCN;
+  private int jCO;
+  private int jCP;
+  private int jCQ;
+  private int jCR;
+  private int jCS;
+  private final String jGx;
+  private final int[] kYv;
   
   static
   {
     AppMethodBeat.i(93850);
-    ijC = new a.a((byte)0);
+    kYw = new a.a((byte)0);
     TAG = "GLConfigChooser";
     AppMethodBeat.o(93850);
   }
@@ -39,25 +39,25 @@ public final class a
   public a()
   {
     AppMethodBeat.i(93849);
-    this.gSn = 5;
-    this.gSo = 6;
-    this.gSp = 5;
-    this.gSq = 0;
-    this.gSr = 0;
-    this.gSs = 0;
-    this.gVB = "MicroMsg.RenderConfigChooser";
+    this.jCN = 5;
+    this.jCO = 6;
+    this.jCP = 5;
+    this.jCQ = 0;
+    this.jCR = 0;
+    this.jCS = 0;
+    this.jGx = "MicroMsg.RenderConfigChooser";
     this.EGL_OPENGL_ES2_BIT = 4;
-    this.ijB = new int[] { 12324, 4, 12323, 4, 12322, 4, 12352, this.EGL_OPENGL_ES2_BIT, 12344 };
-    this.gSm = new int[1];
+    this.kYv = new int[] { 12324, 4, 12323, 4, 12322, 4, 12352, this.EGL_OPENGL_ES2_BIT, 12344 };
+    this.jCM = new int[1];
     AppMethodBeat.o(93849);
   }
   
   private final int a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt)
   {
     AppMethodBeat.i(93847);
-    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt, this.gSm))
+    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt, this.jCM))
     {
-      paramInt = this.gSm[0];
+      paramInt = this.jCM[0];
       AppMethodBeat.o(93847);
       return paramInt;
     }
@@ -68,20 +68,20 @@ public final class a
   private EGLConfig b(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig)
   {
     AppMethodBeat.i(93846);
-    p.h(paramEGL10, "egl");
-    p.h(paramEGLDisplay, "display");
-    p.h(paramArrayOfEGLConfig, "configs");
+    p.k(paramEGL10, "egl");
+    p.k(paramEGLDisplay, "display");
+    p.k(paramArrayOfEGLConfig, "configs");
     int j = paramArrayOfEGLConfig.length;
     int i = 0;
     if (i < j)
     {
       EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
       if (localEGLConfig == null) {
-        p.hyc();
+        p.iCn();
       }
       int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325);
       int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326);
-      if ((k < this.gSr) || (m < this.gSs)) {}
+      if ((k < this.jCR) || (m < this.jCS)) {}
       int n;
       int i1;
       do
@@ -92,7 +92,7 @@ public final class a
         m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323);
         n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322);
         i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321);
-      } while ((k != this.gSn) || (m != this.gSo) || (n != this.gSp) || (i1 != this.gSq));
+      } while ((k != this.jCN) || (m != this.jCO) || (n != this.jCP) || (i1 != this.jCQ));
       AppMethodBeat.o(93846);
       return localEGLConfig;
     }
@@ -104,22 +104,22 @@ public final class a
   {
     AppMethodBeat.i(93848);
     int k = paramArrayOfEGLConfig.length;
-    Object localObject1 = this.gVB;
-    Object localObject2 = ae.SYK;
+    Object localObject1 = this.jGx;
+    Object localObject2 = af.aaBG;
     localObject2 = String.format("%d configurations", Arrays.copyOf(new Object[] { Integer.valueOf(k) }, 1));
-    p.g(localObject2, "java.lang.String.format(format, *args)");
+    p.j(localObject2, "java.lang.String.format(format, *args)");
     Log.i((String)localObject1, (String)localObject2);
     int i = 0;
     while (i < k)
     {
-      localObject1 = this.gVB;
-      localObject2 = ae.SYK;
+      localObject1 = this.jGx;
+      localObject2 = af.aaBG;
       localObject2 = String.format("Configuration %d:\n", Arrays.copyOf(new Object[] { Integer.valueOf(i) }, 1));
-      p.g(localObject2, "java.lang.String.format(format, *args)");
+      p.j(localObject2, "java.lang.String.format(format, *args)");
       Log.i((String)localObject1, (String)localObject2);
       localObject1 = paramArrayOfEGLConfig[i];
       if (localObject1 == null) {
-        p.hyc();
+        p.iCn();
       }
       localObject2 = new int[1];
       int j = 0;
@@ -136,10 +136,10 @@ public final class a
   public final EGLConfig chooseConfig(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
   {
     AppMethodBeat.i(93845);
-    p.h(paramEGL10, "egl");
-    p.h(paramEGLDisplay, "display");
+    p.k(paramEGL10, "egl");
+    p.k(paramEGLDisplay, "display");
     int[] arrayOfInt = new int[1];
-    paramEGL10.eglChooseConfig(paramEGLDisplay, this.ijB, null, 0, arrayOfInt);
+    paramEGL10.eglChooseConfig(paramEGLDisplay, this.kYv, null, 0, arrayOfInt);
     int i = arrayOfInt[0];
     if (i <= 0)
     {
@@ -148,7 +148,7 @@ public final class a
       throw paramEGL10;
     }
     EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
-    paramEGL10.eglChooseConfig(paramEGLDisplay, this.ijB, arrayOfEGLConfig, i, arrayOfInt);
+    paramEGL10.eglChooseConfig(paramEGLDisplay, this.kYv, arrayOfEGLConfig, i, arrayOfInt);
     c(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
     paramEGL10 = b(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
     AppMethodBeat.o(93845);
@@ -157,7 +157,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.media.j.a.a
  * JD-Core Version:    0.7.0.1
  */

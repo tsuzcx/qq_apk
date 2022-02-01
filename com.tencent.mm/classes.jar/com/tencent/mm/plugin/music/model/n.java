@@ -1,36 +1,33 @@
 package com.tencent.mm.plugin.music.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.f;
-import com.tencent.mm.ay.h;
+import com.tencent.mm.bb.f;
+import com.tencent.mm.bb.h;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/music/model/MusicWrapperCreateListenerImpl;", "Lcom/tencent/mm/modelmusic/api/MusicWrapperCreateListener;", "()V", "onMusicWrapperCreated", "", "musicWrapper", "Lcom/tencent/mm/modelmusic/MusicWrapper;", "extend", "Lcom/tencent/mm/modelmusic/MusicWrapperExtend;", "Companion", "plugin-music_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/model/MusicWrapperCreateListenerImpl;", "Lcom/tencent/mm/modelmusic/api/MusicWrapperCreateListener;", "()V", "onMusicWrapperCreated", "", "musicWrapper", "Lcom/tencent/mm/modelmusic/MusicWrapper;", "extend", "Lcom/tencent/mm/modelmusic/MusicWrapperExtend;", "Companion", "plugin-music_release"})
 public final class n
-  implements com.tencent.mm.ay.a.b
+  implements com.tencent.mm.bb.a.b
 {
-  public static final a AkK;
+  public static final n.a FRQ;
   
   static
   {
-    AppMethodBeat.i(219996);
-    AkK = new a((byte)0);
-    AppMethodBeat.o(219996);
+    AppMethodBeat.i(259780);
+    FRQ = new n.a((byte)0);
+    AppMethodBeat.o(259780);
   }
   
   public final void a(f paramf, h paramh)
   {
-    AppMethodBeat.i(219995);
+    AppMethodBeat.i(259777);
     b.b(paramf, paramh);
-    AppMethodBeat.o(219995);
+    AppMethodBeat.o(259777);
   }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/music/model/MusicWrapperCreateListenerImpl$Companion;", "", "()V", "TAG", "", "plugin-music_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.n
  * JD-Core Version:    0.7.0.1
  */

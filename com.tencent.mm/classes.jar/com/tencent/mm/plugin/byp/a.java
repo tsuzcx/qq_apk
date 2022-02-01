@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.byp;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/byp/BypConstants;", "", "()V", "BizType", "BypBizSyncKeyType", "Report", "plugin-byp_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/byp/BypConstants;", "", "()V", "BizType", "BypBizSyncKeyType", "Report", "emMMFinderMsgSubType", "plugin-byp_release"})
 public final class a
 {
-  public static final a pOT;
+  public static final a sVP;
   
   static
   {
-    AppMethodBeat.i(199084);
-    pOT = new a();
-    AppMethodBeat.o(199084);
+    AppMethodBeat.i(213509);
+    sVP = new a();
+    AppMethodBeat.o(213509);
   }
 }
 

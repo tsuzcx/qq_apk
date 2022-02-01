@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.webview.model;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
-import com.tencent.mm.protocal.protobuf.zp;
-import com.tencent.mm.protocal.protobuf.zq;
+import com.tencent.mm.protocal.protobuf.zt;
+import com.tencent.mm.protocal.protobuf.zu;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 import java.util.concurrent.CountDownLatch;
@@ -17,13 +17,10 @@ import java.util.concurrent.TimeUnit;
 
 public final class j
 {
-  private final int IJt = 0;
-  private final int IJu = 1;
-  private final int IJv = 2;
-  public LinkedList<String> IXK = null;
-  public boolean pcZ = false;
+  public LinkedList<String> PUb = null;
+  public boolean sfb = false;
   
-  public final int h(final LinkedList<String> paramLinkedList, String paramString)
+  public final int i(final LinkedList<String> paramLinkedList, String paramString)
   {
     AppMethodBeat.i(78869);
     try
@@ -31,18 +28,18 @@ public final class j
       final int[] arrayOfInt = new int[1];
       arrayOfInt[0] = 2;
       d.a locala = new d.a();
-      locala.iLN = new zp();
-      locala.iLO = new zq();
+      locala.lBU = new zt();
+      locala.lBV = new zu();
       locala.uri = "/cgi-bin/micromsg-bin/checktextlanguage";
       locala.funcId = 528;
-      locala.iLP = 0;
+      locala.lBW = 0;
       locala.respCmdId = 0;
-      zp localzp = (zp)locala.aXF().iLK.iLR;
-      localzp.LkR = paramLinkedList;
-      localzp.LkS = paramString;
+      zt localzt = (zt)d.b.b(locala.bgN().lBR);
+      localzt.Sma = paramLinkedList;
+      localzt.Smb = paramString;
       paramLinkedList = new CountDownLatch(1);
       new Bundle();
-      IPCRunCgi.a(locala.aXF(), new IPCRunCgi.a()
+      IPCRunCgi.a(locala.bgN(), new IPCRunCgi.a()
       {
         public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd)
         {
@@ -55,8 +52,8 @@ public final class j
             AppMethodBeat.o(78868);
             return;
           }
-          paramAnonymousString = (zq)paramAnonymousd.iLL.iLR;
-          if (paramAnonymousString.LkU == 1) {
+          paramAnonymousString = (zu)d.c.b(paramAnonymousd.lBS);
+          if (paramAnonymousString.Smd == 1) {
             arrayOfInt[0] = 0;
           }
           for (;;)
@@ -64,7 +61,7 @@ public final class j
             paramLinkedList.countDown();
             AppMethodBeat.o(78868);
             return;
-            if (paramAnonymousString.LkU == 2) {
+            if (paramAnonymousString.Smd == 2) {
               arrayOfInt[0] = 1;
             }
           }

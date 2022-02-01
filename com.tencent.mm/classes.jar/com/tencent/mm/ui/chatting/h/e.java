@@ -6,28 +6,29 @@ import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.ui.chatting.o.g;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class e
   implements d
 {
-  f PDP;
-  c PDQ;
-  private AtomicBoolean iLz;
+  f WYC;
+  c WYD;
+  private AtomicBoolean lBG;
   final Handler mMainHandler;
-  private final MMHandler sZa;
+  private final MMHandler wFc;
   
   public e(f paramf, c paramc)
   {
     AppMethodBeat.i(36429);
-    this.iLz = new AtomicBoolean(false);
+    this.lBG = new AtomicBoolean(false);
     this.mMainHandler = new Handler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(36426);
         d.d locald = (d.d)paramAnonymousMessage.obj;
-        if (locald.iLz.get())
+        if (locald.lBG.get())
         {
           Log.w("MicroMsg.ChattingLoader.ListDataLoader", "[handleMessage] cancel update!!!");
           AppMethodBeat.o(36426);
@@ -40,19 +41,19 @@ public final class e
         {
           AppMethodBeat.o(36426);
           return;
-          boolean bool = e.this.PDP.b(locald.PDL);
+          boolean bool = e.this.WYC.b(locald.WYy);
           if (bool)
           {
-            locald.PDO = e.this.PDQ.jv(locald.PDM);
-            e.this.PDP.a(locald);
+            locald.WYB = e.this.WYD.kn(locald.WYz);
+            e.this.WYC.a(locald);
           }
           Log.i("MicroMsg.ChattingLoader.ListDataLoader", "[handleMessage] UPDATE!!! isAvailableUpdate=%s result:%s", new Object[] { Boolean.valueOf(bool), locald.toString() });
         }
       }
     };
-    this.PDP = paramf;
-    this.PDQ = paramc;
-    this.sZa = new MMHandler("ListDataLoader$");
+    this.WYC = paramf;
+    this.WYD = paramc;
+    this.wFc = new MMHandler("ListDataLoader$");
     AppMethodBeat.o(36429);
   }
   
@@ -60,14 +61,14 @@ public final class e
   {
     AppMethodBeat.i(36430);
     Log.i("MicroMsg.ChattingLoader.ListDataLoader", "[load] mode:%s isBlock:%s thread:%s", new Object[] { parama, Boolean.valueOf(paramBoolean), Long.valueOf(Thread.currentThread().getId()) });
-    parama = new a(parama, paramBoolean, paramc, this.iLz);
+    parama = new a(parama, paramBoolean, paramc, this.lBG);
     if (paramBoolean)
     {
       parama.run();
       AppMethodBeat.o(36430);
       return;
     }
-    this.sZa.post(parama);
+    this.wFc.post(parama);
     AppMethodBeat.o(36430);
   }
   
@@ -77,9 +78,9 @@ public final class e
     try
     {
       Log.i("MicroMsg.ChattingLoader.ListDataLoader", "[cancel]");
-      this.iLz.set(true);
-      this.iLz = new AtomicBoolean(false);
-      this.sZa.removeCallbacksAndMessages(null);
+      this.lBG.set(true);
+      this.lBG = new AtomicBoolean(false);
+      this.wFc.removeCallbacksAndMessages(null);
       this.mMainHandler.removeCallbacksAndMessages(null);
       return;
     }
@@ -92,17 +93,17 @@ public final class e
   final class a
     implements Runnable
   {
-    d.a PDL;
-    d.c PDS;
-    boolean ebI;
-    AtomicBoolean iLz;
+    d.c WYF;
+    d.a WYy;
+    boolean fVK;
+    AtomicBoolean lBG;
     
     a(d.a parama, boolean paramBoolean, d.c paramc, AtomicBoolean paramAtomicBoolean)
     {
-      this.PDL = parama;
-      this.ebI = paramBoolean;
-      this.PDS = paramc;
-      this.iLz = paramAtomicBoolean;
+      this.WYy = parama;
+      this.fVK = paramBoolean;
+      this.WYF = paramc;
+      this.lBG = paramAtomicBoolean;
     }
     
     public final void run()
@@ -111,19 +112,19 @@ public final class e
       long l = System.currentTimeMillis();
       try
       {
-        final d.d locald = new d.d(this.PDL, this.iLz);
-        com.tencent.mm.ui.chatting.n.f localf = this.PDS.b(locald);
-        e.this.PDQ.a(this.PDL, localf, locald, new d.b()
+        final d.d locald = new d.d(this.WYy, this.lBG);
+        g localg = this.WYF.b(locald);
+        e.this.WYD.a(this.WYy, localg, locald, new d.b()
         {
           public final void next()
           {
             AppMethodBeat.i(36427);
-            e.a.this.PDS.c(locald);
+            e.a.this.WYF.c(locald);
             e.a locala = e.a.this;
             d.d locald = locald;
-            synchronized (locala.PDR)
+            synchronized (locala.WYE)
             {
-              if (locala.iLz.get())
+              if (locala.lBG.get())
               {
                 Log.w("MicroMsg.ChattingLoader.ListDataLoader", "has cancel!");
                 AppMethodBeat.o(36427);
@@ -132,13 +133,13 @@ public final class e
               Message localMessage = new Message();
               localMessage.what = 1;
               localMessage.obj = locald;
-              if ((locala.ebI) && (Looper.myLooper() == Looper.getMainLooper()))
+              if ((locala.fVK) && (Looper.myLooper() == Looper.getMainLooper()))
               {
-                locala.PDR.mMainHandler.handleMessage(localMessage);
+                locala.WYE.mMainHandler.handleMessage(localMessage);
                 AppMethodBeat.o(36427);
                 return;
               }
-              locala.PDR.mMainHandler.sendMessage(localMessage);
+              locala.WYE.mMainHandler.sendMessage(localMessage);
             }
           }
         });
@@ -158,7 +159,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.h.e
  * JD-Core Version:    0.7.0.1
  */

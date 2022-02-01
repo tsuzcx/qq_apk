@@ -1,81 +1,57 @@
 package com.tencent.mm.plugin.finder.loader;
 
-import android.graphics.Matrix;
+import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.storage.x;
-import com.tencent.mm.protocal.protobuf.cjl;
-import com.tencent.mm.sdk.platformtools.MD5Util;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.loader.e.b.g;
+import com.tencent.mm.loader.f;
+import com.tencent.mm.loader.h.b.a;
+import com.tencent.mm.plugin.finder.utils.aj;
 import kotlin.g.b.p;
 import kotlin.l;
+import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/loader/FinderFullThumbImage;", "Lcom/tencent/mm/plugin/finder/loader/FinderImageLoadData;", "mediaObj", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "type", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "username", "", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;Ljava/lang/String;)V", "uniqueValue", "getMatrix", "Landroid/graphics/Matrix;", "width", "", "height", "getThumbUrl", "getThumbUrlToken", "plugin-finder_release"})
-public final class i
-  extends k
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/loader/FinderBitmapProducer;", "Lcom/tencent/mm/loader/impr/imageproducer/InputStreamBitmapProducer;", "()V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "Landroid/graphics/Bitmap;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "Companion", "plugin-finder_release"})
+public class i
+  extends com.tencent.mm.loader.e.a.c
 {
-  private final String uId;
+  public static final a zts;
   
-  private i(cjl paramcjl, x paramx, String paramString)
+  static
   {
-    super(paramcjl, paramx, paramString, null, 8);
-    AppMethodBeat.i(248215);
-    this.uId = ("finder_image_" + paramx.detail + '_' + MD5Util.getMD5String(Util.nullAs(aBE(), "")));
-    AppMethodBeat.o(248215);
+    AppMethodBeat.i(166301);
+    zts = new a((byte)0);
+    AppMethodBeat.o(166301);
   }
   
-  public final Matrix D(float paramFloat1, float paramFloat2)
+  public com.tencent.mm.loader.h.e<Bitmap> a(g<?> paramg, f<?, Bitmap> paramf, a parama)
   {
-    return null;
-  }
-  
-  public final String aBE()
-  {
-    AppMethodBeat.i(248213);
-    Object localObject = (CharSequence)this.uIw.MoR;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
-    for (int i = 1; i == 0; i = 0)
+    AppMethodBeat.i(166300);
+    p.k(paramg, "targetView");
+    p.k(paramf, "reaper");
+    p.k(parama, "input");
+    paramg = null;
+    com.tencent.mm.ae.c localc = new com.tencent.mm.ae.c("FinderBitmapProducer");
+    parama = parama.aSw();
+    if (parama != null)
     {
-      localObject = this.uIw.MoR;
-      if (localObject == null) {
-        p.hyc();
-      }
-      p.g(localObject, "mediaObj.fullThumbUrl!!");
-      AppMethodBeat.o(248213);
-      return localObject;
+      int i = paramf.kMB.kOf;
+      int j = paramf.kMB.kOg;
+      paramg = aj.AGc;
+      paramg = aj.c(parama, i, j);
+      paramf = x.aazN;
     }
-    localObject = super.aBE();
-    AppMethodBeat.o(248213);
-    return localObject;
+    localc.aIZ();
+    paramg = new com.tencent.mm.loader.h.e(paramg);
+    AppMethodBeat.o(166300);
+    return paramg;
   }
   
-  public final String auA()
-  {
-    return this.uId;
-  }
-  
-  public final String djX()
-  {
-    AppMethodBeat.i(248214);
-    Object localObject = (CharSequence)this.uIw.MoS;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      localObject = this.uIw.MoS;
-      if (localObject == null) {
-        p.hyc();
-      }
-      p.g(localObject, "mediaObj.fullThumbUrlToken!!");
-      AppMethodBeat.o(248214);
-      return localObject;
-    }
-    localObject = super.djX();
-    AppMethodBeat.o(248214);
-    return localObject;
-  }
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/loader/FinderBitmapProducer$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.loader.i
  * JD-Core Version:    0.7.0.1
  */

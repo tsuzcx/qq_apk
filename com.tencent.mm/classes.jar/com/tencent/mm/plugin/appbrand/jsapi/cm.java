@@ -1,19 +1,16 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import com.tencent.mm.plugin.appbrand.page.ah;
+
 public final class cm
-  extends JsApiPrivateAddContact
+  extends c<ah>
 {
-  public static final int CTRL_INDEX = 408;
-  public static final String NAME = "private_quicklyAddBrandContact";
-  
-  protected final int bEp()
-  {
-    return 0;
-  }
+  public static final int CTRL_INDEX = 66;
+  public static final String NAME = "reportSubmitForm";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.cm
  * JD-Core Version:    0.7.0.1
  */

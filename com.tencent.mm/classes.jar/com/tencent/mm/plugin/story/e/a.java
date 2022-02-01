@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.story.e;
 import android.content.Context;
 import android.text.format.DateFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.story.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.text.SimpleDateFormat;
@@ -13,10 +14,10 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/data/StoryTimeUtil;", "", "()V", "Companion", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/data/StoryTimeUtil;", "", "()V", "Companion", "plugin-story_release"})
 public final class a
 {
-  public static final a Flw;
+  public static final a LFy;
   private static final long MILLSECONDS_OF_DAY = 86400000L;
   private static final long MILLSECONDS_OF_HOUR = 3600000L;
   private static final long MILLSECONDS_OF_MINUTE = 60000L;
@@ -26,7 +27,7 @@ public final class a
   static
   {
     AppMethodBeat.i(118623);
-    Flw = new a((byte)0);
+    LFy = new a((byte)0);
     TAG = "MicroMsg.StoryTimeUtil";
     MILLSECONDS_OF_SECOND = 1000L;
     MILLSECONDS_OF_MINUTE = MILLSECONDS_OF_SECOND * 60L;
@@ -35,15 +36,15 @@ public final class a
     AppMethodBeat.o(118623);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/data/StoryTimeUtil$Companion;", "", "()V", "MILLSECONDS_OF_DAY", "", "getMILLSECONDS_OF_DAY", "()J", "MILLSECONDS_OF_HOUR", "getMILLSECONDS_OF_HOUR", "MILLSECONDS_OF_MINUTE", "getMILLSECONDS_OF_MINUTE", "MILLSECONDS_OF_SECOND", "getMILLSECONDS_OF_SECOND", "TAG", "", "formatDateInGallery", "", "date", "formatDateInGrid", "formatDateToTimeSecond", "", "formatStoryCreateDate", "time", "formatTimeInGrid", "formatTimeSecondToDate", "(Ljava/lang/Integer;)Ljava/lang/String;", "formatTimeSecondToMD", "nowToYear", "plugin-story_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/data/StoryTimeUtil$Companion;", "", "()V", "MILLSECONDS_OF_DAY", "", "getMILLSECONDS_OF_DAY", "()J", "MILLSECONDS_OF_HOUR", "getMILLSECONDS_OF_HOUR", "MILLSECONDS_OF_MINUTE", "getMILLSECONDS_OF_MINUTE", "MILLSECONDS_OF_SECOND", "getMILLSECONDS_OF_SECOND", "TAG", "", "formatDateInGallery", "", "date", "formatDateInGrid", "formatDateToTimeSecond", "", "formatStoryCreateDate", "time", "formatTimeInGrid", "formatTimeSecondToDate", "(Ljava/lang/Integer;)Ljava/lang/String;", "formatTimeSecondToMD", "nowToYear", "plugin-story_release"})
   public static final class a
   {
-    public static int Ki(long paramLong)
+    public static int RC(long paramLong)
     {
       AppMethodBeat.i(118620);
       try
       {
-        i = Integer.parseInt(DateFormat.format((CharSequence)MMApplicationContext.getContext().getString(2131766447), paramLong).toString());
+        i = Integer.parseInt(DateFormat.format((CharSequence)MMApplicationContext.getContext().getString(a.g.LDu), paramLong).toString());
         AppMethodBeat.o(118620);
         return i;
       }
@@ -57,10 +58,10 @@ public final class a
       }
     }
     
-    public static CharSequence aRL(String paramString)
+    public static CharSequence bcP(String paramString)
     {
       AppMethodBeat.i(118618);
-      p.h(paramString, "date");
+      p.k(paramString, "date");
       try
       {
         paramString = n.a((CharSequence)paramString, new String[] { "-" });
@@ -70,8 +71,8 @@ public final class a
         localGregorianCalendar.setTimeInMillis(l);
         if ((paramString.get(1) == localGregorianCalendar.get(1)) && (paramString.get(2) == localGregorianCalendar.get(2)))
         {
-          paramString = MMApplicationContext.getContext().getString(2131766450);
-          p.g(paramString, "MMApplicationContext.get…ry_album_date_this_month)");
+          paramString = MMApplicationContext.getContext().getString(a.g.LDw);
+          p.j(paramString, "MMApplicationContext.get…ry_album_date_this_month)");
           paramString = (CharSequence)paramString;
           AppMethodBeat.o(118618);
           return paramString;
@@ -86,23 +87,23 @@ public final class a
           l = 0L;
         }
         new GregorianCalendar().setTimeInMillis(l);
-        paramString = DateFormat.format((CharSequence)MMApplicationContext.getContext().getString(2131766449), l);
-        p.g(paramString, "DateFormat.format(MMAppl…_album_date_split), time)");
+        paramString = DateFormat.format((CharSequence)MMApplicationContext.getContext().getString(a.g.LDv), l);
+        p.j(paramString, "DateFormat.format(MMAppl…_album_date_split), time)");
         AppMethodBeat.o(118618);
       }
       return paramString;
     }
     
-    public static CharSequence aRM(String paramString)
+    public static CharSequence bcQ(String paramString)
     {
       AppMethodBeat.i(118619);
-      p.h(paramString, "date");
+      p.k(paramString, "date");
       try
       {
         paramString = n.a((CharSequence)paramString, new String[] { "-" });
         l = new GregorianCalendar(Integer.parseInt((String)paramString.get(0)), Integer.parseInt((String)paramString.get(1)) - 1, Integer.parseInt((String)paramString.get(2))).getTimeInMillis();
-        paramString = DateFormat.format((CharSequence)MMApplicationContext.getContext().getString(2131766530), l);
-        p.g(paramString, "DateFormat.format(MMAppl…allery_date_split), time)");
+        paramString = DateFormat.format((CharSequence)MMApplicationContext.getContext().getString(a.g.LEe), l);
+        p.j(paramString, "DateFormat.format(MMAppl…allery_date_split), time)");
         AppMethodBeat.o(118619);
         return paramString;
       }
@@ -116,18 +117,18 @@ public final class a
       }
     }
     
-    public static int aRN(String paramString)
+    public static int bcR(String paramString)
     {
       AppMethodBeat.i(118621);
-      p.h(paramString, "date");
+      p.k(paramString, "date");
       paramString = new SimpleDateFormat("yyyy-MM-dd").parse(paramString);
-      p.g(paramString, "simpleDateFormat.parse(date)");
+      p.j(paramString, "simpleDateFormat.parse(date)");
       int i = (int)(paramString.getTime() / 1000L);
       AppMethodBeat.o(118621);
       return i;
     }
     
-    public static String n(Integer paramInteger)
+    public static String v(Integer paramInteger)
     {
       AppMethodBeat.i(118622);
       SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -135,7 +136,7 @@ public final class a
       for (long l = paramInteger.intValue();; l = 0L)
       {
         paramInteger = localSimpleDateFormat.format(new Date(l * 1000L));
-        p.g(paramInteger, "simpleDateFormat.format(date)");
+        p.j(paramInteger, "simpleDateFormat.format(date)");
         AppMethodBeat.o(118622);
         return paramInteger;
       }

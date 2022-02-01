@@ -9,29 +9,29 @@ public class RenderContextParams
   
   public RenderContextParams()
   {
-    AppMethodBeat.i(218280);
+    AppMethodBeat.i(191262);
     this.params = new HashMap();
-    AppMethodBeat.o(218280);
+    AppMethodBeat.o(191262);
   }
   
   public Object getParam(String paramString)
   {
-    AppMethodBeat.i(218282);
+    AppMethodBeat.i(191264);
     paramString = this.params.get(paramString);
-    AppMethodBeat.o(218282);
+    AppMethodBeat.o(191264);
     return paramString;
   }
   
   public void putParam(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(218281);
+    AppMethodBeat.i(191263);
     this.params.put(paramString, paramObject);
-    AppMethodBeat.o(218281);
+    AppMethodBeat.o(191263);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.decoder.RenderContextParams
  * JD-Core Version:    0.7.0.1
  */

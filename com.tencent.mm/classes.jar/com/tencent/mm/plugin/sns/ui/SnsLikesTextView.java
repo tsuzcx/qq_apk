@@ -16,15 +16,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.sns.i.c;
+import com.tencent.mm.plugin.sns.i.e;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.i.i;
+import com.tencent.mm.plugin.sns.i.j;
+import com.tencent.mm.plugin.sns.k.g;
 import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
-import com.tencent.mm.plugin.sns.ui.widget.h;
-import com.tencent.mm.plugin.story.api.f;
+import com.tencent.mm.plugin.story.api.e;
 import com.tencent.mm.plugin.story.api.f.a;
 import com.tencent.mm.plugin.story.api.n;
 import com.tencent.mm.plugin.story.api.o;
 import com.tencent.mm.plugin.textstatus.a.a.b;
-import com.tencent.mm.plugin.textstatus.a.c;
+import com.tencent.mm.plugin.textstatus.a.d;
 import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.pluginsdk.ui.span.q;
 import com.tencent.mm.pluginsdk.ui.span.q.a;
@@ -32,30 +37,30 @@ import com.tencent.mm.pointers.PBool;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.au;
 import com.tencent.mm.vending.d.b;
 import java.util.HashMap;
 
 public class SnsLikesTextView
   extends RelativeLayout
-  implements bk.a
+  implements bm.a
 {
-  private j EBk;
-  private ImageView EFG;
-  private LinearLayout EFH;
-  private MaskTextView EFI;
-  private SpannableStringBuilder EFJ;
-  private int EFK;
-  private boolean EFL;
-  private PBool EFM;
-  protected HashMap<String, Integer> EFN;
-  private Runnable EFO;
-  private BaseTimeLineItem.BaseViewHolder Eon;
-  private TextView Epm;
-  private bl Epq;
-  private String dJX;
+  private BaseTimeLineItem.BaseViewHolder KBw;
+  private TextView KCv;
+  private bn KCz;
+  private j KPc;
+  private ImageView KTA;
+  private LinearLayout KTB;
+  private MaskTextView KTC;
+  private SpannableStringBuilder KTD;
+  private int KTE;
+  private boolean KTF;
+  private PBool KTG;
+  protected HashMap<String, Integer> KTH;
+  private Runnable KTI;
+  private String fCM;
   private boolean hasCheck;
-  private int qcr;
+  private int viewType;
   
   public SnsLikesTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -66,22 +71,22 @@ public class SnsLikesTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(98838);
-    this.dJX = null;
+    this.fCM = null;
     this.hasCheck = true;
-    this.Epm = null;
-    this.EFG = null;
-    this.EFH = null;
-    this.EFI = null;
-    this.EFJ = new SpannableStringBuilder(" ");
-    this.EFK = 0;
-    this.EFL = false;
-    this.qcr = 0;
-    this.EBk = null;
-    this.EFM = null;
-    this.EFN = null;
-    this.Eon = null;
-    this.Epq = null;
-    this.EFO = new Runnable()
+    this.KCv = null;
+    this.KTA = null;
+    this.KTB = null;
+    this.KTC = null;
+    this.KTD = new SpannableStringBuilder(" ");
+    this.KTE = 0;
+    this.KTF = false;
+    this.viewType = 0;
+    this.KPc = null;
+    this.KTG = null;
+    this.KTH = null;
+    this.KBw = null;
+    this.KCz = null;
+    this.KTI = new Runnable()
     {
       public final void run()
       {
@@ -90,18 +95,19 @@ public class SnsLikesTextView
         AppMethodBeat.o(98837);
       }
     };
-    inflate(getContext(), 2131496451, this);
-    this.Epm = ((TextView)findViewById(2131308152));
-    this.EFG = ((ImageView)findViewById(2131308150));
-    this.EFH = ((LinearLayout)findViewById(2131308151));
-    this.EFI = ((MaskTextView)findViewById(2131308153));
+    inflate(getContext(), i.g.sns_like_text_layout, this);
+    this.KCv = ((TextView)findViewById(i.f.sns_like_op_text_view));
+    this.KTA = ((ImageView)findViewById(i.f.sns_like_op_icon_view));
+    this.KTB = ((LinearLayout)findViewById(i.f.sns_like_op_text_group));
+    this.KTC = ((MaskTextView)findViewById(i.f.sns_like_text_view));
     AppMethodBeat.o(98838);
   }
   
-  private void fiu()
+  private void fWG()
   {
+    int i = 2;
     AppMethodBeat.i(98840);
-    Object localObject1 = (Integer)this.EFN.get(this.dJX);
+    Object localObject1 = (Integer)this.KTH.get(this.fCM);
     if (localObject1 != null) {}
     switch (((Integer)localObject1).intValue())
     {
@@ -111,62 +117,57 @@ public class SnsLikesTextView
       {
         AppMethodBeat.o(98840);
         return;
-        i = this.EFI.getLayout().getLineCount();
-        this.EFH.setVisibility(8);
-      } while (i <= this.EFK);
-      com.tencent.mm.plugin.sns.k.e.DUQ.a(this.Eon.convertView, this.Epq, this.EFJ.toString(), this.EFJ.toString(), i, i, false, this.Eon.position, this.EFK);
+        i = this.KTC.getLayout().getLineCount();
+        this.KTB.setVisibility(8);
+      } while (i <= this.KTE);
+      g.Kia.a(this.KBw.convertView, this.KCz, this.KTD.toString(), this.KTD.toString(), i, i, false, this.KBw.position, this.KTE);
       AppMethodBeat.o(98840);
       return;
     case 1: 
-      i = this.EFI.getLayout().getLineCount();
-      j = Math.max(Math.min(this.EFK, i), 0);
-      k = this.EFI.getLayout().getLineVisibleEnd(j - 1);
-      localObject1 = this.EFJ.subSequence(0, k);
+      i = this.KTC.getLayout().getLineCount();
+      j = Math.max(Math.min(this.KTE, i), 0);
+      k = this.KTC.getLayout().getLineVisibleEnd(j - 1);
+      localObject1 = this.KTD.subSequence(0, k);
       k = ((CharSequence)localObject1).toString().lastIndexOf(",");
       if ((k > 0) && (k < ((CharSequence)localObject1).length())) {}
       for (localObject1 = new SpannableStringBuilder(((CharSequence)localObject1).subSequence(0, k));; localObject1 = new SpannableStringBuilder((CharSequence)localObject1))
       {
         localObject2 = ((SpannableStringBuilder)localObject1).toString();
         ((SpannableStringBuilder)localObject1).append(",...");
-        this.EFI.setText((CharSequence)localObject1, TextView.BufferType.SPANNABLE);
-        this.EFH.setVisibility(0);
-        this.Epm.setText(getContext().getString(2131766112));
-        this.EFG.setRotation(90.0F);
-        this.EFG.setImageDrawable(ar.m(getContext(), 2131690481, getContext().getResources().getColor(2131100685)));
-        com.tencent.mm.plugin.sns.k.e.DUQ.a(this.Eon.convertView, this.Epq, (String)localObject2, this.EFJ.toString(), j, i, true, this.Eon.position, this.EFK);
+        this.KTC.setText((CharSequence)localObject1, TextView.BufferType.SPANNABLE);
+        this.KTB.setVisibility(0);
+        this.KCv.setText(getContext().getString(i.j.sns_like_spread));
+        this.KTA.setRotation(90.0F);
+        this.KTA.setImageDrawable(au.o(getContext(), i.i.icons_filled_arrow, getContext().getResources().getColor(i.c.link_color)));
+        g.Kia.a(this.KBw.convertView, this.KCz, (String)localObject2, this.KTD.toString(), j, i, true, this.KBw.position, this.KTE);
         AppMethodBeat.o(98840);
         return;
       }
     case 2: 
-      i = this.EFI.getLayout().getLineCount();
-      this.EFI.setText(this.EFJ, TextView.BufferType.SPANNABLE);
-      this.EFH.setVisibility(0);
-      this.EFG.setRotation(-90.0F);
-      this.EFG.setImageDrawable(ar.m(getContext(), 2131690481, getContext().getResources().getColor(2131100685)));
-      this.Epm.setText(getContext().getString(2131766111));
-      com.tencent.mm.plugin.sns.k.e.DUQ.a(this.Eon.convertView, this.Epq, this.EFJ.toString(), this.EFJ.toString(), i, i, false, this.Eon.position, this.EFK);
+      i = this.KTC.getLayout().getLineCount();
+      this.KTC.setText(this.KTD, TextView.BufferType.SPANNABLE);
+      this.KTB.setVisibility(0);
+      this.KTA.setRotation(-90.0F);
+      this.KTA.setImageDrawable(au.o(getContext(), i.i.icons_filled_arrow, getContext().getResources().getColor(i.c.link_color)));
+      this.KCv.setText(getContext().getString(i.j.sns_like_shrinkup));
+      g.Kia.a(this.KBw.convertView, this.KCz, this.KTD.toString(), this.KTD.toString(), i, i, false, this.KBw.position, this.KTE);
       AppMethodBeat.o(98840);
       return;
     }
-    int j = this.EFI.getLayout().getLineCount();
-    Object localObject2 = (String)g.aAh().azQ().get(2, null);
-    localObject1 = (String)g.aAh().azQ().get(4, null);
-    SpannableString localSpannableString = l.b(getContext(), (CharSequence)localObject1, this.EFI.getTextSize());
-    int k = Math.max(Math.min(this.EFK, j), 0);
-    int i = this.EFI.getLayout().getLineVisibleEnd(k - 1);
-    localObject1 = this.EFJ.subSequence(0, i);
-    i = ((CharSequence)localObject1).toString().lastIndexOf(",");
-    if ((i > 0) && (i < ((CharSequence)localObject1).length()))
+    int j = this.KTC.getLayout().getLineCount();
+    Object localObject2 = (String)com.tencent.mm.kernel.h.aHG().aHp().b(2, null);
+    localObject1 = (String)com.tencent.mm.kernel.h.aHG().aHp().b(4, null);
+    SpannableString localSpannableString = l.b(getContext(), (CharSequence)localObject1, this.KTC.getTextSize());
+    int k = Math.max(Math.min(this.KTE, j), 0);
+    int m = this.KTC.getLayout().getLineVisibleEnd(k - 1);
+    localObject1 = this.KTD.subSequence(0, m);
+    m = ((CharSequence)localObject1).toString().lastIndexOf(",");
+    if ((m > 0) && (m < ((CharSequence)localObject1).length())) {}
+    for (localObject1 = new SpannableStringBuilder(((CharSequence)localObject1).subSequence(0, m));; localObject1 = new SpannableStringBuilder((CharSequence)localObject1))
     {
-      localObject1 = new SpannableStringBuilder(((CharSequence)localObject1).subSequence(0, i));
-      label672:
-      if (this.qcr != 10) {
-        break label896;
+      if (this.viewType == 10) {
+        i = 3;
       }
-    }
-    label896:
-    for (i = 3;; i = 2)
-    {
       getContext();
       localSpannableString.setSpan(new q(localObject2, new q.a()
       {
@@ -177,39 +178,37 @@ public class SnsLikesTextView
           {
             SnsLikesTextView.a(SnsLikesTextView.this).source = 13;
             SnsLikesTextView.a(SnsLikesTextView.this).b(paramAnonymousView, paramAnonymousObject);
-            ((c)g.ah(c.class)).report22210(this.gtu, 7L);
+            ((d)com.tencent.mm.kernel.h.ag(d.class)).report22210(this.iXG, 7L);
           }
           AppMethodBeat.o(98835);
         }
       }, i), 0, localSpannableString.length(), 33);
       localObject2 = new StringBuilder(((SpannableStringBuilder)localObject1).toString());
       ((SpannableStringBuilder)localObject1).append(",...").append(",").append(localSpannableString);
-      this.EFI.setText((CharSequence)localObject1, TextView.BufferType.SPANNABLE);
-      this.EFH.setVisibility(0);
-      this.Epm.setText(getContext().getString(2131766112));
-      this.EFG.setRotation(90.0F);
-      this.EFG.setImageDrawable(ar.m(getContext(), 2131690481, getContext().getResources().getColor(2131100685)));
-      com.tencent.mm.plugin.sns.k.e.DUQ.a(this.Eon.convertView, this.Epq, "," + localSpannableString, this.EFJ.toString(), k, j, true, this.Eon.position, this.EFK);
+      this.KTC.setText((CharSequence)localObject1, TextView.BufferType.SPANNABLE);
+      this.KTB.setVisibility(0);
+      this.KCv.setText(getContext().getString(i.j.sns_like_spread));
+      this.KTA.setRotation(90.0F);
+      this.KTA.setImageDrawable(au.o(getContext(), i.i.icons_filled_arrow, getContext().getResources().getColor(i.c.link_color)));
+      g.Kia.a(this.KBw.convertView, this.KCz, "," + localSpannableString, this.KTD.toString(), k, j, true, this.KBw.position, this.KTE);
       break;
-      localObject1 = new SpannableStringBuilder((CharSequence)localObject1);
-      break label672;
     }
   }
   
-  public final boolean a(b<com.tencent.mm.vending.j.a> paramb, int paramInt1, bk parambk, String paramString, int paramInt2, boolean paramBoolean, PBool paramPBool, bl parambl, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
+  public final boolean a(b<com.tencent.mm.vending.j.a> paramb, int paramInt1, bm parambm, String paramString, int paramInt2, boolean paramBoolean, PBool paramPBool, bn parambn, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
     AppMethodBeat.i(98843);
-    this.EFK = paramInt2;
-    this.dJX = paramString;
-    this.qcr = paramInt1;
-    this.EBk = parambk.EBk;
-    this.EFM = paramPBool;
-    this.EFL = paramBoolean;
-    this.Eon = paramBaseViewHolder;
-    this.Epq = parambl;
-    this.EFN = parambk.EFN;
-    this.EFJ.clear();
-    parambk = new StringBuffer();
+    this.KTE = paramInt2;
+    this.fCM = paramString;
+    this.viewType = paramInt1;
+    this.KPc = parambm.KPc;
+    this.KTG = paramPBool;
+    this.KTF = paramBoolean;
+    this.KBw = paramBaseViewHolder;
+    this.KCz = parambn;
+    this.KTH = parambm.KTH;
+    this.KTD.clear();
+    parambm = new StringBuffer();
     paramString = new int[paramb.size()];
     paramPBool = new int[paramb.size()];
     int i = 1;
@@ -220,38 +219,38 @@ public class SnsLikesTextView
       {
         if (j < paramb.size())
         {
-          parambl = (String)((com.tencent.mm.vending.j.a)paramb.get(j)).get(1);
-          paramBaseViewHolder = l.b(getContext(), parambl, this.EFI.getTextSize());
+          parambn = (String)((com.tencent.mm.vending.j.a)paramb.get(j)).get(1);
+          paramBaseViewHolder = l.b(getContext(), parambn, this.KTC.getTextSize());
           if (i != 0)
           {
-            this.EFJ.append(" ");
-            parambk.append(" ");
+            this.KTD.append(" ");
+            parambm.append(" ");
             i = 0;
-            paramString[j] = this.EFJ.length();
-            paramString[j] += parambl.length();
-            parambk.append(parambl);
-            this.EFJ.append(paramBaseViewHolder);
-            parambl = (String)((com.tencent.mm.vending.j.a)paramb.get(j)).get(0);
-            if ((com.tencent.mm.plugin.sns.f.a.aOD(parambl)) && (((com.tencent.mm.plugin.story.api.e)g.ah(com.tencent.mm.plugin.story.api.e.class)).getStoryBasicConfig().a(f.a.Fkv)) && (o.isShowStoryCheck()))
+            paramString[j] = this.KTD.length();
+            paramString[j] += parambn.length();
+            parambm.append(parambn);
+            this.KTD.append(paramBaseViewHolder);
+            parambn = (String)((com.tencent.mm.vending.j.a)paramb.get(j)).get(0);
+            if ((com.tencent.mm.plugin.sns.f.a.aZz(parambn)) && (((e)com.tencent.mm.kernel.h.ag(e.class)).getStoryBasicConfig().a(f.a.LEx)) && (o.isShowStoryCheck()))
             {
-              this.EFJ.append("  ");
-              parambl = new h(((com.tencent.mm.plugin.story.api.e)g.ah(com.tencent.mm.plugin.story.api.e.class)).getStoryUIFactory().vJ(true));
-              this.EFJ.setSpan(parambl, this.EFJ.length() - 1, this.EFJ.length(), 17);
-              break label786;
+              this.KTD.append("  ");
+              parambn = new com.tencent.mm.plugin.sns.ui.widget.h(((e)com.tencent.mm.kernel.h.ag(e.class)).getStoryUIFactory().zn(true));
+              this.KTD.setSpan(parambn, this.KTD.length() - 1, this.KTD.length(), 17);
+              break label799;
             }
           }
           else
           {
-            this.EFJ.append(", ");
-            parambk.append(", ");
+            this.KTD.append(", ");
+            parambm.append(", ");
             continue;
           }
-          parambl = ((c)g.ah(c.class)).getTextStatusSpanSync(parambl, a.b.FXk, this.EFI.getTextSize());
-          if (parambl == null) {
-            break label786;
+          parambn = ((d)com.tencent.mm.kernel.h.ag(d.class)).getTextStatusSpanSync(this.KTC, parambn, a.b.MzD, this.KTC.getTextSize());
+          if (parambn == null) {
+            break label799;
           }
-          this.EFJ.append(" ");
-          this.EFJ.setSpan(parambl, this.EFJ.length() - 1, this.EFJ.length(), 17);
+          this.KTD.append(" ");
+          this.KTD.setSpan(parambn, this.KTD.length() - 1, this.KTD.length(), 17);
         }
       }
       catch (Exception paramb)
@@ -262,88 +261,85 @@ public class SnsLikesTextView
       {
         AppMethodBeat.o(98843);
         return true;
-        parambl = getContext();
-        if (paramInt1 != 10) {
-          break label801;
-        }
-        i = 2131232997;
-        parambl = ar.m(parambl, i, getContext().getResources().getColor(2131099783));
-        parambl.setBounds(0, 0, parambl.getIntrinsicWidth(), parambl.getIntrinsicHeight());
-        paramBaseViewHolder = new com.tencent.mm.ui.widget.a(parambl);
-        paramBaseViewHolder.QBM = ((int)((parambl.getIntrinsicHeight() - this.EFI.getTextSize() + com.tencent.mm.cb.a.fromDPToPix(getContext(), 2)) / 2.0F));
-        this.EFJ.setSpan(paramBaseViewHolder, 0, 1, 33);
-        if (paramInt1 != 10) {
-          break label809;
-        }
-        paramInt1 = 3;
-        break;
-        label589:
-        while (i < paramString.length)
+        parambn = getContext();
+        if (paramInt1 == 10) {}
+        for (i = i.e.golden_like_icon;; i = i.e.normal_like_icon)
         {
-          parambl = (String)((com.tencent.mm.vending.j.a)paramb.get(i)).get(0);
-          paramBaseViewHolder = this.EFJ;
-          getContext();
-          paramBaseViewHolder.setSpan(new q(parambl, new q.a()
+          parambn = au.o(parambn, i, getContext().getResources().getColor(i.c.Link));
+          parambn.setBounds(0, 0, parambn.getIntrinsicWidth(), parambn.getIntrinsicHeight());
+          paramBaseViewHolder = new com.tencent.mm.ui.widget.a(parambn, 1);
+          paramBaseViewHolder.Yal = ((int)((parambn.getIntrinsicHeight() - this.KTC.getTextSize() + com.tencent.mm.ci.a.fromDPToPix(getContext(), 2)) / 2.0F));
+          this.KTD.setSpan(paramBaseViewHolder, 0, 1, 33);
+          if (paramInt1 != 10) {
+            break label814;
+          }
+          paramInt1 = 3;
+          break label808;
+          while (i < paramString.length)
           {
-            public final void b(View paramAnonymousView, Object paramAnonymousObject)
+            parambn = (String)((com.tencent.mm.vending.j.a)paramb.get(i)).get(0);
+            paramBaseViewHolder = this.KTD;
+            getContext();
+            paramBaseViewHolder.setSpan(new q(parambn, new q.a()
             {
-              AppMethodBeat.i(98836);
-              if (SnsLikesTextView.a(SnsLikesTextView.this) != null)
+              public final void b(View paramAnonymousView, Object paramAnonymousObject)
               {
-                SnsLikesTextView.a(SnsLikesTextView.this).source = 13;
-                SnsLikesTextView.a(SnsLikesTextView.this).b(paramAnonymousView, paramAnonymousObject);
+                AppMethodBeat.i(98836);
+                if (SnsLikesTextView.a(SnsLikesTextView.this) != null)
+                {
+                  SnsLikesTextView.a(SnsLikesTextView.this).source = 13;
+                  SnsLikesTextView.a(SnsLikesTextView.this).b(paramAnonymousView, paramAnonymousObject);
+                }
+                AppMethodBeat.o(98836);
               }
-              AppMethodBeat.o(98836);
-            }
-          }, paramInt1), paramString[i], paramPBool[i], 33);
-          i += 1;
+            }, paramInt1), paramString[i], paramPBool[i], 33);
+            i += 1;
+          }
         }
-        this.EFI.setText(this.EFJ, TextView.BufferType.SPANNABLE);
-        this.EFI.setOriginText(parambk.toString());
+        this.KTC.setText(this.KTD, TextView.BufferType.SPANNABLE);
+        this.KTC.setOriginText(parambm.toString());
         if (paramInt2 > 0)
         {
-          if ((getTag() == null) || (!(getTag() instanceof String)) || (!Util.isEqual((String)getTag(), this.EFJ.toString())))
+          if ((getTag() == null) || (!(getTag() instanceof String)) || (!Util.isEqual((String)getTag(), this.KTD.toString())))
           {
-            setTag(this.EFJ.toString());
-            this.EFH.setVisibility(8);
+            setTag(this.KTD.toString());
+            this.KTB.setVisibility(8);
             this.hasCheck = false;
             requestLayout();
             AppMethodBeat.o(98843);
             return true;
           }
           this.hasCheck = true;
-          fiu();
+          fWG();
         }
       }
-      label786:
+      label799:
       j += 1;
     }
     for (;;)
     {
+      label808:
       i = 0;
-      break label589;
-      label801:
-      i = 2131234277;
       break;
-      label809:
+      label814:
       paramInt1 = 2;
     }
   }
   
   public String getKey()
   {
-    return this.dJX;
+    return this.fCM;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(98839);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    paramInt1 = this.EFI.getLineCount();
-    if ((this.EFK > 0) && (paramInt1 > this.EFK) && (this.EFM != null)) {
-      this.EFM.value = true;
+    paramInt1 = this.KTC.getLineCount();
+    if ((this.KTE > 0) && (paramInt1 > this.KTE) && (this.KTG != null)) {
+      this.KTG.value = true;
     }
-    if ((this.EFK > 0) && (this.EFN != null))
+    if ((this.KTE > 0) && (this.KTH != null))
     {
       if (this.hasCheck)
       {
@@ -351,35 +347,35 @@ public class SnsLikesTextView
         return;
       }
       this.hasCheck = true;
-      if (this.EFN.get(this.dJX) == null)
+      if (this.KTH.get(this.fCM) == null)
       {
-        if (!this.EFL) {
+        if (!this.KTF) {
           break label168;
         }
-        if (paramInt1 > this.EFK) {
+        if (paramInt1 > this.KTE) {
           break label149;
         }
-        this.EFN.put(this.dJX, Integer.valueOf(0));
+        this.KTH.put(this.fCM, Integer.valueOf(0));
       }
     }
     for (;;)
     {
-      post(this.EFO);
+      post(this.KTI);
       AppMethodBeat.o(98839);
       return;
       label149:
-      this.EFN.put(this.dJX, Integer.valueOf(1));
+      this.KTH.put(this.fCM, Integer.valueOf(1));
       continue;
       label168:
-      this.EFN.put(this.dJX, Integer.valueOf(0));
+      this.KTH.put(this.fCM, Integer.valueOf(0));
     }
   }
   
   public void setLikeTvTag(Object paramObject)
   {
     AppMethodBeat.i(98844);
-    if (this.EFI != null) {
-      this.EFI.setTag(paramObject);
+    if (this.KTC != null) {
+      this.KTC.setTag(paramObject);
     }
     AppMethodBeat.o(98844);
   }
@@ -387,8 +383,8 @@ public class SnsLikesTextView
   public void setLikedTextTouchListener(View.OnTouchListener paramOnTouchListener)
   {
     AppMethodBeat.i(98842);
-    if (this.EFI != null) {
-      this.EFI.setOnTouchListener(paramOnTouchListener);
+    if (this.KTC != null) {
+      this.KTC.setOnTouchListener(paramOnTouchListener);
     }
     AppMethodBeat.o(98842);
   }
@@ -396,8 +392,8 @@ public class SnsLikesTextView
   public void setOpClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(98841);
-    if (this.EFH != null) {
-      this.EFH.setOnClickListener(paramOnClickListener);
+    if (this.KTB != null) {
+      this.KTB.setOnClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(98841);
   }
@@ -405,38 +401,38 @@ public class SnsLikesTextView
   public void setOpTvTag(Object paramObject)
   {
     AppMethodBeat.i(98845);
-    if (this.EFH != null) {
-      this.EFH.setTag(paramObject);
+    if (this.KTB != null) {
+      this.KTB.setTag(paramObject);
     }
     AppMethodBeat.o(98845);
   }
   
-  public final void vv(boolean paramBoolean)
+  public final void yZ(boolean paramBoolean)
   {
     AppMethodBeat.i(98846);
-    if ((this.EFK > 0) && (this.EFN != null))
+    if ((this.KTE > 0) && (this.KTH != null))
     {
-      Integer localInteger = (Integer)this.EFN.get(this.dJX);
+      Integer localInteger = (Integer)this.KTH.get(this.fCM);
       if (localInteger != null)
       {
         if (paramBoolean)
         {
           if (localInteger.intValue() == 1)
           {
-            this.EFN.put(this.dJX, Integer.valueOf(3));
-            fiu();
+            this.KTH.put(this.fCM, Integer.valueOf(3));
+            fWG();
             AppMethodBeat.o(98846);
           }
         }
         else if (localInteger.intValue() == 3)
         {
-          this.EFN.put(this.dJX, Integer.valueOf(1));
-          fiu();
+          this.KTH.put(this.fCM, Integer.valueOf(1));
+          fWG();
           AppMethodBeat.o(98846);
         }
       }
       else {
-        this.EFN.put(this.dJX, Integer.valueOf(0));
+        this.KTH.put(this.fCM, Integer.valueOf(0));
       }
     }
     AppMethodBeat.o(98846);
@@ -444,7 +440,7 @@ public class SnsLikesTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsLikesTextView
  * JD-Core Version:    0.7.0.1
  */

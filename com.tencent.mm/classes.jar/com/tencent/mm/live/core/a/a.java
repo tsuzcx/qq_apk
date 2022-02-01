@@ -3,19 +3,19 @@ package com.tencent.mm.live.core.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/log/LiveErrorCodeTranslate;", "", "()V", "LIVE_ERR_CODE", "", "LIVE_FIRST_FRAME_HEIGHT", "LIVE_FIRST_FRAME_WIDTH", "LIVE_MEDIA_ENABLE", "LIVE_STREAM_TYPE", "LIVE_USER_EXIT_REASON", "LIVE_USER_ID", "translate", "code", "", "plugin-core_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/log/LiveErrorCodeTranslate;", "", "()V", "LIVE_CDN_SEI_MSG", "", "LIVE_ERR_CODE", "LIVE_FIRST_FRAME_HEIGHT", "LIVE_FIRST_FRAME_WIDTH", "LIVE_MEDIA_ENABLE", "LIVE_STREAM_TYPE", "LIVE_USER_EXIT_REASON", "LIVE_USER_ID", "LIVE_USER_VOLUME_INFO", "translate", "code", "", "plugin-core_release"})
 public final class a
 {
-  public static final a hCB;
+  public static final a kqC;
   
   static
   {
-    AppMethodBeat.i(196570);
-    hCB = new a();
-    AppMethodBeat.o(196570);
+    AppMethodBeat.i(198225);
+    kqC = new a();
+    AppMethodBeat.o(198225);
   }
   
-  public static String qw(int paramInt)
+  public static String ti(int paramInt)
   {
     switch (paramInt)
     {
@@ -327,7 +327,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.core.a.a
  * JD-Core Version:    0.7.0.1
  */

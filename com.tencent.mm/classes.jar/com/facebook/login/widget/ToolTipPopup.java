@@ -2,17 +2,17 @@ package com.facebook.login.widget;
 
 import android.app.Activity;
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnScrollChangedListener;
 import android.view.Window;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import com.facebook.login.R.drawable;
+import com.facebook.login.R.id;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 
@@ -22,7 +22,7 @@ public class ToolTipPopup
   private final WeakReference<View> mAnchorViewRef;
   private final Context mContext;
   private long mNuxDisplayTime;
-  private PopupContentView mPopupContent;
+  private ToolTipPopup.PopupContentView mPopupContent;
   private PopupWindow mPopupWindow;
   private final ViewTreeObserver.OnScrollChangedListener mScrollListener;
   private ToolTipPopup.Style mStyle;
@@ -117,15 +117,15 @@ public class ToolTipPopup
     AppMethodBeat.i(40489);
     if (this.mAnchorViewRef.get() != null)
     {
-      this.mPopupContent = new PopupContentView(this.mContext);
-      ((TextView)this.mPopupContent.findViewById(2131298923)).setText(this.mText);
+      this.mPopupContent = new ToolTipPopup.PopupContentView(this, this.mContext);
+      ((TextView)this.mPopupContent.findViewById(R.id.com_facebook_tooltip_bubble_view_text_body)).setText(this.mText);
       if (this.mStyle != ToolTipPopup.Style.BLUE) {
-        break label263;
+        break label268;
       }
-      this.mPopupContent.bodyFrame.setBackgroundResource(2131231893);
-      this.mPopupContent.bottomArrow.setImageResource(2131231894);
-      this.mPopupContent.topArrow.setImageResource(2131231895);
-      this.mPopupContent.xOut.setImageResource(2131231896);
+      ToolTipPopup.PopupContentView.access$300(this.mPopupContent).setBackgroundResource(R.drawable.com_facebook_tooltip_blue_background);
+      ToolTipPopup.PopupContentView.access$400(this.mPopupContent).setImageResource(R.drawable.com_facebook_tooltip_blue_bottomnub);
+      ToolTipPopup.PopupContentView.access$500(this.mPopupContent).setImageResource(R.drawable.com_facebook_tooltip_blue_topnub);
+      ToolTipPopup.PopupContentView.access$600(this.mPopupContent).setImageResource(R.drawable.com_facebook_tooltip_blue_xout);
     }
     for (;;)
     {
@@ -160,61 +160,17 @@ public class ToolTipPopup
       });
       AppMethodBeat.o(40489);
       return;
-      label263:
-      this.mPopupContent.bodyFrame.setBackgroundResource(2131231889);
-      this.mPopupContent.bottomArrow.setImageResource(2131231890);
-      this.mPopupContent.topArrow.setImageResource(2131231891);
-      this.mPopupContent.xOut.setImageResource(2131231892);
-    }
-  }
-  
-  class PopupContentView
-    extends FrameLayout
-  {
-    private View bodyFrame;
-    private ImageView bottomArrow;
-    private ImageView topArrow;
-    private ImageView xOut;
-    
-    public PopupContentView(Context paramContext)
-    {
-      super();
-      AppMethodBeat.i(40481);
-      init();
-      AppMethodBeat.o(40481);
-    }
-    
-    private void init()
-    {
-      AppMethodBeat.i(40482);
-      LayoutInflater.from(getContext()).inflate(2131493687, this);
-      this.topArrow = ((ImageView)findViewById(2131298924));
-      this.bottomArrow = ((ImageView)findViewById(2131298922));
-      this.bodyFrame = findViewById(2131298915);
-      this.xOut = ((ImageView)findViewById(2131298916));
-      AppMethodBeat.o(40482);
-    }
-    
-    public void showBottomArrow()
-    {
-      AppMethodBeat.i(40484);
-      this.topArrow.setVisibility(4);
-      this.bottomArrow.setVisibility(0);
-      AppMethodBeat.o(40484);
-    }
-    
-    public void showTopArrow()
-    {
-      AppMethodBeat.i(40483);
-      this.topArrow.setVisibility(0);
-      this.bottomArrow.setVisibility(4);
-      AppMethodBeat.o(40483);
+      label268:
+      ToolTipPopup.PopupContentView.access$300(this.mPopupContent).setBackgroundResource(R.drawable.com_facebook_tooltip_black_background);
+      ToolTipPopup.PopupContentView.access$400(this.mPopupContent).setImageResource(R.drawable.com_facebook_tooltip_black_bottomnub);
+      ToolTipPopup.PopupContentView.access$500(this.mPopupContent).setImageResource(R.drawable.com_facebook_tooltip_black_topnub);
+      ToolTipPopup.PopupContentView.access$600(this.mPopupContent).setImageResource(R.drawable.com_facebook_tooltip_black_xout);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.login.widget.ToolTipPopup
  * JD-Core Version:    0.7.0.1
  */

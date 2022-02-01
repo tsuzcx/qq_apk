@@ -9,14 +9,14 @@ import com.tencent.mm.sdk.thread.ThreadPool;
 
 public final class o
 {
-  a wFI;
+  a ByF;
   
   public o(a parama)
   {
-    this.wFI = parama;
+    this.ByF = parama;
   }
   
-  public final void bDI()
+  public final void bPi()
   {
     AppMethodBeat.i(64388);
     ThreadPool.post(new Runnable()
@@ -25,15 +25,15 @@ public final class o
       {
         AppMethodBeat.i(64387);
         String str = "";
-        if (d.dJX())
+        if (d.eow())
         {
           Log.i("MicroMsg.SyncGenRsaKey", "device is support FingerPrintAuth");
-          str = FingerPrintAuth.genRsaKey(d.fL(MMApplicationContext.getContext()), d.getUserId(), q.aoG());
+          str = FingerPrintAuth.genRsaKey(d.gf(MMApplicationContext.getContext()), d.getUserId(), q.auM());
         }
         for (;;)
         {
-          if (o.this.wFI != null) {
-            o.this.wFI.ZA(str);
+          if (o.this.ByF != null) {
+            o.this.ByF.aho(str);
           }
           AppMethodBeat.o(64387);
           return;
@@ -46,7 +46,7 @@ public final class o
   
   public static abstract interface a
   {
-    public abstract void ZA(String paramString);
+    public abstract void aho(String paramString);
   }
 }
 

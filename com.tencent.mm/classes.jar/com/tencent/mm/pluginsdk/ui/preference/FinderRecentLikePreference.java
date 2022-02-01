@@ -9,11 +9,15 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.i.a.ae;
-import com.tencent.mm.plugin.i.a.aj;
-import com.tencent.mm.protocal.protobuf.eoz;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.findersdk.a.af;
+import com.tencent.mm.plugin.findersdk.a.ak;
+import com.tencent.mm.protocal.protobuf.ezj;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -24,105 +28,105 @@ import java.util.List;
 public final class FinderRecentLikePreference
   extends Preference
 {
-  private List<ImageView> Kpq;
-  private eoz Kps;
-  private MMActivity gte;
+  private List<ImageView> AYn;
+  private ezj AYo;
+  private View EQs;
+  private MMActivity iXq;
   private String mTitle;
-  private View zlc;
   
   public FinderRecentLikePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(232339);
-    this.gte = ((MMActivity)paramContext);
-    AppMethodBeat.o(232339);
+    AppMethodBeat.i(282433);
+    this.iXq = ((MMActivity)paramContext);
+    AppMethodBeat.o(282433);
   }
   
   public FinderRecentLikePreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(232340);
+    AppMethodBeat.i(282434);
     this.mTitle = "";
-    this.Kpq = new LinkedList();
-    this.Kps = null;
-    this.gte = ((MMActivity)paramContext);
-    this.mTitle = paramContext.getString(2131759439);
-    setLayoutResource(2131495538);
-    AppMethodBeat.o(232340);
+    this.AYn = new LinkedList();
+    this.AYo = null;
+    this.iXq = ((MMActivity)paramContext);
+    this.mTitle = paramContext.getString(R.l.find_friends_recent_like);
+    setLayoutResource(R.i.mm_preference);
+    AppMethodBeat.o(282434);
   }
   
-  private void grH()
+  private void eiM()
   {
-    AppMethodBeat.i(232341);
-    Object localObject = this.Kpq.iterator();
+    AppMethodBeat.i(282435);
+    Object localObject = this.AYn.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((ImageView)((Iterator)localObject).next()).setVisibility(8);
     }
-    localObject = this.Kps;
+    localObject = this.AYo;
     if (localObject != null)
     {
-      int j = ((eoz)localObject).LCW.size();
+      int j = ((ezj)localObject).SGi.size();
       int i = 0;
-      while ((i < j) && (i < this.Kpq.size()))
+      while ((i < j) && (i < this.AYn.size()))
       {
-        ImageView localImageView = (ImageView)this.Kpq.get(i);
+        ImageView localImageView = (ImageView)this.AYn.get(i);
         localImageView.setVisibility(0);
-        ((aj)g.ah(aj.class)).getFinderUIApi().a(((eoz)localObject).LCW.get(i), localImageView);
+        ((ak)h.ag(ak.class)).getFinderUIApi().a(((ezj)localObject).SGi.get(i), localImageView);
         i += 1;
       }
     }
-    AppMethodBeat.o(232341);
+    AppMethodBeat.o(282435);
   }
   
-  public final void a(eoz parameoz)
+  public final void a(ezj paramezj)
   {
-    AppMethodBeat.i(232344);
-    this.Kps = parameoz;
-    grH();
-    AppMethodBeat.o(232344);
+    AppMethodBeat.i(282440);
+    this.AYo = paramezj;
+    eiM();
+    AppMethodBeat.o(282440);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(232343);
+    AppMethodBeat.i(282438);
     super.onBindView(paramView);
-    this.Kpq.clear();
-    this.Kpq.add((ImageView)paramView.findViewById(2131302574));
-    this.Kpq.add((ImageView)paramView.findViewById(2131302575));
-    this.Kpq.add((ImageView)paramView.findViewById(2131302576));
-    this.Kpq.add((ImageView)paramView.findViewById(2131302577));
-    paramView = (TextView)paramView.findViewById(2131296703);
+    this.AYn.clear();
+    this.AYn.add((ImageView)paramView.findViewById(R.h.image_iv1));
+    this.AYn.add((ImageView)paramView.findViewById(R.h.image_iv2));
+    this.AYn.add((ImageView)paramView.findViewById(R.h.image_iv3));
+    this.AYn.add((ImageView)paramView.findViewById(R.h.image_iv4));
+    paramView = (TextView)paramView.findViewById(R.h.album_title);
     if (!Util.isNullOrNil(this.mTitle))
     {
       paramView.setText(this.mTitle);
       ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-      localLayoutParams.width = a.aG(this.mContext, 2131165381);
+      localLayoutParams.width = a.aY(this.mContext, R.f.FixedTitleWidth);
       paramView.setLayoutParams(localLayoutParams);
     }
-    grH();
-    AppMethodBeat.o(232343);
+    eiM();
+    AppMethodBeat.o(282438);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(232342);
-    if (this.zlc == null)
+    AppMethodBeat.i(282436);
+    if (this.EQs == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
       LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
       localViewGroup.removeAllViews();
-      localLayoutInflater.inflate(2131495561, localViewGroup);
-      this.zlc = paramViewGroup;
+      localLayoutInflater.inflate(R.i.eiQ, localViewGroup);
+      this.EQs = paramViewGroup;
     }
-    paramViewGroup = this.zlc;
-    AppMethodBeat.o(232342);
+    paramViewGroup = this.EQs;
+    AppMethodBeat.o(282436);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.FinderRecentLikePreference
  * JD-Core Version:    0.7.0.1
  */

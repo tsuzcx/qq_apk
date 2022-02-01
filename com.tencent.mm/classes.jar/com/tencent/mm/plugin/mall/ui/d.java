@@ -10,61 +10,61 @@ public final class d
 {
   public static int f(MallFunction paramMallFunction)
   {
-    AppMethodBeat.i(213560);
+    AppMethodBeat.i(256852);
     if (paramMallFunction != null)
     {
-      c.fSg().aVv(paramMallFunction.kHR);
-      com.tencent.mm.plugin.wallet_core.model.mall.d.fSk().aVv(paramMallFunction.kHR);
-      if (paramMallFunction.Icf != null)
+      c.gKL().bhe(paramMallFunction.nBK);
+      com.tencent.mm.plugin.wallet_core.model.mall.d.gKP().bhe(paramMallFunction.nBK);
+      if (paramMallFunction.OUr != null)
       {
-        c.fSg();
+        c.gKL();
         c.i(paramMallFunction);
       }
-      if ("wxpay://bizmall/mobile_recharge".equals(paramMallFunction.egX))
+      if ("wxpay://bizmall/mobile_recharge".equals(paramMallFunction.gbn))
       {
-        AppMethodBeat.o(213560);
+        AppMethodBeat.o(256852);
         return 0;
       }
-      if ("wxpay://bizmall/weixin_hongbao".equals(paramMallFunction.egX))
+      if ("wxpay://bizmall/weixin_hongbao".equals(paramMallFunction.gbn))
       {
-        AppMethodBeat.o(213560);
+        AppMethodBeat.o(256852);
         return 4;
       }
-      if ("wxpay://bizmall/weixin_scan_qrcode".equals(paramMallFunction.egX))
+      if ("wxpay://bizmall/weixin_scan_qrcode".equals(paramMallFunction.gbn))
       {
-        AppMethodBeat.o(213560);
+        AppMethodBeat.o(256852);
         return 8;
       }
-      if ("wxpay://bizmall/weixin_transfer".equals(paramMallFunction.egX))
+      if ("wxpay://bizmall/weixin_transfer".equals(paramMallFunction.gbn))
       {
-        AppMethodBeat.o(213560);
+        AppMethodBeat.o(256852);
         return 5;
       }
-      if ("wxpay://bizmall/weixin_offline_pay".equals(paramMallFunction.egX))
+      if ("wxpay://bizmall/weixin_offline_pay".equals(paramMallFunction.gbn))
       {
-        AppMethodBeat.o(213560);
+        AppMethodBeat.o(256852);
         return 6;
       }
-      if ("wxpay://bizmall/old_mobile_recharge".equals(paramMallFunction.egX))
+      if ("wxpay://bizmall/old_mobile_recharge".equals(paramMallFunction.gbn))
       {
-        AppMethodBeat.o(213560);
+        AppMethodBeat.o(256852);
         return 7;
       }
       if (!Util.isNullOrNil(paramMallFunction.h5Url))
       {
-        AppMethodBeat.o(213560);
+        AppMethodBeat.o(256852);
         return 1;
       }
-      if ("wxpay://bizmall/f2f_hongbao".equals(paramMallFunction.egX))
+      if ("wxpay://bizmall/f2f_hongbao".equals(paramMallFunction.gbn))
       {
-        AppMethodBeat.o(213560);
+        AppMethodBeat.o(256852);
         return 9;
       }
       Log.w("MicroMsg.MallIndexUIHelper", "doSelectFunction no jump");
-      AppMethodBeat.o(213560);
+      AppMethodBeat.o(256852);
       return 2;
     }
-    AppMethodBeat.o(213560);
+    AppMethodBeat.o(256852);
     return 3;
   }
 }

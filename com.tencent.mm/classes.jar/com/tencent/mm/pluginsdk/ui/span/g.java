@@ -15,7 +15,7 @@ public final class g
     AppMethodBeat.i(152267);
     if ((paramView != null) && (paramSpanned != null) && (((paramView instanceof TextView)) || ((paramView instanceof StaticTextView))))
     {
-      int j = gp(paramView);
+      int j = hz(paramView);
       if ((j == 1) && (paramSpanned.length() > 500))
       {
         Log.e("MicroMsg.InvalidTextCheck", "error black dot");
@@ -25,7 +25,7 @@ public final class g
       int i = 1;
       while (i < j)
       {
-        if (aD(paramView, i) - aD(paramView, i - 1) > 500)
+        if (aI(paramView, i) - aI(paramView, i - 1) > 500)
         {
           Log.e("MicroMsg.InvalidTextCheck", "error black dot");
           AppMethodBeat.o(152267);
@@ -38,7 +38,7 @@ public final class g
     return false;
   }
   
-  private static int aD(View paramView, int paramInt)
+  private static int aI(View paramView, int paramInt)
   {
     AppMethodBeat.i(152266);
     if ((paramView instanceof TextView))
@@ -67,7 +67,7 @@ public final class g
     return 0;
   }
   
-  private static int gp(View paramView)
+  private static int hz(View paramView)
   {
     AppMethodBeat.i(152265);
     int i = 0;
@@ -86,7 +86,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.span.g
  * JD-Core Version:    0.7.0.1
  */

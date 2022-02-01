@@ -1,199 +1,90 @@
 package com.tencent.mm.ui.contact;
 
-import android.app.Activity;
-import android.content.res.Resources;
-import android.database.Cursor;
+import android.content.Context;
+import android.content.Intent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bb;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.MStorageEx;
-import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
-import com.tencent.mm.storage.az;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.bw;
-import com.tencent.mm.ui.contact.a.b;
-import com.tencent.mm.ui.contact.a.f;
-import com.tencent.mm.ui.contact.a.h;
-import java.util.List;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.openim.a.a.a;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.MaskLayout;
 
 public final class ab
-  extends q
-  implements MStorageEx.IOnStorageChange
+  extends LinearLayout
 {
-  private int CuC;
-  private List<String> PYs;
-  private int PYt;
-  private boolean PYu;
-  private int PYv;
-  private Cursor jWh;
+  private String XuW;
+  private Context context;
   
-  public ab(MMBaseSelectContactUI paramMMBaseSelectContactUI, List<String> paramList)
+  public ab(Context paramContext, String paramString)
   {
-    this(paramMMBaseSelectContactUI, paramList, true, false, false, 0);
-  }
-  
-  public ab(MMBaseSelectContactUI paramMMBaseSelectContactUI, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
-  {
-    super(paramMMBaseSelectContactUI, paramList, paramBoolean1, paramBoolean2);
-    AppMethodBeat.i(102921);
-    this.PYv = 0;
-    Log.i("MicroMsg.RecentConversationAdapter", "create!");
-    this.PYu = paramBoolean3;
-    this.PYv = paramInt;
-    and();
-    ((l)g.af(l.class)).aST().add(this);
-    AppMethodBeat.o(102921);
-  }
-  
-  public final void and()
-  {
-    int j = 0;
-    AppMethodBeat.i(102922);
-    Log.i("MicroMsg.RecentConversationAdapter", "resetData");
-    if (this.jWh != null)
+    super(paramContext);
+    AppMethodBeat.i(37933);
+    this.context = paramContext;
+    this.XuW = paramString;
+    paramContext = View.inflate(getContext(), R.i.ejN, this);
+    paramString = findViewById(R.h.dFD);
+    paramContext.setOnClickListener(new View.OnClickListener()
     {
-      this.jWh.close();
-      this.jWh = null;
-    }
-    if (u.hasAttr(this.PYv, 4))
-    {
-      this.jWh = ((l)g.af(l.class)).aST().b(com.tencent.mm.model.ab.iCK, this.gzY, com.tencent.mm.o.a.gNj, this.PWC, "");
-      if (!this.PYu) {
-        break label229;
-      }
-    }
-    label229:
-    for (int i = 2;; i = 0)
-    {
-      if (this.PYs != null) {
-        j = this.PYs.size();
-      }
-      this.PYt = j;
-      this.CuC = (i + this.PYt);
-      clearCache();
-      AppMethodBeat.o(102922);
-      return;
-      if (u.hasAttr(this.PYv, 16))
+      public final void onClick(View paramAnonymousView)
       {
-        this.jWh = ((l)g.af(l.class)).aST().b(com.tencent.mm.model.ab.iCM, this.gzY, com.tencent.mm.o.a.gNj, this.PWC, "");
-        break;
-      }
-      this.jWh = ((l)g.af(l.class)).aST().b(com.tencent.mm.model.ab.iCF, this.gzY, com.tencent.mm.o.a.gNj, this.PWC, "");
-      break;
-    }
-  }
-  
-  public final void finish()
-  {
-    AppMethodBeat.i(102925);
-    super.finish();
-    Log.i("MicroMsg.RecentConversationAdapter", "finish!");
-    if (this.jWh != null)
-    {
-      this.jWh.close();
-      this.jWh = null;
-    }
-    ((l)g.af(l.class)).aST().remove(this);
-    AppMethodBeat.o(102925);
-  }
-  
-  public final int getCount()
-  {
-    AppMethodBeat.i(102923);
-    int j = this.CuC + 1;
-    int i = j;
-    if (this.jWh != null) {
-      i = j + this.jWh.getCount();
-    }
-    AppMethodBeat.o(102923);
-    return i;
-  }
-  
-  public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
-  {
-    AppMethodBeat.i(102926);
-    and();
-    notifyDataSetChanged();
-    AppMethodBeat.o(102926);
-  }
-  
-  protected final com.tencent.mm.ui.contact.a.a va(int paramInt)
-  {
-    az localaz = null;
-    AppMethodBeat.i(102924);
-    Object localObject;
-    if (this.CuC > this.PYt) {
-      if (paramInt == this.PYt)
-      {
-        localObject = new h(paramInt);
-        ((h)localObject).header = this.PWg.getActivity().getResources().getString(2131765134);
-      }
-    }
-    for (;;)
-    {
-      if (paramInt == this.CuC)
-      {
-        localObject = new h(paramInt);
-        ((h)localObject).header = this.PWg.getActivity().getResources().getString(2131765119);
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(102924);
-        return localObject;
-        if (paramInt != this.PYt + 1) {
-          break label374;
-        }
-        localObject = new b(paramInt);
-        String str = this.PWg.getActivity().getResources().getString(2131765134);
-        ((b)localObject).resId = 2131690067;
-        ((b)localObject).nickName = str;
-        break;
-        if (paramInt < this.PYt)
+        AppMethodBeat.i(37931);
+        Object localObject = new b();
+        ((b)localObject).bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/contact/OpenIMListViewItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+        if (!WeChatBrands.Business.Entries.ContactWeCom.checkAvailable(paramAnonymousView.getContext()))
         {
-          localObject = localaz;
-          if (this.PYs != null)
-          {
-            localObject = localaz;
-            if (paramInt >= 0)
-            {
-              localObject = localaz;
-              if (paramInt < this.PYs.size())
-              {
-                localObject = new b(paramInt);
-                ((b)localObject).username = ((String)this.PYs.get(paramInt));
-              }
-            }
-          }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/OpenIMListViewItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(37931);
+          return;
         }
-        else if ((paramInt > this.CuC) && (this.jWh.moveToPosition(paramInt - this.CuC - 1)))
-        {
-          localObject = new f(paramInt);
-          localaz = new az();
-          localaz.convertFrom(this.jWh);
-          g.aAi();
-          ((com.tencent.mm.ui.contact.a.a)localObject).contact = ((l)g.af(l.class)).aSN().bjF(localaz.field_username);
-          if (((com.tencent.mm.ui.contact.a.a)localObject).contact == null)
-          {
-            g.aAi();
-            ((com.tencent.mm.ui.contact.a.a)localObject).contact = ((l)g.af(l.class)).aSN().bjK(localaz.field_username);
-          }
-          ((com.tencent.mm.ui.contact.a.a)localObject).PWh = eWh();
-        }
-        else
-        {
-          Log.e("MicroMsg.RecentConversationAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
-        }
+        paramAnonymousView = paramAnonymousView.getContext();
+        localObject = new Intent(paramAnonymousView, OpenIMAddressUI.class);
+        ((Intent)localObject).addFlags(67108864);
+        ((Intent)localObject).putExtra("key_openim_acctype_id", ab.a(ab.this));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/ui/contact/OpenIMListViewItem$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/ui/contact/OpenIMListViewItem$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/OpenIMListViewItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(37931);
       }
-      label374:
-      localObject = null;
+    });
+    paramString.setOnTouchListener(new View.OnTouchListener()
+    {
+      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(37932);
+        if ((ab.b(ab.this) instanceof MMActivity)) {
+          ((MMActivity)ab.b(ab.this)).hideVKB();
+        }
+        AppMethodBeat.o(37932);
+        return false;
+      }
+    });
+    paramContext = (MaskLayout)paramString.findViewById(R.h.dtj);
+    ((com.tencent.mm.openim.a.a)h.ae(com.tencent.mm.openim.a.a.class)).b(this.XuW, "openim_acct_type_icon", a.a.mxY);
+    if (this.XuW.equals("cloudim")) {
+      ((ImageView)paramContext.getContentView()).setImageResource(R.k.avatar_wechat_frame);
     }
+    paramContext = ((com.tencent.mm.openim.a.a)h.ae(com.tencent.mm.openim.a.a.class)).b(this.XuW, "openim_acct_type_title", a.a.mxX);
+    ((TextView)findViewById(R.h.dFE)).setText(paramContext);
+    AppMethodBeat.o(37933);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ab
  * JD-Core Version:    0.7.0.1
  */

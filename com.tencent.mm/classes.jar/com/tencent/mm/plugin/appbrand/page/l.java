@@ -1,392 +1,279 @@
 package com.tencent.mm.plugin.appbrand.page;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.ViewParent;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.luggage.h.g;
+import android.content.Intent;
+import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
+import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
+import com.tencent.luggage.sdk.launching.ActivityStarterIpcDelegate;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.h;
-import com.tencent.mm.plugin.appbrand.h.d;
+import com.tencent.mm.plugin.appbrand.a.c.a;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.appcache.e;
+import com.tencent.mm.plugin.appbrand.au.e;
+import com.tencent.mm.plugin.appbrand.au.h;
+import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.mm.plugin.appbrand.config.WxaExposedParams.a;
+import com.tencent.mm.plugin.appbrand.game.e.b.b.a;
+import com.tencent.mm.plugin.appbrand.jsapi.op_report.AppBrandOpReportLogic.a;
+import com.tencent.mm.plugin.appbrand.page.capsulebar.a.b;
+import com.tencent.mm.plugin.appbrand.report.j;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandAuthorizeUI;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandProfileUI;
+import com.tencent.mm.protocal.protobuf.cas;
+import com.tencent.mm.protocal.protobuf.cat;
+import com.tencent.mm.protocal.protobuf.foe;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.ui.MMFragmentActivity.a;
-import com.tencent.mm.ui.widget.c;
-import kotlin.g.b.p;
-import me.imid.swipebacklayout.lib.SwipeBackLayout;
-import me.imid.swipebacklayout.lib.SwipeBackLayout.a;
-import me.imid.swipebacklayout.lib.SwipeBackLayout.b;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vending.e.a;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/page/AppBrandModularizingErrorReplayView;", "Lme/imid/swipebacklayout/lib/SwipeBackLayout;", "Landroid/content/DialogInterface;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "actionBar", "Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar;", "appearAnimation", "Landroid/view/animation/Animation;", "dismissAnimation", "drawStatusBarLayout", "Lcom/tencent/mm/ui/statusbar/DrawStatusBarFrameLayout;", "iconImageView", "Landroid/widget/ImageView;", "negativeButton", "Landroid/content/DialogInterface$OnClickListener;", "getNegativeButton", "()Landroid/content/DialogInterface$OnClickListener;", "setNegativeButton", "(Landroid/content/DialogInterface$OnClickListener;)V", "pageContainer", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageContainer;", "positiveButton", "getPositiveButton", "setPositiveButton", "cancel", "", "cleanup", "dismiss", "dismissWithoutAnimation", "dispatchKeyEventPreIme", "", "event", "Landroid/view/KeyEvent;", "dispatchTouchEvent", "ev", "Landroid/view/MotionEvent;", "onDetachedFromWindow", "resetStyle", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "show", "endAction", "Ljava/lang/Runnable;", "plugin-appbrand-integration_release"})
-public final class l
-  extends SwipeBackLayout
-  implements DialogInterface
+public class l
 {
-  w cAt;
-  com.tencent.mm.plugin.appbrand.widget.actionbar.b kGn;
-  private DialogInterface.OnClickListener nof;
-  private DialogInterface.OnClickListener nog;
-  private Animation noh;
-  Animation noi;
-  private com.tencent.mm.ui.statusbar.b noj;
-  ImageView nok;
+  private static final HashMap<AppBrandRuntime, l> qpC;
+  private static final l qpE;
+  private AppBrandRuntime nxs;
+  private String qpD;
   
-  public l(final Context paramContext)
+  static
   {
-    super(paramContext);
-    AppMethodBeat.i(50928);
-    cb.cE((View)this);
-    a((SwipeBackLayout.a)new SwipeBackLayout.b()
+    AppMethodBeat.i(47795);
+    qpC = new HashMap();
+    qpE = new l.1();
+    AppMethodBeat.o(47795);
+  }
+  
+  private l(final AppBrandRuntime paramAppBrandRuntime)
+  {
+    AppMethodBeat.i(175027);
+    this.nxs = paramAppBrandRuntime;
+    if (paramAppBrandRuntime == null)
     {
-      public final void LN() {}
-      
-      public final void bQF()
+      AppMethodBeat.o(175027);
+      return;
+    }
+    paramAppBrandRuntime.ntR.a(new c.a()
+    {
+      public final void a(String paramAnonymousString, com.tencent.mm.plugin.appbrand.a.b paramAnonymousb)
       {
-        AppMethodBeat.i(50916);
-        this.nol.setVisibility(8);
-        this.nol.post((Runnable)new a(this));
-        AppMethodBeat.o(50916);
+        AppMethodBeat.i(175023);
+        l.qpC.remove(paramAppBrandRuntime);
+        AppMethodBeat.o(175023);
       }
-      
-      public final int bS(boolean paramAnonymousBoolean)
-      {
-        return 1;
+    });
+    AppMethodBeat.o(175027);
+  }
+  
+  public static l ad(AppBrandRuntime paramAppBrandRuntime)
+  {
+    AppMethodBeat.i(47787);
+    if ((paramAppBrandRuntime == null) || (paramAppBrandRuntime.ntU.get()))
+    {
+      paramAppBrandRuntime = qpE;
+      AppMethodBeat.o(47787);
+      return paramAppBrandRuntime;
+    }
+    l locall2 = (l)qpC.get(paramAppBrandRuntime);
+    l locall1 = locall2;
+    if (locall2 == null)
+    {
+      locall1 = new l(paramAppBrandRuntime);
+      qpC.put(paramAppBrandRuntime, locall1);
+    }
+    AppMethodBeat.o(47787);
+    return locall1;
+  }
+  
+  public b Cn(int paramInt)
+  {
+    AppMethodBeat.i(47793);
+    if (paramInt == a.b.qwK.ordinal())
+    {
+      AppMethodBeat.o(47793);
+      return null;
+    }
+    b localb = new b();
+    Context localContext = MMApplicationContext.getContext();
+    if (paramInt == a.b.qwL.ordinal())
+    {
+      localb.desc = localContext.getString(au.i.appbrand_menu_status_lbs);
+      localb.qpN = au.h.appbrand_menu_header_lbs;
+    }
+    for (localb.qpM = au.e.app_brand_menu_header_status_bg_blue;; localb.qpM = au.e.app_brand_menu_header_status_bg_red)
+    {
+      AppMethodBeat.o(47793);
+      return localb;
+      if (paramInt != a.b.qwM.ordinal()) {
+        break;
       }
-      
-      public final void i(int paramAnonymousInt, float paramAnonymousFloat) {}
-      
-      public final void n(MotionEvent paramAnonymousMotionEvent) {}
-      
-      @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-      static final class a
-        implements Runnable
+      localb.desc = localContext.getString(au.i.appbrand_menu_status_record_voice);
+      localb.qpN = au.h.appbrand_menu_header_record_voice;
+    }
+    AppMethodBeat.o(47793);
+    return null;
+  }
+  
+  public void a(final a parama, com.tencent.mm.vending.e.b<? extends a> paramb)
+  {
+    AppMethodBeat.i(259865);
+    if (!Util.isNullOrNil(this.qpD))
+    {
+      parama.alt(this.qpD);
+      AppMethodBeat.o(259865);
+      return;
+    }
+    cas localcas = new cas();
+    localcas.username = ((AppBrandInitConfigLU)this.nxs.Sq()).username;
+    d.a locala = new d.a();
+    locala.funcId = 2921;
+    locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/getprofileinfo";
+    locala.lBU = localcas;
+    locala.lBV = new cat();
+    IPCRunCgi.a(locala.bgN(), new IPCRunCgi.a()
+    {
+      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, final String paramAnonymousString, com.tencent.mm.an.d paramAnonymousd)
       {
-        a(l.1 param1) {}
-        
-        public final void run()
+        AppMethodBeat.i(175025);
+        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && (paramAnonymousd != null) && (d.c.b(paramAnonymousd.lBS) != null) && ((d.c.b(paramAnonymousd.lBS) instanceof cat)))
         {
-          AppMethodBeat.i(50915);
-          ViewParent localViewParent = this.nom.nol.getParent();
-          Object localObject = localViewParent;
-          if (!(localViewParent instanceof ViewGroup)) {
-            localObject = null;
+          Log.i("MicroMsg.AppBrandMenuHeaderDataHelper", "queryProfile, request success");
+          paramAnonymousString = (cat)d.c.b(paramAnonymousd.lBS);
+          if ((paramAnonymousString.TiX == null) || (paramAnonymousString.TiX.UMs == -1.0D)) {
+            paramAnonymousString = null;
           }
-          localObject = (ViewGroup)localObject;
-          if (localObject != null)
+        }
+        for (;;)
+        {
+          MMHandlerThread.postToMainThread(new Runnable()
           {
-            ((ViewGroup)localObject).removeView((View)this.nom.nol);
-            AppMethodBeat.o(50915);
-            return;
+            public final void run()
+            {
+              AppMethodBeat.i(175024);
+              l.a(l.this, paramAnonymousString);
+              l.3.this.qpH.alt(paramAnonymousString);
+              AppMethodBeat.o(175024);
+            }
+          });
+          AppMethodBeat.o(175025);
+          return;
+          if (paramAnonymousString.TiX.UMs == 0.0D)
+          {
+            paramAnonymousString = MMApplicationContext.getContext().getString(au.i.app_brand_profile_star_not_enough);
           }
-          AppMethodBeat.o(50915);
+          else
+          {
+            paramAnonymousString = MMApplicationContext.getContext().getString(au.i.appbrand_score_text, new Object[] { String.valueOf(paramAnonymousString.TiX.UMs) });
+            continue;
+            paramAnonymousString = MMApplicationContext.getContext().getString(au.i.appbrand_no_score);
+            Log.e("MicroMsg.AppBrandMenuHeaderDataHelper", "queryProfile, request fail");
+          }
         }
       }
-    });
-    Object localObject1 = new com.tencent.mm.ui.statusbar.b(paramContext);
-    ((com.tencent.mm.ui.statusbar.b)localObject1).setClickable(true);
-    ((com.tencent.mm.ui.statusbar.b)localObject1).setBackgroundColor(-1);
-    ((com.tencent.mm.ui.statusbar.b)localObject1).setWillNotDraw(false);
-    ((com.tencent.mm.ui.statusbar.b)localObject1).CF(false);
-    ((com.tencent.mm.ui.statusbar.b)localObject1).S(0, true);
-    this.noj = ((com.tencent.mm.ui.statusbar.b)localObject1);
-    addView((View)this.noj, new ViewGroup.LayoutParams(-1, -1));
-    setContentView((View)this.noj);
-    localObject1 = new com.tencent.mm.plugin.appbrand.widget.actionbar.b(paramContext);
-    ((com.tencent.mm.plugin.appbrand.widget.actionbar.b)localObject1).setFullscreenMode(false);
-    ((com.tencent.mm.plugin.appbrand.widget.actionbar.b)localObject1).setBackButtonClickListener((View.OnClickListener)new a(this, paramContext));
-    ((com.tencent.mm.plugin.appbrand.widget.actionbar.b)localObject1).setCloseButtonClickListener((View.OnClickListener)new b(this, paramContext));
-    Object localObject2 = this.noj;
-    if (localObject2 == null) {
-      p.hyc();
-    }
-    ((com.tencent.mm.ui.statusbar.b)localObject2).addView((View)localObject1, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, com.tencent.mm.plugin.appbrand.widget.b.eu(paramContext)));
-    this.kGn = ((com.tencent.mm.plugin.appbrand.widget.actionbar.b)localObject1);
-    localObject1 = LayoutInflater.from(paramContext).inflate(2131493051, (ViewGroup)this.noj, false);
-    ((TextView)((View)localObject1).findViewById(2131296797)).setText(2131755558);
-    ((TextView)((View)localObject1).findViewById(2131296795)).setText(2131755557);
-    localObject2 = this.noj;
-    if (localObject2 == null) {
-      p.hyc();
-    }
-    ((com.tencent.mm.ui.statusbar.b)localObject2).addView((View)localObject1);
-    p.g(localObject1, "this");
-    localObject2 = ((View)localObject1).getLayoutParams();
-    localObject1 = localObject2;
-    if (!(localObject2 instanceof ViewGroup.MarginLayoutParams)) {
-      localObject1 = null;
-    }
-    localObject1 = (ViewGroup.MarginLayoutParams)localObject1;
-    if (localObject1 != null) {
-      ((ViewGroup.MarginLayoutParams)localObject1).topMargin = com.tencent.mm.plugin.appbrand.widget.b.eu(paramContext);
-    }
-    this.nok = ((ImageView)findViewById(2131296796));
-    findViewById(2131296795).setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    }, paramb);
+    AppMethodBeat.o(259865);
+  }
+  
+  public Runnable c(final com.tencent.luggage.sdk.b.a.c paramc)
+  {
+    AppMethodBeat.i(47794);
+    l.4 local4 = new l.4(this);
+    final AppBrandSysConfigLU localAppBrandSysConfigLU = (AppBrandSysConfigLU)this.nxs.Sp();
+    final AppBrandInitConfigLU localAppBrandInitConfigLU = (AppBrandInitConfigLU)this.nxs.Sq();
+    if ((localAppBrandSysConfigLU == null) || (localAppBrandInitConfigLU == null))
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(50917);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/appbrand/page/AppBrandModularizingErrorReplayView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        paramAnonymousView = this.nol.getPositiveButton();
-        if (paramAnonymousView != null) {
-          paramAnonymousView.onClick((DialogInterface)this.nol, -1);
-        }
-        a.a(this, "com/tencent/mm/plugin/appbrand/page/AppBrandModularizingErrorReplayView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(50917);
-      }
-    });
-    AppMethodBeat.o(50928);
-  }
-  
-  public final void bQE()
-  {
-    AppMethodBeat.i(50923);
-    setVisibility(8);
-    cleanup();
-    AppMethodBeat.o(50923);
-  }
-  
-  public final void cancel()
-  {
-    AppMethodBeat.i(50924);
-    dismiss();
-    DialogInterface.OnClickListener localOnClickListener = this.nog;
-    if (localOnClickListener != null)
+      AppMethodBeat.o(47794);
+      return local4;
+    }
+    paramc = new Runnable()
     {
-      localOnClickListener.onClick((DialogInterface)this, -2);
-      AppMethodBeat.o(50924);
-      return;
-    }
-    AppMethodBeat.o(50924);
-  }
-  
-  public final void cleanup()
-  {
-    Object localObject1 = null;
-    AppMethodBeat.i(50921);
-    Object localObject2 = getAnimation();
-    if (localObject2 != null) {
-      ((Animation)localObject2).cancel();
-    }
-    localObject2 = getAnimation();
-    if (localObject2 != null) {
-      ((Animation)localObject2).setAnimationListener(null);
-    }
-    localObject2 = getParent();
-    if (!(localObject2 instanceof ViewGroup)) {}
-    for (;;)
-    {
-      localObject1 = (ViewGroup)localObject1;
-      if (localObject1 != null)
-      {
-        ((ViewGroup)localObject1).removeView((View)this);
-        AppMethodBeat.o(50921);
-        return;
-      }
-      AppMethodBeat.o(50921);
-      return;
-      localObject1 = localObject2;
-    }
-  }
-  
-  public final void dismiss()
-  {
-    AppMethodBeat.i(50922);
-    Animation localAnimation = this.noh;
-    if (localAnimation != null) {
-      localAnimation.cancel();
-    }
-    this.noh = AnimationUtils.loadAnimation(getContext(), MMFragmentActivity.a.ogp);
-    localAnimation = this.noh;
-    if (localAnimation == null) {
-      p.hyc();
-    }
-    localAnimation.setAnimationListener((Animation.AnimationListener)new c(this));
-    localAnimation = this.noh;
-    if (localAnimation == null) {
-      p.hyc();
-    }
-    startAnimation(localAnimation);
-    AppMethodBeat.o(50922);
-  }
-  
-  public final boolean dispatchKeyEventPreIme(KeyEvent paramKeyEvent)
-  {
-    AppMethodBeat.i(50927);
-    if ((this.noh != null) || (this.noi != null))
-    {
-      AppMethodBeat.o(50927);
-      return true;
-    }
-    if ((paramKeyEvent != null) && (paramKeyEvent.getAction() == 0) && (paramKeyEvent.getKeyCode() == 4))
-    {
-      g.aM(getContext());
-      dismiss();
-      AppMethodBeat.o(50927);
-      return true;
-    }
-    boolean bool = super.dispatchKeyEventPreIme(paramKeyEvent);
-    AppMethodBeat.o(50927);
-    return bool;
-  }
-  
-  public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(50926);
-    if ((this.noh != null) || (this.noi != null))
-    {
-      AppMethodBeat.o(50926);
-      return true;
-    }
-    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(50926);
-    return bool;
-  }
-  
-  public final DialogInterface.OnClickListener getNegativeButton()
-  {
-    return this.nog;
-  }
-  
-  public final DialogInterface.OnClickListener getPositiveButton()
-  {
-    return this.nof;
-  }
-  
-  protected final void onDetachedFromWindow()
-  {
-    AppMethodBeat.i(50925);
-    super.onDetachedFromWindow();
-    this.nof = null;
-    this.nog = null;
-    this.noh = null;
-    this.noi = null;
-    this.cAt = null;
-    AppMethodBeat.o(50925);
-  }
-  
-  public final void setNegativeButton(DialogInterface.OnClickListener paramOnClickListener)
-  {
-    this.nog = paramOnClickListener;
-  }
-  
-  public final void setPositiveButton(DialogInterface.OnClickListener paramOnClickListener)
-  {
-    this.nof = paramOnClickListener;
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/appbrand/page/AppBrandModularizingErrorReplayView$3$1"})
-  static final class a
-    implements View.OnClickListener
-  {
-    a(l paraml, Context paramContext) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(50913);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      a.b("com/tencent/mm/plugin/appbrand/page/AppBrandModularizingErrorReplayView$$special$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      this.nol.dismiss();
-      a.a(this, "com/tencent/mm/plugin/appbrand/page/AppBrandModularizingErrorReplayView$$special$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(50913);
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/appbrand/page/AppBrandModularizingErrorReplayView$3$2"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(l paraml, Context paramContext) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(50914);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      a.b("com/tencent/mm/plugin/appbrand/page/AppBrandModularizingErrorReplayView$$special$$inlined$apply$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      paramView = l.b(this.nol);
-      if (paramView != null)
-      {
-        paramView = paramView.getRuntime();
-        if (paramView != null)
-        {
-          h.a(paramView.getAppId(), h.d.kzP);
-          paramView.close();
-        }
-      }
-      a.a(this, "com/tencent/mm/plugin/appbrand/page/AppBrandModularizingErrorReplayView$$special$$inlined$apply$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(50914);
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/page/AppBrandModularizingErrorReplayView$dismiss$1", "Lcom/tencent/mm/ui/widget/MMAnimationListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "plugin-appbrand-integration_release"})
-  public static final class c
-    extends c
-  {
-    public final void onAnimationEnd(Animation paramAnimation)
-    {
-      AppMethodBeat.i(50919);
-      this.nol.setVisibility(8);
-      MMHandlerThread.postToMainThread((Runnable)new a(this));
-      AppMethodBeat.o(50919);
-    }
-    
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-    static final class a
-      implements Runnable
-    {
-      a(l.c paramc) {}
-      
       public final void run()
       {
-        AppMethodBeat.i(50918);
-        this.non.nol.cleanup();
-        AppMethodBeat.o(50918);
+        AppMethodBeat.i(47786);
+        String str1 = "";
+        if (((com.tencent.luggage.sdk.e.d)l.a(l.this)).Sk().cxf != null) {
+          str1 = localAppBrandInitConfigLU.cwP;
+        }
+        new com.tencent.mm.plugin.appbrand.game.e.b.b().a(paramc.QN(), b.a.onS, 0);
+        AppBrandOpReportLogic.a.d(paramc);
+        WxaExposedParams.a locala = new WxaExposedParams.a();
+        locala.appId = localAppBrandSysConfigLU.appId;
+        locala.from = 3;
+        if (paramc.qoF == null) {}
+        for (String str2 = "";; str2 = paramc.oxe)
+        {
+          locala.pageId = str2;
+          locala.nHY = localAppBrandSysConfigLU.nYR.nHY;
+          locala.pkgVersion = localAppBrandSysConfigLU.nYR.pkgVersion;
+          AppBrandProfileUI.a(paramc.getContext(), localAppBrandInitConfigLU.username, 3, str1, locala.bLN(), null, ActivityStarterIpcDelegate.aH(paramc.getContext()));
+          j.a(paramc.getAppId(), paramc.oxe, 6, "", Util.nowSecond(), 1, 0);
+          AppMethodBeat.o(47786);
+          return;
+        }
       }
-    }
+    };
+    AppMethodBeat.o(47794);
+    return paramc;
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/page/AppBrandModularizingErrorReplayView$show$1", "Lcom/tencent/mm/ui/widget/MMAnimationListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "plugin-appbrand-integration_release"})
-  public static final class d
-    extends c
+  public String cdq()
   {
-    d(Runnable paramRunnable) {}
-    
-    public final void onAnimationEnd(Animation paramAnimation)
+    AppMethodBeat.i(47788);
+    String str = this.nxs.Sp().mnM;
+    AppMethodBeat.o(47788);
+    return str;
+  }
+  
+  public String cdr()
+  {
+    AppMethodBeat.i(47789);
+    String str = this.nxs.Sp().fzM;
+    AppMethodBeat.o(47789);
+    return str;
+  }
+  
+  public String cds()
+  {
+    AppMethodBeat.i(47790);
+    String str = e.yZ(this.nxs.Sp().nYR.nHY);
+    AppMethodBeat.o(47790);
+    return str;
+  }
+  
+  public boolean cdt()
+  {
+    AppMethodBeat.i(47791);
+    if (this.nxs.Sq().originalFlag == 1)
     {
-      AppMethodBeat.i(50920);
-      l.a(this.nol);
-      paramAnimation = this.noo;
-      if (paramAnimation != null)
-      {
-        paramAnimation.run();
-        AppMethodBeat.o(50920);
-        return;
-      }
-      AppMethodBeat.o(50920);
+      AppMethodBeat.o(47791);
+      return true;
     }
+    AppMethodBeat.o(47791);
+    return false;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void alt(String paramString);
+  }
+  
+  public static final class b
+  {
+    public String desc;
+    public int qpM;
+    public int qpN;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.l
  * JD-Core Version:    0.7.0.1
  */

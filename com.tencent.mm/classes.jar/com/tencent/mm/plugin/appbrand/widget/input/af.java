@@ -1,29 +1,84 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.content.Context;
+import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.widget.input.autofill.b;
 
 public abstract interface af
 {
-  public abstract void a(String paramString, int paramInt, a parama);
+  public abstract int DU(int paramInt);
   
-  public static enum a
+  public abstract void G(ad paramad);
+  
+  public abstract void H(ad paramad);
+  
+  public abstract void S(float paramFloat1, float paramFloat2);
+  
+  public abstract void a(View.OnFocusChangeListener paramOnFocusChangeListener);
+  
+  public abstract void a(a parama);
+  
+  public abstract void a(c paramc);
+  
+  public abstract void addTextChangedListener(TextWatcher paramTextWatcher);
+  
+  public abstract void b(View.OnFocusChangeListener paramOnFocusChangeListener);
+  
+  public abstract boolean coH();
+  
+  public abstract boolean coI();
+  
+  public abstract boolean coL();
+  
+  public abstract void cpb();
+  
+  public abstract void cpc();
+  
+  public abstract void cpd();
+  
+  public abstract void destroy();
+  
+  public abstract b getAutoFillController();
+  
+  public abstract Context getContext();
+  
+  public abstract int getInputId();
+  
+  public abstract View getInputPanel();
+  
+  public abstract char getLastKeyPressed();
+  
+  public abstract CharSequence getText();
+  
+  public abstract View getView();
+  
+  public abstract void setFixed(boolean paramBoolean);
+  
+  public abstract void setInputId(int paramInt);
+  
+  public abstract void setOnKeyUpPostImeListener(b paramb);
+  
+  public static abstract interface a
   {
-    static
-    {
-      AppMethodBeat.i(131516);
-      ouW = new a("COMPLETE", 0);
-      ouX = new a("CONFIRM", 1);
-      ouY = new a("CHANGED", 2);
-      ouZ = new a[] { ouW, ouX, ouY };
-      AppMethodBeat.o(131516);
-    }
-    
-    private a() {}
+    public abstract void cN();
+  }
+  
+  public static abstract interface b
+  {
+    public abstract boolean DK(int paramInt);
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void coK();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.af
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,10 @@
 package kotlin.l.b.a.b.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Arrays;
 
 public abstract class n$a
 {
-  public final p hEo()
+  public final p iII()
   {
     Object localObject2 = null;
     if (!(this instanceof b)) {}
@@ -14,70 +13,22 @@ public abstract class n$a
       b localb = (b)localObject1;
       localObject1 = localObject2;
       if (localb != null) {
-        localObject1 = localb.TvO;
+        localObject1 = localb.aaYE;
       }
       return localObject1;
-    }
-  }
-  
-  public static final class a
-    extends n.a
-  {
-    public final byte[] content;
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(58219);
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof a))
-        {
-          paramObject = (a)paramObject;
-          if (!kotlin.g.b.p.j(this.content, paramObject.content)) {}
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(58219);
-        return true;
-      }
-      AppMethodBeat.o(58219);
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      AppMethodBeat.i(58218);
-      byte[] arrayOfByte = this.content;
-      if (arrayOfByte != null)
-      {
-        int i = Arrays.hashCode(arrayOfByte);
-        AppMethodBeat.o(58218);
-        return i;
-      }
-      AppMethodBeat.o(58218);
-      return 0;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(58217);
-      String str = "ClassFileContent(content=" + Arrays.toString(this.content) + ")";
-      AppMethodBeat.o(58217);
-      return str;
     }
   }
   
   public static final class b
     extends n.a
   {
-    final p TvO;
+    final p aaYE;
     
     public b(p paramp)
     {
       super();
       AppMethodBeat.i(58220);
-      this.TvO = paramp;
+      this.aaYE = paramp;
       AppMethodBeat.o(58220);
     }
     
@@ -89,7 +40,7 @@ public abstract class n$a
         if ((paramObject instanceof b))
         {
           paramObject = (b)paramObject;
-          if (!kotlin.g.b.p.j(this.TvO, paramObject.TvO)) {}
+          if (!kotlin.g.b.p.h(this.aaYE, paramObject.aaYE)) {}
         }
       }
       else
@@ -104,7 +55,7 @@ public abstract class n$a
     public final int hashCode()
     {
       AppMethodBeat.i(58222);
-      p localp = this.TvO;
+      p localp = this.aaYE;
       if (localp != null)
       {
         int i = localp.hashCode();
@@ -118,7 +69,7 @@ public abstract class n$a
     public final String toString()
     {
       AppMethodBeat.i(58221);
-      String str = "KotlinClass(kotlinJvmBinaryClass=" + this.TvO + ")";
+      String str = "KotlinClass(kotlinJvmBinaryClass=" + this.aaYE + ")";
       AppMethodBeat.o(58221);
       return str;
     }
@@ -126,7 +77,7 @@ public abstract class n$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlin.l.b.a.b.d.b.n.a
  * JD-Core Version:    0.7.0.1
  */

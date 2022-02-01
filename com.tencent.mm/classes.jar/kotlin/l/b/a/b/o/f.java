@@ -5,14 +5,14 @@ import kotlin.g.b.p;
 
 public final class f
 {
-  public final String Itb;
-  public final int TRT;
+  public final String PlL;
+  public final int abus;
   
   public f(String paramString, int paramInt)
   {
     AppMethodBeat.i(61369);
-    this.Itb = paramString;
-    this.TRT = paramInt;
+    this.PlL = paramString;
+    this.abus = paramInt;
     AppMethodBeat.o(61369);
   }
   
@@ -24,7 +24,7 @@ public final class f
       if ((paramObject instanceof f))
       {
         paramObject = (f)paramObject;
-        if ((!p.j(this.Itb, paramObject.Itb)) || (this.TRT != paramObject.TRT)) {}
+        if ((!p.h(this.PlL, paramObject.PlL)) || (this.abus != paramObject.abus)) {}
       }
     }
     else
@@ -39,11 +39,11 @@ public final class f
   public final int hashCode()
   {
     AppMethodBeat.i(61371);
-    String str = this.Itb;
+    String str = this.PlL;
     if (str != null) {}
     for (int i = str.hashCode();; i = 0)
     {
-      int j = this.TRT;
+      int j = this.abus;
       AppMethodBeat.o(61371);
       return i * 31 + j;
     }
@@ -52,7 +52,7 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(61370);
-    String str = "NumberWithRadix(number=" + this.Itb + ", radix=" + this.TRT + ")";
+    String str = "NumberWithRadix(number=" + this.PlL + ", radix=" + this.abus + ")";
     AppMethodBeat.o(61370);
     return str;
   }

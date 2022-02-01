@@ -11,8 +11,8 @@ class GroupIDKeyDataInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<GroupIDKeyDataInfo> CREATOR;
-  ArrayList<IDKey> CxX;
-  public boolean CxY;
+  ArrayList<IDKey> IyW;
+  public boolean IyX;
   
   static
   {
@@ -24,12 +24,12 @@ class GroupIDKeyDataInfo
   protected GroupIDKeyDataInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(143814);
-    this.CxX = new ArrayList();
-    paramParcel.readTypedList(this.CxX, IDKey.CREATOR);
+    this.IyW = new ArrayList();
+    paramParcel.readTypedList(this.IyW, IDKey.CREATOR);
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.CxY = bool;
+      this.IyX = bool;
       AppMethodBeat.o(143814);
       return;
       bool = false;
@@ -39,9 +39,9 @@ class GroupIDKeyDataInfo
   GroupIDKeyDataInfo(ArrayList<IDKey> paramArrayList)
   {
     AppMethodBeat.i(143812);
-    this.CxX = new ArrayList();
-    this.CxX = paramArrayList;
-    this.CxY = false;
+    this.IyW = new ArrayList();
+    this.IyW = paramArrayList;
+    this.IyX = false;
     AppMethodBeat.o(143812);
   }
   
@@ -53,8 +53,8 @@ class GroupIDKeyDataInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(143813);
-    paramParcel.writeTypedList(this.CxX);
-    if (this.CxY) {}
+    paramParcel.writeTypedList(this.IyW);
+    if (this.IyX) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
@@ -65,7 +65,7 @@ class GroupIDKeyDataInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.report.service.GroupIDKeyDataInfo
  * JD-Core Version:    0.7.0.1
  */

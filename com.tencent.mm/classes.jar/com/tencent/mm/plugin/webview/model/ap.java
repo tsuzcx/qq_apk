@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hq;
+import com.tencent.mm.f.c.hx;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class ap
-  extends hq
+  extends hx
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   

@@ -14,69 +14,69 @@ import android.view.Window;
 import com.tencent.kinda.gen.VoidBoolStringI32StringCallback;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.br.c;
-import com.tencent.mm.g.a.aaa;
-import com.tencent.mm.g.a.aab;
-import com.tencent.mm.g.a.zp;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.f.a.aaw;
+import com.tencent.mm.f.a.abh;
+import com.tencent.mm.f.a.abi;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.wallet_index.c.e;
 import com.tencent.mm.plugin.wallet_index.c.k;
 import com.tencent.mm.plugin.wallet_index.c.l;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 import com.tencent.mm.pluginsdk.wallet.WalletJsapiData;
-import com.tencent.mm.protocal.protobuf.exi;
-import com.tencent.mm.protocal.protobuf.th;
+import com.tencent.mm.protocal.protobuf.fhv;
+import com.tencent.mm.protocal.protobuf.tj;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
+import com.tencent.mm.wallet_core.b;
 import com.tencent.mm.wallet_core.c.ab;
 import com.tencent.mm.wallet_core.c.af;
+import com.tencent.mm.wallet_core.ui.g;
 
 @com.tencent.mm.ui.base.a(7)
 public class WalletBrandUI
   extends MMActivity
-  implements i
+  implements com.tencent.mm.an.i
 {
-  private boolean IrJ;
-  private b IrK;
-  private WalletJsapiData IrL;
-  private final int IrM;
-  public String IrN;
-  private int IrO;
-  public boolean IrP;
-  private IListener IrQ;
-  private IListener IrR;
-  private int efQ;
-  private q gNg;
-  public VoidBoolStringI32StringCallback hgw;
-  public VoidCallback hgx;
+  private IListener PkA;
+  private boolean Pks;
+  private b Pkt;
+  private WalletJsapiData Pku;
+  private final int Pkv;
+  public String Pkw;
+  private int Pkx;
+  public boolean Pky;
+  private IListener Pkz;
+  private int gag;
+  public VoidBoolStringI32StringCallback jSq;
+  public VoidCallback jSr;
+  private q jxA;
   private Dialog tipDialog;
   
   public WalletBrandUI()
   {
     AppMethodBeat.i(71901);
-    this.IrJ = false;
+    this.Pks = false;
     this.tipDialog = null;
-    this.gNg = null;
-    this.IrM = (hashCode() & 0xFFFF);
-    this.IrN = "";
-    this.hgw = null;
-    this.hgx = null;
-    this.IrP = false;
-    this.IrQ = new IListener() {};
-    this.IrR = new IListener() {};
+    this.jxA = null;
+    this.Pkv = (hashCode() & 0xFFFF);
+    this.Pkw = "";
+    this.jSq = null;
+    this.jSr = null;
+    this.Pky = false;
+    this.Pkz = new IListener() {};
+    this.PkA = new IListener() {};
     AppMethodBeat.o(71901);
   }
   
-  private static String aVZ(String paramString)
+  private static String bhI(String paramString)
   {
     AppMethodBeat.i(71911);
     int i = paramString.indexOf("prepay_id=");
@@ -102,15 +102,15 @@ public class WalletBrandUI
     return paramString;
   }
   
-  private static boolean aWa(String paramString)
+  private static boolean bhJ(String paramString)
   {
     AppMethodBeat.i(182531);
     Log.i("MicroMsg.WalletBrandUI", "isPrefixDisableKinda: %s", new Object[] { paramString });
     if (paramString.startsWith("tax_"))
     {
       Log.i("MicroMsg.WalletBrandUI", "prepay_id starts With tax_");
-      com.tencent.mm.wallet_core.b.hgC();
-      if (com.tencent.mm.wallet_core.b.b(b.a.rZX, false))
+      b.iie();
+      if (b.b(b.a.vGZ, false))
       {
         Log.i("MicroMsg.WalletBrandUI", "open KindaTaxPaySwitch");
         AppMethodBeat.o(182531);
@@ -123,26 +123,26 @@ public class WalletBrandUI
     return false;
   }
   
-  private boolean fUu()
+  private boolean gNa()
   {
     AppMethodBeat.i(71910);
-    com.tencent.mm.wallet_core.b.hgC();
-    if ((com.tencent.mm.wallet_core.b.b(b.a.rWd, true)) && (this.IrL.packageExt != null))
+    b.iie();
+    if ((b.b(b.a.vCG, true)) && (this.Pku.packageExt != null))
     {
-      String str = aVZ(this.IrL.packageExt);
+      String str = bhI(this.Pku.packageExt);
       if (str == null)
       {
         AppMethodBeat.o(71910);
         return true;
       }
-      boolean bool = aWa(str);
+      boolean bool = bhJ(str);
       Log.i("MicroMsg.WalletBrandUI", "isPrefixDisableKinda :%s", new Object[] { Boolean.valueOf(bool) });
       if (bool)
       {
         AppMethodBeat.o(71910);
         return false;
       }
-      if ((this.IrL.dVv == 3) || (this.IrL.dVv == 46))
+      if ((this.Pku.fOY == 3) || (this.Pku.fOY == 46))
       {
         AppMethodBeat.o(71910);
         return true;
@@ -168,13 +168,13 @@ public class WalletBrandUI
   {
     AppMethodBeat.i(174530);
     Log.i("MicroMsg.WalletBrandUI", "sendMiniAppPayResult result:%d", new Object[] { Integer.valueOf(paramInt) });
-    aab localaab = new aab();
-    localaab.egN.intent = paramIntent;
-    localaab.egN.egM = 1;
-    localaab.egN.dDL = "key_from_scene_appbrandgame";
-    localaab.egN.result = paramInt;
-    localaab.egN.requestCode = this.IrO;
-    EventCenter.instance.publish(localaab);
+    abi localabi = new abi();
+    localabi.gbd.intent = paramIntent;
+    localabi.gbd.gbc = 1;
+    localabi.gbd.fwv = "key_from_scene_appbrandgame";
+    localabi.gbd.result = paramInt;
+    localabi.gbd.requestCode = this.Pkx;
+    EventCenter.instance.publish(localabi);
     AppMethodBeat.o(174530);
   }
   
@@ -182,7 +182,7 @@ public class WalletBrandUI
   {
     AppMethodBeat.i(182530);
     Log.i("MicroMsg.WalletBrandUI", "sendPaySuccessAheadCallbackResult result:%d", new Object[] { Integer.valueOf(paramInt) });
-    if ((this.IrL != null) && (this.IrL.KxQ != null))
+    if ((this.Pku != null) && (this.Pku.RzE != null))
     {
       Intent localIntent = paramIntent;
       if (paramIntent == null) {
@@ -191,7 +191,7 @@ public class WalletBrandUI
       if (localIntent.getExtras() == null) {
         localIntent.putExtras(new Bundle());
       }
-      this.IrL.KxQ.send(paramInt, localIntent.getExtras());
+      this.Pku.RzE.send(paramInt, localIntent.getExtras());
     }
     AppMethodBeat.o(182530);
   }
@@ -206,7 +206,7 @@ public class WalletBrandUI
       {
       }
     }
-    while ((this.IrP) && (paramInt1 == 4) && (paramIntent != null))
+    while ((this.Pky) && (paramInt1 == 4) && (paramIntent != null))
     {
       Log.i("MicroMsg.WalletBrandUI", "onActivityResult For Face Action,resultCode : ".concat(String.valueOf(paramInt2)));
       int i = paramIntent.getIntExtra("err_code", 0);
@@ -221,17 +221,17 @@ public class WalletBrandUI
       Log.i("MicroMsg.WalletBrandUI", "errorType： ".concat(String.valueOf(k)));
       if (paramInt2 == -1)
       {
-        if ((this.hgw != null) && (paramIntent.getExtras() != null))
+        if ((this.jSq != null) && (paramIntent.getExtras() != null))
         {
           paramIntent = paramIntent.getExtras().getString("token");
-          this.hgw.call(false, paramIntent, i, "");
-          this.hgw = null;
+          this.jSq.call(false, paramIntent, i, "");
+          this.jSq = null;
           AppMethodBeat.o(71909);
           return;
           Log.i("MicroMsg.WalletBrandUI", "get result to callback? " + paramIntent.getStringExtra("test"));
         }
       }
-      else if ((this.hgw != null) && (paramIntent.getExtras() != null))
+      else if ((this.jSq != null) && (paramIntent.getExtras() != null))
       {
         paramIntent = paramIntent.getExtras().getString("click_other_verify_btn");
         if ((Util.isNullOrNil(paramIntent)) || (!paramIntent.equalsIgnoreCase("yes"))) {
@@ -245,16 +245,16 @@ public class WalletBrandUI
         if (paramInt1 != 0)
         {
           Log.i("MicroMsg.WalletBrandUI", "check face failed, click other verify");
-          this.hgw.call(true, "", i, "");
-          this.hgw = null;
+          this.jSq.call(true, "", i, "");
+          this.jSq = null;
         }
         if (paramInt2 == 0)
         {
           Log.i("MicroMsg.WalletBrandUI", "resultCode：RESULT_CANCELED");
-          if (this.hgx != null)
+          if (this.jSr != null)
           {
-            this.hgx.call();
-            this.hgx = null;
+            this.jSr.call();
+            this.jSr = null;
           }
           finish();
         }
@@ -270,43 +270,43 @@ public class WalletBrandUI
   {
     AppMethodBeat.i(71902);
     super.onCreate(paramBundle);
-    this.IrL = ((WalletJsapiData)getIntent().getParcelableExtra("WalletJsapiData"));
+    this.Pku = ((WalletJsapiData)getIntent().getParcelableExtra("WalletJsapiData"));
     if ((Build.VERSION.SDK_INT >= 21) && (getWindow() != null))
     {
       getWindow().addFlags(-2147483648);
       getWindow().setStatusBarColor(0);
     }
-    if (this.IrL == null)
+    if (this.Pku == null)
     {
       Log.w("MicroMsg.WalletBrandUI", "no jsapi data");
       finish();
       AppMethodBeat.o(71902);
       return;
     }
-    ((com.tencent.mm.plugin.wxpay.a.a)g.ah(com.tencent.mm.plugin.wxpay.a.a.class)).triggerSoterReInit();
-    com.tencent.soter.a.a.hlD();
-    if (this.IrL.KxM != null) {
-      this.IrN = this.IrL.KxM;
+    ((com.tencent.mm.plugin.wxpay.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.wxpay.a.a.class)).triggerSoterReInit();
+    com.tencent.soter.a.a.ipc();
+    if (this.Pku.RzA != null) {
+      this.Pkw = this.Pku.RzA;
     }
-    this.efQ = this.IrL.dVv;
-    if (this.IrN.equalsIgnoreCase("key_from_scene_appbrandgame"))
+    this.gag = this.Pku.fOY;
+    if (this.Pkw.equalsIgnoreCase("key_from_scene_appbrandgame"))
     {
-      this.IrO = this.IrL.dVw;
-      this.IrL.dVw = 0;
+      this.Pkx = this.Pku.fOZ;
+      this.Pku.fOZ = 0;
     }
-    ab.hht();
-    int i = this.IrL.KxH;
-    Log.i("MicroMsg.WalletBrandUI", "onCreate appbrandScene:%s,payScene:%d,requestCode:%d", new Object[] { this.IrN, Integer.valueOf(this.efQ), Integer.valueOf(this.IrO) });
-    if (z.aUo())
+    ab.iiV();
+    int i = this.Pku.Rzv;
+    Log.i("MicroMsg.WalletBrandUI", "onCreate appbrandScene:%s,payScene:%d,requestCode:%d", new Object[] { this.Pkw, Integer.valueOf(this.gag), Integer.valueOf(this.Pkx) });
+    if (z.bdq())
     {
       Log.i("MicroMsg.WalletBrandUI", "hy: do pay with payu");
-      this.IrK = new e();
+      this.Pkt = new e();
     }
     for (;;)
     {
-      EventCenter.instance.addListener(this.IrQ);
-      EventCenter.instance.addListener(this.IrR);
-      if (!(this.IrK instanceof c)) {
+      EventCenter.instance.addListener(this.Pkz);
+      EventCenter.instance.addListener(this.PkA);
+      if (!(this.Pkt instanceof c)) {
         break;
       }
       Log.i("MicroMsg.WalletBrandUI", "onCreate: do pay with kinda");
@@ -315,31 +315,31 @@ public class WalletBrandUI
       if (i == 2)
       {
         Log.i("MicroMsg.WalletBrandUI", "hy: do pay with h5");
-        this.IrK = new a();
+        this.Pkt = new a();
       }
       else if (i == 3)
       {
         Log.i("MicroMsg.WalletBrandUI", "do pay with mall");
-        this.IrK = new g();
+        this.Pkt = new g();
       }
       else if (i == 4)
       {
         Log.i("MicroMsg.WalletBrandUI", "do pay with component");
-        this.IrK = new d();
+        this.Pkt = new d();
       }
-      else if (fUu())
+      else if (gNa())
       {
         Log.i("MicroMsg.WalletBrandUI", "do pay with kinda");
-        this.IrK = new c();
+        this.Pkt = new c();
       }
       else
       {
         Log.i("MicroMsg.WalletBrandUI", "hy: do pay with tenpay");
-        this.IrK = new f();
+        this.Pkt = new f();
       }
     }
-    g.aAi();
-    g.aAg().hqi.a(this.IrK.fUv(), this);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.a(this.Pkt.gNb(), this);
     AppMethodBeat.o(71902);
   }
   
@@ -348,17 +348,17 @@ public class WalletBrandUI
     AppMethodBeat.i(71903);
     Log.i("MicroMsg.WalletBrandUI", "onDestroy");
     super.onDestroy();
-    if ((this.IrK instanceof c)) {
+    if ((this.Pkt instanceof c)) {
       Log.i("MicroMsg.WalletBrandUI", "onDestroy: do pay with kinda");
     }
     for (;;)
     {
-      EventCenter.instance.removeListener(this.IrQ);
-      EventCenter.instance.removeListener(this.IrR);
+      EventCenter.instance.removeListener(this.Pkz);
+      EventCenter.instance.removeListener(this.PkA);
       AppMethodBeat.o(71903);
       return;
-      g.aAi();
-      g.aAg().hqi.b(this.IrK.fUv(), this);
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHF().kcd.b(this.Pkt.gNb(), this);
     }
   }
   
@@ -389,24 +389,24 @@ public class WalletBrandUI
     AppMethodBeat.i(71905);
     Log.i("MicroMsg.WalletBrandUI", "onResume");
     super.onResume();
-    Log.i("MicroMsg.WalletBrandUI", "Handler jump intercept = %b,taskid = %d,parentName = %s", new Object[] { Boolean.valueOf(this.IrJ), Integer.valueOf(getTaskId()), getCallingActivity() });
-    if (!this.IrJ)
+    Log.i("MicroMsg.WalletBrandUI", "Handler jump intercept = %b,taskid = %d,parentName = %s", new Object[] { Boolean.valueOf(this.Pks), Integer.valueOf(getTaskId()), getCallingActivity() });
+    if (!this.Pks)
     {
-      this.IrJ = true;
-      this.gNg = this.IrK.fUw();
+      this.Pks = true;
+      this.jxA = this.Pkt.gNc();
       if (this.tipDialog != null)
       {
         this.tipDialog.dismiss();
         this.tipDialog = null;
       }
-      if ((!fUu()) && (this.IrL.KxH != 4)) {
-        this.tipDialog = com.tencent.mm.wallet_core.ui.h.b(this, true, new DialogInterface.OnCancelListener()
+      if ((!gNa()) && (this.Pku.Rzv != 4)) {
+        this.tipDialog = com.tencent.mm.wallet_core.ui.i.b(this, true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymousDialogInterface)
           {
             AppMethodBeat.i(71882);
-            g.aAi();
-            g.aAg().hqi.a(WalletBrandUI.a(WalletBrandUI.this));
+            com.tencent.mm.kernel.h.aHH();
+            com.tencent.mm.kernel.h.aHF().kcd.a(WalletBrandUI.a(WalletBrandUI.this));
             WalletBrandUI.this.finish();
             AppMethodBeat.o(71882);
           }
@@ -419,13 +419,13 @@ public class WalletBrandUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(71908);
-    Log.i("MicroMsg.WalletBrandUI", "hy: brandui on scene end. errType: %d, errCode: %d, errMsg:%s scene %s _scene %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramq, this.gNg });
-    if ((paramq.getType() != this.IrK.fUv()) || (paramq != this.gNg))
+    Log.i("MicroMsg.WalletBrandUI", "hy: brandui on scene end. errType: %d, errCode: %d, errMsg:%s scene %s _scene %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramq, this.jxA });
+    if ((paramq.getType() != this.Pkt.gNb()) || (paramq != this.jxA))
     {
       AppMethodBeat.o(71908);
       return;
     }
-    this.IrK.onSceneEnd(paramInt1, paramInt2, paramString, paramq);
+    this.Pkt.onSceneEnd(paramInt1, paramInt2, paramString, paramq);
     AppMethodBeat.o(71908);
   }
   
@@ -450,29 +450,29 @@ public class WalletBrandUI
   public final class a
     implements WalletBrandUI.b
   {
-    private int IrT = 0;
+    private int PkC = 0;
     private String mReqKey = "";
     
     public a() {}
     
-    public final int fUv()
+    public final int gNb()
     {
       return 1563;
     }
     
-    public final q fUw()
+    public final q gNc()
     {
       AppMethodBeat.i(71887);
-      this.IrT = WalletBrandUI.f(WalletBrandUI.this).KxJ;
+      this.PkC = WalletBrandUI.f(WalletBrandUI.this).Rzx;
       int i = WalletBrandUI.f(WalletBrandUI.this).payChannel;
-      com.tencent.mm.plugin.wallet_index.c.a.a locala = new com.tencent.mm.plugin.wallet_index.c.a.a(WalletBrandUI.f(WalletBrandUI.this).appId, WalletBrandUI.f(WalletBrandUI.this).nonceStr, WalletBrandUI.f(WalletBrandUI.this).timeStamp, WalletBrandUI.f(WalletBrandUI.this).packageExt, WalletBrandUI.f(WalletBrandUI.this).dVt, WalletBrandUI.f(WalletBrandUI.this).signType, WalletBrandUI.f(WalletBrandUI.this).url, WalletBrandUI.f(WalletBrandUI.this).dVu, i);
-      g.aAi();
-      g.aAg().hqi.a(locala, 0);
+      com.tencent.mm.plugin.wallet_index.c.a.a locala = new com.tencent.mm.plugin.wallet_index.c.a.a(WalletBrandUI.f(WalletBrandUI.this).appId, WalletBrandUI.f(WalletBrandUI.this).nonceStr, WalletBrandUI.f(WalletBrandUI.this).timeStamp, WalletBrandUI.f(WalletBrandUI.this).packageExt, WalletBrandUI.f(WalletBrandUI.this).fOW, WalletBrandUI.f(WalletBrandUI.this).signType, WalletBrandUI.f(WalletBrandUI.this).url, WalletBrandUI.f(WalletBrandUI.this).fOX, i);
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHF().kcd.a(locala, 0);
       AppMethodBeat.o(71887);
       return locala;
     }
     
-    public final String fUx()
+    public final String gNd()
     {
       return this.mReqKey;
     }
@@ -485,9 +485,9 @@ public class WalletBrandUI
         paramString = ((com.tencent.mm.plugin.wallet_index.c.a.a)paramq).jumpUrl;
         Log.i("MicroMsg.WalletBrandUI", "hy: gen prepay success! url is: %s", new Object[] { paramString });
         this.mReqKey = paramString;
-        paramq = ((com.tencent.mm.plugin.wallet_index.c.a.a)paramq).Irb;
+        paramq = ((com.tencent.mm.plugin.wallet_index.c.a.a)paramq).PjK;
         Intent localIntent;
-        if (this.IrT == 1)
+        if (this.PkC == 1)
         {
           localIntent = new Intent();
           localIntent.putExtra("url", paramString);
@@ -507,7 +507,7 @@ public class WalletBrandUI
             localIntent.putExtra("shouldForceViewPort", true);
             localIntent.putExtra("view_port_code", paramq);
           }
-          com.tencent.mm.wallet_core.ui.f.aA(WalletBrandUI.this.getContext(), localIntent);
+          g.aJ(WalletBrandUI.this.getContext(), localIntent);
           WalletBrandUI.this.setResult(-1);
         }
       }
@@ -537,11 +537,11 @@ public class WalletBrandUI
   
   static abstract interface b
   {
-    public abstract int fUv();
+    public abstract int gNb();
     
-    public abstract q fUw();
+    public abstract q gNc();
     
-    public abstract String fUx();
+    public abstract String gNd();
     
     public abstract void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq);
   }
@@ -551,17 +551,17 @@ public class WalletBrandUI
   {
     c() {}
     
-    public final int fUv()
+    public final int gNb()
     {
       return 0;
     }
     
-    public q fUw()
+    public q gNc()
     {
       AppMethodBeat.i(71890);
       MMActivity.a local1 = new MMActivity.a()
       {
-        private Intent IrV;
+        private Intent PkE;
         
         private void p(int paramAnonymousInt, Intent paramAnonymousIntent)
         {
@@ -591,13 +591,13 @@ public class WalletBrandUI
             {
               Log.i("MicroMsg.WalletBrandUI", "KindaBrand.mmOnActivityResult ClosePage data: %s", new Object[] { Integer.valueOf(paramAnonymousInt2), paramAnonymousIntent.toString() });
               paramAnonymousInt1 = paramAnonymousIntent.getIntExtra("key_jsapi_close_page_after_pay", 0);
-              this.IrV.putExtra("key_jsapi_close_page_after_pay", paramAnonymousInt1);
-              WalletBrandUI.this.setResult(paramAnonymousInt2, this.IrV);
+              this.PkE.putExtra("key_jsapi_close_page_after_pay", paramAnonymousInt1);
+              WalletBrandUI.this.setResult(paramAnonymousInt2, this.PkE);
               AppMethodBeat.o(71889);
               return;
             }
-            this.IrV.putExtras(paramAnonymousIntent);
-            p(paramAnonymousInt2, this.IrV);
+            this.PkE.putExtras(paramAnonymousIntent);
+            p(paramAnonymousInt2, this.PkE);
             AppMethodBeat.o(71889);
             return;
           }
@@ -605,12 +605,12 @@ public class WalletBrandUI
           AppMethodBeat.o(71889);
         }
       };
-      ((com.tencent.mm.pluginsdk.wallet.a)g.af(com.tencent.mm.pluginsdk.wallet.a.class)).startWxpayJsApiPay(WalletBrandUI.this.getContext(), WalletBrandUI.f(WalletBrandUI.this), local1, WalletBrandUI.g(WalletBrandUI.this));
+      ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.pluginsdk.wallet.a.class)).startWxpayJsApiPay(WalletBrandUI.this.getContext(), WalletBrandUI.f(WalletBrandUI.this), local1, WalletBrandUI.g(WalletBrandUI.this));
       AppMethodBeat.o(71890);
       return null;
     }
     
-    public final String fUx()
+    public final String gNd()
     {
       return "";
     }
@@ -626,10 +626,10 @@ public class WalletBrandUI
       super();
     }
     
-    public final q fUw()
+    public final q gNc()
     {
       AppMethodBeat.i(71892);
-      ((com.tencent.mm.pluginsdk.wallet.a)g.af(com.tencent.mm.pluginsdk.wallet.a.class)).startJsApiComponentUseCase(WalletBrandUI.this.getContext(), WalletBrandUI.f(WalletBrandUI.this), new MMActivity.a()
+      ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.pluginsdk.wallet.a.class)).startJsApiComponentUseCase(WalletBrandUI.this.getContext(), WalletBrandUI.f(WalletBrandUI.this), new MMActivity.a()
       {
         public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
         {
@@ -654,22 +654,22 @@ public class WalletBrandUI
     
     e() {}
     
-    public final int fUv()
+    public final int gNb()
     {
       return 1521;
     }
     
-    public final q fUw()
+    public final q gNc()
     {
       AppMethodBeat.i(71893);
-      com.tencent.mm.plugin.wallet_index.c.b.a locala = new com.tencent.mm.plugin.wallet_index.c.b.a(WalletBrandUI.f(WalletBrandUI.this).appId, WalletBrandUI.f(WalletBrandUI.this).signType, WalletBrandUI.f(WalletBrandUI.this).nonceStr, WalletBrandUI.f(WalletBrandUI.this).packageExt, WalletBrandUI.f(WalletBrandUI.this).dVt, WalletBrandUI.f(WalletBrandUI.this).timeStamp, WalletBrandUI.f(WalletBrandUI.this).url, WalletBrandUI.f(WalletBrandUI.this).dVu, WalletBrandUI.f(WalletBrandUI.this).payChannel);
-      g.aAi();
-      g.aAg().hqi.a(locala, 0);
+      com.tencent.mm.plugin.wallet_index.c.b.a locala = new com.tencent.mm.plugin.wallet_index.c.b.a(WalletBrandUI.f(WalletBrandUI.this).appId, WalletBrandUI.f(WalletBrandUI.this).signType, WalletBrandUI.f(WalletBrandUI.this).nonceStr, WalletBrandUI.f(WalletBrandUI.this).packageExt, WalletBrandUI.f(WalletBrandUI.this).fOW, WalletBrandUI.f(WalletBrandUI.this).timeStamp, WalletBrandUI.f(WalletBrandUI.this).url, WalletBrandUI.f(WalletBrandUI.this).fOX, WalletBrandUI.f(WalletBrandUI.this).payChannel);
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHF().kcd.a(locala, 0);
       AppMethodBeat.o(71893);
       return locala;
     }
     
-    public final String fUx()
+    public final String gNd()
     {
       return this.mReqKey;
     }
@@ -678,14 +678,14 @@ public class WalletBrandUI
     {
       AppMethodBeat.i(71894);
       paramq = (com.tencent.mm.plugin.wallet_index.c.b.a)paramq;
-      String str = paramq.IqL;
+      String str = paramq.Pju;
       Log.d("MicroMsg.WalletBrandUI", "req_key = ".concat(String.valueOf(str)));
       this.mReqKey = str;
       PayInfo localPayInfo = new PayInfo();
-      localPayInfo.dDL = str;
+      localPayInfo.fwv = str;
       localPayInfo.appId = WalletBrandUI.f(WalletBrandUI.this).appId;
-      localPayInfo.IqM = paramq.IqM;
-      localPayInfo.dVv = WalletBrandUI.f(WalletBrandUI.this).dVv;
+      localPayInfo.Pjv = paramq.Pjv;
+      localPayInfo.fOY = WalletBrandUI.f(WalletBrandUI.this).fOY;
       localPayInfo.errMsg = paramString;
       localPayInfo.channel = WalletBrandUI.f(WalletBrandUI.this).payChannel;
       com.tencent.mm.pluginsdk.wallet.f.a(WalletBrandUI.this, localPayInfo, 1);
@@ -700,21 +700,21 @@ public class WalletBrandUI
     
     f() {}
     
-    public final int fUv()
+    public final int gNb()
     {
       AppMethodBeat.i(71898);
       Log.i("MicroMsg.WalletBrandUI", "TenpayWalletBrand getGenPrepayFuncId packageExt:%s", new Object[] { WalletBrandUI.f(WalletBrandUI.this).packageExt });
-      if (com.tencent.mm.plugin.wallet_index.c.a.lw(WalletBrandUI.f(WalletBrandUI.this).packageExt, "up_"))
+      if (com.tencent.mm.plugin.wallet_index.c.a.lT(WalletBrandUI.f(WalletBrandUI.this).packageExt, "up_"))
       {
         AppMethodBeat.o(71898);
         return 2519;
       }
-      if (com.tencent.mm.plugin.wallet_index.c.a.lw(WalletBrandUI.f(WalletBrandUI.this).packageExt, "tax_"))
+      if (com.tencent.mm.plugin.wallet_index.c.a.lT(WalletBrandUI.f(WalletBrandUI.this).packageExt, "tax_"))
       {
         AppMethodBeat.o(71898);
         return 2923;
       }
-      if (com.tencent.mm.plugin.wallet_index.c.a.lw(WalletBrandUI.f(WalletBrandUI.this).packageExt, "dc_"))
+      if (com.tencent.mm.plugin.wallet_index.c.a.lT(WalletBrandUI.f(WalletBrandUI.this).packageExt, "dc_"))
       {
         AppMethodBeat.o(71898);
         return 2798;
@@ -723,36 +723,36 @@ public class WalletBrandUI
       return 398;
     }
     
-    public final q fUw()
+    public final q gNc()
     {
       AppMethodBeat.i(71896);
       Object localObject = WalletBrandUI.f(WalletBrandUI.this).appId;
       String str1 = WalletBrandUI.f(WalletBrandUI.this).signType;
       String str2 = WalletBrandUI.f(WalletBrandUI.this).nonceStr;
       String str3 = WalletBrandUI.f(WalletBrandUI.this).packageExt;
-      String str4 = WalletBrandUI.f(WalletBrandUI.this).dVt;
+      String str4 = WalletBrandUI.f(WalletBrandUI.this).fOW;
       String str5 = WalletBrandUI.f(WalletBrandUI.this).timeStamp;
       String str6 = WalletBrandUI.f(WalletBrandUI.this).url;
-      String str7 = WalletBrandUI.f(WalletBrandUI.this).dVu;
+      String str7 = WalletBrandUI.f(WalletBrandUI.this).fOX;
       int i = WalletBrandUI.f(WalletBrandUI.this).payChannel;
-      int j = WalletBrandUI.f(WalletBrandUI.this).dVv;
-      int k = WalletBrandUI.f(WalletBrandUI.this).KxG;
-      String str8 = WalletBrandUI.f(WalletBrandUI.this).iDk;
-      if (com.tencent.mm.plugin.wallet_index.c.a.lw(str3, "up_")) {
+      int j = WalletBrandUI.f(WalletBrandUI.this).fOY;
+      int k = WalletBrandUI.f(WalletBrandUI.this).Rzu;
+      String str8 = WalletBrandUI.f(WalletBrandUI.this).ltk;
+      if (com.tencent.mm.plugin.wallet_index.c.a.lT(str3, "up_")) {
         localObject = new l((String)localObject, str1, str2, str3, str4, str5, str6, str7, i, j, k, str8);
       }
       for (;;)
       {
         ((com.tencent.mm.plugin.wallet_index.c.f)localObject).setProcessSessionId(System.currentTimeMillis());
         ((com.tencent.mm.plugin.wallet_index.c.f)localObject).setProcessName("PayProcess");
-        ((com.tencent.mm.plugin.wallet_index.c.f)localObject).setScene(WalletBrandUI.f(WalletBrandUI.this).dVv);
-        g.aAi();
-        g.aAg().hqi.a((q)localObject, 0);
+        ((com.tencent.mm.plugin.wallet_index.c.f)localObject).setScene(WalletBrandUI.f(WalletBrandUI.this).fOY);
+        com.tencent.mm.kernel.h.aHH();
+        com.tencent.mm.kernel.h.aHF().kcd.a((q)localObject, 0);
         AppMethodBeat.o(71896);
         return localObject;
-        if (com.tencent.mm.plugin.wallet_index.c.a.lw(str3, "tax_")) {
+        if (com.tencent.mm.plugin.wallet_index.c.a.lT(str3, "tax_")) {
           localObject = new k((String)localObject, str1, str2, str3, str4, str5, str6, str7, i, j, k, str8);
-        } else if (com.tencent.mm.plugin.wallet_index.c.a.lw(str3, "dc_")) {
+        } else if (com.tencent.mm.plugin.wallet_index.c.a.lT(str3, "dc_")) {
           localObject = new com.tencent.mm.plugin.wallet_index.c.d((String)localObject, str1, str2, str3, str4, str5, str6, str7, i, j, k, str8);
         } else {
           localObject = new com.tencent.mm.plugin.wallet_index.c.f((String)localObject, str1, str2, str3, str4, str5, str6, str7, i, j, k, str8);
@@ -760,7 +760,7 @@ public class WalletBrandUI
       }
     }
     
-    public final String fUx()
+    public final String gNd()
     {
       return this.mReqKey;
     }
@@ -771,58 +771,58 @@ public class WalletBrandUI
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         com.tencent.mm.plugin.wallet_index.c.f localf = (com.tencent.mm.plugin.wallet_index.c.f)paramq;
-        localObject1 = localf.IqL;
+        localObject1 = localf.Pju;
         Log.d("MicroMsg.WalletBrandUI", "req_key = ".concat(String.valueOf(localObject1)));
         this.mReqKey = ((String)localObject1);
-        EventCenter.instance.publish(new zp());
-        Object localObject2 = ((com.tencent.mm.plugin.wallet_index.c.f)paramq).IqN;
-        if ((localObject2 != null) && (!Util.isNullOrNil(((exi)localObject2).NuI)))
+        EventCenter.instance.publish(new aaw());
+        Object localObject2 = ((com.tencent.mm.plugin.wallet_index.c.f)paramq).Pjw;
+        if ((localObject2 != null) && (!Util.isNullOrNil(((fhv)localObject2).UHJ)))
         {
           Log.i("MicroMsg.WalletBrandUI", "TenpayWalletBrand start WalletMixOrderInfoUI");
           paramString = new Intent();
           paramString.putExtra("prepayId", (String)localObject1);
           paramString.putExtra("is_jsapi_offline_pay", false);
-          paramString.putExtra("pay_gate_url", ((exi)localObject2).NuI);
-          paramString.putExtra("need_dialog", ((exi)localObject2).NuK);
-          paramString.putExtra("dialog_text", ((exi)localObject2).NuL);
-          paramString.putExtra("max_count", ((exi)localObject2).NuJ.LbT);
-          paramString.putExtra("inteval_time", ((exi)localObject2).NuJ.LbS);
-          paramString.putExtra("default_wording", ((exi)localObject2).NuJ.LbU);
-          c.c(WalletBrandUI.this, "wallet_core", ".ui.WalletMixOrderInfoUI", paramString);
+          paramString.putExtra("pay_gate_url", ((fhv)localObject2).UHJ);
+          paramString.putExtra("need_dialog", ((fhv)localObject2).UHL);
+          paramString.putExtra("dialog_text", ((fhv)localObject2).UHM);
+          paramString.putExtra("max_count", ((fhv)localObject2).UHK.Sdg);
+          paramString.putExtra("inteval_time", ((fhv)localObject2).UHK.Sdf);
+          paramString.putExtra("default_wording", ((fhv)localObject2).UHK.Sdh);
+          com.tencent.mm.by.c.c(WalletBrandUI.this, "wallet_core", ".ui.WalletMixOrderInfoUI", paramString);
           AppMethodBeat.o(71897);
           return;
         }
         Log.i("MicroMsg.WalletBrandUI", "TenpayWalletBrand startPay");
         localObject2 = new PayInfo();
-        ((PayInfo)localObject2).dDL = ((String)localObject1);
+        ((PayInfo)localObject2).fwv = ((String)localObject1);
         ((PayInfo)localObject2).appId = WalletBrandUI.f(WalletBrandUI.this).appId;
-        ((PayInfo)localObject2).IqM = localf.IqM;
-        ((PayInfo)localObject2).dVv = WalletBrandUI.f(WalletBrandUI.this).dVv;
+        ((PayInfo)localObject2).Pjv = localf.Pjv;
+        ((PayInfo)localObject2).fOY = WalletBrandUI.f(WalletBrandUI.this).fOY;
         ((PayInfo)localObject2).errMsg = paramString;
         ((PayInfo)localObject2).channel = WalletBrandUI.f(WalletBrandUI.this).payChannel;
-        ((PayInfo)localObject2).Kxv = localf.sessionId;
-        if (((PayInfo)localObject2).iqp == null) {
-          ((PayInfo)localObject2).iqp = new Bundle();
+        ((PayInfo)localObject2).Rzj = localf.sessionId;
+        if (((PayInfo)localObject2).lfu == null) {
+          ((PayInfo)localObject2).lfu = new Bundle();
         }
-        ((PayInfo)localObject2).iqp.putString("extinfo_key_20", ((com.tencent.mm.plugin.wallet_index.c.f)paramq).IqO);
-        ((PayInfo)localObject2).iqp.putString("extinfo_key_21", WalletBrandUI.f(WalletBrandUI.this).KxK);
-        ((PayInfo)localObject2).iqp.putString("extinfo_key_22", WalletBrandUI.f(WalletBrandUI.this).KxL);
-        af.z(((PayInfo)localObject2).dVv, (String)localObject1, paramInt2);
+        ((PayInfo)localObject2).lfu.putString("extinfo_key_20", ((com.tencent.mm.plugin.wallet_index.c.f)paramq).Pjx);
+        ((PayInfo)localObject2).lfu.putString("extinfo_key_21", WalletBrandUI.f(WalletBrandUI.this).Rzy);
+        ((PayInfo)localObject2).lfu.putString("extinfo_key_22", WalletBrandUI.f(WalletBrandUI.this).Rzz);
+        af.B(((PayInfo)localObject2).fOY, (String)localObject1, paramInt2);
         com.tencent.mm.pluginsdk.wallet.f.a(WalletBrandUI.this, (PayInfo)localObject2, 1);
         AppMethodBeat.o(71897);
         return;
       }
       Log.i("MicroMsg.WalletBrandUI", "TenpayWalletBrand dialog");
-      af.z(WalletBrandUI.f(WalletBrandUI.this).dVv, "", paramInt2);
-      if (WalletBrandUI.f(WalletBrandUI.this).dVv == 3)
+      af.B(WalletBrandUI.f(WalletBrandUI.this).fOY, "", paramInt2);
+      if (WalletBrandUI.f(WalletBrandUI.this).fOY == 3)
       {
         paramq = WalletBrandUI.this;
         if (Util.isNullOrNil(paramString)) {
-          paramString = WalletBrandUI.this.getString(2131767969);
+          paramString = WalletBrandUI.this.getString(a.i.wallet_net_err);
         }
         for (;;)
         {
-          paramString = com.tencent.mm.ui.base.h.a(paramq, paramString, "", WalletBrandUI.this.getString(2131767686), false, new DialogInterface.OnClickListener()
+          paramString = com.tencent.mm.ui.base.h.a(paramq, paramString, "", WalletBrandUI.this.getString(a.i.wallet_dialog_confirm), false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
@@ -852,10 +852,10 @@ public class WalletBrandUI
       ((Intent)localObject1).putExtra("key_jsapi_pay_err_code", paramInt2);
       paramq = paramString;
       if (Util.isNullOrNil(paramString)) {
-        paramq = WalletBrandUI.this.getString(2131767969);
+        paramq = WalletBrandUI.this.getString(a.i.wallet_net_err);
       }
       ((Intent)localObject1).putExtra("key_jsapi_pay_err_msg", paramq);
-      ((Intent)localObject1).putExtra("key_jsapi_pay_err_dialog_confirm", WalletBrandUI.this.getString(2131767686));
+      ((Intent)localObject1).putExtra("key_jsapi_pay_err_dialog_confirm", WalletBrandUI.this.getString(a.i.wallet_dialog_confirm));
       WalletBrandUI.this.setResult(5, (Intent)localObject1);
       WalletBrandUI.this.finish();
       AppMethodBeat.o(71897);
@@ -869,25 +869,25 @@ public class WalletBrandUI
     
     g() {}
     
-    public final int fUv()
+    public final int gNb()
     {
       return 2755;
     }
     
-    public final q fUw()
+    public final q gNc()
     {
       AppMethodBeat.i(71899);
-      e locale = new e(WalletBrandUI.f(WalletBrandUI.this).appId, WalletBrandUI.f(WalletBrandUI.this).signType, WalletBrandUI.f(WalletBrandUI.this).nonceStr, WalletBrandUI.f(WalletBrandUI.this).packageExt, WalletBrandUI.f(WalletBrandUI.this).dVt, WalletBrandUI.f(WalletBrandUI.this).timeStamp, WalletBrandUI.f(WalletBrandUI.this).url, WalletBrandUI.f(WalletBrandUI.this).dVu, WalletBrandUI.f(WalletBrandUI.this).payChannel, WalletBrandUI.f(WalletBrandUI.this).dVv, WalletBrandUI.f(WalletBrandUI.this).extInfo);
+      e locale = new e(WalletBrandUI.f(WalletBrandUI.this).appId, WalletBrandUI.f(WalletBrandUI.this).signType, WalletBrandUI.f(WalletBrandUI.this).nonceStr, WalletBrandUI.f(WalletBrandUI.this).packageExt, WalletBrandUI.f(WalletBrandUI.this).fOW, WalletBrandUI.f(WalletBrandUI.this).timeStamp, WalletBrandUI.f(WalletBrandUI.this).url, WalletBrandUI.f(WalletBrandUI.this).fOX, WalletBrandUI.f(WalletBrandUI.this).payChannel, WalletBrandUI.f(WalletBrandUI.this).fOY, WalletBrandUI.f(WalletBrandUI.this).extInfo);
       locale.setProcessSessionId(System.currentTimeMillis());
       locale.setProcessName("PayProcess");
-      locale.setScene(WalletBrandUI.f(WalletBrandUI.this).dVv);
-      g.aAi();
-      g.aAg().hqi.a(locale, 0);
+      locale.setScene(WalletBrandUI.f(WalletBrandUI.this).fOY);
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHF().kcd.a(locale, 0);
       AppMethodBeat.o(71899);
       return locale;
     }
     
-    public final String fUx()
+    public final String gNd()
     {
       return this.mReqKey;
     }
@@ -898,18 +898,18 @@ public class WalletBrandUI
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         paramq = (e)paramq;
-        String str = paramq.IqL;
+        String str = paramq.Pju;
         this.mReqKey = str;
         Log.d("MicroMsg.WalletBrandUI", "req_key = ".concat(String.valueOf(str)));
         PayInfo localPayInfo = new PayInfo();
-        localPayInfo.dDL = str;
+        localPayInfo.fwv = str;
         localPayInfo.appId = WalletBrandUI.f(WalletBrandUI.this).appId;
-        localPayInfo.IqM = paramq.IqM;
-        localPayInfo.dVv = WalletBrandUI.f(WalletBrandUI.this).dVv;
+        localPayInfo.Pjv = paramq.Pjv;
+        localPayInfo.fOY = WalletBrandUI.f(WalletBrandUI.this).fOY;
         localPayInfo.errMsg = paramString;
         localPayInfo.channel = WalletBrandUI.f(WalletBrandUI.this).payChannel;
-        localPayInfo.Kxv = paramq.sessionId;
-        af.z(localPayInfo.dVv, str, paramInt2);
+        localPayInfo.Rzj = paramq.sessionId;
+        af.B(localPayInfo.fOY, str, paramInt2);
         com.tencent.mm.pluginsdk.wallet.f.a(WalletBrandUI.this, localPayInfo, 1);
         AppMethodBeat.o(71900);
         return;

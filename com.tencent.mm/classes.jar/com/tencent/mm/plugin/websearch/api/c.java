@@ -14,10 +14,6 @@ public abstract interface c
   
   public abstract int getSosLimitLength();
   
-  public abstract boolean isOpenFingerSearch();
-  
-  public abstract boolean isOpenHotWordSearch();
-  
   public abstract boolean isOpenImageSearch();
   
   public abstract boolean isOpenInlineC2CTag();
@@ -28,7 +24,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.c
  * JD-Core Version:    0.7.0.1
  */

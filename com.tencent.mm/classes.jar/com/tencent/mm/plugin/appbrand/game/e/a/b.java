@@ -1,36 +1,35 @@
 package com.tencent.mm.plugin.appbrand.game.e.a;
 
 import com.tencent.magicbrush.ui.MagicBrushView;
-import com.tencent.mm.plugin.appbrand.appstorage.z;
+import com.tencent.mm.plugin.appbrand.appstorage.ab;
 import com.tencent.mm.plugin.appbrand.game.f.a;
 import com.tencent.mm.plugin.appbrand.game.g.c.a;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.file.at;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.plugin.appbrand.jsapi.file.av;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 
 public abstract class b
-  extends d<c>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.service.c>
 {
-  private static String YM(String paramString)
+  private static String agA(String paramString)
   {
     return "wxfile://clientdata/".concat(String.valueOf(paramString));
   }
   
-  private static void YN(String paramString)
+  private static void agB(String paramString)
   {
-    paramString = new o(paramString + ".nomedia");
-    if (!paramString.exists()) {
+    paramString = new q(paramString + ".nomedia");
+    if (!paramString.ifE()) {
       Log.i("MicroMsg.WAGameJsApiScreenRecorderBase", "hy: no nomedia file. trigger new");
     }
     try
     {
-      paramString.createNewFile();
+      paramString.ifM();
       return;
     }
     catch (IOException paramString)
@@ -39,7 +38,7 @@ public abstract class b
     }
   }
   
-  private static String b(c paramc, String paramString)
+  private static String b(com.tencent.mm.plugin.appbrand.service.c paramc, String paramString)
   {
     if ((paramc == null) || (Util.isNullOrNil(paramString)))
     {
@@ -50,36 +49,36 @@ public abstract class b
         return null;
       }
     }
-    paramc = (at)paramc.getFileSystem();
+    paramc = (av)paramc.getFileSystem();
     if (paramc == null)
     {
       Log.w("MicroMsg.WAGameJsApiScreenRecorderBase", "hy: fs is null");
       return null;
     }
-    String str = ((z)paramc.Wj("wxfile://clientdata")).kSr;
+    String str = ((ab)paramc.adY("wxfile://clientdata")).nMO;
     paramc = str;
     if (!str.endsWith("/")) {
       paramc = str + "/";
     }
-    YN(paramc);
+    agB(paramc);
     return paramc + paramString;
   }
   
-  public static com.tencent.mm.plugin.appbrand.game.g.b g(com.tencent.mm.plugin.appbrand.s params)
+  public static com.tencent.mm.plugin.appbrand.game.g.b g(v paramv)
   {
-    return com.tencent.mm.plugin.appbrand.game.g.b.a(params.getAppId(), h(params), params.getContext());
+    return com.tencent.mm.plugin.appbrand.game.g.b.a(paramv.getAppId(), h(paramv), paramv.getContext());
   }
   
-  protected static MagicBrushView h(com.tencent.mm.plugin.appbrand.s params)
+  protected static MagicBrushView h(v paramv)
   {
-    params = (a)params.getCurrentPageView().S(a.class);
-    if (params == null) {
+    paramv = (a)paramv.getCurrentPageView().R(a.class);
+    if (paramv == null) {
       return null;
     }
-    return params.MQ();
+    return paramv.PI();
   }
   
-  protected final a a(c paramc, String paramString)
+  protected final a a(com.tencent.mm.plugin.appbrand.service.c paramc, String paramString)
   {
     paramc = b(paramc, paramString);
     if (paramc == null)
@@ -88,16 +87,16 @@ public abstract class b
       return null;
     }
     Log.i("MicroMsg.WAGameJsApiScreenRecorderBase", "hy: creating file: %s", new Object[] { paramc });
-    if (com.tencent.mm.vfs.s.YS(paramc))
+    if (u.agG(paramc))
     {
       Log.w("MicroMsg.WAGameJsApiScreenRecorderBase", "hy: file already exists, auto delete: %b", new Object[] { Boolean.TRUE });
-      com.tencent.mm.vfs.s.deleteFile(paramc);
+      u.deleteFile(paramc);
     }
-    o localo = new o(paramc);
-    com.tencent.mm.vfs.s.boN(com.tencent.mm.vfs.s.boZ(paramc));
+    q localq = new q(paramc);
+    u.bBD(u.bBT(paramc));
     try
     {
-      if (!localo.createNewFile())
+      if (!localq.ifM())
       {
         Log.w("MicroMsg.WAGameJsApiScreenRecorderBase", "hy: create file failed!");
         return null;
@@ -108,13 +107,13 @@ public abstract class b
       Log.printErrStackTrace("MicroMsg.WAGameJsApiScreenRecorderBase", paramc, "hy: create file failed!", new Object[0]);
       return null;
     }
-    return new a(aa.z(localo.her()), YM(paramString), (byte)0);
+    return new a(localq.bOF(), agA(paramString), (byte)0);
   }
   
-  protected final a a(c paramc, String paramString1, String paramString2, boolean paramBoolean)
+  protected final a a(com.tencent.mm.plugin.appbrand.service.c paramc, String paramString1, String paramString2, boolean paramBoolean)
   {
     Log.i("MicroMsg.WAGameJsApiScreenRecorderBase", "hy: request saveFileToClientData: %s, %b, %b", new Object[] { paramString1, Boolean.TRUE, Boolean.valueOf(paramBoolean) });
-    if (!com.tencent.mm.vfs.s.YS(paramString1))
+    if (!u.agG(paramString1))
     {
       Log.w("MicroMsg.WAGameJsApiScreenRecorderBase", "hy: src file not exists!");
       return null;
@@ -125,49 +124,49 @@ public abstract class b
       Log.w("MicroMsg.WAGameJsApiScreenRecorderBase", "hy: can not generate dest file!");
       return null;
     }
-    if (com.tencent.mm.vfs.s.YS(paramc))
+    if (u.agG(paramc))
     {
       Log.w("MicroMsg.WAGameJsApiScreenRecorderBase", "hy: file already exists, auto delete: %b", new Object[] { Boolean.TRUE });
-      com.tencent.mm.vfs.s.deleteFile(paramc);
+      u.deleteFile(paramc);
     }
-    o localo = new o(paramc);
+    q localq = new q(paramc);
     if (paramBoolean)
     {
-      if (!com.tencent.mm.vfs.s.nx(aa.z(new o(paramString1).mUri), aa.z(localo.mUri)))
+      if (!u.oo(new q(paramString1).getPath(), localq.getPath()))
       {
         Log.w("MicroMsg.WAGameJsApiScreenRecorderBase", "hy: rename failed!");
         return null;
       }
     }
-    else if (com.tencent.mm.vfs.s.nw(paramString1, paramc) <= 0L)
+    else if (u.on(paramString1, paramc) <= 0L)
     {
       Log.w("MicroMsg.WAGameJsApiScreenRecorderBase", "hy: copy failed!");
       return null;
     }
-    return new a(paramc, YM(paramString2), (byte)0);
+    return new a(paramc, agA(paramString2), (byte)0);
   }
   
   protected final class a
     implements c.a
   {
-    String lsB;
-    String lsC;
+    String ony;
+    String onz;
     
     private a(String paramString1, String paramString2)
     {
-      this.lsB = paramString1;
-      this.lsC = paramString2;
+      this.ony = paramString1;
+      this.onz = paramString2;
     }
     
-    public final String getAbsolutePath()
+    public final String bOF()
     {
-      return this.lsB;
+      return this.ony;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.e.a.b
  * JD-Core Version:    0.7.0.1
  */

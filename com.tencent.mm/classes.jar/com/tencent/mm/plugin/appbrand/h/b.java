@@ -4,13 +4,14 @@ import android.content.Context;
 import com.tencent.luggage.xweb_ext.extendplugin.a;
 import com.tencent.luggage.xweb_ext.extendplugin.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ab;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.plugin.appbrand.jsapi.i.b;
-import com.tencent.mm.plugin.appbrand.jsapi.i.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i.d;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.jsapi.aa;
+import com.tencent.mm.plugin.appbrand.jsapi.ai.d;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.g;
+import com.tencent.mm.plugin.appbrand.jsapi.h.b;
+import com.tencent.mm.plugin.appbrand.jsapi.h.c;
+import com.tencent.mm.plugin.appbrand.jsapi.h.d;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
 import org.json.JSONObject;
@@ -18,43 +19,43 @@ import org.json.JSONObject;
 public final class b
   implements a
 {
-  public JSONObject lnV;
-  public int lqe;
-  public p lqf;
-  public f lqg;
-  private i.d lqh;
-  private i.b lqi;
-  private i.c lqj;
+  public JSONObject oiG;
+  public int okO;
+  public o okP;
+  public e okQ;
+  private h.d okR;
+  private h.b okS;
+  private h.c okT;
   
-  public b(int paramInt, JSONObject paramJSONObject, f paramf, p paramp)
+  public b(int paramInt, JSONObject paramJSONObject, e parame, o paramo)
   {
-    this.lqe = paramInt;
-    this.lnV = paramJSONObject;
-    this.lqg = paramf;
-    this.lqf = paramp;
+    this.okO = paramInt;
+    this.oiG = paramJSONObject;
+    this.okQ = parame;
+    this.okP = paramo;
   }
   
-  public final JSONObject KX()
+  public final JSONObject NN()
   {
-    return this.lnV;
+    return this.oiG;
   }
   
-  public final f NN()
+  public final e QK()
   {
-    return this.lqg;
+    return this.okQ;
   }
   
-  public final boolean Pr()
+  public final boolean SQ()
   {
-    return this.lqf instanceof ab;
+    return this.okP instanceof aa;
   }
   
-  public final JSONObject Ps()
+  public final JSONObject SR()
   {
     AppMethodBeat.i(139387);
-    if (this.lnV != null)
+    if (this.oiG != null)
     {
-      localJSONObject = this.lnV;
+      localJSONObject = this.oiG;
       AppMethodBeat.o(139387);
       return localJSONObject;
     }
@@ -63,12 +64,12 @@ public final class b
     return localJSONObject;
   }
   
-  public final String Pt()
+  public final String SS()
   {
     AppMethodBeat.i(139388);
-    if (this.lqf != null)
+    if (this.okP != null)
     {
-      String str = this.lqf.getName();
+      String str = this.okP.getName();
       AppMethodBeat.o(139388);
       return str;
     }
@@ -76,40 +77,45 @@ public final class b
     return null;
   }
   
-  public final void Pu()
+  public final void ST()
   {
     AppMethodBeat.i(139392);
-    if ((this.lqg instanceof h))
+    if ((this.okQ instanceof g))
     {
       Log.i("MicroMsg.AppBrand.AppBrandInvokeContext", "removeLifecycleListener");
-      h localh = (h)this.lqg;
-      if (this.lqh != null)
+      g localg = (g)this.okQ;
+      if (this.okR != null)
       {
-        localh.b(this.lqh);
-        this.lqh = null;
+        localg.b(this.okR);
+        this.okR = null;
       }
-      if (this.lqi != null)
+      if (this.okS != null)
       {
-        localh.b(this.lqi);
-        this.lqi = null;
+        localg.b(this.okS);
+        this.okS = null;
       }
-      if (this.lqj != null)
+      if (this.okT != null)
       {
-        localh.b(this.lqj);
-        this.lqj = null;
+        localg.b(this.okT);
+        this.okT = null;
       }
     }
     AppMethodBeat.o(139392);
   }
   
+  public final boolean SU()
+  {
+    return this.okP instanceof d;
+  }
+  
   public final void a(final a.a parama)
   {
     AppMethodBeat.i(139391);
-    if ((this.lqg instanceof h))
+    if ((this.okQ instanceof g))
     {
       Log.i("MicroMsg.AppBrand.AppBrandInvokeContext", "addLifecycleListener");
-      h localh = (h)this.lqg;
-      this.lqh = new i.d()
+      g localg = (g)this.okQ;
+      this.okR = new h.d()
       {
         public final void onForeground()
         {
@@ -121,19 +127,19 @@ public final class b
           AppMethodBeat.o(139382);
         }
       };
-      this.lqi = new i.b()
+      this.okS = new h.b()
       {
         public final void onBackground()
         {
           AppMethodBeat.i(139383);
           Log.i("MicroMsg.AppBrand.AppBrandInvokeContext", "onBackground");
           if (parama != null) {
-            parama.hU(com.tencent.mm.plugin.appbrand.jsapi.ag.b.abL(b.this.lqg.getAppId()));
+            parama.iW(com.tencent.mm.plugin.appbrand.jsapi.ai.b.ajG(b.this.okQ.getAppId()));
           }
           AppMethodBeat.o(139383);
         }
       };
-      this.lqj = new i.c()
+      this.okT = new h.c()
       {
         public final void onDestroy()
         {
@@ -144,51 +150,51 @@ public final class b
           AppMethodBeat.o(139384);
         }
       };
-      localh.a(this.lqh);
-      localh.a(this.lqi);
-      localh.a(this.lqj);
+      localg.a(this.okR);
+      localg.a(this.okS);
+      localg.a(this.okT);
     }
     AppMethodBeat.o(139391);
   }
   
   public final void b(a.a parama) {}
   
-  public final int bCw()
+  public final int bNR()
   {
-    return this.lqe;
+    return this.okO;
   }
   
-  public final p bCx()
+  public final o bNS()
   {
-    return this.lqf;
+    return this.okP;
   }
   
-  public final String dP(String paramString)
+  public final String e(String paramString, Map<String, ? extends Object> paramMap)
   {
-    AppMethodBeat.i(139389);
-    if ((this.lqg != null) && (this.lqf != null)) {
-      this.lqg.i(this.lqe, this.lqf.h(paramString, null));
+    AppMethodBeat.i(139390);
+    if ((this.okQ != null) && (this.okP != null)) {
+      this.okQ.j(this.okO, this.okP.m(paramString, paramMap));
     }
-    AppMethodBeat.o(139389);
+    AppMethodBeat.o(139390);
     return null;
   }
   
-  public final String f(String paramString, Map<String, ? extends Object> paramMap)
+  public final String er(String paramString)
   {
-    AppMethodBeat.i(139390);
-    if ((this.lqg != null) && (this.lqf != null)) {
-      this.lqg.i(this.lqe, this.lqf.n(paramString, paramMap));
+    AppMethodBeat.i(139389);
+    if ((this.okQ != null) && (this.okP != null)) {
+      this.okQ.j(this.okO, this.okP.h(paramString, null));
     }
-    AppMethodBeat.o(139390);
+    AppMethodBeat.o(139389);
     return null;
   }
   
   public final String getAppId()
   {
     AppMethodBeat.i(139385);
-    if (this.lqg != null)
+    if (this.okQ != null)
     {
-      String str = this.lqg.getAppId();
+      String str = this.okQ.getAppId();
       AppMethodBeat.o(139385);
       return str;
     }
@@ -199,9 +205,9 @@ public final class b
   public final Context getContext()
   {
     AppMethodBeat.i(139386);
-    if (this.lqg != null)
+    if (this.okQ != null)
     {
-      Context localContext = this.lqg.getContext();
+      Context localContext = this.okQ.getContext();
       AppMethodBeat.o(139386);
       return localContext;
     }
@@ -211,7 +217,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.h.b
  * JD-Core Version:    0.7.0.1
  */

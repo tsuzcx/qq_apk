@@ -5,23 +5,24 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Build.VERSION;
-import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.view.Window;
-import com.tencent.luggage.h.f;
-import com.tencent.luggage.h.f.e;
+import androidx.appcompat.app.ActionBar;
+import com.tencent.luggage.k.f;
+import com.tencent.luggage.k.f.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.n.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.BaseActivity;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.au;
 
 public class BaseLuggageActivity
   extends BaseActivity
   implements f.e
 {
-  private static boolean blR(String paramString)
+  private static boolean byq(String paramString)
   {
     AppMethodBeat.i(176011);
     String str1 = Build.MODEL;
@@ -31,7 +32,7 @@ public class BaseLuggageActivity
       AppMethodBeat.o(176011);
       return false;
     }
-    if ((ne(str1, paramString)) || (ne(str2, paramString)))
+    if ((nW(str1, paramString)) || (nW(str2, paramString)))
     {
       AppMethodBeat.o(176011);
       return true;
@@ -40,7 +41,7 @@ public class BaseLuggageActivity
     return false;
   }
   
-  private static boolean ne(String paramString1, String paramString2)
+  private static boolean nW(String paramString1, String paramString2)
   {
     AppMethodBeat.i(176010);
     if ((paramString1 == null) || (paramString2 == null))
@@ -55,14 +56,14 @@ public class BaseLuggageActivity
   
   public int getLayoutId()
   {
-    return 2131493027;
+    return n.d.app_brand_empty;
   }
   
   public Resources getResources()
   {
-    AppMethodBeat.i(204437);
+    AppMethodBeat.i(230032);
     Resources localResources = MMApplicationContext.getResources();
-    AppMethodBeat.o(204437);
+    AppMethodBeat.o(230032);
     return localResources;
   }
   
@@ -70,7 +71,7 @@ public class BaseLuggageActivity
   {
     AppMethodBeat.i(131600);
     if ((Build.VERSION.SDK_INT >= 21) && (getSupportActionBar() != null)) {
-      getSupportActionBar().setElevation(0.0F);
+      getSupportActionBar().e(0.0F);
     }
     AppMethodBeat.o(131600);
   }
@@ -79,7 +80,7 @@ public class BaseLuggageActivity
   {
     AppMethodBeat.i(131598);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    f.aK(this).onActivityResult(paramInt1, paramInt2, paramIntent);
+    f.aI(this).onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(131598);
   }
   
@@ -87,7 +88,7 @@ public class BaseLuggageActivity
   {
     AppMethodBeat.i(131599);
     super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-    f.aK(this).b(paramInt, paramArrayOfInt);
+    f.aI(this).b(paramInt, paramArrayOfInt);
     AppMethodBeat.o(131599);
   }
   
@@ -104,14 +105,14 @@ public class BaseLuggageActivity
     View localView;
     if (Build.VERSION.SDK_INT >= 26)
     {
-      if ((!blR("y83a")) && (!blR("y83")) && (!blR("v1732a")) && (!blR("v1732t"))) {
+      if ((!byq("y83a")) && (!byq("y83")) && (!byq("v1732a")) && (!byq("v1732t"))) {
         break label100;
       }
       i = 1;
       if (i == 0)
       {
         getWindow().setNavigationBarColor(paramInt);
-        boolean bool = ar.aln(paramInt);
+        boolean bool = au.auk(paramInt);
         localView = getWindow().getDecorView();
         paramInt = localView.getSystemUiVisibility();
         if (!bool) {
@@ -151,7 +152,7 @@ public class BaseLuggageActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.base.BaseLuggageActivity
  * JD-Core Version:    0.7.0.1
  */

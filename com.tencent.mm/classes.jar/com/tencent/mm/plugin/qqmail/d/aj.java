@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import g.a.a.b;
 
 public final class aj
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
   public String name;
   public String path;
   public long size;
   public int state;
   public String svrId;
-  public long ulj;
+  public long yjR;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -32,16 +32,16 @@ public final class aj
         throw paramVarArgs;
       }
       if (this.path != null) {
-        paramVarArgs.e(1, this.path);
+        paramVarArgs.f(1, this.path);
       }
       if (this.name != null) {
-        paramVarArgs.e(2, this.name);
+        paramVarArgs.f(2, this.name);
       }
-      paramVarArgs.bb(3, this.size);
-      paramVarArgs.aM(4, this.state);
-      paramVarArgs.bb(5, this.ulj);
+      paramVarArgs.bm(3, this.size);
+      paramVarArgs.aY(4, this.state);
+      paramVarArgs.bm(5, this.yjR);
       if (this.svrId != null) {
-        paramVarArgs.e(6, this.svrId);
+        paramVarArgs.f(6, this.svrId);
       }
       AppMethodBeat.o(122801);
       return 0;
@@ -52,25 +52,25 @@ public final class aj
       }
     }
     label562:
-    for (paramInt = g.a.a.b.b.a.f(1, this.path) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.path) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.name != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.name);
+        i = paramInt + g.a.a.b.b.a.g(2, this.name);
       }
-      i = i + g.a.a.b.b.a.r(3, this.size) + g.a.a.b.b.a.bu(4, this.state) + g.a.a.b.b.a.r(5, this.ulj);
+      i = i + g.a.a.b.b.a.p(3, this.size) + g.a.a.b.b.a.bM(4, this.state) + g.a.a.b.b.a.p(5, this.yjR);
       paramInt = i;
       if (this.svrId != null) {
-        paramInt = i + g.a.a.b.b.a.f(6, this.svrId);
+        paramInt = i + g.a.a.b.b.a.g(6, this.svrId);
       }
       AppMethodBeat.o(122801);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         if (this.path == null)
@@ -98,27 +98,27 @@ public final class aj
           AppMethodBeat.o(122801);
           return -1;
         case 1: 
-          localaj.path = locala.UbS.readString();
+          localaj.path = locala.abFh.readString();
           AppMethodBeat.o(122801);
           return 0;
         case 2: 
-          localaj.name = locala.UbS.readString();
+          localaj.name = locala.abFh.readString();
           AppMethodBeat.o(122801);
           return 0;
         case 3: 
-          localaj.size = locala.UbS.zl();
+          localaj.size = locala.abFh.AN();
           AppMethodBeat.o(122801);
           return 0;
         case 4: 
-          localaj.state = locala.UbS.zi();
+          localaj.state = locala.abFh.AK();
           AppMethodBeat.o(122801);
           return 0;
         case 5: 
-          localaj.ulj = locala.UbS.zl();
+          localaj.yjR = locala.abFh.AN();
           AppMethodBeat.o(122801);
           return 0;
         }
-        localaj.svrId = locala.UbS.readString();
+        localaj.svrId = locala.abFh.readString();
         AppMethodBeat.o(122801);
         return 0;
       }
@@ -129,7 +129,7 @@ public final class aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.d.aj
  * JD-Core Version:    0.7.0.1
  */

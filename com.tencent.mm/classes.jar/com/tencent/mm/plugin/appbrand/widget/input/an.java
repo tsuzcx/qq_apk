@@ -1,104 +1,359 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.MotionEvent;
+import android.content.Context;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.text.Editable;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.style.RelativeSizeSpan;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewConfiguration;
+import android.view.ViewParent;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.lang.reflect.Method;
+import java.util.Locale;
+import org.a.a;
 
-public class an
-  implements View.OnTouchListener
+public enum an
 {
-  private static final int Pv;
-  private final Handler ovL;
-  private float ovM;
-  private float ovN;
-  private boolean ovO;
+  static final Class rxW;
   
   static
   {
-    AppMethodBeat.i(136611);
-    Pv = ViewConfiguration.getLongPressTimeout();
-    AppMethodBeat.o(136611);
-  }
-  
-  public an()
-  {
-    AppMethodBeat.i(136607);
-    this.ovL = new Handler(Looper.getMainLooper())
+    AppMethodBeat.i(136598);
+    rxX = new an[0];
+    Object localObject = null;
+    try
     {
-      public final void handleMessage(Message paramAnonymousMessage)
+      Class localClass = Class.forName("android.view.inputmethod.ComposingText");
+      localObject = localClass;
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      for (;;)
       {
-        AppMethodBeat.i(136606);
-        switch (paramAnonymousMessage.what)
-        {
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(136606);
-          return;
-          if (an.a(an.this)) {
-            sendMessageDelayed(Message.obtain(an.b(an.this), 2), 50L);
-          }
-        }
+        Log.e("MicroMsg.AppBrand.InputUtil", "class for ComposingText e = %s", new Object[] { localClassNotFoundException });
       }
-    };
-    this.ovO = false;
-    AppMethodBeat.o(136607);
+    }
+    rxW = localObject;
+    AppMethodBeat.o(136598);
   }
   
-  private void di(View paramView)
+  static Spannable Q(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(136609);
-    paramView.setPressed(false);
-    this.ovO = false;
-    this.ovL.removeMessages(1);
-    this.ovL.removeMessages(2);
-    AppMethodBeat.o(136609);
-  }
-  
-  protected void bJj() {}
-  
-  protected void cbF() {}
-  
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(136608);
-    switch (paramMotionEvent.getActionMasked())
-    {
+    AppMethodBeat.i(136590);
+    if (paramCharSequence == null) {
+      paramCharSequence = "";
     }
     for (;;)
     {
-      AppMethodBeat.o(136608);
-      return true;
-      di(paramView);
-      continue;
-      if ((!this.ovO) && (this.ovL.hasMessages(1))) {
-        bJj();
-      }
-      di(paramView);
-      continue;
-      int i = ViewConfiguration.get(paramView.getContext()).getScaledTouchSlop();
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
-      if ((-i > f1) || (f1 > paramView.getWidth() + i) || (-i > f2) || (f2 > i + paramView.getHeight()))
+      if ((paramCharSequence instanceof Spannable))
       {
-        this.ovO = true;
-        continue;
-        paramView.setPressed(true);
-        this.ovL.sendMessageDelayed(Message.obtain(this.ovL, 1), Pv);
-        this.ovM = paramMotionEvent.getX();
-        this.ovN = paramMotionEvent.getY();
+        paramCharSequence = (Spannable)paramCharSequence;
+        AppMethodBeat.o(136590);
+        return paramCharSequence;
+      }
+      paramCharSequence = new SpannableStringBuilder(paramCharSequence);
+      AppMethodBeat.o(136590);
+      return paramCharSequence;
+    }
+  }
+  
+  public static boolean R(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(136591);
+    if ((paramCharSequence instanceof Spanned))
+    {
+      paramCharSequence = (Spanned)paramCharSequence;
+      paramCharSequence = paramCharSequence.getSpans(0, paramCharSequence.length(), rxW);
+      if ((paramCharSequence != null) && (paramCharSequence.length > 0))
+      {
+        AppMethodBeat.o(136591);
+        return true;
+      }
+      AppMethodBeat.o(136591);
+      return false;
+    }
+    AppMethodBeat.o(136591);
+    return false;
+  }
+  
+  static boolean cU(Object paramObject)
+  {
+    AppMethodBeat.i(136592);
+    boolean bool = rxW.isInstance(paramObject);
+    AppMethodBeat.o(136592);
+    return bool;
+  }
+  
+  public static InputMethodManager dB(View paramView)
+  {
+    AppMethodBeat.i(136593);
+    if (paramView != null)
+    {
+      Context localContext = paramView.getContext();
+      paramView = localContext;
+      if (localContext != null) {}
+    }
+    else
+    {
+      paramView = MMApplicationContext.getContext();
+    }
+    paramView = (InputMethodManager)paramView.getSystemService("input_method");
+    AppMethodBeat.o(136593);
+    return paramView;
+  }
+  
+  public static void dC(View paramView)
+  {
+    AppMethodBeat.i(136594);
+    if (Build.VERSION.SDK_INT >= 30)
+    {
+      Log.w("MicroMsg.AppBrand.InputUtil", "dumpImmDebugInfo skip >=30");
+      AppMethodBeat.o(136594);
+      return;
+    }
+    Object localObject = dB(paramView);
+    if (localObject == null) {
+      paramView = "NULL Imm";
+    }
+    for (;;)
+    {
+      Log.i("MicroMsg.AppBrand.InputUtil", "dumpImmDebugInfo: %s", new Object[] { paramView });
+      AppMethodBeat.o(136594);
+      return;
+      try
+      {
+        paramView = (View)a.gY(localObject).get("mServedView");
+        localObject = (View)a.gY(localObject).get("mNextServedView");
+        paramView = String.format(Locale.US, "mServedView=%s, mNextServedView=%s", new Object[] { paramView, localObject });
+      }
+      catch (Exception paramView)
+      {
+        Log.e("MicroMsg.AppBrand.InputUtil", "dumpImmDebugInfo reflect failed %s", new Object[] { paramView });
+        AppMethodBeat.o(136594);
+      }
+    }
+  }
+  
+  public static boolean i(View paramView1, View paramView2)
+  {
+    AppMethodBeat.i(136595);
+    if ((paramView1 == null) || (paramView2 == null))
+    {
+      AppMethodBeat.o(136595);
+      return false;
+    }
+    paramView2 = paramView2.getParent();
+    ViewParent localViewParent;
+    do
+    {
+      if (paramView1 == paramView2)
+      {
+        AppMethodBeat.o(136595);
+        return true;
+      }
+      localViewParent = paramView2.getParent();
+      paramView2 = localViewParent;
+    } while (localViewParent != null);
+    AppMethodBeat.o(136595);
+    return false;
+  }
+  
+  static int m(Integer paramInteger)
+  {
+    AppMethodBeat.i(136597);
+    if (paramInteger != null)
+    {
+      int i = paramInteger.intValue();
+      AppMethodBeat.o(136597);
+      return i;
+    }
+    AppMethodBeat.o(136597);
+    return 0;
+  }
+  
+  public static boolean m(Boolean paramBoolean)
+  {
+    AppMethodBeat.i(136596);
+    if ((paramBoolean != null) && (paramBoolean.booleanValue()))
+    {
+      AppMethodBeat.o(136596);
+      return true;
+    }
+    AppMethodBeat.o(136596);
+    return false;
+  }
+  
+  static enum a
+  {
+    static int a(EditText paramEditText, float paramFloat1, float paramFloat2)
+    {
+      AppMethodBeat.i(136587);
+      int j = paramEditText.getPaddingTop();
+      Layout localLayout = paramEditText.getLayout();
+      if (localLayout == null)
+      {
+        AppMethodBeat.o(136587);
+        return -1;
+      }
+      Editable localEditable = paramEditText.getEditableText();
+      if (localEditable == null)
+      {
+        AppMethodBeat.o(136587);
+        return -1;
+      }
+      paramEditText = paramEditText.getPaint();
+      if (paramEditText == null)
+      {
+        AppMethodBeat.o(136587);
+        return -1;
+      }
+      Rect localRect = new Rect();
+      int i = 0;
+      int m;
+      int n;
+      if (i < localLayout.getLineCount())
+      {
+        localLayout.getLineBounds(i, localRect);
+        m = j + localRect.height();
+        if (m >= paramFloat2)
+        {
+          n = localLayout.getLineStart(i);
+          j = localLayout.getLineEnd(i);
+          if (i == localLayout.getLineCount() - 1) {
+            break label394;
+          }
+          j = Math.max(j - 1, n);
+        }
+      }
+      label394:
+      for (;;)
+      {
+        if (n == j)
+        {
+          AppMethodBeat.o(136587);
+          return n;
+        }
+        Object localObject = (RelativeSizeSpan[])localEditable.getSpans(n, j, RelativeSizeSpan.class);
+        float f2 = 1.0F;
+        float f1 = f2;
+        if (localObject != null)
+        {
+          int i1 = localObject.length;
+          int k = 0;
+          f1 = f2;
+          while (k < i1)
+          {
+            f1 = localObject[k].getSizeChange();
+            k += 1;
+          }
+        }
+        localObject = localEditable.subSequence(n, j).toString();
+        float[] arrayOfFloat = new float[((String)localObject).length()];
+        paramEditText.getTextWidths((String)localObject, arrayOfFloat);
+        f2 = 0.0F;
+        j = 0;
+        while (j < ((String)localObject).length())
+        {
+          f2 += arrayOfFloat[j] * f1;
+          if ((j == ((String)localObject).length() - 1) && (paramFloat1 >= f2))
+          {
+            i = ((String)localObject).length();
+            AppMethodBeat.o(136587);
+            return i + n;
+          }
+          if ((f2 >= paramFloat1) || (j == ((String)localObject).length() - 1))
+          {
+            AppMethodBeat.o(136587);
+            return n + j;
+          }
+          j += 1;
+        }
+        i += 1;
+        j = m;
+        break;
+        AppMethodBeat.o(136587);
+        return -1;
+      }
+    }
+    
+    static void c(EditText paramEditText)
+    {
+      AppMethodBeat.i(136585);
+      if (paramEditText == null)
+      {
+        AppMethodBeat.o(136585);
+        return;
+      }
+      an.dB(paramEditText).hideSoftInputFromInputMethod(paramEditText.getWindowToken(), 0);
+      AppMethodBeat.o(136585);
+    }
+    
+    static void setNoSystemInputOnEditText(EditText paramEditText)
+    {
+      AppMethodBeat.i(136586);
+      if (paramEditText == null)
+      {
+        AppMethodBeat.o(136586);
+        return;
+      }
+      if (Build.VERSION.SDK_INT >= 21)
+      {
+        paramEditText.setShowSoftInputOnFocus(false);
+        AppMethodBeat.o(136586);
+        return;
+      }
+      try
+      {
+        Method localMethod1 = EditText.class.getMethod("setShowSoftInputOnFocus", new Class[] { Boolean.TYPE });
+        localMethod1.setAccessible(true);
+        localMethod1.invoke(paramEditText, new Object[] { Boolean.FALSE });
+        localMethod1.setAccessible(false);
+        AppMethodBeat.o(136586);
+        return;
+      }
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
+        Log.i("MicroMsg.AppBrand.InputUtil.EditTextUtil", "setNoSystemInputOnEditText, setShowSoftInputOnFocus no such method, api level = %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+        try
+        {
+          Method localMethod2 = EditText.class.getMethod("setSoftInputShownOnFocus", new Class[] { Boolean.TYPE });
+          localMethod2.setAccessible(true);
+          localMethod2.invoke(paramEditText, new Object[] { Boolean.FALSE });
+          localMethod2.setAccessible(false);
+          AppMethodBeat.o(136586);
+          return;
+        }
+        catch (Exception localException)
+        {
+          Log.e("MicroMsg.AppBrand.InputUtil.EditTextUtil", "setNoSystemInputOnEditText, reflect method [setSoftInputShownOnFocus], exp = %s", new Object[] { Util.stackTraceToString(localException) });
+          if ((paramEditText.getContext() != null) && ((paramEditText.getContext() instanceof ah))) {
+            ((ah)paramEditText.getContext()).hideVKB(paramEditText);
+          }
+          AppMethodBeat.o(136586);
+          return;
+        }
+      }
+      catch (Exception paramEditText)
+      {
+        Log.e("MicroMsg.AppBrand.InputUtil.EditTextUtil", "setNoSystemInputOnEditText, reflect method [setShowSoftInputOnFocus], exp = %s", new Object[] { Util.stackTraceToString(paramEditText) });
+        AppMethodBeat.o(136586);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.an
  * JD-Core Version:    0.7.0.1
  */

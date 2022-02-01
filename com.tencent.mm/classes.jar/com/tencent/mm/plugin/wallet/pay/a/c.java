@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.wallet.pay.a;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.ak;
+import com.tencent.mm.plugin.wallet_core.model.al;
 import com.tencent.mm.plugin.wallet_core.model.d;
-import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.wallet_core.tenpay.model.m;
@@ -19,8 +20,8 @@ import org.json.JSONObject;
 public final class c
   extends m
 {
-  public String AOl;
-  public double Cpj;
+  public String GHz;
+  public double Imy;
   public String desc;
   
   public c(String paramString)
@@ -52,15 +53,15 @@ public final class c
     AppMethodBeat.i(69263);
     if (paramInt == 0)
     {
-      this.AOl = paramJSONObject.optString("fee_type");
-      this.Cpj = (paramJSONObject.optDouble("total_fee") / 100.0D);
+      this.GHz = paramJSONObject.optString("fee_type");
+      this.Imy = (paramJSONObject.optDouble("total_fee") / 100.0D);
       paramString = paramJSONObject.optJSONArray("Array");
       if ((paramString != null) && (paramString.length() > 0)) {
         this.desc = ((JSONObject)paramString.opt(0)).optString("desc");
       }
-      ak localak = t.fQJ();
+      al localal = u.gJp();
       paramJSONObject = paramJSONObject.optJSONObject("bindqueryresp");
-      localak.IbD.clear();
+      localal.OTP.clear();
       if (paramJSONObject == null)
       {
         Log.e("MicroMsg.WalletRepaymentBankcardMgr", "parse from json error,json is null");
@@ -74,7 +75,7 @@ public final class c
         paramString = paramJSONObject.optJSONObject("user_info");
         if (paramString != null)
         {
-          localak.IbE = paramString.optString("last_card_bind_serialno");
+          localal.OTQ = paramString.optString("last_card_bind_serialno");
           AppMethodBeat.o(69263);
         }
       }
@@ -83,17 +84,17 @@ public final class c
         paramInt = 0;
         while (paramInt < localJSONArray.length())
         {
-          d locald = d.fQh();
+          d locald = d.gIN();
           try
           {
             paramString = (JSONObject)localJSONArray.get(paramInt);
             if (paramString != null)
             {
-              paramString = locald.bA(paramString);
-              if (paramString.fQb())
+              paramString = locald.bL(paramString);
+              if (paramString.gIH())
               {
                 paramString.field_desc = paramString.field_bankName;
-                localak.IbD.add(paramString);
+                localal.OTP.add(paramString);
               }
             }
             else
@@ -108,12 +109,12 @@ public final class c
               Log.printErrStackTrace("MicroMsg.WalletRepaymentBankcardMgr", paramString, "", new Object[0]);
               paramString = null;
               continue;
-              if (paramString.fQd()) {
-                paramString.field_desc = MMApplicationContext.getContext().getString(2131767665, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
-              } else if (paramString.fQa()) {
-                paramString.field_desc = MMApplicationContext.getContext().getString(2131768451, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
+              if (paramString.gIJ()) {
+                paramString.field_desc = MMApplicationContext.getContext().getString(a.i.wallet_credit_card_desc, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
+              } else if (paramString.gIG()) {
+                paramString.field_desc = MMApplicationContext.getContext().getString(a.i.wallet_wxcredit_card_desc, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
               } else {
-                paramString.field_desc = MMApplicationContext.getContext().getString(2131767685, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
+                paramString.field_desc = MMApplicationContext.getContext().getString(a.i.wallet_deposit_card_desc, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
               }
             }
           }

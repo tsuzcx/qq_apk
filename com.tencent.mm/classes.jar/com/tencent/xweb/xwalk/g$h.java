@@ -7,24 +7,24 @@ import com.tencent.xweb.r;
 public final class g$h
   implements r
 {
-  ValueCallback<Boolean> SGV;
+  ValueCallback<Boolean> aail;
   
   public g$h(ValueCallback<Boolean> paramValueCallback)
   {
-    this.SGV = paramValueCallback;
+    this.aail = paramValueCallback;
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(154281);
-    this.SGV.onReceiveValue(Boolean.FALSE);
+    this.aail.onReceiveValue(Boolean.FALSE);
     AppMethodBeat.o(154281);
   }
   
   public final void proceed()
   {
     AppMethodBeat.i(154280);
-    this.SGV.onReceiveValue(Boolean.TRUE);
+    this.aail.onReceiveValue(Boolean.TRUE);
     AppMethodBeat.o(154280);
   }
 }

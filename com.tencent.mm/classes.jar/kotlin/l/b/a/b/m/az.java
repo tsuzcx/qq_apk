@@ -11,18 +11,18 @@ public final class az
   public static final ab a(ab paramab, List<? extends av> paramList, g paramg)
   {
     AppMethodBeat.i(60843);
-    p.h(paramab, "$this$replace");
-    p.h(paramList, "newArguments");
-    p.h(paramg, "newAnnotations");
-    if (((paramList.isEmpty()) || (paramList == paramab.hKB())) && (paramg == paramab.hzL()))
+    p.k(paramab, "$this$replace");
+    p.k(paramList, "newArguments");
+    p.k(paramg, "newAnnotations");
+    if (((paramList.isEmpty()) || (paramList == paramab.iOR())) && (paramg == paramab.iDY()))
     {
       AppMethodBeat.o(60843);
       return paramab;
     }
-    paramab = paramab.hLF();
+    paramab = paramab.iPX();
     if ((paramab instanceof v))
     {
-      paramab = (ab)ac.a(a(((v)paramab).TNV, paramList, paramg), a(((v)paramab).TNW, paramList, paramg));
+      paramab = (ab)ac.a(a(((v)paramab).abqv, paramList, paramg), a(((v)paramab).abqw, paramList, paramg));
       AppMethodBeat.o(60843);
       return paramab;
     }
@@ -40,10 +40,10 @@ public final class az
   private static aj a(aj paramaj, List<? extends av> paramList, g paramg)
   {
     AppMethodBeat.i(60844);
-    p.h(paramaj, "$this$replace");
-    p.h(paramList, "newArguments");
-    p.h(paramg, "newAnnotations");
-    if ((paramList.isEmpty()) && (paramg == paramaj.hzL()))
+    p.k(paramaj, "$this$replace");
+    p.k(paramList, "newArguments");
+    p.k(paramg, "newAnnotations");
+    if ((paramList.isEmpty()) && (paramg == paramaj.iDY()))
     {
       AppMethodBeat.o(60844);
       return paramaj;
@@ -54,7 +54,7 @@ public final class az
       AppMethodBeat.o(60844);
       return paramaj;
     }
-    paramaj = ac.c(paramg, paramaj.hKE(), paramList, paramaj.hEa());
+    paramaj = ac.c(paramg, paramaj.iOU(), paramList, paramaj.iIu());
     AppMethodBeat.o(60844);
     return paramaj;
   }
@@ -62,8 +62,8 @@ public final class az
   public static final aj ay(ab paramab)
   {
     AppMethodBeat.i(60846);
-    p.h(paramab, "$this$asSimpleType");
-    bg localbg = paramab.hLF();
+    p.k(paramab, "$this$asSimpleType");
+    bg localbg = paramab.iPX();
     Object localObject = localbg;
     if (!(localbg instanceof aj)) {
       localObject = null;
@@ -81,7 +81,7 @@ public final class az
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.az
  * JD-Core Version:    0.7.0.1
  */

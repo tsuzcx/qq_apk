@@ -17,13 +17,13 @@ public abstract interface d
   
   public abstract boolean a(CustomTextView paramCustomTextView, MotionEvent paramMotionEvent);
   
-  public abstract boolean canSelectArbitrarily();
+  public abstract boolean ibW();
   
   public abstract void j(Spannable paramSpannable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cedit.b.d
  * JD-Core Version:    0.7.0.1
  */

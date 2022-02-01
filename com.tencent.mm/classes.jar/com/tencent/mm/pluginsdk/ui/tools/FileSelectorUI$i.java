@@ -4,46 +4,35 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ListFileItem;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ListItem;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;", "(Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;)V", "createTime", "", "getCreateTime", "()J", "setCreateTime", "(J)V", "displayFromUser", "", "getDisplayFromUser", "()Ljava/lang/CharSequence;", "setDisplayFromUser", "(Ljava/lang/CharSequence;)V", "fileLen", "", "getFileLen", "()I", "setFileLen", "(I)V", "fileName", "getFileName", "setFileName", "filePath", "", "getFilePath", "()Ljava/lang/String;", "setFilePath", "(Ljava/lang/String;)V", "isDownloaded", "", "()Z", "setDownloaded", "(Z)V", "legalType", "getLegalType", "setLegalType", "msgId", "getMsgId", "setMsgId", "clone", "app_release"})
-public class FileSelectorUI$i
-  extends FileSelectorUI.k
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ListFavFileItem;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ListFileItem;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;", "(Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;)V", "cdnDataUrl", "", "getCdnDataUrl", "()Ljava/lang/String;", "setCdnDataUrl", "(Ljava/lang/String;)V", "dataId", "getDataId", "setDataId", "desc", "getDesc", "setDesc", "favTitle", "getFavTitle", "setFavTitle", "localId", "", "getLocalId", "()J", "setLocalId", "(J)V", "clone", "app_release"})
+public final class FileSelectorUI$i
+  extends FileSelectorUI.j
 {
-  CharSequence KuS;
-  public CharSequence KuT;
-  int KuU;
-  boolean KuV;
-  long createTime;
-  String filePath;
-  long msgId;
-  int zGp;
+  String Rwa;
+  String Rwb;
+  String desc;
+  public String fEa;
+  long localId;
   
   public FileSelectorUI$i()
   {
     super(localFileSelectorUI);
   }
   
-  public final void am(CharSequence paramCharSequence)
+  public final String hns()
   {
-    AppMethodBeat.i(231103);
-    p.h(paramCharSequence, "<set-?>");
-    this.KuT = paramCharSequence;
-    AppMethodBeat.o(231103);
-  }
-  
-  public final CharSequence gsq()
-  {
-    AppMethodBeat.i(231102);
-    CharSequence localCharSequence = this.KuT;
-    if (localCharSequence == null) {
-      p.btv("fileName");
+    AppMethodBeat.i(282508);
+    String str = this.fEa;
+    if (str == null) {
+      p.bGy("dataId");
     }
-    AppMethodBeat.o(231102);
-    return localCharSequence;
+    AppMethodBeat.o(282508);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.FileSelectorUI.i
  * JD-Core Version:    0.7.0.1
  */

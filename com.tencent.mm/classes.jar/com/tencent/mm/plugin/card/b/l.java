@@ -1,48 +1,48 @@
 package com.tencent.mm.plugin.card.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.card.model.u;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class l
   implements i
 {
-  private long crj = 0L;
-  public float gmu = -85.0F;
-  public float gmv = -1000.0F;
+  private long coZ = 0L;
+  public float iQD = -85.0F;
+  public float iQE = -1000.0F;
   
-  public final void G(String paramString1, String paramString2, int paramInt)
+  public final void K(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(112701);
-    if (System.currentTimeMillis() / 1000L - this.crj > 1800L)
+    if (System.currentTimeMillis() / 1000L - this.coZ > 1800L)
     {
-      this.gmu = -85.0F;
-      this.gmv = -1000.0F;
+      this.iQD = -85.0F;
+      this.iQE = -1000.0F;
       Log.i("MicroMsg.CardReportLBSManager", "checkDataValid time is out");
     }
-    if (this.gmu == -85.0F) {
+    if (this.iQD == -85.0F) {
       Log.i("MicroMsg.CardReportLBSManager", "checkDataValid lbsLatitude ==  LocationGeo.INVALID_LAT");
     }
-    if (this.gmv == -1000.0F) {
+    if (this.iQE == -1000.0F) {
       Log.i("MicroMsg.CardReportLBSManager", "checkDataValid lbsLongitude ==  LocationGeo.INVALID_LNG");
     }
-    g.aAg().hqi.a(1253, this);
-    paramString1 = new u(this.gmu, this.gmv, paramString1, paramString2, paramInt);
-    g.aAg().hqi.a(paramString1, 0);
+    h.aHF().kcd.a(1253, this);
+    paramString1 = new u(this.iQD, this.iQE, paramString1, paramString2, paramInt);
+    h.aHF().kcd.a(paramString1, 0);
     AppMethodBeat.o(112701);
   }
   
-  public final void R(float paramFloat1, float paramFloat2)
+  public final void T(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(112700);
-    this.gmu = paramFloat1;
-    this.gmv = paramFloat2;
-    this.crj = (System.currentTimeMillis() / 1000L);
+    this.iQD = paramFloat1;
+    this.iQE = paramFloat2;
+    this.coZ = (System.currentTimeMillis() / 1000L);
     AppMethodBeat.o(112700);
   }
   
@@ -50,13 +50,13 @@ public final class l
   {
     AppMethodBeat.i(112702);
     Log.i("MicroMsg.CardReportLBSManager", "rplbs onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    g.aAg().hqi.b(1253, this);
+    h.aHF().kcd.b(1253, this);
     AppMethodBeat.o(112702);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.b.l
  * JD-Core Version:    0.7.0.1
  */

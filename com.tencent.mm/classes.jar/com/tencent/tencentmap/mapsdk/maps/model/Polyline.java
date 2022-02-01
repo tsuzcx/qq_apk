@@ -57,6 +57,8 @@ public abstract interface Polyline
   
   public abstract boolean isAboveMaskLayer();
   
+  public abstract boolean isGradientEnable();
+  
   public abstract void pattern(List<Integer> paramList);
   
   public abstract void setAboveMaskLayer(boolean paramBoolean);
@@ -73,6 +75,8 @@ public abstract interface Polyline
   
   public abstract void setEraseable(boolean paramBoolean);
   
+  public abstract void setGradientEnable(boolean paramBoolean);
+  
   public abstract void setPoints(List<LatLng> paramList);
   
   public abstract void setPolylineOptions(PolylineOptions paramPolylineOptions);
@@ -85,7 +89,7 @@ public abstract interface Polyline
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.Polyline
  * JD-Core Version:    0.7.0.1
  */

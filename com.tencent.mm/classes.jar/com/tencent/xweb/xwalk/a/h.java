@@ -15,16 +15,16 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class h
 {
-  private static Map<String, g> SHV;
+  private static Map<String, g> aajN;
   
   static
   {
     AppMethodBeat.i(157195);
-    SHV = new HashMap();
+    aajN = new HashMap();
     AppMethodBeat.o(157195);
   }
   
-  private static a an(File paramFile)
+  private static a ag(File paramFile)
   {
     AppMethodBeat.i(157193);
     if (paramFile == null)
@@ -63,7 +63,7 @@ public final class h
     return null;
   }
   
-  public static g brX(String paramString)
+  public static g bEW(String paramString)
   {
     AppMethodBeat.i(157189);
     if ((paramString == null) || (paramString.isEmpty()))
@@ -71,55 +71,55 @@ public final class h
       AppMethodBeat.o(157189);
       return null;
     }
-    paramString = (g)SHV.get(paramString);
+    paramString = (g)aajN.get(paramString);
     AppMethodBeat.o(157189);
     return paramString;
   }
   
-  public static void hvj()
+  public static void izc()
   {
     AppMethodBeat.i(157192);
-    if (SHV.size() == 0)
+    if (aajN.size() == 0)
     {
       Log.e("XWalkPluginMgr", "checkFiles error, sPluginMap size is 0");
       AppMethodBeat.o(157192);
       return;
     }
-    Iterator localIterator = SHV.entrySet().iterator();
+    Iterator localIterator = aajN.entrySet().iterator();
     while (localIterator.hasNext()) {
-      ((g)((Map.Entry)localIterator.next()).getValue()).hvj();
+      ((g)((Map.Entry)localIterator.next()).getValue()).izc();
     }
     AppMethodBeat.o(157192);
   }
   
-  public static boolean hvn()
+  public static boolean izg()
   {
     AppMethodBeat.i(157187);
-    if (SHV.size() == 0)
+    if (aajN.size() == 0)
     {
       Log.i("XWalkPluginMgr", "initPlugins");
       Object localObject = new c();
-      SHV.put("FullScreenVideo", localObject);
+      aajN.put("FullScreenVideo", localObject);
       localObject = new e();
-      SHV.put("XFilesPDFReader", localObject);
+      aajN.put("XFilesPDFReader", localObject);
       localObject = new f();
-      SHV.put("XFilesPPTReader", localObject);
+      aajN.put("XFilesPPTReader", localObject);
       localObject = new n();
-      SHV.put("XFilesWordReader", localObject);
+      aajN.put("XFilesWordReader", localObject);
       localObject = new b();
-      SHV.put("XFilesExcelReader", localObject);
+      aajN.put("XFilesExcelReader", localObject);
       localObject = new d();
-      SHV.put(((m)localObject).getPluginName(), localObject);
+      aajN.put(((m)localObject).getPluginName(), localObject);
     }
     AppMethodBeat.o(157187);
     return true;
   }
   
-  public static List<g> hvo()
+  public static List<g> izh()
   {
     AppMethodBeat.i(157190);
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = SHV.entrySet().iterator();
+    Iterator localIterator = aajN.entrySet().iterator();
     while (localIterator.hasNext()) {
       localArrayList.add(((Map.Entry)localIterator.next()).getValue());
     }
@@ -127,16 +127,16 @@ public final class h
     return localArrayList;
   }
   
-  public static String hvp()
+  public static String izi()
   {
     AppMethodBeat.i(157191);
     Object localObject = new StringBuilder();
-    Iterator localIterator = SHV.entrySet().iterator();
+    Iterator localIterator = aajN.entrySet().iterator();
     while (localIterator.hasNext())
     {
       g localg = (g)((Map.Entry)localIterator.next()).getValue();
       if (localg != null) {
-        ((StringBuilder)localObject).append(localg.getPluginName()).append(" = ").append(localg.SHU).append(", ");
+        ((StringBuilder)localObject).append(localg.getPluginName()).append(" = ").append(localg.aajM).append(", ");
       }
     }
     localObject = ((StringBuilder)localObject).toString();
@@ -144,10 +144,10 @@ public final class h
     return localObject;
   }
   
-  public static void hvq()
+  public static void izj()
   {
     AppMethodBeat.i(157194);
-    if (SHV.size() == 0)
+    if (aajN.size() == 0)
     {
       Log.e("XWalkPluginMgr", "clearOldVersions error, sPluginMap size is 0");
       AppMethodBeat.o(157194);
@@ -179,30 +179,30 @@ public final class h
       localFile = localObject[i];
       if (localFile != null)
       {
-        locala = an(localFile);
+        locala = ag(localFile);
         if (locala != null) {
           break label164;
         }
         Log.e("XWalkPluginMgr", "clearOldVersions can not get plugin info, delete " + localFile.getAbsolutePath());
-        com.tencent.xweb.util.c.bsB(localFile.getAbsolutePath());
+        com.tencent.xweb.util.c.bFA(localFile.getAbsolutePath());
       }
       g localg;
       for (;;)
       {
         i += 1;
         break;
-        localg = (g)SHV.get(locala.CZj);
+        localg = (g)aajN.get(locala.GRF);
         if (localg != null) {
           break label225;
         }
         Log.e("XWalkPluginMgr", "clearOldVersions invalid plugin info, delete " + localFile.getAbsolutePath());
-        com.tencent.xweb.util.c.bsB(localFile.getAbsolutePath());
+        com.tencent.xweb.util.c.bFA(localFile.getAbsolutePath());
       }
-      j = localg.SHU;
+      j = localg.aajM;
       if (j >= 0) {
         break label327;
       }
-      j = localg.hvk();
+      j = localg.izd();
     }
     label327:
     for (;;)
@@ -212,18 +212,18 @@ public final class h
         Log.e("XWalkPluginMgr", "clearOldVersions can not get availableVersion, skip " + localFile.getAbsolutePath());
         break;
       }
-      if (locala.SHW >= j) {
+      if (locala.aajO >= j) {
         break;
       }
       Log.i("XWalkPluginMgr", "clearOldVersions is old version, delete " + localFile.getAbsolutePath());
-      com.tencent.xweb.util.c.bsB(localFile.getAbsolutePath());
+      com.tencent.xweb.util.c.bFA(localFile.getAbsolutePath());
       break;
       AppMethodBeat.o(157194);
       return;
     }
   }
   
-  public static Map<String, Integer> lI(Context paramContext)
+  public static Map<String, Integer> mF(Context paramContext)
   {
     AppMethodBeat.i(157188);
     HashMap localHashMap = new HashMap();
@@ -239,19 +239,19 @@ public final class h
   
   static final class a
   {
-    String CZj;
-    int SHW;
+    String GRF;
+    int aajO;
     
     a(String paramString, int paramInt)
     {
-      this.CZj = paramString;
-      this.SHW = paramInt;
+      this.GRF = paramString;
+      this.aajO = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.xwalk.a.h
  * JD-Core Version:    0.7.0.1
  */

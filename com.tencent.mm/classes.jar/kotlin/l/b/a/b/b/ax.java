@@ -5,17 +5,17 @@ import kotlin.l.b.a.b.j.b.g;
 public abstract interface ax
   extends au
 {
-  public abstract boolean hBF();
+  public abstract boolean iFU();
   
-  public abstract g<?> hBG();
+  public abstract g<?> iFV();
   
-  public abstract boolean hBH();
+  public abstract boolean iFW();
   
-  public abstract boolean hBI();
+  public abstract boolean iFX();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.ax
  * JD-Core Version:    0.7.0.1
  */

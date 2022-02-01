@@ -4,73 +4,64 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import g.a.a.b;
 
 public final class cv
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String Name;
-  public String xMD;
+  public int CQL;
+  public String CqK;
+  public String lVG;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41808);
+    AppMethodBeat.i(207057);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Name == null)
+      if (this.lVG == null)
       {
-        paramVarArgs = new b("Not all required fields were included: Name");
-        AppMethodBeat.o(41808);
+        paramVarArgs = new b("Not all required fields were included: AppId");
+        AppMethodBeat.o(207057);
         throw paramVarArgs;
       }
-      if (this.xMD == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Color");
-        AppMethodBeat.o(41808);
-        throw paramVarArgs;
+      if (this.lVG != null) {
+        paramVarArgs.f(1, this.lVG);
       }
-      if (this.Name != null) {
-        paramVarArgs.e(1, this.Name);
+      if (this.CqK != null) {
+        paramVarArgs.f(2, this.CqK);
       }
-      if (this.xMD != null) {
-        paramVarArgs.e(2, this.xMD);
-      }
-      AppMethodBeat.o(41808);
+      paramVarArgs.aY(3, this.CQL);
+      AppMethodBeat.o(207057);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Name == null) {
-        break label370;
+      if (this.lVG == null) {
+        break label366;
       }
     }
-    label370:
-    for (paramInt = g.a.a.b.b.a.f(1, this.Name) + 0;; paramInt = 0)
+    label366:
+    for (paramInt = g.a.a.b.b.a.g(1, this.lVG) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.xMD != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.xMD);
+      if (this.CqK != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.CqK);
       }
-      AppMethodBeat.o(41808);
-      return i;
+      paramInt = g.a.a.b.b.a.bM(3, this.CQL);
+      AppMethodBeat.o(207057);
+      return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.Name == null)
+        if (this.lVG == null)
         {
-          paramVarArgs = new b("Not all required fields were included: Name");
-          AppMethodBeat.o(41808);
+          paramVarArgs = new b("Not all required fields were included: AppId");
+          AppMethodBeat.o(207057);
           throw paramVarArgs;
         }
-        if (this.xMD == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Color");
-          AppMethodBeat.o(41808);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(41808);
+        AppMethodBeat.o(207057);
         return 0;
       }
       if (paramInt == 3)
@@ -80,25 +71,29 @@ public final class cv
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(41808);
+          AppMethodBeat.o(207057);
           return -1;
         case 1: 
-          localcv.Name = locala.UbS.readString();
-          AppMethodBeat.o(41808);
+          localcv.lVG = locala.abFh.readString();
+          AppMethodBeat.o(207057);
+          return 0;
+        case 2: 
+          localcv.CqK = locala.abFh.readString();
+          AppMethodBeat.o(207057);
           return 0;
         }
-        localcv.xMD = locala.UbS.readString();
-        AppMethodBeat.o(41808);
+        localcv.CQL = locala.abFh.AK();
+        AppMethodBeat.o(207057);
         return 0;
       }
-      AppMethodBeat.o(41808);
+      AppMethodBeat.o(207057);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.cv
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.card.ui.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.protocal.protobuf.ty;
+import com.tencent.mm.protocal.protobuf.ua;
 import com.tencent.mm.ui.MMActivity;
 
 public final class d
@@ -13,20 +13,20 @@ public final class d
     super(paramMMActivity);
   }
   
-  public final boolean cwM()
+  public final boolean cKp()
   {
     return false;
   }
   
-  public final boolean cwO()
+  public final boolean cKr()
   {
     return false;
   }
   
-  public final boolean cwP()
+  public final boolean cKs()
   {
     AppMethodBeat.i(113640);
-    if ((this.pQV.csR().LcB != null) && (this.qeD) && (cwq()) && (cwr()))
+    if ((this.tmU.cGt().SdO != null) && (cJq()) && (cJS()) && (cJT()))
     {
       AppMethodBeat.o(113640);
       return true;

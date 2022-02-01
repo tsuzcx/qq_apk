@@ -5,7 +5,8 @@ import android.app.KeyguardManager;
 import android.content.Context;
 import android.os.PowerManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.multitalk.model.ac;
+import com.tencent.mm.plugin.multitalk.a.b;
+import com.tencent.mm.plugin.multitalk.model.ad;
 import com.tencent.mm.plugin.multitalk.model.q;
 import com.tencent.mm.plugin.multitalk.ui.widget.f;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView;
@@ -15,13 +16,13 @@ import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 public class MultiTalkAddMembersUI
   extends MultiTalkSelectContactUI
 {
-  private boolean zPH = false;
+  private boolean Fvh = false;
   
-  public final void egJ()
+  public final void eQp()
   {
     AppMethodBeat.i(178894);
-    this.zQc = false;
-    super.egJ();
+    this.FvF = false;
+    super.eQp();
     AppMethodBeat.o(178894);
   }
   
@@ -29,10 +30,10 @@ public class MultiTalkAddMembersUI
   {
     AppMethodBeat.i(114651);
     super.initView();
-    this.zoy.setBackgroundResource(2131100241);
-    MultiSelectContactView localMultiSelectContactView = this.zoy;
-    int i = f.zSe;
-    localMultiSelectContactView.setPadding(i, i, f.zSe, 0);
+    this.ETP.setBackgroundResource(a.b.default_bg_color);
+    MultiSelectContactView localMultiSelectContactView = this.ETP;
+    int i = f.FxG;
+    localMultiSelectContactView.setPadding(i, i, f.FxG, 0);
     AppMethodBeat.o(114651);
   }
   
@@ -48,7 +49,7 @@ public class MultiTalkAddMembersUI
     if (((bool2) || (!bool1)) && (bool3)) {}
     for (bool1 = true;; bool1 = false)
     {
-      this.zPH = bool1;
+      this.Fvh = bool1;
       AppMethodBeat.o(178895);
       return;
     }
@@ -58,11 +59,11 @@ public class MultiTalkAddMembersUI
   {
     AppMethodBeat.i(178896);
     super.onStop();
-    if (this.zQc)
+    if (this.FvF)
     {
-      this.zQc = false;
-      egJ();
-      ac.eom().rI(false);
+      this.FvF = false;
+      eQp();
+      ad.eYc().uL(false);
     }
     AppMethodBeat.o(178896);
   }
@@ -75,7 +76,7 @@ public class MultiTalkAddMembersUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.MultiTalkAddMembersUI
  * JD-Core Version:    0.7.0.1
  */

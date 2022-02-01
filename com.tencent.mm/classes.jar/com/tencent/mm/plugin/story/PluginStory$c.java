@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.story;
 
-import com.tencent.mm.g.a.xd;
+import com.tencent.mm.f.a.yk;
 import com.tencent.mm.sdk.event.IListener;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/PluginStory$StorySynclistener;", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/StorySyncEvent;", "()V", "callback", "", "event", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/PluginStory$StorySynclistener;", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/StorySyncEvent;", "()V", "callback", "", "event", "plugin-story_release"})
 public final class PluginStory$c
-  extends IListener<xd>
+  extends IListener<yk>
 {}
 
 

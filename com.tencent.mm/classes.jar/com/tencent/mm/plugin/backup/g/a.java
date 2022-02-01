@@ -12,97 +12,97 @@ public final class a
   extends b
 {
   final String authId;
-  public v oPh;
-  public w oPi;
-  final int oPj;
-  final String oPk;
-  final byte[] oPl;
+  public v rRe;
+  public w rRf;
+  final int rRg;
+  final String rRh;
+  final byte[] rRi;
   
   public a(String paramString1, String paramString2, byte[] paramArrayOfByte, String paramString3, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(231596);
-    this.oPh = new v();
-    this.oPi = new w();
+    AppMethodBeat.i(288138);
+    this.rRe = new v();
+    this.rRf = new w();
     Log.i("MicroMsg.BackupAuthScene", "BackupAuthScene init, backupType[%d], stack:%s", new Object[] { Integer.valueOf(paramInt2), Util.getStack() });
-    this.oPh.oTm = new com.tencent.mm.bw.b(l.e(paramString1.getBytes(), paramArrayOfByte));
-    this.oPh.oUu = 0;
-    this.oPh.ID = paramString3;
-    this.oPh.Version = paramInt1;
-    paramString1 = this.oPh;
+    this.rRe.rVk = new com.tencent.mm.cd.b(l.e(paramString1.getBytes(), paramArrayOfByte));
+    this.rRe.rWs = 0;
+    this.rRe.ID = paramString3;
+    this.rRe.rWt = paramInt1;
+    paramString1 = this.rRe;
     if (paramBoolean) {}
-    for (paramInt1 = c.oIO;; paramInt1 = c.oIN)
+    for (paramInt1 = c.rKE;; paramInt1 = c.rKD)
     {
-      paramString1.oUv = paramInt1;
-      this.oPk = paramString2;
+      paramString1.rWu = paramInt1;
+      this.rRh = paramString2;
       this.authId = paramString3;
-      this.oPl = paramArrayOfByte;
-      this.oPj = paramInt2;
-      AppMethodBeat.o(231596);
+      this.rRi = paramArrayOfByte;
+      this.rRg = paramInt2;
+      AppMethodBeat.o(288138);
       return;
     }
   }
   
-  public final void A(boolean paramBoolean1, boolean paramBoolean2)
+  public final void E(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramBoolean1)
     {
-      localv = this.oPh;
-      localv.oUw |= c.oIQ;
+      localv = this.rRe;
+      localv.rWv |= c.rKG;
     }
-    v localv = this.oPh;
-    localv.oUw |= c.oIR;
-    localv = this.oPh;
-    localv.oUw |= c.oIS;
+    v localv = this.rRe;
+    localv.rWv |= c.rKH;
+    localv = this.rRe;
+    localv.rWv |= c.rKI;
     if (paramBoolean2)
     {
-      localv = this.oPh;
-      localv.oUw |= c.oIT;
+      localv = this.rRe;
+      localv.rWv |= c.rKJ;
     }
   }
   
-  public final void Bm(int paramInt)
+  public final void EN(int paramInt)
   {
     AppMethodBeat.i(21696);
-    if (this.oPi.oTW != 0)
+    if (this.rRf.rVU != 0)
     {
-      Log.e("MicroMsg.BackupAuthScene", "onSceneEnd errType[%d]", new Object[] { Integer.valueOf(this.oPi.oTW) });
-      q(4, this.oPi.oTW, "onSceneEnd status failed");
+      Log.e("MicroMsg.BackupAuthScene", "onSceneEnd errType[%d]", new Object[] { Integer.valueOf(this.rRf.rVU) });
+      r(4, this.rRf.rVU, "onSceneEnd status failed");
       AppMethodBeat.o(21696);
       return;
     }
-    if (!this.authId.equals(this.oPi.ID))
+    if (!this.authId.equals(this.rRf.ID))
     {
       Log.e("MicroMsg.BackupAuthScene", "onSceneEnd not the same id");
-      q(4, -1, "onSceneEnd not the same id");
+      r(4, -1, "onSceneEnd not the same id");
       AppMethodBeat.o(21696);
       return;
     }
-    String str = new String(l.d(this.oPi.oTm.zy, this.oPl));
-    if (str.length() != this.oPk.length()) {}
-    for (boolean bool = false;; bool = str.equals(this.oPk))
+    String str = new String(l.d(this.rRf.rVk.UH, this.rRi));
+    if (str.length() != this.rRh.length()) {}
+    for (boolean bool = false;; bool = str.equals(this.rRh))
     {
       Log.i("MicroMsg.BackupAuthScene", "onSceneEnd check ok result[%b]", new Object[] { Boolean.valueOf(bool) });
       if (bool) {
         break;
       }
       Log.e("MicroMsg.BackupAuthScene", "onSceneEnd check ok failed");
-      q(4, -3, "onSceneEnd check ok failed");
+      r(4, -3, "onSceneEnd check ok failed");
       AppMethodBeat.o(21696);
       return;
     }
-    q(0, 0, "onSceneEnd auth success");
-    if ((this.oPj == 22) && (this.oPi.Version < c.oIM))
+    r(0, 0, "onSceneEnd auth success");
+    if ((this.rRg == 22) && (this.rRf.rWt < c.rKC))
     {
       AppMethodBeat.o(21696);
       return;
     }
-    this.oPh.oTm = new com.tencent.mm.bw.b(l.e(this.oPk.getBytes(), this.oPl));
-    this.oPh.oUu = 1;
-    this.oPh.ID = this.authId;
+    this.rRe.rVk = new com.tencent.mm.cd.b(l.e(this.rRh.getBytes(), this.rRi));
+    this.rRe.rWs = 1;
+    this.rRe.ID = this.authId;
     try
     {
       Log.i("MicroMsg.BackupAuthScene", "directSendAuthOk");
-      b.D(this.oPh.toByteArray(), getType(), paramInt);
+      b.F(this.rRe.toByteArray(), getType(), paramInt);
       AppMethodBeat.o(21696);
       return;
     }
@@ -113,14 +113,14 @@ public final class a
     }
   }
   
-  public final com.tencent.mm.bw.a cgq()
+  public final com.tencent.mm.cd.a ctC()
   {
-    return this.oPi;
+    return this.rRf;
   }
   
-  public final com.tencent.mm.bw.a cgr()
+  public final com.tencent.mm.cd.a ctD()
   {
-    return this.oPh;
+    return this.rRe;
   }
   
   public final int getType()

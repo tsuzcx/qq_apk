@@ -1,13 +1,29 @@
 package com.tencent.mm.plugin.taskbar;
 
-import com.tencent.mm.ipcinvoker.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
 import kotlin.l;
+import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "bundle", "Landroid/os/Bundle;", "onCallback"})
-final class PluginTaskBar$d<T>
-  implements d<ResultType>
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+final class PluginTaskBar$d
+  extends q
+  implements a<x>
 {
-  PluginTaskBar$d(PluginTaskBar paramPluginTaskBar) {}
+  public static final d Mmb;
+  
+  static
+  {
+    AppMethodBeat.i(215536);
+    Mmb = new d();
+    AppMethodBeat.o(215536);
+  }
+  
+  PluginTaskBar$d()
+  {
+    super(0);
+  }
 }
 
 

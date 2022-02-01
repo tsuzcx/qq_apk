@@ -4,6 +4,7 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.LinkedList;
@@ -25,7 +26,12 @@ public final class b
     super(paramISQLiteDatabase, a.info, "FileDownloadInfo", null);
   }
   
-  public static String W(LinkedList<String> paramLinkedList)
+  public b(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
+  {
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
+  }
+  
+  public static String U(LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(89089);
     if (Util.isNullOrNil(paramLinkedList))
@@ -47,7 +53,7 @@ public final class b
     return paramLinkedList;
   }
   
-  public final a CH(long paramLong)
+  public final a IQ(long paramLong)
   {
     a locala = null;
     AppMethodBeat.i(89090);
@@ -75,7 +81,7 @@ public final class b
     return locala;
   }
   
-  public final a alb(String paramString)
+  public final a asU(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(89088);
@@ -104,7 +110,7 @@ public final class b
     return paramString;
   }
   
-  public final boolean alc(String paramString)
+  public final boolean asV(String paramString)
   {
     AppMethodBeat.i(89093);
     if (Util.isNullOrNil(paramString))
@@ -118,7 +124,7 @@ public final class b
     return bool;
   }
   
-  public final boolean ald(String paramString)
+  public final boolean asW(String paramString)
   {
     AppMethodBeat.i(89094);
     if (Util.isNullOrNil(paramString))
@@ -132,7 +138,7 @@ public final class b
     return bool;
   }
   
-  public final a ale(String paramString)
+  public final a asX(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(89091);
@@ -161,7 +167,7 @@ public final class b
     return paramString;
   }
   
-  public final boolean alf(String paramString)
+  public final boolean asY(String paramString)
   {
     AppMethodBeat.i(89096);
     paramString = rawQuery(String.format("select count(*) from %s where %s=\"%s\"", new Object[] { "FileDownloadInfo", "downloadUrl", paramString }), new String[0]);
@@ -181,23 +187,15 @@ public final class b
     return false;
   }
   
-  public final boolean cBL()
+  public final LinkedList<a> cPX()
   {
-    AppMethodBeat.i(89092);
-    boolean bool = execSQL("FileDownloadInfo", "delete from FileDownloadInfo");
-    AppMethodBeat.o(89092);
-    return bool;
-  }
-  
-  public final LinkedList<a> cBt()
-  {
-    AppMethodBeat.i(192273);
+    AppMethodBeat.i(219132);
     Log.i("MicroMsg.FileDownloadInfoStorage", "getAllTasks, sql = ".concat(String.valueOf("select * from FileDownloadInfo")));
     Cursor localCursor = rawQuery("select * from FileDownloadInfo", new String[0]);
     LinkedList localLinkedList = new LinkedList();
     if (localCursor == null)
     {
-      AppMethodBeat.o(192273);
+      AppMethodBeat.o(219132);
       return localLinkedList;
     }
     while (localCursor.moveToNext())
@@ -207,11 +205,19 @@ public final class b
       localLinkedList.add(locala);
     }
     localCursor.close();
-    AppMethodBeat.o(192273);
+    AppMethodBeat.o(219132);
     return localLinkedList;
   }
   
-  public final boolean cW(String paramString, int paramInt)
+  public final boolean cQp()
+  {
+    AppMethodBeat.i(89092);
+    boolean bool = execSQL("FileDownloadInfo", "delete from FileDownloadInfo");
+    AppMethodBeat.o(89092);
+    return bool;
+  }
+  
+  public final boolean dq(String paramString, int paramInt)
   {
     AppMethodBeat.i(89095);
     String str = String.format("update %s set %s=%d where %s=\"%s\"", new Object[] { "FileDownloadInfo", "status", Integer.valueOf(paramInt), "downloadUrl", paramString });
@@ -223,7 +229,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.g.b
  * JD-Core Version:    0.7.0.1
  */

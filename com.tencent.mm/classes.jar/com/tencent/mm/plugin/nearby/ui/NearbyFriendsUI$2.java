@@ -15,9 +15,9 @@ final class NearbyFriendsUI$2
   {
     AppMethodBeat.i(89840);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/nearby/ui/NearbyFriendsUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    NearbyFriendsUI.y(this.AAi);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/nearby/ui/NearbyFriendsUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    NearbyFriendsUI.x(this.Gtl);
     a.a(this, "com/tencent/mm/plugin/nearby/ui/NearbyFriendsUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(89840);
   }

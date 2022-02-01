@@ -9,18 +9,15 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.sdk.storage.MStorageEx;
-import com.tencent.mm.storagebase.g;
-import com.tencent.mm.storagebase.g.a;
 import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 
-public final class o
+public class o
   extends MAutoStorage<n>
-  implements g.a
 {
   public static final String[] SQL_CREATE;
   private ISQLiteDatabase db;
-  public MStorageEx keO;
+  public MStorageEx mWn;
   
   static
   {
@@ -33,7 +30,7 @@ public final class o
   {
     super(paramISQLiteDatabase, n.info, "GoogleFriend", null);
     AppMethodBeat.i(131049);
-    this.keO = new MStorageEx()
+    this.mWn = new MStorageEx()
     {
       public final boolean shouldProcessEvent()
       {
@@ -56,17 +53,6 @@ public final class o
     AppMethodBeat.o(131049);
   }
   
-  private boolean Te(String paramString)
-  {
-    AppMethodBeat.i(131057);
-    paramString = "SELECT GoogleFriend.googleid,GoogleFriend.googlename,GoogleFriend.googlephotourl,GoogleFriend.googlegmail,GoogleFriend.username,GoogleFriend.nickname,GoogleFriend.nicknameqp,GoogleFriend.usernamepy,GoogleFriend.small_url,GoogleFriend.big_url,GoogleFriend.ret,GoogleFriend.status,GoogleFriend.googleitemid,GoogleFriend.googlecgistatus,GoogleFriend.contecttype,GoogleFriend.googlenamepy FROM GoogleFriend   WHERE GoogleFriend.googleitemid = \"" + Util.escapeSqlValue(String.valueOf(paramString)) + "\"";
-    paramString = this.db.rawQuery(paramString, null, 2);
-    boolean bool = paramString.moveToFirst();
-    paramString.close();
-    AppMethodBeat.o(131057);
-    return bool;
-  }
-  
   private boolean a(n paramn)
   {
     AppMethodBeat.i(131050);
@@ -85,111 +71,18 @@ public final class o
     return false;
   }
   
-  public final Cursor Td(String paramString)
+  private boolean aaK(String paramString)
   {
-    AppMethodBeat.i(131053);
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (!TextUtils.isEmpty(paramString))
-    {
-      localStringBuilder.append(" WHERE ( ");
-      localStringBuilder.append("GoogleFriend.googleid='" + paramString + "'");
-      localStringBuilder.append(" ) ");
-    }
-    paramString = this.db.rawQuery("SELECT GoogleFriend.googleid,GoogleFriend.googlename,GoogleFriend.googlephotourl,GoogleFriend.googlegmail,GoogleFriend.username,GoogleFriend.nickname,GoogleFriend.nicknameqp,GoogleFriend.usernamepy,GoogleFriend.small_url,GoogleFriend.big_url,GoogleFriend.ret,GoogleFriend.status,GoogleFriend.googleitemid,GoogleFriend.googlecgistatus,GoogleFriend.contecttype,GoogleFriend.googlenamepy FROM GoogleFriend  ".concat(String.valueOf(localStringBuilder)), null);
-    AppMethodBeat.o(131053);
-    return paramString;
-  }
-  
-  public final int a(g paramg)
-  {
-    this.db = paramg;
-    return 0;
-  }
-  
-  public final boolean aF(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(131055);
-    paramString = "UPDATE GoogleFriend SET googlecgistatus='" + paramInt + "' WHERE googleitemid='" + paramString + "'";
-    boolean bool = this.db.execSQL("GoogleFriend", paramString);
-    AppMethodBeat.o(131055);
+    AppMethodBeat.i(131057);
+    paramString = "SELECT GoogleFriend.googleid,GoogleFriend.googlename,GoogleFriend.googlephotourl,GoogleFriend.googlegmail,GoogleFriend.username,GoogleFriend.nickname,GoogleFriend.nicknameqp,GoogleFriend.usernamepy,GoogleFriend.small_url,GoogleFriend.big_url,GoogleFriend.ret,GoogleFriend.status,GoogleFriend.googleitemid,GoogleFriend.googlecgistatus,GoogleFriend.contecttype,GoogleFriend.googlenamepy FROM GoogleFriend   WHERE GoogleFriend.googleitemid = \"" + Util.escapeSqlValue(String.valueOf(paramString)) + "\"";
+    paramString = this.db.rawQuery(paramString, null, 2);
+    boolean bool = paramString.moveToFirst();
+    paramString.close();
+    AppMethodBeat.o(131057);
     return bool;
   }
   
-  public final boolean aG(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(131056);
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = "UPDATE GoogleFriend SET googlecgistatus='" + paramInt + "' , status='0' WHERE username='" + paramString + "'";
-      boolean bool = this.db.execSQL("GoogleFriend", paramString);
-      AppMethodBeat.o(131056);
-      return bool;
-    }
-    AppMethodBeat.o(131056);
-    return false;
-  }
-  
-  public final boolean b(n paramn)
-  {
-    AppMethodBeat.i(131054);
-    if (!Te(paramn.field_googleitemid))
-    {
-      boolean bool = a(paramn);
-      AppMethodBeat.o(131054);
-      return bool;
-    }
-    ContentValues localContentValues = paramn.convertTo();
-    int i = this.db.update("GoogleFriend", localContentValues, "googleitemid=?", new String[] { paramn.field_googleitemid });
-    if (i > 0) {
-      doNotify();
-    }
-    if (i > 0)
-    {
-      AppMethodBeat.o(131054);
-      return true;
-    }
-    AppMethodBeat.o(131054);
-    return false;
-  }
-  
-  public final Cursor bZ(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(131052);
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      localStringBuilder.append(" WHERE ( ");
-      localStringBuilder.append("GoogleFriend.googlegmail!='" + paramString2 + "' AND ");
-      localStringBuilder.append("GoogleFriend.googlename LIKE '%" + paramString1 + "%' OR ");
-      localStringBuilder.append("GoogleFriend.googlenamepy LIKE '%" + paramString1 + "%' OR ");
-      localStringBuilder.append("GoogleFriend.googlegmail LIKE '%" + paramString1 + "%' OR ");
-      localStringBuilder.append("GoogleFriend.nickname LIKE '%" + paramString1 + "%' ) ");
-    }
-    for (;;)
-    {
-      localStringBuilder.append(" GROUP BY googleid,contecttype");
-      localStringBuilder.append(" ORDER BY status , googlenamepy ASC , usernamepy ASC");
-      paramString1 = this.db.rawQuery("SELECT GoogleFriend.googleid,GoogleFriend.googlename,GoogleFriend.googlephotourl,GoogleFriend.googlegmail,GoogleFriend.username,GoogleFriend.nickname,GoogleFriend.nicknameqp,GoogleFriend.usernamepy,GoogleFriend.small_url,GoogleFriend.big_url,GoogleFriend.ret,GoogleFriend.status,GoogleFriend.googleitemid,GoogleFriend.googlecgistatus,GoogleFriend.contecttype,GoogleFriend.googlenamepy FROM GoogleFriend  " + localStringBuilder.toString(), null);
-      AppMethodBeat.o(131052);
-      return paramString1;
-      localStringBuilder.append(" WHERE ( GoogleFriend.googlegmail!='" + paramString2 + "' )");
-    }
-  }
-  
-  public final void clear()
-  {
-    AppMethodBeat.i(131058);
-    this.db.execSQL("GoogleFriend", " delete from GoogleFriend");
-    this.keO.doNotify(5, this.keO, "");
-    AppMethodBeat.o(131058);
-  }
-  
-  public final String getTableName()
-  {
-    return "GoogleFriend";
-  }
-  
-  public final boolean z(ArrayList<n> paramArrayList)
+  public final boolean A(ArrayList<n> paramArrayList)
   {
     AppMethodBeat.i(131051);
     if (paramArrayList.size() <= 0)
@@ -219,16 +112,114 @@ public final class o
         localh.endTransaction(l);
         Log.i("MicroMsg.GoogleContact.GoogleFriendUI", "end updateList transaction");
       }
-      this.keO.doNotify(2, this.keO, "");
+      this.mWn.doNotify(2, this.mWn, "");
       AppMethodBeat.o(131051);
       return true;
       l = -1L;
     }
   }
+  
+  public final boolean aY(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(131055);
+    paramString = "UPDATE GoogleFriend SET googlecgistatus='" + paramInt + "' WHERE googleitemid='" + paramString + "'";
+    boolean bool = this.db.execSQL("GoogleFriend", paramString);
+    AppMethodBeat.o(131055);
+    return bool;
+  }
+  
+  public final boolean aZ(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(131056);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = "UPDATE GoogleFriend SET googlecgistatus='" + paramInt + "' , status='0' WHERE username='" + paramString + "'";
+      boolean bool = this.db.execSQL("GoogleFriend", paramString);
+      AppMethodBeat.o(131056);
+      return bool;
+    }
+    AppMethodBeat.o(131056);
+    return false;
+  }
+  
+  public final Cursor aaJ(String paramString)
+  {
+    AppMethodBeat.i(131053);
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localStringBuilder.append(" WHERE ( ");
+      localStringBuilder.append("GoogleFriend.googleid='" + paramString + "'");
+      localStringBuilder.append(" ) ");
+    }
+    paramString = this.db.rawQuery("SELECT GoogleFriend.googleid,GoogleFriend.googlename,GoogleFriend.googlephotourl,GoogleFriend.googlegmail,GoogleFriend.username,GoogleFriend.nickname,GoogleFriend.nicknameqp,GoogleFriend.usernamepy,GoogleFriend.small_url,GoogleFriend.big_url,GoogleFriend.ret,GoogleFriend.status,GoogleFriend.googleitemid,GoogleFriend.googlecgistatus,GoogleFriend.contecttype,GoogleFriend.googlenamepy FROM GoogleFriend  ".concat(String.valueOf(localStringBuilder)), null);
+    AppMethodBeat.o(131053);
+    return paramString;
+  }
+  
+  public final boolean b(n paramn)
+  {
+    AppMethodBeat.i(131054);
+    if (!aaK(paramn.field_googleitemid))
+    {
+      boolean bool = a(paramn);
+      AppMethodBeat.o(131054);
+      return bool;
+    }
+    ContentValues localContentValues = paramn.convertTo();
+    int i = this.db.update("GoogleFriend", localContentValues, "googleitemid=?", new String[] { paramn.field_googleitemid });
+    if (i > 0) {
+      doNotify();
+    }
+    if (i > 0)
+    {
+      AppMethodBeat.o(131054);
+      return true;
+    }
+    AppMethodBeat.o(131054);
+    return false;
+  }
+  
+  public final Cursor cf(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(131052);
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      localStringBuilder.append(" WHERE ( ");
+      localStringBuilder.append("GoogleFriend.googlegmail!='" + paramString2 + "' AND ");
+      localStringBuilder.append("GoogleFriend.googlename LIKE '%" + paramString1 + "%' OR ");
+      localStringBuilder.append("GoogleFriend.googlenamepy LIKE '%" + paramString1 + "%' OR ");
+      localStringBuilder.append("GoogleFriend.googlegmail LIKE '%" + paramString1 + "%' OR ");
+      localStringBuilder.append("GoogleFriend.nickname LIKE '%" + paramString1 + "%' ) ");
+    }
+    for (;;)
+    {
+      localStringBuilder.append(" GROUP BY googleid,contecttype");
+      localStringBuilder.append(" ORDER BY status , googlenamepy ASC , usernamepy ASC");
+      paramString1 = this.db.rawQuery("SELECT GoogleFriend.googleid,GoogleFriend.googlename,GoogleFriend.googlephotourl,GoogleFriend.googlegmail,GoogleFriend.username,GoogleFriend.nickname,GoogleFriend.nicknameqp,GoogleFriend.usernamepy,GoogleFriend.small_url,GoogleFriend.big_url,GoogleFriend.ret,GoogleFriend.status,GoogleFriend.googleitemid,GoogleFriend.googlecgistatus,GoogleFriend.contecttype,GoogleFriend.googlenamepy FROM GoogleFriend  " + localStringBuilder.toString(), null);
+      AppMethodBeat.o(131052);
+      return paramString1;
+      localStringBuilder.append(" WHERE ( GoogleFriend.googlegmail!='" + paramString2 + "' )");
+    }
+  }
+  
+  public final void clear()
+  {
+    AppMethodBeat.i(131058);
+    this.db.execSQL("GoogleFriend", " delete from GoogleFriend");
+    this.mWn.doNotify(5, this.mWn, "");
+    AppMethodBeat.o(131058);
+  }
+  
+  public String getTableName()
+  {
+    return "GoogleFriend";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.o
  * JD-Core Version:    0.7.0.1
  */

@@ -9,23 +9,23 @@ import org.xwalk.core.Log;
 public final class a
   implements CookieInternal.ICookieManagerInternal
 {
-  CookieManager SDU;
+  CookieManager aafe;
   
   public a()
   {
     AppMethodBeat.i(153648);
-    this.SDU = CookieManager.getInstance();
+    this.aafe = CookieManager.getInstance();
     AppMethodBeat.o(153648);
   }
   
-  public final void e(com.tencent.xweb.WebView paramWebView)
+  public final void f(com.tencent.xweb.WebView paramWebView)
   {
     AppMethodBeat.i(153650);
     if (Build.VERSION.SDK_INT >= 21)
     {
       if ((paramWebView != null) && (paramWebView.getWebViewUI() != null) && ((paramWebView.getWebViewUI() instanceof android.webkit.WebView)))
       {
-        this.SDU.setAcceptThirdPartyCookies((android.webkit.WebView)paramWebView.getWebViewUI(), true);
+        this.aafe.setAcceptThirdPartyCookies((android.webkit.WebView)paramWebView.getWebViewUI(), true);
         AppMethodBeat.o(153650);
         return;
       }
@@ -37,42 +37,42 @@ public final class a
   public final String getCookie(String paramString)
   {
     AppMethodBeat.i(153652);
-    paramString = this.SDU.getCookie(paramString);
+    paramString = this.aafe.getCookie(paramString);
     AppMethodBeat.o(153652);
     return paramString;
   }
   
-  public final void hsq()
+  public final void ivY()
   {
     AppMethodBeat.i(153649);
-    this.SDU.setAcceptCookie(true);
+    this.aafe.setAcceptCookie(true);
     AppMethodBeat.o(153649);
   }
   
   public final void removeAllCookie()
   {
     AppMethodBeat.i(153651);
-    this.SDU.removeAllCookie();
+    this.aafe.removeAllCookie();
     AppMethodBeat.o(153651);
   }
   
   public final void removeSessionCookie()
   {
     AppMethodBeat.i(153654);
-    this.SDU.removeSessionCookie();
+    this.aafe.removeSessionCookie();
     AppMethodBeat.o(153654);
   }
   
   public final void setCookie(String paramString1, String paramString2)
   {
     AppMethodBeat.i(153653);
-    this.SDU.setCookie(paramString1, paramString2);
+    this.aafe.setCookie(paramString1, paramString2);
     AppMethodBeat.o(153653);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.sys.a
  * JD-Core Version:    0.7.0.1
  */

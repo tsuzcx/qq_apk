@@ -10,7 +10,7 @@ final class WalletOrderInfoOldUI$9
 {
   WalletOrderInfoOldUI$9(WalletOrderInfoOldUI paramWalletOrderInfoOldUI) {}
   
-  public final void oj(int paramInt)
+  public final void qy(int paramInt)
   {
     AppMethodBeat.i(71051);
     switch (paramInt)
@@ -20,14 +20,14 @@ final class WalletOrderInfoOldUI$9
     {
       AppMethodBeat.o(71051);
       return;
-      WalletOrderInfoOldUI.a(this.Iir, false);
-      Object localObject = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.Iir.APz));
+      WalletOrderInfoOldUI.a(this.PaI, false);
+      Object localObject = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.PaI.GIN));
       ((Intent)localObject).addFlags(268435456);
-      WalletOrderInfoOldUI localWalletOrderInfoOldUI = this.Iir;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(localWalletOrderInfoOldUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoOldUI$7", "onClick", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      localWalletOrderInfoOldUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(localWalletOrderInfoOldUI, "com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoOldUI$7", "onClick", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      WalletOrderInfoOldUI localWalletOrderInfoOldUI = this.PaI;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(localWalletOrderInfoOldUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoOldUI$7", "onClick", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      localWalletOrderInfoOldUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(localWalletOrderInfoOldUI, "com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoOldUI$7", "onClick", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
   }
 }

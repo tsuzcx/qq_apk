@@ -15,9 +15,9 @@ final class FileSelectorFolderView$3
   {
     AppMethodBeat.i(31950);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/pluginsdk/ui/tools/FileSelectorFolderView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    FileSelectorFolderView.c(this.Kud);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/pluginsdk/ui/tools/FileSelectorFolderView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    FileSelectorFolderView.c(this.Rvj);
     a.a(this, "com/tencent/mm/pluginsdk/ui/tools/FileSelectorFolderView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(31950);
   }

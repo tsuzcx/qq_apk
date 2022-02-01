@@ -3,7 +3,7 @@ package com.google.android.gms.measurement;
 import android.content.BroadcastReceiver.PendingResult;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.content.WakefulBroadcastReceiver;
+import androidx.legacy.content.WakefulBroadcastReceiver;
 import com.google.android.gms.internal.measurement.zzgb;
 import com.google.android.gms.internal.measurement.zzge;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -41,7 +41,7 @@ public final class AppMeasurementReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.measurement.AppMeasurementReceiver
  * JD-Core Version:    0.7.0.1
  */

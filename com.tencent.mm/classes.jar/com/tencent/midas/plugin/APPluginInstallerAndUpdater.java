@@ -28,18 +28,18 @@ public class APPluginInstallerAndUpdater
   
   static
   {
-    AppMethodBeat.i(193119);
+    AppMethodBeat.i(252800);
     sInstallPathMap = new ConcurrentHashMap();
     sPackageInfoMap = new ConcurrentHashMap();
-    AppMethodBeat.o(193119);
+    AppMethodBeat.o(252800);
   }
   
   public static File getInstallPath(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(193112);
+    AppMethodBeat.i(252782);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(193112);
+      AppMethodBeat.o(252782);
       return null;
     }
     File localFile = (File)sInstallPathMap.get(paramString);
@@ -48,7 +48,7 @@ public class APPluginInstallerAndUpdater
       paramContext = APPluginConfig.getPluginPath(paramContext);
       if (paramContext == null)
       {
-        AppMethodBeat.o(193112);
+        AppMethodBeat.o(252782);
         return null;
       }
       paramContext = paramContext.listFiles();
@@ -59,19 +59,19 @@ public class APPluginInstallerAndUpdater
         if (localObject.getName().startsWith(paramString))
         {
           sInstallPathMap.put(paramString, localObject);
-          AppMethodBeat.o(193112);
+          AppMethodBeat.o(252782);
           return localObject;
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(193112);
+    AppMethodBeat.o(252782);
     return localFile;
   }
   
   public static String getInstallPathString(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(193109);
+    AppMethodBeat.i(252771);
     str = "";
     try
     {
@@ -88,7 +88,7 @@ public class APPluginInstallerAndUpdater
         paramContext = str;
       }
     }
-    AppMethodBeat.o(193109);
+    AppMethodBeat.o(252771);
     return paramContext;
   }
   
@@ -272,7 +272,7 @@ public class APPluginInstallerAndUpdater
   
   public static int installFromLocal(Context paramContext)
   {
-    AppMethodBeat.i(193108);
+    AppMethodBeat.i(252768);
     APLog.d("APPluginInstallerAndUpdater", "Calling into installFromLocal " + java.lang.Thread.currentThread().getStackTrace()[3].toString());
     APPluginUtils.deleteBKPlugin(paramContext);
     APPluginUtils.copyDirect(paramContext, APPluginConfig.getPluginUpdatePath(paramContext), APPluginConfig.getPluginBackUpPath(paramContext));
@@ -292,7 +292,7 @@ public class APPluginInstallerAndUpdater
           i = j;
         }
         APLog.i("APPluginUtils", "installFromLocal state:".concat(String.valueOf(i)));
-        AppMethodBeat.o(193108);
+        AppMethodBeat.o(252768);
         return i;
       }
     }
@@ -1097,7 +1097,7 @@ public class APPluginInstallerAndUpdater
   
   public static int installPlugin(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(193113);
+    AppMethodBeat.i(252784);
     j = 0;
     int i = 0;
     APLog.d("APPluginInstallerAndUpdater", "installPlugin from = ".concat(String.valueOf(paramInt)));
@@ -1126,9 +1126,9 @@ public class APPluginInstallerAndUpdater
       }
       finally
       {
-        AppMethodBeat.o(193113);
+        AppMethodBeat.o(252784);
       }
-      AppMethodBeat.o(193113);
+      AppMethodBeat.o(252784);
       return paramInt;
       if (paramInt == 2) {
         i = installFromData(paramContext);
@@ -1242,7 +1242,7 @@ public class APPluginInstallerAndUpdater
   
   public static boolean isNeedUpdateFromLocal(Context paramContext)
   {
-    AppMethodBeat.i(193111);
+    AppMethodBeat.i(252780);
     APLog.d("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal");
     File localFile = APPluginConfig.getPluginUpdatePath(paramContext);
     for (;;)
@@ -1257,7 +1257,7 @@ public class APPluginInstallerAndUpdater
         if (!((File)localObject2).exists())
         {
           APLog.d("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, sign file not exist, return false!");
-          AppMethodBeat.o(193111);
+          AppMethodBeat.o(252780);
           return false;
         }
         APLog.d("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, sign file exist!");
@@ -1267,13 +1267,13 @@ public class APPluginInstallerAndUpdater
         if (localObject2 == null)
         {
           APLog.d("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, cannot get local file list, return false!");
-          AppMethodBeat.o(193111);
+          AppMethodBeat.o(252780);
           return false;
         }
         if (localObject2.length == 0)
         {
           APLog.d("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, empty local file list, return false!");
-          AppMethodBeat.o(193111);
+          AppMethodBeat.o(252780);
           return false;
         }
         i = 0;
@@ -1298,7 +1298,7 @@ public class APPluginInstallerAndUpdater
             if (!bool)
             {
               APPluginUtils.clearDirContent(localFile);
-              AppMethodBeat.o(193111);
+              AppMethodBeat.o(252780);
               return false;
             }
             ((HashMap)localObject1).remove(str1.split("\\_")[0]);
@@ -1308,7 +1308,7 @@ public class APPluginInstallerAndUpdater
       catch (Exception paramContext)
       {
         APLog.e("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, got exception = ".concat(String.valueOf(paramContext)));
-        AppMethodBeat.o(193111);
+        AppMethodBeat.o(252780);
         return false;
       }
       if (((HashMap)localObject1).size() > 0)
@@ -1324,7 +1324,7 @@ public class APPluginInstallerAndUpdater
           {
             APLog.e("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, iterating sigMap left, current = " + ((APSignIniItem)localObject2).fullName + " missing in midasplugins!");
             APPluginUtils.clearDirContent(localFile);
-            AppMethodBeat.o(193111);
+            AppMethodBeat.o(252780);
             return false;
           }
           APLog.d("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, iterating sigMap left, current = " + ((APSignIniItem)localObject2).fullName + " exist in midasplugins!");
@@ -1334,12 +1334,12 @@ public class APPluginInstallerAndUpdater
       if (j == 0)
       {
         APLog.d("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, hasMidasCoreFile == false!");
-        AppMethodBeat.o(193111);
+        AppMethodBeat.o(252780);
         return false;
       }
       APLog.d("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, hasMidasCoreFile == true!");
       APLog.e("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, return true!");
-      AppMethodBeat.o(193111);
+      AppMethodBeat.o(252780);
       return true;
       i += 1;
     }
@@ -1347,7 +1347,7 @@ public class APPluginInstallerAndUpdater
   
   public static void unInstallPlugin(Context paramContext)
   {
-    AppMethodBeat.i(193118);
+    AppMethodBeat.i(252798);
     APLog.d("APPluginInstallerAndUpdater", "unInstallPlugin " + java.lang.Thread.currentThread().getStackTrace()[3].toString());
     APPluginUtils.deletePlugin(paramContext);
     APPluginUtils.deleteDex(paramContext);
@@ -1356,12 +1356,12 @@ public class APPluginInstallerAndUpdater
     sPackageInfoMap.clear();
     APPluginStatic.release();
     APPluginConfig.libExtend += 1;
-    AppMethodBeat.o(193118);
+    AppMethodBeat.o(252798);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.plugin.APPluginInstallerAndUpdater
  * JD-Core Version:    0.7.0.1
  */

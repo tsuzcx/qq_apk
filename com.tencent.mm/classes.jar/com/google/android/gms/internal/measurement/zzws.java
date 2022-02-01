@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Binder;
 import android.os.Build.VERSION;
-import android.support.v4.content.f;
+import androidx.core.content.b;
 import javax.annotation.Nullable;
 
 public abstract class zzws<T>
@@ -212,7 +212,7 @@ public abstract class zzws<T>
       if (zzqx != null)
       {
         bool1 = bool2;
-        if (f.f(zzqx, "com.google.android.providers.gsf.permission.READ_GSERVICES") == 0) {
+        if (b.f(zzqx, "com.google.android.providers.gsf.permission.READ_GSERVICES") == 0) {
           bool1 = true;
         }
         zzbne = Boolean.valueOf(bool1);
@@ -245,7 +245,7 @@ public abstract class zzws<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzws
  * JD-Core Version:    0.7.0.1
  */

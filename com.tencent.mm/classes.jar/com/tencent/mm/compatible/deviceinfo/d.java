@@ -3,34 +3,55 @@ package com.tencent.mm.compatible.deviceinfo;
 import android.content.Context;
 import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
+import android.hardware.Camera.Parameters;
+import android.hardware.Camera.Size;
 import android.os.Build;
+import android.os.Build.VERSION;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.c.a;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import java.util.List;
 
 public final class d
 {
-  public static d.a.a B(Context paramContext, int paramInt)
+  public static boolean gaj;
+  
+  static
   {
-    AppMethodBeat.i(215250);
+    AppMethodBeat.i(262161);
+    if ((MultiProcessMMKV.getDefault().decodeBool("clicfg_camera_util_use_cache", false)) || (BuildInfo.DEBUG)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      gaj = bool;
+      Log.i("MicroMsg.CameraUtil", "useCache = %b", new Object[] { Boolean.valueOf(gaj) });
+      AppMethodBeat.o(262161);
+      return;
+    }
+  }
+  
+  public static d.a.a D(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(262154);
     paramContext = a(paramContext, paramInt, null);
-    AppMethodBeat.o(215250);
+    AppMethodBeat.o(262154);
     return paramContext;
   }
   
   public static d.a.a a(Context paramContext, int paramInt, Looper paramLooper)
   {
     AppMethodBeat.i(155647);
-    if (ae.gKt.gFQ == 1)
+    if (af.juH.jqa == 1)
     {
       Log.d("MicroMsg.CameraUtil", "openCamera(), CameraUtilImpl20, cameraId = ".concat(String.valueOf(paramInt)));
       new e();
-      paramContext = e.d(paramLooper);
+      paramContext = e.e(paramLooper);
       AppMethodBeat.o(155647);
       return paramContext;
     }
-    if (ae.gKt.gFI)
+    if (af.juH.jpS)
     {
       Log.d("MicroMsg.CameraUtil", "openCamera(), CameraUtilImplConfig, cameraId = ".concat(String.valueOf(paramInt)));
       new i();
@@ -41,11 +62,11 @@ public final class d
     if (Build.MODEL.equals("M9"))
     {
       new j();
-      paramContext = j.d(paramLooper);
+      paramContext = j.e(paramLooper);
       AppMethodBeat.o(155647);
       return paramContext;
     }
-    if (getNumberOfCameras() > 1)
+    if (auj() > 1)
     {
       Log.d("MicroMsg.CameraUtil", "openCamera(), CameraUtilImpl23, cameraId = ".concat(String.valueOf(paramInt)));
       new g();
@@ -59,84 +80,156 @@ public final class d
     return paramContext;
   }
   
-  public static int aog()
+  public static List<Camera.Size> a(Camera.Parameters paramParameters)
   {
-    AppMethodBeat.i(155645);
-    if (ae.gKE.gGP == 1)
-    {
-      AppMethodBeat.o(155645);
-      return 0;
-    }
-    Object localObject = a.gDs;
-    int j = a.anJ();
-    localObject = new Camera.CameraInfo();
-    int i = 0;
-    if (i < j)
-    {
-      Camera.getCameraInfo(i, (Camera.CameraInfo)localObject);
-      if (((Camera.CameraInfo)localObject).facing == 0) {
-        Log.d("MicroMsg.CameraUtil", "tigercam get bid %d", new Object[] { Integer.valueOf(i) });
-      }
-    }
-    for (;;)
-    {
-      Log.d("MicroMsg.CameraUtil", "tigercam getBackCameraId %d", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(155645);
-      return i;
-      i += 1;
-      break;
-      i = 0;
-    }
+    AppMethodBeat.i(262157);
+    new g();
+    paramParameters = paramParameters.getSupportedPreviewSizes();
+    AppMethodBeat.o(262157);
+    return paramParameters;
   }
   
-  public static int aoh()
-  {
-    AppMethodBeat.i(155646);
-    Object localObject = a.gDs;
-    int j = a.anJ();
-    localObject = new Camera.CameraInfo();
-    int i = 0;
-    if (i < j)
-    {
-      Camera.getCameraInfo(i, (Camera.CameraInfo)localObject);
-      if (((Camera.CameraInfo)localObject).facing == 1) {
-        Log.d("MicroMsg.CameraUtil", "tigercam get fid %d", new Object[] { Integer.valueOf(i) });
-      }
-    }
-    for (;;)
-    {
-      Log.d("MicroMsg.CameraUtil", "tigercam getBackCameraId %d", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(155646);
-      return i;
-      i += 1;
-      break;
-      i = 0;
-    }
-  }
-  
-  public static int getNumberOfCameras()
+  public static int auj()
   {
     AppMethodBeat.i(155644);
-    if ((ae.gKt.gFI) && (ae.gKt.gFO))
+    if ((af.juH.jpS) && (af.juH.jpY))
     {
       new i();
-      i = i.getNumberOfCameras();
+      i = i.auj();
       AppMethodBeat.o(155644);
       return i;
     }
     new g();
-    a locala = a.gDs;
-    int i = a.anJ();
+    a locala = a.jnC;
+    int i = a.atL();
     AppMethodBeat.o(155644);
     return i;
+  }
+  
+  public static int auk()
+  {
+    AppMethodBeat.i(155645);
+    if (af.juS.jrb == 1)
+    {
+      AppMethodBeat.o(155645);
+      return 0;
+    }
+    Object localObject;
+    int i;
+    if (gaj)
+    {
+      localObject = a.jnC;
+      Log.i("MicroMsg.PluginCamera", "getBackCameraId mBackCameraId = " + a.jnA);
+      if (a.jnA == -1) {
+        ((a)localObject).atR();
+      }
+      i = a.jnA;
+    }
+    for (;;)
+    {
+      Log.i("MicroMsg.CameraUtil", "tigercam getBackCameraId %d", new Object[] { Integer.valueOf(i) });
+      AppMethodBeat.o(155645);
+      return i;
+      localObject = a.jnC;
+      int j = a.atL();
+      localObject = new Camera.CameraInfo();
+      i = 0;
+      for (;;)
+      {
+        if (i >= j) {
+          break label158;
+        }
+        Camera.getCameraInfo(i, (Camera.CameraInfo)localObject);
+        if (((Camera.CameraInfo)localObject).facing == 0)
+        {
+          Log.d("MicroMsg.CameraUtil", "tigercam get bid %d", new Object[] { Integer.valueOf(i) });
+          break;
+        }
+        i += 1;
+      }
+      label158:
+      i = 0;
+    }
+  }
+  
+  public static int aul()
+  {
+    AppMethodBeat.i(155646);
+    Object localObject;
+    int i;
+    if (gaj)
+    {
+      localObject = a.jnC;
+      Log.i("MicroMsg.PluginCamera", "getBackCameraId mFrontCameraId = " + a.jnB);
+      if (a.jnB == -1) {
+        ((a)localObject).atR();
+      }
+      i = a.jnB;
+    }
+    for (;;)
+    {
+      Log.i("MicroMsg.CameraUtil", "tigercam getBackCameraId %d", new Object[] { Integer.valueOf(i) });
+      AppMethodBeat.o(155646);
+      return i;
+      localObject = a.jnC;
+      int j = a.atL();
+      localObject = new Camera.CameraInfo();
+      i = 0;
+      for (;;)
+      {
+        if (i >= j) {
+          break label142;
+        }
+        Camera.getCameraInfo(i, (Camera.CameraInfo)localObject);
+        if (((Camera.CameraInfo)localObject).facing == 1)
+        {
+          Log.d("MicroMsg.CameraUtil", "tigercam get fid %d", new Object[] { Integer.valueOf(i) });
+          break;
+        }
+        i += 1;
+      }
+      label142:
+      i = 0;
+    }
+  }
+  
+  public static boolean aum()
+  {
+    AppMethodBeat.i(262153);
+    if (af.juH.jqa == 1)
+    {
+      AppMethodBeat.o(262153);
+      return true;
+    }
+    if ((Build.VERSION.SDK_INT == 10) && (Build.MODEL.equals("GT-S5360")))
+    {
+      AppMethodBeat.o(262153);
+      return true;
+    }
+    AppMethodBeat.o(262153);
+    return false;
+  }
+  
+  public static List<Camera.Size> b(Camera.Parameters paramParameters)
+  {
+    AppMethodBeat.i(262159);
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      new h();
+      paramParameters = paramParameters.getSupportedVideoSizes();
+      AppMethodBeat.o(262159);
+      return paramParameters;
+    }
+    AppMethodBeat.o(262159);
+    return null;
   }
   
   public static abstract interface a
   {
     public static final class a
     {
-      public int dYT;
-      public v gGr;
+      public int fSM;
+      public w jqD;
     }
   }
 }

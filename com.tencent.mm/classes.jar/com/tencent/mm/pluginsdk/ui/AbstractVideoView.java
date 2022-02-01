@@ -17,14 +17,15 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.plugin.af.a.b;
+import com.tencent.mm.plugin.af.a.c;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerSeekBar;
-import com.tencent.mm.pluginsdk.ui.tools.j;
-import com.tencent.mm.pluginsdk.ui.tools.j.a;
-import com.tencent.mm.pluginsdk.ui.tools.j.b;
-import com.tencent.mm.pluginsdk.ui.tools.j.c;
-import com.tencent.mm.pluginsdk.ui.tools.j.d;
-import com.tencent.mm.pluginsdk.ui.tools.j.e;
+import com.tencent.mm.pluginsdk.ui.tools.k.a;
+import com.tencent.mm.pluginsdk.ui.tools.k.b;
+import com.tencent.mm.pluginsdk.ui.tools.k.c;
+import com.tencent.mm.pluginsdk.ui.tools.k.d;
+import com.tencent.mm.pluginsdk.ui.tools.k.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
@@ -34,12 +35,9 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public abstract class AbstractVideoView
   extends RelativeLayout
-  implements i, j.a, j.b, j.c, j.d, j.e
+  implements i, k.a, k.b, k.c, k.d, k.e
 {
-  public VideoPlayerSeekBar KaT;
-  protected h KaU;
-  protected i.d KaV;
-  private Runnable KaW = new Runnable()
+  private Runnable RbA = new Runnable()
   {
     public final void run()
     {
@@ -50,58 +48,65 @@ public abstract class AbstractVideoView
         return;
       }
       AbstractVideoView.b(AbstractVideoView.this, false);
-      if (AbstractVideoView.this.pNj != null) {
-        AbstractVideoView.this.pNj.dM(AbstractVideoView.this.getSessionId(), AbstractVideoView.this.getMediaId());
+      if (AbstractVideoView.this.sUh != null) {
+        AbstractVideoView.this.sUh.dX(AbstractVideoView.this.getSessionId(), AbstractVideoView.this.getMediaId());
       }
-      if ((AbstractVideoView.this.mEz != null) && (AbstractVideoView.this.mEz.getVisibility() != 8))
+      if ((AbstractVideoView.this.pDL != null) && (AbstractVideoView.this.pDL.getVisibility() != 8))
       {
-        Log.i(AbstractVideoView.this.TAG, "%s hide loading", new Object[] { AbstractVideoView.this.bgQ() });
-        AbstractVideoView.this.mEz.setVisibility(8);
+        Log.i(AbstractVideoView.this.TAG, "%s hide loading", new Object[] { AbstractVideoView.this.bqf() });
+        AbstractVideoView.this.pDL.setVisibility(8);
       }
       AppMethodBeat.o(133989);
     }
   };
-  private i.c KaX = null;
-  protected k KaY = new k();
+  private i.c RbB = null;
+  protected k RbC = new k();
+  public VideoPlayerSeekBar Rbx;
+  protected h Rby;
+  protected i.d Rbz;
   public String TAG = "MicroMsg.AbstractVideoView";
-  protected boolean ZA = false;
-  protected int bFM = 0;
-  protected MMHandler hAk = new MMHandler(Looper.getMainLooper())
+  protected int bpq = 0;
+  protected boolean gX = false;
+  private boolean isWaiting = false;
+  protected TextView kEb;
+  protected MMHandler knk = new MMHandler(Looper.getMainLooper())
   {
     public final void handleMessage(Message paramAnonymousMessage)
     {
-      AppMethodBeat.i(208746);
+      AppMethodBeat.i(205123);
       super.handleMessage(paramAnonymousMessage);
       switch (paramAnonymousMessage.what)
       {
       }
       for (;;)
       {
-        AppMethodBeat.o(208746);
+        AppMethodBeat.o(205123);
         return;
         AbstractVideoView.a(AbstractVideoView.this).run();
-        AppMethodBeat.o(208746);
+        AppMethodBeat.o(205123);
         return;
         AbstractVideoView.b(AbstractVideoView.this).run();
       }
     }
   };
-  protected TextView hPF;
-  private boolean isWaiting = false;
   protected Context mContext;
-  protected TextView mEA;
-  protected LinearLayout mEB;
-  protected boolean mEF;
-  protected boolean mEG = true;
-  protected int mEH = 0;
-  protected boolean mEI = false;
-  protected int mEJ = 0;
-  protected boolean mEK = true;
-  protected int mEL = -1;
-  protected boolean mEM = false;
-  protected long mEN = 0L;
-  protected int mEO = 0;
-  protected MTimerHandler mEP = new MTimerHandler(new MTimerHandler.CallBack()
+  protected boolean pDI = true;
+  protected ImageView pDJ;
+  protected RelativeLayout pDK;
+  protected ProgressBar pDL;
+  protected TextView pDM;
+  protected LinearLayout pDN;
+  protected boolean pDR;
+  protected boolean pDS = true;
+  protected int pDT = 0;
+  protected boolean pDU = false;
+  protected int pDV = 0;
+  protected boolean pDW = true;
+  protected int pDX = -1;
+  protected boolean pDY = false;
+  protected long pDZ = 0L;
+  protected int pEa = 0;
+  protected MTimerHandler pEb = new MTimerHandler(new MTimerHandler.CallBack()
   {
     public final boolean onTimerExpired()
     {
@@ -111,18 +116,18 @@ public abstract class AbstractVideoView
         AppMethodBeat.o(133983);
         return false;
       }
-      if (AbstractVideoView.this.mEI)
+      if (AbstractVideoView.this.pDU)
       {
-        if (AbstractVideoView.this.pNj != null) {
-          AbstractVideoView.this.pNj.dK(AbstractVideoView.this.getSessionId(), AbstractVideoView.this.getMediaId());
+        if (AbstractVideoView.this.sUh != null) {
+          AbstractVideoView.this.sUh.dV(AbstractVideoView.this.getSessionId(), AbstractVideoView.this.getMediaId());
         }
-        AbstractVideoView.this.mEI = false;
+        AbstractVideoView.this.pDU = false;
       }
-      AbstractVideoView.this.xI(AbstractVideoView.this.getCurrPosSec());
+      AbstractVideoView.this.Bg(AbstractVideoView.this.getCurrPosSec());
       AbstractVideoView.a(AbstractVideoView.this, AbstractVideoView.this.isPlaying());
-      if (AbstractVideoView.this.dUD())
+      if (AbstractVideoView.this.exK())
       {
-        boolean bool = AbstractVideoView.this.gop();
+        boolean bool = AbstractVideoView.this.hiZ();
         AppMethodBeat.o(133983);
         return bool;
       }
@@ -130,52 +135,52 @@ public abstract class AbstractVideoView
       return true;
     }
   }, true);
-  protected MTimerHandler mEQ = new MTimerHandler(new MTimerHandler.CallBack()
+  protected MTimerHandler pEc = new MTimerHandler(new MTimerHandler.CallBack()
   {
     public final boolean onTimerExpired()
     {
       AppMethodBeat.i(133984);
       boolean bool = AbstractVideoView.this.isPlaying();
       int i = AbstractVideoView.this.getCurrPosMs();
-      Log.i(AbstractVideoView.this.TAG, "%s prepare start checker isplaying[%b] currPosMs[%d]", new Object[] { AbstractVideoView.this.bgQ(), Boolean.valueOf(bool), Integer.valueOf(i) });
-      if ((AbstractVideoView.this.qbJ != null) && (i <= 50)) {
-        AbstractVideoView.this.qbJ.q(0.0D);
+      Log.i(AbstractVideoView.this.TAG, "%s prepare start checker isplaying[%b] currPosMs[%d]", new Object[] { AbstractVideoView.this.bqf(), Boolean.valueOf(bool), Integer.valueOf(i) });
+      if ((AbstractVideoView.this.txH != null) && (i <= 50)) {
+        AbstractVideoView.this.txH.q(0.0D);
       }
       AppMethodBeat.o(133984);
       return false;
     }
   }, false);
-  protected MTimerHandler mER = new MTimerHandler(new MTimerHandler.CallBack()
+  protected MTimerHandler pEd = new MTimerHandler(new MTimerHandler.CallBack()
   {
     public final boolean onTimerExpired()
     {
-      AppMethodBeat.i(208748);
-      if (AbstractVideoView.this.bFM > 0)
+      AppMethodBeat.i(204849);
+      if (AbstractVideoView.this.bpq > 0)
       {
         if (AbstractVideoView.this.isPlaying())
         {
           AbstractVideoView.c(AbstractVideoView.this);
-          AppMethodBeat.o(208748);
+          AppMethodBeat.o(204849);
           return false;
         }
-        AppMethodBeat.o(208748);
+        AppMethodBeat.o(204849);
         return true;
       }
-      AppMethodBeat.o(208748);
+      AppMethodBeat.o(204849);
       return false;
     }
   }, true);
-  private View.OnClickListener mET = new View.OnClickListener()
+  private View.OnClickListener pEf = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
-      AppMethodBeat.i(208750);
+      AppMethodBeat.i(204763);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramAnonymousView);
-      a.b("com/tencent/mm/pluginsdk/ui/AbstractVideoView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      Log.i(AbstractVideoView.this.TAG, "%s seek bar play button on click ", new Object[] { AbstractVideoView.this.bgQ() });
+      localb.bn(paramAnonymousView);
+      a.c("com/tencent/mm/pluginsdk/ui/AbstractVideoView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      Log.i(AbstractVideoView.this.TAG, "%s seek bar play button on click ", new Object[] { AbstractVideoView.this.bqf() });
       paramAnonymousView = AbstractVideoView.this;
-      if (paramAnonymousView.qbJ != null)
+      if (paramAnonymousView.txH != null)
       {
         if (!paramAnonymousView.isPlaying()) {
           break label102;
@@ -185,41 +190,37 @@ public abstract class AbstractVideoView
       for (;;)
       {
         a.a(this, "com/tencent/mm/pluginsdk/ui/AbstractVideoView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(208750);
+        AppMethodBeat.o(204763);
         return;
         label102:
-        if (Util.isNullOrNil(paramAnonymousView.qbJ.getVideoPath())) {
+        if (Util.isNullOrNil(paramAnonymousView.txH.getVideoPath())) {
           paramAnonymousView.start();
         } else {
-          paramAnonymousView.play();
+          paramAnonymousView.bqo();
         }
       }
     }
   };
-  private Runnable mEU = new Runnable()
+  private Runnable pEg = new Runnable()
   {
     public final void run()
     {
       AppMethodBeat.i(133988);
       AbstractVideoView.b(AbstractVideoView.this, true);
-      if ((AbstractVideoView.this.mEz != null) && (AbstractVideoView.this.mEz.getVisibility() != 0))
+      if ((AbstractVideoView.this.pDL != null) && (AbstractVideoView.this.pDL.getVisibility() != 0))
       {
-        Log.i(AbstractVideoView.this.TAG, "%s show loading", new Object[] { AbstractVideoView.this.bgQ() });
-        AbstractVideoView.this.mEz.setVisibility(0);
+        Log.i(AbstractVideoView.this.TAG, "%s show loading", new Object[] { AbstractVideoView.this.bqf() });
+        AbstractVideoView.this.pDL.setVisibility(0);
       }
-      if (AbstractVideoView.this.pNj != null) {
-        AbstractVideoView.this.pNj.dL(AbstractVideoView.this.getSessionId(), AbstractVideoView.this.getMediaId());
+      if (AbstractVideoView.this.sUh != null) {
+        AbstractVideoView.this.sUh.dW(AbstractVideoView.this.getSessionId(), AbstractVideoView.this.getMediaId());
       }
       AppMethodBeat.o(133988);
     }
   };
-  protected boolean mEw = true;
-  protected ImageView mEx;
-  protected RelativeLayout mEy;
-  protected ProgressBar mEz;
-  public i.b pNj;
-  public j qbJ;
-  private com.tencent.mm.plugin.sight.decode.ui.b tni = flf();
+  public i.b sUh;
+  public com.tencent.mm.pluginsdk.ui.tools.k txH;
+  private com.tencent.mm.plugin.sight.decode.ui.b wTG = fZy();
   
   public AbstractVideoView(Context paramContext)
   {
@@ -238,63 +239,42 @@ public abstract class AbstractVideoView
     initView();
   }
   
-  private void hP(boolean paramBoolean)
+  private void iF(boolean paramBoolean)
   {
-    if (this.KaU != null) {
-      this.KaU.hP(paramBoolean);
+    if (this.Rby != null) {
+      this.Rby.iF(paramBoolean);
     }
   }
   
-  protected void BT(long paramLong)
+  protected void AS(int paramInt)
   {
-    if ((!this.hAk.hasMessages(1)) && (!this.isWaiting)) {
-      this.hAk.sendEmptyMessageDelayed(1, paramLong);
+    if (this.Rby != null) {
+      this.Rby.AS(paramInt);
     }
   }
   
-  protected final boolean asa()
+  public final void Bg(int paramInt)
   {
-    boolean bool;
-    if (this.qbJ != null) {
-      if ((!Util.isNullOrNil(this.qbJ.getVideoPath())) && (this.ZA)) {
-        bool = true;
-      }
-    }
-    for (;;)
-    {
-      Log.d(this.TAG, "%s is prepared [%b] isPrepared[%b]", new Object[] { bgQ(), Boolean.valueOf(bool), Boolean.valueOf(this.ZA) });
-      return bool;
-      bool = false;
-      continue;
-      bool = false;
+    AS(paramInt);
+  }
+  
+  protected final void EW(long paramLong)
+  {
+    if (this.RbB != null) {
+      this.RbB.EW(paramLong);
     }
   }
   
-  public void bLh()
+  protected void Ic(long paramLong)
   {
-    Log.i(this.TAG, "%s onTextureUpdate ", new Object[] { bgQ() });
-    hideLoading();
+    if ((!this.knk.hasMessages(1)) && (!this.isWaiting)) {
+      this.knk.sendEmptyMessageDelayed(1, paramLong);
+    }
   }
   
-  protected final void bep(String paramString)
+  public boolean a(double paramDouble, boolean paramBoolean)
   {
-    this.KaY.url = paramString;
-  }
-  
-  public String bgQ()
-  {
-    return hashCode();
-  }
-  
-  public void bgX()
-  {
-    Log.i(this.TAG, "%s on surface available", new Object[] { bgQ() });
-    fO(false);
-  }
-  
-  public boolean c(double paramDouble, boolean paramBoolean)
-  {
-    boolean bool2 = asa();
+    boolean bool2 = ayN();
     int j = getVideoDurationSec();
     int k = (int)paramDouble;
     int i = k;
@@ -306,109 +286,154 @@ public abstract class AbstractVideoView
       }
     }
     boolean bool1;
-    if (this.qbJ != null) {
-      if (!Util.isNullOrNil(this.qbJ.getVideoPath())) {
+    if (this.txH != null) {
+      if (!Util.isNullOrNil(this.txH.getVideoPath())) {
         bool1 = true;
       }
     }
     for (;;)
     {
-      Log.printInfoStack(this.TAG, "%s seek to [%d %s] seconds afterPlay[%b] isPrepared[%b] duration[%d] hadSetPath[%b]", new Object[] { bgQ(), Integer.valueOf(i), Double.valueOf(paramDouble), Boolean.valueOf(paramBoolean), Boolean.valueOf(bool2), Integer.valueOf(j), Boolean.valueOf(bool1) });
-      yU(getReportIdkey() + 5);
+      Log.printInfoStack(this.TAG, "%s seek to [%d %s] seconds afterPlay[%b] isPrepared[%b] duration[%d] hadSetPath[%b]", new Object[] { bqf(), Integer.valueOf(i), Double.valueOf(paramDouble), Boolean.valueOf(paramBoolean), Boolean.valueOf(bool2), Integer.valueOf(j), Boolean.valueOf(bool1) });
+      EW(getReportIdkey() + 5);
       if (!bool2) {
         break;
       }
-      if (this.qbJ == null) {
+      if (this.txH == null) {
         break label215;
       }
       showLoading();
-      xv(i);
-      this.qbJ.d(i * 1000, paramBoolean);
+      AS(i);
+      this.txH.b(i * 1000, paramBoolean);
       return paramBoolean;
       bool1 = false;
       continue;
       bool1 = false;
     }
-    this.mEL = i;
+    this.pDX = i;
     if (bool1) {
-      this.mEK = true;
+      this.pDW = true;
     }
     for (;;)
     {
       label215:
       return false;
-      this.mEK = paramBoolean;
+      this.pDW = paramBoolean;
       start();
     }
   }
   
-  protected int dEP()
+  protected final boolean ayN()
   {
-    return 2131493689;
-  }
-  
-  public final void dFl()
-  {
-    if (this.KaU != null) {
-      this.mEB.removeView((View)this.KaU);
+    boolean bool;
+    if (this.txH != null) {
+      if ((!Util.isNullOrNil(this.txH.getVideoPath())) && (this.gX)) {
+        bool = true;
+      }
+    }
+    for (;;)
+    {
+      Log.d(this.TAG, "%s is prepared [%b] isPrepared[%b]", new Object[] { bqf(), Boolean.valueOf(bool), Boolean.valueOf(this.gX) });
+      return bool;
+      bool = false;
+      continue;
+      bool = false;
     }
   }
   
-  public boolean dUD()
+  public void bXh()
   {
-    return false;
+    Log.i(this.TAG, "%s onTextureUpdate ", new Object[] { bqf() });
+    hideLoading();
   }
   
-  protected j di(Context paramContext)
+  protected final void bqL(String paramString)
+  {
+    this.RbC.url = paramString;
+  }
+  
+  public String bqf()
+  {
+    return hashCode();
+  }
+  
+  public boolean bqo()
+  {
+    if (!this.pDI) {
+      Log.w(this.TAG, "%s ui on pause now, why u call me to play? [%s]", new Object[] { bqf(), Util.getStack() });
+    }
+    do
+    {
+      return false;
+      EW(getReportIdkey() + 3);
+    } while (this.txH == null);
+    boolean bool = this.txH.start();
+    Log.i(this.TAG, "%s video play [%b] isPlayOnUiPause[%b]", new Object[] { bqf(), Boolean.valueOf(bool), Boolean.valueOf(this.pDU) });
+    iF(bool);
+    if (bool)
+    {
+      this.pDU = false;
+      gA(false);
+      if (this.sUh != null) {
+        this.sUh.dV(getSessionId(), getMediaId());
+      }
+    }
+    return bool;
+  }
+  
+  public void bqp()
+  {
+    Log.i(this.TAG, "%s on surface available", new Object[] { bqf() });
+    gA(false);
+  }
+  
+  protected com.tencent.mm.pluginsdk.ui.tools.k df(Context paramContext)
   {
     return null;
   }
   
-  protected boolean efT()
+  public void eM(int paramInt1, int paramInt2)
+  {
+    Log.i(this.TAG, "%s on get video size [%d, %d]", new Object[] { bqf(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (this.sUh != null) {
+      this.sUh.d(getSessionId(), getMediaId(), paramInt1, paramInt2);
+    }
+    EW(getReportIdkey() + 8);
+  }
+  
+  protected boolean ePu()
   {
     return true;
   }
   
-  public void eo(int paramInt1, int paramInt2)
+  public final void egX()
   {
-    Log.i(this.TAG, "%s on get video size [%d, %d]", new Object[] { bgQ(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (this.pNj != null) {
-      this.pNj.d(getSessionId(), getMediaId(), paramInt1, paramInt2);
-    }
-    yU(getReportIdkey() + 8);
-  }
-  
-  public void fN(boolean paramBoolean)
-  {
-    Log.i(this.TAG, "%s on seek complete startPlay[%b]", new Object[] { bgQ(), Boolean.valueOf(paramBoolean) });
-    if (this.qbJ != null) {
-      this.qbJ.setOneTimeVideoTextureUpdateCallback(this);
-    }
-    hideLoading();
-    hP(paramBoolean);
-    xv(getCurrPosSec());
-    if (paramBoolean)
-    {
-      fO(false);
-      this.mEI = false;
-      if (this.pNj != null) {
-        this.pNj.dK(getSessionId(), getMediaId());
-      }
+    if (this.Rby != null) {
+      this.pDN.removeView((View)this.Rby);
     }
   }
   
-  protected void fO(boolean paramBoolean)
+  protected int egy()
   {
-    Log.d(this.TAG, "%s start timer rightNow[%b]", new Object[] { bgQ(), Boolean.valueOf(paramBoolean) });
-    this.mEP.startTimer(500L);
+    return a.c.comm_video_view;
   }
   
-  public void fdO()
+  public boolean exK()
+  {
+    return false;
+  }
+  
+  public final int fE(int paramInt1, int paramInt2)
+  {
+    return 0;
+  }
+  
+  public void fKt()
   {
     try
     {
-      if (this.KaV != null) {
-        this.KaV.fdO();
+      AS(getVideoDurationSec());
+      if (this.Rbz != null) {
+        this.Rbz.fKt();
       }
       return;
     }
@@ -418,36 +443,52 @@ public abstract class AbstractVideoView
     }
   }
   
-  protected final void fgB()
+  protected final void fUH()
   {
-    if (this.KaY.mvz == 0L) {
-      this.KaY.mvz = Util.nowMilliSecond();
+    if (this.RbC.ptY == 0L) {
+      this.RbC.ptY = Util.nowMilliSecond();
     }
   }
   
-  public final int fh(int paramInt1, int paramInt2)
-  {
-    return 0;
-  }
-  
-  protected com.tencent.mm.plugin.sight.decode.ui.b flf()
+  protected com.tencent.mm.plugin.sight.decode.ui.b fZy()
   {
     new com.tencent.mm.plugin.sight.decode.ui.b()
     {
-      public final void aJq() {}
+      public final void aRo() {}
       
-      public final void rk(int paramAnonymousInt)
+      public final void tY(int paramAnonymousInt)
       {
-        AppMethodBeat.i(208749);
-        if (AbstractVideoView.this.c(paramAnonymousInt, true)) {
-          AbstractVideoView.this.fO(false);
+        AppMethodBeat.i(204927);
+        if (AbstractVideoView.this.a(paramAnonymousInt, true)) {
+          AbstractVideoView.this.gA(false);
         }
-        if (AbstractVideoView.this.KaT != null) {
-          AbstractVideoView.this.KaT.setIsPlay(true);
+        if (AbstractVideoView.this.Rbx != null) {
+          AbstractVideoView.this.Rbx.setIsPlay(true);
         }
-        AppMethodBeat.o(208749);
+        AppMethodBeat.o(204927);
       }
     };
+  }
+  
+  protected final void fhw()
+  {
+    this.knk.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(133981);
+        if ((AbstractVideoView.this.pDN != null) && (AbstractVideoView.this.pDN.getVisibility() != 8)) {
+          AbstractVideoView.this.pDN.setVisibility(8);
+        }
+        AppMethodBeat.o(133981);
+      }
+    });
+  }
+  
+  protected void gA(boolean paramBoolean)
+  {
+    Log.d(this.TAG, "%s start timer rightNow[%b]", new Object[] { bqf(), Boolean.valueOf(paramBoolean) });
+    this.pEb.startTimer(500L);
   }
   
   public int getCacheTimeSec()
@@ -457,16 +498,16 @@ public abstract class AbstractVideoView
   
   public int getCurrPosMs()
   {
-    if (this.qbJ != null) {
-      return this.qbJ.getCurrentPosition();
+    if (this.txH != null) {
+      return this.txH.getCurrentPosition();
     }
     return 0;
   }
   
   public int getCurrPosSec()
   {
-    if (this.qbJ != null) {
-      return Math.round(this.qbJ.getCurrentPosition() * 1.0F / 1000.0F);
+    if (this.txH != null) {
+      return Math.round(this.txH.getCurrentPosition() * 1.0F / 1000.0F);
     }
     return 0;
   }
@@ -478,7 +519,7 @@ public abstract class AbstractVideoView
   
   public int getPlayerType()
   {
-    return this.mEJ;
+    return this.pDV;
   }
   
   protected abstract int getReportIdkey();
@@ -490,8 +531,8 @@ public abstract class AbstractVideoView
   
   public int getVideoDurationSec()
   {
-    if (this.qbJ != null) {
-      return Math.round(this.qbJ.getDuration() * 1.0F / 1000.0F);
+    if (this.txH != null) {
+      return Math.round(this.txH.getDuration() * 1.0F / 1000.0F);
     }
     return -1;
   }
@@ -501,73 +542,83 @@ public abstract class AbstractVideoView
     return 0;
   }
   
-  protected final void goo()
+  public void gz(boolean paramBoolean)
   {
-    this.hAk.post(new Runnable()
+    Log.i(this.TAG, "%s on seek complete startPlay[%b]", new Object[] { bqf(), Boolean.valueOf(paramBoolean) });
+    if (this.txH != null) {
+      this.txH.setOneTimeVideoTextureUpdateCallback(this);
+    }
+    hideLoading();
+    iF(paramBoolean);
+    AS(getCurrPosSec());
+    if (paramBoolean)
     {
-      public final void run()
-      {
-        AppMethodBeat.i(133981);
-        if ((AbstractVideoView.this.mEB != null) && (AbstractVideoView.this.mEB.getVisibility() != 8)) {
-          AbstractVideoView.this.mEB.setVisibility(8);
-        }
-        AppMethodBeat.o(133981);
+      gA(false);
+      this.pDU = false;
+      if (this.sUh != null) {
+        this.sUh.dV(getSessionId(), getMediaId());
       }
-    });
+    }
   }
   
-  public final boolean gop()
+  public final boolean hiZ()
   {
-    long l = this.qbJ.getLastSurfaceUpdateTime();
-    int i = this.qbJ.getCurrentPosition();
-    Log.d(this.TAG, "%s check surface is update surface[%d %d] playtime[%d %d]", new Object[] { bgQ(), Long.valueOf(this.mEN), Long.valueOf(l), Integer.valueOf(this.mEO), Integer.valueOf(i) });
-    if ((l > 0L) && (l == this.mEN) && (i != this.mEO))
+    long l = this.txH.getLastSurfaceUpdateTime();
+    int i = this.txH.getCurrentPosition();
+    Log.d(this.TAG, "%s check surface is update surface[%d %d] playtime[%d %d]", new Object[] { bqf(), Long.valueOf(this.pDZ), Long.valueOf(l), Integer.valueOf(this.pEa), Integer.valueOf(i) });
+    if ((l > 0L) && (l == this.pDZ) && (i != this.pEa))
     {
-      Log.w(this.TAG, "%s check surface is update error", new Object[] { bgQ() });
-      c(this.mEO / 1000, true);
+      Log.w(this.TAG, "%s check surface is update error", new Object[] { bqf() });
+      a(this.pEa / 1000, true);
       return false;
     }
-    this.mEN = l;
-    this.mEO = i;
+    this.pDZ = l;
+    this.pEa = i;
     return true;
   }
   
-  protected final void goq()
+  protected void hideLoading()
   {
-    if (this.KaY.Eut == 0L) {
-      this.KaY.Eut = Util.nowMilliSecond();
+    this.knk.removeMessages(1);
+    this.knk.sendEmptyMessage(2);
+  }
+  
+  protected final void hja()
+  {
+    if (this.RbC.KIk == 0L) {
+      this.RbC.KIk = Util.nowMilliSecond();
     }
   }
   
-  protected final void gor()
+  protected final void hjb()
   {
-    this.KaY.KcX = Util.nowMilliSecond();
+    this.RbC.RdD = Util.nowMilliSecond();
   }
   
-  protected final void gos()
+  protected final void hjc()
   {
-    this.KaY.KcY = Util.nowMilliSecond();
-    if (this.KaY.KcX > 0L)
+    this.RbC.RdE = Util.nowMilliSecond();
+    if (this.RbC.RdD > 0L)
     {
-      k localk = this.KaY;
-      localk.KcZ += this.KaY.KcY - this.KaY.KcX;
+      k localk = this.RbC;
+      localk.RdF += this.RbC.RdE - this.RbC.RdD;
     }
   }
   
-  protected final void got()
+  protected final void hjd()
   {
-    k localk = this.KaY;
+    k localk = this.RbC;
     localk.blockCount += 1;
   }
   
-  protected final void gou()
+  protected final void hje()
   {
     int k;
     int j;
     int i;
-    if ((this.KaY.KcY > 0L) && (this.KaY.KcX > 0L))
+    if ((this.RbC.RdE > 0L) && (this.RbC.RdD > 0L))
     {
-      k = (int)((this.KaY.KcY - this.KaY.KcX) / 1000L);
+      k = (int)((this.RbC.RdE - this.RbC.RdD) / 1000L);
       if (!NetStatusUtil.isWifi(this.mContext)) {
         break label146;
       }
@@ -578,9 +629,9 @@ public abstract class AbstractVideoView
     {
       int m = getReportIdkey();
       int n = getReportIdkey();
-      i = Util.nullAsNil((Integer)e.a(k, new int[] { 1, 2, 3, 4 }, j + m, i + n));
-      Log.d(this.TAG, "%s rptResumeTime [%d]", new Object[] { bgQ(), Integer.valueOf(i) });
-      yU(i);
+      i = Util.nullAsNil((Integer)f.a(k, new int[] { 1, 2, 3, 4 }, j + m, i + n));
+      Log.d(this.TAG, "%s rptResumeTime [%d]", new Object[] { bqf(), Integer.valueOf(i) });
+      EW(i);
       label146:
       do
       {
@@ -603,81 +654,75 @@ public abstract class AbstractVideoView
     }
   }
   
-  protected void hideLoading()
-  {
-    this.hAk.removeMessages(1);
-    this.hAk.sendEmptyMessage(2);
-  }
-  
   protected void initView()
   {
-    Log.i(this.TAG, "%s init view ", new Object[] { bgQ() });
-    LayoutInflater.from(this.mContext).inflate(dEP(), this);
-    this.mEx = ((ImageView)findViewById(2131309829));
-    this.mEy = ((RelativeLayout)findViewById(2131309821));
-    this.hPF = ((TextView)findViewById(2131309754));
-    this.mEz = ((ProgressBar)findViewById(2131309778));
-    this.mEA = ((TextView)findViewById(2131309834));
-    this.mEB = ((LinearLayout)findViewById(2131309767));
-    Object localObject = (VideoPlayerSeekBar)findViewById(2131309804);
-    this.KaT = ((VideoPlayerSeekBar)localObject);
-    this.KaU = ((h)localObject);
-    if (this.KaT != null)
+    Log.i(this.TAG, "%s init view ", new Object[] { bqf() });
+    LayoutInflater.from(this.mContext).inflate(egy(), this);
+    this.pDJ = ((ImageView)findViewById(a.b.video_thumb));
+    this.pDK = ((RelativeLayout)findViewById(a.b.video_root));
+    this.kEb = ((TextView)findViewById(a.b.video_duration));
+    this.pDL = ((ProgressBar)findViewById(a.b.video_loading));
+    this.pDM = ((TextView)findViewById(a.b.video_tips));
+    this.pDN = ((LinearLayout)findViewById(a.b.video_footer_root));
+    Object localObject = (VideoPlayerSeekBar)findViewById(a.b.video_player_seek_bar);
+    this.Rbx = ((VideoPlayerSeekBar)localObject);
+    this.Rby = ((h)localObject);
+    if (this.Rbx != null)
     {
-      this.KaT.setIplaySeekCallback(this.tni);
-      this.KaT.setOnClickListener(this.mET);
+      this.Rbx.setIplaySeekCallback(this.wTG);
+      this.Rbx.setOnClickListener(this.pEf);
     }
-    this.qbJ = di(this.mContext);
-    this.qbJ.setVideoCallback(this);
-    this.qbJ.setOnSeekCompleteCallback(this);
-    this.qbJ.setOnInfoCallback(this);
-    this.qbJ.setOnSurfaceCallback(this);
+    this.txH = df(this.mContext);
+    this.txH.setVideoCallback(this);
+    this.txH.setOnSeekCompleteCallback(this);
+    this.txH.setOnInfoCallback(this);
+    this.txH.setOnSurfaceCallback(this);
     localObject = new RelativeLayout.LayoutParams(-1, -2);
     ((RelativeLayout.LayoutParams)localObject).addRule(13);
-    this.mEy.addView((View)this.qbJ, 0, (ViewGroup.LayoutParams)localObject);
+    this.pDK.addView((View)this.txH, 0, (ViewGroup.LayoutParams)localObject);
   }
   
   public boolean isPlaying()
   {
-    if (this.qbJ != null) {}
-    for (boolean bool = this.qbJ.isPlaying();; bool = false)
+    if (this.txH != null) {}
+    for (boolean bool = this.txH.isPlaying();; bool = false)
     {
-      Log.i(this.TAG, "%s is playing[%b]", new Object[] { bgQ(), Boolean.valueOf(bool) });
+      Log.i(this.TAG, "%s is playing[%b]", new Object[] { bqf(), Boolean.valueOf(bool) });
       return bool;
     }
   }
   
   public void onCompletion()
   {
-    Log.i(this.TAG, "%s onCompletion, curMs %d, duration %d", new Object[] { bgQ(), Integer.valueOf(getCurrPosSec()), Integer.valueOf(getVideoDurationSec()) });
-    xv(getVideoDurationSec());
+    Log.i(this.TAG, "%s onCompletion, curMs %d, duration %d", new Object[] { bqf(), Integer.valueOf(getCurrPosSec()), Integer.valueOf(getVideoDurationSec()) });
+    AS(getVideoDurationSec());
     hideLoading();
     stopTimer();
-    if (this.pNj != null) {
-      this.pNj.dI(getSessionId(), getMediaId());
+    if (this.sUh != null) {
+      this.sUh.dT(getSessionId(), getMediaId());
     }
-    this.mEO = 0;
-    this.mEN = 0L;
-    yU(getReportIdkey() + 7);
+    this.pEa = 0;
+    this.pDZ = 0L;
+    EW(getReportIdkey() + 7);
   }
   
   public void onError(final int paramInt1, int paramInt2)
   {
-    Log.w(this.TAG, "%s onError info [%d %d] errorCount[%d]", new Object[] { bgQ(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.bFM) });
-    yU(getReportIdkey() + 90);
-    this.bFM += 1;
-    if (this.bFM > 5)
+    Log.w(this.TAG, "%s onError info [%d %d] errorCount[%d]", new Object[] { bqf(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.bpq) });
+    EW(getReportIdkey() + 90);
+    this.bpq += 1;
+    if (this.bpq > 5)
     {
-      yU(getReportIdkey() + 92);
-      this.KaY.mNz = paramInt1;
-      this.KaY.mNA = paramInt2;
+      EW(getReportIdkey() + 92);
+      this.RbC.pOs = paramInt1;
+      this.RbC.pOt = paramInt2;
       i.b localb;
       String str2;
       String str3;
       String str1;
-      if (this.pNj != null)
+      if (this.sUh != null)
       {
-        localb = this.pNj;
+        localb = this.sUh;
         str2 = getSessionId();
         str3 = getMediaId();
         if (paramInt1 != -1010) {
@@ -710,22 +755,22 @@ public abstract class AbstractVideoView
       }
     }
     paramInt2 = getCurrPosSec();
-    if (this.mEL == -1) {}
-    for (paramInt1 = paramInt2;; paramInt1 = this.mEL)
+    if (this.pDX == -1) {}
+    for (paramInt1 = paramInt2;; paramInt1 = this.pDX)
     {
-      Log.i(this.TAG, "%s onError now, try to start again. currPlaySec[%d] seekTimeWhenPrepared[%d] currPosSec[%d]", new Object[] { bgQ(), Integer.valueOf(paramInt1), Integer.valueOf(this.mEL), Integer.valueOf(paramInt2) });
+      Log.i(this.TAG, "%s onError now, try to start again. currPlaySec[%d] seekTimeWhenPrepared[%d] currPosSec[%d]", new Object[] { bqf(), Integer.valueOf(paramInt1), Integer.valueOf(this.pDX), Integer.valueOf(paramInt2) });
       stop();
       showLoading();
-      this.hAk.postDelayed(new Runnable()
+      this.knk.postDelayed(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(208747);
-          AbstractVideoView.this.mEM = true;
-          AbstractVideoView.this.xI(paramInt1);
-          AbstractVideoView.this.c(paramInt1, true);
-          AbstractVideoView.this.mEM = false;
-          AppMethodBeat.o(208747);
+          AppMethodBeat.i(205182);
+          AbstractVideoView.this.pDY = true;
+          AbstractVideoView.this.Bg(paramInt1);
+          AbstractVideoView.this.a(paramInt1, true);
+          AbstractVideoView.this.pDY = false;
+          AppMethodBeat.o(205182);
         }
       }, 200L);
       return;
@@ -734,86 +779,151 @@ public abstract class AbstractVideoView
   
   public void onUIDestroy()
   {
-    Log.i(this.TAG, "%s onUIDestroy", new Object[] { bgQ() });
+    Log.i(this.TAG, "%s onUIDestroy", new Object[] { bqf() });
     stop();
-    this.hAk.removeCallbacksAndMessages(null);
+    this.knk.removeCallbacksAndMessages(null);
     stopTimer();
-    this.mER.stopTimer();
-    yU(getReportIdkey() + 12);
+    this.pEd.stopTimer();
+    EW(getReportIdkey() + 12);
   }
   
   public void onUIPause()
   {
-    Log.i(this.TAG, "%s onUIPause %s", new Object[] { bgQ(), Util.getStack() });
-    this.mEH = getCurrPosSec();
-    this.mEI = isPlaying();
-    this.mEO = 0;
-    this.mEN = 0L;
+    Log.i(this.TAG, "%s onUIPause %s", new Object[] { bqf(), Util.getStack() });
+    this.pDT = getCurrPosSec();
+    this.pDU = isPlaying();
+    this.pEa = 0;
+    this.pDZ = 0L;
     pause();
     stopTimer();
-    this.mEw = false;
-    yU(getReportIdkey() + 11);
+    this.pDI = false;
+    EW(getReportIdkey() + 11);
   }
   
   public void onUIResume()
   {
-    Log.i(this.TAG, "%s onUIResume %s", new Object[] { bgQ(), Util.getStack() });
-    this.mEw = true;
-    yU(getReportIdkey() + 10);
+    Log.i(this.TAG, "%s onUIResume %s", new Object[] { bqf(), Util.getStack() });
+    this.pDI = true;
+    EW(getReportIdkey() + 10);
   }
   
   public boolean p(double paramDouble)
   {
-    return c(paramDouble, isPlaying());
+    return a(paramDouble, isPlaying());
   }
   
   public boolean pause()
   {
-    Log.i(this.TAG, "%s pause", new Object[] { bgQ() });
-    yU(getReportIdkey() + 4);
-    if (this.qbJ != null)
+    Log.i(this.TAG, "%s pause", new Object[] { bqf() });
+    EW(getReportIdkey() + 4);
+    if (this.txH != null)
     {
-      hP(false);
-      this.qbJ.pause();
+      iF(false);
+      this.txH.pause();
       stopTimer();
-      if (this.pNj != null) {
-        this.pNj.dJ(getSessionId(), getMediaId());
+      if (this.sUh != null) {
+        this.sUh.dU(getSessionId(), getMediaId());
       }
-      this.KaY.Euv = Util.nowMilliSecond();
+      this.RbC.KIm = Util.nowMilliSecond();
       return true;
     }
     return false;
   }
   
-  public boolean play()
+  public final void qX()
   {
-    if (!this.mEw) {
-      Log.w(this.TAG, "%s ui on pause now, why u call me to play? [%s]", new Object[] { bgQ(), Util.getStack() });
+    Log.i(this.TAG, "%s onPrepared startWhenPrepared[%b] seekTimeWhenPrepared[%d] isPrepared[%b]", new Object[] { bqf(), Boolean.valueOf(this.pDW), Integer.valueOf(this.pDX), Boolean.valueOf(this.gX) });
+    this.gX = true;
+    if (this.txH != null) {
+      this.txH.setOneTimeVideoTextureUpdateCallback(this);
     }
-    do
-    {
-      return false;
-      yU(getReportIdkey() + 3);
-    } while (this.qbJ == null);
-    boolean bool = this.qbJ.start();
-    Log.i(this.TAG, "%s video play [%b] isPlayOnUiPause[%b]", new Object[] { bgQ(), Boolean.valueOf(bool), Boolean.valueOf(this.mEI) });
-    hP(bool);
-    if (bool)
-    {
-      this.mEI = false;
-      fO(false);
-      if (this.pNj != null) {
-        this.pNj.dK(getSessionId(), getMediaId());
+    setVideoTotalTime(getVideoDurationSec());
+    int i;
+    int k;
+    int j;
+    if (this.pDW) {
+      if (this.pDX < 0)
+      {
+        if ((bqo()) && (ePu())) {
+          this.pEc.startTimer(1000L);
+        }
+        this.pDX = -1;
+        this.pDW = true;
+        this.pEa = 0;
+        this.pDZ = 0L;
+        if (this.sUh != null) {
+          this.sUh.dS(getSessionId(), getMediaId());
+        }
+        if (this.bpq > 0)
+        {
+          Log.d(this.TAG, "%s start error check timer", new Object[] { bqf() });
+          this.pEd.startTimer(5000L);
+        }
+        EW(getReportIdkey() + 2);
+        if (this.RbC.RdC == 0L) {
+          this.RbC.RdC = Util.nowMilliSecond();
+        }
+        i = getVideoDurationSec();
+        this.RbC.duration = i;
+        if ((this.RbC.ptY > 0L) && (this.RbC.RdC > 0L))
+        {
+          k = (int)((this.RbC.RdC - this.RbC.ptY) / 1000L);
+          if (!NetStatusUtil.isWifi(this.mContext)) {
+            break label460;
+          }
+          j = 20;
+          i = 24;
+        }
       }
     }
-    return bool;
+    for (;;)
+    {
+      label310:
+      int m = getReportIdkey();
+      int n = getReportIdkey();
+      i = Util.nullAsNil((Integer)f.a(k, new int[] { 1, 2, 3, 4 }, j + m, i + n));
+      Log.d(this.TAG, "%s rptFirstPlayTime [%d]", new Object[] { bqf(), Integer.valueOf(i) });
+      EW(i);
+      label460:
+      do
+      {
+        return;
+        if (!isLive())
+        {
+          a(this.pDX, this.pDW);
+          break;
+        }
+        bqo();
+        break;
+        if (this.pDX < 0) {}
+        for (double d = 0.0D;; d = this.pDX)
+        {
+          a(d, this.pDW);
+          break;
+        }
+        if (NetStatusUtil.is4G(this.mContext))
+        {
+          j = 25;
+          i = 29;
+          break label310;
+        }
+        if (NetStatusUtil.is3G(this.mContext))
+        {
+          j = 30;
+          i = 34;
+          break label310;
+        }
+      } while (!NetStatusUtil.is2G(this.mContext));
+      j = 35;
+      i = 39;
+    }
   }
   
   public void setCover(Bitmap paramBitmap)
   {
-    Log.i(this.TAG, "%s set cover", new Object[] { bgQ() });
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled()) && (this.mEx != null)) {
-      this.mEx.setImageBitmap(paramBitmap);
+    Log.i(this.TAG, "%s set cover", new Object[] { bqf() });
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()) && (this.pDJ != null)) {
+      this.pDJ.setImageBitmap(paramBitmap);
     }
   }
   
@@ -821,94 +931,94 @@ public abstract class AbstractVideoView
   
   public void setIMMVideoViewCallback(i.b paramb)
   {
-    this.pNj = paramb;
+    this.sUh = paramb;
   }
   
   public void setIsShowBasicControls(boolean paramBoolean)
   {
-    Log.i(this.TAG, "%s is show seek bar[%b]", new Object[] { bgQ(), Boolean.valueOf(paramBoolean) });
-    this.mEF = paramBoolean;
-    if (this.mEF)
+    Log.i(this.TAG, "%s is show seek bar[%b]", new Object[] { bqf(), Boolean.valueOf(paramBoolean) });
+    this.pDR = paramBoolean;
+    if (this.pDR)
     {
-      this.hAk.post(new Runnable()
+      this.knk.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(133990);
-          if ((AbstractVideoView.this.mEB != null) && (AbstractVideoView.this.mEB.getVisibility() != 0)) {
-            AbstractVideoView.this.mEB.setVisibility(0);
+          if ((AbstractVideoView.this.pDN != null) && (AbstractVideoView.this.pDN.getVisibility() != 0)) {
+            AbstractVideoView.this.pDN.setVisibility(0);
           }
           AppMethodBeat.o(133990);
         }
       });
       return;
     }
-    goo();
+    fhw();
   }
   
   public void setLoopCompletionCallback(i.d paramd)
   {
-    this.KaV = paramd;
+    this.Rbz = paramd;
   }
   
   public void setMute(boolean paramBoolean)
   {
-    if (this.qbJ != null) {
-      this.qbJ.setMute(paramBoolean);
+    if (this.txH != null) {
+      this.txH.setMute(paramBoolean);
     }
   }
   
   public void setReporter(i.c paramc)
   {
-    this.KaX = paramc;
+    this.RbB = paramc;
   }
   
   public void setVideoFooterView(h paramh)
   {
     if (!(paramh instanceof View))
     {
-      Log.w(this.TAG, "%s set video footer view but is not view", new Object[] { bgQ() });
+      Log.w(this.TAG, "%s set video footer view but is not view", new Object[] { bqf() });
       return;
     }
-    dFl();
-    this.KaU = paramh;
-    this.mEG = false;
-    this.mEB.addView((View)this.KaU);
+    egX();
+    this.Rby = paramh;
+    this.pDS = false;
+    this.pDN.addView((View)this.Rby);
   }
   
   protected void setVideoTotalTime(int paramInt)
   {
-    if ((this.KaU != null) && (this.KaU.getVideoTotalTime() != paramInt)) {
-      this.KaU.setVideoTotalTime(paramInt);
+    if ((this.Rby != null) && (this.Rby.getVideoTotalTime() != paramInt)) {
+      this.Rby.setVideoTotalTime(paramInt);
     }
   }
   
   protected void showLoading()
   {
-    BT(500L);
+    Ic(500L);
   }
   
   public void stop()
   {
-    Log.i(this.TAG, "%s stop", new Object[] { bgQ() });
-    yU(getReportIdkey() + 6);
-    if (this.qbJ != null) {
-      this.qbJ.stop();
+    Log.i(this.TAG, "%s stop", new Object[] { bqf() });
+    EW(getReportIdkey() + 6);
+    if (this.txH != null) {
+      this.txH.stop();
     }
-    this.mEL = -1;
-    this.mEK = true;
-    this.ZA = false;
-    this.mEO = 0;
-    this.mEN = 0L;
+    this.pDX = -1;
+    this.pDW = true;
+    this.gX = false;
+    this.pEa = 0;
+    this.pDZ = 0L;
     stopTimer();
-    this.hAk.postDelayed(new Runnable()
+    this.knk.postDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(133982);
         try
         {
-          AbstractVideoView.this.xI(0);
+          AbstractVideoView.this.Bg(0);
           AbstractVideoView.a(AbstractVideoView.this, AbstractVideoView.this.isPlaying());
           AppMethodBeat.o(133982);
           return;
@@ -919,12 +1029,12 @@ public abstract class AbstractVideoView
         }
       }
     }, 10L);
-    this.KaY.mNx = Util.nowMilliSecond();
+    this.RbC.pOq = Util.nowMilliSecond();
     int j;
     int i;
     label221:
     Object localObject;
-    if (this.KaY.blockCount > 0)
+    if (this.RbC.blockCount > 0)
     {
       if (NetStatusUtil.isWifi(this.mContext))
       {
@@ -932,63 +1042,63 @@ public abstract class AbstractVideoView
         i = 45;
         int k = getReportIdkey();
         int m = getReportIdkey();
-        i = Util.nullAsNil((Integer)e.a(this.KaY.blockCount, new int[] { 1, 2, 3, 4 }, j + k, i + m));
-        Log.d(this.TAG, "%s rptBlockCount [%d]", new Object[] { bgQ(), Integer.valueOf(i) });
-        yU(i);
+        i = Util.nullAsNil((Integer)f.a(this.RbC.blockCount, new int[] { 1, 2, 3, 4 }, j + k, i + m));
+        Log.d(this.TAG, "%s rptBlockCount [%d]", new Object[] { bqf(), Integer.valueOf(i) });
+        EW(i);
       }
     }
-    else if (this.KaY.mvz != 0L)
+    else if (this.RbC.ptY != 0L)
     {
       localObject = new StringBuffer();
-      ((StringBuffer)localObject).append(this.KaY.mvz).append(",");
-      ((StringBuffer)localObject).append(this.KaY.KcW).append(",");
-      ((StringBuffer)localObject).append(this.KaY.mNx).append(",");
-      ((StringBuffer)localObject).append(this.KaY.Euv).append(",");
-      ((StringBuffer)localObject).append(this.KaY.KcX).append(",");
-      ((StringBuffer)localObject).append(this.KaY.KcY).append(",");
-      ((StringBuffer)localObject).append(this.KaY.KcZ).append(",");
-      ((StringBuffer)localObject).append(this.KaY.blockCount).append(",");
-      if (this.KaY.KcW <= 0L) {
+      ((StringBuffer)localObject).append(this.RbC.ptY).append(",");
+      ((StringBuffer)localObject).append(this.RbC.RdC).append(",");
+      ((StringBuffer)localObject).append(this.RbC.pOq).append(",");
+      ((StringBuffer)localObject).append(this.RbC.KIm).append(",");
+      ((StringBuffer)localObject).append(this.RbC.RdD).append(",");
+      ((StringBuffer)localObject).append(this.RbC.RdE).append(",");
+      ((StringBuffer)localObject).append(this.RbC.RdF).append(",");
+      ((StringBuffer)localObject).append(this.RbC.blockCount).append(",");
+      if (this.RbC.RdC <= 0L) {
         break label802;
       }
-      l = this.KaY.KcW - this.KaY.mvz;
+      l = this.RbC.RdC - this.RbC.ptY;
       label423:
       ((StringBuffer)localObject).append(l).append(",");
-      ((StringBuffer)localObject).append(this.KaY.url).append(",");
-      ((StringBuffer)localObject).append(this.KaY.duration).append(",");
-      ((StringBuffer)localObject).append(this.KaY.mNz).append(",");
-      ((StringBuffer)localObject).append(this.KaY.mNA).append(",");
-      ((StringBuffer)localObject).append(this.KaY.Eut).append(",");
-      if (this.KaY.Eut <= this.KaY.mvz) {
+      ((StringBuffer)localObject).append(this.RbC.url).append(",");
+      ((StringBuffer)localObject).append(this.RbC.duration).append(",");
+      ((StringBuffer)localObject).append(this.RbC.pOs).append(",");
+      ((StringBuffer)localObject).append(this.RbC.pOt).append(",");
+      ((StringBuffer)localObject).append(this.RbC.KIk).append(",");
+      if (this.RbC.KIk <= this.RbC.ptY) {
         break label808;
       }
     }
     label802:
     label808:
-    for (long l = this.KaY.Eut - this.KaY.mvz;; l = 0L)
+    for (long l = this.RbC.KIk - this.RbC.ptY;; l = 0L)
     {
       ((StringBuffer)localObject).append(l).append(",");
       ((StringBuffer)localObject).append(getPlayerType()).append(",");
       ((StringBuffer)localObject).append(getVideoSource());
       localObject = ((StringBuffer)localObject).toString();
-      Log.i(this.TAG, "%s rpt video kv stat{%s}", new Object[] { bgQ(), localObject });
-      if (this.KaX != null) {
-        this.KaX.DX((String)localObject);
+      Log.i(this.TAG, "%s rpt video kv stat{%s}", new Object[] { bqf(), localObject });
+      if (this.RbB != null) {
+        this.RbB.KP((String)localObject);
       }
-      localObject = this.KaY;
-      ((k)localObject).mvz = 0L;
-      ((k)localObject).KcW = 0L;
-      ((k)localObject).mNx = 0L;
-      ((k)localObject).Euv = 0L;
-      ((k)localObject).KcX = 0L;
-      ((k)localObject).KcY = 0L;
-      ((k)localObject).KcZ = 0L;
+      localObject = this.RbC;
+      ((k)localObject).ptY = 0L;
+      ((k)localObject).RdC = 0L;
+      ((k)localObject).pOq = 0L;
+      ((k)localObject).KIm = 0L;
+      ((k)localObject).RdD = 0L;
+      ((k)localObject).RdE = 0L;
+      ((k)localObject).RdF = 0L;
       ((k)localObject).blockCount = 0;
       ((k)localObject).url = "";
       ((k)localObject).duration = 0;
-      ((k)localObject).mNz = 0;
-      ((k)localObject).mNA = 0;
-      ((k)localObject).Eut = 0L;
+      ((k)localObject).pOs = 0;
+      ((k)localObject).pOt = 0;
+      ((k)localObject).KIk = 0L;
       return;
       if (NetStatusUtil.is4G(this.mContext))
       {
@@ -1015,121 +1125,13 @@ public abstract class AbstractVideoView
   
   protected void stopTimer()
   {
-    this.mEP.stopTimer();
-    this.mEQ.stopTimer();
-  }
-  
-  public final void tf()
-  {
-    Log.i(this.TAG, "%s onPrepared startWhenPrepared[%b] seekTimeWhenPrepared[%d] isPrepared[%b]", new Object[] { bgQ(), Boolean.valueOf(this.mEK), Integer.valueOf(this.mEL), Boolean.valueOf(this.ZA) });
-    this.ZA = true;
-    if (this.qbJ != null) {
-      this.qbJ.setOneTimeVideoTextureUpdateCallback(this);
-    }
-    setVideoTotalTime(getVideoDurationSec());
-    int i;
-    int k;
-    int j;
-    if (this.mEK) {
-      if (this.mEL < 0)
-      {
-        if ((play()) && (efT())) {
-          this.mEQ.startTimer(1000L);
-        }
-        this.mEL = -1;
-        this.mEK = true;
-        this.mEO = 0;
-        this.mEN = 0L;
-        if (this.pNj != null) {
-          this.pNj.dH(getSessionId(), getMediaId());
-        }
-        if (this.bFM > 0)
-        {
-          Log.d(this.TAG, "%s start error check timer", new Object[] { bgQ() });
-          this.mER.startTimer(5000L);
-        }
-        yU(getReportIdkey() + 2);
-        if (this.KaY.KcW == 0L) {
-          this.KaY.KcW = Util.nowMilliSecond();
-        }
-        i = getVideoDurationSec();
-        this.KaY.duration = i;
-        if ((this.KaY.mvz > 0L) && (this.KaY.KcW > 0L))
-        {
-          k = (int)((this.KaY.KcW - this.KaY.mvz) / 1000L);
-          if (!NetStatusUtil.isWifi(this.mContext)) {
-            break label460;
-          }
-          j = 20;
-          i = 24;
-        }
-      }
-    }
-    for (;;)
-    {
-      label310:
-      int m = getReportIdkey();
-      int n = getReportIdkey();
-      i = Util.nullAsNil((Integer)e.a(k, new int[] { 1, 2, 3, 4 }, j + m, i + n));
-      Log.d(this.TAG, "%s rptFirstPlayTime [%d]", new Object[] { bgQ(), Integer.valueOf(i) });
-      yU(i);
-      label460:
-      do
-      {
-        return;
-        if (!isLive())
-        {
-          c(this.mEL, this.mEK);
-          break;
-        }
-        play();
-        break;
-        if (this.mEL < 0) {}
-        for (double d = 0.0D;; d = this.mEL)
-        {
-          c(d, this.mEK);
-          break;
-        }
-        if (NetStatusUtil.is4G(this.mContext))
-        {
-          j = 25;
-          i = 29;
-          break label310;
-        }
-        if (NetStatusUtil.is3G(this.mContext))
-        {
-          j = 30;
-          i = 34;
-          break label310;
-        }
-      } while (!NetStatusUtil.is2G(this.mContext));
-      j = 35;
-      i = 39;
-    }
-  }
-  
-  public final void xI(int paramInt)
-  {
-    xv(paramInt);
-  }
-  
-  protected void xv(int paramInt)
-  {
-    if (this.KaU != null) {
-      this.KaU.xv(paramInt);
-    }
-  }
-  
-  protected final void yU(long paramLong)
-  {
-    if (this.KaX != null) {
-      this.KaX.yU(paramLong);
-    }
+    this.pEb.stopTimer();
+    this.pEc.stopTimer();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.AbstractVideoView
  * JD-Core Version:    0.7.0.1
  */

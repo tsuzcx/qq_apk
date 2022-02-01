@@ -10,23 +10,22 @@ import android.os.Parcelable.Creator;
 import android.os.Process;
 import android.util.Pair;
 import android.widget.Toast;
-import com.tencent.f.i;
+import com.tencent.luggage.sdk.processes.LuggageServiceType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.modelappbrand.b;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.report.d;
-import com.tencent.mm.plugin.appbrand.task.e;
-import com.tencent.mm.plugin.appbrand.task.g;
-import com.tencent.mm.plugin.appbrand.task.p;
+import com.tencent.mm.plugin.appbrand.task.i.b;
+import com.tencent.mm.plugin.appbrand.task.n;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandUI;
+import com.tencent.mm.plugin.report.service.KVCommCrossProcessReceiver;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -34,100 +33,127 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class AppBrandProcessSuicideLogic
   extends com.tencent.mm.plugin.appbrand.ac.a
 {
-  private static final AppBrandProcessSuicideLogic kIu;
-  private final AtomicInteger kIv;
-  private final AtomicBoolean kIw;
-  private final Set<Activity> kIx;
+  private static final AppBrandProcessSuicideLogic nCk;
+  private final AtomicInteger nCl;
+  private final AtomicBoolean nCm;
+  private final Set<Activity> nCn;
   
   static
   {
     AppMethodBeat.i(44125);
-    kIu = new AppBrandProcessSuicideLogic();
+    nCk = new AppBrandProcessSuicideLogic();
     AppMethodBeat.o(44125);
   }
   
   private AppBrandProcessSuicideLogic()
   {
     AppMethodBeat.i(44119);
-    this.kIv = new AtomicInteger(0);
-    this.kIw = new AtomicBoolean();
-    this.kIx = new HashSet();
+    this.nCl = new AtomicInteger(0);
+    this.nCm = new AtomicBoolean();
+    this.nCn = new HashSet();
     AppMethodBeat.o(44119);
   }
   
-  public static void C(Activity paramActivity)
+  public static void B(Activity paramActivity)
   {
-    AppMethodBeat.i(226305);
-    AppBrandProcessSuicideLogic localAppBrandProcessSuicideLogic = kIu;
-    if (localAppBrandProcessSuicideLogic.kIx.add(paramActivity)) {
-      localAppBrandProcessSuicideLogic.kIv.incrementAndGet();
+    AppMethodBeat.i(279376);
+    AppBrandProcessSuicideLogic localAppBrandProcessSuicideLogic = nCk;
+    if (localAppBrandProcessSuicideLogic.nCn.add(paramActivity)) {
+      localAppBrandProcessSuicideLogic.nCl.incrementAndGet();
     }
-    AppMethodBeat.o(226305);
+    AppMethodBeat.o(279376);
   }
   
   public static void a(AppBrandUI paramAppBrandUI, String paramString)
   {
-    AppMethodBeat.i(226307);
+    AppMethodBeat.i(279384);
     RebootProcessAndTask localRebootProcessAndTask = new RebootProcessAndTask();
     localRebootProcessAndTask.mProcessName = MMApplicationContext.getProcessName();
-    paramAppBrandUI = AppBrandUI.P(paramAppBrandUI.getIntent());
-    localRebootProcessAndTask.kID = ((AppBrandInitConfigWC)paramAppBrandUI.first);
-    localRebootProcessAndTask.kEH = ((AppBrandStatObject)paramAppBrandUI.second);
-    localRebootProcessAndTask.cXS = paramString;
-    AppBrandMainProcessService.b(localRebootProcessAndTask);
+    paramAppBrandUI = AppBrandUI.M(paramAppBrandUI.getIntent());
+    localRebootProcessAndTask.nCs = ((AppBrandInitConfigWC)paramAppBrandUI.first);
+    localRebootProcessAndTask.nyh = ((AppBrandStatObject)paramAppBrandUI.second);
+    localRebootProcessAndTask.dbT = paramString;
+    localRebootProcessAndTask.bPu();
     paramAppBrandUI = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
     paramString = new Object();
-    com.tencent.mm.hellhoundlib.a.a.a(paramString, paramAppBrandUI.axQ(), "com/tencent/mm/plugin/appbrand/app/AppBrandProcessSuicideLogic", "rebootProcessAndTask", "(Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI;Ljava/lang/String;)V", "java/lang/System_EXEC_", "exit", "(I)V");
-    System.exit(((Integer)paramAppBrandUI.pG(0)).intValue());
-    com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/appbrand/app/AppBrandProcessSuicideLogic", "rebootProcessAndTask", "(Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI;Ljava/lang/String;)V", "java/lang/System_EXEC_", "exit", "(I)V");
+    com.tencent.mm.hellhoundlib.a.a.b(paramString, paramAppBrandUI.aFh(), "com/tencent/mm/plugin/appbrand/app/AppBrandProcessSuicideLogic", "rebootProcessAndTask", "(Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI;Ljava/lang/String;)V", "java/lang/System_EXEC_", "exit", "(I)V");
+    System.exit(((Integer)paramAppBrandUI.sf(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.c(paramString, "com/tencent/mm/plugin/appbrand/app/AppBrandProcessSuicideLogic", "rebootProcessAndTask", "(Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI;Ljava/lang/String;)V", "java/lang/System_EXEC_", "exit", "(I)V");
     paramAppBrandUI = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
     paramString = new Object();
-    com.tencent.mm.hellhoundlib.a.a.a(paramString, paramAppBrandUI.axQ(), "com/tencent/mm/plugin/appbrand/app/AppBrandProcessSuicideLogic", "rebootProcessAndTask", "(Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI;Ljava/lang/String;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-    Process.killProcess(((Integer)paramAppBrandUI.pG(0)).intValue());
-    com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/appbrand/app/AppBrandProcessSuicideLogic", "rebootProcessAndTask", "(Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI;Ljava/lang/String;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-    AppMethodBeat.o(226307);
+    com.tencent.mm.hellhoundlib.a.a.b(paramString, paramAppBrandUI.aFh(), "com/tencent/mm/plugin/appbrand/app/AppBrandProcessSuicideLogic", "rebootProcessAndTask", "(Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI;Ljava/lang/String;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+    Process.killProcess(((Integer)paramAppBrandUI.sf(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.c(paramString, "com/tencent/mm/plugin/appbrand/app/AppBrandProcessSuicideLogic", "rebootProcessAndTask", "(Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI;Ljava/lang/String;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+    AppMethodBeat.o(279384);
   }
   
-  public static void bup()
+  public static void bFp()
   {
     AppMethodBeat.i(44120);
-    kIu.kIw.set(true);
+    nCk.nCm.set(true);
     AppMethodBeat.o(44120);
   }
   
-  public static void buq()
+  public static void bFq()
+  {
+    AppMethodBeat.i(279379);
+    try
+    {
+      KVCommCrossProcessReceiver.fBy();
+      com.tencent.mm.plugin.appbrand.report.a.jy(true);
+      com.tencent.mm.plugin.appbrand.report.d locald = com.tencent.mm.plugin.appbrand.report.d.qIP;
+      com.tencent.mm.plugin.appbrand.report.d.aD("cleanupAndSuicideInWorker", false);
+      AppMethodBeat.o(279379);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace("MicroMsg.AppBrandProcessSuicideLogic", localException, "sendKV", new Object[0]);
+      AppMethodBeat.o(279379);
+    }
+  }
+  
+  public static void bFr()
   {
     AppMethodBeat.i(44123);
     Object localObject1 = new ProcessRestartTask();
     ((ProcessRestartTask)localObject1).mProcessName = MMApplicationContext.getProcessName();
-    ((ProcessRestartTask)localObject1).kIB = e.bVP();
-    AppBrandMainProcessService.b((MainProcessTask)localObject1);
+    Object localObject2 = com.tencent.mm.plugin.appbrand.task.h.ciX();
+    ((ProcessRestartTask)localObject1).nCq = new LuggageServiceType[localObject2.length];
+    ((ProcessRestartTask)localObject1).cxa = com.tencent.mm.plugin.appbrand.task.h.cxa;
+    int i = 0;
+    while (i < localObject2.length)
+    {
+      ((ProcessRestartTask)localObject1).nCq[i] = n.r(localObject2[i]);
+      i += 1;
+    }
+    ((ProcessRestartTask)localObject1).bPu();
     localObject1 = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-    Object localObject2 = new Object();
-    com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).axQ(), "com/tencent/mm/plugin/appbrand/app/AppBrandProcessSuicideLogic", "rebootProcessImmediately", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
-    System.exit(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject1).pG(0)).intValue());
-    com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/mm/plugin/appbrand/app/AppBrandProcessSuicideLogic", "rebootProcessImmediately", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+    localObject2 = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/tencent/mm/plugin/appbrand/app/AppBrandProcessSuicideLogic", "rebootProcessImmediately", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+    System.exit(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/mm/plugin/appbrand/app/AppBrandProcessSuicideLogic", "rebootProcessImmediately", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
     localObject1 = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
     localObject2 = new Object();
-    com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).axQ(), "com/tencent/mm/plugin/appbrand/app/AppBrandProcessSuicideLogic", "rebootProcessImmediately", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-    Process.killProcess(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject1).pG(0)).intValue());
-    com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/mm/plugin/appbrand/app/AppBrandProcessSuicideLogic", "rebootProcessImmediately", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+    com.tencent.mm.hellhoundlib.a.a.b(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/tencent/mm/plugin/appbrand/app/AppBrandProcessSuicideLogic", "rebootProcessImmediately", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+    Process.killProcess(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/mm/plugin/appbrand/app/AppBrandProcessSuicideLogic", "rebootProcessImmediately", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
     AppMethodBeat.o(44123);
   }
   
-  public static void c(Application paramApplication)
+  public static void e(Application paramApplication)
   {
     AppMethodBeat.i(44118);
-    paramApplication.registerActivityLifecycleCallbacks(kIu);
+    paramApplication.registerActivityLifecycleCallbacks(nCk);
     AppMethodBeat.o(44118);
   }
   
   public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(44121);
-    this.kIw.set(false);
-    if (this.kIx.add(paramActivity)) {
-      this.kIv.incrementAndGet();
+    this.nCm.set(false);
+    if (this.nCn.add(paramActivity)) {
+      this.nCl.incrementAndGet();
     }
     AppMethodBeat.o(44121);
   }
@@ -135,13 +161,13 @@ public final class AppBrandProcessSuicideLogic
   public final void onActivityDestroyed(final Activity paramActivity)
   {
     AppMethodBeat.i(44122);
-    if (this.kIx.remove(paramActivity)) {}
-    for (int i = this.kIv.decrementAndGet();; i = this.kIv.get())
+    if (this.nCn.remove(paramActivity)) {}
+    for (int i = this.nCl.decrementAndGet();; i = this.nCl.get())
     {
       if (i == 0)
       {
         paramActivity = paramActivity.getClass();
-        com.tencent.f.h.RTc.e(new Runnable()
+        com.tencent.e.h.ZvG.g(new Runnable()
         {
           public final void run()
           {
@@ -158,24 +184,25 @@ public final class AppBrandProcessSuicideLogic
   
   public final void onActivityStopped(Activity paramActivity)
   {
-    AppMethodBeat.i(226306);
+    AppMethodBeat.i(279381);
     super.onActivityStopped(paramActivity);
     if (((paramActivity instanceof AppBrandUI)) && (paramActivity.isFinishing()))
     {
-      paramActivity = d.nGE;
-      d.aB("onActivityStopped", false);
+      paramActivity = com.tencent.mm.plugin.appbrand.report.d.qIP;
+      com.tencent.mm.plugin.appbrand.report.d.aD("onActivityStopped", false);
     }
-    AppMethodBeat.o(226306);
+    AppMethodBeat.o(279381);
   }
   
   public static class ProcessRestartTask
     extends MainProcessTask
   {
     public static final Parcelable.Creator<ProcessRestartTask> CREATOR;
-    public String kIA;
-    public g[] kIB;
-    public int kIC;
+    public int cxa;
     public String mProcessName;
+    public String nCp;
+    public LuggageServiceType[] nCq;
+    public int nCr;
     
     static
     {
@@ -184,17 +211,21 @@ public final class AppBrandProcessSuicideLogic
       AppMethodBeat.o(44117);
     }
     
-    public final void bjj()
+    public final void RW()
     {
       AppMethodBeat.i(44114);
-      b.Lm(this.mProcessName);
-      g[] arrayOfg = this.kIB;
-      int j = arrayOfg.length;
+      b.bgM();
+      LuggageServiceType[] arrayOfLuggageServiceType = this.nCq;
+      int j = arrayOfLuggageServiceType.length;
       int i = 0;
       while (i < j)
       {
-        g localg = arrayOfg[i];
-        com.tencent.mm.plugin.appbrand.task.h.bWb().a(this.kIA, localg);
+        LuggageServiceType localLuggageServiceType = arrayOfLuggageServiceType[i];
+        com.tencent.mm.plugin.appbrand.task.i locali = com.tencent.mm.plugin.appbrand.task.i.cjb();
+        int k = this.cxa;
+        kotlin.g.b.p.k(localLuggageServiceType, "preloadType");
+        com.tencent.mm.plugin.appbrand.task.d locald = (com.tencent.mm.plugin.appbrand.task.d)locali.RS().get(k);
+        com.tencent.e.h.ZvG.n((Runnable)new i.b(locali, locald, localLuggageServiceType, k), 500L);
         i += 1;
       }
       AppMethodBeat.o(44114);
@@ -204,17 +235,17 @@ public final class AppBrandProcessSuicideLogic
     {
       AppMethodBeat.i(44116);
       this.mProcessName = paramParcel.readString();
-      this.kIA = paramParcel.readString();
-      this.kIC = paramParcel.readInt();
-      this.kIB = new g[this.kIC];
+      this.nCp = paramParcel.readString();
+      this.nCr = paramParcel.readInt();
+      this.nCq = new LuggageServiceType[this.nCr];
       try
       {
-        int[] arrayOfInt = new int[this.kIC];
+        int[] arrayOfInt = new int[this.nCr];
         paramParcel.readIntArray(arrayOfInt);
         int i = 0;
-        while (i < this.kIB.length)
+        while (i < this.nCq.length)
         {
-          this.kIB[i] = g.zm(arrayOfInt[i]);
+          this.nCq[i] = LuggageServiceType.values()[arrayOfInt[i]];
           i += 1;
         }
         AppMethodBeat.o(44116);
@@ -223,7 +254,7 @@ public final class AppBrandProcessSuicideLogic
       catch (Exception paramParcel)
       {
         Log.e("MicroMsg.AppBrandProcessSuicideLogic", "ProcessRestartTask.parseFromParcel, deserialize mPreloadType get exception:%s", new Object[] { paramParcel });
-        Arrays.fill(this.kIB, g.nPF);
+        Arrays.fill(this.nCq, n.qRU);
         AppMethodBeat.o(44116);
       }
     }
@@ -232,13 +263,13 @@ public final class AppBrandProcessSuicideLogic
     {
       AppMethodBeat.i(44115);
       paramParcel.writeString(this.mProcessName);
-      paramParcel.writeString(this.kIA);
-      paramParcel.writeInt(this.kIB.length);
-      int[] arrayOfInt = new int[this.kIB.length];
+      paramParcel.writeString(this.nCp);
+      paramParcel.writeInt(this.nCq.length);
+      int[] arrayOfInt = new int[this.nCq.length];
       paramInt = 0;
-      while (paramInt < this.kIB.length)
+      while (paramInt < this.nCq.length)
       {
-        arrayOfInt[paramInt] = this.kIB[paramInt].code;
+        arrayOfInt[paramInt] = this.nCq[paramInt].ordinal();
         paramInt += 1;
       }
       paramParcel.writeIntArray(arrayOfInt);
@@ -250,59 +281,60 @@ public final class AppBrandProcessSuicideLogic
     extends MainProcessTask
   {
     public static final Parcelable.Creator<RebootProcessAndTask> CREATOR;
-    public String cXS;
-    public AppBrandStatObject kEH;
-    public AppBrandInitConfigWC kID;
+    public String dbT;
     public String mProcessName;
+    public AppBrandInitConfigWC nCs;
+    public AppBrandStatObject nyh;
     
     static
     {
-      AppMethodBeat.i(226304);
+      AppMethodBeat.i(274336);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(226304);
+      AppMethodBeat.o(274336);
     }
     
-    public final void bjj()
+    public final void RW()
     {
-      AppMethodBeat.i(226301);
-      b.Lm(this.mProcessName);
+      AppMethodBeat.i(274333);
+      b.bgM();
       new Handler(Looper.getMainLooper()).postDelayed(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(226299);
-          Toast.makeText(MMApplicationContext.getContext(), AppBrandProcessSuicideLogic.RebootProcessAndTask.this.cXS, 1).show();
-          com.tencent.mm.plugin.appbrand.task.h.bWb().g(AppBrandProcessSuicideLogic.RebootProcessAndTask.this.kID, AppBrandProcessSuicideLogic.RebootProcessAndTask.this.kEH);
-          AppMethodBeat.o(226299);
+          AppMethodBeat.i(265613);
+          Toast.makeText(MMApplicationContext.getContext(), AppBrandProcessSuicideLogic.RebootProcessAndTask.this.dbT, 1).show();
+          com.tencent.mm.plugin.appbrand.task.p localp = new com.tencent.mm.plugin.appbrand.task.p(AppBrandProcessSuicideLogic.RebootProcessAndTask.this.nCs, AppBrandProcessSuicideLogic.RebootProcessAndTask.this.nyh);
+          com.tencent.mm.plugin.appbrand.task.i.cjb().a(MMApplicationContext.getContext(), localp);
+          AppMethodBeat.o(265613);
         }
       }, 500L);
-      AppMethodBeat.o(226301);
+      AppMethodBeat.o(274333);
     }
     
     public final void f(Parcel paramParcel)
     {
-      AppMethodBeat.i(226303);
+      AppMethodBeat.i(274335);
       this.mProcessName = paramParcel.readString();
-      this.kID = ((AppBrandInitConfigWC)paramParcel.readParcelable(AppBrandInitConfigWC.class.getClassLoader()));
-      this.kEH = ((AppBrandStatObject)paramParcel.readParcelable(AppBrandStatObject.class.getClassLoader()));
-      this.cXS = paramParcel.readString();
-      AppMethodBeat.o(226303);
+      this.nCs = ((AppBrandInitConfigWC)paramParcel.readParcelable(AppBrandInitConfigWC.class.getClassLoader()));
+      this.nyh = ((AppBrandStatObject)paramParcel.readParcelable(AppBrandStatObject.class.getClassLoader()));
+      this.dbT = paramParcel.readString();
+      AppMethodBeat.o(274335);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(226302);
+      AppMethodBeat.i(274334);
       paramParcel.writeString(this.mProcessName);
-      paramParcel.writeParcelable(this.kID, paramInt);
-      paramParcel.writeParcelable(this.kEH, paramInt);
-      paramParcel.writeString(this.cXS);
-      AppMethodBeat.o(226302);
+      paramParcel.writeParcelable(this.nCs, paramInt);
+      paramParcel.writeParcelable(this.nyh, paramInt);
+      paramParcel.writeString(this.dbT);
+      AppMethodBeat.o(274334);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.AppBrandProcessSuicideLogic
  * JD-Core Version:    0.7.0.1
  */

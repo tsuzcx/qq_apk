@@ -12,12 +12,12 @@ import rx.j;
 public final class m
   extends g
 {
-  public static final m UmP;
+  public static final m abQl;
   
   static
   {
     AppMethodBeat.i(90410);
-    UmP = new m();
+    abQl = new m();
     AppMethodBeat.o(90410);
   }
   
@@ -42,44 +42,43 @@ public final class m
   
   static final class a
     extends g.a
-    implements j
   {
-    private final AtomicInteger UlZ;
-    final PriorityBlockingQueue<m.b> UmQ;
-    private final rx.f.a Uml;
+    private final rx.f.a abPH;
+    private final AtomicInteger abPv;
+    final PriorityBlockingQueue<m.b> abQm;
     final AtomicInteger counter;
     
     a()
     {
       AppMethodBeat.i(90402);
       this.counter = new AtomicInteger();
-      this.UmQ = new PriorityBlockingQueue();
-      this.Uml = new rx.f.a();
-      this.UlZ = new AtomicInteger();
+      this.abQm = new PriorityBlockingQueue();
+      this.abPH = new rx.f.a();
+      this.abPv = new AtomicInteger();
       AppMethodBeat.o(90402);
     }
     
     private j a(final rx.b.a parama, long paramLong)
     {
       AppMethodBeat.i(90405);
-      if (this.Uml.hQB())
+      if (this.abPH.iVK())
       {
-        parama = d.hRn();
+        parama = d.iWx();
         AppMethodBeat.o(90405);
         return parama;
       }
       parama = new m.b(parama, Long.valueOf(paramLong), this.counter.incrementAndGet());
-      this.UmQ.add(parama);
-      if (this.UlZ.getAndIncrement() == 0)
+      this.abQm.add(parama);
+      if (this.abPv.getAndIncrement() == 0)
       {
         do
         {
-          parama = (m.b)this.UmQ.poll();
+          parama = (m.b)this.abQm.poll();
           if (parama != null) {
-            parama.Umw.call();
+            parama.abPS.call();
           }
-        } while (this.UlZ.decrementAndGet() > 0);
-        parama = d.hRn();
+        } while (this.abPv.decrementAndGet() > 0);
+        parama = d.iWx();
         AppMethodBeat.o(90405);
         return parama;
       }
@@ -88,7 +87,7 @@ public final class m
         public final void call()
         {
           AppMethodBeat.i(90401);
-          m.a.this.UmQ.remove(parama);
+          m.a.this.abQm.remove(parama);
           AppMethodBeat.o(90401);
         }
       });
@@ -113,17 +112,17 @@ public final class m
       return parama;
     }
     
-    public final void hQA()
+    public final void iVJ()
     {
       AppMethodBeat.i(90406);
-      this.Uml.hQA();
+      this.abPH.iVJ();
       AppMethodBeat.o(90406);
     }
     
-    public final boolean hQB()
+    public final boolean iVK()
     {
       AppMethodBeat.i(90407);
-      boolean bool = this.Uml.hQB();
+      boolean bool = this.abPH.iVK();
       AppMethodBeat.o(90407);
       return bool;
     }
@@ -132,21 +131,21 @@ public final class m
   static final class b
     implements Comparable<b>
   {
-    final Long UmT;
-    final rx.b.a Umw;
+    final rx.b.a abPS;
+    final Long abQp;
     final int count;
     
     b(rx.b.a parama, Long paramLong, int paramInt)
     {
-      this.Umw = parama;
-      this.UmT = paramLong;
+      this.abPS = parama;
+      this.abQp = paramLong;
       this.count = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.internal.c.m
  * JD-Core Version:    0.7.0.1
  */

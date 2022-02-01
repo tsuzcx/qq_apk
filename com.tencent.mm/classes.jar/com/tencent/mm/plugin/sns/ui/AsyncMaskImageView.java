@@ -15,8 +15,8 @@ import junit.framework.Assert;
 public class AsyncMaskImageView
   extends ImageView
 {
-  MMHandler Eok;
-  Runnable Eol;
+  MMHandler KBt;
+  Runnable KBu;
   private int a;
   private int b;
   private boolean enable;
@@ -32,8 +32,8 @@ public class AsyncMaskImageView
     this.g = 0;
     this.b = 0;
     this.enable = true;
-    this.Eok = new MMHandler();
-    this.Eol = new Runnable()
+    this.KBt = new MMHandler();
+    this.KBu = new Runnable()
     {
       public final void run()
       {
@@ -63,9 +63,9 @@ public class AsyncMaskImageView
           return true;
           paramAnonymousView.setPressed(true);
           paramAnonymousView.invalidate();
-          localAsyncMaskImageView.Eok.removeCallbacks(localAsyncMaskImageView.Eol);
+          localAsyncMaskImageView.KBt.removeCallbacks(localAsyncMaskImageView.KBu);
           continue;
-          localAsyncMaskImageView.Eok.post(localAsyncMaskImageView.Eol);
+          localAsyncMaskImageView.KBt.post(localAsyncMaskImageView.KBu);
         }
         AppMethodBeat.o(97754);
         return false;
@@ -115,7 +115,7 @@ public class AsyncMaskImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.AsyncMaskImageView
  * JD-Core Version:    0.7.0.1
  */

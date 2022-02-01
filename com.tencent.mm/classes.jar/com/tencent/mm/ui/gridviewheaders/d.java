@@ -11,13 +11,13 @@ public final class d
   extends BaseAdapter
   implements b
 {
-  private ListAdapter QkP;
-  private DataSetObserver Tr;
+  private DataSetObserver QT;
+  private ListAdapter XIl;
   
   public d(ListAdapter paramListAdapter)
   {
     AppMethodBeat.i(142841);
-    this.Tr = new DataSetObserver()
+    this.QT = new DataSetObserver()
     {
       public final void onChanged()
       {
@@ -33,8 +33,8 @@ public final class d
         AppMethodBeat.o(142840);
       }
     };
-    this.QkP = paramListAdapter;
-    paramListAdapter.registerDataSetObserver(this.Tr);
+    this.XIl = paramListAdapter;
+    paramListAdapter.registerDataSetObserver(this.QT);
     AppMethodBeat.o(142841);
   }
   
@@ -43,12 +43,7 @@ public final class d
     return null;
   }
   
-  public final int aob(int paramInt)
-  {
-    return 0;
-  }
-  
-  public final int gWs()
+  public final int axg(int paramInt)
   {
     return 0;
   }
@@ -56,7 +51,7 @@ public final class d
   public final int getCount()
   {
     AppMethodBeat.i(142842);
-    int i = this.QkP.getCount();
+    int i = this.XIl.getCount();
     AppMethodBeat.o(142842);
     return i;
   }
@@ -64,7 +59,7 @@ public final class d
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(142843);
-    Object localObject = this.QkP.getItem(paramInt);
+    Object localObject = this.XIl.getItem(paramInt);
     AppMethodBeat.o(142843);
     return localObject;
   }
@@ -72,7 +67,7 @@ public final class d
   public final long getItemId(int paramInt)
   {
     AppMethodBeat.i(142844);
-    long l = this.QkP.getItemId(paramInt);
+    long l = this.XIl.getItemId(paramInt);
     AppMethodBeat.o(142844);
     return l;
   }
@@ -80,14 +75,19 @@ public final class d
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(142845);
-    paramView = this.QkP.getView(paramInt, paramView, paramViewGroup);
+    paramView = this.XIl.getView(paramInt, paramView, paramViewGroup);
     AppMethodBeat.o(142845);
     return paramView;
+  }
+  
+  public final int hXa()
+  {
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.gridviewheaders.d
  * JD-Core Version:    0.7.0.1
  */

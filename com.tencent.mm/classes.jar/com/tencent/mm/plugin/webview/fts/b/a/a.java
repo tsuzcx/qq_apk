@@ -8,24 +8,24 @@ import java.util.Map;
 
 public final class a
 {
-  public static final a IPG;
-  private Map<String, com.tencent.mm.plugin.webview.fts.b.a.a.a> IPF;
+  public static final a PLV;
+  private Map<String, com.tencent.mm.plugin.webview.fts.b.a.a.a> PLU;
   
   static
   {
     AppMethodBeat.i(77987);
-    IPG = new a();
+    PLV = new a();
     AppMethodBeat.o(77987);
   }
   
   public a()
   {
     AppMethodBeat.i(77985);
-    this.IPF = new HashMap();
+    this.PLU = new HashMap();
     AppMethodBeat.o(77985);
   }
   
-  public static com.tencent.mm.plugin.webview.fts.b.a.a.a aXY(String paramString)
+  public static com.tencent.mm.plugin.webview.fts.b.a.a.a bjT(String paramString)
   {
     AppMethodBeat.i(77986);
     if ((TextUtils.isEmpty(paramString)) || (!paramString.startsWith("//test-widget-ui")))
@@ -58,21 +58,21 @@ public final class a
         Log.printErrStackTrace("SearchWidgetTestUiMgr", paramString, "", new Object[0]);
         paramString = null;
       }
-      IPG.IPF.put(paramString.dNI, paramString);
-      Log.i("SearchWidgetTestUiMgr", "test-widget-ui args %s, %s, %s, %s", new Object[] { paramString.IPJ, paramString.dNI, paramString.IPH, paramString.IPI });
+      PLV.PLU.put(paramString.appid, paramString);
+      Log.i("SearchWidgetTestUiMgr", "test-widget-ui args %s, %s, %s, %s", new Object[] { paramString.PLY, paramString.appid, paramString.PLW, paramString.PLX });
       AppMethodBeat.o(77986);
     }
     return paramString;
   }
   
-  public static a gaG()
+  public static a gTy()
   {
-    return IPG;
+    return PLV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.b.a.a
  * JD-Core Version:    0.7.0.1
  */

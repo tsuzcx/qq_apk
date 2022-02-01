@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="bottom" android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.InputPanelLinearLayout android:orientation="vertical" android:id="@id/k6w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ce" android:layout_marginTop="@dimen/ce" android:layout_marginRight="@dimen/ce">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:background="@color/d" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.base.MMClearEditText android:textSize="@dimen/t" android:textColor="@color/a2x" android:id="@id/k6v" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/cp" android:layout_marginRight="@dimen/cb" android:singleLine="true" android:layout_weight="1.0" />
+        </LinearLayout>
+        <Button android:enabled="false" android:layout_gravity="center_horizontal" android:id="@id/g3k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cl" android:layout_marginBottom="@dimen/cl" android:text="@string/vl" style="@style/ov" />
+    </com.tencent.mm.ui.widget.InputPanelLinearLayout>
+</LinearLayout>

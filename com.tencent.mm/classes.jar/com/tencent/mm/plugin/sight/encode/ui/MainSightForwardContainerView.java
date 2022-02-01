@@ -10,9 +10,11 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -22,11 +24,13 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.a;
+import com.tencent.mm.R.l;
 import com.tencent.mm.compatible.b.k;
-import com.tencent.mm.g.a.uw;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sight.base.e;
+import com.tencent.mm.f.a.wa;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.plugin.aq.a.h;
+import com.tencent.mm.plugin.sight.base.f;
 import com.tencent.mm.plugin.sight.encode.a.b.3;
 import com.tencent.mm.plugin.sight.encode.a.b.4;
 import com.tencent.mm.plugin.sight.encode.a.b.a;
@@ -38,7 +42,7 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMFragmentActivity;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -49,29 +53,29 @@ public class MainSightForwardContainerView
   extends RelativeLayout
   implements AdapterView.OnItemClickListener, a
 {
-  private boolean DpA;
-  private MediaPlayer DpB;
-  public MainSightSelectContactView Dpj;
-  public SightCameraView Dpk;
-  private b Dpl;
-  public View Dpm;
-  public View Dpn;
-  public View Dpo;
-  private Dialog Dpp;
-  private boolean Dpq;
-  public String Dpr;
-  private boolean Dps;
-  public String Dpt;
-  public float Dpu;
-  private com.tencent.mm.plugin.sight.encode.a.b Dpv;
-  private boolean Dpw;
-  public MMFragmentActivity Dpx;
-  private boolean Dpy;
-  private IListener Dpz;
-  private int atU;
-  private boolean gNC;
+  public View EKB;
+  public MainSightSelectContactView JuO;
+  public SightCameraView JuP;
+  private b JuQ;
+  public View JuR;
+  public View JuS;
+  public View JuT;
+  private Dialog JuU;
+  private boolean JuV;
+  public String JuW;
+  private boolean JuX;
+  public String JuY;
+  public float JuZ;
+  private com.tencent.mm.plugin.sight.encode.a.b Jva;
+  private boolean Jvb;
+  public MMFragmentActivity Jvc;
+  private boolean Jvd;
+  private IListener Jve;
+  private boolean Jvf;
+  private MediaPlayer Jvg;
+  private int alM;
+  private boolean jxX;
   private boolean mIsPause;
-  public View zfy;
   
   public MainSightForwardContainerView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -82,97 +86,107 @@ public class MainSightForwardContainerView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(28713);
-    this.Dpp = null;
-    this.gNC = false;
-    this.Dpq = true;
-    this.Dpr = "";
-    this.Dps = false;
-    this.Dpt = "";
-    this.atU = 1;
-    this.Dpu = 1.0F;
+    this.JuU = null;
+    this.jxX = false;
+    this.JuV = true;
+    this.JuW = "";
+    this.JuX = false;
+    this.JuY = "";
+    this.alM = 1;
+    this.JuZ = 1.0F;
     this.mIsPause = false;
-    this.Dpv = new com.tencent.mm.plugin.sight.encode.a.b();
-    this.Dpw = false;
-    this.Dpy = false;
-    this.Dpz = new IListener() {};
-    this.DpA = false;
+    this.Jva = new com.tencent.mm.plugin.sight.encode.a.b();
+    this.Jvb = false;
+    this.Jvd = false;
+    this.Jve = new IListener() {};
+    this.Jvf = false;
     AppMethodBeat.o(28713);
   }
   
-  public final boolean Zx()
+  public final boolean aeg()
   {
-    return !this.Dpq;
+    return !this.JuV;
   }
   
-  public final void eWb()
+  public final void fJe()
   {
     AppMethodBeat.i(28727);
-    this.Dpk.setVisibility(0);
-    uI(true);
+    this.JuP.setVisibility(0);
+    yg(true);
     AppMethodBeat.o(28727);
   }
   
-  public final void eWc()
+  public final void fJf()
   {
     AppMethodBeat.i(28728);
-    this.Dpk.setVisibility(4);
-    uI(false);
+    this.JuP.setVisibility(4);
+    yg(false);
     AppMethodBeat.o(28728);
   }
   
-  public final void eWd()
+  public final void fJg()
   {
     boolean bool1 = true;
     AppMethodBeat.i(28715);
-    Log.i("MicroMsg.MainSightContainerView", "toggle play video, path %s, mute %B, playing %B", new Object[] { this.Dpt, Boolean.valueOf(this.Dpq), Boolean.valueOf(this.gNC) });
-    if (!this.Dpk.isPlaying()) {
-      this.Dpq = true;
+    Log.i("MicroMsg.MainSightContainerView", "toggle play video, path %s, mute %B, playing %B", new Object[] { this.JuY, Boolean.valueOf(this.JuV), Boolean.valueOf(this.jxX) });
+    if (!this.JuP.isPlaying()) {
+      this.JuV = true;
     }
-    boolean bool2 = this.Dpq;
-    this.Dpk.ce(this.Dpt, bool2);
-    if (!this.Dpq)
+    boolean bool2 = this.JuV;
+    this.JuP.cn(this.JuY, bool2);
+    if (!this.JuV)
     {
-      uI(false);
-      this.gNC = true;
-      if (this.Dpq) {
+      yg(false);
+      this.jxX = true;
+      if (this.JuV) {
         break label122;
       }
     }
     for (;;)
     {
-      this.Dpq = bool1;
+      this.JuV = bool1;
       AppMethodBeat.o(28715);
       return;
-      uI(true);
+      yg(true);
       break;
       label122:
       bool1 = false;
     }
   }
   
-  public final void eWe()
+  public final void fJh()
   {
     AppMethodBeat.i(28725);
-    this.Dpo.setVisibility(8);
+    this.JuT.setVisibility(8);
     AppMethodBeat.o(28725);
   }
   
-  public final void eWg()
+  public final void fJj()
   {
     AppMethodBeat.i(28720);
-    if (this.Dpp == null) {}
+    if (this.JuU == null) {}
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.MainSightContainerView", "do send to friend, loadingDialog null %B", new Object[] { Boolean.valueOf(bool) });
-      if ((!Util.isNullOrNil(this.Dpt)) && (!this.Dpj.eWp())) {
+      if ((!Util.isNullOrNil(this.JuY)) && (!this.JuO.fJs())) {
         break;
       }
       AppMethodBeat.o(28720);
       return;
     }
-    Object localObject1 = this.Dpj.getSelectedContact();
-    com.tencent.mm.plugin.report.service.h.CyF.a(11443, new Object[] { Integer.valueOf(1), Integer.valueOf(3), Integer.valueOf(((List)localObject1).size()) });
-    Object localObject2 = new MainSightForwardContainerView.6(this, (List)localObject1);
+    Object localObject1 = this.JuO.getSelectedContact();
+    com.tencent.mm.plugin.report.service.h.IzE.a(11443, new Object[] { Integer.valueOf(1), Integer.valueOf(3), Integer.valueOf(((List)localObject1).size()) });
+    Object localObject2 = new b.a()
+    {
+      public final void kv(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(28711);
+        if ((this.Jvj.size() <= 1) || (-1 == paramAnonymousInt)) {
+          com.tencent.mm.ui.base.h.cO(MainSightForwardContainerView.this.getContext(), MainSightForwardContainerView.this.getContext().getString(R.l.sendrequest_send_fail));
+        }
+        AppMethodBeat.o(28711);
+      }
+    };
     com.tencent.mm.plugin.sight.encode.a.b localb;
     String str1;
     int i;
@@ -180,47 +194,57 @@ public class MainSightForwardContainerView
     String str3;
     if (((List)localObject1).size() == 1)
     {
-      localb = this.Dpv;
-      str1 = this.Dpt;
-      i = this.atU;
-      str2 = this.Dpr;
+      localb = this.Jva;
+      str1 = this.JuY;
+      i = this.alM;
+      str2 = this.JuW;
       str3 = (String)((List)localObject1).get(0);
       if (Util.isNullOrNil(str1))
       {
         Log.w("MicroMsg.SightRecorderHelper", "remux and send sight error: in path is null");
         com.tencent.mm.plugin.sight.encode.a.b.a((b.a)localObject2, -1);
-        if ((this.Dpj.getSelectedContact().size() > 1) || (this.Dpl == null)) {
-          break label873;
+        if ((this.JuO.getSelectedContact().size() > 1) || (this.JuQ == null)) {
+          break label874;
         }
-        localObject2 = (String)this.Dpj.getSelectedContact().get(0);
-        this.Dpl.startChattingUI((String)localObject2);
+        localObject2 = (String)this.JuO.getSelectedContact().get(0);
+        this.JuQ.startChattingUI((String)localObject2);
       }
     }
-    label873:
+    label874:
     for (bool = false;; bool = true) {
       for (;;)
       {
-        if (this.Dpx != null) {
-          localObject2 = this.Dpx.getAssets();
+        if (this.Jvc != null) {
+          localObject2 = this.Jvc.getAssets();
         }
         try
         {
           localObject2 = ((AssetManager)localObject2).openFd("sight_send_song.wav");
-          this.DpB = new k();
-          this.DpB.setDataSource(((AssetFileDescriptor)localObject2).getFileDescriptor(), ((AssetFileDescriptor)localObject2).getStartOffset(), ((AssetFileDescriptor)localObject2).getLength());
+          this.Jvg = new k();
+          this.Jvg.setDataSource(((AssetFileDescriptor)localObject2).getFileDescriptor(), ((AssetFileDescriptor)localObject2).getStartOffset(), ((AssetFileDescriptor)localObject2).getLength());
           ((AssetFileDescriptor)localObject2).close();
-          this.DpB.setOnCompletionListener(new MainSightForwardContainerView.7(this));
-          this.DpB.setLooping(false);
-          this.DpB.prepare();
-          this.DpB.start();
-          rX(bool);
+          this.Jvg.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
+          {
+            public final void onCompletion(MediaPlayer paramAnonymousMediaPlayer)
+            {
+              AppMethodBeat.i(28712);
+              if (paramAnonymousMediaPlayer != null) {
+                paramAnonymousMediaPlayer.release();
+              }
+              AppMethodBeat.o(28712);
+            }
+          });
+          this.Jvg.setLooping(false);
+          this.Jvg.prepare();
+          this.Jvg.start();
+          ic(bool);
           localObject1 = ((List)localObject1).iterator();
           for (;;)
           {
             if (((Iterator)localObject1).hasNext()) {
               if (((String)((Iterator)localObject1).next()).toLowerCase().endsWith("@chatroom"))
               {
-                com.tencent.mm.plugin.report.service.h.CyF.a(11442, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
+                com.tencent.mm.plugin.report.service.h.IzE.a(11442, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
                 continue;
                 if (Util.isNullOrNil(str3))
                 {
@@ -228,13 +252,13 @@ public class MainSightForwardContainerView
                   com.tencent.mm.plugin.sight.encode.a.b.a((b.a)localObject2, -1);
                   break;
                 }
-                if ((!s.YS(str1)) || (s.boW(str1) <= 0L))
+                if ((!u.agG(str1)) || (u.bBQ(str1) <= 0L))
                 {
                   Log.w("MicroMsg.SightRecorderHelper", "file not exist or file size error");
-                  com.tencent.mm.ui.base.h.cD(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(2131765853));
+                  com.tencent.mm.ui.base.h.cO(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(a.h.short_video_input_file_error));
                   break;
                 }
-                String str4 = s.bhK(str1);
+                String str4 = u.buc(str1);
                 Log.i("MicroMsg.SightRecorderHelper", "do share to friends, check md5 target[%s] current[%s]", new Object[] { str2, str4 });
                 if (!Util.nullAs(str2, "").equals(str4))
                 {
@@ -242,17 +266,17 @@ public class MainSightForwardContainerView
                   com.tencent.mm.plugin.sight.encode.a.b.a((b.a)localObject2, -1);
                   break;
                 }
-                g.aAi();
-                if (g.aAk().postToWorker(new b.3(localb, str3, (b.a)localObject2, str1, i)) >= 0) {
+                com.tencent.mm.kernel.h.aHH();
+                if (com.tencent.mm.kernel.h.aHJ().postToWorker(new b.3(localb, str3, (b.a)localObject2, str1, i)) >= 0) {
                   break;
                 }
                 Log.e("MicroMsg.SightRecorderHelper", "post short video encoder error");
                 com.tencent.mm.plugin.sight.encode.a.b.a((b.a)localObject2, -1);
                 break;
-                localb = this.Dpv;
-                str1 = this.Dpt;
-                i = this.atU;
-                str2 = this.Dpr;
+                localb = this.Jva;
+                str1 = this.JuY;
+                i = this.alM;
+                str2 = this.JuW;
                 if (Util.isNullOrNil(str1))
                 {
                   Log.w("MicroMsg.SightRecorderHelper", "remux and send sight error: in path is null");
@@ -265,13 +289,13 @@ public class MainSightForwardContainerView
                   com.tencent.mm.plugin.sight.encode.a.b.a((b.a)localObject2, -1);
                   break;
                 }
-                if ((!s.YS(str1)) || (s.boW(str1) <= 0L))
+                if ((!u.agG(str1)) || (u.bBQ(str1) <= 0L))
                 {
                   Log.w("MicroMsg.SightRecorderHelper", "file not exist or file size error");
-                  com.tencent.mm.ui.base.h.cD(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(2131765853));
+                  com.tencent.mm.ui.base.h.cO(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(a.h.short_video_input_file_error));
                   break;
                 }
-                str3 = s.bhK(str1);
+                str3 = u.buc(str1);
                 Log.i("MicroMsg.SightRecorderHelper", "do share to friends, check md5 target[%s] current[%s]", new Object[] { str2, str3 });
                 if (!Util.nullAs(str2, "").equals(str3))
                 {
@@ -279,8 +303,8 @@ public class MainSightForwardContainerView
                   com.tencent.mm.plugin.sight.encode.a.b.a((b.a)localObject2, -1);
                   break;
                 }
-                g.aAi();
-                if (g.aAk().postToWorker(new b.4(localb, str1, (List)localObject1, str2, (b.a)localObject2, i)) >= 0) {
+                com.tencent.mm.kernel.h.aHH();
+                if (com.tencent.mm.kernel.h.aHJ().postToWorker(new b.4(localb, str1, (List)localObject1, str2, (b.a)localObject2, i)) >= 0) {
                   break;
                 }
                 Log.e("MicroMsg.SightRecorderHelper", "post short video encoder error");
@@ -295,7 +319,7 @@ public class MainSightForwardContainerView
           {
             Log.printErrStackTrace("MicroMsg.MainSightContainerView", localIOException, "", new Object[0]);
             continue;
-            com.tencent.mm.plugin.report.service.h.CyF.a(11442, new Object[] { Integer.valueOf(1), Integer.valueOf(1) });
+            com.tencent.mm.plugin.report.service.h.IzE.a(11442, new Object[] { Integer.valueOf(1), Integer.valueOf(1) });
           }
           AppMethodBeat.o(28720);
           return;
@@ -318,45 +342,83 @@ public class MainSightForwardContainerView
     return i;
   }
   
+  public final void ic(boolean paramBoolean)
+  {
+    AppMethodBeat.i(28717);
+    if (this.JuX)
+    {
+      AppMethodBeat.o(28717);
+      return;
+    }
+    this.JuX = true;
+    Util.hideVKB(this);
+    this.jxX = false;
+    this.JuV = true;
+    Log.d("MicroMsg.MainSightContainerView", "dismiss sight view");
+    this.Jvd = false;
+    this.JuP.fJt();
+    if ((this.JuQ != null) && (paramBoolean)) {
+      this.JuQ.fJi();
+    }
+    if (this.JuO != null)
+    {
+      MainSightSelectContactView localMainSightSelectContactView = this.JuO;
+      localMainSightSelectContactView.JuX = true;
+      Util.hideVKB(localMainSightSelectContactView);
+      localMainSightSelectContactView.JvB.fJo();
+      localMainSightSelectContactView.JvL.clear();
+      localMainSightSelectContactView.JvK.clear();
+      localMainSightSelectContactView.mListView.setAdapter(null);
+      localMainSightSelectContactView.mListView.clearAnimation();
+      localMainSightSelectContactView.setVisibility(8);
+    }
+    setCameraShadowAlpha(0.85F);
+    fJh();
+    yg(false);
+    this.JuW = "";
+    removeListener();
+    AppMethodBeat.o(28717);
+  }
+  
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     AppMethodBeat.i(28719);
     Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject1).bm(paramAdapterView);
-    ((com.tencent.mm.hellhoundlib.b.b)localObject1).bm(paramView);
-    ((com.tencent.mm.hellhoundlib.b.b)localObject1).pH(paramInt);
-    ((com.tencent.mm.hellhoundlib.b.b)localObject1).zo(paramLong);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sight/encode/ui/MainSightForwardContainerView", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).axR());
+    ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramAdapterView);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramView);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject1).sg(paramInt);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject1).Fs(paramLong);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sight/encode/ui/MainSightForwardContainerView", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aFi());
     paramInt -= 1;
-    if ((MainSightSelectContactView.XI(paramInt)) && (this.gNC))
+    if ((MainSightSelectContactView.aeH(paramInt)) && (this.jxX))
     {
-      eWd();
+      fJg();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sight/encode/ui/MainSightForwardContainerView", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
       AppMethodBeat.o(28719);
       return;
     }
-    if (c.aNA(this.Dpj.vg(paramInt)))
+    if (c.aYk(this.JuO.yk(paramInt)))
     {
-      this.Dpj.DpW.eWj();
+      this.JuO.JvB.fJm();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sight/encode/ui/MainSightForwardContainerView", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
       AppMethodBeat.o(28719);
       return;
     }
-    if (c.aNz(this.Dpj.vg(paramInt)))
+    if (c.aYj(this.JuO.yk(paramInt)))
     {
       String str;
       Object localObject2;
-      if (c.DpH)
+      if (c.Jvm)
       {
-        this.Dpy = true;
-        this.Dpk.eWq();
-        paramAdapterView = this.Dpx;
-        paramView = e.aFl(this.Dpt);
-        localObject1 = this.Dpt;
-        str = this.Dpr;
+        this.Jvd = true;
+        this.JuP.fJt();
+        paramAdapterView = this.Jvc;
+        paramView = f.aPv(this.JuY);
+        localObject1 = this.JuY;
+        str = this.JuW;
         Log.i("MicroMsg.SightRecorderHelper", "share video path %s, thumb path %s", new Object[] { localObject1, paramView });
-        if (!s.YS(paramView)) {
-          localObject2 = e.az((String)localObject1, 320, 240);
+        if (!u.agG(paramView)) {
+          localObject2 = f.aC((String)localObject1, 320, 240);
         }
       }
       try
@@ -370,10 +432,10 @@ public class MainSightForwardContainerView
         ((Intent)localObject2).putExtra("Ksnsupload_source", 0);
         ((Intent)localObject2).putExtra("KSnsPostManu", true);
         ((Intent)localObject2).putExtra("KTouchCameraTime", Util.nowSecond());
-        com.tencent.mm.br.c.b(paramAdapterView, "sns", ".ui.SightUploadUI", (Intent)localObject2, 5985);
-        if (this.DpA)
+        com.tencent.mm.by.c.b(paramAdapterView, "sns", ".ui.SightUploadUI", (Intent)localObject2, 5985);
+        if (this.Jvf)
         {
-          com.tencent.mm.plugin.report.service.h.CyF.a(11442, new Object[] { Integer.valueOf(3), Integer.valueOf(3) });
+          com.tencent.mm.plugin.report.service.h.IzE.a(11442, new Object[] { Integer.valueOf(3), Integer.valueOf(3) });
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sight/encode/ui/MainSightForwardContainerView", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(28719);
           return;
@@ -386,28 +448,28 @@ public class MainSightForwardContainerView
           Log.printErrStackTrace("MicroMsg.SightRecorderHelper", localException, "", new Object[0]);
           Log.e("MicroMsg.SightRecorderHelper", "save bitmap to image error");
           continue;
-          com.tencent.mm.plugin.report.service.h.CyF.a(11442, new Object[] { Integer.valueOf(1), Integer.valueOf(3) });
+          com.tencent.mm.plugin.report.service.h.IzE.a(11442, new Object[] { Integer.valueOf(1), Integer.valueOf(3) });
         }
       }
     }
     Log.d("MicroMsg.MainSightContainerView", "on item click Item : %d", new Object[] { Integer.valueOf(paramInt) });
-    paramAdapterView = this.Dpj;
+    paramAdapterView = this.JuO;
     label544:
     boolean bool;
-    if ((paramInt < 0) || (paramInt > paramAdapterView.DpY.getCount()))
+    if ((paramInt < 0) || (paramInt > paramAdapterView.JvD.getCount()))
     {
-      paramAdapterView = this.Dpj;
-      if (paramAdapterView.DpY != null) {
-        paramAdapterView.DpY.notifyDataSetChanged();
+      paramAdapterView = this.JuO;
+      if (paramAdapterView.JvD != null) {
+        paramAdapterView.JvD.notifyDataSetChanged();
       }
-      if (Zx()) {
+      if (aeg()) {
         break label714;
       }
-      eWd();
-      if (this.Dpj.DpW.eWi())
+      fJg();
+      if (this.JuO.JvB.fJl())
       {
-        paramAdapterView = this.Dpj;
-        if (paramAdapterView.DpY.anH(paramInt) != null) {
+        paramAdapterView = this.JuO;
+        if (paramAdapterView.JvD.awM(paramInt) != null) {
           break label801;
         }
         bool = false;
@@ -416,53 +478,53 @@ public class MainSightForwardContainerView
     for (;;)
     {
       if (bool) {
-        this.Dpj.DpW.eWj();
+        this.JuO.JvB.fJm();
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sight/encode/ui/MainSightForwardContainerView", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
       AppMethodBeat.o(28719);
       return;
-      paramView = paramAdapterView.DpY.anH(paramInt);
+      paramView = paramAdapterView.JvD.awM(paramInt);
       if (paramView == null) {
         break;
       }
-      if (paramAdapterView.Dqg.contains(paramView.contact.field_username))
+      if (paramAdapterView.JvL.contains(paramView.contact.field_username))
       {
-        paramAdapterView.Dqg.remove(paramView.contact.field_username);
+        paramAdapterView.JvL.remove(paramView.contact.field_username);
         label659:
-        c.DpH = paramAdapterView.Dqg.isEmpty();
-        if (paramAdapterView.Dqg.isEmpty()) {
+        c.Jvm = paramAdapterView.JvL.isEmpty();
+        if (paramAdapterView.JvL.isEmpty()) {
           break label708;
         }
       }
       label708:
       for (bool = true;; bool = false)
       {
-        c.DpI = bool;
+        c.Jvn = bool;
         break;
-        paramAdapterView.Dqg.add(paramView.contact.field_username);
+        paramAdapterView.JvL.add(paramView.contact.field_username);
         break label659;
       }
       label714:
-      if (this.Dpj.eWp())
+      if (this.JuO.fJs())
       {
-        if (this.zfy.getVisibility() != 0) {
+        if (this.EKB.getVisibility() != 0) {
           break label544;
         }
-        this.zfy.setVisibility(8);
-        this.zfy.startAnimation(AnimationUtils.loadAnimation(this.Dpx, 2130772060));
+        this.EKB.setVisibility(8);
+        this.EKB.startAnimation(AnimationUtils.loadAnimation(this.Jvc, R.a.fast_faded_out));
         break label544;
       }
-      if (this.zfy.getVisibility() == 0) {
+      if (this.EKB.getVisibility() == 0) {
         break label544;
       }
-      this.zfy.setVisibility(0);
-      this.zfy.startAnimation(AnimationUtils.loadAnimation(this.Dpx, 2130772059));
+      this.EKB.setVisibility(0);
+      this.EKB.startAnimation(AnimationUtils.loadAnimation(this.Jvc, R.a.fast_faded_in));
       break label544;
       label801:
-      if (paramAdapterView.DpY.anH(paramInt).contact == null) {
+      if (paramAdapterView.JvD.awM(paramInt).contact == null) {
         bool = false;
       } else {
-        bool = paramAdapterView.Dqg.contains(paramAdapterView.DpY.anH(paramInt).contact.field_username);
+        bool = paramAdapterView.JvL.contains(paramAdapterView.JvD.awM(paramInt).contact.field_username);
       }
     }
   }
@@ -471,10 +533,10 @@ public class MainSightForwardContainerView
   {
     AppMethodBeat.i(28723);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((paramBoolean) && (!this.Dps) && (this.Dpj != null))
+    if ((paramBoolean) && (!this.JuX) && (this.JuO != null))
     {
       Log.d("MicroMsg.MainSightContainerView", "change size l: %d, t: %d, r: %d, b: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-      this.Dpj.eWo();
+      this.JuO.fJr();
     }
     AppMethodBeat.o(28723);
   }
@@ -482,14 +544,14 @@ public class MainSightForwardContainerView
   public final void onPause()
   {
     AppMethodBeat.i(28721);
-    if (this.Dpy)
+    if (this.Jvd)
     {
       AppMethodBeat.o(28721);
       return;
     }
-    this.Dpk.setVisibility(0);
-    uI(false);
-    this.Dpk.eWq();
+    this.JuP.setVisibility(0);
+    yg(false);
+    this.JuP.fJt();
     this.mIsPause = true;
     AppMethodBeat.o(28721);
   }
@@ -498,20 +560,20 @@ public class MainSightForwardContainerView
   {
     AppMethodBeat.i(28722);
     int i;
-    if (!this.Dps)
+    if (!this.JuX)
     {
       i = 1;
       if (i == 0) {
         break label69;
       }
-      EventCenter.instance.removeListener(this.Dpz);
-      EventCenter.instance.addListener(this.Dpz);
+      EventCenter.instance.removeListener(this.Jve);
+      EventCenter.instance.addListener(this.Jve);
     }
     for (;;)
     {
       if (this.mIsPause)
       {
-        eWd();
+        fJg();
         this.mIsPause = false;
       }
       AppMethodBeat.o(28722);
@@ -523,48 +585,10 @@ public class MainSightForwardContainerView
     }
   }
   
-  public final void rX(boolean paramBoolean)
-  {
-    AppMethodBeat.i(28717);
-    if (this.Dps)
-    {
-      AppMethodBeat.o(28717);
-      return;
-    }
-    this.Dps = true;
-    Util.hideVKB(this);
-    this.gNC = false;
-    this.Dpq = true;
-    Log.d("MicroMsg.MainSightContainerView", "dismiss sight view");
-    this.Dpy = false;
-    this.Dpk.eWq();
-    if ((this.Dpl != null) && (paramBoolean)) {
-      this.Dpl.eWf();
-    }
-    if (this.Dpj != null)
-    {
-      MainSightSelectContactView localMainSightSelectContactView = this.Dpj;
-      localMainSightSelectContactView.Dps = true;
-      Util.hideVKB(localMainSightSelectContactView);
-      localMainSightSelectContactView.DpW.eWl();
-      localMainSightSelectContactView.Dqg.clear();
-      localMainSightSelectContactView.Dqf.clear();
-      localMainSightSelectContactView.mListView.setAdapter(null);
-      localMainSightSelectContactView.mListView.clearAnimation();
-      localMainSightSelectContactView.setVisibility(8);
-    }
-    setCameraShadowAlpha(0.85F);
-    eWe();
-    uI(false);
-    this.Dpr = "";
-    removeListener();
-    AppMethodBeat.o(28717);
-  }
-  
   public final void removeListener()
   {
     AppMethodBeat.i(28714);
-    EventCenter.instance.removeListener(this.Dpz);
+    EventCenter.instance.removeListener(this.Jve);
     AppMethodBeat.o(28714);
   }
   
@@ -573,8 +597,8 @@ public class MainSightForwardContainerView
   {
     AppMethodBeat.i(28724);
     paramFloat = Math.min(1.0F, Math.max(0.0F, paramFloat));
-    if (com.tencent.mm.compatible.util.d.oD(11)) {
-      this.Dpm.setAlpha(paramFloat);
+    if (com.tencent.mm.compatible.util.d.qV(11)) {
+      this.JuR.setAlpha(paramFloat);
     }
     for (;;)
     {
@@ -582,90 +606,90 @@ public class MainSightForwardContainerView
       if (paramFloat > 0.0F) {
         break;
       }
-      this.Dpm.setVisibility(8);
+      this.JuR.setVisibility(8);
       AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
       localAlphaAnimation.setDuration(500L);
-      this.Dpm.startAnimation(localAlphaAnimation);
+      this.JuR.startAnimation(localAlphaAnimation);
       AppMethodBeat.o(28724);
       return;
       localAlphaAnimation = new AlphaAnimation(paramFloat, paramFloat);
       localAlphaAnimation.setDuration(0L);
       localAlphaAnimation.setFillAfter(true);
-      this.Dpm.startAnimation(localAlphaAnimation);
+      this.JuR.startAnimation(localAlphaAnimation);
     }
-    this.Dpm.setVisibility(0);
+    this.JuR.setVisibility(0);
     AppMethodBeat.o(28724);
   }
   
   public void setIMainSightViewCallback(b paramb)
   {
-    this.Dpl = paramb;
+    this.JuQ = paramb;
   }
   
   public void setIsForSns(boolean paramBoolean)
   {
-    this.DpA = paramBoolean;
+    this.Jvf = paramBoolean;
   }
   
   public void setIsMute(boolean paramBoolean)
   {
     AppMethodBeat.i(28716);
-    if (this.Dpk == null)
+    if (this.JuP == null)
     {
       AppMethodBeat.o(28716);
       return;
     }
-    this.Dpk.setIsMute(paramBoolean);
+    this.JuP.setIsMute(paramBoolean);
     AppMethodBeat.o(28716);
   }
   
-  public final void uH(boolean paramBoolean)
+  public final void yf(boolean paramBoolean)
   {
     AppMethodBeat.i(28726);
     if (paramBoolean)
     {
-      this.Dpo.setVisibility(0);
+      this.JuT.setVisibility(0);
       setIsMute(true);
       AppMethodBeat.o(28726);
       return;
     }
-    eWe();
-    setIsMute(Zx());
+    fJh();
+    setIsMute(aeg());
     AppMethodBeat.o(28726);
   }
   
-  public final void uI(boolean paramBoolean)
+  public final void yg(boolean paramBoolean)
   {
     AppMethodBeat.i(28718);
-    if (this.Dpw == paramBoolean)
+    if (this.Jvb == paramBoolean)
     {
       AppMethodBeat.o(28718);
       return;
     }
-    this.Dpw = paramBoolean;
+    this.Jvb = paramBoolean;
     if (paramBoolean)
     {
-      if (this.Dpn.getVisibility() == 0)
+      if (this.JuS.getVisibility() == 0)
       {
         AppMethodBeat.o(28718);
         return;
       }
-      this.Dpk.postDelayed(new Runnable()
+      this.JuP.postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(28708);
-          if ((!MainSightForwardContainerView.b(MainSightForwardContainerView.this)) || ((MainSightForwardContainerView.a(MainSightForwardContainerView.this) != null) && (MainSightForwardContainerView.a(MainSightForwardContainerView.this).DpW.eWi())))
+          if ((!MainSightForwardContainerView.b(MainSightForwardContainerView.this)) || ((MainSightForwardContainerView.a(MainSightForwardContainerView.this) != null) && (MainSightForwardContainerView.a(MainSightForwardContainerView.this).JvB.fJl())))
           {
             MainSightForwardContainerView.c(MainSightForwardContainerView.this);
             AppMethodBeat.o(28708);
             return;
           }
           MainSightForwardContainerView.d(MainSightForwardContainerView.this).setVisibility(0);
-          if ((MainSightForwardContainerView.a(MainSightForwardContainerView.this) != null) && (!MainSightForwardContainerView.a(MainSightForwardContainerView.this).eWp()) && (MainSightForwardContainerView.e(MainSightForwardContainerView.this).getVisibility() != 0))
+          if ((MainSightForwardContainerView.a(MainSightForwardContainerView.this) != null) && (!MainSightForwardContainerView.a(MainSightForwardContainerView.this).fJs()) && (MainSightForwardContainerView.e(MainSightForwardContainerView.this).getVisibility() != 0))
           {
             MainSightForwardContainerView.e(MainSightForwardContainerView.this).setVisibility(0);
-            MainSightForwardContainerView.e(MainSightForwardContainerView.this).startAnimation(AnimationUtils.loadAnimation(MainSightForwardContainerView.f(MainSightForwardContainerView.this), 2130772059));
+            MainSightForwardContainerView.e(MainSightForwardContainerView.this).startAnimation(AnimationUtils.loadAnimation(MainSightForwardContainerView.f(MainSightForwardContainerView.this), R.a.fast_faded_in));
           }
           AppMethodBeat.o(28708);
         }
@@ -673,14 +697,14 @@ public class MainSightForwardContainerView
       AppMethodBeat.o(28718);
       return;
     }
-    this.Dpn.setVisibility(8);
-    this.zfy.setVisibility(8);
+    this.JuS.setVisibility(8);
+    this.EKB.setVisibility(8);
     AppMethodBeat.o(28718);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.encode.ui.MainSightForwardContainerView
  * JD-Core Version:    0.7.0.1
  */

@@ -124,7 +124,7 @@ public class face_loading
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.face_loading
  * JD-Core Version:    0.7.0.1
  */

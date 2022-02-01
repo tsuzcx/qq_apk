@@ -1,71 +1,70 @@
 package com.tencent.mm.ad;
 
-import android.app.Activity;
-import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Field;
+import java.util.Iterator;
 
-public final class c
-  implements Application.ActivityLifecycleCallbacks
+public abstract interface c
 {
-  private Application application;
+  public abstract a MA(String paramString);
   
-  private c(Application paramApplication)
-  {
-    this.application = paramApplication;
-  }
+  public abstract a MB(String paramString);
   
-  public static void g(Application paramApplication)
-  {
-    AppMethodBeat.i(125088);
-    if ((Build.MANUFACTURER.equals("samsung")) && (Build.VERSION.SDK_INT >= 19) && (Build.VERSION.SDK_INT <= 24)) {
-      paramApplication.registerActivityLifecycleCallbacks(new c(paramApplication));
-    }
-    AppMethodBeat.o(125088);
-  }
+  public abstract c MC(String paramString);
   
-  public final void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  public abstract c MD(String paramString);
   
-  public final void onActivityDestroyed(Activity paramActivity)
-  {
-    AppMethodBeat.i(125089);
-    try
-    {
-      paramActivity = Class.forName("com.samsung.android.emergencymode.SemEmergencyManager");
-      Object localObject = paramActivity.getDeclaredField("sInstance");
-      ((Field)localObject).setAccessible(true);
-      localObject = ((Field)localObject).get(null);
-      paramActivity = paramActivity.getDeclaredField("mContext");
-      paramActivity.setAccessible(true);
-      paramActivity.set(localObject, this.application);
-      label50:
-      this.application.unregisterActivityLifecycleCallbacks(this);
-      AppMethodBeat.o(125089);
-      return;
-    }
-    catch (Exception paramActivity)
-    {
-      break label50;
-    }
-  }
+  public abstract String Mz(String paramString);
   
-  public final void onActivityPaused(Activity paramActivity) {}
+  public abstract c ak(String paramString, int paramInt);
   
-  public final void onActivityResumed(Activity paramActivity) {}
+  public abstract c c(String paramString, double paramDouble);
   
-  public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  public abstract c e(String paramString, Object paramObject);
   
-  public final void onActivityStarted(Activity paramActivity) {}
+  public abstract c f(String paramString, Object paramObject);
   
-  public final void onActivityStopped(Activity paramActivity) {}
+  public abstract Object get(String paramString);
+  
+  public abstract boolean getBoolean(String paramString);
+  
+  public abstract double getDouble(String paramString);
+  
+  public abstract int getInt(String paramString);
+  
+  public abstract long getLong(String paramString);
+  
+  public abstract String getString(String paramString);
+  
+  public abstract boolean has(String paramString);
+  
+  public abstract boolean isNull(String paramString);
+  
+  public abstract Iterator<String> keys();
+  
+  public abstract int length();
+  
+  public abstract Object opt(String paramString);
+  
+  public abstract boolean optBoolean(String paramString, boolean paramBoolean);
+  
+  public abstract double optDouble(String paramString, double paramDouble);
+  
+  public abstract int optInt(String paramString, int paramInt);
+  
+  public abstract long optLong(String paramString, long paramLong);
+  
+  public abstract String optString(String paramString);
+  
+  public abstract String optString(String paramString1, String paramString2);
+  
+  public abstract c r(String paramString, long paramLong);
+  
+  public abstract Object remove(String paramString);
+  
+  public abstract c x(String paramString, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ad.c
  * JD-Core Version:    0.7.0.1
  */

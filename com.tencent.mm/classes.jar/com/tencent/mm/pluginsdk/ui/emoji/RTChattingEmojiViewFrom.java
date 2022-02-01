@@ -27,13 +27,13 @@ public class RTChattingEmojiViewFrom
   {
     AppMethodBeat.i(104740);
     super.initView();
-    grD();
+    hmC();
     AppMethodBeat.o(104740);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.emoji.RTChattingEmojiViewFrom
  * JD-Core Version:    0.7.0.1
  */

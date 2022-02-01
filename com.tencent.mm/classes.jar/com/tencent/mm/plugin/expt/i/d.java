@@ -31,7 +31,7 @@ public final class d
     this.db = paramISQLiteDatabase;
   }
   
-  private boolean HE(int paramInt)
+  private boolean Lo(int paramInt)
   {
     AppMethodBeat.i(122464);
     try
@@ -81,7 +81,7 @@ public final class d
   }
   
   /* Error */
-  public final c HD(int paramInt)
+  public final c Ln(int paramInt)
   {
     // Byte code:
     //   0: ldc 104
@@ -207,7 +207,101 @@ public final class d
     //   64	69	174	java/lang/Exception
   }
   
-  public final int cRZ()
+  public final int dB(List<Integer> paramList)
+  {
+    long l = -1L;
+    int i = 0;
+    AppMethodBeat.i(122467);
+    if ((paramList == null) || (paramList.size() <= 0))
+    {
+      AppMethodBeat.o(122467);
+      return 0;
+    }
+    h localh;
+    if ((this.db instanceof h))
+    {
+      localh = (h)this.db;
+      l = localh.beginTransaction(-1L);
+    }
+    for (;;)
+    {
+      try
+      {
+        paramList = paramList.iterator();
+        if (paramList.hasNext())
+        {
+          boolean bool = Lo(((Integer)paramList.next()).intValue());
+          if (bool)
+          {
+            i += 1;
+            continue;
+          }
+          continue;
+        }
+        return i;
+      }
+      finally
+      {
+        if (localh != null) {
+          localh.endTransaction(l);
+        }
+        AppMethodBeat.o(122467);
+      }
+      localh = null;
+    }
+  }
+  
+  public final List<c> dH(List<c> paramList)
+  {
+    long l = -1L;
+    AppMethodBeat.i(122466);
+    if ((paramList == null) || (paramList.size() <= 0))
+    {
+      AppMethodBeat.o(122466);
+      return null;
+    }
+    h localh;
+    if ((this.db instanceof h))
+    {
+      localh = (h)this.db;
+      l = localh.beginTransaction(-1L);
+    }
+    for (;;)
+    {
+      LinkedList localLinkedList;
+      try
+      {
+        localLinkedList = new LinkedList();
+        paramList = paramList.iterator();
+        if (paramList.hasNext())
+        {
+          c localc = (c)paramList.next();
+          if (!a(localc)) {
+            continue;
+          }
+          localLinkedList.add(localc);
+          continue;
+        }
+        if (localh == null) {
+          break label147;
+        }
+      }
+      finally
+      {
+        if (localh != null) {
+          localh.endTransaction(l);
+        }
+        AppMethodBeat.o(122466);
+      }
+      localh.endTransaction(l);
+      label147:
+      AppMethodBeat.o(122466);
+      return localLinkedList;
+      localh = null;
+    }
+  }
+  
+  public final int dgY()
   {
     int i = 0;
     AppMethodBeat.i(122468);
@@ -228,29 +322,29 @@ public final class d
   }
   
   /* Error */
-  public final List<c> cSc()
+  public final List<c> dhb()
   {
     // Byte code:
-    //   0: ldc 133
+    //   0: ldc 188
     //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: getfield 48	com/tencent/mm/plugin/expt/i/d:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   9: ldc 135
+    //   9: ldc 190
     //   11: aconst_null
-    //   12: invokeinterface 139 3 0
+    //   12: invokeinterface 194 3 0
     //   17: astore_2
     //   18: aload_2
     //   19: ifnull +183 -> 202
     //   22: aload_2
     //   23: astore_3
-    //   24: new 141	java/util/LinkedList
+    //   24: new 173	java/util/LinkedList
     //   27: dup
-    //   28: invokespecial 142	java/util/LinkedList:<init>	()V
+    //   28: invokespecial 174	java/util/LinkedList:<init>	()V
     //   31: astore_1
     //   32: aload_2
     //   33: astore_3
     //   34: aload_2
-    //   35: invokeinterface 145 1 0
+    //   35: invokeinterface 197 1 0
     //   40: ifeq +80 -> 120
     //   43: aload_2
     //   44: astore_3
@@ -267,14 +361,14 @@ public final class d
     //   63: astore_3
     //   64: aload_1
     //   65: aload 4
-    //   67: invokeinterface 151 2 0
+    //   67: invokeinterface 180 2 0
     //   72: pop
     //   73: goto -41 -> 32
     //   76: astore 4
     //   78: aload_2
     //   79: astore_3
     //   80: ldc 67
-    //   82: ldc 153
+    //   82: ldc 199
     //   84: iconst_1
     //   85: anewarray 71	java/lang/Object
     //   88: dup
@@ -291,21 +385,21 @@ public final class d
     //   106: invokeinterface 123 1 0
     //   111: aload_1
     //   112: astore_3
-    //   113: ldc 133
+    //   113: ldc 188
     //   115: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   118: aload_3
     //   119: areturn
     //   120: aload_2
     //   121: astore_3
     //   122: ldc 67
-    //   124: ldc 155
+    //   124: ldc 201
     //   126: iconst_1
     //   127: anewarray 71	java/lang/Object
     //   130: dup
     //   131: iconst_0
     //   132: aload_1
-    //   133: invokeinterface 158 1 0
-    //   138: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   133: invokeinterface 136 1 0
+    //   138: invokestatic 204	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   141: aastore
     //   142: invokestatic 99	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   145: aload_1
@@ -324,7 +418,7 @@ public final class d
     //   166: ifnull +9 -> 175
     //   169: aload_3
     //   170: invokeinterface 123 1 0
-    //   175: ldc 133
+    //   175: ldc 188
     //   177: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   180: aload_1
     //   181: athrow
@@ -376,40 +470,40 @@ public final class d
   }
   
   /* Error */
-  public final java.util.ArrayList<Integer> cSd()
+  public final java.util.ArrayList<Integer> dhc()
   {
     // Byte code:
-    //   0: ldc 168
+    //   0: ldc 208
     //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: getfield 48	com/tencent/mm/plugin/expt/i/d:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   9: ldc 170
+    //   9: ldc 210
     //   11: aconst_null
-    //   12: invokeinterface 139 3 0
+    //   12: invokeinterface 194 3 0
     //   17: astore_2
     //   18: aload_2
     //   19: ifnull +96 -> 115
     //   22: aload_2
     //   23: astore_3
-    //   24: new 172	java/util/ArrayList
+    //   24: new 212	java/util/ArrayList
     //   27: dup
-    //   28: invokespecial 173	java/util/ArrayList:<init>	()V
+    //   28: invokespecial 213	java/util/ArrayList:<init>	()V
     //   31: astore 5
     //   33: aload 5
     //   35: astore_1
     //   36: aload_2
     //   37: astore_3
     //   38: aload_2
-    //   39: invokeinterface 145 1 0
+    //   39: invokeinterface 197 1 0
     //   44: ifeq +73 -> 117
     //   47: aload_2
     //   48: astore_3
     //   49: aload 5
     //   51: aload_2
     //   52: iconst_0
-    //   53: invokeinterface 177 2 0
-    //   58: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   61: invokevirtual 178	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   53: invokeinterface 217 2 0
+    //   58: invokestatic 204	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   61: invokevirtual 218	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   64: pop
     //   65: goto -32 -> 33
     //   68: astore 4
@@ -418,7 +512,7 @@ public final class d
     //   73: aload_2
     //   74: astore_3
     //   75: ldc 67
-    //   77: ldc 180
+    //   77: ldc 220
     //   79: iconst_1
     //   80: anewarray 71	java/lang/Object
     //   83: dup
@@ -435,7 +529,7 @@ public final class d
     //   101: invokeinterface 123 1 0
     //   106: aload_1
     //   107: astore_3
-    //   108: ldc 168
+    //   108: ldc 208
     //   110: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   113: aload_3
     //   114: areturn
@@ -457,7 +551,7 @@ public final class d
     //   138: ifnull +9 -> 147
     //   141: aload_3
     //   142: invokeinterface 123 1 0
-    //   147: ldc 168
+    //   147: ldc 208
     //   149: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   152: aload_1
     //   153: athrow
@@ -498,104 +592,10 @@ public final class d
     //   5	18	158	java/lang/Exception
     //   24	33	167	java/lang/Exception
   }
-  
-  public final List<c> dB(List<c> paramList)
-  {
-    long l = -1L;
-    AppMethodBeat.i(122466);
-    if ((paramList == null) || (paramList.size() <= 0))
-    {
-      AppMethodBeat.o(122466);
-      return null;
-    }
-    h localh;
-    if ((this.db instanceof h))
-    {
-      localh = (h)this.db;
-      l = localh.beginTransaction(-1L);
-    }
-    for (;;)
-    {
-      LinkedList localLinkedList;
-      try
-      {
-        localLinkedList = new LinkedList();
-        paramList = paramList.iterator();
-        if (paramList.hasNext())
-        {
-          c localc = (c)paramList.next();
-          if (!a(localc)) {
-            continue;
-          }
-          localLinkedList.add(localc);
-          continue;
-        }
-        if (localh == null) {
-          break label147;
-        }
-      }
-      finally
-      {
-        if (localh != null) {
-          localh.endTransaction(l);
-        }
-        AppMethodBeat.o(122466);
-      }
-      localh.endTransaction(l);
-      label147:
-      AppMethodBeat.o(122466);
-      return localLinkedList;
-      localh = null;
-    }
-  }
-  
-  public final int dv(List<Integer> paramList)
-  {
-    long l = -1L;
-    int i = 0;
-    AppMethodBeat.i(122467);
-    if ((paramList == null) || (paramList.size() <= 0))
-    {
-      AppMethodBeat.o(122467);
-      return 0;
-    }
-    h localh;
-    if ((this.db instanceof h))
-    {
-      localh = (h)this.db;
-      l = localh.beginTransaction(-1L);
-    }
-    for (;;)
-    {
-      try
-      {
-        paramList = paramList.iterator();
-        if (paramList.hasNext())
-        {
-          boolean bool = HE(((Integer)paramList.next()).intValue());
-          if (bool)
-          {
-            i += 1;
-            continue;
-          }
-          continue;
-        }
-        return i;
-      }
-      finally
-      {
-        if (localh != null) {
-          localh.endTransaction(l);
-        }
-        AppMethodBeat.o(122467);
-      }
-      localh = null;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.i.d
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,8 @@ public abstract interface KScrollView
   
   public abstract boolean getScrollToDimissKeyboardEnabled();
   
+  public abstract boolean getScrollWhenViewSizeEnough();
+  
   public abstract boolean getShowScrollBar();
   
   public abstract boolean getVertical();
@@ -25,13 +27,15 @@ public abstract interface KScrollView
   
   public abstract void setScrollToDimissKeyboardEnabled(boolean paramBoolean);
   
+  public abstract void setScrollWhenViewSizeEnough(boolean paramBoolean);
+  
   public abstract void setShowScrollBar(boolean paramBoolean);
   
   public abstract void setVertical(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.gen.KScrollView
  * JD-Core Version:    0.7.0.1
  */

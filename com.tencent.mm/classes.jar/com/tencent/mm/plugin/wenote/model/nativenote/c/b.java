@@ -4,59 +4,59 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public float deo = -1.0F;
-  public float dep = -1.0F;
-  public float qSd = -1.0F;
-  public float qSe = -1.0F;
-  public int qSf = -1;
-  public float qSg = -1.0F;
-  public float qSh = -1.0F;
-  public float qSi = -1.0F;
-  public float qSj = -1.0F;
-  public int qSk = -1;
-  public int qcr = 0;
+  public float dit = -1.0F;
+  public float diu = -1.0F;
+  public float uuj = -1.0F;
+  public float uuk = -1.0F;
+  public int uul = -1;
+  public float uum = -1.0F;
+  public float uun = -1.0F;
+  public float uuo = -1.0F;
+  public float uup = -1.0F;
+  public int uuq = -1;
+  public int viewType = 0;
   
-  private boolean cDR()
+  private boolean cSw()
   {
-    return (this.qSd >= 0.0F) && (this.qSe >= 0.0F) && (this.deo >= 0.0F) && (this.dep >= 0.0F) && (this.qSf >= 0);
+    return (this.uuj >= 0.0F) && (this.uuk >= 0.0F) && (this.dit >= 0.0F) && (this.diu >= 0.0F) && (this.uul >= 0);
   }
   
-  private boolean cDS()
+  private boolean cSx()
   {
-    return (this.qSg >= 0.0F) && (this.qSh >= 0.0F) && (this.qSi >= 0.0F) && (this.qSj >= 0.0F) && (this.qSk >= 0);
+    return (this.uum >= 0.0F) && (this.uun >= 0.0F) && (this.uuo >= 0.0F) && (this.uup >= 0.0F) && (this.uuq >= 0);
   }
   
   public final void a(int paramInt1, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt2)
   {
-    this.qcr = paramInt1;
-    this.qSd = paramFloat1;
-    this.qSe = paramFloat2;
-    this.deo = paramFloat3;
-    this.dep = paramFloat4;
-    if (this.qcr == 1)
+    this.viewType = paramInt1;
+    this.uuj = paramFloat1;
+    this.uuk = paramFloat2;
+    this.dit = paramFloat3;
+    this.diu = paramFloat4;
+    if (this.viewType == 1)
     {
-      this.qSf = paramInt2;
+      this.uul = paramInt2;
       return;
     }
-    this.qSf = 0;
+    this.uul = 0;
   }
   
   public final int getType()
   {
     AppMethodBeat.i(30548);
-    if (!cDR())
+    if (!cSw())
     {
       AppMethodBeat.o(30548);
       return 0;
     }
-    if (!cDS())
+    if (!cSx())
     {
       AppMethodBeat.o(30548);
       return 1;
     }
-    int i = Math.abs((int)(this.deo - this.qSi));
-    int j = Math.abs((int)(this.dep - this.qSj));
-    if ((i > 30) || (j > 30) || (this.qSf != this.qSk))
+    int i = Math.abs((int)(this.dit - this.uuo));
+    int j = Math.abs((int)(this.diu - this.uup));
+    if ((i > 30) || (j > 30) || (this.uul != this.uuq))
     {
       AppMethodBeat.o(30548);
       return 3;
@@ -67,22 +67,22 @@ public final class b
   
   public final void reset()
   {
-    this.qcr = 0;
-    this.qSd = -1.0F;
-    this.qSe = -1.0F;
-    this.deo = -1.0F;
-    this.dep = -1.0F;
-    this.qSf = -1;
-    this.qSg = -1.0F;
-    this.qSh = -1.0F;
-    this.qSi = -1.0F;
-    this.qSj = -1.0F;
-    this.qSk = -1;
+    this.viewType = 0;
+    this.uuj = -1.0F;
+    this.uuk = -1.0F;
+    this.dit = -1.0F;
+    this.diu = -1.0F;
+    this.uul = -1;
+    this.uum = -1.0F;
+    this.uun = -1.0F;
+    this.uuo = -1.0F;
+    this.uup = -1.0F;
+    this.uuq = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.c.b
  * JD-Core Version:    0.7.0.1
  */

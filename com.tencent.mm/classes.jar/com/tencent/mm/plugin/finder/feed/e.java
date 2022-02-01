@@ -6,128 +6,127 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.l;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.finder.b.f;
 import com.tencent.mm.plugin.finder.storage.FeedData;
 import com.tencent.mm.plugin.finder.view.manager.FinderAutoScrollLayoutManager;
-import com.tencent.mm.plugin.finder.viewmodel.FinderRecyclerViewPool;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
-import com.tencent.mm.plugin.i.a.ad;
+import com.tencent.mm.plugin.finder.viewmodel.component.aj;
+import com.tencent.mm.plugin.findersdk.a.ae;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.ui.component.g.a;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
-import kotlin.f;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback;", "", "parent", "Landroid/view/View;", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderBulletSubtitlePresenter;", "(Landroid/view/View;Lcom/tencent/mm/plugin/finder/feed/FinderBulletSubtitlePresenter;)V", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "getAdapter", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "setAdapter", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;)V", "bulletSubtitleLayout", "Landroid/widget/FrameLayout;", "bulletSubtitleRv", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "getBulletSubtitleRv", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "setBulletSubtitleRv", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerView;)V", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "getContext", "()Landroid/content/Context;", "context$delegate", "Lkotlin/Lazy;", "enterAnimator", "Landroid/animation/ValueAnimator;", "exitAnimator", "isEnterAnimRunning", "", "isFunctionTurnOn", "isPause", "()Z", "setPause", "(Z)V", "isStartLoop", "setStartLoop", "layoutManager", "Lcom/tencent/mm/plugin/finder/view/manager/FinderAutoScrollLayoutManager;", "needToRefresh", "restartRunnable", "Ljava/lang/Runnable;", "screenWidth", "", "getScreenWidth", "()I", "screenWidth$delegate", "checkAllAnimPause", "checkAllAnimResume", "getFunctionSwitch", "initView", "", "pause", "reset", "prepareForRestart", "resume", "showBulletSubtitleLayout", "isShow", "smoothScrollToLastPosition", "startLoop", "switchFunction", "isTurnOn", "needRefresh", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback;", "", "parent", "Landroid/view/View;", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderBulletSubtitlePresenter;", "(Landroid/view/View;Lcom/tencent/mm/plugin/finder/feed/FinderBulletSubtitlePresenter;)V", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "getAdapter", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "setAdapter", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;)V", "bulletSubtitleLayout", "Landroid/widget/FrameLayout;", "bulletSubtitleRv", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "getBulletSubtitleRv", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "setBulletSubtitleRv", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerView;)V", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "getContext", "()Landroid/content/Context;", "context$delegate", "Lkotlin/Lazy;", "enterAnimator", "Landroid/animation/ValueAnimator;", "exitAnimator", "isEnterAnimRunning", "", "isFunctionTurnOn", "isPause", "()Z", "setPause", "(Z)V", "isStartLoop", "setStartLoop", "layoutManager", "Lcom/tencent/mm/plugin/finder/view/manager/FinderAutoScrollLayoutManager;", "needToRefresh", "restartRunnable", "Ljava/lang/Runnable;", "screenWidth", "", "getScreenWidth", "()I", "screenWidth$delegate", "checkAllAnimPause", "checkAllAnimResume", "getFunctionSwitch", "initView", "", "pause", "reset", "prepareForRestart", "resume", "showBulletSubtitleLayout", "isShow", "smoothScrollToLastPosition", "startLoop", "switchFunction", "isTurnOn", "needRefresh", "plugin-finder_release"})
 public final class e
 {
-  boolean dLD;
-  final View hVd;
-  private final f tCY;
-  public WxRecyclerAdapter<?> tFp;
-  FrameLayout tMA;
-  private FinderAutoScrollLayoutManager tMB;
-  ValueAnimator tMC;
-  ValueAnimator tMD;
-  Runnable tME;
-  public boolean tMF;
-  private boolean tMG;
-  private boolean tMH;
-  boolean tMI;
-  private final d tMJ;
-  private final f tMy;
-  public WxRecyclerView tMz;
+  boolean fEs;
+  final View kJC;
+  private final kotlin.f xlu;
+  public WxRecyclerAdapter<?> xnR;
+  private final d xwA;
+  private final kotlin.f xwp;
+  public WxRecyclerView xwq;
+  FrameLayout xwr;
+  private FinderAutoScrollLayoutManager xws;
+  ValueAnimator xwt;
+  ValueAnimator xwu;
+  Runnable xwv;
+  public boolean xww;
+  private boolean xwx;
+  private boolean xwy;
+  boolean xwz;
   
   public e(View paramView, d paramd)
   {
-    AppMethodBeat.i(243741);
-    this.hVd = paramView;
-    this.tMJ = paramd;
-    this.tMy = kotlin.g.ah((kotlin.g.a.a)new a(this));
-    this.tCY = kotlin.g.ah((kotlin.g.a.a)new g(this));
-    this.tMG = true;
-    AppMethodBeat.o(243741);
+    AppMethodBeat.i(280256);
+    this.kJC = paramView;
+    this.xwA = paramd;
+    this.xwp = kotlin.g.ar((kotlin.g.a.a)new a(this));
+    this.xlu = kotlin.g.ar((kotlin.g.a.a)new g(this));
+    this.xwx = true;
+    AppMethodBeat.o(280256);
   }
   
   private final Context getContext()
   {
-    AppMethodBeat.i(243731);
-    Context localContext = (Context)this.tMy.getValue();
-    AppMethodBeat.o(243731);
+    AppMethodBeat.i(280244);
+    Context localContext = (Context)this.xwp.getValue();
+    AppMethodBeat.o(280244);
     return localContext;
   }
   
   private final int getScreenWidth()
   {
-    AppMethodBeat.i(243732);
-    int i = ((Number)this.tCY.getValue()).intValue();
-    AppMethodBeat.o(243732);
+    AppMethodBeat.i(280245);
+    int i = ((Number)this.xlu.getValue()).intValue();
+    AppMethodBeat.o(280245);
     return i;
   }
   
-  private final void mV(boolean paramBoolean)
+  private final void op(boolean paramBoolean)
   {
-    AppMethodBeat.i(243740);
+    AppMethodBeat.i(280255);
     if (paramBoolean)
     {
-      localFrameLayout = this.tMA;
+      localFrameLayout = this.xwr;
       if (localFrameLayout == null) {
-        p.btv("bulletSubtitleLayout");
+        p.bGy("bulletSubtitleLayout");
       }
       localFrameLayout.animate().cancel();
-      localFrameLayout = this.tMA;
+      localFrameLayout = this.xwr;
       if (localFrameLayout == null) {
-        p.btv("bulletSubtitleLayout");
+        p.bGy("bulletSubtitleLayout");
       }
       localFrameLayout.setAlpha(0.0F);
-      localFrameLayout = this.tMA;
+      localFrameLayout = this.xwr;
       if (localFrameLayout == null) {
-        p.btv("bulletSubtitleLayout");
+        p.bGy("bulletSubtitleLayout");
       }
       localFrameLayout.animate().alpha(1.0F).setDuration(300L).withStartAction((Runnable)new h(this)).start();
-      AppMethodBeat.o(243740);
+      AppMethodBeat.o(280255);
       return;
     }
-    FrameLayout localFrameLayout = this.tMA;
+    FrameLayout localFrameLayout = this.xwr;
     if (localFrameLayout == null) {
-      p.btv("bulletSubtitleLayout");
+      p.bGy("bulletSubtitleLayout");
     }
     localFrameLayout.animate().cancel();
-    localFrameLayout = this.tMA;
+    localFrameLayout = this.xwr;
     if (localFrameLayout == null) {
-      p.btv("bulletSubtitleLayout");
+      p.bGy("bulletSubtitleLayout");
     }
     localFrameLayout.setAlpha(1.0F);
-    localFrameLayout = this.tMA;
+    localFrameLayout = this.xwr;
     if (localFrameLayout == null) {
-      p.btv("bulletSubtitleLayout");
+      p.bGy("bulletSubtitleLayout");
     }
     localFrameLayout.setVisibility(8);
-    AppMethodBeat.o(243740);
+    AppMethodBeat.o(280255);
   }
   
-  public final void L(boolean paramBoolean1, boolean paramBoolean2)
+  public final void Q(boolean paramBoolean1, boolean paramBoolean2)
   {
     int i = 1;
-    AppMethodBeat.i(243735);
+    AppMethodBeat.i(280250);
     Object localObject;
     boolean bool;
     label59:
@@ -138,34 +137,34 @@ public final class e
     int j;
     if (paramBoolean1)
     {
-      localObject = com.tencent.mm.kernel.g.af(ad.class);
-      p.g(localObject, "MMKernel.service(IFinder…enModeConfig::class.java)");
-      if (!((ad)localObject).dxX())
+      localObject = h.ae(ae.class);
+      p.j(localObject, "MMKernel.service(IFinder…enModeConfig::class.java)");
+      if (!((ae)localObject).dYT())
       {
         bool = true;
-        this.tMG = bool;
-        if (!this.tMG) {
+        this.xwx = bool;
+        if (!this.xwx) {
           break label179;
         }
-        mV(true);
-        if ((!this.tMG) || (!paramBoolean2)) {
+        op(true);
+        if ((!this.xwx) || (!paramBoolean2)) {
           break label187;
         }
-        this.tMH = true;
+        this.xwy = true;
         startLoop();
         if (!paramBoolean2) {
           break label253;
         }
-        localObject = this.tMJ.feed;
+        localObject = this.xwA.feed;
         if (localObject == null) {
           break label253;
         }
         if (!paramBoolean1) {
           break label195;
         }
-        localc = com.tencent.mm.plugin.finder.report.c.vdc;
-        com.tencent.mm.plugin.finder.report.c.EX(((FeedData)localObject).getId());
-        localc = com.tencent.mm.plugin.finder.report.c.vdc;
+        localc = com.tencent.mm.plugin.finder.report.c.zTT;
+        com.tencent.mm.plugin.finder.report.c.Mh(((FeedData)localObject).getId());
+        localc = com.tencent.mm.plugin.finder.report.c.zTT;
         l = ((FeedData)localObject).getId();
         j = ((FeedData)localObject).getMediaType();
         if (!paramBoolean1) {
@@ -175,346 +174,346 @@ public final class e
     }
     for (;;)
     {
-      localObject = com.tencent.mm.ui.component.a.PRN;
+      localObject = com.tencent.mm.ui.component.g.Xox;
       localObject = getContext();
       if (localObject != null) {
         break label216;
       }
       localObject = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-      AppMethodBeat.o(243735);
+      AppMethodBeat.o(280250);
       throw ((Throwable)localObject);
       bool = false;
       break;
       label179:
-      mV(false);
+      op(false);
       break label59;
       label187:
       reset(false);
       break label79;
       label195:
-      localc = com.tencent.mm.plugin.finder.report.c.vdc;
-      com.tencent.mm.plugin.finder.report.c.EW(((FeedData)localObject).getId());
+      localc = com.tencent.mm.plugin.finder.report.c.zTT;
+      com.tencent.mm.plugin.finder.report.c.Mg(((FeedData)localObject).getId());
       break label114;
       label211:
       i = 2;
     }
     label216:
-    com.tencent.mm.plugin.finder.report.c.a(l, j, i, ((FinderReporterUIC)com.tencent.mm.ui.component.a.b((AppCompatActivity)localObject).get(FinderReporterUIC.class)).dIx());
-    AppMethodBeat.o(243735);
+    com.tencent.mm.plugin.finder.report.c.a(l, j, i, ((aj)com.tencent.mm.ui.component.g.b((AppCompatActivity)localObject).i(aj.class)).ekY());
+    AppMethodBeat.o(280250);
     return;
     label253:
-    AppMethodBeat.o(243735);
+    AppMethodBeat.o(280250);
   }
   
-  public final WxRecyclerView dcy()
+  public final WxRecyclerView dsO()
   {
-    AppMethodBeat.i(243733);
-    WxRecyclerView localWxRecyclerView = this.tMz;
+    AppMethodBeat.i(280246);
+    WxRecyclerView localWxRecyclerView = this.xwq;
     if (localWxRecyclerView == null) {
-      p.btv("bulletSubtitleRv");
+      p.bGy("bulletSubtitleRv");
     }
-    AppMethodBeat.o(243733);
+    AppMethodBeat.o(280246);
     return localWxRecyclerView;
   }
   
-  public final void dcz()
+  public final void dsP()
   {
-    AppMethodBeat.i(243739);
-    if ((this.dLD) || (!this.tMF) || (this.tMI))
+    AppMethodBeat.i(280254);
+    if ((this.fEs) || (!this.xww) || (this.xwz))
     {
-      AppMethodBeat.o(243739);
+      AppMethodBeat.o(280254);
       return;
     }
-    Object localObject1 = this.tMz;
+    Object localObject1 = this.xwq;
     if (localObject1 == null) {
-      p.btv("bulletSubtitleRv");
+      p.bGy("bulletSubtitleRv");
     }
     if (!((WxRecyclerView)localObject1).canScrollHorizontally(1))
     {
-      localObject1 = this.tMD;
+      localObject1 = this.xwu;
       if (localObject1 == null) {
-        p.btv("exitAnimator");
+        p.bGy("exitAnimator");
       }
       ((ValueAnimator)localObject1).start();
-      AppMethodBeat.o(243739);
+      AppMethodBeat.o(280254);
       return;
     }
-    localObject1 = this.tMz;
+    localObject1 = this.xwq;
     if (localObject1 == null) {
-      p.btv("bulletSubtitleRv");
+      p.bGy("bulletSubtitleRv");
     }
-    Object localObject2 = this.tMz;
+    Object localObject2 = this.xwq;
     if (localObject2 == null) {
-      p.btv("bulletSubtitleRv");
+      p.bGy("bulletSubtitleRv");
     }
     localObject2 = ((WxRecyclerView)localObject2).getAdapter();
     if (localObject2 == null) {
-      p.hyc();
+      p.iCn();
     }
-    p.g(localObject2, "bulletSubtitleRv.adapter!!");
+    p.j(localObject2, "bulletSubtitleRv.adapter!!");
     localObject2 = com.tencent.mm.hellhoundlib.b.c.a(((RecyclerView.a)localObject2).getItemCount() - 1, new com.tencent.mm.hellhoundlib.b.a());
-    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).axQ(), "com/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback", "smoothScrollToLastPosition", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
-    ((WxRecyclerView)localObject1).smoothScrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).pG(0)).intValue());
-    com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback", "smoothScrollToLastPosition", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
-    AppMethodBeat.o(243739);
+    com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aFh(), "com/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback", "smoothScrollToLastPosition", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
+    ((WxRecyclerView)localObject1).smoothScrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).sf(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback", "smoothScrollToLastPosition", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
+    AppMethodBeat.o(280254);
   }
   
   public final boolean getFunctionSwitch()
   {
-    AppMethodBeat.i(243736);
-    com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.aAh();
-    p.g(locale, "MMKernel.storage()");
-    this.tMG = locale.azQ().getBoolean(ar.a.OmJ, true);
-    boolean bool = this.tMG;
-    AppMethodBeat.o(243736);
+    AppMethodBeat.i(280251);
+    com.tencent.mm.kernel.f localf = h.aHG();
+    p.j(localf, "MMKernel.storage()");
+    this.xwx = localf.aHp().getBoolean(ar.a.VBI, true);
+    boolean bool = this.xwx;
+    AppMethodBeat.o(280251);
     return bool;
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(243734);
-    Object localObject1 = this.hVd.findViewById(2131307197);
-    p.g(localObject1, "parent.findViewById<WxRe…(R.id.rv_bullet_subtitle)");
-    this.tMz = ((WxRecyclerView)localObject1);
-    localObject1 = this.hVd.findViewById(2131297861);
-    p.g(localObject1, "parent.findViewById<Fram…d.bullet_subtitle_layout)");
-    this.tMA = ((FrameLayout)localObject1);
-    localObject1 = this.tMz;
+    AppMethodBeat.i(280248);
+    Object localObject1 = this.kJC.findViewById(b.f.rv_bullet_subtitle);
+    p.j(localObject1, "parent.findViewById<WxRe…(R.id.rv_bullet_subtitle)");
+    this.xwq = ((WxRecyclerView)localObject1);
+    localObject1 = this.kJC.findViewById(b.f.bullet_subtitle_layout);
+    p.j(localObject1, "parent.findViewById<Fram…d.bullet_subtitle_layout)");
+    this.xwr = ((FrameLayout)localObject1);
+    localObject1 = this.xwq;
     if (localObject1 == null) {
-      p.btv("bulletSubtitleRv");
+      p.bGy("bulletSubtitleRv");
     }
-    ((WxRecyclerView)localObject1).setOnTouchListener((View.OnTouchListener)b.tML);
-    localObject1 = this.tMJ;
+    ((WxRecyclerView)localObject1).setOnTouchListener((View.OnTouchListener)e.b.xwC);
+    localObject1 = this.xwA;
     Object localObject2 = getContext();
-    p.g(localObject2, "context");
-    this.tFp = ((d)localObject1).fm((Context)localObject2);
-    localObject1 = this.tMz;
+    p.j(localObject2, "context");
+    this.xnR = ((d)localObject1).fs((Context)localObject2);
+    localObject1 = this.xwq;
     if (localObject1 == null) {
-      p.btv("bulletSubtitleRv");
+      p.bGy("bulletSubtitleRv");
     }
-    localObject2 = this.tFp;
+    localObject2 = this.xnR;
     if (localObject2 == null) {
-      p.btv("adapter");
+      p.bGy("adapter");
     }
     ((WxRecyclerView)localObject1).setAdapter((RecyclerView.a)localObject2);
-    localObject1 = this.tMz;
+    localObject1 = this.xwq;
     if (localObject1 == null) {
-      p.btv("bulletSubtitleRv");
+      p.bGy("bulletSubtitleRv");
     }
     localObject2 = getContext();
-    p.g(localObject2, "context");
+    p.j(localObject2, "context");
     localObject2 = new FinderAutoScrollLayoutManager((Context)localObject2);
     ((FinderAutoScrollLayoutManager)localObject2).setOrientation(0);
     ((WxRecyclerView)localObject1).setLayoutManager((RecyclerView.LayoutManager)localObject2);
-    localObject1 = this.tMz;
+    localObject1 = this.xwq;
     if (localObject1 == null) {
-      p.btv("bulletSubtitleRv");
+      p.bGy("bulletSubtitleRv");
     }
     localObject1 = ((WxRecyclerView)localObject1).getLayoutManager();
     if (localObject1 == null)
     {
       localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.view.manager.FinderAutoScrollLayoutManager");
-      AppMethodBeat.o(243734);
+      AppMethodBeat.o(280248);
       throw ((Throwable)localObject1);
     }
-    this.tMB = ((FinderAutoScrollLayoutManager)localObject1);
-    localObject1 = this.tMz;
+    this.xws = ((FinderAutoScrollLayoutManager)localObject1);
+    localObject1 = this.xwq;
     if (localObject1 == null) {
-      p.btv("bulletSubtitleRv");
+      p.bGy("bulletSubtitleRv");
     }
-    localObject2 = com.tencent.mm.ui.component.a.PRN;
+    localObject2 = com.tencent.mm.ui.component.g.Xox;
     localObject2 = getContext();
     if (localObject2 == null)
     {
       localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-      AppMethodBeat.o(243734);
+      AppMethodBeat.o(280248);
       throw ((Throwable)localObject1);
     }
-    ((WxRecyclerView)localObject1).setRecycledViewPool(((FinderRecyclerViewPool)com.tencent.mm.ui.component.a.b((AppCompatActivity)localObject2).get(FinderRecyclerViewPool.class)).wuz);
-    localObject1 = this.tMz;
+    ((WxRecyclerView)localObject1).setRecycledViewPool(((com.tencent.mm.plugin.finder.viewmodel.c)com.tencent.mm.ui.component.g.b((AppCompatActivity)localObject2).i(com.tencent.mm.plugin.finder.viewmodel.c.class)).BgY);
+    localObject1 = this.xwq;
     if (localObject1 == null) {
-      p.btv("bulletSubtitleRv");
+      p.bGy("bulletSubtitleRv");
     }
     localObject1 = ObjectAnimator.ofFloat(localObject1, "translationX", new float[] { getScreenWidth(), 0.0F });
-    p.g(localObject1, "ObjectAnimator.ofFloat(b…creenWidth.toFloat(), 0f)");
-    this.tMC = ((ValueAnimator)localObject1);
+    p.j(localObject1, "ObjectAnimator.ofFloat(b…creenWidth.toFloat(), 0f)");
+    this.xwt = ((ValueAnimator)localObject1);
     localObject1 = new LinearInterpolator();
-    localObject2 = this.tMC;
+    localObject2 = this.xwt;
     if (localObject2 == null) {
-      p.btv("enterAnimator");
+      p.bGy("enterAnimator");
     }
     ((ValueAnimator)localObject2).setInterpolator((TimeInterpolator)localObject1);
-    this.tME = ((Runnable)new c(this));
-    localObject2 = this.tMC;
+    this.xwv = ((Runnable)new c(this));
+    localObject2 = this.xwt;
     if (localObject2 == null) {
-      p.btv("enterAnimator");
+      p.bGy("enterAnimator");
     }
     ((ValueAnimator)localObject2).addListener((Animator.AnimatorListener)new d(this));
-    localObject2 = this.tMC;
+    localObject2 = this.xwt;
     if (localObject2 == null) {
-      p.btv("enterAnimator");
+      p.bGy("enterAnimator");
     }
     ((ValueAnimator)localObject2).setDuration(4000L);
-    localObject2 = this.tMz;
+    localObject2 = this.xwq;
     if (localObject2 == null) {
-      p.btv("bulletSubtitleRv");
+      p.bGy("bulletSubtitleRv");
     }
     localObject2 = ObjectAnimator.ofFloat(localObject2, "translationX", new float[] { 0.0F, -getScreenWidth() });
-    p.g(localObject2, "ObjectAnimator.ofFloat(b…, -screenWidth.toFloat())");
-    this.tMD = ((ValueAnimator)localObject2);
-    localObject2 = this.tMD;
+    p.j(localObject2, "ObjectAnimator.ofFloat(b…, -screenWidth.toFloat())");
+    this.xwu = ((ValueAnimator)localObject2);
+    localObject2 = this.xwu;
     if (localObject2 == null) {
-      p.btv("exitAnimator");
+      p.bGy("exitAnimator");
     }
     ((ValueAnimator)localObject2).setInterpolator((TimeInterpolator)localObject1);
-    localObject1 = this.tMD;
+    localObject1 = this.xwu;
     if (localObject1 == null) {
-      p.btv("exitAnimator");
+      p.bGy("exitAnimator");
     }
     ((ValueAnimator)localObject1).addListener((Animator.AnimatorListener)new e(this));
-    localObject1 = this.tMD;
+    localObject1 = this.xwu;
     if (localObject1 == null) {
-      p.btv("exitAnimator");
+      p.bGy("exitAnimator");
     }
     ((ValueAnimator)localObject1).setDuration(4000L);
-    localObject1 = this.tMz;
+    localObject1 = this.xwq;
     if (localObject1 == null) {
-      p.btv("bulletSubtitleRv");
+      p.bGy("bulletSubtitleRv");
     }
     ((WxRecyclerView)localObject1).a((RecyclerView.l)new f(this));
-    localObject1 = com.tencent.mm.kernel.g.aAh();
-    p.g(localObject1, "MMKernel.storage()");
-    this.tMG = ((com.tencent.mm.kernel.e)localObject1).azQ().getBoolean(ar.a.OmJ, true);
-    AppMethodBeat.o(243734);
+    localObject1 = h.aHG();
+    p.j(localObject1, "MMKernel.storage()");
+    this.xwx = ((com.tencent.mm.kernel.f)localObject1).aHp().getBoolean(ar.a.VBI, true);
+    AppMethodBeat.o(280248);
   }
   
   public final void reset(boolean paramBoolean)
   {
-    AppMethodBeat.i(243738);
-    this.tMF = false;
-    this.dLD = false;
-    this.tMJ.dcx();
-    Object localObject1 = this.tMz;
+    AppMethodBeat.i(280253);
+    this.xww = false;
+    this.fEs = false;
+    this.xwA.dsN();
+    Object localObject1 = this.xwq;
     if (localObject1 == null) {
-      p.btv("bulletSubtitleRv");
+      p.bGy("bulletSubtitleRv");
     }
     Object localObject2 = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).axQ(), "com/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback", "reset", "(Z)V", "Undefined", "scrollToPosition", "(I)V");
-    ((WxRecyclerView)localObject1).scrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).pG(0)).intValue());
-    com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback", "reset", "(Z)V", "Undefined", "scrollToPosition", "(I)V");
+    com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aFh(), "com/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback", "reset", "(Z)V", "Undefined", "scrollToPosition", "(I)V");
+    ((WxRecyclerView)localObject1).scrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).sf(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback", "reset", "(Z)V", "Undefined", "scrollToPosition", "(I)V");
     if (!paramBoolean)
     {
-      mV(false);
-      localObject1 = this.tMz;
+      op(false);
+      localObject1 = this.xwq;
       if (localObject1 == null) {
-        p.btv("bulletSubtitleRv");
+        p.bGy("bulletSubtitleRv");
       }
       ((WxRecyclerView)localObject1).setVisibility(8);
-      localObject1 = this.tMz;
+      localObject1 = this.xwq;
       if (localObject1 == null) {
-        p.btv("bulletSubtitleRv");
+        p.bGy("bulletSubtitleRv");
       }
-      localObject2 = this.tME;
+      localObject2 = this.xwv;
       if (localObject2 == null) {
-        p.btv("restartRunnable");
+        p.bGy("restartRunnable");
       }
       ((WxRecyclerView)localObject1).removeCallbacks((Runnable)localObject2);
     }
-    this.tMI = false;
-    localObject1 = this.tMC;
+    this.xwz = false;
+    localObject1 = this.xwt;
     if (localObject1 == null) {
-      p.btv("enterAnimator");
+      p.bGy("enterAnimator");
     }
     ((ValueAnimator)localObject1).cancel();
-    localObject1 = this.tMD;
+    localObject1 = this.xwu;
     if (localObject1 == null) {
-      p.btv("exitAnimator");
+      p.bGy("exitAnimator");
     }
     ((ValueAnimator)localObject1).cancel();
-    AppMethodBeat.o(243738);
+    AppMethodBeat.o(280253);
   }
   
   public final void startLoop()
   {
-    AppMethodBeat.i(243737);
-    Object localObject1 = com.tencent.mm.kernel.g.af(ad.class);
-    p.g(localObject1, "MMKernel.service(IFinder…enModeConfig::class.java)");
-    if (((ad)localObject1).dxX())
+    AppMethodBeat.i(280252);
+    Object localObject1 = h.ae(ae.class);
+    p.j(localObject1, "MMKernel.service(IFinder…enModeConfig::class.java)");
+    if (((ae)localObject1).dYT())
     {
-      AppMethodBeat.o(243737);
+      AppMethodBeat.o(280252);
       return;
     }
-    localObject1 = this.tMJ.feed;
+    localObject1 = this.xwA.feed;
     if (localObject1 != null)
     {
-      localObject2 = com.tencent.mm.plugin.finder.report.c.vdc;
+      localObject2 = com.tencent.mm.plugin.finder.report.c.zTT;
       com.tencent.mm.plugin.finder.report.c.start(((FeedData)localObject1).getId());
     }
-    if (!this.tMF)
+    if (!this.xww)
     {
-      localObject1 = this.tMz;
+      localObject1 = this.xwq;
       if (localObject1 == null) {
-        p.btv("bulletSubtitleRv");
+        p.bGy("bulletSubtitleRv");
       }
       localObject1 = ((WxRecyclerView)localObject1).getAdapter();
       if (localObject1 == null) {
-        p.hyc();
+        p.iCn();
       }
-      p.g(localObject1, "bulletSubtitleRv.adapter!!");
+      p.j(localObject1, "bulletSubtitleRv.adapter!!");
       if (((RecyclerView.a)localObject1).getItemCount() > 0) {}
     }
     else
     {
-      AppMethodBeat.o(243737);
+      AppMethodBeat.o(280252);
       return;
     }
-    localObject1 = com.tencent.mm.kernel.g.aAh();
-    p.g(localObject1, "MMKernel.storage()");
+    localObject1 = h.aHG();
+    p.j(localObject1, "MMKernel.storage()");
     long l;
-    if (!((com.tencent.mm.kernel.e)localObject1).azQ().getBoolean(ar.a.OmJ, true))
+    if (!((com.tencent.mm.kernel.f)localObject1).aHp().getBoolean(ar.a.VBI, true))
     {
-      this.tMG = false;
-      localObject1 = this.tMJ.feed;
+      this.xwx = false;
+      localObject1 = this.xwA.feed;
       if (localObject1 != null)
       {
-        localObject2 = com.tencent.mm.plugin.finder.report.c.vdc;
+        localObject2 = com.tencent.mm.plugin.finder.report.c.zTT;
         l = ((FeedData)localObject1).getId();
-        if (this.tMG) {}
+        if (this.xwx) {}
         for (i = 1;; i = 0)
         {
-          com.tencent.mm.plugin.finder.report.c.F(l, i);
-          AppMethodBeat.o(243737);
+          com.tencent.mm.plugin.finder.report.c.M(l, i);
+          AppMethodBeat.o(280252);
           return;
         }
       }
-      AppMethodBeat.o(243737);
+      AppMethodBeat.o(280252);
       return;
     }
-    this.tMG = true;
-    localObject1 = this.tFp;
+    this.xwx = true;
+    localObject1 = this.xnR;
     if (localObject1 == null) {
-      p.btv("adapter");
+      p.bGy("adapter");
     }
     ((WxRecyclerAdapter)localObject1).notifyDataSetChanged();
-    Object localObject2 = this.tMJ.feed;
+    Object localObject2 = this.xwA.feed;
     if (localObject2 != null)
     {
-      localObject1 = com.tencent.mm.plugin.finder.report.c.vdc;
-      com.tencent.mm.plugin.finder.report.c.EV(((FeedData)localObject2).getId());
-      localObject1 = com.tencent.mm.plugin.finder.report.c.vdc;
+      localObject1 = com.tencent.mm.plugin.finder.report.c.zTT;
+      com.tencent.mm.plugin.finder.report.c.Mf(((FeedData)localObject2).getId());
+      localObject1 = com.tencent.mm.plugin.finder.report.c.zTT;
       l = ((FeedData)localObject2).getId();
-      localObject1 = this.tFp;
+      localObject1 = this.xnR;
       if (localObject1 == null) {
-        p.btv("adapter");
+        p.bGy("adapter");
       }
       if (localObject1 == null) {
         break label450;
       }
       localObject1 = Integer.valueOf(((WxRecyclerAdapter)localObject1).getItemCount());
-      com.tencent.mm.plugin.finder.report.c.E(l, ((Integer)localObject1).intValue());
-      localObject1 = com.tencent.mm.plugin.finder.report.c.vdc;
+      com.tencent.mm.plugin.finder.report.c.L(l, ((Integer)localObject1).intValue());
+      localObject1 = com.tencent.mm.plugin.finder.report.c.zTT;
       l = ((FeedData)localObject2).getId();
-      if (!this.tMG) {
+      if (!this.xwx) {
         break label456;
       }
     }
@@ -522,34 +521,34 @@ public final class e
     label456:
     for (int i = 1;; i = 0)
     {
-      com.tencent.mm.plugin.finder.report.c.F(l, i);
-      localObject1 = this.tMz;
+      com.tencent.mm.plugin.finder.report.c.M(l, i);
+      localObject1 = this.xwq;
       if (localObject1 == null) {
-        p.btv("bulletSubtitleRv");
+        p.bGy("bulletSubtitleRv");
       }
       ((WxRecyclerView)localObject1).setTranslationX(getScreenWidth());
-      localObject1 = this.tMz;
+      localObject1 = this.xwq;
       if (localObject1 == null) {
-        p.btv("bulletSubtitleRv");
+        p.bGy("bulletSubtitleRv");
       }
       ((WxRecyclerView)localObject1).setVisibility(0);
-      mV(true);
-      localObject1 = this.tMC;
+      op(true);
+      localObject1 = this.xwt;
       if (localObject1 == null) {
-        p.btv("enterAnimator");
+        p.bGy("enterAnimator");
       }
       ((ValueAnimator)localObject1).start();
-      this.tMI = true;
-      this.tMF = true;
-      this.dLD = false;
-      AppMethodBeat.o(243737);
+      this.xwz = true;
+      this.xww = true;
+      this.fEs = false;
+      AppMethodBeat.o(280252);
       return;
       localObject1 = null;
       break;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "invoke"})
   static final class a
     extends q
     implements kotlin.g.a.a<Context>
@@ -560,26 +559,7 @@ public final class e
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
-  static final class b
-    implements View.OnTouchListener
-  {
-    public static final b tML;
-    
-    static
-    {
-      AppMethodBeat.i(243723);
-      tML = new b();
-      AppMethodBeat.o(243723);
-    }
-    
-    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-    {
-      return true;
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -588,42 +568,42 @@ public final class e
     public final void run()
     {
       int j = 1;
-      AppMethodBeat.i(243724);
+      AppMethodBeat.i(268012);
       Object localObject;
       int i;
-      if (this.tMK.dcy().getVisibility() == 0)
+      if (this.xwB.dsO().getVisibility() == 0)
       {
-        this.tMK.startLoop();
-        if (this.tMK.dLD)
+        this.xwB.startLoop();
+        if (this.xwB.fEs)
         {
-          localObject = this.tMK;
-          ((e)localObject).dLD = true;
-          if (((e)localObject).tMF)
+          localObject = this.xwB;
+          ((e)localObject).fEs = true;
+          if (((e)localObject).xww)
           {
             i = 0;
-            ValueAnimator localValueAnimator = ((e)localObject).tMC;
+            ValueAnimator localValueAnimator = ((e)localObject).xwt;
             if (localValueAnimator == null) {
-              p.btv("enterAnimator");
+              p.bGy("enterAnimator");
             }
             if (localValueAnimator.isRunning())
             {
-              localValueAnimator = ((e)localObject).tMC;
+              localValueAnimator = ((e)localObject).xwt;
               if (localValueAnimator == null) {
-                p.btv("enterAnimator");
+                p.bGy("enterAnimator");
               }
               localValueAnimator.pause();
               i = 1;
             }
-            localValueAnimator = ((e)localObject).tMD;
+            localValueAnimator = ((e)localObject).xwu;
             if (localValueAnimator == null) {
-              p.btv("exitAnimator");
+              p.bGy("exitAnimator");
             }
             if (!localValueAnimator.isRunning()) {
               break label178;
             }
-            localValueAnimator = ((e)localObject).tMD;
+            localValueAnimator = ((e)localObject).xwu;
             if (localValueAnimator == null) {
-              p.btv("exitAnimator");
+              p.bGy("exitAnimator");
             }
             localValueAnimator.pause();
             i = j;
@@ -635,89 +615,89 @@ public final class e
       {
         if (i == 0)
         {
-          localObject = ((e)localObject).tMz;
+          localObject = ((e)localObject).xwq;
           if (localObject == null) {
-            p.btv("bulletSubtitleRv");
+            p.bGy("bulletSubtitleRv");
           }
-          ((WxRecyclerView)localObject).kQ();
+          ((WxRecyclerView)localObject).ld();
         }
-        AppMethodBeat.o(243724);
+        AppMethodBeat.o(268012);
         return;
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback$initView$4", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback$initView$4", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"})
   public static final class d
     extends AnimatorListenerAdapter
   {
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(243725);
-      this.tMK.tMI = false;
-      if (this.tMK.dcy().getVisibility() != 0)
+      AppMethodBeat.i(277054);
+      this.xwB.xwz = false;
+      if (this.xwB.dsO().getVisibility() != 0)
       {
-        AppMethodBeat.o(243725);
+        AppMethodBeat.o(277054);
         return;
       }
-      this.tMK.dcz();
-      AppMethodBeat.o(243725);
+      this.xwB.dsP();
+      AppMethodBeat.o(277054);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback$initView$5", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback$initView$5", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"})
   public static final class e
     extends AnimatorListenerAdapter
   {
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(243726);
-      this.tMK.reset(true);
-      paramAnimator = this.tMK.dcy();
-      Runnable localRunnable = this.tMK.tME;
+      AppMethodBeat.i(286103);
+      this.xwB.reset(true);
+      paramAnimator = this.xwB.dsO();
+      Runnable localRunnable = this.xwB.xwv;
       if (localRunnable == null) {
-        p.btv("restartRunnable");
+        p.bGy("restartRunnable");
       }
       paramAnimator.postDelayed(localRunnable, 5000L);
-      AppMethodBeat.o(243726);
+      AppMethodBeat.o(286103);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback$initView$6", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "onScrollStateChanged", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "newState", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback$initView$6", "Landroidx/recyclerview/widget/RecyclerView$OnScrollListener;", "onScrollStateChanged", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "newState", "", "plugin-finder_release"})
   public static final class f
     extends RecyclerView.l
   {
     public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
     {
-      AppMethodBeat.i(243727);
-      p.h(paramRecyclerView, "recyclerView");
+      AppMethodBeat.i(289815);
+      p.k(paramRecyclerView, "recyclerView");
       if (paramInt == 0)
       {
-        if ((paramRecyclerView.getVisibility() == 8) || (!this.tMK.tMF) || (this.tMK.dLD))
+        if ((paramRecyclerView.getVisibility() == 8) || (!this.xwB.xww) || (this.xwB.fEs))
         {
-          AppMethodBeat.o(243727);
+          AppMethodBeat.o(289815);
           return;
         }
-        this.tMK.dcz();
+        this.xwB.dsP();
       }
-      AppMethodBeat.o(243727);
+      AppMethodBeat.o(289815);
     }
     
     public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(243728);
+      AppMethodBeat.i(289816);
       b localb = new b();
-      localb.bm(paramRecyclerView);
-      localb.pH(paramInt1);
-      localb.pH(paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback$initView$6", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.axR());
+      localb.bn(paramRecyclerView);
+      localb.sg(paramInt1);
+      localb.sg(paramInt2);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback$initView$6", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
       super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback$initView$6", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-      AppMethodBeat.o(243728);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback$initView$6", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
+      AppMethodBeat.o(289816);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class g
     extends q
     implements kotlin.g.a.a<Integer>
@@ -728,7 +708,7 @@ public final class e
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class h
     implements Runnable
   {
@@ -736,19 +716,19 @@ public final class e
     
     public final void run()
     {
-      AppMethodBeat.i(243730);
-      FrameLayout localFrameLayout = this.tMK.tMA;
+      AppMethodBeat.i(266258);
+      FrameLayout localFrameLayout = this.xwB.xwr;
       if (localFrameLayout == null) {
-        p.btv("bulletSubtitleLayout");
+        p.bGy("bulletSubtitleLayout");
       }
       localFrameLayout.setVisibility(0);
-      AppMethodBeat.o(243730);
+      AppMethodBeat.o(266258);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.e
  * JD-Core Version:    0.7.0.1
  */

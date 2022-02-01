@@ -10,21 +10,20 @@ import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.x;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/camera2/effect/WCCameraEffectUtil;", "", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getMContext", "()Landroid/content/Context;", "setMContext", "mHasInitHarderCodeClient", "", "mRequestTagValues", "Lorg/json/JSONArray;", "getMRequestTagValues", "()Lorg/json/JSONArray;", "setMRequestTagValues", "(Lorg/json/JSONArray;)V", "mResultTagValues", "getMResultTagValues", "setMResultTagValues", "mSessionTypeValues", "getMSessionTypeValues", "setMSessionTypeValues", "mSupportWCKeyRequests", "Ljava/util/ArrayList;", "Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "Lkotlin/collections/ArrayList;", "getMSupportWCKeyRequests", "()Ljava/util/ArrayList;", "setMSupportWCKeyRequests", "(Ljava/util/ArrayList;)V", "mSupportWCKeyResults", "Lcom/tencent/mm/media/widget/camera2/effect/result/WCCameraEffectResultTag;", "getMSupportWCKeyResults", "setMSupportWCKeyResults", "mSupportWCKeySessionType", "Lcom/tencent/mm/media/widget/camera2/effect/sessionType/WCCameraEffectSessionType;", "getMSupportWCKeySessionType", "setMSupportWCKeySessionType", "getParameters", "", "tagValuesAvaliable", "Lkotlin/Function0;", "requestParameters", "mSupportWCKeyAvailable", "Lkotlin/Function3;", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/widget/camera2/effect/WCCameraEffectUtil;", "", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getMContext", "()Landroid/content/Context;", "setMContext", "mHasInitHarderCodeClient", "", "mRequestTagValues", "Lorg/json/JSONArray;", "getMRequestTagValues", "()Lorg/json/JSONArray;", "setMRequestTagValues", "(Lorg/json/JSONArray;)V", "mResultTagValues", "getMResultTagValues", "setMResultTagValues", "mSessionTypeValues", "getMSessionTypeValues", "setMSessionTypeValues", "mSupportWCKeyRequests", "Ljava/util/ArrayList;", "Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "Lkotlin/collections/ArrayList;", "getMSupportWCKeyRequests", "()Ljava/util/ArrayList;", "setMSupportWCKeyRequests", "(Ljava/util/ArrayList;)V", "mSupportWCKeyResults", "Lcom/tencent/mm/media/widget/camera2/effect/result/WCCameraEffectResultTag;", "getMSupportWCKeyResults", "setMSupportWCKeyResults", "mSupportWCKeySessionType", "Lcom/tencent/mm/media/widget/camera2/effect/sessionType/WCCameraEffectSessionType;", "getMSupportWCKeySessionType", "setMSupportWCKeySessionType", "getParameters", "", "tagValuesAvaliable", "Lkotlin/Function0;", "requestParameters", "mSupportWCKeyAvailable", "Lkotlin/Function3;", "plugin-mediaeditor_release"})
 public final class c
 {
   final String TAG;
-  volatile boolean ioq;
-  JSONArray ior;
-  JSONArray ios;
-  JSONArray iot;
-  ArrayList<com.tencent.mm.media.widget.b.a.a.a> iou;
-  ArrayList<com.tencent.mm.media.widget.b.a.b.a> iov;
-  ArrayList<com.tencent.mm.media.widget.b.a.c.a> iow;
+  ArrayList<com.tencent.mm.media.widget.b.a.b.a> ldA;
+  ArrayList<com.tencent.mm.media.widget.b.a.c.a> ldB;
+  volatile boolean ldv;
+  JSONArray ldw;
+  JSONArray ldx;
+  JSONArray ldy;
+  ArrayList<com.tencent.mm.media.widget.b.a.a.a> ldz;
   private Context mContext;
   
   public c(Context paramContext)
@@ -32,13 +31,13 @@ public final class c
     AppMethodBeat.i(94191);
     this.mContext = paramContext;
     this.TAG = "MicroMsg.WCCameraEffectUtil";
-    this.iou = new ArrayList();
-    this.iov = new ArrayList();
-    this.iow = new ArrayList();
+    this.ldz = new ArrayList();
+    this.ldA = new ArrayList();
+    this.ldB = new ArrayList();
     AppMethodBeat.o(94191);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   public static final class a
     implements Runnable
   {
@@ -50,13 +49,13 @@ public final class c
       AppMethodBeat.i(94189);
       HardCoderJNI.stopPerformance(0);
       Object localObject = HardCoderJNI.readServerAddr();
-      if ((localObject != null) && (!p.j(localObject, "")))
+      if ((localObject != null) && (!p.h(localObject, "")))
       {
         bool1 = true;
         HardCoderJNI.setCheckEnv(bool1);
-        int i = HardCoderJNI.initHardCoder((String)localObject, 0, ".hardcoder.client.sock", (HardCoderJNI.HCPerfManagerThread)b.ioA, null);
-        Log.i(this.iox.TAG, "Read remote persist.sys.hardcoder.name:" + (String)localObject + " initHardCoder:" + i);
-        localObject = this.iox;
+        int i = HardCoderJNI.initHardCoder((String)localObject, 0, ".hardcoder.client.sock", (HardCoderJNI.HCPerfManagerThread)b.ldF, null);
+        Log.i(this.ldC.TAG, "Read remote persist.sys.hardcoder.name:" + (String)localObject + " initHardCoder:" + i);
+        localObject = this.ldC;
         if (i != 0) {
           break label149;
         }
@@ -64,8 +63,8 @@ public final class c
       label149:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        ((c)localObject).ioq = bool1;
-        if (this.iox.ioq) {
+        ((c)localObject).ldv = bool1;
+        if (this.ldC.ldv) {
           WXHardCoderJNI.getParameters(2, (WXHardCoderJNI.GetParametersCallback)new a(this), new String[0]);
         }
         AppMethodBeat.o(94189);
@@ -75,7 +74,7 @@ public final class c
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "type", "", "jsonParameters", "Lorg/json/JSONObject;", "kotlin.jvm.PlatformType", "onGetParameters"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "type", "", "jsonParameters", "Lorg/json/JSONObject;", "kotlin.jvm.PlatformType", "onGetParameters"})
     static final class a
       implements WXHardCoderJNI.GetParametersCallback
     {
@@ -86,25 +85,25 @@ public final class c
         AppMethodBeat.i(94186);
         if (paramInt == 2)
         {
-          this.ioz.iox.ior = paramJSONObject.optJSONArray("CameraRequestTags");
-          this.ioz.iox.ios = paramJSONObject.optJSONArray("CameraResultTags");
-          this.ioz.iox.iot = paramJSONObject.optJSONArray("CaptureSessionType");
-          this.ioz.ioy.invoke();
+          this.ldE.ldC.ldw = paramJSONObject.optJSONArray("CameraRequestTags");
+          this.ldE.ldC.ldx = paramJSONObject.optJSONArray("CameraResultTags");
+          this.ldE.ldC.ldy = paramJSONObject.optJSONArray("CaptureSessionType");
+          this.ldE.ldD.invoke();
         }
         AppMethodBeat.o(94186);
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Ljava/lang/Thread;", "r", "Ljava/lang/Runnable;", "kotlin.jvm.PlatformType", "name", "", "<anonymous parameter 2>", "", "newThread"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Ljava/lang/Thread;", "r", "Ljava/lang/Runnable;", "kotlin.jvm.PlatformType", "name", "", "<anonymous parameter 2>", "", "newThread"})
     static final class b
       implements HardCoderJNI.HCPerfManagerThread
     {
-      public static final b ioA;
+      public static final b ldF;
       
       static
       {
         AppMethodBeat.i(94188);
-        ioA = new b();
+        ldF = new b();
         AppMethodBeat.o(94188);
       }
       
@@ -117,21 +116,10 @@ public final class c
       }
     }
   }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
-  public static final class b
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    public b(c paramc, kotlin.g.a.q paramq)
-    {
-      super();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.media.widget.b.a.c
  * JD-Core Version:    0.7.0.1
  */

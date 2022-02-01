@@ -11,30 +11,32 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c;
-import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.ay.a.a.c;
+import com.tencent.mm.ay.a.a.c.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.ui.aa;
+import com.tencent.mm.plugin.websearch.a.d;
+import com.tencent.mm.plugin.websearch.a.e;
+import com.tencent.mm.ui.ad;
 
 public class DownArrowSwitchFooter
   extends LinearLayout
   implements a
 {
-  private c IIu;
-  private TextView IJc;
-  private View IJd;
-  private a.a IJf;
+  private c PCP;
+  private TextView PDr;
+  private View PDs;
+  private a.a PDu;
   private Context context;
-  private ImageView oeS;
+  private ImageView rgE;
   
   public DownArrowSwitchFooter(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(116752);
     c.a locala = new c.a();
-    locala.jbf = true;
-    locala.jbe = true;
-    this.IIu = locala.bdv();
+    locala.lRD = true;
+    locala.lRC = true;
+    this.PCP = locala.bmL();
     this.context = paramContext;
     init();
     AppMethodBeat.o(116752);
@@ -45,9 +47,9 @@ public class DownArrowSwitchFooter
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(116753);
     paramAttributeSet = new c.a();
-    paramAttributeSet.jbf = true;
-    paramAttributeSet.jbe = true;
-    this.IIu = paramAttributeSet.bdv();
+    paramAttributeSet.lRD = true;
+    paramAttributeSet.lRC = true;
+    this.PCP = paramAttributeSet.bmL();
     this.context = paramContext;
     init();
     AppMethodBeat.o(116753);
@@ -56,20 +58,20 @@ public class DownArrowSwitchFooter
   private void init()
   {
     AppMethodBeat.i(116754);
-    ViewGroup localViewGroup = (ViewGroup)aa.jQ(this.context).inflate(2131497102, this);
-    this.IJd = localViewGroup.findViewById(2131299739);
-    this.IJc = ((TextView)localViewGroup.findViewById(2131301683));
-    this.oeS = ((ImageView)localViewGroup.findViewById(2131301668));
+    ViewGroup localViewGroup = (ViewGroup)ad.kS(this.context).inflate(a.e.widget_footer_switch_downarrow, this);
+    this.PDs = localViewGroup.findViewById(a.d.down_arrow);
+    this.PDr = ((TextView)localViewGroup.findViewById(a.d.footer_title));
+    this.rgE = ((ImageView)localViewGroup.findViewById(a.d.footer_icon));
     localViewGroup.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(116751);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/websearch/widget/view/footer/DownArrowSwitchFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/websearch/widget/view/footer/DownArrowSwitchFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (DownArrowSwitchFooter.a(DownArrowSwitchFooter.this) != null) {
-          DownArrowSwitchFooter.a(DownArrowSwitchFooter.this).fZk();
+          DownArrowSwitchFooter.a(DownArrowSwitchFooter.this).gRU();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/websearch/widget/view/footer/DownArrowSwitchFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(116751);
@@ -81,16 +83,16 @@ public class DownArrowSwitchFooter
   public void setCallback(a.a parama)
   {
     AppMethodBeat.i(116757);
-    this.IJf = parama;
+    this.PDu = parama;
     if (parama != null)
     {
       if (parama.getItemCount() > 1)
       {
-        this.IJd.setVisibility(0);
+        this.PDs.setVisibility(0);
         AppMethodBeat.o(116757);
         return;
       }
-      this.IJd.setVisibility(8);
+      this.PDs.setVisibility(8);
     }
     AppMethodBeat.o(116757);
   }
@@ -100,25 +102,25 @@ public class DownArrowSwitchFooter
     AppMethodBeat.i(116756);
     if (TextUtils.isEmpty(paramString))
     {
-      this.oeS.setVisibility(8);
+      this.rgE.setVisibility(8);
       AppMethodBeat.o(116756);
       return;
     }
-    this.oeS.setVisibility(0);
-    com.tencent.mm.av.a.a.bdb().a(paramString, this.oeS, this.IIu);
+    this.rgE.setVisibility(0);
+    com.tencent.mm.ay.a.a.bms().a(paramString, this.rgE, this.PCP);
     AppMethodBeat.o(116756);
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(116755);
-    this.IJc.setText(paramString);
+    this.PDr.setText(paramString);
     AppMethodBeat.o(116755);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.view.footer.DownArrowSwitchFooter
  * JD-Core Version:    0.7.0.1
  */

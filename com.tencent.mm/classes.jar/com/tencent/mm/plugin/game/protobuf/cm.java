@@ -1,79 +1,136 @@
 package com.tencent.mm.plugin.game.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cm
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String desc;
-  public String icon;
+  public ef CQC;
+  public de CQD;
+  public ae CQE;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41798);
+    AppMethodBeat.i(41797);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.icon != null) {
-        paramVarArgs.e(1, this.icon);
+      if (this.CQC != null)
+      {
+        paramVarArgs.oE(1, this.CQC.computeSize());
+        this.CQC.writeFields(paramVarArgs);
       }
-      if (this.desc != null) {
-        paramVarArgs.e(2, this.desc);
+      if (this.CQD != null)
+      {
+        paramVarArgs.oE(2, this.CQD.computeSize());
+        this.CQD.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(41798);
+      if (this.CQE != null)
+      {
+        paramVarArgs.oE(3, this.CQE.computeSize());
+        this.CQE.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(41797);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.icon == null) {
-        break label274;
+      if (this.CQC == null) {
+        break label552;
       }
     }
-    label274:
-    for (paramInt = g.a.a.b.b.a.f(1, this.icon) + 0;; paramInt = 0)
+    label552:
+    for (int i = g.a.a.a.oD(1, this.CQC.computeSize()) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.desc != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.desc);
+      paramInt = i;
+      if (this.CQD != null) {
+        paramInt = i + g.a.a.a.oD(2, this.CQD.computeSize());
       }
-      AppMethodBeat.o(41798);
+      i = paramInt;
+      if (this.CQE != null) {
+        i = paramInt + g.a.a.a.oD(3, this.CQE.computeSize());
+      }
+      AppMethodBeat.o(41797);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(41798);
+        AppMethodBeat.o(41797);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         cm localcm = (cm)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(41798);
+          AppMethodBeat.o(41797);
           return -1;
         case 1: 
-          localcm.icon = locala.UbS.readString();
-          AppMethodBeat.o(41798);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new ef();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((ef)localObject2).parseFrom((byte[])localObject1);
+            }
+            localcm.CQC = ((ef)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(41797);
+          return 0;
+        case 2: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new de();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((de)localObject2).parseFrom((byte[])localObject1);
+            }
+            localcm.CQD = ((de)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(41797);
           return 0;
         }
-        localcm.desc = locala.UbS.readString();
-        AppMethodBeat.o(41798);
+        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new ae();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((ae)localObject2).parseFrom((byte[])localObject1);
+          }
+          localcm.CQE = ((ae)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(41797);
         return 0;
       }
-      AppMethodBeat.o(41798);
+      AppMethodBeat.o(41797);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.cm
  * JD-Core Version:    0.7.0.1
  */

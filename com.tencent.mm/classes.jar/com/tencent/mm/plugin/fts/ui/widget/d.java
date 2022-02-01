@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.fts.ui.widget;
 
 import com.tencent.mm.plugin.websearch.webview.c;
-import com.tencent.mm.protocal.protobuf.fas;
+import com.tencent.mm.protocal.protobuf.fll;
 import kotlin.l;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/fts/ui/widget/IPardusUIComponent;", "Lcom/tencent/mm/plugin/websearch/webview/IWebSearchImageUIComponent;", "Lcom/tencent/mm/protocal/protobuf/WebSearchHomeContext;", "pardusAction", "", "area", "", "requestObj", "Lorg/json/JSONObject;", "renderFinish", "ui-fts_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/fts/ui/widget/IPardusUIComponent;", "Lcom/tencent/mm/plugin/websearch/webview/IWebSearchImageUIComponent;", "Lcom/tencent/mm/protocal/protobuf/WebSearchHomeContext;", "pardusAction", "", "area", "", "requestObj", "Lorg/json/JSONObject;", "renderFinish", "showFTSSearchBar", "ui-fts_release"})
 public abstract interface d
-  extends c<fas>
+  extends c<fll>
 {
-  public abstract void a(int paramInt, JSONObject paramJSONObject);
+  public abstract void aW(JSONObject paramJSONObject);
   
-  public abstract void aQ(JSONObject paramJSONObject);
+  public abstract void b(int paramInt, JSONObject paramJSONObject);
+  
+  public abstract void esA();
 }
 
 

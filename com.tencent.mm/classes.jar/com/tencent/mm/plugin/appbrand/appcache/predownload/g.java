@@ -1,32 +1,33 @@
 package com.tencent.mm.plugin.appbrand.appcache.predownload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.regex.Pattern;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/QRCodeDataPatternForWxa;", "", "()V", "PATTERN", "Ljava/util/regex/Pattern;", "getPATTERN", "()Ljava/util/regex/Pattern;", "TAG", "", "isMatched", "", "qbarString", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/QRCodeDataPatternForWxa;", "", "()V", "PATTERN", "Ljava/util/regex/Pattern;", "getPATTERN", "()Ljava/util/regex/Pattern;", "TAG", "", "isMatched", "", "qbarString", "plugin-appbrand-integration_release"})
 public final class g
 {
-  public static final g kPi;
+  public static final g nJo;
   
   static
   {
-    AppMethodBeat.i(228018);
-    kPi = new g();
-    AppMethodBeat.o(228018);
+    AppMethodBeat.i(268264);
+    nJo = new g();
+    AppMethodBeat.o(268264);
   }
   
-  static Pattern bwN()
+  static Pattern bHU()
   {
-    AppMethodBeat.i(228017);
+    AppMethodBeat.i(268262);
     for (;;)
     {
       try
       {
-        localObject1 = ((b)com.tencent.mm.kernel.g.af(b.class)).a(b.a.rUD, "");
+        localObject1 = ((b)h.ae(b.class)).a(b.a.vBn, "");
         Log.i("MicroMsg.AppBrand.QRCodeDataPatternForWxa", "get by config, get pattern ".concat(String.valueOf(localObject1)));
         CharSequence localCharSequence = (CharSequence)localObject1;
         if (localCharSequence != null)
@@ -50,7 +51,7 @@ public final class g
         Object localObject2 = null;
         continue;
       }
-      AppMethodBeat.o(228017);
+      AppMethodBeat.o(268262);
       return localObject1;
       i = 0;
       continue;

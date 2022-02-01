@@ -14,8 +14,8 @@ import java.util.List;
 public abstract class BasePanelKeybordLayout
   extends KeyboardLinearLayout
 {
-  private int KmP = -1;
-  private a Oys = null;
+  private int RnB = -1;
+  private a VRv = null;
   
   public BasePanelKeybordLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,10 +36,10 @@ public abstract class BasePanelKeybordLayout
     Log.d("MicroMsg.BasePanelKeybordLayout", "onMeasure, width: %d, height: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(m) });
     if (m >= 0)
     {
-      if (this.KmP >= 0) {
+      if (this.RnB >= 0) {
         break label62;
       }
-      this.KmP = m;
+      this.RnB = m;
     }
     label62:
     int n;
@@ -54,8 +54,8 @@ public abstract class BasePanelKeybordLayout
         {
           super.onMeasure(paramInt1, paramInt2);
           return;
-          n = this.KmP - m;
-          this.KmP = m;
+          n = this.RnB - m;
+          this.RnB = m;
         } while (n == 0);
         localObject = getPanelView();
       } while (localObject == null);
@@ -76,10 +76,10 @@ public abstract class BasePanelKeybordLayout
       int i1 = i.getKeyBordHeightPx(MMApplicationContext.getContext(), true);
       i = i.getValidPanelHeight(getContext());
       int k = j;
-      if (i.apt() > 0)
+      if (i.avL() > 0)
       {
         k = j;
-        if (m >= i.apt()) {
+        if (m >= i.avL()) {
           k = i;
         }
       }
@@ -117,14 +117,14 @@ public abstract class BasePanelKeybordLayout
   
   public void setOnMeasureListener(a parama)
   {
-    this.Oys = parama;
+    this.VRv = parama;
   }
   
   public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.BasePanelKeybordLayout
  * JD-Core Version:    0.7.0.1
  */

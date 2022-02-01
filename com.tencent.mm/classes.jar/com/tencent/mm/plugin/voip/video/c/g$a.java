@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.voip.video.c;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/voip/video/programv2/VoipYTFaceBeautyRendererProgram$Companion;", "", "()V", "TAG", "", "plugin-voip_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/voip/video/programv2/VoipRenderOnScreenProgram$Companion;", "", "()V", "RENDER_MODE_TEXTURE", "", "RENDER_MODE_YUV", "RENDER_SIDE_LOCAL", "RENDER_SIDE_REMOTE", "TAG", "", "plugin-voip_release"})
 public final class g$a {}
 
 

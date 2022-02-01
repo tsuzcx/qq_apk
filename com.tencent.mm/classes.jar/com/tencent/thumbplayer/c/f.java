@@ -13,25 +13,25 @@ public final class f
 {
   private static void a(XmlSerializer paramXmlSerializer, ITPMediaTrackClip paramITPMediaTrackClip, long paramLong)
   {
-    AppMethodBeat.i(189136);
+    AppMethodBeat.i(220208);
     if ((paramITPMediaTrackClip instanceof a))
     {
       b(paramXmlSerializer, paramITPMediaTrackClip, paramLong);
-      AppMethodBeat.o(189136);
+      AppMethodBeat.o(220208);
       return;
     }
     if ((paramITPMediaTrackClip instanceof e))
     {
       c(paramXmlSerializer, paramITPMediaTrackClip, paramLong);
-      AppMethodBeat.o(189136);
+      AppMethodBeat.o(220208);
       return;
     }
-    AppMethodBeat.o(189136);
+    AppMethodBeat.o(220208);
   }
   
   static void a(XmlSerializer paramXmlSerializer, List<ITPMediaTrack> paramList, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(189135);
+    AppMethodBeat.i(220205);
     if (paramList != null)
     {
       String str1;
@@ -42,8 +42,8 @@ public final class f
           if (paramList.size() <= 0) {
             break label317;
           }
-          str1 = bX(paramInt, true);
-          String str2 = bX(paramInt, false);
+          str1 = cj(paramInt, true);
+          String str2 = cj(paramInt, false);
           paramXmlSerializer.startTag("", str1);
           paramList = paramList.iterator();
           if (!paramList.hasNext()) {
@@ -57,7 +57,7 @@ public final class f
           paramXmlSerializer.startTag("", "track_id");
           paramXmlSerializer.text(Integer.toString(((ITPMediaTrack)localObject).getTrackId()));
           paramXmlSerializer.endTag("", "track_id");
-          if ((paramInt == 1) || (!c.RYP.equals("base_audio")) || (((ITPMediaTrack)localObject).getTimelineDurationMs() <= paramLong)) {
+          if ((paramInt == 1) || (!c.ZBz.equals("base_audio")) || (((ITPMediaTrack)localObject).getTimelineDurationMs() <= paramLong)) {
             break label264;
           }
           long l = 0L;
@@ -81,7 +81,7 @@ public final class f
         catch (IOException paramXmlSerializer)
         {
           g.e("TPMediaCompositionXmlGenerator", paramXmlSerializer);
-          AppMethodBeat.o(189135);
+          AppMethodBeat.o(220205);
           return;
         }
         continue;
@@ -94,12 +94,12 @@ public final class f
       paramXmlSerializer.endTag("", str1);
     }
     label317:
-    AppMethodBeat.o(189135);
+    AppMethodBeat.o(220205);
   }
   
   static void a(XmlSerializer paramXmlSerializer, List<ITPMediaTrackClip> paramList, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(189134);
+    AppMethodBeat.i(220203);
     paramXmlSerializer.startTag("", paramString1);
     paramXmlSerializer.startTag("", paramString2);
     paramList = paramList.iterator();
@@ -108,12 +108,12 @@ public final class f
     }
     paramXmlSerializer.endTag("", paramString2);
     paramXmlSerializer.endTag("", paramString1);
-    AppMethodBeat.o(189134);
+    AppMethodBeat.o(220203);
   }
   
   private static void b(XmlSerializer paramXmlSerializer, ITPMediaTrackClip paramITPMediaTrackClip, long paramLong)
   {
-    AppMethodBeat.i(189137);
+    AppMethodBeat.i(220212);
     paramXmlSerializer.startTag("", "track_clip");
     paramXmlSerializer.startTag("", "clip_id");
     paramXmlSerializer.text(Integer.toString(paramITPMediaTrackClip.getClipId()));
@@ -129,41 +129,15 @@ public final class f
     {
       paramXmlSerializer.endTag("", "clip_playTimeMs");
       paramXmlSerializer.endTag("", "track_clip");
-      AppMethodBeat.o(189137);
+      AppMethodBeat.o(220212);
       return;
       paramXmlSerializer.text(Long.toString(paramITPMediaTrackClip.getOriginalDurationMs()));
     }
   }
   
-  private static String bX(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == 1)
-    {
-      if (paramBoolean) {
-        return "av_tracks";
-      }
-      return "av_track";
-    }
-    if (paramInt == 2)
-    {
-      if (paramBoolean) {
-        return "video_tracks";
-      }
-      return "video_track";
-    }
-    if (paramInt == 3)
-    {
-      if (paramBoolean) {
-        return "audio_tracks";
-      }
-      return "audio_track";
-    }
-    return "";
-  }
-  
   private static void c(XmlSerializer paramXmlSerializer, ITPMediaTrackClip paramITPMediaTrackClip, long paramLong)
   {
-    AppMethodBeat.i(189138);
+    AppMethodBeat.i(220218);
     paramXmlSerializer.startTag("", "track_clip");
     paramXmlSerializer.startTag("", "clip_id");
     paramXmlSerializer.text(Integer.toString(paramITPMediaTrackClip.getClipId()));
@@ -194,7 +168,7 @@ public final class f
     for (;;)
     {
       paramXmlSerializer.endTag("", "track_clip");
-      AppMethodBeat.o(189138);
+      AppMethodBeat.o(220218);
       return;
       paramXmlSerializer.startTag("", "clip_endTimeMs");
       paramXmlSerializer.text(Long.toString(paramITPMediaTrackClip.getEndTimeMs()));
@@ -204,10 +178,36 @@ public final class f
       paramXmlSerializer.endTag("", "clip_playTimeMs");
     }
   }
+  
+  private static String cj(int paramInt, boolean paramBoolean)
+  {
+    if (paramInt == 1)
+    {
+      if (paramBoolean) {
+        return "av_tracks";
+      }
+      return "av_track";
+    }
+    if (paramInt == 2)
+    {
+      if (paramBoolean) {
+        return "video_tracks";
+      }
+      return "video_track";
+    }
+    if (paramInt == 3)
+    {
+      if (paramBoolean) {
+        return "audio_tracks";
+      }
+      return "audio_track";
+    }
+    return "";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.c.f
  * JD-Core Version:    0.7.0.1
  */

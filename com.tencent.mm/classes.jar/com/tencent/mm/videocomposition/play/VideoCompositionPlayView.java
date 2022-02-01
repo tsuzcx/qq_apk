@@ -7,346 +7,383 @@ import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.videocomposition.c.b;
-import com.tencent.mm.videocomposition.n;
+import com.tencent.mm.videocomposition.j;
 import com.tencent.tav.player.Player;
 import com.tencent.tav.player.PlayerItem;
+import com.tencent.tav.player.PlayerLayer;
 import kotlin.g.a.m;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayView;", "Landroid/view/TextureView;", "Landroid/view/TextureView$SurfaceTextureListener;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "callback", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer$Companion$PlayerCallback;", "composition", "Lcom/tencent/mm/videocomposition/VideoComposition;", "getComposition", "()Lcom/tencent/mm/videocomposition/VideoComposition;", "setComposition", "(Lcom/tencent/mm/videocomposition/VideoComposition;)V", "firstFrame", "", "getFirstFrame", "()Z", "setFirstFrame", "(Z)V", "isStarted", "loop", "onSizeChanged", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "width", "height", "", "player", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer;", "getPlayer", "()Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer;", "setPlayer", "(Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer;)V", "profileCallback", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer$Companion$PlayerProfileCallback;", "surface", "Landroid/graphics/SurfaceTexture;", "surfaceHeight", "surfaceWidth", "createPlayer", "flushSurface", "getLaggingTime", "", "getPosition", "isLoop", "isPlaying", "muteOrigin", "mute", "onSurfaceTextureAvailable", "onSurfaceTextureDestroyed", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "pause", "release", "resume", "seekTo", "timeMs", "setLoop", "setOnSizeChangedListener", "setPlayRange", "start", "end", "setPlayerCallback", "setPlayerProfileCallback", "startWithUpdateComposition", "stop", "updateComposition", "playAfterUpdate", "seekToOriginPosition", "Companion", "video_composition_release"})
+@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayView;", "Landroid/view/TextureView;", "Landroid/view/TextureView$SurfaceTextureListener;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "callback", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer$Companion$PlayerCallback;", "composition", "Lcom/tencent/mm/videocomposition/VideoComposition;", "getComposition", "()Lcom/tencent/mm/videocomposition/VideoComposition;", "setComposition", "(Lcom/tencent/mm/videocomposition/VideoComposition;)V", "firstFrame", "", "getFirstFrame", "()Z", "setFirstFrame", "(Z)V", "isStarted", "loop", "onSizeChanged", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "width", "height", "", "player", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer;", "getPlayer", "()Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer;", "setPlayer", "(Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer;)V", "profileCallback", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer$Companion$PlayerProfileCallback;", "surface", "Landroid/graphics/SurfaceTexture;", "surfaceHeight", "surfaceWidth", "createPlayer", "flushSurface", "getLaggingTime", "", "getPosition", "isLoop", "isPlaying", "muteOrigin", "mute", "onSurfaceTextureAvailable", "onSurfaceTextureDestroyed", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "pause", "release", "resume", "seekTo", "timeMs", "setLoop", "setOnSizeChangedListener", "setPlayRange", "start", "end", "setPlayerCallback", "setPlayerProfileCallback", "startWithUpdateComposition", "stop", "updateComposition", "playAfterUpdate", "seekToOriginPosition", "Companion", "video_composition_release"})
 public class VideoCompositionPlayView
   extends TextureView
   implements TextureView.SurfaceTextureListener
 {
-  public static final VideoCompositionPlayView.a RhF;
-  public static final String TAG = "VideoCompositionPlayView";
-  private m<? super Integer, ? super Integer, x> GOp;
-  public n Gez;
-  public a RhC;
-  private a.a.a RhD;
-  private a.a.c RhE;
-  private boolean ihq;
-  protected boolean isStarted;
+  private static final String TAG = "VideoCompositionPlayView";
+  public static final a YJp;
+  private SurfaceTexture FhU;
+  private m<? super Integer, ? super Integer, x> NBV;
+  private j NmT;
+  private a YJm;
+  private a.a.a YJn;
+  private a.a.c YJo;
+  private boolean isStarted;
   public boolean loop;
   private int surfaceHeight;
   private int surfaceWidth;
-  private SurfaceTexture zCV;
+  private boolean vcc;
   
   static
   {
-    AppMethodBeat.i(216818);
-    RhF = new VideoCompositionPlayView.a((byte)0);
+    AppMethodBeat.i(248440);
+    YJp = new a((byte)0);
     TAG = "VideoCompositionPlayView";
-    AppMethodBeat.o(216818);
+    AppMethodBeat.o(248440);
   }
   
   public VideoCompositionPlayView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(216817);
+    AppMethodBeat.i(248438);
     this.loop = true;
-    this.ihq = true;
+    this.vcc = true;
     setSurfaceTextureListener((TextureView.SurfaceTextureListener)this);
     b.i(TAG, "create VLogCompositionPlayView", new Object[0]);
-    AppMethodBeat.o(216817);
+    AppMethodBeat.o(248438);
   }
   
   public VideoCompositionPlayView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(216816);
+    AppMethodBeat.i(248435);
     this.loop = true;
-    this.ihq = true;
+    this.vcc = true;
     setSurfaceTextureListener((TextureView.SurfaceTextureListener)this);
     b.i(TAG, "create VLogCompositionPlayView", new Object[0]);
-    AppMethodBeat.o(216816);
+    AppMethodBeat.o(248435);
   }
   
   public VideoCompositionPlayView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(216815);
+    AppMethodBeat.i(248433);
     this.loop = true;
-    this.ihq = true;
+    this.vcc = true;
     setSurfaceTextureListener((TextureView.SurfaceTextureListener)this);
     b.i(TAG, "create VLogCompositionPlayView", new Object[0]);
-    AppMethodBeat.o(216815);
+    AppMethodBeat.o(248433);
   }
   
-  public final void DB(boolean paramBoolean)
+  public final void Ib(boolean paramBoolean)
   {
-    AppMethodBeat.i(216804);
-    a locala = this.RhC;
+    AppMethodBeat.i(248410);
+    a locala = this.YJm;
     if (locala != null)
     {
-      locala.DB(paramBoolean);
-      AppMethodBeat.o(216804);
+      locala.Ib(paramBoolean);
+      AppMethodBeat.o(248410);
       return;
     }
-    AppMethodBeat.o(216804);
+    AppMethodBeat.o(248410);
   }
   
-  public void a(n paramn)
+  public void a(j paramj)
   {
-    AppMethodBeat.i(216802);
-    p.h(paramn, "composition");
-    b.printInfoStack(TAG, hashCode() + " start, surface:" + this.zCV + ", player:" + this.RhC + ", surfaceWidth:" + this.surfaceWidth + ", surfaceHeight:" + this.surfaceHeight + ", composition:" + paramn.hashCode(), new Object[0]);
+    AppMethodBeat.i(248402);
+    p.k(paramj, "composition");
+    b.printInfoStack(TAG, hashCode() + " start, surface:" + this.FhU + ", player:" + this.YJm + ", surfaceWidth:" + this.surfaceWidth + ", surfaceHeight:" + this.surfaceHeight + ", composition:" + paramj.hashCode(), new Object[0]);
     a locala;
-    if ((this.RhC != null) && (this.zCV != null) && (this.surfaceWidth > 0) && (this.surfaceHeight > 0) && ((p.j(paramn, this.Gez) ^ true)))
+    if ((this.YJm != null) && (this.FhU != null) && (this.surfaceWidth > 0) && (this.surfaceHeight > 0) && ((p.h(paramj, this.NmT) ^ true)))
     {
       b.i(TAG, "startWithUpdateComposition", new Object[0]);
-      locala = this.RhC;
+      locala = this.YJm;
       if (locala != null) {
-        a.a(locala, paramn, true, 0L, 12);
+        a.a(locala, paramj);
       }
-      this.Gez = paramn;
-      AppMethodBeat.o(216802);
+      this.NmT = paramj;
+      AppMethodBeat.o(248402);
       return;
     }
-    if (p.j(paramn, this.Gez))
+    if (p.h(paramj, this.NmT))
     {
-      if (this.zCV != null)
+      if (this.FhU != null)
       {
         b.i(TAG, "same composition directly start", new Object[0]);
         this.isStarted = true;
-        locala = this.RhC;
+        locala = this.YJm;
         if (locala != null)
         {
-          a.a(locala, paramn, true, 0L, 12);
-          AppMethodBeat.o(216802);
+          a.a(locala, paramj);
+          AppMethodBeat.o(248402);
           return;
         }
-        AppMethodBeat.o(216802);
+        AppMethodBeat.o(248402);
         return;
       }
       b.i(TAG, "same composition but surface is null", new Object[0]);
       this.isStarted = true;
-      AppMethodBeat.o(216802);
+      AppMethodBeat.o(248402);
       return;
     }
-    this.Gez = paramn;
-    if ((this.zCV != null) && (this.surfaceWidth > 0) && (this.surfaceHeight > 0)) {
-      dFu();
+    this.NmT = paramj;
+    if ((this.FhU != null) && (this.surfaceWidth > 0) && (this.surfaceHeight > 0)) {
+      ehi();
     }
     this.isStarted = true;
-    paramn = this.RhC;
-    if (paramn != null)
+    paramj = this.YJm;
+    if (paramj != null)
     {
-      paramn.start();
-      AppMethodBeat.o(216802);
+      paramj.start();
+      AppMethodBeat.o(248402);
       return;
     }
-    AppMethodBeat.o(216802);
+    AppMethodBeat.o(248402);
   }
   
-  public final void at(long paramLong1, long paramLong2)
+  public final void a(j paramj, boolean paramBoolean1, boolean paramBoolean2, long paramLong)
   {
-    AppMethodBeat.i(216797);
-    a locala = this.RhC;
+    AppMethodBeat.i(248404);
+    p.k(paramj, "composition");
+    b.i(TAG, "updateComposition, playAfterUpdate:" + paramBoolean1 + ", seekToOriginPosition:" + paramBoolean2 + ", seekTo:" + paramLong, new Object[0]);
+    a locala = this.YJm;
+    if (locala != null) {
+      locala.a(paramj, paramBoolean1, paramBoolean2, paramLong);
+    }
+    this.NmT = paramj;
+    AppMethodBeat.o(248404);
+  }
+  
+  public final void aG(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(248395);
+    a locala = this.YJm;
     if (locala != null)
     {
-      locala.at(paramLong1, paramLong2);
-      AppMethodBeat.o(216797);
+      locala.aG(paramLong1, paramLong2);
+      AppMethodBeat.o(248395);
       return;
     }
-    AppMethodBeat.o(216797);
+    AppMethodBeat.o(248395);
   }
   
-  public final void bLe()
+  public final void bXe()
   {
-    AppMethodBeat.i(216812);
-    a locala = this.RhC;
+    AppMethodBeat.i(248428);
+    a locala = this.YJm;
     if (locala != null)
     {
-      locala.hft();
-      AppMethodBeat.o(216812);
+      locala.igP();
+      AppMethodBeat.o(248428);
       return;
     }
-    AppMethodBeat.o(216812);
+    AppMethodBeat.o(248428);
   }
   
-  protected void dFu()
+  protected void ehi()
   {
-    AppMethodBeat.i(216803);
-    if ((this.Gez != null) && (this.zCV != null))
+    AppMethodBeat.i(248408);
+    if ((this.NmT != null) && (this.FhU != null))
     {
-      b.i(TAG, "do createPlayer, composition:" + this.Gez, new Object[0]);
-      Object localObject = this.Gez;
+      b.i(TAG, "do createPlayer, composition:" + this.NmT, new Object[0]);
+      Object localObject = this.NmT;
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
-      this.RhC = new a((n)localObject);
-      localObject = this.RhC;
+      this.YJm = new a((j)localObject);
+      localObject = this.YJm;
       if (localObject != null)
       {
-        SurfaceTexture localSurfaceTexture = this.zCV;
+        SurfaceTexture localSurfaceTexture = this.FhU;
         if (localSurfaceTexture == null) {
-          p.hyc();
+          p.iCn();
         }
-        ((a)localObject).c(localSurfaceTexture, this.surfaceWidth, this.surfaceHeight);
+        int i = this.surfaceWidth;
+        int j = this.surfaceHeight;
+        p.k(localSurfaceTexture, "surfaceTexture");
+        ((a)localObject).surfaceWidth = i;
+        ((a)localObject).surfaceHeight = j;
+        ((a)localObject).surfaceTexture = localSurfaceTexture;
+        b.i("VideoCompositionPlayer", "createPlayerLayerBySurfaceTexture: " + localSurfaceTexture + ", size:[" + i + ", " + j + ']', new Object[0]);
+        ((a)localObject).playerLayer = new PlayerLayer(localSurfaceTexture, i, j);
+        PlayerLayer localPlayerLayer = ((a)localObject).playerLayer;
+        if (localPlayerLayer != null) {
+          localPlayerLayer.setPlayer(((a)localObject).player);
+        }
+        ((a)localObject).YJs = true;
+        b.i("VideoCompositionPlayer", "setSurfaceTexture: " + localSurfaceTexture + ", width:" + i + ", height:" + j, new Object[0]);
       }
-      localObject = this.RhC;
+      localObject = this.YJm;
       if (localObject != null) {
         ((a)localObject).setLoop(this.loop);
       }
-      if (this.RhD != null)
+      if (this.YJn != null)
       {
-        localObject = this.RhC;
+        localObject = this.YJm;
         if (localObject != null) {
-          ((a)localObject).setPlayerCallback(this.RhD);
+          ((a)localObject).setPlayerCallback(this.YJn);
         }
       }
-      localObject = this.RhC;
+      localObject = this.YJm;
       if (localObject != null)
       {
-        ((a)localObject).RhE = this.RhE;
-        AppMethodBeat.o(216803);
+        ((a)localObject).YJo = this.YJo;
+        AppMethodBeat.o(248408);
         return;
       }
     }
-    AppMethodBeat.o(216803);
+    AppMethodBeat.o(248408);
   }
   
-  protected final n getComposition()
+  protected final j getComposition()
   {
-    return this.Gez;
+    return this.NmT;
   }
   
   protected final boolean getFirstFrame()
   {
-    return this.ihq;
+    return this.vcc;
   }
   
   public final long getLaggingTime()
   {
-    AppMethodBeat.i(216814);
-    a locala = this.RhC;
+    AppMethodBeat.i(248431);
+    a locala = this.YJm;
     if (locala != null)
     {
       long l = locala.playerItem.getLaggingTime();
-      AppMethodBeat.o(216814);
+      AppMethodBeat.o(248431);
       return l;
     }
-    AppMethodBeat.o(216814);
+    AppMethodBeat.o(248431);
     return 0L;
   }
   
   protected final a getPlayer()
   {
-    return this.RhC;
+    return this.YJm;
   }
   
   public final long getPosition()
   {
-    AppMethodBeat.i(216813);
-    a locala = this.RhC;
+    AppMethodBeat.i(248430);
+    a locala = this.YJm;
     if (locala != null)
     {
-      long l = locala.hfu();
-      AppMethodBeat.o(216813);
+      long l = locala.igQ();
+      AppMethodBeat.o(248430);
       return l;
     }
-    AppMethodBeat.o(216813);
+    AppMethodBeat.o(248430);
     return 0L;
   }
   
   public final boolean isPlaying()
   {
-    AppMethodBeat.i(216811);
-    Object localObject = this.RhC;
+    AppMethodBeat.i(248427);
+    Object localObject = this.YJm;
     if (localObject != null)
     {
       localObject = ((a)localObject).player;
       if (localObject != null)
       {
         boolean bool = ((Player)localObject).isPlaying();
-        AppMethodBeat.o(216811);
+        AppMethodBeat.o(248427);
         return bool;
       }
-      AppMethodBeat.o(216811);
+      AppMethodBeat.o(248427);
       return false;
     }
-    AppMethodBeat.o(216811);
+    AppMethodBeat.o(248427);
     return false;
+  }
+  
+  public final boolean isStarted()
+  {
+    return this.isStarted;
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(216801);
+    AppMethodBeat.i(248400);
     b.i(TAG, "surfaceAvailable, surfaceTexture:" + getSurfaceTexture() + ", width:" + paramInt1 + ", height:" + paramInt2, new Object[0]);
-    this.zCV = paramSurfaceTexture;
+    this.FhU = paramSurfaceTexture;
     this.surfaceWidth = paramInt1;
     this.surfaceHeight = paramInt2;
-    if (this.Gez != null)
+    if (this.NmT != null)
     {
-      dFu();
+      ehi();
       if (this.isStarted)
       {
-        paramSurfaceTexture = this.RhC;
+        paramSurfaceTexture = this.YJm;
         if (paramSurfaceTexture != null)
         {
           paramSurfaceTexture.start();
-          AppMethodBeat.o(216801);
+          AppMethodBeat.o(248400);
           return;
         }
       }
     }
-    AppMethodBeat.o(216801);
+    AppMethodBeat.o(248400);
   }
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(216800);
+    AppMethodBeat.i(248399);
     b.i(TAG, "surfaceDestroy", new Object[0]);
     if (paramSurfaceTexture != null) {
       paramSurfaceTexture.release();
     }
-    paramSurfaceTexture = this.RhC;
+    paramSurfaceTexture = this.YJm;
     if (paramSurfaceTexture != null) {
       paramSurfaceTexture.release();
     }
     this.surfaceWidth = 0;
     this.surfaceHeight = 0;
-    this.zCV = null;
-    AppMethodBeat.o(216800);
+    this.FhU = null;
+    AppMethodBeat.o(248399);
     return false;
   }
   
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(216798);
+    AppMethodBeat.i(248396);
     b.i(TAG, "surfaceSizeChanged, surfaceTexture:" + getSurfaceTexture() + ", width:" + paramInt1 + ", height:" + paramInt2, new Object[0]);
     this.surfaceWidth = paramInt1;
     this.surfaceHeight = paramInt2;
-    paramSurfaceTexture = this.RhC;
-    if (paramSurfaceTexture != null) {
-      paramSurfaceTexture.lX(paramInt1, paramInt2);
+    paramSurfaceTexture = this.YJm;
+    if (paramSurfaceTexture != null)
+    {
+      b.i("VideoCompositionPlayer", "updateDisplaySize:[" + paramInt1 + ", " + paramInt2 + ']', new Object[0]);
+      paramSurfaceTexture = paramSurfaceTexture.player;
+      if (paramSurfaceTexture != null) {
+        paramSurfaceTexture.updateViewport(paramInt1, paramInt2);
+      }
     }
-    paramSurfaceTexture = this.GOp;
+    paramSurfaceTexture = this.NBV;
     if (paramSurfaceTexture != null)
     {
       paramSurfaceTexture.invoke(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-      AppMethodBeat.o(216798);
+      AppMethodBeat.o(248396);
       return;
     }
-    AppMethodBeat.o(216798);
+    AppMethodBeat.o(248396);
   }
   
   public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(216799);
-    if ((this.ihq) && (this.isStarted))
+    AppMethodBeat.i(248397);
+    if ((this.vcc) && (this.isStarted))
     {
       b.i(TAG, "onSurfaceTextureUpdated", new Object[0]);
-      paramSurfaceTexture = this.RhD;
+      paramSurfaceTexture = this.YJn;
       if (paramSurfaceTexture != null) {
-        paramSurfaceTexture.dEU();
+        paramSurfaceTexture.egD();
       }
-      this.ihq = false;
+      this.vcc = false;
     }
-    a.a.a locala = this.RhD;
+    a.a.a locala = this.YJn;
     paramSurfaceTexture = locala;
     if (!(locala instanceof a.a.b)) {
       paramSurfaceTexture = null;
@@ -354,153 +391,167 @@ public class VideoCompositionPlayView
     paramSurfaceTexture = (a.a.b)paramSurfaceTexture;
     if (paramSurfaceTexture != null)
     {
-      paramSurfaceTexture.dEW();
-      AppMethodBeat.o(216799);
+      paramSurfaceTexture.egF();
+      AppMethodBeat.o(248397);
       return;
     }
-    AppMethodBeat.o(216799);
+    AppMethodBeat.o(248397);
   }
   
   public boolean pause()
   {
-    AppMethodBeat.i(216805);
+    AppMethodBeat.i(248411);
     b.i(TAG, "pause", new Object[0]);
     this.isStarted = false;
-    a locala = this.RhC;
-    if (locala != null) {
-      locala.pause();
+    a locala = this.YJm;
+    if (locala != null)
+    {
+      b.i("VideoCompositionPlayer", "pause", new Object[0]);
+      Player localPlayer = locala.player;
+      if (localPlayer != null) {
+        localPlayer.pause();
+      }
+      locala.isStarted = false;
     }
-    AppMethodBeat.o(216805);
+    AppMethodBeat.o(248411);
     return true;
   }
   
   public final void release()
   {
-    AppMethodBeat.i(216808);
+    AppMethodBeat.i(248419);
     b.i(TAG, "release", new Object[0]);
     this.isStarted = false;
-    a locala = this.RhC;
+    a locala = this.YJm;
     if (locala != null)
     {
       locala.release();
-      AppMethodBeat.o(216808);
+      AppMethodBeat.o(248419);
       return;
     }
-    AppMethodBeat.o(216808);
+    AppMethodBeat.o(248419);
   }
   
   public final void resume()
   {
-    AppMethodBeat.i(216806);
+    AppMethodBeat.i(248414);
     b.i(TAG, "resume", new Object[0]);
     this.isStarted = true;
-    a locala = this.RhC;
+    a locala = this.YJm;
     if (locala != null)
     {
       locala.start();
-      AppMethodBeat.o(216806);
+      AppMethodBeat.o(248414);
       return;
     }
-    AppMethodBeat.o(216806);
+    AppMethodBeat.o(248414);
   }
   
   public final void seekTo(long paramLong)
   {
-    AppMethodBeat.i(216809);
+    AppMethodBeat.i(248422);
     b.i(TAG, "seekTo:".concat(String.valueOf(paramLong)), new Object[0]);
-    a locala = this.RhC;
+    a locala = this.YJm;
     if (locala != null)
     {
       locala.seekTo(paramLong);
-      AppMethodBeat.o(216809);
+      AppMethodBeat.o(248422);
       return;
     }
-    AppMethodBeat.o(216809);
+    AppMethodBeat.o(248422);
   }
   
-  protected final void setComposition(n paramn)
+  protected final void setComposition(j paramj)
   {
-    this.Gez = paramn;
+    this.NmT = paramj;
   }
   
   protected final void setFirstFrame(boolean paramBoolean)
   {
-    this.ihq = paramBoolean;
+    this.vcc = paramBoolean;
   }
   
   public final void setLoop(boolean paramBoolean)
   {
-    AppMethodBeat.i(216810);
+    AppMethodBeat.i(248424);
     b.i(TAG, "setLoop:".concat(String.valueOf(paramBoolean)), new Object[0]);
     this.loop = paramBoolean;
-    if (this.RhC != null)
+    if (this.YJm != null)
     {
-      a locala = this.RhC;
+      a locala = this.YJm;
       if (locala != null)
       {
         locala.setLoop(paramBoolean);
-        AppMethodBeat.o(216810);
+        AppMethodBeat.o(248424);
         return;
       }
-      AppMethodBeat.o(216810);
+      AppMethodBeat.o(248424);
       return;
     }
     this.loop = paramBoolean;
-    AppMethodBeat.o(216810);
+    AppMethodBeat.o(248424);
   }
   
   public final void setOnSizeChangedListener(m<? super Integer, ? super Integer, x> paramm)
   {
-    this.GOp = paramm;
+    this.NBV = paramm;
   }
   
   protected final void setPlayer(a parama)
   {
-    this.RhC = parama;
+    this.YJm = parama;
   }
   
   public final void setPlayerCallback(a.a.a parama)
   {
-    AppMethodBeat.i(216796);
-    if (this.RhC != null)
+    AppMethodBeat.i(248394);
+    if (this.YJm != null)
     {
-      a locala = this.RhC;
+      a locala = this.YJm;
       if (locala != null) {
         locala.setPlayerCallback(parama);
       }
     }
-    this.RhD = parama;
-    AppMethodBeat.o(216796);
+    this.YJn = parama;
+    AppMethodBeat.o(248394);
   }
   
   public final void setPlayerProfileCallback(a.a.c paramc)
   {
-    this.RhE = paramc;
-    a locala = this.RhC;
+    this.YJo = paramc;
+    a locala = this.YJm;
     if (locala != null) {
-      locala.RhE = paramc;
+      locala.YJo = paramc;
     }
   }
   
   public void stop()
   {
-    AppMethodBeat.i(216807);
+    AppMethodBeat.i(248417);
     b.i(TAG, "stop", new Object[0]);
     this.isStarted = false;
-    this.ihq = true;
-    a locala = this.RhC;
+    this.vcc = true;
+    a locala = this.YJm;
     if (locala != null)
     {
-      locala.stop();
-      AppMethodBeat.o(216807);
+      b.i("VideoCompositionPlayer", "stop", new Object[0]);
+      Player localPlayer = locala.player;
+      if (localPlayer != null) {
+        localPlayer.stop();
+      }
+      locala.isStarted = false;
+      AppMethodBeat.o(248417);
       return;
     }
-    AppMethodBeat.o(216807);
+    AppMethodBeat.o(248417);
   }
+  
+  @l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayView$Companion;", "", "()V", "TAG", "", "video_composition_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.videocomposition.play.VideoCompositionPlayView
  * JD-Core Version:    0.7.0.1
  */

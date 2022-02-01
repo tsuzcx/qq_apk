@@ -8,31 +8,30 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.lj;
-import com.tencent.mm.g.a.zq;
-import com.tencent.mm.g.a.zr;
-import com.tencent.mm.g.a.zv;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.q;
+import com.tencent.mm.f.a.aax;
+import com.tencent.mm.f.a.aay;
+import com.tencent.mm.f.a.abc;
+import com.tencent.mm.f.a.ma;
 import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet.bind.a.c;
-import com.tencent.mm.plugin.wallet_core.c.ad;
+import com.tencent.mm.plugin.wallet_core.c.ae;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.al;
-import com.tencent.mm.plugin.wallet_core.model.an;
-import com.tencent.mm.plugin.wallet_core.ui.u;
-import com.tencent.mm.plugin.wallet_core.ui.u.a;
-import com.tencent.mm.plugin.wallet_core.ui.u.b;
+import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.plugin.wallet_core.model.ao;
+import com.tencent.mm.plugin.wallet_core.ui.v;
+import com.tencent.mm.plugin.wallet_core.ui.v.a;
+import com.tencent.mm.plugin.wallet_core.ui.v.b;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 import com.tencent.mm.pluginsdk.wallet.e;
-import com.tencent.mm.protocal.protobuf.zf;
+import com.tencent.mm.protocal.protobuf.zj;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMStack;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.c.ab;
 import com.tencent.mm.wallet_core.c.z;
 import com.tencent.mm.wallet_core.d.a;
@@ -43,61 +42,61 @@ import java.util.ArrayList;
 public class WalletBindUI
   extends WalletBaseUI
 {
-  private IListener<lj> AJa;
-  private PayInfo BDB;
-  private boolean HDC;
-  private String HDD;
-  private int HDE;
-  private boolean HDF;
-  private String HDG;
-  private com.tencent.mm.plugin.wallet_core.c.d HDH;
-  private boolean HDI;
-  IListener HDJ;
+  private v ERr;
+  private IListener<ma> GCj;
+  private PayInfo HzF;
+  private com.tencent.mm.plugin.wallet_core.c.d OvA;
+  private boolean OvB;
+  IListener OvC;
+  private boolean Ovv;
+  private String Ovw;
+  private int Ovx;
+  private boolean Ovy;
+  private String Ovz;
   private String token;
-  private u zmb;
   
   public WalletBindUI()
   {
     AppMethodBeat.i(69144);
-    this.BDB = new PayInfo();
-    this.HDC = false;
-    this.HDE = -1;
+    this.HzF = new PayInfo();
+    this.Ovv = false;
+    this.Ovx = -1;
     this.token = null;
-    this.HDF = false;
-    this.HDG = null;
-    this.HDH = null;
-    this.HDI = false;
-    this.zmb = new u();
-    this.HDJ = new IListener() {};
-    this.AJa = new IListener() {};
+    this.Ovy = false;
+    this.Ovz = null;
+    this.OvA = null;
+    this.OvB = false;
+    this.ERr = new v();
+    this.OvC = new IListener() {};
+    this.GCj = new IListener() {};
     AppMethodBeat.o(69144);
   }
   
-  private void aH(Bundle paramBundle)
+  private void aD(Bundle paramBundle)
   {
     AppMethodBeat.i(69158);
     Log.d("MicroMsg.WalletBindUI", "startKindaBindCard");
     if (paramBundle != null)
     {
-      ab.mg(6, paramBundle.getInt("key_bind_scene"));
-      z.aqh(paramBundle.getInt("key_bind_scene"));
+      ab.ny(6, paramBundle.getInt("key_bind_scene"));
+      z.azF(paramBundle.getInt("key_bind_scene"));
     }
     for (;;)
     {
-      ((com.tencent.mm.pluginsdk.wallet.a)g.af(com.tencent.mm.pluginsdk.wallet.a.class)).startBindCardUseCase(this, paramBundle);
+      ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.pluginsdk.wallet.a.class)).startBindCardUseCase(this, paramBundle);
       AppMethodBeat.o(69158);
       return;
-      ab.mg(6, 0);
-      z.aqh(0);
+      ab.ny(6, 0);
+      z.azF(0);
     }
   }
   
-  private void aev(int paramInt)
+  private void ami(int paramInt)
   {
     AppMethodBeat.i(69147);
     Log.i("MicroMsg.WalletBindUI", "doBindCardForOtherScene " + Util.getStack().toString());
     Object localObject = getInput();
-    ((Bundle)localObject).putParcelable("key_pay_info", this.BDB);
+    ((Bundle)localObject).putParcelable("key_pay_info", this.HzF);
     ((Bundle)localObject).putBoolean("key_need_bind_response", true);
     ((Bundle)localObject).putString("key_custom_bind_tips", getIntent().getStringExtra("key_custom_bind_tips"));
     boolean bool = getIntent().getBooleanExtra("from_kinda", false);
@@ -106,21 +105,21 @@ public class WalletBindUI
       ((Bundle)localObject).putBoolean("is_from_new_cashier", true);
       ((Bundle)localObject).putString("start_activity_class", getClass().getName());
     }
-    s.fOg();
-    if (s.fOh().fRp())
+    s.gGL();
+    if (s.gGM().gJV())
     {
       Log.i("MicroMsg.WalletBindUI", "user status invalid");
       if (paramInt == 4) {
-        doSceneForceProgress(new ad(null, 20));
+        doSceneForceProgress(new ae(null, 20));
       }
     }
     for (;;)
     {
       if (bool)
       {
-        localObject = com.tencent.mm.wallet_core.a.by(this);
+        localObject = com.tencent.mm.wallet_core.a.bF(this);
         if ((localObject instanceof com.tencent.mm.plugin.wallet_core.b.b)) {
-          ((com.tencent.mm.plugin.wallet_core.b.b)localObject).HPw = new com.tencent.mm.plugin.wallet_core.b.b.a()
+          ((com.tencent.mm.plugin.wallet_core.b.b)localObject).OHE = new com.tencent.mm.plugin.wallet_core.b.b.a()
           {
             public final void run(int paramAnonymousInt)
             {
@@ -141,34 +140,34 @@ public class WalletBindUI
       }
       AppMethodBeat.o(69147);
       return;
-      doSceneForceProgress(new ad(null, 12));
+      doSceneForceProgress(new ae(null, 12));
       continue;
-      s.fOg();
-      if (s.fOh().fRk())
+      s.gGL();
+      if (s.gGM().gJQ())
       {
         Log.i("MicroMsg.WalletBindUI", "user status reg");
-        this.HDC = true;
-        this.BDB.dVw = this.HDE;
-        ((Bundle)localObject).putInt("key_bind_scene", this.BDB.dVw);
+        this.Ovv = true;
+        this.HzF.fOZ = this.Ovx;
+        ((Bundle)localObject).putInt("key_bind_scene", this.HzF.fOZ);
         if (!Util.isNullOrNil(this.token)) {
           ((Bundle)localObject).putString("kreq_token", this.token);
         }
-        if ((this.HDF) && (!Util.isNullOrNil(this.HDG)))
+        if ((this.Ovy) && (!Util.isNullOrNil(this.Ovz)))
         {
           ((Bundle)localObject).putBoolean("key_bind_card_can_pass_pwd", true);
-          ((Bundle)localObject).putString("key_bind_card_user_token", this.HDG);
+          ((Bundle)localObject).putString("key_bind_card_user_token", this.Ovz);
         }
         for (;;)
         {
-          if (e.gsR() != null) {
-            ((Bundle)localObject).putString("jsapi_reqkey", e.gsR());
+          if (e.hoe() != null) {
+            ((Bundle)localObject).putString("jsapi_reqkey", e.hoe());
           }
-          com.tencent.mm.wallet_core.b.hgC();
-          if (!com.tencent.mm.wallet_core.b.b(com.tencent.mm.plugin.expt.b.b.a.rZU, true)) {
+          com.tencent.mm.wallet_core.b.iie();
+          if (!com.tencent.mm.wallet_core.b.b(com.tencent.mm.plugin.expt.b.b.a.vGW, true)) {
             break;
           }
-          EventCenter.instance.add(this.AJa);
-          aH((Bundle)localObject);
+          EventCenter.instance.add(this.GCj);
+          aD((Bundle)localObject);
           AppMethodBeat.o(69147);
           return;
           ((Bundle)localObject).putBoolean("key_bind_card_can_pass_pwd", false);
@@ -179,28 +178,28 @@ public class WalletBindUI
       else
       {
         Log.i("MicroMsg.WalletBindUI", "user status unreg");
-        this.HDC = true;
-        if (this.HDE >= 0)
+        this.Ovv = true;
+        if (this.Ovx >= 0)
         {
-          this.BDB.dVw = this.HDE;
-          ((Bundle)localObject).putInt("key_bind_scene", this.BDB.dVw);
-          if ((!this.HDF) || (Util.isNullOrNil(this.HDG))) {
+          this.HzF.fOZ = this.Ovx;
+          ((Bundle)localObject).putInt("key_bind_scene", this.HzF.fOZ);
+          if ((!this.Ovy) || (Util.isNullOrNil(this.Ovz))) {
             break label523;
           }
           ((Bundle)localObject).putBoolean("key_bind_card_can_pass_pwd", true);
-          ((Bundle)localObject).putString("key_bind_card_user_token", this.HDG);
+          ((Bundle)localObject).putString("key_bind_card_user_token", this.Ovz);
         }
         for (;;)
         {
-          com.tencent.mm.wallet_core.b.hgC();
-          if (!com.tencent.mm.wallet_core.b.b(com.tencent.mm.plugin.expt.b.b.a.rZU, true)) {
+          com.tencent.mm.wallet_core.b.iie();
+          if (!com.tencent.mm.wallet_core.b.b(com.tencent.mm.plugin.expt.b.b.a.vGW, true)) {
             break label534;
           }
-          EventCenter.instance.add(this.AJa);
-          aH((Bundle)localObject);
+          EventCenter.instance.add(this.GCj);
+          aD((Bundle)localObject);
           AppMethodBeat.o(69147);
           return;
-          this.BDB.dVw = 1;
+          this.HzF.fOZ = 1;
           break;
           label523:
           ((Bundle)localObject).putBoolean("key_bind_card_can_pass_pwd", false);
@@ -212,26 +211,26 @@ public class WalletBindUI
     }
   }
   
-  private void aew(int paramInt)
+  private void amj(int paramInt)
   {
     AppMethodBeat.i(69159);
     if (getIntent().getBooleanExtra("from_kinda", false))
     {
-      zq localzq = new zq();
-      localzq.efK.result = paramInt;
-      EventCenter.instance.publish(localzq);
+      aax localaax = new aax();
+      localaax.gaa.result = paramInt;
+      EventCenter.instance.publish(localaax);
     }
     AppMethodBeat.o(69159);
   }
   
-  private void amW(String paramString)
+  private void auQ(String paramString)
   {
     AppMethodBeat.i(69157);
     String str = paramString;
     if (Util.isNullOrNil(paramString)) {
-      str = getString(2131768354);
+      str = getString(a.i.wallet_unknown_err);
     }
-    h.a(this, str, null, false, new DialogInterface.OnClickListener()
+    com.tencent.mm.ui.base.h.a(this, str, null, false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -245,30 +244,30 @@ public class WalletBindUI
     AppMethodBeat.o(69157);
   }
   
-  private void fOc()
+  private void gGH()
   {
     AppMethodBeat.i(69146);
-    this.BDB.dVw = this.HDE;
-    getInput().putParcelable("key_pay_info", this.BDB);
-    if (this.HDE == 2)
+    this.HzF.fOZ = this.Ovx;
+    getInput().putParcelable("key_pay_info", this.HzF);
+    if (this.Ovx == 2)
     {
-      if (!Util.isNullOrNil(this.HDD))
+      if (!Util.isNullOrNil(this.Ovw))
       {
-        Log.d("MicroMsg.WalletBindUI", "importKey " + this.HDD);
-        doSceneForceProgress(new c(this.HDD, this.BDB));
+        Log.d("MicroMsg.WalletBindUI", "importKey " + this.Ovw);
+        doSceneForceProgress(new c(this.Ovw, this.HzF));
         AppMethodBeat.o(69146);
         return;
       }
-      amW("");
+      auQ("");
       AppMethodBeat.o(69146);
       return;
     }
-    if (this.HDE == 4)
+    if (this.Ovx == 4)
     {
-      z.aqh(4);
+      z.azF(4);
       if (getIntent() == null)
       {
-        amW("");
+        auQ("");
         AppMethodBeat.o(69146);
         return;
       }
@@ -280,31 +279,31 @@ public class WalletBindUI
       String str6 = getIntent().getStringExtra("paySignature");
       String str7 = getIntent().getStringExtra("url");
       int i = getIntent().getIntExtra("pay_channel", 0);
-      if (this.HDE == 6) {}
-      for (this.HDH = new com.tencent.mm.plugin.wallet_core.c.d(str1, str2, str3, str4, str5, str6, str7, 2, "getBrandWCPayCreateCreditCardRequest", i);; this.HDH = new com.tencent.mm.plugin.wallet_core.c.d(str1, str2, str3, str4, str5, str6, str7, 1, "getBrandWCPayBindCardRequest", i))
+      if (this.Ovx == 6) {}
+      for (this.OvA = new com.tencent.mm.plugin.wallet_core.c.d(str1, str2, str3, str4, str5, str6, str7, 2, "getBrandWCPayCreateCreditCardRequest", i);; this.OvA = new com.tencent.mm.plugin.wallet_core.c.d(str1, str2, str3, str4, str5, str6, str7, 1, "getBrandWCPayBindCardRequest", i))
       {
-        doSceneForceProgress(this.HDH);
+        doSceneForceProgress(this.OvA);
         AppMethodBeat.o(69146);
         return;
       }
     }
-    if (this.HDE == 6)
+    if (this.Ovx == 6)
     {
-      fOd();
+      gGI();
       AppMethodBeat.o(69146);
       return;
     }
-    aev(this.HDE);
+    ami(this.Ovx);
     AppMethodBeat.o(69146);
   }
   
-  private void fOd()
+  private void gGI()
   {
     AppMethodBeat.i(69148);
-    s.fOg();
-    if (s.fOh().fRp())
+    s.gGL();
+    if (s.gGM().gJV())
     {
-      doSceneForceProgress(new ad(null, 12));
+      doSceneForceProgress(new ae(null, 12));
       AppMethodBeat.o(69148);
       return;
     }
@@ -338,8 +337,8 @@ public class WalletBindUI
       }
       if ((!Util.isNullOrNil(str)) && (!Util.isNullOrNil((String)localObject1)))
       {
-        s.fOg();
-        if (s.fOh().aVn((String)localObject1))
+        s.gGL();
+        if (s.gGM().bgW((String)localObject1))
         {
           localObject2 = new Bundle();
           localObject3 = new Bankcard();
@@ -380,11 +379,11 @@ public class WalletBindUI
     {
       if (paramInt2 == -1)
       {
-        this.zmb.ehm();
+        this.ERr.eQT();
         AppMethodBeat.o(69152);
         return;
       }
-      this.zmb.cancel();
+      this.ERr.cancel();
       finish();
     }
     AppMethodBeat.o(69152);
@@ -396,9 +395,9 @@ public class WalletBindUI
     AppMethodBeat.i(69145);
     super.onCreate(paramBundle);
     addSceneEndListener(580);
-    this.zmb.IkQ = new u.b()
+    this.ERr.Pdi = new v.b()
     {
-      public final int eho()
+      public final int eQV()
       {
         return 1;
       }
@@ -408,14 +407,14 @@ public class WalletBindUI
         return WalletBindUI.this;
       }
     };
-    this.HDD = getIntent().getStringExtra("key_import_key");
-    this.HDE = getIntent().getIntExtra("key_bind_scene", -1);
+    this.Ovw = getIntent().getStringExtra("key_import_key");
+    this.Ovx = getIntent().getIntExtra("key_bind_scene", -1);
     if (getIntent() != null) {
       i = getIntent().getIntExtra("key_bind_scene", 13);
     }
-    paramBundle = new zv();
+    paramBundle = new abc();
     if (i == 4) {}
-    for (paramBundle.efR.scene = 20;; paramBundle.efR.scene = 13)
+    for (paramBundle.gah.scene = 20;; paramBundle.gah.scene = 13)
     {
       paramBundle.callback = new Runnable()
       {
@@ -429,8 +428,8 @@ public class WalletBindUI
           }
           if (WalletBindUI.b(WalletBindUI.this) == 4)
           {
-            al localal = new al();
-            WalletBindUI.d(WalletBindUI.this).a(new u.a()
+            am localam = new am();
+            WalletBindUI.d(WalletBindUI.this).a(new v.a()
             {
               public final void cancel()
               {
@@ -439,20 +438,20 @@ public class WalletBindUI
                 AppMethodBeat.o(69134);
               }
               
-              public final void ehm()
+              public final void eQT()
               {
                 AppMethodBeat.i(69133);
                 WalletBindUI.c(WalletBindUI.this);
                 AppMethodBeat.o(69133);
               }
               
-              public final void ehn()
+              public final void eQU()
               {
                 AppMethodBeat.i(69135);
                 WalletBindUI.c(WalletBindUI.this);
                 AppMethodBeat.o(69135);
               }
-            }, localal.fRi());
+            }, localam.gJO());
           }
           for (;;)
           {
@@ -466,8 +465,8 @@ public class WalletBindUI
         }
       };
       EventCenter.instance.publish(paramBundle);
-      EventCenter.instance.addListener(this.HDJ);
-      ab.mg(6, 0);
+      EventCenter.instance.addListener(this.OvC);
+      ab.ny(6, 0);
       AppMethodBeat.o(69145);
       return;
     }
@@ -477,7 +476,7 @@ public class WalletBindUI
   {
     AppMethodBeat.i(69151);
     removeSceneEndListener(580);
-    EventCenter.instance.removeListener(this.HDJ);
+    EventCenter.instance.removeListener(this.OvC);
     super.onDestroy();
     AppMethodBeat.o(69151);
   }
@@ -489,7 +488,7 @@ public class WalletBindUI
     {
       Log.e("MicroMsg.WalletBindUI", "onNewIntent intent null");
       setResult(0);
-      aew(0);
+      amj(0);
       finish();
       AppMethodBeat.o(69156);
       return;
@@ -501,7 +500,7 @@ public class WalletBindUI
     {
       Log.d("MicroMsg.WalletBindUI", "pay done... errCode:" + paramIntent.getBooleanExtra("intent_bind_end", false));
       setResult(-1, getIntent());
-      aew(-1);
+      amj(-1);
     }
     for (;;)
     {
@@ -510,7 +509,7 @@ public class WalletBindUI
       return;
       Log.i("MicroMsg.WalletBindUI", "pay cancel");
       setResult(0);
-      aew(0);
+      amj(0);
     }
   }
   
@@ -518,7 +517,7 @@ public class WalletBindUI
   {
     AppMethodBeat.i(69150);
     super.onPause();
-    this.zmb.onPause();
+    this.ERr.onPause();
     AppMethodBeat.o(69150);
   }
   
@@ -526,18 +525,18 @@ public class WalletBindUI
   {
     AppMethodBeat.i(69155);
     super.onRestoreInstanceState(paramBundle);
-    this.HDC = paramBundle.getBoolean("key_is_jump", false);
+    this.Ovv = paramBundle.getBoolean("key_is_jump", false);
     AppMethodBeat.o(69155);
   }
   
   public void onResume()
   {
     AppMethodBeat.i(69149);
-    if (this.HDC) {
+    if (this.Ovv) {
       finish();
     }
     super.onResume();
-    this.zmb.onResume();
+    this.ERr.onResume();
     AppMethodBeat.o(69149);
   }
   
@@ -545,7 +544,7 @@ public class WalletBindUI
   {
     AppMethodBeat.i(69154);
     super.onSaveInstanceState(paramBundle);
-    paramBundle.putBoolean("key_is_jump", this.HDC);
+    paramBundle.putBoolean("key_is_jump", this.Ovv);
     AppMethodBeat.o(69154);
   }
   
@@ -553,20 +552,20 @@ public class WalletBindUI
   {
     AppMethodBeat.i(69153);
     if ((paramq instanceof c)) {
-      this.HDC = true;
+      this.Ovv = true;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if ((paramq instanceof ad))
+      if ((paramq instanceof ae))
       {
-        if (this.HDE == 6) {
-          fOd();
+        if (this.Ovx == 6) {
+          gGI();
         }
         for (;;)
         {
           AppMethodBeat.o(69153);
           return true;
-          fOc();
+          gGH();
         }
       }
       if ((paramq instanceof c))
@@ -574,21 +573,21 @@ public class WalletBindUI
         paramq = (c)paramq;
         Bundle localBundle = getInput();
         localBundle.putBoolean("key_is_import_bind", true);
-        if ((paramq.Hva != null) && (paramq.Hva.size() > 0))
+        if ((paramq.OmN != null) && (paramq.OmN.size() > 0))
         {
-          paramString = (Bankcard)paramq.Hva.get(0);
-          if (!paramString.dKO)
+          paramString = (Bankcard)paramq.OmN.get(0);
+          if (!paramString.fDD)
           {
             localBundle.putBoolean("key_need_bind_response", true);
             localBundle.putString("kreq_token", paramq.token);
-            localBundle.putString("key_bank_username", paramq.HCw);
-            localBundle.putString("key_recommand_desc", paramq.HCx);
+            localBundle.putString("key_bank_username", paramq.Oup);
+            localBundle.putString("key_recommand_desc", paramq.Ouq);
             localBundle.putParcelable("key_import_bankcard", paramString);
-            this.HDC = true;
+            this.Ovv = true;
             localBundle.putInt("key_bind_scene", 2);
             com.tencent.mm.wallet_core.a.a(this, com.tencent.mm.plugin.wallet_core.b.b.class, localBundle, new d.a()
             {
-              public final Intent q(int paramAnonymousInt, Bundle paramAnonymousBundle)
+              public final Intent s(int paramAnonymousInt, Bundle paramAnonymousBundle)
               {
                 AppMethodBeat.i(69139);
                 paramAnonymousBundle = new Intent(WalletBindUI.this.getContext(), WalletBankcardManageUI.class);
@@ -602,7 +601,7 @@ public class WalletBindUI
         {
           AppMethodBeat.o(69153);
           return true;
-          h.a(this, 2131767583, 0, false, new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.h.a(this, a.i.wallet_card_import_exist, 0, false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
@@ -614,9 +613,9 @@ public class WalletBindUI
           continue;
           paramq = paramString;
           if (Util.isNullOrNil(paramString)) {
-            paramq = getString(2131767512);
+            paramq = getString(a.i.wallet_bind_import_fail);
           }
-          h.a(this, paramq, null, false, new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.h.a(this, paramq, null, false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
@@ -629,22 +628,22 @@ public class WalletBindUI
       }
       if ((paramq instanceof com.tencent.mm.plugin.wallet_core.c.d))
       {
-        if ((this.HDH != null) && (this.HDH.equals(paramq)))
+        if ((this.OvA != null) && (this.OvA.equals(paramq)))
         {
-          e.bfP(((com.tencent.mm.plugin.wallet_core.c.d)paramq).fPP());
+          e.bsi(((com.tencent.mm.plugin.wallet_core.c.d)paramq).gIv());
           this.token = ((com.tencent.mm.plugin.wallet_core.c.d)paramq).getToken();
-          this.HDF = ((zf)((com.tencent.mm.plugin.wallet_core.c.d)paramq).rr.iLL.iLR).Lky;
-          this.HDG = ((zf)((com.tencent.mm.plugin.wallet_core.c.d)paramq).rr.iLL.iLR).HQm;
-          aev(4);
+          this.Ovy = ((zj)d.c.b(((com.tencent.mm.plugin.wallet_core.c.d)paramq).rr.lBS)).SlH;
+          this.Ovz = ((zj)d.c.b(((com.tencent.mm.plugin.wallet_core.c.d)paramq).rr.lBS)).OIv;
+          ami(4);
           AppMethodBeat.o(69153);
           return true;
         }
-        z.hhs();
+        z.iiU();
       }
       AppMethodBeat.o(69153);
       return false;
     }
-    amW(paramString);
+    auQ(paramString);
     AppMethodBeat.o(69153);
     return true;
   }

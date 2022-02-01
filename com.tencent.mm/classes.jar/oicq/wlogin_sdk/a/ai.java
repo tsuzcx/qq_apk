@@ -6,48 +6,48 @@ import oicq.wlogin_sdk.tools.util;
 public final class ai
   extends a
 {
-  public int UdP = 0;
-  public int UdQ = 0;
-  public int UdR = 0;
+  public int abHe = 0;
+  public int abHf = 0;
+  public int abHg = 0;
   
   public ai()
   {
-    this.Ucx = 326;
+    this.abFM = 326;
   }
   
-  public final Boolean hPC()
+  public final Boolean iUK()
   {
     AppMethodBeat.i(88111);
-    if (this.Udh < 12)
+    if (this.abGw < 12)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88111);
       return localBoolean;
     }
-    int i = util.an(this.Ucr, this.Udg + 4);
-    if (this.Udh < i + 12)
+    int i = util.ap(this.abFG, this.abGv + 4);
+    if (this.abGw < i + 12)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88111);
       return localBoolean;
     }
-    this.UdP = i;
-    i = util.an(this.Ucr, this.Udg + 6 + this.UdP);
-    if (this.Udh < this.UdP + 12 + i)
+    this.abHe = i;
+    i = util.ap(this.abFG, this.abGv + 6 + this.abHe);
+    if (this.abGw < this.abHe + 12 + i)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88111);
       return localBoolean;
     }
-    this.UdQ = i;
-    i = util.an(this.Ucr, this.Udg + 10 + this.UdP + this.UdQ);
-    if (this.Udh < this.UdP + 12 + this.UdQ + i)
+    this.abHf = i;
+    i = util.ap(this.abFG, this.abGv + 10 + this.abHe + this.abHf);
+    if (this.abGw < this.abHe + 12 + this.abHf + i)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88111);
       return localBoolean;
     }
-    this.UdR = i;
+    this.abHg = i;
     Boolean localBoolean = Boolean.TRUE;
     AppMethodBeat.o(88111);
     return localBoolean;
@@ -55,7 +55,7 @@ public final class ai
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     oicq.wlogin_sdk.a.ai
  * JD-Core Version:    0.7.0.1
  */

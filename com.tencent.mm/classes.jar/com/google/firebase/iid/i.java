@@ -1,7 +1,7 @@
 package com.google.firebase.iid;
 
-import android.support.v4.e.a;
 import android.util.Pair;
+import androidx.b.a;
 import com.google.android.gms.tasks.TaskCompletionSource;
 import com.google.android.gms.tasks.Tasks;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -13,12 +13,12 @@ import javax.annotation.concurrent.GuardedBy;
 final class i
 {
   @GuardedBy("this")
-  private final Map<Pair<String, String>, TaskCompletionSource<String>> bLz;
+  private final Map<Pair<String, String>, TaskCompletionSource<String>> bJe;
   
   i()
   {
     AppMethodBeat.i(4164);
-    this.bLz = new a();
+    this.bJe = new a();
     AppMethodBeat.o(4164);
   }
   
@@ -96,7 +96,7 @@ final class i
     //   14: invokespecial 84	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   17: astore_1
     //   18: aload_0
-    //   19: getfield 25	com/google/firebase/iid/i:bLz	Ljava/util/Map;
+    //   19: getfield 25	com/google/firebase/iid/i:bJe	Ljava/util/Map;
     //   22: aload_1
     //   23: invokeinterface 90 2 0
     //   28: checkcast 37	com/google/android/gms/tasks/TaskCompletionSource
@@ -159,7 +159,7 @@ final class i
     //   141: invokespecial 124	com/google/android/gms/tasks/TaskCompletionSource:<init>	()V
     //   144: astore_2
     //   145: aload_0
-    //   146: getfield 25	com/google/firebase/iid/i:bLz	Ljava/util/Map;
+    //   146: getfield 25	com/google/firebase/iid/i:bJe	Ljava/util/Map;
     //   149: aload_1
     //   150: aload_2
     //   151: invokeinterface 128 3 0
@@ -197,7 +197,7 @@ final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.i
  * JD-Core Version:    0.7.0.1
  */

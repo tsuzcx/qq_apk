@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.expt.hellhound.a.f.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bfy;
-import com.tencent.mm.protocal.protobuf.bga;
-import com.tencent.mm.protocal.protobuf.bgb;
-import com.tencent.mm.protocal.protobuf.cbo;
+import com.tencent.mm.protocal.protobuf.bmz;
+import com.tencent.mm.protocal.protobuf.bnb;
+import com.tencent.mm.protocal.protobuf.bnc;
+import com.tencent.mm.protocal.protobuf.cjr;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.vending.j.a;
 import java.util.ArrayList;
@@ -21,29 +21,29 @@ import org.json.JSONObject;
 
 final class c
 {
-  static String b(cbo paramcbo, bfy parambfy)
+  static String b(cjr paramcjr, bmz parambmz)
   {
     AppMethodBeat.i(122221);
     Object localObject2 = new HashMap();
-    Object localObject3 = parambfy.LPC.iterator();
+    Object localObject3 = parambmz.SXQ.iterator();
     Object localObject4;
     Object localObject5;
     while (((Iterator)localObject3).hasNext())
     {
-      localObject4 = (bgb)((Iterator)localObject3).next();
-      localObject5 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqn(((bgb)localObject4).dRM);
+      localObject4 = (bnc)((Iterator)localObject3).next();
+      localObject5 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.ayn(((bnc)localObject4).fLj);
       if (localObject5 != null)
       {
         if (((Map)localObject2).containsKey(localObject5))
         {
           localObject1 = (List)((Map)localObject2).get(localObject5);
-          parambfy = (bfy)localObject1;
+          parambmz = (bmz)localObject1;
           if (localObject1 != null) {}
         }
-        for (parambfy = new ArrayList();; parambfy = new ArrayList())
+        for (parambmz = new ArrayList();; parambmz = new ArrayList())
         {
-          parambfy.add(localObject4);
-          ((Map)localObject2).put(localObject5, parambfy);
+          parambmz.add(localObject4);
+          ((Map)localObject2).put(localObject5, parambmz);
           break;
         }
       }
@@ -54,13 +54,13 @@ final class c
       AppMethodBeat.o(122221);
       return null;
     }
-    paramcbo = i.j(paramcbo);
-    if (paramcbo == null)
+    paramcjr = i.j(paramcjr);
+    if (paramcjr == null)
     {
       AppMethodBeat.o(122221);
       return null;
     }
-    parambfy = new JSONArray();
+    parambmz = new JSONArray();
     Object localObject1 = ((Map)localObject2).entrySet().iterator();
     while (((Iterator)localObject1).hasNext())
     {
@@ -71,30 +71,30 @@ final class c
       localObject4 = ((List)localObject4).iterator();
       while (((Iterator)localObject4).hasNext())
       {
-        localObject5 = (bgb)((Iterator)localObject4).next();
+        localObject5 = (bnc)((Iterator)localObject4).next();
         Object localObject6;
         long l;
-        if (((Map)localObject3).containsKey(Long.valueOf(((bgb)localObject5).LPN)))
+        if (((Map)localObject3).containsKey(Long.valueOf(((bnc)localObject5).SYb)))
         {
-          localObject6 = (com.tencent.mm.vending.j.c)((Map)localObject3).get(Long.valueOf(((bgb)localObject5).LPN));
+          localObject6 = (com.tencent.mm.vending.j.c)((Map)localObject3).get(Long.valueOf(((bnc)localObject5).SYb));
           if (localObject6 != null)
           {
             l = 0L;
-            Iterator localIterator = ((bgb)localObject5).LPK.iterator();
+            Iterator localIterator = ((bnc)localObject5).SXY.iterator();
             while (localIterator.hasNext()) {
-              l += ((bga)localIterator.next()).LPF;
+              l += ((bnb)localIterator.next()).SXT;
             }
-            ((Map)localObject3).put(Long.valueOf(((bgb)localObject5).LPN), a.Q(Integer.valueOf(((Integer)((com.tencent.mm.vending.j.b)localObject6).get(0)).intValue() + 1), Long.valueOf(((Long)((com.tencent.mm.vending.j.c)localObject6).get(1)).longValue() + l)));
+            ((Map)localObject3).put(Long.valueOf(((bnc)localObject5).SYb), a.J(Integer.valueOf(((Integer)((com.tencent.mm.vending.j.b)localObject6).get(0)).intValue() + 1), Long.valueOf(((Long)((com.tencent.mm.vending.j.c)localObject6).get(1)).longValue() + l)));
           }
         }
         else
         {
           l = 0L;
-          localObject6 = ((bgb)localObject5).LPK.iterator();
+          localObject6 = ((bnc)localObject5).SXY.iterator();
           while (((Iterator)localObject6).hasNext()) {
-            l += ((bga)((Iterator)localObject6).next()).LPF;
+            l += ((bnb)((Iterator)localObject6).next()).SXT;
           }
-          ((Map)localObject3).put(Long.valueOf(((bgb)localObject5).LPN), a.Q(Integer.valueOf(1), Long.valueOf(l)));
+          ((Map)localObject3).put(Long.valueOf(((bnc)localObject5).SYb), a.J(Integer.valueOf(1), Long.valueOf(l)));
         }
       }
       Log.i("HABBYGE-MALI.FuzzyMergeReport", "FuzzyPageMerge, sid: %s, ppidInfoMap: %d", new Object[] { localObject2, Integer.valueOf(((Map)localObject3).size()) });
@@ -109,7 +109,7 @@ final class c
           ((JSONObject)localObject5).put("pagePathId", ((Map.Entry)localObject4).getKey());
           ((JSONObject)localObject5).put("count", ((com.tencent.mm.vending.j.c)((Map.Entry)localObject4).getValue()).get(0));
           ((JSONObject)localObject5).put("in", ((com.tencent.mm.vending.j.c)((Map.Entry)localObject4).getValue()).get(1));
-          parambfy.put(localObject5);
+          parambmz.put(localObject5);
         }
         catch (JSONException localJSONException)
         {
@@ -117,7 +117,7 @@ final class c
         }
       }
     }
-    if (parambfy.length() <= 0)
+    if (parambmz.length() <= 0)
     {
       Log.i("HABBYGE-MALI.FuzzyMergeReport", "FuzzyMergeReport, content is NULL !!!");
       AppMethodBeat.o(122221);
@@ -125,14 +125,14 @@ final class c
     }
     try
     {
-      paramcbo.put("content", parambfy);
-      paramcbo = paramcbo.toString();
+      paramcjr.put("content", parambmz);
+      paramcjr = paramcjr.toString();
       AppMethodBeat.o(122221);
-      return paramcbo;
+      return paramcjr;
     }
-    catch (JSONException paramcbo)
+    catch (JSONException paramcjr)
     {
-      Log.printErrStackTrace("HABBYGE-MALI.FuzzyMergeReport", paramcbo, "SessionPageMerge, content: %s", new Object[] { paramcbo.getMessage() });
+      Log.printErrStackTrace("HABBYGE-MALI.FuzzyMergeReport", paramcjr, "SessionPageMerge, content: %s", new Object[] { paramcjr.getMessage() });
       AppMethodBeat.o(122221);
     }
     return null;
@@ -140,7 +140,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.f.c
  * JD-Core Version:    0.7.0.1
  */

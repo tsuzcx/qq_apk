@@ -13,7 +13,7 @@ final class i$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.i.8
  * JD-Core Version:    0.7.0.1
  */

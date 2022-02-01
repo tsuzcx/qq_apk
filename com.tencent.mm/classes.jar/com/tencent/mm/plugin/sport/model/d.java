@@ -2,27 +2,27 @@ package com.tencent.mm.plugin.sport.model;
 
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.eyb;
-import com.tencent.mm.protocal.protobuf.eyc;
+import com.tencent.mm.protocal.protobuf.fir;
+import com.tencent.mm.protocal.protobuf.fis;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ck;
+import com.tencent.mm.storage.cl;
 
 public final class d
   extends q
   implements m
 {
-  eyc Fjq;
+  fis LxP;
   private i callback;
-  private com.tencent.mm.ak.d iUB;
+  private com.tencent.mm.an.d lKU;
   
   public d()
   {
@@ -30,20 +30,20 @@ public final class d
     Object localObject = new d.a();
     ((d.a)localObject).funcId = 1947;
     ((d.a)localObject).uri = "/cgi-bin/mmoc-bin/hardware/getwxsportconfig";
-    ((d.a)localObject).iLN = new eyb();
-    ((d.a)localObject).iLO = new eyc();
-    this.iUB = ((d.a)localObject).aXF();
-    localObject = (eyb)this.iUB.iLK.iLR;
-    ((eyb)localObject).oTI = com.tencent.mm.protocal.d.DEVICE_NAME;
-    ((eyb)localObject).KLO = ck.getFingerprint();
-    ((eyb)localObject).hie = Build.BRAND;
-    ((eyb)localObject).hid = Build.MODEL;
-    ((eyb)localObject).Nvj = com.tencent.mm.protocal.d.KyK;
-    ((eyb)localObject).hif = com.tencent.mm.protocal.d.KyL;
-    ((eyb)localObject).hig = com.tencent.mm.protocal.d.KyM;
-    ((eyb)localObject).Nvk = BuildInfo.CLIENT_VERSION;
-    ((eyb)localObject).Nvl = Build.MANUFACTURER;
-    Log.i("MicroMsg.Sport.NetSceneGetWeSportConfig", "request params=[%s, %s, %s, %s, %s, %s, %s, %s, %s]", new Object[] { ((eyb)localObject).KLO, ((eyb)localObject).hie, ((eyb)localObject).hid, ((eyb)localObject).oTI, ((eyb)localObject).hig, ((eyb)localObject).hif, ((eyb)localObject).hig, ((eyb)localObject).Nvk, ((eyb)localObject).Nvl });
+    ((d.a)localObject).lBU = new fir();
+    ((d.a)localObject).lBV = new fis();
+    this.lKU = ((d.a)localObject).bgN();
+    localObject = (fir)d.b.b(this.lKU.lBR);
+    ((fir)localObject).rVG = com.tencent.mm.protocal.d.RAB;
+    ((fir)localObject).RMK = cl.hAM();
+    ((fir)localObject).jUc = Build.BRAND;
+    ((fir)localObject).jUb = Build.MODEL;
+    ((fir)localObject).UIs = com.tencent.mm.protocal.d.RAy;
+    ((fir)localObject).jUd = com.tencent.mm.protocal.d.RAz;
+    ((fir)localObject).jUe = com.tencent.mm.protocal.d.RAA;
+    ((fir)localObject).UIt = BuildInfo.CLIENT_VERSION;
+    ((fir)localObject).UIu = Build.MANUFACTURER;
+    Log.i("MicroMsg.Sport.NetSceneGetWeSportConfig", "request params=[%s, %s, %s, %s, %s, %s, %s, %s, %s]", new Object[] { ((fir)localObject).RMK, ((fir)localObject).jUc, ((fir)localObject).jUb, ((fir)localObject).rVG, ((fir)localObject).jUe, ((fir)localObject).jUd, ((fir)localObject).jUe, ((fir)localObject).UIt, ((fir)localObject).UIu });
     AppMethodBeat.o(149302);
   }
   
@@ -51,7 +51,7 @@ public final class d
   {
     AppMethodBeat.i(149303);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
+    int i = dispatch(paramg, this.lKU, this);
     AppMethodBeat.o(149303);
     return i;
   }
@@ -71,14 +71,14 @@ public final class d
       AppMethodBeat.o(149304);
       return;
     }
-    this.Fjq = ((eyc)this.iUB.iLL.iLR);
+    this.LxP = ((fis)d.c.b(this.lKU.lBS));
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(149304);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.model.d
  * JD-Core Version:    0.7.0.1
  */

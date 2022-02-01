@@ -20,14 +20,14 @@ public final class a
     Log.d("MicroMsg.IabResolver", "Owned items response: " + String.valueOf(i));
     if (i != 0)
     {
-      parama.a(com.tencent.mm.plugin.wallet_index.c.c.cJ(i, ""), null);
+      parama.a(com.tencent.mm.plugin.wallet_index.c.c.cK(i, ""), null);
       AppMethodBeat.o(71801);
       return i;
     }
     if ((!paramIntent.hasExtra("INAPP_PURCHASE_ITEM_LIST")) || (!paramIntent.hasExtra("INAPP_PURCHASE_DATA_LIST")) || (!paramIntent.hasExtra("INAPP_DATA_SIGNATURE_LIST")))
     {
-      aBv("Bundle returned from getPurchases() doesn't contain required fields.");
-      parama.a(com.tencent.mm.plugin.wallet_index.c.c.cJ(5, ""), null);
+      aLj("Bundle returned from getPurchases() doesn't contain required fields.");
+      parama.a(com.tencent.mm.plugin.wallet_index.c.c.cK(5, ""), null);
       AppMethodBeat.o(71801);
       return 5;
     }
@@ -48,17 +48,17 @@ public final class a
           Log.w("MicroMsg.IabResolver", "In-app billing warning: ".concat(String.valueOf("BUG: empty/null token!")));
           Log.d("MicroMsg.IabResolver", "Purchase data: ".concat(String.valueOf(str)));
         }
-        localb.mPurchaseMap.put(((c)localObject).rcD, localObject);
+        localb.mPurchaseMap.put(((c)localObject).uFI, localObject);
         i += 1;
       }
-      parama.a(com.tencent.mm.plugin.wallet_index.c.c.cJ(0, ""), localb);
+      parama.a(com.tencent.mm.plugin.wallet_index.c.c.cK(0, ""), localb);
     }
     catch (JSONException paramIntent)
     {
       for (;;)
       {
         Log.printErrStackTrace("MicroMsg.IabResolver", paramIntent, "", new Object[0]);
-        parama.a(com.tencent.mm.plugin.wallet_index.c.c.cJ(5, ""), localb);
+        parama.a(com.tencent.mm.plugin.wallet_index.c.c.cK(5, ""), localb);
       }
     }
     AppMethodBeat.o(71801);
@@ -70,8 +70,8 @@ public final class a
     AppMethodBeat.i(71800);
     if (paramIntent == null)
     {
-      aBv("Null data in IAB activity result.");
-      paramIntent = com.tencent.mm.plugin.wallet_index.c.c.cJ(5, "");
+      aLj("Null data in IAB activity result.");
+      paramIntent = com.tencent.mm.plugin.wallet_index.c.c.cK(5, "");
       if (paramd != null) {
         paramd.a(paramIntent, null);
       }
@@ -89,8 +89,8 @@ public final class a
       Log.d("MicroMsg.IabResolver", "Extras: " + paramIntent.getExtras());
       if ((str1 == null) || (str2 == null))
       {
-        aBv("BUG: either purchaseData or dataSignature is null.");
-        paramIntent = com.tencent.mm.plugin.wallet_index.c.c.cJ(5, "");
+        aLj("BUG: either purchaseData or dataSignature is null.");
+        paramIntent = com.tencent.mm.plugin.wallet_index.c.c.cK(5, "");
         if (paramd != null) {
           paramd.a(paramIntent, null);
         }
@@ -100,10 +100,10 @@ public final class a
       try
       {
         paramIntent = new c("inapp", str1, str2);
-        str1 = paramIntent.rcD;
+        str1 = paramIntent.uFI;
         Log.d("MicroMsg.IabResolver", "Purchase signature successfully verified.");
         if (paramd != null) {
-          paramd.a(com.tencent.mm.plugin.wallet_index.c.c.cJ(0, ""), paramIntent);
+          paramd.a(com.tencent.mm.plugin.wallet_index.c.c.cK(0, ""), paramIntent);
         }
         paramIntent = new b(str1, paramIntent);
         AppMethodBeat.o(71800);
@@ -111,9 +111,9 @@ public final class a
       }
       catch (JSONException paramIntent)
       {
-        aBv("Failed to parse purchase data.");
+        aLj("Failed to parse purchase data.");
         Log.printErrStackTrace("MicroMsg.IabResolver", paramIntent, "", new Object[0]);
-        paramIntent = com.tencent.mm.plugin.wallet_index.c.c.cJ(5, "");
+        paramIntent = com.tencent.mm.plugin.wallet_index.c.c.cK(5, "");
         if (paramd != null) {
           paramd.a(paramIntent, null);
         }
@@ -121,8 +121,8 @@ public final class a
         return null;
       }
     }
-    aBv("Purchase failed. Response: ".concat(String.valueOf(i)));
-    paramIntent = com.tencent.mm.plugin.wallet_index.c.c.cJ(i, "");
+    aLj("Purchase failed. Response: ".concat(String.valueOf(i)));
+    paramIntent = com.tencent.mm.plugin.wallet_index.c.c.cK(i, "");
     if (paramd != null) {
       paramd.a(paramIntent, null);
     }
@@ -130,7 +130,7 @@ public final class a
     return null;
   }
   
-  private static void aBv(String paramString)
+  private static void aLj(String paramString)
   {
     AppMethodBeat.i(71802);
     Log.e("MicroMsg.IabResolver", "In-app billing error: ".concat(String.valueOf(paramString)));
@@ -142,14 +142,14 @@ public final class a
     AppMethodBeat.i(71803);
     if (paramIntent == null)
     {
-      aBv("Intent with no response code, assuming OK (known issue)");
+      aLj("Intent with no response code, assuming OK (known issue)");
       AppMethodBeat.o(71803);
       return 1;
     }
     paramIntent = paramIntent.getExtras().get("RESPONSE_CODE");
     if (paramIntent == null)
     {
-      aBv("Intent with no response code, assuming OK (known issue)");
+      aLj("Intent with no response code, assuming OK (known issue)");
       AppMethodBeat.o(71803);
       return 0;
     }
@@ -166,8 +166,8 @@ public final class a
       AppMethodBeat.o(71803);
       return i;
     }
-    aBv("Unexpected type for intent response code.");
-    aBv(paramIntent.getClass().getName());
+    aLj("Unexpected type for intent response code.");
+    aLj(paramIntent.getClass().getName());
     paramIntent = new RuntimeException("Unexpected type for intent response code: " + paramIntent.getClass().getName());
     AppMethodBeat.o(71803);
     throw paramIntent;

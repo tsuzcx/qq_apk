@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.t;
 import com.tencent.mm.splash.SplashActivity;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.aa;
+import com.tencent.mm.ui.ad;
 
 public class WeChatSplashActivity
   extends SplashActivity
@@ -27,7 +27,7 @@ public class WeChatSplashActivity
     Object localObject = super.getSystemService(paramString);
     if ("layout_inflater".equals(paramString))
     {
-      paramString = aa.b((LayoutInflater)localObject);
+      paramString = ad.b((LayoutInflater)localObject);
       AppMethodBeat.o(160110);
       return paramString;
     }
@@ -46,7 +46,7 @@ public class WeChatSplashActivity
   public void onPause()
   {
     AppMethodBeat.i(160111);
-    t.glY();
+    t.hfP();
     super.onPause();
     AppMethodBeat.o(160111);
   }
@@ -59,7 +59,7 @@ public class WeChatSplashActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.app.WeChatSplashActivity
  * JD-Core Version:    0.7.0.1
  */

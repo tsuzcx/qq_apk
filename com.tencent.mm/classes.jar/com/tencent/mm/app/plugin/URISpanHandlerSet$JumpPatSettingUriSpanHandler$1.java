@@ -12,14 +12,14 @@ final class URISpanHandlerSet$JumpPatSettingUriSpanHandler$1
   
   public final void run()
   {
-    AppMethodBeat.i(231438);
+    AppMethodBeat.i(290204);
     LauncherUI localLauncherUI = LauncherUI.getInstance();
     if (localLauncherUI != null)
     {
       localLauncherUI.closeChatting(false);
-      localLauncherUI.ODR.getMainTabUI().blU("tab_settings");
+      localLauncherUI.VXk.getMainTabUI().byt("tab_settings");
     }
-    AppMethodBeat.o(231438);
+    AppMethodBeat.o(290204);
   }
 }
 

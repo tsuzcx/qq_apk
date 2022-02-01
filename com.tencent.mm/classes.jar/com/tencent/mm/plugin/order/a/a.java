@@ -47,7 +47,7 @@ public class a
       return;
     }
     if (((paramActivity instanceof MallOrderProductListUI)) || ((paramActivity instanceof MallOrderTransactionInfoUI))) {
-      P(paramActivity);
+      Q(paramActivity);
     }
     AppMethodBeat.o(66632);
   }
@@ -55,7 +55,7 @@ public class a
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(66633);
-    super.bA(paramActivity);
+    super.bH(paramActivity);
     AppMethodBeat.o(66633);
   }
   
@@ -64,21 +64,21 @@ public class a
     return false;
   }
   
-  public final String dKC()
+  public final String epb()
   {
     return "ShowOrdersInfoProcess";
   }
   
-  public final void g(Activity paramActivity, int paramInt)
+  public final void h(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(66634);
-    P(paramActivity);
+    Q(paramActivity);
     AppMethodBeat.o(66634);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.order.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.mm.ui;
 import android.content.Context;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.l;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 final class ClearCacheUI$3$1
@@ -13,7 +14,7 @@ final class ClearCacheUI$3$1
   public final void run()
   {
     AppMethodBeat.i(32992);
-    Toast.makeText(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(2131757638), 0).show();
+    Toast.makeText(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(R.l.exF), 0).show();
     AppMethodBeat.o(32992);
   }
 }

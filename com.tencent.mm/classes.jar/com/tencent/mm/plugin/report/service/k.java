@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.report.service;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.l;
-import com.tencent.mm.g.a.ln;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bd;
+import com.tencent.mm.f.a.l;
+import com.tencent.mm.f.a.me;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.be;
 import com.tencent.mm.model.y;
 import com.tencent.mm.platformtools.r;
 import com.tencent.mm.platformtools.r.a;
@@ -18,17 +18,17 @@ import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class k
-  implements bd
+  implements be
 {
-  private static HashMap<Integer, h.b> kvw;
-  private r.a kvx;
-  private IListener ptp;
+  private static HashMap<Integer, h.b> nnH;
+  private r.a nnI;
+  private IListener sCF;
   
   static
   {
     AppMethodBeat.i(143938);
     HashMap localHashMap = new HashMap();
-    kvw = localHashMap;
+    nnH = localHashMap;
     localHashMap.put(Integer.valueOf("DUPLICATEKVLOG_TABLE".hashCode()), new h.b()
     {
       public final String[] getSQLs()
@@ -42,24 +42,24 @@ public class k
   public k()
   {
     AppMethodBeat.i(143932);
-    this.ptp = new IListener() {};
+    this.sCF = new IListener() {};
     AppMethodBeat.o(143932);
   }
   
-  public static void G(long paramLong, String paramString)
+  public static void O(long paramLong, String paramString)
   {
     AppMethodBeat.i(143936);
-    ln localln = new ln();
-    localln.dQQ.dQR = paramLong;
-    localln.dQQ.content = paramString;
-    EventCenter.instance.publish(localln);
+    me localme = new me();
+    localme.fKg.fKh = paramLong;
+    localme.fKg.content = paramString;
+    EventCenter.instance.publish(localme);
     AppMethodBeat.o(143936);
   }
   
-  public static k eOK()
+  public static k fBF()
   {
     AppMethodBeat.i(143935);
-    k localk = (k)y.at(k.class);
+    k localk = (k)y.as(k.class);
     AppMethodBeat.o(143935);
     return localk;
   }
@@ -75,26 +75,26 @@ public class k
   {
     AppMethodBeat.i(143934);
     long l = System.currentTimeMillis();
-    String str = g.aAh().cachePath + "CommonOneMicroMsg.db";
-    this.kvx = r.a(hashCode(), str, kvw, false);
+    String str = h.aHG().cachePath + "CommonOneMicroMsg.db";
+    this.nnI = r.a(hashCode(), str, nnH, false);
     Log.i("MicroMsg.SubCoreReport", "summeranrt onAccountPostReset tid[%d] [%d]ms, stack[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), Long.valueOf(System.currentTimeMillis() - l), Util.getStack() });
-    EventCenter.instance.addListener(this.ptp);
+    EventCenter.instance.addListener(this.sCF);
     AppMethodBeat.o(143934);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(143933);
-    if (eOK() != null)
+    if (fBF() != null)
     {
-      k localk = eOK();
-      if (localk.kvx != null)
+      k localk = fBF();
+      if (localk.nnI != null)
       {
-        localk.kvx.uS(localk.hashCode());
-        localk.kvx = null;
+        localk.nnI.xW(localk.hashCode());
+        localk.nnI = null;
       }
     }
-    EventCenter.instance.removeListener(this.ptp);
+    EventCenter.instance.removeListener(this.sCF);
     AppMethodBeat.o(143933);
   }
   

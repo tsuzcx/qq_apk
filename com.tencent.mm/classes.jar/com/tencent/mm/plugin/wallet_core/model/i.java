@@ -7,7 +7,7 @@ import com.tencent.mm.wallet_core.c.d;
 
 public final class i
 {
-  public d HWP;
+  public d OOP;
   public String crt_token;
   public String crt_wording;
   public int is_gen_cert;
@@ -22,7 +22,7 @@ public final class i
     this.is_hint_cert = 0;
     this.crt_wording = "";
     this.is_ignore_cert = 0;
-    this.HWP = new d();
+    this.OOP = new d();
     AppMethodBeat.o(70256);
   }
   
@@ -34,17 +34,17 @@ public final class i
     this.is_hint_cert = 0;
     this.crt_wording = "";
     this.is_ignore_cert = 0;
-    this.HWP = new d();
+    this.OOP = new d();
     this.is_gen_cert = paramBundle.getInt("key_is_gen_cert", 0);
     this.is_hint_cert = paramBundle.getInt("key_is_hint_crt", 0);
     this.is_ignore_cert = paramBundle.getInt("key_is_ignore_cert", 0);
     this.crt_token = paramBundle.getString("key_crt_token", "");
     this.crt_wording = paramBundle.getString("key_crt_wording", "");
-    this.HWP = new d(this.crt_wording);
+    this.OOP = new d(this.crt_wording);
     AppMethodBeat.o(70257);
   }
   
-  public final boolean fQm()
+  public final boolean gIS()
   {
     AppMethodBeat.i(70258);
     if ((this.is_hint_cert != 0) && (!Util.isNullOrNil(this.crt_wording)))
@@ -56,15 +56,15 @@ public final class i
     return false;
   }
   
-  public final boolean fQn()
+  public final boolean gIT()
   {
     return this.is_gen_cert == 1;
   }
   
-  public final boolean fQo()
+  public final boolean gIU()
   {
     AppMethodBeat.i(70259);
-    if ((fQn()) && (this.is_ignore_cert == 0))
+    if ((gIT()) && (this.is_ignore_cert == 0))
     {
       AppMethodBeat.o(70259);
       return true;

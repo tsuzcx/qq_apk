@@ -398,8 +398,9 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
       LOGD("no need replace , fields no change");
       return true;
     }
+    paramT.systemRowid = this.db.replace(getTableName(), this.dbInfo.primaryKey, localContentValues);
     boolean bool1 = bool2;
-    if (this.db.replace(getTableName(), this.dbInfo.primaryKey, localContentValues) > 0L) {
+    if (paramT.systemRowid > 0L) {
       bool1 = true;
     }
     if ((bool1) && (paramBoolean))
@@ -507,7 +508,7 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.storage.MAutoStorage
  * JD-Core Version:    0.7.0.1
  */

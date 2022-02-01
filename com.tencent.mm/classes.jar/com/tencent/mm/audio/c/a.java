@@ -3,7 +3,7 @@ package com.tencent.mm.audio.c;
 import android.media.AudioTrack;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.b.e;
-import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.compatible.deviceinfo.af;
 import com.tencent.mm.compatible.deviceinfo.b;
 import com.tencent.mm.sdk.platformtools.Log;
 
@@ -20,17 +20,17 @@ public final class a
     if (paramBoolean)
     {
       j = 3;
-      if ((com.tencent.mm.plugin.audio.c.a.cea().cdW()) || (com.tencent.mm.plugin.audio.c.a.ceb())) {
+      if ((com.tencent.mm.plugin.audio.c.a.crn().crh()) || (com.tencent.mm.plugin.audio.c.a.cro())) {
         j = 3;
       }
       i = j;
-      if (ae.gKu.gDA)
+      if (af.juI.jnK)
       {
-        ae.gKu.dump();
-        if ((!paramBoolean) || (ae.gKu.gEh < 0)) {
+        af.juI.Y();
+        if ((!paramBoolean) || (af.juI.jor < 0)) {
           break label239;
         }
-        i = ae.gKu.gEh;
+        i = af.juI.jor;
       }
       j = AudioTrack.getMinBufferSize(paramInt1, paramInt2, 2);
       Log.i("AudioDeviceFactory", "speakerOn: %b, type: %d, sampleRate: %d, channelConfig: %d, PlayBufSize: %d, bufTimes: %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(j), Integer.valueOf(paramInt3) });
@@ -62,10 +62,10 @@ public final class a
         break label73;
       }
       i = j;
-      if (ae.gKu.gEi < 0) {
+      if (af.juI.jos < 0) {
         break label73;
       }
-      i = ae.gKu.gEi;
+      i = af.juI.jos;
       break label73;
       i = 0;
       break label183;
@@ -74,7 +74,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.audio.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -17,14 +17,14 @@ final class EnvelopeStoryVideoManager$10
   {
     AppMethodBeat.i(182468);
     Log.i("MicroMsg.EnvelopeStoryVideoManager", "preload complete: %s %s", new Object[] { paramString, Integer.valueOf(paramd.field_retCode) });
-    EnvelopeStoryVideoManager.efS().remove(paramString);
-    h.CyF.a(19228, new Object[] { this.val$url, Integer.valueOf(0), Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf((SystemClock.elapsedRealtime() - this.qze) / 1000L), Integer.valueOf(0) });
+    EnvelopeStoryVideoManager.cgi().remove(paramString);
+    h.IzE.a(19228, new Object[] { this.val$url, Integer.valueOf(0), Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf((SystemClock.elapsedRealtime() - this.tYe) / 1000L), Integer.valueOf(0) });
     AppMethodBeat.o(182468);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.EnvelopeStoryVideoManager.10
  * JD-Core Version:    0.7.0.1
  */

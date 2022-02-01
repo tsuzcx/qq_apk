@@ -6,14 +6,11 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.storagebase.g;
-import com.tencent.mm.storagebase.g.a;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class a
   extends MAutoStorage<com.tencent.mm.plugin.boots.a.a>
-  implements g.a
 {
   public static final String[] SQL_CREATE;
   private ISQLiteDatabase db;
@@ -32,44 +29,44 @@ public final class a
   }
   
   /* Error */
-  public final int CO(int paramInt)
+  public final int Gt(int paramInt)
   {
     // Byte code:
-    //   0: ldc 52
-    //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 24	com/tencent/mm/plugin/boots/a/a
+    //   0: ldc 50
+    //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 22	com/tencent/mm/plugin/boots/a/a
     //   8: dup
-    //   9: invokespecial 54	com/tencent/mm/plugin/boots/a/a:<init>	()V
+    //   9: invokespecial 52	com/tencent/mm/plugin/boots/a/a:<init>	()V
     //   12: astore 9
     //   14: aload_0
-    //   15: getfield 47	com/tencent/mm/plugin/boots/b/a/a:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   18: ldc 30
+    //   15: getfield 45	com/tencent/mm/plugin/boots/b/a/a:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
+    //   18: ldc 28
     //   20: aconst_null
-    //   21: ldc 56
+    //   21: ldc 54
     //   23: iconst_1
-    //   24: anewarray 22	java/lang/String
+    //   24: anewarray 20	java/lang/String
     //   27: dup
     //   28: iconst_0
     //   29: iload_1
-    //   30: invokestatic 60	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   30: invokestatic 58	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   33: aastore
     //   34: aconst_null
     //   35: aconst_null
     //   36: aconst_null
-    //   37: invokeinterface 66 8 0
+    //   37: invokeinterface 64 8 0
     //   42: astore 7
     //   44: aload 7
     //   46: ifnull +147 -> 193
     //   49: aload 7
     //   51: astore 6
     //   53: aload 7
-    //   55: invokeinterface 72 1 0
+    //   55: invokeinterface 70 1 0
     //   60: ifeq +133 -> 193
     //   63: aload 7
     //   65: astore 6
     //   67: aload 9
     //   69: aload 7
-    //   71: invokevirtual 76	com/tencent/mm/plugin/boots/a/a:convertFrom	(Landroid/database/Cursor;)V
+    //   71: invokevirtual 74	com/tencent/mm/plugin/boots/a/a:convertFrom	(Landroid/database/Cursor;)V
     //   74: iconst_0
     //   75: istore_2
     //   76: iload_2
@@ -77,54 +74,54 @@ public final class a
     //   78: aload 7
     //   80: ifnull +12 -> 92
     //   83: aload 7
-    //   85: invokeinterface 79 1 0
+    //   85: invokeinterface 77 1 0
     //   90: iload_2
     //   91: istore_3
     //   92: aload 9
-    //   94: getfield 83	com/tencent/mm/plugin/boots/a/a:field_useTime	J
-    //   97: invokestatic 89	com/tencent/mm/sdk/platformtools/Util:getBeginTimeOfToday	()J
-    //   100: ldc2_w 90
+    //   94: getfield 81	com/tencent/mm/plugin/boots/a/a:field_useTime	J
+    //   97: invokestatic 87	com/tencent/mm/sdk/platformtools/Util:getBeginTimeOfToday	()J
+    //   100: ldc2_w 88
     //   103: lsub
     //   104: lcmp
     //   105: iflt +170 -> 275
     //   108: aload 9
-    //   110: getfield 83	com/tencent/mm/plugin/boots/a/a:field_useTime	J
-    //   113: invokestatic 89	com/tencent/mm/sdk/platformtools/Util:getBeginTimeOfToday	()J
+    //   110: getfield 81	com/tencent/mm/plugin/boots/a/a:field_useTime	J
+    //   113: invokestatic 87	com/tencent/mm/sdk/platformtools/Util:getBeginTimeOfToday	()J
     //   116: lcmp
     //   117: ifgt +158 -> 275
     //   120: aload 9
-    //   122: getfield 95	com/tencent/mm/plugin/boots/a/a:field_dau	I
+    //   122: getfield 93	com/tencent/mm/plugin/boots/a/a:field_dau	I
     //   125: iconst_1
     //   126: iadd
     //   127: istore_2
     //   128: aload 9
-    //   130: invokestatic 100	java/lang/System:currentTimeMillis	()J
-    //   133: putfield 83	com/tencent/mm/plugin/boots/a/a:field_useTime	J
+    //   130: invokestatic 98	java/lang/System:currentTimeMillis	()J
+    //   133: putfield 81	com/tencent/mm/plugin/boots/a/a:field_useTime	J
     //   136: aload 9
     //   138: iload_2
-    //   139: putfield 95	com/tencent/mm/plugin/boots/a/a:field_dau	I
+    //   139: putfield 93	com/tencent/mm/plugin/boots/a/a:field_dau	I
     //   142: aload 9
     //   144: iconst_1
-    //   145: putfield 103	com/tencent/mm/plugin/boots/a/a:field_mau	I
+    //   145: putfield 101	com/tencent/mm/plugin/boots/a/a:field_mau	I
     //   148: iload_3
     //   149: ifeq +169 -> 318
     //   152: aload_0
-    //   153: getfield 47	com/tencent/mm/plugin/boots/b/a/a:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   156: ldc 30
-    //   158: ldc 105
+    //   153: getfield 45	com/tencent/mm/plugin/boots/b/a/a:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
+    //   156: ldc 28
+    //   158: ldc 103
     //   160: aload 9
-    //   162: invokevirtual 109	com/tencent/mm/plugin/boots/a/a:convertTo	()Landroid/content/ContentValues;
-    //   165: invokeinterface 113 4 0
+    //   162: invokevirtual 107	com/tencent/mm/plugin/boots/a/a:convertTo	()Landroid/content/ContentValues;
+    //   165: invokeinterface 111 4 0
     //   170: lstore 4
     //   172: lload 4
     //   174: lconst_0
     //   175: lcmp
     //   176: ifge +10 -> 186
-    //   179: ldc 115
-    //   181: ldc 117
-    //   183: invokestatic 123	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   186: ldc 52
-    //   188: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   179: ldc 113
+    //   181: ldc 115
+    //   183: invokestatic 121	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   186: ldc 50
+    //   188: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   191: iload_2
     //   192: ireturn
     //   193: iconst_1
@@ -135,25 +132,25 @@ public final class a
     //   199: astore 6
     //   201: aload 9
     //   203: iload_1
-    //   204: putfield 126	com/tencent/mm/plugin/boots/a/a:field_key	I
+    //   204: putfield 124	com/tencent/mm/plugin/boots/a/a:field_key	I
     //   207: goto -131 -> 76
     //   210: astore 8
     //   212: iload_3
     //   213: istore_2
     //   214: aload 7
     //   216: astore 6
-    //   218: ldc 115
+    //   218: ldc 113
     //   220: aload 8
-    //   222: ldc 128
+    //   222: ldc 126
     //   224: iconst_0
-    //   225: anewarray 130	java/lang/Object
-    //   228: invokestatic 134	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   225: anewarray 128	java/lang/Object
+    //   228: invokestatic 132	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   231: iload_2
     //   232: istore_3
     //   233: aload 7
     //   235: ifnull -143 -> 92
     //   238: aload 7
-    //   240: invokeinterface 79 1 0
+    //   240: invokeinterface 77 1 0
     //   245: iload_2
     //   246: istore_3
     //   247: goto -155 -> 92
@@ -163,23 +160,23 @@ public final class a
     //   255: aload 6
     //   257: ifnull +10 -> 267
     //   260: aload 6
-    //   262: invokeinterface 79 1 0
-    //   267: ldc 52
-    //   269: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   262: invokeinterface 77 1 0
+    //   267: ldc 50
+    //   269: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   272: aload 7
     //   274: athrow
     //   275: aload 9
-    //   277: getfield 83	com/tencent/mm/plugin/boots/a/a:field_useTime	J
-    //   280: invokestatic 89	com/tencent/mm/sdk/platformtools/Util:getBeginTimeOfToday	()J
-    //   283: ldc2_w 90
+    //   277: getfield 81	com/tencent/mm/plugin/boots/a/a:field_useTime	J
+    //   280: invokestatic 87	com/tencent/mm/sdk/platformtools/Util:getBeginTimeOfToday	()J
+    //   283: ldc2_w 88
     //   286: lsub
     //   287: lcmp
     //   288: iflt +25 -> 313
     //   291: aload 9
-    //   293: getfield 95	com/tencent/mm/plugin/boots/a/a:field_dau	I
+    //   293: getfield 93	com/tencent/mm/plugin/boots/a/a:field_dau	I
     //   296: ifle +12 -> 308
     //   299: aload 9
-    //   301: getfield 95	com/tencent/mm/plugin/boots/a/a:field_dau	I
+    //   301: getfield 93	com/tencent/mm/plugin/boots/a/a:field_dau	I
     //   304: istore_2
     //   305: goto -177 -> 128
     //   308: iconst_1
@@ -189,19 +186,19 @@ public final class a
     //   314: istore_2
     //   315: goto -187 -> 128
     //   318: aload_0
-    //   319: getfield 47	com/tencent/mm/plugin/boots/b/a/a:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   322: ldc 30
+    //   319: getfield 45	com/tencent/mm/plugin/boots/b/a/a:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
+    //   322: ldc 28
     //   324: aload 9
-    //   326: invokevirtual 109	com/tencent/mm/plugin/boots/a/a:convertTo	()Landroid/content/ContentValues;
-    //   329: ldc 56
+    //   326: invokevirtual 107	com/tencent/mm/plugin/boots/a/a:convertTo	()Landroid/content/ContentValues;
+    //   329: ldc 54
     //   331: iconst_1
-    //   332: anewarray 22	java/lang/String
+    //   332: anewarray 20	java/lang/String
     //   335: dup
     //   336: iconst_0
     //   337: iload_1
-    //   338: invokestatic 60	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   338: invokestatic 58	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   341: aastore
-    //   342: invokeinterface 138 5 0
+    //   342: invokeinterface 136 5 0
     //   347: i2l
     //   348: lstore 4
     //   350: goto -178 -> 172
@@ -247,50 +244,50 @@ public final class a
   }
   
   /* Error */
-  public final com.tencent.mm.plugin.boots.a.a CP(int paramInt)
+  public final com.tencent.mm.plugin.boots.a.a Gu(int paramInt)
   {
     // Byte code:
-    //   0: ldc 141
-    //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 24	com/tencent/mm/plugin/boots/a/a
+    //   0: ldc 139
+    //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 22	com/tencent/mm/plugin/boots/a/a
     //   8: dup
-    //   9: invokespecial 54	com/tencent/mm/plugin/boots/a/a:<init>	()V
+    //   9: invokespecial 52	com/tencent/mm/plugin/boots/a/a:<init>	()V
     //   12: astore 5
     //   14: aload_0
-    //   15: getfield 47	com/tencent/mm/plugin/boots/b/a/a:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   18: ldc 30
+    //   15: getfield 45	com/tencent/mm/plugin/boots/b/a/a:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
+    //   18: ldc 28
     //   20: aconst_null
-    //   21: ldc 143
+    //   21: ldc 141
     //   23: iconst_1
-    //   24: anewarray 22	java/lang/String
+    //   24: anewarray 20	java/lang/String
     //   27: dup
     //   28: iconst_0
     //   29: iload_1
-    //   30: invokestatic 60	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   30: invokestatic 58	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   33: aastore
     //   34: aconst_null
     //   35: aconst_null
     //   36: aconst_null
-    //   37: invokeinterface 66 8 0
+    //   37: invokeinterface 64 8 0
     //   42: astore_3
     //   43: aload_3
     //   44: ifnull +22 -> 66
     //   47: aload_3
     //   48: astore_2
     //   49: aload_3
-    //   50: invokeinterface 72 1 0
+    //   50: invokeinterface 70 1 0
     //   55: ifeq +11 -> 66
     //   58: aload_3
     //   59: astore_2
     //   60: aload 5
     //   62: aload_3
-    //   63: invokevirtual 76	com/tencent/mm/plugin/boots/a/a:convertFrom	(Landroid/database/Cursor;)V
+    //   63: invokevirtual 74	com/tencent/mm/plugin/boots/a/a:convertFrom	(Landroid/database/Cursor;)V
     //   66: aload_3
     //   67: ifnull +9 -> 76
     //   70: aload_3
-    //   71: invokeinterface 79 1 0
-    //   76: ldc 141
-    //   78: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   71: invokeinterface 77 1 0
+    //   76: ldc 139
+    //   78: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   81: aload 5
     //   83: areturn
     //   84: astore 4
@@ -298,21 +295,21 @@ public final class a
     //   87: astore_3
     //   88: aload_3
     //   89: astore_2
-    //   90: ldc 115
+    //   90: ldc 113
     //   92: aload 4
-    //   94: ldc 145
+    //   94: ldc 143
     //   96: iconst_1
-    //   97: anewarray 130	java/lang/Object
+    //   97: anewarray 128	java/lang/Object
     //   100: dup
     //   101: iconst_0
     //   102: iload_1
-    //   103: invokestatic 150	java/lang/Integer:toHexString	(I)Ljava/lang/String;
+    //   103: invokestatic 148	java/lang/Integer:toHexString	(I)Ljava/lang/String;
     //   106: aastore
-    //   107: invokestatic 134	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   107: invokestatic 132	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   110: aload_3
     //   111: ifnull -35 -> 76
     //   114: aload_3
-    //   115: invokeinterface 79 1 0
+    //   115: invokeinterface 77 1 0
     //   120: goto -44 -> 76
     //   123: astore_3
     //   124: aconst_null
@@ -320,9 +317,9 @@ public final class a
     //   126: aload_2
     //   127: ifnull +9 -> 136
     //   130: aload_2
-    //   131: invokeinterface 79 1 0
-    //   136: ldc 141
-    //   138: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   131: invokeinterface 77 1 0
+    //   136: ldc 139
+    //   138: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   141: aload_3
     //   142: athrow
     //   143: astore_3
@@ -351,13 +348,7 @@ public final class a
     //   60	66	147	java/lang/Exception
   }
   
-  public final int a(g paramg)
-  {
-    this.db = paramg;
-    return 0;
-  }
-  
-  public final List<com.tencent.mm.plugin.boots.a.a> ckR()
+  public final List<com.tencent.mm.plugin.boots.a.a> cym()
   {
     AppMethodBeat.i(117375);
     ArrayList localArrayList = new ArrayList();

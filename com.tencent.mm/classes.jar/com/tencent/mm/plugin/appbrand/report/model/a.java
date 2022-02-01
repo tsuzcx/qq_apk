@@ -10,10 +10,12 @@ import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProcessProxyUI;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.page.ag;
-import com.tencent.mm.plugin.appbrand.page.bx;
-import com.tencent.mm.plugin.appbrand.page.x;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.ah;
+import com.tencent.mm.plugin.appbrand.page.ca;
+import com.tencent.mm.plugin.appbrand.page.y;
+import com.tencent.mm.plugin.appbrand.report.i;
+import com.tencent.mm.plugin.appbrand.t;
 import com.tencent.mm.sdk.platformtools.IntentUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -23,71 +25,71 @@ import java.util.LinkedList;
 public final class a
   implements f
 {
-  private final com.tencent.mm.plugin.appbrand.q kBw;
   private final String mAppId;
-  private Intent nIi;
-  private boolean nIj;
-  private boolean nIk;
-  private k nIl;
-  private m nIm;
-  private p nIn;
-  private q nIo;
-  private volatile h nIp;
-  private boolean noI;
+  private final t nuJ;
+  private q qKA;
+  private volatile h qKB;
+  private Intent qKu;
+  private boolean qKv;
+  private boolean qKw;
+  private k qKx;
+  private m qKy;
+  private p qKz;
+  private boolean qqr;
   
-  public a(com.tencent.mm.plugin.appbrand.q paramq)
+  public a(t paramt)
   {
     AppMethodBeat.i(48085);
-    this.noI = false;
-    this.nIj = false;
-    this.nIk = false;
-    this.nIl = null;
-    this.nIm = null;
-    this.nIn = null;
-    this.nIo = null;
-    this.nIp = null;
-    this.mAppId = paramq.mAppId;
-    this.kBw = paramq;
-    this.nIo = q.G(this.kBw);
+    this.qqr = false;
+    this.qKv = false;
+    this.qKw = false;
+    this.qKx = null;
+    this.qKy = null;
+    this.qKz = null;
+    this.qKA = null;
+    this.qKB = null;
+    this.mAppId = paramt.mAppId;
+    this.nuJ = paramt;
+    this.qKA = q.H(this.nuJ);
     resetSession();
     AppMethodBeat.o(48085);
   }
   
-  private void a(ag paramag1, ag paramag2)
+  private void a(ah paramah1, ah paramah2)
   {
     AppMethodBeat.i(48088);
-    if (paramag2 != null)
+    if (paramah2 != null)
     {
-      this.nIl.v(paramag2);
-      this.nIn.a(paramag2, paramag1.nna);
+      this.qKx.t(paramah2);
+      this.qKz.a(paramah2, paramah1.qoI);
     }
-    this.nIm.x(paramag1);
+    this.qKy.v(paramah1);
     AppMethodBeat.o(48088);
   }
   
-  private void j(long paramLong, int paramInt)
+  private void m(long paramLong, int paramInt)
   {
     AppMethodBeat.i(48094);
-    int i = this.kBw.bsB().leE.pkgVersion;
-    com.tencent.mm.plugin.report.service.h.CyF.a(13543, new Object[] { this.mAppId, Integer.valueOf(i), Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+    int i = this.nuJ.bDx().nYR.pkgVersion;
+    com.tencent.mm.plugin.report.service.h.IzE.a(13543, new Object[] { this.mAppId, Integer.valueOf(i), Long.valueOf(paramLong), Integer.valueOf(paramInt) });
     AppMethodBeat.o(48094);
   }
   
-  public final void I(Intent paramIntent)
+  public final void J(Intent paramIntent)
   {
-    this.nIi = paramIntent;
+    this.qKu = paramIntent;
   }
   
-  public final void a(long paramLong, bx parambx)
+  public final void a(long paramLong, ca paramca)
   {
     AppMethodBeat.i(48093);
     int i;
-    switch (1.cwL[parambx.ordinal()])
+    switch (1.cvp[paramca.ordinal()])
     {
     default: 
       i = 2;
-      j(paramLong, i);
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(390L, 0L, 1L, false);
+      m(paramLong, i);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(390L, 0L, 1L, false);
       switch ((int)paramLong / 250)
       {
       default: 
@@ -97,7 +99,7 @@ public final class a
     }
     for (;;)
     {
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(390L, i, 1L, false);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(390L, i, 1L, false);
       AppMethodBeat.o(48093);
       return;
       i = 1;
@@ -118,153 +120,153 @@ public final class a
     }
   }
   
-  public final void a(ag paramag1, ag paramag2, bx parambx)
+  public final void a(ah paramah1, ah paramah2, ca paramca)
   {
     int i = 0;
     AppMethodBeat.i(48087);
     h localh;
-    if ((bx.nuJ == parambx) && (this.nIk))
+    if ((ca.qwD == paramca) && (this.qKw))
     {
-      this.nIk = false;
+      this.qKw = false;
       resetSession();
-      if ((bx.nuJ == parambx) || (paramag2 == null) || (Util.isNullOrNil(paramag2.nna)) || (paramag2 == paramag1)) {
+      if ((ca.qwD == paramca) || (paramah2 == null) || (Util.isNullOrNil(paramah2.qoI)) || (paramah2 == paramah1)) {
         i = 1;
       }
-      localh = this.nIp;
+      localh = this.qKB;
       if (i == 0) {
         break label117;
       }
     }
     label117:
-    for (ag localag = null;; localag = paramag2)
+    for (ah localah = null;; localah = paramah2)
     {
-      localh.a(paramag1, localag, parambx);
+      localh.a(paramah1, localah, paramca);
       if (i != 0) {
         break label123;
       }
-      paramag2.nrs.onBackground();
-      a(paramag1, paramag2);
+      paramah2.qtk.onBackground();
+      a(paramah1, paramah2);
       AppMethodBeat.o(48087);
       return;
-      this.nIk = false;
+      this.qKw = false;
       break;
     }
     label123:
-    a(paramag1, null);
+    a(paramah1, null);
     AppMethodBeat.o(48087);
   }
   
-  public final Intent bOA()
-  {
-    return this.nIi;
-  }
-  
-  public final p bOB()
-  {
-    return this.nIn;
-  }
-  
-  public final q bOC()
-  {
-    return this.nIo;
-  }
-  
-  public final void bOD()
-  {
-    this.nIj = true;
-    this.nIk = true;
-  }
-  
-  public final void bOy()
+  public final void caP()
   {
     AppMethodBeat.i(48090);
-    j(0L, 4);
+    m(0L, 4);
     AppMethodBeat.o(48090);
   }
   
-  public final h bOz()
+  public final h caQ()
   {
-    return this.nIp;
+    return this.qKB;
   }
   
-  public final void c(ag paramag)
+  public final Intent caR()
+  {
+    return this.qKu;
+  }
+  
+  public final p caS()
+  {
+    return this.qKz;
+  }
+  
+  public final q caT()
+  {
+    return this.qKA;
+  }
+  
+  public final void caU()
+  {
+    this.qKv = true;
+    this.qKw = true;
+  }
+  
+  public final void d(ah paramah)
   {
     AppMethodBeat.i(48091);
-    if ((paramag == null) || (this.noI))
+    if ((paramah == null) || (this.qqr))
     {
       AppMethodBeat.o(48091);
       return;
     }
-    d(paramag);
+    e(paramah);
     AppMethodBeat.o(48091);
   }
   
-  public final void d(ag paramag)
+  public final void e(ah paramah)
   {
     AppMethodBeat.i(48089);
-    this.noI = true;
-    this.nIp.d(paramag);
-    paramag.nrs.onBackground();
-    Object localObject1 = this.nIl;
-    Object localObject2 = AndroidContextUtil.castActivityOrNull(paramag.getContext());
+    this.qqr = true;
+    this.qKB.e(paramah);
+    paramah.qtk.onBackground();
+    Object localObject1 = this.qKx;
+    Object localObject2 = AndroidContextUtil.castActivityOrNull(paramah.getContext());
     if ((localObject2 != null) && (((Activity)localObject2).isFinishing())) {
-      ((k)localObject1).nIT = true;
+      ((k)localObject1).qLg = true;
     }
-    ((k)localObject1).w(paramag);
+    ((k)localObject1).u(paramah);
     ((k)localObject1).report();
-    localObject2 = this.nIn;
-    ((p)localObject2).nIU = ((String)((p)localObject2).nKb.peekFirst());
-    ((p)localObject2).nIW = null;
+    localObject2 = this.qKz;
+    ((p)localObject2).qLh = ((String)((p)localObject2).qMo.peekFirst());
+    ((p)localObject2).qLj = null;
     Intent localIntent;
-    switch (p.2.kRE[com.tencent.mm.plugin.appbrand.h.Uc(localObject2.appId).ordinal()])
+    switch (p.2.nLM[com.tencent.mm.plugin.appbrand.k.abM(localObject2.appId).ordinal()])
     {
     default: 
-      localIntent = ((p)localObject2).kBw.bsD().getReporter().bOA();
+      localIntent = ((p)localObject2).nuJ.bDz().getReporter().caR();
       if (localIntent != null) {
         if (localIntent.getComponent() == null)
         {
           localObject1 = "";
           Log.e("MicroMsg.AppBrand.Report.kv_14992", "onBackground, intent %s, get null cmp name", new Object[] { localIntent });
-          ((p)localObject2).nIV = 8;
-          ((p)localObject2).nIW = Util.nullAs(IntentUtil.getStringExtra(localIntent, AppBrandProcessProxyUI.lwf), (String)localObject1);
-          localObject1 = ((p)localObject2).nIW;
-          ((p)localObject2).nKb.pollFirst();
-          ((p)localObject2).nKb.push(Util.nullAsNil((String)localObject1));
+          ((p)localObject2).qLi = 8;
+          ((p)localObject2).qLj = Util.nullAs(IntentUtil.getStringExtra(localIntent, AppBrandProcessProxyUI.oqO), (String)localObject1);
+          localObject1 = ((p)localObject2).qLj;
+          ((p)localObject2).qMo.pollFirst();
+          ((p)localObject2).qMo.push(Util.nullAsNil((String)localObject1));
         }
       }
       break;
     }
     for (;;)
     {
-      localObject1 = AndroidContextUtil.castActivityOrNull(paramag.getContext());
+      localObject1 = AndroidContextUtil.castActivityOrNull(paramah.getContext());
       if ((localObject1 != null) && (((Activity)localObject1).isFinishing())) {
-        ((p)localObject2).nIT = true;
+        ((p)localObject2).qLg = true;
       }
-      ((p)localObject2).y(paramag);
+      ((p)localObject2).w(paramah);
       AppMethodBeat.o(48089);
       return;
-      ((p)localObject2).nIV = 3;
+      ((p)localObject2).qLi = 3;
       continue;
-      ((p)localObject2).nIV = 6;
+      ((p)localObject2).qLi = 6;
       continue;
       localObject1 = localIntent.getComponent().getClassName();
       break;
-      ((p)localObject2).nIV = 7;
+      ((p)localObject2).qLi = 7;
     }
   }
   
-  public final void e(ag paramag)
+  public final void f(ah paramah)
   {
     AppMethodBeat.i(48092);
-    this.nIi = null;
-    if (this.nIj)
+    this.qKu = null;
+    if (this.qKv)
     {
-      this.nIj = false;
+      this.qKv = false;
       AppMethodBeat.o(48092);
       return;
     }
-    this.nIp.e(paramag);
-    this.nIm.x(paramag);
+    this.qKB.f(paramah);
+    this.qKy.v(paramah);
     AppMethodBeat.o(48092);
   }
   
@@ -274,27 +276,32 @@ public final class a
     if (Util.isNullOrNil(this.mAppId))
     {
       Log.e("MicroMsg.AppBrandPageContainerReporter", "resetSession with dummy model, stack %s", new Object[] { Util.stackTraceToString(new Throwable()) });
-      this.nIp = h.nIG;
-      this.nIm = m.bUN();
-      this.nIl = k.bUM();
-      this.nIn = p.bUW();
+      this.qKB = h.qKS;
+      this.qKy = m.chY();
+      this.qKx = k.chX();
+      this.qKz = p.cih();
       AppMethodBeat.o(48086);
       return;
     }
-    String str1 = this.kBw.bsC().cym;
-    String str2 = d.d(this.kBw.bsC().cys);
-    this.nIp = new c(str2, this.kBw.brs());
-    this.nIl = k.a(this.kBw, str1, this.nIp);
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.push(Util.nullAsNil(str2));
-    this.nIn = p.a(this.kBw, str1, localLinkedList);
-    this.nIm = m.b(this.kBw, str1, this.nIp);
-    AppMethodBeat.o(48086);
+    String str1 = this.nuJ.bDy().cwP;
+    String str2 = d.d(this.nuJ.bDy().cwV);
+    if ((this.qKB != null) && (this.qKB.chR() != null)) {}
+    for (Object localObject = this.qKB.chR().path;; localObject = this.nuJ.bCi())
+    {
+      this.qKB = new c(str2, (String)localObject);
+      this.qKx = k.a(this.nuJ, str1, this.qKB);
+      localObject = new LinkedList();
+      ((LinkedList)localObject).push(Util.nullAsNil(str2));
+      this.qKz = p.a(this.nuJ, str1, (LinkedList)localObject);
+      this.qKy = m.b(this.nuJ, str1, this.qKB);
+      AppMethodBeat.o(48086);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.model.a
  * JD-Core Version:    0.7.0.1
  */

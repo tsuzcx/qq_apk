@@ -1,100 +1,142 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
-import com.tencent.mm.plugin.appbrand.ipc.a;
-import com.tencent.mm.plugin.appbrand.utils.c;
-import com.tencent.mm.plugin.appbrand.utils.c.a;
-import com.tencent.mm.sdk.platformtools.ImgUtil;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.foundation.a.e.a;
+import com.tencent.mm.plugin.messenger.foundation.a.e.b;
+import java.util.HashMap;
+import java.util.Map;
 import kotlin.l;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAddImageToFavorites;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAppBindGroup;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
 public final class ao
-  extends d<f>
+  extends c<e>
 {
-  private static final int CTRL_INDEX = 924;
-  private static final String NAME = "addImageToFavorites";
-  public static final a lyp;
+  public static final int CTRL_INDEX = 875;
+  public static final String NAME = "bindGroup";
+  public static final a otP;
   
   static
   {
-    AppMethodBeat.i(228267);
-    lyp = new a((byte)0);
-    AppMethodBeat.o(228267);
+    AppMethodBeat.i(284002);
+    otP = new a((byte)0);
+    AppMethodBeat.o(284002);
   }
   
-  public final void a(final f paramf, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final e parame, JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(228266);
-    if (paramf == null)
+    String str3 = null;
+    AppMethodBeat.i(284001);
+    String str1;
+    Object localObject;
+    int i;
+    if (parame != null)
     {
-      Log.w("MicroMsg.AppBrand.JsApiAddImageToFavorites", "invoke, env is null");
-      AppMethodBeat.o(228266);
-      return;
+      str1 = parame.getAppId();
+      localObject = (CharSequence)str1;
+      if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
+        break label79;
+      }
+      i = 1;
     }
-    if (paramJSONObject == null)
+    for (;;)
     {
-      Log.w("MicroMsg.AppBrand.JsApiAddImageToFavorites", "invoke, data is null");
-      paramf.i(paramInt, Zf("fail:data is null"));
-      AppMethodBeat.o(228266);
-      return;
+      if (i != 0)
+      {
+        if (parame != null)
+        {
+          parame.j(paramInt, agS("fail:appId is null"));
+          AppMethodBeat.o(284001);
+          return;
+          str1 = null;
+          break;
+          label79:
+          i = 0;
+          continue;
+        }
+        AppMethodBeat.o(284001);
+        return;
+      }
     }
-    paramJSONObject = paramJSONObject.optString("url");
-    CharSequence localCharSequence = (CharSequence)paramJSONObject;
-    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
-    for (int i = 1; i != 0; i = 0)
+    if (paramJSONObject != null)
     {
-      Log.w("MicroMsg.AppBrand.JsApiAddImageToFavorites", "invoke, url is empty");
-      paramf.i(paramInt, Zf("fail:url is empty"));
-      AppMethodBeat.o(228266);
-      return;
+      localObject = paramJSONObject.optString("signature");
+      if (paramJSONObject == null) {
+        break label204;
+      }
     }
-    c.a(paramf, paramJSONObject, null, (c.a)new b(this, paramf, paramInt));
-    AppMethodBeat.o(228266);
+    label204:
+    for (String str2 = paramJSONObject.optString("groupId");; str2 = null)
+    {
+      if (paramJSONObject != null) {
+        str3 = paramJSONObject.optString("nonceStr");
+      }
+      paramJSONObject = new e.b();
+      paramJSONObject.appId = str1;
+      paramJSONObject.signature = ((String)localObject);
+      paramJSONObject.EVw = str2;
+      paramJSONObject.EVx = str3;
+      ((com.tencent.mm.plugin.messenger.foundation.a.e)h.ae(com.tencent.mm.plugin.messenger.foundation.a.e.class)).a(parame.getContext(), paramJSONObject, (e.a)new b(this, parame, paramInt));
+      AppMethodBeat.o(284001);
+      return;
+      localObject = null;
+      break;
+    }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAddImageToFavorites$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "PARAM_KEY_IMAGE_PATH", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAppBindGroup$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "localPath", "", "kotlin.jvm.PlatformType", "onLoad"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "success", "", "errorMsg", "", "groupOpenId", "onDealEnd"})
   static final class b
-    implements c.a
+    implements e.a
   {
-    b(ao paramao, f paramf, int paramInt) {}
+    b(ao paramao, e parame, int paramInt) {}
     
-    public final void Wz(String paramString)
+    public final void a(boolean paramBoolean, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(228265);
-      CharSequence localCharSequence = (CharSequence)paramString;
-      if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
-      for (int i = 1; i != 0; i = 0)
+      AppMethodBeat.i(278192);
+      if (paramBoolean)
       {
-        Log.w("MicroMsg.AppBrand.JsApiAddImageToFavorites", "invoke, url is illegal");
-        paramf.i(paramInt, this.lyq.Zf("fail:url is illegal"));
-        AppMethodBeat.o(228265);
+        paramString1 = (CharSequence)paramString2;
+        int i;
+        if ((paramString1 == null) || (paramString1.length() == 0)) {
+          i = 1;
+        }
+        while (i != 0)
+        {
+          paramString1 = new HashMap();
+          ((Map)paramString1).put("openId", paramString2);
+          paramString2 = parame;
+          if (paramString2 != null)
+          {
+            paramString2.j(paramInt, this.otQ.m("ok", (Map)paramString1));
+            AppMethodBeat.o(278192);
+            return;
+            i = 0;
+          }
+          else
+          {
+            AppMethodBeat.o(278192);
+            return;
+          }
+        }
+      }
+      paramString1 = parame;
+      if (paramString1 != null)
+      {
+        paramString1.j(paramInt, this.otQ.agS("fail"));
+        AppMethodBeat.o(278192);
         return;
       }
-      if (!ImgUtil.isImgFile(paramString))
-      {
-        Log.w("MicroMsg.AppBrand.JsApiAddImageToFavorites", "invoke, " + paramString + " is not image");
-        s.deleteFile(paramString);
-        paramf.i(paramInt, this.lyq.Zf("fail:url is illegal"));
-        AppMethodBeat.o(228265);
-        return;
-      }
-      a.a(paramf.getContext(), (AppBrandProxyUIProcessTask.ProcessRequest)new AddImageToFavoritesRequest(paramString), (AppBrandProxyUIProcessTask.b)new AppBrandProxyUIProcessTask.b() {});
-      AppMethodBeat.o(228265);
+      AppMethodBeat.o(278192);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ao
  * JD-Core Version:    0.7.0.1
  */

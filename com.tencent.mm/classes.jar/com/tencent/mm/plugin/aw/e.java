@@ -1,0 +1,21 @@
+package com.tencent.mm.plugin.aw;
+
+import android.webkit.ValueCallback;
+import kotlin.g.a.b;
+import kotlin.l;
+
+@l(iBK={1, 1, 16})
+final class e
+  implements ValueCallback
+{
+  e(b paramb)
+  {
+    this.kMk = paramb;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+ * Qualified Name:     com.tencent.mm.plugin.aw.e
+ * JD-Core Version:    0.7.0.1
+ */

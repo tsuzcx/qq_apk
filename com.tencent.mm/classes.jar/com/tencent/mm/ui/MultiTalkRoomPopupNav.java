@@ -20,9 +20,14 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bh.f;
+import com.tencent.mm.R.a;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.bj.f;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.multitalk.d.e;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -35,37 +40,37 @@ import java.util.List;
 public class MultiTalkRoomPopupNav
   extends LinearLayout
 {
-  private View GDE;
-  private View OFk;
-  private com.tencent.mm.ui.chatting.e.a OFl;
-  private WeImageView OFm;
-  private boolean OFo;
-  private LinearLayout OJh;
-  private View OJi;
-  private TextView OJj;
-  private TextView OJk;
-  private TextView OJl;
-  private String OJm;
-  private String OJn;
-  private b OJo;
-  public a OJp;
-  private final int OJq;
-  private LinearLayout OJr;
-  private LinearLayout OJs;
-  private LinearLayout OJt;
-  public boolean OJu;
-  private f OJv;
-  private int OJw;
-  private View obi;
+  private View Nrv;
+  private View VYF;
+  private WeImageView VYG;
+  private boolean VYI;
+  private com.tencent.mm.ui.chatting.e.a VYv;
+  private LinearLayout WcC;
+  private View WcD;
+  private TextView WcE;
+  private TextView WcF;
+  private TextView WcG;
+  private String WcH;
+  private String WcI;
+  private b WcJ;
+  public a WcK;
+  private final int WcL;
+  private LinearLayout WcM;
+  private LinearLayout WcN;
+  private LinearLayout WcO;
+  public boolean WcP;
+  private f WcQ;
+  private int WcR;
+  private View rcN;
   
   public MultiTalkRoomPopupNav(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(33620);
-    this.OJo = b.OJC;
-    this.OJq = 6;
-    this.OJu = false;
-    this.OJv = new f();
+    this.WcJ = b.WcX;
+    this.WcL = 6;
+    this.WcP = false;
+    this.WcQ = new f();
     initView();
     AppMethodBeat.o(33620);
   }
@@ -75,105 +80,105 @@ public class MultiTalkRoomPopupNav
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(33619);
-    this.OJo = b.OJC;
-    this.OJq = 6;
-    this.OJu = false;
-    this.OJv = new f();
+    this.WcJ = b.WcX;
+    this.WcL = 6;
+    this.WcP = false;
+    this.WcQ = new f();
     initView();
     AppMethodBeat.o(33619);
   }
   
-  private void Bo(boolean paramBoolean)
+  private void FF(boolean paramBoolean)
   {
-    AppMethodBeat.i(232683);
-    if (this.OFk != null) {
+    AppMethodBeat.i(292374);
+    if (this.VYF != null) {
       if (paramBoolean)
       {
-        this.OFk.setVisibility(0);
-        if (this.obi != null) {
-          this.obi.setVisibility(8);
+        this.VYF.setVisibility(0);
+        if (this.rcN != null) {
+          this.rcN.setVisibility(8);
         }
-        if (this.OJh != null) {
-          this.OJh.setBackgroundColor(0);
+        if (this.WcC != null) {
+          this.WcC.setBackgroundColor(0);
         }
-        if (this.OFm != null) {
-          this.OFm.setVisibility(4);
+        if (this.VYG != null) {
+          this.VYG.setVisibility(4);
         }
-        if (this.OFl != null)
+        if (this.VYv != null)
         {
-          this.OFl.hideVKB();
-          AppMethodBeat.o(232683);
+          this.VYv.hideVKB();
+          AppMethodBeat.o(292374);
         }
       }
       else
       {
-        this.OFk.setVisibility(8);
-        if (this.obi != null) {
-          this.obi.setVisibility(0);
+        this.VYF.setVisibility(8);
+        if (this.rcN != null) {
+          this.rcN.setVisibility(0);
         }
-        if (this.OJh != null) {
-          this.OJh.setBackgroundResource(2131235312);
+        if (this.WcC != null) {
+          this.WcC.setBackgroundResource(R.g.tipsbar_small_white_bg);
         }
-        if (this.OFm != null) {
-          this.OFm.setVisibility(0);
+        if (this.VYG != null) {
+          this.VYG.setVisibility(0);
         }
       }
     }
-    AppMethodBeat.o(232683);
+    AppMethodBeat.o(292374);
   }
   
-  private void d(String paramString1, List<String> paramList, final String paramString2)
+  private void c(String paramString1, List<String> paramList, final String paramString2)
   {
     AppMethodBeat.i(33627);
-    this.OJh.setBackgroundColor(0);
-    this.OFm.setVisibility(4);
-    Object localObject = b.OJA;
-    this.OJp = new a((byte)0);
-    localObject = this.OJp;
+    this.WcC.setBackgroundColor(0);
+    this.VYG.setVisibility(4);
+    Object localObject = b.WcV;
+    this.WcK = new a((byte)0);
+    localObject = this.WcK;
     View.OnClickListener local2 = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(33612);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/MultiTalkRoomPopupNav$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/MultiTalkRoomPopupNav$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         Log.i("MicroMsg.MultiTalkRoomPopupNav", "click enter button..");
         if (paramString2 != null)
         {
-          if (((com.tencent.mm.plugin.multitalk.model.d)g.af(com.tencent.mm.plugin.multitalk.model.d.class)).emq())
+          if (((com.tencent.mm.plugin.multitalk.model.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.multitalk.model.d.class)).eWe())
           {
             Log.e("MicroMsg.MultiTalkRoomPopupNav", "now is in other voip..");
-            com.tencent.mm.ui.base.h.c(MultiTalkRoomPopupNav.this.getContext(), MMApplicationContext.getContext().getString(2131763273), null, true);
+            com.tencent.mm.ui.base.h.c(MultiTalkRoomPopupNav.this.getContext(), MMApplicationContext.getContext().getString(R.l.multitalk_is_talking_cannot_enter), null, true);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/MultiTalkRoomPopupNav$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(33612);
             return;
           }
-          paramAnonymousView = ((com.tencent.mm.plugin.multitalk.model.d)g.af(com.tencent.mm.plugin.multitalk.model.d.class)).aFK(MultiTalkRoomPopupNav.b(MultiTalkRoomPopupNav.this));
+          paramAnonymousView = ((com.tencent.mm.plugin.multitalk.model.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.multitalk.model.d.class)).aPW(MultiTalkRoomPopupNav.b(MultiTalkRoomPopupNav.this));
           if (paramAnonymousView.size() != 1) {
-            break label307;
+            break label309;
           }
-          MultiTalkRoomPopupNav.blV(paramString2);
-          com.tencent.mm.plugin.report.service.h.CyF.a(13945, new Object[] { Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), MultiTalkRoomPopupNav.b(MultiTalkRoomPopupNav.this), Integer.valueOf(MultiTalkRoomPopupNav.c(MultiTalkRoomPopupNav.this).field_roomId), Long.valueOf(MultiTalkRoomPopupNav.c(MultiTalkRoomPopupNav.this).field_roomKey) });
+          MultiTalkRoomPopupNav.byu(paramString2);
+          com.tencent.mm.plugin.report.service.h.IzE.a(13945, new Object[] { Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), MultiTalkRoomPopupNav.b(MultiTalkRoomPopupNav.this), Integer.valueOf(MultiTalkRoomPopupNav.c(MultiTalkRoomPopupNav.this).field_roomId), Long.valueOf(MultiTalkRoomPopupNav.c(MultiTalkRoomPopupNav.this).field_roomKey) });
         }
         for (;;)
         {
           MultiTalkRoomPopupNav.e(MultiTalkRoomPopupNav.this).close();
           MultiTalkRoomPopupNav.f(MultiTalkRoomPopupNav.this).setVisibility(0);
-          MultiTalkRoomPopupNav.f(MultiTalkRoomPopupNav.this).setBackgroundResource(2131235312);
+          MultiTalkRoomPopupNav.f(MultiTalkRoomPopupNav.this).setBackgroundResource(R.g.tipsbar_small_white_bg);
           MultiTalkRoomPopupNav.g(MultiTalkRoomPopupNav.this).setVisibility(0);
           MultiTalkRoomPopupNav.h(MultiTalkRoomPopupNav.this).setVisibility(8);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/MultiTalkRoomPopupNav$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(33612);
           return;
-          label307:
+          label309:
           int i;
-          if (paramAnonymousView.size() >= e.epZ())
+          if (paramAnonymousView.size() >= e.eZN())
           {
             Log.e("MicroMsg.MultiTalkRoomPopupNav", "now is up to the limit,memberList size:" + paramAnonymousView.size());
-            com.tencent.mm.ui.base.h.c(MultiTalkRoomPopupNav.this.getContext(), MMApplicationContext.getContext().getString(2131763279, new Object[] { Integer.valueOf(e.epZ()) }), null, true);
-            paramAnonymousView = com.tencent.mm.plugin.report.service.h.CyF;
-            if (MultiTalkRoomPopupNav.d(MultiTalkRoomPopupNav.this) == MultiTalkRoomPopupNav.b.OJA) {}
+            com.tencent.mm.ui.base.h.c(MultiTalkRoomPopupNav.this.getContext(), MMApplicationContext.getContext().getString(R.l.multitalk_members_reach_max_limit, new Object[] { Integer.valueOf(e.eZN()) }), null, true);
+            paramAnonymousView = com.tencent.mm.plugin.report.service.h.IzE;
+            if (MultiTalkRoomPopupNav.d(MultiTalkRoomPopupNav.this) == MultiTalkRoomPopupNav.b.WcV) {}
             for (i = 1;; i = 0)
             {
               paramAnonymousView.a(13945, new Object[] { Integer.valueOf(1), Integer.valueOf(i), Integer.valueOf(1), Integer.valueOf(1), MultiTalkRoomPopupNav.b(MultiTalkRoomPopupNav.this), Integer.valueOf(MultiTalkRoomPopupNav.c(MultiTalkRoomPopupNav.this).field_roomId), Long.valueOf(MultiTalkRoomPopupNav.c(MultiTalkRoomPopupNav.this).field_roomKey) });
@@ -182,12 +187,12 @@ public class MultiTalkRoomPopupNav
               return;
             }
           }
-          if (((com.tencent.mm.plugin.multitalk.model.d)g.af(com.tencent.mm.plugin.multitalk.model.d.class)).emp())
+          if (((com.tencent.mm.plugin.multitalk.model.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.multitalk.model.d.class)).eWd())
           {
             Log.e("MicroMsg.MultiTalkRoomPopupNav", "now is inviting other people voip..");
-            com.tencent.mm.ui.base.h.c(MultiTalkRoomPopupNav.this.getContext(), MMApplicationContext.getContext().getString(2131763271), null, true);
-            paramAnonymousView = com.tencent.mm.plugin.report.service.h.CyF;
-            if (MultiTalkRoomPopupNav.d(MultiTalkRoomPopupNav.this) == MultiTalkRoomPopupNav.b.OJA) {}
+            com.tencent.mm.ui.base.h.c(MultiTalkRoomPopupNav.this.getContext(), MMApplicationContext.getContext().getString(R.l.multitalk_inviting_in_another_group), null, true);
+            paramAnonymousView = com.tencent.mm.plugin.report.service.h.IzE;
+            if (MultiTalkRoomPopupNav.d(MultiTalkRoomPopupNav.this) == MultiTalkRoomPopupNav.b.WcV) {}
             for (i = 1;; i = 0)
             {
               paramAnonymousView.a(13945, new Object[] { Integer.valueOf(1), Integer.valueOf(i), Integer.valueOf(0), Integer.valueOf(1), MultiTalkRoomPopupNav.b(MultiTalkRoomPopupNav.this), Integer.valueOf(MultiTalkRoomPopupNav.c(MultiTalkRoomPopupNav.this).field_roomId), Long.valueOf(MultiTalkRoomPopupNav.c(MultiTalkRoomPopupNav.this).field_roomKey) });
@@ -206,16 +211,16 @@ public class MultiTalkRoomPopupNav
       {
         AppMethodBeat.i(33613);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/MultiTalkRoomPopupNav$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/MultiTalkRoomPopupNav$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         Log.i("MicroMsg.MultiTalkRoomPopupNav", "click cancel button..");
         int i;
-        if (MultiTalkRoomPopupNav.d(MultiTalkRoomPopupNav.this) == MultiTalkRoomPopupNav.b.OJA)
+        if (MultiTalkRoomPopupNav.d(MultiTalkRoomPopupNav.this) == MultiTalkRoomPopupNav.b.WcV)
         {
           Log.i("MicroMsg.MultiTalkRoomPopupNav", "reject multiTalk!");
-          boolean bool = ((com.tencent.mm.plugin.multitalk.model.d)g.af(com.tencent.mm.plugin.multitalk.model.d.class)).aFP(paramString2);
-          ((com.tencent.mm.plugin.multitalk.model.d)g.af(com.tencent.mm.plugin.multitalk.model.d.class)).aFQ(paramString2);
-          paramAnonymousView = com.tencent.mm.plugin.report.service.h.CyF;
+          boolean bool = ((com.tencent.mm.plugin.multitalk.model.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.multitalk.model.d.class)).aQb(paramString2);
+          ((com.tencent.mm.plugin.multitalk.model.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.multitalk.model.d.class)).aQc(paramString2);
+          paramAnonymousView = com.tencent.mm.plugin.report.service.h.IzE;
           if (bool)
           {
             i = 0;
@@ -226,7 +231,7 @@ public class MultiTalkRoomPopupNav
         {
           MultiTalkRoomPopupNav.e(MultiTalkRoomPopupNav.this).close();
           MultiTalkRoomPopupNav.f(MultiTalkRoomPopupNav.this).setVisibility(0);
-          MultiTalkRoomPopupNav.f(MultiTalkRoomPopupNav.this).setBackgroundResource(2131235312);
+          MultiTalkRoomPopupNav.f(MultiTalkRoomPopupNav.this).setBackgroundResource(R.g.tipsbar_small_white_bg);
           MultiTalkRoomPopupNav.g(MultiTalkRoomPopupNav.this).setVisibility(0);
           MultiTalkRoomPopupNav.h(MultiTalkRoomPopupNav.this).setVisibility(8);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/MultiTalkRoomPopupNav$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -234,33 +239,33 @@ public class MultiTalkRoomPopupNav
           return;
           i = 1;
           break;
-          com.tencent.mm.plugin.report.service.h.CyF.a(13945, new Object[] { Integer.valueOf(2), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), MultiTalkRoomPopupNav.b(MultiTalkRoomPopupNav.this), Integer.valueOf(MultiTalkRoomPopupNav.c(MultiTalkRoomPopupNav.this).field_roomId), Long.valueOf(MultiTalkRoomPopupNav.c(MultiTalkRoomPopupNav.this).field_roomKey) });
+          com.tencent.mm.plugin.report.service.h.IzE.a(13945, new Object[] { Integer.valueOf(2), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), MultiTalkRoomPopupNav.b(MultiTalkRoomPopupNav.this), Integer.valueOf(MultiTalkRoomPopupNav.c(MultiTalkRoomPopupNav.this).field_roomId), Long.valueOf(MultiTalkRoomPopupNav.c(MultiTalkRoomPopupNav.this).field_roomKey) });
         }
       }
     };
     ((a)localObject).titleView.setText(paramString1);
-    if (((a)localObject).OJy.getVisibility() != 0)
+    if (((a)localObject).WcT.getVisibility() != 0)
     {
-      ((a)localObject).OJy.setVisibility(0);
-      ((a)localObject).OJy.startAnimation(AnimationUtils.loadAnimation(((a)localObject).OJx.getContext(), 2130772129));
-      ((a)localObject).OJx.Bo(true);
-      if (((a)localObject).OJx.OFk != null) {
-        ((a)localObject).OJx.OFk.startAnimation(AnimationUtils.loadAnimation(((a)localObject).OJx.getContext(), 2130772059));
+      ((a)localObject).WcT.setVisibility(0);
+      ((a)localObject).WcT.startAnimation(AnimationUtils.loadAnimation(((a)localObject).WcS.getContext(), R.a.push_down_in));
+      ((a)localObject).WcS.FF(true);
+      if (((a)localObject).WcS.VYF != null) {
+        ((a)localObject).WcS.VYF.startAnimation(AnimationUtils.loadAnimation(((a)localObject).WcS.getContext(), R.a.fast_faded_in));
       }
     }
-    ((a)localObject).OJx.OJr.setVisibility(0);
-    ((a)localObject).OJx.OJr.removeAllViews();
+    ((a)localObject).WcS.WcM.setVisibility(0);
+    ((a)localObject).WcS.WcM.removeAllViews();
     if (paramList != null)
     {
-      if (paramList.size() > ((a)localObject).OJx.OJw)
+      if (paramList.size() > ((a)localObject).WcS.WcR)
       {
-        ((a)localObject).OJx.OJs.setVisibility(0);
-        ((a)localObject).OJx.OJs.removeAllViews();
+        ((a)localObject).WcS.WcN.setVisibility(0);
+        ((a)localObject).WcS.WcN.removeAllViews();
       }
-      if (paramList.size() > ((a)localObject).OJx.OJw * 2)
+      if (paramList.size() > ((a)localObject).WcS.WcR * 2)
       {
-        ((a)localObject).OJx.OJt.setVisibility(0);
-        ((a)localObject).OJx.OJt.removeAllViews();
+        ((a)localObject).WcS.WcO.setVisibility(0);
+        ((a)localObject).WcS.WcO.removeAllViews();
       }
     }
     paramString1 = paramList.iterator();
@@ -268,30 +273,30 @@ public class MultiTalkRoomPopupNav
     if (paramString1.hasNext())
     {
       paramList = (String)paramString1.next();
-      ImageView localImageView = new ImageView(((a)localObject).OJx.getContext());
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 40), com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 40));
-      localLayoutParams.rightMargin = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 8);
+      ImageView localImageView = new ImageView(((a)localObject).WcS.getContext());
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 40), com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 40));
+      localLayoutParams.rightMargin = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 8);
       localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
       localImageView.setLayoutParams(localLayoutParams);
-      if (i < ((a)localObject).OJx.OJw) {
-        ((a)localObject).OJx.OJr.addView(localImageView);
+      if (i < ((a)localObject).WcS.WcR) {
+        ((a)localObject).WcS.WcM.addView(localImageView);
       }
       for (;;)
       {
         a.b.c(localImageView, paramList);
         i += 1;
         break;
-        if ((i >= ((a)localObject).OJx.OJw) && (i < ((a)localObject).OJx.OJw * 2)) {
-          ((a)localObject).OJx.OJs.addView(localImageView);
-        } else if ((i >= ((a)localObject).OJx.OJw * 2) && (i < ((a)localObject).OJx.OJw * 3)) {
-          ((a)localObject).OJx.OJt.addView(localImageView);
+        if ((i >= ((a)localObject).WcS.WcR) && (i < ((a)localObject).WcS.WcR * 2)) {
+          ((a)localObject).WcS.WcN.addView(localImageView);
+        } else if ((i >= ((a)localObject).WcS.WcR * 2) && (i < ((a)localObject).WcS.WcR * 3)) {
+          ((a)localObject).WcS.WcO.addView(localImageView);
         }
       }
     }
-    ((Button)((a)localObject).OJx.findViewById(2131305027)).setOnClickListener(local2);
-    ((a)localObject).CBl.setOnClickListener(paramString2);
-    if (((a)localObject).OJx.OFk != null) {
-      ((a)localObject).OJx.OFk.setOnClickListener(paramString2);
+    ((Button)((a)localObject).WcS.findViewById(R.h.multitalk_alert_enter_btn)).setOnClickListener(local2);
+    ((a)localObject).Bqa.setOnClickListener(paramString2);
+    if (((a)localObject).WcS.VYF != null) {
+      ((a)localObject).WcS.VYF.setOnClickListener(paramString2);
     }
     AppMethodBeat.o(33627);
   }
@@ -299,35 +304,35 @@ public class MultiTalkRoomPopupNav
   private void initView()
   {
     AppMethodBeat.i(33621);
-    inflate(getContext(), 2131495735, this);
-    this.GDE = findViewById(2131307166);
-    this.obi = findViewById(2131297683);
-    this.OJh = ((LinearLayout)findViewById(2131305047));
-    this.OJj = ((TextView)findViewById(2131305064));
-    this.OJk = ((TextView)findViewById(2131305065));
-    this.OJl = ((TextView)findViewById(2131305066));
-    this.OJr = ((LinearLayout)findViewById(2131305036));
-    this.OJs = ((LinearLayout)findViewById(2131305035));
-    this.OJt = ((LinearLayout)findViewById(2131305034));
-    this.OFm = ((WeImageView)findViewById(2131297043));
-    this.OJh.setOnClickListener(new View.OnClickListener()
+    inflate(getContext(), R.i.multitalk_room_popup_nav, this);
+    this.Nrv = findViewById(R.h.root_ll);
+    this.rcN = findViewById(R.h.bottom_line);
+    this.WcC = ((LinearLayout)findViewById(R.h.multitalk_nav_layout));
+    this.WcE = ((TextView)findViewById(R.h.multitalk_tv_nav_content));
+    this.WcF = ((TextView)findViewById(R.h.multitalk_tv_nav_content2));
+    this.WcG = ((TextView)findViewById(R.h.multitalk_tv_nav_inviting));
+    this.WcM = ((LinearLayout)findViewById(R.h.multitalk_image_list_layout));
+    this.WcN = ((LinearLayout)findViewById(R.h.multitalk_image_line_two));
+    this.WcO = ((LinearLayout)findViewById(R.h.multitalk_image_line_three));
+    this.VYG = ((WeImageView)findViewById(R.h.arrow));
+    this.WcC.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(33611);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/MultiTalkRoomPopupNav$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        if ((com.tencent.mm.bi.d.jpA != null) && (((com.tencent.mm.plugin.multitalk.model.d)g.af(com.tencent.mm.plugin.multitalk.model.d.class)).cC(MultiTalkRoomPopupNav.this.getContext())))
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/MultiTalkRoomPopupNav$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        if ((com.tencent.mm.bk.d.meV != null) && (((com.tencent.mm.plugin.multitalk.model.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.multitalk.model.d.class)).cy(MultiTalkRoomPopupNav.this.getContext())))
         {
           Log.d("MicroMsg.MultiTalkRoomPopupNav", "is voip talking");
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/MultiTalkRoomPopupNav$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(33611);
           return;
         }
-        if ((com.tencent.mm.bi.d.jpA != null) && (com.tencent.mm.bi.d.jpA.bgJ()))
+        if ((com.tencent.mm.bk.d.meV != null) && (com.tencent.mm.bk.d.meV.bpY()))
         {
-          Toast.makeText(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(2131761777), 0).show();
+          Toast.makeText(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(R.l.in_new_share_location_tip), 0).show();
           Log.d("MicroMsg.MultiTalkRoomPopupNav", "is show loation");
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/MultiTalkRoomPopupNav$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(33611);
@@ -340,36 +345,36 @@ public class MultiTalkRoomPopupNav
     });
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     ((WindowManager)MMApplicationContext.getContext().getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
-    this.OJw = ((int)Math.floor((localDisplayMetrics.widthPixels - at.fromDPToPix(getContext(), 56)) / at.fromDPToPix(getContext(), 48)));
+    this.WcR = ((int)Math.floor((localDisplayMetrics.widthPixels - aw.fromDPToPix(getContext(), 56)) / aw.fromDPToPix(getContext(), 48)));
     AppMethodBeat.o(33621);
   }
   
-  private void jc(List<String> paramList)
+  private void jU(List<String> paramList)
   {
     int k = 0;
     AppMethodBeat.i(33628);
-    if ((this.OJr != null) && (this.OJr.getVisibility() == 0)) {
-      this.OJr.removeAllViews();
+    if ((this.WcM != null) && (this.WcM.getVisibility() == 0)) {
+      this.WcM.removeAllViews();
     }
     for (int j = 1;; j = 0)
     {
       int i = j;
-      if (this.OJs != null)
+      if (this.WcN != null)
       {
         i = j;
-        if (this.OJs.getVisibility() == 0)
+        if (this.WcN.getVisibility() == 0)
         {
-          this.OJs.removeAllViews();
+          this.WcN.removeAllViews();
           i = 1;
         }
       }
       j = i;
-      if (this.OJt != null)
+      if (this.WcO != null)
       {
         j = i;
-        if (this.OJt.getVisibility() == 0)
+        if (this.WcO.getVisibility() == 0)
         {
-          this.OJt.removeAllViews();
+          this.WcO.removeAllViews();
           j = 1;
         }
       }
@@ -381,22 +386,22 @@ public class MultiTalkRoomPopupNav
         {
           String str = (String)paramList.next();
           ImageView localImageView = new ImageView(getContext());
-          LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 40), com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 40));
-          localLayoutParams.rightMargin = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 8);
+          LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 40), com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 40));
+          localLayoutParams.rightMargin = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 8);
           localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
           localImageView.setLayoutParams(localLayoutParams);
-          if (i < this.OJw) {
-            this.OJr.addView(localImageView);
+          if (i < this.WcR) {
+            this.WcM.addView(localImageView);
           }
           for (;;)
           {
             a.b.c(localImageView, str);
             i += 1;
             break;
-            if ((i >= this.OJw) && (i < this.OJw * 2)) {
-              this.OJs.addView(localImageView);
-            } else if ((i >= this.OJw * 2) && (i < this.OJw * 3)) {
-              this.OJt.addView(localImageView);
+            if ((i >= this.WcR) && (i < this.WcR * 2)) {
+              this.WcN.addView(localImageView);
+            } else if ((i >= this.WcR * 2) && (i < this.WcR * 3)) {
+              this.WcO.addView(localImageView);
             }
           }
         }
@@ -406,7 +411,57 @@ public class MultiTalkRoomPopupNav
     }
   }
   
-  private static List<String> s(List<String> paramList, String paramString)
+  private void setDefaultBannerStyle(String paramString)
+  {
+    AppMethodBeat.i(33625);
+    this.WcE.setTextColor(getResources().getColor(R.e.multitalk_popup_nav_black_text_color));
+    this.WcE.setText(paramString);
+    if ((this.WcM == null) || (this.WcM.getVisibility() != 0))
+    {
+      this.WcE.setVisibility(0);
+      this.WcG.setVisibility(8);
+      this.WcF.setVisibility(8);
+      this.WcM.setVisibility(8);
+    }
+    AppMethodBeat.o(33625);
+  }
+  
+  private void setInvitingBannerStyle(String paramString)
+  {
+    AppMethodBeat.i(33624);
+    this.WcF.setTextColor(getResources().getColor(R.e.multitalk_popup_nav_black_text_color));
+    this.WcF.setText(paramString);
+    this.WcE.setVisibility(8);
+    this.WcG.setVisibility(0);
+    this.WcF.setVisibility(0);
+    this.WcM.setVisibility(8);
+    AppMethodBeat.o(33624);
+  }
+  
+  private void setInvitingBannerStyleWithText(String paramString)
+  {
+    AppMethodBeat.i(292375);
+    this.WcD.setBackgroundResource(R.g.multitalk_talking_banner_shape);
+    this.WcE.setVisibility(8);
+    this.WcG.setVisibility(0);
+    this.WcG.setText(paramString);
+    this.WcF.setVisibility(0);
+    this.WcM.setVisibility(8);
+    AppMethodBeat.o(292375);
+  }
+  
+  private void setTalkingBannerStyle(String paramString)
+  {
+    AppMethodBeat.i(33623);
+    this.WcE.setTextColor(getResources().getColor(R.e.multitalk_popup_nav_green_text_color));
+    this.WcE.setText(paramString);
+    this.WcE.setVisibility(0);
+    this.WcG.setVisibility(8);
+    this.WcF.setVisibility(8);
+    AppMethodBeat.o(33623);
+  }
+  
+  private static List<String> u(List<String> paramList, String paramString)
   {
     AppMethodBeat.i(33629);
     ArrayList localArrayList2 = new ArrayList();
@@ -436,237 +491,187 @@ public class MultiTalkRoomPopupNav
     return localArrayList2;
   }
   
-  private void setDefaultBannerStyle(String paramString)
-  {
-    AppMethodBeat.i(33625);
-    this.OJj.setTextColor(getResources().getColor(2131100864));
-    this.OJj.setText(paramString);
-    if ((this.OJr == null) || (this.OJr.getVisibility() != 0))
-    {
-      this.OJj.setVisibility(0);
-      this.OJl.setVisibility(8);
-      this.OJk.setVisibility(8);
-      this.OJr.setVisibility(8);
-    }
-    AppMethodBeat.o(33625);
-  }
-  
-  private void setInvitingBannerStyle(String paramString)
-  {
-    AppMethodBeat.i(33624);
-    this.OJk.setTextColor(getResources().getColor(2131100864));
-    this.OJk.setText(paramString);
-    this.OJj.setVisibility(8);
-    this.OJl.setVisibility(0);
-    this.OJk.setVisibility(0);
-    this.OJr.setVisibility(8);
-    AppMethodBeat.o(33624);
-  }
-  
-  private void setInvitingBannerStyleWithText(String paramString)
-  {
-    AppMethodBeat.i(232684);
-    this.OJi.setBackgroundResource(2131234089);
-    this.OJj.setVisibility(8);
-    this.OJl.setVisibility(0);
-    this.OJl.setText(paramString);
-    this.OJk.setVisibility(0);
-    this.OJr.setVisibility(8);
-    AppMethodBeat.o(232684);
-  }
-  
-  private void setTalkingBannerStyle(String paramString)
-  {
-    AppMethodBeat.i(33623);
-    this.OJj.setTextColor(getResources().getColor(2131100866));
-    this.OJj.setText(paramString);
-    this.OJj.setVisibility(0);
-    this.OJl.setVisibility(8);
-    this.OJk.setVisibility(8);
-    AppMethodBeat.o(33623);
-  }
-  
-  public final void Bp(boolean paramBoolean)
+  public final void FG(boolean paramBoolean)
   {
     AppMethodBeat.i(33622);
-    this.OJu = false;
-    if ((this.OJm == null) || (this.OJn == null))
+    this.WcP = false;
+    if ((this.WcH == null) || (this.WcI == null))
     {
-      Log.e("MicroMsg.MultiTalkRoomPopupNav", "groupUserName or currentSenderUserName is null! groupUserName:" + this.OJm + ",currentSenderUserName:" + this.OJn);
+      Log.e("MicroMsg.MultiTalkRoomPopupNav", "groupUserName or currentSenderUserName is null! groupUserName:" + this.WcH + ",currentSenderUserName:" + this.WcI);
       AppMethodBeat.o(33622);
       return;
     }
-    Object localObject = this.OJm;
-    if (!((com.tencent.mm.plugin.multitalk.model.d)g.af(com.tencent.mm.plugin.multitalk.model.d.class)).aFH((String)localObject))
+    Object localObject = this.WcH;
+    if (!((com.tencent.mm.plugin.multitalk.model.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.multitalk.model.d.class)).aPT((String)localObject))
     {
-      gJt();
+      hIr();
       AppMethodBeat.o(33622);
       return;
     }
-    List localList = ((com.tencent.mm.plugin.multitalk.model.d)g.af(com.tencent.mm.plugin.multitalk.model.d.class)).aFK((String)localObject);
+    List localList = ((com.tencent.mm.plugin.multitalk.model.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.multitalk.model.d.class)).aPW((String)localObject);
     if (localList.size() == 0)
     {
-      ((com.tencent.mm.plugin.multitalk.model.d)g.af(com.tencent.mm.plugin.multitalk.model.d.class)).gC((String)localObject);
-      gJt();
+      ((com.tencent.mm.plugin.multitalk.model.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.multitalk.model.d.class)).ho((String)localObject);
+      hIr();
       AppMethodBeat.o(33622);
       return;
     }
-    int i = ((com.tencent.mm.plugin.multitalk.model.d)g.af(com.tencent.mm.plugin.multitalk.model.d.class)).iM((String)localObject, this.OJn);
+    int i = ((com.tencent.mm.plugin.multitalk.model.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.multitalk.model.d.class)).iX((String)localObject, this.WcI);
     String str;
     if (i == 1)
     {
-      setUserTalkingStatus(b.OJA);
-      if (((com.tencent.mm.plugin.multitalk.model.d)g.af(com.tencent.mm.plugin.multitalk.model.d.class)).aFL((String)localObject))
+      setUserTalkingStatus(b.WcV);
+      if (((com.tencent.mm.plugin.multitalk.model.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.multitalk.model.d.class)).aPX((String)localObject))
       {
-        gJt();
+        hIr();
         AppMethodBeat.o(33622);
         return;
       }
-      str = e.eqg();
+      str = e.eZX();
       if (str == null) {
-        setInvitingBannerStyle(((com.tencent.mm.plugin.multitalk.model.d)g.af(com.tencent.mm.plugin.multitalk.model.d.class)).getDisplayName(((com.tencent.mm.plugin.multitalk.model.d)g.af(com.tencent.mm.plugin.multitalk.model.d.class)).iN((String)localObject, this.OJn)));
+        setInvitingBannerStyle(((com.tencent.mm.plugin.multitalk.model.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.multitalk.model.d.class)).PJ(((com.tencent.mm.plugin.multitalk.model.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.multitalk.model.d.class)).iY((String)localObject, this.WcI)));
       }
     }
     for (;;)
     {
       setVisibility(0);
-      this.OJh.setVisibility(0);
-      if ((this.OJp != null) && ((paramBoolean) || (this.OJr == null) || (this.OJr.getVisibility() != 0))) {
-        this.OJp.close();
+      this.WcC.setVisibility(0);
+      if ((this.WcK != null) && ((paramBoolean) || (this.WcM == null) || (this.WcM.getVisibility() != 0))) {
+        this.WcK.close();
       }
-      jc(s(localList, ""));
-      if ((this.OJp == null) || (this.OJp.OJy == null)) {
+      jU(u(localList, ""));
+      if ((this.WcK == null) || (this.WcK.WcT == null)) {
         break label551;
       }
-      if (this.OJp.OJy.getVisibility() != 0) {
+      if (this.WcK.WcT.getVisibility() != 0) {
         break;
       }
-      Bo(true);
+      FF(true);
       AppMethodBeat.o(33622);
       return;
       setInvitingBannerStyleWithText(str);
       continue;
       if (i == 10)
       {
-        setUserTalkingStatus(b.OJB);
-        if (((com.tencent.mm.plugin.multitalk.model.d)g.af(com.tencent.mm.plugin.multitalk.model.d.class)).aFL((String)localObject))
+        setUserTalkingStatus(b.WcW);
+        if (((com.tencent.mm.plugin.multitalk.model.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.multitalk.model.d.class)).aPX((String)localObject))
         {
-          gJt();
+          hIr();
           AppMethodBeat.o(33622);
           return;
         }
-        if (((com.tencent.mm.plugin.multitalk.model.d)g.af(com.tencent.mm.plugin.multitalk.model.d.class)).ems())
+        if (((com.tencent.mm.plugin.multitalk.model.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.multitalk.model.d.class)).eWg())
         {
-          gJt();
+          hIr();
           AppMethodBeat.o(33622);
           return;
         }
-        str = e.eqi();
-        setUserTalkingStatus(b.OJC);
+        str = e.eZZ();
+        setUserTalkingStatus(b.WcX);
         localObject = str;
         if (str == null) {
-          localObject = MMApplicationContext.getContext().getString(2131763301, new Object[] { Integer.valueOf(localList.size()) });
+          localObject = MMApplicationContext.getContext().getString(R.l.multitalk_somepepole_in_tip, new Object[] { Integer.valueOf(localList.size()) });
         }
         setDefaultBannerStyle((String)localObject);
       }
       else
       {
-        setUserTalkingStatus(b.OJC);
-        str = e.eqi();
+        setUserTalkingStatus(b.WcX);
+        str = e.eZZ();
         localObject = str;
         if (str == null) {
-          localObject = MMApplicationContext.getContext().getString(2131763301, new Object[] { Integer.valueOf(localList.size()) });
+          localObject = MMApplicationContext.getContext().getString(R.l.multitalk_somepepole_in_tip, new Object[] { Integer.valueOf(localList.size()) });
         }
         setDefaultBannerStyle((String)localObject);
       }
     }
-    Bo(false);
+    FF(false);
     label551:
     AppMethodBeat.o(33622);
   }
   
-  public final void gJt()
+  public final void hIr()
   {
     AppMethodBeat.i(33626);
-    this.OJu = false;
+    this.WcP = false;
     setVisibility(8);
-    if (this.OJp != null) {
-      this.OJp.close();
+    if (this.WcK != null) {
+      this.WcK.close();
     }
     AppMethodBeat.o(33626);
   }
   
   public void setChattingContext(com.tencent.mm.ui.chatting.e.a parama)
   {
-    this.OFl = parama;
+    this.VYv = parama;
   }
   
   public void setCurrentSenderUserName(String paramString)
   {
-    this.OJn = paramString;
+    this.WcI = paramString;
   }
   
   public void setGroupUserName(String paramString)
   {
-    this.OJm = paramString;
+    this.WcH = paramString;
   }
   
   public void setInChatRoom(boolean paramBoolean)
   {
-    this.OFo = paramBoolean;
+    this.VYI = paramBoolean;
   }
   
   public void setMultiTalkInfo(f paramf)
   {
-    this.OJv = paramf;
+    this.WcQ = paramf;
   }
   
   public void setRootTipsBarBackground(View paramView)
   {
-    this.OFk = paramView;
+    this.VYF = paramView;
   }
   
   public void setUserTalkingStatus(b paramb)
   {
-    this.OJo = paramb;
+    this.WcJ = paramb;
   }
   
   public final class a
   {
-    View CBl;
-    public LinearLayout OJy;
+    View Bqa;
+    public LinearLayout WcT;
     TextView titleView;
     
     private a()
     {
-      AppMethodBeat.i(232682);
-      this.CBl = MultiTalkRoomPopupNav.this.findViewById(2131298781);
-      this.titleView = ((TextView)MultiTalkRoomPopupNav.this.findViewById(2131305063));
-      this.OJy = ((LinearLayout)MultiTalkRoomPopupNav.this.findViewById(2131299656));
-      AppMethodBeat.o(232682);
+      AppMethodBeat.i(287908);
+      this.Bqa = MultiTalkRoomPopupNav.this.findViewById(R.h.close_img);
+      this.titleView = ((TextView)MultiTalkRoomPopupNav.this.findViewById(R.h.multitalk_tv_dialog_title));
+      this.WcT = ((LinearLayout)MultiTalkRoomPopupNav.this.findViewById(R.h.dialog_root));
+      AppMethodBeat.o(287908);
     }
     
     public final void close()
     {
       AppMethodBeat.i(33615);
       MultiTalkRoomPopupNav.a(MultiTalkRoomPopupNav.this, false);
-      if (this.OJy.getVisibility() == 0)
+      if (this.WcT.getVisibility() == 0)
       {
-        Animation localAnimation = AnimationUtils.loadAnimation(MultiTalkRoomPopupNav.this.getContext(), 2130772133);
+        Animation localAnimation = AnimationUtils.loadAnimation(MultiTalkRoomPopupNav.this.getContext(), R.a.push_up_out);
         localAnimation.setAnimationListener(new Animation.AnimationListener()
         {
           public final void onAnimationEnd(Animation paramAnonymousAnimation)
           {
-            AppMethodBeat.i(232681);
-            MultiTalkRoomPopupNav.a.this.OJy.setVisibility(8);
-            AppMethodBeat.o(232681);
+            AppMethodBeat.i(219636);
+            MultiTalkRoomPopupNav.a.this.WcT.setVisibility(8);
+            AppMethodBeat.o(219636);
           }
           
           public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
           
           public final void onAnimationStart(Animation paramAnonymousAnimation) {}
         });
-        this.OJy.startAnimation(localAnimation);
+        this.WcT.startAnimation(localAnimation);
       }
       AppMethodBeat.o(33615);
     }
@@ -677,10 +682,10 @@ public class MultiTalkRoomPopupNav
     static
     {
       AppMethodBeat.i(33618);
-      OJA = new b("Inviting", 0);
-      OJB = new b("Talking", 1);
-      OJC = new b("NotInTalking", 2);
-      OJD = new b[] { OJA, OJB, OJC };
+      WcV = new b("Inviting", 0);
+      WcW = new b("Talking", 1);
+      WcX = new b("NotInTalking", 2);
+      WcY = new b[] { WcV, WcW, WcX };
       AppMethodBeat.o(33618);
     }
     
@@ -689,7 +694,7 @@ public class MultiTalkRoomPopupNav
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.MultiTalkRoomPopupNav
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.webview.emojistore.ui;
 
 import android.content.Context;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.l;
 import android.util.AttributeSet;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.emoji.panel.EmojiPanelRecyclerView;
 import com.tencent.mm.hellhoundlib.a.a;
@@ -14,8 +14,8 @@ import com.tencent.mm.hellhoundlib.b.b;
 public class SimilarEmojiLoadMoreRecyclerView
   extends EmojiPanelRecyclerView
 {
-  private a INA;
-  boolean oEn;
+  private a PJT;
+  boolean rFW;
   
   public SimilarEmojiLoadMoreRecyclerView(Context paramContext)
   {
@@ -45,76 +45,76 @@ public class SimilarEmojiLoadMoreRecyclerView
   {
     AppMethodBeat.i(77875);
     setEnableLongPress(false);
-    avQ();
+    aCM();
     a(new RecyclerView.l()
     {
       public final void onScrollStateChanged(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
       {
-        AppMethodBeat.i(77871);
+        AppMethodBeat.i(217874);
         b localb = new b();
-        localb.bm(paramAnonymousRecyclerView);
-        localb.pH(paramAnonymousInt);
-        a.b("com/tencent/mm/plugin/webview/emojistore/ui/SimilarEmojiLoadMoreRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.axR());
+        localb.bn(paramAnonymousRecyclerView);
+        localb.sg(paramAnonymousInt);
+        a.c("com/tencent/mm/plugin/webview/emojistore/ui/SimilarEmojiLoadMoreRecyclerView$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
         super.onScrollStateChanged(paramAnonymousRecyclerView, paramAnonymousInt);
-        if ((paramAnonymousInt != 0) || (SimilarEmojiLoadMoreRecyclerView.this.oEn) || (SimilarEmojiLoadMoreRecyclerView.this.getLayoutManager() == null) || (SimilarEmojiLoadMoreRecyclerView.this.getAdapter() == null))
+        if ((paramAnonymousInt != 0) || (SimilarEmojiLoadMoreRecyclerView.this.rFW) || (SimilarEmojiLoadMoreRecyclerView.this.getLayoutManager() == null) || (SimilarEmojiLoadMoreRecyclerView.this.getAdapter() == null))
         {
-          a.a(this, "com/tencent/mm/plugin/webview/emojistore/ui/SimilarEmojiLoadMoreRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-          AppMethodBeat.o(77871);
+          a.a(this, "com/tencent/mm/plugin/webview/emojistore/ui/SimilarEmojiLoadMoreRecyclerView$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
+          AppMethodBeat.o(217874);
           return;
         }
-        paramAnonymousInt = ((GridLayoutManager)SimilarEmojiLoadMoreRecyclerView.this.getLayoutManager()).ku();
-        if ((((GridLayoutManager)SimilarEmojiLoadMoreRecyclerView.this.getLayoutManager()).apM + (paramAnonymousInt + 1) >= SimilarEmojiLoadMoreRecyclerView.this.getAdapter().getItemCount()) && (SimilarEmojiLoadMoreRecyclerView.a(SimilarEmojiLoadMoreRecyclerView.this) != null))
+        paramAnonymousInt = ((GridLayoutManager)SimilarEmojiLoadMoreRecyclerView.this.getLayoutManager()).kL();
+        if ((((GridLayoutManager)SimilarEmojiLoadMoreRecyclerView.this.getLayoutManager()).ahF + (paramAnonymousInt + 1) >= SimilarEmojiLoadMoreRecyclerView.this.getAdapter().getItemCount()) && (SimilarEmojiLoadMoreRecyclerView.a(SimilarEmojiLoadMoreRecyclerView.this) != null))
         {
           paramAnonymousRecyclerView = SimilarEmojiLoadMoreRecyclerView.a(SimilarEmojiLoadMoreRecyclerView.this);
           SimilarEmojiLoadMoreRecyclerView.this.getAdapter();
-          paramAnonymousRecyclerView.gas();
+          paramAnonymousRecyclerView.gTm();
         }
-        a.a(this, "com/tencent/mm/plugin/webview/emojistore/ui/SimilarEmojiLoadMoreRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-        AppMethodBeat.o(77871);
+        a.a(this, "com/tencent/mm/plugin/webview/emojistore/ui/SimilarEmojiLoadMoreRecyclerView$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
+        AppMethodBeat.o(217874);
       }
       
       public final void onScrolled(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(210817);
+        AppMethodBeat.i(217877);
         b localb = new b();
-        localb.bm(paramAnonymousRecyclerView);
-        localb.pH(paramAnonymousInt1);
-        localb.pH(paramAnonymousInt2);
-        a.b("com/tencent/mm/plugin/webview/emojistore/ui/SimilarEmojiLoadMoreRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.axR());
+        localb.bn(paramAnonymousRecyclerView);
+        localb.sg(paramAnonymousInt1);
+        localb.sg(paramAnonymousInt2);
+        a.c("com/tencent/mm/plugin/webview/emojistore/ui/SimilarEmojiLoadMoreRecyclerView$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
         super.onScrolled(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
-        a.a(this, "com/tencent/mm/plugin/webview/emojistore/ui/SimilarEmojiLoadMoreRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-        AppMethodBeat.o(210817);
+        a.a(this, "com/tencent/mm/plugin/webview/emojistore/ui/SimilarEmojiLoadMoreRecyclerView$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
+        AppMethodBeat.o(217877);
       }
     });
     AppMethodBeat.o(77875);
   }
   
-  public final boolean gar()
+  public final boolean gTl()
   {
-    return this.oEn;
+    return this.rFW;
   }
   
   public void setOnLoadingStateChangedListener(a parama)
   {
-    this.INA = parama;
+    this.PJT = parama;
   }
   
   public final void showLoading(boolean paramBoolean)
   {
-    if (this.oEn == paramBoolean) {
+    if (this.rFW == paramBoolean) {
       return;
     }
-    this.oEn = paramBoolean;
+    this.rFW = paramBoolean;
   }
   
   public static abstract interface a
   {
-    public abstract void gas();
+    public abstract void gTm();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.emojistore.ui.SimilarEmojiLoadMoreRecyclerView
  * JD-Core Version:    0.7.0.1
  */

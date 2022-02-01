@@ -1,6 +1,12 @@
 package com.tencent.xweb.skia_canvas;
 
-public final class R {}
+public final class R
+{
+  public static final class string
+  {
+    public static final int app_name = 2131755971;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

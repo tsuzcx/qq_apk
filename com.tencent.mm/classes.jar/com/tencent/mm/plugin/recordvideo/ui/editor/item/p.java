@@ -1,227 +1,177 @@
 package com.tencent.mm.plugin.recordvideo.ui.editor.item;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
 import android.graphics.Matrix;
-import android.graphics.Rect;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.recordvideo.background.e;
-import com.tencent.mm.plugin.recordvideo.ui.editor.c.c;
-import com.tencent.mm.protocal.protobuf.dlg;
+import com.tencent.mm.protocal.protobuf.dhs;
+import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.fbn;
+import com.tencent.mm.protocal.protobuf.jc;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.at;
-import com.tencent.mm.ui.au;
 import kotlin.l;
-import kotlin.n.n;
-import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/PositionItemView;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BitmapItemView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "DEFAULT_BG_COLOR", "", "DEFAULT_TEXT_COLOR", "MARGIN", "TAG", "", "locationItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LocationItem;", "originMatrix", "Landroid/graphics/Matrix;", "createPositionBitmap", "Landroid/graphics/Bitmap;", "item", "getBitmapEditorItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BitmapEditorItem;", "getEditorData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "getType", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/EditItemType;", "onTouchEvent", "", "event", "Landroid/view/MotionEvent;", "reshowPosition", "", "setLocation", "location", "Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "setValidArea", "validRect", "Landroid/graphics/Rect;", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/PagStickerItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditorTTSData;", "pagPath", "", "matrix", "Landroid/graphics/Matrix;", "(Ljava/lang/String;Landroid/graphics/Matrix;)V", "proto", "Lcom/tencent/mm/protocal/protobuf/BaseItemData;", "(Lcom/tencent/mm/protocal/protobuf/BaseItemData;)V", "callback", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/ItemEditCallback;", "getCallback", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/ItemEditCallback;", "setCallback", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/ItemEditCallback;)V", "centerX", "", "getCenterX", "()F", "setCenterX", "(F)V", "centerY", "getCenterY", "setCenterY", "drawingRect", "Landroid/graphics/RectF;", "getDrawingRect", "()Landroid/graphics/RectF;", "effectId", "", "getEffectId", "()J", "setEffectId", "(J)V", "height", "", "getHeight", "()I", "setHeight", "(I)V", "getPagPath", "()Ljava/lang/String;", "rotate", "getRotate", "setRotate", "scale", "getScale", "setScale", "text", "getText", "setText", "(Ljava/lang/String;)V", "ttsInfo", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TTSInfo;", "width", "getWidth", "setWidth", "bringToFront", "", "delete", "getTTSInfo", "isValid", "", "setTTSInfo", "path", "durationMs", "toProtoBuf", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "updateMatrix", "plugin-recordvideo_release"})
 public final class p
-  extends b
+  extends a
+  implements j
 {
-  private final Matrix CfS;
-  private final int Cge;
-  private k Cgf;
-  private final String TAG;
-  private final int apv;
-  private final int oyw;
+  public final String GaM;
+  public long IcQ;
+  public final RectF IcR;
+  private final com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b IcS;
+  public k IcT;
+  public float aGt;
+  public float aGu;
+  public int height;
+  public float oYk;
+  public float scale;
+  public String text;
+  public int width;
   
-  public p(Context paramContext)
+  public p(jc paramjc)
   {
-    super(paramContext);
-    AppMethodBeat.i(76166);
-    this.TAG = "MicroMsg.PositionItemView";
-    this.Cge = -1;
-    this.oyw = -1;
-    this.apv = at.fromDPToPix(paramContext, 32);
-    this.CfS = new Matrix();
-    AppMethodBeat.o(76166);
-  }
-  
-  public final void a(k paramk)
-  {
-    AppMethodBeat.i(237825);
-    kotlin.g.b.p.h(paramk, "item");
-    b(paramk);
-    setViewMatrix(paramk.gT);
-    getTouchTracker().gT.set(paramk.gT);
-    setSourceDataType(d.CeM);
-    AppMethodBeat.o(237825);
-  }
-  
-  public final Bitmap b(k paramk)
-  {
-    AppMethodBeat.i(237826);
-    this.Cgf = paramk;
-    RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
-    Object localObject1 = LayoutInflater.from(getContext()).inflate(2131496586, (ViewGroup)localRelativeLayout, true);
-    Object localObject3 = (TextView)((View)localObject1).findViewById(2131298732);
-    Object localObject2 = (TextView)((View)localObject1).findViewById(2131306013);
-    Object localObject4 = (ImageView)((View)localObject1).findViewById(2131308689);
-    ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131308690);
-    kotlin.g.b.p.g(localObject3, "cityText");
-    com.tencent.mm.ac.d.f((TextView)localObject3);
-    kotlin.g.b.p.g(localObject2, "poiText");
-    com.tencent.mm.ac.d.f((TextView)localObject2);
-    ((TextView)localObject3).setText((CharSequence)paramk.Cfy);
-    ((TextView)localObject2).setText((CharSequence)paramk.kHV);
-    ((ImageView)localObject4).setImageDrawable(ar.m(getContext(), 2131690589, -1));
-    localObject4 = paramk.kHV;
-    if (localObject4 == null)
+    super(d.IbN);
+    AppMethodBeat.i(222675);
+    this.text = "";
+    this.width = 160;
+    this.height = 160;
+    this.scale = 1.0F;
+    this.IcR = new RectF();
+    this.IcS = new com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b();
+    Object localObject1 = (com.tencent.mm.cd.a)new dhs();
+    paramjc = paramjc.ROY;
+    kotlin.g.b.p.j(paramjc, "proto.itemData");
+    paramjc = paramjc.Tkb.UH;
+    try
     {
-      paramk = new t("null cannot be cast to non-null type kotlin.CharSequence");
-      AppMethodBeat.o(237826);
-      throw paramk;
+      ((com.tencent.mm.cd.a)localObject1).parseFrom(paramjc);
+      paramjc = (jc)localObject1;
     }
-    if (TextUtils.isEmpty((CharSequence)n.trim((CharSequence)localObject4).toString()))
+    catch (Exception paramjc)
     {
-      ((TextView)localObject3).setTextSize(0, at.fromDPToPix(getContext(), 20));
-      kotlin.g.b.p.g(localImageView, "splitIcon");
-      localImageView.setVisibility(8);
-      ((TextView)localObject2).setVisibility(8);
-    }
-    localObject4 = paramk.Cfy;
-    if (localObject4 == null)
-    {
-      paramk = new t("null cannot be cast to non-null type kotlin.CharSequence");
-      AppMethodBeat.o(237826);
-      throw paramk;
-    }
-    if (TextUtils.isEmpty((CharSequence)n.trim((CharSequence)localObject4).toString()))
-    {
-      ((TextView)localObject2).setTextSize(0, at.fromDPToPix(getContext(), 20));
-      ((TextView)localObject3).setVisibility(8);
-      kotlin.g.b.p.g(localImageView, "splitIcon");
-      localImageView.setVisibility(8);
-    }
-    int i = this.apv;
-    localObject3 = e.BKp;
-    if (i >= e.eIR().left)
-    {
-      localObject3 = e.BKp;
-      i = e.eIR().width();
-      j = this.apv;
-      localObject3 = e.BKp;
-      i -= (j - e.eIR().left) * 2;
-      ((TextView)localObject2).setMaxWidth(i);
-      ((View)localObject1).measure(0, 0);
-      kotlin.g.b.p.g(localObject1, "parent");
-      ((View)localObject1).layout(0, 0, ((View)localObject1).getMeasuredWidth(), ((View)localObject1).getMeasuredHeight());
-      Log.i(this.TAG, paramk + " parent.measuredWidth:" + ((View)localObject1).getMeasuredWidth() + " , parent.measuredHeight:" + ((View)localObject1).getMeasuredHeight());
-      if (((View)localObject1).getMeasuredWidth() > 0)
+      for (;;)
       {
-        i = ((View)localObject1).getMeasuredWidth();
-        localObject2 = e.BKp;
-        if (i <= e.eIR().width()) {
-          break label637;
-        }
+        Object localObject2;
+        fbn localfbn;
+        Log.printDebugStack("safeParser", "", new Object[] { paramjc });
+        paramjc = null;
+        continue;
+        paramjc = "";
       }
-      localObject2 = e.BKp;
-      i = e.eIR().width();
-      label507:
-      if (((View)localObject1).getMeasuredHeight() > 0)
-      {
-        j = ((View)localObject1).getMeasuredHeight();
-        localObject2 = e.BKp;
-        if (j <= e.eIR().height()) {
-          break label646;
-        }
-      }
-      localObject1 = e.BKp;
     }
-    label646:
-    for (int j = e.eIR().height();; j = ((View)localObject1).getMeasuredHeight())
+    localObject1 = (dhs)paramjc;
+    if (localObject1 != null)
     {
-      localObject1 = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-      localRelativeLayout.draw(new Canvas((Bitmap)localObject1));
-      setColor(this.Cge);
-      setTextBg(this.oyw);
-      setSourceDataType(d.CeM);
-      setLocation(paramk);
-      setBitmap((Bitmap)localObject1);
-      kotlin.g.b.p.g(localObject1, "bitmap");
-      AppMethodBeat.o(237826);
-      return localObject1;
-      localObject3 = e.BKp;
-      i = e.eIR().width();
-      break;
-      label637:
-      i = ((View)localObject1).getMeasuredWidth();
-      break label507;
+      paramjc = ((dhs)localObject1).GaM;
+      kotlin.g.b.p.j(paramjc, "it.pagPath");
+      localObject2 = ((dhs)localObject1).text;
+      kotlin.g.b.p.j(localObject2, "it.text");
+      this.text = ((String)localObject2);
+      localObject2 = this.aHZ;
+      localfbn = ((dhs)localObject1).Sdr;
+      kotlin.g.b.p.j(localfbn, "it.matrix");
+      ((Matrix)localObject2).setValues(a(localfbn));
+      g(this.aHZ);
+      a(((dhs)localObject1).IcZ);
+      this.GaM = paramjc;
+      AppMethodBeat.o(222675);
+      return;
     }
   }
   
-  public final a getEditorData()
+  private p(String paramString, Matrix paramMatrix)
   {
-    return (a)this.Cgf;
+    super(d.IbN);
+    AppMethodBeat.i(222666);
+    this.text = "";
+    this.width = 160;
+    this.height = 160;
+    this.scale = 1.0F;
+    this.IcR = new RectF();
+    this.IcS = new com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b();
+    this.GaM = paramString;
+    this.aHZ.set(paramMatrix);
+    AppMethodBeat.o(222666);
   }
   
-  public final com.tencent.mm.plugin.recordvideo.ui.editor.view.b getType()
+  public final void bj(String paramString, long paramLong)
   {
-    return com.tencent.mm.plugin.recordvideo.ui.editor.view.b.ChA;
+    AppMethodBeat.i(222662);
+    kotlin.g.b.p.k(paramString, "path");
+    this.IcS.setPath(paramString);
+    this.IcS.durationMs = paramLong;
+    AppMethodBeat.o(222662);
   }
   
-  public final boolean onTouchEvent(MotionEvent paramMotionEvent)
+  public final com.tencent.mm.cd.a fyG()
   {
-    AppMethodBeat.i(76162);
-    kotlin.g.b.p.h(paramMotionEvent, "event");
-    this.CfS.set(getTouchTracker().gT);
-    boolean bool = super.onTouchEvent(paramMotionEvent);
-    getTouchTracker().gT.set(this.CfS);
-    AppMethodBeat.o(76162);
+    AppMethodBeat.i(222661);
+    Object localObject = new dhs();
+    ((dhs)localObject).GaM = this.GaM;
+    ((dhs)localObject).text = this.text;
+    ((dhs)localObject).Sdr = f(this.aHZ);
+    ((dhs)localObject).IcZ = fyE();
+    localObject = (com.tencent.mm.cd.a)localObject;
+    AppMethodBeat.o(222661);
+    return localObject;
+  }
+  
+  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b fyN()
+  {
+    return this.IcS;
+  }
+  
+  public final boolean fyO()
+  {
+    AppMethodBeat.i(222677);
+    boolean bool = j.a.a(this);
+    AppMethodBeat.o(222677);
     return bool;
   }
   
-  public final void setLocation(dlg paramdlg)
+  public final void g(Matrix paramMatrix)
   {
-    AppMethodBeat.i(76165);
-    kotlin.g.b.p.h(paramdlg, "location");
-    String str1 = paramdlg.kea;
-    kotlin.g.b.p.g(str1, "location.City");
-    String str2 = paramdlg.kHV;
-    kotlin.g.b.p.g(str2, "location.poiName");
-    b(new k(str1, str2, paramdlg.LbC, paramdlg.LbD));
-    paramdlg = getBitmap();
-    if (paramdlg != null)
+    AppMethodBeat.i(222659);
+    kotlin.g.b.p.k(paramMatrix, "matrix");
+    float f1 = this.width / 2.0F;
+    float f2 = this.height / 2.0F;
+    float[] arrayOfFloat = new float[2];
+    float[] tmp37_35 = arrayOfFloat;
+    tmp37_35[0] = 0.0F;
+    float[] tmp41_37 = tmp37_35;
+    tmp41_37[1] = 0.0F;
+    tmp41_37;
+    paramMatrix.mapPoints(arrayOfFloat, new float[] { tmp37_35, tmp41_37 });
+    this.aGt = arrayOfFloat[0];
+    this.aGu = (arrayOfFloat[1] - this.IcR.top);
+    arrayOfFloat = new float[9];
+    paramMatrix.getValues(arrayOfFloat);
+    double d1 = arrayOfFloat[0];
+    double d2 = arrayOfFloat[3];
+    double d3 = arrayOfFloat[4];
+    this.scale = ((float)Math.sqrt(d1 * d1 + d2 * d2));
+    this.oYk = ((float)Math.atan2(d2, d3));
+    paramMatrix = this.IcT;
+    if (paramMatrix != null)
     {
-      float f2 = getValidRect().height() - at.fromDPToPix(getContext(), 128) - au.aD(getContext());
-      float f3 = paramdlg.getHeight();
-      int i = this.apv;
-      paramdlg = e.BKp;
-      if (i >= e.eIR().left) {}
-      for (float f1 = this.apv;; f1 = e.eIR().left)
-      {
-        getTouchTracker().gT.setTranslate(f1, f2 - f3);
-        AppMethodBeat.o(76165);
-        return;
-        paramdlg = e.BKp;
-      }
+      paramMatrix.r(this.aGt, this.aGu, this.scale, this.oYk);
+      AppMethodBeat.o(222659);
+      return;
     }
-    AppMethodBeat.o(76165);
+    AppMethodBeat.o(222659);
   }
   
-  public final void setValidArea(Rect paramRect)
+  public final void setText(String paramString)
   {
-    AppMethodBeat.i(76161);
-    kotlin.g.b.p.h(paramRect, "validRect");
-    getValidRect().set(paramRect);
-    AppMethodBeat.o(76161);
+    AppMethodBeat.i(222653);
+    kotlin.g.b.p.k(paramString, "<set-?>");
+    this.text = paramString;
+    AppMethodBeat.o(222653);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.p
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,56 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.cd.b;
 
 public final class fdn
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public boolean NyX;
-  public String Nzf;
-  public b Nzg;
-  public int Nzh;
-  public int Nzi;
-  public int Nzj;
+  public long Svv;
+  public int UDA;
+  public int UDB;
+  public b UDC;
+  public int UDy;
+  public int UDz;
+  public long Urf;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(50123);
+    AppMethodBeat.i(125501);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.cc(1, this.NyX);
-      if (this.Nzf != null) {
-        paramVarArgs.e(2, this.Nzf);
+      paramVarArgs.bm(1, this.Urf);
+      paramVarArgs.bm(2, this.Svv);
+      paramVarArgs.aY(3, this.UDy);
+      paramVarArgs.aY(4, this.UDz);
+      paramVarArgs.aY(5, this.UDA);
+      paramVarArgs.aY(6, this.UDB);
+      if (this.UDC != null) {
+        paramVarArgs.c(7, this.UDC);
       }
-      if (this.Nzg != null) {
-        paramVarArgs.c(3, this.Nzg);
-      }
-      paramVarArgs.aM(4, this.Nzh);
-      paramVarArgs.aM(5, this.Nzi);
-      paramVarArgs.aM(6, this.Nzj);
-      AppMethodBeat.o(50123);
+      AppMethodBeat.o(125501);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.fS(1) + 1 + 0;
+      int i = g.a.a.b.b.a.p(1, this.Urf) + 0 + g.a.a.b.b.a.p(2, this.Svv) + g.a.a.b.b.a.bM(3, this.UDy) + g.a.a.b.b.a.bM(4, this.UDz) + g.a.a.b.b.a.bM(5, this.UDA) + g.a.a.b.b.a.bM(6, this.UDB);
       paramInt = i;
-      if (this.Nzf != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.Nzf);
+      if (this.UDC != null) {
+        paramInt = i + g.a.a.b.b.a.b(7, this.UDC);
       }
-      i = paramInt;
-      if (this.Nzg != null) {
-        i = paramInt + g.a.a.b.b.a.b(3, this.Nzg);
-      }
-      paramInt = g.a.a.b.b.a.bu(4, this.Nzh);
-      int j = g.a.a.b.b.a.bu(5, this.Nzi);
-      int k = g.a.a.b.b.a.bu(6, this.Nzj);
-      AppMethodBeat.o(50123);
-      return i + paramInt + j + k;
+      AppMethodBeat.o(125501);
+      return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(50123);
+      AppMethodBeat.o(125501);
       return 0;
     }
     if (paramInt == 3)
@@ -67,40 +60,44 @@ public final class fdn
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(50123);
+        AppMethodBeat.o(125501);
         return -1;
       case 1: 
-        localfdn.NyX = locala.UbS.yZ();
-        AppMethodBeat.o(50123);
+        localfdn.Urf = locala.abFh.AN();
+        AppMethodBeat.o(125501);
         return 0;
       case 2: 
-        localfdn.Nzf = locala.UbS.readString();
-        AppMethodBeat.o(50123);
+        localfdn.Svv = locala.abFh.AN();
+        AppMethodBeat.o(125501);
         return 0;
       case 3: 
-        localfdn.Nzg = locala.UbS.hPo();
-        AppMethodBeat.o(50123);
+        localfdn.UDy = locala.abFh.AK();
+        AppMethodBeat.o(125501);
         return 0;
       case 4: 
-        localfdn.Nzh = locala.UbS.zi();
-        AppMethodBeat.o(50123);
+        localfdn.UDz = locala.abFh.AK();
+        AppMethodBeat.o(125501);
         return 0;
       case 5: 
-        localfdn.Nzi = locala.UbS.zi();
-        AppMethodBeat.o(50123);
+        localfdn.UDA = locala.abFh.AK();
+        AppMethodBeat.o(125501);
+        return 0;
+      case 6: 
+        localfdn.UDB = locala.abFh.AK();
+        AppMethodBeat.o(125501);
         return 0;
       }
-      localfdn.Nzj = locala.UbS.zi();
-      AppMethodBeat.o(50123);
+      localfdn.UDC = locala.abFh.iUw();
+      AppMethodBeat.o(125501);
       return 0;
     }
-    AppMethodBeat.o(50123);
+    AppMethodBeat.o(125501);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.fdn
  * JD-Core Version:    0.7.0.1
  */

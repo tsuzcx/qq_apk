@@ -1,226 +1,241 @@
 package com.tencent.matrix.a.b;
 
-import android.content.ComponentName;
-import android.content.Context;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Message;
-import com.tencent.matrix.a.b.a.e.a;
-import com.tencent.matrix.a.b.a.f.a;
-import com.tencent.matrix.a.b.a.f.c;
-import com.tencent.matrix.a.b.a.g;
-import com.tencent.matrix.a.b.a.i.b;
-import com.tencent.matrix.a.b.a.i.d.b;
-import java.util.Iterator;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.os.IBinder;
+import android.os.IInterface;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
 
-public class c
-  implements Handler.Callback, com.tencent.matrix.a.b.a.c.a, e.a, f.a, i.b
+public final class c
 {
-  public static long cSk;
-  private static long cSl;
-  public static long cSm;
-  public b cSc;
-  public a cSd;
-  public final b cSe;
-  Callable<String> cSf = new Callable() {};
-  public volatile boolean cSg = false;
-  public boolean cSh = com.tencent.matrix.a.cPA.cPB;
-  public boolean cSi;
-  public boolean cSj;
-  public Handler mHandler;
-  
-  public c(b paramb)
+  private static boolean cXl;
+  private static j.b cXm = new j.b()
   {
-    this.cSe = paramb;
-    if ((paramb.cRJ instanceof a.a)) {
-      ((a.a)paramb.cRJ).cRw = this;
+    public final Object b(Object paramAnonymousObject, Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
+    {
+      if ("registerAdapter".equals(paramAnonymousMethod.getName()))
+      {
+        paramAnonymousObject = paramAnonymousMethod.invoke(paramAnonymousObject, paramAnonymousArrayOfObject);
+        paramAnonymousMethod = c.aQ(paramAnonymousObject);
+        if (paramAnonymousMethod != null) {}
+      }
+      do
+      {
+        return paramAnonymousObject;
+        return paramAnonymousMethod;
+        if (!"getBluetoothGatt".equals(paramAnonymousMethod.getName())) {
+          break;
+        }
+        paramAnonymousObject = paramAnonymousMethod.invoke(paramAnonymousObject, paramAnonymousArrayOfObject);
+        paramAnonymousMethod = c.aR(paramAnonymousObject);
+      } while (paramAnonymousMethod == null);
+      return paramAnonymousMethod;
+      return null;
     }
-    if (paramb.cRK != null) {
-      this.cSf = paramb.cRK;
-    }
-    this.mHandler = new Handler(com.tencent.matrix.g.b.TP().getLooper(), this);
-    this.cSi = paramb.cRS;
-    if (this.cSi) {
-      this.cSc = new b((byte)0);
-    }
-    this.cSj = paramb.cRT;
-    cSk = paramb.cRN;
-    cSl = paramb.cRO;
-    cSm = paramb.cRP;
-    paramb = paramb.cRZ.iterator();
-    while (paramb.hasNext()) {
-      ((g)paramb.next()).d(this);
+    
+    public final void b(Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject) {}
+  };
+  private static j cXn = new j("bluetooth_manager", "android.bluetooth.IBluetoothManager", cXm);
+  private static List<a> cXo = new ArrayList();
+  
+  @TargetApi(21)
+  public static void a(a parama)
+  {
+    if (parama == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        if (cXo.contains(parama)) {
+          continue;
+        }
+        cXo.add(parama);
+        if ((cXl) || (cXo.isEmpty())) {
+          continue;
+        }
+        com.tencent.matrix.e.c.i("Matrix.battery.BluetoothHooker", "checkHook hookRet:%b", new Object[] { Boolean.valueOf(cXn.doHook()) });
+        cXl = true;
+      }
+      finally {}
     }
   }
   
-  public static int aW(Context paramContext)
+  private static Object aO(Object paramObject)
   {
     try
     {
-      int i = com.tencent.matrix.a.c.c.ba(paramContext);
-      return i;
+      Class localClass = Class.forName("android.bluetooth.IBluetooth");
+      ClassLoader localClassLoader = paramObject.getClass().getClassLoader();
+      paramObject = new InvocationHandler()
+      {
+        public final Object invoke(Object paramAnonymousObject, Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
+        {
+          if ("startDiscovery".equals(paramAnonymousMethod.getName())) {
+            c.access$200();
+          }
+          try
+          {
+            paramAnonymousObject = c.d(this.cXw, paramAnonymousMethod, paramAnonymousArrayOfObject);
+            return paramAnonymousObject;
+          }
+          catch (Throwable paramAnonymousObject)
+          {
+            com.tencent.matrix.e.c.printErrStackTrace("Matrix.battery.BluetoothHooker", paramAnonymousObject, "invokeBluetooth fail", new Object[0]);
+          }
+          return null;
+        }
+      };
+      paramObject = Proxy.newProxyInstance(localClassLoader, new Class[] { IBinder.class, IInterface.class, localClass }, paramObject);
+      return paramObject;
     }
-    catch (Throwable paramContext)
+    catch (Throwable paramObject)
     {
-      com.tencent.matrix.g.c.printErrStackTrace("Matrix.battery.BatteryMonitorCore", paramContext, "#currentBatteryTemperature error", new Object[0]);
+      com.tencent.matrix.e.c.printErrStackTrace("Matrix.battery.BluetoothHooker", paramObject, "proxyBluetooth fail", new Object[0]);
     }
-    return 0;
+    return null;
   }
   
-  public static Context getContext()
-  {
-    return com.tencent.matrix.b.RG().application;
-  }
-  
-  public final boolean Sd()
+  private static Object aP(Object paramObject)
   {
     try
     {
-      boolean bool = this.cSg;
-      return bool;
+      Class localClass = Class.forName("android.bluetooth.IBluetoothGatt");
+      ClassLoader localClassLoader = paramObject.getClass().getClassLoader();
+      paramObject = new InvocationHandler()
+      {
+        public final Object invoke(Object paramAnonymousObject, Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
+        {
+          if ("registerScanner".equals(paramAnonymousMethod.getName())) {
+            c.access$400();
+          }
+          for (;;)
+          {
+            try
+            {
+              paramAnonymousObject = c.d(this.cXw, paramAnonymousMethod, paramAnonymousArrayOfObject);
+              return paramAnonymousObject;
+            }
+            catch (Throwable paramAnonymousObject)
+            {
+              int i;
+              int j;
+              com.tencent.matrix.e.c.printErrStackTrace("Matrix.battery.BluetoothHooker", paramAnonymousObject, "invokeBluetoothGatt fail", new Object[0]);
+            }
+            if ("startScan".equals(paramAnonymousMethod.getName()))
+            {
+              i = -1;
+              j = i;
+              if (paramAnonymousArrayOfObject.length > 0)
+              {
+                if ((paramAnonymousArrayOfObject[0] instanceof Integer)) {
+                  i = ((Integer)paramAnonymousArrayOfObject[0]).intValue();
+                }
+                j = Build.VERSION.SDK_INT;
+                j = i;
+              }
+              c.jz(j);
+            }
+            else if ("startScanForIntent".equals(paramAnonymousMethod.getName()))
+            {
+              i = Build.VERSION.SDK_INT;
+              c.WD();
+            }
+          }
+          return null;
+        }
+      };
+      paramObject = Proxy.newProxyInstance(localClassLoader, new Class[] { IBinder.class, IInterface.class, localClass }, paramObject);
+      return paramObject;
     }
-    finally {}
-  }
-  
-  public final void a(int paramInt, i.d.b paramb)
-  {
-    com.tencent.matrix.g.c.d("Matrix.battery.BatteryMonitorCore", "#onWakeLockTimeout, tag = " + paramb.tag + ", pkg = " + paramb.packageName + ", count = " + paramInt, new Object[0]);
-    this.cSe.cRJ.a(paramInt, paramb);
-  }
-  
-  public final void a(i.d.b paramb, long paramLong)
-  {
-    com.tencent.matrix.g.c.d("Matrix.battery.BatteryMonitorCore", "#onWakeLockTimeout, tag = " + paramb.tag + ", pkg = " + paramb.packageName + ", backgroundMillis = " + paramLong, new Object[0]);
-    this.cSe.cRJ.a(paramb, paramLong);
-  }
-  
-  public final void a(Thread paramThread, List<f.c> paramList)
-  {
-    com.tencent.matrix.g.c.d("Matrix.battery.BatteryMonitorCore", "#onTaskTrace, thread = " + paramThread.getName(), new Object[0]);
-    this.cSe.cRJ.a(paramThread, paramList);
-  }
-  
-  public final void a(boolean paramBoolean, int paramInt1, int paramInt2, ComponentName paramComponentName, long paramLong)
-  {
-    this.cSe.cRJ.a(paramBoolean, paramInt1, paramInt2, paramComponentName, paramLong);
-  }
-  
-  public final <T extends g> T aa(Class<T> paramClass)
-  {
-    Iterator localIterator = this.cSe.cRZ.iterator();
-    while (localIterator.hasNext())
+    catch (Throwable paramObject)
     {
-      g localg = (g)localIterator.next();
-      if (paramClass.isAssignableFrom(localg.getClass())) {
-        return localg;
+      com.tencent.matrix.e.c.printErrStackTrace("Matrix.battery.BluetoothHooker", paramObject, "proxyBluetoothGatt fail", new Object[0]);
+    }
+    return null;
+  }
+  
+  public static void b(a parama)
+  {
+    if (parama == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        cXo.remove(parama);
+        if ((!cXl) || (!cXo.isEmpty())) {
+          continue;
+        }
+        com.tencent.matrix.e.c.i("Matrix.battery.BluetoothHooker", "checkUnHook unHookRet:%b", new Object[] { Boolean.valueOf(cXn.doUnHook()) });
+        cXl = false;
+      }
+      finally {}
+    }
+  }
+  
+  private static Object c(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  {
+    try
+    {
+      paramObject = paramMethod.invoke(paramObject, paramArrayOfObject);
+      if (paramObject != null) {
+        return paramObject;
+      }
+    }
+    catch (Throwable paramObject)
+    {
+      for (;;)
+      {
+        com.tencent.matrix.e.c.printErrStackTrace("Matrix.battery.BluetoothHooker", paramObject, "reflect invocation fail", new Object[0]);
+        paramObject = null;
+      }
+      paramObject = paramMethod.getReturnType();
+      if ((paramObject == null) || (!paramObject.isPrimitive())) {
+        return null;
+      }
+      if ((paramObject == Byte.TYPE) || (paramObject == Short.TYPE) || (paramObject == Integer.TYPE)) {
+        return Integer.valueOf(0);
+      }
+      if (paramObject == Long.TYPE) {
+        return Long.valueOf(0L);
+      }
+      if (paramObject == Float.TYPE) {
+        return Float.valueOf(0.0F);
+      }
+      if (paramObject == Double.TYPE) {
+        return Double.valueOf(0.0D);
+      }
+      if (paramObject == Character.TYPE) {
+        return Character.valueOf('\000');
+      }
+      if (paramObject == Boolean.TYPE) {
+        return Boolean.FALSE;
       }
     }
     return null;
   }
   
-  public final void ce(int paramInt1, int paramInt2)
+  public static abstract interface a
   {
-    com.tencent.matrix.g.c.d("Matrix.battery.BatteryMonitorCore", "#onParseError, tid = ".concat(String.valueOf(paramInt2)), new Object[0]);
-    this.cSe.cRJ.ce(paramInt1, paramInt2);
-  }
-  
-  public final String getScene()
-  {
-    try
-    {
-      String str = (String)this.cSf.call();
-      return str;
-    }
-    catch (Exception localException) {}
-    return "unknown";
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1)
-    {
-      com.tencent.matrix.g.c.d("Matrix.battery.BatteryMonitorCore", "#onTraceBegin", new Object[0]);
-      this.cSe.cRJ.Sa();
-      return true;
-    }
-    if (paramMessage.what == 2)
-    {
-      if (paramMessage.arg1 == 3) {}
-      for (boolean bool = true;; bool = false)
-      {
-        com.tencent.matrix.g.c.d("Matrix.battery.BatteryMonitorCore", "#onTraceEnd", new Object[0]);
-        this.cSe.cRJ.cz(bool);
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public final class a
-    implements Runnable
-  {
-    int cSo = 0;
+    public abstract void Wl();
     
-    private a() {}
+    public abstract void Wm();
     
-    public final void run()
-    {
-      this.cSo += 1;
-      com.tencent.matrix.g.c.i("Matrix.battery.BatteryMonitorCore", "#onBackgroundLoopCheck, round = " + this.cSo, new Object[0]);
-      if (!c.this.cSh) {
-        try
-        {
-          Iterator localIterator = c.c(c.this).cRZ.iterator();
-          while (localIterator.hasNext()) {
-            ((g)localIterator.next()).ba(c.cSm * this.cSo);
-          }
-        }
-        finally {}
-      }
-      if (!c.this.cSh) {
-        c.b(c.this).postDelayed(this, c.cSm);
-      }
-    }
-  }
-  
-  public final class b
-    implements Runnable
-  {
-    public int cSp = 1;
+    @TargetApi(21)
+    public abstract void Wn();
     
-    private b() {}
-    
-    public final void run()
-    {
-      int i = 2;
-      if (c.a(c.this))
-      {
-        Message localMessage = Message.obtain(c.b(c.this));
-        localMessage.what = this.cSp;
-        localMessage.arg1 = 3;
-        c.b(c.this).sendMessageAtFrontOfQueue(localMessage);
-        if (this.cSp == 2) {
-          i = 1;
-        }
-        this.cSp = i;
-        c.b(c.this).postDelayed(this, c.cSl);
-      }
-    }
-  }
-  
-  public static abstract interface c
-  {
-    public abstract void Sa();
-    
-    public abstract void cz(boolean paramBoolean);
+    @TargetApi(21)
+    public abstract void jt(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.a.b.c
  * JD-Core Version:    0.7.0.1
  */

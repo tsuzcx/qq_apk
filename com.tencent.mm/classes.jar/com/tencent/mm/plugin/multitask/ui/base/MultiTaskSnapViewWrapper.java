@@ -11,55 +11,55 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/ui/base/MultiTaskSnapViewWrapper;", "Landroid/widget/FrameLayout;", "Lcom/tencent/mm/plugin/multitask/ui/base/IMultiTaskView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "snapView", "Lcom/tencent/mm/plugin/multitask/ui/base/MultiTaskSnapView;", "getSnapView", "()Lcom/tencent/mm/plugin/multitask/ui/base/MultiTaskSnapView;", "setSnapView", "(Lcom/tencent/mm/plugin/multitask/ui/base/MultiTaskSnapView;)V", "getView", "Landroid/view/View;", "initUI", "", "setBitmap", "bitmap", "Landroid/graphics/Bitmap;", "plugin-multitask_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/ui/base/MultiTaskSnapViewWrapper;", "Landroid/widget/FrameLayout;", "Lcom/tencent/mm/plugin/multitask/ui/base/IMultiTaskView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "snapView", "Lcom/tencent/mm/plugin/multitask/ui/base/MultiTaskSnapView;", "getSnapView", "()Lcom/tencent/mm/plugin/multitask/ui/base/MultiTaskSnapView;", "setSnapView", "(Lcom/tencent/mm/plugin/multitask/ui/base/MultiTaskSnapView;)V", "getView", "Landroid/view/View;", "initUI", "", "setBitmap", "bitmap", "Landroid/graphics/Bitmap;", "plugin-multitask_release"})
 public class MultiTaskSnapViewWrapper
   extends FrameLayout
   implements a
 {
-  private MultiTaskSnapView Ado;
+  private MultiTaskSnapView FJT;
   
   public MultiTaskSnapViewWrapper(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(200757);
+    AppMethodBeat.i(248652);
     initUI();
-    AppMethodBeat.o(200757);
+    AppMethodBeat.o(248652);
   }
   
   public MultiTaskSnapViewWrapper(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(200758);
+    AppMethodBeat.i(248654);
     initUI();
-    AppMethodBeat.o(200758);
+    AppMethodBeat.o(248654);
   }
   
   public MultiTaskSnapViewWrapper(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(200759);
+    AppMethodBeat.i(248656);
     initUI();
-    AppMethodBeat.o(200759);
+    AppMethodBeat.o(248656);
   }
   
   private final void initUI()
   {
-    AppMethodBeat.i(200756);
-    this.Ado = new MultiTaskSnapView(getContext());
-    addView((View)this.Ado);
-    MultiTaskSnapView localMultiTaskSnapView = this.Ado;
+    AppMethodBeat.i(248650);
+    this.FJT = new MultiTaskSnapView(getContext());
+    addView((View)this.FJT);
+    MultiTaskSnapView localMultiTaskSnapView = this.FJT;
     if (localMultiTaskSnapView != null)
     {
       localMultiTaskSnapView.setScaleType(ImageView.ScaleType.MATRIX);
-      AppMethodBeat.o(200756);
+      AppMethodBeat.o(248650);
       return;
     }
-    AppMethodBeat.o(200756);
+    AppMethodBeat.o(248650);
   }
   
   public final MultiTaskSnapView getSnapView()
   {
-    return this.Ado;
+    return this.FJT;
   }
   
   public View getView()
@@ -69,32 +69,32 @@ public class MultiTaskSnapViewWrapper
   
   public void setBitmap(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(200755);
-    p.h(paramBitmap, "bitmap");
+    AppMethodBeat.i(248647);
+    p.k(paramBitmap, "bitmap");
     Object localObject = new Matrix();
     ((Matrix)localObject).setScale(1.0F, 1.0F);
-    MultiTaskSnapView localMultiTaskSnapView = this.Ado;
+    MultiTaskSnapView localMultiTaskSnapView = this.FJT;
     if (localMultiTaskSnapView != null) {
       localMultiTaskSnapView.setImageMatrix((Matrix)localObject);
     }
-    localObject = this.Ado;
+    localObject = this.FJT;
     if (localObject != null)
     {
       ((MultiTaskSnapView)localObject).setImageBitmap(paramBitmap);
-      AppMethodBeat.o(200755);
+      AppMethodBeat.o(248647);
       return;
     }
-    AppMethodBeat.o(200755);
+    AppMethodBeat.o(248647);
   }
   
   public final void setSnapView(MultiTaskSnapView paramMultiTaskSnapView)
   {
-    this.Ado = paramMultiTaskSnapView;
+    this.FJT = paramMultiTaskSnapView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.ui.base.MultiTaskSnapViewWrapper
  * JD-Core Version:    0.7.0.1
  */

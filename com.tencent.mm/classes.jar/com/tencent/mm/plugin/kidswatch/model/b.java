@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.kidswatch.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.g.b.a.w;
-import com.tencent.mm.g.b.a.y;
+import com.tencent.mm.f.b.a.ac;
+import com.tencent.mm.f.b.a.ae;
 import com.tencent.mm.i.g.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -15,32 +15,32 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchHeadImageUploader;", "", "imgPath", "", "iImgUploadCallback", "Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchHeadImageUploader$IImgUploadCallback;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchHeadImageUploader$IImgUploadCallback;)V", "cdnCallback", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "mediaId", "st_new", "", "checkStringValid", "str", "genClientId", "prefix", "createTime", "suffix", "startUpload", "", "Companion", "IImgUploadCallback", "plugin-kidswatch_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchHeadImageUploader;", "", "imgPath", "", "iImgUploadCallback", "Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchHeadImageUploader$IImgUploadCallback;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchHeadImageUploader$IImgUploadCallback;)V", "cdnCallback", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "mediaId", "st_new", "", "checkStringValid", "str", "genClientId", "prefix", "createTime", "suffix", "startUpload", "", "Companion", "IImgUploadCallback", "plugin-kidswatch_release"})
 public final class b
 {
-  public static int jSm;
-  public static final b.a yAC;
-  public final String dRr;
-  public final g.a iZc;
-  private long jSo;
+  public static final b.a EbR;
+  public static int mJz;
+  private final b EbQ;
+  public final String fKH;
+  public final g.a lPx;
+  private long mJB;
   public final String mediaId;
-  private final b yAB;
   
   static
   {
-    AppMethodBeat.i(256181);
-    yAC = new b.a((byte)0);
-    jSm = com.tencent.mm.i.a.MediaType_FILE;
-    AppMethodBeat.o(256181);
+    AppMethodBeat.i(251454);
+    EbR = new b.a((byte)0);
+    mJz = com.tencent.mm.i.a.MediaType_FILE;
+    AppMethodBeat.o(251454);
   }
   
   public b(String paramString, final b paramb)
   {
-    AppMethodBeat.i(256180);
-    this.iZc = ((g.a)new c(this, paramb));
-    this.jSo = System.currentTimeMillis();
-    this.dRr = paramString;
-    this.yAB = paramb;
+    AppMethodBeat.i(251451);
+    this.lPx = ((g.a)new c(this, paramb));
+    this.mJB = System.currentTimeMillis();
+    this.fKH = paramString;
+    this.EbQ = paramb;
     paramb = new Random();
     String str = g("kidsupload", Util.nowMilliSecond(), String.valueOf(paramb.nextInt()));
     paramb = str;
@@ -49,13 +49,13 @@ public final class b
     }
     this.mediaId = paramb;
     Log.i("MicroMsg.KidsWatch.KidsWatchHeadImageUploader", "KidsWatchHeadImageUploader imgPath:%s mediaId:%s", new Object[] { paramString, this.mediaId });
-    AppMethodBeat.o(256180);
+    AppMethodBeat.o(251451);
   }
   
   private String g(String paramString1, long paramLong, String paramString2)
   {
-    AppMethodBeat.i(256179);
-    p.h(paramString1, "prefix");
+    AppMethodBeat.i(251450);
+    p.k(paramString1, "prefix");
     Log.d("MicroMsg.KidsWatch.KidsWatchHeadImageUploader", "cdntra genClientId prefix[%s] createtime:%d suffix:[%s] stack[%s]", new Object[] { paramString1, Long.valueOf(paramLong), paramString2, Util.getStack() });
     int i;
     if (!Util.isNullOrNil(paramString1))
@@ -74,7 +74,7 @@ public final class b
         break label131;
       }
       Log.i("MicroMsg.KidsWatch.KidsWatchHeadImageUploader", "prefix is null");
-      AppMethodBeat.o(256179);
+      AppMethodBeat.o(251450);
       return null;
       i += 1;
       break;
@@ -83,49 +83,49 @@ public final class b
     if (paramLong <= 0L)
     {
       Log.i("MicroMsg.KidsWatch.KidsWatchHeadImageUploader", "createTime <= 0");
-      AppMethodBeat.o(256179);
+      AppMethodBeat.o(251450);
       return null;
     }
-    localObject = this.dRr;
+    localObject = this.fKH;
     Charset localCharset = kotlin.n.d.UTF_8;
     if (localObject == null)
     {
       paramString1 = new t("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(256179);
+      AppMethodBeat.o(251450);
       throw paramString1;
     }
     localObject = ((String)localObject).getBytes(localCharset);
-    p.g(localObject, "(this as java.lang.String).getBytes(charset)");
+    p.j(localObject, "(this as java.lang.String).getBytes(charset)");
     localObject = g.getMessageDigest((byte[])localObject);
     paramString1 = new StringBuilder("a").append(paramString1).append("_");
-    p.g(localObject, "md5");
+    p.j(localObject, "md5");
     if (localObject == null)
     {
       paramString1 = new t("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(256179);
+      AppMethodBeat.o(251450);
       throw paramString1;
     }
     localObject = ((String)localObject).substring(0, 16);
-    p.g(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+    p.j(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
     localObject = (String)localObject + "_" + paramLong;
     paramString1 = (String)localObject;
     if (!Util.isNullOrNil(paramString2)) {
       paramString1 = (String)localObject + '_' + paramString2;
     }
     Log.d("MicroMsg.KidsWatch.KidsWatchHeadImageUploader", "clientid:".concat(String.valueOf(paramString1)));
-    AppMethodBeat.o(256179);
+    AppMethodBeat.o(251450);
     return paramString1;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchHeadImageUploader$IImgUploadCallback;", "", "onError", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "fileID", "aesKey", "plugin-kidswatch_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/kidswatch/model/KidsWatchHeadImageUploader$IImgUploadCallback;", "", "onError", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "fileID", "aesKey", "plugin-kidswatch_release"})
   public static abstract interface b
   {
-    public abstract void aCF(String paramString);
+    public abstract void R(String paramString1, String paramString2);
     
-    public abstract void ds(String paramString1, String paramString2);
+    public abstract void aMM(String paramString);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/kidswatch/model/KidsWatchHeadImageUploader$cdnCallback$1", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "callback", "", "mediaId", "", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "decodePrepareResponse", "", "inbuf", "getCdnAuthInfo", "", "buff", "Ljava/io/ByteArrayOutputStream;", "plugin-kidswatch_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/kidswatch/model/KidsWatchHeadImageUploader$cdnCallback$1", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "callback", "", "mediaId", "", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "decodePrepareResponse", "", "inbuf", "getCdnAuthInfo", "", "buff", "Ljava/io/ByteArrayOutputStream;", "plugin-kidswatch_release"})
   public static final class c
     implements g.a
   {
@@ -133,12 +133,12 @@ public final class b
     
     public final int a(String paramString, int paramInt, com.tencent.mm.i.c paramc, com.tencent.mm.i.d paramd, boolean paramBoolean)
     {
-      AppMethodBeat.i(256176);
-      p.h(paramString, "mediaId");
+      AppMethodBeat.i(251831);
+      p.k(paramString, "mediaId");
       if (paramInt == -21005)
       {
         Log.d("MicroMsg.KidsWatch.KidsWatchHeadImageUploader", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
-        AppMethodBeat.o(256176);
+        AppMethodBeat.o(251831);
         return 0;
       }
       long l1;
@@ -148,17 +148,17 @@ public final class b
         Log.i("MicroMsg.KidsWatch.KidsWatchHeadImageUploader", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s], aesKey:" + paramd.field_aesKey, new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
         paramString = paramb;
         paramc = paramd.field_fileId;
-        p.g(paramc, "sceneResult.field_fileId");
+        p.j(paramc, "sceneResult.field_fileId");
         String str = paramd.field_aesKey;
-        p.g(str, "sceneResult.field_aesKey");
-        paramString.ds(paramc, str);
-        Log.i("MicroMsg.KidsWatch.KidsWatchHeadImageUploader", "uploadsns cdndone pass: " + (System.currentTimeMillis() - b.a(this.yAD)) + " " + paramd.field_filemd5);
-        l1 = b.a(this.yAD);
+        p.j(str, "sceneResult.field_aesKey");
+        paramString.R(paramc, str);
+        Log.i("MicroMsg.KidsWatch.KidsWatchHeadImageUploader", "uploadsns cdndone pass: " + (System.currentTimeMillis() - b.a(this.EbS)) + " " + paramd.field_filemd5);
+        l1 = b.a(this.EbS);
         l2 = Util.nowMilliSecond();
-        paramInt = com.tencent.mm.an.c.cY(MMApplicationContext.getContext());
-        paramString = b.yAC;
-        new y(com.tencent.mm.plugin.report.a.t(new Object[] { Integer.valueOf(0), Integer.valueOf(1), Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(paramInt), Integer.valueOf(b.ebT()), Long.valueOf(paramd.field_fileLength), paramd.field_transInfo, "", "", "", "", "", "", "", paramd.gqk })).bfK();
-        AppMethodBeat.o(256176);
+        paramInt = com.tencent.mm.aq.c.cV(MMApplicationContext.getContext());
+        paramString = b.EbR;
+        new ae(com.tencent.mm.plugin.report.a.t(new Object[] { Integer.valueOf(0), Integer.valueOf(1), Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(paramInt), Integer.valueOf(b.eKR()), Long.valueOf(paramd.field_fileLength), paramd.field_transInfo, "", "", "", "", "", "", "", paramd.iUs })).bpa();
+        AppMethodBeat.o(251831);
         return 0;
       }
       int i;
@@ -166,15 +166,15 @@ public final class b
       {
         Log.i("MicroMsg.KidsWatch.KidsWatchHeadImageUploader", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
         paramInt = paramd.field_retCode;
-        l1 = b.a(this.yAD);
+        l1 = b.a(this.EbS);
         l2 = Util.nowMilliSecond();
-        i = com.tencent.mm.an.c.cY(MMApplicationContext.getContext());
-        paramString = b.yAC;
-        paramString = com.tencent.mm.plugin.report.a.t(new Object[] { Integer.valueOf(paramInt), Integer.valueOf(1), Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(b.ebT()), Long.valueOf(paramd.field_fileLength), paramd.field_transInfo, "", "", "", "", "", "", "", paramd.gqk });
-        new y(paramString).bfK();
-        new w(paramString).bfK();
-        paramb.aCF("doScene failed");
-        AppMethodBeat.o(256176);
+        i = com.tencent.mm.aq.c.cV(MMApplicationContext.getContext());
+        paramString = b.EbR;
+        paramString = com.tencent.mm.plugin.report.a.t(new Object[] { Integer.valueOf(paramInt), Integer.valueOf(1), Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(b.eKR()), Long.valueOf(paramd.field_fileLength), paramd.field_transInfo, "", "", "", "", "", "", "", paramd.iUs });
+        new ae(paramString).bpa();
+        new ac(paramString).bpa();
+        paramb.aMM("doScene failed");
+        AppMethodBeat.o(251831);
         return 0;
       }
       if (paramInt != 0)
@@ -182,42 +182,42 @@ public final class b
         Log.i("MicroMsg.KidsWatch.KidsWatchHeadImageUploader", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
         if (paramd != null)
         {
-          l1 = b.a(this.yAD);
+          l1 = b.a(this.EbS);
           l2 = Util.nowMilliSecond();
-          i = com.tencent.mm.an.c.cY(MMApplicationContext.getContext());
-          paramString = b.yAC;
-          new y(com.tencent.mm.plugin.report.a.t(new Object[] { Integer.valueOf(paramInt), Integer.valueOf(1), Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(b.ebT()), Long.valueOf(paramd.field_fileLength), paramd.field_transInfo, "", "", "", "", "", "", "", paramd.gqk })).bfK();
+          i = com.tencent.mm.aq.c.cV(MMApplicationContext.getContext());
+          paramString = b.EbR;
+          new ae(com.tencent.mm.plugin.report.a.t(new Object[] { Integer.valueOf(paramInt), Integer.valueOf(1), Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(b.eKR()), Long.valueOf(paramd.field_fileLength), paramd.field_transInfo, "", "", "", "", "", "", "", paramd.iUs })).bpa();
         }
-        paramb.aCF("doScene failed");
-        AppMethodBeat.o(256176);
+        paramb.aMM("doScene failed");
+        AppMethodBeat.o(251831);
         return 0;
       }
       Log.d("MicroMsg.KidsWatch.KidsWatchHeadImageUploader", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
-      AppMethodBeat.o(256176);
+      AppMethodBeat.o(251831);
       return 0;
     }
     
     public final void a(String paramString, ByteArrayOutputStream paramByteArrayOutputStream)
     {
-      AppMethodBeat.i(256177);
-      p.h(paramString, "mediaId");
-      p.h(paramByteArrayOutputStream, "buff");
-      AppMethodBeat.o(256177);
+      AppMethodBeat.i(251834);
+      p.k(paramString, "mediaId");
+      p.k(paramByteArrayOutputStream, "buff");
+      AppMethodBeat.o(251834);
     }
     
     public final byte[] f(String paramString, byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(256178);
-      p.h(paramString, "mediaId");
-      p.h(paramArrayOfByte, "inbuf");
-      AppMethodBeat.o(256178);
+      AppMethodBeat.i(251835);
+      p.k(paramString, "mediaId");
+      p.k(paramArrayOfByte, "inbuf");
+      AppMethodBeat.o(251835);
       return null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.kidswatch.model.b
  * JD-Core Version:    0.7.0.1
  */

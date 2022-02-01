@@ -8,9 +8,9 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class n
 {
-  public static int D(Context paramContext, int paramInt)
+  public static int F(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(200825);
+    AppMethodBeat.i(249011);
     try
     {
       paramContext = paramContext.getResources();
@@ -18,25 +18,25 @@ public final class n
       if (i != 0)
       {
         i = paramContext.getDimensionPixelSize(i);
-        AppMethodBeat.o(200825);
+        AppMethodBeat.o(249011);
         return i;
       }
-      AppMethodBeat.o(200825);
+      AppMethodBeat.o(249011);
       return paramInt;
     }
     catch (Resources.NotFoundException paramContext)
     {
       Log.printErrStackTrace("MicroMsg.ResourceCompat", paramContext, "get res of status_bar_height fail", new Object[0]);
-      AppMethodBeat.o(200825);
+      AppMethodBeat.o(249011);
     }
     return paramInt;
   }
   
   public static int getStatusBarHeight(Context paramContext)
   {
-    AppMethodBeat.i(200824);
-    int i = D(paramContext, 0);
-    AppMethodBeat.o(200824);
+    AppMethodBeat.i(249010);
+    int i = F(paramContext, 0);
+    AppMethodBeat.o(249010);
     return i;
   }
 }

@@ -1,107 +1,203 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class cuc
-  extends dop
+  extends com.tencent.mm.cd.a
 {
-  public String KUC;
-  public String Mzp;
-  public int scene;
+  public String Dmt;
+  public String Dmu;
+  public int Dmv;
+  public String SMN;
+  public String TBM;
+  public int TBN;
+  public long TBO;
+  public int TBP;
+  public String TBQ;
+  public int TBR;
+  public int TBS;
+  public String content;
+  public String ilo;
+  public int msgType;
+  public String ySp;
+  public String yru;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(82460);
+    AppMethodBeat.i(230506);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs.aY(1, this.msgType);
+      if (this.TBM != null) {
+        paramVarArgs.f(2, this.TBM);
       }
-      if (this.Mzp != null) {
-        paramVarArgs.e(2, this.Mzp);
+      if (this.content != null) {
+        paramVarArgs.f(3, this.content);
       }
-      if (this.KUC != null) {
-        paramVarArgs.e(3, this.KUC);
+      paramVarArgs.aY(4, this.TBN);
+      paramVarArgs.bm(5, this.TBO);
+      if (this.ilo != null) {
+        paramVarArgs.f(6, this.ilo);
       }
-      paramVarArgs.aM(4, this.scene);
-      AppMethodBeat.o(82460);
+      if (this.SMN != null) {
+        paramVarArgs.f(7, this.SMN);
+      }
+      paramVarArgs.aY(8, this.Dmv);
+      paramVarArgs.aY(9, this.TBP);
+      if (this.TBQ != null) {
+        paramVarArgs.f(10, this.TBQ);
+      }
+      if (this.Dmt != null) {
+        paramVarArgs.f(11, this.Dmt);
+      }
+      paramVarArgs.aY(12, this.TBR);
+      if (this.Dmu != null) {
+        paramVarArgs.f(13, this.Dmu);
+      }
+      if (this.ySp != null) {
+        paramVarArgs.f(14, this.ySp);
+      }
+      if (this.yru != null) {
+        paramVarArgs.f(15, this.yru);
+      }
+      paramVarArgs.aY(16, this.TBS);
+      AppMethodBeat.o(230506);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label474;
-      }
-    }
-    label474:
-    for (int i = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    if (paramInt == 1)
     {
+      int i = g.a.a.b.b.a.bM(1, this.msgType) + 0;
       paramInt = i;
-      if (this.Mzp != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.Mzp);
+      if (this.TBM != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.TBM);
       }
       i = paramInt;
-      if (this.KUC != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.KUC);
+      if (this.content != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.content);
       }
-      paramInt = g.a.a.b.b.a.bu(4, this.scene);
-      AppMethodBeat.o(82460);
-      return i + paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
-          }
-        }
-        AppMethodBeat.o(82460);
-        return 0;
+      i = i + g.a.a.b.b.a.bM(4, this.TBN) + g.a.a.b.b.a.p(5, this.TBO);
+      paramInt = i;
+      if (this.ilo != null) {
+        paramInt = i + g.a.a.b.b.a.g(6, this.ilo);
       }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-        cuc localcuc = (cuc)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(82460);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localcuc.BaseRequest = ((jr)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(82460);
-          return 0;
-        case 2: 
-          localcuc.Mzp = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(82460);
-          return 0;
-        case 3: 
-          localcuc.KUC = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(82460);
-          return 0;
-        }
-        localcuc.scene = ((g.a.a.a.a)localObject1).UbS.zi();
-        AppMethodBeat.o(82460);
-        return 0;
+      i = paramInt;
+      if (this.SMN != null) {
+        i = paramInt + g.a.a.b.b.a.g(7, this.SMN);
       }
-      AppMethodBeat.o(82460);
-      return -1;
+      i = i + g.a.a.b.b.a.bM(8, this.Dmv) + g.a.a.b.b.a.bM(9, this.TBP);
+      paramInt = i;
+      if (this.TBQ != null) {
+        paramInt = i + g.a.a.b.b.a.g(10, this.TBQ);
+      }
+      i = paramInt;
+      if (this.Dmt != null) {
+        i = paramInt + g.a.a.b.b.a.g(11, this.Dmt);
+      }
+      i += g.a.a.b.b.a.bM(12, this.TBR);
+      paramInt = i;
+      if (this.Dmu != null) {
+        paramInt = i + g.a.a.b.b.a.g(13, this.Dmu);
+      }
+      i = paramInt;
+      if (this.ySp != null) {
+        i = paramInt + g.a.a.b.b.a.g(14, this.ySp);
+      }
+      paramInt = i;
+      if (this.yru != null) {
+        paramInt = i + g.a.a.b.b.a.g(15, this.yru);
+      }
+      i = g.a.a.b.b.a.bM(16, this.TBS);
+      AppMethodBeat.o(230506);
+      return paramInt + i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.iUs();
+        }
+      }
+      AppMethodBeat.o(230506);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      cuc localcuc = (cuc)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(230506);
+        return -1;
+      case 1: 
+        localcuc.msgType = locala.abFh.AK();
+        AppMethodBeat.o(230506);
+        return 0;
+      case 2: 
+        localcuc.TBM = locala.abFh.readString();
+        AppMethodBeat.o(230506);
+        return 0;
+      case 3: 
+        localcuc.content = locala.abFh.readString();
+        AppMethodBeat.o(230506);
+        return 0;
+      case 4: 
+        localcuc.TBN = locala.abFh.AK();
+        AppMethodBeat.o(230506);
+        return 0;
+      case 5: 
+        localcuc.TBO = locala.abFh.AN();
+        AppMethodBeat.o(230506);
+        return 0;
+      case 6: 
+        localcuc.ilo = locala.abFh.readString();
+        AppMethodBeat.o(230506);
+        return 0;
+      case 7: 
+        localcuc.SMN = locala.abFh.readString();
+        AppMethodBeat.o(230506);
+        return 0;
+      case 8: 
+        localcuc.Dmv = locala.abFh.AK();
+        AppMethodBeat.o(230506);
+        return 0;
+      case 9: 
+        localcuc.TBP = locala.abFh.AK();
+        AppMethodBeat.o(230506);
+        return 0;
+      case 10: 
+        localcuc.TBQ = locala.abFh.readString();
+        AppMethodBeat.o(230506);
+        return 0;
+      case 11: 
+        localcuc.Dmt = locala.abFh.readString();
+        AppMethodBeat.o(230506);
+        return 0;
+      case 12: 
+        localcuc.TBR = locala.abFh.AK();
+        AppMethodBeat.o(230506);
+        return 0;
+      case 13: 
+        localcuc.Dmu = locala.abFh.readString();
+        AppMethodBeat.o(230506);
+        return 0;
+      case 14: 
+        localcuc.ySp = locala.abFh.readString();
+        AppMethodBeat.o(230506);
+        return 0;
+      case 15: 
+        localcuc.yru = locala.abFh.readString();
+        AppMethodBeat.o(230506);
+        return 0;
+      }
+      localcuc.TBS = locala.abFh.AK();
+      AppMethodBeat.o(230506);
+      return 0;
+    }
+    AppMethodBeat.o(230506);
+    return -1;
   }
 }
 

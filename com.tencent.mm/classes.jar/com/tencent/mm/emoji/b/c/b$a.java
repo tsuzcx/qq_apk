@@ -2,7 +2,7 @@ package com.tencent.mm.emoji.b.c;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/model/search/EmojiSuggest$Companion;", "", "()V", "MaxResultSize", "", "RemoteValidTime", "", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/model/search/EmojiSuggest$Companion;", "", "()V", "MaxResultSize", "", "RemoteValidTime", "", "plugin-emojisdk_release"})
 public final class b$a {}
 
 

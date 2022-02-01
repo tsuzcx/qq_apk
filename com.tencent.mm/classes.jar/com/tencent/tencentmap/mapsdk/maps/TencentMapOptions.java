@@ -703,15 +703,15 @@ public final class TencentMapOptions
   
   public final TencentMapOptions setExtSurface(Object paramObject)
   {
-    AppMethodBeat.i(193600);
+    AppMethodBeat.i(237210);
     if ((!(paramObject instanceof Surface)) && (!(paramObject instanceof SurfaceTexture)) && (!(paramObject instanceof SurfaceHolder)))
     {
       paramObject = new IllegalArgumentException("Parameter Surface should be Surface,SurfaceTexture or SurfaceHolder");
-      AppMethodBeat.o(193600);
+      AppMethodBeat.o(237210);
       throw paramObject;
     }
     this.mExtSurface = paramObject;
-    AppMethodBeat.o(193600);
+    AppMethodBeat.o(237210);
     return this;
   }
   
@@ -804,7 +804,7 @@ public final class TencentMapOptions
   
   public final TencentMapOptions setSubInfo(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(193602);
+    AppMethodBeat.i(237228);
     if (paramString1 != null)
     {
       this.mSubKey = paramString1.trim();
@@ -815,7 +815,7 @@ public final class TencentMapOptions
     label48:
     for (this.mSubId = paramString2.trim();; this.mSubId = "")
     {
-      AppMethodBeat.o(193602);
+      AppMethodBeat.o(237228);
       return this;
       this.mSubKey = "";
       break;
@@ -830,15 +830,15 @@ public final class TencentMapOptions
   
   public final TencentMapOptions setTypeface(Typeface paramTypeface)
   {
-    AppMethodBeat.i(193601);
+    AppMethodBeat.i(237213);
     setTypeface(paramTypeface, false);
-    AppMethodBeat.o(193601);
+    AppMethodBeat.o(237213);
     return this;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(193603);
+    AppMethodBeat.i(237280);
     StringBuffer localStringBuffer1 = new StringBuffer("TencentMapOptions{");
     localStringBuffer1.append("customAssetsPath='").append(this.customAssetsPath).append('\'');
     localStringBuffer1.append(", customLocalPath='").append(this.customLocalPath).append('\'');
@@ -872,14 +872,14 @@ public final class TencentMapOptions
       localStringBuffer1.append(", mMapFrameRate=").append(this.mMapFrameRate);
       localStringBuffer1.append('}');
       str = localStringBuffer1.toString();
-      AppMethodBeat.o(193603);
+      AppMethodBeat.o(237280);
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.TencentMapOptions
  * JD-Core Version:    0.7.0.1
  */

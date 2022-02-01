@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.nfc_open.a;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.k;
-import com.tencent.mm.g.a.k.a;
+import com.tencent.mm.f.a.k;
+import com.tencent.mm.f.a.k.a;
 import com.tencent.mm.plugin.nfc.a.c;
 import com.tencent.mm.plugin.nfc.b.b;
 import com.tencent.mm.sdk.event.IListener;
@@ -33,13 +33,13 @@ public final class a
       AppMethodBeat.o(26684);
       return false;
     }
-    if (paramk.dCc == null)
+    if (paramk.fuF == null)
     {
       AppMethodBeat.o(26684);
       return false;
     }
-    int i = paramk.dCc.actionCode;
-    Object localObject3 = paramk.dCc.context;
+    int i = paramk.fuF.actionCode;
+    Object localObject3 = paramk.fuF.context;
     Object localObject1 = localObject3;
     if (localObject3 == null) {
       localObject1 = MMApplicationContext.getContext();
@@ -52,20 +52,20 @@ public final class a
     boolean bool2;
     for (;;)
     {
-      paramk.dCd.dCh = ((Bundle)localObject3);
+      paramk.fuG.fuK = ((Bundle)localObject3);
       AppMethodBeat.o(26684);
       return false;
-      ((Bundle)localObject3).putString("id", com.tencent.mm.plugin.nfc.c.a.byteArrayToHexString(com.tencent.mm.plugin.nfc.b.a.a.exw().AEf));
+      ((Bundle)localObject3).putString("id", com.tencent.mm.plugin.nfc.c.a.byteArrayToHexString(com.tencent.mm.plugin.nfc.b.a.a.fja().Gxj));
       continue;
-      ((Bundle)localObject3).putString("info", com.tencent.mm.plugin.nfc.b.a.a.exw().getInfo());
+      ((Bundle)localObject3).putString("info", com.tencent.mm.plugin.nfc.b.a.a.fja().getInfo());
       continue;
-      ((Bundle)localObject3).putInt("status", com.tencent.mm.plugin.nfc.b.a.a.exw().gI((Context)localObject1));
+      ((Bundle)localObject3).putInt("status", com.tencent.mm.plugin.nfc.b.a.a.fja().hI((Context)localObject1));
       continue;
-      i = com.tencent.mm.plugin.nfc.b.a.a.exw().gJ((Context)localObject1);
+      i = com.tencent.mm.plugin.nfc.b.a.a.fja().hJ((Context)localObject1);
       Log.i("MicroMsg.ApduEngineFuncListener", "alvinluo NFC connect status: %d", new Object[] { Integer.valueOf(i) });
       ((Bundle)localObject3).putInt("status", i);
       continue;
-      localObject1 = paramk.dCc.dCe;
+      localObject1 = paramk.fuF.fuH;
       if (Util.isNullOrNil((String)localObject1))
       {
         Log.e("MicroMsg.ApduEngineFuncListener", "[NFC] transceive apdu is null");
@@ -75,7 +75,7 @@ public final class a
         try
         {
           localObject1 = new com.tencent.mm.plugin.nfc.a.a((String)localObject1);
-          ((Bundle)localObject3).putString("result", com.tencent.mm.plugin.nfc.b.a.a.exw().a((com.tencent.mm.plugin.nfc.a.a)localObject1).toString());
+          ((Bundle)localObject3).putString("result", com.tencent.mm.plugin.nfc.b.a.a.fja().a((com.tencent.mm.plugin.nfc.a.a)localObject1).toString());
         }
         catch (Exception localException1)
         {
@@ -86,9 +86,9 @@ public final class a
         continue;
         try
         {
-          String str = paramk.dCc.dCe;
-          bool1 = paramk.dCc.dCf;
-          bool2 = paramk.dCc.dCg;
+          String str = paramk.fuF.fuH;
+          bool1 = paramk.fuF.fuI;
+          bool2 = paramk.fuF.fuJ;
           if (!Util.isNullOrNil(str)) {
             break;
           }
@@ -132,18 +132,18 @@ public final class a
       }
       else
       {
-        com.tencent.mm.plugin.nfc.b.a.a.exw().b((List)localObject2, bool1, bool2);
+        com.tencent.mm.plugin.nfc.b.a.a.fja().b((List)localObject2, bool1, bool2);
         localObject4 = new StringBuilder();
         localObject2 = ((List)localObject2).iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject5 = (com.tencent.mm.plugin.nfc.b.a)((Iterator)localObject2).next();
-          if (((com.tencent.mm.plugin.nfc.b.a)localObject5).AEd == null) {
+          if (((com.tencent.mm.plugin.nfc.b.a)localObject5).Gxh == null) {
             break;
           }
           ((StringBuilder)localObject4).append(((com.tencent.mm.plugin.nfc.b.a)localObject5).id);
           ((StringBuilder)localObject4).append(":");
-          ((StringBuilder)localObject4).append(((com.tencent.mm.plugin.nfc.b.a)localObject5).AEd.toString());
+          ((StringBuilder)localObject4).append(((com.tencent.mm.plugin.nfc.b.a)localObject5).Gxh.toString());
           ((StringBuilder)localObject4).append("|");
         }
         ((Bundle)localObject3).putString("result", ((StringBuilder)localObject4).toString());

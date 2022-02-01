@@ -12,8 +12,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMTruncTextView
   extends TextView
 {
-  private boolean Qvi = false;
-  private boolean Qvj = false;
+  private boolean XTk = false;
+  private boolean XTl = false;
   
   public MMTruncTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -60,7 +60,7 @@ public class MMTruncTextView
   {
     AppMethodBeat.i(143192);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (!this.Qvi)
+    if (!this.XTk)
     {
       AppMethodBeat.o(143192);
       return;
@@ -71,9 +71,9 @@ public class MMTruncTextView
       AppMethodBeat.o(143192);
       return;
     }
-    this.Qvj = true;
+    this.XTl = true;
     setText(TextUtils.ellipsize(localCharSequence, getPaint(), getWidth() - getCompoundPaddingRight() - getCompoundPaddingLeft(), TextUtils.TruncateAt.END));
-    this.Qvj = false;
+    this.XTl = false;
     AppMethodBeat.o(143192);
   }
   
@@ -112,10 +112,10 @@ public class MMTruncTextView
   {
     AppMethodBeat.i(143193);
     super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
-    if (!this.Qvj) {}
+    if (!this.XTl) {}
     for (boolean bool = true;; bool = false)
     {
-      this.Qvi = bool;
+      this.XTk = bool;
       AppMethodBeat.o(143193);
       return;
     }
@@ -123,7 +123,7 @@ public class MMTruncTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.tools.MMTruncTextView
  * JD-Core Version:    0.7.0.1
  */

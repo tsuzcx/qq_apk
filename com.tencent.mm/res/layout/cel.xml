@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/ki9" android:background="@drawable/cu2" android:layout_width="fill_parent" android:layout_height="@dimen/cj" android:layout_marginLeft="@dimen/cb" android:layout_marginTop="@dimen/ct" android:layout_marginRight="@dimen/cb">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/he6" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/bt" android:src="@raw/icons_outlined_search" android:layout_centerVertical="true" app:iconColor="@color/BW_70" />
+        <EditText android:textColor="@color/BW_100_Alpha_0_5" android:textColorHint="@color/BW_100_Alpha_0_5" android:id="@id/ki_" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="@string/jrt" android:maxLines="1" android:singleLine="true" android:layout_toLeftOf="@id/ki7" android:layout_toRightOf="@id/he6" android:imeOptions="actionDone" android:textCursorDrawable="@drawable/cu3" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ki7" android:visibility="gone" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_marginLeft="@dimen/bt" android:layout_marginRight="@dimen/c5" android:src="@raw/icons_filled_close2" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/BW_70" />
+    </RelativeLayout>
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ki9" layout="@layout/ceg" />
+</RelativeLayout>

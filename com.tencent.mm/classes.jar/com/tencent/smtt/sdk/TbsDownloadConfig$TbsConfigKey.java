@@ -8,6 +8,7 @@ public abstract interface TbsDownloadConfig$TbsConfigKey
   public static final String KEY_APP_VERSIONNAME = "app_versionname";
   public static final String KEY_BACKUPCORE_DELFILELIST = "backupcore_delfilelist";
   public static final String KEY_COUNT_REQUEST_FAIL_IN_24HOURS = "count_request_fail_in_24hours";
+  public static final String KEY_CPUTYPE_OTHER_STABLE_CORE = "tbs_cpu_type_other_stable_core";
   public static final String KEY_DECOUPLECOREVERSION = "tbs_decouplecoreversion";
   public static final String KEY_DESkEY_TOKEN = "tbs_deskey_token";
   public static final String KEY_DEVICE_CPUABI = "device_cpuabi";

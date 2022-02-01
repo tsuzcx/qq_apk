@@ -11,13 +11,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.id_verify.WcPayRealnameVerifySuccessUI;
 import com.tencent.mm.plugin.wallet_core.id_verify.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.wallet_core.ui.g;
 
 public class KindaRealNameManagerImpl
   implements KindaRealNameManager
 {
   private final String KEY_PROCESS_ID = "process_id";
   private final String TAG = "KindaRealNameManagerImpl";
+  
+  public void reportRealnameAction(int paramInt)
+  {
+    AppMethodBeat.i(264195);
+    g.d(paramInt, Util.nowSecond(), 1012);
+    AppMethodBeat.o(264195);
+  }
   
   public void startRealNameImpl(final VoidCallback paramVoidCallback1, final VoidCallback paramVoidCallback2, ITransmitKvData paramITransmitKvData)
   {
@@ -40,14 +49,14 @@ public class KindaRealNameManagerImpl
     localBundle.putBoolean("is_from_new_cashier", true);
     localBundle.putString("start_activity_class", paramITransmitKvData.getClass().getName());
     com.tencent.mm.wallet_core.a.a(paramITransmitKvData, com.tencent.mm.plugin.wallet_core.id_verify.a.class, localBundle, null);
-    paramITransmitKvData = com.tencent.mm.wallet_core.a.by(paramITransmitKvData);
+    paramITransmitKvData = com.tencent.mm.wallet_core.a.bF(paramITransmitKvData);
     if (!(paramITransmitKvData instanceof com.tencent.mm.plugin.wallet_core.id_verify.a))
     {
       Log.e("KindaRealNameManagerImpl", "Fail to get correct wallet process in KindaRealNameManagerImpl, expect RealNameVerifyProcess got %s", new Object[] { paramITransmitKvData.getClass().getName() });
       AppMethodBeat.o(18504);
       return;
     }
-    ((com.tencent.mm.plugin.wallet_core.id_verify.a)paramITransmitKvData).HQO = new a.a()
+    ((com.tencent.mm.plugin.wallet_core.id_verify.a)paramITransmitKvData).OIW = new a.a()
     {
       public void run(Activity paramAnonymousActivity)
       {

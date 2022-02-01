@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.gif;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.q;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -90,39 +90,39 @@ public class MMWXGFJNI
   
   public static int pic2Wxam(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(199790);
-    paramInt1 = nativePic2Wxam(q.k(paramString1, false), q.k(paramString2, true), paramInt1, paramInt2, ((b)g.af(b.class)).a(b.a.sgS, 0));
-    AppMethodBeat.o(199790);
+    AppMethodBeat.i(224050);
+    paramInt1 = nativePic2Wxam(q.n(paramString1, false), q.n(paramString2, true), paramInt1, paramInt2, ((b)h.ae(b.class)).a(b.a.vQS, 0));
+    AppMethodBeat.o(224050);
     return paramInt1;
   }
   
   public static int pic2WxamWithWH(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(199792);
-    paramInt1 = nativePic2WxamWithWH(q.k(paramString1, false), q.k(paramString2, true), paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(199792);
+    AppMethodBeat.i(224056);
+    paramInt1 = nativePic2WxamWithWH(q.n(paramString1, false), q.n(paramString2, true), paramInt1, paramInt2, paramInt3, paramInt4);
+    AppMethodBeat.o(224056);
     return paramInt1;
   }
   
   public static int pic2WxamWithWH(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    AppMethodBeat.i(199793);
-    paramInt1 = nativePic2WxamWithWH(q.k(paramString, true), paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7);
-    AppMethodBeat.o(199793);
+    AppMethodBeat.i(224058);
+    paramInt1 = nativePic2WxamWithWH(q.n(paramString, true), paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7);
+    AppMethodBeat.o(224058);
     return paramInt1;
   }
   
   public static int wxam2Pic(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(199791);
-    int i = nativeWxam2Pic(q.k(paramString1, false), q.k(paramString2, true));
-    AppMethodBeat.o(199791);
+    AppMethodBeat.i(224052);
+    int i = nativeWxam2Pic(q.n(paramString1, false), q.n(paramString2, true));
+    AppMethodBeat.o(224052);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.gif.MMWXGFJNI
  * JD-Core Version:    0.7.0.1
  */

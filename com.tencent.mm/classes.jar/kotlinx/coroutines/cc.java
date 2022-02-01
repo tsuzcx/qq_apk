@@ -1,38 +1,31 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.d.a.b;
-import kotlin.d.d;
-import kotlin.d.f;
-import kotlin.g.a.m;
+import kotlin.g.a.b;
 import kotlin.l;
-import kotlin.x;
-import kotlinx.coroutines.a.a;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/LazyDeferredCoroutine;", "T", "Lkotlinx/coroutines/DeferredCoroutine;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "block", "Lkotlin/Function2;", "Lkotlinx/coroutines/CoroutineScope;", "Lkotlin/coroutines/Continuation;", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;)V", "continuation", "", "onStart", "kotlinx-coroutines-core"})
-final class cc<T>
-  extends as<T>
+@l(iBK={1, 1, 16}, iBL={"kotlinx/coroutines/JobKt__FutureKt", "kotlinx/coroutines/JobKt__JobKt"})
+public final class cc
 {
-  private final d<x> TUn;
-  
-  public cc(f paramf, m<? super ai, ? super d<? super T>, ? extends Object> paramm)
+  public static final be a(by paramby, be parambe)
   {
-    super(paramf, false);
-    AppMethodBeat.i(118208);
-    this.TUn = b.a(paramm, this, (d)this);
-    AppMethodBeat.o(118208);
+    AppMethodBeat.i(204169);
+    paramby = paramby.an((b)new bg(paramby, parambe));
+    AppMethodBeat.o(204169);
+    return paramby;
   }
   
-  protected final void onStart()
+  public static final w b(by paramby)
   {
-    AppMethodBeat.i(118207);
-    a.a(this.TUn, (d)this);
-    AppMethodBeat.o(118207);
+    AppMethodBeat.i(204168);
+    paramby = (w)new cb(null);
+    AppMethodBeat.o(204168);
+    return paramby;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlinx.coroutines.cc
  * JD-Core Version:    0.7.0.1
  */

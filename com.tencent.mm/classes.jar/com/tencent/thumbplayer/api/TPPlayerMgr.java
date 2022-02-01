@@ -35,11 +35,11 @@ public class TPPlayerMgr
   
   public static String getLibVersion(String paramString)
   {
-    AppMethodBeat.i(189044);
+    AppMethodBeat.i(219879);
     if (!isInit)
     {
       paramString = new IllegalStateException("player not initialized");
-      AppMethodBeat.o(189044);
+      AppMethodBeat.o(219879);
       throw paramString;
     }
     if (!TextUtils.isEmpty(paramString))
@@ -47,18 +47,18 @@ public class TPPlayerMgr
       if (paramString.equals("DownloadProxy"))
       {
         paramString = TPDownloadProxyHelper.getNativeLibVersion();
-        AppMethodBeat.o(189044);
+        AppMethodBeat.o(219879);
         return paramString;
       }
       if (paramString.equals("TPCore"))
       {
         paramString = TPNativeLibraryLoader.getLibVersion();
-        AppMethodBeat.o(189044);
+        AppMethodBeat.o(219879);
         return paramString;
       }
     }
     paramString = new IllegalArgumentException("libName:".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(189044);
+    AppMethodBeat.o(219879);
     throw paramString;
   }
   
@@ -69,7 +69,7 @@ public class TPPlayerMgr
   
   public static void initSdk(Context paramContext, String paramString, int paramInt)
   {
-    AppMethodBeat.i(189030);
+    AppMethodBeat.i(219852);
     if (!isInit)
     {
       g.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk");
@@ -77,32 +77,32 @@ public class TPPlayerMgr
       mAppContext = paramContext.getApplicationContext();
       com.tencent.thumbplayer.d.a.setGuid(paramString);
       com.tencent.thumbplayer.d.a.setPlatform(paramInt);
-      TPNetworkChangeMonitor.hop().init(mAppContext);
+      TPNetworkChangeMonitor.irQ().init(mAppContext);
       g.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk for monitor");
       g.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk for report");
       TPNativeLog.setLogCallback(new ITPNativeLogCallback()
       {
         public final void onPrintLog(int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
         {
-          AppMethodBeat.i(189027);
+          AppMethodBeat.i(219823);
           switch (paramAnonymousInt)
           {
           }
           for (;;)
           {
-            AppMethodBeat.o(189027);
+            AppMethodBeat.o(219823);
             return;
             g.v(paramAnonymousString1, paramAnonymousString2);
-            AppMethodBeat.o(189027);
+            AppMethodBeat.o(219823);
             return;
             g.d(paramAnonymousString1, paramAnonymousString2);
-            AppMethodBeat.o(189027);
+            AppMethodBeat.o(219823);
             return;
             g.i(paramAnonymousString1, paramAnonymousString2);
-            AppMethodBeat.o(189027);
+            AppMethodBeat.o(219823);
             return;
             g.w(paramAnonymousString1, paramAnonymousString2);
-            AppMethodBeat.o(189027);
+            AppMethodBeat.o(219823);
             return;
             g.e(paramAnonymousString1, paramAnonymousString2);
           }
@@ -117,7 +117,7 @@ public class TPPlayerMgr
       g.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk for drm cap");
       TPThumbplayerCapabilityHelper.init(mAppContext, true);
       g.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk DONE");
-      AppMethodBeat.o(189030);
+      AppMethodBeat.o(219852);
       return;
     }
     catch (UnsupportedOperationException paramContext)
@@ -131,64 +131,64 @@ public class TPPlayerMgr
   
   public static boolean isProxyEnable()
   {
-    AppMethodBeat.i(189035);
-    if ((com.tencent.thumbplayer.d.a.hnj()) && (TPDownloadProxyHelper.isReadyForPlay()))
+    AppMethodBeat.i(219862);
+    if ((com.tencent.thumbplayer.d.a.iqK()) && (TPDownloadProxyHelper.isReadyForPlay()))
     {
-      AppMethodBeat.o(189035);
+      AppMethodBeat.o(219862);
       return true;
     }
-    AppMethodBeat.o(189035);
+    AppMethodBeat.o(219862);
     return false;
   }
   
   public static boolean isThumbPlayerEnable()
   {
-    AppMethodBeat.i(189040);
+    AppMethodBeat.i(219870);
     boolean bool = TPNativeLibraryLoader.isLibLoaded();
-    AppMethodBeat.o(189040);
+    AppMethodBeat.o(219870);
     return bool;
   }
   
   public static void postEvent(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    AppMethodBeat.i(189041);
+    AppMethodBeat.i(219871);
     e.g(paramInt1, paramInt2, paramInt3, paramObject);
-    AppMethodBeat.o(189041);
+    AppMethodBeat.o(219871);
   }
   
   public static void setDebugEnable(boolean paramBoolean)
   {
-    AppMethodBeat.i(189032);
+    AppMethodBeat.i(219856);
     com.tencent.thumbplayer.d.a.setDebugEnable(paramBoolean);
-    AppMethodBeat.o(189032);
+    AppMethodBeat.o(219856);
   }
   
   public static void setHost(String paramString)
   {
-    AppMethodBeat.i(189031);
-    com.tencent.thumbplayer.d.a.bqy(paramString);
-    AppMethodBeat.o(189031);
+    AppMethodBeat.i(219854);
+    com.tencent.thumbplayer.d.a.bDs(paramString);
+    AppMethodBeat.o(219854);
   }
   
   public static void setLibLoader(ITPModuleLoader paramITPModuleLoader)
   {
-    AppMethodBeat.i(189042);
+    AppMethodBeat.i(219875);
     if (isInit)
     {
       paramITPModuleLoader = new IllegalStateException("player has init");
-      AppMethodBeat.o(189042);
+      AppMethodBeat.o(219875);
       throw paramITPModuleLoader;
     }
     TPNativeLibraryLoader.setLibLoader(new ITPNativeLibraryExternalLoader()
     {
       public final boolean loadLib(String paramAnonymousString1, String paramAnonymousString2)
       {
-        AppMethodBeat.i(189028);
+        AppMethodBeat.i(219826);
         if (this.val$loader != null) {
           try
           {
             this.val$loader.loadLibrary(paramAnonymousString1, paramAnonymousString2);
-            AppMethodBeat.o(189028);
+            AppMethodBeat.o(219826);
             return true;
           }
           catch (Throwable paramAnonymousString1)
@@ -196,7 +196,7 @@ public class TPPlayerMgr
             g.e("TPThumbPlayer[TPPlayerMgr.java]", paramAnonymousString1);
           }
         }
-        AppMethodBeat.o(189028);
+        AppMethodBeat.o(219826);
         return false;
       }
     });
@@ -204,12 +204,12 @@ public class TPPlayerMgr
     {
       public final boolean loadLib(String paramAnonymousString1, String paramAnonymousString2)
       {
-        AppMethodBeat.i(189029);
+        AppMethodBeat.i(219831);
         if (this.val$loader != null) {
           try
           {
             this.val$loader.loadLibrary(paramAnonymousString1, paramAnonymousString2);
-            AppMethodBeat.o(189029);
+            AppMethodBeat.o(219831);
             return true;
           }
           catch (Throwable paramAnonymousString1)
@@ -217,63 +217,63 @@ public class TPPlayerMgr
             g.e("TPThumbPlayer[TPPlayerMgr.java]", paramAnonymousString1);
           }
         }
-        AppMethodBeat.o(189029);
+        AppMethodBeat.o(219831);
         return false;
       }
     });
-    AppMethodBeat.o(189042);
+    AppMethodBeat.o(219875);
   }
   
   public static void setOnLogListener(OnLogListener paramOnLogListener)
   {
-    AppMethodBeat.i(189033);
+    AppMethodBeat.i(219857);
     g.setOnLogListener(paramOnLogListener);
-    AppMethodBeat.o(189033);
+    AppMethodBeat.o(219857);
   }
   
   public static void setOutNetIP(String paramString)
   {
-    AppMethodBeat.i(189038);
-    com.tencent.thumbplayer.d.a.bqB(paramString);
-    AppMethodBeat.o(189038);
+    AppMethodBeat.i(219868);
+    com.tencent.thumbplayer.d.a.bDv(paramString);
+    AppMethodBeat.o(219868);
   }
   
   public static void setProxyEnable(boolean paramBoolean)
   {
-    AppMethodBeat.i(189034);
-    com.tencent.thumbplayer.d.a.DT(paramBoolean);
-    AppMethodBeat.o(189034);
+    AppMethodBeat.i(219859);
+    com.tencent.thumbplayer.d.a.Iu(paramBoolean);
+    AppMethodBeat.o(219859);
   }
   
   public static void setProxyServiceType(int paramInt)
   {
-    AppMethodBeat.i(189039);
+    AppMethodBeat.i(219869);
     com.tencent.thumbplayer.d.a.setProxyServiceType(paramInt);
-    AppMethodBeat.o(189039);
+    AppMethodBeat.o(219869);
   }
   
   public static void setTPProxyAdapter(ITPProxyAdapter paramITPProxyAdapter)
   {
-    AppMethodBeat.i(189043);
+    AppMethodBeat.i(219877);
     TPDownloadProxyHelper.setTPProxyAdapter(paramITPProxyAdapter);
-    AppMethodBeat.o(189043);
+    AppMethodBeat.o(219877);
   }
   
   public static void setUpcInfo(String paramString, int paramInt)
   {
-    AppMethodBeat.i(189037);
-    com.tencent.thumbplayer.d.a.bqA(paramString);
-    com.tencent.thumbplayer.d.a.arn(paramInt);
+    AppMethodBeat.i(219867);
+    com.tencent.thumbplayer.d.a.bDu(paramString);
+    com.tencent.thumbplayer.d.a.aBa(paramInt);
     e.g(100003, paramInt, 0, paramString);
-    AppMethodBeat.o(189037);
+    AppMethodBeat.o(219867);
   }
   
   public static void setUserInfo(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(189036);
-    com.tencent.thumbplayer.d.a.bqz(paramString);
-    com.tencent.thumbplayer.d.a.DU(paramBoolean);
-    AppMethodBeat.o(189036);
+    AppMethodBeat.i(219865);
+    com.tencent.thumbplayer.d.a.bDt(paramString);
+    com.tencent.thumbplayer.d.a.Iv(paramBoolean);
+    AppMethodBeat.o(219865);
   }
   
   public static abstract interface OnLogListener
@@ -291,7 +291,7 @@ public class TPPlayerMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPPlayerMgr
  * JD-Core Version:    0.7.0.1
  */

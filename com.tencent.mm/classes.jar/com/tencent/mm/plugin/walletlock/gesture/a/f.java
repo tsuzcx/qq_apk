@@ -5,21 +5,21 @@ import java.lang.reflect.Array;
 
 public final class f
 {
-  private static f[][] IvA;
-  public int Ivy = 0;
-  public int Ivz = 0;
+  private static f[][] PpF;
+  public int PpD = 0;
+  public int PpE = 0;
   
   static
   {
     AppMethodBeat.i(129788);
-    IvA = (f[][])Array.newInstance(f.class, new int[] { 3, 3 });
+    PpF = (f[][])Array.newInstance(f.class, new int[] { 3, 3 });
     int i = 0;
     while (i < 3)
     {
       int j = 0;
       while (j < 3)
       {
-        IvA[i][j] = new f(i, j);
+        PpF[i][j] = new f(i, j);
         j += 1;
       }
       i += 1;
@@ -29,11 +29,11 @@ public final class f
   
   private f(int paramInt1, int paramInt2)
   {
-    this.Ivy = paramInt1;
-    this.Ivz = paramInt2;
+    this.PpD = paramInt1;
+    this.PpE = paramInt2;
   }
   
-  public static f jW(int paramInt1, int paramInt2)
+  public static f lm(int paramInt1, int paramInt2)
   {
     try
     {
@@ -52,7 +52,7 @@ public final class f
       AppMethodBeat.o(129786);
       throw ((Throwable)localObject2);
     }
-    Object localObject2 = IvA[paramInt1][paramInt2];
+    Object localObject2 = PpF[paramInt1][paramInt2];
     AppMethodBeat.o(129786);
     return localObject2;
   }
@@ -60,7 +60,7 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(129787);
-    String str = String.format("{row: %d, col: %d}", new Object[] { Integer.valueOf(this.Ivy), Integer.valueOf(this.Ivz) });
+    String str = String.format("{row: %d, col: %d}", new Object[] { Integer.valueOf(this.PpD), Integer.valueOf(this.PpE) });
     AppMethodBeat.o(129787);
     return str;
   }

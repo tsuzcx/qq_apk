@@ -6,17 +6,14 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.sdk.storage.MStorageEx;
-import com.tencent.mm.storagebase.g;
-import com.tencent.mm.storagebase.g.a;
 import java.util.ArrayList;
 
-public final class j
+public class j
   extends MAutoStorage<i>
-  implements g.a
 {
   public static final String[] SQL_CREATE;
   private ISQLiteDatabase db;
-  public MStorageEx keO;
+  public MStorageEx mWn;
   
   static
   {
@@ -29,7 +26,7 @@ public final class j
   {
     super(paramISQLiteDatabase, i.info, "IPCallPopularCountry", null);
     AppMethodBeat.i(25553);
-    this.keO = new MStorageEx()
+    this.mWn = new MStorageEx()
     {
       public final boolean shouldProcessEvent()
       {
@@ -52,13 +49,7 @@ public final class j
     AppMethodBeat.o(25553);
   }
   
-  public final int a(g paramg)
-  {
-    this.db = paramg;
-    return 0;
-  }
-  
-  public final void ar(int paramInt, long paramLong)
+  public final void az(int paramInt, long paramLong)
   {
     AppMethodBeat.i(25554);
     i locali = new i();
@@ -86,7 +77,7 @@ public final class j
     }
   }
   
-  public final ArrayList<Integer> eba()
+  public final ArrayList<Integer> eJY()
   {
     AppMethodBeat.i(25555);
     ArrayList localArrayList = new ArrayList();
@@ -110,14 +101,14 @@ public final class j
     return localArrayList;
   }
   
-  public final String getTableName()
+  public String getTableName()
   {
     return "IPCallPopularCountry";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.h.j
  * JD-Core Version:    0.7.0.1
  */

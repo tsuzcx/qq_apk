@@ -9,7 +9,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint.FontMetrics;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.v4.view.u;
 import android.text.Layout;
 import android.text.Layout.Alignment;
 import android.text.Spanned;
@@ -22,8 +21,14 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
+import androidx.core.g.a.d;
+import androidx.core.g.w;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.g;
 import com.tencent.mm.pluginsdk.ui.a.a;
+import com.tencent.mm.pluginsdk.ui.c;
 import com.tencent.mm.pluginsdk.ui.e.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -82,20 +87,20 @@ public class AddressView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(32901);
-    this.drawable = getResources().getDrawable(2131234892);
+    this.drawable = getResources().getDrawable(R.g.signature_bg);
     this.needUpdatePostion = true;
     this.mergeCallback = null;
     this.AVATAR_LAYOUT_WIDTH = 0;
     this.AVATAR_WIDTH = 0;
-    this.NAME_TEXT_SIZE = com.tencent.mm.cb.a.aG(paramContext, 2131165535);
-    this.DESCRIPTION_TEXT_SIZE = com.tencent.mm.cb.a.aG(paramContext, 2131165594);
-    this.WEIBO_ICON_SIZE = getResources().getDimensionPixelSize(2131165584);
+    this.NAME_TEXT_SIZE = com.tencent.mm.ci.a.aY(paramContext, R.f.NormalTextSize);
+    this.DESCRIPTION_TEXT_SIZE = com.tencent.mm.ci.a.aY(paramContext, R.f.SmallestTextSize);
+    this.WEIBO_ICON_SIZE = getResources().getDimensionPixelSize(R.f.SmallIconSize);
     this.AVATAR_START_POS = 0;
     this.AVATAR_PADDING = 0;
     this.COMMON_PADDING = 0;
-    this.DESCRIPTION_PADDING = (getResources().getDimensionPixelSize(2131165502) * 2);
-    this.TEXT_TOP_PADDING = getResources().getDimensionPixelSize(2131165593);
-    this.NAME_RIGHT_PADDING = getResources().getDimensionPixelSize(2131165188);
+    this.DESCRIPTION_PADDING = (getResources().getDimensionPixelSize(R.f.LargestPadding) * 2);
+    this.TEXT_TOP_PADDING = getResources().getDimensionPixelSize(R.f.SmallestPadding);
+    this.NAME_RIGHT_PADDING = getResources().getDimensionPixelSize(R.f.AddressScrollBarWidth);
     if (this.displayNamePaint == null) {
       this.displayNamePaint = generateOnePaint();
     }
@@ -108,7 +113,7 @@ public class AddressView
     TextPaint localTextPaint = new TextPaint();
     localTextPaint.setAntiAlias(true);
     localTextPaint.setTextSize(this.DESCRIPTION_TEXT_SIZE);
-    localTextPaint.setColor(getResources().getColor(2131100594));
+    localTextPaint.setColor(getResources().getColor(R.e.hint_text_color));
     AppMethodBeat.o(32922);
     return localTextPaint;
   }
@@ -119,7 +124,7 @@ public class AddressView
     TextPaint localTextPaint = new TextPaint();
     localTextPaint.setAntiAlias(true);
     localTextPaint.setTextSize(this.NAME_TEXT_SIZE);
-    localTextPaint.setColor(getContext().getResources().getColor(2131099746));
+    localTextPaint.setColor(getContext().getResources().getColor(R.e.FG_0));
     AppMethodBeat.o(32921);
     return localTextPaint;
   }
@@ -151,19 +156,19 @@ public class AddressView
   private void installAccessibilityDelegate()
   {
     AppMethodBeat.i(32925);
-    u.a(this, new android.support.v4.view.a()
+    w.a(this, new androidx.core.g.a()
     {
-      public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, android.support.v4.view.a.c paramAnonymousc)
+      public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, d paramAnonymousd)
       {
-        AppMethodBeat.i(32900);
-        super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousc);
+        AppMethodBeat.i(282218);
+        super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousd);
         CharSequence localCharSequence = AddressView.this.getContentDescription();
         paramAnonymousView = localCharSequence;
         if (Util.isNullOrNil((String)localCharSequence)) {
           paramAnonymousView = AddressView.this.nickName;
         }
-        paramAnonymousc.setText(paramAnonymousView);
-        AppMethodBeat.o(32900);
+        paramAnonymousd.setText(paramAnonymousView);
+        AppMethodBeat.o(282218);
       }
       
       public final void onPopulateAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
@@ -387,7 +392,7 @@ public class AddressView
   {
     AppMethodBeat.i(32915);
     if (this.avatarDrawable != null) {
-      ((com.tencent.mm.pluginsdk.ui.c)this.avatarDrawable).goJ();
+      ((c)this.avatarDrawable).hjv();
     }
     AppMethodBeat.o(32915);
   }
@@ -450,7 +455,7 @@ public class AddressView
   {
     AppMethodBeat.i(32916);
     if (this.avatarDrawable != null) {
-      ((com.tencent.mm.pluginsdk.ui.c)this.avatarDrawable).goI();
+      ((c)this.avatarDrawable).hju();
     }
     AppMethodBeat.o(32916);
   }
@@ -519,7 +524,7 @@ public class AddressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.AddressView
  * JD-Core Version:    0.7.0.1
  */

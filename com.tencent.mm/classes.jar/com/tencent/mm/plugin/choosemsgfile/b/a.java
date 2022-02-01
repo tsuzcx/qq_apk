@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.choosemsgfile.b;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.luggage.h.f;
-import com.tencent.luggage.h.f.c;
-import com.tencent.luggage.h.f.e;
+import com.tencent.luggage.k.f;
+import com.tencent.luggage.k.f.c;
+import com.tencent.luggage.k.f.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.choosemsgfile.compat.a.a;
+import com.tencent.mm.plugin.choosemsgfile.a.h;
 import com.tencent.mm.plugin.choosemsgfile.b.d.b;
 import com.tencent.mm.plugin.choosemsgfile.ui.ChooseMsgFileListUI;
 import com.tencent.mm.plugin.choosemsgfile.ui.ChooseMsgFileShowUI;
@@ -21,18 +21,18 @@ import com.tencent.mm.ui.MMFragmentActivity.b;
 public final class a
   implements com.tencent.mm.choosemsgfile.compat.a
 {
-  public final void a(Activity paramActivity, final String paramString1, int paramInt, String paramString2, final a.a parama)
+  public final void a(Activity paramActivity, final String paramString1, int paramInt, String paramString2, final com.tencent.mm.choosemsgfile.compat.a.a parama)
   {
     AppMethodBeat.i(170096);
     Intent localIntent = new Intent();
     localIntent.putExtra("Select_Conv_Type", 3);
     localIntent.putExtra("scene_from", 11);
-    localIntent.putExtra("Select_Conv_ui_title", paramActivity.getString(2131757576));
+    localIntent.putExtra("Select_Conv_ui_title", paramActivity.getString(a.h.choose_msg_file_select_conversation));
     localIntent.putExtra("KChooseMsgFileType", paramString1);
     localIntent.putExtra("KChooseMsgFileCount", paramInt);
     localIntent.putExtra("KChooseMsgFileExtension", paramString2);
-    localIntent.putExtra("MMActivity.OverrideEnterAnimation", 2130772132);
-    localIntent.putExtra("MMActivity.OverrideExitAnimation", 2130772130);
+    localIntent.putExtra("MMActivity.OverrideEnterAnimation", com.tencent.mm.plugin.choosemsgfile.a.a.push_up_in);
+    localIntent.putExtra("MMActivity.OverrideExitAnimation", com.tencent.mm.plugin.choosemsgfile.a.a.push_down_out);
     paramString1 = new MMActivity.a()
     {
       public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
@@ -45,12 +45,12 @@ public final class a
       }
     };
     if ((paramActivity instanceof f.e)) {
-      f.aK(paramActivity).b(new f.c()
+      f.aI(paramActivity).b(new f.c()
       {
         public final boolean c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
         {
           AppMethodBeat.i(170094);
-          if (b.qoN == paramAnonymousInt1)
+          if (b.tNw == paramAnonymousInt1)
           {
             paramString1.d(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
             AppMethodBeat.o(170094);
@@ -63,7 +63,7 @@ public final class a
     }
     for (;;)
     {
-      com.tencent.mm.br.c.c(paramActivity, ".ui.transmit.SelectConversationUI", localIntent, b.qoN);
+      com.tencent.mm.by.c.d(paramActivity, ".ui.transmit.SelectConversationUI", localIntent, b.tNw);
       AppMethodBeat.o(170096);
       return;
       if ((paramActivity instanceof MMActivity)) {
@@ -82,7 +82,7 @@ public final class a
     }
   }
   
-  public final void a(MMActivity paramMMActivity, String paramString1, String paramString2, int paramInt, String paramString3, a.a parama)
+  public final void a(MMActivity paramMMActivity, String paramString1, String paramString2, int paramInt, String paramString3, com.tencent.mm.choosemsgfile.compat.a.a parama)
   {
     AppMethodBeat.i(123223);
     if ("file".equals(paramString2))
@@ -98,13 +98,13 @@ public final class a
   public final void g(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(123222);
-    ChooseMsgFileShowUI.t(paramContext, paramString1, paramString2);
+    ChooseMsgFileShowUI.w(paramContext, paramString1, paramString2);
     AppMethodBeat.o(123222);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.a
  * JD-Core Version:    0.7.0.1
  */

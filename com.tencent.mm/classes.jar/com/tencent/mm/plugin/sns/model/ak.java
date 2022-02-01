@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.k.b;
+import com.tencent.mm.plugin.sns.k.d;
 
 public final class ak
   implements ai
 {
-  private b DMa;
+  private d JZd;
   private int scene = 0;
   
-  public final b fat()
+  public final d fOn()
   {
     AppMethodBeat.i(95844);
-    if (this.DMa == null) {
-      this.DMa = new b();
+    if (this.JZd == null) {
+      this.JZd = new d();
     }
-    b localb = this.DMa;
+    d locald = this.JZd;
     AppMethodBeat.o(95844);
-    return localb;
+    return locald;
   }
   
   public final int getScene()
@@ -27,7 +27,7 @@ public final class ak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.ak
  * JD-Core Version:    0.7.0.1
  */

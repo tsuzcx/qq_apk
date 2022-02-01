@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.ServiceInfo;
-import android.support.v4.e.a;
 import android.text.TextUtils;
+import androidx.b.a;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.util.CollectionUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -181,9 +181,9 @@ public class GcmNetworkManager
     //   25: astore 4
     //   27: aload 5
     //   29: ifnonnull +25 -> 54
-    //   32: new 35	android/support/v4/e/a
+    //   32: new 35	androidx/b/a
     //   35: dup
-    //   36: invokespecial 36	android/support/v4/e/a:<init>	()V
+    //   36: invokespecial 36	androidx/b/a:<init>	()V
     //   39: astore 4
     //   41: aload_0
     //   42: getfield 38	com/google/android/gms/gcm/GcmNetworkManager:zzi	Ljava/util/Map;
@@ -337,7 +337,7 @@ public class GcmNetworkManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.gcm.GcmNetworkManager
  * JD-Core Version:    0.7.0.1
  */

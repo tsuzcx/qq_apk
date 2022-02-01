@@ -8,33 +8,34 @@ import android.graphics.Color;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
+import androidx.appcompat.widget.AppCompatImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ck.a.a;
+import com.tencent.mm.cr.a.c;
+import com.tencent.mm.cr.a.k;
 
 public class WeImageView
   extends AppCompatImageView
 {
-  private int Kxl;
-  private int QRf;
-  private float QRg;
-  private int QRh;
-  private boolean QRi;
-  private boolean QRj;
-  private boolean QRk;
+  private int RyZ;
+  private int YpQ;
+  private float YpR;
+  private int YpS;
+  private boolean YpT;
+  private boolean YpU;
+  private boolean YpV;
   private int mAlpha;
   
   public WeImageView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(159411);
-    this.QRg = 1.0F;
+    this.YpR = 1.0F;
     this.mAlpha = 255;
-    this.QRh = 255;
-    this.QRi = true;
-    this.QRj = false;
-    this.QRk = true;
+    this.YpS = 255;
+    this.YpT = true;
+    this.YpU = false;
+    this.YpV = true;
     init(paramContext, null);
     AppMethodBeat.o(159411);
   }
@@ -43,12 +44,12 @@ public class WeImageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159412);
-    this.QRg = 1.0F;
+    this.YpR = 1.0F;
     this.mAlpha = 255;
-    this.QRh = 255;
-    this.QRi = true;
-    this.QRj = false;
-    this.QRk = true;
+    this.YpS = 255;
+    this.YpT = true;
+    this.YpU = false;
+    this.YpV = true;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(159412);
   }
@@ -57,12 +58,12 @@ public class WeImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159413);
-    this.QRg = 1.0F;
+    this.YpR = 1.0F;
     this.mAlpha = 255;
-    this.QRh = 255;
-    this.QRi = true;
-    this.QRj = false;
-    this.QRk = true;
+    this.YpS = 255;
+    this.YpT = true;
+    this.YpU = false;
+    this.YpV = true;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(159413);
   }
@@ -70,33 +71,33 @@ public class WeImageView
   private void init(Context paramContext, AttributeSet paramAttributeSet)
   {
     AppMethodBeat.i(159415);
-    this.QRf = paramContext.getResources().getColor(2131099746);
+    this.YpQ = paramContext.getResources().getColor(a.c.FG_0);
     if (paramAttributeSet != null)
     {
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.WeImageView);
-      this.Kxl = paramContext.getColor(1, this.QRf);
-      this.QRg = paramContext.getFloat(0, 1.0F);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.k.WeImageView);
+      this.RyZ = paramContext.getColor(a.k.WeImageView_iconColor, this.YpQ);
+      this.YpR = paramContext.getFloat(a.k.WeImageView_iconAlpha, 1.0F);
       paramContext.recycle();
       AppMethodBeat.o(159415);
       return;
     }
-    this.Kxl = this.QRf;
+    this.RyZ = this.YpQ;
     AppMethodBeat.o(159415);
   }
   
   public final void C(int paramInt, float paramFloat)
   {
     AppMethodBeat.i(186015);
-    this.Kxl = paramInt;
-    this.QRg = paramFloat;
-    this.QRi = true;
+    this.RyZ = paramInt;
+    this.YpR = paramFloat;
+    this.YpT = true;
     invalidate();
     AppMethodBeat.o(186015);
   }
   
   public void drawableStateChanged()
   {
-    AppMethodBeat.i(198351);
+    AppMethodBeat.i(251005);
     super.drawableStateChanged();
     int i = this.mAlpha;
     if (isPressed()) {
@@ -107,14 +108,14 @@ public class WeImageView
       if ((!isEnabled()) || (!isFocusable())) {
         i = 255;
       }
-      if (i != this.QRh)
+      if (i != this.YpS)
       {
-        this.QRh = i;
+        this.YpS = i;
         if (getDrawable() != null) {
           getDrawable().setAlpha(i);
         }
       }
-      AppMethodBeat.o(198351);
+      AppMethodBeat.o(251005);
       return;
       if (isEnabled()) {
         i = this.mAlpha;
@@ -126,76 +127,76 @@ public class WeImageView
   {
     AppMethodBeat.i(159416);
     super.onDraw(paramCanvas);
-    if ((this.QRj) && (this.QRi))
+    if ((this.YpU) && (this.YpT))
     {
       getDrawable().mutate().clearColorFilter();
-      this.QRj = false;
-      this.QRi = false;
+      this.YpU = false;
+      this.YpT = false;
       AppMethodBeat.o(159416);
       return;
     }
-    if ((!this.QRk) && (getDrawable() != null) && (this.QRi))
+    if ((!this.YpV) && (getDrawable() != null) && (this.YpT))
     {
       getDrawable().mutate().clearColorFilter();
-      this.QRi = false;
+      this.YpT = false;
       AppMethodBeat.o(159416);
       return;
     }
-    if ((this.QRk) && (getDrawable() != null) && (this.QRi))
+    if ((this.YpV) && (getDrawable() != null) && (this.YpT))
     {
-      int i = this.Kxl;
-      if (this.Kxl != 0) {
-        i = this.Kxl & 0xFFFFFF | 0xFF000000;
+      int i = this.RyZ;
+      if (this.RyZ != 0) {
+        i = this.RyZ & 0xFFFFFF | 0xFF000000;
       }
-      int j = Color.alpha(this.Kxl);
-      if (this.QRg != 1.0F) {
-        j = (int)(255.0F * this.QRg);
+      int j = Color.alpha(this.RyZ);
+      if (this.YpR != 1.0F) {
+        j = (int)(255.0F * this.YpR);
       }
       paramCanvas = new PorterDuffColorFilter(i, PorterDuff.Mode.SRC_ATOP);
       getDrawable().mutate().setColorFilter(paramCanvas);
-      if (this.Kxl != 0)
+      if (this.RyZ != 0)
       {
         this.mAlpha = j;
         getDrawable().setAlpha(j);
       }
-      this.QRi = false;
+      this.YpT = false;
     }
     AppMethodBeat.o(159416);
   }
   
   public void setClearColorFilter(boolean paramBoolean)
   {
-    AppMethodBeat.i(198349);
-    this.QRj = paramBoolean;
-    this.QRi = true;
+    AppMethodBeat.i(250995);
+    this.YpU = paramBoolean;
+    this.YpT = true;
     invalidate();
-    AppMethodBeat.o(198349);
+    AppMethodBeat.o(250995);
   }
   
   public void setEnableColorFilter(boolean paramBoolean)
   {
-    AppMethodBeat.i(198350);
-    if (this.QRk != paramBoolean)
+    AppMethodBeat.i(250997);
+    if (this.YpV != paramBoolean)
     {
-      this.QRk = paramBoolean;
-      this.QRi = true;
+      this.YpV = paramBoolean;
+      this.YpT = true;
       invalidate();
     }
-    AppMethodBeat.o(198350);
+    AppMethodBeat.o(250997);
   }
   
   public void setIconColor(int paramInt)
   {
     AppMethodBeat.i(159414);
-    this.Kxl = paramInt;
-    this.QRi = true;
+    this.RyZ = paramInt;
+    this.YpT = true;
     invalidate();
     AppMethodBeat.o(159414);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.imageview.WeImageView
  * JD-Core Version:    0.7.0.1
  */

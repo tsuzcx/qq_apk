@@ -2,13 +2,12 @@ package com.tencent.mm.plugin.shake.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.modelgeo.d;
-import com.tencent.mm.modelstat.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.List;
@@ -17,89 +16,72 @@ public final class c
   extends l.b
   implements i
 {
-  int DgG;
-  int DgH;
-  boolean DgI;
-  boolean DgJ;
-  b DgK;
-  a DgL;
-  private int DgM;
-  MMHandler DgN;
-  Runnable DgO;
+  private int Jmm;
+  private int Jmn;
+  private boolean Jmo;
+  private boolean Jmp;
+  private b Jmq;
+  private a Jmr;
+  private int Jms;
+  private MMHandler Jmt;
+  private Runnable Jmu;
   private Context context;
-  private b.a gmA;
-  float gmu;
-  float gmv;
-  d iOv;
+  private float iQD;
+  private float iQE;
+  private b.a iQJ;
+  private d lEL;
   
   public c(Context paramContext, l.a parama)
   {
     super(parama);
     AppMethodBeat.i(28094);
-    this.gmu = -85.0F;
-    this.gmv = -1000.0F;
-    this.DgG = 1;
-    this.DgH = -1000;
-    this.DgI = false;
-    this.DgJ = true;
-    this.DgM = 0;
-    this.DgN = new MMHandler();
-    this.DgO = new Runnable()
+    this.iQD = -85.0F;
+    this.iQE = -1000.0F;
+    this.Jmm = 1;
+    this.Jmn = -1000;
+    this.Jmo = false;
+    this.Jmp = true;
+    this.Jms = 0;
+    this.Jmt = new MMHandler();
+    this.Jmu = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(28092);
-        if ((c.this.DgN != null) && (c.this.DgO != null)) {
-          c.this.DgN.removeCallbacks(c.this.DgO);
+        if ((c.a(c.this) != null) && (c.b(c.this) != null)) {
+          c.a(c.this).removeCallbacks(c.b(c.this));
         }
-        if (c.this.DgL != null) {
-          bg.azz().a(c.this.DgL);
+        if (c.c(c.this) != null) {
+          bh.aGY().a(c.c(c.this));
         }
-        if ((c.this.DgK != null) && (c.this.DgK.efs != null)) {
-          c.this.DgL = new a(c.this.DgK.efs);
+        if ((c.d(c.this) != null) && (c.d(c.this).fZH != null)) {
+          c.a(c.this, new a(c.d(c.this).fZH));
         }
-        if (c.this.DgL != null) {
-          bg.azz().a(c.this.DgL, 0);
+        if (c.c(c.this) != null) {
+          bh.aGY().a(c.c(c.this), 0);
         }
         AppMethodBeat.o(28092);
       }
     };
-    this.gmA = new b.a()
+    this.iQJ = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
         AppMethodBeat.i(28093);
-        e locale = e.bge();
-        boolean bool1;
-        if (paramAnonymousInt == 0)
+        Log.i("MicroMsg.ShakeFriendService", "getlocaion lat %f lng %f hasGetLbsInfo " + c.e(c.this), new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1) });
+        if (!paramAnonymousBoolean)
         {
-          bool1 = false;
-          if (c.this.iOv != null) {
-            break label112;
-          }
-        }
-        label112:
-        for (boolean bool2 = false;; bool2 = c.this.iOv.iVk)
-        {
-          locale.a(2002, bool1, bool2, paramAnonymousFloat1, paramAnonymousFloat2, (int)paramAnonymousDouble2);
-          Log.i("MicroMsg.ShakeFriendService", "getlocaion lat %f lng %f hasGetLbsInfo " + c.this.DgI, new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1) });
-          if (paramAnonymousBoolean) {
-            break label127;
-          }
           AppMethodBeat.o(28093);
           return true;
-          bool1 = true;
-          break;
         }
-        label127:
-        if ((c.this.DgJ) && (c.this.gmu == -85.0F) && (c.this.gmv == -1000.0F))
+        if ((c.f(c.this)) && (c.g(c.this) == -85.0F) && (c.h(c.this) == -1000.0F))
         {
-          c.this.DgJ = false;
-          c.this.gmu = paramAnonymousFloat2;
-          c.this.gmv = paramAnonymousFloat1;
-          c.this.DgH = ((int)paramAnonymousDouble2);
-          c.this.DgG = paramAnonymousInt;
-          c.this.DgI = true;
+          c.i(c.this);
+          c.a(c.this, paramAnonymousFloat2);
+          c.b(c.this, paramAnonymousFloat1);
+          c.a(c.this, (int)paramAnonymousDouble2);
+          c.b(c.this, paramAnonymousInt);
+          c.j(c.this);
         }
         AppMethodBeat.o(28093);
         return false;
@@ -109,24 +91,24 @@ public final class c
     AppMethodBeat.o(28094);
   }
   
-  private void eTP()
+  private void cFO()
   {
     AppMethodBeat.i(28097);
-    this.iOv = d.bca();
-    this.DgJ = true;
-    this.iOv.a(this.gmA, true);
+    this.lEL = d.blq();
+    this.Jmp = true;
+    this.lEL.a(this.iQJ, true);
     AppMethodBeat.o(28097);
   }
   
-  public final void eTQ()
+  public final void fGS()
   {
     AppMethodBeat.i(28101);
-    super.eTQ();
-    bg.azz().b(161, this);
-    bg.azz().b(162, this);
-    bg.azz().b(1251, this);
-    if (this.iOv != null) {
-      this.iOv.c(this.gmA);
+    super.fGS();
+    bh.aGY().b(161, this);
+    bh.aGY().b(162, this);
+    bh.aGY().b(1251, this);
+    if (this.lEL != null) {
+      this.lEL.b(this.iQJ);
     }
     AppMethodBeat.o(28101);
   }
@@ -134,10 +116,10 @@ public final class c
   public final void init()
   {
     AppMethodBeat.i(28095);
-    bg.azz().a(161, this);
-    bg.azz().a(162, this);
-    bg.azz().a(1251, this);
-    eTP();
+    bh.aGY().a(161, this);
+    bh.aGY().a(162, this);
+    bh.aGY().a(1251, this);
+    cFO();
     AppMethodBeat.o(28095);
   }
   
@@ -147,65 +129,64 @@ public final class c
     switch (paramq.getType())
     {
     }
-    for (;;)
+    do
     {
-      AppMethodBeat.o(28102);
-      return;
-      paramString = (b)paramq;
-      if ((paramString.eTO() == 3) || (paramString.eTO() == 4))
+      do
       {
-        Log.v("MicroMsg.ShakeFriendService", "onSceneEnd ignore location report response");
         AppMethodBeat.o(28102);
         return;
-      }
-      if ((paramInt2 != 0) || (paramInt1 != 0) || (paramString.ret != 0))
-      {
-        Log.e("MicroMsg.ShakeFriendService", "onSceneEnd reprot failed");
-        this.DgX.f(null, 3L);
-        AppMethodBeat.o(28102);
-        return;
-      }
-      this.DgN.postDelayed(this.DgO, 3000L);
-      AppMethodBeat.o(28102);
-      return;
-      paramString = (a)paramq;
-      if ((paramInt2 != 0) || (paramInt1 != 0) || (paramString.ret != 0))
-      {
-        this.DgX.f(null, 3L);
-        AppMethodBeat.o(28102);
-        return;
-      }
-      paramString = paramString.DgE;
-      if (paramString.size() == 0)
-      {
-        Log.i("MicroMsg.ShakeFriendService", "empty shake get list");
-        this.DgX.f(null, 3L);
-        AppMethodBeat.o(28102);
-        return;
-      }
-      this.DgX.f(paramString, 1L);
-      AppMethodBeat.o(28102);
-      return;
-      paramString = (com.tencent.mm.plugin.shake.c.a.b)paramq;
-      if ((paramInt2 != 0) || (paramInt1 != 0))
-      {
-        if (this.DgX != null)
+        paramString = (b)paramq;
+        if ((paramString.fGR() == 3) || (paramString.fGR() == 4))
         {
-          this.DgX.a(1251, null, 2L);
+          Log.v("MicroMsg.ShakeFriendService", "onSceneEnd ignore location report response");
           AppMethodBeat.o(28102);
+          return;
         }
-      }
-      else if (this.DgX != null) {
-        this.DgX.a(1251, paramString.Dhq, 1L);
-      }
-    }
+        if ((paramInt2 != 0) || (paramInt1 != 0) || (paramString.ret != 0))
+        {
+          Log.e("MicroMsg.ShakeFriendService", "onSceneEnd reprot failed");
+          this.JmD.e(null, 3L);
+          AppMethodBeat.o(28102);
+          return;
+        }
+        this.Jmt.postDelayed(this.Jmu, 3000L);
+        AppMethodBeat.o(28102);
+        return;
+        paramString = (a)paramq;
+        if ((paramInt2 != 0) || (paramInt1 != 0) || (paramString.ret != 0))
+        {
+          this.JmD.e(null, 3L);
+          AppMethodBeat.o(28102);
+          return;
+        }
+        paramString = paramString.Jmk;
+        if (paramString.size() == 0)
+        {
+          Log.i("MicroMsg.ShakeFriendService", "empty shake get list");
+          this.JmD.e(null, 3L);
+          AppMethodBeat.o(28102);
+          return;
+        }
+        this.JmD.e(paramString, 1L);
+        AppMethodBeat.o(28102);
+        return;
+        if ((paramInt2 == 0) && (paramInt1 == 0)) {
+          break;
+        }
+      } while (this.JmD == null);
+      this.JmD.a(1251, null, 2L);
+      AppMethodBeat.o(28102);
+      return;
+    } while (this.JmD == null);
+    AppMethodBeat.o(28102);
+    throw null;
   }
   
   public final void pause()
   {
     AppMethodBeat.i(28099);
-    if (this.iOv != null) {
-      this.iOv.c(this.gmA);
+    if (this.lEL != null) {
+      this.lEL.b(this.iQJ);
     }
     AppMethodBeat.o(28099);
   }
@@ -213,14 +194,14 @@ public final class c
   public final void reset()
   {
     AppMethodBeat.i(28098);
-    if (this.DgK != null) {
-      bg.azz().a(this.DgK);
+    if (this.Jmq != null) {
+      bh.aGY().a(this.Jmq);
     }
-    if (this.DgL != null) {
-      bg.azz().a(this.DgL);
+    if (this.Jmr != null) {
+      bh.aGY().a(this.Jmr);
     }
-    if ((this.DgN != null) && (this.DgO != null)) {
-      this.DgN.removeCallbacks(this.DgO);
+    if ((this.Jmt != null) && (this.Jmu != null)) {
+      this.Jmt.removeCallbacks(this.Jmu);
     }
     AppMethodBeat.o(28098);
   }
@@ -228,8 +209,8 @@ public final class c
   public final void resume()
   {
     AppMethodBeat.i(28100);
-    if (this.iOv != null) {
-      this.iOv.a(this.gmA, true);
+    if (this.lEL != null) {
+      this.lEL.a(this.iQJ, true);
     }
     AppMethodBeat.o(28100);
   }
@@ -239,21 +220,21 @@ public final class c
     AppMethodBeat.i(28096);
     reset();
     init();
-    this.DgK = new b(this.gmv, this.gmu, this.DgH, this.DgG, "", "");
-    bg.azz().a(this.DgK, 0);
-    if (!this.DgI)
+    this.Jmq = new b(this.iQE, this.iQD, this.Jmn, this.Jmm, "", "");
+    bh.aGY().a(this.Jmq, 0);
+    if (!this.Jmo)
     {
-      if (this.iOv == null) {
-        eTP();
+      if (this.lEL == null) {
+        cFO();
       }
-      this.iOv.b(this.gmA, true);
+      this.lEL.b(this.iQJ, true);
     }
     AppMethodBeat.o(28096);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.b.c
  * JD-Core Version:    0.7.0.1
  */

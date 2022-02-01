@@ -10,7 +10,9 @@ import com.tencent.mm.chatroom.d.z;
 import com.tencent.mm.chatroom.plugin.PluginChatroomUI;
 import com.tencent.mm.chatroom.storage.c;
 import com.tencent.mm.chatroom.storage.d;
-import com.tencent.mm.g.a.nt;
+import com.tencent.mm.f.a.oq;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.api.g;
 import com.tencent.mm.plugin.appbrand.service.r;
 import com.tencent.mm.pluginsdk.ui.span.i;
 import com.tencent.mm.sdk.event.EventCenter;
@@ -28,14 +30,9 @@ class URISpanHandlerSet$TodoSystemMsgUrlSpanHandler
     super(paramURISpanHandlerSet);
   }
   
-  final int[] Xp()
-  {
-    return new int[] { 54 };
-  }
-  
   final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
   {
-    AppMethodBeat.i(231454);
+    AppMethodBeat.i(290839);
     if (paramu.type == 54) {
       Log.i("MicroMsg.URISpanHandlerSet", "handleClickTodoSystemMsgUrl");
     }
@@ -52,7 +49,7 @@ class URISpanHandlerSet$TodoSystemMsgUrlSpanHandler
         ((Uri)localObject1).getQueryParameter("related_msgid");
         str = ((Uri)localObject1).getQueryParameter("username");
         localObject2 = ((Uri)localObject1).getQueryParameter("path");
-        localObject1 = ((PluginChatroomUI)com.tencent.mm.kernel.g.ah(PluginChatroomUI.class)).getGroupTodoStorage().ai(paramView, parami);
+        localObject1 = ((PluginChatroomUI)h.ag(PluginChatroomUI.class)).getGroupTodoStorage().am(paramView, parami);
         if (!Util.isEqual("roomannouncement@app.origin", str)) {
           continue;
         }
@@ -65,10 +62,10 @@ class URISpanHandlerSet$TodoSystemMsgUrlSpanHandler
         if (!bool1) {
           break label396;
         }
-        localObject2 = new nt();
-        ((nt)localObject2).dTT.op = 3;
-        ((nt)localObject2).dTT.dOe = ((c)localObject1).field_roomname;
-        ((nt)localObject2).dTT.dTU = parami;
+        localObject2 = new oq();
+        ((oq)localObject2).fNv.op = 3;
+        ((oq)localObject2).fNv.fHp = ((c)localObject1).field_roomname;
+        ((oq)localObject2).fNv.fNw = parami;
         EventCenter.instance.asyncPublish((IEvent)localObject2, Looper.getMainLooper());
       }
       catch (Exception paramView)
@@ -77,7 +74,7 @@ class URISpanHandlerSet$TodoSystemMsgUrlSpanHandler
         String str;
         Object localObject2;
         boolean bool2;
-        com.tencent.mm.plugin.appbrand.api.g localg;
+        g localg;
         Log.e("MicroMsg.URISpanHandlerSet", "handle click link error: %s, url: %s", new Object[] { paramView.getMessage(), paramu.url });
         continue;
         int i = 0;
@@ -88,23 +85,23 @@ class URISpanHandlerSet$TodoSystemMsgUrlSpanHandler
         i = 1;
         z.a(paramView, i, 2, parami, str);
         Log.i("MicroMsg.URISpanHandlerSet", "handleClickTodoSystemMsgUrl stoTodo(%s %s %s) update finish(%s)", new Object[] { Boolean.valueOf(Util.isNullOrNil(parami)), Boolean.valueOf(Util.isNullOrNil(str)), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-        AppMethodBeat.o(231454);
+        AppMethodBeat.o(290839);
         return true;
-        localg = new com.tencent.mm.plugin.appbrand.api.g();
+        localg = new g();
         localg.username = str;
-        localg.kHw = ((String)localObject2);
+        localg.nBq = ((String)localObject2);
         localg.scene = 1160;
-        localg.kHG = paramView;
+        localg.fWY = paramView;
         if (localObject1 != null)
         {
-          localg.cyr = ((c)localObject1).field_shareKey;
-          localg.cyq = ((c)localObject1).field_shareName;
+          localg.cwU = ((c)localObject1).field_shareKey;
+          localg.cwT = ((c)localObject1).field_shareName;
         }
-        ((r)com.tencent.mm.kernel.g.af(r.class)).a(URISpanHandlerSet.a(this.dnW), localg);
+        ((r)h.ae(r.class)).a(URISpanHandlerSet.a(this.fgB), localg);
       }
       else
       {
-        AppMethodBeat.o(231454);
+        AppMethodBeat.o(290839);
         return false;
         bool1 = false;
       }
@@ -116,7 +113,12 @@ class URISpanHandlerSet$TodoSystemMsgUrlSpanHandler
     return false;
   }
   
-  final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
+  final int[] abR()
+  {
+    return new int[] { 54 };
+  }
+  
+  final com.tencent.mm.pluginsdk.ui.applet.u hi(String paramString)
   {
     AppMethodBeat.i(179563);
     if (paramString.trim().toLowerCase().startsWith("weixin://roomtoolstodo?"))
@@ -131,7 +133,7 @@ class URISpanHandlerSet$TodoSystemMsgUrlSpanHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.app.plugin.URISpanHandlerSet.TodoSystemMsgUrlSpanHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package com.tencent.mm.plugin.editor.model.nativenote.c;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.Layout;
 import android.text.SpannableStringBuilder;
@@ -12,7 +10,10 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.editor.d.e;
 import com.tencent.mm.plugin.editor.model.a.j;
 import com.tencent.mm.plugin.editor.model.nativenote.manager.WXRTEditText;
 import com.tencent.mm.sdk.platformtools.ClipboardHelper;
@@ -29,42 +30,42 @@ public final class e
   implements a.a
 {
   public static boolean mHasInit = false;
-  public static volatile e qSp = null;
+  public static volatile e uuv = null;
   public MMHandler mHandler = null;
   public int mScreenHeight = 0;
   public int mScreenWidth = 0;
-  public int qSA = 0;
-  public int[] qSB = null;
-  public int[] qSC = null;
-  public int[] qSD = null;
-  public int[] qSE = null;
-  public PopupWindow qSF = null;
-  public PopupWindow qSG = null;
-  public PopupWindow qSH = null;
-  public PopupWindow qSI = null;
-  public com.tencent.mm.plugin.editor.model.nativenote.b.a qSJ = null;
-  public d qSK = null;
-  public b qSL = null;
-  public MTimerHandler qSM = null;
-  public MTimerHandler qSN = null;
-  public TextView qSO = null;
-  public TextView qSP = null;
-  public TextView qSQ = null;
-  public TextView qSR = null;
-  public TextView qSS = null;
-  public TextView qST = null;
-  public TextView qSU = null;
-  public TextView qSV = null;
-  public boolean qSq = true;
-  public int qSr = 0;
-  public int qSs = 0;
-  public int qSt = 14;
-  public int qSu = 0;
-  public int qSv = 0;
-  public int qSw = 0;
-  public int qSx = 0;
-  public int qSy = 0;
-  public int qSz = 0;
+  public int uuA = 0;
+  public int uuB = 0;
+  public int uuC = 0;
+  public int uuD = 0;
+  public int uuE = 0;
+  public int uuF = 0;
+  public int uuG = 0;
+  public int[] uuH = null;
+  public int[] uuI = null;
+  public int[] uuJ = null;
+  public int[] uuK = null;
+  public PopupWindow uuL = null;
+  public PopupWindow uuM = null;
+  public PopupWindow uuN = null;
+  public PopupWindow uuO = null;
+  public com.tencent.mm.plugin.editor.model.nativenote.b.a uuP = null;
+  public d uuQ = null;
+  public b uuR = null;
+  public MTimerHandler uuS = null;
+  public MTimerHandler uuT = null;
+  public TextView uuU = null;
+  public TextView uuV = null;
+  public TextView uuW = null;
+  public TextView uuX = null;
+  public TextView uuY = null;
+  public TextView uuZ = null;
+  public boolean uuw = true;
+  public int uux = 0;
+  public int uuy = 0;
+  public int uuz = 14;
+  public TextView uva = null;
+  public TextView uvb = null;
   
   private e()
   {
@@ -76,33 +77,33 @@ public final class e
     return (mHasInit) && (paramArrayOfInt != null) && (paramArrayOfInt.length == 2) && (paramArrayOfInt[0] != -1) && (paramArrayOfInt[1] != -1);
   }
   
-  private boolean FC(int paramInt)
+  private boolean Jk(int paramInt)
   {
     boolean bool = true;
     AppMethodBeat.i(181884);
-    if ((this.qSL != null) && (this.qSL.qcr == paramInt) && (this.qSL.getType() == 1))
+    if ((this.uuR != null) && (this.uuR.viewType == paramInt) && (this.uuR.getType() == 1))
     {
       AppMethodBeat.o(181884);
       return false;
     }
-    if ((paramInt == 2) && (this.qSF != null))
+    if ((paramInt == 2) && (this.uuL != null))
     {
-      this.qSF.dismiss();
-      Y(2, -1, -1);
+      this.uuL.dismiss();
+      Z(2, -1, -1);
     }
     for (;;)
     {
       AppMethodBeat.o(181884);
       return bool;
-      if ((paramInt == 3) && (this.qSG != null))
+      if ((paramInt == 3) && (this.uuM != null))
       {
-        this.qSG.dismiss();
-        Y(3, -1, -1);
+        this.uuM.dismiss();
+        Z(3, -1, -1);
       }
-      else if ((paramInt == 4) && (this.qSH != null))
+      else if ((paramInt == 4) && (this.uuN != null))
       {
-        this.qSH.dismiss();
-        Y(4, -1, -1);
+        this.uuN.dismiss();
+        Z(4, -1, -1);
       }
       else
       {
@@ -111,7 +112,7 @@ public final class e
     }
   }
   
-  private void Y(int paramInt1, int paramInt2, int paramInt3)
+  private void Z(int paramInt1, int paramInt2, int paramInt3)
   {
     if (!mHasInit) {}
     do
@@ -126,56 +127,17 @@ public final class e
           default: 
             return;
           }
-        } while ((this.qSC == null) || (this.qSC.length != 2));
-        this.qSC[0] = paramInt2;
-        this.qSC[1] = paramInt3;
+        } while ((this.uuI == null) || (this.uuI.length != 2));
+        this.uuI[0] = paramInt2;
+        this.uuI[1] = paramInt3;
         return;
-      } while ((this.qSD == null) || (this.qSD.length != 2));
-      this.qSD[0] = paramInt2;
-      this.qSD[1] = paramInt3;
+      } while ((this.uuJ == null) || (this.uuJ.length != 2));
+      this.uuJ[0] = paramInt2;
+      this.uuJ[1] = paramInt3;
       return;
-    } while ((this.qSE == null) || (this.qSE.length != 2));
-    this.qSE[0] = paramInt2;
-    this.qSE[1] = paramInt3;
-  }
-  
-  private int Z(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(181892);
-    if (!mHasInit)
-    {
-      AppMethodBeat.o(181892);
-      return 0;
-    }
-    boolean bool;
-    switch (paramInt1)
-    {
-    default: 
-      AppMethodBeat.o(181892);
-      return 0;
-    case 2: 
-      bool = B(paramInt2, paramInt3, paramInt2, paramInt3);
-    }
-    while (bool)
-    {
-      AppMethodBeat.o(181892);
-      return 3;
-      if ((this.qSK == null) || (paramInt2 > this.qSK.endPos) || ((paramInt2 == this.qSK.endPos) && (paramInt3 >= this.qSK.qSo)))
-      {
-        AppMethodBeat.o(181892);
-        return 1;
-      }
-      bool = B(paramInt2, paramInt3, this.qSK.endPos, this.qSK.qSo);
-      continue;
-      if ((this.qSK == null) || (paramInt2 < this.qSK.bNu) || ((paramInt2 == this.qSK.bNu) && (paramInt3 <= this.qSK.startOffset)))
-      {
-        AppMethodBeat.o(181892);
-        return 1;
-      }
-      bool = B(this.qSK.bNu, this.qSK.startOffset, paramInt2, paramInt3);
-    }
-    AppMethodBeat.o(181892);
-    return 2;
+    } while ((this.uuK == null) || (this.uuK.length != 2));
+    this.uuK[0] = paramInt2;
+    this.uuK[1] = paramInt3;
   }
   
   private static SpannableStringBuilder a(j paramj, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString, boolean paramBoolean3)
@@ -187,7 +149,7 @@ public final class e
       AppMethodBeat.o(181902);
       return null;
     }
-    Object localObject = com.tencent.mm.plugin.editor.model.nativenote.a.a.alS(paramj.content);
+    Object localObject = com.tencent.mm.plugin.editor.model.nativenote.a.a.atL(paramj.content);
     if (localObject == null)
     {
       Log.e("EditorSelectManager", "processTextDataItem: spannedText is null");
@@ -219,7 +181,7 @@ public final class e
         paramInt1 = paramInt2;
         if (!Util.isNullOrNil(str))
         {
-          Spanned localSpanned = com.tencent.mm.plugin.editor.model.nativenote.a.a.alS(str);
+          Spanned localSpanned = com.tencent.mm.plugin.editor.model.nativenote.a.a.atL(str);
           paramInt1 = paramInt2;
           if (localSpanned != null) {
             paramInt1 = paramInt2 + localSpanned.length();
@@ -228,13 +190,13 @@ public final class e
         paramj.content = (com.tencent.mm.plugin.editor.model.nativenote.a.b.a(paramString) + str + com.tencent.mm.plugin.editor.model.nativenote.a.b.a((Spanned)localObject));
       }
       if (paramBoolean3) {
-        paramj.qPA = true;
+        paramj.urG = true;
       }
-      for (paramj.qPC = paramInt1;; paramj.qPC = -1)
+      for (paramj.urI = paramInt1;; paramj.urI = -1)
       {
         AppMethodBeat.o(181902);
         return localSpannableStringBuilder;
-        paramj.qPA = false;
+        paramj.urG = false;
       }
     }
   }
@@ -243,8 +205,8 @@ public final class e
   {
     int i = 2;
     AppMethodBeat.i(181900);
-    d locald = cDV();
-    cDY();
+    d locald = cSB();
+    cSE();
     int j = locald.getSelectType();
     if ((j != 1) && (j != 2))
     {
@@ -252,7 +214,7 @@ public final class e
       AppMethodBeat.o(181900);
       return null;
     }
-    Object localObject = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().Fw(locald.bNu);
+    Object localObject = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().Jd(locald.bPt);
     if (localObject == null)
     {
       Log.e("EditorSelectManager", "getAndProcessSelectedDataInSingleSelect: item is null");
@@ -264,54 +226,54 @@ public final class e
     {
       if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0))
       {
-        paramString = a((j)localObject, locald.startOffset, locald.qSo, false, false, "", true);
-        com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().a(paramArrayList, 0, locald.bNu, locald.startOffset, locald.qSo);
-        com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().fx(locald.bNu, locald.bNu + paramArrayList.size() + 1);
+        paramString = a((j)localObject, locald.lPo, locald.uuu, false, false, "", true);
+        com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().a(paramArrayList, 0, locald.bPt, locald.lPo, locald.uuu);
+        com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().fU(locald.bPt, locald.bPt + paramArrayList.size() + 1);
         paramArrayList = paramString;
       }
       for (;;)
       {
         AppMethodBeat.o(181900);
         return paramArrayList;
-        paramString = a((j)localObject, locald.startOffset, locald.qSo, false, paramBoolean, paramString, true);
-        if (this.qSJ != null) {
-          this.qSJ.Fr(locald.bNu);
+        paramString = a((j)localObject, locald.lPo, locald.uuu, false, paramBoolean, paramString, true);
+        if (this.uuP != null) {
+          this.uuP.IY(locald.bPt);
         }
         paramArrayList = paramString;
         if (paramBoolean)
         {
-          com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().cDy();
+          com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().cSd();
           paramArrayList = paramString;
         }
       }
     }
     if ((j == 1) && (paramBoolean))
     {
-      if (locald.startOffset == 0) {
+      if (locald.lPo == 0) {
         i = 1;
       }
       if ((paramArrayList != null) && (paramArrayList.size() > 0)) {
-        break label420;
+        break label419;
       }
       if (Util.isNullOrNil(paramString)) {
-        break label411;
+        break label410;
       }
       paramArrayList = new ArrayList();
       localObject = new j();
       ((j)localObject).content = paramString;
-      ((j)localObject).qPA = false;
-      ((j)localObject).qPC = -1;
+      ((j)localObject).urG = false;
+      ((j)localObject).urI = -1;
       paramArrayList.add(localObject);
     }
-    label411:
-    label420:
+    label410:
+    label419:
     for (;;)
     {
-      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().a(paramArrayList, i, locald.bNu, locald.startOffset, locald.qSo);
-      paramString = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo();
-      i = locald.bNu;
-      j = locald.bNu;
-      paramString.fx(i - 1, paramArrayList.size() + j + 1);
+      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().a(paramArrayList, i, locald.bPt, locald.lPo, locald.uuu);
+      paramString = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT();
+      i = locald.bPt;
+      j = locald.bPt;
+      paramString.fU(i - 1, paramArrayList.size() + j + 1);
       paramArrayList = localSpannableStringBuilder;
       break;
       AppMethodBeat.o(181900);
@@ -321,40 +283,40 @@ public final class e
   
   private void a(int paramInt1, RecyclerView paramRecyclerView, View paramView, int paramInt2)
   {
-    AppMethodBeat.i(181886);
+    AppMethodBeat.i(187639);
     if ((!mHasInit) || (paramRecyclerView == null))
     {
-      AppMethodBeat.o(181886);
+      AppMethodBeat.o(187639);
       return;
     }
-    paramView = f.dG(paramView);
+    paramView = f.ee(paramView);
     if (paramView == null)
     {
-      FC(paramInt1);
-      AppMethodBeat.o(181886);
+      Jk(paramInt1);
+      AppMethodBeat.o(187639);
       return;
     }
-    if (paramView.qSl != null) {
-      paramView = paramView.qSl;
+    if (paramView.uur != null) {
+      paramView = paramView.uur;
     }
     for (;;)
     {
       if (paramView == null)
       {
-        FC(paramInt1);
-        AppMethodBeat.o(181886);
+        Jk(paramInt1);
+        AppMethodBeat.o(187639);
         return;
-        if ((paramView.qSm != null) && (paramView.qSn != null))
+        if ((paramView.uus != null) && (paramView.uut != null))
         {
           if (paramInt2 == 0)
           {
-            paramView = paramView.qSm;
+            paramView = paramView.uus;
             paramInt2 = 0;
             continue;
           }
           if (paramInt2 == 1)
           {
-            paramView = paramView.qSn;
+            paramView = paramView.uut;
             paramInt2 = 0;
           }
         }
@@ -364,15 +326,15 @@ public final class e
         Object localObject = paramView.getText();
         if ((localObject == null) || (paramInt2 < 0) || (paramInt2 > ((Editable)localObject).length()))
         {
-          FC(paramInt1);
-          AppMethodBeat.o(181886);
+          Jk(paramInt1);
+          AppMethodBeat.o(187639);
           return;
         }
         localObject = paramView.getLayout();
         if (localObject == null)
         {
-          FC(paramInt1);
-          AppMethodBeat.o(181886);
+          Jk(paramInt1);
+          AppMethodBeat.o(187639);
           return;
         }
         float f4 = ((Layout)localObject).getPrimaryHorizontal(paramInt2) + paramView.getPaddingLeft();
@@ -383,10 +345,10 @@ public final class e
         boolean bool;
         if (paramView.getEditTextType() != 0)
         {
-          f3 = f3 + paramView.getHeight() - this.qSr;
+          f3 = f3 + paramView.getHeight() - this.uux;
           if (paramInt1 == 3)
           {
-            f1 = f4 + this.qSA;
+            f1 = f4 + this.uuG;
             f2 = f3;
           }
         }
@@ -403,23 +365,23 @@ public final class e
         for (;;)
         {
           if (!bool) {
-            FC(paramInt1);
+            Jk(paramInt1);
           }
-          AppMethodBeat.o(181886);
+          AppMethodBeat.o(187639);
           return;
           f1 = f4;
           f2 = f3;
           if (paramInt1 != 4) {
             break;
           }
-          f1 = f4 - this.qSA;
+          f1 = f4 - this.uuG;
           f2 = f3;
           break;
-          bool = a(2, paramRecyclerView, this.qSF, (int)(f1 + localObject[0] - this.qSz), (int)(localObject[1] + f2));
+          bool = a(2, paramRecyclerView, this.uuL, (int)(f1 + localObject[0] - this.uuF), (int)(localObject[1] + f2));
           continue;
-          bool = a(3, paramRecyclerView, this.qSG, (int)(f1 + localObject[0] - this.qSG.getWidth()), (int)(localObject[1] + f2));
+          bool = a(3, paramRecyclerView, this.uuM, (int)(f1 + localObject[0] - this.uuM.getWidth()), (int)(localObject[1] + f2));
           continue;
-          bool = a(4, paramRecyclerView, this.qSH, (int)(f1 + localObject[0]), (int)(localObject[1] + f2));
+          bool = a(4, paramRecyclerView, this.uuN, (int)(f1 + localObject[0]), (int)(localObject[1] + f2));
         }
       }
       paramView = null;
@@ -428,41 +390,80 @@ public final class e
   
   private boolean a(int paramInt1, RecyclerView paramRecyclerView, PopupWindow paramPopupWindow, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(181887);
+    AppMethodBeat.i(187640);
     if ((!mHasInit) || (paramRecyclerView == null) || (paramPopupWindow == null))
     {
-      AppMethodBeat.o(181887);
+      AppMethodBeat.o(187640);
       return false;
     }
-    if ((paramInt3 < j(paramRecyclerView)) || (paramInt3 > this.mScreenHeight - cDU()))
+    if ((paramInt3 < h(paramRecyclerView)) || (paramInt3 > this.mScreenHeight - cSA()))
     {
-      AppMethodBeat.o(181887);
+      AppMethodBeat.o(187640);
       return false;
     }
     if (paramPopupWindow.isShowing())
     {
       paramPopupWindow.update(paramInt2, paramInt3, -1, -1, false);
-      Y(paramInt1, paramInt2, paramInt3);
+      Z(paramInt1, paramInt2, paramInt3);
     }
     for (;;)
     {
       if (paramInt1 == 2)
       {
-        cEd();
-        this.qSN.startTimer(3000L, 0L);
+        cSJ();
+        this.uuT.startTimer(3000L, 0L);
       }
-      AppMethodBeat.o(181887);
+      AppMethodBeat.o(187640);
       return true;
       paramPopupWindow.showAtLocation(paramRecyclerView, 0, paramInt2, paramInt3);
-      Y(paramInt1, paramInt2, paramInt3);
+      Z(paramInt1, paramInt2, paramInt3);
     }
+  }
+  
+  private int aa(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(181892);
+    if (!mHasInit)
+    {
+      AppMethodBeat.o(181892);
+      return 0;
+    }
+    boolean bool;
+    switch (paramInt1)
+    {
+    default: 
+      AppMethodBeat.o(181892);
+      return 0;
+    case 2: 
+      bool = F(paramInt2, paramInt3, paramInt2, paramInt3);
+    }
+    while (bool)
+    {
+      AppMethodBeat.o(181892);
+      return 3;
+      if ((this.uuQ == null) || (paramInt2 > this.uuQ.endPos) || ((paramInt2 == this.uuQ.endPos) && (paramInt3 >= this.uuQ.uuu)))
+      {
+        AppMethodBeat.o(181892);
+        return 1;
+      }
+      bool = F(paramInt2, paramInt3, this.uuQ.endPos, this.uuQ.uuu);
+      continue;
+      if ((this.uuQ == null) || (paramInt2 < this.uuQ.bPt) || ((paramInt2 == this.uuQ.bPt) && (paramInt3 <= this.uuQ.lPo)))
+      {
+        AppMethodBeat.o(181892);
+        return 1;
+      }
+      bool = F(this.uuQ.bPt, this.uuQ.lPo, paramInt2, paramInt3);
+    }
+    AppMethodBeat.o(181892);
+    return 2;
   }
   
   private ArrayList<com.tencent.mm.plugin.editor.model.a.a> b(boolean paramBoolean, ArrayList<com.tencent.mm.plugin.editor.model.a.a> paramArrayList, String paramString)
   {
     AppMethodBeat.i(181901);
-    d locald = cDV();
-    cDY();
+    d locald = cSB();
+    cSE();
     ArrayList localArrayList = new ArrayList();
     if (locald.getSelectType() != 3)
     {
@@ -470,28 +471,28 @@ public final class e
       AppMethodBeat.o(181901);
       return null;
     }
-    int i = locald.bNu;
+    int i = locald.bPt;
     int j = locald.endPos;
-    if (j >= locald.bNu)
+    if (j >= locald.bPt)
     {
-      Object localObject = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().Fw(j);
+      Object localObject = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().Jd(j);
       SpannableStringBuilder localSpannableStringBuilder;
       j localj;
       if (localObject != null) {
         if ((j == locald.endPos) && (((com.tencent.mm.plugin.editor.model.a.a)localObject).getType() == 1))
         {
           localObject = (j)localObject;
-          localSpannableStringBuilder = a((j)localObject, 0, locald.qSo, false, paramBoolean, "", false);
+          localSpannableStringBuilder = a((j)localObject, 0, locald.uuu, false, paramBoolean, "", false);
           if (!Util.isNullOrNil(localSpannableStringBuilder))
           {
             localj = new j();
             localj.content = com.tencent.mm.plugin.editor.model.nativenote.a.b.a(localSpannableStringBuilder);
-            localj.qPC = -1;
-            localj.qPA = false;
+            localj.urI = -1;
+            localj.urG = false;
             localArrayList.add(localj);
           }
           if ((paramBoolean) && (Util.isNullOrNil(((j)localObject).content))) {
-            com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().ae(j, true);
+            com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().ae(j, true);
           }
         }
       }
@@ -499,20 +500,20 @@ public final class e
       {
         j -= 1;
         break;
-        if ((j == locald.bNu) && (((com.tencent.mm.plugin.editor.model.a.a)localObject).getType() == 1))
+        if ((j == locald.bPt) && (((com.tencent.mm.plugin.editor.model.a.a)localObject).getType() == 1))
         {
           localObject = (j)localObject;
-          localSpannableStringBuilder = a((j)localObject, locald.startOffset, 0, true, paramBoolean, "", false);
+          localSpannableStringBuilder = a((j)localObject, locald.lPo, 0, true, paramBoolean, "", false);
           if (!Util.isNullOrNil(localSpannableStringBuilder))
           {
             localj = new j();
             localj.content = com.tencent.mm.plugin.editor.model.nativenote.a.b.a(localSpannableStringBuilder);
-            localj.qPC = -1;
-            localj.qPA = false;
+            localj.urI = -1;
+            localj.urG = false;
             localArrayList.add(localj);
           }
           if ((paramBoolean) && (Util.isNullOrNil(((j)localObject).content))) {
-            com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().ae(j, true);
+            com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().ae(j, true);
           } else {
             i += 1;
           }
@@ -521,7 +522,7 @@ public final class e
         {
           localArrayList.add(com.tencent.mm.plugin.editor.b.a((com.tencent.mm.plugin.editor.model.a.a)localObject));
           if (paramBoolean) {
-            com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().ae(j, true);
+            com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().ae(j, true);
           }
         }
       }
@@ -531,9 +532,9 @@ public final class e
       j = i + 1;
       if ((paramArrayList != null) && (paramArrayList.size() > 0))
       {
-        com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().b(i, paramArrayList);
+        com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().b(i, paramArrayList);
         j = paramArrayList.size() + i;
-        com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().fx(i - 1, j);
+        com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().fU(i - 1, j);
       }
     }
     else
@@ -547,40 +548,45 @@ public final class e
     for (;;)
     {
       paramArrayList.content = paramString;
-      paramArrayList.qPA = false;
-      paramArrayList.qPC = -1;
-      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().a(i, paramArrayList);
+      paramArrayList.urG = false;
+      paramArrayList.urI = -1;
+      com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().a(i, paramArrayList);
       break;
       paramString = "";
     }
   }
   
-  public static e cDT()
+  private boolean c(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(181865);
-    if (qSp == null) {}
-    try
+    AppMethodBeat.i(187643);
+    if ((!mHasInit) || (paramRecyclerView == null) || (this.uuO == null))
     {
-      if (qSp == null) {
-        qSp = new e();
-      }
-      e locale = qSp;
-      AppMethodBeat.o(181865);
-      return locale;
+      AppMethodBeat.o(187643);
+      return false;
     }
-    finally
+    if ((paramInt2 < h(paramRecyclerView)) || (paramInt2 > this.mScreenHeight - cSA()))
     {
-      AppMethodBeat.o(181865);
+      AppMethodBeat.o(187643);
+      return false;
+    }
+    if (this.uuO.isShowing()) {
+      this.uuO.update(paramInt1, paramInt2, -1, -1, false);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(187643);
+      return true;
+      this.uuO.showAtLocation(paramRecyclerView, 0, paramInt1, paramInt2);
     }
   }
   
-  private int cDU()
+  private int cSA()
   {
     AppMethodBeat.i(181867);
-    if (this.qSJ != null)
+    if (this.uuP != null)
     {
-      int i = this.qSJ.cCE();
-      int j = this.qSJ.cCF();
+      int i = this.uuP.cRj();
+      int j = this.uuP.cRk();
       AppMethodBeat.o(181867);
       return i + j;
     }
@@ -588,34 +594,34 @@ public final class e
     return 0;
   }
   
-  private void cDW()
+  private void cSC()
   {
     AppMethodBeat.i(181871);
-    B(-1, -1, -1, -1);
+    F(-1, -1, -1, -1);
     AppMethodBeat.o(181871);
   }
   
-  private void cDX()
+  private void cSD()
   {
     AppMethodBeat.i(181873);
-    if (this.qSJ != null) {
-      this.qSJ.cCD();
+    if (this.uuP != null) {
+      this.uuP.cRi();
     }
     AppMethodBeat.o(181873);
   }
   
-  private void cEd()
+  private void cSJ()
   {
     AppMethodBeat.i(181888);
-    if (this.qSN == null)
+    if (this.uuT == null)
     {
-      this.qSN = new MTimerHandler(new MTimerHandler.CallBack()
+      this.uuT = new MTimerHandler(new MTimerHandler.CallBack()
       {
         public final boolean onTimerExpired()
         {
           AppMethodBeat.i(181858);
           if ((e.this.getSelectType() == 1) && (e.b(e.this))) {
-            e.this.cEa();
+            e.this.cSG();
           }
           AppMethodBeat.o(181858);
           return true;
@@ -624,29 +630,29 @@ public final class e
       AppMethodBeat.o(181888);
       return;
     }
-    this.qSN.stopTimer();
+    this.uuT.stopTimer();
     AppMethodBeat.o(181888);
   }
   
-  private void cEe()
+  private void cSK()
   {
     AppMethodBeat.i(181893);
-    if (this.qSL == null)
+    if (this.uuR == null)
     {
-      this.qSL = new b();
+      this.uuR = new b();
       AppMethodBeat.o(181893);
       return;
     }
-    this.qSL.reset();
+    this.uuR.reset();
     AppMethodBeat.o(181893);
   }
   
-  private void cEf()
+  private void cSL()
   {
     AppMethodBeat.i(181894);
-    if (this.qSM == null)
+    if (this.uuS == null)
     {
-      this.qSM = new MTimerHandler(new MTimerHandler.CallBack()
+      this.uuS = new MTimerHandler(new MTimerHandler.CallBack()
       {
         public final boolean onTimerExpired()
         {
@@ -655,26 +661,26 @@ public final class e
           RecyclerView localRecyclerView = e.a(e.this);
           int i;
           int j;
-          if ((e.c(e.this) != null) && (e.c(e.this).qSe < e.a(e.this, localRecyclerView)))
+          if ((e.c(e.this) != null) && (e.c(e.this).uuk < e.a(e.this, localRecyclerView)))
           {
             i = 1;
-            if ((e.c(e.this) == null) || (e.c(e.this).qSe <= e.d(e.this))) {
+            if ((e.c(e.this) == null) || (e.c(e.this).uuk <= e.d(e.this))) {
               break label206;
             }
             j = 1;
             label89:
-            if ((!e.WA()) || (localRecyclerView == null) || (e.c(e.this) == null) || (e.c(e.this).getType() != 1) || ((i == 0) && (j == 0))) {
+            if ((!e.abi()) || (localRecyclerView == null) || (e.c(e.this) == null) || (e.c(e.this).getType() != 1) || ((i == 0) && (j == 0))) {
               break label256;
             }
             if ((i == 0) || (!localRecyclerView.canScrollVertically(-1))) {
               break label211;
             }
-            if (e.c(e.this).qcr == 3) {
+            if (e.c(e.this).viewType == 3) {
               e.e(e.this);
             }
             e.f(e.this);
-            e.this.cEc();
-            e.this.cEa();
+            e.this.cSI();
+            e.this.cSG();
             localRecyclerView.a(0, -300, null);
           }
           label256:
@@ -691,8 +697,8 @@ public final class e
             if ((j != 0) && (localRecyclerView.canScrollVertically(1)))
             {
               e.f(e.this);
-              e.this.cEc();
-              e.this.cEa();
+              e.this.cSI();
+              e.this.cSG();
               localRecyclerView.a(0, 300, null);
               continue;
               if (e.g(e.this) != null) {
@@ -705,23 +711,23 @@ public final class e
       AppMethodBeat.o(181894);
       return;
     }
-    this.qSM.stopTimer();
+    this.uuS.stopTimer();
     AppMethodBeat.o(181894);
   }
   
-  private int cEg()
+  private int cSM()
   {
     AppMethodBeat.i(181896);
     int j = 0;
-    if (this.qSJ != null) {
-      j = this.qSJ.cCE();
+    if (this.uuP != null) {
+      j = this.uuP.cRj();
     }
     int i = j;
     if (j == 0)
     {
       i = j;
-      if (this.qSJ != null) {
-        i = this.qSJ.cCF();
+      if (this.uuP != null) {
+        i = this.uuP.cRk();
       }
     }
     j = i;
@@ -733,26 +739,26 @@ public final class e
     return i - j;
   }
   
-  private void cEh()
+  private void cSN()
   {
     AppMethodBeat.i(181898);
-    if (this.qSJ != null) {
-      this.qSJ.cCC();
+    if (this.uuP != null) {
+      this.uuP.cRh();
     }
     AppMethodBeat.o(181898);
   }
   
-  private boolean cEj()
+  private boolean cSP()
   {
     AppMethodBeat.i(181903);
-    boolean bool1 = o(this.qSO, false);
-    boolean bool2 = o(this.qSP, false);
-    boolean bool3 = o(this.qSQ, cEk());
-    boolean bool4 = o(this.qSR, cEl());
-    boolean bool5 = o(this.qSS, cEm());
-    boolean bool6 = o(this.qST, cEn());
-    boolean bool7 = o(this.qSU, cEo());
-    boolean bool8 = o(this.qSV, cEp());
+    boolean bool1 = o(this.uuU, false);
+    boolean bool2 = o(this.uuV, false);
+    boolean bool3 = o(this.uuW, cSQ());
+    boolean bool4 = o(this.uuX, cSR());
+    boolean bool5 = o(this.uuY, cSS());
+    boolean bool6 = o(this.uuZ, cST());
+    boolean bool7 = o(this.uva, cSU());
+    boolean bool8 = o(this.uvb, cSV());
     if ((bool1) || (bool2) || (bool3) || (bool4) || (bool5) || (bool6) || (bool7) || (bool8))
     {
       AppMethodBeat.o(181903);
@@ -762,7 +768,7 @@ public final class e
     return false;
   }
   
-  private boolean cEk()
+  private boolean cSQ()
   {
     AppMethodBeat.i(181905);
     if (getSelectType() != 1)
@@ -770,8 +776,8 @@ public final class e
       AppMethodBeat.o(181905);
       return false;
     }
-    com.tencent.mm.plugin.editor.model.a.a locala = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().Fw(this.qSK.bNu);
-    if ((locala != null) && ((com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().size() > 1) || (locala.getType() != 1) || (!Util.isNullOrNil(((j)locala).content))))
+    com.tencent.mm.plugin.editor.model.a.a locala = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().Jd(this.uuQ.bPt);
+    if ((locala != null) && ((com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().size() > 1) || (locala.getType() != 1) || (!Util.isNullOrNil(((j)locala).content))))
     {
       AppMethodBeat.o(181905);
       return true;
@@ -780,34 +786,34 @@ public final class e
     return false;
   }
   
-  private boolean cEl()
+  private boolean cSR()
   {
     AppMethodBeat.i(181906);
-    int i = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().cDz();
-    int j = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().cDA();
-    Object localObject = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().Fw(i);
-    com.tencent.mm.plugin.editor.model.a.a locala = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().Fw(j);
+    int i = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().cSe();
+    int j = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().cSf();
+    Object localObject = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().Jd(i);
+    com.tencent.mm.plugin.editor.model.a.a locala = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().Jd(j);
     if ((localObject == null) || (locala == null))
     {
       AppMethodBeat.o(181906);
       return false;
     }
-    if ((this.qSK != null) && (this.qSK.bNu == i) && (this.qSK.startOffset == 0) && (this.qSK.endPos == j)) {
+    if ((this.uuQ != null) && (this.uuQ.bPt == i) && (this.uuQ.lPo == 0) && (this.uuQ.endPos == j)) {
       if (locala.getType() == 1)
       {
-        localObject = com.tencent.mm.plugin.editor.model.nativenote.a.a.alS(((j)locala).content);
+        localObject = com.tencent.mm.plugin.editor.model.nativenote.a.a.atL(((j)locala).content);
         if (localObject == null)
         {
           AppMethodBeat.o(181906);
           return false;
         }
-        if (this.qSK.qSo == ((Spanned)localObject).length())
+        if (this.uuQ.uuu == ((Spanned)localObject).length())
         {
           AppMethodBeat.o(181906);
           return false;
         }
       }
-      else if ((locala.getType() != 1) && (this.qSK.qSo == 1))
+      else if ((locala.getType() != 1) && (this.uuQ.uuu == 1))
       {
         AppMethodBeat.o(181906);
         return false;
@@ -817,11 +823,11 @@ public final class e
     return true;
   }
   
-  private boolean cEm()
+  private boolean cSS()
   {
     boolean bool2 = true;
     AppMethodBeat.i(181907);
-    if (!this.qSq)
+    if (!this.uuw)
     {
       AppMethodBeat.o(181907);
       return false;
@@ -833,8 +839,8 @@ public final class e
       return false;
     }
     boolean bool1 = bool2;
-    if (this.qSJ != null) {
-      if (this.qSJ.cCG()) {
+    if (this.uuP != null) {
+      if (this.uuP.cRl()) {
         break label76;
       }
     }
@@ -846,11 +852,11 @@ public final class e
     }
   }
   
-  private boolean cEn()
+  private boolean cST()
   {
     AppMethodBeat.i(181908);
     int i = getSelectType();
-    if ((this.qSq) && ((i == 2) || (i == 3)))
+    if ((this.uuw) && ((i == 2) || (i == 3)))
     {
       AppMethodBeat.o(181908);
       return true;
@@ -859,7 +865,7 @@ public final class e
     return false;
   }
   
-  private boolean cEo()
+  private boolean cSU()
   {
     AppMethodBeat.i(181909);
     int i = getSelectType();
@@ -872,16 +878,16 @@ public final class e
     return false;
   }
   
-  private boolean cEp()
+  private boolean cSV()
   {
     AppMethodBeat.i(181910);
-    if ((!this.qSq) || (getSelectType() == 0))
+    if ((!this.uuw) || (getSelectType() == 0))
     {
       AppMethodBeat.o(181910);
       return false;
     }
     MMApplicationContext.getContext();
-    if (com.tencent.mm.plugin.editor.model.nativenote.manager.b.cDn() != 1)
+    if (com.tencent.mm.plugin.editor.model.nativenote.manager.b.cRS() != 1)
     {
       AppMethodBeat.o(181910);
       return true;
@@ -890,41 +896,53 @@ public final class e
     return false;
   }
   
-  private boolean d(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public static e cSy()
   {
-    AppMethodBeat.i(181889);
-    if ((!mHasInit) || (paramRecyclerView == null) || (this.qSI == null))
+    AppMethodBeat.i(181865);
+    if (uuv == null) {}
+    try
     {
-      AppMethodBeat.o(181889);
-      return false;
+      if (uuv == null) {
+        uuv = new e();
+      }
+      e locale = uuv;
+      AppMethodBeat.o(181865);
+      return locale;
     }
-    if ((paramInt2 < j(paramRecyclerView)) || (paramInt2 > this.mScreenHeight - cDU()))
+    finally
     {
-      AppMethodBeat.o(181889);
-      return false;
-    }
-    if (this.qSI.isShowing()) {
-      this.qSI.update(paramInt1, paramInt2, -1, -1, false);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(181889);
-      return true;
-      this.qSI.showAtLocation(paramRecyclerView, 0, paramInt1, paramInt2);
+      AppMethodBeat.o(181865);
     }
   }
   
   private RecyclerView getRecyclerView()
   {
-    AppMethodBeat.i(181866);
-    if (this.qSJ != null)
+    AppMethodBeat.i(187621);
+    if (this.uuP != null)
     {
-      RecyclerView localRecyclerView = this.qSJ.cCH();
-      AppMethodBeat.o(181866);
+      RecyclerView localRecyclerView = this.uuP.cRm();
+      AppMethodBeat.o(187621);
       return localRecyclerView;
     }
-    AppMethodBeat.o(181866);
+    AppMethodBeat.o(187621);
     return null;
+  }
+  
+  private int h(RecyclerView paramRecyclerView)
+  {
+    AppMethodBeat.i(187646);
+    int j = 150;
+    int i = j;
+    if (paramRecyclerView != null)
+    {
+      paramRecyclerView.getLocationOnScreen(this.uuH);
+      i = j;
+      if (A(this.uuH)) {
+        i = this.uuH[1];
+      }
+    }
+    AppMethodBeat.o(187646);
+    return i;
   }
   
   public static void i(TextView paramTextView, int paramInt)
@@ -941,27 +959,10 @@ public final class e
     return mHasInit;
   }
   
-  private int j(RecyclerView paramRecyclerView)
-  {
-    AppMethodBeat.i(181895);
-    int j = 150;
-    int i = j;
-    if (paramRecyclerView != null)
-    {
-      paramRecyclerView.getLocationOnScreen(this.qSB);
-      i = j;
-      if (A(this.qSB)) {
-        i = this.qSB[1];
-      }
-    }
-    AppMethodBeat.o(181895);
-    return i;
-  }
-  
-  private void lo(boolean paramBoolean)
+  private void mA(boolean paramBoolean)
   {
     AppMethodBeat.i(181891);
-    if ((!mHasInit) || (this.qSF == null) || (this.qSG == null) || (this.qSH == null) || (this.qSK == null))
+    if ((!mHasInit) || (this.uuL == null) || (this.uuM == null) || (this.uuN == null) || (this.uuQ == null))
     {
       AppMethodBeat.o(181891);
       return;
@@ -972,31 +973,31 @@ public final class e
       AppMethodBeat.o(181891);
       return;
     }
-    if ((this.qSL == null) || (this.qSL.getType() != 1))
+    if ((this.uuR == null) || (this.uuR.getType() != 1))
     {
       AppMethodBeat.o(181891);
       return;
     }
-    int k = this.qSL.qcr;
+    int k = this.uuR.viewType;
     if ((k != 2) && (k != 3) && (k != 4))
     {
       AppMethodBeat.o(181891);
       return;
     }
-    float f2 = this.qSL.qSd - this.qSL.deo;
-    float f1 = this.qSL.qSe;
-    float f3 = this.qSL.dep;
-    f3 = this.qSr / 2 + (f1 - f3);
+    float f2 = this.uuR.uuj - this.uuR.dit;
+    float f1 = this.uuR.uuk;
+    float f3 = this.uuR.diu;
+    f3 = this.uux / 2 + (f1 - f3);
     View localView;
     Object localObject2;
     Object localObject1;
     int i;
     if (k == 2)
     {
-      f1 = f2 + this.qSF.getWidth() / 2;
-      localRecyclerView.getLocationOnScreen(this.qSB);
-      localView = localRecyclerView.o(f1 - this.qSB[0], f3 - this.qSB[1]);
-      localObject2 = f.dG(localView);
+      f1 = f2 + this.uuL.getWidth() / 2;
+      localRecyclerView.getLocationOnScreen(this.uuH);
+      localView = localRecyclerView.h(f1 - this.uuH[0], f3 - this.uuH[1]);
+      localObject2 = f.ee(localView);
       localObject1 = null;
       if (localObject2 != null) {
         break label301;
@@ -1014,22 +1015,22 @@ public final class e
         if (k != 3) {
           break;
         }
-        f1 = f2 + this.qSG.getWidth();
+        f1 = f2 + this.uuM.getWidth();
         break;
-        if (((c)localObject2).qSl != null)
+        if (((c)localObject2).uur != null)
         {
-          localObject1 = ((c)localObject2).qSl;
+          localObject1 = ((c)localObject2).uur;
           localObject2 = new int[2];
           ((WXRTEditText)localObject1).getLocationOnScreen((int[])localObject2);
           i = ((WXRTEditText)localObject1).getOffsetForPosition(f1 - localObject2[0], f3 - localObject2[1]);
-          i = Z(k, ((WXRTEditText)localObject1).getPosInDataList(), i);
+          i = aa(k, ((WXRTEditText)localObject1).getPosInDataList(), i);
         }
-        else if ((((c)localObject2).qSm != null) && (((c)localObject2).qSn != null))
+        else if ((((c)localObject2).uus != null) && (((c)localObject2).uut != null))
         {
           if (k == 3)
           {
-            localObject2 = ((c)localObject2).qSm;
-            j = Z(k, ((WXRTEditText)localObject2).getPosInDataList(), 0);
+            localObject2 = ((c)localObject2).uus;
+            j = aa(k, ((WXRTEditText)localObject2).getPosInDataList(), 0);
             if (j != 2)
             {
               i = j;
@@ -1038,15 +1039,15 @@ public final class e
             }
             else
             {
-              a(k, localRecyclerView, this.qSG, (int)(this.qSL.qSd - this.qSL.deo), (int)(this.qSL.qSe - this.qSL.dep));
+              a(k, localRecyclerView, this.uuM, (int)(this.uuR.uuj - this.uuR.dit), (int)(this.uuR.uuk - this.uuR.diu));
               i = j;
               localObject1 = localObject2;
             }
           }
           else if (k == 4)
           {
-            localObject2 = ((c)localObject2).qSn;
-            j = Z(k, ((WXRTEditText)localObject2).getPosInDataList(), 1);
+            localObject2 = ((c)localObject2).uut;
+            j = aa(k, ((WXRTEditText)localObject2).getPosInDataList(), 1);
             if (j != 2)
             {
               i = j;
@@ -1055,7 +1056,7 @@ public final class e
             }
             else
             {
-              a(k, localRecyclerView, this.qSH, (int)(this.qSL.qSd - this.qSL.deo), (int)(this.qSL.qSe - this.qSL.dep));
+              a(k, localRecyclerView, this.uuN, (int)(this.uuR.uuj - this.uuR.dit), (int)(this.uuR.uuk - this.uuR.diu));
               i = j;
               localObject1 = localObject2;
             }
@@ -1067,9 +1068,9 @@ public final class e
             if (f1 > localObject1[0] + localView.getWidth() / 2) {
               break label717;
             }
-            localObject2 = ((c)localObject2).qSm;
+            localObject2 = ((c)localObject2).uus;
           }
-          for (int j = Z(k, ((WXRTEditText)localObject2).getPosInDataList(), 0);; j = Z(k, ((WXRTEditText)localObject2).getPosInDataList(), 1))
+          for (int j = aa(k, ((WXRTEditText)localObject2).getPosInDataList(), 0);; j = aa(k, ((WXRTEditText)localObject2).getPosInDataList(), 1))
           {
             if (j != 2)
             {
@@ -1079,12 +1080,12 @@ public final class e
             }
             else
             {
-              a(k, localRecyclerView, this.qSF, (int)(this.qSL.qSd - this.qSL.deo), (int)(this.qSL.qSe - this.qSL.dep));
+              a(k, localRecyclerView, this.uuL, (int)(this.uuR.uuj - this.uuR.dit), (int)(this.uuR.uuk - this.uuR.diu));
               localObject1 = localObject2;
               i = j;
             }
             break;
-            localObject2 = ((c)localObject2).qSn;
+            localObject2 = ((c)localObject2).uut;
           }
         }
         break;
@@ -1096,18 +1097,18 @@ public final class e
         label717:
         while (i != 0)
         {
-          if ((!paramBoolean) || ((this.qSL.qSe >= j(localRecyclerView)) && (this.qSL.qSe <= cEg())) || ((this.qSM != null) && (!this.qSM.stopped()))) {
+          if ((!paramBoolean) || ((this.uuR.uuk >= h(localRecyclerView)) && (this.uuR.uuk <= cSM())) || ((this.uuS != null) && (!this.uuS.stopped()))) {
             break label1163;
           }
-          cEf();
-          this.qSM.startTimer(100L);
+          cSL();
+          this.uuS.startTimer(100L);
           AppMethodBeat.o(181891);
           return;
           i = 1;
           continue;
           localObject2 = ((WXRTEditText)localObject1).getText();
           i = getSelectType();
-          if ((this.qSq) && (localObject2 != null) && (i == 1))
+          if ((this.uuw) && (localObject2 != null) && (i == 1))
           {
             if (!((WXRTEditText)localObject1).hasFocus()) {
               ((WXRTEditText)localObject1).requestFocus();
@@ -1118,9 +1119,9 @@ public final class e
               ((WXRTEditText)localObject1).setSelection(0);
               ((WXRTEditText)localObject1).setIgnoreSelectChangeByMultiSelect(false);
               if ((i == 3) || (i == 0)) {
-                cDX();
+                cSD();
               }
-              cEa();
+              cSG();
               f(true, 0L);
               if (k != 4) {
                 break label1147;
@@ -1128,19 +1129,19 @@ public final class e
             }
           }
           label1147:
-          for (i = this.qSK.qSo;; i = this.qSK.startOffset)
+          for (i = this.uuQ.uuu;; i = this.uuQ.lPo)
           {
             a(k, localRecyclerView, localView, i);
             i = 1;
             break;
-            if (this.qSK.startOffset > ((Editable)localObject2).length()) {
+            if (this.uuQ.lPo > ((Editable)localObject2).length()) {
               break label912;
             }
             ((WXRTEditText)localObject1).setIgnoreSelectChangeByMultiSelect(true);
-            ((WXRTEditText)localObject1).setSelection(this.qSK.startOffset);
+            ((WXRTEditText)localObject1).setSelection(this.uuQ.lPo);
             ((WXRTEditText)localObject1).setIgnoreSelectChangeByMultiSelect(false);
             break label912;
-            if ((!this.qSq) || (localObject2 == null) || (i != 2) || (!((WXRTEditText)localObject1).hasFocus())) {
+            if ((!this.uuw) || (localObject2 == null) || (i != 2) || (!((WXRTEditText)localObject1).hasFocus())) {
               break label912;
             }
             if ((((WXRTEditText)localObject1).getEditTextType() == 1) || (((WXRTEditText)localObject1).getEditTextType() == 2))
@@ -1150,17 +1151,17 @@ public final class e
               ((WXRTEditText)localObject1).setIgnoreSelectChangeByMultiSelect(false);
               break label912;
             }
-            if ((this.qSK.startOffset > ((Editable)localObject2).length()) || (this.qSK.qSo > ((Editable)localObject2).length())) {
+            if ((this.uuQ.lPo > ((Editable)localObject2).length()) || (this.uuQ.uuu > ((Editable)localObject2).length())) {
               break label912;
             }
             ((WXRTEditText)localObject1).setIgnoreSelectChangeByMultiSelect(true);
-            ((WXRTEditText)localObject1).setSelection(this.qSK.startOffset, this.qSK.qSo);
+            ((WXRTEditText)localObject1).setSelection(this.uuQ.lPo, this.uuQ.uuu);
             ((WXRTEditText)localObject1).setIgnoreSelectChangeByMultiSelect(false);
             break label912;
           }
         }
         label912:
-        cEf();
+        cSL();
         label1163:
         AppMethodBeat.o(181891);
         return;
@@ -1188,7 +1189,7 @@ public final class e
     return false;
   }
   
-  public final boolean B(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final boolean F(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(181870);
     if (!mHasInit)
@@ -1197,21 +1198,21 @@ public final class e
       return false;
     }
     boolean bool;
-    if (this.qSK == null)
+    if (this.uuQ == null)
     {
-      this.qSK = new d(paramInt1, paramInt2, paramInt3, paramInt4);
+      this.uuQ = new d(paramInt1, paramInt2, paramInt3, paramInt4);
       bool = true;
     }
     for (;;)
     {
       if (bool) {
-        Log.d("EditorSelectManager", "setSelectInfo: %d:%d - %d:%d", new Object[] { Integer.valueOf(this.qSK.bNu), Integer.valueOf(this.qSK.startOffset), Integer.valueOf(this.qSK.endPos), Integer.valueOf(this.qSK.qSo) });
+        Log.d("EditorSelectManager", "setSelectInfo: %d:%d - %d:%d", new Object[] { Integer.valueOf(this.uuQ.bPt), Integer.valueOf(this.uuQ.lPo), Integer.valueOf(this.uuQ.endPos), Integer.valueOf(this.uuQ.uuu) });
       }
       AppMethodBeat.o(181870);
       return bool;
-      if ((this.qSK.bNu != paramInt1) || (this.qSK.startOffset != paramInt2) || (this.qSK.endPos != paramInt3) || (this.qSK.qSo != paramInt4))
+      if ((this.uuQ.bPt != paramInt1) || (this.uuQ.lPo != paramInt2) || (this.uuQ.endPos != paramInt3) || (this.uuQ.uuu != paramInt4))
       {
-        this.qSK.set(paramInt1, paramInt2, paramInt3, paramInt4);
+        this.uuQ.E(paramInt1, paramInt2, paramInt3, paramInt4);
         bool = true;
       }
       else
@@ -1221,35 +1222,35 @@ public final class e
     }
   }
   
-  public final int FB(int paramInt)
+  public final int Jj(int paramInt)
   {
     AppMethodBeat.i(181872);
-    if ((!mHasInit) || (this.qSK == null))
+    if ((!mHasInit) || (this.uuQ == null))
     {
       AppMethodBeat.o(181872);
       return 0;
     }
-    if ((getSelectType() == 0) || (paramInt < this.qSK.bNu) || (paramInt > this.qSK.endPos))
+    if ((getSelectType() == 0) || (paramInt < this.uuQ.bPt) || (paramInt > this.uuQ.endPos))
     {
       AppMethodBeat.o(181872);
       return 0;
     }
-    if ((paramInt == this.qSK.bNu) && (paramInt == this.qSK.endPos))
+    if ((paramInt == this.uuQ.bPt) && (paramInt == this.uuQ.endPos))
     {
       AppMethodBeat.o(181872);
       return 1;
     }
-    if ((paramInt > this.qSK.bNu) && (paramInt < this.qSK.endPos))
+    if ((paramInt > this.uuQ.bPt) && (paramInt < this.uuQ.endPos))
     {
       AppMethodBeat.o(181872);
       return 2;
     }
-    if ((paramInt == this.qSK.bNu) && (paramInt < this.qSK.endPos))
+    if ((paramInt == this.uuQ.bPt) && (paramInt < this.uuQ.endPos))
     {
       AppMethodBeat.o(181872);
       return 4;
     }
-    if ((paramInt > this.qSK.bNu) && (paramInt == this.qSK.endPos))
+    if ((paramInt > this.uuQ.bPt) && (paramInt == this.uuQ.endPos))
     {
       AppMethodBeat.o(181872);
       return 3;
@@ -1258,7 +1259,7 @@ public final class e
     return 0;
   }
   
-  public final void I(boolean paramBoolean1, boolean paramBoolean2)
+  public final void M(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(181875);
     if (!mHasInit)
@@ -1266,11 +1267,11 @@ public final class e
       AppMethodBeat.o(181875);
       return;
     }
-    cEc();
-    cEa();
+    cSI();
+    cSG();
     f(true, 50L);
-    ln(paramBoolean1);
-    ll(paramBoolean2);
+    mz(paramBoolean1);
+    mx(paramBoolean2);
     AppMethodBeat.o(181875);
   }
   
@@ -1282,7 +1283,7 @@ public final class e
       AppMethodBeat.o(181890);
       return;
     }
-    if ((this.qSL != null) && (this.qSL.getType() == 1) && (this.qSL.qcr != paramInt))
+    if ((this.uuR != null) && (this.uuR.getType() == 1) && (this.uuR.viewType != paramInt))
     {
       AppMethodBeat.o(181890);
       return;
@@ -1294,28 +1295,28 @@ public final class e
     {
       AppMethodBeat.o(181890);
       return;
-      cEe();
-      if (!cDZ()) {
-        lm(true);
+      cSK();
+      if (!cSF()) {
+        my(true);
       }
-      this.qSL.a(paramInt, paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), paramMotionEvent.getX(), paramMotionEvent.getY(), 0);
+      this.uuR.a(paramInt, paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), paramMotionEvent.getX(), paramMotionEvent.getY(), 0);
       AppMethodBeat.o(181890);
       return;
-      if ((this.qSL != null) && (this.qSL.getType() == 1))
+      if ((this.uuR != null) && (this.uuR.getType() == 1))
       {
-        this.qSL.qSd = paramMotionEvent.getRawX();
-        this.qSL.qSe = paramMotionEvent.getRawY();
-        lo(true);
+        this.uuR.uuj = paramMotionEvent.getRawX();
+        this.uuR.uuk = paramMotionEvent.getRawY();
+        mA(true);
         AppMethodBeat.o(181890);
         return;
-        cEe();
+        cSK();
         this.mHandler.postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(181859);
-            e.this.ln(true);
-            e.this.lm(true);
+            e.this.mz(true);
+            e.this.my(true);
             AppMethodBeat.o(181859);
           }
         }, 200L);
@@ -1326,12 +1327,12 @@ public final class e
   public final void a(View paramView1, View paramView2, View paramView3, int paramInt)
   {
     AppMethodBeat.i(181877);
-    if ((!mHasInit) || (paramView1 == null) || (paramView2 == null) || (paramView3 == null) || (this.qSK == null))
+    if ((!mHasInit) || (paramView1 == null) || (paramView2 == null) || (paramView3 == null) || (this.uuQ == null))
     {
       AppMethodBeat.o(181877);
       return;
     }
-    switch (FB(paramInt))
+    switch (Jj(paramInt))
     {
     }
     do
@@ -1346,7 +1347,7 @@ public final class e
       paramView3.setVisibility(4);
       AppMethodBeat.o(181877);
       return;
-      if (this.qSK.startOffset == this.qSK.qSo) {
+      if (this.uuQ.lPo == this.uuQ.uuu) {
         paramView1.setVisibility(8);
       }
       for (;;)
@@ -1362,7 +1363,7 @@ public final class e
       paramView3.setVisibility(0);
       AppMethodBeat.o(181877);
       return;
-      if (this.qSK.startOffset == 0)
+      if (this.uuQ.lPo == 0)
       {
         paramView1.setVisibility(0);
         paramView2.setVisibility(4);
@@ -1375,14 +1376,14 @@ public final class e
       paramView3.setVisibility(4);
       AppMethodBeat.o(181877);
       return;
-    } while (this.qSK.qSo == 0);
+    } while (this.uuQ.uuu == 0);
     paramView1.setVisibility(0);
     paramView2.setVisibility(0);
     paramView3.setVisibility(4);
     AppMethodBeat.o(181877);
   }
   
-  public final d cDV()
+  public final d cSB()
   {
     AppMethodBeat.i(181869);
     if (!mHasInit)
@@ -1391,15 +1392,15 @@ public final class e
       AppMethodBeat.o(181869);
       return locald;
     }
-    if (this.qSK == null) {
-      this.qSK = new d();
+    if (this.uuQ == null) {
+      this.uuQ = new d();
     }
-    d locald = new d(this.qSK.bNu, this.qSK.startOffset, this.qSK.endPos, this.qSK.qSo);
+    d locald = new d(this.uuQ.bPt, this.uuQ.lPo, this.uuQ.endPos, this.uuQ.uuu);
     AppMethodBeat.o(181869);
     return locald;
   }
   
-  public final void cDY()
+  public final void cSE()
   {
     AppMethodBeat.i(181874);
     if (!mHasInit)
@@ -1407,17 +1408,17 @@ public final class e
       AppMethodBeat.o(181874);
       return;
     }
-    cDW();
+    cSC();
     f(true, 0L);
-    cEc();
-    cEa();
+    cSI();
+    cSG();
     AppMethodBeat.o(181874);
   }
   
-  public final boolean cDZ()
+  public final boolean cSF()
   {
     AppMethodBeat.i(181878);
-    if ((this.qSI != null) && (this.qSI.isShowing()))
+    if ((this.uuO != null) && (this.uuO.isShowing()))
     {
       AppMethodBeat.o(181878);
       return true;
@@ -1426,19 +1427,19 @@ public final class e
     return false;
   }
   
-  public final void cEa()
+  public final void cSG()
   {
     AppMethodBeat.i(181879);
-    if (this.qSI != null) {
-      this.qSI.dismiss();
+    if (this.uuO != null) {
+      this.uuO.dismiss();
     }
     AppMethodBeat.o(181879);
   }
   
-  public final boolean cEb()
+  public final boolean cSH()
   {
     AppMethodBeat.i(181882);
-    if ((this.qSF != null) && (this.qSF.isShowing()))
+    if ((this.uuL != null) && (this.uuL.isShowing()))
     {
       AppMethodBeat.o(181882);
       return true;
@@ -1447,7 +1448,7 @@ public final class e
     return false;
   }
   
-  public final void cEc()
+  public final void cSI()
   {
     AppMethodBeat.i(181883);
     if (!mHasInit)
@@ -1455,13 +1456,13 @@ public final class e
       AppMethodBeat.o(181883);
       return;
     }
-    FC(2);
-    FC(3);
-    FC(4);
+    Jk(2);
+    Jk(3);
+    Jk(4);
     AppMethodBeat.o(181883);
   }
   
-  public final void cEi()
+  public final void cSO()
   {
     AppMethodBeat.i(181899);
     Log.i("EditorSelectManager", "deleteSelectedData");
@@ -1471,7 +1472,7 @@ public final class e
       AppMethodBeat.o(181899);
       return;
     }
-    cEa();
+    cSG();
     int i = getSelectType();
     if (i == 2)
     {
@@ -1486,8 +1487,13 @@ public final class e
       return;
     }
     Log.e("EditorSelectManager", "deleteSelectedData: not in select");
-    cEh();
+    cSN();
     AppMethodBeat.o(181899);
+  }
+  
+  public final boolean cSz()
+  {
+    return (mHasInit) && (this.uuw);
   }
   
   public final void f(final boolean paramBoolean, long paramLong)
@@ -1513,14 +1519,14 @@ public final class e
         if (i < localRecyclerView.getChildCount())
         {
           Object localObject = localRecyclerView.getChildAt(i);
-          c localc = f.dG((View)localObject);
+          c localc = f.ee((View)localObject);
           if (localc != null)
           {
-            if (localc.qSl == null) {
+            if (localc.uur == null) {
               break label78;
             }
             if (paramBoolean) {
-              localc.qSl.postInvalidate();
+              localc.uur.postInvalidate();
             }
           }
           for (;;)
@@ -1528,12 +1534,12 @@ public final class e
             i += 1;
             break;
             label78:
-            if ((localc.qSm != null) && (localc.qSn != null))
+            if ((localc.uus != null) && (localc.uut != null))
             {
-              LinearLayout localLinearLayout1 = (LinearLayout)((View)localObject).findViewById(2131305733);
-              LinearLayout localLinearLayout2 = (LinearLayout)((View)localObject).findViewById(2131305741);
-              localObject = (LinearLayout)((View)localObject).findViewById(2131305736);
-              e.this.a(localLinearLayout1, localLinearLayout2, (View)localObject, localc.qSm.getPosInDataList());
+              LinearLayout localLinearLayout1 = (LinearLayout)((View)localObject).findViewById(d.e.dQG);
+              LinearLayout localLinearLayout2 = (LinearLayout)((View)localObject).findViewById(d.e.dQJ);
+              localObject = (LinearLayout)((View)localObject).findViewById(d.e.dQH);
+              e.this.a(localLinearLayout1, localLinearLayout2, (View)localObject, localc.uus.getPosInDataList());
             }
           }
         }
@@ -1551,20 +1557,15 @@ public final class e
       AppMethodBeat.o(181868);
       return 0;
     }
-    if (this.qSK == null) {
-      this.qSK = new d();
+    if (this.uuQ == null) {
+      this.uuQ = new d();
     }
-    int i = this.qSK.getSelectType();
+    int i = this.uuQ.getSelectType();
     AppMethodBeat.o(181868);
     return i;
   }
   
-  public final boolean isEditable()
-  {
-    return (mHasInit) && (this.qSq);
-  }
-  
-  public final void ll(final boolean paramBoolean)
+  public final void mx(final boolean paramBoolean)
   {
     AppMethodBeat.i(181880);
     this.mHandler.postDelayed(new Runnable()
@@ -1572,74 +1573,74 @@ public final class e
       public final void run()
       {
         AppMethodBeat.i(181857);
-        e.this.lm(paramBoolean);
+        e.this.my(paramBoolean);
         AppMethodBeat.o(181857);
       }
     }, 50L);
     AppMethodBeat.o(181880);
   }
   
-  public final void lm(boolean paramBoolean)
+  public final void my(boolean paramBoolean)
   {
     AppMethodBeat.i(181881);
-    if ((!mHasInit) || (this.qSI == null))
+    if ((!mHasInit) || (this.uuO == null))
     {
       AppMethodBeat.o(181881);
       return;
     }
     RecyclerView localRecyclerView = getRecyclerView();
     int i = getSelectType();
-    if ((localRecyclerView == null) || (i == 0) || ((i == 1) && (!paramBoolean)) || ((this.qSL != null) && (this.qSL.getType() == 1)))
+    if ((localRecyclerView == null) || (i == 0) || ((i == 1) && (!paramBoolean)) || ((this.uuR != null) && (this.uuR.getType() == 1)))
     {
-      cEa();
+      cSG();
       AppMethodBeat.o(181881);
       return;
     }
-    if (!cEj())
+    if (!cSP())
     {
-      cEa();
+      cSG();
       AppMethodBeat.o(181881);
       return;
     }
     int i1 = -1;
     int i2 = -1000;
-    int i4 = j(localRecyclerView);
-    int i5 = cEg();
+    int i4 = h(localRecyclerView);
+    int i5 = cSM();
     int k = 0;
     int m = 0;
     i = m;
     int j = k;
-    if (this.qSI != null)
+    if (this.uuO != null)
     {
       i = m;
       j = k;
-      if (this.qSI.getContentView() != null)
+      if (this.uuO.getContentView() != null)
       {
-        this.qSI.getContentView().measure(0, 0);
-        i = this.qSI.getContentView().getMeasuredHeight();
-        j = this.qSu * 2 + i;
-        i = this.qSI.getContentView().getMeasuredWidth() + this.qSu * 2;
+        this.uuO.getContentView().measure(0, 0);
+        i = this.uuO.getContentView().getMeasuredHeight();
+        j = this.uuA * 2 + i;
+        i = this.uuO.getContentView().getMeasuredWidth() + this.uuA * 2;
       }
     }
     int i3;
     int n;
     if (j == 0)
     {
-      i3 = this.qSw;
+      i3 = this.uuC;
       if (i != 0) {
         break label414;
       }
-      n = this.qSx;
+      n = this.uuD;
       label229:
-      if ((this.qSF == null) || (!this.qSF.isShowing()) || (!A(this.qSC))) {
+      if ((this.uuL == null) || (!this.uuL.isShowing()) || (!A(this.uuI))) {
         break label458;
       }
-      j = this.qSC[1] - i3;
-      i = this.qSC[1] + this.qSF.getHeight() - this.qSy;
+      j = this.uuI[1] - i3;
+      i = this.uuI[1] + this.uuL.getHeight() - this.uuE;
       if ((j < i4) || (j > i5)) {
         break label420;
       }
-      k = this.qSC[0];
+      k = this.uuI[0];
       i = j;
       j = k;
     }
@@ -1654,9 +1655,9 @@ public final class e
           break label911;
         }
         localObject = (LinearLayoutManager)localObject;
-        j = ((LinearLayoutManager)localObject).ks();
-        k = ((LinearLayoutManager)localObject).ku();
-        if ((this.qSK.bNu > j) || (this.qSK.endPos < k)) {
+        j = ((LinearLayoutManager)localObject).kJ();
+        k = ((LinearLayoutManager)localObject).kL();
+        if ((this.uuQ.bPt > j) || (this.uuQ.endPos < k)) {
           break label911;
         }
         k = 300;
@@ -1666,7 +1667,7 @@ public final class e
       {
         if (k == -1)
         {
-          cEa();
+          cSG();
           AppMethodBeat.o(181881);
           return;
           i3 = j;
@@ -1685,27 +1686,27 @@ public final class e
           if (i > i5) {
             break label921;
           }
-          j = this.qSC[0];
+          j = this.uuI[0];
           break label311;
           label458:
           i = i2;
           j = i1;
-          if (this.qSG != null)
+          if (this.uuM != null)
           {
             i = i2;
             j = i1;
-            if (this.qSG.isShowing())
+            if (this.uuM.isShowing())
             {
               i = i2;
               j = i1;
-              if (A(this.qSD))
+              if (A(this.uuJ))
               {
-                j = this.qSD[1] - i3;
-                k = this.qSD[1] + this.qSG.getHeight() - this.qSy;
+                j = this.uuJ[1] - i3;
+                k = this.uuJ[1] + this.uuM.getHeight() - this.uuE;
                 if ((j < i4) || (j > i5)) {
                   break label662;
                 }
-                i = this.qSD[0];
+                i = this.uuJ[0];
               }
             }
           }
@@ -1713,28 +1714,28 @@ public final class e
           {
             m = i;
             k = j;
-            if (this.qSH == null) {
+            if (this.uuN == null) {
               break label921;
             }
             m = i;
             k = j;
-            if (!this.qSH.isShowing()) {
+            if (!this.uuN.isShowing()) {
               break label921;
             }
             m = i;
             k = j;
-            if (!A(this.qSE)) {
+            if (!A(this.uuK)) {
               break label921;
             }
-            k = this.qSE[1] - i3;
-            i1 = this.qSE[1] + this.qSH.getHeight() - this.qSy;
+            k = this.uuK[1] - i3;
+            i1 = this.uuK[1] + this.uuN.getHeight() - this.uuE;
             if (j != -1) {
               break label740;
             }
             if ((k < i4) || (k > i5)) {
               break label701;
             }
-            j = this.qSE[0];
+            j = this.uuK[0];
             i = k;
             break;
             label662:
@@ -1746,7 +1747,7 @@ public final class e
               j = i1;
               if (k <= i5)
               {
-                i = this.qSD[0];
+                i = this.uuJ[0];
                 j = k;
               }
             }
@@ -1762,13 +1763,13 @@ public final class e
           if (i1 > i5) {
             break label921;
           }
-          j = this.qSE[0];
+          j = this.uuK[0];
           i = i1;
           break label311;
           label740:
           m = i;
           k = j;
-          if (j + i3 <= this.qSE[1]) {
+          if (j + i3 <= this.uuK[1]) {
             break label921;
           }
           m = i;
@@ -1781,7 +1782,7 @@ public final class e
           if (i1 > i5) {
             break label921;
           }
-          j = this.qSE[0];
+          j = this.uuK[0];
           i = i1;
           break label311;
         }
@@ -1789,17 +1790,17 @@ public final class e
         m = this.mScreenWidth * 2 / 3;
         if ((j == -1000) || ((j >= i) && (j <= m)))
         {
-          d(localRecyclerView, (this.mScreenWidth - n) / 2, k);
+          c(localRecyclerView, (this.mScreenWidth - n) / 2, k);
           AppMethodBeat.o(181881);
           return;
         }
         if (j < i)
         {
-          d(localRecyclerView, this.qSv, k);
+          c(localRecyclerView, this.uuB, k);
           AppMethodBeat.o(181881);
           return;
         }
-        d(localRecyclerView, this.mScreenWidth - n - this.qSv, k);
+        c(localRecyclerView, this.mScreenWidth - n - this.uuB, k);
         AppMethodBeat.o(181881);
         return;
         label911:
@@ -1812,7 +1813,7 @@ public final class e
     }
   }
   
-  public final void ln(boolean paramBoolean)
+  public final void mz(boolean paramBoolean)
   {
     AppMethodBeat.i(181885);
     if (!mHasInit)
@@ -1824,29 +1825,29 @@ public final class e
     int i = getSelectType();
     if ((localRecyclerView == null) || (i == 0) || ((i == 1) && (!paramBoolean)))
     {
-      cEc();
+      cSI();
       AppMethodBeat.o(181885);
       return;
     }
-    View localView1 = f.d(localRecyclerView, this.qSK.bNu);
-    View localView2 = f.d(localRecyclerView, this.qSK.endPos);
+    View localView1 = f.c(localRecyclerView, this.uuQ.bPt);
+    View localView2 = f.c(localRecyclerView, this.uuQ.endPos);
     if (i == 1)
     {
-      FC(3);
-      FC(4);
-      a(2, localRecyclerView, localView1, this.qSK.startOffset);
+      Jk(3);
+      Jk(4);
+      a(2, localRecyclerView, localView1, this.uuQ.lPo);
       AppMethodBeat.o(181885);
       return;
     }
-    FC(2);
-    a(3, localRecyclerView, localView1, this.qSK.startOffset);
-    a(4, localRecyclerView, localView2, this.qSK.qSo);
+    Jk(2);
+    a(3, localRecyclerView, localView1, this.uuQ.lPo);
+    a(4, localRecyclerView, localView2, this.uuQ.uuu);
     AppMethodBeat.o(181885);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.c.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,17 @@
 package com.tencent.mm.plugin.sight.base;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-
 public final class d
 {
-  public int[] Dmj;
-  public int[] Dmk;
-  public int[] Dml;
-  public int[] Dmm;
-  public int[] Dmn;
-  
-  public d()
-  {
-    AppMethodBeat.i(133598);
-    this.Dmj = new int[] { 1000, 7000 };
-    this.Dmk = new int[] { 10, 31 };
-    this.Dml = new int[] { 10000, 650000 };
-    this.Dmm = new int[] { 320, 240, 0, 240, 320, 1, 240, 320, 3 };
-    this.Dmn = new int[] { 10240, 512000 };
-    AppMethodBeat.o(133598);
-  }
+  private static int AUDIO_BIT_RATE = 16000;
+  public static int JrF = 1;
+  public static boolean JrG = true;
+  public static int JrH = 1;
+  public static int JrI = 640000;
+  public static float JrJ = 24.0F;
+  private static int JrK = 8000;
+  private static int JrL = 44100;
+  private static int JrM = 64000;
+  private static long JrN = 0L;
 }
 
 

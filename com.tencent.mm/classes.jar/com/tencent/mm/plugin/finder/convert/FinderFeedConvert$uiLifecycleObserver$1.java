@@ -1,61 +1,60 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.arch.lifecycle.LifecycleOwner;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.life.UILifecycleObserver;
+import com.tencent.mm.plugin.finder.life.b;
 import java.util.HashSet;
 import java.util.Iterator;
 import kotlin.g.b.p;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/convert/FinderFeedConvert$uiLifecycleObserver$1", "Lcom/tencent/mm/plugin/finder/life/UILifecycleObserver;", "onCreate", "", "var1", "Landroid/arch/lifecycle/LifecycleOwner;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/convert/FinderFeedConvert$uiLifecycleObserver$1", "Lcom/tencent/mm/plugin/finder/life/UILifecycleObserver;", "onCreate", "", "var1", "Landroidx/lifecycle/LifecycleOwner;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "plugin-finder_release"})
 public final class FinderFeedConvert$uiLifecycleObserver$1
-  implements UILifecycleObserver
+  implements b
 {
-  public final void onCreate(LifecycleOwner paramLifecycleOwner)
+  public final void onCreate(androidx.lifecycle.l paraml)
   {
-    AppMethodBeat.i(165380);
-    p.h(paramLifecycleOwner, "var1");
-    AppMethodBeat.o(165380);
+    AppMethodBeat.i(272197);
+    p.k(paraml, "var1");
+    AppMethodBeat.o(272197);
   }
   
-  public final void onDestroy(LifecycleOwner paramLifecycleOwner)
+  public final void onDestroy(androidx.lifecycle.l paraml)
   {
-    AppMethodBeat.i(165385);
-    p.h(paramLifecycleOwner, "var1");
-    paramLifecycleOwner = ((Iterable)l.i(this.tAp)).iterator();
-    while (paramLifecycleOwner.hasNext()) {
-      ((l.b)paramLifecycleOwner.next()).dead();
+    AppMethodBeat.i(272203);
+    p.k(paraml, "var1");
+    paraml = ((Iterable)m.i(this.xia)).iterator();
+    while (paraml.hasNext()) {
+      ((m.b)paraml.next()).dead();
     }
-    l.i(this.tAp).clear();
-    AppMethodBeat.o(165385);
+    m.i(this.xia).clear();
+    AppMethodBeat.o(272203);
   }
   
-  public final void onPause(LifecycleOwner paramLifecycleOwner)
+  public final void onPause(androidx.lifecycle.l paraml)
   {
-    AppMethodBeat.i(165383);
-    p.h(paramLifecycleOwner, "var1");
-    AppMethodBeat.o(165383);
+    AppMethodBeat.i(272201);
+    p.k(paraml, "var1");
+    AppMethodBeat.o(272201);
   }
   
-  public final void onResume(LifecycleOwner paramLifecycleOwner)
+  public final void onResume(androidx.lifecycle.l paraml)
   {
-    AppMethodBeat.i(165382);
-    p.h(paramLifecycleOwner, "var1");
-    AppMethodBeat.o(165382);
+    AppMethodBeat.i(272200);
+    p.k(paraml, "var1");
+    AppMethodBeat.o(272200);
   }
   
-  public final void onStart(LifecycleOwner paramLifecycleOwner)
+  public final void onStart(androidx.lifecycle.l paraml)
   {
-    AppMethodBeat.i(165381);
-    p.h(paramLifecycleOwner, "var1");
-    AppMethodBeat.o(165381);
+    AppMethodBeat.i(272199);
+    p.k(paraml, "var1");
+    AppMethodBeat.o(272199);
   }
   
-  public final void onStop(LifecycleOwner paramLifecycleOwner)
+  public final void onStop(androidx.lifecycle.l paraml)
   {
-    AppMethodBeat.i(165384);
-    p.h(paramLifecycleOwner, "var1");
-    AppMethodBeat.o(165384);
+    AppMethodBeat.i(272202);
+    p.k(paraml, "var1");
+    AppMethodBeat.o(272202);
   }
 }
 

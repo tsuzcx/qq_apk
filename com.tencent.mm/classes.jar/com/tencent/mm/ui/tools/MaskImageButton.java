@@ -17,15 +17,15 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 public class MaskImageButton
   extends ImageView
 {
-  private MMHandler Eok;
-  private Runnable Eol;
-  private RectF Qvk;
-  private int Qvl;
-  private int Qvm;
+  private MMHandler KBt;
+  private Runnable KBu;
+  private RectF XTm;
+  private int XTn;
+  private int XTo;
   private int a;
   private int b;
   private int g;
-  public Object ico;
+  public Object kQV;
   private Paint paint;
   private int r;
   
@@ -33,18 +33,18 @@ public class MaskImageButton
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143201);
-    this.Qvk = new RectF();
+    this.XTm = new RectF();
     this.paint = null;
     this.a = 90;
     this.r = 0;
     this.g = 0;
     this.b = 0;
-    this.Qvl = 0;
-    this.Qvm = 0;
+    this.XTn = 0;
+    this.XTo = 0;
     this.paint = new Paint();
     this.paint.setColor(Color.argb(this.a, this.r, this.g, this.b));
-    this.Eok = new MMHandler(Looper.getMainLooper());
-    this.Eol = new Runnable()
+    this.KBt = new MMHandler(Looper.getMainLooper());
+    this.KBu = new Runnable()
     {
       public final void run()
       {
@@ -85,8 +85,8 @@ public class MaskImageButton
     super.onDraw(paramCanvas);
     if (isPressed())
     {
-      this.Qvk.set(getPaddingLeft() + 0, getPaddingTop() + 0, this.Qvl - getPaddingRight(), this.Qvm - getPaddingBottom());
-      paramCanvas.drawRoundRect(this.Qvk, getMeasuredHeight() / 10, getMeasuredHeight() / 10, this.paint);
+      this.XTm.set(getPaddingLeft() + 0, getPaddingTop() + 0, this.XTn - getPaddingRight(), this.XTo - getPaddingBottom());
+      paramCanvas.drawRoundRect(this.XTm, getMeasuredHeight() / 10, getMeasuredHeight() / 10, this.paint);
     }
     AppMethodBeat.o(143202);
   }
@@ -95,8 +95,8 @@ public class MaskImageButton
   {
     AppMethodBeat.i(143203);
     super.onMeasure(paramInt1, paramInt2);
-    this.Qvl = getMeasuredWidth();
-    this.Qvm = getMeasuredHeight();
+    this.XTn = getMeasuredWidth();
+    this.XTo = getMeasuredHeight();
     AppMethodBeat.o(143203);
   }
 }

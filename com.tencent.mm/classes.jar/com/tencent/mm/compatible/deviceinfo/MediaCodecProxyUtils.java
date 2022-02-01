@@ -16,21 +16,21 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class MediaCodecProxyUtils
 {
-  private static volatile long gJP;
-  private static final Map<Integer, a> gJQ;
-  private static final Map<Integer, a> gJR;
-  private static final Map<Integer, a> gJS;
-  private static final Map<Integer, a> gJT;
-  private static u gJU;
+  private static volatile long jud;
+  private static final Map<Integer, a> jue;
+  private static final Map<Integer, a> juf;
+  private static final Map<Integer, a> jug;
+  private static final Map<Integer, a> juh;
+  private static v jui;
   
   static
   {
     AppMethodBeat.i(155819);
-    gJP = 0L;
-    gJQ = new ConcurrentHashMap();
-    gJR = new ConcurrentHashMap();
-    gJS = new ConcurrentHashMap();
-    gJT = new ConcurrentHashMap();
+    jud = 0L;
+    jue = new ConcurrentHashMap();
+    juf = new ConcurrentHashMap();
+    jug = new ConcurrentHashMap();
+    juh = new ConcurrentHashMap();
     AppMethodBeat.o(155819);
   }
   
@@ -39,38 +39,38 @@ public final class MediaCodecProxyUtils
     AppMethodBeat.i(155810);
     a locala = new a();
     locala.mimeType = paramString;
-    locala.gJV = paramBoolean;
+    locala.juj = paramBoolean;
     Log.i("MicroMsg.MediaCodecProxyUtils", "insertMapWithMimeType, isEncode:[%b],mimeType:[%s]", new Object[] { Boolean.valueOf(paramBoolean), paramString });
     if (paramString.contains("video/")) {
       if (paramBoolean) {
-        gJS.put(Integer.valueOf(paramInt), locala);
+        jug.put(Integer.valueOf(paramInt), locala);
       }
     }
     for (;;)
     {
       AppMethodBeat.o(155810);
       return locala;
-      gJT.put(Integer.valueOf(paramInt), locala);
+      juh.put(Integer.valueOf(paramInt), locala);
       continue;
       if (paramString.contains("audio/"))
       {
         if (paramBoolean) {
-          gJQ.put(Integer.valueOf(paramInt), locala);
+          jue.put(Integer.valueOf(paramInt), locala);
         } else {
-          gJR.put(Integer.valueOf(paramInt), locala);
+          juf.put(Integer.valueOf(paramInt), locala);
         }
       }
       else
       {
-        b.oA(20);
+        b.qS(20);
         b.a(20, locala);
       }
     }
   }
   
-  public static void a(u paramu)
+  public static void a(v paramv)
   {
-    gJU = paramu;
+    jui = paramv;
   }
   
   private static void a(Map<Integer, a> paramMap, int paramInt)
@@ -81,16 +81,16 @@ public final class MediaCodecProxyUtils
       Log.i("MicroMsg.MediaCodecProxyUtils", "codecLeakCheckImpl type:[%d], map.size:[%d], process:[%s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramMap.size()), MMApplicationContext.getProcessName() });
       StringBuilder localStringBuilder1;
       StringBuilder localStringBuilder2;
-      if (gJP + 30000L >= System.currentTimeMillis())
+      if (jud + 30000L >= System.currentTimeMillis())
       {
-        if (gJP == 0L) {
+        if (jud == 0L) {
           Log.d("MicroMsg.MediaCodecProxyUtils", "codecLeakCheckImpl first time");
         }
       }
       else
       {
-        gJP = System.currentTimeMillis();
-        Log.d("MicroMsg.MediaCodecProxyUtils", "codecLeakCheckImpl start leak report, time:%s", new Object[] { Long.valueOf(gJP) });
+        jud = System.currentTimeMillis();
+        Log.d("MicroMsg.MediaCodecProxyUtils", "codecLeakCheckImpl start leak report, time:%s", new Object[] { Long.valueOf(jud) });
         localStringBuilder1 = new StringBuilder();
         localStringBuilder2 = new StringBuilder();
         Object localObject = paramMap.keySet();
@@ -102,127 +102,127 @@ public final class MediaCodecProxyUtils
           if (locala != null)
           {
             localObject = "";
-            if (locala.gJX != null) {
-              localObject = locala.gJX.replace(",", ";");
+            if (locala.jul != null) {
+              localObject = locala.jul.replace(",", ";");
             }
-            localStringBuilder1.append(locala.gJV).append(";").append(locala.mimeType).append(";").append(locala.gJW).append(";").append(MMApplicationContext.getProcessName()).append(";").append((String)localObject).append(";").append(locala.stack).append("|");
+            localStringBuilder1.append(locala.juj).append(";").append(locala.mimeType).append(";").append(locala.juk).append(";").append(MMApplicationContext.getProcessName()).append(";").append((String)localObject).append(";").append(locala.stack).append("|");
             long l2 = l1 - locala.createTime;
             if (l2 > 600000L)
             {
               Log.i("MicroMsg.MediaCodecProxyUtils", "codecCountCheckImpl diffTime:[%s] ", new Object[] { Long.valueOf(l2) });
-              localStringBuilder2.append(l2).append(";").append(locala.gJV).append(";").append(locala.mimeType).append(";").append(locala.gJW).append(";").append(MMApplicationContext.getProcessName()).append(";").append((String)localObject).append(";").append(locala.stack).append("|");
+              localStringBuilder2.append(l2).append(";").append(locala.juj).append(";").append(locala.mimeType).append(";").append(locala.juk).append(";").append(MMApplicationContext.getProcessName()).append(";").append((String)localObject).append(";").append(locala.stack).append("|");
             }
           }
         }
       }
-      Log.d("MicroMsg.MediaCodecProxyUtils", "codecLeakCheckImpl report return, time diff is %s", new Object[] { Long.valueOf(System.currentTimeMillis() - gJP) });
+      Log.d("MicroMsg.MediaCodecProxyUtils", "codecLeakCheckImpl report return, time diff is %s", new Object[] { Long.valueOf(System.currentTimeMillis() - jud) });
       AppMethodBeat.o(155814);
       return;
       if (paramInt == 12)
       {
-        b.oA(12);
+        b.qS(12);
         if (!TextUtils.isEmpty(localStringBuilder2.toString()))
         {
-          b.oA(192);
+          b.qS(192);
           if (MMApplicationContext.isMainProcess()) {
-            b.w(192, localStringBuilder1.toString());
+            b.x(192, localStringBuilder1.toString());
           }
         }
         if (MMApplicationContext.isMainProcess())
         {
-          b.oA(180);
-          b.w(180, localStringBuilder1.toString());
+          b.qS(180);
+          b.x(180, localStringBuilder1.toString());
           AppMethodBeat.o(155814);
           return;
         }
-        if (aoZ())
+        if (avm())
         {
-          b.oA(184);
+          b.qS(184);
           AppMethodBeat.o(155814);
           return;
         }
-        b.oA(188);
+        b.qS(188);
         AppMethodBeat.o(155814);
         return;
       }
       if (paramInt == 13)
       {
-        b.oA(13);
+        b.qS(13);
         if (!TextUtils.isEmpty(localStringBuilder2.toString()))
         {
-          b.oA(193);
+          b.qS(193);
           if (MMApplicationContext.isMainProcess()) {
-            b.w(193, localStringBuilder1.toString());
+            b.x(193, localStringBuilder1.toString());
           }
         }
         if (MMApplicationContext.isMainProcess())
         {
-          b.oA(181);
-          b.w(181, localStringBuilder1.toString());
+          b.qS(181);
+          b.x(181, localStringBuilder1.toString());
           AppMethodBeat.o(155814);
           return;
         }
-        if (aoZ())
+        if (avm())
         {
-          b.oA(185);
+          b.qS(185);
           AppMethodBeat.o(155814);
           return;
         }
-        b.oA(189);
+        b.qS(189);
         AppMethodBeat.o(155814);
         return;
       }
       if (paramInt == 14)
       {
-        b.oA(14);
+        b.qS(14);
         if (!TextUtils.isEmpty(localStringBuilder2.toString()))
         {
-          b.oA(194);
+          b.qS(194);
           if (MMApplicationContext.isMainProcess()) {
-            b.w(194, localStringBuilder1.toString());
+            b.x(194, localStringBuilder1.toString());
           }
         }
         if (MMApplicationContext.isMainProcess())
         {
-          b.oA(182);
-          b.w(182, localStringBuilder1.toString());
+          b.qS(182);
+          b.x(182, localStringBuilder1.toString());
           AppMethodBeat.o(155814);
           return;
         }
-        if (aoZ())
+        if (avm())
         {
-          b.oA(186);
+          b.qS(186);
           AppMethodBeat.o(155814);
           return;
         }
-        b.oA(190);
+        b.qS(190);
         AppMethodBeat.o(155814);
         return;
       }
       if (paramInt == 15)
       {
-        b.oA(15);
+        b.qS(15);
         if (!TextUtils.isEmpty(localStringBuilder2.toString()))
         {
-          b.oA(195);
+          b.qS(195);
           if (MMApplicationContext.isMainProcess()) {
-            b.w(195, localStringBuilder1.toString());
+            b.x(195, localStringBuilder1.toString());
           }
         }
         if (MMApplicationContext.isMainProcess())
         {
-          b.oA(183);
-          b.w(183, localStringBuilder1.toString());
+          b.qS(183);
+          b.x(183, localStringBuilder1.toString());
           AppMethodBeat.o(155814);
           return;
         }
-        if (aoZ())
+        if (avm())
         {
-          b.oA(187);
+          b.qS(187);
           AppMethodBeat.o(155814);
           return;
         }
-        b.oA(191);
+        b.qS(191);
       }
     }
     AppMethodBeat.o(155814);
@@ -236,12 +236,12 @@ public final class MediaCodecProxyUtils
     {
       if (paramBoolean)
       {
-        b.oA(6);
+        b.qS(6);
         b.a(6, parama);
         AppMethodBeat.o(155817);
         return;
       }
-      b.oA(5);
+      b.qS(5);
       b.a(5, parama);
       AppMethodBeat.o(155817);
       return;
@@ -250,12 +250,12 @@ public final class MediaCodecProxyUtils
     {
       if (paramBoolean)
       {
-        b.oA(4);
+        b.qS(4);
         b.a(4, parama);
         AppMethodBeat.o(155817);
         return;
       }
-      b.oA(3);
+      b.qS(3);
       b.a(3, parama);
     }
     AppMethodBeat.o(155817);
@@ -275,7 +275,7 @@ public final class MediaCodecProxyUtils
       {
         if (TextUtils.equals(arrayOfString[j], paramString))
         {
-          parama.gJW = localMediaCodecInfo.getName();
+          parama.juk = localMediaCodecInfo.getName();
           AppMethodBeat.o(155815);
           return true;
         }
@@ -284,24 +284,24 @@ public final class MediaCodecProxyUtils
       i += 1;
     }
     Log.e("MicroMsg.MediaCodecProxyUtils", "mimeTypeSupportCheck error, type unsupport:[%s]", new Object[] { paramString });
-    b.oA(23);
+    b.qS(23);
     b.a(23, parama);
     AppMethodBeat.o(155815);
     return false;
   }
   
-  public static void aoY()
+  public static void avl()
   {
     AppMethodBeat.i(155813);
-    Log.i("MicroMsg.MediaCodecProxyUtils", "codecCountCheck allsize:[%d], audioEncodeMap:[%d], audioDecodeMap:[%d], videoEncodeMap:[%d], videoDecodeMap:[%d]", new Object[] { Integer.valueOf(gJQ.size() + gJR.size() + gJS.size() + gJT.size()), Integer.valueOf(gJQ.size()), Integer.valueOf(gJR.size()), Integer.valueOf(gJS.size()), Integer.valueOf(gJT.size()) });
-    a(gJR, 12);
-    a(gJQ, 13);
-    a(gJT, 14);
-    a(gJS, 15);
+    Log.i("MicroMsg.MediaCodecProxyUtils", "codecCountCheck allsize:[%d], audioEncodeMap:[%d], audioDecodeMap:[%d], videoEncodeMap:[%d], videoDecodeMap:[%d]", new Object[] { Integer.valueOf(jue.size() + juf.size() + jug.size() + juh.size()), Integer.valueOf(jue.size()), Integer.valueOf(juf.size()), Integer.valueOf(jug.size()), Integer.valueOf(juh.size()) });
+    a(juf, 12);
+    a(jue, 13);
+    a(juh, 14);
+    a(jug, 15);
     AppMethodBeat.o(155813);
   }
   
-  private static boolean aoZ()
+  private static boolean avm()
   {
     AppMethodBeat.i(175887);
     boolean bool = MMApplicationContext.getProcessName().contains(":appbrand");
@@ -318,14 +318,14 @@ public final class MediaCodecProxyUtils
     {
       if (TextUtils.equals(paramString, MediaCodecList.getCodecInfoAt(i).getName()))
       {
-        parama.gJW = paramString;
+        parama.juk = paramString;
         AppMethodBeat.o(155816);
         return true;
       }
       i += 1;
     }
     Log.e("MicroMsg.MediaCodecProxyUtils", "codecNameSupportCheck error, type unsupport:[%s]", new Object[] { paramString });
-    b.oA(24);
+    b.qS(24);
     b.a(24, parama);
     AppMethodBeat.o(155816);
     return false;
@@ -351,41 +351,41 @@ public final class MediaCodecProxyUtils
     AppMethodBeat.o(155818);
   }
   
-  public static boolean oz(int paramInt)
+  public static boolean qR(int paramInt)
   {
     AppMethodBeat.i(155812);
-    if (gJQ.remove(Integer.valueOf(paramInt)) != null)
+    if (jue.remove(Integer.valueOf(paramInt)) != null)
     {
       Log.d("MicroMsg.MediaCodecProxyUtils", "removeMap audioEncodeMap success");
       AppMethodBeat.o(155812);
       return true;
     }
-    if (gJR.remove(Integer.valueOf(paramInt)) != null)
+    if (juf.remove(Integer.valueOf(paramInt)) != null)
     {
       Log.d("MicroMsg.MediaCodecProxyUtils", "removeMap audioDecodeMap success");
       AppMethodBeat.o(155812);
       return true;
     }
-    if (gJS.remove(Integer.valueOf(paramInt)) != null)
+    if (jug.remove(Integer.valueOf(paramInt)) != null)
     {
       Log.d("MicroMsg.MediaCodecProxyUtils", "removeMap videoEncodeMap success");
       AppMethodBeat.o(155812);
       return true;
     }
-    if (gJT.remove(Integer.valueOf(paramInt)) != null)
+    if (juh.remove(Integer.valueOf(paramInt)) != null)
     {
       Log.d("MicroMsg.MediaCodecProxyUtils", "removeMap videoDecodeMap success");
       AppMethodBeat.o(155812);
       return true;
     }
     Log.e("MicroMsg.MediaCodecProxyUtils", "removeMap fail");
-    b.oA(22);
+    b.qS(22);
     b.a(22, new a());
     AppMethodBeat.o(155812);
     return false;
   }
   
-  public static a v(int paramInt, String paramString)
+  public static a w(int paramInt, String paramString)
   {
     AppMethodBeat.i(155811);
     int j = MediaCodecList.getCodecCount();
@@ -408,8 +408,8 @@ public final class MediaCodecProxyUtils
     }
     Log.e("MicroMsg.MediaCodecProxyUtils", "insertMapWithCodecName fail, codecName:[%s]", new Object[] { paramString });
     Object localObject = new a();
-    ((a)localObject).gJW = paramString;
-    b.oA(21);
+    ((a)localObject).juk = paramString;
+    b.qS(21);
     b.a(21, (a)localObject);
     paramString = new a();
     AppMethodBeat.o(155811);
@@ -419,9 +419,9 @@ public final class MediaCodecProxyUtils
   public static final class a
   {
     public long createTime;
-    public boolean gJV;
-    public String gJW;
-    public String gJX;
+    public boolean juj;
+    public String juk;
+    public String jul;
     public String mimeType;
     public String stack;
     
@@ -444,35 +444,35 @@ public final class MediaCodecProxyUtils
         locala = new MediaCodecProxyUtils.a();
       }
       parama = "";
-      if (locala.gJX != null) {
-        parama = locala.gJX.replace(",", ";");
+      if (locala.jul != null) {
+        parama = locala.jul.replace(",", ";");
       }
-      x(paramInt, String.format(Locale.US, "%d,%d,%d,%d,%d,%b,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(MediaCodecProxyUtils.apb().size()), Integer.valueOf(MediaCodecProxyUtils.apc().size()), Integer.valueOf(MediaCodecProxyUtils.apd().size()), Integer.valueOf(MediaCodecProxyUtils.gJT.size()), Boolean.valueOf(locala.gJV), locala.mimeType, locala.gJW, parama, locala.stack }));
+      y(paramInt, String.format(Locale.US, "%d,%d,%d,%d,%d,%b,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(MediaCodecProxyUtils.avo().size()), Integer.valueOf(MediaCodecProxyUtils.avp().size()), Integer.valueOf(MediaCodecProxyUtils.jug.size()), Integer.valueOf(MediaCodecProxyUtils.juh.size()), Boolean.valueOf(locala.juj), locala.mimeType, locala.juk, parama, locala.stack }));
       AppMethodBeat.o(155799);
     }
     
-    public static void oA(int paramInt)
+    public static void qS(int paramInt)
     {
       AppMethodBeat.i(155798);
-      u localu = MediaCodecProxyUtils.apa();
-      if (localu != null) {
-        localu.yU(paramInt);
+      v localv = MediaCodecProxyUtils.avn();
+      if (localv != null) {
+        localv.EW(paramInt);
       }
       AppMethodBeat.o(155798);
     }
     
-    public static void w(int paramInt, String paramString)
+    public static void x(int paramInt, String paramString)
     {
       AppMethodBeat.i(155800);
-      x(paramInt, String.format(Locale.US, "%d,%d,%d,%d,%d,%b,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(MediaCodecProxyUtils.apb().size()), Integer.valueOf(MediaCodecProxyUtils.apc().size()), Integer.valueOf(MediaCodecProxyUtils.apd().size()), Integer.valueOf(MediaCodecProxyUtils.gJT.size()), Boolean.FALSE, "", "", "", paramString }));
+      y(paramInt, String.format(Locale.US, "%d,%d,%d,%d,%d,%b,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(MediaCodecProxyUtils.avo().size()), Integer.valueOf(MediaCodecProxyUtils.avp().size()), Integer.valueOf(MediaCodecProxyUtils.jug.size()), Integer.valueOf(MediaCodecProxyUtils.juh.size()), Boolean.FALSE, "", "", "", paramString }));
       AppMethodBeat.o(155800);
     }
     
-    private static void x(int paramInt, String paramString)
+    private static void y(int paramInt, String paramString)
     {
       AppMethodBeat.i(155801);
-      u localu = MediaCodecProxyUtils.apa();
-      if ((localu != null) && (localu.aoV())) {}
+      v localv = MediaCodecProxyUtils.avn();
+      if ((localv != null) && (localv.avc())) {}
       for (boolean bool = true;; bool = false)
       {
         Log.i("MicroMsg.MediaCodecProxyUtils", "reportKVImpl xSwitch:[%s], reportKey:[%d], kv:[%s]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt), paramString });
@@ -482,14 +482,14 @@ public final class MediaCodecProxyUtils
         AppMethodBeat.o(155801);
         return;
       }
-      localu.DX(paramString);
+      localv.KP(paramString);
       AppMethodBeat.o(155801);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.MediaCodecProxyUtils
  * JD-Core Version:    0.7.0.1
  */

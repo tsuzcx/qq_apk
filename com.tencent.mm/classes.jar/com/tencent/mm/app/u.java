@@ -8,12 +8,12 @@ import android.util.Base64;
 import android.util.StringBuilderPrinter;
 import com.tencent.mars.xlog.LogLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.a;
-import com.tencent.mm.compatible.deviceinfo.af;
+import com.tencent.mm.ag.a;
+import com.tencent.mm.compatible.deviceinfo.ag;
 import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.model.cp;
-import com.tencent.mm.plugin.performance.watchdogs.ThreadWatchDog;
+import com.tencent.mm.model.cq;
+import com.tencent.mm.plugin.performance.watchdogs.e;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.crash.CallbackForReset;
 import com.tencent.mm.sdk.crash.CrashReportFactory;
@@ -35,8 +35,6 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import org.xwalk.core.XWalkEnvironment;
@@ -44,25 +42,25 @@ import org.xwalk.core.XWalkEnvironment;
 public class u
   implements ICrashReporter, MMUncaughtExceptionHandler.IReporter
 {
-  private static String dlA;
-  private static final byte[] dlP;
-  private static volatile ParcelFileDescriptor dlQ;
-  private static final String dlR;
-  private static final long dlq;
-  private static final Set<ICrashReporter.ICrashReportExtraMessageGetter> dlu;
-  private static final Set<ICrashReporter.ICrashReportListener> dlv;
+  private static final long fcW;
+  private static final Set<ICrashReporter.ICrashReportExtraMessageGetter> fda;
+  private static final Set<ICrashReporter.ICrashReportListener> fdb;
+  private static String fdg;
+  private static final byte[] fdu;
+  private static volatile ParcelFileDescriptor fdv;
+  private static final String fdw;
   private static CrashMonitorForJni.CrashExtraMessageGetter sCrashExtraMessageGetter;
   
   static
   {
     AppMethodBeat.i(19455);
-    dlq = Util.nowMilliSecond();
-    dlA = "";
-    dlP = new byte[] { 0 };
-    dlQ = null;
-    dlu = new HashSet();
-    dlv = new HashSet();
-    dlR = "version:" + d.KyO;
+    fcW = Util.nowMilliSecond();
+    fdg = "";
+    fdu = new byte[] { 0 };
+    fdv = null;
+    fda = new HashSet();
+    fdb = new HashSet();
+    fdw = "version:" + d.RAD;
     sCrashExtraMessageGetter = new CrashMonitorForJni.CrashExtraMessageGetter()
     {
       public final String getExtraMessage()
@@ -96,20 +94,20 @@ public class u
   public static boolean a(ParcelFileDescriptor paramParcelFileDescriptor1, ParcelFileDescriptor paramParcelFileDescriptor2, String arg2)
   {
     AppMethodBeat.i(19447);
-    dlA = ???;
-    synchronized (dlP)
+    fdg = ???;
+    synchronized (fdu)
     {
-      dlQ = paramParcelFileDescriptor1;
+      fdv = paramParcelFileDescriptor1;
       paramParcelFileDescriptor1 = new u();
       paramParcelFileDescriptor1.init(MMApplicationContext.getContext(), false);
       CrashReportFactory.setupCrashReporter(paramParcelFileDescriptor1);
-      paramParcelFileDescriptor1 = af.get("ro.product.cpu.abi");
+      paramParcelFileDescriptor1 = ag.get("ro.product.cpu.abi");
       if ((paramParcelFileDescriptor1 == null) || (paramParcelFileDescriptor1.length() == 0) || ((!paramParcelFileDescriptor1.equals("x86")) && (!paramParcelFileDescriptor1.equals("x86-64"))))
       {
         u.class.getClassLoader();
-        j.Ed("wechatCrashForJni");
+        j.KW("wechatCrashForJni");
         CrashMonitorForJni.setCrashExtraMessageGetter(sCrashExtraMessageGetter);
-        paramParcelFileDescriptor1 = dlR;
+        paramParcelFileDescriptor1 = fdw;
         paramParcelFileDescriptor1 = paramParcelFileDescriptor1 + "\n" + WebView.getCrashExtraMessage(MMApplicationContext.getContext()) + String.format(Locale.US, "client_version:%s;", new Object[] { BuildInfo.CLIENT_VERSION }) + "\n";
         Log.i("MicroMsg.MMIsolatedCrashReporter", "append crash extra message : %s", new Object[] { paramParcelFileDescriptor1 });
         CrashMonitorForJni.setClientVersionMsg(paramParcelFileDescriptor1);
@@ -120,7 +118,7 @@ public class u
     }
   }
   
-  private static void ge(String paramString)
+  private static void gO(String paramString)
   {
     AppMethodBeat.i(19448);
     try
@@ -145,28 +143,28 @@ public class u
     }
   }
   
-  private static String gg(String paramString)
+  private static String gQ(String paramString)
   {
     AppMethodBeat.i(19453);
     StringBuilder localStringBuilder = new StringBuilder(256);
     StringBuilderPrinter localStringBuilderPrinter = new StringBuilderPrinter(localStringBuilder);
     Object localObject1 = MMApplicationContext.getContext();
-    localStringBuilderPrinter.println("#client.version=" + d.KyO);
-    localStringBuilderPrinter.println("#client.verhistory=" + cp.sj(4));
+    localStringBuilderPrinter.println("#client.version=" + d.RAD);
+    localStringBuilderPrinter.println("#client.verhistory=" + cq.vg(4));
     localStringBuilderPrinter.println("#client.imei=0123456789ABCDEF");
     localStringBuilderPrinter.println("#accinfo.revision=" + BuildInfo.REV);
     localStringBuilderPrinter.println("#accinfo.uin=0");
     localStringBuilderPrinter.println("#accinfo.dev=");
-    localStringBuilderPrinter.println("#accinfo.runtime=" + (Util.nowMilliSecond() - dlq) + "(" + Util.nullAsNil(dlA) + ")");
+    localStringBuilderPrinter.println("#accinfo.runtime=" + (Util.nowMilliSecond() - fcW) + "(" + Util.nullAsNil(fdg) + ")");
     localStringBuilderPrinter.println("#accinfo.build=" + BuildInfo.TIME + ":" + BuildInfo.HOSTNAME + ":" + ChannelUtil.channelId);
     localStringBuilderPrinter.println("#qbrwoser.corever=" + WebView.getInstalledTbsCoreVersion((Context)localObject1));
     localStringBuilderPrinter.println("#qbrowser.ver=" + WebView.getTbsSDKVersion((Context)localObject1));
-    localStringBuilderPrinter.println("#xsdkver=201201");
+    localStringBuilderPrinter.println("#xsdkver=20210601");
     try
     {
       localStringBuilderPrinter.println("#xcorever=" + XWalkEnvironment.getInstalledNewstVersion(MMApplicationContext.getContext()));
       localStringBuilderPrinter.println("#syswebcore=" + XWalkEnvironment.safeGetChromiunVersion());
-      Log.i("MicroMsg.MMIsolatedCrashReporter", "Activity dump before crash report, [%s]", new Object[] { a.aBz() });
+      Log.i("MicroMsg.MMIsolatedCrashReporter", "Activity dump before crash report, [%s]", new Object[] { a.aJc() });
       localStringBuilderPrinter.println(sCrashExtraMessageGetter.getExtraMessage());
       Object localObject2 = new StringBuilder("#accinfo.env=");
       if (CrashReportFactory.foreground)
@@ -178,8 +176,8 @@ public class u
       try
       {
         localObject2 = new StatFs(Environment.getDataDirectory().getPath());
-        StatFs localStatFs = new StatFs(b.aKD());
-        localObject2 = String.format("%s:%d:%d:%d %s:%d:%d:%d", new Object[] { Environment.getDataDirectory().getAbsolutePath(), Integer.valueOf(((StatFs)localObject2).getBlockSize()), Integer.valueOf(((StatFs)localObject2).getBlockCount()), Integer.valueOf(((StatFs)localObject2).getAvailableBlocks()), b.aKD(), Integer.valueOf(localStatFs.getBlockSize()), Integer.valueOf(localStatFs.getBlockCount()), Integer.valueOf(localStatFs.getAvailableBlocks()) });
+        StatFs localStatFs = new StatFs(b.aSF());
+        localObject2 = String.format("%s:%d:%d:%d %s:%d:%d:%d", new Object[] { Environment.getDataDirectory().getAbsolutePath(), Integer.valueOf(((StatFs)localObject2).getBlockSize()), Integer.valueOf(((StatFs)localObject2).getBlockCount()), Integer.valueOf(((StatFs)localObject2).getAvailableBlocks()), b.aSF(), Integer.valueOf(localStatFs.getBlockSize()), Integer.valueOf(localStatFs.getBlockCount()), Integer.valueOf(localStatFs.getAvailableBlocks()) });
         localObject1 = localObject2;
       }
       catch (Exception localException2)
@@ -202,13 +200,12 @@ public class u
       l2 = Runtime.getRuntime().freeMemory();
       localObject1 = String.format("Runtime Mem[%s:%s:%s:%s] vmSize:%s", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l1 - l2), Long.valueOf(Runtime.getRuntime().maxMemory()), LogLogic.getVmSize() });
       localObject2 = "" + (String)localObject1;
-      i = ThreadWatchDog.getProcessThreadCount();
+      i = e.foE();
       localObject1 = localObject2;
       if (i > 260)
       {
-        localObject1 = new LinkedList();
-        j = ThreadWatchDog.getJavaThreads((List)localObject1);
-        localObject1 = (String)localObject2 + String.format("[threadInfo(%s:%s) %s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), localObject1 });
+        j = e.foD();
+        localObject1 = (String)localObject2 + String.format("[threadInfo(%s:%s) %s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), e.foF() });
       }
       localStringBuilderPrinter.println("#accinfo.memory=".concat(String.valueOf(localObject1)));
       if (!Util.isNullOrNil(paramString)) {
@@ -232,14 +229,14 @@ public class u
   
   public void addCrashReportListener(ICrashReporter.ICrashReportListener paramICrashReportListener)
   {
-    AppMethodBeat.i(231387);
+    AppMethodBeat.i(289857);
     if (paramICrashReportListener == null)
     {
-      AppMethodBeat.o(231387);
+      AppMethodBeat.o(289857);
       return;
     }
-    dlv.add(paramICrashReportListener);
-    AppMethodBeat.o(231387);
+    fdb.add(paramICrashReportListener);
+    AppMethodBeat.o(289857);
   }
   
   public void addExtraMessageGetter(ICrashReporter.ICrashReportExtraMessageGetter paramICrashReportExtraMessageGetter)
@@ -250,27 +247,27 @@ public class u
       AppMethodBeat.o(19454);
       return;
     }
-    dlu.add(paramICrashReportExtraMessageGetter);
+    fda.add(paramICrashReportExtraMessageGetter);
     AppMethodBeat.o(19454);
   }
   
   public void init(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(231386);
+    AppMethodBeat.i(289847);
     MMUncaughtExceptionHandler.setReporter(this);
-    AppMethodBeat.o(231386);
+    AppMethodBeat.o(289847);
   }
   
   public void removeCrashReportListener(ICrashReporter.ICrashReportListener paramICrashReportListener)
   {
-    AppMethodBeat.i(231388);
+    AppMethodBeat.i(289859);
     if (paramICrashReportListener == null)
     {
-      AppMethodBeat.o(231388);
+      AppMethodBeat.o(289859);
       return;
     }
-    dlv.remove(paramICrashReportListener);
-    AppMethodBeat.o(231388);
+    fdb.remove(paramICrashReportListener);
+    AppMethodBeat.o(289859);
   }
   
   public void reportCrashMessage(String paramString1, String paramString2) {}
@@ -301,7 +298,7 @@ public class u
     //   41: dup
     //   42: invokespecial 151	java/lang/StringBuilder:<init>	()V
     //   45: aload_1
-    //   46: invokestatic 500	com/tencent/mm/app/u:gg	(Ljava/lang/String;)Ljava/lang/String;
+    //   46: invokestatic 500	com/tencent/mm/app/u:gQ	(Ljava/lang/String;)Ljava/lang/String;
     //   49: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   52: aload_2
     //   53: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -319,12 +316,12 @@ public class u
     //   79: invokestatic 509	com/tencent/smtt/sdk/QbSdk:replaceLibraryName	(Ljava/lang/String;)Ljava/lang/String;
     //   82: astore 5
     //   84: aload 5
-    //   86: invokestatic 511	com/tencent/mm/app/u:ge	(Ljava/lang/String;)V
-    //   89: getstatic 48	com/tencent/mm/app/u:dlP	[B
+    //   86: invokestatic 511	com/tencent/mm/app/u:gO	(Ljava/lang/String;)V
+    //   89: getstatic 48	com/tencent/mm/app/u:fdu	[B
     //   92: astore 6
     //   94: aload 6
     //   96: monitorenter
-    //   97: getstatic 50	com/tencent/mm/app/u:dlQ	Landroid/os/ParcelFileDescriptor;
+    //   97: getstatic 50	com/tencent/mm/app/u:fdv	Landroid/os/ParcelFileDescriptor;
     //   100: astore_1
     //   101: aload_1
     //   102: ifnull +88 -> 190
@@ -358,13 +355,13 @@ public class u
     //   155: dup
     //   156: new 518	java/io/FileWriter
     //   159: dup
-    //   160: getstatic 50	com/tencent/mm/app/u:dlQ	Landroid/os/ParcelFileDescriptor;
+    //   160: getstatic 50	com/tencent/mm/app/u:fdv	Landroid/os/ParcelFileDescriptor;
     //   163: invokevirtual 524	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
     //   166: invokespecial 527	java/io/FileWriter:<init>	(Ljava/io/FileDescriptor;)V
     //   169: invokespecial 530	java/io/PrintWriter:<init>	(Ljava/io/Writer;)V
     //   172: astore_2
     //   173: aload_2
-    //   174: getstatic 82	com/tencent/mm/app/u:dlR	Ljava/lang/String;
+    //   174: getstatic 82	com/tencent/mm/app/u:fdw	Ljava/lang/String;
     //   177: invokevirtual 533	java/io/PrintWriter:print	(Ljava/lang/String;)V
     //   180: aload_2
     //   181: aload 5
@@ -436,7 +433,6 @@ public class u
     //   186	190	227	finally
     //   190	193	227	finally
     //   220	224	227	finally
-    //   228	231	227	finally
     //   244	256	227	finally
     //   116	127	239	finally
     //   130	140	239	finally
@@ -463,11 +459,11 @@ public class u
     //   17: sipush 19450
     //   20: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   23: return
-    //   24: getstatic 48	com/tencent/mm/app/u:dlP	[B
+    //   24: getstatic 48	com/tencent/mm/app/u:fdu	[B
     //   27: astore 5
     //   29: aload 5
     //   31: monitorenter
-    //   32: getstatic 50	com/tencent/mm/app/u:dlQ	Landroid/os/ParcelFileDescriptor;
+    //   32: getstatic 50	com/tencent/mm/app/u:fdv	Landroid/os/ParcelFileDescriptor;
     //   35: astore_2
     //   36: aload_2
     //   37: ifnull +44 -> 81
@@ -475,7 +471,7 @@ public class u
     //   43: dup
     //   44: new 518	java/io/FileWriter
     //   47: dup
-    //   48: getstatic 50	com/tencent/mm/app/u:dlQ	Landroid/os/ParcelFileDescriptor;
+    //   48: getstatic 50	com/tencent/mm/app/u:fdv	Landroid/os/ParcelFileDescriptor;
     //   51: invokevirtual 524	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
     //   54: invokespecial 527	java/io/FileWriter:<init>	(Ljava/io/FileDescriptor;)V
     //   57: invokespecial 530	java/io/PrintWriter:<init>	(Ljava/io/Writer;)V
@@ -483,7 +479,7 @@ public class u
     //   61: aload_3
     //   62: astore_2
     //   63: aload_3
-    //   64: getstatic 82	com/tencent/mm/app/u:dlR	Ljava/lang/String;
+    //   64: getstatic 82	com/tencent/mm/app/u:fdw	Ljava/lang/String;
     //   67: invokevirtual 533	java/io/PrintWriter:print	(Ljava/lang/String;)V
     //   70: aload_3
     //   71: astore_2
@@ -549,7 +545,6 @@ public class u
     //   77	81	118	finally
     //   81	84	118	finally
     //   111	115	118	finally
-    //   119	122	118	finally
     //   133	145	118	finally
     //   40	61	130	finally
     //   63	70	145	finally
@@ -572,7 +567,7 @@ public class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.app.u
  * JD-Core Version:    0.7.0.1
  */

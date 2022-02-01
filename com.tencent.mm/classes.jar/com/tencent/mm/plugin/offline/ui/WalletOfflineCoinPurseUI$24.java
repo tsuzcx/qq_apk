@@ -11,14 +11,14 @@ final class WalletOfflineCoinPurseUI$24
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(213649);
+    AppMethodBeat.i(276824);
     paramDialogInterface.dismiss();
-    AppMethodBeat.o(213649);
+    AppMethodBeat.o(276824);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.WalletOfflineCoinPurseUI.24
  * JD-Core Version:    0.7.0.1
  */

@@ -1,110 +1,92 @@
 package com.tencent.matrix.resource.c;
 
-import com.tencent.matrix.resource.c.a.a;
+import android.content.Context;
+import android.os.Environment;
+import android.os.Process;
+import com.tencent.matrix.e.c;
+import com.tencent.matrix.e.d;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
-public class b
+public final class b
 {
-  protected final b cZe;
+  protected final int dcU;
+  protected final Context mContext;
   
-  public b(b paramb)
+  public b(Context paramContext)
   {
-    this.cZe = paramb;
+    this(paramContext, (byte)0);
   }
   
-  public void Td()
+  private b(Context paramContext, byte paramByte)
   {
-    if (this.cZe != null) {
-      this.cZe.Td();
-    }
+    this.mContext = paramContext;
+    this.dcU = 5;
   }
   
-  public void a(int paramInt, com.tencent.matrix.resource.c.a.b paramb)
+  public final File XI()
   {
-    if (this.cZe != null) {
-      this.cZe.a(paramInt, paramb);
+    Object localObject;
+    File localFile;
+    if ("mounted".equals(Environment.getExternalStorageState()))
+    {
+      localObject = this.mContext.getExternalCacheDir();
+      localFile = new File((File)localObject, "matrix_resource");
+      c.i("Matrix.DumpStorageManager", "path to store hprof and result: %s", new Object[] { localFile.getAbsolutePath() });
+      if ((localFile.exists()) || ((localFile.mkdirs()) && (localFile.canWrite()))) {
+        break label112;
+      }
+      c.w("Matrix.DumpStorageManager", "failed to allocate new hprof file since path: %s is not writable.", new Object[] { localFile.getAbsolutePath() });
+      localObject = null;
     }
-  }
-  
-  public void a(int paramInt1, com.tencent.matrix.resource.c.a.b paramb, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte)
-  {
-    if (this.cZe != null) {
-      this.cZe.a(paramInt1, paramb, paramInt2, paramInt3, paramInt4, paramArrayOfByte);
+    for (;;)
+    {
+      if (localObject == null)
+      {
+        return null;
+        localObject = this.mContext.getCacheDir();
+        break;
+        label112:
+        File[] arrayOfFile = localFile.listFiles(new FilenameFilter()
+        {
+          public final boolean accept(File paramAnonymousFile, String paramAnonymousString)
+          {
+            return paramAnonymousString.endsWith(".hprof");
+          }
+        });
+        localObject = localFile;
+        if (arrayOfFile != null)
+        {
+          localObject = localFile;
+          if (arrayOfFile.length > this.dcU)
+          {
+            int j = arrayOfFile.length;
+            int i = 0;
+            for (;;)
+            {
+              localObject = localFile;
+              if (i >= j) {
+                break;
+              }
+              localObject = arrayOfFile[i];
+              if ((((File)localObject).exists()) && (!((File)localObject).delete())) {
+                c.w("Matrix.DumpStorageManager", "faile to delete hprof file: " + ((File)localObject).getAbsolutePath(), new Object[0]);
+              }
+              i += 1;
+            }
+          }
+        }
+      }
     }
-  }
-  
-  public void a(com.tencent.matrix.resource.c.a.b paramb, int paramInt)
-  {
-    if (this.cZe != null) {
-      this.cZe.a(paramb, paramInt);
-    }
-  }
-  
-  public void a(com.tencent.matrix.resource.c.a.b paramb, int paramInt1, int paramInt2)
-  {
-    if (this.cZe != null) {
-      this.cZe.a(paramb, paramInt1, paramInt2);
-    }
-  }
-  
-  public void a(com.tencent.matrix.resource.c.a.b paramb1, int paramInt1, int paramInt2, com.tencent.matrix.resource.c.a.b paramb2, byte[] paramArrayOfByte)
-  {
-    if (this.cZe != null) {
-      this.cZe.a(paramb1, paramInt1, paramInt2, paramb2, paramArrayOfByte);
-    }
-  }
-  
-  public void a(com.tencent.matrix.resource.c.a.b paramb1, int paramInt1, com.tencent.matrix.resource.c.a.b paramb2, com.tencent.matrix.resource.c.a.b paramb3, int paramInt2, a[] paramArrayOfa1, a[] paramArrayOfa2)
-  {
-    if (this.cZe != null) {
-      this.cZe.a(paramb1, paramInt1, paramb2, paramb3, paramInt2, paramArrayOfa1, paramArrayOfa2);
-    }
-  }
-  
-  public void a(com.tencent.matrix.resource.c.a.b paramb1, int paramInt, com.tencent.matrix.resource.c.a.b paramb2, byte[] paramArrayOfByte)
-  {
-    if (this.cZe != null) {
-      this.cZe.a(paramb1, paramInt, paramb2, paramArrayOfByte);
-    }
-  }
-  
-  public void b(int paramInt, com.tencent.matrix.resource.c.a.b paramb)
-  {
-    if (this.cZe != null) {
-      this.cZe.b(paramInt, paramb);
-    }
-  }
-  
-  public void b(com.tencent.matrix.resource.c.a.b paramb, int paramInt)
-  {
-    if (this.cZe != null) {
-      this.cZe.b(paramb, paramInt);
-    }
-  }
-  
-  public void b(com.tencent.matrix.resource.c.a.b paramb, int paramInt1, int paramInt2)
-  {
-    if (this.cZe != null) {
-      this.cZe.b(paramb, paramInt1, paramInt2);
-    }
-  }
-  
-  public void c(com.tencent.matrix.resource.c.a.b paramb, int paramInt1, int paramInt2)
-  {
-    if (this.cZe != null) {
-      this.cZe.c(paramb, paramInt1, paramInt2);
-    }
-  }
-  
-  public void d(com.tencent.matrix.resource.c.a.b paramb, int paramInt1, int paramInt2)
-  {
-    if (this.cZe != null) {
-      this.cZe.d(paramb, paramInt1, paramInt2);
-    }
+    return new File((File)localObject, "dump_" + d.getProcessName(this.mContext).replace(".", "_").replace(":", "_") + "_" + Process.myPid() + "_" + new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault()).format(new Date()) + ".hprof");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.resource.c.b
  * JD-Core Version:    0.7.0.1
  */

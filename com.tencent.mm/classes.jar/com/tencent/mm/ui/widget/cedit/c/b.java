@@ -4,200 +4,200 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.text.BreakIterator;
 import java.util.Locale;
 
-public final class b
+public class b
 {
-  private int Pc;
-  private CharSequence QLR;
-  public final BreakIterator QLS;
-  private int avh;
+  private CharSequence YkJ;
+  public final BreakIterator YkK;
+  private int tH;
+  private int tI;
   
   public b()
   {
     this(Locale.getDefault());
-    AppMethodBeat.i(206143);
-    AppMethodBeat.o(206143);
+    AppMethodBeat.i(190550);
+    AppMethodBeat.o(190550);
   }
   
   public b(Locale paramLocale)
   {
-    AppMethodBeat.i(206144);
-    this.QLS = BreakIterator.getWordInstance(paramLocale);
-    AppMethodBeat.o(206144);
+    AppMethodBeat.i(190552);
+    this.YkK = BreakIterator.getWordInstance(paramLocale);
+    AppMethodBeat.o(190552);
   }
   
-  private static boolean aoH(int paramInt)
+  private static boolean axS(int paramInt)
   {
-    AppMethodBeat.i(206152);
+    AppMethodBeat.i(190582);
     paramInt = Character.getType(paramInt);
     if ((paramInt == 23) || (paramInt == 20) || (paramInt == 22) || (paramInt == 30) || (paramInt == 29) || (paramInt == 24) || (paramInt == 21))
     {
-      AppMethodBeat.o(206152);
+      AppMethodBeat.o(190582);
       return true;
     }
-    AppMethodBeat.o(206152);
+    AppMethodBeat.o(190582);
     return false;
   }
   
-  private boolean aoI(int paramInt)
+  private boolean axT(int paramInt)
   {
-    AppMethodBeat.i(206153);
-    if ((this.avh < paramInt) && (paramInt <= this.Pc) && (Character.isLetterOrDigit(Character.codePointBefore(this.QLR, paramInt))))
+    AppMethodBeat.i(190586);
+    if ((this.tH < paramInt) && (paramInt <= this.tI) && (Character.isLetterOrDigit(Character.codePointBefore(this.YkJ, paramInt))))
     {
-      AppMethodBeat.o(206153);
+      AppMethodBeat.o(190586);
       return true;
     }
-    AppMethodBeat.o(206153);
+    AppMethodBeat.o(190586);
     return false;
   }
   
-  private boolean aoJ(int paramInt)
+  private boolean axU(int paramInt)
   {
-    AppMethodBeat.i(206154);
-    if ((this.avh <= paramInt) && (paramInt < this.Pc) && (Character.isLetterOrDigit(Character.codePointAt(this.QLR, paramInt))))
+    AppMethodBeat.i(190588);
+    if ((this.tH <= paramInt) && (paramInt < this.tI) && (Character.isLetterOrDigit(Character.codePointAt(this.YkJ, paramInt))))
     {
-      AppMethodBeat.o(206154);
+      AppMethodBeat.o(190588);
       return true;
     }
-    AppMethodBeat.o(206154);
+    AppMethodBeat.o(190588);
     return false;
   }
   
-  public final int aoD(int paramInt)
+  public final int axO(int paramInt)
   {
-    AppMethodBeat.i(206146);
-    aoK(paramInt);
-    paramInt = this.QLS.following(paramInt);
-    AppMethodBeat.o(206146);
+    AppMethodBeat.i(190559);
+    axV(paramInt);
+    paramInt = this.YkK.following(paramInt);
+    AppMethodBeat.o(190559);
     return paramInt;
   }
   
-  public final int aoE(int paramInt)
+  public final int axP(int paramInt)
   {
-    AppMethodBeat.i(206147);
-    aoK(paramInt);
-    paramInt = this.QLS.preceding(paramInt);
-    AppMethodBeat.o(206147);
+    AppMethodBeat.i(190561);
+    axV(paramInt);
+    paramInt = this.YkK.preceding(paramInt);
+    AppMethodBeat.o(190561);
     return paramInt;
   }
   
-  public final boolean aoF(int paramInt)
+  public final boolean axQ(int paramInt)
   {
-    AppMethodBeat.i(206150);
-    if ((this.avh < paramInt) && (paramInt <= this.Pc))
+    AppMethodBeat.i(190577);
+    if ((this.tH < paramInt) && (paramInt <= this.tI))
     {
-      boolean bool = aoH(Character.codePointBefore(this.QLR, paramInt));
-      AppMethodBeat.o(206150);
+      boolean bool = axS(Character.codePointBefore(this.YkJ, paramInt));
+      AppMethodBeat.o(190577);
       return bool;
     }
-    AppMethodBeat.o(206150);
+    AppMethodBeat.o(190577);
     return false;
   }
   
-  public final boolean aoG(int paramInt)
+  public final boolean axR(int paramInt)
   {
-    AppMethodBeat.i(206151);
-    if ((this.avh <= paramInt) && (paramInt < this.Pc))
+    AppMethodBeat.i(190581);
+    if ((this.tH <= paramInt) && (paramInt < this.tI))
     {
-      boolean bool = aoH(Character.codePointAt(this.QLR, paramInt));
-      AppMethodBeat.o(206151);
+      boolean bool = axS(Character.codePointAt(this.YkJ, paramInt));
+      AppMethodBeat.o(190581);
       return bool;
     }
-    AppMethodBeat.o(206151);
+    AppMethodBeat.o(190581);
     return false;
   }
   
-  public final void aoK(int paramInt)
+  public final void axV(int paramInt)
   {
-    AppMethodBeat.i(206155);
-    if ((this.avh > paramInt) || (paramInt > this.Pc))
+    AppMethodBeat.i(190591);
+    if ((this.tH > paramInt) || (paramInt > this.tI))
     {
-      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Invalid offset: " + paramInt + ". Valid range is [" + this.avh + ", " + this.Pc + "]");
-      AppMethodBeat.o(206155);
+      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Invalid offset: " + paramInt + ". Valid range is [" + this.tH + ", " + this.tI + "]");
+      AppMethodBeat.o(190591);
       throw localIllegalArgumentException;
     }
-    AppMethodBeat.o(206155);
+    AppMethodBeat.o(190591);
   }
   
-  public final int bR(int paramInt, boolean paramBoolean)
+  public final int ce(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(206148);
-    aoK(paramInt);
+    AppMethodBeat.i(190568);
+    axV(paramInt);
     try
     {
-      if (aoJ(paramInt))
+      if (axU(paramInt))
       {
-        if (this.QLS.isBoundary(paramInt))
+        if (this.YkK.isBoundary(paramInt))
         {
-          boolean bool = aoI(paramInt);
+          boolean bool = axT(paramInt);
           if ((!bool) || (!paramBoolean))
           {
-            AppMethodBeat.o(206148);
+            AppMethodBeat.o(190568);
             return paramInt;
           }
         }
-        paramInt = this.QLS.preceding(paramInt);
-        AppMethodBeat.o(206148);
+        paramInt = this.YkK.preceding(paramInt);
+        AppMethodBeat.o(190568);
         return paramInt;
       }
-      if (aoI(paramInt))
+      if (axT(paramInt))
       {
-        paramInt = this.QLS.preceding(paramInt);
-        AppMethodBeat.o(206148);
+        paramInt = this.YkK.preceding(paramInt);
+        AppMethodBeat.o(190568);
         return paramInt;
       }
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(206148);
+      AppMethodBeat.o(190568);
     }
     return -1;
   }
   
-  public final int bS(int paramInt, boolean paramBoolean)
+  public final int cf(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(206149);
-    aoK(paramInt);
-    if (aoI(paramInt))
+    AppMethodBeat.i(190575);
+    axV(paramInt);
+    if (axT(paramInt))
     {
-      if ((this.QLS.isBoundary(paramInt)) && ((!aoJ(paramInt)) || (!paramBoolean)))
+      if ((this.YkK.isBoundary(paramInt)) && ((!axU(paramInt)) || (!paramBoolean)))
       {
-        AppMethodBeat.o(206149);
+        AppMethodBeat.o(190575);
         return paramInt;
       }
-      paramInt = this.QLS.following(paramInt);
-      AppMethodBeat.o(206149);
+      paramInt = this.YkK.following(paramInt);
+      AppMethodBeat.o(190575);
       return paramInt;
     }
-    if (aoJ(paramInt))
+    if (axU(paramInt))
     {
-      paramInt = this.QLS.following(paramInt);
-      AppMethodBeat.o(206149);
+      paramInt = this.YkK.following(paramInt);
+      AppMethodBeat.o(190575);
       return paramInt;
     }
-    AppMethodBeat.o(206149);
+    AppMethodBeat.o(190575);
     return -1;
   }
   
   public final void i(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(206145);
+    AppMethodBeat.i(190557);
     if ((paramInt1 >= 0) && (paramInt2 <= paramCharSequence.length()))
     {
-      this.QLR = paramCharSequence;
-      this.avh = Math.max(0, paramInt1 - 50);
-      this.Pc = Math.min(paramCharSequence.length(), paramInt2 + 50);
-      this.QLS.setText(new a(paramCharSequence, this.avh, this.Pc));
-      AppMethodBeat.o(206145);
+      this.YkJ = paramCharSequence;
+      this.tH = Math.max(0, paramInt1 - 50);
+      this.tI = Math.min(paramCharSequence.length(), paramInt2 + 50);
+      this.YkK.setText(new a(paramCharSequence, this.tH, this.tI));
+      AppMethodBeat.o(190557);
       return;
     }
     paramCharSequence = new IndexOutOfBoundsException("input indexes are outside the CharSequence");
-    AppMethodBeat.o(206145);
+    AppMethodBeat.o(190557);
     throw paramCharSequence;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cedit.c.b
  * JD-Core Version:    0.7.0.1
  */

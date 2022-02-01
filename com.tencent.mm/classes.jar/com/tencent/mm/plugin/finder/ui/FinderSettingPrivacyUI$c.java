@@ -5,17 +5,17 @@ import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
 final class FinderSettingPrivacyUI$c
   implements DialogInterface.OnCancelListener
 {
-  public static final c vOz;
+  public static final c Avl;
   
   static
   {
-    AppMethodBeat.i(252679);
-    vOz = new c();
-    AppMethodBeat.o(252679);
+    AppMethodBeat.i(237054);
+    Avl = new c();
+    AppMethodBeat.o(237054);
   }
   
   public final void onCancel(DialogInterface paramDialogInterface) {}

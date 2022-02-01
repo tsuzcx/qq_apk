@@ -1,13 +1,11 @@
 package com.tencent.mm.plugin.brandservice.ui;
 
 import android.content.Context;
-import android.util.SparseArray;
 import android.widget.AbsListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.rn;
 import com.tencent.mm.protocal.protobuf.ru;
-import com.tencent.mm.protocal.protobuf.sb;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.ui.base.sortview.b;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,36 +16,36 @@ import java.util.Map;
 public class c
   extends b
 {
-  private int cSs;
+  private int cUX;
   protected int mScene;
-  protected String poa;
-  protected int pob;
-  private List<a> poe;
-  private boolean pof;
-  protected boolean pog;
-  protected boolean poh;
-  int poi;
-  protected long[] poj;
-  protected b pok;
+  protected String sxa;
+  protected int sxb;
+  private List<a> sxe;
+  private boolean sxf;
+  protected boolean sxg;
+  protected boolean sxh;
+  int sxi;
+  protected long[] sxj;
+  protected b sxk;
   
   public c(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(5624);
-    this.poe = new ArrayList();
-    F(true, true);
-    this.pof = true;
+    this.sxe = new ArrayList();
+    J(true, true);
+    this.sxf = true;
     b(new long[] { 1L });
     AppMethodBeat.o(5624);
   }
   
-  private int BF(long paramLong)
+  private int HS(long paramLong)
   {
     AppMethodBeat.i(5629);
     int i = 0;
-    while (i < this.poe.size())
+    while (i < this.sxe.size())
     {
-      if (((a)this.poe.get(i)).dDw == paramLong)
+      if (((a)this.sxe.get(i)).fwf == paramLong)
       {
         AppMethodBeat.o(5629);
         return i;
@@ -66,10 +64,10 @@ public class c
     }
     int k = parama.count;
     int i;
-    if (parama.pom)
+    if (parama.sxm)
     {
       i = 1;
-      if (!parama.pon) {
+      if (!parama.sxn) {
         break label40;
       }
     }
@@ -83,30 +81,30 @@ public class c
     }
   }
   
-  private a a(ru paramru)
+  private a a(rn paramrn)
   {
     AppMethodBeat.i(5626);
     a locala = new a();
-    locala.poo = new LinkedList();
-    locala.poo.add(paramru);
-    locala.dDw = paramru.KZg;
-    locala.count = paramru.xKD.size();
-    locala.continueFlag = paramru.KZh;
-    locala.gzD = new LinkedList();
-    locala.gzD.addAll(paramru.xKD);
-    locala.pol = paramru.KZi;
-    locala.pom = this.poh;
-    locala.pon = b(locala);
+    locala.sxo = new LinkedList();
+    locala.sxo.add(paramrn);
+    locala.fwf = paramrn.Sap;
+    locala.count = paramrn.COK.size();
+    locala.continueFlag = paramrn.Saq;
+    locala.jjG = new LinkedList();
+    locala.jjG.addAll(paramrn.COK);
+    locala.sxl = paramrn.Sar;
+    locala.sxm = this.sxh;
+    locala.sxn = b(locala);
     AppMethodBeat.o(5626);
     return locala;
   }
   
   private boolean b(a parama)
   {
-    return (this.pog) && (parama.continueFlag != 0);
+    return (this.sxg) && (parama.continueFlag != 0);
   }
   
-  private void clU()
+  private void czy()
   {
     boolean bool = true;
     for (;;)
@@ -118,45 +116,45 @@ public class c
         HashMap localHashMap = new HashMap();
         i = 0;
         a locala;
-        if (i < this.poe.size())
+        if (i < this.sxe.size())
         {
-          locala = (a)this.poe.get(i);
+          locala = (a)this.sxe.get(i);
           if (locala != null) {
-            localHashMap.put(Long.valueOf(locala.dDw), locala);
+            localHashMap.put(Long.valueOf(locala.fwf), locala);
           }
         }
         else
         {
-          this.poe.clear();
-          this.cSs = 0;
+          this.sxe.clear();
+          this.cUX = 0;
           i = 0;
           int j;
-          if (i < this.poj.length)
+          if (i < this.sxj.length)
           {
-            locala = (a)localHashMap.get(Long.valueOf(this.poj[i]));
+            locala = (a)localHashMap.get(Long.valueOf(this.sxj[i]));
             if (locala == null) {
               break label281;
             }
-            this.poe.add(locala);
-            j = this.cSs;
-            this.cSs = (a(locala) + j);
+            this.sxe.add(locala);
+            j = this.cUX;
+            this.cUX = (a(locala) + j);
             break label281;
           }
-          if (this.poe.size() > 0)
+          if (this.sxe.size() > 0)
           {
-            locala = (a)this.poe.get(this.poe.size() - 1);
-            if (locala.pon == this.pof)
+            locala = (a)this.sxe.get(this.sxe.size() - 1);
+            if (locala.sxn == this.sxf)
             {
-              j = this.cSs;
-              if (!locala.pon) {
+              j = this.cUX;
+              if (!locala.sxn) {
                 continue;
               }
               i = -1;
-              this.cSs = (i + j);
-              if (this.pof) {
+              this.cUX = (i + j);
+              if (this.sxf) {
                 continue;
               }
-              locala.pon = bool;
+              locala.sxn = bool;
             }
           }
           localHashMap.clear();
@@ -176,30 +174,16 @@ public class c
     }
   }
   
-  final a BE(long paramLong)
-  {
-    AppMethodBeat.i(5628);
-    int i = BF(paramLong);
-    if (i >= 0)
-    {
-      a locala = (a)this.poe.get(i);
-      AppMethodBeat.o(5628);
-      return locala;
-    }
-    AppMethodBeat.o(5628);
-    return null;
-  }
-  
-  protected final a CW(int paramInt)
+  protected final a GC(int paramInt)
   {
     AppMethodBeat.i(5630);
     if (paramInt >= 0)
     {
       int i = 0;
       int j = 0;
-      while (i < this.poe.size())
+      while (i < this.sxe.size())
       {
-        a locala = (a)this.poe.get(i);
+        a locala = (a)this.sxe.get(i);
         j += a(locala);
         if (paramInt < j)
         {
@@ -213,7 +197,7 @@ public class c
     return null;
   }
   
-  protected final ru CX(int paramInt)
+  protected final rn GD(int paramInt)
   {
     int k = 0;
     AppMethodBeat.i(5631);
@@ -221,14 +205,14 @@ public class c
     {
       int i = 0;
       int j = 0;
-      while (i < this.poe.size())
+      while (i < this.sxe.size())
       {
-        a locala = (a)this.poe.get(i);
+        a locala = (a)this.sxe.get(i);
         int m = a(locala);
         j += m;
         if (paramInt < j)
         {
-          if (locala.pom)
+          if (locala.sxm)
           {
             i = 1;
             j = i + (j - m);
@@ -236,15 +220,15 @@ public class c
           }
           for (;;)
           {
-            if (i >= locala.poo.size()) {
+            if (i >= locala.sxo.size()) {
               break label156;
             }
-            ru localru = (ru)locala.poo.get(i);
-            j += localru.xKD.size();
+            rn localrn = (rn)locala.sxo.get(i);
+            j += localrn.COK.size();
             if (paramInt < j)
             {
               AppMethodBeat.o(5631);
-              return localru;
+              return localrn;
               i = 0;
               break;
             }
@@ -259,32 +243,32 @@ public class c
     return null;
   }
   
-  public final com.tencent.mm.ui.base.sortview.a CY(int paramInt)
+  public final com.tencent.mm.ui.base.sortview.a GE(int paramInt)
   {
     int k = 0;
     AppMethodBeat.i(5634);
     int i = 0;
     int j = 0;
-    while (i < this.poe.size())
+    while (i < this.sxe.size())
     {
-      Object localObject2 = (a)this.poe.get(i);
+      Object localObject2 = (a)this.sxe.get(i);
       int m = a((a)localObject2);
       j += m;
-      if ((((a)localObject2).pom) && (paramInt == j - m)) {
-        if (((a)localObject2).poo.size() == 0) {
+      if ((((a)localObject2).sxm) && (paramInt == j - m)) {
+        if (((a)localObject2).sxo.size() == 0) {
           localObject1 = null;
         }
       }
       while (localObject1 != null)
       {
-        localObject1 = new d(((ru)localObject1).Title);
+        localObject1 = new d(((rn)localObject1).fwr);
         AppMethodBeat.o(5634);
         return localObject1;
-        localObject1 = (ru)((a)localObject2).poo.get(0);
+        localObject1 = (rn)((a)localObject2).sxo.get(0);
         continue;
-        if ((((a)localObject2).pon) && (paramInt == j - 1))
+        if ((((a)localObject2).sxn) && (paramInt == j - 1))
         {
-          localObject1 = new f(((a)localObject2).dDw, ((a)localObject2).count, this.poa);
+          localObject1 = new f(((a)localObject2).fwf, ((a)localObject2).count, this.sxa);
           AppMethodBeat.o(5634);
           return localObject1;
         }
@@ -292,13 +276,13 @@ public class c
         {
           m = ((a)localObject2).count;
           i = k;
-          if (((a)localObject2).pon) {
+          if (((a)localObject2).sxn) {
             i = 1;
           }
           i += paramInt - j + m;
-          localObject1 = (sb)((a)localObject2).gzD.get(i);
-          long l = ((a)localObject2).dDw;
-          localObject2 = this.pok;
+          localObject1 = (ru)((a)localObject2).jjG.get(i);
+          long l = ((a)localObject2).fwf;
+          localObject2 = this.sxk;
           if (localObject1 == null)
           {
             Log.e("MicroMsg.BrandService.BizSearchResultAdapter", "data is null.");
@@ -315,7 +299,7 @@ public class c
             if ((localObject1 instanceof com.tencent.mm.plugin.brandservice.ui.base.a))
             {
               com.tencent.mm.plugin.brandservice.ui.base.a locala = (com.tencent.mm.plugin.brandservice.ui.base.a)localObject1;
-              locala.Dd(i);
+              locala.GJ(i);
               locala.setPosition(paramInt);
               locala.setReporter((b)localObject2);
             }
@@ -338,16 +322,16 @@ public class c
     return localObject1;
   }
   
-  public Object[] CZ(int paramInt)
+  public Object[] GF(int paramInt)
   {
     AppMethodBeat.i(5635);
-    Object localObject2 = CW(paramInt);
-    Object localObject1 = CX(paramInt);
+    Object localObject2 = GC(paramInt);
+    Object localObject1 = GD(paramInt);
     if (localObject1 != null) {}
-    for (localObject1 = ((ru)localObject1).KZj; localObject2 != null; localObject1 = "")
+    for (localObject1 = ((rn)localObject1).Sas; localObject2 != null; localObject1 = "")
     {
-      localObject2 = ((a)localObject2).pol;
-      paramInt = this.pob;
+      localObject2 = ((a)localObject2).sxl;
+      paramInt = this.sxb;
       AppMethodBeat.o(5635);
       return new Object[] { this, localObject2, Integer.valueOf(paramInt), localObject1 };
     }
@@ -355,101 +339,114 @@ public class c
     return null;
   }
   
-  public final void F(boolean paramBoolean1, boolean paramBoolean2)
+  final a HR(long paramLong)
   {
-    this.poh = paramBoolean1;
-    this.pog = paramBoolean2;
+    AppMethodBeat.i(5628);
+    int i = HS(paramLong);
+    if (i >= 0)
+    {
+      a locala = (a)this.sxe.get(i);
+      AppMethodBeat.o(5628);
+      return locala;
+    }
+    AppMethodBeat.o(5628);
+    return null;
   }
   
-  public void a(ru paramru, boolean paramBoolean)
+  public final void J(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.sxh = paramBoolean1;
+    this.sxg = paramBoolean2;
+  }
+  
+  public void a(rn paramrn, boolean paramBoolean)
   {
     AppMethodBeat.i(5627);
-    if (((this.pof) && (paramru == null)) || (paramru.xKD == null))
+    if (((this.sxf) && (paramrn == null)) || (paramrn.COK == null))
     {
       Log.e("MicroMsg.BrandService.BizSearchResultAdapter", "The content or content.ItemList is null or the mode do not support to append data.");
       AppMethodBeat.o(5627);
       return;
     }
     if (isEmpty()) {
-      this.poi = ((int)(System.currentTimeMillis() / 1000L));
+      this.sxi = ((int)(System.currentTimeMillis() / 1000L));
     }
-    a locala = BE(paramru.KZg);
+    a locala = HR(paramrn.Sap);
     if (locala == null) {
       if (paramBoolean)
       {
-        paramru = a(paramru);
-        this.poe.add(paramru);
-        clU();
+        paramrn = a(paramrn);
+        this.sxe.add(paramrn);
+        czy();
       }
     }
     for (;;)
     {
-      MMHandlerThread.postToMainThread(this.OZP);
+      bfU();
       AppMethodBeat.o(5627);
       return;
-      Log.e("MicroMsg.BrandService.BizSearchResultAdapter", "The type(%d) do not exist.", new Object[] { Long.valueOf(paramru.KZg) });
+      Log.e("MicroMsg.BrandService.BizSearchResultAdapter", "The type(%d) do not exist.", new Object[] { Long.valueOf(paramrn.Sap) });
       AppMethodBeat.o(5627);
       return;
-      if (locala.gzD == null) {
-        locala.gzD = new LinkedList();
+      if (locala.jjG == null) {
+        locala.jjG = new LinkedList();
       }
-      locala.gzD.addAll(paramru.xKD);
-      if (locala.poo == null) {
-        locala.poo = new LinkedList();
+      locala.jjG.addAll(paramrn.COK);
+      if (locala.sxo == null) {
+        locala.sxo = new LinkedList();
       }
-      locala.poo.add(paramru);
-      locala.count += paramru.xKD.size();
-      this.cSs += paramru.xKD.size();
+      locala.sxo.add(paramrn);
+      locala.count += paramrn.COK.size();
+      this.cUX += paramrn.COK.size();
     }
   }
   
   public final void b(long... paramVarArgs)
   {
     if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-      this.poj = paramVarArgs;
+      this.sxj = paramVarArgs;
     }
   }
   
-  public void clV()
+  public void czz()
   {
     AppMethodBeat.i(5633);
     m(null, null);
-    this.poi = 0;
+    this.sxi = 0;
     AppMethodBeat.o(5633);
   }
   
   public int getCount()
   {
-    return this.cSs;
+    return this.cUX;
   }
   
-  public void m(String paramString, List<ru> paramList)
+  public void m(String paramString, List<rn> paramList)
   {
     AppMethodBeat.i(5625);
-    this.poe.clear();
-    this.OZO.clear();
-    MMHandlerThread.postToMainThread(this.OZP);
-    this.cSs = 0;
-    this.poa = paramString;
+    this.sxe.clear();
+    super.clearData();
+    this.cUX = 0;
+    this.sxa = paramString;
     if (paramList != null)
     {
-      this.poi = ((int)(System.currentTimeMillis() / 1000L));
+      this.sxi = ((int)(System.currentTimeMillis() / 1000L));
       int i = 0;
       while (i < paramList.size())
       {
-        paramString = (ru)paramList.get(i);
-        if ((paramString != null) && (paramString.xKD != null) && (paramString.xKD.size() > 0))
+        paramString = (rn)paramList.get(i);
+        if ((paramString != null) && (paramString.COK != null) && (paramString.COK.size() > 0))
         {
           paramString = a(paramString);
-          this.cSs += a(paramString);
-          this.poe.add(paramString);
-          Log.i("MicroMsg.BrandService.BizSearchResultAdapter", "type(%d) , count(%d) , offset(%d)", new Object[] { Long.valueOf(paramString.dDw), Integer.valueOf(paramString.count), Integer.valueOf(this.cSs) });
+          this.cUX += a(paramString);
+          this.sxe.add(paramString);
+          Log.i("MicroMsg.BrandService.BizSearchResultAdapter", "type(%d) , count(%d) , offset(%d)", new Object[] { Long.valueOf(paramString.fwf), Integer.valueOf(paramString.count), Integer.valueOf(this.cUX) });
         }
         i += 1;
       }
-      clU();
+      czy();
     }
-    MMHandlerThread.postToMainThread(this.OZP);
+    bfU();
     AppMethodBeat.o(5625);
   }
   
@@ -459,12 +456,12 @@ public class c
   
   public final void setAddContactScene(int paramInt)
   {
-    this.pob = paramInt;
+    this.sxb = paramInt;
   }
   
   public final void setReporter(b paramb)
   {
-    this.pok = paramb;
+    this.sxk = paramb;
   }
   
   public final void setScene(int paramInt)
@@ -476,12 +473,12 @@ public class c
   {
     public int continueFlag;
     public int count;
-    public long dDw;
-    public List<sb> gzD;
-    public List<String> pol;
-    public boolean pom;
-    public boolean pon;
-    public List<ru> poo;
+    public long fwf;
+    public List<ru> jjG;
+    public List<String> sxl;
+    public boolean sxm;
+    public boolean sxn;
+    public List<rn> sxo;
   }
   
   public static abstract interface b
@@ -491,7 +488,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.c
  * JD-Core Version:    0.7.0.1
  */

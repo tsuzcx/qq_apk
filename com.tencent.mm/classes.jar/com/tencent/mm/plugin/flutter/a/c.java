@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.flutter.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.g;
-import com.tencent.mm.ab.i;
+import com.tencent.mm.ad.g;
+import com.tencent.mm.ad.i;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -11,23 +11,23 @@ import java.util.Set;
 
 public final class c
 {
-  public LinkedHashMap<String, Object> mzT;
-  public String wJd;
-  public String wJe;
-  public HashMap<String, Object> wJf;
-  public int wJg = 0;
-  public boolean wJh = false;
+  public String BCt;
+  public HashMap<String, Object> BCu;
+  public int BCv = 0;
+  public boolean BCw = false;
+  public String fEX;
+  public LinkedHashMap<String, Object> pyo;
   
   public c() {}
   
   public c(String paramString1, String paramString2, LinkedHashMap<String, Object> paramLinkedHashMap)
   {
-    this.wJd = paramString1;
-    this.wJe = paramString2;
-    this.mzT = paramLinkedHashMap;
+    this.BCt = paramString1;
+    this.fEX = paramString2;
+    this.pyo = paramLinkedHashMap;
   }
   
-  public final String bua()
+  public final String bFa()
   {
     AppMethodBeat.i(123738);
     Object localObject = new i();
@@ -35,16 +35,16 @@ public final class c
     Map.Entry localEntry;
     try
     {
-      ((i)localObject).h("plugin", this.wJd);
-      ((i)localObject).h("entry", this.wJe);
-      if (this.mzT != null)
+      ((i)localObject).g("plugin", this.BCt);
+      ((i)localObject).g("entry", this.fEX);
+      if (this.pyo != null)
       {
         i locali1 = new i();
-        localIterator = this.mzT.entrySet().iterator();
+        localIterator = this.pyo.entrySet().iterator();
         while (localIterator.hasNext())
         {
           localEntry = (Map.Entry)localIterator.next();
-          locali1.h((String)localEntry.getKey(), localEntry.getValue());
+          locali1.g((String)localEntry.getKey(), localEntry.getValue());
           continue;
           localObject = ((i)localObject).toString();
         }
@@ -55,34 +55,34 @@ public final class c
     {
       AppMethodBeat.o(123738);
       return localObject;
-      ((i)localObject).h("params", localg);
-      if (this.wJf != null)
+      ((i)localObject).g("params", localg);
+      if (this.BCu != null)
       {
         i locali2 = new i();
-        localIterator = this.wJf.entrySet().iterator();
+        localIterator = this.BCu.entrySet().iterator();
         while (localIterator.hasNext())
         {
           localEntry = (Map.Entry)localIterator.next();
-          locali2.h((String)localEntry.getKey(), localEntry.getValue());
+          locali2.g((String)localEntry.getKey(), localEntry.getValue());
         }
-        ((i)localObject).h("initParams", locali2);
+        ((i)localObject).g("initParams", locali2);
       }
-      ((i)localObject).U("parentPageType", this.wJg);
-      ((i)localObject).w("isInitRoute", this.wJh);
+      ((i)localObject).al("parentPageType", this.BCv);
+      ((i)localObject).y("isInitRoute", this.BCw);
     }
   }
   
   public final String toString()
   {
     AppMethodBeat.i(123739);
-    String str = bua();
+    String str = bFa();
     AppMethodBeat.o(123739);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.a.c
  * JD-Core Version:    0.7.0.1
  */

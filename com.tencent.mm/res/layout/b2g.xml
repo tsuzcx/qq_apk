@@ -5,8 +5,8 @@
         <com.tencent.mm.plugin.account.ui.MMKeyboardUperView android:id="@id/hcl" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/hw" android:paddingRight="@dimen/ir" android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <TextView android:textSize="@dimen/q" android:textColor="@color/a2x" android:id="@id/esg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k5" android:layout_marginBottom="@dimen/hw" android:text="@string/elw" />
-                <com.tencent.mm.ui.base.MMFormInputView android:id="@id/erh" android:focusableInTouchMode="false" form:form_layout="@layout/b85" form:form_title="@string/elb" style="@style/mv" />
-                <com.tencent.mm.ui.base.MMFormInputView android:id="@id/es_" android:focusableInTouchMode="false" form:form_hint="@string/emr" form:form_layout="@layout/b87" form:form_title="@string/emq" style="@style/mv" />
+                <com.tencent.mm.plugin.account.sdk.MMImeFormInputView android:id="@id/erh" android:focusableInTouchMode="false" form:form_layout="@layout/chl" form:form_title="@string/elb" style="@style/mv" />
+                <com.tencent.mm.plugin.account.sdk.MMImeFormInputView android:id="@id/es_" android:focusableInTouchMode="false" form:form_hint="@string/emr" form:form_layout="@layout/chm" form:form_title="@string/emq" style="@style/mv" />
                 <Button android:textSize="@dimen/is" android:textColor="@color/x3" android:id="@id/erw" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k5" android:layout_marginTop="@dimen/hv" android:layout_marginBottom="@dimen/hv" android:text="@string/f1i" />
                 <Button android:id="@id/erp" android:layout_marginTop="@dimen/hs" android:layout_marginBottom="@dimen/ib" android:maxWidth="@dimen/ck" android:text="@string/emf" style="@style/ou" />
             </LinearLayout>

@@ -9,29 +9,32 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.map.a.e;
+import com.tencent.mm.plugin.map.a.f;
+import com.tencent.mm.plugin.map.a.i;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class TipSayingWidget
   extends LinearLayout
 {
+  private ImageView EnL;
+  private Chronometer EnM;
+  private int EnN;
   private Context context;
-  private String gna;
-  private TextView gyt;
-  private ImageView yJS;
-  private Chronometer yJT;
-  private int yJU;
+  private String iRj;
+  private TextView jiw;
   
   public TipSayingWidget(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(55954);
-    this.yJU = 0;
+    this.EnN = 0;
     this.context = paramContext;
-    paramContext = View.inflate(this.context, 2131496717, this);
-    this.yJS = ((ImageView)paramContext.findViewById(2131307225));
-    this.gyt = ((TextView)paramContext.findViewById(2131307227));
-    this.yJT = ((Chronometer)findViewById(2131298721));
+    paramContext = View.inflate(this.context, a.f.tips_saying, this);
+    this.EnL = ((ImageView)paramContext.findViewById(a.e.saying_iv));
+    this.jiw = ((TextView)paramContext.findViewById(a.e.sayint_tips));
+    this.EnM = ((Chronometer)findViewById(a.e.chronometer));
     AppMethodBeat.o(55954);
   }
   
@@ -45,25 +48,25 @@ public class TipSayingWidget
       return;
     }
     setVisibility(0);
-    a.b.A(this.yJS, paramString);
-    if (Util.isNullOrNil(this.gna)) {
-      this.gna = z.aTY();
+    a.b.C(this.EnL, paramString);
+    if (Util.isNullOrNil(this.iRj)) {
+      this.iRj = z.bcZ();
     }
-    if (this.gna.equals(paramString))
+    if (this.iRj.equals(paramString))
     {
-      this.gyt.setText(this.context.getString(2131766876, new Object[] { paramString }));
-      this.yJT.setVisibility(0);
+      this.jiw.setText(this.context.getString(a.i.track_somebody_saying, new Object[] { paramString }));
+      this.EnM.setVisibility(0);
       AppMethodBeat.o(55955);
       return;
     }
-    this.gyt.setText(this.context.getString(2131766876, new Object[] { paramString }));
-    this.yJT.setVisibility(8);
+    this.jiw.setText(this.context.getString(a.i.track_somebody_saying, new Object[] { paramString }));
+    this.EnM.setVisibility(8);
     AppMethodBeat.o(55955);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.TipSayingWidget
  * JD-Core Version:    0.7.0.1
  */

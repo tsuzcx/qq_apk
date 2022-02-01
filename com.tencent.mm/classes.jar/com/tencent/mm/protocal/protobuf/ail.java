@@ -1,122 +1,129 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import e.a.a.c;
+import java.util.LinkedList;
 
 public final class ail
-  extends com.tencent.mm.bw.a
+  extends dyy
 {
-  public String dbPath;
-  public String sql;
-  public String syg;
-  public int syl;
-  public String syr;
-  public String syt;
+  public c OSs;
+  public int tqa;
+  public String tqb;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(220695);
+    AppMethodBeat.i(91439);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.syg != null) {
-        paramVarArgs.e(1, this.syg);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.oE(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      paramVarArgs.aM(2, this.syl);
-      if (this.sql != null) {
-        paramVarArgs.e(3, this.sql);
+      paramVarArgs.aY(2, this.tqa);
+      if (this.tqb != null) {
+        paramVarArgs.f(3, this.tqb);
       }
-      if (this.dbPath != null) {
-        paramVarArgs.e(4, this.dbPath);
+      if (this.OSs != null)
+      {
+        paramVarArgs.oE(4, this.OSs.computeSize());
+        this.OSs.writeFields(paramVarArgs);
       }
-      if (this.syr != null) {
-        paramVarArgs.e(5, this.syr);
-      }
-      if (this.syt != null) {
-        paramVarArgs.e(6, this.syt);
-      }
-      AppMethodBeat.o(220695);
+      AppMethodBeat.o(91439);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.syg == null) {
-        break label502;
+      if (this.BaseResponse == null) {
+        break label526;
       }
     }
-    label502:
-    for (paramInt = g.a.a.b.b.a.f(1, this.syg) + 0;; paramInt = 0)
+    label526:
+    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.bu(2, this.syl);
+      int i = paramInt + g.a.a.b.b.a.bM(2, this.tqa);
       paramInt = i;
-      if (this.sql != null) {
-        paramInt = i + g.a.a.b.b.a.f(3, this.sql);
+      if (this.tqb != null) {
+        paramInt = i + g.a.a.b.b.a.g(3, this.tqb);
       }
       i = paramInt;
-      if (this.dbPath != null) {
-        i = paramInt + g.a.a.b.b.a.f(4, this.dbPath);
+      if (this.OSs != null) {
+        i = paramInt + g.a.a.a.oD(4, this.OSs.computeSize());
       }
-      paramInt = i;
-      if (this.syr != null) {
-        paramInt = i + g.a.a.b.b.a.f(5, this.syr);
-      }
-      i = paramInt;
-      if (this.syt != null) {
-        i = paramInt + g.a.a.b.b.a.f(6, this.syt);
-      }
-      AppMethodBeat.o(220695);
+      AppMethodBeat.o(91439);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(220695);
+        AppMethodBeat.o(91439);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         ail localail = (ail)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(220695);
+          AppMethodBeat.o(91439);
           return -1;
         case 1: 
-          localail.syg = locala.UbS.readString();
-          AppMethodBeat.o(220695);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new jh();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((jh)localObject2).parseFrom((byte[])localObject1);
+            }
+            localail.BaseResponse = ((jh)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(91439);
           return 0;
         case 2: 
-          localail.syl = locala.UbS.zi();
-          AppMethodBeat.o(220695);
+          localail.tqa = ((g.a.a.a.a)localObject1).abFh.AK();
+          AppMethodBeat.o(91439);
           return 0;
         case 3: 
-          localail.sql = locala.UbS.readString();
-          AppMethodBeat.o(220695);
-          return 0;
-        case 4: 
-          localail.dbPath = locala.UbS.readString();
-          AppMethodBeat.o(220695);
-          return 0;
-        case 5: 
-          localail.syr = locala.UbS.readString();
-          AppMethodBeat.o(220695);
+          localail.tqb = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(91439);
           return 0;
         }
-        localail.syt = locala.UbS.readString();
-        AppMethodBeat.o(220695);
+        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new c();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((c)localObject2).parseFrom((byte[])localObject1);
+          }
+          localail.OSs = ((c)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(91439);
         return 0;
       }
-      AppMethodBeat.o(220695);
+      AppMethodBeat.o(91439);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ail
  * JD-Core Version:    0.7.0.1
  */

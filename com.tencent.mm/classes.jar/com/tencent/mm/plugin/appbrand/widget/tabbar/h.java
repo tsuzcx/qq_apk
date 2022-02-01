@@ -2,28 +2,28 @@ package com.tencent.mm.plugin.appbrand.widget.tabbar;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.appcache.bg;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.appcache.bl;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.io.InputStream;
 
 public final class h
   extends d
 {
-  public h(String paramString, c paramc, s params)
+  public h(String paramString, c paramc, v paramv)
   {
-    super(paramString, paramc, params);
+    super(paramString, paramc, paramv);
   }
   
-  public final void cdf()
+  public final void cqr()
   {
     AppMethodBeat.i(135548);
-    final AppBrandRuntime localAppBrandRuntime = this.kGT.getRuntime();
-    if ((localAppBrandRuntime != null) && (this.oFe != null)) {
-      com.tencent.f.h.RTc.aX(new com.tencent.f.i.h()
+    final AppBrandRuntime localAppBrandRuntime = this.nAz.getRuntime();
+    if ((localAppBrandRuntime != null) && (this.rGO != null)) {
+      com.tencent.e.h.ZvG.be(new com.tencent.e.i.h()
       {
         public final String getKey()
         {
@@ -33,10 +33,10 @@ public final class h
         public final void run()
         {
           AppMethodBeat.i(135547);
-          InputStream localInputStream = bg.f(localAppBrandRuntime, h.this.oFe);
+          InputStream localInputStream = bl.f(localAppBrandRuntime, h.this.rGO);
           Bitmap localBitmap = BitmapFactory.decodeStream(localInputStream);
           if (localBitmap == null) {
-            h.this.oFf.a("Failed to load icon via package path", h.this);
+            h.this.rGP.a("Failed to load icon via package path", h.this);
           }
           for (;;)
           {
@@ -45,7 +45,7 @@ public final class h
             }
             AppMethodBeat.o(135547);
             return;
-            h.this.X(localBitmap);
+            h.this.V(localBitmap);
           }
         }
       });
@@ -55,7 +55,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.tabbar.h
  * JD-Core Version:    0.7.0.1
  */

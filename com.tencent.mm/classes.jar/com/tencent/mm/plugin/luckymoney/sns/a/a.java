@@ -10,17 +10,17 @@ import org.json.JSONObject;
 public final class a
   extends m
 {
-  public int yYV;
+  public int EDd;
   
   public a(int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(65406);
-    this.yYV = 0;
+    this.EDd = 0;
     HashMap localHashMap = new HashMap();
     localHashMap.put("flag", String.valueOf(paramInt));
     localHashMap.put("passwd", paramString1);
     localHashMap.put("req_key", String.valueOf(paramString2));
-    this.yYV = paramInt;
+    this.EDd = paramInt;
     setRequestData(localHashMap);
     AppMethodBeat.o(65406);
   }
@@ -46,14 +46,14 @@ public final class a
     Log.i("MicroMsg.NetSceneSnsPayManage", " errCode: " + paramInt + " errMsg :" + paramString);
     if (paramInt == 0)
     {
-      if (this.yYV == 1)
+      if (this.EDd == 1)
       {
-        com.tencent.mm.plugin.luckymoney.sns.b.a.PO(1);
+        com.tencent.mm.plugin.luckymoney.sns.b.a.Wa(1);
         Log.i("MicroMsg.NetSceneSnsPayManage", "onGYNetEnd() setIsOpenSnsPay with 1");
         AppMethodBeat.o(65407);
         return;
       }
-      com.tencent.mm.plugin.luckymoney.sns.b.a.PO(0);
+      com.tencent.mm.plugin.luckymoney.sns.b.a.Wa(0);
       Log.i("MicroMsg.NetSceneSnsPayManage", "onGYNetEnd() setIsOpenSnsPay with 0");
       AppMethodBeat.o(65407);
       return;

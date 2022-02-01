@@ -42,7 +42,7 @@ public class TPMediaCodecVideoDecoder
   
   void configCodec(b paramb)
   {
-    AppMethodBeat.i(189922);
+    AppMethodBeat.i(223596);
     MediaFormat localMediaFormat = MediaFormat.createVideoFormat(this.mMimeType, this.mVideoWidth, this.mVideoHeight);
     if (Build.VERSION.SDK_INT > 22) {
       localMediaFormat.setInteger("rotation-degrees", this.mRotation);
@@ -60,14 +60,14 @@ public class TPMediaCodecVideoDecoder
       localMediaFormat.setByteBuffer("csd-2", ByteBuffer.wrap(this.mCsd2Data));
     }
     paramb.a(localMediaFormat, this.mSurface, this.mMediaCrypto);
-    if (paramb.Sll != null)
+    if (paramb.ZNW != null)
     {
-      paramb = paramb.Sll.hps();
+      paramb = paramb.ZNW.isY();
       if (paramb != null) {
         paramb.setVideoScalingMode(1);
       }
     }
-    AppMethodBeat.o(189922);
+    AppMethodBeat.o(223596);
   }
   
   String getLogTag()
@@ -112,15 +112,15 @@ public class TPMediaCodecVideoDecoder
   
   void processOutputConfigData(b paramb, int paramInt, MediaCodec.BufferInfo paramBufferInfo, TPFrameInfo paramTPFrameInfo)
   {
-    AppMethodBeat.i(189923);
+    AppMethodBeat.i(223598);
     paramTPFrameInfo.errCode = 0;
     processOutputBuffer(paramb, paramInt, paramBufferInfo, paramTPFrameInfo);
-    AppMethodBeat.o(189923);
+    AppMethodBeat.o(223598);
   }
   
   void processOutputFormatChanged(MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(189924);
+    AppMethodBeat.i(223611);
     if ((paramMediaFormat.containsKey("crop-right")) && (paramMediaFormat.containsKey("crop-left")) && (paramMediaFormat.containsKey("crop-bottom")) && (paramMediaFormat.containsKey("crop-top"))) {}
     for (int i = 1;; i = 0)
     {
@@ -134,37 +134,37 @@ public class TPMediaCodecVideoDecoder
         this.mCropBottom = paramMediaFormat.getInteger("crop-bottom");
       }
       TPNativeLog.printLog(2, "TPMediaCodecVideoDecode", "processOutputFormatChanged: mVideoWidth: " + this.mVideoWidth + ", mVideoHeight: " + this.mVideoHeight + ", mCropLeft: " + this.mCropLeft + ", mCropRight: " + this.mCropRight + ", mCropTop: " + this.mCropTop + ", mCropBottom: " + this.mCropBottom);
-      AppMethodBeat.o(189924);
+      AppMethodBeat.o(223611);
       return;
     }
   }
   
   public int setOperateRate(float paramFloat)
   {
-    AppMethodBeat.i(189928);
+    AppMethodBeat.i(223624);
     int i = super.setOperateRate(paramFloat);
-    AppMethodBeat.o(189928);
+    AppMethodBeat.o(223624);
     return i;
   }
   
   public int setOutputSurface(Surface paramSurface)
   {
-    AppMethodBeat.i(189925);
+    AppMethodBeat.i(223615);
     int i = super.setOutputSurface(paramSurface);
-    AppMethodBeat.o(189925);
+    AppMethodBeat.o(223615);
     return i;
   }
   
   public boolean setParamBytes(int paramInt, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(189926);
+    AppMethodBeat.i(223619);
     if (paramInt == 200) {
       this.mCsd0Data = paramArrayOfByte;
     }
     for (;;)
     {
       boolean bool = super.setParamBytes(paramInt, paramArrayOfByte);
-      AppMethodBeat.o(189926);
+      AppMethodBeat.o(223619);
       return bool;
       if (paramInt == 201) {
         this.mCsd1Data = paramArrayOfByte;
@@ -176,21 +176,21 @@ public class TPMediaCodecVideoDecoder
   
   public boolean setParamObject(int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(189927);
+    AppMethodBeat.i(223622);
     if (paramInt == 300)
     {
       this.mMediaCrypto = ((MediaCrypto)paramObject);
-      AppMethodBeat.o(189927);
+      AppMethodBeat.o(223622);
       return true;
     }
     boolean bool = super.setParamObject(paramInt, paramObject);
-    AppMethodBeat.o(189927);
+    AppMethodBeat.o(223622);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.thumbplayer.core.decoder.TPMediaCodecVideoDecoder
  * JD-Core Version:    0.7.0.1
  */

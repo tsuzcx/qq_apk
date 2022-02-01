@@ -1,18 +1,9 @@
 package com.tencent.mm.splash;
 
-import android.content.Context;
-
-public abstract interface b
-{
-  public abstract boolean bR(Context paramContext);
-  
-  public abstract boolean bS(Context paramContext);
-  
-  public abstract void bT(Context paramContext);
-}
+public abstract interface b {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.splash.b
  * JD-Core Version:    0.7.0.1
  */

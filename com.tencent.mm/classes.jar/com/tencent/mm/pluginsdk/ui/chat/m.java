@@ -3,31 +3,34 @@ package com.tencent.mm.pluginsdk.ui.chat;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Message;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.b;
-import android.support.v7.widget.RecyclerView.k;
-import android.support.v7.widget.RecyclerView.l;
-import android.support.v7.widget.RecyclerView.v;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
+import androidx.recyclerview.widget.RecyclerView.k;
+import androidx.recyclerview.widget.RecyclerView.l;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.emoji.b.c.d;
 import com.tencent.mm.emoji.b.c.j.b;
 import com.tencent.mm.emoji.b.c.l;
 import com.tencent.mm.emoji.view.EmojiStatusView;
-import com.tencent.mm.g.b.a.jy;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.b.a.mh;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.m.a.e;
+import com.tencent.mm.plugin.m.a.g;
+import com.tencent.mm.plugin.m.a.h;
+import com.tencent.mm.plugin.m.a.k;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.bj;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.f;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.base.r;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -36,35 +39,35 @@ import java.util.List;
 
 public final class m
 {
-  a Kjv;
-  public jy KnA;
-  public int KnB;
-  b KnC;
-  private RecyclerView.k KnD;
-  int Knr;
-  int Kns;
-  View Knt;
-  j Knu;
-  public boolean Knv;
-  RecyclerView Knw;
-  public final ArrayList<l> Knx;
-  c Kny;
-  public com.tencent.mm.vending.e.c<com.tencent.mm.vending.e.a> Knz;
-  private RecyclerView.l anE;
+  r DqF;
+  public String DqJ;
+  m.a Rki;
+  int Rod;
+  int Roe;
+  View Rof;
+  j Rog;
+  public boolean Roh;
+  RecyclerView Roi;
+  public final ArrayList<l> Roj;
+  c Rok;
+  public com.tencent.mm.vending.e.c<com.tencent.mm.vending.e.a> Rol;
+  public mh Rom;
+  public int Ron;
+  b Roo;
+  private RecyclerView.k Rop;
+  private RecyclerView.l ahp;
   private View mContentView;
   Context mContext;
   public MMHandler mHandler;
-  p ygD;
-  public String ygH;
   
   public m(Context paramContext)
   {
     AppMethodBeat.i(104700);
-    this.ygH = "";
-    this.Knv = true;
-    this.Knx = new ArrayList();
-    this.KnA = new jy();
-    this.KnB = 0;
+    this.DqJ = "";
+    this.Roh = true;
+    this.Roj = new ArrayList();
+    this.Rom = new mh();
+    this.Ron = 0;
     this.mHandler = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
@@ -78,64 +81,64 @@ public final class m
           AppMethodBeat.o(104690);
           return;
           paramAnonymousMessage = m.this;
-          Log.i("MicroMsg.emoji.SuggestEmoticonBubble", "show: %s", new Object[] { Boolean.valueOf(paramAnonymousMessage.Knv) });
+          Log.i("MicroMsg.emoji.SuggestEmoticonBubble", "show: %s", new Object[] { Boolean.valueOf(paramAnonymousMessage.Roh) });
           paramAnonymousMessage.mHandler.removeMessages(20001);
           Object localObject1;
           int i;
-          if (paramAnonymousMessage.Knv)
+          if (paramAnonymousMessage.Roh)
           {
-            localObject1 = paramAnonymousMessage.Kny;
-            Object localObject2 = paramAnonymousMessage.Knx;
-            ((m.c)localObject1).rld.clear();
-            ((m.c)localObject1).rld.addAll((Collection)localObject2);
-            ((RecyclerView.a)localObject1).atj.notifyChanged();
-            localObject1 = paramAnonymousMessage.Knw;
+            localObject1 = paramAnonymousMessage.Rok;
+            Object localObject2 = paramAnonymousMessage.Roj;
+            ((m.c)localObject1).uOp.clear();
+            ((m.c)localObject1).uOp.addAll((Collection)localObject2);
+            ((RecyclerView.a)localObject1).alc.notifyChanged();
+            localObject1 = paramAnonymousMessage.Roi;
             localObject2 = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-            com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).axQ(), "com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble", "show", "()V", "Undefined", "scrollToPosition", "(I)V");
-            ((RecyclerView)localObject1).scrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).pG(0)).intValue());
-            com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble", "show", "()V", "Undefined", "scrollToPosition", "(I)V");
-            if (paramAnonymousMessage.Knx.size() <= 2) {
+            com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aFh(), "com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble", "show", "()V", "Undefined", "scrollToPosition", "(I)V");
+            ((RecyclerView)localObject1).scrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).sf(0)).intValue());
+            com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble", "show", "()V", "Undefined", "scrollToPosition", "(I)V");
+            if (paramAnonymousMessage.Roj.size() <= 2) {
               break label317;
             }
-            i = (int)(paramAnonymousMessage.Knr * 2.5F) + paramAnonymousMessage.Kns * 2;
-            if (!paramAnonymousMessage.ygD.isShowing()) {
+            i = (int)(paramAnonymousMessage.Rod * 2.5F) + paramAnonymousMessage.Roe * 2;
+            if (!paramAnonymousMessage.DqF.isShowing()) {
               break label360;
             }
-            paramAnonymousMessage.ygD.update(i, -2);
+            paramAnonymousMessage.DqF.update(i, -2);
             label247:
-            if (paramAnonymousMessage.Knx.size() < 3) {
+            if (paramAnonymousMessage.Roj.size() < 3) {
               break label450;
             }
             paramAnonymousMessage.mHandler.sendEmptyMessageDelayed(20001, 5000L);
           }
           for (;;)
           {
-            paramAnonymousMessage.G(paramAnonymousMessage.Knx, paramAnonymousMessage.KnB);
-            paramAnonymousMessage.KnA.enl = 0L;
-            paramAnonymousMessage.KnA.bfK();
-            paramAnonymousMessage.KnB = paramAnonymousMessage.Knx.size();
+            paramAnonymousMessage.H(paramAnonymousMessage.Roj, paramAnonymousMessage.Ron);
+            paramAnonymousMessage.Rom.giq = 0L;
+            paramAnonymousMessage.Rom.bpa();
+            paramAnonymousMessage.Ron = paramAnonymousMessage.Roj.size();
             AppMethodBeat.o(104690);
             return;
             label317:
-            if (paramAnonymousMessage.Knx.size() == 2)
+            if (paramAnonymousMessage.Roj.size() == 2)
             {
-              i = paramAnonymousMessage.Knr * 2 + paramAnonymousMessage.Kns * 2;
+              i = paramAnonymousMessage.Rod * 2 + paramAnonymousMessage.Roe * 2;
               break;
             }
-            i = paramAnonymousMessage.Knr + paramAnonymousMessage.Kns * 2;
+            i = paramAnonymousMessage.Rod + paramAnonymousMessage.Roe * 2;
             break;
             label360:
-            paramAnonymousMessage.ygD.setWidth(i);
-            if (paramAnonymousMessage.Knt == null) {
+            paramAnonymousMessage.DqF.setWidth(i);
+            if (paramAnonymousMessage.Rof == null) {
               break label247;
             }
             localObject1 = new int[2];
-            paramAnonymousMessage.Knt.getLocationInWindow((int[])localObject1);
+            paramAnonymousMessage.Rof.getLocationInWindow((int[])localObject1);
             i = localObject1[0];
-            int j = (paramAnonymousMessage.ygD.getWidth() - paramAnonymousMessage.Knt.getWidth()) / 2;
+            int j = (paramAnonymousMessage.DqF.getWidth() - paramAnonymousMessage.Rof.getWidth()) / 2;
             int k = localObject1[1];
-            int m = paramAnonymousMessage.ygD.getHeight();
-            paramAnonymousMessage.ygD.showAtLocation(paramAnonymousMessage.Knt, 0, i - j, k - m);
+            int m = paramAnonymousMessage.DqF.getHeight();
+            paramAnonymousMessage.DqF.showAtLocation(paramAnonymousMessage.Rof, 0, i - j, k - m);
             break label247;
             label450:
             paramAnonymousMessage.mHandler.sendEmptyMessageDelayed(20001, 3000L);
@@ -147,115 +150,85 @@ public final class m
         }
       }
     };
-    this.KnC = new b()
+    this.Roo = new b()
     {
       public final void a(int paramAnonymousInt, l paramAnonymousl)
       {
-        AppMethodBeat.i(199794);
-        if ((paramAnonymousl != null) && (m.this.Knu != null) && (m.this.Kjv != null))
+        AppMethodBeat.i(222910);
+        if ((paramAnonymousl != null) && (m.this.Rog != null) && (m.this.Rki != null))
         {
-          EmojiInfo localEmojiInfo = paramAnonymousl.gWm;
-          if (bj.gCJ().OpN.blk(localEmojiInfo.field_md5) == null) {
-            bj.gCJ().OpN.K(localEmojiInfo);
+          EmojiInfo localEmojiInfo = paramAnonymousl.jHh;
+          if (bj.hyV().VFH.bxK(localEmojiInfo.field_md5) == null) {
+            bj.hyV().VFH.L(localEmojiInfo);
           }
-          m.this.Knu.B(localEmojiInfo);
-          m.this.Kjv.clear();
-          m.this.G(Collections.singletonList(paramAnonymousl), 0);
-          m.this.KnA.eDd = paramAnonymousInt;
-          m.this.KnA.enl = 1L;
-          m.this.KnA.bfK();
-          m.this.KnA.eDd = 0L;
+          m.this.Rog.o(localEmojiInfo);
+          m.this.Rki.clear();
+          m.this.H(Collections.singletonList(paramAnonymousl), 0);
+          m.this.Rom.gzP = paramAnonymousInt;
+          m.this.Rom.giq = 1L;
+          m.this.Rom.bpa();
+          m.this.Rom.gzP = 0L;
         }
-        m.this.ygD.dismiss();
-        AppMethodBeat.o(199794);
+        m.this.DqF.dismiss();
+        AppMethodBeat.o(222910);
       }
     };
-    this.KnD = new RecyclerView.k()
-    {
-      public final boolean a(RecyclerView paramAnonymousRecyclerView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(199795);
-        switch (paramAnonymousMotionEvent.getAction())
-        {
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(199795);
-          return false;
-          m.this.mHandler.sendEmptyMessage(20002);
-          continue;
-          m.this.mHandler.sendEmptyMessageDelayed(20001, 3000L);
-        }
-      }
-      
-      public final void ah(boolean paramAnonymousBoolean) {}
-      
-      public final void b(RecyclerView paramAnonymousRecyclerView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(199796);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousRecyclerView);
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$3", "android/support/v7/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroid/support/v7/widget/RecyclerView;Landroid/view/MotionEvent;)V", this, localb.axR());
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$3", "android/support/v7/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroid/support/v7/widget/RecyclerView;Landroid/view/MotionEvent;)V");
-        AppMethodBeat.o(199796);
-      }
-    };
-    this.anE = new RecyclerView.l()
+    this.Rop = new m.3(this);
+    this.ahp = new RecyclerView.l()
     {
       public final void onScrollStateChanged(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
       {
-        AppMethodBeat.i(199797);
+        AppMethodBeat.i(228644);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousRecyclerView);
-        localb.pH(paramAnonymousInt);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$4", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.axR());
+        localb.bn(paramAnonymousRecyclerView);
+        localb.sg(paramAnonymousInt);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$4", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
         super.onScrollStateChanged(paramAnonymousRecyclerView, paramAnonymousInt);
         if (paramAnonymousInt == 0)
         {
-          m.this.G(null, 0);
-          m.this.KnA.enl = 2L;
-          m.this.KnA.bfK();
+          m.this.H(null, 0);
+          m.this.Rom.giq = 2L;
+          m.this.Rom.bpa();
         }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$4", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-        AppMethodBeat.o(199797);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$4", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
+        AppMethodBeat.o(228644);
       }
       
       public final void onScrolled(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(199798);
+        AppMethodBeat.i(228646);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousRecyclerView);
-        localb.pH(paramAnonymousInt1);
-        localb.pH(paramAnonymousInt2);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$4", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.axR());
+        localb.bn(paramAnonymousRecyclerView);
+        localb.sg(paramAnonymousInt1);
+        localb.sg(paramAnonymousInt2);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$4", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
         super.onScrolled(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$4", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-        AppMethodBeat.o(199798);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$4", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
+        AppMethodBeat.o(228646);
       }
     };
     this.mContext = paramContext;
-    this.Knz = new com.tencent.mm.vending.e.c();
-    this.mContentView = View.inflate(this.mContext, 2131493497, null);
-    this.Knw = ((RecyclerView)this.mContentView.findViewById(2131308761));
-    this.Knw.setLayoutManager(new LinearLayoutManager(0, false));
-    this.Kny = new c();
-    this.Knw.setAdapter(this.Kny);
-    this.Knw.a(this.KnD);
-    this.Knw.a(this.anE);
-    this.Knr = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 102);
-    this.Kns = com.tencent.mm.cb.a.aG(this.mContext, 2131165289);
-    this.ygD = new p(this.mContentView, this.Knr + this.Kns * 2, this.Knr + this.Kns * 2, true);
-    this.ygD.setBackgroundDrawable(new ColorDrawable(0));
-    this.ygD.setOutsideTouchable(true);
-    this.ygD.setFocusable(false);
-    this.ygD.setAnimationStyle(2131821257);
+    this.Rol = new com.tencent.mm.vending.e.c();
+    this.mContentView = View.inflate(this.mContext, a.h.chatting_footer_suggest_emoticon_bubble, null);
+    this.Roi = ((RecyclerView)this.mContentView.findViewById(a.g.suggest_list_view));
+    this.Roi.setLayoutManager(new LinearLayoutManager(0, false));
+    this.Rok = new c();
+    this.Roi.setAdapter(this.Rok);
+    this.Roi.a(this.Rop);
+    this.Roi.a(this.ahp);
+    this.Rod = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 102);
+    this.Roe = com.tencent.mm.ci.a.aY(this.mContext, a.e.Edge_1_5_A);
+    this.DqF = new r(this.mContentView, this.Rod + this.Roe * 2, this.Rod + this.Roe * 2, true);
+    this.DqF.setBackgroundDrawable(new ColorDrawable(0));
+    this.DqF.setOutsideTouchable(true);
+    this.DqF.setFocusable(false);
+    this.DqF.setAnimationStyle(a.k.PopRightBottomAnimation);
     AppMethodBeat.o(104700);
   }
   
-  final void G(List<l> paramList, int paramInt)
+  final void H(List<l> paramList, int paramInt)
   {
-    AppMethodBeat.i(199805);
+    AppMethodBeat.i(225728);
     StringBuilder localStringBuilder3 = new StringBuilder();
     StringBuilder localStringBuilder2 = new StringBuilder();
     StringBuilder localStringBuilder1 = new StringBuilder();
@@ -271,47 +244,42 @@ public final class m
           localStringBuilder2.append("#");
           localStringBuilder1.append("#");
         }
-        localStringBuilder3.append(locall.gWm.field_md5);
+        localStringBuilder3.append(locall.jHh.field_md5);
         localStringBuilder2.append(locall.type);
-        localStringBuilder1.append(locall.gZO);
+        localStringBuilder1.append(locall.jKP);
         i += 1;
       }
     }
-    paramList = this.KnA;
-    paramList.eHs = paramList.x("md5", localStringBuilder3.toString(), true);
-    paramList = this.KnA;
-    paramList.eSY = paramList.x("IsLocalSearch", localStringBuilder2.toString(), true);
-    paramList = this.KnA;
-    paramList.eSW = paramList.x("Index", localStringBuilder1.toString(), true);
-    paramList = this.KnA;
-    paramList.eSU = paramList.x("Word", this.ygH.replace(",", ""), true);
-    AppMethodBeat.o(199805);
+    paramList = this.Rom;
+    paramList.gFT = paramList.z("md5", localStringBuilder3.toString(), true);
+    paramList = this.Rom;
+    paramList.gTt = paramList.z("IsLocalSearch", localStringBuilder2.toString(), true);
+    paramList = this.Rom;
+    paramList.gTr = paramList.z("Index", localStringBuilder1.toString(), true);
+    paramList = this.Rom;
+    paramList.gTp = paramList.z("Word", this.DqJ.replace(",", ""), true);
+    AppMethodBeat.o(225728);
   }
   
   public final void hide()
   {
     AppMethodBeat.i(104701);
     Log.i("MicroMsg.emoji.SuggestEmoticonBubble", "hide: ");
-    if (this.ygD == null)
+    if (this.DqF == null)
     {
       AppMethodBeat.o(104701);
       return;
     }
-    if (this.ygD.isShowing()) {
-      this.ygD.dismiss();
+    if (this.DqF.isShowing()) {
+      this.DqF.dismiss();
     }
     this.mHandler.removeCallbacksAndMessages(null);
-    if (this.Knz != null)
+    if (this.Rol != null)
     {
-      this.Knz.dead();
-      this.Knz = null;
+      this.Rol.dead();
+      this.Rol = null;
     }
     AppMethodBeat.o(104701);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void clear();
   }
   
   static abstract interface b
@@ -322,25 +290,25 @@ public final class m
   final class c
     extends RecyclerView.a<m.d>
   {
-    LinkedList<l> rld;
+    LinkedList<l> uOp;
     
     c()
     {
-      AppMethodBeat.i(199800);
-      this.rld = new LinkedList();
-      AppMethodBeat.o(199800);
+      AppMethodBeat.i(232023);
+      this.uOp = new LinkedList();
+      AppMethodBeat.o(232023);
     }
     
     public final int getItemCount()
     {
-      AppMethodBeat.i(199801);
-      if (this.rld == null)
+      AppMethodBeat.i(232025);
+      if (this.uOp == null)
       {
-        AppMethodBeat.o(199801);
+        AppMethodBeat.o(232025);
         return 0;
       }
-      int i = this.rld.size();
-      AppMethodBeat.o(199801);
+      int i = this.uOp.size();
+      AppMethodBeat.o(232025);
       return i;
     }
   }
@@ -348,25 +316,25 @@ public final class m
   final class d
     extends RecyclerView.v
   {
-    EmojiStatusView EGu;
-    l KnF;
+    EmojiStatusView KUo;
+    l Ror;
     
     d(View paramView)
     {
       super();
       AppMethodBeat.i(104699);
-      this.EGu = ((EmojiStatusView)paramView.findViewById(2131308760));
-      this.EGu.setOnClickListener(new View.OnClickListener()
+      this.KUo = ((EmojiStatusView)paramView.findViewById(a.g.suggest_emoticon_iv));
+      this.KUo.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(199804);
+          AppMethodBeat.i(234695);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          m.this.KnC.a(m.d.this.lR(), m.d.this.KnF);
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          m.this.Roo.a(m.d.this.md(), m.d.this.Ror);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(199804);
+          AppMethodBeat.o(234695);
         }
       });
       AppMethodBeat.o(104699);
@@ -375,7 +343,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.m
  * JD-Core Version:    0.7.0.1
  */

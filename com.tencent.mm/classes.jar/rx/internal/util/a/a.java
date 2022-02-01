@@ -8,24 +8,24 @@ import rx.internal.util.unsafe.Pow2;
 abstract class a<E>
   extends AbstractQueue<E>
 {
-  protected final AtomicReferenceArray<E> TXf;
+  protected final AtomicReferenceArray<E> abAw;
   protected final int mask;
   
   public a(int paramInt)
   {
     paramInt = Pow2.roundToPowerOfTwo(paramInt);
     this.mask = (paramInt - 1);
-    this.TXf = new AtomicReferenceArray(paramInt);
+    this.abAw = new AtomicReferenceArray(paramInt);
   }
   
-  protected final int Px(long paramLong)
+  protected final int XN(long paramLong)
   {
     return (int)paramLong & this.mask;
   }
   
-  protected final E awp(int paramInt)
+  protected final E aGk(int paramInt)
   {
-    return this.TXf.get(paramInt);
+    return this.abAw.get(paramInt);
   }
   
   public void clear()
@@ -40,7 +40,7 @@ abstract class a<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     rx.internal.util.a.a
  * JD-Core Version:    0.7.0.1
  */

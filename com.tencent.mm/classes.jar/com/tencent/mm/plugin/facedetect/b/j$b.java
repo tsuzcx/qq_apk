@@ -4,29 +4,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.c;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.dmf;
+import com.tencent.mm.protocal.protobuf.bqr;
+import com.tencent.mm.protocal.protobuf.jh;
 
 public final class j$b
   extends l.e
   implements l.c
 {
-  public dmf sPK;
+  public bqr wvC;
   
   public j$b()
   {
-    AppMethodBeat.i(103597);
-    this.sPK = new dmf();
-    AppMethodBeat.o(103597);
+    AppMethodBeat.i(103593);
+    this.wvC = new bqr();
+    AppMethodBeat.o(103593);
   }
   
   public final int fromProtoBuf(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(103598);
-    this.sPK = ((dmf)new dmf().parseFrom(paramArrayOfByte));
-    l.a(this, this.sPK.getBaseResponse());
-    int i = this.sPK.getBaseResponse().Ret;
-    AppMethodBeat.o(103598);
+    AppMethodBeat.i(103594);
+    this.wvC = ((bqr)new bqr().parseFrom(paramArrayOfByte));
+    l.a(this, this.wvC.getBaseResponse());
+    int i = this.wvC.getBaseResponse().CqV;
+    AppMethodBeat.o(103594);
     return i;
   }
   
@@ -37,7 +37,7 @@ public final class j$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.j.b
  * JD-Core Version:    0.7.0.1
  */

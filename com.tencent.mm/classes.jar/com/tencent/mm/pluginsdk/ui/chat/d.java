@@ -11,13 +11,19 @@ public final class d
     super(paramContext, null);
   }
   
-  public final void goC() {}
+  public final void DS(boolean paramBoolean) {}
   
-  public final void goD() {}
+  public final void hjm() {}
   
-  public final void goE() {}
+  public final void hjn() {}
   
-  public final void goF() {}
+  public final void hjo() {}
+  
+  public final void hjp() {}
+  
+  public final void hjq() {}
+  
+  public final void hjr() {}
   
   public final void onPause() {}
   
@@ -42,12 +48,10 @@ public final class d
   public final void setTalkerName(String paramString) {}
   
   public final void setToSendText(String paramString) {}
-  
-  public final void zN(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.d
  * JD-Core Version:    0.7.0.1
  */

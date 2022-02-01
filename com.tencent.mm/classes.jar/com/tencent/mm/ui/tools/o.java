@@ -1,62 +1,109 @@
 package com.tencent.mm.ui.tools;
 
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.reflect.Array;
 
 public final class o
 {
-  public static void hp(View paramView)
+  public static float[] a(float[][] paramArrayOfFloat, float[] paramArrayOfFloat1)
   {
-    AppMethodBeat.i(258468);
-    hq(paramView);
-    AppMethodBeat.o(258468);
-  }
-  
-  public static void hq(View paramView)
-  {
-    AppMethodBeat.i(143210);
-    if (paramView == null)
+    float[] arrayOfFloat = new float[3];
+    int i = 0;
+    while (i < 3)
     {
-      AppMethodBeat.o(143210);
-      return;
-    }
-    paramView.setOnTouchListener(new View.OnTouchListener()
-    {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+      float f = 0.0F;
+      int j = 0;
+      while (j < 3)
       {
-        AppMethodBeat.i(143208);
-        switch (paramAnonymousMotionEvent.getAction())
-        {
-        }
-        while ((!paramAnonymousView.isClickable()) && (!paramAnonymousView.isLongClickable()))
-        {
-          AppMethodBeat.o(143208);
-          return true;
-          paramAnonymousView.setAlpha(this.QvN);
-          continue;
-          paramAnonymousView.setAlpha(1.0F);
-        }
-        AppMethodBeat.o(143208);
-        return false;
+        f += paramArrayOfFloat[i][j] * paramArrayOfFloat1[j];
+        j += 1;
       }
-    });
-    AppMethodBeat.o(143210);
+      arrayOfFloat[i] = f;
+      i += 1;
+    }
+    return arrayOfFloat;
   }
   
-  public static void hr(View paramView)
+  public static float[][] b(float[][] paramArrayOfFloat)
   {
-    AppMethodBeat.i(205375);
-    if (paramView != null) {
-      paramView.setOnTouchListener(null);
+    float[][] arrayOfFloat = (float[][])Array.newInstance(Float.TYPE, new int[] { 3, 3 });
+    int i = 0;
+    int j;
+    int k;
+    while (i < 3)
+    {
+      j = 0;
+      if (j < 3)
+      {
+        float[] arrayOfFloat1 = arrayOfFloat[i];
+        if (i == j) {}
+        for (k = 1065353216;; k = 0)
+        {
+          arrayOfFloat1[j] = k;
+          j += 1;
+          break;
+        }
+      }
+      i += 1;
     }
-    AppMethodBeat.o(205375);
+    i = 0;
+    while (i < 3)
+    {
+      float f2 = paramArrayOfFloat[i][i];
+      float f1 = f2;
+      if (f2 == 0.0F)
+      {
+        j = i + 1;
+        while (j < 3)
+        {
+          if (paramArrayOfFloat[j][i] != 0.0F)
+          {
+            k = 0;
+            while (k < 3)
+            {
+              int m = paramArrayOfFloat[j][k];
+              paramArrayOfFloat[j][k] = paramArrayOfFloat[i][k];
+              paramArrayOfFloat[i][k] = m;
+              m = arrayOfFloat[j][k];
+              arrayOfFloat[j][k] = arrayOfFloat[i][k];
+              arrayOfFloat[i][k] = m;
+              k += 1;
+            }
+          }
+          j += 1;
+        }
+        f1 = paramArrayOfFloat[i][i];
+      }
+      j = 0;
+      while (j < 3)
+      {
+        paramArrayOfFloat[i][j] /= f1;
+        arrayOfFloat[i][j] /= f1;
+        j += 1;
+      }
+      j = 0;
+      while (j < 3)
+      {
+        if (j != i)
+        {
+          f1 = paramArrayOfFloat[j][i];
+          k = 0;
+          while (k < 3)
+          {
+            paramArrayOfFloat[j][k] -= paramArrayOfFloat[i][k] * f1;
+            arrayOfFloat[j][k] -= arrayOfFloat[i][k] * f1;
+            k += 1;
+          }
+        }
+        j += 1;
+      }
+      i += 1;
+    }
+    return arrayOfFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.tools.o
  * JD-Core Version:    0.7.0.1
  */

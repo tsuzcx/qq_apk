@@ -29,6 +29,11 @@ public class XmlParser
   public static String getCDataWrapper(String paramString)
   {
     AppMethodBeat.i(168848);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(168848);
+      return "";
+    }
     paramString = String.format("<![CDATA[%s]]>", new Object[] { paramString });
     AppMethodBeat.o(168848);
     return paramString;
@@ -58,12 +63,12 @@ public class XmlParser
   
   public static Map<String, String> parseXml(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(230438);
+    AppMethodBeat.i(193851);
     if (paramString1 == null) {}
     for (int i = -1; i < 0; i = paramString1.indexOf("<".concat(String.valueOf(paramString2))))
     {
       Log.e("MicroMsg.SDK.XmlParser", "can not find the tag <%s>", new Object[] { paramString2 });
-      AppMethodBeat.o(230438);
+      AppMethodBeat.o(193851);
       return null;
     }
     String str = paramString1;
@@ -73,13 +78,13 @@ public class XmlParser
     try
     {
       paramString1 = new MMXmlPullParser(str, paramString2, paramString3).parse();
-      AppMethodBeat.o(230438);
+      AppMethodBeat.o(193851);
       return paramString1;
     }
     catch (Exception paramString1)
     {
       Log.printErrStackTrace("MicroMsg.SDK.XmlParser", paramString1, "[ %s ]", new Object[] { str });
-      AppMethodBeat.o(230438);
+      AppMethodBeat.o(193851);
     }
     return null;
   }
@@ -94,7 +99,7 @@ public class XmlParser
     
     public MMXmlPullParser(String paramString1, String paramString2, String paramString3)
     {
-      AppMethodBeat.i(230433);
+      AppMethodBeat.i(191671);
       this.pathSB = new StringBuilder();
       this.rootTag = paramString2;
       paramString2 = (XmlPullParser)XmlParser.threadLocalPool.get();
@@ -109,29 +114,29 @@ public class XmlParser
       this.xmlParser.setInput(new StringReader(paramString1));
       this.countMap = new HashMap();
       this.result = new HashMap();
-      AppMethodBeat.o(230433);
+      AppMethodBeat.o(191671);
     }
     
     private void handleElementContent()
     {
-      AppMethodBeat.i(230436);
+      AppMethodBeat.i(191697);
       String str = this.xmlParser.getText();
       if (str != null) {
         this.result.put(this.pathSB.toString(), str);
       }
-      AppMethodBeat.o(230436);
+      AppMethodBeat.o(191697);
     }
     
     private void handleEndElement()
     {
-      AppMethodBeat.i(230437);
+      AppMethodBeat.i(191701);
       this.pathSB = this.pathSB.delete(this.pathSB.lastIndexOf("."), this.pathSB.length());
-      AppMethodBeat.o(230437);
+      AppMethodBeat.o(191701);
     }
     
     private void handleStartElement()
     {
-      AppMethodBeat.i(230435);
+      AppMethodBeat.i(191691);
       this.pathSB.append('.').append(this.xmlParser.getName());
       String str = this.pathSB.toString();
       int i = str.hashCode();
@@ -154,12 +159,12 @@ public class XmlParser
         }
         this.countMap.put(Integer.valueOf(i), Integer.valueOf(0));
       }
-      AppMethodBeat.o(230435);
+      AppMethodBeat.o(191691);
     }
     
     public Map<String, String> parse()
     {
-      AppMethodBeat.i(230434);
+      AppMethodBeat.i(191678);
       int i = this.xmlParser.getEventType();
       do
       {
@@ -193,14 +198,14 @@ public class XmlParser
       } while (this.pathSB.length() != 0);
       label81:
       Map localMap = this.result;
-      AppMethodBeat.o(230434);
+      AppMethodBeat.o(191678);
       return localMap;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.XmlParser
  * JD-Core Version:    0.7.0.1
  */

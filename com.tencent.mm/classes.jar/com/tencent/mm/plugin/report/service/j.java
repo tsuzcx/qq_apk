@@ -10,15 +10,15 @@ import com.tencent.mars.smc.SmcLogic.BaseInfo;
 import com.tencent.mars.smc.SmcLogic.ICallBack;
 import com.tencent.mars.smc.SmcProtoBufUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.a;
+import com.tencent.mm.an.t;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.report.b.h;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.report.b.g;
 import com.tencent.mm.protocal.a.a.k;
-import com.tencent.mm.protocal.protobuf.ccs;
+import com.tencent.mm.protocal.protobuf.ckv;
 import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -30,9 +30,9 @@ import java.util.Map;
 public final class j
   implements SmcLogic.ICallBack
 {
-  public static IKVReportNotify Czl = null;
+  public static IKVReportNotify IAk = null;
   
-  public static void aMu(String paramString)
+  public static void aWZ(String paramString)
   {
     AppMethodBeat.i(143926);
     if (Util.isNullOrNil(paramString))
@@ -77,8 +77,8 @@ public final class j
   public final boolean OnSelfMonitorOpLogReady(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(143923);
-    g.aAf();
-    if (!a.azo())
+    h.aHE();
+    if (!b.aGL())
     {
       Log.e("MicroMsg.SmcCallBack", "onReportKVDaSelfMonitorOpLogReady account not ready");
       AppMethodBeat.o(143923);
@@ -89,13 +89,13 @@ public final class j
       k localk = new k();
       localk.parseFrom(paramArrayOfByte);
       paramArrayOfByte = SmcProtoBufUtil.toMMSelfMonitor(localk);
-      if (paramArrayOfByte.Miz <= 0)
+      if (paramArrayOfByte.Tsn <= 0)
       {
         Log.e("KVReportJni", "error selfmonitor count");
         AppMethodBeat.o(143923);
         return true;
       }
-      ((l)g.af(l.class)).aSM().d(new k.a(202, paramArrayOfByte));
+      ((n)h.ae(n.class)).bbK().d(new k.a(202, paramArrayOfByte));
       AppMethodBeat.o(143923);
       return true;
     }
@@ -136,19 +136,19 @@ public final class j
   
   public final void onReportDataReady(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt, String paramString)
   {
-    AppMethodBeat.i(224162);
+    AppMethodBeat.i(194084);
     try
     {
-      if ((Czl != null) && (paramArrayOfByte2 != null) && (paramArrayOfByte2.length > 0)) {
-        Czl.onReportKVDataReady(paramArrayOfByte1, paramArrayOfByte2, paramInt);
+      if ((IAk != null) && (paramArrayOfByte2 != null) && (paramArrayOfByte2.length > 0)) {
+        IAk.onReportKVDataReady(paramArrayOfByte1, paramArrayOfByte2, paramInt);
       }
-      AppMethodBeat.o(224162);
+      AppMethodBeat.o(194084);
       return;
     }
     catch (Exception paramArrayOfByte1)
     {
       Log.e("KVReportJni", paramArrayOfByte1.getMessage());
-      AppMethodBeat.o(224162);
+      AppMethodBeat.o(194084);
     }
   }
   
@@ -165,13 +165,13 @@ public final class j
       }
       try
       {
-        if (h.isRunning())
+        if (g.isRunning())
         {
           Log.i("KVReportJni", "already running");
           return false;
         }
-        paramArrayOfByte = new h();
-        g.aAg().hqi.a(paramArrayOfByte, 0);
+        paramArrayOfByte = new g();
+        h.aHF().kcd.a(paramArrayOfByte, 0);
         return true;
       }
       finally
@@ -189,7 +189,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.report.service.j
  * JD-Core Version:    0.7.0.1
  */

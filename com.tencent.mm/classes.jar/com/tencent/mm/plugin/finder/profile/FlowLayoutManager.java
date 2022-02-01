@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.finder.profile;
 
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.n;
-import android.support.v7.widget.RecyclerView.s;
 import android.util.SparseArray;
 import android.view.View;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.LayoutParams;
+import androidx.recyclerview.widget.RecyclerView.n;
+import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/profile/FlowLayoutManager;", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "allItemFrames", "Landroid/util/SparseArray;", "Landroid/graphics/Rect;", "horizontalSpace", "", "getHorizontalSpace", "()I", "layoutHeight", "getLayoutHeight", "setLayoutHeight", "(I)V", "layoutWidth", "getLayoutWidth", "setLayoutWidth", "left", "lineRows", "", "Lcom/tencent/mm/plugin/finder/profile/FlowLayoutManager$Row;", "right", "row", "self", "getSelf", "()Lcom/tencent/mm/plugin/finder/profile/FlowLayoutManager;", "top", "totalHeight", "getTotalHeight", "setTotalHeight", "usedMaxWidth", "verticalScrollOffset", "verticalSpace", "getVerticalSpace", "canScrollVertically", "", "fillLayout", "", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "formatAboveRow", "generateDefaultLayoutParams", "Landroid/support/v7/widget/RecyclerView$LayoutParams;", "onLayoutChildren", "scrollVerticallyBy", "dy", "Item", "Row", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/FlowLayoutManager;", "Landroidx/recyclerview/widget/RecyclerView$LayoutManager;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "allItemFrames", "Landroid/util/SparseArray;", "Landroid/graphics/Rect;", "horizontalSpace", "", "getHorizontalSpace", "()I", "layoutHeight", "getLayoutHeight", "setLayoutHeight", "(I)V", "layoutWidth", "getLayoutWidth", "setLayoutWidth", "left", "lineRows", "", "Lcom/tencent/mm/plugin/finder/profile/FlowLayoutManager$Row;", "right", "row", "self", "getSelf", "()Lcom/tencent/mm/plugin/finder/profile/FlowLayoutManager;", "top", "totalHeight", "getTotalHeight", "setTotalHeight", "usedMaxWidth", "verticalScrollOffset", "verticalSpace", "getVerticalSpace", "canScrollVertically", "", "fillLayout", "", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "formatAboveRow", "generateDefaultLayoutParams", "Landroidx/recyclerview/widget/RecyclerView$LayoutParams;", "onLayoutChildren", "scrollVerticallyBy", "dy", "Item", "Row", "plugin-finder_release"})
 public final class FlowLayoutManager
   extends RecyclerView.LayoutManager
 {
@@ -23,32 +23,32 @@ public final class FlowLayoutManager
   private int left;
   private int right;
   private int top;
-  private final List<b> uZA;
-  private final SparseArray<Rect> uZB;
-  private final FlowLayoutManager uZt;
-  private int uZu;
-  private int uZv;
-  private int uZw;
-  private int uZx;
-  private int uZy;
-  private b uZz;
+  private final FlowLayoutManager zPN;
+  private int zPO;
+  private int zPP;
+  private int zPQ;
+  private int zPR;
+  private int zPS;
+  private b zPT;
+  private final List<b> zPU;
+  private final SparseArray<Rect> zPV;
   
   public FlowLayoutManager()
   {
-    AppMethodBeat.i(250010);
+    AppMethodBeat.i(270857);
     this.TAG = "Finder.FlowLayoutManager";
     setAutoMeasureEnabled(true);
-    this.uZt = ((FlowLayoutManager)this);
-    this.uZz = new b();
-    this.uZA = ((List)new ArrayList());
-    this.uZB = new SparseArray();
-    AppMethodBeat.o(250010);
+    this.zPN = ((FlowLayoutManager)this);
+    this.zPT = new b();
+    this.zPU = ((List)new ArrayList());
+    this.zPV = new SparseArray();
+    AppMethodBeat.o(270857);
   }
   
-  private final void dmb()
+  private final void dNg()
   {
-    AppMethodBeat.i(250007);
-    List localList = this.uZz.uZF;
+    AppMethodBeat.i(270853);
+    List localList = this.zPT.zPZ;
     int j = ((Collection)localList).size();
     int i = 0;
     a locala;
@@ -61,11 +61,11 @@ public final class FlowLayoutManager
       locala = (a)localList.get(i);
       localView = locala.view;
       k = getPosition(localView);
-      f1 = ((Rect)this.uZB.get(k)).top;
-      float f2 = this.uZz.uZE;
-      if (f1 < (this.uZz.maxHeight - ((a)localList.get(i)).uZC) / 2.0F + f2)
+      f1 = ((Rect)this.zPV.get(k)).top;
+      float f2 = this.zPT.zPY;
+      if (f1 < (this.zPT.maxHeight - ((a)localList.get(i)).zPW) / 2.0F + f2)
       {
-        localObject = (Rect)this.uZB.get(k);
+        localObject = (Rect)this.zPV.get(k);
         if (localObject != null) {
           break label369;
         }
@@ -75,52 +75,52 @@ public final class FlowLayoutManager
     label369:
     for (;;)
     {
-      int m = ((Rect)this.uZB.get(k)).left;
-      f1 = this.uZz.uZE;
-      int n = (int)((this.uZz.maxHeight - ((a)localList.get(i)).uZC) / 2.0F + f1);
-      int i1 = ((Rect)this.uZB.get(k)).right;
-      f1 = this.uZz.uZE;
-      ((Rect)localObject).set(m, n, i1, (int)((this.uZz.maxHeight - ((a)localList.get(i)).uZC) / 2.0F + f1 + getDecoratedMeasuredHeight(localView)));
-      this.uZB.put(k, localObject);
-      p.h(localObject, "<set-?>");
-      locala.rect = ((Rect)localObject);
+      int m = ((Rect)this.zPV.get(k)).left;
+      f1 = this.zPT.zPY;
+      int n = (int)((this.zPT.maxHeight - ((a)localList.get(i)).zPW) / 2.0F + f1);
+      int i1 = ((Rect)this.zPV.get(k)).right;
+      f1 = this.zPT.zPY;
+      ((Rect)localObject).set(m, n, i1, (int)((this.zPT.maxHeight - ((a)localList.get(i)).zPW) / 2.0F + f1 + getDecoratedMeasuredHeight(localView)));
+      this.zPV.put(k, localObject);
+      p.k(localObject, "<set-?>");
+      locala.byG = ((Rect)localObject);
       localList.set(i, locala);
       i += 1;
       break;
-      localObject = this.uZz;
-      p.h(localList, "<set-?>");
-      ((b)localObject).uZF = localList;
-      this.uZA.add(this.uZz);
-      this.uZz = new b();
-      AppMethodBeat.o(250007);
+      localObject = this.zPT;
+      p.k(localList, "<set-?>");
+      ((b)localObject).zPZ = localList;
+      this.zPU.add(this.zPT);
+      this.zPT = new b();
+      AppMethodBeat.o(270853);
       return;
     }
   }
   
-  private final int dmc()
+  private final int dNh()
   {
-    AppMethodBeat.i(250009);
-    int i = this.uZt.getHeight();
-    int j = this.uZt.getPaddingBottom();
-    int k = this.uZt.getPaddingTop();
-    AppMethodBeat.o(250009);
+    AppMethodBeat.i(270856);
+    int i = this.zPN.getHeight();
+    int j = this.zPN.getPaddingBottom();
+    int k = this.zPN.getPaddingTop();
+    AppMethodBeat.o(270856);
     return i - j - k;
   }
   
   private final void g(RecyclerView.s params)
   {
-    AppMethodBeat.i(250006);
-    if ((params.lL()) || (getItemCount() == 0))
+    AppMethodBeat.i(270851);
+    if ((params.lX()) || (getItemCount() == 0))
     {
-      AppMethodBeat.o(250006);
+      AppMethodBeat.o(270851);
       return;
     }
-    new Rect(getPaddingLeft(), getPaddingTop() + this.uZx, getWidth() - getPaddingRight(), this.uZx + (getHeight() - getPaddingBottom()));
-    int k = ((Collection)this.uZA).size();
+    new Rect(getPaddingLeft(), getPaddingTop() + this.zPR, getWidth() - getPaddingRight(), this.zPR + (getHeight() - getPaddingBottom()));
+    int k = ((Collection)this.zPU).size();
     int i = 0;
     while (i < k)
     {
-      params = ((b)this.uZA.get(i)).uZF;
+      params = ((b)this.zPU.get(i)).zPZ;
       int m = ((Collection)params).size();
       int j = 0;
       while (j < m)
@@ -128,13 +128,13 @@ public final class FlowLayoutManager
         View localView = ((a)params.get(j)).view;
         measureChildWithMargins(localView, 0, 0);
         addView(localView);
-        Rect localRect = ((a)params.get(j)).rect;
-        layoutDecoratedWithMargins(localView, localRect.left, localRect.top - this.uZx, localRect.right, localRect.bottom - this.uZx);
+        Rect localRect = ((a)params.get(j)).byG;
+        layoutDecoratedWithMargins(localView, localRect.left, localRect.top - this.zPR, localRect.right, localRect.bottom - this.zPR);
         j += 1;
       }
       i += 1;
     }
-    AppMethodBeat.o(250006);
+    AppMethodBeat.o(270851);
   }
   
   public final boolean canScrollVertically()
@@ -144,47 +144,47 @@ public final class FlowLayoutManager
   
   public final RecyclerView.LayoutParams generateDefaultLayoutParams()
   {
-    AppMethodBeat.i(250004);
+    AppMethodBeat.i(270849);
     RecyclerView.LayoutParams localLayoutParams = new RecyclerView.LayoutParams(-2, -2);
-    AppMethodBeat.o(250004);
+    AppMethodBeat.o(270849);
     return localLayoutParams;
   }
   
   public final void onLayoutChildren(RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(250005);
-    p.h(paramn, "recycler");
-    p.h(params, "state");
+    AppMethodBeat.i(270850);
+    p.k(paramn, "recycler");
+    p.k(params, "state");
     Log.d(this.TAG, "onLayoutChildren");
-    this.uZy = 0;
+    this.zPS = 0;
     int i = this.top;
     int k = 0;
     int j = 0;
-    this.uZz = new b();
-    this.uZA.clear();
-    this.uZB.clear();
+    this.zPT = new b();
+    this.zPU.clear();
+    this.zPV.clear();
     removeAllViews();
     if (getItemCount() == 0)
     {
       detachAndScrapAttachedViews(paramn);
-      this.uZx = 0;
-      AppMethodBeat.o(250005);
+      this.zPR = 0;
+      AppMethodBeat.o(270850);
       return;
     }
-    if ((getChildCount() == 0) && (params.lL()))
+    if ((getChildCount() == 0) && (params.lX()))
     {
-      AppMethodBeat.o(250005);
+      AppMethodBeat.o(270850);
       return;
     }
     detachAndScrapAttachedViews(paramn);
     if (getChildCount() == 0)
     {
-      this.uZu = getWidth();
-      this.uZv = getHeight();
+      this.zPO = getWidth();
+      this.zPP = getHeight();
       this.left = getPaddingLeft();
       this.right = getPaddingRight();
       this.top = getPaddingTop();
-      this.uZw = (this.uZu - this.left - this.right);
+      this.zPQ = (this.zPO - this.left - this.right);
     }
     int i3 = getItemCount();
     int n = 0;
@@ -197,29 +197,29 @@ public final class FlowLayoutManager
     if (n < i3)
     {
       Log.d(this.TAG, "index:".concat(String.valueOf(n)));
-      localView = paramn.cp(n);
-      p.g(localView, "recycler.getViewForPosition(i)");
+      localView = paramn.cR(n);
+      p.j(localView, "recycler.getViewForPosition(i)");
       if (8 == localView.getVisibility()) {
         break label674;
       }
       measureChildWithMargins(localView, 0, 0);
       i1 = getDecoratedMeasuredWidth(localView);
       m = getDecoratedMeasuredHeight(localView);
-      if (k + i1 <= this.uZw)
+      if (k + i1 <= this.zPQ)
       {
         i2 = this.left + k;
-        localRect2 = (Rect)this.uZB.get(n);
+        localRect2 = (Rect)this.zPV.get(n);
         localRect1 = localRect2;
         if (localRect2 == null) {
           localRect1 = new Rect();
         }
         localRect1.set(i2, i, i2 + i1, i + m);
-        this.uZB.put(n, localRect1);
+        this.zPV.put(n, localRect1);
         k += i1;
         j = Math.max(j, m);
-        this.uZz.a(new a(m, localView, localRect1));
-        this.uZz.uZE = i;
-        this.uZz.maxHeight = j;
+        this.zPT.a(new a(m, localView, localRect1));
+        this.zPT.zPY = i;
+        this.zPT.maxHeight = j;
         m = i;
         i = j;
         label417:
@@ -228,8 +228,8 @@ public final class FlowLayoutManager
         i2 = m;
         if (n == getItemCount() - 1)
         {
-          dmb();
-          this.uZy += i;
+          dNg();
+          this.zPS += i;
           i2 = m;
           i1 = k;
           j = i;
@@ -242,28 +242,28 @@ public final class FlowLayoutManager
       k = i1;
       i = i2;
       break;
-      dmb();
+      dNg();
       i2 = i + j;
-      this.uZy += j;
+      this.zPS += j;
       i = this.left;
-      localRect2 = (Rect)this.uZB.get(n);
+      localRect2 = (Rect)this.zPV.get(n);
       localRect1 = localRect2;
       if (localRect2 == null) {
         localRect1 = new Rect();
       }
       localRect1.set(i, i2, i + i1, i2 + m);
-      this.uZB.put(n, localRect1);
-      this.uZz.a(new a(m, localView, localRect1));
-      this.uZz.uZE = i2;
-      this.uZz.maxHeight = m;
+      this.zPV.put(n, localRect1);
+      this.zPT.a(new a(m, localView, localRect1));
+      this.zPT.zPY = i2;
+      this.zPT.maxHeight = m;
       i = m;
       k = i1;
       m = i2;
       break label417;
-      this.uZy = Math.max(this.uZy, dmc());
-      Log.d(this.TAG, "onLayoutChildren totalHeight:" + this.uZy);
+      this.zPS = Math.max(this.zPS, dNh());
+      Log.d(this.TAG, "onLayoutChildren totalHeight:" + this.zPS);
       g(params);
-      AppMethodBeat.o(250005);
+      AppMethodBeat.o(270850);
       return;
       label674:
       i1 = k;
@@ -273,71 +273,71 @@ public final class FlowLayoutManager
   
   public final int scrollVerticallyBy(int paramInt, RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(250008);
-    p.h(paramn, "recycler");
-    p.h(params, "state");
-    Log.d("TAG", "totalHeight:" + this.uZy);
+    AppMethodBeat.i(270855);
+    p.k(paramn, "recycler");
+    p.k(params, "state");
+    Log.d("TAG", "totalHeight:" + this.zPS);
     int i;
-    if (this.uZx + paramInt < 0) {
-      i = -this.uZx;
+    if (this.zPR + paramInt < 0) {
+      i = -this.zPR;
     }
     for (;;)
     {
-      this.uZx += i;
+      this.zPR += i;
       offsetChildrenVertical(-i);
       g(params);
-      AppMethodBeat.o(250008);
+      AppMethodBeat.o(270855);
       return i;
       i = paramInt;
-      if (this.uZx + paramInt > this.uZy - dmc()) {
-        i = this.uZy - dmc() - this.uZx;
+      if (this.zPR + paramInt > this.zPS - dNh()) {
+        i = this.zPS - dNh() - this.zPR;
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/profile/FlowLayoutManager$Item;", "", "useHeight", "", "view", "Landroid/view/View;", "rect", "Landroid/graphics/Rect;", "(Lcom/tencent/mm/plugin/finder/profile/FlowLayoutManager;ILandroid/view/View;Landroid/graphics/Rect;)V", "getRect", "()Landroid/graphics/Rect;", "setRect", "(Landroid/graphics/Rect;)V", "getUseHeight", "()I", "setUseHeight", "(I)V", "getView", "()Landroid/view/View;", "setView", "(Landroid/view/View;)V", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/FlowLayoutManager$Item;", "", "useHeight", "", "view", "Landroid/view/View;", "rect", "Landroid/graphics/Rect;", "(Lcom/tencent/mm/plugin/finder/profile/FlowLayoutManager;ILandroid/view/View;Landroid/graphics/Rect;)V", "getRect", "()Landroid/graphics/Rect;", "setRect", "(Landroid/graphics/Rect;)V", "getUseHeight", "()I", "setUseHeight", "(I)V", "getView", "()Landroid/view/View;", "setView", "(Landroid/view/View;)V", "plugin-finder_release"})
   public final class a
   {
-    Rect rect;
-    int uZC;
+    Rect byG;
     View view;
+    int zPW;
     
     public a(View paramView, Rect paramRect)
     {
-      AppMethodBeat.i(250001);
-      this.uZC = paramView;
+      AppMethodBeat.i(269411);
+      this.zPW = paramView;
       this.view = paramRect;
-      this.rect = localObject;
-      AppMethodBeat.o(250001);
+      this.byG = localObject;
+      AppMethodBeat.o(269411);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/profile/FlowLayoutManager$Row;", "", "(Lcom/tencent/mm/plugin/finder/profile/FlowLayoutManager;)V", "cuTop", "", "getCuTop", "()F", "setCuTop", "(F)V", "maxHeight", "getMaxHeight", "setMaxHeight", "views", "", "Lcom/tencent/mm/plugin/finder/profile/FlowLayoutManager$Item;", "Lcom/tencent/mm/plugin/finder/profile/FlowLayoutManager;", "getViews", "()Ljava/util/List;", "setViews", "(Ljava/util/List;)V", "addViews", "", "view", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/FlowLayoutManager$Row;", "", "(Lcom/tencent/mm/plugin/finder/profile/FlowLayoutManager;)V", "cuTop", "", "getCuTop", "()F", "setCuTop", "(F)V", "maxHeight", "getMaxHeight", "setMaxHeight", "views", "", "Lcom/tencent/mm/plugin/finder/profile/FlowLayoutManager$Item;", "Lcom/tencent/mm/plugin/finder/profile/FlowLayoutManager;", "getViews", "()Ljava/util/List;", "setViews", "(Ljava/util/List;)V", "addViews", "", "view", "plugin-finder_release"})
   public final class b
   {
     float maxHeight;
-    float uZE;
-    List<FlowLayoutManager.a> uZF;
+    float zPY;
+    List<FlowLayoutManager.a> zPZ;
     
     public b()
     {
-      AppMethodBeat.i(250003);
-      this.uZF = ((List)new ArrayList());
-      AppMethodBeat.o(250003);
+      AppMethodBeat.i(266605);
+      this.zPZ = ((List)new ArrayList());
+      AppMethodBeat.o(266605);
     }
     
     public final void a(FlowLayoutManager.a parama)
     {
-      AppMethodBeat.i(250002);
-      p.h(parama, "view");
-      this.uZF.add(parama);
-      AppMethodBeat.o(250002);
+      AppMethodBeat.i(266604);
+      p.k(parama, "view");
+      this.zPZ.add(parama);
+      AppMethodBeat.o(266604);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.profile.FlowLayoutManager
  * JD-Core Version:    0.7.0.1
  */

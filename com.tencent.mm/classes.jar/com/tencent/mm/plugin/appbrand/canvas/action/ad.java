@@ -21,7 +21,7 @@ public final class ad
     if (paramCanvas.isHardwareAccelerated()) {
       if ((paramCanvas instanceof f))
       {
-        ((f)paramCanvas).l(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4);
+        ((f)paramCanvas).m(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4);
         com.tencent.mm.sdk.platformtools.Log.v("MicroMsg.SetPixelsAction", "MCanvas.clearRect(x : %s, y : %s, w : %s, h : %s)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
       }
     }
@@ -29,28 +29,28 @@ public final class ad
     {
       AppMethodBeat.o(144964);
       return false;
-      if (paramd.kZq != null)
+      if (paramd.nTB != null)
       {
-        paramCanvas.drawRect(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4, paramd.kZq);
+        paramCanvas.drawRect(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4, paramd.nTB);
         com.tencent.mm.sdk.platformtools.Log.v("MicroMsg.SetPixelsAction", "clearRect(x : %s, y : %s, w : %s, h : %s) with custom clearPaint", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
       }
       else
       {
         com.tencent.mm.sdk.platformtools.Log.v("MicroMsg.SetPixelsAction", "clearRect(x : %s, y : %s, w : %s, h : %s) failed", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
         continue;
-        if (paramd.kZq != null)
+        if (paramd.nTB != null)
         {
-          paramCanvas.drawRect(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4, paramd.kZq);
+          paramCanvas.drawRect(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4, paramd.nTB);
           com.tencent.mm.sdk.platformtools.Log.v("MicroMsg.SetPixelsAction", "clearRect(x : %s, y : %s, w : %s, h : %s) with custom clearPaint", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
         }
         else
         {
-          paramCanvas.drawRect(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4, paramd.kZp);
+          paramCanvas.drawRect(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4, paramd.nTA);
           com.tencent.mm.sdk.platformtools.Log.v("MicroMsg.SetPixelsAction", "clearRect(x : %s, y : %s, w : %s, h : %s) with default clearPaint", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
         }
       }
     }
-    paramCanvas.drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new RectF(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4), paramd.kZl);
+    paramCanvas.drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new RectF(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4), paramd.nTw);
     AppMethodBeat.o(144964);
     return true;
   }
@@ -91,7 +91,7 @@ public final class ad
     return false;
   }
   
-  public final BaseDrawActionArg bzj()
+  public final BaseDrawActionArg bKy()
   {
     AppMethodBeat.i(144962);
     SetPixelsActionArg localSetPixelsActionArg = new SetPixelsActionArg();
@@ -106,7 +106,7 @@ public final class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.ad
  * JD-Core Version:    0.7.0.1
  */

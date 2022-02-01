@@ -90,7 +90,7 @@ public class app_brand_launcher_blank_tip_icon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.app_brand_launcher_blank_tip_icon
  * JD-Core Version:    0.7.0.1
  */

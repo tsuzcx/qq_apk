@@ -7,10 +7,13 @@
         <ImageView android:id="@id/hz9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginBottom="15.0dip" android:src="@drawable/cjl" android:scaleType="centerInside" android:layout_alignParentBottom="true" />
     </RelativeLayout>
     <ImageView android:id="@id/mw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="1.0dip" android:layout_marginBottom="1.0dip" android:scaleType="centerCrop" />
-    <com.tencent.mm.plugin.sns.ad.widget.twistad.TwistRoateCardsView android:id="@id/iz_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/dka" android:layout="@layout/bc5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/cp3" android:layout="@layout/ad5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <FrameLayout android:layout_gravity="top" android:id="@id/fcw" android:background="@raw/sns_ad_native_landing_page_navigation" android:paddingTop="5.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="47.0dip">
         <ImageView android:id="@id/hvn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@drawable/bw5" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/h7" android:gravity="center_vertical" android:layout_gravity="center|left" android:id="@id/kio" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/jul" android:drawableLeft="@drawable/bwc" />
         <ImageView android:layout_gravity="right" android:id="@id/hw4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/bwi" />
         <TextView android:textColor="@color/a2x" android:layout_gravity="center|right" android:id="@id/hw5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" />
     </FrameLayout>
+    <ViewStub android:id="@id/khd" android:layout="@layout/cbg" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="47.0dip" />
 </FrameLayout>

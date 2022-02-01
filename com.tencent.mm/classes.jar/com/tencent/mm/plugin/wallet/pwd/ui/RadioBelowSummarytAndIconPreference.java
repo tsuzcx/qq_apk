@@ -11,31 +11,33 @@ import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class RadioBelowSummarytAndIconPreference
   extends Preference
 {
-  private LinearLayout HID;
-  private ImageView HIE;
-  private View HIF;
-  View.OnClickListener HIG;
-  int aeN;
+  private LinearLayout OAv;
+  private ImageView OAw;
+  private View OAx;
+  View.OnClickListener OAy;
+  int kV;
   private View mView;
   
   public RadioBelowSummarytAndIconPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.aeN = 0;
+    this.kV = 0;
   }
   
   public RadioBelowSummarytAndIconPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(69580);
-    this.aeN = 0;
-    setLayoutResource(2131495538);
+    this.kV = 0;
+    setLayoutResource(a.g.mm_preference);
     AppMethodBeat.o(69580);
   }
   
@@ -43,11 +45,11 @@ public class RadioBelowSummarytAndIconPreference
   {
     AppMethodBeat.i(69582);
     super.onBindView(paramView);
-    alO(8);
-    if ((this.HIE != null) && (this.HIG != null) && (!Util.isEqual(0, this.aeN)))
+    auO(8);
+    if ((this.OAw != null) && (this.OAy != null) && (!Util.isEqual(0, this.kV)))
     {
-      this.HIE.setImageResource(this.aeN);
-      this.HIE.post(new Runnable()
+      this.OAw.setImageResource(this.kV);
+      this.OAw.post(new Runnable()
       {
         public final void run()
         {
@@ -58,34 +60,34 @@ public class RadioBelowSummarytAndIconPreference
           AppMethodBeat.o(69578);
         }
       });
-      this.HIF.setOnClickListener(new View.OnClickListener()
+      this.OAx.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(69579);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/wallet/pwd/ui/RadioBelowSummarytAndIconPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/wallet/pwd/ui/RadioBelowSummarytAndIconPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           RadioBelowSummarytAndIconPreference.b(RadioBelowSummarytAndIconPreference.this).onClick(paramAnonymousView);
           a.a(this, "com/tencent/mm/plugin/wallet/pwd/ui/RadioBelowSummarytAndIconPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(69579);
         }
       });
     }
-    while (this.HID != null) {
-      if (this.OZG != 0)
+    while (this.OAv != null) {
+      if (this.WsP != 0)
       {
-        this.HID.removeAllViews();
-        View.inflate(this.mContext, this.OZG, this.HID);
+        this.OAv.removeAllViews();
+        View.inflate(this.mContext, this.WsP, this.OAv);
         AppMethodBeat.o(69582);
         return;
-        if (this.HIE != null) {
-          this.HIE.setVisibility(8);
+        if (this.OAw != null) {
+          this.OAw.setVisibility(8);
         }
       }
       else
       {
-        this.HID.setVisibility(8);
+        this.OAv.setVisibility(8);
       }
     }
     AppMethodBeat.o(69582);
@@ -97,12 +99,12 @@ public class RadioBelowSummarytAndIconPreference
     if (this.mView == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.f.content);
       localViewGroup.removeAllViews();
-      this.HID = ((LinearLayout)paramViewGroup.findViewById(16908312));
-      View.inflate(this.mContext, 2131495628, localViewGroup);
-      this.HIE = ((ImageView)localViewGroup.findViewById(2131308772));
-      this.HIF = localViewGroup.findViewById(2131308770);
+      this.OAv = ((LinearLayout)paramViewGroup.findViewById(16908312));
+      View.inflate(this.mContext, a.g.mm_preference_summary_icon_below, localViewGroup);
+      this.OAw = ((ImageView)localViewGroup.findViewById(a.f.summary_icon));
+      this.OAx = localViewGroup.findViewById(a.f.summary_click);
       this.mView = paramViewGroup;
     }
     paramViewGroup = this.mView;

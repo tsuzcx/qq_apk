@@ -19,7 +19,7 @@ public class f
     AppMethodBeat.i(72153);
     if ((paramMMActivity instanceof WalletPayUSecurityQuestionAnswerUI))
     {
-      paramMMActivity = new a(paramMMActivity, parami, this.dQL);
+      paramMMActivity = new a(paramMMActivity, parami, this.fKb);
       AppMethodBeat.o(72153);
       return paramMMActivity;
     }
@@ -50,14 +50,14 @@ public class f
     AppMethodBeat.o(72152);
   }
   
-  public final String dKC()
+  public final String epb()
   {
     return "PayUForgotPwdProcess";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.pwd.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ final class a$c
   extends q
   implements m<l, l, Boolean>
 {
-  public static final c THs;
+  public static final c abjW;
   
   static
   {
     AppMethodBeat.i(59876);
-    THs = new c();
+    abjW = new c();
     AppMethodBeat.o(59876);
   }
   

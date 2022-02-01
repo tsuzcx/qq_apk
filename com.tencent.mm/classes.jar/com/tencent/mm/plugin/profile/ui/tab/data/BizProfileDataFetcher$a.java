@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.profile.ui.tab.data;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/profile/ui/tab/data/BizProfileDataFetcher$Companion;", "", "()V", "ACTION_GET_ALL", "", "ACTION_GET_MSG_LIST", "ACTION_GET_VIDEO_LIST", "BLOCK_AVATAR", "BLOCK_BRAND_INFO", "BLOCK_MSG_LIST", "BLOCK_MSG_LIST_LIMIT", "BLOCK_SERVICE_LIST", "BLOCK_SUBSCRIPTION", "BLOCK_VIDEO_LIST", "BLOCK_VIDEO_LIST_LIMIT", "TAG", "", "app_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/profile/ui/tab/data/BizProfileDataFetcher$Companion;", "", "()V", "ACTION_GET_ALL", "", "ACTION_GET_MSG_LIST", "ACTION_GET_VIDEO_LIST", "BLOCK_AVATAR", "BLOCK_BRAND_INFO", "BLOCK_MSG_LIST", "BLOCK_MSG_LIST_LIMIT", "BLOCK_SERVICE_LIST", "BLOCK_SUBSCRIPTION", "BLOCK_VIDEO_LIST", "BLOCK_VIDEO_LIST_LIMIT", "TAG", "", "app_release"})
 public final class BizProfileDataFetcher$a {}
 
 

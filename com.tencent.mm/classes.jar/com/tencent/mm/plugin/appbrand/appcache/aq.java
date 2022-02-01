@@ -1,21 +1,30 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Locale;
+import com.tencent.mm.plugin.appbrand.ab.c;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
-public final class aq
-  extends Exception
+public class aq
+  extends c<ap>
 {
-  public aq(String paramString)
+  public static final String[] lqL;
+  
+  static
   {
-    super(String.format(Locale.US, "%s not found", new Object[] { paramString }));
-    AppMethodBeat.i(146931);
-    AppMethodBeat.o(146931);
+    AppMethodBeat.i(90566);
+    lqL = new String[] { MAutoStorage.getCreateSQLs(ap.lqK, "PushWxaPkgDecryptKeyTable") };
+    AppMethodBeat.o(90566);
+  }
+  
+  public aq(ISQLiteDatabase paramISQLiteDatabase)
+  {
+    super(paramISQLiteDatabase, ap.lqK, "PushWxaPkgDecryptKeyTable", ap.INDEX_CREATE);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.aq
  * JD-Core Version:    0.7.0.1
  */

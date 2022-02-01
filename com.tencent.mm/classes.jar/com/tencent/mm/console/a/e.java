@@ -2,8 +2,8 @@ package com.tencent.mm.console.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ku;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.f.a.ll;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.pluginsdk.cmd.b;
 import com.tencent.mm.sdk.event.EventCenter;
@@ -11,6 +11,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
+import java.io.File;
 
 public final class e
   implements com.tencent.mm.pluginsdk.cmd.a
@@ -74,13 +75,13 @@ public final class e
     for (paramArrayOfString = "/data/local/tmp/test.apk";; paramArrayOfString = paramArrayOfString[2])
     {
       Log.d("MicroMsg.CommandTestHotPatches", "hotpatch test from %s", new Object[] { paramArrayOfString });
-      if (!com.tencent.tinker.lib.e.a.lk(paramContext).Ska) {
-        com.tencent.tinker.lib.e.a.lk(paramContext).dZn();
+      if (!com.tencent.tinker.lib.e.a.mi(paramContext).ZML) {
+        com.tencent.tinker.lib.e.a.mi(paramContext).eIk();
       }
-      bg.aVF();
-      c.azQ().set(ar.a.Odn, Long.valueOf(System.currentTimeMillis() - 300000L));
-      paramContext = new ku();
-      paramContext.dPP.dPU = paramArrayOfString;
+      bh.beI();
+      c.aHp().set(ar.a.Vrx, Long.valueOf(System.currentTimeMillis() - 300000L));
+      paramContext = new ll();
+      paramContext.fJg.fJl = paramArrayOfString;
       EventCenter.instance.publish(paramContext);
       AppMethodBeat.o(20177);
       return true;
@@ -89,8 +90,8 @@ public final class e
     AppMethodBeat.o(20177);
     return true;
     Log.d("MicroMsg.CommandTestHotPatches", "clear hotpatch");
-    paramContext = new ku();
-    paramContext.dPP.dDe = 1;
+    paramContext = new ll();
+    paramContext.fJg.fvK = 1;
     EventCenter.instance.publish(paramContext);
     AppMethodBeat.o(20177);
     return true;
@@ -102,7 +103,7 @@ public final class e
     paramString = paramArrayOfString[2];
     paramArrayOfString = paramString;
     if (!paramString.startsWith("/")) {
-      paramArrayOfString = "/data/data/" + paramContext.getPackageName() + "/app_dex/" + paramString;
+      paramArrayOfString = paramContext.getCacheDir().getParent() + "/app_dex/" + paramString;
     }
     Log.i("MicroMsg.CommandTestHotPatches", "hotpatch check patch file %s", new Object[] { paramArrayOfString });
     Log.i("MicroMsg.CommandTestHotPatches", "-------------------------------------------------------------------------------------");
@@ -115,7 +116,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.console.a.e
  * JD-Core Version:    0.7.0.1
  */

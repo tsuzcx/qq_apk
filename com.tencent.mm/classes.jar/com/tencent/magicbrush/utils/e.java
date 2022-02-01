@@ -1,90 +1,84 @@
 package com.tencent.magicbrush.utils;
 
-import com.tencent.magicbrush.a.c.c;
+import android.view.View;
+import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
+import java.util.HashMap;
+import java.util.Map;
+import kotlin.g.b.p;
+import kotlin.l;
 
-public class e
-  implements Runnable
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/magicbrush/utils/ScreenCanvasZIndex;", "", "()V", "array", "Ljava/util/HashMap;", "Landroid/view/View;", "", "Lkotlin/collections/HashMap;", "insertView", "viewGroup", "Landroid/view/ViewGroup;", "view", "zIndex", "removeIndex", "", "lib-magicbrush-nano_release"})
+public final class e
 {
-  public final FutureTask<?> cPv;
+  private final HashMap<View, Integer> cQm;
   
-  public e(Runnable paramRunnable)
+  public e()
   {
-    AppMethodBeat.i(140070);
-    this.cPv = new FutureTask(paramRunnable, Integer.valueOf(0));
-    AppMethodBeat.o(140070);
+    AppMethodBeat.i(206193);
+    this.cQm = new HashMap();
+    AppMethodBeat.o(206193);
   }
   
-  public <T> e(Callable<T> paramCallable)
+  public final int a(ViewGroup paramViewGroup, View paramView, int paramInt)
   {
-    AppMethodBeat.i(140071);
-    this.cPv = new FutureTask(paramCallable);
-    AppMethodBeat.o(140071);
-  }
-  
-  public final boolean aZ(long paramLong)
-  {
-    AppMethodBeat.i(140072);
-    try
+    AppMethodBeat.i(206191);
+    p.k(paramViewGroup, "viewGroup");
+    p.k(paramView, "view");
+    Integer localInteger = (Integer)this.cQm.get(paramView);
+    int i;
+    int j;
+    int k;
+    if (localInteger == null)
     {
-      this.cPv.get(paramLong, TimeUnit.MILLISECONDS);
-      AppMethodBeat.o(140072);
-      return true;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      c.c.printStackTrace("MagicBrush.SyncTask", localInterruptedException, "await failed", new Object[0]);
-      AppMethodBeat.o(140072);
-      return false;
-    }
-    catch (ExecutionException localExecutionException)
-    {
-      c.c.printStackTrace("MagicBrush.SyncTask", localExecutionException, "execute failed", new Object[0]);
-      AppMethodBeat.o(140072);
-      return false;
-    }
-    catch (TimeoutException localTimeoutException)
-    {
-      c.c.printStackTrace("MagicBrush.SyncTask", localTimeoutException, "execute timeout", new Object[0]);
-      AppMethodBeat.o(140072);
-    }
-    return false;
-  }
-  
-  public final <T> T get()
-  {
-    AppMethodBeat.i(140073);
-    try
-    {
-      Object localObject = this.cPv.get();
-      AppMethodBeat.o(140073);
-      return localObject;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      c.c.printStackTrace("MagicBrush.SyncTask", localInterruptedException, "await failed", new Object[0]);
-      AppMethodBeat.o(140073);
-      return null;
-    }
-    catch (ExecutionException localExecutionException)
-    {
-      for (;;)
-      {
-        c.c.printStackTrace("MagicBrush.SyncTask", localExecutionException, "execute failed", new Object[0]);
+      ((Map)this.cQm).put(paramView, Integer.valueOf(paramInt));
+      int m = paramViewGroup.getChildCount();
+      i = 0;
+      j = 0;
+      k = 0;
+      label68:
+      if (i >= m) {
+        break label148;
       }
+      paramView = paramViewGroup.getChildAt(i);
+      paramView = this.cQm.get(paramView);
+      if (paramView == null) {
+        p.iCn();
+      }
+      p.j(paramView, "array[itView]!!");
+      if (paramInt >= ((Number)paramView).intValue()) {
+        break label168;
+      }
+      j = i;
+      k = 1;
+    }
+    label148:
+    label168:
+    for (;;)
+    {
+      i += 1;
+      break label68;
+      if (localInteger.intValue() != paramInt) {
+        break;
+      }
+      AppMethodBeat.o(206191);
+      return -2;
+      if (k != 0)
+      {
+        AppMethodBeat.o(206191);
+        return j;
+      }
+      AppMethodBeat.o(206191);
+      return -1;
     }
   }
   
-  public void run()
+  public final void cz(View paramView)
   {
-    AppMethodBeat.i(140074);
-    this.cPv.run();
-    AppMethodBeat.o(140074);
+    AppMethodBeat.i(206192);
+    p.k(paramView, "view");
+    this.cQm.remove(paramView);
+    AppMethodBeat.o(206192);
   }
 }
 

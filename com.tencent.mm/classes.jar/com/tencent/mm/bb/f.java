@@ -2,73 +2,78 @@ package com.tencent.mm.bb;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class f
-  extends com.tencent.mm.bw.a
+public class f
 {
-  public String jgR;
-  public String lang;
+  public String fUd;
+  public int fod;
+  public String lVA;
+  public String lVB;
+  public String lVC;
+  public String lVD;
+  public String lVE;
+  public String lVF;
+  public String lVG;
+  public int lVH;
+  public int lVI;
+  public String lVJ;
+  public String lVK;
+  public String lVL;
+  public long lVM;
+  public String lVN;
+  public boolean lVO;
+  public boolean lVP;
+  public String lVQ;
+  public String lVR;
+  public boolean lVS;
+  public String lVT;
+  public String lVU;
+  public boolean lVV = false;
+  public boolean lVW = true;
+  public boolean lVX;
+  public int lVr;
+  public int lVs;
+  public String lVt;
+  public float lVu;
+  public String lVv;
+  public String lVw;
+  public String lVx;
+  public String lVy;
+  public String lVz;
+  public double lzL = 1.0D;
+  public String lzT;
+  public String lzU;
+  public String playUrl;
+  public String protocol;
+  public float volume = 1.0F;
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  public final boolean f(f paramf)
   {
-    AppMethodBeat.i(150796);
-    if (paramInt == 0)
+    AppMethodBeat.i(137008);
+    if (paramf == null)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.jgR != null) {
-        paramVarArgs.e(1, this.jgR);
-      }
-      if (this.lang != null) {
-        paramVarArgs.e(2, this.lang);
-      }
-      AppMethodBeat.o(150796);
-      return 0;
+      AppMethodBeat.o(137008);
+      return false;
     }
-    if (paramInt == 1) {
-      if (this.jgR == null) {
-        break label274;
-      }
-    }
-    label274:
-    for (paramInt = g.a.a.b.b.a.f(1, this.jgR) + 0;; paramInt = 0)
+    boolean bool = this.lVt.equals(paramf.lVt);
+    AppMethodBeat.o(137008);
+    return bool;
+  }
+  
+  public final boolean g(f paramf)
+  {
+    AppMethodBeat.i(257235);
+    if (paramf == null)
     {
-      int i = paramInt;
-      if (this.lang != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.lang);
-      }
-      AppMethodBeat.o(150796);
-      return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
-          }
-        }
-        AppMethodBeat.o(150796);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-        f localf = (f)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(150796);
-          return -1;
-        case 1: 
-          localf.jgR = locala.UbS.readString();
-          AppMethodBeat.o(150796);
-          return 0;
-        }
-        localf.lang = locala.UbS.readString();
-        AppMethodBeat.o(150796);
-        return 0;
-      }
-      AppMethodBeat.o(150796);
-      return -1;
+      AppMethodBeat.o(257235);
+      return false;
     }
+    if ((this.lVr == paramf.lVr) && (f(paramf)))
+    {
+      AppMethodBeat.o(257235);
+      return true;
+    }
+    AppMethodBeat.o(257235);
+    return false;
   }
 }
 

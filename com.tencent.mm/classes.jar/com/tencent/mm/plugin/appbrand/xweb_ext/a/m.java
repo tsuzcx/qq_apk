@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.appbrand.xweb_ext.a;
 
-import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.l.c;
+import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.m.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/StickerApplyParams;", "", "type", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager$StickerType;", "path", "", "(Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager$StickerType;Ljava/lang/String;)V", "getPath", "()Ljava/lang/String;", "getType", "()Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager$StickerType;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/StickerApplyParams;", "", "type", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager$StickerType;", "path", "", "(Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager$StickerType;Ljava/lang/String;)V", "getPath", "()Ljava/lang/String;", "getType", "()Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager$StickerType;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-appbrand-integration_release"})
 public final class m
 {
-  final l.c oGU;
   final String path;
+  final m.c rIK;
   
-  public m(l.c paramc, String paramString)
+  public m(m.c paramc, String paramString)
   {
-    AppMethodBeat.i(229748);
-    this.oGU = paramc;
+    AppMethodBeat.i(267972);
+    this.rIK = paramc;
     this.path = paramString;
-    AppMethodBeat.o(229748);
+    AppMethodBeat.o(267972);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(229751);
+    AppMethodBeat.i(267975);
     if (this != paramObject)
     {
       if ((paramObject instanceof m))
       {
         paramObject = (m)paramObject;
-        if ((!p.j(this.oGU, paramObject.oGU)) || (!p.j(this.path, paramObject.path))) {}
+        if ((!p.h(this.rIK, paramObject.rIK)) || (!p.h(this.path, paramObject.path))) {}
       }
     }
     else
     {
-      AppMethodBeat.o(229751);
+      AppMethodBeat.o(267975);
       return true;
     }
-    AppMethodBeat.o(229751);
+    AppMethodBeat.o(267975);
     return false;
   }
   
   public final int hashCode()
   {
     int j = 0;
-    AppMethodBeat.i(229750);
-    Object localObject = this.oGU;
+    AppMethodBeat.i(267974);
+    Object localObject = this.rIK;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
@@ -51,22 +51,22 @@ public final class m
       if (localObject != null) {
         j = localObject.hashCode();
       }
-      AppMethodBeat.o(229750);
+      AppMethodBeat.o(267974);
       return i * 31 + j;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(229749);
-    String str = "StickerApplyParams(type=" + this.oGU + ", path=" + this.path + ")";
-    AppMethodBeat.o(229749);
+    AppMethodBeat.i(267973);
+    String str = "StickerApplyParams(type=" + this.rIK + ", path=" + this.path + ")";
+    AppMethodBeat.o(267973);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.xweb_ext.a.m
  * JD-Core Version:    0.7.0.1
  */

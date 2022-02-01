@@ -1,79 +1,111 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class ewj
-  extends com.tencent.mm.bw.a
+  extends dyl
 {
-  public String MVg;
-  public int Nug;
-  public String keh;
+  public String CMP;
+  public String RMK;
+  public String Sll;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32507);
+    AppMethodBeat.i(155472);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.MVg != null) {
-        paramVarArgs.e(1, this.MVg);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.keh != null) {
-        paramVarArgs.e(2, this.keh);
+      if (this.Sll != null) {
+        paramVarArgs.f(2, this.Sll);
       }
-      paramVarArgs.aM(3, this.Nug);
-      AppMethodBeat.o(32507);
+      if (this.CMP != null) {
+        paramVarArgs.f(3, this.CMP);
+      }
+      if (this.RMK != null) {
+        paramVarArgs.f(4, this.RMK);
+      }
+      AppMethodBeat.o(155472);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.MVg == null) {
-        break label327;
+      if (this.BaseRequest == null) {
+        break label468;
       }
     }
-    label327:
-    for (paramInt = g.a.a.b.b.a.f(1, this.MVg) + 0;; paramInt = 0)
+    label468:
+    for (int i = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.keh != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.keh);
+      paramInt = i;
+      if (this.Sll != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.Sll);
       }
-      paramInt = g.a.a.b.b.a.bu(3, this.Nug);
-      AppMethodBeat.o(32507);
-      return i + paramInt;
+      i = paramInt;
+      if (this.CMP != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.CMP);
+      }
+      paramInt = i;
+      if (this.RMK != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.RMK);
+      }
+      AppMethodBeat.o(155472);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(32507);
+        AppMethodBeat.o(155472);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         ewj localewj = (ewj)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32507);
+          AppMethodBeat.o(155472);
           return -1;
         case 1: 
-          localewj.MVg = locala.UbS.readString();
-          AppMethodBeat.o(32507);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            jg localjg = new jg();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localjg.parseFrom((byte[])localObject);
+            }
+            localewj.BaseRequest = localjg;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(155472);
           return 0;
         case 2: 
-          localewj.keh = locala.UbS.readString();
-          AppMethodBeat.o(32507);
+          localewj.Sll = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(155472);
+          return 0;
+        case 3: 
+          localewj.CMP = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(155472);
           return 0;
         }
-        localewj.Nug = locala.UbS.zi();
-        AppMethodBeat.o(32507);
+        localewj.RMK = ((g.a.a.a.a)localObject).abFh.readString();
+        AppMethodBeat.o(155472);
         return 0;
       }
-      AppMethodBeat.o(32507);
+      AppMethodBeat.o(155472);
       return -1;
     }
   }

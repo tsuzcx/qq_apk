@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.fr;
-import com.tencent.mm.g.a.fr.a;
+import com.tencent.mm.f.a.fy;
+import com.tencent.mm.f.a.fy.a;
 import com.tencent.mm.plugin.base.stub.WXBizEntryActivity;
 import com.tencent.mm.plugin.base.stub.WXCustomSchemeEntryActivity;
 import com.tencent.mm.plugin.base.stub.f;
@@ -18,12 +18,12 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 
 final class WorkerProfile$8
-  extends IListener<fr>
+  extends IListener<fy>
 {
   WorkerProfile$8(WorkerProfile paramWorkerProfile)
   {
     AppMethodBeat.i(161238);
-    this.__eventId = fr.class.getName().hashCode();
+    this.__eventId = fy.class.getName().hashCode();
     AppMethodBeat.o(161238);
   }
   
@@ -125,27 +125,27 @@ final class WorkerProfile$8
     }
     paramArrayOfString1.putStringArrayListExtra("androidPackNameList", paramContext);
     label482:
-    f.u(paramArrayOfString1, localContext);
+    f.t(paramArrayOfString1, localContext);
     AppMethodBeat.o(19550);
     return true;
   }
   
-  private static boolean a(fr paramfr)
+  private static boolean a(fy paramfy)
   {
     AppMethodBeat.i(19549);
-    if (paramfr == null)
+    if (paramfy == null)
     {
       Log.e("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:event is null.");
       AppMethodBeat.o(19549);
       return false;
     }
-    if (!(paramfr instanceof fr))
+    if (!(paramfy instanceof fy))
     {
       Log.e("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:event is not a instance of ExtCallBizEvent.");
       AppMethodBeat.o(19549);
       return false;
     }
-    if (paramfr.dIP == null)
+    if (paramfy.fBG == null)
     {
       Log.e("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:event.data is null.");
       AppMethodBeat.o(19549);
@@ -153,26 +153,26 @@ final class WorkerProfile$8
     }
     String str3;
     String str4;
-    switch (paramfr.dIP.op)
+    switch (paramfy.fBG.op)
     {
     default: 
-      boolean bool = a(paramfr.dIP.context, paramfr.dIP.selectionArgs, paramfr.dIP.dBX, paramfr.dIP.source, paramfr.dIP.dIQ);
+      boolean bool = a(paramfy.fBG.context, paramfy.fBG.fuA, paramfy.fBG.fuz, paramfy.fBG.source, paramfy.fBG.fBH);
       AppMethodBeat.o(19549);
       return bool;
     case 27: 
-      if ((paramfr.dIP.selectionArgs == null) || (paramfr.dIP.selectionArgs.length < 2))
+      if ((paramfy.fBG.fuA == null) || (paramfy.fBG.fuA.length < 2))
       {
         Log.e("MicroMsg.WorkerProfile", "ExtCallBizEvent selectionArgs error.");
         AppMethodBeat.o(19549);
         return true;
       }
-      str3 = paramfr.dIP.selectionArgs[0];
-      str4 = paramfr.dIP.selectionArgs[1];
-      if (paramfr.dIP.selectionArgs.length < 3) {
+      str3 = paramfy.fBG.fuA[0];
+      str4 = paramfy.fBG.fuA[1];
+      if (paramfy.fBG.fuA.length < 3) {
         break;
       }
     }
-    for (Object localObject = Util.nullAsNil(paramfr.dIP.selectionArgs[2]);; localObject = "")
+    for (Object localObject = Util.nullAsNil(paramfy.fBG.fuA[2]);; localObject = "")
     {
       try
       {
@@ -191,32 +191,32 @@ final class WorkerProfile$8
         return true;
       }
       String str2;
-      if (paramfr.dIP.selectionArgs.length >= 4)
+      if (paramfy.fBG.fuA.length >= 4)
       {
-        str2 = paramfr.dIP.selectionArgs[3];
+        str2 = paramfy.fBG.fuA[3];
         if (Util.isNullOrNil(str2)) {}
       }
       for (int i = Util.getInt(str2, 0);; i = 0)
       {
         Log.i("MicroMsg.WorkerProfile", "ExtCallBizEvent jump biz tempSession");
         str2 = String.format("weixin://dl/business/tempsession/?username=%s&appid=%s&sessionFrom=%s&showtype=%s&scene=%s", new Object[] { str4, str3, localObject, Integer.valueOf(i), Integer.valueOf(0) });
-        localObject = new Intent(paramfr.dIP.context, WXCustomSchemeEntryActivity.class);
+        localObject = new Intent(paramfy.fBG.context, WXCustomSchemeEntryActivity.class);
         ((Intent)localObject).addFlags(268435456);
         ((Intent)localObject).setData(Uri.parse(str2));
         ((Intent)localObject).putExtra("translate_link_scene", 1);
-        paramfr = paramfr.dIP.context;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramfr, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/app/WorkerProfile$16", "callback", "(Lcom/tencent/mm/autogen/events/ExtCallBizEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramfr.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramfr, "com/tencent/mm/app/WorkerProfile$16", "callback", "(Lcom/tencent/mm/autogen/events/ExtCallBizEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramfy = paramfy.fBG.context;
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramfy, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/app/WorkerProfile$16", "callback", "(Lcom/tencent/mm/autogen/events/ExtCallBizEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramfy.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramfy, "com/tencent/mm/app/WorkerProfile$16", "callback", "(Lcom/tencent/mm/autogen/events/ExtCallBizEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(19549);
         return true;
         Log.i("MicroMsg.WorkerProfile", "ExtCallBizEvent open exdevice rank list.");
-        paramfr = paramfr.dIP.context;
-        localObject = new Intent(paramfr, WXBizEntryActivity.class);
+        paramfy = paramfy.fBG.context;
+        localObject = new Intent(paramfy, WXBizEntryActivity.class);
         ((Intent)localObject).addFlags(268435456);
         ((Intent)localObject).putExtra("key_command_id", 11);
-        f.u((Intent)localObject, paramfr);
+        f.t((Intent)localObject, paramfy);
         AppMethodBeat.o(19549);
         return true;
       }
@@ -225,7 +225,7 @@ final class WorkerProfile$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.app.WorkerProfile.8
  * JD-Core Version:    0.7.0.1
  */

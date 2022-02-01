@@ -27,158 +27,158 @@ import com.tencent.thumbplayer.utils.g;
 public final class d
   implements ITPPlayerListener.IOnAudioFrameOutputListener, ITPPlayerListener.IOnAudioProcessFrameOutputListener, ITPPlayerListener.IOnCompletionListener, ITPPlayerListener.IOnErrorListener, ITPPlayerListener.IOnInfoListener, ITPPlayerListener.IOnPreparedListener, ITPPlayerListener.IOnSeekCompleteListener, ITPPlayerListener.IOnStateChangeListener, ITPPlayerListener.IOnStopAsyncCompleteListener, ITPPlayerListener.IOnSubtitleDataListener, ITPPlayerListener.IOnSubtitleFrameOutListener, ITPPlayerListener.IOnVideoFrameOutListener, ITPPlayerListener.IOnVideoProcessFrameOutputListener, ITPPlayerListener.IOnVideoSizeChangedListener
 {
-  ITPPlayerListener.IOnPreparedListener Sbc;
-  ITPPlayerListener.IOnCompletionListener Sbd;
-  ITPPlayerListener.IOnInfoListener Sbe;
-  ITPPlayerListener.IOnErrorListener Sbf;
-  ITPPlayerListener.IOnSeekCompleteListener Sbg;
-  ITPPlayerListener.IOnVideoSizeChangedListener Sbh;
-  ITPPlayerListener.IOnSubtitleDataListener Sbi;
-  ITPPlayerListener.IOnSubtitleFrameOutListener Sbj;
-  ITPPlayerListener.IOnVideoFrameOutListener Sbk;
-  ITPPlayerListener.IOnAudioFrameOutputListener Sbl;
-  ITPPlayerListener.IOnVideoProcessFrameOutputListener Sbm;
-  ITPPlayerListener.IOnAudioProcessFrameOutputListener Sbn;
-  ITPPlayerListener.IOnStateChangeListener Sbo;
-  ITPPlayerListener.IOnStopAsyncCompleteListener Sbp;
-  a Sbq;
+  ITPPlayerListener.IOnPreparedListener ZDN;
+  ITPPlayerListener.IOnCompletionListener ZDO;
+  ITPPlayerListener.IOnInfoListener ZDP;
+  ITPPlayerListener.IOnErrorListener ZDQ;
+  ITPPlayerListener.IOnSeekCompleteListener ZDR;
+  ITPPlayerListener.IOnVideoSizeChangedListener ZDS;
+  ITPPlayerListener.IOnSubtitleDataListener ZDT;
+  ITPPlayerListener.IOnSubtitleFrameOutListener ZDU;
+  ITPPlayerListener.IOnVideoFrameOutListener ZDV;
+  ITPPlayerListener.IOnAudioFrameOutputListener ZDW;
+  ITPPlayerListener.IOnVideoProcessFrameOutputListener ZDX;
+  ITPPlayerListener.IOnAudioProcessFrameOutputListener ZDY;
+  ITPPlayerListener.IOnStateChangeListener ZDZ;
+  ITPPlayerListener.IOnStopAsyncCompleteListener ZEa;
+  a ZEb;
   private String mTag;
   
   d(String paramString)
   {
-    AppMethodBeat.i(189499);
+    AppMethodBeat.i(221504);
     this.mTag = "TPPlayerListenerS";
-    bqx(paramString);
-    this.Sbq = new a(this.mTag);
-    this.Sbc = this.Sbq;
-    this.Sbd = this.Sbq;
-    this.Sbe = this.Sbq;
-    this.Sbf = this.Sbq;
-    this.Sbg = this.Sbq;
-    this.Sbh = this.Sbq;
-    this.Sbi = this.Sbq;
-    this.Sbj = this.Sbq;
-    this.Sbk = this.Sbq;
-    this.Sbl = this.Sbq;
-    this.Sbm = this.Sbq;
-    this.Sbn = this.Sbq;
-    this.Sbo = this.Sbq;
-    this.Sbp = this.Sbq;
-    AppMethodBeat.o(189499);
+    bDr(paramString);
+    this.ZEb = new a(this.mTag);
+    this.ZDN = this.ZEb;
+    this.ZDO = this.ZEb;
+    this.ZDP = this.ZEb;
+    this.ZDQ = this.ZEb;
+    this.ZDR = this.ZEb;
+    this.ZDS = this.ZEb;
+    this.ZDT = this.ZEb;
+    this.ZDU = this.ZEb;
+    this.ZDV = this.ZEb;
+    this.ZDW = this.ZEb;
+    this.ZDX = this.ZEb;
+    this.ZDY = this.ZEb;
+    this.ZDZ = this.ZEb;
+    this.ZEa = this.ZEb;
+    AppMethodBeat.o(221504);
   }
   
-  public final void bqx(String paramString)
+  public final void bDr(String paramString)
   {
-    AppMethodBeat.i(189500);
+    AppMethodBeat.i(221505);
     if (TextUtils.isEmpty(paramString)) {}
     for (this.mTag = "TPPlayerListenerS";; this.mTag = paramString)
     {
-      if (this.Sbq != null) {
-        this.Sbq.mTag = paramString;
+      if (this.ZEb != null) {
+        this.ZEb.mTag = paramString;
       }
-      AppMethodBeat.o(189500);
+      AppMethodBeat.o(221505);
       return;
     }
   }
   
   public final void onAudioFrameOut(ITPPlayer paramITPPlayer, TPAudioFrameBuffer paramTPAudioFrameBuffer)
   {
-    AppMethodBeat.i(189510);
-    this.Sbl.onAudioFrameOut(paramITPPlayer, paramTPAudioFrameBuffer);
-    AppMethodBeat.o(189510);
+    AppMethodBeat.i(221522);
+    this.ZDW.onAudioFrameOut(paramITPPlayer, paramTPAudioFrameBuffer);
+    AppMethodBeat.o(221522);
   }
   
   public final TPPostProcessFrameBuffer onAudioProcessFrameOut(ITPPlayer paramITPPlayer, TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
   {
-    AppMethodBeat.i(189512);
-    paramITPPlayer = this.Sbn.onAudioProcessFrameOut(paramITPPlayer, paramTPPostProcessFrameBuffer);
-    AppMethodBeat.o(189512);
+    AppMethodBeat.i(221528);
+    paramITPPlayer = this.ZDY.onAudioProcessFrameOut(paramITPPlayer, paramTPPostProcessFrameBuffer);
+    AppMethodBeat.o(221528);
     return paramITPPlayer;
   }
   
   public final void onCompletion(ITPPlayer paramITPPlayer)
   {
-    AppMethodBeat.i(189502);
-    this.Sbd.onCompletion(paramITPPlayer);
-    AppMethodBeat.o(189502);
+    AppMethodBeat.i(221507);
+    this.ZDO.onCompletion(paramITPPlayer);
+    AppMethodBeat.o(221507);
   }
   
   public final void onError(ITPPlayer paramITPPlayer, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(189504);
-    this.Sbf.onError(paramITPPlayer, paramInt1, paramInt2, paramLong1, paramLong2);
-    AppMethodBeat.o(189504);
+    AppMethodBeat.i(221510);
+    this.ZDQ.onError(paramITPPlayer, paramInt1, paramInt2, paramLong1, paramLong2);
+    AppMethodBeat.o(221510);
   }
   
   public final void onInfo(ITPPlayer paramITPPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
-    AppMethodBeat.i(189503);
-    this.Sbe.onInfo(paramITPPlayer, paramInt, paramLong1, paramLong2, paramObject);
-    AppMethodBeat.o(189503);
+    AppMethodBeat.i(221508);
+    this.ZDP.onInfo(paramITPPlayer, paramInt, paramLong1, paramLong2, paramObject);
+    AppMethodBeat.o(221508);
   }
   
   public final void onPrepared(ITPPlayer paramITPPlayer)
   {
-    AppMethodBeat.i(189501);
-    this.Sbc.onPrepared(paramITPPlayer);
-    AppMethodBeat.o(189501);
+    AppMethodBeat.i(221506);
+    this.ZDN.onPrepared(paramITPPlayer);
+    AppMethodBeat.o(221506);
   }
   
   public final void onSeekComplete(ITPPlayer paramITPPlayer)
   {
-    AppMethodBeat.i(189505);
-    this.Sbg.onSeekComplete(paramITPPlayer);
-    AppMethodBeat.o(189505);
+    AppMethodBeat.i(221511);
+    this.ZDR.onSeekComplete(paramITPPlayer);
+    AppMethodBeat.o(221511);
   }
   
   public final void onStateChange(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(189513);
-    this.Sbo.onStateChange(paramInt1, paramInt2);
-    AppMethodBeat.o(189513);
+    AppMethodBeat.i(221529);
+    this.ZDZ.onStateChange(paramInt1, paramInt2);
+    AppMethodBeat.o(221529);
   }
   
   public final void onStopAsyncComplete(ITPPlayer paramITPPlayer)
   {
-    AppMethodBeat.i(189514);
-    this.Sbp.onStopAsyncComplete(paramITPPlayer);
-    AppMethodBeat.o(189514);
+    AppMethodBeat.i(221530);
+    this.ZEa.onStopAsyncComplete(paramITPPlayer);
+    AppMethodBeat.o(221530);
   }
   
   public final void onSubtitleData(ITPPlayer paramITPPlayer, TPSubtitleData paramTPSubtitleData)
   {
-    AppMethodBeat.i(189507);
-    this.Sbi.onSubtitleData(paramITPPlayer, paramTPSubtitleData);
-    AppMethodBeat.o(189507);
+    AppMethodBeat.i(221516);
+    this.ZDT.onSubtitleData(paramITPPlayer, paramTPSubtitleData);
+    AppMethodBeat.o(221516);
   }
   
   public final void onSubtitleFrameOut(ITPPlayer paramITPPlayer, TPSubtitleFrameBuffer paramTPSubtitleFrameBuffer)
   {
-    AppMethodBeat.i(189508);
-    this.Sbj.onSubtitleFrameOut(paramITPPlayer, paramTPSubtitleFrameBuffer);
-    AppMethodBeat.o(189508);
+    AppMethodBeat.i(221519);
+    this.ZDU.onSubtitleFrameOut(paramITPPlayer, paramTPSubtitleFrameBuffer);
+    AppMethodBeat.o(221519);
   }
   
   public final void onVideoFrameOut(ITPPlayer paramITPPlayer, TPVideoFrameBuffer paramTPVideoFrameBuffer)
   {
-    AppMethodBeat.i(189509);
-    this.Sbk.onVideoFrameOut(paramITPPlayer, paramTPVideoFrameBuffer);
-    AppMethodBeat.o(189509);
+    AppMethodBeat.i(221520);
+    this.ZDV.onVideoFrameOut(paramITPPlayer, paramTPVideoFrameBuffer);
+    AppMethodBeat.o(221520);
   }
   
   public final TPPostProcessFrameBuffer onVideoProcessFrameOut(ITPPlayer paramITPPlayer, TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
   {
-    AppMethodBeat.i(189511);
-    paramITPPlayer = this.Sbm.onVideoProcessFrameOut(paramITPPlayer, paramTPPostProcessFrameBuffer);
-    AppMethodBeat.o(189511);
+    AppMethodBeat.i(221524);
+    paramITPPlayer = this.ZDX.onVideoProcessFrameOut(paramITPPlayer, paramTPPostProcessFrameBuffer);
+    AppMethodBeat.o(221524);
     return paramITPPlayer;
   }
   
   public final void onVideoSizeChanged(ITPPlayer paramITPPlayer, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(189506);
-    this.Sbh.onVideoSizeChanged(paramITPPlayer, paramLong1, paramLong2);
-    AppMethodBeat.o(189506);
+    AppMethodBeat.i(221514);
+    this.ZDS.onVideoSizeChanged(paramITPPlayer, paramLong1, paramLong2);
+    AppMethodBeat.o(221514);
   }
   
   static final class a
@@ -193,102 +193,102 @@ public final class d
     
     public final void onAudioFrameOut(ITPPlayer paramITPPlayer, TPAudioFrameBuffer paramTPAudioFrameBuffer)
     {
-      AppMethodBeat.i(189494);
+      AppMethodBeat.i(221493);
       g.i(this.mTag, " empty player listener , notify , onAudioFrameOut");
-      AppMethodBeat.o(189494);
+      AppMethodBeat.o(221493);
     }
     
     public final TPPostProcessFrameBuffer onAudioProcessFrameOut(ITPPlayer paramITPPlayer, TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
     {
-      AppMethodBeat.i(189496);
+      AppMethodBeat.i(221496);
       g.i(this.mTag, " empty player listener , notify , onPostProcessFrameOut");
-      AppMethodBeat.o(189496);
+      AppMethodBeat.o(221496);
       return null;
     }
     
     public final void onCompletion(ITPPlayer paramITPPlayer)
     {
-      AppMethodBeat.i(189486);
+      AppMethodBeat.i(221479);
       g.i(this.mTag, " empty player listener , notify , onCompletion");
-      AppMethodBeat.o(189486);
+      AppMethodBeat.o(221479);
     }
     
     public final void onError(ITPPlayer paramITPPlayer, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
     {
-      AppMethodBeat.i(189488);
+      AppMethodBeat.i(221484);
       g.i(this.mTag, " empty player listener , notify , onError");
-      AppMethodBeat.o(189488);
+      AppMethodBeat.o(221484);
     }
     
     public final void onInfo(ITPPlayer paramITPPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
     {
-      AppMethodBeat.i(189487);
+      AppMethodBeat.i(221481);
       g.i(this.mTag, " empty player listener , notify , onInfo");
-      AppMethodBeat.o(189487);
+      AppMethodBeat.o(221481);
     }
     
     public final void onPrepared(ITPPlayer paramITPPlayer)
     {
-      AppMethodBeat.i(189485);
+      AppMethodBeat.i(221476);
       g.i(this.mTag, " empty player listener , notify , onPrepared");
-      AppMethodBeat.o(189485);
+      AppMethodBeat.o(221476);
     }
     
     public final void onSeekComplete(ITPPlayer paramITPPlayer)
     {
-      AppMethodBeat.i(189489);
+      AppMethodBeat.i(221486);
       g.i(this.mTag, " empty player listener , notify , onSeekComplete");
-      AppMethodBeat.o(189489);
+      AppMethodBeat.o(221486);
     }
     
     public final void onStateChange(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(189497);
+      AppMethodBeat.i(221497);
       g.i(this.mTag, " empty player listener , notify , onStateChange");
-      AppMethodBeat.o(189497);
+      AppMethodBeat.o(221497);
     }
     
     public final void onStopAsyncComplete(ITPPlayer paramITPPlayer)
     {
-      AppMethodBeat.i(189498);
+      AppMethodBeat.i(221498);
       g.i(this.mTag, " empty player listener , notify , onStopAsyncComplete");
-      AppMethodBeat.o(189498);
+      AppMethodBeat.o(221498);
     }
     
     public final void onSubtitleData(ITPPlayer paramITPPlayer, TPSubtitleData paramTPSubtitleData)
     {
-      AppMethodBeat.i(189491);
+      AppMethodBeat.i(221489);
       g.i(this.mTag, " empty player listener , notify , onSubtitleData");
-      AppMethodBeat.o(189491);
+      AppMethodBeat.o(221489);
     }
     
     public final void onSubtitleFrameOut(ITPPlayer paramITPPlayer, TPSubtitleFrameBuffer paramTPSubtitleFrameBuffer)
     {
-      AppMethodBeat.i(189492);
+      AppMethodBeat.i(221490);
       g.i(this.mTag, " empty player listener , notify , onSubtitleFrameOut");
-      AppMethodBeat.o(189492);
+      AppMethodBeat.o(221490);
     }
     
     public final void onVideoFrameOut(ITPPlayer paramITPPlayer, TPVideoFrameBuffer paramTPVideoFrameBuffer)
     {
-      AppMethodBeat.i(189493);
+      AppMethodBeat.i(221492);
       g.i(this.mTag, " empty player listener , notify , onVideoFrameOut");
-      AppMethodBeat.o(189493);
+      AppMethodBeat.o(221492);
     }
     
     public final TPPostProcessFrameBuffer onVideoProcessFrameOut(ITPPlayer paramITPPlayer, TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
     {
-      AppMethodBeat.i(189495);
+      AppMethodBeat.i(221495);
       g.i(this.mTag, " empty player listener , notify , onPostProcessFrameOut");
-      AppMethodBeat.o(189495);
+      AppMethodBeat.o(221495);
       return null;
     }
     
     public final void onVideoSizeChanged(ITPPlayer paramITPPlayer, long paramLong1, long paramLong2)
     {
-      AppMethodBeat.i(189490);
+      AppMethodBeat.i(221488);
       g.i(this.mTag, " empty player listener , notify , onVideoSizeChanged");
-      AppMethodBeat.o(189490);
+      AppMethodBeat.o(221488);
     }
   }
 }

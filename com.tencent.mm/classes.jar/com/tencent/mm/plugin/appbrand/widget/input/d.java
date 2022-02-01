@@ -6,10 +6,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import com.tencent.luggage.wxa.b.a.c;
+import com.tencent.luggage.wxa.b.a.d;
+import com.tencent.luggage.wxa.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.n.a;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.widget.input.d.e;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.widget.input.e.e;
+import com.tencent.mm.plugin.appbrand.widget.input.e.h;
 import com.tencent.mm.plugin.appbrand.widget.input.numberpad.BaseNumberKeyboardView;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -19,35 +23,35 @@ import java.util.Map;
 final class d
   extends c<s>
 {
-  int orM;
-  s orN;
-  v orO;
-  com.tencent.mm.plugin.appbrand.widget.input.d.h orP;
-  boolean orQ;
-  boolean orR;
-  private boolean orS;
+  int rtV;
+  s rtW;
+  v rtX;
+  h rtY;
+  boolean rtZ;
+  boolean rua;
+  private boolean rub;
   
-  d(String paramString, ac paramac, e parame)
+  d(String paramString, ad paramad, e parame)
   {
-    super(paramString, paramac, parame.orE);
+    super(paramString, paramad, parame.rtN);
     AppMethodBeat.i(136314);
-    this.orM = 0;
-    this.orN = new s(paramac.getContext());
-    this.orM = Util.nullAs((Integer)o.otl.get(paramString), 0);
+    this.rtV = 0;
+    this.rtW = new s(paramad.getContext());
+    this.rtV = Util.nullAs((Integer)o.rvv.get(paramString), 0);
     AppMethodBeat.o(136314);
   }
   
-  private v cbb()
+  private v com()
   {
     AppMethodBeat.i(136325);
-    if (this.orO != null)
+    if (this.rtX != null)
     {
-      localv = this.orO;
+      localv = this.rtX;
       AppMethodBeat.o(136325);
       return localv;
     }
-    v localv = this.orN.getInputPanel();
-    this.orO = localv;
+    v localv = this.rtW.getInputPanel();
+    this.rtX = localv;
     AppMethodBeat.o(136325);
     return localv;
   }
@@ -55,27 +59,27 @@ final class d
   private boolean isFocused()
   {
     AppMethodBeat.i(136323);
-    if (this.orN == null)
+    if (this.rtW == null)
     {
       AppMethodBeat.o(136323);
       return false;
     }
-    if (this.orN.isFocused())
+    if (this.rtW.isFocused())
     {
       AppMethodBeat.o(136323);
       return true;
     }
-    if (cbb() == null)
+    if (com() == null)
     {
       AppMethodBeat.o(136323);
       return false;
     }
-    if (!cbb().isShown())
+    if (!com().isShown())
     {
       AppMethodBeat.o(136323);
       return false;
     }
-    if (this.orO.getAttachedEditText() == this.orN)
+    if (this.rtX.getAttachedEditText() == this.rtW)
     {
       AppMethodBeat.o(136323);
       return true;
@@ -84,53 +88,53 @@ final class d
     return false;
   }
   
-  public final boolean afY(String paramString)
+  public final boolean anC(String paramString)
   {
     AppMethodBeat.i(136320);
-    if (this.orN == null)
+    if (this.rtW == null)
     {
       AppMethodBeat.o(136320);
       return false;
     }
-    this.orN.G(paramString);
+    this.rtW.P(paramString);
     AppMethodBeat.o(136320);
     return true;
   }
   
-  public final com.tencent.mm.plugin.appbrand.widget.input.d.h b(com.tencent.mm.plugin.appbrand.widget.input.d.h paramh)
+  public final h b(h paramh)
   {
     AppMethodBeat.i(136319);
-    if (this.orP == null)
+    if (this.rtY == null)
     {
-      this.orP = paramh;
-      if ((aj.i(paramh.oyp)) && (this.orN != null)) {
-        this.orN.setPasswordMode(true);
+      this.rtY = paramh;
+      if ((an.m(paramh.rAP)) && (this.rtW != null)) {
+        this.rtW.setPasswordMode(true);
       }
     }
-    while (this.orN == null)
+    while (this.rtW == null)
     {
       AppMethodBeat.o(136319);
       return null;
-      this.orP.a(paramh);
+      this.rtY.a(paramh);
     }
-    b.a(this.orN, this.orP);
-    paramh = this.orP;
+    b.a(this.rtW, this.rtY);
+    paramh = this.rtY;
     AppMethodBeat.o(136319);
     return paramh;
   }
   
-  final Rect caT()
+  final Rect coa()
   {
     AppMethodBeat.i(136318);
-    Rect localRect = new Rect(this.orP.oxN.intValue(), this.orP.oxM.intValue(), this.orP.oxN.intValue() + this.orP.oxK.intValue(), this.orP.oxM.intValue() + this.orP.oxL.intValue());
+    Rect localRect = new Rect(this.rtY.rAm.intValue(), this.rtY.rAl.intValue(), this.rtY.rAm.intValue() + this.rtY.rAj.intValue(), this.rtY.rAl.intValue() + this.rtY.rAk.intValue());
     AppMethodBeat.o(136318);
     return localRect;
   }
   
-  public final boolean caY()
+  public final boolean coj()
   {
     AppMethodBeat.i(136316);
-    if ((this.orP != null) && (aj.i(this.orP.oyh)))
+    if ((this.rtY != null) && (an.m(this.rtY.rAG)))
     {
       AppMethodBeat.o(136316);
       return true;
@@ -139,44 +143,41 @@ final class d
     return false;
   }
   
-  public final int caZ()
+  public final int cok()
   {
     AppMethodBeat.i(136317);
-    if ((this.orP == null) || (this.orP.oye == null))
+    if ((this.rtY == null) || (this.rtY.rAD == null))
     {
       AppMethodBeat.o(136317);
       return 0;
     }
-    int i = this.orP.oye.intValue();
+    int i = this.rtY.rAD.intValue();
     AppMethodBeat.o(136317);
     return i;
   }
   
-  public final boolean cba()
+  public final boolean col()
   {
     AppMethodBeat.i(136322);
-    if (cbb() == null)
+    if (com() == null)
     {
       AppMethodBeat.o(136322);
       return false;
     }
     if (isFocused())
     {
-      Object localObject = this.orO;
-      ((v)localObject).setVisibility(8);
-      ((v)localObject).cbE();
-      Log.d("MicroMsg.AppBrandInputComponentAsNumber", "[input_switch] disableInputFocus %s", new Object[] { this.orN });
-      if (this.orN != null)
+      v localv = this.rtX;
+      localv.setVisibility(8);
+      localv.coO();
+      Log.d("MicroMsg.AppBrandInputComponentAsNumber", "[input_switch] disableInputFocus %s", new Object[] { this.rtW });
+      if (this.rtW != null)
       {
-        this.orN.setFocusable(false);
-        this.orN.setFocusableInTouchMode(false);
-        this.orN.setEnabled(false);
+        this.rtW.setFocusable(false);
+        this.rtW.setFocusableInTouchMode(false);
+        this.rtW.setEnabled(false);
       }
-      localObject = (ac)this.orG.get();
-      if ((localObject != null) && (((ac)localObject).nmX != null)) {
-        h.cbe().e(((ac)localObject).nmX);
-      }
-      k.a(this.orG).Ad(this.orE);
+      cof();
+      cog();
       AppMethodBeat.o(136322);
       return true;
     }
@@ -187,19 +188,19 @@ final class d
   public final View getInputPanel()
   {
     AppMethodBeat.i(136315);
-    cbb();
-    v localv = this.orO;
+    com();
+    v localv = this.rtX;
     AppMethodBeat.o(136315);
     return localv;
   }
   
-  protected final boolean jg(boolean paramBoolean)
+  protected final boolean kn(boolean paramBoolean)
   {
     AppMethodBeat.i(136324);
     Log.d("MicroMsg.AppBrandInputComponentAsNumber", "[input_switch] onFocusChanged hasFocus %b, isFocused %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(isFocused()) });
     if (!paramBoolean)
     {
-      if (this.orQ)
+      if (this.rtZ)
       {
         AppMethodBeat.o(136324);
         return true;
@@ -209,18 +210,18 @@ final class d
         AppMethodBeat.o(136324);
         return true;
       }
-      this.orQ = true;
-      a(cbf());
-      cba();
+      this.rtZ = true;
+      a(cod());
+      col();
       remove();
-      this.orQ = false;
-      this.orN = null;
+      this.rtZ = false;
+      this.rtW = null;
     }
     for (;;)
     {
       AppMethodBeat.o(136324);
       return true;
-      if (this.orR)
+      if (this.rua)
       {
         AppMethodBeat.o(136324);
         return true;
@@ -230,138 +231,135 @@ final class d
         AppMethodBeat.o(136324);
         return true;
       }
-      this.orR = true;
-      q(-2, -2, this.orS);
-      this.orR = false;
+      this.rua = true;
+      r(-2, -2, this.rub);
+      this.rua = false;
     }
   }
   
-  public final boolean q(int paramInt1, int paramInt2, boolean paramBoolean)
+  public final boolean r(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(230571);
-    if (this.orN == null)
+    AppMethodBeat.i(214295);
+    if (this.rtW == null)
     {
-      AppMethodBeat.o(230571);
+      AppMethodBeat.o(214295);
       return false;
     }
-    Object localObject2 = ((ac)this.orG.get()).getContentView();
-    if ((this.orG.get() != null) && ((this.orG.get() instanceof ac))) {}
-    for (Object localObject1 = ((ac)this.orG.get()).bRo();; localObject1 = null)
+    Object localObject2 = ((ad)this.rtP.get()).getContentView();
+    if ((this.rtP.get() != null) && ((this.rtP.get() instanceof ad))) {}
+    for (Object localObject1 = ((ad)this.rtP.get()).cef();; localObject1 = null)
     {
-      this.orO = v.a((View)localObject2, (a)localObject1);
-      this.orO.setComponentView(this.orP.oyq.booleanValue());
-      localObject1 = this.orO;
-      if ((v.otQ) && (((v)localObject1).otO == null))
+      this.rtX = v.a((View)localObject2, (a)localObject1);
+      this.rtX.setComponentView(this.rtY.rAQ.booleanValue());
+      localObject1 = this.rtX;
+      if ((((v)localObject1).rwe) && (((v)localObject1).rwc == null))
       {
-        ((v)localObject1).otO = v.otP;
-        v.db(((v)localObject1).otO);
-        ((v)localObject1).addView(((v)localObject1).otO, 0);
+        ((v)localObject1).rwc = ((v)localObject1).rwd;
+        v.du(((v)localObject1).rwc);
+        ((v)localObject1).addView(((v)localObject1).rwc, 0);
       }
-      if ((v.otQ) && (((v)localObject1).otO != v.otP))
+      if ((((v)localObject1).rwe) && (((v)localObject1).rwc != ((v)localObject1).rwd))
       {
-        v.db(((v)localObject1).otO);
-        ((v)localObject1).otO = v.otP;
-        v.db(((v)localObject1).otO);
-        ((v)localObject1).addView(((v)localObject1).otO, 0);
+        v.du(((v)localObject1).rwc);
+        ((v)localObject1).rwc = ((v)localObject1).rwd;
+        v.du(((v)localObject1).rwc);
+        ((v)localObject1).addView(((v)localObject1).rwc, 0);
         Log.d("MicroMsg.AppBrandNumberKeyboardPanel", "toolbar is changed in updateToolbar() because toolbar != mComponentView");
       }
-      if ((v.otQ) && (((v)localObject1).otO.getParent() != localObject1))
+      if ((((v)localObject1).rwe) && (((v)localObject1).rwc.getParent() != localObject1))
       {
-        v.db(((v)localObject1).otO);
-        ((v)localObject1).addView(((v)localObject1).otO, 0);
+        v.du(((v)localObject1).rwc);
+        ((v)localObject1).addView(((v)localObject1).rwc, 0);
       }
-      if ((!v.otQ) && (((v)localObject1).otO != null) && (((v)localObject1).otO.getParent() == localObject1)) {
-        ((v)localObject1).removeView(((v)localObject1).otO);
+      if ((!((v)localObject1).rwe) && (((v)localObject1).rwc != null) && (((v)localObject1).rwc.getParent() == localObject1)) {
+        ((v)localObject1).removeView(((v)localObject1).rwc);
       }
-      if (this.orO != null) {
+      if (this.rtX != null) {
         break;
       }
-      AppMethodBeat.o(230571);
+      AppMethodBeat.o(214295);
       return false;
     }
-    this.orS = paramBoolean;
+    this.rub = paramBoolean;
     if (paramBoolean)
     {
-      localObject1 = this.orO;
-      ((v)localObject1).otK.setBackgroundResource(2131099694);
-      ((v)localObject1).otK.findViewById(2131299682).setBackgroundResource(2131099832);
-      ((v)localObject1).otK.findViewById(2131297902).setBackgroundResource(2131099832);
-      localObject1 = ((v)localObject1).otN;
-      ((BaseNumberKeyboardView)localObject1).orS = true;
-      ((BaseNumberKeyboardView)localObject1).mKey1.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(2131099836));
-      ((BaseNumberKeyboardView)localObject1).mKey1.setBackgroundResource(2131231089);
-      ((BaseNumberKeyboardView)localObject1).mKey2.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(2131099836));
-      ((BaseNumberKeyboardView)localObject1).mKey2.setBackgroundResource(2131231089);
-      ((BaseNumberKeyboardView)localObject1).mKey3.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(2131099836));
-      ((BaseNumberKeyboardView)localObject1).mKey3.setBackgroundResource(2131231089);
-      ((BaseNumberKeyboardView)localObject1).mKey4.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(2131099836));
-      ((BaseNumberKeyboardView)localObject1).mKey4.setBackgroundResource(2131231089);
-      ((BaseNumberKeyboardView)localObject1).mKey5.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(2131099836));
-      ((BaseNumberKeyboardView)localObject1).mKey5.setBackgroundResource(2131231089);
-      ((BaseNumberKeyboardView)localObject1).mKey6.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(2131099836));
-      ((BaseNumberKeyboardView)localObject1).mKey6.setBackgroundResource(2131231089);
-      ((BaseNumberKeyboardView)localObject1).mKey7.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(2131099836));
-      ((BaseNumberKeyboardView)localObject1).mKey7.setBackgroundResource(2131231089);
-      ((BaseNumberKeyboardView)localObject1).mKey8.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(2131099836));
-      ((BaseNumberKeyboardView)localObject1).mKey8.setBackgroundResource(2131231089);
-      ((BaseNumberKeyboardView)localObject1).mKey9.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(2131099836));
-      ((BaseNumberKeyboardView)localObject1).mKey9.setBackgroundResource(2131231089);
-      ((BaseNumberKeyboardView)localObject1).mKeyX.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(2131099836));
-      ((BaseNumberKeyboardView)localObject1).mKeyX.setBackgroundResource(2131235232);
-      ((BaseNumberKeyboardView)localObject1).mKey0.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(2131099836));
-      ((BaseNumberKeyboardView)localObject1).mKey0.setBackgroundResource(2131231089);
-      ((BaseNumberKeyboardView)localObject1).owM.setBackgroundResource(2131235232);
-      ((BaseNumberKeyboardView)localObject1).jBN.findViewById(2131307173).setBackgroundResource(2131099694);
-      ((BaseNumberKeyboardView)localObject1).jBN.findViewById(2131299683).setBackgroundResource(2131099832);
-      ((BaseNumberKeyboardView)localObject1).jBN.findViewById(2131299688).setBackgroundResource(2131099832);
-      ((BaseNumberKeyboardView)localObject1).jBN.findViewById(2131299689).setBackgroundResource(2131099832);
-      ((BaseNumberKeyboardView)localObject1).jBN.findViewById(2131299690).setBackgroundResource(2131099832);
-      ((BaseNumberKeyboardView)localObject1).jBN.findViewById(2131299691).setBackgroundResource(2131099832);
-      ((BaseNumberKeyboardView)localObject1).jBN.findViewById(2131299692).setBackgroundResource(2131099832);
-      ((BaseNumberKeyboardView)localObject1).jBN.findViewById(2131299693).setBackgroundResource(2131099832);
-      ((BaseNumberKeyboardView)localObject1).jBN.findViewById(2131299694).setBackgroundResource(2131099832);
-      ((BaseNumberKeyboardView)localObject1).jBN.findViewById(2131299695).setBackgroundResource(2131099832);
-      ((BaseNumberKeyboardView)localObject1).jBN.findViewById(2131299684).setBackgroundResource(2131099832);
-      ((BaseNumberKeyboardView)localObject1).jBN.findViewById(2131299685).setBackgroundResource(2131099832);
-      ((BaseNumberKeyboardView)localObject1).jBN.findViewById(2131299686).setBackgroundResource(2131099832);
-      ((BaseNumberKeyboardView)localObject1).jBN.findViewById(2131299687).setBackgroundResource(2131099832);
+      localObject1 = this.rtX;
+      ((v)localObject1).rvY.setBackgroundResource(a.c.BW_BG_100);
+      ((v)localObject1).rvY.findViewById(a.e.divider).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((v)localObject1).rvY.findViewById(a.e.button_area).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      localObject1 = ((v)localObject1).rwb;
+      ((BaseNumberKeyboardView)localObject1).rub = true;
+      ((BaseNumberKeyboardView)localObject1).mKey1.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).mKey1.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).mKey2.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).mKey2.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).mKey3.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).mKey3.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).mKey4.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).mKey4.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).mKey5.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).mKey5.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).mKey6.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).mKey6.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).mKey7.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).mKey7.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).mKey8.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).mKey8.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).mKey9.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).mKey9.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).mKeyX.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).mKeyX.setBackgroundResource(a.d.tenpay_keybtn_bottom_left_right_force_light);
+      ((BaseNumberKeyboardView)localObject1).mKey0.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).mKey0.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).rzG.setBackgroundResource(a.d.tenpay_keybtn_bottom_left_right_force_light);
+      ((BaseNumberKeyboardView)localObject1).mrI.findViewById(a.e.root_view).setBackgroundResource(a.c.BW_BG_100);
+      ((BaseNumberKeyboardView)localObject1).mrI.findViewById(a.e.divider1).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).mrI.findViewById(a.e.divider2).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).mrI.findViewById(a.e.divider3).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).mrI.findViewById(a.e.divider4).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).mrI.findViewById(a.e.divider5).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).mrI.findViewById(a.e.divider6).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).mrI.findViewById(a.e.divider7).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).mrI.findViewById(a.e.divider8).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).mrI.findViewById(a.e.divider9).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).mrI.findViewById(a.e.divider10).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).mrI.findViewById(a.e.divider11).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).mrI.findViewById(a.e.divider12).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).mrI.findViewById(a.e.divider13).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
     }
-    this.orR = true;
-    localObject1 = (ac)this.orG.get();
-    if ((localObject1 != null) && (((ac)localObject1).nmX != null)) {
-      h.cbe().d(((ac)localObject1).nmX);
-    }
-    this.orO.setXMode(this.orM);
-    localObject1 = this.orO;
-    localObject2 = this.orN;
+    this.rua = true;
+    coe();
+    this.rtX.setXMode(this.rtV);
+    localObject1 = this.rtX;
+    localObject2 = this.rtW;
     if (localObject2 != null)
     {
       if (((v)localObject1).mEditText != localObject2) {
-        ((v)localObject1).cbE();
+        ((v)localObject1).coO();
       }
       ((v)localObject1).setInputEditText((EditText)localObject2);
       ((v)localObject1).setVisibility(0);
     }
-    this.orO.setOnDoneListener(new v.a()
+    this.rtX.setOnDoneListener(new v.a()
     {
       public final void onDone()
       {
         AppMethodBeat.i(136313);
-        d.this.a(d.this.cbf());
-        d.this.jg(false);
+        d.this.a(d.this.cod());
+        d.this.kn(false);
         AppMethodBeat.o(136313);
       }
     });
-    eJ(paramInt1, paramInt2);
-    k.a(this.orG).Ac(this.orE);
-    this.orR = false;
-    AppMethodBeat.o(230571);
+    fh(paramInt1, paramInt2);
+    coh();
+    this.rua = false;
+    AppMethodBeat.o(214295);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.d
  * JD-Core Version:    0.7.0.1
  */

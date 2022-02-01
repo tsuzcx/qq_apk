@@ -1,32 +1,33 @@
 package com.tencent.mm.plugin.appbrand.ac;
 
 import android.os.Looper;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 @Deprecated
 public class m
 {
-  private static final Object ogA;
-  private static volatile m.a ogB;
+  private static final Object rim;
+  private static volatile a rin;
   
   static
   {
     AppMethodBeat.i(140849);
-    ogA = new Object();
-    ogB = null;
+    rim = new Object();
+    rin = null;
     AppMethodBeat.o(140849);
   }
   
-  public static void bZm()
+  public static void clU()
   {
     AppMethodBeat.i(140846);
-    if (ogB != null) {
+    if (rin != null) {
       try
       {
-        if (ogB != null) {
-          ogB.removeCallbacksAndMessages(null);
+        if (rin != null) {
+          rin.removeCallbacksAndMessages(null);
         }
         return;
       }
@@ -38,22 +39,22 @@ public class m
     AppMethodBeat.o(140846);
   }
   
-  public static m.a bZn()
+  public static a clV()
   {
-    AppMethodBeat.i(221352);
-    if (ogB == null) {}
+    AppMethodBeat.i(209002);
+    if (rin == null) {}
     try
     {
-      if (ogB == null) {
-        ogB = new m.a("Luggage.Common.ThreadUtil.WORKER_THREAD");
+      if (rin == null) {
+        rin = new a("Luggage.Common.ThreadUtil.WORKER_THREAD");
       }
-      m.a locala = ogB;
-      AppMethodBeat.o(221352);
+      a locala = rin;
+      AppMethodBeat.o(209002);
       return locala;
     }
     finally
     {
-      AppMethodBeat.o(221352);
+      AppMethodBeat.o(209002);
     }
   }
   
@@ -71,13 +72,39 @@ public class m
       AppMethodBeat.o(140848);
       return;
     }
-    h.RTc.aV(paramRunnable);
+    h.ZvG.bc(paramRunnable);
     AppMethodBeat.o(140848);
+  }
+  
+  @Deprecated
+  public static final class a
+    extends MMHandler
+  {
+    a(String paramString)
+    {
+      super();
+    }
+    
+    public final Looper getLooper()
+    {
+      AppMethodBeat.i(207486);
+      UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
+      AppMethodBeat.o(207486);
+      throw localUnsupportedOperationException;
+    }
+    
+    public final boolean i(Runnable paramRunnable, long paramLong)
+    {
+      AppMethodBeat.i(207485);
+      boolean bool = super.postDelayed(paramRunnable, paramLong);
+      AppMethodBeat.o(207485);
+      return bool;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ac.m
  * JD-Core Version:    0.7.0.1
  */

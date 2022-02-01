@@ -11,6 +11,7 @@ import android.view.ViewConfiguration;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kiss.widget.textview.StaticTextView;
+import com.tencent.mm.plugin.comm.c.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMStack;
@@ -20,19 +21,19 @@ public final class o
   implements View.OnTouchListener
 {
   private static boolean DEBUG;
-  private static int FfB;
-  private static int Pw;
-  private p Kru;
-  private boolean Krv;
-  private View Krw;
-  private MMHandler Krx;
-  private b Kry;
-  private a Krz;
+  private static int Lug;
+  private static int MN;
+  private p RsB;
+  private boolean RsC;
+  private View RsD;
+  private MMHandler RsE;
+  private o.b RsF;
+  private a RsG;
   private a mAdTagClickCallback;
   public int mAdTagClickScene;
   String mSessionId;
-  private boolean ooU;
   private int position;
+  private boolean rqI;
   private Context uiContext;
   private View view;
   
@@ -40,46 +41,46 @@ public final class o
   {
     AppMethodBeat.i(152338);
     DEBUG = false;
-    Pw = ViewConfiguration.getTapTimeout();
+    MN = ViewConfiguration.getTapTimeout();
     int i = ViewConfiguration.getLongPressTimeout();
-    FfB = i;
-    if (i > Pw * 2) {
-      FfB -= Pw;
+    Lug = i;
+    if (i > MN * 2) {
+      Lug -= MN;
     }
-    Log.d("MicroMsg.PressSpanTouchListener", "long press timeout:%d", new Object[] { Integer.valueOf(FfB) });
+    Log.d("MicroMsg.PressSpanTouchListener", "long press timeout:%d", new Object[] { Integer.valueOf(Lug) });
     AppMethodBeat.o(152338);
   }
   
   public o()
   {
     AppMethodBeat.i(152331);
-    this.Kru = null;
-    this.Krv = false;
-    this.Krw = null;
-    this.ooU = false;
+    this.RsB = null;
+    this.RsC = false;
+    this.RsD = null;
+    this.rqI = false;
     this.uiContext = null;
-    this.Krx = new MMHandler(Looper.getMainLooper());
-    this.Kry = new b((byte)0);
-    this.Krz = new a();
+    this.RsE = new MMHandler(Looper.getMainLooper());
+    this.RsF = new o.b(this, (byte)0);
+    this.RsG = new a();
     AppMethodBeat.o(152331);
   }
   
   public o(Context paramContext)
   {
     AppMethodBeat.i(152332);
-    this.Kru = null;
-    this.Krv = false;
-    this.Krw = null;
-    this.ooU = false;
+    this.RsB = null;
+    this.RsC = false;
+    this.RsD = null;
+    this.rqI = false;
     this.uiContext = null;
-    this.Krx = new MMHandler(Looper.getMainLooper());
-    this.Kry = new b((byte)0);
-    this.Krz = new a();
+    this.RsE = new MMHandler(Looper.getMainLooper());
+    this.RsF = new o.b(this, (byte)0);
+    this.RsG = new a();
     this.uiContext = paramContext;
     AppMethodBeat.o(152332);
   }
   
-  private void af(MotionEvent paramMotionEvent)
+  private void ao(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(152334);
     if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) {
@@ -88,11 +89,11 @@ public final class o
     AppMethodBeat.o(152334);
   }
   
-  private void aiL(int paramInt)
+  private void aqR(int paramInt)
   {
     AppMethodBeat.i(152336);
     if (this.view != null) {
-      this.Krx.postDelayed(this.Krz, FfB - paramInt);
+      this.RsE.postDelayed(this.RsG, Lug - paramInt);
     }
     AppMethodBeat.o(152336);
   }
@@ -105,29 +106,32 @@ public final class o
       AppMethodBeat.o(152333);
       return false;
     }
-    if (paramMotionEvent.getAction() == 0) {
-      paramView.setTag(2131309367, new int[] { (int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY() });
+    int i;
+    int j;
+    if (paramMotionEvent.getAction() == 0)
+    {
+      i = (int)paramMotionEvent.getRawX();
+      j = (int)paramMotionEvent.getRawY();
+      paramView.setTag(c.e.touch_loc, new int[] { i, j });
     }
     this.view = paramView;
     Layout localLayout;
     CharSequence localCharSequence;
     MotionEvent localMotionEvent;
     Object localObject;
-    int i;
-    int j;
     int k;
-    label302:
+    label309:
     boolean bool;
     if ((paramView instanceof TextView))
     {
       localLayout = ((TextView)paramView).getLayout();
       localCharSequence = ((TextView)paramView).getText();
       if (DEBUG) {
-        Log.d("MicroMsg.PressSpanTouchListener", "ontouch action: %d, isLongPress:%b " + localLayout + " " + (localCharSequence instanceof Spanned) + " " + Util.getStack().toString(), new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Boolean.valueOf(this.ooU) });
+        Log.d("MicroMsg.PressSpanTouchListener", "ontouch action: %d, isLongPress:%b " + localLayout + " " + (localCharSequence instanceof Spanned) + " " + Util.getStack().toString(), new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Boolean.valueOf(this.rqI) });
       }
       localMotionEvent = MotionEvent.obtain(paramMotionEvent);
       if ((!(localCharSequence instanceof Spanned)) || (localLayout == null)) {
-        break label1439;
+        break label1446;
       }
       localObject = (Spanned)localCharSequence;
       i = localMotionEvent.getAction();
@@ -135,21 +139,21 @@ public final class o
       if ((paramView == null) || (localObject == null) || (!g.a(paramView, (Spanned)localObject)))
       {
         if ((i != 1) && (i != 0) && (i != 2) && (i != 3)) {
-          break label1404;
+          break label1411;
         }
         j = (int)localMotionEvent.getX();
         i = (int)localMotionEvent.getY();
         if (!(paramView instanceof StaticTextView)) {
-          break label469;
+          break label476;
         }
         if (j >= ((StaticTextView)paramView).getHorizontalDrawOffset())
         {
           k = localLayout.getWidth();
           if (j <= ((StaticTextView)paramView).getHorizontalDrawOffset() + k) {
-            break label428;
+            break label435;
           }
         }
-        af(localMotionEvent);
+        ao(localMotionEvent);
       }
       bool = false;
     }
@@ -157,14 +161,14 @@ public final class o
     {
       localMotionEvent.recycle();
       if (DEBUG) {
-        Log.d("MicroMsg.PressSpanTouchListener", "ontouch action2: %d, isLongPress:%b " + localLayout + " " + (localCharSequence instanceof Spanned) + " processResult: " + bool + " " + Util.getStack().toString(), new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Boolean.valueOf(this.ooU) });
+        Log.d("MicroMsg.PressSpanTouchListener", "ontouch action2: %d, isLongPress:%b " + localLayout + " " + (localCharSequence instanceof Spanned) + " processResult: " + bool + " " + Util.getStack().toString(), new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Boolean.valueOf(this.rqI) });
       }
       AppMethodBeat.o(152333);
       return bool;
       localLayout = ((StaticTextView)paramView).getTvLayout();
       localCharSequence = ((StaticTextView)paramView).getText();
       break;
-      label428:
+      label435:
       if (i >= ((StaticTextView)paramView).getVerticalDrawOffset())
       {
         k = localLayout.getHeight();
@@ -172,9 +176,9 @@ public final class o
       }
       else
       {
-        af(localMotionEvent);
-        break label302;
-        label469:
+        ao(localMotionEvent);
+        break label309;
+        label476:
         if ((paramView instanceof TextView))
         {
           if (j >= ((TextView)paramView).getTotalPaddingLeft())
@@ -184,8 +188,8 @@ public final class o
           }
           else
           {
-            af(localMotionEvent);
-            break label302;
+            ao(localMotionEvent);
+            break label309;
           }
           if (i >= ((TextView)paramView).getTotalPaddingTop())
           {
@@ -194,8 +198,8 @@ public final class o
           }
           else
           {
-            af(localMotionEvent);
-            break label302;
+            ao(localMotionEvent);
+            break label309;
           }
         }
       }
@@ -203,7 +207,7 @@ public final class o
       {
         j -= ((TextView)paramView).getTotalPaddingLeft();
         i -= ((TextView)paramView).getTotalPaddingTop();
-        label589:
+        label596:
         k = paramView.getScrollX();
         j = localLayout.getOffsetForHorizontal(localLayout.getLineForVertical(i + paramView.getScrollY()), j + k);
         i = j;
@@ -218,22 +222,22 @@ public final class o
         localObject = (p[])((Spanned)localObject).getSpans(i, i, p.class);
         i = localObject.length - 1;
         if (DEBUG) {
-          Log.d("MicroMsg.PressSpanTouchListener", "processPress action: %d, isLongPress:%b " + localObject.length + " " + this.Kru + " " + Util.getStack().toString(), new Object[] { Integer.valueOf(localMotionEvent.getAction()), Boolean.valueOf(this.ooU) });
+          Log.d("MicroMsg.PressSpanTouchListener", "processPress action: %d, isLongPress:%b " + localObject.length + " " + this.RsB + " " + Util.getStack().toString(), new Object[] { Integer.valueOf(localMotionEvent.getAction()), Boolean.valueOf(this.rqI) });
         }
         if (localObject.length == 0) {
-          break label1352;
+          break label1359;
         }
         if (j != 1) {
-          break label1080;
+          break label1087;
         }
-        this.Krx.removeCallbacks(this.Kry);
-        this.Krx.removeCallbacks(this.Krz);
-        if (!this.ooU) {
-          break label945;
+        this.RsE.removeCallbacks(this.RsF);
+        this.RsE.removeCallbacks(this.RsG);
+        if (!this.rqI) {
+          break label952;
         }
         resetStatus();
-        this.ooU = false;
-        paramView.setClickable(this.Krv);
+        this.rqI = false;
+        paramView.setClickable(this.RsC);
         if (DEBUG) {
           Log.i("MicroMsg.PressSpanTouchListener", "processPress action1 " + localMotionEvent.getAction());
         }
@@ -242,7 +246,7 @@ public final class o
       for (;;)
       {
         if (i == 0) {
-          break label1404;
+          break label1411;
         }
         if (DEBUG) {
           Log.i("MicroMsg.PressSpanTouchListener", "processTouch action1 " + localMotionEvent.getAction());
@@ -253,26 +257,26 @@ public final class o
         {
           j -= ((StaticTextView)paramView).getHorizontalDrawOffset();
           i -= ((StaticTextView)paramView).getVerticalDrawOffset();
-          break label589;
+          break label596;
         }
         j -= paramView.getPaddingLeft();
         i -= paramView.getPaddingTop();
-        break label589;
-        label945:
-        this.ooU = false;
-        if (this.Kru != null)
+        break label596;
+        label952:
+        this.rqI = false;
+        if (this.RsB != null)
         {
-          this.Kru.setSessionId(this.mSessionId);
-          this.Kru.setAdTagClickCallback(this.mAdTagClickCallback, this.position);
-          this.Kru.setAdTagClickScene(this.mAdTagClickScene);
+          this.RsB.setSessionId(this.mSessionId);
+          this.RsB.setAdTagClickCallback(this.mAdTagClickCallback, this.position);
+          this.RsB.setAdTagClickScene(this.mAdTagClickScene);
           if (this.uiContext != null) {
-            this.Kru.setContext(this.uiContext);
+            this.RsB.setContext(this.uiContext);
           }
-          this.Kru.onClick(paramView);
+          this.RsB.onClick(paramView);
         }
         for (;;)
         {
-          paramView.setClickable(this.Krv);
+          paramView.setClickable(this.RsC);
           resetStatus();
           if (DEBUG) {
             Log.i("MicroMsg.PressSpanTouchListener", "processPress action2 " + localMotionEvent.getAction());
@@ -281,29 +285,29 @@ public final class o
           break;
           Log.e("MicroMsg.PressSpanTouchListener", "ACTION_UP error, lastClickSpan is null");
         }
-        label1080:
+        label1087:
         if ((j == 0) || (j == 2))
         {
-          if ((j == 0) && (FfB > 0)) {
-            aiL(0);
+          if ((j == 0) && (Lug > 0)) {
+            aqR(0);
           }
           if (j == 0)
           {
-            this.ooU = false;
-            this.Krv = paramView.isClickable();
+            this.rqI = false;
+            this.RsC = paramView.isClickable();
           }
           resetStatus();
-          this.Kru = localObject[i];
-          this.Krw = paramView;
+          this.RsB = localObject[i];
+          this.RsD = paramView;
           localObject[i].setContext(null);
           localObject[i].setIsPressed(true);
           localObject[i].setEnable(true);
           paramView.invalidate();
-          if (this.ooU)
+          if (this.rqI)
           {
             localObject[i].setIsPressed(false);
             localObject[i].setEnable(false);
-            paramView.setClickable(this.Krv);
+            paramView.setClickable(this.RsC);
             if (DEBUG) {
               Log.i("MicroMsg.PressSpanTouchListener", "processPress action3 " + localMotionEvent.getAction());
             }
@@ -319,22 +323,22 @@ public final class o
         }
         else if (j == 3)
         {
-          this.Krx.removeCallbacks(this.Kry);
-          this.Krx.removeCallbacks(this.Krz);
-          paramView.setClickable(this.Krv);
+          this.RsE.removeCallbacks(this.RsF);
+          this.RsE.removeCallbacks(this.RsG);
+          paramView.setClickable(this.RsC);
           resetStatus();
           if (DEBUG) {
             Log.i("MicroMsg.PressSpanTouchListener", "processPress action5 " + localMotionEvent.getAction());
           }
           i = 0;
           continue;
-          label1352:
+          label1359:
           resetStatus();
         }
         else
         {
           if (j == 1) {
-            this.ooU = false;
+            this.rqI = false;
           }
           if (DEBUG) {
             Log.i("MicroMsg.PressSpanTouchListener", "processPress action6 " + localMotionEvent.getAction());
@@ -342,13 +346,13 @@ public final class o
           i = 0;
         }
       }
-      label1404:
+      label1411:
       if (!DEBUG) {
-        break label302;
+        break label309;
       }
       Log.i("MicroMsg.PressSpanTouchListener", "processTouch action2 " + localMotionEvent.getAction());
-      break label302;
-      label1439:
+      break label309;
+      label1446:
       bool = false;
     }
   }
@@ -356,13 +360,13 @@ public final class o
   public final void resetStatus()
   {
     AppMethodBeat.i(152335);
-    if (this.Kru != null)
+    if (this.RsB != null)
     {
-      this.Kru.setIsPressed(false);
-      this.Kru.setContext(null);
-      this.Krw.invalidate();
-      this.Krw = null;
-      this.Kru = null;
+      this.RsB.setIsPressed(false);
+      this.RsB.setContext(null);
+      this.RsD.invalidate();
+      this.RsD = null;
+      this.RsB = null;
     }
     AppMethodBeat.o(152335);
   }
@@ -390,23 +394,10 @@ public final class o
       AppMethodBeat.o(152329);
     }
   }
-  
-  final class b
-    implements Runnable
-  {
-    private b() {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(152330);
-      o.a(o.this, o.Pw);
-      AppMethodBeat.o(152330);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.span.o
  * JD-Core Version:    0.7.0.1
  */

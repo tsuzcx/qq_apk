@@ -7,29 +7,29 @@ import com.tencent.thumbplayer.api.resourceloader.TPAssetResourceLoadingContentI
 public final class d
   implements ITPAssetResourceLoadingRequest
 {
-  private int RZY;
-  TPAssetResourceLoadingContentInformationRequest Saa;
-  c San;
-  private boolean Sao;
-  private boolean rEt;
+  private int ZCI;
+  TPAssetResourceLoadingContentInformationRequest ZCK;
+  c ZCX;
+  private boolean ZCY;
+  private boolean vkd;
   
   public d(long paramLong1, long paramLong2, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(189266);
-    this.RZY = 0;
-    this.Sao = false;
-    this.rEt = false;
-    this.RZY = paramInt;
-    this.San = new c(paramLong1, paramLong2, paramBoolean);
-    this.San.RZY = paramInt;
-    AppMethodBeat.o(189266);
+    AppMethodBeat.i(220724);
+    this.ZCI = 0;
+    this.ZCY = false;
+    this.vkd = false;
+    this.ZCI = paramInt;
+    this.ZCX = new c(paramLong1, paramLong2, paramBoolean);
+    this.ZCX.ZCI = paramInt;
+    AppMethodBeat.o(220724);
   }
   
   public final void finishLoading()
   {
     try
     {
-      this.rEt = true;
+      this.vkd = true;
       return;
     }
     finally
@@ -41,14 +41,14 @@ public final class d
   
   public final TPAssetResourceLoadingContentInformationRequest getContentInformation()
   {
-    return this.Saa;
+    return this.ZCK;
   }
   
-  public final void hnD()
+  public final void ire()
   {
     try
     {
-      this.Sao = true;
+      this.ZCY = true;
       return;
     }
     finally
@@ -62,7 +62,7 @@ public final class d
   {
     try
     {
-      boolean bool = this.Sao;
+      boolean bool = this.ZCY;
       return bool;
     }
     finally
@@ -76,7 +76,7 @@ public final class d
   {
     try
     {
-      boolean bool = this.rEt;
+      boolean bool = this.vkd;
       return bool;
     }
     finally

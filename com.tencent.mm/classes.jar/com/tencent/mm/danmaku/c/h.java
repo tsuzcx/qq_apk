@@ -2,7 +2,7 @@ package com.tencent.mm.danmaku.c;
 
 public abstract interface h
 {
-  public abstract long asQ();
+  public abstract long azE();
 }
 
 

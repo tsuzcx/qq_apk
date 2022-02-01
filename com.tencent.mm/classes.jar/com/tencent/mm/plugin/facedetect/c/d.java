@@ -10,27 +10,27 @@ public final class d
   private String appId;
   private boolean isRetry;
   private String jsonString;
-  private String sQu;
-  private float sQv;
-  private boolean sQw;
+  private String wwr;
+  private float wws;
+  private boolean wwt;
   
   d(Context paramContext, f paramf, int paramInt, Bundle paramBundle)
   {
     super(paramContext, paramf, paramInt, 0);
-    AppMethodBeat.i(186363);
+    AppMethodBeat.i(195766);
     this.isRetry = false;
-    this.sQq = true;
+    this.wwn = true;
     this.appId = paramBundle.getString("appId", null);
     this.jsonString = paramBundle.getString("request_verify_pre_info", null);
-    this.sQu = paramBundle.getString("feedbackUrl", null);
-    this.sQv = paramBundle.getFloat("key_current_light", 0.0F);
-    this.sQw = paramBundle.getBoolean("key_upload_video", false);
-    AppMethodBeat.o(186363);
+    this.wwr = paramBundle.getString("feedbackUrl", null);
+    this.wws = paramBundle.getFloat("key_current_light", 0.0F);
+    this.wwt = paramBundle.getBoolean("key_upload_video", false);
+    AppMethodBeat.o(195766);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.c.d
  * JD-Core Version:    0.7.0.1
  */

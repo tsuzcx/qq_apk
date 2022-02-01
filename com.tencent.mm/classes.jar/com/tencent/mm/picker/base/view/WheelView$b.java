@@ -7,9 +7,9 @@ public enum WheelView$b
   static
   {
     AppMethodBeat.i(175305);
-    jKM = new b("FILL", 0);
-    jKN = new b("WRAP", 1);
-    jKO = new b[] { jKM, jKN };
+    mBR = new b("FILL", 0);
+    mBS = new b("WRAP", 1);
+    mBT = new b[] { mBR, mBS };
     AppMethodBeat.o(175305);
   }
   
@@ -17,7 +17,7 @@ public enum WheelView$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.picker.base.view.WheelView.b
  * JD-Core Version:    0.7.0.1
  */

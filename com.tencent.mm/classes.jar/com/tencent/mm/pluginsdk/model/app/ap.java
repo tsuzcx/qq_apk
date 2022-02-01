@@ -2,18 +2,17 @@ package com.tencent.mm.pluginsdk.model.app;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.g.c.y;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.f.c.y;
+import com.tencent.mm.kernel.c;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.r.a.a.a;
-import com.tencent.mm.protocal.protobuf.ckr;
-import com.tencent.mm.protocal.protobuf.cks;
+import com.tencent.mm.plugin.ab.a.a.a;
+import com.tencent.mm.protocal.protobuf.ctk;
+import com.tencent.mm.protocal.protobuf.ctl;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -27,43 +26,43 @@ import java.util.List;
 public final class ap
   implements i, u
 {
-  private static ap JXk;
-  public boolean JXl;
-  public boolean JXm;
-  private List<String> JXn;
-  public long JXo;
-  private final int JXp;
-  private int JXq;
-  public boolean JXr;
-  private long JXs;
+  private static ap QXE;
+  public boolean QXF;
+  public boolean QXG;
+  private List<String> QXH;
+  public long QXI;
+  private final int QXJ;
+  private int QXK;
+  public boolean QXL;
+  private long QXM;
   public String lang;
   
   private ap()
   {
     AppMethodBeat.i(151834);
-    this.JXl = false;
-    this.JXm = false;
-    this.JXn = new LinkedList();
-    this.JXp = 20;
-    this.JXq = 0;
-    this.JXr = false;
+    this.QXF = false;
+    this.QXG = false;
+    this.QXH = new LinkedList();
+    this.QXJ = 20;
+    this.QXK = 0;
+    this.QXL = false;
     AppMethodBeat.o(151834);
   }
   
-  private static void a(g paramg, cks paramcks)
+  private static void a(g paramg, ctl paramctl)
   {
     AppMethodBeat.i(151843);
-    paramg.field_appName = paramcks.qGA;
-    paramg.field_appName_en = paramcks.Mqc;
-    paramg.field_appName_tw = paramcks.Mqd;
-    paramg.field_appName_hk = paramcks.Mqn;
-    paramg.By(paramcks.Mqe);
-    paramg.Bz(paramcks.Mqf);
-    paramg.BA(paramcks.Mqh);
-    paramg.field_serviceAppInfoFlag = paramcks.Mqg;
-    paramg.field_serviceAppType = paramcks.qGD;
-    paramg.nb(paramcks.Mqi);
-    paramg.field_serviceShowFlag = paramcks.Mqj;
+    paramg.field_appName = paramctl.ufB;
+    paramg.field_appName_en = paramctl.TBf;
+    paramg.field_appName_tw = paramctl.TBg;
+    paramg.field_appName_hk = paramctl.TBq;
+    paramg.Im(paramctl.TBh);
+    paramg.In(paramctl.TBi);
+    paramg.Io(paramctl.TBk);
+    paramg.field_serviceAppInfoFlag = paramctl.TBj;
+    paramg.field_serviceAppType = paramctl.ufE;
+    paramg.po(paramctl.TBl);
+    paramg.field_serviceShowFlag = paramctl.TBm;
     AppMethodBeat.o(151843);
   }
   
@@ -76,7 +75,7 @@ public final class ap
       return;
     }
     Log.d("MicroMsg.SuggestionAppListLogic", "removeExpiredServiceApp");
-    Object localObject = h.gmU();
+    Object localObject = h.hhv();
     Log.i("MicroMsg.SuggestionAppListLogic", "oldList %d", new Object[] { Integer.valueOf(((List)localObject).size()) });
     if (((List)localObject).size() > 0) {
       localObject = ((List)localObject).iterator();
@@ -118,36 +117,36 @@ public final class ap
     }
   }
   
-  private static void gG(String paramString, int paramInt)
+  public static ap hhK()
+  {
+    AppMethodBeat.i(151835);
+    if (QXE == null) {
+      QXE = new ap();
+    }
+    ap localap = QXE;
+    AppMethodBeat.o(151835);
+    return localap;
+  }
+  
+  private static void hp(String paramString, int paramInt)
   {
     AppMethodBeat.i(151839);
     Log.i("MicroMsg.SuggestionAppListLogic", "get service app, offset = %d, lang = %s", new Object[] { Integer.valueOf(paramInt), paramString });
     paramString = new ae(paramInt, paramString);
-    com.tencent.mm.kernel.g.aAi();
-    com.tencent.mm.kernel.g.aAg().hqi.a(paramString, 0);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.a(paramString, 0);
     AppMethodBeat.o(151839);
-  }
-  
-  public static ap gni()
-  {
-    AppMethodBeat.i(151835);
-    if (JXk == null) {
-      JXk = new ap();
-    }
-    ap localap = JXk;
-    AppMethodBeat.o(151835);
-    return localap;
   }
   
   public final void a(int paramInt1, int paramInt2, String paramString, aa paramaa)
   {
     AppMethodBeat.i(151836);
-    if (!com.tencent.mm.kernel.g.aAc())
+    if (!com.tencent.mm.kernel.h.aHB())
     {
       AppMethodBeat.o(151836);
       return;
     }
-    this.JXl = false;
+    this.QXF = false;
     Log.d("MicroMsg.SuggestionAppListLogic", "Suggestion onSceneEnd errType=%s errCode=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramaa == null)
     {
@@ -163,15 +162,15 @@ public final class ap
       return;
     }
     paramString = (af)paramaa;
-    Log.d("MicroMsg.SuggestionAppListLogic", "get suggestion appList, AppCount = %s", new Object[] { Integer.valueOf(paramString.gnb()) });
-    paramString = paramString.JWA;
+    Log.d("MicroMsg.SuggestionAppListLogic", "get suggestion appList, AppCount = %s", new Object[] { Integer.valueOf(paramString.hhC()) });
+    paramString = paramString.QWT;
     if ((paramString == null) || (paramString.size() <= 0))
     {
       Log.w("MicroMsg.SuggestionAppListLogic", "empty suggestAppList");
       AppMethodBeat.o(151836);
       return;
     }
-    if ((MMApplicationContext.getContext() == null) || (a.a.eAZ() == null))
+    if ((MMApplicationContext.getContext() == null) || (a.a.fmG() == null))
     {
       Log.e("MicroMsg.SuggestionAppListLogic", "wrong environment");
       AppMethodBeat.o(151836);
@@ -188,8 +187,8 @@ public final class ap
       localObject2 = localg.field_appName;
       localObject3 = localg.field_packageName;
       String str1 = localg.field_signature;
-      String str2 = localg.fmM;
-      if (localg.fmL != null) {}
+      String str2 = localg.hrL;
+      if (localg.hrK != null) {}
       for (boolean bool = true;; bool = false)
       {
         Log.d("MicroMsg.SuggestionAppListLogic", "suggestion appName=%s, packageName=%s, signature [%s], introUrl [%s], has iconUrl [%s]", new Object[] { localObject2, localObject3, str1, str2, Boolean.valueOf(bool) });
@@ -197,11 +196,11 @@ public final class ap
         break;
       }
     }
-    a.a.eAZ().bg(paramaa);
-    localObject1 = h.is(MMApplicationContext.getContext());
+    a.a.fmG().bA(paramaa);
+    localObject1 = h.jv(MMApplicationContext.getContext());
     if (((List)localObject1).size() > 0)
     {
-      paramaa = a.a.eAZ().eAX();
+      paramaa = a.a.fmG().fmE();
       localObject1 = ((List)localObject1).iterator();
     }
     label530:
@@ -235,19 +234,19 @@ public final class ap
             paramaa.a(localg, new String[0]);
             break;
           }
-          com.tencent.mm.kernel.g.aAi();
-          com.tencent.mm.kernel.g.aAh().azQ().setLong(352275, System.currentTimeMillis());
-          this.JXo = System.currentTimeMillis();
+          com.tencent.mm.kernel.h.aHH();
+          com.tencent.mm.kernel.h.aHG().aHp().setLong(352275, System.currentTimeMillis());
+          this.QXI = System.currentTimeMillis();
           break;
         }
       }
     }
   }
   
-  public final void iu(Context paramContext)
+  public final void jx(Context paramContext)
   {
     AppMethodBeat.i(151837);
-    if (!com.tencent.mm.kernel.g.aAc())
+    if (!com.tencent.mm.kernel.h.aHB())
     {
       AppMethodBeat.o(151837);
       return;
@@ -257,40 +256,40 @@ public final class ap
       AppMethodBeat.o(151837);
       return;
     }
-    if (this.JXm)
+    if (this.QXG)
     {
       Log.d("MicroMsg.SuggestionAppListLogic", "ServiceAppInfo is loading, return");
       AppMethodBeat.o(151837);
       return;
     }
-    this.JXm = true;
-    if (System.currentTimeMillis() - this.JXs < 43200000L)
+    this.QXG = true;
+    if (System.currentTimeMillis() - this.QXM < 43200000L)
     {
       Log.d("MicroMsg.SuggestionAppListLogic", "getServiceAppInfo not now");
-      this.JXm = false;
+      this.QXG = false;
       AppMethodBeat.o(151837);
       return;
     }
-    com.tencent.mm.kernel.g.aAi();
-    this.JXs = com.tencent.mm.kernel.g.aAh().azQ().akg(352276);
-    if (System.currentTimeMillis() - this.JXs < 43200000L)
+    com.tencent.mm.kernel.h.aHH();
+    this.QXM = com.tencent.mm.kernel.h.aHG().aHp().ahV(352276);
+    if (System.currentTimeMillis() - this.QXM < 43200000L)
     {
       Log.d("MicroMsg.SuggestionAppListLogic", "getServiceAppInfo not now pp");
-      this.JXm = false;
+      this.QXG = false;
       AppMethodBeat.o(151837);
       return;
     }
     if (this.lang == null) {
       this.lang = LocaleUtil.loadApplicationLanguage(paramContext.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0), paramContext);
     }
-    gG(this.lang, this.JXq);
+    hp(this.lang, this.QXK);
     AppMethodBeat.o(151837);
   }
   
-  public final void iv(Context paramContext)
+  public final void jy(Context paramContext)
   {
     AppMethodBeat.i(151838);
-    if (!com.tencent.mm.kernel.g.aAc())
+    if (!com.tencent.mm.kernel.h.aHB())
     {
       AppMethodBeat.o(151838);
       return;
@@ -300,119 +299,119 @@ public final class ap
       AppMethodBeat.o(151838);
       return;
     }
-    if (this.JXm)
+    if (this.QXG)
     {
       Log.d("MicroMsg.SuggestionAppListLogic", "ServiceAppInfo is loading, return");
       AppMethodBeat.o(151838);
       return;
     }
-    this.JXm = true;
+    this.QXG = true;
     if (this.lang == null) {
       this.lang = LocaleUtil.loadApplicationLanguage(paramContext.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0), paramContext);
     }
     Log.i("MicroMsg.SuggestionAppListLogic", "getServiceAppListImmediately");
-    gG(this.lang, this.JXq);
+    hp(this.lang, this.QXK);
     AppMethodBeat.o(151838);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(151841);
-    if (!com.tencent.mm.kernel.g.aAc())
+    if (!com.tencent.mm.kernel.h.aHB())
     {
       Log.e("MicroMsg.SuggestionAppListLogic", "getServiceAppList onSceneEnd account not ready");
-      this.JXq = 0;
-      this.JXn.clear();
+      this.QXK = 0;
+      this.QXH.clear();
       AppMethodBeat.o(151841);
       return;
     }
-    this.JXm = false;
+    this.QXG = false;
     if (paramq == null)
     {
       Log.e("MicroMsg.SuggestionAppListLogic", "scene == null");
-      this.JXq = 0;
-      this.JXn.clear();
+      this.QXK = 0;
+      this.QXH.clear();
       AppMethodBeat.o(151841);
       return;
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
       Log.e("MicroMsg.SuggestionAppListLogic", "getServiceAppList onSceneEnd : errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-      this.JXq = 0;
-      this.JXn.clear();
+      this.QXK = 0;
+      this.QXH.clear();
       AppMethodBeat.o(151841);
       return;
     }
     Log.i("MicroMsg.SuggestionAppListLogic", "getServiceAppList onSceneEnd : errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     paramString = (ae)paramq;
-    if ((paramString.rr != null) && (paramString.rr.iLL.iLR != null)) {}
-    for (paramString = (ckr)paramString.rr.iLL.iLR; paramString == null; paramString = null)
+    if ((paramString.rr != null) && (d.c.b(paramString.rr.lBS) != null)) {}
+    for (paramString = (ctk)d.c.b(paramString.rr.lBS); paramString == null; paramString = null)
     {
       Log.e("MicroMsg.SuggestionAppListLogic", "resp == null");
-      this.JXq = 0;
-      this.JXn.clear();
+      this.QXK = 0;
+      this.QXH.clear();
       AppMethodBeat.o(151841);
       return;
     }
-    if ((paramString.Mqb == null) || (paramString.Mqb.size() <= 0))
+    if ((paramString.TBe == null) || (paramString.TBe.size() <= 0))
     {
       Log.e("MicroMsg.SuggestionAppListLogic", "Service_appinfo empty");
-      a(a.a.eAZ().eAX(), this.JXn);
-      this.JXq = 0;
-      this.JXn.clear();
-      com.tencent.mm.kernel.g.aAi();
-      com.tencent.mm.kernel.g.aAh().azQ().setLong(352276, System.currentTimeMillis());
-      this.JXs = System.currentTimeMillis();
+      a(a.a.fmG().fmE(), this.QXH);
+      this.QXK = 0;
+      this.QXH.clear();
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHG().aHp().setLong(352276, System.currentTimeMillis());
+      this.QXM = System.currentTimeMillis();
       AppMethodBeat.o(151841);
       return;
     }
-    Log.i("MicroMsg.SuggestionAppListLogic", "offset = %d, count = %s", new Object[] { Integer.valueOf(this.JXq), Integer.valueOf(paramString.Mqb.size()) });
-    j localj = a.a.eAZ().eAX();
+    Log.i("MicroMsg.SuggestionAppListLogic", "offset = %d, count = %s", new Object[] { Integer.valueOf(this.QXK), Integer.valueOf(paramString.TBe.size()) });
+    j localj = a.a.fmG().fmE();
     LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = paramString.Mqb.iterator();
+    Iterator localIterator = paramString.TBe.iterator();
     label1303:
     while (localIterator.hasNext())
     {
-      cks localcks = (cks)localIterator.next();
-      Log.i("MicroMsg.SuggestionAppListLogic", "service info: %s, %s, %s, %s, %s, %s", new Object[] { localcks.qGA, Integer.valueOf(localcks.qGD), Integer.valueOf(localcks.Mqj), Integer.valueOf(localcks.Mqi), Integer.valueOf(localcks.Mqg), localcks.dNI });
-      if ((!Util.isNullOrNil(localcks.dNI)) && (!Util.isNullOrNil(localcks.qGA)))
+      ctl localctl = (ctl)localIterator.next();
+      Log.i("MicroMsg.SuggestionAppListLogic", "service info: %s, %s, %s, %s, %s, %s", new Object[] { localctl.ufB, Integer.valueOf(localctl.ufE), Integer.valueOf(localctl.TBm), Integer.valueOf(localctl.TBl), Integer.valueOf(localctl.TBj), localctl.appid });
+      if ((!Util.isNullOrNil(localctl.appid)) && (!Util.isNullOrNil(localctl.ufB)))
       {
-        paramInt1 = ((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.NXG, Integer.valueOf(0))).intValue();
+        paramInt1 = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VlG, Integer.valueOf(0))).intValue();
         label589:
         g localg;
         label636:
         boolean bool;
-        if (g.JVU.equals(localcks.dNI))
+        if (g.QWh.equals(localctl.appid))
         {
-          localcks.Mqg = (localcks.Mqg ^ 0xFD ^ 0xFFFFFFFF);
-          Log.d("MicroMsg.SuggestionAppListLogic", "aa change: %s", new Object[] { Integer.valueOf(localcks.Mqg) });
-          this.JXn.add(localcks.dNI);
-          localg = h.o(localcks.dNI, true, false);
+          localctl.TBj = (localctl.TBj ^ 0xFD ^ 0xFFFFFFFF);
+          Log.d("MicroMsg.SuggestionAppListLogic", "aa change: %s", new Object[] { Integer.valueOf(localctl.TBj) });
+          this.QXH.add(localctl.appid);
+          localg = h.o(localctl.appid, true, false);
           if (localg == null) {
             break label1239;
           }
-          if (localg.field_serviceAppInfoFlag == localcks.Mqg) {
+          if (localg.field_serviceAppInfoFlag == localctl.TBj) {
             break label991;
           }
           paramInt1 = 1;
           paramq = localg;
           if (paramInt1 != 0)
           {
-            paramq = localg.fmX;
-            String str = localg.fmW;
-            a(localg, localcks);
+            paramq = localg.hrW;
+            String str = localg.hrV;
+            a(localg, localctl);
             bool = localj.a(localg, new String[0]);
-            if (!Util.nullAsNil(paramq).equals(Util.nullAsNil(localcks.Mqf)))
+            if (!Util.nullAsNil(paramq).equals(Util.nullAsNil(localctl.TBi)))
             {
-              Log.i("MicroMsg.SuggestionAppListLogic", "update serviceApp.app_icon_url_list" + Util.nullAsNil(localcks.Mqf));
-              com.tencent.mm.plugin.r.a.eAQ().gD(localg.field_appId, 5);
+              Log.i("MicroMsg.SuggestionAppListLogic", "update serviceApp.app_icon_url_list" + Util.nullAsNil(localctl.TBi));
+              com.tencent.mm.plugin.ab.a.fmx().hm(localg.field_appId, 5);
             }
-            if (!Util.nullAsNil(str).equals(Util.nullAsNil(localcks.Mqe)))
+            if (!Util.nullAsNil(str).equals(Util.nullAsNil(localctl.TBh)))
             {
-              Log.i("MicroMsg.SuggestionAppListLogic", "update serviceApp.app_icon_url_panel" + Util.nullAsNil(localcks.Mqe));
-              com.tencent.mm.plugin.r.a.eAQ().gD(localg.field_appId, 4);
+              Log.i("MicroMsg.SuggestionAppListLogic", "update serviceApp.app_icon_url_panel" + Util.nullAsNil(localctl.TBh));
+              com.tencent.mm.plugin.ab.a.fmx().hm(localg.field_appId, 4);
             }
-            Log.i("MicroMsg.SuggestionAppListLogic", "update app: AppID = %s, ret = %s", new Object[] { localcks.dNI, Boolean.valueOf(bool) });
+            Log.i("MicroMsg.SuggestionAppListLogic", "update app: AppID = %s, ret = %s", new Object[] { localctl.appid, Boolean.valueOf(bool) });
             paramq = localg;
           }
         }
@@ -421,78 +420,78 @@ public final class ap
           if (!Util.isNullOrNil(paramq.field_openId)) {
             break label1303;
           }
-          localLinkedList.add(localcks.dNI);
+          localLinkedList.add(localctl.appid);
           break;
-          if (g.JVT.equals(localcks.dNI))
+          if (g.QWg.equals(localctl.appid))
           {
-            if (localcks.Mqj > 0) {
+            if (localctl.TBm > 0) {
               break label589;
             }
-            if ((z.aUj()) && (z.aUf() == 0) && (paramInt1 == 1))
+            if ((z.bdl()) && (z.bdg() == 0) && (paramInt1 == 1))
             {
-              com.tencent.mm.plugin.report.service.h.CyF.dN(965, 33);
+              com.tencent.mm.plugin.report.service.h.IzE.el(965, 33);
               break label589;
             }
-            com.tencent.mm.plugin.report.service.h.CyF.dN(965, 35);
+            com.tencent.mm.plugin.report.service.h.IzE.el(965, 35);
             break label589;
           }
-          if ((!g.JVR.equals(localcks.dNI)) || (localcks.Mqj > 0)) {
+          if ((!g.QWe.equals(localctl.appid)) || (localctl.TBm > 0)) {
             break label589;
           }
-          if ((z.aUj()) && (z.aUf() == 0) && (paramInt1 == 1))
+          if ((z.bdl()) && (z.bdg() == 0) && (paramInt1 == 1))
           {
-            com.tencent.mm.plugin.report.service.h.CyF.dN(965, 32);
+            com.tencent.mm.plugin.report.service.h.IzE.el(965, 32);
             break label589;
           }
-          com.tencent.mm.plugin.report.service.h.CyF.dN(965, 34);
+          com.tencent.mm.plugin.report.service.h.IzE.el(965, 34);
           break label589;
           label991:
-          if (localg.field_serviceAppType != localcks.qGD)
+          if (localg.field_serviceAppType != localctl.ufE)
           {
             paramInt1 = 1;
             break label636;
           }
-          if (localg.fmZ != localcks.Mqi)
+          if (localg.hrY != localctl.TBl)
           {
             paramInt1 = 1;
             break label636;
           }
-          if (localg.field_serviceShowFlag != localcks.Mqj)
+          if (localg.field_serviceShowFlag != localctl.TBm)
           {
             paramInt1 = 1;
             break label636;
           }
-          if (!Util.nullAsNil(localg.field_appName).equals(Util.nullAsNil(localcks.qGA)))
+          if (!Util.nullAsNil(localg.field_appName).equals(Util.nullAsNil(localctl.ufB)))
           {
             paramInt1 = 1;
             break label636;
           }
-          if (!Util.nullAsNil(localg.field_appName_en).equals(Util.nullAsNil(localcks.Mqc)))
+          if (!Util.nullAsNil(localg.field_appName_en).equals(Util.nullAsNil(localctl.TBf)))
           {
             paramInt1 = 1;
             break label636;
           }
-          if (!Util.nullAsNil(localg.field_appName_tw).equals(Util.nullAsNil(localcks.Mqd)))
+          if (!Util.nullAsNil(localg.field_appName_tw).equals(Util.nullAsNil(localctl.TBg)))
           {
             paramInt1 = 1;
             break label636;
           }
-          if (!Util.nullAsNil(localg.field_appName_hk).equals(Util.nullAsNil(localcks.Mqn)))
+          if (!Util.nullAsNil(localg.field_appName_hk).equals(Util.nullAsNil(localctl.TBq)))
           {
             paramInt1 = 1;
             break label636;
           }
-          if (!Util.nullAsNil(localg.fmX).equals(Util.nullAsNil(localcks.Mqf)))
+          if (!Util.nullAsNil(localg.hrW).equals(Util.nullAsNil(localctl.TBi)))
           {
             paramInt1 = 1;
             break label636;
           }
-          if (!Util.nullAsNil(localg.fmW).equals(Util.nullAsNil(localcks.Mqe)))
+          if (!Util.nullAsNil(localg.hrV).equals(Util.nullAsNil(localctl.TBh)))
           {
             paramInt1 = 1;
             break label636;
           }
-          if (!Util.nullAsNil(localg.fmY).equals(Util.nullAsNil(localcks.Mqh)))
+          if (!Util.nullAsNil(localg.hrX).equals(Util.nullAsNil(localctl.TBk)))
           {
             paramInt1 = 1;
             break label636;
@@ -501,33 +500,33 @@ public final class ap
           break label636;
           label1239:
           paramq = new g();
-          paramq.field_appId = localcks.dNI;
-          a(paramq, localcks);
+          paramq.field_appId = localctl.appid;
+          a(paramq, localctl);
           bool = localj.r(paramq);
-          Log.i("MicroMsg.SuggestionAppListLogic", "insert app: AppID = %s, ret = %s", new Object[] { localcks.dNI, Boolean.valueOf(bool) });
+          Log.i("MicroMsg.SuggestionAppListLogic", "insert app: AppID = %s, ret = %s", new Object[] { localctl.appid, Boolean.valueOf(bool) });
         }
       }
     }
     if (localLinkedList.size() > 0)
     {
       Log.i("MicroMsg.SuggestionAppListLogic", "needGetOpenIdList %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
-      com.tencent.mm.plugin.r.a.eAU().addAll(localLinkedList);
+      com.tencent.mm.plugin.ab.a.fmB().addAll(localLinkedList);
     }
-    if (paramString.Mqb.size() == 20)
+    if (paramString.TBe.size() == 20)
     {
-      this.JXq += 20;
-      gG(this.lang, this.JXq);
+      this.QXK += 20;
+      hp(this.lang, this.QXK);
     }
     for (;;)
     {
-      com.tencent.mm.kernel.g.aAi();
-      com.tencent.mm.kernel.g.aAh().azQ().setLong(352276, System.currentTimeMillis());
-      this.JXs = System.currentTimeMillis();
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHG().aHp().setLong(352276, System.currentTimeMillis());
+      this.QXM = System.currentTimeMillis();
       AppMethodBeat.o(151841);
       return;
-      a(localj, this.JXn);
-      this.JXq = 0;
-      this.JXn.clear();
+      a(localj, this.QXH);
+      this.QXK = 0;
+      this.QXH.clear();
     }
   }
   
@@ -535,16 +534,16 @@ public final class ap
   {
     AppMethodBeat.i(151840);
     Log.i("MicroMsg.SuggestionAppListLogic", "reset getServiceAppList");
-    com.tencent.mm.kernel.g.aAi();
-    com.tencent.mm.kernel.g.aAh().azQ().setLong(352276, 0L);
-    this.JXs = 0L;
-    this.JXr = true;
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHG().aHp().setLong(352276, 0L);
+    this.QXM = 0L;
+    this.QXL = true;
     AppMethodBeat.o(151840);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.ap
  * JD-Core Version:    0.7.0.1
  */

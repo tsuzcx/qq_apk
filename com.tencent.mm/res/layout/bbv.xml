@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/j5r" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/zw"
+<RelativeLayout android:id="@id/j5r" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:id="@id/j45" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerVertical="true" android:contentDescription="@string/zw" />
+    <RelativeLayout android:id="@id/j45" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerVertical="true" />
     <View android:id="@id/j6w" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/zw" />
     <ImageView android:id="@id/j71" android:visibility="gone" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@drawable/b1o" android:layout_centerInParent="true" android:contentDescription="@string/xu" />
     <ProgressBar android:id="@id/j5x" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a62" />

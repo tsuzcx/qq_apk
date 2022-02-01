@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.account.friend.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.account.friend.a.af;
 
 final class QQFriendUI$1
@@ -15,7 +15,7 @@ final class QQFriendUI$1
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(131274);
-    g.azz().a(this.khs);
+    h.aGY().a(this.mYR);
     AppMethodBeat.o(131274);
   }
 }

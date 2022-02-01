@@ -7,155 +7,204 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import io.flutter.embedding.engine.b.b;
-import io.flutter.embedding.engine.c.f;
+import io.flutter.embedding.engine.b.d;
+import io.flutter.embedding.engine.b.g;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.embedding.engine.dart.DartExecutor.a;
+import io.flutter.embedding.engine.renderer.b;
+import io.flutter.plugin.a.j;
 import io.flutter.plugin.a.k;
+import io.flutter.plugin.a.k.c;
+import io.flutter.plugin.a.k.d;
 import io.flutter.plugin.a.m;
 import io.flutter.plugins.GeneratedPluginRegistrant;
 import io.flutter.view.FlutterMain;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public final class a
+public class a
 {
-  public io.flutter.embedding.engine.a wJi;
-  private com.tencent.mm.plugin.flutter.ui.a wJj;
-  private HashMap<Integer, Pair<Integer, String>> wJk;
-  private AtomicInteger wJl;
-  public k wJm;
-  public m wJn;
-  private b wJo;
+  private AtomicInteger BCA;
+  public k BCB;
+  public m BCC;
+  private b BCD;
+  public io.flutter.embedding.engine.a BCx;
+  private com.tencent.mm.plugin.flutter.ui.a BCy;
+  private HashMap<Integer, Pair<Integer, String>> BCz;
   
   public a()
   {
     AppMethodBeat.i(148849);
-    this.wJk = new HashMap();
-    this.wJl = new AtomicInteger(0);
-    this.wJo = new a.3(this);
+    this.BCz = new HashMap();
+    this.BCA = new AtomicInteger(0);
+    this.BCD = new b()
+    {
+      public final void epX()
+      {
+        AppMethodBeat.i(220500);
+        Log.i("MicroMsg.Flutter.FlutterEngineMgr", "onFlutterUiDisplayed");
+        if (a.a(a.this) != null) {
+          a.a(a.this);
+        }
+        AppMethodBeat.o(220500);
+      }
+      
+      public final void epY() {}
+    };
     AppMethodBeat.o(148849);
   }
   
   public final void a(com.tencent.mm.plugin.flutter.ui.a parama)
   {
-    AppMethodBeat.i(240935);
-    int i = this.wJl.incrementAndGet();
+    AppMethodBeat.i(220589);
+    int i = this.BCA.incrementAndGet();
     Log.i("MicroMsg.Flutter.FlutterEngineMgr", "onCreate %s InstanceCount %d", new Object[] { Integer.valueOf(parama.hashCode()), Integer.valueOf(i) });
-    AppMethodBeat.o(240935);
+    AppMethodBeat.o(220589);
   }
   
   public final boolean a(com.tencent.mm.plugin.flutter.a.c paramc, String paramString, Activity paramActivity)
   {
-    AppMethodBeat.i(240934);
-    if (this.wJi == null) {
-      dLq();
+    AppMethodBeat.i(220587);
+    if (this.BCx == null) {
+      epV();
     }
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.Flutter.FlutterEngineMgr", "InitRoute %s ", new Object[] { paramc });
       long l = System.currentTimeMillis();
-      paramc.wJh = true;
-      this.wJi.SOc.setInitialRoute(paramc.bua());
+      paramc.BCw = true;
+      this.BCx.aaqb.setInitialRoute(paramc.bFa());
       System.loadLibrary("wechatlv");
-      paramc = this.wJi.SNW;
-      MMApplicationContext.getContext().getAssets();
-      paramc.a(new DartExecutor.a(FlutterMain.findAppBundlePath(MMApplicationContext.getContext()), paramString, (byte)0));
-      this.wJi.SMr.addIsDisplayingFlutterUiListener(this.wJo);
+      this.BCx.aapU.a(new DartExecutor.a(FlutterMain.findAppBundlePath(MMApplicationContext.getContext()), paramString));
+      this.BCx.aaos.addIsDisplayingFlutterUiListener(this.BCD);
       paramc = paramActivity;
       if (paramActivity == null) {
         paramc = MMApplicationContext.getContext();
       }
-      this.wJn = new io.flutter.app.c(paramc);
-      GeneratedPluginRegistrant.registerWith(this.wJn);
-      this.wJm = new k(this.wJi.SNW, "com.tencent.mm.flutter.mmnative");
-      this.wJm.a(new a.1(this));
-      this.wJk.clear();
+      this.BCC = new io.flutter.app.c(paramc);
+      GeneratedPluginRegistrant.registerWith(this.BCC);
+      this.BCB = new k(this.BCx.aapU, "com.tencent.mm.flutter.mmnative");
+      this.BCB.a(new k.c()
+      {
+        public final void a(j paramAnonymousj, k.d paramAnonymousd)
+        {
+          AppMethodBeat.i(148847);
+          Log.i("MicroMsg.Flutter.FlutterEngineMgr", "method:%s", new Object[] { paramAnonymousj.method });
+          AppMethodBeat.o(148847);
+        }
+      });
+      this.BCz.clear();
       l = System.currentTimeMillis() - l;
       Log.i("MicroMsg.Flutter.FlutterEngineMgr", "flutter engine init use time: %d", new Object[] { Long.valueOf(l) });
-      h.CyF.dN(1529, 0);
-      h.CyF.n(1529L, 2L, l);
-      AppMethodBeat.o(240934);
+      h.IzE.el(1529, 0);
+      h.IzE.p(1529L, 2L, l);
+      AppMethodBeat.o(220587);
       return bool;
     }
   }
   
   public final void b(com.tencent.mm.plugin.flutter.ui.a parama)
   {
-    AppMethodBeat.i(240936);
-    if (parama.equals(this.wJj)) {
-      this.wJi.SNZ.hxd();
+    AppMethodBeat.i(220592);
+    if (parama.equals(this.BCy)) {
+      this.BCx.aapY.iBe();
     }
-    AppMethodBeat.o(240936);
+    AppMethodBeat.o(220592);
   }
   
   public final void c(com.tencent.mm.plugin.flutter.ui.a parama)
   {
-    AppMethodBeat.i(240937);
-    this.wJj = parama;
-    this.wJi.SNZ.hxc();
-    AppMethodBeat.o(240937);
+    AppMethodBeat.i(220594);
+    this.BCy = parama;
+    this.BCx.aapY.iBd();
+    AppMethodBeat.o(220594);
   }
   
   public final void d(com.tencent.mm.plugin.flutter.ui.a parama)
   {
-    AppMethodBeat.i(240938);
-    if (this.wJj.equals(parama))
+    AppMethodBeat.i(220596);
+    if (this.BCy.equals(parama))
     {
-      this.wJi.SNZ.hxe();
-      this.wJj = null;
+      this.BCx.aapY.iBf();
+      this.BCy = null;
     }
-    AppMethodBeat.o(240938);
+    AppMethodBeat.o(220596);
   }
   
-  public final boolean dLq()
+  public final boolean epV()
   {
-    AppMethodBeat.i(240933);
-    if (this.wJi == null)
+    AppMethodBeat.i(220582);
+    if (this.BCx == null)
     {
       long l = System.currentTimeMillis();
-      this.wJi = new io.flutter.embedding.engine.a(MMApplicationContext.getContext());
+      this.BCx = new io.flutter.embedding.engine.a(MMApplicationContext.getContext());
       l = System.currentTimeMillis() - l;
       Log.i("MicroMsg.Flutter.FlutterEngineMgr", "flutter engine new use time: %d", new Object[] { Long.valueOf(l) });
-      h.CyF.dN(1529, 0);
-      h.CyF.n(1529L, 1L, l);
+      h.IzE.el(1529, 0);
+      h.IzE.p(1529L, 1L, l);
     }
-    AppMethodBeat.o(240933);
+    AppMethodBeat.o(220582);
     return true;
   }
   
-  public final void dLr()
+  public final void epW()
   {
     AppMethodBeat.i(148852);
-    this.wJi.SOc.dLr();
+    this.BCx.aaqb.epW();
     AppMethodBeat.o(148852);
   }
   
-  public final com.tencent.mm.plugin.flutter.ui.a dLs()
+  public final void gj(final Context paramContext)
   {
-    return this.wJj;
-  }
-  
-  public final void fP(Context paramContext)
-  {
-    AppMethodBeat.i(240940);
-    if (this.wJm == null)
+    AppMethodBeat.i(220602);
+    if (this.BCB == null)
     {
       Log.i("MicroMsg.Flutter.FlutterEngineMgr", "onBackPressed error. platformChannel is null.");
       ((Activity)paramContext).finish();
-      AppMethodBeat.o(240940);
+      AppMethodBeat.o(220602);
       return;
     }
-    this.wJm.a("canPop", null, new a.4(this, paramContext));
-    AppMethodBeat.o(240940);
+    this.BCB.a("canPop", null, new k.d()
+    {
+      public final void b(String paramAnonymousString1, String paramAnonymousString2, Object paramAnonymousObject)
+      {
+        AppMethodBeat.i(220895);
+        Log.i("MicroMsg.Flutter.FlutterEngineMgr", "onBackPressed error");
+        ((Activity)paramContext).finish();
+        AppMethodBeat.o(220895);
+      }
+      
+      public final void bb(Object paramAnonymousObject)
+      {
+        AppMethodBeat.i(220893);
+        if ((paramAnonymousObject != null) && ((paramAnonymousObject instanceof Boolean)) && (((Boolean)paramAnonymousObject).booleanValue()))
+        {
+          a.this.epW();
+          AppMethodBeat.o(220893);
+          return;
+        }
+        Log.i("MicroMsg.Flutter.FlutterEngineMgr", "onBackPressed success can not pop.");
+        a.this.epW();
+        AppMethodBeat.o(220893);
+      }
+      
+      public final void epZ()
+      {
+        AppMethodBeat.i(220897);
+        Log.i("MicroMsg.Flutter.FlutterEngineMgr", "onBackPressed notImplemented");
+        ((Activity)paramContext).finish();
+        AppMethodBeat.o(220897);
+      }
+    });
+    AppMethodBeat.o(220602);
   }
   
-  public final boolean gA(int paramInt1, int paramInt2)
+  public final boolean hv(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(240939);
+    AppMethodBeat.i(220600);
     try
     {
-      Pair localPair = (Pair)this.wJk.get(Integer.valueOf(paramInt1));
+      Pair localPair = (Pair)this.BCz.get(Integer.valueOf(paramInt1));
       if (localPair != null) {
         Log.i("MicroMsg.Flutter.FlutterEngineMgr", "onActivityResult %s %d %d", new Object[] { localPair.second, localPair.first, Integer.valueOf(paramInt2) });
       }
@@ -165,20 +214,20 @@ public final class a
       label58:
       break label58;
     }
-    AppMethodBeat.o(240939);
+    AppMethodBeat.o(220600);
     return false;
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(148851);
-    if (this.wJl.decrementAndGet() <= 0)
+    if (this.BCA.decrementAndGet() <= 0)
     {
-      this.wJk.clear();
-      if (this.wJi != null) {
-        this.wJi.destroy();
+      this.BCz.clear();
+      if (this.BCx != null) {
+        this.BCx.destroy();
       }
-      this.wJi = null;
+      this.BCx = null;
     }
     AppMethodBeat.o(148851);
   }

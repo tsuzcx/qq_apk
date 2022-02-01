@@ -2,16 +2,16 @@ package com.tencent.map.lib.models;
 
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.v4.view.a.c;
-import android.support.v4.view.u;
-import android.support.v4.widget.j;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
+import androidx.core.g.a.d;
+import androidx.core.g.w;
+import androidx.customview.a.a;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class MapExploreByTouchHelper
-  extends j
+  extends a
 {
   protected static final int MAP_ACTION_CLICKED = 1;
   protected static final int NO_ITEM = -1;
@@ -68,36 +68,36 @@ public abstract class MapExploreByTouchHelper
     paramAccessibilityEvent.getText().add(localAccessibleTouchItem.getContentDescription());
   }
   
-  public void onPopulateNodeForVirtualView(int paramInt, c paramc)
+  public void onPopulateNodeForVirtualView(int paramInt, d paramd)
   {
     if (paramInt >= this.accessibleTouchItems.size())
     {
-      paramc.setText("");
-      paramc.setBoundsInParent(new Rect());
+      paramd.setText("");
+      paramd.f(new Rect());
       return;
     }
     AccessibleTouchItem localAccessibleTouchItem = (AccessibleTouchItem)this.accessibleTouchItems.get(paramInt);
     if (localAccessibleTouchItem == null) {
       throw new IllegalArgumentException("Invalid virtual view id");
     }
-    paramc.setText(localAccessibleTouchItem.getContentDescription());
-    paramc.setBoundsInParent(localAccessibleTouchItem.getBounds());
-    paramc.addAction(16);
+    paramd.setText(localAccessibleTouchItem.getContentDescription());
+    paramd.f(localAccessibleTouchItem.getBounds());
+    paramd.bA(16);
   }
   
   public void onTalkBackActivate(View paramView)
   {
-    u.a(paramView, this);
+    w.a(paramView, this);
   }
   
   public void onTalkBackDeActivate(View paramView)
   {
-    u.a(paramView, null);
+    w.a(paramView, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.map.lib.models.MapExploreByTouchHelper
  * JD-Core Version:    0.7.0.1
  */

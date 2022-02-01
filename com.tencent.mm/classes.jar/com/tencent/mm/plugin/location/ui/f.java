@@ -10,9 +10,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.plugin.location.model.n;
 import com.tencent.mm.plugin.location.model.r;
+import com.tencent.mm.plugin.map.a.d;
+import com.tencent.mm.plugin.map.a.e;
+import com.tencent.mm.plugin.map.a.f;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -26,60 +29,81 @@ import java.util.List;
 
 public final class f
 {
+  MMHorList EmB;
+  a EmC;
+  private int EmD;
+  f.c EmE;
   Context context;
-  private String gzn;
+  private String jjq;
   private MMHandler mHandler;
   private boolean mIsInit;
-  MMHorList yII;
-  a yIJ;
-  private int yIK;
-  f.c yIL;
   
   public f(Context paramContext, View paramView, String paramString)
   {
     AppMethodBeat.i(55905);
     this.mIsInit = false;
-    this.gzn = "";
+    this.jjq = "";
     this.mHandler = new MMHandler(Looper.getMainLooper());
-    this.yIL = null;
+    this.EmE = null;
     this.context = paramContext;
-    this.yII = ((MMHorList)paramView);
-    this.gzn = paramString;
-    edl();
+    this.EmB = ((MMHorList)paramView);
+    this.jjq = paramString;
+    eME();
     AppMethodBeat.o(55905);
   }
   
-  private void aDb(String paramString)
+  private void aC(ArrayList<b> paramArrayList)
+  {
+    AppMethodBeat.i(55907);
+    Iterator localIterator = paramArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      b localb = (b)localIterator.next();
+      if (localb.EmI) {
+        localb.eMH();
+      }
+    }
+    this.EmD = a.fromDPToPix(this.context, 60);
+    this.EmB.setOverScrollEnabled(true);
+    this.EmB.setItemWidth(this.EmD);
+    this.EmB.setCenterInParent(true);
+    this.EmB.setOnItemClickListener(new f.1(this));
+    this.EmC = new a(paramArrayList);
+    this.EmB.setAdapter(this.EmC);
+    AppMethodBeat.o(55907);
+  }
+  
+  private void aNl(String paramString)
   {
     AppMethodBeat.i(55908);
     Log.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberEnter, usernmae=%s", new Object[] { paramString });
-    if (this.yIJ.aDf(paramString))
+    if (this.EmC.aNp(paramString))
     {
       AppMethodBeat.o(55908);
       return;
     }
     paramString = new b(paramString);
-    a locala = this.yIJ;
-    locala.yIO.add(paramString);
+    a locala = this.EmC;
+    locala.EmH.add(paramString);
     locala.notifyDataSetChanged();
-    this.yII.invalidate();
+    this.EmB.invalidate();
     AppMethodBeat.o(55908);
   }
   
-  private void aDc(String paramString)
+  private void aNm(String paramString)
   {
     AppMethodBeat.i(55909);
     Log.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberExit, username=%s", new Object[] { paramString });
     a locala;
     int i;
-    if (this.yIJ.aDf(paramString))
+    if (this.EmC.aNp(paramString))
     {
-      locala = this.yIJ;
+      locala = this.EmC;
       i = 0;
-      if (i >= locala.yIO.size()) {
+      if (i >= locala.EmH.size()) {
         break label108;
       }
-      if (!((b)locala.yIO.get(i)).username.equals(paramString)) {
+      if (!((b)locala.EmH.get(i)).username.equals(paramString)) {
         break label101;
       }
     }
@@ -87,10 +111,10 @@ public final class f
     {
       if (i != -1)
       {
-        locala.yIO.remove(i);
+        locala.EmH.remove(i);
         locala.notifyDataSetChanged();
       }
-      this.yII.invalidate();
+      this.EmB.invalidate();
       AppMethodBeat.o(55909);
       return;
       label101:
@@ -101,31 +125,10 @@ public final class f
     }
   }
   
-  private void av(ArrayList<b> paramArrayList)
-  {
-    AppMethodBeat.i(55907);
-    Iterator localIterator = paramArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      b localb = (b)localIterator.next();
-      if (localb.yIP) {
-        localb.edo();
-      }
-    }
-    this.yIK = a.fromDPToPix(this.context, 60);
-    this.yII.setOverScrollEnabled(true);
-    this.yII.setItemWidth(this.yIK);
-    this.yII.setCenterInParent(true);
-    this.yII.setOnItemClickListener(new f.1(this));
-    this.yIJ = new a(paramArrayList);
-    this.yII.setAdapter(this.yIJ);
-    AppMethodBeat.o(55907);
-  }
-  
-  private void edl()
+  private void eME()
   {
     AppMethodBeat.i(55906);
-    Object localObject = n.ecS().PY(this.gzn);
+    Object localObject = n.eMk().Xv(this.jjq);
     Log.d("MicroMsg.ShareHeaderAvatarViewMgr", "initAvatarList, memebers.size=%d", new Object[] { Integer.valueOf(((List)localObject).size()) });
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
@@ -139,94 +142,20 @@ public final class f
         localArrayList2.add(str);
       }
     }
-    av(localArrayList1);
-    aw(localArrayList2);
-    this.yII.invalidate();
-    this.yIJ.notifyDataSetChanged();
+    aC(localArrayList1);
+    aD(localArrayList2);
+    this.EmB.invalidate();
+    this.EmC.notifyDataSetChanged();
     AppMethodBeat.o(55906);
   }
   
-  public final void aDd(String paramString)
-  {
-    int k = 0;
-    AppMethodBeat.i(55910);
-    Log.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberTalk, username=%s", new Object[] { paramString });
-    final int i;
-    if (this.yIJ.aDf(paramString))
-    {
-      this.yIJ.aDe(paramString).edo();
-      this.yIJ.notifyDataSetChanged();
-      this.yII.invalidate();
-      if ((this.yII.getIsTouching()) || (Util.isNullOrNil(paramString)))
-      {
-        AppMethodBeat.o(55910);
-        return;
-      }
-      a locala = this.yIJ;
-      i = 0;
-      if (i >= locala.yIO.size()) {
-        break label242;
-      }
-      if (!((b)locala.yIO.get(i)).username.equals(paramString)) {
-        break label201;
-      }
-    }
-    label171:
-    label201:
-    label208:
-    label237:
-    label242:
-    for (int j = i;; j = -1)
-    {
-      Log.d("MicroMsg.ShareHeaderAvatarViewMgr", "scrollToTalker, index=%d", new Object[] { Integer.valueOf(j) });
-      int m;
-      if (j != -1)
-      {
-        m = j * this.yIK;
-        i = this.yII.getCurrentPosition();
-        if (m >= i) {
-          break label208;
-        }
-      }
-      for (;;)
-      {
-        if (j == 0) {
-          i = k;
-        }
-        for (;;)
-        {
-          this.mHandler.post(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(55894);
-              Log.d("MicroMsg.ShareHeaderAvatarViewMgr", "scrollToTalker pos=%d", new Object[] { Integer.valueOf(i) });
-              f.this.yII.alA(i);
-              AppMethodBeat.o(55894);
-            }
-          });
-          AppMethodBeat.o(55910);
-          return;
-          i += 1;
-          break;
-          if (m <= i + this.yIK * 3) {
-            break label237;
-          }
-          i = m - this.yIK * 3;
-          break label171;
-        }
-        i = 0;
-      }
-    }
-  }
-  
-  public final void aw(ArrayList<String> paramArrayList)
+  public final void aD(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(55912);
     Log.d("MicroMsg.ShareHeaderAvatarViewMgr", "onRefreshMemberList, members.size=%d", new Object[] { Integer.valueOf(paramArrayList.size()) });
     ArrayList localArrayList2 = new ArrayList();
     ArrayList localArrayList1 = new ArrayList();
-    Object localObject1 = this.yIJ.edn();
+    Object localObject1 = this.EmC.eMG();
     Object localObject2 = paramArrayList.iterator();
     while (((Iterator)localObject2).hasNext())
     {
@@ -248,55 +177,129 @@ public final class f
     {
       paramArrayList = localArrayList2.iterator();
       while (paramArrayList.hasNext()) {
-        aDb((String)paramArrayList.next());
+        aNl((String)paramArrayList.next());
       }
     }
     if (localArrayList1.size() > 0)
     {
       paramArrayList = localArrayList1.iterator();
       while (paramArrayList.hasNext()) {
-        aDc((String)paramArrayList.next());
+        aNm((String)paramArrayList.next());
       }
     }
     AppMethodBeat.o(55912);
   }
   
-  public final void edm()
+  public final void aNn(String paramString)
+  {
+    int k = 0;
+    AppMethodBeat.i(55910);
+    Log.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberTalk, username=%s", new Object[] { paramString });
+    final int i;
+    if (this.EmC.aNp(paramString))
+    {
+      this.EmC.aNo(paramString).eMH();
+      this.EmC.notifyDataSetChanged();
+      this.EmB.invalidate();
+      if ((this.EmB.getIsTouching()) || (Util.isNullOrNil(paramString)))
+      {
+        AppMethodBeat.o(55910);
+        return;
+      }
+      a locala = this.EmC;
+      i = 0;
+      if (i >= locala.EmH.size()) {
+        break label244;
+      }
+      if (!((b)locala.EmH.get(i)).username.equals(paramString)) {
+        break label203;
+      }
+    }
+    label173:
+    label203:
+    label210:
+    label239:
+    label244:
+    for (int j = i;; j = -1)
+    {
+      Log.d("MicroMsg.ShareHeaderAvatarViewMgr", "scrollToTalker, index=%d", new Object[] { Integer.valueOf(j) });
+      int m;
+      if (j != -1)
+      {
+        m = j * this.EmD;
+        i = this.EmB.getCurrentPosition();
+        if (m >= i) {
+          break label210;
+        }
+      }
+      for (;;)
+      {
+        if (j == 0) {
+          i = k;
+        }
+        for (;;)
+        {
+          this.mHandler.post(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(55894);
+              Log.d("MicroMsg.ShareHeaderAvatarViewMgr", "scrollToTalker pos=%d", new Object[] { Integer.valueOf(i) });
+              f.this.EmB.auy(i);
+              AppMethodBeat.o(55894);
+            }
+          });
+          AppMethodBeat.o(55910);
+          return;
+          i += 1;
+          break;
+          if (m <= i + this.EmD * 3) {
+            break label239;
+          }
+          i = m - this.EmD * 3;
+          break label173;
+        }
+        i = 0;
+      }
+    }
+  }
+  
+  public final void eMF()
   {
     AppMethodBeat.i(55911);
-    a locala = this.yIJ;
-    Iterator localIterator = locala.yIO.iterator();
+    a locala = this.EmC;
+    Iterator localIterator = locala.EmH.iterator();
     while (localIterator.hasNext()) {
-      ((b)localIterator.next()).edp();
+      ((b)localIterator.next()).eMI();
     }
     locala.notifyDataSetChanged();
-    this.yII.invalidate();
+    this.EmB.invalidate();
     AppMethodBeat.o(55911);
   }
   
   final class a
     extends BaseAdapter
   {
-    ArrayList<f.b> yIO;
+    ArrayList<f.b> EmH;
     
     public a()
     {
       AppMethodBeat.i(55895);
-      this.yIO = new ArrayList();
+      this.EmH = new ArrayList();
       Collection localCollection;
-      this.yIO.addAll(localCollection);
+      this.EmH.addAll(localCollection);
       AppMethodBeat.o(55895);
     }
     
-    public final f.b aDe(String paramString)
+    public final f.b aNo(String paramString)
     {
       AppMethodBeat.i(55899);
       int i = 0;
-      while (i < this.yIO.size())
+      while (i < this.EmH.size())
       {
-        if (((f.b)this.yIO.get(i)).username.equals(paramString))
+        if (((f.b)this.EmH.get(i)).username.equals(paramString))
         {
-          paramString = (f.b)this.yIO.get(i);
+          paramString = (f.b)this.EmH.get(i);
           AppMethodBeat.o(55899);
           return paramString;
         }
@@ -306,13 +309,13 @@ public final class f
       return null;
     }
     
-    public final boolean aDf(String paramString)
+    public final boolean aNp(String paramString)
     {
       AppMethodBeat.i(55900);
       int i = 0;
-      while (i < this.yIO.size())
+      while (i < this.EmH.size())
       {
-        if (((f.b)this.yIO.get(i)).username.equals(paramString))
+        if (((f.b)this.EmH.get(i)).username.equals(paramString))
         {
           AppMethodBeat.o(55900);
           return true;
@@ -323,11 +326,11 @@ public final class f
       return false;
     }
     
-    public final ArrayList<String> edn()
+    public final ArrayList<String> eMG()
     {
       AppMethodBeat.i(55901);
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.yIO.iterator();
+      Iterator localIterator = this.EmH.iterator();
       while (localIterator.hasNext()) {
         localArrayList.add(((f.b)localIterator.next()).username);
       }
@@ -338,7 +341,7 @@ public final class f
     public final int getCount()
     {
       AppMethodBeat.i(55896);
-      int i = this.yIO.size();
+      int i = this.EmH.size();
       AppMethodBeat.o(55896);
       return i;
     }
@@ -346,7 +349,7 @@ public final class f
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(55897);
-      Object localObject = this.yIO.get(paramInt);
+      Object localObject = this.EmH.get(paramInt);
       AppMethodBeat.o(55897);
       return localObject;
     }
@@ -359,7 +362,7 @@ public final class f
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(55898);
-      paramView = ((f.b)this.yIO.get(paramInt)).yIQ.yIR;
+      paramView = ((f.b)this.EmH.get(paramInt)).EmJ.EmK;
       AppMethodBeat.o(55898);
       return paramView;
     }
@@ -367,15 +370,15 @@ public final class f
   
   final class b
   {
+    private LinearLayout.LayoutParams CTe;
+    boolean EmI;
+    a EmJ;
     String username;
-    private LinearLayout.LayoutParams xOV;
-    boolean yIP;
-    a yIQ;
     
     public b(String paramString)
     {
       AppMethodBeat.i(55902);
-      this.yIP = false;
+      this.EmI = false;
       this.username = paramString;
       if (Util.isNullOrNil(paramString))
       {
@@ -383,43 +386,43 @@ public final class f
         AppMethodBeat.o(55902);
         return;
       }
-      this.yIQ = new a();
+      this.EmJ = new a();
       this$1 = (LayoutInflater)f.this.context.getSystemService("layout_inflater");
-      this.yIQ.yIR = ((RelativeLayout)f.this.inflate(2131495310, null));
-      this.yIQ.jWS = ((ImageView)this.yIQ.yIR.findViewById(2131297119));
-      a.b.d(this.yIQ.jWS, this.username);
-      this.yIQ.yIR.setTag(this.username);
-      this.xOV = new LinearLayout.LayoutParams(-2, -2);
-      this.xOV.leftMargin = BackwardSupportUtil.BitmapFactory.fromDPToPix(f.this.context, 5.0F);
-      this.xOV.rightMargin = BackwardSupportUtil.BitmapFactory.fromDPToPix(f.this.context, 5.0F);
-      this.xOV.gravity = 17;
+      this.EmJ.EmK = ((RelativeLayout)f.this.inflate(a.f.location_share_header_avatar_layout, null));
+      this.EmJ.mOe = ((ImageView)this.EmJ.EmK.findViewById(a.e.avatar));
+      a.b.d(this.EmJ.mOe, this.username);
+      this.EmJ.EmK.setTag(this.username);
+      this.CTe = new LinearLayout.LayoutParams(-2, -2);
+      this.CTe.leftMargin = BackwardSupportUtil.BitmapFactory.fromDPToPix(f.this.context, 5.0F);
+      this.CTe.rightMargin = BackwardSupportUtil.BitmapFactory.fromDPToPix(f.this.context, 5.0F);
+      this.CTe.gravity = 17;
       AppMethodBeat.o(55902);
     }
     
-    public final void edo()
+    public final void eMH()
     {
       AppMethodBeat.i(55903);
       Log.i("MicroMsg.ShareHeaderAvatarViewMgr", "setTalking, username=%s", new Object[] { this.username });
-      this.yIQ.yIR.setBackgroundResource(2131233546);
-      this.yIQ.yIR.invalidate();
-      this.yIP = true;
+      this.EmJ.EmK.setBackgroundResource(a.d.location_share_avatar_bg_hl);
+      this.EmJ.EmK.invalidate();
+      this.EmI = true;
       AppMethodBeat.o(55903);
     }
     
-    public final void edp()
+    public final void eMI()
     {
       AppMethodBeat.i(55904);
       Log.i("MicroMsg.ShareHeaderAvatarViewMgr", "exitTalking, username=%s", new Object[] { this.username });
-      this.yIQ.yIR.setBackgroundResource(2131233545);
-      this.yIQ.yIR.invalidate();
-      this.yIP = false;
+      this.EmJ.EmK.setBackgroundResource(a.d.location_share_avatar_bg);
+      this.EmJ.EmK.invalidate();
+      this.EmI = false;
       AppMethodBeat.o(55904);
     }
     
     final class a
     {
-      ImageView jWS;
-      RelativeLayout yIR;
+      RelativeLayout EmK;
+      ImageView mOe;
       
       a() {}
     }
@@ -427,7 +430,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.f
  * JD-Core Version:    0.7.0.1
  */

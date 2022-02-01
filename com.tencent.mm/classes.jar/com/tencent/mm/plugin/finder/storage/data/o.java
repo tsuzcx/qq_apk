@@ -1,90 +1,53 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ayh;
-import com.tencent.mm.protocal.protobuf.cjl;
-import com.tencent.mm.protocal.protobuf.cod;
-import com.tencent.mm.protocal.protobuf.coe;
-import java.util.Collection;
-import java.util.Iterator;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.protocal.protobuf.asm;
 import java.util.LinkedList;
+import kotlin.g.a.b;
+import kotlin.g.b.aa.a;
 import kotlin.g.b.p;
+import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"toLongVideoServer", "Lcom/tencent/mm/protocal/protobuf/MegaVideoMedia;", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "Ljava/util/LinkedList;", "toMegaMediaSpec", "Lcom/tencent/mm/protocal/protobuf/MegaVideoMediaSpec;", "Lcom/tencent/mm/protocal/protobuf/FinderMediaSpec;", "toServer", "Lcom/tencent/mm/protocal/protobuf/FinderMedia;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/data/MegaVideoOp;", "Lcom/tencent/mm/plugin/finder/storage/data/PageDataOp;", "Lcom/tencent/mm/plugin/finder/model/MegaVideoFeed;", "()V", "extract", "data", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "isTargetDataType", "", "dataType", "", "remove", "id", "", "list", "Ljava/util/LinkedList;", "targetDataType", "plugin-finder_release"})
 public final class o
 {
-  public static final LinkedList<cod> aC(LinkedList<cjl> paramLinkedList)
+  public static final o Anz;
+  
+  static
   {
-    AppMethodBeat.i(252027);
-    p.h(paramLinkedList, "$this$toLongVideoServer");
-    LinkedList localLinkedList = new LinkedList();
-    paramLinkedList = ((Iterable)paramLinkedList).iterator();
-    while (paramLinkedList.hasNext()) {
-      localLinkedList.add(d((cjl)paramLinkedList.next()));
-    }
-    AppMethodBeat.o(252027);
-    return localLinkedList;
+    AppMethodBeat.i(288170);
+    Anz = new o();
+    AppMethodBeat.o(288170);
   }
   
-  private static LinkedList<coe> aD(LinkedList<ayh> paramLinkedList)
+  public static boolean a(long paramLong, LinkedList<asm> paramLinkedList)
   {
-    AppMethodBeat.i(252030);
-    p.h(paramLinkedList, "$this$toMegaMediaSpec");
-    LinkedList localLinkedList = new LinkedList();
-    paramLinkedList = ((Iterable)paramLinkedList).iterator();
-    while (paramLinkedList.hasNext()) {
-      localLinkedList.add(b((ayh)paramLinkedList.next()));
-    }
-    AppMethodBeat.o(252030);
-    return localLinkedList;
+    AppMethodBeat.i(288169);
+    p.k(paramLinkedList, "list");
+    aa.a locala = new aa.a();
+    locala.aaBx = false;
+    d.a(paramLinkedList, (b)new a(paramLong, locala));
+    boolean bool = locala.aaBx;
+    AppMethodBeat.o(288169);
+    return bool;
   }
   
-  private static coe b(ayh paramayh)
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "item", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "invoke"})
+  static final class a
+    extends q
+    implements b<asm, Boolean>
   {
-    AppMethodBeat.i(252029);
-    p.h(paramayh, "$this$toMegaMediaSpec");
-    coe localcoe = new coe();
-    localcoe.dVY = paramayh.dVY;
-    localcoe.LEL = paramayh.LEL;
-    localcoe.LGa = paramayh.LGa;
-    localcoe.uUI = paramayh.uUI;
-    AppMethodBeat.o(252029);
-    return localcoe;
-  }
-  
-  public static final cod d(cjl paramcjl)
-  {
-    AppMethodBeat.i(252028);
-    p.h(paramcjl, "$this$toLongVideoServer");
-    cod localcod = new cod();
-    localcod.url = paramcjl.url;
-    localcod.mediaType = paramcjl.mediaType;
-    localcod.thumbUrl = paramcjl.thumbUrl;
-    localcod.Mur = paramcjl.videoDuration;
-    if (paramcjl.MoQ == 0L) {}
-    for (localcod.Mus = (paramcjl.videoDuration * 1000L);; localcod.Mus = paramcjl.MoQ)
+    a(long paramLong, aa.a parama)
     {
-      localcod.width = paramcjl.width;
-      localcod.height = paramcjl.height;
-      localcod.md5sum = paramcjl.md5sum;
-      localcod.fileSize = paramcjl.fileSize;
-      localcod.bitrate = paramcjl.bitrate;
-      localcod.decodeKey = paramcjl.decodeKey;
-      localcod.coverUrl = paramcjl.coverUrl;
-      LinkedList localLinkedList = localcod.spec;
-      localLinkedList.clear();
-      paramcjl = paramcjl.spec;
-      p.g(paramcjl, "spec");
-      localLinkedList.addAll((Collection)aD(paramcjl));
-      AppMethodBeat.o(252028);
-      return localcod;
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.data.o
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.remittance.bankcard.model;
 
-import com.tencent.mm.protocal.protobuf.jg;
+import com.tencent.mm.protocal.protobuf.iv;
 import java.util.Comparator;
 
 public final class b
-  implements Comparator<jg>
+  implements Comparator<iv>
 {}
 
 

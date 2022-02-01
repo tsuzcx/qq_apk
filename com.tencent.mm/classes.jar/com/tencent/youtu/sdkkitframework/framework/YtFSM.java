@@ -32,14 +32,14 @@ public class YtFSM
   
   static
   {
-    AppMethodBeat.i(192651);
+    AppMethodBeat.i(256781);
     TAG = YtFSM.class.getSimpleName();
-    AppMethodBeat.o(192651);
+    AppMethodBeat.o(256781);
   }
   
   private YtFSM()
   {
-    AppMethodBeat.i(192633);
+    AppMethodBeat.i(256746);
     this.currentWorkMode = YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_UNKNOWN;
     this.isStarted = false;
     this.needEventHandler = false;
@@ -48,7 +48,7 @@ public class YtFSM
     this.stateLock = new ReentrantLock();
     this.startStopLock = new ReentrantLock();
     this.updateQueue = new ConcurrentLinkedQueue();
-    AppMethodBeat.o(192633);
+    AppMethodBeat.o(256746);
   }
   
   public static void clearInstance()
@@ -71,12 +71,12 @@ public class YtFSM
   {
     try
     {
-      AppMethodBeat.i(192634);
+      AppMethodBeat.i(256747);
       if (instance == null) {
         instance = new YtFSM();
       }
       YtFSM localYtFSM = instance;
-      AppMethodBeat.o(192634);
+      AppMethodBeat.o(256747);
       return localYtFSM;
     }
     finally {}
@@ -84,32 +84,32 @@ public class YtFSM
   
   public void cleanUpQueue()
   {
-    AppMethodBeat.i(192650);
+    AppMethodBeat.i(256777);
     this.updateQueue.clear();
-    AppMethodBeat.o(192650);
+    AppMethodBeat.o(256777);
   }
   
   public YtSDKKitFramework.YtSDKPlatformContext getContext()
   {
-    AppMethodBeat.i(192649);
+    AppMethodBeat.i(256775);
     if (this.sdkPlatformContex == null) {
       this.sdkPlatformContex = new YtSDKKitFramework.YtSDKPlatformContext();
     }
     YtSDKKitFramework.YtSDKPlatformContext localYtSDKPlatformContext = this.sdkPlatformContex;
-    AppMethodBeat.o(192649);
+    AppMethodBeat.o(256775);
     return localYtSDKPlatformContext;
   }
   
   public YtFSMBaseState getStateByName(String paramString)
   {
-    AppMethodBeat.i(192646);
+    AppMethodBeat.i(256768);
     if (this.stateMap.containsKey(paramString))
     {
       paramString = (YtFSMBaseState)this.stateMap.get(paramString);
-      AppMethodBeat.o(192646);
+      AppMethodBeat.o(256768);
       return paramString;
     }
-    AppMethodBeat.o(192646);
+    AppMethodBeat.o(256768);
     return null;
   }
   
@@ -120,7 +120,7 @@ public class YtFSM
   
   public void handleEvent(YtSDKKitFramework.YtFrameworkFireEventType paramYtFrameworkFireEventType, Object paramObject)
   {
-    AppMethodBeat.i(192638);
+    AppMethodBeat.i(256752);
     try
     {
       this.stateLock.lock();
@@ -137,43 +137,43 @@ public class YtFSM
     finally
     {
       this.stateLock.unlock();
-      AppMethodBeat.o(192638);
+      AppMethodBeat.o(256752);
     }
-    AppMethodBeat.o(192638);
+    AppMethodBeat.o(256752);
   }
   
   public void handlePauseEvent()
   {
-    AppMethodBeat.i(192641);
+    AppMethodBeat.i(256757);
     Iterator localIterator = this.stateMap.values().iterator();
     while (localIterator.hasNext()) {
       ((YtFSMBaseState)localIterator.next()).onPause();
     }
-    AppMethodBeat.o(192641);
+    AppMethodBeat.o(256757);
   }
   
   public void handleResumeEvent()
   {
-    AppMethodBeat.i(192642);
+    AppMethodBeat.i(256758);
     Iterator localIterator = this.stateMap.values().iterator();
     while (localIterator.hasNext()) {
       ((YtFSMBaseState)localIterator.next()).onResume();
     }
-    AppMethodBeat.o(192642);
+    AppMethodBeat.o(256758);
   }
   
   public int registerState(YtFSMBaseState paramYtFSMBaseState)
   {
-    AppMethodBeat.i(192643);
+    AppMethodBeat.i(256760);
     YtSDKStats.getInstance().registerStateName(paramYtFSMBaseState.getStateSimpleName());
     this.stateMap.put(paramYtFSMBaseState.getStateName(), paramYtFSMBaseState);
-    AppMethodBeat.o(192643);
+    AppMethodBeat.o(256760);
     return 0;
   }
   
   public void reset()
   {
-    AppMethodBeat.i(192637);
+    AppMethodBeat.i(256751);
     YtLogger.i(TAG, "FSM reset work mode " + this.currentWorkMode);
     try
     {
@@ -192,7 +192,7 @@ public class YtFSM
     finally
     {
       this.stateLock.unlock();
-      AppMethodBeat.o(192637);
+      AppMethodBeat.o(256751);
     }
     YtLogger.d(TAG, "reset set current state:" + this.firstStateName);
     this.currentState = ((YtFSMBaseState)this.stateMap.get(this.firstStateName));
@@ -202,7 +202,7 @@ public class YtFSM
       this.updateQueue.clear();
       label172:
       this.stateLock.unlock();
-      AppMethodBeat.o(192637);
+      AppMethodBeat.o(256751);
       return;
       label187:
       YtLogger.e(TAG, "reset failed: " + this.firstStateName + " state is not found");
@@ -211,32 +211,32 @@ public class YtFSM
   
   public void sendFSMEvent(HashMap<String, Object> paramHashMap)
   {
-    AppMethodBeat.i(192647);
+    AppMethodBeat.i(256770);
     if (this.eventListener != null)
     {
       if (paramHashMap.containsKey("process_action")) {
         YtLogger.d(TAG, "send framework event result: " + paramHashMap.get("process_action") + " errorcode:" + paramHashMap.get("error_code"));
       }
       this.eventListener.onFrameworkEvent(paramHashMap);
-      AppMethodBeat.o(192647);
+      AppMethodBeat.o(256770);
       return;
     }
     YtLogger.e(TAG, "Event listener not init");
-    AppMethodBeat.o(192647);
+    AppMethodBeat.o(256770);
   }
   
   public void sendNetworkRequest(final String paramString1, String paramString2, String paramString3, HashMap<String, String> paramHashMap, YtSDKKitFramework.IYtSDKKitNetResponseParser paramIYtSDKKitNetResponseParser)
   {
-    AppMethodBeat.i(192648);
+    AppMethodBeat.i(256772);
     if (this.eventListener != null)
     {
       sendFSMEvent(new HashMap() {});
       this.eventListener.onNetworkRequestEvent(paramString2, paramString3, paramHashMap, paramIYtSDKKitNetResponseParser);
-      AppMethodBeat.o(192648);
+      AppMethodBeat.o(256772);
       return;
     }
     YtLogger.e(TAG, "Event listener not init");
-    AppMethodBeat.o(192648);
+    AppMethodBeat.o(256772);
   }
   
   public void setContext(YtSDKKitFramework.YtSDKPlatformContext paramYtSDKPlatformContext)
@@ -480,7 +480,7 @@ public class YtFSM
   
   public int transitNextRound(String paramString)
   {
-    AppMethodBeat.i(192645);
+    AppMethodBeat.i(256766);
     int i;
     if (this.stateMap.containsKey(paramString))
     {
@@ -492,7 +492,7 @@ public class YtFSM
     }
     for (;;)
     {
-      AppMethodBeat.o(192645);
+      AppMethodBeat.o(256766);
       return i;
       i = -1;
       YtLogger.e(TAG, "transitnextround faild:" + paramString + " state is not found");
@@ -501,7 +501,7 @@ public class YtFSM
   
   public int transitNow(String paramString)
   {
-    AppMethodBeat.i(192644);
+    AppMethodBeat.i(256765);
     int i;
     if (this.stateMap.containsKey(paramString))
     {
@@ -517,7 +517,7 @@ public class YtFSM
     }
     for (;;)
     {
-      AppMethodBeat.o(192644);
+      AppMethodBeat.o(256765);
       return i;
       i = -1;
       YtLogger.e(TAG, "transitnow failed:" + paramString + " state is not found");
@@ -529,7 +529,7 @@ public class YtFSM
   
   public void update(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    AppMethodBeat.i(192639);
+    AppMethodBeat.i(256753);
     if (this.isStarted)
     {
       YtFSMUpdateData localYtFSMUpdateData = new YtFSMUpdateData(null);
@@ -545,17 +545,17 @@ public class YtFSM
       }
       this.updateQueue.add(localYtFSMUpdateData);
     }
-    AppMethodBeat.o(192639);
+    AppMethodBeat.o(256753);
   }
   
   public void updateSDKSetting(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(192640);
+    AppMethodBeat.i(256755);
     Iterator localIterator = this.stateMap.values().iterator();
     while (localIterator.hasNext()) {
       ((YtFSMBaseState)localIterator.next()).updateSDKSetting(paramJSONObject);
     }
-    AppMethodBeat.o(192640);
+    AppMethodBeat.o(256755);
   }
   
   class YtFSMUpdateData

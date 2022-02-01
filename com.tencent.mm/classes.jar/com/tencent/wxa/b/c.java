@@ -4,9 +4,9 @@ import io.flutter.plugin.a.k.d;
 
 public abstract interface c
 {
-  public abstract void a(k.d paramd);
+  public abstract void a(boolean paramBoolean, k.d paramd);
   
-  public abstract void hrN();
+  public abstract void ivz();
   
   public abstract void onCreateView();
   

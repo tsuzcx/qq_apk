@@ -3,15 +3,14 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.wv;
+import com.tencent.mm.f.a.yb;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.service.c;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class JsApiMakeVoIPCall
-  extends d<c>
+  extends c<com.tencent.mm.plugin.appbrand.service.c>
 {
   public static final int CTRL_INDEX = 154;
   public static final String NAME = "makeVoIPCall";
@@ -20,10 +19,10 @@ public final class JsApiMakeVoIPCall
     extends MainProcessTask
   {
     public static final Parcelable.Creator<StartVoIPCall> CREATOR;
-    private p lAw;
-    private f lAx;
-    private IListener lAy;
-    private int lqe;
+    private int okO;
+    private o ovN;
+    private e ovO;
+    private IListener ovP;
     public int status;
     
     static
@@ -36,58 +35,58 @@ public final class JsApiMakeVoIPCall
     public StartVoIPCall(Parcel paramParcel)
     {
       AppMethodBeat.i(45544);
-      this.lAy = new IListener() {};
+      this.ovP = new IListener() {};
       f(paramParcel);
       AppMethodBeat.o(45544);
     }
     
-    public StartVoIPCall(p paramp, f paramf, int paramInt)
+    public StartVoIPCall(o paramo, e parame, int paramInt)
     {
       AppMethodBeat.i(45543);
-      this.lAy = new IListener() {};
-      this.lAw = paramp;
-      this.lAx = paramf;
-      this.lqe = paramInt;
+      this.ovP = new IListener() {};
+      this.ovN = paramo;
+      this.ovO = parame;
+      this.okO = paramInt;
       AppMethodBeat.o(45543);
     }
     
-    public final void bjj()
+    public final void RW()
     {
       AppMethodBeat.i(45545);
-      EventCenter.instance.addListener(this.lAy);
+      EventCenter.instance.addListener(this.ovP);
       AppMethodBeat.o(45545);
     }
     
-    public final void bjk()
+    public final void bsK()
     {
       AppMethodBeat.i(45546);
-      bDK();
+      bPk();
       Log.i("MicroMsg.JsApiMakeVoIPCall", "makeVoIPCall = %d", new Object[] { Integer.valueOf(this.status) });
       if (this.status == 1)
       {
-        this.lAx.i(this.lqe, this.lAw.h("cancel", null));
+        this.ovO.j(this.okO, this.ovN.h("cancel", null));
         AppMethodBeat.o(45546);
         return;
       }
       if (this.status == 2)
       {
-        this.lAx.i(this.lqe, this.lAw.h("ok", null));
+        this.ovO.j(this.okO, this.ovN.h("ok", null));
         AppMethodBeat.o(45546);
         return;
       }
       if (this.status == 3)
       {
-        this.lAx.i(this.lqe, this.lAw.h("fail:network error", null));
+        this.ovO.j(this.okO, this.ovN.h("fail:network error", null));
         AppMethodBeat.o(45546);
         return;
       }
       if (this.status == 4)
       {
-        this.lAx.i(this.lqe, this.lAw.h("fail:param not match", null));
+        this.ovO.j(this.okO, this.ovN.h("fail:param not match", null));
         AppMethodBeat.o(45546);
         return;
       }
-      this.lAx.i(this.lqe, this.lAw.h("fail:unknow", null));
+      this.ovO.j(this.okO, this.ovN.h("fail:unknow", null));
       AppMethodBeat.o(45546);
     }
     

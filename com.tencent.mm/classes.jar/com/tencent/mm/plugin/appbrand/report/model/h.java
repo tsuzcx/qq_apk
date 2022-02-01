@@ -1,55 +1,55 @@
 package com.tencent.mm.plugin.appbrand.report.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.page.ag;
-import com.tencent.mm.plugin.appbrand.page.bx;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.ah;
+import com.tencent.mm.plugin.appbrand.page.ca;
 
 public abstract interface h
   extends g
 {
-  public static final h nIG = new h()
+  public static final h qKS = new h()
   {
-    public final void a(ag paramAnonymousag1, ag paramAnonymousag2, bx paramAnonymousbx) {}
+    public final void a(ah paramAnonymousah1, ah paramAnonymousah2, ca paramAnonymousca) {}
     
-    public final boolean aeN(String paramAnonymousString)
+    public final boolean amH(String paramAnonymousString)
     {
       return false;
     }
     
-    public final h.a bUH()
+    public final h.a chR()
     {
       return null;
     }
     
-    public final void d(ag paramAnonymousag) {}
+    public final void e(ah paramAnonymousah) {}
     
-    public final void e(ag paramAnonymousag) {}
+    public final void f(ah paramAnonymousah) {}
     
-    public final h.a s(ag paramAnonymousag)
+    public final h.a q(ah paramAnonymousah)
     {
       return null;
     }
   };
   
-  public abstract boolean aeN(String paramString);
+  public abstract boolean amH(String paramString);
   
-  public abstract a bUH();
+  public abstract a chR();
   
-  public abstract a s(ag paramag);
+  public abstract a q(ah paramah);
   
   public static final class a
   {
-    int dKv;
-    public h.c nIH;
-    public h.b nII;
+    int fDk;
     public String path;
+    public h.c qKT;
+    public h.b qKU;
     
-    a(ag paramag)
+    a(ah paramah)
     {
       AppMethodBeat.i(48118);
-      this.dKv = paramag.hashCode();
-      this.path = paramag.nna;
+      this.fDk = paramah.hashCode();
+      this.path = paramah.qoI;
       AppMethodBeat.o(48118);
     }
   }
@@ -83,7 +83,7 @@ public abstract interface h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.model.h
  * JD-Core Version:    0.7.0.1
  */

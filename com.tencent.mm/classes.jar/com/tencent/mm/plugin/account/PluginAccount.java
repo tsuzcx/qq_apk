@@ -11,29 +11,29 @@ import com.tencent.mm.plugin.account.friend.a.at;
 import com.tencent.mm.plugin.account.friend.a.k;
 import com.tencent.mm.plugin.account.friend.a.o;
 import com.tencent.mm.plugin.account.friend.a.q;
-import com.tencent.mm.plugin.account.model.m;
-import com.tencent.mm.protocal.protobuf.cik;
+import com.tencent.mm.plugin.account.model.l;
+import com.tencent.mm.protocal.protobuf.crg;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.LinkedList;
 
 public class PluginAccount
   extends f
-  implements com.tencent.mm.plugin.account.a.a.a
+  implements com.tencent.mm.plugin.account.sdk.a.a
 {
   public void clearFriendData()
   {
     AppMethodBeat.i(127764);
-    a.clearFriendData();
+    b.clearFriendData();
     AppMethodBeat.o(127764);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(127754);
-    com.tencent.mm.br.b.bfQ("account");
-    pin(new com.tencent.mm.model.y(m.class));
-    pin(new com.tencent.mm.model.y(a.class));
+    com.tencent.mm.by.b.bsj("account");
+    pin(new com.tencent.mm.model.y(l.class));
+    pin(new com.tencent.mm.model.y(b.class));
     pin(new com.tencent.mm.model.y(com.tencent.mm.plugin.account.security.a.g.class));
     Log.i("MicroMsg.PluginAccount", "execute PluginAccount");
     AppMethodBeat.o(127754);
@@ -42,7 +42,7 @@ public class PluginAccount
   public com.tencent.mm.plugin.account.friend.a.b getAddrUploadStg()
   {
     AppMethodBeat.i(127755);
-    com.tencent.mm.plugin.account.friend.a.b localb = a.getAddrUploadStg();
+    com.tencent.mm.plugin.account.friend.a.b localb = b.getAddrUploadStg();
     AppMethodBeat.o(127755);
     return localb;
   }
@@ -50,7 +50,7 @@ public class PluginAccount
   public com.tencent.mm.plugin.account.friend.a.h getFacebookFrdStg()
   {
     AppMethodBeat.i(127756);
-    com.tencent.mm.plugin.account.friend.a.h localh = a.getFacebookFrdStg();
+    com.tencent.mm.plugin.account.friend.a.h localh = b.getFacebookFrdStg();
     AppMethodBeat.o(127756);
     return localh;
   }
@@ -58,15 +58,15 @@ public class PluginAccount
   public k getFrdExtStg()
   {
     AppMethodBeat.i(127757);
-    k localk = a.getFrdExtStg();
+    k localk = b.getFrdExtStg();
     AppMethodBeat.o(127757);
     return localk;
   }
   
-  public LinkedList<cik> getFriendData()
+  public LinkedList<crg> getFriendData()
   {
     AppMethodBeat.i(127763);
-    LinkedList localLinkedList = a.getFriendData();
+    LinkedList localLinkedList = b.getFriendData();
     AppMethodBeat.o(127763);
     return localLinkedList;
   }
@@ -74,7 +74,7 @@ public class PluginAccount
   public o getGoogleFriendStorage()
   {
     AppMethodBeat.i(127761);
-    o localo = a.getGoogleFriendStorage();
+    o localo = b.getGoogleFriendStorage();
     AppMethodBeat.o(127761);
     return localo;
   }
@@ -82,7 +82,7 @@ public class PluginAccount
   public q getInviteFriendOpenStg()
   {
     AppMethodBeat.i(127759);
-    q localq = a.getInviteFriendOpenStg();
+    q localq = b.getInviteFriendOpenStg();
     AppMethodBeat.o(127759);
     return localq;
   }
@@ -90,7 +90,7 @@ public class PluginAccount
   public ap getOldAccountFriendStorage()
   {
     AppMethodBeat.i(184132);
-    ap localap = a.getOldAccountFriendStorage();
+    ap localap = b.getOldAccountFriendStorage();
     AppMethodBeat.o(184132);
     return localap;
   }
@@ -106,7 +106,7 @@ public class PluginAccount
   public ar getQQGroupStg()
   {
     AppMethodBeat.i(127758);
-    ar localar = a.getQQGroupStg();
+    ar localar = b.getQQGroupStg();
     AppMethodBeat.o(127758);
     return localar;
   }
@@ -114,7 +114,7 @@ public class PluginAccount
   public at getQQListStg()
   {
     AppMethodBeat.i(127760);
-    at localat = a.getQQListStg();
+    at localat = b.getQQListStg();
     AppMethodBeat.o(127760);
     return localat;
   }
@@ -122,14 +122,14 @@ public class PluginAccount
   public void removeSelfAccount(Context paramContext)
   {
     AppMethodBeat.i(127767);
-    t.ds(paramContext);
+    t.dp(paramContext);
     AppMethodBeat.o(127767);
   }
   
   public void setFriendData(LinkedList paramLinkedList)
   {
     AppMethodBeat.i(127762);
-    a.setFriendData(paramLinkedList);
+    b.setFriendData(paramLinkedList);
     AppMethodBeat.o(127762);
   }
   
@@ -140,7 +140,7 @@ public class PluginAccount
     AppMethodBeat.o(127766);
   }
   
-  public boolean syncAddrBook(com.tencent.mm.plugin.account.a.a.b paramb)
+  public boolean syncAddrBook(com.tencent.mm.plugin.account.sdk.a.b paramb)
   {
     AppMethodBeat.i(127770);
     boolean bool = com.tencent.mm.platformtools.a.syncAddrBook(paramb);
@@ -152,7 +152,7 @@ public class PluginAccount
   {
     AppMethodBeat.i(127765);
     MMApplicationContext.getContext();
-    com.tencent.mm.platformtools.a.blm();
+    com.tencent.mm.platformtools.a.bvc();
     AppMethodBeat.o(127765);
   }
   
@@ -166,13 +166,13 @@ public class PluginAccount
   public void updateAllContact()
   {
     AppMethodBeat.i(127771);
-    t.dt(MMApplicationContext.getContext());
+    t.dq(MMApplicationContext.getContext());
     AppMethodBeat.o(127771);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.account.PluginAccount
  * JD-Core Version:    0.7.0.1
  */

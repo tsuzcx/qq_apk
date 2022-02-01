@@ -6,16 +6,16 @@ import com.tencent.mm.storage.ar;
 
 public final class h
 {
-  public static String aw(String paramString1, String paramString2, String paramString3)
+  public static String aq(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(198888);
+    AppMethodBeat.i(234075);
     if (Util.isNullOrNil(paramString2)) {
       if (Util.isNullOrNil(paramString3)) {}
     }
     for (;;)
     {
-      paramString1 = ar.NSg + "/pkg/" + paramString1 + "/" + paramString3;
-      AppMethodBeat.o(198888);
+      paramString1 = ar.Vgd + "/pkg/" + paramString1 + "/" + paramString3;
+      AppMethodBeat.o(234075);
       return paramString1;
       paramString3 = "_";
       continue;

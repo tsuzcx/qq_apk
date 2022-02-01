@@ -2,23 +2,35 @@ package com.tencent.mm.plugin.appbrand.backgroundfetch;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.c.b;
-import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.appbrand.app.m;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class h
   implements b, l
 {
-  private g kXT;
+  private g nSf;
   
-  public final AppBrandBackgroundFetchDataTokenParcel Wy(String paramString)
+  public final void aIF()
+  {
+    AppMethodBeat.i(44754);
+    this.nSf = m.bFZ();
+    AppMethodBeat.o(44754);
+  }
+  
+  public final void aIG()
+  {
+    this.nSf = null;
+  }
+  
+  public final AppBrandBackgroundFetchDataTokenParcel aek(String paramString)
   {
     AppMethodBeat.i(44755);
-    if (this.kXT == null)
+    if (this.nSf == null)
     {
       AppMethodBeat.o(44755);
       return null;
     }
-    AppBrandBackgroundFetchDataTokenParcel localAppBrandBackgroundFetchDataTokenParcel = this.kXT.Wy(paramString);
+    AppBrandBackgroundFetchDataTokenParcel localAppBrandBackgroundFetchDataTokenParcel = this.nSf.aek(paramString);
     if (localAppBrandBackgroundFetchDataTokenParcel == null)
     {
       Log.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataTokenStorageProxy", "get fail, app(%s)", new Object[] { paramString });
@@ -30,27 +42,15 @@ public final class h
     return localAppBrandBackgroundFetchDataTokenParcel;
   }
   
-  public final void aBc()
-  {
-    AppMethodBeat.i(44754);
-    this.kXT = n.buU();
-    AppMethodBeat.o(44754);
-  }
-  
-  public final void aBd()
-  {
-    this.kXT = null;
-  }
-  
-  public final boolean cN(String paramString1, String paramString2)
+  public final boolean cW(String paramString1, String paramString2)
   {
     AppMethodBeat.i(44756);
-    if (this.kXT == null)
+    if (this.nSf == null)
     {
       AppMethodBeat.o(44756);
       return false;
     }
-    boolean bool = this.kXT.cN(paramString1, paramString2);
+    boolean bool = this.nSf.cW(paramString1, paramString2);
     if (bool) {
       Log.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataTokenStorageProxy", "set success, app(%s)", new Object[] { paramString1 });
     }
@@ -64,7 +64,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundfetch.h
  * JD-Core Version:    0.7.0.1
  */

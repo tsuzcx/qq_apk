@@ -153,9 +153,8 @@ public abstract class j<R>
     // Exception table:
     //   from	to	target	type
     //   60	90	163	finally
-    //   164	167	163	finally
     //   51	60	169	java/lang/InterruptedException
-    //   167	169	169	java/lang/InterruptedException
+    //   164	169	169	java/lang/InterruptedException
   }
   
   protected abstract R run();
@@ -174,7 +173,7 @@ public abstract class j<R>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.a.j
  * JD-Core Version:    0.7.0.1
  */

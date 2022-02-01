@@ -13,12 +13,12 @@ import com.tencent.mm.vending.g.e;
 public final class a
   implements com.tencent.mm.plugin.hardwareopt.a.a.a
 {
-  public final void qe(boolean paramBoolean)
+  public final void sE(boolean paramBoolean)
   {
     AppMethodBeat.i(55554);
     new e().H(new Object[] { MMApplicationContext.getContext() }).e(new com.tencent.mm.plugin.hardwareopt.c.a()).d(new b(paramBoolean)).a(new d.a()
     {
-      public final void cn(Object paramAnonymousObject)
+      public final void cm(Object paramAnonymousObject)
       {
         AppMethodBeat.i(55553);
         Log.w("MicroMsg.HardwareProvider", "hy: on interrupt.");
@@ -30,7 +30,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.hardwareopt.a.a
  * JD-Core Version:    0.7.0.1
  */

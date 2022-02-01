@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  private final d[] huE;
+  private final d[] kgA;
   private final Object mLock;
   private int mPoolSize;
   
@@ -14,7 +14,7 @@ public final class e
   {
     AppMethodBeat.i(141032);
     this.mLock = new Object();
-    this.huE = new d[3];
+    this.kgA = new d[3];
     AppMethodBeat.o(141032);
   }
   
@@ -30,7 +30,7 @@ public final class e
         if (i >= this.mPoolSize) {
           break label72;
         }
-        if (this.huE[i] == paramd)
+        if (this.kgA[i] == paramd)
         {
           i = 1;
           if (i == 0) {
@@ -50,27 +50,27 @@ public final class e
       label72:
       i = 0;
     }
-    paramd.hur = null;
-    paramd.hus = null;
-    paramd.hut = 0;
-    paramd.huu = 0;
-    paramd.huv = new TextPaint();
+    paramd.kgm = null;
+    paramd.kgn = null;
+    paramd.kgo = 0;
+    paramd.kgp = 0;
+    paramd.kgq = new TextPaint();
     paramd.width = 0;
-    paramd.huw = Layout.Alignment.ALIGN_NORMAL;
-    paramd.gravity = 51;
-    paramd.hux = null;
-    paramd.huy = 0;
+    paramd.kgr = Layout.Alignment.ALIGN_NORMAL;
+    paramd.ek = 51;
+    paramd.kgs = null;
+    paramd.kgt = 0;
     paramd.maxLines = 2147483647;
-    paramd.huz = null;
-    paramd.huA = 0.0F;
-    paramd.huB = 1.0F;
-    paramd.huC = false;
+    paramd.kgu = null;
+    paramd.kgv = 0.0F;
+    paramd.kgw = 1.0F;
+    paramd.kgx = false;
     paramd.maxLength = 0;
-    paramd.huD = null;
-    paramd.breakStrategy = -1;
-    if (this.mPoolSize < this.huE.length)
+    paramd.kgz = null;
+    paramd.kgy = -1;
+    if (this.mPoolSize < this.kgA.length)
     {
-      this.huE[this.mPoolSize] = paramd;
+      this.kgA[this.mPoolSize] = paramd;
       this.mPoolSize += 1;
       AppMethodBeat.o(141033);
       return true;
@@ -79,15 +79,15 @@ public final class e
     return false;
   }
   
-  public final d aBm()
+  public final d aIP()
   {
     synchronized (this.mLock)
     {
       if (this.mPoolSize > 0)
       {
         int i = this.mPoolSize - 1;
-        d locald = this.huE[i];
-        this.huE[i] = null;
+        d locald = this.kgA[i];
+        this.kgA[i] = null;
         this.mPoolSize -= 1;
         return locald;
       }
@@ -97,7 +97,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.e
  * JD-Core Version:    0.7.0.1
  */

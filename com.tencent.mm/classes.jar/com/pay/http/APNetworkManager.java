@@ -21,31 +21,31 @@ public class APNetworkManager
   
   public APNetworkManager()
   {
-    AppMethodBeat.i(193260);
+    AppMethodBeat.i(253639);
     this.httpReqMap = new HashMap();
-    AppMethodBeat.o(193260);
+    AppMethodBeat.o(253639);
   }
   
   public static void cancelRequest(String paramString)
   {
-    AppMethodBeat.i(193262);
+    AppMethodBeat.i(253643);
     APBaseHttpReq localAPBaseHttpReq = (APBaseHttpReq)gInstance.httpReqMap.get(paramString);
     if (localAPBaseHttpReq != null)
     {
       localAPBaseHttpReq.stopRequest();
       gInstance.httpReqMap.remove(paramString);
     }
-    AppMethodBeat.o(193262);
+    AppMethodBeat.o(253643);
   }
   
   public static APNetworkManager getInstance()
   {
-    AppMethodBeat.i(193261);
+    AppMethodBeat.i(253640);
     if (gInstance == null) {
       gInstance = APNetworkManagerHolder.INSTANCE;
     }
     APNetworkManager localAPNetworkManager = gInstance;
-    AppMethodBeat.o(193261);
+    AppMethodBeat.o(253640);
     return localAPNetworkManager;
   }
   
@@ -56,7 +56,7 @@ public class APNetworkManager
   
   public void cancelPreRequest()
   {
-    AppMethodBeat.i(193263);
+    AppMethodBeat.i(253645);
     if (gInstance.httpReqMap != null)
     {
       ArrayList localArrayList = new ArrayList();
@@ -80,21 +80,21 @@ public class APNetworkManager
       }
       gInstance.httpReqMap.clear();
     }
-    AppMethodBeat.o(193263);
+    AppMethodBeat.o(253645);
   }
   
   public void dataReport(String paramString, IAPHttpAnsObserver paramIAPHttpAnsObserver)
   {
-    AppMethodBeat.i(193264);
+    AppMethodBeat.i(253646);
     if (TextUtils.isEmpty(APPluginDataInterface.singleton().getOfferId()))
     {
-      AppMethodBeat.o(193264);
+      AppMethodBeat.o(253646);
       return;
     }
     APDataReportReq localAPDataReportReq = new APDataReportReq();
     localAPDataReportReq.setHttpAns(new APDataReportAns(APHttpHandle.getIntanceHandel(), paramIAPHttpAnsObserver, this.httpReqMap, "datareport"));
     localAPDataReportReq.startService(paramString);
-    AppMethodBeat.o(193264);
+    AppMethodBeat.o(253646);
   }
   
   static class APNetworkManagerHolder
@@ -103,15 +103,15 @@ public class APNetworkManager
     
     static
     {
-      AppMethodBeat.i(193265);
+      AppMethodBeat.i(253688);
       INSTANCE = new APNetworkManager();
-      AppMethodBeat.o(193265);
+      AppMethodBeat.o(253688);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.pay.http.APNetworkManager
  * JD-Core Version:    0.7.0.1
  */

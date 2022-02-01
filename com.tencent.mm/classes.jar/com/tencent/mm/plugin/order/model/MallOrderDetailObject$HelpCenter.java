@@ -9,7 +9,7 @@ public class MallOrderDetailObject$HelpCenter
   implements Parcelable
 {
   public static final Parcelable.Creator<HelpCenter> CREATOR;
-  public boolean dEF;
+  public boolean fxt;
   public String name;
   public String url;
   
@@ -30,7 +30,7 @@ public class MallOrderDetailObject$HelpCenter
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.dEF = bool;
+      this.fxt = bool;
       AppMethodBeat.o(66648);
       return;
     }
@@ -46,7 +46,7 @@ public class MallOrderDetailObject$HelpCenter
     AppMethodBeat.i(66649);
     paramParcel.writeString(this.name);
     paramParcel.writeString(this.url);
-    if (this.dEF) {}
+    if (this.fxt) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
@@ -57,7 +57,7 @@ public class MallOrderDetailObject$HelpCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.order.model.MallOrderDetailObject.HelpCenter
  * JD-Core Version:    0.7.0.1
  */

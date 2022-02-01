@@ -3,7 +3,8 @@ package io.flutter.app;
 import android.app.Activity;
 import android.app.Application;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.view.FlutterMain;
+import io.flutter.a;
+import io.flutter.embedding.engine.a.c;
 
 public class FlutterApplication
   extends Application
@@ -19,7 +20,7 @@ public class FlutterApplication
   {
     AppMethodBeat.i(9604);
     super.onCreate();
-    FlutterMain.startInitialization(this);
+    a.iAc().aanR.startInitialization(this);
     AppMethodBeat.o(9604);
   }
   
@@ -30,7 +31,7 @@ public class FlutterApplication
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     io.flutter.app.FlutterApplication
  * JD-Core Version:    0.7.0.1
  */

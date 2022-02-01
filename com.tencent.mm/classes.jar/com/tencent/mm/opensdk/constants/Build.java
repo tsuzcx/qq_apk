@@ -23,8 +23,8 @@ public final class Build
   public static final int PAY_INSURANCE_SDK_INT = 620823552;
   public static final int PAY_SUPPORTED_SDK_INT = 570425345;
   public static final int SCAN_QRCODE_AUTH_SUPPORTED_SDK_INT = 587268097;
-  public static final int SDK_INT = 637928960;
-  public static final String SDK_VERSION_NAME = "android 6.6.6";
+  public static final int SDK_INT = 637992960;
+  public static final String SDK_VERSION_NAME = "android 6.7.0";
   public static final int SEND_25M_IMAGE_SDK_INT = 620889088;
   public static final int SEND_AUTH_SCOPE_SNSAPI_WXAAPP_INFO_SUPPORTED_SDK_INT = 621086464;
   public static final int SEND_BUSINESS_CARD_SDK_INT = 620889344;
@@ -34,6 +34,8 @@ public final class Build
   public static final int SUPPORTED_JOINT_PAY = 621021440;
   public static final int SUPPORTED_PRELOAD_MINI_PROGRAM = 621085952;
   public static final int SUPPORTED_SEND_MINIPROGRAM_SECRET_MESSAGE = 654315776;
+  public static final int SUPPORTED_SEND_TO_STATUS = 671089664;
+  public static final int SUPPORTED_SEND_WEB_PAGE_SECRET_MESSAGE = 671090432;
   public static final int SUPPORTED_SEND_WX_WEWORK_OBJECT = 620954624;
   public static final int TIMELINE_SUPPORTED_SDK_INT = 553779201;
   public static final int VIDEO_FILE_SUPPORTED_SDK_INT = 620756996;
@@ -54,7 +56,7 @@ public final class Build
   
   public static int getMinorVersion()
   {
-    return 6;
+    return 7;
   }
 }
 

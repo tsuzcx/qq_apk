@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.appbrand.backgroundfetch;
 
 public final class a
 {
-  public boolean kXI = false;
-  public boolean kXJ = false;
-  public int kXK = 0;
-  public int kXL = 7;
+  public boolean nRU = false;
+  public boolean nRV = false;
+  public int nRW = 0;
+  public int nRX = 7;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundfetch.a
  * JD-Core Version:    0.7.0.1
  */

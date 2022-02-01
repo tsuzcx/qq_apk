@@ -7,23 +7,25 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.card.a.b;
+import com.tencent.mm.plugin.card.a.d;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.ui.a.g;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.abz;
-import com.tencent.mm.protocal.protobuf.ty;
+import com.tencent.mm.protocal.protobuf.acg;
+import com.tencent.mm.protocal.protobuf.ua;
 import com.tencent.mm.ui.MMActivity;
 
 public final class z
   extends i
 {
-  private View qkH;
+  private View tGD;
   
-  public final void cxw()
+  public final void cKY()
   {
     AppMethodBeat.i(113720);
-    if (this.qkH != null) {
-      this.qkH.setVisibility(8);
+    if (this.tGD != null) {
+      this.tGD.setVisibility(8);
     }
     AppMethodBeat.o(113720);
   }
@@ -33,22 +35,22 @@ public final class z
   public final void update()
   {
     AppMethodBeat.i(113719);
-    if (this.qkH == null) {
-      this.qkH = ((ViewStub)findViewById(2131298223)).inflate();
+    if (this.tGD == null) {
+      this.tGD = ((ViewStub)findViewById(a.d.tdC)).inflate();
     }
-    abz localabz = this.qjX.cvq().csR().Lcw;
-    if (this.qkH != null)
+    acg localacg = this.tFT.cIS().cGt().SdJ;
+    if (this.tGD != null)
     {
-      ((TextView)this.qkH.findViewById(2131309037)).setText(localabz.title);
-      ((TextView)this.qkH.findViewById(2131309036)).setText(localabz.pRY);
-      if ((!this.qjX.cvv().cwq()) || (!this.qjX.cvv().cwr())) {}
+      ((TextView)this.tGD.findViewById(a.d.tgZ)).setText(localacg.title);
+      ((TextView)this.tGD.findViewById(a.d.tgY)).setText(localacg.tnY);
+      if ((!this.tFT.cIX().cJS()) || (!this.tFT.cIX().cJT())) {}
       for (int i = 1; i != 0; i = 0)
       {
-        ((LinearLayout.LayoutParams)((LinearLayout)this.qkH).getLayoutParams()).bottomMargin = 0;
+        ((LinearLayout.LayoutParams)((LinearLayout)this.tGD).getLayoutParams()).bottomMargin = 0;
         AppMethodBeat.o(113719);
         return;
       }
-      ((LinearLayout.LayoutParams)((LinearLayout)this.qkH).getLayoutParams()).bottomMargin = this.qjX.cvt().getResources().getDimensionPixelSize(2131165576);
+      ((LinearLayout.LayoutParams)((LinearLayout)this.tGD).getLayoutParams()).bottomMargin = this.tFT.cIV().getResources().getDimensionPixelSize(a.b.SettingCatalogPadding);
     }
     AppMethodBeat.o(113719);
   }

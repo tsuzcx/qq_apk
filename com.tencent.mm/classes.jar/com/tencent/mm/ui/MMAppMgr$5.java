@@ -3,7 +3,7 @@ package com.tencent.mm.ui;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.storage.ao;
 
@@ -15,13 +15,13 @@ final class MMAppMgr$5
     AppMethodBeat.i(33407);
     if (paramBoolean)
     {
-      bg.aVF();
-      c.azQ().set(4105, Boolean.TRUE);
+      bh.beI();
+      c.aHp().i(4105, Boolean.TRUE);
       AppMethodBeat.o(33407);
       return;
     }
-    bg.aVF();
-    c.azQ().set(4105, Boolean.FALSE);
+    bh.beI();
+    c.aHp().i(4105, Boolean.FALSE);
     AppMethodBeat.o(33407);
   }
 }

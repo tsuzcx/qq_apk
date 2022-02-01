@@ -1,39 +1,39 @@
 package com.tencent.mm.openim.ui;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 import java.util.HashMap;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/openim/ui/OpenImOccupyUI5;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "getLayoutId", "", "Companion", "plugin-comm_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/openim/ui/OpenImOccupyUI5;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "getLayoutId", "", "Companion", "plugin-comm_release"})
 public final class OpenImOccupyUI5
   extends MMActivity
 {
-  public static final a jHU;
+  public static final a myZ;
   private HashMap _$_findViewCache;
   
   static
   {
-    AppMethodBeat.i(223450);
-    jHU = new a((byte)0);
-    AppMethodBeat.o(223450);
+    AppMethodBeat.i(198415);
+    myZ = new a((byte)0);
+    AppMethodBeat.o(198415);
   }
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(223452);
+    AppMethodBeat.i(198421);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(223452);
+    AppMethodBeat.o(198421);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(223451);
+    AppMethodBeat.i(198419);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -44,7 +44,7 @@ public final class OpenImOccupyUI5
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(223451);
+    AppMethodBeat.o(198419);
     return localView1;
   }
   
@@ -59,7 +59,7 @@ public final class OpenImOccupyUI5
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/openim/ui/OpenImOccupyUI5$Companion;", "", "()V", "TAG", "", "plugin-comm_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/openim/ui/OpenImOccupyUI5$Companion;", "", "()V", "TAG", "", "plugin-comm_release"})
   public static final class a {}
 }
 

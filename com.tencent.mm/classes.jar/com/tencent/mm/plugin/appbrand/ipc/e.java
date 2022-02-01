@@ -7,12 +7,12 @@ import java.util.HashMap;
 
 public final class e
 {
-  private static final HashMap<String, MMToClientEvent> lwY;
+  private static final HashMap<String, MMToClientEvent> orF;
   
   static
   {
     AppMethodBeat.i(134857);
-    lwY = new HashMap();
+    orF = new HashMap();
     AppMethodBeat.o(134857);
   }
   
@@ -26,17 +26,17 @@ public final class e
       AppMethodBeat.o(134852);
       return;
     }
-    synchronized (lwY)
+    synchronized (orF)
     {
-      if (lwY.get(paramMMToClientEvent.appId) == null)
+      if (orF.get(paramMMToClientEvent.appId) == null)
       {
-        lwY.put(paramMMToClientEvent.appId, paramMMToClientEvent);
+        orF.put(paramMMToClientEvent.appId, paramMMToClientEvent);
         AppMethodBeat.o(134852);
         return;
       }
       Log.d("MicroMsg.MMToClientEventCenter", "The CommonConfig is already exist!~ so replace it");
-      lwY.remove(paramMMToClientEvent.appId);
-      lwY.put(paramMMToClientEvent.appId, paramMMToClientEvent);
+      orF.remove(paramMMToClientEvent.appId);
+      orF.put(paramMMToClientEvent.appId, paramMMToClientEvent);
     }
   }
   
@@ -44,9 +44,9 @@ public final class e
   {
     AppMethodBeat.i(134853);
     Log.i("MicroMsg.MMToClientEventCenter", "unregister MMToClientEvent.appId:%s", new Object[] { paramMMToClientEvent.appId });
-    synchronized (lwY)
+    synchronized (orF)
     {
-      lwY.remove(paramMMToClientEvent.appId);
+      orF.remove(paramMMToClientEvent.appId);
       AppMethodBeat.o(134853);
       return;
     }
@@ -56,9 +56,9 @@ public final class e
   {
     AppMethodBeat.i(134856);
     MMToClientEvent localMMToClientEvent;
-    synchronized (lwY)
+    synchronized (orF)
     {
-      localMMToClientEvent = (MMToClientEvent)lwY.get(paramString);
+      localMMToClientEvent = (MMToClientEvent)orF.get(paramString);
       if (localMMToClientEvent == null)
       {
         Log.e("MicroMsg.MMToClientEventCenter", "notify failed, appId[%s] data[%s]", new Object[] { paramString, paramT });
@@ -69,10 +69,10 @@ public final class e
     if ((localMMToClientEvent != null) && (paramT != null) && (paramT != null)) {
       try
       {
-        localMMToClientEvent.lwP = 5;
-        localMMToClientEvent.lwQ = paramT.getClass().getName();
-        localMMToClientEvent.lwR = paramT;
-        localMMToClientEvent.bDU();
+        localMMToClientEvent.orw = 5;
+        localMMToClientEvent.orx = paramT.getClass().getName();
+        localMMToClientEvent.ory = paramT;
+        localMMToClientEvent.bPt();
         return;
       }
       finally
@@ -83,27 +83,27 @@ public final class e
     AppMethodBeat.o(134856);
   }
   
-  public static void bI(String paramString, int paramInt)
+  public static void cd(String paramString, int paramInt)
   {
     AppMethodBeat.i(134855);
     Log.i("MicroMsg.MMToClientEventCenter", "notify unread:%d", new Object[] { Integer.valueOf(paramInt) });
-    synchronized (lwY)
+    synchronized (orF)
     {
-      paramString = (MMToClientEvent)lwY.get(paramString);
+      paramString = (MMToClientEvent)orF.get(paramString);
       if (paramString == null) {}
     }
     Log.e("MicroMsg.MMToClientEventCenter", "notify fail!!! The MMToClientEvent isn't exist!!!");
     AppMethodBeat.o(134855);
   }
   
-  public static void v(String paramString1, int paramInt, String paramString2)
+  public static void x(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(134854);
     Log.i("MicroMsg.MMToClientEventCenter", "notify appId:%s, type:%d, config:%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
     MMToClientEvent localMMToClientEvent;
-    synchronized (lwY)
+    synchronized (orF)
     {
-      localMMToClientEvent = (MMToClientEvent)lwY.get(paramString1);
+      localMMToClientEvent = (MMToClientEvent)orF.get(paramString1);
       if (localMMToClientEvent == null) {}
     }
     Log.e("MicroMsg.MMToClientEventCenter", "notify fail!!! The MMToClientEvent isn't exist!!!");
@@ -112,7 +112,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.e
  * JD-Core Version:    0.7.0.1
  */

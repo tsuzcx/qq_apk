@@ -15,16 +15,16 @@ final class FindMContactIntroUI$1
   {
     AppMethodBeat.i(110020);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/account/bind/ui/FindMContactIntroUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    FindMContactIntroUI.a(this.kcj);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/account/bind/ui/FindMContactIntroUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    FindMContactIntroUI.a(this.mTI);
     a.a(this, "com/tencent/mm/plugin/account/bind/ui/FindMContactIntroUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(110020);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.FindMContactIntroUI.1
  * JD-Core Version:    0.7.0.1
  */

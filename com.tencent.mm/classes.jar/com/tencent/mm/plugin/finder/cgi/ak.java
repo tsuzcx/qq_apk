@@ -1,85 +1,57 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.model.z;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.cnl;
-import com.tencent.mm.protocal.protobuf.cod;
-import com.tencent.mm.protocal.protobuf.cof;
-import com.tencent.mm.protocal.protobuf.cog;
-import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.findersdk.b.c;
+import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.protocal.protobuf.cwd;
+import com.tencent.mm.protocal.protobuf.cwe;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiMegaVideoPost;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/MegaVideoPostResponse;", "clientId", "", "megaVideoDesc", "Lcom/tencent/mm/protocal/protobuf/MegaVideoDesc;", "(Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/MegaVideoDesc;)V", "TAG", "getClientId", "()Ljava/lang/String;", "getMegaVideoDesc", "()Lcom/tencent/mm/protocal/protobuf/MegaVideoDesc;", "request", "Lcom/tencent/mm/protocal/protobuf/MegaVideoPostRequest;", "initCommReqResp", "", "onCgiBack", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiMegaVideoGetDetail;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/MegaVideoDetailResponse;", "videoId", "", "username", "", "videoNonceId", "scene", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(JLjava/lang/String;Ljava/lang/String;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getVideoId", "()J", "onCgiEnd", "", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
 public final class ak
-  extends c<cog>
+  extends c<cwe>
 {
-  private final String TAG;
-  private final String clientId;
-  private cof tut;
-  private final cnl tuu;
+  public static final a xce;
+  public final long xcd;
   
-  public ak(String paramString, cnl paramcnl)
+  static
   {
-    AppMethodBeat.i(242317);
-    this.clientId = paramString;
-    this.tuu = paramcnl;
-    this.TAG = "Finder.CgiMegaVideoPost";
-    paramString = new cof();
-    paramString.username = z.aUg();
-    paramString.clientId = this.clientId;
-    paramString.MtG = this.tuu;
-    paramcnl = ap.tuF;
-    paramString.MtV = ap.cYc();
-    this.tut = paramString;
-    paramString = this.TAG;
-    paramcnl = new StringBuilder("init CgiMegaVideoPost: videoPlayLen = ");
-    Object localObject = this.tuu.media;
-    p.g(localObject, "megaVideoDesc.media");
-    localObject = (cod)j.kt((List)localObject);
-    int i;
-    if (localObject != null)
-    {
-      i = ((cod)localObject).Mur;
-      paramcnl = paramcnl.append(i).append(", videoPlayLenMs = ");
-      localObject = this.tuu.media;
-      p.g(localObject, "megaVideoDesc.media");
-      localObject = (cod)j.kt((List)localObject);
-      if (localObject == null) {
-        break label323;
-      }
-    }
-    label323:
-    for (long l = ((cod)localObject).Mus;; l = 0L)
-    {
-      Log.i(paramString, l);
-      Log.i(this.TAG, "CgiMegaVideoPost clientId:" + this.clientId);
-      paramString = new d.a();
-      paramString.c((a)this.tut);
-      paramcnl = new cog();
-      paramcnl.setBaseResponse(new BaseResponse());
-      paramcnl.getBaseResponse().ErrMsg = new dqi();
-      paramString.d((a)paramcnl);
-      paramString.MB("/cgi-bin/micromsg-bin/megavideopost");
-      paramString.sG(4079);
-      c(paramString.aXF());
-      AppMethodBeat.o(242317);
-      return;
-      i = 0;
-      break;
-    }
+    AppMethodBeat.i(287186);
+    xce = new a((byte)0);
+    AppMethodBeat.o(287186);
   }
+  
+  public ak(long paramLong, String paramString1, String paramString2, int paramInt, bid parambid)
+  {
+    super(parambid);
+    AppMethodBeat.i(287185);
+    this.xcd = paramLong;
+    cwd localcwd = new cwd();
+    as localas = as.xco;
+    localcwd.TFa = as.b(parambid);
+    localcwd.xcd = this.xcd;
+    localcwd.username = paramString1;
+    localcwd.SWw = paramString2;
+    localcwd.scene = paramInt;
+    paramString2 = new d.a();
+    paramString2.TW("/cgi-bin/micromsg-bin/megavideodetail");
+    paramString2.vD(4195);
+    paramString2.c((a)localcwd);
+    paramString2.d((a)new cwe());
+    c(paramString2.bgN());
+    Log.i("CgiMegaVideoGetDetail", "videoId " + this.xcd + " username " + paramString1);
+    AppMethodBeat.o(287185);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiMegaVideoGetDetail$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.ak
  * JD-Core Version:    0.7.0.1
  */

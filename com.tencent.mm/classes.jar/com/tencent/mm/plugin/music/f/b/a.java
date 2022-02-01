@@ -17,20 +17,20 @@ import java.util.Locale;
 
 public final class a
 {
-  private static final NumberFormat Amm;
+  private static final NumberFormat pAX;
   
   static
   {
     AppMethodBeat.i(137413);
     NumberFormat localNumberFormat = NumberFormat.getInstance(Locale.US);
-    Amm = localNumberFormat;
+    pAX = localNumberFormat;
     localNumberFormat.setMinimumFractionDigits(2);
-    Amm.setMaximumFractionDigits(2);
-    Amm.setGroupingUsed(false);
+    pAX.setMaximumFractionDigits(2);
+    pAX.setGroupingUsed(false);
     AppMethodBeat.o(137413);
   }
   
-  public static String Hq(long paramLong)
+  public static String Hw(long paramLong)
   {
     AppMethodBeat.i(137411);
     if (paramLong == -9223372036854775807L)
@@ -38,12 +38,12 @@ public final class a
       AppMethodBeat.o(137411);
       return "?";
     }
-    String str = Amm.format((float)paramLong / 1000.0F);
+    String str = pAX.format((float)paramLong / 1000.0F);
     AppMethodBeat.o(137411);
     return str;
   }
   
-  public static String Td(int paramInt)
+  public static String Zy(int paramInt)
   {
     switch (paramInt)
     {
@@ -63,9 +63,9 @@ public final class a
   {
     AppMethodBeat.i(137412);
     int i = 0;
-    if (i < paramMetadata.btX.length)
+    if (i < paramMetadata.bdA.length)
     {
-      Object localObject = paramMetadata.btX[i];
+      Object localObject = paramMetadata.bdA[i];
       if ((localObject instanceof TextInformationFrame))
       {
         localObject = (TextInformationFrame)localObject;
@@ -83,7 +83,7 @@ public final class a
         else if ((localObject instanceof PrivFrame))
         {
           localObject = (PrivFrame)localObject;
-          Log.d("MicroMsg.ExoPlayer", paramString + String.format("%s: owner=%s", new Object[] { ((PrivFrame)localObject).id, ((PrivFrame)localObject).buA }));
+          Log.d("MicroMsg.ExoPlayer", paramString + String.format("%s: owner=%s", new Object[] { ((PrivFrame)localObject).id, ((PrivFrame)localObject).bec }));
         }
         else if ((localObject instanceof GeobFrame))
         {
@@ -108,14 +108,14 @@ public final class a
         else if ((localObject instanceof EventMessage))
         {
           localObject = (EventMessage)localObject;
-          Log.d("MicroMsg.ExoPlayer", paramString + String.format("EMSG: scheme=%s, id=%d, value=%s", new Object[] { ((EventMessage)localObject).buj, Long.valueOf(((EventMessage)localObject).id), ((EventMessage)localObject).value }));
+          Log.d("MicroMsg.ExoPlayer", paramString + String.format("EMSG: scheme=%s, id=%d, value=%s", new Object[] { ((EventMessage)localObject).bdL, Long.valueOf(((EventMessage)localObject).id), ((EventMessage)localObject).value }));
         }
       }
     }
     AppMethodBeat.o(137412);
   }
   
-  public static void euZ()
+  public static void fft()
   {
     AppMethodBeat.i(137410);
     b.DEBUG = false;
@@ -125,7 +125,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.b.a
  * JD-Core Version:    0.7.0.1
  */

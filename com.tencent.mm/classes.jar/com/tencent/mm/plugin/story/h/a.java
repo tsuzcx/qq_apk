@@ -6,29 +6,29 @@ import kotlin.l;
 import kotlin.n.n;
 import org.json.JSONArray;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/report/StoryBehaviorTraceData;", "", "()V", "lock", "Ljava/lang/Object;", "traceJsonArray", "Lorg/json/JSONArray;", "addTrace", "", "aid", "", "checkLength", "", "trace", "Lorg/json/JSONObject;", "getTraceString", "", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/report/StoryBehaviorTraceData;", "", "()V", "lock", "Ljava/lang/Object;", "traceJsonArray", "Lorg/json/JSONArray;", "addTrace", "", "aid", "", "checkLength", "", "trace", "Lorg/json/JSONObject;", "getTraceString", "", "plugin-story_release"})
 public final class a
 {
-  JSONArray BXw;
+  JSONArray HUk;
   final Object lock;
   
   public a()
   {
     AppMethodBeat.i(119385);
-    this.BXw = new JSONArray();
+    this.HUk = new JSONArray();
     this.lock = new Object();
     AppMethodBeat.o(119385);
   }
   
-  public final String eKV()
+  public final String fxo()
   {
     AppMethodBeat.i(119384);
     synchronized (this.lock)
     {
-      String str = this.BXw.toString();
-      p.g(str, "traceJsonArray.toString()");
-      str = n.j(str, ",", ";", false);
-      this.BXw = new JSONArray();
+      String str = this.HUk.toString();
+      p.j(str, "traceJsonArray.toString()");
+      str = n.l(str, ",", ";", false);
+      this.HUk = new JSONArray();
       AppMethodBeat.o(119384);
       return str;
     }
@@ -36,7 +36,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.h.a
  * JD-Core Version:    0.7.0.1
  */

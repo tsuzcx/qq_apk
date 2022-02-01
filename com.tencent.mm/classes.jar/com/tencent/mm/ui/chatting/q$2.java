@@ -12,19 +12,19 @@ final class q$2
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(163285);
-    if (this.Phe)
+    if (this.WAx)
     {
-      q.S(12, this.gMP, q.l(this.Phd));
+      q.Q(12, this.WAy, q.l(this.WAw));
       AppMethodBeat.o(163285);
       return;
     }
-    q.S(9, this.gMP, q.l(this.Phd));
+    q.Q(9, this.WAy, q.l(this.WAw));
     AppMethodBeat.o(163285);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.q.2
  * JD-Core Version:    0.7.0.1
  */

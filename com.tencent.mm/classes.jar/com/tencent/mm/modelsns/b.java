@@ -1,35 +1,34 @@
 package com.tencent.mm.modelsns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.i.a.ac;
-import com.tencent.mm.plugin.i.a.aj;
-import com.tencent.mm.plugin.i.a.l;
-import com.tencent.mm.protocal.protobuf.bcl;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.findersdk.a.ad;
+import com.tencent.mm.plugin.findersdk.a.ak;
+import com.tencent.mm.protocal.protobuf.bjg;
 
 public final class b
-  implements j
+  implements k
 {
-  public bcl jld;
+  public bjg mbf;
   
   public b()
   {
-    AppMethodBeat.i(192722);
-    this.jld = new bcl();
-    AppMethodBeat.o(192722);
+    AppMethodBeat.i(260299);
+    this.mbf = new bjg();
+    AppMethodBeat.o(260299);
   }
   
-  public final String bfF()
+  public final String boV()
   {
-    AppMethodBeat.i(192723);
-    String str = l.bf(((aj)g.ah(aj.class)).getFinderSwitchApi().dCw(), l.b(this.jld));
-    AppMethodBeat.o(192723);
+    AppMethodBeat.i(260300);
+    String str = com.tencent.mm.plugin.findersdk.a.k.bf(((ak)h.ag(ak.class)).getFinderSwitchApi().edS(), com.tencent.mm.plugin.findersdk.a.k.b(this.mbf));
+    AppMethodBeat.o(260300);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsns.b
  * JD-Core Version:    0.7.0.1
  */

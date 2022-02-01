@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.tencent.mm.view.TouchableLayout android:id="@id/ify" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.design.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/h7u" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/h7u" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:app="http://schemas.android.com/apk/res-auto">
         <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/b21" app:refreshLayout="@layout/c3_">
-            <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/in5" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <com.tencent.mm.plugin.finder.event.recyclerview.FinderRecyclerView android:id="@id/in5" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         </com.tencent.mm.view.RefreshLoadMoreLayout>
-    </android.support.design.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
     <LinearLayout android:gravity="center" android:id="@id/c5" android:background="@color/BW_93" android:paddingTop="@dimen/c5" android:paddingBottom="@dimen/c5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@raw/finder_self_feed_like_arrow" android:rotation="-90.0" app:iconColor="@color/l4" />
         <TextView android:textSize="@dimen/c5" android:textColor="@color/l4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/clj" />

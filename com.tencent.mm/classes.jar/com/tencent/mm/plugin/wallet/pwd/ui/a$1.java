@@ -9,7 +9,7 @@ final class a$1
 {
   a$1(a parama) {}
   
-  public final void e(boolean paramBoolean, String paramString)
+  public final void g(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(69780);
     Log.i("MicroMsg.WalletRefundTimeDialog", "onDialogClick() bOk:%s", new Object[] { Boolean.valueOf(paramBoolean) });

@@ -6,27 +6,27 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class f
 {
-  public static boolean AGj;
+  public static boolean Gzs;
   
   static
   {
     AppMethodBeat.i(149091);
-    AGj = false;
+    Gzs = false;
     long l = System.nanoTime();
     try
     {
-      AGj = c.p.ag();
+      Gzs = c.p.ag();
       return;
     }
     catch (Throwable localThrowable)
     {
       Log.printErrStackTrace("MicroMsg.NormalMsgSource.DADH", localThrowable, "unexpected exception.", new Object[0]);
-      AGj = false;
+      Gzs = false;
       return;
     }
     finally
     {
-      Log.i("MicroMsg.NormalMsgSource.DADH", "CDA, result: %b, time: %d ns", new Object[] { Boolean.valueOf(AGj), Long.valueOf(System.nanoTime() - l) });
+      Log.i("MicroMsg.NormalMsgSource.DADH", "CDA, result: %b, time: %d ns", new Object[] { Boolean.valueOf(Gzs), Long.valueOf(System.nanoTime() - l) });
       AppMethodBeat.o(149091);
     }
   }

@@ -1,232 +1,193 @@
 package com.tencent.mm.plugin.finder.conv;
 
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnCreateContextMenuListener;
-import android.widget.AdapterView.AdapterContextMenuInfo;
-import android.widget.PopupWindow.OnDismissListener;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bp;
-import com.tencent.mm.model.bp.a;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.report.ai;
-import com.tencent.mm.plugin.finder.report.d;
-import com.tencent.mm.plugin.finder.storage.ag;
-import com.tencent.mm.plugin.finder.storage.e;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.IAutoDBItem;
-import com.tencent.mm.ui.base.o.g;
-import com.tencent.mm.view.TouchableLayout;
-import com.tencent.mm.view.TouchableLayout.a;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.plugin.finder.b.e;
+import com.tencent.mm.plugin.finder.b.f;
+import java.util.LinkedList;
+import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.t;
-import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/conv/FinderConversationLongClickListener;", "Lcom/tencent/mm/plugin/finder/conv/FinderConversationAdapter$OnItemLongClickListener;", "Landroid/view/View$OnCreateContextMenuListener;", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "Landroid/widget/PopupWindow$OnDismissListener;", "callBack", "Lkotlin/Function0;", "", "(Lkotlin/jvm/functions/Function0;)V", "focusedConversation", "Lcom/tencent/mm/plugin/finder/conv/FinderConversation;", "onCreateContextMenu", "menu", "Landroid/view/ContextMenu;", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "onDismiss", "onItemLongClick", "view", "position", "", "conv", "onMMMenuItemSelected", "menuItem", "Landroid/view/MenuItem;", "index", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/conv/FinderConversationFirstFixAdapter;", "Lcom/tencent/mm/plugin/finder/conv/FinderConversationAdapter;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "finderConversation", "Lcom/tencent/mm/plugin/finder/conv/FinderConversation;", "getFinderConversation", "()Lcom/tencent/mm/plugin/finder/conv/FinderConversation;", "setFinderConversation", "(Lcom/tencent/mm/plugin/finder/conv/FinderConversation;)V", "fixedConversationList", "", "getFixedConversationList", "()Ljava/util/List;", "setFixedConversationList", "(Ljava/util/List;)V", "isOneFixed", "", "getConversation", "index", "", "getDelta", "getFixedConversation", "getItem", "position", "getItemCount", "notifyConvItemChanged", "", "notifyConvItemInserted", "notifyConvItemRangeInserted", "positionStart", "itemCount", "notifyConvItemRangeRemoved", "notifyConvItemRemoved", "onBindViewHolder", "holder", "Lcom/tencent/mm/plugin/finder/conv/ConversationHolder;", "plugin-finder_release"})
 public final class h
-  implements View.OnCreateContextMenuListener, PopupWindow.OnDismissListener, d.b, o.g
+  extends e
 {
-  public static final a tyM;
-  private c tyK;
-  private kotlin.g.a.a<x> tyL;
+  private final String TAG = "ConversationFirstFixAdapter";
+  private final boolean xgt = true;
+  public d xgu;
+  private List<d> xgv;
   
-  static
+  private final d Mb(int paramInt)
   {
-    AppMethodBeat.i(242747);
-    tyM = new a((byte)0);
-    AppMethodBeat.o(242747);
-  }
-  
-  public h(kotlin.g.a.a<x> parama)
-  {
-    AppMethodBeat.i(242746);
-    this.tyL = parama;
-    AppMethodBeat.o(242746);
-  }
-  
-  public final void a(View paramView, int paramInt, c paramc)
-  {
-    AppMethodBeat.i(242745);
-    p.h(paramView, "view");
-    p.h(paramc, "conv");
-    this.tyK = paramc;
-    paramc = new com.tencent.mm.ui.widget.b.a(paramView.getContext());
-    paramc.setOnDismissListener((PopupWindow.OnDismissListener)this);
-    View.OnCreateContextMenuListener localOnCreateContextMenuListener = (View.OnCreateContextMenuListener)this;
-    o.g localg = (o.g)this;
-    TouchableLayout.a locala = TouchableLayout.Rni;
-    int i = TouchableLayout.hfC();
-    locala = TouchableLayout.Rni;
-    paramc.a(paramView, paramInt, 0L, localOnCreateContextMenuListener, localg, i, TouchableLayout.hfD());
-    paramc.gTx();
-    AppMethodBeat.o(242745);
-  }
-  
-  public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
-  {
-    Object localObject = null;
-    AppMethodBeat.i(242743);
-    p.h(paramContextMenu, "menu");
-    p.h(paramView, "v");
-    p.h(paramContextMenuInfo, "menuInfo");
-    paramView = this.tyK;
-    if (paramView != null) {}
-    for (paramView = paramView.field_sessionId;; paramView = null)
+    AppMethodBeat.i(265574);
+    Object localObject = this.xgv;
+    int i;
+    if (localObject != null)
     {
-      if ((p.j(paramView, "findersayhisessionholder") ^ true))
-      {
-        paramContextMenuInfo = this.tyK;
-        paramView = localObject;
-        if (paramContextMenuInfo != null) {
-          paramView = paramContextMenuInfo.field_sessionId;
-        }
-        if ((p.j(paramView, "finder_system_message") ^ true)) {
-          paramContextMenu.add(0, 2, 0, 2131762843);
-        }
+      if ((paramInt < 0) || (paramInt >= ((List)localObject).size())) {
+        break label73;
       }
-      AppMethodBeat.o(242743);
+      i = 1;
+      if (i == 0) {
+        break label78;
+      }
+    }
+    for (;;)
+    {
+      if (localObject != null)
+      {
+        d locald = (d)((List)localObject).get(paramInt);
+        localObject = locald;
+        if (locald != null) {}
+      }
+      else
+      {
+        localObject = new d();
+      }
+      AppMethodBeat.o(265574);
+      return localObject;
+      label73:
+      i = 0;
+      break;
+      label78:
+      localObject = null;
+    }
+  }
+  
+  private final int dpn()
+  {
+    AppMethodBeat.i(265573);
+    List localList = this.xgv;
+    if (localList != null)
+    {
+      int i = localList.size();
+      AppMethodBeat.o(265573);
+      return i;
+    }
+    AppMethodBeat.o(265573);
+    return 1;
+  }
+  
+  public final void LW(int paramInt)
+  {
+    AppMethodBeat.i(265567);
+    super.LW(dpn() + paramInt);
+    AppMethodBeat.o(265567);
+  }
+  
+  public final void LX(int paramInt)
+  {
+    AppMethodBeat.i(265568);
+    if (paramInt >= 0)
+    {
+      super.LX(dpn() + paramInt);
+      AppMethodBeat.o(265568);
       return;
     }
+    super.LX(1);
+    AppMethodBeat.o(265568);
   }
   
-  public final void onDismiss()
+  public final void LY(int paramInt)
   {
-    this.tyK = null;
+    AppMethodBeat.i(265570);
+    super.LY(dpn() + paramInt);
+    AppMethodBeat.o(265570);
   }
   
-  public final void onMMMenuItemSelected(final MenuItem paramMenuItem, int paramInt)
+  public final d LZ(int paramInt)
   {
-    AppMethodBeat.i(242744);
-    p.h(paramMenuItem, "menuItem");
-    c localc = this.tyK;
-    if (localc != null)
+    AppMethodBeat.i(265564);
+    d locald1;
+    if ((paramInt >= 0) && (paramInt < dpn()))
     {
-      switch (paramMenuItem.getItemId())
+      if (this.xgt)
       {
+        d locald2 = this.xgu;
+        locald1 = locald2;
+        if (locald2 == null)
+        {
+          locald1 = new d();
+          AppMethodBeat.o(265564);
+          return locald1;
+        }
       }
-      for (;;)
+      else
       {
-        AppMethodBeat.o(242744);
-        return;
-        paramMenuItem = ((PluginFinder)g.ah(PluginFinder.class)).getConversationStorage();
-        Object localObject = localc.field_sessionId;
-        p.g(localObject, "focused.field_sessionId");
-        if (paramMenuItem.bt((String)localObject, true))
-        {
-          paramMenuItem = this.tyL;
-          if (paramMenuItem != null)
-          {
-            paramMenuItem.invoke();
-            AppMethodBeat.o(242744);
-            return;
-          }
-          AppMethodBeat.o(242744);
-          return;
-        }
-        Log.e("Finder.ConversationOnLongClickListener", "setTopPlace failed. sessionId=" + localc.field_sessionId);
-        AppMethodBeat.o(242744);
-        return;
-        paramMenuItem = ((PluginFinder)g.ah(PluginFinder.class)).getConversationStorage();
-        localObject = localc.field_sessionId;
-        p.g(localObject, "focused.field_sessionId");
-        if (paramMenuItem.bt((String)localObject, false))
-        {
-          paramMenuItem = this.tyL;
-          if (paramMenuItem != null)
-          {
-            paramMenuItem.invoke();
-            AppMethodBeat.o(242744);
-            return;
-          }
-          AppMethodBeat.o(242744);
-          return;
-        }
-        Log.e("Finder.ConversationOnLongClickListener", "setUnTopPlace failed. sessionId=" + localc.field_sessionId);
-        AppMethodBeat.o(242744);
-        return;
-        paramMenuItem = ((PluginFinder)g.ah(PluginFinder.class)).getConversationStorage();
-        localObject = localc.field_sessionId;
-        p.g(localObject, "focused.field_sessionId");
-        if (paramMenuItem.avs((String)localObject))
-        {
-          paramMenuItem = this.tyL;
-          if (paramMenuItem != null)
-          {
-            paramMenuItem.invoke();
-            AppMethodBeat.o(242744);
-            return;
-          }
-          AppMethodBeat.o(242744);
-          return;
-        }
-        Log.e("Finder.ConversationOnLongClickListener", "clearUnreadCount failed. sessionId=" + localc.field_sessionId);
-        AppMethodBeat.o(242744);
-        return;
-        localObject = paramMenuItem.getMenuInfo();
-        if (localObject == null)
-        {
-          paramMenuItem = new t("null cannot be cast to non-null type android.widget.AdapterView.AdapterContextMenuInfo");
-          AppMethodBeat.o(242744);
-          throw paramMenuItem;
-        }
-        localObject = (AdapterView.AdapterContextMenuInfo)localObject;
-        bp.a(localc.field_sessionId, (bp.a)new b(localc, (AdapterView.AdapterContextMenuInfo)localObject, this, paramMenuItem));
+        locald1 = Mb(paramInt);
+        AppMethodBeat.o(265564);
+        return locald1;
       }
     }
-    AppMethodBeat.o(242744);
+    else {
+      locald1 = super.LZ(paramInt - dpn());
+    }
+    AppMethodBeat.o(265564);
+    return locald1;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/conv/FinderConversationLongClickListener$Companion;", "", "()V", "CONTEXT_MENU_LONG_CLICK_DELETE", "", "CONTEXT_MENU_LONG_CLICK_MARK_READ", "CONTEXT_MENU_LONG_CLICK_PLACED_TOP", "CONTEXT_MENU_LONG_CLICK_UN_PLACED_TOP", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/conv/FinderConversationLongClickListener$onMMMenuItemSelected$1$1", "Lcom/tencent/mm/model/MsgInfoStorageLogic$IDeleteMsg;", "finishCallback", "", "isCancel", "", "plugin-finder_release"})
-  public static final class b
-    implements bp.a
+  public final d Ma(int paramInt)
   {
-    b(c paramc, AdapterView.AdapterContextMenuInfo paramAdapterContextMenuInfo, h paramh, MenuItem paramMenuItem) {}
-    
-    public final boolean amG()
+    AppMethodBeat.i(265572);
+    if ((paramInt >= 0) && (paramInt < dpn()))
     {
-      return false;
-    }
-    
-    public final void amH()
-    {
-      AppMethodBeat.i(242742);
-      Log.i("Finder.ConversationOnLongClickListener", "longclick delete msg finish");
-      boolean bool = ((PluginFinder)g.ah(PluginFinder.class)).getConversationStorage().deleteNotify(this.tyN.systemRowid, false);
-      if (bool)
+      if (this.xgt)
       {
-        localObject = ((PluginFinder)g.ah(PluginFinder.class)).getSessionInfoStorage();
-        String str = this.tyN.field_sessionId;
-        p.g(str, "focused.field_sessionId");
-        p.h(str, "sessionId");
-        k localk = ((ag)localObject).avz(str);
-        ((ag)localObject).vFb.remove(str);
-        ((ag)localObject).vFa.remove(localk.field_talker);
-        ((ag)localObject).delete((IAutoDBItem)localk, false, new String[] { "sessionId" });
-        ((PluginFinder)g.ah(PluginFinder.class)).getConversationStorage().doNotify(this.tyN.field_sessionId, 6, this.tyN);
-        localObject = h.a(jdField_this);
-        if (localObject != null) {
-          ((kotlin.g.a.a)localObject).invoke();
-        }
+        locald = this.xgu;
+        AppMethodBeat.o(265572);
+        return locald;
       }
-      Log.i("Finder.ConversationOnLongClickListener", "[CONTEXT_MENU_LONG_CLICK_DELETE] ret" + bool + " position=" + this.tyO.position);
-      Object localObject = d.vdp;
-      localObject = d.dnF();
-      ((ai)localObject).viS += 1L;
-      AppMethodBeat.o(242742);
+      locald = Mb(paramInt);
+      AppMethodBeat.o(265572);
+      return locald;
     }
+    d locald = (d)this.syG.get(paramInt - dpn());
+    AppMethodBeat.o(265572);
+    return locald;
+  }
+  
+  public final void a(a parama, int paramInt)
+  {
+    AppMethodBeat.i(265565);
+    p.k(parama, "holder");
+    super.a(parama, paramInt);
+    if (paramInt == 0)
+    {
+      parama = parama.amk;
+      p.j(parama, "holder.itemView");
+      ((ImageView)parama.findViewById(b.f.avatarIv)).setImageResource(b.e.finder_msg_sys_icon);
+    }
+    AppMethodBeat.o(265565);
+  }
+  
+  public final int getItemCount()
+  {
+    AppMethodBeat.i(265563);
+    int i = super.getItemCount();
+    int j = dpn();
+    AppMethodBeat.o(265563);
+    return i + j;
+  }
+  
+  public final void gw(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(265569);
+    super.gw(dpn() + paramInt1, paramInt2);
+    AppMethodBeat.o(265569);
+  }
+  
+  public final void gx(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(265571);
+    super.gx(dpn() + paramInt1, paramInt2);
+    AppMethodBeat.o(265571);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.conv.h
  * JD-Core Version:    0.7.0.1
  */

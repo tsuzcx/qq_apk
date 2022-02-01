@@ -15,12 +15,12 @@ import android.view.View.OnTouchListener;
 import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.uz;
+import com.tencent.mm.f.a.wd;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.g;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i;
-import com.tencent.mm.plugin.sns.ui.ay;
+import com.tencent.mm.plugin.sns.ui.ba;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -33,28 +33,29 @@ import java.util.Map;
 public class SnsAdLandingPageFloatView
   extends FrameLayout
 {
-  boolean ESr;
-  private Map<String, String> Eaa;
-  private List<m> ExZ;
-  public x Fel;
-  public g Fem;
-  private m Fen;
-  private View Feo;
-  private AnimatorSet Fep;
-  public boolean Feq;
+  private List<m> KLR;
+  private Map<String, String> Knw;
+  boolean Lgu;
+  public y LsQ;
+  public g LsR;
+  private m LsS;
+  private View LsT;
+  private AnimatorSet LsU;
+  public boolean LsV;
   public String adCanvasExtXml;
-  public String dVe;
+  public String fOG;
   private boolean isResume;
-  ValueAnimator tMD;
+  ValueAnimator xwu;
+  private boolean zqo;
   
   public SnsAdLandingPageFloatView(Context paramContext)
   {
     super(paramContext, null);
     AppMethodBeat.i(100462);
-    this.Eaa = new HashMap();
-    this.Fep = new AnimatorSet();
-    this.tMD = ValueAnimator.ofFloat(new float[] { 1.0F, 0.4F }).setDuration(100L);
-    this.Feq = true;
+    this.Knw = new HashMap();
+    this.LsU = new AnimatorSet();
+    this.xwu = ValueAnimator.ofFloat(new float[] { 1.0F, 0.4F }).setDuration(100L);
+    this.LsV = true;
     AppMethodBeat.o(100462);
   }
   
@@ -62,10 +63,10 @@ public class SnsAdLandingPageFloatView
   {
     super(paramContext, paramAttributeSet, -1);
     AppMethodBeat.i(100463);
-    this.Eaa = new HashMap();
-    this.Fep = new AnimatorSet();
-    this.tMD = ValueAnimator.ofFloat(new float[] { 1.0F, 0.4F }).setDuration(100L);
-    this.Feq = true;
+    this.Knw = new HashMap();
+    this.LsU = new AnimatorSet();
+    this.xwu = ValueAnimator.ofFloat(new float[] { 1.0F, 0.4F }).setDuration(100L);
+    this.LsV = true;
     AppMethodBeat.o(100463);
   }
   
@@ -73,19 +74,19 @@ public class SnsAdLandingPageFloatView
   {
     super(paramContext, paramAttributeSet, paramInt, -1);
     AppMethodBeat.i(100464);
-    this.Eaa = new HashMap();
-    this.Fep = new AnimatorSet();
-    this.tMD = ValueAnimator.ofFloat(new float[] { 1.0F, 0.4F }).setDuration(100L);
-    this.Feq = true;
+    this.Knw = new HashMap();
+    this.LsU = new AnimatorSet();
+    this.xwu = ValueAnimator.ofFloat(new float[] { 1.0F, 0.4F }).setDuration(100L);
+    this.LsV = true;
     AppMethodBeat.o(100464);
   }
   
-  private void flc()
+  private void fZv()
   {
     AppMethodBeat.i(100467);
     Map localMap;
     int i;
-    if ((this.Fem != null) && (!Util.isNullOrNil(this.adCanvasExtXml)))
+    if ((this.LsR != null) && (!Util.isNullOrNil(this.adCanvasExtXml)))
     {
       localMap = XmlParser.parseXml(this.adCanvasExtXml, "adCardItemList", null);
       i = 0;
@@ -101,7 +102,7 @@ public class SnsAdLandingPageFloatView
         String str2 = Util.nullAs((String)localMap.get(str1 + ".cardTpId"), "");
         str1 = Util.nullAs((String)localMap.get(str1 + ".cardExt"), "");
         if ((!Util.isNullOrNil(str2)) && (!Util.isNullOrNil(str1))) {
-          this.Eaa.put(str2, str1);
+          this.Knw.put(str2, str1);
         }
         i += 1;
         break;
@@ -113,33 +114,33 @@ public class SnsAdLandingPageFloatView
   
   private void initPage()
   {
-    AppMethodBeat.i(203986);
+    AppMethodBeat.i(263078);
     int i;
-    if (this.Fel != null)
+    if (this.LsQ != null)
     {
-      if (this.Fel.DZg > 0) {
+      if (this.LsQ.Kmz > 0) {
         setBackground(null);
       }
       i = 0;
     }
     try
     {
-      int j = Color.parseColor(this.Fem.lco);
+      int j = Color.parseColor(this.LsR.nWx);
       i = j;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        Log.e("MicroMsg.SnsAdLandingPageFloatView", "parseColor exp=" + localException.toString() + ", colorStr=" + this.Fem.lco);
+        Log.e("MicroMsg.SnsAdLandingPageFloatView", "parseColor exp=" + localException.toString() + ", colorStr=" + this.LsR.nWx);
       }
     }
-    this.Fen = ay.a(getContext(), this.Fel, this, i);
-    this.Fen.setBackgroundColor(i);
-    this.Feo = this.Fen.getView();
-    addView(this.Feo);
-    this.Fen.fdp();
-    if (this.Fel.DZf <= 0) {
+    this.LsS = ba.a(getContext(), this.LsQ, this, i);
+    this.LsS.setBackgroundColor(i);
+    this.LsT = this.LsS.getView();
+    addView(this.LsT);
+    this.LsS.fRm();
+    if (this.LsQ.Kmy <= 0) {
       setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
@@ -152,10 +153,10 @@ public class SnsAdLandingPageFloatView
             if (paramAnonymousMotionEvent.getActionMasked() == 1)
             {
               paramAnonymousView = SnsAdLandingPageFloatView.this;
-              if (!paramAnonymousView.ESr)
+              if (!paramAnonymousView.Lgu)
               {
-                paramAnonymousView.tMD.start();
-                paramAnonymousView.ESr = true;
+                paramAnonymousView.xwu.start();
+                paramAnonymousView.Lgu = true;
               }
             }
             AppMethodBeat.o(100460);
@@ -166,40 +167,40 @@ public class SnsAdLandingPageFloatView
         }
       });
     }
-    AppMethodBeat.o(203986);
+    AppMethodBeat.o(263078);
   }
   
-  public final void flb()
+  public final void fZu()
   {
-    AppMethodBeat.i(203987);
-    if (!this.ESr)
+    AppMethodBeat.i(263085);
+    if (!this.Lgu)
     {
-      this.Fep.start();
-      this.ESr = true;
+      this.LsU.start();
+      this.Lgu = true;
     }
-    AppMethodBeat.o(203987);
+    AppMethodBeat.o(263085);
   }
   
   public List<m> getAllComp()
   {
     AppMethodBeat.i(100468);
-    if (this.ExZ != null)
+    if (this.KLR != null)
     {
-      localList = this.ExZ;
+      localList = this.KLR;
       AppMethodBeat.o(100468);
       return localList;
     }
-    this.ExZ = new ArrayList();
-    this.ExZ.add(this.Fen);
-    i.gU(this.ExZ);
-    List localList = this.ExZ;
+    this.KLR = new ArrayList();
+    this.KLR.add(this.LsS);
+    i.hD(this.KLR);
+    List localList = this.KLR;
     AppMethodBeat.o(100468);
     return localList;
   }
   
   long getAnimationTimeFactor()
   {
-    if (this.Feq) {
+    if (this.LsV) {
       return 1L;
     }
     return 0L;
@@ -207,11 +208,11 @@ public class SnsAdLandingPageFloatView
   
   public final void initView()
   {
-    AppMethodBeat.i(203985);
-    if (this.Fem != null)
+    AppMethodBeat.i(263075);
+    if (this.LsR != null)
     {
       initPage();
-      flc();
+      fZv();
       ValueAnimator localValueAnimator1 = ValueAnimator.ofFloat(new float[] { 0.4F, 0.96F }).setDuration(200L * getAnimationTimeFactor());
       localValueAnimator1.setInterpolator(new OvershootInterpolator());
       ValueAnimator localValueAnimator2 = ValueAnimator.ofFloat(new float[] { 0.96F, 1.0F }).setDuration(100L * getAnimationTimeFactor());
@@ -237,17 +238,17 @@ public class SnsAdLandingPageFloatView
           AppMethodBeat.o(100454);
         }
       });
-      this.Fep.playSequentially(new Animator[] { localValueAnimator1, localValueAnimator2 });
-      this.Fep.addListener(new AnimatorListenerAdapter()
+      this.LsU.playSequentially(new Animator[] { localValueAnimator1, localValueAnimator2 });
+      this.LsU.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(100456);
           SnsAdLandingPageFloatView.a(SnsAdLandingPageFloatView.this, false);
           SnsAdLandingPageFloatView.this.onResume();
-          paramAnonymousAnimator = new uz();
-          paramAnonymousAnimator.ebq.ebr = SnsAdLandingPageFloatView.b(SnsAdLandingPageFloatView.this);
-          paramAnonymousAnimator.ebq.state = 121;
+          paramAnonymousAnimator = new wd();
+          paramAnonymousAnimator.fVp.fVq = SnsAdLandingPageFloatView.b(SnsAdLandingPageFloatView.this);
+          paramAnonymousAnimator.fVp.state = 121;
           EventCenter.instance.publish(paramAnonymousAnimator);
           AppMethodBeat.o(100456);
         }
@@ -256,14 +257,14 @@ public class SnsAdLandingPageFloatView
         {
           AppMethodBeat.i(100455);
           SnsAdLandingPageFloatView.a(SnsAdLandingPageFloatView.this, true);
-          paramAnonymousAnimator = new uz();
-          paramAnonymousAnimator.ebq.ebr = SnsAdLandingPageFloatView.b(SnsAdLandingPageFloatView.this);
-          paramAnonymousAnimator.ebq.state = 120;
+          paramAnonymousAnimator = new wd();
+          paramAnonymousAnimator.fVp.fVq = SnsAdLandingPageFloatView.b(SnsAdLandingPageFloatView.this);
+          paramAnonymousAnimator.fVp.state = 120;
           EventCenter.instance.publish(paramAnonymousAnimator);
           AppMethodBeat.o(100455);
         }
       });
-      this.tMD.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.xwu.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -274,16 +275,16 @@ public class SnsAdLandingPageFloatView
           AppMethodBeat.o(100457);
         }
       });
-      this.tMD.addListener(new AnimatorListenerAdapter()
+      this.xwu.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(100459);
           SnsAdLandingPageFloatView.a(SnsAdLandingPageFloatView.this).setVisibility(8);
           SnsAdLandingPageFloatView.a(SnsAdLandingPageFloatView.this, false);
-          paramAnonymousAnimator = new uz();
-          paramAnonymousAnimator.ebq.ebr = SnsAdLandingPageFloatView.b(SnsAdLandingPageFloatView.this);
-          paramAnonymousAnimator.ebq.state = 123;
+          paramAnonymousAnimator = new wd();
+          paramAnonymousAnimator.fVp.fVq = SnsAdLandingPageFloatView.b(SnsAdLandingPageFloatView.this);
+          paramAnonymousAnimator.fVp.state = 123;
           EventCenter.instance.publish(paramAnonymousAnimator);
           AppMethodBeat.o(100459);
         }
@@ -294,23 +295,36 @@ public class SnsAdLandingPageFloatView
           SnsAdLandingPageFloatView.a(SnsAdLandingPageFloatView.this, true);
           SnsAdLandingPageFloatView.c(SnsAdLandingPageFloatView.this);
           SnsAdLandingPageFloatView.this.onPause();
-          paramAnonymousAnimator = new uz();
-          paramAnonymousAnimator.ebq.ebr = SnsAdLandingPageFloatView.b(SnsAdLandingPageFloatView.this);
-          paramAnonymousAnimator.ebq.state = 122;
+          SnsAdLandingPageFloatView.this.onDestroy();
+          paramAnonymousAnimator = new wd();
+          paramAnonymousAnimator.fVp.fVq = SnsAdLandingPageFloatView.b(SnsAdLandingPageFloatView.this);
+          paramAnonymousAnimator.fVp.state = 122;
           EventCenter.instance.publish(paramAnonymousAnimator);
           AppMethodBeat.o(100458);
         }
       });
     }
-    AppMethodBeat.o(203985);
+    AppMethodBeat.o(263075);
+  }
+  
+  public final void onDestroy()
+  {
+    AppMethodBeat.i(263082);
+    this.isResume = false;
+    if ((this.LsQ != null) && (!this.zqo))
+    {
+      this.zqo = true;
+      this.LsS.fKo();
+    }
+    AppMethodBeat.o(263082);
   }
   
   public final void onPause()
   {
     AppMethodBeat.i(100466);
     this.isResume = false;
-    if (this.Fem != null) {
-      this.Fen.eXa();
+    if (this.LsR != null) {
+      this.LsS.fKl();
     }
     AppMethodBeat.o(100466);
   }
@@ -319,15 +333,15 @@ public class SnsAdLandingPageFloatView
   {
     AppMethodBeat.i(100465);
     this.isResume = true;
-    if (this.Fem != null)
+    if (this.LsR != null)
     {
-      this.Fen.eWZ();
+      this.LsS.fKk();
       post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(100461);
-          SnsAdLandingPageFloatView.d(SnsAdLandingPageFloatView.this).eXb();
+          SnsAdLandingPageFloatView.d(SnsAdLandingPageFloatView.this).fKm();
           AppMethodBeat.o(100461);
         }
       });
@@ -337,7 +351,7 @@ public class SnsAdLandingPageFloatView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.SnsAdLandingPageFloatView
  * JD-Core Version:    0.7.0.1
  */

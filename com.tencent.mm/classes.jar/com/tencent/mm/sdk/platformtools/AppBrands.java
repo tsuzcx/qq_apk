@@ -9,7 +9,7 @@ public final class AppBrands
   
   static
   {
-    AppMethodBeat.i(200837);
+    AppMethodBeat.i(249019);
     sAppBrandInfoGetterSupplier = new Callable()
     {
       public final AppBrands.AppBrandAppInfo call()
@@ -17,30 +17,30 @@ public final class AppBrands
         return null;
       }
     };
-    AppMethodBeat.o(200837);
+    AppMethodBeat.o(249019);
   }
   
   public static AppBrandAppInfo getAppBrandInfo()
   {
-    AppMethodBeat.i(200836);
+    AppMethodBeat.i(249018);
     try
     {
       AppBrandAppInfo localAppBrandAppInfo = (AppBrandAppInfo)sAppBrandInfoGetterSupplier.call();
-      AppMethodBeat.o(200836);
+      AppMethodBeat.o(249018);
       return localAppBrandAppInfo;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(200836);
+      AppMethodBeat.o(249018);
     }
     return null;
   }
   
   public static boolean isAppBrandProc()
   {
-    AppMethodBeat.i(200835);
+    AppMethodBeat.i(249016);
     boolean bool = MMApplicationContext.isAppBrandProcess();
-    AppMethodBeat.o(200835);
+    AppMethodBeat.o(249016);
     return bool;
   }
   
@@ -59,7 +59,7 @@ public final class AppBrands
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.AppBrands
  * JD-Core Version:    0.7.0.1
  */

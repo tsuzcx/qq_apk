@@ -1,24 +1,32 @@
 package com.tencent.mm.compatible.loader;
 
 import android.app.Application;
-import android.content.res.Configuration;
+import android.content.Context;
+import android.os.Process;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.SyncTask;
+import com.tencent.mm.sdk.platformtools.Util;
 
-@Deprecated
-public abstract class d
+public final class d
 {
-  protected Application app;
-  
-  public abstract void onConfigurationChanged(Configuration paramConfiguration);
-  
-  public abstract void onCreate();
-  
-  public void onTerminate() {}
-  
-  public void onTrimMemory(int paramInt) {}
-  
-  public final void setApplication(Application paramApplication)
+  public static c b(Application paramApplication, String paramString)
   {
-    this.app = paramApplication;
+    AppMethodBeat.i(155843);
+    try
+    {
+      paramString = (c)MMApplicationContext.getContext().getClassLoader().loadClass(MMApplicationContext.getSourcePackageName() + paramString).newInstance();
+      paramString.app = paramApplication;
+      AppMethodBeat.o(155843);
+      return paramString;
+    }
+    catch (Exception paramApplication)
+    {
+      Log.printErrStackTrace("MicroMsg.ProfileFactoryImpl", paramApplication, "", new Object[0]);
+      AppMethodBeat.o(155843);
+    }
+    return null;
   }
 }
 

@@ -9,74 +9,74 @@ import com.tencent.mm.sdk.thread.ThreadPool;
 
 public final class c
 {
-  public boolean guh;
+  int DQA;
+  boolean DQB;
+  public com.tencent.mm.audio.b.c DQw;
+  public final Object DQx;
+  int DQy;
+  boolean DQz;
+  public boolean iYs;
   public boolean isStart;
-  com.tencent.mm.audio.b.c.a qrW;
-  public com.tencent.mm.audio.b.c yqu;
-  public final Object yqv;
-  int yqw;
-  boolean yqx;
-  int yqy;
-  boolean yqz;
+  com.tencent.mm.audio.b.c.a tQF;
   
   public c()
   {
     AppMethodBeat.i(25430);
-    this.yqu = null;
-    this.yqv = new Object();
+    this.DQw = null;
+    this.DQx = new Object();
     this.isStart = false;
-    this.guh = false;
-    this.yqw = 92;
-    this.yqx = true;
-    this.yqy = 0;
-    this.yqz = true;
-    this.qrW = new com.tencent.mm.audio.b.c.a()
+    this.iYs = false;
+    this.DQy = 92;
+    this.DQz = true;
+    this.DQA = 0;
+    this.DQB = true;
+    this.tQF = new com.tencent.mm.audio.b.c.a()
     {
-      public final void cj(int paramAnonymousInt1, int paramAnonymousInt2) {}
+      public final void cC(int paramAnonymousInt1, int paramAnonymousInt2) {}
       
       public final void w(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt)
       {
         int j = 0;
         AppMethodBeat.i(25427);
-        synchronized (c.this.yqv)
+        synchronized (c.this.DQx)
         {
           c localc = c.this;
-          if (localc.yqw <= 10) {
-            localc.yqw = 92;
+          if (localc.DQy <= 10) {
+            localc.DQy = 92;
           }
-          a locala = i.eav().yqo.ypA;
-          if (locala.qrz != null) {}
-          for (int i = locala.qrz.fFq();; i = 0)
+          a locala = i.eJt().DQq.DPC;
+          if (locala.tQh != null) {}
+          for (int i = locala.tQh.gxC();; i = 0)
           {
-            localc.yqw = ((i + 24 + localc.yqw * 3) / 4);
-            if (!localc.yqx) {
+            localc.DQy = ((i + 24 + localc.DQy * 3) / 4);
+            if (!localc.DQz) {
               break;
             }
             Log.i("MicroMsg.IPCallRecorder", "preprocessForEcho FirstRefEcho");
-            locala = i.eav().yqo.ypA;
+            locala = i.eJt().DQq.DPC;
             i = j;
-            if (locala.qrz != null) {
-              i = locala.qrz.fFn();
+            if (locala.tQh != null) {
+              i = locala.tQh.gxz();
             }
-            localc.yqy = i;
-            if (localc.yqy >= localc.yqw) {
-              localc.yqy -= localc.yqw;
+            localc.DQA = i;
+            if (localc.DQA >= localc.DQy) {
+              localc.DQA -= localc.DQy;
             }
-            localc.yqw = localc.yqy;
-            localc.yqx = false;
-            if (i.eaw().mAT == 5)
+            localc.DQy = localc.DQA;
+            localc.DQz = false;
+            if (i.eJu().pzp == 5)
             {
-              if (c.this.yqz)
+              if (c.this.DQB)
               {
                 Log.i("MicroMsg.IPCallRecorder", "isFirstRecordCallback");
-                c.this.yqz = false;
+                c.this.DQB = false;
               }
-              i.eat().yqF.recordCallback(paramAnonymousArrayOfByte, paramAnonymousInt, c.this.yqw);
+              i.eJr().DQH.recordCallback(paramAnonymousArrayOfByte, paramAnonymousInt, c.this.DQy);
             }
             AppMethodBeat.o(25427);
             return;
           }
-          localc.yqw = 0;
+          localc.DQy = 0;
         }
       }
     };
@@ -84,7 +84,7 @@ public final class c
     AppMethodBeat.o(25430);
   }
   
-  public final void bFT()
+  public final void bRC()
   {
     AppMethodBeat.i(25431);
     if (this.isStart)
@@ -95,17 +95,17 @@ public final class c
     }
     Log.i("MicroMsg.IPCallRecorder", "start record");
     this.isStart = true;
-    this.yqw = i.eav().yqo.ypA.yqm;
-    if (this.yqw <= 10)
+    this.DQy = i.eJt().DQq.DPC.DQo;
+    if (this.DQy <= 10)
     {
-      if (this.yqw <= 0)
+      if (this.DQy <= 0)
       {
         Log.e("MicroMsg.IPCallRecorder", "playDelayInMs<=0");
-        i.eau().eaR();
+        i.eJs().eJP();
       }
-      this.yqw = 92;
+      this.DQy = 92;
     }
-    synchronized (this.yqv)
+    synchronized (this.DQx)
     {
       ThreadPool.post(new Runnable()
       {
@@ -115,26 +115,26 @@ public final class c
           try
           {
             c localc = c.this;
-            localc.yqu = new com.tencent.mm.audio.b.c(v2protocal.VOICE_SAMPLERATE, 1, 6);
-            localc.yqu.jk(20);
-            localc.yqu.dd(true);
-            localc.yqu.aag();
-            localc.yqu.dzk = -19;
-            localc.yqu.x(1, false);
-            localc.yqu.dc(true);
-            localc.yqu.dzv = localc.qrW;
-            if (!localc.yqu.aai())
+            localc.DQw = new com.tencent.mm.audio.b.c(v2protocal.VOICE_SAMPLERATE, 1, 6);
+            localc.DQw.kD(20);
+            localc.DQw.dD(true);
+            localc.DQw.aeR();
+            localc.DQw.frZ = -19;
+            localc.DQw.z(1, false);
+            localc.DQw.dC(true);
+            localc.DQw.fsk = localc.tQF;
+            if (!localc.DQw.aeU())
             {
               Log.e("MicroMsg.IPCallRecorder", "start record failed");
-              if (localc.yqu.dyZ != 13)
+              if (localc.DQw.frO != 13)
               {
-                i.eau().eaR();
+                i.eJs().eJP();
                 AppMethodBeat.o(25428);
               }
             }
             else
             {
-              localc.yqu.de(localc.guh);
+              localc.DQw.dE(localc.iYs);
             }
             AppMethodBeat.o(25428);
             return;
@@ -142,7 +142,7 @@ public final class c
           catch (Exception localException)
           {
             Log.e("MicroMsg.IPCallRecorder", "start record error: %s", new Object[] { localException.getMessage() });
-            i.eau().eaR();
+            i.eJs().eJP();
             AppMethodBeat.o(25428);
           }
         }
@@ -156,35 +156,35 @@ public final class c
   {
     AppMethodBeat.i(25432);
     Log.i("MicroMsg.IPCallRecorder", "setMute: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if ((this.isStart) && (this.yqu != null)) {
-      this.yqu.de(paramBoolean);
+    if ((this.isStart) && (this.DQw != null)) {
+      this.DQw.dE(paramBoolean);
     }
-    this.guh = paramBoolean;
+    this.iYs = paramBoolean;
     AppMethodBeat.o(25432);
   }
   
   public final class a
     implements Runnable
   {
-    private com.tencent.mm.audio.b.c yqB = null;
+    private com.tencent.mm.audio.b.c DQD = null;
     
     public a(com.tencent.mm.audio.b.c paramc)
     {
-      this.yqB = paramc;
+      this.DQD = paramc;
     }
     
     public final void run()
     {
       AppMethodBeat.i(25429);
       Log.d("MicroMsg.IPCallRecorder", "do stopRecord");
-      if (this.yqB != null)
+      if (this.DQD != null)
       {
-        this.yqB.ZZ();
-        this.yqB = null;
+        this.DQD.aeJ();
+        this.DQD = null;
         c localc = c.this;
-        localc.yqw = 92;
-        localc.yqx = true;
-        localc.yqy = 0;
+        localc.DQy = 92;
+        localc.DQz = true;
+        localc.DQA = 0;
       }
       AppMethodBeat.o(25429);
     }
@@ -192,7 +192,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.c.c
  * JD-Core Version:    0.7.0.1
  */

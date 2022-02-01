@@ -20,18 +20,18 @@ public class VFSFileProvider
   extends ContentProvider
 {
   private static final String[] COLUMNS;
-  private static final Pattern RdL;
-  private String IZ;
+  private static final Pattern YED;
+  private String JW;
   
   static
   {
     AppMethodBeat.i(13316);
     COLUMNS = new String[] { "_display_name", "_size" };
-    RdL = Pattern.compile("/");
+    YED = Pattern.compile("/");
     AppMethodBeat.o(13316);
   }
   
-  private static Uri y(Uri paramUri)
+  private static Uri r(Uri paramUri)
   {
     AppMethodBeat.i(13308);
     Object localObject = paramUri.getPath();
@@ -44,7 +44,7 @@ public class VFSFileProvider
     if (((String)localObject).startsWith("/")) {
       paramUri = ((String)localObject).substring(1);
     }
-    String[] arrayOfString = RdL.split(paramUri, 3);
+    String[] arrayOfString = YED.split(paramUri, 3);
     if (arrayOfString.length < 2)
     {
       AppMethodBeat.o(13308);
@@ -94,21 +94,21 @@ public class VFSFileProvider
       AppMethodBeat.o(13309);
       throw paramContext;
     }
-    this.IZ = paramProviderInfo.authority;
+    this.JW = paramProviderInfo.authority;
     AppMethodBeat.o(13309);
   }
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
     AppMethodBeat.i(13313);
-    paramString = y(paramUri);
+    paramString = r(paramUri);
     if (paramString == null)
     {
       paramUri = new IllegalArgumentException("No mapping found for ".concat(String.valueOf(paramUri)));
       AppMethodBeat.o(13313);
       throw paramUri;
     }
-    if (new o(paramString).delete())
+    if (new q(paramString).cFq())
     {
       AppMethodBeat.o(13313);
       return 1;
@@ -120,7 +120,7 @@ public class VFSFileProvider
   public String getType(Uri paramUri)
   {
     AppMethodBeat.i(13311);
-    Uri localUri = y(paramUri);
+    Uri localUri = r(paramUri);
     if (localUri == null)
     {
       paramUri = new IllegalArgumentException("No mapping found for ".concat(String.valueOf(paramUri)));
@@ -138,7 +138,7 @@ public class VFSFileProvider
         return paramUri;
       }
     }
-    paramUri = new o(localUri);
+    paramUri = new q(localUri);
     int i = paramUri.getName().lastIndexOf('.');
     if (i >= 0)
     {
@@ -170,17 +170,17 @@ public class VFSFileProvider
   public ParcelFileDescriptor openFile(Uri paramUri, String paramString)
   {
     AppMethodBeat.i(13315);
-    Object localObject = y(paramUri);
+    Object localObject = r(paramUri);
     if (localObject == null)
     {
       paramUri = new FileNotFoundException("File not found: ".concat(String.valueOf(paramUri)));
       AppMethodBeat.o(13315);
       throw paramUri;
     }
-    localObject = g.hRR().a((Uri)localObject, null);
-    if (((g.e)localObject).valid())
+    localObject = h.iWH().a((Uri)localObject, null);
+    if (((h.e)localObject).fCF())
     {
-      paramUri = ((g.e)localObject).Rcl.nr(((g.e)localObject).path, paramString);
+      paramUri = ((h.e)localObject).YCO.oh(((h.e)localObject).path, paramString);
       AppMethodBeat.o(13315);
       return paramUri;
     }
@@ -192,14 +192,14 @@ public class VFSFileProvider
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
     AppMethodBeat.i(13310);
-    paramString1 = y(paramUri);
+    paramString1 = r(paramUri);
     if (paramString1 == null)
     {
       paramUri = new IllegalArgumentException("No mapping found for ".concat(String.valueOf(paramUri)));
       AppMethodBeat.o(13310);
       throw paramUri;
     }
-    paramString1 = new o(paramString1);
+    paramString1 = new q(paramString1);
     paramUri = paramArrayOfString1;
     if (paramArrayOfString1 == null) {
       paramUri = COLUMNS;
@@ -252,7 +252,7 @@ public class VFSFileProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vfs.VFSFileProvider
  * JD-Core Version:    0.7.0.1
  */

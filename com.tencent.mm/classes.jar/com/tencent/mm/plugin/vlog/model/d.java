@@ -4,6 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.mix.c.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.videocomposition.a.c;
+import com.tencent.mm.videocomposition.b;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.decoder.AudioInfo;
 import com.tencent.tavkit.composition.audio.TAVAudioProcessorNode.TAVAudioProcessorEffect;
@@ -12,81 +13,81 @@ import java.nio.ByteOrder;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/AudioResampler;", "Lcom/tencent/mm/videocomposition/audio/IAudioResampleFactory;", "destSampleRate", "", "destChannelCount", "(II)V", "TAG", "", "getDestChannelCount", "()I", "getDestSampleRate", "createResampleProcessor", "Lcom/tencent/tavkit/composition/audio/TAVAudioProcessorNode$TAVAudioProcessorEffect;", "track", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/AudioResampler;", "Lcom/tencent/mm/videocomposition/audio/IAudioResampleFactory;", "destSampleRate", "", "destChannelCount", "(II)V", "TAG", "", "getDestChannelCount", "()I", "getDestSampleRate", "createResampleProcessor", "Lcom/tencent/tavkit/composition/audio/TAVAudioProcessorNode$TAVAudioProcessorEffect;", "track", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "plugin-vlog_release"})
 public final class d
   implements c
 {
-  final int Gxb;
-  final int Gxc;
+  final int NkD;
+  final int NkE;
   final String TAG;
   
   public d(int paramInt1, int paramInt2)
   {
-    this.Gxb = paramInt1;
-    this.Gxc = paramInt2;
+    this.NkD = paramInt1;
+    this.NkE = paramInt2;
     this.TAG = "MicroMsg.AudioResampler";
   }
   
-  public final TAVAudioProcessorNode.TAVAudioProcessorEffect a(final com.tencent.mm.videocomposition.d paramd)
+  public final TAVAudioProcessorNode.TAVAudioProcessorEffect a(final b paramb)
   {
-    AppMethodBeat.i(190487);
-    p.h(paramd, "track");
-    paramd = (TAVAudioProcessorNode.TAVAudioProcessorEffect)new a(this, paramd);
-    AppMethodBeat.o(190487);
-    return paramd;
+    AppMethodBeat.i(231848);
+    p.k(paramb, "track");
+    paramb = (TAVAudioProcessorNode.TAVAudioProcessorEffect)new a(this, paramb);
+    AppMethodBeat.o(231848);
+    return paramb;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/vlog/model/AudioResampler$createResampleProcessor$1", "Lcom/tencent/tavkit/composition/audio/TAVAudioProcessorNode$TAVAudioProcessorEffect;", "byteArray", "", "getByteArray", "()[B", "setByteArray", "([B)V", "byteBuffer", "Ljava/nio/ByteBuffer;", "getByteBuffer", "()Ljava/nio/ByteBuffer;", "setByteBuffer", "(Ljava/nio/ByteBuffer;)V", "destAudio", "Lcom/tencent/tav/decoder/AudioInfo;", "getDestAudio", "()Lcom/tencent/tav/decoder/AudioInfo;", "processor", "Lcom/tencent/mm/audio/mix/convert/AudioVariableConvertProcess;", "getProcessor", "()Lcom/tencent/mm/audio/mix/convert/AudioVariableConvertProcess;", "setProcessor", "(Lcom/tencent/mm/audio/mix/convert/AudioVariableConvertProcess;)V", "getDestAudioInfo", "processAudioPCM", "time", "Lcom/tencent/tav/coremedia/CMTime;", "pcmBuffer", "audioInfo", "release", "", "plugin-vlog_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/vlog/model/AudioResampler$createResampleProcessor$1", "Lcom/tencent/tavkit/composition/audio/TAVAudioProcessorNode$TAVAudioProcessorEffect;", "byteArray", "", "getByteArray", "()[B", "setByteArray", "([B)V", "byteBuffer", "Ljava/nio/ByteBuffer;", "getByteBuffer", "()Ljava/nio/ByteBuffer;", "setByteBuffer", "(Ljava/nio/ByteBuffer;)V", "destAudio", "Lcom/tencent/tav/decoder/AudioInfo;", "getDestAudio", "()Lcom/tencent/tav/decoder/AudioInfo;", "processor", "Lcom/tencent/mm/audio/mix/convert/AudioVariableConvertProcess;", "getProcessor", "()Lcom/tencent/mm/audio/mix/convert/AudioVariableConvertProcess;", "setProcessor", "(Lcom/tencent/mm/audio/mix/convert/AudioVariableConvertProcess;)V", "getDestAudioInfo", "processAudioPCM", "time", "Lcom/tencent/tav/coremedia/CMTime;", "pcmBuffer", "audioInfo", "release", "", "plugin-vlog_release"})
   public static final class a
     implements TAVAudioProcessorNode.TAVAudioProcessorEffect
   {
-    private g Gxd;
-    private final AudioInfo Gxe;
+    private g NkF;
+    private final AudioInfo NkG;
     private ByteBuffer byteBuffer;
-    private byte[] jzs;
+    private byte[] moY;
     
-    a(com.tencent.mm.videocomposition.d paramd)
+    a(b paramb)
     {
-      AppMethodBeat.i(190486);
-      this.jzs = new byte[0];
-      this.Gxe = new AudioInfo();
-      this.Gxe.sampleRate = paramd.Gxb;
-      this.Gxe.channelCount = paramd.Gxc;
-      this.Gxe.pcmEncoding = 2;
-      AppMethodBeat.o(190486);
+      AppMethodBeat.i(236595);
+      this.moY = new byte[0];
+      this.NkG = new AudioInfo();
+      this.NkG.sampleRate = paramb.NkD;
+      this.NkG.channelCount = paramb.NkE;
+      this.NkG.pcmEncoding = 2;
+      AppMethodBeat.o(236595);
     }
     
     public final AudioInfo getDestAudioInfo()
     {
-      return this.Gxe;
+      return this.NkG;
     }
     
     public final ByteBuffer processAudioPCM(CMTime paramCMTime, ByteBuffer paramByteBuffer, AudioInfo paramAudioInfo)
     {
-      AppMethodBeat.i(190485);
-      p.h(paramCMTime, "time");
-      p.h(paramByteBuffer, "pcmBuffer");
-      p.h(paramAudioInfo, "audioInfo");
-      if (this.Gxd == null)
+      AppMethodBeat.i(236591);
+      p.k(paramCMTime, "time");
+      p.k(paramByteBuffer, "pcmBuffer");
+      p.k(paramAudioInfo, "audioInfo");
+      if (this.NkF == null)
       {
-        this.Gxd = new g(paramd.path, paramAudioInfo.sampleRate, paramAudioInfo.channelCount, paramAudioInfo.pcmEncoding, this.Gxe.sampleRate, this.Gxe.channelCount, this.Gxe.pcmEncoding);
-        Log.i(this.Gxf.TAG, "processAudioPCM, create convert processor, src:" + paramAudioInfo + ", dst:" + this.Gxe);
+        this.NkF = new g(paramb.path, paramAudioInfo.sampleRate, paramAudioInfo.channelCount, paramAudioInfo.pcmEncoding, this.NkG.sampleRate, this.NkG.channelCount, this.NkG.pcmEncoding);
+        Log.i(this.NkH.TAG, "processAudioPCM, create convert processor, src:" + paramAudioInfo + ", dst:" + this.NkG);
       }
-      if (this.jzs.length != paramByteBuffer.limit()) {
-        this.jzs = new byte[paramByteBuffer.limit()];
+      if (this.moY.length != paramByteBuffer.limit()) {
+        this.moY = new byte[paramByteBuffer.limit()];
       }
       paramByteBuffer.position(0);
-      paramByteBuffer.get(this.jzs);
+      paramByteBuffer.get(this.moY);
       paramByteBuffer.position(0);
-      paramCMTime = this.Gxd;
+      paramCMTime = this.NkF;
       if (paramCMTime != null)
       {
-        paramCMTime = paramCMTime.X(this.jzs);
+        paramCMTime = paramCMTime.ae(this.moY);
         if (paramCMTime != null) {}
       }
       else
       {
-        AppMethodBeat.o(190485);
+        AppMethodBeat.o(236591);
         return paramByteBuffer;
       }
       paramByteBuffer = this.byteBuffer;
@@ -99,8 +100,8 @@ public final class d
         if (paramCMTime != null) {
           paramCMTime.position(0);
         }
-        p.g(paramByteBuffer, "newBuffer");
-        AppMethodBeat.o(190485);
+        p.j(paramByteBuffer, "newBuffer");
+        AppMethodBeat.o(236591);
         return paramByteBuffer;
       }
       paramByteBuffer = this.byteBuffer;
@@ -117,29 +118,29 @@ public final class d
       }
       paramCMTime = this.byteBuffer;
       if (paramCMTime == null) {
-        p.hyc();
+        p.iCn();
       }
-      AppMethodBeat.o(190485);
+      AppMethodBeat.o(236591);
       return paramCMTime;
     }
     
     public final void release()
     {
-      AppMethodBeat.i(190484);
-      g localg = this.Gxd;
+      AppMethodBeat.i(236589);
+      g localg = this.NkF;
       if (localg != null)
       {
         localg.release();
-        AppMethodBeat.o(190484);
+        AppMethodBeat.o(236589);
         return;
       }
-      AppMethodBeat.o(190484);
+      AppMethodBeat.o(236589);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.d
  * JD-Core Version:    0.7.0.1
  */

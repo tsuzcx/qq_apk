@@ -11,16 +11,16 @@ import com.tencent.mm.sdk.platformtools.Util;
 public class PLTextView
   extends StaticTextView
 {
-  private static int gRJ = 0;
-  private static long hug = 0L;
-  private static int huh = 0;
-  private static long hui = -2147483648L;
-  private static long huj = 0L;
-  private static int huk = 0;
-  private static long hul = -2147483648L;
-  private static long hum = 0L;
-  private static long hun = -2147483648L;
-  private static boolean huo = false;
+  private static int jCf = 0;
+  private static long kgb = 0L;
+  private static int kgc = 0;
+  private static long kgd = -2147483648L;
+  private static long kge = 0L;
+  private static int kgf = 0;
+  private static long kgg = -2147483648L;
+  private static long kgh = 0L;
+  private static long kgi = -2147483648L;
+  private static boolean kgj = false;
   
   public PLTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,21 +32,21 @@ public class PLTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void A(CharSequence paramCharSequence)
+  protected void G(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(141025);
-    super.setText(paramCharSequence, false);
+    super.a(paramCharSequence, false);
     AppMethodBeat.o(141025);
   }
   
-  protected void B(CharSequence paramCharSequence) {}
+  protected void H(CharSequence paramCharSequence) {}
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     AppMethodBeat.i(141026);
     super.onConfigurationChanged(paramConfiguration);
     if (getLayoutWrapper() != null) {
-      getLayoutWrapper().huF = false;
+      getLayoutWrapper().kgB = false;
     }
     AppMethodBeat.o(141026);
   }
@@ -55,17 +55,17 @@ public class PLTextView
   {
     AppMethodBeat.i(141024);
     long l = 0L;
-    if (huo) {
+    if (kgj) {
       l = System.currentTimeMillis();
     }
     super.onDraw(paramCanvas);
-    if (huo)
+    if (kgj)
     {
       l = System.currentTimeMillis() - l;
-      hum += l;
-      gRJ += 1;
-      if (l > hun) {
-        hun = l;
+      kgh += l;
+      jCf += 1;
+      if (l > kgi) {
+        kgi = l;
       }
     }
     AppMethodBeat.o(141024);
@@ -75,17 +75,17 @@ public class PLTextView
   {
     AppMethodBeat.i(141023);
     long l = 0L;
-    if (huo) {
+    if (kgj) {
       l = System.currentTimeMillis();
     }
     super.onMeasure(paramInt1, paramInt2);
-    if (huo)
+    if (kgj)
     {
       l = System.currentTimeMillis() - l;
-      huj += l;
-      huk += 1;
-      if (l > hul) {
-        hul = l;
+      kge += l;
+      kgf += 1;
+      if (l > kgg) {
+        kgg = l;
       }
     }
     AppMethodBeat.o(141023);
@@ -107,15 +107,15 @@ public class PLTextView
     if (h.DEBUG) {
       l1 = System.currentTimeMillis();
     }
-    if ((getLayoutWrapper() != null) && (getLayoutWrapper().huF)) {
-      c.hue.a(getConfig(), getLayoutWrapper());
+    if ((getLayoutWrapper() != null) && (getLayoutWrapper().kgB)) {
+      c.kfZ.a(getConfig(), getLayoutWrapper());
     }
-    f localf = c.hue.a(getConfig(), paramCharSequence);
+    f localf = c.kfZ.a(getConfig(), paramCharSequence);
     boolean bool;
     if (localf != null)
     {
       bool = true;
-      B(paramCharSequence);
+      H(paramCharSequence);
       setTextLayout(localf);
     }
     for (;;)
@@ -125,25 +125,25 @@ public class PLTextView
         l2 = System.currentTimeMillis();
         Log.d("MicroMsg.PLTextView", "setText used %fms, hitCache: %b, hashCode: %d, text: %s hitCache %s", new Object[] { Double.valueOf((l2 - l1) / 1000000.0D), Boolean.valueOf(bool), Integer.valueOf(hashCode()), paramCharSequence, Boolean.valueOf(bool) });
       }
-      if (huo)
+      if (kgj)
       {
         l1 = l2 - l1;
-        hug += l1;
-        huh += 1;
-        if (l1 > hui) {
-          hui = l1;
+        kgb += l1;
+        kgc += 1;
+        if (l1 > kgd) {
+          kgd = l1;
         }
       }
       AppMethodBeat.o(141022);
       return;
       bool = false;
-      A(paramCharSequence);
+      G(paramCharSequence);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.PLTextView
  * JD-Core Version:    0.7.0.1
  */

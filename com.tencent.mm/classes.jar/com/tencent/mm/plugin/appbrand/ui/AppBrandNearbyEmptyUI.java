@@ -4,26 +4,31 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.TextView;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.au.c;
+import com.tencent.mm.plugin.appbrand.au.f;
+import com.tencent.mm.plugin.appbrand.au.g;
+import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.plugin.appbrand.c.c.b;
 import com.tencent.mm.plugin.appbrand.report.model.l;
 import com.tencent.mm.plugin.appbrand.report.model.l.a;
 import com.tencent.mm.plugin.appbrand.report.model.l.b;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 
 public final class AppBrandNearbyEmptyUI
   extends MMActivity
 {
   public final int getLayoutId()
   {
-    return 2131493052;
+    return au.g.app_brand_nearby_empty_ui;
   }
   
   public final void onCreate(Bundle paramBundle)
@@ -36,12 +41,12 @@ public final class AppBrandNearbyEmptyUI
       AppMethodBeat.o(48664);
       return;
     }
-    if (ao.gJN()) {
+    if (ar.hIO()) {
       overridePendingTransition(0, 0);
     }
-    getContentView().setBackgroundColor(getContext().getResources().getColor(2131100898));
-    setActionbarColor(getContext().getResources().getColor(2131100898));
-    setMMTitle(2131755567);
+    getContentView().setBackgroundColor(getContext().getResources().getColor(au.c.normal_actionbar_color));
+    setActionbarColor(getContext().getResources().getColor(au.c.normal_actionbar_color));
+    setMMTitle(au.i.app_brand_nearby_list_title);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -54,15 +59,15 @@ public final class AppBrandNearbyEmptyUI
     });
     if (getSupportActionBar() != null)
     {
-      paramBundle = getSupportActionBar().getCustomView().findViewById(2131296448);
+      paramBundle = getSupportActionBar().getCustomView().findViewById(c.b.actionbar_up_indicator);
       if ((paramBundle != null) && (paramBundle.getLayoutParams() != null) && ((paramBundle.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
       {
         ((ViewGroup.MarginLayoutParams)paramBundle.getLayoutParams()).rightMargin = 0;
         paramBundle.requestLayout();
       }
     }
-    paramBundle = (TextView)findViewById(2131299221);
-    TextView localTextView = (TextView)findViewById(2131299210);
+    paramBundle = (TextView)findViewById(au.f.content_title);
+    TextView localTextView = (TextView)findViewById(au.f.content_message);
     switch (getIntent().getIntExtra("extra_enter_reason", 0))
     {
     default: 
@@ -71,8 +76,8 @@ public final class AppBrandNearbyEmptyUI
       return;
     case 0: 
       paramBundle = new l();
-      paramBundle.nJe = l.b.nJr;
-      paramBundle.nJi = l.a.nJk;
+      paramBundle.qLr = l.b.qLE;
+      paramBundle.qLv = l.a.qLx;
       paramBundle.report();
     }
     for (;;)
@@ -80,11 +85,11 @@ public final class AppBrandNearbyEmptyUI
       setResult(-1);
       AppMethodBeat.o(48664);
       return;
-      paramBundle.setText(2131755566);
-      localTextView.setText(2131755565);
+      paramBundle.setText(au.i.app_brand_nearby_lbs_not_allowed_title);
+      localTextView.setText(au.i.app_brand_nearby_lbs_not_allowed_message);
       paramBundle = new l();
-      paramBundle.nJe = l.b.nJr;
-      paramBundle.nJi = l.a.nJl;
+      paramBundle.qLr = l.b.qLE;
+      paramBundle.qLv = l.a.qLy;
       paramBundle.report();
     }
   }
@@ -97,7 +102,7 @@ public final class AppBrandNearbyEmptyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandNearbyEmptyUI
  * JD-Core Version:    0.7.0.1
  */

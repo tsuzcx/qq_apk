@@ -6,7 +6,7 @@ import java.math.BigInteger;
 
 public final class c
 {
-  public static String aTR(String paramString)
+  public static String bfp(String paramString)
   {
     AppMethodBeat.i(127140);
     if (Util.isNullOrNil(paramString))

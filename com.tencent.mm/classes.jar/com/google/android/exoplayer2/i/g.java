@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  public final int bHa;
-  public final int bHb;
-  public final int bHc;
-  public final int bHd;
-  public final long bHe;
-  public final int bsU;
+  public final int bcw;
+  public final int bqJ;
+  public final int bqK;
+  public final int bqL;
+  public final int bqM;
+  public final long bqN;
   public final int channels;
   public final int sampleRate;
   
@@ -18,21 +18,21 @@ public final class g
     AppMethodBeat.i(93135);
     paramArrayOfByte = new l(paramArrayOfByte);
     paramArrayOfByte.setPosition(136);
-    this.bHa = paramArrayOfByte.em(16);
-    this.bHb = paramArrayOfByte.em(16);
-    this.bHc = paramArrayOfByte.em(24);
-    this.bHd = paramArrayOfByte.em(24);
-    this.sampleRate = paramArrayOfByte.em(20);
-    this.channels = (paramArrayOfByte.em(3) + 1);
-    this.bsU = (paramArrayOfByte.em(5) + 1);
-    long l = paramArrayOfByte.em(4);
-    this.bHe = (paramArrayOfByte.em(32) & 0xFFFFFFFF | (l & 0xF) << 32);
+    this.bqJ = paramArrayOfByte.eA(16);
+    this.bqK = paramArrayOfByte.eA(16);
+    this.bqL = paramArrayOfByte.eA(24);
+    this.bqM = paramArrayOfByte.eA(24);
+    this.sampleRate = paramArrayOfByte.eA(20);
+    this.channels = (paramArrayOfByte.eA(3) + 1);
+    this.bcw = (paramArrayOfByte.eA(5) + 1);
+    long l = paramArrayOfByte.eA(4);
+    this.bqN = (paramArrayOfByte.eA(32) & 0xFFFFFFFF | (l & 0xF) << 32);
     AppMethodBeat.o(93135);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.i.g
  * JD-Core Version:    0.7.0.1
  */

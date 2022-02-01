@@ -2,7 +2,6 @@ package com.tencent.mm.j;
 
 import android.content.Intent;
 import android.view.KeyEvent;
-import com.tencent.mm.ui.MMActivity;
 
 public abstract interface a
 {
@@ -12,19 +11,19 @@ public abstract interface a
   
   public abstract void a(String paramString1, String paramString2, a.b paramb);
   
-  public abstract void ant();
+  public abstract void atu();
   
-  public abstract void anu();
+  public abstract void atv();
   
-  public abstract void anv();
+  public abstract void atw();
   
-  public abstract boolean anw();
+  public abstract boolean atx();
   
   public abstract void b(a.b paramb);
   
-  public abstract void c(Boolean paramBoolean);
-  
   public abstract boolean dispatchKeyEvent(KeyEvent paramKeyEvent);
+  
+  public abstract void e(Boolean paramBoolean);
   
   public abstract boolean onActivityResult(int paramInt1, int paramInt2, Intent paramIntent);
   
@@ -35,20 +34,10 @@ public abstract interface a
   public abstract void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt);
   
   public abstract void onResume();
-  
-  public static final class a
-  {
-    public static a gCq;
-    
-    public static abstract interface a
-    {
-      public abstract a a(MMActivity paramMMActivity);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.j.a
  * JD-Core Version:    0.7.0.1
  */

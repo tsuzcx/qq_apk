@@ -16,7 +16,7 @@ public class VoiceActionActivity
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final Class<? extends SearchActionVerificationClientService> xP()
+  public final Class<? extends SearchActionVerificationClientService> yj()
   {
     AppMethodBeat.i(128793);
     Log.d("MicroMsg.VoiceActionActivity", "getServiceClass");

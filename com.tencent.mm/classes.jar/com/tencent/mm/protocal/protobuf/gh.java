@@ -1,139 +1,158 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class gh
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int KKc;
-  public int KKd;
-  public int KKe;
-  public int KKf;
-  public int KKg;
-  public String KKh;
-  public int KKi;
-  public int height;
-  public long pHr;
-  public String url;
-  public int width;
+  public gi RLl;
+  public gj RLq;
+  public com.tencent.mm.cd.b RLr;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(103201);
+    AppMethodBeat.i(32124);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.url != null) {
-        paramVarArgs.e(1, this.url);
+      if (this.RLq == null)
+      {
+        paramVarArgs = new g.a.a.b("Not all required fields were included: VoiceAttr");
+        AppMethodBeat.o(32124);
+        throw paramVarArgs;
       }
-      paramVarArgs.aM(2, this.KKc);
-      paramVarArgs.aM(3, this.KKd);
-      paramVarArgs.bb(4, this.pHr);
-      paramVarArgs.aM(5, this.width);
-      paramVarArgs.aM(6, this.height);
-      paramVarArgs.aM(10, this.KKe);
-      paramVarArgs.aM(11, this.KKf);
-      paramVarArgs.aM(12, this.KKg);
-      if (this.KKh != null) {
-        paramVarArgs.e(13, this.KKh);
+      if (this.RLl == null)
+      {
+        paramVarArgs = new g.a.a.b("Not all required fields were included: UploadCtx");
+        AppMethodBeat.o(32124);
+        throw paramVarArgs;
       }
-      paramVarArgs.aM(15, this.KKi);
-      AppMethodBeat.o(103201);
+      if (this.RLr == null)
+      {
+        paramVarArgs = new g.a.a.b("Not all required fields were included: VoiceData");
+        AppMethodBeat.o(32124);
+        throw paramVarArgs;
+      }
+      if (this.RLq != null)
+      {
+        paramVarArgs.oE(1, this.RLq.computeSize());
+        this.RLq.writeFields(paramVarArgs);
+      }
+      if (this.RLl != null)
+      {
+        paramVarArgs.oE(2, this.RLl.computeSize());
+        this.RLl.writeFields(paramVarArgs);
+      }
+      if (this.RLr != null) {
+        paramVarArgs.c(3, this.RLr);
+      }
+      AppMethodBeat.o(32124);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.url == null) {
-        break label686;
+      if (this.RLq == null) {
+        break label639;
       }
     }
-    label686:
-    for (paramInt = g.a.a.b.b.a.f(1, this.url) + 0;; paramInt = 0)
+    label639:
+    for (int i = g.a.a.a.oD(1, this.RLq.computeSize()) + 0;; i = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.bu(2, this.KKc) + g.a.a.b.b.a.bu(3, this.KKd) + g.a.a.b.b.a.r(4, this.pHr) + g.a.a.b.b.a.bu(5, this.width) + g.a.a.b.b.a.bu(6, this.height) + g.a.a.b.b.a.bu(10, this.KKe) + g.a.a.b.b.a.bu(11, this.KKf) + g.a.a.b.b.a.bu(12, this.KKg);
       paramInt = i;
-      if (this.KKh != null) {
-        paramInt = i + g.a.a.b.b.a.f(13, this.KKh);
+      if (this.RLl != null) {
+        paramInt = i + g.a.a.a.oD(2, this.RLl.computeSize());
       }
-      i = g.a.a.b.b.a.bu(15, this.KKi);
-      AppMethodBeat.o(103201);
-      return paramInt + i;
+      i = paramInt;
+      if (this.RLr != null) {
+        i = paramInt + g.a.a.b.b.a.b(3, this.RLr);
+      }
+      AppMethodBeat.o(32124);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(103201);
+        if (this.RLq == null)
+        {
+          paramVarArgs = new g.a.a.b("Not all required fields were included: VoiceAttr");
+          AppMethodBeat.o(32124);
+          throw paramVarArgs;
+        }
+        if (this.RLl == null)
+        {
+          paramVarArgs = new g.a.a.b("Not all required fields were included: UploadCtx");
+          AppMethodBeat.o(32124);
+          throw paramVarArgs;
+        }
+        if (this.RLr == null)
+        {
+          paramVarArgs = new g.a.a.b("Not all required fields were included: VoiceData");
+          AppMethodBeat.o(32124);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32124);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         gh localgh = (gh)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
         {
-        case 7: 
-        case 8: 
-        case 9: 
-        case 14: 
         default: 
-          AppMethodBeat.o(103201);
+          AppMethodBeat.o(32124);
           return -1;
         case 1: 
-          localgh.url = locala.UbS.readString();
-          AppMethodBeat.o(103201);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new gj();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((gj)localObject2).parseFrom((byte[])localObject1);
+            }
+            localgh.RLq = ((gj)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32124);
           return 0;
         case 2: 
-          localgh.KKc = locala.UbS.zi();
-          AppMethodBeat.o(103201);
-          return 0;
-        case 3: 
-          localgh.KKd = locala.UbS.zi();
-          AppMethodBeat.o(103201);
-          return 0;
-        case 4: 
-          localgh.pHr = locala.UbS.zl();
-          AppMethodBeat.o(103201);
-          return 0;
-        case 5: 
-          localgh.width = locala.UbS.zi();
-          AppMethodBeat.o(103201);
-          return 0;
-        case 6: 
-          localgh.height = locala.UbS.zi();
-          AppMethodBeat.o(103201);
-          return 0;
-        case 10: 
-          localgh.KKe = locala.UbS.zi();
-          AppMethodBeat.o(103201);
-          return 0;
-        case 11: 
-          localgh.KKf = locala.UbS.zi();
-          AppMethodBeat.o(103201);
-          return 0;
-        case 12: 
-          localgh.KKg = locala.UbS.zi();
-          AppMethodBeat.o(103201);
-          return 0;
-        case 13: 
-          localgh.KKh = locala.UbS.readString();
-          AppMethodBeat.o(103201);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new gi();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((gi)localObject2).parseFrom((byte[])localObject1);
+            }
+            localgh.RLl = ((gi)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32124);
           return 0;
         }
-        localgh.KKi = locala.UbS.zi();
-        AppMethodBeat.o(103201);
+        localgh.RLr = ((g.a.a.a.a)localObject1).abFh.iUw();
+        AppMethodBeat.o(32124);
         return 0;
       }
-      AppMethodBeat.o(103201);
+      AppMethodBeat.o(32124);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.gh
  * JD-Core Version:    0.7.0.1
  */

@@ -5,16 +5,17 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
+import androidx.appcompat.widget.AppCompatTextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.at;
+import com.tencent.mm.plugin.game.g.b;
+import com.tencent.mm.ui.aw;
 
 public class TextViewWithBottomLine
   extends AppCompatTextView
 {
+  private boolean CGM;
   private Paint mPaint;
-  private boolean xCM;
   
   public TextViewWithBottomLine(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,7 +38,7 @@ public class TextViewWithBottomLine
     AppMethodBeat.i(41181);
     this.mPaint = new Paint();
     this.mPaint.setStyle(Paint.Style.FILL);
-    this.mPaint.setColor(getResources().getColor(2131100904));
+    this.mPaint.setColor(getResources().getColor(g.b.normal_text_color));
     AppMethodBeat.o(41181);
   }
   
@@ -45,8 +46,8 @@ public class TextViewWithBottomLine
   {
     AppMethodBeat.i(41182);
     super.onDraw(paramCanvas);
-    if (this.xCM) {
-      paramCanvas.drawRoundRect(0.0F, getHeight() - at.fromDPToPix(getContext(), 2), getWidth(), getHeight(), at.fromDPToPix(getContext(), 1), at.fromDPToPix(getContext(), 1), this.mPaint);
+    if (this.CGM) {
+      paramCanvas.drawRoundRect(0.0F, getHeight() - aw.fromDPToPix(getContext(), 2), getWidth(), getHeight(), aw.fromDPToPix(getContext(), 1), aw.fromDPToPix(getContext(), 1), this.mPaint);
     }
     AppMethodBeat.o(41182);
   }
@@ -54,22 +55,22 @@ public class TextViewWithBottomLine
   public void setSelected(boolean paramBoolean)
   {
     AppMethodBeat.i(41183);
-    this.xCM = paramBoolean;
+    this.CGM = paramBoolean;
     if (paramBoolean) {
-      setTextColor(getResources().getColor(2131100904));
+      setTextColor(getResources().getColor(g.b.normal_text_color));
     }
     for (;;)
     {
       invalidate();
       AppMethodBeat.o(41183);
       return;
-      setTextColor(getResources().getColor(2131100245));
+      setTextColor(getResources().getColor(g.b.desc_text_color));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.TextViewWithBottomLine
  * JD-Core Version:    0.7.0.1
  */

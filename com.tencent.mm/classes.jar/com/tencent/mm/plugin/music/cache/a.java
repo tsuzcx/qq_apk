@@ -5,33 +5,33 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  public com.tencent.mm.plugin.music.g.a.a AiB;
-  public d AiC;
-  public h AiD;
-  public int AiE;
-  public int AiF;
+  public h FPA;
+  public int FPB;
+  public int FPC;
+  public com.tencent.mm.plugin.music.g.a.a FPy;
+  public d FPz;
   private byte[] buffer;
-  public int fs;
   public int mSize;
+  public int zP;
   
   public a(com.tencent.mm.plugin.music.g.a.a parama)
   {
     AppMethodBeat.i(137148);
     this.buffer = new byte[81920];
-    this.fs = -1;
+    this.zP = -1;
     this.mSize = 0;
-    this.AiE = -1;
-    this.AiF = 0;
-    this.AiB = parama;
+    this.FPB = -1;
+    this.FPC = 0;
+    this.FPy = parama;
     AppMethodBeat.o(137148);
   }
   
-  public final void J(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final void L(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     try
     {
       AppMethodBeat.i(137150);
-      paramInt1 -= this.fs;
+      paramInt1 -= this.zP;
       this.mSize = (paramInt1 + paramInt2);
       System.arraycopy(paramArrayOfByte, 0, this.buffer, paramInt1, paramInt2);
       AppMethodBeat.o(137150);
@@ -45,17 +45,17 @@ public final class a
   }
   
   /* Error */
-  public final boolean SB(int paramInt)
+  public final boolean YY(int paramInt)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 34	com/tencent/mm/plugin/music/cache/a:fs	I
+    //   3: getfield 34	com/tencent/mm/plugin/music/cache/a:zP	I
     //   6: iload_1
     //   7: if_icmpgt +22 -> 29
     //   10: aload_0
-    //   11: getfield 34	com/tencent/mm/plugin/music/cache/a:fs	I
+    //   11: getfield 34	com/tencent/mm/plugin/music/cache/a:zP	I
     //   14: istore_2
     //   15: iload_1
     //   16: iload_2
@@ -89,17 +89,17 @@ public final class a
   }
   
   /* Error */
-  public final boolean SC(int paramInt)
+  public final boolean YZ(int paramInt)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 34	com/tencent/mm/plugin/music/cache/a:fs	I
+    //   3: getfield 34	com/tencent/mm/plugin/music/cache/a:zP	I
     //   6: iload_1
     //   7: if_icmpgt +28 -> 35
     //   10: aload_0
-    //   11: getfield 34	com/tencent/mm/plugin/music/cache/a:fs	I
+    //   11: getfield 34	com/tencent/mm/plugin/music/cache/a:zP	I
     //   14: istore_2
     //   15: aload_0
     //   16: getfield 36	com/tencent/mm/plugin/music/cache/a:mSize	I
@@ -136,13 +136,13 @@ public final class a
     //   2	20	41	finally
   }
   
-  public final void SD(int paramInt)
+  public final void Za(int paramInt)
   {
     try
     {
-      this.AiE = this.fs;
-      this.AiF = this.mSize;
-      this.fs = paramInt;
+      this.FPB = this.zP;
+      this.FPC = this.mSize;
+      this.zP = paramInt;
       this.mSize = 0;
       return;
     }
@@ -153,7 +153,7 @@ public final class a
     }
   }
   
-  public final boolean etB()
+  public final boolean fdO()
   {
     int j = 0;
     boolean bool = false;
@@ -170,21 +170,21 @@ public final class a
       try
       {
         AppMethodBeat.i(137149);
-        if ((this.fs < 0) || (this.mSize <= 0))
+        if ((this.zP < 0) || (this.mSize <= 0))
         {
-          Log.e("MicroMsg.Music.FileBytesCacheMgr", "flushBufferAll(), mOffset:%d, mSize:%d", new Object[] { Integer.valueOf(this.fs), Integer.valueOf(this.mSize) });
+          Log.e("MicroMsg.Music.FileBytesCacheMgr", "flushBufferAll(), mOffset:%d, mSize:%d", new Object[] { Integer.valueOf(this.zP), Integer.valueOf(this.mSize) });
           AppMethodBeat.o(137149);
           return bool;
         }
         byte[] arrayOfByte = new byte[this.mSize];
         System.arraycopy(this.buffer, 0, arrayOfByte, 0, this.mSize);
-        this.AiD.b(arrayOfByte, this.fs, this.mSize);
-        locald = this.AiC;
-        m = this.fs;
+        this.FPA.c(arrayOfByte, this.zP, this.mSize);
+        locald = this.FPz;
+        m = this.zP;
         i = this.mSize;
-        if ((m < 0) || (i < 0) || (m > locald.jPY) || (m + i > locald.jPY))
+        if ((m < 0) || (i < 0) || (m > locald.mHi) || (m + i > locald.mHi))
         {
-          Log.i("MicroMsg.Music.IndexBitMgr", "getWriteBuffIndexRange offset %d, size %d, fileLength %d", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Long.valueOf(locald.jPY) });
+          Log.i("MicroMsg.Music.IndexBitMgr", "getWriteBuffIndexRange offset %d, size %d, fileLength %d", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Long.valueOf(locald.mHi) });
           Log.e("MicroMsg.Music.IndexBitMgr", "getWriteBuffRange invalid parameter!");
           arrayOfByte = null;
           if (arrayOfByte != null) {
@@ -200,12 +200,12 @@ public final class a
       arrayOfInt[1] = -1;
       arrayOfInt[0] = -1;
       n = m + i;
-      k = locald.getIndex(m);
-      i1 = locald.getIndex(n);
+      k = locald.Me(m);
+      i1 = locald.Me(n);
       i = k;
       break;
       label278:
-      if (n != locald.jPY) {
+      if (n != locald.mHi) {
         break label614;
       }
       if ((i1 != 0) || (m != 0)) {
@@ -224,7 +224,7 @@ public final class a
     {
       if (i <= arrayOfInt[1])
       {
-        this.AiC.SG(i);
+        this.FPz.Zd(i);
         i += 1;
       }
       else
@@ -235,16 +235,16 @@ public final class a
         {
           k -= 1;
           i = j;
-          if (!this.AiC.SF(k))
+          if (!this.FPz.Zc(k))
           {
             i = j;
-            if (this.AiE + this.AiF == this.fs)
+            if (this.FPB + this.FPC == this.zP)
             {
               i = j;
               if (this.mSize > 0)
               {
                 i = j;
-                if (this.AiF >= 8192)
+                if (this.FPC >= 8192)
                 {
                   Log.i("MicroMsg.Music.FileBytesCacheMgr", "isCanSavePreviousIndex, save index :%d", new Object[] { Integer.valueOf(k) });
                   i = 1;
@@ -254,9 +254,9 @@ public final class a
           }
         }
         if (i != 0) {
-          this.AiC.SG(arrayOfInt[0] - 1);
+          this.FPz.Zd(arrayOfInt[0] - 1);
         }
-        this.AiC.etI();
+        this.FPz.fdT();
         AppMethodBeat.o(137149);
         bool = true;
         break;
@@ -300,7 +300,7 @@ public final class a
     try
     {
       AppMethodBeat.i(137151);
-      paramInt2 -= this.fs;
+      paramInt2 -= this.zP;
       this.mSize = (paramInt2 + paramInt3);
       System.arraycopy(paramArrayOfByte, paramInt1, this.buffer, paramInt2, paramInt3);
       AppMethodBeat.o(137151);
@@ -315,7 +315,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.cache.a
  * JD-Core Version:    0.7.0.1
  */

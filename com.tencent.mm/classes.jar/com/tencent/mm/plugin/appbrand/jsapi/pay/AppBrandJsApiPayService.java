@@ -8,10 +8,8 @@ import android.os.Looper;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
 import com.tencent.luggage.a.e;
-import com.tencent.luggage.h.f.b;
+import com.tencent.luggage.k.f.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.jsapi.k;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.pluginsdk.wallet.WalletJsapiData;
 import com.tencent.mm.pointers.PString;
@@ -34,9 +32,9 @@ public enum AppBrandJsApiPayService
   static
   {
     AppMethodBeat.i(46710);
-    mlD = new AppBrandJsApiPayService("INSTANCE");
-    mlE = new AppBrandJsApiPayService[] { mlD };
-    j.UJ("com.tencent.mm.plugin.wxpaysdk.PluginWxPaySdk");
+    pjI = new AppBrandJsApiPayService("INSTANCE");
+    pjJ = new AppBrandJsApiPayService[] { pjI };
+    com.tencent.mm.plugin.appbrand.app.j.act("com.tencent.mm.plugin.wxpaysdk.PluginWxPaySdk");
     AppMethodBeat.o(46710);
   }
   
@@ -93,7 +91,7 @@ public enum AppBrandJsApiPayService
     paramb.putExtra("nonceStr", paramAppBrandStatObject.nonceStr);
     paramb.putExtra("packageExt", paramAppBrandStatObject.packageExt);
     paramb.putExtra("signtype", paramAppBrandStatObject.signType);
-    paramb.putExtra("paySignature", paramAppBrandStatObject.dVt);
+    paramb.putExtra("paySignature", paramAppBrandStatObject.fOW);
     paramb.putExtra("key_static_from_scene", 100004);
     paramb.putExtra("url", paramAppBrandStatObject.url);
     AppBrandJsApiPayUtils.a(paramActivity, new b() {});
@@ -130,74 +128,74 @@ public enum AppBrandJsApiPayService
     AppMethodBeat.o(174860);
   }
   
-  public final boolean startPay(Activity paramActivity, final k paramk, final AppBrandStatObject paramAppBrandStatObject, final JSONObject paramJSONObject, final a.b paramb, PString paramPString)
+  public final boolean startPay(Activity paramActivity, final com.tencent.mm.plugin.appbrand.jsapi.j paramj, final AppBrandStatObject paramAppBrandStatObject, final JSONObject paramJSONObject, final a.b paramb, PString paramPString)
   {
     AppMethodBeat.i(174858);
     final WalletJsapiData localWalletJsapiData = new WalletJsapiData(paramJSONObject);
     if (paramAppBrandStatObject != null)
     {
-      localWalletJsapiData.payChannel = WalletJsapiData.kH(paramAppBrandStatObject.scene, paramAppBrandStatObject.ecS);
-      localWalletJsapiData.KxG = WalletJsapiData.kG(paramAppBrandStatObject.scene, paramAppBrandStatObject.ecS);
+      localWalletJsapiData.payChannel = WalletJsapiData.lZ(paramAppBrandStatObject.scene, paramAppBrandStatObject.fWX);
+      localWalletJsapiData.Rzu = WalletJsapiData.ard(paramAppBrandStatObject.scene);
     }
-    localWalletJsapiData.dVv = 46;
+    localWalletJsapiData.fOY = 46;
     paramAppBrandStatObject = paramJSONObject.optString("adUxInfo");
-    localWalletJsapiData.KxO = paramAppBrandStatObject;
-    com.tencent.mm.plugin.s.a.x("AppBrandRuntime", "requestPayment", paramAppBrandStatObject, "data");
+    localWalletJsapiData.RzC = paramAppBrandStatObject;
+    com.tencent.mm.plugin.ac.a.C("AppBrandRuntime", "requestPayment", paramAppBrandStatObject, "data");
     paramPString.value = localWalletJsapiData.packageExt;
-    if (com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.logic.c.u(paramk)) {}
-    for (paramAppBrandStatObject = (com.tencent.mm.plugin.appbrand.jsapi.nfc.c)e.M(com.tencent.mm.plugin.appbrand.jsapi.nfc.c.class);; paramAppBrandStatObject = null)
+    if (com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.logic.c.x(paramj)) {}
+    for (paramAppBrandStatObject = (com.tencent.mm.plugin.appbrand.jsapi.nfc.c)e.K(com.tencent.mm.plugin.appbrand.jsapi.nfc.c.class);; paramAppBrandStatObject = null)
     {
       int i = hashCode();
       paramJSONObject = new Object()
       {
-        AppBrandJsApiPayService.1WxPayActivityResultAdapter mlT;
+        AppBrandJsApiPayService.1WxPayActivityResultAdapter pjY;
         
         final void a(int paramAnonymousInt, Intent paramAnonymousIntent, AppBrandJsApiPayService.PayResultCallbackReason paramAnonymousPayResultCallbackReason)
         {
-          AppMethodBeat.i(226955);
-          paramAnonymousIntent = new AppBrandJsApiPayService.1WxPayActivityResultAdapter(this.mlJ, paramAnonymousInt, paramAnonymousIntent, paramAnonymousPayResultCallbackReason);
-          if ((this.mlT == null) || (this.mlT.a(paramAnonymousIntent)))
+          AppMethodBeat.i(269113);
+          paramAnonymousIntent = new AppBrandJsApiPayService.1WxPayActivityResultAdapter(this.pjO, paramAnonymousInt, paramAnonymousIntent, paramAnonymousPayResultCallbackReason);
+          if ((this.pjY == null) || (this.pjY.a(paramAnonymousIntent)))
           {
-            this.mlT = paramAnonymousIntent;
-            if ((AppBrandJsApiPayService.1WxPayActivityResultAdapter.b(this.mlT) == AppBrandJsApiPayService.PayResultCallbackReason.mlV) && ((paramb instanceof a.c)))
+            this.pjY = paramAnonymousIntent;
+            if ((AppBrandJsApiPayService.1WxPayActivityResultAdapter.b(this.pjY) == AppBrandJsApiPayService.PayResultCallbackReason.pka) && ((paramb instanceof a.c)))
             {
-              paramAnonymousIntent = this.mlT.bIk();
-              ((a.c)paramb).b(paramAnonymousIntent.result, paramAnonymousIntent.mlS, paramAnonymousIntent.values);
+              paramAnonymousIntent = this.pjY.bTT();
+              ((a.c)paramb).b(paramAnonymousIntent.result, paramAnonymousIntent.pjX, paramAnonymousIntent.values);
             }
           }
-          AppMethodBeat.o(226955);
+          AppMethodBeat.o(269113);
         }
       };
-      localWalletJsapiData.KxQ = new ResultReceiver(paramJSONObject)
+      localWalletJsapiData.RzE = new ResultReceiver(paramJSONObject)
       {
-        private final AppBrandJsApiPayService.1WxPayResultDispatcher mlP;
+        private final AppBrandJsApiPayService.1WxPayResultDispatcher pjU;
         
         protected void onReceiveResult(int paramAnonymousInt, Bundle paramAnonymousBundle)
         {
           AppMethodBeat.i(180264);
           paramAnonymousBundle.setClassLoader(WalletJsapiData.class.getClassLoader());
-          this.mlP.a(paramAnonymousInt, new Intent().putExtras(paramAnonymousBundle), AppBrandJsApiPayService.PayResultCallbackReason.mlV);
+          this.pjU.a(paramAnonymousInt, new Intent().putExtras(paramAnonymousBundle), AppBrandJsApiPayService.PayResultCallbackReason.pka);
           AppMethodBeat.o(180264);
         }
       };
       if (paramAppBrandStatObject != null) {
-        paramAppBrandStatObject.bHL();
+        paramAppBrandStatObject.bTu();
       }
       boolean bool = AppBrandJsApiPayUtils.a(paramActivity, new b()new f.b {}, new f.b()
       {
         public final void a(int paramAnonymousInt, Intent paramAnonymousIntent)
         {
-          AppMethodBeat.i(226956);
-          paramJSONObject.a(paramAnonymousInt, paramAnonymousIntent, AppBrandJsApiPayService.PayResultCallbackReason.mlW);
+          AppMethodBeat.i(279097);
+          paramJSONObject.a(paramAnonymousInt, paramAnonymousIntent, AppBrandJsApiPayService.PayResultCallbackReason.pkb);
           paramAnonymousIntent = paramJSONObject;
-          if (paramAnonymousIntent.lKj != null) {
-            paramAnonymousIntent.lKj.bHK();
+          if (paramAnonymousIntent.oGz != null) {
+            paramAnonymousIntent.oGz.bTt();
           }
-          AppBrandJsApiPayService.1WxPayCallbackResult local1WxPayCallbackResult = ((AppBrandJsApiPayService.1WxPayActivityResultAdapter)Objects.requireNonNull(paramAnonymousIntent.mlT)).bIk();
-          if (paramAnonymousIntent.mlH != null) {
-            paramAnonymousIntent.mlH.a(local1WxPayCallbackResult.result, local1WxPayCallbackResult.mlS, local1WxPayCallbackResult.values);
+          AppBrandJsApiPayService.1WxPayCallbackResult local1WxPayCallbackResult = ((AppBrandJsApiPayService.1WxPayActivityResultAdapter)Objects.requireNonNull(paramAnonymousIntent.pjY)).bTT();
+          if (paramAnonymousIntent.pjM != null) {
+            paramAnonymousIntent.pjM.a(local1WxPayCallbackResult.result, local1WxPayCallbackResult.pjX, local1WxPayCallbackResult.values);
           }
-          AppMethodBeat.o(226956);
+          AppMethodBeat.o(279097);
         }
       });
       AppMethodBeat.o(174858);
@@ -218,10 +216,10 @@ public enum AppBrandJsApiPayService
     paramJSONObject = new WalletJsapiData(paramJSONObject);
     if (paramAppBrandStatObject != null)
     {
-      paramJSONObject.payChannel = WalletJsapiData.kH(paramAppBrandStatObject.scene, paramAppBrandStatObject.ecS);
-      paramJSONObject.KxG = WalletJsapiData.kG(paramAppBrandStatObject.scene, paramAppBrandStatObject.ecS);
+      paramJSONObject.payChannel = WalletJsapiData.lZ(paramAppBrandStatObject.scene, paramAppBrandStatObject.fWX);
+      paramJSONObject.Rzu = WalletJsapiData.ard(paramAppBrandStatObject.scene);
     }
-    paramJSONObject.dVv = 46;
+    paramJSONObject.fOY = 46;
     boolean bool = AppBrandJsApiPayUtils.a(paramActivity, new b()
     {
       public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
@@ -279,7 +277,7 @@ public enum AppBrandJsApiPayService
             Log.i("MicroMsg.AppBrandJsApiPayService", "checkPwdToken is valid, verifyWCPayPassword:ok");
             if (paramd != null)
             {
-              paramd.p(true, str);
+              paramd.u(true, str);
               AppMethodBeat.o(174857);
             }
           }
@@ -287,14 +285,14 @@ public enum AppBrandJsApiPayService
           {
             Log.i("MicroMsg.AppBrandJsApiPayService", "checkPwdToken is empty, verifyWCPayPassword:fail");
             if (paramd != null) {
-              paramd.p(false, null);
+              paramd.u(false, null);
             }
           }
           AppMethodBeat.o(174857);
           return;
         }
         if (paramd != null) {
-          paramd.p(false, null);
+          paramd.u(false, null);
         }
         AppMethodBeat.o(174857);
       }
@@ -306,7 +304,7 @@ public enum AppBrandJsApiPayService
     paramd.putExtra("nonceStr", paramJSONObject.nonceStr);
     paramd.putExtra("packageExt", paramJSONObject.packageExt);
     paramd.putExtra("signtype", paramJSONObject.signType);
-    paramd.putExtra("paySignature", paramJSONObject.dVt);
+    paramd.putExtra("paySignature", paramJSONObject.fOW);
     paramd.putExtra("url", paramJSONObject.url);
     paramd.putExtra("scene", 1);
     AppBrandJsApiPayUtils.a(paramActivity, new b() {});
@@ -317,11 +315,11 @@ public enum AppBrandJsApiPayService
   {
     static
     {
-      AppMethodBeat.i(226959);
-      mlV = new PayResultCallbackReason("SuccessAheadCallback", 0);
-      mlW = new PayResultCallbackReason("ActivityResult", 1);
-      mlX = new PayResultCallbackReason[] { mlV, mlW };
-      AppMethodBeat.o(226959);
+      AppMethodBeat.i(266953);
+      pka = new PayResultCallbackReason("SuccessAheadCallback", 0);
+      pkb = new PayResultCallbackReason("ActivityResult", 1);
+      pkc = new PayResultCallbackReason[] { pka, pkb };
+      AppMethodBeat.o(266953);
     }
     
     private PayResultCallbackReason() {}

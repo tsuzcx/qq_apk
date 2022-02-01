@@ -5,10 +5,10 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.AttributeSet;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.q;
+import com.tencent.mm.ay.q;
 import com.tencent.mm.b.g;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
@@ -16,19 +16,20 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMImageView;
-import com.tencent.mm.ui.g.a;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.ui.h.a;
+import com.tencent.mm.vfs.u;
 
 public class CdnImageView
   extends MMImageView
   implements a
 {
-  private String KeO;
-  private String KeP;
-  private boolean KeQ;
-  private boolean KeR;
-  private com.tencent.f.i.d KeS;
+  private String RfC;
+  private String RfD;
+  private boolean RfE;
+  private boolean RfF;
+  private com.tencent.e.i.d RfG;
   private MMHandler handler;
+  private float kPA;
   private int targetHeight;
   private int targetWidth;
   private String url;
@@ -48,7 +49,7 @@ public class CdnImageView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(152166);
     this.url = null;
-    this.KeR = false;
+    this.RfF = false;
     this.handler = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
@@ -77,8 +78,8 @@ public class CdnImageView
           return;
         }
         localObject = BitmapUtil.decodeByteArray(paramAnonymousMessage);
-        q.bcQ();
-        com.tencent.mm.av.d.g(CdnImageView.a(CdnImageView.this), (Bitmap)localObject);
+        q.bmg();
+        com.tencent.mm.ay.d.g(CdnImageView.a(CdnImageView.this), (Bitmap)localObject);
         if (CdnImageView.b(CdnImageView.this)) {
           CdnImageView.a(CdnImageView.this, (Bitmap)localObject);
         }
@@ -99,14 +100,21 @@ public class CdnImageView
         {
           localObject = paramAnonymousMessage;
           if (paramAnonymousMessage != null) {
-            localObject = BitmapUtil.getRoundedCornerBitmap(paramAnonymousMessage, false, paramAnonymousMessage.getWidth() * 0.5F);
+            if (CdnImageView.f(CdnImageView.this) <= 0.0F) {
+              break label305;
+            }
           }
         }
-        if (localObject != null) {
-          CdnImageView.this.setImageBitmap((Bitmap)localObject);
+        label305:
+        for (localObject = BitmapUtil.getRoundedCornerBitmap(paramAnonymousMessage, false, paramAnonymousMessage.getWidth() * CdnImageView.f(CdnImageView.this));; localObject = BitmapUtil.getRoundedCornerBitmap(paramAnonymousMessage, false, paramAnonymousMessage.getWidth() * 0.5F))
+        {
+          if (localObject != null) {
+            CdnImageView.this.setImageBitmap((Bitmap)localObject);
+          }
+          CdnImageView.this.setImageBitmapCompleted((Bitmap)localObject);
+          AppMethodBeat.o(152164);
+          return;
         }
-        CdnImageView.this.setImageBitmapCompleted((Bitmap)localObject);
-        AppMethodBeat.o(152164);
       }
     };
     AppMethodBeat.o(152166);
@@ -119,11 +127,11 @@ public class CdnImageView
     this.targetWidth = paramInt1;
     this.targetHeight = paramInt2;
     if (!Util.isNullOrNil(paramString2)) {
-      this.KeO = paramString2;
+      this.RfC = paramString2;
     }
-    if (!Util.isNullOrNil(this.KeO))
+    if (!Util.isNullOrNil(this.RfC))
     {
-      paramString2 = BitmapUtil.getBitmapNative(this.KeO);
+      paramString2 = BitmapUtil.getBitmapNative(this.RfC);
       if ((paramString2 != null) && (paramString2.getWidth() > 0) && (paramString2.getHeight() > 0))
       {
         setImageBitmap(paramString2);
@@ -140,92 +148,54 @@ public class CdnImageView
     }
     if (paramString1.startsWith("http"))
     {
-      gJ(paramString1, paramInt3);
+      hs(paramString1, paramInt3);
       AppMethodBeat.o(152172);
       return;
     }
-    beM(paramString1);
+    bri(paramString1);
     AppMethodBeat.o(152172);
   }
   
-  private void beM(String paramString)
+  private void bri(String paramString)
   {
     AppMethodBeat.i(152174);
-    if (!s.YS(paramString))
+    if (!u.agG(paramString))
     {
       setVisibility(8);
       AppMethodBeat.o(152174);
       return;
     }
     if ((this.targetWidth <= 0) || (this.targetHeight <= 0)) {}
-    for (paramString = BitmapUtil.getBitmapNative(paramString); paramString == null; paramString = BitmapUtil.extractThumbNail(paramString, this.targetWidth, this.targetHeight, true))
+    for (paramString = BitmapUtil.getBitmapNative(paramString); paramString == null; paramString = BitmapUtil.extractThumbNail(paramString, this.targetHeight, this.targetWidth, true))
     {
       setVisibility(8);
       AppMethodBeat.o(152174);
       return;
     }
     Object localObject = paramString;
-    if (this.KeQ)
+    if (this.RfE)
     {
       localObject = paramString;
       if (paramString != null) {
-        localObject = BitmapUtil.getRoundedCornerBitmap(paramString, false, paramString.getWidth() * 0.5F);
+        if (this.kPA <= 0.0F) {
+          break label132;
+        }
       }
     }
-    setImageBitmap((Bitmap)localObject);
-    setImageBitmapCompleted((Bitmap)localObject);
-    AppMethodBeat.o(152174);
-  }
-  
-  private void gJ(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(152176);
-    q.bcQ();
-    Object localObject = com.tencent.mm.av.d.EP(paramString);
-    if (localObject != null)
+    label132:
+    for (localObject = BitmapUtil.getRoundedCornerBitmap(paramString, false, paramString.getWidth() * this.kPA);; localObject = BitmapUtil.getRoundedCornerBitmap(paramString, false, paramString.getWidth() * 0.5F))
     {
-      paramString = (String)localObject;
-      if (this.targetWidth > 0)
-      {
-        paramString = (String)localObject;
-        if (this.targetHeight > 0) {
-          paramString = BitmapUtil.extractThumbNail((Bitmap)localObject, this.targetWidth, this.targetHeight, true, false);
-        }
-      }
-      localObject = paramString;
-      if (this.KeQ)
-      {
-        localObject = paramString;
-        if (paramString != null) {
-          localObject = BitmapUtil.getRoundedCornerBitmap(paramString, false, paramString.getWidth() * 0.5F);
-        }
-      }
       setImageBitmap((Bitmap)localObject);
       setImageBitmapCompleted((Bitmap)localObject);
-      AppMethodBeat.o(152176);
+      AppMethodBeat.o(152174);
       return;
-    }
-    if ((this.KeR) && (gpu()))
-    {
-      AppMethodBeat.o(152176);
-      return;
-    }
-    if (paramInt > 0) {
-      setImageResource(paramInt);
-    }
-    for (;;)
-    {
-      this.KeS = h.RTc.aY(new CdnImageView.a(paramString, this.handler));
-      AppMethodBeat.o(152176);
-      return;
-      setImageBitmap(null);
     }
   }
   
   private String getAccImagesPath()
   {
     AppMethodBeat.i(152177);
-    String str = b.aKJ() + "wallet_images/";
+    String str = b.aSL() + "wallet_images/";
     AppMethodBeat.o(152177);
     return str;
   }
@@ -234,33 +204,33 @@ public class CdnImageView
   {
     AppMethodBeat.i(152173);
     String str;
-    if (!Util.isNullOrNil(this.KeO)) {
-      str = this.KeO;
+    if (!Util.isNullOrNil(this.RfC)) {
+      str = this.RfC;
     }
     for (;;)
     {
       AppMethodBeat.o(152173);
       return str;
-      if (!Util.isNullOrNil(this.KeP))
+      if (!Util.isNullOrNil(this.RfD))
       {
-        str = this.KeP + g.getMessageDigest(this.url.getBytes());
+        str = this.RfD + g.getMessageDigest(this.url.getBytes());
       }
       else
       {
-        s.boN(getAccImagesPath());
+        u.bBD(getAccImagesPath());
         str = getAccImagesPath() + g.getMessageDigest(this.url.getBytes());
       }
     }
   }
   
-  private boolean gpu()
+  private boolean hks()
   {
     AppMethodBeat.i(152175);
     try
     {
       Object localObject1 = getCacheFilePath();
       Log.d("MicroMsg.CdnImageView", "useSdcardCache, path: %s", new Object[] { localObject1 });
-      if (s.YS((String)localObject1))
+      if (u.agG((String)localObject1))
       {
         Object localObject2 = BitmapUtil.getBitmapNative((String)localObject1);
         Log.d("MicroMsg.CdnImageView", "get bitmap from cache path: %s", new Object[] { localObject2 });
@@ -275,43 +245,100 @@ public class CdnImageView
             }
           }
           localObject2 = localObject1;
-          if (this.KeQ)
+          if (this.RfE)
           {
             localObject2 = localObject1;
             if (localObject1 != null) {
-              localObject2 = BitmapUtil.getRoundedCornerBitmap((Bitmap)localObject1, false, ((Bitmap)localObject1).getWidth() * 0.5F);
+              if (this.kPA <= 0.0F) {
+                break label146;
+              }
             }
           }
-          setImageBitmap((Bitmap)localObject2);
-          setImageBitmapCompleted((Bitmap)localObject2);
-          AppMethodBeat.o(152175);
-          return true;
+          label146:
+          for (localObject2 = BitmapUtil.getRoundedCornerBitmap((Bitmap)localObject1, false, ((Bitmap)localObject1).getWidth() * this.kPA);; localObject2 = BitmapUtil.getRoundedCornerBitmap((Bitmap)localObject1, false, ((Bitmap)localObject1).getWidth() * 0.5F))
+          {
+            setImageBitmap((Bitmap)localObject2);
+            setImageBitmapCompleted((Bitmap)localObject2);
+            AppMethodBeat.o(152175);
+            return true;
+          }
         }
       }
+      return false;
     }
     catch (Exception localException)
     {
       Log.printErrStackTrace("MicroMsg.CdnImageView", localException, "setBitmapFromLocalCache error: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(152175);
     }
-    return false;
   }
   
-  public final void aM(String paramString, int paramInt1, int paramInt2)
+  private void hs(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(152176);
+    q.bmg();
+    Object localObject = com.tencent.mm.ay.d.LI(paramString);
+    if (localObject != null)
+    {
+      paramString = (String)localObject;
+      if (this.targetWidth > 0)
+      {
+        paramString = (String)localObject;
+        if (this.targetHeight > 0) {
+          paramString = BitmapUtil.extractThumbNail((Bitmap)localObject, this.targetHeight, this.targetWidth, true, false);
+        }
+      }
+      localObject = paramString;
+      if (this.RfE)
+      {
+        localObject = paramString;
+        if (paramString != null) {
+          if (this.kPA <= 0.0F) {
+            break label107;
+          }
+        }
+      }
+      label107:
+      for (localObject = BitmapUtil.getRoundedCornerBitmap(paramString, false, paramString.getWidth() * this.kPA);; localObject = BitmapUtil.getRoundedCornerBitmap(paramString, false, paramString.getWidth() * 0.5F))
+      {
+        setImageBitmap((Bitmap)localObject);
+        setImageBitmapCompleted((Bitmap)localObject);
+        AppMethodBeat.o(152176);
+        return;
+      }
+    }
+    if ((this.RfF) && (hks()))
+    {
+      AppMethodBeat.o(152176);
+      return;
+    }
+    if (paramInt > 0) {
+      setImageResource(paramInt);
+    }
+    for (;;)
+    {
+      this.RfG = h.ZvG.bf(new CdnImageView.a(paramString, this.handler));
+      AppMethodBeat.o(152176);
+      return;
+      setImageBitmap(null);
+    }
+  }
+  
+  public final void aO(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(152169);
-    s(paramString, paramInt1, paramInt2, -1);
+    w(paramString, paramInt1, paramInt2, -1);
     AppMethodBeat.o(152169);
   }
   
-  public final void gI(String paramString, int paramInt)
+  public final void hr(String paramString, int paramInt)
   {
     AppMethodBeat.i(152168);
-    s(paramString, 0, 0, paramInt);
+    w(paramString, 0, 0, paramInt);
     AppMethodBeat.o(152168);
   }
   
-  public final void mB(String paramString1, String paramString2)
+  public final void nr(String paramString1, String paramString2)
   {
     AppMethodBeat.i(152170);
     b(paramString1, -1, 0, 0, paramString2);
@@ -320,53 +347,58 @@ public class CdnImageView
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(223848);
+    AppMethodBeat.i(225009);
     super.onDetachedFromWindow();
-    if (this.KeS != null) {
-      this.KeS.cancel(false);
+    if (this.RfG != null) {
+      this.RfG.cancel(false);
     }
-    AppMethodBeat.o(223848);
-  }
-  
-  public final void s(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(152171);
-    b(paramString, paramInt1, paramInt2, paramInt3, null);
-    AppMethodBeat.o(152171);
+    AppMethodBeat.o(225009);
   }
   
   public void setImageBitmapCompleted(Bitmap paramBitmap) {}
   
   public void setImgSavedDir(String paramString)
   {
-    this.KeP = paramString;
+    this.RfD = paramString;
   }
   
   public void setImgSavedPath(String paramString)
   {
-    this.KeO = paramString;
+    this.RfC = paramString;
   }
   
   public void setRoundCorner(boolean paramBoolean)
   {
-    this.KeQ = paramBoolean;
+    this.RfE = paramBoolean;
+  }
+  
+  public void setRoundCornerRate(float paramFloat)
+  {
+    this.kPA = paramFloat;
   }
   
   public void setUrl(String paramString)
   {
     AppMethodBeat.i(152167);
-    s(paramString, 0, 0, -1);
+    w(paramString, 0, 0, -1);
     AppMethodBeat.o(152167);
   }
   
   public void setUseSdcardCache(boolean paramBoolean)
   {
-    this.KeR = paramBoolean;
+    this.RfF = paramBoolean;
+  }
+  
+  public final void w(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(152171);
+    b(paramString, paramInt1, paramInt2, paramInt3, null);
+    AppMethodBeat.o(152171);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.CdnImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,6 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
 import android.text.Html;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -23,6 +21,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentActivity;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenSource;
 import com.facebook.FacebookActivity;
@@ -35,6 +35,10 @@ import com.facebook.GraphRequestAsyncTask;
 import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.common.R.id;
+import com.facebook.common.R.layout;
+import com.facebook.common.R.string;
+import com.facebook.common.R.style;
 import com.facebook.devicerequests.internal.DeviceRequestsHelper;
 import com.facebook.internal.FetchedAppSettings;
 import com.facebook.internal.FetchedAppSettingsManager;
@@ -234,9 +238,9 @@ public class DeviceAuthDialog
   private void presentConfirmation(final String paramString1, final Utility.PermissionsPair paramPermissionsPair, final String paramString2, String paramString3, final Date paramDate1, final Date paramDate2)
   {
     AppMethodBeat.i(7762);
-    String str1 = getResources().getString(2131757743);
-    Object localObject = getResources().getString(2131757742);
-    String str2 = getResources().getString(2131757741);
+    String str1 = getResources().getString(R.string.com_facebook_smart_login_confirmation_title);
+    Object localObject = getResources().getString(R.string.com_facebook_smart_login_confirmation_continue_as);
+    String str2 = getResources().getString(R.string.com_facebook_smart_login_confirmation_cancel);
     paramString3 = String.format((String)localObject, new Object[] { paramString3 });
     localObject = new AlertDialog.Builder(getContext());
     ((AlertDialog.Builder)localObject).setMessage(str1).setCancelable(true).setNegativeButton(paramString3, new DialogInterface.OnClickListener()
@@ -303,18 +307,18 @@ public class DeviceAuthDialog
   protected int getLayoutResId(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return 2131493686;
+      return R.layout.com_facebook_smart_device_dialog_fragment;
     }
-    return 2131493684;
+    return R.layout.com_facebook_device_auth_dialog_fragment;
   }
   
   protected View initializeContentView(boolean paramBoolean)
   {
     AppMethodBeat.i(7758);
     View localView = getActivity().getLayoutInflater().inflate(getLayoutResId(paramBoolean), null);
-    this.progressBar = localView.findViewById(2131306284);
-    this.confirmationCode = ((TextView)localView.findViewById(2131299011));
-    ((Button)localView.findViewById(2131297964)).setOnClickListener(new View.OnClickListener()
+    this.progressBar = localView.findViewById(R.id.progress_bar);
+    this.confirmationCode = ((TextView)localView.findViewById(R.id.confirmation_code));
+    ((Button)localView.findViewById(R.id.cancel_button)).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
@@ -323,8 +327,8 @@ public class DeviceAuthDialog
         AppMethodBeat.o(7736);
       }
     });
-    this.instructions = ((TextView)localView.findViewById(2131298917));
-    this.instructions.setText(Html.fromHtml(getString(2131757722)));
+    this.instructions = ((TextView)localView.findViewById(R.id.com_facebook_device_auth_instructions));
+    this.instructions.setText(Html.fromHtml(getString(R.string.com_facebook_device_auth_instructions)));
     AppMethodBeat.o(7758);
     return localView;
   }
@@ -350,7 +354,7 @@ public class DeviceAuthDialog
   public Dialog onCreateDialog(Bundle paramBundle)
   {
     AppMethodBeat.i(7752);
-    this.dialog = new Dialog(getActivity(), 2131821743);
+    this.dialog = new Dialog(getActivity(), R.style.com_facebook_auth_dialog);
     if ((DeviceRequestsHelper.isAvailable()) && (!this.isRetry)) {}
     for (boolean bool = true;; bool = false)
     {
@@ -605,7 +609,7 @@ public class DeviceAuthDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.login.DeviceAuthDialog
  * JD-Core Version:    0.7.0.1
  */

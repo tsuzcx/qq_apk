@@ -5,9 +5,10 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.i;
+import com.tencent.mm.f.a.i;
+import com.tencent.mm.plugin.appbrand.au.i;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -15,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class JsApiAddNativeDownloadTask
-  extends d<s>
+  extends c<v>
 {
   private static final int CTRL_INDEX = 428;
   private static final String NAME = "addNativeDownloadTask";
@@ -24,10 +25,10 @@ public final class JsApiAddNativeDownloadTask
     extends MainProcessTask
   {
     public static final Parcelable.Creator<AddNativeDownloadTaskTask> CREATOR;
-    public int cSx = 0;
-    public long dCa = 0L;
-    private IListener lyu;
-    Runnable lyv;
+    public int cUP = 0;
+    public long fuD = 0L;
+    private IListener otu;
+    Runnable otv;
     
     static
     {
@@ -36,20 +37,20 @@ public final class JsApiAddNativeDownloadTask
       AppMethodBeat.o(45448);
     }
     
-    public final void bjj()
+    public final void RW()
     {
       AppMethodBeat.i(45441);
-      Log.i("MicroMsg.JsApiAddNativeDownloadTask", "runInMainProcess flag:%d", new Object[] { Integer.valueOf(this.cSx) });
-      this.lyu = new IListener() {};
-      EventCenter.instance.add(this.lyu);
+      Log.i("MicroMsg.JsApiAddNativeDownloadTask", "runInMainProcess flag:%d", new Object[] { Integer.valueOf(this.cUP) });
+      this.otu = new IListener() {};
+      EventCenter.instance.add(this.otu);
       AppMethodBeat.o(45441);
     }
     
-    public final void bjk()
+    public final void bsK()
     {
       AppMethodBeat.i(45442);
-      if (this.lyv != null) {
-        this.lyv.run();
+      if (this.otv != null) {
+        this.otv.run();
       }
       AppMethodBeat.o(45442);
     }
@@ -57,16 +58,16 @@ public final class JsApiAddNativeDownloadTask
     public final void f(Parcel paramParcel)
     {
       AppMethodBeat.i(45443);
-      this.cSx = paramParcel.readInt();
-      this.dCa = paramParcel.readLong();
+      this.cUP = paramParcel.readInt();
+      this.fuD = paramParcel.readLong();
       AppMethodBeat.o(45443);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45444);
-      paramParcel.writeInt(this.cSx);
-      paramParcel.writeLong(this.dCa);
+      paramParcel.writeInt(this.cUP);
+      paramParcel.writeLong(this.fuD);
       AppMethodBeat.o(45444);
     }
   }

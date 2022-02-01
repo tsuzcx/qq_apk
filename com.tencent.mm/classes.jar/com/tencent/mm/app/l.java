@@ -15,7 +15,7 @@ import java.io.File;
 public final class l
 {
   /* Error */
-  private static String bJ(Context paramContext)
+  private static String bI(Context paramContext)
   {
     // Byte code:
     //   0: ldc 15
@@ -203,23 +203,23 @@ public final class l
     //   156	169	290	java/lang/Exception
   }
   
-  static String bK(Context paramContext)
+  static String bJ(Context paramContext)
   {
-    AppMethodBeat.i(200805);
-    if ("com.tencent.mm:isolated_process0".equalsIgnoreCase(bJ(paramContext)))
+    AppMethodBeat.i(248949);
+    if ("com.tencent.mm:isolated_process0".equalsIgnoreCase(bI(paramContext)))
     {
-      AppMethodBeat.o(200805);
+      AppMethodBeat.o(248949);
       return "/sdcard";
     }
     paramContext = Environment.getExternalStorageDirectory().getAbsolutePath();
-    AppMethodBeat.o(200805);
+    AppMethodBeat.o(248949);
     return paramContext;
   }
   
-  public static String f(Application paramApplication)
+  public static String g(Application paramApplication)
   {
-    AppMethodBeat.i(200802);
-    final String str = bJ(paramApplication.getApplicationContext());
+    AppMethodBeat.i(248943);
+    final String str = bI(paramApplication.getApplicationContext());
     if (!(MMApplicationContext.getApplicationId() + ":cuploader").equals(str))
     {
       MMUncaughtExceptionHandler.setReporter(new MMUncaughtExceptionHandler.IReporter()
@@ -234,10 +234,10 @@ public final class l
           //   7: ldc 40
           //   9: invokestatic 46	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
           //   12: aload_0
-          //   13: getfield 19	com/tencent/mm/app/l$1:djP	Landroid/app/Application;
+          //   13: getfield 19	com/tencent/mm/app/l$1:fbw	Landroid/app/Application;
           //   16: astore 6
           //   18: aload_0
-          //   19: getfield 21	com/tencent/mm/app/l$1:dld	Ljava/lang/String;
+          //   19: getfield 21	com/tencent/mm/app/l$1:fcJ	Ljava/lang/String;
           //   22: astore 4
           //   24: ldc 38
           //   26: ldc 48
@@ -265,13 +265,13 @@ public final class l
           //   78: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
           //   81: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
           //   84: getstatic 94	com/tencent/mm/sdk/platformtools/BuildInfo:DEBUG	Z
-          //   87: ifeq +751 -> 838
+          //   87: ifeq +745 -> 832
           //   90: aload 8
           //   92: ldc 96
           //   94: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
           //   97: aload 6
           //   99: ldc 98
-          //   101: invokestatic 102	com/tencent/mm/app/l:p	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+          //   101: invokestatic 102	com/tencent/mm/app/l:r	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
           //   104: astore 5
           //   106: aload 5
           //   108: ifnull +16 -> 124
@@ -307,14 +307,14 @@ public final class l
           //   183: ldc 134
           //   185: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
           //   188: invokestatic 140	com/tencent/mm/sdk/platformtools/Util:nowMilliSecond	()J
-          //   191: getstatic 146	com/tencent/mm/app/d:dkt	J
+          //   191: getstatic 146	com/tencent/mm/app/d:fcc	J
           //   194: lsub
           //   195: invokevirtual 149	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
           //   198: ldc 151
           //   200: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
           //   203: astore 5
           //   205: aload 4
-          //   207: ifnonnull +665 -> 872
+          //   207: ifnonnull +659 -> 866
           //   210: ldc 153
           //   212: astore_1
           //   213: aload 8
@@ -326,368 +326,366 @@ public final class l
           //   226: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
           //   229: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
           //   232: getstatic 94	com/tencent/mm/sdk/platformtools/BuildInfo:DEBUG	Z
-          //   235: ifeq +643 -> 878
+          //   235: ifeq +637 -> 872
           //   238: aload 8
           //   240: ldc 157
           //   242: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
           //   245: invokestatic 163	android/os/Environment:getDataDirectory	()Ljava/io/File;
-          //   248: invokestatic 169	com/tencent/mm/vfs/o:X	(Ljava/io/File;)Lcom/tencent/mm/vfs/o;
+          //   248: invokestatic 169	com/tencent/mm/vfs/q:Q	(Ljava/io/File;)Lcom/tencent/mm/vfs/q;
           //   251: astore_1
           //   252: new 171	android/os/StatFs
           //   255: dup
           //   256: aload_1
-          //   257: getfield 175	com/tencent/mm/vfs/o:mUri	Landroid/net/Uri;
-          //   260: invokestatic 181	com/tencent/mm/vfs/aa:z	(Landroid/net/Uri;)Ljava/lang/String;
-          //   263: invokespecial 182	android/os/StatFs:<init>	(Ljava/lang/String;)V
-          //   266: astore 5
-          //   268: new 171	android/os/StatFs
-          //   271: dup
-          //   272: aload 6
-          //   274: invokestatic 186	com/tencent/mm/app/l:bK	(Landroid/content/Context;)Ljava/lang/String;
-          //   277: invokespecial 182	android/os/StatFs:<init>	(Ljava/lang/String;)V
-          //   280: astore 9
-          //   282: ldc 188
-          //   284: bipush 10
-          //   286: anewarray 4	java/lang/Object
-          //   289: dup
-          //   290: iconst_0
-          //   291: aload 6
-          //   293: ldc 190
-          //   295: invokevirtual 196	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-          //   298: checkcast 198	android/app/ActivityManager
-          //   301: invokevirtual 201	android/app/ActivityManager:getMemoryClass	()I
-          //   304: invokestatic 204	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   307: aastore
-          //   308: dup
-          //   309: iconst_1
-          //   310: aload 6
-          //   312: ldc 190
-          //   314: invokevirtual 196	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-          //   317: checkcast 198	android/app/ActivityManager
-          //   320: invokevirtual 207	android/app/ActivityManager:getLargeMemoryClass	()I
-          //   323: invokestatic 204	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   326: aastore
-          //   327: dup
-          //   328: iconst_2
-          //   329: aload_1
-          //   330: invokevirtual 211	com/tencent/mm/vfs/o:her	()Landroid/net/Uri;
-          //   333: invokestatic 181	com/tencent/mm/vfs/aa:z	(Landroid/net/Uri;)Ljava/lang/String;
-          //   336: aastore
-          //   337: dup
-          //   338: iconst_3
-          //   339: aload 5
-          //   341: invokevirtual 214	android/os/StatFs:getBlockSize	()I
-          //   344: invokestatic 204	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   347: aastore
-          //   348: dup
-          //   349: iconst_4
-          //   350: aload 5
-          //   352: invokevirtual 217	android/os/StatFs:getBlockCount	()I
-          //   355: invokestatic 204	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   358: aastore
-          //   359: dup
-          //   360: iconst_5
-          //   361: aload 5
-          //   363: invokevirtual 220	android/os/StatFs:getAvailableBlocks	()I
-          //   366: invokestatic 204	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   369: aastore
-          //   370: dup
-          //   371: bipush 6
-          //   373: aload 6
-          //   375: invokestatic 186	com/tencent/mm/app/l:bK	(Landroid/content/Context;)Ljava/lang/String;
-          //   378: aastore
-          //   379: dup
-          //   380: bipush 7
-          //   382: aload 9
-          //   384: invokevirtual 214	android/os/StatFs:getBlockSize	()I
-          //   387: invokestatic 204	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   390: aastore
-          //   391: dup
-          //   392: bipush 8
-          //   394: aload 9
-          //   396: invokevirtual 217	android/os/StatFs:getBlockCount	()I
-          //   399: invokestatic 204	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   402: aastore
-          //   403: dup
-          //   404: bipush 9
-          //   406: aload 9
-          //   408: invokevirtual 220	android/os/StatFs:getAvailableBlocks	()I
-          //   411: invokestatic 204	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   414: aastore
-          //   415: invokestatic 224	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-          //   418: astore_1
-          //   419: aload_3
-          //   420: invokestatic 229	com/tencent/mm/app/af:e	(Ljava/lang/Throwable;)V
-          //   423: aload 8
-          //   425: ldc 231
-          //   427: aload_1
-          //   428: invokestatic 54	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-          //   431: invokevirtual 58	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-          //   434: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
-          //   437: new 233	java/util/Date
-          //   440: dup
-          //   441: invokespecial 234	java/util/Date:<init>	()V
-          //   444: astore_1
-          //   445: new 236	java/text/SimpleDateFormat
-          //   448: dup
-          //   449: ldc 238
-          //   451: invokestatic 244	java/util/Locale:getDefault	()Ljava/util/Locale;
-          //   454: invokespecial 247	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;Ljava/util/Locale;)V
-          //   457: astore_3
-          //   458: aload 8
-          //   460: new 60	java/lang/StringBuilder
-          //   463: dup
-          //   464: ldc 249
-          //   466: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   469: aload_3
-          //   470: aload_1
-          //   471: invokevirtual 252	java/text/SimpleDateFormat:format	(Ljava/util/Date;)Ljava/lang/String;
-          //   474: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   477: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   480: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
-          //   483: aload 8
-          //   485: ldc 254
-          //   487: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
-          //   490: aload_2
-          //   491: astore_1
-          //   492: aload 6
-          //   494: invokestatic 260	com/tencent/mm/app/h:bH	(Landroid/content/Context;)I
-          //   497: iconst_1
-          //   498: if_icmpne +14 -> 512
-          //   501: aload_2
-          //   502: iconst_0
-          //   503: aload 6
-          //   505: invokestatic 263	com/tencent/mm/app/h:bI	(Landroid/content/Context;)I
-          //   508: invokevirtual 267	java/lang/String:substring	(II)Ljava/lang/String;
-          //   511: astore_1
-          //   512: aload 6
-          //   514: aload 4
-          //   516: ldc_w 269
-          //   519: invokestatic 273	com/tencent/mm/app/h:d	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
-          //   522: aload 8
-          //   524: aload_1
-          //   525: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
-          //   528: ldc 38
-          //   530: ldc_w 275
-          //   533: aload_1
-          //   534: invokestatic 54	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-          //   537: invokevirtual 58	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-          //   540: invokestatic 46	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-          //   543: new 277	android/content/Intent
-          //   546: dup
-          //   547: invokespecial 278	android/content/Intent:<init>	()V
-          //   550: astore_1
-          //   551: aload_1
-          //   552: ldc_w 280
-          //   555: invokevirtual 284	android/content/Intent:setAction	(Ljava/lang/String;)Landroid/content/Intent;
-          //   558: pop
-          //   559: aload_1
-          //   560: ldc_w 286
-          //   563: aload 6
-          //   565: new 60	java/lang/StringBuilder
-          //   568: dup
-          //   569: invokespecial 107	java/lang/StringBuilder:<init>	()V
-          //   572: aload 6
-          //   574: invokevirtual 289	android/content/Context:getPackageName	()Ljava/lang/String;
+          //   257: invokevirtual 174	com/tencent/mm/vfs/q:getPath	()Ljava/lang/String;
+          //   260: invokespecial 175	android/os/StatFs:<init>	(Ljava/lang/String;)V
+          //   263: astore 5
+          //   265: new 171	android/os/StatFs
+          //   268: dup
+          //   269: aload 6
+          //   271: invokestatic 179	com/tencent/mm/app/l:bJ	(Landroid/content/Context;)Ljava/lang/String;
+          //   274: invokespecial 175	android/os/StatFs:<init>	(Ljava/lang/String;)V
+          //   277: astore 9
+          //   279: ldc 181
+          //   281: bipush 10
+          //   283: anewarray 4	java/lang/Object
+          //   286: dup
+          //   287: iconst_0
+          //   288: aload 6
+          //   290: ldc 183
+          //   292: invokevirtual 189	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+          //   295: checkcast 191	android/app/ActivityManager
+          //   298: invokevirtual 194	android/app/ActivityManager:getMemoryClass	()I
+          //   301: invokestatic 197	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   304: aastore
+          //   305: dup
+          //   306: iconst_1
+          //   307: aload 6
+          //   309: ldc 183
+          //   311: invokevirtual 189	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+          //   314: checkcast 191	android/app/ActivityManager
+          //   317: invokevirtual 200	android/app/ActivityManager:getLargeMemoryClass	()I
+          //   320: invokestatic 197	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   323: aastore
+          //   324: dup
+          //   325: iconst_2
+          //   326: aload_1
+          //   327: invokevirtual 203	com/tencent/mm/vfs/q:bOF	()Ljava/lang/String;
+          //   330: aastore
+          //   331: dup
+          //   332: iconst_3
+          //   333: aload 5
+          //   335: invokevirtual 206	android/os/StatFs:getBlockSize	()I
+          //   338: invokestatic 197	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   341: aastore
+          //   342: dup
+          //   343: iconst_4
+          //   344: aload 5
+          //   346: invokevirtual 209	android/os/StatFs:getBlockCount	()I
+          //   349: invokestatic 197	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   352: aastore
+          //   353: dup
+          //   354: iconst_5
+          //   355: aload 5
+          //   357: invokevirtual 212	android/os/StatFs:getAvailableBlocks	()I
+          //   360: invokestatic 197	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   363: aastore
+          //   364: dup
+          //   365: bipush 6
+          //   367: aload 6
+          //   369: invokestatic 179	com/tencent/mm/app/l:bJ	(Landroid/content/Context;)Ljava/lang/String;
+          //   372: aastore
+          //   373: dup
+          //   374: bipush 7
+          //   376: aload 9
+          //   378: invokevirtual 206	android/os/StatFs:getBlockSize	()I
+          //   381: invokestatic 197	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   384: aastore
+          //   385: dup
+          //   386: bipush 8
+          //   388: aload 9
+          //   390: invokevirtual 209	android/os/StatFs:getBlockCount	()I
+          //   393: invokestatic 197	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   396: aastore
+          //   397: dup
+          //   398: bipush 9
+          //   400: aload 9
+          //   402: invokevirtual 212	android/os/StatFs:getAvailableBlocks	()I
+          //   405: invokestatic 197	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   408: aastore
+          //   409: invokestatic 216	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+          //   412: astore_1
+          //   413: aload_3
+          //   414: invokestatic 221	com/tencent/mm/app/ah:e	(Ljava/lang/Throwable;)V
+          //   417: aload 8
+          //   419: ldc 223
+          //   421: aload_1
+          //   422: invokestatic 54	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+          //   425: invokevirtual 58	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+          //   428: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
+          //   431: new 225	java/util/Date
+          //   434: dup
+          //   435: invokespecial 226	java/util/Date:<init>	()V
+          //   438: astore_1
+          //   439: new 228	java/text/SimpleDateFormat
+          //   442: dup
+          //   443: ldc 230
+          //   445: invokestatic 236	java/util/Locale:getDefault	()Ljava/util/Locale;
+          //   448: invokespecial 239	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;Ljava/util/Locale;)V
+          //   451: astore_3
+          //   452: aload 8
+          //   454: new 60	java/lang/StringBuilder
+          //   457: dup
+          //   458: ldc 241
+          //   460: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+          //   463: aload_3
+          //   464: aload_1
+          //   465: invokevirtual 244	java/text/SimpleDateFormat:format	(Ljava/util/Date;)Ljava/lang/String;
+          //   468: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   471: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   474: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
+          //   477: aload 8
+          //   479: ldc 246
+          //   481: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
+          //   484: aload_2
+          //   485: astore_1
+          //   486: aload 6
+          //   488: invokestatic 252	com/tencent/mm/app/h:bG	(Landroid/content/Context;)I
+          //   491: iconst_1
+          //   492: if_icmpne +14 -> 506
+          //   495: aload_2
+          //   496: iconst_0
+          //   497: aload 6
+          //   499: invokestatic 255	com/tencent/mm/app/h:bH	(Landroid/content/Context;)I
+          //   502: invokevirtual 259	java/lang/String:substring	(II)Ljava/lang/String;
+          //   505: astore_1
+          //   506: aload 6
+          //   508: aload 4
+          //   510: ldc_w 261
+          //   513: invokestatic 265	com/tencent/mm/app/h:d	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
+          //   516: aload 8
+          //   518: aload_1
+          //   519: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
+          //   522: ldc 38
+          //   524: ldc_w 267
+          //   527: aload_1
+          //   528: invokestatic 54	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+          //   531: invokevirtual 58	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+          //   534: invokestatic 46	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   537: new 269	android/content/Intent
+          //   540: dup
+          //   541: invokespecial 270	android/content/Intent:<init>	()V
+          //   544: astore_1
+          //   545: aload_1
+          //   546: ldc_w 272
+          //   549: invokevirtual 276	android/content/Intent:setAction	(Ljava/lang/String;)Landroid/content/Intent;
+          //   552: pop
+          //   553: aload_1
+          //   554: ldc_w 278
+          //   557: aload 6
+          //   559: new 60	java/lang/StringBuilder
+          //   562: dup
+          //   563: invokespecial 107	java/lang/StringBuilder:<init>	()V
+          //   566: aload 6
+          //   568: invokevirtual 281	android/content/Context:getPackageName	()Ljava/lang/String;
+          //   571: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   574: ldc_w 283
           //   577: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   580: ldc_w 291
-          //   583: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   586: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   589: iconst_0
-          //   590: invokevirtual 295	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-          //   593: ldc_w 297
-          //   596: ldc_w 299
-          //   599: invokeinterface 305 3 0
-          //   604: invokevirtual 309	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-          //   607: pop
-          //   608: aload_1
-          //   609: ldc_w 311
-          //   612: aload 7
-          //   614: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   617: invokevirtual 315	java/lang/String:getBytes	()[B
-          //   620: iconst_2
-          //   621: invokestatic 321	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
-          //   624: invokevirtual 309	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-          //   627: pop
-          //   628: aload_1
-          //   629: ldc_w 323
-          //   632: new 60	java/lang/StringBuilder
-          //   635: dup
-          //   636: invokespecial 107	java/lang/StringBuilder:<init>	()V
-          //   639: aload 6
-          //   641: invokevirtual 326	android/content/Context:getFilesDir	()Ljava/io/File;
-          //   644: invokevirtual 331	java/io/File:getParentFile	()Ljava/io/File;
-          //   647: invokevirtual 334	java/io/File:getAbsolutePath	()Ljava/lang/String;
+          //   580: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   583: iconst_0
+          //   584: invokevirtual 287	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+          //   587: ldc_w 289
+          //   590: ldc_w 291
+          //   593: invokeinterface 297 3 0
+          //   598: invokevirtual 301	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+          //   601: pop
+          //   602: aload_1
+          //   603: ldc_w 303
+          //   606: aload 7
+          //   608: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   611: invokevirtual 307	java/lang/String:getBytes	()[B
+          //   614: iconst_2
+          //   615: invokestatic 313	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
+          //   618: invokevirtual 301	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+          //   621: pop
+          //   622: aload_1
+          //   623: ldc_w 315
+          //   626: new 60	java/lang/StringBuilder
+          //   629: dup
+          //   630: invokespecial 107	java/lang/StringBuilder:<init>	()V
+          //   633: aload 6
+          //   635: invokevirtual 318	android/content/Context:getFilesDir	()Ljava/io/File;
+          //   638: invokevirtual 323	java/io/File:getParentFile	()Ljava/io/File;
+          //   641: invokevirtual 326	java/io/File:getAbsolutePath	()Ljava/lang/String;
+          //   644: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   647: ldc_w 328
           //   650: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   653: ldc_w 336
-          //   656: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   659: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   662: invokevirtual 309	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-          //   665: pop
-          //   666: aload_1
-          //   667: ldc_w 338
-          //   670: new 60	java/lang/StringBuilder
-          //   673: dup
-          //   674: invokespecial 107	java/lang/StringBuilder:<init>	()V
-          //   677: aload 6
-          //   679: invokestatic 186	com/tencent/mm/app/l:bK	(Landroid/content/Context;)Ljava/lang/String;
+          //   653: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   656: invokevirtual 301	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+          //   659: pop
+          //   660: aload_1
+          //   661: ldc_w 330
+          //   664: new 60	java/lang/StringBuilder
+          //   667: dup
+          //   668: invokespecial 107	java/lang/StringBuilder:<init>	()V
+          //   671: aload 6
+          //   673: invokestatic 179	com/tencent/mm/app/l:bJ	(Landroid/content/Context;)Ljava/lang/String;
+          //   676: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   679: ldc_w 332
           //   682: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   685: ldc_w 340
-          //   688: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   691: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   694: invokevirtual 309	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-          //   697: pop
-          //   698: aload_1
-          //   699: ldc_w 342
-          //   702: aload 6
-          //   704: ldc 98
-          //   706: invokestatic 102	com/tencent/mm/app/l:p	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
-          //   709: invokevirtual 309	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-          //   712: pop
-          //   713: aload_1
-          //   714: ldc_w 344
-          //   717: getstatic 77	com/tencent/mm/loader/j/a:CLIENT_VERSION	Ljava/lang/String;
-          //   720: invokevirtual 309	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-          //   723: pop
-          //   724: aload_1
-          //   725: ldc_w 346
-          //   728: getstatic 349	com/tencent/mm/loader/j/a:ics	Ljava/lang/String;
-          //   731: invokevirtual 309	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-          //   734: pop
-          //   735: aload_1
-          //   736: ldc_w 351
-          //   739: ldc_w 353
-          //   742: invokevirtual 309	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-          //   745: pop
-          //   746: aload 6
-          //   748: ldc_w 355
-          //   751: iconst_0
-          //   752: invokevirtual 295	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-          //   755: astore_2
-          //   756: new 60	java/lang/StringBuilder
-          //   759: dup
-          //   760: ldc_w 357
-          //   763: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   766: astore_3
-          //   767: getstatic 362	com/tencent/mm/loader/j/c:icB	Ljava/lang/String;
-          //   770: astore 4
-          //   772: aload_1
-          //   773: ldc_w 364
-          //   776: aload_3
-          //   777: aload_2
-          //   778: aload 4
-          //   780: aload 4
-          //   782: invokeinterface 305 3 0
-          //   787: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   790: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   793: invokevirtual 309	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-          //   796: pop
-          //   797: aload_1
-          //   798: aload 6
-          //   800: new 60	java/lang/StringBuilder
-          //   803: dup
-          //   804: invokespecial 107	java/lang/StringBuilder:<init>	()V
-          //   807: invokestatic 369	com/tencent/mm/sdk/platformtools/MMApplicationContext:getSourcePackageName	()Ljava/lang/String;
+          //   685: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   688: invokevirtual 301	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+          //   691: pop
+          //   692: aload_1
+          //   693: ldc_w 334
+          //   696: aload 6
+          //   698: ldc 98
+          //   700: invokestatic 102	com/tencent/mm/app/l:r	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+          //   703: invokevirtual 301	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+          //   706: pop
+          //   707: aload_1
+          //   708: ldc_w 336
+          //   711: getstatic 77	com/tencent/mm/loader/j/a:CLIENT_VERSION	Ljava/lang/String;
+          //   714: invokevirtual 301	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+          //   717: pop
+          //   718: aload_1
+          //   719: ldc_w 338
+          //   722: getstatic 341	com/tencent/mm/loader/j/a:kQZ	Ljava/lang/String;
+          //   725: invokevirtual 301	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+          //   728: pop
+          //   729: aload_1
+          //   730: ldc_w 343
+          //   733: ldc_w 345
+          //   736: invokevirtual 301	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+          //   739: pop
+          //   740: aload 6
+          //   742: ldc_w 347
+          //   745: iconst_0
+          //   746: invokevirtual 287	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+          //   749: astore_2
+          //   750: new 60	java/lang/StringBuilder
+          //   753: dup
+          //   754: ldc_w 349
+          //   757: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+          //   760: astore_3
+          //   761: getstatic 354	com/tencent/mm/loader/j/c:kRi	Ljava/lang/String;
+          //   764: astore 4
+          //   766: aload_1
+          //   767: ldc_w 356
+          //   770: aload_3
+          //   771: aload_2
+          //   772: aload 4
+          //   774: aload 4
+          //   776: invokeinterface 297 3 0
+          //   781: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   784: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   787: invokevirtual 301	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+          //   790: pop
+          //   791: aload_1
+          //   792: aload 6
+          //   794: new 60	java/lang/StringBuilder
+          //   797: dup
+          //   798: invokespecial 107	java/lang/StringBuilder:<init>	()V
+          //   801: invokestatic 361	com/tencent/mm/sdk/platformtools/MMApplicationContext:getSourcePackageName	()Ljava/lang/String;
+          //   804: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   807: ldc_w 363
           //   810: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   813: ldc_w 371
-          //   816: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   819: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   822: invokevirtual 375	android/content/Intent:setClassName	(Landroid/content/Context;Ljava/lang/String;)Landroid/content/Intent;
-          //   825: pop
-          //   826: aload 6
-          //   828: aload_1
-          //   829: invokevirtual 379	android/content/Context:sendBroadcast	(Landroid/content/Intent;)V
-          //   832: ldc 30
-          //   834: invokestatic 382	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   837: return
-          //   838: aload 8
-          //   840: new 60	java/lang/StringBuilder
-          //   843: dup
-          //   844: ldc_w 384
-          //   847: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   850: invokestatic 387	com/tencent/mm/loader/j/a:aKv	()Ljava/lang/String;
-          //   853: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   856: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   859: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
-          //   862: goto -765 -> 97
-          //   865: astore_1
-          //   866: ldc 30
-          //   868: invokestatic 382	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   871: return
-          //   872: aload 4
-          //   874: astore_1
-          //   875: goto -662 -> 213
-          //   878: aload 8
-          //   880: new 60	java/lang/StringBuilder
-          //   883: dup
-          //   884: ldc_w 389
-          //   887: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   890: getstatic 392	com/tencent/mm/loader/j/a:TIME	Ljava/lang/String;
+          //   813: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   816: invokevirtual 367	android/content/Intent:setClassName	(Landroid/content/Context;Ljava/lang/String;)Landroid/content/Intent;
+          //   819: pop
+          //   820: aload 6
+          //   822: aload_1
+          //   823: invokevirtual 371	android/content/Context:sendBroadcast	(Landroid/content/Intent;)V
+          //   826: ldc 30
+          //   828: invokestatic 374	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   831: return
+          //   832: aload 8
+          //   834: new 60	java/lang/StringBuilder
+          //   837: dup
+          //   838: ldc_w 376
+          //   841: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+          //   844: invokestatic 379	com/tencent/mm/loader/j/a:aSx	()Ljava/lang/String;
+          //   847: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   850: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   853: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
+          //   856: goto -759 -> 97
+          //   859: astore_1
+          //   860: ldc 30
+          //   862: invokestatic 374	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   865: return
+          //   866: aload 4
+          //   868: astore_1
+          //   869: goto -656 -> 213
+          //   872: aload 8
+          //   874: new 60	java/lang/StringBuilder
+          //   877: dup
+          //   878: ldc_w 381
+          //   881: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+          //   884: getstatic 384	com/tencent/mm/loader/j/a:TIME	Ljava/lang/String;
+          //   887: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   890: ldc_w 386
           //   893: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   896: ldc_w 394
+          //   896: getstatic 389	com/tencent/mm/loader/j/a:HOSTNAME	Ljava/lang/String;
           //   899: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   902: getstatic 397	com/tencent/mm/loader/j/a:HOSTNAME	Ljava/lang/String;
+          //   902: ldc_w 391
           //   905: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   908: ldc_w 399
-          //   911: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   914: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   917: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
-          //   920: goto -675 -> 245
-          //   923: astore_1
-          //   924: ldc 153
-          //   926: astore_1
-          //   927: goto -508 -> 419
+          //   908: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   911: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
+          //   914: goto -669 -> 245
+          //   917: astore_1
+          //   918: ldc 153
+          //   920: astore_1
+          //   921: goto -508 -> 413
           // Local variable table:
           //   start	length	slot	name	signature
-          //   0	930	0	this	1
-          //   0	930	1	paramAnonymousMMUncaughtExceptionHandler	MMUncaughtExceptionHandler
-          //   0	930	2	paramAnonymousString	String
-          //   0	930	3	paramAnonymousThrowable	java.lang.Throwable
-          //   22	851	4	str	String
-          //   104	258	5	localObject	Object
-          //   16	811	6	localApplication	Application
-          //   48	565	7	localStringBuilder	java.lang.StringBuilder
-          //   59	820	8	localStringBuilderPrinter	android.util.StringBuilderPrinter
-          //   280	127	9	localStatFs	android.os.StatFs
+          //   0	924	0	this	1
+          //   0	924	1	paramAnonymousMMUncaughtExceptionHandler	MMUncaughtExceptionHandler
+          //   0	924	2	paramAnonymousString	String
+          //   0	924	3	paramAnonymousThrowable	java.lang.Throwable
+          //   22	845	4	str	String
+          //   104	252	5	localObject	Object
+          //   16	805	6	localApplication	Application
+          //   48	559	7	localStringBuilder	java.lang.StringBuilder
+          //   59	814	8	localStringBuilderPrinter	android.util.StringBuilderPrinter
+          //   277	124	9	localStatFs	android.os.StatFs
           // Exception table:
           //   from	to	target	type
-          //   38	97	865	java/lang/Exception
-          //   97	106	865	java/lang/Exception
-          //   114	124	865	java/lang/Exception
-          //   124	165	865	java/lang/Exception
-          //   165	205	865	java/lang/Exception
-          //   213	245	865	java/lang/Exception
-          //   419	490	865	java/lang/Exception
-          //   492	512	865	java/lang/Exception
-          //   512	832	865	java/lang/Exception
-          //   838	862	865	java/lang/Exception
-          //   878	920	865	java/lang/Exception
-          //   245	419	923	java/lang/Exception
+          //   38	97	859	java/lang/Exception
+          //   97	106	859	java/lang/Exception
+          //   114	124	859	java/lang/Exception
+          //   124	165	859	java/lang/Exception
+          //   165	205	859	java/lang/Exception
+          //   213	245	859	java/lang/Exception
+          //   413	484	859	java/lang/Exception
+          //   486	506	859	java/lang/Exception
+          //   506	826	859	java/lang/Exception
+          //   832	856	859	java/lang/Exception
+          //   872	914	859	java/lang/Exception
+          //   245	413	917	java/lang/Exception
         }
       });
       MMUncaughtExceptionHandler.setAfterReport(new MMUncaughtExceptionHandler.IAfterReport()
       {
         public final void afterReport()
         {
-          String str = a.ict;
+          String str = a.kRa;
         }
       });
     }
-    AppMethodBeat.o(200802);
+    AppMethodBeat.o(248943);
     return str;
   }
   
-  static String p(Context paramContext, String paramString)
+  static String r(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(200804);
+    AppMethodBeat.i(248947);
     paramContext = paramContext.getSharedPreferences(paramContext.getPackageName() + "_preferences", 0).getString("last_login_uin", paramString);
-    AppMethodBeat.o(200804);
+    AppMethodBeat.o(248947);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.app.l
  * JD-Core Version:    0.7.0.1
  */

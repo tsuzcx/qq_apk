@@ -8,38 +8,49 @@ import android.view.LayoutInflater;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class DialNumberButton
   extends RelativeLayout
 {
-  private TextView ysN;
-  private TextView ysO;
-  private boolean ysP;
+  private TextView DSR;
+  private TextView DSS;
+  private boolean DST;
   
   public DialNumberButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(25568);
-    this.ysP = false;
-    LayoutInflater.from(getContext()).inflate(2131493840, this);
-    this.ysN = ((TextView)findViewById(2131299619));
-    this.ysO = ((TextView)findViewById(2131299620));
-    if (d.oD(16))
+    this.DST = false;
+    LayoutInflater.from(getContext()).inflate(R.i.efS, this);
+    this.DSR = ((TextView)findViewById(R.h.dEt));
+    this.DSS = ((TextView)findViewById(R.h.dEu));
+    if (d.qV(16))
     {
-      this.ysN.setTypeface(Typeface.create("sans-serif-light", 0));
-      this.ysO.setTypeface(Typeface.create("sans-serif-normal", 0));
+      this.DSR.setTypeface(Typeface.create("sans-serif-light", 0));
+      this.DSS.setTypeface(Typeface.create("sans-serif-normal", 0));
     }
     setClipChildren(false);
     setClipToPadding(false);
     AppMethodBeat.o(25568);
   }
   
+  public final void bs(float paramFloat)
+  {
+    AppMethodBeat.i(25569);
+    this.DSR.setTextSize(0, paramFloat);
+    AppMethodBeat.o(25569);
+  }
+  
   public String getNumberText()
   {
     AppMethodBeat.i(25570);
-    String str = this.ysN.getText().toString();
+    String str = this.DSR.getText().toString();
     AppMethodBeat.o(25570);
     return str;
   }
@@ -47,69 +58,62 @@ public class DialNumberButton
   public String getOtherText()
   {
     AppMethodBeat.i(25571);
-    String str = this.ysO.getText().toString();
+    String str = this.DSS.getText().toString();
     AppMethodBeat.o(25571);
     return str;
   }
   
-  public final void il(String paramString1, String paramString2)
+  public final void iy(String paramString1, String paramString2)
   {
     AppMethodBeat.i(25572);
     if ((!Util.isNullOrNil(paramString1)) && (paramString1.length() == 1)) {
-      this.ysN.setText(paramString1);
+      this.DSR.setText(paramString1);
     }
     if ((Util.isNullOrNil(paramString2)) && (!"1".equals(paramString1)))
     {
-      this.ysO.setVisibility(8);
+      this.DSS.setVisibility(8);
       AppMethodBeat.o(25572);
       return;
     }
-    this.ysO.setText(paramString2);
-    this.ysO.setVisibility(0);
+    this.DSS.setText(paramString2);
+    this.DSS.setVisibility(0);
     AppMethodBeat.o(25572);
   }
   
   public void setInTalkUIMode(boolean paramBoolean)
   {
     AppMethodBeat.i(25573);
-    this.ysP = paramBoolean;
-    if (this.ysP)
+    this.DST = paramBoolean;
+    if (this.DST)
     {
-      if (("#".equals(this.ysN.getText())) || ("*".equals(this.ysN.getText()))) {
-        this.ysN.setTextColor(getContext().getResources().getColor(2131100266));
+      if (("#".equals(this.DSR.getText())) || ("*".equals(this.DSR.getText()))) {
+        this.DSR.setTextColor(getContext().getResources().getColor(R.e.dkk));
       }
       for (;;)
       {
-        this.ysO.setTextColor(getContext().getResources().getColor(2131100266));
-        setBackgroundDrawable(getResources().getDrawable(2131231996));
+        this.DSS.setTextColor(getContext().getResources().getColor(R.e.dkk));
+        setBackgroundDrawable(getResources().getDrawable(R.g.dnp));
         AppMethodBeat.o(25573);
         return;
-        this.ysN.setTextColor(getContext().getResources().getColor(2131100268));
+        this.DSR.setTextColor(getContext().getResources().getColor(R.e.dkm));
       }
     }
-    if (("#".equals(this.ysN.getText())) || ("*".equals(this.ysN.getText()))) {
-      this.ysN.setTextColor(getContext().getResources().getColor(2131100266));
+    if (("#".equals(this.DSR.getText())) || ("*".equals(this.DSR.getText()))) {
+      this.DSR.setTextColor(getContext().getResources().getColor(R.e.dkk));
     }
     for (;;)
     {
-      this.ysO.setTextColor(getContext().getResources().getColor(2131100266));
-      setBackgroundDrawable(getResources().getDrawable(2131231997));
+      this.DSS.setTextColor(getContext().getResources().getColor(R.e.dkk));
+      setBackgroundDrawable(getResources().getDrawable(R.g.dnq));
       AppMethodBeat.o(25573);
       return;
-      this.ysN.setTextColor(getContext().getResources().getColor(2131100267));
+      this.DSR.setTextColor(getContext().getResources().getColor(R.e.dkl));
     }
-  }
-  
-  public final void setNumberTextSize$255e752(float paramFloat)
-  {
-    AppMethodBeat.i(25569);
-    this.ysN.setTextSize(0, paramFloat);
-    AppMethodBeat.o(25569);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.DialNumberButton
  * JD-Core Version:    0.7.0.1
  */

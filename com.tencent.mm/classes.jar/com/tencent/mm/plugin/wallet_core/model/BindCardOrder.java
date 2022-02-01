@@ -11,57 +11,57 @@ public class BindCardOrder
   implements Parcelable
 {
   public static final Parcelable.Creator<BindCardOrder> CREATOR;
-  public static int HWp;
-  public static int HWq;
-  public static int HWr;
-  public s HWA;
-  public s.a HWB;
-  public s.b HWC;
-  private String HWo;
-  public int HWs;
-  public String HWt;
-  public String HWu;
-  public String HWv;
-  public String HWw;
-  public String HWx;
-  public int HWy;
-  public int HWz;
-  public String dDj;
+  public static int OOp;
+  public static int OOq;
+  public static int OOr;
+  public s OOA;
+  public s.a OOB;
+  public s.b OOC;
+  private String OOo;
+  public int OOs;
+  public String OOt;
+  public String OOu;
+  public String OOv;
+  public String OOw;
+  public String OOx;
+  public int OOy;
+  public int OOz;
+  public String fvP;
   public int jumpType;
   
   static
   {
     AppMethodBeat.i(70242);
-    HWp = 1;
-    HWq = 2;
-    HWr = 6;
+    OOp = 1;
+    OOq = 2;
+    OOr = 6;
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(70242);
   }
   
   public BindCardOrder()
   {
-    this.HWo = "";
-    this.HWt = "";
-    this.HWu = "";
-    this.HWv = "";
-    this.HWw = "";
-    this.HWx = "";
+    this.OOo = "";
+    this.OOt = "";
+    this.OOu = "";
+    this.OOv = "";
+    this.OOw = "";
+    this.OOx = "";
   }
   
   protected BindCardOrder(Parcel paramParcel)
   {
     AppMethodBeat.i(70239);
-    this.HWo = "";
-    this.HWt = "";
-    this.HWu = "";
-    this.HWv = "";
-    this.HWw = "";
-    this.HWx = "";
-    this.HWo = paramParcel.readString();
+    this.OOo = "";
+    this.OOt = "";
+    this.OOu = "";
+    this.OOv = "";
+    this.OOw = "";
+    this.OOx = "";
+    this.OOo = paramParcel.readString();
     try
     {
-      bB(new JSONObject(this.HWo));
+      bM(new JSONObject(this.OOo));
       AppMethodBeat.o(70239);
       return;
     }
@@ -72,43 +72,43 @@ public class BindCardOrder
     }
   }
   
-  public final void bB(JSONObject paramJSONObject)
+  public final void bM(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70241);
     if (paramJSONObject == null) {}
     for (Object localObject = "";; localObject = paramJSONObject.toString())
     {
-      this.HWo = ((String)localObject);
-      Log.i("MicroMsg.BindCardOrder", "feed json %s", new Object[] { this.HWo });
+      this.OOo = ((String)localObject);
+      Log.i("MicroMsg.BindCardOrder", "feed json %s", new Object[] { this.OOo });
       try
       {
-        this.HWs = paramJSONObject.optInt("show_bind_succ_page", 0);
-        this.HWt = paramJSONObject.optString("bind_succ_btn_wording", "");
-        this.HWu = paramJSONObject.optString("bind_succ_remind_wording", "");
+        this.OOs = paramJSONObject.optInt("show_bind_succ_page", 0);
+        this.OOt = paramJSONObject.optString("bind_succ_btn_wording", "");
+        this.OOu = paramJSONObject.optString("bind_succ_remind_wording", "");
         this.jumpType = paramJSONObject.optInt("jump_type", 0);
-        this.HWx = paramJSONObject.optString("bind_serial");
+        this.OOx = paramJSONObject.optString("bind_serial");
         localObject = paramJSONObject.optJSONObject("activity_info");
-        this.HWA = new s();
+        this.OOA = new s();
         if (localObject != null) {
-          this.HWA.bK((JSONObject)localObject);
+          this.OOA.bV((JSONObject)localObject);
         }
         localObject = paramJSONObject.optJSONObject("h5_info");
         if (localObject != null)
         {
-          this.HWB = new s.a();
-          this.HWB.bK((JSONObject)localObject);
+          this.OOB = new s.a();
+          this.OOB.bV((JSONObject)localObject);
         }
         localObject = paramJSONObject.optJSONObject("native_info");
         if (localObject != null)
         {
-          this.HWB = new s.a();
-          this.HWB.bK((JSONObject)localObject);
+          this.OOB = new s.a();
+          this.OOB.bV((JSONObject)localObject);
         }
         paramJSONObject = paramJSONObject.optJSONObject("tinyapp_info");
         if (paramJSONObject != null)
         {
-          this.HWC = new s.b();
-          this.HWC.bK(paramJSONObject);
+          this.OOC = new s.b();
+          this.OOC.bV(paramJSONObject);
         }
         AppMethodBeat.o(70241);
         return;
@@ -126,25 +126,25 @@ public class BindCardOrder
     return 0;
   }
   
-  public final boolean fQi()
+  public final boolean gIO()
   {
-    return (this.jumpType == HWp) && (this.HWB != null);
+    return (this.jumpType == OOp) && (this.OOB != null);
   }
   
-  public final boolean fQj()
+  public final boolean gIP()
   {
-    return (this.jumpType == HWq) && (this.HWC != null);
+    return (this.jumpType == OOq) && (this.OOC != null);
   }
   
-  public final boolean fQk()
+  public final boolean gIQ()
   {
-    return (this.jumpType == HWr) && (this.HWB != null);
+    return (this.jumpType == OOr) && (this.OOB != null);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70240);
-    paramParcel.writeString(this.HWo);
+    paramParcel.writeString(this.OOo);
     AppMethodBeat.o(70240);
   }
 }

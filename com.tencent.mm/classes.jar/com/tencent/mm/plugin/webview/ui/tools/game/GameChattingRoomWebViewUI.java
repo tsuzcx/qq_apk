@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.webview.ui.tools.game;
 
 import android.app.Activity;
 import android.content.Intent;
-import com.tencent.f.h;
+import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.bizui.a.b;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.plugin.webview.core.k;
 import com.tencent.mm.plugin.webview.core.k.a;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
@@ -16,20 +17,20 @@ import com.tencent.xweb.WebView;
 public class GameChattingRoomWebViewUI
   extends WebViewUI
 {
-  private int JpM;
-  private int JpN;
-  final y.a JpO;
-  final y.a JpP;
-  private k JpQ;
+  private int Qnh;
+  private int Qni;
+  final y.a Qnj;
+  final y.a Qnk;
+  private k Qnl;
   String jumpUrl;
   
   public GameChattingRoomWebViewUI()
   {
     AppMethodBeat.i(80816);
     this.jumpUrl = "";
-    this.JpM = 4;
-    this.JpN = 5;
-    this.JpO = new y.a()
+    this.Qnh = 4;
+    this.Qni = 5;
+    this.Qnj = new y.a()
     {
       public final void a(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
       {
@@ -39,7 +40,7 @@ public class GameChattingRoomWebViewUI
         AppMethodBeat.o(80814);
       }
     };
-    this.JpP = new y.a()
+    this.Qnk = new y.a()
     {
       public final void a(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
       {
@@ -51,24 +52,24 @@ public class GameChattingRoomWebViewUI
         AppMethodBeat.o(80815);
       }
     };
-    this.JpQ = new k()
+    this.Qnl = new k()
     {
       public final k.a o(WebView paramAnonymousWebView, final String paramAnonymousString)
       {
-        AppMethodBeat.i(211308);
+        AppMethodBeat.i(214290);
         if (Util.isNullOrNil(paramAnonymousString))
         {
           paramAnonymousWebView = new k.a(false, false);
-          AppMethodBeat.o(211308);
+          AppMethodBeat.o(214290);
           return paramAnonymousWebView;
         }
         if ((paramAnonymousString.toLowerCase().startsWith("weixin://jump/")) || (paramAnonymousString.toLowerCase().startsWith("weixin://scanqrcode/")))
         {
-          h.RTc.aV(new Runnable()
+          h.ZvG.bc(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(211307);
+              AppMethodBeat.i(267394);
               GameChattingRoomWebViewUI localGameChattingRoomWebViewUI = GameChattingRoomWebViewUI.this;
               String str1 = paramAnonymousString;
               Log.i("MicroMsg.GameChattingRoomWebViewUI", "url = %s", new Object[] { str1 });
@@ -79,50 +80,50 @@ public class GameChattingRoomWebViewUI
                 str1 = localGameChattingRoomWebViewUI.getIntent().getStringExtra("app_name");
                 if (str1 == null) {}
                 String str3;
-                for (str1 = localGameChattingRoomWebViewUI.getString(2131755316);; str1 = localGameChattingRoomWebViewUI.getString(2131757784, new Object[] { str1 }))
+                for (str1 = localGameChattingRoomWebViewUI.getString(c.i.app_back);; str1 = localGameChattingRoomWebViewUI.getString(c.i.confirm_dialog_back_app, new Object[] { str1 }))
                 {
-                  str3 = localGameChattingRoomWebViewUI.getString(2131757791);
+                  str3 = localGameChattingRoomWebViewUI.getString(c.i.confirm_dialog_stay_in_weixin);
                   if (!str2.equals("action_create")) {
                     break;
                   }
-                  b.a(localGameChattingRoomWebViewUI.mController, localGameChattingRoomWebViewUI.getString(2131758214), str1, str3, localGameChattingRoomWebViewUI.JpO, localGameChattingRoomWebViewUI.JpP);
-                  AppMethodBeat.o(211307);
+                  b.a(localGameChattingRoomWebViewUI.mController, localGameChattingRoomWebViewUI.getString(c.i.created_chatroom), str1, str3, localGameChattingRoomWebViewUI.Qnj, localGameChattingRoomWebViewUI.Qnk);
+                  AppMethodBeat.o(267394);
                   return;
                 }
                 if (str2.equals("action_join")) {
-                  b.a(localGameChattingRoomWebViewUI.mController, localGameChattingRoomWebViewUI.getString(2131762022), str1, str3, localGameChattingRoomWebViewUI.JpO, localGameChattingRoomWebViewUI.JpP);
+                  b.a(localGameChattingRoomWebViewUI.mController, localGameChattingRoomWebViewUI.getString(c.i.joined_chatroom), str1, str3, localGameChattingRoomWebViewUI.Qnj, localGameChattingRoomWebViewUI.Qnk);
                 }
               }
-              AppMethodBeat.o(211307);
+              AppMethodBeat.o(267394);
             }
           });
           paramAnonymousWebView = new k.a(true, true);
-          AppMethodBeat.o(211308);
+          AppMethodBeat.o(214290);
           return paramAnonymousWebView;
         }
         paramAnonymousWebView = new k.a(false, false);
-        AppMethodBeat.o(211308);
+        AppMethodBeat.o(214290);
         return paramAnonymousWebView;
       }
     };
     AppMethodBeat.o(80816);
   }
   
-  public final com.tencent.mm.plugin.webview.core.i cpO()
+  public final com.tencent.mm.plugin.webview.core.i cDV()
   {
-    AppMethodBeat.i(211309);
-    com.tencent.mm.plugin.webview.core.i locali = super.cpO();
-    locali.a(this.JpQ);
-    AppMethodBeat.o(211309);
+    AppMethodBeat.i(229282);
+    com.tencent.mm.plugin.webview.core.i locali = super.cDV();
+    locali.a(this.Qnl);
+    AppMethodBeat.o(229282);
     return locali;
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(211310);
-    this.IMH.b(this.JpQ);
+    AppMethodBeat.i(229283);
+    this.PIQ.b(this.Qnl);
     super.onDestroy();
-    AppMethodBeat.o(211310);
+    AppMethodBeat.o(229283);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -133,7 +134,7 @@ public class GameChattingRoomWebViewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.game.GameChattingRoomWebViewUI
  * JD-Core Version:    0.7.0.1
  */

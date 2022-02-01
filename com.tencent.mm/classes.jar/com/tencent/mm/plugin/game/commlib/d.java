@@ -9,32 +9,32 @@ import java.util.HashMap;
 public final class d
   implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.d, com.tencent.mm.plugin.game.commlib.a.a
 {
-  private b xvo;
+  private b Cze;
   
-  public final void a(String paramString, com.tencent.mm.bw.a parama)
+  public final void a(String paramString, com.tencent.mm.cd.a parama)
   {
     AppMethodBeat.i(89937);
-    this.xvo.b(paramString, parama);
+    this.Cze.b(paramString, parama);
     AppMethodBeat.o(89937);
   }
   
-  public final byte[] azn(String paramString)
+  public final byte[] aIX(String paramString)
   {
     AppMethodBeat.i(89938);
-    if (this.xvo == null)
+    if (this.Cze == null)
     {
       AppMethodBeat.o(89938);
       return null;
     }
-    paramString = this.xvo.azn(paramString);
+    paramString = this.Cze.aIX(paramString);
     AppMethodBeat.o(89938);
     return paramString;
   }
   
-  public final void azo(String paramString)
+  public final void aIY(String paramString)
   {
     AppMethodBeat.i(184538);
-    this.xvo.azo(paramString);
+    this.Cze.aIY(paramString);
     AppMethodBeat.o(184538);
   }
   
@@ -58,20 +58,20 @@ public final class d
   public final void onDataBaseOpened(h paramh1, h paramh2)
   {
     AppMethodBeat.i(89940);
-    this.xvo = new b(paramh1);
+    this.Cze = new b(paramh1);
     AppMethodBeat.o(89940);
   }
   
-  public final void q(String paramString, byte[] paramArrayOfByte)
+  public final void t(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(184537);
-    this.xvo.r(paramString, paramArrayOfByte);
+    this.Cze.u(paramString, paramArrayOfByte);
     AppMethodBeat.o(184537);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.commlib.d
  * JD-Core Version:    0.7.0.1
  */

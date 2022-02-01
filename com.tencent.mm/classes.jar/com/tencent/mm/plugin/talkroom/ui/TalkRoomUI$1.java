@@ -13,14 +13,14 @@ final class TalkRoomUI$1
   {
     AppMethodBeat.i(29590);
     Log.i("MicroMsg.TalkRoomUI", "seizeMicTimer reach");
-    TalkRoomUI.a(this.FRv);
+    TalkRoomUI.a(this.Mlw);
     AppMethodBeat.o(29590);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.TalkRoomUI.1
  * JD-Core Version:    0.7.0.1
  */

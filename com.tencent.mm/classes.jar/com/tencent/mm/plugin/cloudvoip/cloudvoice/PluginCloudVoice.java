@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q;
 import com.tencent.mm.sdk.platformtools.Log;
 
@@ -12,7 +12,7 @@ public class PluginCloudVoice
   extends f
   implements c, com.tencent.mm.plugin.cloudvoip.cloudvoice.a.a
 {
-  private static final String[] qrx = { "confService", "ilink_network", "ilink_xlog" };
+  private static final String[] tQf = { "confService", "ilink_network", "ilink_xlog" };
   
   public void configure(g paramg)
   {
@@ -29,21 +29,21 @@ public class PluginCloudVoice
     AppMethodBeat.o(90783);
   }
   
-  public void onAccountInitialized(e.c paramc) {}
+  public void onAccountInitialized(f.c paramc) {}
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(90785);
     Log.i("MicroMsg.OpenVoice.PluginCloudVoice", "hy: account release. uninit openvoice so");
-    com.tencent.mm.plugin.expansions.a.cMr();
-    q localq = q.qta;
-    localq.aj(localq.qtQ);
+    com.tencent.mm.plugin.expansions.a.dbf();
+    q localq = q.tRM;
+    localq.am(localq.tSC);
     AppMethodBeat.o(90785);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.PluginCloudVoice
  * JD-Core Version:    0.7.0.1
  */

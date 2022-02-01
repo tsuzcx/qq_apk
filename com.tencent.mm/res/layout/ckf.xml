@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.finder.feed.FinderGridRcLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/klk" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/am" android:id="@id/kll" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:layout_marginBottom="@dimen/ct" app:layout_constraintBottom_toBottomOf="@id/klk" app:layout_constraintLeft_toLeftOf="@id/klk" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cn2" />
+</com.tencent.mm.plugin.finder.feed.FinderGridRcLayout>

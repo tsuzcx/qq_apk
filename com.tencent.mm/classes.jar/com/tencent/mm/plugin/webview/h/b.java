@@ -1,11 +1,9 @@
 package com.tencent.mm.plugin.webview.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.preload.IAppBrandBatchPreloadController;
 import com.tencent.mm.plugin.webview.d.c.a;
 import com.tencent.mm.plugin.webview.d.f;
-import com.tencent.mm.plugin.webview.d.h;
 import com.tencent.mm.plugin.webview.d.n;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
@@ -15,33 +13,33 @@ public final class b
 {
   public final boolean a(f paramf, n paramn)
   {
-    AppMethodBeat.i(211033);
-    Object localObject = paramn.ISf;
+    AppMethodBeat.i(268424);
+    Object localObject = paramn.POv;
     if (localObject == null)
     {
-      AppMethodBeat.o(211033);
+      AppMethodBeat.o(268424);
       return false;
     }
-    localObject = ((IAppBrandBatchPreloadController)g.af(IAppBrandBatchPreloadController.class)).preload((JSONObject)localObject, true);
+    localObject = ((IAppBrandBatchPreloadController)com.tencent.mm.kernel.h.ae(IAppBrandBatchPreloadController.class)).preload((JSONObject)localObject, true);
     if (!Util.isNullOrNil((String)localObject)) {
-      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":" + (String)localObject, null);
+      paramf.PNo.h(paramn.POu, paramn.function + ":" + (String)localObject, null);
     }
     for (;;)
     {
-      AppMethodBeat.o(211033);
+      AppMethodBeat.o(268424);
       return true;
-      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":error", null);
+      paramf.PNo.h(paramn.POu, paramn.function + ":error", null);
     }
   }
   
-  public final int ePA()
-  {
-    return 366;
-  }
-  
-  public final String ePz()
+  public final String fCm()
   {
     return "batchPreloadMiniProgram";
+  }
+  
+  public final int fCn()
+  {
+    return 366;
   }
 }
 

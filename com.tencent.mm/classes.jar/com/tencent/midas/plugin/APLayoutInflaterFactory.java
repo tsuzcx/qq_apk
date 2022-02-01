@@ -19,11 +19,11 @@ public class APLayoutInflaterFactory
   
   public APLayoutInflaterFactory()
   {
-    AppMethodBeat.i(193166);
+    AppMethodBeat.i(252750);
     this.constructorMap = new HashMap();
     this.constructorSign = new Class[] { Context.class, AttributeSet.class };
     this.constructorArgs = new Object[2];
-    AppMethodBeat.o(193166);
+    AppMethodBeat.o(252750);
   }
   
   /* Error */
@@ -311,15 +311,15 @@ public class APLayoutInflaterFactory
   
   public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(193168);
+    AppMethodBeat.i(252754);
     paramString = onCreateView(null, paramString, paramContext, paramAttributeSet);
-    AppMethodBeat.o(193168);
+    AppMethodBeat.o(252754);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.plugin.APLayoutInflaterFactory
  * JD-Core Version:    0.7.0.1
  */

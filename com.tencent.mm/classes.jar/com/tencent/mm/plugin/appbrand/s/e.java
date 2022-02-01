@@ -7,50 +7,59 @@ import java.util.Map;
 
 public final class e
 {
-  String csu;
-  String jEY;
-  Map<String, String> jEZ;
-  boolean jFh;
-  boolean jFi;
+  String cqz;
+  String mHost;
+  int mPort;
   byte[] mPostData;
   Runnable mRunnable;
   int mTimeout;
   String mUrl;
-  boolean niA;
-  d.a nir;
-  ArrayList<String> nis;
-  int nit;
-  String niu;
-  HttpURLConnection niv;
-  String niw;
-  String nix;
-  boolean niy;
-  boolean niz;
+  String mvB;
+  Map<String, String> mvC;
+  boolean mvK;
+  boolean mvL;
+  d.a qja;
+  ArrayList<String> qjb;
+  int qjc;
+  String qjd;
+  HttpURLConnection qje;
+  String qjf;
+  String qjg;
+  boolean qjh;
+  boolean qji;
+  boolean qjj;
+  String qjk;
+  boolean qjl;
   private long startTime;
   
-  public e(String paramString1, byte[] paramArrayOfByte, int paramInt, d.a parama, String paramString2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public e(String paramString1, byte[] paramArrayOfByte, int paramInt1, d.a parama, String paramString2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString3, int paramInt2, String paramString4, boolean paramBoolean4)
   {
-    AppMethodBeat.i(144336);
-    this.nit = 15;
+    AppMethodBeat.i(186638);
+    this.qjc = 15;
     this.mRunnable = null;
-    this.niy = false;
-    this.jFh = false;
-    this.jFi = false;
-    this.niz = false;
-    this.niA = true;
+    this.qjh = false;
+    this.mvK = false;
+    this.mvL = false;
+    this.qji = false;
+    this.qjj = true;
+    this.qjl = false;
     this.mUrl = paramString1;
     this.mPostData = paramArrayOfByte;
-    this.nir = parama;
-    this.mTimeout = paramInt;
-    this.csu = paramString2;
+    this.qja = parama;
+    this.mTimeout = paramInt1;
+    this.cqz = paramString2;
     this.startTime = System.currentTimeMillis();
-    this.jFh = paramBoolean1;
-    this.jFi = paramBoolean2;
-    this.niz = paramBoolean3;
-    AppMethodBeat.o(144336);
+    this.mvK = paramBoolean1;
+    this.mvL = paramBoolean2;
+    this.qji = paramBoolean3;
+    this.qjk = paramString3;
+    this.mPort = paramInt2;
+    this.mHost = paramString4;
+    this.qjl = paramBoolean4;
+    AppMethodBeat.o(186638);
   }
   
-  public final int bPz()
+  public final int cbQ()
   {
     AppMethodBeat.i(144337);
     int i = (int)(System.currentTimeMillis() - this.startTime);
@@ -68,7 +77,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.s.e
  * JD-Core Version:    0.7.0.1
  */

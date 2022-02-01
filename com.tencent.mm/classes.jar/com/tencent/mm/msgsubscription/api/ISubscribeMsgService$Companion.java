@@ -3,14 +3,14 @@ package com.tencent.mm.msgsubscription.api;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/msgsubscription/api/ISubscribeMsgService$Companion;", "", "()V", "TAG", "", "SubscribeMsgListWrapper", "plugin-comm_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/api/ISubscribeMsgService$Companion;", "", "()V", "TAG", "", "SubscribeMsgListWrapper", "plugin-comm_release"})
 public final class ISubscribeMsgService$Companion
 {
   static
   {
-    AppMethodBeat.i(223226);
-    jyU = new Companion();
-    AppMethodBeat.o(223226);
+    AppMethodBeat.i(227828);
+    moA = new Companion();
+    AppMethodBeat.o(227828);
   }
 }
 

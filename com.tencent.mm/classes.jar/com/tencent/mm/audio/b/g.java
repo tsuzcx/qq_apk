@@ -1,6 +1,7 @@
 package com.tencent.mm.audio.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.n.f;
 import com.tencent.mm.plugin.zero.b.a;
@@ -9,23 +10,23 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public class g
 {
-  public static final String dAa;
-  public static final String dAb;
+  public static final String fsP;
+  public static final String fsQ;
   
   static
   {
     AppMethodBeat.i(130009);
-    dAa = b.aKJ() + "test.wav";
-    dAb = b.aKJ() + "test.pcm";
+    fsP = b.aSL() + "test.wav";
+    fsQ = b.aSL() + "test.pcm";
     AppMethodBeat.o(130009);
   }
   
-  public static int B(String paramString, int paramInt)
+  public static int T(String paramString, int paramInt)
   {
     AppMethodBeat.i(130008);
     try
     {
-      int i = Util.getInt(((a)com.tencent.mm.kernel.g.af(a.class)).aqJ().getValue(paramString), paramInt);
+      int i = Util.getInt(((a)h.ae(a.class)).axc().getValue(paramString), paramInt);
       paramInt = i;
     }
     catch (Exception localException)
@@ -48,7 +49,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.audio.b.g
  * JD-Core Version:    0.7.0.1
  */

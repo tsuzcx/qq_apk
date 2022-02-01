@@ -22,13 +22,13 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/EmojiEditorItemView;", "Lcom/tencent/mm/emoji/view/EmojiStatusView;", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "presenter", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IPresenter;", "applyTouchMatrix", "", "m", "Landroid/graphics/Matrix;", "createEditorData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "createEditorItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "matrix", "getItemContainer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer;", "getTouchMatrix", "handleRemove", "", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "setEditing", "editing", "setImageDrawable", "drawable", "Landroid/graphics/drawable/Drawable;", "setValidArea", "bounds", "Landroid/graphics/RectF;", "radius", "", "plugin-emojicapture_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/EmojiEditorItemView;", "Lcom/tencent/mm/emoji/view/EmojiStatusView;", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "presenter", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IPresenter;", "applyTouchMatrix", "", "m", "Landroid/graphics/Matrix;", "createEditorData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "createEditorItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "matrix", "getItemContainer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer;", "getTouchMatrix", "handleRemove", "", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "setEditing", "editing", "setImageDrawable", "drawable", "Landroid/graphics/drawable/Drawable;", "setValidArea", "bounds", "Landroid/graphics/RectF;", "radius", "", "plugin-emojicapture_release"})
 public final class EmojiEditorItemView
   extends EmojiStatusView
   implements c.b
 {
   private final String TAG;
-  final c.a rvc;
+  final c.a vaG;
   
   public EmojiEditorItemView(Context paramContext)
   {
@@ -45,24 +45,24 @@ public final class EmojiEditorItemView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(777);
     this.TAG = "MicroMsg.EmojiEditorItemView";
-    this.rvc = ((c.a)new b((c.b)this));
+    this.vaG = ((c.a)new b((c.b)this));
     AppMethodBeat.o(777);
   }
   
   public final void a(RectF paramRectF, float paramFloat)
   {
     AppMethodBeat.i(769);
-    p.h(paramRectF, "bounds");
-    this.rvc.a(paramRectF, paramFloat);
+    p.k(paramRectF, "bounds");
+    this.vaG.a(paramRectF, paramFloat);
     AppMethodBeat.o(769);
   }
   
   public final com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a c(Matrix paramMatrix)
   {
-    AppMethodBeat.i(256448);
+    AppMethodBeat.i(202688);
     if (getEmojiInfo() == null)
     {
-      AppMethodBeat.o(256448);
+      AppMethodBeat.o(202688);
       return null;
     }
     Object localObject;
@@ -72,17 +72,17 @@ public final class EmojiEditorItemView
       if (localObject == null)
       {
         paramMatrix = new t("null cannot be cast to non-null type android.graphics.drawable.BitmapDrawable");
-        AppMethodBeat.o(256448);
+        AppMethodBeat.o(202688);
         throw paramMatrix;
       }
       localObject = ((BitmapDrawable)localObject).getBitmap();
       Matrix localMatrix = new Matrix();
-      localMatrix.set(this.rvc.getTouchTracker().gT);
+      localMatrix.set(this.vaG.getTouchTracker().aHZ);
       if (paramMatrix != null) {
         localMatrix.postConcat(paramMatrix);
       }
       paramMatrix = (com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a)new com.tencent.mm.plugin.recordvideo.ui.editor.item.a.c((Bitmap)localObject, localMatrix);
-      AppMethodBeat.o(256448);
+      AppMethodBeat.o(202688);
       return paramMatrix;
     }
     float f = 1.0F;
@@ -92,7 +92,7 @@ public final class EmojiEditorItemView
       if (localObject == null)
       {
         paramMatrix = new t("null cannot be cast to non-null type com.tencent.mm.plugin.gif.MMGIFDrawable");
-        AppMethodBeat.o(256448);
+        AppMethodBeat.o(202688);
         throw paramMatrix;
       }
       f = ((d)localObject).getEmojiDensityScale();
@@ -101,16 +101,16 @@ public final class EmojiEditorItemView
     {
       localObject = new Matrix();
       ((Matrix)localObject).setScale(f, f);
-      ((Matrix)localObject).postConcat(this.rvc.getTouchTracker().gT);
+      ((Matrix)localObject).postConcat(this.vaG.getTouchTracker().aHZ);
       if (paramMatrix != null) {
         ((Matrix)localObject).postConcat(paramMatrix);
       }
       paramMatrix = getEmojiInfo();
       if (paramMatrix == null) {
-        p.hyc();
+        p.iCn();
       }
       paramMatrix = (com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a)new e(paramMatrix, (Matrix)localObject);
-      AppMethodBeat.o(256448);
+      AppMethodBeat.o(202688);
       return paramMatrix;
       if ((getDrawable() instanceof h))
       {
@@ -118,7 +118,7 @@ public final class EmojiEditorItemView
         if (localObject == null)
         {
           paramMatrix = new t("null cannot be cast to non-null type com.tencent.mm.plugin.gif.MMWXGFDrawable");
-          AppMethodBeat.o(256448);
+          AppMethodBeat.o(202688);
           throw paramMatrix;
         }
         f = ((h)localObject).getEmojiDensityScale();
@@ -126,12 +126,12 @@ public final class EmojiEditorItemView
     }
   }
   
-  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.a cJO()
+  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.a cYy()
   {
     return null;
   }
   
-  public final boolean cJP()
+  public final boolean cYz()
   {
     return false;
   }
@@ -140,11 +140,11 @@ public final class EmojiEditorItemView
   {
     AppMethodBeat.i(771);
     Object localObject = getParent();
-    p.g(localObject, "parent");
+    p.j(localObject, "parent");
     if ((((ViewParent)localObject).getParent() instanceof EditorItemContainer))
     {
       localObject = getParent();
-      p.g(localObject, "parent");
+      p.j(localObject, "parent");
       localObject = ((ViewParent)localObject).getParent();
       if (localObject == null)
       {
@@ -163,7 +163,7 @@ public final class EmojiEditorItemView
   public final Matrix getTouchMatrix()
   {
     AppMethodBeat.i(775);
-    Matrix localMatrix = this.rvc.getTouchTracker().gT;
+    Matrix localMatrix = this.vaG.getTouchTracker().aHZ;
     AppMethodBeat.o(775);
     return localMatrix;
   }
@@ -171,23 +171,23 @@ public final class EmojiEditorItemView
   protected final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(774);
-    p.h(paramCanvas, "canvas");
+    p.k(paramCanvas, "canvas");
     paramCanvas.save();
-    this.rvc.q(paramCanvas);
+    this.vaG.s(paramCanvas);
     Drawable localDrawable = getDrawable();
     if (localDrawable != null) {
       localDrawable.draw(paramCanvas);
     }
     paramCanvas.restore();
-    this.rvc.r(paramCanvas);
+    this.vaG.t(paramCanvas);
     AppMethodBeat.o(774);
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(773);
-    p.h(paramMotionEvent, "event");
-    boolean bool = this.rvc.R(paramMotionEvent);
+    p.k(paramMotionEvent, "event");
+    boolean bool = this.vaG.X(paramMotionEvent);
     AppMethodBeat.o(773);
     return bool;
   }
@@ -195,7 +195,7 @@ public final class EmojiEditorItemView
   public final void setEditing(boolean paramBoolean)
   {
     AppMethodBeat.i(770);
-    this.rvc.setEditing(paramBoolean);
+    this.vaG.setEditing(paramBoolean);
     AppMethodBeat.o(770);
   }
   
@@ -205,7 +205,7 @@ public final class EmojiEditorItemView
     super.setImageDrawable(paramDrawable);
     if (paramDrawable != null)
     {
-      this.rvc.fF(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
+      this.vaG.gc(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
       paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
     }
     AppMethodBeat.o(772);
@@ -213,7 +213,7 @@ public final class EmojiEditorItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.editor.EmojiEditorItemView
  * JD-Core Version:    0.7.0.1
  */

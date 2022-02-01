@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.p;
+import com.tencent.mm.ipcinvoker.s;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.plugin.webview.l.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -11,55 +12,57 @@ import java.util.regex.Pattern;
 
 public final class a
 {
-  private static final String IXo;
-  private static Pattern IXp;
+  private static final String PTE;
+  private static String PTF;
+  private static Pattern PTG;
   
   static
   {
-    AppMethodBeat.i(210970);
-    IXo = "(http(s)?://" + WeChatHosts.domainString(2131761726) + "/(.*)|http(s)?://" + WeChatHosts.domainString(2131761707) + "/(.*)|http(s)?://([^?#&/]*.)?weishi.com/(.*)|http(s)?://([^?#&/]*.)?weishi.qq.com/(.*)|http(s)?://([^?#&/]*.)?view.inews.qq.com/(.*))";
-    IXp = null;
-    AppMethodBeat.o(210970);
+    AppMethodBeat.i(246706);
+    PTE = "(http(s)?://" + WeChatHosts.domainString(c.i.host_mp_weixin_qq_com) + "/(.*)|http(s)?://" + WeChatHosts.domainString(c.i.host_game_weixin_qq_com) + "/(.*)|http(s)?://([^?#&/]*.)?weishi.com/(.*)|http(s)?://([^?#&/]*.)?weishi.qq.com/(.*)|http(s)?://([^?#&/]*.)?view.inews.qq.com/(.*))";
+    PTF = "";
+    PTG = null;
+    AppMethodBeat.o(246706);
   }
   
-  public static void a(final MMWebView paramMMWebView, String paramString)
+  public static void b(final MMWebView paramMMWebView, String paramString)
   {
-    AppMethodBeat.i(210969);
+    AppMethodBeat.i(246704);
     if (paramMMWebView == null)
     {
       Log.e("MicroMsg.AutoPlayLogic", "webView null");
-      AppMethodBeat.o(210969);
+      AppMethodBeat.o(246704);
       return;
     }
     Log.i("MicroMsg.AutoPlayLogic", "currentUrl:%s", new Object[] { paramString });
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(210969);
+      AppMethodBeat.o(246704);
       return;
     }
     if (paramString.startsWith(c.getScheme()))
     {
-      AppMethodBeat.o(210969);
+      AppMethodBeat.o(246704);
       return;
     }
-    p.post(new Runnable()
+    s.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(78831);
-        p.y(new Runnable()
+        s.y(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(78830);
             if (this.val$enable)
             {
-              a.a(a.1.this.IXq, true);
+              a.a(a.1.this.PTH, true);
               Log.i("MicroMsg.AutoPlayLogic", "enableAutoPlay (true)");
               AppMethodBeat.o(78830);
               return;
             }
-            a.a(a.1.this.IXq, false);
+            a.a(a.1.this.PTH, false);
             Log.i("MicroMsg.AutoPlayLogic", "enableAutoPlay (false)");
             AppMethodBeat.o(78830);
           }
@@ -67,10 +70,10 @@ public final class a
         AppMethodBeat.o(78831);
       }
     });
-    AppMethodBeat.o(210969);
+    AppMethodBeat.o(246704);
   }
   
-  public static void e(MMWebView paramMMWebView)
+  public static void f(MMWebView paramMMWebView)
   {
     AppMethodBeat.i(78832);
     if (paramMMWebView == null)
@@ -86,7 +89,7 @@ public final class a
       AppMethodBeat.o(78832);
       return;
     }
-    a(paramMMWebView, str);
+    b(paramMMWebView, str);
     AppMethodBeat.o(78832);
   }
 }

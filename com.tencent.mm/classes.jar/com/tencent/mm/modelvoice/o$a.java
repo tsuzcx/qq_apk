@@ -36,7 +36,7 @@ final class o$a
     if (i == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      com.tencent.mm.audio.b.i.dAH = bool;
+      com.tencent.mm.audio.b.i.ftw = bool;
       Log.i("MicroMsg.SubCoreVoice", "summervoicetrymore enable[%d]", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(148437);
       return true;
@@ -45,7 +45,7 @@ final class o$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.modelvoice.o.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.appbrand.h;
 
-import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.o;
-import com.tencent.luggage.xweb_ext.extendplugin.component.video.c.44;
+import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.p;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class d
   implements com.tencent.luggage.xweb_ext.extendplugin.a.c
 {
-  public com.tencent.luggage.xweb_ext.extendplugin.a.b dW(String paramString)
+  public com.tencent.luggage.xweb_ext.extendplugin.a.b ex(String paramString)
   {
     AppMethodBeat.i(139393);
     int i = -1;
@@ -53,47 +52,34 @@ public class d
       }
     }
     paramString = new com.tencent.luggage.xweb_ext.extendplugin.component.video.c();
-    paramString.cJb = new com.tencent.mm.plugin.appbrand.jsapi.ag.e.c();
-    if (paramString.cJb != null)
+    paramString.a(new com.tencent.mm.plugin.appbrand.jsapi.ai.e.c());
+    AppMethodBeat.o(139393);
+    return paramString;
+    paramString = new com.tencent.mm.plugin.appbrand.jsapi.ai.d.a();
+    AppMethodBeat.o(139393);
+    return paramString;
+    paramString = new com.tencent.mm.plugin.appbrand.jsapi.ai.b.a();
+    AppMethodBeat.o(139393);
+    return paramString;
+    paramString = new com.tencent.mm.plugin.appbrand.jsapi.ai.a.a();
+    AppMethodBeat.o(139393);
+    return paramString;
+    paramString = new com.tencent.luggage.xweb_ext.extendplugin.component.live.a.b();
+    paramString.cFi = new com.tencent.mm.plugin.appbrand.jsapi.ai.c.a.a();
+    if (paramString.cFi != null)
     {
-      paramString.cJb.b(paramString);
-      paramString.cJa = paramString.cJb.QC();
-      paramString.cIZ = paramString.cJb.QD();
-      paramString.cIX = paramString.cJb.QG();
-      paramString.cIW = paramString.cJb.QF();
-      paramString.cIW.b(paramString);
-      paramString.cIW.a(paramString.cJC);
-      paramString.cIW.a(paramString.cEX);
-      paramString.cIY = paramString.cJb.QE();
-      paramString.cIY.a(new c.44(paramString));
+      paramString.cFh = paramString.cFi.TB();
+      paramString.cFg = paramString.cFi.TC();
+      paramString.cFi.b(paramString);
     }
     AppMethodBeat.o(139393);
     return paramString;
-    paramString = new com.tencent.mm.plugin.appbrand.jsapi.ag.d.a();
-    AppMethodBeat.o(139393);
-    return paramString;
-    paramString = new com.tencent.mm.plugin.appbrand.jsapi.ag.b.a();
-    AppMethodBeat.o(139393);
-    return paramString;
-    paramString = new com.tencent.mm.plugin.appbrand.jsapi.ag.a.a();
-    AppMethodBeat.o(139393);
-    return paramString;
-    paramString = new com.tencent.luggage.xweb_ext.extendplugin.component.live.a.a();
-    paramString.cEC = new com.tencent.mm.plugin.appbrand.jsapi.ag.c.a.a();
-    if (paramString.cEC != null)
+    paramString = new p();
+    paramString.cHU = new com.tencent.mm.plugin.appbrand.jsapi.ai.c.b.a();
+    if (paramString.cHU != null)
     {
-      paramString.cEB = paramString.cEC.Qa();
-      paramString.cEA = paramString.cEC.Qb();
-      paramString.cEC.b(paramString);
-    }
-    AppMethodBeat.o(139393);
-    return paramString;
-    paramString = new o();
-    paramString.cHo = new com.tencent.mm.plugin.appbrand.jsapi.ag.c.b.a();
-    if (paramString.cHo != null)
-    {
-      paramString.cHn = paramString.cHo.Qm();
-      paramString.cHm = paramString.cHo.Qn();
+      paramString.cHT = paramString.cHU.TO();
+      paramString.cHS = paramString.cHU.TP();
     }
     AppMethodBeat.o(139393);
     return paramString;
@@ -101,7 +87,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.h.d
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import java.io.File;
 public class WXConstantsRecovery
 {
   public static final String PublicKeyString = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC0oMW80k4h7zmBbHGhzQzs5Jv1uy5j0JVUG//dWHeu0q6PF/xCU97h/e6h2Q9SXLu0M4TTd89QMXbab9MMUXrxqIqVjzm92A4WyNbAElAwhE9AGO16ryYn+tNzDfmwyjVz6dwLzZbNjjH7akYZRopJYqo17kKn+xrnqM+GRKMOJQIDAQAB";
-  public static final String RecoveryConfigURL = "http://" + WeChatHosts.domainString(2131761706) + "/weixin/android/recovery-%s.conf";
+  public static final String RecoveryConfigURL = "http://" + WeChatHosts.domainString(R.string.host_dldir1_qq_com) + "/weixin/android/recovery-%s.conf";
   public static final String RecoverySDCardDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MicroMsg/recovery/";
   public static final String VersionInfoFile = "version.info";
   
@@ -35,15 +35,10 @@ public class WXConstantsRecovery
     public static final String KeyPatchStartSuccessCount = "KeyPatchStartSuccessCount";
     public static final String KeyTotalCount = "KeyTotalCount";
   }
-  
-  public static final class IntentAction
-  {
-    public static final String RECOVERY_STATUS_UPLOAD = "com.tecent.mm.intent.action.RECOVERY_STATUS_UPLOAD";
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.recovery.wx.WXConstantsRecovery
  * JD-Core Version:    0.7.0.1
  */

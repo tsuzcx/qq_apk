@@ -49,6 +49,8 @@ public abstract interface a
   
   public abstract void startScanQRCodePay(Context paramContext, int paramInt1, String paramString, int paramInt2);
   
+  public abstract void startUiTest();
+  
   public abstract void startUseCase(String paramString, Object paramObject1, Object paramObject2);
   
   public abstract void startWalletBalanceFetchUseCase(Context paramContext, Bundle paramBundle);
@@ -63,7 +65,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.wallet.a
  * JD-Core Version:    0.7.0.1
  */

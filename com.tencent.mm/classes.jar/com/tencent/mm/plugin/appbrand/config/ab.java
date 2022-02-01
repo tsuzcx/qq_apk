@@ -7,7 +7,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import com.tencent.luggage.wxa.storage.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.lm;
+import com.tencent.mm.protocal.protobuf.lc;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -15,14 +15,14 @@ import java.util.Arrays;
 
 public final class ab
 {
-  private static final Uri URI;
-  private static final ab lhl;
+  private static final Uri obT;
+  private static final ab obU;
   
   static
   {
     AppMethodBeat.i(146063);
-    URI = Uri.parse("content://" + a.AUTHORITY + "/WxaAttributesTable");
-    lhl = new ab();
+    obT = Uri.parse("content://" + a.AUTHORITY + "/WxaAttributesTable");
+    obU = new ab();
     AppMethodBeat.o(146063);
   }
   
@@ -81,7 +81,7 @@ public final class ab
     //   94: invokestatic 119	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
     //   97: invokevirtual 125	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   100: astore 5
-    //   102: getstatic 49	com/tencent/mm/plugin/appbrand/config/ab:URI	Landroid/net/Uri;
+    //   102: getstatic 49	com/tencent/mm/plugin/appbrand/config/ab:obT	Landroid/net/Uri;
     //   105: astore 6
     //   107: aload_1
     //   108: arraylength
@@ -220,51 +220,52 @@ public final class ab
     //   171	204	322	finally
   }
   
-  public static boolean a(lm paramlm)
+  public static boolean a(lc paramlc)
   {
-    AppMethodBeat.i(182791);
-    if (paramlm == null)
+    AppMethodBeat.i(232375);
+    if (paramlc == null)
     {
-      AppMethodBeat.o(182791);
+      AppMethodBeat.o(232375);
       return false;
     }
     try
     {
-      paramlm = paramlm.toByteArray();
+      paramlc = paramlc.toByteArray();
       ContentValues localContentValues = new ContentValues();
-      localContentValues.put("CONTENT_KEY_BATCH_SYNC_PROTO", paramlm);
-      MMApplicationContext.getContext().getContentResolver().insert(URI, localContentValues);
-      AppMethodBeat.o(182791);
+      localContentValues.put("CONTENT_KEY_BATCH_SYNC_SCENE", Integer.valueOf(107));
+      localContentValues.put("CONTENT_KEY_BATCH_SYNC_PROTO", paramlc);
+      MMApplicationContext.getContext().getContentResolver().insert(obT, localContentValues);
+      AppMethodBeat.o(232375);
       return true;
     }
-    catch (Exception paramlm)
+    catch (Exception paramlc)
     {
       Log.e("Luggage.WxaAttrsContentResolver", "batchUpdateWithProto insert failed");
-      AppMethodBeat.o(182791);
+      AppMethodBeat.o(232375);
     }
     return false;
   }
   
-  public static ab bAu()
+  public static ab bLM()
   {
-    return lhl;
+    return obU;
   }
   
-  public static WxaAttributes e(String paramString, String... paramVarArgs)
+  public static WxaAttributes d(String paramString, String... paramVarArgs)
   {
-    AppMethodBeat.i(229823);
+    AppMethodBeat.i(232374);
     long l = Util.currentTicks();
-    WxaAttributes localWxaAttributes = f(String.format("%s=?", new Object[] { "appId" }), new String[] { paramString });
+    WxaAttributes localWxaAttributes = e(String.format("%s=?", new Object[] { "appId" }), new String[] { paramString });
     Log.i("Luggage.WxaAttrsContentResolver", "queryWithAppId appId:%s, cost:%dms, columns:%s", new Object[] { paramString, Long.valueOf(Util.currentTicks() - l), Arrays.toString(paramVarArgs) });
-    AppMethodBeat.o(229823);
+    AppMethodBeat.o(232374);
     return localWxaAttributes;
   }
   
-  public static WxaAttributes f(String paramString, String[] paramArrayOfString)
+  public static WxaAttributes e(String paramString, String[] paramArrayOfString)
   {
     Object localObject = null;
     AppMethodBeat.i(146062);
-    paramArrayOfString = MMApplicationContext.getContext().getContentResolver().query(URI, null, paramString, paramArrayOfString, null);
+    paramArrayOfString = MMApplicationContext.getContext().getContentResolver().query(obT, null, paramString, paramArrayOfString, null);
     if (paramArrayOfString == null)
     {
       AppMethodBeat.o(146062);
@@ -287,7 +288,7 @@ public final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.ab
  * JD-Core Version:    0.7.0.1
  */

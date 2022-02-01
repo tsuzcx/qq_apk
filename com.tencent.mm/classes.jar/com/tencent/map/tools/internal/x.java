@@ -48,7 +48,7 @@ public class x
   
   static
   {
-    AppMethodBeat.i(193589);
+    AppMethodBeat.i(236730);
     h = x.class.getSimpleName();
     a = t.e;
     b = t.f;
@@ -58,15 +58,15 @@ public class x
     f = "complist_loading";
     g = "default";
     i = new HashMap();
-    AppMethodBeat.o(193589);
+    AppMethodBeat.o(236730);
   }
   
   public static p a(int paramInt, List<p> paramList)
   {
-    AppMethodBeat.i(193569);
+    AppMethodBeat.i(236673);
     if ((paramList == null) || (paramList.isEmpty()))
     {
-      AppMethodBeat.o(193569);
+      AppMethodBeat.o(236673);
       return null;
     }
     paramList = paramList.iterator();
@@ -75,31 +75,31 @@ public class x
       p localp = (p)paramList.next();
       if (paramInt == localp.a)
       {
-        AppMethodBeat.o(193569);
+        AppMethodBeat.o(236673);
         return localp;
       }
     }
-    AppMethodBeat.o(193569);
+    AppMethodBeat.o(236673);
     return null;
   }
   
   public static File a(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(193553);
+    AppMethodBeat.i(236635);
     paramContext = new File(paramContext.getFilesDir(), paramString);
     if (!paramContext.exists()) {
       paramContext.mkdirs();
     }
-    AppMethodBeat.o(193553);
+    AppMethodBeat.o(236635);
     return paramContext;
   }
   
   public static Object a(Object paramObject, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(193587);
+    AppMethodBeat.i(236726);
     if (paramObject == null)
     {
-      AppMethodBeat.o(193587);
+      AppMethodBeat.o(236726);
       return null;
     }
     try
@@ -109,13 +109,13 @@ public class x
       {
         paramString.setAccessible(true);
         paramObject = paramString.invoke(paramObject, paramArrayOfObject);
-        AppMethodBeat.o(193587);
+        AppMethodBeat.o(236726);
         return paramObject;
       }
     }
     catch (InvocationTargetException paramObject)
     {
-      AppMethodBeat.o(193587);
+      AppMethodBeat.o(236726);
       return null;
     }
     catch (IllegalAccessException paramObject)
@@ -127,23 +127,23 @@ public class x
   
   public static String a()
   {
-    AppMethodBeat.i(193564);
+    AppMethodBeat.i(236660);
     try
     {
       String str = Build.MODEL.replaceAll("[_]", "");
-      AppMethodBeat.o(193564);
+      AppMethodBeat.o(236660);
       return str;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(193564);
+      AppMethodBeat.o(236660);
     }
     return "";
   }
   
   public static String a(Context paramContext)
   {
-    AppMethodBeat.i(193560);
+    AppMethodBeat.i(236651);
     try
     {
       paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128).metaData;
@@ -152,26 +152,26 @@ public class x
         if (paramContext.containsKey("TencentMapSDK"))
         {
           paramContext = paramContext.getString("TencentMapSDK");
-          AppMethodBeat.o(193560);
+          AppMethodBeat.o(236651);
           return paramContext;
         }
-        AppMethodBeat.o(193560);
+        AppMethodBeat.o(236651);
         return "";
       }
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(193560);
+      AppMethodBeat.o(236651);
     }
     return "";
   }
   
   public static String a(File paramFile)
   {
-    AppMethodBeat.i(193566);
+    AppMethodBeat.i(236665);
     if (!paramFile.isFile())
     {
-      AppMethodBeat.o(193566);
+      AppMethodBeat.o(236665);
       return null;
     }
     byte[] arrayOfByte = new byte[1024];
@@ -192,17 +192,17 @@ public class x
     }
     catch (Exception paramFile)
     {
-      AppMethodBeat.o(193566);
+      AppMethodBeat.o(236665);
       return null;
     }
     paramFile = b(localMessageDigest.digest());
-    AppMethodBeat.o(193566);
+    AppMethodBeat.o(236665);
     return paramFile;
   }
   
   public static String a(List<p> paramList)
   {
-    AppMethodBeat.i(193575);
+    AppMethodBeat.i(236687);
     String str = "";
     int j = 0;
     if (j < paramList.size())
@@ -218,13 +218,13 @@ public class x
         } while ((a(localp.a)) || (localp.c.endsWith(".dex")));
       }
     }
-    AppMethodBeat.o(193575);
+    AppMethodBeat.o(236687);
     return str;
   }
   
   private static Method a(Class paramClass, String paramString, Class[] paramArrayOfClass)
   {
-    AppMethodBeat.i(193588);
+    AppMethodBeat.i(236728);
     localObject = null;
     try
     {
@@ -240,7 +240,7 @@ public class x
         }
       }
     }
-    AppMethodBeat.o(193588);
+    AppMethodBeat.o(236728);
     return localObject;
   }
   
@@ -402,7 +402,7 @@ public class x
   
   private static boolean a(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(193572);
+    AppMethodBeat.i(236680);
     try
     {
       paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
@@ -411,43 +411,43 @@ public class x
         int j = ((ActivityManager.RunningAppProcessInfo)paramContext.next()).pid;
         if (j == paramInt)
         {
-          AppMethodBeat.o(193572);
+          AppMethodBeat.o(236680);
           return true;
         }
       }
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(193572);
+      AppMethodBeat.o(236680);
     }
     return false;
   }
   
   public static boolean a(Context paramContext, String paramString, Long paramLong)
   {
-    AppMethodBeat.i(193557);
+    AppMethodBeat.i(236644);
     boolean bool = d(paramContext, paramString).a(String.valueOf(paramLong).getBytes());
-    AppMethodBeat.o(193557);
+    AppMethodBeat.o(236644);
     return bool;
   }
   
   public static boolean a(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(193556);
+    AppMethodBeat.i(236642);
     boolean bool = d(paramContext, paramString1).a(paramString2.getBytes());
-    AppMethodBeat.o(193556);
+    AppMethodBeat.o(236642);
     return bool;
   }
   
   public static boolean a(Context paramContext, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(193581);
+    AppMethodBeat.i(236711);
     if (paramBoolean1) {}
     try
     {
       for (paramContext = e(paramContext, paramString1); paramContext == null; paramContext = b(paramString1))
       {
-        AppMethodBeat.o(193581);
+        AppMethodBeat.o(236711);
         return false;
       }
       paramString1 = paramContext;
@@ -457,22 +457,22 @@ public class x
       if (paramString1 != null)
       {
         new w(paramString2).a(paramString1);
-        AppMethodBeat.o(193581);
+        AppMethodBeat.o(236711);
         return true;
       }
-      AppMethodBeat.o(193581);
+      AppMethodBeat.o(236711);
       return false;
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(193581);
+      AppMethodBeat.o(236711);
     }
     return false;
   }
   
   public static boolean a(List<p> paramList1, List<p> paramList2)
   {
-    AppMethodBeat.i(193568);
+    AppMethodBeat.i(236671);
     paramList1 = paramList1.iterator();
     boolean bool = true;
     if (paramList1.hasNext())
@@ -496,7 +496,7 @@ public class x
       for (;;)
       {
         break;
-        AppMethodBeat.o(193568);
+        AppMethodBeat.o(236671);
         return bool;
       }
     }
@@ -749,10 +749,10 @@ public class x
   
   public static int b(List<p> paramList)
   {
-    AppMethodBeat.i(193577);
+    AppMethodBeat.i(236690);
     if ((paramList == null) || (paramList.isEmpty()))
     {
-      AppMethodBeat.o(193577);
+      AppMethodBeat.o(236690);
       return -2;
     }
     paramList = paramList.iterator();
@@ -766,17 +766,17 @@ public class x
     {
       if (j != 0)
       {
-        AppMethodBeat.o(193577);
+        AppMethodBeat.o(236690);
         return 1;
       }
-      AppMethodBeat.o(193577);
+      AppMethodBeat.o(236690);
       return 0;
     }
   }
   
   public static Long b(Context paramContext, String paramString, Long paramLong)
   {
-    AppMethodBeat.i(193559);
+    AppMethodBeat.i(236649);
     paramContext = d(paramContext, paramString).a(String.valueOf(paramLong));
     try
     {
@@ -788,29 +788,29 @@ public class x
       label29:
       break label29;
     }
-    AppMethodBeat.o(193559);
+    AppMethodBeat.o(236649);
     return paramLong;
   }
   
   public static String b()
   {
-    AppMethodBeat.i(193565);
+    AppMethodBeat.i(236661);
     try
     {
       String str = Build.MANUFACTURER.replaceAll("[_]", "");
-      AppMethodBeat.o(193565);
+      AppMethodBeat.o(236661);
       return str;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(193565);
+      AppMethodBeat.o(236661);
     }
     return "";
   }
   
   public static String b(Context paramContext)
   {
-    AppMethodBeat.i(193561);
+    AppMethodBeat.i(236653);
     try
     {
       String str = paramContext.getPackageName();
@@ -824,40 +824,40 @@ public class x
       }
       else
       {
-        AppMethodBeat.o(193561);
+        AppMethodBeat.o(236653);
         return String.valueOf(j);
       }
     }
     catch (Exception paramContext)
     {
       paramContext = "";
-      AppMethodBeat.o(193561);
+      AppMethodBeat.o(236653);
     }
     return paramContext;
   }
   
   public static String b(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(193554);
+    AppMethodBeat.i(236637);
     paramContext = paramContext.getFilesDir().getAbsolutePath() + File.separator + paramString;
-    AppMethodBeat.o(193554);
+    AppMethodBeat.o(236637);
     return paramContext;
   }
   
   public static String b(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(193558);
+    AppMethodBeat.i(236647);
     paramContext = d(paramContext, paramString1).a(paramString2);
-    AppMethodBeat.o(193558);
+    AppMethodBeat.o(236647);
     return paramContext;
   }
   
   private static String b(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(193567);
+    AppMethodBeat.i(236668);
     if (paramArrayOfByte == null)
     {
-      AppMethodBeat.o(193567);
+      AppMethodBeat.o(236668);
       return "";
     }
     StringBuffer localStringBuffer = new StringBuffer();
@@ -872,13 +872,13 @@ public class x
       j += 1;
     }
     paramArrayOfByte = localStringBuffer.toString().toLowerCase();
-    AppMethodBeat.o(193567);
+    AppMethodBeat.o(236668);
     return paramArrayOfByte;
   }
   
   public static ArrayList<String> b(File paramFile)
   {
-    AppMethodBeat.i(193574);
+    AppMethodBeat.i(236685);
     Object localObject2 = null;
     Object localObject1 = localObject2;
     if (paramFile != null)
@@ -914,7 +914,7 @@ public class x
         }
       }
     }
-    AppMethodBeat.o(193574);
+    AppMethodBeat.o(236685);
     return localObject1;
   }
   
@@ -1078,7 +1078,7 @@ public class x
   
   public static String c(Context paramContext)
   {
-    AppMethodBeat.i(193562);
+    AppMethodBeat.i(236656);
     try
     {
       localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");
@@ -1090,7 +1090,7 @@ public class x
       for (y.d = y.c;; y.d = localTelephonyManager.getImei())
       {
         paramContext = y.d;
-        AppMethodBeat.o(193562);
+        AppMethodBeat.o(236656);
         return paramContext;
         if (Build.VERSION.SDK_INT < 26) {
           break;
@@ -1111,39 +1111,39 @@ public class x
   
   public static String c(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(193582);
+    AppMethodBeat.i(236713);
     try
     {
       paramContext = e(paramContext, paramString);
       if (paramContext == null)
       {
-        AppMethodBeat.o(193582);
+        AppMethodBeat.o(236713);
         return "";
       }
       paramContext = new String(paramContext);
-      AppMethodBeat.o(193582);
+      AppMethodBeat.o(236713);
       return paramContext;
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(193582);
+      AppMethodBeat.o(236713);
     }
     return "";
   }
   
   public static boolean c(File paramFile)
   {
-    AppMethodBeat.i(193584);
+    AppMethodBeat.i(236721);
     if (!paramFile.exists())
     {
       paramFile.mkdirs();
-      AppMethodBeat.o(193584);
+      AppMethodBeat.o(236721);
       return true;
     }
     paramFile = paramFile.listFiles();
     if ((paramFile == null) || (paramFile.length == 0))
     {
-      AppMethodBeat.o(193584);
+      AppMethodBeat.o(236721);
       return true;
     }
     int k = paramFile.length;
@@ -1163,24 +1163,24 @@ public class x
         localObject.delete();
       }
     }
-    AppMethodBeat.o(193584);
+    AppMethodBeat.o(236721);
     return true;
   }
   
   private static boolean c(String paramString)
   {
     int j = 0;
-    AppMethodBeat.i(193585);
+    AppMethodBeat.i(236724);
     Object localObject = new File(paramString);
     if (!((File)localObject).exists())
     {
-      AppMethodBeat.o(193585);
+      AppMethodBeat.o(236724);
       return false;
     }
     localObject = ((File)localObject).list();
     if ((localObject == null) || (localObject.length == 0))
     {
-      AppMethodBeat.o(193585);
+      AppMethodBeat.o(236724);
       return false;
     }
     int k = localObject.length;
@@ -1199,7 +1199,7 @@ public class x
         localFile.delete();
       }
     }
-    AppMethodBeat.o(193585);
+    AppMethodBeat.o(236724);
     return true;
   }
   
@@ -1207,11 +1207,11 @@ public class x
   {
     int k = 1;
     int j = 1;
-    AppMethodBeat.i(193571);
+    AppMethodBeat.i(236678);
     Object localObject = b(paramContext, t.A, "default");
     if (((String)localObject).equals("default"))
     {
-      AppMethodBeat.o(193571);
+      AppMethodBeat.o(236678);
       return 1;
     }
     try
@@ -1251,20 +1251,20 @@ public class x
       }
       if (m != 0)
       {
-        AppMethodBeat.o(193571);
+        AppMethodBeat.o(236678);
         return 3;
       }
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(193571);
+      AppMethodBeat.o(236678);
     }
     return 4;
   }
   
   public static long d()
   {
-    AppMethodBeat.i(193579);
+    AppMethodBeat.i(236701);
     long l1 = 0L;
     try
     {
@@ -1278,33 +1278,33 @@ public class x
       label41:
       break label41;
     }
-    AppMethodBeat.o(193579);
+    AppMethodBeat.o(236701);
     return l1;
   }
   
   private static w d(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(193555);
+    AppMethodBeat.i(236639);
     if (i.containsKey(paramString))
     {
       paramContext = (w)i.get(paramString);
-      AppMethodBeat.o(193555);
+      AppMethodBeat.o(236639);
       return paramContext;
     }
     paramContext = new w(paramContext.getFilesDir().getAbsolutePath() + "/" + t.D + "/" + paramString);
     i.put(paramString, paramContext);
-    AppMethodBeat.o(193555);
+    AppMethodBeat.o(236639);
     return paramContext;
   }
   
   public static void e(Context paramContext)
   {
     int n = 0;
-    AppMethodBeat.i(193573);
+    AppMethodBeat.i(236683);
     String str = h(paramContext);
     if (str == null)
     {
-      AppMethodBeat.o(193573);
+      AppMethodBeat.o(236683);
       return;
     }
     int i1 = Process.myPid();
@@ -1313,7 +1313,7 @@ public class x
     {
       localObject1 = i1 + "&" + str + "#";
       a(paramContext, t.A, (String)localObject1);
-      AppMethodBeat.o(193573);
+      AppMethodBeat.o(236683);
       return;
     }
     for (;;)
@@ -1361,13 +1361,13 @@ public class x
         }
         else
         {
-          AppMethodBeat.o(193573);
+          AppMethodBeat.o(236683);
           return;
         }
       }
       catch (Exception paramContext)
       {
-        AppMethodBeat.o(193573);
+        AppMethodBeat.o(236683);
         return;
       }
       continue;
@@ -1383,7 +1383,7 @@ public class x
   
   private static byte[] e(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(193580);
+    AppMethodBeat.i(236707);
     try
     {
       paramContext = paramContext.getResources().getAssets().open(paramString);
@@ -1401,22 +1401,22 @@ public class x
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(193580);
+      AppMethodBeat.o(236707);
       return null;
     }
     paramString = paramString.toByteArray();
     paramContext.close();
-    AppMethodBeat.o(193580);
+    AppMethodBeat.o(236707);
     return paramString;
   }
   
   public static boolean f(Context paramContext)
   {
-    AppMethodBeat.i(193578);
+    AppMethodBeat.i(236695);
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
     if (paramContext == null)
     {
-      AppMethodBeat.o(193578);
+      AppMethodBeat.o(236695);
       return false;
     }
     try
@@ -1429,42 +1429,42 @@ public class x
           boolean bool = paramContext.isActiveNetworkMetered();
           if (!bool)
           {
-            AppMethodBeat.o(193578);
+            AppMethodBeat.o(236695);
             return true;
           }
         }
-        AppMethodBeat.o(193578);
+        AppMethodBeat.o(236695);
         return true;
       }
-      AppMethodBeat.o(193578);
+      AppMethodBeat.o(236695);
       return false;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(193578);
+      AppMethodBeat.o(236695);
     }
     return false;
   }
   
   private static String g(Context paramContext)
   {
-    AppMethodBeat.i(193563);
+    AppMethodBeat.i(236658);
     try
     {
       paramContext = Settings.System.getString(paramContext.getContentResolver(), "android_id");
-      AppMethodBeat.o(193563);
+      AppMethodBeat.o(236658);
       return paramContext;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(193563);
+      AppMethodBeat.o(236658);
     }
     return "01234567890ABCDEF";
   }
   
   private static String h(Context paramContext)
   {
-    AppMethodBeat.i(193570);
+    AppMethodBeat.i(236676);
     try
     {
       int j = Process.myPid();
@@ -1475,26 +1475,26 @@ public class x
         if (((ActivityManager.RunningAppProcessInfo)localObject).pid == j)
         {
           paramContext = ((ActivityManager.RunningAppProcessInfo)localObject).processName;
-          AppMethodBeat.o(193570);
+          AppMethodBeat.o(236676);
           return paramContext;
         }
       }
       paramContext = new BufferedReader(new FileReader(new File("/proc/" + Process.myPid() + "/cmdline")));
       Object localObject = paramContext.readLine().trim();
       paramContext.close();
-      AppMethodBeat.o(193570);
+      AppMethodBeat.o(236676);
       return localObject;
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(193570);
+      AppMethodBeat.o(236676);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.map.tools.internal.x
  * JD-Core Version:    0.7.0.1
  */

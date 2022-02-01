@@ -13,7 +13,7 @@ public final class e
   
   static
   {
-    AppMethodBeat.i(198898);
+    AppMethodBeat.i(234020);
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
     localMAutoDBInfo.fields = new Field[11];
     localMAutoDBInfo.columns = new String[12];
@@ -65,24 +65,24 @@ public final class e
     localMAutoDBInfo.columns[11] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
     info = localMAutoDBInfo;
-    AppMethodBeat.o(198898);
+    AppMethodBeat.o(234020);
   }
   
-  public final WxaLiteAppInfo ecG()
+  public final WxaLiteAppInfo eLL()
   {
-    AppMethodBeat.i(198897);
+    AppMethodBeat.i(234016);
     WxaLiteAppInfo localWxaLiteAppInfo = new WxaLiteAppInfo();
     localWxaLiteAppInfo.appId = this.field_appId;
     localWxaLiteAppInfo.path = this.field_pkgPath;
-    localWxaLiteAppInfo.crh = this.field_signatureKey;
-    localWxaLiteAppInfo.crj = this.field_updateTime;
-    localWxaLiteAppInfo.cri = this.field_patchId;
+    localWxaLiteAppInfo.coX = this.field_signatureKey;
+    localWxaLiteAppInfo.coZ = this.field_updateTime;
+    localWxaLiteAppInfo.coY = this.field_patchId;
     localWxaLiteAppInfo.url = this.field_url;
     localWxaLiteAppInfo.md5 = this.field_md5;
-    localWxaLiteAppInfo.crk = this.field_lastUseTime;
+    localWxaLiteAppInfo.cpa = this.field_lastUseTime;
     localWxaLiteAppInfo.groupId = this.field_groupId;
     localWxaLiteAppInfo.type = this.field_pkgType;
-    AppMethodBeat.o(198897);
+    AppMethodBeat.o(234016);
     return localWxaLiteAppInfo;
   }
   

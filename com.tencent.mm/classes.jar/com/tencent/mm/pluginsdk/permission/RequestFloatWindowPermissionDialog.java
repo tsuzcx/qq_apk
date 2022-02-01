@@ -8,19 +8,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.e.b;
+import com.tencent.mm.plugin.comm.c.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.MMBaseActivity;
-import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.ui.base.ac;
 import com.tencent.mm.ui.widget.a.d.a;
 import com.tencent.mm.util.a;
 
 public class RequestFloatWindowPermissionDialog
   extends MMBaseActivity
 {
-  public static int JXZ = 1234;
-  private static a JYa;
-  private com.tencent.mm.ui.widget.a.d jzT = null;
+  public static int BEd = 1234;
+  private static a QYC;
+  private com.tencent.mm.ui.widget.a.d mpz = null;
   
   public static void a(Context paramContext, String paramString1, a parama, String paramString2)
   {
@@ -32,7 +33,7 @@ public class RequestFloatWindowPermissionDialog
   public static void a(Context paramContext, String paramString1, a parama, boolean paramBoolean, String paramString2)
   {
     AppMethodBeat.i(151886);
-    JYa = parama;
+    QYC = parama;
     parama = new Intent(paramContext, RequestFloatWindowPermissionDialog.class);
     parama.putExtra("warning_content", paramString1);
     if (paramBoolean) {
@@ -42,7 +43,7 @@ public class RequestFloatWindowPermissionDialog
     AppMethodBeat.o(151886);
   }
   
-  private void cjQ()
+  private void cxh()
   {
     AppMethodBeat.i(151883);
     if (getIntent() == null)
@@ -59,29 +60,29 @@ public class RequestFloatWindowPermissionDialog
       return;
     }
     d.a locala = new d.a(this);
-    locala.aoO(2131760778);
-    locala.boo(localBundle.getString("warning_content"));
+    locala.ayc(c.h.float_window_permission_alert_title);
+    locala.bBd(localBundle.getString("warning_content"));
     locala.f(new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(151877);
-        if (RequestFloatWindowPermissionDialog.gnn() != null)
+        if (RequestFloatWindowPermissionDialog.hhT() != null)
         {
-          RequestFloatWindowPermissionDialog.gnn().onResultCancel(RequestFloatWindowPermissionDialog.this);
-          RequestFloatWindowPermissionDialog.gno();
+          RequestFloatWindowPermissionDialog.hhT().c(RequestFloatWindowPermissionDialog.this);
+          RequestFloatWindowPermissionDialog.hhU();
         }
         RequestFloatWindowPermissionDialog.this.finish();
         AppMethodBeat.o(151877);
       }
     });
-    if (com.tencent.mm.compatible.util.d.oD(23)) {}
-    for (int i = 2131760777;; i = 2131760776)
+    if (com.tencent.mm.compatible.util.d.qV(23)) {}
+    for (int i = c.h.float_window_permission_alert_ok_M;; i = c.h.float_window_permission_alert_ok)
     {
-      locala.aoV(i).c(new RequestFloatWindowPermissionDialog.2(this));
-      this.jzT = locala.hbn();
-      this.jzT.setCanceledOnTouchOutside(false);
-      this.jzT.show();
+      locala.ayj(i).c(new RequestFloatWindowPermissionDialog.2(this));
+      this.mpz = locala.icu();
+      this.mpz.setCanceledOnTouchOutside(false);
+      this.mpz.show();
       AppMethodBeat.o(151883);
       return;
     }
@@ -90,26 +91,26 @@ public class RequestFloatWindowPermissionDialog
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(151884);
-    if (JYa == null)
+    if (QYC == null)
     {
       finish();
       AppMethodBeat.o(151884);
       return;
     }
-    if (paramInt1 == JXZ) {
-      if (b.cx(MMApplicationContext.getContext())) {
-        JYa.onResultAllow(this);
+    if (paramInt1 == BEd) {
+      if (b.ct(MMApplicationContext.getContext())) {
+        QYC.a(this);
       }
     }
     for (;;)
     {
-      JYa = null;
+      QYC = null;
       finish();
       AppMethodBeat.o(151884);
       return;
-      JYa.onResultRefuse(this);
+      QYC.b(this);
       continue;
-      JYa.onResultRefuse(this);
+      QYC.b(this);
     }
   }
   
@@ -118,7 +119,7 @@ public class RequestFloatWindowPermissionDialog
     AppMethodBeat.i(151879);
     super.onCreate(paramBundle);
     requestWindowFeature(1);
-    cjQ();
+    cxh();
     AppMethodBeat.o(151879);
   }
   
@@ -127,12 +128,12 @@ public class RequestFloatWindowPermissionDialog
     AppMethodBeat.i(151881);
     super.onNewIntent(paramIntent);
     setIntent(paramIntent);
-    if (this.jzT != null)
+    if (this.mpz != null)
     {
-      this.jzT.dismiss();
-      this.jzT = null;
+      this.mpz.dismiss();
+      this.mpz = null;
     }
-    cjQ();
+    cxh();
     AppMethodBeat.o(151881);
   }
   
@@ -140,7 +141,7 @@ public class RequestFloatWindowPermissionDialog
   {
     AppMethodBeat.i(151882);
     super.onPause();
-    aa.activateBroadcast(false);
+    ac.activateBroadcast(false);
     AppMethodBeat.o(151882);
   }
   
@@ -148,7 +149,7 @@ public class RequestFloatWindowPermissionDialog
   {
     AppMethodBeat.i(151880);
     super.onResume();
-    aa.activateBroadcast(true);
+    ac.activateBroadcast(true);
     AppMethodBeat.o(151880);
   }
   
@@ -160,16 +161,16 @@ public class RequestFloatWindowPermissionDialog
   
   public static abstract interface a
   {
-    public abstract void onResultAllow(RequestFloatWindowPermissionDialog paramRequestFloatWindowPermissionDialog);
+    public abstract void a(RequestFloatWindowPermissionDialog paramRequestFloatWindowPermissionDialog);
     
-    public abstract void onResultCancel(RequestFloatWindowPermissionDialog paramRequestFloatWindowPermissionDialog);
+    public abstract void b(RequestFloatWindowPermissionDialog paramRequestFloatWindowPermissionDialog);
     
-    public abstract void onResultRefuse(RequestFloatWindowPermissionDialog paramRequestFloatWindowPermissionDialog);
+    public abstract void c(RequestFloatWindowPermissionDialog paramRequestFloatWindowPermissionDialog);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,14 @@ package com.tencent.mm.kernel.a;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.app.o;
 import com.tencent.mm.kernel.a.b.e.b;
 import com.tencent.mm.kernel.a.b.f.a;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.at;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.model.au;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.y;
+import com.tencent.mm.vfs.ab;
+import com.tencent.mm.vfs.q;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -23,68 +25,68 @@ import junit.framework.Assert;
 public final class c
   implements com.tencent.mm.kernel.api.c, com.tencent.mm.kernel.api.e, com.tencent.mm.kernel.api.f
 {
-  private static c hrZ;
-  public static com.tencent.mm.vending.c.a<Void, f.a> hsc;
-  public static com.tencent.mm.vending.c.a<Void, f.a> hsd;
-  public static com.tencent.mm.vending.c.a<Void, f.a> hse;
-  private static Map<String, Map> hsf;
-  private boolean hrQ;
-  public final com.tencent.mm.kernel.a.b.g hrR;
-  public final com.tencent.mm.kernel.a.b.g hrS;
-  public final com.tencent.mm.kernel.a.b.g hrT;
-  public final c hrU;
-  public final d hrV;
-  public final b hrW;
-  public final e hrX;
-  public final a hrY;
-  public volatile boolean hsa;
-  private AtomicBoolean hsb;
-  private Set<Looper> hsg;
-  private ConcurrentHashMap<Object, f> hsh;
-  private ConcurrentHashMap hsi;
+  private static c kdU;
+  public static com.tencent.mm.vending.c.a<Void, f.a> kdX;
+  public static com.tencent.mm.vending.c.a<Void, f.a> kdY;
+  public static com.tencent.mm.vending.c.a<Void, f.a> kdZ;
+  private static Map<String, Map> kea;
+  private boolean kdL;
+  public final com.tencent.mm.kernel.a.b.g kdM;
+  public final com.tencent.mm.kernel.a.b.g kdN;
+  public final com.tencent.mm.kernel.a.b.g kdO;
+  public final c kdP;
+  public final d kdQ;
+  public final b kdR;
+  public final e kdS;
+  public final a kdT;
+  public volatile boolean kdV;
+  private AtomicBoolean kdW;
+  private Set<Looper> keb;
+  private ConcurrentHashMap<Object, f> kec;
+  private ConcurrentHashMap ked;
   
   static
   {
     AppMethodBeat.i(132212);
-    hrZ = new c();
-    hsc = new com.tencent.mm.vending.c.a() {};
-    hsd = new com.tencent.mm.vending.c.a() {};
-    hse = new com.tencent.mm.vending.c.a() {};
-    hsf = new ConcurrentHashMap();
+    kdU = new c();
+    kdX = new com.tencent.mm.vending.c.a() {};
+    kdY = new com.tencent.mm.vending.c.a() {};
+    kdZ = new com.tencent.mm.vending.c.a() {};
+    kea = new ConcurrentHashMap();
     AppMethodBeat.o(132212);
   }
   
   private c()
   {
     AppMethodBeat.i(132188);
-    this.hrQ = true;
-    this.hrR = new com.tencent.mm.kernel.a.b.g();
-    this.hrS = new com.tencent.mm.kernel.a.b.g();
-    this.hrT = new com.tencent.mm.kernel.a.b.g();
-    this.hrU = new c((byte)0);
-    this.hrV = new d();
-    this.hrW = new b();
-    this.hrX = new e();
-    this.hrY = new a();
-    this.hsa = false;
-    this.hsb = new AtomicBoolean(false);
-    this.hsg = new HashSet();
-    this.hsh = new ConcurrentHashMap();
-    this.hsi = new ConcurrentHashMap();
+    this.kdL = true;
+    this.kdM = new com.tencent.mm.kernel.a.b.g();
+    this.kdN = new com.tencent.mm.kernel.a.b.g();
+    this.kdO = new com.tencent.mm.kernel.a.b.g();
+    this.kdP = new c((byte)0);
+    this.kdQ = new d();
+    this.kdR = new b();
+    this.kdS = new e();
+    this.kdT = new a();
+    this.kdV = false;
+    this.kdW = new AtomicBoolean(false);
+    this.keb = new HashSet();
+    this.kec = new ConcurrentHashMap();
+    this.ked = new ConcurrentHashMap();
     AppMethodBeat.o(132188);
   }
   
   private static void a(com.tencent.mm.kernel.a.b.g paramg)
   {
     AppMethodBeat.i(132205);
-    Object localObject = paramg.aAW();
+    Object localObject = paramg.aIz();
     if (((Map)localObject).size() > 0) {}
     StringBuilder localStringBuilder;
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.CallbacksProxy", "do parallels result check, %s for %s", new Object[] { Boolean.valueOf(bool), paramg });
       if (((Map)localObject).size() <= 0) {
-        break label202;
+        break label204;
       }
       com.tencent.mm.blink.a.t(0L, 1L);
       paramg = new HashMap();
@@ -94,7 +96,7 @@ public final class c
       {
         com.tencent.mm.kernel.a.b.f localf = (com.tencent.mm.kernel.a.b.f)localIterator.next();
         List localList = (List)((Map)localObject).get(localf);
-        localStringBuilder.append(localf.hsU);
+        localStringBuilder.append(localf.keP);
         localStringBuilder.append(" : ");
         localStringBuilder.append(localList.toString());
         localStringBuilder.append("\n");
@@ -103,64 +105,75 @@ public final class c
     localObject = localStringBuilder.toString();
     Log.e("MicroMsg.CallbacksProxy", "unconsumed message %s", new Object[] { localObject });
     Log.e("MicroMsg.CallbacksProxy", "maybe cycle dependencies");
-    com.tencent.mm.plugin.report.e.Cxv.e("BlinkStartup", (String)localObject, paramg);
-    label202:
+    com.tencent.mm.plugin.report.f.Iyx.e("BlinkStartup", (String)localObject, paramg);
+    label204:
     AppMethodBeat.o(132205);
   }
   
   public static boolean a(com.tencent.mm.kernel.a.b.g paramg, Class paramClass, Object paramObject)
   {
     AppMethodBeat.i(132189);
-    paramg = (f.a)paramg.an(paramClass).bE(paramObject);
+    paramg = (f.a)paramg.am(paramClass).bE(paramObject);
     if (paramg == null)
     {
       AppMethodBeat.o(132189);
       return false;
     }
-    boolean bool = paramg.hsC;
+    boolean bool = paramg.kex;
     AppMethodBeat.o(132189);
     return bool;
   }
   
-  private void aAA()
+  public static c aHV()
   {
-    AppMethodBeat.i(132208);
-    if ((!((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.aAe().azG()).aBb()) || (!com.tencent.mm.kernel.g.aAf().azp()))
+    return kdU;
+  }
+  
+  private void aHX()
+  {
+    AppMethodBeat.i(197216);
+    com.tencent.e.h.ZvG.o(new Runnable()
     {
-      AppMethodBeat.o(132208);
-      return;
-    }
-    this.hrT.c(com.tencent.mm.kernel.api.h.class, false);
-    com.tencent.mm.kernel.a.b.e locale = com.tencent.mm.kernel.a.b.e.aAK();
-    locale.a(new e.b(), hse, this.hrT);
-    this.hrT.aAX();
-    locale.start("account-init from pending plugins");
-    locale.aAM();
-    AppMethodBeat.o(132208);
+      public final void run()
+      {
+        AppMethodBeat.i(199516);
+        if (!com.tencent.mm.kernel.h.aHE().kbT)
+        {
+          Log.e("MicroMsg.CallbacksProxy", "account has not done all notification!");
+          try
+          {
+            com.tencent.mm.rabbiteye.a.hpL();
+            AppMethodBeat.o(199516);
+            return;
+          }
+          catch (Throwable localThrowable)
+          {
+            Log.e("MicroMsg.CallbacksProxy", "printTrace error, message = %s", new Object[] { localThrowable.getMessage() });
+          }
+        }
+        AppMethodBeat.o(199516);
+      }
+    }, 180000L);
+    AppMethodBeat.o(197216);
   }
   
-  public static c aAu()
-  {
-    return hrZ;
-  }
-  
-  private boolean aAv()
+  private boolean aHY()
   {
     AppMethodBeat.i(132200);
-    if (!((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.aAe().azG()).aBb())
+    if (!((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).aIE())
     {
       AppMethodBeat.o(132200);
       return false;
     }
-    if (this.hsg.contains(Looper.myLooper()))
+    if (this.keb.contains(Looper.myLooper()))
     {
       Log.d("MicroMsg.CallbacksProxy", "Invalidate scene, it not allows to load alone in this thread(%s), illegal.", new Object[] { Looper.myLooper() });
       AppMethodBeat.o(132200);
       return false;
     }
-    if (!com.tencent.mm.kernel.g.aAi().hrh.hrB)
+    if (!com.tencent.mm.kernel.h.aHH().kdc.kdw)
     {
-      Log.e("MicroMsg.CallbacksProxy", "Invalidate scene, kernel does not startup done.");
+      Log.d("MicroMsg.CallbacksProxy", "Invalidate scene, kernel does not startup done.");
       AppMethodBeat.o(132200);
       return false;
     }
@@ -168,83 +181,128 @@ public final class c
     return true;
   }
   
-  private void aAw()
+  private void aHZ()
   {
     AppMethodBeat.i(132203);
-    Iterator localIterator = this.hsi.keySet().iterator();
+    Iterator localIterator = this.ked.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
-      com.tencent.mm.kernel.g.aAi().by(localObject);
-      hrZ.bA(localObject);
+      com.tencent.mm.kernel.h.aHH().by(localObject);
+      kdU.bA(localObject);
     }
     AppMethodBeat.o(132203);
   }
   
-  private static void aAy()
+  private static void aIb()
   {
     AppMethodBeat.i(132206);
-    c localc = hrZ;
-    Iterator localIterator = com.tencent.mm.kernel.g.aAd().azF().iterator();
+    c localc = kdU;
+    Iterator localIterator = com.tencent.mm.kernel.h.aHC().aHe().iterator();
     while (localIterator.hasNext()) {
       localc.bA((com.tencent.mm.kernel.b.f)localIterator.next());
     }
-    com.tencent.mm.blink.a.CM("makePluginsParallelsDependency");
+    com.tencent.mm.blink.a.JB("makePluginsParallelsDependency");
     AppMethodBeat.o(132206);
   }
   
-  private void aAz()
+  private void aIc()
   {
     AppMethodBeat.i(132207);
-    com.tencent.mm.blink.a.CM("configureAndExecutePendingPlugins");
-    this.hrS.c(com.tencent.mm.kernel.b.b.class, false);
-    com.tencent.mm.kernel.a.b.e.aAK().a(new e.b(), hsc, this.hrS, "configure-functional from pending plugins");
-    y.heW();
-    this.hrR.c(com.tencent.mm.kernel.a.c.b.class, false);
-    com.tencent.mm.kernel.a.b.e.aAK().a(new e.b(), hsd, this.hrR, "task-functional from pending plugins");
-    com.tencent.mm.blink.a.CM("configureAndExecutePendingPlugins done");
+    com.tencent.mm.blink.a.JB("configureAndExecutePendingPlugins");
+    this.kdN.c(com.tencent.mm.kernel.b.b.class, false);
+    com.tencent.mm.kernel.a.b.e.aIn().a(new e.b(), kdX, this.kdN, "configure-functional from pending plugins");
+    ab.igo();
+    this.kdM.c(com.tencent.mm.kernel.a.c.b.class, false);
+    com.tencent.mm.kernel.a.b.e.aIn().a(new e.b(), kdY, this.kdM, "task-functional from pending plugins");
+    com.tencent.mm.blink.a.JB("configureAndExecutePendingPlugins done");
     AppMethodBeat.o(132207);
   }
   
-  public final void FU(String paramString)
+  private void aId()
+  {
+    AppMethodBeat.i(132208);
+    if ((!((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).aIE()) || (!com.tencent.mm.kernel.h.aHE().aGM()))
+    {
+      AppMethodBeat.o(132208);
+      return;
+    }
+    aHX();
+    this.kdO.c(com.tencent.mm.kernel.api.h.class, false);
+    com.tencent.mm.kernel.a.b.e locale = com.tencent.mm.kernel.a.b.e.aIn();
+    locale.a(new e.b(), kdZ, this.kdO);
+    this.kdO.aIA();
+    locale.start("account-init from pending plugins");
+    locale.aIp();
+    AppMethodBeat.o(132208);
+  }
+  
+  public final void MU(String paramString)
   {
     AppMethodBeat.i(132193);
-    this.hrW.FV(paramString);
-    this.hrX.FU(paramString);
+    this.kdR.MV(paramString);
+    this.kdS.MU(paramString);
     AppMethodBeat.o(132193);
   }
   
-  public final void aAp()
+  public final void aHQ()
   {
-    AppMethodBeat.i(258481);
-    this.hrX.aAp();
-    AppMethodBeat.o(258481);
+    AppMethodBeat.i(292864);
+    this.kdS.aHQ();
+    AppMethodBeat.o(292864);
   }
   
-  public final void aAx()
+  public final void aHW()
+  {
+    AppMethodBeat.i(197207);
+    this.kdN.a(new Class[] { com.tencent.mm.kernel.b.b.class });
+    this.kdM.a(new Class[] { com.tencent.mm.kernel.a.c.b.class });
+    this.kdO.a(new Class[] { com.tencent.mm.kernel.api.h.class, com.tencent.mm.kernel.api.a.class, com.tencent.mm.kernel.api.e.class, au.class, com.tencent.mm.kernel.api.c.class });
+    this.kdO.b(new Class[] { com.tencent.mm.kernel.api.c.class });
+    ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).kct.kdG = new com.tencent.mm.kernel.a.a.b()
+    {
+      public final void a(Class paramAnonymousClass, Object paramAnonymousObject1, Object paramAnonymousObject2)
+      {
+        AppMethodBeat.i(132156);
+        if (paramAnonymousClass == com.tencent.mm.kernel.a.c.b.class)
+        {
+          c.aHV().kdM.a(paramAnonymousClass, paramAnonymousObject1, paramAnonymousObject2);
+          AppMethodBeat.o(132156);
+          return;
+        }
+        if (paramAnonymousClass == com.tencent.mm.kernel.b.b.class) {
+          c.aHV().kdN.a(paramAnonymousClass, paramAnonymousObject1, paramAnonymousObject2);
+        }
+        AppMethodBeat.o(132156);
+      }
+    };
+    AppMethodBeat.o(197207);
+  }
+  
+  public final void aIa()
   {
     AppMethodBeat.i(132204);
-    com.tencent.mm.blink.a.CM("initializePendingPlugins");
-    if (this.hsb.compareAndSet(false, true))
+    com.tencent.mm.blink.a.JB("initializePendingPlugins");
+    if (this.kdW.compareAndSet(false, true))
     {
       Log.i("MicroMsg.CallbacksProxy", "initialize pending plugins.");
-      aAy();
-      aAw();
-      aAz();
-      aAA();
-      this.hsa = true;
-      if (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.aAe().azG()).aBb()) {
-        com.tencent.mm.kernel.g.aAf().azg();
+      aIb();
+      aHZ();
+      aIc();
+      aId();
+      this.kdV = true;
+      if (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).aIE()) {
+        com.tencent.mm.kernel.h.aHE().aGB();
       }
-      com.tencent.mm.blink.a.CM("initializePendingPlugins done");
-      if (((com.tencent.mm.protocal.d.KyR) || (com.tencent.mm.protocal.d.KyQ)) && (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.aAe().azG()).aBb()) && (com.tencent.mm.kernel.g.aAf().azp()))
+      com.tencent.mm.blink.a.JB("initializePendingPlugins done");
+      if (((com.tencent.mm.protocal.d.RAG) || (com.tencent.mm.protocal.d.RAF)) && (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).aIE()) && (com.tencent.mm.kernel.h.aHE().aGM()))
       {
-        a(this.hrR);
-        a(this.hrS);
-        a(this.hrT);
+        a(this.kdM);
+        a(this.kdN);
+        a(this.kdO);
       }
-      com.tencent.mm.kernel.a.b.e.aAK();
-      com.tencent.mm.blink.a.CM("checkAllUnConsumed done");
+      com.tencent.mm.kernel.a.b.e.aIn();
+      com.tencent.mm.blink.a.JB("checkAllUnConsumed done");
     }
     AppMethodBeat.o(132204);
   }
@@ -253,19 +311,19 @@ public final class c
   {
     AppMethodBeat.i(132198);
     if ((paramObject instanceof com.tencent.mm.kernel.api.c)) {
-      this.hrU.add((com.tencent.mm.kernel.api.c)paramObject);
+      this.kdP.add((com.tencent.mm.kernel.api.c)paramObject);
     }
     if ((paramObject instanceof com.tencent.mm.kernel.api.e)) {
-      this.hrV.add((com.tencent.mm.kernel.api.e)paramObject);
+      this.kdQ.add((com.tencent.mm.kernel.api.e)paramObject);
     }
     if ((paramObject instanceof com.tencent.mm.kernel.api.b)) {
-      this.hrW.a((com.tencent.mm.kernel.api.b)paramObject);
+      this.kdR.a((com.tencent.mm.kernel.api.b)paramObject);
     }
     if ((paramObject instanceof com.tencent.mm.kernel.api.f)) {
-      this.hrX.a((com.tencent.mm.kernel.api.f)paramObject);
+      this.kdS.a((com.tencent.mm.kernel.api.f)paramObject);
     }
-    if ((paramObject instanceof com.tencent.mm.app.o)) {
-      this.hrY.c((com.tencent.mm.app.o)paramObject);
+    if ((paramObject instanceof o)) {
+      this.kdT.c((o)paramObject);
     }
     AppMethodBeat.o(132198);
   }
@@ -273,41 +331,41 @@ public final class c
   public final void bA(Object paramObject)
   {
     AppMethodBeat.i(132190);
-    if (!((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.aAe().azG()).aBb())
+    if (!((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).aIE())
     {
       Log.d("MicroMsg.CallbacksProxy", "Not main process, skip making parallels dependencies.");
       AppMethodBeat.o(132190);
       return;
     }
-    if (com.tencent.mm.kernel.f.bx(paramObject))
+    if (com.tencent.mm.kernel.g.bx(paramObject))
     {
       Log.printErrStackTrace("MicroMsg.CallbacksProxy", new RuntimeException(), "Found dummy subject!", new Object[0]);
       AppMethodBeat.o(132190);
       return;
     }
-    this.hrT.bM(paramObject);
+    this.kdO.bM(paramObject);
     AppMethodBeat.o(132190);
   }
   
   public final void bB(Object paramObject)
   {
     AppMethodBeat.i(132201);
-    if ((!this.hsb.get()) || (this.hsa))
+    if ((!this.kdW.get()) || (this.kdV))
     {
       AppMethodBeat.o(132201);
       return;
     }
-    if (!aAv())
+    if (!aHY())
     {
       Log.d("MicroMsg.CallbacksProxy", "Invalidate scene for subject %s to load account-init alone.", new Object[] { paramObject });
       AppMethodBeat.o(132201);
       return;
     }
-    if (!this.hsh.containsKey(paramObject)) {
-      this.hsh.putIfAbsent(paramObject, new f());
+    if (!this.kec.containsKey(paramObject)) {
+      this.kec.putIfAbsent(paramObject, new f());
     }
-    f localf = (f)this.hsh.get(paramObject);
-    if (!localf.aAB())
+    f localf = (f)this.kec.get(paramObject);
+    if (!localf.aIe())
     {
       AppMethodBeat.o(132201);
       return;
@@ -315,67 +373,67 @@ public final class c
     long l = System.currentTimeMillis();
     Log.i("MicroMsg.CallbacksProxy", "loadAlone for subject %s", new Object[] { paramObject });
     Log.printErrStackTrace("MicroMsg.CallbacksProxy", new RuntimeException(), "loadAlone", new Object[0]);
-    if (!this.hrT.bL(paramObject))
+    if (!this.kdO.bL(paramObject))
     {
       Log.e("MicroMsg.CallbacksProxy", "This subject(%s) has not made dependency while loading alone.");
-      this.hrT.bM(paramObject);
+      this.kdO.bM(paramObject);
     }
     try
     {
-      localf.qh(1);
+      localf.sH(1);
       f.a locala;
       if ((paramObject instanceof com.tencent.mm.kernel.b.f))
       {
         if (!((com.tencent.mm.kernel.b.f)paramObject).isConfigured())
         {
-          locala = this.hrS.an(com.tencent.mm.kernel.b.b.class).bJ((com.tencent.mm.kernel.b.b)paramObject);
+          locala = this.kdN.am(com.tencent.mm.kernel.b.b.class).bJ((com.tencent.mm.kernel.b.b)paramObject);
           Assert.assertNotNull(locala);
-          locala.a(hsc);
+          locala.a(kdX);
         }
-        locala = this.hrR.an(com.tencent.mm.kernel.a.c.b.class).bJ((com.tencent.mm.kernel.a.c.b)paramObject);
+        locala = this.kdM.am(com.tencent.mm.kernel.a.c.b.class).bJ((com.tencent.mm.kernel.a.c.b)paramObject);
         Assert.assertNotNull(locala);
-        locala.a(hsd);
+        locala.a(kdY);
       }
-      if (!com.tencent.mm.kernel.g.aAf().azp())
+      if (!com.tencent.mm.kernel.h.aHE().aGM())
       {
         Log.i("MicroMsg.CallbacksProxy", "account not init, return.");
         return;
       }
       if ((paramObject instanceof com.tencent.mm.kernel.api.h))
       {
-        locala = this.hrT.an(com.tencent.mm.kernel.api.h.class).bJ((com.tencent.mm.kernel.api.h)paramObject);
+        locala = this.kdO.am(com.tencent.mm.kernel.api.h.class).bJ((com.tencent.mm.kernel.api.h)paramObject);
         Assert.assertNotNull(locala);
-        locala.a(hse);
+        locala.a(kdZ);
       }
       if ((paramObject instanceof com.tencent.mm.kernel.api.a))
       {
-        locala = this.hrT.an(com.tencent.mm.kernel.api.a.class).bJ((com.tencent.mm.kernel.api.a)paramObject);
+        locala = this.kdO.am(com.tencent.mm.kernel.api.a.class).bJ((com.tencent.mm.kernel.api.a)paramObject);
         Assert.assertNotNull(locala);
-        locala.a(hse);
+        locala.a(kdZ);
       }
-      if ((paramObject instanceof at))
+      if ((paramObject instanceof au))
       {
-        locala = this.hrT.an(at.class).bJ((at)paramObject);
+        locala = this.kdO.am(au.class).bJ((au)paramObject);
         Assert.assertNotNull(locala);
-        locala.a(hse);
+        locala.a(kdZ);
       }
       if ((paramObject instanceof com.tencent.mm.kernel.api.e))
       {
-        locala = this.hrT.an(com.tencent.mm.kernel.api.e.class).bJ((com.tencent.mm.kernel.api.e)paramObject);
+        locala = this.kdO.am(com.tencent.mm.kernel.api.e.class).bJ((com.tencent.mm.kernel.api.e)paramObject);
         Assert.assertNotNull(locala);
-        locala.a(hse);
+        locala.a(kdZ);
       }
       if ((paramObject instanceof com.tencent.mm.kernel.api.c))
       {
-        locala = this.hrT.an(com.tencent.mm.kernel.api.c.class).bJ((com.tencent.mm.kernel.api.c)paramObject);
+        locala = this.kdO.am(com.tencent.mm.kernel.api.c.class).bJ((com.tencent.mm.kernel.api.c)paramObject);
         Assert.assertNotNull(locala);
-        locala.a(hse);
+        locala.a(kdZ);
       }
       return;
     }
     finally
     {
-      localf.qh(2);
+      localf.sH(2);
       Log.i("MicroMsg.CallbacksProxy", "Subject(%s) load alone spend %sms", new Object[] { paramObject, Long.valueOf(System.currentTimeMillis() - l) });
       AppMethodBeat.o(132201);
     }
@@ -385,79 +443,80 @@ public final class c
   {
     AppMethodBeat.i(132202);
     Log.i("MicroMsg.CallbacksProxy", "add pending callbacks %s", new Object[] { paramObject });
-    this.hsi.putIfAbsent(paramObject, this.hsi);
+    this.ked.putIfAbsent(paramObject, this.ked);
     AppMethodBeat.o(132202);
   }
   
-  public final void f(Looper paramLooper)
+  public final void g(Looper paramLooper)
   {
     AppMethodBeat.i(132199);
     Log.i("MicroMsg.CallbacksProxy", "Thread(%s) not allow load-alone.", new Object[] { paramLooper });
-    this.hsg.add(paramLooper);
+    this.keb.add(paramLooper);
     AppMethodBeat.o(132199);
   }
   
-  public final void g(boolean paramBoolean, String paramString)
+  public final void j(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(132191);
     if (paramBoolean)
     {
-      this.hrY.onAppForeground(paramString);
+      this.kdT.onAppForeground(paramString);
       AppMethodBeat.o(132191);
       return;
     }
-    this.hrY.onAppBackground(paramString);
+    this.kdT.onAppBackground(paramString);
     AppMethodBeat.o(132191);
   }
   
-  public final void onAccountInitialized(e.c paramc)
+  public final void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(132194);
-    if (this.hrQ)
+    if (this.kdL)
     {
-      com.tencent.mm.blink.a.CM("beforeAccountInit");
-      this.hrT.c(com.tencent.mm.kernel.api.c.class, true);
-      paramc = com.tencent.mm.kernel.a.b.e.aAK();
-      paramc.a(new e.b(), hse, this.hrT);
-      this.hrT.aAX();
+      com.tencent.mm.blink.a.JB("beforeAccountInit");
+      aHX();
+      this.kdO.c(com.tencent.mm.kernel.api.c.class, true);
+      paramc = com.tencent.mm.kernel.a.b.e.aIn();
+      paramc.a(new e.b(), kdZ, this.kdO);
+      this.kdO.aIA();
       paramc.start("account-init from onAccountInitialized");
-      paramc.aAM();
+      paramc.aIp();
       AppMethodBeat.o(132194);
       return;
     }
-    this.hrU.onAccountInitialized(paramc);
+    this.kdP.onAccountInitialized(paramc);
     AppMethodBeat.o(132194);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(132195);
-    this.hrU.onAccountRelease();
-    this.hrT.c(com.tencent.mm.kernel.api.h.class, true);
+    this.kdP.onAccountRelease();
+    this.kdO.c(com.tencent.mm.kernel.api.h.class, true);
     AppMethodBeat.o(132195);
   }
   
   public final void onDataBaseClosed(com.tencent.mm.storagebase.h paramh1, com.tencent.mm.storagebase.h paramh2)
   {
     AppMethodBeat.i(132197);
-    this.hrV.onDataBaseClosed(paramh1, paramh2);
+    this.kdQ.onDataBaseClosed(paramh1, paramh2);
     AppMethodBeat.o(132197);
   }
   
   public final void onDataBaseOpened(com.tencent.mm.storagebase.h paramh1, com.tencent.mm.storagebase.h paramh2)
   {
     AppMethodBeat.i(132196);
-    if (!this.hrQ) {
-      this.hrV.onDataBaseOpened(paramh1, paramh2);
+    if (!this.kdL) {
+      this.kdQ.onDataBaseOpened(paramh1, paramh2);
     }
     AppMethodBeat.o(132196);
   }
   
   public static final class a
-    extends com.tencent.mm.co.a<com.tencent.mm.app.o>
-    implements com.tencent.mm.app.o
+    extends com.tencent.mm.cw.a<o>
+    implements o
   {
-    public final com.tencent.mm.vending.b.b<com.tencent.mm.app.o> c(com.tencent.mm.app.o paramo)
+    public final com.tencent.mm.vending.b.b<o> c(o paramo)
     {
       try
       {
@@ -478,7 +537,7 @@ public final class c
       try
       {
         AppMethodBeat.i(132164);
-        a(new com.tencent.mm.co.a.a() {});
+        a(new com.tencent.mm.cw.a.a() {});
         AppMethodBeat.o(132164);
         return;
       }
@@ -494,7 +553,7 @@ public final class c
       try
       {
         AppMethodBeat.i(132163);
-        a(new com.tencent.mm.co.a.a() {});
+        a(new com.tencent.mm.cw.a.a() {});
         AppMethodBeat.o(132163);
         return;
       }
@@ -507,10 +566,10 @@ public final class c
   }
   
   public static final class b
-    extends com.tencent.mm.co.a<com.tencent.mm.kernel.api.b>
+    extends com.tencent.mm.cw.a<com.tencent.mm.kernel.api.b>
     implements com.tencent.mm.kernel.api.b
   {
-    private boolean hsl = false;
+    private boolean keg = false;
     
     private static void d(List<String> paramList, String paramString)
     {
@@ -528,8 +587,8 @@ public final class c
       while (i < j)
       {
         paramList = arrayOfString[i];
-        paramString = new com.tencent.mm.vfs.o(paramList);
-        if ((!paramString.exists()) && ((!paramString.mkdirs()) || (!paramString.isDirectory()))) {
+        paramString = new q(paramList);
+        if ((!paramString.ifE()) && ((!paramString.ifL()) || (!paramString.isDirectory()))) {
           Log.e("MicroMsg.CallbacksProxy", "batchMkDirs mkdir error. %s", new Object[] { paramList });
         }
         i += 1;
@@ -537,13 +596,13 @@ public final class c
       AppMethodBeat.o(132169);
     }
     
-    public final void FV(String paramString)
+    public final void MV(String paramString)
     {
       try
       {
         AppMethodBeat.i(132168);
-        List localList = aAo();
-        this.hsl = true;
+        List localList = aHP();
+        this.keg = true;
         Log.i("MicroMsg.CallbacksProxy", "all account storage folder %s", new Object[] { localList.toString() });
         d(localList, paramString);
         AppMethodBeat.o(132168);
@@ -562,11 +621,11 @@ public final class c
       {
         AppMethodBeat.i(132166);
         com.tencent.mm.vending.b.b localb = super.add(paramb);
-        if (this.hsl)
+        if (this.keg)
         {
-          List localList = paramb.aAo();
+          List localList = paramb.aHP();
           if ((localList != null) && (localList.size() > 0)) {
-            d(localList, com.tencent.mm.kernel.g.aAh().hqG);
+            d(localList, com.tencent.mm.kernel.h.aHG().kcB);
           }
           Log.i("MicroMsg.CallbacksProxy", "collectStoragePaths has been called. cb %s", new Object[] { paramb });
         }
@@ -576,7 +635,7 @@ public final class c
       finally {}
     }
     
-    public final List<String> aAo()
+    public final List<String> aHP()
     {
       AppMethodBeat.i(132167);
       Object localObject1 = getQueue();
@@ -587,7 +646,7 @@ public final class c
         Object localObject2 = (com.tencent.mm.vending.b.b)((Iterator)localObject1).next();
         if (localObject2 != null)
         {
-          localObject2 = ((com.tencent.mm.kernel.api.b)((com.tencent.mm.vending.b.b)localObject2).QZG).aAo();
+          localObject2 = ((com.tencent.mm.kernel.api.b)((com.tencent.mm.vending.b.b)localObject2).YzW).aHP();
           if (localObject2 != null) {
             localLinkedList.addAll((Collection)localObject2);
           }
@@ -599,58 +658,58 @@ public final class c
   }
   
   public static final class c
-    extends com.tencent.mm.co.a<com.tencent.mm.kernel.api.c>
+    extends com.tencent.mm.cw.a<com.tencent.mm.kernel.api.c>
     implements com.tencent.mm.kernel.api.c
   {
-    public final void onAccountInitialized(final e.c paramc)
+    public final void onAccountInitialized(final f.c paramc)
     {
       AppMethodBeat.i(132173);
-      a(new com.tencent.mm.co.a.a() {});
+      a(new com.tencent.mm.cw.a.a() {});
       AppMethodBeat.o(132173);
     }
     
     public final void onAccountRelease()
     {
       AppMethodBeat.i(132174);
-      a(new com.tencent.mm.co.a.a() {});
+      a(new com.tencent.mm.cw.a.a() {});
       AppMethodBeat.o(132174);
     }
   }
   
   public static final class d
-    extends com.tencent.mm.co.a<com.tencent.mm.kernel.api.e>
+    extends com.tencent.mm.cw.a<com.tencent.mm.kernel.api.e>
     implements com.tencent.mm.kernel.api.e
   {
     public final void onDataBaseClosed(final com.tencent.mm.storagebase.h paramh1, final com.tencent.mm.storagebase.h paramh2)
     {
       AppMethodBeat.i(132179);
-      a(new com.tencent.mm.co.a.a() {});
+      a(new com.tencent.mm.cw.a.a() {});
       AppMethodBeat.o(132179);
     }
     
     public final void onDataBaseOpened(final com.tencent.mm.storagebase.h paramh1, final com.tencent.mm.storagebase.h paramh2)
     {
       AppMethodBeat.i(132178);
-      a(new com.tencent.mm.co.a.a() {});
+      a(new com.tencent.mm.cw.a.a() {});
       AppMethodBeat.o(132178);
     }
   }
   
   public static final class e
-    extends com.tencent.mm.co.a<com.tencent.mm.kernel.api.f>
+    extends com.tencent.mm.cw.a<com.tencent.mm.kernel.api.f>
     implements com.tencent.mm.kernel.api.f
   {
-    private boolean hsr = false;
-    private String hss;
+    private boolean kem = false;
+    private String ken;
     
-    public final void FU(final String paramString)
+    public final void MU(final String paramString)
     {
       try
       {
         AppMethodBeat.i(132184);
-        a(new com.tencent.mm.co.a.a() {});
-        this.hsr = true;
-        this.hss = paramString;
+        a(new com.tencent.mm.cw.a.a() {});
+        this.kem = true;
+        this.ken = paramString;
         AppMethodBeat.o(132184);
         return;
       }
@@ -667,9 +726,9 @@ public final class c
       {
         AppMethodBeat.i(132183);
         com.tencent.mm.vending.b.b localb = super.add(paramf);
-        if (this.hsr)
+        if (this.kem)
         {
-          paramf.FU(this.hss);
+          paramf.MU(this.ken);
           Log.i("MicroMsg.CallbacksProxy", "onAccountPathChanged has been called. cb %s", new Object[] { paramf });
         }
         AppMethodBeat.o(132183);
@@ -678,29 +737,29 @@ public final class c
       finally {}
     }
     
-    public final void aAp()
+    public final void aHQ()
     {
       AppMethodBeat.i(132182);
-      a(new com.tencent.mm.co.a.a() {});
+      a(new com.tencent.mm.cw.a.a() {});
       AppMethodBeat.o(132182);
     }
   }
   
   static final class f
   {
-    private long hsv;
+    private long keq;
     private int mStatus;
     
     public f()
     {
       AppMethodBeat.i(132186);
-      this.hsv = 0L;
+      this.keq = 0L;
       this.mStatus = 0;
-      this.hsv = Thread.currentThread().getId();
+      this.keq = Thread.currentThread().getId();
       AppMethodBeat.o(132186);
     }
     
-    public final boolean aAB()
+    public final boolean aIe()
     {
       boolean bool = false;
       for (;;)
@@ -708,7 +767,7 @@ public final class c
         try
         {
           AppMethodBeat.i(132187);
-          if ((this.mStatus == 1) && (this.hsv == Thread.currentThread().getId()))
+          if ((this.mStatus == 1) && (this.keq == Thread.currentThread().getId()))
           {
             AppMethodBeat.o(132187);
             return bool;
@@ -725,7 +784,7 @@ public final class c
       }
     }
     
-    public final void qh(int paramInt)
+    public final void sH(int paramInt)
     {
       try
       {
@@ -744,7 +803,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.kernel.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import android.support.v4.e.a;
+import androidx.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ac.m;
-import com.tencent.mm.plugin.appbrand.page.ac;
+import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.platform.window.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Collections;
@@ -14,42 +14,43 @@ import java.util.Set;
 
 public enum o
 {
-  public static final Map<String, Integer> otl;
-  public static final Set<String> otm;
-  private static final a<ac, ab> otn;
+  public static final Map<String, Integer> rvv;
+  public static final Set<String> rvw;
+  private static final a<ad, af> rvx;
   
   static
   {
     AppMethodBeat.i(136427);
-    oto = new o[0];
+    rvy = new o[0];
     Object localObject = new HashSet();
     ((Set)localObject).add("text");
     ((Set)localObject).add("emoji");
     ((Set)localObject).add("number");
     ((Set)localObject).add("digit");
     ((Set)localObject).add("idcard");
-    otm = Collections.unmodifiableSet((Set)localObject);
+    ((Set)localObject).add("safe-password");
+    rvw = Collections.unmodifiableSet((Set)localObject);
     localObject = new HashMap(3);
     ((Map)localObject).put("digit", Integer.valueOf(2));
     ((Map)localObject).put("number", Integer.valueOf(0));
     ((Map)localObject).put("idcard", Integer.valueOf(1));
-    otl = Collections.unmodifiableMap((Map)localObject);
-    otn = new a();
+    rvv = Collections.unmodifiableMap((Map)localObject);
+    rvx = new a();
     AppMethodBeat.o(136427);
   }
   
-  public static boolean D(ac paramac)
+  public static boolean D(ad paramad)
   {
     AppMethodBeat.i(136420);
-    boolean bool = a(paramac, null);
+    boolean bool = a(paramad, null);
     AppMethodBeat.o(136420);
     return bool;
   }
   
-  static void E(ac paramac)
+  static void E(ad paramad)
   {
     AppMethodBeat.i(136425);
-    if (paramac == null)
+    if (paramad == null)
     {
       AppMethodBeat.o(136425);
       return;
@@ -59,41 +60,41 @@ public enum o
       public final void run()
       {
         AppMethodBeat.i(136414);
-        o.cbv().remove(this.mkX);
+        o.coF().remove(this.pjc);
         AppMethodBeat.o(136414);
       }
     });
     AppMethodBeat.o(136425);
   }
   
-  public static aa F(ac paramac)
+  public static ae F(ad paramad)
   {
     AppMethodBeat.i(136426);
-    if (paramac == null)
+    if (paramad == null)
     {
       AppMethodBeat.o(136426);
       return null;
     }
-    ab localab = (ab)otn.get(paramac);
-    if (localab == null)
+    af localaf = (af)rvx.get(paramad);
+    if (localaf == null)
     {
       AppMethodBeat.o(136426);
       return null;
     }
-    paramac = a(paramac, localab.getInputId());
+    paramad = a(paramad, localaf.getInputId());
     AppMethodBeat.o(136426);
-    return paramac;
+    return paramad;
   }
   
-  public static aa a(ac paramac, int paramInt)
+  public static ae a(ad paramad, int paramInt)
   {
     AppMethodBeat.i(136418);
-    paramac = e.a(paramac, new e.a()
+    paramad = e.a(paramad, new e.a()
     {
-      public final boolean a(aa paramAnonymousaa)
+      public final boolean a(ae paramAnonymousae)
       {
         AppMethodBeat.i(136411);
-        if ((paramAnonymousaa.caV() != null) && (((ab)paramAnonymousaa.caV()).getInputId() == this.lWD))
+        if ((paramAnonymousae.coc() != null) && (((af)paramAnonymousae.coc()).getInputId() == this.oUo))
         {
           AppMethodBeat.o(136411);
           return true;
@@ -103,13 +104,13 @@ public enum o
       }
     });
     AppMethodBeat.o(136418);
-    return paramac;
+    return paramad;
   }
   
-  static void a(ac paramac, final ab paramab)
+  static void a(ad paramad, final af paramaf)
   {
     AppMethodBeat.i(136424);
-    if (paramac == null)
+    if (paramad == null)
     {
       AppMethodBeat.o(136424);
       return;
@@ -119,17 +120,17 @@ public enum o
       public final void run()
       {
         AppMethodBeat.i(136413);
-        o.cbv().put(this.mkX, paramab);
+        o.coF().put(this.pjc, paramaf);
         AppMethodBeat.o(136413);
       }
     });
     AppMethodBeat.o(136424);
   }
   
-  public static void a(ac paramac, final String paramString, final Integer paramInteger)
+  public static void a(ad paramad, final String paramString, final Integer paramInteger)
   {
     AppMethodBeat.i(136419);
-    if (paramac == null)
+    if (paramad == null)
     {
       AppMethodBeat.o(136419);
       return;
@@ -139,12 +140,12 @@ public enum o
       public final void run()
       {
         AppMethodBeat.i(136412);
-        Object localObject = (ab)o.cbv().get(this.lIf);
+        Object localObject = (af)o.coF().get(this.oEt);
         if (localObject != null)
         {
-          localObject = o.a(this.lIf, ((ab)localObject).getInputId());
+          localObject = o.a(this.oEt, ((af)localObject).getInputId());
           if (localObject != null) {
-            ((aa)localObject).a(paramString, paramInteger);
+            ((ae)localObject).a(paramString, paramInteger);
           }
         }
         AppMethodBeat.o(136412);
@@ -153,11 +154,11 @@ public enum o
     AppMethodBeat.o(136419);
   }
   
-  public static boolean a(ac paramac, int paramInt1, int paramInt2, int paramInt3)
+  public static boolean a(ad paramad, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(136422);
-    aa localaa = a(paramac, paramInt1);
-    if ((localaa != null) && (localaa.A(paramac)) && (localaa.q(paramInt2, paramInt3, paramac.kEb.OG())))
+    ae localae = a(paramad, paramInt1);
+    if ((localae != null) && (localae.A(paramad)) && (localae.r(paramInt2, paramInt3, paramad.nxr.Sc())))
     {
       AppMethodBeat.o(136422);
       return true;
@@ -166,30 +167,30 @@ public enum o
     return false;
   }
   
-  public static boolean a(ac paramac, Integer paramInteger)
+  public static boolean a(ad paramad, Integer paramInteger)
   {
     AppMethodBeat.i(136421);
     Integer localInteger = paramInteger;
     if (paramInteger == null) {}
     try
     {
-      paramInteger = (ab)otn.get(paramac);
+      paramInteger = (af)rvx.get(paramad);
       if (paramInteger == null)
       {
         AppMethodBeat.o(136421);
         return false;
       }
       localInteger = Integer.valueOf(paramInteger.getInputId());
-      paramac = a(paramac, localInteger.intValue());
-      if ((paramac != null) && (paramac.cba()))
+      paramad = a(paramad, localInteger.intValue());
+      if ((paramad != null) && (paramad.col()))
       {
         AppMethodBeat.o(136421);
         return true;
       }
     }
-    catch (Throwable paramac)
+    catch (Throwable paramad)
     {
-      Log.printErrStackTrace("MicroMsg.AppBrandInputService", paramac, "[NOT CRASH]", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.AppBrandInputService", paramad, "[NOT CRASH]", new Object[0]);
       AppMethodBeat.o(136421);
       return false;
     }
@@ -197,18 +198,18 @@ public enum o
     return false;
   }
   
-  static void b(ac paramac, aa paramaa)
+  static void b(ad paramad, ae paramae)
   {
     AppMethodBeat.i(136417);
-    e.a(paramac, paramaa);
+    e.a(paramad, paramae);
     AppMethodBeat.o(136417);
   }
   
-  public static boolean b(ac paramac, int paramInt)
+  public static boolean b(ad paramad, int paramInt)
   {
     AppMethodBeat.i(136423);
-    paramac = a(paramac, paramInt);
-    if ((paramac != null) && (paramac.caU()))
+    paramad = a(paramad, paramInt);
+    if ((paramad != null) && (paramad.cob()))
     {
       AppMethodBeat.o(136423);
       return true;
@@ -219,7 +220,7 @@ public enum o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.o
  * JD-Core Version:    0.7.0.1
  */

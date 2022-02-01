@@ -8,31 +8,31 @@ import com.tencent.thumbplayer.api.TPOptionalParam.OptionalParamQueueInt;
 
 public final class a
 {
-  public int[] RYt;
-  public int RYu;
-  public int RYv;
-  public boolean RYw;
+  public int[] ZBd;
+  public int ZBe;
+  public int ZBf;
+  public boolean ZBg;
   
   public a(c paramc)
   {
-    AppMethodBeat.i(188994);
-    this.RYw = false;
-    this.RYu = 2;
-    this.RYv = 2;
+    AppMethodBeat.i(219682);
+    this.ZBg = false;
+    this.ZBe = 2;
+    this.ZBf = 2;
     if (paramc == null)
     {
-      AppMethodBeat.o(188994);
+      AppMethodBeat.o(219682);
       return;
     }
-    TPOptionalParam localTPOptionalParam = paramc.aqR(210);
+    TPOptionalParam localTPOptionalParam = paramc.aAE(210);
     if ((localTPOptionalParam != null) && (localTPOptionalParam.getParamType() == 4))
     {
-      this.RYt = localTPOptionalParam.getParamQueueInt().queueValue;
-      this.RYw = true;
-      AppMethodBeat.o(188994);
+      this.ZBd = localTPOptionalParam.getParamQueueInt().queueValue;
+      this.ZBg = true;
+      AppMethodBeat.o(219682);
       return;
     }
-    localTPOptionalParam = paramc.aqR(202);
+    localTPOptionalParam = paramc.aAE(202);
     long l;
     if ((localTPOptionalParam != null) && (localTPOptionalParam.getParamType() == 2))
     {
@@ -42,10 +42,10 @@ public final class a
       }
       i = 1;
       if (i != 0) {
-        this.RYv = ((int)localTPOptionalParam.getParamLong().value);
+        this.ZBf = ((int)localTPOptionalParam.getParamLong().value);
       }
     }
-    paramc = paramc.aqR(203);
+    paramc = paramc.aAE(203);
     if ((paramc != null) && (paramc.getParamType() == 2))
     {
       l = paramc.getParamLong().value;
@@ -58,21 +58,21 @@ public final class a
     for (int i = j;; i = 0)
     {
       if (i != 0) {
-        this.RYu = ((int)paramc.getParamLong().value);
+        this.ZBe = ((int)paramc.getParamLong().value);
       }
-      i = this.RYv;
-      j = this.RYu;
+      i = this.ZBf;
+      j = this.ZBe;
       if ((i != 3) || (j != 3)) {
         break label260;
       }
       paramc = new IllegalArgumentException("can not soft with systemplayer");
-      AppMethodBeat.o(188994);
+      AppMethodBeat.o(219682);
       throw paramc;
       i = 0;
       break;
     }
     label260:
-    AppMethodBeat.o(188994);
+    AppMethodBeat.o(219682);
   }
 }
 

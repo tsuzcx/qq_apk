@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.finder.view;
 
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment;
 import com.tencent.mm.ui.MMActivity;
 import java.util.Iterator;
@@ -9,9 +9,9 @@ import kotlin.a.j;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderFragmentChangeObserver;", "Landroid/support/v4/view/ViewPager$OnPageChangeListener;", "Lcom/tencent/mm/plugin/finder/view/FinderFragmentChangeListener;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "fragments", "", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "(Lcom/tencent/mm/ui/MMActivity;Ljava/util/List;)V", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "lastIndex", "", "lastType", "onPageScrollStateChanged", "", "state", "onPageScrolled", "position", "positionOffset", "", "positionOffsetPixels", "onPageSelected", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderFragmentChangeObserver;", "Landroidx/viewpager/widget/ViewPager$OnPageChangeListener;", "Lcom/tencent/mm/plugin/finder/view/FinderFragmentChangeListener;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "fragments", "", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "(Lcom/tencent/mm/ui/MMActivity;Ljava/util/List;)V", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "lastIndex", "", "lastType", "onPageScrollStateChanged", "", "state", "onPageScrolled", "position", "positionOffset", "", "positionOffsetPixels", "onPageSelected", "Companion", "plugin-finder_release"})
 public abstract class FinderFragmentChangeObserver
-  implements ViewPager.OnPageChangeListener, h
+  implements ViewPager.OnPageChangeListener, i
 {
   public static final a Companion = new a((byte)0);
   public static final String TAG = "Finder.FragmentChangeObserver";
@@ -38,8 +38,8 @@ public abstract class FinderFragmentChangeObserver
     if ((paramInt >= 0) && (paramInt < this.fragments.size()))
     {
       localObject1 = ((FinderHomeTabFragment)this.fragments.get(paramInt)).getClass().getName();
-      p.g(localObject1, "fragments[position].javaClass.name");
-      com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sEs = (String)localObject1;
+      p.j(localObject1, "fragments[position].javaClass.name");
+      com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkn = (String)localObject1;
     }
     if (this.lastIndex != paramInt)
     {
@@ -51,7 +51,7 @@ public abstract class FinderFragmentChangeObserver
         Object localObject2 = localIterator.next();
         int j = i + 1;
         if (i < 0) {
-          j.hxH();
+          j.iBO();
         }
         localObject2 = (FinderHomeTabFragment)localObject2;
         if (paramInt == i)
@@ -69,7 +69,7 @@ public abstract class FinderFragmentChangeObserver
           i = j;
         }
       }
-      D(this.lastIndex, paramInt, this.lastType, ((FinderHomeTabFragment)this.fragments.get(paramInt)).dLS);
+      H(this.lastIndex, paramInt, this.lastType, ((FinderHomeTabFragment)this.fragments.get(paramInt)).fEH);
       if (localObject1 != null)
       {
         ((FinderHomeTabFragment)localObject1).onUserVisibleFocused();
@@ -77,10 +77,10 @@ public abstract class FinderFragmentChangeObserver
       }
     }
     this.lastIndex = paramInt;
-    this.lastType = ((FinderHomeTabFragment)this.fragments.get(paramInt)).dLS;
+    this.lastType = ((FinderHomeTabFragment)this.fragments.get(paramInt)).fEH;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderFragmentChangeObserver$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderFragmentChangeObserver$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 

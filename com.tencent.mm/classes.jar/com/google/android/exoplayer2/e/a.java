@@ -10,10 +10,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 @TargetApi(16)
 public final class a
 {
-  public final boolean bfX;
-  public final boolean bsX;
-  public final boolean bsY;
-  public final MediaCodecInfo.CodecCapabilities bsZ;
+  public final boolean aPx;
+  public final boolean bcA;
+  public final boolean bcB;
+  public final MediaCodecInfo.CodecCapabilities bcC;
   public final String mimeType;
   public final String name;
   
@@ -22,7 +22,7 @@ public final class a
     AppMethodBeat.i(92353);
     this.name = ((String)com.google.android.exoplayer2.i.a.checkNotNull(paramString1));
     this.mimeType = paramString2;
-    this.bsZ = paramCodecCapabilities;
+    this.bcC = paramCodecCapabilities;
     if ((!paramBoolean1) && (paramCodecCapabilities != null)) {
       if ((x.SDK_INT >= 19) && (paramCodecCapabilities.isFeatureSupported("adaptive-playback")))
       {
@@ -32,7 +32,7 @@ public final class a
         }
         paramBoolean1 = true;
         label70:
-        this.bsX = paramBoolean1;
+        this.bcA = paramBoolean1;
         if (paramCodecCapabilities == null) {
           break label189;
         }
@@ -46,7 +46,7 @@ public final class a
         }
         paramBoolean1 = true;
         label108:
-        this.bfX = paramBoolean1;
+        this.aPx = paramBoolean1;
         if (!paramBoolean2)
         {
           paramBoolean1 = bool;
@@ -70,7 +70,7 @@ public final class a
       if (i != 0) {
         paramBoolean1 = true;
       }
-      this.bsY = paramBoolean1;
+      this.bcB = paramBoolean1;
       AppMethodBeat.o(92353);
       return;
       i = 0;
@@ -111,16 +111,16 @@ public final class a
   public final boolean a(int paramInt1, int paramInt2, double paramDouble)
   {
     AppMethodBeat.i(92354);
-    if (this.bsZ == null)
+    if (this.bcC == null)
     {
-      bh("sizeAndRate.caps");
+      bs("sizeAndRate.caps");
       AppMethodBeat.o(92354);
       return false;
     }
-    Object localObject = this.bsZ.getVideoCapabilities();
+    Object localObject = this.bcC.getVideoCapabilities();
     if (localObject == null)
     {
-      bh("sizeAndRate.vCaps");
+      bs("sizeAndRate.vCaps");
       AppMethodBeat.o(92354);
       return false;
     }
@@ -128,35 +128,35 @@ public final class a
     {
       if ((paramInt1 >= paramInt2) || (!a((MediaCodecInfo.VideoCapabilities)localObject, paramInt2, paramInt1, paramDouble)))
       {
-        bh("sizeAndRate.support, " + paramInt1 + "x" + paramInt2 + "x" + paramDouble);
+        bs("sizeAndRate.support, " + paramInt1 + "x" + paramInt2 + "x" + paramDouble);
         AppMethodBeat.o(92354);
         return false;
       }
       localObject = "sizeAndRate.rotated, " + paramInt1 + "x" + paramInt2 + "x" + paramDouble;
-      new StringBuilder("AssumedSupport [").append((String)localObject).append("] [").append(this.name).append(", ").append(this.mimeType).append("] [").append(x.bHH).append("]");
+      new StringBuilder("AssumedSupport [").append((String)localObject).append("] [").append(this.name).append(", ").append(this.mimeType).append("] [").append(x.brr).append("]");
     }
     AppMethodBeat.o(92354);
     return true;
   }
   
-  public final void bh(String paramString)
+  public final void bs(String paramString)
   {
     AppMethodBeat.i(92355);
-    new StringBuilder("NoSupport [").append(paramString).append("] [").append(this.name).append(", ").append(this.mimeType).append("] [").append(x.bHH).append("]");
+    new StringBuilder("NoSupport [").append(paramString).append("] [").append(this.name).append(", ").append(this.mimeType).append("] [").append(x.brr).append("]");
     AppMethodBeat.o(92355);
   }
   
-  public final MediaCodecInfo.CodecProfileLevel[] uZ()
+  public final MediaCodecInfo.CodecProfileLevel[] sU()
   {
-    if ((this.bsZ == null) || (this.bsZ.profileLevels == null)) {
+    if ((this.bcC == null) || (this.bcC.profileLevels == null)) {
       return new MediaCodecInfo.CodecProfileLevel[0];
     }
-    return this.bsZ.profileLevels;
+    return this.bcC.profileLevels;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.e.a
  * JD-Core Version:    0.7.0.1
  */

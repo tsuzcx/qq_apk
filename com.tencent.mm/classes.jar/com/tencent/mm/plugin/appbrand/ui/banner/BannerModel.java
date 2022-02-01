@@ -4,18 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 
 final class BannerModel
   implements Parcelable
 {
   public static final Parcelable.Creator<BannerModel> CREATOR;
-  private static volatile BannerModel oay;
+  private static volatile BannerModel rcd;
   String appId;
   String appName;
-  int iOo;
-  String kVZ;
-  String oax;
+  int cBU;
+  String nQm;
+  String rcc;
   
   static
   {
@@ -30,20 +30,20 @@ final class BannerModel
   {
     AppMethodBeat.i(49037);
     this.appId = paramParcel.readString();
-    this.iOo = paramParcel.readInt();
+    this.cBU = paramParcel.readInt();
     this.appName = paramParcel.readString();
-    this.kVZ = paramParcel.readString();
-    this.oax = paramParcel.readString();
+    this.nQm = paramParcel.readString();
+    this.rcc = paramParcel.readString();
     AppMethodBeat.o(49037);
   }
   
-  static BannerModel bYe()
+  static BannerModel ckP()
   {
     AppMethodBeat.i(49038);
     try
     {
-      BannerModel localBannerModel = ((e)g.af(e.class)).bXW();
-      oay = localBannerModel;
+      BannerModel localBannerModel = ((e)h.ae(e.class)).ckH();
+      rcd = localBannerModel;
       return localBannerModel;
     }
     finally
@@ -52,14 +52,18 @@ final class BannerModel
     }
   }
   
-  static BannerModel bYf()
+  static BannerModel ckQ()
   {
     try
     {
-      BannerModel localBannerModel = oay;
+      BannerModel localBannerModel = rcd;
       return localBannerModel;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public final int describeContents()
@@ -71,16 +75,16 @@ final class BannerModel
   {
     AppMethodBeat.i(49036);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.iOo);
+    paramParcel.writeInt(this.cBU);
     paramParcel.writeString(this.appName);
-    paramParcel.writeString(this.kVZ);
-    paramParcel.writeString(this.oax);
+    paramParcel.writeString(this.nQm);
+    paramParcel.writeString(this.rcc);
     AppMethodBeat.o(49036);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.banner.BannerModel
  * JD-Core Version:    0.7.0.1
  */

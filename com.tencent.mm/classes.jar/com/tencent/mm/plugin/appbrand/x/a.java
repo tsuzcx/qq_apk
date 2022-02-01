@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.appbrand.x;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.t.b.a;
+import com.tencent.mm.plugin.appbrand.jsapi.u.b.a;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class a
 {
-  private static final Map<Integer, Object> hno;
+  private static final Map<Integer, Object> jZc;
   
   static
   {
     AppMethodBeat.i(48006);
-    hno = new HashMap();
+    jZc = new HashMap();
     AppMethodBeat.o(48006);
   }
   
-  public static void bUc()
-  {
-    AppMethodBeat.i(48004);
-    hno.clear();
-    AppMethodBeat.o(48004);
-  }
-  
-  public static void bUd()
-  {
-    AppMethodBeat.i(48005);
-    com.tencent.mm.plugin.appbrand.jsapi.t.b.mnM = new b.a()
-    {
-      public final void xl(int paramAnonymousInt)
-      {
-        AppMethodBeat.i(48002);
-        a.zc(paramAnonymousInt);
-        AppMethodBeat.o(48002);
-      }
-    };
-    AppMethodBeat.o(48005);
-  }
-  
-  public static void zc(int paramInt)
+  public static void CH(int paramInt)
   {
     AppMethodBeat.i(48003);
-    if (!hno.containsKey(Integer.valueOf(paramInt)))
+    if (!jZc.containsKey(Integer.valueOf(paramInt)))
     {
       AppMethodBeat.o(48003);
       return;
     }
-    hno.get(Integer.valueOf(paramInt));
+    jZc.get(Integer.valueOf(paramInt));
     AppMethodBeat.o(48003);
+  }
+  
+  public static void chi()
+  {
+    AppMethodBeat.i(48004);
+    jZc.clear();
+    AppMethodBeat.o(48004);
+  }
+  
+  public static void chj()
+  {
+    AppMethodBeat.i(48005);
+    com.tencent.mm.plugin.appbrand.jsapi.u.b.plS = new b.a()
+    {
+      public final void AH(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(48002);
+        a.CH(paramAnonymousInt);
+        AppMethodBeat.o(48002);
+      }
+    };
+    AppMethodBeat.o(48005);
   }
 }
 

@@ -1,98 +1,63 @@
 package com.tencent.mm.plugin.appbrand.performance;
 
 import android.os.Build.VERSION;
-import android.os.HandlerThread;
 import android.util.SparseArray;
 import com.tencent.luggage.game.c.h;
 import com.tencent.luggage.game.c.h.a;
 import com.tencent.magicbrush.MBRuntime;
+import com.tencent.magicbrush.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySessionRuntime;
+import com.tencent.mm.plugin.appbrand.t;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class b
   extends AppBrandPerformanceManager
 {
-  public static void E(q paramq)
+  public static void F(t paramt)
   {
     AppMethodBeat.i(47986);
-    String str = paramq.mAppId;
+    String str = paramt.mAppId;
     Log.d("MicroMsg.AppBrandPerformanceManagerWC", "startMonitoring, appId: %s", new Object[] { str });
-    AppBrandPerformanceManager.a locala = (AppBrandPerformanceManager.a)nwB.get(str.hashCode());
+    AppBrandPerformanceManager.a locala = (AppBrandPerformanceManager.a)qyE.get(str.hashCode());
     Object localObject = locala;
     if (!(locala instanceof b))
     {
       if (locala != null) {
         locala.stop();
       }
-      localObject = new b(paramq);
-      nwB.put(str.hashCode(), localObject);
+      localObject = new b(paramt);
+      qyE.put(str.hashCode(), localObject);
     }
     ((AppBrandPerformanceManager.a)localObject).start();
     AppMethodBeat.o(47986);
   }
   
-  public static enum a
-  {
-    private volatile HandlerThread mThread;
-    
-    static
-    {
-      AppMethodBeat.i(227353);
-      nwM = new a("INST");
-      nwN = new a[] { nwM };
-      AppMethodBeat.o(227353);
-    }
-    
-    private a() {}
-    
-    public final HandlerThread bSR()
-    {
-      AppMethodBeat.i(227352);
-      if (this.mThread == null) {}
-      try
-      {
-        if (this.mThread == null)
-        {
-          this.mThread = com.tencent.f.c.d.bqr("MicroMsg.AppBrandPerformanceManager.DumpTraceThread");
-          this.mThread.start();
-        }
-        HandlerThread localHandlerThread = this.mThread;
-        AppMethodBeat.o(227352);
-        return localHandlerThread;
-      }
-      finally
-      {
-        AppMethodBeat.o(227352);
-      }
-    }
-  }
-  
   static final class b
     extends AppBrandPerformanceManager.a
   {
-    b(q paramq)
+    b(t paramt)
     {
       super();
       AppMethodBeat.i(47978);
-      this.nwF = paramq.NA();
+      this.qyI = paramt.Qv();
       AppMethodBeat.o(47978);
     }
     
-    private com.tencent.magicbrush.a bSS()
+    private a cfV()
     {
       AppMethodBeat.i(47982);
       try
       {
-        localObject1 = (com.tencent.luggage.game.d.a.a.b)com.tencent.mm.plugin.appbrand.a.TQ(this.mAppId).bsE().S(com.tencent.luggage.game.d.a.a.b.class);
+        localObject1 = (com.tencent.luggage.game.d.a.a.b)com.tencent.mm.plugin.appbrand.d.abA(this.mAppId).bDA().R(com.tencent.luggage.game.d.a.a.b.class);
         if (localObject1 == null) {
           break label48;
         }
-        localObject1 = ((com.tencent.luggage.game.d.a.a.b)localObject1).getMagicBrush().cxx.QP();
+        localObject1 = ((com.tencent.luggage.game.d.a.a.b)localObject1).getMagicBrush().cwf.Uw();
       }
       catch (Exception localException)
       {
@@ -111,78 +76,82 @@ public final class b
       throw ((Throwable)localObject1);
     }
     
-    protected final void bSK()
+    protected final void cfN()
     {
       AppMethodBeat.i(47979);
-      super.bSK();
-      if (this.nwF)
+      super.cfN();
+      if (this.qyI)
       {
-        Object localObject = h.cvz;
-        localObject = h.Md();
-        c.a(this.mAppId, "Hardware", "NATIVE_MEMORY", ((h.a)localObject).cvE);
+        Object localObject = h.ctP;
+        localObject = h.OV();
+        c.a(this.mAppId, "Hardware", "NATIVE_MEMORY", ((h.a)localObject).ctU);
         if (Build.VERSION.SDK_INT >= 23)
         {
-          AppBrandPerformanceManager.a(this.cBE, 105, ((h.a)localObject).cvN);
-          c.a(this.mAppId, "Hardware", "SYSTEM_MEMORY", ((h.a)localObject).cvH);
-          c.a(this.mAppId, "Hardware", "TOTAL_SWAP_MEMORY", ((h.a)localObject).cvI);
-          c.a(this.mAppId, "Hardware", "JAVA_HEAP_MEMORY", ((h.a)localObject).cvJ);
-          c.a(this.mAppId, "Hardware", "PRIVATE_OTHER_MEMORY", ((h.a)localObject).cvK);
-          c.a(this.mAppId, "Hardware", "CODE_MEMORY", ((h.a)localObject).cvL);
-          c.a(this.mAppId, "Hardware", "STACK_MEMORY", ((h.a)localObject).cvM);
-          c.a(this.mAppId, "Hardware", "GRAPHICS_MEMORY", ((h.a)localObject).cvG);
+          AppBrandPerformanceManager.a(this.cBh, 105, ((h.a)localObject).cud);
+          c.a(this.mAppId, "Hardware", "SYSTEM_MEMORY", ((h.a)localObject).ctX);
+          c.a(this.mAppId, "Hardware", "TOTAL_SWAP_MEMORY", ((h.a)localObject).ctY);
+          c.a(this.mAppId, "Hardware", "JAVA_HEAP_MEMORY", ((h.a)localObject).ctZ);
+          c.a(this.mAppId, "Hardware", "PRIVATE_OTHER_MEMORY", ((h.a)localObject).cua);
+          c.a(this.mAppId, "Hardware", "CODE_MEMORY", ((h.a)localObject).cub);
+          c.a(this.mAppId, "Hardware", "STACK_MEMORY", ((h.a)localObject).cuc);
+          c.a(this.mAppId, "Hardware", "GRAPHICS_MEMORY", ((h.a)localObject).ctW);
         }
-        c.a(this.mAppId, "Hardware", "DALVIK_MEMORY", ((h.a)localObject).cvF);
+        c.a(this.mAppId, "Hardware", "DALVIK_MEMORY", ((h.a)localObject).ctV);
       }
       AppMethodBeat.o(47979);
     }
     
-    protected final void bSL()
+    protected final void cfO()
     {
       AppMethodBeat.i(47980);
-      if (!this.nwF)
+      if (!this.qyI)
       {
         AppMethodBeat.o(47980);
         return;
       }
-      if (this.cBE.isDestroyed())
+      if (this.cBh.ntU.get())
       {
         AppMethodBeat.o(47980);
         return;
       }
-      QualitySessionRuntime localQualitySessionRuntime = com.tencent.mm.plugin.appbrand.report.quality.b.aeU(this.mAppId);
+      QualitySessionRuntime localQualitySessionRuntime = com.tencent.mm.plugin.appbrand.report.quality.b.amO(this.mAppId);
       if (localQualitySessionRuntime != null) {}
-      for (int i = Util.getSelfMemInMB(MMApplicationContext.getContext()) - localQualitySessionRuntime.nLu;; i = 2147483647)
+      for (int i = Util.getSelfMemInMB(MMApplicationContext.getContext()) - localQualitySessionRuntime.qNH;; i = 2147483647)
       {
         if (i != 2147483647) {
-          AppBrandPerformanceManager.a(this.cBE, 103, i + "m");
+          AppBrandPerformanceManager.a(this.cBh, 103, i + "m");
         }
         AppMethodBeat.o(47980);
         return;
       }
     }
     
-    protected final void bSM()
+    protected final void cfP()
     {
       AppMethodBeat.i(47981);
-      if (!this.nwF)
+      if (!this.qyI)
       {
         AppMethodBeat.o(47981);
         return;
       }
-      Object localObject = bSS();
+      Object localObject = cfV();
       if (localObject == null)
       {
         AppMethodBeat.o(47981);
         return;
       }
-      c.a(this.mAppId, "Game", "FPS_GAME_RT", ((com.tencent.magicbrush.a)localObject).cKu);
-      c.a(this.mAppId, "Game", "FPS_GAME_EX", ((com.tencent.magicbrush.a)localObject).cKv);
+      AppBrandPerformanceManager.a(this.cBh, 303, Math.round(((a)localObject).cLa) + " fps");
+      c.a(this.mAppId, "Game", "FPS_GAME_RT", ((a)localObject).cLa);
+      c.a(this.mAppId, "Game", "FPS_GAME_EX", ((a)localObject).cLb);
+      c.a(this.mAppId, "Game", "JANK", ((a)localObject).cLc);
+      c.a(this.mAppId, "Game", "BIG_JANK", ((a)localObject).cLd);
+      c.a(this.mAppId, "Game", "STUTTER", ((a)localObject).cLe);
       try
       {
-        localObject = (com.tencent.mm.plugin.appbrand.game.c)com.tencent.mm.plugin.appbrand.a.TQ(this.mAppId).bsE();
-        int i = ((com.tencent.mm.plugin.appbrand.game.c)localObject).bCX().cxx.QR();
+        localObject = (com.tencent.mm.plugin.appbrand.game.c)com.tencent.mm.plugin.appbrand.d.abA(this.mAppId).bDA();
+        int i = ((com.tencent.mm.plugin.appbrand.game.c)localObject).bOs().cwf.Uy();
         c.a(this.mAppId, "Game", "FPS_GAME_LAG", i);
-        i = ((com.tencent.mm.plugin.appbrand.game.c)localObject).bCX().cxx.QS();
+        i = ((com.tencent.mm.plugin.appbrand.game.c)localObject).bOs().cwf.Uz();
         c.a(this.mAppId, "Game", "FPS_GAME_LOW", i);
         AppMethodBeat.o(47981);
         return;
@@ -194,17 +163,17 @@ public final class b
       }
     }
     
-    protected final void bSN()
+    protected final void cfQ()
     {
       AppMethodBeat.i(47983);
-      if (!this.nwF)
+      if (!this.qyI)
       {
         AppMethodBeat.o(47983);
         return;
       }
       try
       {
-        int i = ((com.tencent.mm.plugin.appbrand.game.c)com.tencent.mm.plugin.appbrand.a.TQ(this.mAppId).bsE()).bCX().cxx.QW();
+        int i = ((com.tencent.mm.plugin.appbrand.game.c)com.tencent.mm.plugin.appbrand.d.abA(this.mAppId).bDA()).bOs().cwf.UD();
         c.a(this.mAppId, "Game", "DRAW_CALLS", i);
         AppMethodBeat.o(47983);
         return;
@@ -216,17 +185,17 @@ public final class b
       }
     }
     
-    protected final void bSO()
+    protected final void cfR()
     {
       AppMethodBeat.i(47984);
-      if (!this.nwF)
+      if (!this.qyI)
       {
         AppMethodBeat.o(47984);
         return;
       }
       try
       {
-        int i = ((com.tencent.mm.plugin.appbrand.game.c)com.tencent.mm.plugin.appbrand.a.TQ(this.mAppId).bsE()).bCX().cxx.QX();
+        int i = ((com.tencent.mm.plugin.appbrand.game.c)com.tencent.mm.plugin.appbrand.d.abA(this.mAppId).bDA()).bOs().cwf.UE();
         c.a(this.mAppId, "Game", "VERTEXES", i);
         AppMethodBeat.o(47984);
         return;
@@ -238,17 +207,17 @@ public final class b
       }
     }
     
-    protected final void bSP()
+    protected final void cfS()
     {
       AppMethodBeat.i(47985);
-      if (!this.nwF)
+      if (!this.qyI)
       {
         AppMethodBeat.o(47985);
         return;
       }
       try
       {
-        int i = ((com.tencent.mm.plugin.appbrand.game.c)com.tencent.mm.plugin.appbrand.a.TQ(this.mAppId).bsE()).bCX().cxx.QY();
+        int i = ((com.tencent.mm.plugin.appbrand.game.c)com.tencent.mm.plugin.appbrand.d.abA(this.mAppId).bDA()).bOs().cwf.UF();
         c.a(this.mAppId, "Game", "TRIANGLES", i);
         AppMethodBeat.o(47985);
         return;
@@ -263,7 +232,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.performance.b
  * JD-Core Version:    0.7.0.1
  */

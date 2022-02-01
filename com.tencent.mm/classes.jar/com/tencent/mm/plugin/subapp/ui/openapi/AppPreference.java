@@ -11,7 +11,8 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.R.a;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.n;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.pluginsdk.model.app.ao;
 import com.tencent.mm.pluginsdk.model.app.g;
@@ -22,15 +23,15 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class AppPreference
   extends Preference
 {
-  int FMp;
-  a FMr;
-  AdapterView.OnItemClickListener FMs;
-  AdapterView.OnItemClickListener FMt;
-  private View.OnClickListener FMu;
-  private int FMv;
-  private int FMw;
+  private boolean ELO;
+  int Mgr;
+  a Mgt;
+  AdapterView.OnItemClickListener Mgu;
+  AdapterView.OnItemClickListener Mgv;
+  private View.OnClickListener Mgw;
+  private int Mgx;
+  private int Mgy;
   private Context context;
-  private boolean zgH;
   
   public AppPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -41,30 +42,30 @@ public class AppPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29137);
-    this.FMs = null;
-    this.FMt = null;
-    this.FMu = null;
-    this.FMp = 0;
-    this.zgH = false;
-    this.FMw = 0;
+    this.Mgu = null;
+    this.Mgv = null;
+    this.Mgw = null;
+    this.Mgr = 0;
+    this.ELO = false;
+    this.Mgy = 0;
     this.context = paramContext;
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.a.AppPreference);
-    this.FMv = paramContext.getInt(0, 8);
-    this.zgH = paramContext.getBoolean(1, false);
-    this.FMw = paramContext.getResourceId(2, 0);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.n.eWw);
+    this.Mgx = paramContext.getInt(R.n.eWx, 8);
+    this.ELO = paramContext.getBoolean(R.n.eWy, false);
+    this.Mgy = paramContext.getResourceId(R.n.eWz, 0);
     paramContext.recycle();
     AppMethodBeat.o(29137);
   }
   
-  public final g abn(int paramInt)
+  public final g aiJ(int paramInt)
   {
     AppMethodBeat.i(29139);
-    if ((paramInt < 0) || (paramInt >= this.FMr.getCount()))
+    if ((paramInt < 0) || (paramInt >= this.Mgt.getCount()))
     {
       AppMethodBeat.o(29139);
       return null;
     }
-    g localg = (g)this.FMr.getItem(paramInt);
+    g localg = (g)this.Mgt.getItem(paramInt);
     AppMethodBeat.o(29139);
     return localg;
   }
@@ -73,28 +74,28 @@ public class AppPreference
   {
     AppMethodBeat.i(29138);
     super.onBindView(paramView);
-    MMGridView localMMGridView = (MMGridView)paramView.findViewById(2131302175);
-    this.FMr = new a(this.context, this.FMp);
-    localMMGridView.setAdapter(this.FMr);
+    MMGridView localMMGridView = (MMGridView)paramView.findViewById(R.h.dHZ);
+    this.Mgt = new a(this.context, this.Mgr);
+    localMMGridView.setAdapter(this.Mgt);
     localMMGridView.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(29135);
         b localb = new b();
-        localb.bm(paramAnonymousAdapterView);
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.zo(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/subapp/ui/openapi/AppPreference$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
-        if (AppPreference.a(AppPreference.this).Ox(paramAnonymousInt))
+        localb.bn(paramAnonymousAdapterView);
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.Fs(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/subapp/ui/openapi/AppPreference$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+        if (AppPreference.a(AppPreference.this).TR(paramAnonymousInt))
         {
-          AppPreference.a(AppPreference.this).we(false);
+          AppPreference.a(AppPreference.this).zK(false);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/subapp/ui/openapi/AppPreference$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(29135);
           return;
         }
-        if (AppPreference.a(AppPreference.this).FMo) {
+        if (AppPreference.a(AppPreference.this).Mgq) {
           if (AppPreference.b(AppPreference.this) != null) {
             AppPreference.b(AppPreference.this).onItemClick(paramAnonymousAdapterView, paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
           }
@@ -110,42 +111,42 @@ public class AppPreference
         }
       }
     });
-    if (this.zgH) {
+    if (this.ELO) {
       localMMGridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
       {
         public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(29136);
           paramAnonymousAdapterView = AppPreference.this;
-          if (paramAnonymousAdapterView.FMr != null)
+          if (paramAnonymousAdapterView.Mgt != null)
           {
-            paramAnonymousView = paramAnonymousAdapterView.FMr;
-            if (paramAnonymousAdapterView.FMr.FMo) {
+            paramAnonymousView = paramAnonymousAdapterView.Mgt;
+            if (paramAnonymousAdapterView.Mgt.Mgq) {
               break label50;
             }
           }
           label50:
           for (boolean bool = true;; bool = false)
           {
-            paramAnonymousView.we(bool);
+            paramAnonymousView.zK(bool);
             AppMethodBeat.o(29136);
             return true;
           }
         }
       });
     }
-    TextView localTextView = (TextView)paramView.findViewById(2131300110);
-    if (this.FMr.getCount() == 0)
+    TextView localTextView = (TextView)paramView.findViewById(R.h.empty_tv);
+    if (this.Mgt.getCount() == 0)
     {
       localTextView.setVisibility(0);
-      localTextView.setText(this.FMw);
+      localTextView.setText(this.Mgy);
       localMMGridView.setVisibility(8);
     }
     for (;;)
     {
-      paramView = (Button)paramView.findViewById(2131297813);
-      paramView.setVisibility(this.FMv);
-      paramView.setOnClickListener(this.FMu);
+      paramView = (Button)paramView.findViewById(R.h.btn);
+      paramView.setVisibility(this.Mgx);
+      paramView.setOnClickListener(this.Mgw);
       AppMethodBeat.o(29138);
       return;
       localTextView.setVisibility(8);
@@ -156,8 +157,8 @@ public class AppPreference
   public final void onPause()
   {
     AppMethodBeat.i(29141);
-    if (this.FMr != null) {
-      ao.eAS().remove(this.FMr);
+    if (this.Mgt != null) {
+      ao.fmz().remove(this.Mgt);
     }
     AppMethodBeat.o(29141);
   }
@@ -165,15 +166,15 @@ public class AppPreference
   public final void onResume()
   {
     AppMethodBeat.i(29140);
-    if (this.FMr != null) {
-      ao.eAS().add(this.FMr);
+    if (this.Mgt != null) {
+      ao.fmz().add(this.Mgt);
     }
     AppMethodBeat.o(29140);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.openapi.AppPreference
  * JD-Core Version:    0.7.0.1
  */

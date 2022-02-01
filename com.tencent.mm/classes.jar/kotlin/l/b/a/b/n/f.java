@@ -21,19 +21,19 @@ public abstract class f
   
   public final String i(t paramt)
   {
-    p.h(paramt, "functionDescriptor");
+    p.k(paramt, "functionDescriptor");
     return b.a.a(this, paramt);
   }
   
   public static final class a
     extends f
   {
-    public static final a TQp;
+    public static final a absO;
     
     static
     {
       AppMethodBeat.i(61298);
-      TQp = new a();
+      absO = new a();
       AppMethodBeat.o(61298);
     }
     
@@ -45,8 +45,8 @@ public abstract class f
     public final boolean h(t paramt)
     {
       AppMethodBeat.i(61297);
-      p.h(paramt, "functionDescriptor");
-      if (paramt.hAs() != null)
+      p.k(paramt, "functionDescriptor");
+      if (paramt.iEF() != null)
       {
         AppMethodBeat.o(61297);
         return true;
@@ -59,12 +59,12 @@ public abstract class f
   public static final class b
     extends f
   {
-    public static final b TQq;
+    public static final b absP;
     
     static
     {
       AppMethodBeat.i(61300);
-      TQq = new b();
+      absP = new b();
       AppMethodBeat.o(61300);
     }
     
@@ -76,8 +76,8 @@ public abstract class f
     public final boolean h(t paramt)
     {
       AppMethodBeat.i(61299);
-      p.h(paramt, "functionDescriptor");
-      if ((paramt.hAs() != null) || (paramt.hAr() != null))
+      p.k(paramt, "functionDescriptor");
+      if ((paramt.iEF() != null) || (paramt.iEE() != null))
       {
         AppMethodBeat.o(61299);
         return true;
@@ -89,7 +89,7 @@ public abstract class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.n.f
  * JD-Core Version:    0.7.0.1
  */

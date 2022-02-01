@@ -8,25 +8,25 @@ import android.graphics.Path;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.wxpay.a.a;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.wxpay.a.k;
 
 public class LuckMoneyEnvelopeTempTagImageView
   extends ImageView
 {
+  private Paint EFQ;
+  private Path auD;
   private String mText;
-  private Path xT;
-  private Paint zbt;
   
   public LuckMoneyEnvelopeTempTagImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(65417);
-    this.zbt = new Paint();
-    this.xT = new Path();
+    this.EFQ = new Paint();
+    this.auD = new Path();
     this.mText = "";
-    this.zbt.setAntiAlias(true);
-    c(paramContext, paramAttributeSet, -1);
+    this.EFQ.setAntiAlias(true);
+    b(paramContext, paramAttributeSet, -1);
     AppMethodBeat.o(65417);
   }
   
@@ -34,23 +34,23 @@ public class LuckMoneyEnvelopeTempTagImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(65418);
-    this.zbt = new Paint();
-    this.xT = new Path();
+    this.EFQ = new Paint();
+    this.auD = new Path();
     this.mText = "";
-    this.zbt.setAntiAlias(true);
-    c(paramContext, paramAttributeSet, paramInt);
+    this.EFQ.setAntiAlias(true);
+    b(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.o(65418);
   }
   
-  private void c(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  private void b(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     AppMethodBeat.i(65419);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.LuckMoneyEnvelopeTempTagImageView, paramInt, 0);
-    this.mText = paramContext.getString(0);
-    paramInt = paramContext.getColor(1, 0);
-    this.zbt.setColor(paramInt);
-    paramInt = paramContext.getDimensionPixelSize(2, 0);
-    this.zbt.setTextSize(paramInt);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.k.LuckMoneyEnvelopeTempTagImageView, paramInt, 0);
+    this.mText = paramContext.getString(a.k.LuckMoneyEnvelopeTempTagImageView_tagText);
+    paramInt = paramContext.getColor(a.k.LuckMoneyEnvelopeTempTagImageView_tagTextColor, 0);
+    this.EFQ.setColor(paramInt);
+    paramInt = paramContext.getDimensionPixelSize(a.k.LuckMoneyEnvelopeTempTagImageView_tagTextSize, 0);
+    this.EFQ.setTextSize(paramInt);
     paramContext.recycle();
     AppMethodBeat.o(65419);
   }
@@ -59,17 +59,17 @@ public class LuckMoneyEnvelopeTempTagImageView
   {
     AppMethodBeat.i(65420);
     super.onDraw(paramCanvas);
-    this.xT.moveTo(0.0F, 0.0F);
+    this.auD.moveTo(0.0F, 0.0F);
     int i = a.fromDPToPix(getContext(), 98);
-    this.xT.lineTo(i, i);
-    i = (int)((a.fromDPToPix(getContext(), 139) - this.zbt.measureText(this.mText)) / 2.0F);
-    paramCanvas.drawTextOnPath(this.mText, this.xT, i, -30.0F, this.zbt);
+    this.auD.lineTo(i, i);
+    i = (int)((a.fromDPToPix(getContext(), 139) - this.EFQ.measureText(this.mText)) / 2.0F);
+    paramCanvas.drawTextOnPath(this.mText, this.auD, i, -30.0F, this.EFQ);
     AppMethodBeat.o(65420);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckMoneyEnvelopeTempTagImageView
  * JD-Core Version:    0.7.0.1
  */

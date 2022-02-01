@@ -17,7 +17,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.api.SmileyPanel;
 import com.tencent.mm.api.ad;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.finder.storage.c;
+import com.tencent.mm.plugin.finder.b.e;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.storage.d;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
 import com.tencent.mm.sdk.platformtools.KeyBoardUtil;
@@ -29,28 +31,28 @@ import kotlin.l;
 import kotlin.t;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderPostFooter;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "activity", "Lcom/tencent/mm/ui/MMActivity;", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "setActivity", "(Lcom/tencent/mm/ui/MMActivity;)V", "activityReqCode", "", "getActivityReqCode", "()I", "setActivityReqCode", "(I)V", "atBtn", "Landroid/view/View;", "getAtBtn", "()Landroid/view/View;", "setAtBtn", "(Landroid/view/View;)V", "atReqCode", "getAtReqCode", "setAtReqCode", "backClickListener", "Lkotlin/Function0;", "", "getBackClickListener", "()Lkotlin/jvm/functions/Function0;", "setBackClickListener", "(Lkotlin/jvm/functions/Function0;)V", "container", "getContainer", "setContainer", "editText", "Lcom/tencent/mm/ui/widget/MMEditText;", "getEditText", "()Lcom/tencent/mm/ui/widget/MMEditText;", "setEditText", "(Lcom/tencent/mm/ui/widget/MMEditText;)V", "iTopicCallback", "Lcom/tencent/mm/plugin/finder/view/FinderPostFooter$ITopicCallback;", "getITopicCallback", "()Lcom/tencent/mm/plugin/finder/view/FinderPostFooter$ITopicCallback;", "setITopicCallback", "(Lcom/tencent/mm/plugin/finder/view/FinderPostFooter$ITopicCallback;)V", "isShowKeyboard", "", "smileyBtn", "Landroid/widget/ImageView;", "getSmileyBtn", "()Landroid/widget/ImageView;", "setSmileyBtn", "(Landroid/widget/ImageView;)V", "smileyPanel", "Lcom/tencent/mm/api/SmileyPanel;", "getSmileyPanel", "()Lcom/tencent/mm/api/SmileyPanel;", "setSmileyPanel", "(Lcom/tencent/mm/api/SmileyPanel;)V", "smileyPanelHeight", "", "topicBtn", "getTopicBtn", "setTopicBtn", "initView", "onFinishInflate", "onHideSmileyPanel", "onKeyboardHeightChanged", "height", "onShowSmileyPanel", "onSmileyBtnClick", "isShowSmiley", "forceShowVKB", "showAtBtn", "show", "showTopicBtn", "Companion", "ITopicCallback", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderPostFooter;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "activity", "Lcom/tencent/mm/ui/MMActivity;", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "setActivity", "(Lcom/tencent/mm/ui/MMActivity;)V", "activityReqCode", "", "getActivityReqCode", "()I", "setActivityReqCode", "(I)V", "atBtn", "Landroid/view/View;", "getAtBtn", "()Landroid/view/View;", "setAtBtn", "(Landroid/view/View;)V", "atReqCode", "getAtReqCode", "setAtReqCode", "backClickListener", "Lkotlin/Function0;", "", "getBackClickListener", "()Lkotlin/jvm/functions/Function0;", "setBackClickListener", "(Lkotlin/jvm/functions/Function0;)V", "container", "getContainer", "setContainer", "editText", "Lcom/tencent/mm/ui/widget/MMEditText;", "getEditText", "()Lcom/tencent/mm/ui/widget/MMEditText;", "setEditText", "(Lcom/tencent/mm/ui/widget/MMEditText;)V", "iTopicCallback", "Lcom/tencent/mm/plugin/finder/view/FinderPostFooter$ITopicCallback;", "getITopicCallback", "()Lcom/tencent/mm/plugin/finder/view/FinderPostFooter$ITopicCallback;", "setITopicCallback", "(Lcom/tencent/mm/plugin/finder/view/FinderPostFooter$ITopicCallback;)V", "isShowKeyboard", "", "smileyBtn", "Landroid/widget/ImageView;", "getSmileyBtn", "()Landroid/widget/ImageView;", "setSmileyBtn", "(Landroid/widget/ImageView;)V", "smileyPanel", "Lcom/tencent/mm/api/SmileyPanel;", "getSmileyPanel", "()Lcom/tencent/mm/api/SmileyPanel;", "setSmileyPanel", "(Lcom/tencent/mm/api/SmileyPanel;)V", "smileyPanelHeight", "", "topicBtn", "getTopicBtn", "setTopicBtn", "initView", "onFinishInflate", "onHideSmileyPanel", "onKeyboardHeightChanged", "height", "onShowSmileyPanel", "onSmileyBtnClick", "isShowSmiley", "forceShowVKB", "showAtBtn", "show", "showTopicBtn", "Companion", "ITopicCallback", "plugin-finder_release"})
 public final class FinderPostFooter
   extends LinearLayout
 {
-  public static final a wot;
+  public static final a AZA;
+  public ImageView AVM;
+  public MMEditText AVN;
+  public float AVS;
+  private kotlin.g.a.a<x> AVV;
+  public View AZv;
+  public View AZw;
+  public int AZx;
+  public int AZy;
+  public b AZz;
   public MMActivity activity;
-  public SmileyPanel hQS;
-  public View jxm;
-  public ImageView wkR;
-  public MMEditText wkS;
-  public float wkX;
-  private kotlin.g.a.a<x> wla;
-  public View woo;
-  public View wop;
-  public int woq;
-  public int wor;
-  public b wos;
+  public View fyN;
+  public SmileyPanel kFp;
   
   static
   {
     AppMethodBeat.i(168396);
-    wot = new a((byte)0);
+    AZA = new a((byte)0);
     AppMethodBeat.o(168396);
   }
   
@@ -58,68 +60,68 @@ public final class FinderPostFooter
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(168395);
-    this.wkX = KeyBoardUtil.getKeyBordHeightPx(getContext());
+    this.AVS = KeyBoardUtil.getKeyBordHeightPx(getContext());
     AppMethodBeat.o(168395);
   }
   
-  private final void aHz()
+  private final void aPz()
   {
     AppMethodBeat.i(168394);
-    Object localObject = this.wkR;
+    Object localObject = this.AVM;
     if (localObject == null) {
-      p.btv("smileyBtn");
+      p.bGy("smileyBtn");
     }
-    ((ImageView)localObject).setImageResource(2131231772);
-    localObject = this.wkR;
+    ((ImageView)localObject).setImageResource(b.e.chatting_setmode_biaoqing_btn);
+    localObject = this.AVM;
     if (localObject == null) {
-      p.btv("smileyBtn");
+      p.bGy("smileyBtn");
     }
     ((ImageView)localObject).setTag(Boolean.FALSE);
-    localObject = this.hQS;
+    localObject = this.kFp;
     if (localObject == null) {
-      p.btv("smileyPanel");
+      p.bGy("smileyPanel");
     }
     ((SmileyPanel)localObject).animate().alpha(0.0F).setDuration(220L).setListener((Animator.AnimatorListener)new i(this)).start();
     AppMethodBeat.o(168394);
   }
   
-  private final void dHa()
+  private final void eiZ()
   {
     AppMethodBeat.i(168393);
-    Object localObject = this.hQS;
+    Object localObject = this.kFp;
     if (localObject == null) {
-      p.btv("smileyPanel");
+      p.bGy("smileyPanel");
     }
     ((SmileyPanel)localObject).setVisibility(0);
-    localObject = this.wkR;
+    localObject = this.AVM;
     if (localObject == null) {
-      p.btv("smileyBtn");
+      p.bGy("smileyBtn");
     }
-    ((ImageView)localObject).setImageResource(2131231772);
-    localObject = this.wkR;
+    ((ImageView)localObject).setImageResource(b.e.chatting_setmode_biaoqing_btn);
+    localObject = this.AVM;
     if (localObject == null) {
-      p.btv("smileyBtn");
+      p.bGy("smileyBtn");
     }
     ((ImageView)localObject).setTag(Boolean.TRUE);
-    localObject = this.hQS;
+    localObject = this.kFp;
     if (localObject == null) {
-      p.btv("smileyPanel");
+      p.bGy("smileyPanel");
     }
     ((SmileyPanel)localObject).setAlpha(0.0F);
-    localObject = this.hQS;
+    localObject = this.kFp;
     if (localObject == null) {
-      p.btv("smileyPanel");
+      p.bGy("smileyPanel");
     }
     ((SmileyPanel)localObject).animate().alpha(1.0F).setDuration(220L).setListener(null).start();
     AppMethodBeat.o(168393);
   }
   
-  public final void R(boolean paramBoolean1, boolean paramBoolean2)
+  public final void Z(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(168391);
     if (!paramBoolean1)
     {
-      aHz();
+      aPz();
       if (paramBoolean2)
       {
         localObject = getContext();
@@ -134,14 +136,14 @@ public final class FinderPostFooter
     }
     while (paramBoolean1)
     {
-      localObject = this.wkR;
+      localObject = this.AVM;
       if (localObject == null) {
-        p.btv("smileyBtn");
+        p.bGy("smileyBtn");
       }
-      ((ImageView)localObject).setImageResource(2131231777);
+      ((ImageView)localObject).setImageResource(b.e.chatting_setmode_keyboard_btn);
       AppMethodBeat.o(168391);
       return;
-      dHa();
+      eiZ();
       localObject = getContext();
       if (localObject == null)
       {
@@ -151,78 +153,78 @@ public final class FinderPostFooter
       }
       ((MMActivity)localObject).hideVKB();
     }
-    Object localObject = this.wkR;
+    Object localObject = this.AVM;
     if (localObject == null) {
-      p.btv("smileyBtn");
+      p.bGy("smileyBtn");
     }
-    ((ImageView)localObject).setImageResource(2131231772);
+    ((ImageView)localObject).setImageResource(b.e.chatting_setmode_biaoqing_btn);
     AppMethodBeat.o(168391);
   }
   
   public final MMActivity getActivity()
   {
-    AppMethodBeat.i(254895);
+    AppMethodBeat.i(272489);
     MMActivity localMMActivity = this.activity;
     if (localMMActivity == null) {
-      p.btv("activity");
+      p.bGy("activity");
     }
-    AppMethodBeat.o(254895);
+    AppMethodBeat.o(272489);
     return localMMActivity;
   }
   
   public final int getActivityReqCode()
   {
-    return this.wor;
+    return this.AZy;
   }
   
   public final View getAtBtn()
   {
-    AppMethodBeat.i(254899);
-    View localView = this.wop;
+    AppMethodBeat.i(272494);
+    View localView = this.AZw;
     if (localView == null) {
-      p.btv("atBtn");
+      p.bGy("atBtn");
     }
-    AppMethodBeat.o(254899);
+    AppMethodBeat.o(272494);
     return localView;
   }
   
   public final int getAtReqCode()
   {
-    return this.woq;
+    return this.AZx;
   }
   
   public final kotlin.g.a.a<x> getBackClickListener()
   {
-    return this.wla;
+    return this.AVV;
   }
   
   public final View getContainer()
   {
-    return this.jxm;
+    return this.fyN;
   }
   
   public final MMEditText getEditText()
   {
-    return this.wkS;
+    return this.AVN;
   }
   
   public final b getITopicCallback()
   {
-    AppMethodBeat.i(254901);
-    b localb = this.wos;
+    AppMethodBeat.i(272496);
+    b localb = this.AZz;
     if (localb == null) {
-      p.btv("iTopicCallback");
+      p.bGy("iTopicCallback");
     }
-    AppMethodBeat.o(254901);
+    AppMethodBeat.o(272496);
     return localb;
   }
   
   public final ImageView getSmileyBtn()
   {
     AppMethodBeat.i(168388);
-    ImageView localImageView = this.wkR;
+    ImageView localImageView = this.AVM;
     if (localImageView == null) {
-      p.btv("smileyBtn");
+      p.bGy("smileyBtn");
     }
     AppMethodBeat.o(168388);
     return localImageView;
@@ -231,9 +233,9 @@ public final class FinderPostFooter
   public final SmileyPanel getSmileyPanel()
   {
     AppMethodBeat.i(168386);
-    SmileyPanel localSmileyPanel = this.hQS;
+    SmileyPanel localSmileyPanel = this.kFp;
     if (localSmileyPanel == null) {
-      p.btv("smileyPanel");
+      p.bGy("smileyPanel");
     }
     AppMethodBeat.o(168386);
     return localSmileyPanel;
@@ -241,132 +243,88 @@ public final class FinderPostFooter
   
   public final View getTopicBtn()
   {
-    AppMethodBeat.i(254897);
-    View localView = this.woo;
+    AppMethodBeat.i(272492);
+    View localView = this.AZv;
     if (localView == null) {
-      p.btv("topicBtn");
+      p.bGy("topicBtn");
     }
-    AppMethodBeat.o(254897);
+    AppMethodBeat.o(272492);
     return localView;
-  }
-  
-  public final void oX(boolean paramBoolean)
-  {
-    AppMethodBeat.i(254903);
-    Object localObject = c.vCb;
-    if ((c.drN()) && (paramBoolean))
-    {
-      localObject = this.woo;
-      if (localObject == null) {
-        p.btv("topicBtn");
-      }
-      ((View)localObject).setVisibility(0);
-      AppMethodBeat.o(254903);
-      return;
-    }
-    localObject = this.woo;
-    if (localObject == null) {
-      p.btv("topicBtn");
-    }
-    ((View)localObject).setVisibility(8);
-    AppMethodBeat.o(254903);
-  }
-  
-  public final void oY(boolean paramBoolean)
-  {
-    AppMethodBeat.i(254904);
-    Object localObject = c.vCb;
-    if ((c.drO()) && (paramBoolean))
-    {
-      localObject = this.wop;
-      if (localObject == null) {
-        p.btv("atBtn");
-      }
-      ((View)localObject).setVisibility(0);
-      AppMethodBeat.o(254904);
-      return;
-    }
-    localObject = this.wop;
-    if (localObject == null) {
-      p.btv("atBtn");
-    }
-    ((View)localObject).setVisibility(8);
-    AppMethodBeat.o(254904);
   }
   
   protected final void onFinishInflate()
   {
     AppMethodBeat.i(168390);
     super.onFinishInflate();
-    Object localObject = findViewById(2131307949);
-    p.g(localObject, "findViewById(R.id.smiley_btn)");
-    this.wkR = ((ImageView)localObject);
-    this.wkS = ((MMEditText)findViewById(2131298939));
-    localObject = this.wkR;
+    Object localObject = findViewById(b.f.smiley_btn);
+    p.j(localObject, "findViewById(R.id.smiley_btn)");
+    this.AVM = ((ImageView)localObject);
+    this.AVN = ((MMEditText)findViewById(b.f.comment_et));
+    localObject = this.AVM;
     if (localObject == null) {
-      p.btv("smileyBtn");
+      p.bGy("smileyBtn");
     }
     ((ImageView)localObject).setTag(Boolean.FALSE);
-    localObject = ad.l(getContext(), false);
-    p.g(localObject, "SmileyPanelFactory.getSmileyPanel(context, false)");
-    this.hQS = ((SmileyPanel)localObject);
-    localObject = this.hQS;
+    localObject = ad.m(getContext(), false);
+    p.j(localObject, "SmileyPanelFactory.getSmileyPanel(context, false)");
+    this.kFp = ((SmileyPanel)localObject);
+    localObject = this.kFp;
     if (localObject == null) {
-      p.btv("smileyPanel");
+      p.bGy("smileyPanel");
     }
-    ((SmileyPanel)localObject).setEntranceScene(ChatFooterPanel.tvw);
-    localObject = this.hQS;
+    ((SmileyPanel)localObject).setEntranceScene(ChatFooterPanel.xde);
+    localObject = this.kFp;
     if (localObject == null) {
-      p.btv("smileyPanel");
+      p.bGy("smileyPanel");
     }
-    ((SmileyPanel)localObject).setBackgroundResource(2131232481);
-    localObject = this.hQS;
+    ((SmileyPanel)localObject).setBackgroundResource(b.e.finder_bottombar_bg);
+    localObject = this.kFp;
     if (localObject == null) {
-      p.btv("smileyPanel");
+      p.bGy("smileyPanel");
     }
-    ((SmileyPanel)localObject).goD();
-    localObject = this.hQS;
+    ((SmileyPanel)localObject).hjp();
+    localObject = this.kFp;
     if (localObject == null) {
-      p.btv("smileyPanel");
+      p.bGy("smileyPanel");
     }
-    ((SmileyPanel)localObject).goE();
-    localObject = this.hQS;
+    ((SmileyPanel)localObject).hjq();
+    localObject = this.kFp;
     if (localObject == null) {
-      p.btv("smileyPanel");
+      p.bGy("smileyPanel");
     }
-    ((SmileyPanel)localObject).zN(false);
-    localObject = this.hQS;
+    ((SmileyPanel)localObject).DS(false);
+    localObject = this.kFp;
     if (localObject == null) {
-      p.btv("smileyPanel");
+      p.bGy("smileyPanel");
     }
     ((SmileyPanel)localObject).setVisibility(4);
-    localObject = this.hQS;
+    localObject = this.kFp;
     if (localObject == null) {
-      p.btv("smileyPanel");
+      p.bGy("smileyPanel");
     }
     ((SmileyPanel)localObject).onResume();
-    localObject = this.hQS;
+    localObject = this.kFp;
     if (localObject == null) {
-      p.btv("smileyPanel");
+      p.bGy("smileyPanel");
     }
     ((SmileyPanel)localObject).setOnTextOperationListener((ChatFooterPanel.a)new f(this));
-    localObject = new LinearLayout.LayoutParams(-1, (int)this.wkX);
-    SmileyPanel localSmileyPanel = this.hQS;
+    localObject = new LinearLayout.LayoutParams(-1, (int)this.AVS);
+    SmileyPanel localSmileyPanel = this.kFp;
     if (localSmileyPanel == null) {
-      p.btv("smileyPanel");
+      p.bGy("smileyPanel");
     }
     localSmileyPanel.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localSmileyPanel = this.hQS;
+    localSmileyPanel = this.kFp;
     if (localSmileyPanel == null) {
-      p.btv("smileyPanel");
+      p.bGy("smileyPanel");
     }
     addView((View)localSmileyPanel, (ViewGroup.LayoutParams)localObject);
-    localObject = this.wkR;
+    localObject = this.AVM;
     if (localObject == null) {
-      p.btv("smileyBtn");
+      p.bGy("smileyBtn");
     }
     ((ImageView)localObject).setOnClickListener((View.OnClickListener)new g(this));
-    localObject = this.wkS;
+    localObject = this.AVN;
     if (localObject != null)
     {
       ((MMEditText)localObject).setBackListener((MMEditText.a)new h(this));
@@ -376,89 +334,133 @@ public final class FinderPostFooter
     AppMethodBeat.o(168390);
   }
   
+  public final void rr(boolean paramBoolean)
+  {
+    AppMethodBeat.i(272498);
+    Object localObject = d.AjH;
+    if ((d.dTd()) && (paramBoolean))
+    {
+      localObject = this.AZv;
+      if (localObject == null) {
+        p.bGy("topicBtn");
+      }
+      ((View)localObject).setVisibility(0);
+      AppMethodBeat.o(272498);
+      return;
+    }
+    localObject = this.AZv;
+    if (localObject == null) {
+      p.bGy("topicBtn");
+    }
+    ((View)localObject).setVisibility(8);
+    AppMethodBeat.o(272498);
+  }
+  
+  public final void rs(boolean paramBoolean)
+  {
+    AppMethodBeat.i(272499);
+    Object localObject = d.AjH;
+    if ((d.dTe()) && (paramBoolean))
+    {
+      localObject = this.AZw;
+      if (localObject == null) {
+        p.bGy("atBtn");
+      }
+      ((View)localObject).setVisibility(0);
+      AppMethodBeat.o(272499);
+      return;
+    }
+    localObject = this.AZw;
+    if (localObject == null) {
+      p.bGy("atBtn");
+    }
+    ((View)localObject).setVisibility(8);
+    AppMethodBeat.o(272499);
+  }
+  
   public final void setActivity(MMActivity paramMMActivity)
   {
-    AppMethodBeat.i(254896);
-    p.h(paramMMActivity, "<set-?>");
+    AppMethodBeat.i(272490);
+    p.k(paramMMActivity, "<set-?>");
     this.activity = paramMMActivity;
-    AppMethodBeat.o(254896);
+    AppMethodBeat.o(272490);
   }
   
   public final void setActivityReqCode(int paramInt)
   {
-    this.wor = paramInt;
+    this.AZy = paramInt;
   }
   
   public final void setAtBtn(View paramView)
   {
-    AppMethodBeat.i(254900);
-    p.h(paramView, "<set-?>");
-    this.wop = paramView;
-    AppMethodBeat.o(254900);
+    AppMethodBeat.i(272495);
+    p.k(paramView, "<set-?>");
+    this.AZw = paramView;
+    AppMethodBeat.o(272495);
   }
   
   public final void setAtReqCode(int paramInt)
   {
-    this.woq = paramInt;
+    this.AZx = paramInt;
   }
   
   public final void setBackClickListener(kotlin.g.a.a<x> parama)
   {
-    this.wla = parama;
+    this.AVV = parama;
   }
   
   public final void setContainer(View paramView)
   {
-    this.jxm = paramView;
+    this.fyN = paramView;
   }
   
   public final void setEditText(MMEditText paramMMEditText)
   {
-    this.wkS = paramMMEditText;
+    this.AVN = paramMMEditText;
   }
   
   public final void setITopicCallback(b paramb)
   {
-    AppMethodBeat.i(254902);
-    p.h(paramb, "<set-?>");
-    this.wos = paramb;
-    AppMethodBeat.o(254902);
+    AppMethodBeat.i(272497);
+    p.k(paramb, "<set-?>");
+    this.AZz = paramb;
+    AppMethodBeat.o(272497);
   }
   
   public final void setSmileyBtn(ImageView paramImageView)
   {
     AppMethodBeat.i(168389);
-    p.h(paramImageView, "<set-?>");
-    this.wkR = paramImageView;
+    p.k(paramImageView, "<set-?>");
+    this.AVM = paramImageView;
     AppMethodBeat.o(168389);
   }
   
   public final void setSmileyPanel(SmileyPanel paramSmileyPanel)
   {
     AppMethodBeat.i(168387);
-    p.h(paramSmileyPanel, "<set-?>");
-    this.hQS = paramSmileyPanel;
+    p.k(paramSmileyPanel, "<set-?>");
+    this.kFp = paramSmileyPanel;
     AppMethodBeat.o(168387);
   }
   
   public final void setTopicBtn(View paramView)
   {
-    AppMethodBeat.i(254898);
-    p.h(paramView, "<set-?>");
-    this.woo = paramView;
-    AppMethodBeat.o(254898);
+    AppMethodBeat.i(272493);
+    p.k(paramView, "<set-?>");
+    this.AZv = paramView;
+    AppMethodBeat.o(272493);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderPostFooter$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderPostFooter$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderPostFooter$ITopicCallback;", "", "onTopicClick", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderPostFooter$ITopicCallback;", "", "onTopicClick", "", "plugin-finder_release"})
   public static abstract interface b
   {
-    public abstract void dAB();
+    public abstract void dDZ();
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   public static final class c
     implements View.OnClickListener
   {
@@ -466,24 +468,26 @@ public final class FinderPostFooter
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(254891);
+      AppMethodBeat.i(269266);
       b localb = new b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderPostFooter$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      this.wou.dAB();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderPostFooter$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      this.AZB.dDZ();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderPostFooter$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(254891);
+      AppMethodBeat.o(269266);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/view/FinderPostFooter$onFinishInflate$1", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel$OnTextOperationListener;", "append", "", "text", "", "del", "onToSendTextEnable", "enable", "", "performSend", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/FinderPostFooter$onFinishInflate$1", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel$OnTextOperationListener;", "append", "", "text", "", "del", "onToSendTextEnable", "enable", "", "performSend", "plugin-finder_release"})
   public static final class f
     implements ChatFooterPanel.a
   {
-    public final void aHC()
+    public final void aDN() {}
+    
+    public final void aDO()
     {
       AppMethodBeat.i(168382);
-      Object localObject = this.wox.getEditText();
+      Object localObject = this.AZE.getEditText();
       if (localObject != null)
       {
         localObject = ((MMEditText)localObject).getInputConnection();
@@ -491,7 +495,7 @@ public final class FinderPostFooter
           ((InputConnection)localObject).sendKeyEvent(new KeyEvent(0, 67));
         }
       }
-      localObject = this.wox.getEditText();
+      localObject = this.AZE.getEditText();
       if (localObject != null)
       {
         localObject = ((MMEditText)localObject).getInputConnection();
@@ -505,25 +509,23 @@ public final class FinderPostFooter
       AppMethodBeat.o(168382);
     }
     
-    public final void aHD() {}
-    
     public final void append(String paramString)
     {
       AppMethodBeat.i(168381);
-      MMEditText localMMEditText = this.wox.getEditText();
+      MMEditText localMMEditText = this.AZE.getEditText();
       if (localMMEditText != null)
       {
-        localMMEditText.bol(paramString);
+        localMMEditText.bBa(paramString);
         AppMethodBeat.o(168381);
         return;
       }
       AppMethodBeat.o(168381);
     }
     
-    public final void eP(boolean paramBoolean) {}
+    public final void eE(boolean paramBoolean) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class g
     implements View.OnClickListener
   {
@@ -533,8 +535,8 @@ public final class FinderPostFooter
     {
       AppMethodBeat.i(168383);
       b localb = new b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderPostFooter$onFinishInflate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderPostFooter$onFinishInflate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
       if (paramView == null)
       {
         paramView = new t("null cannot be cast to non-null type android.widget.ImageView");
@@ -551,7 +553,7 @@ public final class FinderPostFooter
       if (!((Boolean)paramView).booleanValue()) {}
       for (boolean bool = true;; bool = false)
       {
-        FinderPostFooter.a(this.wox, bool);
+        FinderPostFooter.a(this.AZE, bool);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderPostFooter$onFinishInflate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(168383);
         return;
@@ -559,7 +561,7 @@ public final class FinderPostFooter
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onBack"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onBack"})
   static final class h
     implements MMEditText.a
   {
@@ -568,7 +570,7 @@ public final class FinderPostFooter
     public final void onBack()
     {
       AppMethodBeat.i(168384);
-      kotlin.g.a.a locala = this.wox.getBackClickListener();
+      kotlin.g.a.a locala = this.AZE.getBackClickListener();
       if (locala != null)
       {
         locala.invoke();
@@ -579,7 +581,7 @@ public final class FinderPostFooter
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/view/FinderPostFooter$onHideSmileyPanel$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/FinderPostFooter$onHideSmileyPanel$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
   public static final class i
     implements Animator.AnimatorListener
   {
@@ -588,8 +590,8 @@ public final class FinderPostFooter
     public final void onAnimationEnd(Animator paramAnimator)
     {
       AppMethodBeat.i(168385);
-      this.wox.getSmileyPanel().setAlpha(1.0F);
-      this.wox.getSmileyPanel().setVisibility(4);
+      this.AZE.getSmileyPanel().setAlpha(1.0F);
+      this.AZE.getSmileyPanel().setVisibility(4);
       AppMethodBeat.o(168385);
     }
     
@@ -600,7 +602,7 @@ public final class FinderPostFooter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderPostFooter
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.ui.base.MMSingelLinePanel;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.ArrayList;
@@ -14,8 +16,8 @@ import java.util.ArrayList;
 public class ContactLabelPreference
   extends Preference
 {
-  private MMSingelLinePanel BdZ;
-  private ArrayList<String> Bea;
+  private MMSingelLinePanel GXV;
+  private ArrayList<String> GXW;
   private String title;
   private TextView titleTv;
   
@@ -28,24 +30,24 @@ public class ContactLabelPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27012);
-    this.Bea = new ArrayList();
-    setLayoutResource(2131495538);
+    this.GXW = new ArrayList();
+    setLayoutResource(R.i.mm_preference);
     AppMethodBeat.o(27012);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27014);
-    this.titleTv = ((TextView)paramView.findViewById(2131309195));
-    this.BdZ = ((MMSingelLinePanel)paramView.findViewById(2131299109));
-    this.BdZ.setSingleLine(true);
-    this.BdZ.OTd = false;
-    this.BdZ.Bz(false);
+    this.titleTv = ((TextView)paramView.findViewById(R.h.title));
+    this.GXV = ((MMSingelLinePanel)paramView.findViewById(R.h.contact_label_panel));
+    this.GXV.setSingleLine(true);
+    this.GXV.hKc();
+    this.GXV.FR(false);
     if (this.titleTv != null) {
       this.titleTv.setText(this.title);
     }
-    if ((this.BdZ != null) && (this.Bea != null) && (this.Bea.size() > 0)) {
-      this.BdZ.a(this.Bea, this.Bea);
+    if ((this.GXV != null) && (this.GXW != null) && (this.GXW.size() > 0)) {
+      this.GXV.a(this.GXW, this.GXW);
     }
     super.onBindView(paramView);
     AppMethodBeat.o(27014);
@@ -56,9 +58,9 @@ public class ContactLabelPreference
     AppMethodBeat.i(27013);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2131495568, localViewGroup);
+    localLayoutInflater.inflate(R.i.eiT, localViewGroup);
     AppMethodBeat.o(27013);
     return paramViewGroup;
   }

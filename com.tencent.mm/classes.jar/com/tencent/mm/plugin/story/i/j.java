@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.story.i;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
-import com.tencent.mm.g.c.en;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.f.c.es;
+import com.tencent.mm.model.cm;
 import com.tencent.mm.platformtools.ac;
 import com.tencent.mm.plugin.story.f.i;
 import com.tencent.mm.plugin.story.f.i.a;
 import com.tencent.mm.plugin.story.f.q;
 import com.tencent.mm.plugin.story.f.q.a;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.edu;
-import com.tencent.mm.protocal.protobuf.eea;
-import com.tencent.mm.protocal.protobuf.eek;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.env;
+import com.tencent.mm.protocal.protobuf.eob;
+import com.tencent.mm.protocal.protobuf.eol;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.util.ArrayList;
@@ -24,40 +24,40 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "Lcom/tencent/mm/autogen/table/BaseMMStoryInfo;", "()V", "blackList", "", "", "getBlackList", "()Ljava/util/List;", "setBlackList", "(Ljava/util/List;)V", "value", "", "createTime", "getCreateTime", "()I", "setCreateTime", "(I)V", "date", "getDate", "setDate", "groupList", "getGroupList", "setGroupList", "localId", "getLocalId", "setLocalId", "readCount", "getReadCount", "setReadCount", "", "showIndicator", "getShowIndicator", "()Z", "setShowIndicator", "(Z)V", "", "storyId", "getStoryId", "()J", "setStoryId", "(J)V", "type", "getType", "setType", "userName", "getUserName", "()Ljava/lang/String;", "setUserName", "(Ljava/lang/String;)V", "addSourceFlag", "", "mmsourceType", "addStoryItemFlag", "storyItemFlag", "checkFavorite", "checkNotifySns", "checkVisiableSelfOnly", "cleanPostFinish", "clearItemDie", "convertFrom", "cu", "Landroid/database/Cursor;", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getPostInfo", "Lcom/tencent/mm/protocal/protobuf/StoryMediaPostInfo;", "getTimeLine", "Lcom/tencent/mm/protocal/protobuf/StoryTimelineObject;", "isDeprecated", "isDeprecatedForFav", "isItemDie", "isItemFinish", "isReadStatus", "isTimeLimit", "tryCount", "startTime", "isUnreadStatus", "removeSourceFlag", "removeStoryItemFlag", "setContent", "contentObj", "setItemDie", "setPostBuf", "postBuf", "", "setPostFinish", "setPostMixFinish", "setPostMixWaiting", "setPostWaiting", "setReadStatus", "setTimeLine", "timeline", "setUnreadStatus", "Companion", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "Lcom/tencent/mm/autogen/table/BaseMMStoryInfo;", "()V", "blackList", "", "", "getBlackList", "()Ljava/util/List;", "setBlackList", "(Ljava/util/List;)V", "value", "", "createTime", "getCreateTime", "()I", "setCreateTime", "(I)V", "date", "getDate", "setDate", "groupList", "getGroupList", "setGroupList", "localId", "getLocalId", "setLocalId", "readCount", "getReadCount", "setReadCount", "", "showIndicator", "getShowIndicator", "()Z", "setShowIndicator", "(Z)V", "", "storyId", "getStoryId", "()J", "setStoryId", "(J)V", "type", "getType", "setType", "userName", "getUserName", "()Ljava/lang/String;", "setUserName", "(Ljava/lang/String;)V", "addSourceFlag", "", "mmsourceType", "addStoryItemFlag", "storyItemFlag", "checkFavorite", "checkNotifySns", "checkVisiableSelfOnly", "cleanPostFinish", "clearItemDie", "convertFrom", "cu", "Landroid/database/Cursor;", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getPostInfo", "Lcom/tencent/mm/protocal/protobuf/StoryMediaPostInfo;", "getTimeLine", "Lcom/tencent/mm/protocal/protobuf/StoryTimelineObject;", "isDeprecated", "isDeprecatedForFav", "isItemDie", "isItemFinish", "isReadStatus", "isTimeLimit", "tryCount", "startTime", "isUnreadStatus", "removeSourceFlag", "removeStoryItemFlag", "setContent", "contentObj", "setItemDie", "setPostBuf", "postBuf", "", "setPostFinish", "setPostMixFinish", "setPostMixWaiting", "setPostWaiting", "setReadStatus", "setTimeLine", "timeline", "setUnreadStatus", "Companion", "plugin-story_release"})
 public final class j
-  extends en
+  extends es
 {
   private static final String COL_ROWID = "rowid";
-  private static final String Fwq = "serverStoryNameTimeIndex";
-  private static final String Fwr = "serverStoryUsernameCreateTimeIndex";
-  public static final a Fws;
+  private static final String LQs = "serverStoryNameTimeIndex";
+  private static final String LQt = "serverStoryUsernameCreateTimeIndex";
+  public static final a LQu;
   private static final String TABLEINDEXUSERNAME = "serverStoryNameIndex";
   private static final String TAG = "MicroMsg.StoryInfo";
   private static final IAutoDBItem.MAutoDBInfo info;
-  private List<String> EZY;
-  private List<String> FjN;
-  public int Fwp;
-  public int ecf;
+  private List<String> Low;
+  private List<String> Lyy;
+  public int date;
+  public int fWh;
   
   static
   {
     AppMethodBeat.i(119550);
-    Fws = new a((byte)0);
+    LQu = new a((byte)0);
     TAG = "MicroMsg.StoryInfo";
-    info = en.ajs();
+    info = es.aoY();
     COL_ROWID = "rowid";
     TABLEINDEXUSERNAME = "serverStoryNameIndex";
-    Fwq = "serverStoryNameTimeIndex";
-    Fwr = "serverStoryUsernameCreateTimeIndex";
+    LQs = "serverStoryNameTimeIndex";
+    LQt = "serverStoryUsernameCreateTimeIndex";
     AppMethodBeat.o(119550);
   }
   
   public j()
   {
     AppMethodBeat.i(119549);
-    this.EZY = ((List)new ArrayList());
-    this.FjN = ((List)new ArrayList());
+    this.Low = ((List)new ArrayList());
+    this.Lyy = ((List)new ArrayList());
     AppMethodBeat.o(119549);
   }
   
@@ -65,18 +65,18 @@ public final class j
   {
     boolean bool4 = true;
     AppMethodBeat.i(119547);
-    if (ac.jPJ)
+    if (ac.mGT)
     {
-      Log.i(TAG, "Android Test time limit fail " + ac.jPJ);
+      Log.i(TAG, "Android Test time limit fail " + ac.mGT);
       AppMethodBeat.o(119547);
       return true;
     }
-    int i = cl.aWB();
+    int i = cm.bfF();
     int j = (int)paramLong;
-    a.a locala = a.FvD;
+    a.a locala = a.LPG;
     boolean bool1;
     boolean bool2;
-    if (i - j > a.fre())
+    if (i - j > a.gfA())
     {
       bool1 = true;
       if (paramInt <= 5) {
@@ -96,7 +96,7 @@ public final class j
     for (boolean bool3 = bool4;; bool3 = false)
     {
       if (bool3) {
-        Log.i(TAG, "isTimeLimit " + bool1 + "  " + bool2 + " tryCount:" + paramInt + " startTime " + paramLong + "  svr: " + cl.aWB());
+        Log.i(TAG, "isTimeLimit " + bool1 + "  " + bool2 + " tryCount:" + paramInt + " startTime " + paramLong + "  svr: " + cm.bfF());
       }
       AppMethodBeat.o(119547);
       return bool3;
@@ -107,32 +107,17 @@ public final class j
     }
   }
   
-  public final void aaY(int paramInt)
-  {
-    this.field_itemStoryFlag |= paramInt;
-  }
-  
-  public final void aaZ(int paramInt)
-  {
-    this.field_itemStoryFlag &= (paramInt ^ 0xFFFFFFFF);
-  }
-  
-  public final void addSourceFlag(int paramInt)
-  {
-    this.field_sourceType |= paramInt;
-  }
-  
-  public final List<String> avv()
+  public final List<String> aCq()
   {
     AppMethodBeat.i(119530);
-    Object localObject1 = new eea();
-    Object localObject2 = (com.tencent.mm.bw.a)localObject1;
+    Object localObject1 = new eob();
+    Object localObject2 = (com.tencent.mm.cd.a)localObject1;
     Object localObject3 = this.field_attrBuf;
     try
     {
-      ((com.tencent.mm.bw.a)localObject2).parseFrom((byte[])localObject3);
+      ((com.tencent.mm.cd.a)localObject2).parseFrom((byte[])localObject3);
       localObject2 = new ArrayList();
-      localObject3 = (Collection)((eea)localObject1).GroupUser;
+      localObject3 = (Collection)((eob)localObject1).GroupUser;
       if ((localObject3 == null) || (((Collection)localObject3).isEmpty()))
       {
         i = 1;
@@ -153,14 +138,14 @@ public final class j
         int i = 0;
       }
       label113:
-      localObject1 = ((eea)localObject1).GroupUser;
-      p.g(localObject1, "storyObj.GroupUser");
+      localObject1 = ((eob)localObject1).GroupUser;
+      p.j(localObject1, "storyObj.GroupUser");
       localObject1 = ((Iterable)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject3 = (dqi)((Iterator)localObject1).next();
-        p.g(localObject3, "it");
-        localException.add(((dqi)localObject3).MTo);
+        localObject3 = (eaf)((Iterator)localObject1).next();
+        p.j(localObject3, "it");
+        localException.add(((eaf)localObject3).Ufy);
       }
       localObject1 = (List)localException;
       AppMethodBeat.o(119530);
@@ -168,36 +153,51 @@ public final class j
     return localObject1;
   }
   
-  public final void b(eek parameek)
+  public final void addSourceFlag(int paramInt)
+  {
+    this.field_sourceType |= paramInt;
+  }
+  
+  public final void ait(int paramInt)
+  {
+    this.field_itemStoryFlag |= paramInt;
+  }
+  
+  public final void aiu(int paramInt)
+  {
+    this.field_itemStoryFlag &= (paramInt ^ 0xFFFFFFFF);
+  }
+  
+  public final void b(eol parameol)
   {
     AppMethodBeat.i(119537);
-    p.h(parameek, "timeline");
+    p.k(parameol, "timeline");
     try
     {
-      this.field_content = parameek.toByteArray();
+      this.field_content = parameol.toByteArray();
       AppMethodBeat.o(119537);
       return;
     }
-    catch (Exception parameek)
+    catch (Exception parameol)
     {
-      Log.printErrStackTrace(TAG, (Throwable)parameek, "", new Object[0]);
+      Log.printErrStackTrace(TAG, (Throwable)parameol, "", new Object[0]);
       AppMethodBeat.o(119537);
     }
   }
   
-  public final boolean c(eek parameek)
+  public final boolean c(eol parameol)
   {
     AppMethodBeat.i(119543);
-    p.h(parameek, "contentObj");
+    p.k(parameol, "contentObj");
     try
     {
-      this.field_content = parameek.toByteArray();
+      this.field_content = parameol.toByteArray();
       AppMethodBeat.o(119543);
       return true;
     }
-    catch (Exception parameek)
+    catch (Exception parameol)
     {
-      Log.printErrStackTrace(TAG, (Throwable)parameek, "", new Object[0]);
+      Log.printErrStackTrace(TAG, (Throwable)parameol, "", new Object[0]);
       AppMethodBeat.o(119543);
     }
     return false;
@@ -207,33 +207,42 @@ public final class j
   {
     AppMethodBeat.i(119541);
     int i = this.field_localFlag;
-    a.d locald = a.d.FvM;
-    this.field_localFlag = (i & (a.d.frn() ^ 0xFFFFFFFF));
+    a.d locald = a.d.LPP;
+    this.field_localFlag = (i & (a.d.gfJ() ^ 0xFFFFFFFF));
     AppMethodBeat.o(119541);
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(119535);
-    p.h(paramCursor, "cu");
+    p.k(paramCursor, "cu");
     super.convertFrom(paramCursor);
-    this.ecf = ((int)this.systemRowid);
-    paramCursor = com.tencent.mm.plugin.story.e.a.Flw;
-    this.Fwp = com.tencent.mm.plugin.story.e.a.a.Ki(this.field_createTime * 1000L);
+    this.fWh = ((int)this.systemRowid);
+    paramCursor = com.tencent.mm.plugin.story.e.a.LFy;
+    this.date = com.tencent.mm.plugin.story.e.a.a.RC(this.field_createTime * 1000L);
     AppMethodBeat.o(119535);
   }
   
-  public final List<String> frE()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    AppMethodBeat.i(119534);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = info;
+    p.j(localMAutoDBInfo, "info");
+    AppMethodBeat.o(119534);
+    return localMAutoDBInfo;
+  }
+  
+  public final List<String> gga()
   {
     AppMethodBeat.i(119531);
-    Object localObject1 = new eea();
-    Object localObject2 = (com.tencent.mm.bw.a)localObject1;
+    Object localObject1 = new eob();
+    Object localObject2 = (com.tencent.mm.cd.a)localObject1;
     Object localObject3 = this.field_attrBuf;
     try
     {
-      ((com.tencent.mm.bw.a)localObject2).parseFrom((byte[])localObject3);
+      ((com.tencent.mm.cd.a)localObject2).parseFrom((byte[])localObject3);
       localObject2 = new ArrayList();
-      localObject3 = (Collection)((eea)localObject1).BlackList;
+      localObject3 = (Collection)((eob)localObject1).BlackList;
       if ((localObject3 == null) || (((Collection)localObject3).isEmpty()))
       {
         i = 1;
@@ -254,14 +263,14 @@ public final class j
         int i = 0;
       }
       label115:
-      localObject1 = ((eea)localObject1).BlackList;
-      p.g(localObject1, "storyObj.BlackList");
+      localObject1 = ((eob)localObject1).BlackList;
+      p.j(localObject1, "storyObj.BlackList");
       localObject1 = ((Iterable)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject3 = (dqi)((Iterator)localObject1).next();
-        p.g(localObject3, "it");
-        localException.add(((dqi)localObject3).MTo);
+        localObject3 = (eaf)((Iterator)localObject1).next();
+        p.j(localObject3, "it");
+        localException.add(((eaf)localObject3).Ufy);
       }
       localObject1 = (List)localException;
       AppMethodBeat.o(119531);
@@ -269,30 +278,30 @@ public final class j
     return localObject1;
   }
   
-  public final boolean frF()
+  public final boolean ggb()
   {
     AppMethodBeat.i(119532);
     int i = this.field_localFlag;
-    a.d locald = a.d.FvM;
-    boolean bool = d.cW(i, a.d.frp());
+    a.d locald = a.d.LPP;
+    boolean bool = d.dr(i, a.d.gfL());
     AppMethodBeat.o(119532);
     return bool;
   }
   
-  public final eek frG()
+  public final eol ggc()
   {
     AppMethodBeat.i(119536);
     Object localObject1;
     if (this.field_content == null)
     {
-      localObject1 = q.FmO;
-      localObject1 = q.a.fox();
+      localObject1 = q.LGQ;
+      localObject1 = q.a.gcR();
       AppMethodBeat.o(119536);
       return localObject1;
     }
     try
     {
-      localObject1 = new eek().parseFrom(this.field_content);
+      localObject1 = new eol().parseFrom(this.field_content);
       if (localObject1 == null)
       {
         localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StoryTimelineObject");
@@ -303,22 +312,22 @@ public final class j
     catch (Exception localException)
     {
       Log.e(TAG, "error get storyinfo timeline!");
-      localObject2 = q.FmO;
-      localObject2 = q.a.fox();
+      localObject2 = q.LGQ;
+      localObject2 = q.a.gcR();
       AppMethodBeat.o(119536);
       return localObject2;
     }
-    Object localObject2 = (eek)localObject2;
+    Object localObject2 = (eol)localObject2;
     AppMethodBeat.o(119536);
     return localObject2;
   }
   
-  public final boolean frH()
+  public final boolean ggd()
   {
     AppMethodBeat.i(119542);
     int i = this.field_localFlag;
-    a.d locald = a.d.FvM;
-    if ((i & a.d.frn()) != 0)
+    a.d locald = a.d.LPP;
+    if ((i & a.d.gfJ()) != 0)
     {
       AppMethodBeat.o(119542);
       return true;
@@ -327,10 +336,10 @@ public final class j
     return false;
   }
   
-  public final edu frI()
+  public final env gge()
   {
     AppMethodBeat.i(119544);
-    Object localObject = new edu();
+    Object localObject = new env();
     if (this.field_postBuf == null)
     {
       AppMethodBeat.o(119544);
@@ -338,7 +347,7 @@ public final class j
     }
     try
     {
-      localObject = new edu().parseFrom(this.field_postBuf);
+      localObject = new env().parseFrom(this.field_postBuf);
       if (localObject == null)
       {
         localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StoryMediaPostInfo");
@@ -349,42 +358,42 @@ public final class j
     catch (Exception localException)
     {
       Log.e(TAG, "error get StoryMediaPostInfo " + this.field_storyID);
-      localedu = new edu();
+      localenv = new env();
       AppMethodBeat.o(119544);
-      return localedu;
+      return localenv;
     }
-    edu localedu = (edu)localedu;
+    env localenv = (env)localenv;
     AppMethodBeat.o(119544);
-    return localedu;
+    return localenv;
   }
   
-  public final boolean frJ()
+  public final boolean ggf()
   {
     AppMethodBeat.i(119545);
     int i = this.field_itemStoryFlag;
-    a.a locala = a.FvD;
-    boolean bool = d.cW(i, a.frf());
+    a.a locala = a.LPG;
+    boolean bool = d.dr(i, a.gfB());
     AppMethodBeat.o(119545);
     return bool;
   }
   
-  public final boolean frK()
+  public final boolean ggg()
   {
     AppMethodBeat.i(119546);
     int i = this.field_itemStoryFlag;
-    a.a locala = a.FvD;
-    boolean bool = d.cW(i, a.frg());
+    a.a locala = a.LPG;
+    boolean bool = d.dr(i, a.gfC());
     AppMethodBeat.o(119546);
     return bool;
   }
   
-  public final boolean frL()
+  public final boolean ggh()
   {
     AppMethodBeat.i(119548);
     int i = this.field_createTime;
-    int j = cl.aWB();
-    i.a locala = i.Fmb;
-    if (i <= j - i.fnT())
+    int j = cm.bfF();
+    i.a locala = i.LGd;
+    if (i <= j - i.gcn())
     {
       AppMethodBeat.o(119548);
       return true;
@@ -393,28 +402,19 @@ public final class j
     return false;
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
-  {
-    AppMethodBeat.i(119534);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = info;
-    p.g(localMAutoDBInfo, "info");
-    AppMethodBeat.o(119534);
-    return localMAutoDBInfo;
-  }
-  
   public final void setItemDie()
   {
     AppMethodBeat.i(119540);
     int i = this.field_localFlag;
-    a.d locald = a.d.FvM;
-    this.field_localFlag = (i | a.d.frn());
+    a.d locald = a.d.LPP;
+    this.field_localFlag = (i | a.d.gfJ());
     AppMethodBeat.o(119540);
   }
   
   public final void setPostBuf(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(119538);
-    p.h(paramArrayOfByte, "postBuf");
+    p.k(paramArrayOfByte, "postBuf");
     this.field_postBuf = paramArrayOfByte;
     AppMethodBeat.o(119538);
   }
@@ -423,12 +423,12 @@ public final class j
   {
     AppMethodBeat.i(119539);
     int i = this.field_localFlag;
-    a.d locald = a.d.FvM;
-    this.field_localFlag = (i | a.d.frm());
+    a.d locald = a.d.LPP;
+    this.field_localFlag = (i | a.d.gfI());
     AppMethodBeat.o(119539);
   }
   
-  public final void vX(boolean paramBoolean)
+  public final void zB(boolean paramBoolean)
   {
     AppMethodBeat.i(119533);
     int i;
@@ -436,8 +436,8 @@ public final class j
     if (paramBoolean)
     {
       i = this.field_localFlag;
-      locald = a.d.FvM;
-      i |= a.d.frp();
+      locald = a.d.LPP;
+      i |= a.d.gfL();
     }
     for (;;)
     {
@@ -445,12 +445,12 @@ public final class j
       AppMethodBeat.o(119533);
       return;
       i = this.field_localFlag;
-      locald = a.d.FvM;
-      i &= (a.d.frp() ^ 0xFFFFFFFF);
+      locald = a.d.LPP;
+      i &= (a.d.gfL() ^ 0xFFFFFFFF);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/storage/StoryInfo$Companion;", "", "()V", "COL_ROWID", "", "getCOL_ROWID", "()Ljava/lang/String;", "TABLEINDEXUSERNAME", "getTABLEINDEXUSERNAME", "TAG", "getTAG", "TableIndexUsernameCreateTime", "getTableIndexUsernameCreateTime", "TableIndexUsernameTime", "getTableIndexUsernameTime", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-story_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/storage/StoryInfo$Companion;", "", "()V", "COL_ROWID", "", "getCOL_ROWID", "()Ljava/lang/String;", "TABLEINDEXUSERNAME", "getTABLEINDEXUSERNAME", "TAG", "getTAG", "TableIndexUsernameCreateTime", "getTableIndexUsernameCreateTime", "TableIndexUsernameTime", "getTableIndexUsernameTime", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-story_release"})
   public static final class a {}
 }
 

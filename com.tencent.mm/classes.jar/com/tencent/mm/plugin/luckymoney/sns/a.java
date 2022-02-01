@@ -4,8 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
@@ -31,8 +32,8 @@ public class a
             Log.i("MicroMsg.ProcessManager", "OpenSnsPayProcess onSceneEnd, errType:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2 + " errMsg:" + paramAnonymousString);
             if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
             {
-              h.cD(this.activity, this.activity.getString(2131762694));
-              a.PM(121);
+              h.cO(this.activity, this.activity.getString(a.i.lucky_money_open_sns_pay_success));
+              a.VY(121);
               a.a(a.this).putBoolean("is_open_sns_pay", true);
               a.this.a(this.activity, 0, a.b(a.this));
             }
@@ -40,9 +41,9 @@ public class a
             {
               AppMethodBeat.o(65344);
               return true;
-              h.cD(this.activity, this.activity.getString(2131762693));
-              a.PM(122);
-              a.this.g(this.activity, 0);
+              h.cO(this.activity, this.activity.getString(a.i.lucky_money_open_sns_pay_failed));
+              a.VY(122);
+              a.this.h(this.activity, 0);
             }
           }
           AppMethodBeat.o(65344);
@@ -53,7 +54,7 @@ public class a
         {
           AppMethodBeat.i(65345);
           paramAnonymousVarArgs = (String)paramAnonymousVarArgs[0];
-          this.Ruz.a(new com.tencent.mm.plugin.luckymoney.sns.a.a(1, paramAnonymousVarArgs, ""), true, 1);
+          this.YVX.a(new com.tencent.mm.plugin.luckymoney.sns.a.a(1, paramAnonymousVarArgs, ""), true, 1);
           AppMethodBeat.o(65345);
           return true;
         }
@@ -101,12 +102,12 @@ public class a
     return false;
   }
   
-  public final String dKC()
+  public final String epb()
   {
     return "LuckyFreePwdProcess";
   }
   
-  public final void g(Activity paramActivity, int paramInt)
+  public final void h(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(65348);
     b(paramActivity, null);

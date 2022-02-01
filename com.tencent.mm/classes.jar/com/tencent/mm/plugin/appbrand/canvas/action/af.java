@@ -81,7 +81,7 @@ public final class af
         i += 1;
       }
       paramCanvas = new LinearGradient(f1, f2, f3, f4, paramJSONArray, arrayOfFloat, Shader.TileMode.CLAMP);
-      paramd.kZl.setShader(paramCanvas);
+      paramd.nTw.setShader(paramCanvas);
     }
     for (;;)
     {
@@ -118,7 +118,7 @@ public final class af
           i += 1;
         }
         paramCanvas = new RadialGradient(f1, f2, f3, paramJSONArray, arrayOfFloat, Shader.TileMode.CLAMP);
-        paramd.kZl.setShader(paramCanvas);
+        paramd.nTw.setShader(paramCanvas);
       }
       else if ("normal".equalsIgnoreCase(paramCanvas))
       {
@@ -128,12 +128,12 @@ public final class af
           AppMethodBeat.o(144971);
           return false;
         }
-        paramd.kZl.setColor(g.r(paramCanvas));
+        paramd.nTw.setColor(g.r(paramCanvas));
       }
     }
   }
   
-  public final BaseDrawActionArg bzj()
+  public final BaseDrawActionArg bKy()
   {
     AppMethodBeat.i(144970);
     SetStrokeStyleActionArg localSetStrokeStyleActionArg = new SetStrokeStyleActionArg();
@@ -148,7 +148,7 @@ public final class af
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.af
  * JD-Core Version:    0.7.0.1
  */

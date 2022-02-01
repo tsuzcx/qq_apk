@@ -7,11 +7,11 @@ public final class CookieInternal
 {
   public static abstract interface ICookieManagerInternal
   {
-    public abstract void e(WebView paramWebView);
+    public abstract void f(WebView paramWebView);
     
     public abstract String getCookie(String paramString);
     
-    public abstract void hsq();
+    public abstract void ivY();
     
     public abstract void removeAllCookie();
     

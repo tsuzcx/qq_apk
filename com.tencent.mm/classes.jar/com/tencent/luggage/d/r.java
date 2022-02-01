@@ -12,27 +12,27 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class r
 {
-  private static ConcurrentHashMap<Integer, p> ctR;
+  private static ConcurrentHashMap<Integer, p> crW;
   
   static
   {
     AppMethodBeat.i(140441);
-    ctR = new ConcurrentHashMap();
+    crW = new ConcurrentHashMap();
     AppMethodBeat.o(140441);
   }
   
   public static p a(Context paramContext, Integer paramInteger)
   {
     AppMethodBeat.i(140439);
-    if ((paramInteger == null) || (!ctR.containsKey(paramInteger)))
+    if ((paramInteger == null) || (!crW.containsKey(paramInteger)))
     {
       AppMethodBeat.o(140439);
       return null;
     }
-    paramInteger = (p)ctR.remove(paramInteger);
+    paramInteger = (p)crW.remove(paramInteger);
     paramInteger.setContext(paramContext);
-    paramInteger.LF();
-    Log.i(r.class.getSimpleName(), "retrieve, holding size: %d", new Object[] { Integer.valueOf(ctR.size()) });
+    paramInteger.Ov();
+    Log.i(r.class.getSimpleName(), "retrieve, holding size: %d", new Object[] { Integer.valueOf(crW.size()) });
     AppMethodBeat.o(140439);
     return paramInteger;
   }
@@ -41,19 +41,19 @@ public class r
   {
     AppMethodBeat.i(140438);
     paramp.setContext(paramContext);
-    paramContext = paramp.ctA.keySet().iterator();
+    paramContext = paramp.crF.keySet().iterator();
     while (paramContext.hasNext())
     {
       o localo = paramp.getBridge();
       String str = (String)paramContext.next();
-      localo.csL.remove(str);
+      localo.cqQ.remove(str);
     }
-    paramp.ctA.clear();
-    paramp.ctJ = null;
-    paramp.ctB = null;
-    paramp.ctL = true;
-    ctR.put(Integer.valueOf(paramp.hashCode()), paramp);
-    Log.i(r.class.getSimpleName(), "stash, holding size: %d", new Object[] { Integer.valueOf(ctR.size()) });
+    paramp.crF.clear();
+    paramp.crO = null;
+    paramp.crG = null;
+    paramp.crQ = true;
+    crW.put(Integer.valueOf(paramp.hashCode()), paramp);
+    Log.i(r.class.getSimpleName(), "stash, holding size: %d", new Object[] { Integer.valueOf(crW.size()) });
     int i = paramp.hashCode();
     AppMethodBeat.o(140438);
     return Integer.valueOf(i);
@@ -66,23 +66,23 @@ public class r
     if (!TextUtils.isEmpty(null)) {
       paramContext.loadUrl(null);
     }
-    ctR.put(Integer.valueOf(paramContext.hashCode()), paramContext);
-    Log.i(r.class.getSimpleName(), "preload, url: %s, holding size: %d", new Object[] { null, Integer.valueOf(ctR.size()) });
+    crW.put(Integer.valueOf(paramContext.hashCode()), paramContext);
+    Log.i(r.class.getSimpleName(), "preload, url: %s, holding size: %d", new Object[] { null, Integer.valueOf(crW.size()) });
     int i = paramContext.hashCode();
     AppMethodBeat.o(140437);
     return Integer.valueOf(i);
   }
   
-  public static p c(Integer paramInteger)
+  public static p d(Integer paramInteger)
   {
     AppMethodBeat.i(140440);
-    if ((paramInteger == null) || (!ctR.containsKey(paramInteger)))
+    if ((paramInteger == null) || (!crW.containsKey(paramInteger)))
     {
       AppMethodBeat.o(140440);
       return null;
     }
-    paramInteger = (p)ctR.remove(paramInteger);
-    paramInteger.LF();
+    paramInteger = (p)crW.remove(paramInteger);
+    paramInteger.Ov();
     AppMethodBeat.o(140440);
     return paramInteger;
   }

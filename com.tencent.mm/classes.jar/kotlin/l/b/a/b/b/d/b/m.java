@@ -18,20 +18,20 @@ public final class m
   extends r
   implements k
 {
-  public final Constructor<?> Tnp;
+  public final Constructor<?> aaQj;
   
   public m(Constructor<?> paramConstructor)
   {
     AppMethodBeat.i(57478);
-    this.Tnp = paramConstructor;
+    this.aaQj = paramConstructor;
     AppMethodBeat.o(57478);
   }
   
-  public final List<x> hAt()
+  public final List<x> iEG()
   {
     AppMethodBeat.i(57477);
-    Object localObject = this.Tnp.getTypeParameters();
-    p.g(localObject, "member.typeParameters");
+    Object localObject = this.aaQj.getTypeParameters();
+    p.j(localObject, "member.typeParameters");
     Collection localCollection = (Collection)new ArrayList(localObject.length);
     int j = localObject.length;
     int i = 0;
@@ -45,43 +45,43 @@ public final class m
     return localObject;
   }
   
-  public final List<y> hAw()
+  public final List<y> iEJ()
   {
     AppMethodBeat.i(57476);
-    Object localObject1 = this.Tnp.getGenericParameterTypes();
-    p.g(localObject1, "types");
+    Object localObject1 = this.aaQj.getGenericParameterTypes();
+    p.j(localObject1, "types");
     if (localObject1.length == 0) {}
     for (int i = 1; i != 0; i = 0)
     {
-      localObject1 = (List)v.SXr;
+      localObject1 = (List)v.aaAd;
       AppMethodBeat.o(57476);
       return localObject1;
     }
-    Object localObject2 = this.Tnp.getDeclaringClass();
-    p.g(localObject2, "klass");
+    Object localObject2 = this.aaQj.getDeclaringClass();
+    p.j(localObject2, "klass");
     if ((((Class)localObject2).getDeclaringClass() != null) && (!Modifier.isStatic(((Class)localObject2).getModifiers()))) {
-      localObject1 = (Type[])e.copyOfRange((Object[])localObject1, 1, localObject1.length);
+      localObject1 = (Type[])e.a((Object[])localObject1, 1, localObject1.length);
     }
     for (;;)
     {
-      localObject2 = this.Tnp.getParameterAnnotations();
+      localObject2 = this.aaQj.getParameterAnnotations();
       if (((Object[])localObject2).length >= localObject1.length) {
         break;
       }
-      localObject1 = (Throwable)new IllegalStateException("Illegal generic signature: " + this.Tnp);
+      localObject1 = (Throwable)new IllegalStateException("Illegal generic signature: " + this.aaQj);
       AppMethodBeat.o(57476);
       throw ((Throwable)localObject1);
     }
     if (((Object[])localObject2).length > localObject1.length)
     {
-      p.g(localObject2, "annotations");
-      localObject2 = (Annotation[][])e.copyOfRange((Object[])localObject2, ((Object[])localObject2).length - localObject1.length, ((Object[])localObject2).length);
+      p.j(localObject2, "annotations");
+      localObject2 = (Annotation[][])e.a((Object[])localObject2, ((Object[])localObject2).length - localObject1.length, ((Object[])localObject2).length);
     }
     for (;;)
     {
-      p.g(localObject1, "realTypes");
-      p.g(localObject2, "realAnnotations");
-      localObject1 = a((Type[])localObject1, (Annotation[][])localObject2, this.Tnp.isVarArgs());
+      p.j(localObject1, "realTypes");
+      p.j(localObject2, "realAnnotations");
+      localObject1 = a((Type[])localObject1, (Annotation[][])localObject2, this.aaQj.isVarArgs());
       AppMethodBeat.o(57476);
       return localObject1;
     }
@@ -89,7 +89,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d.b.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.record.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.k;
-import com.tencent.mm.ak.k.a;
-import com.tencent.mm.ak.k.b;
-import com.tencent.mm.ak.l;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.an.k;
+import com.tencent.mm.an.k.a;
+import com.tencent.mm.an.k.b;
+import com.tencent.mm.an.l;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.audio.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -21,109 +21,109 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public final class u
+public class u
   implements k.a, k.b, SensorController.SensorEventCallBack
 {
-  public static SensorController qUq;
+  public static SensorController uww;
   public List<a> callbacks;
-  private int dLt;
+  private int fEi;
   private long lastShakeTime;
   public String path;
-  public k qUl;
-  private boolean qUm;
-  private boolean qUn;
-  private boolean qUo;
-  private ShakeManager qUp;
+  public k uwr;
+  private boolean uws;
+  private boolean uwt;
+  private boolean uwu;
+  private ShakeManager uwv;
   
   public u()
   {
     AppMethodBeat.i(27818);
-    this.qUm = true;
-    this.qUo = false;
+    this.uws = true;
+    this.uwu = false;
     this.lastShakeTime = -1L;
     this.callbacks = new LinkedList();
-    this.qUl = ((l)g.af(l.class)).Xa();
-    bg.aVF();
-    Boolean localBoolean = (Boolean)c.azQ().get(26, Boolean.FALSE);
-    this.qUn = localBoolean.booleanValue();
+    this.uwr = ((l)h.ae(l.class)).abD();
+    bh.beI();
+    Boolean localBoolean = (Boolean)c.aHp().b(26, Boolean.FALSE);
+    this.uwt = localBoolean.booleanValue();
     boolean bool;
     if (!localBoolean.booleanValue())
     {
       bool = true;
-      this.qUm = bool;
-      if (this.qUl == null) {
+      this.uws = bool;
+      if (this.uwr == null) {
         break label213;
       }
-      this.qUl.a(this);
-      this.qUl.a(this);
-      if ((!a.cdW()) && (!a.ceb())) {
+      this.uwr.a(this);
+      this.uwr.a(this);
+      if ((!a.crh()) && (!a.cro())) {
         break label197;
       }
-      this.qUl.cU(false);
+      this.uwr.dr(false);
     }
     for (;;)
     {
-      if (qUq == null) {
-        qUq = new SensorController(MMApplicationContext.getContext());
+      if (uww == null) {
+        uww = new SensorController(MMApplicationContext.getContext());
       }
-      if (this.qUp == null) {
-        this.qUp = new ShakeManager(MMApplicationContext.getContext());
+      if (this.uwv == null) {
+        this.uwv = new ShakeManager(MMApplicationContext.getContext());
       }
       AppMethodBeat.o(27818);
       return;
       bool = false;
       break;
       label197:
-      this.qUl.cU(this.qUm);
+      this.uwr.dr(this.uws);
       continue;
       label213:
       Log.w("MicroMsg.RecordVoiceHelper", "get voice player fail, it is null");
     }
   }
   
-  public final void cEE()
+  public final void cTk()
   {
     AppMethodBeat.i(27824);
-    if (qUq != null) {
-      qUq.removeSensorCallBack();
+    if (uww != null) {
+      uww.removeSensorCallBack();
     }
-    if (this.qUp != null) {
-      this.qUp.stopShake();
+    if (this.uwv != null) {
+      this.uwv.stopShake();
     }
     AppMethodBeat.o(27824);
   }
   
-  public final boolean cEF()
+  public final boolean cTl()
   {
     AppMethodBeat.i(27820);
-    if (this.qUl == null)
+    if (this.uwr == null)
     {
       Log.w("MicroMsg.RecordVoiceHelper", "check is play, but player is null");
       AppMethodBeat.o(27820);
       return false;
     }
-    boolean bool = this.qUl.isPlaying();
+    boolean bool = this.uwr.isPlaying();
     AppMethodBeat.o(27820);
     return bool;
   }
   
-  public final boolean cZ(String paramString, int paramInt)
+  public final boolean dt(String paramString, int paramInt)
   {
     AppMethodBeat.i(27819);
-    if (this.qUl == null)
+    if (this.uwr == null)
     {
       Log.w("MicroMsg.RecordVoiceHelper", "start play error, path %s, voiceType %d, player is null", new Object[] { paramString, Integer.valueOf(paramInt) });
       AppMethodBeat.o(27819);
       return false;
     }
-    this.qUl.stop();
+    this.uwr.stop();
     Object localObject = this.callbacks.iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((a)((Iterator)localObject).next()).aKZ(paramString);
+      ((a)((Iterator)localObject).next()).aVA(paramString);
     }
-    if ((qUq != null) && (!qUq.hasRegistered()))
+    if ((uww != null) && (!uww.hasRegistered()))
     {
-      qUq.setSensorCallBack(this);
+      uww.setSensorCallBack(this);
       localObject = new Runnable()
       {
         public final void run()
@@ -133,7 +133,7 @@ public final class u
           AppMethodBeat.o(27817);
         }
       };
-      if (!this.qUp.startShake((Runnable)localObject)) {
+      if (!this.uwv.startShake((Runnable)localObject)) {
         break label186;
       }
     }
@@ -141,8 +141,8 @@ public final class u
     for (this.lastShakeTime = 0L;; this.lastShakeTime = -1L)
     {
       this.path = paramString;
-      this.dLt = paramInt;
-      if ((Util.isNullOrNil(paramString)) || (!this.qUl.a(paramString, this.qUm, true, paramInt))) {
+      this.fEi = paramInt;
+      if ((Util.isNullOrNil(paramString)) || (!this.uwr.a(paramString, this.uws, true, paramInt))) {
         break;
       }
       MMEntryLock.lock("keep_app_silent");
@@ -177,7 +177,7 @@ public final class u
     AppMethodBeat.o(27822);
   }
   
-  public final void onSensorEvent(boolean paramBoolean)
+  public void onSensorEvent(boolean paramBoolean)
   {
     boolean bool = true;
     AppMethodBeat.i(27825);
@@ -186,50 +186,50 @@ public final class u
       AppMethodBeat.o(27825);
       return;
     }
-    if (this.qUo)
+    if (this.uwu)
     {
       if (!paramBoolean) {}
       for (paramBoolean = bool;; paramBoolean = false)
       {
-        this.qUo = paramBoolean;
+        this.uwu = paramBoolean;
         AppMethodBeat.o(27825);
         return;
       }
     }
     if ((!paramBoolean) && (this.lastShakeTime != -1L) && (Util.ticksToNow(this.lastShakeTime) > 400L))
     {
-      this.qUo = true;
+      this.uwu = true;
       AppMethodBeat.o(27825);
       return;
     }
-    this.qUo = false;
-    if ((this.qUl != null) && (this.qUl.isCalling()))
+    this.uwu = false;
+    if ((this.uwr != null) && (this.uwr.isCalling()))
     {
       AppMethodBeat.o(27825);
       return;
     }
-    if (this.qUn)
+    if (this.uwt)
     {
-      if (this.qUl != null) {
-        this.qUl.cU(false);
+      if (this.uwr != null) {
+        this.uwr.dr(false);
       }
-      this.qUm = false;
+      this.uws = false;
       AppMethodBeat.o(27825);
       return;
     }
-    if ((this.qUl != null) && (!this.qUl.isPlaying()))
+    if ((this.uwr != null) && (!this.uwr.isPlaying()))
     {
-      this.qUl.cU(true);
-      this.qUm = true;
+      this.uwr.dr(true);
+      this.uws = true;
       AppMethodBeat.o(27825);
       return;
     }
-    if (this.qUl != null) {
-      this.qUl.cU(paramBoolean);
+    if (this.uwr != null) {
+      this.uwr.dr(paramBoolean);
     }
-    this.qUm = paramBoolean;
+    this.uws = paramBoolean;
     if (!paramBoolean) {
-      cZ(this.path, this.dLt);
+      dt(this.path, this.fEi);
     }
     AppMethodBeat.o(27825);
   }
@@ -239,23 +239,23 @@ public final class u
     AppMethodBeat.i(27821);
     Log.d("MicroMsg.RecordVoiceHelper", "stop play");
     MMEntryLock.unlock("keep_app_silent");
-    if (this.qUl != null) {
-      this.qUl.stop();
+    if (this.uwr != null) {
+      this.uwr.stop();
     }
-    cEE();
+    cTk();
     AppMethodBeat.o(27821);
   }
   
   public static abstract interface a
   {
-    public abstract void aKZ(String paramString);
+    public abstract void aVA(String paramString);
     
     public abstract void onFinish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.record.b.u
  * JD-Core Version:    0.7.0.1
  */

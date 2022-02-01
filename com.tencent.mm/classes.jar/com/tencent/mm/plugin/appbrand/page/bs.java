@@ -1,25 +1,45 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import android.webkit.ValueCallback;
+import com.tencent.luggage.sdk.b.a.b.a.a;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/page/MonkeyTestAppPageView;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "waAutoWebViewJs", "", "(Ljava/lang/String;)V", "getWaAutoWebViewJs", "()Ljava/lang/String;", "plugin-appbrand-integration_release"})
-public final class bs
-  extends ag
+public abstract interface bs
+  extends a, bd
 {
-  public final String nuB;
+  public abstract void a(a parama);
   
-  public bs(String paramString)
+  public abstract void aj(Runnable paramRunnable);
+  
+  public abstract void b(String paramString, ValueCallback<String> paramValueCallback);
+  
+  public abstract boolean bDV();
+  
+  public abstract void cer();
+  
+  public abstract boolean cfg();
+  
+  public abstract void cfq();
+  
+  public abstract boolean cfr();
+  
+  public static abstract interface a
   {
-    super(bt.class);
-    AppMethodBeat.i(229243);
-    this.nuB = paramString;
-    AppMethodBeat.o(229243);
+    public abstract void cfk();
+    
+    public abstract boolean cfl();
+    
+    public abstract String cfm();
+    
+    public abstract ad cfn();
+    
+    public abstract void jj(boolean paramBoolean);
+    
+    public abstract void jk(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bs
  * JD-Core Version:    0.7.0.1
  */

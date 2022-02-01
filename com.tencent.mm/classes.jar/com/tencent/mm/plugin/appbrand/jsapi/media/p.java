@@ -10,12 +10,12 @@ import java.io.InputStream;
 public final class p
   implements e
 {
-  public static final p meq;
+  public static final p pci;
   
   static
   {
     AppMethodBeat.i(46601);
-    meq = new p();
+    pci = new p();
     AppMethodBeat.o(46601);
   }
   
@@ -37,9 +37,9 @@ public final class p
   
   public final Bitmap decodeStream(InputStream paramInputStream)
   {
-    AppMethodBeat.i(204362);
+    AppMethodBeat.i(217397);
     paramInputStream = BitmapUtil.decodeStream(paramInputStream);
-    AppMethodBeat.o(204362);
+    AppMethodBeat.o(217397);
     return paramInputStream;
   }
 }

@@ -9,7 +9,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelgeo.d;
-import com.tencent.mm.modelstat.o;
+import com.tencent.mm.modelstat.n;
+import com.tencent.mm.plugin.finder.b.e;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.i;
+import com.tencent.mm.plugin.finder.b.j;
 import com.tencent.mm.pluginsdk.location.Location;
 import com.tencent.mm.pluginsdk.location.b;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -19,206 +24,165 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveLocationView;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/pluginsdk/location/ILocationView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "clickLocationListener", "Lcom/tencent/mm/pluginsdk/location/ILocationView$OnClickLocationListener;", "contentView", "Landroid/view/View;", "getContentView", "()Landroid/view/View;", "setContentView", "(Landroid/view/View;)V", "defaultLoadingPBarColor", "defaultLoadingTipColor", "defaultStateIconColor", "defaultStateTextColor", "getLocation", "Lcom/tencent/mm/modelgeo/LocationGeo;", "kotlin.jvm.PlatformType", "getGetLocation", "()Lcom/tencent/mm/modelgeo/LocationGeo;", "setGetLocation", "(Lcom/tencent/mm/modelgeo/LocationGeo;)V", "iconColor", "latitude", "", "getLatitude", "()F", "setLatitude", "(F)V", "locationIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getLocationIv", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setLocationIv", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "locationListener", "Lcom/tencent/mm/modelgeo/IGetLocation$IOnLocationGet;", "getLocationListener", "()Lcom/tencent/mm/modelgeo/IGetLocation$IOnLocationGet;", "locationLoadingProBar", "Lcom/tencent/mm/ui/widget/MMProcessBar;", "getLocationLoadingProBar", "()Lcom/tencent/mm/ui/widget/MMProcessBar;", "setLocationLoadingProBar", "(Lcom/tencent/mm/ui/widget/MMProcessBar;)V", "locationLoadingTip", "Landroid/widget/TextView;", "getLocationLoadingTip", "()Landroid/widget/TextView;", "setLocationLoadingTip", "(Landroid/widget/TextView;)V", "locationLoadingView", "getLocationLoadingView", "setLocationLoadingView", "locationNormalView", "getLocationNormalView", "setLocationNormalView", "locationTipTv", "getLocationTipTv", "setLocationTipTv", "locationTv", "getLocationTv", "setLocationTv", "longitude", "getLongitude", "setLongitude", "textColor", "GDPRLocationConfirm", "", "doClickAfterPermission", "Lcom/tencent/mm/pluginsdk/location/Location;", "init", "onAttachedToWindow", "onDetachedFromWindow", "resetLocationColor", "setDefaultLoadingPBarColor", "setDefaultLoadingTipColor", "setDefaultState", "setDefaultStateIconColor", "setDefaultStateTextColor", "setIconColor", "setLoadingState", "setLocationIcon", "resId", "setLocationIconColor", "setLocationName", "locationName", "setLocationNameColor", "setLocationTipColor", "color", "setNormalState", "city", "poiName", "setOnClickLocationListener", "onClickLocationListener", "setSuggestView", "setTextColor", "updateLoadingView", "id", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveLocationView;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/pluginsdk/location/ILocationView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "clickLocationListener", "Lcom/tencent/mm/pluginsdk/location/ILocationView$OnClickLocationListener;", "contentView", "Landroid/view/View;", "getContentView", "()Landroid/view/View;", "setContentView", "(Landroid/view/View;)V", "defaultLoadingPBarColor", "defaultLoadingTipColor", "defaultStateIconColor", "defaultStateTextColor", "getLocation", "Lcom/tencent/mm/modelgeo/LocationGeo;", "kotlin.jvm.PlatformType", "getGetLocation", "()Lcom/tencent/mm/modelgeo/LocationGeo;", "setGetLocation", "(Lcom/tencent/mm/modelgeo/LocationGeo;)V", "iconColor", "latitude", "", "getLatitude", "()F", "setLatitude", "(F)V", "locationIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getLocationIv", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setLocationIv", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "locationListener", "Lcom/tencent/mm/modelgeo/IGetLocation$IOnLocationGet;", "getLocationListener", "()Lcom/tencent/mm/modelgeo/IGetLocation$IOnLocationGet;", "locationLoadingProBar", "Lcom/tencent/mm/ui/widget/MMProcessBar;", "getLocationLoadingProBar", "()Lcom/tencent/mm/ui/widget/MMProcessBar;", "setLocationLoadingProBar", "(Lcom/tencent/mm/ui/widget/MMProcessBar;)V", "locationLoadingTip", "Landroid/widget/TextView;", "getLocationLoadingTip", "()Landroid/widget/TextView;", "setLocationLoadingTip", "(Landroid/widget/TextView;)V", "locationLoadingView", "getLocationLoadingView", "setLocationLoadingView", "locationNormalView", "getLocationNormalView", "setLocationNormalView", "locationTv", "getLocationTv", "setLocationTv", "longitude", "getLongitude", "setLongitude", "textColor", "GDPRLocationConfirm", "", "doClickAfterPermission", "Lcom/tencent/mm/pluginsdk/location/Location;", "init", "onAttachedToWindow", "onDetachedFromWindow", "resetLocationColor", "setDefaultLoadingPBarColor", "setDefaultLoadingTipColor", "setDefaultState", "setDefaultStateIconColor", "setDefaultStateTextColor", "setIconColor", "setLoadingState", "setLocationIcon", "resId", "setLocationIconColor", "setLocationName", "locationName", "setLocationNameColor", "setLocationTipColor", "color", "setNormalState", "city", "poiName", "setOnClickLocationListener", "onClickLocationListener", "setSuggestView", "setTextColor", "updateLoadingView", "id", "plugin-finder_release"})
 public final class FinderLiveLocationView
   extends LinearLayout
   implements b
 {
   private final String TAG;
   public View contentView;
-  private float dTj;
+  private int iconColor;
   private float latitude;
+  private float longitude;
   private int textColor;
-  public WeImageView uzl;
-  public TextView uzm;
-  public TextView uzn;
-  public View uzo;
-  public MMProcessBar uzp;
-  public TextView uzq;
-  public View uzr;
-  private d uzs;
-  private int uzt;
-  private int uzu;
-  private int uzv;
-  private int uzw;
-  private int uzx;
-  com.tencent.mm.pluginsdk.location.b.a uzy;
-  private final com.tencent.mm.modelgeo.b.a uzz;
+  public WeImageView yUO;
+  public TextView yUP;
+  public View yUQ;
+  public MMProcessBar yUR;
+  public TextView yUS;
+  public View yUT;
+  private d yUU;
+  private int yUV;
+  private int yUW;
+  private int yUX;
+  private int yUY;
+  com.tencent.mm.pluginsdk.location.b.a yUZ;
+  private final com.tencent.mm.modelgeo.b.a yVa;
   
   public FinderLiveLocationView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(247523);
+    AppMethodBeat.i(292142);
     this.TAG = "Finder.FinderLiveLocationView";
-    this.uzs = d.bca();
+    this.yUU = d.blq();
     this.latitude = -85.0F;
-    this.dTj = -1000.0F;
-    this.uzz = ((com.tencent.mm.modelgeo.b.a)new b(this));
+    this.longitude = -1000.0F;
+    this.yVa = ((com.tencent.mm.modelgeo.b.a)new b(this));
     init();
-    AppMethodBeat.o(247523);
+    AppMethodBeat.o(292142);
   }
   
   public FinderLiveLocationView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(247524);
+    AppMethodBeat.i(292143);
     this.TAG = "Finder.FinderLiveLocationView";
-    this.uzs = d.bca();
+    this.yUU = d.blq();
     this.latitude = -85.0F;
-    this.dTj = -1000.0F;
-    this.uzz = ((com.tencent.mm.modelgeo.b.a)new b(this));
+    this.longitude = -1000.0F;
+    this.yVa = ((com.tencent.mm.modelgeo.b.a)new b(this));
     init();
-    AppMethodBeat.o(247524);
+    AppMethodBeat.o(292143);
   }
   
   private void init()
   {
-    AppMethodBeat.i(247509);
-    Object localObject = View.inflate(getContext(), 2131494421, (ViewGroup)this);
-    p.g(localObject, "View.inflate(context, R.…_location_geo_view, this)");
+    AppMethodBeat.i(292129);
+    Object localObject = View.inflate(getContext(), b.g.finder_live_location_geo_view, (ViewGroup)this);
+    p.j(localObject, "View.inflate(context, R.…_location_geo_view, this)");
     this.contentView = ((View)localObject);
-    localObject = findViewById(2131303730);
-    p.g(localObject, "findViewById(R.id.location_icon)");
-    this.uzl = ((WeImageView)localObject);
-    localObject = findViewById(2131303745);
-    p.g(localObject, "findViewById(R.id.location_poi_name)");
-    this.uzm = ((TextView)localObject);
-    localObject = findViewById(2131303746);
-    p.g(localObject, "findViewById(R.id.location_poi_tip_tv)");
-    this.uzn = ((TextView)localObject);
-    localObject = findViewById(2131303739);
-    p.g(localObject, "findViewById(R.id.location_loading_view)");
-    this.uzo = ((View)localObject);
-    localObject = findViewById(2131303757);
-    p.g(localObject, "findViewById(R.id.location_verifying_icon)");
-    this.uzp = ((MMProcessBar)localObject);
-    localObject = findViewById(2131303758);
-    p.g(localObject, "findViewById(R.id.location_verifying_tip)");
-    this.uzq = ((TextView)localObject);
-    localObject = findViewById(2131303743);
-    p.g(localObject, "findViewById(R.id.location_normal_view)");
-    this.uzr = ((View)localObject);
-    setBackgroundResource(2131231898);
+    localObject = findViewById(b.f.location_icon);
+    p.j(localObject, "findViewById(R.id.location_icon)");
+    this.yUO = ((WeImageView)localObject);
+    localObject = findViewById(b.f.location_poi_name);
+    p.j(localObject, "findViewById(R.id.location_poi_name)");
+    this.yUP = ((TextView)localObject);
+    localObject = findViewById(b.f.location_loading_view);
+    p.j(localObject, "findViewById(R.id.location_loading_view)");
+    this.yUQ = ((View)localObject);
+    localObject = findViewById(b.f.location_verifying_icon);
+    p.j(localObject, "findViewById(R.id.location_verifying_icon)");
+    this.yUR = ((MMProcessBar)localObject);
+    localObject = findViewById(b.f.location_verifying_tip);
+    p.j(localObject, "findViewById(R.id.location_verifying_tip)");
+    this.yUS = ((TextView)localObject);
+    localObject = findViewById(b.f.location_normal_view);
+    p.j(localObject, "findViewById(R.id.location_normal_view)");
+    this.yUT = ((View)localObject);
+    setBackgroundResource(b.e.comm_list_item_selector);
     localObject = (View.OnClickListener)new FinderLiveLocationView.a(this);
     View localView = this.contentView;
     if (localView == null) {
-      p.btv("contentView");
+      p.bGy("contentView");
     }
     localView.setOnClickListener((View.OnClickListener)localObject);
-    AppMethodBeat.o(247509);
+    AppMethodBeat.o(292129);
   }
   
-  public final void dix()
+  public final void NM(int paramInt)
   {
-    AppMethodBeat.i(247510);
-    View localView = this.uzr;
+    AppMethodBeat.i(292141);
+    Object localObject = this.yUR;
+    if (localObject == null) {
+      p.bGy("locationLoadingProBar");
+    }
+    ((MMProcessBar)localObject).mO(paramInt, this.yUX);
+    localObject = this.yUS;
+    if (localObject == null) {
+      p.bGy("locationLoadingTip");
+    }
+    ((TextView)localObject).setTextColor(this.yUY);
+    AppMethodBeat.o(292141);
+  }
+  
+  public final void dFc()
+  {
+    AppMethodBeat.i(292130);
+    View localView = this.yUT;
     if (localView == null) {
-      p.btv("locationNormalView");
+      p.bGy("locationNormalView");
     }
     localView.setVisibility(8);
-    localView = this.uzo;
+    localView = this.yUQ;
     if (localView == null) {
-      p.btv("locationLoadingView");
+      p.bGy("locationLoadingView");
     }
     localView.setVisibility(0);
-    AppMethodBeat.o(247510);
+    AppMethodBeat.o(292130);
   }
   
-  public final void diy()
+  public final void dFd()
   {
-    AppMethodBeat.i(247513);
-    Object localObject = this.uzr;
+    AppMethodBeat.i(292133);
+    Object localObject = this.yUT;
     if (localObject == null) {
-      p.btv("locationNormalView");
+      p.bGy("locationNormalView");
     }
     ((View)localObject).setVisibility(0);
-    localObject = this.uzo;
+    localObject = this.yUQ;
     if (localObject == null) {
-      p.btv("locationLoadingView");
+      p.bGy("locationLoadingView");
     }
     ((View)localObject).setVisibility(8);
-    localObject = this.uzn;
+    setLocationName(getContext().getString(b.j.finder_live_poi_default));
+    localObject = this.yUO;
     if (localObject == null) {
-      p.btv("locationTipTv");
+      p.bGy("locationIv");
     }
-    ((TextView)localObject).setVisibility(8);
-    setLocationName(getContext().getString(2131762453));
-    localObject = this.uzl;
+    ((WeImageView)localObject).setIconColor(this.yUV);
+    localObject = this.yUP;
     if (localObject == null) {
-      p.btv("locationIv");
+      p.bGy("locationTv");
     }
-    ((WeImageView)localObject).setIconColor(this.uzu);
-    localObject = this.uzm;
-    if (localObject == null) {
-      p.btv("locationTv");
-    }
-    ((TextView)localObject).setTextColor(this.uzv);
-    setLocationIcon(2131690826);
-    AppMethodBeat.o(247513);
-  }
-  
-  public final void diz()
-  {
-    AppMethodBeat.i(247522);
-    Object localObject = this.uzp;
-    if (localObject == null) {
-      p.btv("locationLoadingProBar");
-    }
-    ((MMProcessBar)localObject).setBackground$255f295(this.uzw);
-    localObject = this.uzq;
-    if (localObject == null) {
-      p.btv("locationLoadingTip");
-    }
-    ((TextView)localObject).setTextColor(this.uzx);
-    AppMethodBeat.o(247522);
-  }
-  
-  public final void gM(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(247512);
-    Object localObject = this.uzr;
-    if (localObject == null) {
-      p.btv("locationNormalView");
-    }
-    ((View)localObject).setVisibility(0);
-    localObject = this.uzo;
-    if (localObject == null) {
-      p.btv("locationLoadingView");
-    }
-    ((View)localObject).setVisibility(8);
-    localObject = this.uzn;
-    if (localObject == null) {
-      p.btv("locationTipTv");
-    }
-    ((TextView)localObject).setVisibility(8);
-    if (!Util.isNullOrNil(paramString2)) {
-      setLocationName(paramString2);
-    }
-    for (;;)
-    {
-      setLocationNameColor(this.textColor);
-      setLocationIcon(2131690589);
-      setLocationIconColor(this.uzt);
-      AppMethodBeat.o(247512);
-      return;
-      setLocationName(paramString1);
-    }
+    ((TextView)localObject).setTextColor(this.yUW);
+    setLocationIcon(b.i.icons_filled_location);
+    AppMethodBeat.o(292133);
   }
   
   public final View getContentView()
   {
-    AppMethodBeat.i(247507);
+    AppMethodBeat.i(292126);
     View localView = this.contentView;
     if (localView == null) {
-      p.btv("contentView");
+      p.bGy("contentView");
     }
-    AppMethodBeat.o(247507);
+    AppMethodBeat.o(292126);
     return localView;
   }
   
   public final d getGetLocation()
   {
-    return this.uzs;
+    return this.yUU;
   }
   
   public final float getLatitude()
@@ -228,97 +192,86 @@ public final class FinderLiveLocationView
   
   public final Location getLocation()
   {
-    AppMethodBeat.i(247520);
-    Location localLocation = new Location(this.latitude, this.dTj);
-    AppMethodBeat.o(247520);
+    AppMethodBeat.i(292140);
+    Location localLocation = new Location(this.latitude, this.longitude);
+    AppMethodBeat.o(292140);
     return localLocation;
   }
   
   public final WeImageView getLocationIv()
   {
-    AppMethodBeat.i(247493);
-    WeImageView localWeImageView = this.uzl;
+    AppMethodBeat.i(292114);
+    WeImageView localWeImageView = this.yUO;
     if (localWeImageView == null) {
-      p.btv("locationIv");
+      p.bGy("locationIv");
     }
-    AppMethodBeat.o(247493);
+    AppMethodBeat.o(292114);
     return localWeImageView;
   }
   
   public final com.tencent.mm.modelgeo.b.a getLocationListener()
   {
-    return this.uzz;
+    return this.yVa;
   }
   
   public final MMProcessBar getLocationLoadingProBar()
   {
-    AppMethodBeat.i(247501);
-    MMProcessBar localMMProcessBar = this.uzp;
+    AppMethodBeat.i(292120);
+    MMProcessBar localMMProcessBar = this.yUR;
     if (localMMProcessBar == null) {
-      p.btv("locationLoadingProBar");
+      p.bGy("locationLoadingProBar");
     }
-    AppMethodBeat.o(247501);
+    AppMethodBeat.o(292120);
     return localMMProcessBar;
   }
   
   public final TextView getLocationLoadingTip()
   {
-    AppMethodBeat.i(247503);
-    TextView localTextView = this.uzq;
+    AppMethodBeat.i(292122);
+    TextView localTextView = this.yUS;
     if (localTextView == null) {
-      p.btv("locationLoadingTip");
+      p.bGy("locationLoadingTip");
     }
-    AppMethodBeat.o(247503);
+    AppMethodBeat.o(292122);
     return localTextView;
   }
   
   public final View getLocationLoadingView()
   {
-    AppMethodBeat.i(247499);
-    View localView = this.uzo;
+    AppMethodBeat.i(292118);
+    View localView = this.yUQ;
     if (localView == null) {
-      p.btv("locationLoadingView");
+      p.bGy("locationLoadingView");
     }
-    AppMethodBeat.o(247499);
+    AppMethodBeat.o(292118);
     return localView;
   }
   
   public final View getLocationNormalView()
   {
-    AppMethodBeat.i(247505);
-    View localView = this.uzr;
+    AppMethodBeat.i(292124);
+    View localView = this.yUT;
     if (localView == null) {
-      p.btv("locationNormalView");
+      p.bGy("locationNormalView");
     }
-    AppMethodBeat.o(247505);
+    AppMethodBeat.o(292124);
     return localView;
-  }
-  
-  public final TextView getLocationTipTv()
-  {
-    AppMethodBeat.i(247497);
-    TextView localTextView = this.uzn;
-    if (localTextView == null) {
-      p.btv("locationTipTv");
-    }
-    AppMethodBeat.o(247497);
-    return localTextView;
   }
   
   public final TextView getLocationTv()
   {
-    AppMethodBeat.i(247495);
-    TextView localTextView = this.uzm;
+    AppMethodBeat.i(292116);
+    TextView localTextView = this.yUP;
     if (localTextView == null) {
-      p.btv("locationTv");
+      p.bGy("locationTv");
     }
-    AppMethodBeat.o(247495);
+    AppMethodBeat.o(292116);
     return localTextView;
   }
   
   public final float getLongitude()
   {
-    return this.dTj;
+    return this.longitude;
   }
   
   public final String getTAG()
@@ -326,58 +279,85 @@ public final class FinderLiveLocationView
     return this.TAG;
   }
   
+  public final void hd(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(292132);
+    View localView = this.yUT;
+    if (localView == null) {
+      p.bGy("locationNormalView");
+    }
+    localView.setVisibility(0);
+    localView = this.yUQ;
+    if (localView == null) {
+      p.bGy("locationLoadingView");
+    }
+    localView.setVisibility(8);
+    if (!Util.isNullOrNil(paramString2)) {
+      setLocationName(paramString2);
+    }
+    for (;;)
+    {
+      setLocationNameColor(this.textColor);
+      setLocationIcon(b.i.icons_filled_location);
+      setLocationIconColor(this.iconColor);
+      AppMethodBeat.o(292132);
+      return;
+      setLocationName(paramString1);
+    }
+  }
+  
   protected final void onAttachedToWindow()
   {
-    AppMethodBeat.i(247514);
+    AppMethodBeat.i(292134);
     super.onAttachedToWindow();
-    this.uzs.b(this.uzz);
-    AppMethodBeat.o(247514);
+    this.yUU.a(this.yVa);
+    AppMethodBeat.o(292134);
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(247515);
+    AppMethodBeat.i(292135);
     super.onDetachedFromWindow();
-    this.uzs.c(this.uzz);
-    AppMethodBeat.o(247515);
+    this.yUU.b(this.yVa);
+    AppMethodBeat.o(292135);
   }
   
   public final void setContentView(View paramView)
   {
-    AppMethodBeat.i(247508);
-    p.h(paramView, "<set-?>");
+    AppMethodBeat.i(292127);
+    p.k(paramView, "<set-?>");
     this.contentView = paramView;
-    AppMethodBeat.o(247508);
+    AppMethodBeat.o(292127);
   }
   
   public final void setDefaultLoadingPBarColor(int paramInt)
   {
-    this.uzw = paramInt;
+    this.yUX = paramInt;
   }
   
   public final void setDefaultLoadingTipColor(int paramInt)
   {
-    this.uzx = paramInt;
+    this.yUY = paramInt;
   }
   
   public final void setDefaultStateIconColor(int paramInt)
   {
-    this.uzu = paramInt;
+    this.yUV = paramInt;
   }
   
   public final void setDefaultStateTextColor(int paramInt)
   {
-    this.uzv = paramInt;
+    this.yUW = paramInt;
   }
   
   public final void setGetLocation(d paramd)
   {
-    this.uzs = paramd;
+    this.yUU = paramd;
   }
   
   public final void setIconColor(int paramInt)
   {
-    this.uzt = paramInt;
+    this.iconColor = paramInt;
   }
   
   public final void setLatitude(float paramFloat)
@@ -387,148 +367,126 @@ public final class FinderLiveLocationView
   
   public final void setLocationIcon(int paramInt)
   {
-    AppMethodBeat.i(247518);
-    WeImageView localWeImageView = this.uzl;
+    AppMethodBeat.i(292138);
+    WeImageView localWeImageView = this.yUO;
     if (localWeImageView == null) {
-      p.btv("locationIv");
+      p.bGy("locationIv");
     }
     localWeImageView.setImageResource(paramInt);
-    AppMethodBeat.o(247518);
+    AppMethodBeat.o(292138);
   }
   
   public final void setLocationIconColor(int paramInt)
   {
-    AppMethodBeat.i(247517);
-    WeImageView localWeImageView = this.uzl;
+    AppMethodBeat.i(292137);
+    WeImageView localWeImageView = this.yUO;
     if (localWeImageView == null) {
-      p.btv("locationIv");
+      p.bGy("locationIv");
     }
     localWeImageView.setIconColor(paramInt);
-    AppMethodBeat.o(247517);
+    AppMethodBeat.o(292137);
   }
   
   public final void setLocationIv(WeImageView paramWeImageView)
   {
-    AppMethodBeat.i(247494);
-    p.h(paramWeImageView, "<set-?>");
-    this.uzl = paramWeImageView;
-    AppMethodBeat.o(247494);
+    AppMethodBeat.i(292115);
+    p.k(paramWeImageView, "<set-?>");
+    this.yUO = paramWeImageView;
+    AppMethodBeat.o(292115);
   }
   
   public final void setLocationLoadingProBar(MMProcessBar paramMMProcessBar)
   {
-    AppMethodBeat.i(247502);
-    p.h(paramMMProcessBar, "<set-?>");
-    this.uzp = paramMMProcessBar;
-    AppMethodBeat.o(247502);
+    AppMethodBeat.i(292121);
+    p.k(paramMMProcessBar, "<set-?>");
+    this.yUR = paramMMProcessBar;
+    AppMethodBeat.o(292121);
   }
   
   public final void setLocationLoadingTip(TextView paramTextView)
   {
-    AppMethodBeat.i(247504);
-    p.h(paramTextView, "<set-?>");
-    this.uzq = paramTextView;
-    AppMethodBeat.o(247504);
+    AppMethodBeat.i(292123);
+    p.k(paramTextView, "<set-?>");
+    this.yUS = paramTextView;
+    AppMethodBeat.o(292123);
   }
   
   public final void setLocationLoadingView(View paramView)
   {
-    AppMethodBeat.i(247500);
-    p.h(paramView, "<set-?>");
-    this.uzo = paramView;
-    AppMethodBeat.o(247500);
+    AppMethodBeat.i(292119);
+    p.k(paramView, "<set-?>");
+    this.yUQ = paramView;
+    AppMethodBeat.o(292119);
   }
   
   public final void setLocationName(String paramString)
   {
-    AppMethodBeat.i(247516);
-    TextView localTextView = this.uzm;
+    AppMethodBeat.i(292136);
+    TextView localTextView = this.yUP;
     if (localTextView == null) {
-      p.btv("locationTv");
+      p.bGy("locationTv");
     }
     localTextView.setText((CharSequence)paramString);
-    AppMethodBeat.o(247516);
+    AppMethodBeat.o(292136);
   }
   
   public final void setLocationNameColor(int paramInt)
   {
-    AppMethodBeat.i(247519);
-    TextView localTextView = this.uzm;
+    AppMethodBeat.i(292139);
+    TextView localTextView = this.yUP;
     if (localTextView == null) {
-      p.btv("locationTv");
+      p.bGy("locationTv");
     }
     localTextView.setTextColor(paramInt);
-    AppMethodBeat.o(247519);
+    AppMethodBeat.o(292139);
   }
   
   public final void setLocationNormalView(View paramView)
   {
-    AppMethodBeat.i(247506);
-    p.h(paramView, "<set-?>");
-    this.uzr = paramView;
-    AppMethodBeat.o(247506);
+    AppMethodBeat.i(292125);
+    p.k(paramView, "<set-?>");
+    this.yUT = paramView;
+    AppMethodBeat.o(292125);
   }
   
-  public final void setLocationTipColor(int paramInt)
-  {
-    AppMethodBeat.i(247521);
-    TextView localTextView = this.uzn;
-    if (localTextView == null) {
-      p.btv("locationTipTv");
-    }
-    localTextView.setTextColor(paramInt);
-    AppMethodBeat.o(247521);
-  }
-  
-  public final void setLocationTipTv(TextView paramTextView)
-  {
-    AppMethodBeat.i(247498);
-    p.h(paramTextView, "<set-?>");
-    this.uzn = paramTextView;
-    AppMethodBeat.o(247498);
-  }
+  public final void setLocationTipColor(int paramInt) {}
   
   public final void setLocationTv(TextView paramTextView)
   {
-    AppMethodBeat.i(247496);
-    p.h(paramTextView, "<set-?>");
-    this.uzm = paramTextView;
-    AppMethodBeat.o(247496);
+    AppMethodBeat.i(292117);
+    p.k(paramTextView, "<set-?>");
+    this.yUP = paramTextView;
+    AppMethodBeat.o(292117);
   }
   
   public final void setLongitude(float paramFloat)
   {
-    this.dTj = paramFloat;
+    this.longitude = paramFloat;
   }
   
   public final void setOnClickLocationListener(com.tencent.mm.pluginsdk.location.b.a parama)
   {
-    this.uzy = parama;
+    this.yUZ = parama;
   }
   
   public final void setSuggestView(String paramString)
   {
-    AppMethodBeat.i(247511);
-    Object localObject = this.uzr;
-    if (localObject == null) {
-      p.btv("locationNormalView");
+    AppMethodBeat.i(292131);
+    View localView = this.yUT;
+    if (localView == null) {
+      p.bGy("locationNormalView");
     }
-    ((View)localObject).setVisibility(0);
-    localObject = this.uzo;
-    if (localObject == null) {
-      p.btv("locationLoadingView");
+    localView.setVisibility(0);
+    localView = this.yUQ;
+    if (localView == null) {
+      p.bGy("locationLoadingView");
     }
-    ((View)localObject).setVisibility(8);
-    localObject = this.uzn;
-    if (localObject == null) {
-      p.btv("locationTipTv");
-    }
-    ((TextView)localObject).setVisibility(0);
+    localView.setVisibility(8);
     setLocationName(paramString);
     setLocationNameColor(this.textColor);
-    setLocationIcon(2131690589);
-    setLocationIconColor(this.uzt);
-    AppMethodBeat.o(247511);
+    setLocationIcon(b.i.icons_filled_location);
+    setLocationIconColor(this.iconColor);
+    AppMethodBeat.o(292131);
   }
   
   public final void setTextColor(int paramInt)
@@ -536,7 +494,7 @@ public final class FinderLiveLocationView
     this.textColor = paramInt;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "isOk", "fLongitude", "", "fLatitude", "locType", "", "speed", "", "accuracy", "altitude", "onGetLocation"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "isOk", "fLongitude", "", "fLatitude", "locType", "", "speed", "", "accuracy", "altitude", "onGetLocation"})
   static final class b
     implements com.tencent.mm.modelgeo.b.a
   {
@@ -544,27 +502,27 @@ public final class FinderLiveLocationView
     
     public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2)
     {
-      AppMethodBeat.i(247492);
+      AppMethodBeat.i(279617);
       if (!paramBoolean)
       {
-        AppMethodBeat.o(247492);
+        AppMethodBeat.o(279617);
         return true;
       }
-      Log.d(this.uzA.getTAG(), "get location %f %f", new Object[] { Float.valueOf(paramFloat2), Float.valueOf(paramFloat1) });
-      o.a(2015, paramFloat1, paramFloat2, 0);
-      if ((this.uzA.getLatitude() == -85.0F) || (this.uzA.getLongitude() == -1000.0F))
+      Log.d(this.yVb.getTAG(), "get location %f %f", new Object[] { Float.valueOf(paramFloat2), Float.valueOf(paramFloat1) });
+      n.a(2015, paramFloat1, paramFloat2, 0);
+      if ((this.yVb.getLatitude() == -85.0F) || (this.yVb.getLongitude() == -1000.0F))
       {
-        this.uzA.setLatitude(paramFloat2);
-        this.uzA.setLongitude(paramFloat1);
+        this.yVb.setLatitude(paramFloat2);
+        this.yVb.setLongitude(paramFloat1);
       }
-      AppMethodBeat.o(247492);
+      AppMethodBeat.o(279617);
       return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.view.FinderLiveLocationView
  * JD-Core Version:    0.7.0.1
  */

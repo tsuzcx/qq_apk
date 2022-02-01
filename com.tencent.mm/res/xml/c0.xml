@@ -29,8 +29,7 @@
     <Preference newtip:key="room_set_chatting_background" newtip:layout="@layout/b8j" newtip:title="@string/g9m" />
     <Preference newtip:key="room_report_it" newtip:layout="@layout/b8j" newtip:title="@string/g79" />
     <PreferenceSmallCategory />
-    <Preference newtip:key="room_clear_chatting_history" newtip:layout="@layout/b8j" newtip:title="@string/g6i" />
-    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference newtip:btn_title="@string/g6i" newtip:key="room_clear_chatting_history" newtip:layout="@layout/bik" newtip:title_color="@color/Red" />
     <com.tencent.mm.ui.base.preference.ButtonPreference newtip:btn_title="@string/g6n" newtip:key="room_del_quit" newtip:layout="@layout/bik" newtip:title_color="@color/Red" />
     <PreferenceCategory newtip:key="chatroom_bottom_pc" />
     <Preference newtip:key="room_openim_about" newtip:layout="@layout/b_9" newtip:title="@string/g8j" />

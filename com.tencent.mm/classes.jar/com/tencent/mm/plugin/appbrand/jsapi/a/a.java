@@ -1,10 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.a;
 
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.service.c;
-
 public final class a
-  extends d<c>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.service.c>
 {
   public static final int CTRL_INDEX = 912;
   public static final String NAME = "addPhoneCalendar";

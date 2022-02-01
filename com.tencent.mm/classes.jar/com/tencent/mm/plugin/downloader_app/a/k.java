@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.downloader_app.a;
 public final class k
 {
   public static int UN_INSTALLED = 0;
-  public static int qLo = 1;
+  public static int umA = 1;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.a.k
  * JD-Core Version:    0.7.0.1
  */

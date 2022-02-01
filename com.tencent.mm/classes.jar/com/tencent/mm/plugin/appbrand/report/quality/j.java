@@ -7,10 +7,10 @@ public enum j
   static
   {
     AppMethodBeat.i(48224);
-    nKR = new j("CreateOnRuntimeInit", 0);
-    nKS = new j("PreloadOnProcessCreated", 1);
-    nKT = new j("PreloadBeforeRuntimeInit", 2);
-    nKU = new j[] { nKR, nKS, nKT };
+    qNd = new j("CreateOnRuntimeInit", 0);
+    qNe = new j("PreloadOnProcessCreated", 1);
+    qNf = new j("PreloadBeforeRuntimeInit", 2);
+    qNg = new j[] { qNd, qNe, qNf };
     AppMethodBeat.o(48224);
   }
   
@@ -18,7 +18,7 @@ public enum j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.quality.j
  * JD-Core Version:    0.7.0.1
  */

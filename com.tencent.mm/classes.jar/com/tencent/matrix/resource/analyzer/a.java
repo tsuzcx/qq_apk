@@ -1,9 +1,11 @@
 package com.tencent.matrix.resource.analyzer;
 
-import com.c.a.b.e;
-import com.c.a.b.i;
-import com.c.a.b.l;
-import com.tencent.matrix.resource.analyzer.a.c.a;
+import com.d.a.b.c;
+import com.d.a.b.e;
+import com.d.a.b.i;
+import com.d.a.b.l;
+import com.tencent.matrix.resource.analyzer.a.b;
+import com.tencent.matrix.resource.analyzer.a.b.a;
 import com.tencent.matrix.resource.analyzer.model.d;
 import com.tencent.matrix.resource.analyzer.model.g;
 import com.tencent.matrix.resource.analyzer.model.h;
@@ -15,36 +17,36 @@ import java.util.Map;
 
 public final class a
 {
-  private final String cWR;
-  private final d cWS;
+  public final String daR;
+  private final d daS;
   
   public a(String paramString, d paramd)
   {
-    this.cWR = paramString;
-    this.cWS = paramd;
+    this.daR = paramString;
+    this.daS = paramd;
   }
   
-  private com.tencent.matrix.resource.analyzer.model.a a(g paramg, String paramString)
+  public final com.tencent.matrix.resource.analyzer.model.a a(g paramg, String paramString)
   {
     long l = System.nanoTime();
     try
     {
-      paramg = paramg.coS;
-      localObject2 = paramg.cJ("com.tencent.matrix.resource.analyzer.model.DestroyedActivityInfo");
+      paramg = paramg.cks;
+      localObject2 = paramg.cW("com.tencent.matrix.resource.analyzer.model.DestroyedActivityInfo");
       if (localObject2 == null) {
         throw new IllegalStateException("Unabled to find destroy activity info class with name: com.tencent.matrix.resource.analyzer.model.DestroyedActivityInfo");
       }
     }
     catch (Throwable paramg)
     {
-      return com.tencent.matrix.resource.analyzer.model.a.a(paramg, com.tencent.matrix.resource.analyzer.a.a.bg(l));
+      return com.tencent.matrix.resource.analyzer.model.a.a(paramg, com.tencent.matrix.resource.analyzer.a.a.bs(l));
     }
     Object localObject1 = new ArrayList();
-    Object localObject2 = ((com.c.a.b.c)localObject2).Ke().iterator();
+    Object localObject2 = ((c)localObject2).KX().iterator();
     while (((Iterator)localObject2).hasNext())
     {
       Object localObject3 = e.b((i)((Iterator)localObject2).next());
-      String str = e.as(e.b((List)localObject3, "mKey"));
+      String str = e.ap(e.b((List)localObject3, "mKey"));
       if (str.equals(paramString))
       {
         localObject3 = (i)e.b((List)localObject3, "mActivityRef");
@@ -54,7 +56,7 @@ public final class a
           if (paramString != null) {
             break label202;
           }
-          return com.tencent.matrix.resource.analyzer.model.a.bf(com.tencent.matrix.resource.analyzer.a.a.bg(l));
+          return com.tencent.matrix.resource.analyzer.model.a.br(com.tencent.matrix.resource.analyzer.a.a.bs(l));
         }
       }
       else
@@ -64,17 +66,17 @@ public final class a
     }
     throw new IllegalStateException("Could not find weak reference with key " + paramString + " in " + localObject1);
     label202:
-    localObject1 = new com.tencent.matrix.resource.analyzer.a.c(this.cWS);
+    localObject1 = new b(this.daS);
     localObject2 = new ArrayList();
     ((List)localObject2).add(paramString);
-    paramg = ((com.tencent.matrix.resource.analyzer.a.c)localObject1).a(paramg, (Collection)localObject2);
+    paramg = ((b)localObject1).a(paramg, (Collection)localObject2);
     if (paramg.isEmpty()) {}
-    for (paramg = new c.a(null, false); paramg.cYy == null; paramg = (c.a)paramg.get(paramString)) {
-      return com.tencent.matrix.resource.analyzer.model.a.bf(com.tencent.matrix.resource.analyzer.a.a.bg(l));
+    for (paramg = new b.a(null, false); paramg.dcy == null; paramg = (b.a)paramg.get(paramString)) {
+      return com.tencent.matrix.resource.analyzer.model.a.br(com.tencent.matrix.resource.analyzer.a.a.bs(l));
     }
-    localObject1 = paramg.Ta();
-    paramString = paramString.Ka().mClassName;
-    if (!paramg.cYz)
+    localObject1 = paramg.XD();
+    paramString = paramString.KU().mClassName;
+    if (!paramg.dcz)
     {
       if (((h)localObject1).elements != null) {
         if (!((h)localObject1).elements.isEmpty()) {
@@ -83,13 +85,13 @@ public final class a
       }
     }
     else {
-      return com.tencent.matrix.resource.analyzer.model.a.bf(com.tencent.matrix.resource.analyzer.a.a.bg(l));
+      return com.tencent.matrix.resource.analyzer.model.a.br(com.tencent.matrix.resource.analyzer.a.a.bs(l));
     }
     label368:
     label371:
     for (;;)
     {
-      paramg = com.tencent.matrix.resource.analyzer.model.a.a(paramString, (h)localObject1, com.tencent.matrix.resource.analyzer.a.a.bg(l));
+      paramg = com.tencent.matrix.resource.analyzer.model.a.a(paramString, (h)localObject1, com.tencent.matrix.resource.analyzer.a.a.bs(l));
       return paramg;
       for (int i = 1;; i = 0)
       {
@@ -100,15 +102,10 @@ public final class a
       }
     }
   }
-  
-  public final com.tencent.matrix.resource.analyzer.model.a a(g paramg)
-  {
-    return a(paramg, this.cWR);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.resource.analyzer.a
  * JD-Core Version:    0.7.0.1
  */

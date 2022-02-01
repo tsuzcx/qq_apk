@@ -1,186 +1,321 @@
 package com.tencent.mm.plugin.finder.storage;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.m;
-import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
-import android.view.View;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.e.i;
+import com.tencent.e.i.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.convert.ab;
-import com.tencent.mm.plugin.finder.convert.ag;
-import com.tencent.mm.plugin.finder.convert.v;
-import com.tencent.mm.plugin.finder.utils.y;
-import com.tencent.mm.plugin.finder.view.manager.FinderStaggeredGridLayoutManager;
-import com.tencent.mm.plugin.finder.viewmodel.FinderRecyclerViewPool;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.view.recyclerview.e;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.plugin.finder.b.i;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.findersdk.a.ae;
+import com.tencent.mm.plugin.findersdk.a.ae.a;
+import com.tencent.mm.plugin.findersdk.a.m;
+import com.tencent.mm.plugin.findersdk.a.m.c;
+import com.tencent.mm.plugin.teenmode.a.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.w;
+import com.tencent.tav.decoder.logger.Logger;
+import kotlin.g.b.aa.f;
 import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderStaggeredConfig;", "Lcom/tencent/mm/plugin/finder/storage/IFinderLayoutConfig;", "()V", "spanCount", "", "getSpanCount", "()I", "getDefaultConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "getItemDecoration", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "context", "Landroid/content/Context;", "getViewPool", "Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "Lcom/tencent/mm/ui/MMActivity;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderTeenModeConfig;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderTeenModeConfig;", "()V", "dialogRunnable", "Lcom/tencent/threadpool/runnable/FutureEx;", "loadingDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "canGotoFinderPage", "", "context", "Landroid/content/Context;", "userName", "", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IFinderTeenModeConfig$OnCanGotoFinderPageCallback;", "getFinderOption", "", "isTeenMode", "", "isTeenModeAndFocus", "isTeenModeAndViewAll", "isTeenModeAndViewNothing", "Companion", "plugin-finder_release"})
 public final class ah
-  extends al
+  implements ae
 {
-  private final int att = 2;
+  public static final a AmB;
+  private d<?> dialogRunnable;
+  private s loadingDialog;
   
-  public final com.tencent.mm.view.recyclerview.f G(final kotlin.g.a.b<? super Integer, ? extends e<?>> paramb)
+  static
   {
-    AppMethodBeat.i(251874);
-    paramb = (com.tencent.mm.view.recyclerview.f)new a(this, paramb);
-    AppMethodBeat.o(251874);
-    return paramb;
+    AppMethodBeat.i(284239);
+    AmB = new a((byte)0);
+    AppMethodBeat.o(284239);
   }
   
-  public final RecyclerView.LayoutManager eS(Context paramContext)
+  private static boolean ZM()
   {
-    AppMethodBeat.i(251872);
-    p.h(paramContext, "context");
-    paramContext = new FinderStaggeredGridLayoutManager(this.att);
-    paramContext.setItemPrefetchEnabled(true);
-    paramContext = (RecyclerView.LayoutManager)paramContext;
-    AppMethodBeat.o(251872);
-    return paramContext;
+    AppMethodBeat.i(284229);
+    a locala = com.tencent.mm.kernel.h.ae(b.class);
+    p.j(locala, "MMKernel.service(ITeenModeService::class.java)");
+    boolean bool = ((b)locala).ZM();
+    AppMethodBeat.o(284229);
+    return bool;
   }
   
-  public final RecyclerView.m f(MMActivity paramMMActivity)
+  private static int dYS()
   {
-    AppMethodBeat.i(251875);
-    p.h(paramMMActivity, "context");
-    com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.PRN;
-    paramMMActivity = ((FinderRecyclerViewPool)com.tencent.mm.ui.component.a.b((AppCompatActivity)paramMMActivity).get(FinderRecyclerViewPool.class)).wuw;
-    AppMethodBeat.o(251875);
-    return paramMMActivity;
+    AppMethodBeat.i(284231);
+    a locala = com.tencent.mm.kernel.h.ae(b.class);
+    p.j(locala, "MMKernel.service(ITeenModeService::class.java)");
+    int i = ((b)locala).dYS();
+    AppMethodBeat.o(284231);
+    return i;
   }
   
-  public final RecyclerView.h getItemDecoration()
+  public final void a(final Context paramContext, final String paramString, final ae.a parama)
   {
-    AppMethodBeat.i(251873);
-    RecyclerView.h localh = (RecyclerView.h)new b();
-    AppMethodBeat.o(251873);
-    return localh;
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/storage/FinderStaggeredConfig$getItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
-  public static final class a
-    implements com.tencent.mm.view.recyclerview.f
-  {
-    a(kotlin.g.a.b paramb) {}
-    
-    public final e<?> EC(int paramInt)
+    AppMethodBeat.i(284238);
+    if (paramContext == null)
     {
-      AppMethodBeat.i(251870);
-      switch (paramInt)
+      Log.w("Finder.FinderTeenModeConfig", "canGotoFinderPage, callback is null.");
+      parama.oa(true);
+      AppMethodBeat.o(284238);
+      return;
+    }
+    if (!ZM())
+    {
+      parama.oa(true);
+      AppMethodBeat.o(284238);
+      return;
+    }
+    switch (dYS())
+    {
+    default: 
+      if (Util.isNullOrNil(paramString))
       {
-      default: 
-        localObject = paramb;
-        if (localObject != null)
-        {
-          e locale = (e)((kotlin.g.a.b)localObject).invoke(Integer.valueOf(paramInt));
-          localObject = locale;
-          if (locale != null) {}
-        }
-        else
-        {
-          localObject = y.vXH;
-          y.dQ("FinderStaggeredConfig", paramInt);
-          localObject = (e)new com.tencent.mm.plugin.finder.convert.f();
-        }
-        AppMethodBeat.o(251870);
-        return localObject;
-      case 4: 
-      case 9: 
-      case 3002: 
-        localObject = (e)new com.tencent.mm.plugin.finder.convert.al();
-        AppMethodBeat.o(251870);
-        return localObject;
-      case 2: 
-      case 3001: 
-        localObject = (e)new v();
-        AppMethodBeat.o(251870);
-        return localObject;
-      case -3: 
-        localObject = (e)new ag();
-        AppMethodBeat.o(251870);
-        return localObject;
+        parama.oa(true);
+        AppMethodBeat.o(284238);
+        return;
       }
-      Object localObject = (e)new ab();
-      AppMethodBeat.o(251870);
-      return localObject;
+      break;
+    case 1: 
+      parama.oa(true);
+      AppMethodBeat.o(284238);
+      return;
+    case 2: 
+      parama.oa(false);
+      AppMethodBeat.o(284238);
+      return;
+    }
+    int i = ((m)com.tencent.mm.kernel.h.ae(m.class)).a(paramString, (m.c)new c(this, paramString, paramContext, parama));
+    Logger.i("Finder.FinderTeenModeConfig", "canGotoFinderPage, userName:" + paramString + ", followState:" + i);
+    if (i == 1)
+    {
+      if (this.dialogRunnable != null)
+      {
+        paramString = this.dialogRunnable;
+        if (paramString == null) {
+          p.iCn();
+        }
+        paramString.cancel(false);
+        this.dialogRunnable = null;
+      }
+      this.dialogRunnable = com.tencent.e.h.ZvG.n((Runnable)new b(this, paramContext), 1500L);
+      AppMethodBeat.o(284238);
+      return;
+    }
+    if (i == 2) {}
+    for (boolean bool = true;; bool = false)
+    {
+      parama.oa(bool);
+      AppMethodBeat.o(284238);
+      return;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/storage/FinderStaggeredConfig$getItemDecoration$1", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-finder_release"})
-  public static final class b
-    extends RecyclerView.h
+  public final boolean dYT()
   {
-    public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
+    AppMethodBeat.i(284233);
+    if ((ZM()) && (dYS() == 0))
     {
-      AppMethodBeat.i(251871);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramRect);
-      localb.bm(paramView);
-      localb.bm(paramRecyclerView);
-      localb.bm(params);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/storage/FinderStaggeredConfig$getItemDecoration$1", "com/tencent/mm/plugin/finder/storage/FinderStaggeredConfig$getItemDecoration$android/support/v7/widget/RecyclerView$ItemDecoration", "getItemOffsets", "(Landroid/graphics/Rect;Landroid/view/View;Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$State;)V", this, localb.axR());
-      p.h(paramRect, "outRect");
-      p.h(paramView, "view");
-      p.h(paramRecyclerView, "parent");
-      p.h(params, "state");
-      paramRecyclerView = paramView.getContext();
-      p.g(paramRecyclerView, "view.context");
-      int i = (int)paramRecyclerView.getResources().getDimension(2131165277);
-      paramRecyclerView = paramView.getContext();
-      p.g(paramRecyclerView, "view.context");
-      int j = (int)paramRecyclerView.getResources().getDimension(2131166347);
-      paramRecyclerView = paramView.getLayoutParams();
-      if (paramRecyclerView == null)
+      AppMethodBeat.o(284233);
+      return true;
+    }
+    AppMethodBeat.o(284233);
+    return false;
+  }
+  
+  public final boolean dYU()
+  {
+    AppMethodBeat.i(284235);
+    if ((ZM()) && (dYS() == 1))
+    {
+      AppMethodBeat.o(284235);
+      return true;
+    }
+    AppMethodBeat.o(284235);
+    return false;
+  }
+  
+  public final boolean dYV()
+  {
+    AppMethodBeat.i(284237);
+    if ((ZM()) && (dYS() == 2))
+    {
+      AppMethodBeat.o(284237);
+      return true;
+    }
+    AppMethodBeat.o(284237);
+    return false;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderTeenModeConfig$Companion;", "", "()V", "TAG", "", "checkTeenMode", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IFinderTeenModeConfig$OnCanGotoFinderPageCallback;", "checkTeenModeInFocus", "plugin-finder_release"})
+  public static final class a
+  {
+    public static void a(Context paramContext, Intent paramIntent, ae.a parama)
+    {
+      AppMethodBeat.i(271575);
+      p.k(paramContext, "context");
+      if (paramIntent != null) {}
+      for (paramIntent = Integer.valueOf(paramIntent.getIntExtra("key_finder_teen_mode_scene", 0));; paramIntent = null)
       {
-        paramRect = new t("null cannot be cast to non-null type android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams");
-        AppMethodBeat.o(251871);
-        throw paramRect;
-      }
-      if (((StaggeredGridLayoutManager.LayoutParams)paramRecyclerView).mJ())
-      {
-        paramRect.left = 0;
-        paramRect.right = 0;
-        paramRect.bottom = 0;
-        paramRect.top = 0;
-      }
-      for (;;)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/storage/FinderStaggeredConfig$getItemDecoration$1", "com/tencent/mm/plugin/finder/storage/FinderStaggeredConfig$getItemDecoration$android/support/v7/widget/RecyclerView$ItemDecoration", "getItemOffsets", "(Landroid/graphics/Rect;Landroid/view/View;Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$State;)V");
-        AppMethodBeat.o(251871);
+        a locala = com.tencent.mm.kernel.h.ae(b.class);
+        p.j(locala, "MMKernel.service(ITeenModeService::class.java)");
+        if (((b)locala).ZM())
+        {
+          locala = com.tencent.mm.kernel.h.ae(ae.class);
+          p.j(locala, "MMKernel.service(IFinder…enModeConfig::class.java)");
+          if (!((ae)locala).dYU()) {
+            break;
+          }
+        }
+        parama.oa(true);
+        AppMethodBeat.o(271575);
         return;
-        paramView = paramView.getLayoutParams();
-        if (paramView == null)
-        {
-          paramRect = new t("null cannot be cast to non-null type android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams");
-          AppMethodBeat.o(251871);
-          throw paramRect;
-        }
-        if (((StaggeredGridLayoutManager.LayoutParams)paramView).kj() % 2 == 0)
-        {
-          paramRect.left = i;
-          paramRect.right = j;
-          paramRect.bottom = j;
-          paramRect.top = j;
-        }
-        else
-        {
-          paramRect.left = j;
-          paramRect.right = i;
-          paramRect.bottom = j;
-          paramRect.top = j;
+      }
+      ((b)com.tencent.mm.kernel.h.ae(b.class)).ir(paramContext);
+      com.tencent.mm.plugin.report.service.h.IzE.a(20912, new Object[] { Integer.valueOf(3), paramIntent, "", "" });
+      parama.oa(false);
+      AppMethodBeat.o(271575);
+    }
+    
+    public static void b(final Context paramContext, Intent paramIntent, ae.a parama)
+    {
+      Object localObject2 = null;
+      AppMethodBeat.i(271576);
+      p.k(paramContext, "context");
+      final aa.f localf1 = new aa.f();
+      final aa.f localf2;
+      if (paramIntent != null)
+      {
+        localObject1 = Integer.valueOf(paramIntent.getIntExtra("key_finder_teen_mode_scene", 0));
+        localf1.aaBC = localObject1;
+        localf2 = new aa.f();
+        if (paramIntent == null) {
+          break label134;
         }
       }
+      final aa.f localf3;
+      label134:
+      for (Object localObject1 = paramIntent.getStringExtra("key_finder_teen_mode_user_name");; localObject1 = null)
+      {
+        localf2.aaBC = localObject1;
+        localf3 = new aa.f();
+        localObject1 = localObject2;
+        if (paramIntent != null) {
+          localObject1 = paramIntent.getStringExtra("key_finder_teen_mode_user_id");
+        }
+        localf3.aaBC = localObject1;
+        if (!TextUtils.isEmpty((CharSequence)localf3.aaBC)) {
+          break label139;
+        }
+        parama.oa(true);
+        AppMethodBeat.o(271576);
+        return;
+        localObject1 = null;
+        break;
+      }
+      label139:
+      ((ae)com.tencent.mm.kernel.h.ae(ae.class)).a(paramContext, (String)localf3.aaBC, (ae.a)new a(parama, paramContext, localf1, localf3, localf2));
+      AppMethodBeat.o(271576);
+    }
+    
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "onDone"})
+    static final class a
+      implements ae.a
+    {
+      a(ae.a parama, Context paramContext, aa.f paramf1, aa.f paramf2, aa.f paramf3) {}
+      
+      public final void oa(boolean paramBoolean)
+      {
+        AppMethodBeat.i(233736);
+        if (paramBoolean)
+        {
+          locala = this.AmC;
+          if (locala != null)
+          {
+            locala.oa(paramBoolean);
+            AppMethodBeat.o(233736);
+            return;
+          }
+          AppMethodBeat.o(233736);
+          return;
+        }
+        ((b)com.tencent.mm.kernel.h.ae(b.class)).ir(paramContext);
+        com.tencent.mm.plugin.report.service.h.IzE.a(20912, new Object[] { Integer.valueOf(3), (Integer)localf1.aaBC, (String)localf3.aaBC, (String)localf2.aaBC });
+        ae.a locala = this.AmC;
+        if (locala != null)
+        {
+          locala.oa(paramBoolean);
+          AppMethodBeat.o(233736);
+          return;
+        }
+        AppMethodBeat.o(233736);
+      }
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  static final class b
+    implements Runnable
+  {
+    b(ah paramah, Context paramContext) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(276866);
+      ah.a(this.AmG, s.a(paramContext, (CharSequence)paramContext.getString(b.j.loading_tips_1), true, 3, null));
+      AppMethodBeat.o(276866);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "state", "", "onDone"})
+  static final class c
+    implements m.c
+  {
+    c(ah paramah, String paramString, Context paramContext, ae.a parama) {}
+    
+    public final void Ql(int paramInt)
+    {
+      boolean bool = false;
+      AppMethodBeat.i(288209);
+      Logger.i("Finder.FinderTeenModeConfig", "canGotoFinderPage#onDone, userName:" + paramString + ", followState:" + paramInt);
+      if (ah.a(this.AmG) != null)
+      {
+        localObject = ah.a(this.AmG);
+        if (localObject == null) {
+          p.iCn();
+        }
+        ((d)localObject).cancel(false);
+        ah.b(this.AmG);
+      }
+      if (ah.c(this.AmG) != null)
+      {
+        localObject = ah.c(this.AmG);
+        if (localObject == null) {
+          p.iCn();
+        }
+        ((s)localObject).dismiss();
+        ah.a(this.AmG, null);
+      }
+      if (paramInt == -1)
+      {
+        w.w(paramContext, paramContext.getString(b.j.sns_request_timeout), b.i.icons_filled_error);
+        AppMethodBeat.o(288209);
+        return;
+      }
+      Object localObject = parama;
+      if (paramInt == 2) {
+        bool = true;
+      }
+      ((ae.a)localObject).oa(bool);
+      AppMethodBeat.o(288209);
     }
   }
 }

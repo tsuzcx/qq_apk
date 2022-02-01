@@ -1,36 +1,35 @@
 package com.tencent.mm.plugin.forcenotify.a;
 
-import android.content.Context;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.messenger.foundation.a.q;
-import com.tencent.mm.plugin.messenger.foundation.a.y;
-import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.plugin.messenger.foundation.a.ac;
+import com.tencent.mm.plugin.messenger.foundation.a.t;
+import com.tencent.mm.protocal.protobuf.db;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public abstract interface b
-  extends a, q, y<de>
+  extends a, ac<db>, t
 {
-  public abstract void aS(String paramString, int paramInt);
+  public abstract void aHn(String paramString);
   
-  public abstract void axA(String paramString);
+  public abstract boolean aHo(String paramString);
   
-  public abstract long axB(String paramString);
+  public abstract boolean aHp(String paramString);
   
-  public abstract boolean axC(String paramString);
+  public abstract String aHq(String paramString);
   
-  public abstract boolean dMl();
+  public abstract long aHr(String paramString);
   
-  public abstract MAutoStorage dMm();
+  public abstract boolean aHs(String paramString);
   
-  public abstract void fQ(Context paramContext);
+  public abstract void bk(String paramString, int paramInt);
   
-  public abstract boolean hasError();
+  public abstract MAutoStorage eqe();
   
-  public abstract void ps(boolean paramBoolean);
+  public abstract void rM(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.a.b
  * JD-Core Version:    0.7.0.1
  */

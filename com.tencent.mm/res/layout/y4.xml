@@ -18,6 +18,10 @@
                 </LinearLayout>
                 <TextView android:textSize="@dimen/h_" android:textColor="@color/Orange" android:id="@id/bcl" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/ct" android:visibility="gone" android:layout_marginTop="@dimen/bt" style="@style/mi" />
                 <TextView android:textSize="@dimen/h_" android:textColor="@color/l4" android:ellipsize="end" android:id="@id/bd1" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/ct" android:layout_width="wrap_content" android:layout_marginTop="@dimen/bt" android:text="@string/bdb" android:singleLine="false" android:lineSpacingExtra="@dimen/bt" style="@style/mi" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/kkt" android:paddingLeft="@dimen/cb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct">
+                    <ImageView android:id="@id/kkr" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" />
+                    <TextView android:textSize="@dimen/h_" android:textColor="@color/l4" android:ellipsize="end" android:id="@id/kks" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:lines="1" android:layout_marginStart="@dimen/bt" />
+                </LinearLayout>
                 <TextView android:textSize="@dimen/h_" android:textColor="@color/l4" android:id="@id/bcu" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/ct" android:visibility="gone" android:layout_marginTop="@dimen/bt" android:text="@string/ba2" style="@style/mi" />
                 <TextView android:textSize="@dimen/h_" android:textColor="@color/l4" android:id="@id/bd_" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/ct" android:layout_marginTop="@dimen/bt" android:text="@string/v2" android:maxLines="3" android:singleLine="false" style="@style/mi" />
                 <TextView android:textSize="@dimen/h_" android:textColor="@color/l4" android:id="@id/bd8" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/ct" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:singleLine="false" style="@style/mi" />
@@ -59,4 +63,5 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+    <View android:id="@id/kjs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@id/bcz" android:layout_alignBottom="@id/bcz" />
 </RelativeLayout>

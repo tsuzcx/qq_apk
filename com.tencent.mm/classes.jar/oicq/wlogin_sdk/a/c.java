@@ -6,36 +6,36 @@ import oicq.wlogin_sdk.tools.util;
 public final class c
   extends a
 {
-  int Udn = 1;
-  int Udo = util.Ues;
-  int Udp = 22;
+  int abGC = 1;
+  int abGD = util.abHH;
+  int abGE = 22;
   
   public c()
   {
-    this.Ucx = 256;
+    this.abFM = 256;
   }
   
-  public final byte[] t(long paramLong, int paramInt1, int paramInt2)
+  public final byte[] u(long paramLong, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(209828);
-    byte[] arrayOfByte = new byte[this.Udp];
-    util.ah(arrayOfByte, 0, this.Udn);
-    util.ai(arrayOfByte, 2, this.Udo);
-    util.ai(arrayOfByte, 6, 522017402);
-    util.ai(arrayOfByte, 10, 1);
-    util.ai(arrayOfByte, 14, paramInt1);
-    util.ai(arrayOfByte, 18, 8256);
-    super.awj(this.Ucx);
-    super.ak(arrayOfByte, this.Udp);
-    super.hPB();
-    arrayOfByte = super.hPx();
-    AppMethodBeat.o(209828);
+    AppMethodBeat.i(187797);
+    byte[] arrayOfByte = new byte[this.abGE];
+    util.ai(arrayOfByte, 0, this.abGC);
+    util.aj(arrayOfByte, 2, this.abGD);
+    util.aj(arrayOfByte, 6, 522017402);
+    util.aj(arrayOfByte, 10, 1);
+    util.aj(arrayOfByte, 14, paramInt1);
+    util.aj(arrayOfByte, 18, 8256);
+    super.aGe(this.abFM);
+    super.am(arrayOfByte, this.abGE);
+    super.iUJ();
+    arrayOfByte = super.iUF();
+    AppMethodBeat.o(187797);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     oicq.wlogin_sdk.a.c
  * JD-Core Version:    0.7.0.1
  */

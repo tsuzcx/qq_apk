@@ -2,24 +2,24 @@ package com.tencent.mm.plugin.fingerprint.faceid.auth;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.appcompat.app.AppCompatDialogFragment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class WalletFaceIdAuthFragment
   extends AppCompatDialogFragment
 {
+  private a Bxu;
+  private Bundle Bxv;
   private Dialog mDialog;
-  private a wEx;
-  private Bundle wEy;
   
   public Dialog onCreateDialog(Bundle paramBundle)
   {
     AppMethodBeat.i(64227);
-    this.mDialog = new WalletFaceIdDialog(getActivity(), this.wEx, this.wEy);
+    this.mDialog = new WalletFaceIdDialog(getActivity(), this.Bxu, this.Bxv);
     this.mDialog.setCancelable(false);
     paramBundle = this.mDialog;
     AppMethodBeat.o(64227);
@@ -56,7 +56,7 @@ public class WalletFaceIdAuthFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.faceid.auth.WalletFaceIdAuthFragment
  * JD-Core Version:    0.7.0.1
  */

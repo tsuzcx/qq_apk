@@ -9,40 +9,42 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.f;
+import com.tencent.mm.game.report.g;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.game.e.c;
-import com.tencent.mm.plugin.game.e.e;
-import com.tencent.mm.plugin.game.e.e.a.a;
-import com.tencent.mm.plugin.game.protobuf.ao;
-import com.tencent.mm.plugin.game.protobuf.s;
+import com.tencent.mm.plugin.game.d.c;
+import com.tencent.mm.plugin.game.d.e;
+import com.tencent.mm.plugin.game.d.e.a.a;
+import com.tencent.mm.plugin.game.g.e;
+import com.tencent.mm.plugin.game.g.f;
+import com.tencent.mm.plugin.game.protobuf.ap;
+import com.tencent.mm.plugin.game.protobuf.t;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class GameFeedSubscriptView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private ImageView qyu;
-  private TextView rMV;
-  private ao xSA;
-  private TextView xSF;
-  private TextView xSG;
-  private LinearLayout xSH;
-  private TextView xSI;
-  private TextView xSJ;
+  private ap CWL;
+  private TextView CWQ;
+  private TextView CWR;
+  private LinearLayout CWS;
+  private TextView CWT;
+  private TextView CWU;
+  private ImageView tXu;
+  private TextView vsF;
   
   public GameFeedSubscriptView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  private void Ow(int paramInt)
+  private void TQ(int paramInt)
   {
     AppMethodBeat.i(42134);
     if (paramInt == 1) {}
-    for (String str = com.tencent.mm.plugin.game.d.a.as(this.xSA.xJt, "clickType", "leftCorner");; str = com.tencent.mm.plugin.game.d.a.as(this.xSA.xJt, "clickType", "rightCorner"))
+    for (String str = com.tencent.mm.plugin.game.c.a.am(this.CWL.CNA, "clickType", "leftCorner");; str = com.tencent.mm.plugin.game.c.a.am(this.CWL.CNA, "clickType", "rightCorner"))
     {
-      f.a(getContext(), 10, 1024, this.xSA.xJv, 7, this.xSA.jfi, GameIndexListView.getSourceScene(), str);
+      g.a(getContext(), 10, 1024, this.CWL.CNC, 7, this.CWL.lVG, GameIndexListView.getSourceScene(), str);
       AppMethodBeat.o(42134);
       return;
     }
@@ -52,19 +54,19 @@ public class GameFeedSubscriptView
   {
     AppMethodBeat.i(42133);
     b localb = new b();
-    localb.bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameFeedSubscriptView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    if (this.xSA == null)
+    localb.bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/GameFeedSubscriptView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    if (this.CWL == null)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameFeedSubscriptView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42133);
       return;
     }
-    if ((paramView.getId() == 2131303145) || (paramView.getId() == 2131303146) || (paramView.getId() == 2131297144)) {
-      if ((this.xSA.xKz != null) && (!Util.isNullOrNil(this.xSA.xKz.xIy)))
+    if ((paramView.getId() == g.e.CkD) || (paramView.getId() == g.e.CkE) || (paramView.getId() == g.e.Chp)) {
+      if ((this.CWL.COG != null) && (!Util.isNullOrNil(this.CWL.COG.CMD)))
       {
-        c.aQ(getContext(), this.xSA.xKz.xIy);
-        Ow(1);
+        c.aY(getContext(), this.CWL.COG.CMD);
+        TQ(1);
       }
     }
     for (;;)
@@ -72,10 +74,10 @@ public class GameFeedSubscriptView
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameFeedSubscriptView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42133);
       return;
-      if ((paramView.getId() == 2131307110) && (this.xSA.xKA != null) && (!Util.isNullOrNil(this.xSA.xKA.xIy)))
+      if ((paramView.getId() == g.e.Clu) && (this.CWL.COH != null) && (!Util.isNullOrNil(this.CWL.COH.CMD)))
       {
-        c.aQ(getContext(), this.xSA.xKA.xIy);
-        Ow(2);
+        c.aY(getContext(), this.CWL.COH.CMD);
+        TQ(2);
       }
     }
   }
@@ -84,70 +86,70 @@ public class GameFeedSubscriptView
   {
     AppMethodBeat.i(42131);
     super.onFinishInflate();
-    View localView = LayoutInflater.from(getContext()).inflate(2131494869, this, true);
-    this.xSF = ((TextView)localView.findViewById(2131303145));
-    this.xSG = ((TextView)localView.findViewById(2131303146));
-    this.xSH = ((LinearLayout)localView.findViewById(2131297144));
-    this.qyu = ((ImageView)localView.findViewById(2131297119));
-    this.rMV = ((TextView)localView.findViewById(2131305431));
-    this.xSI = ((TextView)localView.findViewById(2131309630));
-    this.xSJ = ((TextView)localView.findViewById(2131307110));
-    this.xSF.setOnClickListener(this);
-    this.xSG.setOnClickListener(this);
-    this.xSH.setOnClickListener(this);
-    this.xSJ.setOnClickListener(this);
+    View localView = LayoutInflater.from(getContext()).inflate(g.f.Cnl, this, true);
+    this.CWQ = ((TextView)localView.findViewById(g.e.CkD));
+    this.CWR = ((TextView)localView.findViewById(g.e.CkE));
+    this.CWS = ((LinearLayout)localView.findViewById(g.e.Chp));
+    this.tXu = ((ImageView)localView.findViewById(g.e.avatar));
+    this.vsF = ((TextView)localView.findViewById(g.e.nick_name));
+    this.CWT = ((TextView)localView.findViewById(g.e.ClT));
+    this.CWU = ((TextView)localView.findViewById(g.e.Clu));
+    this.CWQ.setOnClickListener(this);
+    this.CWR.setOnClickListener(this);
+    this.CWS.setOnClickListener(this);
+    this.CWU.setOnClickListener(this);
     AppMethodBeat.o(42131);
   }
   
-  public void setData(ao paramao)
+  public void setData(ap paramap)
   {
     AppMethodBeat.i(42132);
-    if ((paramao == null) || ((paramao.xKz == null) && (paramao.xKA == null)))
+    if ((paramap == null) || ((paramap.COG == null) && (paramap.COH == null)))
     {
       setVisibility(8);
       AppMethodBeat.o(42132);
       return;
     }
-    this.xSA = paramao;
+    this.CWL = paramap;
     setVisibility(0);
-    this.xSF.setVisibility(8);
-    this.xSG.setVisibility(8);
-    this.xSH.setVisibility(8);
-    if (paramao.xKz != null) {
-      switch (paramao.xKz.xJF)
+    this.CWQ.setVisibility(8);
+    this.CWR.setVisibility(8);
+    this.CWS.setVisibility(8);
+    if (paramap.COG != null) {
+      switch (paramap.COG.CNN)
       {
       }
     }
-    while (paramao.xKA != null)
+    while (paramap.COH != null)
     {
-      this.xSJ.setText(paramao.xKA.Desc);
-      this.xSJ.setVisibility(0);
+      this.CWU.setText(paramap.COH.CMB);
+      this.CWU.setVisibility(0);
       AppMethodBeat.o(42132);
       return;
-      this.xSF.setVisibility(0);
-      this.xSF.setText(paramao.xKz.Desc);
+      this.CWQ.setVisibility(0);
+      this.CWQ.setText(paramap.COG.CMB);
       continue;
-      this.xSG.setVisibility(0);
-      this.xSG.setText(paramao.xKz.Desc);
+      this.CWR.setVisibility(0);
+      this.CWR.setText(paramap.COG.CMB);
       continue;
-      this.xSH.setVisibility(0);
-      if (!Util.isNullOrNil(paramao.xKz.xJE))
+      this.CWS.setVisibility(0);
+      if (!Util.isNullOrNil(paramap.COG.CNM))
       {
         e.a.a locala = new e.a.a();
-        locala.iaT = true;
-        e.dWR().a(this.qyu, paramao.xKz.xJE, locala.dWS());
-        this.qyu.setVisibility(0);
+        locala.kPz = true;
+        e.eAa().a(this.tXu, paramap.COG.CNM, locala.eAb());
+        this.tXu.setVisibility(0);
       }
-      this.rMV.setText(paramao.xKz.Name);
-      this.xSI.setText(paramao.xKz.Desc);
+      this.vsF.setText(paramap.COG.CMP);
+      this.CWT.setText(paramap.COG.CMB);
     }
-    this.xSJ.setVisibility(8);
+    this.CWU.setVisibility(8);
     AppMethodBeat.o(42132);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameFeedSubscriptView
  * JD-Core Version:    0.7.0.1
  */

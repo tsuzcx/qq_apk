@@ -3,6 +3,7 @@ package com.tencent.mm.ui.chatting;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.l;
 import com.tencent.mm.pluginsdk.model.app.h;
 
 final class u$5
@@ -13,7 +14,7 @@ final class u$5
   public final void run()
   {
     AppMethodBeat.i(34613);
-    h.a(this.Pij.mContext, this.BxJ, this.Pij.mContext.getString(2131757293), null, null);
+    h.a(this.WBL.mContext, this.Hse, this.WBL.mContext.getString(R.l.chatfooter_mail_without_unread_count), null, null);
     AppMethodBeat.o(34613);
   }
 }

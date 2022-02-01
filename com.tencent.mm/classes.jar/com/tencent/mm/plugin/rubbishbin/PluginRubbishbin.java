@@ -3,24 +3,24 @@ package com.tencent.mm.plugin.rubbishbin;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.fp;
+import com.tencent.mm.f.a.fw;
 import com.tencent.mm.kernel.api.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.sdk.event.IListener;
 
 public class PluginRubbishbin
   extends f
   implements c
 {
-  private static boolean Czn = false;
-  private IListener<fp> qZd;
+  private static boolean IAm = false;
+  private IListener<fw> uCc;
   
   public PluginRubbishbin()
   {
     AppMethodBeat.i(146670);
-    this.qZd = new IListener() {};
+    this.uCc = new IListener() {};
     AppMethodBeat.o(146670);
   }
   
@@ -50,7 +50,7 @@ public class PluginRubbishbin
   
   public void execute(g paramg) {}
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(146671);
     AppMethodBeat.o(146671);
@@ -60,7 +60,7 @@ public class PluginRubbishbin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.rubbishbin.PluginRubbishbin
  * JD-Core Version:    0.7.0.1
  */

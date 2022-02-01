@@ -1,76 +1,74 @@
 package kotlin.k;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.NoSuchElementException;
-import kotlin.a.ab;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/ranges/IntProgressionIterator;", "Lkotlin/collections/IntIterator;", "first", "", "last", "step", "(III)V", "finalElement", "hasNext", "", "next", "getStep", "()I", "nextInt", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/ranges/IntRange;", "Lkotlin/ranges/IntProgression;", "Lkotlin/ranges/ClosedRange;", "", "start", "endInclusive", "(II)V", "getEndInclusive", "()Ljava/lang/Integer;", "getStart", "contains", "", "value", "equals", "other", "", "hashCode", "isEmpty", "toString", "", "Companion", "kotlin-stdlib"})
 public final class e
-  extends ab
+  extends c
 {
-  private final int SYX;
-  private boolean SYY;
-  private int SYZ;
-  private final int lCq;
+  private static final e aaBU;
+  public static final a aaBV;
   
-  public e(int paramInt1, int paramInt2, int paramInt3)
+  static
   {
-    AppMethodBeat.i(129304);
-    this.lCq = paramInt3;
-    this.SYX = paramInt2;
-    if (this.lCq > 0) {
-      if (paramInt1 <= paramInt2)
-      {
-        this.SYY = bool;
-        if (!this.SYY) {
-          break label75;
-        }
-      }
-    }
-    for (;;)
-    {
-      this.SYZ = paramInt1;
-      AppMethodBeat.o(129304);
-      return;
-      bool = false;
-      break;
-      if (paramInt1 >= paramInt2) {
-        break;
-      }
-      bool = false;
-      break;
-      label75:
-      paramInt1 = this.SYX;
-    }
+    AppMethodBeat.i(129326);
+    aaBV = new a((byte)0);
+    aaBU = new e(1, 0);
+    AppMethodBeat.o(129326);
   }
   
-  public final boolean hasNext()
+  public e(int paramInt1, int paramInt2)
   {
-    return this.SYY;
+    super(paramInt1, paramInt2, 1);
   }
   
-  public final int nextInt()
+  public final boolean contains(int paramInt)
   {
-    AppMethodBeat.i(129303);
-    int i = this.SYZ;
-    if (i == this.SYX)
-    {
-      if (!this.SYY)
-      {
-        Throwable localThrowable = (Throwable)new NoSuchElementException();
-        AppMethodBeat.o(129303);
-        throw localThrowable;
-      }
-      this.SYY = false;
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(129303);
-      return i;
-      this.SYZ += this.lCq;
-    }
+    return (this.dHa <= paramInt) && (paramInt <= this.aaBQ);
   }
+  
+  public final boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(129323);
+    if (((paramObject instanceof e)) && (((isEmpty()) && (((e)paramObject).isEmpty())) || ((this.dHa == ((e)paramObject).dHa) && (this.aaBQ == ((e)paramObject).aaBQ))))
+    {
+      AppMethodBeat.o(129323);
+      return true;
+    }
+    AppMethodBeat.o(129323);
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    AppMethodBeat.i(129324);
+    if (isEmpty())
+    {
+      AppMethodBeat.o(129324);
+      return -1;
+    }
+    int i = this.dHa;
+    int j = this.aaBQ;
+    AppMethodBeat.o(129324);
+    return i * 31 + j;
+  }
+  
+  public final boolean isEmpty()
+  {
+    return this.dHa > this.aaBQ;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(129325);
+    String str = this.dHa + ".." + this.aaBQ;
+    AppMethodBeat.o(129325);
+    return str;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/ranges/IntRange$Companion;", "", "()V", "EMPTY", "Lkotlin/ranges/IntRange;", "getEMPTY", "()Lkotlin/ranges/IntRange;", "kotlin-stdlib"})
+  public static final class a {}
 }
 
 

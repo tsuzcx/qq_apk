@@ -6,8 +6,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   extends b
 {
-  private final int bDZ;
-  private final Object data;
+  private final int bnA;
+  private final Object bnW;
   
   public d(q paramq, int paramInt)
   {
@@ -18,31 +18,31 @@ public final class d
   {
     super(paramq, new int[] { paramInt });
     AppMethodBeat.i(92947);
-    this.bDZ = 0;
-    this.data = null;
+    this.bnA = 0;
+    this.bnW = null;
     AppMethodBeat.o(92947);
   }
   
-  public final void af(long paramLong) {}
+  public final void ai(long paramLong) {}
   
   public final int getSelectedIndex()
   {
     return 0;
   }
   
-  public final int vP()
+  public final int tN()
   {
-    return this.bDZ;
+    return this.bnA;
   }
   
-  public final Object vQ()
+  public final Object tO()
   {
-    return this.data;
+    return this.bnW;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.g.d
  * JD-Core Version:    0.7.0.1
  */

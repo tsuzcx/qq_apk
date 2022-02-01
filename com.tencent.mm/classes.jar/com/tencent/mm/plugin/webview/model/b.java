@@ -14,11 +14,11 @@ import java.util.Map;
 
 public final class b
 {
-  az IMs;
+  ba PIx;
   
-  public b(az paramaz)
+  public b(ba paramba)
   {
-    this.IMs = paramaz;
+    this.PIx = paramba;
   }
 }
 

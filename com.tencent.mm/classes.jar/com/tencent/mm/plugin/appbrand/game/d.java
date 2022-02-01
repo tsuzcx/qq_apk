@@ -8,17 +8,17 @@ import com.tencent.mm.plugin.appbrand.service.p;
 public final class d
   implements p
 {
-  public final float dJ(Context paramContext)
+  public final float dI(Context paramContext)
   {
-    AppMethodBeat.i(226615);
-    float f = e.lry.dJ(paramContext);
-    AppMethodBeat.o(226615);
+    AppMethodBeat.i(260416);
+    float f = e.omt.dI(paramContext);
+    AppMethodBeat.o(260416);
     return f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.d
  * JD-Core Version:    0.7.0.1
  */

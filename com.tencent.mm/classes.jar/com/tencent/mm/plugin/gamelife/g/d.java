@@ -11,34 +11,34 @@ import com.tencent.mm.storage.e;
 import junit.framework.Assert;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/message/GameLifeMessageStorage;", "Lcom/tencent/mm/storage/AbstractMessageStorage;", "storage", "Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IMsgInfoStorage;", "(Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IMsgInfoStorage;)V", "recognizeTableByTalker", "", "talker", "Companion", "plugin-gamelife_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/message/GameLifeMessageStorage;", "Lcom/tencent/mm/storage/AbstractMessageStorage;", "storage", "Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IMsgInfoStorage;", "(Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IMsgInfoStorage;)V", "recognizeTableByTalker", "", "talker", "Companion", "plugin-gamelife_release"})
 public final class d
   extends e
 {
+  public static final d.a DhQ;
   private static final String[] SQL_CREATE;
-  public static final d.a yck;
   
   static
   {
-    AppMethodBeat.i(241402);
-    yck = new d.a((byte)0);
-    b.a locala = b.pOW;
+    AppMethodBeat.i(203881);
+    DhQ = new d.a((byte)0);
+    b.a locala = b.sVU;
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(b.access$getInfo$cp(), "gamelifemessage"), "CREATE INDEX IF NOT EXISTS  gamelifemessageSvrIdIndex ON gamelifemessage ( msgSvrId )", "CREATE INDEX IF NOT EXISTS  gamelifemessageTalkerIndex ON gamelifemessage ( talker )", "CREATE INDEX IF NOT EXISTS  gamelifemessageTalkerStatusIndex ON gamelifemessage ( talker,status )", "CREATE INDEX IF NOT EXISTS  gamelifemessageCreateTimeIndex ON gamelifemessage ( createTime )", "CREATE INDEX IF NOT EXISTS  gamelifemessageCreateTalkerTimeIndex ON gamelifemessage ( talker,createTime )", "CREATE INDEX IF NOT EXISTS  gamelifemessageSendCreateTimeIndex ON gamelifemessage ( status,isSend,createTime )", "CREATE INDEX IF NOT EXISTS  gamelifemessageTalkerTypeIndex ON gamelifemessage ( talker,type )" };
-    AppMethodBeat.o(241402);
+    AppMethodBeat.o(203881);
   }
   
   public d(i parami)
   {
     super(parami);
-    AppMethodBeat.i(241401);
+    AppMethodBeat.i(203879);
     e(getDB(), "gamelifemessage");
-    a(new i.b(1024, "gamelifemessage", i.b.a(4500001L, 5000000L, 208000001L, 308000000L)));
-    AppMethodBeat.o(241401);
+    a(new i.b(1024, "gamelifemessage", i.b.b(4500001L, 5000000L, 208000001L, 308000000L)));
+    AppMethodBeat.o(203879);
   }
   
-  public final String avu(String paramString)
+  public final String aEK(String paramString)
   {
-    AppMethodBeat.i(241400);
+    AppMethodBeat.i(203878);
     int i;
     if (paramString != null) {
       if (((CharSequence)paramString).length() > 0)
@@ -53,16 +53,16 @@ public final class d
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if (!as.bju(paramString)) {
+      if (!as.bvQ(paramString)) {
         break label59;
       }
-      AppMethodBeat.o(241400);
+      AppMethodBeat.o(203878);
       return "gamelifemessage";
       i = 0;
       break;
     }
     label59:
-    AppMethodBeat.o(241400);
+    AppMethodBeat.o(203878);
     return null;
   }
 }

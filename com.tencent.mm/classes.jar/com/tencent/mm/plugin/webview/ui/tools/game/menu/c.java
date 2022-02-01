@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.webview.ui.tools.game.menu;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.coq;
+import com.tencent.mm.protocal.protobuf.cxc;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -17,7 +17,7 @@ import java.util.Set;
 
 public final class c
 {
-  public static m c(Context paramContext, List<coq> paramList)
+  public static o c(Context paramContext, List<cxc> paramList)
   {
     AppMethodBeat.i(80969);
     if (Util.isNullOrNil(paramList))
@@ -30,8 +30,8 @@ public final class c
     Object localObject2;
     while (paramList.hasNext())
     {
-      localObject2 = (coq)paramList.next();
-      if ((localObject2 != null) && (a.agY(((coq)localObject2).KWb))) {
+      localObject2 = (cxc)paramList.next();
+      if ((localObject2 != null) && (a.aoP(((cxc)localObject2).RXp))) {
         ((List)localObject1).add(localObject2);
       }
     }
@@ -41,7 +41,7 @@ public final class c
       return null;
     }
     Collections.sort((List)localObject1, new Comparator() {});
-    int j = ((coq)((List)localObject1).get(((List)localObject1).size() - 1)).MuP;
+    int j = ((cxc)((List)localObject1).get(((List)localObject1).size() - 1)).TFG;
     paramList = new ArrayList();
     int i = 0;
     while (i < j)
@@ -52,24 +52,24 @@ public final class c
     localObject1 = ((List)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (coq)((Iterator)localObject1).next();
-      if ((((coq)localObject2).MuP > 0) && (((coq)localObject2).MuP <= paramList.size())) {
-        paramList.set(((coq)localObject2).MuP - 1, localObject2);
+      localObject2 = (cxc)((Iterator)localObject1).next();
+      if ((((cxc)localObject2).TFG > 0) && (((cxc)localObject2).TFG <= paramList.size())) {
+        paramList.set(((cxc)localObject2).TFG - 1, localObject2);
       }
     }
-    paramContext = new m(paramContext);
+    paramContext = new o(paramContext);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      localObject1 = (coq)paramList.next();
+      localObject1 = (cxc)paramList.next();
       if (localObject1 == null)
       {
         paramContext.d(-1, "");
       }
       else
       {
-        localObject2 = ((coq)localObject1).Title + "__" + ((coq)localObject1).ThumbUrl;
-        paramContext.d(((coq)localObject1).MuO, (CharSequence)localObject2);
+        localObject2 = ((cxc)localObject1).fwr + "__" + ((cxc)localObject1).ThumbUrl;
+        paramContext.d(((cxc)localObject1).TFF, (CharSequence)localObject2);
       }
     }
     AppMethodBeat.o(80969);
@@ -78,28 +78,28 @@ public final class c
   
   public static enum a
   {
-    private static EnumMap<a, Integer> JrX;
+    private static EnumMap<a, Integer> Qpu;
     int code;
     
     static
     {
       AppMethodBeat.i(80968);
-      JrO = new a("HVGAME_MENU_ACTION_DEFAULT", 0, 0);
-      JrP = new a("HVGAME_MENU_ACTION_JUMP_H5", 1, 1);
-      JrQ = new a("HVGAME_MENU_ACTION_EXIT", 2, 2);
-      JrR = new a("HVGAME_MENU_ACTION_SHARE_TO_FRIEND", 3, 3);
-      JrS = new a("HVGAME_MENU_ACTION_COLLECT", 4, 4);
-      JrT = new a("HVGAME_MENU_ACTION_REFRESH", 5, 7);
-      JrU = new a("HVGAME_MENU_ACTION_ADD_TO_DESKTOP", 6, 8);
-      JrV = new a("HVGAME_MENU_ACTION_COMPLAINT", 7, 9);
-      JrW = new a("HVGAME_MENU_ACTION_CUSTOM", 8, 10);
-      JrY = new a[] { JrO, JrP, JrQ, JrR, JrS, JrT, JrU, JrV, JrW };
-      JrX = new EnumMap(a.class);
+      Qpl = new a("HVGAME_MENU_ACTION_DEFAULT", 0, 0);
+      Qpm = new a("HVGAME_MENU_ACTION_JUMP_H5", 1, 1);
+      Qpn = new a("HVGAME_MENU_ACTION_EXIT", 2, 2);
+      Qpo = new a("HVGAME_MENU_ACTION_SHARE_TO_FRIEND", 3, 3);
+      Qpp = new a("HVGAME_MENU_ACTION_COLLECT", 4, 4);
+      Qpq = new a("HVGAME_MENU_ACTION_REFRESH", 5, 7);
+      Qpr = new a("HVGAME_MENU_ACTION_ADD_TO_DESKTOP", 6, 8);
+      Qps = new a("HVGAME_MENU_ACTION_COMPLAINT", 7, 9);
+      Qpt = new a("HVGAME_MENU_ACTION_CUSTOM", 8, 10);
+      Qpv = new a[] { Qpl, Qpm, Qpn, Qpo, Qpp, Qpq, Qpr, Qps, Qpt };
+      Qpu = new EnumMap(a.class);
       Iterator localIterator = EnumSet.allOf(a.class).iterator();
       while (localIterator.hasNext())
       {
         a locala = (a)localIterator.next();
-        JrX.put(locala, Integer.valueOf(locala.code));
+        Qpu.put(locala, Integer.valueOf(locala.code));
       }
       AppMethodBeat.o(80968);
     }
@@ -109,18 +109,18 @@ public final class c
       this.code = paramInt;
     }
     
-    public static boolean agY(int paramInt)
+    public static boolean aoP(int paramInt)
     {
       AppMethodBeat.i(80966);
-      boolean bool = JrX.containsValue(Integer.valueOf(paramInt));
+      boolean bool = Qpu.containsValue(Integer.valueOf(paramInt));
       AppMethodBeat.o(80966);
       return bool;
     }
     
-    public static a agZ(int paramInt)
+    public static a aoQ(int paramInt)
     {
       AppMethodBeat.i(80967);
-      Object localObject = JrX.entrySet().iterator();
+      Object localObject = Qpu.entrySet().iterator();
       while (((Iterator)localObject).hasNext())
       {
         Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
@@ -131,7 +131,7 @@ public final class c
           return localObject;
         }
       }
-      localObject = JrO;
+      localObject = Qpl;
       AppMethodBeat.o(80967);
       return localObject;
     }

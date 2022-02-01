@@ -9,27 +9,27 @@ final class h<T>
   
   h(T paramT)
   {
-    AppMethodBeat.i(186264);
+    AppMethodBeat.i(269678);
     this.value = paramT;
     this.thread = Thread.currentThread();
-    AppMethodBeat.o(186264);
+    AppMethodBeat.o(269678);
   }
   
-  public final boolean hasValue()
+  public final boolean iIU()
   {
-    AppMethodBeat.i(186265);
+    AppMethodBeat.i(269680);
     if (this.thread == Thread.currentThread())
     {
-      AppMethodBeat.o(186265);
+      AppMethodBeat.o(269680);
       return true;
     }
-    AppMethodBeat.o(186265);
+    AppMethodBeat.o(269680);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.l.h
  * JD-Core Version:    0.7.0.1
  */

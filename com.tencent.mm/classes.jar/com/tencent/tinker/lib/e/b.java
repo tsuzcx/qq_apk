@@ -4,11 +4,7 @@ import android.content.Intent;
 import com.tencent.tinker.entry.ApplicationLike;
 import com.tencent.tinker.loader.TinkerRuntimeException;
 import com.tencent.tinker.loader.shareutil.ShareIntentUtil;
-import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
-import com.tencent.tinker.loader.shareutil.SharePatchInfo;
 import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
-import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
-import java.io.File;
 
 public final class b
 {
@@ -52,30 +48,12 @@ public final class b
     if ((paramApplicationLike == null) || (paramApplicationLike.getApplication() == null)) {
       throw new TinkerRuntimeException("tinkerApplication is null");
     }
-    File localFile = SharePatchFileUtil.getPatchDirectory(paramApplicationLike.getApplication());
-    if (!localFile.exists()) {
-      ShareTinkerLog.w("Tinker.TinkerApplicationHelper", "try to clean patch while there're not any applied patches.", new Object[0]);
-    }
-    SharePatchInfo localSharePatchInfo;
-    do
-    {
-      return;
-      paramApplicationLike = SharePatchFileUtil.getPatchInfoFile(localFile.getAbsolutePath());
-      if (!paramApplicationLike.exists())
-      {
-        ShareTinkerLog.w("Tinker.TinkerApplicationHelper", "try to clean patch while patch info file does not exist.", new Object[0]);
-        return;
-      }
-      localFile = SharePatchFileUtil.getPatchInfoLockFile(localFile.getAbsolutePath());
-      localSharePatchInfo = SharePatchInfo.readAndCheckPropertyWithLock(paramApplicationLike, localFile);
-    } while (localSharePatchInfo == null);
-    localSharePatchInfo.isRemoveNewVersion = true;
-    SharePatchInfo.rewritePatchInfoFileWithLock(paramApplicationLike, localSharePatchInfo, localFile);
+    ShareTinkerInternals.cleanPatch(paramApplicationLike.getApplication());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.lib.e.b
  * JD-Core Version:    0.7.0.1
  */

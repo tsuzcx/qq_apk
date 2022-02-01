@@ -7,21 +7,21 @@ import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ck.a.a;
-import com.tencent.mm.ui.at;
+import com.tencent.mm.cr.a.k;
+import com.tencent.mm.ui.aw;
 
 public class MMAutoAdjustTextView
   extends TextView
 {
+  private Paint auY;
   private float scale;
   private float textSize;
-  private Paint yt;
   
   public MMAutoAdjustTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159842);
-    d(paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MMAutoAdjustTextView));
+    d(paramContext.obtainStyledAttributes(paramAttributeSet, a.k.MMAutoAdjustTextView));
     init();
     AppMethodBeat.o(159842);
   }
@@ -30,12 +30,12 @@ public class MMAutoAdjustTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159843);
-    d(paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MMAutoAdjustTextView));
+    d(paramContext.obtainStyledAttributes(paramAttributeSet, a.k.MMAutoAdjustTextView));
     init();
     AppMethodBeat.o(159843);
   }
   
-  private void apA(int paramInt)
+  private void ayY(int paramInt)
   {
     AppMethodBeat.i(159846);
     if (paramInt <= 0)
@@ -49,7 +49,7 @@ public class MMAutoAdjustTextView
       if (getMeasuredWidth() <= paramInt) {
         break;
       }
-      this.textSize -= at.getDensity(getContext());
+      this.textSize -= aw.getDensity(getContext());
       setTextSize(0, this.textSize * this.scale);
     }
     AppMethodBeat.o(159846);
@@ -68,9 +68,9 @@ public class MMAutoAdjustTextView
   {
     AppMethodBeat.i(159844);
     this.textSize = getTextSize();
-    this.scale = at.ez(getContext());
-    this.yt = new Paint();
-    this.yt.set(getPaint());
+    this.scale = aw.ez(getContext());
+    this.auY = new Paint();
+    this.auY.set(getPaint());
     AppMethodBeat.o(159844);
   }
   
@@ -81,7 +81,7 @@ public class MMAutoAdjustTextView
     if (paramInt1 != paramInt3)
     {
       getText().toString();
-      apA(paramInt1);
+      ayY(paramInt1);
     }
     AppMethodBeat.o(159848);
   }
@@ -91,13 +91,13 @@ public class MMAutoAdjustTextView
     AppMethodBeat.i(159847);
     super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
     paramCharSequence.toString();
-    apA(getWidth());
+    ayY(getWidth());
     AppMethodBeat.o(159847);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView
  * JD-Core Version:    0.7.0.1
  */

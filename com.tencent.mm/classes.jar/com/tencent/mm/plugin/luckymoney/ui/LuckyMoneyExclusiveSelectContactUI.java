@@ -9,25 +9,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.model.aa;
-import com.tencent.mm.model.ap;
+import com.tencent.mm.model.aq;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.chatroom.a.b;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 import com.tencent.mm.ui.contact.a.a;
-import com.tencent.mm.ui.contact.a.e;
+import com.tencent.mm.ui.contact.a.f;
+import com.tencent.mm.ui.contact.c;
 import com.tencent.mm.ui.contact.c.a;
-import com.tencent.mm.ui.contact.o;
 import com.tencent.mm.ui.contact.p;
 import com.tencent.mm.ui.contact.q;
-import com.tencent.mm.ui.contact.s;
+import com.tencent.mm.ui.contact.r;
+import com.tencent.mm.ui.contact.u;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -37,117 +38,128 @@ public class LuckyMoneyExclusiveSelectContactUI
   extends MMBaseSelectContactUI
 {
   private String chatroomName;
-  private List<String> gzY;
-  private List<String> jWf;
+  private List<String> jkb;
+  private List<String> mNr;
   
   public LuckyMoneyExclusiveSelectContactUI()
   {
-    AppMethodBeat.i(213404);
-    this.gzY = new ArrayList();
-    this.jWf = new ArrayList();
-    AppMethodBeat.o(213404);
+    AppMethodBeat.i(272735);
+    this.jkb = new ArrayList();
+    this.mNr = new ArrayList();
+    AppMethodBeat.o(272735);
   }
   
-  public final void M(final View paramView, int paramInt)
+  public final void N(View paramView, int paramInt)
   {
-    AppMethodBeat.i(213407);
+    AppMethodBeat.i(272740);
     Log.i("MicroMsg.LuckyMoneyExclusiveSelectContactUI", "handleItemClick: %s", new Object[] { Integer.valueOf(paramInt) });
-    paramView = gUP().anH(paramInt - getContentLV().getHeaderViewsCount());
-    if (paramView == null)
+    final a locala = hUP().awM(paramInt - getContentLV().getHeaderViewsCount());
+    if (locala == null)
     {
-      AppMethodBeat.o(213407);
+      AppMethodBeat.o(272740);
       return;
     }
-    if (paramView.contact == null)
+    if (locala.contact == null)
     {
-      AppMethodBeat.o(213407);
+      AppMethodBeat.o(272740);
       return;
     }
-    Log.i("MicroMsg.LuckyMoneyExclusiveSelectContactUI", "ClickUser=%s", new Object[] { paramView.contact.field_username });
-    Object localObject = paramView.contact.field_username;
-    String str1 = aa.getDisplayName((String)localObject, this.chatroomName);
-    Iterator localIterator = this.jWf.iterator();
+    Log.i("MicroMsg.LuckyMoneyExclusiveSelectContactUI", "ClickUser=%s", new Object[] { locala.contact.field_username });
+    paramView = locala.contact.field_username;
+    String str1 = aa.aL(paramView, this.chatroomName);
+    Iterator localIterator = this.mNr.iterator();
     while (localIterator.hasNext())
     {
       String str2 = (String)localIterator.next();
-      if ((!str2.equals(localObject)) && (str1.equals(aa.getDisplayName(str2, this.chatroomName)))) {
+      if ((!str2.equals(paramView)) && (str1.equals(aa.aL(str2, this.chatroomName)))) {
         Log.i("MicroMsg.LuckyMoneyExclusiveSelectContactUI", "find same display name: %s", new Object[] { str1 });
       }
     }
     for (paramInt = 1; paramInt != 0; paramInt = 0)
     {
-      h.a(getContext(), getString(2131762627), "", false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      str1 = getIntent().getStringExtra("key_same_name_tips");
+      paramView = str1;
+      if (Util.isNullOrNil(str1)) {
+        paramView = getString(a.i.lucky_money_exclusive_same_displayname_tips);
+      }
+      com.tencent.mm.ui.base.h.a(getContext(), paramView, "", false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(213398);
+          AppMethodBeat.i(204737);
           paramAnonymousDialogInterface = new Intent();
-          paramAnonymousDialogInterface.putExtra("Select_Contact", paramView.contact.field_username);
+          paramAnonymousDialogInterface.putExtra("Select_Contact", locala.contact.field_username);
           LuckyMoneyExclusiveSelectContactUI.this.setResult(-1, paramAnonymousDialogInterface);
           LuckyMoneyExclusiveSelectContactUI.this.finish();
-          AppMethodBeat.o(213398);
+          AppMethodBeat.o(204737);
         }
       }, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
       });
-      AppMethodBeat.o(213407);
+      AppMethodBeat.o(272740);
       return;
     }
-    localObject = new Intent();
-    ((Intent)localObject).putExtra("Select_Contact", paramView.contact.field_username);
-    setResult(-1, (Intent)localObject);
+    paramView = new Intent();
+    paramView.putExtra("Select_Contact", locala.contact.field_username);
+    setResult(-1, paramView);
     finish();
-    AppMethodBeat.o(213407);
+    AppMethodBeat.o(272740);
   }
   
-  public final boolean bmA()
-  {
-    return true;
-  }
-  
-  public final String bmB()
-  {
-    AppMethodBeat.i(213406);
-    String str = getString(2131762668);
-    AppMethodBeat.o(213406);
-    return str;
-  }
-  
-  public final q bmC()
-  {
-    AppMethodBeat.i(213408);
-    Object localObject = new c.a();
-    ((c.a)localObject).PTX = Util.listToString(this.jWf, ",");
-    ((c.a)localObject).dFl = this.chatroomName;
-    ((c.a)localObject).PTS = true;
-    localObject = new com.tencent.mm.ui.contact.c(this, this.gzY, false, (c.a)localObject, (byte)0);
-    AppMethodBeat.o(213408);
-    return localObject;
-  }
-  
-  public final o bmD()
-  {
-    AppMethodBeat.i(213409);
-    a locala = new a(this, this.gzY, this.chatroomName);
-    AppMethodBeat.o(213409);
-    return locala;
-  }
-  
-  public final boolean bmz()
+  public final boolean bwH()
   {
     return false;
   }
   
+  public final boolean bwI()
+  {
+    return true;
+  }
+  
+  public final String bwJ()
+  {
+    AppMethodBeat.i(272739);
+    String str = getIntent().getStringExtra("key_title");
+    if (!Util.isNullOrNil(str))
+    {
+      AppMethodBeat.o(272739);
+      return str;
+    }
+    str = getString(a.i.lucky_money_mode_select_exclusive_user_title_text);
+    AppMethodBeat.o(272739);
+    return str;
+  }
+  
+  public final r bwK()
+  {
+    AppMethodBeat.i(272742);
+    Object localObject = new c.a();
+    ((c.a)localObject).XqI = Util.listToString(this.mNr, ",");
+    ((c.a)localObject).fxT = this.chatroomName;
+    ((c.a)localObject).XqD = true;
+    localObject = new c(this, this.jkb, false, (c.a)localObject, (byte)0);
+    AppMethodBeat.o(272742);
+    return localObject;
+  }
+  
+  public final p bwL()
+  {
+    AppMethodBeat.i(272744);
+    a locala = new a(this, this.jkb, this.chatroomName);
+    AppMethodBeat.o(272744);
+    return locala;
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(213405);
+    AppMethodBeat.i(272737);
     this.chatroomName = getIntent().getStringExtra("chatroomName");
-    this.gzY.add(z.aTY());
-    this.jWf = ((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kh(this.chatroomName);
-    this.jWf.remove(z.aTY());
+    this.jkb.add(z.bcZ());
+    this.mNr = ((b)com.tencent.mm.kernel.h.ae(b.class)).bbV().RA(this.chatroomName);
+    this.mNr.remove(z.bcZ());
     super.onCreate(paramBundle);
-    AppMethodBeat.o(213405);
+    AppMethodBeat.o(272737);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -157,100 +169,100 @@ public class LuckyMoneyExclusiveSelectContactUI
   }
   
   public static final class a
-    extends s
+    extends u
   {
     private String chatroomName;
-    private Cursor jWh;
-    private String[] jWi;
+    private Cursor mNt;
+    private String[] mNu;
     private String query;
     
     public a(MMBaseSelectContactUI paramMMBaseSelectContactUI, List<String> paramList, String paramString)
     {
       super(paramList, false, paramMMBaseSelectContactUI.scene);
-      AppMethodBeat.i(213399);
+      AppMethodBeat.i(273072);
       this.chatroomName = paramString;
-      paramMMBaseSelectContactUI = ((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kh(this.chatroomName);
+      paramMMBaseSelectContactUI = ((b)com.tencent.mm.kernel.h.ae(b.class)).bbV().RA(this.chatroomName);
       if (paramMMBaseSelectContactUI != null)
       {
-        paramMMBaseSelectContactUI.remove(z.aTY());
-        this.jWi = Util.listToStrings(paramMMBaseSelectContactUI);
+        paramMMBaseSelectContactUI.remove(z.bcZ());
+        this.mNu = Util.listToStrings(paramMMBaseSelectContactUI);
       }
-      AppMethodBeat.o(213399);
+      AppMethodBeat.o(273072);
     }
     
-    public final void b(String paramString, int[] paramArrayOfInt)
+    public final void a(String paramString, int[] paramArrayOfInt)
     {
-      AppMethodBeat.i(213400);
+      AppMethodBeat.i(273073);
       Log.i("MicroMsg.SelectSearchContactItemByChatroom", "doSearch: %s", new Object[] { paramString });
       clearCache();
       this.query = paramString;
-      if (this.jWh != null)
+      if (this.mNt != null)
       {
-        this.jWh.close();
-        this.jWh = null;
+        this.mNt.close();
+        this.mNt = null;
       }
       paramArrayOfInt = new ArrayList();
-      paramArrayOfInt.add(z.aTY());
-      if ((!Util.isNullOrNil(this.query)) && (this.jWi != null))
+      paramArrayOfInt.add(z.bcZ());
+      if ((!Util.isNullOrNil(this.query)) && (this.mNu != null))
       {
-        g.aAi();
-        this.jWh = ((l)g.af(l.class)).aSN().a(this.jWi, "@all.chatroom", this.query, new LinkedList(), paramArrayOfInt);
+        com.tencent.mm.kernel.h.aHH();
+        this.mNt = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().a(this.mNu, "@all.chatroom", this.query, new LinkedList(), paramArrayOfInt);
       }
       notifyDataSetChanged();
-      ds(paramString, true);
-      AppMethodBeat.o(213400);
+      dE(paramString, true);
+      AppMethodBeat.o(273073);
     }
     
     public final void finish()
     {
-      AppMethodBeat.i(213402);
+      AppMethodBeat.i(273075);
       super.finish();
-      if (this.jWh != null)
+      if (this.mNt != null)
       {
-        this.jWh.close();
-        this.jWh = null;
+        this.mNt.close();
+        this.mNt = null;
       }
-      AppMethodBeat.o(213402);
+      AppMethodBeat.o(273075);
     }
     
     public final int getCount()
     {
-      AppMethodBeat.i(213403);
-      if (this.jWh == null)
+      AppMethodBeat.i(273076);
+      if (this.mNt == null)
       {
-        AppMethodBeat.o(213403);
+        AppMethodBeat.o(273076);
         return 0;
       }
-      int i = this.jWh.getCount();
-      AppMethodBeat.o(213403);
+      int i = this.mNt.getCount();
+      AppMethodBeat.o(273076);
       return i;
     }
     
-    public final a va(int paramInt)
+    public final a ye(int paramInt)
     {
-      AppMethodBeat.i(213401);
+      AppMethodBeat.i(273074);
       Object localObject = null;
-      if (this.jWh.moveToPosition(paramInt))
+      if (this.mNt.moveToPosition(paramInt))
       {
         as localas = new as();
-        localas.convertFrom(this.jWh);
-        e locale = new e(paramInt);
-        locale.contact = localas;
-        localObject = locale;
-        if (as.bjp(localas.field_username))
+        localas.convertFrom(this.mNt);
+        f localf = new f(paramInt);
+        localf.contact = localas;
+        localObject = localf;
+        if (as.bvK(localas.field_username))
         {
-          locale.Qab = true;
-          localObject = locale;
+          localf.Xxt = true;
+          localObject = localf;
         }
       }
-      AppMethodBeat.o(213401);
+      AppMethodBeat.o(273074);
       return localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyExclusiveSelectContactUI
  * JD-Core Version:    0.7.0.1
  */

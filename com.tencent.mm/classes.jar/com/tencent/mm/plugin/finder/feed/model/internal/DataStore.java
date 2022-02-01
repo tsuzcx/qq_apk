@@ -10,7 +10,7 @@ import kotlin.a.j;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/internal/DataStore;", "T", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "dataList", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "getDataList", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "setDataList", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;)V", "get", "index", "", "(I)Ljava/lang/Object;", "getDataListJustForAdapter", "getLast", "()Ljava/lang/Object;", "getLastItemOfType", "E", "clazz", "Ljava/lang/Class;", "(Ljava/lang/Class;)Ljava/lang/Object;", "getListInfo", "getListOfType", "", "getSize", "isEmpty", "", "safeGet", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/DataStore;", "T", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "dataList", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "getDataList", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "setDataList", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;)V", "get", "index", "", "(I)Ljava/lang/Object;", "getDataListJustForAdapter", "getLast", "()Ljava/lang/Object;", "getLastItemOfType", "E", "clazz", "Ljava/lang/Class;", "(Ljava/lang/Class;)Ljava/lang/Object;", "getListInfo", "getListOfType", "", "getSize", "isEmpty", "", "safeGet", "plugin-finder-base_release"})
 public class DataStore<T>
 {
   private String TAG;
@@ -45,15 +45,15 @@ public class DataStore<T>
   public final T getLast()
   {
     AppMethodBeat.i(166100);
-    Object localObject = j.kv((List)this.dataList);
+    Object localObject = j.lr((List)this.dataList);
     AppMethodBeat.o(166100);
     return localObject;
   }
   
   public final <E> E getLastItemOfType(Class<E> paramClass)
   {
-    AppMethodBeat.i(245005);
-    p.h(paramClass, "clazz");
+    AppMethodBeat.i(258435);
+    p.k(paramClass, "clazz");
     Object localObject = (List)this.dataList;
     ListIterator localListIterator = ((List)localObject).listIterator(((List)localObject).size());
     do
@@ -65,16 +65,16 @@ public class DataStore<T>
     } while (!paramClass.isInstance(localObject));
     for (paramClass = (Class<E>)localObject; paramClass != null; paramClass = null)
     {
-      AppMethodBeat.o(245005);
+      AppMethodBeat.o(258435);
       return paramClass;
     }
-    AppMethodBeat.o(245005);
+    AppMethodBeat.o(258435);
     return null;
   }
   
   public final String getListInfo()
   {
-    AppMethodBeat.i(245003);
+    AppMethodBeat.i(258432);
     String str = "DataStore: info count: " + this.dataList.size();
     Log.i(getTAG(), str);
     Iterator localIterator = ((Iterable)this.dataList).iterator();
@@ -83,19 +83,19 @@ public class DataStore<T>
     {
       Object localObject = localIterator.next();
       if (i < 0) {
-        j.hxH();
+        j.iBO();
       }
       Log.i(getTAG(), "DataStore:index " + i + " obj:" + String.valueOf(localObject));
       i += 1;
     }
-    AppMethodBeat.o(245003);
+    AppMethodBeat.o(258432);
     return str;
   }
   
   public final <E> List<E> getListOfType(Class<E> paramClass)
   {
-    AppMethodBeat.i(245004);
-    p.h(paramClass, "clazz");
+    AppMethodBeat.i(258433);
+    p.k(paramClass, "clazz");
     List localList = (List)new ArrayList();
     Iterator localIterator = ((Iterable)this.dataList).iterator();
     while (localIterator.hasNext())
@@ -105,15 +105,15 @@ public class DataStore<T>
         localList.add(localObject);
       }
     }
-    AppMethodBeat.o(245004);
+    AppMethodBeat.o(258433);
     return localList;
   }
   
   public final int getSize()
   {
-    AppMethodBeat.i(245002);
+    AppMethodBeat.i(258430);
     int i = this.dataList.size();
-    AppMethodBeat.o(245002);
+    AppMethodBeat.o(258430);
     return i;
   }
   
@@ -124,9 +124,9 @@ public class DataStore<T>
   
   public final boolean isEmpty()
   {
-    AppMethodBeat.i(245001);
+    AppMethodBeat.i(258429);
     boolean bool = this.dataList.isEmpty();
-    AppMethodBeat.o(245001);
+    AppMethodBeat.o(258429);
     return bool;
   }
   
@@ -145,16 +145,16 @@ public class DataStore<T>
   
   public final void setDataList(DataBuffer<T> paramDataBuffer)
   {
-    AppMethodBeat.i(245000);
-    p.h(paramDataBuffer, "<set-?>");
+    AppMethodBeat.i(258428);
+    p.k(paramDataBuffer, "<set-?>");
     this.dataList = paramDataBuffer;
-    AppMethodBeat.o(245000);
+    AppMethodBeat.o(258428);
   }
   
   public void setTAG(String paramString)
   {
     AppMethodBeat.i(166099);
-    p.h(paramString, "<set-?>");
+    p.k(paramString, "<set-?>");
     this.TAG = paramString;
     AppMethodBeat.o(166099);
   }

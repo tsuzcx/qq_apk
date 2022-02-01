@@ -12,7 +12,7 @@ final class ContactRemarkInfoModUI$1
   public final void afterTextChanged(Editable paramEditable)
   {
     AppMethodBeat.i(37749);
-    ContactRemarkInfoModUI.a(this.PVk);
+    ContactRemarkInfoModUI.a(this.XrY);
     AppMethodBeat.o(37749);
   }
   
@@ -22,7 +22,7 @@ final class ContactRemarkInfoModUI$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ContactRemarkInfoModUI.1
  * JD-Core Version:    0.7.0.1
  */

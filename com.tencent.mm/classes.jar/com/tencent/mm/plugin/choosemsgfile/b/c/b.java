@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.choosemsgfile.b.c;
 
 import com.tencent.mm.plugin.choosemsgfile.b.b.a;
-import com.tencent.mm.plugin.choosemsgfile.ui.c;
+import com.tencent.mm.plugin.choosemsgfile.ui.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 
 public abstract class b
   implements h
 {
-  protected String goe;
+  protected String iSn;
   protected ArrayList<a> mDataList = new ArrayList();
-  protected c qon;
+  protected e tMV;
   
-  public b(c paramc)
+  public b(e parame)
   {
-    this.qon = paramc;
-    this.goe = paramc.getUserName();
+    this.tMV = parame;
+    this.iSn = parame.getUserName();
   }
   
-  protected final com.tencent.mm.vending.e.b cyE()
+  protected final com.tencent.mm.vending.e.b cMZ()
   {
-    if ((this.qon.getContext() instanceof com.tencent.mm.vending.e.b)) {
-      return (com.tencent.mm.vending.e.b)this.qon.getContext();
+    if ((this.tMV.getContext() instanceof com.tencent.mm.vending.e.b)) {
+      return (com.tencent.mm.vending.e.b)this.tMV.getContext();
     }
     return null;
   }
   
-  public void fC(String paramString1, String paramString2)
+  public void fQ(String paramString1, String paramString2)
   {
     Log.i("MicroMsg.BaseChooseMsgFileUIController", "onCreate type:%s extension:%s", new Object[] { paramString1, paramString2 });
-    c(true, paramString1, paramString2);
+    d(true, paramString1, paramString2);
   }
   
   public void onDestroy()
@@ -49,7 +49,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.c.b
  * JD-Core Version:    0.7.0.1
  */

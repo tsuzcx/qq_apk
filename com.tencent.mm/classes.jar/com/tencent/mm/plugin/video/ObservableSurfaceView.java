@@ -12,20 +12,20 @@ public class ObservableSurfaceView
   extends SurfaceView
   implements SurfaceHolder.Callback
 {
-  private a GwQ;
-  protected boolean GwR;
-  protected boolean GwS;
-  protected boolean GwT;
-  protected SurfaceHolder laL;
+  private a Nkj;
+  protected boolean Nkk;
+  protected boolean Nkl;
+  protected boolean Nkm;
+  protected SurfaceHolder nUU;
   
   public ObservableSurfaceView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(127126);
-    this.GwQ = null;
-    this.GwR = false;
-    this.GwS = false;
-    this.GwT = false;
+    this.Nkj = null;
+    this.Nkk = false;
+    this.Nkl = false;
+    this.Nkm = false;
     init();
     AppMethodBeat.o(127126);
   }
@@ -34,10 +34,10 @@ public class ObservableSurfaceView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(127127);
-    this.GwQ = null;
-    this.GwR = false;
-    this.GwS = false;
-    this.GwT = false;
+    this.Nkj = null;
+    this.Nkk = false;
+    this.Nkl = false;
+    this.Nkm = false;
     init();
     AppMethodBeat.o(127127);
   }
@@ -46,10 +46,10 @@ public class ObservableSurfaceView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(127128);
-    this.GwQ = null;
-    this.GwR = false;
-    this.GwS = false;
-    this.GwT = false;
+    this.Nkj = null;
+    this.Nkk = false;
+    this.Nkl = false;
+    this.Nkm = false;
     init();
     AppMethodBeat.o(127128);
   }
@@ -57,27 +57,27 @@ public class ObservableSurfaceView
   private void init()
   {
     AppMethodBeat.i(127129);
-    this.laL = getHolder();
-    this.laL.addCallback(this);
+    this.nUU = getHolder();
+    this.nUU.addCallback(this);
     AppMethodBeat.o(127129);
-  }
-  
-  public final boolean fAP()
-  {
-    return this.GwR;
   }
   
   public SurfaceHolder getSurfaceHolder()
   {
-    return this.laL;
+    return this.nUU;
+  }
+  
+  public final boolean gsQ()
+  {
+    return this.Nkk;
   }
   
   public void setNeedSetType(boolean paramBoolean)
   {
     AppMethodBeat.i(127130);
-    this.GwT = paramBoolean;
-    if (this.GwT) {
-      this.laL.setType(3);
+    this.Nkm = paramBoolean;
+    if (this.Nkm) {
+      this.nUU.setType(3);
     }
     AppMethodBeat.o(127130);
   }
@@ -85,9 +85,9 @@ public class ObservableSurfaceView
   public void setSurfaceChangeCallback(a parama)
   {
     AppMethodBeat.i(127131);
-    this.GwQ = parama;
-    if (this.GwT) {
-      this.laL.setType(3);
+    this.Nkj = parama;
+    if (this.Nkm) {
+      this.nUU.setType(3);
     }
     AppMethodBeat.o(127131);
   }
@@ -96,15 +96,15 @@ public class ObservableSurfaceView
   {
     AppMethodBeat.i(127132);
     Log.d("MicroMsg.ObservableSurfaceView", "surfaceChanged");
-    this.GwS = true;
+    this.Nkl = true;
     try
     {
-      this.laL.removeCallback(this);
+      this.nUU.removeCallback(this);
       label27:
-      this.laL = paramSurfaceHolder;
-      this.laL.addCallback(this);
-      if (this.GwQ != null) {
-        this.GwQ.a(this.laL);
+      this.nUU = paramSurfaceHolder;
+      this.nUU.addCallback(this);
+      if (this.Nkj != null) {
+        this.Nkj.d(this.nUU);
       }
       AppMethodBeat.o(127132);
       return;
@@ -117,18 +117,18 @@ public class ObservableSurfaceView
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    this.GwR = true;
+    this.Nkk = true;
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    this.GwR = false;
-    this.GwS = false;
+    this.Nkk = false;
+    this.Nkl = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.video.ObservableSurfaceView
  * JD-Core Version:    0.7.0.1
  */

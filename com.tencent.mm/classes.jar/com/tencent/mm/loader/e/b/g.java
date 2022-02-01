@@ -7,51 +7,56 @@ import java.lang.ref.WeakReference;
 public final class g<T>
 {
   public int height = 0;
-  private WeakReference<T> iaF;
-  a iaG = a.aKt();
-  final int iaH;
+  private WeakReference<T> kPl;
+  a kPm = a.aSv();
+  final int kPn;
   public int width = 0;
   
   public g(T paramT)
   {
-    this.iaF = new WeakReference(paramT);
+    this.kPl = new WeakReference(paramT);
     if (paramT != null)
     {
-      this.iaH = paramT.hashCode();
+      this.kPn = paramT.hashCode();
       return;
     }
-    this.iaH = hashCode();
+    this.kPn = hashCode();
   }
   
   public g(T paramT, a parama)
   {
-    this.iaF = new WeakReference(paramT);
+    this.kPl = new WeakReference(paramT);
     if (paramT != null) {}
-    for (this.iaH = paramT.hashCode();; this.iaH = hashCode())
+    for (this.kPn = paramT.hashCode();; this.kPn = hashCode())
     {
-      this.iaG = parama;
+      this.kPm = parama;
       return;
     }
   }
   
   public final T get()
   {
-    if (this.iaF == null) {
+    if (this.kPl == null) {
       return null;
     }
-    return this.iaF.get();
+    return this.kPl.get();
   }
   
   public final View getView()
   {
-    if (this.iaF != null)
+    if (this.kPl != null)
     {
-      Object localObject = this.iaF.get();
+      Object localObject = this.kPl.get();
       if ((localObject != null) && ((localObject instanceof View))) {
         return (View)localObject;
       }
     }
     return null;
+  }
+  
+  public final int getViewWidth()
+  {
+    return this.width;
   }
 }
 

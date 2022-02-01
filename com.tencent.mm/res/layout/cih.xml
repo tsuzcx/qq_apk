@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/kde" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/kd1" android:background="@color/u_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.widget.RoundCornerRelativeLayout android:id="@id/kd6" android:background="#ff404040" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/c6">
+        <com.tencent.mm.ui.MMImageView android:id="@id/kd3" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <View android:id="@id/kd5" android:background="@drawable/cu0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/kdd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cs" android:layout_centerHorizontal="true">
+            <TextView android:textSize="22.0dip" android:textColor="@color/ag2" android:id="@id/kd8" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/ag2" android:id="@id/kdc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/ua" android:id="@id/kd0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/kd7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt">
+                <TextView android:textSize="12.0dip" android:textColor="@color/ua" android:id="@id/kd4" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="12.0dip" android:textColor="@color/ua" android:id="@id/kd9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/c5" />
+            </LinearLayout>
+        </LinearLayout>
+        <RelativeLayout android:id="@id/kdb" android:background="@drawable/cu6" android:layout_width="wrap_content" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/ce" android:layout_below="@id/kdd" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/kda" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@drawable/cz0" android:layout_centerVertical="true" android:layout_marginStart="@dimen/c5" android:layout_marginEnd="@dimen/a4n" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/ag2" android:id="@id/kd_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jsh" android:layout_centerVertical="true" android:layout_toEndOf="@id/kda" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/c5" android:layout_height="@dimen/ce" android:src="@raw/icons_filled_arrow" android:layout_centerVertical="true" android:layout_marginStart="@dimen/bt" android:layout_marginEnd="@dimen/c5" android:layout_toEndOf="@id/kd_" app:iconColor="@color/ag2" />
+        </RelativeLayout>
+        <com.tencent.mm.ui.blur.BlurView android:id="@id/kd2" android:background="@drawable/cu1" android:layout_width="@dimen/cl" android:layout_height="@dimen/cb" android:layout_marginTop="@dimen/ce" android:layout_marginBottom="@dimen/cb" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/b5n" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@raw/icons_filled_arrow" android:rotation="270.0" app:iconColor="@color/am" />
+        </com.tencent.mm.ui.blur.BlurView>
+    </com.tencent.mm.ui.widget.RoundCornerRelativeLayout>
+</RelativeLayout>

@@ -1,51 +1,50 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.dsd;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.protocal.protobuf.ebz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 import java.util.List;
-import org.json.JSONObject;
 
 public final class n
-  implements com.tencent.mm.ak.i
+  implements com.tencent.mm.an.i
 {
+  private static int CIS;
+  private static LinkedList<i> CIT;
   private static MMHandler handler;
   private static boolean isRunning;
-  private static int xER;
-  private static LinkedList<i> xES;
   private int offset = 0;
   
   static
   {
     AppMethodBeat.i(41449);
-    xER = 20;
+    CIS = 20;
     isRunning = false;
-    xES = new LinkedList();
+    CIT = new LinkedList();
     AppMethodBeat.o(41449);
   }
   
-  private void dVk()
+  private void eys()
   {
     AppMethodBeat.i(41447);
     isRunning = false;
     handler.quit();
-    g.azz().b(1215, this);
+    h.aGY().b(1215, this);
     AppMethodBeat.o(41447);
   }
   
   public static void update()
   {
     AppMethodBeat.i(41445);
-    if (!e.dUY())
+    if (!e.eyf())
     {
       Log.i("MicroMsg.GameListUpdater", "No need to update");
       AppMethodBeat.o(41445);
@@ -58,10 +57,10 @@ public final class n
       return;
     }
     handler = new MMHandler("GameListUpdate");
-    xES.clear();
+    CIT.clear();
     n localn = new n();
-    g.azz().a(1215, localn);
-    g.azz().a(new at(localn.offset, xER), 0);
+    h.aGY().a(1215, localn);
+    h.aGY().a(new at(localn.offset, CIS), 0);
     isRunning = true;
     AppMethodBeat.o(41445);
   }
@@ -71,7 +70,7 @@ public final class n
     AppMethodBeat.i(41446);
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      dVk();
+      eys();
       AppMethodBeat.o(41446);
       return;
     }
@@ -80,30 +79,30 @@ public final class n
       public final void run()
       {
         AppMethodBeat.i(41444);
-        n.a(n.this, n.a(n.this) + n.xER);
-        Object localObject = (dsd)((at)paramq).hhm.iLL.iLR;
+        n.a(n.this, n.a(n.this) + n.CIS);
+        Object localObject = (ebz)d.c.b(((at)paramq).jTk.lBS);
         if (localObject == null) {
           Log.e("MicroMsg.NetSceneSearchGameList", "resp == null");
         }
-        for (localObject = null;; localObject = ((dsd)localObject).xuE)
+        for (localObject = null;; localObject = ((ebz)localObject).CqW)
         {
           localObject = new i((String)localObject);
-          ((i)localObject).dVh();
-          n.cmg().add(localObject);
-          int i = ((h)localObject).xEH.optInt("remainingCount");
+          ((i)localObject).eyo();
+          n.czK().add(localObject);
+          int i = ((i)localObject).eyp();
           Log.i("MicroMsg.GameListUpdater", "remainingCount: %d", new Object[] { Integer.valueOf(i) });
           if (i <= 0) {
             break;
           }
-          g.azz().a(new at(n.a(n.this), n.xER), 0);
+          h.aGY().a(new at(n.a(n.this), n.CIS), 0);
           AppMethodBeat.o(41444);
           return;
         }
         n.b(n.this);
-        e.dUZ();
-        localObject = n.cmg();
+        e.eyg();
+        localObject = n.czK();
         if (!Util.isNullOrNil((List)localObject)) {
-          g.aAk().postToWorker(new i.1((LinkedList)localObject));
+          h.aHJ().postToWorker(new i.1((LinkedList)localObject));
         }
         AppMethodBeat.o(41444);
       }
@@ -113,7 +112,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.n
  * JD-Core Version:    0.7.0.1
  */

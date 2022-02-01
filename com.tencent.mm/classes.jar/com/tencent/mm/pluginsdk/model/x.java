@@ -1,46 +1,37 @@
 package com.tencent.mm.pluginsdk.model;
 
 import android.content.Context;
-import android.os.Looper;
-import android.os.MessageQueue;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.xweb.util.IXWebLogClient;
-import com.tencent.xweb.x5.sdk.d;
-import java.util.HashMap;
-import java.util.Map;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ResolveInfo;
 
-public final class x
+public abstract class x
 {
-  private static final Map<String, Object> JVH;
-  
-  static
+  public boolean aF(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(133686);
-    JVH = new HashMap();
-    AppMethodBeat.o(133686);
+    return false;
   }
   
-  public static void E(String paramString, Object paramObject)
+  public abstract boolean bpD(String paramString);
+  
+  public abstract String bvr();
+  
+  public String c(Context paramContext, ResolveInfo paramResolveInfo)
   {
-    AppMethodBeat.i(133685);
-    JVH.put(paramString, paramObject);
-    d.initTbsSettings(JVH);
-    AppMethodBeat.o(133685);
+    return paramResolveInfo.activityInfo.loadLabel(paramContext.getPackageManager()).toString();
   }
   
-  public static void gmG()
-  {
-    AppMethodBeat.i(229795);
-    Log.i("MicroMsg.TBSHelper", "checkDisableSensitiveApi uin = %d", new Object[] { Integer.valueOf(a.azs()) });
-    AppMethodBeat.o(229795);
-  }
+  public abstract String getPackageName();
+  
+  public abstract String hgO();
+  
+  public abstract y.a hgP();
+  
+  public abstract boolean jq(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.x
  * JD-Core Version:    0.7.0.1
  */

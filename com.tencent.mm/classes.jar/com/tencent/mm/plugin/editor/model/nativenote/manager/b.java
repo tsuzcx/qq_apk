@@ -8,7 +8,7 @@ import com.tencent.mm.sdk.platformtools.ClipboardHelper;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -16,50 +16,50 @@ import java.util.Set;
 
 public final class b
 {
-  public static ArrayList<com.tencent.mm.plugin.editor.model.a.a> kgc;
-  private static String qQn;
+  public static ArrayList<com.tencent.mm.plugin.editor.model.a.a> mXB;
+  private static String ust;
   
   public static void c(Context paramContext, ArrayList<com.tencent.mm.plugin.editor.model.a.a> paramArrayList)
   {
     AppMethodBeat.i(181719);
-    if (kgc != null) {
-      kgc.clear();
+    if (mXB != null) {
+      mXB.clear();
     }
-    kgc = paramArrayList;
-    com.tencent.mm.plugin.fav.a.ao.tbJ = cDl();
+    mXB = paramArrayList;
+    com.tencent.mm.plugin.fav.a.ap.wHO = cRQ();
     paramArrayList = new StringBuilder("");
-    if (kgc != null)
+    if (mXB != null)
     {
       int i = 0;
-      if (i < kgc.size())
+      if (i < mXB.size())
       {
-        if (i != kgc.size() - 1) {
-          paramArrayList.append(com.tencent.mm.plugin.editor.b.a(paramContext, (com.tencent.mm.plugin.editor.model.a.a)kgc.get(i))).append("<br/>");
+        if (i != mXB.size() - 1) {
+          paramArrayList.append(com.tencent.mm.plugin.editor.b.a(paramContext, (com.tencent.mm.plugin.editor.model.a.a)mXB.get(i))).append("<br/>");
         }
         for (;;)
         {
           i += 1;
           break;
-          paramArrayList.append(com.tencent.mm.plugin.editor.b.a(paramContext, (com.tencent.mm.plugin.editor.model.a.a)kgc.get(i)));
+          paramArrayList.append(com.tencent.mm.plugin.editor.b.a(paramContext, (com.tencent.mm.plugin.editor.model.a.a)mXB.get(i)));
         }
       }
     }
-    paramContext = com.tencent.mm.plugin.editor.b.alM(paramArrayList.toString());
-    qQn = paramContext;
-    ClipboardHelper.setText(com.tencent.mm.plugin.editor.model.nativenote.a.a.alS(paramContext));
+    paramContext = com.tencent.mm.plugin.editor.b.atF(paramArrayList.toString());
+    ust = paramContext;
+    ClipboardHelper.setText(com.tencent.mm.plugin.editor.model.nativenote.a.a.atL(paramContext));
     AppMethodBeat.o(181719);
   }
   
-  public static ArrayList<com.tencent.mm.plugin.editor.model.a.a> cDk()
+  public static ArrayList<com.tencent.mm.plugin.editor.model.a.a> cRP()
   {
     AppMethodBeat.i(181720);
     ArrayList localArrayList = new ArrayList();
-    if (kgc == null)
+    if (mXB == null)
     {
       AppMethodBeat.o(181720);
       return localArrayList;
     }
-    Iterator localIterator = kgc.iterator();
+    Iterator localIterator = mXB.iterator();
     while (localIterator.hasNext())
     {
       com.tencent.mm.plugin.editor.model.a.a locala = com.tencent.mm.plugin.editor.b.a((com.tencent.mm.plugin.editor.model.a.a)localIterator.next());
@@ -71,16 +71,16 @@ public final class b
     return localArrayList;
   }
   
-  private static Set<String> cDl()
+  private static Set<String> cRQ()
   {
     AppMethodBeat.i(181722);
     HashSet localHashSet = new HashSet();
-    if (kgc == null)
+    if (mXB == null)
     {
       AppMethodBeat.o(181722);
       return localHashSet;
     }
-    Iterator localIterator = kgc.iterator();
+    Iterator localIterator = mXB.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (com.tencent.mm.plugin.editor.model.a.a)localIterator.next();
@@ -97,7 +97,7 @@ public final class b
     return localHashSet;
   }
   
-  public static boolean cDm()
+  public static boolean cRR()
   {
     AppMethodBeat.i(181724);
     ClipboardManager localClipboardManager = (ClipboardManager)MMApplicationContext.getContext().getSystemService("clipboard");
@@ -106,7 +106,7 @@ public final class b
       AppMethodBeat.o(181724);
       return true;
     }
-    if (com.tencent.mm.plugin.editor.b.alK(localClipboardManager.getText().toString()) >= 16384)
+    if (com.tencent.mm.plugin.editor.b.atD(localClipboardManager.getText().toString()) >= 16384)
     {
       AppMethodBeat.o(181724);
       return true;
@@ -115,14 +115,14 @@ public final class b
     return false;
   }
   
-  public static int cDn()
+  public static int cRS()
   {
     AppMethodBeat.i(181725);
     Object localObject = (ClipboardManager)MMApplicationContext.getContext().getSystemService("clipboard");
     if ((localObject == null) || (((ClipboardManager)localObject).getText() == null) || (((ClipboardManager)localObject).getText().length() <= 0)) {}
     for (int i = 1;; i = 0)
     {
-      if ((kgc == null) || (kgc.size() <= 0)) {}
+      if ((mXB == null) || (mXB.size() <= 0)) {}
       for (int j = 1;; j = 0)
       {
         if ((i != 0) && (j != 0))
@@ -144,7 +144,7 @@ public final class b
         {
           localObject = ((ClipboardManager)localObject).getText();
           if ((localObject instanceof Spanned)) {}
-          for (localObject = com.tencent.mm.plugin.editor.model.nativenote.a.b.a((Spanned)localObject); ((String)localObject).equals(qQn); localObject = ((CharSequence)localObject).toString())
+          for (localObject = com.tencent.mm.plugin.editor.model.nativenote.a.b.a((Spanned)localObject); ((String)localObject).equals(ust); localObject = ((CharSequence)localObject).toString())
           {
             AppMethodBeat.o(181725);
             return 3;
@@ -167,11 +167,11 @@ public final class b
   public static void clearData()
   {
     AppMethodBeat.i(181721);
-    if (kgc != null) {
-      kgc.clear();
+    if (mXB != null) {
+      mXB.clear();
     }
-    qQn = "";
-    com.tencent.mm.plugin.fav.a.ao.tbJ = null;
+    ust = "";
+    com.tencent.mm.plugin.fav.a.ap.wHO = null;
     AppMethodBeat.o(181721);
   }
   
@@ -197,7 +197,7 @@ public final class b
       if (!Util.isNullOrNil(str))
       {
         bool1 = bool2;
-        if (s.YS(str)) {}
+        if (u.agG(str)) {}
       }
       else
       {
@@ -215,7 +215,7 @@ public final class b
       if (!Util.isNullOrNil(parama))
       {
         bool2 = bool1;
-        if (s.YS(parama)) {}
+        if (u.agG(parama)) {}
       }
       else
       {
@@ -228,7 +228,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.manager.b
  * JD-Core Version:    0.7.0.1
  */

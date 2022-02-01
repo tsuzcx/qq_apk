@@ -1,46 +1,46 @@
 package kotlin.l.b.a.b.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l.b.a.b.h.j.a;
-import kotlin.l.b.a.b.h.j.b;
+import kotlin.l.b.a.b.h.k.a;
+import kotlin.l.b.a.b.h.k.b;
 
 public enum a$i
-  implements j.a
+  implements k.a
 {
-  private static j.b<i> Txp;
+  private static k.b<i> abag;
   private final int value;
   
   static
   {
     AppMethodBeat.i(58622);
-    TyD = new i("DECLARATION", 0, 0);
-    TyE = new i("FAKE_OVERRIDE", 1, 1);
-    TyF = new i("DELEGATION", 2, 2);
-    TyG = new i("SYNTHESIZED", 3, 3);
-    TyH = new i[] { TyD, TyE, TyF, TyG };
-    Txp = new j.b() {};
+    abbu = new i("DECLARATION", 0, 0);
+    abbv = new i("FAKE_OVERRIDE", 1, 1);
+    abbw = new i("DELEGATION", 2, 2);
+    abbx = new i("SYNTHESIZED", 3, 3);
+    abby = new i[] { abbu, abbv, abbw, abbx };
+    abag = new k.b() {};
     AppMethodBeat.o(58622);
   }
   
-  private a$i(int paramInt1, int paramInt2)
+  private a$i(int paramInt)
   {
-    this.value = paramInt1;
+    this.value = paramInt;
   }
   
-  public static i aut(int paramInt)
+  public static i aEn(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 0: 
-      return TyD;
+      return abbu;
     case 1: 
-      return TyE;
+      return abbv;
     case 2: 
-      return TyF;
+      return abbw;
     }
-    return TyG;
+    return abbx;
   }
   
   public final int getNumber()
@@ -50,7 +50,7 @@ public enum a$i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.e.a.i
  * JD-Core Version:    0.7.0.1
  */

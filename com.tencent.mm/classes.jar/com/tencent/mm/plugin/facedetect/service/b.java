@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.facedetect.service;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.plugin.facedetect.e.a.a;
 import com.tencent.mm.plugin.facedetect.e.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -13,21 +13,21 @@ public final class b
   extends a
 {
   String mAppId = "";
-  long sQI = -1L;
+  long wwE = -1L;
   
-  public final void aj(Intent paramIntent)
+  public final void ag(Intent paramIntent)
   {
     AppMethodBeat.i(103871);
-    this.sQI = paramIntent.getLongExtra("k_bio_id", -1L);
+    this.wwE = paramIntent.getLongExtra("k_bio_id", -1L);
     this.mAppId = paramIntent.getStringExtra("key_app_id");
-    Log.i("MicroMsg.FaceDetectServiceControllerMp", "hy: got bioid: %d, appid: %s", new Object[] { Long.valueOf(this.sQI), this.mAppId });
+    Log.i("MicroMsg.FaceDetectServiceControllerMp", "hy: got bioid: %d, appid: %s", new Object[] { Long.valueOf(this.wwE), this.mAppId });
     Log.i("MicroMsg.FaceDetectServiceControllerMp", "hy: requesting release and send video");
-    if ((com.tencent.mm.plugin.facedetect.e.a.cTF().sUx) && ((com.tencent.mm.plugin.facedetect.e.a.cTF().cTI() == a.a.sVb) || (com.tencent.mm.plugin.facedetect.e.a.cTF().cTI() == a.a.sVc) || (com.tencent.mm.plugin.facedetect.e.a.cTF().cTI() == a.a.sVd)))
+    if ((com.tencent.mm.plugin.facedetect.e.a.diK().wAu) && ((com.tencent.mm.plugin.facedetect.e.a.diK().diN() == a.a.wAY) || (com.tencent.mm.plugin.facedetect.e.a.diK().diN() == a.a.wAZ) || (com.tencent.mm.plugin.facedetect.e.a.diK().diN() == a.a.wBa)))
     {
       final long l = Util.currentTicks();
-      com.tencent.mm.plugin.facedetect.e.a.cTF().a(new a.b()
+      com.tencent.mm.plugin.facedetect.e.a.diK().a(new a.b()
       {
-        public final void arD(String paramAnonymousString)
+        public final void azE(String paramAnonymousString)
         {
           AppMethodBeat.i(103870);
           Log.i("MicroMsg.FaceDetectServiceControllerMp", "hy: video release done. using: %d ms. file path: %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), paramAnonymousString });
@@ -38,7 +38,7 @@ public final class b
           }
           Intent localIntent = new Intent(MMApplicationContext.getContext(), FaceUploadVideoService.class);
           localIntent.putExtra("key_video_file_name", paramAnonymousString);
-          localIntent.putExtra("k_bio_id", b.this.sQI);
+          localIntent.putExtra("k_bio_id", b.this.wwE);
           localIntent.putExtra("key_app_id", b.this.mAppId);
           c.startService(localIntent);
           AppMethodBeat.o(103870);

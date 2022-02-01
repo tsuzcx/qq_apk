@@ -5,42 +5,100 @@ import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.thread.ThreadPool;
 import com.tencent.qqmusic.mediaplayer.AudioPlayerConfigure;
+import com.tencent.qqmusic.mediaplayer.ILog;
 import com.tencent.qqmusic.mediaplayer.ISoLibraryLoader;
 import com.tencent.qqmusic.mediaplayer.NativeLibs;
 
 public class a
 {
-  private static c Ame;
-  private static boolean Amf;
-  private static boolean aWP;
+  private static c FTl;
+  private static boolean FTm;
+  private static boolean aGh;
   
   static
   {
     AppMethodBeat.i(137400);
-    Ame = new a.a((byte)0);
-    Amf = false;
-    aWP = false;
+    FTl = new a.a((byte)0);
+    FTm = false;
+    aGh = false;
     AppMethodBeat.o(137400);
   }
   
   public static void a(c paramc)
   {
-    Ame = paramc;
+    FTl = paramc;
   }
   
-  public static void euV()
+  public static void ffp()
   {
     AppMethodBeat.i(137398);
     Log.i("MicroMsg.Audio.AudioPlayerUtils", "configQQMusicSdkConfig");
-    AudioPlayerConfigure.setLog(new a.1());
+    AudioPlayerConfigure.setLog(new ILog()
+    {
+      public final void d(String paramAnonymousString1, String paramAnonymousString2)
+      {
+        AppMethodBeat.i(137383);
+        Log.d(paramAnonymousString1, paramAnonymousString2);
+        AppMethodBeat.o(137383);
+      }
+      
+      public final void e(String paramAnonymousString1, String paramAnonymousString2)
+      {
+        AppMethodBeat.i(137385);
+        Log.e(paramAnonymousString1, paramAnonymousString2);
+        AppMethodBeat.o(137385);
+      }
+      
+      public final void e(String paramAnonymousString1, String paramAnonymousString2, Throwable paramAnonymousThrowable)
+      {
+        AppMethodBeat.i(137389);
+        Log.printErrStackTrace(paramAnonymousString1, paramAnonymousThrowable, paramAnonymousString2, new Object[0]);
+        AppMethodBeat.o(137389);
+      }
+      
+      public final void e(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
+      {
+        AppMethodBeat.i(137390);
+        Log.e(paramAnonymousString1, String.format(paramAnonymousString2, paramAnonymousVarArgs));
+        AppMethodBeat.o(137390);
+      }
+      
+      public final void e(String paramAnonymousString, Throwable paramAnonymousThrowable)
+      {
+        AppMethodBeat.i(137388);
+        Log.printErrStackTrace(paramAnonymousString, paramAnonymousThrowable, " throwable", new Object[0]);
+        AppMethodBeat.o(137388);
+      }
+      
+      public final void i(String paramAnonymousString1, String paramAnonymousString2)
+      {
+        AppMethodBeat.i(137386);
+        Log.i(paramAnonymousString1, paramAnonymousString2);
+        AppMethodBeat.o(137386);
+      }
+      
+      public final void i(String paramAnonymousString1, String paramAnonymousString2, Throwable paramAnonymousThrowable)
+      {
+        AppMethodBeat.i(137387);
+        Log.printErrStackTrace(paramAnonymousString1, paramAnonymousThrowable, paramAnonymousString2, new Object[0]);
+        AppMethodBeat.o(137387);
+      }
+      
+      public final void w(String paramAnonymousString1, String paramAnonymousString2)
+      {
+        AppMethodBeat.i(137384);
+        Log.w(paramAnonymousString1, paramAnonymousString2);
+        AppMethodBeat.o(137384);
+      }
+    });
     AudioPlayerConfigure.setSoLibraryLoader(new ISoLibraryLoader()
     {
       public final String findLibPath(String paramAnonymousString)
       {
         AppMethodBeat.i(137392);
-        if (a.euX() != null)
+        if (a.ffr() != null)
         {
-          paramAnonymousString = a.euX().findLibPath(paramAnonymousString);
+          paramAnonymousString = a.ffr().findLibPath(paramAnonymousString);
           AppMethodBeat.o(137392);
           return paramAnonymousString;
         }
@@ -51,9 +109,9 @@ public class a
       public final boolean load(String paramAnonymousString)
       {
         AppMethodBeat.i(137391);
-        if (a.euX() != null)
+        if (a.ffr() != null)
         {
-          boolean bool = a.euX().load(paramAnonymousString);
+          boolean bool = a.ffr().load(paramAnonymousString);
           AppMethodBeat.o(137391);
           return bool;
         }
@@ -61,16 +119,16 @@ public class a
         return false;
       }
     });
-    if ((!Amf) && (!aWP))
+    if ((!FTm) && (!aGh))
     {
-      aWP = true;
+      aGh = true;
       ThreadPool.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(137393);
-          a.euW();
-          a.bXt();
+          a.ffq();
+          a.cjY();
           AppMethodBeat.o(137393);
         }
       }, "audio load NLog");
@@ -78,7 +136,7 @@ public class a
     AppMethodBeat.o(137398);
   }
   
-  public static boolean euW()
+  public static boolean ffq()
   {
     boolean bool1 = false;
     for (;;)
@@ -86,31 +144,31 @@ public class a
       try
       {
         AppMethodBeat.i(137399);
-        if (Amf)
+        if (FTm)
         {
           bool1 = true;
           AppMethodBeat.o(137399);
           return bool1;
         }
-        if (Ame == null)
+        if (FTl == null)
         {
           AppMethodBeat.o(137399);
           continue;
         }
-        Ame.load(NativeLibs.nlog.getName());
+        FTl.load(NativeLibs.nlog.getName());
       }
       finally {}
-      Ame.load(NativeLibs.audioCommon.getName());
-      boolean bool2 = Ame.aHU(NativeLibs.nlog.getName());
+      FTl.load(NativeLibs.audioCommon.getName());
+      boolean bool2 = FTl.aSk(NativeLibs.nlog.getName());
       if (bool2)
       {
         try
         {
-          Amf = AudioPlayerConfigure.enableNativeLog(null);
-          if (Amf) {
+          FTm = AudioPlayerConfigure.enableNativeLog(null);
+          if (FTm) {
             Log.i("MicroMsg.Audio.AudioPlayerUtils", "enableNativeLog success");
           }
-          bool1 = Amf;
+          bool1 = FTm;
           AppMethodBeat.o(137399);
         }
         catch (Throwable localThrowable)
@@ -118,10 +176,10 @@ public class a
           for (;;)
           {
             Log.printErrStackTrace("MicroMsg.Audio.AudioPlayerUtils", localThrowable, "checkNLogLoad", new Object[0]);
-            if (!d.oE(20)) {
+            if (!d.qW(20)) {
               break;
             }
-            Amf = AudioPlayerConfigure.enableNativeLog(null);
+            FTm = AudioPlayerConfigure.enableNativeLog(null);
           }
           AppMethodBeat.o(137399);
           throw localThrowable;
@@ -137,7 +195,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.a.a
  * JD-Core Version:    0.7.0.1
  */

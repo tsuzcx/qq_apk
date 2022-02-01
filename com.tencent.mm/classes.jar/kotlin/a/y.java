@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/collections/IndexedValue;", "T", "", "index", "", "value", "(ILjava/lang/Object;)V", "getIndex", "()I", "getValue", "()Ljava/lang/Object;", "Ljava/lang/Object;", "component1", "component2", "copy", "(ILjava/lang/Object;)Lkotlin/collections/IndexedValue;", "equals", "", "other", "hashCode", "toString", "", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/collections/IndexedValue;", "T", "", "index", "", "value", "(ILjava/lang/Object;)V", "getIndex", "()I", "getValue", "()Ljava/lang/Object;", "Ljava/lang/Object;", "component1", "component2", "copy", "(ILjava/lang/Object;)Lkotlin/collections/IndexedValue;", "equals", "", "other", "hashCode", "toString", "", "kotlin-stdlib"})
 public final class y<T>
 {
   public final int index;
@@ -24,7 +24,7 @@ public final class y<T>
       if ((paramObject instanceof y))
       {
         paramObject = (y)paramObject;
-        if ((this.index != paramObject.index) || (!p.j(this.value, paramObject.value))) {}
+        if ((this.index != paramObject.index) || (!p.h(this.value, paramObject.value))) {}
       }
     }
     else

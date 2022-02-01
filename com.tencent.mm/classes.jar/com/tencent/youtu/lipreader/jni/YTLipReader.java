@@ -12,16 +12,16 @@ public class YTLipReader
   
   static
   {
-    AppMethodBeat.i(192713);
+    AppMethodBeat.i(211080);
     TAG = YTLipReader.class.getSimpleName();
-    AppMethodBeat.o(192713);
+    AppMethodBeat.o(211080);
   }
   
   public YTLipReader()
   {
-    AppMethodBeat.i(192708);
+    AppMethodBeat.i(211070);
     NativeConstructor();
-    AppMethodBeat.o(192708);
+    AppMethodBeat.o(211070);
   }
   
   private native void NativeConstructor();
@@ -30,29 +30,29 @@ public class YTLipReader
   
   public static byte[] encodeJpeg(Bitmap paramBitmap, int paramInt)
   {
-    AppMethodBeat.i(192711);
+    AppMethodBeat.i(211078);
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     paramBitmap.compress(Bitmap.CompressFormat.JPEG, paramInt, localByteArrayOutputStream);
     paramBitmap = localByteArrayOutputStream.toByteArray();
-    AppMethodBeat.o(192711);
+    AppMethodBeat.o(211078);
     return paramBitmap;
   }
   
   public static byte[] encodePng(Bitmap paramBitmap, int paramInt)
   {
-    AppMethodBeat.i(192712);
+    AppMethodBeat.i(211079);
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     paramBitmap.compress(Bitmap.CompressFormat.PNG, paramInt, localByteArrayOutputStream);
     paramBitmap = localByteArrayOutputStream.toByteArray();
-    AppMethodBeat.o(192712);
+    AppMethodBeat.o(211079);
     return paramBitmap;
   }
   
   public void destroy()
   {
-    AppMethodBeat.i(192709);
+    AppMethodBeat.i(211071);
     NativeDestructor();
-    AppMethodBeat.o(192709);
+    AppMethodBeat.o(211071);
   }
   
   public native String feature();
@@ -61,10 +61,10 @@ public class YTLipReader
   
   protected void finalize()
   {
-    AppMethodBeat.i(192710);
+    AppMethodBeat.i(211072);
     super.finalize();
     NativeDestructor();
-    AppMethodBeat.o(192710);
+    AppMethodBeat.o(211072);
   }
   
   public native String getImageListJsonStr();

@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -15,23 +17,23 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class VoiceHeaderPreference
   extends Preference
 {
-  private ImageView gBZ;
-  private MMActivity gte;
-  private TextView jBS;
+  private MMActivity iXq;
+  private ImageView jmf;
   private String mTitle;
-  private int sUb;
-  private Button sUc;
-  private View sUd;
-  private View.OnClickListener sUe;
-  private String sUf;
-  private String sUg;
+  private TextView mrN;
   private TextView titleTv;
+  private View.OnClickListener wAa;
+  private String wAb;
+  private String wAc;
+  private int wzX;
+  private Button wzY;
+  private View wzZ;
   
   public VoiceHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
     AppMethodBeat.i(29867);
-    this.gte = ((MMActivity)paramContext);
+    this.iXq = ((MMActivity)paramContext);
     AppMethodBeat.o(29867);
   }
   
@@ -40,55 +42,55 @@ public final class VoiceHeaderPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29868);
     this.mTitle = "";
-    this.sUb = 255;
-    this.sUe = null;
-    this.sUf = "";
-    this.sUg = "";
-    this.gte = ((MMActivity)paramContext);
-    setLayoutResource(2131496845);
+    this.wzX = 255;
+    this.wAa = null;
+    this.wAb = "";
+    this.wAc = "";
+    this.iXq = ((MMActivity)paramContext);
+    setLayoutResource(R.i.elS);
     AppMethodBeat.o(29868);
   }
   
-  public final void b(View.OnClickListener paramOnClickListener)
+  public final void c(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(29870);
-    this.sUe = paramOnClickListener;
-    if ((this.sUc == null) || (this.sUd == null))
+    this.wAa = paramOnClickListener;
+    if ((this.wzY == null) || (this.wzZ == null))
     {
       AppMethodBeat.o(29870);
       return;
     }
-    if ((this.sUc != null) && (this.sUe != null))
+    if ((this.wzY != null) && (this.wAa != null))
     {
-      this.sUc.setOnClickListener(paramOnClickListener);
-      this.sUc.setVisibility(0);
-      this.sUd.setVisibility(0);
+      this.wzY.setOnClickListener(paramOnClickListener);
+      this.wzY.setVisibility(0);
+      this.wzZ.setVisibility(0);
       AppMethodBeat.o(29870);
       return;
     }
-    this.sUc.setVisibility(8);
-    this.sUd.setVisibility(8);
+    this.wzY.setVisibility(8);
+    this.wzZ.setVisibility(8);
     AppMethodBeat.o(29870);
   }
   
-  public final void gD(String paramString1, String paramString2)
+  public final void gR(String paramString1, String paramString2)
   {
     AppMethodBeat.i(29869);
-    this.sUf = paramString1;
-    this.sUg = paramString2;
+    this.wAb = paramString1;
+    this.wAc = paramString2;
     if (this.titleTv != null)
     {
-      if (Util.isNullOrNil(this.sUf)) {
+      if (Util.isNullOrNil(this.wAb)) {
         break label95;
       }
-      this.titleTv.setText(this.sUf);
+      this.titleTv.setText(this.wAb);
       this.titleTv.setVisibility(0);
     }
-    while (this.jBS != null) {
-      if (!Util.isNullOrNil(this.sUg))
+    while (this.mrN != null) {
+      if (!Util.isNullOrNil(this.wAc))
       {
-        this.jBS.setText(this.sUg);
-        this.jBS.setVisibility(0);
+        this.mrN.setText(this.wAc);
+        this.mrN.setVisibility(0);
         AppMethodBeat.o(29869);
         return;
         label95:
@@ -96,7 +98,7 @@ public final class VoiceHeaderPreference
       }
       else
       {
-        this.jBS.setVisibility(8);
+        this.mrN.setVisibility(8);
       }
     }
     AppMethodBeat.o(29869);
@@ -106,39 +108,39 @@ public final class VoiceHeaderPreference
   {
     AppMethodBeat.i(29871);
     super.onBindView(paramView);
-    this.gBZ = ((ImageView)paramView.findViewById(2131309973));
-    this.titleTv = ((TextView)paramView.findViewById(2131309974));
-    this.jBS = ((TextView)paramView.findViewById(2131309976));
-    this.sUc = ((Button)paramView.findViewById(2131307087));
-    this.sUd = paramView.findViewById(2131297921);
-    if (!Util.isNullOrNil(this.sUf))
+    this.jmf = ((ImageView)paramView.findViewById(R.h.voice_print_sucesss_icon));
+    this.titleTv = ((TextView)paramView.findViewById(R.h.eag));
+    this.mrN = ((TextView)paramView.findViewById(R.h.voice_print_title_tip));
+    this.wzY = ((Button)paramView.findViewById(R.h.right_btn));
+    this.wzZ = paramView.findViewById(R.h.button_ll);
+    if (!Util.isNullOrNil(this.wAb))
     {
-      this.titleTv.setText(this.sUf);
+      this.titleTv.setText(this.wAb);
       this.titleTv.setVisibility(0);
-      if (Util.isNullOrNil(this.sUg)) {
-        break label191;
+      if (Util.isNullOrNil(this.wAc)) {
+        break label196;
       }
-      this.jBS.setText(this.sUg);
-      this.jBS.setVisibility(0);
+      this.mrN.setText(this.wAc);
+      this.mrN.setVisibility(0);
     }
     for (;;)
     {
-      if ((this.sUc == null) || (this.sUe == null)) {
-        break label203;
+      if ((this.wzY == null) || (this.wAa == null)) {
+        break label208;
       }
-      this.sUc.setOnClickListener(this.sUe);
-      this.sUc.setVisibility(0);
-      this.sUd.setVisibility(0);
+      this.wzY.setOnClickListener(this.wAa);
+      this.wzY.setVisibility(0);
+      this.wzZ.setVisibility(0);
       AppMethodBeat.o(29871);
       return;
       this.titleTv.setVisibility(8);
       break;
-      label191:
-      this.jBS.setVisibility(8);
+      label196:
+      this.mrN.setVisibility(8);
     }
-    label203:
-    this.sUc.setVisibility(8);
-    this.sUd.setVisibility(8);
+    label208:
+    this.wzY.setVisibility(8);
+    this.wzZ.setVisibility(8);
     AppMethodBeat.o(29871);
   }
 }

@@ -3,11 +3,9 @@ package com.tencent.mm.plugin.crashfix.d.e;
 import android.content.SharedPreferences.Editor;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.crashfix.jni.JNIEnvNewWeakGlobalRefHook;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
@@ -16,13 +14,13 @@ import java.lang.reflect.Method;
 public final class a
   implements com.tencent.mm.plugin.crashfix.d.a
 {
-  public final boolean Fh(int paramInt)
+  public final boolean IP(int paramInt)
   {
     AppMethodBeat.i(145639);
     if ((paramInt == 24) || (paramInt == 25))
     {
       Log.i("MicroMsg.WeakGlobalRefFix", "api ".concat(String.valueOf(paramInt)));
-      paramInt = ((b)g.af(b.class)).a(b.a.seQ, 1);
+      paramInt = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vOA, 1);
       Log.i("MicroMsg.WeakGlobalRefFix", "Expt : ".concat(String.valueOf(paramInt)));
       if (paramInt == 0)
       {
@@ -43,14 +41,14 @@ public final class a
     return false;
   }
   
-  public final void cAM()
+  public final void cPq()
   {
     AppMethodBeat.i(145637);
     MultiProcessMMKV.getSingleMMKV("weakglobal_fix").putBoolean("SYSTEM_CRASH_PROTECT_WEAK_GLOBAL_REF_END_BOOLEAN", true).commit();
     AppMethodBeat.o(145637);
   }
   
-  public final boolean cAN()
+  public final boolean cPr()
   {
     AppMethodBeat.i(145638);
     boolean bool1 = MultiProcessMMKV.getSingleMMKV("weakglobal_fix").getBoolean("SYSTEM_CRASH_PROTECT_WEAK_GLOBAL_REF_START_BOOLEAN", false);
@@ -60,23 +58,23 @@ public final class a
     if (bool1 == bool2)
     {
       if (bool2) {
-        h.CyF.idkeyStat(1113L, 2L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1113L, 2L, 1L, false);
       }
       AppMethodBeat.o(145638);
       return false;
     }
     if (MultiProcessMMKV.getSingleMMKV("weakglobal_fix").getInt("SYSTEM_CRASH_PROTECT_WEAKGLOBALREF_HOOK_RESULT", 0) == -5) {
-      h.CyF.idkeyStat(1113L, 0L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1113L, 0L, 1L, false);
     }
     for (;;)
     {
       AppMethodBeat.o(145638);
       return true;
-      h.CyF.idkeyStat(1113L, 1L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1113L, 1L, 1L, false);
     }
   }
   
-  public final boolean cAO()
+  public final boolean cPs()
   {
     AppMethodBeat.i(145640);
     JNIEnvNewWeakGlobalRefHook.init();
@@ -116,7 +114,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.crashfix.d.e.a
  * JD-Core Version:    0.7.0.1
  */

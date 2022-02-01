@@ -7,7 +7,7 @@ import android.media.MediaCodecList;
 import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Arrays;
@@ -17,43 +17,43 @@ import kotlin.l;
 import kotlin.n.n;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/config/BaseCodecConfig;", "", "()V", "STRING_SPILT", "", "supportedHardcodeEncoder", "", "[Ljava/lang/String;", "isRecognizedFormat", "", "colorFormat", "", "isRecognizedProfile", "profile", "selectCodec", "Landroid/media/MediaCodecInfo;", "mimeType", "selectColorFormat", "codecInfo", "trySetBitRateMode", "", "mediaFormat", "Landroid/media/MediaFormat;", "trySetProfile", "Companion", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/config/BaseCodecConfig;", "", "()V", "STRING_SPILT", "", "supportedHardcodeEncoder", "", "[Ljava/lang/String;", "isRecognizedFormat", "", "colorFormat", "", "isRecognizedProfile", "profile", "selectCodec", "Landroid/media/MediaCodecInfo;", "mimeType", "selectColorFormat", "codecInfo", "trySetBitRateMode", "", "mediaFormat", "Landroid/media/MediaFormat;", "trySetProfile", "Companion", "plugin-mediaeditor_release"})
 public class a
 {
-  public static final a.a idw;
-  private final String idu;
-  private String[] idv;
+  public static final a kSd;
+  private final String kSb;
+  private String[] kSc;
   
   static
   {
     AppMethodBeat.i(93516);
-    idw = new a.a((byte)0);
+    kSd = new a((byte)0);
     AppMethodBeat.o(93516);
   }
   
   public a()
   {
     AppMethodBeat.i(93515);
-    this.idu = ";";
-    this.idv = new String[] { "OMX.oppo.h264.encoder" };
-    Object localObject = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rZc, "");
-    p.g(localObject, "supportedHardcodeEncoderList");
-    Object[] arrayOfObject = ((Collection)n.b((CharSequence)localObject, new String[] { this.idu })).toArray(new String[0]);
+    this.kSb = ";";
+    this.kSc = new String[] { "OMX.oppo.h264.encoder" };
+    Object localObject = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vFZ, "");
+    p.j(localObject, "supportedHardcodeEncoderList");
+    Object[] arrayOfObject = ((Collection)n.b((CharSequence)localObject, new String[] { this.kSb })).toArray(new String[0]);
     if (arrayOfObject == null)
     {
       localObject = new t("null cannot be cast to non-null type kotlin.Array<T>");
       AppMethodBeat.o(93515);
       throw ((Throwable)localObject);
     }
-    this.idv = ((String[])arrayOfObject);
-    Log.i("MicroMsg.VideoCodecConfig", "supportedHardcodeEncoderList : " + (String)localObject + "  supportedHardcodeEncoder size:" + this.idv.length);
-    if (this.idv.length == 0) {}
+    this.kSc = ((String[])arrayOfObject);
+    Log.i("MicroMsg.VideoCodecConfig", "supportedHardcodeEncoderList : " + (String)localObject + "  supportedHardcodeEncoder size:" + this.kSc.length);
+    if (this.kSc.length == 0) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        localObject = b.idz;
-        b.eT(false);
+        localObject = b.kSf;
+        b.fA(false);
       }
       AppMethodBeat.o(93515);
       return;
@@ -63,10 +63,10 @@ public class a
   public static void a(MediaCodecInfo paramMediaCodecInfo, MediaFormat paramMediaFormat, String paramString)
   {
     AppMethodBeat.i(93514);
-    p.h(paramMediaCodecInfo, "codecInfo");
-    p.h(paramMediaFormat, "mediaFormat");
-    p.h(paramString, "mimeType");
-    if (d.oD(23)) {}
+    p.k(paramMediaCodecInfo, "codecInfo");
+    p.k(paramMediaFormat, "mediaFormat");
+    p.k(paramString, "mimeType");
+    if (d.qV(23)) {}
     for (;;)
     {
       int i;
@@ -132,7 +132,7 @@ public class a
   public final MediaCodecInfo selectCodec(String paramString)
   {
     AppMethodBeat.i(93513);
-    p.h(paramString, "mimeType");
+    p.k(paramString, "mimeType");
     int m = MediaCodecList.getCodecCount();
     Log.i("MicroMsg.VideoCodecConfig", "numCodec:".concat(String.valueOf(m)));
     int i = 0;
@@ -143,35 +143,35 @@ public class a
     while (i < m)
     {
       localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-      p.g(localMediaCodecInfo, "codecInfo");
+      p.j(localMediaCodecInfo, "codecInfo");
       if (localMediaCodecInfo.isEncoder())
       {
-        Log.i("MicroMsg.VideoCodecConfig", "config to use supportedHardcodeEncoder:" + Arrays.toString(this.idv));
-        arrayOfString = this.idv;
+        Log.i("MicroMsg.VideoCodecConfig", "config to use supportedHardcodeEncoder:" + Arrays.toString(this.kSc));
+        arrayOfString = this.kSc;
         int n = arrayOfString.length;
         j = 0;
         while (j < n)
         {
           Object localObject = arrayOfString[j];
-          if ((localMediaCodecInfo != null) && (n.I(localMediaCodecInfo.getName(), (String)localObject, true)))
+          if ((localMediaCodecInfo != null) && (n.L(localMediaCodecInfo.getName(), (String)localObject, true)))
           {
             localObject = localMediaCodecInfo.getSupportedTypes();
             k = 0;
-            p.g(localObject, "types");
+            p.j(localObject, "types");
             int i1 = localObject.length;
             while (k < i1)
             {
               Log.i("MicroMsg.VideoCodecConfig", "hardcodeEncoder: " + localMediaCodecInfo.getName() + "  type:" + localObject[k]);
-              if (n.I(localObject[k], paramString, true))
+              if (n.L(localObject[k], paramString, true))
               {
-                paramString = b.idz;
-                b.eT(true);
+                paramString = b.kSf;
+                b.fA(true);
                 AppMethodBeat.o(93513);
                 return localMediaCodecInfo;
               }
               k += 1;
             }
-            Log.i("MicroMsg.VideoCodecConfig", "selectCodec from hardcodeEncoder " + this.idv + ": " + localMediaCodecInfo.getName());
+            Log.i("MicroMsg.VideoCodecConfig", "selectCodec from hardcodeEncoder " + this.kSc + ": " + localMediaCodecInfo.getName());
           }
           j += 1;
         }
@@ -182,17 +182,17 @@ public class a
     while (i < m)
     {
       localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-      p.g(localMediaCodecInfo, "codecInfo");
+      p.j(localMediaCodecInfo, "codecInfo");
       if (localMediaCodecInfo.isEncoder())
       {
         arrayOfString = localMediaCodecInfo.getSupportedTypes();
         j = 0;
-        p.g(arrayOfString, "types");
+        p.j(arrayOfString, "types");
         k = arrayOfString.length;
         while (j < k)
         {
           Log.i("MicroMsg.VideoCodecConfig", "selectCodec:  " + m + "  type: " + arrayOfString[j]);
-          if (n.I(arrayOfString[j], paramString, true))
+          if (n.L(arrayOfString[j], paramString, true))
           {
             AppMethodBeat.o(93513);
             return localMediaCodecInfo;
@@ -205,10 +205,13 @@ public class a
     AppMethodBeat.o(93513);
     return null;
   }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/config/BaseCodecConfig$Companion;", "", "()V", "AVC_MIME_TYPE", "", "HEVC_MIME_TYPE", "TAG", "plugin-mediaeditor_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.media.b.a
  * JD-Core Version:    0.7.0.1
  */

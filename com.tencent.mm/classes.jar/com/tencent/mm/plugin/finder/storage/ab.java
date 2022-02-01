@@ -1,197 +1,383 @@
 package com.tencent.mm.plugin.finder.storage;
 
-import android.content.ContentValues;
+import android.content.Context;
+import android.content.res.Resources;
+import android.database.Cursor;
+import android.text.SpannableString;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ce;
-import com.tencent.mm.model.cl;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.api.g.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.n.f;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.cgi.bu;
+import com.tencent.mm.plugin.finder.storage.data.g;
+import com.tencent.mm.plugin.finder.view.o;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.protocal.protobuf.FinderContact;
+import com.tencent.mm.protocal.protobuf.bkh;
+import com.tencent.mm.protocal.protobuf.cyc;
+import com.tencent.mm.protocal.protobuf.cyd;
+import com.tencent.mm.protocal.protobuf.kn;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 import kotlin.g.b.p;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderMsgStrangerContactStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/autogen/table/BaseFinderContact;", "storage", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getStorage", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "getContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "username", "", "insertContact", "", "contact", "removeCacheFromWx", "", "replaceContact", "", "ct", "isUpdateTime", "updateContact", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderNotSeeHimListConfig;", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig;", "()V", "canAddList", "", "getCache", "Lcom/tencent/mm/plugin/finder/storage/data/FinderContactPage;", "getEmptyTips", "", "getInitData", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "getItemData", "netScene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "getLastBuff", "Lcom/tencent/mm/protobuf/ByteString;", "getNetScene", "lastBuff", "getSubTitle", "fromPrivacySelect", "getSubTitleStr", "getTips", "getTitleStrId", "", "needLoadMore", "onAddUserList", "nameList", "", "", "onItemDelete", "contact", "callBack", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig$OnItemDelCallBack;", "", "contacts", "onSearchBarClick", "", "context", "Landroid/content/Context;", "setContactFlag", "userName", "setFlag", "Companion", "plugin-finder_release"})
 public final class ab
-  extends MAutoStorage<ce>
+  implements aj
 {
-  private static final String[] INDEX_CREATE;
-  private static final String[] SQL_CREATE;
-  public static final a vEP;
-  private final ISQLiteDatabase vDi;
+  public static final a Amh;
   
   static
   {
-    AppMethodBeat.i(251823);
-    vEP = new a((byte)0);
-    INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS FinderMsgContactStorage_username_index ON FinderMsgContactStorage(username)" };
-    g.a locala = com.tencent.mm.plugin.finder.api.g.tsD;
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(com.tencent.mm.plugin.finder.api.g.access$getInfo$cp(), "FinderMsgContactStorage") };
-    AppMethodBeat.o(251823);
+    AppMethodBeat.i(232157);
+    Amh = new a((byte)0);
+    AppMethodBeat.o(232157);
   }
   
-  public ab(ISQLiteDatabase paramISQLiteDatabase)
+  private static void bz(String paramString, boolean paramBoolean)
   {
-    super(paramISQLiteDatabase, com.tencent.mm.plugin.finder.api.g.access$getInfo$cp(), "FinderMsgContactStorage", INDEX_CREATE);
-    AppMethodBeat.i(251822);
-    this.vDi = paramISQLiteDatabase;
-    AppMethodBeat.o(251822);
-  }
-  
-  private static void g(com.tencent.mm.plugin.finder.api.g paramg)
-  {
-    AppMethodBeat.i(251821);
-    Object localObject = com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-    p.g(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-    localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).aSN();
-    String str = ((PluginFinder)com.tencent.mm.kernel.g.ah(PluginFinder.class)).getSessionInfoStorage().avA(paramg.getUsername());
-    ((bv)localObject).ayf(paramg.getUsername());
-    ((bv)localObject).ayf(str);
-    AppMethodBeat.o(251821);
-  }
-  
-  public final boolean a(com.tencent.mm.plugin.finder.api.g paramg, boolean paramBoolean)
-  {
-    boolean bool = true;
-    AppMethodBeat.i(251819);
-    p.h(paramg, "ct");
-    if (paramBoolean) {
-      paramg.field_updateTime = cl.aWA();
-    }
-    ContentValues localContentValues;
-    if (asG(paramg.getUsername()) == null)
+    AppMethodBeat.i(232148);
+    com.tencent.mm.kernel.c.a locala = com.tencent.mm.kernel.h.ae(n.class);
+    p.j(locala, "MMKernel.service(IMessengerStorage::class.java)");
+    paramString = ((n)locala).bbL().RG(paramString);
+    if (paramString != null)
     {
-      p.h(paramg, "contact");
-      localContentValues = paramg.convertTo();
-      long l = this.vDi.insert("FinderContact", "", localContentValues);
-      Log.i("Finder.MsgContactStorage", "insert contact " + paramg + ' ' + l);
-      paramg.systemRowid = l;
-      if (l > 0L) {
-        paramBoolean = bool;
+      if (paramBoolean) {
+        paramString.axJ();
       }
-    }
-    for (;;)
-    {
-      if (paramBoolean)
+      for (;;)
       {
-        g(paramg);
-        doNotify("FinderContact", 4, paramg.getUsername());
+        locala = com.tencent.mm.kernel.h.ae(n.class);
+        p.j(locala, "MMKernel.service(IMessengerStorage::class.java)");
+        ((n)locala).bbL().c(paramString.getUsername(), paramString);
+        AppMethodBeat.o(232148);
+        return;
+        paramString.axK();
       }
-      AppMethodBeat.o(251819);
-      return paramBoolean;
-      paramBoolean = false;
-      continue;
-      p.h(paramg, "contact");
-      localContentValues = paramg.convertTo();
-      localContentValues.remove("rowid");
-      int i = this.vDi.update("FinderContact", localContentValues, "username=?", new String[] { paramg.field_username });
-      Log.i("Finder.MsgContactStorage", "updateContact " + paramg.cXL() + ' ' + i);
-      if (i > 0) {
-        g(paramg);
+    }
+    AppMethodBeat.o(232148);
+  }
+  
+  private static CharSequence qJ(boolean paramBoolean)
+  {
+    AppMethodBeat.i(232125);
+    Object localObject1 = MMApplicationContext.getContext();
+    String str = ((Context)localObject1).getString(b.j.finder_can_not_see_him_sns);
+    p.j(str, "context.getString(R.stri…nder_can_not_see_him_sns)");
+    Object localObject2 = ((Context)localObject1).getString(b.j.finder_like_feed_not_recommend, new Object[] { str });
+    p.j(localObject2, "context.getString(R.stri…_recommend, subTitleLink)");
+    localObject2 = new SpannableString((CharSequence)localObject2);
+    p.j(localObject1, "context");
+    ((SpannableString)localObject2).setSpan(new o(str, ((Context)localObject1).getResources().getColor(b.c.Link_80), ((Context)localObject1).getResources().getColor(b.c.transparent), false, false, (kotlin.g.a.b)new ab.b(paramBoolean, (Context)localObject1)), 0, str.length(), 17);
+    localObject1 = (CharSequence)localObject2;
+    AppMethodBeat.o(232125);
+    return localObject1;
+  }
+  
+  public final q a(FinderContact paramFinderContact, aj.a parama)
+  {
+    AppMethodBeat.i(232132);
+    p.k(paramFinderContact, "contact");
+    LinkedList localLinkedList = new LinkedList();
+    Log.d("FinderNotSeeHimListConfig", "deleted user:" + paramFinderContact.username);
+    paramFinderContact = paramFinderContact.username;
+    if (paramFinderContact != null) {
+      localLinkedList.add(paramFinderContact);
+    }
+    int i = com.tencent.mm.n.h.axc().getInt("MMBatchModContactTypeMaxNumForServer", 30);
+    paramFinderContact = com.tencent.mm.kernel.h.aHF();
+    p.j(paramFinderContact, "MMKernel.network()");
+    paramFinderContact.aGY().a(3990, (i)new e(parama));
+    paramFinderContact = new com.tencent.mm.modelmulti.c((List)localLinkedList, 33554432, 2, i);
+    com.tencent.mm.kernel.h.aGY().b((q)paramFinderContact);
+    paramFinderContact = (q)paramFinderContact;
+    AppMethodBeat.o(232132);
+    return paramFinderContact;
+  }
+  
+  public final q d(com.tencent.mm.cd.b paramb)
+  {
+    return null;
+  }
+  
+  public final g dRA()
+  {
+    return null;
+  }
+  
+  public final LinkedList<FinderContact> dRB()
+  {
+    AppMethodBeat.i(232141);
+    LinkedList localLinkedList = new LinkedList();
+    Object localObject1 = com.tencent.mm.kernel.h.ae(n.class);
+    p.j(localObject1, "MMKernel.service(IMessengerStorage::class.java)");
+    localObject1 = ((n)localObject1).bbL().d(null, "", "@finder.block.his.liked.android", "", null);
+    Object localObject2 = new StringBuilder("count = ");
+    p.j(localObject1, "dataCursor");
+    Log.i("FinderNotSeeHimListConfig", ((Cursor)localObject1).getCount());
+    while (((Cursor)localObject1).moveToNext())
+    {
+      localObject2 = new as();
+      ((as)localObject2).convertFrom((Cursor)localObject1);
+      FinderContact localFinderContact = new FinderContact();
+      localFinderContact.username = ((as)localObject2).getUsername();
+      localLinkedList.add(localFinderContact);
+    }
+    AppMethodBeat.o(232141);
+    return localLinkedList;
+  }
+  
+  public final boolean dRC()
+  {
+    return false;
+  }
+  
+  public final CharSequence dRD()
+  {
+    AppMethodBeat.i(232153);
+    CharSequence localCharSequence = qJ(false);
+    AppMethodBeat.o(232153);
+    return localCharSequence;
+  }
+  
+  public final int dRw()
+  {
+    return b.j.finder_not_see_he_like_feed;
+  }
+  
+  public final CharSequence dRx()
+  {
+    AppMethodBeat.i(232119);
+    CharSequence localCharSequence = qJ(false);
+    AppMethodBeat.o(232119);
+    return localCharSequence;
+  }
+  
+  public final CharSequence dRy()
+  {
+    AppMethodBeat.i(232121);
+    CharSequence localCharSequence = qJ(true);
+    AppMethodBeat.o(232121);
+    return localCharSequence;
+  }
+  
+  public final boolean dRz()
+  {
+    return true;
+  }
+  
+  public final Set<q> eL(List<? extends FinderContact> paramList)
+  {
+    AppMethodBeat.i(232131);
+    p.k(paramList, "contacts");
+    LinkedList localLinkedList = new LinkedList();
+    paramList = ((Iterable)paramList).iterator();
+    Object localObject;
+    while (paramList.hasNext())
+    {
+      localObject = ((FinderContact)paramList.next()).username;
+      if (localObject != null) {
+        localLinkedList.add(localObject);
       }
-      paramBoolean = bool;
-      if (i <= 0) {
-        paramBoolean = false;
+    }
+    int k = com.tencent.mm.n.h.axc().getInt("MMBatchModContactTypeMaxNumForServer", 30);
+    paramList = com.tencent.mm.kernel.h.aHF();
+    p.j(paramList, "MMKernel.network()");
+    paramList.aGY().a(3990, (i)new d());
+    paramList = new HashSet();
+    paramList.clear();
+    int i = 0;
+    while (i < localLinkedList.size())
+    {
+      localObject = new LinkedList();
+      int j = 0;
+      while ((i < localLinkedList.size()) && (j < k))
+      {
+        ((LinkedList)localObject).add(localLinkedList.get(j));
+        i += 1;
+        j += 1;
       }
+      localObject = new com.tencent.mm.modelmulti.c((List)localLinkedList, 33554432, 2, k);
+      com.tencent.mm.kernel.h.aGY().b((q)localObject);
+      paramList.add(localObject);
+    }
+    paramList = (Set)paramList;
+    AppMethodBeat.o(232131);
+    return paramList;
+  }
+  
+  public final q eM(final List<String> paramList)
+  {
+    AppMethodBeat.i(232145);
+    p.k(paramList, "nameList");
+    LinkedList localLinkedList = new LinkedList();
+    Log.d("FinderNotSeeHimListConfig", "add user:" + paramList.size());
+    localLinkedList.addAll((Collection)paramList);
+    Object localObject = ((Iterable)localLinkedList).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      bz((String)((Iterator)localObject).next(), true);
+    }
+    localObject = com.tencent.mm.kernel.h.aHF();
+    p.j(localObject, "MMKernel.network()");
+    ((com.tencent.mm.kernel.c)localObject).aGY().a(3990, (i)new c(this, paramList));
+    int i = com.tencent.mm.n.h.axc().getInt("MMBatchModContactTypeMaxNumForServer", 30);
+    paramList = new com.tencent.mm.modelmulti.c((List)localLinkedList, 33554432, 1, i);
+    com.tencent.mm.kernel.h.aGY().b((q)paramList);
+    paramList = (q)paramList;
+    AppMethodBeat.o(232145);
+    return paramList;
+  }
+  
+  public final void fD(Context paramContext)
+  {
+    AppMethodBeat.i(232129);
+    p.k(paramContext, "context");
+    com.tencent.mm.plugin.finder.utils.a locala = com.tencent.mm.plugin.finder.utils.a.ACH;
+    com.tencent.mm.plugin.finder.utils.a.aG(paramContext, "@finder.block.his.liked.android");
+    AppMethodBeat.o(232129);
+  }
+  
+  public final com.tencent.mm.cd.b i(q paramq)
+  {
+    return null;
+  }
+  
+  public final LinkedList<FinderContact> j(q paramq)
+  {
+    AppMethodBeat.i(232136);
+    LinkedList localLinkedList = new LinkedList();
+    if (paramq == null)
+    {
+      paramq = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderGetTagContact");
+      AppMethodBeat.o(232136);
+      throw paramq;
+    }
+    paramq = ((bu)paramq).dot();
+    if (paramq != null)
+    {
+      paramq = ((Iterable)paramq).iterator();
+      while (paramq.hasNext())
+      {
+        FinderContact localFinderContact = ((bkh)paramq.next()).contact;
+        if (localFinderContact != null) {
+          localLinkedList.add(localFinderContact);
+        }
+      }
+    }
+    AppMethodBeat.o(232136);
+    return localLinkedList;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderNotSeeHimListConfig$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/storage/FinderNotSeeHimListConfig$onAddUserList$2", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+  public static final class c
+    implements i
+  {
+    c(List paramList) {}
+    
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+    {
+      AppMethodBeat.i(283578);
+      paramString = com.tencent.mm.kernel.h.aHF();
+      p.j(paramString, "MMKernel.network()");
+      paramString.aGY().b(3990, (i)this);
+      if ((paramq instanceof com.tencent.mm.modelmulti.c))
+      {
+        if ((paramInt1 == 0) && (paramInt2 == 0))
+        {
+          paramString = ((com.tencent.mm.modelmulti.c)paramq).bnd();
+          if (paramString != null)
+          {
+            paramString = paramString.RPN;
+            if (paramString != null)
+            {
+              paramString = ((Iterable)paramString).iterator();
+              while (paramString.hasNext())
+              {
+                paramq = ((cyd)paramString.next()).TGC.UserName;
+                p.j(paramq, "it.ModOperation.UserName");
+                ab.bA(paramq, true);
+              }
+              AppMethodBeat.o(283578);
+              return;
+            }
+          }
+          AppMethodBeat.o(283578);
+          return;
+        }
+        paramString = ((Iterable)paramList).iterator();
+        while (paramString.hasNext()) {
+          ab.bA((String)paramString.next(), false);
+        }
+      }
+      AppMethodBeat.o(283578);
     }
   }
   
-  /* Error */
-  public final com.tencent.mm.plugin.finder.api.g asG(String paramString)
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/storage/FinderNotSeeHimListConfig$onItemDelete$2", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+  public static final class d
+    implements i
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: ldc 248
-    //   4: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_1
-    //   8: ldc 249
-    //   10: invokestatic 92	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   13: new 184	java/lang/StringBuilder
-    //   16: dup
-    //   17: ldc 251
-    //   19: invokespecial 188	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   22: aload_1
-    //   23: invokestatic 256	com/tencent/mm/storagebase/h:Fl	(Ljava/lang/String;)Ljava/lang/String;
-    //   26: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: astore_1
-    //   33: aload_0
-    //   34: getfield 98	com/tencent/mm/plugin/finder/storage/ab:vDi	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   37: aload_1
-    //   38: aconst_null
-    //   39: iconst_2
-    //   40: invokeinterface 260 4 0
-    //   45: checkcast 262	java/io/Closeable
-    //   48: astore_3
-    //   49: aload_3
-    //   50: checkcast 264	android/database/Cursor
-    //   53: astore 4
-    //   55: aload 4
-    //   57: ifnull +45 -> 102
-    //   60: aload 4
-    //   62: invokeinterface 268 1 0
-    //   67: iconst_1
-    //   68: if_icmpne +64 -> 132
-    //   71: new 65	com/tencent/mm/plugin/finder/api/g
-    //   74: dup
-    //   75: invokespecial 269	com/tencent/mm/plugin/finder/api/g:<init>	()V
-    //   78: astore_1
-    //   79: aload_1
-    //   80: aload 4
-    //   82: invokevirtual 273	com/tencent/mm/plugin/finder/api/g:convertFrom	(Landroid/database/Cursor;)V
-    //   85: getstatic 279	kotlin/x:SXb	Lkotlin/x;
-    //   88: astore 4
-    //   90: aload_3
-    //   91: aconst_null
-    //   92: invokestatic 284	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   95: ldc 248
-    //   97: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   100: aload_1
-    //   101: areturn
-    //   102: aconst_null
-    //   103: astore_1
-    //   104: goto -19 -> 85
-    //   107: astore_2
-    //   108: ldc 248
-    //   110: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   113: aload_2
-    //   114: athrow
-    //   115: astore_1
-    //   116: aload_3
-    //   117: aload_2
-    //   118: invokestatic 284	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   121: ldc 248
-    //   123: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   126: aload_1
-    //   127: athrow
-    //   128: astore_1
-    //   129: goto -13 -> 116
-    //   132: aconst_null
-    //   133: astore_1
-    //   134: goto -49 -> 85
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	137	0	this	ab
-    //   0	137	1	paramString	String
-    //   1	1	2	localObject1	Object
-    //   107	11	2	localThrowable	java.lang.Throwable
-    //   48	69	3	localCloseable	java.io.Closeable
-    //   53	36	4	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   49	55	107	java/lang/Throwable
-    //   60	85	107	java/lang/Throwable
-    //   85	90	107	java/lang/Throwable
-    //   108	115	115	finally
-    //   49	55	128	finally
-    //   60	85	128	finally
-    //   85	90	128	finally
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+    {
+      AppMethodBeat.i(283724);
+      paramString = com.tencent.mm.kernel.h.aHF();
+      p.j(paramString, "MMKernel.network()");
+      paramString.aGY().b(3990, (i)this);
+      paramString = this.Aml;
+      if (paramString != null)
+      {
+        if ((paramInt1 == 0) && (paramInt2 == 0)) {}
+        for (boolean bool = true;; bool = false)
+        {
+          paramString.pX(bool);
+          AppMethodBeat.o(283724);
+          return;
+        }
+      }
+      AppMethodBeat.o(283724);
+    }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderMsgStrangerContactStorage$Companion;", "", "()V", "INDEX_CREATE", "", "", "getINDEX_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "SQL_CREATE", "kotlin.jvm.PlatformType", "getSQL_CREATE", "TABLE_NAME", "TAG", "plugin-finder_release"})
-  public static final class a {}
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/storage/FinderNotSeeHimListConfig$onItemDelete$4", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+  public static final class e
+    implements i
+  {
+    e(aj.a parama) {}
+    
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+    {
+      AppMethodBeat.i(281970);
+      paramString = com.tencent.mm.kernel.h.aHF();
+      p.j(paramString, "MMKernel.network()");
+      paramString.aGY().b(3990, (i)this);
+      paramString = this.Aml;
+      if (paramString != null)
+      {
+        if ((paramInt1 == 0) && (paramInt2 == 0)) {}
+        for (boolean bool = true;; bool = false)
+        {
+          paramString.pX(bool);
+          AppMethodBeat.o(281970);
+          return;
+        }
+      }
+      AppMethodBeat.o(281970);
+    }
+  }
 }
 
 

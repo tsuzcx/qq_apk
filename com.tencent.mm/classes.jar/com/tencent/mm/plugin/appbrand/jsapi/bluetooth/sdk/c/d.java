@@ -7,7 +7,7 @@ import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.ScanResultCompat;
-import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.f;
+import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.i;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.List;
@@ -19,66 +19,66 @@ import org.json.JSONObject;
 
 public final class d
 {
-  public String dGL;
-  public int dIX;
-  public SparseArray<byte[]> lNp;
-  public List<ParcelUuid> lNq;
-  public String lNr;
-  public Map<ParcelUuid, byte[]> lNs;
+  public String fzB;
   public String name;
+  public SparseArray<byte[]> oJD;
+  public List<ParcelUuid> oJE;
+  public String oJF;
+  public Map<ParcelUuid, byte[]> oJG;
+  public int rssi;
   
   public d(ScanResultCompat paramScanResultCompat)
   {
     AppMethodBeat.i(144591);
-    this.name = Util.nullAsNil(paramScanResultCompat.getDevice().getName());
-    this.dGL = Util.nullAsNil(paramScanResultCompat.getDevice().getAddress());
-    this.dIX = paramScanResultCompat.lOO;
-    f localf = paramScanResultCompat.lON;
-    if (localf != null)
+    this.name = Util.nullAsNil(paramScanResultCompat.bRf().getName());
+    this.fzB = Util.nullAsNil(paramScanResultCompat.bRf().getAddress());
+    this.rssi = paramScanResultCompat.oLi;
+    i locali = paramScanResultCompat.oLh;
+    if (locali != null)
     {
-      if (a.bFm().lMq) {}
-      for (paramScanResultCompat = localf.lOL;; paramScanResultCompat = localf.lOH)
+      if (a.bQQ().oIF) {}
+      for (paramScanResultCompat = locali.oLf;; paramScanResultCompat = locali.oLb)
       {
-        this.lNp = paramScanResultCompat;
-        this.lNq = localf.lOG;
-        this.lNr = Util.nullAsNil(localf.mDeviceName);
-        this.lNs = localf.lOI;
+        this.oJD = paramScanResultCompat;
+        this.oJE = locali.oLa;
+        this.oJF = Util.nullAsNil(locali.mDeviceName);
+        this.oJG = locali.oLc;
         AppMethodBeat.o(144591);
         return;
       }
     }
-    this.lNr = "";
+    this.oJF = "";
     AppMethodBeat.o(144591);
   }
   
   public d(String paramString1, String paramString2)
   {
     this.name = paramString1;
-    this.dGL = paramString2;
+    this.fzB = paramString2;
   }
   
-  public final JSONObject bEw()
+  public final JSONObject bPW()
   {
     AppMethodBeat.i(144592);
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("deviceId", this.dGL);
+    localJSONObject.put("deviceId", this.fzB);
     localJSONObject.put("name", this.name);
-    localJSONObject.put("RSSI", this.dIX);
+    localJSONObject.put("RSSI", this.rssi);
     Object localObject1 = new byte[0];
     Object localObject3 = new StringBuilder();
     Object localObject2 = localObject1;
-    if (this.lNp != null)
+    if (this.oJD != null)
     {
       localObject2 = localObject1;
-      if (this.lNp.size() >= 0)
+      if (this.oJD.size() >= 0)
       {
         int k = 0;
-        while (k < this.lNp.size())
+        while (k < this.oJD.size())
         {
-          int m = this.lNp.keyAt(k);
+          int m = this.oJD.keyAt(k);
           int i = (byte)(m & 0xFF);
           int j = (byte)(m >> 8 & 0xFF);
-          byte[] arrayOfByte = (byte[])this.lNp.valueAt(k);
+          byte[] arrayOfByte = (byte[])this.oJD.valueAt(k);
           localObject2 = new byte[localObject1.length + 2 + arrayOfByte.length];
           System.arraycopy(localObject1, 0, localObject2, 0, localObject1.length);
           m = localObject1.length;
@@ -93,23 +93,23 @@ public final class d
     ((StringBuilder)localObject3).append(new String(Base64.encode((byte[])localObject2, 2)));
     localJSONObject.put("advertisData", localObject3);
     localObject1 = new JSONArray();
-    if (this.lNq != null)
+    if (this.oJE != null)
     {
-      localObject2 = this.lNq.iterator();
+      localObject2 = this.oJE.iterator();
       while (((Iterator)localObject2).hasNext()) {
         ((JSONArray)localObject1).put(((ParcelUuid)((Iterator)localObject2).next()).getUuid().toString().toUpperCase());
       }
     }
     localJSONObject.put("advertisServiceUUIDs", localObject1);
-    localJSONObject.put("localName", this.lNr);
+    localJSONObject.put("localName", this.oJF);
     localObject1 = new JSONObject();
-    if ((this.lNs != null) && (this.lNs.size() > 0))
+    if ((this.oJG != null) && (this.oJG.size() > 0))
     {
-      localObject2 = this.lNs.keySet().iterator();
+      localObject2 = this.oJG.keySet().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (ParcelUuid)((Iterator)localObject2).next();
-        ((JSONObject)localObject1).put(((ParcelUuid)localObject3).getUuid().toString().toUpperCase(), new String(Base64.encode((byte[])this.lNs.get(localObject3), 2)));
+        ((JSONObject)localObject1).put(((ParcelUuid)localObject3).getUuid().toString().toUpperCase(), new String(Base64.encode((byte[])this.oJG.get(localObject3), 2)));
       }
     }
     localJSONObject.put("serviceData", localObject1);
@@ -119,7 +119,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.d
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.content.d;
+import androidx.h.a.a;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.FacebookCallback;
@@ -146,7 +146,7 @@ public class LikeActionController
     if (paramString != null) {
       localIntent.putExtras(paramString);
     }
-    d.W(FacebookSdk.getApplicationContext()).b(localIntent);
+    a.V(FacebookSdk.getApplicationContext()).c(localIntent);
     AppMethodBeat.o(8061);
   }
   
@@ -1641,7 +1641,7 @@ public class LikeActionController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.share.internal.LikeActionController
  * JD-Core Version:    0.7.0.1
  */

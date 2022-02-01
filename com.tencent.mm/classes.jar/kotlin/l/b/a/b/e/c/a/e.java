@@ -9,11 +9,11 @@ public abstract class e
   
   public abstract String getName();
   
-  public abstract String sG();
+  public abstract String qu();
   
   public final String toString()
   {
-    return sG();
+    return qu();
   }
   
   public static final class a
@@ -39,7 +39,7 @@ public abstract class e
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((!p.j(this.name, paramObject.name)) || (!p.j(this.desc, paramObject.desc))) {}
+          if ((!p.h(this.name, paramObject.name)) || (!p.h(this.desc, paramObject.desc))) {}
         }
       }
       else
@@ -78,7 +78,7 @@ public abstract class e
       }
     }
     
-    public final String sG()
+    public final String qu()
     {
       AppMethodBeat.i(59233);
       String str = this.name + ':' + this.desc;
@@ -110,7 +110,7 @@ public abstract class e
         if ((paramObject instanceof b))
         {
           paramObject = (b)paramObject;
-          if ((!p.j(this.name, paramObject.name)) || (!p.j(this.desc, paramObject.desc))) {}
+          if ((!p.h(this.name, paramObject.name)) || (!p.h(this.desc, paramObject.desc))) {}
         }
       }
       else
@@ -149,7 +149,7 @@ public abstract class e
       }
     }
     
-    public final String sG()
+    public final String qu()
     {
       AppMethodBeat.i(59237);
       String str = this.name + this.desc;
@@ -160,7 +160,7 @@ public abstract class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.e.c.a.e
  * JD-Core Version:    0.7.0.1
  */

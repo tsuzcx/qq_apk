@@ -10,18 +10,18 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class l
 {
-  public ConcurrentHashMap<f, Boolean> ctz;
+  public ConcurrentHashMap<f, Boolean> crE;
   private Handler mMainHandler;
   
   public l()
   {
     AppMethodBeat.i(140410);
-    this.ctz = new ConcurrentHashMap();
+    this.crE = new ConcurrentHashMap();
     this.mMainHandler = new Handler(Looper.getMainLooper());
     AppMethodBeat.o(140410);
   }
   
-  private static boolean LB()
+  private static boolean Or()
   {
     AppMethodBeat.i(140411);
     if (Looper.getMainLooper().getThread() == Thread.currentThread())
@@ -33,24 +33,24 @@ public final class l
     return false;
   }
   
-  final boolean Q(Class<? extends f> paramClass)
+  final boolean P(Class<? extends f> paramClass)
   {
     AppMethodBeat.i(140413);
-    if (!LB())
+    if (!Or())
     {
       Log.e("LuggagePageEventBus", "notifyListener on non-UI thread");
       AppMethodBeat.o(140413);
       return false;
     }
-    Iterator localIterator = this.ctz.keySet().iterator();
+    Iterator localIterator = this.crE.keySet().iterator();
     while (localIterator.hasNext())
     {
       f localf = (f)localIterator.next();
       if (paramClass.isInstance(localf))
       {
         boolean bool = localf.call();
-        if (((Boolean)this.ctz.get(localf)).booleanValue()) {
-          this.ctz.remove(localf);
+        if (((Boolean)this.crE.get(localf)).booleanValue()) {
+          this.crE.remove(localf);
         }
         if (bool)
         {
@@ -66,7 +66,7 @@ public final class l
   public final void a(f paramf)
   {
     AppMethodBeat.i(140412);
-    this.ctz.put(paramf, Boolean.TRUE);
+    this.crE.put(paramf, Boolean.TRUE);
     AppMethodBeat.o(140412);
   }
   
@@ -121,13 +121,13 @@ public final class l
       super();
     }
     
+    public abstract void NR();
+    
     public final boolean call()
     {
-      onReady();
+      NR();
       return false;
     }
-    
-    public abstract void onReady();
   }
   
   public static abstract class f

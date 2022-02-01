@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.expt.j;
 
 public abstract interface b
 {
-  public abstract void axE();
+  public abstract void aEW();
 }
 
 

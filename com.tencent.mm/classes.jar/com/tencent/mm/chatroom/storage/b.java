@@ -2,12 +2,12 @@ package com.tencent.mm.chatroom.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dps;
+import com.tencent.mm.protocal.protobuf.dzo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 
-public final class b
+public class b
   extends MAutoStorage<a>
 {
   public static final String[] INDEX_CREATE;
@@ -16,10 +16,10 @@ public final class b
   
   static
   {
-    AppMethodBeat.i(194053);
+    AppMethodBeat.i(186909);
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "GroupBindApp") };
     INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS GroupBindAppUserNameIndex ON GroupBindApp ( chatRoomName )" };
-    AppMethodBeat.o(194053);
+    AppMethodBeat.o(186909);
   }
   
   public b(ISQLiteDatabase paramISQLiteDatabase)
@@ -28,13 +28,13 @@ public final class b
     this.db = paramISQLiteDatabase;
   }
   
-  public final dps DA(String paramString)
+  public final dzo Kr(String paramString)
   {
-    AppMethodBeat.i(194052);
+    AppMethodBeat.i(186906);
     paramString = this.db.query("GroupBindApp", null, "chatRoomName =?", new String[] { paramString }, null, null, null);
     if (paramString == null)
     {
-      AppMethodBeat.o(194052);
+      AppMethodBeat.o(186906);
       return null;
     }
     try
@@ -48,9 +48,9 @@ public final class b
           Log.i("MicroMsg.GroupBindAppStorage", "BindAppData is null");
           return null;
         }
-        dps localdps = new dps();
-        localdps.parseFrom(locala.field_BindAppData);
-        return localdps;
+        dzo localdzo = new dzo();
+        localdzo.parseFrom(locala.field_BindAppData);
+        return localdzo;
       }
       paramString.close();
     }
@@ -65,15 +65,15 @@ public final class b
     finally
     {
       paramString.close();
-      AppMethodBeat.o(194052);
+      AppMethodBeat.o(186906);
     }
-    AppMethodBeat.o(194052);
+    AppMethodBeat.o(186906);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.chatroom.storage.b
  * JD-Core Version:    0.7.0.1
  */

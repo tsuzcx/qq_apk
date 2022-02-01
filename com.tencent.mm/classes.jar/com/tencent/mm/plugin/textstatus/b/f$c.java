@@ -1,23 +1,26 @@
 package com.tencent.mm.plugin.textstatus.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.textstatus.f.f.c;
+import com.tencent.mm.plugin.textstatus.g.e.c;
+import com.tencent.mm.plugin.textstatus.g.e.e;
+import com.tencent.mm.plugin.textstatus.g.e.f;
+import com.tencent.mm.storagebase.h.b;
 import kotlin.g.a.a;
 import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/textstatus/model/storage/TextStatusLikeStorage;", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/storagebase/SqliteDB;", "invoke"})
 final class f$c
   extends q
-  implements a<c>
+  implements a<com.tencent.mm.storagebase.h>
 {
-  public static final c FXL;
+  public static final c MAn;
   
   static
   {
-    AppMethodBeat.i(216076);
-    FXL = new c();
-    AppMethodBeat.o(216076);
+    AppMethodBeat.i(232919);
+    MAn = new c();
+    AppMethodBeat.o(232919);
   }
   
   f$c()
@@ -27,7 +30,7 @@ final class f$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.b.f.c
  * JD-Core Version:    0.7.0.1
  */

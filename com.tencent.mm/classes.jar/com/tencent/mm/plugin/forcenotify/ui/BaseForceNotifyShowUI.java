@@ -1,73 +1,73 @@
 package com.tencent.mm.plugin.forcenotify.ui;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.forcenotify.b.c;
+import com.tencent.mm.plugin.forcenotify.a.a;
+import com.tencent.mm.plugin.forcenotify.c.c;
+import com.tencent.mm.plugin.forcenotify.d.e;
+import com.tencent.mm.plugin.forcenotify.d.f;
+import com.tencent.mm.plugin.forcenotify.d.f.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import kotlin.a.j;
-import kotlin.g.b.p;
+import com.tencent.mm.ui.base.a;
 import kotlin.l;
 
-@com.tencent.mm.ui.base.a(3)
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/forcenotify/ui/BaseForceNotifyShowUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "username", "getUsername", "setUsername", "(Ljava/lang/String;)V", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-force-notify_release"})
+@a(3)
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/forcenotify/ui/BaseForceNotifyShowUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "notifyItem", "Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyItem;", "getNotifyItem", "()Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyItem;", "setNotifyItem", "(Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyItem;)V", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-force-notify_release"})
 public abstract class BaseForceNotifyShowUI
   extends MMActivity
 {
-  final String TAG = "MicroMsg.ForceNotifyShowUI";
-  String username;
+  e BEb;
+  private final String TAG = "MicroMsg.ForceNotifyShowUI";
+  
+  protected final String getTAG()
+  {
+    return this.TAG;
+  }
   
   public void onBackPressed()
   {
     super.onBackPressed();
     finish();
-    overridePendingTransition(0, 2130772130);
+    overridePendingTransition(0, a.a.push_down_out);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    overridePendingTransition(2130772132, 2130772124);
+    overridePendingTransition(a.a.push_up_in, a.a.pop_out);
     getWindow().addFlags(6815872);
     super.onCreate(paramBundle);
     fullScreenNoTitleBar(true);
     setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
-    this.username = ((String)j.f((Iterable)c.wLS.wLF));
-    if (TextUtils.isEmpty((CharSequence)this.username))
+    paramBundle = f.BDU;
+    if (f.a.eql().hasNext())
     {
-      this.username = getIntent().getStringExtra("userName");
-      Log.w(this.TAG, "fallback to get username! username=" + this.username);
+      paramBundle = f.BDU;
+      this.BEb = f.a.eql().eqk();
+      return;
     }
-    if (TextUtils.isEmpty((CharSequence)this.username))
-    {
-      Log.w(this.TAG, "fallback to get username! username=" + this.username);
-      this.username = getIntent().getStringExtra("userName");
-    }
-    if (TextUtils.isEmpty((CharSequence)this.username))
-    {
-      Log.e(this.TAG, "username is null");
-      this.username = "";
-      finish();
-    }
+    Log.e(this.TAG, "forceNotify dataList is empty");
+    finish();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    c.wLS.wLF.remove(this.username);
-    if (!c.wLS.wLF.isEmpty())
+    Object localObject = this.BEb;
+    if (localObject != null)
     {
-      c localc = c.wLS;
-      Object localObject = j.e((Iterable)localc.wLF);
-      p.g(localObject, "ForceNotifyService.getNotifyShowList().first()");
-      localc.axE((String)localObject);
-      Log.i(this.TAG, "continue to startActivity for username=" + (String)j.e((Iterable)c.wLS.wLF));
+      f.a locala = f.BDU;
+      f.a.eql().aHv(((e)localObject).BDR);
+    }
+    localObject = f.BDU;
+    if (f.a.eql().hasNext())
+    {
+      Log.i(this.TAG, "continue to showNotifyActivity");
+      c.BDQ.rN(true);
     }
     Log.i(this.TAG, "[onDestroy]");
   }
@@ -78,7 +78,7 @@ public abstract class BaseForceNotifyShowUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -87,7 +87,7 @@ public abstract class BaseForceNotifyShowUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(149194);
-      this.wLV.onBackPressed();
+      this.BEc.onBackPressed();
       AppMethodBeat.o(149194);
       return true;
     }
@@ -95,7 +95,7 @@ public abstract class BaseForceNotifyShowUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.ui.BaseForceNotifyShowUI
  * JD-Core Version:    0.7.0.1
  */

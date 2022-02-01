@@ -17,19 +17,19 @@ public final class f
   extends n
   implements ag
 {
-  private final aj TtS;
+  private final aj aaWM;
   
   public f(aj paramaj)
   {
     AppMethodBeat.i(58036);
-    this.TtS = paramaj;
+    this.aaWM = paramaj;
     AppMethodBeat.o(58036);
   }
   
   private static aj a(aj paramaj)
   {
     AppMethodBeat.i(58029);
-    aj localaj = paramaj.EG(false);
+    aj localaj = paramaj.Jn(false);
     if (!a.aH((ab)paramaj))
     {
       AppMethodBeat.o(58029);
@@ -43,18 +43,18 @@ public final class f
   private f c(g paramg)
   {
     AppMethodBeat.i(58030);
-    p.h(paramg, "newAnnotations");
-    paramg = new f(this.TtS.d(paramg));
+    p.k(paramg, "newAnnotations");
+    paramg = new f(this.aaWM.d(paramg));
     AppMethodBeat.o(58030);
     return paramg;
   }
   
-  public final aj EG(boolean paramBoolean)
+  public final aj Jn(boolean paramBoolean)
   {
     AppMethodBeat.i(58033);
     if (paramBoolean)
     {
-      localaj = this.TtS.EG(true);
+      localaj = this.aaWM.Jn(true);
       AppMethodBeat.o(58033);
       return localaj;
     }
@@ -66,8 +66,8 @@ public final class f
   public final ab Q(ab paramab)
   {
     AppMethodBeat.i(58028);
-    p.h(paramab, "replacement");
-    paramab = paramab.hLF();
+    p.k(paramab, "replacement");
+    paramab = paramab.iPX();
     if ((!bc.aE((ab)paramab)) && (!a.aH((ab)paramab)))
     {
       paramab = (ab)paramab;
@@ -82,7 +82,7 @@ public final class f
     }
     if ((paramab instanceof v))
     {
-      paramab = (ab)be.b(ac.a(a(((v)paramab).TNV), a(((v)paramab).TNW)), be.aJ((ab)paramab));
+      paramab = (ab)be.b(ac.a(a(((v)paramab).abqv), a(((v)paramab).abqw)), be.aJ((ab)paramab));
       AppMethodBeat.o(58028);
       return paramab;
     }
@@ -91,24 +91,24 @@ public final class f
     throw paramab;
   }
   
-  public final aj hDW()
+  public final aj iIq()
   {
-    return this.TtS;
+    return this.aaWM;
   }
   
-  public final boolean hDZ()
+  public final boolean iIt()
   {
     return true;
   }
   
-  public final boolean hEa()
+  public final boolean iIu()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.f.f
  * JD-Core Version:    0.7.0.1
  */

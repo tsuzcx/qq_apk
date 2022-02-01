@@ -9,26 +9,26 @@ class LiteAppDebugIPCCallbackData
   implements Parcelable
 {
   public static final Parcelable.Creator<LiteAppDebugIPCCallbackData> CREATOR;
-  public String cqU;
+  public String coI;
   
   static
   {
-    AppMethodBeat.i(198815);
+    AppMethodBeat.i(234070);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(198815);
+    AppMethodBeat.o(234070);
   }
   
   public LiteAppDebugIPCCallbackData()
   {
-    this.cqU = null;
+    this.coI = null;
   }
   
   public LiteAppDebugIPCCallbackData(Parcel paramParcel)
   {
-    AppMethodBeat.i(198813);
-    this.cqU = null;
-    this.cqU = paramParcel.readString();
-    AppMethodBeat.o(198813);
+    AppMethodBeat.i(234066);
+    this.coI = null;
+    this.coI = paramParcel.readString();
+    AppMethodBeat.o(234066);
   }
   
   public int describeContents()
@@ -38,9 +38,9 @@ class LiteAppDebugIPCCallbackData
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(198814);
-    paramParcel.writeString(this.cqU);
-    AppMethodBeat.o(198814);
+    AppMethodBeat.i(234068);
+    paramParcel.writeString(this.coI);
+    AppMethodBeat.o(234068);
   }
 }
 

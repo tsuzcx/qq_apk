@@ -5,19 +5,19 @@ import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/AppBrandParallelTaskReporter;", "", "()V", "ID", "", "KEY_DOWNLOAD_FAIL", "KEY_GET_DOWNLOAD_URL", "KEY_GET_LAUNCH", "KEY_HIT_DOWNLOAD_URL", "KEY_HIT_LAUNCH_AFTER_WAIT", "KEY_HIT_LAUNCH_WITHOUT_WAIT", "KEY_NO_CONTACT", "TAG", "", "report", "", "idKey", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/AppBrandParallelTaskReporter;", "", "()V", "ID", "", "KEY_DOWNLOAD_FAIL", "KEY_GET_DOWNLOAD_URL", "KEY_GET_LAUNCH", "KEY_HIT_DOWNLOAD_URL", "KEY_HIT_LAUNCH_AFTER_WAIT", "KEY_HIT_LAUNCH_WITHOUT_WAIT", "KEY_NO_CONTACT", "TAG", "", "report", "", "idKey", "plugin-appbrand-integration_release"})
 public final class b
 {
-  public static final b mYz;
+  public static final b pYY;
   
   static
   {
     AppMethodBeat.i(175194);
-    mYz = new b();
+    pYY = new b();
     AppMethodBeat.o(175194);
   }
   
-  public static final void pl(int paramInt)
+  public static final void rE(int paramInt)
   {
     AppMethodBeat.i(175193);
     Log.i("MicroMsg.AppBrandParallelTaskReporter", "report: key = [%d]", new Object[] { Integer.valueOf(paramInt) });
@@ -26,7 +26,7 @@ public final class b
       AppMethodBeat.o(175193);
       return;
     }
-    h.CyF.dN(1248, paramInt);
+    h.IzE.el(1248, paramInt);
     AppMethodBeat.o(175193);
   }
 }

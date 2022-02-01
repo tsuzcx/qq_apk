@@ -1,293 +1,168 @@
 package com.tencent.mm.plugin.emoji.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ce.e;
-import com.tencent.mm.ce.f;
-import com.tencent.mm.ce.f.a;
-import com.tencent.mm.emoji.b.j;
-import com.tencent.mm.emoji.b.n;
-import com.tencent.mm.emoji.e.a;
-import com.tencent.mm.protocal.protobuf.ait;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
-import com.tencent.mm.storage.emotion.EmojiInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONObject;
+import com.tencent.mm.ay.a.c.j;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executor;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
 public final class b
 {
-  public static void a(ait paramait, EmojiInfo paramEmojiInfo)
+  public final int uGA;
+  public final int uGB;
+  public final Executor uGC;
+  
+  public b(a parama)
   {
-    AppMethodBeat.i(104577);
-    if ((!Util.isNullOrNil(paramEmojiInfo.field_md5)) && (!paramEmojiInfo.field_md5.equals(paramait.Md5)))
+    this.uGA = parama.uGA;
+    this.uGB = parama.uGB;
+    this.uGC = parama.uGC;
+  }
+  
+  public static final class a
+  {
+    int uGA;
+    int uGB;
+    Executor uGC;
+  }
+  
+  public static final class b
+    extends com.tencent.e.b
+    implements j
+  {
+    private boolean isPaused;
+    private ReentrantLock kQp;
+    private Condition uGD;
+    
+    public b(int paramInt1, int paramInt2, BlockingQueue<Runnable> paramBlockingQueue)
     {
-      AppMethodBeat.o(104577);
-      return;
+      super(paramInt1, paramInt2, paramBlockingQueue);
+      AppMethodBeat.i(108747);
+      this.kQp = new ReentrantLock();
+      this.uGD = this.kQp.newCondition();
+      AppMethodBeat.o(108747);
     }
-    paramEmojiInfo.field_md5 = fX(paramait.Md5, paramEmojiInfo.field_md5);
-    paramEmojiInfo.field_cdnUrl = fX(paramait.Url, paramEmojiInfo.field_cdnUrl);
-    paramEmojiInfo.field_thumbUrl = fX(paramait.ThumbUrl, paramEmojiInfo.field_thumbUrl);
-    paramEmojiInfo.field_designerID = fX(paramait.Lsl, paramEmojiInfo.field_designerID);
-    paramEmojiInfo.field_encrypturl = fX(paramait.EncryptUrl, paramEmojiInfo.field_encrypturl);
-    paramEmojiInfo.field_aeskey = fX(paramait.AesKey, paramEmojiInfo.field_aeskey);
-    paramEmojiInfo.field_groupId = fX(paramait.ProductID, paramEmojiInfo.field_groupId);
-    paramEmojiInfo.field_externUrl = fX(paramait.ExternUrl, paramEmojiInfo.field_externUrl);
-    paramEmojiInfo.field_externMd5 = fX(paramait.ExternMd5, paramEmojiInfo.field_externMd5);
-    paramEmojiInfo.field_activityid = fX(paramait.ActivityID, paramEmojiInfo.field_activityid);
-    paramEmojiInfo.field_attachedText = fX(paramait.Lsm, paramEmojiInfo.field_attachedText);
-    paramEmojiInfo.field_attachTextColor = fX(paramait.Lsn, paramEmojiInfo.field_attachTextColor);
-    paramEmojiInfo.field_lensId = fX(paramait.Lso, paramEmojiInfo.field_lensId);
-    AppMethodBeat.o(104577);
-  }
-  
-  public static void a(ait paramait, EmojiInfo paramEmojiInfo, String paramString)
-  {
-    AppMethodBeat.i(199787);
-    a(paramait, paramEmojiInfo);
-    paramEmojiInfo.MOK = paramString;
-    AppMethodBeat.o(199787);
-  }
-  
-  public static void a(String paramString, JSONObject paramJSONObject, EmojiInfo paramEmojiInfo)
-  {
-    AppMethodBeat.i(199786);
-    try
+    
+    public final boolean adH()
     {
-      if (!Util.isNullOrNil(paramEmojiInfo.field_md5))
+      return this.isPaused;
+    }
+    
+    /* Error */
+    public final void beforeExecute(java.lang.Thread paramThread, Runnable paramRunnable)
+    {
+      // Byte code:
+      //   0: ldc 57
+      //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   5: aload_0
+      //   6: aload_1
+      //   7: aload_2
+      //   8: invokespecial 59	com/tencent/e/b:beforeExecute	(Ljava/lang/Thread;Ljava/lang/Runnable;)V
+      //   11: aload_0
+      //   12: getfield 36	com/tencent/mm/plugin/emoji/h/b$b:kQp	Ljava/util/concurrent/locks/ReentrantLock;
+      //   15: invokevirtual 62	java/util/concurrent/locks/ReentrantLock:lock	()V
+      //   18: aload_0
+      //   19: getfield 52	com/tencent/mm/plugin/emoji/h/b$b:isPaused	Z
+      //   22: ifeq +51 -> 73
+      //   25: aload_0
+      //   26: getfield 42	com/tencent/mm/plugin/emoji/h/b$b:uGD	Ljava/util/concurrent/locks/Condition;
+      //   29: invokeinterface 67 1 0
+      //   34: goto -16 -> 18
+      //   37: astore_2
+      //   38: aload_1
+      //   39: invokevirtual 72	java/lang/Thread:interrupt	()V
+      //   42: ldc 74
+      //   44: ldc 76
+      //   46: iconst_1
+      //   47: anewarray 78	java/lang/Object
+      //   50: dup
+      //   51: iconst_0
+      //   52: aload_2
+      //   53: invokevirtual 82	java/lang/Exception:toString	()Ljava/lang/String;
+      //   56: aastore
+      //   57: invokestatic 88	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   60: aload_0
+      //   61: getfield 36	com/tencent/mm/plugin/emoji/h/b$b:kQp	Ljava/util/concurrent/locks/ReentrantLock;
+      //   64: invokevirtual 91	java/util/concurrent/locks/ReentrantLock:unlock	()V
+      //   67: ldc 57
+      //   69: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   72: return
+      //   73: aload_0
+      //   74: getfield 36	com/tencent/mm/plugin/emoji/h/b$b:kQp	Ljava/util/concurrent/locks/ReentrantLock;
+      //   77: invokevirtual 91	java/util/concurrent/locks/ReentrantLock:unlock	()V
+      //   80: ldc 57
+      //   82: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   85: return
+      //   86: astore_1
+      //   87: aload_0
+      //   88: getfield 36	com/tencent/mm/plugin/emoji/h/b$b:kQp	Ljava/util/concurrent/locks/ReentrantLock;
+      //   91: invokevirtual 91	java/util/concurrent/locks/ReentrantLock:unlock	()V
+      //   94: ldc 57
+      //   96: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   99: aload_1
+      //   100: athrow
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	101	0	this	b
+      //   0	101	1	paramThread	java.lang.Thread
+      //   0	101	2	paramRunnable	Runnable
+      // Exception table:
+      //   from	to	target	type
+      //   18	34	37	java/lang/Exception
+      //   18	34	86	finally
+      //   38	60	86	finally
+    }
+    
+    public final void execute(Runnable paramRunnable)
+    {
+      AppMethodBeat.i(108751);
+      super.execute(paramRunnable);
+      AppMethodBeat.o(108751);
+    }
+    
+    public final boolean isShutdown()
+    {
+      AppMethodBeat.i(108752);
+      boolean bool = super.isShutdown();
+      AppMethodBeat.o(108752);
+      return bool;
+    }
+    
+    public final void pause()
+    {
+      AppMethodBeat.i(108749);
+      this.kQp.lock();
+      try
       {
-        boolean bool = paramEmojiInfo.field_md5.equals(paramJSONObject.getString("md5"));
-        if (!bool)
-        {
-          AppMethodBeat.o(199786);
-          return;
-        }
+        this.isPaused = true;
+        return;
       }
-      paramEmojiInfo.field_md5 = fX(paramJSONObject.optString("md5", ""), paramEmojiInfo.field_md5);
-      paramEmojiInfo.field_cdnUrl = fX(paramJSONObject.optString("productUrl", ""), paramEmojiInfo.field_cdnUrl);
-      paramEmojiInfo.field_thumbUrl = fX(paramJSONObject.optString("thumb", ""), paramEmojiInfo.field_thumbUrl);
-      paramEmojiInfo.field_encrypturl = fX(paramJSONObject.optString("encryptUrl", ""), paramEmojiInfo.field_encrypturl);
-      paramEmojiInfo.field_aeskey = fX(paramJSONObject.optString("aesKey", ""), paramEmojiInfo.field_aeskey);
-      paramEmojiInfo.field_groupId = fX(paramJSONObject.optString("productID", ""), paramEmojiInfo.field_groupId);
-      paramEmojiInfo.UuL = fX(paramJSONObject.optString("productName", ""), paramEmojiInfo.UuL);
-      paramEmojiInfo.field_catalog = EmojiInfo.Uup;
-      if ((com.tencent.matrix.trace.g.b.eP(paramEmojiInfo.field_cdnUrl)) && (com.tencent.matrix.trace.g.b.eP(paramEmojiInfo.field_aeskey))) {
-        paramEmojiInfo.field_cdnUrl = paramEmojiInfo.field_encrypturl;
-      }
-      AppMethodBeat.o(199786);
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      Log.printErrStackTrace(paramString, paramJSONObject, "convertEmojiInfo", new Object[0]);
-      AppMethodBeat.o(199786);
-    }
-  }
-  
-  public static String aTd()
-  {
-    AppMethodBeat.i(258530);
-    Object localObject = a.hdT;
-    localObject = a.awt();
-    AppMethodBeat.o(258530);
-    return localObject;
-  }
-  
-  public static boolean anh(String paramString)
-  {
-    AppMethodBeat.i(104580);
-    if ((!Util.isNullOrNil(paramString)) && (!Util.isEqual(paramString, "capture")) && (!Util.isEqual(paramString, EmojiGroupInfo.Uum)))
-    {
-      AppMethodBeat.o(104580);
-      return true;
-    }
-    AppMethodBeat.o(104580);
-    return false;
-  }
-  
-  public static boolean ani(String paramString)
-  {
-    AppMethodBeat.i(104583);
-    if ((!Util.isNullOrNil(paramString)) && (!Util.isEqual(paramString, "capture")))
-    {
-      AppMethodBeat.o(104583);
-      return true;
-    }
-    AppMethodBeat.o(104583);
-    return false;
-  }
-  
-  public static String anj(String paramString)
-  {
-    AppMethodBeat.i(199788);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(199788);
-      return null;
-    }
-    f.a locala = f.gxT().big(paramString);
-    if ((locala != null) && (Util.isEqual(locala.text, paramString)))
-    {
-      paramString = locala.key;
-      AppMethodBeat.o(199788);
-      return paramString;
-    }
-    if (e.gxR().containsKey(paramString))
-    {
-      AppMethodBeat.o(199788);
-      return paramString;
-    }
-    AppMethodBeat.o(199788);
-    return null;
-  }
-  
-  public static void b(bi parambi, EmojiInfo paramEmojiInfo)
-  {
-    int j = 1;
-    AppMethodBeat.i(162344);
-    paramEmojiInfo.field_md5 = fX(parambi.md5, paramEmojiInfo.field_md5);
-    paramEmojiInfo.field_svrid = fX(parambi.id, paramEmojiInfo.field_svrid);
-    paramEmojiInfo.field_type = parambi.OpC;
-    paramEmojiInfo.field_size = parambi.OpD;
-    paramEmojiInfo.field_groupId = fX(parambi.productId, paramEmojiInfo.field_groupId);
-    paramEmojiInfo.field_designerID = fX(parambi.OpH, paramEmojiInfo.field_designerID);
-    paramEmojiInfo.field_thumbUrl = fX(parambi.thumbUrl, paramEmojiInfo.field_thumbUrl);
-    paramEmojiInfo.field_cdnUrl = fX(parambi.pkK, paramEmojiInfo.field_cdnUrl);
-    paramEmojiInfo.field_encrypturl = fX(parambi.dKK, paramEmojiInfo.field_encrypturl);
-    paramEmojiInfo.field_width = parambi.width;
-    paramEmojiInfo.field_height = parambi.height;
-    paramEmojiInfo.field_externUrl = fX(parambi.OpI, paramEmojiInfo.field_externUrl);
-    paramEmojiInfo.field_externMd5 = fX(parambi.OpJ, paramEmojiInfo.field_externMd5);
-    paramEmojiInfo.field_activityid = fX(parambi.OpL, paramEmojiInfo.field_activityid);
-    paramEmojiInfo.field_tpurl = fX(parambi.iwN, paramEmojiInfo.field_tpurl);
-    paramEmojiInfo.field_tpauthkey = fX(parambi.iwT, paramEmojiInfo.field_tpauthkey);
-    int i;
-    if ((!Util.isNullOrNil(paramEmojiInfo.field_externUrl)) || (!Util.isNullOrNil(paramEmojiInfo.field_encrypturl)) || (!Util.isNullOrNil(paramEmojiInfo.field_cdnUrl)))
-    {
-      i = 1;
-      if (Util.isNullOrNil(parambi.iwN)) {
-        break label340;
-      }
-    }
-    for (;;)
-    {
-      if ((j == 0) || (i == 0)) {
-        paramEmojiInfo.field_aeskey = fX(parambi.aeskey, paramEmojiInfo.field_aeskey);
-      }
-      paramEmojiInfo.field_attachedText = fX(parambi.gXx, paramEmojiInfo.field_attachedText);
-      paramEmojiInfo.field_lensId = fX(parambi.rnS, paramEmojiInfo.field_lensId);
-      paramEmojiInfo.field_attachTextColor = fX(parambi.OpM, paramEmojiInfo.field_attachTextColor);
-      AppMethodBeat.o(162344);
-      return;
-      i = 0;
-      break;
-      label340:
-      j = 0;
-    }
-  }
-  
-  public static int bt(byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 4)) {
-      return EmojiInfo.Uul;
-    }
-    if ((paramArrayOfByte[1] == 80) && (paramArrayOfByte[2] == 78) && (paramArrayOfByte[3] == 71)) {
-      return EmojiInfo.Uuw;
-    }
-    if ((paramArrayOfByte[0] == 71) && (paramArrayOfByte[1] == 73) && (paramArrayOfByte[2] == 70)) {
-      return EmojiInfo.Uux;
-    }
-    if ((paramArrayOfByte[6] == 74) && (paramArrayOfByte[7] == 70) && (paramArrayOfByte[8] == 73) && (paramArrayOfByte[9] == 70)) {
-      return EmojiInfo.Uuy;
-    }
-    return EmojiInfo.Uul;
-  }
-  
-  public static String fX(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(104578);
-    if (Util.isNullOrNil(paramString1))
-    {
-      if (paramString2 == null)
+      finally
       {
-        AppMethodBeat.o(104578);
-        return "";
+        this.kQp.unlock();
+        AppMethodBeat.o(108749);
       }
-      AppMethodBeat.o(104578);
-      return paramString2;
     }
-    AppMethodBeat.o(104578);
-    return paramString1;
-  }
-  
-  public static boolean w(EmojiInfo paramEmojiInfo)
-  {
-    AppMethodBeat.i(104579);
-    if ((paramEmojiInfo != null) && (anh(paramEmojiInfo.field_groupId)))
+    
+    public final void remove(Object paramObject) {}
+    
+    public final void resume()
     {
-      AppMethodBeat.o(104579);
-      return true;
-    }
-    AppMethodBeat.o(104579);
-    return false;
-  }
-  
-  public static boolean x(EmojiInfo paramEmojiInfo)
-  {
-    AppMethodBeat.i(183923);
-    if (paramEmojiInfo.field_catalog == EmojiInfo.Uuv)
-    {
-      AppMethodBeat.o(183923);
-      return true;
-    }
-    Object localObject = j.auL().dT(true);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(183923);
-      return false;
-    }
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if (Util.isEqual(((EmojiInfo)((Iterator)localObject).next()).field_md5, paramEmojiInfo.field_md5))
+      AppMethodBeat.i(108750);
+      this.kQp.lock();
+      try
       {
-        AppMethodBeat.o(183923);
-        return true;
+        this.isPaused = false;
+        this.uGD.signalAll();
+        return;
+      }
+      finally
+      {
+        this.kQp.unlock();
+        AppMethodBeat.o(108750);
       }
     }
-    AppMethodBeat.o(183923);
-    return false;
-  }
-  
-  public static boolean y(EmojiInfo paramEmojiInfo)
-  {
-    AppMethodBeat.i(104581);
-    boolean bool = Util.isEqual(paramEmojiInfo.field_groupId, "capture");
-    AppMethodBeat.o(104581);
-    return bool;
-  }
-  
-  public static boolean z(EmojiInfo paramEmojiInfo)
-  {
-    AppMethodBeat.i(104582);
-    if (paramEmojiInfo == null)
-    {
-      AppMethodBeat.o(104582);
-      return false;
-    }
-    if (!n.avi())
-    {
-      AppMethodBeat.o(104582);
-      return false;
-    }
-    if ((y(paramEmojiInfo)) || ((paramEmojiInfo.field_activityid != null) && (paramEmojiInfo.field_activityid.startsWith("Selfie"))))
-    {
-      AppMethodBeat.o(104582);
-      return true;
-    }
-    AppMethodBeat.o(104582);
-    return false;
   }
 }
 

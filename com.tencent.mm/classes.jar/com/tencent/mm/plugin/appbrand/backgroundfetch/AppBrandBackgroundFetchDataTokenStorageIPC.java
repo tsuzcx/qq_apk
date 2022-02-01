@@ -5,29 +5,29 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.m;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class AppBrandBackgroundFetchDataTokenStorageIPC
   implements l
 {
-  public final AppBrandBackgroundFetchDataTokenParcel Wy(String paramString)
+  public final AppBrandBackgroundFetchDataTokenParcel aek(String paramString)
   {
     AppMethodBeat.i(44752);
-    paramString = (AppBrandBackgroundFetchDataTokenParcel)XIPCInvoker.a(MainProcessIPCService.dkO, new IPCString(paramString), a.class);
+    paramString = (AppBrandBackgroundFetchDataTokenParcel)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramString), a.class);
     AppMethodBeat.o(44752);
     return paramString;
   }
   
-  public final boolean cN(String paramString1, String paramString2)
+  public final boolean cW(String paramString1, String paramString2)
   {
     AppMethodBeat.i(44753);
-    paramString1 = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.dkO, new WxappParams(paramString1, paramString2), b.class);
+    paramString1 = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new WxappParams(paramString1, paramString2), b.class);
     if ((paramString1 != null) && (paramString1.value))
     {
       AppMethodBeat.o(44753);
@@ -82,7 +82,7 @@ public final class AppBrandBackgroundFetchDataTokenStorageIPC
   }
   
   static class a
-    implements k<IPCString, AppBrandBackgroundFetchDataTokenParcel>
+    implements m<IPCString, AppBrandBackgroundFetchDataTokenParcel>
   {
     private static AppBrandBackgroundFetchDataTokenParcel a(IPCString paramIPCString)
     {
@@ -95,7 +95,7 @@ public final class AppBrandBackgroundFetchDataTokenStorageIPC
       }
       try
       {
-        paramIPCString = ((l)g.af(l.class)).Wy(paramIPCString.value);
+        paramIPCString = ((l)h.ae(l.class)).aek(paramIPCString.value);
         AppMethodBeat.o(44744);
         return paramIPCString;
       }
@@ -109,7 +109,7 @@ public final class AppBrandBackgroundFetchDataTokenStorageIPC
   }
   
   static class b
-    implements k<AppBrandBackgroundFetchDataTokenStorageIPC.WxappParams, IPCBoolean>
+    implements m<AppBrandBackgroundFetchDataTokenStorageIPC.WxappParams, IPCBoolean>
   {
     private static IPCBoolean a(AppBrandBackgroundFetchDataTokenStorageIPC.WxappParams paramWxappParams)
     {
@@ -123,7 +123,7 @@ public final class AppBrandBackgroundFetchDataTokenStorageIPC
       }
       try
       {
-        paramWxappParams = new IPCBoolean(((l)g.af(l.class)).cN(paramWxappParams.username, paramWxappParams.token));
+        paramWxappParams = new IPCBoolean(((l)h.ae(l.class)).cW(paramWxappParams.username, paramWxappParams.token));
         AppMethodBeat.o(44746);
         return paramWxappParams;
       }

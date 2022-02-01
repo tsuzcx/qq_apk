@@ -1,5 +1,7 @@
 package com.tencent.midas.comm.log.internal;
 
+import android.os.Handler;
+import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.midas.comm.APLog;
 import com.tencent.midas.comm.APLogInfo;
@@ -18,13 +20,16 @@ public class APLogAppender
   private static final int AUTO_FLUSH_INTERVAL = 15000;
   private static final int BUFFER_BLOCK_SIZE = 153600;
   private static final int POSITION_INIT = 12;
+  private static APLogAppender instance = null;
   private static boolean stopAutoFlush = false;
   private byte[] EMPTY_BUFFER;
   private String FLAG_BEGIN;
   private String FLAG_END;
   private final String SPACE;
   private final byte[] _bytes;
-  private Thread autoFlushThread;
+  private Handler autoFlushHandler;
+  private Runnable autoFlushRunnable;
+  private HandlerThread autoFlushThread;
   private FileChannel fileChannel;
   private APLogCompressor mCompressor;
   private APLogEncryptor mEncryptor;
@@ -35,7 +40,7 @@ public class APLogAppender
   
   private APLogAppender()
   {
-    AppMethodBeat.i(193410);
+    AppMethodBeat.i(253985);
     this.mCompressor = null;
     this.mEncryptor = null;
     this.mWriter = null;
@@ -43,13 +48,44 @@ public class APLogAppender
     this.fileChannel = null;
     this.mappedByteBuffer = null;
     this.autoFlushThread = null;
+    this.autoFlushHandler = null;
+    this.autoFlushRunnable = new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(253980);
+        try
+        {
+          APLogAppender.this.flushAndWrite();
+          boolean bool = APLogAppender.stopAutoFlush;
+          if (bool)
+          {
+            AppMethodBeat.o(253980);
+            return;
+          }
+          if (APLogAppender.this.autoFlushHandler != null) {
+            APLogAppender.this.autoFlushHandler.postDelayed(APLogAppender.this.autoFlushRunnable, 15000L);
+          }
+          AppMethodBeat.o(253980);
+          return;
+        }
+        catch (Throwable localThrowable)
+        {
+          new StringBuilder("auto flush error: ").append(localThrowable.getMessage());
+          AppMethodBeat.o(253980);
+        }
+      }
+    };
     this.seq = 12L;
     this._bytes = new byte[0];
     this.SPACE = " ";
     this.EMPTY_BUFFER = new byte[153600];
     this.FLAG_BEGIN = "============mmap cache begin===========\r\n";
     this.FLAG_END = "============mmap cache end=============\r\n";
-    AppMethodBeat.o(193410);
+    this.autoFlushThread = new HandlerThread("LOG-FLUSH");
+    this.autoFlushThread.start();
+    this.autoFlushHandler = new Handler(this.autoFlushThread.getLooper());
+    AppMethodBeat.o(253985);
   }
   
   private void checkAndFlushBuffer()
@@ -59,7 +95,7 @@ public class APLogAppender
       MappedByteBuffer localMappedByteBuffer;
       try
       {
-        AppMethodBeat.i(193419);
+        AppMethodBeat.i(253997);
       }
       finally {}
       try
@@ -68,12 +104,12 @@ public class APLogAppender
         if (localMappedByteBuffer != null) {
           continue;
         }
-        AppMethodBeat.o(193419);
+        AppMethodBeat.o(253997);
       }
       catch (Throwable localThrowable)
       {
         String.format(Locale.CHINA, "check and flush buffer error: <%s>%s", new Object[] { localThrowable.getClass().getName(), localThrowable.getMessage() });
-        AppMethodBeat.o(193419);
+        AppMethodBeat.o(253997);
         continue;
       }
       return;
@@ -81,19 +117,19 @@ public class APLogAppender
       if (i <= 12)
       {
         this.seq = 12L;
-        AppMethodBeat.o(193419);
+        AppMethodBeat.o(253997);
       }
       else
       {
         flushBuffer(i - 12);
-        AppMethodBeat.o(193419);
+        AppMethodBeat.o(253997);
       }
     }
   }
   
   private void createBufferProcessor()
   {
-    AppMethodBeat.i(193414);
+    AppMethodBeat.i(253989);
     if ((APLog.getLogInfo() != null) && (APLog.getLogInfo().isCompressLog())) {
       this.mCompressor = APLogCompressor.create();
     }
@@ -101,15 +137,15 @@ public class APLogAppender
       this.mEncryptor = APLogEncryptor.create();
     }
     this.mWriter = APLogWriter.create();
-    AppMethodBeat.o(193414);
+    AppMethodBeat.o(253989);
   }
   
   private void flushBuffer(int paramInt)
   {
-    AppMethodBeat.i(193420);
+    AppMethodBeat.i(253998);
     if (this.mappedByteBuffer == null)
     {
-      AppMethodBeat.o(193420);
+      AppMethodBeat.o(253998);
       return;
     }
     int i = paramInt;
@@ -126,51 +162,59 @@ public class APLogAppender
     this.mappedByteBuffer.put(this.EMPTY_BUFFER, 12, i);
     this.mappedByteBuffer.putLong(0, 0L);
     resetPosAndSeq();
-    AppMethodBeat.o(193420);
+    AppMethodBeat.o(253998);
   }
   
   private void initMmap()
   {
-    AppMethodBeat.i(193413);
+    AppMethodBeat.i(253988);
     if (this.mappedByteBuffer == null)
     {
-      AppMethodBeat.o(193413);
+      AppMethodBeat.o(253988);
       return;
     }
     checkAndFlushBuffer();
     this.mappedByteBuffer.putLong(0, 12L);
-    this.mappedByteBuffer.putInt(8, 39);
+    this.mappedByteBuffer.putInt(8, 43);
     resetPosAndSeq();
-    AppMethodBeat.o(193413);
+    AppMethodBeat.o(253988);
   }
   
   public static APLogAppender open()
   {
-    AppMethodBeat.i(193411);
+    AppMethodBeat.i(253986);
+    if (instance != null)
+    {
+      localAPLogAppender = instance;
+      AppMethodBeat.o(253986);
+      return localAPLogAppender;
+    }
     APLogAppender localAPLogAppender = new APLogAppender();
+    instance = localAPLogAppender;
     localAPLogAppender.createBufferProcessor();
-    localAPLogAppender.openMmapFile();
-    localAPLogAppender.initMmap();
-    localAPLogAppender.startAutoFlush();
-    AppMethodBeat.o(193411);
+    instance.openMmapFile();
+    instance.initMmap();
+    instance.startAutoFlush();
+    localAPLogAppender = instance;
+    AppMethodBeat.o(253986);
     return localAPLogAppender;
   }
   
   private void openMmapFile()
   {
-    AppMethodBeat.i(193412);
+    AppMethodBeat.i(253987);
     try
     {
       this.randomAccessFile = new RandomAccessFile(APLogFileInfo.mmapName, "rw");
       this.fileChannel = this.randomAccessFile.getChannel();
       this.mappedByteBuffer = this.fileChannel.map(FileChannel.MapMode.READ_WRITE, 0L, 153600L);
-      AppMethodBeat.o(193412);
+      AppMethodBeat.o(253987);
       return;
     }
     catch (Throwable localThrowable)
     {
       String.format(Locale.CHINA, "open log mmap file error: <%s>%s", new Object[] { localThrowable.getClass().getName(), localThrowable.getMessage() });
-      AppMethodBeat.o(193412);
+      AppMethodBeat.o(253987);
     }
   }
   
@@ -178,7 +222,7 @@ public class APLogAppender
   {
     try
     {
-      AppMethodBeat.i(193418);
+      AppMethodBeat.i(253993);
       try
       {
         localObject = (System.currentTimeMillis() + " " + paramString).getBytes();
@@ -190,7 +234,7 @@ public class APLogAppender
         if (this.mEncryptor != null) {
           localObject = this.mEncryptor.encrypt(paramString);
         }
-        AppMethodBeat.o(193418);
+        AppMethodBeat.o(253993);
       }
       catch (Throwable paramString)
       {
@@ -198,7 +242,7 @@ public class APLogAppender
         {
           String.format(Locale.CHINA, "process log error: <%s>%s", new Object[] { paramString.getClass().getName(), paramString.getMessage() });
           Object localObject = this._bytes;
-          AppMethodBeat.o(193418);
+          AppMethodBeat.o(253993);
         }
       }
       return localObject;
@@ -208,50 +252,33 @@ public class APLogAppender
   
   private void resetPosAndSeq()
   {
-    AppMethodBeat.i(193421);
+    AppMethodBeat.i(253999);
     if (this.mappedByteBuffer == null)
     {
-      AppMethodBeat.o(193421);
+      AppMethodBeat.o(253999);
       return;
     }
     this.seq = 12L;
     this.mappedByteBuffer.position(12);
-    AppMethodBeat.o(193421);
+    AppMethodBeat.o(253999);
   }
   
   private void startAutoFlush()
   {
-    AppMethodBeat.i(193415);
-    if ((APLog.getLogInfo() != null) && (APLog.getLogInfo().isAutoFlush()) && (this.autoFlushThread == null))
-    {
-      this.autoFlushThread = new Thread(new Runnable()
+    AppMethodBeat.i(253990);
+    if ((APLog.getLogInfo() != null) && (APLog.getLogInfo().isAutoFlush())) {
+      try
       {
-        public void run()
-        {
-          AppMethodBeat.i(193409);
-          try
-          {
-            for (;;)
-            {
-              Thread.sleep(15000L);
-              label11:
-              if (APLogAppender.stopAutoFlush) {
-                break;
-              }
-              APLogAppender.this.flushAndWrite();
-            }
-            AppMethodBeat.o(193409);
-            return;
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            break label11;
-          }
-        }
-      });
-      this.autoFlushThread.start();
+        this.autoFlushHandler.postDelayed(this.autoFlushRunnable, 15000L);
+        AppMethodBeat.o(253990);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        new StringBuilder("start auto flush error: ").append(localThrowable.getMessage());
+      }
     }
-    AppMethodBeat.o(193415);
+    AppMethodBeat.o(253990);
   }
   
   private void stopAutoFlush()
@@ -261,36 +288,36 @@ public class APLogAppender
   
   public void append(String paramString)
   {
-    AppMethodBeat.i(193416);
+    AppMethodBeat.i(253991);
     try
     {
       updateMmap(process(paramString));
-      AppMethodBeat.o(193416);
+      AppMethodBeat.o(253991);
       return;
     }
     catch (Throwable paramString)
     {
       String.format(Locale.CHINA, "append log error: <%s> %s", new Object[] { paramString.getClass().getName(), paramString.getMessage() });
-      AppMethodBeat.o(193416);
+      AppMethodBeat.o(253991);
     }
   }
   
   public void flushAndWrite()
   {
-    AppMethodBeat.i(193422);
+    AppMethodBeat.i(254000);
     try
     {
       checkAndFlushBuffer();
       if (this.mWriter != null) {
         this.mWriter.flush();
       }
-      AppMethodBeat.o(193422);
+      AppMethodBeat.o(254000);
       return;
     }
     catch (Throwable localThrowable)
     {
       String.format(Locale.CHINA, "flush buffer and write error: <%s>%s", new Object[] { localThrowable.getClass().getName(), localThrowable.getMessage() });
-      AppMethodBeat.o(193422);
+      AppMethodBeat.o(254000);
     }
   }
   
@@ -300,53 +327,53 @@ public class APLogAppender
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 312
-    //   5: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 347
+    //   5: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_1
     //   9: arraylength
     //   10: istore_2
     //   11: aload_0
-    //   12: getfield 71	com/tencent/midas/comm/log/internal/APLogAppender:seq	J
+    //   12: getfield 86	com/tencent/midas/comm/log/internal/APLogAppender:seq	J
     //   15: lstore_3
     //   16: iload_2
     //   17: i2l
     //   18: lload_3
     //   19: ladd
-    //   20: ldc2_w 313
+    //   20: ldc2_w 348
     //   23: lcmp
     //   24: ifle +7 -> 31
     //   27: aload_0
-    //   28: invokespecial 196	com/tencent/midas/comm/log/internal/APLogAppender:checkAndFlushBuffer	()V
+    //   28: invokespecial 234	com/tencent/midas/comm/log/internal/APLogAppender:checkAndFlushBuffer	()V
     //   31: aload_0
-    //   32: getfield 65	com/tencent/midas/comm/log/internal/APLogAppender:mappedByteBuffer	Ljava/nio/MappedByteBuffer;
+    //   32: getfield 73	com/tencent/midas/comm/log/internal/APLogAppender:mappedByteBuffer	Ljava/nio/MappedByteBuffer;
     //   35: ifnonnull +12 -> 47
-    //   38: ldc_w 312
-    //   41: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   38: ldc_w 347
+    //   41: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   44: aload_0
     //   45: monitorexit
     //   46: return
     //   47: aload_0
-    //   48: getfield 65	com/tencent/midas/comm/log/internal/APLogAppender:mappedByteBuffer	Ljava/nio/MappedByteBuffer;
+    //   48: getfield 73	com/tencent/midas/comm/log/internal/APLogAppender:mappedByteBuffer	Ljava/nio/MappedByteBuffer;
     //   51: aload_1
-    //   52: invokevirtual 316	java/nio/MappedByteBuffer:put	([B)Ljava/nio/ByteBuffer;
+    //   52: invokevirtual 351	java/nio/MappedByteBuffer:put	([B)Ljava/nio/ByteBuffer;
     //   55: pop
     //   56: aload_0
     //   57: aload_0
-    //   58: getfield 71	com/tencent/midas/comm/log/internal/APLogAppender:seq	J
+    //   58: getfield 86	com/tencent/midas/comm/log/internal/APLogAppender:seq	J
     //   61: aload_1
     //   62: arraylength
     //   63: i2l
     //   64: ladd
-    //   65: putfield 71	com/tencent/midas/comm/log/internal/APLogAppender:seq	J
+    //   65: putfield 86	com/tencent/midas/comm/log/internal/APLogAppender:seq	J
     //   68: aload_0
-    //   69: getfield 65	com/tencent/midas/comm/log/internal/APLogAppender:mappedByteBuffer	Ljava/nio/MappedByteBuffer;
+    //   69: getfield 73	com/tencent/midas/comm/log/internal/APLogAppender:mappedByteBuffer	Ljava/nio/MappedByteBuffer;
     //   72: iconst_0
     //   73: aload_0
-    //   74: getfield 71	com/tencent/midas/comm/log/internal/APLogAppender:seq	J
-    //   77: invokevirtual 189	java/nio/MappedByteBuffer:putLong	(IJ)Ljava/nio/ByteBuffer;
+    //   74: getfield 86	com/tencent/midas/comm/log/internal/APLogAppender:seq	J
+    //   77: invokevirtual 227	java/nio/MappedByteBuffer:putLong	(IJ)Ljava/nio/ByteBuffer;
     //   80: pop
-    //   81: ldc_w 312
-    //   84: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   81: ldc_w 347
+    //   84: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   87: goto -43 -> 44
     //   90: astore_1
     //   91: aload_0
@@ -369,7 +396,7 @@ public class APLogAppender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.comm.log.internal.APLogAppender
  * JD-Core Version:    0.7.0.1
  */

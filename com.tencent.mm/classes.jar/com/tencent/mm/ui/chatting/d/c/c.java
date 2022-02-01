@@ -1,37 +1,37 @@
 package com.tencent.mm.ui.chatting.d.c;
 
-import com.tencent.mm.ui.chatting.d.ag;
-import com.tencent.mm.ui.m;
+import com.tencent.mm.ui.chatting.d.ah;
+import com.tencent.mm.ui.n;
 
 public abstract class c
-  implements ag, com.tencent.mm.ui.chatting.d.b.a, m
+  implements ah, com.tencent.mm.ui.chatting.d.b.a, n
 {
-  protected com.tencent.mm.ui.chatting.e.a dom;
+  protected com.tencent.mm.ui.chatting.e.a fgR;
   
   public final void a(com.tencent.mm.ui.chatting.e.a parama)
   {
-    this.dom = parama;
+    this.fgR = parama;
   }
   
-  public void cFx() {}
+  public void hGU() {}
   
-  public void cFy() {}
+  public final void hGV() {}
   
-  public void gIk() {}
+  public final void hGW() {}
   
-  public final void gIl() {}
+  public void hGX() {}
   
-  public final void gIm() {}
+  public void hGY() {}
   
-  public final void gIn() {}
+  public final void hGZ() {}
   
-  public final void gIo() {}
+  public final void hHa() {}
   
-  public final void gOK() {}
+  public final void hNZ() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.c.c
  * JD-Core Version:    0.7.0.1
  */

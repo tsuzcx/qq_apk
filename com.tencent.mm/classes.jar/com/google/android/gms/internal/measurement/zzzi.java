@@ -40,7 +40,7 @@ public class zzzi
     AppMethodBeat.i(40354);
     try
     {
-      Class localClass = Class.forName("com.google.a.n");
+      Class localClass = Class.forName("com.google.b.al");
       AppMethodBeat.o(40354);
       return localClass;
     }

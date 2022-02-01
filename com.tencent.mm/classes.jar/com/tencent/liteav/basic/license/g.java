@@ -15,22 +15,22 @@ public class g
   
   public boolean a()
   {
-    AppMethodBeat.i(222179);
+    AppMethodBeat.i(241455);
     if (this.a != null) {
       LicenceCheck.a().a(null, this.a);
     }
     if (LicenceCheck.a().b() >= 2)
     {
-      AppMethodBeat.o(222179);
+      AppMethodBeat.o(241455);
       return true;
     }
-    AppMethodBeat.o(222179);
+    AppMethodBeat.o(241455);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.license.g
  * JD-Core Version:    0.7.0.1
  */

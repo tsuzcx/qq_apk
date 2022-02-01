@@ -5,13 +5,13 @@ import android.os.Looper;
 import com.tencent.kinda.gen.KCgi;
 import com.tencent.kinda.gen.KNetworkMockManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.t.a.a;
-import com.tencent.mm.plugin.t.a.c;
+import com.tencent.mm.plugin.ad.a.a;
+import com.tencent.mm.plugin.ad.a.c;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class WXPNetSceneBase
@@ -74,7 +74,7 @@ public class WXPNetSceneBase
   {
     AppMethodBeat.i(18702);
     this.onSceneEndCallback = parami;
-    c.eBv().sC(true);
+    c.fnc().vR(true);
     int i = dispatch(paramg, this.wxpCommReqResp, this);
     AppMethodBeat.o(18702);
     return i;
@@ -82,9 +82,9 @@ public class WXPNetSceneBase
   
   protected void finalize()
   {
-    AppMethodBeat.i(214454);
+    AppMethodBeat.i(264275);
     super.finalize();
-    AppMethodBeat.o(214454);
+    AppMethodBeat.o(264275);
   }
   
   public int getType()
@@ -134,7 +134,7 @@ public class WXPNetSceneBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.WXPNetSceneBase
  * JD-Core Version:    0.7.0.1
  */

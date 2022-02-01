@@ -10,7 +10,7 @@ import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/tavkit/composition/resource/TAVLoopImageResource;", "Lcom/tencent/tavkit/composition/resource/TAVResource;", "images", "", "Lcom/tencent/tavkit/ciimage/CIImage;", "interval", "Lcom/tencent/tav/coremedia/CMTime;", "duration", "(Ljava/util/List;Lcom/tencent/tav/coremedia/CMTime;Lcom/tencent/tav/coremedia/CMTime;)V", "ciImageHashMap", "Ljava/lang/ThreadLocal;", "Landroid/util/SparseArray;", "clone", "imageAtTime", "time", "renderSize", "Lcom/tencent/tav/coremedia/CGSize;", "tavkit_release"})
+@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/tavkit/composition/resource/TAVLoopImageResource;", "Lcom/tencent/tavkit/composition/resource/TAVResource;", "images", "", "Lcom/tencent/tavkit/ciimage/CIImage;", "interval", "Lcom/tencent/tav/coremedia/CMTime;", "duration", "(Ljava/util/List;Lcom/tencent/tav/coremedia/CMTime;Lcom/tencent/tav/coremedia/CMTime;)V", "ciImageHashMap", "Ljava/lang/ThreadLocal;", "Landroid/util/SparseArray;", "clone", "imageAtTime", "time", "renderSize", "Lcom/tencent/tav/coremedia/CGSize;", "tavkit_release"})
 public final class TAVLoopImageResource
   extends TAVResource
 {
@@ -20,40 +20,40 @@ public final class TAVLoopImageResource
   
   public TAVLoopImageResource(List<? extends CIImage> paramList, CMTime paramCMTime1, CMTime paramCMTime2)
   {
-    AppMethodBeat.i(197695);
+    AppMethodBeat.i(213274);
     this.images = paramList;
     this.interval = paramCMTime1;
     this.ciImageHashMap = new ThreadLocal();
     setDuration(paramCMTime2);
     setSourceTimeRange(new CMTimeRange(CMTime.CMTimeZero, paramCMTime2));
-    AppMethodBeat.o(197695);
+    AppMethodBeat.o(213274);
   }
   
   public final TAVResource clone()
   {
-    AppMethodBeat.i(197692);
+    AppMethodBeat.i(213261);
     Object localObject = this.images;
     CMTime localCMTime1 = this.interval;
     CMTime localCMTime2 = this.duration;
-    p.g(localCMTime2, "duration");
+    p.j(localCMTime2, "duration");
     localObject = (TAVResource)new TAVLoopImageResource((List)localObject, localCMTime1, localCMTime2);
-    AppMethodBeat.o(197692);
+    AppMethodBeat.o(213261);
     return localObject;
   }
   
   public final CIImage imageAtTime(CMTime paramCMTime, CGSize paramCGSize)
   {
-    AppMethodBeat.i(197694);
-    p.h(paramCMTime, "time");
-    p.h(paramCGSize, "renderSize");
+    AppMethodBeat.i(213270);
+    p.k(paramCMTime, "time");
+    p.k(paramCGSize, "renderSize");
     if (!this.sourceTimeRange.containsTime(paramCMTime))
     {
-      AppMethodBeat.o(197694);
+      AppMethodBeat.o(213270);
       return null;
     }
     if (this.images.isEmpty())
     {
-      AppMethodBeat.o(197694);
+      AppMethodBeat.o(213270);
       return null;
     }
     ThreadLocal localThreadLocal = this.ciImageHashMap;
@@ -70,18 +70,18 @@ public final class TAVLoopImageResource
     if (paramCMTime != null)
     {
       paramCMTime.reset();
-      AppMethodBeat.o(197694);
+      AppMethodBeat.o(213270);
       return paramCMTime;
     }
     paramCGSize.put(i, ((CIImage)this.images.get(i)).clone());
     paramCMTime = (CIImage)paramCGSize.get(i);
-    AppMethodBeat.o(197694);
+    AppMethodBeat.o(213270);
     return paramCMTime;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tavkit.composition.resource.TAVLoopImageResource
  * JD-Core Version:    0.7.0.1
  */

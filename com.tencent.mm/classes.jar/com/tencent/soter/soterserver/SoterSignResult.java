@@ -9,8 +9,8 @@ public class SoterSignResult
   implements Parcelable
 {
   public static final Parcelable.Creator<SoterSignResult> CREATOR;
-  public byte[] RQo;
-  public int RQp;
+  public byte[] ZsS;
+  public int ZsT;
   public int resultCode;
   
   static
@@ -26,8 +26,8 @@ public class SoterSignResult
   {
     AppMethodBeat.i(88752);
     this.resultCode = paramParcel.readInt();
-    this.RQo = paramParcel.createByteArray();
-    this.RQp = paramParcel.readInt();
+    this.ZsS = paramParcel.createByteArray();
+    this.ZsT = paramParcel.readInt();
     AppMethodBeat.o(88752);
   }
   
@@ -40,14 +40,14 @@ public class SoterSignResult
   {
     AppMethodBeat.i(88753);
     paramParcel.writeInt(this.resultCode);
-    paramParcel.writeByteArray(this.RQo);
-    paramParcel.writeInt(this.RQp);
+    paramParcel.writeByteArray(this.ZsS);
+    paramParcel.writeInt(this.ZsT);
     AppMethodBeat.o(88753);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.soter.soterserver.SoterSignResult
  * JD-Core Version:    0.7.0.1
  */

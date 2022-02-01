@@ -1,10 +1,12 @@
 package com.tencent.mm.sdk.storage;
 
 import android.os.Looper;
-import com.tencent.f.j.a;
+import com.tencent.e.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.storage.observer.StorageObserverOwner;
 
 public abstract class MStorageEx
+  extends ObservableStorage<Object>
   implements IStorageEx
 {
   public static final int EVENT_CREATE = 1;
@@ -14,41 +16,41 @@ public abstract class MStorageEx
   public static final int EVENT_QUERY = 7;
   public static final int EVENT_REPLACE = 4;
   public static final int EVENT_UPDATE = 3;
-  private final MStorageEvent<IOnStorageChange, Event> defaults = new MStorageEvent()
+  private final MStorageEvent<MStorageEx.IOnStorageChange, Event> defaults = new MStorageEvent()
   {
     protected void processEvent(MStorageEx.IOnStorageChange paramAnonymousIOnStorageChange, MStorageEx.Event paramAnonymousEvent)
     {
-      AppMethodBeat.i(230536);
+      AppMethodBeat.i(188858);
       if (!MStorageEx.this.shouldProcessEvent())
       {
-        AppMethodBeat.o(230536);
+        AppMethodBeat.o(188858);
         return;
       }
       MStorageEx.this.processEvent(paramAnonymousIOnStorageChange, paramAnonymousEvent);
-      AppMethodBeat.o(230536);
+      AppMethodBeat.o(188858);
     }
   };
   
-  private void processEvent(IOnStorageChange paramIOnStorageChange, Event paramEvent)
+  private void processEvent(MStorageEx.IOnStorageChange paramIOnStorageChange, Event paramEvent)
   {
     paramIOnStorageChange.onNotifyChange(paramEvent.event, paramEvent.mstorage, paramEvent.obj);
   }
   
-  public void add(IOnStorageChange paramIOnStorageChange)
+  public void add(MStorageEx.IOnStorageChange paramIOnStorageChange)
   {
     if (paramIOnStorageChange != null) {
       this.defaults.add(paramIOnStorageChange, Looper.getMainLooper());
     }
   }
   
-  public void add(IOnStorageChange paramIOnStorageChange, Looper paramLooper)
+  public void add(MStorageEx.IOnStorageChange paramIOnStorageChange, Looper paramLooper)
   {
     if (paramIOnStorageChange != null) {
       this.defaults.add(paramIOnStorageChange, paramLooper);
     }
   }
   
-  public void add(IOnStorageChange paramIOnStorageChange, a parama)
+  public void add(MStorageEx.IOnStorageChange paramIOnStorageChange, a parama)
   {
     if (paramIOnStorageChange != null) {
       this.defaults.add(paramIOnStorageChange, parama);
@@ -57,11 +59,21 @@ public abstract class MStorageEx
   
   public void doNotify(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
   {
-    this.defaults.event(new Event(paramInt, paramMStorageEx, paramObject));
+    paramMStorageEx = new Event(paramInt, paramMStorageEx, paramObject, null);
+    this.defaults.event(paramMStorageEx);
     this.defaults.doNotify();
+    getOwner().doNotify(paramMStorageEx);
   }
   
-  public void remove(IOnStorageChange paramIOnStorageChange)
+  public void doNotify(int paramInt, MStorageEx paramMStorageEx, Object paramObject1, Object paramObject2)
+  {
+    paramMStorageEx = new Event(paramInt, paramMStorageEx, paramObject1, paramObject2);
+    this.defaults.event(paramMStorageEx);
+    this.defaults.doNotify();
+    getOwner().doNotify(paramMStorageEx);
+  }
+  
+  public void remove(MStorageEx.IOnStorageChange paramIOnStorageChange)
   {
     if (paramIOnStorageChange != null) {
       this.defaults.remove(paramIOnStorageChange);
@@ -70,28 +82,25 @@ public abstract class MStorageEx
   
   protected abstract boolean shouldProcessEvent();
   
-  class Event
+  public class Event
   {
-    int event;
-    MStorageEx mstorage;
-    Object obj;
+    public int event;
+    public Object extraObj;
+    public MStorageEx mstorage;
+    public Object obj;
     
-    Event(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
+    Event(int paramInt, MStorageEx paramMStorageEx, Object paramObject1, Object paramObject2)
     {
       this.event = paramInt;
-      this.obj = paramObject;
+      this.obj = paramObject1;
       this.mstorage = paramMStorageEx;
+      this.extraObj = paramObject2;
     }
-  }
-  
-  public static abstract interface IOnStorageChange
-  {
-    public abstract void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sdk.storage.MStorageEx
  * JD-Core Version:    0.7.0.1
  */

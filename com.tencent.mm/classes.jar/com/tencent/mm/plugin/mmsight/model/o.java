@@ -1,218 +1,266 @@
 package com.tencent.mm.plugin.mmsight.model;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.d.a.a;
+import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.thread.ThreadPool;
 
-final class o
+public final class o
 {
-  boolean imC;
-  d.a.a imD;
-  final Object lock;
+  public boolean EZU = false;
+  public int Fai = 1;
+  public int Faj = -1;
+  public boolean Fak = false;
+  public boolean Fal = true;
+  public boolean Fam = false;
+  h.c Fan;
+  public int jth = 2;
+  public int laT = -1;
+  public VideoTransPara lgX;
+  public boolean lhV = false;
+  public int nrq = -1;
+  public boolean uTJ = true;
+  public int videoBitrate;
   
-  o()
+  public o() {}
+  
+  private o(int paramInt, VideoTransPara paramVideoTransPara)
   {
-    AppMethodBeat.i(89445);
-    this.lock = new byte[0];
-    this.imC = false;
-    AppMethodBeat.o(89445);
+    this.lgX = paramVideoTransPara;
+    this.jth = paramInt;
+    this.videoBitrate = paramVideoTransPara.videoBitrate;
+    this.laT = paramVideoTransPara.width;
   }
   
-  public final d.a.a B(final Context paramContext, int paramInt)
+  public static o a(int paramInt, VideoTransPara paramVideoTransPara)
   {
-    AppMethodBeat.i(89446);
-    if (paramContext == null)
+    AppMethodBeat.i(89447);
+    switch (paramInt)
     {
-      AppMethodBeat.o(89446);
+    default: 
+      AppMethodBeat.o(89447);
       return null;
+    case 1: 
+      paramVideoTransPara = e(paramVideoTransPara);
     }
-    long l1 = Util.nowMilliSecond();
-    final long l2 = Thread.currentThread().getId();
-    synchronized (this.lock)
+    for (;;)
     {
-      this.imC = false;
-      this.imD = null;
-      ThreadPool.post(new Runnable()
-      {
-        /* Error */
-        public final void run()
-        {
-          // Byte code:
-          //   0: ldc 40
-          //   2: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-          //   5: ldc 48
-          //   7: ldc 50
-          //   9: iconst_3
-          //   10: anewarray 4	java/lang/Object
-          //   13: dup
-          //   14: iconst_0
-          //   15: aload_0
-          //   16: getfield 26	com/tencent/mm/plugin/mmsight/model/o$1:zuG	J
-          //   19: invokestatic 56	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-          //   22: aastore
-          //   23: dup
-          //   24: iconst_1
-          //   25: invokestatic 62	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-          //   28: invokevirtual 66	java/lang/Thread:getId	()J
-          //   31: invokestatic 56	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-          //   34: aastore
-          //   35: dup
-          //   36: iconst_2
-          //   37: invokestatic 71	com/tencent/mm/sdk/platformtools/Util:nowMilliSecond	()J
-          //   40: aload_0
-          //   41: getfield 28	com/tencent/mm/plugin/mmsight/model/o$1:cBb	J
-          //   44: lsub
-          //   45: invokestatic 56	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-          //   48: aastore
-          //   49: invokestatic 76	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   52: aload_0
-          //   53: getfield 24	com/tencent/mm/plugin/mmsight/model/o$1:zuI	Lcom/tencent/mm/plugin/mmsight/model/o;
-          //   56: getfield 80	com/tencent/mm/plugin/mmsight/model/o:lock	Ljava/lang/Object;
-          //   59: astore_1
-          //   60: aload_1
-          //   61: monitorenter
-          //   62: aload_0
-          //   63: getfield 24	com/tencent/mm/plugin/mmsight/model/o$1:zuI	Lcom/tencent/mm/plugin/mmsight/model/o;
-          //   66: aload_0
-          //   67: getfield 30	com/tencent/mm/plugin/mmsight/model/o$1:val$context	Landroid/content/Context;
-          //   70: aload_0
-          //   71: getfield 32	com/tencent/mm/plugin/mmsight/model/o$1:zuH	I
-          //   74: invokestatic 86	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-          //   77: invokestatic 92	com/tencent/mm/compatible/deviceinfo/d:a	(Landroid/content/Context;ILandroid/os/Looper;)Lcom/tencent/mm/compatible/deviceinfo/d$a$a;
-          //   80: putfield 96	com/tencent/mm/plugin/mmsight/model/o:imD	Lcom/tencent/mm/compatible/deviceinfo/d$a$a;
-          //   83: aload_0
-          //   84: getfield 24	com/tencent/mm/plugin/mmsight/model/o$1:zuI	Lcom/tencent/mm/plugin/mmsight/model/o;
-          //   87: getfield 100	com/tencent/mm/plugin/mmsight/model/o:imC	Z
-          //   90: ifeq +70 -> 160
-          //   93: aload_0
-          //   94: getfield 24	com/tencent/mm/plugin/mmsight/model/o$1:zuI	Lcom/tencent/mm/plugin/mmsight/model/o;
-          //   97: getfield 96	com/tencent/mm/plugin/mmsight/model/o:imD	Lcom/tencent/mm/compatible/deviceinfo/d$a$a;
-          //   100: ifnull +60 -> 160
-          //   103: ldc 48
-          //   105: ldc 102
-          //   107: iconst_1
-          //   108: anewarray 4	java/lang/Object
-          //   111: dup
-          //   112: iconst_0
-          //   113: invokestatic 71	com/tencent/mm/sdk/platformtools/Util:nowMilliSecond	()J
-          //   116: aload_0
-          //   117: getfield 28	com/tencent/mm/plugin/mmsight/model/o$1:cBb	J
-          //   120: lsub
-          //   121: invokestatic 56	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-          //   124: aastore
-          //   125: invokestatic 105	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   128: aload_0
-          //   129: getfield 24	com/tencent/mm/plugin/mmsight/model/o$1:zuI	Lcom/tencent/mm/plugin/mmsight/model/o;
-          //   132: getfield 96	com/tencent/mm/plugin/mmsight/model/o:imD	Lcom/tencent/mm/compatible/deviceinfo/d$a$a;
-          //   135: getfield 111	com/tencent/mm/compatible/deviceinfo/d$a$a:gGr	Lcom/tencent/mm/compatible/deviceinfo/v;
-          //   138: astore_2
-          //   139: aload_2
-          //   140: aconst_null
-          //   141: invokevirtual 117	com/tencent/mm/compatible/deviceinfo/v:setPreviewCallback	(Landroid/hardware/Camera$PreviewCallback;)V
-          //   144: aload_2
-          //   145: invokevirtual 120	com/tencent/mm/compatible/deviceinfo/v:stopPreview	()V
-          //   148: aload_2
-          //   149: invokevirtual 123	com/tencent/mm/compatible/deviceinfo/v:release	()V
-          //   152: aload_0
-          //   153: getfield 24	com/tencent/mm/plugin/mmsight/model/o$1:zuI	Lcom/tencent/mm/plugin/mmsight/model/o;
-          //   156: aconst_null
-          //   157: putfield 96	com/tencent/mm/plugin/mmsight/model/o:imD	Lcom/tencent/mm/compatible/deviceinfo/d$a$a;
-          //   160: aload_0
-          //   161: getfield 24	com/tencent/mm/plugin/mmsight/model/o$1:zuI	Lcom/tencent/mm/plugin/mmsight/model/o;
-          //   164: getfield 80	com/tencent/mm/plugin/mmsight/model/o:lock	Ljava/lang/Object;
-          //   167: invokevirtual 126	java/lang/Object:notify	()V
-          //   170: aload_1
-          //   171: monitorexit
-          //   172: ldc 40
-          //   174: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   177: return
-          //   178: astore_2
-          //   179: ldc 48
-          //   181: ldc 131
-          //   183: iconst_1
-          //   184: anewarray 4	java/lang/Object
-          //   187: dup
-          //   188: iconst_0
-          //   189: aload_2
-          //   190: invokevirtual 135	java/lang/Exception:getMessage	()Ljava/lang/String;
-          //   193: aastore
-          //   194: invokestatic 105	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   197: aload_0
-          //   198: getfield 24	com/tencent/mm/plugin/mmsight/model/o$1:zuI	Lcom/tencent/mm/plugin/mmsight/model/o;
-          //   201: aconst_null
-          //   202: putfield 96	com/tencent/mm/plugin/mmsight/model/o:imD	Lcom/tencent/mm/compatible/deviceinfo/d$a$a;
-          //   205: goto -122 -> 83
-          //   208: astore_2
-          //   209: aload_1
-          //   210: monitorexit
-          //   211: ldc 40
-          //   213: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   216: aload_2
-          //   217: athrow
-          //   218: astore_2
-          //   219: ldc 48
-          //   221: ldc 137
-          //   223: iconst_1
-          //   224: anewarray 4	java/lang/Object
-          //   227: dup
-          //   228: iconst_0
-          //   229: aload_2
-          //   230: invokevirtual 135	java/lang/Exception:getMessage	()Ljava/lang/String;
-          //   233: aastore
-          //   234: invokestatic 105	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   237: goto -77 -> 160
-          // Local variable table:
-          //   start	length	slot	name	signature
-          //   0	240	0	this	1
-          //   59	151	1	localObject1	Object
-          //   138	11	2	localv	com.tencent.mm.compatible.deviceinfo.v
-          //   178	12	2	localException1	java.lang.Exception
-          //   208	9	2	localObject2	Object
-          //   218	12	2	localException2	java.lang.Exception
-          // Exception table:
-          //   from	to	target	type
-          //   62	83	178	java/lang/Exception
-          //   62	83	208	finally
-          //   83	128	208	finally
-          //   128	160	208	finally
-          //   160	172	208	finally
-          //   179	205	208	finally
-          //   209	211	208	finally
-          //   219	237	208	finally
-          //   128	160	218	java/lang/Exception
-        }
-      }, "SightCamera_openCamera");
-      try
-      {
-        this.lock.wait(30000L);
-        if ((this.imD != null) && (this.imD.gGr != null))
-        {
-          Log.i("MicroMsg.SightCamera.OpenCameraThread", "Open Camera Succ thread:%d Time:%d camera:%s", new Object[] { Long.valueOf(l2), Long.valueOf(Util.nowMilliSecond() - l1), this.imD.gGr });
-          paramContext = this.imD;
-          AppMethodBeat.o(89446);
-          return paramContext;
-        }
+      if (paramVideoTransPara != null) {
+        paramVideoTransPara.Faj = paramInt;
       }
-      catch (InterruptedException paramContext)
-      {
-        for (;;)
-        {
-          Log.e("MicroMsg.SightCamera.OpenCameraThread", "Lock wait failed e:%s", new Object[] { paramContext.getMessage() });
-        }
-      }
+      AppMethodBeat.o(89447);
+      return paramVideoTransPara;
+      paramVideoTransPara = f(paramVideoTransPara);
+      continue;
+      paramVideoTransPara = g(paramVideoTransPara);
+      continue;
+      paramVideoTransPara = h(paramVideoTransPara);
+      continue;
+      paramVideoTransPara = i(paramVideoTransPara);
+      continue;
+      paramVideoTransPara = j(paramVideoTransPara);
+      continue;
+      paramVideoTransPara = k(paramVideoTransPara);
+      continue;
+      paramVideoTransPara = l(paramVideoTransPara);
+      continue;
+      paramVideoTransPara = m(paramVideoTransPara);
+      continue;
+      paramVideoTransPara = n(paramVideoTransPara);
+      continue;
+      paramVideoTransPara = o(paramVideoTransPara);
+      continue;
+      paramVideoTransPara = p(paramVideoTransPara);
     }
-    this.imC = true;
-    Log.e("MicroMsg.SightCamera.OpenCameraThread", "Open Camera Timeout:%d", new Object[] { Long.valueOf(Util.nowMilliSecond() - l1) });
-    AppMethodBeat.o(89446);
-    return null;
+  }
+  
+  private static o e(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(89448);
+    Log.i("MicroMsg.RecoderParameter", "setToPresetConfig1");
+    paramVideoTransPara = new o(2, paramVideoTransPara);
+    paramVideoTransPara.Fak = false;
+    AppMethodBeat.o(89448);
+    return paramVideoTransPara;
+  }
+  
+  private o eTy()
+  {
+    this.laT = 1080;
+    if ((this.nrq > 0) && (this.laT > this.nrq)) {
+      this.laT = this.nrq;
+    }
+    return this;
+  }
+  
+  private static o f(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(89449);
+    Log.i("MicroMsg.RecoderParameter", "setToPresetConfig2");
+    paramVideoTransPara = new o(2, paramVideoTransPara);
+    paramVideoTransPara.Fak = false;
+    paramVideoTransPara = paramVideoTransPara.eTw().eTv();
+    AppMethodBeat.o(89449);
+    return paramVideoTransPara;
+  }
+  
+  private static o g(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(89450);
+    Log.i("MicroMsg.RecoderParameter", "setToPresetConfig3");
+    paramVideoTransPara = new o(1, paramVideoTransPara);
+    paramVideoTransPara.Fak = false;
+    AppMethodBeat.o(89450);
+    return paramVideoTransPara;
+  }
+  
+  private static o h(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(89451);
+    Log.i("MicroMsg.RecoderParameter", "setToPresetConfig4");
+    paramVideoTransPara = new o(1, paramVideoTransPara);
+    paramVideoTransPara.Fak = false;
+    paramVideoTransPara = paramVideoTransPara.eTw().eTv();
+    AppMethodBeat.o(89451);
+    return paramVideoTransPara;
+  }
+  
+  private static o i(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(89452);
+    Log.i("MicroMsg.RecoderParameter", "setToPresetConfig5");
+    paramVideoTransPara = new o(2, paramVideoTransPara);
+    paramVideoTransPara.Fak = true;
+    paramVideoTransPara.lhV = false;
+    paramVideoTransPara = paramVideoTransPara.eTv();
+    AppMethodBeat.o(89452);
+    return paramVideoTransPara;
+  }
+  
+  private static o j(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(89453);
+    Log.i("MicroMsg.RecoderParameter", "setToPresetConfig6");
+    paramVideoTransPara = new o(1, paramVideoTransPara);
+    paramVideoTransPara.Fak = true;
+    paramVideoTransPara = paramVideoTransPara.eTv();
+    AppMethodBeat.o(89453);
+    return paramVideoTransPara;
+  }
+  
+  private static o k(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(89454);
+    Log.i("MicroMsg.RecoderParameter", "setToPresetConfig7");
+    paramVideoTransPara = new o(2, paramVideoTransPara);
+    paramVideoTransPara.Fak = true;
+    paramVideoTransPara = paramVideoTransPara.eTx();
+    paramVideoTransPara.lhV = false;
+    AppMethodBeat.o(89454);
+    return paramVideoTransPara;
+  }
+  
+  private static o l(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(89455);
+    Log.i("MicroMsg.RecoderParameter", "setToPresetConfig8");
+    paramVideoTransPara = new o(2, paramVideoTransPara);
+    paramVideoTransPara.Fak = true;
+    paramVideoTransPara = paramVideoTransPara.eTx();
+    paramVideoTransPara.lhV = true;
+    AppMethodBeat.o(89455);
+    return paramVideoTransPara;
+  }
+  
+  private static o m(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(89456);
+    paramVideoTransPara = new o(1, paramVideoTransPara);
+    paramVideoTransPara.Fak = true;
+    paramVideoTransPara = paramVideoTransPara.eTx();
+    paramVideoTransPara.lhV = false;
+    AppMethodBeat.o(89456);
+    return paramVideoTransPara;
+  }
+  
+  private static o n(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(89457);
+    Log.i("MicroMsg.RecoderParameter", "setToPresetConfig10");
+    paramVideoTransPara = new o(1, paramVideoTransPara);
+    paramVideoTransPara.Fak = true;
+    paramVideoTransPara = paramVideoTransPara.eTx();
+    paramVideoTransPara.lhV = true;
+    AppMethodBeat.o(89457);
+    return paramVideoTransPara;
+  }
+  
+  private static o o(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(89458);
+    Log.i("MicroMsg.RecoderParameter", "setToPresetConfig10");
+    paramVideoTransPara = new o(2, paramVideoTransPara);
+    paramVideoTransPara.Fak = true;
+    paramVideoTransPara = paramVideoTransPara.eTx();
+    paramVideoTransPara.lhV = false;
+    paramVideoTransPara = paramVideoTransPara.eTw();
+    AppMethodBeat.o(89458);
+    return paramVideoTransPara;
+  }
+  
+  private static o p(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(89459);
+    Log.i("MicroMsg.RecoderParameter", "setToPresetConfig10");
+    paramVideoTransPara = new o(2, paramVideoTransPara);
+    paramVideoTransPara.Fak = true;
+    paramVideoTransPara = paramVideoTransPara.eTy();
+    paramVideoTransPara.lhV = false;
+    paramVideoTransPara = paramVideoTransPara.eTw();
+    AppMethodBeat.o(89459);
+    return paramVideoTransPara;
+  }
+  
+  public final o eTv()
+  {
+    this.laT = 720;
+    if ((this.nrq > 0) && (this.laT > this.nrq)) {
+      this.laT = this.nrq;
+    }
+    return this;
+  }
+  
+  public final o eTw()
+  {
+    this.videoBitrate = (this.lgX.videoBitrate * 2);
+    this.Fam = true;
+    return this;
+  }
+  
+  public final o eTx()
+  {
+    this.laT = (this.lgX.width * 2);
+    if ((this.nrq > 0) && (this.laT > this.nrq)) {
+      this.laT = this.nrq;
+    }
+    return this;
+  }
+  
+  public final boolean eTz()
+  {
+    return this.lgX.width < this.laT;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(89460);
+    String str = String.format("mediatype %s videoBitrate : %s isEnableLandscapeMode %s needRotateEachFrame %s isNeedRealtimeScale %s resolutionLimit %s videoParams %s", new Object[] { Integer.valueOf(this.jth), Integer.valueOf(this.videoBitrate), Boolean.valueOf(this.EZU), Boolean.valueOf(this.lhV), Boolean.valueOf(this.Fak), Integer.valueOf(this.laT), this.lgX });
+    AppMethodBeat.o(89460);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.o
  * JD-Core Version:    0.7.0.1
  */

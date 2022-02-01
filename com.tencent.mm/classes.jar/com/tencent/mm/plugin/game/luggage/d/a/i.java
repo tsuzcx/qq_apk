@@ -1,55 +1,36 @@
 package com.tencent.mm.plugin.game.luggage.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.downloader.model.d;
-import com.tencent.mm.plugin.downloader.model.f;
+import com.tencent.mm.f.a.pu;
 import com.tencent.mm.plugin.lite.jsapi.b;
 import com.tencent.mm.plugin.lite.jsapi.b.a;
+import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import org.json.JSONObject;
 
 public class i
   extends b
 {
-  public final void a(String paramString, JSONObject paramJSONObject)
+  public final void a(String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(186915);
-    long l = paramJSONObject.optLong("download_id");
-    if (l <= 0L)
+    AppMethodBeat.i(231994);
+    if (paramJSONObject == null)
     {
-      Log.e("LiteAppJsApiPauseDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
-      this.yEn.aCS("invalid_downloadid");
-      AppMethodBeat.o(186915);
+      this.Ega.aNa("invalid_params");
+      AppMethodBeat.o(231994);
       return;
     }
-    paramString = d.Cw(l);
-    if (paramString == null)
-    {
-      this.yEn.ecz();
-      AppMethodBeat.o(186915);
-      return;
-    }
-    int i = paramJSONObject.optInt("scene", 1000);
-    int j = paramJSONObject.optInt("uiarea");
-    int k = paramJSONObject.optInt("notice_id");
-    int m = paramJSONObject.optInt("ssid");
-    paramString.field_scene = i;
-    paramString.field_uiarea = j;
-    paramString.field_noticeId = k;
-    paramString.field_ssid = m;
-    paramString.field_downloadInWifi = false;
-    d.e(paramString);
-    if (f.cBv().Cp(l))
-    {
-      this.yEn.ecz();
-      AppMethodBeat.o(186915);
-      return;
-    }
-    this.yEn.aCS("fail");
-    AppMethodBeat.o(186915);
+    Log.i("LiteAppJsApiOpenGameCenter", "JsonData = %s", new Object[] { paramJSONObject.toString() });
+    paramString = new pu();
+    paramString.fOz.fOA = paramJSONObject;
+    paramString.fOz.context = MMApplicationContext.getContext();
+    EventCenter.instance.publish(paramString);
+    this.Ega.eLC();
+    AppMethodBeat.o(231994);
   }
   
-  public final int dTw()
+  public final int ewF()
   {
     return 1;
   }

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <Preference android:key="not_see_him" android:layout="@layout/b8j" android:summary="" android:title="@string/d3q" />
-    <PreferenceSmallCategory />
-    <Preference android:key="no_see_account" android:layout="@layout/b8j" android:summary="" android:title="@string/cgb" />
-</PreferenceScreen>

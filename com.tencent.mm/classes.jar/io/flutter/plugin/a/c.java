@@ -17,7 +17,7 @@ public abstract interface c
   
   public static abstract interface b
   {
-    public abstract void I(ByteBuffer paramByteBuffer);
+    public abstract void E(ByteBuffer paramByteBuffer);
   }
 }
 

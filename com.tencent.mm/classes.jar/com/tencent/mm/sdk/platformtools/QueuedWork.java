@@ -28,13 +28,13 @@ class QueuedWork
   
   public static boolean hasPendingWork()
   {
-    AppMethodBeat.i(215435);
+    AppMethodBeat.i(262810);
     if (!mPendingWorks.isEmpty())
     {
-      AppMethodBeat.o(215435);
+      AppMethodBeat.o(262810);
       return true;
     }
-    AppMethodBeat.o(215435);
+    AppMethodBeat.o(262810);
     return false;
   }
   
@@ -64,7 +64,7 @@ class QueuedWork
   
   public static void waitToFinish()
   {
-    AppMethodBeat.i(215434);
+    AppMethodBeat.i(262809);
     for (;;)
     {
       Runnable localRunnable = (Runnable)mPendingWorks.poll();
@@ -73,12 +73,12 @@ class QueuedWork
       }
       localRunnable.run();
     }
-    AppMethodBeat.o(215434);
+    AppMethodBeat.o(262809);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.QueuedWork
  * JD-Core Version:    0.7.0.1
  */

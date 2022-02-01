@@ -2,10 +2,10 @@ package com.qq.wx.voice.embed.recognizer;
 
 public final class d
 {
-  public String cgo;
-  public String cgp;
-  public String cgq;
-  public String cgr;
+  public String cip;
+  public String ciq;
+  public String cir;
+  public String cis;
   public String nickName;
   public String userName;
   
@@ -13,7 +13,7 @@ public final class d
   {
     this.userName = paramString1;
     this.nickName = paramString2;
-    this.cgo = paramString3;
+    this.cip = paramString3;
   }
 }
 

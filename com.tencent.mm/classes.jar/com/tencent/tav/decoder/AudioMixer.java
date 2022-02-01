@@ -30,7 +30,7 @@ public class AudioMixer
   
   static
   {
-    AppMethodBeat.i(218130);
+    AppMethodBeat.i(190407);
     if (!ResourceLoadUtil.isLoaded()) {
       try
       {
@@ -38,12 +38,12 @@ public class AudioMixer
         System.loadLibrary("tav");
         ResourceLoadUtil.setLoaded(true);
         System.out.println("loadlibrary : tav end");
-        AppMethodBeat.o(218130);
+        AppMethodBeat.o(190407);
         return;
       }
       catch (Throwable localThrowable) {}
     }
-    AppMethodBeat.o(218130);
+    AppMethodBeat.o(190407);
   }
   
   public AudioMixer()
@@ -53,7 +53,7 @@ public class AudioMixer
   
   public AudioMixer(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(218122);
+    AppMethodBeat.i(190334);
     this.srcSampleRate = 44100;
     this.srcNumChannels = 1;
     this.destAudioSampleRate = paramInt1;
@@ -65,7 +65,7 @@ public class AudioMixer
     {
       this.singleChannel = bool;
       this.pcmEncoding = 2;
-      AppMethodBeat.o(218122);
+      AppMethodBeat.o(190334);
       return;
       bool = false;
     }
@@ -73,12 +73,12 @@ public class AudioMixer
   
   private short[] downRemix(short[] paramArrayOfShort)
   {
-    AppMethodBeat.i(218124);
+    AppMethodBeat.i(190353);
     ShortBuffer localShortBuffer = ShortBuffer.wrap(paramArrayOfShort);
     paramArrayOfShort = ShortBuffer.allocate(paramArrayOfShort.length);
     downRemix(localShortBuffer, paramArrayOfShort);
     paramArrayOfShort = paramArrayOfShort.array();
-    AppMethodBeat.o(218124);
+    AppMethodBeat.o(190353);
     return paramArrayOfShort;
   }
   
@@ -113,16 +113,16 @@ public class AudioMixer
   {
     int k = 0;
     int j = 0;
-    AppMethodBeat.i(218123);
+    AppMethodBeat.i(190347);
     if (this.sampleFactor == 1.0F)
     {
-      AppMethodBeat.o(218123);
+      AppMethodBeat.o(190347);
       return paramArrayOfShort;
     }
     if (Float.compare(this.sampleFactor, 0.5F) == 0)
     {
       paramArrayOfShort = downRemix(paramArrayOfShort);
-      AppMethodBeat.o(218123);
+      AppMethodBeat.o(190347);
       return paramArrayOfShort;
     }
     int m = getResampleLength(paramInt);
@@ -157,7 +157,7 @@ public class AudioMixer
       arrayOfShort[(paramInt + 1)] = paramArrayOfShort[(j + 1)];
       paramInt += 2;
     }
-    AppMethodBeat.o(218123);
+    AppMethodBeat.o(190347);
     return arrayOfShort;
   }
   
@@ -165,7 +165,7 @@ public class AudioMixer
   
   public void downRemix(ShortBuffer paramShortBuffer1, ShortBuffer paramShortBuffer2)
   {
-    AppMethodBeat.i(218125);
+    AppMethodBeat.i(190358);
     int m = Math.min(paramShortBuffer1.remaining() / 2, paramShortBuffer2.remaining());
     int i = 0;
     while (i < m)
@@ -178,14 +178,14 @@ public class AudioMixer
       paramShortBuffer2.put((short)(j - 32768));
       i += 1;
     }
-    AppMethodBeat.o(218125);
+    AppMethodBeat.o(190358);
   }
   
   protected void finalize()
   {
-    AppMethodBeat.i(218128);
+    AppMethodBeat.i(190391);
     release();
-    AppMethodBeat.o(218128);
+    AppMethodBeat.o(190391);
   }
   
   public int getDestAudioChannelCount()
@@ -195,7 +195,7 @@ public class AudioMixer
   
   public ByteBuffer mergeSamples(ShortBuffer paramShortBuffer1, ShortBuffer paramShortBuffer2)
   {
-    AppMethodBeat.i(218127);
+    AppMethodBeat.i(190389);
     ShortBuffer localShortBuffer;
     short[] arrayOfShort;
     int m;
@@ -246,16 +246,16 @@ public class AudioMixer
     this.cachedMergedBuffer.position(0);
     this.cachedMergedBuffer.limit(paramShortBuffer1.limit() * 2);
     paramShortBuffer1 = this.cachedMergedBuffer;
-    AppMethodBeat.o(218127);
+    AppMethodBeat.o(190389);
     return paramShortBuffer1;
   }
   
   public ByteBuffer processBytes(ByteBuffer paramByteBuffer, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    AppMethodBeat.i(218126);
+    AppMethodBeat.i(190377);
     if ((paramFloat1 == 1.0F) && (paramFloat2 == 1.0F) && (paramFloat3 == 1.0F) && (this.sampleFactor == 1.0F))
     {
-      AppMethodBeat.o(218126);
+      AppMethodBeat.o(190377);
       return paramByteBuffer;
     }
     Object localObject2;
@@ -290,7 +290,7 @@ public class AudioMixer
       paramByteBuffer = this.emptyAudioBuffer;
       paramByteBuffer.position(0);
       paramByteBuffer.limit(i * 2);
-      AppMethodBeat.o(218126);
+      AppMethodBeat.o(190377);
       return paramByteBuffer;
       if (this.pcmEncoding == 3)
       {
@@ -310,7 +310,7 @@ public class AudioMixer
           j += 1;
         }
       }
-      AppMethodBeat.o(218126);
+      AppMethodBeat.o(190377);
       return paramByteBuffer;
       label290:
       if ((paramFloat1 == 1.0F) && (paramFloat2 == 1.0F))
@@ -345,10 +345,10 @@ public class AudioMixer
   
   public final void release()
   {
-    AppMethodBeat.i(218129);
+    AppMethodBeat.i(190396);
     nativeRelease(this.nativeContext);
     this.nativeContext = 0L;
-    AppMethodBeat.o(218129);
+    AppMethodBeat.o(190396);
   }
   
   public void setAudioInfo(int paramInt1, int paramInt2, int paramInt3)
@@ -369,7 +369,7 @@ public class AudioMixer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.decoder.AudioMixer
  * JD-Core Version:    0.7.0.1
  */

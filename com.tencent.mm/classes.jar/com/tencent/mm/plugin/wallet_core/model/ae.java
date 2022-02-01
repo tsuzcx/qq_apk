@@ -1,79 +1,80 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hi;
+import com.tencent.mm.f.c.ho;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
+import org.json.JSONObject;
 
 public final class ae
-  extends hi
+  extends ho
 {
   public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(70432);
+    AppMethodBeat.i(70430);
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[11];
-    localMAutoDBInfo.columns = new String[12];
+    localMAutoDBInfo.fields = new Field[6];
+    localMAutoDBInfo.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "mNativeUrl";
-    localMAutoDBInfo.colsMap.put("mNativeUrl", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" mNativeUrl TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "wallet_tpa_country";
+    localMAutoDBInfo.colsMap.put("wallet_tpa_country", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" wallet_tpa_country TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "mNativeUrl";
-    localMAutoDBInfo.columns[1] = "hbType";
-    localMAutoDBInfo.colsMap.put("hbType", "INTEGER");
-    localStringBuilder.append(" hbType INTEGER");
+    localMAutoDBInfo.primaryKey = "wallet_tpa_country";
+    localMAutoDBInfo.columns[1] = "wallet_type";
+    localMAutoDBInfo.colsMap.put("wallet_type", "INTEGER");
+    localStringBuilder.append(" wallet_type INTEGER");
     localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "receiveAmount";
-    localMAutoDBInfo.colsMap.put("receiveAmount", "LONG");
-    localStringBuilder.append(" receiveAmount LONG");
+    localMAutoDBInfo.columns[2] = "wallet_name";
+    localMAutoDBInfo.colsMap.put("wallet_name", "TEXT");
+    localStringBuilder.append(" wallet_name TEXT");
     localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[3] = "receiveTime";
-    localMAutoDBInfo.colsMap.put("receiveTime", "LONG");
-    localStringBuilder.append(" receiveTime LONG");
+    localMAutoDBInfo.columns[3] = "wallet_selected";
+    localMAutoDBInfo.colsMap.put("wallet_selected", "INTEGER");
+    localStringBuilder.append(" wallet_selected INTEGER");
     localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[4] = "receiveStatus";
-    localMAutoDBInfo.colsMap.put("receiveStatus", "INTEGER");
-    localStringBuilder.append(" receiveStatus INTEGER");
+    localMAutoDBInfo.columns[4] = "wallet_balance";
+    localMAutoDBInfo.colsMap.put("wallet_balance", "INTEGER");
+    localStringBuilder.append(" wallet_balance INTEGER");
     localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[5] = "hbStatus";
-    localMAutoDBInfo.colsMap.put("hbStatus", "INTEGER");
-    localStringBuilder.append(" hbStatus INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[6] = "sender";
-    localMAutoDBInfo.colsMap.put("sender", "TEXT");
-    localStringBuilder.append(" sender TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[7] = "exclusiveUsername";
-    localMAutoDBInfo.colsMap.put("exclusiveUsername", "TEXT");
-    localStringBuilder.append(" exclusiveUsername TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[8] = "sendId";
-    localMAutoDBInfo.colsMap.put("sendId", "TEXT");
-    localStringBuilder.append(" sendId TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[9] = "invalidtime";
-    localMAutoDBInfo.colsMap.put("invalidtime", "INTEGER");
-    localStringBuilder.append(" invalidtime INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[10] = "msgSvrId";
-    localMAutoDBInfo.colsMap.put("msgSvrId", "LONG");
-    localStringBuilder.append(" msgSvrId LONG");
-    localMAutoDBInfo.columns[11] = "rowid";
+    localMAutoDBInfo.columns[5] = "wallet_tpa_country_mask";
+    localMAutoDBInfo.colsMap.put("wallet_tpa_country_mask", "INTEGER");
+    localStringBuilder.append(" wallet_tpa_country_mask INTEGER");
+    localMAutoDBInfo.columns[6] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
     info = localMAutoDBInfo;
-    AppMethodBeat.o(70432);
+    AppMethodBeat.o(70430);
   }
   
-  public final void convertFrom(Cursor paramCursor)
+  public static ae bZ(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(70431);
-    super.convertFrom(paramCursor);
-    AppMethodBeat.o(70431);
+    AppMethodBeat.i(70429);
+    if (paramJSONObject == null)
+    {
+      Log.e("MicroMsg.WalletKindInfo", "json is null");
+      AppMethodBeat.o(70429);
+      return null;
+    }
+    ae localae = new ae();
+    localae.field_wallet_tpa_country = paramJSONObject.optString("wallet_tpa_country");
+    localae.field_wallet_name = paramJSONObject.optString("wallet_name");
+    localae.field_wallet_selected = paramJSONObject.optInt("wallet_selected");
+    localae.field_wallet_type = paramJSONObject.optInt("wallet_type");
+    localae.field_wallet_balance = paramJSONObject.optInt("wallet_balance");
+    localae.field_wallet_tpa_country_mask = paramJSONObject.optInt("wallet_tpa_country_mask");
+    if (Util.isNullOrNil(localae.field_wallet_tpa_country))
+    {
+      Log.e("MicroMsg.WalletKindInfo", "wallet_id is illegal");
+      AppMethodBeat.o(70429);
+      return null;
+    }
+    AppMethodBeat.o(70429);
+    return localae;
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
@@ -83,7 +84,7 @@ public final class ae
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.ae
  * JD-Core Version:    0.7.0.1
  */

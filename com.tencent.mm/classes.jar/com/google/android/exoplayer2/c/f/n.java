@@ -6,41 +6,41 @@ import java.util.Arrays;
 
 final class n
 {
-  private boolean bqX;
-  private final int brV;
-  boolean brW;
-  public int brX;
+  private boolean baz;
+  private final int bbx;
+  boolean bby;
+  public int bbz;
   public byte[] nalData;
   
   public n(int paramInt)
   {
     AppMethodBeat.i(92262);
-    this.brV = paramInt;
+    this.bbx = paramInt;
     this.nalData = new byte[''];
     this.nalData[2] = 1;
     AppMethodBeat.o(92262);
   }
   
-  public final void er(int paramInt)
+  public final void eG(int paramInt)
   {
     boolean bool2 = true;
     AppMethodBeat.i(92263);
-    if (!this.bqX)
+    if (!this.baz)
     {
       bool1 = true;
       a.checkState(bool1);
-      if (paramInt != this.brV) {
+      if (paramInt != this.bbx) {
         break label63;
       }
     }
     label63:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.bqX = bool1;
-      if (this.bqX)
+      this.baz = bool1;
+      if (this.baz)
       {
-        this.brX = 3;
-        this.brW = false;
+        this.bbz = 3;
+        this.bby = false;
       }
       AppMethodBeat.o(92263);
       return;
@@ -49,43 +49,43 @@ final class n
     }
   }
   
-  public final boolean es(int paramInt)
+  public final boolean eH(int paramInt)
   {
-    if (!this.bqX) {
+    if (!this.baz) {
       return false;
     }
-    this.brX -= paramInt;
-    this.bqX = false;
-    this.brW = true;
+    this.bbz -= paramInt;
+    this.baz = false;
+    this.bby = true;
     return true;
   }
   
   public final void f(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(92264);
-    if (!this.bqX)
+    if (!this.baz)
     {
       AppMethodBeat.o(92264);
       return;
     }
     paramInt2 -= paramInt1;
-    if (this.nalData.length < this.brX + paramInt2) {
-      this.nalData = Arrays.copyOf(this.nalData, (this.brX + paramInt2) * 2);
+    if (this.nalData.length < this.bbz + paramInt2) {
+      this.nalData = Arrays.copyOf(this.nalData, (this.bbz + paramInt2) * 2);
     }
-    System.arraycopy(paramArrayOfByte, paramInt1, this.nalData, this.brX, paramInt2);
-    this.brX = (paramInt2 + this.brX);
+    System.arraycopy(paramArrayOfByte, paramInt1, this.nalData, this.bbz, paramInt2);
+    this.bbz = (paramInt2 + this.bbz);
     AppMethodBeat.o(92264);
   }
   
   public final void reset()
   {
-    this.bqX = false;
-    this.brW = false;
+    this.baz = false;
+    this.bby = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.n
  * JD-Core Version:    0.7.0.1
  */

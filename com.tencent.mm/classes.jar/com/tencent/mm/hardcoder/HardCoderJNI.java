@@ -232,13 +232,13 @@ public class HardCoderJNI
         connect = true;
         if (connectStatusCallback != null)
         {
-          connectStatusCallback.em(connect);
+          connectStatusCallback.eK(connect);
           AppMethodBeat.o(62467);
           return;
           connect = false;
           if (connectStatusCallback != null)
           {
-            connectStatusCallback.em(connect);
+            connectStatusCallback.eK(connect);
             AppMethodBeat.o(62467);
             return;
             connect = true;
@@ -457,10 +457,10 @@ public class HardCoderJNI
     }
     a locala = hcPerfManager;
     a.c localc = new a.c();
-    localc.hla = System.currentTimeMillis();
-    localc.aHK = paramInt;
+    localc.jWJ = System.currentTimeMillis();
+    localc.aNf = paramInt;
     if (paramInt != 0) {}
-    for (boolean bool = locala.hkY.offer(localc);; bool = false)
+    for (boolean bool = locala.jWH.offer(localc);; bool = false)
     {
       d.d("Hardcoder.HCPerfManager", String.format("stop ret:%b, hashcode:%x", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt) }));
       d.i("Hardcoder.HardCoderJNI", String.format("stopPerformance:%d, ret:%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) }));
@@ -495,7 +495,7 @@ public class HardCoderJNI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.hardcoder.HardCoderJNI
  * JD-Core Version:    0.7.0.1
  */

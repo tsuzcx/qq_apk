@@ -3,7 +3,7 @@ package com.tencent.mm.sdk.platformtools;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"DEFAULT_SLOT_SECONDS", "", "now", "isExpire", "", "seconds", "", "millSeconds", "libcompatible_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"DEFAULT_SLOT_SECONDS", "", "now", "isExpire", "", "seconds", "", "millSeconds", "libcompatible_release"})
 public final class MMSlotKt
 {
   private static final long DEFAULT_SLOT_SECONDS = 900L;
@@ -30,9 +30,9 @@ public final class MMSlotKt
   
   public static final long now()
   {
-    AppMethodBeat.i(215495);
+    AppMethodBeat.i(262845);
     long l = System.currentTimeMillis();
-    AppMethodBeat.o(215495);
+    AppMethodBeat.o(262845);
     return l;
   }
 }

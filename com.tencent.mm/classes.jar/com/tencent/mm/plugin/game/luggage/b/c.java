@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.game.luggage.b;
 import android.content.Context;
 import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.aaz;
+import com.tencent.mm.f.a.ach;
 import com.tencent.mm.plugin.game.luggage.g.i;
 import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
@@ -56,10 +56,10 @@ public class c
             }
             if (!Util.isNullOrNil(paramContext))
             {
-              paramString = new aaz();
-              paramString.eif.dDe = 8;
-              paramString.eif.scene = 0;
-              paramString.eif.eil = paramContext;
+              paramString = new ach();
+              paramString.gcw.fvK = 8;
+              paramString.gcw.scene = 0;
+              paramString.gcw.gcC = paramContext;
               EventCenter.instance.publish(paramString);
               parama.i(null, null);
               AppMethodBeat.o(83053);
@@ -79,7 +79,7 @@ public class c
   
   public final void b(b<i>.a paramb) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 1;
   }

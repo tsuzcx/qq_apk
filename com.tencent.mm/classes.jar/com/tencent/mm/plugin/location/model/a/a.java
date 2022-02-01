@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.location.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.aka;
-import com.tencent.mm.protocal.protobuf.akb;
+import com.tencent.mm.protocal.protobuf.ald;
+import com.tencent.mm.protocal.protobuf.ale;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
@@ -18,21 +18,21 @@ public final class a
   implements m
 {
   private i callback;
-  private Runnable jkz;
+  private Runnable maA;
   public final d rr;
   
   public a(String paramString)
   {
     AppMethodBeat.i(55785);
     d.a locala = new d.a();
-    locala.iLN = new aka();
-    locala.iLO = new akb();
+    locala.lBU = new ald();
+    locala.lBV = new ale();
     locala.uri = "/cgi-bin/micromsg-bin/exittrackroom";
     locala.funcId = 491;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    ((aka)this.rr.iLK.iLR).Ltk = paramString;
+    this.rr = locala.bgN();
+    ((ald)d.b.b(this.rr.lBR)).SvI = paramString;
     Log.d("MicroMsg.NetSceneExitTrackRoom", "trackRoomId:".concat(String.valueOf(paramString)));
     AppMethodBeat.o(55785);
   }
@@ -58,8 +58,8 @@ public final class a
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    if (this.jkz != null) {
-      this.jkz.run();
+    if (this.maA != null) {
+      this.maA.run();
     }
     AppMethodBeat.o(55787);
   }

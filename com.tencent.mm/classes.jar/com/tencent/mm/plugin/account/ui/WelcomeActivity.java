@@ -3,34 +3,31 @@ package com.tencent.mm.plugin.account.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import androidx.appcompat.app.ActionBar;
 import com.facebook.AccessToken;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ka;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.b.a.ms;
 import com.tencent.mm.platformtools.x;
+import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.model.app.r;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread.IWaitWorkThread;
 import com.tencent.mm.ui.MMFragmentActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.n;
-import com.tencent.mm.ui.base.o.f;
-import com.tencent.mm.ui.base.o.g;
-import com.tencent.mm.ui.h.a.c;
-import com.tencent.mm.ui.h.a.c.a;
-import com.tencent.mm.ui.h.a.d.a;
-import com.tencent.mm.ui.h.a.d.b;
+import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.i.a.c;
+import com.tencent.mm.ui.i.a.c.a;
+import com.tencent.mm.ui.i.a.d.a;
+import com.tencent.mm.ui.i.a.d.b;
 import com.tencent.mm.ui.widget.a.e.b;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
 
@@ -38,29 +35,29 @@ import org.json.JSONObject;
 public class WelcomeActivity
   extends MMFragmentActivity
 {
-  private static final String[] kkg = { "public_profile" };
-  private com.tencent.mm.ui.h.a.d kkF;
-  private c kkV;
-  private ka kkY;
-  private x kmF;
-  private WelcomeSelectView ksB;
+  private static final String[] nbW = { "public_profile" };
+  private c ncL;
+  private ms ncO;
+  private com.tencent.mm.ui.i.a.d ncv;
+  private x nex;
+  private WelcomeSelectView nkk;
   
   public WelcomeActivity()
   {
     AppMethodBeat.i(128811);
-    this.kkY = new ka();
-    this.kmF = new x();
+    this.ncO = new ms();
+    this.nex = new x();
     AppMethodBeat.o(128811);
   }
   
-  private void bpX()
+  private void bAj()
   {
     AppMethodBeat.i(128814);
-    if (r.s(this, "com.facebook.katana"))
+    if (r.u(this, "com.facebook.katana"))
     {
-      this.kkF.a("name,picture.type(large)", new d.a()
+      this.ncv.a("name,picture.type(large)", new d.a()
       {
-        public final void A(JSONObject paramAnonymousJSONObject)
+        public final void C(JSONObject paramAnonymousJSONObject)
         {
           AppMethodBeat.i(128807);
           Log.i("MicroMsg.WelcomeActivity", "facebook-android get name and picture completed!");
@@ -70,16 +67,16 @@ public class WelcomeActivity
             Intent localIntent = new Intent(WelcomeActivity.this, RegByMobileRegAIOUI.class);
             Object localObject2 = null;
             Object localObject1 = localObject2;
-            if (WelcomeActivity.d(WelcomeActivity.this).QjM != null)
+            if (WelcomeActivity.d(WelcomeActivity.this).XGX != null)
             {
               localObject1 = localObject2;
-              if (WelcomeActivity.d(WelcomeActivity.this).QjM.getToken() != null) {
-                localObject1 = WelcomeActivity.d(WelcomeActivity.this).QjM.getToken().toString();
+              if (WelcomeActivity.d(WelcomeActivity.this).XGX.getToken() != null) {
+                localObject1 = WelcomeActivity.d(WelcomeActivity.this).XGX.getToken().toString();
               }
             }
             localIntent.putExtra("third_app_token", (String)localObject1);
             localIntent.putExtra("reg_3d_app_type", 1);
-            localIntent.putExtra("register_title", WelcomeActivity.this.getString(2131758186));
+            localIntent.putExtra("register_title", WelcomeActivity.this.getString(r.j.continue_register_title));
             if (paramAnonymousJSONObject.has("name"))
             {
               localIntent.putExtra("register_nick_name", paramAnonymousJSONObject.getString("name"));
@@ -91,20 +88,20 @@ public class WelcomeActivity
               localIntent.putExtra("register_avatar", ((JSONObject)paramAnonymousJSONObject.get("picture")).getJSONObject("data").getString("url"));
             }
             paramAnonymousJSONObject = WelcomeActivity.this;
-            localObject1 = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousJSONObject, ((com.tencent.mm.hellhoundlib.b.a)localObject1).axQ(), "com/tencent/mm/plugin/account/ui/WelcomeActivity$8", "onCompleted", "(Lorg/json/JSONObject;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousJSONObject.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).pG(0));
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousJSONObject, "com/tencent/mm/plugin/account/ui/WelcomeActivity$8", "onCompleted", "(Lorg/json/JSONObject;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            WelcomeActivity.a(WelcomeActivity.this).eTd = 1L;
-            WelcomeActivity.a(WelcomeActivity.this).ejA = 3L;
-            WelcomeActivity.a(WelcomeActivity.this).bfK();
+            localObject1 = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
+            com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousJSONObject, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/tencent/mm/plugin/account/ui/WelcomeActivity$8", "onCompleted", "(Lorg/json/JSONObject;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousJSONObject.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0));
+            com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousJSONObject, "com/tencent/mm/plugin/account/ui/WelcomeActivity$8", "onCompleted", "(Lorg/json/JSONObject;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            WelcomeActivity.a(WelcomeActivity.this).gVr = 1L;
+            WelcomeActivity.a(WelcomeActivity.this).gef = 3L;
+            WelcomeActivity.a(WelcomeActivity.this).bpa();
             AppMethodBeat.o(128807);
             return;
           }
           catch (Exception paramAnonymousJSONObject)
           {
             Log.printErrStackTrace("MicroMsg.WelcomeActivity", paramAnonymousJSONObject, "parse json error!", new Object[0]);
-            h.c(WelcomeActivity.this, "Retrieve Failed, Error Format!", "", true);
+            com.tencent.mm.ui.base.h.c(WelcomeActivity.this, "Retrieve Failed, Error Format!", "", true);
             AppMethodBeat.o(128807);
           }
         }
@@ -113,16 +110,16 @@ public class WelcomeActivity
         {
           AppMethodBeat.i(128808);
           Log.i("MicroMsg.WelcomeActivity", "facebook-android get name and picture error! %s", new Object[] { paramAnonymousString });
-          h.c(WelcomeActivity.this, WelcomeActivity.this.getString(2131759100), "", true);
+          com.tencent.mm.ui.base.h.c(WelcomeActivity.this, WelcomeActivity.this.getString(r.j.facebook_auth_failed), "", true);
           AppMethodBeat.o(128808);
         }
       });
       AppMethodBeat.o(128814);
       return;
     }
-    g.aAk().postAtFrontOfWorker(new MMHandlerThread.IWaitWorkThread()
+    com.tencent.mm.kernel.h.aHJ().postAtFrontOfWorker(new MMHandlerThread.IWaitWorkThread()
     {
-      JSONObject klc = null;
+      JSONObject ncS = null;
       
       public final boolean doInBackground()
       {
@@ -131,9 +128,9 @@ public class WelcomeActivity
         ((Bundle)localObject).putString("fields", "name,picture.type(large)");
         try
         {
-          localObject = WelcomeActivity.e(WelcomeActivity.this).r("me", (Bundle)localObject);
+          localObject = WelcomeActivity.e(WelcomeActivity.this).w("me", (Bundle)localObject);
           Log.i("MicroMsg.WelcomeActivity", "result json %s", new Object[] { localObject });
-          this.klc = new JSONObject((String)localObject);
+          this.ncS = new JSONObject((String)localObject);
           AppMethodBeat.o(128809);
           return true;
         }
@@ -142,7 +139,7 @@ public class WelcomeActivity
           for (;;)
           {
             Log.printErrStackTrace("MicroMsg.WelcomeActivity", localException, "get name and picture error!", new Object[0]);
-            h.c(WelcomeActivity.this, "Retrieve Failed, Error Format!", "", true);
+            com.tencent.mm.ui.base.h.c(WelcomeActivity.this, "Retrieve Failed, Error Format!", "", true);
           }
         }
       }
@@ -150,23 +147,23 @@ public class WelcomeActivity
       public final boolean onPostExecute()
       {
         AppMethodBeat.i(128810);
-        if (this.klc != null) {}
+        if (this.ncS != null) {}
         try
         {
           Object localObject = new Intent(WelcomeActivity.this, RegByMobileRegAIOUI.class);
-          ((Intent)localObject).putExtra("third_app_token", WelcomeActivity.e(WelcomeActivity.this).jZX.toString());
+          ((Intent)localObject).putExtra("third_app_token", WelcomeActivity.e(WelcomeActivity.this).mRq.toString());
           ((Intent)localObject).putExtra("reg_3d_app_type", 1);
-          ((Intent)localObject).putExtra("register_title", WelcomeActivity.this.getString(2131758186));
-          ((Intent)localObject).putExtra("register_nick_name", this.klc.getString("name"));
-          ((Intent)localObject).putExtra("register_avatar", ((JSONObject)this.klc.get("picture")).getJSONObject("data").getString("url"));
+          ((Intent)localObject).putExtra("register_title", WelcomeActivity.this.getString(r.j.continue_register_title));
+          ((Intent)localObject).putExtra("register_nick_name", this.ncS.getString("name"));
+          ((Intent)localObject).putExtra("register_avatar", ((JSONObject)this.ncS.get("picture")).getJSONObject("data").getString("url"));
           WelcomeActivity localWelcomeActivity = WelcomeActivity.this;
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(localWelcomeActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/account/ui/WelcomeActivity$9", "onPostExecute", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          localWelcomeActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(localWelcomeActivity, "com/tencent/mm/plugin/account/ui/WelcomeActivity$9", "onPostExecute", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          WelcomeActivity.a(WelcomeActivity.this).eTd = 1L;
-          WelcomeActivity.a(WelcomeActivity.this).ejA = 3L;
-          WelcomeActivity.a(WelcomeActivity.this).bfK();
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(localWelcomeActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/account/ui/WelcomeActivity$9", "onPostExecute", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          localWelcomeActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(localWelcomeActivity, "com/tencent/mm/plugin/account/ui/WelcomeActivity$9", "onPostExecute", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          WelcomeActivity.a(WelcomeActivity.this).gVr = 1L;
+          WelcomeActivity.a(WelcomeActivity.this).gef = 3L;
+          WelcomeActivity.a(WelcomeActivity.this).bpa();
           AppMethodBeat.o(128810);
           return true;
         }
@@ -175,7 +172,7 @@ public class WelcomeActivity
           for (;;)
           {
             Log.printErrStackTrace("MicroMsg.WelcomeActivity", localException, "parse json error!", new Object[0]);
-            h.c(WelcomeActivity.this, "Retrieve Failed, Error Format!", "", true);
+            com.tencent.mm.ui.base.h.c(WelcomeActivity.this, "Retrieve Failed, Error Format!", "", true);
           }
         }
       }
@@ -192,8 +189,8 @@ public class WelcomeActivity
     for (;;)
     {
       Log.i("MicroMsg.WelcomeActivity", "onActivityResult, requestCode:%d, resultCode:%d, data==null:%b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
-      if (this.kkF != null) {
-        this.kkF.j(paramInt1, paramInt2, paramIntent);
+      if (this.ncv != null) {
+        this.ncv.j(paramInt1, paramInt2, paramIntent);
       }
       AppMethodBeat.o(128817);
       return;
@@ -204,15 +201,15 @@ public class WelcomeActivity
   public void onBackPressed()
   {
     AppMethodBeat.i(128816);
-    Object localObject = com.tencent.mm.plugin.account.a.a.jRt.bZ(this);
+    Object localObject = com.tencent.mm.plugin.account.sdk.a.mIG.bX(this);
     ((Intent)localObject).addFlags(67108864);
     ((Intent)localObject).putExtra("can_finish", true);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/account/ui/WelcomeActivity", "goBack", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/WelcomeActivity", "goBack", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/account/ui/WelcomeActivity", "goBack", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/account/ui/WelcomeActivity", "goBack", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
-    com.tencent.mm.ui.base.b.kd(this);
+    com.tencent.mm.ui.base.b.lb(this);
     AppMethodBeat.o(128816);
   }
   
@@ -222,40 +219,26 @@ public class WelcomeActivity
     super.onCreate(paramBundle);
     getSupportActionBar().hide();
     getWindow().getDecorView().setSystemUiVisibility(1280);
-    this.ksB = new WelcomeSelectView(this);
-    setContentView(this.ksB);
-    this.ksB.bpY();
-    this.ksB.ksF.setOnClickListener(new WelcomeActivity.1(this));
-    this.ksB.ksD.setOnClickListener(new WelcomeActivity.4(this));
+    this.nkk = new WelcomeSelectView(this);
+    setContentView(this.nkk);
+    this.nkk.bAk();
+    this.nkk.nko.setOnClickListener(new WelcomeActivity.1(this));
+    this.nkk.nkm.setOnClickListener(new WelcomeActivity.4(this));
     paramBundle = new ArrayList();
-    final n localn = new n(this, 1001, 0);
-    localn.setTitle(2131764371);
-    paramBundle.add(localn);
-    localn = new n(this, 1002, 0);
-    if (com.tencent.mm.aw.b.bdD())
+    final p localp = new p(this, 1001, 0);
+    localp.setTitle(r.j.regby_mobile_title);
+    paramBundle.add(localp);
+    localp = new p(this, 1002, 0);
+    if (com.tencent.mm.az.b.bmX())
     {
-      localn.setTitle(2131764369);
-      paramBundle.add(localn);
+      localp.setTitle(r.j.regby_facebook_title);
+      paramBundle.add(localp);
     }
     if (paramBundle.size() > 1)
     {
       final com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e(this, 1, false);
-      locale.HLX = new o.f()
-      {
-        public final void onCreateMMMenu(com.tencent.mm.ui.base.m paramAnonymousm)
-        {
-          AppMethodBeat.i(128803);
-          if (paramAnonymousm.gKQ())
-          {
-            Iterator localIterator = paramBundle.iterator();
-            while (localIterator.hasNext()) {
-              paramAnonymousm.g((n)localIterator.next());
-            }
-          }
-          AppMethodBeat.o(128803);
-        }
-      };
-      locale.HLY = new o.g()
+      locale.ODT = new WelcomeActivity.5(this, paramBundle);
+      locale.ODU = new q.g()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
@@ -269,44 +252,44 @@ public class WelcomeActivity
             return;
             Object localObject = new Intent(WelcomeActivity.this, RegByMobileRegAIOUI.class);
             paramAnonymousMenuItem = WelcomeActivity.this;
-            localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/account/ui/WelcomeActivity$4", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, "com/tencent/mm/plugin/account/ui/WelcomeActivity$4", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+            com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/account/ui/WelcomeActivity$4", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+            com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousMenuItem, "com/tencent/mm/plugin/account/ui/WelcomeActivity$4", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             AppMethodBeat.o(128804);
             return;
-            WelcomeActivity.a(WelcomeActivity.this).eTd = 1L;
-            WelcomeActivity.a(WelcomeActivity.this).ejA = 2L;
-            WelcomeActivity.a(WelcomeActivity.this).bfK();
+            WelcomeActivity.a(WelcomeActivity.this).gVr = 1L;
+            WelcomeActivity.a(WelcomeActivity.this).gef = 2L;
+            WelcomeActivity.a(WelcomeActivity.this).bpa();
             WelcomeActivity.b(WelcomeActivity.this);
           }
         }
       };
-      locale.PGl = new e.b()
+      locale.XbB = new e.b()
       {
         public final void onDismiss() {}
       };
-      this.ksB.ksE.setOnClickListener(new View.OnClickListener()
+      this.nkk.nkn.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(128805);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/WelcomeActivity$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          if (com.tencent.mm.protocal.d.KyR)
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/ui/WelcomeActivity$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          if (com.tencent.mm.protocal.d.RAG)
           {
             WelcomeActivity.c(WelcomeActivity.this);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/WelcomeActivity$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(128805);
             return;
           }
-          locale.dGm();
-          if (paramBundle.contains(localn))
+          locale.eik();
+          if (paramBundle.contains(localp))
           {
-            WelcomeActivity.a(WelcomeActivity.this).eTd = 1L;
-            WelcomeActivity.a(WelcomeActivity.this).ejA = 1L;
-            WelcomeActivity.a(WelcomeActivity.this).bfK();
+            WelcomeActivity.a(WelcomeActivity.this).gVr = 1L;
+            WelcomeActivity.a(WelcomeActivity.this).gef = 1L;
+            WelcomeActivity.a(WelcomeActivity.this).bpa();
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/WelcomeActivity$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(128805);
@@ -315,7 +298,7 @@ public class WelcomeActivity
       AppMethodBeat.o(128812);
       return;
     }
-    this.ksB.ksE.setOnClickListener(new WelcomeActivity.9(this));
+    this.nkk.nkn.setOnClickListener(new WelcomeActivity.9(this));
     AppMethodBeat.o(128812);
   }
   
@@ -323,9 +306,9 @@ public class WelcomeActivity
   {
     AppMethodBeat.i(128815);
     super.onDestroy();
-    this.kkY.bfK();
-    if (this.kkF != null) {
-      this.kkF.logout();
+    this.ncO.bpa();
+    if (this.ncv != null) {
+      this.ncv.dbv();
     }
     AppMethodBeat.o(128815);
   }
@@ -333,7 +316,7 @@ public class WelcomeActivity
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(161711);
-    this.kmF.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
+    this.nex.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
     AppMethodBeat.o(161711);
   }
   
@@ -341,7 +324,7 @@ public class WelcomeActivity
   {
     AppMethodBeat.i(128813);
     super.onResume();
-    this.ksB.init();
+    this.nkk.init();
     AppMethodBeat.o(128813);
   }
   
@@ -353,7 +336,7 @@ public class WelcomeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.WelcomeActivity
  * JD-Core Version:    0.7.0.1
  */

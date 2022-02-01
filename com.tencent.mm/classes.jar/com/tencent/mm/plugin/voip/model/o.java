@@ -1,152 +1,152 @@
 package com.tencent.mm.plugin.voip.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.voip.b.e;
+import com.tencent.mm.plugin.voip.c.e;
 
 public final class o
 {
-  public long GUE;
-  public long GUF;
-  int GXA;
-  int GXB;
-  int GXC;
-  public long GXD;
-  long GXE;
-  long GXF;
-  long GXG;
-  long GXH;
-  public long GXI;
-  long GXJ;
-  long GXK;
-  long GXL;
-  long GXM;
-  public int GXN;
-  public int GXc;
-  public int GXd;
-  public int GXe;
-  public int GXf;
-  byte GXg;
-  byte GXh;
-  byte GXi;
-  byte GXj;
-  byte GXk;
-  byte GXl;
-  byte GXm;
-  int GXn;
-  public int GXo;
-  public int GXp;
-  public int GXq;
-  public int GXr;
-  public int GXs;
-  public int GXt;
-  public int GXu;
-  int GXv;
-  int GXw;
-  int GXx;
-  int GXy;
-  int GXz;
+  public long NKQ;
+  public long NKR;
+  byte NNA;
+  int NNB;
+  public int NNC;
+  public int NND;
+  public int NNE;
+  public int NNF;
+  public int NNG;
+  public int NNH;
+  public int NNI;
+  int NNJ;
+  int NNK;
+  int NNL;
+  int NNM;
+  int NNN;
+  int NNO;
+  int NNP;
+  int NNQ;
+  public long NNR;
+  long NNS;
+  long NNT;
+  long NNU;
+  long NNV;
+  public long NNW;
+  long NNX;
+  long NNY;
+  long NNZ;
+  public int NNq;
+  public int NNr;
+  public int NNs;
+  public int NNt;
+  byte NNu;
+  byte NNv;
+  byte NNw;
+  byte NNx;
+  byte NNy;
+  byte NNz;
+  long NOa;
+  public int NOb;
   long beginTime;
-  String jHj;
+  String myn;
   
   public o()
   {
     AppMethodBeat.i(114954);
     this.beginTime = 0L;
-    this.GUE = 0L;
-    this.GUF = 0L;
-    this.GXN = 0;
-    fGW();
+    this.NKQ = 0L;
+    this.NKR = 0L;
+    this.NOb = 0;
+    gzk();
     AppMethodBeat.o(114954);
   }
   
-  public final void fGR()
+  public final void gzf()
   {
     AppMethodBeat.i(114955);
     if (this.beginTime == 0L) {}
-    for (this.GXf = 0;; this.GXf = ((int)(System.currentTimeMillis() - this.beginTime)))
+    for (this.NNt = 0;; this.NNt = ((int)(System.currentTimeMillis() - this.beginTime)))
     {
       e.Logi("MicroMsg.VoipDailReport", "devin:beginTime:" + this.beginTime + ", CurrentTime: " + System.currentTimeMillis());
-      e.Logi("MicroMsg.VoipDailReport", "devin:endDial:" + this.GXf);
+      e.Logi("MicroMsg.VoipDailReport", "devin:endDial:" + this.NNt);
       AppMethodBeat.o(114955);
       return;
     }
   }
   
-  public final void fGS()
+  public final void gzg()
   {
     AppMethodBeat.i(114956);
-    if (0L == this.GXE)
+    if (0L == this.NNS)
     {
-      this.GXE = System.currentTimeMillis();
-      e.Logi("MicroMsg.VoipDailReport", "accept received timestamp:" + this.GXE);
+      this.NNS = System.currentTimeMillis();
+      e.Logi("MicroMsg.VoipDailReport", "accept received timestamp:" + this.NNS);
     }
     AppMethodBeat.o(114956);
   }
   
-  public final void fGT()
+  public final void gzh()
   {
     AppMethodBeat.i(114957);
-    if (0L == this.GXF)
+    if (0L == this.NNT)
     {
-      this.GXF = System.currentTimeMillis();
-      e.Logi("MicroMsg.VoipDailReport", "sync accept received timestamp:" + this.GXF);
+      this.NNT = System.currentTimeMillis();
+      e.Logi("MicroMsg.VoipDailReport", "sync accept received timestamp:" + this.NNT);
     }
     AppMethodBeat.o(114957);
   }
   
-  public final void fGU()
+  public final void gzi()
   {
     AppMethodBeat.i(114958);
-    this.GXJ = System.currentTimeMillis();
-    e.Logd("MicroMsg.VoipDailReport", "devin:acceptCallTime:" + this.GXJ);
+    this.NNX = System.currentTimeMillis();
+    e.Logd("MicroMsg.VoipDailReport", "devin:acceptCallTime:" + this.NNX);
     AppMethodBeat.o(114958);
   }
   
-  public final void fGV()
+  public final void gzj()
   {
     AppMethodBeat.i(114959);
-    if (this.GXI == 0L) {}
-    for (this.GXy = 0;; this.GXy = ((int)(System.currentTimeMillis() - this.GXI)))
+    if (this.NNW == 0L) {}
+    for (this.NNM = 0;; this.NNM = ((int)(System.currentTimeMillis() - this.NNW)))
     {
       e.Logi("MicroMsg.VoipDailReport", "devin:answerInvite current:" + System.currentTimeMillis());
-      e.Logi("MicroMsg.VoipDailReport", "devin:answerInvite:" + this.GXy);
+      e.Logi("MicroMsg.VoipDailReport", "devin:answerInvite:" + this.NNM);
       AppMethodBeat.o(114959);
       return;
     }
   }
   
-  public final void fGW()
+  public final void gzk()
   {
-    this.GXD = 0L;
-    this.GXH = 0L;
-    this.GXI = 0L;
-    this.GXJ = 0L;
-    this.GXK = 0L;
-    this.GXL = 0L;
-    this.GXE = 0L;
-    this.GXF = 0L;
-    this.GXG = 0L;
-    this.GXo = 0;
-    this.GXp = 0;
-    this.GXq = 0;
-    this.GXr = 0;
-    this.GXs = 0;
-    this.GXt = 0;
-    this.GXu = 0;
-    this.GXv = 0;
-    this.GXw = 0;
-    this.GXx = 0;
-    this.GXy = 0;
-    this.GXz = 0;
-    this.GXA = 0;
-    this.GXB = 0;
-    this.GXC = 0;
+    this.NNR = 0L;
+    this.NNV = 0L;
+    this.NNW = 0L;
+    this.NNX = 0L;
+    this.NNY = 0L;
+    this.NNZ = 0L;
+    this.NNS = 0L;
+    this.NNT = 0L;
+    this.NNU = 0L;
+    this.NNC = 0;
+    this.NND = 0;
+    this.NNE = 0;
+    this.NNF = 0;
+    this.NNG = 0;
+    this.NNH = 0;
+    this.NNI = 0;
+    this.NNJ = 0;
+    this.NNK = 0;
+    this.NNL = 0;
+    this.NNM = 0;
+    this.NNN = 0;
+    this.NNO = 0;
+    this.NNP = 0;
+    this.NNQ = 0;
   }
   
-  public final String fGX()
+  public final String gzl()
   {
     AppMethodBeat.i(114960);
-    String str = "," + this.GXm;
+    String str = "," + this.NNA;
     AppMethodBeat.o(114960);
     return str;
   }
@@ -154,23 +154,23 @@ public final class o
   public final void reset()
   {
     this.beginTime = 0L;
-    this.GXc = 0;
-    this.GXd = 0;
-    this.GXe = 0;
-    this.GXf = 0;
-    this.GXg = 0;
-    this.GXh = 0;
-    this.GXi = 0;
-    this.GXj = 0;
-    this.GXk = 0;
-    this.GXl = 0;
-    this.GXm = 0;
-    this.GXn = 0;
+    this.NNq = 0;
+    this.NNr = 0;
+    this.NNs = 0;
+    this.NNt = 0;
+    this.NNu = 0;
+    this.NNv = 0;
+    this.NNw = 0;
+    this.NNx = 0;
+    this.NNy = 0;
+    this.NNz = 0;
+    this.NNA = 0;
+    this.NNB = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.o
  * JD-Core Version:    0.7.0.1
  */

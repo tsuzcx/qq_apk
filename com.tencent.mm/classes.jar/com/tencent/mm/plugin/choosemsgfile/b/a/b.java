@@ -8,12 +8,12 @@ import java.util.concurrent.TimeUnit;
 
 public final class b
 {
-  private static final ThreadPoolExecutor qnn;
+  private static final ThreadPoolExecutor tMb;
   
   static
   {
     AppMethodBeat.i(123226);
-    qnn = new ThreadPoolExecutor(0, 1, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque());
+    tMb = new ThreadPoolExecutor(0, 1, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque());
     AppMethodBeat.o(123226);
   }
   
@@ -30,7 +30,7 @@ public final class b
     while (parama == null)
     {
       Log.e("MicroMsg.MsgFileMgr", "downloadTask is null, return");
-      parama1.cyk();
+      parama1.cMF();
       AppMethodBeat.o(123225);
       return;
       parama = new e(parama, parama1, paramb);
@@ -44,19 +44,19 @@ public final class b
     if (!parama.checkValid())
     {
       Log.e("MicroMsg.MsgFileMgr", "downloadTask is invalid, return");
-      parama1.cym();
+      parama1.cMH();
       AppMethodBeat.o(123225);
       return;
     }
-    if (!parama.cyn()) {
-      qnn.submit(parama);
+    if (!parama.cMI()) {
+      tMb.submit(parama);
     }
     AppMethodBeat.o(123225);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.a.b
  * JD-Core Version:    0.7.0.1
  */

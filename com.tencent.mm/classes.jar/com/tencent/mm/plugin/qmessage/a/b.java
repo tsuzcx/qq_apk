@@ -1,24 +1,25 @@
 package com.tencent.mm.plugin.qmessage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.q.b;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.q.b;
 import com.tencent.mm.compatible.util.f;
-import com.tencent.mm.g.a.xm;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.f.a.ys;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.c;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.adn;
-import com.tencent.mm.protocal.protobuf.kk;
-import com.tencent.mm.protocal.protobuf.kl;
+import com.tencent.mm.protocal.protobuf.adu;
+import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.ka;
+import com.tencent.mm.protocal.protobuf.kb;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -36,21 +37,21 @@ public final class b
   extends q
   implements m
 {
-  private Set<String> Bqe;
+  private Set<String> Hkx;
   private i callback;
   
   public b(Set<String> paramSet)
   {
     AppMethodBeat.i(27712);
     Assert.assertTrue(true);
-    this.Bqe = paramSet;
+    this.Hkx = paramSet;
     AppMethodBeat.o(27712);
   }
   
-  private boolean g(s params)
+  private boolean h(s params)
   {
     AppMethodBeat.i(27715);
-    Object localObject1 = (kl)((com.tencent.mm.ak.d)params).iLL.iLR;
+    Object localObject1 = (kb)d.c.b(((com.tencent.mm.an.d)params).lBS);
     if (localObject1 == null)
     {
       Log.e("MicroMsg.NetSceneBatchGetContactProfile", "dealResp: resp is null");
@@ -69,7 +70,7 @@ public final class b
       AppMethodBeat.o(27715);
       return true;
     }
-    localObject1 = ((kl)localObject1).KOD;
+    localObject1 = ((kb)localObject1).RPB;
     if (localObject1 == null)
     {
       AppMethodBeat.o(27715);
@@ -79,7 +80,7 @@ public final class b
     while (j < ((List)localObject1).size()) {
       try
       {
-        params = (adn)new adn().parseFrom(z.a((SKBuiltinBuffer_t)((List)localObject1).get(j)));
+        params = (adu)new adu().parseFrom(z.a((eae)((List)localObject1).get(j)));
         if ((params == null) || (params.UserName == null))
         {
           Log.e("MicroMsg.NetSceneBatchGetContactProfile", "processContactProfile: profile name is null");
@@ -100,17 +101,17 @@ public final class b
           Log.e("MicroMsg.NetSceneBatchGetContactProfile", "ContactProfile.parseFrom fail");
           params = null;
           continue;
-          if (!this.Bqe.contains(params.UserName))
+          if (!this.Hkx.contains(params.UserName))
           {
             Log.e("MicroMsg.NetSceneBatchGetContactProfile", "processContactProfile: resp data not in req");
             i = 0;
           }
           else
           {
-            this.Bqe.remove(params.UserName);
-            bg.aVF();
-            Object localObject2 = com.tencent.mm.model.c.aSN().Kn(params.UserName);
-            if ((localObject2 == null) || ((int)((com.tencent.mm.contact.c)localObject2).gMZ == 0))
+            this.Hkx.remove(params.UserName);
+            bh.beI();
+            Object localObject2 = c.bbL().RG(params.UserName);
+            if ((localObject2 == null) || ((int)((com.tencent.mm.contact.d)localObject2).jxt == 0))
             {
               Log.e("MicroMsg.NetSceneBatchGetContactProfile", "processContactProfile: did not find this contact");
               i = 0;
@@ -118,46 +119,46 @@ public final class b
             else
             {
               ((as)localObject2).setUsername(params.UserName);
-              ((as)localObject2).BC(params.ked);
-              ((as)localObject2).setType(params.LoG & params.LoH);
-              ((as)localObject2).setNickname(params.oUJ);
-              ((as)localObject2).BF(params.LoE);
-              ((as)localObject2).BG(params.LoF);
-              ((as)localObject2).nj(params.kdY);
-              ((as)localObject2).BD(params.LoI);
-              ((as)localObject2).BI(params.LoL);
-              ((as)localObject2).BJ(params.LoK);
-              ((as)localObject2).nl(params.LoM);
-              ((as)localObject2).BE(params.LoP);
-              ((as)localObject2).nm(params.LoQ);
-              bg.aVF();
-              if (com.tencent.mm.model.c.aSN().c(((ax)localObject2).field_username, (as)localObject2) == -1) {
+              ((as)localObject2).Iq(params.mVD);
+              ((as)localObject2).setType(params.Sqc & params.Sqd);
+              ((as)localObject2).setNickname(params.rWI);
+              ((as)localObject2).It(params.Sqa);
+              ((as)localObject2).Iu(params.Sqb);
+              ((as)localObject2).pw(params.mVy);
+              ((as)localObject2).Ir(params.Sqe);
+              ((as)localObject2).Iw(params.Sqh);
+              ((as)localObject2).Ix(params.Sqg);
+              ((as)localObject2).pz(params.Sqi);
+              ((as)localObject2).Is(params.Sql);
+              ((as)localObject2).pA(params.Sqm);
+              bh.beI();
+              if (c.bbL().c(((ax)localObject2).field_username, (as)localObject2) == -1) {
                 Log.e("MicroMsg.NetSceneBatchGetContactProfile", "processContactProfile:update contact failed");
               }
-              if (as.bjo(params.UserName))
+              if (as.bvJ(params.UserName))
               {
-                localObject2 = g.eFZ().aKB(params.UserName);
+                localObject2 = g.fsa().aVb(params.UserName);
                 if ((localObject2 == null) || (Util.nullAsNil(((d)localObject2).getUsername()).length() <= 0))
                 {
                   Log.e("MicroMsg.NetSceneBatchGetContactProfile", "processContactProfile: did not find qcontact");
                   i = 0;
                   continue;
                 }
-                ((d)localObject2).extInfo = params.xNU;
-                ((d)localObject2).Bqh = params.LoS;
-                ((d)localObject2).Bqi = params.LoT;
-                ((d)localObject2).cSx = 52;
-                if (!g.eFZ().a(params.UserName, (d)localObject2)) {
+                ((d)localObject2).extInfo = params.CSe;
+                ((d)localObject2).HkA = params.Sqo;
+                ((d)localObject2).HkB = params.Sqp;
+                ((d)localObject2).cUP = 52;
+                if (!g.fsa().a(params.UserName, (d)localObject2)) {
                   Log.e("MicroMsg.NetSceneBatchGetContactProfile", "processContactProfile:update qcontact failed");
                 }
               }
-              if (as.bjm(params.UserName))
+              if (as.bvH(params.UserName))
               {
-                localObject2 = new xm();
-                ((xm)localObject2).edJ.opType = 0;
-                ((xm)localObject2).edJ.dWq = params.UserName;
-                ((xm)localObject2).edJ.dWr = params.LoS;
-                ((xm)localObject2).edJ.dWs = params.LoJ;
+                localObject2 = new ys();
+                ((ys)localObject2).fXS.opType = 0;
+                ((ys)localObject2).fXS.fPV = params.UserName;
+                ((ys)localObject2).fXS.fPW = params.Sqo;
+                ((ys)localObject2).fXS.fPX = params.Sqf;
                 EventCenter.instance.publish((IEvent)localObject2);
               }
               i = 1;
@@ -177,32 +178,32 @@ public final class b
     AppMethodBeat.i(27713);
     this.callback = parami;
     parami = new LinkedList();
-    Object localObject = this.Bqe.iterator();
+    Object localObject = this.Hkx.iterator();
     while (((Iterator)localObject).hasNext()) {
       parami.add((String)((Iterator)localObject).next());
     }
     if (parami.size() == 0)
     {
-      Log.e("MicroMsg.NetSceneBatchGetContactProfile", f.apq() + "doScene reqSize ==0");
+      Log.e("MicroMsg.NetSceneBatchGetContactProfile", f.avD() + "doScene reqSize ==0");
       AppMethodBeat.o(27713);
       return -1;
     }
     localObject = new d.a();
-    ((d.a)localObject).iLN = new kk();
-    ((d.a)localObject).iLO = new kl();
+    ((d.a)localObject).lBU = new ka();
+    ((d.a)localObject).lBV = new kb();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/batchgetcontactprofile";
     ((d.a)localObject).funcId = 140;
-    ((d.a)localObject).iLP = 28;
+    ((d.a)localObject).lBW = 28;
     ((d.a)localObject).respCmdId = 1000000028;
-    localObject = ((d.a)localObject).aXF();
+    localObject = ((d.a)localObject).bgN();
     LinkedList localLinkedList = new LinkedList();
     parami = parami.iterator();
     while (parami.hasNext()) {
-      localLinkedList.add(z.Su((String)parami.next()));
+      localLinkedList.add(z.ZW((String)parami.next()));
     }
-    ((kk)((com.tencent.mm.ak.d)localObject).iLK.iLR).KGP = localLinkedList;
-    ((kk)((com.tencent.mm.ak.d)localObject).iLK.iLR).KOC = 1;
-    ((kk)((com.tencent.mm.ak.d)localObject).iLK.iLR).oTz = localLinkedList.size();
+    ((ka)d.b.b(((com.tencent.mm.an.d)localObject).lBR)).RIj = localLinkedList;
+    ((ka)d.b.b(((com.tencent.mm.an.d)localObject).lBR)).RPA = 1;
+    ((ka)d.b.b(((com.tencent.mm.an.d)localObject).lBR)).rVx = localLinkedList.size();
     int i = dispatch(paramg, (s)localObject, this);
     AppMethodBeat.o(27713);
     return i;
@@ -222,10 +223,10 @@ public final class b
       AppMethodBeat.o(27714);
       return;
     }
-    if ((g(params)) && (this.Bqe.size() > 0)) {
+    if ((h(params)) && (this.Hkx.size() > 0)) {
       doScene(dispatcher(), this.callback);
     }
-    Log.d("MicroMsg.NetSceneBatchGetContactProfile", "left cnt = " + this.Bqe.size());
+    Log.d("MicroMsg.NetSceneBatchGetContactProfile", "left cnt = " + this.Hkx.size());
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(27714);
   }
@@ -237,7 +238,7 @@ public final class b
   
   public final q.b securityVerificationChecked(s params)
   {
-    return q.b.iMq;
+    return q.b.lCx;
   }
 }
 

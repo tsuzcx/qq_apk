@@ -6,21 +6,21 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.RandomAccess;
 import kotlin.g.a.b;
-import kotlin.g.b.af;
+import kotlin.g.b.ag;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"addAll", "", "T", "", "elements", "", "(Ljava/util/Collection;[Ljava/lang/Object;)Z", "", "Lkotlin/sequences/Sequence;", "filterInPlace", "", "predicate", "Lkotlin/Function1;", "predicateResultToRemove", "filterInPlace$CollectionsKt__MutableCollectionsKt", "", "minusAssign", "", "element", "(Ljava/util/Collection;Ljava/lang/Object;)V", "(Ljava/util/Collection;[Ljava/lang/Object;)V", "plusAssign", "remove", "Lkotlin/internal/OnlyInputTypes;", "(Ljava/util/Collection;Ljava/lang/Object;)Z", "index", "", "(Ljava/util/List;I)Ljava/lang/Object;", "removeAll", "", "removeFirst", "(Ljava/util/List;)Ljava/lang/Object;", "removeFirstOrNull", "removeLast", "removeLastOrNull", "retainAll", "retainNothing", "retainNothing$CollectionsKt__MutableCollectionsKt", "shuffle", "random", "Lkotlin/random/Random;", "shuffled", "", "kotlin-stdlib"}, hxG=1)
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"addAll", "", "T", "", "elements", "", "(Ljava/util/Collection;[Ljava/lang/Object;)Z", "", "Lkotlin/sequences/Sequence;", "filterInPlace", "", "predicate", "Lkotlin/Function1;", "predicateResultToRemove", "filterInPlace$CollectionsKt__MutableCollectionsKt", "", "minusAssign", "", "element", "(Ljava/util/Collection;Ljava/lang/Object;)V", "(Ljava/util/Collection;[Ljava/lang/Object;)V", "plusAssign", "remove", "Lkotlin/internal/OnlyInputTypes;", "(Ljava/util/Collection;Ljava/lang/Object;)Z", "index", "", "(Ljava/util/List;I)Ljava/lang/Object;", "removeAll", "", "removeFirst", "(Ljava/util/List;)Ljava/lang/Object;", "removeFirstOrNull", "removeLast", "removeLastOrNull", "retainAll", "retainNothing", "retainNothing$CollectionsKt__MutableCollectionsKt", "shuffle", "random", "Lkotlin/random/Random;", "shuffled", "", "kotlin-stdlib"}, iBN=1)
 public class q
   extends p
 {
   public static final <T> boolean a(Iterable<? extends T> paramIterable, b<? super T, Boolean> paramb)
   {
-    AppMethodBeat.i(206283);
-    kotlin.g.b.p.h(paramIterable, "$this$removeAll");
-    kotlin.g.b.p.h(paramb, "predicate");
+    AppMethodBeat.i(219256);
+    kotlin.g.b.p.k(paramIterable, "$this$removeAll");
+    kotlin.g.b.p.k(paramb, "predicate");
     boolean bool = a(paramIterable, paramb, true);
-    AppMethodBeat.o(206283);
+    AppMethodBeat.o(219256);
     return bool;
   }
   
@@ -49,8 +49,8 @@ public class q
   public static final <T> boolean a(Collection<? super T> paramCollection, Iterable<? extends T> paramIterable)
   {
     AppMethodBeat.i(129119);
-    kotlin.g.b.p.h(paramCollection, "$this$addAll");
-    kotlin.g.b.p.h(paramIterable, "elements");
+    kotlin.g.b.p.k(paramCollection, "$this$addAll");
+    kotlin.g.b.p.k(paramIterable, "elements");
     if ((paramIterable instanceof Collection))
     {
       bool = paramCollection.addAll((Collection)paramIterable);
@@ -68,11 +68,21 @@ public class q
     return bool;
   }
   
+  public static final <T> boolean a(Collection<? super T> paramCollection, T[] paramArrayOfT)
+  {
+    AppMethodBeat.i(168694);
+    kotlin.g.b.p.k(paramCollection, "$this$addAll");
+    kotlin.g.b.p.k(paramArrayOfT, "elements");
+    boolean bool = paramCollection.addAll((Collection)e.Q(paramArrayOfT));
+    AppMethodBeat.o(168694);
+    return bool;
+  }
+  
   public static final <T> boolean b(Iterable<? extends T> paramIterable, b<? super T, Boolean> paramb)
   {
     AppMethodBeat.i(129120);
-    kotlin.g.b.p.h(paramIterable, "$this$retainAll");
-    kotlin.g.b.p.h(paramb, "predicate");
+    kotlin.g.b.p.k(paramIterable, "$this$retainAll");
+    kotlin.g.b.p.k(paramb, "predicate");
     boolean bool = a(paramIterable, paramb, false);
     AppMethodBeat.o(129120);
     return bool;
@@ -81,8 +91,8 @@ public class q
   public static final <T> boolean c(List<T> paramList, b<? super T, Boolean> paramb)
   {
     AppMethodBeat.i(129122);
-    kotlin.g.b.p.h(paramList, "$this$removeAll");
-    kotlin.g.b.p.h(paramb, "predicate");
+    kotlin.g.b.p.k(paramList, "$this$removeAll");
+    kotlin.g.b.p.k(paramb, "predicate");
     boolean bool = d(paramList, paramb);
     AppMethodBeat.o(129122);
     return bool;
@@ -99,11 +109,11 @@ public class q
         AppMethodBeat.o(129123);
         throw paramList;
       }
-      boolean bool = a(af.eT(paramList), paramb, true);
+      boolean bool = a(ag.fa(paramList), paramb, true);
       AppMethodBeat.o(129123);
       return bool;
     }
-    int m = j.kq(paramList);
+    int m = j.lk(paramList);
     int i;
     if (m >= 0)
     {
@@ -129,7 +139,7 @@ public class q
     int j = 0;
     if (j < paramList.size())
     {
-      i = j.kq(paramList);
+      i = j.lk(paramList);
       if (i >= j) {
         for (;;)
         {

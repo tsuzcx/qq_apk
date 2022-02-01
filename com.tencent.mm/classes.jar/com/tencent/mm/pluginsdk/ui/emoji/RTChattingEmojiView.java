@@ -10,14 +10,18 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.emoji.view.EmojiStatusView.b;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.emoji.PluginEmoji;
+import com.tencent.mm.plugin.m.a.d;
+import com.tencent.mm.plugin.m.a.e;
+import com.tencent.mm.plugin.m.a.f;
+import com.tencent.mm.plugin.m.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.pluginsdk.a.d;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.pluginsdk.b.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.emotion.EmojiInfo;
@@ -25,17 +29,17 @@ import com.tencent.mm.storage.emotion.EmojiInfo;
 public class RTChattingEmojiView
   extends FrameLayout
 {
-  private TextView GRM;
-  private int KoA;
-  private int KoB;
-  private int KoC;
-  public ChattingEmojiView KoD;
-  private ProgressBar KoE;
-  private int Koy;
-  private int Koz;
+  private boolean CUO = true;
+  private TextView NHX;
+  private int Rpk;
+  private int Rpl;
+  private int Rpm;
+  private int Rpn;
+  private int Rpo;
+  public ChattingEmojiView Rpp;
+  private ProgressBar Rpq;
   private int mStatus = -1;
-  private EmojiInfo rfq;
-  private boolean xQE = true;
+  private EmojiInfo uIz;
   
   public RTChattingEmojiView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -47,7 +51,7 @@ public class RTChattingEmojiView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void aiJ(int paramInt)
+  private void aqK(int paramInt)
   {
     AppMethodBeat.i(104732);
     this.mStatus = paramInt;
@@ -58,33 +62,33 @@ public class RTChattingEmojiView
     {
       AppMethodBeat.o(104732);
       return;
-      this.KoE.setVisibility(0);
-      this.GRM.setVisibility(4);
-      this.KoD.setVisibility(4);
-      setBackgroundResource(2131235359);
+      this.Rpq.setVisibility(0);
+      this.NHX.setVisibility(4);
+      this.Rpp.setVisibility(4);
+      setBackgroundResource(a.f.transparent_background);
       AppMethodBeat.o(104732);
       return;
-      this.KoE.setVisibility(0);
-      this.GRM.setVisibility(4);
-      this.KoD.setVisibility(4);
-      setBackgroundResource(2131231746);
+      this.Rpq.setVisibility(0);
+      this.NHX.setVisibility(4);
+      this.Rpp.setVisibility(4);
+      setBackgroundResource(a.f.chatting_item_emoji_bg);
       AppMethodBeat.o(104732);
       return;
-      Drawable localDrawable = getResources().getDrawable(2131232117);
-      localDrawable.setBounds(0, 0, this.KoA, this.KoA);
-      Log.d("MicroMsg.emoji.RTChattingEmojiView", "iconSize:%d hashcode:%d", new Object[] { Integer.valueOf(this.KoA), Integer.valueOf(hashCode()) });
-      this.GRM.setCompoundDrawables(null, localDrawable, null, null);
-      this.GRM.setText(2131758584);
-      this.GRM.setVisibility(0);
-      this.KoE.setVisibility(4);
-      this.KoD.setVisibility(4);
-      setBackgroundResource(2131231746);
+      Drawable localDrawable = getResources().getDrawable(a.f.emoji_download_icon_samll);
+      localDrawable.setBounds(0, 0, this.Rpm, this.Rpm);
+      Log.d("MicroMsg.emoji.RTChattingEmojiView", "iconSize:%d hashcode:%d", new Object[] { Integer.valueOf(this.Rpm), Integer.valueOf(hashCode()) });
+      this.NHX.setCompoundDrawables(null, localDrawable, null, null);
+      this.NHX.setText(a.j.emoji_retry_download);
+      this.NHX.setVisibility(0);
+      this.Rpq.setVisibility(4);
+      this.Rpp.setVisibility(4);
+      setBackgroundResource(a.f.chatting_item_emoji_bg);
       AppMethodBeat.o(104732);
       return;
-      this.KoD.setVisibility(0);
-      this.KoE.setVisibility(4);
-      this.GRM.setVisibility(4);
-      setBackgroundResource(2131235359);
+      this.Rpp.setVisibility(0);
+      this.Rpq.setVisibility(4);
+      this.NHX.setVisibility(4);
+      setBackgroundResource(a.f.transparent_background);
     }
   }
   
@@ -100,28 +104,28 @@ public class RTChattingEmojiView
     boolean bool2 = false;
     AppMethodBeat.i(104729);
     Log.i("MicroMsg.emoji.RTChattingEmojiView", "setEmojiInfo %s msgId %s", new Object[] { paramEmojiInfo.field_md5, Long.valueOf(paramLong) });
-    this.rfq = paramEmojiInfo;
-    if (this.rfq.NA())
+    this.uIz = paramEmojiInfo;
+    if (this.uIz.Qv())
     {
-      this.KoD.setStatus(1);
-      aiJ(2);
-      Object localObject = ((l)g.af(l.class)).eiy().Hb(paramLong);
-      if ((((eo)localObject).field_status == 2) || (((eo)localObject).field_status == 3) || (((eo)localObject).field_status == 5)) {}
+      this.Rpp.setStatus(1);
+      aqK(2);
+      Object localObject = ((n)h.ae(n.class)).eSe().Oq(paramLong);
+      if ((((et)localObject).field_status == 2) || (((et)localObject).field_status == 3) || (((et)localObject).field_status == 5)) {}
       for (boolean bool1 = true;; bool1 = false)
       {
-        localObject = this.KoD;
-        if (!parambe.jsi) {
+        localObject = this.Rpp;
+        if (!parambe.mhL) {
           bool2 = true;
         }
-        ((ChattingEmojiView)localObject).a(bool2, bool1, ((PluginEmoji)g.ah(PluginEmoji.class)).getEmojiMgr().q(paramEmojiInfo), ((PluginEmoji)g.ah(PluginEmoji.class)).getEmojiMgr().r(paramEmojiInfo), paramEmojiInfo.getName(), String.valueOf(paramLong + paramEmojiInfo.getName()));
+        ((ChattingEmojiView)localObject).a(bool2, bool1, ((PluginEmoji)h.ag(PluginEmoji.class)).getEmojiMgr().q(paramEmojiInfo), ((PluginEmoji)h.ag(PluginEmoji.class)).getEmojiMgr().r(paramEmojiInfo), paramEmojiInfo.getName(), String.valueOf(paramLong + paramEmojiInfo.getName()));
         AppMethodBeat.o(104729);
         return;
       }
     }
-    this.xQE = true;
-    this.KoD.setStatusListener(new EmojiStatusView.b()
+    this.CUO = true;
+    this.Rpp.setStatusListener(new EmojiStatusView.b()
     {
-      public final void po(int paramAnonymousInt)
+      public final void rH(int paramAnonymousInt)
       {
         AppMethodBeat.i(104724);
         if (paramAnonymousInt == 0)
@@ -145,48 +149,48 @@ public class RTChattingEmojiView
         AppMethodBeat.o(104724);
       }
     });
-    this.KoD.a(this.rfq, paramLong);
+    this.Rpp.a(this.uIz, paramLong);
     AppMethodBeat.o(104729);
   }
   
-  public final void grD()
+  public final void hmC()
   {
     AppMethodBeat.i(104726);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 3;
-    addView(this.KoD, localLayoutParams);
+    addView(this.Rpp, localLayoutParams);
     AppMethodBeat.o(104726);
   }
   
-  public final void grE()
+  public final void hmD()
   {
     AppMethodBeat.i(104727);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 5;
-    addView(this.KoD, localLayoutParams);
+    addView(this.Rpp, localLayoutParams);
     AppMethodBeat.o(104727);
   }
   
   public void initView()
   {
     AppMethodBeat.i(104725);
-    this.Koy = getContext().getResources().getDimensionPixelSize(2131166307);
-    this.Koz = getContext().getResources().getDimensionPixelSize(2131166304);
-    this.KoB = getContext().getResources().getDimensionPixelSize(2131166310);
-    this.KoC = getContext().getResources().getDimensionPixelSize(2131166309);
-    this.KoD = new ChattingEmojiView(getContext());
-    this.KoE = new ProgressBar(getContext());
-    this.KoE.setIndeterminateDrawable(getResources().getDrawable(2131234498));
-    this.GRM = new TextView(getContext());
-    this.GRM.setText(2131758584);
-    this.GRM.setTextColor(getResources().getColor(2131100309));
+    this.Rpk = getContext().getResources().getDimensionPixelSize(a.e.emoji_view_image_size);
+    this.Rpl = getContext().getResources().getDimensionPixelSize(a.e.emoji_view_chatting_min_size);
+    this.Rpn = getContext().getResources().getDimensionPixelSize(a.e.emoji_view_refresh_size);
+    this.Rpo = getContext().getResources().getDimensionPixelSize(a.e.emoji_view_refresh_min_size);
+    this.Rpp = new ChattingEmojiView(getContext());
+    this.Rpq = new ProgressBar(getContext());
+    this.Rpq.setIndeterminateDrawable(getResources().getDrawable(a.f.progress_small_holo));
+    this.NHX = new TextView(getContext());
+    this.NHX.setText(a.j.emoji_retry_download);
+    this.NHX.setTextColor(getResources().getColor(a.d.emoji_load_text_color));
     int i = a.fromDPToPix(getContext(), 32);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, i);
     localLayoutParams.gravity = 17;
-    addView(this.KoE, localLayoutParams);
+    addView(this.Rpq, localLayoutParams);
     localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 17;
-    addView(this.GRM, localLayoutParams);
+    addView(this.NHX, localLayoutParams);
     AppMethodBeat.o(104725);
   }
   
@@ -208,22 +212,22 @@ public class RTChattingEmojiView
   {
     AppMethodBeat.i(104733);
     if ((this.mStatus == 0) || (this.mStatus == 1) || (this.mStatus == 3)) {
-      if ((this.rfq == null) || (this.rfq.field_height == 0)) {
+      if ((this.uIz == null) || (this.uIz.field_height == 0)) {
         break label155;
       }
     }
     label155:
-    for (int i = Math.max((int)(this.rfq.field_height * this.KoD.getEmojiDensityScale()), this.Koz);; i = this.Koy)
+    for (int i = Math.max((int)(this.uIz.field_height * this.Rpp.getEmojiDensityScale()), this.Rpl);; i = this.Rpk)
     {
       int j = i;
-      if (i > this.Koy) {
-        j = this.Koy;
+      if (i > this.Rpk) {
+        j = this.Rpk;
       }
-      this.KoA = this.KoB;
-      if ((j >= this.Koz) && (j < this.Koz + (this.KoB - this.KoC)))
+      this.Rpm = this.Rpn;
+      if ((j >= this.Rpl) && (j < this.Rpl + (this.Rpn - this.Rpo)))
       {
-        i = this.KoC;
-        this.KoA = (j - this.Koz + i);
+        i = this.Rpo;
+        this.Rpm = (j - this.Rpl + i);
       }
       super.onMeasure(paramInt1, paramInt2);
       AppMethodBeat.o(104733);
@@ -237,8 +241,8 @@ public class RTChattingEmojiView
     Log.i("MicroMsg.emoji.RTChattingEmojiView", "performClick: %s", new Object[] { Integer.valueOf(this.mStatus) });
     if (this.mStatus == 3)
     {
-      this.xQE = false;
-      this.KoD.reload();
+      this.CUO = false;
+      this.Rpp.reload();
       AppMethodBeat.o(104731);
       return true;
     }
@@ -256,18 +260,18 @@ public class RTChattingEmojiView
   public void setImageBitmap(Bitmap paramBitmap)
   {
     AppMethodBeat.i(104730);
-    aiJ(2);
-    if ((this.KoD != null) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
+    aqK(2);
+    if ((this.Rpp != null) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      paramBitmap.setDensity(this.KoD.getEmojiDensity());
-      this.KoD.setImageBitmap(paramBitmap);
+      paramBitmap.setDensity(this.Rpp.getEmojiDensity());
+      this.Rpp.setImageBitmap(paramBitmap);
     }
     AppMethodBeat.o(104730);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.emoji.RTChattingEmojiView
  * JD-Core Version:    0.7.0.1
  */

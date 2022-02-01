@@ -13,7 +13,7 @@ public class JsApiClearStorageTask
 {
   public static final Parcelable.Creator<JsApiClearStorageTask> CREATOR;
   public String appId;
-  public int mtl;
+  public int prw;
   
   static
   {
@@ -31,16 +31,16 @@ public class JsApiClearStorageTask
     AppMethodBeat.o(147235);
   }
   
-  public final void bjj()
+  public final void RW()
   {
     AppMethodBeat.i(147236);
-    if (e.M(a.class) == null) {}
-    for (d locald = null; locald == null; locald = ((a)e.M(a.class)).NK())
+    if (e.K(a.class) == null) {}
+    for (d locald = null; locald == null; locald = ((a)e.K(a.class)).QF())
     {
       AppMethodBeat.o(147236);
       return;
     }
-    locald.Y(this.mtl, this.appId);
+    locald.aa(this.prw, this.appId);
     AppMethodBeat.o(147236);
   }
   
@@ -48,7 +48,7 @@ public class JsApiClearStorageTask
   {
     AppMethodBeat.i(147237);
     this.appId = paramParcel.readString();
-    this.mtl = paramParcel.readInt();
+    this.prw = paramParcel.readInt();
     AppMethodBeat.o(147237);
   }
   
@@ -56,13 +56,13 @@ public class JsApiClearStorageTask
   {
     AppMethodBeat.i(147238);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.mtl);
+    paramParcel.writeInt(this.prw);
     AppMethodBeat.o(147238);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.JsApiClearStorageTask
  * JD-Core Version:    0.7.0.1
  */

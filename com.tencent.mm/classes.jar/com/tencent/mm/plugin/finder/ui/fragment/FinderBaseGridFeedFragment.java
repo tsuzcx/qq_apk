@@ -15,12 +15,12 @@ import kotlin.g.b.p;
 import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderBaseGridFeedFragment;", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "activity", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "getActivity", "()Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "activity$delegate", "Lkotlin/Lazy;", "getLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "initAfterAttach", "", "initOnCreate", "onBackPressed", "", "onDestroy", "onPause", "onResume", "onViewCreated", "view", "Landroid/view/View;", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderBaseGridFeedFragment;", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "activity", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "getActivity", "()Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "activity$delegate", "Lkotlin/Lazy;", "getLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "initAfterAttach", "", "initOnCreate", "onBackPressed", "", "onDestroy", "onPause", "onResume", "onViewCreated", "view", "Landroid/view/View;", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"})
 public abstract class FinderBaseGridFeedFragment<V extends c.b, P extends c.a>
   extends FinderHomeTabFragment
 {
+  private final f Ayb = g.ar((a)new a(this));
   private HashMap _$_findViewCache;
-  private final f vQp = g.ah((a)new a(this));
   
   public void _$_clearFindViewByIdCache()
   {
@@ -29,14 +29,14 @@ public abstract class FinderBaseGridFeedFragment<V extends c.b, P extends c.a>
     }
   }
   
-  public final MMFinderUI dAq()
+  public abstract P dsG();
+  
+  public abstract V duW();
+  
+  public final MMFinderUI ebI()
   {
-    return (MMFinderUI)this.vQp.getValue();
+    return (MMFinderUI)this.Ayb.getValue();
   }
-  
-  public abstract P dcq();
-  
-  public abstract V ddS();
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
@@ -47,35 +47,36 @@ public abstract class FinderBaseGridFeedFragment<V extends c.b, P extends c.a>
   
   public final boolean onBackPressed()
   {
-    return dcq().onBackPressed();
+    return dsG().onBackPressed();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    dcq().onDetach();
+    dsG().onDetach();
   }
   
   public void onPause()
   {
     super.onPause();
-    dcq();
+    dsG();
   }
   
   public void onResume()
   {
     super.onResume();
-    dcq();
+    dsG().onUIResume();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    p.h(paramView, "view");
+    p.k(paramView, "view");
+    super.onViewCreated(paramView, paramBundle);
     initOnCreate();
-    dcq().a(ddS());
+    dsG().a(duW());
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "invoke"})
   static final class a
     extends q
     implements a<MMFinderUI>

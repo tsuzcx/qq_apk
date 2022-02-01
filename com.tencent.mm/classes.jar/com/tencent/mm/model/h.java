@@ -1,11 +1,10 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.b;
-import com.tencent.mm.g.c.bb;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.b;
+import com.tencent.mm.f.c.bb;
+import com.tencent.mm.f.c.et;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -25,8 +24,8 @@ public final class h
     paramString = (String)paramMap.get(".sysmsg.brand_username");
     Object localObject = (String)paramMap.get(".sysmsg.revoke_climsgid");
     paramMap = (String)paramMap.get(".sysmsg.replacemsg");
-    bg.aVF();
-    localObject = c.aSQ().iJ(paramString, (String)localObject);
+    bh.beI();
+    localObject = c.bbO().iU(paramString, (String)localObject);
     if ((localObject == null) || (((LinkedList)localObject).isEmpty()))
     {
       AppMethodBeat.o(20316);
@@ -36,42 +35,42 @@ public final class h
     while (((Iterator)localObject).hasNext())
     {
       final ca localca = (ca)((Iterator)localObject).next();
-      if ((localca.fqJ & 0x4) != 4)
+      if ((localca.hxx & 0x4) != 4)
       {
         localca.setContent(paramMap);
         localca.setType(10000);
-        bp.a(localca, parama);
-        bg.aVF();
-        c.aSQ().a(localca.field_msgId, localca);
+        bq.a(localca, parama);
+        bh.beI();
+        c.bbO().a(localca.field_msgId, localca);
       }
-      bg.aVF();
-      az localaz = c.aST().bjY(paramString);
+      bh.beI();
+      az localaz = c.bbR().bwx(paramString);
       if ((localaz != null) && (localaz.field_unReadCount > 0))
       {
-        bg.aVF();
-        int i = c.aSQ().aB(localca);
+        bh.beI();
+        int i = c.bbO().aL(localca);
         if (localaz.field_unReadCount >= i)
         {
-          localaz.nt(localaz.field_unReadCount - 1);
-          bg.aVF();
-          c.aST().a(localaz, localaz.field_username);
+          localaz.pH(localaz.field_unReadCount - 1);
+          bh.beI();
+          c.bbR().a(localaz, localaz.field_username);
         }
       }
       if (localca != null) {
-        g.aAk().postToWorker(new Runnable()
+        com.tencent.mm.kernel.h.aHJ().postToWorker(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(231537);
+            AppMethodBeat.i(279948);
             Log.i("MicroMsg.BizChatSysCmdMsgConsumerHandleRevokeMsg", "[deleteLocalFile] id:%s type:%s", new Object[] { Long.valueOf(localca.field_msgId), Integer.valueOf(localca.getType()) });
             switch (localca.getType())
             {
             }
             for (;;)
             {
-              AppMethodBeat.o(231537);
+              AppMethodBeat.o(279948);
               return;
-              bp.z(localca);
+              bq.B(localca);
             }
           }
         });
@@ -81,7 +80,7 @@ public final class h
     return null;
   }
   
-  public final String getSubType()
+  public final String bcy()
   {
     return "qy_revoke_msg";
   }

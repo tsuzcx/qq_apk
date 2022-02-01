@@ -2,35 +2,35 @@ package com.tencent.mm.plugin.game.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class z
-  extends com.tencent.mm.bw.a
+public class z
+  extends com.tencent.mm.cd.a
 {
-  public boolean xJV;
+  public boolean COc;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(256630);
+    AppMethodBeat.i(149412);
     if (paramInt == 0)
     {
-      ((g.a.a.c.a)paramVarArgs[0]).cc(1, this.xJV);
-      AppMethodBeat.o(256630);
+      ((g.a.a.c.a)paramVarArgs[0]).co(1, this.COc);
+      AppMethodBeat.o(149412);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.fS(1);
-      AppMethodBeat.o(256630);
+      paramInt = g.a.a.b.b.a.gL(1);
+      AppMethodBeat.o(149412);
       return paramInt + 1 + 0;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(256630);
+      AppMethodBeat.o(149412);
       return 0;
     }
     if (paramInt == 3)
@@ -40,14 +40,14 @@ public final class z
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(256630);
+        AppMethodBeat.o(149412);
         return -1;
       }
-      localz.xJV = locala.UbS.yZ();
-      AppMethodBeat.o(256630);
+      localz.COc = locala.abFh.AB();
+      AppMethodBeat.o(149412);
       return 0;
     }
-    AppMethodBeat.o(256630);
+    AppMethodBeat.o(149412);
     return -1;
   }
 }

@@ -1,75 +1,41 @@
 package com.tencent.mm.plugin.webview.luggage.c;
 
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.teenmode.a.b;
+import kotlin.g.b.p;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/luggage/util/GameTeenModeUtils;", "", "()V", "isTeenModeForbidGameDownload", "", "showTeenModeToast", "", "context", "Landroid/content/Context;", "plugin-webview_release"})
 public final class a
 {
-  public static int a(Window paramWindow, boolean paramBoolean)
+  public static final a PTs;
+  
+  static
   {
-    AppMethodBeat.i(78762);
-    int i = paramWindow.getDecorView().getSystemUiVisibility();
-    int j;
-    if (paramBoolean)
-    {
-      j = i | 0x400 | 0x100;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 20) {
-        i = j | 0x200 | 0x2;
-      }
-      j = i | 0x4;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 19) {
-        i = j | 0x1000;
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(78762);
-      return i;
-      j = i & 0xFFFFFBFF & 0xFFFFFEFF;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 20) {
-        i = j & 0xFFFFFDFF & 0xFFFFFFFD;
-      }
-      j = i & 0xFFFFFFFB;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 19) {
-        i = j & 0xFFFFEFFF;
-      }
-    }
+    AppMethodBeat.i(216412);
+    PTs = new a();
+    AppMethodBeat.o(216412);
   }
   
-  public static void c(Window paramWindow, final boolean paramBoolean)
+  public static final boolean gVm()
   {
-    AppMethodBeat.i(78761);
-    if (paramBoolean)
-    {
-      i = a(paramWindow, paramBoolean);
-      paramWindow.getDecorView().setSystemUiVisibility(i);
-      paramWindow.setFlags(1024, 1024);
-      paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
-      {
-        public final void onSystemUiVisibilityChange(int paramAnonymousInt)
-        {
-          AppMethodBeat.i(78760);
-          if ((paramAnonymousInt & 0x4) == 0) {
-            this.muX.getDecorView().setSystemUiVisibility(a.a(this.muX, paramBoolean));
-          }
-          AppMethodBeat.o(78760);
-        }
-      });
-      AppMethodBeat.o(78761);
-      return;
+    AppMethodBeat.i(216409);
+    com.tencent.mm.kernel.c.a locala = h.ae(b.class);
+    p.j(locala, "MMKernel.service(ITeenModeService::class.java)");
+    boolean bool = ((b)locala).ZM();
+    AppMethodBeat.o(216409);
+    return bool;
+  }
+  
+  public static final void ja(Context paramContext)
+  {
+    AppMethodBeat.i(216410);
+    if (paramContext != null) {
+      ((b)h.ae(b.class)).ir(paramContext);
     }
-    int i = a(paramWindow, paramBoolean);
-    paramWindow.getDecorView().setSystemUiVisibility(i);
-    paramWindow.clearFlags(1024);
-    paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(null);
-    AppMethodBeat.o(78761);
+    AppMethodBeat.o(216410);
   }
 }
 

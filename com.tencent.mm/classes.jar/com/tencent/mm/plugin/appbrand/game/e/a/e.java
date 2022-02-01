@@ -5,7 +5,9 @@ import com.tencent.mm.plugin.appbrand.a.c.a;
 import com.tencent.mm.plugin.appbrand.game.g.b.b;
 import com.tencent.mm.plugin.appbrand.game.g.b.f;
 import com.tencent.mm.plugin.appbrand.game.g.d;
+import com.tencent.mm.plugin.appbrand.jsapi.r;
 import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
@@ -16,38 +18,31 @@ public final class e
 {
   public static final int CTRL_INDEX = 666;
   public static final String NAME = "operateGameRecorder";
-  a lsK;
-  c.a lsL;
-  String lsM;
+  a onH;
+  c.a onI;
+  String onJ;
   
   public e()
   {
     AppMethodBeat.i(45155);
-    this.lsK = new a();
-    this.lsL = null;
-    this.lsM = null;
+    this.onH = new a();
+    this.onI = null;
+    this.onJ = null;
     AppMethodBeat.o(45155);
   }
   
-  private void a(com.tencent.mm.plugin.appbrand.s params, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  private void a(v paramv, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
     AppMethodBeat.i(45156);
-    Object localObject = String.format("fail: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    String str = String.format("fail: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     HashMap localHashMap = new HashMap(1);
     localHashMap.put("errCode", Integer.valueOf(paramInt3));
-    params.i(paramInt1, n((String)localObject, localHashMap));
-    localObject = this.lsK;
-    ((a)localObject).g(params);
-    Log.i("MicroMsg.OnGameRecorderStateChangeEvent", "hy: dispatch error: %d, %s", new Object[] { Integer.valueOf(paramInt3), paramString });
-    params = new HashMap(3);
-    params.put("state", "error");
-    params.put("errCode", Integer.valueOf(paramInt3));
-    params.put("errMsg", paramString);
-    ((a)localObject).K(params).bEo();
+    paramv.j(paramInt1, m(str, localHashMap));
+    this.onH.a(paramv, paramInt3, paramString);
     AppMethodBeat.o(45156);
   }
   
-  final void a(com.tencent.mm.plugin.appbrand.s params, int paramInt, Map<String, Object> paramMap)
+  final void a(v paramv, int paramInt, Map<String, Object> paramMap)
   {
     AppMethodBeat.i(45157);
     HashMap localHashMap = new HashMap(1);
@@ -55,7 +50,7 @@ public final class e
     if (paramMap != null) {
       localHashMap.putAll(paramMap);
     }
-    params.i(paramInt, n("ok", localHashMap));
+    paramv.j(paramInt, m("ok", localHashMap));
     AppMethodBeat.o(45157);
   }
 }

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.story.f;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/StoryLogic;", "", "()V", "StoryServer", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/model/StoryLogic;", "", "()V", "StoryServer", "plugin-story_release"})
 public final class o {}
 
 

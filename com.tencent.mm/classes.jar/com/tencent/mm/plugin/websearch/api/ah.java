@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.websearch.api;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
@@ -13,12 +13,12 @@ import java.util.Map;
 
 public final class ah
 {
-  private static final Map<String, Integer> IEu;
+  private static final Map<String, Integer> PyM;
   
   static
   {
     AppMethodBeat.i(117657);
-    IEu = new HashMap();
+    PyM = new HashMap();
     AppMethodBeat.o(117657);
   }
   
@@ -60,20 +60,20 @@ public final class ah
       j = 1;
       String str4 = Util.nullAs(paramString4, "");
       l = System.currentTimeMillis();
-      String str5 = bUg();
+      String str5 = chm();
       String str6 = Util.nullAs(paramString5, "");
       if (!TextUtils.isEmpty(paramString6)) {
         break label510;
       }
       str1 = "";
-      m = afp(paramInt2);
+      m = and(paramInt2);
       if (!paramBoolean3) {
         break label517;
       }
       k = 1;
       label123:
       Log.i("MicroMsg.WebSearch.WebSearchActionTracer", "reporting 14904 %s ", new Object[] { u(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str2, str3, localObject, Integer.valueOf(paramInt3), Integer.valueOf(j), str4, Long.valueOf(l), str5, Integer.valueOf(i), str6, str1, Integer.valueOf(paramInt4), Integer.valueOf(m), Integer.valueOf(k) }) });
-      localObject = e.Cxv;
+      localObject = f.Iyx;
       str1 = Util.nullAs(paramString1, "");
       str2 = Util.nullAs(paramString2, "");
       paramString1 = paramString3;
@@ -87,13 +87,13 @@ public final class ah
       label303:
       paramString3 = Util.nullAs(paramString4, "");
       l = System.currentTimeMillis();
-      paramString4 = bUg();
+      paramString4 = chm();
       paramString5 = Util.nullAs(paramString5, "");
       paramString2 = paramString6;
       if (TextUtils.isEmpty(paramString6)) {
         paramString2 = "";
       }
-      m = afp(paramInt2);
+      m = and(paramInt2);
       if (!paramBoolean3) {
         break label529;
       }
@@ -103,7 +103,7 @@ public final class ah
     label529:
     for (int k = 1;; k = 0)
     {
-      ((e)localObject).a(14904, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str1, str2, paramString1, Integer.valueOf(paramInt3), Integer.valueOf(j), paramString3, Long.valueOf(l), paramString4, Integer.valueOf(i), paramString5, paramString2, Integer.valueOf(paramInt4), Integer.valueOf(m), Integer.valueOf(k) });
+      ((f)localObject).a(14904, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str1, str2, paramString1, Integer.valueOf(paramInt3), Integer.valueOf(j), paramString3, Long.valueOf(l), paramString4, Integer.valueOf(i), paramString5, paramString2, Integer.valueOf(paramInt4), Integer.valueOf(m), Integer.valueOf(k) });
       AppMethodBeat.o(117653);
       return;
       i = 2;
@@ -126,11 +126,11 @@ public final class ah
   
   public static void a(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, boolean paramBoolean, String paramString5)
   {
-    AppMethodBeat.i(187846);
+    AppMethodBeat.i(211444);
     if ((paramInt1 == 3) || (paramInt1 == 20)) {
       a(301, paramInt1, paramString1, paramString2, paramString5, 0, true, "", true, paramString3, paramString4, paramInt2, paramBoolean);
     }
-    AppMethodBeat.o(187846);
+    AppMethodBeat.o(211444);
   }
   
   public static void a(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, boolean paramBoolean, String paramString4, String paramString5, int paramInt3)
@@ -163,9 +163,9 @@ public final class ah
   
   public static void a(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, int paramInt2)
   {
-    AppMethodBeat.i(187844);
+    AppMethodBeat.i(211441);
     a(207, paramInt1, paramString1, paramString2, paramString3, 0, true, paramString4, paramBoolean, paramString5, "", paramInt2);
-    AppMethodBeat.o(187844);
+    AppMethodBeat.o(211441);
   }
   
   public static void a(int paramInt1, String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt2)
@@ -177,11 +177,11 @@ public final class ah
   
   public static void a(int paramInt1, String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt2, String paramString4, String paramString5)
   {
-    AppMethodBeat.i(187845);
+    AppMethodBeat.i(211443);
     if ((paramInt1 == 3) || (paramInt1 == 20)) {
       a(300, paramInt1, paramString1, paramString2, paramString5, 0, paramBoolean, "", true, paramString3, paramString4, paramInt2, false);
     }
-    AppMethodBeat.o(187845);
+    AppMethodBeat.o(211443);
   }
   
   public static void a(int paramInt1, String paramString1, String paramString2, boolean paramBoolean1, String paramString3, int paramInt2, String paramString4, boolean paramBoolean2)
@@ -208,35 +208,42 @@ public final class ah
     AppMethodBeat.o(117651);
   }
   
-  private static int afp(int paramInt)
+  private static int and(int paramInt)
   {
     AppMethodBeat.i(117654);
     switch (paramInt)
     {
     default: 
-      paramInt = ai.aft(0);
+      paramInt = ai.anh(0);
       AppMethodBeat.o(117654);
       return paramInt;
     case 201: 
-      paramInt = ai.fXV();
+      paramInt = ai.gQG();
       AppMethodBeat.o(117654);
       return paramInt;
     }
-    paramInt = ai.aft(1);
+    paramInt = ai.anh(1);
     AppMethodBeat.o(117654);
     return paramInt;
   }
   
   public static void b(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, boolean paramBoolean, String paramString5)
   {
-    AppMethodBeat.i(187847);
+    AppMethodBeat.i(211446);
     if ((paramInt1 == 3) || (paramInt1 == 20)) {
       a(302, paramInt1, paramString1, paramString2, paramString5, 0, true, "", true, paramString3, paramString4, paramInt2, paramBoolean);
     }
-    AppMethodBeat.o(187847);
+    AppMethodBeat.o(211446);
   }
   
-  private static String bUg()
+  public static void c(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
+  {
+    AppMethodBeat.i(211438);
+    a(204, paramInt1, paramString1, paramString2, paramString3, 0, true, paramString4, true, null, "", paramInt2);
+    AppMethodBeat.o(211438);
+  }
+  
+  private static String chm()
   {
     AppMethodBeat.i(117655);
     Context localContext = MMApplicationContext.getContext();
@@ -275,14 +282,7 @@ public final class ah
     return "fail";
   }
   
-  public static void c(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
-  {
-    AppMethodBeat.i(187843);
-    a(204, paramInt1, paramString1, paramString2, paramString3, 0, true, paramString4, true, null, "", paramInt2);
-    AppMethodBeat.o(187843);
-  }
-  
-  public static void fXT() {}
+  public static void gQE() {}
   
   private static String u(Object... paramVarArgs)
   {
@@ -302,7 +302,7 @@ public final class ah
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.ah
  * JD-Core Version:    0.7.0.1
  */

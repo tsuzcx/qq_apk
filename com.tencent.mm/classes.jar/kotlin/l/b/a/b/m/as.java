@@ -8,8 +8,8 @@ public final class as
   public static final boolean at(ab paramab)
   {
     AppMethodBeat.i(60826);
-    p.h(paramab, "$this$isCustomTypeVariable");
-    bg localbg = paramab.hLF();
+    p.k(paramab, "$this$isCustomTypeVariable");
+    bg localbg = paramab.iPX();
     paramab = localbg;
     if (!(localbg instanceof k)) {
       paramab = null;
@@ -17,7 +17,7 @@ public final class as
     paramab = (k)paramab;
     if (paramab != null)
     {
-      boolean bool = paramab.hDZ();
+      boolean bool = paramab.iIt();
       AppMethodBeat.o(60826);
       return bool;
     }
@@ -28,8 +28,8 @@ public final class as
   public static final k au(ab paramab)
   {
     AppMethodBeat.i(60827);
-    p.h(paramab, "$this$getCustomTypeVariable");
-    bg localbg = paramab.hLF();
+    p.k(paramab, "$this$getCustomTypeVariable");
+    bg localbg = paramab.iPX();
     paramab = localbg;
     if (!(localbg instanceof k)) {
       paramab = null;
@@ -37,7 +37,7 @@ public final class as
     paramab = (k)paramab;
     if (paramab != null)
     {
-      if (paramab.hDZ())
+      if (paramab.iIt())
       {
         AppMethodBeat.o(60827);
         return paramab;
@@ -52,8 +52,8 @@ public final class as
   public static final ab av(ab paramab)
   {
     AppMethodBeat.i(60828);
-    p.h(paramab, "$this$getSubtypeRepresentative");
-    Object localObject2 = paramab.hLF();
+    p.k(paramab, "$this$getSubtypeRepresentative");
+    Object localObject2 = paramab.iPX();
     Object localObject1 = localObject2;
     if (!(localObject2 instanceof ar)) {
       localObject1 = null;
@@ -62,7 +62,7 @@ public final class as
     localObject1 = paramab;
     if (localObject2 != null)
     {
-      localObject1 = ((ar)localObject2).hKC();
+      localObject1 = ((ar)localObject2).iOS();
       if (localObject1 != null) {
         break label58;
       }
@@ -79,8 +79,8 @@ public final class as
   public static final ab aw(ab paramab)
   {
     AppMethodBeat.i(60829);
-    p.h(paramab, "$this$getSupertypeRepresentative");
-    Object localObject2 = paramab.hLF();
+    p.k(paramab, "$this$getSupertypeRepresentative");
+    Object localObject2 = paramab.iPX();
     Object localObject1 = localObject2;
     if (!(localObject2 instanceof ar)) {
       localObject1 = null;
@@ -89,7 +89,7 @@ public final class as
     localObject1 = paramab;
     if (localObject2 != null)
     {
-      localObject1 = ((ar)localObject2).hKD();
+      localObject1 = ((ar)localObject2).iOT();
       if (localObject1 != null) {
         break label58;
       }
@@ -106,9 +106,9 @@ public final class as
   public static final boolean b(ab paramab1, ab paramab2)
   {
     AppMethodBeat.i(60830);
-    p.h(paramab1, "first");
-    p.h(paramab2, "second");
-    bg localbg = paramab1.hLF();
+    p.k(paramab1, "first");
+    p.k(paramab2, "second");
+    bg localbg = paramab1.iPX();
     Object localObject = localbg;
     if (!(localbg instanceof ar)) {
       localObject = null;
@@ -119,7 +119,7 @@ public final class as
       bool = ((ar)localObject).ac(paramab2);
       if (!bool)
       {
-        localObject = paramab2.hLF();
+        localObject = paramab2.iPX();
         paramab2 = (ab)localObject;
         if (!(localObject instanceof ar)) {
           paramab2 = null;
@@ -148,7 +148,7 @@ public final class as
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.as
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,10 @@
 package com.tencent.mm.plugin.fingerprint.faceid.auth;
 
-import android.arch.lifecycle.Lifecycle.Event;
-import android.arch.lifecycle.LifecycleObserver;
-import android.arch.lifecycle.OnLifecycleEvent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.DialogInterface.OnShowListener;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,94 +14,65 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+import androidx.lifecycle.h.a;
+import androidx.lifecycle.k;
+import androidx.lifecycle.t;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.fingerprint.b.p;
 import com.tencent.mm.plugin.fingerprint.d.c;
+import com.tencent.mm.plugin.wxpay.a.a;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.plugin.wxpay.a.j;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.base.i;
 import com.tencent.soter.a.g.f;
 
 public class WalletFaceIdDialog
   extends i
-  implements LifecycleObserver
+  implements k
 {
-  private View jBN;
-  TextView nAB;
-  FrameAnimatorImageView wEI;
-  TextView wEJ;
-  private TextView wEK;
-  ViewGroup wEL;
-  private ViewGroup wEM;
-  private a wEN;
+  FrameAnimatorImageView BxF;
+  TextView BxG;
+  private TextView BxH;
+  ViewGroup BxI;
+  private ViewGroup BxJ;
+  private a BxK;
+  private View mrI;
+  TextView qCM;
   
   private WalletFaceIdDialog(Context paramContext)
   {
-    super(paramContext, 2131820908);
+    super(paramContext, a.j.FaceIdDialogStyle);
     AppMethodBeat.i(64279);
-    initView();
-    AppMethodBeat.o(64279);
-  }
-  
-  private WalletFaceIdDialog(Context paramContext, int paramInt)
-  {
-    super(paramContext, 2131820908);
-    AppMethodBeat.i(64280);
-    initView();
-    AppMethodBeat.o(64280);
-  }
-  
-  public WalletFaceIdDialog(Context paramContext, a parama)
-  {
-    this(paramContext, parama, null);
-  }
-  
-  public WalletFaceIdDialog(Context paramContext, a parama, Bundle paramBundle)
-  {
-    this(paramContext);
-    AppMethodBeat.i(64278);
-    this.wEN = new a(this, parama, paramBundle);
-    setOnShowListener(this.wEN);
-    setOnDismissListener(this.wEN);
-    setOnCancelListener(this.wEN);
-    setCancelable(false);
-    setCanceledOnTouchOutside(false);
-    AppMethodBeat.o(64278);
-  }
-  
-  private void dJI()
-  {
-    AppMethodBeat.i(64284);
-    this.jBN.setBackgroundColor(0);
-    this.nAB.setTextColor(getContext().getResources().getColor(2131100245));
-    AppMethodBeat.o(64284);
-  }
-  
-  private void initView()
-  {
-    AppMethodBeat.i(64283);
-    this.jBN = View.inflate(getContext(), 2131494101, null);
-    this.wEM = ((ViewGroup)this.jBN.findViewById(2131300611));
-    this.wEI = ((FrameAnimatorImageView)this.jBN.findViewById(2131300607));
-    this.nAB = ((TextView)this.jBN.findViewById(2131300610));
-    this.wEJ = ((TextView)this.jBN.findViewById(2131300609));
-    this.wEK = ((TextView)this.jBN.findViewById(2131300608));
-    this.wEL = ((ViewGroup)this.jBN.findViewById(2131300606));
-    dJI();
-    this.wEK.setOnClickListener(new View.OnClickListener()
+    this.mrI = View.inflate(getContext(), a.g.faceid_auth_dialog, null);
+    this.BxJ = ((ViewGroup)this.mrI.findViewById(a.f.fiad_toast_layout));
+    this.BxF = ((FrameAnimatorImageView)this.mrI.findViewById(a.f.fiad_face_iv));
+    this.qCM = ((TextView)this.mrI.findViewById(a.f.fiad_tips_tv));
+    this.BxG = ((TextView)this.mrI.findViewById(a.f.fiad_right_btn));
+    this.BxH = ((TextView)this.mrI.findViewById(a.f.fiad_left_btn));
+    this.BxI = ((ViewGroup)this.mrI.findViewById(a.f.fiad_bottom_layout));
+    ar.a(this.BxH.getPaint(), 0.8F);
+    ar.a(this.BxG.getPaint(), 0.8F);
+    this.mrI.setBackgroundColor(0);
+    this.BxH.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(64257);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fingerprint/faceid/auth/WalletFaceIdDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/fingerprint/faceid/auth/WalletFaceIdDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         Log.d("MicroMsg.WalletFaceIdDialog", "click dismiss btn");
         paramAnonymousView = WalletFaceIdDialog.a(WalletFaceIdDialog.this);
         Log.i("MicroMsg.WalletFaceIdDialog", "click left btn");
-        if (paramAnonymousView.wET) {
+        if (paramAnonymousView.BxQ) {
           paramAnonymousView.onAuthFail(-1);
         }
         for (;;)
@@ -118,74 +85,85 @@ public class WalletFaceIdDialog
         }
       }
     });
-    this.wEJ.setOnClickListener(new View.OnClickListener()
+    this.BxG.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(64258);
         Object localObject = new b();
-        ((b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fingerprint/faceid/auth/WalletFaceIdDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+        ((b)localObject).bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/fingerprint/faceid/auth/WalletFaceIdDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
         Log.d("MicroMsg.WalletFaceIdDialog", "click right btn");
         paramAnonymousView = WalletFaceIdDialog.a(WalletFaceIdDialog.this);
         Log.i("MicroMsg.WalletFaceIdDialog", "click right btn");
-        localObject = paramAnonymousView.wEP;
-        ((WalletFaceIdDialog)localObject).wEJ.setEnabled(false);
-        ((WalletFaceIdDialog)localObject).nAB.setText(2131759125);
-        paramAnonymousView.dJM();
+        localObject = paramAnonymousView.BxM;
+        ((WalletFaceIdDialog)localObject).BxG.setEnabled(false);
+        ((WalletFaceIdDialog)localObject).qCM.setText(a.i.faceid_auth_dialog_verify);
+        paramAnonymousView.eol();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fingerprint/faceid/auth/WalletFaceIdDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(64258);
       }
     });
-    AppMethodBeat.o(64283);
+    AppMethodBeat.o(64279);
+  }
+  
+  public WalletFaceIdDialog(Context paramContext, a parama, Bundle paramBundle)
+  {
+    this(paramContext);
+    AppMethodBeat.i(64278);
+    this.BxK = new a(this, parama, paramBundle);
+    setOnShowListener(this.BxK);
+    setOnDismissListener(this.BxK);
+    setOnCancelListener(this.BxK);
+    setCancelable(false);
+    setCanceledOnTouchOutside(false);
+    AppMethodBeat.o(64278);
   }
   
   public final void d(Animation.AnimationListener paramAnimationListener)
   {
     AppMethodBeat.i(64287);
-    this.wEI.setImageResource(2131232290);
-    Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772048);
-    this.wEI.startAnimation(localAnimation);
+    this.BxF.setImageResource(a.e.faceid_failed_icon);
+    Animation localAnimation = AnimationUtils.loadAnimation(getContext(), a.a.faceid_failed_shake);
+    this.BxF.startAnimation(localAnimation);
     if (paramAnimationListener != null) {
       localAnimation.setAnimationListener(paramAnimationListener);
     }
     AppMethodBeat.o(64287);
   }
   
-  public final void dJJ()
+  public final void eoi()
   {
     AppMethodBeat.i(64285);
     getWindow().setDimAmount(0.5F);
-    this.jBN.setBackgroundResource(2131234446);
-    this.wEM.setBackground(null);
-    this.nAB.setTextColor(getContext().getResources().getColor(2131100904));
-    this.nAB.setTextSize(0, getContext().getResources().getDimensionPixelSize(2131165203));
+    this.mrI.setBackgroundResource(a.e.popup_bg_without_shadow);
+    this.BxJ.setBackground(null);
     AppMethodBeat.o(64285);
   }
   
-  public final void dJK()
+  public final void eoj()
   {
     AppMethodBeat.i(64286);
     Log.d("MicroMsg.WalletFaceIdDialog", "trigger load start");
-    this.wEI.a(2131232343, new FrameAnimatorImageView.a()
+    this.BxF.a(a.e.faceid_verify_trigger, new FrameAnimatorImageView.a()
     {
       public final void onStop()
       {
         AppMethodBeat.i(64259);
         Log.d("MicroMsg.WalletFaceIdDialog", "trigger load finish");
-        WalletFaceIdDialog.b(WalletFaceIdDialog.this).a(2131232340, null);
+        WalletFaceIdDialog.b(WalletFaceIdDialog.this).a(a.e.faceid_verify_breath, null);
         AppMethodBeat.o(64259);
       }
     });
     AppMethodBeat.o(64286);
   }
   
-  @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+  @t(jl=h.a.ON_STOP)
   public void onActivityStop()
   {
     AppMethodBeat.i(64288);
     Log.i("MicroMsg.WalletFaceIdDialog", "activity pause");
-    a.a(this.wEN);
+    a.a(this.BxK);
     dismiss();
     AppMethodBeat.o(64288);
   }
@@ -194,7 +172,7 @@ public class WalletFaceIdDialog
   {
     AppMethodBeat.i(64281);
     super.onCreate(paramBundle);
-    setContentView(this.jBN);
+    setContentView(this.mrI);
     AppMethodBeat.o(64281);
   }
   
@@ -208,24 +186,24 @@ public class WalletFaceIdDialog
   static final class a
     implements DialogInterface.OnCancelListener, DialogInterface.OnDismissListener, DialogInterface.OnShowListener
   {
-    private Bundle jkf;
+    WalletFaceIdDialog BxM;
+    private com.tencent.mm.plugin.fingerprint.d.a BxN;
+    private a BxO;
+    private int BxP;
+    boolean BxQ;
+    private c BxR;
+    private Bundle mab;
     private int retryCount;
     private int scene;
-    WalletFaceIdDialog wEP;
-    private com.tencent.mm.plugin.fingerprint.d.a wEQ;
-    private a wER;
-    private int wES;
-    boolean wET;
-    private c wEU;
     
     public a(WalletFaceIdDialog paramWalletFaceIdDialog, a parama, Bundle paramBundle)
     {
       AppMethodBeat.i(64264);
       this.retryCount = 0;
-      this.wET = false;
-      this.wEU = new c()
+      this.BxQ = false;
+      this.BxR = new c()
       {
-        public final void gz(int paramAnonymousInt1, int paramAnonymousInt2)
+        public final void hu(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(64260);
           Log.i("MicroMsg.WalletFaceIdDialog", "auth result: %s, retry: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(WalletFaceIdDialog.a.b(WalletFaceIdDialog.a.this)) });
@@ -253,49 +231,49 @@ public class WalletFaceIdDialog
           }
         }
       };
-      this.wEP = paramWalletFaceIdDialog;
-      this.wER = parama;
-      this.jkf = paramBundle;
-      if (this.jkf != null) {
-        this.scene = this.jkf.getInt("face_auth_scene");
+      this.BxM = paramWalletFaceIdDialog;
+      this.BxO = parama;
+      this.mab = paramBundle;
+      if (this.mab != null) {
+        this.scene = this.mab.getInt("face_auth_scene");
       }
       AppMethodBeat.o(64264);
     }
     
-    private void dJL()
+    private void eok()
     {
       AppMethodBeat.i(64265);
-      this.wEQ.userCancel();
+      this.BxN.userCancel();
       AppMethodBeat.o(64265);
     }
     
-    final void dJM()
+    final void eol()
     {
       AppMethodBeat.i(64266);
       Log.i("MicroMsg.WalletFaceIdDialog", "req faceid auth");
-      if (this.wEQ == null)
+      if (this.BxN == null)
       {
         Log.w("MicroMsg.WalletFaceIdDialog", "mgr is null");
         AppMethodBeat.o(64266);
         return;
       }
-      this.wEQ.userCancel();
-      if (!this.wEQ.dKc())
+      this.BxN.userCancel();
+      if (!this.BxN.eoB())
       {
         Log.w("MicroMsg.WalletFaceIdDialog", "no faceid enrolled");
         onAuthFail(-2);
         AppMethodBeat.o(64266);
         return;
       }
-      if (Util.isNullOrNil(p.wFK.wFE))
+      if (Util.isNullOrNil(p.ByH.ByB))
       {
         Log.i("MicroMsg.WalletFaceIdDialog", "no challenge");
         onAuthFail(-3);
         AppMethodBeat.o(64266);
         return;
       }
-      this.wEQ.a(this.wEU);
-      this.wEP.dJK();
+      this.BxN.a(this.BxR);
+      this.BxM.eoj();
       AppMethodBeat.o(64266);
     }
     
@@ -303,10 +281,10 @@ public class WalletFaceIdDialog
     {
       AppMethodBeat.i(64268);
       Log.i("MicroMsg.WalletFaceIdDialog", "auth cancel");
-      if (this.wER != null)
+      if (this.BxO != null)
       {
-        this.wER.onAuthCancel();
-        this.wER = null;
+        this.BxO.onAuthCancel();
+        this.BxO = null;
       }
       AppMethodBeat.o(64268);
     }
@@ -315,12 +293,12 @@ public class WalletFaceIdDialog
     {
       AppMethodBeat.i(64267);
       Log.i("MicroMsg.WalletFaceIdDialog", "auth fail");
-      if (this.wER != null)
+      if (this.BxO != null)
       {
-        this.wER.onAuthFail(paramInt);
-        this.wER = null;
+        this.BxO.onAuthFail(paramInt);
+        this.BxO = null;
       }
-      this.wEP.dismiss();
+      this.BxM.dismiss();
       AppMethodBeat.o(64267);
     }
     
@@ -336,7 +314,7 @@ public class WalletFaceIdDialog
     {
       AppMethodBeat.i(64269);
       Log.i("MicroMsg.WalletFaceIdDialog", "face id dialog dismiss");
-      dJL();
+      eok();
       if (this.scene == 1) {
         onAuthCancel();
       }
@@ -347,16 +325,16 @@ public class WalletFaceIdDialog
     {
       AppMethodBeat.i(64270);
       Log.i("MicroMsg.WalletFaceIdDialog", "face id dialog show");
-      this.wEQ = ((com.tencent.mm.plugin.fingerprint.d.a)g.af(com.tencent.mm.plugin.fingerprint.d.a.class));
-      f.hlO().hlP();
-      dJM();
+      this.BxN = ((com.tencent.mm.plugin.fingerprint.d.a)h.ae(com.tencent.mm.plugin.fingerprint.d.a.class));
+      f.ipn().ipo();
+      eol();
       AppMethodBeat.o(64270);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.faceid.auth.WalletFaceIdDialog
  * JD-Core Version:    0.7.0.1
  */

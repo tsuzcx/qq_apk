@@ -23,7 +23,7 @@ public class YtSDKKitFramework
 {
   private static final String TAG;
   private static YtSDKKitFramework instance;
-  private static final String version = "1.0.8.67-wx";
+  private static final String version = "1.0.8.70-wx";
   private Rect detectRect;
   private IYtSDKKitFrameworkEventListener eventListener;
   private int networkRequestTimeoutMS;
@@ -31,18 +31,18 @@ public class YtSDKKitFramework
   
   static
   {
-    AppMethodBeat.i(192700);
+    AppMethodBeat.i(256907);
     TAG = YtSDKKitFramework.class.getSimpleName();
-    AppMethodBeat.o(192700);
+    AppMethodBeat.o(256907);
   }
   
   private YtSDKKitFramework()
   {
-    AppMethodBeat.i(192688);
+    AppMethodBeat.i(256892);
     this.previewRect = new Rect(0, 0, 480, 640);
     this.detectRect = new Rect(10, 110, 470, 530);
     this.networkRequestTimeoutMS = 60000;
-    AppMethodBeat.o(192688);
+    AppMethodBeat.o(256892);
   }
   
   public static void clearInstance()
@@ -63,12 +63,12 @@ public class YtSDKKitFramework
   {
     try
     {
-      AppMethodBeat.i(192690);
+      AppMethodBeat.i(256895);
       if (instance == null) {
         instance = new YtSDKKitFramework();
       }
       YtSDKKitFramework localYtSDKKitFramework = instance;
-      AppMethodBeat.o(192690);
+      AppMethodBeat.o(256895);
       return localYtSDKKitFramework;
     }
     finally {}
@@ -76,7 +76,7 @@ public class YtSDKKitFramework
   
   private YtFSMBaseState parseStateFrom(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(192689);
+    AppMethodBeat.i(256894);
     for (;;)
     {
       try
@@ -90,7 +90,7 @@ public class YtSDKKitFramework
         {
           localYtFSMBaseState.loadStateWith(paramString, paramJSONObject);
           paramJSONObject = localYtFSMBaseState;
-          AppMethodBeat.o(192689);
+          AppMethodBeat.o(256894);
           return paramJSONObject;
         }
         catch (Throwable localThrowable2)
@@ -109,36 +109,36 @@ public class YtSDKKitFramework
   
   public int deInit()
   {
-    AppMethodBeat.i(192692);
-    YtLogger.i(TAG, "sdkkit framework 1.0.8.67-wx deinit");
+    AppMethodBeat.i(256897);
+    YtLogger.i(TAG, "sdkkit framework 1.0.8.70-wx deinit");
     YtSDKKitNetHelper.clearInstance();
     YtFSM.getInstance().stop();
     YtFSM.clearInstance();
     YtSDKStats.getInstance().exitState();
     YtSDKStats.clearInstance();
-    AppMethodBeat.o(192692);
+    AppMethodBeat.o(256897);
     return 0;
   }
   
   public void doPause()
   {
-    AppMethodBeat.i(192697);
+    AppMethodBeat.i(256902);
     YtFSM.getInstance().handlePauseEvent();
-    AppMethodBeat.o(192697);
+    AppMethodBeat.o(256902);
   }
   
   public void doResume()
   {
-    AppMethodBeat.i(192698);
+    AppMethodBeat.i(256903);
     YtFSM.getInstance().handleResumeEvent();
-    AppMethodBeat.o(192698);
+    AppMethodBeat.o(256903);
   }
   
-  public void fireEvent(YtFrameworkFireEventType paramYtFrameworkFireEventType, Object paramObject)
+  public void fireEvent(YtSDKKitFramework.YtFrameworkFireEventType paramYtFrameworkFireEventType, Object paramObject)
   {
-    AppMethodBeat.i(192694);
+    AppMethodBeat.i(256899);
     YtFSM.getInstance().handleEvent(paramYtFrameworkFireEventType, paramObject);
-    AppMethodBeat.o(192694);
+    AppMethodBeat.o(256899);
   }
   
   public Rect getDetectRect()
@@ -153,9 +153,9 @@ public class YtSDKKitFramework
   
   public YtSDKPlatformContext getPlatformContext()
   {
-    AppMethodBeat.i(192699);
+    AppMethodBeat.i(256904);
     YtSDKPlatformContext localYtSDKPlatformContext = YtFSM.getInstance().getContext();
-    AppMethodBeat.o(192699);
+    AppMethodBeat.o(256904);
     return localYtSDKPlatformContext;
   }
   
@@ -166,24 +166,24 @@ public class YtSDKKitFramework
   
   public int init(YtSDKPlatformContext paramYtSDKPlatformContext, JSONObject paramJSONObject, YtSDKKitFrameworkWorkMode paramYtSDKKitFrameworkWorkMode, ArrayList<String> paramArrayList, IYtSDKKitFrameworkEventListener paramIYtSDKKitFrameworkEventListener)
   {
-    AppMethodBeat.i(192691);
-    YtLogger.i(TAG, "sdkkit framework 1.0.8.67-wx init");
+    AppMethodBeat.i(256896);
+    YtLogger.i(TAG, "sdkkit framework 1.0.8.70-wx init");
     if (paramYtSDKPlatformContext == null)
     {
       YtLogger.e(TAG, "Context cannot be null");
-      AppMethodBeat.o(192691);
+      AppMethodBeat.o(256896);
       return -1;
     }
     if (paramArrayList.isEmpty())
     {
       YtLogger.e(TAG, "Pipeline state name cannot be empty");
-      AppMethodBeat.o(192691);
+      AppMethodBeat.o(256896);
       return -1;
     }
     if (paramIYtSDKKitFrameworkEventListener == null)
     {
       YtLogger.e(TAG, "Event listener cannot be null");
-      AppMethodBeat.o(192691);
+      AppMethodBeat.o(256896);
       return -1;
     }
     YtFSM.getInstance().stop();
@@ -202,7 +202,7 @@ public class YtSDKKitFramework
       {
         i = paramJSONObject.getInt("thread_priority");
         YtFSM.getInstance().start((String)paramArrayList.get(0), paramYtSDKKitFrameworkWorkMode, i);
-        AppMethodBeat.o(192691);
+        AppMethodBeat.o(256896);
         return 0;
       }
       catch (JSONException paramYtSDKPlatformContext)
@@ -215,18 +215,18 @@ public class YtSDKKitFramework
   
   public void reset()
   {
-    AppMethodBeat.i(192693);
+    AppMethodBeat.i(256898);
     new Handler(Looper.getMainLooper()).post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(192680);
+        AppMethodBeat.i(256866);
         YtSDKStats.getInstance().reset();
         YtFSM.getInstance().reset();
-        AppMethodBeat.o(192680);
+        AppMethodBeat.o(256866);
       }
     });
-    AppMethodBeat.o(192693);
+    AppMethodBeat.o(256898);
   }
   
   public void setDetectRect(Rect paramRect)
@@ -250,28 +250,28 @@ public class YtSDKKitFramework
   
   public void updateSDKSetting(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(192696);
+    AppMethodBeat.i(256901);
     YtFSM.getInstance().updateSDKSetting(paramJSONObject);
-    AppMethodBeat.o(192696);
+    AppMethodBeat.o(256901);
   }
   
   public int updateWithFrameData(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(192695);
+    AppMethodBeat.i(256900);
     long l = System.currentTimeMillis();
     if (l <= 946684800000L)
     {
-      AppMethodBeat.o(192695);
+      AppMethodBeat.o(256900);
       return 3145731;
     }
     YtFSM.getInstance().update(paramArrayOfByte, paramInt1, paramInt2, paramInt3, l);
-    AppMethodBeat.o(192695);
+    AppMethodBeat.o(256900);
     return 0;
   }
   
   public String version()
   {
-    return "1.0.8.67-wx";
+    return "1.0.8.70-wx";
   }
   
   public static abstract interface IYTBaseFunctionListener
@@ -297,20 +297,6 @@ public class YtSDKKitFramework
     public abstract void onNetworkRequestEvent(String paramString1, String paramString2, HashMap<String, String> paramHashMap, YtSDKKitFramework.IYtSDKKitNetResponseParser paramIYtSDKKitNetResponseParser);
   }
   
-  public static enum YtFrameworkFireEventType
-  {
-    static
-    {
-      AppMethodBeat.i(192683);
-      YT_EVENT_TRIGGER_BEGIN_LIVENESS = new YtFrameworkFireEventType("YT_EVENT_TRIGGER_BEGIN_LIVENESS", 0);
-      YT_EVENT_TRIGGER_CANCEL_LIVENESS = new YtFrameworkFireEventType("YT_EVENT_TRIGGER_CANCEL_LIVENESS", 1);
-      $VALUES = new YtFrameworkFireEventType[] { YT_EVENT_TRIGGER_BEGIN_LIVENESS, YT_EVENT_TRIGGER_CANCEL_LIVENESS };
-      AppMethodBeat.o(192683);
-    }
-    
-    private YtFrameworkFireEventType() {}
-  }
-  
   public static enum YtSDKKitFrameworkWorkMode
   {
     private static HashMap<Integer, YtSDKKitFrameworkWorkMode> map;
@@ -319,7 +305,7 @@ public class YtSDKKitFramework
     static
     {
       int i = 0;
-      AppMethodBeat.i(192687);
+      AppMethodBeat.i(256882);
       YT_FW_UNKNOWN = new YtSDKKitFrameworkWorkMode("YT_FW_UNKNOWN", 0, 0);
       YT_FW_OCR_TYPE = new YtSDKKitFrameworkWorkMode("YT_FW_OCR_TYPE", 1, 1);
       YT_FW_SILENT_TYPE = new YtSDKKitFrameworkWorkMode("YT_FW_SILENT_TYPE", 2, 2);
@@ -339,7 +325,7 @@ public class YtSDKKitFramework
         map.put(Integer.valueOf(localYtSDKKitFrameworkWorkMode.value), localYtSDKKitFrameworkWorkMode);
         i += 1;
       }
-      AppMethodBeat.o(192687);
+      AppMethodBeat.o(256882);
     }
     
     private YtSDKKitFrameworkWorkMode(int paramInt)
@@ -349,15 +335,15 @@ public class YtSDKKitFramework
     
     public static YtSDKKitFrameworkWorkMode valueOf(int paramInt)
     {
-      AppMethodBeat.i(192686);
+      AppMethodBeat.i(256880);
       if (map.get(Integer.valueOf(paramInt)) == null)
       {
         localYtSDKKitFrameworkWorkMode = YT_FW_UNKNOWN;
-        AppMethodBeat.o(192686);
+        AppMethodBeat.o(256880);
         return localYtSDKKitFrameworkWorkMode;
       }
       YtSDKKitFrameworkWorkMode localYtSDKKitFrameworkWorkMode = (YtSDKKitFrameworkWorkMode)map.get(Integer.valueOf(paramInt));
-      AppMethodBeat.o(192686);
+      AppMethodBeat.o(256880);
       return localYtSDKKitFrameworkWorkMode;
     }
     

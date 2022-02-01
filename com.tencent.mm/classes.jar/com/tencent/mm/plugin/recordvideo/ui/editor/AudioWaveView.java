@@ -10,34 +10,37 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import com.google.android.exoplayer2.e;
+import com.google.android.exoplayer2.g.g;
 import com.google.android.exoplayer2.q.a;
+import com.google.android.exoplayer2.source.r;
 import com.google.android.exoplayer2.v;
+import com.google.android.exoplayer2.w;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/AudioWaveView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isPlayerLoading", "", "()Z", "setPlayerLoading", "(Z)V", "isRunningShow", "setRunningShow", "mRandom", "", "getMRandom", "()D", "setMRandom", "(D)V", "mRectCount", "getMRectCount", "()I", "setMRectCount", "(I)V", "mRectHeight", "getMRectHeight", "setMRectHeight", "mRectWidth", "getMRectWidth", "setMRectWidth", "mWavePaint", "Landroid/graphics/Paint;", "getMWavePaint", "()Landroid/graphics/Paint;", "setMWavePaint", "(Landroid/graphics/Paint;)V", "mWavePatinColorState", "Landroid/content/res/ColorStateList;", "getMWavePatinColorState", "()Landroid/content/res/ColorStateList;", "setMWavePatinColorState", "(Landroid/content/res/ColorStateList;)V", "mWidth", "getMWidth", "setMWidth", "offset", "getOffset", "value", "Lcom/google/android/exoplayer2/SimpleExoPlayer;", "player", "getPlayer", "()Lcom/google/android/exoplayer2/SimpleExoPlayer;", "setPlayer", "(Lcom/google/android/exoplayer2/SimpleExoPlayer;)V", "drawRoundRect", "", "canvas", "Landroid/graphics/Canvas;", "rectF", "Landroid/graphics/RectF;", "r1", "", "r2", "initView", "onDraw", "onSizeChanged", "w", "h", "oldw", "oldh", "setColor", "colorStateList", "color", "setSelected", "selected", "setShow", "isShow", "updateColors", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/AudioWaveView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isPlayerLoading", "", "()Z", "setPlayerLoading", "(Z)V", "isRunningShow", "setRunningShow", "mRandom", "", "getMRandom", "()D", "setMRandom", "(D)V", "mRectCount", "getMRectCount", "()I", "setMRectCount", "(I)V", "mRectHeight", "getMRectHeight", "setMRectHeight", "mRectWidth", "getMRectWidth", "setMRectWidth", "mWavePaint", "Landroid/graphics/Paint;", "getMWavePaint", "()Landroid/graphics/Paint;", "setMWavePaint", "(Landroid/graphics/Paint;)V", "mWavePatinColorState", "Landroid/content/res/ColorStateList;", "getMWavePatinColorState", "()Landroid/content/res/ColorStateList;", "setMWavePatinColorState", "(Landroid/content/res/ColorStateList;)V", "mWidth", "getMWidth", "setMWidth", "offset", "getOffset", "value", "Lcom/google/android/exoplayer2/SimpleExoPlayer;", "player", "getPlayer", "()Lcom/google/android/exoplayer2/SimpleExoPlayer;", "setPlayer", "(Lcom/google/android/exoplayer2/SimpleExoPlayer;)V", "drawRoundRect", "", "canvas", "Landroid/graphics/Canvas;", "rectF", "Landroid/graphics/RectF;", "r1", "", "r2", "initView", "onDraw", "onSizeChanged", "w", "h", "oldw", "oldh", "setColor", "colorStateList", "color", "setSelected", "selected", "setShow", "isShow", "updateColors", "plugin-recordvideo_release"})
 public final class AudioWaveView
   extends View
 {
-  private int Caf;
-  private Paint Cag;
-  private ColorStateList Cah;
-  private int Cai;
-  private double Caj;
-  private boolean Cak;
-  private boolean Cal;
-  private v hWJ;
+  private int HWU;
+  private Paint HWV;
+  private ColorStateList HWW;
+  private int HWX;
+  private double HWY;
+  private boolean HWZ;
+  private boolean HXa;
+  private v kLl;
   private int mWidth;
   private final int offset;
-  private int qSb;
+  private int uuh;
   
   public AudioWaveView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(75901);
-    this.offset = a.E(getContext(), 3);
-    this.Cal = true;
+    this.offset = a.H(getContext(), 3);
+    this.HXa = true;
     initView();
     AppMethodBeat.o(75901);
   }
@@ -46,8 +49,8 @@ public final class AudioWaveView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(75902);
-    this.offset = a.E(getContext(), 3);
-    this.Cal = true;
+    this.offset = a.H(getContext(), 3);
+    this.HXa = true;
     initView();
     AppMethodBeat.o(75902);
   }
@@ -55,50 +58,50 @@ public final class AudioWaveView
   private void a(Canvas paramCanvas, RectF paramRectF)
   {
     AppMethodBeat.i(75900);
-    kotlin.g.b.p.h(paramCanvas, "canvas");
-    kotlin.g.b.p.h(paramRectF, "rectF");
-    Paint localPaint = this.Cag;
+    kotlin.g.b.p.k(paramCanvas, "canvas");
+    kotlin.g.b.p.k(paramRectF, "rectF");
+    Paint localPaint = this.HWV;
     if (localPaint == null) {
-      kotlin.g.b.p.hyc();
+      kotlin.g.b.p.iCn();
     }
     paramCanvas.drawRect(paramRectF, localPaint);
     AppMethodBeat.o(75900);
   }
   
-  private final void eLH()
+  private final void fyc()
   {
     int i = 0;
-    AppMethodBeat.i(237576);
-    Paint localPaint = this.Cag;
+    AppMethodBeat.i(221974);
+    Paint localPaint = this.HWV;
     if (localPaint == null) {
-      kotlin.g.b.p.hyc();
+      kotlin.g.b.p.iCn();
     }
-    ColorStateList localColorStateList = this.Cah;
+    ColorStateList localColorStateList = this.HWW;
     if (localColorStateList != null) {
       i = localColorStateList.getColorForState(getDrawableState(), 0);
     }
     localPaint.setColor(i);
-    AppMethodBeat.o(237576);
+    AppMethodBeat.o(221974);
   }
   
   private final void initView()
   {
     AppMethodBeat.i(75896);
-    this.Cai = 20;
-    this.Cag = new Paint();
-    Paint localPaint = this.Cag;
+    this.HWX = 20;
+    this.HWV = new Paint();
+    Paint localPaint = this.HWV;
     if (localPaint == null) {
-      kotlin.g.b.p.hyc();
+      kotlin.g.b.p.iCn();
     }
     localPaint.setStyle(Paint.Style.FILL);
-    localPaint = this.Cag;
+    localPaint = this.HWV;
     if (localPaint == null) {
-      kotlin.g.b.p.hyc();
+      kotlin.g.b.p.iCn();
     }
     localPaint.setColor(-3355444);
-    localPaint = this.Cag;
+    localPaint = this.HWV;
     if (localPaint == null) {
-      kotlin.g.b.p.hyc();
+      kotlin.g.b.p.iCn();
     }
     localPaint.setAntiAlias(true);
     AppMethodBeat.o(75896);
@@ -106,32 +109,32 @@ public final class AudioWaveView
   
   public final double getMRandom()
   {
-    return this.Caj;
+    return this.HWY;
   }
   
   public final int getMRectCount()
   {
-    return this.Cai;
+    return this.HWX;
   }
   
   public final int getMRectHeight()
   {
-    return this.Caf;
+    return this.HWU;
   }
   
   public final int getMRectWidth()
   {
-    return this.qSb;
+    return this.uuh;
   }
   
   public final Paint getMWavePaint()
   {
-    return this.Cag;
+    return this.HWV;
   }
   
   public final ColorStateList getMWavePatinColorState()
   {
-    return this.Cah;
+    return this.HWW;
   }
   
   public final int getMWidth()
@@ -146,31 +149,31 @@ public final class AudioWaveView
   
   public final v getPlayer()
   {
-    return this.hWJ;
+    return this.kLl;
   }
   
   @SuppressLint({"DrawAllocation"})
   protected final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(75899);
-    kotlin.g.b.p.h(paramCanvas, "canvas");
+    kotlin.g.b.p.k(paramCanvas, "canvas");
     super.onDraw(paramCanvas);
     paramCanvas.translate(getWidth() / 2, getHeight());
     int i = 0;
-    int j = this.Cai;
+    int j = this.HWX;
     if (i < j)
     {
-      if (this.Cak)
+      if (this.HWZ)
       {
-        this.Caj = Math.random();
-        float f = (float)(this.Caf * this.Caj);
-        a(paramCanvas, new RectF((float)(this.qSb * i + this.offset), 0.0F, this.qSb * (i + 1), -f));
+        this.HWY = Math.random();
+        float f = (float)(this.HWU * this.HWY);
+        a(paramCanvas, new RectF((float)(this.uuh * i + this.offset), 0.0F, this.uuh * (i + 1), -f));
       }
       for (;;)
       {
         i += 1;
         break;
-        a(paramCanvas, new RectF((float)(this.qSb * i + this.offset), 0.0F, this.qSb * (i + 1), -0.5F));
+        a(paramCanvas, new RectF((float)(this.uuh * i + this.offset), 0.0F, this.uuh * (i + 1), -0.5F));
       }
     }
     postInvalidateDelayed(100L);
@@ -182,17 +185,17 @@ public final class AudioWaveView
     AppMethodBeat.i(75898);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.mWidth = getWidth();
-    this.Caf = (getHeight() / 2);
-    this.qSb = (this.mWidth / (this.Cai * 2));
+    this.HWU = (getHeight() / 2);
+    this.uuh = (this.mWidth / (this.HWX * 2));
     AppMethodBeat.o(75898);
   }
   
   public final void setColor(int paramInt)
   {
     AppMethodBeat.i(75897);
-    Paint localPaint = this.Cag;
+    Paint localPaint = this.HWV;
     if (localPaint == null) {
-      kotlin.g.b.p.hyc();
+      kotlin.g.b.p.iCn();
     }
     localPaint.setColor(paramInt);
     AppMethodBeat.o(75897);
@@ -200,41 +203,41 @@ public final class AudioWaveView
   
   public final void setColor(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(237574);
-    kotlin.g.b.p.h(paramColorStateList, "colorStateList");
-    this.Cah = paramColorStateList;
-    eLH();
-    AppMethodBeat.o(237574);
+    AppMethodBeat.i(221965);
+    kotlin.g.b.p.k(paramColorStateList, "colorStateList");
+    this.HWW = paramColorStateList;
+    fyc();
+    AppMethodBeat.o(221965);
   }
   
   public final void setMRandom(double paramDouble)
   {
-    this.Caj = paramDouble;
+    this.HWY = paramDouble;
   }
   
   public final void setMRectCount(int paramInt)
   {
-    this.Cai = paramInt;
+    this.HWX = paramInt;
   }
   
   public final void setMRectHeight(int paramInt)
   {
-    this.Caf = paramInt;
+    this.HWU = paramInt;
   }
   
   public final void setMRectWidth(int paramInt)
   {
-    this.qSb = paramInt;
+    this.uuh = paramInt;
   }
   
   public final void setMWavePaint(Paint paramPaint)
   {
-    this.Cag = paramPaint;
+    this.HWV = paramPaint;
   }
   
   public final void setMWavePatinColorState(ColorStateList paramColorStateList)
   {
-    this.Cah = paramColorStateList;
+    this.HWW = paramColorStateList;
   }
   
   public final void setMWidth(int paramInt)
@@ -247,8 +250,8 @@ public final class AudioWaveView
     AppMethodBeat.i(75895);
     if (paramv != null)
     {
-      this.hWJ = paramv;
-      paramv = this.hWJ;
+      this.kLl = paramv;
+      paramv = this.kLl;
       if (paramv != null)
       {
         paramv.a((q.a)new a(this));
@@ -261,58 +264,58 @@ public final class AudioWaveView
   
   public final void setPlayerLoading(boolean paramBoolean)
   {
-    this.Cal = paramBoolean;
+    this.HXa = paramBoolean;
   }
   
   public final void setRunningShow(boolean paramBoolean)
   {
-    this.Cak = paramBoolean;
+    this.HWZ = paramBoolean;
   }
   
   public final void setSelected(boolean paramBoolean)
   {
-    AppMethodBeat.i(237575);
+    AppMethodBeat.i(221969);
     super.setSelected(paramBoolean);
-    eLH();
-    AppMethodBeat.o(237575);
+    fyc();
+    AppMethodBeat.o(221969);
   }
   
   public final void setShow(boolean paramBoolean)
   {
-    this.Cak = paramBoolean;
+    this.HWZ = paramBoolean;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/recordvideo/ui/editor/AudioWaveView$player$1", "Lcom/google/android/exoplayer2/Player$EventListener;", "onLoadingChanged", "", "p0", "", "onPlaybackParametersChanged", "Lcom/google/android/exoplayer2/PlaybackParameters;", "onPlayerError", "Lcom/google/android/exoplayer2/ExoPlaybackException;", "onPlayerStateChanged", "p1", "", "onPositionDiscontinuity", "onRepeatModeChanged", "onTimelineChanged", "Lcom/google/android/exoplayer2/Timeline;", "", "onTracksChanged", "Lcom/google/android/exoplayer2/source/TrackGroupArray;", "Lcom/google/android/exoplayer2/trackselection/TrackSelectionArray;", "plugin-recordvideo_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/recordvideo/ui/editor/AudioWaveView$player$1", "Lcom/google/android/exoplayer2/Player$EventListener;", "onLoadingChanged", "", "p0", "", "onPlaybackParametersChanged", "Lcom/google/android/exoplayer2/PlaybackParameters;", "onPlayerError", "Lcom/google/android/exoplayer2/ExoPlaybackException;", "onPlayerStateChanged", "p1", "", "onPositionDiscontinuity", "onRepeatModeChanged", "onTimelineChanged", "Lcom/google/android/exoplayer2/Timeline;", "", "onTracksChanged", "Lcom/google/android/exoplayer2/source/TrackGroupArray;", "Lcom/google/android/exoplayer2/trackselection/TrackSelectionArray;", "plugin-recordvideo_release"})
   public static final class a
     implements q.a
   {
+    public final void I(int paramInt) {}
+    
     public final void a(e parame) {}
     
-    public final void aA(int paramInt) {}
+    public final void a(r paramr, g paramg) {}
     
-    public final void aR(boolean paramBoolean) {}
+    public final void aP(boolean paramBoolean) {}
     
     public final void b(com.google.android.exoplayer2.p paramp) {}
     
-    public final void c(boolean paramBoolean, int paramInt)
+    public final void b(w paramw, Object paramObject) {}
+    
+    public final void e(boolean paramBoolean, int paramInt)
     {
       AppMethodBeat.i(75894);
       if (paramInt == 3) {
-        this.Cam.setPlayerLoading(false);
+        this.HXb.setPlayerLoading(false);
       }
       AppMethodBeat.o(75894);
     }
     
-    public final void tA() {}
-    
-    public final void ty() {}
-    
-    public final void tz() {}
+    public final void rs() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.AudioWaveView
  * JD-Core Version:    0.7.0.1
  */

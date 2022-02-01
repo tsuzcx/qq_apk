@@ -6,17 +6,17 @@ import java.util.List;
 
 public final class k
 {
+  public j BFk;
+  public h BHY;
+  public a BIV;
+  public List<m> BIW;
   public int resultCode;
-  public j wTn;
-  public h wWd;
-  public a wXa;
-  public List<m> wXb;
   
   public k(j paramj)
   {
     AppMethodBeat.i(131708);
-    this.wXb = new ArrayList();
-    this.wTn = paramj;
+    this.BIW = new ArrayList();
+    this.BFk = paramj;
     AppMethodBeat.o(131708);
   }
   
@@ -25,19 +25,19 @@ public final class k
     int i = 0;
     AppMethodBeat.i(131709);
     int j = this.resultCode;
-    if (this.wXb == null) {}
+    if (this.BIW == null) {}
     for (;;)
     {
       String str = String.format("{resultCode: %d, resultSize: %d}", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
       AppMethodBeat.o(131709);
       return str;
-      i = this.wXb.size();
+      i = this.BIW.size();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.k
  * JD-Core Version:    0.7.0.1
  */

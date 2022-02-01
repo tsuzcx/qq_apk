@@ -1,28 +1,26 @@
 package com.tencent.mm.plugin.sns.b;
 
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mm.protocal.protobuf.cnb;
-import com.tencent.mm.storage.bp;
+import com.tencent.mm.protocal.protobuf.elj;
 
 public abstract interface g
 {
-  public abstract void a(cnb paramcnb, View paramView, int paramInt, bp parambp);
+  public abstract boolean a(String paramString, elj paramelj);
   
-  public abstract void aI(Activity paramActivity);
+  public abstract boolean a(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
   
-  public abstract Bitmap b(cnb paramcnb);
+  public abstract elj aYN(String paramString);
   
-  public abstract void b(cnb paramcnb, View paramView, int paramInt, bp parambp);
+  public abstract elj b(String paramString, elj paramelj);
   
-  public abstract void eZk();
+  public abstract elj b(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
   
-  public abstract void ff(View paramView);
+  public abstract boolean cs(String paramString, boolean paramBoolean);
   
-  public abstract void pause();
+  public abstract elj ct(String paramString, boolean paramBoolean);
   
-  public abstract void start();
+  public abstract void fMY();
+  
+  public abstract void fMZ();
 }
 
 

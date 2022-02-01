@@ -1,74 +1,130 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
+import java.util.LinkedList;
 
 public final class evi
-  extends com.tencent.mm.bw.a
+  extends dyl
 {
-  public String Ntm;
-  public int Ntn;
+  public int RIs;
+  public ciu RQB;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(147792);
+    AppMethodBeat.i(32473);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Ntm != null) {
-        paramVarArgs.e(1, this.Ntm);
+      if (this.RQB == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: HardDevice");
+        AppMethodBeat.o(32473);
+        throw paramVarArgs;
       }
-      paramVarArgs.aM(2, this.Ntn);
-      AppMethodBeat.o(147792);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      if (this.RQB != null)
+      {
+        paramVarArgs.oE(2, this.RQB.computeSize());
+        this.RQB.writeFields(paramVarArgs);
+      }
+      paramVarArgs.aY(4, this.RIs);
+      AppMethodBeat.o(32473);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Ntm == null) {
-        break label258;
+      if (this.BaseRequest == null) {
+        break label527;
       }
     }
-    label258:
-    for (paramInt = g.a.a.b.b.a.f(1, this.Ntm) + 0;; paramInt = 0)
+    label527:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bu(2, this.Ntn);
-      AppMethodBeat.o(147792);
-      return paramInt + i;
+      int i = paramInt;
+      if (this.RQB != null) {
+        i = paramInt + g.a.a.a.oD(2, this.RQB.computeSize());
+      }
+      paramInt = g.a.a.b.b.a.bM(4, this.RIs);
+      AppMethodBeat.o(32473);
+      return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(147792);
+        if (this.RQB == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: HardDevice");
+          AppMethodBeat.o(32473);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32473);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         evi localevi = (evi)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
         {
+        case 3: 
         default: 
-          AppMethodBeat.o(147792);
+          AppMethodBeat.o(32473);
           return -1;
         case 1: 
-          localevi.Ntm = locala.UbS.readString();
-          AppMethodBeat.o(147792);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new jg();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((jg)localObject2).parseFrom((byte[])localObject1);
+            }
+            localevi.BaseRequest = ((jg)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32473);
+          return 0;
+        case 2: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new ciu();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((ciu)localObject2).parseFrom((byte[])localObject1);
+            }
+            localevi.RQB = ((ciu)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32473);
           return 0;
         }
-        localevi.Ntn = locala.UbS.zi();
-        AppMethodBeat.o(147792);
+        localevi.RIs = ((g.a.a.a.a)localObject1).abFh.AK();
+        AppMethodBeat.o(32473);
         return 0;
       }
-      AppMethodBeat.o(147792);
+      AppMethodBeat.o(32473);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.evi
  * JD-Core Version:    0.7.0.1
  */

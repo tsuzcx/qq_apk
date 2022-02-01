@@ -10,10 +10,10 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class b
   implements c
 {
-  public final boolean aHU(String paramString)
+  public final boolean aSk(String paramString)
   {
     AppMethodBeat.i(63136);
-    boolean bool = j.Ee(paramString);
+    boolean bool = j.KX(paramString);
     AppMethodBeat.o(63136);
     return bool;
   }
@@ -42,18 +42,18 @@ public final class b
       AppMethodBeat.o(63134);
       return false;
     }
-    if (j.Ee(paramString))
+    if (j.KX(paramString))
     {
       AppMethodBeat.o(63134);
       return true;
     }
     Log.i("MicroMsg.Music.WechatMusicLoadLibrary", "load library %s", new Object[] { paramString });
     a.class.getClassLoader();
-    String str = j.dZ(paramString);
+    String str = j.eA(paramString);
     if (!TextUtils.isEmpty(str))
     {
       Log.i("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary find and load the lib %s so", new Object[] { str });
-      j.Ed(paramString);
+      j.KW(paramString);
       AppMethodBeat.o(63134);
       return true;
     }
@@ -64,7 +64,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.c.b
  * JD-Core Version:    0.7.0.1
  */

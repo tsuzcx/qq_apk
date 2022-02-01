@@ -14,7 +14,7 @@ public final class m$a
   public String username;
   public int version;
   
-  public static a aNn(String paramString)
+  public static a aXW(String paramString)
   {
     AppMethodBeat.i(28341);
     Map localMap = XmlParser.parseXml(paramString, "program", null);
@@ -44,7 +44,7 @@ public final class m$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.m.a
  * JD-Core Version:    0.7.0.1
  */

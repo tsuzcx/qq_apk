@@ -4,8 +4,8 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.g;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.e;
 import com.google.android.gms.common.internal.Preconditions;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
@@ -58,16 +58,16 @@ public class SupportErrorDialogFragment
     return paramBundle;
   }
   
-  public void show(g paramg, String paramString)
+  public void show(e parame, String paramString)
   {
-    AppMethodBeat.i(10968);
-    super.show(paramg, paramString);
-    AppMethodBeat.o(10968);
+    AppMethodBeat.i(255804);
+    super.show(parame, paramString);
+    AppMethodBeat.o(255804);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.common.SupportErrorDialogFragment
  * JD-Core Version:    0.7.0.1
  */

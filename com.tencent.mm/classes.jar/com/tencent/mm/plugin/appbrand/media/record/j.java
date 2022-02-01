@@ -6,28 +6,16 @@ import java.util.ArrayList;
 
 public final class j
 {
-  private static b nea;
+  private static b qer;
   
   static
   {
     AppMethodBeat.i(146336);
-    nea = new j.a();
+    qer = new j.a();
     AppMethodBeat.o(146336);
   }
   
-  public static void a(b paramb)
-  {
-    nea = paramb;
-  }
-  
-  public static void bPi()
-  {
-    AppMethodBeat.i(146333);
-    nea.yU(0L);
-    AppMethodBeat.o(146333);
-  }
-  
-  public static void yy(int paramInt)
+  public static void BY(int paramInt)
   {
     AppMethodBeat.i(146334);
     ArrayList localArrayList = new ArrayList();
@@ -37,31 +25,43 @@ public final class j
     localIDKey1.SetValue(1L);
     IDKey localIDKey2 = new IDKey();
     localIDKey2.SetID(689);
-    localIDKey2.SetKey(i.yx(paramInt));
+    localIDKey2.SetKey(i.BX(paramInt));
     localIDKey2.SetValue(1L);
     localArrayList.add(localIDKey1);
     localArrayList.add(localIDKey2);
-    nea.J(localArrayList);
+    qer.K(localArrayList);
     AppMethodBeat.o(146334);
   }
   
-  public static void yz(int paramInt)
+  public static void BZ(int paramInt)
   {
     AppMethodBeat.i(146335);
-    nea.yU(i.yx(paramInt));
+    qer.EW(i.BX(paramInt));
     AppMethodBeat.o(146335);
+  }
+  
+  public static void a(b paramb)
+  {
+    qer = paramb;
+  }
+  
+  public static void cby()
+  {
+    AppMethodBeat.i(146333);
+    qer.EW(0L);
+    AppMethodBeat.o(146333);
   }
   
   public static abstract interface b
   {
-    public abstract void J(ArrayList<IDKey> paramArrayList);
+    public abstract void EW(long paramLong);
     
-    public abstract void yU(long paramLong);
+    public abstract void K(ArrayList<IDKey> paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.j
  * JD-Core Version:    0.7.0.1
  */

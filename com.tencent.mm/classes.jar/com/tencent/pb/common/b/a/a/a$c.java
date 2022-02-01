@@ -1,35 +1,35 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.e;
 
 public final class a$c
   extends e
 {
-  public a.y[] RDp = a.y.hje();
+  public a.y[] ZeR = a.y.ikO();
   
   public a$c()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int i = super.Ig();
+    int i = super.JG();
     int k = i;
-    if (this.RDp != null)
+    if (this.ZeR != null)
     {
       k = i;
-      if (this.RDp.length > 0)
+      if (this.ZeR.length > 0)
       {
         int j = 0;
         for (;;)
         {
           k = i;
-          if (j >= this.RDp.length) {
+          if (j >= this.ZeR.length) {
             break;
           }
-          a.y localy = this.RDp[j];
+          a.y localy = this.ZeR[j];
           k = i;
           if (localy != null) {
             k = i + b.b(1, localy);
@@ -44,12 +44,12 @@ public final class a$c
   
   public final void a(b paramb)
   {
-    if ((this.RDp != null) && (this.RDp.length > 0))
+    if ((this.ZeR != null) && (this.ZeR.length > 0))
     {
       int i = 0;
-      while (i < this.RDp.length)
+      while (i < this.ZeR.length)
       {
-        a.y localy = this.RDp[i];
+        a.y localy = this.ZeR[i];
         if (localy != null) {
           paramb.a(1, localy);
         }

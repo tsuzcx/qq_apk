@@ -7,49 +7,49 @@ import com.tencent.mm.i.d;
 import com.tencent.mm.i.g.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.ByteArrayOutputStream;
 
 public final class b
   implements g.a
 {
-  private a kwM;
-  public String kwN;
-  private boolean kwO;
-  private String kwP;
   private String md5;
   public String mediaId;
+  private a npG;
+  public String npH;
+  private boolean npI;
+  private String npJ;
   private String savePath;
   public String url;
   
   public b(String paramString1, String paramString2, String paramString3, a parama, String paramString4)
   {
-    AppMethodBeat.i(238906);
+    AppMethodBeat.i(239263);
     this.url = "";
     this.savePath = "";
     this.md5 = "";
-    this.kwM = null;
+    this.npG = null;
     this.mediaId = "";
-    this.kwN = "";
-    this.kwO = false;
-    this.kwP = "";
+    this.npH = "";
+    this.npI = false;
+    this.npJ = "";
     this.url = paramString1;
     this.savePath = paramString2;
     this.md5 = paramString3;
-    this.kwM = parama;
+    this.npG = parama;
     this.mediaId = ("ai_download_" + paramString1.hashCode() + Util.nowMilliSecond());
-    this.kwN = (paramString2 + ".tmp");
-    this.kwO = true;
-    this.kwP = paramString4;
-    AppMethodBeat.o(238906);
+    this.npH = (paramString2 + ".tmp");
+    this.npI = true;
+    this.npJ = paramString4;
+    AppMethodBeat.o(239263);
   }
   
   public final int a(String paramString, int paramInt, c paramc, d paramd, boolean paramBoolean)
   {
-    AppMethodBeat.i(238907);
+    AppMethodBeat.i(239266);
     if (!Util.isEqual(paramString, this.mediaId))
     {
-      AppMethodBeat.o(238907);
+      AppMethodBeat.o(239266);
       return 0;
     }
     if (paramd != null)
@@ -58,24 +58,24 @@ public final class b
       if (paramd.field_retCode != 0) {
         break label182;
       }
-      paramc = g.getMD5(this.kwN);
+      paramc = g.getMD5(this.npH);
       paramString = paramc;
       if (!this.md5.equalsIgnoreCase(paramc)) {
         break label182;
       }
-      if (s.YS(this.savePath)) {
-        s.deleteFile(this.savePath);
+      if (u.agG(this.savePath)) {
+        u.deleteFile(this.savePath);
       }
-      paramBoolean = s.nx(this.kwN, this.savePath);
+      paramBoolean = u.oo(this.npH, this.savePath);
       paramString = paramc;
     }
     for (;;)
     {
       Log.i("MicroMsg.AiDownloadTask", "ai download task finish flag[%b] ret[%d] path[%s] md5[%s] tmpMd5[%s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramd.field_retCode), this.savePath, this.md5, paramString });
-      if (this.kwM != null) {
-        this.kwM.a(paramBoolean, this.url, this.savePath, this.kwO, this.kwP);
+      if (this.npG != null) {
+        this.npG.a(paramBoolean, this.url, this.savePath, this.npI, this.npJ);
       }
-      AppMethodBeat.o(238907);
+      AppMethodBeat.o(239266);
       return 0;
       label182:
       paramBoolean = false;
@@ -96,7 +96,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ai.d.a.b
  * JD-Core Version:    0.7.0.1
  */

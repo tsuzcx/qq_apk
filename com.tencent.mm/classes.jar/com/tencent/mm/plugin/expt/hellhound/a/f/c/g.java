@@ -5,7 +5,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class g
 {
-  public static void Dw(long paramLong)
+  public static void JK(long paramLong)
   {
     AppMethodBeat.i(184376);
     String str2 = String.valueOf(paramLong);
@@ -30,7 +30,7 @@ public final class g
     AppMethodBeat.o(184376);
   }
   
-  public static void aqK(String paramString)
+  public static void ayL(String paramString)
   {
     AppMethodBeat.i(122157);
     if ((paramString == null) || (paramString.isEmpty()))
@@ -38,10 +38,10 @@ public final class g
       AppMethodBeat.o(122157);
       return;
     }
-    String str = cQv();
+    String str = dfp();
     if ((str == null) || (str.isEmpty()))
     {
-      aqL(System.currentTimeMillis() + "@" + paramString);
+      ayM(System.currentTimeMillis() + "@" + paramString);
       AppMethodBeat.o(122157);
       return;
     }
@@ -54,13 +54,13 @@ public final class g
     if (str.split("@").length <= 1) {}
     for (paramString = str + "@" + paramString;; paramString = str + "|" + paramString)
     {
-      aqL(paramString);
+      ayM(paramString);
       AppMethodBeat.o(122157);
       return;
     }
   }
   
-  public static void aqL(String paramString)
+  public static void ayM(String paramString)
   {
     AppMethodBeat.i(122158);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -86,7 +86,7 @@ public final class g
     }
   }
   
-  public static void aqM(String paramString)
+  public static void ayN(String paramString)
   {
     AppMethodBeat.i(122163);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -112,7 +112,7 @@ public final class g
     }
   }
   
-  public static void aqN(String paramString)
+  public static void ayO(String paramString)
   {
     AppMethodBeat.i(122165);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -138,7 +138,7 @@ public final class g
     }
   }
   
-  public static String cQv()
+  public static String dfp()
   {
     AppMethodBeat.i(122159);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -157,7 +157,7 @@ public final class g
     return str;
   }
   
-  public static String cQw()
+  public static String dfq()
   {
     AppMethodBeat.i(122162);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -167,7 +167,7 @@ public final class g
     }
     for (;;)
     {
-      localObject = d.aqJ((String)localObject);
+      localObject = d.ayK((String)localObject);
       AppMethodBeat.o(122162);
       return localObject;
       String str = com.tencent.mm.plugin.expt.hellhound.core.a.b.getString("mmkv_key_hellSenPageMegRptChe_".concat(String.valueOf(i)));
@@ -183,7 +183,7 @@ public final class g
     }
   }
   
-  public static String cQx()
+  public static String dfr()
   {
     AppMethodBeat.i(122164);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -202,7 +202,7 @@ public final class g
     return str;
   }
   
-  public static String cQy()
+  public static String dfs()
   {
     AppMethodBeat.i(122166);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -223,7 +223,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.c.g
  * JD-Core Version:    0.7.0.1
  */

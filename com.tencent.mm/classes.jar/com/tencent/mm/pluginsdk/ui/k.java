@@ -2,23 +2,23 @@ package com.tencent.mm.pluginsdk.ui;
 
 public final class k
 {
-  public long Eut = 0L;
-  public long Euv = 0L;
-  public long KcW = 0L;
-  public long KcX = 0L;
-  public long KcY = 0L;
-  public long KcZ = 0L;
+  public long KIk = 0L;
+  public long KIm = 0L;
+  public long RdC = 0L;
+  public long RdD = 0L;
+  public long RdE = 0L;
+  public long RdF = 0L;
   public int blockCount = 0;
   public int duration = 0;
-  public int mNA = 0;
-  public long mNx = 0L;
-  public int mNz = 0;
-  public long mvz = 0L;
+  public long pOq = 0L;
+  public int pOs = 0;
+  public int pOt = 0;
+  public long ptY = 0L;
   public String url = "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.k
  * JD-Core Version:    0.7.0.1
  */

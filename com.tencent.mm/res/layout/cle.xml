@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.ui.widget.InsectRelativeLayout android:id="@id/gxe" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb" android:layout_above="@id/d2y" android:layout_centerHorizontal="true">
+        <TextView android:textSize="@dimen/kc" android:textColor="@color/act" android:id="@id/aje" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f0x" android:layout_centerHorizontal="true" />
+        <LinearLayout android:gravity="center" android:id="@id/ajf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/ci">
+            <TextView android:textSize="@dimen/kc" android:textColor="@color/ag2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fw7" android:includeFontPadding="false" />
+            <ImageView android:layout_width="@dimen/c5" android:layout_height="@dimen/cb" android:layout_marginLeft="@dimen/ct" android:src="@drawable/c_u" />
+        </LinearLayout>
+    </RelativeLayout>
+    <include android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/d2y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:layout_marginBottom="@dimen/cb" android:layout_above="@id/gxq" layout="@layout/c5m" />
+    <com.tencent.mm.plugin.finder.video.plugin.view.RecordTypeSelectView android:id="@id/gxq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cf" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/kp1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cn" android:layout_alignParentTop="true">
+        <ImageView android:id="@id/if9" android:focusable="true" android:layout_width="@dimen/cf" android:layout_height="@dimen/cf" android:src="@raw/mmsight_camera_navbar_icon_switch" android:layout_alignParentRight="true" android:contentDescription="@string/fwy" android:layout_marginEnd="@dimen/ce" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gwa" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/cf" android:layout_marginStart="@dimen/ce" android:layout_marginEnd="@dimen/bu" android:layout_toStartOf="@id/if9" android:layout_alignParentStart="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/gwc" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/finder_bgm_gif_first_page" app:iconColor="@color/act" />
+            <TextView android:textSize="@dimen/k6" android:textColor="@color/act" android:ellipsize="end" android:id="@id/gwe" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/c6" android:text="@string/bq1" android:singleLine="true" android:layout_marginStart="6.0dip" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/BW_100_Alpha_0_5" android:gravity="center" android:id="@id/gwb" android:background="@drawable/aqo" android:layout_width="wrap_content" android:layout_height="18.0dip" android:paddingStart="@dimen/bt" android:paddingEnd="@dimen/bt" android:layout_marginStart="@dimen/bt" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/gwd" android:layout_width="@dimen/ct" android:layout_height="@dimen/cb" android:src="@raw/icons_filled_back" android:rotation="180.0" android:layout_marginStart="@dimen/ct" app:iconColor="@color/act" />
+        </LinearLayout>
+    </RelativeLayout>
+</com.tencent.mm.ui.widget.InsectRelativeLayout>

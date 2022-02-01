@@ -4,29 +4,31 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public final class JsApiSetBackgroundFetchToken
-  extends com.tencent.mm.plugin.appbrand.jsapi.d
+  extends c
 {
   public static final int CTRL_INDEX = 641;
   public static final String NAME = "setBackgroundFetchToken";
   
-  public final void a(final f paramf, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final e parame, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(46130);
     if (paramJSONObject == null)
     {
       Log.e("MicroMsg.AppBrand.JsApiSetBackgroundFetchToken", "fail:data is null");
-      paramf.i(paramInt, h("fail:invalid data", null));
+      parame.j(paramInt, h("fail:invalid data", null));
       AppMethodBeat.o(46130);
       return;
     }
@@ -34,19 +36,19 @@ public final class JsApiSetBackgroundFetchToken
     if (Util.isNullOrNil(paramJSONObject))
     {
       Log.e("MicroMsg.AppBrand.JsApiSetBackgroundFetchToken", "fail:token is null");
-      paramf.i(paramInt, h("fail:invalid data", null));
+      parame.j(paramInt, h("fail:invalid data", null));
       AppMethodBeat.o(46130);
       return;
     }
     if (paramJSONObject.length() > 1024)
     {
       Log.e("MicroMsg.AppBrand.JsApiSetBackgroundFetchToken", "fail:token is too long");
-      paramf.i(paramInt, h("fail:invalid data", null));
+      parame.j(paramInt, h("fail:invalid data", null));
       AppMethodBeat.o(46130);
       return;
     }
-    String str = paramf.getAppId();
-    XIPCInvoker.a(MainProcessIPCService.dkO, new SetBackgroundFetchTokenParcel(str, paramJSONObject), a.class, new com.tencent.mm.ipcinvoker.d() {});
+    String str = parame.getAppId();
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new SetBackgroundFetchTokenParcel(str, paramJSONObject), a.class, new f() {});
     AppMethodBeat.o(46130);
   }
   
@@ -93,7 +95,7 @@ public final class JsApiSetBackgroundFetchToken
   }
   
   static class a
-    implements b<JsApiSetBackgroundFetchToken.SetBackgroundFetchTokenParcel, IPCBoolean>
+    implements d<JsApiSetBackgroundFetchToken.SetBackgroundFetchTokenParcel, IPCBoolean>
   {}
 }
 

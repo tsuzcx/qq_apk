@@ -7,205 +7,206 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderTab;", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderBaseTab;", "title", "", "(Ljava/lang/String;)V", "titleId", "", "(I)V", "isFirstValidSelect", "", "isFirstValidUnSelect", "isTabSelected", "isUnSelected", "tabRedIv", "Landroid/widget/ImageView;", "getTabRedIv", "()Landroid/widget/ImageView;", "setTabRedIv", "(Landroid/widget/ImageView;)V", "titleTv", "Landroid/widget/TextView;", "getTitleTv", "()Landroid/widget/TextView;", "setTitleTv", "(Landroid/widget/TextView;)V", "firstValidSelect", "", "tabView", "Landroid/view/ViewGroup;", "firstValidUnSelect", "getLastSelectTabIndex", "getLayoutId", "getTitle", "context", "Landroid/content/Context;", "isShouldSelect", "isSelected", "onTabInflated", "onTabStatusChanged", "setTabRedDot", "redDotText", "setTabTitle", "setTextBold", "isBold", "setTextColor", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderTab;", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderBaseTab;", "title", "", "(Ljava/lang/String;)V", "titleId", "", "(I)V", "isFirstValidSelect", "", "isFirstValidUnSelect", "isTabSelected", "isUnSelected", "tabRedIv", "Landroid/widget/ImageView;", "getTabRedIv", "()Landroid/widget/ImageView;", "setTabRedIv", "(Landroid/widget/ImageView;)V", "titleTv", "Landroid/widget/TextView;", "getTitleTv", "()Landroid/widget/TextView;", "setTitleTv", "(Landroid/widget/TextView;)V", "firstValidSelect", "", "tabView", "Landroid/view/ViewGroup;", "firstValidUnSelect", "getLastSelectTabIndex", "getLayoutId", "getTitle", "context", "Landroid/content/Context;", "isShouldSelect", "isSelected", "onTabInflated", "onTabStatusChanged", "setTabRedDot", "redDotText", "setTabTitle", "setTextBold", "isBold", "setTextColor", "Companion", "plugin-finder_release"})
 public class c
   extends a
 {
-  public static final a wtC;
+  public static final a BfT;
+  private boolean BfP;
+  private boolean BfQ;
+  private boolean BfR;
+  private boolean BfS;
   private String title;
-  protected TextView titleTv;
-  protected ImageView uPX;
-  private int uQk;
-  private boolean wtA;
-  private boolean wtB;
-  private boolean wty;
-  private boolean wtz;
+  private TextView titleTv;
+  private ImageView zCx;
+  private int zDq;
   
   static
   {
-    AppMethodBeat.i(255301);
-    wtC = new a((byte)0);
-    AppMethodBeat.o(255301);
+    AppMethodBeat.i(280963);
+    BfT = new a((byte)0);
+    AppMethodBeat.o(280963);
   }
   
   public c(int paramInt)
   {
     this.title = "";
-    this.uQk = paramInt;
+    this.zDq = paramInt;
   }
   
   public c(String paramString)
   {
-    AppMethodBeat.i(255300);
+    AppMethodBeat.i(280962);
     this.title = "";
     this.title = paramString;
-    AppMethodBeat.o(255300);
+    AppMethodBeat.o(280962);
   }
   
-  private final boolean pf(boolean paramBoolean)
+  private final boolean ry(boolean paramBoolean)
   {
-    AppMethodBeat.i(255299);
+    AppMethodBeat.i(280961);
     if (paramBoolean) {
-      this.wtz = true;
+      this.BfQ = true;
     }
-    while ((dHM() == 0) || (this.index != 0))
+    while ((ejX() == 0) || (this.index != 0))
     {
-      AppMethodBeat.o(255299);
+      AppMethodBeat.o(280961);
       return true;
-      this.wtB = true;
+      this.BfS = true;
     }
-    AppMethodBeat.o(255299);
+    AppMethodBeat.o(280961);
     return false;
   }
   
-  public void a(boolean paramBoolean, ViewGroup paramViewGroup)
+  public void A(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(255293);
-    p.h(paramViewGroup, "tabView");
-    pd(paramBoolean);
-    if (paramBoolean)
-    {
-      if ((!this.wty) && ((this.wtz) || (pf(paramBoolean))))
-      {
-        t(paramViewGroup);
-        this.wty = true;
-        AppMethodBeat.o(255293);
-      }
-    }
-    else if ((!this.wtA) && ((this.wtB) || (pf(paramBoolean))))
-    {
-      v(paramViewGroup);
-      this.wtA = true;
-    }
-    AppMethodBeat.o(255293);
+    AppMethodBeat.i(280958);
+    p.k(paramViewGroup, "tabView");
+    Log.i("Finder.FinderTab", "firstValidUnSelected");
+    AppMethodBeat.o(280958);
   }
   
-  public void by(String paramString, boolean paramBoolean) {}
+  public final void a(boolean paramBoolean, ViewGroup paramViewGroup)
+  {
+    AppMethodBeat.i(280956);
+    p.k(paramViewGroup, "tabView");
+    rx(paramBoolean);
+    if (paramBoolean)
+    {
+      if ((!this.BfP) && ((this.BfQ) || (ry(paramBoolean))))
+      {
+        y(paramViewGroup);
+        this.BfP = true;
+        AppMethodBeat.o(280956);
+      }
+    }
+    else if ((!this.BfR) && ((this.BfS) || (ry(paramBoolean))))
+    {
+      A(paramViewGroup);
+      this.BfR = true;
+    }
+    AppMethodBeat.o(280956);
+  }
   
-  public int dHM()
+  public void aGC(String paramString) {}
+  
+  public int ejX()
   {
     return 0;
   }
   
   public int getLayoutId()
   {
-    return 2131494539;
+    return b.g.finder_msg_normal_tab_text;
   }
   
-  public final String getTitle(Context paramContext)
+  public final TextView getTitleTv()
   {
-    AppMethodBeat.i(255298);
-    p.h(paramContext, "context");
-    if (!Util.isNullOrNil(this.title))
-    {
-      paramContext = this.title;
-      AppMethodBeat.o(255298);
-      return paramContext;
-    }
-    if (this.uQk > 0) {}
-    for (paramContext = paramContext.getResources().getString(this.uQk);; paramContext = "")
-    {
-      p.g(paramContext, "if (titleId > 0) {\n     …\n            \"\"\n        }");
-      AppMethodBeat.o(255298);
-      return paramContext;
-    }
+    return this.titleTv;
   }
   
-  public void pd(boolean paramBoolean)
+  public void od(boolean paramBoolean)
   {
-    AppMethodBeat.i(255292);
-    TextView localTextView = this.titleTv;
-    if (localTextView != null)
-    {
-      Context localContext = localTextView.getContext();
-      p.g(localContext, "this.context");
-      localTextView.setText((CharSequence)getTitle(localContext));
-      pe(paramBoolean);
-      setTextBold(paramBoolean);
-      AppMethodBeat.o(255292);
-      return;
-    }
-    AppMethodBeat.o(255292);
-  }
-  
-  public final void pe(boolean paramBoolean)
-  {
-    AppMethodBeat.i(255296);
+    AppMethodBeat.i(280960);
     TextView localTextView = this.titleTv;
     if (localTextView != null)
     {
       if (paramBoolean)
       {
         localContext = localTextView.getContext();
-        p.g(localContext, "context");
-        localTextView.setTextColor(localContext.getResources().getColor(2131100904));
-        AppMethodBeat.o(255296);
+        p.j(localContext, "context");
+        localTextView.setTextColor(localContext.getResources().getColor(b.c.normal_text_color));
+        AppMethodBeat.o(280960);
         return;
       }
       Context localContext = localTextView.getContext();
-      p.g(localContext, "context");
-      localTextView.setTextColor(localContext.getResources().getColor(2131100245));
-      AppMethodBeat.o(255296);
+      p.j(localContext, "context");
+      localTextView.setTextColor(localContext.getResources().getColor(b.c.desc_text_color));
+      AppMethodBeat.o(280960);
       return;
     }
-    AppMethodBeat.o(255296);
+    AppMethodBeat.o(280960);
   }
   
-  public final void setTextBold(boolean paramBoolean)
+  public final void rx(boolean paramBoolean)
   {
-    AppMethodBeat.i(255297);
+    AppMethodBeat.i(280955);
     TextView localTextView = this.titleTv;
     if (localTextView != null)
     {
-      if (paramBoolean)
+      Object localObject = localTextView.getContext();
+      p.j(localObject, "this.context");
+      p.k(localObject, "context");
+      if (!Util.isNullOrNil(this.title))
       {
-        ao.a((Paint)localTextView.getPaint(), 0.8F);
-        AppMethodBeat.o(255297);
-        return;
+        localObject = this.title;
+        localTextView.setText((CharSequence)localObject);
+        od(paramBoolean);
+        localObject = this.titleTv;
+        if (localObject == null) {
+          break label140;
+        }
+        if (paramBoolean)
+        {
+          ar.a((Paint)((TextView)localObject).getPaint(), 0.8F);
+          AppMethodBeat.o(280955);
+        }
       }
-      ao.b((Paint)localTextView.getPaint());
-      AppMethodBeat.o(255297);
+      else
+      {
+        if (this.zDq > 0) {}
+        for (localObject = ((Context)localObject).getResources().getString(this.zDq);; localObject = "")
+        {
+          p.j(localObject, "if (titleId > 0) {\n     …\n            \"\"\n        }");
+          break;
+        }
+      }
+      ar.b((Paint)((TextView)localObject).getPaint());
+      AppMethodBeat.o(280955);
+      return;
+      label140:
+      AppMethodBeat.o(280955);
       return;
     }
-    AppMethodBeat.o(255297);
+    AppMethodBeat.o(280955);
   }
   
-  public void t(ViewGroup paramViewGroup)
+  public final void w(TextView paramTextView)
   {
-    AppMethodBeat.i(255295);
-    p.h(paramViewGroup, "tabView");
+    this.titleTv = paramTextView;
+  }
+  
+  public void y(ViewGroup paramViewGroup)
+  {
+    AppMethodBeat.i(280959);
+    p.k(paramViewGroup, "tabView");
     Log.i("Finder.FinderTab", "firstValidSelected");
-    AppMethodBeat.o(255295);
+    AppMethodBeat.o(280959);
   }
   
-  public void u(ViewGroup paramViewGroup)
+  public void z(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(255291);
+    AppMethodBeat.i(280952);
     if (paramViewGroup != null)
     {
-      this.titleTv = ((TextView)paramViewGroup.findViewById(2131308826));
-      this.uPX = ((ImageView)paramViewGroup.findViewById(2131308830));
-      AppMethodBeat.o(255291);
+      this.titleTv = ((TextView)paramViewGroup.findViewById(b.f.tabTitle));
+      this.zCx = ((ImageView)paramViewGroup.findViewById(b.f.tabTitleImageRed));
+      AppMethodBeat.o(280952);
       return;
     }
-    AppMethodBeat.o(255291);
+    AppMethodBeat.o(280952);
   }
   
-  public void v(ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(255294);
-    p.h(paramViewGroup, "tabView");
-    Log.i("Finder.FinderTab", "firstValidUnSelected");
-    AppMethodBeat.o(255294);
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderTab$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderTab$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 

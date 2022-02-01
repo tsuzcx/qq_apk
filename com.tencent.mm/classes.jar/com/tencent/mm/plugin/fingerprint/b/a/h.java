@@ -3,14 +3,15 @@ package com.tencent.mm.plugin.fingerprint.b.a;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.huawei.b.a.b;
+import com.huawei.c.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ad;
 import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.compatible.deviceinfo.af;
 import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.compatible.deviceinfo.t;
 import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.plugin.fingerprint.FingerPrintAuth;
+import com.tencent.mm.plugin.fingerprint.b.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -20,13 +21,13 @@ import java.util.Map;
 public final class h
   extends a
 {
-  private com.huawei.b.a wFX;
+  private com.huawei.c.a ByU;
   
-  private com.huawei.b.a dKx()
+  private com.huawei.c.a eoW()
   {
     AppMethodBeat.i(64415);
-    this.wFX = com.huawei.b.a.IE();
-    com.huawei.b.a locala = this.wFX;
+    this.ByU = com.huawei.c.a.Kh();
+    com.huawei.c.a locala = this.ByU;
     AppMethodBeat.o(64415);
     return locala;
   }
@@ -34,47 +35,47 @@ public final class h
   public final void a(Context paramContext, final f paramf, final b paramb)
   {
     AppMethodBeat.i(64418);
-    Log.i("MicroMsg.HuaweiBiometricPayManagerImpl", "request fingerprint authorize: %s", new Object[] { paramf.dDL });
-    if (this.wFX == null)
+    Log.i("MicroMsg.HuaweiBiometricPayManagerImpl", "request fingerprint authorize: %s", new Object[] { paramf.fwv });
+    if (this.ByU == null)
     {
       Log.d("MicroMsg.HuaweiBiometricPayManagerImpl", "open auth once");
-      dKx();
+      eoW();
     }
     MMHandlerThread.postToMainThreadDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(64409);
-        com.huawei.b.a locala = h.a(h.this);
+        com.huawei.c.a locala = h.a(h.this);
         if (locala == null)
         {
           if (paramb != null) {
-            paramb.a(c.ai(paramf.dDL, -1, -1));
+            paramb.a(c.ak(paramf.fwv, -1, -1));
           }
           AppMethodBeat.o(64409);
           return;
         }
-        int[] arrayOfInt = locala.IF();
+        int[] arrayOfInt = locala.Ki();
         if ((locala.a(new a.b()
         {
-          public final void D(int paramAnonymous2Int1, int paramAnonymous2Int2, int paramAnonymous2Int3)
+          public final void G(int paramAnonymous2Int1, int paramAnonymous2Int2, int paramAnonymous2Int3)
           {
             AppMethodBeat.i(64408);
             Log.i("MicroMsg.HuaweiBiometricPayManagerImpl", "on result: %s, %s, %s, %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), Integer.valueOf(paramAnonymous2Int3), Integer.valueOf(-1) });
-            if (h.3.this.wGb != null) {
-              h.3.this.wGb.a(c.ai(h.3.this.wGc.dDL, paramAnonymous2Int1, paramAnonymous2Int2));
+            if (h.3.this.ByY != null) {
+              h.3.this.ByY.a(c.ak(h.3.this.ByZ.fwv, paramAnonymous2Int1, paramAnonymous2Int2));
             }
             AppMethodBeat.o(64408);
           }
           
-          public final void bQ(int paramAnonymous2Int1, int paramAnonymous2Int2)
+          public final void ci(int paramAnonymous2Int1, int paramAnonymous2Int2)
           {
             AppMethodBeat.i(64407);
             Log.i("MicroMsg.HuaweiBiometricPayManagerImpl", "on status: %s, %s, %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), Integer.valueOf(-1) });
             AppMethodBeat.o(64407);
           }
         }, arrayOfInt) != 0) && (paramb != null)) {
-          paramb.a(c.ai(paramf.dDL, -1, -1));
+          paramb.a(c.ak(paramf.fwv, -1, -1));
         }
         AppMethodBeat.o(64409);
       }
@@ -88,7 +89,7 @@ public final class h
     Log.i("MicroMsg.HuaweiBiometricPayManagerImpl", "request fingerprint authorize for pay");
     a(paramContext, paramf, new b()
     {
-      private int wFZ;
+      private int ByW;
       
       public final void a(c paramAnonymousc)
       {
@@ -103,11 +104,11 @@ public final class h
           return;
         }
         int i = (int)(System.currentTimeMillis() / 1000L);
-        int j = i - this.wFZ;
+        int j = i - this.ByW;
         if (j > 0)
         {
           paramAnonymousc.retryCount += 1;
-          this.wFZ = i;
+          this.ByW = i;
         }
         if ((paramAnonymousc.canRetry()) && (paramAnonymousc.retryCount < 3) && (j > 0))
         {
@@ -129,11 +130,11 @@ public final class h
   public final void cancel()
   {
     AppMethodBeat.i(64419);
-    if (this.wFX != null) {
+    if (this.ByU != null) {
       try
       {
-        this.wFX.abort();
-        this.wFX.release();
+        this.ByU.hL();
+        this.ByU.release();
         AppMethodBeat.o(64419);
         return;
       }
@@ -142,63 +143,10 @@ public final class h
     AppMethodBeat.o(64419);
   }
   
-  public final boolean dJQ()
-  {
-    return false;
-  }
-  
-  public final Map<String, String> dJY()
-  {
-    return null;
-  }
-  
-  public final boolean dKp()
-  {
-    AppMethodBeat.i(64411);
-    boolean bool1;
-    boolean bool3;
-    int i;
-    if (ae.gKx.gIE == 1)
-    {
-      bool1 = true;
-      bool3 = ae.gKz.edB;
-      int[] arrayOfInt = com.huawei.b.a.IG();
-      if (arrayOfInt == null) {
-        break label119;
-      }
-      i = 0;
-      label37:
-      if (i >= arrayOfInt.length) {
-        break label119;
-      }
-      if (1 != arrayOfInt[i]) {
-        break label112;
-      }
-    }
-    label112:
-    label119:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      Log.i("MicroMsg.HuaweiBiometricPayManagerImpl", "is support: %s, %s, %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
-      if ((!bool1) || (!bool2) || (bool3)) {
-        break label124;
-      }
-      AppMethodBeat.o(64411);
-      return true;
-      bool1 = false;
-      break;
-      i += 1;
-      break label37;
-    }
-    label124:
-    AppMethodBeat.o(64411);
-    return false;
-  }
-  
-  public final boolean dKq()
+  public final boolean eoP()
   {
     AppMethodBeat.i(64412);
-    if ((dKp()) && (com.tencent.mm.plugin.fingerprint.b.d.dKi()) && (com.tencent.mm.plugin.fingerprint.b.d.dKj()))
+    if ((isSupport()) && (com.tencent.mm.plugin.fingerprint.b.d.eoH()) && (com.tencent.mm.plugin.fingerprint.b.d.eoI()))
     {
       AppMethodBeat.o(64412);
       return true;
@@ -207,24 +155,24 @@ public final class h
     return false;
   }
   
-  public final boolean dKr()
+  public final boolean eoQ()
   {
     AppMethodBeat.i(64414);
-    dKx();
-    if (this.wFX == null)
+    eoW();
+    if (this.ByU == null)
     {
       AppMethodBeat.o(64414);
       return false;
     }
-    int[] arrayOfInt = this.wFX.IF();
+    int[] arrayOfInt = this.ByU.Ki();
     if ((arrayOfInt == null) || (arrayOfInt.length <= 0)) {
       Log.e("MicroMsg.HuaweiBiometricPayManagerImpl", "ids is null");
     }
     try
     {
-      this.wFX.release();
-      label58:
-      this.wFX = null;
+      this.ByU.release();
+      label55:
+      this.ByU = null;
       if ((arrayOfInt != null) && (arrayOfInt.length > 0))
       {
         AppMethodBeat.o(64414);
@@ -235,60 +183,113 @@ public final class h
     }
     catch (Exception localException)
     {
-      break label58;
+      break label55;
     }
   }
   
-  public final boolean dKs()
+  public final boolean eoR()
   {
     return false;
   }
   
-  public final boolean dKt()
+  public final boolean eoS()
   {
     return false;
   }
   
-  public final int dKu()
+  public final int eoT()
   {
     return 1;
   }
   
-  public final com.tencent.mm.plugin.fingerprint.d.d dKv()
+  public final com.tencent.mm.plugin.fingerprint.d.d eoU()
   {
     AppMethodBeat.i(64420);
-    com.tencent.mm.plugin.fingerprint.b.g localg = new com.tencent.mm.plugin.fingerprint.b.g();
+    g localg = new g();
     AppMethodBeat.o(64420);
     return localg;
   }
   
-  public final boolean dKw()
+  public final boolean eoV()
   {
     return true;
   }
   
-  public final boolean fN(Context paramContext)
+  public final boolean eop()
+  {
+    return false;
+  }
+  
+  public final Map<String, String> eox()
+  {
+    return null;
+  }
+  
+  public final boolean gh(Context paramContext)
   {
     AppMethodBeat.i(64413);
-    boolean bool = dKq();
+    boolean bool = eoP();
     AppMethodBeat.o(64413);
     return bool;
   }
   
-  public final boolean fO(Context paramContext)
+  public final boolean gi(Context paramContext)
   {
+    return false;
+  }
+  
+  public final boolean isSupport()
+  {
+    AppMethodBeat.i(64411);
+    boolean bool1;
+    boolean bool3;
+    int i;
+    if (af.juL.jsW == 1)
+    {
+      bool1 = true;
+      bool3 = af.juN.fXK;
+      int[] arrayOfInt = com.huawei.c.a.Kj();
+      if (arrayOfInt == null) {
+        break label120;
+      }
+      i = 0;
+      label37:
+      if (i >= arrayOfInt.length) {
+        break label120;
+      }
+      if (1 != arrayOfInt[i]) {
+        break label113;
+      }
+    }
+    label113:
+    label120:
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      Log.i("MicroMsg.HuaweiBiometricPayManagerImpl", "is support: %s, %s, %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
+      if ((!bool1) || (!bool2) || (bool3)) {
+        break label125;
+      }
+      AppMethodBeat.o(64411);
+      return true;
+      bool1 = false;
+      break;
+      i += 1;
+      break label37;
+    }
+    label125:
+    AppMethodBeat.o(64411);
     return false;
   }
   
   public final void prepare()
   {
     AppMethodBeat.i(64410);
-    if (((com.tencent.mm.plugin.fingerprint.d.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.fingerprint.d.a.class)).type() != 1)
+    if (((com.tencent.mm.plugin.fingerprint.d.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.fingerprint.d.a.class)).type() != 1)
     {
       Log.i("MicroMsg.HuaweiBiometricPayManagerImpl", "set soter manager");
       com.tencent.mm.plugin.fingerprint.b.c localc = new com.tencent.mm.plugin.fingerprint.b.c();
       localc.a(this);
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.fingerprint.d.a.class, localc);
+      com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.fingerprint.d.a.class, localc);
     }
     if (q.is64BitRuntime())
     {
@@ -301,34 +302,34 @@ public final class h
       public final void run()
       {
         AppMethodBeat.i(64405);
-        if (!com.tencent.mm.plugin.fingerprint.b.d.dKi()) {}
+        if (!com.tencent.mm.plugin.fingerprint.b.d.eoH()) {}
         try
         {
           h.a(h.this, MMApplicationContext.getContext());
-          if (com.tencent.mm.plugin.fingerprint.b.d.dKj()) {}
+          if (com.tencent.mm.plugin.fingerprint.b.d.eoI()) {}
         }
         catch (Exception localException)
         {
           try
           {
             com.tencent.mm.plugin.fingerprint.a.class.getClassLoader();
-            if (!TextUtils.isEmpty(j.dZ("teec")))
+            if (!TextUtils.isEmpty(j.eA("teec")))
             {
               Log.i("MicroMsg.HuaweiBiometricPayManagerImpl", "LoadLibrary fingerprintauth.so, find the libteec so");
-              j.Ed("fingerprintauth");
-              com.tencent.mm.plugin.fingerprint.b.d.pn(true);
+              j.KW("fingerprintauth");
+              com.tencent.mm.plugin.fingerprint.b.d.rH(true);
             }
             for (;;)
             {
-              h.dKy();
+              h.eoX();
               AppMethodBeat.o(64405);
               return;
               localException = localException;
               Log.printErrStackTrace("MicroMsg.HuaweiBiometricPayManagerImpl", localException, "", new Object[0]);
-              com.tencent.mm.plugin.fingerprint.b.d.pm(false);
+              com.tencent.mm.plugin.fingerprint.b.d.rG(false);
               break;
               Log.e("MicroMsg.HuaweiBiometricPayManagerImpl", "can not LoadLibrary fingerprintauth.so, because can not find the libteec");
-              com.tencent.mm.plugin.fingerprint.b.d.pn(false);
+              com.tencent.mm.plugin.fingerprint.b.d.rH(false);
             }
           }
           catch (Throwable localThrowable)
@@ -336,7 +337,7 @@ public final class h
             for (;;)
             {
               Log.printErrStackTrace("MicroMsg.HuaweiBiometricPayManagerImpl", localThrowable, "", new Object[0]);
-              com.tencent.mm.plugin.fingerprint.b.d.pn(false);
+              com.tencent.mm.plugin.fingerprint.b.d.rH(false);
             }
           }
         }
@@ -355,8 +356,8 @@ public final class h
       return;
     }
     String str = com.tencent.mm.plugin.fingerprint.b.d.getUserId();
-    if (com.tencent.mm.plugin.fingerprint.b.d.dJX()) {
-      FingerPrintAuth.clearData(com.tencent.mm.plugin.fingerprint.b.d.fL(MMApplicationContext.getContext()), str, ((Integer)paramVarArgs[0]).intValue());
+    if (com.tencent.mm.plugin.fingerprint.b.d.eow()) {
+      FingerPrintAuth.clearData(com.tencent.mm.plugin.fingerprint.b.d.gf(MMApplicationContext.getContext()), str, ((Integer)paramVarArgs[0]).intValue());
     }
     for (;;)
     {

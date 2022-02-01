@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.story.ui.album;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.story.i.h;
 import com.tencent.mm.plugin.story.i.j;
-import com.tencent.mm.protocal.protobuf.edk;
-import com.tencent.mm.protocal.protobuf.edt;
-import com.tencent.mm.protocal.protobuf.eek;
+import com.tencent.mm.protocal.protobuf.enl;
+import com.tencent.mm.protocal.protobuf.enu;
+import com.tencent.mm.protocal.protobuf.eol;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumInfo;", "", "label", "", "storyInfos", "", "Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "(Ljava/lang/String;Ljava/util/List;)V", "getLabel", "()Ljava/lang/String;", "getStoryInfos", "()Ljava/util/List;", "toString", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumInfo;", "", "label", "", "storyInfos", "", "Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "(Ljava/lang/String;Ljava/util/List;)V", "getLabel", "()Ljava/lang/String;", "getStoryInfos", "()Ljava/util/List;", "toString", "plugin-story_release"})
 public final class c
 {
-  final List<h> FyP;
+  final List<h> LSR;
   final String label;
   
   public c()
@@ -26,7 +26,7 @@ public final class c
   {
     AppMethodBeat.i(119821);
     this.label = paramString;
-    this.FyP = paramList;
+    this.LSR = paramList;
     AppMethodBeat.o(119821);
   }
   
@@ -34,19 +34,19 @@ public final class c
   {
     AppMethodBeat.i(119820);
     StringBuilder localStringBuilder1 = new StringBuilder();
-    Iterator localIterator = ((Iterable)this.FyP).iterator();
+    Iterator localIterator = ((Iterable)this.LSR).iterator();
     if (localIterator.hasNext())
     {
       Object localObject2 = (h)localIterator.next();
-      if (((h)localObject2).Fqr.frG().NeB.LoV.size() > 0)
+      if (((h)localObject2).LKu.ggc().Ura.Sqr.size() > 0)
       {
-        localObject1 = (edt)((h)localObject2).Fqr.frG().NeB.LoV.get(0);
+        localObject1 = (enu)((h)localObject2).LKu.ggc().Ura.Sqr.get(0);
         label88:
-        StringBuilder localStringBuilder2 = new StringBuilder("\t[date=").append(((h)localObject2).field_date).append(" localId=").append((int)((h)localObject2).Fqr.systemRowid).append(", storyId=").append(((h)localObject2).Fqr.field_storyID).append(", thumb=");
+        StringBuilder localStringBuilder2 = new StringBuilder("\t[date=").append(((h)localObject2).field_date).append(" localId=").append((int)((h)localObject2).LKu.systemRowid).append(", storyId=").append(((h)localObject2).LKu.field_storyID).append(", thumb=");
         if (localObject1 == null) {
           break label198;
         }
-        localObject2 = ((edt)localObject1).Msz;
+        localObject2 = ((enu)localObject1).TDF;
         label151:
         localObject2 = localStringBuilder2.append((String)localObject2).append(", video=");
         if (localObject1 == null) {
@@ -55,7 +55,7 @@ public final class c
       }
       label198:
       label203:
-      for (localObject1 = ((edt)localObject1).Url;; localObject1 = null)
+      for (localObject1 = ((enu)localObject1).Url;; localObject1 = null)
       {
         localStringBuilder1.append((String)localObject1 + "]\n");
         break;

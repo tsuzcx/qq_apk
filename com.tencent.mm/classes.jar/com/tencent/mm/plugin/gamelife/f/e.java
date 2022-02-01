@@ -5,38 +5,38 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.c.e.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/loader/GameLifeAvatarLoader;", "", "()V", "configuration", "Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;", "Lcom/tencent/mm/plugin/gamelife/loader/GameLifeAvatarData;", "Landroid/graphics/Bitmap;", "loader", "Lcom/tencent/mm/loader/Loader;", "getLoader", "()Lcom/tencent/mm/loader/Loader;", "options", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "plugin-gamelife_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/loader/GameLifeAvatarLoader;", "", "()V", "configuration", "Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;", "Lcom/tencent/mm/plugin/gamelife/loader/GameLifeAvatarData;", "Landroid/graphics/Bitmap;", "loader", "Lcom/tencent/mm/loader/Loader;", "getLoader", "()Lcom/tencent/mm/loader/Loader;", "options", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "plugin-gamelife_release"})
 public final class e
 {
-  private static final com.tencent.mm.loader.c.e gVE;
-  private static final com.tencent.mm.loader.c.d<a, Bitmap> gVF;
-  private static final com.tencent.mm.loader.d<a> gVG;
-  public static final e ycg;
+  public static final e DhM;
+  private static final com.tencent.mm.loader.c.e jGA;
+  private static final com.tencent.mm.loader.c.d<a, Bitmap> jGB;
+  private static final com.tencent.mm.loader.d<a> jGC;
   
   static
   {
-    AppMethodBeat.i(241389);
-    ycg = new e();
+    AppMethodBeat.i(202692);
+    DhM = new e();
     Object localObject = new e.a();
-    ((e.a)localObject).hZJ = true;
-    ((e.a)localObject).hZI = true;
-    ((e.a)localObject).hZN = 132;
-    ((e.a)localObject).hZM = 132;
-    gVE = ((e.a)localObject).aJT();
-    gVF = new com.tencent.mm.loader.c.a().a((com.tencent.mm.loader.b.a.d)new b()).a((com.tencent.mm.loader.b.b.e)new com.tencent.mm.loader.b.b.a()).a((com.tencent.mm.loader.d.b)new c()).b(gVE).b(new com.tencent.mm.loader.e.c.c(0.1F).aJY()).aJE();
-    localObject = com.tencent.mm.loader.e.hXU;
-    gVG = com.tencent.mm.loader.e.a(gVF);
-    AppMethodBeat.o(241389);
+    ((e.a)localObject).kOp = true;
+    ((e.a)localObject).kOo = true;
+    ((e.a)localObject).kOt = 132;
+    ((e.a)localObject).kOs = 132;
+    jGA = ((e.a)localObject).aRT();
+    jGB = new com.tencent.mm.loader.c.a().a((com.tencent.mm.loader.b.a.d)new b()).a((com.tencent.mm.loader.b.b.e)new com.tencent.mm.loader.b.b.a()).a((com.tencent.mm.loader.d.b)new c()).b(jGA).b(new com.tencent.mm.loader.e.c.c(0.1F).aRY()).aRE();
+    localObject = com.tencent.mm.loader.e.kMy;
+    jGC = com.tencent.mm.loader.e.a(jGB);
+    AppMethodBeat.o(202692);
   }
   
   public static com.tencent.mm.loader.d<a> getLoader()
   {
-    return gVG;
+    return jGC;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.f.e
  * JD-Core Version:    0.7.0.1
  */

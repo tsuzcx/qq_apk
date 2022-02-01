@@ -5,7 +5,7 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  public static boolean lw(String paramString1, String paramString2)
+  public static boolean lT(String paramString1, String paramString2)
   {
     AppMethodBeat.i(71809);
     if (Util.isNullOrNil(paramString1))

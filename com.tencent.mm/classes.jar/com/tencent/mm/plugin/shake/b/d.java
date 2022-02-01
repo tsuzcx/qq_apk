@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.shake.b;
 
 import android.content.ContentValues;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ga;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.dwv;
-import com.tencent.mm.protocal.protobuf.ebj;
+import com.tencent.mm.f.c.gh;
+import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.egw;
+import com.tencent.mm.protocal.protobuf.elj;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import com.tencent.mm.storage.RegionCodeDecoder;
@@ -13,11 +13,11 @@ import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class d
-  extends ga
+  extends gh
 {
   protected static IAutoDBItem.MAutoDBInfo info;
-  private SKBuiltinBuffer_t DgQ;
-  public int cSx;
+  private eae Jmw;
+  public int cUP;
   public int scene;
   
   static
@@ -115,38 +115,38 @@ public final class d
   
   public d()
   {
-    this.cSx = -1;
+    this.cUP = -1;
     this.field_insertBatch = 2;
   }
   
-  public d(dwv paramdwv)
+  public d(egw paramegw)
   {
     AppMethodBeat.i(28103);
-    this.cSx = -1;
-    this.field_username = paramdwv.UserName;
-    this.field_nickname = paramdwv.oUJ;
-    this.field_signature = paramdwv.keb;
-    this.field_distance = paramdwv.MmJ;
-    this.field_reserved4 = String.valueOf(paramdwv.MWR);
-    this.field_sex = paramdwv.kdY;
-    this.field_imgstatus = paramdwv.KHo;
-    this.field_hasHDImg = paramdwv.MWP;
-    this.field_reserved1 = paramdwv.MmK;
-    this.field_reserved3 = paramdwv.MmL;
+    this.cUP = -1;
+    this.field_username = paramegw.UserName;
+    this.field_nickname = paramegw.rWI;
+    this.field_signature = paramegw.mVB;
+    this.field_distance = paramegw.TxE;
+    this.field_reserved4 = String.valueOf(paramegw.Ujm);
+    this.field_sex = paramegw.mVy;
+    this.field_imgstatus = paramegw.RIG;
+    this.field_hasHDImg = paramegw.Ujk;
+    this.field_reserved1 = paramegw.TxF;
+    this.field_reserved3 = paramegw.TxG;
     this.field_insertBatch = 2;
-    if (paramdwv.MmQ != null)
+    if (paramegw.TxL != null)
     {
-      this.field_snsFlag = paramdwv.MmQ.kej;
-      this.field_sns_bgurl = paramdwv.MmQ.kek;
+      this.field_snsFlag = paramegw.TxL.mVJ;
+      this.field_sns_bgurl = paramegw.TxL.mVK;
     }
-    this.DgQ = paramdwv.MWQ;
-    this.field_province = paramdwv.kdZ;
-    this.field_city = paramdwv.kea;
-    this.field_regionCode = RegionCodeDecoder.bq(paramdwv.keh, this.field_province, this.field_city);
+    this.Jmw = paramegw.Ujl;
+    this.field_province = paramegw.mVz;
+    this.field_city = paramegw.mVA;
+    this.field_regionCode = RegionCodeDecoder.bl(paramegw.mVH, this.field_province, this.field_city);
     AppMethodBeat.o(28103);
   }
   
-  private int eTR()
+  private int fGT()
   {
     AppMethodBeat.i(28106);
     try
@@ -165,61 +165,61 @@ public final class d
   {
     AppMethodBeat.i(28107);
     ContentValues localContentValues = new ContentValues();
-    if ((this.cSx & 0x2) != 0) {
+    if ((this.cUP & 0x2) != 0) {
       localContentValues.put("username", this.field_username);
     }
-    if ((this.cSx & 0x4) != 0) {
+    if ((this.cUP & 0x4) != 0) {
       localContentValues.put("nickname", this.field_nickname);
     }
-    if ((this.cSx & 0x8) != 0) {
+    if ((this.cUP & 0x8) != 0) {
       localContentValues.put("province", getProvince());
     }
-    if ((this.cSx & 0x10) != 0) {
+    if ((this.cUP & 0x10) != 0) {
       localContentValues.put("city", getCity());
     }
-    if ((this.cSx & 0x20) != 0) {
+    if ((this.cUP & 0x20) != 0) {
       localContentValues.put("signature", this.field_signature);
     }
-    if ((this.cSx & 0x40) != 0) {
+    if ((this.cUP & 0x40) != 0) {
       localContentValues.put("distance", this.field_distance);
     }
-    if ((this.cSx & 0x80) != 0) {
+    if ((this.cUP & 0x80) != 0) {
       localContentValues.put("sex", Integer.valueOf(this.field_sex));
     }
-    if ((this.cSx & 0x100) != 0) {
+    if ((this.cUP & 0x100) != 0) {
       localContentValues.put("imgstatus", Integer.valueOf(this.field_imgstatus));
     }
-    if ((this.cSx & 0x200) != 0) {
+    if ((this.cUP & 0x200) != 0) {
       localContentValues.put("hasHDImg", Integer.valueOf(this.field_hasHDImg));
     }
-    if ((this.cSx & 0x400) != 0) {
+    if ((this.cUP & 0x400) != 0) {
       localContentValues.put("insertBatch", Integer.valueOf(this.field_insertBatch));
     }
-    if ((this.cSx & 0x800) != 0) {
+    if ((this.cUP & 0x800) != 0) {
       localContentValues.put("reserved1", Integer.valueOf(this.field_reserved1));
     }
-    if ((this.cSx & 0x1000) != 0) {
+    if ((this.cUP & 0x1000) != 0) {
       localContentValues.put("reserved2", Integer.valueOf(this.field_reserved2));
     }
-    if ((this.cSx & 0x2000) != 0) {
+    if ((this.cUP & 0x2000) != 0) {
       localContentValues.put("reserved3", this.field_reserved3);
     }
-    if ((this.cSx & 0x4000) != 0) {
-      localContentValues.put("reserved4", Integer.valueOf(eTR()));
+    if ((this.cUP & 0x4000) != 0) {
+      localContentValues.put("reserved4", Integer.valueOf(fGT()));
     }
-    if ((this.cSx & 0x8000) != 0) {
+    if ((this.cUP & 0x8000) != 0) {
       localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if ((this.cSx & 0x10000) != 0) {
+    if ((this.cUP & 0x10000) != 0) {
       localContentValues.put("lvbuffer", this.field_lvbuffer);
     }
-    if ((this.cSx & 0x20000) != 0) {
+    if ((this.cUP & 0x20000) != 0) {
       localContentValues.put("regionCode", this.field_regionCode);
     }
-    if ((this.cSx & 0x40000) != 0) {
+    if ((this.cUP & 0x40000) != 0) {
       localContentValues.put("snsFlag", Integer.valueOf(this.field_snsFlag));
     }
-    if ((this.cSx & 0x80000) != 0) {
+    if ((this.cUP & 0x80000) != 0) {
       localContentValues.put("sns_bgurl", this.field_sns_bgurl);
     }
     AppMethodBeat.o(28107);
@@ -238,8 +238,8 @@ public final class d
         if (localObject.length <= 2) {
           break label71;
         }
-        RegionCodeDecoder.gEm();
-        this.field_city = RegionCodeDecoder.bs(localObject[0], localObject[1], localObject[2]);
+        RegionCodeDecoder.hAC();
+        this.field_city = RegionCodeDecoder.bn(localObject[0], localObject[1], localObject[2]);
       }
     }
     for (;;)
@@ -250,8 +250,8 @@ public final class d
       label71:
       if (localObject.length == 2)
       {
-        RegionCodeDecoder.gEm();
-        this.field_city = RegionCodeDecoder.mW(localObject[0], localObject[1]);
+        RegionCodeDecoder.hAC();
+        this.field_city = RegionCodeDecoder.nO(localObject[0], localObject[1]);
       }
       else
       {
@@ -277,22 +277,22 @@ public final class d
         if ((localObject.length <= 2) || (!localObject[0].equalsIgnoreCase("cn"))) {
           break label80;
         }
-        RegionCodeDecoder.gEm();
+        RegionCodeDecoder.hAC();
       }
     }
-    for (this.field_province = RegionCodeDecoder.mW(localObject[0], localObject[1]);; this.field_province = RegionCodeDecoder.bkP(localObject[0]))
+    for (this.field_province = RegionCodeDecoder.nO(localObject[0], localObject[1]);; this.field_province = RegionCodeDecoder.bxp(localObject[0]))
     {
       localObject = this.field_province;
       AppMethodBeat.o(28104);
       return localObject;
       label80:
-      RegionCodeDecoder.gEm();
+      RegionCodeDecoder.hAC();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.b.d
  * JD-Core Version:    0.7.0.1
  */

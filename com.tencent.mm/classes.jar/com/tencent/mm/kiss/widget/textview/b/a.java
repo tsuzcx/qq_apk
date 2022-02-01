@@ -14,8 +14,8 @@ import java.lang.reflect.Constructor;
 
 public class a
 {
-  private static Constructor<StaticLayout> huZ;
-  private static Object hva;
+  private static Constructor<StaticLayout> Of;
+  private static Object kgW;
   
   /* Error */
   @android.annotation.SuppressLint({"NewApi"})
@@ -26,9 +26,9 @@ public class a
     //   2: monitorenter
     //   3: ldc 22
     //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 32	com/tencent/mm/kiss/widget/textview/b/a:aBt	()Ljava/lang/Object;
+    //   8: invokestatic 32	com/tencent/mm/kiss/widget/textview/b/a:aIW	()Ljava/lang/Object;
     //   11: astore 12
-    //   13: invokestatic 36	com/tencent/mm/kiss/widget/textview/b/a:aBu	()Ljava/lang/reflect/Constructor;
+    //   13: invokestatic 36	com/tencent/mm/kiss/widget/textview/b/a:aIX	()Ljava/lang/reflect/Constructor;
     //   16: astore 13
     //   18: aload 13
     //   20: ifnonnull +42 -> 62
@@ -177,24 +177,24 @@ public class a
   
   private static StaticLayout a(CharSequence paramCharSequence, int paramInt1, int paramInt2, TextPaint paramTextPaint, int paramInt3, Layout.Alignment paramAlignment, TextDirectionHeuristic paramTextDirectionHeuristic, float paramFloat1, float paramFloat2, boolean paramBoolean, TextUtils.TruncateAt paramTruncateAt, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(196226);
+    AppMethodBeat.i(237771);
     paramCharSequence = StaticLayout.Builder.obtain(paramCharSequence, paramInt1, paramInt2, paramTextPaint, paramInt3).setAlignment(paramAlignment).setTextDirection(paramTextDirectionHeuristic).setLineSpacing(paramFloat2, paramFloat1).setIncludePad(paramBoolean).setEllipsizedWidth(paramInt4).setEllipsize(paramTruncateAt).setMaxLines(paramInt5).build();
-    AppMethodBeat.o(196226);
+    AppMethodBeat.o(237771);
     return paramCharSequence;
   }
   
   /* Error */
   @TargetApi(18)
-  private static Object aBt()
+  private static Object aIW()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
     //   3: ldc 140
     //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 142	com/tencent/mm/kiss/widget/textview/b/a:hva	Ljava/lang/Object;
+    //   8: getstatic 142	com/tencent/mm/kiss/widget/textview/b/a:kgW	Ljava/lang/Object;
     //   11: ifnull +17 -> 28
-    //   14: getstatic 142	com/tencent/mm/kiss/widget/textview/b/a:hva	Ljava/lang/Object;
+    //   14: getstatic 142	com/tencent/mm/kiss/widget/textview/b/a:kgW	Ljava/lang/Object;
     //   17: astore_0
     //   18: ldc 140
     //   20: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -206,8 +206,8 @@ public class a
     //   31: bipush 18
     //   33: if_icmplt +27 -> 60
     //   36: getstatic 154	android/text/TextDirectionHeuristics:FIRSTSTRONG_LTR	Landroid/text/TextDirectionHeuristic;
-    //   39: putstatic 142	com/tencent/mm/kiss/widget/textview/b/a:hva	Ljava/lang/Object;
-    //   42: getstatic 142	com/tencent/mm/kiss/widget/textview/b/a:hva	Ljava/lang/Object;
+    //   39: putstatic 142	com/tencent/mm/kiss/widget/textview/b/a:kgW	Ljava/lang/Object;
+    //   42: getstatic 142	com/tencent/mm/kiss/widget/textview/b/a:kgW	Ljava/lang/Object;
     //   45: astore_0
     //   46: ldc 140
     //   48: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -227,7 +227,7 @@ public class a
     //   74: invokevirtual 173	java/lang/Class:getField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   77: aload_0
     //   78: invokevirtual 179	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   81: putstatic 142	com/tencent/mm/kiss/widget/textview/b/a:hva	Ljava/lang/Object;
+    //   81: putstatic 142	com/tencent/mm/kiss/widget/textview/b/a:kgW	Ljava/lang/Object;
     //   84: goto -42 -> 42
     //   87: astore_0
     //   88: ldc 181
@@ -316,7 +316,7 @@ public class a
   }
   
   @TargetApi(18)
-  private static Constructor<StaticLayout> aBu()
+  private static Constructor<StaticLayout> aIX()
   {
     Object localObject4 = null;
     int i = 1;
@@ -324,12 +324,12 @@ public class a
     {
       try
       {
-        AppMethodBeat.i(196225);
+        AppMethodBeat.i(237768);
         Object localObject1;
-        if (huZ != null)
+        if (Of != null)
         {
-          localObject1 = huZ;
-          AppMethodBeat.o(196225);
+          localObject1 = Of;
+          AppMethodBeat.o(237768);
           return localObject1;
         }
         if (Build.VERSION.SDK_INT >= 29)
@@ -337,7 +337,7 @@ public class a
           if (i == 0) {
             break label65;
           }
-          AppMethodBeat.o(196225);
+          AppMethodBeat.o(237768);
           localObject1 = localObject4;
           continue;
         }
@@ -355,7 +355,7 @@ public class a
           }
           localObject3 = TextDirectionHeuristic.class;
           localObject3 = StaticLayout.class.getDeclaredConstructor(new Class[] { CharSequence.class, Integer.TYPE, Integer.TYPE, TextPaint.class, Integer.TYPE, Layout.Alignment.class, localObject3, Float.TYPE, Float.TYPE, Boolean.TYPE, TextUtils.TruncateAt.class, Integer.TYPE, Integer.TYPE });
-          huZ = (Constructor)localObject3;
+          Of = (Constructor)localObject3;
           ((Constructor)localObject3).setAccessible(true);
           localObject3 = null;
         }
@@ -374,15 +374,15 @@ public class a
         {
           Log.printErrStackTrace("StaticTextView.StaticLayoutWithMaxLines", localThrowable, "Other error.", new Object[0]);
           continue;
-          Constructor localConstructor = huZ;
-          AppMethodBeat.o(196225);
+          Constructor localConstructor = Of;
+          AppMethodBeat.o(237768);
         }
         if (localObject3 == null) {
           continue;
         }
         Log.w("StaticTextView.StaticLayoutWithMaxLines", "create StaticLayout constructor fail: " + ((Throwable)localObject3).getMessage());
         Log.w("StaticTextView.StaticLayoutWithMaxLines", "use builtin StaticLayout.Builder as fallback!");
-        AppMethodBeat.o(196225);
+        AppMethodBeat.o(237768);
         localObject3 = localObject4;
         break;
         localObject3 = a.class.getClassLoader().loadClass("android.text.TextDirectionHeuristic");
@@ -399,9 +399,9 @@ public class a
     //   2: monitorenter
     //   3: ldc 251
     //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 32	com/tencent/mm/kiss/widget/textview/b/a:aBt	()Ljava/lang/Object;
+    //   8: invokestatic 32	com/tencent/mm/kiss/widget/textview/b/a:aIW	()Ljava/lang/Object;
     //   11: astore 13
-    //   13: invokestatic 36	com/tencent/mm/kiss/widget/textview/b/a:aBu	()Ljava/lang/reflect/Constructor;
+    //   13: invokestatic 36	com/tencent/mm/kiss/widget/textview/b/a:aIX	()Ljava/lang/reflect/Constructor;
     //   16: astore 14
     //   18: aload 14
     //   20: ifnonnull +42 -> 62
@@ -551,7 +551,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.b.a
  * JD-Core Version:    0.7.0.1
  */

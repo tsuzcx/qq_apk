@@ -4,7 +4,7 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.MemoryInfo;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
@@ -17,83 +17,83 @@ import java.util.List;
 public final class f
   extends a
 {
-  private static boolean CJM;
-  private static volatile boolean RKm;
-  private WxQbarNative RKn;
-  int RKo;
+  private static boolean IPn;
+  private static volatile boolean ZmU;
+  private WxQbarNative ZmV;
+  int ZmW;
   
   static
   {
     AppMethodBeat.i(91167);
-    RKm = true;
-    CJM = true;
-    hkl();
+    ZmU = true;
+    IPn = true;
+    inI();
     AppMethodBeat.o(91167);
   }
   
   public f()
   {
     AppMethodBeat.i(91157);
-    this.RKn = new WxQbarNative();
-    this.RKo = 0;
+    this.ZmV = new WxQbarNative();
+    this.ZmW = 0;
     AppMethodBeat.o(91157);
   }
   
-  public static void DN(boolean paramBoolean)
+  public static void Io(boolean paramBoolean)
   {
     AppMethodBeat.i(176206);
     Log.i("MicroMsg.WxQBar", "alvinluo setEnableMultiCode: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    CJM = paramBoolean;
+    IPn = paramBoolean;
     AppMethodBeat.o(176206);
   }
   
-  public static void hkl()
+  public static void inI()
   {
     AppMethodBeat.i(91158);
-    int i = ((b)g.af(b.class)).a(b.a.sen, 0);
+    int i = ((b)h.ae(b.class)).a(b.a.vNS, 0);
     if (i != 1) {}
     for (boolean bool = true;; bool = false)
     {
-      RKm = bool;
+      ZmU = bool;
       if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG)) {
-        RKm = true;
+        ZmU = true;
       }
-      if (RKm)
+      if (ZmU)
       {
-        int j = ((b)g.af(b.class)).a(b.a.seo, 0);
+        int j = ((b)h.ae(b.class)).a(b.a.vNT, 0);
         if (j > 0)
         {
           ActivityManager localActivityManager = (ActivityManager)MMApplicationContext.getContext().getSystemService("activity");
           ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
           localActivityManager.getMemoryInfo(localMemoryInfo);
           if ((localMemoryInfo.totalMem > 0L) && ((float)localMemoryInfo.totalMem * 1.0F / 1048576.0F <= j)) {
-            RKm = false;
+            ZmU = false;
           }
-          Log.i("MicroMsg.WxQBar", "alvinluo checkMemoryLimit totalMemory: %s bytes, %s MB, config memoryLimit: %d, useNewScanInterface: %b", new Object[] { Long.valueOf(localMemoryInfo.totalMem), Float.valueOf((float)localMemoryInfo.totalMem * 1.0F / 1048576.0F), Integer.valueOf(j), Boolean.valueOf(RKm) });
+          Log.i("MicroMsg.WxQBar", "alvinluo checkMemoryLimit totalMemory: %s bytes, %s MB, config memoryLimit: %d, useNewScanInterface: %b", new Object[] { Long.valueOf(localMemoryInfo.totalMem), Float.valueOf((float)localMemoryInfo.totalMem * 1.0F / 1048576.0F), Integer.valueOf(j), Boolean.valueOf(ZmU) });
         }
       }
-      Log.i("MicroMsg.WxQBar", "alvinluo updateUseNewScanInterfaceStatus config: %d, useNewScanInterface: %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(RKm) });
+      Log.i("MicroMsg.WxQBar", "alvinluo updateUseNewScanInterfaceStatus config: %d, useNewScanInterface: %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(ZmU) });
       AppMethodBeat.o(91158);
       return;
     }
   }
   
-  public static boolean hkm()
+  public static boolean inJ()
   {
-    return RKm;
+    return ZmU;
   }
   
-  public final int S(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final int U(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(91160);
-    Log.i("MicroMsg.WxQBar", "alvinluo scanImage width: %d, height: %d, grayImage: %d, useNewScanInterface: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramArrayOfByte.length), Boolean.valueOf(RKm) });
-    if (RKm) {
+    Log.i("MicroMsg.WxQBar", "alvinluo scanImage width: %d, height: %d, grayImage: %d, useNewScanInterface: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramArrayOfByte.length), Boolean.valueOf(ZmU) });
+    if (ZmU) {
       try
       {
-        if (this.RJt < 0) {
+        if (this.Zmb < 0) {
           return -1;
         }
-        paramInt1 = this.RKn.ScanImage712(paramArrayOfByte, paramInt1, paramInt2, this.RJt);
+        paramInt1 = this.ZmV.ScanImage712(paramArrayOfByte, paramInt1, paramInt2, this.Zmb);
         return paramInt1;
       }
       finally
@@ -101,25 +101,25 @@ public final class f
         AppMethodBeat.o(91160);
       }
     }
-    paramInt1 = super.S(paramArrayOfByte, paramInt1, paramInt2);
+    paramInt1 = super.U(paramArrayOfByte, paramInt1, paramInt2);
     AppMethodBeat.o(91160);
     return paramInt1;
   }
   
-  public final int aG(float paramFloat1, float paramFloat2)
-  {
-    AppMethodBeat.i(194830);
-    int i = this.RKn.SetTouchCoordinate(this.RJt, paramFloat1, paramFloat2);
-    AppMethodBeat.o(194830);
-    return i;
-  }
-  
-  public final int aqy(int paramInt)
+  public final int aAl(int paramInt)
   {
     AppMethodBeat.i(176207);
-    this.RKn.AddBlackInternal(paramInt, this.RJt);
+    this.ZmV.AddBlackInternal(paramInt, this.Zmb);
     AppMethodBeat.o(176207);
     return 0;
+  }
+  
+  public final int aN(float paramFloat1, float paramFloat2)
+  {
+    AppMethodBeat.i(193446);
+    int i = this.ZmV.SetTouchCoordinate(this.Zmb, paramFloat1, paramFloat2);
+    AppMethodBeat.o(193446);
+    return i;
   }
   
   public final int b(List<a.a> paramList, List<QbarNative.QBarPoint> paramList1, List<WxQbarNative.QBarReportMsg> paramList2, boolean paramBoolean)
@@ -144,12 +144,12 @@ public final class f
       i += 1;
     }
     i = 0;
-    if ((RKm) && (paramBoolean))
+    if ((ZmU) && (paramBoolean))
     {
-      j = this.RKn.GetDetailResultsNew(arrayOfQBarResultJNI, arrayOfQBarPoint, arrayOfQBarReportMsg, this.RJt);
-      this.RKo = (j - 1);
+      j = this.ZmV.GetDetailResultsNew(arrayOfQBarResultJNI, arrayOfQBarPoint, arrayOfQBarReportMsg, this.Zmb);
+      this.ZmW = (j - 1);
       i = j;
-      if (CJM)
+      if (IPn)
       {
         i = j;
         if (j <= 0)
@@ -162,7 +162,7 @@ public final class f
     }
     else
     {
-      this.RKn.GetDetailResults(arrayOfQBarResultJNI, arrayOfQBarPoint, arrayOfQBarReportMsg, this.RJt);
+      this.ZmV.GetDetailResults(arrayOfQBarResultJNI, arrayOfQBarPoint, arrayOfQBarReportMsg, this.Zmb);
     }
     int j = 0;
     for (;;)
@@ -192,7 +192,7 @@ public final class f
             locala.data = new String(localQBarResultJNI.data, "ASCII");
           }
           paramList.add(locala);
-          if ((CJM) || (paramList.size() <= 0)) {
+          if ((IPn) || (paramList.size() <= 0)) {
             continue;
           }
           Log.w("MicroMsg.WxQBar", "alvinluo getResults not enableMultiCode and ignore other results");
@@ -204,7 +204,7 @@ public final class f
           continue;
           j += 1;
         }
-        if ((paramList1 == null) || (!RKm)) {
+        if ((paramList1 == null) || (!ZmU)) {
           break label582;
         }
         j = 0;
@@ -233,7 +233,7 @@ public final class f
         j += 1;
       }
     }
-    if ((RKm) && (paramBoolean) && (CJM) && (i > 0))
+    if ((ZmU) && (paramBoolean) && (IPn) && (i > 0))
     {
       Log.i("MicroMsg.WxQBar", "alvinluo getResults ret: %d, result size: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramList.size()) });
       i = paramList.size();
@@ -245,18 +245,18 @@ public final class f
     return i;
   }
   
-  public final int bpW(String paramString)
+  public final int bCO(String paramString)
   {
     AppMethodBeat.i(91164);
-    this.RKn.AddWhiteList(paramString, this.RJt);
+    this.ZmV.AddWhiteList(paramString, this.Zmb);
     AppMethodBeat.o(91164);
     return 0;
   }
   
-  public final int bpX(String paramString)
+  public final int bCP(String paramString)
   {
     AppMethodBeat.i(91165);
-    this.RKn.AddBlackList(paramString, this.RJt);
+    this.ZmV.AddBlackList(paramString, this.Zmb);
     AppMethodBeat.o(91165);
     return 0;
   }
@@ -266,51 +266,51 @@ public final class f
     AppMethodBeat.i(91159);
     if (paramBoolean)
     {
-      paramInt1 = S(paramArrayOfByte, paramInt1, paramInt2);
+      paramInt1 = U(paramArrayOfByte, paramInt1, paramInt2);
       AppMethodBeat.o(91159);
       return paramInt1;
     }
-    paramInt1 = super.S(paramArrayOfByte, paramInt1, paramInt2);
+    paramInt1 = super.U(paramArrayOfByte, paramInt1, paramInt2);
     AppMethodBeat.o(91159);
     return paramInt1;
   }
   
-  public final String jS()
+  public final String iN()
   {
-    AppMethodBeat.i(194829);
+    AppMethodBeat.i(193417);
     try
     {
-      if (this.RJt < 0) {
+      if (this.Zmb < 0) {
         return null;
       }
-      String str = this.RKn.GetDebugString(this.RJt);
+      String str = this.ZmV.GetDebugString(this.Zmb);
       return str;
     }
     finally
     {
-      AppMethodBeat.o(194829);
+      AppMethodBeat.o(193417);
     }
   }
   
   public final void reset(boolean paramBoolean)
   {
-    AppMethodBeat.i(194828);
-    if (RKm) {
+    AppMethodBeat.i(193412);
+    if (ZmU) {
       try
       {
-        if (this.RJt < 0) {
+        if (this.Zmb < 0) {
           return;
         }
-        Log.i("MicroMsg.WxQBar", "alvinluo reset WxQBar qbarId: %d, forZoom: %b", new Object[] { Integer.valueOf(this.RJt), Boolean.valueOf(paramBoolean) });
-        this.RKn.Reset(this.RJt, paramBoolean);
+        Log.i("MicroMsg.WxQBar", "alvinluo reset WxQBar qbarId: %d, forZoom: %b", new Object[] { Integer.valueOf(this.Zmb), Boolean.valueOf(paramBoolean) });
+        this.ZmV.Reset(this.Zmb, paramBoolean);
         return;
       }
       finally
       {
-        AppMethodBeat.o(194828);
+        AppMethodBeat.o(193412);
       }
     }
-    AppMethodBeat.o(194828);
+    AppMethodBeat.o(193412);
   }
 }
 

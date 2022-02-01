@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.expt.hellhound.a.a.a;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
 import android.view.View;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -14,15 +14,15 @@ import java.util.ArrayList;
 public final class a
   implements b
 {
-  private WeakReference<RecyclerView> sCb;
-  private Field sCc;
-  private Field sCd;
-  private Field sCe;
-  private Method sCf;
-  private Method sCg;
-  private Method sCh;
-  private Method sCi;
-  private Method sCj;
+  private WeakReference<RecyclerView> whW;
+  private Field whX;
+  private Field whY;
+  private Field whZ;
+  private Method wia;
+  private Method wib;
+  private Method wic;
+  private Method wid;
+  private Method wie;
   
   public a()
   {
@@ -30,23 +30,23 @@ public final class a
     Log.w("HABBYGE-MALI.FinderFeedParamsCatcher", "FinderFeedParamsCatcher");
     try
     {
-      this.sCc = Class.forName("com.tencent.mm.view.recyclerview.WxRecyclerAdapter").getDeclaredField("data");
-      this.sCc.setAccessible(true);
-      this.sCd = Class.forName("com.tencent.mm.plugin.finder.view.adapter.FinderMediaBannerAdapter").getDeclaredField("feed");
-      this.sCd.setAccessible(true);
-      this.sCe = Class.forName("com.tencent.mm.plugin.finder.model.BaseFinderFeed").getDeclaredField("feedObject");
-      this.sCe.setAccessible(true);
+      this.whX = Class.forName("com.tencent.mm.view.recyclerview.WxRecyclerAdapter").getDeclaredField("data");
+      this.whX.setAccessible(true);
+      this.whY = Class.forName("com.tencent.mm.plugin.finder.view.adapter.FinderMediaBannerAdapter").getDeclaredField("feed");
+      this.whY.setAccessible(true);
+      this.whZ = Class.forName("com.tencent.mm.plugin.finder.model.BaseFinderFeed").getDeclaredField("feedObject");
+      this.whZ.setAccessible(true);
       Class localClass = Class.forName("com.tencent.mm.plugin.finder.storage.FeedData");
-      this.sCf = localClass.getDeclaredMethod("getId", new Class[0]);
-      this.sCf.setAccessible(true);
-      this.sCg = localClass.getDeclaredMethod("getUserName", new Class[0]);
-      this.sCg.setAccessible(true);
-      this.sCh = localClass.getDeclaredMethod("getNickName", new Class[0]);
-      this.sCh.setAccessible(true);
-      this.sCi = localClass.getDeclaredMethod("getLikeCount", new Class[0]);
-      this.sCi.setAccessible(true);
-      this.sCj = localClass.getDeclaredMethod("getCommentCount", new Class[0]);
-      this.sCj.setAccessible(true);
+      this.wia = localClass.getDeclaredMethod("getId", new Class[0]);
+      this.wia.setAccessible(true);
+      this.wib = localClass.getDeclaredMethod("getUserName", new Class[0]);
+      this.wib.setAccessible(true);
+      this.wic = localClass.getDeclaredMethod("getNickName", new Class[0]);
+      this.wic.setAccessible(true);
+      this.wid = localClass.getDeclaredMethod("getLikeCount", new Class[0]);
+      this.wid.setAccessible(true);
+      this.wie = localClass.getDeclaredMethod("getCommentCount", new Class[0]);
+      this.wie.setAccessible(true);
       AppMethodBeat.o(169309);
       return;
     }
@@ -59,27 +59,27 @@ public final class a
   
   private String a(RecyclerView.a parama, int paramInt)
   {
-    AppMethodBeat.i(169311);
+    AppMethodBeat.i(257948);
     try
     {
-      Object localObject = this.sCd.get(parama);
+      Object localObject = this.whY.get(parama);
       if (localObject == null)
       {
-        AppMethodBeat.o(169311);
+        AppMethodBeat.o(257948);
         return null;
       }
-      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.zs(((Long)this.sCf.invoke(localObject, new Object[0])).longValue());
-      AppMethodBeat.o(169311);
+      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.Fw(((Long)this.wia.invoke(localObject, new Object[0])).longValue());
+      AppMethodBeat.o(257948);
       return localObject;
     }
     catch (Exception localException)
     {
       try
       {
-        parama = this.sCc.get(parama);
+        parama = this.whX.get(parama);
         if (parama == null)
         {
-          AppMethodBeat.o(169311);
+          AppMethodBeat.o(257948);
           return null;
         }
         parama = (ArrayList)parama;
@@ -90,29 +90,29 @@ public final class a
         }
         else
         {
-          AppMethodBeat.o(169311);
+          AppMethodBeat.o(257948);
           return null;
         }
         parama = parama.get(paramInt);
         if (parama == null)
         {
-          AppMethodBeat.o(169311);
+          AppMethodBeat.o(257948);
           return null;
         }
-        parama = this.sCe.get(parama);
-        parama = com.tencent.mm.plugin.expt.hellhound.core.b.zs(((Long)this.sCf.invoke(parama, new Object[0])).longValue());
-        AppMethodBeat.o(169311);
+        parama = this.whZ.get(parama);
+        parama = com.tencent.mm.plugin.expt.hellhound.core.b.Fw(((Long)this.wia.invoke(parama, new Object[0])).longValue());
+        AppMethodBeat.o(257948);
         return parama;
       }
       catch (Exception parama)
       {
-        AppMethodBeat.o(169311);
+        AppMethodBeat.o(257948);
       }
     }
     return null;
   }
   
-  public final String GY(int paramInt)
+  public final String KI(int paramInt)
   {
     return null;
   }
@@ -122,12 +122,12 @@ public final class a
     AppMethodBeat.i(169312);
     paramPInt1.value = 0;
     paramPInt2.value = 0;
-    if (this.sCb == null)
+    if (this.whW == null)
     {
       AppMethodBeat.o(169312);
       return;
     }
-    paramView = (RecyclerView)this.sCb.get();
+    paramView = (RecyclerView)this.whW.get();
     if (paramView == null)
     {
       AppMethodBeat.o(169312);
@@ -142,7 +142,7 @@ public final class a
     }
     try
     {
-      Object localObject = this.sCc.get(paramView);
+      Object localObject = this.whX.get(paramView);
       if (localObject == null)
       {
         AppMethodBeat.o(169312);
@@ -154,9 +154,9 @@ public final class a
         AppMethodBeat.o(169312);
         return;
       }
-      localObject = this.sCe.get(localObject);
-      paramPInt1.value = ((Integer)this.sCi.invoke(localObject, new Object[0])).intValue();
-      paramPInt2.value = ((Integer)this.sCj.invoke(localObject, new Object[0])).intValue();
+      localObject = this.whZ.get(localObject);
+      paramPInt1.value = ((Integer)this.wid.invoke(localObject, new Object[0])).intValue();
+      paramPInt2.value = ((Integer)this.wie.invoke(localObject, new Object[0])).intValue();
       AppMethodBeat.o(169312);
       return;
     }
@@ -164,14 +164,14 @@ public final class a
     {
       try
       {
-        paramView = this.sCd.get(paramView);
+        paramView = this.whY.get(paramView);
         if (paramView == null)
         {
           AppMethodBeat.o(169312);
           return;
         }
-        paramPInt1.value = ((Integer)this.sCi.invoke(paramView, new Object[0])).intValue();
-        paramPInt2.value = ((Integer)this.sCj.invoke(paramView, new Object[0])).intValue();
+        paramPInt1.value = ((Integer)this.wid.invoke(paramView, new Object[0])).intValue();
+        paramPInt2.value = ((Integer)this.wie.invoke(paramView, new Object[0])).intValue();
         AppMethodBeat.o(169312);
         return;
       }
@@ -183,16 +183,16 @@ public final class a
     }
   }
   
-  public final String ac(View paramView, int paramInt)
+  public final String ae(View paramView, int paramInt)
   {
     AppMethodBeat.i(169310);
-    if (this.sCb == null)
+    if (this.whW == null)
     {
       Log.e("HABBYGE-MALI.FinderFeedParamsCatcher", "getFeedId, mRecyclerView == NULL !?");
       AppMethodBeat.o(169310);
       return null;
     }
-    paramView = (RecyclerView)this.sCb.get();
+    paramView = (RecyclerView)this.whW.get();
     if (paramView == null)
     {
       AppMethodBeat.o(169310);
@@ -210,15 +210,15 @@ public final class a
     return paramView;
   }
   
-  public final String ad(View paramView, int paramInt)
+  public final String af(View paramView, int paramInt)
   {
     AppMethodBeat.i(169313);
-    if (this.sCb == null)
+    if (this.whW == null)
     {
       AppMethodBeat.o(169313);
       return null;
     }
-    paramView = (RecyclerView)this.sCb.get();
+    paramView = (RecyclerView)this.whW.get();
     if (paramView == null)
     {
       AppMethodBeat.o(169313);
@@ -233,7 +233,7 @@ public final class a
     }
     try
     {
-      Object localObject = this.sCc.get(paramView);
+      Object localObject = this.whX.get(paramView);
       if (localObject == null)
       {
         AppMethodBeat.o(169313);
@@ -245,8 +245,8 @@ public final class a
         AppMethodBeat.o(169313);
         return null;
       }
-      localObject = this.sCe.get(localObject);
-      localObject = (String)this.sCg.invoke(localObject, new Object[0]);
+      localObject = this.whZ.get(localObject);
+      localObject = (String)this.wib.invoke(localObject, new Object[0]);
       AppMethodBeat.o(169313);
       return localObject;
     }
@@ -254,13 +254,13 @@ public final class a
     {
       try
       {
-        paramView = this.sCd.get(paramView);
+        paramView = this.whY.get(paramView);
         if (paramView == null)
         {
           AppMethodBeat.o(169313);
           return null;
         }
-        paramView = (String)this.sCg.invoke(paramView, new Object[0]);
+        paramView = (String)this.wib.invoke(paramView, new Object[0]);
         AppMethodBeat.o(169313);
         return paramView;
       }
@@ -273,15 +273,15 @@ public final class a
     return null;
   }
   
-  public final String ae(View paramView, int paramInt)
+  public final String ag(View paramView, int paramInt)
   {
     AppMethodBeat.i(185578);
-    if (this.sCb == null)
+    if (this.whW == null)
     {
       AppMethodBeat.o(185578);
       return null;
     }
-    paramView = (RecyclerView)this.sCb.get();
+    paramView = (RecyclerView)this.whW.get();
     if (paramView == null)
     {
       AppMethodBeat.o(185578);
@@ -296,7 +296,7 @@ public final class a
     }
     try
     {
-      Object localObject = this.sCc.get(paramView);
+      Object localObject = this.whX.get(paramView);
       if (localObject == null)
       {
         AppMethodBeat.o(185578);
@@ -308,8 +308,8 @@ public final class a
         AppMethodBeat.o(185578);
         return null;
       }
-      localObject = this.sCe.get(localObject);
-      localObject = (String)this.sCh.invoke(localObject, new Object[0]);
+      localObject = this.whZ.get(localObject);
+      localObject = (String)this.wic.invoke(localObject, new Object[0]);
       AppMethodBeat.o(185578);
       return localObject;
     }
@@ -317,13 +317,13 @@ public final class a
     {
       try
       {
-        paramView = this.sCd.get(paramView);
+        paramView = this.whY.get(paramView);
         if (paramView == null)
         {
           AppMethodBeat.o(185578);
           return null;
         }
-        paramView = (String)this.sCh.invoke(paramView, new Object[0]);
+        paramView = (String)this.wic.invoke(paramView, new Object[0]);
         AppMethodBeat.o(185578);
         return paramView;
       }
@@ -336,21 +336,21 @@ public final class a
     return null;
   }
   
-  public final boolean dP(View paramView)
+  public final boolean en(View paramView)
   {
     return false;
   }
   
   public final void setRecyclerView(RecyclerView paramRecyclerView)
   {
-    AppMethodBeat.i(186068);
-    this.sCb = new WeakReference(paramRecyclerView);
-    AppMethodBeat.o(186068);
+    AppMethodBeat.i(257945);
+    this.whW = new WeakReference(paramRecyclerView);
+    AppMethodBeat.o(257945);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

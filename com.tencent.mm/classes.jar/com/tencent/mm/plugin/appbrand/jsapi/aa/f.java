@@ -1,79 +1,102 @@
 package com.tencent.mm.plugin.appbrand.jsapi.aa;
 
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.k;
+import com.tencent.mm.plugin.appbrand.jsapi.az;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.file.i.a;
+import com.tencent.mm.plugin.appbrand.utils.q;
+import com.tencent.mm.plugin.appbrand.utils.q.a;
 import com.tencent.mm.sdk.platformtools.Log;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class f
-  extends a
+  extends c
 {
-  public static final int CTRL_INDEX = 898;
-  public static final String NAME = "rechargeTrafficCard";
+  public static final int CTRL_INDEX = 488;
+  public static final String NAME = "enableGyroscope";
   
-  protected final void a(k paramk, int paramInt, com.huawei.a.a.a.a parama, JSONObject paramJSONObject)
+  public final void a(final e parame, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(226998);
-    if (paramJSONObject == null)
+    AppMethodBeat.i(137638);
+    final l locall = new l("enableGyroscope");
+    paramJSONObject = locall.a(parame, paramJSONObject, new b(parame)
     {
-      parama = new HashMap();
-      parama.put("errCode", Integer.valueOf(b.muo.errorCode));
-      paramk.i(paramInt, n("fail:" + b.muo.errorMsg, parama));
-      Log.e("MicroMsg.JsApiRechargeTrafficCard", "deviceData is null, invoke fail: [%s] ! with appId[%s] callbackId[%d]", new Object[] { b.muo.errorMsg, paramk.getAppId(), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(226998);
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    String str1 = paramJSONObject.optString("issuerID");
-    String str2 = paramJSONObject.optString("orderNo");
-    String str3 = paramJSONObject.optString("cityCode");
-    paramJSONObject = paramJSONObject.optString("retry");
-    localHashMap.put("issuerID", str1);
-    localHashMap.put("orderNo", str2);
-    localHashMap.put("appID", "APP-WECHAT");
-    localHashMap.put("operation", "1");
-    localHashMap.put("cityCode", str3);
-    localHashMap.put("retry", paramJSONObject);
-    try
-    {
-      parama = parama.g(localHashMap);
-      Log.d("MicroMsg.JsApiRechargeTrafficCard", "rechargeCardString: [%s]! params: [%s]", new Object[] { parama, new JSONObject(localHashMap).toString() });
-      parama = new JSONObject(parama);
-      localHashMap = new HashMap();
-      if (parama == null)
+      public final void onDestroy()
       {
-        localHashMap.put("errCode", Integer.valueOf(b.mus.errorCode));
-        paramk.i(paramInt, n("fail:" + b.mus.errorMsg, localHashMap));
-        AppMethodBeat.o(226998);
-        return;
+        AppMethodBeat.i(137636);
+        com.tencent.mm.plugin.appbrand.k.b(parame.getAppId(), this);
+        locall.a(this);
+        AppMethodBeat.o(137636);
       }
-    }
-    catch (Exception parama)
+    }, "JsApi#SensorGyroscope" + parame.hashCode(), new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(4) })));
+    parame.j(paramInt, m(paramJSONObject.errMsg, paramJSONObject.values));
+    AppMethodBeat.o(137638);
+  }
+  
+  public static final class a
+    extends az
+  {
+    private static final int CTRL_INDEX = 489;
+    private static final String NAME = "onGyroscopeChange";
+  }
+  
+  static abstract class b
+    extends l.a
+    implements SensorEventListener
+  {
+    f.a poN = new f.a();
+    private q poo;
+    private boolean poq;
+    
+    b(final e parame)
     {
-      for (;;)
+      this.poN.j(parame);
+      this.poo = new q(i.poU.bUl(), new q.a()
       {
-        Log.e("MicroMsg.JsApiRechargeTrafficCard", "call huawei remote interface fail: [%s] ! ", new Object[] { parama.getMessage() });
-        parama = null;
-      }
-      int i = parama.optInt("resultCode");
-      if (i != b.mun.errorCode)
-      {
-        paramJSONObject = b.xq(i);
-        parama = paramJSONObject;
-        if (paramJSONObject == b.muQ) {
-          parama = b.muN;
+        public final boolean i(Object... paramAnonymousVarArgs)
+        {
+          AppMethodBeat.i(137637);
+          paramAnonymousVarArgs = (float[])paramAnonymousVarArgs[0];
+          HashMap localHashMap = new HashMap();
+          localHashMap.put("x", Float.valueOf(paramAnonymousVarArgs[0]));
+          localHashMap.put("y", Float.valueOf(paramAnonymousVarArgs[1]));
+          localHashMap.put("z", Float.valueOf(paramAnonymousVarArgs[2]));
+          f.b.this.poN.E(localHashMap);
+          boolean bool = k.a.ppe.a(f.b.this.poN, parame);
+          AppMethodBeat.o(137637);
+          return bool;
         }
-        localHashMap.put("errCode", Integer.valueOf(parama.errorCode));
-        paramk.i(paramInt, n("fail:" + parama.errorMsg, localHashMap));
-        Log.e("MicroMsg.JsApiRechargeTrafficCard", "Return code from huawei remote interface! with RetCode rechargeCard[%d] ", new Object[] { Integer.valueOf(i) });
-        AppMethodBeat.o(226998);
+      });
+    }
+    
+    public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+    
+    public void onSensorChanged(SensorEvent paramSensorEvent)
+    {
+      if (this.poq) {}
+      while (paramSensorEvent.sensor.getType() != 4) {
         return;
       }
-      localHashMap.put("errCode", Integer.valueOf(b.mun.errorCode));
-      paramk.i(paramInt, n(b.mun.errorMsg, localHashMap));
-      AppMethodBeat.o(226998);
+      paramSensorEvent = paramSensorEvent.values;
+      if ((paramSensorEvent == null) || (paramSensorEvent.length < 3))
+      {
+        Log.w("MicroMsg.JsApiEnableGyroscope", "deviceMotion sensor callback data invalidate.");
+        return;
+      }
+      Log.v("MicroMsg.JsApiEnableGyroscope", "try to do frequency limit action(%s).", new Object[] { Boolean.valueOf(this.poo.k(new Object[] { paramSensorEvent })) });
+    }
+    
+    public final void setDisable(boolean paramBoolean)
+    {
+      this.poq = paramBoolean;
     }
   }
 }

@@ -1,33 +1,17 @@
 package com.tencent.mm.plugin.taskbar;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.a.a;
-import kotlin.g.b.q;
+import com.tencent.mm.ipcinvoker.f;
 import kotlin.l;
-import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
-final class PluginTaskBar$f
-  extends q
-  implements a<x>
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "bundle", "Landroid/os/Bundle;", "onCallback"})
+final class PluginTaskBar$f<T>
+  implements f<ResultType>
 {
-  public static final f UrE;
-  
-  static
-  {
-    AppMethodBeat.i(258565);
-    UrE = new f();
-    AppMethodBeat.o(258565);
-  }
-  
-  PluginTaskBar$f()
-  {
-    super(0);
-  }
+  PluginTaskBar$f(PluginTaskBar paramPluginTaskBar) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.taskbar.PluginTaskBar.f
  * JD-Core Version:    0.7.0.1
  */

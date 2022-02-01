@@ -9,12 +9,14 @@ import android.content.pm.Signature;
 import android.os.Bundle;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jc;
+import com.tencent.mm.R.l;
+import com.tencent.mm.f.a.js;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.modelpay.PayReq.Options;
 import com.tencent.mm.opensdk.modelpay.PayResp;
 import com.tencent.mm.opensdk.modelpay.WXJointPay.JointPayReq;
 import com.tencent.mm.opensdk.modelpay.WXJointPay.JointPayResp;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.wallet_index.ui.e;
 import com.tencent.mm.pluginsdk.model.app.ao;
 import com.tencent.mm.pluginsdk.model.app.j;
@@ -23,6 +25,7 @@ import com.tencent.mm.pluginsdk.model.app.q;
 import com.tencent.mm.pluginsdk.model.app.r;
 import com.tencent.mm.pluginsdk.ui.AutoLoginActivity;
 import com.tencent.mm.pluginsdk.ui.AutoLoginActivity.a;
+import com.tencent.mm.pluginsdk.wallet.a;
 import com.tencent.mm.pluginsdk.wallet.f;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.IntentUtil;
@@ -34,16 +37,16 @@ import org.json.JSONObject;
 public class WXPayEntryActivity
   extends AutoLoginActivity
 {
-  private String jjd = null;
-  private long peJ = 0L;
+  private String lYZ = null;
+  private long sgN = 0L;
   
-  private void CH(int paramInt)
+  private void Gm(int paramInt)
   {
     AppMethodBeat.i(22323);
-    PayReq localPayReq = ckn();
+    PayReq localPayReq = cxE();
     PayReq.Options localOptions = new PayReq.Options();
     localOptions.fromBundle(IntentUtil.getExtras(getIntent()));
-    PayResp localPayResp = cko();
+    PayResp localPayResp = cxF();
     localPayResp.prepayId = localPayReq.prepayId;
     localPayResp.extData = localPayReq.extData;
     localPayResp.errCode = paramInt;
@@ -54,7 +57,7 @@ public class WXPayEntryActivity
   private static void a(Context paramContext, com.tencent.mm.pluginsdk.model.app.g paramg, String paramString, int paramInt)
   {
     AppMethodBeat.i(22322);
-    Signature[] arrayOfSignature = q.cj(paramContext, paramString);
+    Signature[] arrayOfSignature = q.cv(paramContext, paramString);
     Object localObject = "";
     paramContext = (Context)localObject;
     if (arrayOfSignature != null)
@@ -71,7 +74,7 @@ public class WXPayEntryActivity
             break;
           }
           paramContext = arrayOfSignature[i];
-          localObject = (String)localObject + r.bdM(com.tencent.mm.b.g.getMessageDigest(paramContext.toByteArray())) + "|";
+          localObject = (String)localObject + r.bqi(com.tencent.mm.b.g.getMessageDigest(paramContext.toByteArray())) + "|";
           i += 1;
         }
       }
@@ -88,10 +91,10 @@ public class WXPayEntryActivity
       paramContext.put("raw_signature", localObject);
       paramContext.put("signature", Util.nullAs(paramg.field_signature, ""));
       paramContext.put("scene", paramInt);
-      paramString = new jc();
-      paramString.dNK.appId = paramg.field_appId;
-      paramString.dNK.opType = 3;
-      paramString.dNK.dFN = paramContext.toString();
+      paramString = new js();
+      paramString.fGV.appId = paramg.field_appId;
+      paramString.fGV.opType = 3;
+      paramString.fGV.fyu = paramContext.toString();
       EventCenter.instance.publish(paramString);
       AppMethodBeat.o(22322);
       return;
@@ -105,7 +108,7 @@ public class WXPayEntryActivity
     }
   }
   
-  private PayReq ckn()
+  private PayReq cxE()
   {
     AppMethodBeat.i(22324);
     if (IntentUtil.getInt(getIntent().getExtras(), "_wxapi_command_type", 0) == 27) {}
@@ -117,7 +120,7 @@ public class WXPayEntryActivity
     }
   }
   
-  private PayResp cko()
+  private PayResp cxF()
   {
     AppMethodBeat.i(22325);
     if (IntentUtil.getInt(getIntent().getExtras(), "_wxapi_command_type", 0) == 27) {}
@@ -126,6 +129,11 @@ public class WXPayEntryActivity
       AppMethodBeat.o(22325);
       return localObject;
     }
+  }
+  
+  public final boolean Z(Intent paramIntent)
+  {
+    return true;
   }
   
   public final void a(AutoLoginActivity.a parama, Intent paramIntent)
@@ -139,12 +147,12 @@ public class WXPayEntryActivity
     }
     Log.i("MicroMsg.WXPayEntryActivity", "postLogin, delegate intent to OrderHandlerUI, resultCode = ".concat(String.valueOf(parama)));
     boolean bool;
-    switch (WXPayEntryActivity.2.pdF[parama.ordinal()])
+    switch (2.sfH[parama.ordinal()])
     {
     default: 
       Log.e("MicroMsg.WXPayEntryActivity", "postLogin, unknown login result = ".concat(String.valueOf(parama)));
-      this.jjd = IntentUtil.getStringExtra(paramIntent, "_mmessage_appPackage");
-      Log.i("MicroMsg.WXPayEntryActivity", "postLogin, getCallingPackage success, value = " + this.jjd);
+      this.lYZ = IntentUtil.getStringExtra(paramIntent, "_mmessage_appPackage");
+      Log.i("MicroMsg.WXPayEntryActivity", "postLogin, getCallingPackage success, value = " + this.lYZ);
       if ((getIntent() == null) || (IntentUtil.getExtras(getIntent()) == null)) {
         bool = false;
       }
@@ -155,10 +163,10 @@ public class WXPayEntryActivity
       if (!bool) {
         Log.e("MicroMsg.WXPayEntryActivity", "postLogin, checkApp fail");
       }
-      if (((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.af(com.tencent.mm.pluginsdk.wallet.a.class)).canOpenKindaCashier(this)) {
-        break label566;
+      if (((a)com.tencent.mm.kernel.h.ae(a.class)).canOpenKindaCashier(this)) {
+        break label570;
       }
-      com.tencent.mm.ui.base.h.a(this, getString(2131767779), "", getString(2131756920), new DialogInterface.OnClickListener()
+      com.tencent.mm.ui.base.h.a(this, getString(R.l.wallet_is_paying_tips), "", getString(R.l.button_ok), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -169,24 +177,24 @@ public class WXPayEntryActivity
       });
       AppMethodBeat.o(22321);
       return;
-      Log.i("MicroMsg.WXPayEntryActivity", "coreaccount st %s", new Object[] { Boolean.valueOf(com.tencent.mm.kernel.a.azj()) });
-      if (!com.tencent.mm.kernel.a.azj()) {
+      Log.i("MicroMsg.WXPayEntryActivity", "coreaccount st %s", new Object[] { Boolean.valueOf(com.tencent.mm.kernel.b.aGE()) });
+      if (!com.tencent.mm.kernel.b.aGE()) {
         break;
       }
       finish();
       AppMethodBeat.o(22321);
       return;
-      CH(-2);
+      Gm(-2);
       Log.e("MicroMsg.WXPayEntryActivity", "postLogin fail, loginResult = ".concat(String.valueOf(parama)));
       finish();
       AppMethodBeat.o(22321);
       return;
-      CH(-1);
+      Gm(-1);
       Log.e("MicroMsg.WXPayEntryActivity", "postLogin fail, loginResult = ".concat(String.valueOf(parama)));
       finish();
       AppMethodBeat.o(22321);
       return;
-      parama = ckn().appId;
+      parama = cxE().appId;
       Log.d("MicroMsg.WXPayEntryActivity", "postLogin, appId = ".concat(String.valueOf(parama)));
       if ((parama == null) || (parama.length() == 0))
       {
@@ -202,16 +210,16 @@ public class WXPayEntryActivity
           localg = new com.tencent.mm.pluginsdk.model.app.g();
           localg.field_appId = parama;
           localg.field_appName = "";
-          localg.field_packageName = this.jjd;
+          localg.field_packageName = this.lYZ;
           localg.field_status = 0;
-          String str = q.ch(this, this.jjd);
+          String str = q.ct(this, this.lYZ);
           if (str != null) {
             localg.field_signature = str;
           }
-          if ((ao.eAS().r(localg)) && (Util.isNullOrNil(localg.field_openId)))
+          if ((ao.fmz().r(localg)) && (Util.isNullOrNil(localg.field_openId)))
           {
             Log.d("MicroMsg.WXPayEntryActivity", "checkApp, trigger getAppSetting, appId = ".concat(String.valueOf(parama)));
-            ao.eAU().add(parama);
+            ao.fmB().add(parama);
           }
           bool = true;
         }
@@ -220,10 +228,10 @@ public class WXPayEntryActivity
           Log.e("MicroMsg.WXPayEntryActivity", "checkApp fail, app is in blacklist");
           bool = false;
         }
-        else if (!q.a(this, localg, this.jjd, true))
+        else if (!q.a(this, localg, this.lYZ, true))
         {
-          int i = IntentUtil.getInt(getIntent().getExtras(), "_wxapi_command_type", 0);
-          a(this, localg, this.jjd, i);
+          i = IntentUtil.getInt(getIntent().getExtras(), "_wxapi_command_type", 0);
+          a(this, localg, this.lYZ, i);
           Log.e("MicroMsg.WXPayEntryActivity", "checkApp fail, app invalid");
           bool = false;
         }
@@ -233,24 +241,27 @@ public class WXPayEntryActivity
         }
       }
     }
-    label566:
+    label570:
     IntentUtil.putExtra(paramIntent, "key_scene", 0);
     parama = IntentUtil.getExtras(paramIntent);
-    parama.putLong("wallet_pay_key_check_time", this.peJ);
+    parama.putLong("wallet_pay_key_check_time", this.sgN);
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vUW, 0) == 1) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      finish();
+      f.a(this, parama, bool, "");
+      AppMethodBeat.o(22321);
+      return;
+    }
     f.a(this, parama, bool, "");
     finish();
     AppMethodBeat.o(22321);
   }
   
-  public final boolean ab(Intent paramIntent)
-  {
-    return true;
-  }
-  
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(22320);
-    this.peJ = System.currentTimeMillis();
+    this.sgN = System.currentTimeMillis();
     IntentUtil.putExtra(getIntent(), "key_auto_login_wizard_exit", true);
     super.onCreate(paramBundle);
     AppMethodBeat.o(22320);
@@ -264,7 +275,7 @@ public class WXPayEntryActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.base.stub.WXPayEntryActivity
  * JD-Core Version:    0.7.0.1
  */

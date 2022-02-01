@@ -1,59 +1,61 @@
 package com.tencent.mm.plugin.finder.ui;
 
 import android.app.Activity;
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.ScrollView;
+import androidx.appcompat.app.ActionBar;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.activity.uic.FinderActivityPostUIC;
-import com.tencent.mm.plugin.finder.activity.uic.FinderActivitySelectCoverUIC;
-import com.tencent.mm.ui.au;
-import com.tencent.mm.ui.b;
+import com.tencent.mm.plugin.finder.activity.uic.d;
+import com.tencent.mm.plugin.finder.activity.uic.e;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.base.a;
+import com.tencent.mm.ui.c;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.t;
+import com.tencent.mm.ui.w;
 import java.util.HashMap;
 import java.util.Set;
 import kotlin.a.ak;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@com.tencent.mm.ui.base.a(3)
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderActivityPostUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "scrollView", "Landroid/widget/ScrollView;", "fixActionBar", "", "getLayoutId", "", "hideActionBar", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "Companion", "plugin-finder_release"})
+@a(3)
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderActivityPostUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "scrollView", "Landroid/widget/ScrollView;", "fixActionBar", "", "getLayoutId", "", "hideActionBar", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "Companion", "plugin-finder_release"})
 public final class FinderActivityPostUI
   extends MMFinderUI
 {
-  public static final a vHb;
+  public static final a AnY;
   private HashMap _$_findViewCache;
-  private ScrollView gxx;
+  private ScrollView jbL;
   
   static
   {
-    AppMethodBeat.i(252109);
-    vHb = new a((byte)0);
-    AppMethodBeat.o(252109);
+    AppMethodBeat.i(241217);
+    AnY = new a((byte)0);
+    AppMethodBeat.o(241217);
   }
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(252111);
+    AppMethodBeat.i(241227);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(252111);
+    AppMethodBeat.o(241227);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(252110);
+    AppMethodBeat.i(241222);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -64,31 +66,31 @@ public final class FinderActivityPostUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(252110);
+    AppMethodBeat.o(241222);
     return localView1;
   }
   
   public final int getLayoutId()
   {
-    return 2131494196;
+    return b.g.finder_activity_post_ui_new;
   }
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(252107);
-    Set localSet = ak.setOf(new Class[] { FinderActivityPostUIC.class, FinderActivitySelectCoverUIC.class });
-    AppMethodBeat.o(252107);
+    AppMethodBeat.i(241209);
+    Set localSet = ak.setOf(new Class[] { d.class, e.class });
+    AppMethodBeat.o(241209);
     return localSet;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(252106);
+    AppMethodBeat.i(241206);
     super.onCreate(paramBundle);
-    paramBundle = findViewById(2131300763);
-    p.g(paramBundle, "findViewById(R.id.finder_activity_post_scroll)");
-    this.gxx = ((ScrollView)paramBundle);
-    b.e((Activity)this, false);
+    paramBundle = findViewById(b.f.finder_activity_post_scroll);
+    p.j(paramBundle, "findViewById(R.id.finder_activity_post_scroll)");
+    this.jbL = ((ScrollView)paramBundle);
+    c.f((Activity)this, false);
     paramBundle = getSupportActionBar();
     if (paramBundle != null)
     {
@@ -96,28 +98,26 @@ public final class FinderActivityPostUI
       paramBundle.hide();
     }
     paramBundle = getWindow();
-    p.g(paramBundle, "window");
+    p.j(paramBundle, "window");
     paramBundle = paramBundle.getDecorView();
-    p.g(paramBundle, "window.decorView");
+    p.j(paramBundle, "window.decorView");
     paramBundle.setSystemUiVisibility(1280);
-    int i = au.getStatusBarHeight((Context)this);
-    paramBundle = this.gxx;
+    int i = ax.getStatusBarHeight((Context)this);
+    paramBundle = this.jbL;
     if (paramBundle == null) {
-      p.btv("scrollView");
+      p.bGy("scrollView");
     }
     paramBundle.setPadding(0, i, 0, 0);
-    i = getResources().getColor(2131101287);
+    i = getResources().getColor(b.c.transparent);
     getController().setStatusBarColor(i);
-    paramBundle = com.tencent.mm.ui.component.a.PRN;
-    ((FinderActivitySelectCoverUIC)com.tencent.mm.ui.component.a.b((AppCompatActivity)this).get(FinderActivitySelectCoverUIC.class)).initView();
-    AppMethodBeat.o(252106);
+    AppMethodBeat.o(241206);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(252108);
+    AppMethodBeat.i(241212);
     super.onDestroy();
-    AppMethodBeat.o(252108);
+    AppMethodBeat.o(241212);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -126,7 +126,7 @@ public final class FinderActivityPostUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderActivityPostUI$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderActivityPostUI$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 

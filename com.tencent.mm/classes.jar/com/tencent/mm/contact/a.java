@@ -1,9 +1,9 @@
 package com.tencent.mm.contact;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
 import java.util.ArrayList;
@@ -16,13 +16,13 @@ public final class a
     AppMethodBeat.i(116828);
     as localas = paramas;
     if (paramas == null) {
-      localas = ((l)g.af(l.class)).aSN().Kn(paramString);
+      localas = ((n)h.ae(n.class)).bbL().RG(paramString);
     }
-    if ((localas != null) && ((int)localas.gMZ > 0) && (c.oR(localas.field_type)))
+    if ((localas != null) && ((int)localas.jxt > 0) && (d.rk(localas.field_type)))
     {
-      localas.Ci(j(paramArrayList));
+      localas.IW(j(paramArrayList));
       g(localas);
-      ((l)g.af(l.class)).aSN().ao(localas);
+      ((n)h.ae(n.class)).bbL().au(localas);
     }
     AppMethodBeat.o(116828);
   }
@@ -40,7 +40,7 @@ public final class a
     return null;
   }
   
-  public static String[] al(String paramString1, String paramString2)
+  public static String[] aq(String paramString1, String paramString2)
   {
     AppMethodBeat.i(116826);
     if (paramString1 != null)
@@ -58,7 +58,7 @@ public final class a
     if (paramas == null) {
       return ",";
     }
-    if (paramas.fvc == 0) {
+    if (paramas.hDB == 0) {
       return ",";
     }
     return "，";
@@ -72,9 +72,9 @@ public final class a
       AppMethodBeat.o(116824);
       return null;
     }
-    if (paramas.fuX != null)
+    if (paramas.hDw != null)
     {
-      paramas = paramas.fuX.split(d(paramas));
+      paramas = paramas.hDw.split(d(paramas));
       AppMethodBeat.o(116824);
       return paramas;
     }
@@ -105,7 +105,7 @@ public final class a
   {
     AppMethodBeat.i(116830);
     if (paramas != null) {
-      paramas.ajF();
+      paramas.apy();
     }
     AppMethodBeat.o(116830);
   }

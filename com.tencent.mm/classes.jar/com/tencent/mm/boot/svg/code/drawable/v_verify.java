@@ -119,7 +119,7 @@ public class v_verify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.v_verify
  * JD-Core Version:    0.7.0.1
  */

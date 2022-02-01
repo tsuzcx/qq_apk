@@ -12,12 +12,12 @@ public abstract interface j
   
   public static abstract interface a
   {
-    public abstract void F(int paramInt, String paramString1, String paramString2);
+    public abstract void I(int paramInt, String paramString1, String paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a.a.j
  * JD-Core Version:    0.7.0.1
  */

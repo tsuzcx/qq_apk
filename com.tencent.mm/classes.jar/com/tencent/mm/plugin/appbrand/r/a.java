@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.appbrand.r;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c.a;
-import com.tencent.mm.protocal.protobuf.dpc;
+import com.tencent.mm.an.c.a;
+import com.tencent.mm.protocal.protobuf.dyy;
 import java.util.Locale;
 
 public final class a
 {
-  public static boolean a(int paramInt1, int paramInt2, dpc paramdpc)
+  public static boolean a(int paramInt1, int paramInt2, dyy paramdyy)
   {
-    return (paramInt1 == 0) && (paramInt2 == 0) && (paramdpc != null);
+    return (paramInt1 == 0) && (paramInt2 == 0) && (paramdyy != null);
   }
   
   public static boolean d(c.a<?> parama)
   {
     AppMethodBeat.i(180325);
-    if ((parama != null) && (a(parama.errType, parama.errCode, parama.iLC)))
+    if ((parama != null) && (a(parama.errType, parama.errCode, parama.lBJ)))
     {
       AppMethodBeat.o(180325);
       return true;
@@ -39,7 +39,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.r.a
  * JD-Core Version:    0.7.0.1
  */

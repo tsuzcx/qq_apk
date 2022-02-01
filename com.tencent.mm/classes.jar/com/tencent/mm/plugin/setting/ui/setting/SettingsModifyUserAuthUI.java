@@ -8,9 +8,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.plugin.setting.b.i;
 import com.tencent.mm.plugin.setting.model.UserAuthItemParcelable;
 import com.tencent.mm.plugin.setting.model.k;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -19,6 +20,7 @@ import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
+import com.tencent.mm.ui.base.s;
 import java.util.Iterator;
 import java.util.List;
 
@@ -26,9 +28,9 @@ public class SettingsModifyUserAuthUI
   extends MMPreference
   implements i
 {
-  private com.tencent.mm.ui.base.preference.h Ddd;
+  private com.tencent.mm.ui.base.preference.h JiG;
   private String appId;
-  private com.tencent.mm.ui.base.q gut;
+  private s iYE;
   private int scene;
   
   public int getResourceId()
@@ -40,7 +42,7 @@ public class SettingsModifyUserAuthUI
   {
     AppMethodBeat.i(74256);
     super.onCreate(paramBundle);
-    this.Ddd = ((com.tencent.mm.ui.base.preference.h)getPreferenceScreen());
+    this.JiG = ((com.tencent.mm.ui.base.preference.h)getPreferenceScreen());
     paramBundle = getIntent().getParcelableArrayListExtra("app_auth_items");
     this.appId = getIntent().getStringExtra("app_id");
     this.scene = getIntent().getIntExtra("modify_scene", 1);
@@ -51,17 +53,17 @@ public class SettingsModifyUserAuthUI
       {
         UserAuthItemParcelable localUserAuthItemParcelable = (UserAuthItemParcelable)paramBundle.next();
         CheckBoxPreference localCheckBoxPreference = new CheckBoxPreference(this);
-        localCheckBoxPreference.setTitle(localUserAuthItemParcelable.CYp);
+        localCheckBoxPreference.setTitle(localUserAuthItemParcelable.JdV);
         if (localUserAuthItemParcelable.scope.equals("snsapi_friend")) {
-          localCheckBoxPreference.setSummary(2131765342);
+          localCheckBoxPreference.auI(b.i.settings_auth_close_friend_tip);
         }
         localCheckBoxPreference.setKey(localUserAuthItemParcelable.scope);
         if (localUserAuthItemParcelable.state == 1) {}
         for (boolean bool = true;; bool = false)
         {
           localCheckBoxPreference.setChecked(bool);
-          localCheckBoxPreference.OZw = false;
-          this.Ddd.a(localCheckBoxPreference, -1);
+          localCheckBoxPreference.WsF = false;
+          this.JiG.a(localCheckBoxPreference, -1);
           break;
         }
       }
@@ -84,7 +86,7 @@ public class SettingsModifyUserAuthUI
   {
     AppMethodBeat.i(74259);
     super.onPause();
-    g.azz().b(1144, this);
+    com.tencent.mm.kernel.h.aGY().b(1144, this);
     AppMethodBeat.o(74259);
   }
   
@@ -95,13 +97,13 @@ public class SettingsModifyUserAuthUI
     for (int i = 1;; i = 2)
     {
       paramf = new k(this.appId, paramPreference.mKey, i, this.scene);
-      g.azz().a(paramf, 0);
-      this.gut = com.tencent.mm.ui.base.h.a(this, getString(2131755978), true, new DialogInterface.OnCancelListener()
+      com.tencent.mm.kernel.h.aGY().a(paramf, 0);
+      this.iYE = com.tencent.mm.ui.base.h.a(this, getString(b.i.app_sending), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(74255);
-          g.azz().a(paramf);
+          com.tencent.mm.kernel.h.aGY().a(paramf);
           AppMethodBeat.o(74255);
         }
       });
@@ -114,25 +116,25 @@ public class SettingsModifyUserAuthUI
   {
     AppMethodBeat.i(74258);
     super.onResume();
-    g.azz().a(1144, this);
+    com.tencent.mm.kernel.h.aGY().a(1144, this);
     AppMethodBeat.o(74258);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     boolean bool = true;
     AppMethodBeat.i(74257);
     Log.i("MicroMsg.SettingsModifyUserAuthUI", "errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), paramString });
-    if (this.gut != null) {
-      this.gut.dismiss();
+    if (this.iYE != null) {
+      this.iYE.dismiss();
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = ((k)paramq).CXO;
-      paramInt1 = ((k)paramq).CXP;
+      paramString = ((k)paramq).Jdu;
+      paramInt1 = ((k)paramq).Jdv;
       if (!Util.isNullOrNil(paramString))
       {
-        paramString = (CheckBoxPreference)this.Ddd.bmg(paramString);
+        paramString = (CheckBoxPreference)this.JiG.byG(paramString);
         if (paramInt1 != 1) {
           break label106;
         }
@@ -146,7 +148,7 @@ public class SettingsModifyUserAuthUI
         bool = false;
       }
     }
-    com.tencent.mm.ui.base.h.cD(this, paramString);
+    com.tencent.mm.ui.base.h.cO(this, paramString);
     AppMethodBeat.o(74257);
   }
   

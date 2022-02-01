@@ -4,13 +4,13 @@ import com.tencent.mm.plugin.downloader.g.a;
 
 public abstract interface n
 {
-  public abstract int Cn(long paramLong);
+  public abstract int Iw(long paramLong);
   
-  public abstract FileDownloadTaskInfo Co(long paramLong);
+  public abstract FileDownloadTaskInfo Ix(long paramLong);
   
-  public abstract boolean Cp(long paramLong);
+  public abstract boolean Iy(long paramLong);
   
-  public abstract boolean Cq(long paramLong);
+  public abstract boolean Iz(long paramLong);
   
   public abstract long a(a parama);
   
@@ -18,7 +18,7 @@ public abstract interface n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.model.n
  * JD-Core Version:    0.7.0.1
  */

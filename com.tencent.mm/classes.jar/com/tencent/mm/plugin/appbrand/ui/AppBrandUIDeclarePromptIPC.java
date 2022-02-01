@@ -4,44 +4,44 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 
 public class AppBrandUIDeclarePromptIPC
-  implements b<IPCDeclarePromptCallbackParam, IPCVoid>
+  implements d<IPCDeclarePromptCallbackParam, IPCVoid>
 {
   public static final class IPCDeclarePromptCallbackParam
     implements Parcelable
   {
     public static final Parcelable.Creator<IPCDeclarePromptCallbackParam> CREATOR;
     private boolean cancel;
-    private int fuQ;
-    private String kHR;
+    private int hDp;
+    private String nBK;
     
     static
     {
-      AppMethodBeat.i(227703);
+      AppMethodBeat.i(282515);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(227703);
+      AppMethodBeat.o(282515);
     }
     
     public IPCDeclarePromptCallbackParam(int paramInt, boolean paramBoolean, String paramString)
     {
-      this.fuQ = paramInt;
+      this.hDp = paramInt;
       this.cancel = paramBoolean;
-      this.kHR = paramString;
+      this.nBK = paramString;
     }
     
     protected IPCDeclarePromptCallbackParam(Parcel paramParcel)
     {
-      AppMethodBeat.i(227701);
-      this.fuQ = paramParcel.readInt();
+      AppMethodBeat.i(282511);
+      this.hDp = paramParcel.readInt();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
         this.cancel = bool;
-        this.kHR = paramParcel.readString();
-        AppMethodBeat.o(227701);
+        this.nBK = paramParcel.readString();
+        AppMethodBeat.o(282511);
         return;
       }
     }
@@ -53,14 +53,14 @@ public class AppBrandUIDeclarePromptIPC
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(227702);
-      paramParcel.writeInt(this.fuQ);
+      AppMethodBeat.i(282513);
+      paramParcel.writeInt(this.hDp);
       if (this.cancel) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeByte((byte)paramInt);
-        paramParcel.writeString(this.kHR);
-        AppMethodBeat.o(227702);
+        paramParcel.writeString(this.nBK);
+        AppMethodBeat.o(282513);
         return;
       }
     }

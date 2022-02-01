@@ -4,75 +4,119 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class aqx
-  extends dop
+  extends dyl
 {
-  public int LCJ;
-  public int LCK;
-  public long id;
+  public String SEa;
+  public String clientId;
+  public long commentId;
+  public String content;
   public String objectNonceId;
+  public int opType;
+  public long replyCommentId;
+  public int scene;
   public String sessionBuffer;
-  public aov uli;
+  public String username;
+  public long xbP;
+  public long xbk;
+  public int xkX;
+  public aqe yjp;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(168960);
+    AppMethodBeat.i(168942);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.bb(2, this.id);
-      paramVarArgs.aM(3, this.LCJ);
-      paramVarArgs.aM(4, this.LCK);
-      if (this.objectNonceId != null) {
-        paramVarArgs.e(5, this.objectNonceId);
+      if (this.username != null) {
+        paramVarArgs.f(2, this.username);
       }
-      if (this.uli != null)
+      paramVarArgs.bm(3, this.xbk);
+      if (this.content != null) {
+        paramVarArgs.f(4, this.content);
+      }
+      paramVarArgs.bm(5, this.commentId);
+      paramVarArgs.bm(6, this.replyCommentId);
+      if (this.SEa != null) {
+        paramVarArgs.f(7, this.SEa);
+      }
+      paramVarArgs.aY(8, this.opType);
+      if (this.clientId != null) {
+        paramVarArgs.f(9, this.clientId);
+      }
+      paramVarArgs.bm(10, this.xbP);
+      paramVarArgs.aY(11, this.scene);
+      if (this.objectNonceId != null) {
+        paramVarArgs.f(12, this.objectNonceId);
+      }
+      if (this.yjp != null)
       {
-        paramVarArgs.ni(6, this.uli.computeSize());
-        this.uli.writeFields(paramVarArgs);
+        paramVarArgs.oE(13, this.yjp.computeSize());
+        this.yjp.writeFields(paramVarArgs);
       }
       if (this.sessionBuffer != null) {
-        paramVarArgs.e(7, this.sessionBuffer);
+        paramVarArgs.f(14, this.sessionBuffer);
       }
-      AppMethodBeat.o(168960);
+      paramVarArgs.aY(15, this.xkX);
+      AppMethodBeat.o(168942);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label718;
+        break label1106;
       }
     }
-    label718:
-    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label1106:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.r(2, this.id) + g.a.a.b.b.a.bu(3, this.LCJ) + g.a.a.b.b.a.bu(4, this.LCK);
+      int i = paramInt;
+      if (this.username != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.username);
+      }
+      i += g.a.a.b.b.a.p(3, this.xbk);
+      paramInt = i;
+      if (this.content != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.content);
+      }
+      i = paramInt + g.a.a.b.b.a.p(5, this.commentId) + g.a.a.b.b.a.p(6, this.replyCommentId);
+      paramInt = i;
+      if (this.SEa != null) {
+        paramInt = i + g.a.a.b.b.a.g(7, this.SEa);
+      }
+      i = paramInt + g.a.a.b.b.a.bM(8, this.opType);
+      paramInt = i;
+      if (this.clientId != null) {
+        paramInt = i + g.a.a.b.b.a.g(9, this.clientId);
+      }
+      i = paramInt + g.a.a.b.b.a.p(10, this.xbP) + g.a.a.b.b.a.bM(11, this.scene);
       paramInt = i;
       if (this.objectNonceId != null) {
-        paramInt = i + g.a.a.b.b.a.f(5, this.objectNonceId);
+        paramInt = i + g.a.a.b.b.a.g(12, this.objectNonceId);
       }
       i = paramInt;
-      if (this.uli != null) {
-        i = paramInt + g.a.a.a.nh(6, this.uli.computeSize());
+      if (this.yjp != null) {
+        i = paramInt + g.a.a.a.oD(13, this.yjp.computeSize());
       }
       paramInt = i;
       if (this.sessionBuffer != null) {
-        paramInt = i + g.a.a.b.b.a.f(7, this.sessionBuffer);
+        paramInt = i + g.a.a.b.b.a.g(14, this.sessionBuffer);
       }
-      AppMethodBeat.o(168960);
-      return paramInt;
+      i = g.a.a.b.b.a.bM(15, this.xkX);
+      AppMethodBeat.o(168942);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(168960);
+        AppMethodBeat.o(168942);
         return 0;
       }
       if (paramInt == 3)
@@ -81,64 +125,97 @@ public final class aqx
         aqx localaqx = (aqx)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         Object localObject2;
-        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(168960);
+          AppMethodBeat.o(168942);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localaqx.BaseRequest = ((jr)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new jg();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((jg)localObject2).parseFrom((byte[])localObject1);
+            }
+            localaqx.BaseRequest = ((jg)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(168960);
+          AppMethodBeat.o(168942);
           return 0;
         case 2: 
-          localaqx.id = ((g.a.a.a.a)localObject1).UbS.zl();
-          AppMethodBeat.o(168960);
+          localaqx.username = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(168942);
           return 0;
         case 3: 
-          localaqx.LCJ = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(168960);
+          localaqx.xbk = ((g.a.a.a.a)localObject1).abFh.AN();
+          AppMethodBeat.o(168942);
           return 0;
         case 4: 
-          localaqx.LCK = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(168960);
+          localaqx.content = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(168942);
           return 0;
         case 5: 
-          localaqx.objectNonceId = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(168960);
+          localaqx.commentId = ((g.a.a.a.a)localObject1).abFh.AN();
+          AppMethodBeat.o(168942);
           return 0;
         case 6: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          localaqx.replyCommentId = ((g.a.a.a.a)localObject1).abFh.AN();
+          AppMethodBeat.o(168942);
+          return 0;
+        case 7: 
+          localaqx.SEa = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(168942);
+          return 0;
+        case 8: 
+          localaqx.opType = ((g.a.a.a.a)localObject1).abFh.AK();
+          AppMethodBeat.o(168942);
+          return 0;
+        case 9: 
+          localaqx.clientId = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(168942);
+          return 0;
+        case 10: 
+          localaqx.xbP = ((g.a.a.a.a)localObject1).abFh.AN();
+          AppMethodBeat.o(168942);
+          return 0;
+        case 11: 
+          localaqx.scene = ((g.a.a.a.a)localObject1).abFh.AK();
+          AppMethodBeat.o(168942);
+          return 0;
+        case 12: 
+          localaqx.objectNonceId = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(168942);
+          return 0;
+        case 13: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new aov();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((aov)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localaqx.uli = ((aov)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new aqe();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((aqe)localObject2).parseFrom((byte[])localObject1);
+            }
+            localaqx.yjp = ((aqe)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(168960);
+          AppMethodBeat.o(168942);
+          return 0;
+        case 14: 
+          localaqx.sessionBuffer = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(168942);
           return 0;
         }
-        localaqx.sessionBuffer = ((g.a.a.a.a)localObject1).UbS.readString();
-        AppMethodBeat.o(168960);
+        localaqx.xkX = ((g.a.a.a.a)localObject1).abFh.AK();
+        AppMethodBeat.o(168942);
         return 0;
       }
-      AppMethodBeat.o(168960);
+      AppMethodBeat.o(168942);
       return -1;
     }
   }

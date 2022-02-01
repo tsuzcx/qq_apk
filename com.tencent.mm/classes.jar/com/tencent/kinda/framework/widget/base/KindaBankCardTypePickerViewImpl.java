@@ -7,8 +7,8 @@ import com.tencent.kinda.gen.KBankCardTypePickerView;
 import com.tencent.kinda.gen.KBankCardTypePickerViewOnSelectCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.picker.CustomOptionPickNew;
-import com.tencent.mm.ui.widget.picker.c;
-import com.tencent.mm.ui.widget.picker.c.b;
+import com.tencent.mm.ui.widget.picker.b;
+import com.tencent.mm.ui.widget.picker.b.b;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -26,7 +26,7 @@ public class KindaBankCardTypePickerViewImpl
   private ArrayList<String> mFirstOptionList = null;
   private int mFirstSelectedIndex = -1;
   private KBankCardTypePickerViewOnSelectCallback mOnSelectCallback;
-  private c mOptionPiker;
+  private b mOptionPiker;
   private ArrayList<List<BankCardType>> mSecondOptionList = null;
   private Map<String, ArrayList<BankCardType>> mSecondOptionMap = null;
   private ArrayList<List<String>> mSecondOptionStringList = null;
@@ -113,8 +113,8 @@ public class KindaBankCardTypePickerViewImpl
     AppMethodBeat.i(18839);
     if (paramBoolean)
     {
-      this.mOptionPiker = new c(this.mContext, this.mFirstOptionList, this.mSecondOptionStringList);
-      this.mOptionPiker.QTc = new c.b()
+      this.mOptionPiker = new b(this.mContext, this.mFirstOptionList, this.mSecondOptionStringList);
+      this.mOptionPiker.YrN = new b.b()
       {
         public void onResult(boolean paramAnonymousBoolean, Object paramAnonymousObject1, Object paramAnonymousObject2)
         {
@@ -125,12 +125,12 @@ public class KindaBankCardTypePickerViewImpl
             paramAnonymousObject1 = (String)paramAnonymousObject1;
             paramAnonymousObject2 = (String)paramAnonymousObject2;
             KindaBankCardTypePickerViewImpl.this.mEditText.setText(paramAnonymousObject1 + " " + paramAnonymousObject2);
-            KindaBankCardTypePickerViewImpl.access$202(KindaBankCardTypePickerViewImpl.this, KindaBankCardTypePickerViewImpl.this.mOptionPiker.hci());
+            KindaBankCardTypePickerViewImpl.access$202(KindaBankCardTypePickerViewImpl.this, KindaBankCardTypePickerViewImpl.this.mOptionPiker.idp());
             paramAnonymousObject1 = KindaBankCardTypePickerViewImpl.this;
             paramAnonymousObject2 = KindaBankCardTypePickerViewImpl.this.mOptionPiker;
             int i = 0;
-            if (paramAnonymousObject2.QTa != null) {
-              i = paramAnonymousObject2.QTa.getValue();
+            if (paramAnonymousObject2.YrL != null) {
+              i = paramAnonymousObject2.YrL.getValue();
             }
             KindaBankCardTypePickerViewImpl.access$302(paramAnonymousObject1, i);
             if ((KindaBankCardTypePickerViewImpl.this.mFirstSelectedIndex >= 0) && (KindaBankCardTypePickerViewImpl.this.mSecondSelectedIndex >= 0))
@@ -148,7 +148,7 @@ public class KindaBankCardTypePickerViewImpl
         if (this.mSecondSelectedIndex < 0) {
           break label91;
         }
-        this.mOptionPiker.lM(this.mFirstSelectedIndex, this.mSecondSelectedIndex);
+        this.mOptionPiker.nc(this.mFirstSelectedIndex, this.mSecondSelectedIndex);
       }
     }
     for (;;)
@@ -157,7 +157,7 @@ public class KindaBankCardTypePickerViewImpl
       AppMethodBeat.o(18839);
       return;
       label91:
-      this.mOptionPiker.app(this.mFirstSelectedIndex);
+      this.mOptionPiker.ayK(this.mFirstSelectedIndex);
     }
   }
   
@@ -233,7 +233,7 @@ public class KindaBankCardTypePickerViewImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaBankCardTypePickerViewImpl
  * JD-Core Version:    0.7.0.1
  */

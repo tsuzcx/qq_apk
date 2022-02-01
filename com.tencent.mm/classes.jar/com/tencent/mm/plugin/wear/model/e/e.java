@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.wear.model.e;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
-import com.tencent.mm.g.a.oh;
-import com.tencent.mm.g.a.sj;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.by.c;
+import com.tencent.mm.f.a.pe;
+import com.tencent.mm.f.a.tk;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -20,7 +20,7 @@ import java.util.List;
 public final class e
   extends a
 {
-  public final List<Integer> fWe()
+  public final List<Integer> gON()
   {
     AppMethodBeat.i(30077);
     ArrayList localArrayList = new ArrayList();
@@ -31,7 +31,7 @@ public final class e
     return localArrayList;
   }
   
-  protected final byte[] s(int paramInt, byte[] paramArrayOfByte)
+  protected final byte[] t(int paramInt, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(30078);
     switch (paramInt)
@@ -41,10 +41,10 @@ public final class e
     {
       AppMethodBeat.o(30078);
       return null;
-      paramArrayOfByte = new oh();
+      paramArrayOfByte = new pe();
       EventCenter.instance.publish(paramArrayOfByte);
       continue;
-      paramArrayOfByte = ((l)g.af(l.class)).eiy().eiK();
+      paramArrayOfByte = ((n)h.ae(n.class)).eSe().eSq();
       if (paramArrayOfByte.size() == 1)
       {
         paramArrayOfByte = ((ca)paramArrayOfByte.get(0)).field_talker;
@@ -71,7 +71,7 @@ public final class e
         Log.d("MicroMsg.Wear.HttpFailMsgServer", "startMainUI");
         c.f(MMApplicationContext.getContext(), "com.tencent.mm.ui.LauncherUI", paramArrayOfByte);
         continue;
-        paramArrayOfByte = new sj();
+        paramArrayOfByte = new tk();
         EventCenter.instance.publish(paramArrayOfByte);
       }
     }
@@ -79,7 +79,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e.e
  * JD-Core Version:    0.7.0.1
  */

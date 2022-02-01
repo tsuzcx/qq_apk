@@ -7,21 +7,22 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.f;
+import com.tencent.mm.game.report.g;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.game.e.c;
+import com.tencent.mm.plugin.game.d.c;
+import com.tencent.mm.plugin.game.g.e;
 import com.tencent.mm.plugin.game.model.d;
-import com.tencent.mm.plugin.game.protobuf.ao;
-import com.tencent.mm.plugin.game.protobuf.t;
+import com.tencent.mm.plugin.game.protobuf.ap;
+import com.tencent.mm.plugin.game.protobuf.u;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class GameFeedAddTopicView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private d xOS;
-  private GameFeedTitleDescView xSc;
-  private TextView xSd;
+  private d CTb;
+  private GameFeedTitleDescView CWn;
+  private TextView CWo;
   
   public GameFeedAddTopicView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,18 +33,18 @@ public class GameFeedAddTopicView
   {
     AppMethodBeat.i(42096);
     b localb = new b();
-    localb.bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameFeedAddTopicView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    if ((this.xOS == null) || (this.xOS.xEq == null))
+    localb.bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/GameFeedAddTopicView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    if ((this.CTb == null) || (this.CTb.CIr == null))
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameFeedAddTopicView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42096);
       return;
     }
-    if (!Util.isNullOrNil(this.xOS.xEq.xIy))
+    if (!Util.isNullOrNil(this.CTb.CIr.CMD))
     {
-      int i = c.aQ(getContext(), this.xOS.xEq.xIy);
-      f.a(getContext(), 10, 1024, this.xOS.position, i, this.xOS.xEq.jfi, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.d.a.as(this.xOS.xEq.xJt, "clickType", "card"));
+      int i = c.aY(getContext(), this.CTb.CIr.CMD);
+      g.a(getContext(), 10, 1024, this.CTb.position, i, this.CTb.CIr.lVG, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.c.a.am(this.CTb.CIr.CNA, "clickType", "card"));
     }
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameFeedAddTopicView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(42096);
@@ -53,8 +54,8 @@ public class GameFeedAddTopicView
   {
     AppMethodBeat.i(42094);
     super.onFinishInflate();
-    this.xSc = ((GameFeedTitleDescView)findViewById(2131301964));
-    this.xSd = ((TextView)findViewById(2131296539));
+    this.CWn = ((GameFeedTitleDescView)findViewById(g.e.Cjh));
+    this.CWo = ((TextView)findViewById(g.e.Cho));
     setOnClickListener(this);
     AppMethodBeat.o(42094);
   }
@@ -62,27 +63,27 @@ public class GameFeedAddTopicView
   public void setData(d paramd)
   {
     AppMethodBeat.i(42095);
-    if ((paramd == null) || (paramd.xEq == null) || (paramd.xEq.xKw == null))
+    if ((paramd == null) || (paramd.CIr == null) || (paramd.CIr.COD == null))
     {
       setVisibility(8);
       AppMethodBeat.o(42095);
       return;
     }
-    this.xOS = paramd;
+    this.CTb = paramd;
     setVisibility(0);
-    this.xSc.b(paramd.xEq.xKw.Title, paramd.xEq.xKw.Desc, null);
-    this.xSd.setText(paramd.xEq.xKw.xJG);
-    if (!this.xOS.xEs)
+    this.CWn.a(paramd.CIr.COD.fwr, paramd.CIr.COD.CMB, null);
+    this.CWo.setText(paramd.CIr.COD.CNO);
+    if (!this.CTb.CIt)
     {
-      com.tencent.mm.plugin.game.d.a.b(getContext(), 10, 1024, this.xOS.position, this.xOS.xEq.jfi, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.d.a.Fh(this.xOS.xEq.xJt));
-      this.xOS.xEs = true;
+      com.tencent.mm.plugin.game.c.a.b(getContext(), 10, 1024, this.CTb.position, this.CTb.CIr.lVG, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.c.a.Md(this.CTb.CIr.CNA));
+      this.CTb.CIt = true;
     }
     AppMethodBeat.o(42095);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameFeedAddTopicView
  * JD-Core Version:    0.7.0.1
  */

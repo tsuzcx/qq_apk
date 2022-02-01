@@ -4,7 +4,8 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
+import com.tencent.mm.plugin.account.ui.r.j;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.h;
 
@@ -16,57 +17,57 @@ public final class m
     super(paramActivity);
   }
   
-  public final boolean b(ae paramae)
+  public final boolean b(ad paramad)
   {
     AppMethodBeat.i(127709);
     Log.d("MicroMsg.ErrorMsgBoxProcessor", "handleOpenUrl");
-    h.a(this.activity, paramae.content, "", this.activity.getString(2131755874), null);
+    h.a(this.activity, paramad.content, "", this.activity.getString(r.j.app_i_known), null);
     AppMethodBeat.o(127709);
     return true;
   }
   
-  public final boolean c(ae paramae)
+  public final boolean c(ad paramad)
   {
     AppMethodBeat.i(127710);
     Log.d("MicroMsg.ErrorMsgBoxProcessor", "handleIgnore");
-    h.a(this.activity, paramae.content, "", this.activity.getString(2131755874), null);
+    h.a(this.activity, paramad.content, "", this.activity.getString(r.j.app_i_known), null);
     AppMethodBeat.o(127710);
     return true;
   }
   
-  public final boolean d(ae paramae)
+  public final boolean d(ad paramad)
   {
     AppMethodBeat.i(127711);
     Log.d("MicroMsg.ErrorMsgBoxProcessor", "handleFalseLast");
-    h.a(this.activity, paramae.content, "", this.activity.getString(2131755874), null);
+    h.a(this.activity, paramad.content, "", this.activity.getString(r.j.app_i_known), null);
     AppMethodBeat.o(127711);
     return true;
   }
   
-  public final boolean e(ae paramae)
+  public final boolean e(ad paramad)
   {
     AppMethodBeat.i(127712);
     Log.d("MicroMsg.ErrorMsgBoxProcessor", "handleFalseCancel");
-    h.a(this.activity, paramae.content, "", this.activity.getString(2131755874), null);
+    h.a(this.activity, paramad.content, "", this.activity.getString(r.j.app_i_known), null);
     AppMethodBeat.o(127712);
     return true;
   }
   
-  public final boolean f(ae paramae)
+  public final boolean f(ad paramad)
   {
-    AppMethodBeat.i(196842);
+    AppMethodBeat.i(221039);
     Log.d("MicroMsg.ErrorMsgBoxProcessor", "handleDoneBack");
     final Activity localActivity = this.activity;
-    h.a(this.activity, paramae.content, "", this.activity.getString(2131755874), new DialogInterface.OnClickListener()
+    h.a(this.activity, paramad.content, "", this.activity.getString(r.j.app_i_known), new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
-        AppMethodBeat.i(196841);
+        AppMethodBeat.i(213874);
         localActivity.finish();
-        AppMethodBeat.o(196841);
+        AppMethodBeat.o(213874);
       }
     });
-    AppMethodBeat.o(196842);
+    AppMethodBeat.o(221039);
     return true;
   }
   
@@ -79,7 +80,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.platformtools.m
  * JD-Core Version:    0.7.0.1
  */

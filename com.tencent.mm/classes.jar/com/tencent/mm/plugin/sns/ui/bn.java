@@ -1,45 +1,84 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.widget.a.d.a;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.plugin.sns.data.n;
+import com.tencent.mm.plugin.sns.storage.ADInfo;
+import com.tencent.mm.plugin.sns.storage.ADXml;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
+import com.tencent.mm.plugin.sns.storage.u;
+import com.tencent.mm.protocal.protobuf.SnsObject;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.cvu;
+import com.tencent.mm.protocal.protobuf.eln;
+import com.tencent.mm.vending.d.b;
+import com.tencent.mm.vending.j.a;
 
 public final class bn
 {
-  public static void g(Context paramContext, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    AppMethodBeat.i(99694);
-    d.a locala = new d.a(paramContext);
-    locala.aoO(2131766305);
-    locala.boo(paramContext.getString(2131766306) + "\n\n" + paramContext.getString(2131766307));
-    locala.aoV(2131768713).c(paramOnClickListener);
-    locala.a(new DialogInterface.OnDismissListener()
-    {
-      public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
-      {
-        AppMethodBeat.i(99693);
-        g.aAi();
-        int i = Util.nullAs((Integer)g.aAh().azQ().get(68385, null), 0);
-        g.aAi();
-        g.aAh().azQ().set(68385, Integer.valueOf(i + 1));
-        AppMethodBeat.o(99693);
-      }
-    });
-    locala.hbn().show();
-    AppMethodBeat.o(99694);
-  }
+  public ADXml JEd;
+  public SnsObject Jwr;
+  public SnsInfo Jws;
+  public TimeLineObject Jww;
+  public String JyZ;
+  public boolean KBz;
+  public String KDB;
+  public String LbA;
+  public boolean LbB;
+  public boolean LbC;
+  public boolean LbD;
+  public int LbE;
+  public boolean LbF;
+  public String LbG;
+  public boolean LbH;
+  public boolean LbI;
+  public boolean LbJ;
+  public boolean LbK;
+  public String LbL;
+  public String LbM;
+  public boolean LbN;
+  public boolean LbO;
+  public boolean LbP;
+  public int LbQ;
+  public boolean LbR;
+  public boolean LbS;
+  public String LbT;
+  public boolean LbU;
+  public boolean LbV;
+  public int LbW;
+  public double LbX;
+  public b<a> LbY;
+  public b<a> LbZ;
+  public n Lbi;
+  public CharSequence Lbj = null;
+  public CharSequence Lbk = null;
+  public d Lbl;
+  public long Lbm;
+  public String Lbn;
+  public int Lbo;
+  public int Lbp;
+  public int Lbq;
+  public boolean Lbr;
+  public String Lbs;
+  public String Lbt;
+  public ADInfo Lbu;
+  public ADXml Lbv;
+  public String Lbw;
+  public String Lbx;
+  public String Lby;
+  public String Lbz;
+  public b<a> Lca;
+  public boolean Lcb;
+  public String Lcc;
+  public cvu Lcd;
+  public u Lce;
+  public eln Lcf;
+  public String mAppName;
+  public String pRV;
+  public int xk;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.bn
  * JD-Core Version:    0.7.0.1
  */

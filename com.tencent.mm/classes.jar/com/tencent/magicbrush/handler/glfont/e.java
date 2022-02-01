@@ -7,17 +7,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e
 {
-  Bitmap cMT;
-  private d cMU;
-  Rect cMV;
-  int[] cMW;
+  Bitmap cNH;
+  private d cNI;
+  Rect cNJ;
+  int[] cNK;
   
   e(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(140012);
-    this.cMU = new l();
-    this.cMV = new Rect();
-    this.cMW = new int[4];
+    this.cNI = new l();
+    this.cNJ = new Rect();
+    this.cNK = new int[4];
     int i = paramInt1;
     if (paramInt1 <= 0) {
       i = 512;
@@ -26,9 +26,9 @@ final class e
     if (paramInt2 <= 0) {
       paramInt1 = 512;
     }
-    this.cMT = Bitmap.createBitmap(i, paramInt1, Bitmap.Config.ARGB_8888);
-    this.cMU.init(i, paramInt1);
-    this.cMV.setEmpty();
+    this.cNH = Bitmap.createBitmap(i, paramInt1, Bitmap.Config.ARGB_8888);
+    this.cNI.init(i, paramInt1);
+    this.cNJ.setEmpty();
     AppMethodBeat.o(140012);
   }
   
@@ -46,13 +46,13 @@ final class e
       AppMethodBeat.o(140013);
       return false;
     }
-    this.cMU.a(paramInt1, paramInt2, paramRect);
+    this.cNI.a(paramInt1, paramInt2, paramRect);
     if ((paramRect.left < 0) || (paramRect.right < 0) || (paramRect.width() <= 0) || (paramRect.height() <= 0))
     {
       AppMethodBeat.o(140013);
       return false;
     }
-    this.cMV.union(paramRect);
+    this.cNJ.union(paramRect);
     AppMethodBeat.o(140013);
     return true;
   }
@@ -60,10 +60,10 @@ final class e
   final void clear()
   {
     AppMethodBeat.i(140014);
-    this.cMV.setEmpty();
-    this.cMU.reset();
-    if (this.cMT != null) {
-      this.cMT.eraseColor(0);
+    this.cNJ.setEmpty();
+    this.cNI.reset();
+    if (this.cNH != null) {
+      this.cNH.eraseColor(0);
     }
     AppMethodBeat.o(140014);
   }
@@ -71,9 +71,9 @@ final class e
   final int height()
   {
     AppMethodBeat.i(140016);
-    if (this.cMT != null)
+    if (this.cNH != null)
     {
-      int i = this.cMT.getHeight();
+      int i = this.cNH.getHeight();
       AppMethodBeat.o(140016);
       return i;
     }
@@ -84,9 +84,9 @@ final class e
   final int width()
   {
     AppMethodBeat.i(140015);
-    if (this.cMT != null)
+    if (this.cNH != null)
     {
-      int i = this.cMT.getWidth();
+      int i = this.cNH.getWidth();
       AppMethodBeat.o(140015);
       return i;
     }
@@ -96,7 +96,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.magicbrush.handler.glfont.e
  * JD-Core Version:    0.7.0.1
  */

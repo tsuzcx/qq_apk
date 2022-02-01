@@ -2,53 +2,42 @@ package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class ehs
-  extends com.tencent.mm.bw.a
+public final class ehs
+  extends com.tencent.mm.cd.a
 {
-  public String KJV;
-  public String iwv;
-  public int weight;
+  public String UjL;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124569);
+    AppMethodBeat.i(114078);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.KJV != null) {
-        paramVarArgs.e(1, this.KJV);
+      if (this.UjL != null) {
+        paramVarArgs.f(1, this.UjL);
       }
-      if (this.iwv != null) {
-        paramVarArgs.e(2, this.iwv);
-      }
-      paramVarArgs.aM(3, this.weight);
-      AppMethodBeat.o(124569);
+      AppMethodBeat.o(114078);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.KJV == null) {
-        break label318;
+      if (this.UjL == null) {
+        break label213;
       }
     }
-    label318:
-    for (paramInt = g.a.a.b.b.a.f(1, this.KJV) + 0;; paramInt = 0)
+    label213:
+    for (paramInt = g.a.a.b.b.a.g(1, this.UjL) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.iwv != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.iwv);
-      }
-      paramInt = g.a.a.b.b.a.bu(3, this.weight);
-      AppMethodBeat.o(124569);
-      return i + paramInt;
+      AppMethodBeat.o(114078);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(124569);
+        AppMethodBeat.o(114078);
         return 0;
       }
       if (paramInt == 3)
@@ -58,22 +47,14 @@ public class ehs
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(124569);
+          AppMethodBeat.o(114078);
           return -1;
-        case 1: 
-          localehs.KJV = locala.UbS.readString();
-          AppMethodBeat.o(124569);
-          return 0;
-        case 2: 
-          localehs.iwv = locala.UbS.readString();
-          AppMethodBeat.o(124569);
-          return 0;
         }
-        localehs.weight = locala.UbS.zi();
-        AppMethodBeat.o(124569);
+        localehs.UjL = locala.abFh.readString();
+        AppMethodBeat.o(114078);
         return 0;
       }
-      AppMethodBeat.o(124569);
+      AppMethodBeat.o(114078);
       return -1;
     }
   }

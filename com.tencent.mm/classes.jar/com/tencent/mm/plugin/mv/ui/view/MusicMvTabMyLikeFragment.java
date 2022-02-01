@@ -6,16 +6,15 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.music.model.e.a;
 import com.tencent.mm.protocal.protobuf.FinderMedia;
 import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
-import com.tencent.mm.protocal.protobuf.aso;
+import com.tencent.mm.protocal.protobuf.aup;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
@@ -28,70 +27,70 @@ import kotlin.a.j;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabMyLikeFragment;", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getFeedFrom", "onDestroy", "", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "syncGetFeeds", "music", "Lcom/tencent/mm/plugin/music/model/storage/Music;", "songId", "Companion", "plugin-mv_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabMyLikeFragment;", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getFeedFrom", "getType", "onDestroy", "", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "syncGetFeeds", "music", "Lcom/tencent/mm/plugin/music/model/storage/Music;", "songId", "Companion", "plugin-mv_release"})
 public final class MusicMvTabMyLikeFragment
   extends MusicMvTabFragment
-  implements i
+  implements com.tencent.mm.an.i
 {
-  public static final a Azo;
+  public static final MusicMvTabMyLikeFragment.a GpV;
   private HashMap _$_findViewCache;
   private b lastBuffer;
   
   static
   {
-    AppMethodBeat.i(257706);
-    Azo = new a((byte)0);
-    AppMethodBeat.o(257706);
+    AppMethodBeat.i(229190);
+    GpV = new MusicMvTabMyLikeFragment.a((byte)0);
+    AppMethodBeat.o(229190);
   }
   
   public MusicMvTabMyLikeFragment(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(257703);
-    AppMethodBeat.o(257703);
+    AppMethodBeat.i(229183);
+    AppMethodBeat.o(229183);
   }
   
   public MusicMvTabMyLikeFragment(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     this(paramContext, paramAttributeSet, paramInt, (byte)0);
-    AppMethodBeat.i(257704);
-    AppMethodBeat.o(257704);
+    AppMethodBeat.i(229185);
+    AppMethodBeat.o(229185);
   }
   
   private MusicMvTabMyLikeFragment(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, (byte)0);
-    AppMethodBeat.i(257705);
-    com.tencent.mm.kernel.g.azz().a(3965, (i)this);
-    AppMethodBeat.o(257705);
+    AppMethodBeat.i(229188);
+    h.aGY().a(3965, (com.tencent.mm.an.i)this);
+    AppMethodBeat.o(229188);
   }
   
-  public final void a(a parama, String paramString)
+  public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(257701);
-    super.a(parama, paramString);
-    parama = z.aUg();
-    p.g(parama, "finderUsername");
-    parama = new com.tencent.mm.plugin.mv.a.a.g(parama, this.lastBuffer);
-    com.tencent.mm.kernel.g.azz().b((q)parama);
-    AppMethodBeat.o(257701);
-  }
-  
-  public final View ewN()
-  {
-    AppMethodBeat.i(257707);
+    AppMethodBeat.i(229195);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(2131305082));
+    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
     View localView1 = localView2;
     if (localView2 == null)
     {
-      localView1 = findViewById(2131305082);
-      this._$_findViewCache.put(Integer.valueOf(2131305082), localView1);
+      localView1 = findViewById(paramInt);
+      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(257707);
+    AppMethodBeat.o(229195);
     return localView1;
+  }
+  
+  public final void a(com.tencent.mm.plugin.music.model.e.a parama, String paramString)
+  {
+    AppMethodBeat.i(229159);
+    super.a(parama, paramString);
+    parama = z.bdh();
+    p.j(parama, "finderUsername");
+    parama = new com.tencent.mm.plugin.mv.model.a.i(parama, this.lastBuffer);
+    h.aGY().b((q)parama);
+    AppMethodBeat.o(229159);
   }
   
   public final int getFeedFrom()
@@ -99,34 +98,39 @@ public final class MusicMvTabMyLikeFragment
     return 6;
   }
   
+  public final int getType()
+  {
+    return 4;
+  }
+  
   public final void onDestroy()
   {
-    AppMethodBeat.i(257700);
+    AppMethodBeat.i(229156);
     super.onDestroy();
-    com.tencent.mm.kernel.g.azz().b(3965, (i)this);
-    AppMethodBeat.o(257700);
+    h.aGY().b(3965, (com.tencent.mm.an.i)this);
+    AppMethodBeat.o(229156);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    AppMethodBeat.i(257702);
-    if ((paramq instanceof com.tencent.mm.plugin.mv.a.a.g))
+    AppMethodBeat.i(229174);
+    if ((paramq instanceof com.tencent.mm.plugin.mv.model.a.i))
     {
       label65:
-      label215:
-      label217:
-      label249:
+      label216:
+      label218:
+      label250:
       boolean bool;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = ((com.tencent.mm.plugin.mv.a.a.g)paramq).AqH;
+        paramString = ((com.tencent.mm.plugin.mv.model.a.i)paramq).Gdv;
         if (paramString != null)
         {
           paramString = paramString.lastBuffer;
           this.lastBuffer = paramString;
-          paramString = ((com.tencent.mm.plugin.mv.a.a.g)paramq).AqH;
+          paramString = ((com.tencent.mm.plugin.mv.model.a.i)paramq).Gdv;
           if (paramString != null) {
-            paramString = paramString.LDv.iterator();
+            paramString = paramString.SGN.iterator();
           }
         }
         else
@@ -134,7 +138,7 @@ public final class MusicMvTabMyLikeFragment
           for (;;)
           {
             if (!paramString.hasNext()) {
-              break label217;
+              break label218;
             }
             FinderObject localFinderObject = (FinderObject)paramString.next();
             if (localFinderObject != null)
@@ -145,21 +149,21 @@ public final class MusicMvTabMyLikeFragment
                 localObject = ((FinderObjectDesc)localObject).media;
                 if (localObject != null)
                 {
-                  localObject = (FinderMedia)j.kt((List)localObject);
+                  localObject = (FinderMedia)j.lp((List)localObject);
                   if ((localObject == null) || (((FinderMedia)localObject).mediaType != 2)) {}
                 }
               }
               for (paramInt1 = 0;; paramInt1 = 1)
               {
                 if (paramInt1 == 0) {
-                  break label215;
+                  break label216;
                 }
                 long l = localFinderObject.id;
                 localObject = localFinderObject.objectNonceId;
                 if (getFeedIdMap().contains(Long.valueOf(l))) {
                   break label65;
                 }
-                getDataList().add(new MusicMvTabFragment.d(new MusicMvTabFragment.f(l, (String)localObject, localFinderObject)));
+                getDataList().add(new MusicMvTabFragment.d(new MusicMvTabFragment.f(l, (String)localObject, localFinderObject, (byte)0)));
                 break label65;
                 paramString = null;
                 break;
@@ -167,32 +171,36 @@ public final class MusicMvTabMyLikeFragment
             }
           }
           getAdapter().notifyDataSetChanged();
-          paramString = ((com.tencent.mm.plugin.mv.a.a.g)paramq).AqH;
+          paramString = ((com.tencent.mm.plugin.mv.model.a.i)paramq).Gdv;
           if (paramString == null) {
-            break label390;
+            break label407;
           }
           paramString = Integer.valueOf(paramString.continueFlag);
           if (paramString != null) {
-            break label395;
+            break label412;
           }
           bool = true;
-          label252:
+          label253:
           setHasMore(bool);
+          paramString = getOnSceneEndListener();
+          if (paramString != null) {
+            paramString.invoke();
+          }
           Log.i("Music.MusicMvTabFragment", "onSceneEnd GetFinderLikeFeed " + getDataList().size() + ", hasMore:" + getHasMore());
         }
       }
-      getRlLayout().apT(0);
+      getRlLayout().azs(0);
       paramString = getResultListener();
       if (paramString != null) {
-        paramString.hx(3, getAdapter().getItemCount());
+        paramString.iC(3, getAdapter().getItemCount());
       }
       paramString = getAdapter();
       if (paramString != null)
       {
         paramString = Integer.valueOf(paramString.getItemCount());
-        label348:
+        label365:
         if (paramString.intValue() != 0) {
-          break label413;
+          break label430;
         }
         paramString = getEmptyLL();
         if (paramString != null) {
@@ -203,39 +211,36 @@ public final class MusicMvTabMyLikeFragment
       {
         paramString = getLoadingTv();
         if (paramString == null) {
-          break label431;
+          break label448;
         }
         paramString.setVisibility(8);
-        AppMethodBeat.o(257702);
+        AppMethodBeat.o(229174);
         return;
-        label390:
+        label407:
         paramString = null;
         break;
-        label395:
+        label412:
         if (paramString.intValue() != 0) {
-          break label249;
+          break label250;
         }
         bool = false;
-        break label252;
+        break label253;
         paramString = null;
-        break label348;
-        label413:
+        break label365;
+        label430:
         paramString = getEmptyLL();
         if (paramString != null) {
           paramString.setVisibility(8);
         }
       }
     }
-    label431:
-    AppMethodBeat.o(257702);
+    label448:
+    AppMethodBeat.o(229174);
   }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabMyLikeFragment$Companion;", "", "()V", "type", "", "plugin-mv_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.view.MusicMvTabMyLikeFragment
  * JD-Core Version:    0.7.0.1
  */

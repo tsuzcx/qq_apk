@@ -2,65 +2,66 @@ package com.tencent.mm.plugin.appbrand.xweb_ext.a;
 
 import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.StickerItemInfo;
 import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.i;
-import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.l.c;
-import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.q;
+import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.m.c;
+import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.r;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.List;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/StickerApplyAdapter;", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IStickerApplyAdapter;", "weEffectManager", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager;", "(Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager;)V", "stickerApplyLogic", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IStickerApplyLogic;", "getStickerApplyLogic", "()Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IStickerApplyLogic;", "applySticker", "", "type", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager$StickerType;", "path", "", "", "stickerInfo", "", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo;", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/StickerApplyAdapter;", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IStickerApplyAdapter;", "weEffectManager", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager;", "(Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager;)V", "stickerApplyLogic", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IStickerApplyLogic;", "getStickerApplyLogic", "()Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IStickerApplyLogic;", "applySticker", "", "type", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager$StickerType;", "path", "", "", "stickerInfo", "", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo;", "plugin-appbrand-integration_release"})
 public final class j
   implements i
 {
-  private final com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.j oGP;
+  private final com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.j rIF;
   
-  public j(com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.l paraml)
+  public j(com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.m paramm)
   {
-    AppMethodBeat.i(229738);
-    if ((paraml instanceof p)) {
+    AppMethodBeat.i(283991);
+    if ((paramm instanceof p)) {
       Log.w("MicroMsg.AppBrand.StickerApplyAdapter", "weEffectManager is IWeEffectWorkaroundManager");
     }
-    for (paraml = ((p)paraml).oHu.Qe();; paraml = (com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.j)new q(paraml))
+    for (paramm = ((p)paramm).rJk.TF();; paramm = (com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.j)new r(paramm))
     {
-      this.oGP = paraml;
-      AppMethodBeat.o(229738);
+      this.rIF = paramm;
+      AppMethodBeat.o(283991);
       return;
     }
   }
   
-  public final com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.j Qe()
+  public final com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.j TF()
   {
-    return this.oGP;
+    return this.rIF;
   }
   
-  public final void a(l.c paramc, String paramString)
+  public final void a(m.c paramc, String paramString)
   {
-    AppMethodBeat.i(229736);
-    kotlin.g.b.p.h(paramc, "type");
-    kotlin.g.b.p.h(paramString, "path");
-    this.oGP.a(paramc, paramString);
-    AppMethodBeat.o(229736);
+    AppMethodBeat.i(283985);
+    kotlin.g.b.p.k(paramc, "type");
+    kotlin.g.b.p.k(paramString, "path");
+    this.rIF.a(paramc, paramString);
+    AppMethodBeat.o(283985);
   }
   
-  public final boolean a(l.c paramc, List<StickerItemInfo> paramList)
+  public final boolean a(m.c paramc, List<StickerItemInfo> paramList)
   {
-    AppMethodBeat.i(229737);
-    kotlin.g.b.p.h(paramc, "type");
-    kotlin.g.b.p.h(paramList, "stickerInfo");
-    paramc = k.oGR.b(paramc, paramList);
+    AppMethodBeat.i(283988);
+    kotlin.g.b.p.k(paramc, "type");
+    kotlin.g.b.p.k(paramList, "stickerInfo");
+    paramc = k.rIH.b(paramc, paramList);
     if (paramc != null)
     {
-      this.oGP.a(paramc.oGU, paramc.path);
-      AppMethodBeat.o(229737);
+      this.rIF.a(paramc.rIK, paramc.path);
+      AppMethodBeat.o(283988);
       return true;
     }
-    AppMethodBeat.o(229737);
+    AppMethodBeat.o(283988);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.xweb_ext.a.j
  * JD-Core Version:    0.7.0.1
  */

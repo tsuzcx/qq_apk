@@ -7,6 +7,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.a;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
@@ -14,7 +15,7 @@ public final class a
   public static void a(View paramView, Context paramContext, a parama)
   {
     AppMethodBeat.i(29946);
-    paramContext = AnimationUtils.loadAnimation(paramContext, 2130772050);
+    paramContext = AnimationUtils.loadAnimation(paramContext, R.a.faded_out);
     paramContext.setDuration(300L);
     paramContext.setFillAfter(true);
     paramContext.setRepeatCount(0);
@@ -23,8 +24,8 @@ public final class a
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(29937);
-        if (this.GSE != null) {
-          this.GSE.fEM();
+        if (this.NIP != null) {
+          this.NIP.gwZ();
         }
         AppMethodBeat.o(29937);
       }
@@ -58,8 +59,8 @@ public final class a
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(29936);
-        if (this.GSF != null) {
-          this.GSF.fEL();
+        if (this.NIQ != null) {
+          this.NIQ.gwY();
         }
         Log.d("MicroMsg.VoiceViewAnimationHelper", "onAnimationEnd ");
         paramAnonymousAnimation = new TranslateAnimation(0, i, 0, 0.0F, 1, 0.0F, 1, 0.0F);
@@ -74,8 +75,8 @@ public final class a
           {
             AppMethodBeat.i(29935);
             Log.i("MicroMsg.VoiceViewAnimationHelper", "next end");
-            if (a.2.this.GSF != null) {
-              a.2.this.GSF.fEM();
+            if (a.2.this.NIQ != null) {
+              a.2.this.NIQ.gwZ();
             }
             AppMethodBeat.o(29935);
           }
@@ -99,7 +100,7 @@ public final class a
   public static void b(View paramView, Context paramContext, a parama)
   {
     AppMethodBeat.i(29947);
-    paramContext = AnimationUtils.loadAnimation(paramContext, 2130772059);
+    paramContext = AnimationUtils.loadAnimation(paramContext, R.a.fast_faded_in);
     paramContext.setDuration(300L);
     paramContext.setFillAfter(true);
     paramContext.setRepeatCount(0);
@@ -108,8 +109,8 @@ public final class a
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(29938);
-        if (this.GSE != null) {
-          this.GSE.fEM();
+        if (this.NIP != null) {
+          this.NIP.gwZ();
         }
         AppMethodBeat.o(29938);
       }
@@ -134,8 +135,8 @@ public final class a
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(29940);
-        if (this.GSE != null) {
-          this.GSE.fEM();
+        if (this.NIP != null) {
+          this.NIP.gwZ();
         }
         AppMethodBeat.o(29940);
       }
@@ -145,8 +146,8 @@ public final class a
       public final void onAnimationStart(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(29939);
-        if (this.GSE != null) {
-          this.GSE.fEL();
+        if (this.NIP != null) {
+          this.NIP.gwY();
         }
         AppMethodBeat.o(29939);
       }
@@ -157,9 +158,9 @@ public final class a
   
   public static abstract interface a
   {
-    public abstract void fEL();
+    public abstract void gwY();
     
-    public abstract void fEM();
+    public abstract void gwZ();
   }
 }
 

@@ -12,7 +12,7 @@ public class WeChatSplashFallbackActivity
   {
     AppMethodBeat.i(160094);
     super.onCreate(paramBundle);
-    setContentView(2131497082);
+    setContentView(2131497213);
     AppMethodBeat.o(160094);
   }
   
@@ -24,7 +24,7 @@ public class WeChatSplashFallbackActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.app.WeChatSplashFallbackActivity
  * JD-Core Version:    0.7.0.1
  */

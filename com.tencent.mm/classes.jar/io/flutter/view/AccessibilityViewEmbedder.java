@@ -1,10 +1,11 @@
 package io.flutter.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.annotation.Keep;
+import android.os.Parcel;
 import android.util.SparseArray;
 import android.view.MotionEvent;
 import android.view.MotionEvent.PointerCoords;
@@ -15,7 +16,12 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.accessibility.AccessibilityNodeProvider;
 import android.view.accessibility.AccessibilityRecord;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import io.flutter.b;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,22 +30,22 @@ public class AccessibilityViewEmbedder
 {
   private static final String TAG = "AccessibilityBridge";
   private final Map<View, Rect> embeddedViewToDisplayBounds;
-  private final SparseArray<b> flutterIdToOrigin;
+  private final SparseArray<AccessibilityViewEmbedder.b> flutterIdToOrigin;
   private int nextFlutterId;
-  private final Map<b, Integer> originToFlutterId;
-  private final AccessibilityViewEmbedder.a reflectionAccessors;
+  private final Map<AccessibilityViewEmbedder.b, Integer> originToFlutterId;
+  private final a reflectionAccessors;
   private final View rootAccessibilityView;
   
   AccessibilityViewEmbedder(View paramView, int paramInt)
   {
-    AppMethodBeat.i(214912);
-    this.reflectionAccessors = new AccessibilityViewEmbedder.a((byte)0);
+    AppMethodBeat.i(255133);
+    this.reflectionAccessors = new a((byte)0);
     this.flutterIdToOrigin = new SparseArray();
     this.rootAccessibilityView = paramView;
     this.nextFlutterId = paramInt;
     this.originToFlutterId = new HashMap();
     this.embeddedViewToDisplayBounds = new HashMap();
-    AppMethodBeat.o(214912);
+    AppMethodBeat.o(255133);
   }
   
   private void addChildrenToFlutterNode(AccessibilityNodeInfo paramAccessibilityNodeInfo1, View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo2)
@@ -48,15 +54,15 @@ public class AccessibilityViewEmbedder
     int i = 0;
     if (i < paramAccessibilityNodeInfo1.getChildCount())
     {
-      Object localObject = this.reflectionAccessors.a(paramAccessibilityNodeInfo1, i);
+      Object localObject = a.a(this.reflectionAccessors, paramAccessibilityNodeInfo1, i);
       int k;
       int j;
       if (localObject != null)
       {
-        k = (int)(((Long)localObject).longValue() >> 32);
-        localObject = new b(paramView, k, (byte)0);
+        k = a.Xr(((Long)localObject).longValue());
+        localObject = new AccessibilityViewEmbedder.b(paramView, k, (byte)0);
         if (!this.originToFlutterId.containsKey(localObject)) {
-          break label111;
+          break label110;
         }
         j = ((Integer)this.originToFlutterId.get(localObject)).intValue();
       }
@@ -65,7 +71,7 @@ public class AccessibilityViewEmbedder
         paramAccessibilityNodeInfo2.addChild(this.rootAccessibilityView, j);
         i += 1;
         break;
-        label111:
+        label110:
         j = this.nextFlutterId;
         this.nextFlutterId = (j + 1);
         cacheVirtualIdMappings(paramView, k, j);
@@ -77,7 +83,7 @@ public class AccessibilityViewEmbedder
   private void cacheVirtualIdMappings(View paramView, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(9788);
-    paramView = new b(paramView, paramInt1, (byte)0);
+    paramView = new AccessibilityViewEmbedder.b(paramView, paramInt1, (byte)0);
     this.originToFlutterId.put(paramView, Integer.valueOf(paramInt2));
     this.flutterIdToOrigin.put(paramInt2, paramView);
     AppMethodBeat.o(9788);
@@ -157,14 +163,14 @@ public class AccessibilityViewEmbedder
   private void setFlutterNodeParent(AccessibilityNodeInfo paramAccessibilityNodeInfo1, View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo2)
   {
     AppMethodBeat.i(9786);
-    paramAccessibilityNodeInfo1 = this.reflectionAccessors.c(paramAccessibilityNodeInfo1);
+    paramAccessibilityNodeInfo1 = a.b(this.reflectionAccessors, paramAccessibilityNodeInfo1);
     if (paramAccessibilityNodeInfo1 == null)
     {
       AppMethodBeat.o(9786);
       return;
     }
-    int i = (int)(paramAccessibilityNodeInfo1.longValue() >> 32);
-    paramAccessibilityNodeInfo1 = (Integer)this.originToFlutterId.get(new b(paramView, i, (byte)0));
+    int i = a.Xr(paramAccessibilityNodeInfo1.longValue());
+    paramAccessibilityNodeInfo1 = (Integer)this.originToFlutterId.get(new AccessibilityViewEmbedder.b(paramView, i, (byte)0));
     if (paramAccessibilityNodeInfo1 != null) {
       paramAccessibilityNodeInfo2.setParent(this.rootAccessibilityView, paramAccessibilityNodeInfo1.intValue());
     }
@@ -186,70 +192,70 @@ public class AccessibilityViewEmbedder
   
   public AccessibilityNodeInfo createAccessibilityNodeInfo(int paramInt)
   {
-    AppMethodBeat.i(214914);
-    Object localObject = (b)this.flutterIdToOrigin.get(paramInt);
+    AppMethodBeat.i(255139);
+    Object localObject = (AccessibilityViewEmbedder.b)this.flutterIdToOrigin.get(paramInt);
     if (localObject == null)
     {
-      AppMethodBeat.o(214914);
+      AppMethodBeat.o(255139);
       return null;
     }
-    if (!this.embeddedViewToDisplayBounds.containsKey(((b)localObject).view))
+    if (!this.embeddedViewToDisplayBounds.containsKey(((AccessibilityViewEmbedder.b)localObject).view))
     {
-      AppMethodBeat.o(214914);
+      AppMethodBeat.o(255139);
       return null;
     }
-    if (((b)localObject).view.getAccessibilityNodeProvider() == null)
+    if (((AccessibilityViewEmbedder.b)localObject).view.getAccessibilityNodeProvider() == null)
     {
-      AppMethodBeat.o(214914);
+      AppMethodBeat.o(255139);
       return null;
     }
-    AccessibilityNodeInfo localAccessibilityNodeInfo = ((b)localObject).view.getAccessibilityNodeProvider().createAccessibilityNodeInfo(((b)localObject).id);
+    AccessibilityNodeInfo localAccessibilityNodeInfo = ((AccessibilityViewEmbedder.b)localObject).view.getAccessibilityNodeProvider().createAccessibilityNodeInfo(((AccessibilityViewEmbedder.b)localObject).id);
     if (localAccessibilityNodeInfo == null)
     {
-      AppMethodBeat.o(214914);
+      AppMethodBeat.o(255139);
       return null;
     }
-    localObject = convertToFlutterNode(localAccessibilityNodeInfo, paramInt, ((b)localObject).view);
-    AppMethodBeat.o(214914);
+    localObject = convertToFlutterNode(localAccessibilityNodeInfo, paramInt, ((AccessibilityViewEmbedder.b)localObject).view);
+    AppMethodBeat.o(255139);
     return localObject;
   }
   
   public Integer getRecordFlutterId(View paramView, AccessibilityRecord paramAccessibilityRecord)
   {
-    AppMethodBeat.i(214917);
-    paramAccessibilityRecord = this.reflectionAccessors.a(paramAccessibilityRecord);
+    AppMethodBeat.i(255159);
+    paramAccessibilityRecord = a.a(this.reflectionAccessors, paramAccessibilityRecord);
     if (paramAccessibilityRecord == null)
     {
-      AppMethodBeat.o(214917);
+      AppMethodBeat.o(255159);
       return null;
     }
-    int i = (int)(paramAccessibilityRecord.longValue() >> 32);
-    paramView = (Integer)this.originToFlutterId.get(new b(paramView, i, (byte)0));
-    AppMethodBeat.o(214917);
+    int i = a.Xr(paramAccessibilityRecord.longValue());
+    paramView = (Integer)this.originToFlutterId.get(new AccessibilityViewEmbedder.b(paramView, i, (byte)0));
+    AppMethodBeat.o(255159);
     return paramView;
   }
   
   public AccessibilityNodeInfo getRootNode(View paramView, int paramInt, Rect paramRect)
   {
-    AppMethodBeat.i(214913);
+    AppMethodBeat.i(255135);
     AccessibilityNodeInfo localAccessibilityNodeInfo = paramView.createAccessibilityNodeInfo();
-    Long localLong = this.reflectionAccessors.b(localAccessibilityNodeInfo);
+    Long localLong = a.a(this.reflectionAccessors, localAccessibilityNodeInfo);
     if (localLong == null)
     {
-      AppMethodBeat.o(214913);
+      AppMethodBeat.o(255135);
       return null;
     }
     this.embeddedViewToDisplayBounds.put(paramView, paramRect);
-    cacheVirtualIdMappings(paramView, (int)(localLong.longValue() >> 32), paramInt);
+    cacheVirtualIdMappings(paramView, a.Xr(localLong.longValue()), paramInt);
     paramView = convertToFlutterNode(localAccessibilityNodeInfo, paramInt, paramView);
-    AppMethodBeat.o(214913);
+    AppMethodBeat.o(255135);
     return paramView;
   }
   
   public boolean onAccessibilityHoverEvent(int paramInt, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(9791);
-    b localb = (b)this.flutterIdToOrigin.get(paramInt);
+    AccessibilityViewEmbedder.b localb = (AccessibilityViewEmbedder.b)this.flutterIdToOrigin.get(paramInt);
     if (localb == null)
     {
       AppMethodBeat.o(9791);
@@ -281,50 +287,50 @@ public class AccessibilityViewEmbedder
   
   public boolean performAction(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    AppMethodBeat.i(214916);
-    b localb = (b)this.flutterIdToOrigin.get(paramInt1);
+    AppMethodBeat.i(255157);
+    AccessibilityViewEmbedder.b localb = (AccessibilityViewEmbedder.b)this.flutterIdToOrigin.get(paramInt1);
     if (localb == null)
     {
-      AppMethodBeat.o(214916);
+      AppMethodBeat.o(255157);
       return false;
     }
     AccessibilityNodeProvider localAccessibilityNodeProvider = localb.view.getAccessibilityNodeProvider();
     if (localAccessibilityNodeProvider == null)
     {
-      AppMethodBeat.o(214916);
+      AppMethodBeat.o(255157);
       return false;
     }
     boolean bool = localAccessibilityNodeProvider.performAction(localb.id, paramInt2, paramBundle);
-    AppMethodBeat.o(214916);
+    AppMethodBeat.o(255157);
     return bool;
   }
   
   public View platformViewOfNode(int paramInt)
   {
-    AppMethodBeat.i(214918);
-    Object localObject = (b)this.flutterIdToOrigin.get(paramInt);
+    AppMethodBeat.i(255162);
+    Object localObject = (AccessibilityViewEmbedder.b)this.flutterIdToOrigin.get(paramInt);
     if (localObject == null)
     {
-      AppMethodBeat.o(214918);
+      AppMethodBeat.o(255162);
       return null;
     }
-    localObject = ((b)localObject).view;
-    AppMethodBeat.o(214918);
+    localObject = ((AccessibilityViewEmbedder.b)localObject).view;
+    AppMethodBeat.o(255162);
     return localObject;
   }
   
   public boolean requestSendAccessibilityEvent(View paramView1, View paramView2, AccessibilityEvent paramAccessibilityEvent)
   {
-    AppMethodBeat.i(214915);
+    AppMethodBeat.i(255155);
     AccessibilityEvent localAccessibilityEvent = AccessibilityEvent.obtain(paramAccessibilityEvent);
-    Object localObject = this.reflectionAccessors.a(paramAccessibilityEvent);
+    Object localObject = a.a(this.reflectionAccessors, paramAccessibilityEvent);
     if (localObject == null)
     {
-      AppMethodBeat.o(214915);
+      AppMethodBeat.o(255155);
       return false;
     }
-    int i = (int)(((Long)localObject).longValue() >> 32);
-    Integer localInteger = (Integer)this.originToFlutterId.get(new b(paramView1, i, (byte)0));
+    int i = a.Xr(((Long)localObject).longValue());
+    Integer localInteger = (Integer)this.originToFlutterId.get(new AccessibilityViewEmbedder.b(paramView1, i, (byte)0));
     localObject = localInteger;
     int j;
     if (localInteger == null)
@@ -341,16 +347,16 @@ public class AccessibilityViewEmbedder
     while (i < localAccessibilityEvent.getRecordCount())
     {
       paramAccessibilityEvent = localAccessibilityEvent.getRecord(i);
-      localObject = this.reflectionAccessors.a(paramAccessibilityEvent);
+      localObject = a.a(this.reflectionAccessors, paramAccessibilityEvent);
       if (localObject == null)
       {
-        AppMethodBeat.o(214915);
+        AppMethodBeat.o(255155);
         return false;
       }
-      localObject = new b(paramView1, (int)(((Long)localObject).longValue() >> 32), (byte)0);
+      localObject = new AccessibilityViewEmbedder.b(paramView1, a.Xr(((Long)localObject).longValue()), (byte)0);
       if (!this.originToFlutterId.containsKey(localObject))
       {
-        AppMethodBeat.o(214915);
+        AppMethodBeat.o(255155);
         return false;
       }
       j = ((Integer)this.originToFlutterId.get(localObject)).intValue();
@@ -358,57 +364,284 @@ public class AccessibilityViewEmbedder
       i += 1;
     }
     boolean bool = this.rootAccessibilityView.getParent().requestSendAccessibilityEvent(paramView2, localAccessibilityEvent);
-    AppMethodBeat.o(214915);
+    AppMethodBeat.o(255155);
     return bool;
   }
   
-  static final class b
+  static class a
   {
-    final int id;
-    final View view;
+    private final Method aayK;
+    private final Method aayL;
+    private final Method aayM;
+    private final Method aayN;
+    private final Field aayO;
+    private final Method aayP;
     
-    private b(View paramView, int paramInt)
+    @SuppressLint({"PrivateApi"})
+    private a()
     {
-      this.view = paramView;
-      this.id = paramInt;
+      AppMethodBeat.i(9792);
+      for (;;)
+      {
+        Method localMethod3;
+        Method localMethod2;
+        Field localField;
+        try
+        {
+          localMethod4 = AccessibilityNodeInfo.class.getMethod("getSourceNodeId", new Class[0]);
+        }
+        catch (NoSuchMethodException localNoSuchMethodException2)
+        {
+          try
+          {
+            localMethod5 = AccessibilityRecord.class.getMethod("getSourceNodeId", new Class[0]);
+            if (Build.VERSION.SDK_INT > 26) {}
+          }
+          catch (NoSuchMethodException localNoSuchMethodException2)
+          {
+            try
+            {
+              localMethod3 = AccessibilityNodeInfo.class.getMethod("getParentNodeId", new Class[0]);
+              try
+              {
+                localMethod2 = AccessibilityNodeInfo.class.getMethod("getChildId", new Class[] { Integer.TYPE });
+                localObject1 = null;
+                localField = null;
+              }
+              catch (NoSuchMethodException localNoSuchMethodException4)
+              {
+                Object localObject1;
+                b.iAf();
+                localMethod1 = null;
+                localField = null;
+                localMethod2 = null;
+                continue;
+              }
+              this.aayK = localMethod4;
+              this.aayL = localMethod3;
+              this.aayM = localMethod5;
+              this.aayN = localMethod2;
+              this.aayO = localField;
+              this.aayP = localObject1;
+              AppMethodBeat.o(9792);
+              return;
+              localNoSuchMethodException1 = localNoSuchMethodException1;
+              Method localMethod4 = null;
+              b.iAf();
+              continue;
+              localNoSuchMethodException2 = localNoSuchMethodException2;
+              Method localMethod5 = null;
+              b.iAf();
+            }
+            catch (NoSuchMethodException localNoSuchMethodException3)
+            {
+              localMethod3 = null;
+              b.iAf();
+              continue;
+            }
+          }
+        }
+        try
+        {
+          localField = AccessibilityNodeInfo.class.getDeclaredField("mChildNodeIds");
+          localField.setAccessible(true);
+          Method localMethod1 = Class.forName("android.util.LongArray").getMethod("get", new Class[] { Integer.TYPE });
+          localMethod2 = null;
+          localMethod3 = null;
+        }
+        catch (ClassNotFoundException localClassNotFoundException)
+        {
+          b.iAf();
+          Object localObject2 = null;
+          localField = null;
+          localMethod2 = null;
+          localMethod3 = null;
+        }
+        catch (NullPointerException localNullPointerException)
+        {
+          break label205;
+        }
+        catch (NoSuchFieldException localNoSuchFieldException)
+        {
+          break label205;
+        }
+        catch (NoSuchMethodException localNoSuchMethodException5)
+        {
+          label205:
+          break label205;
+        }
+      }
     }
     
-    public final boolean equals(Object paramObject)
+    private Long a(AccessibilityNodeInfo paramAccessibilityNodeInfo, int paramInt)
     {
-      AppMethodBeat.i(9826);
-      if (this == paramObject)
+      AppMethodBeat.i(9794);
+      if ((this.aayN == null) && ((this.aayO == null) || (this.aayP == null)))
       {
-        AppMethodBeat.o(9826);
-        return true;
+        AppMethodBeat.o(9794);
+        return null;
       }
-      if (!(paramObject instanceof b))
+      if (this.aayN != null) {}
+      for (;;)
       {
-        AppMethodBeat.o(9826);
-        return false;
+        try
+        {
+          paramAccessibilityNodeInfo = (Long)this.aayN.invoke(paramAccessibilityNodeInfo, new Object[] { Integer.valueOf(paramInt) });
+          AppMethodBeat.o(9794);
+          return paramAccessibilityNodeInfo;
+        }
+        catch (IllegalAccessException paramAccessibilityNodeInfo)
+        {
+          b.iAg();
+          AppMethodBeat.o(9794);
+          return null;
+        }
+        catch (InvocationTargetException paramAccessibilityNodeInfo)
+        {
+          b.iAg();
+          continue;
+        }
+        try
+        {
+          long l = ((Long)this.aayP.invoke(this.aayO.get(paramAccessibilityNodeInfo), new Object[] { Integer.valueOf(paramInt) })).longValue();
+          AppMethodBeat.o(9794);
+          return Long.valueOf(l);
+        }
+        catch (IllegalAccessException paramAccessibilityNodeInfo)
+        {
+          b.iAg();
+        }
+        catch (ArrayIndexOutOfBoundsException paramAccessibilityNodeInfo)
+        {
+          b.iAg();
+        }
+        catch (InvocationTargetException paramAccessibilityNodeInfo)
+        {
+          label144:
+          break label144;
+        }
       }
-      paramObject = (b)paramObject;
-      if ((this.id == paramObject.id) && (this.view.equals(paramObject.view)))
-      {
-        AppMethodBeat.o(9826);
-        return true;
-      }
-      AppMethodBeat.o(9826);
-      return false;
     }
     
-    public final int hashCode()
+    private Long a(AccessibilityRecord paramAccessibilityRecord)
     {
-      AppMethodBeat.i(9827);
-      int i = this.view.hashCode();
-      int j = this.id;
-      AppMethodBeat.o(9827);
-      return (i + 31) * 31 + j;
+      AppMethodBeat.i(9796);
+      if (this.aayM == null)
+      {
+        AppMethodBeat.o(9796);
+        return null;
+      }
+      try
+      {
+        paramAccessibilityRecord = (Long)this.aayM.invoke(paramAccessibilityRecord, new Object[0]);
+        AppMethodBeat.o(9796);
+        return paramAccessibilityRecord;
+      }
+      catch (IllegalAccessException paramAccessibilityRecord)
+      {
+        b.iAg();
+        AppMethodBeat.o(9796);
+        return null;
+      }
+      catch (InvocationTargetException paramAccessibilityRecord)
+      {
+        for (;;)
+        {
+          b.iAg();
+        }
+      }
+    }
+    
+    private static boolean aC(long paramLong, int paramInt)
+    {
+      return (1L << paramInt & paramLong) != 0L;
+    }
+    
+    private Long b(AccessibilityNodeInfo paramAccessibilityNodeInfo)
+    {
+      AppMethodBeat.i(9793);
+      if (this.aayK == null)
+      {
+        AppMethodBeat.o(9793);
+        return null;
+      }
+      try
+      {
+        paramAccessibilityNodeInfo = (Long)this.aayK.invoke(paramAccessibilityNodeInfo, new Object[0]);
+        AppMethodBeat.o(9793);
+        return paramAccessibilityNodeInfo;
+      }
+      catch (IllegalAccessException paramAccessibilityNodeInfo)
+      {
+        b.iAg();
+        AppMethodBeat.o(9793);
+        return null;
+      }
+      catch (InvocationTargetException paramAccessibilityNodeInfo)
+      {
+        for (;;)
+        {
+          b.iAg();
+        }
+      }
+    }
+    
+    private Long c(AccessibilityNodeInfo paramAccessibilityNodeInfo)
+    {
+      AppMethodBeat.i(9795);
+      if (this.aayL != null) {}
+      Parcel localParcel;
+      try
+      {
+        l = ((Long)this.aayL.invoke(paramAccessibilityNodeInfo, new Object[0])).longValue();
+        AppMethodBeat.o(9795);
+        return Long.valueOf(l);
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        b.iAg();
+        if (Build.VERSION.SDK_INT < 26)
+        {
+          b.iAf();
+          AppMethodBeat.o(9795);
+          return null;
+        }
+      }
+      catch (InvocationTargetException localInvocationTargetException)
+      {
+        for (;;)
+        {
+          b.iAg();
+        }
+        paramAccessibilityNodeInfo = AccessibilityNodeInfo.obtain(paramAccessibilityNodeInfo);
+        localParcel = Parcel.obtain();
+        localParcel.setDataPosition(0);
+        paramAccessibilityNodeInfo.writeToParcel(localParcel, 0);
+        localParcel.setDataPosition(0);
+        long l = localParcel.readLong();
+        if (aC(l, 0)) {
+          localParcel.readInt();
+        }
+        if (aC(l, 1)) {
+          localParcel.readLong();
+        }
+        if (aC(l, 2)) {
+          localParcel.readInt();
+        }
+        if (!aC(l, 3)) {}
+      }
+      for (paramAccessibilityNodeInfo = Long.valueOf(localParcel.readLong());; paramAccessibilityNodeInfo = null)
+      {
+        localParcel.recycle();
+        AppMethodBeat.o(9795);
+        return paramAccessibilityNodeInfo;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     io.flutter.view.AccessibilityViewEmbedder
  * JD-Core Version:    0.7.0.1
  */

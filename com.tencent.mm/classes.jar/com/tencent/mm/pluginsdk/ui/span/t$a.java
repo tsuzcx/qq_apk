@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui.span;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/pluginsdk/ui/span/WxaShortLinkScene$Companion;", "", "()V", "KEY_WXA_SHORT_LINK_LAUNCH_SCENE", "", "makeDataForChatting", "Landroid/os/Bundle;", "isGroupChat", "", "makeDataForFavorite", "makeDataForTimeLine", "plugin-comm_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/ui/span/WxaShortLinkScene$Companion;", "", "()V", "KEY_WXA_SHORT_LINK_LAUNCH_CHAT_TYPE", "", "KEY_WXA_SHORT_LINK_LAUNCH_SCENE", "makeDataForChatting", "Landroid/os/Bundle;", "isGroupChat", "", "chatType", "", "makeDataForFavorite", "makeDataForTimeLine", "plugin-comm_release"})
 public final class t$a {}
 
 

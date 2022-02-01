@@ -14,16 +14,16 @@ import java.io.IOException;
 public final class h
   implements g.c, k
 {
-  private final w.a bci;
-  private k.a bvB;
-  private final int bvE;
-  private final a bvF;
-  private final String bvI;
-  private final g.a bwl;
-  private final com.google.android.exoplayer2.c.h bwm;
-  private final int bwn;
-  private long bwo;
-  private boolean bwp;
+  private final w.a aLH;
+  private final g.a bfN;
+  private final com.google.android.exoplayer2.c.h bfO;
+  private final int bfP;
+  private long bfQ;
+  private boolean bfR;
+  private k.a bfd;
+  private final int bfg;
+  private final a bfh;
+  private final String bfk;
   private final Handler eventHandler;
   private final Uri uri;
   
@@ -39,36 +39,36 @@ public final class h
   
   private h(Uri paramUri, g.a parama, com.google.android.exoplayer2.c.h paramh, Handler paramHandler, a parama1, String paramString, byte paramByte)
   {
-    AppMethodBeat.i(196043);
+    AppMethodBeat.i(196279);
     this.uri = paramUri;
-    this.bwl = parama;
-    this.bwm = paramh;
-    this.bvE = -1;
+    this.bfN = parama;
+    this.bfO = paramh;
+    this.bfg = -1;
     this.eventHandler = paramHandler;
-    this.bvF = parama1;
-    this.bvI = paramString;
-    this.bwn = 1048576;
-    this.bci = new w.a();
-    AppMethodBeat.o(196043);
+    this.bfh = parama1;
+    this.bfk = paramString;
+    this.bfP = 1048576;
+    this.aLH = new w.a();
+    AppMethodBeat.o(196279);
   }
   
   private void e(long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(92677);
-    this.bwo = paramLong;
-    this.bwp = paramBoolean;
-    this.bvB.a(new p(this.bwo, this.bwp), null);
+    this.bfQ = paramLong;
+    this.bfR = paramBoolean;
+    this.bfd.a(new p(this.bfQ, this.bfR), null);
     AppMethodBeat.o(92677);
   }
   
   public final j a(k.b paramb, b paramb1)
   {
     AppMethodBeat.i(92674);
-    if (paramb.bwx == 0) {}
+    if (paramb.bfZ == 0) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkArgument(bool);
-      paramb = new g(this.uri, this.bwl.wG(), this.bwm.ux(), this.bvE, this.eventHandler, this.bvF, this, paramb1, this.bvI, this.bwn);
+      paramb = new g(this.uri, this.bfN.uH(), this.bfO.ss(), this.bfg, this.eventHandler, this.bfh, this, paramb1, this.bfk, this.bfP);
       AppMethodBeat.o(92674);
       return paramb;
     }
@@ -77,7 +77,7 @@ public final class h
   public final void a(f paramf, k.a parama)
   {
     AppMethodBeat.i(92673);
-    this.bvB = parama;
+    this.bfd = parama;
     e(-9223372036854775807L, false);
     AppMethodBeat.o(92673);
   }
@@ -86,15 +86,15 @@ public final class h
   {
     AppMethodBeat.i(92675);
     paramj = (g)paramj;
-    boolean bool = paramj.bvK.a(paramj);
-    if ((paramj.bcY) && (!bool))
+    boolean bool = paramj.bfm.a(paramj);
+    if ((paramj.aMy) && (!bool))
     {
-      m[] arrayOfm = paramj.bvQ;
+      m[] arrayOfm = paramj.bfs;
       int j = arrayOfm.length;
       int i = 0;
       while (i < j)
       {
-        arrayOfm[i].vL();
+        arrayOfm[i].tJ();
         i += 1;
       }
     }
@@ -108,9 +108,9 @@ public final class h
     AppMethodBeat.i(92676);
     long l = paramLong;
     if (paramLong == -9223372036854775807L) {
-      l = this.bwo;
+      l = this.bfQ;
     }
-    if (((this.bwo == l) && (this.bwp == paramBoolean)) || ((this.bwo != -9223372036854775807L) && (l == -9223372036854775807L)))
+    if (((this.bfQ == l) && (this.bfR == paramBoolean)) || ((this.bfQ != -9223372036854775807L) && (l == -9223372036854775807L)))
     {
       AppMethodBeat.o(92676);
       return;
@@ -119,11 +119,11 @@ public final class h
     AppMethodBeat.o(92676);
   }
   
-  public final void vt() {}
+  public final void tr() {}
   
-  public final void vu()
+  public final void ts()
   {
-    this.bvB = null;
+    this.bfd = null;
   }
   
   public static abstract interface a
@@ -133,7 +133,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.source.h
  * JD-Core Version:    0.7.0.1
  */

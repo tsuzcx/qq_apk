@@ -24,7 +24,7 @@ public class GreenManUtil
   private static int batteryStatus;
   private static int batteryStatusPlugged;
   private static BroadcastReceiver broadcastReceiver;
-  private static IForeground sForeground;
+  private static GreenManUtil.IForeground sForeground;
   
   static
   {
@@ -32,7 +32,7 @@ public class GreenManUtil
     broadcastReceiver = null;
     batteryStatusPlugged = 0;
     batteryStatus = -1;
-    sForeground = new ForegroundImpl();
+    sForeground = new GreenManUtil.ForegroundImpl();
     AppMethodBeat.o(157554);
   }
   
@@ -127,11 +127,11 @@ public class GreenManUtil
   
   public static boolean isAppOnForeground(String paramString, Context paramContext)
   {
-    AppMethodBeat.i(230299);
+    AppMethodBeat.i(193910);
     paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
     if (paramContext == null)
     {
-      AppMethodBeat.o(230299);
+      AppMethodBeat.o(193910);
       return false;
     }
     paramContext = paramContext.iterator();
@@ -140,11 +140,11 @@ public class GreenManUtil
       ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
       if ((localRunningAppProcessInfo.processName.equals(paramString)) && (localRunningAppProcessInfo.importance == 100))
       {
-        AppMethodBeat.o(230299);
+        AppMethodBeat.o(193910);
         return true;
       }
     }
-    AppMethodBeat.o(230299);
+    AppMethodBeat.o(193910);
     return false;
   }
   
@@ -164,57 +164,57 @@ public class GreenManUtil
     //   1: istore_1
     //   2: ldc 2
     //   4: monitorenter
-    //   5: ldc 219
-    //   7: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: getstatic 34	com/tencent/mm/sdk/platformtools/GreenManUtil:broadcastReceiver	Landroid/content/BroadcastReceiver;
+    //   5: ldc 217
+    //   7: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   10: getstatic 32	com/tencent/mm/sdk/platformtools/GreenManUtil:broadcastReceiver	Landroid/content/BroadcastReceiver;
     //   13: ifnonnull +50 -> 63
     //   16: new 6	com/tencent/mm/sdk/platformtools/GreenManUtil$1
     //   19: dup
-    //   20: invokespecial 220	com/tencent/mm/sdk/platformtools/GreenManUtil$1:<init>	()V
-    //   23: putstatic 34	com/tencent/mm/sdk/platformtools/GreenManUtil:broadcastReceiver	Landroid/content/BroadcastReceiver;
+    //   20: invokespecial 218	com/tencent/mm/sdk/platformtools/GreenManUtil$1:<init>	()V
+    //   23: putstatic 32	com/tencent/mm/sdk/platformtools/GreenManUtil:broadcastReceiver	Landroid/content/BroadcastReceiver;
     //   26: aload_0
-    //   27: getstatic 34	com/tencent/mm/sdk/platformtools/GreenManUtil:broadcastReceiver	Landroid/content/BroadcastReceiver;
-    //   30: new 222	android/content/IntentFilter
+    //   27: getstatic 32	com/tencent/mm/sdk/platformtools/GreenManUtil:broadcastReceiver	Landroid/content/BroadcastReceiver;
+    //   30: new 220	android/content/IntentFilter
     //   33: dup
-    //   34: ldc 224
-    //   36: invokespecial 227	android/content/IntentFilter:<init>	(Ljava/lang/String;)V
-    //   39: invokevirtual 231	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    //   34: ldc 222
+    //   36: invokespecial 225	android/content/IntentFilter:<init>	(Ljava/lang/String;)V
+    //   39: invokevirtual 229	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
     //   42: astore_0
     //   43: aload_0
-    //   44: ldc 233
+    //   44: ldc 231
     //   46: iconst_m1
-    //   47: invokevirtual 239	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   50: putstatic 38	com/tencent/mm/sdk/platformtools/GreenManUtil:batteryStatus	I
+    //   47: invokevirtual 237	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   50: putstatic 36	com/tencent/mm/sdk/platformtools/GreenManUtil:batteryStatus	I
     //   53: aload_0
-    //   54: ldc 241
+    //   54: ldc 239
     //   56: iconst_0
-    //   57: invokevirtual 239	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   60: putstatic 36	com/tencent/mm/sdk/platformtools/GreenManUtil:batteryStatusPlugged	I
-    //   63: getstatic 38	com/tencent/mm/sdk/platformtools/GreenManUtil:batteryStatus	I
+    //   57: invokevirtual 237	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   60: putstatic 34	com/tencent/mm/sdk/platformtools/GreenManUtil:batteryStatusPlugged	I
+    //   63: getstatic 36	com/tencent/mm/sdk/platformtools/GreenManUtil:batteryStatus	I
     //   66: iconst_2
     //   67: if_icmpeq +32 -> 99
-    //   70: getstatic 36	com/tencent/mm/sdk/platformtools/GreenManUtil:batteryStatusPlugged	I
+    //   70: getstatic 34	com/tencent/mm/sdk/platformtools/GreenManUtil:batteryStatusPlugged	I
     //   73: iconst_1
     //   74: if_icmpeq +25 -> 99
-    //   77: getstatic 36	com/tencent/mm/sdk/platformtools/GreenManUtil:batteryStatusPlugged	I
+    //   77: getstatic 34	com/tencent/mm/sdk/platformtools/GreenManUtil:batteryStatusPlugged	I
     //   80: iconst_2
     //   81: if_icmpeq +18 -> 99
-    //   84: getstatic 135	android/os/Build$VERSION:SDK_INT	I
+    //   84: getstatic 133	android/os/Build$VERSION:SDK_INT	I
     //   87: bipush 17
     //   89: if_icmplt +22 -> 111
-    //   92: getstatic 36	com/tencent/mm/sdk/platformtools/GreenManUtil:batteryStatusPlugged	I
+    //   92: getstatic 34	com/tencent/mm/sdk/platformtools/GreenManUtil:batteryStatusPlugged	I
     //   95: iconst_4
     //   96: if_icmpne +15 -> 111
-    //   99: ldc 219
-    //   101: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   99: ldc 217
+    //   101: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   104: iconst_1
     //   105: istore_1
     //   106: ldc 2
     //   108: monitorexit
     //   109: iload_1
     //   110: ireturn
-    //   111: ldc 219
-    //   113: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   111: ldc 217
+    //   113: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   116: goto -10 -> 106
     //   119: astore_0
     //   120: ldc 2
@@ -264,12 +264,12 @@ public class GreenManUtil
   public static int reflectProcessState(ActivityManager.RunningAppProcessInfo paramRunningAppProcessInfo)
   {
     AppMethodBeat.i(157550);
-    if (!(sForeground instanceof ForegroundImpl))
+    if (!(sForeground instanceof GreenManUtil.ForegroundImpl))
     {
       AppMethodBeat.o(157550);
       return -1;
     }
-    Field localField = ((ForegroundImpl)sForeground).Field_processState;
+    Field localField = GreenManUtil.ForegroundImpl.access$200((GreenManUtil.ForegroundImpl)sForeground);
     if ((Build.VERSION.SDK_INT >= 21) && (localField != null)) {
       try
       {
@@ -288,112 +288,24 @@ public class GreenManUtil
   
   public static boolean reflectScreenOn(Context paramContext)
   {
-    AppMethodBeat.i(230297);
+    AppMethodBeat.i(193906);
     try
     {
       boolean bool = ((Boolean)PowerManager.class.getMethod("isScreenOn", new Class[0]).invoke((PowerManager)paramContext.getSystemService("power"), new Object[0])).booleanValue();
-      AppMethodBeat.o(230297);
+      AppMethodBeat.o(193906);
       return bool;
     }
     catch (Exception paramContext)
     {
       Log.e("MicroMsg.GreenManUtil", "reflectScreenOn invoke ERROR use isScreenOn e:%s", new Object[] { Util.stackTraceToString(paramContext) });
-      AppMethodBeat.o(230297);
+      AppMethodBeat.o(193906);
     }
     return true;
-  }
-  
-  static class ForegroundImpl
-    implements GreenManUtil.IForeground
-  {
-    private Field Field_processState;
-    
-    ForegroundImpl()
-    {
-      AppMethodBeat.i(157546);
-      this.Field_processState = null;
-      prepare();
-      AppMethodBeat.o(157546);
-    }
-    
-    private void prepare()
-    {
-      AppMethodBeat.i(230296);
-      if (Build.VERSION.SDK_INT >= 21) {
-        try
-        {
-          if (this.Field_processState == null)
-          {
-            Field localField = ActivityManager.RunningAppProcessInfo.class.getDeclaredField("processState");
-            localField.setAccessible(true);
-            this.Field_processState = localField;
-          }
-          AppMethodBeat.o(230296);
-          return;
-        }
-        catch (Throwable localThrowable)
-        {
-          Log.printErrStackTrace("MicroMsg.GreenManUtil", localThrowable, "", new Object[0]);
-        }
-      }
-      AppMethodBeat.o(230296);
-    }
-    
-    public boolean isAppForeground(Context paramContext)
-    {
-      AppMethodBeat.i(157547);
-      Object localObject = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
-      if (localObject == null)
-      {
-        AppMethodBeat.o(157547);
-        return false;
-      }
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
-        if (localRunningAppProcessInfo.processName.startsWith(paramContext.getPackageName()))
-        {
-          if ((Build.VERSION.SDK_INT >= 21) && (this.Field_processState != null)) {}
-          for (;;)
-          {
-            try
-            {
-              i = this.Field_processState.getInt(localRunningAppProcessInfo);
-              Log.i("MicroMsg.GreenManUtil", "isAppForeground processState %s", new Object[] { Integer.valueOf(i) });
-              if (i <= 2)
-              {
-                AppMethodBeat.o(157547);
-                return true;
-              }
-              i = 0;
-              if ((i == 0) || (localRunningAppProcessInfo.importance != 100)) {
-                break;
-              }
-              AppMethodBeat.o(157547);
-              return true;
-            }
-            catch (Throwable localThrowable)
-            {
-              Log.printErrStackTrace("MicroMsg.GreenManUtil", localThrowable, "", new Object[0]);
-            }
-            int i = 1;
-          }
-        }
-      }
-      AppMethodBeat.o(157547);
-      return false;
-    }
-  }
-  
-  public static abstract interface IForeground
-  {
-    public abstract boolean isAppForeground(Context paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.GreenManUtil
  * JD-Core Version:    0.7.0.1
  */

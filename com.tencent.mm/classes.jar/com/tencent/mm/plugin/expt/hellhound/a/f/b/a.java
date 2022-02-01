@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.b;
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.b;
-import com.tencent.mm.protocal.protobuf.dvc;
-import com.tencent.mm.protocal.protobuf.dvd;
+import com.tencent.mm.protocal.protobuf.efe;
+import com.tencent.mm.protocal.protobuf.eff;
 import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class a
 {
-  public static boolean a(Activity paramActivity, dvd paramdvd)
+  public static boolean a(Activity paramActivity, eff parameff)
   {
     AppMethodBeat.i(122098);
-    if (paramdvd.MWj.isEmpty())
+    if (parameff.UiE.isEmpty())
     {
       AppMethodBeat.o(122098);
       return true;
@@ -23,19 +23,19 @@ public final class a
     {
       try
       {
-        Iterator localIterator = paramdvd.MWj.iterator();
+        Iterator localIterator = parameff.UiE.iterator();
         if (localIterator.hasNext())
         {
-          dvc localdvc = (dvc)localIterator.next();
+          efe localefe = (efe)localIterator.next();
           Object localObject1 = paramActivity;
           if (paramActivity == null)
           {
             localObject1 = paramActivity;
-            if ("MoreTabUI".equals(paramdvd.MWb)) {
-              localObject1 = b.cNA();
+            if ("MoreTabUI".equals(parameff.Uiw)) {
+              localObject1 = b.dcs();
             }
           }
-          if ((localObject1 == null) || (localdvc == null))
+          if ((localObject1 == null) || (localefe == null))
           {
             bool = false;
             paramActivity = (Activity)localObject1;
@@ -45,11 +45,11 @@ public final class a
             AppMethodBeat.o(122098);
             return false;
           }
-          paramActivity = Class.forName(localdvc.className);
-          if ((localdvc.dataPath == null) || (localdvc.dataPath.isEmpty())) {
+          paramActivity = Class.forName(localefe.className);
+          if ((localefe.dataPath == null) || (localefe.dataPath.isEmpty())) {
             break label294;
           }
-          String[] arrayOfString2 = localdvc.dataPath.split(",");
+          String[] arrayOfString2 = localefe.dataPath.split(",");
           if (arrayOfString2.length <= 0)
           {
             bool = false;
@@ -75,7 +75,7 @@ public final class a
               continue;
             }
           }
-          bool = localdvc.MWc.equals(localObject2);
+          bool = localefe.Uix.equals(localObject2);
           continue;
         }
         AppMethodBeat.o(122098);
@@ -93,7 +93,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.b.a
  * JD-Core Version:    0.7.0.1
  */

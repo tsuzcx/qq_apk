@@ -1,62 +1,77 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.a.a.e;
+import com.google.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.b.a.a.a.ag;
-import com.tencent.pb.common.b.a.a.a.h;
+import com.tencent.pb.common.b.a.a.a.ah;
+import com.tencent.pb.common.b.a.a.a.ap;
+import com.tencent.pb.common.b.a.a.a.i;
 import com.tencent.pb.common.b.d;
 import com.tencent.pb.common.c.b;
 import com.tencent.wecall.talkroom.model.c;
+import java.util.List;
 
 public final class l
   extends d
 {
-  public long HgX;
-  public String xOr;
-  public int yvK;
+  public String CSB;
+  public int DVO;
+  public long NXM;
   
-  public l(String paramString1, int paramInt, long paramLong, String paramString2)
+  public l(String paramString, int paramInt, long paramLong, List<a.ap> paramList)
   {
-    AppMethodBeat.i(62540);
-    b.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneSubscribeLargeVideo" });
-    a.h localh = new a.h();
+    AppMethodBeat.i(209868);
+    b.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneSubscribeScreenSharingVideo" });
+    a.i locali = new a.i();
     try
     {
-      localh.groupId = paramString1;
-      this.xOr = paramString1;
-      localh.roomId = paramInt;
-      this.yvK = paramInt;
-      localh.ypH = paramLong;
-      this.HgX = paramLong;
-      localh.gAb = paramString2;
-      localh.timestamp = System.currentTimeMillis();
-      b.i("MicroMsg.Voip", new Object[] { "roomId: %d, roomKey: %d, groupId: %s, ownerUserName: %s, timestamp: %d", Integer.valueOf(localh.roomId), Long.valueOf(localh.ypH), localh.groupId, localh.gAb, Long.valueOf(localh.timestamp) });
-      this.mNetType = 3;
-      this.RCJ = c.hqY().brj(paramString1);
-      c(245, localh);
-      AppMethodBeat.o(62540);
-      return;
+      locali.groupId = paramString;
+      this.CSB = paramString;
+      locali.roomId = paramInt;
+      this.DVO = paramInt;
+      locali.DPJ = paramLong;
+      this.NXM = paramLong;
+      i = paramList.size();
+      arrayOfap = null;
+      if (i > 0)
+      {
+        arrayOfap = new a.ap[i];
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          arrayOfap[paramInt] = ((a.ap)paramList.get(paramInt));
+          paramInt += 1;
+        }
+      }
     }
-    catch (Exception paramString1)
+    catch (Exception paramString)
     {
       for (;;)
       {
-        b.w(this.TAG2, new Object[] { "NetSceneSwitchVideoGroup constructor", paramString1 });
+        int i;
+        a.ap[] arrayOfap;
+        b.w(this.TAG2, new Object[] { "NetSceneSubscribeScreenSharingVideo constructor", paramString });
       }
     }
+    locali.Zff = arrayOfap;
+    locali.timestamp = System.currentTimeMillis();
+    b.i("MicroMsg.Voip", new Object[] { "roomId: %d, roomKey: %d, groupId: %s, timestamp: %d, memberCnt: %d", Integer.valueOf(locali.roomId), Long.valueOf(locali.DPJ), locali.groupId, Long.valueOf(locali.timestamp), Integer.valueOf(i) });
+    aAc(3);
+    aAd(c.iuI().bEi(paramString));
+    c(259, locali);
+    AppMethodBeat.o(209868);
   }
   
-  public final Object cO(byte[] paramArrayOfByte)
+  public final Object dn(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(62541);
+    AppMethodBeat.i(209869);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
     if (paramArrayOfByte != null) {}
     for (;;)
     {
       try
       {
-        paramArrayOfByte = (a.ag)e.a(new a.ag(), paramArrayOfByte, paramArrayOfByte.length);
-        AppMethodBeat.o(62541);
+        paramArrayOfByte = (a.ah)e.a(new a.ah(), paramArrayOfByte, paramArrayOfByte.length);
+        AppMethodBeat.o(209869);
         return paramArrayOfByte;
       }
       catch (Exception paramArrayOfByte)
@@ -71,12 +86,12 @@ public final class l
   
   public final int getType()
   {
-    return 800;
+    return 802;
   }
   
-  public final String hiV()
+  public final String ikF()
   {
-    return "CsCmd.Cmd_V_CSSubscribeLargeVideoReq";
+    return "CsCmd.Cmd_V_CSSubscribeScreenSharingVideoReq";
   }
 }
 

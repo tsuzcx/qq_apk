@@ -12,7 +12,7 @@
         <View android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="28.0dip" android:layout_marginRight="28.0dip" />
         <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:id="@id/i6q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="28.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="28.0dip" android:text="@string/gx8" android:singleLine="true" />
         <LinearLayout android:orientation="vertical" android:id="@id/g41" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <android.support.v7.widget.RecyclerView android:layout_gravity="center_horizontal" android:id="@id/dxh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:layout_marginBottom="30.0dip" />
+            <androidx.recyclerview.widget.RecyclerView android:layout_gravity="center_horizontal" android:id="@id/dxh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:layout_marginBottom="30.0dip" />
             <LinearLayout android:orientation="vertical" android:id="@id/sk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="28.0dip" android:layout_marginRight="28.0dip">
                 <View android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="1.0px" />
                 <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="49.0dip">

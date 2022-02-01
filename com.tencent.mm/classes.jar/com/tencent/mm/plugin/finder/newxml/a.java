@@ -1,105 +1,122 @@
 package com.tencent.mm.plugin.finder.newxml;
 
+import com.tencent.c.a.a.a.b;
+import com.tencent.c.a.a.a.d.a.e;
+import com.tencent.c.a.a.a.d.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.cm;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.ca;
 import java.util.Map;
+import kotlin.g.b.p;
 import kotlin.l;
+import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/newxml/FinderReInitSysMsgConsumer;", "Lcom/tencent/mm/plugin/messenger/foundation/api/INewXmlConsumer;", "()V", "consumeNewXml", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgReturn;", "subType", "", "values", "", "p2", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgInfo;", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/newxml/FinderLiveNotifyCloseConsumer;", "Lcom/tencent/mm/plugin/messenger/foundation/api/INewXmlConsumer;", "()V", "MANUAL_REQUEST_LIVE_DELAY", "", "getMANUAL_REQUEST_LIVE_DELAY", "()I", "TAG", "", "getTAG", "()Ljava/lang/String;", "nextTimeStamp", "consumeNewXml", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgReturn;", "subType", "values", "", "addMsgInfo", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgInfo;", "requestLiveNotify", "", "funcMsgId", "plugin-finder_release"})
 public final class a
-  implements com.tencent.mm.plugin.messenger.foundation.a.p
+  implements s
 {
-  public static final a uTN;
-  
-  static
-  {
-    AppMethodBeat.i(249499);
-    uTN = new a((byte)0);
-    AppMethodBeat.o(249499);
-  }
+  private final String TAG = "FinderLiveNotifyRevokeConsumer";
+  private final int zJZ = 1;
+  private volatile int zKa;
   
   public final h.b a(String paramString, Map<String, String> paramMap, h.a parama)
   {
-    AppMethodBeat.i(249498);
-    kotlin.g.b.p.h(paramMap, "values");
-    kotlin.g.b.p.h(parama, "p2");
+    AppMethodBeat.i(241314);
+    p.k(paramMap, "values");
+    parama = (String)paramMap.get(".sysmsg.finderliveclosenotifymsg.revoke_id");
+    paramString = ((b)h.ag(b.class)).getFinderLiveNotifyExposureInfoStorage().aCK(parama);
+    paramMap = (String)paramMap.get(".sysmsg.finderliveclosenotifymsg.functionmsgid");
+    Log.i(this.TAG, "get close live notify, revokeID = " + parama + " rowId = " + paramString.systemRowid + " exposure = " + paramString.field_exposureStatus + " , funcMsgId =  " + paramMap + " ,msdId = " + paramString.field_msgId);
     int i;
-    int j;
-    int k;
-    boolean bool;
-    if (kotlin.g.b.p.j(paramString, "finderuserreinit"))
+    if (paramString.systemRowid != -1L)
     {
-      h.CyF.n(1279L, 25L, 1L);
-      parama = g.aAh();
-      kotlin.g.b.p.g(parama, "MMKernel.storage()");
-      i = parama.azQ().getInt(ar.a.OlL, 0);
-      j = Util.safeParseInt((String)paramMap.get(".sysmsg.userver"));
-      parama = (String)paramMap.get(".sysmsg.username");
-      k = Util.safeParseInt((String)paramMap.get(".sysmsg.usertype"));
-      if (k != 1) {
-        break label283;
+      parama = h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class);
+      p.j(parama, "MMKernel.service(IMessengerStorage::class.java)");
+      parama = ((com.tencent.mm.plugin.messenger.foundation.a.n)parama).eSe().Oq(paramString.field_msgId);
+      p.j(parama, "msg");
+      if (parama.apG() <= 0L)
+      {
+        Log.i(this.TAG, "msg info not exist, id = " + paramString.field_msgId);
+        AppMethodBeat.o(241314);
+        return null;
       }
-      if (!kotlin.g.b.p.j(z.aUg(), parama)) {
-        break label354;
+      paramString = parama.getContent();
+      if (paramString != null)
+      {
+        i = kotlin.n.n.a((CharSequence)paramString, "<status>", 0, false, 6);
+        paramString = parama.getContent();
+        if (paramString == null) {
+          break label302;
+        }
       }
-      bool = true;
+      CharSequence localCharSequence;
+      label302:
+      for (int j = kotlin.n.n.a((CharSequence)paramString, "</status>", 0, false, 6);; j = 0)
+      {
+        paramString = parama.getContent();
+        if (paramString == null) {
+          break label473;
+        }
+        localCharSequence = (CharSequence)"0";
+        if (paramString != null) {
+          break label308;
+        }
+        paramString = new t("null cannot be cast to non-null type kotlin.CharSequence");
+        AppMethodBeat.o(241314);
+        throw paramString;
+        i = 0;
+        break;
+      }
+      label308:
+      paramString = kotlin.n.n.a((CharSequence)paramString, i + 8, j, localCharSequence).toString();
+      parama.setContent(paramString);
+      paramString = h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class);
+      p.j(paramString, "MMKernel.service(IMessengerStorage::class.java)");
+      ((com.tencent.mm.plugin.messenger.foundation.a.n)paramString).eSe().a(parama.apG(), parama);
+      ((b)h.ag(b.class)).getFinderLiveNotifyExposureInfoStorage().K(parama.apG(), 0);
+      if (cm.bfF() <= this.zKa) {
+        break label484;
+      }
+      paramString = paramMap;
+      if (paramMap == null) {
+        paramString = "";
+      }
+      Log.i(this.TAG, "[requestLiveNotify] funcMsgId:".concat(String.valueOf(paramString)));
+      if (((CharSequence)paramString).length() <= 0) {
+        break label478;
+      }
+      i = 1;
+      label435:
+      if (i != 0)
+      {
+        this.zKa = (cm.bfF() + this.zJZ);
+        ((b)h.ag(b.class)).requestFinderLiveNotifyOnLiveClose(paramString);
+      }
     }
     for (;;)
     {
-      Log.i("Finder.ReInitSysMsgConsumer", "[consumeNewXml] subType=" + paramString + " userVersion=" + j + " curUserVersion=" + i + " username=" + parama + " userType=" + k + " isValid=" + bool);
-      if (bool)
-      {
-        if (k != 1) {
-          break label305;
-        }
-        paramString = g.aAh();
-        kotlin.g.b.p.g(paramString, "MMKernel.storage()");
-        paramString.azQ().set(ar.a.OlK, "");
-        paramString = g.aAh();
-        kotlin.g.b.p.g(paramString, "MMKernel.storage()");
-        paramString.azQ().set(ar.a.OlJ, Integer.valueOf(0));
-      }
-      for (;;)
-      {
-        paramString = g.aAh();
-        kotlin.g.b.p.g(paramString, "MMKernel.storage()");
-        paramString.azQ().set(ar.a.OlM, Integer.valueOf(1));
-        AppMethodBeat.o(249498);
-        return null;
-        label283:
-        if ((k != 2) || (!kotlin.g.b.p.j(z.aTY(), parama))) {
-          break label354;
-        }
-        bool = true;
-        break;
-        label305:
-        paramString = g.aAh();
-        kotlin.g.b.p.g(paramString, "MMKernel.storage()");
-        paramString.azQ().set(ar.a.OlK, parama);
-        paramString = g.aAh();
-        kotlin.g.b.p.g(paramString, "MMKernel.storage()");
-        paramString.azQ().set(ar.a.OlJ, Integer.valueOf(j));
-      }
-      label354:
-      bool = false;
+      AppMethodBeat.o(241314);
+      return null;
+      label473:
+      paramString = null;
+      break;
+      label478:
+      i = 0;
+      break label435;
+      label484:
+      Log.i(this.TAG, "funcMsgId：" + paramMap + " but Frequency limit");
     }
   }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/newxml/FinderReInitSysMsgConsumer$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.newxml.a
  * JD-Core Version:    0.7.0.1
  */

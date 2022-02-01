@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.scanner.box;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,96 +10,100 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.scanner.l.d;
+import com.tencent.mm.plugin.scanner.l.e;
+import com.tencent.mm.plugin.scanner.l.f;
+import com.tencent.mm.plugin.scanner.l.g;
+import com.tencent.mm.sdk.platformtools.Util;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/ScanOCRDialogBackgroundOpView;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundOpViewModel;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "opListener", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundOpViewModel$OpListener;", "viewHeight", "zoomButton", "Landroid/widget/ImageView;", "getVieHeight", "init", "", "onZoomStateChanged", "zoomState", "release", "setOpListener", "listener", "Companion", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/ScanOCRDialogBackgroundOpView;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundOpViewModel;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "opListener", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundOpViewModel$OpListener;", "viewHeight", "zoomButton", "Landroid/widget/ImageView;", "getVieHeight", "init", "", "onZoomStateChanged", "zoomState", "release", "setOpListener", "listener", "Companion", "plugin-scan_release"})
 public final class ScanOCRDialogBackgroundOpView
   extends RelativeLayout
   implements b
 {
-  public static final a CDw;
-  private b.a CDu;
-  private ImageView CDv;
-  private int gRE;
+  public static final ScanOCRDialogBackgroundOpView.a IHW;
+  private b.a IHU;
+  private ImageView IHV;
+  private int jCa;
   
   static
   {
-    AppMethodBeat.i(240334);
-    CDw = new a((byte)0);
-    AppMethodBeat.o(240334);
+    AppMethodBeat.i(219896);
+    IHW = new ScanOCRDialogBackgroundOpView.a((byte)0);
+    AppMethodBeat.o(219896);
   }
   
   public ScanOCRDialogBackgroundOpView(Context paramContext)
   {
     this(paramContext, null);
-    AppMethodBeat.i(240331);
-    AppMethodBeat.o(240331);
+    AppMethodBeat.i(219891);
+    AppMethodBeat.o(219891);
   }
   
   public ScanOCRDialogBackgroundOpView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(240332);
-    AppMethodBeat.o(240332);
+    AppMethodBeat.i(219893);
+    AppMethodBeat.o(219893);
   }
   
   public ScanOCRDialogBackgroundOpView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(240333);
-    this.CDv = ((ImageView)LayoutInflater.from(paramContext).inflate(2131495189, (ViewGroup)this, true).findViewById(2131310682));
-    paramAttributeSet = this.CDv;
+    AppMethodBeat.i(219895);
+    this.IHV = ((ImageView)LayoutInflater.from(paramContext).inflate(l.g.IDY, (ViewGroup)this, true).findViewById(l.f.IDS));
+    paramAttributeSet = this.IHV;
     if (paramAttributeSet != null) {
       paramAttributeSet.setOnClickListener((View.OnClickListener)new b(this));
     }
-    this.gRE = com.tencent.mm.cb.a.fromDPToPix(paramContext, 28);
-    AppMethodBeat.o(240333);
+    paramInt = getResources().getDimensionPixelSize(l.d.Edge_2A);
+    Util.expandViewTouchArea((View)this.IHV, paramInt, paramInt, paramInt, paramInt);
+    this.jCa = com.tencent.mm.ci.a.fromDPToPix(paramContext, 28);
+    AppMethodBeat.o(219895);
   }
   
-  public final void Ws(int paramInt)
+  public final void adk(int paramInt)
   {
-    AppMethodBeat.i(240330);
+    AppMethodBeat.i(219889);
     if (paramInt == 1)
     {
-      localImageView = this.CDv;
+      localImageView = this.IHV;
       if (localImageView != null)
       {
-        localImageView.setImageResource(2131233153);
-        AppMethodBeat.o(240330);
+        localImageView.setImageResource(l.e.ICj);
+        AppMethodBeat.o(219889);
         return;
       }
-      AppMethodBeat.o(240330);
+      AppMethodBeat.o(219889);
       return;
     }
-    ImageView localImageView = this.CDv;
+    ImageView localImageView = this.IHV;
     if (localImageView != null)
     {
-      localImageView.setImageResource(2131233154);
-      AppMethodBeat.o(240330);
+      localImageView.setImageResource(l.e.ICk);
+      AppMethodBeat.o(219889);
       return;
     }
-    AppMethodBeat.o(240330);
+    AppMethodBeat.o(219889);
   }
   
   public final int getVieHeight()
   {
-    return this.gRE;
+    return this.jCa;
   }
   
   public final void release()
   {
-    this.CDu = null;
+    this.IHU = null;
   }
   
   public final void setOpListener(b.a parama)
   {
-    this.CDu = parama;
+    this.IHU = parama;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/ScanOCRDialogBackgroundOpView$Companion;", "", "()V", "TAG", "", "plugin-scan_release"})
-  public static final class a {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -106,22 +111,22 @@ public final class ScanOCRDialogBackgroundOpView
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(240329);
+      AppMethodBeat.i(217113);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/box/ScanOCRDialogBackgroundOpView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      paramView = ScanOCRDialogBackgroundOpView.a(this.CDx);
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/scanner/box/ScanOCRDialogBackgroundOpView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      paramView = ScanOCRDialogBackgroundOpView.a(this.IHX);
       if (paramView != null) {
-        paramView.bmr();
+        paramView.bwz();
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/box/ScanOCRDialogBackgroundOpView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(240329);
+      AppMethodBeat.o(217113);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.box.ScanOCRDialogBackgroundOpView
  * JD-Core Version:    0.7.0.1
  */

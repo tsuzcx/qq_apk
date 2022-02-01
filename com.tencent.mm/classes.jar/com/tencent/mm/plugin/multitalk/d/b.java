@@ -12,9 +12,11 @@ import android.content.pm.Signature;
 import android.net.Uri;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.i;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.plugin.aq.a.a;
 import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.multitalk.a.b;
+import com.tencent.mm.plugin.multitalk.a.h;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -24,15 +26,15 @@ import java.security.MessageDigest;
 
 public final class b
 {
-  private static final String zYQ;
-  private static final String zYR;
+  private static final String FED;
+  private static final String FEE;
   
   static
   {
-    AppMethodBeat.i(239509);
-    zYQ = "https://" + WeChatHosts.domainString(2131761721) + "/mobile/wx-entry.html#/?scene=";
-    zYR = "https://" + WeChatHosts.domainString(2131761751) + "/nl/meeting_intro_wxwork?scene=";
-    AppMethodBeat.o(239509);
+    AppMethodBeat.i(202080);
+    FED = "https://" + WeChatHosts.domainString(a.h.host_meeting_qq_com) + "/mobile/wx-entry.html#/?scene=";
+    FEE = "https://" + WeChatHosts.domainString(a.h.host_work_weixin_qq_com) + "/nl/meeting_intro_wxwork?scene=";
+    AppMethodBeat.o(202080);
   }
   
   private static boolean a(Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
@@ -55,83 +57,83 @@ public final class b
     {
       AppMethodBeat.o(164079);
     }
-    paramString1 = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.axQ(), "com/tencent/mm/plugin/multitalk/utils/MeetingLinkHelper", "jumpApp", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Z)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString1.pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/multitalk/utils/MeetingLinkHelper", "jumpApp", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Z)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    ((Activity)paramContext).overridePendingTransition(2130772161, -1);
+    paramString1 = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramString1.aFh(), "com/tencent/mm/plugin/multitalk/utils/MeetingLinkHelper", "jumpApp", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Z)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString1.sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/multitalk/utils/MeetingLinkHelper", "jumpApp", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Z)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    ((Activity)paramContext).overridePendingTransition(a.a.sight_slide_bottom_in, -1);
     AppMethodBeat.o(164079);
     return true;
     return false;
   }
   
-  public static void bi(Context paramContext, String paramString)
+  public static void bu(Context paramContext, String paramString)
   {
     Intent localIntent = null;
     AppMethodBeat.i(164084);
-    Log.i("MicroMsg.MeetingLinkHelper", "handleMeetingLinkClick, isAllowedToShowMeetingLink:%s, isAllowedToShowWorkWeChat:%s", new Object[] { Boolean.valueOf(epN()), Boolean.valueOf(epO()) });
+    Log.i("MicroMsg.MeetingLinkHelper", "handleMeetingLinkClick, isAllowedToShowMeetingLink:%s, isAllowedToShowWorkWeChat:%s", new Object[] { Boolean.valueOf(eZB()), Boolean.valueOf(eZC()) });
     boolean bool;
-    if (epM()) {
-      if (epN())
+    if (eZA()) {
+      if (eZB())
       {
-        bool = iQ("com.tencent.wemeet.app", "EF1B5A11844923BB7515E6F6AFCBC45F");
+        bool = jb("com.tencent.wemeet.app", "EF1B5A11844923BB7515E6F6AFCBC45F");
         Log.i("MicroMsg.MeetingLinkHelper", "check meetting install result::%s", new Object[] { Boolean.valueOf(bool) });
       }
     }
     for (;;)
     {
-      int j = epW();
+      int j = eZK();
       Object localObject;
       String str;
       if (!bool)
       {
-        localObject = epV();
+        localObject = eZJ();
         if (paramString.equals("list")) {}
         for (int i = 2;; i = 1)
         {
           c.a(j, 0, 0, 0, i, 0, 0, 0, 0, (String)localObject, 0);
           Log.i("MicroMsg.MeetingLinkHelper", "not installed, jump download url, ");
-          localObject = epV() + paramString;
+          localObject = eZJ() + paramString;
           Log.i("MicroMsg.MeetingLinkHelper", "not installed, jump download url:%s", new Object[] { localObject });
           localIntent = new Intent();
           localIntent.putExtra("rawUrl", (String)localObject);
           try
           {
-            com.tencent.mm.br.c.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
+            com.tencent.mm.by.c.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
             AppMethodBeat.o(164084);
             return;
           }
           catch (Exception paramContext)
           {
-            paramContext = epV();
+            paramContext = eZJ();
             if (!paramString.equals("list")) {
-              break label379;
+              break label381;
             }
           }
-          if (epO())
+          if (eZC())
           {
-            bool = iQ("com.tencent.wework", "011a40266c8c75d181ddd8e4ddc50075");
+            bool = jb("com.tencent.wework", "011a40266c8c75d181ddd8e4ddc50075");
             Log.i("MicroMsg.MeetingLinkHelper", "check wework install result:%s", new Object[] { Boolean.valueOf(bool) });
             break;
           }
-          if (!epP()) {
-            break label635;
+          if (!eZD()) {
+            break label637;
           }
-          str = epY();
-          localObject = epX();
+          str = eZM();
+          localObject = eZL();
           if (localObject != null) {}
           for (localObject = ((i)localObject).optString("md5");; localObject = null)
           {
             Log.i("MicroMsg.MeetingLinkHelper", "other app, packageName:%s, md5:%s", new Object[] { str, localObject });
             if ((Util.isNullOrNil(str)) || (Util.isNullOrNil((String)localObject))) {
-              break label635;
+              break label637;
             }
-            bool = iQ(str, (String)localObject);
+            bool = jb(str, (String)localObject);
             Log.i("MicroMsg.MeetingLinkHelper", "check wework install result:%s", new Object[] { Boolean.valueOf(bool) });
             break;
           }
         }
-        label379:
+        label381:
         for (i = 2;; i = 1)
         {
           c.a(j, 0, 0, 0, 0, i, 0, 0, 0, paramContext, 0);
@@ -140,34 +142,34 @@ public final class b
         }
       }
       Log.i("MicroMsg.MeetingLinkHelper", "already installed, jump app");
-      if (epN())
+      if (eZB())
       {
         if (a(paramContext, "com.tencent.wemeet.app", "wemeet://launch?referer=wechat&from=".concat(String.valueOf(paramString)), paramString.equals("list")))
         {
-          c.aH(j, paramString.equals("list"));
+          c.aM(j, paramString.equals("list"));
           AppMethodBeat.o(164084);
           return;
         }
-        c.aI(j, paramString.equals("list"));
+        c.aN(j, paramString.equals("list"));
         AppMethodBeat.o(164084);
         return;
       }
-      if (epO())
+      if (eZC())
       {
         if (a(paramContext, "com.tencent.wework", "wxwork://jump?target=jump_to_third_app&businessid=10085&src=wx&scene=".concat(String.valueOf(paramString)), paramString.equals("list")))
         {
-          c.aH(j, paramString.equals("list"));
+          c.aM(j, paramString.equals("list"));
           AppMethodBeat.o(164084);
           return;
         }
-        c.aI(j, paramString.equals("list"));
+        c.aN(j, paramString.equals("list"));
         AppMethodBeat.o(164084);
         return;
       }
-      if (epP())
+      if (eZD())
       {
-        str = epY();
-        i locali = epX();
+        str = eZM();
+        i locali = eZL();
         localObject = localIntent;
         if (locali != null) {
           localObject = locali.optString("schema");
@@ -176,24 +178,24 @@ public final class b
         {
           if (a(paramContext, str, (String)localObject + paramString, paramString.equals("list")))
           {
-            c.aH(j, paramString.equals("list"));
+            c.aM(j, paramString.equals("list"));
             AppMethodBeat.o(164084);
             return;
           }
-          c.aI(j, paramString.equals("list"));
+          c.aN(j, paramString.equals("list"));
         }
       }
       AppMethodBeat.o(164084);
       return;
-      label635:
+      label637:
       bool = false;
     }
   }
   
-  public static boolean epM()
+  public static boolean eZA()
   {
     AppMethodBeat.i(164065);
-    if ((epN()) || (epO()) || (epP()))
+    if ((eZB()) || (eZC()) || (eZD()))
     {
       AppMethodBeat.o(164065);
       return true;
@@ -202,10 +204,10 @@ public final class b
     return false;
   }
   
-  public static boolean epN()
+  public static boolean eZB()
   {
     AppMethodBeat.i(164066);
-    if (((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.skD, 0) == 1)
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vVe, 0) == 1)
     {
       AppMethodBeat.o(164066);
       return true;
@@ -214,10 +216,10 @@ public final class b
     return false;
   }
   
-  public static boolean epO()
+  public static boolean eZC()
   {
     AppMethodBeat.i(164067);
-    if (((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.skD, 0) == 2)
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vVe, 0) == 2)
     {
       AppMethodBeat.o(164067);
       return true;
@@ -226,10 +228,10 @@ public final class b
     return false;
   }
   
-  private static boolean epP()
+  private static boolean eZD()
   {
     AppMethodBeat.i(164068);
-    if (((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.skD, 0) == 3)
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vVe, 0) == 3)
     {
       AppMethodBeat.o(164068);
       return true;
@@ -238,10 +240,10 @@ public final class b
     return false;
   }
   
-  private static String epQ()
+  private static String eZE()
   {
     AppMethodBeat.i(164070);
-    Object localObject = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.skH, "");
+    Object localObject = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vVi, "");
     if (!Util.isNullOrNil((String)localObject)) {
       try
       {
@@ -261,10 +263,10 @@ public final class b
     return null;
   }
   
-  private static String epR()
+  private static String eZF()
   {
     AppMethodBeat.i(164071);
-    String str = epQ();
+    String str = eZE();
     if (!Util.isNullOrNil(str)) {
       try
       {
@@ -281,10 +283,10 @@ public final class b
     return null;
   }
   
-  private static String epS()
+  private static String eZG()
   {
     AppMethodBeat.i(164072);
-    String str = epQ();
+    String str = eZE();
     if (!Util.isNullOrNil(str)) {
       try
       {
@@ -301,10 +303,10 @@ public final class b
     return null;
   }
   
-  public static String epT()
+  public static String eZH()
   {
     AppMethodBeat.i(164073);
-    String str = epQ();
+    String str = eZE();
     if (!Util.isNullOrNil(str)) {
       try
       {
@@ -321,10 +323,10 @@ public final class b
     return null;
   }
   
-  public static String epU()
+  public static String eZI()
   {
     AppMethodBeat.i(164074);
-    String str = epQ();
+    String str = eZE();
     if (!Util.isNullOrNil(str)) {
       try
       {
@@ -341,17 +343,17 @@ public final class b
     return null;
   }
   
-  private static String epV()
+  private static String eZJ()
   {
     AppMethodBeat.i(164075);
-    String str2 = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.skE, "");
+    String str2 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vVf, "");
     String str1 = str2;
     if (Util.isNullOrNil(str2))
     {
-      if (!epN()) {
+      if (!eZB()) {
         break label54;
       }
-      str1 = zYQ;
+      str1 = FED;
     }
     for (;;)
     {
@@ -359,26 +361,26 @@ public final class b
       return str1;
       label54:
       str1 = str2;
-      if (epO()) {
-        str1 = zYR;
+      if (eZC()) {
+        str1 = FEE;
       }
     }
   }
   
-  public static int epW()
+  public static int eZK()
   {
     AppMethodBeat.i(164076);
-    if (epN())
+    if (eZB())
     {
       AppMethodBeat.o(164076);
       return 1;
     }
-    if (epO())
+    if (eZC())
     {
       AppMethodBeat.o(164076);
       return 2;
     }
-    if (epP())
+    if (eZD())
     {
       AppMethodBeat.o(164076);
       return 3;
@@ -387,10 +389,10 @@ public final class b
     return 0;
   }
   
-  private static i epX()
+  private static i eZL()
   {
     AppMethodBeat.i(164080);
-    Object localObject = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.skI, "");
+    Object localObject = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vVj, "");
     if (!Util.isNullOrNil((String)localObject)) {
       try
       {
@@ -407,10 +409,10 @@ public final class b
     return null;
   }
   
-  private static String epY()
+  private static String eZM()
   {
     AppMethodBeat.i(164081);
-    Object localObject = epX();
+    Object localObject = eZL();
     if (localObject != null)
     {
       localObject = ((i)localObject).optString("package_name");
@@ -419,61 +421,6 @@ public final class b
     }
     AppMethodBeat.o(164081);
     return null;
-  }
-  
-  public static void gG(Context paramContext)
-  {
-    AppMethodBeat.i(239508);
-    if (epM())
-    {
-      String str1 = "";
-      String str2 = "";
-      if ((!Util.isNullOrNil(epR())) && (!Util.isNullOrNil(epS())))
-      {
-        str1 = epR();
-        str2 = epS();
-      }
-      while ((Util.isNullOrNil(str1)) || (Util.isNullOrNil(str2)))
-      {
-        Log.e("MicroMsg.MeetingLinkHelper", "cannot get dialog wording, ignore");
-        AppMethodBeat.o(239508);
-        return;
-        if (epN())
-        {
-          str1 = paramContext.getString(2131763283);
-          str2 = paramContext.getString(2131763274);
-        }
-        else if (epO())
-        {
-          str1 = paramContext.getString(2131763284);
-          str2 = paramContext.getString(2131763275);
-        }
-      }
-      com.tencent.mm.ui.base.h.a(paramContext, str1, "", str2, paramContext.getString(2131755761), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(164063);
-          b.bi(this.mHP, "dlg");
-          c.a(b.epW(), 0, 0, 0, 0, 0, 0, 0, 0, null, 1);
-          AppMethodBeat.o(164063);
-        }
-      }, new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(164064);
-          c.a(b.epW(), 0, 0, 1, 0, 0, 0, 0, 0, null, 0);
-          paramAnonymousDialogInterface.cancel();
-          AppMethodBeat.o(164064);
-        }
-      }, 2131099783);
-      c.a(epW(), 0, 1, 0, 0, 0, 0, 0, 0, "", 0);
-      AppMethodBeat.o(239508);
-      return;
-    }
-    Toast.makeText(paramContext, MMApplicationContext.getContext().getString(2131763297, new Object[] { Integer.valueOf(e.epZ()) }), 0).show();
-    AppMethodBeat.o(239508);
   }
   
   private static String getAppName(Context paramContext, String paramString)
@@ -496,12 +443,67 @@ public final class b
   public static String getIconUrl()
   {
     AppMethodBeat.i(164069);
-    String str = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.skF, "");
+    String str = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vVg, "");
     AppMethodBeat.o(164069);
     return str;
   }
   
-  private static boolean iQ(String paramString1, String paramString2)
+  public static void hD(Context paramContext)
+  {
+    AppMethodBeat.i(202020);
+    if (eZA())
+    {
+      String str1 = "";
+      String str2 = "";
+      if ((!Util.isNullOrNil(eZF())) && (!Util.isNullOrNil(eZG())))
+      {
+        str1 = eZF();
+        str2 = eZG();
+      }
+      while ((Util.isNullOrNil(str1)) || (Util.isNullOrNil(str2)))
+      {
+        Log.e("MicroMsg.MeetingLinkHelper", "cannot get dialog wording, ignore");
+        AppMethodBeat.o(202020);
+        return;
+        if (eZB())
+        {
+          str1 = paramContext.getString(a.h.multitalk_more_than_limited_meeting);
+          str2 = paramContext.getString(a.h.multitalk_link_to_meeting);
+        }
+        else if (eZC())
+        {
+          str1 = paramContext.getString(a.h.multitalk_more_than_limited_work);
+          str2 = paramContext.getString(a.h.multitalk_link_to_work);
+        }
+      }
+      com.tencent.mm.ui.base.h.a(paramContext, str1, "", str2, paramContext.getString(a.h.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(164063);
+          b.bu(this.pIC, "dlg");
+          c.a(b.eZK(), 0, 0, 0, 0, 0, 0, 0, 0, null, 1);
+          AppMethodBeat.o(164063);
+        }
+      }, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(164064);
+          c.a(b.eZK(), 0, 0, 1, 0, 0, 0, 0, 0, null, 0);
+          paramAnonymousDialogInterface.cancel();
+          AppMethodBeat.o(164064);
+        }
+      }, a.b.Link);
+      c.a(eZK(), 0, 1, 0, 0, 0, 0, 0, 0, "", 0);
+      AppMethodBeat.o(202020);
+      return;
+    }
+    Toast.makeText(paramContext, MMApplicationContext.getContext().getString(a.h.multitalk_select_at, new Object[] { Integer.valueOf(e.eZN()) }), 0).show();
+    AppMethodBeat.o(202020);
+  }
+  
+  private static boolean jb(String paramString1, String paramString2)
   {
     AppMethodBeat.i(164077);
     for (;;)
@@ -563,7 +565,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.d.b
  * JD-Core Version:    0.7.0.1
  */

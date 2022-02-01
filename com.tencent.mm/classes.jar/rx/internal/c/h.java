@@ -23,30 +23,29 @@ import rx.j;
 
 public class h
   extends g.a
-  implements j
 {
-  private static final boolean Ump;
-  public static final int Umq;
-  private static final ConcurrentHashMap<ScheduledThreadPoolExecutor, ScheduledThreadPoolExecutor> Umr;
-  private static final AtomicReference<ScheduledExecutorService> Ums;
-  private static volatile Object Umt;
-  private static final Object Umu;
-  final ScheduledExecutorService Umn;
-  volatile boolean Umo;
+  private static final boolean abPL;
+  public static final int abPM;
+  private static final ConcurrentHashMap<ScheduledThreadPoolExecutor, ScheduledThreadPoolExecutor> abPN;
+  private static final AtomicReference<ScheduledExecutorService> abPO;
+  private static volatile Object abPP;
+  private static final Object abPQ;
+  final ScheduledExecutorService abPJ;
+  volatile boolean abPK;
   
   static
   {
     AppMethodBeat.i(90336);
-    Umu = new Object();
-    Umr = new ConcurrentHashMap();
-    Ums = new AtomicReference();
-    Umq = Integer.getInteger("rx.scheduler.jdk6.purge-frequency-millis", 1000).intValue();
+    abPQ = new Object();
+    abPN = new ConcurrentHashMap();
+    abPO = new AtomicReference();
+    abPM = Integer.getInteger("rx.scheduler.jdk6.purge-frequency-millis", 1000).intValue();
     boolean bool = Boolean.getBoolean("rx.scheduler.jdk6.purge-force");
-    int i = e.hQR();
+    int i = e.iWb();
     if ((!bool) && ((i == 0) || (i >= 21))) {}
     for (bool = true;; bool = false)
     {
-      Ump = bool;
+      abPL = bool;
       AppMethodBeat.o(90336);
       return;
     }
@@ -59,14 +58,14 @@ public class h
     if ((!b(paramThreadFactory)) && ((paramThreadFactory instanceof ScheduledThreadPoolExecutor))) {
       a((ScheduledThreadPoolExecutor)paramThreadFactory);
     }
-    this.Umn = paramThreadFactory;
+    this.abPJ = paramThreadFactory;
     AppMethodBeat.o(90331);
   }
   
   public static void a(ScheduledExecutorService paramScheduledExecutorService)
   {
     AppMethodBeat.i(90327);
-    Umr.remove(paramScheduledExecutorService);
+    abPN.remove(paramScheduledExecutorService);
     AppMethodBeat.o(90327);
   }
   
@@ -76,24 +75,24 @@ public class h
     for (;;)
     {
       ScheduledExecutorService localScheduledExecutorService;
-      if ((ScheduledExecutorService)Ums.get() == null)
+      if ((ScheduledExecutorService)abPO.get() == null)
       {
         localScheduledExecutorService = Executors.newScheduledThreadPool(1, new g("RxSchedulerPurge-"));
-        if (Ums.compareAndSet(null, localScheduledExecutorService)) {
+        if (abPO.compareAndSet(null, localScheduledExecutorService)) {
           localScheduledExecutorService.scheduleAtFixedRate(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(90325);
-              h.hQN();
+              h.iVW();
               AppMethodBeat.o(90325);
             }
-          }, Umq, Umq, TimeUnit.MILLISECONDS);
+          }, abPM, abPM, TimeUnit.MILLISECONDS);
         }
       }
       else
       {
-        Umr.putIfAbsent(paramScheduledThreadPoolExecutor, paramScheduledThreadPoolExecutor);
+        abPN.putIfAbsent(paramScheduledThreadPoolExecutor, paramScheduledThreadPoolExecutor);
         AppMethodBeat.o(90326);
         return;
       }
@@ -104,14 +103,14 @@ public class h
   public static boolean b(ScheduledExecutorService paramScheduledExecutorService)
   {
     AppMethodBeat.i(90329);
-    if (Ump)
+    if (abPL)
     {
       Object localObject1;
       Object localObject2;
       if ((paramScheduledExecutorService instanceof ScheduledThreadPoolExecutor))
       {
-        localObject1 = Umt;
-        if (localObject1 == Umu)
+        localObject1 = abPP;
+        if (localObject1 == abPQ)
         {
           AppMethodBeat.o(90329);
           return false;
@@ -122,7 +121,7 @@ public class h
           if (localObject1 != null)
           {
             localObject2 = localObject1;
-            Umt = localObject2;
+            abPP = localObject2;
           }
         }
       }
@@ -139,7 +138,7 @@ public class h
         }
         catch (InvocationTargetException paramScheduledExecutorService)
         {
-          c.onError(paramScheduledExecutorService);
+          c.c(paramScheduledExecutorService);
           AppMethodBeat.o(90329);
           return false;
         }
@@ -147,17 +146,17 @@ public class h
         {
           for (;;)
           {
-            c.onError(paramScheduledExecutorService);
+            c.c(paramScheduledExecutorService);
           }
         }
         catch (IllegalArgumentException paramScheduledExecutorService)
         {
           for (;;)
           {
-            c.onError(paramScheduledExecutorService);
+            c.c(paramScheduledExecutorService);
           }
         }
-        localObject2 = Umu;
+        localObject2 = abPQ;
         break;
         localObject1 = (Method)localObject1;
         continue;
@@ -190,14 +189,14 @@ public class h
     return null;
   }
   
-  static void hQN()
+  static void iVW()
   {
     AppMethodBeat.i(90328);
     for (;;)
     {
       try
       {
-        Iterator localIterator = Umr.keySet().iterator();
+        Iterator localIterator = abPN.keySet().iterator();
         if (!localIterator.hasNext()) {
           break;
         }
@@ -210,8 +209,8 @@ public class h
       }
       catch (Throwable localThrowable)
       {
-        b.N(localThrowable);
-        c.onError(localThrowable);
+        b.R(localThrowable);
+        c.c(localThrowable);
         AppMethodBeat.o(90328);
         return;
       }
@@ -230,9 +229,9 @@ public class h
   public final j a(a parama, long paramLong, TimeUnit paramTimeUnit)
   {
     AppMethodBeat.i(90333);
-    if (this.Umo)
+    if (this.abPK)
     {
-      parama = d.hRn();
+      parama = d.iWx();
       AppMethodBeat.o(90333);
       return parama;
     }
@@ -246,7 +245,7 @@ public class h
     AppMethodBeat.i(90334);
     i locali = new i(c.b(parama));
     if (paramLong <= 0L) {}
-    for (parama = this.Umn.submit(locali);; parama = this.Umn.schedule(locali, paramLong, paramTimeUnit))
+    for (parama = this.abPJ.submit(locali);; parama = this.abPJ.schedule(locali, paramLong, paramTimeUnit))
     {
       locali.b(parama);
       AppMethodBeat.o(90334);
@@ -254,23 +253,23 @@ public class h
     }
   }
   
-  public final void hQA()
+  public final void iVJ()
   {
     AppMethodBeat.i(90335);
-    this.Umo = true;
-    this.Umn.shutdownNow();
-    a(this.Umn);
+    this.abPK = true;
+    this.abPJ.shutdownNow();
+    a(this.abPJ);
     AppMethodBeat.o(90335);
   }
   
-  public final boolean hQB()
+  public final boolean iVK()
   {
-    return this.Umo;
+    return this.abPK;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.internal.c.h
  * JD-Core Version:    0.7.0.1
  */

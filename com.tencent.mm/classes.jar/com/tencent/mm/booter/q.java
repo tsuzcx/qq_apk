@@ -2,41 +2,41 @@ package com.tencent.mm.booter;
 
 public abstract class q
 {
-  public d gmN;
+  public d iQW;
   
   public q(d paramd)
   {
-    this.gmN = paramd;
+    this.iQW = paramd;
   }
   
-  public final void CN(String paramString)
+  public final void JC(String paramString)
   {
-    this.gmN.CN(paramString);
+    this.iQW.JC(paramString);
   }
   
-  public final Boolean CO(String paramString)
+  public final Integer JD(String paramString)
   {
-    return this.gmN.CO(paramString);
+    return this.iQW.JD(paramString);
   }
   
-  public final d akX()
+  public final Boolean JE(String paramString)
   {
-    return this.gmN;
+    return this.iQW.JE(paramString);
   }
   
-  public final Integer getInteger(String paramString)
+  public final d aqT()
   {
-    return this.gmN.getInteger(paramString);
+    return this.iQW;
   }
   
   public final String getString(String paramString)
   {
-    return this.gmN.getString(paramString);
+    return this.iQW.getString(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.booter.q
  * JD-Core Version:    0.7.0.1
  */

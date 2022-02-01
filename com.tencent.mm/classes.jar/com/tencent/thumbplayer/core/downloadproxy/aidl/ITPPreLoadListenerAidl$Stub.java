@@ -85,7 +85,7 @@ public abstract class ITPPreLoadListenerAidl$Stub
     
     public void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString)
     {
-      AppMethodBeat.i(209870);
+      AppMethodBeat.i(255404);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -104,13 +104,13 @@ public abstract class ITPPreLoadListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(209870);
+        AppMethodBeat.o(255404);
       }
     }
     
     public void onPrepareError(int paramInt1, int paramInt2, String paramString)
     {
-      AppMethodBeat.i(209869);
+      AppMethodBeat.i(255402);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -127,13 +127,13 @@ public abstract class ITPPreLoadListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(209869);
+        AppMethodBeat.o(255402);
       }
     }
     
     public void onPrepareOK()
     {
-      AppMethodBeat.i(209868);
+      AppMethodBeat.i(255398);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -147,14 +147,14 @@ public abstract class ITPPreLoadListenerAidl$Stub
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(209868);
+        AppMethodBeat.o(255398);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPreLoadListenerAidl.Stub
  * JD-Core Version:    0.7.0.1
  */

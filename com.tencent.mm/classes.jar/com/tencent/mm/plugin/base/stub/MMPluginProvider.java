@@ -15,14 +15,14 @@ import com.tencent.mm.sdk.platformtools.WeChatAuthorities;
 public class MMPluginProvider
   extends ContentProvider
 {
-  private static final UriMatcher ncB;
-  private c pdp;
+  private static final UriMatcher qcP;
+  private c sfr;
   
   static
   {
     AppMethodBeat.i(22173);
     UriMatcher localUriMatcher = new UriMatcher(-1);
-    ncB = localUriMatcher;
+    qcP = localUriMatcher;
     localUriMatcher.addURI(WeChatAuthorities.AUTHORITIES_SDK_PLUGIN_PROVIDER(), "sharedpref", 2);
     AppMethodBeat.o(22173);
   }
@@ -30,7 +30,7 @@ public class MMPluginProvider
   public MMPluginProvider()
   {
     AppMethodBeat.i(22166);
-    this.pdp = new c();
+    this.sfr = new c();
     AppMethodBeat.o(22166);
   }
   
@@ -38,7 +38,7 @@ public class MMPluginProvider
   {
     AppMethodBeat.i(22170);
     Log.v("MicroMsg.MMPluginProvider", "plugin delete".concat(String.valueOf(paramUri)));
-    switch (ncB.match(paramUri))
+    switch (qcP.match(paramUri))
     {
     default: 
       Log.e("MicroMsg.MMPluginProvider", "Unknown URI ".concat(String.valueOf(paramUri)));
@@ -52,7 +52,7 @@ public class MMPluginProvider
   public String getType(Uri paramUri)
   {
     AppMethodBeat.i(22167);
-    switch (ncB.match(paramUri))
+    switch (qcP.match(paramUri))
     {
     default: 
       AppMethodBeat.o(22167);
@@ -66,7 +66,7 @@ public class MMPluginProvider
   {
     AppMethodBeat.i(22169);
     Log.v("MicroMsg.MMPluginProvider", "plugin insert".concat(String.valueOf(paramUri)));
-    switch (ncB.match(paramUri))
+    switch (qcP.match(paramUri))
     {
     default: 
       Log.e("MicroMsg.MMPluginProvider", "Unknown URI ".concat(String.valueOf(paramUri)));
@@ -81,7 +81,7 @@ public class MMPluginProvider
   {
     AppMethodBeat.i(22168);
     Log.i("MicroMsg.MMPluginProvider", "onCreate");
-    this.pdp.eI(getContext());
+    this.sfr.eL(getContext());
     AppMethodBeat.o(22168);
     return true;
   }
@@ -90,7 +90,7 @@ public class MMPluginProvider
   {
     AppMethodBeat.i(22171);
     Log.i("MicroMsg.MMPluginProvider", "plugin query".concat(String.valueOf(paramUri)));
-    switch (ncB.match(paramUri))
+    switch (qcP.match(paramUri))
     {
     default: 
       Log.e("MicroMsg.MMPluginProvider", "Unknown URI ".concat(String.valueOf(paramUri)));
@@ -106,7 +106,7 @@ public class MMPluginProvider
   {
     AppMethodBeat.i(22172);
     Log.d("MicroMsg.MMPluginProvider", "plugin update".concat(String.valueOf(paramUri)));
-    switch (ncB.match(paramUri))
+    switch (qcP.match(paramUri))
     {
     default: 
       Log.e("MicroMsg.MMPluginProvider", "Unknown URI ".concat(String.valueOf(paramUri)));
@@ -121,7 +121,7 @@ public class MMPluginProvider
   {
     private Context context = null;
     
-    public boolean eI(Context paramContext)
+    public boolean eL(Context paramContext)
     {
       this.context = paramContext;
       return true;

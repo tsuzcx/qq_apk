@@ -13,25 +13,25 @@ import com.tencent.mm.ui.widget.MMEditText;
 public class SnsEditText
   extends MMEditText
 {
-  private boolean EDp;
-  private int EDq;
-  private int EDr;
-  private int EDs;
+  private boolean EjM;
+  private boolean KRe;
+  private int KRf;
+  private int KRg;
+  private int KRh;
   private Context context;
-  private int nUS;
+  private int qWs;
   private float y;
-  private boolean yFT;
   
   public SnsEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98694);
-    this.nUS = 0;
-    this.EDp = false;
-    this.EDq = 0;
-    this.EDr = 0;
-    this.yFT = false;
-    this.EDs = 10;
+    this.qWs = 0;
+    this.KRe = false;
+    this.KRf = 0;
+    this.KRg = 0;
+    this.EjM = false;
+    this.KRh = 10;
     this.context = paramContext;
     addTextChangedListener(new TextWatcher()
     {
@@ -53,13 +53,13 @@ public class SnsEditText
         {
           if (SnsEditText.a(SnsEditText.this))
           {
-            if ((paramAnonymousCharSequence == null) || (paramAnonymousCharSequence.length() < a.DCT))
+            if ((paramAnonymousCharSequence == null) || (paramAnonymousCharSequence.length() < a.JPj))
             {
               SnsEditText.a(SnsEditText.this, 0);
               AppMethodBeat.o(98692);
               return;
             }
-            if (paramAnonymousCharSequence.length() - SnsEditText.b(SnsEditText.this) > a.DCT) {
+            if (paramAnonymousCharSequence.length() - SnsEditText.b(SnsEditText.this) > a.JPj) {
               SnsEditText.a(SnsEditText.this, paramAnonymousCharSequence.length() - SnsEditText.b(SnsEditText.this));
             }
           }
@@ -78,14 +78,14 @@ public class SnsEditText
   
   public int getPasterLen()
   {
-    return this.nUS;
+    return this.qWs;
   }
   
   public boolean onTextContextMenuItem(int paramInt)
   {
     AppMethodBeat.i(98695);
     if (paramInt == 16908322) {
-      this.EDp = true;
+      this.KRe = true;
     }
     boolean bool = super.onTextContextMenuItem(paramInt);
     AppMethodBeat.o(98695);
@@ -96,8 +96,8 @@ public class SnsEditText
   {
     AppMethodBeat.i(98696);
     if (paramMotionEvent.getAction() == 2) {
-      if (Math.abs(this.y - paramMotionEvent.getY()) > this.EDs) {
-        this.yFT = true;
+      if (Math.abs(this.y - paramMotionEvent.getY()) > this.KRh) {
+        this.EjM = true;
       }
     }
     for (;;)
@@ -108,27 +108,27 @@ public class SnsEditText
       return bool;
       if (paramMotionEvent.getAction() == 1)
       {
-        if (this.yFT)
+        if (this.EjM)
         {
-          this.yFT = false;
+          this.EjM = false;
           AppMethodBeat.o(98696);
           return true;
         }
       }
       else {
-        this.yFT = false;
+        this.EjM = false;
       }
     }
   }
   
   public void setPasterLen(int paramInt)
   {
-    this.nUS = paramInt;
+    this.qWs = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsEditText
  * JD-Core Version:    0.7.0.1
  */

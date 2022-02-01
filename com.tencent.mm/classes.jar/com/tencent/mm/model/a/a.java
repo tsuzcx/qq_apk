@@ -1,15 +1,15 @@
 package com.tencent.mm.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.b;
-import com.tencent.mm.ak.h.d;
-import com.tencent.mm.plugin.messenger.foundation.a.p;
+import com.tencent.mm.an.h;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.b;
+import com.tencent.mm.an.h.d;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
 import java.util.Map;
 
 public final class a
-  implements p
+  implements s
 {
   public final h.b a(String paramString, Map<String, String> paramMap, h.a parama)
   {
@@ -21,7 +21,7 @@ public final class a
       paramMap = localObject;
       if (paramString.equals("abtest"))
       {
-        paramString = h.d.ck(Integer.valueOf(-1879048184));
+        paramString = h.d.cj(Integer.valueOf(-1879048184));
         if (paramString != null) {
           break label50;
         }
@@ -37,7 +37,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.model.a.a
  * JD-Core Version:    0.7.0.1
  */

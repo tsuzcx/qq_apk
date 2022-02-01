@@ -10,17 +10,17 @@ import java.util.zip.ZipException;
 public final class i
   extends FilterOutputStream
 {
-  public static final byte[] SkU = new byte[0];
-  private static final byte[] SkV = { -1, -1, -1, -1 };
-  private int SkA = 8;
-  private ByteArrayOutputStream SkB = new ByteArrayOutputStream();
-  private byte[] SkF;
-  private final boolean SkW = false;
-  private g SkX;
-  private byte[] SkY;
-  private boolean SkZ;
-  public byte[] Sky = SkU;
-  private final HashSet<String> Skz = new HashSet();
+  public static final byte[] ZNF = new byte[0];
+  private static final byte[] ZNG = { -1, -1, -1, -1 };
+  private final boolean ZNH = false;
+  private g ZNI;
+  private byte[] ZNJ;
+  private boolean ZNK;
+  private byte[] ZNj = ZNF;
+  private final HashSet<String> ZNk = new HashSet();
+  private int ZNl = 8;
+  private ByteArrayOutputStream ZNm = new ByteArrayOutputStream();
+  private byte[] ZNq;
   private long offset = 0L;
   
   public i(OutputStream paramOutputStream)
@@ -33,20 +33,11 @@ public final class i
     super(paramOutputStream);
   }
   
-  public static void D(String paramString, byte[] paramArrayOfByte)
+  private static void I(String paramString, byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte.length > 65535) {
       throw new IllegalArgumentException(paramString + " too long in UTF-8:" + paramArrayOfByte.length + " bytes");
     }
-  }
-  
-  private static long d(OutputStream paramOutputStream, long paramLong)
-  {
-    paramOutputStream.write((int)(0xFF & paramLong));
-    paramOutputStream.write((int)(paramLong >> 8) & 0xFF);
-    paramOutputStream.write((int)(paramLong >> 16) & 0xFF);
-    paramOutputStream.write((int)(paramLong >> 24) & 0xFF);
-    return paramLong;
   }
   
   private static int e(OutputStream paramOutputStream, int paramInt)
@@ -56,101 +47,122 @@ public final class i
     return paramInt;
   }
   
-  private void hpk()
+  private static long f(OutputStream paramOutputStream, long paramLong)
   {
-    if (this.SkB == null) {
+    paramOutputStream.write((int)(0xFF & paramLong));
+    paramOutputStream.write((int)(paramLong >> 8) & 0xFF);
+    paramOutputStream.write((int)(paramLong >> 16) & 0xFF);
+    paramOutputStream.write((int)(paramLong >> 24) & 0xFF);
+    return paramLong;
+  }
+  
+  private void isM()
+  {
+    if (this.ZNm == null) {
       throw new IOException("Stream is closed");
     }
   }
   
   public final void b(g paramg)
   {
-    if (this.SkX != null) {
-      closeEntry();
+    if (this.ZNI != null) {
+      isL();
     }
-    int i = paramg.SkK;
+    int i = paramg.ZNv;
     if (i == -1) {
-      i = this.SkA;
+      i = this.ZNl;
     }
     for (;;)
     {
       if (i == 0)
       {
-        if (paramg.SkJ == -1L) {
-          paramg.SkJ = paramg.size;
+        if (paramg.ZNu == -1L) {
+          paramg.ZNu = paramg.size;
         }
         while (paramg.crc == -1L)
         {
           throw new ZipException("STORED entry missing CRC");
           if (paramg.size == -1L) {
-            paramg.setSize(paramg.SkJ);
+            paramg.setSize(paramg.ZNu);
           }
         }
         if (paramg.size == -1L) {
           throw new ZipException("STORED entry missing size");
         }
-        if (paramg.size != paramg.SkJ) {
+        if (paramg.size != paramg.ZNu) {
           throw new ZipException("STORED entry size/compressed size mismatch");
         }
       }
-      hpk();
-      paramg.KJM = null;
-      paramg.SkM = null;
-      paramg.hXs = 40691;
-      paramg.SkL = 18698;
-      this.SkF = paramg.name.getBytes(e.UTF_8);
-      D("Name", this.SkF);
-      this.SkY = SkU;
-      if (paramg.KJM != null)
+      isM();
+      paramg.comment = null;
+      paramg.ZNx = null;
+      paramg.time = 40691;
+      paramg.ZNw = 18698;
+      this.ZNq = paramg.name.getBytes(e.UTF_8);
+      I("Name", this.ZNq);
+      this.ZNJ = ZNF;
+      if (paramg.comment != null)
       {
-        this.SkY = paramg.KJM.getBytes(e.UTF_8);
-        D("Comment", this.SkY);
+        this.ZNJ = paramg.comment.getBytes(e.UTF_8);
+        I("Comment", this.ZNJ);
       }
-      paramg.setMethod(i);
-      this.SkX = paramg;
-      this.SkX.SkN = this.offset;
-      this.Skz.add(this.SkX.name);
+      paramg.aCi(i);
+      this.ZNI = paramg;
+      this.ZNI.ZNy = this.offset;
+      this.ZNk.add(this.ZNI.name);
       int j;
       if (i == 0)
       {
         j = 0;
-        d(this.out, 67324752L);
+        f(this.out, 67324752L);
         e(this.out, 20);
         e(this.out, j | 0x800);
         e(this.out, i);
-        e(this.out, this.SkX.hXs);
-        e(this.out, this.SkX.SkL);
+        e(this.out, this.ZNI.time);
+        e(this.out, this.ZNI.ZNw);
         if (i != 0) {
           break label467;
         }
-        d(this.out, this.SkX.crc);
-        d(this.out, this.SkX.size);
-        d(this.out, this.SkX.size);
+        f(this.out, this.ZNI.crc);
+        f(this.out, this.ZNI.size);
+        f(this.out, this.ZNI.size);
         label386:
-        e(this.out, this.SkF.length);
-        if (this.SkX.SkM == null) {
+        e(this.out, this.ZNq.length);
+        if (this.ZNI.ZNx == null) {
           break label497;
         }
-        e(this.out, this.SkX.SkM.length);
+        e(this.out, this.ZNI.ZNx.length);
       }
       for (;;)
       {
-        this.out.write(this.SkF);
-        if (this.SkX.SkM != null) {
-          this.out.write(this.SkX.SkM);
+        this.out.write(this.ZNq);
+        if (this.ZNI.ZNx != null) {
+          this.out.write(this.ZNI.ZNx);
         }
         return;
         j = 8;
         break;
         label467:
-        d(this.out, 0L);
-        d(this.out, 0L);
-        d(this.out, 0L);
+        f(this.out, 0L);
+        f(this.out, 0L);
+        f(this.out, 0L);
         break label386;
         label497:
         e(this.out, 0);
       }
     }
+  }
+  
+  public final void bDK(String paramString)
+  {
+    if (paramString == null)
+    {
+      this.ZNj = ZNF;
+      return;
+    }
+    paramString = paramString.getBytes(e.UTF_8);
+    I("Comment", paramString);
+    this.ZNj = paramString;
   }
   
   public final void close()
@@ -161,120 +173,120 @@ public final class i
       if (this.out == null) {
         throw new IOException("Stream is closed");
       }
-      if (this.SkB != null)
+      if (this.ZNm != null)
       {
-        if (this.Skz.isEmpty()) {
+        if (this.ZNk.isEmpty()) {
           throw new ZipException("No entries");
         }
-        if (this.SkX != null) {
-          closeEntry();
+        if (this.ZNI != null) {
+          isL();
         }
-        i = this.SkB.size();
-        d(this.SkB, 101010256L);
-        e(this.SkB, 0);
-        e(this.SkB, 0);
-        if (!this.SkZ) {
+        i = this.ZNm.size();
+        f(this.ZNm, 101010256L);
+        e(this.ZNm, 0);
+        e(this.ZNm, 0);
+        if (!this.ZNK) {
           break label209;
         }
-        e(this.SkB, 65535);
-        e(this.SkB, 65535);
-        d(this.SkB, -1L);
-        d(this.SkB, -1L);
+        e(this.ZNm, 65535);
+        e(this.ZNm, 65535);
+        f(this.ZNm, -1L);
+        f(this.ZNm, -1L);
       }
     }
     for (;;)
     {
-      e(this.SkB, this.Sky.length);
-      if (this.Sky.length > 0) {
-        this.SkB.write(this.Sky);
+      e(this.ZNm, this.ZNj.length);
+      if (this.ZNj.length > 0) {
+        this.ZNm.write(this.ZNj);
       }
-      this.SkB.writeTo(this.out);
-      this.SkB = null;
+      this.ZNm.writeTo(this.out);
+      this.ZNm = null;
       this.out.close();
       this.out = null;
       return;
       label209:
-      e(this.SkB, this.Skz.size());
-      e(this.SkB, this.Skz.size());
-      d(this.SkB, i);
-      d(this.SkB, this.offset);
+      e(this.ZNm, this.ZNk.size());
+      e(this.ZNm, this.ZNk.size());
+      f(this.ZNm, i);
+      f(this.ZNm, this.offset);
     }
   }
   
-  public final void closeEntry()
+  public final void isL()
   {
-    hpk();
-    if (this.SkX == null) {
+    isM();
+    if (this.ZNI == null) {
       return;
     }
     long l = 30L;
-    if (this.SkX.SkK != 0)
+    if (this.ZNI.ZNv != 0)
     {
       l = 46L;
-      d(this.out, 134695760L);
-      d(this.out, this.SkX.crc);
-      d(this.out, this.SkX.SkJ);
-      d(this.out, this.SkX.size);
+      f(this.out, 134695760L);
+      f(this.out, this.ZNI.crc);
+      f(this.out, this.ZNI.ZNu);
+      f(this.out, this.ZNI.size);
     }
     int i;
-    if (this.SkX.SkK == 0)
+    if (this.ZNI.ZNv == 0)
     {
       i = 0;
-      d(this.SkB, 33639248L);
-      e(this.SkB, 20);
-      e(this.SkB, 20);
-      e(this.SkB, i | 0x800);
-      e(this.SkB, this.SkX.SkK);
-      e(this.SkB, this.SkX.hXs);
-      e(this.SkB, this.SkX.SkL);
-      d(this.SkB, this.SkX.crc);
-      if (this.SkX.SkK != 8) {
+      f(this.ZNm, 33639248L);
+      e(this.ZNm, 20);
+      e(this.ZNm, 20);
+      e(this.ZNm, i | 0x800);
+      e(this.ZNm, this.ZNI.ZNv);
+      e(this.ZNm, this.ZNI.time);
+      e(this.ZNm, this.ZNI.ZNw);
+      f(this.ZNm, this.ZNI.crc);
+      if (this.ZNI.ZNv != 8) {
         break label442;
       }
-      l += this.SkX.SkJ;
+      l += this.ZNI.ZNu;
       label224:
-      d(this.SkB, this.SkX.SkJ);
-      d(this.SkB, this.SkX.size);
-      l += e(this.SkB, this.SkF.length);
-      if (this.SkX.SkM == null) {
+      f(this.ZNm, this.ZNI.ZNu);
+      f(this.ZNm, this.ZNI.size);
+      l += e(this.ZNm, this.ZNq.length);
+      if (this.ZNI.ZNx == null) {
         break label455;
       }
-      l += e(this.SkB, this.SkX.SkM.length);
+      l += e(this.ZNm, this.ZNI.ZNx.length);
     }
     for (;;)
     {
-      e(this.SkB, this.SkY.length);
-      e(this.SkB, 0);
-      e(this.SkB, 0);
-      d(this.SkB, 0L);
-      d(this.SkB, this.SkX.SkN);
-      this.SkB.write(this.SkF);
-      this.SkF = null;
-      if (this.SkX.SkM != null) {
-        this.SkB.write(this.SkX.SkM);
+      e(this.ZNm, this.ZNJ.length);
+      e(this.ZNm, 0);
+      e(this.ZNm, 0);
+      f(this.ZNm, 0L);
+      f(this.ZNm, this.ZNI.ZNy);
+      this.ZNm.write(this.ZNq);
+      this.ZNq = null;
+      if (this.ZNI.ZNx != null) {
+        this.ZNm.write(this.ZNI.ZNx);
       }
       this.offset = (l + this.offset);
-      if (this.SkY.length > 0)
+      if (this.ZNJ.length > 0)
       {
-        this.SkB.write(this.SkY);
-        this.SkY = SkU;
+        this.ZNm.write(this.ZNJ);
+        this.ZNJ = ZNF;
       }
-      this.SkX = null;
+      this.ZNI = null;
       return;
       i = 8;
       break;
       label442:
-      l += this.SkX.size;
+      l += this.ZNI.size;
       break label224;
       label455:
-      e(this.SkB, 0);
+      e(this.ZNm, 0);
     }
   }
   
   public final void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     b.checkOffsetAndCount(paramArrayOfByte.length, paramInt1, paramInt2);
-    if (this.SkX == null) {
+    if (this.ZNI == null) {
       throw new ZipException("No active entry");
     }
     this.out.write(paramArrayOfByte, paramInt1, paramInt2);
@@ -282,7 +294,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.d.a.i
  * JD-Core Version:    0.7.0.1
  */

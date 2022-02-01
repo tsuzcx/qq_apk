@@ -16,21 +16,21 @@ import kotlin.g.a.b;
 import kotlin.g.b.k;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
-import kotlin.k.d;
-import kotlin.k.f;
+import kotlin.k.c;
+import kotlin.k.i;
 import kotlin.l;
 import kotlin.m.h;
 import kotlin.n.n;
 import kotlin.o;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"all", "", "T", "", "predicate", "Lkotlin/Function1;", "any", "asIterable", "asSequence", "Lkotlin/sequences/Sequence;", "associate", "", "K", "V", "transform", "Lkotlin/Pair;", "associateBy", "keySelector", "valueTransform", "associateByTo", "M", "", "destination", "(Ljava/lang/Iterable;Ljava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "(Ljava/lang/Iterable;Ljava/util/Map;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "associateTo", "associateWith", "valueSelector", "associateWithTo", "average", "", "", "averageOfByte", "averageOfDouble", "", "averageOfFloat", "", "averageOfInt", "", "averageOfLong", "", "averageOfShort", "chunked", "", "size", "R", "component1", "(Ljava/util/List;)Ljava/lang/Object;", "component2", "component3", "component4", "component5", "contains", "Lkotlin/internal/OnlyInputTypes;", "element", "(Ljava/lang/Iterable;Ljava/lang/Object;)Z", "count", "", "distinct", "distinctBy", "selector", "drop", "n", "dropLast", "dropLastWhile", "dropWhile", "elementAt", "index", "(Ljava/lang/Iterable;I)Ljava/lang/Object;", "(Ljava/util/List;I)Ljava/lang/Object;", "elementAtOrElse", "defaultValue", "(Ljava/lang/Iterable;ILkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "(Ljava/util/List;ILkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "elementAtOrNull", "filter", "filterIndexed", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "filterIndexedTo", "C", "", "(Ljava/lang/Iterable;Ljava/util/Collection;Lkotlin/jvm/functions/Function2;)Ljava/util/Collection;", "filterIsInstance", "Lkotlin/internal/NoInfer;", "filterIsInstanceTo", "(Ljava/lang/Iterable;Ljava/util/Collection;)Ljava/util/Collection;", "filterNot", "filterNotNull", "", "filterNotNullTo", "filterNotTo", "(Ljava/lang/Iterable;Ljava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "filterTo", "find", "(Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "findLast", "(Ljava/util/List;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "first", "(Ljava/lang/Iterable;)Ljava/lang/Object;", "firstOrNull", "flatMap", "flatMapTo", "fold", "initial", "operation", "acc", "(Ljava/lang/Iterable;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "foldIndexed", "Lkotlin/Function3;", "(Ljava/lang/Iterable;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "foldRight", "(Ljava/util/List;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "foldRightIndexed", "(Ljava/util/List;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "forEach", "", "action", "forEachIndexed", "getOrElse", "getOrNull", "groupBy", "groupByTo", "", "groupingBy", "Lkotlin/collections/Grouping;", "indexOf", "(Ljava/lang/Iterable;Ljava/lang/Object;)I", "(Ljava/util/List;Ljava/lang/Object;)I", "indexOfFirst", "indexOfLast", "intersect", "", "other", "joinTo", "A", "Ljava/lang/Appendable;", "Lkotlin/text/Appendable;", "buffer", "separator", "", "prefix", "postfix", "limit", "truncated", "(Ljava/lang/Iterable;Ljava/lang/Appendable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;)Ljava/lang/Appendable;", "joinToString", "", "last", "lastIndexOf", "lastOrNull", "map", "mapIndexed", "mapIndexedNotNull", "mapIndexedNotNullTo", "mapIndexedTo", "mapNotNull", "mapNotNullTo", "mapTo", "max", "", "(Ljava/lang/Iterable;)Ljava/lang/Comparable;", "(Ljava/lang/Iterable;)Ljava/lang/Double;", "(Ljava/lang/Iterable;)Ljava/lang/Float;", "maxBy", "maxWith", "comparator", "Ljava/util/Comparator;", "Lkotlin/Comparator;", "(Ljava/lang/Iterable;Ljava/util/Comparator;)Ljava/lang/Object;", "min", "minBy", "minWith", "minus", "(Ljava/lang/Iterable;Ljava/lang/Object;)Ljava/util/List;", "elements", "", "(Ljava/lang/Iterable;[Ljava/lang/Object;)Ljava/util/List;", "minusElement", "none", "onEach", "(Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Iterable;", "partition", "plus", "(Ljava/util/Collection;Ljava/lang/Object;)Ljava/util/List;", "(Ljava/util/Collection;[Ljava/lang/Object;)Ljava/util/List;", "plusElement", "random", "(Ljava/util/Collection;)Ljava/lang/Object;", "Lkotlin/random/Random;", "(Ljava/util/Collection;Lkotlin/random/Random;)Ljava/lang/Object;", "randomOrNull", "reduce", "S", "(Ljava/lang/Iterable;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "reduceIndexed", "(Ljava/lang/Iterable;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "reduceOrNull", "reduceRight", "(Ljava/util/List;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "reduceRightIndexed", "(Ljava/util/List;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "reduceRightOrNull", "requireNoNulls", "reversed", "scan", "(Ljava/lang/Iterable;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "scanIndexed", "(Ljava/lang/Iterable;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/util/List;", "scanReduce", "scanReduceIndexed", "single", "singleOrNull", "slice", "indices", "Lkotlin/ranges/IntRange;", "sortBy", "sortByDescending", "sortDescending", "sorted", "sortedBy", "sortedByDescending", "sortedDescending", "sortedWith", "subtract", "sum", "sumOfByte", "sumOfDouble", "sumOfFloat", "sumOfInt", "sumOfLong", "sumOfShort", "sumBy", "sumByDouble", "take", "takeLast", "takeLastWhile", "takeWhile", "toBooleanArray", "", "toByteArray", "", "toCharArray", "", "", "toCollection", "toDoubleArray", "", "toFloatArray", "", "toHashSet", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "toIntArray", "", "toList", "toLongArray", "", "toMutableList", "toMutableSet", "", "toSet", "toShortArray", "", "union", "windowed", "step", "partialWindows", "withIndex", "Lkotlin/collections/IndexedValue;", "zip", "a", "b", "(Ljava/lang/Iterable;[Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "zipWithNext", "kotlin-stdlib"}, hxG=1)
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"all", "", "T", "", "predicate", "Lkotlin/Function1;", "any", "asIterable", "asSequence", "Lkotlin/sequences/Sequence;", "associate", "", "K", "V", "transform", "Lkotlin/Pair;", "associateBy", "keySelector", "valueTransform", "associateByTo", "M", "", "destination", "(Ljava/lang/Iterable;Ljava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "(Ljava/lang/Iterable;Ljava/util/Map;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "associateTo", "associateWith", "valueSelector", "associateWithTo", "average", "", "", "averageOfByte", "averageOfDouble", "", "averageOfFloat", "", "averageOfInt", "", "averageOfLong", "", "averageOfShort", "chunked", "", "size", "R", "component1", "(Ljava/util/List;)Ljava/lang/Object;", "component2", "component3", "component4", "component5", "contains", "Lkotlin/internal/OnlyInputTypes;", "element", "(Ljava/lang/Iterable;Ljava/lang/Object;)Z", "count", "", "distinct", "distinctBy", "selector", "drop", "n", "dropLast", "dropLastWhile", "dropWhile", "elementAt", "index", "(Ljava/lang/Iterable;I)Ljava/lang/Object;", "(Ljava/util/List;I)Ljava/lang/Object;", "elementAtOrElse", "defaultValue", "(Ljava/lang/Iterable;ILkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "(Ljava/util/List;ILkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "elementAtOrNull", "filter", "filterIndexed", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "filterIndexedTo", "C", "", "(Ljava/lang/Iterable;Ljava/util/Collection;Lkotlin/jvm/functions/Function2;)Ljava/util/Collection;", "filterIsInstance", "Lkotlin/internal/NoInfer;", "filterIsInstanceTo", "(Ljava/lang/Iterable;Ljava/util/Collection;)Ljava/util/Collection;", "filterNot", "filterNotNull", "", "filterNotNullTo", "filterNotTo", "(Ljava/lang/Iterable;Ljava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "filterTo", "find", "(Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "findLast", "(Ljava/util/List;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "first", "(Ljava/lang/Iterable;)Ljava/lang/Object;", "firstOrNull", "flatMap", "flatMapTo", "fold", "initial", "operation", "acc", "(Ljava/lang/Iterable;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "foldIndexed", "Lkotlin/Function3;", "(Ljava/lang/Iterable;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "foldRight", "(Ljava/util/List;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "foldRightIndexed", "(Ljava/util/List;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "forEach", "", "action", "forEachIndexed", "getOrElse", "getOrNull", "groupBy", "groupByTo", "", "groupingBy", "Lkotlin/collections/Grouping;", "indexOf", "(Ljava/lang/Iterable;Ljava/lang/Object;)I", "(Ljava/util/List;Ljava/lang/Object;)I", "indexOfFirst", "indexOfLast", "intersect", "", "other", "joinTo", "A", "Ljava/lang/Appendable;", "Lkotlin/text/Appendable;", "buffer", "separator", "", "prefix", "postfix", "limit", "truncated", "(Ljava/lang/Iterable;Ljava/lang/Appendable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;)Ljava/lang/Appendable;", "joinToString", "", "last", "lastIndexOf", "lastOrNull", "map", "mapIndexed", "mapIndexedNotNull", "mapIndexedNotNullTo", "mapIndexedTo", "mapNotNull", "mapNotNullTo", "mapTo", "max", "", "(Ljava/lang/Iterable;)Ljava/lang/Comparable;", "(Ljava/lang/Iterable;)Ljava/lang/Double;", "(Ljava/lang/Iterable;)Ljava/lang/Float;", "maxBy", "maxWith", "comparator", "Ljava/util/Comparator;", "Lkotlin/Comparator;", "(Ljava/lang/Iterable;Ljava/util/Comparator;)Ljava/lang/Object;", "min", "minBy", "minWith", "minus", "(Ljava/lang/Iterable;Ljava/lang/Object;)Ljava/util/List;", "elements", "", "(Ljava/lang/Iterable;[Ljava/lang/Object;)Ljava/util/List;", "minusElement", "none", "onEach", "(Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Iterable;", "partition", "plus", "(Ljava/util/Collection;Ljava/lang/Object;)Ljava/util/List;", "(Ljava/util/Collection;[Ljava/lang/Object;)Ljava/util/List;", "plusElement", "random", "(Ljava/util/Collection;)Ljava/lang/Object;", "Lkotlin/random/Random;", "(Ljava/util/Collection;Lkotlin/random/Random;)Ljava/lang/Object;", "randomOrNull", "reduce", "S", "(Ljava/lang/Iterable;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "reduceIndexed", "(Ljava/lang/Iterable;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "reduceOrNull", "reduceRight", "(Ljava/util/List;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "reduceRightIndexed", "(Ljava/util/List;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "reduceRightOrNull", "requireNoNulls", "reversed", "scan", "(Ljava/lang/Iterable;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "scanIndexed", "(Ljava/lang/Iterable;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/util/List;", "scanReduce", "scanReduceIndexed", "single", "singleOrNull", "slice", "indices", "Lkotlin/ranges/IntRange;", "sortBy", "sortByDescending", "sortDescending", "sorted", "sortedBy", "sortedByDescending", "sortedDescending", "sortedWith", "subtract", "sum", "sumOfByte", "sumOfDouble", "sumOfFloat", "sumOfInt", "sumOfLong", "sumOfShort", "sumBy", "sumByDouble", "take", "takeLast", "takeLastWhile", "takeWhile", "toBooleanArray", "", "toByteArray", "", "toCharArray", "", "", "toCollection", "toDoubleArray", "", "toFloatArray", "", "toHashSet", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "toIntArray", "", "toList", "toLongArray", "", "toMutableList", "toMutableSet", "", "toSet", "toShortArray", "", "union", "windowed", "step", "partialWindows", "withIndex", "Lkotlin/collections/IndexedValue;", "zip", "a", "b", "(Ljava/lang/Iterable;[Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "zipWithNext", "kotlin-stdlib"}, iBN=1)
 public class t
   extends s
 {
   public static final double A(Iterable<Integer> paramIterable)
   {
     AppMethodBeat.i(129220);
-    p.h(paramIterable, "$this$average");
+    p.k(paramIterable, "$this$average");
     double d = 0.0D;
     paramIterable = paramIterable.iterator();
     int i = 0;
@@ -39,13 +39,13 @@ public class t
       d += ((Number)paramIterable.next()).intValue();
       i += 1;
       if (i < 0) {
-        j.hxI();
+        j.iBP();
       }
     }
     if (i == 0)
     {
-      paramIterable = k.SYw;
-      d = k.hxY();
+      paramIterable = k.aaBn;
+      d = k.iCj();
       AppMethodBeat.o(129220);
       return d;
     }
@@ -57,7 +57,7 @@ public class t
   public static final int B(Iterable<Integer> paramIterable)
   {
     AppMethodBeat.i(129221);
-    p.h(paramIterable, "$this$sum");
+    p.k(paramIterable, "$this$sum");
     paramIterable = paramIterable.iterator();
     for (int i = 0; paramIterable.hasNext(); i = ((Number)paramIterable.next()).intValue() + i) {}
     AppMethodBeat.o(129221);
@@ -67,7 +67,7 @@ public class t
   public static final long C(Iterable<Long> paramIterable)
   {
     AppMethodBeat.i(129222);
-    p.h(paramIterable, "$this$sum");
+    p.k(paramIterable, "$this$sum");
     paramIterable = paramIterable.iterator();
     for (long l = 0L; paramIterable.hasNext(); l = ((Number)paramIterable.next()).longValue() + l) {}
     AppMethodBeat.o(129222);
@@ -77,18 +77,18 @@ public class t
   public static final float D(Iterable<Float> paramIterable)
   {
     AppMethodBeat.i(168696);
-    p.h(paramIterable, "$this$sum");
+    p.k(paramIterable, "$this$sum");
     paramIterable = paramIterable.iterator();
     for (float f = 0.0F; paramIterable.hasNext(); f = ((Number)paramIterable.next()).floatValue() + f) {}
     AppMethodBeat.o(168696);
     return f;
   }
   
-  public static final <T> T L(List<? extends T> paramList, int paramInt)
+  public static final <T> T M(List<? extends T> paramList, int paramInt)
   {
     AppMethodBeat.i(129178);
-    p.h(paramList, "$this$getOrNull");
-    if ((paramInt >= 0) && (paramInt <= j.kq(paramList)))
+    p.k(paramList, "$this$getOrNull");
+    if ((paramInt >= 0) && (paramInt <= j.lk(paramList)))
     {
       paramList = paramList.get(paramInt);
       AppMethodBeat.o(129178);
@@ -98,26 +98,26 @@ public class t
     return null;
   }
   
-  public static final <T> List<T> M(List<? extends T> paramList, int paramInt)
+  public static final <T> List<T> N(List<? extends T> paramList, int paramInt)
   {
-    AppMethodBeat.i(206267);
-    p.h(paramList, "$this$dropLast");
+    AppMethodBeat.i(218902);
+    p.k(paramList, "$this$dropLast");
     if (paramInt >= 0) {}
     for (int i = 1; i == 0; i = 0)
     {
       paramList = (Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString());
-      AppMethodBeat.o(206267);
+      AppMethodBeat.o(218902);
       throw paramList;
     }
-    paramList = j.b((Iterable)paramList, kotlin.k.j.mZ(paramList.size() - paramInt, 0));
-    AppMethodBeat.o(206267);
+    paramList = j.c((Iterable)paramList, i.ov(paramList.size() - paramInt, 0));
+    AppMethodBeat.o(218902);
     return paramList;
   }
   
-  public static final <T> List<T> N(List<? extends T> paramList, int paramInt)
+  public static final <T> List<T> O(List<? extends T> paramList, int paramInt)
   {
     AppMethodBeat.i(129193);
-    p.h(paramList, "$this$takeLast");
+    p.k(paramList, "$this$takeLast");
     if (paramInt >= 0) {}
     for (int i = 1; i == 0; i = 0)
     {
@@ -127,7 +127,7 @@ public class t
     }
     if (paramInt == 0)
     {
-      paramList = (List)v.SXr;
+      paramList = (List)v.aaAd;
       AppMethodBeat.o(129193);
       return paramList;
     }
@@ -140,7 +140,7 @@ public class t
     }
     if (paramInt == 1)
     {
-      paramList = j.listOf(j.ku(paramList));
+      paramList = j.listOf(j.lq(paramList));
       AppMethodBeat.o(129193);
       return paramList;
     }
@@ -165,22 +165,22 @@ public class t
   
   public static final <T> int a(List<? extends T> paramList, T paramT)
   {
-    AppMethodBeat.i(206265);
-    p.h(paramList, "$this$indexOf");
+    AppMethodBeat.i(218878);
+    p.k(paramList, "$this$indexOf");
     int i = paramList.indexOf(paramT);
-    AppMethodBeat.o(206265);
+    AppMethodBeat.o(218878);
     return i;
   }
   
   public static final <T, A extends Appendable> A a(Iterable<? extends T> paramIterable, A paramA, CharSequence paramCharSequence1, CharSequence paramCharSequence2, CharSequence paramCharSequence3, int paramInt, CharSequence paramCharSequence4, b<? super T, ? extends CharSequence> paramb)
   {
     AppMethodBeat.i(129215);
-    p.h(paramIterable, "$this$joinTo");
-    p.h(paramA, "buffer");
-    p.h(paramCharSequence1, "separator");
-    p.h(paramCharSequence2, "prefix");
-    p.h(paramCharSequence3, "postfix");
-    p.h(paramCharSequence4, "truncated");
+    p.k(paramIterable, "$this$joinTo");
+    p.k(paramA, "buffer");
+    p.k(paramCharSequence1, "separator");
+    p.k(paramCharSequence2, "prefix");
+    p.k(paramCharSequence3, "postfix");
+    p.k(paramCharSequence4, "truncated");
     paramA.append(paramCharSequence2);
     int i = 0;
     paramIterable = paramIterable.iterator();
@@ -213,16 +213,57 @@ public class t
     return paramA;
   }
   
+  public static final <T> T a(Iterable<? extends T> paramIterable, int paramInt, b<? super Integer, ? extends T> paramb)
+  {
+    AppMethodBeat.i(218869);
+    p.k(paramIterable, "$this$elementAtOrElse");
+    p.k(paramb, "defaultValue");
+    if ((paramIterable instanceof List))
+    {
+      paramIterable = (List)paramIterable;
+      if ((paramInt >= 0) && (paramInt <= j.lk(paramIterable)))
+      {
+        paramIterable = paramIterable.get(paramInt);
+        AppMethodBeat.o(218869);
+        return paramIterable;
+      }
+      paramIterable = paramb.invoke(Integer.valueOf(paramInt));
+      AppMethodBeat.o(218869);
+      return paramIterable;
+    }
+    if (paramInt < 0)
+    {
+      paramIterable = paramb.invoke(Integer.valueOf(paramInt));
+      AppMethodBeat.o(218869);
+      return paramIterable;
+    }
+    paramIterable = paramIterable.iterator();
+    int i = 0;
+    while (paramIterable.hasNext())
+    {
+      Object localObject = paramIterable.next();
+      if (paramInt == i)
+      {
+        AppMethodBeat.o(218869);
+        return localObject;
+      }
+      i += 1;
+    }
+    paramIterable = paramb.invoke(Integer.valueOf(paramInt));
+    AppMethodBeat.o(218869);
+    return paramIterable;
+  }
+  
   public static final <T> String a(Iterable<? extends T> paramIterable, CharSequence paramCharSequence1, CharSequence paramCharSequence2, CharSequence paramCharSequence3, int paramInt, CharSequence paramCharSequence4, b<? super T, ? extends CharSequence> paramb)
   {
     AppMethodBeat.i(129217);
-    p.h(paramIterable, "$this$joinToString");
-    p.h(paramCharSequence1, "separator");
-    p.h(paramCharSequence2, "prefix");
-    p.h(paramCharSequence3, "postfix");
-    p.h(paramCharSequence4, "truncated");
+    p.k(paramIterable, "$this$joinToString");
+    p.k(paramCharSequence1, "separator");
+    p.k(paramCharSequence2, "prefix");
+    p.k(paramCharSequence3, "postfix");
+    p.k(paramCharSequence4, "truncated");
     paramIterable = ((StringBuilder)j.a(paramIterable, (Appendable)new StringBuilder(), paramCharSequence1, paramCharSequence2, paramCharSequence3, paramInt, paramCharSequence4, paramb)).toString();
-    p.g(paramIterable, "joinTo(StringBuilder(), …ed, transform).toString()");
+    p.j(paramIterable, "joinTo(StringBuilder(), …ed, transform).toString()");
     AppMethodBeat.o(129217);
     return paramIterable;
   }
@@ -230,8 +271,8 @@ public class t
   public static final <C extends Collection<? super T>, T> C a(Iterable<? extends T> paramIterable, C paramC)
   {
     AppMethodBeat.i(129191);
-    p.h(paramIterable, "$this$filterNotNullTo");
-    p.h(paramC, "destination");
+    p.k(paramIterable, "$this$filterNotNullTo");
+    p.k(paramC, "destination");
     paramIterable = paramIterable.iterator();
     while (paramIterable.hasNext())
     {
@@ -247,8 +288,8 @@ public class t
   public static final <T> List<T> a(Iterable<? extends T> paramIterable, Comparator<? super T> paramComparator)
   {
     AppMethodBeat.i(129196);
-    p.h(paramIterable, "$this$sortedWith");
-    p.h(paramComparator, "comparator");
+    p.k(paramIterable, "$this$sortedWith");
+    p.k(paramComparator, "comparator");
     if ((paramIterable instanceof Collection))
     {
       if (((Collection)paramIterable).size() <= 1)
@@ -271,7 +312,7 @@ public class t
         throw paramIterable;
       }
       e.a(paramIterable, paramComparator);
-      paramIterable = e.asList(paramIterable);
+      paramIterable = e.Q(paramIterable);
       AppMethodBeat.o(129196);
       return paramIterable;
     }
@@ -281,26 +322,26 @@ public class t
     return paramIterable;
   }
   
-  public static final <T> List<T> a(List<? extends T> paramList, f paramf)
+  public static final <T> List<T> a(List<? extends T> paramList, kotlin.k.e parame)
   {
-    AppMethodBeat.i(206268);
-    p.h(paramList, "$this$slice");
-    p.h(paramf, "indices");
-    if (paramf.isEmpty())
+    AppMethodBeat.i(218908);
+    p.k(paramList, "$this$slice");
+    p.k(parame, "indices");
+    if (parame.isEmpty())
     {
-      paramList = (List)v.SXr;
-      AppMethodBeat.o(206268);
+      paramList = (List)v.aaAd;
+      AppMethodBeat.o(218908);
       return paramList;
     }
-    paramList = j.p((Iterable)paramList.subList(paramf.SYU, paramf.SYV + 1));
-    AppMethodBeat.o(206268);
+    paramList = j.p((Iterable)paramList.subList(parame.dHa, parame.aaBQ + 1));
+    AppMethodBeat.o(218908);
     return paramList;
   }
   
   public static final <T> boolean a(Iterable<? extends T> paramIterable, T paramT)
   {
     AppMethodBeat.i(129173);
-    p.h(paramIterable, "$this$contains");
+    p.k(paramIterable, "$this$contains");
     if ((paramIterable instanceof Collection))
     {
       boolean bool = ((Collection)paramIterable).contains(paramT);
@@ -319,7 +360,7 @@ public class t
   public static final <T> int b(Iterable<? extends T> paramIterable, T paramT)
   {
     AppMethodBeat.i(129179);
-    p.h(paramIterable, "$this$indexOf");
+    p.k(paramIterable, "$this$indexOf");
     if ((paramIterable instanceof List))
     {
       i = ((List)paramIterable).indexOf(paramT);
@@ -332,9 +373,9 @@ public class t
     {
       Object localObject = paramIterable.next();
       if (i < 0) {
-        j.hxH();
+        j.iBO();
       }
-      if (p.j(paramT, localObject))
+      if (p.h(paramT, localObject))
       {
         AppMethodBeat.o(129179);
         return i;
@@ -345,11 +386,26 @@ public class t
     return -1;
   }
   
+  public static final <T> T b(Iterable<? extends T> paramIterable, int paramInt)
+  {
+    AppMethodBeat.i(218867);
+    p.k(paramIterable, "$this$elementAt");
+    if ((paramIterable instanceof List))
+    {
+      paramIterable = ((List)paramIterable).get(paramInt);
+      AppMethodBeat.o(218867);
+      return paramIterable;
+    }
+    paramIterable = j.a(paramIterable, paramInt, (b)new b(paramInt));
+    AppMethodBeat.o(218867);
+    return paramIterable;
+  }
+  
   public static final <T, C extends Collection<? super T>> C b(Iterable<? extends T> paramIterable, C paramC)
   {
     AppMethodBeat.i(129198);
-    p.h(paramIterable, "$this$toCollection");
-    p.h(paramC, "destination");
+    p.k(paramIterable, "$this$toCollection");
+    p.k(paramC, "destination");
     paramIterable = paramIterable.iterator();
     while (paramIterable.hasNext()) {
       paramC.add(paramIterable.next());
@@ -358,11 +414,56 @@ public class t
     return paramC;
   }
   
-  public static final <T> List<T> b(Iterable<? extends T> paramIterable, int paramInt)
+  public static final <T> List<T> b(Collection<? extends T> paramCollection, Iterable<? extends T> paramIterable)
+  {
+    AppMethodBeat.i(129213);
+    p.k(paramCollection, "$this$plus");
+    p.k(paramIterable, "elements");
+    if ((paramIterable instanceof Collection))
+    {
+      int i = paramCollection.size();
+      ArrayList localArrayList = new ArrayList(((Collection)paramIterable).size() + i);
+      localArrayList.addAll(paramCollection);
+      localArrayList.addAll((Collection)paramIterable);
+      paramCollection = (List)localArrayList;
+      AppMethodBeat.o(129213);
+      return paramCollection;
+    }
+    paramCollection = new ArrayList(paramCollection);
+    j.a((Collection)paramCollection, paramIterable);
+    paramCollection = (List)paramCollection;
+    AppMethodBeat.o(129213);
+    return paramCollection;
+  }
+  
+  public static final <T> List<T> b(Collection<? extends T> paramCollection, T paramT)
+  {
+    AppMethodBeat.i(129212);
+    p.k(paramCollection, "$this$plus");
+    ArrayList localArrayList = new ArrayList(paramCollection.size() + 1);
+    localArrayList.addAll(paramCollection);
+    localArrayList.add(paramT);
+    paramCollection = (List)localArrayList;
+    AppMethodBeat.o(129212);
+    return paramCollection;
+  }
+  
+  public static final <T> Set<T> b(Iterable<? extends T> paramIterable1, Iterable<? extends T> paramIterable2)
+  {
+    AppMethodBeat.i(129207);
+    p.k(paramIterable1, "$this$union");
+    p.k(paramIterable2, "other");
+    paramIterable1 = j.u(paramIterable1);
+    j.a((Collection)paramIterable1, paramIterable2);
+    AppMethodBeat.o(129207);
+    return paramIterable1;
+  }
+  
+  public static final <T> List<T> c(Iterable<? extends T> paramIterable, int paramInt)
   {
     int j = 0;
     AppMethodBeat.i(129192);
-    p.h(paramIterable, "$this$take");
+    p.k(paramIterable, "$this$take");
     if (paramInt >= 0) {}
     for (int i = 1; i == 0; i = 0)
     {
@@ -372,7 +473,7 @@ public class t
     }
     if (paramInt == 0)
     {
-      paramIterable = (List)v.SXr;
+      paramIterable = (List)v.aaAd;
       AppMethodBeat.o(129192);
       return paramIterable;
     }
@@ -403,66 +504,21 @@ public class t
       j = i + 1;
       i = j;
     } while (j != paramInt);
-    paramIterable = j.kr((List)localArrayList);
+    paramIterable = j.ll((List)localArrayList);
     AppMethodBeat.o(129192);
     return paramIterable;
-  }
-  
-  public static final <T> List<T> b(Collection<? extends T> paramCollection, Iterable<? extends T> paramIterable)
-  {
-    AppMethodBeat.i(129213);
-    p.h(paramCollection, "$this$plus");
-    p.h(paramIterable, "elements");
-    if ((paramIterable instanceof Collection))
-    {
-      int i = paramCollection.size();
-      ArrayList localArrayList = new ArrayList(((Collection)paramIterable).size() + i);
-      localArrayList.addAll(paramCollection);
-      localArrayList.addAll((Collection)paramIterable);
-      paramCollection = (List)localArrayList;
-      AppMethodBeat.o(129213);
-      return paramCollection;
-    }
-    paramCollection = new ArrayList(paramCollection);
-    j.a((Collection)paramCollection, paramIterable);
-    paramCollection = (List)paramCollection;
-    AppMethodBeat.o(129213);
-    return paramCollection;
-  }
-  
-  public static final <T> List<T> b(Collection<? extends T> paramCollection, T paramT)
-  {
-    AppMethodBeat.i(129212);
-    p.h(paramCollection, "$this$plus");
-    ArrayList localArrayList = new ArrayList(paramCollection.size() + 1);
-    localArrayList.addAll(paramCollection);
-    localArrayList.add(paramT);
-    paramCollection = (List)localArrayList;
-    AppMethodBeat.o(129212);
-    return paramCollection;
-  }
-  
-  public static final <T> Set<T> b(Iterable<? extends T> paramIterable1, Iterable<? extends T> paramIterable2)
-  {
-    AppMethodBeat.i(129207);
-    p.h(paramIterable1, "$this$union");
-    p.h(paramIterable2, "other");
-    paramIterable1 = j.u(paramIterable1);
-    j.a((Collection)paramIterable1, paramIterable2);
-    AppMethodBeat.o(129207);
-    return paramIterable1;
   }
   
   public static final <T, R> List<o<T, R>> c(Iterable<? extends T> paramIterable, Iterable<? extends R> paramIterable1)
   {
     AppMethodBeat.i(129214);
-    p.h(paramIterable, "$this$zip");
-    p.h(paramIterable1, "other");
+    p.k(paramIterable, "$this$zip");
+    p.k(paramIterable1, "other");
     Iterator localIterator1 = paramIterable.iterator();
     Iterator localIterator2 = paramIterable1.iterator();
     paramIterable = new ArrayList(Math.min(j.a(paramIterable, 10), j.a(paramIterable1, 10)));
     while ((localIterator1.hasNext()) && (localIterator2.hasNext())) {
-      paramIterable.add(kotlin.s.U(localIterator1.next(), localIterator2.next()));
+      paramIterable.add(kotlin.s.M(localIterator1.next(), localIterator2.next()));
     }
     paramIterable = (List)paramIterable;
     AppMethodBeat.o(129214);
@@ -472,7 +528,7 @@ public class t
   public static final <T> List<T> c(Iterable<? extends T> paramIterable, T paramT)
   {
     AppMethodBeat.i(129210);
-    p.h(paramIterable, "$this$minus");
+    p.k(paramIterable, "$this$minus");
     ArrayList localArrayList = new ArrayList(j.a(paramIterable, 10));
     paramIterable = paramIterable.iterator();
     int i = 0;
@@ -483,7 +539,7 @@ public class t
       {
         Object localObject = paramIterable.next();
         int j;
-        if ((i == 0) && (p.j(localObject, paramT)))
+        if ((i == 0) && (p.h(localObject, paramT)))
         {
           j = 0;
           i = 1;
@@ -507,8 +563,8 @@ public class t
   public static final <T> List<T> c(Iterable<? extends T> paramIterable, b<? super T, Boolean> paramb)
   {
     AppMethodBeat.i(129189);
-    p.h(paramIterable, "$this$filter");
-    p.h(paramb, "predicate");
+    p.k(paramIterable, "$this$filter");
+    p.k(paramb, "predicate");
     Collection localCollection = (Collection)new ArrayList();
     paramIterable = paramIterable.iterator();
     while (paramIterable.hasNext())
@@ -526,7 +582,7 @@ public class t
   public static final <T> List<T> d(Iterable<? extends T> paramIterable, T paramT)
   {
     AppMethodBeat.i(129211);
-    p.h(paramIterable, "$this$plus");
+    p.k(paramIterable, "$this$plus");
     if ((paramIterable instanceof Collection))
     {
       paramIterable = j.b((Collection)paramIterable, paramT);
@@ -544,8 +600,8 @@ public class t
   public static final <T, R> List<R> d(Iterable<? extends T> paramIterable, b<? super T, ? extends R> paramb)
   {
     AppMethodBeat.i(129203);
-    p.h(paramIterable, "$this$map");
-    p.h(paramb, "transform");
+    p.k(paramIterable, "$this$map");
+    p.k(paramb, "transform");
     Collection localCollection = (Collection)new ArrayList(j.a(paramIterable, 10));
     paramIterable = paramIterable.iterator();
     while (paramIterable.hasNext()) {
@@ -559,10 +615,10 @@ public class t
   public static final <T> T e(Iterable<? extends T> paramIterable)
   {
     AppMethodBeat.i(129174);
-    p.h(paramIterable, "$this$first");
+    p.k(paramIterable, "$this$first");
     if ((paramIterable instanceof List))
     {
-      paramIterable = j.ks((List)paramIterable);
+      paramIterable = j.lo((List)paramIterable);
       AppMethodBeat.o(129174);
       return paramIterable;
     }
@@ -581,7 +637,7 @@ public class t
   public static final <T> T f(Iterable<? extends T> paramIterable)
   {
     AppMethodBeat.i(129176);
-    p.h(paramIterable, "$this$firstOrNull");
+    p.k(paramIterable, "$this$firstOrNull");
     if ((paramIterable instanceof List))
     {
       if (((List)paramIterable).isEmpty())
@@ -607,10 +663,10 @@ public class t
   public static final <T> T g(Iterable<? extends T> paramIterable)
   {
     AppMethodBeat.i(129180);
-    p.h(paramIterable, "$this$last");
+    p.k(paramIterable, "$this$last");
     if ((paramIterable instanceof List))
     {
-      paramIterable = j.ku((List)paramIterable);
+      paramIterable = j.lq((List)paramIterable);
       AppMethodBeat.o(129180);
       return paramIterable;
     }
@@ -632,23 +688,23 @@ public class t
   
   public static final <T> T h(Iterable<? extends T> paramIterable)
   {
-    AppMethodBeat.i(206266);
-    p.h(paramIterable, "$this$lastOrNull");
+    AppMethodBeat.i(218889);
+    p.k(paramIterable, "$this$lastOrNull");
     if ((paramIterable instanceof List))
     {
       if (((List)paramIterable).isEmpty())
       {
-        AppMethodBeat.o(206266);
+        AppMethodBeat.o(218889);
         return null;
       }
       paramIterable = ((List)paramIterable).get(((List)paramIterable).size() - 1);
-      AppMethodBeat.o(206266);
+      AppMethodBeat.o(218889);
       return paramIterable;
     }
     paramIterable = paramIterable.iterator();
     if (!paramIterable.hasNext())
     {
-      AppMethodBeat.o(206266);
+      AppMethodBeat.o(218889);
       return null;
     }
     Object localObject;
@@ -656,17 +712,17 @@ public class t
     {
       localObject = paramIterable.next();
     } while (paramIterable.hasNext());
-    AppMethodBeat.o(206266);
+    AppMethodBeat.o(218889);
     return localObject;
   }
   
   public static final <T> T i(Iterable<? extends T> paramIterable)
   {
     AppMethodBeat.i(129183);
-    p.h(paramIterable, "$this$single");
+    p.k(paramIterable, "$this$single");
     if ((paramIterable instanceof List))
     {
-      paramIterable = j.kw((List)paramIterable);
+      paramIterable = j.ls((List)paramIterable);
       AppMethodBeat.o(129183);
       return paramIterable;
     }
@@ -691,7 +747,7 @@ public class t
   public static final <T> T j(Iterable<? extends T> paramIterable)
   {
     AppMethodBeat.i(129185);
-    p.h(paramIterable, "$this$singleOrNull");
+    p.k(paramIterable, "$this$singleOrNull");
     if ((paramIterable instanceof List))
     {
       if (((List)paramIterable).size() == 1)
@@ -723,14 +779,14 @@ public class t
   {
     int i = 1;
     AppMethodBeat.i(129187);
-    p.h(paramIterable, "$this$drop");
+    p.k(paramIterable, "$this$drop");
     ArrayList localArrayList;
     if ((paramIterable instanceof Collection))
     {
       int j = ((Collection)paramIterable).size() - 1;
       if (j <= 0)
       {
-        paramIterable = (List)v.SXr;
+        paramIterable = (List)v.aaAd;
         AppMethodBeat.o(129187);
         return paramIterable;
       }
@@ -778,16 +834,25 @@ public class t
           i += 1;
         }
       }
-      paramIterable = j.kr((List)localArrayList);
+      paramIterable = j.ll((List)localArrayList);
       AppMethodBeat.o(129187);
       return paramIterable;
     }
   }
   
-  public static final <T> T ks(List<? extends T> paramList)
+  public static final <T> List<T> l(Iterable<? extends T> paramIterable)
+  {
+    AppMethodBeat.i(129190);
+    p.k(paramIterable, "$this$filterNotNull");
+    paramIterable = (List)j.a(paramIterable, (Collection)new ArrayList());
+    AppMethodBeat.o(129190);
+    return paramIterable;
+  }
+  
+  public static final <T> T lo(List<? extends T> paramList)
   {
     AppMethodBeat.i(129175);
-    p.h(paramList, "$this$first");
+    p.k(paramList, "$this$first");
     if (paramList.isEmpty())
     {
       paramList = (Throwable)new NoSuchElementException("List is empty.");
@@ -799,10 +864,10 @@ public class t
     return paramList;
   }
   
-  public static final <T> T kt(List<? extends T> paramList)
+  public static final <T> T lp(List<? extends T> paramList)
   {
     AppMethodBeat.i(129177);
-    p.h(paramList, "$this$firstOrNull");
+    p.k(paramList, "$this$firstOrNull");
     if (paramList.isEmpty())
     {
       AppMethodBeat.o(129177);
@@ -813,25 +878,25 @@ public class t
     return paramList;
   }
   
-  public static final <T> T ku(List<? extends T> paramList)
+  public static final <T> T lq(List<? extends T> paramList)
   {
     AppMethodBeat.i(129181);
-    p.h(paramList, "$this$last");
+    p.k(paramList, "$this$last");
     if (paramList.isEmpty())
     {
       paramList = (Throwable)new NoSuchElementException("List is empty.");
       AppMethodBeat.o(129181);
       throw paramList;
     }
-    paramList = paramList.get(j.kq(paramList));
+    paramList = paramList.get(j.lk(paramList));
     AppMethodBeat.o(129181);
     return paramList;
   }
   
-  public static final <T> T kv(List<? extends T> paramList)
+  public static final <T> T lr(List<? extends T> paramList)
   {
     AppMethodBeat.i(129182);
-    p.h(paramList, "$this$lastOrNull");
+    p.k(paramList, "$this$lastOrNull");
     if (paramList.isEmpty())
     {
       AppMethodBeat.o(129182);
@@ -842,10 +907,10 @@ public class t
     return paramList;
   }
   
-  public static final <T> T kw(List<? extends T> paramList)
+  public static final <T> T ls(List<? extends T> paramList)
   {
     AppMethodBeat.i(129184);
-    p.h(paramList, "$this$single");
+    p.k(paramList, "$this$single");
     switch (paramList.size())
     {
     default: 
@@ -862,10 +927,10 @@ public class t
     return paramList;
   }
   
-  public static final <T> T kx(List<? extends T> paramList)
+  public static final <T> T lt(List<? extends T> paramList)
   {
     AppMethodBeat.i(129186);
-    p.h(paramList, "$this$singleOrNull");
+    p.k(paramList, "$this$singleOrNull");
     if (paramList.size() == 1)
     {
       paramList = paramList.get(0);
@@ -876,19 +941,10 @@ public class t
     return null;
   }
   
-  public static final <T> List<T> l(Iterable<? extends T> paramIterable)
-  {
-    AppMethodBeat.i(129190);
-    p.h(paramIterable, "$this$filterNotNull");
-    paramIterable = (List)j.a(paramIterable, (Collection)new ArrayList());
-    AppMethodBeat.o(129190);
-    return paramIterable;
-  }
-  
   public static final <T> List<T> m(Iterable<? extends T> paramIterable)
   {
     AppMethodBeat.i(129194);
-    p.h(paramIterable, "$this$reversed");
+    p.k(paramIterable, "$this$reversed");
     if (((paramIterable instanceof Collection)) && (((Collection)paramIterable).size() <= 1))
     {
       paramIterable = j.p(paramIterable);
@@ -896,7 +952,7 @@ public class t
       return paramIterable;
     }
     paramIterable = j.q(paramIterable);
-    j.reverse(paramIterable);
+    j.ln(paramIterable);
     AppMethodBeat.o(129194);
     return paramIterable;
   }
@@ -904,7 +960,7 @@ public class t
   public static final <T extends Comparable<? super T>> List<T> n(Iterable<? extends T> paramIterable)
   {
     AppMethodBeat.i(129195);
-    p.h(paramIterable, "$this$sorted");
+    p.k(paramIterable, "$this$sorted");
     if ((paramIterable instanceof Collection))
     {
       if (((Collection)paramIterable).size() <= 1)
@@ -933,13 +989,13 @@ public class t
         AppMethodBeat.o(129195);
         throw paramIterable;
       }
-      e.sort((Object[])paramIterable);
-      paramIterable = e.asList((Object[])paramIterable);
+      e.S((Object[])paramIterable);
+      paramIterable = e.Q((Object[])paramIterable);
       AppMethodBeat.o(129195);
       return paramIterable;
     }
     paramIterable = j.q(paramIterable);
-    j.sort(paramIterable);
+    j.lm(paramIterable);
     AppMethodBeat.o(129195);
     return paramIterable;
   }
@@ -947,8 +1003,8 @@ public class t
   public static final <T> HashSet<T> o(Iterable<? extends T> paramIterable)
   {
     AppMethodBeat.i(183772);
-    p.h(paramIterable, "$this$toHashSet");
-    paramIterable = (HashSet)j.b(paramIterable, (Collection)new HashSet(ae.atJ(j.a(paramIterable, 12))));
+    p.k(paramIterable, "$this$toHashSet");
+    paramIterable = (HashSet)j.b(paramIterable, (Collection)new HashSet(ae.aDD(j.a(paramIterable, 12))));
     AppMethodBeat.o(183772);
     return paramIterable;
   }
@@ -956,17 +1012,17 @@ public class t
   public static final <T> List<T> p(Iterable<? extends T> paramIterable)
   {
     AppMethodBeat.i(129199);
-    p.h(paramIterable, "$this$toList");
+    p.k(paramIterable, "$this$toList");
     if ((paramIterable instanceof Collection))
     {
       switch (((Collection)paramIterable).size())
       {
       default: 
-        paramIterable = j.v((Collection)paramIterable);
+        paramIterable = j.t((Collection)paramIterable);
         AppMethodBeat.o(129199);
         return paramIterable;
       case 0: 
-        paramIterable = (List)v.SXr;
+        paramIterable = (List)v.aaAd;
         AppMethodBeat.o(129199);
         return paramIterable;
       }
@@ -978,7 +1034,7 @@ public class t
         return paramIterable;
       }
     }
-    paramIterable = j.kr(j.q(paramIterable));
+    paramIterable = j.ll(j.q(paramIterable));
     AppMethodBeat.o(129199);
     return paramIterable;
   }
@@ -986,10 +1042,10 @@ public class t
   public static final <T> List<T> q(Iterable<? extends T> paramIterable)
   {
     AppMethodBeat.i(129200);
-    p.h(paramIterable, "$this$toMutableList");
+    p.k(paramIterable, "$this$toMutableList");
     if ((paramIterable instanceof Collection))
     {
-      paramIterable = j.v((Collection)paramIterable);
+      paramIterable = j.t((Collection)paramIterable);
       AppMethodBeat.o(129200);
       return paramIterable;
     }
@@ -998,20 +1054,36 @@ public class t
     return paramIterable;
   }
   
+  public static final boolean[] q(Collection<Boolean> paramCollection)
+  {
+    AppMethodBeat.i(218923);
+    p.k(paramCollection, "$this$toBooleanArray");
+    boolean[] arrayOfBoolean = new boolean[paramCollection.size()];
+    paramCollection = paramCollection.iterator();
+    int i = 0;
+    while (paramCollection.hasNext())
+    {
+      arrayOfBoolean[i] = ((Boolean)paramCollection.next()).booleanValue();
+      i += 1;
+    }
+    AppMethodBeat.o(218923);
+    return arrayOfBoolean;
+  }
+  
   public static final <T> Set<T> r(Iterable<? extends T> paramIterable)
   {
     AppMethodBeat.i(129202);
-    p.h(paramIterable, "$this$toSet");
+    p.k(paramIterable, "$this$toSet");
     if ((paramIterable instanceof Collection))
     {
       switch (((Collection)paramIterable).size())
       {
       default: 
-        paramIterable = (Set)j.b(paramIterable, (Collection)new LinkedHashSet(ae.atJ(((Collection)paramIterable).size())));
+        paramIterable = (Set)j.b(paramIterable, (Collection)new LinkedHashSet(ae.aDD(((Collection)paramIterable).size())));
         AppMethodBeat.o(129202);
         return paramIterable;
       case 0: 
-        paramIterable = (Set)x.SXt;
+        paramIterable = (Set)x.aaAf;
         AppMethodBeat.o(129202);
         return paramIterable;
       }
@@ -1023,49 +1095,15 @@ public class t
         return paramIterable;
       }
     }
-    paramIterable = ak.C((Set)j.b(paramIterable, (Collection)new LinkedHashSet()));
+    paramIterable = ak.B((Set)j.b(paramIterable, (Collection)new LinkedHashSet()));
     AppMethodBeat.o(129202);
     return paramIterable;
   }
   
-  public static final <T> Iterable<y<T>> s(Iterable<? extends T> paramIterable)
-  {
-    AppMethodBeat.i(129204);
-    p.h(paramIterable, "$this$withIndex");
-    paramIterable = (Iterable)new z((a)new c(paramIterable));
-    AppMethodBeat.o(129204);
-    return paramIterable;
-  }
-  
-  public static final boolean[] s(Collection<Boolean> paramCollection)
-  {
-    AppMethodBeat.i(206269);
-    p.h(paramCollection, "$this$toBooleanArray");
-    boolean[] arrayOfBoolean = new boolean[paramCollection.size()];
-    paramCollection = paramCollection.iterator();
-    int i = 0;
-    while (paramCollection.hasNext())
-    {
-      arrayOfBoolean[i] = ((Boolean)paramCollection.next()).booleanValue();
-      i += 1;
-    }
-    AppMethodBeat.o(206269);
-    return arrayOfBoolean;
-  }
-  
-  public static final <T> List<T> t(Iterable<? extends T> paramIterable)
-  {
-    AppMethodBeat.i(129205);
-    p.h(paramIterable, "$this$distinct");
-    paramIterable = j.p((Iterable)j.u(paramIterable));
-    AppMethodBeat.o(129205);
-    return paramIterable;
-  }
-  
-  public static final float[] t(Collection<Float> paramCollection)
+  public static final float[] r(Collection<Float> paramCollection)
   {
     AppMethodBeat.i(168695);
-    p.h(paramCollection, "$this$toFloatArray");
+    p.k(paramCollection, "$this$toFloatArray");
     float[] arrayOfFloat = new float[paramCollection.size()];
     paramCollection = paramCollection.iterator();
     int i = 0;
@@ -1078,41 +1116,19 @@ public class t
     return arrayOfFloat;
   }
   
-  public static final long[] toLongArray(Collection<Long> paramCollection)
+  public static final <T> Iterable<y<T>> s(Iterable<? extends T> paramIterable)
   {
-    AppMethodBeat.i(206270);
-    p.h(paramCollection, "$this$toLongArray");
-    long[] arrayOfLong = new long[paramCollection.size()];
-    paramCollection = paramCollection.iterator();
-    int i = 0;
-    while (paramCollection.hasNext())
-    {
-      arrayOfLong[i] = ((Number)paramCollection.next()).longValue();
-      i += 1;
-    }
-    AppMethodBeat.o(206270);
-    return arrayOfLong;
-  }
-  
-  public static final <T> Set<T> u(Iterable<? extends T> paramIterable)
-  {
-    AppMethodBeat.i(129206);
-    p.h(paramIterable, "$this$toMutableSet");
-    if ((paramIterable instanceof Collection))
-    {
-      paramIterable = (Set)new LinkedHashSet((Collection)paramIterable);
-      AppMethodBeat.o(129206);
-      return paramIterable;
-    }
-    paramIterable = (Set)j.b(paramIterable, (Collection)new LinkedHashSet());
-    AppMethodBeat.o(129206);
+    AppMethodBeat.i(129204);
+    p.k(paramIterable, "$this$withIndex");
+    paramIterable = (Iterable)new z((a)new c(paramIterable));
+    AppMethodBeat.o(129204);
     return paramIterable;
   }
   
-  public static final int[] u(Collection<Integer> paramCollection)
+  public static final int[] s(Collection<Integer> paramCollection)
   {
     AppMethodBeat.i(129197);
-    p.h(paramCollection, "$this$toIntArray");
+    p.k(paramCollection, "$this$toIntArray");
     int[] arrayOfInt = new int[paramCollection.size()];
     paramCollection = paramCollection.iterator();
     int i = 0;
@@ -1125,20 +1141,53 @@ public class t
     return arrayOfInt;
   }
   
+  public static final <T> List<T> t(Iterable<? extends T> paramIterable)
+  {
+    AppMethodBeat.i(129205);
+    p.k(paramIterable, "$this$distinct");
+    paramIterable = j.p((Iterable)j.u(paramIterable));
+    AppMethodBeat.o(129205);
+    return paramIterable;
+  }
+  
+  public static final <T> List<T> t(Collection<? extends T> paramCollection)
+  {
+    AppMethodBeat.i(129201);
+    p.k(paramCollection, "$this$toMutableList");
+    paramCollection = (List)new ArrayList(paramCollection);
+    AppMethodBeat.o(129201);
+    return paramCollection;
+  }
+  
+  public static final <T> Set<T> u(Iterable<? extends T> paramIterable)
+  {
+    AppMethodBeat.i(129206);
+    p.k(paramIterable, "$this$toMutableSet");
+    if ((paramIterable instanceof Collection))
+    {
+      paramIterable = (Set)new LinkedHashSet((Collection)paramIterable);
+      AppMethodBeat.o(129206);
+      return paramIterable;
+    }
+    paramIterable = (Set)j.b(paramIterable, (Collection)new LinkedHashSet());
+    AppMethodBeat.o(129206);
+    return paramIterable;
+  }
+  
   public static final Float v(Iterable<Float> paramIterable)
   {
-    AppMethodBeat.i(206271);
-    p.h(paramIterable, "$this$max");
+    AppMethodBeat.i(218945);
+    p.k(paramIterable, "$this$max");
     paramIterable = paramIterable.iterator();
     if (!paramIterable.hasNext())
     {
-      AppMethodBeat.o(206271);
+      AppMethodBeat.o(218945);
       return null;
     }
     float f1 = ((Number)paramIterable.next()).floatValue();
     if (Float.isNaN(f1))
     {
-      AppMethodBeat.o(206271);
+      AppMethodBeat.o(218945);
       return Float.valueOf(f1);
       Object localObject;
       if (f1 < localObject) {
@@ -1153,27 +1202,18 @@ public class t
         if (!Float.isNaN(f2)) {
           break;
         }
-        AppMethodBeat.o(206271);
+        AppMethodBeat.o(218945);
         return Float.valueOf(f2);
       }
-      AppMethodBeat.o(206271);
+      AppMethodBeat.o(218945);
       return Float.valueOf(f1);
     }
-  }
-  
-  public static final <T> List<T> v(Collection<? extends T> paramCollection)
-  {
-    AppMethodBeat.i(129201);
-    p.h(paramCollection, "$this$toMutableList");
-    paramCollection = (List)new ArrayList(paramCollection);
-    AppMethodBeat.o(129201);
-    return paramCollection;
   }
   
   public static final <T extends Comparable<? super T>> T w(Iterable<? extends T> paramIterable)
   {
     AppMethodBeat.i(129208);
-    p.h(paramIterable, "$this$max");
+    p.k(paramIterable, "$this$max");
     Iterator localIterator = paramIterable.iterator();
     if (!localIterator.hasNext())
     {
@@ -1200,18 +1240,18 @@ public class t
   
   public static final Float x(Iterable<Float> paramIterable)
   {
-    AppMethodBeat.i(206272);
-    p.h(paramIterable, "$this$min");
+    AppMethodBeat.i(218951);
+    p.k(paramIterable, "$this$min");
     paramIterable = paramIterable.iterator();
     if (!paramIterable.hasNext())
     {
-      AppMethodBeat.o(206272);
+      AppMethodBeat.o(218951);
       return null;
     }
     float f1 = ((Number)paramIterable.next()).floatValue();
     if (Float.isNaN(f1))
     {
-      AppMethodBeat.o(206272);
+      AppMethodBeat.o(218951);
       return Float.valueOf(f1);
       Object localObject;
       if (f1 > localObject) {
@@ -1226,10 +1266,10 @@ public class t
         if (!Float.isNaN(f2)) {
           break;
         }
-        AppMethodBeat.o(206272);
+        AppMethodBeat.o(218951);
         return Float.valueOf(f2);
       }
-      AppMethodBeat.o(206272);
+      AppMethodBeat.o(218951);
       return Float.valueOf(f1);
     }
   }
@@ -1237,7 +1277,7 @@ public class t
   public static final <T extends Comparable<? super T>> T y(Iterable<? extends T> paramIterable)
   {
     AppMethodBeat.i(129209);
-    p.h(paramIterable, "$this$min");
+    p.k(paramIterable, "$this$min");
     Iterator localIterator = paramIterable.iterator();
     if (!localIterator.hasNext())
     {
@@ -1265,13 +1305,13 @@ public class t
   public static final <T> h<T> z(Iterable<? extends T> paramIterable)
   {
     AppMethodBeat.i(129219);
-    p.h(paramIterable, "$this$asSequence");
+    p.k(paramIterable, "$this$asSequence");
     paramIterable = (h)new a(paramIterable);
     AppMethodBeat.o(129219);
     return paramIterable;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"kotlin/sequences/SequencesKt__SequencesKt$Sequence$1", "Lkotlin/sequences/Sequence;", "iterator", "", "kotlin-stdlib"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlin/sequences/SequencesKt__SequencesKt$Sequence$1", "Lkotlin/sequences/Sequence;", "iterator", "", "kotlin-stdlib"})
   public static final class a
     implements h<T>
   {
@@ -1280,13 +1320,24 @@ public class t
     public final Iterator<T> iterator()
     {
       AppMethodBeat.i(129234);
-      Iterator localIterator = this.SXo.iterator();
+      Iterator localIterator = this.aaAa.iterator();
       AppMethodBeat.o(129234);
       return localIterator;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "it", "", "invoke"})
+  static final class b
+    extends q
+    implements b
+  {
+    b(int paramInt)
+    {
+      super();
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "invoke"})
   static final class c
     extends q
     implements a<Iterator<? extends T>>

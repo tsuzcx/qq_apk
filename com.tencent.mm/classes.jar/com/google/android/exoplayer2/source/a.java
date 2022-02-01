@@ -8,69 +8,14 @@ import com.google.android.exoplayer2.w.b;
 abstract class a
   extends w
 {
-  private final int bva;
+  private final int beC;
   
   public a(int paramInt)
   {
-    this.bva = paramInt;
+    this.beC = paramInt;
   }
   
-  public final w.a a(int paramInt, w.a parama, boolean paramBoolean)
-  {
-    int i = ev(paramInt);
-    int j = ey(i);
-    int k = ex(i);
-    vk().a(paramInt - k, parama, paramBoolean);
-    parama.bdi = (j + parama.bdi);
-    if (paramBoolean) {
-      parama.bcT = Pair.create(ez(i), parama.bcT);
-    }
-    return parama;
-  }
-  
-  public final w.b a(int paramInt, w.b paramb, boolean paramBoolean, long paramLong)
-  {
-    int j = ew(paramInt);
-    int i = ey(j);
-    j = ex(j);
-    vk().a(paramInt - i, paramb, paramBoolean, paramLong);
-    paramb.bey += j;
-    paramb.bez += j;
-    return paramb;
-  }
-  
-  public final int aZ(int paramInt1, int paramInt2)
-  {
-    int j = 0;
-    int k = ew(paramInt1);
-    int m = ey(k);
-    w localw = vk();
-    int i;
-    if (paramInt2 == 2)
-    {
-      i = 0;
-      paramInt1 = localw.aZ(paramInt1 - m, i);
-      if (paramInt1 == -1) {
-        break label59;
-      }
-      paramInt1 = m + paramInt1;
-    }
-    label59:
-    do
-    {
-      return paramInt1;
-      i = paramInt2;
-      break;
-      paramInt1 = k + 1;
-      if (paramInt1 < this.bva) {
-        return ey(paramInt1);
-      }
-      paramInt1 = j;
-    } while (paramInt2 == 2);
-    return -1;
-  }
-  
-  public final int ae(Object paramObject)
+  public final int W(Object paramObject)
   {
     if (!(paramObject instanceof Pair)) {}
     int i;
@@ -84,30 +29,85 @@ abstract class a
         localObject = (Pair)paramObject;
         paramObject = ((Pair)localObject).first;
         localObject = ((Pair)localObject).second;
-        i = ag(paramObject);
+        i = Y(paramObject);
       } while (i == -1);
-      j = vk().ae(localObject);
+      j = ti().W(localObject);
     } while (j == -1);
-    return ex(i) + j;
+    return eN(i) + j;
   }
   
-  protected abstract int ag(Object paramObject);
+  protected abstract int Y(Object paramObject);
   
-  protected abstract int ev(int paramInt);
+  public final w.a a(int paramInt, w.a parama, boolean paramBoolean)
+  {
+    int i = eL(paramInt);
+    int j = eO(i);
+    int k = eN(i);
+    ti().a(paramInt - k, parama, paramBoolean);
+    parama.aMI = (j + parama.aMI);
+    if (paramBoolean) {
+      parama.aMt = Pair.create(eP(i), parama.aMt);
+    }
+    return parama;
+  }
   
-  protected abstract int ew(int paramInt);
+  public final w.b a(int paramInt, w.b paramb, boolean paramBoolean, long paramLong)
+  {
+    int j = eM(paramInt);
+    int i = eO(j);
+    j = eN(j);
+    ti().a(paramInt - i, paramb, paramBoolean, paramLong);
+    paramb.aNZ += j;
+    paramb.aOa += j;
+    return paramb;
+  }
   
-  protected abstract int ex(int paramInt);
+  public final int bf(int paramInt1, int paramInt2)
+  {
+    int j = 0;
+    int k = eM(paramInt1);
+    int m = eO(k);
+    w localw = ti();
+    int i;
+    if (paramInt2 == 2)
+    {
+      i = 0;
+      paramInt1 = localw.bf(paramInt1 - m, i);
+      if (paramInt1 == -1) {
+        break label59;
+      }
+      paramInt1 = m + paramInt1;
+    }
+    label59:
+    do
+    {
+      return paramInt1;
+      i = paramInt2;
+      break;
+      paramInt1 = k + 1;
+      if (paramInt1 < this.beC) {
+        return eO(paramInt1);
+      }
+      paramInt1 = j;
+    } while (paramInt2 == 2);
+    return -1;
+  }
   
-  protected abstract int ey(int paramInt);
+  protected abstract int eL(int paramInt);
   
-  protected abstract Object ez(int paramInt);
+  protected abstract int eM(int paramInt);
   
-  protected abstract w vk();
+  protected abstract int eN(int paramInt);
+  
+  protected abstract int eO(int paramInt);
+  
+  protected abstract Object eP(int paramInt);
+  
+  protected abstract w ti();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.source.a
  * JD-Core Version:    0.7.0.1
  */

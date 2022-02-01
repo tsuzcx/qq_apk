@@ -11,16 +11,16 @@ public final class m
     super(paramAppBrandRuntime);
   }
   
-  public final void aep(String paramString)
+  public final void amj(String paramString)
   {
     AppMethodBeat.i(47995);
-    b.n(this.kEc, paramString);
+    b.o(this.nxs, paramString);
     AppMethodBeat.o(47995);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.m
  * JD-Core Version:    0.7.0.1
  */

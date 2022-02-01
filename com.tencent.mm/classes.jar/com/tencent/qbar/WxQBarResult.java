@@ -10,8 +10,8 @@ public class WxQBarResult
   implements Parcelable
 {
   public static final Parcelable.Creator<WxQBarResult> CREATOR;
-  public int RJN;
-  public WxQBarPoint RKp;
+  public WxQBarPoint ZmX;
+  public int Zmv;
   
   static
   {
@@ -22,7 +22,7 @@ public class WxQBarResult
   
   public WxQBarResult(int paramInt1, String paramString1, String paramString2, byte[] paramArrayOfByte, String paramString3, int paramInt2)
   {
-    this.RJN = 0;
+    this.Zmv = 0;
     this.typeID = paramInt1;
     this.typeName = paramString1;
     this.data = paramString2;
@@ -34,14 +34,14 @@ public class WxQBarResult
   public WxQBarResult(Parcel paramParcel)
   {
     AppMethodBeat.i(176210);
-    this.RJN = 0;
+    this.Zmv = 0;
     this.typeID = paramParcel.readInt();
     this.typeName = paramParcel.readString();
     this.data = paramParcel.readString();
     paramParcel.readByteArray(this.rawData);
     this.charset = paramParcel.readString();
-    this.RJN = paramParcel.readInt();
-    this.RKp = ((WxQBarPoint)paramParcel.readParcelable(WxQBarPoint.class.getClassLoader()));
+    this.Zmv = paramParcel.readInt();
+    this.ZmX = ((WxQBarPoint)paramParcel.readParcelable(WxQBarPoint.class.getClassLoader()));
     this.priorityLevel = paramParcel.readInt();
     AppMethodBeat.o(176210);
   }
@@ -59,15 +59,15 @@ public class WxQBarResult
     paramParcel.writeString(this.data);
     paramParcel.writeByteArray(this.rawData);
     paramParcel.writeString(this.charset);
-    paramParcel.writeInt(this.RJN);
-    paramParcel.writeParcelable(this.RKp, paramInt);
+    paramParcel.writeInt(this.Zmv);
+    paramParcel.writeParcelable(this.ZmX, paramInt);
     paramParcel.writeInt(this.priorityLevel);
     AppMethodBeat.o(176211);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.qbar.WxQBarResult
  * JD-Core Version:    0.7.0.1
  */

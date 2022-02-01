@@ -10,17 +10,17 @@ public final class a
   public static int b(b.a parama)
   {
     AppMethodBeat.i(122357);
-    c.cSa();
+    c.dgZ();
     int i = Util.getInt(c.c(parama, ""), 0);
     AppMethodBeat.o(122357);
     return i;
   }
   
-  public static boolean cRq()
+  public static boolean dgl()
   {
     AppMethodBeat.i(122354);
-    c.cSa();
-    if (Util.getInt(c.c(b.a.rUk, ""), 0) > 0)
+    c.dgZ();
+    if (Util.getInt(c.c(b.a.vAU, ""), 0) > 0)
     {
       AppMethodBeat.o(122354);
       return true;
@@ -29,11 +29,11 @@ public final class a
     return false;
   }
   
-  public static boolean cRr()
+  public static boolean dgm()
   {
     AppMethodBeat.i(122355);
-    c.cSa();
-    if (Util.getInt(c.c(b.a.rUl, ""), 0) > 0)
+    c.dgZ();
+    if (Util.getInt(c.c(b.a.vAV, ""), 0) > 0)
     {
       AppMethodBeat.o(122355);
       return true;
@@ -42,11 +42,11 @@ public final class a
     return false;
   }
   
-  public static boolean cRs()
+  public static boolean dgn()
   {
     AppMethodBeat.i(122356);
-    c.cSa();
-    if (Util.getInt(c.c(b.a.rUm, ""), 0) > 0)
+    c.dgZ();
+    if (Util.getInt(c.c(b.a.vAW, ""), 0) > 0)
     {
       AppMethodBeat.o(122356);
       return true;
@@ -57,7 +57,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.g.a
  * JD-Core Version:    0.7.0.1
  */

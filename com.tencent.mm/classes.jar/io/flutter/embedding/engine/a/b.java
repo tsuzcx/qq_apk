@@ -1,32 +1,53 @@
 package io.flutter.embedding.engine.a;
 
-import android.os.Build;
-import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import java.util.Arrays;
 
-final class b
+public final class b
 {
-  private static final String[] SUPPORTED_ABIS;
+  public final String aari;
+  public final String aarj;
+  public final String aark;
+  public final String aarl;
+  public final String aarm;
+  public final String aarn;
+  public final boolean aaro;
   
-  static
+  public b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, boolean paramBoolean)
   {
-    AppMethodBeat.i(215011);
-    if (Build.VERSION.SDK_INT >= 21) {}
-    for (Object localObject = Build.SUPPORTED_ABIS;; localObject = (String[])((ArrayList)localObject).toArray(new String[0]))
-    {
-      SUPPORTED_ABIS = (String[])localObject;
-      AppMethodBeat.o(215011);
-      return;
-      localObject = new ArrayList(Arrays.asList(new String[] { Build.CPU_ABI, Build.CPU_ABI2 }));
-      ((ArrayList)localObject).removeAll(Arrays.asList(new String[] { null, "" }));
+    AppMethodBeat.i(255938);
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = "libapp.so";
     }
+    this.aari = str;
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "vm_snapshot_data";
+    }
+    this.aarj = paramString1;
+    paramString1 = paramString3;
+    if (paramString3 == null) {
+      paramString1 = "isolate_snapshot_data";
+    }
+    this.aark = paramString1;
+    paramString1 = paramString4;
+    if (paramString4 == null) {
+      paramString1 = "flutter_assets";
+    }
+    this.aarl = paramString1;
+    this.aarn = paramString6;
+    paramString1 = paramString5;
+    if (paramString5 == null) {
+      paramString1 = "";
+    }
+    this.aarm = paramString1;
+    this.aaro = paramBoolean;
+    AppMethodBeat.o(255938);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.embedding.engine.a.b
  * JD-Core Version:    0.7.0.1
  */

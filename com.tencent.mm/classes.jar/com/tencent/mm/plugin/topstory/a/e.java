@@ -1,66 +1,81 @@
 package com.tencent.mm.plugin.topstory.a;
 
-import com.tencent.mm.protocal.protobuf.eiq;
+import com.tencent.mm.protocal.protobuf.ess;
 
 public abstract interface e
 {
-  public abstract void KH(long paramLong);
+  public abstract void Sd(long paramLong);
   
-  public abstract void a(e.a parama);
+  public abstract void a(a parama);
   
-  public abstract int abP(int paramInt);
+  public abstract int ajt(int paramInt);
   
-  public abstract void b(e.a parama);
+  public abstract void b(a parama);
   
-  public abstract boolean fxB();
+  public abstract String gpA();
   
-  public abstract String fxC();
+  public abstract long gpB();
   
-  public abstract void fxD();
+  public abstract String gpC();
   
-  public abstract String fxE();
+  public abstract void gpD();
   
-  public abstract long fxF();
+  public abstract boolean gpE();
   
-  public abstract String fxG();
+  public abstract boolean gpF();
   
-  public abstract void fxH();
+  public abstract boolean gpG();
   
-  public abstract boolean fxI();
+  public abstract void gpH();
   
-  public abstract boolean fxJ();
+  public abstract void gpI();
   
-  public abstract boolean fxK();
+  public abstract boolean gpg();
   
-  public abstract boolean fxL();
+  public abstract boolean gph();
   
-  public abstract void fxM();
+  public abstract ess gpj();
   
-  public abstract void fxN();
+  public abstract ess gpm();
   
-  public abstract boolean fxl();
+  public abstract boolean gpo();
   
-  public abstract boolean fxm();
+  public abstract int gpp();
   
-  public abstract eiq fxo();
+  public abstract ess gpr();
   
-  public abstract eiq fxr();
+  public abstract ess gps();
   
-  public abstract boolean fxt();
+  public abstract boolean gpt();
   
-  public abstract int fxu();
+  public abstract boolean gpw();
   
-  public abstract eiq fxw();
+  public abstract String gpx();
   
-  public abstract eiq fxx();
+  public abstract void gpy();
   
-  public abstract boolean fxy();
+  public abstract void gpz();
   
   public abstract void j(long paramLong, int paramInt, boolean paramBoolean);
+  
+  public static abstract interface a
+  {
+    public abstract void a(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3);
+    
+    public abstract void a(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, boolean paramBoolean);
+    
+    public abstract void b(ess paramess, int paramInt);
+    
+    public abstract void by(String paramString, long paramLong);
+    
+    public abstract void gpJ();
+    
+    public abstract void gy(String paramString, int paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,8 @@ package com.tencent.mm.plugin.appbrand.media.record.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
@@ -12,7 +11,7 @@ public final class g
   extends f
 {
   private int mSampleRate;
-  private int nen;
+  private int qeE;
   
   public final void close()
   {
@@ -20,10 +19,10 @@ public final class g
     super.close();
     try
     {
-      RandomAccessFile localRandomAccessFile = s.dB(aa.z(this.mFile.her()), true);
+      RandomAccessFile localRandomAccessFile = u.dO(this.mFile.bOF(), true);
       localRandomAccessFile.seek(0L);
       int i = this.mSampleRate;
-      int j = this.nen;
+      int j = this.qeE;
       long l1 = this.mFile.length();
       long l2 = 36L + l1;
       long l3 = i;
@@ -40,12 +39,12 @@ public final class g
     }
   }
   
-  public final boolean i(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public final boolean j(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(146354);
     this.mSampleRate = paramInt1;
-    this.nen = paramInt2;
-    boolean bool = super.i(paramString, paramInt1, paramInt2, paramInt3);
+    this.qeE = paramInt2;
+    boolean bool = super.j(paramString, paramInt1, paramInt2, paramInt3);
     AppMethodBeat.o(146354);
     return bool;
   }

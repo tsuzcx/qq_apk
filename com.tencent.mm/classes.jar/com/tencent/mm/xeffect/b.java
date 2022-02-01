@@ -1,60 +1,85 @@
 package com.tencent.mm.xeffect;
 
-import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public boolean HmG;
-  public boolean RxG;
-  public boolean RxH;
-  public final Rect RxI;
-  public final Rect RxJ;
-  public int dYT;
-  public int height;
-  public int ijt;
-  public float scale;
-  public int textureId;
-  public int translateX;
-  public int translateY;
-  public int width;
+  public c YYE;
+  public float YYF;
+  public a YYG;
+  public float[] YYH;
+  public String krc;
   
-  public b(int paramInt1, int paramInt2, int paramInt3)
+  public b()
   {
-    this(paramInt1, paramInt2, paramInt3, false, 0);
+    AppMethodBeat.i(194547);
+    this.YYE = c.YZd;
+    this.YYF = 0.0F;
+    this.krc = "";
+    this.YYG = a.YYI;
+    this.YYH = new float[] { 0.0F };
+    AppMethodBeat.o(194547);
   }
   
-  public b(int paramInt1, int paramInt2, int paramInt3, byte paramByte)
+  public static enum a
   {
-    this(paramInt1, paramInt2, paramInt3, false, 0);
+    static
+    {
+      AppMethodBeat.i(194535);
+      YYI = new a("Unknown", 0);
+      YYJ = new a("MeiweiLut", 1);
+      YYK = new a("QingxinLut", 2);
+      YYL = new a("XinxianLut", 3);
+      YYM = new a("YouhuaLut", 4);
+      YYN = new a("YuanqiLut", 5);
+      YYO = new a[] { YYI, YYJ, YYK, YYL, YYM, YYN };
+      AppMethodBeat.o(194535);
+    }
+    
+    private a() {}
   }
   
-  public b(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4)
+  public static enum b
   {
-    AppMethodBeat.i(236751);
-    this.HmG = false;
-    this.dYT = 0;
-    this.RxG = false;
-    this.RxH = true;
-    this.RxI = new Rect();
-    this.RxJ = new Rect();
-    this.ijt = 0;
-    this.scale = 1.0F;
-    this.translateX = 0;
-    this.translateY = 0;
-    this.textureId = paramInt1;
-    this.width = paramInt2;
-    this.height = paramInt3;
-    this.HmG = paramBoolean;
-    this.dYT = paramInt4;
-    this.RxI.right = paramInt2;
-    this.RxI.bottom = paramInt3;
-    AppMethodBeat.o(236751);
+    static
+    {
+      AppMethodBeat.i(194541);
+      YYP = new b("SkinSmooth", 0);
+      YYQ = new b("EyeMorph", 1);
+      YYR = new b("FaceMorph", 2);
+      YYS = new b("SkinBright", 3);
+      YYT = new b("EyeBright", 4);
+      YYU = new b("Unknown", 5);
+      YYV = new b[] { YYP, YYQ, YYR, YYS, YYT, YYU };
+      AppMethodBeat.o(194541);
+    }
+    
+    private b() {}
+  }
+  
+  public static enum c
+  {
+    static
+    {
+      AppMethodBeat.i(194544);
+      YYW = new c("ACES_FILTER", 0);
+      YYX = new c("LUT_FILTER", 1);
+      YYY = new c("LUT_FILTER_FROM_FILE", 2);
+      YYZ = new c("BRIGHTEN_FILTER", 3);
+      YZa = new c("AUTO_BALANCE_FILTER", 4);
+      YZb = new c("HUE_SATURATION_FILTER", 5);
+      YZc = new c("FACE_BEAUTY", 6);
+      YZd = new c("Unknown", 7);
+      YZe = new c[] { YYW, YYX, YYY, YYZ, YZa, YZb, YZc, YZd };
+      AppMethodBeat.o(194544);
+    }
+    
+    private c() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.xeffect.b
  * JD-Core Version:    0.7.0.1
  */

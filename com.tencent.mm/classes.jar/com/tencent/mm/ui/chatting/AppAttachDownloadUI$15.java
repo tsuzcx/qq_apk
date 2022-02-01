@@ -11,15 +11,15 @@ final class AppAttachDownloadUI$15
   
   public final void onDismiss()
   {
-    AppMethodBeat.i(232807);
+    AppMethodBeat.i(292364);
     Log.d("MicroMsg.AppAttachDownloadUI", "showAlert, onDismiss");
-    AppAttachDownloadUI.A(this.PdA);
-    AppMethodBeat.o(232807);
+    AppAttachDownloadUI.A(this.WwM);
+    AppMethodBeat.o(292364);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.AppAttachDownloadUI.15
  * JD-Core Version:    0.7.0.1
  */

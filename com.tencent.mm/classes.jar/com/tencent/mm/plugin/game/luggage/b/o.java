@@ -22,24 +22,24 @@ public class o
   {
     AppMethodBeat.i(83073);
     Log.i("MicroMsg.JsApiGetWePkgAuthResult", "invoke");
-    if (((i)paramb.cta).gbE())
+    if (((i)paramb.crg).gUz())
     {
       Log.i("MicroMsg.JsApiGetWePkgAuthResult", "gettingA8Key");
-      paramb.c("auth_result_not_return", null);
+      paramb.a("auth_result_not_return", null);
       AppMethodBeat.o(83073);
       return;
     }
-    String str = ((i)paramb.cta).coy();
-    boolean bool = ((i)paramb.cta).xyH;
+    String str = ((i)paramb.crg).cCL();
+    boolean bool = ((i)paramb.crg).CCP;
     if (Util.isNullOrNil(str)) {
-      if (Util.isNullOrNil(e.xwe))
+      if (Util.isNullOrNil(e.CzZ))
       {
         Log.i("MicroMsg.LuggageGameUinKeyHolder", "fullUrl is null");
         i = 0;
         if (i == 0) {
           break label260;
         }
-        str = e.xwe;
+        str = e.CzZ;
       }
     }
     label260:
@@ -47,15 +47,15 @@ public class o
     {
       if (Util.isNullOrNil(str))
       {
-        paramb.c("full_url_empty", null);
+        paramb.a("full_url_empty", null);
         AppMethodBeat.o(83073);
         return;
-        if (a.dSX() <= 0)
+        if (a.ewf() <= 0)
         {
           i = 0;
           break;
         }
-        if (System.currentTimeMillis() / 1000L - e.Nh > a.dSX())
+        if (System.currentTimeMillis() / 1000L - e.dX > a.ewf())
         {
           Log.i("MicroMsg.LuggageGameUinKeyHolder", "updateTime bigger that one hour");
           i = 0;
@@ -75,7 +75,7 @@ public class o
           localHashMap.put("used_cache_uinkey", Integer.valueOf(1));
         }
         localHashMap.put("full_url", str);
-        paramb.e("", localHashMap);
+        paramb.d("", localHashMap);
         AppMethodBeat.o(83073);
         return;
         localHashMap.put("set_cookie", Integer.valueOf(0));
@@ -83,7 +83,7 @@ public class o
     }
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

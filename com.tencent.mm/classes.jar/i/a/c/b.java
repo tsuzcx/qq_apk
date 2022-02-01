@@ -5,9 +5,9 @@ import java.io.InputStream;
 
 public final class b
 {
-  public int NcY;
-  public int Upw;
-  public InputStream Upx;
+  public int Upv;
+  public int abSL;
+  public InputStream abSM;
   
   public static void c(short[] paramArrayOfShort)
   {
@@ -23,26 +23,26 @@ public final class b
   {
     AppMethodBeat.i(155362);
     int i = paramArrayOfShort[paramInt];
-    int j = (this.Upw >>> 11) * i;
-    if ((this.NcY ^ 0x80000000) < (0x80000000 ^ j))
+    int j = (this.abSL >>> 11) * i;
+    if ((this.Upv ^ 0x80000000) < (0x80000000 ^ j))
     {
-      this.Upw = j;
+      this.abSL = j;
       paramArrayOfShort[paramInt] = ((short)(i + (2048 - i >>> 5)));
-      if ((this.Upw & 0xFF000000) == 0)
+      if ((this.abSL & 0xFF000000) == 0)
       {
-        this.NcY = (this.NcY << 8 | this.Upx.read());
-        this.Upw <<= 8;
+        this.Upv = (this.Upv << 8 | this.abSM.read());
+        this.abSL <<= 8;
       }
       AppMethodBeat.o(155362);
       return 0;
     }
-    this.Upw -= j;
-    this.NcY -= j;
+    this.abSL -= j;
+    this.Upv -= j;
     paramArrayOfShort[paramInt] = ((short)(i - (i >>> 5)));
-    if ((this.Upw & 0xFF000000) == 0)
+    if ((this.abSL & 0xFF000000) == 0)
     {
-      this.NcY = (this.NcY << 8 | this.Upx.read());
-      this.Upw <<= 8;
+      this.Upv = (this.Upv << 8 | this.abSM.read());
+      this.abSL <<= 8;
     }
     AppMethodBeat.o(155362);
     return 1;
@@ -50,7 +50,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     i.a.c.b
  * JD-Core Version:    0.7.0.1
  */

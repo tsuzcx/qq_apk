@@ -14,23 +14,23 @@ public class e
     super(paramContext);
   }
   
-  public a ea(Context paramContext)
+  public a dY(Context paramContext)
   {
-    AppMethodBeat.i(235191);
-    this.mEJ = 1;
+    AppMethodBeat.i(227060);
+    this.pDV = 1;
     paramContext = new d(paramContext);
-    AppMethodBeat.o(235191);
+    AppMethodBeat.o(227060);
     return paramContext;
   }
   
   public TextureView getVideoTexture()
   {
-    return (TextureView)this.mEE;
+    return (TextureView)this.pDQ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.videoview.a.e
  * JD-Core Version:    0.7.0.1
  */

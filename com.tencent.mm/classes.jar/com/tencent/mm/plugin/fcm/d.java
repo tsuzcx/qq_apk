@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.fcm;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ed;
 import com.tencent.mm.protocal.protobuf.ee;
-import com.tencent.mm.protocal.protobuf.ef;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
@@ -17,20 +17,20 @@ public final class d
   implements m
 {
   private i callback;
-  private final com.tencent.mm.ak.d rr;
+  private final com.tencent.mm.an.d rr;
   
   public d(String paramString)
   {
     AppMethodBeat.i(127578);
     d.a locala = new d.a();
-    locala.iLN = new ee();
-    locala.iLO = new ef();
+    locala.lBU = new ed();
+    locala.lBV = new ee();
     locala.uri = "/cgi-bin/micromsg-bin/androidfcmunreg";
     locala.funcId = 1059;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    ((ee)this.rr.iLK.iLR).KCv = paramString;
+    this.rr = locala.bgN();
+    ((ed)d.b.b(this.rr.lBR)).RJs = paramString;
     AppMethodBeat.o(127578);
   }
   

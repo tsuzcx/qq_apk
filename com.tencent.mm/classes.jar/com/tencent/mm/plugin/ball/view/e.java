@@ -26,39 +26,39 @@ public final class e
   public int mHeight;
   private Paint mPaint;
   public int mWidth;
-  private Paint oZj;
-  private Bitmap pcQ;
-  private Path pcR;
-  private Rect pcS;
-  private RectF pcT;
-  private int pcU;
-  public int pcV;
-  public int pcW;
-  public int pcX;
-  public int pcY;
-  public boolean pcZ;
-  private int pda;
-  private AnimatorListenerAdapter pdb;
+  private Paint sbk;
+  private Bitmap seS;
+  private Path seT;
+  private Rect seU;
+  private RectF seV;
+  private int seW;
+  public int seX;
+  public int seY;
+  public int seZ;
+  public int sfa;
+  public boolean sfb;
+  private int sfc;
+  private AnimatorListenerAdapter sfd;
   
   public e(Context paramContext, Bitmap paramBitmap)
   {
     super(paramContext);
     AppMethodBeat.i(106522);
-    this.pcY = -1;
+    this.sfa = -1;
     this.mPaint = new Paint();
-    this.pcR = new Path();
-    this.oZj = new Paint();
+    this.seT = new Path();
+    this.sbk = new Paint();
     paramContext = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
-    this.oZj.setXfermode(paramContext);
-    this.pcQ = paramBitmap;
+    this.sbk.setXfermode(paramContext);
+    this.seS = paramBitmap;
     this.mWidth = paramBitmap.getWidth();
     this.mHeight = paramBitmap.getHeight();
-    this.pcS = new Rect(0, 0, this.mWidth, this.mHeight);
-    this.pcT = new RectF();
-    this.pcT.left = 0.0F;
-    this.pcT.top = 0.0F;
-    this.pcT.right = this.mWidth;
-    this.pcT.bottom = this.mHeight;
+    this.seU = new Rect(0, 0, this.mWidth, this.mHeight);
+    this.seV = new RectF();
+    this.seV.left = 0.0F;
+    this.seV.top = 0.0F;
+    this.seV.right = this.mWidth;
+    this.seV.bottom = this.mHeight;
     Log.i("MicroMsg.TransformToFloatBallAnimationMaskView", String.format("init: mWidth:%d mHeight:%d", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) }));
     AppMethodBeat.o(106522);
   }
@@ -66,18 +66,18 @@ public final class e
   protected final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(106523);
-    if (this.pcZ) {
-      paramCanvas.translate(this.pcU, 0.0F);
+    if (this.sfb) {
+      paramCanvas.translate(this.seW, 0.0F);
     }
     for (;;)
     {
-      this.pcR.reset();
-      this.pcR.addRoundRect(this.pcT, this.pcV, this.pcV, Path.Direction.CW);
-      paramCanvas.clipPath(this.pcR);
-      paramCanvas.drawBitmap(this.pcQ, this.pcS, this.pcS, this.mPaint);
+      this.seT.reset();
+      this.seT.addRoundRect(this.seV, this.seX, this.seX, Path.Direction.CW);
+      paramCanvas.clipPath(this.seT);
+      paramCanvas.drawBitmap(this.seS, this.seU, this.seU, this.mPaint);
       AppMethodBeat.o(106523);
       return;
-      paramCanvas.drawColor(Color.argb(this.pda, 0, 0, 0));
+      paramCanvas.drawColor(Color.argb(this.sfc, 0, 0, 0));
     }
   }
   
@@ -90,17 +90,17 @@ public final class e
   
   public final void setContentStartPosX(int paramInt)
   {
-    this.pcY = paramInt;
+    this.sfa = paramInt;
   }
   
   public final void setListener(AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
-    this.pdb = paramAnimatorListenerAdapter;
+    this.sfd = paramAnimatorListenerAdapter;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.view.e
  * JD-Core Version:    0.7.0.1
  */

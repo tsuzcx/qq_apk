@@ -10,10 +10,11 @@ import android.net.http.SslError;
 import android.os.Build.VERSION;
 import android.os.Message;
 import android.view.KeyEvent;
+import android.webkit.SslErrorHandler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.utils.TbsLog;
 import com.tencent.smtt.utils.k;
-import com.tencent.smtt.utils.o;
+import com.tencent.smtt.utils.p;
 import java.security.Principal;
 import java.security.PrivateKey;
 import java.security.cert.X509Certificate;
@@ -71,10 +72,10 @@ class SystemWebViewClient
     TbsLog.v("TbsPerfTest", "PageLoadFinished!");
     if (c == null)
     {
-      localObject = o.a();
+      localObject = p.a();
       if (localObject != null)
       {
-        ((o)localObject).a(true);
+        ((p)localObject).a(true);
         c = Boolean.toString(true);
       }
     }
@@ -91,7 +92,17 @@ class SystemWebViewClient
     if ((!TbsShareManager.mHasQueryed) && (this.b.getContext() != null) && (TbsShareManager.isThirdPartyApp(this.b.getContext())))
     {
       TbsShareManager.mHasQueryed = true;
-      new Thread(new SystemWebViewClient.1(this)).start();
+      new Thread(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(55114);
+          if ((!TbsShareManager.forceLoadX5FromTBSDemo(SystemWebViewClient.a(SystemWebViewClient.this).getContext())) && (TbsDownloader.needDownload(SystemWebViewClient.a(SystemWebViewClient.this).getContext(), false))) {
+            TbsDownloader.startDownload(SystemWebViewClient.a(SystemWebViewClient.this).getContext());
+          }
+          AppMethodBeat.o(55114);
+        }
+      }).start();
     }
     if ((this.b.getContext() != null) && (!TbsLogReport.getInstance(this.b.getContext()).getShouldUploadEventReport()))
     {
@@ -195,13 +206,13 @@ class SystemWebViewClient
   }
   
   @TargetApi(8)
-  public void onReceivedSslError(android.webkit.WebView paramWebView, android.webkit.SslErrorHandler paramSslErrorHandler, SslError paramSslError)
+  public void onReceivedSslError(android.webkit.WebView paramWebView, SslErrorHandler paramSslErrorHandler, SslError paramSslError)
   {
     AppMethodBeat.i(54708);
     if (Build.VERSION.SDK_INT >= 8)
     {
       this.b.a(paramWebView);
-      this.a.onReceivedSslError(this.b, new c(paramSslErrorHandler), new SystemWebViewClient.d(paramSslError));
+      this.a.onReceivedSslError(this.b, new SystemWebViewClient.c(paramSslErrorHandler), new SystemWebViewClient.d(paramSslError));
     }
     AppMethodBeat.o(54708);
   }
@@ -253,7 +264,7 @@ class SystemWebViewClient
         bool1 = ((Boolean)paramWebView).booleanValue();
       }
     }
-    paramWebView = new e(paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.isForMainFrame(), bool1, paramWebResourceRequest.hasGesture(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.getRequestHeaders());
+    paramWebView = new SystemWebViewClient.e(this, paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.isForMainFrame(), bool1, paramWebResourceRequest.hasGesture(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.getRequestHeaders());
     paramWebResourceRequest = this.a.shouldInterceptRequest(this.b, paramWebView);
     if (paramWebResourceRequest == null)
     {
@@ -328,7 +339,7 @@ class SystemWebViewClient
         bool1 = ((Boolean)paramWebView).booleanValue();
       }
     }
-    paramWebView = new e(paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.isForMainFrame(), bool1, paramWebResourceRequest.hasGesture(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.getRequestHeaders());
+    paramWebView = new SystemWebViewClient.e(this, paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.isForMainFrame(), bool1, paramWebResourceRequest.hasGesture(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.getRequestHeaders());
     bool1 = this.a.shouldOverrideUrlLoading(this.b, paramWebView);
     AppMethodBeat.o(54695);
     return bool1;
@@ -445,86 +456,6 @@ class SystemWebViewClient
     }
   }
   
-  static class c
-    implements com.tencent.smtt.export.external.interfaces.SslErrorHandler
-  {
-    android.webkit.SslErrorHandler a;
-    
-    c(android.webkit.SslErrorHandler paramSslErrorHandler)
-    {
-      this.a = paramSslErrorHandler;
-    }
-    
-    public void cancel()
-    {
-      AppMethodBeat.i(55029);
-      this.a.cancel();
-      AppMethodBeat.o(55029);
-    }
-    
-    public void proceed()
-    {
-      AppMethodBeat.i(55028);
-      this.a.proceed();
-      AppMethodBeat.o(55028);
-    }
-  }
-  
-  class e
-    implements com.tencent.smtt.export.external.interfaces.WebResourceRequest
-  {
-    private String b;
-    private boolean c;
-    private boolean d;
-    private boolean e;
-    private String f;
-    private Map<String, String> g;
-    
-    public e(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Map<String, String> paramMap)
-    {
-      this.b = paramBoolean1;
-      this.c = paramBoolean2;
-      this.d = paramBoolean3;
-      this.e = paramString;
-      this.f = paramMap;
-      Object localObject;
-      this.g = localObject;
-    }
-    
-    public String getMethod()
-    {
-      return this.f;
-    }
-    
-    public Map<String, String> getRequestHeaders()
-    {
-      return this.g;
-    }
-    
-    public Uri getUrl()
-    {
-      AppMethodBeat.i(54362);
-      Uri localUri = Uri.parse(this.b);
-      AppMethodBeat.o(54362);
-      return localUri;
-    }
-    
-    public boolean hasGesture()
-    {
-      return this.e;
-    }
-    
-    public boolean isForMainFrame()
-    {
-      return this.c;
-    }
-    
-    public boolean isRedirect()
-    {
-      return this.d;
-    }
-  }
-  
   static class f
     implements com.tencent.smtt.export.external.interfaces.WebResourceRequest
   {
@@ -594,7 +525,7 @@ class SystemWebViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sdk.SystemWebViewClient
  * JD-Core Version:    0.7.0.1
  */

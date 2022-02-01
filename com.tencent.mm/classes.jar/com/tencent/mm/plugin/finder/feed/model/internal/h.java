@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.finder.feed.model.internal;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "", "call", "", "incrementCount", "", "plugin-finder_release"})
-public abstract interface h
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "onFetchDone", "", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "plugin-finder-base_release"})
+public abstract interface h<T extends k>
 {
-  public abstract void call(int paramInt);
+  public abstract void onFetchDone(IResponse<T> paramIResponse);
 }
 
 

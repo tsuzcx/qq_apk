@@ -1,191 +1,255 @@
 package com.tencent.mm.ui.tools;
 
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.b.a;
-import com.tencent.mm.sdk.platformtools.LocaleUtil;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.l;
+import com.tencent.mm.ao.af;
+import com.tencent.mm.ao.f;
+import com.tencent.mm.ao.g;
+import com.tencent.mm.bd.d;
+import com.tencent.mm.f.a.ao;
+import com.tencent.mm.f.a.ft;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.aq;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.bq;
+import com.tencent.mm.model.bq.a;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.aa;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bw;
+import com.tencent.mm.storage.u;
+import com.tencent.mm.ui.LauncherUI;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.base.s;
+import java.lang.ref.WeakReference;
 
 public final class c
-  extends BaseAdapter
 {
-  private List<b.a> bXV;
-  private Context context;
-  private String kdi;
-  private List<b.a> list;
-  int[] yuP;
-  boolean yuQ;
+  private static boolean isDeleteCancel = false;
   
-  public c(Context paramContext, List<b.a> paramList)
+  public static void a(com.tencent.mm.api.c paramc, Activity paramActivity, as paramas, int paramInt)
   {
-    AppMethodBeat.i(38986);
-    this.bXV = new ArrayList();
-    this.yuQ = false;
-    this.context = paramContext;
-    this.list = paramList;
-    ebk();
-    ebl();
-    AppMethodBeat.o(38986);
+    AppMethodBeat.i(38982);
+    a(paramc, paramActivity, paramas, false, null, paramInt);
+    AppMethodBeat.o(38982);
   }
   
-  private static String Ph(int paramInt)
+  public static void a(com.tencent.mm.api.c paramc, Activity paramActivity, as paramas, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(38993);
-    if (LocaleUtil.isTraditionalChineseAppLang())
+    boolean bool2 = true;
+    AppMethodBeat.i(38985);
+    if ((paramc == null) || (paramActivity == null) || (paramas == null))
     {
-      String str = Integer.toString(paramInt) + "劃";
-      AppMethodBeat.o(38993);
-      return str;
-    }
-    char c = (char)paramInt;
-    AppMethodBeat.o(38993);
-    return String.valueOf(c);
-  }
-  
-  private void ebk()
-  {
-    AppMethodBeat.i(38987);
-    int i = 0;
-    int j = this.list.size();
-    while (i < j)
-    {
-      this.bXV.add(this.list.get(i));
-      i += 1;
-    }
-    AppMethodBeat.o(38987);
-  }
-  
-  private void ebl()
-  {
-    AppMethodBeat.i(38988);
-    this.yuP = new int[this.list.size()];
-    int j = this.list.size();
-    int i = 0;
-    while (i < j)
-    {
-      this.yuP[i] = ((b.a)this.list.get(i)).jcb;
-      i += 1;
-    }
-    AppMethodBeat.o(38988);
-  }
-  
-  public final void SM(String paramString)
-  {
-    AppMethodBeat.i(38991);
-    if (paramString != null)
-    {
-      this.kdi = paramString.trim();
-      this.list.clear();
-      int j = this.bXV.size();
-      int i = 0;
-      while (i < j)
+      boolean bool1;
+      if (paramc == null)
       {
-        if ((((b.a)this.bXV.get(i)).jbZ.toUpperCase().contains(this.kdi.toUpperCase())) || (((b.a)this.bXV.get(i)).jca.toUpperCase().contains(this.kdi.toUpperCase())) || (((b.a)this.bXV.get(i)).jbY.contains(this.kdi))) {
-          this.list.add(this.bXV.get(i));
+        paramBoolean = true;
+        if (paramActivity != null) {
+          break label82;
         }
-        i += 1;
+        bool1 = true;
+        label33:
+        if (paramas != null) {
+          break label88;
+        }
       }
-      ebl();
-      super.notifyDataSetChanged();
-    }
-    AppMethodBeat.o(38991);
-  }
-  
-  public final int getCount()
-  {
-    AppMethodBeat.i(38989);
-    int i = this.list.size();
-    AppMethodBeat.o(38989);
-    return i;
-  }
-  
-  public final Object getItem(int paramInt)
-  {
-    AppMethodBeat.i(38990);
-    Object localObject = this.list.get(paramInt);
-    AppMethodBeat.o(38990);
-    return localObject;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(38992);
-    b.a locala = (b.a)getItem(paramInt);
-    label88:
-    int i;
-    if (paramView == null) {
-      if (!LocaleUtil.isTraditionalChineseAppLang())
+      for (;;)
       {
-        paramView = View.inflate(this.context, 2131493798, null);
-        paramViewGroup = new a();
-        paramViewGroup.yuS = ((TextView)paramView.findViewById(2131299162));
-        paramViewGroup.gwR = ((TextView)paramView.findViewById(2131299167));
-        paramViewGroup.yuT = ((TextView)paramView.findViewById(2131299172));
-        paramView.setTag(paramViewGroup);
-        if (paramInt <= 0) {
-          break label201;
-        }
-        i = this.yuP[(paramInt - 1)];
-        label102:
+        Log.e("MicroMsg.BizContactDeleteUtil", "error args, %b, %b, %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+        AppMethodBeat.o(38985);
+        return;
+        paramBoolean = false;
+        break;
+        label82:
+        bool1 = false;
+        break label33;
+        label88:
+        bool2 = false;
+      }
+    }
+    final String str = paramas.field_username;
+    paramas.axl();
+    bh.beI();
+    com.tencent.mm.model.c.bbK().d(new d(str, paramInt));
+    if (ab.Qj(str))
+    {
+      ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().bwp(str);
+      bh.beI();
+      com.tencent.mm.model.c.bbV().RC(str);
+      if (com.tencent.mm.app.plugin.a.a.d(paramc))
+      {
+        paramc = new ft();
+        paramc.fBD.fzM = str;
+        EventCenter.instance.publish(paramc);
+      }
+      af.bju().UK(str);
+      af.bjB().aOx(str);
+      af.bjD().aOx(str);
+      if (paramBoolean)
+      {
+        paramInt = paramActivity.getIntent().getIntExtra("Kdel_from", -1);
         if (paramInt != 0) {
-          break label207;
+          break label486;
         }
-        paramViewGroup.yuS.setVisibility(0);
-        paramViewGroup.yuS.setText(Ph(this.yuP[paramInt]));
-        label130:
-        paramViewGroup.gwR.setText(locala.jbZ);
-        paramViewGroup.yuT.setText(locala.jbY);
-        if (!this.yuQ) {
-          break label261;
-        }
-        paramViewGroup.yuT.setVisibility(0);
+        paramc = new Intent(paramActivity, LauncherUI.class);
+        paramc.addFlags(335544320);
+        paramc = new com.tencent.mm.hellhoundlib.b.a().bm(paramc);
+        com.tencent.mm.hellhoundlib.a.a.b(paramActivity, paramc.aFh(), "com/tencent/mm/ui/tools/BizContactDeleteUtil", "dealDelContactEvent", "(Lcom/tencent/mm/api/BizInfo;Landroid/app/Activity;Lcom/tencent/mm/storage/Contact;ZI)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramActivity.startActivity((Intent)paramc.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramActivity, "com/tencent/mm/ui/tools/BizContactDeleteUtil", "dealDelContactEvent", "(Lcom/tencent/mm/api/BizInfo;Landroid/app/Activity;Lcom/tencent/mm/storage/Contact;ZI)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(38992);
-      return paramView;
-      paramView = View.inflate(this.context, 2131493799, null);
-      break;
-      paramViewGroup = (a)paramView.getTag();
-      break label88;
-      label201:
-      i = -1;
-      break label102;
-      label207:
-      if ((paramInt > 0) && (this.yuP[paramInt] != i))
+      paramActivity.finish();
+      AppMethodBeat.o(38985);
+      return;
+      isDeleteCancel = false;
+      paramActivity.getString(R.l.app_tip);
+      bq.a local3 = new bq.a()
       {
-        paramViewGroup.yuS.setVisibility(0);
-        paramViewGroup.yuS.setText(Ph(this.yuP[paramInt]));
-        break label130;
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(38979);
+          c.Yy();
+          AppMethodBeat.o(38979);
+        }
       }
-      paramViewGroup.yuS.setVisibility(8);
-      break label130;
-      label261:
-      paramViewGroup.yuT.setVisibility(4);
+      {
+        public final boolean asH()
+        {
+          AppMethodBeat.i(38980);
+          boolean bool = c.isDeleteCancel;
+          AppMethodBeat.o(38980);
+          return bool;
+        }
+        
+        public final void asI()
+        {
+          AppMethodBeat.i(38981);
+          if (this.XNB.YV())
+          {
+            ((com.tencent.mm.ao.q)com.tencent.mm.kernel.h.ae(com.tencent.mm.ao.q.class)).bbQ();
+            u.bvj(str);
+            ao localao = new ao();
+            localao.fvX.userName = str;
+            EventCenter.instance.publish(localao);
+          }
+          af.bjv().Up(str);
+          if (this.XNF.get() != null) {
+            ((s)this.XNF.get()).dismiss();
+          }
+          AppMethodBeat.o(38981);
+        }
+      };
+      af.bjI();
+      com.tencent.mm.ao.a.Ug(str);
+      ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().c(str, paramas);
+      if (paramc.YX()) {
+        g.UF(paramc.field_username);
+      }
+      for (;;)
+      {
+        if ((paramActivity == null) || (!paramBoolean)) {
+          break label484;
+        }
+        paramActivity.setResult(-1, paramActivity.getIntent().putExtra("_delete_ok_", true));
+        break;
+        bq.a(str, local3);
+        bh.beI();
+        com.tencent.mm.model.c.bbR().bwv(str);
+      }
+      label484:
+      break;
+      label486:
+      if (paramInt == 2)
+      {
+        paramc = new Intent();
+        paramc.addFlags(67108864);
+        com.tencent.mm.by.c.b(paramActivity, "brandservice", ".ui.BrandServiceIndexUI", paramc);
+      }
     }
   }
   
-  static final class a
+  public static void a(com.tencent.mm.api.c paramc, final Activity paramActivity, final as paramas, final boolean paramBoolean, final Runnable paramRunnable, final int paramInt)
   {
-    TextView gwR;
-    TextView yuS;
-    TextView yuT;
+    AppMethodBeat.i(38983);
+    if ((paramc == null) || (paramActivity == null) || (paramas == null))
+    {
+      boolean bool1;
+      if (paramc == null)
+      {
+        paramBoolean = true;
+        if (paramActivity != null) {
+          break label85;
+        }
+        bool1 = true;
+        label31:
+        if (paramas != null) {
+          break label91;
+        }
+      }
+      label85:
+      label91:
+      for (boolean bool2 = true;; bool2 = false)
+      {
+        Log.e("MicroMsg.BizContactDeleteUtil", "bizInfo null : %s, context null : %s, ct null : %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+        AppMethodBeat.o(38983);
+        return;
+        paramBoolean = false;
+        break;
+        bool1 = false;
+        break label31;
+      }
+    }
+    if (paramc.YY()) {}
+    for (String str = paramActivity.getString(R.l.etw);; str = paramActivity.getString(R.l.etx, new Object[] { paramas.ays() }))
+    {
+      com.tencent.mm.ui.base.h.a(paramActivity, str, "", paramActivity.getString(R.l.ezb), paramActivity.getString(R.l.eza), new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(38978);
+          c.a(this.XNB, paramActivity, paramas, paramBoolean, paramInt);
+          ((com.tencent.mm.api.q)com.tencent.mm.kernel.h.ae(com.tencent.mm.api.q.class)).c(this.XNB);
+          if (paramRunnable != null) {
+            paramRunnable.run();
+          }
+          if (ar.hIH())
+          {
+            paramAnonymousDialogInterface = new Intent();
+            com.tencent.mm.by.c.f(paramActivity, ".ui.EmptyActivity", paramAnonymousDialogInterface);
+            Log.i("MicroMsg.BizContactDeleteUtil", "start empty activity");
+          }
+          AppMethodBeat.o(38978);
+        }
+      }, null, R.e.red);
+      AppMethodBeat.o(38983);
+      return;
+    }
+  }
+  
+  public static void c(com.tencent.mm.api.c paramc, Activity paramActivity, as paramas)
+  {
+    AppMethodBeat.i(38984);
+    a(paramc, paramActivity, paramas, false, 0);
+    AppMethodBeat.o(38984);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.tools.c
  * JD-Core Version:    0.7.0.1
  */

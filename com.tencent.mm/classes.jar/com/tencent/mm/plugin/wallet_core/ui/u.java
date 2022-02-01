@@ -1,153 +1,100 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.br.c;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.wallet_core.c.j;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.plugin.wallet_core.model.ae;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.h;
+import java.util.ArrayList;
 
 public final class u
-  implements i
+  extends BaseAdapter
 {
-  public b IkQ;
-  private a IkR;
-  public boolean dEF = false;
+  ae PcK = null;
+  private Context mContext;
+  ArrayList<ae> mData = null;
   
-  public final void a(a parama, boolean paramBoolean)
+  public u(Context paramContext, ArrayList<ae> paramArrayList)
   {
-    AppMethodBeat.i(71305);
-    this.IkR = parama;
-    g.aAi();
-    boolean bool = ((Boolean)g.aAh().azQ().get(ar.a.Ogk, Boolean.FALSE)).booleanValue();
-    Log.v("MicroMsg.WxPayAgreementsHelper", "showProtoCol agree %s isServerControlShow %s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) });
-    if (bool)
+    this.mContext = paramContext;
+    this.mData = paramArrayList;
+  }
+  
+  public final ae amJ(int paramInt)
+  {
+    AppMethodBeat.i(71254);
+    if ((this.mData != null) && (getCount() > paramInt))
     {
-      parama.ehn();
-      AppMethodBeat.o(71305);
-      return;
+      ae localae = (ae)this.mData.get(paramInt);
+      AppMethodBeat.o(71254);
+      return localae;
     }
-    if (this.dEF)
+    AppMethodBeat.o(71254);
+    return null;
+  }
+  
+  public final int getCount()
+  {
+    AppMethodBeat.i(71253);
+    if (this.mData != null)
     {
-      Log.i("MicroMsg.WxPayAgreementsHelper", "showProtoCol isShow %s", new Object[] { Boolean.valueOf(this.dEF) });
-      parama.ehn();
-      AppMethodBeat.o(71305);
-      return;
+      int i = this.mData.size();
+      AppMethodBeat.o(71253);
+      return i;
     }
-    if (paramBoolean)
+    AppMethodBeat.o(71253);
+    return 0;
+  }
+  
+  public final long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    AppMethodBeat.i(71255);
+    if (paramView == null)
     {
-      this.dEF = true;
-      parama = new j();
-      g.aAi();
-      g.aAg().hqi.a(parama, 0);
-      AppMethodBeat.o(71305);
-      return;
-    }
-    parama.ehn();
-    AppMethodBeat.o(71305);
-  }
-  
-  public final void cancel()
-  {
-    AppMethodBeat.i(71304);
-    if (this.IkR != null) {
-      this.IkR.cancel();
-    }
-    AppMethodBeat.o(71304);
-  }
-  
-  public final void ehm()
-  {
-    AppMethodBeat.i(71303);
-    com.tencent.mm.plugin.wallet_core.c.t localt = new com.tencent.mm.plugin.wallet_core.c.t();
-    g.aAi();
-    g.aAg().hqi.a(localt, 0);
-    if (this.IkR != null) {
-      this.IkR.ehm();
-    }
-    AppMethodBeat.o(71303);
-  }
-  
-  public final void onPause()
-  {
-    AppMethodBeat.i(71302);
-    g.aAi();
-    g.aAg().hqi.b(2541, this);
-    g.aAi();
-    g.aAg().hqi.b(2791, this);
-    AppMethodBeat.o(71302);
-  }
-  
-  public final void onResume()
-  {
-    AppMethodBeat.i(71301);
-    g.aAi();
-    g.aAg().hqi.a(2541, this);
-    g.aAi();
-    g.aAg().hqi.a(2791, this);
-    AppMethodBeat.o(71301);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
-  {
-    AppMethodBeat.i(71306);
-    if ((paramq instanceof j))
-    {
-      if ((paramInt1 != 0) || (paramInt2 != 0))
+      paramView = View.inflate(this.mContext, a.g.wallet_switch_wallet_kind_item, null);
+      paramViewGroup = new a((byte)0);
+      paramViewGroup.jMg = ((TextView)paramView.findViewById(a.f.title));
+      paramViewGroup.PcL = ((ImageView)paramView.findViewById(a.f.selected_icon));
+      paramView.setTag(paramViewGroup);
+      ae localae = amJ(paramInt);
+      if (localae != null)
       {
-        AppMethodBeat.o(71306);
-        return;
+        paramViewGroup.jMg.setText(localae.field_wallet_name);
+        if (localae.field_wallet_selected != 1) {
+          break label131;
+        }
+        this.PcK = localae;
+        paramViewGroup.PcL.setImageResource(a.h.radio_on);
       }
-      paramString = (j)paramq;
-      Log.d("MicroMsg.WxPayAgreementsHelper", "errType =  %s errCode %s isShow %s content: %s need_agree_duty %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(com.tencent.mm.plugin.wallet_core.model.ao.bJw()), paramString.HPH, Boolean.valueOf(paramString.HPI) });
-      if ((com.tencent.mm.plugin.wallet_core.model.ao.bJw()) && (paramString.HPI))
-      {
-        paramq = new Intent();
-        paramq.putExtra("agreement_content", paramString.HPH);
-        c.b(this.IkQ.getContext(), "wallet_core", ".ui.ShowWxPayAgreementsUI", paramq, this.IkQ.eho());
-        AppMethodBeat.o(71306);
-        return;
-      }
-      if (this.IkR != null) {
-        this.IkR.ehn();
-      }
-      AppMethodBeat.o(71306);
-      return;
     }
-    if ((paramq instanceof com.tencent.mm.plugin.wallet_core.c.t))
+    for (;;)
     {
-      if ((paramInt1 != 0) || (paramInt2 != 0))
-      {
-        AppMethodBeat.o(71306);
-        return;
-      }
-      g.aAi();
-      g.aAh().azQ().set(ar.a.Ogk, Boolean.TRUE);
-      Log.i("MicroMsg.WxPayAgreementsHelper", "agree Ok!");
+      AppMethodBeat.o(71255);
+      return paramView;
+      paramViewGroup = (a)paramView.getTag();
+      break;
+      label131:
+      paramViewGroup.PcL.setImageResource(a.h.radio_off);
     }
-    AppMethodBeat.o(71306);
   }
   
-  public static abstract interface a
+  final class a
   {
-    public abstract void cancel();
+    ImageView PcL;
+    TextView jMg;
     
-    public abstract void ehm();
-    
-    public abstract void ehn();
-  }
-  
-  public static abstract interface b
-  {
-    public abstract int eho();
-    
-    public abstract Context getContext();
+    private a() {}
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.aa.ui;
 
 import android.app.Dialog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.fts.a.a.a;
 import com.tencent.mm.plugin.fts.a.n;
 import java.util.ArrayList;
@@ -14,18 +14,18 @@ final class LaunchAAUI$4
   
   public final void run()
   {
-    AppMethodBeat.i(213024);
-    if (LaunchAAUI.k(this.jXQ))
+    AppMethodBeat.i(272788);
+    if (LaunchAAUI.l(this.mPg))
     {
-      if ((LaunchAAUI.i(this.jXQ) != null) && (LaunchAAUI.i(this.jXQ).isShowing())) {
-        LaunchAAUI.i(this.jXQ).dismiss();
+      if ((LaunchAAUI.j(this.mPg) != null) && (LaunchAAUI.j(this.mPg).isShowing())) {
+        LaunchAAUI.j(this.mPg).dismiss();
       }
-      ((n)g.ah(n.class)).cancelSearchTask(this.jXT);
-      LaunchAAUI.j(this.jXQ);
-      this.jXR.clear();
-      LaunchAAUI.a(this.jXQ, this.jXR);
+      ((n)h.ag(n.class)).cancelSearchTask(this.mPj);
+      LaunchAAUI.k(this.mPg);
+      this.mPh.clear();
+      LaunchAAUI.a(this.mPg, this.mPh);
     }
-    AppMethodBeat.o(213024);
+    AppMethodBeat.o(272788);
   }
 }
 

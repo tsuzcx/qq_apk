@@ -12,30 +12,30 @@ import java.util.Arrays;
 
 public final class b
 {
-  FloatBuffer HlA;
-  byte[] HlB;
-  private int Hle;
-  private int Hlf;
-  private int Hlg;
-  private int Hlh;
-  private int Hli;
-  private int Hlj;
-  int Hlk;
-  int Hll;
-  int Hlm;
-  private a Hln;
-  private d Hlo;
-  FloatBuffer Hlp;
-  private FloatBuffer Hlq;
-  private FloatBuffer Hlr;
-  private int Hls;
-  private int Hlt;
-  ByteBuffer Hlu;
-  private int Hlv;
-  private int Hlw;
-  float[] Hlx;
-  float[] Hly;
-  private int Hlz;
+  private int ObT;
+  private int ObU;
+  private int ObV;
+  private int ObW;
+  private int ObX;
+  private int ObY;
+  int ObZ;
+  int Oca;
+  int Ocb;
+  private a Occ;
+  private d Ocd;
+  FloatBuffer Oce;
+  private FloatBuffer Ocf;
+  private FloatBuffer Ocg;
+  private int Och;
+  private int Oci;
+  ByteBuffer Ocj;
+  private int Ock;
+  private int Ocl;
+  float[] Ocm;
+  float[] Ocn;
+  private int Oco;
+  FloatBuffer Ocp;
+  byte[] Ocq;
   public int outputHeight;
   public int outputWidth;
   public int surfaceHeight;
@@ -44,20 +44,43 @@ public final class b
   public b()
   {
     AppMethodBeat.i(115717);
-    this.Hlk = 0;
-    this.Hll = 0;
-    this.Hlm = 0;
+    this.ObZ = 0;
+    this.Oca = 0;
+    this.Ocb = 0;
     this.outputWidth = 0;
     this.outputHeight = 0;
-    this.Hln = null;
-    this.Hlo = null;
-    this.Hlx = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-    this.Hly = new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-    this.Hlz = 0;
+    this.Occ = null;
+    this.Ocd = null;
+    this.Ocm = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+    this.Ocn = new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
+    this.Oco = 0;
     AppMethodBeat.o(115717);
   }
   
-  private static void O(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private void Br(boolean paramBoolean)
+  {
+    AppMethodBeat.i(115721);
+    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
+    GLES20.glClear(16640);
+    if (paramBoolean)
+    {
+      GLES20.glViewport(0, 0, this.outputWidth, this.outputHeight);
+      GLES20.glDrawArrays(5, 0, 4);
+      gEe();
+    }
+    for (;;)
+    {
+      GLES20.glUseProgram(0);
+      GLES20.glDisableVertexAttribArray(this.Och);
+      GLES20.glDisableVertexAttribArray(this.Oci);
+      AppMethodBeat.o(115721);
+      return;
+      GLES20.glViewport(0, 0, this.surfaceWidth, this.surfaceHeight);
+      GLES20.glDrawArrays(5, 0, 4);
+    }
+  }
+  
+  private static void T(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(115722);
     GLES20.glBindFramebuffer(36160, paramInt1);
@@ -75,26 +98,26 @@ public final class b
   {
     AppMethodBeat.i(115719);
     GLES20.glUseProgram(paramInt1);
-    this.Hls = GLES20.glGetAttribLocation(paramInt1, "vPosition");
-    GLES20.glEnableVertexAttribArray(this.Hls);
-    GLES20.glVertexAttribPointer(this.Hls, 2, 5126, false, 8, paramFloatBuffer1);
-    this.Hlt = GLES20.glGetAttribLocation(paramInt1, "vTexCoord");
-    GLES20.glEnableVertexAttribArray(this.Hlt);
-    GLES20.glVertexAttribPointer(this.Hlt, 2, 5126, false, 8, paramFloatBuffer2);
+    this.Och = GLES20.glGetAttribLocation(paramInt1, "vPosition");
+    GLES20.glEnableVertexAttribArray(this.Och);
+    GLES20.glVertexAttribPointer(this.Och, 2, 5126, false, 8, paramFloatBuffer1);
+    this.Oci = GLES20.glGetAttribLocation(paramInt1, "vTexCoord");
+    GLES20.glEnableVertexAttribArray(this.Oci);
+    GLES20.glVertexAttribPointer(this.Oci, 2, 5126, false, 8, paramFloatBuffer2);
     if (paramBoolean)
     {
-      this.Hle = GLES20.glGetUniformLocation(paramInt1, "smoothDegree");
-      GLES20.glUniform1f(this.Hle, 0.5F);
-      this.Hlf = GLES20.glGetUniformLocation(paramInt1, "showCounter");
-      GLES20.glUniform1i(this.Hlf, 0);
-      this.Hlg = GLES20.glGetUniformLocation(paramInt1, "showMode");
-      GLES20.glUniform1i(this.Hlg, 2);
-      this.Hlh = GLES20.glGetUniformLocation(paramInt1, "brightness");
-      GLES20.glUniform1f(this.Hlh, 0.8F);
-      this.Hli = GLES20.glGetUniformLocation(paramInt1, "texelWidth");
-      GLES20.glUniform1f(this.Hli, this.Hlv);
-      this.Hlj = GLES20.glGetUniformLocation(paramInt1, "texelHeight");
-      GLES20.glUniform1f(this.Hlj, this.Hlw);
+      this.ObT = GLES20.glGetUniformLocation(paramInt1, "smoothDegree");
+      GLES20.glUniform1f(this.ObT, 0.5F);
+      this.ObU = GLES20.glGetUniformLocation(paramInt1, "showCounter");
+      GLES20.glUniform1i(this.ObU, 0);
+      this.ObV = GLES20.glGetUniformLocation(paramInt1, "showMode");
+      GLES20.glUniform1i(this.ObV, 2);
+      this.ObW = GLES20.glGetUniformLocation(paramInt1, "brightness");
+      GLES20.glUniform1f(this.ObW, 0.8F);
+      this.ObX = GLES20.glGetUniformLocation(paramInt1, "texelWidth");
+      GLES20.glUniform1f(this.ObX, this.Ock);
+      this.ObY = GLES20.glGetUniformLocation(paramInt1, "texelHeight");
+      GLES20.glUniform1f(this.ObY, this.Ocl);
     }
     GLES20.glActiveTexture(33984);
     GLES20.glBindTexture(3553, paramInt2);
@@ -102,21 +125,21 @@ public final class b
     AppMethodBeat.o(115719);
   }
   
-  private void fLE()
+  private void gEe()
   {
-    AppMethodBeat.i(235897);
-    if ((this.Hlu == null) || (this.Hlu.capacity() < this.outputHeight * this.outputWidth * 4)) {
-      this.Hlu = ByteBuffer.allocateDirect(this.outputHeight * this.outputWidth * 4).order(ByteOrder.nativeOrder());
+    AppMethodBeat.i(234950);
+    if ((this.Ocj == null) || (this.Ocj.capacity() < this.outputHeight * this.outputWidth * 4)) {
+      this.Ocj = ByteBuffer.allocateDirect(this.outputHeight * this.outputWidth * 4).order(ByteOrder.nativeOrder());
     }
-    this.Hlu.position(0);
-    GLES20.glReadPixels(0, 0, this.outputWidth, this.outputHeight, 6408, 5121, this.Hlu);
-    this.Hlu.position(0);
-    this.HlB = this.Hlu.array();
-    O(0, 0, 0, 0);
-    AppMethodBeat.o(235897);
+    this.Ocj.position(0);
+    GLES20.glReadPixels(0, 0, this.outputWidth, this.outputHeight, 6408, 5121, this.Ocj);
+    this.Ocj.position(0);
+    this.Ocq = this.Ocj.array();
+    T(0, 0, 0, 0);
+    AppMethodBeat.o(234950);
   }
   
-  static void q(float[] paramArrayOfFloat)
+  static void r(float[] paramArrayOfFloat)
   {
     AppMethodBeat.i(115720);
     swap(paramArrayOfFloat, 0, 6);
@@ -133,143 +156,120 @@ public final class b
     paramArrayOfFloat[paramInt2] = f;
   }
   
-  private void xy(boolean paramBoolean)
+  public final void b(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    AppMethodBeat.i(115721);
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-    GLES20.glClear(16640);
-    if (paramBoolean)
-    {
-      GLES20.glViewport(0, 0, this.outputWidth, this.outputHeight);
-      GLES20.glDrawArrays(5, 0, 4);
-      fLE();
-    }
-    for (;;)
-    {
-      GLES20.glUseProgram(0);
-      GLES20.glDisableVertexAttribArray(this.Hls);
-      GLES20.glDisableVertexAttribArray(this.Hlt);
-      AppMethodBeat.o(115721);
-      return;
-      GLES20.glViewport(0, 0, this.surfaceWidth, this.surfaceHeight);
-      GLES20.glDrawArrays(5, 0, 4);
-    }
-  }
-  
-  public final void c(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
-  {
-    AppMethodBeat.i(235896);
+    AppMethodBeat.i(234942);
     if ((paramArrayOfFloat2 != null) && (paramArrayOfFloat1 != null))
     {
       paramArrayOfFloat2 = Arrays.copyOf(paramArrayOfFloat2, paramArrayOfFloat2.length);
-      q(paramArrayOfFloat2);
-      if ((this.Hlq == null) || (this.Hlq.capacity() < paramArrayOfFloat2.length)) {
-        this.Hlq = ByteBuffer.allocateDirect(paramArrayOfFloat2.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+      r(paramArrayOfFloat2);
+      if ((this.Ocf == null) || (this.Ocf.capacity() < paramArrayOfFloat2.length)) {
+        this.Ocf = ByteBuffer.allocateDirect(paramArrayOfFloat2.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
       }
-      this.Hlq.put(paramArrayOfFloat2);
-      this.Hlq.position(0);
+      this.Ocf.put(paramArrayOfFloat2);
+      this.Ocf.position(0);
       paramArrayOfFloat1 = Arrays.copyOf(paramArrayOfFloat1, paramArrayOfFloat1.length);
-      if ((this.Hlr == null) || (this.Hlr.capacity() < paramArrayOfFloat1.length)) {
-        this.Hlr = ByteBuffer.allocateDirect(paramArrayOfFloat1.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+      if ((this.Ocg == null) || (this.Ocg.capacity() < paramArrayOfFloat1.length)) {
+        this.Ocg = ByteBuffer.allocateDirect(paramArrayOfFloat1.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
       }
-      this.Hlr.put(paramArrayOfFloat1);
-      this.Hlr.position(0);
+      this.Ocg.put(paramArrayOfFloat1);
+      this.Ocg.position(0);
     }
-    AppMethodBeat.o(235896);
+    AppMethodBeat.o(234942);
   }
   
-  public final void fLD()
+  public final void gEd()
   {
-    AppMethodBeat.i(235895);
-    if ((this.Hln == null) || (this.Hlv <= 0) || (this.Hlw <= 0)) {
-      jJ(this.outputWidth, this.outputHeight);
+    AppMethodBeat.i(234937);
+    if ((this.Occ == null) || (this.Ock <= 0) || (this.Ocl <= 0)) {
+      kZ(this.outputWidth, this.outputHeight);
     }
-    O(this.Hln.igo, this.Hlo.igv, this.Hlv, this.Hlw);
-    a(this.Hlk, this.Hlm, this.Hlp, this.HlA, true);
-    xy(true);
-    O(0, 0, 0, 0);
-    a(this.Hll, this.Hlo.igv, this.Hlr, this.Hlq, false);
-    xy(false);
-    AppMethodBeat.o(235895);
+    T(this.Occ.kVc, this.Ocd.kVj, this.Ock, this.Ocl);
+    a(this.ObZ, this.Ocb, this.Oce, this.Ocp, true);
+    Br(true);
+    T(0, 0, 0, 0);
+    a(this.Oca, this.Ocd.kVj, this.Ocg, this.Ocf, false);
+    Br(false);
+    AppMethodBeat.o(234937);
   }
   
-  public final void fLF()
+  public final void gEf()
   {
     AppMethodBeat.i(115723);
     Log.i("MicroMsg.VoipGLSProgram", "%s do destroy", new Object[] { Integer.valueOf(hashCode()) });
-    if (this.Hln != null) {
-      this.Hln.close();
+    if (this.Occ != null) {
+      this.Occ.close();
     }
-    if (this.Hlo != null) {
-      this.Hlo.close();
+    if (this.Ocd != null) {
+      this.Ocd.close();
     }
-    GLES20.glDeleteProgram(this.Hlk);
-    GLES20.glDeleteProgram(this.Hll);
+    GLES20.glDeleteProgram(this.ObZ);
+    GLES20.glDeleteProgram(this.Oca);
     GLES20.glBindTexture(3553, 0);
     GLES20.glBindFramebuffer(36160, 0);
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
     GLES20.glClear(16640);
     GLES20.glFinish();
-    if (this.Hlq != null) {
-      this.Hlq.clear();
+    if (this.Ocf != null) {
+      this.Ocf.clear();
     }
-    if (this.Hlp != null) {
-      this.Hlp.clear();
+    if (this.Oce != null) {
+      this.Oce.clear();
     }
-    if (this.HlA != null) {
-      this.HlA.clear();
+    if (this.Ocp != null) {
+      this.Ocp.clear();
     }
-    this.HlA = null;
-    this.Hlp = null;
-    this.Hlq = null;
-    this.Hlk = 0;
-    this.Hll = 0;
-    this.Hln = null;
-    this.Hlo = null;
+    this.Ocp = null;
+    this.Oce = null;
+    this.Ocf = null;
+    this.ObZ = 0;
+    this.Oca = 0;
+    this.Occ = null;
+    this.Ocd = null;
     this.surfaceWidth = 0;
     this.surfaceHeight = 0;
-    this.Hlw = 0;
-    this.Hlv = 0;
+    this.Ocl = 0;
+    this.Ock = 0;
     this.outputHeight = 0;
     this.outputWidth = 0;
     AppMethodBeat.o(115723);
   }
   
-  public final void jJ(int paramInt1, int paramInt2)
+  public final void kZ(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(115718);
-    Log.i("MicroMsg.VoipGLSProgram", "initOutputFrameBuffer, width:%s, height:%s, frameBufferTextureOutput:%s, frameBufferOutput:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), this.Hlo, this.Hln });
-    if (this.Hln != null) {
-      this.Hln.close();
+    Log.i("MicroMsg.VoipGLSProgram", "initOutputFrameBuffer, width:%s, height:%s, frameBufferTextureOutput:%s, frameBufferOutput:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), this.Ocd, this.Occ });
+    if (this.Occ != null) {
+      this.Occ.close();
     }
-    if (this.Hlo != null) {
-      this.Hlo.close();
+    if (this.Ocd != null) {
+      this.Ocd.close();
     }
-    this.Hlv = paramInt1;
-    this.Hlw = paramInt2;
-    this.Hlo = f.fLz();
-    this.Hln = f.fLA();
-    GLES20.glBindTexture(3553, this.Hlo.igv);
+    this.Ock = paramInt1;
+    this.Ocl = paramInt2;
+    this.Ocd = f.gDZ();
+    this.Occ = f.gEa();
+    GLES20.glBindTexture(3553, this.Ocd.kVj);
     GLES20.glTexParameteri(3553, 10241, 9729);
     GLES20.glTexParameteri(3553, 10240, 9729);
     GLES20.glTexParameteri(3553, 10242, 10497);
     GLES20.glTexParameteri(3553, 10243, 10497);
-    GLES20.glTexImage2D(3553, 0, 6408, this.Hlv, this.Hlw, 0, 6408, 5121, null);
+    GLES20.glTexImage2D(3553, 0, 6408, this.Ock, this.Ocl, 0, 6408, 5121, null);
     GLES20.glBindTexture(3553, 0);
     AppMethodBeat.o(115718);
   }
   
-  public final void rl(int paramInt)
+  public final void ua(int paramInt)
   {
-    AppMethodBeat.i(235894);
+    AppMethodBeat.i(234923);
     Log.i("MicroMsg.VoipGLSProgram", "set input texture:%s", new Object[] { Integer.valueOf(paramInt) });
-    this.Hlm = paramInt;
-    AppMethodBeat.o(235894);
+    this.Ocb = paramInt;
+    AppMethodBeat.o(234923);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.label.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.platformtools.f;
 import com.tencent.mm.plugin.label.e;
-import com.tencent.mm.protocal.protobuf.blr;
-import com.tencent.mm.protocal.protobuf.bls;
-import com.tencent.mm.protocal.protobuf.cgu;
+import com.tencent.mm.protocal.protobuf.bta;
+import com.tencent.mm.protocal.protobuf.btb;
+import com.tencent.mm.protocal.protobuf.cpq;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.au;
@@ -34,13 +34,13 @@ public final class c
   {
     AppMethodBeat.i(26149);
     d.a locala = new d.a();
-    locala.iLN = new blr();
-    locala.iLO = new bls();
+    locala.lBU = new bta();
+    locala.lBV = new btb();
     locala.uri = "/cgi-bin/micromsg-bin/getcontactlabellist";
     locala.funcId = 639;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
+    this.rr = locala.bgN();
     AppMethodBeat.o(26149);
   }
   
@@ -65,28 +65,28 @@ public final class c
     Log.d("MicroMsg.Label.NetSceneGetContactLabelList", "cpan[onGYNetEnd] netId:%d errType:%d errCode:%d errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      bg.aVF();
-      com.tencent.mm.model.c.azQ().set(209408, Long.valueOf(System.currentTimeMillis()));
-      params = (bls)this.rr.iLL.iLR;
-      if ((params != null) && (params.KGW != null))
+      bh.beI();
+      com.tencent.mm.model.c.aHp().i(209408, Long.valueOf(System.currentTimeMillis()));
+      params = (btb)d.c.b(this.rr.lBS);
+      if ((params != null) && (params.RIq != null))
       {
-        params = params.KGW;
+        params = params.RIq;
         paramArrayOfByte = new ArrayList();
         int j = params.size();
         paramInt1 = i;
         while (paramInt1 < j)
         {
-          cgu localcgu = (cgu)params.get(paramInt1);
+          cpq localcpq = (cpq)params.get(paramInt1);
           au localau = new au();
-          localau.field_labelID = localcgu.Mmc;
-          localau.field_labelName = localcgu.Mmb;
-          localau.field_labelPYFull = f.Sh(localcgu.Mmb);
-          localau.field_labelPYShort = f.Si(localcgu.Mmb);
+          localau.field_labelID = localcpq.TwW;
+          localau.field_labelName = localcpq.TwV;
+          localau.field_labelPYFull = f.ZJ(localcpq.TwV);
+          localau.field_labelPYShort = f.ZK(localcpq.TwV);
           paramArrayOfByte.add(localau);
           paramInt1 += 1;
         }
-        e.ecf().iG(paramArrayOfByte);
-        e.ecf().iH(e.ecf().iI(paramArrayOfByte));
+        e.eLd().jy(paramArrayOfByte);
+        e.eLd().jz(e.eLd().jA(paramArrayOfByte));
       }
     }
     for (;;)
@@ -100,7 +100,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.label.b.c
  * JD-Core Version:    0.7.0.1
  */

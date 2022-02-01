@@ -12,26 +12,30 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.i;
+import com.tencent.mm.kernel.k;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.wallet_core.ui.e;
-import com.tencent.mm.wallet_core.ui.e.a;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.f.a;
+import com.tencent.mm.wallet_core.ui.g;
 
-@i
+@k
 public class AAEntranceUI
   extends MMActivity
 {
-  private Button jUs;
-  private TextView jUt;
-  private TextView jUu;
+  private Button mLF;
+  private TextView mLG;
+  private TextView mLH;
   
   public int getLayoutId()
   {
-    return 2131492896;
+    return a.g.aa_entrance_ui;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -73,36 +77,36 @@ public class AAEntranceUI
     AppMethodBeat.i(63474);
     fixStatusbar(true);
     super.onCreate(paramBundle);
-    setActionbarColor(getResources().getColor(2131101424));
+    setActionbarColor(getResources().getColor(a.c.white));
     hideActionbarLine();
     setMMTitle("");
-    this.jUs = ((Button)findViewById(2131303043));
-    this.jUt = ((TextView)findViewById(2131298598));
-    this.jUs.setOnClickListener(new View.OnClickListener()
+    this.mLF = ((Button)findViewById(a.f.launch_btn));
+    this.mLG = ((TextView)findViewById(a.f.check_aa_record_tv));
+    this.mLF.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(63471);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/aa/ui/AAEntranceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/aa/ui/AAEntranceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         AAEntranceUI.a(AAEntranceUI.this);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/aa/ui/AAEntranceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(63471);
       }
     });
-    paramBundle = getString(2131757550);
-    f.a(this.jUt, paramBundle, 0, paramBundle.length(), new e(new e.a()
+    paramBundle = getString(a.i.check_aa_record);
+    g.a(this.mLG, paramBundle, 0, paramBundle.length(), new f(new f.a()
     {
-      public final void bmr()
+      public final void bwz()
       {
         AppMethodBeat.i(63472);
         Object localObject = new Intent(AAEntranceUI.this.getContext(), AAQueryListUI.class);
         AAEntranceUI localAAEntranceUI = AAEntranceUI.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(localAAEntranceUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/aa/ui/AAEntranceUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        localAAEntranceUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(localAAEntranceUI, "com/tencent/mm/plugin/aa/ui/AAEntranceUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(localAAEntranceUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/aa/ui/AAEntranceUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localAAEntranceUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(localAAEntranceUI, "com/tencent/mm/plugin/aa/ui/AAEntranceUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(63472);
       }
     }), getContext());
@@ -116,8 +120,8 @@ public class AAEntranceUI
         return false;
       }
     });
-    this.jUu = ((TextView)findViewById(2131296291));
-    ao.a(this.jUu.getPaint(), 0.8F);
+    this.mLH = ((TextView)findViewById(a.f.aa_entrance_title));
+    ar.a(this.mLH.getPaint(), 0.8F);
     AppMethodBeat.o(63474);
   }
   
@@ -129,7 +133,7 @@ public class AAEntranceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.AAEntranceUI
  * JD-Core Version:    0.7.0.1
  */

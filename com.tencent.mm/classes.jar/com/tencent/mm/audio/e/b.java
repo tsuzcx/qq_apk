@@ -2,7 +2,7 @@ package com.tencent.mm.audio.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
@@ -10,8 +10,8 @@ import java.nio.ByteOrder;
 
 public final class b
 {
-  private OutputStream dBk;
-  private int dBl;
+  private OutputStream ftV;
+  private int ftW;
   public String mFilePath;
   
   public b(String paramString, int paramInt1, int paramInt2)
@@ -20,7 +20,7 @@ public final class b
     this.mFilePath = paramString;
     try
     {
-      this.dBk = s.dw(paramString, false);
+      this.ftV = u.Te(paramString);
       paramString = ByteBuffer.allocate(44);
       paramString.order(ByteOrder.LITTLE_ENDIAN);
       paramString.putInt(1179011410);
@@ -36,8 +36,8 @@ public final class b
       paramString.putShort((short)16);
       paramString.putInt(1635017060);
       paramString.putInt(0);
-      this.dBl = 44;
-      this.dBk.write(paramString.array());
+      this.ftW = 44;
+      this.ftV.write(paramString.array());
       AppMethodBeat.o(130011);
       return;
     }
@@ -51,15 +51,15 @@ public final class b
   public final boolean A(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(130012);
-    if (this.dBk == null)
+    if (this.ftV == null)
     {
       AppMethodBeat.o(130012);
       return false;
     }
     try
     {
-      this.dBk.write(paramArrayOfByte, 0, paramInt);
-      this.dBl += paramInt;
+      this.ftV.write(paramArrayOfByte, 0, paramInt);
+      this.ftW += paramInt;
       AppMethodBeat.o(130012);
       return true;
     }
@@ -78,7 +78,7 @@ public final class b
     //   0: ldc 118
     //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 34	com/tencent/mm/audio/e/b:dBk	Ljava/io/OutputStream;
+    //   6: getfield 34	com/tencent/mm/audio/e/b:ftV	Ljava/io/OutputStream;
     //   9: invokevirtual 121	java/io/OutputStream:close	()V
     //   12: aconst_null
     //   13: astore_3
@@ -89,7 +89,7 @@ public final class b
     //   18: aload_0
     //   19: getfield 26	com/tencent/mm/audio/e/b:mFilePath	Ljava/lang/String;
     //   22: iconst_1
-    //   23: invokestatic 125	com/tencent/mm/vfs/s:dB	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
+    //   23: invokestatic 125	com/tencent/mm/vfs/u:dO	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
     //   26: astore 4
     //   28: aload 4
     //   30: astore_2
@@ -127,7 +127,7 @@ public final class b
     //   86: astore_1
     //   87: aload 5
     //   89: aload_0
-    //   90: getfield 63	com/tencent/mm/audio/e/b:dBl	I
+    //   90: getfield 63	com/tencent/mm/audio/e/b:ftW	I
     //   93: bipush 8
     //   95: isub
     //   96: invokevirtual 54	java/nio/ByteBuffer:putInt	(I)Ljava/nio/ByteBuffer;
@@ -159,7 +159,7 @@ public final class b
     //   142: astore_1
     //   143: aload 5
     //   145: aload_0
-    //   146: getfield 63	com/tencent/mm/audio/e/b:dBl	I
+    //   146: getfield 63	com/tencent/mm/audio/e/b:ftW	I
     //   149: bipush 42
     //   151: isub
     //   152: invokevirtual 54	java/nio/ByteBuffer:putInt	(I)Ljava/nio/ByteBuffer;
@@ -345,7 +345,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.e.b
  * JD-Core Version:    0.7.0.1
  */

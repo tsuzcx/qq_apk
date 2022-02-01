@@ -16,7 +16,7 @@ public class MultiTalkingSmallService
     AppMethodBeat.i(114612);
     Log.i("MicroMsg.MultiTalkingSmallService", "MultiTalkingSmallService onBind");
     paramIntent = (Notification)paramIntent.getParcelableExtra("notification");
-    if ((d.oD(26)) && (paramIntent != null)) {
+    if ((d.qV(26)) && (paramIntent != null)) {
       startForeground(43, paramIntent);
     }
     AppMethodBeat.o(114612);

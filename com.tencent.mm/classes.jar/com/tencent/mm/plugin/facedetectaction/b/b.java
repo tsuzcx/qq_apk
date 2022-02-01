@@ -13,9 +13,9 @@ import com.tencent.youtu.ytposedetect.YTPoseDetectInterface.PoseDetectOnFrame;
 public final class b
 {
   int liveType;
-  public YTPoseDetectInterface.PoseDetectOnFrame sXw = null;
-  a sXx;
   int status = -1;
+  public YTPoseDetectInterface.PoseDetectOnFrame wDv = null;
+  a wDw;
   
   static
   {
@@ -36,6 +36,7 @@ public final class b
       {
         YTPoseDetectInterface.releaseModel();
         YTFaceTrack.GlobalRelease();
+        a.b.djd().wDr = null;
       }
       AppMethodBeat.o(104208);
       return;
@@ -52,10 +53,10 @@ public final class b
     AppMethodBeat.i(104207);
     if (PluginFace.isEnabled())
     {
-      a.aoa("YTCommon");
-      a.aoa("YTFaceTrackPro2");
-      a.aoa("YTNextCV");
-      a.aoa("YTPoseDetect");
+      a.avY("YTCommon");
+      a.avY("YTFaceTrackPro2");
+      a.avY("YTNextCV");
+      a.avY("YTPoseDetect");
     }
     AppMethodBeat.o(104207);
   }

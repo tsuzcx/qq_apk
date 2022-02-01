@@ -1,7 +1,7 @@
 package com.tencent.magicbrush.engine;
 
-import android.support.annotation.Keep;
 import android.webkit.JavascriptInterface;
+import androidx.annotation.Keep;
 import com.tencent.magicbrush.a.c.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.UnsupportedEncodingException;
@@ -276,7 +276,7 @@ public class JsClassUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.magicbrush.engine.JsClassUtils
  * JD-Core Version:    0.7.0.1
  */

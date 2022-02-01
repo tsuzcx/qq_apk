@@ -9,9 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface b
   extends IInterface
 {
-  public abstract void keep_OnError(int paramInt);
-  
-  public abstract void keep_OnOpenSuccess();
+  public abstract void J(int paramInt1, int paramInt2, boolean paramBoolean);
   
   public static abstract class a
     extends Binder
@@ -19,12 +17,12 @@ public abstract interface b
   {
     public a()
     {
-      attachInterface(this, "com.tencent.mm.plugin.talkroom.component.ILiveConEngineCallback_AIDL");
+      attachInterface(this, "com.tencent.mm.plugin.talkroom.component.IMemberUpdateCallback_AIDL");
     }
     
-    public static b ftG()
+    public static b gih()
     {
-      return a.FOU;
+      return a.MiW;
     }
     
     public IBinder asBinder()
@@ -39,24 +37,25 @@ public abstract interface b
       default: 
         return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
       case 1598968902: 
-        paramParcel2.writeString("com.tencent.mm.plugin.talkroom.component.ILiveConEngineCallback_AIDL");
+        paramParcel2.writeString("com.tencent.mm.plugin.talkroom.component.IMemberUpdateCallback_AIDL");
         return true;
-      case 1: 
-        paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.ILiveConEngineCallback_AIDL");
-        keep_OnOpenSuccess();
+      }
+      paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.IMemberUpdateCallback_AIDL");
+      paramInt1 = paramParcel1.readInt();
+      paramInt2 = paramParcel1.readInt();
+      if (paramParcel1.readInt() != 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        J(paramInt1, paramInt2, bool);
         paramParcel2.writeNoException();
         return true;
       }
-      paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.ILiveConEngineCallback_AIDL");
-      keep_OnError(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
     }
     
     static final class a
       implements b
     {
-      public static b FOU;
+      public static b MiW;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -64,65 +63,49 @@ public abstract interface b
         this.mRemote = paramIBinder;
       }
       
+      public final void J(int paramInt1, int paramInt2, boolean paramBoolean)
+      {
+        int i = 1;
+        AppMethodBeat.i(29383);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.IMemberUpdateCallback_AIDL");
+          localParcel1.writeInt(paramInt1);
+          localParcel1.writeInt(paramInt2);
+          if (paramBoolean) {}
+          for (;;)
+          {
+            localParcel1.writeInt(i);
+            if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (b.a.gih() == null)) {
+              break;
+            }
+            b.a.gih().J(paramInt1, paramInt2, paramBoolean);
+            return;
+            i = 0;
+          }
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(29383);
+        }
+      }
+      
       public final IBinder asBinder()
       {
         return this.mRemote;
-      }
-      
-      public final void keep_OnError(int paramInt)
-      {
-        AppMethodBeat.i(29382);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.ILiveConEngineCallback_AIDL");
-          localParcel1.writeInt(paramInt);
-          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (b.a.ftG() != null))
-          {
-            b.a.ftG().keep_OnError(paramInt);
-            return;
-          }
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(29382);
-        }
-      }
-      
-      public final void keep_OnOpenSuccess()
-      {
-        AppMethodBeat.i(29381);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.ILiveConEngineCallback_AIDL");
-          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (b.a.ftG() != null))
-          {
-            b.a.ftG().keep_OnOpenSuccess();
-            return;
-          }
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(29381);
-        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.component.b
  * JD-Core Version:    0.7.0.1
  */

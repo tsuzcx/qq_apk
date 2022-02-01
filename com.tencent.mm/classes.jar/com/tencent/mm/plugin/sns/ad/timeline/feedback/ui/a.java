@@ -9,63 +9,63 @@ public final class a
   extends PopupWindow
   implements PopupWindow.OnDismissListener
 {
-  private PopupWindow.OnDismissListener DyL;
-  private boolean DyM;
+  private PopupWindow.OnDismissListener JIG;
+  private boolean JIH;
   public Context mContext;
   
   public a(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(202192);
+    AppMethodBeat.i(199817);
     super.setOnDismissListener(this);
     this.mContext = paramContext;
-    AppMethodBeat.o(202192);
+    AppMethodBeat.o(199817);
   }
   
   public final void dismiss()
   {
-    AppMethodBeat.i(202193);
+    AppMethodBeat.i(199820);
     try
     {
       super.dismiss();
-      AppMethodBeat.o(202193);
+      AppMethodBeat.o(199820);
       return;
     }
     catch (Throwable localThrowable)
     {
-      if ((!this.DyM) && (this.DyL != null)) {
-        this.DyL.onDismiss();
+      if ((!this.JIH) && (this.JIG != null)) {
+        this.JIG.onDismiss();
       }
-      AppMethodBeat.o(202193);
+      AppMethodBeat.o(199820);
     }
   }
   
   public final void onDismiss()
   {
-    AppMethodBeat.i(202194);
+    AppMethodBeat.i(199823);
     try
     {
-      this.DyM = true;
-      if (this.DyL != null) {
-        this.DyL.onDismiss();
+      this.JIH = true;
+      if (this.JIG != null) {
+        this.JIG.onDismiss();
       }
-      AppMethodBeat.o(202194);
+      AppMethodBeat.o(199823);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(202194);
+      AppMethodBeat.o(199823);
     }
   }
   
   public final void setOnDismissListener(PopupWindow.OnDismissListener paramOnDismissListener)
   {
-    this.DyL = paramOnDismissListener;
+    this.JIG = paramOnDismissListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.feedback.ui.a
  * JD-Core Version:    0.7.0.1
  */

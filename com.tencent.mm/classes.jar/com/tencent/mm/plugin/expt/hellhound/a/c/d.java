@@ -12,32 +12,32 @@ public final class d
   {
     AppMethodBeat.i(184362);
     int i = -1;
-    if (parama == e.a.sxg)
+    if (parama == e.a.wcI)
     {
       i = 7;
-      if ((b.isMMProcess()) && (!com.tencent.mm.plugin.expt.g.d.cRv()))
+      if ((b.isMMProcess()) && (!com.tencent.mm.plugin.expt.g.d.dgq()))
       {
-        if (parama != e.a.sxg) {
+        if (parama != e.a.wcI) {
           break label132;
         }
-        h.CyF.idkeyStat(932L, 91L, 1L, false);
+        h.IzE.idkeyStat(932L, 91L, 1L, false);
       }
     }
     for (;;)
     {
       Log.i("HABBYGE-MALI.HellFrontBackReport", "report 切换-前后台(3): %d, %s 未登录", new Object[] { Integer.valueOf(i), paramString });
       Log.i("HABBYGE-MALI.HellFrontBackReport", "report 切换-前后台(3): %d, %s", new Object[] { Integer.valueOf(i), paramString });
-      com.tencent.mm.plugin.expt.g.d.cRu().b(paramString, parama, paramInt, paramLong);
+      com.tencent.mm.plugin.expt.g.d.dgp().b(paramString, parama, paramInt, paramLong);
       AppMethodBeat.o(184362);
       return;
-      if (parama != e.a.sxh) {
+      if (parama != e.a.wcJ) {
         break;
       }
       i = 8;
       break;
       label132:
-      if (parama == e.a.sxh) {
-        h.CyF.idkeyStat(932L, 92L, 1L, false);
+      if (parama == e.a.wcJ) {
+        h.IzE.idkeyStat(932L, 92L, 1L, false);
       }
     }
   }
@@ -45,13 +45,13 @@ public final class d
   static void a(String paramString, e.a parama, int paramInt, long paramLong)
   {
     AppMethodBeat.i(122040);
-    com.tencent.mm.plugin.expt.g.d.cRu().a(paramString, parama, paramInt, paramLong);
+    com.tencent.mm.plugin.expt.g.d.dgp().a(paramString, parama, paramInt, paramLong);
     AppMethodBeat.o(122040);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.c.d
  * JD-Core Version:    0.7.0.1
  */

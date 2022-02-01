@@ -2,19 +2,20 @@ package com.tencent.kinda.framework.animate;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class KindaAnimatorWatch
 {
   private static final String TAG = "MicroMsg.KindaAnimatorWatch";
-  private static Map<Integer, Runnable> pendingActions;
+  private static List<Runnable> pendingActions;
   private static int pendingObj;
   
   static
   {
     AppMethodBeat.i(18326);
-    pendingActions = new HashMap();
+    pendingActions = new ArrayList();
     pendingObj = 0;
     AppMethodBeat.o(18326);
   }
@@ -22,15 +23,24 @@ public class KindaAnimatorWatch
   public static void didObjCreated(int paramInt)
   {
     AppMethodBeat.i(18324);
+    new StringBuilder("didObjCreated: creating pendingObj=").append(paramInt).append(".");
     pendingObj = paramInt;
     MMHandlerThread.postToMainThreadDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(18321);
-        if (KindaAnimatorWatch.pendingActions.containsKey(Integer.valueOf(this.val$hash_code))) {
-          KindaAnimatorWatch.pendingActions.remove(Integer.valueOf(this.val$hash_code));
+        if (this.val$hash_code == KindaAnimatorWatch.pendingObj)
+        {
+          AppMethodBeat.o(18321);
+          return;
         }
+        Iterator localIterator = KindaAnimatorWatch.pendingActions.iterator();
+        while (localIterator.hasNext()) {
+          ((Runnable)localIterator.next()).run();
+        }
+        KindaAnimatorWatch.pendingActions.clear();
+        KindaAnimatorWatch.access$002(0);
         AppMethodBeat.o(18321);
       }
     }, 5000L);
@@ -40,21 +50,28 @@ public class KindaAnimatorWatch
   public static void didViewCreated(int paramInt)
   {
     AppMethodBeat.i(18325);
-    pendingObj = 0;
-    if (pendingActions.containsKey(Integer.valueOf(paramInt)))
+    if (paramInt != pendingObj)
     {
-      Runnable localRunnable = (Runnable)pendingActions.get(Integer.valueOf(paramInt));
-      pendingActions.remove(Integer.valueOf(paramInt));
-      MMHandlerThread.postToMainThread(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(18322);
-          this.val$action.run();
-          AppMethodBeat.o(18322);
-        }
-      });
+      new StringBuilder("didViewCreated: pendingObj:").append(paramInt).append(" has created view, but there is a new pendingObj=").append(pendingObj).append(", just wait.");
+      AppMethodBeat.o(18325);
+      return;
     }
+    new StringBuilder("didViewCreated: pendingObj=").append(pendingObj).append(", has created view. should run actions.");
+    pendingObj = 0;
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(18322);
+        new StringBuilder("post: pendingObj=").append(this.val$tempObj).append(", run actions.");
+        Iterator localIterator = KindaAnimatorWatch.pendingActions.iterator();
+        while (localIterator.hasNext()) {
+          ((Runnable)localIterator.next()).run();
+        }
+        KindaAnimatorWatch.pendingActions.clear();
+        AppMethodBeat.o(18322);
+      }
+    });
     AppMethodBeat.o(18325);
   }
   
@@ -63,8 +80,8 @@ public class KindaAnimatorWatch
     AppMethodBeat.i(18323);
     if (pendingObj != 0)
     {
-      pendingActions.put(Integer.valueOf(pendingObj), paramRunnable);
-      pendingObj = 0;
+      new StringBuilder("post: pendingObj=").append(pendingObj).append(", append queue, wait for view create.");
+      pendingActions.add(paramRunnable);
       AppMethodBeat.o(18323);
       return;
     }
@@ -82,7 +99,7 @@ public class KindaAnimatorWatch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.kinda.framework.animate.KindaAnimatorWatch
  * JD-Core Version:    0.7.0.1
  */

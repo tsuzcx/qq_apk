@@ -4,13 +4,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"cdata", "", "", "api-handoff_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"cdata", "", "", "api-handoff_release"})
 public final class a
 {
-  public static final String du(Object paramObject)
+  public static final String dy(Object paramObject)
   {
     AppMethodBeat.i(121712);
-    p.h(paramObject, "$this$cdata");
+    p.k(paramObject, "$this$cdata");
     paramObject = "<![CDATA[" + paramObject + "]]>";
     AppMethodBeat.o(121712);
     return paramObject;

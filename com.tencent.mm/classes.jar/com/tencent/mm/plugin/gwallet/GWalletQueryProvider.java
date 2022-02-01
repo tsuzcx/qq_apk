@@ -8,7 +8,7 @@ import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.gwallet.a.b;
 import com.tencent.mm.plugin.gwallet.a.b.a;
 import com.tencent.mm.plugin.gwallet.a.b.c;
@@ -26,14 +26,14 @@ public class GWalletQueryProvider
   extends ContentProvider
 {
   public static final String[] COLUMNS = { "_id", "product_id", "full_price", "product_state", "price_currency", "price_amount" };
+  private b Dra = null;
+  private boolean Drb;
+  private boolean Drc;
+  private ArrayList<String> Drd;
+  private ArrayList<String> Dre;
+  private int Drf;
   private final String TAG = "MicroMsg.GWalletQueryProvider";
   private Context mContext = null;
-  private b ygY = null;
-  private boolean ygZ;
-  private boolean yha;
-  private ArrayList<String> yhb;
-  private ArrayList<String> yhc;
-  private int yhd;
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
@@ -77,20 +77,20 @@ public class GWalletQueryProvider
       AppMethodBeat.o(64568);
     }
     this.mContext = getContext();
-    this.ygY = new b(this.mContext);
-    this.ygZ = true;
-    this.yha = false;
-    this.yhc = new ArrayList();
+    this.Dra = new b(this.mContext);
+    this.Drb = true;
+    this.Drc = false;
+    this.Dre = new ArrayList();
     int j = paramArrayOfString2.length;
     int i = 0;
     while (i < j)
     {
       paramUri = paramArrayOfString2[i];
-      this.yhc.add(paramUri);
+      this.Dre.add(paramUri);
       i += 1;
     }
     Log.d("MicroMsg.GWalletQueryProvider", "Starting setup.");
-    this.ygY.a(new b.a()
+    this.Dra.a(new b.a()
     {
       public final void a(c paramAnonymousc)
       {
@@ -107,7 +107,7 @@ public class GWalletQueryProvider
           AppMethodBeat.o(64565);
           return;
         }
-        g.aAk().postAtFrontOfWorker(new MMHandlerThread.IWaitWorkThread()
+        h.aHJ().postAtFrontOfWorker(new MMHandlerThread.IWaitWorkThread()
         {
           public final boolean doInBackground()
           {
@@ -141,9 +141,9 @@ public class GWalletQueryProvider
     });
     long l = 0L;
     boolean bool;
-    while ((l <= 30000L) && (this.ygZ))
+    while ((l <= 30000L) && (this.Drb))
     {
-      bool = this.yha;
+      bool = this.Drc;
       if (bool) {
         break;
       }
@@ -157,11 +157,11 @@ public class GWalletQueryProvider
         Log.e("MicroMsg.GWalletQueryProvider", paramUri.toString());
       }
     }
-    if (!this.ygZ)
+    if (!this.Drb)
     {
       Log.d("MicroMsg.GWalletQueryProvider", "unable to setup");
       paramUri = new MatrixCursor(COLUMNS);
-      paramArrayOfString1 = this.yhc.iterator();
+      paramArrayOfString1 = this.Dre.iterator();
       while (paramArrayOfString1.hasNext()) {
         paramUri.addRow(new Object[] { Integer.valueOf(0), (String)paramArrayOfString1.next(), "", Integer.valueOf(10234), "", "" });
       }
@@ -172,7 +172,7 @@ public class GWalletQueryProvider
     {
       Log.d("MicroMsg.GWalletQueryProvider", "time's out");
       paramUri = new MatrixCursor(COLUMNS);
-      paramArrayOfString1 = this.yhc.iterator();
+      paramArrayOfString1 = this.Dre.iterator();
       while (paramArrayOfString1.hasNext()) {
         paramUri.addRow(new Object[] { Integer.valueOf(0), (String)paramArrayOfString1.next(), "", Integer.valueOf(10235), "", "" });
       }
@@ -181,12 +181,12 @@ public class GWalletQueryProvider
     }
     Log.d("MicroMsg.GWalletQueryProvider", "successfully queried!");
     paramArrayOfString1 = new MatrixCursor(COLUMNS);
-    if (this.yhd == 0)
+    if (this.Drf == 0)
     {
       i = 0;
-      if (this.yhb != null)
+      if (this.Drd != null)
       {
-        paramString1 = this.yhb.iterator();
+        paramString1 = this.Drd.iterator();
         i = 0;
         for (;;)
         {
@@ -213,7 +213,7 @@ public class GWalletQueryProvider
             {
               Object localObject;
               paramArrayOfString1.addRow(new Object[] { Integer.valueOf(i), paramUri, paramArrayOfString2, Integer.valueOf(10232), paramString2, localObject });
-              this.yhc.remove(paramUri);
+              this.Dre.remove(paramUri);
               i = j;
             }
             catch (JSONException paramUri)
@@ -234,13 +234,13 @@ public class GWalletQueryProvider
     label815:
     for (;;)
     {
-      paramUri = this.yhc.iterator();
+      paramUri = this.Dre.iterator();
       while (paramUri.hasNext())
       {
         paramArrayOfString1.addRow(new Object[] { Integer.valueOf(i), (String)paramUri.next(), "", Integer.valueOf(10233), "", "" });
         i += 1;
         continue;
-        paramUri = this.yhc.iterator();
+        paramUri = this.Dre.iterator();
         while (paramUri.hasNext()) {
           paramArrayOfString1.addRow(new Object[] { Integer.valueOf(0), (String)paramUri.next(), "", Integer.valueOf(10236), "", "" });
         }
@@ -258,7 +258,7 @@ public class GWalletQueryProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gwallet.GWalletQueryProvider
  * JD-Core Version:    0.7.0.1
  */

@@ -22,10 +22,10 @@ public final class b
     paramContext = new d(paramContext);
     ResendMsgInfo localResendMsgInfo = new ResendMsgInfo();
     localResendMsgInfo.title = paramString1;
-    localResendMsgInfo.JQW = paramString2;
+    localResendMsgInfo.QPn = paramString2;
     localResendMsgInfo.description = paramString3;
-    localResendMsgInfo.lHA = paramString4;
-    localResendMsgInfo.lHB = paramString5;
+    localResendMsgInfo.oDJ = paramString4;
+    localResendMsgInfo.oDK = paramString5;
     paramContext.a(localResendMsgInfo, paramc);
     AppMethodBeat.o(67336);
   }

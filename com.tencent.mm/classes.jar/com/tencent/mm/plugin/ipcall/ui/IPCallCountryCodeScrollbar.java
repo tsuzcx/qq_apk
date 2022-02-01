@@ -11,42 +11,47 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.base.r;
 
 public class IPCallCountryCodeScrollbar
   extends View
 {
-  public static final String[] yuU = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-  private int bxP;
-  private float haa;
+  public static final String[] DUY = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+  protected float DUZ;
+  protected int DVa;
+  protected String[] DVb;
+  private float DVc;
+  private r DVd;
+  private TextView DVe;
+  private int DVf;
+  private a DVg;
+  private int bhr;
+  private float jLb;
   private Paint paint;
   private float textSize;
-  protected float yuV;
-  protected int yuW;
-  protected String[] yuX;
-  private float yuY;
-  private p yuZ;
-  private TextView yva;
-  private int yvb;
-  private a yvc;
   
   public IPCallCountryCodeScrollbar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(25725);
-    this.yuY = 0.0F;
-    this.yuX = new String[] { "↑" };
-    this.yuV = 1.3F;
-    this.yuW = 79;
+    this.DVc = 0.0F;
+    this.DVb = new String[] { "↑" };
+    this.DUZ = 1.3F;
+    this.DVa = 79;
     setFocusable(true);
     setFocusableInTouchMode(true);
-    this.yvb = BackwardSupportUtil.BitmapFactory.fromDPToPix(paramContext, 3.0F);
+    this.DVf = BackwardSupportUtil.BitmapFactory.fromDPToPix(paramContext, 3.0F);
     paramAttributeSet = inflate(paramContext, getToastLayoutId(), null);
-    int i = BackwardSupportUtil.BitmapFactory.fromDPToPix(paramContext, this.yuW);
-    this.yuZ = new p(paramAttributeSet, i, i);
-    this.yva = ((TextView)paramAttributeSet.findViewById(2131307861));
+    int i = BackwardSupportUtil.BitmapFactory.fromDPToPix(paramContext, this.DVa);
+    this.DVd = new r(paramAttributeSet, i, i);
+    this.DVe = ((TextView)paramAttributeSet.findViewById(R.h.show_head_toast_text));
     this.paint = new Paint();
     this.paint.setAntiAlias(true);
     this.paint.setColor(-11119018);
@@ -54,10 +59,10 @@ public class IPCallCountryCodeScrollbar
     AppMethodBeat.o(25725);
   }
   
-  public final void aCk(String paramString)
+  public final void aMr(String paramString)
   {
     AppMethodBeat.i(25724);
-    String[] arrayOfString1 = yuU;
+    String[] arrayOfString1 = DUY;
     int k = arrayOfString1.length;
     int i = 0;
     int j = 0;
@@ -71,9 +76,9 @@ public class IPCallCountryCodeScrollbar
     if (j == 0) {
       paramString = "#";
     }
-    k = this.yuX.length + 1;
+    k = this.DVb.length + 1;
     arrayOfString1 = new String[k];
-    String[] arrayOfString2 = this.yuX;
+    String[] arrayOfString2 = this.DVb;
     int m = arrayOfString2.length;
     j = 0;
     i = 0;
@@ -90,13 +95,13 @@ public class IPCallCountryCodeScrollbar
       i += 1;
     }
     arrayOfString1[(k - 1)] = paramString;
-    this.yuX = arrayOfString1;
+    this.DVb = arrayOfString1;
     AppMethodBeat.o(25724);
   }
   
   protected int getToastLayoutId()
   {
-    return 2131496311;
+    return R.i.show_head_toast;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -107,26 +112,26 @@ public class IPCallCountryCodeScrollbar
     super.onDraw(paramCanvas);
     final int m = getMeasuredHeight();
     final int k = getMeasuredWidth();
-    this.textSize = (m / (this.yuX.length * this.yuV));
-    int n = getResources().getDimensionPixelSize(2131165535);
+    this.textSize = (m / (this.DVb.length * this.DUZ));
+    int n = getResources().getDimensionPixelSize(R.f.NormalTextSize);
     if (this.textSize > n) {
       this.textSize = n;
     }
     this.paint.setTextSize(this.textSize);
-    if (this.yuY != this.textSize)
+    if (this.DVc != this.textSize)
     {
-      this.yuY = this.textSize;
+      this.DVc = this.textSize;
       post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(25723);
-          if (IPCallCountryCodeScrollbar.this.yuX.length <= 0)
+          if (IPCallCountryCodeScrollbar.this.DVb.length <= 0)
           {
             AppMethodBeat.o(25723);
             return;
           }
-          int i = (int)IPCallCountryCodeScrollbar.a(IPCallCountryCodeScrollbar.this).measureText(IPCallCountryCodeScrollbar.this.yuX[(IPCallCountryCodeScrollbar.this.yuX.length - 1)]) + a.fromDPToPix(IPCallCountryCodeScrollbar.this.getContext(), 8);
+          int i = (int)IPCallCountryCodeScrollbar.a(IPCallCountryCodeScrollbar.this).measureText(IPCallCountryCodeScrollbar.this.DVb[(IPCallCountryCodeScrollbar.this.DVb.length - 1)]) + a.fromDPToPix(IPCallCountryCodeScrollbar.this.getContext(), 8);
           if (i > k)
           {
             ViewGroup.LayoutParams localLayoutParams = IPCallCountryCodeScrollbar.this.getLayoutParams();
@@ -140,19 +145,19 @@ public class IPCallCountryCodeScrollbar
     }
     if (this.textSize == n)
     {
-      float f = (m - this.yuX.length * this.textSize * this.yuV) / 2.0F;
+      float f = (m - this.DVb.length * this.textSize * this.DUZ) / 2.0F;
       i = j;
-      while (i < this.yuX.length)
+      while (i < this.DVb.length)
       {
-        paramCanvas.drawText(this.yuX[i], k / 2.0F, this.textSize + f + i * this.textSize * this.yuV, this.paint);
+        paramCanvas.drawText(this.DVb[i], k / 2.0F, this.textSize + f + i * this.textSize * this.DUZ, this.paint);
         i += 1;
       }
       AppMethodBeat.o(25726);
       return;
     }
-    while (i < this.yuX.length)
+    while (i < this.DVb.length)
     {
-      paramCanvas.drawText(this.yuX[i], k / 2.0F, this.textSize + i * this.textSize * this.yuV, this.paint);
+      paramCanvas.drawText(this.DVb[i], k / 2.0F, this.textSize + i * this.textSize * this.DUZ, this.paint);
       i += 1;
     }
     AppMethodBeat.o(25726);
@@ -163,37 +168,37 @@ public class IPCallCountryCodeScrollbar
     AppMethodBeat.i(25727);
     if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2))
     {
-      this.haa = paramMotionEvent.getY();
-      if (this.haa < 0.0F) {
-        this.haa = 0.0F;
+      this.jLb = paramMotionEvent.getY();
+      if (this.jLb < 0.0F) {
+        this.jLb = 0.0F;
       }
-      if (this.haa > getMeasuredHeight()) {
-        this.haa = getMeasuredHeight();
+      if (this.jLb > getMeasuredHeight()) {
+        this.jLb = getMeasuredHeight();
       }
-      setBackgroundDrawable(a.l(getContext(), 2131234746));
-      float f1 = this.haa;
-      float f2 = this.textSize * this.yuV;
-      int j = (int)((f1 - (getMeasuredHeight() - this.yuX.length * f2) / 2.0F) / f2);
+      setBackgroundDrawable(a.m(getContext(), R.g.scrollbar_bg));
+      float f1 = this.jLb;
+      float f2 = this.textSize * this.DUZ;
+      int j = (int)((f1 - (getMeasuredHeight() - this.DVb.length * f2) / 2.0F) / f2);
       int i = j;
       if (j < 0) {
         i = 0;
       }
       j = i;
-      if (i >= this.yuX.length) {
-        j = this.yuX.length - 1;
+      if (i >= this.DVb.length) {
+        j = this.DVb.length - 1;
       }
-      this.bxP = j;
-      if (this.bxP != -1) {
-        break label259;
+      this.bhr = j;
+      if (this.bhr != -1) {
+        break label262;
       }
-      this.yva.setText(2131765029);
-      this.yuZ.showAtLocation(this, 17, 0, 0);
-      if (this.yvc != null)
+      this.DVe.setText(R.l.scroll_bar_search);
+      this.DVd.showAtLocation(this, 17, 0, 0);
+      if (this.DVg != null)
       {
-        if (this.bxP != -1) {
-          break label278;
+        if (this.bhr != -1) {
+          break label281;
         }
-        this.yvc.DP(a.aI(getContext(), 2131765029));
+        this.DVg.KH(a.ba(getContext(), R.l.scroll_bar_search));
       }
     }
     for (;;)
@@ -202,31 +207,31 @@ public class IPCallCountryCodeScrollbar
       if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
       {
         setBackgroundResource(0);
-        this.yuZ.dismiss();
+        this.DVd.dismiss();
       }
       AppMethodBeat.o(25727);
       return true;
-      label259:
-      this.yva.setText(this.yuX[this.bxP]);
+      label262:
+      this.DVe.setText(this.DVb[this.bhr]);
       break;
-      label278:
-      this.yvc.DP(this.yuX[this.bxP]);
+      label281:
+      this.DVg.KH(this.DVb[this.bhr]);
     }
   }
   
   public void setOnScrollBarTouchListener(a parama)
   {
-    this.yvc = parama;
+    this.DVg = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void DP(String paramString);
+    public abstract void KH(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallCountryCodeScrollbar
  * JD-Core Version:    0.7.0.1
  */

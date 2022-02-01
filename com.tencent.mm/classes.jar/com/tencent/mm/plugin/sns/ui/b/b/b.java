@@ -4,14 +4,14 @@ import com.tencent.mm.ui.MMActivity;
 
 public abstract class b
 {
-  protected a ETY;
+  protected a Lia;
   protected MMActivity activity;
   
-  public abstract void JW(long paramLong);
+  public abstract void Rq(long paramLong);
   
   public final void a(a parama)
   {
-    this.ETY = parama;
+    this.Lia = parama;
   }
   
   public static abstract interface a
@@ -21,7 +21,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.b.b.b
  * JD-Core Version:    0.7.0.1
  */

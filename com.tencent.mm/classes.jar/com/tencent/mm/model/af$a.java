@@ -5,27 +5,27 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class af$a
 {
-  private static ConcurrentLinkedQueue<af.b> iCW;
+  private static ConcurrentLinkedQueue<af.b> lsW;
   
   static
   {
-    AppMethodBeat.i(229788);
-    iCW = new ConcurrentLinkedQueue();
-    AppMethodBeat.o(229788);
+    AppMethodBeat.i(243988);
+    lsW = new ConcurrentLinkedQueue();
+    AppMethodBeat.o(243988);
   }
   
   public static void a(af.b paramb)
   {
-    AppMethodBeat.i(229786);
-    iCW.add(paramb);
-    AppMethodBeat.o(229786);
+    AppMethodBeat.i(243986);
+    lsW.add(paramb);
+    AppMethodBeat.o(243986);
   }
   
   public static void b(af.b paramb)
   {
-    AppMethodBeat.i(229787);
-    iCW.remove(paramb);
-    AppMethodBeat.o(229787);
+    AppMethodBeat.i(243987);
+    lsW.remove(paramb);
+    AppMethodBeat.o(243987);
   }
 }
 

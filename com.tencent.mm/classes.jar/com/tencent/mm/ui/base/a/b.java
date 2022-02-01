@@ -1,10 +1,10 @@
 package com.tencent.mm.ui.base.a;
 
 import android.view.View;
-import com.tencent.mm.view.recyclerview.h;
+import com.tencent.mm.view.recyclerview.i;
 
-public final class b
-  extends h
+public class b
+  extends i
 {
   private final View view;
   
@@ -21,7 +21,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.a.b
  * JD-Core Version:    0.7.0.1
  */

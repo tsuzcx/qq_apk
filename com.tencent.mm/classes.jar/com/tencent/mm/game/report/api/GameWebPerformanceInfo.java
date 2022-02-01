@@ -12,40 +12,40 @@ public class GameWebPerformanceInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<GameWebPerformanceInfo> CREATOR;
-  private static Map<String, GameWebPerformanceInfo> hib;
-  public int hhA;
-  public int hhB;
-  public int hhC;
-  public String hhD;
-  public long hhE;
-  public long hhF;
-  public long hhG;
-  public long hhH;
-  public long hhI;
-  public long hhJ;
-  public long hhK;
-  public long hhL;
-  public long hhM;
-  public long hhN;
-  public long hhO;
-  public long hhP;
-  public long hhQ;
-  public long hhR;
-  public long hhS;
-  public long hhT;
-  public long hhU;
-  public long hhV;
-  public long hhW;
-  public long hhX;
-  public String hhY;
-  public String hhZ;
-  public String hhu;
-  public int hhv;
-  public int hhw;
-  public int hhx;
-  public int hhy;
-  public int hhz;
-  public String hia;
+  private static Map<String, GameWebPerformanceInfo> jTZ;
+  public int jTA;
+  public String jTB;
+  public long jTC;
+  public long jTD;
+  public long jTE;
+  public long jTF;
+  public long jTG;
+  public long jTH;
+  public long jTI;
+  public long jTJ;
+  public long jTK;
+  public long jTL;
+  public long jTM;
+  public long jTN;
+  public long jTO;
+  public long jTP;
+  public long jTQ;
+  public long jTR;
+  public long jTS;
+  public long jTT;
+  public long jTU;
+  public long jTV;
+  public String jTW;
+  public String jTX;
+  public String jTY;
+  public String jTs;
+  public int jTt;
+  public int jTu;
+  public int jTv;
+  public int jTw;
+  public int jTx;
+  public int jTy;
+  public int jTz;
   public long startTime;
   public String url;
   
@@ -53,7 +53,7 @@ public class GameWebPerformanceInfo
   {
     AppMethodBeat.i(117612);
     CREATOR = new Parcelable.Creator() {};
-    hib = new HashMap();
+    jTZ = new HashMap();
     AppMethodBeat.o(117612);
   }
   
@@ -63,44 +63,44 @@ public class GameWebPerformanceInfo
   {
     AppMethodBeat.i(117607);
     this.url = paramParcel.readString();
-    this.hhu = paramParcel.readString();
-    this.hhv = paramParcel.readInt();
-    this.hhw = paramParcel.readInt();
-    this.hhx = paramParcel.readInt();
-    this.hhy = paramParcel.readInt();
-    this.hhz = paramParcel.readInt();
-    this.hhA = paramParcel.readInt();
-    this.hhB = paramParcel.readInt();
-    this.hhC = paramParcel.readInt();
-    this.hhD = paramParcel.readString();
+    this.jTs = paramParcel.readString();
+    this.jTt = paramParcel.readInt();
+    this.jTu = paramParcel.readInt();
+    this.jTv = paramParcel.readInt();
+    this.jTw = paramParcel.readInt();
+    this.jTx = paramParcel.readInt();
+    this.jTy = paramParcel.readInt();
+    this.jTz = paramParcel.readInt();
+    this.jTA = paramParcel.readInt();
+    this.jTB = paramParcel.readString();
     this.startTime = paramParcel.readLong();
-    this.hhE = paramParcel.readLong();
-    this.hhF = paramParcel.readLong();
-    this.hhG = paramParcel.readLong();
-    this.hhH = paramParcel.readLong();
-    this.hhI = paramParcel.readLong();
-    this.hhJ = paramParcel.readLong();
-    this.hhK = paramParcel.readLong();
-    this.hhL = paramParcel.readLong();
-    this.hhM = paramParcel.readLong();
-    this.hhN = paramParcel.readLong();
-    this.hhO = paramParcel.readLong();
-    this.hhP = paramParcel.readLong();
-    this.hhQ = paramParcel.readLong();
-    this.hhR = paramParcel.readLong();
-    this.hhS = paramParcel.readLong();
-    this.hhT = paramParcel.readLong();
-    this.hhU = paramParcel.readLong();
-    this.hhV = paramParcel.readLong();
-    this.hhW = paramParcel.readLong();
-    this.hhX = paramParcel.readLong();
-    this.hhY = paramParcel.readString();
-    this.hhZ = paramParcel.readString();
-    this.hia = paramParcel.readString();
+    this.jTC = paramParcel.readLong();
+    this.jTD = paramParcel.readLong();
+    this.jTE = paramParcel.readLong();
+    this.jTF = paramParcel.readLong();
+    this.jTG = paramParcel.readLong();
+    this.jTH = paramParcel.readLong();
+    this.jTI = paramParcel.readLong();
+    this.jTJ = paramParcel.readLong();
+    this.jTK = paramParcel.readLong();
+    this.jTL = paramParcel.readLong();
+    this.jTM = paramParcel.readLong();
+    this.jTN = paramParcel.readLong();
+    this.jTO = paramParcel.readLong();
+    this.jTP = paramParcel.readLong();
+    this.jTQ = paramParcel.readLong();
+    this.jTR = paramParcel.readLong();
+    this.jTS = paramParcel.readLong();
+    this.jTT = paramParcel.readLong();
+    this.jTU = paramParcel.readLong();
+    this.jTV = paramParcel.readLong();
+    this.jTW = paramParcel.readString();
+    this.jTX = paramParcel.readString();
+    this.jTY = paramParcel.readString();
     AppMethodBeat.o(117607);
   }
   
-  public static GameWebPerformanceInfo Fd(String paramString)
+  public static GameWebPerformanceInfo LZ(String paramString)
   {
     for (;;)
     {
@@ -113,9 +113,9 @@ public class GameWebPerformanceInfo
           AppMethodBeat.o(117609);
           return paramString;
         }
-        if (hib.containsKey(paramString))
+        if (jTZ.containsKey(paramString))
         {
-          paramString = (GameWebPerformanceInfo)hib.get(paramString);
+          paramString = (GameWebPerformanceInfo)jTZ.get(paramString);
           AppMethodBeat.o(117609);
           continue;
         }
@@ -123,32 +123,32 @@ public class GameWebPerformanceInfo
       }
       finally {}
       GameWebPerformanceInfo localGameWebPerformanceInfo;
-      hib.put(paramString, localGameWebPerformanceInfo);
+      jTZ.put(paramString, localGameWebPerformanceInfo);
       AppMethodBeat.o(117609);
       paramString = localGameWebPerformanceInfo;
     }
   }
   
-  public static GameWebPerformanceInfo Fe(String paramString)
+  public static GameWebPerformanceInfo Ma(String paramString)
   {
     try
     {
       AppMethodBeat.i(117610);
-      if (hib.containsKey(paramString)) {
-        hib.remove(paramString);
+      if (jTZ.containsKey(paramString)) {
+        jTZ.remove(paramString);
       }
       GameWebPerformanceInfo localGameWebPerformanceInfo = new GameWebPerformanceInfo();
-      hib.put(paramString, localGameWebPerformanceInfo);
+      jTZ.put(paramString, localGameWebPerformanceInfo);
       AppMethodBeat.o(117610);
       return localGameWebPerformanceInfo;
     }
     finally {}
   }
   
-  public static GameWebPerformanceInfo Ff(String paramString)
+  public static GameWebPerformanceInfo Mb(String paramString)
   {
     AppMethodBeat.i(117611);
-    paramString = (GameWebPerformanceInfo)hib.remove(paramString);
+    paramString = (GameWebPerformanceInfo)jTZ.remove(paramString);
     AppMethodBeat.o(117611);
     return paramString;
   }
@@ -161,7 +161,7 @@ public class GameWebPerformanceInfo
   public String toString()
   {
     AppMethodBeat.i(117608);
-    String str = String.format("url: %s, isLuggage: %d, isWePkg: %d, isPreloadWebCore: %d, isFirstPage: %d, usedCacheUinKey: %d, jsapiCanUsed: %d, hasFloatLayer: %d, pkgId: %s,startTime: %d, gameCenterUICreate: %d, startWebUI: %d, preloadWePkgBgn: %d,preloadWePkgEnd: %d, preloadWebCoreBgn: %d, preloadWebCoreEnd: %d, webUICreate: %d, webUIOnShowBgn: %d, createViewBgn: %d,createViewEnd: %d, jsbridgeInject: %d, loadUrlBgn: %d, onPageStarted: %d,onPageFinished: %d, getA8keyBgn: %d, getA8keyEnd: %d, webUIInFront: %d, webUIDestroy: %d, commJsVersion: %s, pkgVersion: %s, jsBridgeErrMsg: %s", new Object[] { this.url, Integer.valueOf(this.hhv), Integer.valueOf(this.hhw), Integer.valueOf(this.hhx), Integer.valueOf(this.hhy), Integer.valueOf(this.hhz), Integer.valueOf(this.hhB), Integer.valueOf(this.hhC), this.hhD, Long.valueOf(this.startTime), Long.valueOf(this.hhE), Long.valueOf(this.hhF), Long.valueOf(this.hhI), Long.valueOf(this.hhH), Long.valueOf(this.hhI), Long.valueOf(this.hhJ), Long.valueOf(this.hhK), Long.valueOf(this.hhL), Long.valueOf(this.hhM), Long.valueOf(this.hhN), Long.valueOf(this.hhO), Long.valueOf(this.hhP), Long.valueOf(this.hhQ), Long.valueOf(this.hhR), Long.valueOf(this.hhS), Long.valueOf(this.hhT), Long.valueOf(this.hhU), Long.valueOf(this.hhV), this.hhY, this.hhZ, this.hia });
+    String str = String.format("url: %s, isLuggage: %d, isWePkg: %d, isPreloadWebCore: %d, isFirstPage: %d, usedCacheUinKey: %d, jsapiCanUsed: %d, hasFloatLayer: %d, pkgId: %s,startTime: %d, gameCenterUICreate: %d, startWebUI: %d, preloadWePkgBgn: %d,preloadWePkgEnd: %d, preloadWebCoreBgn: %d, preloadWebCoreEnd: %d, webUICreate: %d, webUIOnShowBgn: %d, createViewBgn: %d,createViewEnd: %d, jsbridgeInject: %d, loadUrlBgn: %d, onPageStarted: %d,onPageFinished: %d, getA8keyBgn: %d, getA8keyEnd: %d, webUIInFront: %d, webUIDestroy: %d, commJsVersion: %s, pkgVersion: %s, jsBridgeErrMsg: %s", new Object[] { this.url, Integer.valueOf(this.jTt), Integer.valueOf(this.jTu), Integer.valueOf(this.jTv), Integer.valueOf(this.jTw), Integer.valueOf(this.jTx), Integer.valueOf(this.jTz), Integer.valueOf(this.jTA), this.jTB, Long.valueOf(this.startTime), Long.valueOf(this.jTC), Long.valueOf(this.jTD), Long.valueOf(this.jTG), Long.valueOf(this.jTF), Long.valueOf(this.jTG), Long.valueOf(this.jTH), Long.valueOf(this.jTI), Long.valueOf(this.jTJ), Long.valueOf(this.jTK), Long.valueOf(this.jTL), Long.valueOf(this.jTM), Long.valueOf(this.jTN), Long.valueOf(this.jTO), Long.valueOf(this.jTP), Long.valueOf(this.jTQ), Long.valueOf(this.jTR), Long.valueOf(this.jTS), Long.valueOf(this.jTT), this.jTW, this.jTX, this.jTY });
     AppMethodBeat.o(117608);
     return str;
   }
@@ -170,40 +170,40 @@ public class GameWebPerformanceInfo
   {
     AppMethodBeat.i(117606);
     paramParcel.writeString(this.url);
-    paramParcel.writeString(this.hhu);
-    paramParcel.writeInt(this.hhv);
-    paramParcel.writeInt(this.hhw);
-    paramParcel.writeInt(this.hhx);
-    paramParcel.writeInt(this.hhy);
-    paramParcel.writeInt(this.hhz);
-    paramParcel.writeInt(this.hhA);
-    paramParcel.writeInt(this.hhB);
-    paramParcel.writeInt(this.hhC);
-    paramParcel.writeString(this.hhD);
+    paramParcel.writeString(this.jTs);
+    paramParcel.writeInt(this.jTt);
+    paramParcel.writeInt(this.jTu);
+    paramParcel.writeInt(this.jTv);
+    paramParcel.writeInt(this.jTw);
+    paramParcel.writeInt(this.jTx);
+    paramParcel.writeInt(this.jTy);
+    paramParcel.writeInt(this.jTz);
+    paramParcel.writeInt(this.jTA);
+    paramParcel.writeString(this.jTB);
     paramParcel.writeLong(this.startTime);
-    paramParcel.writeLong(this.hhE);
-    paramParcel.writeLong(this.hhF);
-    paramParcel.writeLong(this.hhG);
-    paramParcel.writeLong(this.hhH);
-    paramParcel.writeLong(this.hhI);
-    paramParcel.writeLong(this.hhJ);
-    paramParcel.writeLong(this.hhK);
-    paramParcel.writeLong(this.hhL);
-    paramParcel.writeLong(this.hhM);
-    paramParcel.writeLong(this.hhN);
-    paramParcel.writeLong(this.hhO);
-    paramParcel.writeLong(this.hhP);
-    paramParcel.writeLong(this.hhQ);
-    paramParcel.writeLong(this.hhR);
-    paramParcel.writeLong(this.hhS);
-    paramParcel.writeLong(this.hhT);
-    paramParcel.writeLong(this.hhU);
-    paramParcel.writeLong(this.hhV);
-    paramParcel.writeLong(this.hhW);
-    paramParcel.writeLong(this.hhX);
-    paramParcel.writeString(this.hhY);
-    paramParcel.writeString(this.hhZ);
-    paramParcel.writeString(this.hia);
+    paramParcel.writeLong(this.jTC);
+    paramParcel.writeLong(this.jTD);
+    paramParcel.writeLong(this.jTE);
+    paramParcel.writeLong(this.jTF);
+    paramParcel.writeLong(this.jTG);
+    paramParcel.writeLong(this.jTH);
+    paramParcel.writeLong(this.jTI);
+    paramParcel.writeLong(this.jTJ);
+    paramParcel.writeLong(this.jTK);
+    paramParcel.writeLong(this.jTL);
+    paramParcel.writeLong(this.jTM);
+    paramParcel.writeLong(this.jTN);
+    paramParcel.writeLong(this.jTO);
+    paramParcel.writeLong(this.jTP);
+    paramParcel.writeLong(this.jTQ);
+    paramParcel.writeLong(this.jTR);
+    paramParcel.writeLong(this.jTS);
+    paramParcel.writeLong(this.jTT);
+    paramParcel.writeLong(this.jTU);
+    paramParcel.writeLong(this.jTV);
+    paramParcel.writeString(this.jTW);
+    paramParcel.writeString(this.jTX);
+    paramParcel.writeString(this.jTY);
     AppMethodBeat.o(117606);
   }
 }

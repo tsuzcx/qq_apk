@@ -6,229 +6,297 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.z;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 
 public class LiveConfig
   implements Parcelable
 {
   public static final Parcelable.Creator<LiveConfig> CREATOR;
-  public static int hvQ;
-  public static int hvR;
-  public static int hvS;
-  public static int hvT;
-  public static int hvU;
-  public static int hvV;
-  public static int hvW;
-  public static int hvX;
-  public static int hvY;
-  private static boolean hwf;
+  public static int khT;
+  public static int khU;
+  public static int khV;
+  public static int khW;
+  public static int khX;
+  public static int khY;
+  public static int khZ;
+  public static int kia;
+  public static int kib;
+  private static boolean kil;
   private String desc;
   private int fromScene;
-  private int hvZ;
-  private String hwa;
-  private String hwb;
-  public HashMap hwc;
-  private String hwd;
-  private long hwe;
-  private String hwg;
-  private String hwh;
-  private String hwi;
-  private String hwj;
-  private long hwk;
-  private long hwl;
+  private int kic;
+  private String kid;
+  private String kie;
+  public HashMap kif;
+  private String kig;
+  private String kih;
+  private int kii;
+  private String kij;
+  private long kik;
+  private String kim;
+  private String kin;
+  private String kio;
+  private long kip;
+  private long kiq;
+  private String kir;
+  private boolean kis;
+  private String kit;
+  private int kiu;
+  private String kiv;
+  private long kiw;
   private long liveId;
+  private String nonceId;
   private int scene;
   private String sessionBuffer;
   private String thumbUrl;
   
   static
   {
-    AppMethodBeat.i(224100);
-    hvQ = 0;
-    hvR = 1;
-    hvS = 2;
-    hvT = 0;
-    hvU = 1;
-    hvV = 2;
-    hvW = 1;
-    hvX = 2;
-    hvY = 0;
-    hwf = false;
+    AppMethodBeat.i(254191);
+    khT = 0;
+    khU = 1;
+    khV = 2;
+    khW = 0;
+    khX = 1;
+    khY = 2;
+    khZ = 1;
+    kia = 2;
+    kib = 0;
+    kil = false;
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(224100);
+    AppMethodBeat.o(254191);
   }
   
   private LiveConfig()
   {
-    AppMethodBeat.i(224093);
-    this.hvZ = hvT;
+    AppMethodBeat.i(254159);
+    this.kic = khW;
     this.liveId = 0L;
-    this.hwa = "";
-    this.hwb = "";
-    this.hwc = new HashMap();
+    this.kid = "";
+    this.kie = "";
+    this.kif = new HashMap();
     this.thumbUrl = "";
-    this.hwd = "";
-    this.scene = hvQ;
-    this.fromScene = hvY;
-    this.hwe = 0L;
+    this.kig = "";
+    this.scene = khT;
+    this.fromScene = kib;
+    this.kih = "";
+    this.kii = 0;
+    this.kij = "";
+    this.kik = 0L;
     this.desc = "";
-    this.hwg = "";
-    this.hwh = "";
-    this.hwi = "";
-    this.hwj = "";
-    this.hwk = 0L;
-    this.hwl = 0L;
+    this.nonceId = "";
+    this.kim = "";
+    this.kin = "";
+    this.kio = "";
+    this.kip = 0L;
+    this.kiq = 0L;
     this.sessionBuffer = "";
-    AppMethodBeat.o(224093);
+    this.kir = "";
+    this.kis = false;
+    this.kit = "";
+    this.kiu = 0;
+    this.kiv = "";
+    this.kiw = 0L;
+    AppMethodBeat.o(254159);
   }
   
   protected LiveConfig(Parcel paramParcel)
   {
-    AppMethodBeat.i(224098);
-    this.hvZ = hvT;
+    AppMethodBeat.i(254180);
+    this.kic = khW;
     this.liveId = 0L;
-    this.hwa = "";
-    this.hwb = "";
-    this.hwc = new HashMap();
+    this.kid = "";
+    this.kie = "";
+    this.kif = new HashMap();
     this.thumbUrl = "";
-    this.hwd = "";
-    this.scene = hvQ;
-    this.fromScene = hvY;
-    this.hwe = 0L;
+    this.kig = "";
+    this.scene = khT;
+    this.fromScene = kib;
+    this.kih = "";
+    this.kii = 0;
+    this.kij = "";
+    this.kik = 0L;
     this.desc = "";
-    this.hwg = "";
-    this.hwh = "";
-    this.hwi = "";
-    this.hwj = "";
-    this.hwk = 0L;
-    this.hwl = 0L;
+    this.nonceId = "";
+    this.kim = "";
+    this.kin = "";
+    this.kio = "";
+    this.kip = 0L;
+    this.kiq = 0L;
     this.sessionBuffer = "";
-    this.hvZ = paramParcel.readInt();
-    this.hwc = ((HashMap)paramParcel.readSerializable());
-    this.hwa = paramParcel.readString();
+    this.kir = "";
+    this.kis = false;
+    this.kit = "";
+    this.kiu = 0;
+    this.kiv = "";
+    this.kiw = 0L;
+    this.kic = paramParcel.readInt();
+    this.kif = ((HashMap)paramParcel.readSerializable());
+    this.kid = paramParcel.readString();
     this.liveId = paramParcel.readLong();
-    this.hwb = paramParcel.readString();
-    this.hwd = paramParcel.readString();
+    this.kie = paramParcel.readString();
+    this.thumbUrl = paramParcel.readString();
+    this.kig = paramParcel.readString();
     this.scene = paramParcel.readInt();
     this.fromScene = paramParcel.readInt();
-    this.hwe = paramParcel.readLong();
-    this.hwg = paramParcel.readString();
-    this.hwh = paramParcel.readString();
-    this.hwi = paramParcel.readString();
-    this.hwj = paramParcel.readString();
-    this.hwk = paramParcel.readLong();
-    this.hwl = paramParcel.readLong();
+    this.kih = paramParcel.readString();
+    this.kii = paramParcel.readInt();
+    this.kik = paramParcel.readLong();
+    this.nonceId = paramParcel.readString();
+    this.kim = paramParcel.readString();
+    this.kin = paramParcel.readString();
+    this.kio = paramParcel.readString();
+    this.kip = paramParcel.readLong();
+    this.kiq = paramParcel.readLong();
     this.desc = paramParcel.readString();
     this.sessionBuffer = paramParcel.readString();
-    AppMethodBeat.o(224098);
+    this.kir = paramParcel.readString();
+    if (paramParcel.readByte() == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.kis = bool;
+      this.kit = paramParcel.readString();
+      this.kiu = paramParcel.readInt();
+      this.kij = paramParcel.readString();
+      this.kiv = paramParcel.readString();
+      this.kiw = paramParcel.readLong();
+      AppMethodBeat.o(254180);
+      return;
+    }
   }
   
-  public static LiveConfig V(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(224094);
-    a locala = new a();
-    locala.hvZ = hvT;
-    locala.hwa = paramString;
-    locala.hwd = z.aTY();
-    locala.scene = paramInt;
-    paramString = locala.aBR();
-    AppMethodBeat.o(224094);
-    return paramString;
-  }
-  
-  public static boolean aBO()
+  public static boolean aJr()
   {
     if (BuildInfo.DEBUG) {
       return false;
     }
-    return hwf;
+    return kil;
   }
   
-  public static LiveConfig b(String paramString1, String paramString2, String paramString3, String paramString4)
+  public static LiveConfig an(String paramString, int paramInt)
   {
-    AppMethodBeat.i(224095);
+    AppMethodBeat.i(254160);
     a locala = new a();
-    locala.hvZ = hvU;
+    locala.kic = khW;
+    locala.kid = paramString;
+    locala.kig = z.bcZ();
+    locala.scene = paramInt;
+    paramString = locala.aJw();
+    AppMethodBeat.o(254160);
+    return paramString;
+  }
+  
+  public static LiveConfig c(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    AppMethodBeat.i(254161);
+    a locala = new a();
+    locala.kic = khX;
     locala.thumbUrl = paramString2;
-    locala.hwa = paramString3;
+    locala.kid = paramString3;
     locala.liveId = 0L;
-    locala.hwb = paramString1;
-    locala.hwd = paramString4;
-    paramString1 = locala.aBR();
-    AppMethodBeat.o(224095);
+    locala.kie = paramString1;
+    locala.kig = paramString4;
+    paramString1 = locala.aJw();
+    AppMethodBeat.o(254161);
     return paramString1;
   }
   
-  public static void eu(boolean paramBoolean)
+  public static void eS(boolean paramBoolean)
   {
-    hwf = paramBoolean;
+    kil = paramBoolean;
   }
   
-  public final void F(int paramInt, String paramString)
+  public final void G(int paramInt, String paramString)
   {
-    AppMethodBeat.i(224096);
-    this.hwc.put(Integer.valueOf(paramInt), paramString);
-    AppMethodBeat.o(224096);
+    AppMethodBeat.i(254168);
+    this.kif.put(Integer.valueOf(paramInt), paramString);
+    AppMethodBeat.o(254168);
   }
   
-  public final int aBC()
+  public final void Nc(String paramString)
   {
-    return this.hvZ;
+    this.kir = paramString;
   }
   
-  public final String aBD()
+  public final void Nd(String paramString)
   {
-    return this.hwa;
+    this.kit = paramString;
   }
   
-  public final String aBE()
+  public final int aJf()
+  {
+    return this.kic;
+  }
+  
+  public final String aJg()
+  {
+    return this.kid;
+  }
+  
+  public final String aJh()
+  {
+    return this.kij;
+  }
+  
+  public final String aJi()
   {
     return this.thumbUrl;
   }
   
-  public final String aBF()
+  public final String aJj()
   {
-    return this.hwb;
+    return this.kie;
   }
   
-  public final String aBG()
+  public final String aJk()
   {
-    return this.hwd;
+    return this.kig;
   }
   
-  public final long aBH()
+  public final String aJl()
   {
-    return this.hwe;
+    return this.kih;
   }
   
-  public final String aBI()
+  public final int aJm()
   {
-    return this.hwg;
+    return this.kii;
   }
   
-  public final String aBJ()
+  public final long aJn()
   {
-    return this.hwh;
+    return this.kik;
   }
   
-  public final String aBK()
+  public final String aJo()
   {
-    return this.hwi;
+    return this.kir;
   }
   
-  public final String aBL()
+  public final boolean aJp()
   {
-    return this.hwj;
+    return this.kis;
   }
   
-  public final long aBM()
+  public final int aJq()
   {
-    return this.hwk;
+    return this.kiu;
   }
   
-  public final long aBN()
+  public final String aJs()
   {
-    return this.hwl;
+    return this.kiv;
+  }
+  
+  public final long aJt()
+  {
+    return this.kiw;
+  }
+  
+  public final String aiL()
+  {
+    return this.kit;
   }
   
   public int describeContents()
@@ -251,6 +319,11 @@ public class LiveConfig
     return this.liveId;
   }
   
+  public final String getNonceId()
+  {
+    return this.nonceId;
+  }
+  
   public final int getScene()
   {
     return this.scene;
@@ -263,174 +336,291 @@ public class LiveConfig
   
   public final String info()
   {
-    AppMethodBeat.i(224099);
-    String str = String.format("toWhere:%s,hostRoomId:%s,liveId:%s,liveName:%s,anchorUsername:%s,scene:%s,fromScene:%s, finderObjectId:%s, linkAnchorUsername:%s, linkAnchorNickname:%s,linkFinderObjectId:%s, linkFinderLiveId:%s, desc:%s, sessionBuffer:%s", new Object[] { Integer.valueOf(this.hvZ), this.hwa, Long.valueOf(this.liveId), this.hwb, this.hwd, Integer.valueOf(this.scene), Integer.valueOf(this.fromScene), Long.valueOf(this.hwe), this.hwh, this.hwi, Long.valueOf(this.hwk), Long.valueOf(this.hwl), this.desc, this.sessionBuffer });
-    AppMethodBeat.o(224099);
-    return str;
+    AppMethodBeat.i(254182);
+    int i = this.kic;
+    String str3 = this.kid;
+    long l1 = this.liveId;
+    String str4 = this.kie;
+    String str5 = this.kig;
+    int j = this.scene;
+    int k = this.fromScene;
+    long l2 = this.kik;
+    String str6 = this.kim;
+    String str7 = this.kin;
+    long l3 = this.kip;
+    long l4 = this.kiq;
+    String str8 = this.desc;
+    String str9 = this.kiv;
+    String str2 = this.sessionBuffer;
+    String str1;
+    if (Util.isNullOrNil(str2)) {
+      str1 = "";
+    }
+    for (;;)
+    {
+      str1 = String.format("toWhere:%s,hostRoomId:%s,liveId:%s,liveName:%s,anchorUsername:%s,scene:%s,fromScene:%s, finderObjectId:%s, linkAnchorUsername:%s, linkAnchorNickname:%s,linkFinderObjectId:%s, linkFinderLiveId:%s, desc:%s, nicknameOption:%s sessionBuffer:%s", new Object[] { Integer.valueOf(i), str3, Long.valueOf(l1), str4, str5, Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l2), str6, str7, Long.valueOf(l3), Long.valueOf(l4), str8, str9, str1 });
+      AppMethodBeat.o(254182);
+      return str1;
+      str1 = str2;
+      if (str2.length() > 0)
+      {
+        str1 = str2;
+        if (8 < str2.length()) {
+          str1 = str2.substring(0, 8);
+        }
+      }
+    }
+  }
+  
+  public final void sO(int paramInt)
+  {
+    this.kiu = paramInt;
+  }
+  
+  public final void setLiveId(long paramLong)
+  {
+    this.liveId = paramLong;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(224097);
-    paramParcel.writeInt(this.hvZ);
-    paramParcel.writeSerializable(this.hwc);
-    paramParcel.writeString(this.hwa);
+    AppMethodBeat.i(254178);
+    paramParcel.writeInt(this.kic);
+    paramParcel.writeSerializable(this.kif);
+    paramParcel.writeString(this.kid);
     paramParcel.writeLong(this.liveId);
-    paramParcel.writeString(this.hwb);
-    paramParcel.writeString(this.hwd);
+    paramParcel.writeString(this.kie);
+    paramParcel.writeString(this.thumbUrl);
+    paramParcel.writeString(this.kig);
     paramParcel.writeInt(this.scene);
     paramParcel.writeInt(this.fromScene);
-    paramParcel.writeLong(this.hwe);
-    paramParcel.writeString(this.hwg);
-    paramParcel.writeString(this.hwh);
-    paramParcel.writeString(this.hwi);
-    paramParcel.writeString(this.hwj);
-    paramParcel.writeLong(this.hwk);
-    paramParcel.writeLong(this.hwl);
+    paramParcel.writeString(this.kih);
+    paramParcel.writeInt(this.kii);
+    paramParcel.writeLong(this.kik);
+    paramParcel.writeString(this.nonceId);
+    paramParcel.writeString(this.kim);
+    paramParcel.writeString(this.kin);
+    paramParcel.writeString(this.kio);
+    paramParcel.writeLong(this.kip);
+    paramParcel.writeLong(this.kiq);
     paramParcel.writeString(this.desc);
     paramParcel.writeString(this.sessionBuffer);
-    AppMethodBeat.o(224097);
+    paramParcel.writeString(this.kir);
+    if (this.kis) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      paramParcel.writeByte((byte)paramInt);
+      paramParcel.writeString(this.kit);
+      paramParcel.writeInt(this.kiu);
+      paramParcel.writeString(this.kij);
+      paramParcel.writeString(Util.nullAs(this.kiv, ""));
+      paramParcel.writeLong(this.kiw);
+      AppMethodBeat.o(254178);
+      return;
+    }
   }
   
   public static final class a
   {
     private String desc = "";
-    public int fromScene = LiveConfig.hvY;
-    public int hvZ = LiveConfig.hvT;
-    public String hwa = "";
-    public String hwb = "";
-    public String hwd = "";
-    private long hwe = 0L;
-    private String hwg = "";
-    private String hwh = "";
-    private String hwi = "";
-    private String hwj = "";
-    private long hwk = 0L;
-    private long hwl = 0L;
+    public int fromScene = LiveConfig.kib;
+    public int kic = LiveConfig.khW;
+    public String kid = "";
+    public String kie = "";
+    public String kig = "";
+    private String kih = "";
+    private int kii = 0;
+    private String kij = "";
+    private long kik = 0L;
+    private String kim = "";
+    private String kin = "";
+    private String kio = "";
+    private long kip = 0L;
+    private long kiq = 0L;
+    private boolean kis = false;
+    private String kit = "";
+    private int kiu = 0;
+    private long kiw = 0L;
+    private String kix = "";
+    private String kiy = "";
     public long liveId = 0L;
-    public int scene = LiveConfig.hvQ;
+    private String nonceId = "";
+    public int scene = LiveConfig.khT;
     private String sessionBuffer = "";
     public String thumbUrl = "";
     
-    public final a Gc(String paramString)
-    {
-      this.hwa = paramString;
-      return this;
-    }
-    
-    public final a Gd(String paramString)
-    {
-      this.hwg = paramString;
-      return this;
-    }
-    
-    public final a Ge(String paramString)
-    {
-      this.hwb = paramString;
-      return this;
-    }
-    
-    public final a Gf(String paramString)
-    {
-      this.thumbUrl = paramString;
-      return this;
-    }
-    
-    public final a Gg(String paramString)
-    {
-      this.hwd = paramString;
-      return this;
-    }
-    
-    public final a Gh(String paramString)
-    {
-      this.desc = paramString;
-      return this;
-    }
-    
-    public final a Gi(String paramString)
-    {
-      this.hwh = paramString;
-      return this;
-    }
-    
-    public final a Gj(String paramString)
-    {
-      this.hwi = paramString;
-      return this;
-    }
-    
-    public final a Gk(String paramString)
-    {
-      this.hwj = paramString;
-      return this;
-    }
-    
-    public final a Gl(String paramString)
-    {
-      this.sessionBuffer = paramString;
-      return this;
-    }
-    
-    public final a aBP()
-    {
-      this.hwk = 0L;
-      return this;
-    }
-    
-    public final a aBQ()
-    {
-      this.hwl = 0L;
-      return this;
-    }
-    
-    public final LiveConfig aBR()
-    {
-      AppMethodBeat.i(224092);
-      LiveConfig localLiveConfig = new LiveConfig((byte)0);
-      LiveConfig.a(localLiveConfig, this.hvZ);
-      LiveConfig.a(localLiveConfig, this.hwa);
-      LiveConfig.a(localLiveConfig, this.liveId);
-      LiveConfig.b(localLiveConfig, this.hwb);
-      LiveConfig.c(localLiveConfig, this.thumbUrl);
-      LiveConfig.d(localLiveConfig, this.hwd);
-      LiveConfig.b(localLiveConfig, this.scene);
-      LiveConfig.c(localLiveConfig, this.fromScene);
-      LiveConfig.b(localLiveConfig, this.hwe);
-      LiveConfig.e(localLiveConfig, this.desc);
-      LiveConfig.f(localLiveConfig, this.hwg);
-      LiveConfig.g(localLiveConfig, this.hwh);
-      LiveConfig.c(localLiveConfig, this.hwk);
-      LiveConfig.d(localLiveConfig, this.hwl);
-      LiveConfig.h(localLiveConfig, this.hwi);
-      LiveConfig.i(localLiveConfig, this.hwj);
-      LiveConfig.j(localLiveConfig, this.sessionBuffer);
-      AppMethodBeat.o(224092);
-      return localLiveConfig;
-    }
-    
-    public final a qo(int paramInt)
-    {
-      this.hvZ = paramInt;
-      return this;
-    }
-    
-    public final a zt(long paramLong)
+    public final a Fx(long paramLong)
     {
       this.liveId = paramLong;
       return this;
     }
     
-    public final a zu(long paramLong)
+    public final a Fy(long paramLong)
     {
-      this.hwe = paramLong;
+      this.kik = paramLong;
+      return this;
+    }
+    
+    public final a Fz(long paramLong)
+    {
+      this.kiw = paramLong;
+      return this;
+    }
+    
+    public final a Ne(String paramString)
+    {
+      this.kid = paramString;
+      return this;
+    }
+    
+    public final a Nf(String paramString)
+    {
+      this.nonceId = paramString;
+      return this;
+    }
+    
+    public final a Ng(String paramString)
+    {
+      this.kie = paramString;
+      return this;
+    }
+    
+    public final a Nh(String paramString)
+    {
+      this.thumbUrl = paramString;
+      return this;
+    }
+    
+    public final a Ni(String paramString)
+    {
+      this.kig = paramString;
+      return this;
+    }
+    
+    public final a Nj(String paramString)
+    {
+      this.kih = paramString;
+      return this;
+    }
+    
+    public final a Nk(String paramString)
+    {
+      this.desc = paramString;
+      return this;
+    }
+    
+    public final a Nl(String paramString)
+    {
+      this.kim = paramString;
+      return this;
+    }
+    
+    public final a Nm(String paramString)
+    {
+      this.kin = paramString;
+      return this;
+    }
+    
+    public final a Nn(String paramString)
+    {
+      this.kio = paramString;
+      return this;
+    }
+    
+    public final a No(String paramString)
+    {
+      this.sessionBuffer = paramString;
+      return this;
+    }
+    
+    public final a Np(String paramString)
+    {
+      this.kix = paramString;
+      return this;
+    }
+    
+    public final a Nq(String paramString)
+    {
+      this.kij = paramString;
+      return this;
+    }
+    
+    public final a Nr(String paramString)
+    {
+      this.kiy = paramString;
+      return this;
+    }
+    
+    public final a aJu()
+    {
+      this.kip = 0L;
+      return this;
+    }
+    
+    public final a aJv()
+    {
+      this.kiq = 0L;
+      return this;
+    }
+    
+    public final LiveConfig aJw()
+    {
+      AppMethodBeat.i(254155);
+      LiveConfig localLiveConfig = new LiveConfig((byte)0);
+      LiveConfig.a(localLiveConfig, this.kic);
+      LiveConfig.a(localLiveConfig, this.kid);
+      LiveConfig.a(localLiveConfig, this.liveId);
+      LiveConfig.b(localLiveConfig, this.kie);
+      LiveConfig.c(localLiveConfig, this.thumbUrl);
+      LiveConfig.d(localLiveConfig, this.kig);
+      LiveConfig.b(localLiveConfig, this.scene);
+      LiveConfig.c(localLiveConfig, this.fromScene);
+      LiveConfig.e(localLiveConfig, this.kih);
+      LiveConfig.d(localLiveConfig, this.kii);
+      LiveConfig.b(localLiveConfig, this.kik);
+      LiveConfig.f(localLiveConfig, this.desc);
+      LiveConfig.g(localLiveConfig, this.nonceId);
+      LiveConfig.h(localLiveConfig, this.kim);
+      LiveConfig.c(localLiveConfig, this.kip);
+      LiveConfig.d(localLiveConfig, this.kiq);
+      LiveConfig.i(localLiveConfig, this.kin);
+      LiveConfig.j(localLiveConfig, this.kio);
+      LiveConfig.k(localLiveConfig, this.sessionBuffer);
+      LiveConfig.l(localLiveConfig, this.kix);
+      LiveConfig.a(localLiveConfig, this.kis);
+      LiveConfig.m(localLiveConfig, this.kit);
+      LiveConfig.e(localLiveConfig, this.kiu);
+      LiveConfig.n(localLiveConfig, this.kij);
+      LiveConfig.o(localLiveConfig, this.kiy);
+      LiveConfig.e(localLiveConfig, this.kiw);
+      AppMethodBeat.o(254155);
+      return localLiveConfig;
+    }
+    
+    public final a f(Boolean paramBoolean)
+    {
+      AppMethodBeat.i(254151);
+      this.kis = paramBoolean.booleanValue();
+      AppMethodBeat.o(254151);
+      return this;
+    }
+    
+    public final a sP(int paramInt)
+    {
+      this.kic = paramInt;
+      return this;
+    }
+    
+    public final a sQ(int paramInt)
+    {
+      this.kii = paramInt;
       return this;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.api.LiveConfig
  * JD-Core Version:    0.7.0.1
  */

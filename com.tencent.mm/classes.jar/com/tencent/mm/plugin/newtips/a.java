@@ -1,14 +1,15 @@
 package com.tencent.mm.plugin.newtips;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cj;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.ck;
 import com.tencent.mm.model.y;
-import com.tencent.mm.plugin.messenger.foundation.a.s;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
+import com.tencent.mm.plugin.newtips.a.e;
 import com.tencent.mm.plugin.newtips.a.i;
 import com.tencent.mm.plugin.newtips.a.l;
-import com.tencent.mm.plugin.newtips.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
@@ -17,13 +18,13 @@ public final class a
   extends y
   implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.c
 {
-  private static a ACO;
+  private static a GvS;
   private static HashMap<Integer, h.b> baseDBFactories;
-  private i ACP;
-  private b ACQ;
-  private com.tencent.mm.plugin.newtips.b.d ACR;
-  private com.tencent.mm.plugin.newtips.a.e ACS;
-  private l ACT;
+  private i GvT;
+  private com.tencent.mm.plugin.newtips.b.b GvU;
+  private com.tencent.mm.plugin.newtips.b.d GvV;
+  private e GvW;
+  private l GvX;
   
   static
   {
@@ -34,7 +35,7 @@ public final class a
     {
       public final String[] getSQLs()
       {
-        return b.SQL_CREATE;
+        return com.tencent.mm.plugin.newtips.b.b.SQL_CREATE;
       }
     });
     baseDBFactories.put(Integer.valueOf("NEWTIPS_TABLE".hashCode()), new h.b()
@@ -51,91 +52,91 @@ public final class a
   {
     super(c.class);
     AppMethodBeat.i(127199);
-    this.ACP = null;
-    this.ACQ = null;
-    this.ACR = null;
-    this.ACS = null;
-    this.ACT = new l();
+    this.GvT = null;
+    this.GvU = null;
+    this.GvV = null;
+    this.GvW = null;
+    this.GvX = new l();
     AppMethodBeat.o(127199);
   }
   
-  public static a exj()
+  public static a fiM()
   {
     try
     {
       AppMethodBeat.i(127200);
-      if (ACO == null) {
-        ACO = new a();
+      if (GvS == null) {
+        GvS = new a();
       }
-      a locala = ACO;
+      a locala = GvS;
       AppMethodBeat.o(127200);
       return locala;
     }
     finally {}
   }
   
-  public static l exk()
+  public static l fiN()
   {
-    AppMethodBeat.i(188556);
-    g.aAf().azk();
-    if (exj().ACP == null) {
-      exj().ACP = new i();
+    AppMethodBeat.i(186594);
+    h.aHE().aGH();
+    if (fiM().GvT == null) {
+      fiM().GvT = new i();
     }
-    l locall = exj().ACT;
-    AppMethodBeat.o(188556);
+    l locall = fiM().GvX;
+    AppMethodBeat.o(186594);
     return locall;
   }
   
-  public static i exl()
+  public static i fiO()
   {
     AppMethodBeat.i(127203);
-    g.aAf().azk();
-    if (exj().ACP == null) {
-      exj().ACP = new i();
+    h.aHE().aGH();
+    if (fiM().GvT == null) {
+      fiM().GvT = new i();
     }
-    i locali = exj().ACP;
+    i locali = fiM().GvT;
     AppMethodBeat.o(127203);
     return locali;
   }
   
-  public static b exm()
+  public static com.tencent.mm.plugin.newtips.b.b fiP()
   {
     AppMethodBeat.i(127204);
-    g.aAf().azk();
-    if (exj().ACQ == null)
+    h.aHE().aGH();
+    if (fiM().GvU == null)
     {
-      localObject = exj();
-      g.aAi();
-      ((a)localObject).ACQ = new b(g.aAh().hqK);
+      localObject = fiM();
+      h.aHH();
+      ((a)localObject).GvU = new com.tencent.mm.plugin.newtips.b.b(h.aHG().kcF);
     }
-    Object localObject = exj().ACQ;
+    Object localObject = fiM().GvU;
     AppMethodBeat.o(127204);
     return localObject;
   }
   
-  public static com.tencent.mm.plugin.newtips.b.d exn()
+  public static com.tencent.mm.plugin.newtips.b.d fiQ()
   {
     AppMethodBeat.i(127205);
-    g.aAf().azk();
-    if (exj().ACR == null)
+    h.aHE().aGH();
+    if (fiM().GvV == null)
     {
-      localObject = exj();
-      g.aAi();
-      ((a)localObject).ACR = new com.tencent.mm.plugin.newtips.b.d(g.aAh().hqK);
+      localObject = fiM();
+      h.aHH();
+      ((a)localObject).GvV = new com.tencent.mm.plugin.newtips.b.d(h.aHG().kcF);
     }
-    Object localObject = exj().ACR;
+    Object localObject = fiM().GvV;
     AppMethodBeat.o(127205);
     return localObject;
   }
   
-  public static com.tencent.mm.plugin.newtips.a.e exo()
+  public static e fiR()
   {
     AppMethodBeat.i(127206);
-    g.aAf().azk();
-    if (exj().ACS == null) {
-      exj().ACS = new com.tencent.mm.plugin.newtips.a.e();
+    h.aHE().aGH();
+    if (fiM().GvW == null) {
+      fiM().GvW = new e();
     }
-    com.tencent.mm.plugin.newtips.a.e locale = exj().ACS;
+    e locale = fiM().GvW;
     AppMethodBeat.o(127206);
     return locale;
   }
@@ -145,15 +146,15 @@ public final class a
     return baseDBFactories;
   }
   
-  public final void onAccountInitialized(e.c paramc)
+  public final void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(127201);
     super.onAccountInitialized(paramc);
-    ((s)g.ah(s.class)).getSysCmdMsgExtension().a("newtips", this.ACT);
-    exl();
-    int i = com.tencent.mm.plugin.newtips.a.d.ADb;
-    paramc = com.tencent.mm.plugin.newtips.a.d.ADi;
-    i.f(i, com.tencent.mm.plugin.newtips.a.d.ADa, "", paramc);
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().a("newtips", this.GvX);
+    fiO();
+    int i = com.tencent.mm.plugin.newtips.a.d.Gwf;
+    paramc = com.tencent.mm.plugin.newtips.a.d.Gwm;
+    i.g(i, com.tencent.mm.plugin.newtips.a.d.Gwe, "", paramc);
     Log.i("MicroMsg.NewTips.NewTipsManager", "dancy register dynamic newtips, tipsId:%s, path:%s", new Object[] { Integer.valueOf(i), paramc });
     AppMethodBeat.o(127201);
   }
@@ -162,13 +163,13 @@ public final class a
   {
     AppMethodBeat.i(127202);
     super.onAccountRelease();
-    ((s)g.ah(s.class)).getSysCmdMsgExtension().b("newtips", this.ACT);
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().b("newtips", this.GvX);
     AppMethodBeat.o(127202);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.a
  * JD-Core Version:    0.7.0.1
  */

@@ -14,6 +14,7 @@ import com.tencent.kinda.framework.widget.tools.ColorUtil;
 import com.tencent.kinda.framework.widget.tools.ResourcesUtils;
 import com.tencent.kinda.gen.DynamicColor;
 import com.tencent.kinda.gen.KImage;
+import com.tencent.kinda.gen.KSize;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.network.aa;
@@ -22,7 +23,7 @@ import com.tencent.mm.network.x;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import javax.net.ssl.HttpsURLConnection;
 
 public class MMKImage
@@ -36,31 +37,31 @@ public class MMKImage
   
   public MMKImage()
   {
-    AppMethodBeat.i(214529);
+    AppMethodBeat.i(263736);
     this.lightImage = new ImageInfo();
     this.darkImage = new ImageInfo();
-    AppMethodBeat.o(214529);
+    AppMethodBeat.o(263736);
   }
   
   private ImageInfo getImage()
   {
-    AppMethodBeat.i(214530);
-    if ((ao.isDarkMode()) && (!Util.isNullOrNil(this.darkImage.url)))
+    AppMethodBeat.i(263738);
+    if ((ar.isDarkMode()) && (!Util.isNullOrNil(this.darkImage.url)))
     {
       localImageInfo = this.darkImage;
-      AppMethodBeat.o(214530);
+      AppMethodBeat.o(263738);
       return localImageInfo;
     }
     ImageInfo localImageInfo = this.lightImage;
-    AppMethodBeat.o(214530);
+    AppMethodBeat.o(263738);
     return localImageInfo;
   }
   
   private void setIconColor(int paramInt)
   {
-    AppMethodBeat.i(214535);
+    AppMethodBeat.i(263752);
     getImage().setIconColor(paramInt);
-    AppMethodBeat.o(214535);
+    AppMethodBeat.o(263752);
   }
   
   public void drawableTint(DynamicColor paramDynamicColor)
@@ -101,9 +102,9 @@ public class MMKImage
   
   public String getUrl()
   {
-    AppMethodBeat.i(214532);
+    AppMethodBeat.i(263741);
     String str = getImage().url;
-    AppMethodBeat.o(214532);
+    AppMethodBeat.o(263741);
     return str;
   }
   
@@ -117,26 +118,26 @@ public class MMKImage
   
   public boolean isNeedGetNetworkImageImmediately()
   {
-    AppMethodBeat.i(214534);
+    AppMethodBeat.i(263751);
     boolean bool = getImage().needGetNetworkImageImmediately;
-    AppMethodBeat.o(214534);
+    AppMethodBeat.o(263751);
     return bool;
   }
   
   public boolean isNetworkImage()
   {
-    AppMethodBeat.i(214533);
+    AppMethodBeat.i(263749);
     boolean bool = getImage().isNetworkImage;
-    AppMethodBeat.o(214533);
+    AppMethodBeat.o(263749);
     return bool;
   }
   
   public void setDarkModeUrl(String paramString)
   {
-    AppMethodBeat.i(214531);
+    AppMethodBeat.i(263739);
     this.darkImage.url = paramString;
     this.darkImage.parse();
-    AppMethodBeat.o(214531);
+    AppMethodBeat.o(263739);
   }
   
   public void setNeedGetNetworkImageImmediately(boolean paramBoolean)
@@ -150,6 +151,13 @@ public class MMKImage
     AppMethodBeat.i(19050);
     getImage().setSvgUrl(paramString, paramDynamicColor);
     AppMethodBeat.o(19050);
+  }
+  
+  public void setSvgUrl(String paramString, DynamicColor paramDynamicColor, KSize paramKSize)
+  {
+    AppMethodBeat.i(263745);
+    getImage().setSvgUrl(paramString, paramDynamicColor);
+    AppMethodBeat.o(263745);
   }
   
   public void setUrl(String paramString)
@@ -182,14 +190,14 @@ public class MMKImage
     
     private Bitmap getImageFromNet(String paramString)
     {
-      AppMethodBeat.i(214521);
+      AppMethodBeat.i(264075);
       if (!Util.isNullOrNil(paramString)) {
         if (paramString.startsWith("http://"))
         {
           paramString = d.a(paramString, null);
-          paramString.setConnectTimeout(10000);
-          paramString.setReadTimeout(20000);
-          paramString.setRequestMethod("GET");
+          paramString.xz(10000);
+          paramString.xA(20000);
+          paramString.Zu("GET");
           if (paramString.getResponseCode() != 200) {
             break label133;
           }
@@ -201,20 +209,20 @@ public class MMKImage
         if (paramString != null)
         {
           paramString = MMBitmapFactory.decodeStream(paramString);
-          AppMethodBeat.o(214521);
+          AppMethodBeat.o(264075);
           return paramString;
           if (paramString.startsWith("https://"))
           {
-            paramString = d.RR(paramString);
-            paramString.setConnectTimeout(10000);
-            paramString.setReadTimeout(20000);
-            paramString.jFs.setRequestMethod("GET");
-            paramString = paramString.jFs.getInputStream();
+            paramString = d.Zr(paramString);
+            paramString.xz(10000);
+            paramString.xA(20000);
+            paramString.mvV.setRequestMethod("GET");
+            paramString = paramString.mvV.getInputStream();
           }
         }
         else
         {
-          AppMethodBeat.o(214521);
+          AppMethodBeat.o(264075);
           return null;
         }
         label133:
@@ -224,29 +232,29 @@ public class MMKImage
     
     public void drawableTint(DynamicColor paramDynamicColor)
     {
-      AppMethodBeat.i(214527);
+      AppMethodBeat.i(264081);
       if ((this.drawable != null) && (paramDynamicColor != null))
       {
         this.drawable.setColorFilter((int)ColorUtil.getColorByMode(paramDynamicColor), PorterDuff.Mode.SRC_ATOP);
         this.mSvgColor = ((int)ColorUtil.getColorByMode(paramDynamicColor));
       }
-      AppMethodBeat.o(214527);
+      AppMethodBeat.o(264081);
     }
     
     public Bitmap getBitmap()
     {
-      AppMethodBeat.i(214525);
+      AppMethodBeat.i(264079);
       if ((!Util.isNullOrNil(this.url)) && (this.imageBitmap == null) && (!this.isNetworkImage)) {
         parse();
       }
       Bitmap localBitmap = this.imageBitmap;
-      AppMethodBeat.o(214525);
+      AppMethodBeat.o(264079);
       return localBitmap;
     }
     
     public Drawable getDrawable()
     {
-      AppMethodBeat.i(214526);
+      AppMethodBeat.i(264080);
       if ((!Util.isNullOrNil(this.url)) && ((this.imageBitmap == null) || (this.drawable == null)) && (!this.isNetworkImage)) {
         parse();
       }
@@ -254,52 +262,52 @@ public class MMKImage
       if (this.imageBitmap != null)
       {
         localObject = new BitmapDrawable(MMApplicationContext.getContext().getResources(), this.imageBitmap);
-        AppMethodBeat.o(214526);
+        AppMethodBeat.o(264080);
         return localObject;
       }
       if (this.drawable != null)
       {
         setIconColor(this.mSvgColor);
         localObject = this.drawable;
-        AppMethodBeat.o(214526);
+        AppMethodBeat.o(264080);
         return localObject;
       }
-      AppMethodBeat.o(214526);
+      AppMethodBeat.o(264080);
       return null;
     }
     
     public float getHeight()
     {
-      AppMethodBeat.i(214523);
+      AppMethodBeat.i(264077);
       if (this.imageBitmap != null)
       {
         float f = this.imageBitmap.getHeight();
-        AppMethodBeat.o(214523);
+        AppMethodBeat.o(264077);
         return f;
       }
-      AppMethodBeat.o(214523);
+      AppMethodBeat.o(264077);
       return 0.0F;
     }
     
     public float getWidth()
     {
-      AppMethodBeat.i(214522);
+      AppMethodBeat.i(264076);
       if (this.imageBitmap != null)
       {
         float f = this.imageBitmap.getWidth();
-        AppMethodBeat.o(214522);
+        AppMethodBeat.o(264076);
         return f;
       }
-      AppMethodBeat.o(214522);
+      AppMethodBeat.o(264076);
       return 0.0F;
     }
     
     void parse()
     {
-      AppMethodBeat.i(214520);
+      AppMethodBeat.i(264074);
       if (this.url == null)
       {
-        AppMethodBeat.o(214520);
+        AppMethodBeat.o(264074);
         return;
       }
       if (this.url.startsWith("file://")) {
@@ -312,7 +320,7 @@ public class MMKImage
           this.width = this.imageBitmap.getWidth();
           this.height = this.imageBitmap.getHeight();
         }
-        AppMethodBeat.o(214520);
+        AppMethodBeat.o(264074);
         return;
         if ((this.url.startsWith("http://")) || (this.url.startsWith("https://")))
         {
@@ -355,7 +363,7 @@ public class MMKImage
     
     public void setIconColor(int paramInt)
     {
-      AppMethodBeat.i(214528);
+      AppMethodBeat.i(264082);
       if (this.drawable != null) {
         if (paramInt == 0) {
           break label72;
@@ -370,14 +378,14 @@ public class MMKImage
         if (paramInt != 0) {
           this.drawable.setAlpha(j);
         }
-        AppMethodBeat.o(214528);
+        AppMethodBeat.o(264082);
         return;
       }
     }
     
     public void setSvgUrl(String paramString, DynamicColor paramDynamicColor)
     {
-      AppMethodBeat.i(214524);
+      AppMethodBeat.i(264078);
       this.isSvgUrl = true;
       this.url = paramString;
       parse();
@@ -386,13 +394,13 @@ public class MMKImage
         setIconColor((int)ColorUtil.getColorByMode(paramDynamicColor));
         this.mSvgColor = ((int)ColorUtil.getColorByMode(paramDynamicColor));
       }
-      AppMethodBeat.o(214524);
+      AppMethodBeat.o(264078);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKImage
  * JD-Core Version:    0.7.0.1
  */

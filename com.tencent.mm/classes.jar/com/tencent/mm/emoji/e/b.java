@@ -5,15 +5,14 @@ import android.content.res.Resources.Theme;
 import android.util.Base64;
 import android.util.TypedValue;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.g;
+import com.tencent.mm.be.g;
 import com.tencent.mm.emoji.b.a;
 import com.tencent.mm.emoji.b.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.emotion.SmileyPanelConfigInfo;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -27,17 +26,32 @@ import org.w3c.dom.NodeList;
 
 public final class b
 {
-  public static int EY(String paramString)
+  public static int G(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(104500);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(104500);
+      return 0;
+    }
+    TypedValue localTypedValue = new TypedValue();
+    paramContext.getTheme().resolveAttribute(paramInt, localTypedValue, true);
+    paramInt = localTypedValue.resourceId;
+    AppMethodBeat.o(104500);
+    return paramInt;
+  }
+  
+  public static int LR(String paramString)
   {
     int j = -1;
-    AppMethodBeat.i(199755);
+    AppMethodBeat.i(225848);
     int i = j;
-    if (s.YS(paramString)) {}
+    if (u.agG(paramString)) {}
     try
     {
-      i = new com.tencent.mm.ab.i(s.boY(paramString)).optInt("version", -1);
+      i = new com.tencent.mm.ad.i(u.bBS(paramString)).optInt("version", -1);
       Log.i("MicroMsg.EmojiResHelper", "readConfigVersion: %s, %s", new Object[] { Integer.valueOf(i), paramString });
-      AppMethodBeat.o(199755);
+      AppMethodBeat.o(225848);
       return i;
     }
     catch (Exception localException)
@@ -50,57 +64,42 @@ public final class b
     }
   }
   
-  public static int cG(Context paramContext)
-  {
-    AppMethodBeat.i(177030);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(177030);
-      return 0;
-    }
-    TypedValue localTypedValue = new TypedValue();
-    paramContext.getTheme().resolveAttribute(2130969097, localTypedValue, true);
-    int i = localTypedValue.resourceId;
-    AppMethodBeat.o(177030);
-    return i;
-  }
-  
   /* Error */
-  public static ArrayList<com.tencent.mm.storage.emotion.SmileyInfo> d(o paramo)
+  public static ArrayList<com.tencent.mm.storage.emotion.SmileyInfo> d(q paramq)
   {
     // Byte code:
-    //   0: ldc 92
-    //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 94	java/util/ArrayList
+    //   0: ldc 91
+    //   2: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 93	java/util/ArrayList
     //   8: dup
-    //   9: invokespecial 95	java/util/ArrayList:<init>	()V
+    //   9: invokespecial 94	java/util/ArrayList:<init>	()V
     //   12: astore 7
-    //   14: invokestatic 101	javax/xml/parsers/DocumentBuilderFactory:newInstance	()Ljavax/xml/parsers/DocumentBuilderFactory;
+    //   14: invokestatic 100	javax/xml/parsers/DocumentBuilderFactory:newInstance	()Ljavax/xml/parsers/DocumentBuilderFactory;
     //   17: astore 9
     //   19: aload_0
-    //   20: invokestatic 105	com/tencent/mm/vfs/s:ao	(Lcom/tencent/mm/vfs/o;)Ljava/io/InputStream;
+    //   20: invokestatic 104	com/tencent/mm/vfs/u:al	(Lcom/tencent/mm/vfs/q;)Ljava/io/InputStream;
     //   23: astore 8
     //   25: aconst_null
     //   26: astore 6
     //   28: aload 9
-    //   30: invokevirtual 109	javax/xml/parsers/DocumentBuilderFactory:newDocumentBuilder	()Ljavax/xml/parsers/DocumentBuilder;
+    //   30: invokevirtual 108	javax/xml/parsers/DocumentBuilderFactory:newDocumentBuilder	()Ljavax/xml/parsers/DocumentBuilder;
     //   33: aload 8
-    //   35: invokevirtual 115	javax/xml/parsers/DocumentBuilder:parse	(Ljava/io/InputStream;)Lorg/w3c/dom/Document;
+    //   35: invokevirtual 114	javax/xml/parsers/DocumentBuilder:parse	(Ljava/io/InputStream;)Lorg/w3c/dom/Document;
     //   38: astore_0
     //   39: aload_0
-    //   40: invokeinterface 120 1 0
+    //   40: invokeinterface 119 1 0
     //   45: aload_0
-    //   46: invokeinterface 124 1 0
-    //   51: ldc 126
-    //   53: invokeinterface 132 2 0
+    //   46: invokeinterface 123 1 0
+    //   51: ldc 125
+    //   53: invokeinterface 131 2 0
     //   58: astore_0
     //   59: aload_0
     //   60: ifnull +655 -> 715
     //   63: aload_0
-    //   64: invokeinterface 138 1 0
+    //   64: invokeinterface 137 1 0
     //   69: ifle +646 -> 715
     //   72: aload_0
-    //   73: invokeinterface 138 1 0
+    //   73: invokeinterface 137 1 0
     //   78: istore 4
     //   80: iconst_0
     //   81: istore_1
@@ -109,61 +108,61 @@ public final class b
     //   85: if_icmpge +630 -> 715
     //   88: aload_0
     //   89: iload_1
-    //   90: invokeinterface 142 2 0
-    //   95: invokeinterface 148 1 0
+    //   90: invokeinterface 141 2 0
+    //   95: invokeinterface 147 1 0
     //   100: astore 9
     //   102: aload 9
     //   104: ifnull +655 -> 759
     //   107: aload 9
-    //   109: invokeinterface 138 1 0
+    //   109: invokeinterface 137 1 0
     //   114: ifle +645 -> 759
-    //   117: new 150	com/tencent/mm/storage/emotion/SmileyInfo
+    //   117: new 149	com/tencent/mm/storage/emotion/SmileyInfo
     //   120: dup
-    //   121: invokespecial 151	com/tencent/mm/storage/emotion/SmileyInfo:<init>	()V
+    //   121: invokespecial 150	com/tencent/mm/storage/emotion/SmileyInfo:<init>	()V
     //   124: astore 10
     //   126: iconst_0
     //   127: istore_2
     //   128: iload_2
     //   129: aload 9
-    //   131: invokeinterface 138 1 0
+    //   131: invokeinterface 137 1 0
     //   136: if_icmpge +531 -> 667
     //   139: aload 9
     //   141: iload_2
-    //   142: invokeinterface 142 2 0
+    //   142: invokeinterface 141 2 0
     //   147: astore 11
     //   149: aload 11
-    //   151: invokeinterface 155 1 0
+    //   151: invokeinterface 154 1 0
     //   156: astore 12
     //   158: aload 12
-    //   160: ldc 157
-    //   162: invokevirtual 162	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   160: ldc 156
+    //   162: invokevirtual 161	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   165: ifeq +18 -> 183
     //   168: aload 10
     //   170: aload 11
-    //   172: invokeinterface 165 1 0
-    //   177: putfield 169	com/tencent/mm/storage/emotion/SmileyInfo:field_key	Ljava/lang/String;
+    //   172: invokeinterface 164 1 0
+    //   177: putfield 168	com/tencent/mm/storage/emotion/SmileyInfo:field_key	Ljava/lang/String;
     //   180: goto +568 -> 748
     //   183: aload 12
-    //   185: ldc 171
-    //   187: invokevirtual 162	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   185: ldc 170
+    //   187: invokevirtual 161	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   190: ifeq +134 -> 324
     //   193: aload 11
-    //   195: invokeinterface 165 1 0
-    //   200: invokestatic 176	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   195: invokeinterface 164 1 0
+    //   200: invokestatic 175	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   203: ifne +18 -> 221
-    //   206: ldc 178
+    //   206: ldc 177
     //   208: aload 11
-    //   210: invokeinterface 165 1 0
-    //   215: invokevirtual 162	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   210: invokeinterface 164 1 0
+    //   215: invokevirtual 161	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   218: ifeq +91 -> 309
     //   221: aload 10
     //   223: aload 10
-    //   225: getfield 169	com/tencent/mm/storage/emotion/SmileyInfo:field_key	Ljava/lang/String;
-    //   228: putfield 181	com/tencent/mm/storage/emotion/SmileyInfo:field_cnValue	Ljava/lang/String;
+    //   225: getfield 168	com/tencent/mm/storage/emotion/SmileyInfo:field_key	Ljava/lang/String;
+    //   228: putfield 180	com/tencent/mm/storage/emotion/SmileyInfo:field_cnValue	Ljava/lang/String;
     //   231: goto +517 -> 748
     //   234: astore 6
-    //   236: ldc 92
-    //   238: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   236: ldc 91
+    //   238: invokestatic 16	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   241: aload 6
     //   243: athrow
     //   244: astore_0
@@ -172,193 +171,193 @@ public final class b
     //   250: aload 6
     //   252: ifnull +488 -> 740
     //   255: aload 8
-    //   257: invokevirtual 186	java/io/InputStream:close	()V
-    //   260: ldc 92
-    //   262: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   257: invokevirtual 185	java/io/InputStream:close	()V
+    //   260: ldc 91
+    //   262: invokestatic 16	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   265: aload_0
     //   266: athrow
     //   267: astore_0
-    //   268: ldc 39
-    //   270: ldc 188
+    //   268: ldc 67
+    //   270: ldc 187
     //   272: iconst_1
     //   273: anewarray 4	java/lang/Object
     //   276: dup
     //   277: iconst_0
     //   278: aload_0
-    //   279: invokevirtual 191	java/lang/Exception:toString	()Ljava/lang/String;
+    //   279: invokevirtual 190	java/lang/Exception:toString	()Ljava/lang/String;
     //   282: aastore
-    //   283: invokestatic 194	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   283: invokestatic 193	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   286: aload 7
-    //   288: invokevirtual 197	java/util/ArrayList:size	()I
+    //   288: invokevirtual 196	java/util/ArrayList:size	()I
     //   291: ifne +10 -> 301
-    //   294: ldc 39
-    //   296: ldc 199
-    //   298: invokestatic 203	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   301: ldc 92
-    //   303: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   294: ldc 67
+    //   296: ldc 198
+    //   298: invokestatic 202	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   301: ldc 91
+    //   303: invokestatic 16	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   306: aload 7
     //   308: areturn
     //   309: aload 10
     //   311: aload 11
-    //   313: invokeinterface 165 1 0
-    //   318: putfield 181	com/tencent/mm/storage/emotion/SmileyInfo:field_cnValue	Ljava/lang/String;
+    //   313: invokeinterface 164 1 0
+    //   318: putfield 180	com/tencent/mm/storage/emotion/SmileyInfo:field_cnValue	Ljava/lang/String;
     //   321: goto +427 -> 748
     //   324: aload 12
-    //   326: ldc 205
-    //   328: invokevirtual 162	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   326: ldc 204
+    //   328: invokevirtual 161	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   331: ifeq +59 -> 390
     //   334: aload 11
-    //   336: invokeinterface 165 1 0
-    //   341: invokestatic 176	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   336: invokeinterface 164 1 0
+    //   341: invokestatic 175	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   344: ifne +18 -> 362
-    //   347: ldc 178
+    //   347: ldc 177
     //   349: aload 11
-    //   351: invokeinterface 165 1 0
-    //   356: invokevirtual 162	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   351: invokeinterface 164 1 0
+    //   356: invokevirtual 161	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   359: ifeq +16 -> 375
     //   362: aload 10
     //   364: aload 10
-    //   366: getfield 169	com/tencent/mm/storage/emotion/SmileyInfo:field_key	Ljava/lang/String;
-    //   369: putfield 208	com/tencent/mm/storage/emotion/SmileyInfo:field_qqValue	Ljava/lang/String;
+    //   366: getfield 168	com/tencent/mm/storage/emotion/SmileyInfo:field_key	Ljava/lang/String;
+    //   369: putfield 207	com/tencent/mm/storage/emotion/SmileyInfo:field_qqValue	Ljava/lang/String;
     //   372: goto +376 -> 748
     //   375: aload 10
     //   377: aload 11
-    //   379: invokeinterface 165 1 0
-    //   384: putfield 208	com/tencent/mm/storage/emotion/SmileyInfo:field_qqValue	Ljava/lang/String;
+    //   379: invokeinterface 164 1 0
+    //   384: putfield 207	com/tencent/mm/storage/emotion/SmileyInfo:field_qqValue	Ljava/lang/String;
     //   387: goto +361 -> 748
     //   390: aload 12
-    //   392: ldc 210
-    //   394: invokevirtual 162	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   392: ldc 209
+    //   394: invokevirtual 161	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   397: ifeq +59 -> 456
     //   400: aload 11
-    //   402: invokeinterface 165 1 0
-    //   407: invokestatic 176	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   402: invokeinterface 164 1 0
+    //   407: invokestatic 175	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   410: ifne +18 -> 428
-    //   413: ldc 178
+    //   413: ldc 177
     //   415: aload 11
-    //   417: invokeinterface 165 1 0
-    //   422: invokevirtual 162	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   417: invokeinterface 164 1 0
+    //   422: invokevirtual 161	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   425: ifeq +16 -> 441
     //   428: aload 10
     //   430: aload 10
-    //   432: getfield 169	com/tencent/mm/storage/emotion/SmileyInfo:field_key	Ljava/lang/String;
-    //   435: putfield 213	com/tencent/mm/storage/emotion/SmileyInfo:field_enValue	Ljava/lang/String;
+    //   432: getfield 168	com/tencent/mm/storage/emotion/SmileyInfo:field_key	Ljava/lang/String;
+    //   435: putfield 212	com/tencent/mm/storage/emotion/SmileyInfo:field_enValue	Ljava/lang/String;
     //   438: goto +310 -> 748
     //   441: aload 10
     //   443: aload 11
-    //   445: invokeinterface 165 1 0
-    //   450: putfield 213	com/tencent/mm/storage/emotion/SmileyInfo:field_enValue	Ljava/lang/String;
+    //   445: invokeinterface 164 1 0
+    //   450: putfield 212	com/tencent/mm/storage/emotion/SmileyInfo:field_enValue	Ljava/lang/String;
     //   453: goto +295 -> 748
     //   456: aload 12
-    //   458: ldc 215
-    //   460: invokevirtual 162	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   458: ldc 214
+    //   460: invokevirtual 161	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   463: ifeq +59 -> 522
     //   466: aload 11
-    //   468: invokeinterface 165 1 0
-    //   473: invokestatic 176	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   468: invokeinterface 164 1 0
+    //   473: invokestatic 175	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   476: ifne +18 -> 494
-    //   479: ldc 178
+    //   479: ldc 177
     //   481: aload 11
-    //   483: invokeinterface 165 1 0
-    //   488: invokevirtual 162	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   483: invokeinterface 164 1 0
+    //   488: invokevirtual 161	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   491: ifeq +16 -> 507
     //   494: aload 10
     //   496: aload 10
-    //   498: getfield 169	com/tencent/mm/storage/emotion/SmileyInfo:field_key	Ljava/lang/String;
-    //   501: putfield 218	com/tencent/mm/storage/emotion/SmileyInfo:field_twValue	Ljava/lang/String;
+    //   498: getfield 168	com/tencent/mm/storage/emotion/SmileyInfo:field_key	Ljava/lang/String;
+    //   501: putfield 217	com/tencent/mm/storage/emotion/SmileyInfo:field_twValue	Ljava/lang/String;
     //   504: goto +244 -> 748
     //   507: aload 10
     //   509: aload 11
-    //   511: invokeinterface 165 1 0
-    //   516: putfield 218	com/tencent/mm/storage/emotion/SmileyInfo:field_twValue	Ljava/lang/String;
+    //   511: invokeinterface 164 1 0
+    //   516: putfield 217	com/tencent/mm/storage/emotion/SmileyInfo:field_twValue	Ljava/lang/String;
     //   519: goto +229 -> 748
     //   522: aload 12
-    //   524: ldc 220
-    //   526: invokevirtual 162	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   524: ldc 219
+    //   526: invokevirtual 161	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   529: ifeq +59 -> 588
     //   532: aload 11
-    //   534: invokeinterface 165 1 0
-    //   539: invokestatic 176	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   534: invokeinterface 164 1 0
+    //   539: invokestatic 175	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   542: ifne +18 -> 560
-    //   545: ldc 178
+    //   545: ldc 177
     //   547: aload 11
-    //   549: invokeinterface 165 1 0
-    //   554: invokevirtual 162	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   549: invokeinterface 164 1 0
+    //   554: invokevirtual 161	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   557: ifeq +16 -> 573
     //   560: aload 10
     //   562: aload 10
-    //   564: getfield 169	com/tencent/mm/storage/emotion/SmileyInfo:field_key	Ljava/lang/String;
-    //   567: putfield 223	com/tencent/mm/storage/emotion/SmileyInfo:field_thValue	Ljava/lang/String;
+    //   564: getfield 168	com/tencent/mm/storage/emotion/SmileyInfo:field_key	Ljava/lang/String;
+    //   567: putfield 222	com/tencent/mm/storage/emotion/SmileyInfo:field_thValue	Ljava/lang/String;
     //   570: goto +178 -> 748
     //   573: aload 10
     //   575: aload 11
-    //   577: invokeinterface 165 1 0
-    //   582: putfield 223	com/tencent/mm/storage/emotion/SmileyInfo:field_thValue	Ljava/lang/String;
+    //   577: invokeinterface 164 1 0
+    //   582: putfield 222	com/tencent/mm/storage/emotion/SmileyInfo:field_thValue	Ljava/lang/String;
     //   585: goto +163 -> 748
     //   588: aload 12
-    //   590: ldc 225
-    //   592: invokevirtual 162	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   590: ldc 224
+    //   592: invokevirtual 161	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   595: ifeq +18 -> 613
     //   598: aload 10
     //   600: aload 11
-    //   602: invokeinterface 165 1 0
-    //   607: putfield 228	com/tencent/mm/storage/emotion/SmileyInfo:field_fileName	Ljava/lang/String;
+    //   602: invokeinterface 164 1 0
+    //   607: putfield 227	com/tencent/mm/storage/emotion/SmileyInfo:field_fileName	Ljava/lang/String;
     //   610: goto +138 -> 748
     //   613: aload 12
-    //   615: ldc 230
-    //   617: invokevirtual 162	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   615: ldc 229
+    //   617: invokevirtual 161	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   620: istore 5
     //   622: iload 5
     //   624: ifeq +124 -> 748
     //   627: aload 11
-    //   629: invokeinterface 165 1 0
-    //   634: invokestatic 233	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   637: invokevirtual 236	java/lang/Integer:intValue	()I
+    //   629: invokeinterface 164 1 0
+    //   634: invokestatic 232	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   637: invokevirtual 235	java/lang/Integer:intValue	()I
     //   640: istore_3
     //   641: aload 10
     //   643: iload_3
-    //   644: putfield 239	com/tencent/mm/storage/emotion/SmileyInfo:field_eggIndex	I
+    //   644: putfield 238	com/tencent/mm/storage/emotion/SmileyInfo:field_eggIndex	I
     //   647: goto +101 -> 748
     //   650: astore 11
-    //   652: ldc 39
+    //   652: ldc 67
     //   654: aload 11
-    //   656: invokestatic 243	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   659: invokestatic 245	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   656: invokestatic 242	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   659: invokestatic 244	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   662: iconst_m1
     //   663: istore_3
     //   664: goto -23 -> 641
     //   667: aload 10
     //   669: iconst_m1
-    //   670: putfield 248	com/tencent/mm/storage/emotion/SmileyInfo:field_position	I
-    //   673: ldc 39
+    //   670: putfield 247	com/tencent/mm/storage/emotion/SmileyInfo:field_position	I
+    //   673: ldc 67
     //   675: aload 10
-    //   677: invokevirtual 249	com/tencent/mm/storage/emotion/SmileyInfo:toString	()Ljava/lang/String;
-    //   680: invokestatic 251	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   677: invokevirtual 248	com/tencent/mm/storage/emotion/SmileyInfo:toString	()Ljava/lang/String;
+    //   680: invokestatic 250	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   683: aload 10
-    //   685: getfield 169	com/tencent/mm/storage/emotion/SmileyInfo:field_key	Ljava/lang/String;
-    //   688: invokestatic 176	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   685: getfield 168	com/tencent/mm/storage/emotion/SmileyInfo:field_key	Ljava/lang/String;
+    //   688: invokestatic 175	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   691: ifeq +13 -> 704
-    //   694: ldc 39
-    //   696: ldc 253
-    //   698: invokestatic 255	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   694: ldc 67
+    //   696: ldc 252
+    //   698: invokestatic 254	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   701: goto +58 -> 759
     //   704: aload 7
     //   706: aload 10
-    //   708: invokevirtual 259	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   708: invokevirtual 258	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   711: pop
     //   712: goto +47 -> 759
     //   715: aload 8
     //   717: ifnull -431 -> 286
     //   720: aload 8
-    //   722: invokevirtual 186	java/io/InputStream:close	()V
+    //   722: invokevirtual 185	java/io/InputStream:close	()V
     //   725: goto -439 -> 286
     //   728: astore 8
     //   730: aload 6
     //   732: aload 8
-    //   734: invokevirtual 263	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   734: invokevirtual 262	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   737: goto -477 -> 260
     //   740: aload 8
-    //   742: invokevirtual 186	java/io/InputStream:close	()V
+    //   742: invokevirtual 185	java/io/InputStream:close	()V
     //   745: goto -485 -> 260
     //   748: iload_2
     //   749: iconst_1
@@ -374,7 +373,7 @@ public final class b
     //   763: goto -681 -> 82
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	766	0	paramo	o
+    //   0	766	0	paramq	q
     //   81	682	1	i	int
     //   127	625	2	j	int
     //   640	24	3	k	int
@@ -457,7 +456,7 @@ public final class b
     //   704	712	755	finally
   }
   
-  public static ArrayList<SmileyPanelConfigInfo> e(o paramo)
+  public static ArrayList<SmileyPanelConfigInfo> e(q paramq)
   {
     AppMethodBeat.i(104498);
     localArrayList = new ArrayList();
@@ -466,16 +465,16 @@ public final class b
     localObject1 = null;
     try
     {
-      localInputStream = s.ao(paramo);
+      localInputStream = u.al(paramq);
       localObject1 = localInputStream;
       localObject2 = localInputStream;
-      paramo = ((DocumentBuilderFactory)localObject3).newDocumentBuilder().parse(localInputStream);
+      paramq = ((DocumentBuilderFactory)localObject3).newDocumentBuilder().parse(localInputStream);
       localObject1 = localInputStream;
       localObject2 = localInputStream;
-      paramo.normalize();
+      paramq.normalize();
       localObject1 = localInputStream;
       localObject2 = localInputStream;
-      localNodeList = paramo.getDocumentElement().getElementsByTagName("item");
+      localNodeList = paramq.getDocumentElement().getElementsByTagName("item");
       if (localNodeList == null) {
         break label481;
       }
@@ -489,14 +488,14 @@ public final class b
       k = localNodeList.getLength();
       i = 0;
     }
-    catch (Exception paramo)
+    catch (Exception paramq)
     {
       NodeList localNodeList;
       int k;
       char[] arrayOfChar;
       int j;
       localObject2 = localObject1;
-      Log.e("MicroMsg.EmojiResHelper", "parseSmileyPanelConfig parseXML exception:%s", new Object[] { paramo.toString() });
+      Log.e("MicroMsg.EmojiResHelper", "parseSmileyPanelConfig parseXML exception:%s", new Object[] { paramq.toString() });
       if (localObject1 == null) {
         break label472;
       }
@@ -519,19 +518,19 @@ public final class b
           {
             localInputStream.close();
           }
-          catch (IOException paramo) {}
+          catch (IOException paramq) {}
           continue;
-          paramo = finally;
+          paramq = finally;
           if (localObject2 == null) {}
         }
-        catch (IOException paramo)
+        catch (IOException paramq)
         {
           try
           {
             localObject2.close();
             AppMethodBeat.o(104498);
-            throw paramo;
-            paramo = paramo;
+            throw paramq;
+            paramq = paramq;
           }
           catch (IOException localIOException)
           {
@@ -546,39 +545,39 @@ public final class b
     {
       localObject1 = localInputStream;
       localObject2 = localInputStream;
-      paramo = localNodeList.item(i);
-      if (paramo == null) {
+      paramq = localNodeList.item(i);
+      if (paramq == null) {
         break label529;
       }
       localObject1 = localInputStream;
       localObject2 = localInputStream;
-      if (Util.isNullOrNil(paramo.getTextContent())) {
+      if (Util.isNullOrNil(paramq.getTextContent())) {
         break label529;
       }
       localObject1 = localInputStream;
       localObject2 = localInputStream;
-      paramo = paramo.getTextContent().replaceAll("\"", "");
+      paramq = paramq.getTextContent().replaceAll("\"", "");
       localObject1 = localInputStream;
       localObject2 = localInputStream;
-      if (!paramo.matches("^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$")) {
+      if (!paramq.matches("^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$")) {
         break label526;
       }
       localObject1 = localInputStream;
       localObject2 = localInputStream;
-      paramo = new String(Base64.decode(paramo, 0));
-      localObject3 = paramo;
+      paramq = new String(Base64.decode(paramq, 0));
+      localObject3 = paramq;
       localObject1 = localInputStream;
       localObject2 = localInputStream;
-      if (paramo.startsWith("\\\\u"))
+      if (paramq.startsWith("\\\\u"))
       {
         localObject1 = localInputStream;
         localObject2 = localInputStream;
-        arrayOfChar = Character.toChars(Integer.parseInt(paramo.substring(3), 16));
-        paramo = "";
+        arrayOfChar = Character.toChars(Integer.parseInt(paramq.substring(3), 16));
+        paramq = "";
         j = 0;
         for (;;)
         {
-          localObject3 = paramo;
+          localObject3 = paramq;
           localObject1 = localInputStream;
           localObject2 = localInputStream;
           if (j >= arrayOfChar.length) {
@@ -586,16 +585,16 @@ public final class b
           }
           localObject1 = localInputStream;
           localObject2 = localInputStream;
-          paramo = paramo + String.valueOf(arrayOfChar[j]);
+          paramq = paramq + String.valueOf(arrayOfChar[j]);
           j += 1;
         }
       }
       localObject1 = localInputStream;
       localObject2 = localInputStream;
-      paramo = new SmileyPanelConfigInfo(i, (String)localObject3);
+      paramq = new SmileyPanelConfigInfo(i, (String)localObject3);
       localObject1 = localInputStream;
       localObject2 = localInputStream;
-      if (Util.isNullOrNil(paramo.field_key))
+      if (Util.isNullOrNil(paramq.field_key))
       {
         localObject1 = localInputStream;
         localObject2 = localInputStream;
@@ -605,31 +604,31 @@ public final class b
       {
         localObject1 = localInputStream;
         localObject2 = localInputStream;
-        Log.d("MicroMsg.EmojiResHelper", paramo.toString());
+        Log.d("MicroMsg.EmojiResHelper", paramq.toString());
         break;
         localObject1 = localInputStream;
         localObject2 = localInputStream;
-        localArrayList.add(paramo);
+        localArrayList.add(paramq);
       }
     }
   }
   
-  public static g f(o paramo)
+  public static g f(q paramq)
   {
     AppMethodBeat.i(104499);
     try
     {
       com.tencent.mm.emoji.b.i locali = new com.tencent.mm.emoji.b.i();
-      a.a locala = a.gWU;
-      a.a.a(aa.z(paramo.her()), locali);
-      paramo = locali.gXc;
-      Log.i("MicroMsg.EmojiResHelper", "parserEmojiEggConfig: %s", new Object[] { Integer.valueOf(paramo.jgS.size()) });
+      a.a locala = a.jHS;
+      a.a.a(paramq.bOF(), locali);
+      paramq = locali.jIa;
+      Log.i("MicroMsg.EmojiResHelper", "parserEmojiEggConfig: %s", new Object[] { Integer.valueOf(paramq.lXv.size()) });
       AppMethodBeat.o(104499);
-      return paramo;
+      return paramq;
     }
-    catch (Exception paramo)
+    catch (Exception paramq)
     {
-      Log.printErrStackTrace("MicroMsg.EmojiResHelper", paramo, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.EmojiResHelper", paramq, "", new Object[0]);
       AppMethodBeat.o(104499);
     }
     return null;

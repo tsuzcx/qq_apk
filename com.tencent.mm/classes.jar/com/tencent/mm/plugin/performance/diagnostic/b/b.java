@@ -4,51 +4,49 @@ import android.content.Context;
 import android.os.Debug;
 import android.os.Process;
 import com.tencent.mars.smc.IDKey;
+import com.tencent.matrix.hook.memory.MemoryHook;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.performance.b.a.a;
-import com.tencent.mm.plugin.performance.diagnostic.a.c;
-import com.tencent.mm.plugin.performance.watchdogs.c.a;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.performance.diagnostic.c.d;
+import com.tencent.mm.plugin.performance.diagnostic.e;
+import com.tencent.mm.plugin.performance.watchdogs.c.b;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.wxperf.jni.memory.MemoryHook;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.q;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import kotlin.n.d;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class b
-  extends com.tencent.mm.plugin.performance.diagnostic.a<MemoryHook, a>
+  extends com.tencent.mm.plugin.performance.diagnostic.c<MemoryHook, a>
   implements a.a
 {
-  private static final o ATN;
-  private static final o ATO;
-  private static final o ATP;
+  private static final q GNi;
+  private static final q GNj;
+  private static final q GNk;
   private static String TAG;
-  public final a ATQ;
-  private c.a ATR;
+  public final a GNl;
+  private c.b GNm;
   
   static
   {
     AppMethodBeat.i(124967);
     TAG = "MicroMsg.MemoryHookLogic";
-    String str3 = eBE();
+    String str3 = fnr();
     TAG += str3;
     String str1 = MMApplicationContext.getContext().getFilesDir().getAbsolutePath() + "/memory_hook";
     String str2 = str1 + "/" + str3 + Process.myPid() + "_memory_hook.log";
     str3 = str1 + "/" + str3 + Process.myPid() + "_memory_hook.json";
-    ATN = new o(str1);
-    ATO = new o(str2);
-    ATP = new o(str3);
+    GNi = new q(str1);
+    GNj = new q(str2);
+    GNk = new q(str3);
     Log.i(TAG, "init dump file path = %s", new Object[] { str2 });
     Log.i(TAG, "init json file path = %s", new Object[] { str3 });
     AppMethodBeat.o(124967);
@@ -57,19 +55,21 @@ public class b
   public b()
   {
     AppMethodBeat.i(124959);
-    this.ATQ = new a(this);
+    this.GNl = new a(this);
     AppMethodBeat.o(124959);
   }
   
-  private void eCi()
+  private void fnV()
   {
-    AppMethodBeat.i(201065);
-    Object localObject1 = com.tencent.mm.plugin.performance.c.a(aa.z(ATP.her()), d.UTF_8);
+    AppMethodBeat.i(200911);
+    Object localObject1 = com.tencent.mm.plugin.performance.c.aUl(GNk.bOF());
     try
     {
       localObject1 = new JSONObject((String)localObject1);
-      m((JSONObject)localObject1, "NativeHeap");
-      m((JSONObject)localObject1, "mmap");
+      n((JSONObject)localObject1, "NativeHeap");
+      n((JSONObject)localObject1, "mmap");
+      o((JSONObject)localObject1, "SoNativeSize");
+      o((JSONObject)localObject1, "SoMmapSize");
       return;
     }
     catch (Throwable localThrowable)
@@ -79,24 +79,24 @@ public class b
     }
     finally
     {
-      ATP.delete();
-      AppMethodBeat.o(201065);
+      GNk.cFq();
+      AppMethodBeat.o(200911);
     }
   }
   
-  private static void jo(String paramString1, String paramString2)
+  private static void jz(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(201063);
+    AppMethodBeat.i(200891);
     Log.i(TAG, "memory dump begin");
     long l = System.currentTimeMillis();
     try
     {
-      o localo = ATN;
-      if (!localo.exists()) {
-        localo.mkdirs();
+      q localq = GNi;
+      if (!localq.ifE()) {
+        localq.ifK();
       }
-      MemoryHook.Sys.dump(paramString1, paramString2);
-      Log.i(TAG, "dump path = %s, json path = %s", new Object[] { aa.z(ATO.her()), aa.z(ATP.her()) });
+      MemoryHook.cYl.dump(paramString1, paramString2);
+      Log.i(TAG, "dump path = %s, json path = %s", new Object[] { GNj.bOF(), GNk.bOF() });
     }
     catch (Exception paramString1)
     {
@@ -106,97 +106,184 @@ public class b
       }
     }
     Log.i(TAG, "memory dump end, cost = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    AppMethodBeat.o(201063);
+    AppMethodBeat.o(200891);
   }
   
-  private void m(JSONObject paramJSONObject, String paramString)
+  private void n(JSONObject paramJSONObject, String paramString)
   {
-    AppMethodBeat.i(201064);
-    JSONArray localJSONArray = paramJSONObject.getJSONArray(paramString);
-    if (localJSONArray.length() <= 0)
-    {
-      Log.i(TAG, "report nothing");
-      AppMethodBeat.o(201064);
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i;
-    if ("mmap".equalsIgnoreCase(paramString))
-    {
-      paramJSONObject = "1";
-      localArrayList.add(paramJSONObject);
-      localArrayList.add(MMApplicationContext.getProcessName());
-      i = 0;
-    }
+    AppMethodBeat.i(200896);
+    ArrayList localArrayList;
     for (;;)
     {
-      if (i >= localJSONArray.length()) {
-        break label211;
-      }
-      paramJSONObject = localJSONArray.getJSONObject(i);
-      paramString = paramJSONObject.getString("so").split("/");
-      localArrayList.add(paramString[(paramString.length - 1)]);
-      localArrayList.add(paramJSONObject.getString("size"));
-      paramJSONObject = paramJSONObject.getJSONArray("top_stacks");
-      int j = 0;
-      for (;;)
+      try
       {
-        if (j < paramJSONObject.length())
+        paramJSONObject = paramJSONObject.getJSONArray(paramString);
+        if (paramJSONObject.length() <= 0)
         {
-          paramString = paramJSONObject.getJSONObject(j);
-          localArrayList.add(paramString.getString("stack"));
-          localArrayList.add(paramString.getString("size"));
-          j += 1;
-          continue;
-          paramJSONObject = "0";
-          break;
+          Log.i(TAG, "reportStacktraceJson: report nothing");
+          AppMethodBeat.o(200896);
+          return;
         }
+        localArrayList = new ArrayList();
+        int i;
+        if ("mmap".equalsIgnoreCase(paramString))
+        {
+          localArrayList.add("1");
+          localArrayList.add(MMApplicationContext.getProcessName());
+          i = 0;
+          if (i >= paramJSONObject.length()) {
+            break;
+          }
+          paramString = paramJSONObject.getJSONObject(i);
+          Object localObject = paramString.getString("so").split("/");
+          localArrayList.add(localObject[(localObject.length - 1)]);
+          localArrayList.add(paramString.getString("size"));
+          paramString = paramString.getJSONArray("top_stacks");
+          int j = 0;
+          if (j < paramString.length())
+          {
+            localObject = paramString.getJSONObject(j);
+            localArrayList.add(((JSONObject)localObject).getString("stack"));
+            localArrayList.add(((JSONObject)localObject).getString("size"));
+            j += 1;
+            continue;
+          }
+        }
+        else
+        {
+          if (!"NativeHeap".equalsIgnoreCase(paramString)) {
+            continue;
+          }
+          localArrayList.add("0");
+          continue;
+        }
+        i += 1;
       }
-      i += 1;
+      catch (Throwable paramJSONObject)
+      {
+        Log.printErrStackTrace(TAG, paramJSONObject, "reportStacktraceJson", new Object[0]);
+        AppMethodBeat.o(200896);
+        return;
+      }
     }
-    label211:
     while (localArrayList.size() < 26) {
       localArrayList.add("");
     }
     localArrayList.add(String.valueOf(Debug.getNativeHeapAllocatedSize()));
-    boolean bool;
-    if (this.ATR != null)
+    if (this.GNm != null)
     {
-      if ((!this.ATR.cPB) && (this.ATR.AXr.isEmpty())) {
-        break label399;
+      if (this.GNm.cQt) {
+        break label499;
       }
-      bool = true;
-      if (!bool) {
-        break label405;
+      if (!this.GNm.GQW.isEmpty()) {
+        break label499;
       }
     }
-    label399:
-    label405:
-    for (paramJSONObject = "1";; paramJSONObject = "2")
+    for (;;)
     {
       localArrayList.add(paramJSONObject);
-      localArrayList.add(String.valueOf(this.ATR.AXD));
-      Log.i(TAG, "dumpAndReport: isForeground=%s, bgDuration=%s", new Object[] { Boolean.valueOf(bool), Long.valueOf(this.ATR.AXD) });
-      paramJSONObject = h.CyF;
-      h.r(21217, localArrayList);
+      localArrayList.add(String.valueOf(this.GNm.GRi));
+      Log.i(TAG, "dumpAndReport: isForeground=%s, bgDuration=%s", new Object[] { Boolean.valueOf(bool), Long.valueOf(this.GNm.GRi) });
+      label381:
+      localArrayList.add(String.valueOf(Process.myPid()));
+      localArrayList.add(BuildInfo.BUILD_TAG);
+      localArrayList.add(BuildInfo.REV);
+      paramJSONObject = com.tencent.mm.plugin.report.service.h.IzE;
+      com.tencent.mm.plugin.report.service.h.u(21217, localArrayList);
       Log.d(TAG, "report: %s", new Object[] { Arrays.toString(localArrayList.toArray()) });
-      AppMethodBeat.o(201064);
+      AppMethodBeat.o(200896);
       return;
-      bool = false;
-      break;
+      label499:
+      for (boolean bool = false; !bool; bool = true)
+      {
+        paramJSONObject = "2";
+        break;
+        localArrayList.add("");
+        localArrayList.add("");
+        break label381;
+      }
+      paramJSONObject = "1";
     }
   }
   
-  public final String Lb()
+  private static void o(JSONObject paramJSONObject, String paramString)
   {
-    return "MemoryHook";
+    AppMethodBeat.i(200908);
+    for (;;)
+    {
+      long l;
+      int i;
+      ArrayList localArrayList;
+      try
+      {
+        paramJSONObject = paramJSONObject.getJSONArray(paramString);
+        if (paramJSONObject.length() <= 0) {
+          Log.i(TAG, "reportSoSizeJson: report nothing");
+        }
+        l = Debug.getNativeHeapAllocatedSize();
+        i = 0;
+        if (i >= paramJSONObject.length()) {
+          break;
+        }
+        localArrayList = new ArrayList();
+        if ("SoNativeSize".equalsIgnoreCase(paramString))
+        {
+          localArrayList.add("4");
+          localArrayList.add(MMApplicationContext.getProcessName());
+          localObject = paramJSONObject.getJSONObject(i);
+          String[] arrayOfString = ((JSONObject)localObject).getString("so").split("/");
+          localArrayList.add(arrayOfString[(arrayOfString.length - 1)]);
+          localObject = ((JSONObject)localObject).getString("size");
+          localArrayList.add(localObject);
+          if (Util.getInt((String)localObject, 0) < 1048576)
+          {
+            Log.i(TAG, "so size %s < 1M", new Object[] { localObject });
+            AppMethodBeat.o(200908);
+          }
+        }
+        else
+        {
+          if (!"SoMmapSize".equalsIgnoreCase(paramString)) {
+            continue;
+          }
+          localArrayList.add("5");
+          continue;
+        }
+        if (localArrayList.size() >= 26) {
+          break label246;
+        }
+      }
+      catch (Throwable paramJSONObject)
+      {
+        Log.printErrStackTrace(TAG, paramJSONObject, "reportSoSizeJson", new Object[0]);
+        AppMethodBeat.o(200908);
+        return;
+      }
+      for (;;)
+      {
+        localArrayList.add("");
+      }
+      label246:
+      localArrayList.add(String.valueOf(l));
+      localArrayList.add("");
+      localArrayList.add("");
+      localArrayList.add(String.valueOf(Process.myPid()));
+      localArrayList.add(BuildInfo.BUILD_TAG);
+      localArrayList.add(BuildInfo.REV);
+      Object localObject = com.tencent.mm.plugin.report.service.h.IzE;
+      com.tencent.mm.plugin.report.service.h.u(21217, localArrayList);
+      Log.d(TAG, "report -> %s", new Object[] { Arrays.toString(localArrayList.toArray()) });
+      i += 1;
+    }
+    AppMethodBeat.o(200908);
   }
   
-  public final void a(a.c paramc)
+  public final void a(c.d paramd)
   {
-    AppMethodBeat.i(201060);
-    Log.i(TAG, "onHookEnabled: source = %s", new Object[] { paramc.name() });
-    paramc = new ArrayList();
+    AppMethodBeat.i(200882);
+    Log.i(TAG, "onHookEnabled: source = %s", new Object[] { paramd.name() });
+    super.a(paramd);
+    paramd = new ArrayList();
     IDKey localIDKey1 = new IDKey(1571, 2, 1);
     int i;
     if (MMApplicationContext.isMainProcess()) {
@@ -205,10 +292,10 @@ public class b
     for (;;)
     {
       IDKey localIDKey2 = new IDKey(1571, i, 1);
-      paramc.add(localIDKey1);
-      paramc.add(localIDKey2);
-      h.CyF.b(paramc, false);
-      AppMethodBeat.o(201060);
+      paramd.add(localIDKey1);
+      paramd.add(localIDKey2);
+      com.tencent.mm.plugin.report.service.h.IzE.b(paramd, false);
+      AppMethodBeat.o(200882);
       return;
       if (MMApplicationContext.isAppBrandProcess()) {
         i = 41;
@@ -220,52 +307,14 @@ public class b
     }
   }
   
-  public final void a(c.a parama)
+  public void action(double paramDouble)
   {
-    AppMethodBeat.i(201062);
-    this.ATR = parama;
-    hd(false);
-    AppMethodBeat.o(201062);
-  }
-  
-  public final void eBD()
-  {
-    AppMethodBeat.i(201059);
-    Log.i(TAG, "onRegistered: %s", new Object[] { "MemoryHook" });
-    com.tencent.mm.plugin.performance.diagnostic.c.ATi.a("memory", this);
-    com.tencent.mm.plugin.performance.b.a.AUa.b(this);
-    AppMethodBeat.o(201059);
-  }
-  
-  public final String eBH()
-  {
-    AppMethodBeat.i(201066);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("hook=").append(this.ATQ.eBZ()).append(",stack=").append(this.ATQ.eCb()).append(",mmap=").append(this.ATQ.eCg()).append("\t");
-    localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(201066);
-    return localObject;
-  }
-  
-  public final String eBI()
-  {
-    return "MemoryHook";
-  }
-  
-  public final void eCj()
-  {
-    AppMethodBeat.i(201067);
+    AppMethodBeat.i(200926);
     Log.i(TAG, "dice action !");
-    if (!BuildInfo.IS_ARM64)
-    {
-      Log.i(TAG, "not enable for 32-bit device");
-      AppMethodBeat.o(201067);
-      return;
-    }
-    Object localObject = eBM();
+    Object localObject = fnz();
     localObject = "<cmd><diagnostic><MemoryHook enable='1' source='expt' process='" + (String)localObject + "' duration='24' hook='.*com\\.tencent\\.mm.*\\.so$' stack='1' min='0' max='0' force='1' enableExpt='0' sampling='1' mmap='0'/></diagnostic></cmd>";
-    localObject = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.shi, (String)localObject);
-    com.tencent.mm.plugin.performance.a.a.ASb.aJQ((String)localObject);
+    localObject = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vRg, (String)localObject);
+    com.tencent.mm.plugin.performance.a.a.GLp.aUm((String)localObject);
     localObject = new ArrayList();
     IDKey localIDKey1 = new IDKey(1571, 0, 1);
     int i;
@@ -277,8 +326,8 @@ public class b
       IDKey localIDKey2 = new IDKey(1571, i, 1);
       ((ArrayList)localObject).add(localIDKey1);
       ((ArrayList)localObject).add(localIDKey2);
-      h.CyF.b((ArrayList)localObject, false);
-      AppMethodBeat.o(201067);
+      com.tencent.mm.plugin.report.service.h.IzE.b((ArrayList)localObject, false);
+      AppMethodBeat.o(200926);
       return;
       if (MMApplicationContext.isAppBrandProcess()) {
         i = 21;
@@ -290,213 +339,80 @@ public class b
     }
   }
   
-  public final double eCk()
+  public final void b(c.b paramb)
   {
-    AppMethodBeat.i(201068);
-    double d = 1.0D / ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.shg, -1L);
-    AppMethodBeat.o(201068);
-    return d;
+    AppMethodBeat.i(200887);
+    this.GNm = paramb;
+    hU(false);
+    AppMethodBeat.o(200887);
   }
   
-  public final long eCl()
+  public long cycleMinutes()
   {
-    AppMethodBeat.i(201069);
+    AppMethodBeat.i(200931);
     long l = TimeUnit.DAYS.toMinutes(1L);
-    AppMethodBeat.o(201069);
+    AppMethodBeat.o(200931);
     return l;
   }
   
-  /* Error */
-  public final void hd(boolean paramBoolean)
+  public final void fnn()
   {
-    // Byte code:
-    //   0: ldc_w 578
-    //   3: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: iload_1
-    //   7: ifeq +37 -> 44
-    //   10: invokestatic 267	android/os/Debug:getNativeHeapAllocatedSize	()J
-    //   13: ldc2_w 579
-    //   16: lcmp
-    //   17: ifle +16 -> 33
-    //   20: aconst_null
-    //   21: getstatic 91	com/tencent/mm/plugin/performance/diagnostic/b/b:ATP	Lcom/tencent/mm/vfs/o;
-    //   24: invokevirtual 123	com/tencent/mm/vfs/o:her	()Landroid/net/Uri;
-    //   27: invokestatic 129	com/tencent/mm/vfs/aa:z	(Landroid/net/Uri;)Ljava/lang/String;
-    //   30: invokestatic 582	com/tencent/mm/plugin/performance/diagnostic/b/b:jo	(Ljava/lang/String;Ljava/lang/String;)V
-    //   33: aload_0
-    //   34: invokespecial 584	com/tencent/mm/plugin/performance/diagnostic/b/b:eCi	()V
-    //   37: ldc_w 578
-    //   40: invokestatic 105	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   43: return
-    //   44: getstatic 89	com/tencent/mm/plugin/performance/diagnostic/b/b:ATO	Lcom/tencent/mm/vfs/o;
-    //   47: invokevirtual 123	com/tencent/mm/vfs/o:her	()Landroid/net/Uri;
-    //   50: invokestatic 129	com/tencent/mm/vfs/aa:z	(Landroid/net/Uri;)Ljava/lang/String;
-    //   53: getstatic 91	com/tencent/mm/plugin/performance/diagnostic/b/b:ATP	Lcom/tencent/mm/vfs/o;
-    //   56: invokevirtual 123	com/tencent/mm/vfs/o:her	()Landroid/net/Uri;
-    //   59: invokestatic 129	com/tencent/mm/vfs/aa:z	(Landroid/net/Uri;)Ljava/lang/String;
-    //   62: invokestatic 582	com/tencent/mm/plugin/performance/diagnostic/b/b:jo	(Ljava/lang/String;Ljava/lang/String;)V
-    //   65: aload_0
-    //   66: invokespecial 584	com/tencent/mm/plugin/performance/diagnostic/b/b:eCi	()V
-    //   69: getstatic 30	com/tencent/mm/plugin/performance/diagnostic/b/b:TAG	Ljava/lang/String;
-    //   72: astore 6
-    //   74: getstatic 89	com/tencent/mm/plugin/performance/diagnostic/b/b:ATO	Lcom/tencent/mm/vfs/o;
-    //   77: astore 5
-    //   79: aload 6
-    //   81: ldc_w 586
-    //   84: iconst_2
-    //   85: anewarray 95	java/lang/Object
-    //   88: dup
-    //   89: iconst_0
-    //   90: aload 5
-    //   92: invokevirtual 589	com/tencent/mm/vfs/o:getName	()Ljava/lang/String;
-    //   95: aastore
-    //   96: dup
-    //   97: iconst_1
-    //   98: aload 5
-    //   100: invokevirtual 592	com/tencent/mm/vfs/o:lastModified	()J
-    //   103: invokestatic 595	com/tencent/mm/plugin/performance/c:HF	(J)Ljava/lang/String;
-    //   106: aastore
-    //   107: invokestatic 100	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   110: aload 5
-    //   112: invokevirtual 180	com/tencent/mm/vfs/o:exists	()Z
-    //   115: ifeq +76 -> 191
-    //   118: new 597	java/io/BufferedReader
-    //   121: dup
-    //   122: new 599	java/io/InputStreamReader
-    //   125: dup
-    //   126: aload 5
-    //   128: invokestatic 605	com/tencent/mm/vfs/s:ao	(Lcom/tencent/mm/vfs/o;)Ljava/io/InputStream;
-    //   131: invokespecial 608	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   134: invokespecial 611	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   137: astore_3
-    //   138: aload_3
-    //   139: astore_2
-    //   140: aload_3
-    //   141: invokevirtual 614	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   144: astore 4
-    //   146: aload 4
-    //   148: ifnull +81 -> 229
-    //   151: aload_3
-    //   152: astore_2
-    //   153: aload 6
-    //   155: aload 4
-    //   157: invokestatic 171	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   160: goto -22 -> 138
-    //   163: astore 4
-    //   165: aload_3
-    //   166: astore_2
-    //   167: aload 6
-    //   169: aload 4
-    //   171: ldc_w 262
-    //   174: iconst_0
-    //   175: anewarray 95	java/lang/Object
-    //   178: invokestatic 162	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   181: aload_3
-    //   182: invokestatic 620	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   185: aload 5
-    //   187: invokevirtual 156	com/tencent/mm/vfs/o:delete	()Z
-    //   190: pop
-    //   191: aload 6
-    //   193: ldc_w 622
-    //   196: iconst_2
-    //   197: anewarray 95	java/lang/Object
-    //   200: dup
-    //   201: iconst_0
-    //   202: aload 5
-    //   204: invokevirtual 589	com/tencent/mm/vfs/o:getName	()Ljava/lang/String;
-    //   207: aastore
-    //   208: dup
-    //   209: iconst_1
-    //   210: aload 5
-    //   212: invokevirtual 592	com/tencent/mm/vfs/o:lastModified	()J
-    //   215: invokestatic 595	com/tencent/mm/plugin/performance/c:HF	(J)Ljava/lang/String;
-    //   218: aastore
-    //   219: invokestatic 100	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   222: ldc_w 578
-    //   225: invokestatic 105	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   228: return
-    //   229: aload_3
-    //   230: astore_2
-    //   231: invokestatic 627	com/tencent/mm/sdk/platformtools/WeChatEnvironment:isMonkeyEnv	()Z
-    //   234: ifne +27 -> 261
-    //   237: aload_3
-    //   238: astore_2
-    //   239: invokestatic 630	com/tencent/mm/sdk/platformtools/WeChatEnvironment:hasDebugger	()Z
-    //   242: ifne +19 -> 261
-    //   245: aload_3
-    //   246: astore_2
-    //   247: getstatic 633	com/tencent/mm/sdk/platformtools/BuildInfo:IS_FLAVOR_RED	Z
-    //   250: ifne +11 -> 261
-    //   253: aload_3
-    //   254: astore_2
-    //   255: getstatic 636	com/tencent/mm/sdk/platformtools/BuildInfo:DEBUG	Z
-    //   258: ifeq +10 -> 268
-    //   261: aload_3
-    //   262: astore_2
-    //   263: aload 5
-    //   265: invokestatic 640	com/tencent/mm/plugin/performance/c:T	(Lcom/tencent/mm/vfs/o;)V
-    //   268: aload_3
-    //   269: invokestatic 620	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   272: aload 5
-    //   274: invokevirtual 156	com/tencent/mm/vfs/o:delete	()Z
-    //   277: pop
-    //   278: goto -87 -> 191
-    //   281: astore_3
-    //   282: aconst_null
-    //   283: astore_2
-    //   284: aload_2
-    //   285: invokestatic 620	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   288: aload 5
-    //   290: invokevirtual 156	com/tencent/mm/vfs/o:delete	()Z
-    //   293: pop
-    //   294: ldc_w 578
-    //   297: invokestatic 105	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   300: aload_3
-    //   301: athrow
-    //   302: astore_3
-    //   303: goto -19 -> 284
-    //   306: astore 4
-    //   308: aconst_null
-    //   309: astore_3
-    //   310: goto -145 -> 165
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	313	0	this	b
-    //   0	313	1	paramBoolean	boolean
-    //   139	146	2	localBufferedReader1	java.io.BufferedReader
-    //   137	132	3	localBufferedReader2	java.io.BufferedReader
-    //   281	20	3	localObject1	Object
-    //   302	1	3	localObject2	Object
-    //   309	1	3	localObject3	Object
-    //   144	12	4	str1	String
-    //   163	7	4	localIOException1	java.io.IOException
-    //   306	1	4	localIOException2	java.io.IOException
-    //   77	212	5	localo	o
-    //   72	120	6	str2	String
-    // Exception table:
-    //   from	to	target	type
-    //   140	146	163	java/io/IOException
-    //   153	160	163	java/io/IOException
-    //   231	237	163	java/io/IOException
-    //   239	245	163	java/io/IOException
-    //   247	253	163	java/io/IOException
-    //   255	261	163	java/io/IOException
-    //   263	268	163	java/io/IOException
-    //   118	138	281	finally
-    //   140	146	302	finally
-    //   153	160	302	finally
-    //   167	181	302	finally
-    //   231	237	302	finally
-    //   239	245	302	finally
-    //   247	253	302	finally
-    //   255	261	302	finally
-    //   263	268	302	finally
-    //   118	138	306	java/io/IOException
+    AppMethodBeat.i(200878);
+    Log.i(TAG, "onRegistered: %s", new Object[] { "MemoryHook" });
+    e.GMC.a("memory", this);
+    com.tencent.mm.plugin.performance.b.a.GNv.b(this);
+    AppMethodBeat.o(200878);
+  }
+  
+  public final String fnu()
+  {
+    AppMethodBeat.i(200915);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("hook=").append(this.GNl.fnM()).append(",stack=").append(this.GNl.fnO()).append(",mmap=").append(this.GNl.fnT()).append("\t");
+    localObject = ((StringBuilder)localObject).toString();
+    AppMethodBeat.o(200915);
+    return localObject;
+  }
+  
+  public final String fnv()
+  {
+    return "MemoryHook";
+  }
+  
+  public final void hU(boolean paramBoolean)
+  {
+    AppMethodBeat.i(200885);
+    if (paramBoolean)
+    {
+      if (Debug.getNativeHeapAllocatedSize() > 524288000L) {
+        jz(null, GNk.bOF());
+      }
+      fnV();
+      AppMethodBeat.o(200885);
+      return;
+    }
+    jz(GNj.bOF(), GNk.bOF());
+    fnV();
+    com.tencent.mm.plugin.performance.c.g(TAG, GNj);
+    AppMethodBeat.o(200885);
+  }
+  
+  public String key()
+  {
+    return "MemoryHook";
+  }
+  
+  public double rate()
+  {
+    AppMethodBeat.i(200929);
+    double d = 1.0D / ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vRe, -1L);
+    AppMethodBeat.o(200929);
+    return d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.diagnostic.b.b
  * JD-Core Version:    0.7.0.1
  */

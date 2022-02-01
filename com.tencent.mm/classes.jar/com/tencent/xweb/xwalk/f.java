@@ -8,12 +8,12 @@ import org.xwalk.core.XWalkCookieManager;
 public final class f
   implements CookieInternal.ICookieSyncManagerInternal
 {
-  XWalkCookieManager SGP;
+  XWalkCookieManager aaie;
   
   public f()
   {
     AppMethodBeat.i(154262);
-    this.SGP = new XWalkCookieManager();
+    this.aaie = new XWalkCookieManager();
     AppMethodBeat.o(154262);
   }
   
@@ -22,15 +22,15 @@ public final class f
   public final void sync()
   {
     AppMethodBeat.i(154263);
-    if (this.SGP != null) {
-      this.SGP.flushCookieStore();
+    if (this.aaie != null) {
+      this.aaie.flushCookieStore();
     }
     AppMethodBeat.o(154263);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.xwalk.f
  * JD-Core Version:    0.7.0.1
  */

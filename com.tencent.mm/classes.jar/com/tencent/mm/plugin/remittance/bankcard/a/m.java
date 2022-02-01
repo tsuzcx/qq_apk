@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.remittance.bankcard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.die;
-import com.tencent.mm.protocal.protobuf.dif;
+import com.tencent.mm.protocal.protobuf.drw;
+import com.tencent.mm.protocal.protobuf.drx;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class m
   extends b
 {
-  public dif CiU;
+  public drx IfN;
   private final String TAG;
   private i callback;
   private d rr;
@@ -24,13 +24,13 @@ public final class m
     AppMethodBeat.i(67385);
     this.TAG = "MicroMsg.NetSceneBankRemitQueryTransferList";
     d.a locala = new d.a();
-    locala.iLN = new die();
-    locala.iLO = new dif();
+    locala.lBU = new drw();
+    locala.lBV = new drx();
     locala.funcId = 1378;
     locala.uri = "/cgi-bin/mmpay-bin/tsrecordlist_tsbc";
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
+    this.rr = locala.bgN();
     AppMethodBeat.o(67385);
   }
   
@@ -38,8 +38,8 @@ public final class m
   {
     AppMethodBeat.i(67387);
     Log.i("MicroMsg.NetSceneBankRemitQueryTransferList", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.CiU = ((dif)((d)params).iLL.iLR);
-    Log.i("MicroMsg.NetSceneBankRemitQueryTransferList", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.CiU.dDN), this.CiU.qwn });
+    this.IfN = ((drx)d.c.b(((d)params).lBS));
+    Log.i("MicroMsg.NetSceneBankRemitQueryTransferList", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.IfN.fwx), this.IfN.tVo });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
@@ -55,11 +55,13 @@ public final class m
     return i;
   }
   
-  public final void e(s params)
+  public final void f(s params)
   {
-    params = (dif)((d)params).iLL.iLR;
-    this.RtZ = params.dDN;
-    this.Rua = params.qwn;
+    AppMethodBeat.i(275171);
+    params = (drx)d.c.b(((d)params).lBS);
+    this.YVy = params.fwx;
+    this.YVz = params.tVo;
+    AppMethodBeat.o(275171);
   }
   
   public final int getType()

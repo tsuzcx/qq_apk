@@ -1,28 +1,28 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.ui.chatting.d.af;
+import com.tencent.mm.ui.chatting.d.ag;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 public abstract interface ai
-  extends af
+  extends ag
 {
-  public abstract boolean gQN();
+  public abstract boolean hQk();
   
-  public abstract boolean gQO();
+  public abstract boolean hQl();
   
-  public abstract boolean gQP();
+  public abstract boolean hQm();
   
-  public abstract boolean gQQ();
+  public abstract boolean hQn();
   
-  public abstract CopyOnWriteArraySet<Long> gQR();
+  public abstract CopyOnWriteArraySet<Long> hQo();
   
-  public abstract int gQS();
+  public abstract int hQp();
   
-  public abstract void gQT();
+  public abstract void hQq();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.b.ai
  * JD-Core Version:    0.7.0.1
  */

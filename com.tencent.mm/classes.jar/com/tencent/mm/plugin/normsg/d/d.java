@@ -6,7 +6,7 @@ public final class d
 {
   private static final char[] HEX_DIGITS = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
   
-  public static String L(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public static String N(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(149089);
     char[] arrayOfChar = new char[(paramInt2 - paramInt1) * 2];
@@ -25,7 +25,7 @@ public final class d
     return paramArrayOfByte;
   }
   
-  public static String aIJ(String paramString)
+  public static String aTf(String paramString)
   {
     AppMethodBeat.i(149090);
     StringBuilder localStringBuilder = new StringBuilder(paramString.length());
@@ -93,7 +93,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.d.d
  * JD-Core Version:    0.7.0.1
  */

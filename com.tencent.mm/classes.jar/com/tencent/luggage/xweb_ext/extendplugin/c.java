@@ -10,7 +10,7 @@ import org.xwalk.core.XWalkView;
 public final class c
   extends XWalkExtendPluginClient
 {
-  com.tencent.luggage.xweb_ext.extendplugin.b.c cDJ;
+  com.tencent.luggage.xweb_ext.extendplugin.b.c cEq;
   
   public c(XWalkView paramXWalkView)
   {
@@ -21,8 +21,8 @@ public final class c
   {
     AppMethodBeat.i(138805);
     super.onPluginDestroy(paramString, paramInt);
-    if (this.cDJ != null) {
-      this.cDJ.onPluginDestroy(paramString, paramInt);
+    if (this.cEq != null) {
+      this.cEq.onPluginDestroy(paramString, paramInt);
     }
     AppMethodBeat.o(138805);
   }
@@ -31,8 +31,8 @@ public final class c
   {
     AppMethodBeat.i(138804);
     super.onPluginReady(paramString, paramInt, paramSurfaceTexture);
-    if (this.cDJ != null) {
-      this.cDJ.onPluginReady(paramString, paramInt, paramSurfaceTexture);
+    if (this.cEq != null) {
+      this.cEq.onPluginReady(paramString, paramInt, paramSurfaceTexture);
     }
     AppMethodBeat.o(138804);
   }
@@ -41,8 +41,8 @@ public final class c
   {
     AppMethodBeat.i(178798);
     super.onPluginScreenshotTaken(paramString, paramInt, paramBitmap);
-    if (this.cDJ != null) {
-      this.cDJ.onPluginScreenshotTaken(paramString, paramInt, paramBitmap);
+    if (this.cEq != null) {
+      this.cEq.onPluginScreenshotTaken(paramString, paramInt, paramBitmap);
     }
     AppMethodBeat.o(178798);
   }
@@ -51,8 +51,8 @@ public final class c
   {
     AppMethodBeat.i(138806);
     super.onPluginTouch(paramString, paramInt, paramMotionEvent);
-    if (this.cDJ != null) {
-      this.cDJ.onPluginTouch(paramString, paramInt, paramMotionEvent);
+    if (this.cEq != null) {
+      this.cEq.onPluginTouch(paramString, paramInt, paramMotionEvent);
     }
     AppMethodBeat.o(138806);
   }
@@ -66,7 +66,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,76 +1,53 @@
 package com.tencent.mm.plugin.textstatus.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.report.live.k;
-import com.tencent.mm.plugin.finder.report.live.s.j;
-import com.tencent.mm.plugin.finder.report.live.s.p;
-import com.tencent.mm.plugin.i.a.aj;
-import com.tencent.mm.plugin.textstatus.g.r;
-import com.tencent.mm.protocal.protobuf.axf;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.loader.d.b.b;
+import com.tencent.mm.loader.f.g;
+import com.tencent.mm.loader.h.a.a;
+import com.tencent.mm.loader.h.f;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.XmlParser;
-import java.util.Iterator;
-import java.util.List;
 import kotlin.g.b.p;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/textstatus/jump/LiveSingleton;", "Lcom/tencent/mm/plugin/textstatus/jump/ITextStatusJumpSingleton;", "()V", "doJump", "", "textStatusID", "", "jumpInfos", "", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusJumpInfo;", "plugin-textstatus_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/download/TextStatusImgDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/plugin/textstatus/download/TextStatusImage;", "()V", "loadDataImp", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "plugin-textstatus_release"})
 public final class c
-  implements b
+  extends com.tencent.mm.loader.d.b<b>
 {
-  public final boolean F(String paramString, List<? extends r> paramList)
+  public final void a(a<b> parama, g paramg, b.b paramb)
   {
-    AppMethodBeat.i(258410);
-    p.h(paramString, "textStatusID");
-    p.h(paramList, "jumpInfos");
-    boolean bool = false;
-    long l = -1L;
-    paramString = ((Iterable)paramList).iterator();
-    if (paramString.hasNext())
+    AppMethodBeat.i(232834);
+    p.k(parama, "url");
+    p.k(paramg, "fileNameCreator");
+    p.k(paramb, "callback");
+    try
     {
-      paramList = (r)paramString.next();
-      l += 1L;
-      String str = paramList.GaO;
-      if (str == null) {}
-      do
+      paramg = Util.httpGet(((b)parama.aSr()).toString());
+      if (paramg == null)
       {
-        for (;;)
-        {
-          bool = false;
-          break;
-          switch (str.hashCode())
-          {
-          }
-        }
-      } while (!str.equals("2"));
-      paramList = XmlParser.parseXml(paramList.GaQ, "finderLive", null);
-      if (paramList != null)
-      {
-        paramList = com.tencent.mm.plugin.i.a.l.v("", paramList);
-        k.vkd.a(d.Ga(paramList.feedId), d.Ga(paramList.hJs), paramList.username, -1L, l, s.p.voF, s.j.vob.scene);
-        if (!Util.isEqual(z.aUg(), paramList.username)) {
-          break label236;
-        }
-        ((aj)g.ah(aj.class)).enterFinderLiveAnchorUI(MMApplicationContext.getContext(), d.Ga(paramList.feedId), Long.valueOf(d.Ga(paramList.hJs)), paramList.objectNonceId, paramList.desc, "", "");
+        Log.e("TextStatusLoader", "loadDataImp() data == null url = " + (b)parama.aSr());
+        paramb.onError();
+        AppMethodBeat.o(232834);
+        return;
       }
-      for (;;)
-      {
-        bool = true;
-        break;
-        label236:
-        ((aj)g.ah(aj.class)).enterFinderLiveVisitorUI(MMApplicationContext.getContext(), d.Ga(paramList.feedId), Long.valueOf(d.Ga(paramList.hJs)), paramList.username, paramList.objectNonceId, paramList.desc, "", "");
-      }
+      Log.i("TextStatusLoader", "loadDataImp() finished with: url = " + (b)parama.aSr());
+      parama = com.tencent.mm.loader.h.b.d(paramg, "");
+      p.j(parama, "HttpResponse.create(data,\"\")");
+      paramb.a((f)parama);
+      AppMethodBeat.o(232834);
+      return;
     }
-    AppMethodBeat.o(258410);
-    return bool;
+    catch (Throwable parama)
+    {
+      Log.printErrStackTrace("TextStatusLoader", parama, "loadDataImp err", new Object[0]);
+      paramb.onError();
+      AppMethodBeat.o(232834);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.c.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="timline_outside_permiss" android:title="@string/h97" />
+    <Preference android:key="timeline_black_permiss" android:title="@string/h57" />
+    <Preference android:key="edit_timeline_group" android:title="@string/gt1" />
+    <CheckBoxPreference android:key="timeline_stranger_show" android:layout="@layout/b8j" android:title="@string/bb9" />
+    <IconPreference android:key="timeline_recent_show_select" android:title="@string/bb4" />
+    <PreferenceSmallCategory />
+</PreferenceScreen>

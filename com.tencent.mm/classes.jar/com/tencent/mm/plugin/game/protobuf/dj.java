@@ -2,72 +2,88 @@ package com.tencent.mm.plugin.game.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import g.a.a.b;
+import java.util.LinkedList;
 
 public final class dj
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String xJD;
+  public eq CRf;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(149417);
+    AppMethodBeat.i(41825);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.xJD == null)
+      if (this.CRf == null)
       {
-        paramVarArgs = new b("Not all required fields were included: PkgId");
-        AppMethodBeat.o(149417);
+        paramVarArgs = new b("Not all required fields were included: AppInfo");
+        AppMethodBeat.o(41825);
         throw paramVarArgs;
       }
-      if (this.xJD != null) {
-        paramVarArgs.e(1, this.xJD);
+      if (this.CRf != null)
+      {
+        paramVarArgs.oE(1, this.CRf.computeSize());
+        this.CRf.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(149417);
+      AppMethodBeat.o(41825);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.xJD == null) {
-        break label261;
+      if (this.CRf == null) {
+        break label336;
       }
     }
-    label261:
-    for (paramInt = g.a.a.b.b.a.f(1, this.xJD) + 0;; paramInt = 0)
+    label336:
+    for (paramInt = g.a.a.a.oD(1, this.CRf.computeSize()) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(149417);
+      AppMethodBeat.o(41825);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.xJD == null)
+        if (this.CRf == null)
         {
-          paramVarArgs = new b("Not all required fields were included: PkgId");
-          AppMethodBeat.o(149417);
+          paramVarArgs = new b("Not all required fields were included: AppInfo");
+          AppMethodBeat.o(41825);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(149417);
+        AppMethodBeat.o(41825);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         dj localdj = (dj)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(149417);
+          AppMethodBeat.o(41825);
           return -1;
         }
-        localdj.xJD = locala.UbS.readString();
-        AppMethodBeat.o(149417);
+        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          eq localeq = new eq();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localeq.parseFrom((byte[])localObject);
+          }
+          localdj.CRf = localeq;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(41825);
         return 0;
       }
-      AppMethodBeat.o(149417);
+      AppMethodBeat.o(41825);
       return -1;
     }
   }

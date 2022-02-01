@@ -8,14 +8,15 @@
                 <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/b46" android:padding="@dimen/c5" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" android:src="@raw/icons_outlined_close" android:layout_centerVertical="true" android:rotation="90.0" />
                 <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/ir3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fju" android:layout_centerInParent="true" />
             </RelativeLayout>
-            <com.tencent.mm.ui.widget.InputPanelLinearLayout android:orientation="vertical" android:id="@id/dym" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ce" android:layout_marginRight="@dimen/ce">
+            <LinearLayout android:orientation="vertical" android:id="@id/dym" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ce" android:layout_marginRight="@dimen/ce">
                 <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/ayf" android:layout_width="fill_parent" android:layout_height="wrap_content">
                     <TextView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" android:text="@string/fjr" android:maxLines="1" style="@style/zi" />
-                    <com.tencent.mm.ui.base.MMClearEditText android:textSize="@dimen/t" android:id="@id/g91" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/cp" android:layout_marginRight="@dimen/cb" android:singleLine="true" android:layout_weight="1.0" />
+                    <com.tencent.mm.ui.widget.MMClearEditText android:textSize="@dimen/t" android:textColor="@color/a2x" android:id="@id/g91" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/cp" android:layout_marginRight="@dimen/cb" android:singleLine="true" android:layout_weight="1.0" />
                 </LinearLayout>
                 <TextView android:textColor="@color/FG_2" android:ellipsize="end" android:id="@id/g92" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:text="@string/fjt" android:maxLines="1" style="@style/zx" />
                 <Button android:enabled="false" android:layout_gravity="center_horizontal" android:id="@id/g3k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cl" android:layout_marginBottom="@dimen/cl" android:text="@string/vl" style="@style/ov" />
-            </com.tencent.mm.ui.widget.InputPanelLinearLayout>
+            </LinearLayout>
+            <com.tencent.mm.emoji.view.EmojiPanelInputComponent android:id="@id/kqk" android:layout_width="fill_parent" android:layout_height="wrap_content" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

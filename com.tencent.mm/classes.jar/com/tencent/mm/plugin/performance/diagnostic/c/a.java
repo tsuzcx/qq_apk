@@ -2,95 +2,96 @@ package com.tencent.mm.plugin.performance.diagnostic.c;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.performance.diagnostic.a.a;
+import com.tencent.mm.plugin.performance.diagnostic.c;
+import com.tencent.mm.plugin.performance.diagnostic.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import java.util.Map;
 
 public final class a
-  extends a.a
+  extends c.a
 {
-  private final String ATS;
-  private final String ATT;
-  private final String ATU;
+  private final String GNn;
+  private final String GNo;
+  private final String GNp;
   
-  public a(com.tencent.mm.plugin.performance.diagnostic.a<? extends com.tencent.wxperf.jni.a, ? extends a.a> parama)
+  public a(c<? extends com.tencent.matrix.hook.a, ? extends c.a> paramc)
   {
-    super(parama);
-    AppMethodBeat.i(201071);
-    this.ATS = (parama.eBC() + ".$hook");
-    this.ATT = (parama.eBC() + ".$ignore");
-    this.ATU = (parama.eBC() + ".$thread");
-    AppMethodBeat.o(201071);
+    super(paramc);
+    AppMethodBeat.i(201438);
+    this.GNn = (paramc.fnm() + ".$hook");
+    this.GNo = (paramc.fnm() + ".$ignore");
+    this.GNp = (paramc.fnm() + ".$thread");
+    AppMethodBeat.o(201438);
   }
   
-  public final void aB(Map<String, String> paramMap)
+  public final String aUr(String paramString)
   {
-    AppMethodBeat.i(201072);
-    super.aB(paramMap);
-    String str1 = (String)paramMap.get(this.ATS);
+    AppMethodBeat.i(201442);
+    paramString = this.fbr.decodeString(this.GNn, paramString);
+    AppMethodBeat.o(201442);
+    return paramString;
+  }
+  
+  public final String aUs(String paramString)
+  {
+    AppMethodBeat.i(201445);
+    paramString = this.fbr.decodeString(this.GNp, paramString);
+    AppMethodBeat.o(201445);
+    return paramString;
+  }
+  
+  public final void av(Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(201440);
+    super.av(paramMap);
+    String str1 = (String)paramMap.get(this.GNn);
     if (TextUtils.isEmpty(str1))
     {
       Log.e("MicroMsg.PthreadHookConfigStg", "ERROR(PthreadHook): hook regex is blank");
-      AppMethodBeat.o(201072);
+      AppMethodBeat.o(201440);
       return;
     }
-    String str2 = (String)paramMap.get(this.ATT);
-    paramMap = (String)paramMap.get(this.ATU);
-    this.djK.encode(this.ATS, str1);
-    this.djK.encode(this.ATT, str2);
-    this.djK.encode(this.ATU, paramMap);
-    AppMethodBeat.o(201072);
+    String str2 = (String)paramMap.get(this.GNo);
+    paramMap = (String)paramMap.get(this.GNp);
+    this.fbr.encode(this.GNn, str1);
+    this.fbr.encode(this.GNo, str2);
+    this.fbr.encode(this.GNp, paramMap);
+    AppMethodBeat.o(201440);
   }
   
-  public final String aJV(String paramString)
-  {
-    AppMethodBeat.i(201074);
-    paramString = this.djK.decodeString(this.ATS, paramString);
-    AppMethodBeat.o(201074);
-    return paramString;
-  }
-  
-  public final String aJW(String paramString)
-  {
-    AppMethodBeat.i(201077);
-    paramString = this.djK.decodeString(this.ATU, paramString);
-    AppMethodBeat.o(201077);
-    return paramString;
-  }
-  
-  public final long eBV()
+  public final long fnI()
   {
     return -1L;
   }
   
-  public final String eBZ()
+  public final String fnM()
   {
-    AppMethodBeat.i(201073);
-    String str = aJV("");
-    AppMethodBeat.o(201073);
+    AppMethodBeat.i(201441);
+    String str = aUr("");
+    AppMethodBeat.o(201441);
     return str;
   }
   
-  public final String eCa()
+  public final String fnN()
   {
-    AppMethodBeat.i(201075);
-    String str = this.djK.decodeString(this.ATT, null);
-    AppMethodBeat.o(201075);
+    AppMethodBeat.i(201443);
+    String str = this.fbr.decodeString(this.GNo, null);
+    AppMethodBeat.o(201443);
     return str;
   }
   
-  public final String eCm()
+  public final String fnW()
   {
-    AppMethodBeat.i(201076);
-    String str = aJW("");
-    AppMethodBeat.o(201076);
+    AppMethodBeat.i(201444);
+    String str = aUs("");
+    AppMethodBeat.o(201444);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.diagnostic.c.a
  * JD-Core Version:    0.7.0.1
  */

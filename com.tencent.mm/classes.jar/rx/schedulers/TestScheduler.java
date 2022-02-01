@@ -13,34 +13,34 @@ import rx.j;
 public class TestScheduler
   extends g
 {
-  static long RPO;
-  final Queue<c> dxk;
+  static long Zst;
+  final Queue<c> fpW;
   long time;
   
   public TestScheduler()
   {
     AppMethodBeat.i(90112);
-    this.dxk = new PriorityQueue(11, new a());
+    this.fpW = new PriorityQueue(11, new a());
     AppMethodBeat.o(90112);
   }
   
-  private void Py(long paramLong)
+  private void XO(long paramLong)
   {
     AppMethodBeat.i(90117);
-    if (!this.dxk.isEmpty())
+    if (!this.fpW.isEmpty())
     {
-      c localc = (c)this.dxk.peek();
+      c localc = (c)this.fpW.peek();
       if (localc.time <= paramLong)
       {
         if (localc.time == 0L) {}
         for (long l = this.time;; l = localc.time)
         {
           this.time = l;
-          this.dxk.remove();
-          if (localc.Uou.hQB()) {
+          this.fpW.remove();
+          if (localc.abRI.iVK()) {
             break;
           }
-          localc.Umw.call();
+          localc.abPS.call();
           break;
         }
       }
@@ -59,7 +59,7 @@ public class TestScheduler
   public void advanceTimeTo(long paramLong, TimeUnit paramTimeUnit)
   {
     AppMethodBeat.i(90115);
-    Py(paramTimeUnit.toNanos(paramLong));
+    XO(paramTimeUnit.toNanos(paramLong));
     AppMethodBeat.o(90115);
   }
   
@@ -82,7 +82,7 @@ public class TestScheduler
   public void triggerActions()
   {
     AppMethodBeat.i(90116);
-    Py(this.time);
+    XO(this.time);
     AppMethodBeat.o(90116);
   }
   
@@ -93,12 +93,12 @@ public class TestScheduler
   final class b
     extends g.a
   {
-    private final rx.f.a Uoq;
+    private final rx.f.a abRE;
     
     b()
     {
       AppMethodBeat.i(90106);
-      this.Uoq = new rx.f.a();
+      this.abRE = new rx.f.a();
       AppMethodBeat.o(90106);
     }
     
@@ -106,13 +106,13 @@ public class TestScheduler
     {
       AppMethodBeat.i(90110);
       parama = new TestScheduler.c(this, 0L, parama);
-      TestScheduler.this.dxk.add(parama);
+      TestScheduler.this.fpW.add(parama);
       parama = d.e(new rx.b.a()
       {
         public final void call()
         {
           AppMethodBeat.i(90105);
-          TestScheduler.this.dxk.remove(parama);
+          TestScheduler.this.fpW.remove(parama);
           AppMethodBeat.o(90105);
         }
       });
@@ -124,13 +124,13 @@ public class TestScheduler
     {
       AppMethodBeat.i(90109);
       parama = new TestScheduler.c(this, TestScheduler.this.time + paramTimeUnit.toNanos(paramLong), parama);
-      TestScheduler.this.dxk.add(parama);
+      TestScheduler.this.fpW.add(parama);
       parama = d.e(new rx.b.a()
       {
         public final void call()
         {
           AppMethodBeat.i(90104);
-          TestScheduler.this.dxk.remove(parama);
+          TestScheduler.this.fpW.remove(parama);
           AppMethodBeat.o(90104);
         }
       });
@@ -138,17 +138,17 @@ public class TestScheduler
       return parama;
     }
     
-    public final void hQA()
+    public final void iVJ()
     {
       AppMethodBeat.i(90107);
-      this.Uoq.hQA();
+      this.abRE.iVJ();
       AppMethodBeat.o(90107);
     }
     
-    public final boolean hQB()
+    public final boolean iVK()
     {
       AppMethodBeat.i(90108);
-      boolean bool = this.Uoq.hQB();
+      boolean bool = this.abRE.iVK();
       AppMethodBeat.o(90108);
       return bool;
     }
@@ -164,27 +164,27 @@ public class TestScheduler
   
   static final class c
   {
-    final rx.b.a Umw;
-    final g.a Uou;
+    final rx.b.a abPS;
+    final g.a abRI;
     final long count;
     final long time;
     
     c(g.a parama, long paramLong, rx.b.a parama1)
     {
       AppMethodBeat.i(90102);
-      long l = TestScheduler.RPO;
-      TestScheduler.RPO = 1L + l;
+      long l = TestScheduler.Zst;
+      TestScheduler.Zst = 1L + l;
       this.count = l;
       this.time = paramLong;
-      this.Umw = parama1;
-      this.Uou = parama;
+      this.abPS = parama1;
+      this.abRI = parama;
       AppMethodBeat.o(90102);
     }
     
     public final String toString()
     {
       AppMethodBeat.i(90103);
-      String str = String.format("TimedAction(time = %d, action = %s)", new Object[] { Long.valueOf(this.time), this.Umw.toString() });
+      String str = String.format("TimedAction(time = %d, action = %s)", new Object[] { Long.valueOf(this.time), this.abPS.toString() });
       AppMethodBeat.o(90103);
       return str;
     }
@@ -192,7 +192,7 @@ public class TestScheduler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.schedulers.TestScheduler
  * JD-Core Version:    0.7.0.1
  */

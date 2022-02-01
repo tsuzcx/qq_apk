@@ -10,7 +10,7 @@ public abstract interface d
 {
   public abstract Bitmap a(Rect paramRect, int paramInt);
   
-  public abstract Point d(Context paramContext, Uri paramUri);
+  public abstract Point b(Context paramContext, Uri paramUri);
   
   public abstract boolean isReady();
   
@@ -18,7 +18,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.davemorrissey.labs.subscaleview.a.d
  * JD-Core Version:    0.7.0.1
  */

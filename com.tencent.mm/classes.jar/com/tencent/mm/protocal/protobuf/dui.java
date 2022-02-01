@@ -4,114 +4,111 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class dui
-  extends dop
+  extends com.tencent.mm.cd.a
 {
-  public long DYn;
-  public String LzN;
-  public String MVS;
-  public String gTk;
+  public aji UaH;
+  public String UaI;
+  public String UaJ;
+  public int emoji_from;
+  public int type;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(192788);
+    AppMethodBeat.i(104830);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      if (this.UaH != null)
       {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs.oE(1, this.UaH.computeSize());
+        this.UaH.writeFields(paramVarArgs);
       }
-      if (this.MVS != null) {
-        paramVarArgs.e(2, this.MVS);
+      if (this.UaI != null) {
+        paramVarArgs.f(2, this.UaI);
       }
-      if (this.gTk != null) {
-        paramVarArgs.e(3, this.gTk);
+      paramVarArgs.aY(3, this.type);
+      if (this.UaJ != null) {
+        paramVarArgs.f(4, this.UaJ);
       }
-      paramVarArgs.bb(4, this.DYn);
-      if (this.LzN != null) {
-        paramVarArgs.e(5, this.LzN);
-      }
-      AppMethodBeat.o(192788);
+      paramVarArgs.aY(5, this.emoji_from);
+      AppMethodBeat.o(104830);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label534;
+      if (this.UaH == null) {
+        break label496;
       }
     }
-    label534:
-    for (int i = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label496:
+    for (paramInt = g.a.a.a.oD(1, this.UaH.computeSize()) + 0;; paramInt = 0)
     {
+      int i = paramInt;
+      if (this.UaI != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.UaI);
+      }
+      i += g.a.a.b.b.a.bM(3, this.type);
       paramInt = i;
-      if (this.MVS != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.MVS);
+      if (this.UaJ != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.UaJ);
       }
-      i = paramInt;
-      if (this.gTk != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.gTk);
-      }
-      i += g.a.a.b.b.a.r(4, this.DYn);
-      paramInt = i;
-      if (this.LzN != null) {
-        paramInt = i + g.a.a.b.b.a.f(5, this.LzN);
-      }
-      AppMethodBeat.o(192788);
-      return paramInt;
+      i = g.a.a.b.b.a.bM(5, this.emoji_from);
+      AppMethodBeat.o(104830);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(192788);
+        AppMethodBeat.o(104830);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         dui localdui = (dui)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(192788);
+          AppMethodBeat.o(104830);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localdui.BaseRequest = ((jr)localObject1);
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            aji localaji = new aji();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localaji.parseFrom((byte[])localObject);
+            }
+            localdui.UaH = localaji;
             paramInt += 1;
           }
-          AppMethodBeat.o(192788);
+          AppMethodBeat.o(104830);
           return 0;
         case 2: 
-          localdui.MVS = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(192788);
+          localdui.UaI = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(104830);
           return 0;
         case 3: 
-          localdui.gTk = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(192788);
+          localdui.type = ((g.a.a.a.a)localObject).abFh.AK();
+          AppMethodBeat.o(104830);
           return 0;
         case 4: 
-          localdui.DYn = ((g.a.a.a.a)localObject1).UbS.zl();
-          AppMethodBeat.o(192788);
+          localdui.UaJ = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(104830);
           return 0;
         }
-        localdui.LzN = ((g.a.a.a.a)localObject1).UbS.readString();
-        AppMethodBeat.o(192788);
+        localdui.emoji_from = ((g.a.a.a.a)localObject).abFh.AK();
+        AppMethodBeat.o(104830);
         return 0;
       }
-      AppMethodBeat.o(192788);
+      AppMethodBeat.o(104830);
       return -1;
     }
   }

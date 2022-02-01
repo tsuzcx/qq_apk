@@ -11,14 +11,14 @@ public class LocalUsageInfo
   public static final Parcelable.Creator<LocalUsageInfo> CREATOR;
   public final String appId;
   public final int appVersion;
-  public final String cyB;
-  public final long czf;
-  public final int iOo;
-  public final String kVZ;
-  public final boolean kWa;
-  public final long kWb;
-  public final boolean kWc;
-  public final String kWd;
+  public final int cBU;
+  public final long cxN;
+  public final String cxg;
+  public final String nQm;
+  public final boolean nQn;
+  public final long nQo;
+  public final boolean nQp;
+  public final String nQq;
   public final String nickname;
   public final String username;
   
@@ -34,17 +34,17 @@ public class LocalUsageInfo
     AppMethodBeat.i(153200);
     this.username = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.iOo = paramParcel.readInt();
+    this.cBU = paramParcel.readInt();
     this.appVersion = paramParcel.readInt();
     this.nickname = paramParcel.readString();
-    this.cyB = paramParcel.readString();
-    this.kVZ = paramParcel.readString();
+    this.cxg = paramParcel.readString();
+    this.nQm = paramParcel.readString();
     if (paramParcel.readByte() > 0)
     {
       bool1 = true;
-      this.kWa = bool1;
-      this.czf = paramParcel.readLong();
-      this.kWb = paramParcel.readLong();
+      this.nQn = bool1;
+      this.cxN = paramParcel.readLong();
+      this.nQo = paramParcel.readLong();
       if (paramParcel.readByte() <= 0) {
         break label130;
       }
@@ -52,8 +52,8 @@ public class LocalUsageInfo
     label130:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.kWc = bool1;
-      this.kWd = paramParcel.readString();
+      this.nQp = bool1;
+      this.nQq = paramParcel.readString();
       AppMethodBeat.o(153200);
       return;
       bool1 = false;
@@ -70,16 +70,16 @@ public class LocalUsageInfo
   {
     this.username = paramString1;
     this.appId = paramString2;
-    this.iOo = paramInt1;
+    this.cBU = paramInt1;
     this.appVersion = paramInt2;
     this.nickname = paramString3;
-    this.cyB = paramString4;
-    this.kVZ = paramString5;
-    this.kWa = paramBoolean1;
-    this.czf = paramLong1;
-    this.kWb = paramLong2;
-    this.kWc = paramBoolean2;
-    this.kWd = paramString6;
+    this.cxg = paramString4;
+    this.nQm = paramString5;
+    this.nQn = paramBoolean1;
+    this.cxN = paramLong1;
+    this.nQo = paramLong2;
+    this.nQp = paramBoolean2;
+    this.nQq = paramString6;
   }
   
   public int describeContents()
@@ -93,18 +93,18 @@ public class LocalUsageInfo
     AppMethodBeat.i(153199);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.iOo);
+    paramParcel.writeInt(this.cBU);
     paramParcel.writeInt(this.appVersion);
     paramParcel.writeString(this.nickname);
-    paramParcel.writeString(this.cyB);
-    paramParcel.writeString(this.kVZ);
-    if (this.kWa)
+    paramParcel.writeString(this.cxg);
+    paramParcel.writeString(this.nQm);
+    if (this.nQn)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.czf);
-      paramParcel.writeLong(this.kWb);
-      if (!this.kWc) {
+      paramParcel.writeLong(this.cxN);
+      paramParcel.writeLong(this.nQo);
+      if (!this.nQp) {
         break label128;
       }
     }
@@ -112,7 +112,7 @@ public class LocalUsageInfo
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.kWd);
+      paramParcel.writeString(this.nQq);
       AppMethodBeat.o(153199);
       return;
       paramInt = 0;
@@ -122,7 +122,7 @@ public class LocalUsageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo
  * JD-Core Version:    0.7.0.1
  */

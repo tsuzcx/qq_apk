@@ -8,95 +8,87 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.base.w;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 public class TRTCVideoLayoutManager
   extends RelativeLayout
   implements b.b
 {
   private static final String TAG;
-  public WeakReference<a> hAW;
-  private ArrayList<b> hFr;
-  private ArrayList<RelativeLayout.LayoutParams> hFs;
-  private ArrayList<RelativeLayout.LayoutParams> hFt;
-  private ArrayList<RelativeLayout.LayoutParams> hFu;
-  private String hFv;
-  private String hFw;
+  public WeakReference<a> koF;
+  private String ktA;
+  private String ktB;
+  private List<b> ktw;
+  private ArrayList<RelativeLayout.LayoutParams> ktx;
+  private ArrayList<RelativeLayout.LayoutParams> kty;
+  private ArrayList<RelativeLayout.LayoutParams> ktz;
   private int mCount;
   private int mMode;
   
   static
   {
-    AppMethodBeat.i(196371);
+    AppMethodBeat.i(201171);
     TAG = TRTCVideoLayoutManager.class.getSimpleName();
-    AppMethodBeat.o(196371);
+    AppMethodBeat.o(201171);
   }
   
   public TRTCVideoLayoutManager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(196338);
+    AppMethodBeat.i(200996);
     this.mCount = 0;
-    bh(paramContext);
-    AppMethodBeat.o(196338);
+    bv(paramContext);
+    AppMethodBeat.o(200996);
   }
   
   public TRTCVideoLayoutManager(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(196339);
+    AppMethodBeat.i(200997);
     this.mCount = 0;
-    bh(paramContext);
-    AppMethodBeat.o(196339);
+    bv(paramContext);
+    AppMethodBeat.o(200997);
   }
   
-  private b GI(String paramString)
+  private b NV(String paramString)
   {
-    AppMethodBeat.i(196356);
-    Iterator localIterator = this.hFr.iterator();
+    AppMethodBeat.i(201065);
+    Log.i(TAG, "findEntity userId:".concat(String.valueOf(paramString)));
+    Iterator localIterator = this.ktw.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
       if (localb.userId.equals(paramString))
       {
-        AppMethodBeat.o(196356);
+        AppMethodBeat.o(201065);
         return localb;
       }
     }
-    AppMethodBeat.o(196356);
+    AppMethodBeat.o(201065);
     return null;
   }
   
-  private b aFb()
+  private void aNt()
   {
-    AppMethodBeat.i(196357);
-    Iterator localIterator = this.hFr.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(201068);
+    if ((this.kty == null) || (this.kty.size() == 0) || (this.ktz == null) || (this.ktz.size() == 0))
     {
-      b localb = (b)localIterator.next();
-      if ((localb.hFy.hEY == null) && ((localb.userId == null) || (localb.userId.length() == 0)))
-      {
-        AppMethodBeat.o(196357);
-        return localb;
-      }
-    }
-    AppMethodBeat.o(196357);
-    return null;
-  }
-  
-  private void aFc()
-  {
-    AppMethodBeat.i(196358);
-    if ((this.hFt == null) || (this.hFt.size() == 0) || (this.hFu == null) || (this.hFu.size() == 0))
-    {
-      this.hFt = c.b(getContext(), getWidth(), getHeight());
-      this.hFu = c.c(getContext(), getWidth(), getHeight());
+      this.kty = c.b(getContext(), getWidth(), getHeight());
+      this.ktz = c.c(getContext(), getWidth(), getHeight());
     }
     ArrayList localArrayList;
     int i;
@@ -106,19 +98,19 @@ public class TRTCVideoLayoutManager
     int k;
     if (this.mCount <= 4)
     {
-      localArrayList = this.hFt;
+      localArrayList = this.kty;
       i = 0;
       j = 1;
-      if (i >= this.hFr.size()) {
-        break label224;
+      if (i >= this.ktw.size()) {
+        break label228;
       }
-      localb = (b)this.hFr.get(i);
-      localb.hFy.hFk = false;
-      localb.hFy.setOnClickListener(null);
-      if (!localb.userId.equals(this.hFv)) {
-        break label189;
+      localb = (b)this.ktw.get(i);
+      localb.ktD.ktp = false;
+      localb.ktD.setOnClickListener(null);
+      if (!localb.userId.equals(this.ktA)) {
+        break label193;
       }
-      localb.hFy.setLayoutParams((ViewGroup.LayoutParams)localArrayList.get(0));
+      localb.ktD.setLayoutParams((ViewGroup.LayoutParams)localArrayList.get(0));
       k = j;
     }
     for (;;)
@@ -126,124 +118,112 @@ public class TRTCVideoLayoutManager
       i += 1;
       j = k;
       break label95;
-      localArrayList = this.hFu;
+      localArrayList = this.ktz;
       break;
-      label189:
+      label193:
       k = j;
       if (j < localArrayList.size())
       {
-        localb.hFy.setLayoutParams((ViewGroup.LayoutParams)localArrayList.get(j));
+        localb.ktD.setLayoutParams((ViewGroup.LayoutParams)localArrayList.get(j));
         k = j + 1;
       }
     }
-    label224:
-    AppMethodBeat.o(196358);
+    label228:
+    AppMethodBeat.o(201068);
   }
   
-  private void bh(Context paramContext)
+  private void bv(Context paramContext)
   {
-    AppMethodBeat.i(196340);
-    this.hFr = new ArrayList();
+    AppMethodBeat.i(201004);
+    Log.i(TAG, "initView: ");
+    this.ktw = Collections.synchronizedList(new ArrayList());
     Object localObject = new b(paramContext, false);
     ((b)localObject).setVisibility(8);
     ((b)localObject).setBackgroundColor(-16777216);
-    ((b)localObject).hFk = false;
-    ((b)localObject).setIVideoLayoutListener(this);
-    ((b)localObject).setBottomControllerVisibility(8);
+    ((b)localObject).ktp = false;
+    ((b)localObject).a(this);
+    ((b)localObject).aNo();
     b localb = new b((byte)0);
-    localb.hFy = ((b)localObject);
+    localb.ktD = ((b)localObject);
     localb.index = 0;
-    this.hFr.add(localb);
+    this.ktw.add(localb);
     localObject = new b(paramContext, true);
     ((b)localObject).setVisibility(8);
     ((b)localObject).setBackgroundColor(-16777216);
-    ((b)localObject).hFk = false;
-    ((b)localObject).setIVideoLayoutListener(this);
-    ((b)localObject).setBottomControllerVisibility(8);
+    ((b)localObject).ktp = false;
+    ((b)localObject).a(this);
+    ((b)localObject).aNo();
     localb = new b((byte)0);
-    localb.hFy = ((b)localObject);
+    localb.ktD = ((b)localObject);
     localb.index = 1;
-    this.hFr.add(localb);
+    this.ktw.add(localb);
+    localObject = new b(paramContext, true);
+    ((b)localObject).setVisibility(8);
+    ((b)localObject).setBackgroundColor(-16777216);
+    ((b)localObject).ktp = false;
+    ((b)localObject).a(this);
+    ((b)localObject).aNo();
+    localb = new b((byte)0);
+    localb.ktD = ((b)localObject);
+    localb.index = 2;
+    this.ktw.add(localb);
     paramContext = new b(paramContext, true);
     paramContext.setVisibility(8);
     paramContext.setBackgroundColor(-16777216);
-    paramContext.hFk = false;
-    paramContext.setIVideoLayoutListener(this);
-    paramContext.setBottomControllerVisibility(8);
+    paramContext.ktp = false;
+    paramContext.a(this);
+    paramContext.aNo();
     localObject = new b((byte)0);
-    ((b)localObject).hFy = paramContext;
-    ((b)localObject).index = 1;
-    this.hFr.add(localObject);
+    ((b)localObject).ktD = paramContext;
+    ((b)localObject).index = 3;
+    this.ktw.add(localObject);
     this.mMode = 1;
     post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(196337);
+        AppMethodBeat.i(198955);
         TRTCVideoLayoutManager.a(TRTCVideoLayoutManager.this);
-        AppMethodBeat.o(196337);
+        AppMethodBeat.o(198955);
       }
     });
-    AppMethodBeat.o(196340);
+    AppMethodBeat.o(201004);
   }
   
   private b k(b paramb)
   {
-    AppMethodBeat.i(196355);
-    Iterator localIterator = this.hFr.iterator();
+    AppMethodBeat.i(201060);
+    Iterator localIterator = this.ktw.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (localb.hFy == paramb)
+      if (localb.ktD == paramb)
       {
-        AppMethodBeat.o(196355);
+        AppMethodBeat.o(201060);
         return localb;
       }
     }
-    AppMethodBeat.o(196355);
+    AppMethodBeat.o(201060);
     return null;
   }
   
-  public final b GG(String paramString)
+  public final void NS(String paramString)
   {
-    AppMethodBeat.i(196346);
+    AppMethodBeat.i(201046);
     if (paramString == null)
     {
-      AppMethodBeat.o(196346);
-      return null;
-    }
-    Iterator localIterator = this.hFr.iterator();
-    while (localIterator.hasNext())
-    {
-      b localb = (b)localIterator.next();
-      if ((localb.streamType == 0) && (localb.userId.equals(paramString)))
-      {
-        paramString = localb.hFy;
-        AppMethodBeat.o(196346);
-        return paramString;
-      }
-    }
-    AppMethodBeat.o(196346);
-    return null;
-  }
-  
-  public final void GH(String paramString)
-  {
-    AppMethodBeat.i(196351);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(196351);
+      AppMethodBeat.o(201046);
       return;
     }
     b localb;
     if (this.mMode == 1)
     {
-      localb = (b)this.hFr.get(0);
+      localb = (b)this.ktw.get(0);
       if ((paramString.equals(localb.userId)) && (localb.streamType == 0)) {
-        qP(1);
+        tE(1);
       }
     }
-    Object localObject = this.hFr.iterator();
+    Object localObject = this.ktw.iterator();
     while (((Iterator)localObject).hasNext())
     {
       localb = (b)((Iterator)localObject).next();
@@ -251,139 +231,810 @@ public class TRTCVideoLayoutManager
       {
         this.mCount -= 1;
         if ((this.mMode == 2) && (this.mCount == 4)) {
-          aFc();
+          aNt();
         }
-        paramString = localb.hFy;
+        paramString = localb.ktD;
         localObject = getContext();
         int i = getWidth();
         getHeight();
-        paramString.setLayoutParams(c.I((Context)localObject, i));
-        localb.hFy.setVisibility(8);
+        paramString.setLayoutParams(c.L((Context)localObject, i));
+        localb.ktD.setVisibility(8);
         localb.userId = "";
         localb.streamType = -1;
-        AppMethodBeat.o(196351);
+        AppMethodBeat.o(201046);
         return;
       }
     }
-    AppMethodBeat.o(196351);
+    AppMethodBeat.o(201046);
   }
   
-  public final void GJ(String paramString)
+  public final b NU(String paramString)
   {
-    AppMethodBeat.i(196360);
-    if ((paramString == null) || (paramString.length() <= 0))
-    {
-      AppMethodBeat.o(196360);
-      return;
-    }
-    new StringBuilder("halfCameraAndRemote selfUserId:").append(this.hFv).append(", userId:").append(paramString);
-    b localb = (b)getCameraContentView();
-    paramString = GI(paramString);
-    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)localb.getLayoutParams();
-    RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)paramString.hFy.getLayoutParams();
-    localLayoutParams1.width = (au.az(getContext()).x / 2);
-    localLayoutParams1.height = -1;
-    localLayoutParams1.setMarginStart(0);
-    localLayoutParams1.setMarginEnd(0);
-    localLayoutParams2.width = (au.az(getContext()).x / 2);
-    localLayoutParams2.height = -1;
-    localLayoutParams2.setMarginStart(localLayoutParams1.width);
-    localLayoutParams2.setMarginEnd(0);
-    localLayoutParams2.topMargin = 0;
-    localLayoutParams2.bottomMargin = 0;
-    localb.setLayoutParams(localLayoutParams1);
-    paramString.hFy.setLayoutParams(localLayoutParams2);
-    paramString.hFy.hFk = false;
-    paramString.hFy.setOnClickListener(null);
-    localb.hFk = false;
-    localb.setOnClickListener(null);
-    AppMethodBeat.o(196360);
-  }
-  
-  public final void GK(String paramString)
-  {
-    AppMethodBeat.i(196361);
-    if ((paramString == null) || (paramString.length() <= 0))
-    {
-      AppMethodBeat.o(196361);
-      return;
-    }
-    new StringBuilder("halfRemoteAndCamera selfUserId:").append(this.hFv).append(", userId:").append(paramString);
-    b localb = (b)getCameraContentView();
-    paramString = GI(paramString);
-    if (paramString == null) {
-      paramString = aFb();
-    }
-    for (;;)
-    {
-      RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)localb.getLayoutParams();
-      RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)paramString.hFy.getLayoutParams();
-      localLayoutParams2.width = (au.az(getContext()).x / 2);
-      localLayoutParams2.height = -1;
-      localLayoutParams2.topMargin = 0;
-      localLayoutParams2.bottomMargin = 0;
-      localLayoutParams2.setMarginStart(0);
-      localLayoutParams2.setMarginEnd(0);
-      localLayoutParams1.width = (au.az(getContext()).x / 2);
-      localLayoutParams1.height = -1;
-      localLayoutParams1.topMargin = 0;
-      localLayoutParams1.bottomMargin = 0;
-      localLayoutParams1.setMarginStart(localLayoutParams2.width);
-      localLayoutParams1.setMarginEnd(0);
-      localb.setLayoutParams(localLayoutParams1);
-      paramString.hFy.setLayoutParams(localLayoutParams2);
-      paramString.hFy.hFk = false;
-      paramString.hFy.setOnClickListener(null);
-      localb.hFk = false;
-      localb.setOnClickListener(null);
-      AppMethodBeat.o(196361);
-      return;
-    }
-  }
-  
-  public final TXCloudVideoView Y(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(196347);
+    AppMethodBeat.i(201021);
     if (paramString == null)
     {
-      AppMethodBeat.o(196347);
+      AppMethodBeat.o(201021);
       return null;
     }
-    Iterator localIterator = this.hFr.iterator();
+    Iterator localIterator = this.ktw.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if ((localb.hFy.mVideoView != null) && ((("".equals(localb.userId)) && (localb.streamType == -1)) || ((Util.isEqual(paramString, localb.userId)) && (localb.streamType == paramInt))))
+      if ((localb.streamType == 0) && (localb.userId.equals(paramString)))
       {
-        localb.userId = paramString;
-        localb.streamType = paramInt;
-        localb.hFy.setVisibility(0);
-        this.mCount += 1;
-        if ((this.mMode == 2) && (this.mCount == 5)) {
-          aFc();
-        }
-        localb.hFy.GF("");
-        paramString = localb.hFy.mVideoView;
-        AppMethodBeat.o(196347);
+        paramString = localb.ktD;
+        AppMethodBeat.o(201021);
         return paramString;
       }
     }
-    AppMethodBeat.o(196347);
+    AppMethodBeat.o(201021);
     return null;
   }
   
-  public final int Z(String paramString, int paramInt)
+  public final void a(String paramString1, String paramString2, List<String> paramList)
   {
-    AppMethodBeat.i(196365);
-    int i = 0;
-    if (i < this.hFr.size())
+    AppMethodBeat.i(201151);
+    if ((paramString1 == null) || (paramString1.length() <= 0) || (paramString2 == null) || (paramString2.length() <= 0) || (paramList == null) || (paramList.isEmpty()))
     {
-      b localb = (b)this.hFr.get(i);
-      if ((localb.hFy.mVideoView == null) || (!Util.isEqual(paramString, localb.userId)) || (localb.streamType != paramInt)) {}
+      Log.w(TAG, "relayoutVisitorPreview return by invalid value!");
+      AppMethodBeat.o(201151);
+      return;
+    }
+    Object localObject1 = paramList.iterator();
+    Object localObject2;
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (String)((Iterator)localObject1).next();
+      if ((!Util.isEqual((String)localObject2, paramString2)) && (NV((String)localObject2) == null)) {
+        aq((String)localObject2, 0);
+      }
+      Log.i(TAG, "checkVisitorRemoteView userId:".concat(String.valueOf(localObject2)));
+    }
+    switch (paramList.size())
+    {
     }
     for (;;)
     {
-      AppMethodBeat.o(196365);
+      requestLayout();
+      AppMethodBeat.o(201151);
+      return;
+      Log.i(TAG, "relayoutVisitorPreview only anchor view");
+      paramString1 = NV(paramString1);
+      if ((paramString1 != null) && (paramString1.ktD != null) && (paramString1.ktD.getLayoutParams() != null))
+      {
+        paramString2 = (RelativeLayout.LayoutParams)paramString1.ktD.getLayoutParams();
+        paramString2.width = ax.au(getContext()).x;
+        paramString2.height = ax.au(getContext()).y;
+        paramString2.setMarginStart(0);
+        paramString2.setMarginEnd(0);
+        paramString1.ktD.setLayoutParams(paramString2);
+        paramString1.ktD.bringToFront();
+        continue;
+        paramList = (String)paramList.get(1);
+        float f = c.aNu();
+        Log.i(TAG, "remoteAndCamera anchorUserId:" + paramString1 + " selfId:" + paramString2 + " userId:" + paramList + " ratio:" + f);
+        if ((paramList == null) || (paramList.length() == 0))
+        {
+          Log.w(TAG, "halfCameraAndRemote case2 return by invalid value!");
+        }
+        else
+        {
+          paramString1 = NV(paramString1);
+          if ((paramString1 != null) && (paramString1.ktD != null) && (paramString1.ktD.getLayoutParams() != null))
+          {
+            localObject1 = (RelativeLayout.LayoutParams)paramString1.ktD.getLayoutParams();
+            ((RelativeLayout.LayoutParams)localObject1).width = (ax.au(getContext()).x / 2);
+            ((RelativeLayout.LayoutParams)localObject1).height = ((int)(ax.au(getContext()).x / 2 * f));
+            ((RelativeLayout.LayoutParams)localObject1).setMarginStart(0);
+            ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(0);
+            ((RelativeLayout.LayoutParams)localObject1).topMargin = 0;
+            ((RelativeLayout.LayoutParams)localObject1).bottomMargin = 0;
+            paramString1.ktD.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+            paramString1.ktD.bringToFront();
+          }
+          if (Util.isEqual(paramString2, paramList))
+          {
+            paramString1 = (b)getCameraContentView();
+            if ((paramString1 != null) && (paramString1.getLayoutParams() != null))
+            {
+              paramString2 = (RelativeLayout.LayoutParams)paramString1.getLayoutParams();
+              paramString2.width = (ax.au(getContext()).x / 2);
+              paramString2.height = ((int)(f * (ax.au(getContext()).x / 2)));
+              paramString2.topMargin = 0;
+              paramString2.bottomMargin = 0;
+              paramString2.setMarginStart(paramString2.width);
+              paramString2.setMarginEnd(0);
+              paramString1.setLayoutParams(paramString2);
+              paramString1.ktp = false;
+              paramString1.setOnClickListener(null);
+              paramString1.bringToFront();
+            }
+          }
+          else
+          {
+            paramString1 = NV(paramList);
+            if ((paramString1 != null) && (paramString1.ktD != null) && (paramString1.ktD.getLayoutParams() != null))
+            {
+              paramString2 = (RelativeLayout.LayoutParams)paramString1.ktD.getLayoutParams();
+              paramString2.width = (ax.au(getContext()).x / 2);
+              paramString2.height = ((int)(f * (ax.au(getContext()).x / 2)));
+              paramString2.topMargin = 0;
+              paramString2.bottomMargin = 0;
+              paramString2.setMarginStart(paramString2.width);
+              paramString2.setMarginEnd(0);
+              paramString1.ktD.setLayoutParams(paramString2);
+              paramString1.ktD.ktp = false;
+              paramString1.ktD.setOnClickListener(null);
+              paramString1.ktD.bringToFront();
+              continue;
+              localObject1 = (String)paramList.get(1);
+              f = c.aNu();
+              Log.i(TAG, "remoteAnd2Camera anchorUserId:" + paramString1 + " selfId:" + paramString2 + " userId1:" + (String)localObject1 + " ratio:" + f);
+              label2209:
+              label2601:
+              if ((localObject1 == null) || (((String)localObject1).length() == 0))
+              {
+                Log.w(TAG, "halfCameraAndRemote case2 return by userId1 invalid value!");
+              }
+              else
+              {
+                localObject2 = NV(paramString1);
+                RelativeLayout.LayoutParams localLayoutParams;
+                if ((localObject2 != null) && (((b)localObject2).ktD != null) && (((b)localObject2).ktD.getLayoutParams() != null))
+                {
+                  localLayoutParams = (RelativeLayout.LayoutParams)((b)localObject2).ktD.getLayoutParams();
+                  localLayoutParams.width = (ax.au(getContext()).x / 2);
+                  localLayoutParams.height = ((int)(ax.au(getContext()).x / 2 * f));
+                  localLayoutParams.setMarginStart(0);
+                  localLayoutParams.setMarginEnd(0);
+                  localLayoutParams.topMargin = 0;
+                  localLayoutParams.bottomMargin = 0;
+                  ((b)localObject2).ktD.setLayoutParams(localLayoutParams);
+                  ((b)localObject2).ktD.bringToFront();
+                }
+                if (Util.isEqual(paramString2, (String)localObject1))
+                {
+                  localObject1 = (b)getCameraContentView();
+                  if ((localObject1 != null) && (((b)localObject1).getLayoutParams() != null))
+                  {
+                    localObject2 = (RelativeLayout.LayoutParams)((b)localObject1).getLayoutParams();
+                    ((RelativeLayout.LayoutParams)localObject2).width = (ax.au(getContext()).x / 2);
+                    ((RelativeLayout.LayoutParams)localObject2).height = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                    ((RelativeLayout.LayoutParams)localObject2).topMargin = 0;
+                    ((RelativeLayout.LayoutParams)localObject2).bottomMargin = 0;
+                    ((RelativeLayout.LayoutParams)localObject2).setMarginStart(((RelativeLayout.LayoutParams)localObject2).width);
+                    ((RelativeLayout.LayoutParams)localObject2).setMarginEnd(0);
+                    ((b)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+                    ((b)localObject1).ktp = false;
+                    ((b)localObject1).setOnClickListener(null);
+                    ((b)localObject1).bringToFront();
+                  }
+                }
+                for (;;)
+                {
+                  paramList = (String)paramList.get(2);
+                  Log.i(TAG, "remoteAnd2Camera anchorUserId:" + paramString1 + " selfId:" + paramString2 + " userId2:" + paramList);
+                  if ((paramList != null) && (paramList.length() != 0)) {
+                    break label1328;
+                  }
+                  Log.w(TAG, "halfCameraAndRemote case2 return by userId2 invalid value!");
+                  break;
+                  localObject1 = NV((String)localObject1);
+                  if ((localObject1 != null) && (((b)localObject1).ktD != null) && (((b)localObject1).ktD.getLayoutParams() != null))
+                  {
+                    localObject2 = (RelativeLayout.LayoutParams)((b)localObject1).ktD.getLayoutParams();
+                    ((RelativeLayout.LayoutParams)localObject2).width = (ax.au(getContext()).x / 2);
+                    ((RelativeLayout.LayoutParams)localObject2).height = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                    ((RelativeLayout.LayoutParams)localObject2).topMargin = 0;
+                    ((RelativeLayout.LayoutParams)localObject2).bottomMargin = 0;
+                    ((RelativeLayout.LayoutParams)localObject2).setMarginStart(((RelativeLayout.LayoutParams)localObject2).width);
+                    ((RelativeLayout.LayoutParams)localObject2).setMarginEnd(0);
+                    ((b)localObject1).ktD.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+                    ((b)localObject1).ktD.ktp = false;
+                    ((b)localObject1).ktD.setOnClickListener(null);
+                    ((b)localObject1).ktD.bringToFront();
+                  }
+                }
+                label1328:
+                if (Util.isEqual(paramString2, paramList))
+                {
+                  paramString1 = (b)getCameraContentView();
+                  if ((paramString1 != null) && (paramString1.getLayoutParams() != null))
+                  {
+                    paramString2 = (RelativeLayout.LayoutParams)paramString1.getLayoutParams();
+                    paramString2.width = (ax.au(getContext()).x / 2);
+                    paramString2.height = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                    paramString2.topMargin = ((int)(f * (ax.au(getContext()).x / 2)) / 2);
+                    paramString2.bottomMargin = 0;
+                    paramString2.setMarginStart(paramString2.width);
+                    paramString2.setMarginEnd(0);
+                    paramString1.setLayoutParams(paramString2);
+                    paramString1.ktp = false;
+                    paramString1.setOnClickListener(null);
+                    paramString1.bringToFront();
+                  }
+                }
+                else
+                {
+                  paramString1 = NV(paramList);
+                  if ((paramString1 != null) && (paramString1.ktD != null) && (paramString1.ktD.getLayoutParams() != null))
+                  {
+                    paramString2 = (RelativeLayout.LayoutParams)paramString1.ktD.getLayoutParams();
+                    paramString2.width = (ax.au(getContext()).x / 2);
+                    paramString2.height = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                    paramString2.topMargin = ((int)(f * (ax.au(getContext()).x / 2)) / 2);
+                    paramString2.bottomMargin = 0;
+                    paramString2.setMarginStart(paramString2.width);
+                    paramString2.setMarginEnd(0);
+                    paramString1.ktD.setLayoutParams(paramString2);
+                    paramString1.ktD.ktp = false;
+                    paramString1.ktD.setOnClickListener(null);
+                    paramString1.ktD.bringToFront();
+                    continue;
+                    localObject1 = (String)paramList.get(1);
+                    f = c.aNu();
+                    Log.i(TAG, "remoteAnd3Camera anchorUserId:" + paramString1 + " selfId:" + paramString2 + " userId1:" + (String)localObject1 + " ratio:" + f);
+                    if ((localObject1 == null) || (((String)localObject1).length() == 0))
+                    {
+                      Log.w(TAG, "halfCameraAndRemote case2 return by userId1 invalid value!");
+                    }
+                    else
+                    {
+                      localObject2 = NV(paramString1);
+                      if ((localObject2 != null) && (((b)localObject2).ktD != null) && (((b)localObject2).ktD.getLayoutParams() != null))
+                      {
+                        localLayoutParams = (RelativeLayout.LayoutParams)((b)localObject2).ktD.getLayoutParams();
+                        localLayoutParams.width = (ax.au(getContext()).x / 2);
+                        localLayoutParams.height = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                        localLayoutParams.setMarginStart(0);
+                        localLayoutParams.setMarginEnd(0);
+                        localLayoutParams.topMargin = 0;
+                        localLayoutParams.bottomMargin = 0;
+                        ((b)localObject2).ktD.setLayoutParams(localLayoutParams);
+                        ((b)localObject2).ktD.bringToFront();
+                      }
+                      if (Util.isEqual(paramString2, (String)localObject1))
+                      {
+                        localObject1 = (b)getCameraContentView();
+                        if ((localObject1 != null) && (((b)localObject1).getLayoutParams() != null))
+                        {
+                          localObject2 = (RelativeLayout.LayoutParams)((b)localObject1).getLayoutParams();
+                          ((RelativeLayout.LayoutParams)localObject2).width = (ax.au(getContext()).x / 2);
+                          ((RelativeLayout.LayoutParams)localObject2).height = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                          ((RelativeLayout.LayoutParams)localObject2).topMargin = 0;
+                          ((RelativeLayout.LayoutParams)localObject2).bottomMargin = 0;
+                          ((RelativeLayout.LayoutParams)localObject2).setMarginStart(((RelativeLayout.LayoutParams)localObject2).width);
+                          ((RelativeLayout.LayoutParams)localObject2).setMarginEnd(0);
+                          ((b)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+                          ((b)localObject1).ktp = false;
+                          ((b)localObject1).setOnClickListener(null);
+                          ((b)localObject1).bringToFront();
+                        }
+                      }
+                      for (;;)
+                      {
+                        localObject1 = (String)paramList.get(2);
+                        Log.i(TAG, "remoteAnd3Camera anchorUserId:" + paramString1 + " selfId:" + paramString2 + " userId2:" + (String)localObject1);
+                        if ((localObject1 != null) && (((String)localObject1).length() != 0)) {
+                          break label2209;
+                        }
+                        Log.w(TAG, "halfCameraAndRemote case2 return by userId2 invalid value!");
+                        break;
+                        localObject1 = NV((String)localObject1);
+                        if ((localObject1 != null) && (((b)localObject1).ktD != null) && (((b)localObject1).ktD.getLayoutParams() != null))
+                        {
+                          localObject2 = (RelativeLayout.LayoutParams)((b)localObject1).ktD.getLayoutParams();
+                          ((RelativeLayout.LayoutParams)localObject2).width = (ax.au(getContext()).x / 2);
+                          ((RelativeLayout.LayoutParams)localObject2).height = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                          ((RelativeLayout.LayoutParams)localObject2).topMargin = 0;
+                          ((RelativeLayout.LayoutParams)localObject2).bottomMargin = 0;
+                          ((RelativeLayout.LayoutParams)localObject2).setMarginStart(((RelativeLayout.LayoutParams)localObject2).width);
+                          ((RelativeLayout.LayoutParams)localObject2).setMarginEnd(0);
+                          ((b)localObject1).ktD.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+                          ((b)localObject1).ktD.ktp = false;
+                          ((b)localObject1).ktD.setOnClickListener(null);
+                          ((b)localObject1).ktD.bringToFront();
+                        }
+                      }
+                      if (Util.isEqual(paramString2, (String)localObject1))
+                      {
+                        localObject1 = (b)getCameraContentView();
+                        if ((localObject1 != null) && (((b)localObject1).getLayoutParams() != null))
+                        {
+                          localObject2 = (RelativeLayout.LayoutParams)((b)localObject1).getLayoutParams();
+                          ((RelativeLayout.LayoutParams)localObject2).width = (ax.au(getContext()).x / 2);
+                          ((RelativeLayout.LayoutParams)localObject2).height = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                          ((RelativeLayout.LayoutParams)localObject2).topMargin = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                          ((RelativeLayout.LayoutParams)localObject2).bottomMargin = 0;
+                          ((RelativeLayout.LayoutParams)localObject2).setMarginStart(0);
+                          ((RelativeLayout.LayoutParams)localObject2).setMarginEnd(0);
+                          ((b)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+                          ((b)localObject1).ktp = false;
+                          ((b)localObject1).setOnClickListener(null);
+                          ((b)localObject1).bringToFront();
+                        }
+                      }
+                      for (;;)
+                      {
+                        paramList = (String)paramList.get(3);
+                        Log.i(TAG, "remoteAnd3Camera anchorUserId:" + paramString1 + " selfId:" + paramString2 + " userId3:" + paramList);
+                        if ((paramList != null) && (paramList.length() != 0)) {
+                          break label2601;
+                        }
+                        Log.w(TAG, "halfCameraAndRemote case2 return by userId2 invalid value!");
+                        break;
+                        localObject1 = NV((String)localObject1);
+                        if ((localObject1 != null) && (((b)localObject1).ktD != null) && (((b)localObject1).ktD.getLayoutParams() != null))
+                        {
+                          localObject2 = (RelativeLayout.LayoutParams)((b)localObject1).ktD.getLayoutParams();
+                          ((RelativeLayout.LayoutParams)localObject2).width = (ax.au(getContext()).x / 2);
+                          ((RelativeLayout.LayoutParams)localObject2).height = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                          ((RelativeLayout.LayoutParams)localObject2).topMargin = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                          ((RelativeLayout.LayoutParams)localObject2).bottomMargin = 0;
+                          ((RelativeLayout.LayoutParams)localObject2).setMarginStart(0);
+                          ((RelativeLayout.LayoutParams)localObject2).setMarginEnd(0);
+                          ((b)localObject1).ktD.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+                          ((b)localObject1).ktD.ktp = false;
+                          ((b)localObject1).ktD.setOnClickListener(null);
+                          ((b)localObject1).ktD.bringToFront();
+                        }
+                      }
+                      if (Util.isEqual(paramString2, paramList))
+                      {
+                        paramString1 = (b)getCameraContentView();
+                        if ((paramString1 != null) && (paramString1.getLayoutParams() != null))
+                        {
+                          paramString2 = (RelativeLayout.LayoutParams)paramString1.getLayoutParams();
+                          paramString2.width = (ax.au(getContext()).x / 2);
+                          paramString2.height = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                          paramString2.topMargin = ((int)(f * (ax.au(getContext()).x / 2)) / 2);
+                          paramString2.bottomMargin = 0;
+                          paramString2.setMarginStart(ax.au(getContext()).x / 2);
+                          paramString2.setMarginEnd(0);
+                          paramString1.setLayoutParams(paramString2);
+                          paramString1.ktp = false;
+                          paramString1.setOnClickListener(null);
+                          paramString1.bringToFront();
+                        }
+                      }
+                      else
+                      {
+                        paramString1 = NV(paramList);
+                        if ((paramString1 != null) && (paramString1.ktD != null) && (paramString1.ktD.getLayoutParams() != null))
+                        {
+                          paramString2 = (RelativeLayout.LayoutParams)paramString1.ktD.getLayoutParams();
+                          paramString2.width = (ax.au(getContext()).x / 2);
+                          paramString2.height = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                          paramString2.topMargin = ((int)(f * (ax.au(getContext()).x / 2)) / 2);
+                          paramString2.bottomMargin = 0;
+                          paramString2.setMarginStart(ax.au(getContext()).x / 2);
+                          paramString2.setMarginEnd(0);
+                          paramString1.ktD.setLayoutParams(paramString2);
+                          paramString1.ktD.ktp = false;
+                          paramString1.ktD.setOnClickListener(null);
+                          paramString1.ktD.bringToFront();
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public final SurfaceView aNp()
+  {
+    AppMethodBeat.i(201036);
+    Object localObject = this.ktw.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      b localb = (b)((Iterator)localObject).next();
+      if (localb.ktD.ktd != null)
+      {
+        localb.userId = "";
+        localb.streamType = 0;
+        localb.ktD.setVisibility(0);
+        this.mCount += 1;
+        if ((this.mMode == 2) && (this.mCount == 5)) {
+          aNt();
+        }
+        localb.ktD.NT("");
+        localObject = localb.ktD.ktd;
+        AppMethodBeat.o(201036);
+        return localObject;
+      }
+    }
+    AppMethodBeat.o(201036);
+    return null;
+  }
+  
+  public final void aNq()
+  {
+    AppMethodBeat.i(201052);
+    Iterator localIterator = this.ktw.iterator();
+    while (localIterator.hasNext())
+    {
+      b localb = (b)localIterator.next();
+      if (localb.ktD.ktd != null)
+      {
+        if (localb.index == 0) {
+          tE(1);
+        }
+        this.mCount -= 1;
+        if ((this.mMode == 2) && (this.mCount == 4)) {
+          aNt();
+        }
+        b localb1 = localb.ktD;
+        Context localContext = getContext();
+        int i = getWidth();
+        getHeight();
+        localb1.setLayoutParams(c.L(localContext, i));
+        localb.ktD.setVisibility(8);
+        localb.userId = "";
+        localb.streamType = -1;
+      }
+    }
+    AppMethodBeat.o(201052);
+  }
+  
+  public final void aNr()
+  {
+    AppMethodBeat.i(201054);
+    Iterator localIterator = this.ktw.iterator();
+    while (localIterator.hasNext())
+    {
+      b localb = (b)localIterator.next();
+      if ((localb.ktD.mVideoView != null) && (localb.ktD.getParent() != null) && ((localb.ktD.getParent() instanceof ViewGroup)))
+      {
+        ViewGroup localViewGroup = (ViewGroup)localb.ktD.getParent();
+        localViewGroup.removeView(localb.ktD);
+        localViewGroup.addView(localb.ktD);
+      }
+    }
+    AppMethodBeat.o(201054);
+  }
+  
+  public final void aNs()
+  {
+    AppMethodBeat.i(201058);
+    Iterator localIterator = this.ktw.iterator();
+    while (localIterator.hasNext())
+    {
+      b localb = (b)localIterator.next();
+      if ((localb.ktD.ktd != null) && (localb.ktD.getParent() != null) && ((localb.ktD.getParent() instanceof ViewGroup)))
+      {
+        ViewGroup localViewGroup = (ViewGroup)localb.ktD.getParent();
+        localViewGroup.removeView(localb.ktD);
+        localViewGroup.addView(localb.ktD);
+      }
+    }
+    AppMethodBeat.o(201058);
+  }
+  
+  public final void ad(List<String> paramList)
+  {
+    AppMethodBeat.i(201115);
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      Log.w(TAG, "halfCameraAndRemote return by invalid value!");
+      AppMethodBeat.o(201115);
+      return;
+    }
+    int i = 0;
+    Object localObject1;
+    while (i < paramList.size())
+    {
+      localObject1 = (String)paramList.get(i);
+      if ((i != 0) && (NV((String)localObject1) == null)) {
+        aq((String)localObject1, 0);
+      }
+      Log.i(TAG, "checkAnchorRemoteView userId:" + (String)localObject1 + " i:" + i);
+      i += 1;
+    }
+    switch (paramList.size())
+    {
+    }
+    for (;;)
+    {
+      requestLayout();
+      AppMethodBeat.o(201115);
+      return;
+      paramList = (b)getCameraContentView();
+      if ((paramList != null) && (paramList.getLayoutParams() != null))
+      {
+        localObject1 = (RelativeLayout.LayoutParams)paramList.getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject1).width = -1;
+        ((RelativeLayout.LayoutParams)localObject1).height = -1;
+        ((RelativeLayout.LayoutParams)localObject1).setMarginStart(0);
+        ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(0);
+        paramList.bringToFront();
+        paramList.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        paramList.ktp = false;
+        paramList.setOnClickListener(null);
+        i = 0;
+        while (i < this.ktw.size())
+        {
+          paramList = (b)this.ktw.get(i);
+          if (paramList != null)
+          {
+            localObject1 = (RelativeLayout.LayoutParams)paramList.ktD.getLayoutParams();
+            if (localObject1 != null)
+            {
+              ((RelativeLayout.LayoutParams)localObject1).width = -1;
+              ((RelativeLayout.LayoutParams)localObject1).height = -1;
+              ((RelativeLayout.LayoutParams)localObject1).setMarginStart(0);
+              ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(0);
+              paramList.ktD.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+            }
+          }
+          i += 1;
+        }
+        paramList = (String)paramList.get(1);
+        float f = c.aNu();
+        Log.i(TAG, "cameraAndRemote userId:" + paramList + " ratio:" + f);
+        if ((paramList == null) || (paramList.length() == 0))
+        {
+          Log.w(TAG, "halfCameraAndRemote case2 return by invalid value!");
+        }
+        else
+        {
+          localObject1 = (b)getCameraContentView();
+          Object localObject2;
+          if ((localObject1 != null) && (((b)localObject1).getLayoutParams() != null))
+          {
+            localObject2 = (RelativeLayout.LayoutParams)((b)localObject1).getLayoutParams();
+            ((RelativeLayout.LayoutParams)localObject2).width = (ax.au(getContext()).x / 2);
+            ((RelativeLayout.LayoutParams)localObject2).height = ((int)(ax.au(getContext()).x / 2 * f));
+            ((RelativeLayout.LayoutParams)localObject2).setMarginStart(0);
+            ((RelativeLayout.LayoutParams)localObject2).setMarginEnd(0);
+            ((b)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+            ((b)localObject1).ktp = false;
+            ((b)localObject1).setOnClickListener(null);
+            ((b)localObject1).bringToFront();
+          }
+          paramList = NV(paramList);
+          if ((paramList != null) && (paramList.ktD != null) && (paramList.ktD.getLayoutParams() != null))
+          {
+            localObject1 = (RelativeLayout.LayoutParams)paramList.ktD.getLayoutParams();
+            ((RelativeLayout.LayoutParams)localObject1).width = (ax.au(getContext()).x / 2);
+            ((RelativeLayout.LayoutParams)localObject1).height = ((int)(ax.au(getContext()).x / 2 * f));
+            ((RelativeLayout.LayoutParams)localObject1).setMarginStart(ax.au(getContext()).x / 2);
+            ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(0);
+            ((RelativeLayout.LayoutParams)localObject1).topMargin = 0;
+            ((RelativeLayout.LayoutParams)localObject1).bottomMargin = 0;
+            paramList.ktD.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+            paramList.ktD.ktp = false;
+            paramList.ktD.setOnClickListener(null);
+            paramList.ktD.bringToFront();
+            continue;
+            localObject1 = (String)paramList.get(1);
+            f = c.aNu();
+            Log.i(TAG, "cameraAnd2Remote userId1:" + (String)localObject1 + " ratio:" + f);
+            if ((localObject1 == null) || (((String)localObject1).length() == 0))
+            {
+              Log.w(TAG, "halfCameraAndRemote case3 return by userId1 invalid value!");
+            }
+            else
+            {
+              localObject2 = (b)getCameraContentView();
+              RelativeLayout.LayoutParams localLayoutParams;
+              if ((localObject2 != null) && (((b)localObject2).getLayoutParams() != null))
+              {
+                localLayoutParams = (RelativeLayout.LayoutParams)((b)localObject2).getLayoutParams();
+                localLayoutParams.width = (ax.au(getContext()).x / 2);
+                localLayoutParams.height = ((int)(ax.au(getContext()).x / 2 * f));
+                localLayoutParams.setMarginStart(0);
+                localLayoutParams.setMarginEnd(0);
+                ((b)localObject2).setLayoutParams(localLayoutParams);
+                ((b)localObject2).ktp = false;
+                ((b)localObject2).setOnClickListener(null);
+                ((b)localObject2).bringToFront();
+              }
+              localObject1 = NV((String)localObject1);
+              if ((localObject1 != null) && (((b)localObject1).ktD != null) && (((b)localObject1).ktD.getLayoutParams() != null))
+              {
+                localObject2 = (RelativeLayout.LayoutParams)((b)localObject1).ktD.getLayoutParams();
+                ((RelativeLayout.LayoutParams)localObject2).width = (ax.au(getContext()).x / 2);
+                ((RelativeLayout.LayoutParams)localObject2).height = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                ((RelativeLayout.LayoutParams)localObject2).setMarginStart(ax.au(getContext()).x / 2);
+                ((RelativeLayout.LayoutParams)localObject2).setMarginEnd(0);
+                ((RelativeLayout.LayoutParams)localObject2).topMargin = 0;
+                ((RelativeLayout.LayoutParams)localObject2).bottomMargin = 0;
+                ((b)localObject1).ktD.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+                ((b)localObject1).ktD.ktp = false;
+                ((b)localObject1).ktD.setOnClickListener(null);
+                ((b)localObject1).ktD.bringToFront();
+              }
+              paramList = (String)paramList.get(2);
+              Log.i(TAG, "cameraAnd2Remote userId2:".concat(String.valueOf(paramList)));
+              if ((paramList == null) || (paramList.length() == 0))
+              {
+                Log.w(TAG, "halfCameraAndRemote case3 return by userId1 invalid value!");
+              }
+              else
+              {
+                paramList = NV(paramList);
+                if ((paramList != null) && (paramList.ktD != null) && (paramList.ktD.getLayoutParams() != null))
+                {
+                  localObject1 = (RelativeLayout.LayoutParams)paramList.ktD.getLayoutParams();
+                  ((RelativeLayout.LayoutParams)localObject1).width = (ax.au(getContext()).x / 2);
+                  ((RelativeLayout.LayoutParams)localObject1).height = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                  ((RelativeLayout.LayoutParams)localObject1).setMarginStart(ax.au(getContext()).x / 2);
+                  ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(0);
+                  ((RelativeLayout.LayoutParams)localObject1).topMargin = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                  ((RelativeLayout.LayoutParams)localObject1).bottomMargin = 0;
+                  paramList.ktD.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+                  paramList.ktD.ktp = false;
+                  paramList.ktD.setOnClickListener(null);
+                  paramList.ktD.bringToFront();
+                  continue;
+                  localObject1 = (String)paramList.get(1);
+                  f = c.aNu();
+                  Log.i(TAG, "cameraAnd3Remote userId1:" + (String)localObject1 + " ratio:" + f);
+                  if ((localObject1 == null) || (((String)localObject1).length() == 0))
+                  {
+                    Log.w(TAG, "halfCameraAndRemote case3 return by userId1 invalid value!");
+                  }
+                  else
+                  {
+                    localObject2 = (b)getCameraContentView();
+                    if ((localObject2 != null) && (((b)localObject2).getLayoutParams() != null))
+                    {
+                      localLayoutParams = (RelativeLayout.LayoutParams)((b)localObject2).getLayoutParams();
+                      localLayoutParams.width = (ax.au(getContext()).x / 2);
+                      localLayoutParams.height = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                      localLayoutParams.setMarginStart(0);
+                      localLayoutParams.setMarginEnd(0);
+                      ((b)localObject2).setLayoutParams(localLayoutParams);
+                      ((b)localObject2).ktp = false;
+                      ((b)localObject2).setOnClickListener(null);
+                      ((b)localObject2).bringToFront();
+                    }
+                    localObject1 = NV((String)localObject1);
+                    if ((localObject1 != null) && (((b)localObject1).ktD != null) && (((b)localObject1).ktD.getLayoutParams() != null))
+                    {
+                      localObject2 = (RelativeLayout.LayoutParams)((b)localObject1).ktD.getLayoutParams();
+                      ((RelativeLayout.LayoutParams)localObject2).width = (ax.au(getContext()).x / 2);
+                      ((RelativeLayout.LayoutParams)localObject2).height = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                      ((RelativeLayout.LayoutParams)localObject2).setMarginStart(ax.au(getContext()).x / 2);
+                      ((RelativeLayout.LayoutParams)localObject2).setMarginEnd(0);
+                      ((RelativeLayout.LayoutParams)localObject2).topMargin = 0;
+                      ((RelativeLayout.LayoutParams)localObject2).bottomMargin = 0;
+                      ((b)localObject1).ktD.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+                      ((b)localObject1).ktD.ktp = false;
+                      ((b)localObject1).ktD.setOnClickListener(null);
+                      ((b)localObject1).ktD.bringToFront();
+                    }
+                    for (;;)
+                    {
+                      localObject1 = (String)paramList.get(2);
+                      Log.i(TAG, "cameraAnd3Remote userId2:".concat(String.valueOf(localObject1)));
+                      if ((localObject1 != null) && (((String)localObject1).length() != 0)) {
+                        break label1642;
+                      }
+                      Log.w(TAG, "halfCameraAndRemote case3 return by userId2 invalid value!");
+                      break;
+                      if ((BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED) || (CrashReportFactory.hasDebuger())) {
+                        w.makeText(MMApplicationContext.getContext(), "pkEntity1 is nul", 0).show();
+                      }
+                      Log.e(TAG, "pkEntity1 is null");
+                    }
+                    label1642:
+                    localObject1 = NV((String)localObject1);
+                    if ((localObject1 != null) && (((b)localObject1).ktD != null) && (((b)localObject1).ktD.getLayoutParams() != null))
+                    {
+                      localObject2 = (RelativeLayout.LayoutParams)((b)localObject1).ktD.getLayoutParams();
+                      ((RelativeLayout.LayoutParams)localObject2).width = (ax.au(getContext()).x / 2);
+                      ((RelativeLayout.LayoutParams)localObject2).height = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                      ((RelativeLayout.LayoutParams)localObject2).setMarginStart(0);
+                      ((RelativeLayout.LayoutParams)localObject2).setMarginEnd(0);
+                      ((RelativeLayout.LayoutParams)localObject2).topMargin = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                      ((RelativeLayout.LayoutParams)localObject2).bottomMargin = 0;
+                      ((b)localObject1).ktD.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+                      ((b)localObject1).ktD.ktp = false;
+                      ((b)localObject1).ktD.setOnClickListener(null);
+                      ((b)localObject1).ktD.bringToFront();
+                    }
+                    for (;;)
+                    {
+                      paramList = (String)paramList.get(3);
+                      Log.i(TAG, "cameraAnd3Remote userId3:".concat(String.valueOf(paramList)));
+                      if ((paramList != null) && (paramList.length() != 0)) {
+                        break label1897;
+                      }
+                      Log.w(TAG, "halfCameraAndRemote case4 return by userId3 invalid value!");
+                      break;
+                      if ((BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED) || (CrashReportFactory.hasDebuger())) {
+                        w.makeText(MMApplicationContext.getContext(), "pkEntity2 is nul", 0).show();
+                      }
+                      Log.e(TAG, "pkEntity2 is null");
+                    }
+                    label1897:
+                    paramList = NV(paramList);
+                    if ((paramList != null) && (paramList.ktD != null) && (paramList.ktD.getLayoutParams() != null))
+                    {
+                      localObject1 = (RelativeLayout.LayoutParams)paramList.ktD.getLayoutParams();
+                      ((RelativeLayout.LayoutParams)localObject1).width = (ax.au(getContext()).x / 2);
+                      ((RelativeLayout.LayoutParams)localObject1).height = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                      ((RelativeLayout.LayoutParams)localObject1).setMarginStart(ax.au(getContext()).x / 2);
+                      ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(0);
+                      ((RelativeLayout.LayoutParams)localObject1).topMargin = ((int)(ax.au(getContext()).x / 2 * f) / 2);
+                      ((RelativeLayout.LayoutParams)localObject1).bottomMargin = 0;
+                      paramList.ktD.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+                      paramList.ktD.ktp = false;
+                      paramList.ktD.setOnClickListener(null);
+                      paramList.ktD.bringToFront();
+                    }
+                    else
+                    {
+                      if ((BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED) || (CrashReportFactory.hasDebuger())) {
+                        w.makeText(MMApplicationContext.getContext(), "pkEntity3 is nul", 0).show();
+                      }
+                      Log.e(TAG, "pkEntity3 is null");
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public final TXCloudVideoView aq(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(201032);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(201032);
+      return null;
+    }
+    Iterator localIterator = this.ktw.iterator();
+    while (localIterator.hasNext())
+    {
+      b localb = (b)localIterator.next();
+      if ((localb.ktD.mVideoView != null) && ((("".equals(localb.userId)) && (localb.streamType == -1)) || ((Util.isEqual(paramString, localb.userId)) && (localb.streamType == paramInt))))
+      {
+        localb.userId = paramString;
+        localb.streamType = paramInt;
+        localb.ktD.setVisibility(0);
+        this.mCount += 1;
+        if ((this.mMode == 2) && (this.mCount == 5)) {
+          aNt();
+        }
+        localb.ktD.NT("");
+        paramString = localb.ktD.mVideoView;
+        AppMethodBeat.o(201032);
+        return paramString;
+      }
+    }
+    if ((BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED) || (CrashReportFactory.hasDebuger()))
+    {
+      Log.printInfoStack(TAG, "allocCloudVideoView userId ".concat(String.valueOf(paramString)), new Object[0]);
+      w.makeText(MMApplicationContext.getContext(), "allocCloudVideoView userId ".concat(String.valueOf(paramString)), 0).show();
+    }
+    Log.e(TAG, "allocCloudVideoView userId ".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(201032);
+    return null;
+  }
+  
+  public final int ar(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(201155);
+    int i = 0;
+    if (i < this.ktw.size())
+    {
+      b localb = (b)this.ktw.get(i);
+      if ((localb.ktD.mVideoView == null) || (!Util.isEqual(paramString, localb.userId)) || (localb.streamType != paramInt)) {}
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(201155);
       return i;
       i += 1;
       break;
@@ -391,428 +1042,277 @@ public class TRTCVideoLayoutManager
     }
   }
   
-  public final SurfaceView aEX()
-  {
-    AppMethodBeat.i(196348);
-    Object localObject = this.hFr.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      b localb = (b)((Iterator)localObject).next();
-      if (localb.hFy.hEY != null)
-      {
-        localb.userId = "";
-        localb.streamType = 0;
-        localb.hFy.setVisibility(0);
-        this.mCount += 1;
-        if ((this.mMode == 2) && (this.mCount == 5)) {
-          aFc();
-        }
-        localb.hFy.GF("");
-        localObject = localb.hFy.hEY;
-        AppMethodBeat.o(196348);
-        return localObject;
-      }
-    }
-    AppMethodBeat.o(196348);
-    return null;
-  }
-  
-  public final void aEY()
-  {
-    AppMethodBeat.i(196352);
-    Iterator localIterator = this.hFr.iterator();
-    while (localIterator.hasNext())
-    {
-      b localb = (b)localIterator.next();
-      if (localb.hFy.hEY != null)
-      {
-        if (localb.index == 0) {
-          qP(1);
-        }
-        this.mCount -= 1;
-        if ((this.mMode == 2) && (this.mCount == 4)) {
-          aFc();
-        }
-        b localb1 = localb.hFy;
-        Context localContext = getContext();
-        int i = getWidth();
-        getHeight();
-        localb1.setLayoutParams(c.I(localContext, i));
-        localb.hFy.setVisibility(8);
-        localb.userId = "";
-        localb.streamType = -1;
-      }
-    }
-    AppMethodBeat.o(196352);
-  }
-  
-  public final void aEZ()
-  {
-    AppMethodBeat.i(196353);
-    Iterator localIterator = this.hFr.iterator();
-    while (localIterator.hasNext())
-    {
-      b localb = (b)localIterator.next();
-      if ((localb.hFy.mVideoView != null) && (localb.hFy.getParent() != null) && ((localb.hFy.getParent() instanceof ViewGroup)))
-      {
-        ViewGroup localViewGroup = (ViewGroup)localb.hFy.getParent();
-        localViewGroup.removeView(localb.hFy);
-        localViewGroup.addView(localb.hFy);
-      }
-    }
-    AppMethodBeat.o(196353);
-  }
-  
-  public final void aFa()
-  {
-    AppMethodBeat.i(196354);
-    Iterator localIterator = this.hFr.iterator();
-    while (localIterator.hasNext())
-    {
-      b localb = (b)localIterator.next();
-      if ((localb.hFy.hEY != null) && (localb.hFy.getParent() != null) && ((localb.hFy.getParent() instanceof ViewGroup)))
-      {
-        ViewGroup localViewGroup = (ViewGroup)localb.hFy.getParent();
-        localViewGroup.removeView(localb.hFy);
-        localViewGroup.addView(localb.hFy);
-      }
-    }
-    AppMethodBeat.o(196354);
-  }
-  
-  public final void aFd()
-  {
-    AppMethodBeat.i(196363);
-    Object localObject = (b)getCameraContentView();
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((b)localObject).getLayoutParams();
-    localLayoutParams.width = -1;
-    localLayoutParams.height = -1;
-    localLayoutParams.setMarginStart(0);
-    localLayoutParams.setMarginEnd(0);
-    ((b)localObject).setLayoutParams(localLayoutParams);
-    ((b)localObject).hFk = false;
-    ((b)localObject).setOnClickListener(null);
-    int i = 0;
-    while (i < this.hFr.size())
-    {
-      localObject = (b)this.hFr.get(i);
-      if (localObject != null)
-      {
-        localLayoutParams = (RelativeLayout.LayoutParams)((b)localObject).hFy.getLayoutParams();
-        if (localLayoutParams != null)
-        {
-          localLayoutParams.width = -1;
-          localLayoutParams.height = -1;
-          localLayoutParams.setMarginStart(0);
-          localLayoutParams.setMarginEnd(0);
-          ((b)localObject).hFy.setLayoutParams(localLayoutParams);
-        }
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(196363);
-  }
-  
-  public final void av(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(196362);
-    if ((paramString1 == null) || (paramString1.length() <= 0) || (paramString2 == null) || (paramString2.length() <= 0))
-    {
-      AppMethodBeat.o(196362);
-      return;
-    }
-    new StringBuilder("halfRemoteAndRemote selfUserId:").append(this.hFv).append(", userId:").append(paramString2);
-    paramString1 = GI(paramString1);
-    paramString2 = GI(paramString2);
-    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)paramString1.hFy.getLayoutParams();
-    RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)paramString2.hFy.getLayoutParams();
-    localLayoutParams1.width = (au.az(getContext()).x / 2);
-    localLayoutParams1.height = -1;
-    localLayoutParams1.setMarginStart(0);
-    localLayoutParams1.setMarginEnd(0);
-    localLayoutParams2.width = (au.az(getContext()).x / 2);
-    localLayoutParams2.height = -1;
-    localLayoutParams2.topMargin = 0;
-    localLayoutParams2.bottomMargin = 0;
-    localLayoutParams2.setMarginStart(localLayoutParams2.width);
-    localLayoutParams2.setMarginEnd(0);
-    paramString1.hFy.setLayoutParams(localLayoutParams1);
-    paramString2.hFy.setLayoutParams(localLayoutParams2);
-    paramString2.hFy.hFk = false;
-    paramString2.hFy.setOnClickListener(null);
-    AppMethodBeat.o(196362);
-  }
-  
   public final void c(int paramInt1, String paramString, int paramInt2)
   {
-    AppMethodBeat.i(196367);
+    AppMethodBeat.i(201160);
     int i = 1;
-    if (i < this.hFr.size())
+    if (i < this.ktw.size())
     {
-      b localb = (b)this.hFr.get(i);
-      if ((localb.hFy != null) && (Util.isEqual(localb.userId, paramString)) && (localb.streamType == paramInt2))
+      b localb = (b)this.ktw.get(i);
+      if ((localb.ktD != null) && (Util.isEqual(localb.userId, paramString)) && (localb.streamType == paramInt2))
       {
         if (paramInt1 != 1) {
-          break label97;
+          break label101;
         }
-        localb.hFy.setLayoutParams(c.H(getContext(), getWidth()));
+        localb.ktD.setLayoutParams(c.K(getContext(), getWidth()));
       }
       for (;;)
       {
         i += 1;
         break;
-        label97:
+        label101:
         if (paramInt1 == 2) {
-          localb.hFy.setLayoutParams(c.G(getContext(), getWidth()));
+          localb.ktD.setLayoutParams(c.J(getContext(), getWidth()));
         }
       }
     }
-    AppMethodBeat.o(196367);
+    AppMethodBeat.o(201160);
   }
   
   public final void g(b paramb)
   {
-    AppMethodBeat.i(196341);
-    if (this.hAW != null) {}
-    for (a locala = (a)this.hAW.get();; locala = null)
+    AppMethodBeat.i(201006);
+    if (this.koF != null) {}
+    for (a locala = (a)this.koF.get();; locala = null)
     {
       if (locala != null) {
         k(paramb);
       }
-      AppMethodBeat.o(196341);
+      AppMethodBeat.o(201006);
       return;
     }
   }
   
   public RelativeLayout getCameraContentView()
   {
-    AppMethodBeat.i(196364);
+    AppMethodBeat.i(201154);
     int i = 0;
-    while (i < this.hFr.size())
+    while (i < this.ktw.size())
     {
-      Object localObject = (b)this.hFr.get(i);
-      if (((b)localObject).hFy.hEY != null)
+      Object localObject = (b)this.ktw.get(i);
+      if (((b)localObject).ktD.ktd != null)
       {
-        localObject = ((b)localObject).hFy;
-        AppMethodBeat.o(196364);
+        localObject = ((b)localObject).ktD;
+        AppMethodBeat.o(201154);
         return localObject;
       }
       i += 1;
     }
-    AppMethodBeat.o(196364);
+    AppMethodBeat.o(201154);
     return null;
   }
   
   public int getCameraViewHeight()
   {
-    AppMethodBeat.i(196350);
-    Iterator localIterator = this.hFr.iterator();
+    AppMethodBeat.i(201042);
+    Iterator localIterator = this.ktw.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (localb.hFy.hEY != null)
+      if (localb.ktD.ktd != null)
       {
-        if (localb.hFy.getLayoutParams() == null)
+        if (localb.ktD.getLayoutParams() == null)
         {
-          AppMethodBeat.o(196350);
+          AppMethodBeat.o(201042);
           return -1;
         }
-        int i = localb.hFy.getLayoutParams().height;
-        AppMethodBeat.o(196350);
+        int i = localb.ktD.getLayoutParams().height;
+        AppMethodBeat.o(201042);
         return i;
       }
     }
-    AppMethodBeat.o(196350);
+    AppMethodBeat.o(201042);
     return -1;
   }
   
   public int getCameraViewWidth()
   {
-    AppMethodBeat.i(196349);
-    Iterator localIterator = this.hFr.iterator();
+    AppMethodBeat.i(201040);
+    Iterator localIterator = this.ktw.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (localb.hFy.hEY != null)
+      if (localb.ktD.ktd != null)
       {
-        if (localb.hFy.getLayoutParams() == null)
+        if (localb.ktD.getLayoutParams() == null)
         {
-          AppMethodBeat.o(196349);
+          AppMethodBeat.o(201040);
           return -1;
         }
-        int i = localb.hFy.getLayoutParams().width;
-        AppMethodBeat.o(196349);
+        int i = localb.ktD.getLayoutParams().width;
+        AppMethodBeat.o(201040);
         return i;
       }
     }
-    AppMethodBeat.o(196349);
+    AppMethodBeat.o(201040);
     return -1;
   }
   
   public int getRemoteViewIndex()
   {
-    AppMethodBeat.i(196368);
+    AppMethodBeat.i(201163);
     int i = 0;
-    while (i < this.hFr.size())
+    while (i < this.ktw.size())
     {
-      if (((b)this.hFr.get(i)).hFy.mVideoView != null)
+      if (((b)this.ktw.get(i)).ktD.mVideoView != null)
       {
-        AppMethodBeat.o(196368);
+        AppMethodBeat.o(201163);
         return i;
       }
       i += 1;
     }
-    AppMethodBeat.o(196368);
+    AppMethodBeat.o(201163);
     return 0;
   }
   
   public final void h(b paramb)
   {
-    AppMethodBeat.i(196342);
-    if (this.hAW != null) {}
-    for (a locala = (a)this.hAW.get();; locala = null)
+    AppMethodBeat.i(201008);
+    if (this.koF != null) {}
+    for (a locala = (a)this.koF.get();; locala = null)
     {
       if (locala != null) {
         k(paramb);
       }
-      AppMethodBeat.o(196342);
+      AppMethodBeat.o(201008);
       return;
     }
   }
   
   public final void i(b paramb)
   {
-    AppMethodBeat.i(196343);
-    if (this.hAW != null) {}
-    for (a locala = (a)this.hAW.get();; locala = null)
+    AppMethodBeat.i(201011);
+    if (this.koF != null) {}
+    for (a locala = (a)this.koF.get();; locala = null)
     {
       if (locala != null) {
         k(paramb);
       }
-      AppMethodBeat.o(196343);
+      AppMethodBeat.o(201011);
       return;
     }
   }
   
   public final void j(b paramb)
   {
-    AppMethodBeat.i(196344);
-    if (this.hAW != null) {}
-    for (a locala = (a)this.hAW.get();; locala = null)
+    AppMethodBeat.i(201013);
+    if (this.koF != null) {}
+    for (a locala = (a)this.koF.get();; locala = null)
     {
       if (locala != null) {
         k(paramb);
       }
-      AppMethodBeat.o(196344);
+      AppMethodBeat.o(201013);
       return;
     }
   }
   
-  public final void qP(int paramInt)
+  public void setGestureListener(b.a parama)
   {
-    AppMethodBeat.i(196359);
-    if ((paramInt <= 0) || (this.hFr.size() <= paramInt))
+    AppMethodBeat.i(201167);
+    int i = 0;
+    while (i < this.ktw.size())
     {
-      AppMethodBeat.o(196359);
+      ((b)this.ktw.get(i)).ktD.kts = parama;
+      i += 1;
+    }
+    AppMethodBeat.o(201167);
+  }
+  
+  public void setIVideoLayoutListener(a parama)
+  {
+    AppMethodBeat.i(201016);
+    if (parama == null)
+    {
+      this.koF = null;
+      AppMethodBeat.o(201016);
       return;
     }
-    b localb1 = (b)this.hFr.get(paramInt);
-    ViewGroup.LayoutParams localLayoutParams1 = localb1.hFy.getLayoutParams();
-    b localb2 = (b)this.hFr.get(0);
-    ViewGroup.LayoutParams localLayoutParams2 = localb2.hFy.getLayoutParams();
-    localb1.hFy.setLayoutParams(localLayoutParams2);
-    localb1.index = 0;
-    localb2.hFy.setLayoutParams(localLayoutParams1);
-    localb2.index = paramInt;
-    localb1.hFy.hFk = false;
-    localb1.hFy.setOnClickListener(null);
-    localb2.hFy.hFk = true;
-    this.hFr.set(0, localb1);
-    this.hFr.set(paramInt, localb2);
-    paramInt = 0;
-    while (paramInt < this.hFr.size())
+    this.koF = new WeakReference(parama);
+    AppMethodBeat.o(201016);
+  }
+  
+  public void setMySelfUserId(String paramString)
+  {
+    this.ktA = paramString;
+  }
+  
+  public void setPkUserId(String paramString)
+  {
+    this.ktB = paramString;
+  }
+  
+  public final void tE(int paramInt)
+  {
+    AppMethodBeat.i(201076);
+    if ((paramInt <= 0) || (this.ktw.size() <= paramInt))
     {
-      bringChildToFront(((b)this.hFr.get(paramInt)).hFy);
+      AppMethodBeat.o(201076);
+      return;
+    }
+    Log.i(TAG, "makeFullVideoView: from = ".concat(String.valueOf(paramInt)));
+    b localb1 = (b)this.ktw.get(paramInt);
+    ViewGroup.LayoutParams localLayoutParams1 = localb1.ktD.getLayoutParams();
+    b localb2 = (b)this.ktw.get(0);
+    ViewGroup.LayoutParams localLayoutParams2 = localb2.ktD.getLayoutParams();
+    localb1.ktD.setLayoutParams(localLayoutParams2);
+    localb1.index = 0;
+    localb2.ktD.setLayoutParams(localLayoutParams1);
+    localb2.index = paramInt;
+    localb1.ktD.ktp = false;
+    localb1.ktD.setOnClickListener(null);
+    localb2.ktD.ktp = true;
+    this.ktw.set(0, localb1);
+    this.ktw.set(paramInt, localb2);
+    paramInt = 0;
+    while (paramInt < this.ktw.size())
+    {
+      bringChildToFront(((b)this.ktw.get(paramInt)).ktD);
       paramInt += 1;
     }
-    AppMethodBeat.o(196359);
+    AppMethodBeat.o(201076);
   }
   
-  public final void qQ(int paramInt)
+  public final void tF(int paramInt)
   {
-    AppMethodBeat.i(196366);
+    AppMethodBeat.i(201157);
     int i = 1;
-    if (i < this.hFr.size())
+    if (i < this.ktw.size())
     {
-      b localb = (b)this.hFr.get(i);
-      if ((localb.hFy != null) && (localb.hFy.hEY != null))
+      b localb = (b)this.ktw.get(i);
+      if ((localb.ktD != null) && (localb.ktD.ktd != null))
       {
         if (paramInt != 1) {
-          break label78;
+          break label82;
         }
-        localb.hFy.setLayoutParams(c.H(getContext(), getWidth()));
+        localb.ktD.setLayoutParams(c.K(getContext(), getWidth()));
       }
       for (;;)
       {
         i += 1;
         break;
-        label78:
+        label82:
         if (paramInt == 2) {
-          localb.hFy.setLayoutParams(c.G(getContext(), getWidth()));
+          localb.ktD.setLayoutParams(c.J(getContext(), getWidth()));
         }
       }
     }
-    AppMethodBeat.o(196366);
-  }
-  
-  public void setGestureListener(b.a parama)
-  {
-    AppMethodBeat.i(196369);
-    int i = 0;
-    while (i < this.hFr.size())
-    {
-      ((b)this.hFr.get(i)).hFy.hFn = parama;
-      i += 1;
-    }
-    AppMethodBeat.o(196369);
-  }
-  
-  public void setIVideoLayoutListener(a parama)
-  {
-    AppMethodBeat.i(196345);
-    if (parama == null)
-    {
-      this.hAW = null;
-      AppMethodBeat.o(196345);
-      return;
-    }
-    this.hAW = new WeakReference(parama);
-    AppMethodBeat.o(196345);
-  }
-  
-  public void setMySelfUserId(String paramString)
-  {
-    this.hFv = paramString;
-  }
-  
-  public void setPkUserId(String paramString)
-  {
-    this.hFw = paramString;
+    AppMethodBeat.o(201157);
   }
   
   public static abstract interface a {}
   
   static final class b
   {
-    public b hFy;
     public int index = -1;
+    public b ktD;
     public int streamType = -1;
     public String userId = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.core.view.TRTCVideoLayoutManager
  * JD-Core Version:    0.7.0.1
  */

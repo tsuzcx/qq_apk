@@ -6,7 +6,7 @@ public abstract interface IMediaHTTPService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.network.IMediaHTTPService
  * JD-Core Version:    0.7.0.1
  */

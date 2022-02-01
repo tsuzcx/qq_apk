@@ -5,165 +5,165 @@ import java.util.ArrayList;
 
 public final class a
 {
-  a.c KhA;
-  a.c KhB;
-  a.c KhC;
-  a.c KhD;
-  a.c KhE;
-  public a.c KhF;
-  a.c KhG;
-  a.c KhH;
-  public a.c KhI;
-  private a.c KhJ;
-  a.c KhK;
-  a.c KhL;
-  a.c KhM;
-  a.c KhN;
-  a.c KhO;
-  ArrayList<a.a> KhP;
-  a.c Khn;
-  a.c Kho;
-  a.c Khp;
-  a.c Khq;
-  a.c Khr;
-  a.c Khs;
-  a.c Kht;
-  a.c Khu;
-  a.c Khv;
-  a.c Khw;
-  a.c Khx;
-  a.c Khy;
-  a.c Khz;
+  a.c RhY;
+  a.c RhZ;
+  ArrayList<a.a> RiA;
+  a.c Ria;
+  a.c Rib;
+  a.c Ric;
+  a.c Rid;
+  a.c Rie;
+  a.c Rif;
+  a.c Rig;
+  a.c Rih;
+  a.c Rii;
+  a.c Rij;
+  a.c Rik;
+  a.c Ril;
+  a.c Rim;
+  a.c Rin;
+  a.c Rio;
+  a.c Rip;
+  public a.c Riq;
+  a.c Rir;
+  a.c Ris;
+  public a.c Rit;
+  private a.c Riu;
+  a.c Riv;
+  a.c Riw;
+  a.c Rix;
+  a.c Riy;
+  a.c Riz;
   public final String TAG;
   
   public a()
   {
     AppMethodBeat.i(31493);
     this.TAG = "MircoMsg.AppPanelControl";
-    this.Khn = new a.c(this);
-    this.Kho = new a.c(this);
-    this.Khp = new a.c(this);
-    this.Khq = new a.c(this);
-    this.Khr = new a.c(this);
-    this.Khs = new a.c(this);
-    this.Kht = new a.c(this);
-    this.KhC = new a.c(this);
-    this.KhA = new a.c(this);
-    this.Khu = new a.c(this);
-    this.Khv = new a.c(this);
-    this.Khw = new a.c(this);
-    this.Khx = new a.c(this);
-    this.Khy = new a.c(this);
-    this.Khz = new a.c(this);
-    this.KhB = new a.c(this);
-    this.KhD = new a.c(this);
-    this.KhE = new a.c(this);
-    this.KhF = new a.c(this);
-    this.KhG = new a.c(this);
-    this.KhH = new a.c(this);
-    this.KhI = new a.c(this);
-    this.KhJ = new a.c(this);
-    this.KhK = new a.c(this);
-    this.KhN = new a.c(this);
-    this.KhO = new a.c(this);
-    this.KhL = new a.c(this);
-    this.KhM = new a.c(this);
+    this.RhY = new a.c(this);
+    this.RhZ = new a.c(this);
+    this.Ria = new a.c(this);
+    this.Rib = new a.c(this);
+    this.Ric = new a.c(this);
+    this.Rid = new a.c(this);
+    this.Rie = new a.c(this);
+    this.Rin = new a.c(this);
+    this.Ril = new a.c(this);
+    this.Rif = new a.c(this);
+    this.Rig = new a.c(this);
+    this.Rih = new a.c(this);
+    this.Rii = new a.c(this);
+    this.Rij = new a.c(this);
+    this.Rik = new a.c(this);
+    this.Rim = new a.c(this);
+    this.Rio = new a.c(this);
+    this.Rip = new a.c(this);
+    this.Riq = new a.c(this);
+    this.Rir = new a.c(this);
+    this.Ris = new a.c(this);
+    this.Rit = new a.c(this);
+    this.Riu = new a.c(this);
+    this.Riv = new a.c(this);
+    this.Riy = new a.c(this);
+    this.Riz = new a.c(this);
+    this.Riw = new a.c(this);
+    this.Rix = new a.c(this);
     AppMethodBeat.o(31493);
   }
   
-  public final void Aa(boolean paramBoolean)
+  public final void Ef(boolean paramBoolean)
   {
-    this.Khu.value = paramBoolean;
+    this.Rif.value = paramBoolean;
   }
   
-  public final void Ab(boolean paramBoolean)
+  public final void Eg(boolean paramBoolean)
   {
-    this.Khv.value = paramBoolean;
+    this.Rig.value = paramBoolean;
   }
   
-  public final void Ac(boolean paramBoolean)
+  public final void Eh(boolean paramBoolean)
   {
-    this.Khz.value = paramBoolean;
+    this.Rik.value = paramBoolean;
   }
   
-  public final void Ad(boolean paramBoolean)
+  public final void Ei(boolean paramBoolean)
   {
-    this.KhD.value = paramBoolean;
+    this.Rio.value = paramBoolean;
   }
   
-  public final void Ae(boolean paramBoolean)
+  public final void Ej(boolean paramBoolean)
   {
-    this.KhG.value = paramBoolean;
+    this.Rir.value = paramBoolean;
   }
   
-  public final void Af(boolean paramBoolean)
+  public final void Ek(boolean paramBoolean)
   {
-    this.KhJ.value = paramBoolean;
+    this.Riu.value = paramBoolean;
   }
   
-  public final void Ag(boolean paramBoolean)
+  public final void El(boolean paramBoolean)
   {
-    this.KhN.value = paramBoolean;
+    this.Riy.value = paramBoolean;
   }
   
   public final ArrayList<a.a> getAppPanelUnCertainEnterArrayList()
   {
     AppMethodBeat.i(163211);
-    if (this.KhP == null)
+    if (this.RiA == null)
     {
       localArrayList = new ArrayList();
       AppMethodBeat.o(163211);
       return localArrayList;
     }
-    ArrayList localArrayList = this.KhP;
+    ArrayList localArrayList = this.RiA;
     AppMethodBeat.o(163211);
     return localArrayList;
   }
   
-  public final void gqd()
+  public final void hlb()
   {
-    this.Khn.value = true;
-    this.Kho.value = true;
-    this.Khp.value = true;
-    this.Khq.value = true;
-    this.Khr.value = true;
-    this.Khs.value = true;
-    this.Kht.value = true;
-    this.KhC.value = true;
-    this.KhA.value = true;
-    this.Khu.value = true;
-    this.Khv.value = true;
-    this.Khw.value = true;
-    this.Khx.value = true;
-    this.Khy.value = true;
-    this.Khz.value = true;
-    this.KhB.value = true;
-    this.KhD.value = true;
-    this.KhE.value = false;
-    this.KhF.value = true;
-    this.KhG.value = true;
-    this.KhI.value = true;
-    this.KhJ.value = true;
-    this.KhI.value = false;
-    this.KhO.value = false;
-    this.KhK.value = true;
-    this.KhL.value = true;
-    this.KhM.value = true;
+    this.RhY.value = true;
+    this.RhZ.value = true;
+    this.Ria.value = true;
+    this.Rib.value = true;
+    this.Ric.value = true;
+    this.Rid.value = true;
+    this.Rie.value = true;
+    this.Rin.value = true;
+    this.Ril.value = true;
+    this.Rif.value = true;
+    this.Rig.value = true;
+    this.Rih.value = true;
+    this.Rii.value = true;
+    this.Rij.value = true;
+    this.Rik.value = true;
+    this.Rim.value = true;
+    this.Rio.value = true;
+    this.Rip.value = false;
+    this.Riq.value = true;
+    this.Rir.value = true;
+    this.Rit.value = true;
+    this.Riu.value = true;
+    this.Rit.value = false;
+    this.Riz.value = false;
+    this.Riv.value = true;
+    this.Riw.value = true;
+    this.Rix.value = true;
   }
   
-  public final void gqe()
+  public final void hlc()
   {
-    this.Kht.value = true;
+    this.Rie.value = true;
   }
   
-  public final void gqf()
+  public final void hld()
   {
-    this.KhB.value = true;
+    this.Rim.value = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.a
  * JD-Core Version:    0.7.0.1
  */

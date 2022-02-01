@@ -3,26 +3,26 @@ package com.tencent.mm.plugin.game.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.d.a;
+import com.tencent.mm.plugin.game.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 
 public abstract class GameBaseActivity
   extends MMActivity
 {
+  private int CSS = 1;
+  private long CvJ = 0L;
+  private long CvK = 0L;
   private long mStartTime = 0L;
-  private int xOI = 1;
-  private long xOJ = 0L;
-  private long xyY = 0L;
   
-  protected boolean dWh()
+  protected boolean ezp()
   {
     return true;
   }
   
-  public abstract int dWi();
+  public abstract int ezq();
   
-  public abstract int dWj();
+  public abstract int ezr();
   
   public abstract int getScene();
   
@@ -36,9 +36,9 @@ public abstract class GameBaseActivity
     if (this.mStartTime != 0L)
     {
       long l = System.currentTimeMillis() - this.mStartTime;
-      Log.i("MicroMsg.GameBaseActivity", "visit page(%s), stayTime:%sms, foregroundTime:%sms", new Object[] { getClass().getSimpleName(), Long.valueOf(l), Long.valueOf(this.xyY) });
-      if (dWh()) {
-        a.a(this.xOI, getScene(), dWi(), dWj(), "", "", l / 1000L, this.xyY / 1000L);
+      Log.i("MicroMsg.GameBaseActivity", "visit page(%s), stayTime:%sms, foregroundTime:%sms", new Object[] { getClass().getSimpleName(), Long.valueOf(l), Long.valueOf(this.CvJ) });
+      if (ezp()) {
+        a.a(this.CSS, getScene(), ezq(), ezr(), "", "", l / 1000L, this.CvJ / 1000L);
       }
     }
     super.onDestroy();
@@ -47,7 +47,7 @@ public abstract class GameBaseActivity
   public void onPause()
   {
     super.onPause();
-    this.xyY += System.currentTimeMillis() - this.xOJ;
+    this.CvJ += System.currentTimeMillis() - this.CvK;
   }
   
   public void onResume()
@@ -55,7 +55,7 @@ public abstract class GameBaseActivity
     if (this.mStartTime == 0L) {
       this.mStartTime = System.currentTimeMillis();
     }
-    this.xOJ = System.currentTimeMillis();
+    this.CvK = System.currentTimeMillis();
     super.onResume();
   }
   

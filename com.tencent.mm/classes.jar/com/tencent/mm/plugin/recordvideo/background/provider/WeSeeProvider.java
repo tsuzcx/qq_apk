@@ -10,7 +10,9 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Binder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.b.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.pluginsdk.model.app.q;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.WeChatAuthorities;
@@ -20,60 +22,60 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/background/provider/WeSeeProvider;", "Landroid/content/ContentProvider;", "()V", "queueSql", "", "uriMatcher", "Landroid/content/UriMatcher;", "weSeeStorage", "Lcom/tencent/mm/plugin/recordvideo/background/provider/WeSeeDataStorage;", "checkMD5", "", "checkTime", "checkValid", "delete", "", "uri", "Landroid/net/Uri;", "selection", "selectionArgs", "", "(Landroid/net/Uri;Ljava/lang/String;[Ljava/lang/String;)I", "getCallingPackages", "()[Ljava/lang/String;", "getType", "insert", "values", "Landroid/content/ContentValues;", "onCreate", "query", "Landroid/database/Cursor;", "projection", "sortOrder", "(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;", "update", "(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I", "Companion", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/background/provider/WeSeeProvider;", "Landroid/content/ContentProvider;", "()V", "queueSql", "", "uriMatcher", "Landroid/content/UriMatcher;", "weSeeStorage", "Lcom/tencent/mm/plugin/recordvideo/background/provider/WeSeeDataStorage;", "checkMD5", "", "checkTime", "checkValid", "delete", "", "uri", "Landroid/net/Uri;", "selection", "selectionArgs", "", "(Landroid/net/Uri;Ljava/lang/String;[Ljava/lang/String;)I", "getCallingPackages", "()[Ljava/lang/String;", "getType", "insert", "values", "Landroid/content/ContentValues;", "onCreate", "query", "Landroid/database/Cursor;", "projection", "sortOrder", "(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;", "update", "(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I", "Companion", "plugin-recordvideo_release"})
 public final class WeSeeProvider
   extends ContentProvider
 {
   private static final String AUTHORITY;
-  private static final int BMA = 100;
-  private static final int BMB = 101;
-  private static final int BMC = 1;
-  private static final int BMD = 3600000;
-  public static final a BME;
-  private static final String BMv = "KEY_INSERT_VIDEO_PATH";
-  private static final String BMw = "KEY_INSERT_TIME";
-  private static final String BMx = "query";
-  private static final String BMy = "delete";
-  private static final String BMz = "insert";
+  private static final String HIH = "KEY_INSERT_VIDEO_PATH";
+  private static final String HII = "KEY_INSERT_TIME";
+  private static final String HIJ = "query";
+  private static final String HIK = "delete";
+  private static final String HIL = "insert";
+  private static final int HIM = 100;
+  private static final int HIN = 101;
+  private static final int HIO = 1;
+  private static final int HIP = 3600000;
+  public static final a HIQ;
   private static final String TAG = "MicroMsg.WeSeeProvider";
-  private a BMt;
-  private final String BMu;
-  private UriMatcher sNB;
+  private a HIF;
+  private final String HIG;
+  private UriMatcher wtw;
   
   static
   {
     AppMethodBeat.i(75338);
-    BME = new a((byte)0);
+    HIQ = new a((byte)0);
     TAG = "MicroMsg.WeSeeProvider";
     AUTHORITY = WeChatAuthorities.AUTHORITIES_PLUGIN_RECORDVIDEO_BACKGROUND_PROVIDER_WESEEPROVIDER();
-    BMv = "KEY_INSERT_VIDEO_PATH";
-    BMw = "KEY_INSERT_TIME";
-    BMx = "query";
-    BMy = "delete";
-    BMz = "insert";
-    BMA = 100;
-    BMB = 101;
-    BMC = 1;
-    BMD = 3600000;
+    HIH = "KEY_INSERT_VIDEO_PATH";
+    HII = "KEY_INSERT_TIME";
+    HIJ = "query";
+    HIK = "delete";
+    HIL = "insert";
+    HIM = 100;
+    HIN = 101;
+    HIO = 1;
+    HIP = 3600000;
     AppMethodBeat.o(75338);
   }
   
   public WeSeeProvider()
   {
     AppMethodBeat.i(75337);
-    this.sNB = new UriMatcher(-1);
+    this.wtw = new UriMatcher(-1);
     StringBuilder localStringBuilder = new StringBuilder("select * from ");
-    b.a locala = b.BMF;
-    this.BMu = b.eIM();
-    this.sNB.addURI(AUTHORITY, BMx, BMA);
-    this.sNB.addURI(AUTHORITY, BMy, BMB);
+    b.a locala = b.HIR;
+    this.HIG = b.fuQ();
+    this.wtw.addURI(AUTHORITY, HIJ, HIM);
+    this.wtw.addURI(AUTHORITY, HIK, HIN);
     AppMethodBeat.o(75337);
   }
   
   private boolean checkValid()
   {
     AppMethodBeat.i(75329);
-    Object localObject1 = eJq();
+    Object localObject1 = fvt();
     int i;
     if (localObject1.length == 0)
     {
@@ -89,13 +91,13 @@ public final class WeSeeProvider
       if (i != 0)
       {
         localObject1 = localObject1[0];
-        localObject2 = q.cj(getContext(), (String)localObject1);
+        localObject2 = q.cv(getContext(), (String)localObject1);
         if (localObject2 == null) {
-          p.hyc();
+          p.iCn();
         }
-        String str = com.tencent.mm.b.g.getMessageDigest(localObject2[0].toByteArray());
+        String str = g.getMessageDigest(localObject2[0].toByteArray());
         Log.i(TAG, "checkMD5 packageName:" + (String)localObject1 + ", signatures:" + localObject2 + ", sig:" + str);
-        if (n.I("2A281593D71DF33374E6124E9106DF08", str, true))
+        if (n.L("2A281593D71DF33374E6124E9106DF08", str, true))
         {
           Log.i(TAG, "checkMD5 success sig:".concat(String.valueOf(str)));
           i = 1;
@@ -120,25 +122,25 @@ public final class WeSeeProvider
       Log.i(TAG, "checkMD5 failed, packages is empty");
     }
     label191:
-    if ((!com.tencent.mm.kernel.g.aAi().aAb()) || (!com.tencent.mm.kernel.g.aAf().azp()))
+    if ((!h.aHH().aHA()) || (!h.aHE().aGM()))
     {
       Log.e(TAG, "MMKernel uninit");
       AppMethodBeat.o(75329);
       return false;
     }
-    if (this.BMt == null)
+    if (this.HIF == null)
     {
-      localObject1 = com.tencent.mm.kernel.g.aAh();
-      p.g(localObject1, "MMKernel.storage()");
-      localObject1 = ((e)localObject1).getDataDB();
-      p.g(localObject1, "MMKernel.storage().dataDB");
-      this.BMt = new a((ISQLiteDatabase)localObject1);
+      localObject1 = h.aHG();
+      p.j(localObject1, "MMKernel.storage()");
+      localObject1 = ((f)localObject1).getDataDB();
+      p.j(localObject1, "MMKernel.storage().dataDB");
+      this.HIF = new a((ISQLiteDatabase)localObject1);
       Log.i(TAG, "checkValid, init database");
     }
-    localObject1 = this.BMt;
+    localObject1 = this.HIF;
     if (localObject1 != null)
     {
-      localObject1 = ((a)localObject1).rawQuery(this.BMu, new String[0]);
+      localObject1 = ((a)localObject1).rawQuery(this.HIG, new String[0]);
       if (localObject1 != null) {
         ((Cursor)localObject1).moveToFirst();
       }
@@ -179,7 +181,7 @@ public final class WeSeeProvider
         long l1 = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndex("time"));
         long l2 = System.currentTimeMillis();
         Log.d(TAG, "checkTime db time: " + l1 + ", current time: " + l2 + ", diff: " + (l2 - l1));
-        if (l1 - l2 < BMD) {
+        if (l1 - l2 < HIP) {
           break label555;
         }
         Log.i(TAG, "checkTime timeout diff is: " + (l1 - l2));
@@ -200,7 +202,7 @@ public final class WeSeeProvider
     }
   }
   
-  private final String[] eJq()
+  private final String[] fvt()
   {
     AppMethodBeat.i(75330);
     try
@@ -208,9 +210,9 @@ public final class WeSeeProvider
       int i = Binder.getCallingUid();
       Object localObject = getContext();
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
-      p.g(localObject, "context!!");
+      p.j(localObject, "context!!");
       String[] arrayOfString = ((Context)localObject).getPackageManager().getPackagesForUid(Binder.getCallingUid());
       String str = TAG;
       if (arrayOfString != null) {}
@@ -246,7 +248,7 @@ public final class WeSeeProvider
   public final int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
     AppMethodBeat.i(75333);
-    p.h(paramUri, "uri");
+    p.k(paramUri, "uri");
     Log.d(TAG, "delete uri" + paramUri + ", selection" + paramString + ", selectionArgs:" + paramArrayOfString);
     if (!checkValid())
     {
@@ -255,14 +257,14 @@ public final class WeSeeProvider
       return 0;
     }
     int i;
-    if (this.sNB.match(paramUri) == BMB)
+    if (this.wtw.match(paramUri) == HIN)
     {
-      paramUri = this.BMt;
+      paramUri = this.HIF;
       if (paramUri != null)
       {
         paramUri = Integer.valueOf(paramUri.getCount());
         if (paramUri == null) {
-          p.hyc();
+          p.iCn();
         }
         i = paramUri.intValue();
         if (i != 0) {
@@ -282,10 +284,10 @@ public final class WeSeeProvider
       if (i > 1) {
         Log.e(TAG, "delete count error, count: " + i + ' ');
       }
-      paramUri = this.BMt;
+      paramUri = this.HIF;
       if (paramUri != null)
       {
-        paramUri.delete(BMC);
+        paramUri.delete(HIO);
         continue;
         Log.i(TAG, "delete uriMatcher match failed");
       }
@@ -295,7 +297,7 @@ public final class WeSeeProvider
   public final String getType(Uri paramUri)
   {
     AppMethodBeat.i(75336);
-    p.h(paramUri, "uri");
+    p.k(paramUri, "uri");
     Log.d(TAG, "getType uri: ".concat(String.valueOf(paramUri)));
     AppMethodBeat.o(75336);
     return null;
@@ -304,7 +306,7 @@ public final class WeSeeProvider
   public final Uri insert(Uri paramUri, ContentValues paramContentValues)
   {
     AppMethodBeat.i(75334);
-    p.h(paramUri, "uri");
+    p.k(paramUri, "uri");
     Log.d(TAG, "insert uri:" + paramUri + ", values:" + paramContentValues);
     AppMethodBeat.o(75334);
     return null;
@@ -321,7 +323,7 @@ public final class WeSeeProvider
   public final Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
     AppMethodBeat.i(75332);
-    p.h(paramUri, "uri");
+    p.k(paramUri, "uri");
     Log.d(TAG, "query uri:" + paramUri + ", projection:" + paramArrayOfString1 + ", selection:" + paramString1 + ", selectionArgs:" + paramArrayOfString2 + ", sortOrder:" + paramString2);
     if (!checkValid())
     {
@@ -329,13 +331,13 @@ public final class WeSeeProvider
       AppMethodBeat.o(75332);
       return null;
     }
-    if (this.sNB.match(paramUri) == BMA)
+    if (this.wtw.match(paramUri) == HIM)
     {
       Log.i(TAG, "query inner ");
-      paramUri = this.BMt;
+      paramUri = this.HIF;
       if (paramUri != null)
       {
-        paramUri = paramUri.rawQuery(this.BMu, new String[0]);
+        paramUri = paramUri.rawQuery(this.HIG, new String[0]);
         AppMethodBeat.o(75332);
         return paramUri;
       }
@@ -350,24 +352,24 @@ public final class WeSeeProvider
   public final int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
   {
     AppMethodBeat.i(75335);
-    p.h(paramUri, "uri");
+    p.k(paramUri, "uri");
     Log.d(TAG, "update uri" + paramUri + ", values:" + paramContentValues + ", selection:" + paramString + ", selectionArgs:" + paramArrayOfString);
     AppMethodBeat.o(75335);
     return 0;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/background/provider/WeSeeProvider$Companion;", "", "()V", "AUTHORITY", "", "kotlin.jvm.PlatformType", "getAUTHORITY", "()Ljava/lang/String;", "CHECK_TIME", "", "CODE_DELETE", "CODE_QUERY", "KEY_INSERT_TIME", "getKEY_INSERT_TIME", "KEY_INSERT_VIDEO_PATH", "getKEY_INSERT_VIDEO_PATH", "PATH_DELETE", "PATH_INSERT", "PATH_QUERY", "TAG", "getTAG", "VALUE_INDEX", "delete", "", "insert", "weSeeUri", "time", "", "plugin-recordvideo_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/background/provider/WeSeeProvider$Companion;", "", "()V", "AUTHORITY", "", "kotlin.jvm.PlatformType", "getAUTHORITY", "()Ljava/lang/String;", "CHECK_TIME", "", "CODE_DELETE", "CODE_QUERY", "KEY_INSERT_TIME", "getKEY_INSERT_TIME", "KEY_INSERT_VIDEO_PATH", "getKEY_INSERT_VIDEO_PATH", "PATH_DELETE", "PATH_INSERT", "PATH_QUERY", "TAG", "getTAG", "VALUE_INDEX", "delete", "", "insert", "weSeeUri", "time", "", "plugin-recordvideo_release"})
   public static final class a
   {
-    public static void bg(String paramString, long paramLong)
+    public static void bi(String paramString, long paramLong)
     {
       AppMethodBeat.i(163417);
-      p.h(paramString, "weSeeUri");
+      p.k(paramString, "weSeeUri");
       Log.i(WeSeeProvider.access$getTAG$cp(), "insert fun");
-      Object localObject = com.tencent.mm.kernel.g.aAh();
-      p.g(localObject, "MMKernel.storage()");
-      localObject = ((e)localObject).getDataDB();
-      p.g(localObject, "MMKernel.storage().dataDB");
+      Object localObject = h.aHG();
+      p.j(localObject, "MMKernel.storage()");
+      localObject = ((f)localObject).getDataDB();
+      p.j(localObject, "MMKernel.storage().dataDB");
       localObject = new a((ISQLiteDatabase)localObject);
       b localb = new b();
       localb.field_weSeeUri = paramString;
@@ -380,18 +382,18 @@ public final class WeSeeProvider
         return;
       }
       Log.i(WeSeeProvider.access$getTAG$cp(), "update weseeProvider:" + paramString + ", time:" + paramLong);
-      ((a)localObject).update(WeSeeProvider.eJr(), (IAutoDBItem)localb);
+      ((a)localObject).update(WeSeeProvider.fvu(), (IAutoDBItem)localb);
       AppMethodBeat.o(163417);
     }
     
-    public static void delete()
+    public static void frW()
     {
       AppMethodBeat.i(163418);
       Log.i(WeSeeProvider.access$getTAG$cp(), "delete fun");
-      Object localObject = com.tencent.mm.kernel.g.aAh();
-      p.g(localObject, "MMKernel.storage()");
-      localObject = ((e)localObject).getDataDB();
-      p.g(localObject, "MMKernel.storage().dataDB");
+      Object localObject = h.aHG();
+      p.j(localObject, "MMKernel.storage()");
+      localObject = ((f)localObject).getDataDB();
+      p.j(localObject, "MMKernel.storage().dataDB");
       localObject = new a((ISQLiteDatabase)localObject);
       int i = ((a)localObject).getCount();
       if (i == 0)
@@ -404,14 +406,14 @@ public final class WeSeeProvider
       if (i > 1) {
         Log.e(WeSeeProvider.access$getTAG$cp(), "delete count error, count: " + i + ' ');
       }
-      ((a)localObject).delete(WeSeeProvider.eJr());
+      ((a)localObject).delete(WeSeeProvider.fvu());
       AppMethodBeat.o(163418);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.background.provider.WeSeeProvider
  * JD-Core Version:    0.7.0.1
  */

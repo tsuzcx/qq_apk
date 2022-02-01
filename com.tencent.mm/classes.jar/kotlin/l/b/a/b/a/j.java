@@ -6,33 +6,33 @@ import kotlin.l.b.a.b.f.b;
 
 public final class j
 {
-  private static final b TeV;
-  private static final String TeW = "KProperty";
-  private static final String TeX = "KMutableProperty";
-  private static final String TeY = "KFunction";
-  private static final String TeZ = "KSuspendFunction";
-  private static final List<String> Tfa;
+  private static final b aaHP;
+  private static final String aaHQ = "KProperty";
+  private static final String aaHR = "KMutableProperty";
+  private static final String aaHS = "KFunction";
+  private static final String aaHT = "KSuspendFunction";
+  private static final List<String> aaHU;
   
   static
   {
     AppMethodBeat.i(56693);
-    TeV = new b("kotlin.reflect");
-    TeW = "KProperty";
-    TeX = "KMutableProperty";
-    TeY = "KFunction";
-    TeZ = "KSuspendFunction";
-    Tfa = kotlin.a.j.listOf(new String[] { TeW, TeX, TeY, TeZ });
+    aaHP = new b("kotlin.reflect");
+    aaHQ = "KProperty";
+    aaHR = "KMutableProperty";
+    aaHS = "KFunction";
+    aaHT = "KSuspendFunction";
+    aaHU = kotlin.a.j.listOf(new String[] { aaHQ, aaHR, aaHS, aaHT });
     AppMethodBeat.o(56693);
   }
   
-  public static final b hzw()
+  public static final b iDI()
   {
-    return TeV;
+    return aaHP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.a.j
  * JD-Core Version:    0.7.0.1
  */

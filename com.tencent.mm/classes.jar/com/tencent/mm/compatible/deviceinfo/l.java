@@ -6,10 +6,10 @@ import java.util.Map;
 
 public final class l
 {
-  private static l gHP = null;
+  private static l jsh = null;
   private String filePath;
-  private boolean gHN;
-  boolean gHO;
+  private boolean jsf;
+  boolean jsg;
   private Map<Integer, Object> values;
   
   /* Error */
@@ -22,39 +22,39 @@ public final class l
     //   6: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
     //   10: iconst_0
-    //   11: putfield 36	com/tencent/mm/compatible/deviceinfo/l:gHN	Z
+    //   11: putfield 36	com/tencent/mm/compatible/deviceinfo/l:jsf	Z
     //   14: aload_0
     //   15: ldc 38
     //   17: putfield 40	com/tencent/mm/compatible/deviceinfo/l:filePath	Ljava/lang/String;
     //   20: aload_0
     //   21: iconst_0
-    //   22: putfield 42	com/tencent/mm/compatible/deviceinfo/l:gHO	Z
+    //   22: putfield 42	com/tencent/mm/compatible/deviceinfo/l:jsg	Z
     //   25: aload_0
     //   26: aload_1
     //   27: putfield 40	com/tencent/mm/compatible/deviceinfo/l:filePath	Ljava/lang/String;
-    //   30: new 44	com/tencent/mm/vfs/o
+    //   30: new 44	com/tencent/mm/vfs/q
     //   33: dup
     //   34: aload_0
     //   35: getfield 40	com/tencent/mm/compatible/deviceinfo/l:filePath	Ljava/lang/String;
-    //   38: invokespecial 46	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   38: invokespecial 46	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   41: astore_1
     //   42: aload_1
-    //   43: invokevirtual 50	com/tencent/mm/vfs/o:exists	()Z
+    //   43: invokevirtual 50	com/tencent/mm/vfs/q:ifE	()Z
     //   46: ifne +13 -> 59
     //   49: aload_0
     //   50: iconst_1
-    //   51: putfield 42	com/tencent/mm/compatible/deviceinfo/l:gHO	Z
+    //   51: putfield 42	com/tencent/mm/compatible/deviceinfo/l:jsg	Z
     //   54: aload_1
-    //   55: invokevirtual 53	com/tencent/mm/vfs/o:createNewFile	()Z
+    //   55: invokevirtual 53	com/tencent/mm/vfs/q:ifM	()Z
     //   58: pop
     //   59: aload_1
-    //   60: invokevirtual 57	com/tencent/mm/vfs/o:length	()J
+    //   60: invokevirtual 57	com/tencent/mm/vfs/q:length	()J
     //   63: lconst_0
     //   64: lcmp
     //   65: ifne +30 -> 95
     //   68: aload_0
     //   69: iconst_1
-    //   70: putfield 42	com/tencent/mm/compatible/deviceinfo/l:gHO	Z
+    //   70: putfield 42	com/tencent/mm/compatible/deviceinfo/l:jsg	Z
     //   73: aload_0
     //   74: new 59	java/util/HashMap
     //   77: dup
@@ -62,12 +62,12 @@ public final class l
     //   81: putfield 62	com/tencent/mm/compatible/deviceinfo/l:values	Ljava/util/Map;
     //   84: aload_0
     //   85: iconst_0
-    //   86: putfield 36	com/tencent/mm/compatible/deviceinfo/l:gHN	Z
+    //   86: putfield 36	com/tencent/mm/compatible/deviceinfo/l:jsf	Z
     //   89: ldc 28
     //   91: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   94: return
     //   95: aload_1
-    //   96: invokestatic 71	com/tencent/mm/vfs/s:ao	(Lcom/tencent/mm/vfs/o;)Ljava/io/InputStream;
+    //   96: invokestatic 71	com/tencent/mm/vfs/u:al	(Lcom/tencent/mm/vfs/q;)Ljava/io/InputStream;
     //   99: astore_1
     //   100: new 73	java/io/ObjectInputStream
     //   103: dup
@@ -254,15 +254,15 @@ public final class l
     //   139	143	364	java/lang/Exception
   }
   
-  public static l aol()
+  public static l auq()
   {
     try
     {
       AppMethodBeat.i(155656);
-      if (gHP == null) {
-        gHP = new l(b.aKB() + "CompatibleInfo.cfg");
+      if (jsh == null) {
+        jsh = new l(b.aSD() + "CompatibleInfo.cfg");
       }
-      l locall = gHP;
+      l locall = jsh;
       AppMethodBeat.o(155656);
       return locall;
     }
@@ -270,7 +270,7 @@ public final class l
   }
   
   /* Error */
-  private void aom()
+  private void aur()
   {
     // Byte code:
     //   0: aload_0
@@ -279,230 +279,229 @@ public final class l
     //   4: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
     //   8: getfield 40	com/tencent/mm/compatible/deviceinfo/l:filePath	Ljava/lang/String;
-    //   11: iconst_0
-    //   12: invokestatic 124	com/tencent/mm/vfs/s:dw	(Ljava/lang/String;Z)Ljava/io/OutputStream;
-    //   15: astore_1
-    //   16: new 126	java/io/ObjectOutputStream
-    //   19: dup
-    //   20: aload_1
-    //   21: invokespecial 129	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   24: astore_2
-    //   25: aload_2
-    //   26: astore 4
-    //   28: aload_1
-    //   29: astore_3
-    //   30: aload_2
-    //   31: aload_0
-    //   32: getfield 62	com/tencent/mm/compatible/deviceinfo/l:values	Ljava/util/Map;
-    //   35: invokevirtual 133	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
-    //   38: aload_2
-    //   39: astore 4
-    //   41: aload_1
-    //   42: astore_3
-    //   43: aload_2
-    //   44: invokevirtual 134	java/io/ObjectOutputStream:close	()V
-    //   47: aload_2
-    //   48: astore 4
-    //   50: aload_1
-    //   51: astore_3
-    //   52: aload_1
-    //   53: invokevirtual 139	java/io/OutputStream:flush	()V
-    //   56: aload_2
-    //   57: astore 4
-    //   59: aload_1
-    //   60: astore_3
-    //   61: aload_1
-    //   62: invokevirtual 140	java/io/OutputStream:close	()V
-    //   65: aload_1
-    //   66: ifnull +7 -> 73
-    //   69: aload_1
-    //   70: invokevirtual 140	java/io/OutputStream:close	()V
-    //   73: aload_2
-    //   74: invokevirtual 134	java/io/ObjectOutputStream:close	()V
-    //   77: ldc 120
-    //   79: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   82: aload_0
-    //   83: monitorexit
-    //   84: return
-    //   85: astore_1
-    //   86: ldc 90
-    //   88: aload_1
-    //   89: ldc 38
-    //   91: iconst_0
-    //   92: anewarray 4	java/lang/Object
-    //   95: invokestatic 96	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   98: goto -25 -> 73
-    //   101: astore_1
-    //   102: aload_0
-    //   103: monitorexit
-    //   104: aload_1
-    //   105: athrow
-    //   106: astore_1
-    //   107: ldc 90
-    //   109: aload_1
-    //   110: ldc 38
-    //   112: iconst_0
-    //   113: anewarray 4	java/lang/Object
-    //   116: invokestatic 96	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   119: ldc 120
-    //   121: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   124: goto -42 -> 82
-    //   127: astore 5
-    //   129: aconst_null
-    //   130: astore_2
-    //   131: aconst_null
-    //   132: astore_1
-    //   133: aload_2
-    //   134: astore 4
-    //   136: aload_1
-    //   137: astore_3
-    //   138: ldc 90
-    //   140: aload 5
-    //   142: ldc 38
-    //   144: iconst_0
-    //   145: anewarray 4	java/lang/Object
-    //   148: invokestatic 96	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   151: aload_1
-    //   152: ifnull +7 -> 159
-    //   155: aload_1
-    //   156: invokevirtual 140	java/io/OutputStream:close	()V
-    //   159: aload_2
-    //   160: ifnull +115 -> 275
-    //   163: aload_2
-    //   164: invokevirtual 134	java/io/ObjectOutputStream:close	()V
-    //   167: ldc 120
-    //   169: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   172: goto -90 -> 82
-    //   175: astore_1
-    //   176: ldc 90
-    //   178: aload_1
-    //   179: ldc 38
-    //   181: iconst_0
-    //   182: anewarray 4	java/lang/Object
-    //   185: invokestatic 96	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   188: goto -29 -> 159
-    //   191: astore_1
-    //   192: ldc 90
-    //   194: aload_1
-    //   195: ldc 38
-    //   197: iconst_0
-    //   198: anewarray 4	java/lang/Object
-    //   201: invokestatic 96	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   204: ldc 120
-    //   206: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   209: goto -127 -> 82
-    //   212: astore_2
-    //   213: aconst_null
-    //   214: astore 4
-    //   216: aconst_null
-    //   217: astore_1
-    //   218: aload_1
-    //   219: ifnull +7 -> 226
-    //   222: aload_1
-    //   223: invokevirtual 140	java/io/OutputStream:close	()V
-    //   226: aload 4
-    //   228: ifnull +8 -> 236
-    //   231: aload 4
-    //   233: invokevirtual 134	java/io/ObjectOutputStream:close	()V
-    //   236: ldc 120
-    //   238: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   241: aload_2
-    //   242: athrow
-    //   243: astore_1
-    //   244: ldc 90
-    //   246: aload_1
-    //   247: ldc 38
-    //   249: iconst_0
-    //   250: anewarray 4	java/lang/Object
-    //   253: invokestatic 96	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   256: goto -30 -> 226
-    //   259: astore_1
-    //   260: ldc 90
-    //   262: aload_1
-    //   263: ldc 38
-    //   265: iconst_0
-    //   266: anewarray 4	java/lang/Object
-    //   269: invokestatic 96	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   272: goto -36 -> 236
-    //   275: ldc 120
-    //   277: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   280: goto -198 -> 82
-    //   283: astore_2
-    //   284: aconst_null
-    //   285: astore 4
-    //   287: goto -69 -> 218
-    //   290: astore_2
-    //   291: aload_3
-    //   292: astore_1
-    //   293: goto -75 -> 218
-    //   296: astore 5
-    //   298: aconst_null
-    //   299: astore_2
-    //   300: goto -167 -> 133
-    //   303: astore 5
-    //   305: goto -172 -> 133
+    //   11: invokestatic 124	com/tencent/mm/vfs/u:Te	(Ljava/lang/String;)Ljava/io/OutputStream;
+    //   14: astore_1
+    //   15: new 126	java/io/ObjectOutputStream
+    //   18: dup
+    //   19: aload_1
+    //   20: invokespecial 129	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   23: astore_2
+    //   24: aload_2
+    //   25: astore 4
+    //   27: aload_1
+    //   28: astore_3
+    //   29: aload_2
+    //   30: aload_0
+    //   31: getfield 62	com/tencent/mm/compatible/deviceinfo/l:values	Ljava/util/Map;
+    //   34: invokevirtual 133	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   37: aload_2
+    //   38: astore 4
+    //   40: aload_1
+    //   41: astore_3
+    //   42: aload_2
+    //   43: invokevirtual 134	java/io/ObjectOutputStream:close	()V
+    //   46: aload_2
+    //   47: astore 4
+    //   49: aload_1
+    //   50: astore_3
+    //   51: aload_1
+    //   52: invokevirtual 139	java/io/OutputStream:flush	()V
+    //   55: aload_2
+    //   56: astore 4
+    //   58: aload_1
+    //   59: astore_3
+    //   60: aload_1
+    //   61: invokevirtual 140	java/io/OutputStream:close	()V
+    //   64: aload_1
+    //   65: ifnull +7 -> 72
+    //   68: aload_1
+    //   69: invokevirtual 140	java/io/OutputStream:close	()V
+    //   72: aload_2
+    //   73: invokevirtual 134	java/io/ObjectOutputStream:close	()V
+    //   76: ldc 120
+    //   78: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   81: aload_0
+    //   82: monitorexit
+    //   83: return
+    //   84: astore_1
+    //   85: ldc 90
+    //   87: aload_1
+    //   88: ldc 38
+    //   90: iconst_0
+    //   91: anewarray 4	java/lang/Object
+    //   94: invokestatic 96	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   97: goto -25 -> 72
+    //   100: astore_1
+    //   101: aload_0
+    //   102: monitorexit
+    //   103: aload_1
+    //   104: athrow
+    //   105: astore_1
+    //   106: ldc 90
+    //   108: aload_1
+    //   109: ldc 38
+    //   111: iconst_0
+    //   112: anewarray 4	java/lang/Object
+    //   115: invokestatic 96	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   118: ldc 120
+    //   120: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   123: goto -42 -> 81
+    //   126: astore 5
+    //   128: aconst_null
+    //   129: astore_2
+    //   130: aconst_null
+    //   131: astore_1
+    //   132: aload_2
+    //   133: astore 4
+    //   135: aload_1
+    //   136: astore_3
+    //   137: ldc 90
+    //   139: aload 5
+    //   141: ldc 38
+    //   143: iconst_0
+    //   144: anewarray 4	java/lang/Object
+    //   147: invokestatic 96	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   150: aload_1
+    //   151: ifnull +7 -> 158
+    //   154: aload_1
+    //   155: invokevirtual 140	java/io/OutputStream:close	()V
+    //   158: aload_2
+    //   159: ifnull +115 -> 274
+    //   162: aload_2
+    //   163: invokevirtual 134	java/io/ObjectOutputStream:close	()V
+    //   166: ldc 120
+    //   168: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   171: goto -90 -> 81
+    //   174: astore_1
+    //   175: ldc 90
+    //   177: aload_1
+    //   178: ldc 38
+    //   180: iconst_0
+    //   181: anewarray 4	java/lang/Object
+    //   184: invokestatic 96	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   187: goto -29 -> 158
+    //   190: astore_1
+    //   191: ldc 90
+    //   193: aload_1
+    //   194: ldc 38
+    //   196: iconst_0
+    //   197: anewarray 4	java/lang/Object
+    //   200: invokestatic 96	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   203: ldc 120
+    //   205: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   208: goto -127 -> 81
+    //   211: astore_2
+    //   212: aconst_null
+    //   213: astore 4
+    //   215: aconst_null
+    //   216: astore_1
+    //   217: aload_1
+    //   218: ifnull +7 -> 225
+    //   221: aload_1
+    //   222: invokevirtual 140	java/io/OutputStream:close	()V
+    //   225: aload 4
+    //   227: ifnull +8 -> 235
+    //   230: aload 4
+    //   232: invokevirtual 134	java/io/ObjectOutputStream:close	()V
+    //   235: ldc 120
+    //   237: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   240: aload_2
+    //   241: athrow
+    //   242: astore_1
+    //   243: ldc 90
+    //   245: aload_1
+    //   246: ldc 38
+    //   248: iconst_0
+    //   249: anewarray 4	java/lang/Object
+    //   252: invokestatic 96	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   255: goto -30 -> 225
+    //   258: astore_1
+    //   259: ldc 90
+    //   261: aload_1
+    //   262: ldc 38
+    //   264: iconst_0
+    //   265: anewarray 4	java/lang/Object
+    //   268: invokestatic 96	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   271: goto -36 -> 235
+    //   274: ldc 120
+    //   276: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   279: goto -198 -> 81
+    //   282: astore_2
+    //   283: aconst_null
+    //   284: astore 4
+    //   286: goto -69 -> 217
+    //   289: astore_2
+    //   290: aload_3
+    //   291: astore_1
+    //   292: goto -75 -> 217
+    //   295: astore 5
+    //   297: aconst_null
+    //   298: astore_2
+    //   299: goto -167 -> 132
+    //   302: astore 5
+    //   304: goto -172 -> 132
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	308	0	this	l
-    //   15	55	1	localOutputStream	java.io.OutputStream
-    //   85	4	1	localIOException1	java.io.IOException
-    //   101	4	1	localObject1	Object
-    //   106	4	1	localIOException2	java.io.IOException
-    //   132	24	1	localObject2	Object
-    //   175	4	1	localIOException3	java.io.IOException
-    //   191	4	1	localIOException4	java.io.IOException
-    //   217	6	1	localObject3	Object
-    //   243	4	1	localIOException5	java.io.IOException
-    //   259	4	1	localIOException6	java.io.IOException
-    //   292	1	1	localObject4	Object
-    //   24	140	2	localObjectOutputStream1	java.io.ObjectOutputStream
-    //   212	30	2	localObject5	Object
-    //   283	1	2	localObject6	Object
-    //   290	1	2	localObject7	Object
-    //   299	1	2	localObject8	Object
-    //   29	263	3	localObject9	Object
-    //   26	260	4	localObjectOutputStream2	java.io.ObjectOutputStream
-    //   127	14	5	localIOException7	java.io.IOException
-    //   296	1	5	localIOException8	java.io.IOException
-    //   303	1	5	localIOException9	java.io.IOException
+    //   0	307	0	this	l
+    //   14	55	1	localOutputStream	java.io.OutputStream
+    //   84	4	1	localIOException1	java.io.IOException
+    //   100	4	1	localObject1	Object
+    //   105	4	1	localIOException2	java.io.IOException
+    //   131	24	1	localObject2	Object
+    //   174	4	1	localIOException3	java.io.IOException
+    //   190	4	1	localIOException4	java.io.IOException
+    //   216	6	1	localObject3	Object
+    //   242	4	1	localIOException5	java.io.IOException
+    //   258	4	1	localIOException6	java.io.IOException
+    //   291	1	1	localObject4	Object
+    //   23	140	2	localObjectOutputStream1	java.io.ObjectOutputStream
+    //   211	30	2	localObject5	Object
+    //   282	1	2	localObject6	Object
+    //   289	1	2	localObject7	Object
+    //   298	1	2	localObject8	Object
+    //   28	263	3	localObject9	Object
+    //   25	260	4	localObjectOutputStream2	java.io.ObjectOutputStream
+    //   126	14	5	localIOException7	java.io.IOException
+    //   295	1	5	localIOException8	java.io.IOException
+    //   302	1	5	localIOException9	java.io.IOException
     // Exception table:
     //   from	to	target	type
-    //   69	73	85	java/io/IOException
-    //   2	7	101	finally
-    //   69	73	101	finally
-    //   73	77	101	finally
-    //   77	82	101	finally
-    //   86	98	101	finally
-    //   107	124	101	finally
-    //   155	159	101	finally
-    //   163	167	101	finally
-    //   167	172	101	finally
-    //   176	188	101	finally
-    //   192	209	101	finally
-    //   222	226	101	finally
-    //   231	236	101	finally
-    //   236	243	101	finally
-    //   244	256	101	finally
-    //   260	272	101	finally
-    //   275	280	101	finally
-    //   73	77	106	java/io/IOException
-    //   7	16	127	java/io/IOException
-    //   155	159	175	java/io/IOException
-    //   163	167	191	java/io/IOException
-    //   7	16	212	finally
-    //   222	226	243	java/io/IOException
-    //   231	236	259	java/io/IOException
-    //   16	25	283	finally
-    //   30	38	290	finally
-    //   43	47	290	finally
-    //   52	56	290	finally
-    //   61	65	290	finally
-    //   138	151	290	finally
-    //   16	25	296	java/io/IOException
-    //   30	38	303	java/io/IOException
-    //   43	47	303	java/io/IOException
-    //   52	56	303	java/io/IOException
-    //   61	65	303	java/io/IOException
+    //   68	72	84	java/io/IOException
+    //   2	7	100	finally
+    //   68	72	100	finally
+    //   72	76	100	finally
+    //   76	81	100	finally
+    //   85	97	100	finally
+    //   106	123	100	finally
+    //   154	158	100	finally
+    //   162	166	100	finally
+    //   166	171	100	finally
+    //   175	187	100	finally
+    //   191	208	100	finally
+    //   221	225	100	finally
+    //   230	235	100	finally
+    //   235	242	100	finally
+    //   243	255	100	finally
+    //   259	271	100	finally
+    //   274	279	100	finally
+    //   72	76	105	java/io/IOException
+    //   7	15	126	java/io/IOException
+    //   154	158	174	java/io/IOException
+    //   162	166	190	java/io/IOException
+    //   7	15	211	finally
+    //   221	225	242	java/io/IOException
+    //   230	235	258	java/io/IOException
+    //   15	24	282	finally
+    //   29	37	289	finally
+    //   42	46	289	finally
+    //   51	55	289	finally
+    //   60	64	289	finally
+    //   137	150	289	finally
+    //   15	24	295	java/io/IOException
+    //   29	37	302	java/io/IOException
+    //   42	46	302	java/io/IOException
+    //   51	55	302	java/io/IOException
+    //   60	64	302	java/io/IOException
   }
   
   public final Object get(int paramInt)
@@ -513,14 +512,14 @@ public final class l
     return localObject;
   }
   
-  public final void set(int paramInt, Object paramObject)
+  public final void i(int paramInt, Object paramObject)
   {
     try
     {
       AppMethodBeat.i(155658);
       this.values.put(Integer.valueOf(paramInt), paramObject);
-      if (!this.gHN) {
-        aom();
+      if (!this.jsf) {
+        aur();
       }
       AppMethodBeat.o(155658);
       return;
@@ -530,7 +529,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.l
  * JD-Core Version:    0.7.0.1
  */

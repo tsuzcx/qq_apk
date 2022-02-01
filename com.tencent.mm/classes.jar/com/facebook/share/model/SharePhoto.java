@@ -21,21 +21,7 @@ public final class SharePhoto
   static
   {
     AppMethodBeat.i(8589);
-    CREATOR = new Parcelable.Creator()
-    {
-      public final SharePhoto createFromParcel(Parcel paramAnonymousParcel)
-      {
-        AppMethodBeat.i(8575);
-        paramAnonymousParcel = new SharePhoto(paramAnonymousParcel);
-        AppMethodBeat.o(8575);
-        return paramAnonymousParcel;
-      }
-      
-      public final SharePhoto[] newArray(int paramAnonymousInt)
-      {
-        return new SharePhoto[paramAnonymousInt];
-      }
-    };
+    CREATOR = new SharePhoto.1();
     AppMethodBeat.o(8589);
   }
   
@@ -217,7 +203,7 @@ public final class SharePhoto
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.share.model.SharePhoto
  * JD-Core Version:    0.7.0.1
  */

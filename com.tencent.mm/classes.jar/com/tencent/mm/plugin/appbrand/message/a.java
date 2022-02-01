@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.appbrand.message;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.b;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.model.bp;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.b;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.model.bq;
 import com.tencent.mm.platformtools.z;
+import com.tencent.mm.plugin.appbrand.service.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.messenger.foundation.a.p;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
+import com.tencent.mm.protocal.protobuf.db;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.az;
@@ -19,25 +19,25 @@ import com.tencent.mm.storage.ca;
 import java.util.Map;
 
 public enum a
-  implements p
+  implements s
 {
   static
   {
-    AppMethodBeat.i(227189);
-    ngd = new a("INSTANCE");
-    nge = new a[] { ngd };
-    AppMethodBeat.o(227189);
+    AppMethodBeat.i(276932);
+    qgN = new a("INSTANCE");
+    qgO = new a[] { qgN };
+    AppMethodBeat.o(276932);
   }
   
   private a() {}
   
   public final h.b a(String paramString, Map<String, String> paramMap, h.a parama)
   {
-    AppMethodBeat.i(227188);
+    AppMethodBeat.i(276931);
     if ((paramString == null) || (!paramString.equals("weapp_pushmsg")))
     {
       Log.e("MicroMsg.WxaAppBrandNotifyMsgHandler", "subType is err, return");
-      AppMethodBeat.o(227188);
+      AppMethodBeat.o(276931);
       return null;
     }
     Log.i("MicroMsg.WxaAppBrandNotifyMsgHandler", "consumeNewXml subType:%s", new Object[] { paramString });
@@ -45,26 +45,26 @@ public enum a
     if (Util.isNullOrNil(str1))
     {
       Log.e("MicroMsg.WxaAppBrandNotifyMsgHandler", "title is null, return");
-      AppMethodBeat.o(227188);
+      AppMethodBeat.o(276931);
       return null;
     }
     if (Util.isNullOrNil((String)paramMap.get(".sysmsg.weapp_pushmsg.wxa_nickname")))
     {
       Log.e("MicroMsg.WxaAppBrandNotifyMsgHandler", "nickname is null, return");
-      AppMethodBeat.o(227188);
+      AppMethodBeat.o(276931);
       return null;
     }
     String str2 = (String)paramMap.get(".sysmsg.weapp_pushmsg.busi_msgid");
     if (Util.isNullOrNil(str2))
     {
       Log.e("MicroMsg.WxaAppBrandNotifyMsgHandler", "msgId is null, return");
-      AppMethodBeat.o(227188);
+      AppMethodBeat.o(276931);
       return null;
     }
-    if ((parama == null) || (parama.heO == null))
+    if ((parama == null) || (parama.jQG == null))
     {
       Log.e("MicroMsg.WxaAppBrandNotifyMsgHandler", "addMsgInfo or addMsgInfo.addMsg is null! should not happen");
-      AppMethodBeat.o(227188);
+      AppMethodBeat.o(276931);
       return null;
     }
     String str3 = (String)paramMap.get(".sysmsg.weapp_pushmsg.weappinfo.appid");
@@ -75,61 +75,61 @@ public enum a
     if (Util.isNullOrNil(paramMap)) {
       Log.w("MicroMsg.WxaAppBrandNotifyMsgHandler", "pagePath is null");
     }
-    de localde = parama.heO;
-    Object localObject = z.a(localde.KHn);
-    String str4 = z.a(localde.KHl);
-    paramString = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().aJ(str4, localde.Brn);
+    db localdb = parama.jQG;
+    Object localObject = z.a(localdb.RIF);
+    String str4 = z.a(localdb.RID);
+    paramString = ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().aL(str4, localdb.HlH);
     int i = 0;
     if (paramString.field_msgId > 0L) {
       i = 1;
     }
-    paramString.yF(localde.Brn);
-    paramString.setCreateTime(bp.C(str4, localde.CreateTime));
+    paramString.EG(localdb.HlH);
+    paramString.setCreateTime(bq.z(str4, localdb.CreateTime));
     paramString.setType(872415281);
     paramString.setContent((String)localObject);
-    paramString.nv(0);
+    paramString.pJ(0);
     paramString.setStatus(3);
-    paramString.Cy("appbrand_notify_message");
-    paramString.BB(localde.KHq);
-    paramString.ean = String.valueOf(System.currentTimeMillis());
-    paramString.fqk = true;
-    if (bp.Ku("appbrand_notify_message") == 0)
+    paramString.Jm("appbrand_notify_message");
+    paramString.Ip(localdb.RII);
+    paramString.fUk = String.valueOf(System.currentTimeMillis());
+    paramString.hwY = true;
+    if (bq.RN("appbrand_notify_message") == 0)
     {
       Log.i("MicroMsg.WxaAppBrandNotifyMsgHandler", "empty appbrand notify message, insert tips message");
       localObject = new ca();
       ((ca)localObject).setType(872415281);
-      ((ca)localObject).Cy("appbrand_notify_message");
+      ((ca)localObject).Jm("appbrand_notify_message");
       ((ca)localObject).setContent("");
       ((ca)localObject).setCreateTime(paramString.field_createTime - 1L);
-      ((ca)localObject).nv(2);
+      ((ca)localObject).pJ(2);
       ((ca)localObject).setStatus(4);
-      bp.x((ca)localObject);
+      bq.z((ca)localObject);
     }
-    bp.a(paramString, parama);
+    bq.a(paramString, parama);
     if (i == 0)
     {
-      bp.x(paramString);
-      parama = ((l)com.tencent.mm.kernel.g.af(l.class)).aST().bjY("appbrand_notify_message");
+      bq.z(paramString);
+      parama = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().bwx("appbrand_notify_message");
       if (parama == null) {
         break label740;
       }
-      parama.oT(134217728);
-      i = ((l)com.tencent.mm.kernel.g.af(l.class)).aST().a(parama, "appbrand_notify_message");
+      parama.rn(134217728);
+      i = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().a(parama, "appbrand_notify_message");
       Log.d("MicroMsg.WxaAppBrandNotifyMsgHandler", "username:%s ok:%b", new Object[] { paramString.field_talker, Integer.valueOf(i) });
       label541:
-      paramString = (com.tencent.mm.plugin.appbrand.service.g)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.appbrand.service.g.class);
+      paramString = (g)com.tencent.mm.kernel.h.ae(g.class);
       if (paramString == null) {
         break label751;
       }
     }
     label740:
     label751:
-    for (paramString = paramString.bul();; paramString = null)
+    for (paramString = paramString.bFl();; paramString = null)
     {
-      h.CyF.a(19724, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), str3, paramMap, null, str2, Integer.valueOf(0), null, com.tencent.mm.ag.a.a.HL(str1), Integer.valueOf(0), null, null, paramString });
-      AppMethodBeat.o(227188);
+      com.tencent.mm.plugin.report.service.h.IzE.a(19724, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), str3, paramMap, null, str2, Integer.valueOf(0), null, com.tencent.mm.aj.b.a.OZ(str1), Integer.valueOf(0), null, null, paramString });
+      AppMethodBeat.o(276931);
       return null;
-      ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().b(localde.Brn, paramString);
+      ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().b(localdb.HlH, paramString);
       break;
       Log.d("MicroMsg.WxaAppBrandNotifyMsgHandler", "conv is null");
       break label541;

@@ -20,6 +20,8 @@ public abstract interface TencentMapResource
   
   public abstract BitmapDescriptor createBitmapDescriptor(String paramString, int paramInt);
   
+  public abstract BitmapDescriptor createBitmapDescriptor(Bitmap[] paramArrayOfBitmap, int paramInt);
+  
   public abstract MyLocationStyle getDefaultMyLocationStyle();
   
   public abstract int getScreenPixels();
@@ -28,7 +30,7 @@ public abstract interface TencentMapResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.TencentMapResource
  * JD-Core Version:    0.7.0.1
  */

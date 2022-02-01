@@ -1,74 +1,151 @@
 package com.tencent.mm.plugin.finder.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ays;
+import com.tencent.mm.bb.f;
+import com.tencent.mm.f.b.a.ig;
+import com.tencent.mm.plugin.findersdk.a.al;
+import com.tencent.mm.protocal.protobuf.bds;
+import com.tencent.mm.protocal.protobuf.dbr;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.a.a;
 import kotlin.g.b.p;
-import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;", "", "localPb", "Lcom/tencent/mm/protocal/protobuf/FinderMixLocalItemPb;", "(Lcom/tencent/mm/protocal/protobuf/FinderMixLocalItemPb;)V", "id", "", "getId", "()J", "id$delegate", "Lkotlin/Lazy;", "getLocalPb", "()Lcom/tencent/mm/protocal/protobuf/FinderMixLocalItemPb;", "localType", "", "getLocalType", "()I", "wording", "", "getWording", "()Ljava/lang/String;", "isSame", "", "other", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderMvLogic;", "", "()V", "TAG", "", "playingPos", "", "getPlayingPos", "()I", "setPlayingPos", "(I)V", "createMusicWrapper", "Lcom/tencent/mm/modelmusic/MusicWrapper;", "musicSongInfo", "Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;", "musicId", "musicType", "directPlayMusic", "", "musicShareObject", "Lcom/tencent/mm/protocal/protobuf/MusicShareObject;", "isPlayingPosValid", "", "isTheSameIdPlaying", "playId", "playMusic", "musicCoverUrl", "playMusicWithNoFloatBall", "coverUrl", "playOrPauseMusic", "resetPlayingPos", "plugin-finder_release"})
 public final class aa
 {
-  private final f tON;
-  public final ays vEN;
+  private static int Amf;
+  public static final aa Amg;
   
-  public aa(ays paramays)
+  static
   {
-    AppMethodBeat.i(251817);
-    this.vEN = paramays;
-    this.tON = g.ah((a)new a(this));
-    AppMethodBeat.o(251817);
+    AppMethodBeat.i(250118);
+    Amg = new aa();
+    Amf = -1;
+    AppMethodBeat.o(250118);
   }
   
-  public final boolean a(aa paramaa)
+  public static void Qj(int paramInt)
   {
-    AppMethodBeat.i(251816);
-    p.h(paramaa, "other");
-    if ((this.vEN.LIS == paramaa.vEN.LIS) && (!Util.isNullOrNil(getWording())) && (p.j(getWording(), paramaa.getWording())))
+    Amf = paramInt;
+  }
+  
+  private static f a(bds parambds, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(250115);
+    f localf = new f();
+    localf.lVr = paramInt;
+    localf.lVt = paramString;
+    localf.lVG = parambds.SOJ;
+    localf.lVx = parambds.albumName;
+    localf.lVv = parambds.HLH;
+    localf.lVw = parambds.ozs;
+    localf.lVy = parambds.SOM;
+    localf.lVK = parambds.SOM;
+    localf.lVB = parambds.SOK;
+    localf.lVz = parambds.musicDataUrl;
+    localf.lVX = true;
+    parambds = com.tencent.mm.plugin.comm.a.ubo;
+    localf.lVV = com.tencent.mm.plugin.comm.a.cPl();
+    AppMethodBeat.o(250115);
+    return localf;
+  }
+  
+  public static void a(bds parambds, dbr paramdbr, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(250107);
+    p.k(parambds, "musicSongInfo");
+    p.k(paramString1, "musicId");
+    parambds = a(parambds, paramString1, 14);
+    parambds.lVW = false;
+    ((com.tencent.mm.bb.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.bb.a.a.class)).b(parambds, com.tencent.mm.bb.h.a(paramString1, paramdbr, paramString2));
+    com.tencent.mm.bb.a.c(parambds);
+    AppMethodBeat.o(250107);
+  }
+  
+  public static void a(bds parambds, String paramString1, int paramInt, String paramString2)
+  {
+    AppMethodBeat.i(250106);
+    p.k(parambds, "musicSongInfo");
+    p.k(paramString1, "musicId");
+    p.k(paramString2, "musicCoverUrl");
+    if (!aEL(paramString1))
     {
-      AppMethodBeat.o(251816);
-      return true;
+      Log.i("FinderMvLogic", "playMusic");
+      parambds = a(parambds, paramString1, paramInt);
+      ((com.tencent.mm.bb.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.bb.a.a.class)).b(parambds, com.tencent.mm.bb.h.a(paramString1, null, paramString2));
+      com.tencent.mm.bb.a.c(parambds);
+      AppMethodBeat.o(250106);
+      return;
     }
-    AppMethodBeat.o(251816);
+    Log.i("FinderMvLogic", "same music");
+    AppMethodBeat.o(250106);
+  }
+  
+  public static void a(bds parambds, String paramString, dbr paramdbr)
+  {
+    AppMethodBeat.i(250104);
+    p.k(parambds, "musicSongInfo");
+    p.k(paramString, "musicId");
+    if (!aEL(paramString))
+    {
+      Log.i("FinderMvLogic", "playMusic");
+      parambds = a(parambds, paramString, 13);
+      ((com.tencent.mm.bb.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.bb.a.a.class)).b(parambds, com.tencent.mm.bb.h.a(paramString, paramdbr));
+      com.tencent.mm.bb.a.c(parambds);
+      AppMethodBeat.o(250104);
+      return;
+    }
+    Log.i("FinderMvLogic", "same music");
+    AppMethodBeat.o(250104);
+  }
+  
+  public static boolean aEL(String paramString)
+  {
+    AppMethodBeat.i(250111);
+    p.k(paramString, "playId");
+    f localf = com.tencent.mm.bb.a.bnA();
+    if (localf != null) {}
+    for (String str = localf.lVt; (str != null) && (localf.lVr == 0) && (com.tencent.mm.bb.a.bnx()); str = null) {
+      try
+      {
+        if (!Util.isEqual(localf.lVt, paramString)) {
+          break;
+        }
+        AppMethodBeat.o(250111);
+        return true;
+      }
+      catch (Exception paramString)
+      {
+        AppMethodBeat.o(250111);
+        return false;
+      }
+    }
+    AppMethodBeat.o(250111);
     return false;
   }
   
-  public final long getId()
+  public static void b(bds parambds, String paramString, dbr paramdbr)
   {
-    AppMethodBeat.i(251815);
-    long l = ((Number)this.tON.getValue()).longValue();
-    AppMethodBeat.o(251815);
-    return l;
+    AppMethodBeat.i(250110);
+    parambds = a(parambds, paramString, 0);
+    ((com.tencent.mm.bb.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.bb.a.a.class)).b(parambds, com.tencent.mm.bb.h.a(paramString, paramdbr));
+    com.tencent.mm.bb.a.c(parambds);
+    parambds = new ig();
+    parambds.sJ(1L);
+    parambds.sK(8L);
+    al.a(parambds);
+    AppMethodBeat.o(250110);
   }
   
-  public final String getWording()
+  public static void dYQ()
   {
-    String str2 = this.vEN.dQx;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    return str1;
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements a<Long>
-  {
-    a(aa paramaa)
-    {
-      super();
-    }
+    Amf = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.aa
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gh;
+import com.tencent.mm.f.c.go;
 import com.tencent.mm.plugin.sns.model.aj;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
@@ -10,11 +10,11 @@ import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class h
-  extends gh
+  extends go
   implements Cloneable
 {
   protected static IAutoDBItem.MAutoDBInfo info;
-  public int Emk;
+  public int Kzs;
   
   static
   {
@@ -86,7 +86,7 @@ public final class h
     try
     {
       super.convertFrom(paramCursor);
-      this.Emk = ((int)this.systemRowid);
+      this.Kzs = ((int)this.systemRowid);
       AppMethodBeat.o(97450);
       return;
     }
@@ -95,7 +95,7 @@ public final class h
       String str = paramCursor.getMessage();
       Log.e("MicroMsg.SnsComment", "error ".concat(String.valueOf(str)));
       if ((str != null) && (str.contains("Unable to convert"))) {
-        aj.faT().eIQ();
+        aj.fON().fuU();
       }
       try
       {
@@ -110,12 +110,12 @@ public final class h
     }
   }
   
-  public final void feD()
+  public final void fSx()
   {
     this.field_commentflag |= 0x1;
   }
   
-  public final h feE()
+  public final h fSy()
   {
     AppMethodBeat.i(97451);
     try
@@ -141,7 +141,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.h
  * JD-Core Version:    0.7.0.1
  */

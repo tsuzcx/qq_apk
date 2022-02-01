@@ -4,43 +4,44 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import io.flutter.plugin.a.m;
 import io.flutter.plugin.a.m.c;
 import io.flutter.view.FlutterView.b;
 
+@Deprecated
 public class FlutterFragmentActivity
   extends FragmentActivity
   implements a.a, m, FlutterView.b
 {
-  private final a SLU;
-  private final b SLV;
-  private final FlutterView.b SLW;
-  private final m wJn;
+  private final m BCC;
+  private final a aanT;
+  private final b aanU;
+  private final FlutterView.b aanV;
   
   public FlutterFragmentActivity()
   {
     AppMethodBeat.i(9631);
-    this.SLU = new a(this, this);
-    this.SLV = this.SLU;
-    this.SLW = this.SLU;
-    this.wJn = this.SLU;
+    this.aanT = new a(this, this);
+    this.aanU = this.aanT;
+    this.aanV = this.aanT;
+    this.BCC = this.aanT;
     AppMethodBeat.o(9631);
   }
   
-  public final boolean bsW(String paramString)
+  public final boolean bFX(String paramString)
   {
     AppMethodBeat.i(9632);
-    boolean bool = this.wJn.bsW(paramString);
+    boolean bool = this.BCC.bFX(paramString);
     AppMethodBeat.o(9632);
     return bool;
   }
   
-  public final m.c bsX(String paramString)
+  public final m.c bFY(String paramString)
   {
     AppMethodBeat.i(9633);
-    paramString = this.wJn.bsX(paramString);
+    paramString = this.BCC.bFY(paramString);
     AppMethodBeat.o(9633);
     return paramString;
   }
@@ -48,7 +49,7 @@ public class FlutterFragmentActivity
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(9642);
-    if (!this.SLV.onActivityResult(paramInt1, paramInt2, paramIntent)) {
+    if (!this.aanU.onActivityResult(paramInt1, paramInt2, paramIntent)) {
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
     }
     AppMethodBeat.o(9642);
@@ -57,7 +58,7 @@ public class FlutterFragmentActivity
   public void onBackPressed()
   {
     AppMethodBeat.i(9636);
-    if (!this.SLV.onBackPressed()) {
+    if (!this.aanU.onBackPressed()) {
       super.onBackPressed();
     }
     AppMethodBeat.o(9636);
@@ -67,7 +68,7 @@ public class FlutterFragmentActivity
   {
     AppMethodBeat.i(9647);
     super.onConfigurationChanged(paramConfiguration);
-    this.SLV.onConfigurationChanged(paramConfiguration);
+    this.aanU.onConfigurationChanged(paramConfiguration);
     AppMethodBeat.o(9647);
   }
   
@@ -75,14 +76,14 @@ public class FlutterFragmentActivity
   {
     AppMethodBeat.i(9634);
     super.onCreate(paramBundle);
-    this.SLV.hwi();
+    this.aanU.iAj();
     AppMethodBeat.o(9634);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(9635);
-    this.SLV.onDestroy();
+    this.aanU.onDestroy();
     super.onDestroy();
     AppMethodBeat.o(9635);
   }
@@ -90,7 +91,7 @@ public class FlutterFragmentActivity
   public void onLowMemory()
   {
     AppMethodBeat.i(9646);
-    this.SLV.onLowMemory();
+    this.aanU.onLowMemory();
     AppMethodBeat.o(9646);
   }
   
@@ -98,7 +99,7 @@ public class FlutterFragmentActivity
   {
     AppMethodBeat.i(9643);
     super.onNewIntent(paramIntent);
-    this.SLV.onNewIntent(paramIntent);
+    this.aanU.onNewIntent(paramIntent);
     AppMethodBeat.o(9643);
   }
   
@@ -106,7 +107,7 @@ public class FlutterFragmentActivity
   {
     AppMethodBeat.i(9639);
     super.onPause();
-    this.SLV.onPause();
+    this.aanU.onPause();
     AppMethodBeat.o(9639);
   }
   
@@ -114,7 +115,7 @@ public class FlutterFragmentActivity
   {
     AppMethodBeat.i(9640);
     super.onPostResume();
-    this.SLV.onPostResume();
+    this.aanU.onPostResume();
     AppMethodBeat.o(9640);
   }
   
@@ -122,7 +123,7 @@ public class FlutterFragmentActivity
   {
     AppMethodBeat.i(9641);
     super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-    this.SLV.a(paramInt, paramArrayOfString, paramArrayOfInt);
+    this.aanU.a(paramInt, paramArrayOfString, paramArrayOfInt);
     AppMethodBeat.o(9641);
   }
   
@@ -130,14 +131,14 @@ public class FlutterFragmentActivity
   {
     AppMethodBeat.i(9637);
     super.onStart();
-    this.SLV.onStart();
+    this.aanU.onStart();
     AppMethodBeat.o(9637);
   }
   
   public void onStop()
   {
     AppMethodBeat.i(9638);
-    this.SLV.onStop();
+    this.aanU.onStop();
     super.onStop();
     AppMethodBeat.o(9638);
   }
@@ -145,14 +146,14 @@ public class FlutterFragmentActivity
   public void onTrimMemory(int paramInt)
   {
     AppMethodBeat.i(9645);
-    this.SLV.onTrimMemory(paramInt);
+    this.aanU.onTrimMemory(paramInt);
     AppMethodBeat.o(9645);
   }
   
   public void onUserLeaveHint()
   {
     AppMethodBeat.i(9644);
-    this.SLV.onUserLeaveHint();
+    this.aanU.onUserLeaveHint();
     AppMethodBeat.o(9644);
   }
   

@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.ag;
+import com.tencent.mm.plugin.appbrand.page.ah;
 
 public final class a
-  extends com.tencent.mm.plugin.appbrand.menu.a.a<ag>
+  extends com.tencent.mm.plugin.appbrand.menu.a.a<ah>
 {
   public a()
   {
-    super(u.nfi.ordinal());
+    super(w.qfQ.ordinal());
     AppMethodBeat.i(180320);
     AppMethodBeat.o(180320);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.a
  * JD-Core Version:    0.7.0.1
  */

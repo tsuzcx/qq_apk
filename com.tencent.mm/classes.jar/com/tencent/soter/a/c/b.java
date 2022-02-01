@@ -6,34 +6,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class b
 {
-  private static volatile b RQw = null;
-  public int RQx;
-  public SparseArray<String> RQy;
-  public SharedPreferences RQz;
-  public boolean dEI;
+  private static volatile b Zta = null;
+  public int Ztb;
+  public SparseArray<String> Ztc;
+  public SharedPreferences Ztd;
+  public boolean fxw;
   public boolean isInit;
   
   public b()
   {
     AppMethodBeat.i(16);
     this.isInit = false;
-    this.dEI = false;
-    this.RQx = 0;
-    this.RQy = new SparseArray(10);
-    this.RQz = null;
+    this.fxw = false;
+    this.Ztb = 0;
+    this.Ztc = new SparseArray(10);
+    this.Ztd = null;
     AppMethodBeat.o(16);
   }
   
-  public static b hlG()
+  public static b ipf()
   {
     AppMethodBeat.i(17);
-    if (RQw == null) {
+    if (Zta == null) {
       try
       {
-        if (RQw == null) {
-          RQw = new b();
+        if (Zta == null) {
+          Zta = new b();
         }
-        b localb1 = RQw;
+        b localb1 = Zta;
         return localb1;
       }
       finally
@@ -41,59 +41,79 @@ public class b
         AppMethodBeat.o(17);
       }
     }
-    b localb2 = RQw;
+    b localb2 = Zta;
     AppMethodBeat.o(17);
     return localb2;
   }
   
-  public final void DQ(boolean paramBoolean)
+  public final void Ir(boolean paramBoolean)
   {
     try
     {
-      this.dEI = paramBoolean;
+      this.fxw = paramBoolean;
       return;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public final boolean hlC()
+  public final boolean ipb()
   {
     try
     {
-      boolean bool = this.dEI;
+      boolean bool = this.fxw;
       return bool;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public final void hlH()
+  public final void ipg()
   {
     try
     {
       this.isInit = true;
       return;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public final SparseArray<String> hlI()
+  public final SparseArray<String> iph()
   {
     try
     {
-      SparseArray localSparseArray = this.RQy;
+      SparseArray localSparseArray = this.Ztc;
       return localSparseArray;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public final SharedPreferences hlJ()
+  public final SharedPreferences ipi()
   {
     try
     {
-      SharedPreferences localSharedPreferences = this.RQz;
+      SharedPreferences localSharedPreferences = this.Ztd;
       return localSharedPreferences;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public final boolean isInit()
@@ -103,12 +123,16 @@ public class b
       boolean bool = this.isInit;
       return bool;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.soter.a.c.b
  * JD-Core Version:    0.7.0.1
  */

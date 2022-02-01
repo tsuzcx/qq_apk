@@ -10,69 +10,69 @@ import java.util.UUID;
 
 public final class b
 {
+  public static int EFB;
+  public static Set<String> EFC;
+  public static int EFD;
+  public static int EFE;
+  public static int EFF;
+  public static int EFG;
+  public static int EFH;
+  public static int EFI;
+  public static int EFJ;
+  public static String EsU;
   public static String openId;
   public static String sessionId;
   public static long startTime;
-  public static int vkj;
-  public static String yOW;
-  public static int zbe;
-  public static Set<String> zbf;
-  public static int zbg;
-  public static int zbh;
-  public static int zbi;
-  public static int zbj;
-  public static int zbk;
-  public static int zbl;
-  public static int zbm;
+  public static int xbJ;
   
   static
   {
     AppMethodBeat.i(163682);
-    zbf = new HashSet();
+    EFC = new HashSet();
     AppMethodBeat.o(163682);
   }
   
-  public static void k(String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(163680);
-    openId = paramString1;
-    yOW = paramString2;
-    zbi = paramInt1;
-    zbj = paramInt2;
-    sessionId = UUID.randomUUID().toString();
-    startTime = SystemClock.elapsedRealtime() / 1000L;
-    AppMethodBeat.o(163680);
-  }
-  
-  public static void xV(int paramInt)
+  public static void Bv(int paramInt)
   {
     AppMethodBeat.i(163681);
     if ((!Util.isNullOrNil(openId)) && (!Util.isNullOrNil(sessionId)))
     {
       long l1 = SystemClock.elapsedRealtime() / 1000L;
       long l2 = startTime;
-      h.CyF.a(18994, new Object[] { Integer.valueOf(paramInt), yOW, Integer.valueOf(0), Integer.valueOf(zbe), Integer.valueOf(zbf.size()), Integer.valueOf(zbg), Integer.valueOf(zbh), Integer.valueOf(zbi), Integer.valueOf(zbj), sessionId, openId, Long.valueOf(l1 - l2), Integer.valueOf(vkj), Integer.valueOf(zbk), Integer.valueOf(zbl), Integer.valueOf(zbm) });
-      yOW = null;
-      zbe = 0;
-      zbf.clear();
-      zbg = 0;
-      zbh = 0;
-      zbi = 0;
-      zbj = 0;
+      h.IzE.a(18994, new Object[] { Integer.valueOf(paramInt), EsU, Integer.valueOf(0), Integer.valueOf(EFB), Integer.valueOf(EFC.size()), Integer.valueOf(EFD), Integer.valueOf(EFE), Integer.valueOf(EFF), Integer.valueOf(EFG), sessionId, openId, Long.valueOf(l1 - l2), Integer.valueOf(xbJ), Integer.valueOf(EFH), Integer.valueOf(EFI), Integer.valueOf(EFJ) });
+      EsU = null;
+      EFB = 0;
+      EFC.clear();
+      EFD = 0;
+      EFE = 0;
+      EFF = 0;
+      EFG = 0;
       openId = null;
       startTime = 0L;
-      vkj = 0;
-      zbk = 0;
-      zbl = 0;
-      zbm = 0;
+      xbJ = 0;
+      EFH = 0;
+      EFI = 0;
+      EFJ = 0;
       sessionId = null;
     }
     AppMethodBeat.o(163681);
   }
+  
+  public static void k(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(163680);
+    openId = paramString1;
+    EsU = paramString2;
+    EFF = paramInt1;
+    EFG = paramInt2;
+    sessionId = UUID.randomUUID().toString();
+    startTime = SystemClock.elapsedRealtime() / 1000L;
+    AppMethodBeat.o(163680);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.b
  * JD-Core Version:    0.7.0.1
  */

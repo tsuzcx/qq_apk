@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/hi1" android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/bb" android:layout_marginStart="@dimen/cb"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:layout_gravity="center_vertical" android:id="@id/jyj" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:layout_marginStart="@dimen/hs" android:layout_marginEnd="@dimen/hs" style="@style/jk" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/jyh" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:layout_marginRight="@dimen/cb" />
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/b9w" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:layout_marginStart="@dimen/bt" android:layout_marginEnd="@dimen/cb">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.base.EllipsizeTextView android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/jyl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{title}" android:singleLine="true" style="@style/mp" />
+                <TextView android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/jyk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="{tip}" style="@style/mp" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/kc" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/jyi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{desc}" android:singleLine="true" style="@style/mo" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

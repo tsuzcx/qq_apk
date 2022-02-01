@@ -43,7 +43,7 @@ const { addEventListener, removeEventListener, postMessage, dispatchEvent, callb
       if (typeof callback !== 'function') {
         return ""
       }
-      var callbackId = "__callbackWrapper:" + new Date().getTime();
+      var callbackId = "__callbackId:" + new Date().getTime() + "_" + Math.round(Math.random() * 10000);
       var callbackWrapper = function() {
         removeEventListener(callbackId, callbackWrapper);
         callback.apply(null, Array.from(arguments));

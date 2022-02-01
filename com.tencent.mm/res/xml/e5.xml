@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <Preference android:key="settings_auth" android:layout="@layout/b8j" android:title="@string/ci2" />
+    <com.tencent.mm.plugin.newtips.NewTipPreference android:key="setting_original" android:layout="@layout/b8j" android:title="@string/d4_" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.plugin.newtips.NewTipPreference android:key="setting_live_income" android:layout="@layout/b8j" android:title="@string/csv" />
+    <com.tencent.mm.plugin.newtips.NewTipPreference android:key="setting_live_task" android:layout="@layout/b8j" android:title="@string/jta" />
+    <Preference android:key="setting_live_lottery_history" android:layout="@layout/b8j" android:title="@string/cx5" />
+    <Preference android:key="setting_live_settle_to_agency" android:layout="@layout/b8j" android:title="@string/k5w" />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_shop" android:layout="@layout/b8j" android:title="@string/d9u" />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_creater_guide" android:layout="@layout/b8j" android:title="@string/d9a" />
+</PreferenceScreen>

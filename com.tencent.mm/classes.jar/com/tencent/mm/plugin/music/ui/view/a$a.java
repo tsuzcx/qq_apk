@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.music.ui.view;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/music/ui/view/MusicHalfDialog$Companion;", "", "()V", "TAG", "", "plugin-music_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/ui/view/MusicHalfDialog$Companion;", "", "()V", "TAG", "", "plugin-music_release"})
 public final class a$a {}
 
 

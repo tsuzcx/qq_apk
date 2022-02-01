@@ -1,11 +1,12 @@
 package com.tencent.mm.sdk.platformtools;
 
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.z;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -17,21 +18,23 @@ import java.util.Queue;
 import kotlin.ResultKt;
 import kotlin.d.a.a;
 import kotlin.d.d;
+import kotlin.d.f;
 import kotlin.g.a.m;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 import kotlin.x;
-import kotlinx.coroutines.ai;
-import kotlinx.coroutines.aj;
-import kotlinx.coroutines.au;
-import kotlinx.coroutines.ba;
-import kotlinx.coroutines.bn;
-import kotlinx.coroutines.bu;
+import kotlinx.coroutines.ak;
+import kotlinx.coroutines.al;
+import kotlinx.coroutines.aw;
+import kotlinx.coroutines.bc;
+import kotlinx.coroutines.br;
+import kotlinx.coroutines.by;
+import kotlinx.coroutines.g;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/sdk/platformtools/MMFileSlotManager;", "Lcom/tencent/mm/sdk/platformtools/BaseSlotManager;", "Lcom/tencent/mm/vfs/VFSFile;", "name", "", "slotSeconds", "", "(Ljava/lang/String;J)V", "CLEAR_DELAY", "TAG", "prefix", "getPrefix", "()Ljava/lang/String;", "clearSlot", "", "slotId", "slot", "containsKey", "", "key", "getSlotByKey", "slotKey", "remarkSlot", "verifySlot", "getSlotPath", "libcompatible_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sdk/platformtools/MMFileSlotManager;", "Lcom/tencent/mm/sdk/platformtools/BaseSlotManager;", "Lcom/tencent/mm/vfs/VFSFile;", "name", "", "slotSeconds", "", "(Ljava/lang/String;J)V", "CLEAR_DELAY", "TAG", "prefix", "getPrefix", "()Ljava/lang/String;", "clearSlot", "", "slotId", "slot", "containsKey", "", "key", "getSlotByKey", "slotKey", "remarkSlot", "verifySlot", "getSlotPath", "libcompatible_release"})
 public final class MMFileSlotManager
-  extends BaseSlotManager<o>
+  extends BaseSlotManager<q>
 {
   private final long CLEAR_DELAY;
   private final String TAG;
@@ -50,7 +53,7 @@ public final class MMFileSlotManager
   private final String getSlotPath(String paramString, long paramLong)
   {
     AppMethodBeat.i(156384);
-    StringBuilder localStringBuilder = new StringBuilder().append(b.aKB()).append("mmslot/").append(paramString).append('/');
+    StringBuilder localStringBuilder = new StringBuilder().append(b.aSD()).append("mmslot/").append(paramString).append('/');
     if (paramLong > 0L) {}
     for (paramString = paramLong + '/';; paramString = "")
     {
@@ -60,12 +63,22 @@ public final class MMFileSlotManager
     }
   }
   
-  protected final void clearSlot(long paramLong, o paramo)
+  protected final void clearSlot(long paramLong, q paramq)
   {
-    AppMethodBeat.i(215486);
-    p.h(paramo, "slot");
+    AppMethodBeat.i(261522);
+    p.k(paramq, "slot");
     Log.v(this.TAG, "clearSlot");
-    ??? = paramo.a((w)new MMFileSlotManager.clearSlot.1(paramLong));
+    ??? = paramq.a((z)new z()
+    {
+      public final boolean accept(q paramAnonymousq, String paramAnonymousString)
+      {
+        AppMethodBeat.i(263316);
+        p.k(paramAnonymousString, "name");
+        boolean bool = p.h(paramAnonymousString, String.valueOf(this.$slotId));
+        AppMethodBeat.o(263316);
+        return bool ^ true;
+      }
+    });
     Object localObject2;
     Object localObject3;
     if (??? != null)
@@ -76,19 +89,19 @@ public final class MMFileSlotManager
       while (i < j)
       {
         localObject3 = ???[i];
-        ((Collection)localObject2).add(paramo.getPath() + '/' + (String)localObject3);
+        ((Collection)localObject2).add(paramq.getPath() + '/' + (String)localObject3);
         i += 1;
       }
     }
-    for (paramo = (List)localObject2;; paramo = null)
+    for (paramq = (List)localObject2;; paramq = null)
     {
       paramLong = this.CLEAR_DELAY;
       localObject2 = List.class.getCanonicalName() + '_' + "batch";
       synchronized (__BATCH_RUN_OBJ.INSTANCE)
       {
-        localObject3 = (bu)__BATCH_RUN_OBJ.INSTANCE.getBatchJobs().get(localObject2);
+        localObject3 = (by)__BATCH_RUN_OBJ.INSTANCE.getBatchJobs().get(localObject2);
         if (localObject3 != null) {
-          ((bu)localObject3).a(null);
+          ((by)localObject3).a(null);
         }
         localObject3 = __BATCH_RUN_OBJ.INSTANCE.getBatchData();
         if (!((HashMap)localObject3).containsKey(localObject2)) {
@@ -98,24 +111,24 @@ public final class MMFileSlotManager
         if (localObject3 != null) {
           break;
         }
-        paramo = new t("null cannot be cast to non-null type java.util.LinkedList<T>");
-        AppMethodBeat.o(215486);
-        throw paramo;
+        paramq = new t("null cannot be cast to non-null type java.util.LinkedList<T>");
+        AppMethodBeat.o(261522);
+        throw paramq;
       }
     }
-    ((LinkedList)localObject3).add(paramo);
-    ((Map)__BATCH_RUN_OBJ.INSTANCE.getBatchJobs()).put(localObject2, kotlinx.coroutines.f.b((ai)bn.TUK, (kotlin.d.f)ba.hMW(), (m)new kotlin.d.b.a.j(paramLong, (String)localObject2)
+    ((LinkedList)localObject3).add(paramq);
+    ((Map)__BATCH_RUN_OBJ.INSTANCE.getBatchJobs()).put(localObject2, g.b((ak)br.abxo, (f)bc.iRs(), (m)new kotlin.d.b.a.j(paramLong, (String)localObject2)
     {
       Object L$0;
       int label;
-      private ai p$;
+      private ak p$;
       
       public final d<x> create(Object paramAnonymousObject, d<?> paramAnonymousd)
       {
         AppMethodBeat.i(175892);
-        p.h(paramAnonymousd, "completion");
+        p.k(paramAnonymousd, "completion");
         paramAnonymousd = new 1(this.$delay, this.$key, paramAnonymousd, this.this$0);
-        paramAnonymousd.p$ = ((ai)paramAnonymousObject);
+        paramAnonymousd.p$ = ((ak)paramAnonymousObject);
         AppMethodBeat.o(175892);
         return paramAnonymousd;
       }
@@ -123,7 +136,7 @@ public final class MMFileSlotManager
       public final Object invoke(Object paramAnonymousObject1, Object paramAnonymousObject2)
       {
         AppMethodBeat.i(175893);
-        paramAnonymousObject1 = ((1)create(paramAnonymousObject1, (d)paramAnonymousObject2)).invokeSuspend(x.SXb);
+        paramAnonymousObject1 = ((1)create(paramAnonymousObject1, (d)paramAnonymousObject2)).invokeSuspend(x.aazN);
         AppMethodBeat.o(175893);
         return paramAnonymousObject1;
       }
@@ -131,7 +144,7 @@ public final class MMFileSlotManager
       public final Object invokeSuspend(Object paramAnonymousObject)
       {
         AppMethodBeat.i(175891);
-        Object localObject1 = a.SXO;
+        Object localObject1 = a.aaAA;
         switch (this.label)
         {
         default: 
@@ -144,20 +157,20 @@ public final class MMFileSlotManager
           long l = this.$delay;
           this.L$0 = paramAnonymousObject;
           this.label = 1;
-          if (au.a(l, this) == localObject1)
+          if (aw.a(l, this) == localObject1)
           {
             AppMethodBeat.o(175891);
             return localObject1;
           }
           break;
         case 1: 
-          localObject1 = (ai)this.L$0;
+          localObject1 = (ak)this.L$0;
           ResultKt.throwOnFailure(paramAnonymousObject);
           paramAnonymousObject = localObject1;
         }
-        if (!aj.a(paramAnonymousObject))
+        if (!al.a(paramAnonymousObject))
         {
-          paramAnonymousObject = x.SXb;
+          paramAnonymousObject = x.aazN;
           AppMethodBeat.o(175891);
           return paramAnonymousObject;
         }
@@ -183,7 +196,7 @@ public final class MMFileSlotManager
             {
               ??? = (List)((Iterator)localObject1).next();
               if (??? == null) {
-                p.hyc();
+                p.iCn();
               }
               kotlin.a.j.a(paramAnonymousObject, (Iterable)???);
             }
@@ -194,30 +207,41 @@ public final class MMFileSlotManager
         if (!paramAnonymousObject.isEmpty())
         {
           Log.i(MMFileSlotManager.access$getTAG$p(this.this$0), "clear file slots:\n" + kotlin.a.j.a((Iterable)paramAnonymousObject, (CharSequence)"\n", null, null, 0, null, null, 62));
-          h.RTc.aY((Runnable)new MMFileSlotManager.clearSlot..inlined.also.lambda.1.1(paramAnonymousObject));
+          h.ZvG.bf((Runnable)new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(175890);
+              Iterator localIterator = ((Iterable)this.$toClear).iterator();
+              while (localIterator.hasNext()) {
+                u.deleteDir((String)localIterator.next());
+              }
+              AppMethodBeat.o(175890);
+            }
+          });
         }
         label373:
         __BATCH_RUN_OBJ.INSTANCE.getBatchJobs().remove(this.$key);
-        paramAnonymousObject = x.SXb;
+        paramAnonymousObject = x.aazN;
         AppMethodBeat.o(175891);
         return paramAnonymousObject;
       }
     }, 2));
-    AppMethodBeat.o(215486);
+    AppMethodBeat.o(261522);
   }
   
-  protected final boolean containsKey(o paramo, String paramString)
+  protected final boolean containsKey(q paramq, String paramString)
   {
-    AppMethodBeat.i(215488);
-    p.h(paramo, "slot");
-    p.h(paramString, "key");
-    paramo = new o(paramo.getPath() + '/' + paramString);
-    if ((paramo.exists()) && (paramo.length() > 0L))
+    AppMethodBeat.i(261533);
+    p.k(paramq, "slot");
+    p.k(paramString, "key");
+    paramq = new q(paramq.getPath() + '/' + paramString);
+    if ((paramq.ifE()) && (paramq.length() > 0L))
     {
-      AppMethodBeat.o(215488);
+      AppMethodBeat.o(261533);
       return true;
     }
-    AppMethodBeat.o(215488);
+    AppMethodBeat.o(261533);
     return false;
   }
   
@@ -226,34 +250,34 @@ public final class MMFileSlotManager
     return this.prefix;
   }
   
-  protected final o getSlotByKey(String paramString, long paramLong)
+  protected final q getSlotByKey(String paramString, long paramLong)
   {
-    AppMethodBeat.i(215487);
-    p.h(paramString, "slotKey");
-    paramString = new o(getSlotPath(paramString, paramLong));
+    AppMethodBeat.i(261526);
+    p.k(paramString, "slotKey");
+    paramString = new q(getSlotPath(paramString, paramLong));
     Log.v(this.TAG, "getSlotByKey path = " + paramString.getPath());
-    if (!paramString.exists())
+    if (!paramString.ifE())
     {
-      paramString.mkdirs();
+      paramString.ifL();
       Log.v(this.TAG, "getSlotByKey mkdirs = ".concat(String.valueOf(paramString)));
     }
-    AppMethodBeat.o(215487);
+    AppMethodBeat.o(261526);
     return paramString;
   }
   
   protected final void remarkSlot(String paramString, long paramLong)
   {
     AppMethodBeat.i(156387);
-    p.h(paramString, "slotKey");
+    p.k(paramString, "slotKey");
     AppMethodBeat.o(156387);
   }
   
   protected final boolean verifySlot(String paramString, long paramLong)
   {
     AppMethodBeat.i(156388);
-    p.h(paramString, "slotKey");
-    paramString = new o(getSlotPath(paramString, paramLong));
-    if ((paramString.exists()) && (paramString.length() > 0L))
+    p.k(paramString, "slotKey");
+    paramString = new q(getSlotPath(paramString, paramLong));
+    if ((paramString.ifE()) && (paramString.length() > 0L))
     {
       AppMethodBeat.o(156388);
       return true;
@@ -264,7 +288,7 @@ public final class MMFileSlotManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MMFileSlotManager
  * JD-Core Version:    0.7.0.1
  */

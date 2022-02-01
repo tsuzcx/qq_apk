@@ -2,16 +2,16 @@ package com.tencent.thumbplayer.a.b.a;
 
 public final class b
 {
-  public int RYx = 0;
-  private int dGe;
+  public int ZBh = 0;
   private String definition;
   private int errorCode;
+  private int fyO;
   
   public b(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
     this.errorCode = paramInt3;
-    this.dGe = paramInt2;
-    this.RYx = paramInt1;
+    this.fyO = paramInt2;
+    this.ZBh = paramInt1;
     this.definition = paramString;
   }
 }

@@ -4,7 +4,7 @@ import android.content.Context;
 
 abstract interface e
 {
-  public abstract c bZx();
+  public abstract c cmn();
   
   public abstract void init(Context paramContext);
   
@@ -12,7 +12,7 @@ abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.a.e
  * JD-Core Version:    0.7.0.1
  */

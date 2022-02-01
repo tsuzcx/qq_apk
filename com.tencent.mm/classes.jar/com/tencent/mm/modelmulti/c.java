@@ -1,21 +1,22 @@
 package com.tencent.mm.modelmulti;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.q.b;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.q.b;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.protocal.protobuf.cpm;
-import com.tencent.mm.protocal.protobuf.cpn;
-import com.tencent.mm.protocal.protobuf.kw;
-import com.tencent.mm.protocal.protobuf.kx;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.protocal.protobuf.cyc;
+import com.tencent.mm.protocal.protobuf.cyd;
+import com.tencent.mm.protocal.protobuf.km;
+import com.tencent.mm.protocal.protobuf.kn;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
@@ -27,79 +28,91 @@ public final class c
   extends q
   implements m
 {
-  private List<String> aZK;
+  private List<String> aJh;
   private i callback;
   private int index;
-  private final int jcn;
-  private final int jco;
-  private final int jcp;
-  private final int jcq;
-  private final int jcr;
-  public List<String> jcs;
-  private int jct;
-  public int jcu;
+  private final int lSN;
+  private final int lSO;
+  private final int lSP;
+  private final int lSQ;
+  private final int lSR;
+  public List<String> lSS;
+  private int lST;
   public int op;
-  private d rr;
+  private com.tencent.mm.an.d rr;
+  private int total;
   private int type;
   
   public c(List<String> paramList, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(187474);
-    this.jcn = 1000;
-    this.jco = 0;
-    this.jcp = 1;
-    this.jcq = 2;
-    this.jcr = 3;
-    this.jcs = new LinkedList();
-    this.aZK = paramList;
+    AppMethodBeat.i(187836);
+    this.lSN = 1000;
+    this.lSO = 0;
+    this.lSP = 1;
+    this.lSQ = 2;
+    this.lSR = 3;
+    this.lSS = new LinkedList();
+    this.aJh = paramList;
     this.type = paramInt1;
     this.op = paramInt2;
     this.index = 0;
-    this.jcu = paramList.size();
-    this.jct = paramInt3;
-    AppMethodBeat.o(187474);
+    this.total = paramList.size();
+    this.lST = paramInt3;
+    AppMethodBeat.o(187836);
   }
   
-  public final List<String> bdH()
+  public final List<String> bnb()
   {
-    return this.jcs;
+    return this.lSS;
   }
   
-  public final kx bdI()
+  public final int bnc()
   {
-    return (kx)this.rr.iLL.iLR;
+    AppMethodBeat.i(187846);
+    int i = this.total;
+    int j = this.lSS.size();
+    AppMethodBeat.o(187846);
+    return i - j;
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final kn bnd()
   {
-    AppMethodBeat.i(187475);
+    AppMethodBeat.i(187849);
+    kn localkn = (kn)d.c.b(this.rr.lBS);
+    AppMethodBeat.o(187849);
+    return localkn;
+  }
+  
+  public final int doScene(g paramg, i parami)
+  {
+    AppMethodBeat.i(187840);
     this.callback = parami;
     parami = new d.a();
     parami.uri = "/cgi-bin/micromsg-bin/batchmodcontacttype";
     parami.funcId = 3990;
-    parami.iLP = 0;
+    parami.lBW = 0;
     parami.respCmdId = 0;
-    parami.iLN = new kw();
-    parami.iLO = new kx();
-    this.rr = parami.aXF();
-    parami = (kw)this.rr.iLK.iLR;
-    parami.KON = new LinkedList();
+    parami.lBU = new km();
+    parami.lBV = new kn();
+    this.rr = parami.bgN();
+    parami = (km)d.b.b(this.rr.lBR);
+    parami.RPL = new LinkedList();
     int i = 0;
-    while ((i < this.jct) && (this.aZK.size() > 0))
+    while ((i < this.lST) && (this.aJh.size() > 0))
     {
-      cpm localcpm = new cpm();
-      localcpm.UserName = ((String)this.aZK.remove(0));
-      localcpm.MvC = this.type;
-      localcpm.MvD = this.op;
-      parami.KON.add(localcpm);
+      cyc localcyc = new cyc();
+      localcyc.UserName = ((String)this.aJh.remove(0));
+      localcyc.TGA = this.type;
+      localcyc.TGB = this.op;
+      parami.RPL.add(localcyc);
       i += 1;
     }
-    parami.KOM = parami.KON.size();
+    parami.RPK = parami.RPL.size();
     if ((this.type == 134217728) || (this.type == 33554432)) {
       parami.scene = 1;
     }
     i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(187475);
+    AppMethodBeat.o(187840);
     return i;
   }
   
@@ -110,54 +123,54 @@ public final class c
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(187476);
+    AppMethodBeat.i(187842);
     Log.i("MicroMsg.NetSceneBatchModContactType", "errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     label253:
     int i;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = ((kx)this.rr.iLL.iLR).KOP.iterator();
+      params = ((kn)d.c.b(this.rr.lBS)).RPN.iterator();
       paramInt1 = 0;
       while (params.hasNext())
       {
-        paramArrayOfByte = (cpn)params.next();
-        if (paramArrayOfByte.Ret == 0)
+        paramArrayOfByte = (cyd)params.next();
+        if (paramArrayOfByte.CqV == 0)
         {
-          com.tencent.mm.kernel.g.aAi();
-          as localas = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().Kn(paramArrayOfByte.MvE.UserName);
-          if ((localas != null) && (com.tencent.mm.contact.c.oR(localas.field_type)))
+          h.aHH();
+          as localas = ((n)h.ae(n.class)).bbL().RG(paramArrayOfByte.TGC.UserName);
+          if ((localas != null) && (com.tencent.mm.contact.d.rk(localas.field_type)))
           {
-            switch (paramArrayOfByte.MvE.MvC)
+            switch (paramArrayOfByte.TGC.TGA)
             {
             }
             for (;;)
             {
-              com.tencent.mm.kernel.g.aAi();
-              ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().c(localas.field_username, localas);
-              this.jcs.add(localas.field_username);
+              h.aHH();
+              ((n)h.ae(n.class)).bbL().c(localas.field_username, localas);
+              this.lSS.add(localas.field_username);
               break;
-              if (paramArrayOfByte.MvE.MvD == 1)
+              if (paramArrayOfByte.TGC.TGB == 1)
               {
-                localas.arh();
-                if (paramArrayOfByte.MvE.MvD != 1) {
+                localas.axH();
+                if (paramArrayOfByte.TGC.TGB != 1) {
                   break label298;
                 }
-                localas.arj();
+                localas.axJ();
               }
               for (;;)
               {
-                if (paramArrayOfByte.MvE.MvD != 1) {
+                if (paramArrayOfByte.TGC.TGB != 1) {
                   break label306;
                 }
-                localas.arl();
+                localas.axL();
                 break;
-                localas.ari();
+                localas.axI();
                 break label253;
                 label298:
-                localas.ark();
+                localas.axK();
               }
               label306:
-              localas.arm();
+              localas.axM();
             }
           }
         }
@@ -170,14 +183,14 @@ public final class c
       if (paramInt1 == 0)
       {
         i = paramInt1;
-        if (this.aZK.size() > 0)
+        if (this.aJh.size() > 0)
         {
           if (doScene(dispatcher(), this.callback) < 0)
           {
             Log.e("MicroMsg.NetSceneBatchModContactType", "onGYNetEnd : doScene fail");
             this.callback.onSceneEnd(3, -1, "", this);
           }
-          AppMethodBeat.o(187476);
+          AppMethodBeat.o(187842);
         }
       }
     }
@@ -190,7 +203,7 @@ public final class c
       paramInt3 = -3500;
     }
     params.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(187476);
+    AppMethodBeat.o(187842);
   }
   
   public final int securityLimitCount()
@@ -200,7 +213,7 @@ public final class c
   
   public final q.b securityVerificationChecked(s params)
   {
-    return q.b.iMq;
+    return q.b.lCx;
   }
 }
 

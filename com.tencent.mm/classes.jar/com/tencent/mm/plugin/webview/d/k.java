@@ -5,7 +5,6 @@ import android.content.res.AssetManager;
 import android.text.TextUtils;
 import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.webview.h.a;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
@@ -13,38 +12,37 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.z;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.ag;
+import com.tencent.xweb.ai;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
-import org.apache.commons.a.e;
+import org.apache.commons.a.d;
 
 public final class k
 {
-  private static int IRV;
-  private static String IRW;
-  private static final String IRX;
-  private static String IRY;
-  public h IBw;
-  private WebView IRR;
-  private a IRS;
-  private boolean IRT;
-  private boolean IRU;
+  private static int POl;
+  private static String POm;
+  private static final String POn;
+  private static String POo;
+  private WebView POh;
+  private a POi;
+  private boolean POj;
+  private boolean POk;
+  public h PvJ;
   
   static
   {
-    AppMethodBeat.i(224419);
-    IRV = -1;
-    IRW = null;
-    IRX = com.tencent.mm.loader.j.b.aKB() + "/jscache/";
-    IRY = "window.addEventListener('load', requestInjectJS, false); function requestInjectJS() { console.log('weixin://preInjectJSBridge/start');}";
-    AppMethodBeat.o(224419);
+    AppMethodBeat.i(206627);
+    POl = -1;
+    POm = null;
+    POn = com.tencent.mm.loader.j.b.aSD() + "/jscache/";
+    POo = "window.addEventListener('load', requestInjectJS, false); function requestInjectJS() { console.log('weixin://preInjectJSBridge/start');}";
+    AppMethodBeat.o(206627);
   }
   
   public k(WebView paramWebView, h paramh, a parama)
@@ -54,48 +52,48 @@ public final class k
   
   public k(WebView paramWebView, h paramh, a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(224409);
-    this.IRU = false;
-    this.IRR = paramWebView;
-    this.IBw = paramh;
-    this.IRS = parama;
-    this.IRT = paramBoolean;
+    AppMethodBeat.i(206605);
+    this.POk = false;
+    this.POh = paramWebView;
+    this.PvJ = paramh;
+    this.POi = parama;
+    this.POj = paramBoolean;
     Log.d("MicroMsg.JsLoader", "JsLoader <init>, isWebViewPreload %b", new Object[] { Boolean.valueOf(paramBoolean) });
     Log.i("MicroMsg.JsLoader", "JsLoader <init>, jsapi: %d, this: %d", new Object[] { Integer.valueOf(paramh.hashCode()), Integer.valueOf(hashCode()) });
-    AppMethodBeat.o(224409);
+    AppMethodBeat.o(206605);
   }
   
-  private String aYm(String paramString)
+  private String bkh(String paramString)
   {
-    AppMethodBeat.i(224417);
+    AppMethodBeat.i(206620);
     Log.i("MicroMsg.JsLoader", "tryCopyAsset: %s", new Object[] { paramString });
-    if (IRW != null) {
-      localObject = IRW;
+    if (POm != null) {
+      localObject = POm;
     }
     String str;
     for (;;)
     {
-      str = IRX + (String)localObject + "/" + paramString;
-      if (!s.YS(str)) {
+      str = POn + (String)localObject + "/" + paramString;
+      if (!u.agG(str)) {
         break;
       }
-      AppMethodBeat.o(224417);
+      AppMethodBeat.o(206620);
       return str;
       localObject = BuildInfo.REV.substring(0, Math.min(BuildInfo.REV.length(), 8));
-      IRW = (String)localObject;
+      POm = (String)localObject;
     }
-    a.agi(86);
-    Object localObject = new o(IRX).b(new w()
+    a.anX(86);
+    Object localObject = new q(POn).b(new z()
     {
-      public final boolean accept(o paramAnonymouso, String paramAnonymousString)
+      public final boolean accept(q paramAnonymousq, String paramAnonymousString)
       {
-        AppMethodBeat.i(224408);
-        if (!paramAnonymousString.equals(this.qxk))
+        AppMethodBeat.i(205909);
+        if (!paramAnonymousString.equals(this.tWk))
         {
-          AppMethodBeat.o(224408);
+          AppMethodBeat.o(205909);
           return true;
         }
-        AppMethodBeat.o(224408);
+        AppMethodBeat.o(205909);
         return false;
       }
     });
@@ -105,70 +103,70 @@ public final class k
       int i = 0;
       while (i < j)
       {
-        s.dy(aa.z(localObject[i].mUri), true);
+        u.deleteDir(localObject[i].getPath());
         i += 1;
       }
     }
-    s.boN(s.boZ(str));
+    u.bBD(u.bBT(str));
     try
     {
-      lX(paramString, str);
-      a.agi(87);
-      AppMethodBeat.o(224417);
+      my(paramString, str);
+      a.anX(87);
+      AppMethodBeat.o(206620);
       return str;
     }
     catch (Exception paramString)
     {
       Log.e("MicroMsg.JsLoader", "tryCopyAsset, failed, ", new Object[] { paramString });
-      AppMethodBeat.o(224417);
+      AppMethodBeat.o(206620);
     }
     return null;
   }
   
-  public static boolean b(WebView paramWebView)
+  public static boolean c(WebView paramWebView)
   {
-    AppMethodBeat.i(224415);
-    if (IRV == -1) {
-      IRV = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rSn, 0);
+    AppMethodBeat.i(206614);
+    if (POl == -1) {
+      POl = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vyM, 0);
     }
-    if ((((IRV & 0x1) != 0) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG)) && (paramWebView.supportFeature(2002)))
+    if ((((POl & 0x1) != 0) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG)) && (paramWebView.supportFeature(2002)))
     {
-      AppMethodBeat.o(224415);
+      AppMethodBeat.o(206614);
       return true;
     }
-    AppMethodBeat.o(224415);
+    AppMethodBeat.o(206614);
     return false;
   }
   
-  private String gbm()
+  private String gUg()
   {
-    AppMethodBeat.i(224416);
+    AppMethodBeat.i(206617);
     Log.i("MicroMsg.JsLoader", "WXJS: %s", new Object[] { "jsapi/wxjs.js" });
     try
     {
-      String str2 = new String(e.toByteArray(MMApplicationContext.getContext().getAssets().open("jsapi/wxjs.js")));
+      String str2 = new String(d.toByteArray(MMApplicationContext.getContext().getAssets().open("jsapi/wxjs.js")));
       String str1 = str2;
-      if (!TextUtils.isEmpty(this.IBw.zpY))
+      if (!TextUtils.isEmpty(this.PvJ.EVx))
       {
-        Log.i("MicroMsg.JsLoader", "getWXJS, ranDomStr = %s, jsapi: %d, jsLoader: %d", new Object[] { this.IBw.zpY, Integer.valueOf(this.IBw.hashCode()), Integer.valueOf(hashCode()) });
-        str1 = str2.replaceFirst("\\$\\{dgtVerifyRandomStr\\}", this.IBw.zpY).replaceFirst("\\$\\{dgtVerifyEnabled\\}", "true");
+        Log.i("MicroMsg.JsLoader", "getWXJS, ranDomStr = %s, jsapi: %d, jsLoader: %d", new Object[] { this.PvJ.EVx, Integer.valueOf(this.PvJ.hashCode()), Integer.valueOf(hashCode()) });
+        str1 = str2.replaceFirst("\\$\\{dgtVerifyRandomStr\\}", this.PvJ.EVx).replaceFirst("\\$\\{dgtVerifyEnabled\\}", "true");
       }
-      AppMethodBeat.o(224416);
+      AppMethodBeat.o(206617);
       return str1;
     }
     catch (Exception localException)
     {
       Log.e("MicroMsg.JsLoader", "tryInterceptBridgeScriptRequest, failed, ", new Object[] { localException });
-      AppMethodBeat.o(224416);
+      AppMethodBeat.o(206617);
     }
     return "";
   }
   
-  private static void lX(String paramString1, String paramString2)
+  private static void my(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(224418);
+    AppMethodBeat.i(206622);
     paramString1 = MMApplicationContext.getContext().getAssets().open(paramString1);
-    OutputStream localOutputStream = s.dw(paramString2, false);
+    OutputStream localOutputStream = u.Te(paramString2);
     byte[] arrayOfByte = new byte[1024];
     for (;;)
     {
@@ -181,54 +179,54 @@ public final class k
     paramString1.close();
     localOutputStream.close();
     Log.i("MicroMsg.JsLoader", "copy asset to:".concat(String.valueOf(paramString2)));
-    AppMethodBeat.o(224418);
+    AppMethodBeat.o(206622);
   }
   
-  public final void KY()
+  public final void NO()
   {
-    AppMethodBeat.i(224411);
-    if ((this.IRR == null) || (this.IBw == null))
+    AppMethodBeat.i(206607);
+    if ((this.POh == null) || (this.PvJ == null))
     {
       Log.e("MicroMsg.JsLoader", "ready, viewWV or jsapi is null");
-      AppMethodBeat.o(224411);
+      AppMethodBeat.o(206607);
       return;
     }
-    Object localObject = this.IBw;
+    Object localObject = this.PvJ;
     Log.v("MicroMsg.JsApiHandler", "jsapi init");
-    if (((h)localObject).IRa == null) {
+    if (((h)localObject).PNp == null) {
       Log.w("MicroMsg.JsApiHandler", "jsapi init wv is null");
     }
     for (;;)
     {
       Log.i("MicroMsg.JsLoader", "jsapi init done");
-      if (l.gbo()) {}
+      if (l.gUi()) {}
       try
       {
-        localObject = new String(e.toByteArray(MMApplicationContext.getContext().getAssets().open("jsapi/vconsole.js")));
-        if (this.IRR != null) {
-          this.IRR.evaluateJavascript((String)localObject, null);
+        localObject = new String(d.toByteArray(MMApplicationContext.getContext().getAssets().open("jsapi/vconsole.js")));
+        if (this.POh != null) {
+          this.POh.evaluateJavascript((String)localObject, null);
         }
-        Log.i("MicroMsg.JsLoader", "onTimerExpired, js loaded ret = %b", new Object[] { Boolean.valueOf(this.IRU) });
-        if ((this.IRU) && (this.IRS != null)) {
-          this.IRS.gbn();
+        Log.i("MicroMsg.JsLoader", "onTimerExpired, js loaded ret = %b", new Object[] { Boolean.valueOf(this.POk) });
+        if ((this.POk) && (this.POi != null)) {
+          this.POi.gUh();
         }
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(156L, 1L, 1L, false);
-        if (!this.IRU) {
-          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(156L, 0L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(156L, 1L, 1L, false);
+        if (!this.POk) {
+          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(156L, 0L, 1L, false);
         }
-        AppMethodBeat.o(224411);
+        AppMethodBeat.o(206607);
         return;
-        ((h)localObject).gaX();
-        ((h)localObject).IRa.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + n.a.b("sys:init", null, ((h)localObject).IRj, ((h)localObject).zpY) + ")", new h.23((h)localObject));
-        ((h)localObject).IRa.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + n.a.b("sys:bridged", null, ((h)localObject).IRj, ((h)localObject).zpY) + ")", new h.33((h)localObject));
-        ((h)localObject).yV(true);
-        ((h)localObject).gaY();
-        if ((Util.isNullOrNil(((h)localObject).IRx)) || (((h)localObject).IRa == null)) {
+        ((h)localObject).gTR();
+        ((h)localObject).PNp.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + n.a.b("sys:init", null, ((h)localObject).PNx, ((h)localObject).EVx) + ")", new h.23((h)localObject));
+        ((h)localObject).PNp.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + n.a.b("sys:bridged", null, ((h)localObject).PNx, ((h)localObject).EVx) + ")", new h.33((h)localObject));
+        ((h)localObject).CQ(true);
+        ((h)localObject).gTS();
+        if ((Util.isNullOrNil(((h)localObject).PNN)) || (((h)localObject).PNp == null)) {
           continue;
         }
-        ((h)localObject).IRa.evaluateJavascript(((h)localObject).gp(((h)localObject).IRx, ((h)localObject).IRy), null);
-        ((h)localObject).IRx = null;
-        ((h)localObject).IRy = 0;
+        ((h)localObject).PNp.evaluateJavascript(((h)localObject).gX(((h)localObject).PNN, ((h)localObject).PNO), null);
+        ((h)localObject).PNN = null;
+        ((h)localObject).PNO = 0;
       }
       catch (IOException localIOException)
       {
@@ -240,13 +238,13 @@ public final class k
     }
   }
   
-  public final void aYl(String paramString)
+  public final void bkg(String paramString)
   {
-    AppMethodBeat.i(224412);
-    if ((this.IRR == null) || (this.IBw == null))
+    AppMethodBeat.i(206608);
+    if ((this.POh == null) || (this.PvJ == null))
     {
       Log.e("MicroMsg.JsLoader", "auth, viewWV or jsapi is null");
-      AppMethodBeat.o(224412);
+      AppMethodBeat.o(206608);
       return;
     }
     HashMap localHashMap = new HashMap();
@@ -254,89 +252,89 @@ public final class k
     if (paramString != null) {
       localHashMap.put("fullUrl", paramString);
     }
-    this.IBw.yV(true);
-    this.IBw.b("sys:auth", localHashMap, null);
-    AppMethodBeat.o(224412);
+    this.PvJ.CQ(true);
+    this.PvJ.b("sys:auth", localHashMap, null);
+    AppMethodBeat.o(206608);
   }
   
   public final void detach()
   {
-    AppMethodBeat.i(224410);
+    AppMethodBeat.i(206606);
     Log.v("MicroMsg.JsLoader", "detach");
-    this.IRR = null;
-    this.IBw = null;
-    this.IRS = null;
-    AppMethodBeat.o(224410);
+    this.POh = null;
+    this.PvJ = null;
+    this.POi = null;
+    AppMethodBeat.o(206606);
   }
   
-  public final void gbk()
+  public final void gUe()
   {
-    AppMethodBeat.i(224413);
-    if ((this.IRR == null) || (this.IBw == null))
+    AppMethodBeat.i(206610);
+    if ((this.POh == null) || (this.PvJ == null))
     {
       Log.e("MicroMsg.JsLoader", "auth, viewWV or jsapi is null");
-      AppMethodBeat.o(224413);
+      AppMethodBeat.o(206610);
       return;
     }
     Log.i("MicroMsg.JsLoader", "SPA-Trace, spaHistoryChanged");
     HashMap localHashMap = new HashMap();
-    this.IBw.b("sys:spa:historyChanged", localHashMap, null);
-    AppMethodBeat.o(224413);
+    this.PvJ.b("sys:spa:historyChanged", localHashMap, null);
+    AppMethodBeat.o(206610);
   }
   
-  public final void gbl()
+  public final void gUf()
   {
-    AppMethodBeat.i(224414);
+    AppMethodBeat.i(206612);
     Log.i("MicroMsg.JsLoader", "inject");
-    if (this.IRT)
+    if (this.POj)
     {
       Log.i("MicroMsg.JsLoader", "loadJavaScript jsapi init done by preload");
-      if (this.IBw != null) {
-        this.IBw.yV(true);
+      if (this.PvJ != null) {
+        this.PvJ.CQ(true);
       }
     }
     for (final boolean bool1 = true;; bool1 = false)
     {
-      this.IRU = bool1;
-      AppMethodBeat.o(224414);
+      this.POk = bool1;
+      AppMethodBeat.o(206612);
       return;
-      if ((this.IRR != null) && (this.IBw != null)) {
+      if ((this.POh != null) && (this.PvJ != null)) {
         break;
       }
       Log.e("MicroMsg.JsLoader", "loadJavaScript build, viewWV is null");
     }
-    this.IBw.IRk = true;
+    this.PvJ.PNy = true;
     final long l1 = System.currentTimeMillis();
     bool1 = WebView.isX5();
-    final boolean bool2 = this.IRR.isXWalkKernel();
-    if (b(this.IRR))
+    final boolean bool2 = this.POh.isXWalkKernel();
+    if (c(this.POh))
     {
-      String str = aYm("jsapi/wxjs.js");
+      String str = bkh("jsapi/wxjs.js");
       if (str != null)
       {
         final long l2 = System.currentTimeMillis();
         if (l2 >= 0L)
         {
-          a.agi(84);
-          ag localag = new ag(3, 256, this.IRR);
-          localag.oc(str, "path");
-          this.IRR.evaluateJavascript(localag.toString(), new ValueCallback() {});
+          a.anX(84);
+          ai localai = new ai(3, 256, this.POh);
+          localai.oY(str, "path");
+          this.POh.evaluateJavascript(localai.toString(), new ValueCallback() {});
         }
       }
     }
     for (;;)
     {
-      this.IBw.gaX();
+      this.PvJ.gTR();
       bool1 = true;
       break;
-      a.agi(82);
-      this.IRR.evaluateJavascript(gbm(), new ValueCallback() {});
+      a.anX(82);
+      this.POh.evaluateJavascript(gUg(), new ValueCallback() {});
     }
   }
   
   public static abstract interface a
   {
-    public abstract void gbn();
+    public abstract void gUh();
   }
 }
 

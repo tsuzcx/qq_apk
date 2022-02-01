@@ -14,25 +14,25 @@ public final class bo
   extends MAutoStorage<bn>
   implements e
 {
-  private static final String[] NRG;
   public static final String[] SQL_CREATE;
+  private static final String[] VfD;
   public ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(117170);
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(bn.info, "fmessage_msginfo") };
-    NRG = new String[] { "CREATE INDEX IF NOT EXISTS  fmessageTalkerIndex ON fmessage_msginfo ( talker )" };
+    VfD = new String[] { "CREATE INDEX IF NOT EXISTS  fmessageTalkerIndex ON fmessage_msginfo ( talker )" };
     AppMethodBeat.o(117170);
   }
   
   public bo(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, bn.info, "fmessage_msginfo", NRG);
+    super(paramISQLiteDatabase, bn.info, "fmessage_msginfo", VfD);
     this.db = paramISQLiteDatabase;
   }
   
-  public final bn aEm(String paramString)
+  public final bn aOw(String paramString)
   {
     AppMethodBeat.i(117163);
     if ((paramString == null) || (paramString.length() == 0))
@@ -52,7 +52,7 @@ public final class bo
     return localbn;
   }
   
-  public final boolean aEn(String paramString)
+  public final boolean aOx(String paramString)
   {
     AppMethodBeat.i(117168);
     if ((paramString == null) || (paramString.length() == 0))
@@ -86,7 +86,7 @@ public final class bo
     return false;
   }
   
-  public final bn[] bku(String paramString)
+  public final bn[] bwT(String paramString)
   {
     AppMethodBeat.i(117162);
     Log.d("MicroMsg.FMessageMsgInfoStorage", "getLastFMessageMsgInfo");
@@ -105,10 +105,10 @@ public final class bo
     return paramString;
   }
   
-  public final bn bkv(String paramString)
+  public final bn bwU(String paramString)
   {
     AppMethodBeat.i(117164);
-    paramString = gQ(paramString, 1);
+    paramString = hy(paramString, 1);
     if ((paramString != null) && (paramString.length > 0))
     {
       paramString = paramString[0];
@@ -119,7 +119,7 @@ public final class bo
     return null;
   }
   
-  public final List<bn> eiD()
+  public final List<bn> eSj()
   {
     AppMethodBeat.i(117167);
     Log.d("MicroMsg.FMessageMsgInfoStorage", "getFMsgByType, type = 0");
@@ -137,7 +137,7 @@ public final class bo
     return localArrayList;
   }
   
-  public final bn[] gQ(String paramString, int paramInt)
+  public final bn[] hy(String paramString, int paramInt)
   {
     AppMethodBeat.i(117165);
     if ((paramString == null) || (paramString.length() == 0))

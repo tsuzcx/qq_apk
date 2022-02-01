@@ -1,287 +1,358 @@
 package com.tencent.mm.an;
 
-import com.tencent.mars.cdn.CdnLogic;
-import com.tencent.mars.cdn.CdnLogic.CdnInfoParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bjz;
-import com.tencent.mm.protocal.protobuf.bka;
-import com.tencent.mm.protocal.protobuf.tb;
-import com.tencent.mm.protocal.protobuf.tc;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.protocal.ac;
+import com.tencent.mm.protocal.l;
+import com.tencent.mm.protocal.l.b;
+import com.tencent.mm.protocal.l.c;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
+import com.tencent.mm.protocal.protobuf.dyl;
+import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.protocal.protobuf.eip;
+import com.tencent.mm.protocal.protobuf.jh;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
-public final class d
-  extends q
-  implements m
+public class d
+  extends o
 {
-  public static long iSe;
-  private static Map<String, d.a> iSf;
-  private i callback;
-  private String iSg;
-  private final com.tencent.mm.ak.d rr;
-  int scene;
-  public long startTime;
+  private int funcId;
+  public b lBR;
+  public c lBS;
+  private boolean lBT;
+  private boolean longPolling;
+  private int longPollingTimeout;
+  private int newExtFlag;
+  public int option;
+  private int timeout;
+  byte[] transferHeader;
+  private String uri;
   
-  static
+  private d(a parama1, a parama2, String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, int paramInt4, int paramInt5, boolean paramBoolean2, int paramInt6, boolean paramBoolean3)
   {
-    AppMethodBeat.i(150429);
-    iSe = 0L;
-    iSf = new HashMap();
-    AppMethodBeat.o(150429);
+    AppMethodBeat.i(195605);
+    this.lBR = null;
+    this.lBS = null;
+    this.option = 0;
+    if ((paramBoolean1) && ((parama1 instanceof dyl))) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.lBR = new b(parama1, paramInt1, paramInt2, bool, paramInt5);
+      this.lBS = new c(parama2, paramInt3, paramBoolean1);
+      this.uri = paramString;
+      this.funcId = paramInt1;
+      this.timeout = paramInt4;
+      this.longPolling = paramBoolean2;
+      this.longPollingTimeout = paramInt6;
+      this.newExtFlag = 0;
+      this.transferHeader = null;
+      this.lBT = paramBoolean3;
+      AppMethodBeat.o(195605);
+      return;
+    }
   }
   
-  protected d(int paramInt)
+  public final void addNewExtFlag(int paramInt)
   {
-    AppMethodBeat.i(150424);
-    this.startTime = 0L;
-    this.scene = 0;
-    this.iSg = "";
-    Log.i("MicroMsg.NetSceneGetCDNDns", "summersafecdn init Scene:%d  [%s]", new Object[] { Integer.valueOf(paramInt), Util.getStack() });
-    Object localObject = new com.tencent.mm.ak.d.a();
-    ((com.tencent.mm.ak.d.a)localObject).iLN = new bjz();
-    ((com.tencent.mm.ak.d.a)localObject).iLO = new bka();
-    ((com.tencent.mm.ak.d.a)localObject).uri = "/cgi-bin/micromsg-bin/getcdndns";
-    ((com.tencent.mm.ak.d.a)localObject).funcId = 379;
-    ((com.tencent.mm.ak.d.a)localObject).iLP = 0;
-    ((com.tencent.mm.ak.d.a)localObject).respCmdId = 0;
-    this.rr = ((com.tencent.mm.ak.d.a)localObject).aXF();
-    this.scene = paramInt;
-    localObject = (bjz)this.rr.iLK.iLR;
-    ((bjz)localObject).LTp = "";
-    ((bjz)localObject).Scene = paramInt;
-    AppMethodBeat.o(150424);
+    this.newExtFlag |= paramInt;
   }
   
-  private static CdnLogic.CdnInfoParams a(tb paramtb)
+  public final a bhX()
   {
-    AppMethodBeat.i(150427);
-    CdnLogic.CdnInfoParams localCdnInfoParams = new CdnLogic.CdnInfoParams();
-    localCdnInfoParams.c2CretryIntervalMs = paramtb.Lbe;
-    localCdnInfoParams.c2CrwtimeoutMs = paramtb.Lbg;
-    localCdnInfoParams.c2CshowErrorDelayMs = paramtb.Lbc;
-    localCdnInfoParams.snsretryIntervalMs = paramtb.Lbf;
-    localCdnInfoParams.snsrwtimeoutMs = paramtb.Lbh;
-    localCdnInfoParams.snsshowErrorDelayMs = paramtb.Lbd;
-    AppMethodBeat.o(150427);
-    return localCdnInfoParams;
+    AppMethodBeat.i(292846);
+    a locala = b.b(this.lBR);
+    AppMethodBeat.o(292846);
+    return locala;
   }
   
-  private static String baM()
+  public final a bhY()
   {
-    AppMethodBeat.i(150426);
-    if (!NetStatusUtil.isConnected(MMApplicationContext.getContext()))
-    {
-      AppMethodBeat.o(150426);
-      return null;
-    }
-    if (NetStatusUtil.isWifi(MMApplicationContext.getContext())) {}
-    for (String str = "wifi_" + NetStatusUtil.getConnectedWifiSsid(MMApplicationContext.getContext());; str = "mobile_" + NetStatusUtil.getNetTypeString(MMApplicationContext.getContext()) + "_" + NetStatusUtil.getISPCode(MMApplicationContext.getContext()))
-    {
-      Log.d("MicroMsg.NetSceneGetCDNDns", "cdntra getCurCacheFullPath file:%s", new Object[] { str });
-      if ((str != null) && (str.length() >= 2)) {
-        break;
-      }
-      AppMethodBeat.o(150426);
-      return null;
-    }
-    str = String.format("%x", new Object[] { Integer.valueOf(str.hashCode()) });
-    StringBuilder localStringBuilder = new StringBuilder();
-    f.baN();
-    str = f.baO() + str;
-    AppMethodBeat.o(150426);
-    return str;
+    AppMethodBeat.i(292847);
+    a locala = c.b(this.lBS);
+    AppMethodBeat.o(292847);
+    return locala;
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final void bhZ()
   {
-    AppMethodBeat.i(150425);
-    this.callback = parami;
-    com.tencent.mm.kernel.g.aAf();
-    int i = com.tencent.mm.kernel.a.getUin();
-    if (i == 0)
-    {
-      Log.e("MicroMsg.NetSceneGetCDNDns", "has not set uin.");
-      AppMethodBeat.o(150425);
-      return -1;
-    }
-    if (iSe != i)
-    {
-      iSe = i;
-      iSf.clear();
-    }
-    long l = Util.nowSecond();
-    d.a locala;
-    if (this.scene == 0)
-    {
-      this.iSg = Util.nullAs(baM(), "");
-      locala = (d.a)iSf.get(this.iSg);
-      parami = locala;
-      if (locala == null)
-      {
-        parami = new d.a();
-        iSf.put(this.iSg, parami);
-        Log.i("MicroMsg.NetSceneGetCDNDns", "summersafecdn doScene NEW lastGetResult[%s] path[%s]", new Object[] { parami, this.iSg });
-      }
-      if (parami.iSh)
-      {
-        parami.iSi = l;
-        parami.iSj = l;
-        parami.iSk = 0L;
-      }
-      Log.d("MicroMsg.NetSceneGetCDNDns", "cdntra doscene Sec:%d Hour[%d,%d]", new Object[] { Long.valueOf(l - parami.iSi), Long.valueOf(l - parami.iSj), Long.valueOf(parami.iSk) });
-      if ((l > parami.iSi) && (l - parami.iSi < 10L))
-      {
-        Log.w("MicroMsg.NetSceneGetCDNDns", "Last get dns at %d ago . ignore!, lastGetResult[%s]", new Object[] { Long.valueOf(l - parami.iSi), parami });
-        AppMethodBeat.o(150425);
-        return -1;
-      }
-      if ((l > parami.iSj) && (l - parami.iSj < 3600L) && (parami.iSk >= 90L))
-      {
-        Log.w("MicroMsg.NetSceneGetCDNDns", "in 1 hour , get dns more than 90  (%d). ignore!, lastGetResult[%s]", new Object[] { Long.valueOf(l - parami.iSj), parami });
-        AppMethodBeat.o(150425);
-        return -1;
-      }
-      parami.iSi = l;
-      if ((l < parami.iSj) || (l - parami.iSk > 3600L))
-      {
-        parami.iSj = l;
-        parami.iSk = 0L;
-        this.startTime = l;
-        parami = h.CyF;
-        if (this.scene != 0) {
-          break label577;
-        }
-      }
-    }
-    label577:
-    for (l = 0L;; l = 1L)
-    {
-      parami.idkeyStat(546L, l, 1L, true);
-      i = dispatch(paramg, this.rr, this);
-      AppMethodBeat.o(150425);
-      return i;
-      parami.iSk += 1L;
-      break;
-      this.iSg = "";
-      parami = iSf.values().iterator();
-      if (parami == null) {
-        break;
-      }
-      while (parami.hasNext())
-      {
-        locala = (d.a)parami.next();
-        if (locala != null)
-        {
-          locala.iSi = l;
-          if ((l < locala.iSj) || (l - locala.iSk > 3600L))
-          {
-            locala.iSj = l;
-            locala.iSk = 0L;
-          }
-          else
-          {
-            locala.iSk += 1L;
-          }
-        }
-      }
-      break;
-    }
+    this.option = 1;
+  }
+  
+  public boolean getIsLongPolling()
+  {
+    return this.longPolling;
+  }
+  
+  public int getLongPollingTimeout()
+  {
+    return this.longPollingTimeout;
+  }
+  
+  public int getNewExtFlags()
+  {
+    return this.newExtFlag;
+  }
+  
+  public int getOptions()
+  {
+    return this.option;
+  }
+  
+  public final int getReqCmdId()
+  {
+    AppMethodBeat.i(292845);
+    int i = b.a(this.lBR);
+    AppMethodBeat.o(292845);
+    return i;
+  }
+  
+  public int getTimeOut()
+  {
+    return this.timeout;
+  }
+  
+  public byte[] getTransHeader()
+  {
+    return this.transferHeader;
   }
   
   public final int getType()
   {
-    return 379;
+    return this.funcId;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final String getUri()
   {
-    AppMethodBeat.i(150428);
-    Log.d("MicroMsg.NetSceneGetCDNDns", "summersafecdn onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3);
-    bka localbka = (bka)((com.tencent.mm.ak.d)params).iLL.iLR;
-    if ((paramInt2 != 0) || (paramInt3 != 0) || (localbka.KQK == null))
+    return this.uri;
+  }
+  
+  public boolean keepAlive()
+  {
+    return this.lBT;
+  }
+  
+  public final void setRsaInfo(ac paramac)
+  {
+    AppMethodBeat.i(132306);
+    this.lBR.setRsaInfo(paramac);
+    AppMethodBeat.o(132306);
+  }
+  
+  public static final class a
+  {
+    public int funcId;
+    private boolean lBT;
+    public a lBU;
+    public a lBV;
+    public int lBW = 0;
+    public boolean lBX = true;
+    public boolean longPolling = false;
+    public int longPollingTimeout = 0;
+    public int newExtFlag = 0;
+    public int respCmdId = 0;
+    public int routeInfo = 0;
+    public int timeout = 0;
+    public byte[] transferHeader = null;
+    public String uri;
+    
+    public final void TW(String paramString)
     {
-      h.CyF.a(10769, new Object[] { Integer.valueOf(c.iSd), Integer.valueOf(0), Long.valueOf(this.startTime) });
-      if (localbka.KQK == null) {}
-      for (bool = true;; bool = false)
+      this.uri = paramString;
+    }
+    
+    public final d bgN()
+    {
+      boolean bool5 = true;
+      AppMethodBeat.i(132301);
+      if ((this.lBU == null) || (this.lBV == null) || (Util.isNullOrNil(this.uri)) || (this.funcId <= 0) || (this.lBW == -2147483648) || (this.respCmdId == -2147483648))
       {
-        Log.w("MicroMsg.NetSceneGetCDNDns", "onGYNetEnd: [%d ,%d]  info is null :%b", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(bool) });
-        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-        AppMethodBeat.o(150428);
-        return;
+        boolean bool1;
+        boolean bool2;
+        label75:
+        boolean bool6;
+        boolean bool3;
+        label93:
+        boolean bool4;
+        if (this.lBU == null)
+        {
+          bool1 = true;
+          if (this.lBV != null) {
+            break label191;
+          }
+          bool2 = true;
+          bool6 = Util.isNullOrNil(this.uri);
+          if (this.funcId > 0) {
+            break label196;
+          }
+          bool3 = true;
+          if (this.lBW != -2147483648) {
+            break label201;
+          }
+          bool4 = true;
+          label105:
+          if (this.respCmdId != -2147483648) {
+            break label207;
+          }
+        }
+        for (;;)
+        {
+          localObject = new IllegalArgumentException(String.format("%s %s %s %s %s %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool6), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5) }));
+          AppMethodBeat.o(132301);
+          throw ((Throwable)localObject);
+          bool1 = false;
+          break;
+          label191:
+          bool2 = false;
+          break label75;
+          label196:
+          bool3 = false;
+          break label93;
+          label201:
+          bool4 = false;
+          break label105;
+          label207:
+          bool5 = false;
+        }
       }
-    }
-    params = baM();
-    if ((!Util.isNullOrNil(params)) && (!Util.isNullOrNil(this.iSg)) && (!params.equals(this.iSg)))
-    {
-      Log.i("MicroMsg.NetSceneGetCDNDns", "summersafecdn onGYNetEnd revised cacheFullPath[%s] to [%s]", new Object[] { params, this.iSg });
-      h.CyF.idkeyStat(546L, 6L, 1L, true);
-    }
-    iSf.clear();
-    paramArrayOfByte = null;
-    params = paramArrayOfByte;
-    if (localbka.KQN != null)
-    {
-      params = paramArrayOfByte;
-      if (localbka.KQN.getILen() > 0)
+      Object localObject = new d(this.lBU, this.lBV, this.uri, this.funcId, this.lBW, this.respCmdId, this.lBX, this.timeout, this.routeInfo, this.longPolling, this.longPollingTimeout, this.lBT, (byte)0);
+      if (this.newExtFlag != 0)
       {
-        Log.i("MicroMsg.NetSceneGetCDNDns", "summersafecdn onGYNetEnd cdnrule:%d", new Object[] { Integer.valueOf(localbka.KQN.getILen()) });
-        params = z.a(localbka.KQN);
+        ((d)localObject).addNewExtFlag(this.newExtFlag);
+        ((d)localObject).transferHeader = this.transferHeader;
       }
+      AppMethodBeat.o(132301);
+      return localObject;
     }
-    Object localObject = null;
-    paramArrayOfByte = localObject;
-    if (localbka.KQO != null)
+    
+    public final void bia()
     {
-      paramArrayOfByte = localObject;
-      if (localbka.KQO.getILen() > 0)
+      this.longPolling = true;
+    }
+    
+    public final void bib()
+    {
+      this.longPollingTimeout = 25000;
+    }
+    
+    public final void c(a parama)
+    {
+      this.lBU = parama;
+    }
+    
+    public final void d(a parama)
+    {
+      this.lBV = parama;
+    }
+    
+    public final void setKeepAlive(boolean paramBoolean)
+    {
+      this.lBT = paramBoolean;
+    }
+    
+    public final void vD(int paramInt)
+    {
+      this.funcId = paramInt;
+    }
+    
+    public final void vE(int paramInt)
+    {
+      this.timeout = paramInt;
+    }
+    
+    public final void vF(int paramInt)
+    {
+      this.lBW = paramInt;
+    }
+    
+    public final void vG(int paramInt)
+    {
+      this.respCmdId = paramInt;
+    }
+  }
+  
+  public static final class b
+    extends l.d
+    implements l.b
+  {
+    private int cmdId;
+    private int funcId;
+    public a lBY;
+    private boolean needHeader;
+    
+    public b(a parama, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
+    {
+      AppMethodBeat.i(132302);
+      this.lBY = parama;
+      this.funcId = paramInt1;
+      this.cmdId = paramInt2;
+      this.needHeader = paramBoolean;
+      setRouteInfo(paramInt3);
+      AppMethodBeat.o(132302);
+    }
+    
+    public final int getCmdId()
+    {
+      return this.cmdId;
+    }
+    
+    public final int getFuncId()
+    {
+      return this.funcId;
+    }
+    
+    public final byte[] toProtoBuf()
+    {
+      AppMethodBeat.i(132303);
+      if ((this.lBY instanceof dyl)) {
+        ((dyl)this.lBY).setBaseRequest(l.a(this));
+      }
+      byte[] arrayOfByte = this.lBY.toByteArray();
+      AppMethodBeat.o(132303);
+      return arrayOfByte;
+    }
+  }
+  
+  public static final class c
+    extends l.e
+    implements l.c
+  {
+    private int cmdId;
+    private a lBY = null;
+    private boolean needHeader;
+    
+    public c(a parama, int paramInt, boolean paramBoolean)
+    {
+      this.lBY = parama;
+      this.cmdId = paramInt;
+      this.needHeader = paramBoolean;
+    }
+    
+    public final int fromProtoBuf(byte[] paramArrayOfByte)
+    {
+      AppMethodBeat.i(132304);
+      this.lBY = this.lBY.parseFrom(paramArrayOfByte);
+      if (!(this.lBY instanceof eip))
       {
-        Log.i("MicroMsg.NetSceneGetCDNDns", "summersafecdn onGYNetEnd safecdnrule:%d", new Object[] { Integer.valueOf(localbka.KQO.getILen()) });
-        paramArrayOfByte = z.a(localbka.KQO);
+        l.a(this, ((dyy)this.lBY).getBaseResponse());
+        i = ((dyy)this.lBY).getBaseResponse().CqV;
+        AppMethodBeat.o(132304);
+        return i;
       }
+      int i = ((eip)this.lBY).getRet();
+      AppMethodBeat.o(132304);
+      return i;
     }
-    Log.i("MicroMsg.NetSceneGetCDNDns", "summersafecdn onGYNetEnd FakeDnsInfo:%s", new Object[] { localbka.KQP });
-    if (localbka.KQP != null) {
-      Log.i("MicroMsg.NetSceneGetCDNDns", "summersafecdn onGYNetEnd FakeDnsInfo FakeUin:%d NewAuthKey:%s", new Object[] { Integer.valueOf(localbka.KQP.rBx), localbka.KQP.Lbo });
-    }
-    if (!f.baR().a(localbka.KQK, localbka.KQL, localbka.KQM, params, paramArrayOfByte, localbka.KQP))
+    
+    public final int getCmdId()
     {
-      Log.e("MicroMsg.NetSceneGetCDNDns", "onGYNetEnd setCDNDnsInfo failed ");
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(150428);
-      return;
-    }
-    Log.i("MicroMsg.NetSceneGetCDNDns", "getcdndns defaultcfg %s, disastercfg %s, getcdninterval %d", new Object[] { localbka.KQR, localbka.KQS, Integer.valueOf(localbka.KQQ) });
-    if ((localbka.KQR != null) && (localbka.KQS != null)) {
-      CdnLogic.setCdnInfoParams(a(localbka.KQR), a(localbka.KQS), localbka.KQQ);
-    }
-    if (localbka.LTq == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      CdnLogic.setUseIPv6Cdn(bool);
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(150428);
-      return;
+      return this.cmdId;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.an.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cic;
-import com.tencent.mm.protocal.protobuf.cid;
+import com.tencent.mm.protocal.protobuf.cqy;
+import com.tencent.mm.protocal.protobuf.cqz;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class m
@@ -17,33 +17,33 @@ public final class m
   implements com.tencent.mm.network.m
 {
   private i callback;
-  public int dYx;
-  public String ixZ;
-  public String rCB;
+  public int fSo;
+  public String lnp;
   private d rr;
+  public String vil;
   
   public m(String paramString1, String paramString2, int paramInt, String paramString3)
   {
     AppMethodBeat.i(23534);
     this.callback = null;
     this.rr = null;
-    this.rCB = paramString3;
-    this.ixZ = paramString2;
-    this.dYx = paramInt;
-    this.rCB = paramString3;
+    this.vil = paramString3;
+    this.lnp = paramString2;
+    this.fSo = paramInt;
+    this.vil = paramString3;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new cic();
-    ((d.a)localObject).iLO = new cid();
+    ((d.a)localObject).lBU = new cqy();
+    ((d.a)localObject).lBV = new cqz();
     ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/rank/addlike";
     ((d.a)localObject).funcId = 1041;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (cic)this.rr.iLK.iLR;
-    ((cic)localObject).rJH = paramString2;
-    ((cic)localObject).username = paramString1;
-    ((cic)localObject).dYx = paramInt;
-    ((cic)localObject).ixr = paramString3;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (cqy)d.b.b(this.rr.lBR);
+    ((cqy)localObject).vpp = paramString2;
+    ((cqy)localObject).username = paramString1;
+    ((cqy)localObject).fSo = paramInt;
+    ((cqy)localObject).lmG = paramString3;
     AppMethodBeat.o(23534);
   }
   

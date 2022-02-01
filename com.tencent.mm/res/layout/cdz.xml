@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.finder.view.SimpleTouchableLayout android:id="@id/fbg" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.view.FinderMediaBanner android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="200.0dip">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/keh" android:visibility="gone" android:layout_width="@dimen/bw" android:layout_height="@dimen/bw" android:src="@raw/icons_filled_play" app:iconAlpha="0.5" app:iconColor="@color/am" />
+    </com.tencent.mm.plugin.finder.view.FinderMediaBanner>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/ebe" android:visibility="invisible" android:layout_width="@dimen/co" android:layout_height="@dimen/co" android:src="@raw/icon_filled_awesome" app:iconColor="@color/Red_90" />
+</com.tencent.mm.plugin.finder.view.SimpleTouchableLayout>

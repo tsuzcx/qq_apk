@@ -5,10 +5,10 @@ import com.tencent.mm.plugin.report.service.h;
 
 public final class i
 {
-  public static void am(int paramInt1, int paramInt2, int paramInt3)
+  public static void ar(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(25509);
-    h.CyF.a(13254, new Object[] { Integer.valueOf(0), Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(-1) });
+    h.IzE.a(13254, new Object[] { Integer.valueOf(0), Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(-1) });
     AppMethodBeat.o(25509);
   }
 }

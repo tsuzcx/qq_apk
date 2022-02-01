@@ -7,24 +7,24 @@ import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/artists/FilterArtist;", "Lcom/tencent/mm/artists/BaseArtist;", "Lcom/tencent/mm/cache/FilterCache;", "()V", "TAG", "", "getType", "Lcom/tencent/mm/artists/ArtistType;", "onAlive", "", "onDeadDraw", "canvas", "Landroid/graphics/Canvas;", "onDraw", "onUndo", "select", "index", "", "colorWeight", "", "plugin-photoedit-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/artists/FilterArtist;", "Lcom/tencent/mm/artists/BaseArtist;", "Lcom/tencent/mm/cache/FilterCache;", "()V", "TAG", "", "getType", "Lcom/tencent/mm/artists/ArtistType;", "onAlive", "", "onDeadDraw", "canvas", "Landroid/graphics/Canvas;", "onDraw", "onUndo", "select", "index", "", "colorWeight", "", "plugin-photoedit-sdk_release"})
 public final class f
   extends b<e>
 {
   private final String TAG = "MicroMsg.FilterArtist";
   
-  public final a XS()
+  public final a acy()
   {
-    return a.drQ;
+    return a.fkC;
   }
   
-  public final void XT() {}
+  public final void acz() {}
   
-  public final void d(Canvas paramCanvas)
+  public final void e(Canvas paramCanvas)
   {
     AppMethodBeat.i(163141);
-    p.h(paramCanvas, "canvas");
-    e locale = (e)XU();
+    p.k(paramCanvas, "canvas");
+    e locale = (e)acA();
     if (locale != null) {
       locale.a(paramCanvas, false);
     }
@@ -36,12 +36,12 @@ public final class f
   {
     AppMethodBeat.i(163139);
     super.onAlive();
-    e locale = (e)XU();
+    e locale = (e)acA();
     if (locale != null)
     {
-      com.tencent.mm.bt.b localb = getPresenter();
-      p.g(localb, "presenter");
-      locale.gpE = localb.gtm();
+      com.tencent.mm.ca.b localb = getPresenter();
+      p.j(localb, "presenter");
+      locale.iTM = localb.hoy();
       AppMethodBeat.o(163139);
       return;
     }
@@ -51,8 +51,8 @@ public final class f
   public final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(163140);
-    p.h(paramCanvas, "canvas");
-    e locale = (e)XU();
+    p.k(paramCanvas, "canvas");
+    e locale = (e)acA();
     if (locale != null) {
       locale.a(paramCanvas, false);
     }
@@ -62,7 +62,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.e.f
  * JD-Core Version:    0.7.0.1
  */

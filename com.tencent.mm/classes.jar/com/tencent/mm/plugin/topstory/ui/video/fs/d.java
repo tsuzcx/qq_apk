@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.video.b;
 import com.tencent.mm.plugin.topstory.ui.video.e;
 import com.tencent.mm.plugin.topstory.ui.video.n;
-import com.tencent.mm.protocal.protobuf.eiw;
+import com.tencent.mm.protocal.protobuf.esy;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -13,40 +13,40 @@ import java.util.List;
 public final class d
   extends e
 {
-  protected b Gmr;
-  public boolean Gol = false;
+  protected b MZd;
+  public boolean NaY = false;
   
   public d(b paramb)
   {
     super(paramb);
-    this.Gmr = paramb;
+    this.MZd = paramb;
   }
   
-  public final int abY(int paramInt)
+  public final int ajE(int paramInt)
   {
     return 0;
   }
   
-  public final void t(final List<eiw> paramList, boolean paramBoolean)
+  public final void u(final List<esy> paramList, boolean paramBoolean)
   {
     AppMethodBeat.i(126248);
-    super.t(paramList, paramBoolean);
+    super.u(paramList, paramBoolean);
     MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(126247);
-        Object localObject1 = d.a(d.this).fyO();
-        int i = ((n)localObject1).fzy();
+        Object localObject1 = d.a(d.this).gqL();
+        int i = ((n)localObject1).grz();
         Log.i("MicroMsg.TopStory.TopStoryFSVideoAdapter", "callbackToSuccess originSize: %d insertSize %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramList.size()) });
         List localList = paramList;
         try
         {
           if (!Util.isNullOrNil(localList)) {
-            ((n)localObject1).GW().addAll(localList);
+            ((n)localObject1).eiH().addAll(localList);
           }
           localObject1 = d.this;
-          ((d)localObject1).ci(i + ((d)localObject1).getHeadersCount());
+          ((d)localObject1).cL(i + ((d)localObject1).gqR());
           AppMethodBeat.o(126247);
           return;
         }
@@ -61,7 +61,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.d
  * JD-Core Version:    0.7.0.1
  */

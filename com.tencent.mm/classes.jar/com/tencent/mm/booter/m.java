@@ -2,7 +2,7 @@ package com.tencent.mm.booter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.i;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.n.f;
 import com.tencent.mm.n.h;
@@ -15,9 +15,9 @@ public final class m
   public static void run()
   {
     AppMethodBeat.i(19897);
-    int i = h.aqJ().getInt("EnableFlockMultiProcSPProb", 0);
-    bg.aVF();
-    int j = i.ch(c.getUin(), 101);
+    int i = h.axc().getInt("EnableFlockMultiProcSPProb", 0);
+    bh.beI();
+    int j = i.cA(c.getUin(), 101);
     if ((CrashReportFactory.hasDebuger()) || ((i > 0) && (j >= 0) && (j <= i))) {}
     for (boolean bool = true;; bool = false)
     {

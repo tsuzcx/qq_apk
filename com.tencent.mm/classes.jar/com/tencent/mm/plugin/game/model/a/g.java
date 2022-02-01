@@ -26,7 +26,7 @@ public final class g
     super(paramISQLiteDatabase, d.info, "GameSilentDownload", null);
   }
   
-  public final d aAs(String paramString)
+  public final d aKe(String paramString)
   {
     AppMethodBeat.i(41689);
     if (Util.isNullOrNil(paramString))
@@ -56,7 +56,7 @@ public final class g
     return null;
   }
   
-  public final boolean aAt(String paramString)
+  public final boolean aKf(String paramString)
   {
     AppMethodBeat.i(41693);
     if (Util.isNullOrNil(paramString))
@@ -65,7 +65,7 @@ public final class g
       AppMethodBeat.o(41693);
       return false;
     }
-    paramString = aAs(paramString);
+    paramString = aKe(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(41693);
@@ -78,7 +78,7 @@ public final class g
     return bool;
   }
   
-  public final boolean aAu(String paramString)
+  public final boolean aKg(String paramString)
   {
     AppMethodBeat.i(41694);
     if (Util.isNullOrNil(paramString))
@@ -87,7 +87,7 @@ public final class g
       AppMethodBeat.o(41694);
       return false;
     }
-    paramString = aAs(paramString);
+    paramString = aKe(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(41694);
@@ -100,7 +100,7 @@ public final class g
     return bool;
   }
   
-  public final boolean aAv(String paramString)
+  public final boolean aKh(String paramString)
   {
     AppMethodBeat.i(41695);
     if (Util.isNullOrNil(paramString))
@@ -109,7 +109,7 @@ public final class g
       AppMethodBeat.o(41695);
       return false;
     }
-    paramString = aAs(paramString);
+    paramString = aKe(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(41695);
@@ -122,7 +122,7 @@ public final class g
     return bool;
   }
   
-  public final boolean aAw(String paramString)
+  public final boolean aKi(String paramString)
   {
     AppMethodBeat.i(41696);
     if (Util.isNullOrNil(paramString))
@@ -131,7 +131,7 @@ public final class g
       AppMethodBeat.o(41696);
       return false;
     }
-    paramString = aAs(paramString);
+    paramString = aKe(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(41696);
@@ -144,7 +144,7 @@ public final class g
     return bool;
   }
   
-  public final boolean aAx(String paramString)
+  public final boolean aKj(String paramString)
   {
     AppMethodBeat.i(41697);
     if (Util.isNullOrNil(paramString))
@@ -153,7 +153,7 @@ public final class g
       AppMethodBeat.o(41697);
       return false;
     }
-    paramString = aAs(paramString);
+    paramString = aKe(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(41697);
@@ -166,7 +166,7 @@ public final class g
     return bool;
   }
   
-  public final boolean ay(String paramString, long paramLong)
+  public final boolean az(String paramString, long paramLong)
   {
     AppMethodBeat.i(41691);
     if ((Util.isNullOrNil(paramString)) || (paramLong < 0L))
@@ -181,7 +181,7 @@ public final class g
     return bool;
   }
   
-  public final boolean bH(String paramString, boolean paramBoolean)
+  public final boolean bM(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(41692);
     if (Util.isNullOrNil(paramString))
@@ -190,7 +190,7 @@ public final class g
       AppMethodBeat.o(41692);
       return false;
     }
-    paramString = aAs(paramString);
+    paramString = aKe(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(41692);
@@ -203,7 +203,29 @@ public final class g
     return paramBoolean;
   }
   
-  public final List<d> dWc()
+  public final boolean eH(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(41698);
+    if (Util.isNullOrNil(paramString))
+    {
+      Log.i("MicroMsg.GameSilentDownloadStorage", "updateForceUpdateFlag: appid is null");
+      AppMethodBeat.o(41698);
+      return false;
+    }
+    paramString = aKe(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(41698);
+      return false;
+    }
+    paramString.field_forceUpdateFlag = paramInt;
+    boolean bool = super.update(paramString, new String[0]);
+    Log.i("MicroMsg.GameSilentDownloadStorage", "updateForceUpdateFlag, ret:%b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(41698);
+    return bool;
+  }
+  
+  public final List<d> ezk()
   {
     AppMethodBeat.i(41690);
     Cursor localCursor = rawQuery(String.format("select * from %s", new Object[] { "GameSilentDownload" }), new String[0]);
@@ -232,32 +254,10 @@ public final class g
     AppMethodBeat.o(41690);
     return null;
   }
-  
-  public final boolean ej(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(41698);
-    if (Util.isNullOrNil(paramString))
-    {
-      Log.i("MicroMsg.GameSilentDownloadStorage", "updateForceUpdateFlag: appid is null");
-      AppMethodBeat.o(41698);
-      return false;
-    }
-    paramString = aAs(paramString);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(41698);
-      return false;
-    }
-    paramString.field_forceUpdateFlag = paramInt;
-    boolean bool = super.update(paramString, new String[0]);
-    Log.i("MicroMsg.GameSilentDownloadStorage", "updateForceUpdateFlag, ret:%b", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(41698);
-    return bool;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.a.g
  * JD-Core Version:    0.7.0.1
  */

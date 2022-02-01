@@ -1,56 +1,45 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gw;
-import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.storagebase.h;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.f.c.hd;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class cq
-  extends MAutoStorage<gw>
+  extends hd
 {
-  public static final String[] SQL_CREATE;
-  public h iFy;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(133310);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(cp.info, "TablesVersion") };
-    AppMethodBeat.o(133310);
+    AppMethodBeat.i(133308);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[2];
+    localMAutoDBInfo.columns = new String[3];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localMAutoDBInfo.columns[0] = "tableHash";
+    localMAutoDBInfo.colsMap.put("tableHash", "INTEGER PRIMARY KEY ");
+    localStringBuilder.append(" tableHash INTEGER PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.primaryKey = "tableHash";
+    localMAutoDBInfo.columns[1] = "tableSQLMD5";
+    localMAutoDBInfo.colsMap.put("tableSQLMD5", "TEXT");
+    localStringBuilder.append(" tableSQLMD5 TEXT");
+    localMAutoDBInfo.columns[2] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
+    AppMethodBeat.o(133308);
   }
   
-  public cq(h paramh)
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    super(paramh, cp.info, "TablesVersion", gw.INDEX_CREATE);
-    this.iFy = paramh;
-  }
-  
-  public final ConcurrentHashMap<Integer, String> gEy()
-  {
-    AppMethodBeat.i(133309);
-    Cursor localCursor = this.iFy.rawQuery("select * from TablesVersion", new String[0]);
-    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(133309);
-      return localConcurrentHashMap;
-    }
-    try
-    {
-      if (localCursor.moveToNext()) {}
-      return localConcurrentHashMap1;
-    }
-    finally
-    {
-      localCursor.close();
-      AppMethodBeat.o(133309);
-    }
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.cq
  * JD-Core Version:    0.7.0.1
  */

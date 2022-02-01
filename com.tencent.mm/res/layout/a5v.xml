@@ -3,5 +3,5 @@
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.tencent.mm.plugin.flash.FaceFlashPreviewLayout android:id="@id/d5x" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <com.tencent.mm.plugin.flash.FaceFlashProcessLayout android:id="@id/d5y" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/d5u" android:padding="@dimen/ct" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:src="@raw/icons_filled_close" app:iconColor="@color/BW_0" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/d5u" android:padding="@dimen/ct" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:src="@raw/icons_filled_close" android:contentDescription="@string/sz" app:iconColor="@color/BW_0" />
 </RelativeLayout>

@@ -1,147 +1,105 @@
 package com.tencent.mm.plugin.profile.ui.newbizinfo.b;
 
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.r;
-import com.tencent.mm.plugin.websearch.api.ai;
-import com.tencent.mm.protocal.protobuf.qa;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.f.c.fv;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.lang.reflect.Field;
 import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public final class g
+  extends fv
 {
-  public static int Vb(int paramInt)
+  public static IAutoDBItem.MAutoDBInfo lqK;
+  
+  static
   {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 42: 
-    case 43: 
-    case 57: 
-      return 1;
-    case 17: 
-    case 41: 
-      return 2;
-    case 39: 
-    case 87: 
-    case 89: 
-      return 3;
-    }
-    return 4;
+    AppMethodBeat.i(27585);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[17];
+    localMAutoDBInfo.columns = new String[18];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localMAutoDBInfo.columns[0] = "username";
+    localMAutoDBInfo.colsMap.put("username", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" username TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.primaryKey = "username";
+    localMAutoDBInfo.columns[1] = "originalArticleCount";
+    localMAutoDBInfo.colsMap.put("originalArticleCount", "INTEGER default '1' ");
+    localStringBuilder.append(" originalArticleCount INTEGER default '1' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[2] = "friendSubscribeCount";
+    localMAutoDBInfo.colsMap.put("friendSubscribeCount", "INTEGER default '1' ");
+    localStringBuilder.append(" friendSubscribeCount INTEGER default '1' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[3] = "allArticleWording";
+    localMAutoDBInfo.colsMap.put("allArticleWording", "TEXT");
+    localStringBuilder.append(" allArticleWording TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[4] = "historyArticlesUrl";
+    localMAutoDBInfo.colsMap.put("historyArticlesUrl", "TEXT");
+    localStringBuilder.append(" historyArticlesUrl TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[5] = "userRole";
+    localMAutoDBInfo.colsMap.put("userRole", "INTEGER default '1' ");
+    localStringBuilder.append(" userRole INTEGER default '1' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[6] = "banReason";
+    localMAutoDBInfo.colsMap.put("banReason", "TEXT");
+    localStringBuilder.append(" banReason TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[7] = "showRecommendArticle";
+    localMAutoDBInfo.colsMap.put("showRecommendArticle", "INTEGER default '0' ");
+    localStringBuilder.append(" showRecommendArticle INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[8] = "showService";
+    localMAutoDBInfo.colsMap.put("showService", "INTEGER default '0' ");
+    localStringBuilder.append(" showService INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[9] = "messageListStr";
+    localMAutoDBInfo.colsMap.put("messageListStr", "TEXT");
+    localStringBuilder.append(" messageListStr TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[10] = "serviceInfoListStr";
+    localMAutoDBInfo.colsMap.put("serviceInfoListStr", "TEXT");
+    localStringBuilder.append(" serviceInfoListStr TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[11] = "bizAccountListStr";
+    localMAutoDBInfo.colsMap.put("bizAccountListStr", "TEXT");
+    localStringBuilder.append(" bizAccountListStr TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[12] = "cacheTime";
+    localMAutoDBInfo.colsMap.put("cacheTime", "LONG default '0' ");
+    localStringBuilder.append(" cacheTime LONG default '0' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[13] = "decryptUserName";
+    localMAutoDBInfo.colsMap.put("decryptUserName", "TEXT default '' ");
+    localStringBuilder.append(" decryptUserName TEXT default '' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[14] = "hiddenAvatar";
+    localMAutoDBInfo.colsMap.put("hiddenAvatar", "INTEGER default '0' ");
+    localStringBuilder.append(" hiddenAvatar INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[15] = "hiddenButtonBeforeFocus";
+    localMAutoDBInfo.colsMap.put("hiddenButtonBeforeFocus", "INTEGER default '0' ");
+    localStringBuilder.append(" hiddenButtonBeforeFocus INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[16] = "newBanReason";
+    localMAutoDBInfo.colsMap.put("newBanReason", "TEXT");
+    localStringBuilder.append(" newBanReason TEXT");
+    localMAutoDBInfo.columns[17] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    lqK = localMAutoDBInfo;
+    AppMethodBeat.o(27585);
   }
   
-  public static void a(qa paramqa, Context paramContext, String paramString)
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(27582);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("rawUrl", paramqa.value);
-    localIntent.putExtra("geta8key_username", paramString);
-    localIntent.putExtra("geta8key_scene", 59);
-    com.tencent.mm.br.c.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
-    AppMethodBeat.o(27582);
-  }
-  
-  public static void b(qa paramqa, Context paramContext, String paramString)
-  {
-    Object localObject1 = null;
-    AppMethodBeat.i(27583);
-    if (Util.isNullOrNil(paramqa.value))
-    {
-      Log.d("MicroMsg.NewBizInfoUtil", "jumpToWeApp serviceInfo.id:%s value is null", new Object[] { Integer.valueOf(paramqa.id) });
-      AppMethodBeat.o(27583);
-      return;
-    }
-    Log.d("MicroMsg.NewBizInfoUtil", "jumpToWeApp value:%s", new Object[] { paramqa.value });
-    try
-    {
-      Object localObject2 = new JSONObject(paramqa.value);
-      paramqa = com.tencent.mm.al.g.fJ(paramString);
-      AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
-      localAppBrandStatObject.scene = 1102;
-      localAppBrandStatObject.dCw = paramString;
-      paramString = (r)com.tencent.mm.kernel.g.af(r.class);
-      String str = ((JSONObject)localObject2).optString("userName");
-      localObject2 = ((JSONObject)localObject2).optString("pagePath");
-      if (paramqa == null) {}
-      for (paramqa = localObject1;; paramqa = paramqa.field_appId)
-      {
-        paramString.a(paramContext, str, null, 0, 0, (String)localObject2, localAppBrandStatObject, paramqa);
-        AppMethodBeat.o(27583);
-        return;
-      }
-      return;
-    }
-    catch (JSONException paramqa)
-    {
-      AppMethodBeat.o(27583);
-    }
-  }
-  
-  public static int bQ(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(27584);
-    if ((paramString != null) && (ab.IT(paramString)))
-    {
-      AppMethodBeat.o(27584);
-      return 3;
-    }
-    switch (paramInt)
-    {
-    case 3: 
-    case 4: 
-    case 5: 
-    case 8: 
-    case 10: 
-    default: 
-      AppMethodBeat.o(27584);
-      return 0;
-    case 1: 
-    case 2: 
-      AppMethodBeat.o(27584);
-      return paramInt;
-    }
-    AppMethodBeat.o(27584);
-    return 3;
-  }
-  
-  public static void c(qa paramqa, Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(231963);
-    if (Util.isNullOrNil(paramqa.value))
-    {
-      Log.d("MicroMsg.NewBizInfoUtil", "jumpToSearch serviceInfo.id: %s value is null", new Object[] { Integer.valueOf(paramqa.id) });
-      AppMethodBeat.o(231963);
-      return;
-    }
-    paramqa = paramqa.value;
-    Log.i("MicroMsg.NewBizInfoUtil", "jumpToSearch username: %s, suggestData: %s", new Object[] { paramString, paramqa });
-    Intent localIntent = ai.fXX();
-    localIntent.putExtra("ftsneedkeyboard", true);
-    localIntent.putExtra("ftsbizscene", 76);
-    localIntent.putExtra("ftsType", 2);
-    Map localMap = ai.h(76, false, 2);
-    localMap.put("userName", paramString);
-    if (!Util.isNullOrNil(paramqa)) {
-      localMap.put("thirdExtParam", paramqa);
-    }
-    localIntent.putExtra("rawUrl", ai.bd(localMap));
-    localIntent.putExtra("key_load_js_without_delay", true);
-    localIntent.putExtra("ftsbizusername", paramString);
-    localIntent.addFlags(67108864);
-    com.tencent.mm.br.c.b(paramContext, "webview", ".ui.tools.fts.FTSSearchTabWebViewUI", localIntent);
-    AppMethodBeat.o(231963);
+    return lqK;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.b.g
  * JD-Core Version:    0.7.0.1
  */

@@ -11,6 +11,7 @@ import com.tencent.tav.decoder.EncoderWriter;
 import com.tencent.tav.decoder.RenderContext;
 import com.tencent.tav.decoder.RenderContextParams;
 import com.tencent.tav.decoder.logger.Logger;
+import com.tencent.tav.report.AverageTimeReporter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -27,7 +28,7 @@ public class AssetWriter
   private EncoderWriter encoderWriter;
   private CMTime endTime;
   private int errCode;
-  private HashMap<AssetWriterInput, AssetWriterStatus> inputStatusHashMap;
+  private HashMap<AssetWriterInput, AssetWriter.AssetWriterStatus> inputStatusHashMap;
   private List<AssetWriterInput> inputs;
   private List<MetadataItem> metadata;
   private String outputFileType;
@@ -36,24 +37,24 @@ public class AssetWriter
   private RenderContextParams renderContextParams;
   private boolean shouldOptimizeForNetworkUse;
   private CMTime startTime;
-  private AssetWriterStatus status;
+  private AssetWriter.AssetWriterStatus status;
   private String videoOutputPath;
   
   public AssetWriter(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(217792);
+    AppMethodBeat.i(188831);
     this.inputs = new ArrayList();
     this.inputStatusHashMap = new HashMap();
     this.startTime = new CMTime(0L);
     this.endTime = new CMTime(9223372036854775807L);
     this.videoOutputPath = paramString1;
     this.outputFileType = paramString2;
-    AppMethodBeat.o(217792);
+    AppMethodBeat.o(188831);
   }
   
   private void updateAssetStatus()
   {
-    AppMethodBeat.i(217801);
+    AppMethodBeat.i(188852);
     Iterator localIterator = this.inputs.iterator();
     int i = 1;
     AssetWriterInput localAssetWriterInput;
@@ -61,7 +62,7 @@ public class AssetWriter
     if (localIterator.hasNext())
     {
       localAssetWriterInput = (AssetWriterInput)localIterator.next();
-      if (this.inputStatusHashMap.get(localAssetWriterInput) == AssetWriterStatus.AssetWriterStatusCompleted) {}
+      if (this.inputStatusHashMap.get(localAssetWriterInput) == AssetWriter.AssetWriterStatus.AssetWriterStatusCompleted) {}
       for (j = 1;; j = 0)
       {
         i = j & i;
@@ -70,8 +71,8 @@ public class AssetWriter
     }
     if (i != 0)
     {
-      this.status = AssetWriterStatus.AssetWriterStatusCancelled;
-      AppMethodBeat.o(217801);
+      this.status = AssetWriter.AssetWriterStatus.AssetWriterStatusCancelled;
+      AppMethodBeat.o(188852);
       return;
     }
     localIterator = this.inputs.iterator();
@@ -79,7 +80,7 @@ public class AssetWriter
     if (localIterator.hasNext())
     {
       localAssetWriterInput = (AssetWriterInput)localIterator.next();
-      if ((this.inputStatusHashMap.get(localAssetWriterInput) == AssetWriterStatus.AssetWriterStatusWriting) || (this.inputStatusHashMap.get(localAssetWriterInput) == AssetWriterStatus.AssetWriterStatusCompleted)) {}
+      if ((this.inputStatusHashMap.get(localAssetWriterInput) == AssetWriter.AssetWriterStatus.AssetWriterStatusWriting) || (this.inputStatusHashMap.get(localAssetWriterInput) == AssetWriter.AssetWriterStatus.AssetWriterStatusCompleted)) {}
       for (j = 1;; j = 0)
       {
         i = j & i;
@@ -88,18 +89,18 @@ public class AssetWriter
     }
     if (i != 0)
     {
-      this.status = AssetWriterStatus.AssetWriterStatusWriting;
-      AppMethodBeat.o(217801);
+      this.status = AssetWriter.AssetWriterStatus.AssetWriterStatusWriting;
+      AppMethodBeat.o(188852);
       return;
     }
     localIterator = this.inputs.iterator();
     while (localIterator.hasNext())
     {
       localAssetWriterInput = (AssetWriterInput)localIterator.next();
-      if (this.inputStatusHashMap.get(localAssetWriterInput) == AssetWriterStatus.AssetWriterStatusFailed)
+      if (this.inputStatusHashMap.get(localAssetWriterInput) == AssetWriter.AssetWriterStatus.AssetWriterStatusFailed)
       {
-        this.status = AssetWriterStatus.AssetWriterStatusFailed;
-        AppMethodBeat.o(217801);
+        this.status = AssetWriter.AssetWriterStatus.AssetWriterStatusFailed;
+        AppMethodBeat.o(188852);
         return;
       }
     }
@@ -107,39 +108,39 @@ public class AssetWriter
     while (localIterator.hasNext())
     {
       localAssetWriterInput = (AssetWriterInput)localIterator.next();
-      if (this.inputStatusHashMap.get(localAssetWriterInput) == AssetWriterStatus.AssetWriterStatusCancelled)
+      if (this.inputStatusHashMap.get(localAssetWriterInput) == AssetWriter.AssetWriterStatus.AssetWriterStatusCancelled)
       {
-        this.status = AssetWriterStatus.AssetWriterStatusCancelled;
-        AppMethodBeat.o(217801);
+        this.status = AssetWriter.AssetWriterStatus.AssetWriterStatusCancelled;
+        AppMethodBeat.o(188852);
         return;
       }
     }
-    AppMethodBeat.o(217801);
+    AppMethodBeat.o(188852);
   }
   
   public void addInput(AssetWriterInput paramAssetWriterInput)
   {
-    AppMethodBeat.i(217795);
+    AppMethodBeat.i(188835);
     if (canAddInput(paramAssetWriterInput))
     {
       this.inputs.add(paramAssetWriterInput);
       paramAssetWriterInput.addStatusListener(this);
     }
-    AppMethodBeat.o(217795);
+    AppMethodBeat.o(188835);
   }
   
   public boolean canAddInput(AssetWriterInput paramAssetWriterInput)
   {
-    AppMethodBeat.i(217794);
+    AppMethodBeat.i(188834);
     Iterator localIterator = this.inputs.iterator();
     while (localIterator.hasNext()) {
       if (((AssetWriterInput)localIterator.next()).getMediaType() == paramAssetWriterInput.getMediaType())
       {
-        AppMethodBeat.o(217794);
+        AppMethodBeat.o(188834);
         return false;
       }
     }
-    AppMethodBeat.o(217794);
+    AppMethodBeat.o(188834);
     return true;
   }
   
@@ -147,7 +148,7 @@ public class AssetWriter
   {
     int j = 2;
     int i = -1;
-    AppMethodBeat.i(217793);
+    AppMethodBeat.i(188833);
     String str;
     label57:
     label102:
@@ -182,7 +183,7 @@ public class AssetWriter
           break label180;
         }
         bool = CodecHelper.checkVideoOutSupported(paramInt, i, j, k, str);
-        AppMethodBeat.o(217793);
+        AppMethodBeat.o(188833);
         return bool;
         str = "video/avc";
         break;
@@ -194,10 +195,10 @@ public class AssetWriter
       label180:
       if ((paramInt > 0) && (i > 0))
       {
-        AppMethodBeat.o(217793);
+        AppMethodBeat.o(188833);
         return true;
       }
-      AppMethodBeat.o(217793);
+      AppMethodBeat.o(188833);
       return false;
     }
     if (paramInt == 2)
@@ -232,7 +233,7 @@ public class AssetWriter
           break label374;
         }
         bool = CodecHelper.checkAudioOutSupported(i, j, k, str);
-        AppMethodBeat.o(217793);
+        AppMethodBeat.o(188833);
         return bool;
         str = "audio/mp4a-latm";
         break;
@@ -244,19 +245,19 @@ public class AssetWriter
       label374:
       if ((paramInt > 0) && (i > 0) && (j > 0) && (k > 0))
       {
-        AppMethodBeat.o(217793);
+        AppMethodBeat.o(188833);
         return true;
       }
-      AppMethodBeat.o(217793);
+      AppMethodBeat.o(188833);
       return false;
     }
-    AppMethodBeat.o(217793);
+    AppMethodBeat.o(188833);
     return false;
   }
   
   public void cancelWriting()
   {
-    AppMethodBeat.i(217797);
+    AppMethodBeat.i(188841);
     if (this.encoderWriter != null)
     {
       this.encoderWriter.stop();
@@ -266,22 +267,22 @@ public class AssetWriter
     while (localIterator.hasNext())
     {
       AssetWriterInput localAssetWriterInput = (AssetWriterInput)localIterator.next();
-      this.inputStatusHashMap.put(localAssetWriterInput, AssetWriterStatus.AssetWriterStatusCancelled);
+      this.inputStatusHashMap.put(localAssetWriterInput, AssetWriter.AssetWriterStatus.AssetWriterStatusCancelled);
     }
-    this.status = AssetWriterStatus.AssetWriterStatusCancelled;
-    AppMethodBeat.o(217797);
+    this.status = AssetWriter.AssetWriterStatus.AssetWriterStatusCancelled;
+    AppMethodBeat.o(188841);
   }
   
   public Surface createInputSurface()
   {
-    AppMethodBeat.i(217799);
+    AppMethodBeat.i(188847);
     if (this.encoderWriter != null)
     {
       Surface localSurface = this.encoderWriter.createInputSurface();
-      AppMethodBeat.o(217799);
+      AppMethodBeat.o(188847);
       return localSurface;
     }
-    AppMethodBeat.o(217799);
+    AppMethodBeat.o(188847);
     return null;
   }
   
@@ -297,13 +298,13 @@ public class AssetWriter
   
   public boolean finishWriting()
   {
-    AppMethodBeat.i(217798);
+    AppMethodBeat.i(188843);
     if (this.encoderWriter != null)
     {
       this.encoderWriter.stop();
       this.encoderWriter = null;
     }
-    this.status = AssetWriterStatus.AssetWriterStatusCompleted;
+    this.status = AssetWriter.AssetWriterStatus.AssetWriterStatusCompleted;
     if (this.renderContext != null)
     {
       this.renderContext.release();
@@ -314,7 +315,7 @@ public class AssetWriter
       this.rendSurface.release();
       this.rendSurface = null;
     }
-    AppMethodBeat.o(217798);
+    AppMethodBeat.o(188843);
     return true;
   }
   
@@ -326,6 +327,19 @@ public class AssetWriter
   public String getDirectoryForTemporaryFiles()
   {
     return this.directoryForTemporaryFiles;
+  }
+  
+  public AverageTimeReporter getEncodePerformance()
+  {
+    AppMethodBeat.i(188855);
+    if (this.encoderWriter != null)
+    {
+      AverageTimeReporter localAverageTimeReporter = this.encoderWriter.getPerformance();
+      AppMethodBeat.o(188855);
+      return localAverageTimeReporter;
+    }
+    AppMethodBeat.o(188855);
+    return null;
   }
   
   public int getErrCode()
@@ -353,7 +367,7 @@ public class AssetWriter
     return this.renderContextParams;
   }
   
-  public AssetWriterStatus getStatus()
+  public AssetWriter.AssetWriterStatus getStatus()
   {
     return this.status;
   }
@@ -370,7 +384,7 @@ public class AssetWriter
   
   public RenderContext renderContext()
   {
-    AppMethodBeat.i(217800);
+    AppMethodBeat.i(188850);
     if ((this.renderContext == null) && (this.encoderWriter != null))
     {
       this.rendSurface = this.encoderWriter.createInputSurface();
@@ -378,7 +392,7 @@ public class AssetWriter
       this.renderContext.setParams(this.renderContextParams);
     }
     RenderContext localRenderContext = this.renderContext;
-    AppMethodBeat.o(217800);
+    AppMethodBeat.o(188850);
     return localRenderContext;
   }
   
@@ -399,12 +413,12 @@ public class AssetWriter
   
   public void setRenderContextParams(RenderContextParams paramRenderContextParams)
   {
-    AppMethodBeat.i(217791);
+    AppMethodBeat.i(188830);
     this.renderContextParams = paramRenderContextParams;
     if (this.renderContext != null) {
       this.renderContext.setParams(paramRenderContextParams);
     }
-    AppMethodBeat.o(217791);
+    AppMethodBeat.o(188830);
   }
   
   public void setShouldOptimizeForNetworkUse(boolean paramBoolean)
@@ -419,10 +433,10 @@ public class AssetWriter
   
   public boolean startWriting(AssetWriterVideoEncoder paramAssetWriterVideoEncoder)
   {
-    AppMethodBeat.i(217796);
+    AppMethodBeat.i(188839);
     if (this.videoOutputPath == null)
     {
-      AppMethodBeat.o(217796);
+      AppMethodBeat.o(188839);
       return false;
     }
     cancelWriting();
@@ -434,7 +448,7 @@ public class AssetWriter
       while (paramAssetWriterVideoEncoder.hasNext()) {
         ((AssetWriterInput)paramAssetWriterVideoEncoder.next()).initConfig(this);
       }
-      AppMethodBeat.o(217796);
+      AppMethodBeat.o(188839);
     }
     catch (Exception paramAssetWriterVideoEncoder)
     {
@@ -445,48 +459,31 @@ public class AssetWriter
         this.encoderWriter.stop();
         this.encoderWriter = null;
       }
-      AppMethodBeat.o(217796);
+      AppMethodBeat.o(188839);
       return false;
     }
     return true;
   }
   
-  public void statusChanged(AssetWriterInput paramAssetWriterInput, AssetWriterStatus paramAssetWriterStatus)
+  public void statusChanged(AssetWriterInput paramAssetWriterInput, AssetWriter.AssetWriterStatus paramAssetWriterStatus)
   {
-    AppMethodBeat.i(217802);
+    AppMethodBeat.i(188854);
     this.inputStatusHashMap.put(paramAssetWriterInput, paramAssetWriterStatus);
     paramAssetWriterInput = this.status;
     updateAssetStatus();
-    if ((paramAssetWriterInput != this.status) && (this.status == AssetWriterStatus.AssetWriterStatusWriting))
+    if ((paramAssetWriterInput != this.status) && (this.status == AssetWriter.AssetWriterStatus.AssetWriterStatusWriting))
     {
       paramAssetWriterInput = this.inputs.iterator();
       while (paramAssetWriterInput.hasNext()) {
         paramAssetWriterInput.next();
       }
     }
-    AppMethodBeat.o(217802);
-  }
-  
-  static enum AssetWriterStatus
-  {
-    static
-    {
-      AppMethodBeat.i(217790);
-      AssetWriterStatusUnknown = new AssetWriterStatus("AssetWriterStatusUnknown", 0);
-      AssetWriterStatusWriting = new AssetWriterStatus("AssetWriterStatusWriting", 1);
-      AssetWriterStatusCompleted = new AssetWriterStatus("AssetWriterStatusCompleted", 2);
-      AssetWriterStatusFailed = new AssetWriterStatus("AssetWriterStatusFailed", 3);
-      AssetWriterStatusCancelled = new AssetWriterStatus("AssetWriterStatusCancelled", 4);
-      $VALUES = new AssetWriterStatus[] { AssetWriterStatusUnknown, AssetWriterStatusWriting, AssetWriterStatusCompleted, AssetWriterStatusFailed, AssetWriterStatusCancelled };
-      AppMethodBeat.o(217790);
-    }
-    
-    private AssetWriterStatus() {}
+    AppMethodBeat.o(188854);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.core.AssetWriter
  * JD-Core Version:    0.7.0.1
  */

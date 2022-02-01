@@ -13,9 +13,9 @@ public class EmptyReaderOutput
   
   public CMSampleBuffer nextSampleBuffer()
   {
-    AppMethodBeat.i(217873);
+    AppMethodBeat.i(189149);
     CMSampleBuffer localCMSampleBuffer = new CMSampleBuffer(CMSampleState.fromError(-1L));
-    AppMethodBeat.o(217873);
+    AppMethodBeat.o(189149);
     return localCMSampleBuffer;
   }
   
@@ -27,7 +27,7 @@ public class EmptyReaderOutput
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.core.EmptyReaderOutput
  * JD-Core Version:    0.7.0.1
  */

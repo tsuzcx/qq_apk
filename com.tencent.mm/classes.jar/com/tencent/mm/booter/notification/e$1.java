@@ -23,12 +23,12 @@ final class e$1
       Bundle localBundle = new Bundle();
       localBundle.putString("package", MMApplicationContext.getPackageName());
       localBundle.putString("class", LauncherUI.class.getName());
-      localBundle.putInt("badgenumber", this.goa);
+      localBundle.putInt("badgenumber", this.iSj);
       if (MMApplicationContext.getContext().getContentResolver().call(Uri.parse("content://com.huawei.android.launcher.settings/badge/"), "change_badge", null, localBundle) != null) {}
       for (;;)
       {
         e.access$002(bool);
-        Log.i("MicroMsg.BusinessNotification", "huawei badge: %d, %b", new Object[] { Integer.valueOf(this.goa), Boolean.valueOf(e.access$000()) });
+        Log.i("MicroMsg.BusinessNotification", "huawei badge: %d, %b", new Object[] { Integer.valueOf(this.iSj), Boolean.valueOf(e.access$000()) });
         AppMethodBeat.o(19973);
         return;
         bool = false;

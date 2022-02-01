@@ -6,15 +6,15 @@ import com.tencent.mm.storage.c;
 
 public final class e
 {
-  public static void aPM(String paramString)
+  public static void baJ(String paramString)
   {
     AppMethodBeat.i(96132);
     Log.i("MicroMsg.SnsABTestStrategy", "dump id ".concat(String.valueOf(paramString)));
-    paramString = com.tencent.mm.model.c.d.aXu().Fu(paramString);
+    paramString = com.tencent.mm.model.c.d.bgB().Mu(paramString);
     if (!paramString.isValid()) {
       Log.i("MicroMsg.SnsABTestStrategy", "abtest is invalid");
     }
-    if (paramString.gzz() != null) {
+    if (paramString.hvz() != null) {
       Log.i("MicroMsg.SnsABTestStrategy", "dump feed abtest " + paramString.field_rawXML);
     }
     AppMethodBeat.o(96132);

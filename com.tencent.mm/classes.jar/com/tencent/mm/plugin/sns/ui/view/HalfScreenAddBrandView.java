@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sns.ui.view;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,17 +10,17 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.data.d;
-import com.tencent.mm.plugin.sns.data.k;
+import com.tencent.mm.plugin.sns.a.c;
+import com.tencent.mm.plugin.sns.data.f;
+import com.tencent.mm.plugin.sns.data.m;
 import com.tencent.mm.plugin.sns.e.a.1;
 import com.tencent.mm.plugin.sns.e.a.a;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.i.j;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
-import com.tencent.mm.pluginsdk.model.p;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.RoundCornerImageView;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import org.json.JSONObject;
@@ -28,18 +29,18 @@ public class HalfScreenAddBrandView
   extends RelativeLayout
   implements View.OnClickListener
 {
-  public d DCX;
-  public int DxM;
-  public com.tencent.mm.plugin.sns.e.a EcO;
-  public RoundCornerImageView Fdu;
-  public TextView Fdv;
-  public TextView Fdw;
-  private TextView Fdx;
-  private TextView Fdy;
-  public Button Fdz;
-  private View gvQ;
+  private WeImageView AQI;
+  private int JCO;
+  private f JPm;
+  private com.tencent.mm.plugin.sns.e.a Kqq;
+  private RoundCornerImageView Lsa;
+  private TextView Lsb;
+  private TextView Lsc;
+  private TextView Lsd;
+  private TextView Lse;
+  private Button Lsf;
+  private View jac;
   private Context mContext;
-  private WeImageView wgU;
   
   public HalfScreenAddBrandView(Context paramContext)
   {
@@ -54,42 +55,73 @@ public class HalfScreenAddBrandView
   public HalfScreenAddBrandView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(203978);
+    AppMethodBeat.i(229969);
     this.mContext = paramContext;
-    this.gvQ = LayoutInflater.from(this.mContext).inflate(2131495006, this);
-    this.wgU = ((WeImageView)this.gvQ.findViewById(2131298763));
-    this.Fdu = ((RoundCornerImageView)this.gvQ.findViewById(2131302884));
-    this.Fdv = ((TextView)this.gvQ.findViewById(2131309461));
-    this.Fdw = ((TextView)this.gvQ.findViewById(2131309459));
-    this.Fdx = ((TextView)this.gvQ.findViewById(2131309460));
-    this.Fdy = ((TextView)this.gvQ.findViewById(2131309458));
-    this.Fdz = ((Button)this.gvQ.findViewById(2131297826));
-    this.Fdz.setOnClickListener(this);
-    this.wgU.setOnClickListener(this);
-    AppMethodBeat.o(203978);
+    this.jac = LayoutInflater.from(this.mContext).inflate(i.g.half_screen_add_brand, this);
+    this.AQI = ((WeImageView)this.jac.findViewById(i.f.close));
+    this.Lsa = ((RoundCornerImageView)this.jac.findViewById(i.f.iv_brand_img));
+    this.Lsb = ((TextView)this.jac.findViewById(i.f.tv_brand_nickname));
+    this.Lsc = ((TextView)this.jac.findViewById(i.f.tv_brand_desc));
+    this.Lsd = ((TextView)this.jac.findViewById(i.f.tv_brand_friend_tip));
+    this.Lse = ((TextView)this.jac.findViewById(i.f.tv_brand_content_tip));
+    this.Lsf = ((Button)this.jac.findViewById(i.f.btn_brand_send));
+    this.Lsf.setOnClickListener(this);
+    this.AQI.setOnClickListener(this);
+    AppMethodBeat.o(229969);
+  }
+  
+  private void bzz()
+  {
+    AppMethodBeat.i(229975);
+    this.Lsb.setText(this.JPm.fzM);
+    this.Lsc.setText(this.JPm.JxQ);
+    String str = this.JPm.JxP;
+    if (!TextUtils.equals((String)this.Lsa.getTag(i.f.sns_ad_subscribe_url), str))
+    {
+      this.Lsa.setImageDrawable(null);
+      c.a(i.f.sns_ad_subscribe_url, str, this.Lsa);
+    }
+    AppMethodBeat.o(229975);
+  }
+  
+  public final void a(f paramf, int paramInt, com.tencent.mm.plugin.sns.e.a parama)
+  {
+    AppMethodBeat.i(229972);
+    this.JPm = paramf;
+    this.JCO = paramInt;
+    this.Kqq = parama;
+    bzz();
+    AppMethodBeat.o(229972);
+  }
+  
+  public final void fZn()
+  {
+    AppMethodBeat.i(229977);
+    this.Lsf.setText(this.JPm.JxR);
+    AppMethodBeat.o(229977);
   }
   
   public void onClick(View paramView)
   {
-    AppMethodBeat.i(203979);
+    AppMethodBeat.i(229985);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/view/HalfScreenAddBrandView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ui/view/HalfScreenAddBrandView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
     int i;
-    if (paramView.getId() == 2131297826) {
-      if (this.DxM == 182)
+    if (paramView.getId() == i.f.btn_brand_send) {
+      if (this.JCO == 182)
       {
-        paramView = this.EcO;
-        i = this.DxM;
-        if (paramView.DCY)
+        paramView = this.Kqq;
+        i = this.JCO;
+        if (paramView.JPn)
         {
           Log.i("HalfScreenAddBrandController", "sendAddBrandFromNativeUI isAddContact is true");
-          paramView.D(true, paramView.DCX.brandUsername);
-          this.EcO.eZp();
-          paramView = this.EcO;
-          i = this.DxM;
+          paramView.I(true, paramView.JPm.lFl);
+          this.Kqq.fNg();
+          paramView = this.Kqq;
+          i = this.JCO;
           if (i != 0) {
-            break label454;
+            break label464;
           }
           i = 1;
         }
@@ -104,45 +136,45 @@ public class HalfScreenAddBrandView
         localJSONObject.put("clickType", i);
         ((JSONObject)localObject).put("extInfo", localJSONObject);
         ((JSONObject)localObject).put("uxinfo", paramView.uxInfo);
-        ((JSONObject)localObject).put("snsid", paramView.dRS);
+        ((JSONObject)localObject).put("snsid", paramView.fLp);
         ((JSONObject)localObject).put("scene", 0);
         ((JSONObject)localObject).put("adExtInfo", paramView.adExtInfo);
         paramView = ((JSONObject)localObject).toString();
-        k.jY("timeline_ad_half_screen_quickly_add_brand_btn", paramView);
+        m.ks("timeline_ad_half_screen_quickly_add_brand_btn", paramView);
         Log.i("HalfScreenAddBrandController", "addBrandReport timeline_ad_half_screen_quickly_add_brand_btn, content=".concat(String.valueOf(paramView)));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/view/HalfScreenAddBrandView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(203979);
+        AppMethodBeat.o(229985);
         return;
         localObject = paramView.mContext;
-        paramView.mContext.getString(2131755998);
-        paramView.tipDialog = h.a((Context)localObject, paramView.mContext.getString(2131757806), true, null);
-        AdLandingPagesProxy.getInstance().doAddBrandScene(paramView.DCX.brandUsername, i, new a.1(paramView, i));
+        paramView.mContext.getString(i.j.app_tip);
+        paramView.tipDialog = com.tencent.mm.ui.base.h.a((Context)localObject, paramView.mContext.getString(i.j.contact_info_adding_tip), true, null);
+        AdLandingPagesProxy.getInstance().doAddBrandScene(paramView.JPm.lFl, i, new a.1(paramView, i));
         break;
-        paramView = this.EcO;
-        i = this.DxM;
-        if ((paramView.mContext == null) || (paramView.DCX == null) || (Util.isNullOrNil(paramView.DCX.brandUsername))) {
+        paramView = this.Kqq;
+        i = this.JCO;
+        if ((paramView.mContext == null) || (paramView.JPm == null) || (Util.isNullOrNil(paramView.JPm.lFl))) {
           break;
         }
         localObject = paramView.mContext;
-        paramView.mContext.getString(2131755998);
-        paramView.tipDialog = h.a((Context)localObject, paramView.mContext.getString(2131757806), true, null);
-        paramView = com.tencent.mm.plugin.sns.model.b.a(paramView.DCX.brandUsername, new a.a(paramView, paramView.mContext, i, paramView.tipDialog, (byte)0), i);
+        paramView.mContext.getString(i.j.app_tip);
+        paramView.tipDialog = com.tencent.mm.ui.base.h.a((Context)localObject, paramView.mContext.getString(i.j.contact_info_adding_tip), true, null);
+        paramView = com.tencent.mm.plugin.sns.model.b.a(paramView.JPm.lFl, new a.a(paramView, paramView.mContext, i, paramView.tipDialog, (byte)0), i);
         if ((paramView instanceof com.tencent.mm.openim.b.b))
         {
           paramView = (com.tencent.mm.openim.b.b)paramView;
-          g.azz().a(paramView, 0);
+          com.tencent.mm.kernel.h.aGY().a(paramView, 0);
           break;
         }
-        if (!(paramView instanceof p)) {
+        if (!(paramView instanceof com.tencent.mm.pluginsdk.model.t)) {
           break;
         }
-        paramView = (p)paramView;
-        g.azz().a(paramView, 0);
+        paramView = (com.tencent.mm.pluginsdk.model.t)paramView;
+        com.tencent.mm.kernel.h.aGY().a(paramView, 0);
         break;
-        label454:
+        label464:
         if (i == 182)
         {
-          boolean bool = paramView.DCY;
+          boolean bool = paramView.JPn;
           if (bool)
           {
             i = 4;
@@ -159,15 +191,15 @@ public class HalfScreenAddBrandView
         Log.e("HalfScreenAddBrandController", "addBrandReport exp:" + paramView.toString());
         continue;
       }
-      if (paramView.getId() == 2131298763) {
-        this.EcO.eZp();
+      if (paramView.getId() == i.f.close) {
+        this.Kqq.fNg();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.view.HalfScreenAddBrandView
  * JD-Core Version:    0.7.0.1
  */

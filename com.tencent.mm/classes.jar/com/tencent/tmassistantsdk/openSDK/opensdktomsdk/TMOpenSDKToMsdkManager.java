@@ -119,8 +119,8 @@ public class TMOpenSDKToMsdkManager
       {
         AppMethodBeat.i(102169);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (TMOpenSDKToMsdkManager.this.mAuthorizedInfo == null)
         {
           a.a(this, "com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -143,8 +143,8 @@ public class TMOpenSDKToMsdkManager
       {
         AppMethodBeat.i(102170);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (TMOpenSDKToMsdkManager.this.dialog.isShowing())
         {
           TMOpenSDKToMsdkManager.this.dialog.dismiss();
@@ -185,8 +185,8 @@ public class TMOpenSDKToMsdkManager
       {
         AppMethodBeat.i(102171);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (TMOpenSDKToMsdkManager.this.mContext == null)
         {
           a.a(this, "com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -1042,7 +1042,7 @@ public class TMOpenSDKToMsdkManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.opensdktomsdk.TMOpenSDKToMsdkManager
  * JD-Core Version:    0.7.0.1
  */

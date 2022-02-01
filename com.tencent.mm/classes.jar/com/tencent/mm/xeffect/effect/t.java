@@ -1,39 +1,29 @@
 package com.tencent.mm.xeffect.effect;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.util.Size;
 import kotlin.l;
 
-@l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/mm/xeffect/effect/PagStickerEffect;", "Lcom/tencent/mm/xeffect/effect/PagEffect;", "Lcom/tencent/mm/xeffect/effect/LayoutInfoEffect;", "ptr", "", "(J)V", "defaultLayout", "Lcom/tencent/mm/xeffect/effect/LayoutInfoEffect$Default;", "getLayout", "Lcom/tencent/mm/xeffect/effect/EffectLayoutInfo;", "setLayout", "", "layoutInfo", "type", "Lcom/tencent/mm/xeffect/effect/EffectType;", "renderlib_release"})
-public class t
-  extends r
-  implements p
+@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/effect/PagEffect;", "Lcom/tencent/mm/xeffect/effect/VLogEffect;", "ptr", "", "(J)V", "frameRate", "", "getFrameRate", "()F", "imageNum", "", "getImageNum", "()I", "pagDuration", "getPagDuration", "()J", "size", "Landroid/util/Size;", "getSize", "()Landroid/util/Size;", "setCheckMarker", "", "check", "", "renderlib_release"})
+public abstract class t
+  extends af
 {
-  private final p.a RxQ;
+  public final Size GbH;
+  public final int ZaD;
+  public final long ZaE;
+  private final float aMU;
   
   public t(long paramLong)
   {
     super(paramLong);
-    AppMethodBeat.i(237098);
-    this.RxQ = new p.a((ad)this);
-    AppMethodBeat.o(237098);
-  }
-  
-  public final void a(f paramf)
-  {
-    AppMethodBeat.i(237097);
-    kotlin.g.b.p.h(paramf, "layoutInfo");
-    this.RxQ.a(paramf);
-    AppMethodBeat.o(237097);
-  }
-  
-  public j hiu()
-  {
-    return j.RxW;
+    this.GbH = VLogEffectJNI.INSTANCE.getPagSize$renderlib_release(paramLong);
+    this.ZaD = VLogEffectJNI.INSTANCE.getPagImageNum$renderlib_release(paramLong);
+    this.ZaE = VLogEffectJNI.INSTANCE.getPagDuration$renderlib_release(paramLong);
+    this.aMU = VLogEffectJNI.INSTANCE.getPagFrameRate$renderlib_release(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.xeffect.effect.t
  * JD-Core Version:    0.7.0.1
  */

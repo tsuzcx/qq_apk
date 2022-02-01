@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.eh;
+import com.tencent.mm.f.c.em;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class n
-  extends eh
+  extends em
 {
   public static IAutoDBItem.MAutoDBInfo info;
   

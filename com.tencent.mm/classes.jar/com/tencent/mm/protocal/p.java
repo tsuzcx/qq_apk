@@ -18,24 +18,24 @@ public final class p
     extends l.d
     implements l.b
   {
-    public String KzO;
-    public byte[] KzP;
-    public int cSx;
-    public int dKy;
-    public int jlm;
+    public String RBE;
+    public byte[] RBF;
+    public int cUP;
+    public int fDn;
+    public int mbp;
     
     public a()
     {
       AppMethodBeat.i(32087);
-      this.dKy = 0;
-      this.cSx = 0;
-      this.jlm = 0;
-      this.KzO = "";
-      this.KzP = new byte[0];
+      this.fDn = 0;
+      this.cUP = 0;
+      this.mbp = 0;
+      this.RBE = "";
+      this.RBF = new byte[0];
       AppMethodBeat.o(32087);
     }
     
-    private byte[] cH(byte[] paramArrayOfByte)
+    private byte[] cY(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(32089);
       if (paramArrayOfByte == null)
@@ -47,8 +47,8 @@ public final class p
       try
       {
         DataOutputStream localDataOutputStream = new DataOutputStream(localByteArrayOutputStream);
-        localDataOutputStream.writeByte(this.dKy);
-        localDataOutputStream.writeByte(this.cSx);
+        localDataOutputStream.writeByte(this.fDn);
+        localDataOutputStream.writeByte(this.cUP);
         localDataOutputStream.write(paramArrayOfByte);
         localDataOutputStream.close();
         paramArrayOfByte = localByteArrayOutputStream.toByteArray();
@@ -64,18 +64,18 @@ public final class p
       }
     }
     
-    private byte[] gtO()
+    private byte[] hpe()
     {
       AppMethodBeat.i(32088);
       Object localObject = new ByteArrayOutputStream();
       try
       {
         DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
-        localDataOutputStream.writeInt(this.jlm);
-        localDataOutputStream.writeShort(this.KzO.getBytes().length);
-        localDataOutputStream.write(this.KzO.getBytes());
-        localDataOutputStream.writeShort(this.KzP.length);
-        localDataOutputStream.write(this.KzP);
+        localDataOutputStream.writeInt(this.mbp);
+        localDataOutputStream.writeShort(this.RBE.getBytes().length);
+        localDataOutputStream.write(this.RBE.getBytes());
+        localDataOutputStream.writeShort(this.RBF.length);
+        localDataOutputStream.write(this.RBF);
         localDataOutputStream.close();
         localObject = ((ByteArrayOutputStream)localObject).toByteArray();
         AppMethodBeat.o(32088);
@@ -113,10 +113,10 @@ public final class p
     public final byte[] toProtoBuf()
     {
       AppMethodBeat.i(32090);
-      byte[] arrayOfByte = gtO();
+      byte[] arrayOfByte = hpe();
       PByteArray localPByteArray = new PByteArray();
-      c.a(localPByteArray, arrayOfByte, p.bge(super.getDeviceID()));
-      arrayOfByte = cH(localPByteArray.value);
+      c.a(localPByteArray, arrayOfByte, p.bsw(super.getDeviceID()));
+      arrayOfByte = cY(localPByteArray.value);
       AppMethodBeat.o(32090);
       return arrayOfByte;
     }
@@ -126,28 +126,28 @@ public final class p
     extends l.e
     implements l.c
   {
-    private int cSx;
-    public byte[] content;
-    private int dKy;
+    private int cUP;
     public String deviceID;
-    public String jje;
-    private int jlm;
+    private int fDn;
+    public byte[] fPk;
+    public String lZa;
+    private int mbp;
     
     public b()
     {
       AppMethodBeat.i(32091);
-      this.jje = "";
-      this.content = new byte[0];
+      this.lZa = "";
+      this.fPk = new byte[0];
       this.deviceID = "";
-      this.dKy = 0;
-      this.cSx = 0;
-      this.jlm = 0;
-      this.jje = "";
-      this.content = new byte[0];
+      this.fDn = 0;
+      this.cUP = 0;
+      this.mbp = 0;
+      this.lZa = "";
+      this.fPk = new byte[0];
       AppMethodBeat.o(32091);
     }
     
-    private byte[] cI(byte[] paramArrayOfByte)
+    private byte[] cZ(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(32092);
       if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 2))
@@ -161,10 +161,10 @@ public final class p
       {
         paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte);
         DataInputStream localDataInputStream = new DataInputStream(paramArrayOfByte);
-        this.dKy = localDataInputStream.readByte();
-        this.cSx = localDataInputStream.readByte();
+        this.fDn = localDataInputStream.readByte();
+        this.cUP = localDataInputStream.readByte();
         localDataInputStream.readFully(arrayOfByte);
-        Log.d("MicroMsg.MMDirectSend", "cmdId:" + this.dKy + ", flag=" + this.cSx + ", tail len=" + arrayOfByte.length);
+        Log.d("MicroMsg.MMDirectSend", "cmdId:" + this.fDn + ", flag=" + this.cUP + ", tail len=" + arrayOfByte.length);
         paramArrayOfByte.close();
         AppMethodBeat.o(32092);
         return arrayOfByte;
@@ -181,10 +181,10 @@ public final class p
     public final int fromProtoBuf(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(32093);
-      byte[] arrayOfByte1 = p.bge(this.deviceID);
+      byte[] arrayOfByte1 = p.bsw(this.deviceID);
       PByteArray localPByteArray = new PByteArray();
       int i;
-      if (c.b(localPByteArray, cI(paramArrayOfByte), arrayOfByte1) != 0)
+      if (c.b(localPByteArray, cZ(paramArrayOfByte), arrayOfByte1) != 0)
       {
         byte[] arrayOfByte2 = new byte[16];
         i = 0;
@@ -193,7 +193,7 @@ public final class p
           arrayOfByte2[i] = 0;
           i += 1;
         }
-        if (c.b(localPByteArray, cI(paramArrayOfByte), arrayOfByte2) != 0)
+        if (c.b(localPByteArray, cZ(paramArrayOfByte), arrayOfByte2) != 0)
         {
           Log.e("MicroMsg.MMDirectSend", "decrypting from buffer using key=%s error", new Object[] { Util.dumpHex(arrayOfByte1) });
           AppMethodBeat.o(32093);
@@ -211,8 +211,8 @@ public final class p
         try
         {
           paramArrayOfByte = new DataInputStream(new ByteArrayInputStream(paramArrayOfByte));
-          this.jlm = paramArrayOfByte.readInt();
-          Log.d("MicroMsg.MMDirectSend", "seq=" + this.jlm);
+          this.mbp = paramArrayOfByte.readInt();
+          Log.d("MicroMsg.MMDirectSend", "seq=" + this.mbp);
           i = paramArrayOfByte.readShort();
           if (i >= 0) {
             break label232;
@@ -229,8 +229,8 @@ public final class p
         label232:
         arrayOfByte1 = new byte[i];
         paramArrayOfByte.readFully(arrayOfByte1);
-        this.jje = new String(arrayOfByte1);
-        Log.d("MicroMsg.MMDirectSend", "recievers len=" + i + ", sender=" + this.jje);
+        this.lZa = new String(arrayOfByte1);
+        Log.d("MicroMsg.MMDirectSend", "recievers len=" + i + ", sender=" + this.lZa);
         i = paramArrayOfByte.readShort();
         if (i < 0)
         {
@@ -238,9 +238,9 @@ public final class p
           AppMethodBeat.o(32093);
           throw paramArrayOfByte;
         }
-        this.content = new byte[i];
-        paramArrayOfByte.readFully(this.content);
-        Log.d("MicroMsg.MMDirectSend", "content len=" + this.content.length);
+        this.fPk = new byte[i];
+        paramArrayOfByte.readFully(this.fPk);
+        Log.d("MicroMsg.MMDirectSend", "content len=" + this.fPk.length);
       }
     }
     
@@ -257,7 +257,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.p
  * JD-Core Version:    0.7.0.1
  */

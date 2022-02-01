@@ -1,61 +1,63 @@
 package com.tencent.mm.plugin.multitask.ui.bg;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.ar;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/ui/bg/MultiTaskViewBgParticleColorConfig;", "", "particleColor1", "", "particleColor2", "particleColor3", "bgColor1", "bgColor2", "(IIIII)V", "getBgColor1", "()I", "getBgColor2", "getParticleColor1", "getParticleColor2", "getParticleColor3", "Companion", "plugin-multitask_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/ui/bg/MultiTaskViewBgParticleColorConfig;", "", "particleColor1", "", "particleColor2", "particleColor3", "bgColor1", "bgColor2", "(IIIII)V", "getBgColor1", "()I", "getBgColor2", "getParticleColor1", "getParticleColor2", "getParticleColor3", "Companion", "plugin-multitask_release"})
 public final class a
 {
-  public static final a AdE;
-  public static final a AdF;
-  public static final a AdG;
-  public final int gRQ;
-  public final int gRR;
-  public final int gRS;
-  public final int gRT;
-  public final int gRU;
+  public static final a FKh;
+  public static final a FKi;
+  public static final a FKj;
+  final int jCm;
+  final int jCn;
+  final int jCo;
+  public final int jCp;
+  public final int jCq;
   
   static
   {
-    AppMethodBeat.i(200780);
-    AdG = new a((byte)0);
-    AdE = new a(-12105913, -13948117, -12105913, -14935012, -11316397);
-    AdF = new a(-11975584, -13948609, -11975584, -15263959, -11120530);
-    AppMethodBeat.o(200780);
+    AppMethodBeat.i(247833);
+    FKj = new a((byte)0);
+    FKh = new a(-12105913, -13948117, -12105913, -14935012, -11316397);
+    FKi = new a(-11975584, -13948609, -11975584, -15263959, -11120530);
+    AppMethodBeat.o(247833);
   }
   
   private a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    this.gRQ = paramInt1;
-    this.gRR = paramInt2;
-    this.gRS = paramInt3;
-    this.gRT = paramInt4;
-    this.gRU = paramInt5;
+    this.jCm = paramInt1;
+    this.jCn = paramInt2;
+    this.jCo = paramInt3;
+    this.jCp = paramInt4;
+    this.jCq = paramInt5;
   }
   
-  public static final a erA()
+  public static final a fbG()
   {
-    AppMethodBeat.i(200781);
-    a locala = a.erA();
-    AppMethodBeat.o(200781);
+    AppMethodBeat.i(247835);
+    a locala = a.fbG();
+    AppMethodBeat.o(247835);
     return locala;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/ui/bg/MultiTaskViewBgParticleColorConfig$Companion;", "", "()V", "DARK_MODE_PARTICLE_COLOR_CONFIG", "Lcom/tencent/mm/plugin/multitask/ui/bg/MultiTaskViewBgParticleColorConfig;", "LIGHT_MODE_PARTICLE_COLOR_CONFIG", "getCurrentThemeConfig", "plugin-multitask_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/ui/bg/MultiTaskViewBgParticleColorConfig$Companion;", "", "()V", "DARK_MODE_PARTICLE_COLOR_CONFIG", "Lcom/tencent/mm/plugin/multitask/ui/bg/MultiTaskViewBgParticleColorConfig;", "LIGHT_MODE_PARTICLE_COLOR_CONFIG", "TAG", "", "getCurrentThemeConfig", "plugin-multitask_release"})
   public static final class a
   {
-    public static a erA()
+    public static a fbG()
     {
-      AppMethodBeat.i(200779);
-      if (ao.isDarkMode())
+      AppMethodBeat.i(249091);
+      Log.i("MicroMsg.MultiTaskViewBgParticleColorConfig", "getColorConfig " + ar.isDarkMode());
+      if (ar.isDarkMode())
       {
-        locala = a.AdE;
-        AppMethodBeat.o(200779);
+        locala = a.FKh;
+        AppMethodBeat.o(249091);
         return locala;
       }
-      a locala = a.AdF;
-      AppMethodBeat.o(200779);
+      a locala = a.FKi;
+      AppMethodBeat.o(249091);
       return locala;
     }
   }

@@ -1,15 +1,15 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.aa;
-import com.tencent.mm.ak.aa.a;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.aa;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.webview.core.g.a;
-import com.tencent.mm.protocal.protobuf.bua;
-import com.tencent.mm.protocal.protobuf.bub;
-import com.tencent.mm.protocal.protobuf.dkr;
-import com.tencent.mm.protocal.protobuf.dku;
+import com.tencent.mm.protocal.protobuf.cbs;
+import com.tencent.mm.protocal.protobuf.cbt;
+import com.tencent.mm.protocal.protobuf.dug;
+import com.tencent.mm.protocal.protobuf.duj;
+import com.tencent.mm.protocal.protobuf.duk;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.storage.ab;
@@ -20,176 +20,186 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import kotlin.Result;
-import kotlin.d.h;
 import kotlin.f;
-import kotlin.k.j;
+import kotlin.k.i;
 import kotlin.l;
+import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/model/BizTLRecFeedsDataUtil;", "", "()V", "Companion", "EnRecommendFeedsInfoSwitchOption", "GetRecommendFeedScene", "plugin-biz_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/model/BizTLRecFeedsDataUtil;", "", "()V", "Companion", "EnRecommendFeedsInfoSwitchOption", "GetRecommendFeedScene", "GetRecommendFeedsIconType", "GetRecommendFeedsStyleFlag", "plugin-biz_release"})
 public final class p
 {
-  private static final f iBW;
-  private static List<z> iBX;
-  private static final AtomicLong iBY;
-  private static final String iBZ;
-  public static final a iCa;
+  private static final f lrB;
+  private static final f lrC;
+  private static List<z> lrD;
+  private static final AtomicLong lrE;
+  private static final String lrF;
+  private static String lrG;
+  public static final a lrH;
   
   static
   {
-    AppMethodBeat.i(212398);
-    iCa = new a((byte)0);
-    iBW = kotlin.g.ah((kotlin.g.a.a)p.b.iCd);
-    iBX = (List)new LinkedList();
-    iBY = new AtomicLong(0L);
+    AppMethodBeat.i(205438);
+    lrH = new a((byte)0);
+    lrB = kotlin.g.ar((kotlin.g.a.a)p.b.lrM);
+    lrC = kotlin.g.ar((kotlin.g.a.a)p.c.lrN);
+    lrD = (List)new LinkedList();
+    lrE = new AtomicLong(0L);
     StringBuilder localStringBuilder = new StringBuilder("FirstScreenData:");
-    kotlin.g.b.p.g(com.tencent.mm.kernel.g.aAf(), "MMKernel.account()");
-    iBZ = com.tencent.mm.kernel.a.ayV();
-    AppMethodBeat.o(212398);
+    kotlin.g.b.p.j(com.tencent.mm.kernel.h.aHE(), "MMKernel.account()");
+    lrF = com.tencent.mm.kernel.b.aGq();
+    AppMethodBeat.o(205438);
   }
   
-  public static final int aTG()
+  public static final int bcH()
   {
-    AppMethodBeat.i(212399);
-    int i = j.na(j.mZ(a.aTI().decodeInt("ProtectionTime", 1800), ab.gBc()), 86400);
+    AppMethodBeat.i(205442);
+    int i = i.ow(i.ov(a.bcJ().decodeInt("ProtectionTime", 1800), ab.hxm()), 86400);
     Log.i("Micromsg.BizTLRecFeedsDataUtil", "protectionTime = ".concat(String.valueOf(i)));
-    AppMethodBeat.o(212399);
+    AppMethodBeat.o(205442);
     return i;
   }
   
-  public static final int aTH()
+  public static final int bcI()
   {
-    AppMethodBeat.i(212400);
-    int i = a.aTH();
-    AppMethodBeat.o(212400);
+    AppMethodBeat.i(205444);
+    int i = a.bcI();
+    AppMethodBeat.o(205444);
     return i;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/model/BizTLRecFeedsDataUtil$Companion;", "", "()V", "DEFAULT_PRELOAD_INTERVAL", "", "DEFAULT_PROTECTION_TIME", "TAG", "", "firstScreenDataKey", "getFirstScreenDataKey", "()Ljava/lang/String;", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "Lkotlin/Lazy;", "orderFlag", "Ljava/util/concurrent/atomic/AtomicLong;", "getOrderFlag", "()Ljava/util/concurrent/atomic/AtomicLong;", "recList", "", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "getRecList", "()Ljava/util/List;", "setRecList", "(Ljava/util/List;)V", "filterRecommendFeed", "", "feed", "Lcom/tencent/mm/protocal/protobuf/RecommendCardMsg;", "list", "getFirstScreen", "Lcom/tencent/mm/protocal/protobuf/GetRecommendFeedsResp;", "getLastSaveRecList", "getProtectionTime", "getRecommendFeeds", "getRecFeedScene", "Lcom/tencent/mm/model/BizTLRecFeedsDataUtil$GetRecommendFeedScene;", "(Lcom/tencent/mm/model/BizTLRecFeedsDataUtil$GetRecommendFeedScene;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getRecommendFeedsWording", "getSubscribeMsgLimit", "isRecFeedSvrOpen", "onRemove", "", "info", "recommendCardFeedback", "negativeFeedbackReason", "Ljava/util/LinkedList;", "saveFirstScreen", "resp", "saveLastRecList", "updateSvrSwitch", "recommendFeedsInfo", "Lcom/tencent/mm/protocal/protobuf/RecommendFeedsInfo;", "getString", "Lcom/tencent/mm/protocal/protobuf/RecommendFeedsConfig;", "plugin-biz_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/model/BizTLRecFeedsDataUtil$Companion;", "", "()V", "DEFAULT_PRELOAD_INTERVAL", "", "DEFAULT_PROTECTION_TIME", "TAG", "", "firstScreenDataKey", "getFirstScreenDataKey", "()Ljava/lang/String;", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "Lkotlin/Lazy;", "openGetRecFeedsOnClickBack", "", "getOpenGetRecFeedsOnClickBack", "()Z", "openGetRecFeedsOnClickBack$delegate", "orderFlag", "Ljava/util/concurrent/atomic/AtomicLong;", "getOrderFlag", "()Ljava/util/concurrent/atomic/AtomicLong;", "recList", "", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "getRecList", "()Ljava/util/List;", "setRecList", "(Ljava/util/List;)V", "recReportData", "getRecReportData", "setRecReportData", "(Ljava/lang/String;)V", "filterRecommendFeed", "feed", "Lcom/tencent/mm/protocal/protobuf/RecommendCardMsg;", "list", "getFirstScreen", "Lcom/tencent/mm/protocal/protobuf/GetRecommendFeedsResp;", "getLastSaveRecList", "getProtectionTime", "getRecommendFeeds", "getRecFeedScene", "Lcom/tencent/mm/model/BizTLRecFeedsDataUtil$GetRecommendFeedScene;", "recommendFeedsContext", "Lcom/tencent/mm/protocal/protobuf/RecommendFeedsContext;", "(Lcom/tencent/mm/model/BizTLRecFeedsDataUtil$GetRecommendFeedScene;Lcom/tencent/mm/protocal/protobuf/RecommendFeedsContext;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getRecommendFeedsWording", "getSubscribeMsgLimit", "isRecFeedSvrOpen", "onRemove", "", "info", "recommendCardFeedback", "negativeFeedbackReason", "Ljava/util/LinkedList;", "saveFirstScreen", "resp", "saveLastRecList", "setRecommendReportData", "reportData", "updateSvrSwitch", "recommendFeedsInfo", "Lcom/tencent/mm/protocal/protobuf/RecommendFeedsInfo;", "getString", "Lcom/tencent/mm/protocal/protobuf/RecommendFeedsConfig;", "plugin-biz_release"})
   public static final class a
   {
-    public static Object a(final p.d paramd, kotlin.d.d<? super bub> paramd1)
+    public static Object a(final p.e parame, final duk paramduk, kotlin.d.d<? super cbt> paramd)
     {
-      AppMethodBeat.i(212386);
-      h localh = new h(kotlin.d.a.b.e(paramd1));
-      kotlin.d.d locald = (kotlin.d.d)localh;
+      AppMethodBeat.i(205512);
+      kotlin.d.h localh = new kotlin.d.h(kotlin.d.a.b.k(paramd));
+      final kotlin.d.d locald = (kotlin.d.d)localh;
       Object localObject1 = new d.a();
-      Object localObject2 = new bua();
-      ((bua)localObject2).Scene = paramd.scene;
-      Object localObject3 = p.iCa;
-      localObject3 = aTI().decodeBytes("GetRecommendFeedsBuffer");
+      Object localObject2 = new cbs();
+      ((cbs)localObject2).CPw = parame.scene;
+      Object localObject3 = p.lrH;
+      localObject3 = bcJ().decodeBytes("GetRecommendFeedsBuffer");
       if (localObject3 != null) {
-        ((bua)localObject2).Buffer = new com.tencent.mm.bw.b((byte[])localObject3);
+        ((cbs)localObject2).Tkb = new com.tencent.mm.cd.b((byte[])localObject3);
       }
-      ((d.a)localObject1).c((com.tencent.mm.bw.a)localObject2);
-      ((d.a)localObject1).d((com.tencent.mm.bw.a)new bub());
-      ((d.a)localObject1).MB("/cgi-bin/mmbiz-bin/timeline/getrecommendfeeds");
-      ((d.a)localObject1).sG(4690);
-      localObject1 = ((d.a)localObject1).aXF();
-      Log.i("Micromsg.BizTLRecFeedsDataUtil", "getRecommendFeeds scene=" + paramd.scene);
+      ((cbs)localObject2).Tkc = paramduk;
+      ((d.a)localObject1).c((com.tencent.mm.cd.a)localObject2);
+      ((d.a)localObject1).d((com.tencent.mm.cd.a)new cbt());
+      ((d.a)localObject1).TW("/cgi-bin/mmbiz-bin/timeline/getrecommendfeeds");
+      ((d.a)localObject1).vD(4690);
+      localObject1 = ((d.a)localObject1).bgN();
+      Log.i("Micromsg.BizTLRecFeedsDataUtil", "getRecommendFeeds scene=" + parame.scene);
       long l1;
-      if (p.d.iCj.scene == paramd.scene)
+      if (p.e.lrT.scene == parame.scene)
       {
         l1 = System.currentTimeMillis();
-        localObject2 = p.iCa;
-        long l2 = aTI().decodeLong("LastReqTime", 0L);
-        localObject2 = p.iCa;
-        int i = aTI().decodeInt("NextReqTime", 600);
+        localObject2 = p.lrH;
+        long l2 = bcJ().decodeLong("LastReqTime", 0L);
+        localObject2 = p.lrH;
+        int i = bcJ().decodeInt("NextReqTime", 600);
         if (Math.abs(l1 - l2) < i * 1000)
         {
           Log.i("Micromsg.BizTLRecFeedsDataUtil", "getRecommendFeeds delta < interval, return");
-          paramd = Result.Companion;
+          parame = Result.Companion;
           locald.resumeWith(Result.constructor-impl(null));
         }
       }
       for (;;)
       {
-        paramd = localh.hxK();
-        if (paramd == kotlin.d.a.a.SXO) {
-          kotlin.g.b.p.h(paramd1, "frame");
+        parame = localh.iBS();
+        if (parame == kotlin.d.a.a.aaAA) {
+          kotlin.g.b.p.k(paramd, "frame");
         }
-        AppMethodBeat.o(212386);
-        return paramd;
-        localObject2 = p.iCa;
-        aTI().encode("LastReqTime", l1);
-        aa.a((com.tencent.mm.ak.d)localObject1, (aa.a)new a(locald, paramd));
+        AppMethodBeat.o(205512);
+        return parame;
+        localObject2 = p.lrH;
+        bcJ().encode("LastReqTime", l1);
+        localObject2 = new kotlin.g.b.aa.a();
+        ((kotlin.g.b.aa.a)localObject2).aaBx = false;
+        aa.a((com.tencent.mm.an.d)localObject1, (com.tencent.mm.an.aa.a)new a((kotlin.g.b.aa.a)localObject2, locald, parame, paramduk));
       }
     }
     
-    public static void a(bub parambub)
+    public static void a(cbt paramcbt)
     {
-      AppMethodBeat.i(212388);
-      kotlin.g.b.p.h(parambub, "resp");
+      AppMethodBeat.i(205514);
+      kotlin.g.b.p.k(paramcbt, "resp");
       try
       {
-        aTI().encode(p.aTF(), parambub.toByteArray());
-        AppMethodBeat.o(212388);
+        bcJ().encode(p.bcF(), paramcbt.toByteArray());
+        AppMethodBeat.o(205514);
         return;
       }
-      catch (Exception parambub)
+      catch (Exception paramcbt)
       {
-        Log.printErrStackTrace("Micromsg.BizTLRecFeedsDataUtil", (Throwable)parambub, "saveFirstScreen", new Object[0]);
-        AppMethodBeat.o(212388);
+        Log.printErrStackTrace("Micromsg.BizTLRecFeedsDataUtil", (Throwable)paramcbt, "saveFirstScreen", new Object[0]);
+        AppMethodBeat.o(205514);
       }
     }
     
-    public static boolean a(dkr paramdkr, List<z> paramList)
+    public static boolean a(dug paramdug, List<z> paramList)
     {
-      AppMethodBeat.i(212387);
-      kotlin.g.b.p.h(paramdkr, "feed");
-      kotlin.g.b.p.h(paramList, "list");
-      if (!af.b(paramdkr))
+      AppMethodBeat.i(205513);
+      kotlin.g.b.p.k(paramdug, "feed");
+      if (paramList == null)
       {
-        AppMethodBeat.o(212387);
+        AppMethodBeat.o(205513);
+        return false;
+      }
+      if (!af.c(paramdug))
+      {
+        AppMethodBeat.o(205513);
         return false;
       }
       paramList = ((Iterable)paramList).iterator();
       while (paramList.hasNext())
       {
         z localz = (z)paramList.next();
-        if ((localz.NQr != null) && (kotlin.g.b.p.j(paramdkr.KUk, localz.NQr.KUk)))
+        if ((localz.Ven != null) && (kotlin.g.b.p.h(paramdug.RVi, localz.Ven.RVi)))
         {
-          paramList = o.iBV;
-          o.Aa(4L);
-          Log.i("Micromsg.BizTLRecFeedsDataUtil", "filterRecommendFeed cardId repeat " + paramdkr.KUk);
-          AppMethodBeat.o(212387);
+          paramList = o.lrA;
+          o.Gh(4L);
+          Log.i("Micromsg.BizTLRecFeedsDataUtil", "filterRecommendFeed cardId repeat " + paramdug.RVi);
+          AppMethodBeat.o(205513);
           return false;
         }
       }
-      AppMethodBeat.o(212387);
+      AppMethodBeat.o(205513);
       return true;
     }
     
-    public static int aTH()
+    public static int bcI()
     {
-      AppMethodBeat.i(212390);
-      int i = aTI().decodeInt("SubscribeMsgLimit", 0);
+      AppMethodBeat.i(205517);
+      int i = bcJ().decodeInt("SubscribeMsgLimit", 0);
       Log.i("Micromsg.BizTLRecFeedsDataUtil", "subscribeMsgLimit = ".concat(String.valueOf(i)));
       if (i <= 0)
       {
-        AppMethodBeat.o(212390);
+        AppMethodBeat.o(205517);
         return 2000;
       }
-      AppMethodBeat.o(212390);
+      AppMethodBeat.o(205517);
       return i;
     }
     
-    public static MultiProcessMMKV aTI()
+    public static MultiProcessMMKV bcJ()
     {
-      AppMethodBeat.i(212385);
-      Object localObject = p.aTC();
-      a locala = p.iCa;
+      AppMethodBeat.i(205511);
+      Object localObject = p.bcB();
+      a locala = p.lrH;
       localObject = (MultiProcessMMKV)((f)localObject).getValue();
-      AppMethodBeat.o(212385);
+      AppMethodBeat.o(205511);
       return localObject;
     }
     
-    public static bub aTJ()
+    public static cbt bcK()
     {
       int j = 1;
-      AppMethodBeat.i(212389);
-      Object localObject1 = aTI();
-      kotlin.g.b.p.g(localObject1, "mmkv");
-      Object localObject3 = p.aTF();
+      AppMethodBeat.i(205516);
+      Object localObject1 = bcJ();
+      kotlin.g.b.p.j(localObject1, "mmkv");
+      Object localObject3 = p.bcF();
       int i;
       if (((MultiProcessMMKV)localObject1).containsKey((String)localObject3))
       {
@@ -213,11 +223,11 @@ public final class p
       {
         try
         {
-          localObject3 = bub.class.newInstance();
-          ((com.tencent.mm.bw.a)localObject3).parseFrom((byte[])localObject1);
-          localObject1 = (com.tencent.mm.bw.a)localObject3;
-          localObject1 = (bub)localObject1;
-          AppMethodBeat.o(212389);
+          localObject3 = cbt.class.newInstance();
+          ((com.tencent.mm.cd.a)localObject3).parseFrom((byte[])localObject1);
+          localObject1 = (com.tencent.mm.cd.a)localObject3;
+          localObject1 = (cbt)localObject1;
+          AppMethodBeat.o(205516);
           return localObject1;
         }
         catch (Exception localException)
@@ -234,154 +244,170 @@ public final class p
       }
     }
     
-    public static boolean aTK()
+    public static boolean bcL()
     {
-      AppMethodBeat.i(212391);
-      boolean bool = aTI().decodeBool("BizTLRecommendFeedsSvrOpen", false);
+      AppMethodBeat.i(205518);
+      boolean bool = bcJ().decodeBool("BizTLRecommendFeedsSvrOpen", false);
       Log.i("Micromsg.BizTLRecFeedsDataUtil", "BizTLRecommendFeedsSvrOpen = ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(212391);
+      AppMethodBeat.o(205518);
       return bool;
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "errType", "errCode", "<anonymous parameter 2>", "", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "<anonymous parameter 4>", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback", "com/tencent/mm/model/BizTLRecFeedsDataUtil$Companion$getRecommendFeeds$2$1"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "errType", "errCode", "<anonymous parameter 2>", "", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "<anonymous parameter 4>", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback", "com/tencent/mm/model/BizTLRecFeedsDataUtil$Companion$getRecommendFeeds$2$1"})
     static final class a
-      implements aa.a
+      implements com.tencent.mm.an.aa.a
     {
-      a(kotlin.d.d paramd, p.d paramd1) {}
+      a(kotlin.g.b.aa.a parama, kotlin.d.d paramd, p.e parame, duk paramduk) {}
       
-      public final int a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.d paramd, q paramq)
+      public final int a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.d paramd, q paramq)
       {
         Object localObject = null;
-        AppMethodBeat.i(212380);
-        kotlin.g.b.p.h(paramd, "rr");
-        kotlin.g.b.p.h(paramq, "<anonymous parameter 4>");
+        AppMethodBeat.i(207286);
+        kotlin.g.b.p.k(paramd, "rr");
+        kotlin.g.b.p.k(paramq, "<anonymous parameter 4>");
         Log.i("Micromsg.BizTLRecFeedsDataUtil", "getRecommendFeeds callback " + paramInt1 + ", " + paramInt2);
+        if (this.lrI.aaBx)
+        {
+          paramString = o.lrA;
+          o.Gh(6L);
+          AppMethodBeat.o(207286);
+          return 0;
+        }
+        this.lrI.aaBx = true;
         if ((paramInt1 != 0) || (paramInt2 != 0))
         {
-          paramString = o.iBV;
-          o.Aa(3L);
-          paramString = this.iCb;
+          try
+          {
+            paramString = o.lrA;
+            o.Gh(3L);
+            paramString = locald;
+            paramd = Result.Companion;
+            paramString.resumeWith(Result.constructor-impl(null));
+            AppMethodBeat.o(207286);
+            return 0;
+          }
+          catch (Exception paramString)
+          {
+            paramd = o.lrA;
+            o.Gh(7L);
+            Log.e("Micromsg.BizTLRecFeedsDataUtil", "callback ex " + paramString.getMessage());
+          }
+          AppMethodBeat.o(207286);
+          return 0;
+        }
+        paramString = o.lrA;
+        o.Gh(2L);
+        if (!(paramd.bhY() instanceof cbt))
+        {
+          paramString = locald;
           paramd = Result.Companion;
           paramString.resumeWith(Result.constructor-impl(null));
-          AppMethodBeat.o(212380);
+          AppMethodBeat.o(207286);
           return 0;
         }
-        paramString = o.iBV;
-        o.Aa(2L);
-        paramd = paramd.aYK();
-        paramString = paramd;
-        if (!(paramd instanceof bub)) {
-          paramString = null;
-        }
-        paramd = (bub)paramString;
-        if (paramd == null)
+        paramString = paramd.bhY();
+        if (paramString == null)
         {
-          AppMethodBeat.o(212380);
-          return 0;
+          paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetRecommendFeedsResp");
+          AppMethodBeat.o(207286);
+          throw paramString;
         }
-        paramString = com.tencent.mm.plugin.webview.core.g.ILB;
-        if (g.a.KB())
+        paramd = (cbt)paramString;
+        paramString = com.tencent.mm.plugin.webview.core.g.PHD;
+        if (g.a.No())
         {
           paramString = MultiProcessMMKV.getSingleMMKV("brandService");
           if ((paramString != null) && (paramString.decodeInt("BizTimeLineRecFeedStatus", 1) == 0))
           {
-            paramString = paramd.MaI;
+            paramString = paramd.Tkd;
             if (paramString != null) {
               paramString.clear();
             }
           }
         }
         paramq = new StringBuilder("getRecommendFeeds card size=");
-        paramString = paramd.MaI;
+        paramString = paramd.Tkd;
         if (paramString != null)
         {
           paramString = Integer.valueOf(paramString.size());
+          label329:
           paramq = paramq.append(paramString).append(' ');
-          dku localdku = paramd.MaJ;
+          duj localduj = paramd.Tke;
           paramString = localObject;
-          if (localdku != null)
+          if (localduj != null)
           {
-            paramString = p.iCa;
-            kotlin.g.b.p.h(localdku, "$this$getString");
-            paramString = "NextReqTime=" + localdku.MON + " ProtectionTime=" + localdku.MOO + " SubscribeMsgLimit=" + localdku.MOP;
+            paramString = p.lrH;
+            kotlin.g.b.p.k(localduj, "$this$getString");
+            paramString = "NextReqTime=" + localduj.UaK + " ProtectionTime=" + localduj.UaL;
           }
           Log.i("Micromsg.BizTLRecFeedsDataUtil", paramString);
-          if ((paramd.Buffer != null) && (paramd.Buffer.zy.length > 0))
+          if ((paramd.Tkb != null) && (paramd.Tkb.UH.length > 0))
           {
-            paramString = p.iCa;
-            p.a.aTI().encode("GetRecommendFeedsBuffer", paramd.Buffer.toByteArray());
+            paramString = p.lrH;
+            p.a.bcJ().encode("GetRecommendFeedsBuffer", paramd.Tkb.toByteArray());
           }
-          if (p.d.iCk.scene == paramd.scene)
+          if (p.e.lrU.scene == parame.scene)
           {
-            paramString = p.iCa;
-            p.a.aTI().encode("RecommendFeedsWording", paramd.MaK);
-            paramString = p.iCa;
-            paramString = p.a.aTI();
-            paramq = paramd.MaJ;
+            paramString = p.lrH;
+            p.a.bcJ().encode("RecommendFeedsWording", paramd.Tkf);
+            paramString = p.lrH;
+            paramString = p.a.bcJ();
+            paramq = paramd.Tke;
             if (paramq == null) {
-              break label530;
+              break label591;
             }
-            paramInt1 = paramq.MON;
-            label419:
+            paramInt1 = paramq.UaK;
+            label518:
             paramString.encode("NextReqTime", paramInt1);
-            paramString = p.iCa;
-            paramString = p.a.aTI();
-            paramq = paramd.MaJ;
+            paramString = p.lrH;
+            paramString = p.a.bcJ();
+            paramq = paramd.Tke;
             if (paramq == null) {
-              break label537;
-            }
-            paramInt1 = paramq.MOO;
-            label453:
-            paramString.encode("ProtectionTime", paramInt1);
-            paramString = p.iCa;
-            paramString = p.a.aTI();
-            paramq = paramd.MaJ;
-            if (paramq == null) {
-              break label544;
+              break label598;
             }
           }
         }
-        label530:
-        label537:
-        label544:
-        for (paramInt1 = paramq.MOP;; paramInt1 = 0)
+        label591:
+        label598:
+        for (paramInt1 = paramq.UaL;; paramInt1 = 1800)
         {
-          paramString.encode("SubscribeMsgLimit", paramInt1);
-          paramString = this.iCb;
+          paramString.encode("ProtectionTime", paramInt1);
+          paramString = locald;
           paramq = Result.Companion;
           paramString.resumeWith(Result.constructor-impl(paramd));
-          AppMethodBeat.o(212380);
-          return 0;
-          paramString = null;
           break;
+          paramString = null;
+          break label329;
           paramInt1 = 600;
-          break label419;
-          paramInt1 = 1800;
-          break label453;
+          break label518;
         }
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/model/BizTLRecFeedsDataUtil$GetRecommendFeedScene;", "", "scene", "", "(Ljava/lang/String;II)V", "getScene", "()I", "GET_RECOMMEND_FEEDS_SCENE_PRELOAD", "GET_RECOMMEND_FEEDS_SCENE_ENTER", "GET_RECOMMEND_FEEDS_SCENE_LOAD_MORE", "plugin-biz_release"})
-  public static enum d
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/model/BizTLRecFeedsDataUtil$GetRecommendFeedScene;", "", "scene", "", "(Ljava/lang/String;II)V", "getScene", "()I", "GET_RECOMMEND_FEEDS_SCENE_PRELOAD", "GET_RECOMMEND_FEEDS_SCENE_ENTER", "GET_RECOMMEND_FEEDS_SCENE_LOAD_MORE", "GET_RECOMMEND_FEEDS_SCENE_REPLACE", "GET_RECOMMEND_FEEDS_SCENE_SUPPLEMENT", "plugin-biz_release"})
+  public static enum e
   {
     final int scene;
     
     static
     {
-      AppMethodBeat.i(212395);
-      d locald1 = new d("GET_RECOMMEND_FEEDS_SCENE_PRELOAD", 0, 1);
-      iCj = locald1;
-      d locald2 = new d("GET_RECOMMEND_FEEDS_SCENE_ENTER", 1, 2);
-      iCk = locald2;
-      d locald3 = new d("GET_RECOMMEND_FEEDS_SCENE_LOAD_MORE", 2, 3);
-      iCl = locald3;
-      iCm = new d[] { locald1, locald2, locald3 };
-      AppMethodBeat.o(212395);
+      AppMethodBeat.i(206419);
+      e locale1 = new e("GET_RECOMMEND_FEEDS_SCENE_PRELOAD", 0, 1);
+      lrT = locale1;
+      e locale2 = new e("GET_RECOMMEND_FEEDS_SCENE_ENTER", 1, 2);
+      lrU = locale2;
+      e locale3 = new e("GET_RECOMMEND_FEEDS_SCENE_LOAD_MORE", 2, 3);
+      lrV = locale3;
+      e locale4 = new e("GET_RECOMMEND_FEEDS_SCENE_REPLACE", 3, 4);
+      lrW = locale4;
+      e locale5 = new e("GET_RECOMMEND_FEEDS_SCENE_SUPPLEMENT", 4, 5);
+      lrX = locale5;
+      lrY = new e[] { locale1, locale2, locale3, locale4, locale5 };
+      AppMethodBeat.o(206419);
     }
     
-    private d(int paramInt)
+    private e(int paramInt)
     {
       this.scene = paramInt;
     }
@@ -389,7 +415,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.model.p
  * JD-Core Version:    0.7.0.1
  */

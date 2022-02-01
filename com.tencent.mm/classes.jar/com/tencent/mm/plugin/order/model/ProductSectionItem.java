@@ -11,8 +11,8 @@ public class ProductSectionItem
   implements Parcelable
 {
   public static final Parcelable.Creator<ProductSectionItem> CREATER;
-  public List<Skus> APw;
-  public String APx;
+  public List<Skus> GIK;
+  public String GIL;
   public int count;
   public String iconUrl;
   public String jumpUrl;
@@ -37,21 +37,21 @@ public class ProductSectionItem
     int j = paramParcel.readInt();
     if (j > 0)
     {
-      this.APw = new ArrayList();
+      this.GIK = new ArrayList();
       int i = 0;
       while (i < j)
       {
         Skus localSkus = new Skus();
         localSkus.key = paramParcel.readString();
         localSkus.value = paramParcel.readString();
-        this.APw.add(localSkus);
+        this.GIK.add(localSkus);
         i += 1;
       }
     }
     this.count = paramParcel.readInt();
     this.price = paramParcel.readString();
     this.jumpUrl = paramParcel.readString();
-    this.APx = paramParcel.readString();
+    this.GIL = paramParcel.readString();
     this.scene = paramParcel.readInt();
     AppMethodBeat.o(66697);
   }
@@ -66,13 +66,13 @@ public class ProductSectionItem
     AppMethodBeat.i(66698);
     paramParcel.writeString(this.iconUrl);
     paramParcel.writeString(this.name);
-    if (this.APw != null)
+    if (this.GIK != null)
     {
-      paramParcel.writeInt(this.APw.size());
+      paramParcel.writeInt(this.GIK.size());
       paramInt = 0;
-      while (paramInt < this.APw.size())
+      while (paramInt < this.GIK.size())
       {
-        Skus localSkus = (Skus)this.APw.get(paramInt);
+        Skus localSkus = (Skus)this.GIK.get(paramInt);
         paramParcel.writeString(localSkus.key);
         paramParcel.writeString(localSkus.value);
         paramInt += 1;
@@ -82,7 +82,7 @@ public class ProductSectionItem
     paramParcel.writeInt(this.count);
     paramParcel.writeString(this.price);
     paramParcel.writeString(this.jumpUrl);
-    paramParcel.writeString(this.APx);
+    paramParcel.writeString(this.GIL);
     paramParcel.writeInt(this.scene);
     AppMethodBeat.o(66698);
   }
@@ -111,7 +111,7 @@ public class ProductSectionItem
       AppMethodBeat.o(66693);
     }
     
-    public static String fJ(List<Skus> paramList)
+    public static String gn(List<Skus> paramList)
     {
       AppMethodBeat.i(66695);
       if ((paramList == null) || (paramList.size() == 0))

@@ -17,19 +17,23 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.i;
-import com.tencent.mm.aj.j;
-import com.tencent.mm.aj.p;
+import com.tencent.mm.am.j;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.plugin.luckymoney.model.af;
+import com.tencent.mm.plugin.luckymoney.f2f.a.c;
+import com.tencent.mm.plugin.luckymoney.model.ag;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBaseUI;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBeforeDetailUI;
 import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
-import com.tencent.mm.plugin.wallet_core.model.k;
+import com.tencent.mm.plugin.wallet_core.utils.g;
+import com.tencent.mm.plugin.wxpay.a.a;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.alm;
-import com.tencent.mm.protocal.protobuf.dju;
+import com.tencent.mm.protocal.protobuf.amn;
+import com.tencent.mm.protocal.protobuf.dtj;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -41,46 +45,46 @@ import java.io.IOException;
 public class LuckyMoneyF2FReceiveUI
   extends LuckyMoneyBaseUI
 {
-  private String ehh;
+  private String EvN;
+  private String EvP;
+  private String EvQ;
+  private TextView Ewm;
+  private View Exm;
+  private CdnImageView Exn;
+  private TextView Exo;
+  private ImageView Exp;
+  private ValueAnimator Exq;
+  private ValueAnimator Exr;
+  private Intent Exs;
+  private boolean Ext = false;
+  private int amount;
+  private String gby;
   private DisplayMetrics metrics;
-  private String rCq;
-  private String yQE;
-  private int yRL;
-  private String yRQ;
-  private String yRS;
-  private String yRT;
-  private TextView ySp;
-  private View yTp;
-  private CdnImageView yTq;
-  private TextView yTr;
-  private ImageView yTs;
-  private ValueAnimator yTt;
-  private ValueAnimator yTu;
-  private Intent yTv;
-  private boolean yTw = false;
+  private String vhY;
+  private String ybP;
   
   public int getLayoutId()
   {
-    return 2131495365;
+    return a.g.lucky_money_f2f_receive_ui;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(65109);
     super.onCreate(paramBundle);
-    this.yTp = findViewById(2131304240);
-    this.yTq = ((CdnImageView)findViewById(2131304244));
-    this.ySp = ((TextView)findViewById(2131304245));
-    this.yTr = ((TextView)findViewById(2131304247));
-    this.yTs = ((ImageView)findViewById(2131304254));
-    this.yTs.setOnClickListener(new View.OnClickListener()
+    this.Exm = findViewById(a.f.lucky_money_receive_ll_1);
+    this.Exn = ((CdnImageView)findViewById(a.f.lucky_money_receive_sender_avatar));
+    this.Ewm = ((TextView)findViewById(a.f.lucky_money_receive_sender_nickname));
+    this.Exo = ((TextView)findViewById(a.f.lucky_money_receive_tips));
+    this.Exp = ((ImageView)findViewById(a.f.lucky_money_recieve_close_btn));
+    this.Exp.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(65102);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/f2f/ui/LuckyMoneyF2FReceiveUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/luckymoney/f2f/ui/LuckyMoneyF2FReceiveUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         LuckyMoneyF2FReceiveUI.a(LuckyMoneyF2FReceiveUI.this).cancel();
         LuckyMoneyF2FReceiveUI.this.finish();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/f2f/ui/LuckyMoneyF2FReceiveUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -88,14 +92,14 @@ public class LuckyMoneyF2FReceiveUI
       }
     });
     getContentView().setVisibility(8);
-    this.rCq = getIntent().getStringExtra("key_share_url");
-    k.aeJ(6);
-    doSceneProgress(new com.tencent.mm.plugin.luckymoney.f2f.a.c(this.rCq), true);
+    this.vhY = getIntent().getStringExtra("key_share_url");
+    com.tencent.mm.plugin.wallet_core.model.k.amw(6);
+    doSceneProgress(new c(this.vhY), true);
     this.metrics = getResources().getDisplayMetrics();
-    this.yTt = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F }).setDuration(300L);
-    this.yTu = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(300L);
-    this.yTu.setStartDelay(1000L);
-    this.yTt.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.Exq = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F }).setDuration(300L);
+    this.Exr = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(300L);
+    this.Exr.setStartDelay(1000L);
+    this.Exq.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -105,7 +109,7 @@ public class LuckyMoneyF2FReceiveUI
         AppMethodBeat.o(65103);
       }
     });
-    this.yTt.addListener(new Animator.AnimatorListener()
+    this.Exq.addListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
       
@@ -121,7 +125,7 @@ public class LuckyMoneyF2FReceiveUI
       
       public final void onAnimationStart(Animator paramAnonymousAnimator) {}
     });
-    this.yTu.addListener(new Animator.AnimatorListener()
+    this.Exr.addListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
       
@@ -135,7 +139,7 @@ public class LuckyMoneyF2FReceiveUI
         LuckyMoneyF2FReceiveUI.this.setResult(-1, null);
         LuckyMoneyF2FReceiveUI.this.finish();
         if (LuckyMoneyF2FReceiveUI.d(LuckyMoneyF2FReceiveUI.this) != null) {
-          LuckyMoneyF2FReceiveUI.this.overridePendingTransition(2130772119, 2130772124);
+          LuckyMoneyF2FReceiveUI.this.overridePendingTransition(a.a.pop_in, a.a.pop_out);
         }
         AppMethodBeat.o(65105);
       }
@@ -152,42 +156,43 @@ public class LuckyMoneyF2FReceiveUI
     AppMethodBeat.i(65110);
     super.onResume();
     addSceneEndListener(1997);
-    if (this.yTw) {
+    if (this.Ext) {
       finish();
     }
     AppMethodBeat.o(65110);
   }
   
-  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
   {
     AppMethodBeat.i(65112);
     Log.i("LuckyMoneyF2FReceiveUI", "errType: %d,errCode: %d,errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (!(paramq instanceof com.tencent.mm.plugin.luckymoney.f2f.a.c))
+    if (!(paramq instanceof c))
     {
       AppMethodBeat.o(65112);
       return true;
     }
-    Object localObject1 = (com.tencent.mm.plugin.luckymoney.f2f.a.c)paramq;
-    paramInt1 = ((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).egZ;
-    paramInt2 = ((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).yRK;
-    this.yRL = ((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).yRL;
-    int i = ((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).yRN;
-    Object localObject2 = ((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).yRO;
-    String str = ((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).yRP;
-    Log.i("LuckyMoneyF2FReceiveUI", "hbStatus: %d, recvStatus:%d, errorType:%d", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).egZ), Integer.valueOf(((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).yRK), Integer.valueOf(((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).dGe) });
-    if (com.tencent.mm.plugin.wallet_core.utils.c.a(((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).yRJ.Lus))
+    Object localObject1 = (c)paramq;
+    paramInt1 = ((c)localObject1).gbp;
+    paramInt2 = ((c)localObject1).EvI;
+    this.amount = ((c)localObject1).amount;
+    int i = ((c)localObject1).EvK;
+    Object localObject2 = ((c)localObject1).EvL;
+    String str = ((c)localObject1).EvM;
+    Log.i("LuckyMoneyF2FReceiveUI", "hbStatus: %d, recvStatus:%d, errorType:%d", new Object[] { Integer.valueOf(((c)localObject1).gbp), Integer.valueOf(((c)localObject1).EvI), Integer.valueOf(((c)localObject1).fyO) });
+    if (g.a(((c)localObject1).EvH.SwQ))
     {
-      paramString = new com.tencent.mm.plugin.wallet_core.utils.c(this);
-      paramString.b(((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).yRJ.Lus);
-      paramString.IoO = true;
+      paramString = new g(this);
+      paramString.b(((c)localObject1).EvH.SwQ);
+      paramString.Phv = true;
       AppMethodBeat.o(65112);
       return true;
     }
+    Log.w("HABBYGE-MALI", "recvStatus=%s, hbStatus=%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
     if (paramInt2 == 2)
     {
       if (paramInt1 == 5)
       {
-        h.d(this, getString(2131762631), "", new DialogInterface.OnClickListener()
+        h.d(this, getString(a.i.lucky_money_f2f_has_expired), "", new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -199,57 +204,57 @@ public class LuckyMoneyF2FReceiveUI
         AppMethodBeat.o(65112);
         return true;
       }
-      this.yQE = ((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).yQE;
-      this.ehh = ((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).ehh;
-      this.yRS = ((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).yRS;
-      this.yRT = ((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).yRT;
-      this.yRQ = ((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).yRQ;
-      this.yTv = new Intent();
-      if (Util.isNullOrNil(this.yRS))
+      this.ybP = ((c)localObject1).ybP;
+      this.gby = ((c)localObject1).gby;
+      this.EvP = ((c)localObject1).EvP;
+      this.EvQ = ((c)localObject1).EvQ;
+      this.EvN = ((c)localObject1).EvN;
+      this.Exs = new Intent();
+      if (Util.isNullOrNil(this.EvP))
       {
-        if ((!Util.isNullOrNil(this.ehh)) && (!ab.IS(this.ehh)))
+        if ((!Util.isNullOrNil(this.gby)) && (!ab.Ql(this.gby)))
         {
-          paramString = new i();
-          paramString.username = this.ehh;
-          p.aYB().b(paramString);
+          paramString = new j();
+          paramString.username = this.gby;
+          com.tencent.mm.am.q.bhP().b(paramString);
         }
-        af.a(this.yTq, null, this.ehh);
-        label352:
+        ag.a(this.Exn, null, this.gby);
+        label379:
         paramString = new com.tencent.mm.plugin.luckymoney.model.q();
-        paramString.eht = this.yRL;
-        paramString.yQE = this.yQE;
-        paramString.egZ = paramInt1;
-        paramString.eha = paramInt2;
-        paramString.yRP = str;
-        paramString.yRN = i;
-        paramString.yVy = this.ehh;
-        paramString.yRO = ((String)localObject2);
-        if (!Util.isNullOrNil(this.yRT)) {
-          break label680;
+        paramString.gbJ = this.amount;
+        paramString.ybP = this.ybP;
+        paramString.gbp = paramInt1;
+        paramString.gbq = paramInt2;
+        paramString.EvM = str;
+        paramString.EvK = i;
+        paramString.Ezw = this.gby;
+        paramString.EvL = ((String)localObject2);
+        if (!Util.isNullOrNil(this.EvQ)) {
+          break label707;
         }
-        paramString.yVd = af.Ir(this.ehh);
-        label434:
-        paramString.yRQ = this.yRQ;
-        paramString.egY = 2;
-        Log.i("LuckyMoneyF2FReceiveUI", "is most lucky %d", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).yRR) });
-        if (((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).yRR > 0) {
-          paramString.yVc = getString(2131762660);
+        paramString.Eza = ag.PI(this.gby);
+        label461:
+        paramString.EvN = this.EvN;
+        paramString.gbo = 2;
+        Log.i("LuckyMoneyF2FReceiveUI", "is most lucky %d", new Object[] { Integer.valueOf(((c)localObject1).EvO) });
+        if (((c)localObject1).EvO > 0) {
+          paramString.EyZ = getString(a.i.lucky_money_lucky_best);
         }
-        if (!Util.isNullOrNil(this.yRS)) {
-          break label691;
+        if (!Util.isNullOrNil(this.EvP)) {
+          break label718;
         }
       }
-      for (paramString.yVe = af.aDw(this.ehh);; paramString.yVe = this.yRS)
+      for (paramString.Ezb = ag.aNF(this.gby);; paramString.Ezb = this.EvP)
       {
         try
         {
-          this.yTv.putExtra("key_detail_info", paramString.toByteArray());
-          paramString = ((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).yRM;
+          this.Exs.putExtra("key_detail_info", paramString.toByteArray());
+          paramString = ((c)localObject1).EvJ;
           if (paramString != null)
           {
             localObject1 = new RealnameGuideHelper();
-            ((RealnameGuideHelper)localObject1).b(String.valueOf(paramString.KCl), paramString.yXJ, paramString.lHA, paramString.lHB, paramString.yXK, paramq.getType());
-            this.yTv.putExtra("key_realname_guide_helper", (Parcelable)localObject1);
+            ((RealnameGuideHelper)localObject1).a(String.valueOf(paramString.REc), paramString.EBN, paramString.oDJ, paramString.oDK, paramString.EBO, paramq.getType());
+            this.Exs.putExtra("key_realname_guide_helper", (Parcelable)localObject1);
           }
         }
         catch (IOException paramString)
@@ -257,38 +262,38 @@ public class LuckyMoneyF2FReceiveUI
           for (;;)
           {
             int j;
-            label680:
-            label691:
+            label707:
+            label718:
             Log.e("LuckyMoneyF2FReceiveUI", "lucky detail toBytes error: " + paramString.getMessage());
             continue;
-            if (!Util.isNullOrNil(new String[] { this.yQE, this.ehh })) {
-              af.a(this, this.ySp, af.Ir(this.ehh));
+            if (!Util.isNullOrNil(new String[] { this.ybP, this.gby })) {
+              ag.a(this, this.Ewm, ag.PI(this.gby));
             }
           }
         }
-        if (Util.isNullOrNil(this.yRT)) {
-          break label731;
+        if (Util.isNullOrNil(this.EvQ)) {
+          break label758;
         }
-        af.a(this, this.ySp, this.yRT);
-        af.a(this, this.yTr, this.yRQ);
-        this.yTt.start();
+        ag.a(this, this.Ewm, this.EvQ);
+        ag.a(this, this.Exo, this.EvN);
+        this.Exq.start();
         getContentView().setVisibility(0);
         break;
         j = BackwardSupportUtil.BitmapFactory.fromDPToPix(this, 48.0F);
-        this.yTq.setRoundCorner(true);
-        this.yTq.s(this.yRS, j, j, 2131231958);
-        break label352;
-        paramString.yVd = this.yRT;
-        break label434;
+        this.Exn.setRoundCorner(true);
+        this.Exn.w(this.EvP, j, j, a.e.default_avatar_shadow);
+        break label379;
+        paramString.Eza = this.EvQ;
+        break label461;
       }
     }
-    label731:
-    if (((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).yRM != null)
+    label758:
+    if (((c)localObject1).EvJ != null)
     {
       Log.i("LuckyMoneyF2FReceiveUI", "need real name verify");
-      localObject2 = ((com.tencent.mm.plugin.luckymoney.f2f.a.c)localObject1).yRM;
+      localObject2 = ((c)localObject1).EvJ;
       localObject1 = new RealnameGuideHelper();
-      ((RealnameGuideHelper)localObject1).b(String.valueOf(((dju)localObject2).KCl), ((dju)localObject2).yXJ, ((dju)localObject2).lHA, ((dju)localObject2).lHB, ((dju)localObject2).yXK, paramq.getType());
+      ((RealnameGuideHelper)localObject1).a(String.valueOf(((dtj)localObject2).REc), ((dtj)localObject2).EBN, ((dtj)localObject2).oDJ, ((dtj)localObject2).oDK, ((dtj)localObject2).EBO, paramq.getType());
       paramq = new Bundle();
       paramq.putString("realname_verify_process_jump_activity", ".f2f.ui.LuckyMoneyF2FReceiveUI");
       paramq.putString("realname_verify_process_jump_plugin", "luckymoney");
@@ -302,20 +307,20 @@ public class LuckyMoneyF2FReceiveUI
         }
       }, new d.a()
       {
-        public final Intent q(int paramAnonymousInt, Bundle paramAnonymousBundle)
+        public final Intent s(int paramAnonymousInt, Bundle paramAnonymousBundle)
         {
           return null;
         }
       }, false))
       {
-        this.yTw = true;
+        this.Ext = true;
         AppMethodBeat.o(65112);
         return true;
       }
     }
     paramq = paramString;
     if (Util.isNullOrNil(paramString)) {
-      paramq = getString(2131762637);
+      paramq = getString(a.i.lucky_money_f2f_receive_fail);
     }
     h.d(this, paramq, "", new DialogInterface.OnClickListener()
     {
@@ -346,7 +351,7 @@ public class LuckyMoneyF2FReceiveUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.f2f.ui.LuckyMoneyF2FReceiveUI
  * JD-Core Version:    0.7.0.1
  */

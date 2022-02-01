@@ -11,13 +11,13 @@ public class AutoResizeTextView
   extends TextView
   implements a.b
 {
-  private a xZx;
+  private a Dee;
   
   public AutoResizeTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(42558);
-    i(paramAttributeSet);
+    j(paramAttributeSet);
     AppMethodBeat.o(42558);
   }
   
@@ -25,43 +25,43 @@ public class AutoResizeTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(42559);
-    i(paramAttributeSet);
+    j(paramAttributeSet);
     AppMethodBeat.o(42559);
   }
   
-  private void i(AttributeSet paramAttributeSet)
+  private void j(AttributeSet paramAttributeSet)
   {
     AppMethodBeat.i(42560);
-    this.xZx = a.a(this, paramAttributeSet).a(this);
+    this.Dee = a.a(this, paramAttributeSet).a(this);
     AppMethodBeat.o(42560);
   }
   
   public a getAutofitHelper()
   {
-    return this.xZx;
+    return this.Dee;
   }
   
   public float getMaxTextSize()
   {
-    return this.xZx.xZC;
+    return this.Dee.Dej;
   }
   
   public float getMinTextSize()
   {
-    return this.xZx.xZB;
+    return this.Dee.Dei;
   }
   
   public float getPrecision()
   {
-    return this.xZx.xZD;
+    return this.Dee.Dek;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(42561);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.xZx != null) {
-      this.xZx.dWT();
+    if (this.Dee != null) {
+      this.Dee.eAc();
     }
     AppMethodBeat.o(42561);
   }
@@ -70,8 +70,8 @@ public class AutoResizeTextView
   {
     AppMethodBeat.i(42563);
     super.setLines(paramInt);
-    if (this.xZx != null) {
-      this.xZx.OC(paramInt);
+    if (this.Dee != null) {
+      this.Dee.TX(paramInt);
     }
     AppMethodBeat.o(42563);
   }
@@ -80,8 +80,8 @@ public class AutoResizeTextView
   {
     AppMethodBeat.i(42564);
     super.setMaxLines(paramInt);
-    if (this.xZx != null) {
-      this.xZx.OC(paramInt);
+    if (this.Dee != null) {
+      this.Dee.TX(paramInt);
     }
     AppMethodBeat.o(42564);
   }
@@ -89,17 +89,17 @@ public class AutoResizeTextView
   public void setMaxTextSize(float paramFloat)
   {
     AppMethodBeat.i(42566);
-    a locala = this.xZx;
-    Context localContext = locala.Ws.getContext();
+    a locala = this.Dee;
+    Context localContext = locala.rR.getContext();
     Resources localResources = Resources.getSystem();
     if (localContext != null) {
       localResources = localContext.getResources();
     }
     paramFloat = TypedValue.applyDimension(2, paramFloat, localResources.getDisplayMetrics());
-    if (paramFloat != locala.xZC)
+    if (paramFloat != locala.Dej)
     {
-      locala.xZC = paramFloat;
-      locala.dWT();
+      locala.Dej = paramFloat;
+      locala.eAc();
     }
     AppMethodBeat.o(42566);
   }
@@ -107,21 +107,21 @@ public class AutoResizeTextView
   public void setMinTextSize(int paramInt)
   {
     AppMethodBeat.i(42567);
-    this.xZx.r(2, paramInt);
+    this.Dee.s(2, paramInt);
     AppMethodBeat.o(42567);
   }
   
   public void setPrecision(float paramFloat)
   {
     AppMethodBeat.i(42568);
-    this.xZx.bp(paramFloat);
+    this.Dee.bq(paramFloat);
     AppMethodBeat.o(42568);
   }
   
   public void setSizeToFit(boolean paramBoolean)
   {
     AppMethodBeat.i(42565);
-    this.xZx.pX(paramBoolean);
+    this.Dee.su(paramBoolean);
     AppMethodBeat.o(42565);
   }
   
@@ -129,12 +129,12 @@ public class AutoResizeTextView
   {
     AppMethodBeat.i(42562);
     super.setTextSize(paramInt, paramFloat);
-    if (this.xZx != null)
+    if (this.Dee != null)
     {
-      a locala = this.xZx;
-      if (!locala.xZE)
+      a locala = this.Dee;
+      if (!locala.Del)
       {
-        Context localContext = locala.Ws.getContext();
+        Context localContext = locala.rR.getContext();
         Resources localResources = Resources.getSystem();
         if (localContext != null) {
           localResources = localContext.getResources();
@@ -147,7 +147,7 @@ public class AutoResizeTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.AutoResizeTextView
  * JD-Core Version:    0.7.0.1
  */

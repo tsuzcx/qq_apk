@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI04;", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI;", "()V", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI04;", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI;", "()V", "plugin-appbrand-integration_release"})
 public final class AppBrandUI04
   extends AppBrandUI
 {
@@ -15,16 +15,16 @@ public final class AppBrandUI04
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(229511);
+    AppMethodBeat.i(275936);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(229511);
+    AppMethodBeat.o(275936);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(229510);
+    AppMethodBeat.i(275935);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -35,7 +35,7 @@ public final class AppBrandUI04
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(229510);
+    AppMethodBeat.o(275935);
     return localView1;
   }
   

@@ -10,16 +10,16 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class b
 {
+  public a BBZ;
   private boolean mHasStarted = false;
   private SensorManager mSensorManager;
-  public a wIL;
   
-  public final void dLl()
+  public final void epP()
   {
-    AppMethodBeat.i(186700);
+    AppMethodBeat.i(194132);
     if (this.mHasStarted)
     {
-      AppMethodBeat.o(186700);
+      AppMethodBeat.o(194132);
       return;
     }
     this.mHasStarted = true;
@@ -28,23 +28,23 @@ public final class b
     Sensor localSensor = this.mSensorManager.getDefaultSensor(5);
     if (localSensor != null)
     {
-      this.wIL = new a((byte)0);
-      this.mSensorManager.registerListener(this.wIL, localSensor, 3);
+      this.BBZ = new a((byte)0);
+      this.mSensorManager.registerListener(this.BBZ, localSensor, 3);
     }
-    AppMethodBeat.o(186700);
+    AppMethodBeat.o(194132);
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(186701);
+    AppMethodBeat.i(194133);
     if ((!this.mHasStarted) || (this.mSensorManager == null))
     {
-      AppMethodBeat.o(186701);
+      AppMethodBeat.o(194133);
       return;
     }
     this.mHasStarted = false;
-    this.mSensorManager.unregisterListener(this.wIL);
-    AppMethodBeat.o(186701);
+    this.mSensorManager.unregisterListener(this.BBZ);
+    AppMethodBeat.o(194133);
   }
   
   public final class a
@@ -58,23 +58,23 @@ public final class b
     
     public final void onSensorChanged(SensorEvent paramSensorEvent)
     {
-      AppMethodBeat.i(186698);
+      AppMethodBeat.i(197151);
       if (paramSensorEvent.sensor.getType() == 5) {
         this.lux = paramSensorEvent.values[0];
       }
-      AppMethodBeat.o(186698);
+      AppMethodBeat.o(197151);
     }
   }
   
   public static final class b
   {
-    private static b wIN;
+    private static b BCb;
     
     static
     {
-      AppMethodBeat.i(186699);
-      wIN = new b((byte)0);
-      AppMethodBeat.o(186699);
+      AppMethodBeat.i(192033);
+      BCb = new b((byte)0);
+      AppMethodBeat.o(192033);
     }
   }
 }

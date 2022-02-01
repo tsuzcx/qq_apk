@@ -4,51 +4,58 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo;", "", "keyword", "", "traceId", "appId", "hasLuckyBag", "", "interval", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZI)V", "getAppId", "()Ljava/lang/String;", "setAppId", "(Ljava/lang/String;)V", "getHasLuckyBag", "()Z", "getInterval", "()I", "getKeyword", "getTraceId", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "Companion", "plugin-eggspring_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo;", "", "keyword", "", "traceId", "appId", "hasLuckyBag", "", "interval", "", "url", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZILjava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "setAppId", "(Ljava/lang/String;)V", "getHasLuckyBag", "()Z", "getInterval", "()I", "getKeyword", "getTraceId", "getUrl", "setUrl", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "other", "hashCode", "toString", "Companion", "plugin-eggspring_release"})
 public final class c
 {
-  public static final a qVf;
+  public static final a uxS;
   public String appId;
-  public final String dDv;
-  public final int gTn;
-  public final String kZe;
-  private final boolean qVe;
+  public final String fwe;
+  public final int interval;
+  public final String nTp;
+  public String url;
+  public final boolean uxR;
   
   static
   {
     AppMethodBeat.i(108152);
-    qVf = new a((byte)0);
+    uxS = new a((byte)0);
     AppMethodBeat.o(108152);
   }
   
-  public c(String paramString1, String paramString2, String paramString3, int paramInt)
+  public c()
   {
-    AppMethodBeat.i(194571);
-    this.dDv = paramString1;
-    this.kZe = paramString2;
+    this(null, null, null, false, 0, 63);
+  }
+  
+  private c(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(249463);
+    this.fwe = paramString1;
+    this.nTp = paramString2;
     this.appId = paramString3;
-    this.qVe = true;
-    this.gTn = paramInt;
-    AppMethodBeat.o(194571);
+    this.uxR = paramBoolean;
+    this.interval = paramInt;
+    this.url = null;
+    AppMethodBeat.o(249463);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(194573);
+    AppMethodBeat.i(249469);
     if (this != paramObject)
     {
       if ((paramObject instanceof c))
       {
         paramObject = (c)paramObject;
-        if ((!p.j(this.dDv, paramObject.dDv)) || (!p.j(this.kZe, paramObject.kZe)) || (!p.j(this.appId, paramObject.appId)) || (this.qVe != paramObject.qVe) || (this.gTn != paramObject.gTn)) {}
+        if ((!p.h(this.fwe, paramObject.fwe)) || (!p.h(this.nTp, paramObject.nTp)) || (!p.h(this.appId, paramObject.appId)) || (this.uxR != paramObject.uxR) || (this.interval != paramObject.interval) || (!p.h(this.url, paramObject.url))) {}
       }
     }
     else
     {
-      AppMethodBeat.o(194573);
+      AppMethodBeat.o(249469);
       return true;
     }
-    AppMethodBeat.o(194573);
+    AppMethodBeat.o(249469);
     return false;
   }
   
@@ -60,17 +67,17 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(108151);
-    String str = "LuckyBagInfo(keyword=" + this.dDv + ", traceId=" + this.kZe + ", appId=" + this.appId + ", hasLuckyBag=" + this.qVe + ", interval=" + this.gTn + ")";
+    String str = "LuckyBagInfo(keyword=" + this.fwe + ", traceId=" + this.nTp + ", appId=" + this.appId + ", hasLuckyBag=" + this.uxR + ", interval=" + this.interval + ", url=" + this.url + ")";
     AppMethodBeat.o(108151);
     return str;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo$Companion;", "", "()V", "HAS_LUCKY_BAG", "", "NO_LUCKY_BAG", "plugin-eggspring_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo$Companion;", "", "()V", "HAS_LUCKY_BAG", "", "NO_LUCKY_BAG", "plugin-eggspring_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.eggspring.c.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.music.e;
 
-import com.tencent.mm.ay.f;
+import com.tencent.mm.bb.f;
 import java.net.URL;
 import java.util.List;
 
@@ -11,21 +11,21 @@ public abstract interface a
   
   public abstract void a(c paramc);
   
-  public abstract URL aHK(String paramString);
+  public abstract URL aRZ(String paramString);
   
-  public abstract String aiK(String paramString);
+  public abstract String aqw(String paramString);
   
-  public abstract f etU();
+  public abstract f fed();
   
-  public abstract boolean gEZ();
-  
-  public abstract void i(List<f> paramList, boolean paramBoolean);
+  public abstract boolean fee();
   
   public abstract boolean i(f paramf);
   
   public abstract void init();
   
   public abstract f j(f paramf);
+  
+  public abstract void j(List<f> paramList, boolean paramBoolean);
   
   public abstract f k(f paramf);
   
@@ -45,11 +45,11 @@ public abstract interface a
   
   public abstract void release();
   
-  public abstract f y(List<f> paramList, int paramInt);
+  public abstract f z(List<f> paramList, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.e.a
  * JD-Core Version:    0.7.0.1
  */

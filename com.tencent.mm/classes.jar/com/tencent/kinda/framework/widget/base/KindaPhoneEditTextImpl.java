@@ -2,6 +2,8 @@ package com.tencent.kinda.framework.widget.base;
 
 import android.content.Context;
 import android.widget.LinearLayout;
+import com.tencent.kinda.framework.R.layout;
+import com.tencent.kinda.framework.R.string;
 import com.tencent.kinda.gen.ClearButtonMode;
 import com.tencent.kinda.gen.KPhoneEditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -89,13 +91,15 @@ public class KindaPhoneEditTextImpl
   public void showTip(String paramString1, String paramString2)
   {
     AppMethodBeat.i(18920);
-    b.e(this.mBaseFrActivity, paramString2);
+    int i = R.layout.wallet_phone_illustration_dialog;
+    int j = R.string.wallet_card_phone_illustraction;
+    b.a(this.mBaseFrActivity, i, j, paramString2);
     AppMethodBeat.o(18920);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaPhoneEditTextImpl
  * JD-Core Version:    0.7.0.1
  */

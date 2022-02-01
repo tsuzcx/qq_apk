@@ -1,11 +1,9 @@
 package com.tencent.mm.plugin.offline.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.plugin.offline.c.a;
 import com.tencent.mm.plugin.offline.k;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.storage.ao;
@@ -25,16 +23,16 @@ public final class b
     AppMethodBeat.i(66282);
     this.TAG = "MicroMsg.NetSceneOfflineAckMsg";
     HashMap localHashMap = new HashMap();
-    localHashMap.put("ack_key", a.eAH());
-    localHashMap.put("req_key", a.eAI());
-    localHashMap.put("paymsg_type", a.eAJ());
-    localHashMap.put("transactionid", a.eAK());
+    localHashMap.put("ack_key", a.fml());
+    localHashMap.put("req_key", a.fmm());
+    localHashMap.put("paymsg_type", a.fmn());
+    localHashMap.put("transactionid", a.fmo());
     localHashMap.put("network", a.getNetworkType(MMApplicationContext.getContext()));
-    if (k.AIX)
+    if (k.GCg)
     {
       str = "1";
       localHashMap.put("processed", str);
-      if (!a.eAL()) {
+      if (!a.fmp()) {
         break label213;
       }
       str = "1";
@@ -76,18 +74,18 @@ public final class b
     if (paramInt == 0)
     {
       Log.v(this.TAG, "response ok");
-      h.CyF.idkeyStat(135L, 68L, 1L, true);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(135L, 68L, 1L, true);
       paramInt = paramJSONObject.optInt("poll_time") * 1000;
       if (paramInt > 0)
       {
-        g.aAi();
-        g.aAh().azQ().set(ar.a.Ock, Integer.valueOf(paramInt));
+        com.tencent.mm.kernel.h.aHH();
+        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vqn, Integer.valueOf(paramInt));
       }
       AppMethodBeat.o(66283);
       return;
     }
     Log.v(this.TAG, "response fail");
-    h.CyF.idkeyStat(135L, 69L, 1L, true);
+    com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(135L, 69L, 1L, true);
     AppMethodBeat.o(66283);
   }
 }

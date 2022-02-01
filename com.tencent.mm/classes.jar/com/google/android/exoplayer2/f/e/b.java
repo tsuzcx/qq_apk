@@ -23,15 +23,15 @@ import java.util.TreeSet;
 
 final class b
 {
-  private List<b> aQz;
-  public final boolean bCP;
-  public final d bCQ;
-  public final String bCR;
-  private final String[] bCS;
-  private final HashMap<String, Integer> bCT;
-  private final HashMap<String, Integer> bCU;
-  public final long bxn;
-  public final long bxo;
+  private List<b> ayS;
+  public final long bgP;
+  public final long bgQ;
+  public final boolean bmr;
+  public final d bms;
+  public final String bmt;
+  private final String[] bmu;
+  private final HashMap<String, Integer> bmv;
+  private final HashMap<String, Integer> bmw;
   public final String tag;
   public final String text;
   
@@ -40,17 +40,17 @@ final class b
     AppMethodBeat.i(92848);
     this.tag = paramString1;
     this.text = paramString2;
-    this.bCQ = paramd;
-    this.bCS = paramArrayOfString;
+    this.bms = paramd;
+    this.bmu = paramArrayOfString;
     if (paramString2 != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.bCP = bool;
-      this.bxn = paramLong1;
-      this.bxo = paramLong2;
-      this.bCR = ((String)a.checkNotNull(paramString3));
-      this.bCT = new HashMap();
-      this.bCU = new HashMap();
+      this.bmr = bool;
+      this.bgP = paramLong1;
+      this.bgQ = paramLong2;
+      this.bmt = ((String)a.checkNotNull(paramString3));
+      this.bmv = new HashMap();
+      this.bmw = new HashMap();
       AppMethodBeat.o(92848);
       return;
     }
@@ -151,22 +151,22 @@ final class b
     boolean bool2 = "p".equals(this.tag);
     if ((paramBoolean) || (bool2))
     {
-      if (this.bxn != -9223372036854775807L) {
-        paramTreeSet.add(Long.valueOf(this.bxn));
+      if (this.bgP != -9223372036854775807L) {
+        paramTreeSet.add(Long.valueOf(this.bgP));
       }
-      if (this.bxo != -9223372036854775807L) {
-        paramTreeSet.add(Long.valueOf(this.bxo));
+      if (this.bgQ != -9223372036854775807L) {
+        paramTreeSet.add(Long.valueOf(this.bgQ));
       }
     }
-    if (this.aQz == null)
+    if (this.ayS == null)
     {
       AppMethodBeat.o(92853);
       return;
     }
     int i = 0;
-    if (i < this.aQz.size())
+    if (i < this.ayS.size())
     {
-      b localb = (b)this.aQz.get(i);
+      b localb = (b)this.ayS.get(i);
       if ((paramBoolean) || (bool2)) {}
       for (boolean bool1 = true;; bool1 = false)
       {
@@ -189,16 +189,16 @@ final class b
     return paramString;
   }
   
-  private b eR(int paramInt)
+  private b fj(int paramInt)
   {
     AppMethodBeat.i(92850);
-    if (this.aQz == null)
+    if (this.ayS == null)
     {
       localObject = new IndexOutOfBoundsException();
       AppMethodBeat.o(92850);
       throw ((Throwable)localObject);
     }
-    Object localObject = (b)this.aQz.get(paramInt);
+    Object localObject = (b)this.ayS.get(paramInt);
     AppMethodBeat.o(92850);
     return localObject;
   }
@@ -206,12 +206,12 @@ final class b
   private int getChildCount()
   {
     AppMethodBeat.i(92851);
-    if (this.aQz == null)
+    if (this.ayS == null)
     {
       AppMethodBeat.o(92851);
       return 0;
     }
-    int i = this.aQz.size();
+    int i = this.ayS.size();
     AppMethodBeat.o(92851);
     return i;
   }
@@ -219,14 +219,14 @@ final class b
   final void a(long paramLong, boolean paramBoolean, String paramString, Map<String, SpannableStringBuilder> paramMap)
   {
     AppMethodBeat.i(92854);
-    this.bCT.clear();
-    this.bCU.clear();
-    Object localObject2 = this.bCR;
+    this.bmv.clear();
+    this.bmw.clear();
+    Object localObject2 = this.bmt;
     Object localObject1 = localObject2;
     if ("".equals(localObject2)) {
       localObject1 = paramString;
     }
-    if ((this.bCP) && (paramBoolean))
+    if ((this.bmr) && (paramBoolean))
     {
       c((String)localObject1, paramMap).append(this.text);
       AppMethodBeat.o(92854);
@@ -241,7 +241,7 @@ final class b
     if (!"metadata".equals(this.tag))
     {
       int i;
-      if (((this.bxn == -9223372036854775807L) && (this.bxo == -9223372036854775807L)) || ((this.bxn <= paramLong) && (this.bxo == -9223372036854775807L)) || ((this.bxn == -9223372036854775807L) && (paramLong < this.bxo)) || ((this.bxn <= paramLong) && (paramLong < this.bxo))) {
+      if (((this.bgP == -9223372036854775807L) && (this.bgQ == -9223372036854775807L)) || ((this.bgP <= paramLong) && (this.bgQ == -9223372036854775807L)) || ((this.bgP == -9223372036854775807L) && (paramLong < this.bgQ)) || ((this.bgP <= paramLong) && (paramLong < this.bgQ))) {
         i = 1;
       }
       while (i != 0)
@@ -253,7 +253,7 @@ final class b
           if (paramString.hasNext())
           {
             localObject2 = (Map.Entry)paramString.next();
-            this.bCT.put(((Map.Entry)localObject2).getKey(), Integer.valueOf(((SpannableStringBuilder)((Map.Entry)localObject2).getValue()).length()));
+            this.bmv.put(((Map.Entry)localObject2).getKey(), Integer.valueOf(((SpannableStringBuilder)((Map.Entry)localObject2).getValue()).length()));
             continue;
             i = 0;
             break;
@@ -262,7 +262,7 @@ final class b
         i = 0;
         if (i < getChildCount())
         {
-          paramString = eR(i);
+          paramString = fj(i);
           if ((paramBoolean) || (bool2)) {}
           for (boolean bool1 = true;; bool1 = false)
           {
@@ -286,7 +286,7 @@ final class b
         while (paramString.hasNext())
         {
           paramMap = (Map.Entry)paramString.next();
-          this.bCU.put(paramMap.getKey(), Integer.valueOf(((SpannableStringBuilder)paramMap.getValue()).length()));
+          this.bmw.put(paramMap.getKey(), Integer.valueOf(((SpannableStringBuilder)paramMap.getValue()).length()));
         }
       }
     }
@@ -296,17 +296,17 @@ final class b
   public final void a(b paramb)
   {
     AppMethodBeat.i(92849);
-    if (this.aQz == null) {
-      this.aQz = new ArrayList();
+    if (this.ayS == null) {
+      this.ayS = new ArrayList();
     }
-    this.aQz.add(paramb);
+    this.ayS.add(paramb);
     AppMethodBeat.o(92849);
   }
   
   final void a(Map<String, d> paramMap, Map<String, SpannableStringBuilder> paramMap1)
   {
     AppMethodBeat.i(92856);
-    Iterator localIterator = this.bCU.entrySet().iterator();
+    Iterator localIterator = this.bmw.entrySet().iterator();
     if (localIterator.hasNext())
     {
       Object localObject1 = (Map.Entry)localIterator.next();
@@ -315,16 +315,16 @@ final class b
       SpannableStringBuilder localSpannableStringBuilder;
       int k;
       String[] arrayOfString;
-      if (this.bCT.containsKey(localObject2))
+      if (this.bmv.containsKey(localObject2))
       {
-        i = ((Integer)this.bCT.get(localObject2)).intValue();
+        i = ((Integer)this.bmv.get(localObject2)).intValue();
         localSpannableStringBuilder = (SpannableStringBuilder)paramMap1.get(localObject2);
         k = ((Integer)((Map.Entry)localObject1).getValue()).intValue();
         if (i == k) {
           break label680;
         }
-        localObject2 = this.bCQ;
-        arrayOfString = this.bCS;
+        localObject2 = this.bms;
+        arrayOfString = this.bmu;
         if ((localObject2 != null) || (arrayOfString != null)) {
           break label283;
         }
@@ -333,10 +333,10 @@ final class b
         if (localObject1 == null) {
           break label680;
         }
-        if (((d)localObject1).getStyle() != -1) {
-          localSpannableStringBuilder.setSpan(new StyleSpan(((d)localObject1).getStyle()), i, k, 33);
+        if (((d)localObject1).uv() != -1) {
+          localSpannableStringBuilder.setSpan(new StyleSpan(((d)localObject1).uv()), i, k, 33);
         }
-        if (((d)localObject1).bCY != 1) {
+        if (((d)localObject1).bmA != 1) {
           break label499;
         }
         j = 1;
@@ -344,7 +344,7 @@ final class b
         if (j != 0) {
           localSpannableStringBuilder.setSpan(new StrikethroughSpan(), i, k, 33);
         }
-        if (((d)localObject1).bCZ != 1) {
+        if (((d)localObject1).bmB != 1) {
           break label505;
         }
       }
@@ -356,10 +356,10 @@ final class b
         if (j != 0) {
           localSpannableStringBuilder.setSpan(new UnderlineSpan(), i, k, 33);
         }
-        if (!((d)localObject1).bCW) {
+        if (!((d)localObject1).bmy) {
           break label533;
         }
-        if (((d)localObject1).bCW) {
+        if (((d)localObject1).bmy) {
           break label511;
         }
         paramMap = new IllegalStateException("Font color has not been defined.");
@@ -419,11 +419,11 @@ final class b
         break label188;
       }
       label511:
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(((d)localObject1).bCV), i, k, 33);
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(((d)localObject1).bmx), i, k, 33);
       label533:
-      if (((d)localObject1).bCX)
+      if (((d)localObject1).bmz)
       {
-        if (!((d)localObject1).bCX)
+        if (!((d)localObject1).bmz)
         {
           paramMap = new IllegalStateException("Background color has not been defined.");
           AppMethodBeat.o(92856);
@@ -434,10 +434,10 @@ final class b
       if (((d)localObject1).fontFamily != null) {
         localSpannableStringBuilder.setSpan(new TypefaceSpan(((d)localObject1).fontFamily), i, k, 33);
       }
-      if (((d)localObject1).bDe != null) {
-        localSpannableStringBuilder.setSpan(new AlignmentSpan.Standard(((d)localObject1).bDe), i, k, 33);
+      if (((d)localObject1).bmF != null) {
+        localSpannableStringBuilder.setSpan(new AlignmentSpan.Standard(((d)localObject1).bmF), i, k, 33);
       }
-      switch (((d)localObject1).bDc)
+      switch (((d)localObject1).bmD)
       {
       }
       for (;;)
@@ -446,7 +446,7 @@ final class b
         i = 0;
         while (i < getChildCount())
         {
-          eR(i).a(paramMap, paramMap1);
+          fj(i).a(paramMap, paramMap1);
           i += 1;
         }
         localSpannableStringBuilder.setSpan(new AbsoluteSizeSpan((int)((d)localObject1).fontSize, true), i, k, 33);
@@ -459,7 +459,7 @@ final class b
     AppMethodBeat.o(92856);
   }
   
-  public final long[] wu()
+  public final long[] uu()
   {
     AppMethodBeat.i(92852);
     Object localObject = new TreeSet();
@@ -478,7 +478,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.e.b
  * JD-Core Version:    0.7.0.1
  */

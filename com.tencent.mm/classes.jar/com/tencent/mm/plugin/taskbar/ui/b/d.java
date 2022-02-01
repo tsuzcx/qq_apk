@@ -7,63 +7,62 @@ import java.lang.ref.WeakReference;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Timer;
 import java.util.TimerTask;
 
 public enum d
 {
-  private WeakReference<Context> hkm;
-  public HashMap<Integer, b> hkn;
-  public final Object hkp;
+  public com.tencent.e.i.d<?> FpU;
   public boolean isRunning;
-  public Timer mTimer;
+  private WeakReference<Context> jVV;
+  public HashMap<Integer, b> jVW;
+  public final Object jVY;
   
   static
   {
-    AppMethodBeat.i(238329);
-    FVl = new d("INSTANCE");
-    FVm = new d[] { FVl };
-    AppMethodBeat.o(238329);
+    AppMethodBeat.i(215736);
+    MqG = new d("INSTANCE");
+    MqH = new d[] { MqG };
+    AppMethodBeat.o(215736);
   }
   
   private d()
   {
-    AppMethodBeat.i(238326);
-    this.hkm = null;
-    this.hkn = new HashMap();
+    AppMethodBeat.i(215733);
+    this.jVV = null;
+    this.jVW = new HashMap();
     this.isRunning = false;
-    this.mTimer = null;
-    this.hkp = new Object();
-    AppMethodBeat.o(238326);
+    this.FpU = null;
+    this.jVY = new Object();
+    AppMethodBeat.o(215733);
   }
   
-  public final void axH()
+  public final void aEZ()
   {
-    AppMethodBeat.i(238327);
-    synchronized (this.hkp)
+    AppMethodBeat.i(215734);
+    synchronized (this.jVY)
     {
       if (!this.isRunning)
       {
-        AppMethodBeat.o(238327);
+        AppMethodBeat.o(215734);
         return;
       }
-      if (this.mTimer != null) {
-        this.mTimer.cancel();
+      if (this.FpU != null) {
+        this.FpU.cancel(false);
       }
       this.isRunning = false;
-      AppMethodBeat.o(238327);
+      AppMethodBeat.o(215734);
       return;
     }
   }
   
   public final void release()
   {
-    AppMethodBeat.i(238328);
+    AppMethodBeat.i(215735);
     Log.i("MicroMsg.PerformanceMonitor", "alvinluo PerformanceMonitor release");
-    if (this.hkn != null) {
-      this.hkn.clear();
+    if (this.jVW != null) {
+      this.jVW.clear();
     }
-    AppMethodBeat.o(238328);
+    AppMethodBeat.o(215735);
   }
 }
 

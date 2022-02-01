@@ -47,13 +47,13 @@ public class Grammar
         localObject = ((StringBuffer)localObject).toString();
         AppMethodBeat.o(76762);
         return localObject;
-        ((d)this.e.get(i)).cgp = a(((d)this.e.get(i)).userName);
-        ((d)this.e.get(i)).cgq = a(((d)this.e.get(i)).nickName);
-        ((d)this.e.get(i)).cgr = a(((d)this.e.get(i)).cgo);
+        ((d)this.e.get(i)).ciq = a(((d)this.e.get(i)).userName);
+        ((d)this.e.get(i)).cir = a(((d)this.e.get(i)).nickName);
+        ((d)this.e.get(i)).cis = a(((d)this.e.get(i)).cip);
         i += 1;
         break;
       }
-      String str = ((d)this.e.get(i)).cgp;
+      String str = ((d)this.e.get(i)).ciq;
       if (!str.isEmpty())
       {
         if (((StringBuffer)localObject).length() > 0) {
@@ -61,7 +61,7 @@ public class Grammar
         }
         ((StringBuffer)localObject).append(str);
       }
-      str = ((d)this.e.get(i)).cgq;
+      str = ((d)this.e.get(i)).cir;
       if (!str.isEmpty())
       {
         if (((StringBuffer)localObject).length() > 0) {
@@ -69,7 +69,7 @@ public class Grammar
         }
         ((StringBuffer)localObject).append(str);
       }
-      str = ((d)this.e.get(i)).cgr;
+      str = ((d)this.e.get(i)).cis;
       if (!str.isEmpty())
       {
         if (((StringBuffer)localObject).length() > 0) {
@@ -168,17 +168,17 @@ public class Grammar
       {
         AppMethodBeat.o(76767);
         return 0;
-        if (((d)this.e.get(i)).cgp.compareTo(this.b.name) == 0)
+        if (((d)this.e.get(i)).ciq.compareTo(this.b.name) == 0)
         {
           parama.name = ((d)this.e.get(i)).userName;
         }
-        else if (((d)this.e.get(i)).cgq.compareTo(this.b.name) == 0)
+        else if (((d)this.e.get(i)).cir.compareTo(this.b.name) == 0)
         {
           parama.name = ((d)this.e.get(i)).userName;
         }
         else
         {
-          if (((d)this.e.get(i)).cgr.compareTo(this.b.name) != 0) {
+          if (((d)this.e.get(i)).cis.compareTo(this.b.name) != 0) {
             break;
           }
           parama.name = ((d)this.e.get(i)).userName;

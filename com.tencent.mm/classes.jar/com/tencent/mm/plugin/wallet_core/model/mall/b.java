@@ -3,22 +3,24 @@ package com.tencent.mm.plugin.wallet_core.model.mall;
 import android.content.Context;
 import android.telephony.TelephonyManager;
 import android.util.SparseArray;
+import com.tencent.d.f.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.aa.c;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.protobuf.bfv;
-import com.tencent.mm.protocal.protobuf.bfw;
-import com.tencent.mm.protocal.protobuf.bhw;
-import com.tencent.mm.protocal.protobuf.exc;
-import com.tencent.mm.protocal.protobuf.exf;
+import com.tencent.mm.protocal.protobuf.bmw;
+import com.tencent.mm.protocal.protobuf.bmx;
+import com.tencent.mm.protocal.protobuf.bph;
+import com.tencent.mm.protocal.protobuf.fhp;
+import com.tencent.mm.protocal.protobuf.fhs;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.wallet_core.c.aa;
-import com.tencent.mm.y.c;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,11 +32,11 @@ import org.json.JSONObject;
 
 public final class b
 {
-  public static int Ici = -256;
-  public static int Icj = 621019136;
-  public static int Ick = 637534720;
+  public static int OUu = -256;
+  public static int OUv = 621019136;
+  public static int OUw = 637534720;
   
-  public static ArrayList<MallNews> O(JSONArray paramJSONArray)
+  public static ArrayList<MallNews> Q(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(70539);
     try
@@ -46,9 +48,9 @@ public final class b
       {
         JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
         MallNews localMallNews = new MallNews(localJSONObject.optString("activity_jump_funcid"));
-        localMallNews.Icp = localJSONObject.optString("activity_icon_link");
-        localMallNews.Icn = localJSONObject.optString("activity_msg_content");
-        localMallNews.Icq = localJSONObject.optString("activity_tips");
+        localMallNews.OUB = localJSONObject.optString("activity_icon_link");
+        localMallNews.OUz = localJSONObject.optString("activity_msg_content");
+        localMallNews.OUC = localJSONObject.optString("activity_tips");
         localArrayList.add(localMallNews);
         i += 1;
       }
@@ -63,7 +65,7 @@ public final class b
     return null;
   }
   
-  public static ArrayList<a> P(JSONArray paramJSONArray)
+  public static ArrayList<a> R(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(70540);
     try
@@ -75,9 +77,9 @@ public final class b
       {
         JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
         a locala = new a();
-        locala.Ica = localJSONObject.optInt("banner_id");
-        locala.Icb = localJSONObject.optString("banner_title");
-        locala.Icc = localJSONObject.optString("banner_link");
+        locala.OUm = localJSONObject.optInt("banner_id");
+        locala.OUn = localJSONObject.optString("banner_title");
+        locala.OUo = localJSONObject.optString("banner_link");
         localArrayList.add(locala);
         i += 1;
       }
@@ -92,7 +94,7 @@ public final class b
     return null;
   }
   
-  public static SparseArray<String> Q(JSONArray paramJSONArray)
+  public static SparseArray<String> S(JSONArray paramJSONArray)
   {
     int i = 0;
     AppMethodBeat.i(70541);
@@ -119,7 +121,7 @@ public final class b
     return null;
   }
   
-  public static ArrayList<MallFunction> R(JSONArray paramJSONArray)
+  public static ArrayList<MallFunction> T(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(70544);
     try
@@ -137,45 +139,45 @@ public final class b
         }
         Object localObject2 = paramJSONArray.getJSONObject(i);
         localObject1 = new MallFunction();
-        ((MallFunction)localObject1).kHR = ((JSONObject)localObject2).getString("func_id");
-        ((MallFunction)localObject1).edq = ((JSONObject)localObject2).getString("func_name");
-        ((MallFunction)localObject1).Icd = ((JSONObject)localObject2).optString("func_icon_url");
-        ((MallFunction)localObject1).zkt = ((JSONObject)localObject2).optString("hd_icon_url");
-        ((MallFunction)localObject1).zku = ((JSONObject)localObject2).optString("func_foregroud_icon_url");
-        ((MallFunction)localObject1).egX = ((JSONObject)localObject2).optString("native_url");
+        ((MallFunction)localObject1).nBK = ((JSONObject)localObject2).getString("func_id");
+        ((MallFunction)localObject1).fXz = ((JSONObject)localObject2).getString("func_name");
+        ((MallFunction)localObject1).OUp = ((JSONObject)localObject2).optString("func_icon_url");
+        ((MallFunction)localObject1).EPJ = ((JSONObject)localObject2).optString("hd_icon_url");
+        ((MallFunction)localObject1).EPK = ((JSONObject)localObject2).optString("func_foregroud_icon_url");
+        ((MallFunction)localObject1).gbn = ((JSONObject)localObject2).optString("native_url");
         ((MallFunction)localObject1).h5Url = ((JSONObject)localObject2).optString("h5_url");
         ((MallFunction)localObject1).type = ((JSONObject)localObject2).optInt("property_type", 0);
-        ((MallFunction)localObject1).Icg = ((JSONObject)localObject2).optString("third_party_disclaimer");
-        ((MallFunction)localObject1).Ich = ((JSONObject)localObject2).optInt("download_restrict", 0);
+        ((MallFunction)localObject1).OUs = ((JSONObject)localObject2).optString("third_party_disclaimer");
+        ((MallFunction)localObject1).OUt = ((JSONObject)localObject2).optInt("download_restrict", 0);
         Object localObject3 = ((JSONObject)localObject2).optJSONArray("remark_name_list");
         if (localObject3 != null)
         {
-          ((MallFunction)localObject1).Ice = new ArrayList();
+          ((MallFunction)localObject1).OUq = new ArrayList();
           int m = ((JSONArray)localObject3).length();
           int j = 0;
           while (j < m)
           {
-            ((MallFunction)localObject1).Ice.add(((JSONArray)localObject3).getString(j));
+            ((MallFunction)localObject1).OUq.add(((JSONArray)localObject3).getString(j));
             j += 1;
           }
         }
         localObject3 = ((JSONObject)localObject2).optJSONArray("activity_info_list");
         if ((localObject3 != null) && (((JSONArray)localObject3).length() != 0))
         {
-          localObject2 = ((MallFunction)localObject1).kHR;
+          localObject2 = ((MallFunction)localObject1).nBK;
           localObject3 = ((JSONArray)localObject3).getJSONObject(0);
           localObject2 = new MallNews((String)localObject2);
-          ((MallNews)localObject2).FJm = ((JSONObject)localObject3).optString("activity_id");
-          ((MallNews)localObject2).dHx = ((JSONObject)localObject3).optString("activity_ticket");
-          ((MallNews)localObject2).Icn = ((JSONObject)localObject3).optString("activity_msg_content");
-          ((MallNews)localObject2).Ico = ((JSONObject)localObject3).optString("activity_link");
-          ((MallNews)localObject2).Icp = ((JSONObject)localObject3).optString("activity_icon_link");
-          ((MallNews)localObject2).DrO = ((JSONObject)localObject3).optInt("activity_expired_time");
-          ((MallNews)localObject2).Icq = ((JSONObject)localObject3).optString("activity_tips");
-          ((MallNews)localObject2).trD = ((JSONObject)localObject3).optInt("activity_type");
-          ((MallNews)localObject2).Ict = ((JSONObject)localObject3).optString("activity_url");
-          ((MallNews)localObject2).Icr = ((JSONObject)localObject3).optInt("is_msg_reserved");
-          ((MallFunction)localObject1).Icf = ((MallNews)localObject2);
+          ((MallNews)localObject2).oym = ((JSONObject)localObject3).optString("activity_id");
+          ((MallNews)localObject2).fAo = ((JSONObject)localObject3).optString("activity_ticket");
+          ((MallNews)localObject2).OUz = ((JSONObject)localObject3).optString("activity_msg_content");
+          ((MallNews)localObject2).OUA = ((JSONObject)localObject3).optString("activity_link");
+          ((MallNews)localObject2).OUB = ((JSONObject)localObject3).optString("activity_icon_link");
+          ((MallNews)localObject2).expireTime = ((JSONObject)localObject3).optInt("activity_expired_time");
+          ((MallNews)localObject2).OUC = ((JSONObject)localObject3).optString("activity_tips");
+          ((MallNews)localObject2).wYj = ((JSONObject)localObject3).optInt("activity_type");
+          ((MallNews)localObject2).OUF = ((JSONObject)localObject3).optString("activity_url");
+          ((MallNews)localObject2).OUD = ((JSONObject)localObject3).optInt("is_msg_reserved");
+          ((MallFunction)localObject1).OUr = ((MallNews)localObject2);
         }
         localArrayList.add(localObject1);
         i += 1;
@@ -190,52 +192,52 @@ public final class b
     }
   }
   
-  public static void a(bhw parambhw)
+  public static void a(bph parambph)
   {
-    AppMethodBeat.i(214206);
+    AppMethodBeat.i(273692);
     try
     {
-      parambhw = com.tencent.e.f.e.bytesToHexString(parambhw.toByteArray());
-      ((com.tencent.mm.plugin.wxpay.a.a)g.ah(com.tencent.mm.plugin.wxpay.a.a.class)).getWalletCacheStg().set(ar.a.OnP, parambhw);
-      ((com.tencent.mm.plugin.wxpay.a.a)g.ah(com.tencent.mm.plugin.wxpay.a.a.class)).getWalletCacheStg().gBI();
-      AppMethodBeat.o(214206);
+      parambph = e.aC(parambph.toByteArray());
+      ((com.tencent.mm.plugin.wxpay.a.a)h.ag(com.tencent.mm.plugin.wxpay.a.a.class)).getWalletCacheStg().set(ar.a.VDf, parambph);
+      ((com.tencent.mm.plugin.wxpay.a.a)h.ag(com.tencent.mm.plugin.wxpay.a.a.class)).getWalletCacheStg().hxT();
+      AppMethodBeat.o(273692);
       return;
     }
-    catch (IOException parambhw)
+    catch (IOException parambph)
     {
-      Log.e("MicroMsg.MallLogic", "save config exp, " + parambhw.getLocalizedMessage());
-      AppMethodBeat.o(214206);
+      Log.e("MicroMsg.MallLogic", "save config exp, " + parambph.getLocalizedMessage());
+      AppMethodBeat.o(273692);
     }
   }
   
-  public static void aeM(int paramInt)
+  public static void amz(int paramInt)
   {
     AppMethodBeat.i(70546);
-    if ((d.KyO & Ici) == paramInt)
+    if ((d.RAD & OUu) == paramInt)
     {
-      g.aAi();
-      i = ((Integer)g.aAh().azQ().get(270343, Integer.valueOf(0))).intValue();
+      h.aHH();
+      i = ((Integer)h.aHG().aHp().b(270343, Integer.valueOf(0))).intValue();
       if (paramInt != i) {
         Log.d("MicroMsg.MallLogic", "Mall reddot show, targetV=" + paramInt + ", clickedV=" + i);
       }
     }
     for (int i = 1;; i = 0)
     {
-      if ((i != 0) && (z.aUj()))
+      if ((i != 0) && (z.bdl()))
       {
         Log.d("MicroMsg.MallLogic", "Show mall entry redot");
-        c.axV().A(262156, true);
-        g.aAi();
-        g.aAh().azQ().set(270343, Integer.valueOf(paramInt));
-        g.aAi();
-        g.aAh().azQ().set(ar.a.OcK, Long.valueOf(System.currentTimeMillis()));
+        c.aFn().C(262156, true);
+        h.aHH();
+        h.aHG().aHp().i(270343, Integer.valueOf(paramInt));
+        h.aHH();
+        h.aHG().aHp().set(ar.a.VqN, Long.valueOf(System.currentTimeMillis()));
       }
       AppMethodBeat.o(70546);
       return;
     }
   }
   
-  public static String fRY()
+  public static String gKD()
   {
     AppMethodBeat.i(70545);
     Object localObject = (TelephonyManager)MMApplicationContext.getContext().getSystemService("phone");
@@ -247,21 +249,21 @@ public final class b
     }
   }
   
-  private static bhw fRZ()
+  private static bph gKE()
   {
-    AppMethodBeat.i(214207);
-    bhw localbhw = new bhw();
-    String str = (String)((com.tencent.mm.plugin.wxpay.a.a)g.ah(com.tencent.mm.plugin.wxpay.a.a.class)).getWalletCacheStg().get(ar.a.OnP, null);
+    AppMethodBeat.i(273693);
+    bph localbph = new bph();
+    String str = (String)((com.tencent.mm.plugin.wxpay.a.a)h.ag(com.tencent.mm.plugin.wxpay.a.a.class)).getWalletCacheStg().get(ar.a.VDf, null);
     if (Util.isNullOrNil(str)) {
       Log.i("MicroMsg.MallLogic", "getMallNewFunctionListRespone is null");
     }
     for (;;)
     {
-      AppMethodBeat.o(214207);
-      return localbhw;
+      AppMethodBeat.o(273693);
+      return localbph;
       try
       {
-        localbhw.parseFrom(com.tencent.e.f.e.bqe(str));
+        localbph.parseFrom(e.bCW(str));
         Log.i("MicroMsg.MallLogic", "getMallNewFunctionListRespone success");
       }
       catch (Exception localException)
@@ -271,150 +273,150 @@ public final class b
     }
   }
   
-  public static SparseArray<String> fSa()
+  public static SparseArray<String> gKF()
   {
-    AppMethodBeat.i(214208);
+    AppMethodBeat.i(273694);
     SparseArray localSparseArray = new SparseArray();
-    Object localObject1 = fRZ();
-    if (((bhw)localObject1).GroupList != null)
+    Object localObject1 = gKE();
+    if (((bph)localObject1).GroupList != null)
     {
-      localObject1 = ((bhw)localObject1).GroupList.iterator();
+      localObject1 = ((bph)localObject1).GroupList.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        Object localObject2 = (bfw)((Iterator)localObject1).next();
-        if ((localObject2 != null) && (((bfw)localObject2).LPz != null))
+        Object localObject2 = (bmx)((Iterator)localObject1).next();
+        if ((localObject2 != null) && (((bmx)localObject2).SXN != null))
         {
-          localObject2 = ((bfw)localObject2).LPz;
-          localSparseArray.put(((exf)localObject2).LPy, ((exf)localObject2).LPg);
+          localObject2 = ((bmx)localObject2).SXN;
+          localSparseArray.put(((fhs)localObject2).SXM, ((fhs)localObject2).SXx);
         }
       }
     }
-    AppMethodBeat.o(214208);
+    AppMethodBeat.o(273694);
     return localSparseArray;
   }
   
-  public static SparseArray<Integer> fSb()
+  public static SparseArray<Integer> gKG()
   {
-    AppMethodBeat.i(214209);
+    AppMethodBeat.i(273695);
     SparseArray localSparseArray = new SparseArray();
-    bhw localbhw = fRZ();
-    if (localbhw.GroupList != null)
+    bph localbph = gKE();
+    if (localbph.GroupList != null)
     {
       int i = 0;
-      while (i < localbhw.GroupList.size())
+      while (i < localbph.GroupList.size())
       {
-        bfw localbfw = (bfw)localbhw.GroupList.get(i);
-        if ((localbfw != null) && (localbfw.LPz != null)) {
-          localSparseArray.put(localbfw.LPz.LPy, Integer.valueOf(i + 1));
+        bmx localbmx = (bmx)localbph.GroupList.get(i);
+        if ((localbmx != null) && (localbmx.SXN != null)) {
+          localSparseArray.put(localbmx.SXN.SXM, Integer.valueOf(i + 1));
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(214209);
+    AppMethodBeat.o(273695);
     return localSparseArray;
   }
   
-  public static ArrayList<Integer> fSc()
+  public static ArrayList<Integer> gKH()
   {
-    AppMethodBeat.i(214210);
+    AppMethodBeat.i(273696);
     ArrayList localArrayList = new ArrayList();
-    bhw localbhw = fRZ();
-    if (localbhw.GroupList != null)
+    bph localbph = gKE();
+    if (localbph.GroupList != null)
     {
       int i = 0;
-      while (i < localbhw.GroupList.size())
+      while (i < localbph.GroupList.size())
       {
-        bfw localbfw = (bfw)localbhw.GroupList.get(i);
-        if ((localbfw != null) && (localbfw.LPz != null)) {
-          localArrayList.add(Integer.valueOf(localbfw.LPz.LPy));
+        bmx localbmx = (bmx)localbph.GroupList.get(i);
+        if ((localbmx != null) && (localbmx.SXN != null)) {
+          localArrayList.add(Integer.valueOf(localbmx.SXN.SXM));
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(214210);
+    AppMethodBeat.o(273696);
     return localArrayList;
   }
   
-  public static ArrayList<bfv> fSd()
+  public static ArrayList<bmw> gKI()
   {
-    AppMethodBeat.i(214211);
+    AppMethodBeat.i(273698);
     ArrayList localArrayList = new ArrayList();
-    Object localObject = fRZ();
-    if (((bhw)localObject).GroupList != null)
+    Object localObject = gKE();
+    if (((bph)localObject).GroupList != null)
     {
-      localObject = ((bhw)localObject).GroupList.iterator();
+      localObject = ((bph)localObject).GroupList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        bfw localbfw = (bfw)((Iterator)localObject).next();
-        if (localbfw != null)
+        bmx localbmx = (bmx)((Iterator)localObject).next();
+        if (localbmx != null)
         {
-          Iterator localIterator = localbfw.LPA.iterator();
+          Iterator localIterator = localbmx.SXO.iterator();
           while (localIterator.hasNext())
           {
-            bfv localbfv = (bfv)localIterator.next();
-            if (localbfv != null)
+            bmw localbmw = (bmw)localIterator.next();
+            if (localbmw != null)
             {
-              localbfv.LPy = localbfw.LPz.LPy;
-              localArrayList.add(localbfv);
+              localbmw.SXM = localbmx.SXN.SXM;
+              localArrayList.add(localbmw);
             }
           }
         }
       }
     }
-    AppMethodBeat.o(214211);
+    AppMethodBeat.o(273698);
     return localArrayList;
   }
   
-  public static SparseArray<ArrayList<Integer>> fSe()
+  public static SparseArray<ArrayList<Integer>> gKJ()
   {
-    AppMethodBeat.i(214212);
+    AppMethodBeat.i(273700);
     SparseArray localSparseArray = new SparseArray();
-    Object localObject = fRZ();
-    if (((bhw)localObject).GroupList != null)
+    Object localObject = gKE();
+    if (((bph)localObject).GroupList != null)
     {
-      localObject = ((bhw)localObject).GroupList.iterator();
+      localObject = ((bph)localObject).GroupList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        bfw localbfw = (bfw)((Iterator)localObject).next();
-        if (localbfw != null)
+        bmx localbmx = (bmx)((Iterator)localObject).next();
+        if (localbmx != null)
         {
           ArrayList localArrayList = new ArrayList();
-          Iterator localIterator = localbfw.LPA.iterator();
+          Iterator localIterator = localbmx.SXO.iterator();
           while (localIterator.hasNext())
           {
-            bfv localbfv = (bfv)localIterator.next();
-            if (localbfv != null) {
-              localArrayList.add(Integer.valueOf(localbfv.LPr.Nuz));
+            bmw localbmw = (bmw)localIterator.next();
+            if (localbmw != null) {
+              localArrayList.add(Integer.valueOf(localbmw.SXF.UHA));
             }
           }
-          localSparseArray.put(localbfw.LPz.LPy, localArrayList);
+          localSparseArray.put(localbmx.SXN.SXM, localArrayList);
         }
       }
     }
-    AppMethodBeat.o(214212);
+    AppMethodBeat.o(273700);
     return localSparseArray;
   }
   
-  public static String fSf()
+  public static String gKK()
   {
-    AppMethodBeat.i(214213);
-    String str = fRZ().LSh;
-    AppMethodBeat.o(214213);
+    AppMethodBeat.i(273701);
+    String str = gKE().TaR;
+    AppMethodBeat.o(273701);
     return str;
   }
   
-  public static boolean hZ(List<a> paramList)
+  public static boolean iP(List<a> paramList)
   {
     AppMethodBeat.i(70542);
-    g.aAi();
-    int j = ((Integer)g.aAh().azQ().get(270342, Integer.valueOf(0))).intValue();
+    h.aHH();
+    int j = ((Integer)h.aHG().aHp().b(270342, Integer.valueOf(0))).intValue();
     if (paramList != null)
     {
       int i = paramList.size() - 1;
       while (i >= 0)
       {
-        Log.d("MicroMsg.MallLogic", "i:" + i + ", lastClickedListMaxId:" + j + ", actId:" + ((a)paramList.get(i)).Ica);
-        if (((a)paramList.get(i)).Ica > j)
+        Log.d("MicroMsg.MallLogic", "i:" + i + ", lastClickedListMaxId:" + j + ", actId:" + ((a)paramList.get(i)).OUm);
+        if (((a)paramList.get(i)).OUm > j)
         {
           AppMethodBeat.o(70542);
           return true;
@@ -426,7 +428,7 @@ public final class b
     return false;
   }
   
-  public static void ia(List<a> paramList)
+  public static void iQ(List<a> paramList)
   {
     AppMethodBeat.i(70543);
     if ((paramList == null) || (paramList.size() <= 0))
@@ -435,12 +437,12 @@ public final class b
       AppMethodBeat.o(70543);
       return;
     }
-    int i = ((a)paramList.get(0)).Ica;
+    int i = ((a)paramList.get(0)).OUm;
     Log.d("MicroMsg.MallLogic", "func[setBannerRedDotClick], lastClickedListMaxId".concat(String.valueOf(i)));
-    g.aAi();
-    g.aAh().azQ().set(270342, Integer.valueOf(i));
-    g.aAi();
-    g.aAh().azQ().gBI();
+    h.aHH();
+    h.aHG().aHp().i(270342, Integer.valueOf(i));
+    h.aHH();
+    h.aHG().aHp().hxT();
     AppMethodBeat.o(70543);
   }
 }

@@ -18,19 +18,19 @@ final class FixToolsUplogUI$2
   {
     AppMethodBeat.i(73824);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/setting/ui/fixtools/FixToolsUplogUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    h.CyF.idkeyStat(873L, 16L, 1L, false);
-    paramView = new Intent(this.CYF.getContext(), FixToolsUpLogUploadingUI.class);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/setting/ui/fixtools/FixToolsUplogUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    h.IzE.idkeyStat(873L, 16L, 1L, false);
+    paramView = new Intent(this.Jel.getContext(), FixToolsUpLogUploadingUI.class);
     paramView.putExtra("date", FixToolsUplogUI.access$100());
-    MMWizardActivity.ay(this.CYF, paramView);
+    MMWizardActivity.aH(this.Jel, paramView);
     a.a(this, "com/tencent/mm/plugin/setting/ui/fixtools/FixToolsUplogUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(73824);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.fixtools.FixToolsUplogUI.2
  * JD-Core Version:    0.7.0.1
  */

@@ -3,43 +3,43 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class clq
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int Mrb;
-  public String Mrc;
+  public String TsZ;
+  public int type;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(169926);
+    AppMethodBeat.i(209950);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.Mrb);
-      if (this.Mrc != null) {
-        paramVarArgs.e(2, this.Mrc);
+      paramVarArgs.aY(1, this.type);
+      if (this.TsZ != null) {
+        paramVarArgs.f(2, this.TsZ);
       }
-      AppMethodBeat.o(169926);
+      AppMethodBeat.o(209950);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bu(1, this.Mrb) + 0;
+      int i = g.a.a.b.b.a.bM(1, this.type) + 0;
       paramInt = i;
-      if (this.Mrc != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.Mrc);
+      if (this.TsZ != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.TsZ);
       }
-      AppMethodBeat.o(169926);
+      AppMethodBeat.o(209950);
       return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(169926);
+      AppMethodBeat.o(209950);
       return 0;
     }
     if (paramInt == 3)
@@ -49,18 +49,18 @@ public final class clq
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(169926);
+        AppMethodBeat.o(209950);
         return -1;
       case 1: 
-        localclq.Mrb = locala.UbS.zi();
-        AppMethodBeat.o(169926);
+        localclq.type = locala.abFh.AK();
+        AppMethodBeat.o(209950);
         return 0;
       }
-      localclq.Mrc = locala.UbS.readString();
-      AppMethodBeat.o(169926);
+      localclq.TsZ = locala.abFh.readString();
+      AppMethodBeat.o(209950);
       return 0;
     }
-    AppMethodBeat.o(169926);
+    AppMethodBeat.o(209950);
     return -1;
   }
 }

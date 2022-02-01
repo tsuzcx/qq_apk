@@ -12,7 +12,7 @@ final class SecurityAccountIntroUI$3
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(125588);
-    SecurityAccountIntroUI.e(this.kjz);
+    SecurityAccountIntroUI.e(this.nbp);
     AppMethodBeat.o(125588);
     return true;
   }

@@ -13,16 +13,22 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.loader.a;
-import com.tencent.mm.plugin.finder.loader.m;
-import com.tencent.mm.plugin.finder.loader.m.a;
-import com.tencent.mm.plugin.finder.utils.c;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.plugin.finder.loader.e;
+import com.tencent.mm.plugin.finder.loader.t;
+import com.tencent.mm.plugin.finder.loader.t.a;
+import com.tencent.mm.plugin.finder.storage.u;
 import com.tencent.mm.plugin.newtips.NormalIconNewTipPreference;
-import com.tencent.mm.protocal.protobuf.ehv;
+import com.tencent.mm.protocal.protobuf.erx;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.preference.IconPreference;
 import com.tencent.mm.ui.base.preference.Preference;
+import com.tencent.mm.ui.tools.w;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -31,31 +37,37 @@ import java.util.List;
 public class FinderIconViewTipPreference
   extends NormalIconNewTipPreference
 {
-  ViewGroup OBA;
-  View OBB;
-  View OBC;
-  View OBD;
-  View OBE;
-  ImageView OBF;
-  ImageView OBG;
-  ImageView OBH;
-  ImageView OBI;
-  ImageView OBJ;
-  ImageView OBK;
-  ImageView OBL;
-  ArrayList<View> OBM;
-  ArrayList<ImageView> OBN;
-  private RelativeLayout OBO;
-  private WeImageView OBP;
-  private LinearLayout OBQ;
-  private RelativeLayout OBR;
-  private LinearLayout.LayoutParams OBS;
-  private LinearLayout.LayoutParams OBT;
-  private LinearLayout.LayoutParams OBU;
-  private LinearLayout.LayoutParams OBV;
+  ViewGroup VUN;
+  View VUO;
+  View VUP;
+  View VUQ;
+  View VUR;
+  ImageView VUS;
+  ImageView VUT;
+  ImageView VUU;
+  ImageView VUV;
+  ImageView VUW;
+  ImageView VUX;
+  ImageView VUY;
+  ArrayList<View> VUZ;
+  ArrayList<ImageView> VVa;
+  private boolean VVb;
+  private erx VVc;
+  private boolean VVd;
+  private boolean VVe;
+  private boolean VVf;
+  private RelativeLayout VVg;
+  private WeImageView VVh;
+  private LinearLayout VVi;
+  private RelativeLayout VVj;
+  private LinearLayout.LayoutParams VVk;
+  private LinearLayout.LayoutParams VVl;
+  private LinearLayout.LayoutParams VVm;
+  private LinearLayout.LayoutParams VVn;
   Context mContext;
-  TextView qMD;
-  TextView qME;
+  private int mStyle;
+  TextView unP;
+  TextView unQ;
   
   public FinderIconViewTipPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -65,288 +77,283 @@ public class FinderIconViewTipPreference
   public FinderIconViewTipPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(232525);
+    AppMethodBeat.i(291001);
     this.mContext = paramContext;
-    this.OYo = true;
-    setLayoutResource(2131494517);
-    AppMethodBeat.o(232525);
+    this.Wrx = true;
+    setLayoutResource(R.i.finder_mm_preference);
+    AppMethodBeat.o(291001);
   }
   
-  private void AY(boolean paramBoolean)
+  private void Fo(boolean paramBoolean)
   {
-    AppMethodBeat.i(232530);
+    AppMethodBeat.i(291007);
     Log.i("FinderIconViewTipPreference", "changeContentLayoutParam :".concat(String.valueOf(paramBoolean)));
     ViewGroup localViewGroup;
-    if (this.gvQ != null)
+    if (this.jac != null)
     {
-      localViewGroup = (ViewGroup)this.gvQ.findViewById(2131299180);
+      localViewGroup = (ViewGroup)this.jac.findViewById(a.g.content);
       if (!paramBoolean) {
-        break label94;
+        break label95;
       }
-      localViewGroup.setLayoutParams(this.OBU);
-      this.OBQ.setLayoutParams(this.OBS);
-      aE(this.OBR, 8);
-      aE(this.OBP, 0);
+      localViewGroup.setLayoutParams(this.VVm);
+      this.VVi.setLayoutParams(this.VVk);
+      aJ(this.VVj, 8);
+      aJ(this.VVh, 0);
     }
     for (;;)
     {
-      this.OBR.requestLayout();
-      AppMethodBeat.o(232530);
+      this.VVj.requestLayout();
+      AppMethodBeat.o(291007);
       return;
-      label94:
-      localViewGroup.setLayoutParams(this.OBV);
-      this.OBQ.setLayoutParams(this.OBT);
-      aE(this.OBR, 0);
-      aE(this.OBA, 0);
-      aE(this.OBP, 8);
+      label95:
+      localViewGroup.setLayoutParams(this.VVn);
+      this.VVi.setLayoutParams(this.VVl);
+      aJ(this.VVj, 0);
+      aJ(this.VUN, 0);
+      aJ(this.VVh, 8);
+      Log.i("FinderIconViewTipPreference", "changeContentLayoutParam mThirdLayoutContainer:" + this.VVj);
     }
   }
   
-  private void a(ehv paramehv, boolean paramBoolean)
+  private void a(erx paramerx, boolean paramBoolean)
   {
-    AppMethodBeat.i(232536);
+    AppMethodBeat.i(291014);
     if (paramBoolean)
     {
-      this.qMD.setMaxLines(2);
-      int i = (int)(av.az(this.qMD.getContext()).x * 0.4D);
-      this.qMD.setMaxWidth(i);
+      this.unP.setMaxLines(2);
+      int i = (int)(ay.au(this.unP.getContext()).x * 0.4D);
+      this.unP.setMaxWidth(i);
     }
     for (;;)
     {
-      aE(this.qMD, 0);
-      aE(this.OBK, 0);
-      aE(this.qME, 8);
-      aE(this.OBO, 8);
-      if (this.qMD != null) {
-        this.qMD.setText(paramehv.title);
+      aJ(this.unP, 0);
+      aJ(this.VUX, 0);
+      aJ(this.unQ, 8);
+      aJ(this.VVg, 8);
+      if (this.unP != null) {
+        this.unP.setText(paramerx.title);
       }
-      AppMethodBeat.o(232536);
+      AppMethodBeat.o(291014);
       return;
-      gHL();
+      hGv();
     }
   }
   
-  private void a(ehv paramehv, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  private void a(erx paramerx, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    AppMethodBeat.i(232535);
-    if ((this.OBG == null) || (this.OBC == null))
+    AppMethodBeat.i(291013);
+    if ((this.VUT == null) || (this.VUP == null))
     {
-      AppMethodBeat.o(232535);
+      AppMethodBeat.o(291013);
       return;
     }
-    aE(this.OBO, 0);
-    aE(this.OBK, 8);
+    aJ(this.VVg, 0);
+    aJ(this.VUX, 8);
     Object localObject;
     float f;
     if (paramBoolean1)
     {
-      localObject = this.OBG.getLayoutParams();
-      f = this.OBG.getContext().getResources().getDimension(2131165303);
+      localObject = this.VUT.getLayoutParams();
+      f = this.VUT.getContext().getResources().getDimension(R.f.Edge_4A);
       ((ViewGroup.LayoutParams)localObject).width = ((int)f);
       ((ViewGroup.LayoutParams)localObject).height = ((int)f);
-      this.OBG.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      if (Util.isNullOrNil(paramehv.url)) {
-        break label410;
+      this.VUT.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      if (Util.isNullOrNil(paramerx.url)) {
+        break label415;
       }
-      Log.i("FinderIconViewTipPreference", "[bindSingleSquareAvatarTask] load=%s isBigAvatar=%s isWithRedDot=%s", new Object[] { paramehv.url, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
-      localObject = m.uJa;
-      localObject = m.dkb();
-      a locala = new a(paramehv.url);
-      ImageView localImageView = this.OBG;
-      m localm = m.uJa;
-      ((com.tencent.mm.loader.d)localObject).a(locala, localImageView, m.a(m.a.uJg));
-      label190:
-      aE(this.OBB, 8);
-      aE(this.OBC, 0);
-      aE(this.OBG, 0);
-      aE(this.OBJ, 8);
-      aE(this.OBA, 0);
+      Log.i("FinderIconViewTipPreference", "[bindSingleSquareAvatarTask] load=%s isBigAvatar=%s isWithRedDot=%s", new Object[] { paramerx.url, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+      localObject = t.ztT;
+      localObject = t.dJi();
+      e locale = new e(paramerx.url, u.AlP);
+      ImageView localImageView = this.VUT;
+      t localt = t.ztT;
+      ((com.tencent.mm.loader.d)localObject).a(locale, localImageView, t.a(t.a.ztZ));
+      label195:
+      aJ(this.VUO, 8);
+      aJ(this.VUP, 0);
+      aJ(this.VUT, 0);
+      aJ(this.VUW, 8);
+      aJ(this.VUN, 0);
       if (!paramBoolean2) {
-        break label481;
+        break label486;
       }
-      aE(this.OBL, 0);
+      aJ(this.VUY, 0);
       if (paramBoolean4) {
-        break label421;
+        break label426;
       }
-      localObject = this.OBL.getLayoutParams();
+      localObject = this.VUY.getLayoutParams();
       ((ViewGroup.LayoutParams)localObject).width = -2;
       ((ViewGroup.LayoutParams)localObject).height = -2;
-      this.OBL.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.OBL.setImageResource(2131235385);
+      this.VUY.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.VUY.setImageResource(R.g.unread_dot_shape);
     }
     for (;;)
     {
-      if (!Util.isNullOrNil(paramehv.title))
+      if (!Util.isNullOrNil(paramerx.title))
       {
         if (paramBoolean3)
         {
-          aE(this.qMD, 8);
-          aE(this.qME, 0);
-          if (this.qME == null) {
-            break label561;
+          aJ(this.unP, 8);
+          aJ(this.unQ, 0);
+          if (this.unQ == null) {
+            break label566;
           }
-          this.qME.setText(paramehv.title);
-          AppMethodBeat.o(232535);
+          this.unQ.setText(paramerx.title);
+          AppMethodBeat.o(291013);
           return;
-          localObject = this.OBG.getLayoutParams();
-          f = this.OBG.getContext().getResources().getDimension(2131165297);
+          localObject = this.VUT.getLayoutParams();
+          f = this.VUT.getContext().getResources().getDimension(R.f.Edge_2_5_A);
           ((ViewGroup.LayoutParams)localObject).width = ((int)f);
           ((ViewGroup.LayoutParams)localObject).height = ((int)f);
-          this.OBG.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          this.VUT.setLayoutParams((ViewGroup.LayoutParams)localObject);
           break;
-          label410:
+          label415:
           Log.w("FinderIconViewTipPreference", "[bindSingleSquareAvatarTask] tipsInfo.url is null.");
-          break label190;
-          label421:
-          localObject = this.OBJ.getLayoutParams();
-          int i = com.tencent.mm.view.d.e(this.OBJ.getContext(), 11.1F);
+          break label195;
+          label426:
+          localObject = this.VUW.getLayoutParams();
+          int i = com.tencent.mm.view.d.e(this.VUW.getContext(), 11.1F);
           ((ViewGroup.LayoutParams)localObject).width = i;
           ((ViewGroup.LayoutParams)localObject).height = i;
-          this.OBL.setLayoutParams((ViewGroup.LayoutParams)localObject);
-          this.OBL.setImageResource(2131690266);
+          this.VUY.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          this.VUY.setImageResource(R.k.finder_live_icon);
           continue;
-          label481:
-          aE(this.OBL, 8);
+          label486:
+          aJ(this.VUY, 8);
           continue;
         }
-        aE(this.qME, 8);
-        gHL();
-        aE(this.qMD, 0);
-        if (this.qMD == null) {
-          break label561;
+        aJ(this.unQ, 8);
+        hGv();
+        aJ(this.unP, 0);
+        if (this.unP == null) {
+          break label566;
         }
-        this.qMD.setText(paramehv.title);
-        AppMethodBeat.o(232535);
+        this.unP.setText(paramerx.title);
+        AppMethodBeat.o(291013);
         return;
       }
     }
-    aE(this.qME, 8);
-    aE(this.qMD, 8);
-    label561:
-    AppMethodBeat.o(232535);
+    aJ(this.unQ, 8);
+    aJ(this.unP, 8);
+    label566:
+    AppMethodBeat.o(291013);
   }
   
-  private void a(boolean paramBoolean1, ehv paramehv, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, Boolean paramBoolean)
+  private void a(boolean paramBoolean1, erx paramerx, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, Boolean paramBoolean)
   {
-    AppMethodBeat.i(232539);
-    alF(8);
-    alE(8);
-    alI(8);
-    alD(8);
-    BB(false);
+    AppMethodBeat.i(291019);
+    aak(8);
+    auD(8);
+    auG(8);
+    abe(8);
+    FT(false);
     if (paramBoolean1) {
-      b(paramehv, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean.booleanValue());
+      b(paramerx, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean.booleanValue());
     }
     for (;;)
     {
       notifyDataSetChanged();
-      AppMethodBeat.o(232539);
+      AppMethodBeat.o(291019);
       return;
-      aE(this.OBA, 8);
+      aJ(this.VUN, 8);
     }
   }
   
-  private void a(boolean paramBoolean1, ehv paramehv, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
+  private void a(boolean paramBoolean1, erx paramerx, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
   {
-    AppMethodBeat.i(232540);
-    alF(8);
-    alE(8);
-    alI(8);
-    alD(8);
-    BB(false);
+    AppMethodBeat.i(291020);
+    aak(8);
+    auD(8);
+    auG(8);
+    abe(8);
+    FT(false);
     if (paramBoolean1) {
-      a(paramehv, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5);
+      a(paramerx, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5);
     }
     for (;;)
     {
       notifyDataSetChanged();
-      AppMethodBeat.o(232540);
+      AppMethodBeat.o(291020);
       return;
-      aE(this.OBA, 8);
+      aJ(this.VUN, 8);
     }
   }
   
-  private void aE(View paramView, int paramInt)
+  private void aJ(View paramView, int paramInt)
   {
-    AppMethodBeat.i(232532);
+    AppMethodBeat.i(291009);
     if ((paramView != null) && (paramView.getVisibility() != paramInt)) {
       paramView.setVisibility(paramInt);
     }
-    if ((paramView != null) && (paramView == this.OBA) && (paramInt == 8)) {
-      AY(true);
+    if ((paramView != null) && (paramView == this.VUN) && (paramInt == 8)) {
+      Fo(true);
     }
-    AppMethodBeat.o(232532);
+    AppMethodBeat.o(291009);
   }
   
-  private boolean akN(int paramInt)
+  private boolean atH(int paramInt)
   {
-    AppMethodBeat.i(232528);
-    if (this.OBA == null)
+    AppMethodBeat.i(291004);
+    Log.i("FinderIconViewTipPreference", "initWidgetFrame mWidgetFrame:" + this.VUN);
+    Object localObject = (ViewGroup)hKH();
+    hGs();
+    if (localObject == null)
     {
-      if (this.mView == null) {}
-      for (Object localObject = null;; localObject = this.mView.findViewById(16908312))
+      Log.i("FinderIconViewTipPreference", "[initWidgetFrame] fail,WidgetFrame has child!");
+      AppMethodBeat.o(291004);
+      return false;
+    }
+    this.VUN = ((ViewGroup)localObject);
+    if ((paramInt == 2) || (paramInt == 5) || (paramInt == 1) || (paramInt == 4) || (paramInt == 6) || (paramInt == 7))
+    {
+      localObject = this.VUN;
+      ((ViewGroup)localObject).removeAllViews();
+      localObject = View.inflate(this.mContext, R.i.eje, (ViewGroup)localObject);
+      this.VUO = ((View)localObject).findViewById(R.h.friend_avatar_1_layout);
+      this.VUP = ((View)localObject).findViewById(R.h.dHG);
+      this.VUS = ((ImageView)((View)localObject).findViewById(R.h.friend_avatar_1));
+      this.VUT = ((ImageView)((View)localObject).findViewById(R.h.dHI));
+      this.VUW = ((ImageView)((View)localObject).findViewById(R.h.right_prospect));
+      auH(8);
+      this.VUY = ((ImageView)((View)localObject).findViewById(R.h.dSV));
+      this.unQ = ((TextView)((View)localObject).findViewById(R.h.dSW));
+      this.unP = ((TextView)((View)localObject).findViewById(R.h.dLe));
+      this.VUX = ((ImageView)((View)localObject).findViewById(R.h.dPx));
+      this.VVg = ((RelativeLayout)((View)localObject).findViewById(R.h.avatar_container));
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(291004);
+      return true;
+      if (paramInt == 3)
       {
-        localObject = (ViewGroup)localObject;
-        gHI();
-        if ((localObject != null) && (((ViewGroup)localObject).getChildCount() <= 0)) {
-          break;
-        }
-        Log.i("FinderIconViewTipPreference", "[initWidgetFrame] fail,WidgetFrame has child!");
-        AppMethodBeat.o(232528);
-        return false;
-      }
-      this.OBA = ((ViewGroup)localObject);
-      if ((paramInt == 2) || (paramInt == 5) || (paramInt == 1) || (paramInt == 4) || (paramInt == 6) || (paramInt == 7))
-      {
-        localObject = this.OBA;
-        localObject = View.inflate(this.mContext, 2131495621, (ViewGroup)localObject);
-        this.OBB = ((View)localObject).findViewById(2131301771);
-        this.OBC = ((View)localObject).findViewById(2131301781);
-        this.OBF = ((ImageView)((View)localObject).findViewById(2131301770));
-        this.OBG = ((ImageView)((View)localObject).findViewById(2131301793));
-        this.OBJ = ((ImageView)((View)localObject).findViewById(2131307102));
-        alJ(8);
-        this.OBL = ((ImageView)((View)localObject).findViewById(2131307108));
-        this.qME = ((TextView)((View)localObject).findViewById(2131307114));
-        this.qMD = ((TextView)((View)localObject).findViewById(2131303147));
-        this.OBK = ((ImageView)((View)localObject).findViewById(2131305482));
-        this.OBO = ((RelativeLayout)((View)localObject).findViewById(2131297128));
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(232528);
-        return true;
-        if (paramInt == 3)
-        {
-          localObject = this.OBA;
-          localObject = View.inflate(this.mContext, 2131495611, (ViewGroup)localObject);
-          this.OBB = ((View)localObject).findViewById(2131301771);
-          this.OBD = ((View)localObject).findViewById(2131301773);
-          this.OBE = ((View)localObject).findViewById(2131301775);
-          this.OBM = new ArrayList(3);
-          this.OBM.add(this.OBB);
-          this.OBM.add(this.OBD);
-          this.OBM.add(this.OBE);
-          this.OBF = ((ImageView)((View)localObject).findViewById(2131301770));
-          this.OBH = ((ImageView)((View)localObject).findViewById(2131301772));
-          this.OBI = ((ImageView)((View)localObject).findViewById(2131301774));
-          this.OBN = new ArrayList(3);
-          this.OBN.add(this.OBF);
-          this.OBN.add(this.OBH);
-          this.OBN.add(this.OBI);
-          this.OBJ = ((ImageView)((View)localObject).findViewById(2131307102));
-        }
+        localObject = this.VUN;
+        ((ViewGroup)localObject).removeAllViews();
+        localObject = View.inflate(this.mContext, R.i.ejd, (ViewGroup)localObject);
+        this.VUO = ((View)localObject).findViewById(R.h.friend_avatar_1_layout);
+        this.VUQ = ((View)localObject).findViewById(R.h.friend_avatar_2_layout);
+        this.VUR = ((View)localObject).findViewById(R.h.friend_avatar_3_layout);
+        this.VUZ = new ArrayList(3);
+        this.VUZ.add(this.VUO);
+        this.VUZ.add(this.VUQ);
+        this.VUZ.add(this.VUR);
+        this.VUS = ((ImageView)((View)localObject).findViewById(R.h.friend_avatar_1));
+        this.VUU = ((ImageView)((View)localObject).findViewById(R.h.friend_avatar_2));
+        this.VUV = ((ImageView)((View)localObject).findViewById(R.h.friend_avatar_3));
+        this.VVa = new ArrayList(3);
+        this.VVa.add(this.VUS);
+        this.VVa.add(this.VUU);
+        this.VVa.add(this.VUV);
+        this.VUW = ((ImageView)((View)localObject).findViewById(R.h.right_prospect));
       }
     }
-    AppMethodBeat.o(232528);
-    return true;
   }
   
-  private void b(ehv paramehv)
+  private void b(erx paramerx)
   {
-    AppMethodBeat.i(232538);
-    paramehv = paramehv.duo;
-    int i = paramehv.size();
+    AppMethodBeat.i(291016);
+    paramerx = paramerx.fmW;
+    int i = paramerx.size();
     Log.i("FinderIconViewTipPreference", "url size = ".concat(String.valueOf(i)));
     int j = Math.min(i, 3);
     i = 0;
@@ -356,14 +363,14 @@ public class FinderIconViewTipPreference
       if (j > 0)
       {
         j -= 1;
-        View localView = (View)this.OBM.get(j);
-        ImageView localImageView = (ImageView)this.OBN.get(j);
-        Object localObject = m.uJa;
-        localObject = m.dka();
+        View localView = (View)this.VUZ.get(j);
+        ImageView localImageView = (ImageView)this.VVa.get(j);
+        Object localObject = t.ztT;
+        localObject = t.dJh();
         k = i + 1;
-        a locala = new a((String)paramehv.get(i));
-        m localm = m.uJa;
-        ((com.tencent.mm.loader.d)localObject).a(locala, localImageView, m.a(m.a.uJe));
+        e locale = new e((String)paramerx.get(i), u.AlP);
+        t localt = t.ztT;
+        ((com.tencent.mm.loader.d)localObject).a(locale, localImageView, t.a(t.a.ztX));
         if (localView != null)
         {
           localView.setVisibility(0);
@@ -372,387 +379,431 @@ public class FinderIconViewTipPreference
       }
       else
       {
-        AppMethodBeat.o(232538);
+        AppMethodBeat.o(291016);
         return;
       }
       i = k;
     }
   }
   
-  private void b(ehv paramehv, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  private void b(erx paramerx, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    AppMethodBeat.i(232537);
-    if ((this.OBF == null) || (this.OBB == null))
+    AppMethodBeat.i(291015);
+    if ((this.VUS == null) || (this.VUO == null))
     {
-      AppMethodBeat.o(232537);
+      AppMethodBeat.o(291015);
       return;
     }
-    aE(this.OBO, 0);
-    aE(this.OBK, 8);
+    aJ(this.VVg, 0);
+    aJ(this.VUX, 8);
     Object localObject;
     float f;
     if (paramBoolean1)
     {
-      localObject = this.OBF.getLayoutParams();
-      f = this.OBF.getContext().getResources().getDimension(2131165303);
+      localObject = this.VUS.getLayoutParams();
+      f = this.VUS.getContext().getResources().getDimension(R.f.Edge_4A);
       ((ViewGroup.LayoutParams)localObject).width = ((int)f);
       ((ViewGroup.LayoutParams)localObject).height = ((int)f);
-      this.OBF.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      if (Util.isNullOrNil(paramehv.url)) {
-        break label415;
+      this.VUS.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      if (Util.isNullOrNil(paramerx.url)) {
+        break label419;
       }
-      Log.i("FinderIconViewTipPreference", "[bindSingleAvatarTask] load=%s isBigAvatar=%s isWithRedDot=%s", new Object[] { paramehv.url, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
-      localObject = m.uJa;
-      localObject = m.dka();
-      a locala = new a(paramehv.url);
-      ImageView localImageView = this.OBF;
-      m localm = m.uJa;
-      ((com.tencent.mm.loader.d)localObject).a(locala, localImageView, m.a(m.a.uJe));
-      label193:
-      aE(this.OBB, 0);
-      aE(this.OBC, 8);
-      aE(this.OBG, 8);
-      aE(this.OBL, 8);
-      aE(this.OBA, 0);
+      Log.i("FinderIconViewTipPreference", "[bindSingleAvatarTask] load=%s isBigAvatar=%s isWithRedDot=%s", new Object[] { paramerx.url, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+      localObject = t.ztT;
+      localObject = t.dJh();
+      e locale = new e(paramerx.url, u.AlP);
+      ImageView localImageView = this.VUS;
+      t localt = t.ztT;
+      ((com.tencent.mm.loader.d)localObject).a(locale, localImageView, t.a(t.a.ztX));
+      label197:
+      aJ(this.VUO, 0);
+      aJ(this.VUP, 8);
+      aJ(this.VUT, 8);
+      aJ(this.VUY, 8);
+      aJ(this.VUN, 0);
       if (!paramBoolean2) {
-        break label486;
+        break label490;
       }
-      aE(this.OBJ, 0);
+      aJ(this.VUW, 0);
       if (paramBoolean4) {
-        break label426;
+        break label430;
       }
-      localObject = this.OBJ.getLayoutParams();
+      localObject = this.VUW.getLayoutParams();
       ((ViewGroup.LayoutParams)localObject).width = -2;
       ((ViewGroup.LayoutParams)localObject).height = -2;
-      this.OBJ.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.OBJ.setImageResource(2131235385);
+      this.VUW.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.VUW.setImageResource(R.g.unread_dot_shape);
     }
     for (;;)
     {
-      if (!Util.isNullOrNil(paramehv.title))
+      if (!Util.isNullOrNil(paramerx.title))
       {
         if (paramBoolean3)
         {
-          aE(this.qMD, 8);
-          aE(this.qME, 0);
-          if (this.qME == null) {
-            break label567;
+          aJ(this.unP, 8);
+          aJ(this.unQ, 0);
+          if (this.unQ == null) {
+            break label571;
           }
-          this.qME.setText(paramehv.title);
-          AppMethodBeat.o(232537);
+          this.unQ.setText(paramerx.title);
+          AppMethodBeat.o(291015);
           return;
-          localObject = this.OBF.getLayoutParams();
-          f = this.OBF.getContext().getResources().getDimension(2131165297);
+          localObject = this.VUS.getLayoutParams();
+          f = this.VUS.getContext().getResources().getDimension(R.f.Edge_2_5_A);
           ((ViewGroup.LayoutParams)localObject).width = ((int)f);
           ((ViewGroup.LayoutParams)localObject).height = ((int)f);
-          this.OBF.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          this.VUS.setLayoutParams((ViewGroup.LayoutParams)localObject);
           break;
-          label415:
+          label419:
           Log.w("FinderIconViewTipPreference", "[bindSingleAvatarTask] tipsInfo.url is null.");
-          break label193;
-          label426:
-          localObject = this.OBJ.getLayoutParams();
-          int i = com.tencent.mm.view.d.e(this.OBJ.getContext(), 11.1F);
+          break label197;
+          label430:
+          localObject = this.VUW.getLayoutParams();
+          int i = com.tencent.mm.view.d.e(this.VUW.getContext(), 11.1F);
           ((ViewGroup.LayoutParams)localObject).width = i;
           ((ViewGroup.LayoutParams)localObject).height = i;
-          this.OBJ.setLayoutParams((ViewGroup.LayoutParams)localObject);
-          this.OBJ.setImageResource(2131690266);
+          this.VUW.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          this.VUW.setImageResource(R.k.finder_live_icon);
           continue;
-          label486:
-          aE(this.OBJ, 8);
+          label490:
+          aJ(this.VUW, 8);
           continue;
         }
-        aE(this.qME, 8);
-        gHL();
-        aE(this.qMD, 0);
-        if (this.qMD == null) {
-          break label567;
+        aJ(this.unQ, 8);
+        hGv();
+        aJ(this.unP, 0);
+        if (this.unP == null) {
+          break label571;
         }
-        this.qMD.setText(paramehv.title);
-        AppMethodBeat.o(232537);
+        this.unP.setText(paramerx.title);
+        AppMethodBeat.o(291015);
         return;
       }
     }
-    aE(this.qME, 8);
-    aE(this.qMD, 8);
-    label567:
-    AppMethodBeat.o(232537);
+    aJ(this.unQ, 8);
+    aJ(this.unP, 8);
+    label571:
+    AppMethodBeat.o(291015);
   }
   
-  private void e(boolean paramBoolean, ehv paramehv)
+  private void e(boolean paramBoolean, erx paramerx)
   {
-    AppMethodBeat.i(232541);
-    alF(8);
-    alE(8);
-    alI(8);
-    alD(8);
-    BB(false);
+    AppMethodBeat.i(291021);
+    aak(8);
+    auD(8);
+    auG(8);
+    abe(8);
+    FT(false);
     if (paramBoolean) {
-      a(paramehv, false);
+      a(paramerx, false);
     }
     for (;;)
     {
       notifyDataSetChanged();
-      AppMethodBeat.o(232541);
+      AppMethodBeat.o(291021);
       return;
-      aE(this.OBA, 8);
+      aJ(this.VUN, 8);
     }
   }
   
-  private void f(boolean paramBoolean, ehv paramehv)
+  private void f(boolean paramBoolean, erx paramerx)
   {
-    AppMethodBeat.i(232542);
-    alF(8);
-    alE(8);
-    alI(8);
-    alD(8);
-    BB(false);
+    AppMethodBeat.i(291022);
+    aak(8);
+    auD(8);
+    auG(8);
+    abe(8);
+    FT(false);
     if (paramBoolean) {
-      a(paramehv, true);
+      a(paramerx, true);
     }
     for (;;)
     {
       notifyDataSetChanged();
-      AppMethodBeat.o(232542);
+      AppMethodBeat.o(291022);
       return;
-      aE(this.OBA, 8);
+      aJ(this.VUN, 8);
     }
   }
   
-  private void g(boolean paramBoolean, ehv paramehv)
+  private void g(boolean paramBoolean, erx paramerx)
   {
-    AppMethodBeat.i(232544);
+    AppMethodBeat.i(291024);
     Log.d("FinderIconViewTipPreference", "bindAvatars() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean) {
-      if ((paramehv != null) && (paramehv.duo != null) && (paramehv.duo.size() > 0) && (gHK()))
+      if ((paramerx != null) && (paramerx.fmW != null) && (paramerx.fmW.size() > 0) && (hGu()))
       {
-        alF(8);
-        alI(8);
-        alH(8);
-        alJ(8);
-        BB(false);
-        gHJ();
-        b(paramehv);
-        aE(this.OBJ, 0);
-        aE(this.OBA, 0);
+        aak(8);
+        auG(8);
+        auF(8);
+        auH(8);
+        FT(false);
+        hGt();
+        b(paramerx);
+        aJ(this.VUW, 0);
+        aJ(this.VUN, 0);
       }
     }
     for (;;)
     {
       notifyDataSetChanged();
-      AppMethodBeat.o(232544);
+      AppMethodBeat.o(291024);
       return;
-      alF(8);
-      alE(8);
-      alI(8);
-      alD(8);
-      aE(this.OBA, 8);
+      aak(8);
+      auD(8);
+      auG(8);
+      abe(8);
+      aJ(this.VUN, 8);
     }
   }
   
-  private void gHI()
+  private void hGs()
   {
-    AppMethodBeat.i(232529);
-    Log.i("FinderIconViewTipPreference", "changeContent");
-    if (this.gvQ != null)
+    AppMethodBeat.i(291006);
+    Log.i("FinderIconViewTipPreference", "initContentLayoutParam mThirdLayoutContainer：" + this.VVj);
+    if (this.jac != null)
     {
-      if (this.OBU == null) {
-        this.OBU = ((LinearLayout.LayoutParams)((ViewGroup)this.gvQ.findViewById(2131299180)).getLayoutParams());
+      if (this.VVm == null) {
+        this.VVm = ((LinearLayout.LayoutParams)((ViewGroup)this.jac.findViewById(a.g.content)).getLayoutParams());
       }
-      if (this.OBV == null) {
-        this.OBV = new LinearLayout.LayoutParams(-2, this.OBU.height, 0.0F);
+      if (this.VVn == null) {
+        this.VVn = new LinearLayout.LayoutParams(-2, this.VVm.height, 0.0F);
       }
-      if (this.OBS == null) {
-        this.OBS = ((LinearLayout.LayoutParams)this.OBQ.getLayoutParams());
+      if (this.VVk == null) {
+        this.VVk = ((LinearLayout.LayoutParams)this.VVi.getLayoutParams());
       }
-      if (this.OBT == null) {
-        this.OBT = new LinearLayout.LayoutParams(-1, -1, 0.0F);
+      if (this.VVl == null) {
+        this.VVl = new LinearLayout.LayoutParams(-1, -1, 0.0F);
       }
     }
-    AppMethodBeat.o(232529);
+    AppMethodBeat.o(291006);
   }
   
-  private void gHJ()
+  private void hGt()
   {
-    AppMethodBeat.i(232533);
-    if (this.OBM == null)
+    AppMethodBeat.i(291011);
+    if (this.VUZ == null)
     {
-      AppMethodBeat.o(232533);
+      AppMethodBeat.o(291011);
       return;
     }
-    int j = this.OBM.size();
+    int j = this.VUZ.size();
     int i = 0;
     while (i < j)
     {
-      View localView = (View)this.OBM.get(i);
+      View localView = (View)this.VUZ.get(i);
       if ((localView != null) && (localView.getVisibility() == 0)) {
         localView.setVisibility(8);
       }
       i += 1;
     }
-    AppMethodBeat.o(232533);
+    AppMethodBeat.o(291011);
   }
   
-  private boolean gHK()
+  private boolean hGu()
   {
-    AppMethodBeat.i(232534);
-    if ((this.OBM == null) || (this.OBN == null))
+    AppMethodBeat.i(291012);
+    if ((this.VUZ == null) || (this.VVa == null))
     {
       Log.i("FinderIconViewTipPreference", "friend avatar is null");
-      AppMethodBeat.o(232534);
+      AppMethodBeat.o(291012);
       return false;
     }
-    int i = this.OBM.size();
-    int j = this.OBN.size();
+    int i = this.VUZ.size();
+    int j = this.VVa.size();
     if ((i != 3) || (i != j))
     {
       Log.i("FinderIconViewTipPreference", "friend avatar size illegal");
-      AppMethodBeat.o(232534);
+      AppMethodBeat.o(291012);
       return false;
     }
-    AppMethodBeat.o(232534);
+    AppMethodBeat.o(291012);
     return true;
   }
   
-  private void gHL()
+  private void hGv()
   {
-    AppMethodBeat.i(232543);
-    this.qMD.setMaxLines(1);
-    AppMethodBeat.o(232543);
+    AppMethodBeat.i(291023);
+    this.unP.setMaxLines(1);
+    AppMethodBeat.o(291023);
   }
   
-  private void gHM()
+  private void hGw()
   {
-    AppMethodBeat.i(232548);
-    aE(this.OBA, 8);
-    AppMethodBeat.o(232548);
+    AppMethodBeat.i(291031);
+    aJ(this.VUN, 8);
+    AppMethodBeat.o(291031);
   }
   
-  public final void a(boolean paramBoolean1, ehv paramehv, int paramInt, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public final void a(boolean paramBoolean1, erx paramerx, int paramInt, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    AppMethodBeat.i(232531);
-    Log.i("FinderIconViewTipPreference", "[showFinderAvatars] show=%s title=%s url=%s style=%s withRedDot=%s isRightTitle=%s isLiveRedDot=%s", new Object[] { Boolean.valueOf(paramBoolean1), paramehv.title, paramehv.url, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), Boolean.valueOf(paramBoolean4) });
-    if (!akN(paramInt))
+    AppMethodBeat.i(291008);
+    Log.i("FinderIconViewTipPreference", "[showFinderAvatars] show=%s title=%s url=%s style=%s withRedDot=%s isRightTitle=%s isLiveRedDot=%s mThirdLayoutContainer:%s", new Object[] { Boolean.valueOf(paramBoolean1), paramerx.title, paramerx.url, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), Boolean.valueOf(paramBoolean4), this.VVj });
+    if (!atH(paramInt))
     {
-      AppMethodBeat.o(232531);
+      Log.w("FinderIconViewTipPreference", "showFinderAvatars return for initWidgetFrame");
+      AppMethodBeat.o(291008);
       return;
     }
     if (paramInt == 1)
     {
-      AY(false);
-      a(paramBoolean1, paramehv, false, paramBoolean2, paramBoolean3, Boolean.valueOf(paramBoolean4));
+      Fo(false);
+      a(paramBoolean1, paramerx, false, paramBoolean2, paramBoolean3, Boolean.valueOf(paramBoolean4));
     }
     for (;;)
     {
       if (!paramBoolean2)
       {
-        aE(this.OBJ, 8);
-        alJ(8);
+        aJ(this.VUW, 8);
+        auH(8);
       }
-      AppMethodBeat.o(232531);
+      this.VVb = paramBoolean1;
+      this.VVc = paramerx;
+      this.mStyle = paramInt;
+      this.VVd = paramBoolean2;
+      this.VVe = paramBoolean3;
+      this.VVf = paramBoolean4;
+      AppMethodBeat.o(291008);
       return;
       if (paramInt == 2)
       {
-        AY(false);
-        a(paramBoolean1, paramehv, false, paramBoolean2, paramBoolean3, paramBoolean4);
+        Fo(false);
+        a(paramBoolean1, paramerx, false, paramBoolean2, paramBoolean3, paramBoolean4);
       }
       else if (paramInt == 4)
       {
-        AY(false);
-        a(paramBoolean1, paramehv, true, paramBoolean2, paramBoolean3, Boolean.valueOf(paramBoolean4));
+        Fo(false);
+        a(paramBoolean1, paramerx, true, paramBoolean2, paramBoolean3, Boolean.valueOf(paramBoolean4));
       }
       else if (paramInt == 5)
       {
-        AY(false);
-        a(paramBoolean1, paramehv, true, paramBoolean2, paramBoolean3, paramBoolean4);
+        Fo(false);
+        a(paramBoolean1, paramerx, true, paramBoolean2, paramBoolean3, paramBoolean4);
       }
       else if (paramInt == 3)
       {
-        AY(false);
-        g(paramBoolean1, paramehv);
+        Fo(false);
+        g(paramBoolean1, paramerx);
       }
       else if (paramInt == 6)
       {
-        AY(false);
-        e(paramBoolean1, paramehv);
+        Fo(false);
+        e(paramBoolean1, paramerx);
       }
       else if (paramInt == 7)
       {
-        AY(false);
-        f(paramBoolean1, paramehv);
+        Fo(false);
+        f(paramBoolean1, paramerx);
       }
     }
   }
   
-  public final boolean a(boolean paramBoolean, ehv paramehv)
+  public final boolean a(boolean paramBoolean, erx paramerx)
   {
-    AppMethodBeat.i(232546);
-    gHM();
-    paramBoolean = super.a(paramBoolean, paramehv);
-    AppMethodBeat.o(232546);
+    AppMethodBeat.i(291026);
+    hGw();
+    this.mStyle = 8;
+    paramBoolean = super.a(paramBoolean, paramerx);
+    AppMethodBeat.o(291026);
     return paramBoolean;
+  }
+  
+  public final boolean d(boolean paramBoolean, erx paramerx)
+  {
+    AppMethodBeat.i(291028);
+    hGw();
+    Log.d("FinderIconViewTipPreference", "showCounter() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (paramBoolean)
+    {
+      abe(0);
+      String str = paramerx.num;
+      if (paramerx.num > 999) {
+        str = "· · ·";
+      }
+      hH(str, w.bj(this.mContext, paramerx.num));
+    }
+    for (;;)
+    {
+      this.VVb = paramBoolean;
+      this.mStyle = 9;
+      this.VVc = paramerx;
+      notifyDataSetChanged();
+      AppMethodBeat.o(291028);
+      return true;
+      aak(8);
+      auD(8);
+      auG(8);
+      abe(8);
+    }
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(232527);
+    AppMethodBeat.i(291003);
     super.onBindView(paramView);
-    Log.i("FinderIconViewTipPreference", "onBindView view:" + paramView + " root:" + this.gvQ);
-    c localc = c.vVc;
-    if (this.gvQ != null) {}
-    for (boolean bool = true;; bool = false)
+    Log.i("FinderIconViewTipPreference", "onBindView title:" + getTitle() + " hashCode:" + hashCode() + " view:" + paramView);
+    this.jac = paramView;
+    if (this.jac != null)
     {
-      localc.a("FinderIconViewTipPreference", bool, true, false, new FinderIconViewTipPreference.1(this));
-      if ((this.gvQ == null) && (paramView != null))
+      this.VVh = ((WeImageView)this.jac.findViewById(R.h.right_arrow_only));
+      this.VVi = ((LinearLayout)this.jac.findViewById(R.h.second_level_container));
+      this.VVj = ((RelativeLayout)this.jac.findViewById(R.h.third_level_container));
+      hGs();
+      Log.i("FinderIconViewTipPreference", "onBindView mStyle:" + this.mStyle + " mTipsInfo:" + this.VVc);
+      if (this.VVc != null)
       {
-        this.gvQ = paramView;
-        Log.i("FinderIconViewTipPreference", "has exception");
+        if (this.mStyle == 9)
+        {
+          d(this.VVb, this.VVc);
+          AppMethodBeat.o(291003);
+          return;
+        }
+        if ((this.mStyle > 0) && (this.mStyle <= 7)) {
+          a(this.VVb, this.VVc, this.mStyle, this.VVd, this.VVe, this.VVf);
+        }
       }
-      this.OBP = ((WeImageView)this.gvQ.findViewById(2131307082));
-      this.OBQ = ((LinearLayout)this.gvQ.findViewById(2131307437));
-      this.OBR = ((RelativeLayout)this.gvQ.findViewById(2131309045));
-      gHI();
-      AppMethodBeat.o(232527);
-      return;
     }
+    AppMethodBeat.o(291003);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(232526);
+    AppMethodBeat.i(291002);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    Log.i("FinderIconViewTipPreference", "onCreateView hashCode:" + hashCode() + " view:" + paramViewGroup);
-    AppMethodBeat.o(232526);
+    Log.i("FinderIconViewTipPreference", "onCreateView title:" + getTitle() + " hashCode:" + hashCode() + " view:" + paramViewGroup);
+    AppMethodBeat.o(291002);
     return paramViewGroup;
   }
   
-  public final boolean qW(boolean paramBoolean)
+  public final boolean tY(boolean paramBoolean)
   {
-    AppMethodBeat.i(232545);
+    AppMethodBeat.i(291025);
     if (paramBoolean) {
-      gHM();
+      hGw();
     }
     for (;;)
     {
-      paramBoolean = super.qW(paramBoolean);
-      AppMethodBeat.o(232545);
+      this.mStyle = 8;
+      paramBoolean = super.tY(paramBoolean);
+      AppMethodBeat.o(291025);
       return paramBoolean;
-      AY(true);
+      Fo(true);
     }
   }
   
-  public final boolean qX(boolean paramBoolean)
+  public final boolean tZ(boolean paramBoolean)
   {
-    AppMethodBeat.i(232547);
-    gHM();
-    paramBoolean = super.qX(paramBoolean);
-    AppMethodBeat.o(232547);
+    AppMethodBeat.i(291030);
+    hGw();
+    this.mStyle = 8;
+    paramBoolean = super.tZ(paramBoolean);
+    AppMethodBeat.o(291030);
     return paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.FinderIconViewTipPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -29,41 +29,41 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class QImageView
   extends View
 {
-  private static final a[] QED = { a.QEF, a.QEG, a.QEH, a.QEI, a.QEJ, a.QEK, a.QEL, a.QEM };
-  private static final Matrix.ScaleToFit[] QEE = { Matrix.ScaleToFit.FILL, Matrix.ScaleToFit.START, Matrix.ScaleToFit.CENTER, Matrix.ScaleToFit.END };
-  private boolean QEA;
-  private PaintFlagsDrawFilter QEB;
-  private PaintFlagsDrawFilter QEC;
-  private int QEn;
-  private a QEo;
-  private boolean QEp;
-  private boolean QEq;
-  private int QEr;
-  private boolean QEs;
-  private int[] QEt;
-  private boolean QEu;
-  private int QEv;
-  private int QEw;
-  private Matrix QEx;
-  private final RectF QEy;
-  private final RectF QEz;
-  private boolean aqf;
+  private static final QImageView.a[] Yde = { QImageView.a.Ydg, QImageView.a.Ydh, QImageView.a.Ydi, QImageView.a.Ydj, QImageView.a.Ydk, QImageView.a.Ydl, QImageView.a.Ydm, QImageView.a.Ydn };
+  private static final Matrix.ScaleToFit[] Ydf = { Matrix.ScaleToFit.FILL, Matrix.ScaleToFit.START, Matrix.ScaleToFit.CENTER, Matrix.ScaleToFit.END };
+  private int EK;
+  private int YcO;
+  private QImageView.a YcP;
+  private boolean YcQ;
+  private boolean YcR;
+  private int YcS;
+  private boolean YcT;
+  private int[] YcU;
+  private boolean YcV;
+  private int YcW;
+  private int YcX;
+  private Matrix YcY;
+  private final RectF YcZ;
+  private final RectF Yda;
+  private boolean Ydb;
+  private PaintFlagsDrawFilter Ydc;
+  private PaintFlagsDrawFilter Ydd;
+  private Matrix aqj;
+  private ColorFilter jC;
   private int mAlpha;
   private Context mContext;
   private Drawable mDrawable;
   private int mLevel;
-  private Matrix mMatrix;
-  private int mMaxHeight;
-  private int mMaxWidth;
   private Uri mUri;
-  private ColorFilter xo;
+  private boolean sH;
+  private int uJ;
   
   public QImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
     AppMethodBeat.i(156564);
     this.mContext = paramContext;
-    gZb();
+    hZR();
     AppMethodBeat.o(156564);
   }
   
@@ -71,33 +71,33 @@ public class QImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(156565);
-    this.QEn = 0;
-    this.QEp = false;
-    this.QEq = false;
-    this.mMaxWidth = 2147483647;
-    this.mMaxHeight = 2147483647;
+    this.YcO = 0;
+    this.YcQ = false;
+    this.YcR = false;
+    this.uJ = 2147483647;
+    this.EK = 2147483647;
     this.mAlpha = 255;
-    this.QEr = 256;
-    this.QEs = false;
+    this.YcS = 256;
+    this.YcT = false;
     this.mDrawable = null;
-    this.QEt = null;
-    this.QEu = false;
+    this.YcU = null;
+    this.YcV = false;
     this.mLevel = 0;
-    this.QEx = null;
-    this.QEy = new RectF();
-    this.QEz = new RectF();
-    this.aqf = false;
+    this.YcY = null;
+    this.YcZ = new RectF();
+    this.Yda = new RectF();
+    this.sH = false;
     this.mContext = paramContext;
-    gZb();
-    this.aqf = false;
+    hZR();
+    this.sH = false;
     setAdjustViewBounds(false);
     setMaxWidth(2147483647);
     setMaxHeight(2147483647);
-    this.QEA = false;
+    this.Ydb = false;
     AppMethodBeat.o(156565);
   }
   
-  private void G(Drawable paramDrawable)
+  private void M(Drawable paramDrawable)
   {
     AppMethodBeat.i(156583);
     if (this.mDrawable != null)
@@ -113,20 +113,20 @@ public class QImageView
         paramDrawable.setState(getDrawableState());
       }
       paramDrawable.setLevel(this.mLevel);
-      this.QEv = paramDrawable.getIntrinsicWidth();
-      this.QEw = paramDrawable.getIntrinsicHeight();
-      gZf();
-      gZe();
+      this.YcW = paramDrawable.getIntrinsicWidth();
+      this.YcX = paramDrawable.getIntrinsicHeight();
+      hZV();
+      hZU();
     }
     AppMethodBeat.o(156583);
   }
   
-  private static Matrix.ScaleToFit a(a parama)
+  private static Matrix.ScaleToFit a(QImageView.a parama)
   {
-    return QEE[(parama.QEN - 1)];
+    return Ydf[(parama.Ydo - 1)];
   }
   
-  private static int aU(int paramInt1, int paramInt2, int paramInt3)
+  private static int aY(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(156586);
     int i = View.MeasureSpec.getMode(paramInt3);
@@ -146,17 +146,17 @@ public class QImageView
     }
   }
   
-  private void gZb()
+  private void hZR()
   {
     AppMethodBeat.i(156566);
-    this.mMatrix = new Matrix();
-    this.QEo = a.QEI;
-    this.QEB = new PaintFlagsDrawFilter(0, 3);
-    this.QEC = new PaintFlagsDrawFilter(0, 0);
+    this.aqj = new Matrix();
+    this.YcP = QImageView.a.Ydj;
+    this.Ydc = new PaintFlagsDrawFilter(0, 3);
+    this.Ydd = new PaintFlagsDrawFilter(0, 0);
     AppMethodBeat.o(156566);
   }
   
-  private void gZc()
+  private void hZS()
   {
     Object localObject1 = null;
     AppMethodBeat.i(156577);
@@ -171,30 +171,30 @@ public class QImageView
       AppMethodBeat.o(156577);
       return;
     }
-    if (this.QEn != 0) {}
+    if (this.YcO != 0) {}
     while (this.mUri != null)
     {
       try
       {
-        localObject2 = ((Resources)localObject2).getDrawable(this.QEn);
+        localObject2 = ((Resources)localObject2).getDrawable(this.YcO);
         localObject1 = localObject2;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          Log.w("ImageView", "Unable to find resource: " + this.QEn, new Object[] { localException });
+          Log.w("ImageView", "Unable to find resource: " + this.YcO, new Object[] { localException });
           this.mUri = null;
         }
       }
-      G(localObject1);
+      M(localObject1);
       AppMethodBeat.o(156577);
       return;
     }
     AppMethodBeat.o(156577);
   }
   
-  private void gZd()
+  private void hZT()
   {
     AppMethodBeat.i(156584);
     Drawable localDrawable = this.mDrawable;
@@ -203,75 +203,75 @@ public class QImageView
       int j = localDrawable.getIntrinsicWidth();
       int i = j;
       if (j < 0) {
-        i = this.QEv;
+        i = this.YcW;
       }
       int k = localDrawable.getIntrinsicHeight();
       j = k;
       if (k < 0) {
-        j = this.QEw;
+        j = this.YcX;
       }
-      if ((i != this.QEv) || (j != this.QEw))
+      if ((i != this.YcW) || (j != this.YcX))
       {
-        this.QEv = i;
-        this.QEw = j;
+        this.YcW = i;
+        this.YcX = j;
         requestLayout();
       }
     }
     AppMethodBeat.o(156584);
   }
   
-  private void gZe()
+  private void hZU()
   {
     AppMethodBeat.i(156588);
-    if ((this.mDrawable == null) || (!this.QEp))
+    if ((this.mDrawable == null) || (!this.YcQ))
     {
       AppMethodBeat.o(156588);
       return;
     }
-    int j = this.QEv;
-    int k = this.QEw;
+    int j = this.YcW;
+    int k = this.YcX;
     int m = getWidth() - getPaddingLeft() - getPaddingRight();
     int n = getHeight() - getPaddingTop() - getPaddingBottom();
     if (((j < 0) || (m == j)) && ((k < 0) || (n == k))) {}
-    for (int i = 1; (j <= 0) || (k <= 0) || (a.QEG == this.QEo); i = 0)
+    for (int i = 1; (j <= 0) || (k <= 0) || (QImageView.a.Ydh == this.YcP); i = 0)
     {
       this.mDrawable.setBounds(0, 0, m, n);
-      this.QEx = null;
+      this.YcY = null;
       AppMethodBeat.o(156588);
       return;
     }
     this.mDrawable.setBounds(0, 0, j, k);
-    if (a.QEF == this.QEo)
+    if (QImageView.a.Ydg == this.YcP)
     {
-      if (this.mMatrix.isIdentity())
+      if (this.aqj.isIdentity())
       {
-        this.QEx = null;
+        this.YcY = null;
         AppMethodBeat.o(156588);
         return;
       }
-      this.QEx = this.mMatrix;
+      this.YcY = this.aqj;
       AppMethodBeat.o(156588);
       return;
     }
     if (i != 0)
     {
-      this.QEx = null;
+      this.YcY = null;
       AppMethodBeat.o(156588);
       return;
     }
-    if (a.QEK == this.QEo)
+    if (QImageView.a.Ydl == this.YcP)
     {
-      this.QEx = this.mMatrix;
-      this.QEx.setTranslate((int)((m - j) * 0.5F + 0.5F), (int)((n - k) * 0.5F + 0.5F));
+      this.YcY = this.aqj;
+      this.YcY.setTranslate((int)((m - j) * 0.5F + 0.5F), (int)((n - k) * 0.5F + 0.5F));
       AppMethodBeat.o(156588);
       return;
     }
     float f3;
     float f2;
     float f1;
-    if (a.QEL == this.QEo)
+    if (QImageView.a.Ydm == this.YcP)
     {
-      this.QEx = this.mMatrix;
+      this.YcY = this.aqj;
       if (j * n > m * k)
       {
         f3 = n / k;
@@ -280,8 +280,8 @@ public class QImageView
       }
       for (;;)
       {
-        this.QEx.setScale(f3, f3);
-        this.QEx.postTranslate((int)(f2 + 0.5F), (int)(f1 + 0.5F));
+        this.YcY.setScale(f3, f3);
+        this.YcY.postTranslate((int)(f2 + 0.5F), (int)(f1 + 0.5F));
         AppMethodBeat.o(156588);
         return;
         f3 = m / j;
@@ -289,35 +289,35 @@ public class QImageView
         f2 = 0.0F;
       }
     }
-    if (a.QEM == this.QEo)
+    if (QImageView.a.Ydn == this.YcP)
     {
-      this.QEx = this.mMatrix;
+      this.YcY = this.aqj;
       if ((j <= m) && (k <= n)) {}
       for (f1 = 1.0F;; f1 = Math.min(m / j, n / k))
       {
         f2 = (int)((m - j * f1) * 0.5F + 0.5F);
         f3 = (int)((n - k * f1) * 0.5F + 0.5F);
-        this.QEx.setScale(f1, f1);
-        this.QEx.postTranslate(f2, f3);
+        this.YcY.setScale(f1, f1);
+        this.YcY.postTranslate(f2, f3);
         AppMethodBeat.o(156588);
         return;
       }
     }
-    this.QEy.set(0.0F, 0.0F, j, k);
-    this.QEz.set(0.0F, 0.0F, m, n);
-    this.QEx = this.mMatrix;
-    this.QEx.setRectToRect(this.QEy, this.QEz, a(this.QEo));
+    this.YcZ.set(0.0F, 0.0F, j, k);
+    this.Yda.set(0.0F, 0.0F, m, n);
+    this.YcY = this.aqj;
+    this.YcY.setRectToRect(this.YcZ, this.Yda, a(this.YcP));
     AppMethodBeat.o(156588);
   }
   
-  private void gZf()
+  private void hZV()
   {
     AppMethodBeat.i(156595);
-    if ((this.mDrawable != null) && (this.QEs))
+    if ((this.mDrawable != null) && (this.YcT))
     {
       this.mDrawable = this.mDrawable.mutate();
-      this.mDrawable.setColorFilter(this.xo);
-      this.mDrawable.setAlpha(this.mAlpha * this.QEr >> 8);
+      this.mDrawable.setColorFilter(this.jC);
+      this.mDrawable.setAlpha(this.mAlpha * this.YcS >> 8);
     }
     AppMethodBeat.o(156595);
   }
@@ -336,7 +336,7 @@ public class QImageView
   public int getBaseline()
   {
     AppMethodBeat.i(156591);
-    if (this.aqf)
+    if (this.sH)
     {
       int i = getMeasuredHeight();
       AppMethodBeat.o(156591);
@@ -353,12 +353,12 @@ public class QImageView
   
   public Matrix getImageMatrix()
   {
-    return this.mMatrix;
+    return this.aqj;
   }
   
-  public a getScaleType()
+  public QImageView.a getScaleType()
   {
-    return this.QEo;
+    return this.YcP;
   }
   
   public void invalidateDrawable(Drawable paramDrawable)
@@ -377,19 +377,19 @@ public class QImageView
   public int[] onCreateDrawableState(int paramInt)
   {
     AppMethodBeat.i(156582);
-    if (this.QEt == null)
+    if (this.YcU == null)
     {
       arrayOfInt = super.onCreateDrawableState(paramInt);
       AppMethodBeat.o(156582);
       return arrayOfInt;
     }
-    if (!this.QEu)
+    if (!this.YcV)
     {
-      arrayOfInt = this.QEt;
+      arrayOfInt = this.YcU;
       AppMethodBeat.o(156582);
       return arrayOfInt;
     }
-    int[] arrayOfInt = mergeDrawableStates(super.onCreateDrawableState(this.QEt.length + paramInt), this.QEt);
+    int[] arrayOfInt = mergeDrawableStates(super.onCreateDrawableState(this.YcU.length + paramInt), this.YcU);
     AppMethodBeat.o(156582);
     return arrayOfInt;
   }
@@ -404,39 +404,39 @@ public class QImageView
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(156590);
-    paramCanvas.setDrawFilter(this.QEB);
+    paramCanvas.setDrawFilter(this.Ydc);
     super.onDraw(paramCanvas);
     if (this.mDrawable == null)
     {
       AppMethodBeat.o(156590);
       return;
     }
-    if ((this.QEv == 0) || (this.QEw == 0))
+    if ((this.YcW == 0) || (this.YcX == 0))
     {
       AppMethodBeat.o(156590);
       return;
     }
-    if ((this.QEx == null) && (getPaddingTop() == 0) && (getPaddingLeft() == 0)) {
+    if ((this.YcY == null) && (getPaddingTop() == 0) && (getPaddingLeft() == 0)) {
       this.mDrawable.draw(paramCanvas);
     }
     for (;;)
     {
       if (Build.VERSION.SDK_INT > 28) {
-        paramCanvas.setDrawFilter(this.QEC);
+        paramCanvas.setDrawFilter(this.Ydd);
       }
       AppMethodBeat.o(156590);
       return;
       int i = paramCanvas.getSaveCount();
       paramCanvas.save();
-      if (this.QEA)
+      if (this.Ydb)
       {
         int j = getScrollX();
         int k = getScrollY();
         paramCanvas.clipRect(getPaddingLeft() + j, getPaddingTop() + k, j + getRight() - getLeft() - getPaddingRight(), k + getBottom() - getTop() - getPaddingBottom());
       }
       paramCanvas.translate(getPaddingLeft(), getPaddingTop());
-      if (this.QEx != null) {
-        paramCanvas.concat(this.QEx);
+      if (this.YcY != null) {
+        paramCanvas.concat(this.YcY);
       }
       this.mDrawable.draw(paramCanvas);
       paramCanvas.restoreToCount(i);
@@ -446,15 +446,15 @@ public class QImageView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(156587);
-    this.QEp = true;
-    gZe();
+    this.YcQ = true;
+    hZU();
     AppMethodBeat.o(156587);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(156585);
-    gZc();
+    hZS();
     float f = 0.0F;
     int k = 0;
     int m = 0;
@@ -462,8 +462,8 @@ public class QImageView
     int i;
     if (this.mDrawable == null)
     {
-      this.QEv = -1;
-      this.QEw = -1;
+      this.YcW = -1;
+      this.YcX = -1;
       j = 0;
       i = 0;
     }
@@ -479,8 +479,8 @@ public class QImageView
       int i1 = getPaddingBottom();
       if ((k != 0) || (m != 0))
       {
-        paramInt1 = aU(j + i2 + i3, this.mMaxWidth, paramInt1);
-        paramInt2 = aU(i + n + i1, this.mMaxHeight, paramInt2);
+        paramInt1 = aY(j + i2 + i3, this.uJ, paramInt1);
+        paramInt2 = aY(i + n + i1, this.EK, paramInt2);
         if ((f == 0.0F) || (Math.abs((paramInt1 - i2 - i3) / (paramInt2 - n - i1) - f) <= 1.0E-007D)) {
           break label406;
         }
@@ -510,8 +510,8 @@ public class QImageView
         setMeasuredDimension(paramInt2, paramInt1);
         AppMethodBeat.o(156585);
         return;
-        i = this.QEv;
-        n = this.QEw;
+        i = this.YcW;
+        n = this.YcX;
         j = i;
         if (i <= 0) {
           j = 1;
@@ -520,7 +520,7 @@ public class QImageView
         if (n <= 0) {
           i = 1;
         }
-        if (!this.QEq) {
+        if (!this.YcR) {
           break label417;
         }
         k = View.MeasureSpec.getMode(paramInt1);
@@ -565,11 +565,11 @@ public class QImageView
     if (getBackground() == null)
     {
       paramInt = (paramInt >> 7) + paramInt;
-      if (this.QEr != paramInt)
+      if (this.YcS != paramInt)
       {
-        this.QEr = paramInt;
-        this.QEs = true;
-        gZf();
+        this.YcS = paramInt;
+        this.YcT = true;
+        hZV();
       }
       AppMethodBeat.o(156569);
       return true;
@@ -581,9 +581,9 @@ public class QImageView
   public void setAdjustViewBounds(boolean paramBoolean)
   {
     AppMethodBeat.i(156570);
-    this.QEq = paramBoolean;
+    this.YcR = paramBoolean;
     if (paramBoolean) {
-      setScaleType(a.QEI);
+      setScaleType(QImageView.a.Ydj);
     }
     AppMethodBeat.o(156570);
   }
@@ -595,8 +595,8 @@ public class QImageView
     if (this.mAlpha != paramInt)
     {
       this.mAlpha = paramInt;
-      this.QEs = true;
-      gZf();
+      this.YcT = true;
+      hZV();
       invalidate();
     }
     AppMethodBeat.o(156594);
@@ -619,11 +619,11 @@ public class QImageView
   public void setColorFilter(ColorFilter paramColorFilter)
   {
     AppMethodBeat.i(156593);
-    if (this.xo != paramColorFilter)
+    if (this.jC != paramColorFilter)
     {
-      this.xo = paramColorFilter;
-      this.QEs = true;
-      gZf();
+      this.jC = paramColorFilter;
+      this.YcT = true;
+      hZV();
       invalidate();
     }
     AppMethodBeat.o(156593);
@@ -641,9 +641,9 @@ public class QImageView
     AppMethodBeat.i(156574);
     if (this.mDrawable != paramDrawable)
     {
-      this.QEn = 0;
+      this.YcO = 0;
       this.mUri = null;
-      G(paramDrawable);
+      M(paramDrawable);
       invalidate();
     }
     AppMethodBeat.o(156574);
@@ -656,7 +656,7 @@ public class QImageView
     if (this.mDrawable != null)
     {
       this.mDrawable.setLevel(paramInt);
-      gZd();
+      hZT();
     }
     AppMethodBeat.o(156579);
   }
@@ -672,10 +672,10 @@ public class QImageView
         localMatrix = null;
       }
     }
-    if (((localMatrix == null) && (!this.mMatrix.isIdentity())) || ((localMatrix != null) && (!this.mMatrix.equals(localMatrix))))
+    if (((localMatrix == null) && (!this.aqj.isIdentity())) || ((localMatrix != null) && (!this.aqj.equals(localMatrix))))
     {
-      this.mMatrix.set(localMatrix);
-      gZe();
+      this.aqj.set(localMatrix);
+      hZU();
       invalidate();
     }
     AppMethodBeat.o(156581);
@@ -684,12 +684,12 @@ public class QImageView
   public void setImageResource(int paramInt)
   {
     AppMethodBeat.i(156571);
-    if ((this.mUri != null) || (this.QEn != paramInt))
+    if ((this.mUri != null) || (this.YcO != paramInt))
     {
-      G(null);
-      this.QEn = paramInt;
+      M(null);
+      this.YcO = paramInt;
       this.mUri = null;
-      gZc();
+      hZS();
       invalidate();
     }
     AppMethodBeat.o(156571);
@@ -698,12 +698,12 @@ public class QImageView
   public void setImageURI(Uri paramUri)
   {
     AppMethodBeat.i(156573);
-    if ((this.QEn != 0) || ((this.mUri != paramUri) && ((paramUri == null) || (this.mUri == null) || (!paramUri.equals(this.mUri)))))
+    if ((this.YcO != 0) || ((this.mUri != paramUri) && ((paramUri == null) || (this.mUri == null) || (!paramUri.equals(this.mUri)))))
     {
-      G(null);
-      this.QEn = 0;
+      M(null);
+      this.YcO = 0;
       this.mUri = paramUri;
-      gZc();
+      hZS();
       invalidate();
     }
     AppMethodBeat.o(156573);
@@ -724,15 +724,15 @@ public class QImageView
   
   public void setMaxHeight(int paramInt)
   {
-    this.mMaxHeight = paramInt;
+    this.EK = paramInt;
   }
   
   public void setMaxWidth(int paramInt)
   {
-    this.mMaxWidth = paramInt;
+    this.uJ = paramInt;
   }
   
-  public void setScaleType(a parama)
+  public void setScaleType(QImageView.a parama)
   {
     AppMethodBeat.i(156580);
     if (parama == null)
@@ -741,10 +741,10 @@ public class QImageView
       AppMethodBeat.o(156580);
       throw parama;
     }
-    if (this.QEo != parama)
+    if (this.YcP != parama)
     {
-      this.QEo = parama;
-      if (this.QEo != a.QEK) {
+      this.YcP = parama;
+      if (this.YcP != QImageView.a.Ydl) {
         break label71;
       }
     }
@@ -763,7 +763,7 @@ public class QImageView
   {
     AppMethodBeat.i(156578);
     super.setSelected(paramBoolean);
-    gZd();
+    hZT();
     AppMethodBeat.o(156578);
   }
   
@@ -778,35 +778,10 @@ public class QImageView
     AppMethodBeat.o(156567);
     return false;
   }
-  
-  public static enum a
-  {
-    final int QEN;
-    
-    static
-    {
-      AppMethodBeat.i(156563);
-      QEF = new a("MATRIX", 0, 0);
-      QEG = new a("FIT_XY", 1, 1);
-      QEH = new a("FIT_START", 2, 2);
-      QEI = new a("FIT_CENTER", 3, 3);
-      QEJ = new a("FIT_END", 4, 4);
-      QEK = new a("CENTER", 5, 5);
-      QEL = new a("CENTER_CROP", 6, 6);
-      QEM = new a("CENTER_INSIDE", 7, 7);
-      QEO = new a[] { QEF, QEG, QEH, QEI, QEJ, QEK, QEL, QEM };
-      AppMethodBeat.o(156563);
-    }
-    
-    private a(int paramInt)
-    {
-      this.QEN = paramInt;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.QImageView
  * JD-Core Version:    0.7.0.1
  */

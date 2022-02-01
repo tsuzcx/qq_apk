@@ -12,14 +12,14 @@ final class ChatroomInfoUI$19
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(194083);
-    this.guI.cancel();
-    AppMethodBeat.o(194083);
+    AppMethodBeat.i(186960);
+    this.iYT.cancel();
+    AppMethodBeat.o(186960);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.ChatroomInfoUI.19
  * JD-Core Version:    0.7.0.1
  */

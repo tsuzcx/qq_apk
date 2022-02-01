@@ -14,11 +14,11 @@ import com.facebook.internal.FetchedAppSettings;
 import com.facebook.internal.FetchedAppSettingsManager;
 import com.facebook.internal.SmartLoginOption;
 import com.facebook.internal.Utility;
-import com.google.b.a;
-import com.google.b.b.b;
-import com.google.b.c;
-import com.google.b.e;
-import com.google.b.h;
+import com.google.c.a;
+import com.google.c.b.b;
+import com.google.c.c;
+import com.google.c.e;
+import com.google.c.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.EnumMap;
 import java.util.EnumSet;
@@ -83,7 +83,7 @@ public class DeviceRequestsHelper
   {
     AppMethodBeat.i(7628);
     Object localObject = new EnumMap(c.class);
-    ((Map)localObject).put(c.cbS, Integer.valueOf(2));
+    ((Map)localObject).put(c.cdv, Integer.valueOf(2));
     int m;
     int n;
     int i;
@@ -91,7 +91,7 @@ public class DeviceRequestsHelper
     int k;
     try
     {
-      paramString = new e().a(paramString, a.cbG, 200, 200, (Map)localObject);
+      paramString = new e().a(paramString, a.cdj, 200, 200, (Map)localObject);
       m = paramString.height;
       n = paramString.width;
       localObject = new int[m * n];
@@ -117,7 +117,7 @@ public class DeviceRequestsHelper
       }
     }
     if (j < n) {
-      if (paramString.bI(j, i)) {
+      if (paramString.bZ(j, i)) {
         k = -16777216;
       }
     }
@@ -233,7 +233,7 @@ public class DeviceRequestsHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.facebook.devicerequests.internal.DeviceRequestsHelper
  * JD-Core Version:    0.7.0.1
  */

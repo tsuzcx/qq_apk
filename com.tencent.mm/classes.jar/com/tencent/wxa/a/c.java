@@ -1,17 +1,15 @@
 package com.tencent.wxa.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.wxa.a;
-import com.tencent.wxa.a.a;
-import com.tencent.wxa.b.b;
+import com.tencent.wxa.b.a;
 import io.flutter.plugin.a.j;
 
 public final class c
-  extends a
+  extends com.tencent.wxa.b
 {
-  public final a.a a(j paramj)
+  public final b.a a(j paramj)
   {
-    AppMethodBeat.i(206315);
+    AppMethodBeat.i(224821);
     String str = paramj.method;
     int i = -1;
     switch (str.hashCode())
@@ -22,8 +20,8 @@ public final class c
       switch (i)
       {
       default: 
-        paramj = hrG();
-        AppMethodBeat.o(206315);
+        paramj = ivs();
+        AppMethodBeat.o(224821);
         return paramj;
         if (str.equals("updatePopGestureEnable")) {
           i = 0;
@@ -31,19 +29,19 @@ public final class c
         break;
       }
     }
-    boolean bool = ((Boolean)paramj.SxX).booleanValue();
-    paramj = com.tencent.wxa.c.hrH();
-    if (paramj.SxG != null) {
-      paramj.SxG.bP(bool);
+    boolean bool = ((Boolean)paramj.ZZe).booleanValue();
+    paramj = com.tencent.wxa.c.ivt();
+    if (paramj.ZYK != null) {
+      paramj.ZYK.bZ(bool);
     }
-    paramj = eI(Boolean.TRUE);
-    AppMethodBeat.o(206315);
+    paramj = eO(Boolean.TRUE);
+    AppMethodBeat.o(224821);
     return paramj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wxa.a.c
  * JD-Core Version:    0.7.0.1
  */

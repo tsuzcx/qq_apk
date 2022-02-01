@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.model;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/model/ScanPoint;", "", "()V", "id", "", "getId", "()I", "setId", "(I)V", "size", "", "getSize", "()F", "setSize", "(F)V", "x", "getX", "setX", "xFactor", "getXFactor", "setXFactor", "y", "getY", "setY", "yFactor", "getYFactor", "setYFactor", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/model/ScanPoint;", "", "()V", "id", "", "getId", "()I", "setId", "(I)V", "size", "", "getSize", "()F", "setSize", "(F)V", "x", "getX", "setX", "xFactor", "getXFactor", "setXFactor", "y", "getY", "setY", "yFactor", "getYFactor", "setYFactor", "plugin-scan_release"})
 public final class ScanPoint
 {
   private int id;
@@ -74,7 +74,7 @@ public final class ScanPoint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.ScanPoint
  * JD-Core Version:    0.7.0.1
  */

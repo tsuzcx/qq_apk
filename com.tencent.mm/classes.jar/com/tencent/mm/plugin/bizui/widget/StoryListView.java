@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class StoryListView
   extends ListView
 {
-  private boolean pfJ;
+  private boolean shR;
   
   public StoryListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -18,7 +18,7 @@ public class StoryListView
   protected void layoutChildren()
   {
     AppMethodBeat.i(123723);
-    if (!this.pfJ) {
+    if (!this.shR) {
       super.layoutChildren();
     }
     AppMethodBeat.o(123723);
@@ -26,12 +26,12 @@ public class StoryListView
   
   public void setBlockLayoutChildren(boolean paramBoolean)
   {
-    this.pfJ = paramBoolean;
+    this.shR = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.bizui.widget.StoryListView
  * JD-Core Version:    0.7.0.1
  */

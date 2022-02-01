@@ -1,65 +1,72 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.luggage.wxa.storage.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bd;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.Locale;
 
 public final class r
-  extends bd
 {
-  static final String[] kJX;
-  static final IAutoDBItem.MAutoDBInfo kLR;
+  private static final Uri CONTENT_URI;
+  private static final r pUB;
   
   static
   {
-    int i = 0;
-    AppMethodBeat.i(146064);
-    kJX = new String[] { "appId", "versionType" };
-    Object localObject1 = new IAutoDBItem.MAutoDBInfo();
-    ((IAutoDBItem.MAutoDBInfo)localObject1).fields = new Field[3];
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns = new String[4];
-    Object localObject2 = new StringBuilder();
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[0] = "appId";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("appId", "TEXT");
-    ((StringBuilder)localObject2).append(" appId TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[1] = "versionType";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("versionType", "INTEGER");
-    ((StringBuilder)localObject2).append(" versionType INTEGER");
-    ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[2] = "extJson";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("extJson", "TEXT");
-    ((StringBuilder)localObject2).append(" extJson TEXT");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[3] = "rowid";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).sql = ((StringBuilder)localObject2).toString();
-    kLR = (IAutoDBItem.MAutoDBInfo)localObject1;
-    localObject1 = " PRIMARY KEY (";
-    localObject2 = kJX;
-    int j = localObject2.length;
-    while (i < j)
-    {
-      localObject3 = localObject2[i];
-      localObject1 = (String)localObject1 + ", " + (String)localObject3;
-      i += 1;
-    }
-    localObject1 = ((String)localObject1).replaceFirst(",", "");
-    localObject1 = (String)localObject1 + " )";
-    localObject2 = new StringBuilder();
-    Object localObject3 = kLR;
-    ((IAutoDBItem.MAutoDBInfo)localObject3).sql = (((IAutoDBItem.MAutoDBInfo)localObject3).sql + "," + (String)localObject1);
-    AppMethodBeat.o(146064);
+    AppMethodBeat.i(146066);
+    pUB = new r();
+    CONTENT_URI = Uri.parse("content://" + a.AUTHORITY + "/DevPkgLaunchExtInfo");
+    AppMethodBeat.o(146066);
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  public static r bZP()
   {
-    return null;
+    return pUB;
+  }
+  
+  public static String cs(String paramString, int paramInt)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(146065);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(146065);
+      return null;
+    }
+    Cursor localCursor = MMApplicationContext.getContext().getContentResolver().query(CONTENT_URI, null, String.format(Locale.US, "%s=? And %s=?", new Object[] { "appId", "versionType" }), new String[] { paramString, String.valueOf(paramInt) }, null, null);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(146065);
+      return null;
+    }
+    paramString = localObject;
+    if (!localCursor.isClosed())
+    {
+      paramString = localObject;
+      if (localCursor.moveToFirst())
+      {
+        paramString = new q();
+        paramString.convertFrom(localCursor);
+      }
+    }
+    localCursor.close();
+    if (paramString != null)
+    {
+      paramString = paramString.field_extJson;
+      AppMethodBeat.o(146065);
+      return paramString;
+    }
+    AppMethodBeat.o(146065);
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.r
  * JD-Core Version:    0.7.0.1
  */

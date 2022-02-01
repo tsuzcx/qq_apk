@@ -1,518 +1,655 @@
 package com.tencent.mm.live.core.core;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.core.core.b.e;
-import com.tencent.mm.live.core.view.LiveVideoView;
+import com.tencent.mm.live.core.core.model.f;
+import com.tencent.mm.protocal.protobuf.crv;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.rtmp.ITXLivePlayListener;
 import com.tencent.rtmp.TXLivePlayConfig;
 import com.tencent.rtmp.TXLivePlayer;
-import com.tencent.rtmp.ui.TXCloudVideoView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import kotlin.g.a.b;
+import kotlin.a.j;
 import kotlin.g.b.p;
+import kotlin.k.i;
 import kotlin.l;
-import kotlin.x;
+import kotlin.n.n;
+import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/core/LiveCdnPlayerManager;", "", "()V", "CACHE_STRATEGY_AUTO", "", "CACHE_STRATEGY_FAST", "CACHE_STRATEGY_SMOOTH", "CACHE_TIME_FAST", "", "CACHE_TIME_SMOOTH", "LAG_QUEUE_MAX_COUNT", "QUALITY_MAX_SWITCH_CNT", "QUALITY_OBSERVE_INTERVAL", "", "TAG", "", "cdnSwitchCnt", "lagHistoryQueue", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "lastCdnQuality", "lastTime", "lastTimeDown", "lastTimeUp", "liveRoomInfo", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "mCacheStrategy", "txLivePlayer", "Lcom/tencent/rtmp/TXLivePlayer;", "upTimePenalty", "countLag", "", "curCdnUrl", "getCacheStrategy", "getTXLivePlayer", "context", "Landroid/content/Context;", "playListener", "Lcom/tencent/rtmp/ITXLivePlayListener;", "outterConfig", "Lcom/tencent/rtmp/TXLivePlayConfig;", "h265PlayErrProcess", "isPlaying", "", "isPlayingH265", "onNetStatus", "params", "Landroid/os/Bundle;", "setCacheStrategy", "cacheStrategy", "setupLiveRoomInfo", "startPlay", "streamType", "playerView", "Lcom/tencent/mm/live/core/view/LiveVideoView;", "playCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "success", "stopPlay", "keepLastFrame", "switchCdnStream", "cdnUrl", "tryRestartPlay", "plugin-core_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/LiveCdnPlayerManager;", "", "()V", "CACHE_STRATEGY_AUTO", "", "CACHE_STRATEGY_FAST", "CACHE_STRATEGY_SMOOTH", "CACHE_TIME_FAST", "", "CACHE_TIME_SMOOTH", "LAG_QUEUE_MAX_COUNT", "QUALITY_MAX_SWITCH_CNT", "QUALITY_OBSERVE_INTERVAL", "", "TAG", "", "cdnH265BackCfg", "cdnQualitySvrcfg", "cdnSwitchCnt", "lagHistoryQueue", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "lastCdnQuality", "lastTime", "lastTimeDown", "lastTimeUp", "liveRoomInfo", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "mCacheStrategy", "mPlayConfig", "Lcom/tencent/rtmp/TXLivePlayConfig;", "mReTryBackupUrlCnt", "preLiveIDCdnQuality", "txLivePlayer", "Lcom/tencent/rtmp/TXLivePlayer;", "upTimePenalty", "vcodec2DecSupport", "countLag", "", "curCdnUrl", "getCacheStrategy", "getCdnH265BackCfg", "getCdnQualitySvrcfg", "getPreLiveIDStreamQuality", "getRetryCount", "getStreamIDByStreamUrl", "strStreamUrl", "getStreamQuality", "getTXLivePlayer", "context", "Landroid/content/Context;", "playListener", "Lcom/tencent/rtmp/ITXLivePlayListener;", "outterConfig", "getVcodec2DecSupport", "isPlaying", "", "isPlayingH265", "onNetStatus", "params", "Landroid/os/Bundle;", "pausePlay", "resetRetryCount", "resumePlay", "retryPlayBackupUrl", "setCacheStrategy", "cacheStrategy", "setPreLiveIDStreamQuality", "streamQuality", "setupLiveRoomInfo", "startPlay", "streamType", "playerView", "Lcom/tencent/mm/live/core/view/LiveVideoView;", "playCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "success", "stopPlay", "keepLastFrame", "switchCdnStream", "cdnUrl", "tryRestartPlay", "updateLiveRoomInfo", "updatePlayerConfig", "plugin-core_release"})
 public final class d
 {
-  private static final String TAG = "MicroMsg.LiveCdnPlayerManager";
-  private static final int hwG = 1;
-  private static final int hwH = 2;
-  private static final int hwI = 3;
-  private static final float hwJ = 1.0F;
-  private static final float hwK = 5.0F;
-  private static final int hwL = 100;
-  private static final long hwM = 10000L;
-  private static final int hwN = 5;
-  private static TXLivePlayer hwO;
-  private static e hwP;
-  private static long hwQ;
-  private static int hwR;
-  private static int hwS;
-  private static ArrayList<Long> hwT;
-  private static long hwU;
-  private static long hwV;
-  private static long hwW;
-  private static int hwX;
-  public static final d hwY;
+  public final String TAG;
+  private final int kiU;
+  private final int kiV;
+  private final int kiW;
+  private final float kiX;
+  private final float kiY;
+  public final int kiZ;
+  private final long kja;
+  private final int kjb;
+  public TXLivePlayer kjc;
+  public f kjd;
+  private long kje;
+  private int kjf;
+  public int kjg;
+  public int kjh;
+  public ArrayList<Long> kji;
+  private long kjj;
+  private long kjk;
+  private long kjl;
+  private int kjm;
+  public int kjn;
+  public TXLivePlayConfig kjo;
+  public int kjp;
+  public int kjq;
+  public int kjr;
   
-  static
+  public d()
   {
-    AppMethodBeat.i(196401);
-    hwY = new d();
-    TAG = "MicroMsg.LiveCdnPlayerManager";
-    hwG = 1;
-    hwH = 2;
-    hwI = 3;
-    hwJ = 1.0F;
-    hwK = 5.0F;
-    hwL = 100;
-    hwM = 10000L;
-    hwN = 5;
-    hwS = a.hwx.value;
-    hwT = new ArrayList(hwL);
-    hwW = hwM * 5L;
-    hwX = hwI;
-    AppMethodBeat.o(196401);
+    AppMethodBeat.i(199321);
+    this.TAG = "MicroMsg.LiveCdnPlayerManager";
+    this.kiU = 1;
+    this.kiV = 2;
+    this.kiW = 3;
+    e.c localc = e.c.kjA;
+    this.kiX = e.c.aJL();
+    localc = e.c.kjA;
+    this.kiY = e.c.aJM();
+    this.kiZ = 100;
+    this.kja = 10000L;
+    this.kjb = 5;
+    this.kjg = a.kiL.value;
+    this.kjh = a.kiL.value;
+    this.kji = new ArrayList(this.kiZ);
+    this.kjl = (this.kja * 5L);
+    this.kjm = this.kiW;
+    this.kjo = new TXLivePlayConfig();
+    AppMethodBeat.o(199321);
   }
   
-  public static void Gm(String paramString)
+  private static String getStreamIDByStreamUrl(String paramString)
   {
-    Object localObject2 = null;
-    AppMethodBeat.i(196390);
-    Object localObject1 = hwP;
-    int i;
-    if (localObject1 != null)
+    AppMethodBeat.i(199279);
+    Object localObject = (CharSequence)paramString;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      localObject1 = ((e)localObject1).hzs.values();
-      p.g(localObject1, "cdnUrlMap.values");
-      i = kotlin.a.j.b((Iterable)localObject1, paramString);
-      Log.i("LiveRoomInfo", "indexOfUrl " + paramString + ", index:" + i);
-      Log.i(TAG, "switchCdnStream to " + paramString + ", indexOfUrl:" + i);
-      localObject1 = hwP;
-      if (localObject1 == null) {
-        break label143;
-      }
+      AppMethodBeat.o(199279);
+      return null;
     }
-    label143:
-    for (localObject1 = ((e)localObject1).qr(hwS);; localObject1 = null)
+    if (paramString == null) {
+      p.iCn();
+    }
+    i = n.a((CharSequence)paramString, "?", 0, false, 6);
+    if (i != -1)
     {
-      if (!Util.isEqual((String)localObject1, paramString)) {
-        break label148;
-      }
-      Log.w(TAG, "switchCdnStream fail: curCdnUrl == cdnUrl");
-      AppMethodBeat.o(196390);
-      return;
-      i = 0;
-      break;
-    }
-    label148:
-    localObject1 = (CharSequence)paramString;
-    if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
-    for (int j = 1; j != 0; j = 0)
-    {
-      Log.w(TAG, "switchCdnStream fail: cdnUrl is nullornil");
-      AppMethodBeat.o(196390);
-      return;
-    }
-    if (hwO == null)
-    {
-      Log.w(TAG, "switchCdnStream fail: txLivePlayer == null");
-      AppMethodBeat.o(196390);
-      return;
-    }
-    hwS = i;
-    TXLivePlayer localTXLivePlayer = hwO;
-    localObject1 = localObject2;
-    if (localTXLivePlayer != null) {
-      localObject1 = Integer.valueOf(localTXLivePlayer.switchStream(paramString));
-    }
-    if (localObject1 == null) {}
-    while (((Integer)localObject1).intValue() != 0)
-    {
-      Log.w(TAG, "switchCdnStream fail: ".concat(String.valueOf(localObject1)));
-      localObject1 = hwO;
-      if (localObject1 != null) {
-        ((TXLivePlayer)localObject1).stopPlay(false);
-      }
-      localObject1 = hwO;
-      if (localObject1 == null) {
-        break;
-      }
-      ((TXLivePlayer)localObject1).startPlay(paramString, 1);
-      AppMethodBeat.o(196390);
-      return;
-    }
-    Log.i(TAG, "switchCdnStream ok");
-    AppMethodBeat.o(196390);
-    return;
-    AppMethodBeat.o(196390);
-  }
-  
-  public static TXLivePlayer a(Context paramContext, ITXLivePlayListener paramITXLivePlayListener, TXLivePlayConfig paramTXLivePlayConfig)
-  {
-    AppMethodBeat.i(196392);
-    p.h(paramContext, "context");
-    int i;
-    if (hwO == null)
-    {
-      hwO = new TXLivePlayer(paramContext);
-      paramContext = paramTXLivePlayConfig;
-      if (paramTXLivePlayConfig == null) {
-        paramContext = new TXLivePlayConfig();
-      }
-      i = hwX;
-      if (i != hwG) {
-        break label146;
-      }
-      paramContext.setAutoAdjustCacheTime(true);
-      paramContext.setMaxAutoAdjustCacheTime(hwJ);
-      paramContext.setMinAutoAdjustCacheTime(hwJ);
-      paramContext.setCacheTime(hwJ);
+      localObject = paramString.substring(0, i);
+      p.j(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
     }
     for (;;)
     {
-      paramTXLivePlayConfig = hwO;
-      if (paramTXLivePlayConfig != null) {
-        paramTXLivePlayConfig.setPlayListener(paramITXLivePlayListener);
-      }
-      paramITXLivePlayListener = hwO;
-      if (paramITXLivePlayListener != null) {
-        paramITXLivePlayListener.enableHardwareDecode(true);
-      }
-      paramITXLivePlayListener = hwO;
-      if (paramITXLivePlayListener != null) {
-        paramITXLivePlayListener.setConfig(paramContext);
-      }
-      paramContext = hwO;
-      if (paramContext != null) {
-        paramContext.setRenderMode(1);
-      }
-      paramContext = hwO;
-      AppMethodBeat.o(196392);
-      return paramContext;
-      label146:
-      if (i == hwH)
+      paramString = (CharSequence)localObject;
+      if ((paramString == null) || (paramString.length() == 0)) {}
+      for (i = 1; i != 0; i = 0)
       {
-        paramContext.setAutoAdjustCacheTime(false);
-        paramContext.setMaxAutoAdjustCacheTime(hwK);
-        paramContext.setMinAutoAdjustCacheTime(hwK);
-        paramContext.setCacheTime(hwK);
+        AppMethodBeat.o(199279);
+        return null;
       }
-      else if (i == hwI)
+      if (localObject == null) {
+        p.iCn();
+      }
+      i = n.g((CharSequence)localObject, "/");
+      int j = ((String)localObject).length();
+      paramString = (String)localObject;
+      if (i != -1)
       {
-        paramContext.setAutoAdjustCacheTime(true);
-        paramContext.setMaxAutoAdjustCacheTime(hwK);
-        paramContext.setMinAutoAdjustCacheTime(hwJ);
-        paramContext.setCacheTime(hwJ);
+        paramString = (String)localObject;
+        if (i + 1 <= j)
+        {
+          paramString = ((String)localObject).substring(i + 1);
+          p.j(paramString, "(this as java.lang.String).substring(startIndex)");
+        }
       }
+      localObject = (CharSequence)paramString;
+      if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+      for (i = 1; i != 0; i = 0)
+      {
+        AppMethodBeat.o(199279);
+        return null;
+      }
+      if (paramString == null) {
+        p.iCn();
+      }
+      i = n.a((CharSequence)paramString, ".", 0, false, 6);
+      localObject = paramString;
+      if (i != -1)
+      {
+        localObject = paramString.substring(0, i);
+        p.j(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+      }
+      paramString = (CharSequence)localObject;
+      if ((paramString == null) || (paramString.length() == 0)) {}
+      for (i = 1; i != 0; i = 0)
+      {
+        AppMethodBeat.o(199279);
+        return null;
+      }
+      AppMethodBeat.o(199279);
+      return localObject;
+      localObject = paramString;
     }
   }
   
-  public static void a(int paramInt, LiveVideoView paramLiveVideoView, b<? super Boolean, x> paramb)
+  public final void Ns(String paramString)
   {
-    AppMethodBeat.i(196393);
-    p.h(paramLiveVideoView, "playerView");
-    Object localObject = hwP;
-    if (localObject != null) {
-      localObject = ((e)localObject).qr(hwS);
-    }
-    while ((localObject != null) && (hwO != null))
-    {
-      TXLivePlayer localTXLivePlayer = hwO;
-      if ((localTXLivePlayer != null) && (!localTXLivePlayer.isPlaying()))
-      {
-        Log.i(TAG, "startPlay url:".concat(String.valueOf(localObject)));
-        localTXLivePlayer = hwO;
-        if (localTXLivePlayer != null) {
-          localTXLivePlayer.setPlayerView((TXCloudVideoView)paramLiveVideoView);
-        }
-        paramLiveVideoView = hwO;
-        if (paramLiveVideoView != null) {
-          paramLiveVideoView.startPlay((String)localObject, paramInt);
-        }
-        paramb.invoke(Boolean.TRUE);
-        AppMethodBeat.o(196393);
-        return;
-        localObject = null;
-      }
-      else
-      {
-        Log.i(TAG, "refresh palyView");
-        localObject = hwO;
-        if (localObject != null) {
-          ((TXLivePlayer)localObject).setPlayerView((TXCloudVideoView)paramLiveVideoView);
-        }
-        paramb.invoke(Boolean.TRUE);
-        AppMethodBeat.o(196393);
-        return;
-      }
-    }
-    paramb.invoke(Boolean.FALSE);
-    AppMethodBeat.o(196393);
-  }
-  
-  public static void a(e parame)
-  {
-    AppMethodBeat.i(196391);
-    hwP = parame;
-    hwS = a.hwx.value;
-    if (parame != null) {}
-    for (parame = Integer.valueOf(parame.hzq);; parame = null)
-    {
-      if (parame != null) {
-        hwS = parame.intValue();
-      }
-      AppMethodBeat.o(196391);
-      return;
-    }
-  }
-  
-  public static void aBZ()
-  {
-    Object localObject2 = null;
-    AppMethodBeat.i(196396);
-    Object localObject1 = hwP;
-    int i;
-    label36:
-    int k;
-    long l;
-    label75:
+    Object localObject3 = null;
+    AppMethodBeat.i(199291);
+    Object localObject1 = this.kjd;
     int j;
     if (localObject1 != null)
     {
-      localObject1 = ((e)localObject1).hzp;
-      if (localObject1 != com.tencent.mm.live.core.core.b.a.hyE) {
-        break label122;
+      localObject1 = ((f)localObject1).kmm.values();
+      p.j(localObject1, "cdnUrlMap.values");
+      j = j.b((Iterable)localObject1, paramString);
+      Log.i("LiveRoomInfo", "indexOfUrl " + paramString + ", index:" + j);
+      Log.i(this.TAG, "switchCdnStream to " + paramString + ", indexOfUrl:" + j);
+      localObject1 = this.kjd;
+      if (localObject1 == null) {
+        break label166;
+      }
+    }
+    label166:
+    for (localObject1 = ((f)localObject1).sS(this.kjg);; localObject1 = null)
+    {
+      if (!Util.isEqual((String)localObject1, paramString)) {
+        break label172;
+      }
+      Log.w(this.TAG, "switchCdnStream fail: curCdnUrl == cdnUrl");
+      AppMethodBeat.o(199291);
+      return;
+      j = 0;
+      break;
+    }
+    label172:
+    Object localObject2 = (CharSequence)paramString;
+    if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      Log.w(this.TAG, "switchCdnStream fail: cdnUrl is nullornil");
+      AppMethodBeat.o(199291);
+      return;
+    }
+    if (this.kjc == null)
+    {
+      Log.w(this.TAG, "switchCdnStream fail: txLivePlayer == null");
+      AppMethodBeat.o(199291);
+      return;
+    }
+    localObject2 = this.kjc;
+    Object localObject4;
+    if (localObject2 != null)
+    {
+      if (((TXLivePlayer)localObject2).isPlaying() != true) {
+        break label818;
+      }
+      localObject4 = getStreamIDByStreamUrl((String)localObject1);
+      localObject2 = getStreamIDByStreamUrl(paramString);
+      localObject1 = (CharSequence)localObject4;
+      if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
+        break label517;
+      }
+      i = 1;
+      if (i != 0) {
+        break label818;
+      }
+      localObject1 = (CharSequence)localObject2;
+      if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
+        break label522;
+      }
+      i = 1;
+    }
+    Object localObject5;
+    for (;;)
+    {
+      if (i == 0)
+      {
+        if (Util.isEqual((String)localObject2, (String)localObject4))
+        {
+          Log.i(this.TAG, "1.switchCdnStream same streamid, skip switching! old:" + (String)localObject4 + ", new:" + (String)localObject2);
+          for (i = 0;; i = 1)
+          {
+            if (i != 0)
+            {
+              localObject1 = this.kjc;
+              if (localObject1 != null) {
+                ((TXLivePlayer)localObject1).stopPlay(false);
+              }
+              localObject1 = this.kjc;
+              if (localObject1 != null) {
+                ((TXLivePlayer)localObject1).startPlay(paramString, 1);
+              }
+              this.kjg = j;
+              localObject2 = this.TAG;
+              localObject4 = new StringBuilder("switchCdnStream startPlay done, liveId:");
+              localObject5 = this.kjd;
+              localObject1 = localObject3;
+              if (localObject5 != null) {
+                localObject1 = Long.valueOf(((f)localObject5).liveId);
+              }
+              Log.i((String)localObject2, localObject1 + ',' + this.kjc + ", url:" + paramString);
+            }
+            AppMethodBeat.o(199291);
+            return;
+          }
+          label517:
+          i = 0;
+          break;
+          label522:
+          i = 0;
+          continue;
+        }
+        if ((n.g((CharSequence)localObject4, (CharSequence)localObject2)) || (n.g((CharSequence)localObject2, (CharSequence)localObject4)))
+        {
+          Log.i(this.TAG, "2.switchCdnStream streamid substring,directly try switching! old:" + (String)localObject4 + ", new:" + (String)localObject2);
+          i = 1;
+          localObject1 = localObject2;
+        }
+      }
+    }
+    for (;;)
+    {
+      label601:
+      if (i == 0)
+      {
+        localObject5 = (CharSequence)localObject1;
+        if ((localObject5 == null) || (((CharSequence)localObject5).length() == 0))
+        {
+          i = 1;
+          label629:
+          if ((i != 0) || (!n.g((CharSequence)localObject4, (CharSequence)localObject1))) {
+            break label818;
+          }
+        }
+      }
+      else
+      {
+        localObject1 = this.kjc;
+        if (localObject1 == null) {
+          break label799;
+        }
+        localObject1 = Integer.valueOf(((TXLivePlayer)localObject1).switchStream(paramString));
+        if (localObject1 != null) {
+          break label805;
+        }
+      }
+      label671:
+      label676:
+      for (i = 1;; i = 0)
+      {
+        this.kjg = j;
+        Log.i(this.TAG, "3. switchCdnStream switchStream ret:" + localObject1 + ", streamId change: " + (String)localObject4 + " --> " + (String)localObject2);
+        break;
+        i = n.g((CharSequence)localObject2, "_");
+        if (i == -1) {
+          break label823;
+        }
+        if (localObject2 == null)
+        {
+          paramString = new t("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(199291);
+          throw paramString;
+        }
+        localObject1 = ((String)localObject2).substring(0, i);
+        p.j(localObject1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+        i = 0;
+        break label601;
+        i = 0;
+        break label629;
+        localObject1 = null;
+        break label671;
+        label805:
+        if (((Integer)localObject1).intValue() != 0) {
+          break label676;
+        }
+      }
+      label799:
+      label818:
+      i = 1;
+      break;
+      label823:
+      i = 0;
+      localObject1 = localObject2;
+    }
+  }
+  
+  public final void aJD()
+  {
+    AppMethodBeat.i(199306);
+    Object localObject = this.kjd;
+    int i;
+    label34:
+    int j;
+    int k;
+    long l;
+    if (localObject != null)
+    {
+      localObject = ((f)localObject).kml;
+      if (localObject != com.tencent.mm.live.core.core.model.a.klA) {
+        break label130;
       }
       i = 1;
       if (i == 0) {
-        break label358;
+        break label393;
       }
-      k = hwS;
-      l = System.currentTimeMillis();
-      if (l - hwQ <= hwM) {
-        break label127;
-      }
-      localObject1 = ((Iterable)hwT).iterator();
+      j = 0;
       i = 0;
-      j = i;
-      if (!((Iterator)localObject1).hasNext()) {
-        break label129;
+      k = this.kjg;
+      l = System.currentTimeMillis();
+      if (l - this.kje <= this.kja) {
+        break label135;
       }
-      if (l - ((Number)((Iterator)localObject1).next()).longValue() > hwM) {
-        break label519;
+      localObject = ((Iterable)this.kji).iterator();
+      label81:
+      j = i;
+      if (!((Iterator)localObject).hasNext()) {
+        break label135;
+      }
+      if (l - ((Number)((Iterator)localObject).next()).longValue() > this.kja) {
+        break label576;
       }
       i += 1;
     }
-    label129:
-    label514:
-    label519:
+    label130:
+    label135:
+    label288:
+    label565:
+    label571:
+    label576:
     for (;;)
     {
-      break label75;
-      localObject1 = null;
+      break label81;
+      localObject = null;
       break;
-      label122:
       i = 0;
-      break label36;
-      label127:
-      j = 0;
-      if ((j == 0) && (l - hwQ > hwM + hwW))
+      break label34;
+      if ((j == 0) && (l - this.kje > this.kja + this.kjl))
       {
-        if (hwS == a.hwx.value) {
-          break label448;
+        if (this.kjg == a.kiL.value) {
+          break label487;
         }
-        if ((hwS == a.hwy.value) || (hwS == a.hwz.value)) {
-          i = a.hwx.value;
+        if ((this.kjg == a.kiM.value) || (this.kjg == a.kiN.value)) {
+          i = a.kiL.value;
         }
       }
       for (;;)
       {
-        if ((i != hwS) && (hwR < hwN))
+        if ((i != this.kjg) && (this.kjf < this.kjb))
         {
-          if (i <= hwS) {
-            break label455;
+          if (i <= this.kjg) {
+            break label495;
           }
-          hwV = l;
-          label219:
-          if ((hwV <= hwU) || (hwV - hwU >= hwM * 2L)) {
-            break label469;
+          this.kjk = l;
+          label238:
+          if ((this.kjk <= this.kjj) || (this.kjk - this.kjj >= this.kja * 2L)) {
+            break label512;
+          }
+          this.kjl += this.kja * 6L;
+          Log.i(this.TAG, "onNetStatus quality change: %d --> %d, duration:%d, upPenalty:%d, switchCnt:%d", new Object[] { Integer.valueOf(this.kjg), Integer.valueOf(i), Long.valueOf(l - this.kje), Long.valueOf(this.kjl), Integer.valueOf(this.kjf) });
+          this.kje = l;
+          this.kjf += 1;
+          localObject = this.kjd;
+          if (localObject == null) {
+            break label565;
           }
         }
-        label448:
-        label455:
-        label469:
-        for (hwW += hwM * 6L;; hwW = kotlin.k.j.aM(hwW - hwM, 0L)) {
-          label358:
-          do
+        for (localObject = ((f)localObject).sS(i);; localObject = null)
+        {
+          Ns((String)localObject);
+          AppMethodBeat.o(199306);
+          return;
+          if (this.kjg != a.kiO.value) {
+            break label571;
+          }
+          i = a.kiM.value;
+          break;
+          if (j < 3) {
+            break label571;
+          }
+          if (this.kjg == a.kiL.value)
           {
-            Log.i(TAG, "onNetStatus quality change: %d --> %d, duration:%d, upPenalty:%d, switchCnt:%d", new Object[] { Integer.valueOf(hwS), Integer.valueOf(i), Long.valueOf(l - hwQ), Long.valueOf(hwW), Integer.valueOf(hwR) });
-            hwQ = l;
-            hwR += 1;
-            e locale = hwP;
-            localObject1 = localObject2;
-            if (locale != null) {
-              localObject1 = locale.qr(i);
-            }
-            Gm((String)localObject1);
-            AppMethodBeat.o(196396);
-            return;
-            if (hwS != a.hwA.value) {
-              break label514;
-            }
-            i = a.hwy.value;
+            i = a.kiM.value;
             break;
-            if (j < 3) {
-              break label514;
-            }
-            if (hwS == a.hwx.value)
-            {
-              i = a.hwy.value;
-              break;
-            }
-            if ((hwS == a.hwy.value) || (hwS == a.hwz.value))
-            {
-              i = a.hwA.value;
-              break;
-            }
-            i = hwS;
+          }
+          if ((this.kjg == a.kiM.value) || (this.kjg == a.kiN.value))
+          {
+            i = a.kiO.value;
             break;
-            if (i >= hwS) {
-              break label219;
-            }
-            hwU = l;
-            break label219;
-          } while ((hwU <= hwV) || (hwU - hwQ <= hwM * 6L));
+          }
+          label487:
+          i = this.kjg;
+          break;
+          label495:
+          if (i >= this.kjg) {
+            break label238;
+          }
+          this.kjj = l;
+          break label238;
+          if ((this.kjj <= this.kjk) || (this.kjj - this.kje <= this.kja * 6L)) {
+            break label288;
+          }
+          this.kjl = i.be(this.kjl - this.kja, 0L);
+          break label288;
         }
         i = k;
       }
     }
   }
   
-  public static void aCa()
-  {
-    AppMethodBeat.i(196397);
-    hwT.add(Long.valueOf(System.currentTimeMillis()));
-    if (hwT.size() > hwL) {
-      hwT.remove(0);
-    }
-    AppMethodBeat.o(196397);
-  }
-  
-  public static void aCb()
+  public final void aJE()
   {
     String str = null;
-    AppMethodBeat.i(196398);
-    Object localObject = hwP;
+    AppMethodBeat.i(199310);
+    Object localObject = this.kjd;
     if (localObject != null) {}
-    for (localObject = Integer.valueOf(((e)localObject).hzr); localObject == null; localObject = null)
+    for (localObject = Integer.valueOf(((f)localObject).kjr); localObject == null; localObject = null)
     {
-      Log.i(TAG, "H265 play fail! cdnH265BackCfg is null");
-      AppMethodBeat.o(196398);
+      Log.i(this.TAG, "play fail! backup is null");
+      AppMethodBeat.o(199310);
       return;
     }
-    Log.i(TAG, "H265 play fail! quality change: %d --> %d, switchCnt:%d", new Object[] { Integer.valueOf(hwS), localObject, Integer.valueOf(hwR) });
-    e locale = hwP;
-    if (locale != null) {
-      str = locale.qr(((Integer)localObject).intValue());
+    Log.i(this.TAG, "play fail! try backup url, quality change: %d --> %d, switchCnt:%d", new Object[] { Integer.valueOf(this.kjg), localObject, Integer.valueOf(this.kjf) });
+    f localf = this.kjd;
+    if (localf != null) {
+      str = localf.sS(((Integer)localObject).intValue());
     }
-    Gm(str);
-    hwR += 1;
-    AppMethodBeat.o(196398);
+    Ns(str);
+    this.kjf += 1;
+    this.kjn += 1;
+    AppMethodBeat.o(199310);
   }
   
-  public static boolean aCc()
+  public final void aJF()
   {
-    return hwS == a.hwC.value;
-  }
-  
-  public static String aCd()
-  {
-    AppMethodBeat.i(196400);
-    Object localObject = hwP;
+    AppMethodBeat.i(199317);
+    float f3 = this.kiX;
+    float f4 = this.kiY;
+    Object localObject = this.kjd;
+    int i;
+    float f2;
+    float f1;
     if (localObject != null)
     {
-      String str = ((e)localObject).qr(hwS);
-      localObject = str;
-      if (str != null) {}
-    }
-    else
-    {
-      localObject = "";
-    }
-    AppMethodBeat.o(196400);
-    return localObject;
-  }
-  
-  public static void ev(boolean paramBoolean)
-  {
-    AppMethodBeat.i(196394);
-    Log.i(TAG, "stopPlay");
-    TXLivePlayer localTXLivePlayer = hwO;
-    if (localTXLivePlayer != null) {
-      localTXLivePlayer.stopPlay(paramBoolean);
-    }
-    localTXLivePlayer = hwO;
-    if (localTXLivePlayer != null) {
-      localTXLivePlayer.setPlayListener(null);
-    }
-    hwO = null;
-    hwQ = 0L;
-    hwR = 0;
-    hwT.clear();
-    hwU = 0L;
-    hwV = 0L;
-    hwW = hwM * 5L;
-    AppMethodBeat.o(196394);
-  }
-  
-  public static boolean isPlaying()
-  {
-    AppMethodBeat.i(196395);
-    TXLivePlayer localTXLivePlayer = hwO;
-    if (localTXLivePlayer != null)
-    {
-      boolean bool = localTXLivePlayer.isPlaying();
-      AppMethodBeat.o(196395);
-      return bool;
-    }
-    AppMethodBeat.o(196395);
-    return false;
-  }
-  
-  public static void qq(int paramInt)
-  {
-    AppMethodBeat.i(196399);
-    Object localObject1 = hwP;
-    Object localObject2;
-    int i;
-    if (localObject1 != null)
-    {
-      localObject1 = ((e)localObject1).qr(hwS);
-      localObject2 = (CharSequence)localObject1;
-      if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
-        break label87;
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      if (i == 0)
+      localObject = ((f)localObject).kmo;
+      if (localObject != null)
       {
-        localObject2 = hwO;
-        if (localObject2 != null) {
-          ((TXLivePlayer)localObject2).stopPlay(false);
-        }
-        localObject2 = hwO;
-        if (localObject2 != null)
+        i = ((crv)localObject).Tze;
+        f2 = f4;
+        f1 = f3;
+        if (i > 0)
         {
-          ((TXLivePlayer)localObject2).startPlay((String)localObject1, paramInt);
-          AppMethodBeat.o(196399);
-          return;
-          localObject1 = null;
-          break;
+          localObject = this.kjd;
+          if (localObject == null) {
+            break label375;
+          }
+          localObject = ((f)localObject).kmo;
+          if (localObject == null) {
+            break label375;
+          }
+          i = ((crv)localObject).Tzf;
           label87:
-          i = 0;
-          continue;
+          f2 = f4;
+          f1 = f3;
+          if (i > 0)
+          {
+            localObject = this.kjd;
+            if (localObject == null) {
+              break label381;
+            }
+            localObject = ((f)localObject).kmo;
+            if (localObject == null) {
+              break label381;
+            }
+            localObject = Integer.valueOf(((crv)localObject).Tze);
+            label130:
+            if (localObject == null) {
+              p.iCn();
+            }
+            f1 = ((Integer)localObject).intValue() / 1000.0F;
+            localObject = this.kjd;
+            if (localObject == null) {
+              break label387;
+            }
+            localObject = ((f)localObject).kmo;
+            if (localObject == null) {
+              break label387;
+            }
+          }
         }
-        AppMethodBeat.o(196399);
+      }
+    }
+    label387:
+    for (localObject = Integer.valueOf(((crv)localObject).Tzf);; localObject = null)
+    {
+      if (localObject == null) {
+        p.iCn();
+      }
+      f2 = ((Integer)localObject).intValue() / 1000.0F;
+      Log.i(this.TAG, "get cgi params type:" + this.kjm + ", minCache:" + f1 + ", maxCache:" + f2);
+      Log.i(this.TAG, "updatePlayerConfig type:" + this.kjm + ", minCache:" + f1 + ", maxCache:" + f2);
+      i = this.kjm;
+      if (i != this.kiU) {
+        break label400;
+      }
+      this.kjo.setAutoAdjustCacheTime(true);
+      this.kjo.setMaxAutoAdjustCacheTime(f1);
+      this.kjo.setMinAutoAdjustCacheTime(f1);
+      this.kjo.setCacheTime(f1);
+      localObject = this.kjc;
+      if (localObject == null) {
+        break label393;
+      }
+      ((TXLivePlayer)localObject).setConfig(this.kjo);
+      AppMethodBeat.o(199317);
+      return;
+      i = 0;
+      break;
+      label375:
+      i = 0;
+      break label87;
+      label381:
+      localObject = null;
+      break label130;
+    }
+    label393:
+    AppMethodBeat.o(199317);
+    return;
+    label400:
+    if (i == this.kiV)
+    {
+      this.kjo.setAutoAdjustCacheTime(false);
+      this.kjo.setMaxAutoAdjustCacheTime(f2);
+      this.kjo.setMinAutoAdjustCacheTime(f2);
+      this.kjo.setCacheTime(f1);
+      localObject = this.kjc;
+      if (localObject != null)
+      {
+        ((TXLivePlayer)localObject).setConfig(this.kjo);
+        AppMethodBeat.o(199317);
+        return;
+      }
+      AppMethodBeat.o(199317);
+      return;
+    }
+    if (i == this.kiW)
+    {
+      this.kjo.setAutoAdjustCacheTime(true);
+      this.kjo.setMaxAutoAdjustCacheTime(f2);
+      this.kjo.setMinAutoAdjustCacheTime(f1);
+      this.kjo.setCacheTime(f1);
+      localObject = this.kjc;
+      if (localObject != null)
+      {
+        ((TXLivePlayer)localObject).setConfig(this.kjo);
+        AppMethodBeat.o(199317);
         return;
       }
     }
-    Log.w(TAG, "tryRestartPlay fail: url is nullornil");
-    AppMethodBeat.o(196399);
+    AppMethodBeat.o(199317);
+  }
+  
+  public final void eT(boolean paramBoolean)
+  {
+    AppMethodBeat.i(199294);
+    String str = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder("stopPlay liveId:");
+    Object localObject = this.kjd;
+    if (localObject != null) {}
+    for (localObject = Long.valueOf(((f)localObject).liveId);; localObject = null)
+    {
+      Log.i(str, localObject + ",player:" + this.kjc + ',');
+      if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.DEBUG)) {
+        Log.i(this.TAG, "stopPlay stack:" + Util.getStack());
+      }
+      localObject = this.kjc;
+      if (localObject != null) {
+        ((TXLivePlayer)localObject).stopPlay(paramBoolean);
+      }
+      localObject = this.kjc;
+      if (localObject != null) {
+        ((TXLivePlayer)localObject).setPlayListener(null);
+      }
+      this.kjc = null;
+      this.kje = 0L;
+      this.kjf = 0;
+      this.kji.clear();
+      this.kjj = 0L;
+      this.kjk = 0L;
+      this.kjl = (this.kja * 5L);
+      AppMethodBeat.o(199294);
+      return;
+    }
+  }
+  
+  public final boolean isPlaying()
+  {
+    AppMethodBeat.i(199295);
+    TXLivePlayer localTXLivePlayer = this.kjc;
+    if (localTXLivePlayer != null)
+    {
+      boolean bool = localTXLivePlayer.isPlaying();
+      AppMethodBeat.o(199295);
+      return bool;
+    }
+    AppMethodBeat.o(199295);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.core.core.d
  * JD-Core Version:    0.7.0.1
  */

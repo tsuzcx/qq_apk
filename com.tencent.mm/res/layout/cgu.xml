@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="@dimen/atw"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:keybutton="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.hld.floatview.ImeFloatViewClickBg android:id="@id/cv3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" keybutton:ime_float_view_click_bg_type="1" />
+    <com.tencent.mm.plugin.hld.floatview.ImeFloatViewClickBg android:id="@id/k70" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" keybutton:ime_float_view_click_bg_type="2" />
+    <com.tencent.mm.plugin.hld.floatview.ImeFloatViewClickBg android:id="@id/k8k" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" keybutton:ime_float_view_click_bg_type="3" />
+    <TextView android:textSize="@dimen/auk" android:textColor="@color/ahz" android:gravity="center" android:id="@id/kce" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_centerHorizontal="true" android:lineSpacingExtra="36.0dip" />
+    <RelativeLayout android:id="@id/kc_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginEnd="7.5dip">
+        <TextView android:textSize="@dimen/auk" android:textColor="@color/ahz" android:gravity="center" android:id="@id/kca" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="Q" android:layout_centerHorizontal="true" android:lineSpacingExtra="36.0dip" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/kcb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="7.5dip">
+        <TextView android:textSize="@dimen/auk" android:textColor="@color/ahz" android:gravity="center" android:id="@id/kcc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_centerHorizontal="true" android:lineSpacingExtra="36.0dip" android:layout_marginStart="10.0dip" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -2,39 +2,39 @@ package com.tencent.mm.plugin.story.f.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.h.a.c;
-import com.tencent.mm.protocal.protobuf.edt;
+import com.tencent.mm.protocal.protobuf.enu;
 import com.tencent.mm.storage.bp;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/download/StoryImage;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "mediaObj", "Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "username", "", "fromscene", "Lcom/tencent/mm/storage/FROM_SCENE;", "(Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;Ljava/lang/String;Lcom/tencent/mm/storage/FROM_SCENE;)V", "getFromscene", "()Lcom/tencent/mm/storage/FROM_SCENE;", "setFromscene", "(Lcom/tencent/mm/storage/FROM_SCENE;)V", "getMediaObj", "()Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "setMediaObj", "(Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;)V", "getUsername", "()Ljava/lang/String;", "setUsername", "(Ljava/lang/String;)V", "isLegal", "", "uniqueValue", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/model/download/StoryImage;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "mediaObj", "Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "username", "", "fromscene", "Lcom/tencent/mm/storage/FROM_SCENE;", "(Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;Ljava/lang/String;Lcom/tencent/mm/storage/FROM_SCENE;)V", "getFromscene", "()Lcom/tencent/mm/storage/FROM_SCENE;", "setFromscene", "(Lcom/tencent/mm/storage/FROM_SCENE;)V", "getMediaObj", "()Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "setMediaObj", "(Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;)V", "getUsername", "()Ljava/lang/String;", "setUsername", "(Ljava/lang/String;)V", "isLegal", "", "uniqueValue", "plugin-story_release"})
 public final class d
   implements c
 {
-  private bp DPp;
-  edt FoD;
+  private bp Kcw;
+  enu LIF;
   String username;
   
-  public d(edt paramedt, String paramString, bp parambp)
+  public d(enu paramenu, String paramString, bp parambp)
   {
     AppMethodBeat.i(118903);
-    this.FoD = paramedt;
+    this.LIF = paramenu;
     this.username = paramString;
-    this.DPp = parambp;
+    this.Kcw = parambp;
     AppMethodBeat.o(118903);
   }
   
-  public final String auA()
+  public final String aBv()
   {
     AppMethodBeat.i(118902);
-    Object localObject = (CharSequence)this.FoD.Msz;
+    Object localObject = (CharSequence)this.LIF.TDF;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      localObject = this.FoD.Id + '_' + this.DPp.tag;
+      localObject = this.LIF.Id + '_' + this.Kcw.tag;
       AppMethodBeat.o(118902);
       return localObject;
     }
-    localObject = this.FoD.Msz + '_' + this.DPp.tag;
+    localObject = this.LIF.TDF + '_' + this.Kcw.tag;
     AppMethodBeat.o(118902);
     return localObject;
   }

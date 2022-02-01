@@ -61,14 +61,14 @@ public class YtVideoEncoder
   
   static
   {
-    AppMethodBeat.i(192628);
+    AppMethodBeat.i(256727);
     TAG = YtVideoEncoder.class.getSimpleName();
-    AppMethodBeat.o(192628);
+    AppMethodBeat.o(256727);
   }
   
   public YtVideoEncoder(IYUVToVideoEncoderCallback paramIYUVToVideoEncoderCallback, boolean paramBoolean)
   {
-    AppMethodBeat.i(192605);
+    AppMethodBeat.i(256674);
     this.vidoeEncodeQueue = new ConcurrentLinkedQueue();
     this.audioEncodeQueue = new ConcurrentLinkedQueue();
     this.mediaDataQueue = new ConcurrentLinkedQueue();
@@ -91,12 +91,12 @@ public class YtVideoEncoder
     this.audioSampleRate = 8000;
     this.mCallback = paramIYUVToVideoEncoderCallback;
     this.mNeedWork = paramBoolean;
-    AppMethodBeat.o(192605);
+    AppMethodBeat.o(256674);
   }
   
   private byte[] I420ToNV21(int paramInt1, int paramInt2, YuvImage paramYuvImage)
   {
-    AppMethodBeat.i(192624);
+    AppMethodBeat.i(256716);
     if (this.yuvnv12 == null) {
       this.yuvnv12 = new byte[paramInt1 * paramInt2 * 3 / 2];
     }
@@ -117,13 +117,13 @@ public class YtVideoEncoder
       i += 2;
     }
     paramYuvImage = this.yuvnv12;
-    AppMethodBeat.o(192624);
+    AppMethodBeat.o(256716);
     return paramYuvImage;
   }
   
   private byte[] NV12ToNV21(int paramInt1, int paramInt2, YuvImage paramYuvImage)
   {
-    AppMethodBeat.i(192623);
+    AppMethodBeat.i(256712);
     if (this.yuvnv12 == null) {
       this.yuvnv12 = new byte[paramInt1 * paramInt2 * 3 / 2];
     }
@@ -143,7 +143,7 @@ public class YtVideoEncoder
       paramInt1 += 1;
     }
     paramYuvImage = this.yuvnv12;
-    AppMethodBeat.o(192623);
+    AppMethodBeat.o(256712);
     return paramYuvImage;
   }
   
@@ -154,15 +154,15 @@ public class YtVideoEncoder
   
   private byte[] convertYUV(int paramInt1, int paramInt2, YuvImage paramYuvImage)
   {
-    AppMethodBeat.i(192622);
+    AppMethodBeat.i(256709);
     if (this.colorFormat == 21)
     {
       paramYuvImage = NV12ToNV21(paramInt1, paramInt2, paramYuvImage);
-      AppMethodBeat.o(192622);
+      AppMethodBeat.o(256709);
       return paramYuvImage;
     }
     paramYuvImage = I420ToNV21(paramInt1, paramInt2, paramYuvImage);
-    AppMethodBeat.o(192622);
+    AppMethodBeat.o(256709);
     return paramYuvImage;
   }
   
@@ -251,65 +251,65 @@ public class YtVideoEncoder
   
   private ByteBuffer getInputBuffer(YtVideoEncoder.MediaType paramMediaType, int paramInt)
   {
-    AppMethodBeat.i(192617);
+    AppMethodBeat.i(256695);
     if (Build.VERSION.SDK_INT >= 21)
     {
       if (paramMediaType == YtVideoEncoder.MediaType.VideoType)
       {
         paramMediaType = this.videoEncoder.getInputBuffer(paramInt);
-        AppMethodBeat.o(192617);
+        AppMethodBeat.o(256695);
         return paramMediaType;
       }
       paramMediaType = this.audioEncoder.getInputBuffer(paramInt);
-      AppMethodBeat.o(192617);
+      AppMethodBeat.o(256695);
       return paramMediaType;
     }
     if (paramMediaType == YtVideoEncoder.MediaType.VideoType)
     {
       paramMediaType = this.videoEncoder.getInputBuffers()[paramInt];
-      AppMethodBeat.o(192617);
+      AppMethodBeat.o(256695);
       return paramMediaType;
     }
     paramMediaType = this.audioEncoder.getInputBuffers()[paramInt];
-    AppMethodBeat.o(192617);
+    AppMethodBeat.o(256695);
     return paramMediaType;
   }
   
   private byte[] getNV21(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(192625);
+    AppMethodBeat.i(256719);
     int[] arrayOfInt = new int[paramInt1 * paramInt2];
     paramBitmap.getPixels(arrayOfInt, 0, paramInt1, 0, 0, paramInt1, paramInt2);
     byte[] arrayOfByte = new byte[paramInt1 * paramInt2 * 3 / 2];
     encodeYUV420SP(arrayOfByte, arrayOfInt, paramInt1, paramInt2);
     paramBitmap.recycle();
-    AppMethodBeat.o(192625);
+    AppMethodBeat.o(256719);
     return arrayOfByte;
   }
   
   private ByteBuffer getOutputBuffer(YtVideoEncoder.MediaType paramMediaType, int paramInt)
   {
-    AppMethodBeat.i(192618);
+    AppMethodBeat.i(256697);
     if (Build.VERSION.SDK_INT >= 21)
     {
       if (paramMediaType == YtVideoEncoder.MediaType.VideoType)
       {
         paramMediaType = this.videoEncoder.getOutputBuffer(paramInt);
-        AppMethodBeat.o(192618);
+        AppMethodBeat.o(256697);
         return paramMediaType;
       }
       paramMediaType = this.audioEncoder.getOutputBuffer(paramInt);
-      AppMethodBeat.o(192618);
+      AppMethodBeat.o(256697);
       return paramMediaType;
     }
     if (paramMediaType == YtVideoEncoder.MediaType.VideoType)
     {
       paramMediaType = this.videoEncoder.getOutputBuffers()[paramInt];
-      AppMethodBeat.o(192618);
+      AppMethodBeat.o(256697);
       return paramMediaType;
     }
     paramMediaType = this.audioEncoder.getOutputBuffers()[paramInt];
-    AppMethodBeat.o(192618);
+    AppMethodBeat.o(256697);
     return paramMediaType;
   }
   
@@ -325,7 +325,7 @@ public class YtVideoEncoder
   
   private void onAudioStart()
   {
-    AppMethodBeat.i(192609);
+    AppMethodBeat.i(256681);
     this.audioEncoder.start();
     MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
     long l4 = 0L;
@@ -420,8 +420,6 @@ public class YtVideoEncoder
           l2 = l3;
         }
       }
-      YtLogger.d(TAG, "Audio encoder stop");
-      AppMethodBeat.o(192609);
       return;
       label463:
       l3 = l2;
@@ -544,14 +542,13 @@ public class YtVideoEncoder
     //   108	134	157	finally
     //   134	136	157	finally
     //   144	154	157	finally
-    //   158	160	157	finally
     //   169	195	157	finally
     //   101	108	168	java/lang/Exception
   }
   
   private static MediaCodecInfo selectCodec(String paramString)
   {
-    AppMethodBeat.i(192620);
+    AppMethodBeat.i(256701);
     int k = MediaCodecList.getCodecCount();
     int i = 0;
     while (i < k)
@@ -565,7 +562,7 @@ public class YtVideoEncoder
         {
           if (arrayOfString[j].equalsIgnoreCase(paramString))
           {
-            AppMethodBeat.o(192620);
+            AppMethodBeat.o(256701);
             return localMediaCodecInfo;
           }
           j += 1;
@@ -573,13 +570,13 @@ public class YtVideoEncoder
       }
       i += 1;
     }
-    AppMethodBeat.o(192620);
+    AppMethodBeat.o(256701);
     return null;
   }
   
   private static int selectColorFormat(MediaCodecInfo paramMediaCodecInfo, String paramString)
   {
-    AppMethodBeat.i(192621);
+    AppMethodBeat.i(256704);
     paramMediaCodecInfo = paramMediaCodecInfo.getCapabilitiesForType(paramString);
     int i = 0;
     while (i < paramMediaCodecInfo.colorFormats.length)
@@ -588,21 +585,21 @@ public class YtVideoEncoder
       YtLogger.d(TAG, "found colorformat: ".concat(String.valueOf(j)));
       if (isRecognizedFormat(j))
       {
-        AppMethodBeat.o(192621);
+        AppMethodBeat.o(256704);
         return j;
       }
       i += 1;
     }
-    AppMethodBeat.o(192621);
+    AppMethodBeat.o(256704);
     return 0;
   }
   
   private void startAudioEncoding(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192607);
+    AppMethodBeat.i(256679);
     if (!this.mNeedWork)
     {
-      AppMethodBeat.o(192607);
+      AppMethodBeat.o(256679);
       return;
     }
     this.needAudio = true;
@@ -621,29 +618,29 @@ public class YtVideoEncoder
       {
         public void run()
         {
-          AppMethodBeat.i(192600);
+          AppMethodBeat.i(256657);
           YtVideoEncoder.access$000(YtVideoEncoder.this);
-          AppMethodBeat.o(192600);
+          AppMethodBeat.o(256657);
         }
       });
       this.audioEncodeThread.start();
-      AppMethodBeat.o(192607);
+      AppMethodBeat.o(256679);
       return;
     }
     catch (IOException localIOException)
     {
-      AppMethodBeat.o(192607);
+      AppMethodBeat.o(256679);
     }
   }
   
   private void startAudioRecord()
   {
-    AppMethodBeat.i(192608);
+    AppMethodBeat.i(256680);
     new Thread(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(192601);
+        AppMethodBeat.i(256666);
         YtVideoEncoder.access$102(YtVideoEncoder.this, AudioRecord.getMinBufferSize(YtVideoEncoder.this.audioSampleRate, 16, 2));
         int i = Math.min(16384, YtVideoEncoder.this.minAudioBufferSize * 2);
         YtVideoEncoder.access$302(YtVideoEncoder.this, new AudioRecord(1, YtVideoEncoder.this.audioSampleRate, 16, 2, i));
@@ -659,20 +656,20 @@ public class YtVideoEncoder
         YtVideoEncoder.this.audioRecord.stop();
         YtVideoEncoder.this.audioRecord.release();
         YtVideoEncoder.access$302(YtVideoEncoder.this, null);
-        AppMethodBeat.o(192601);
+        AppMethodBeat.o(256666);
       }
     }).start();
-    AppMethodBeat.o(192608);
+    AppMethodBeat.o(256680);
   }
   
   private void startMediaMuxer(YtVideoEncoder.MediaType paramMediaType, MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(192626);
+    AppMethodBeat.i(256722);
     synchronized (this.mediaMuxerSync)
     {
       if (this.isMediaMuxerStarted)
       {
-        AppMethodBeat.o(192626);
+        AppMethodBeat.o(256722);
         return;
       }
       if (paramMediaType == YtVideoEncoder.MediaType.VideoType)
@@ -694,7 +691,7 @@ public class YtVideoEncoder
       }
       for (;;)
       {
-        AppMethodBeat.o(192626);
+        AppMethodBeat.o(256722);
         return;
         boolean bool = this.needAudio;
         if (!bool) {
@@ -711,7 +708,7 @@ public class YtVideoEncoder
   
   public void abortEncoding()
   {
-    AppMethodBeat.i(192614);
+    AppMethodBeat.i(256689);
     this.isEncodingStarted = false;
     if (this.mOutputFile != null)
     {
@@ -721,13 +718,13 @@ public class YtVideoEncoder
     }
     if (!this.mNeedWork)
     {
-      AppMethodBeat.o(192614);
+      AppMethodBeat.o(256689);
       return;
     }
     if ((this.videoEncoder == null) || (this.mediaMuxer == null))
     {
       YtLogger.i(TAG, "Failed to abort encoding since it never started");
-      AppMethodBeat.o(192614);
+      AppMethodBeat.o(256689);
       return;
     }
     YtLogger.i(TAG, "Aborting encoding");
@@ -741,28 +738,28 @@ public class YtVideoEncoder
         this.mNewFrameLatch.countDown();
       }
       release();
-      AppMethodBeat.o(192614);
+      AppMethodBeat.o(256689);
       return;
     }
   }
   
   public void encode()
   {
-    AppMethodBeat.i(192616);
+    AppMethodBeat.i(256693);
     if (!this.mNeedWork)
     {
-      AppMethodBeat.o(192616);
+      AppMethodBeat.o(256693);
       return;
     }
     if (!this.isEncodingStarted)
     {
-      AppMethodBeat.o(192616);
+      AppMethodBeat.o(256693);
       return;
     }
     YtLogger.d(TAG, "Encoder started");
     if ((this.mNoMoreFrames) && (this.vidoeEncodeQueue.size() == 0))
     {
-      AppMethodBeat.o(192616);
+      AppMethodBeat.o(256693);
       return;
     }
     YuvImage localYuvImage = (YuvImage)this.vidoeEncodeQueue.poll();
@@ -780,10 +777,10 @@ public class YtVideoEncoder
       ??? = (YuvImage)this.vidoeEncodeQueue.poll();
       if (??? == null)
       {
-        AppMethodBeat.o(192616);
+        AppMethodBeat.o(256693);
         return;
         localObject2 = finally;
-        AppMethodBeat.o(192616);
+        AppMethodBeat.o(256693);
         throw localObject2;
       }
       ??? = convertYUV(mWidth, mHeight, (YuvImage)???);
@@ -802,20 +799,20 @@ public class YtVideoEncoder
       if (i == -1)
       {
         YtLogger.e(TAG, "No output from encoder available");
-        AppMethodBeat.o(192616);
+        AppMethodBeat.o(256693);
         return;
       }
       if (i == -2)
       {
         ??? = this.videoEncoder.getOutputFormat();
         startMediaMuxer(YtVideoEncoder.MediaType.VideoType, (MediaFormat)???);
-        AppMethodBeat.o(192616);
+        AppMethodBeat.o(256693);
         return;
       }
       if (i < 0)
       {
         YtLogger.e(TAG, "unexpected result from encoder.dequeueOutputBuffer: ".concat(String.valueOf(i)));
-        AppMethodBeat.o(192616);
+        AppMethodBeat.o(256693);
         return;
       }
       ByteBuffer localByteBuffer;
@@ -825,7 +822,7 @@ public class YtVideoEncoder
         if (localByteBuffer == null)
         {
           YtLogger.e(TAG, "encoderOutputBuffer " + i + " was null");
-          AppMethodBeat.o(192616);
+          AppMethodBeat.o(256693);
           return;
         }
         localByteBuffer.position(((MediaCodec.BufferInfo)localObject3).offset);
@@ -836,7 +833,7 @@ public class YtVideoEncoder
       {
         this.mediaMuxer.writeSampleData(this.videoTrackIndex, localByteBuffer, (MediaCodec.BufferInfo)localObject3);
         this.videoEncoder.releaseOutputBuffer(i, false);
-        AppMethodBeat.o(192616);
+        AppMethodBeat.o(256693);
         return;
       }
     }
@@ -848,9 +845,9 @@ public class YtVideoEncoder
   
   public void encodeAudioData(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(192610);
+    AppMethodBeat.i(256683);
     this.audioEncodeQueue.add(paramArrayOfByte);
-    AppMethodBeat.o(192610);
+    AppMethodBeat.o(256683);
   }
   
   public int getColorFormat()
@@ -860,9 +857,9 @@ public class YtVideoEncoder
   
   public int getYUVImageSize()
   {
-    AppMethodBeat.i(192606);
+    AppMethodBeat.i(256676);
     int i = this.vidoeEncodeQueue.size();
-    AppMethodBeat.o(192606);
+    AppMethodBeat.o(256676);
     return i;
   }
   
@@ -873,15 +870,15 @@ public class YtVideoEncoder
   
   public void queueFrame(YuvImage arg1)
   {
-    AppMethodBeat.i(192615);
+    AppMethodBeat.i(256691);
     if (!this.mNeedWork)
     {
-      AppMethodBeat.o(192615);
+      AppMethodBeat.o(256691);
       return;
     }
     if ((this.videoEncoder == null) || (this.mediaMuxer == null))
     {
-      AppMethodBeat.o(192615);
+      AppMethodBeat.o(256691);
       return;
     }
     YtLogger.d(TAG, "Queueing frame");
@@ -891,14 +888,14 @@ public class YtVideoEncoder
       if ((this.mNewFrameLatch != null) && (this.mNewFrameLatch.getCount() > 0L)) {
         this.mNewFrameLatch.countDown();
       }
-      AppMethodBeat.o(192615);
+      AppMethodBeat.o(256691);
       return;
     }
   }
   
   public void startAudioVideoEncoding(int paramInt1, int paramInt2, File paramFile, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    AppMethodBeat.i(192611);
+    AppMethodBeat.i(256685);
     try
     {
       paramFile.delete();
@@ -915,26 +912,26 @@ public class YtVideoEncoder
       try
       {
         Thread.sleep(300L);
-        AppMethodBeat.o(192611);
+        AppMethodBeat.o(256685);
         return;
       }
       catch (InterruptedException paramFile)
       {
-        AppMethodBeat.o(192611);
+        AppMethodBeat.o(256685);
       }
       localIOException = localIOException;
       YtLogger.e(TAG, "Unable to get path for ".concat(String.valueOf(paramFile)));
-      AppMethodBeat.o(192611);
+      AppMethodBeat.o(256685);
       return;
     }
   }
   
   public void startEncoding(int paramInt1, int paramInt2, File paramFile, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(192612);
+    AppMethodBeat.i(256686);
     if (!this.mNeedWork)
     {
-      AppMethodBeat.o(192612);
+      AppMethodBeat.o(256686);
       return;
     }
     mWidth = paramInt1;
@@ -950,14 +947,14 @@ public class YtVideoEncoder
       if (paramFile == null)
       {
         YtLogger.e(TAG, "Unable to find an appropriate codec for video/avc");
-        AppMethodBeat.o(192612);
+        AppMethodBeat.o(256686);
         return;
       }
     }
     catch (IOException localIOException)
     {
       YtLogger.e(TAG, "Unable to get path for ".concat(String.valueOf(paramFile)));
-      AppMethodBeat.o(192612);
+      AppMethodBeat.o(256686);
       return;
     }
     YtLogger.i(TAG, "found codec: " + paramFile.getName());
@@ -984,13 +981,13 @@ public class YtVideoEncoder
           this.videoEncoder.start();
           YtLogger.i(TAG, "Initialization complete. Starting encoder...");
           this.isEncodingStarted = true;
-          AppMethodBeat.o(192612);
+          AppMethodBeat.o(256686);
           return;
         }
         catch (Exception paramFile)
         {
           YtLogger.e(TAG, "Unable to create MediaCodec " + paramFile.getMessage());
-          AppMethodBeat.o(192612);
+          AppMethodBeat.o(256686);
         }
         localException = localException;
         this.colorFormat = 21;
@@ -1000,16 +997,16 @@ public class YtVideoEncoder
   
   public void stopEncoding()
   {
-    AppMethodBeat.i(192613);
+    AppMethodBeat.i(256688);
     this.isEncodingStarted = false;
     if (!this.mNeedWork)
     {
-      AppMethodBeat.o(192613);
+      AppMethodBeat.o(256688);
       return;
     }
     if ((this.videoEncoder == null) || (this.mediaMuxer == null))
     {
-      AppMethodBeat.o(192613);
+      AppMethodBeat.o(256688);
       return;
     }
     YtLogger.i(TAG, "Stopping encoding");
@@ -1020,7 +1017,7 @@ public class YtVideoEncoder
         this.mNewFrameLatch.countDown();
       }
       release();
-      AppMethodBeat.o(192613);
+      AppMethodBeat.o(256688);
       return;
     }
   }
@@ -1048,7 +1045,7 @@ public class YtVideoEncoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.YtVideoEncoder
  * JD-Core Version:    0.7.0.1
  */

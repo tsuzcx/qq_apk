@@ -20,7 +20,7 @@ public class c
   
   public String a()
   {
-    AppMethodBeat.i(188272);
+    AppMethodBeat.i(194153);
     Object localObject1 = new JSONObject();
     Object localObject2 = new JSONObject();
     try
@@ -65,7 +65,7 @@ public class c
       break label227;
     }
     localObject1 = ((JSONObject)localObject1).toString();
-    AppMethodBeat.o(188272);
+    AppMethodBeat.o(194153);
     return localObject1;
   }
   
@@ -84,19 +84,34 @@ public class c
     this.h = paramList;
   }
   
+  public void b(Integer paramInteger)
+  {
+    this.f = paramInteger;
+  }
+  
   public void b(String paramString)
   {
     this.b = paramString;
+  }
+  
+  public void c(Integer paramInteger)
+  {
+    this.g = paramInteger;
   }
   
   public void c(String paramString)
   {
     this.d = paramString;
   }
+  
+  public void d(String paramString)
+  {
+    this.e = paramString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sdk.a.c
  * JD-Core Version:    0.7.0.1
  */

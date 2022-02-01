@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dtn;
-import com.tencent.mm.protocal.protobuf.dto;
+import com.tencent.mm.protocal.protobuf.edm;
+import com.tencent.mm.protocal.protobuf.edn;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class m
@@ -28,17 +28,17 @@ public final class m
   {
     AppMethodBeat.i(73780);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new dtn();
-    ((d.a)localObject).iLO = new dto();
+    ((d.a)localObject).lBU = new edm();
+    ((d.a)localObject).lBV = new edn();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/sendfeedback";
     ((d.a)localObject).funcId = 153;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (dtn)this.rr.iLK.iLR;
-    ((dtn)localObject).MVC = paramString1;
-    ((dtn)localObject).iAc = paramString2;
-    ((dtn)localObject).MlN = paramInt;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (edm)d.b.b(this.rr.lBR);
+    ((edm)localObject).UhQ = paramString1;
+    ((edm)localObject).lpy = paramString2;
+    ((edm)localObject).TwH = paramInt;
     AppMethodBeat.o(73780);
   }
   

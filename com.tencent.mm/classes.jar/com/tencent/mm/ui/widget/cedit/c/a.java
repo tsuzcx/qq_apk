@@ -6,68 +6,68 @@ import java.text.CharacterIterator;
 public final class a
   implements CharacterIterator
 {
-  private final int QLQ;
-  private final CharSequence QLR;
+  private final int YkI;
+  private final CharSequence YkJ;
   private int mIndex;
-  private final int rnu;
+  private final int uQJ;
   
   public a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(206135);
-    this.QLR = paramCharSequence;
+    AppMethodBeat.i(223003);
+    this.YkJ = paramCharSequence;
     this.mIndex = paramInt1;
-    this.QLQ = paramInt1;
-    this.rnu = paramInt2;
-    AppMethodBeat.o(206135);
+    this.YkI = paramInt1;
+    this.uQJ = paramInt2;
+    AppMethodBeat.o(223003);
   }
   
   public final Object clone()
   {
-    AppMethodBeat.i(206142);
+    AppMethodBeat.i(223027);
     try
     {
       Object localObject = super.clone();
-      AppMethodBeat.o(206142);
+      AppMethodBeat.o(223027);
       return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
       InternalError localInternalError = new InternalError();
-      AppMethodBeat.o(206142);
+      AppMethodBeat.o(223027);
       throw localInternalError;
     }
   }
   
   public final char current()
   {
-    AppMethodBeat.i(206138);
-    if (this.mIndex == this.rnu)
+    AppMethodBeat.i(223010);
+    if (this.mIndex == this.uQJ)
     {
-      AppMethodBeat.o(206138);
+      AppMethodBeat.o(223010);
       return 65535;
     }
-    char c = this.QLR.charAt(this.mIndex);
-    AppMethodBeat.o(206138);
+    char c = this.YkJ.charAt(this.mIndex);
+    AppMethodBeat.o(223010);
     return c;
   }
   
   public final char first()
   {
-    AppMethodBeat.i(206136);
-    this.mIndex = this.QLQ;
+    AppMethodBeat.i(223005);
+    this.mIndex = this.YkI;
     char c = current();
-    AppMethodBeat.o(206136);
+    AppMethodBeat.o(223005);
     return c;
   }
   
   public final int getBeginIndex()
   {
-    return this.QLQ;
+    return this.YkI;
   }
   
   public final int getEndIndex()
   {
-    return this.rnu;
+    return this.uQJ;
   }
   
   public final int getIndex()
@@ -77,66 +77,66 @@ public final class a
   
   public final char last()
   {
-    AppMethodBeat.i(206137);
-    if (this.QLQ == this.rnu)
+    AppMethodBeat.i(223009);
+    if (this.YkI == this.uQJ)
     {
-      this.mIndex = this.rnu;
-      AppMethodBeat.o(206137);
+      this.mIndex = this.uQJ;
+      AppMethodBeat.o(223009);
       return 65535;
     }
-    this.mIndex = (this.rnu - 1);
-    char c = this.QLR.charAt(this.mIndex);
-    AppMethodBeat.o(206137);
+    this.mIndex = (this.uQJ - 1);
+    char c = this.YkJ.charAt(this.mIndex);
+    AppMethodBeat.o(223009);
     return c;
   }
   
   public final char next()
   {
-    AppMethodBeat.i(206139);
+    AppMethodBeat.i(223012);
     this.mIndex += 1;
-    if (this.mIndex >= this.rnu)
+    if (this.mIndex >= this.uQJ)
     {
-      this.mIndex = this.rnu;
-      AppMethodBeat.o(206139);
+      this.mIndex = this.uQJ;
+      AppMethodBeat.o(223012);
       return 65535;
     }
-    char c = this.QLR.charAt(this.mIndex);
-    AppMethodBeat.o(206139);
+    char c = this.YkJ.charAt(this.mIndex);
+    AppMethodBeat.o(223012);
     return c;
   }
   
   public final char previous()
   {
-    AppMethodBeat.i(206140);
-    if (this.mIndex <= this.QLQ)
+    AppMethodBeat.i(223018);
+    if (this.mIndex <= this.YkI)
     {
-      AppMethodBeat.o(206140);
+      AppMethodBeat.o(223018);
       return 65535;
     }
     this.mIndex -= 1;
-    char c = this.QLR.charAt(this.mIndex);
-    AppMethodBeat.o(206140);
+    char c = this.YkJ.charAt(this.mIndex);
+    AppMethodBeat.o(223018);
     return c;
   }
   
   public final char setIndex(int paramInt)
   {
-    AppMethodBeat.i(206141);
-    if ((this.QLQ <= paramInt) && (paramInt <= this.rnu))
+    AppMethodBeat.i(223021);
+    if ((this.YkI <= paramInt) && (paramInt <= this.uQJ))
     {
       this.mIndex = paramInt;
       c = current();
-      AppMethodBeat.o(206141);
+      AppMethodBeat.o(223021);
       return c;
     }
     char c = current();
-    AppMethodBeat.o(206141);
+    AppMethodBeat.o(223021);
     return c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cedit.c.a
  * JD-Core Version:    0.7.0.1
  */

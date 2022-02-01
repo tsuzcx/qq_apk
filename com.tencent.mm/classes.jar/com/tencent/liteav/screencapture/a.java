@@ -10,17 +10,15 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
-import android.view.Display;
 import android.view.Surface;
-import android.view.WindowManager;
-import com.tencent.liteav.basic.c.i;
-import com.tencent.liteav.basic.c.j;
-import com.tencent.liteav.basic.c.k;
-import com.tencent.liteav.basic.c.l;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.TXCOpenGlUtils;
+import com.tencent.liteav.basic.opengl.k;
+import com.tencent.liteav.basic.opengl.l;
+import com.tencent.liteav.basic.opengl.m;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.basic.util.e;
 import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.util.Locale;
@@ -42,13 +40,13 @@ public class a
   private Object l;
   private int m;
   private int n;
-  private WeakReference<com.tencent.liteav.basic.b.b> o;
+  private WeakReference<com.tencent.liteav.basic.c.b> o;
   private WeakReference<a> p;
   private c.b q;
   
   public a(Context paramContext, boolean paramBoolean, a parama)
   {
-    AppMethodBeat.i(221408);
+    AppMethodBeat.i(228762);
     this.b = null;
     this.c = null;
     this.d = null;
@@ -65,54 +63,54 @@ public class a
     {
       public void a()
       {
-        AppMethodBeat.i(221423);
-        f.a(a.a(a.this), -7001, "Screen recording stopped. It may be preempted by other apps");
+        AppMethodBeat.i(228673);
+        h.a(a.a(a.this), -7001, "Screen recording stopped. It may be preempted by other apps");
         a.a locala = a.b(a.this);
         a.a(a.this, null);
         if (locala != null) {
           locala.onScreenCaptureStopped(1);
         }
-        AppMethodBeat.o(221423);
+        AppMethodBeat.o(228673);
       }
       
       public void a(boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(221424);
+        AppMethodBeat.i(228679);
         if (a.c(a.this))
         {
           a.this.b(paramAnonymousBoolean);
           a.this.b(105, a.d(a.this), a.e(a.this));
         }
-        AppMethodBeat.o(221424);
+        AppMethodBeat.o(228679);
       }
       
       public void a(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
       {
-        AppMethodBeat.i(221422);
+        AppMethodBeat.i(228669);
         if (paramAnonymousBoolean1)
         {
           a.this.b(106);
-          AppMethodBeat.o(221422);
+          AppMethodBeat.o(228669);
           return;
         }
         a.a(a.this, null);
-        f.a(a.a(a.this), -1308, "Failed to share screen");
-        AppMethodBeat.o(221422);
+        h.a(a.a(a.this), -1308, "Failed to share screen");
+        AppMethodBeat.o(228669);
       }
     };
     this.p = new WeakReference(parama);
     this.k = paramContext.getApplicationContext();
     this.a = new Handler(Looper.getMainLooper());
     this.j = paramBoolean;
-    AppMethodBeat.o(221408);
+    AppMethodBeat.o(228762);
   }
   
   private void c(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(221412);
+    AppMethodBeat.i(228788);
     if (this.j)
     {
-      int i1 = ((WindowManager)this.k.getSystemService("window")).getDefaultDisplay().getRotation();
+      int i1 = h.g(this.k);
       if ((i1 == 0) || (i1 == 2)) {
         if (paramInt1 > paramInt2)
         {
@@ -125,7 +123,7 @@ public class a
     {
       this.m = this.f;
       this.n = this.g;
-      AppMethodBeat.o(221412);
+      AppMethodBeat.o(228788);
       return;
       this.f = paramInt1;
       this.g = paramInt2;
@@ -148,15 +146,15 @@ public class a
   
   private a d()
   {
-    AppMethodBeat.i(221418);
+    AppMethodBeat.i(228830);
     Object localObject = this.p;
     if (localObject != null)
     {
       localObject = (a)((WeakReference)localObject).get();
-      AppMethodBeat.o(221418);
+      AppMethodBeat.o(228830);
       return localObject;
     }
-    AppMethodBeat.o(221418);
+    AppMethodBeat.o(228830);
     return null;
   }
   
@@ -184,27 +182,27 @@ public class a
     //   0: sipush 16511
     //   3: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokevirtual 187	com/tencent/liteav/screencapture/a:b	()V
+    //   7: invokevirtual 174	com/tencent/liteav/screencapture/a:b	()V
     //   10: aload_0
     //   11: monitorenter
     //   12: aload_0
-    //   13: new 189	android/os/HandlerThread
+    //   13: new 176	android/os/HandlerThread
     //   16: dup
-    //   17: ldc 191
-    //   19: invokespecial 194	android/os/HandlerThread:<init>	(Ljava/lang/String;)V
+    //   17: ldc 178
+    //   19: invokespecial 181	android/os/HandlerThread:<init>	(Ljava/lang/String;)V
     //   22: putfield 66	com/tencent/liteav/screencapture/a:b	Landroid/os/HandlerThread;
     //   25: aload_0
     //   26: getfield 66	com/tencent/liteav/screencapture/a:b	Landroid/os/HandlerThread;
-    //   29: invokevirtual 197	android/os/HandlerThread:start	()V
+    //   29: invokevirtual 184	android/os/HandlerThread:start	()V
     //   32: aload_0
     //   33: new 17	com/tencent/liteav/screencapture/a$b
     //   36: dup
     //   37: aload_0
     //   38: aload_0
     //   39: getfield 66	com/tencent/liteav/screencapture/a:b	Landroid/os/HandlerThread;
-    //   42: invokevirtual 200	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
+    //   42: invokevirtual 187	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
     //   45: aload_0
-    //   46: invokespecial 203	com/tencent/liteav/screencapture/a$b:<init>	(Lcom/tencent/liteav/screencapture/a;Landroid/os/Looper;Lcom/tencent/liteav/screencapture/a;)V
+    //   46: invokespecial 190	com/tencent/liteav/screencapture/a$b:<init>	(Lcom/tencent/liteav/screencapture/a;Landroid/os/Looper;Lcom/tencent/liteav/screencapture/a;)V
     //   49: putfield 68	com/tencent/liteav/screencapture/a:c	Lcom/tencent/liteav/screencapture/a$b;
     //   52: aload_0
     //   53: aload_0
@@ -216,17 +214,17 @@ public class a
     //   63: getfield 68	com/tencent/liteav/screencapture/a:c	Lcom/tencent/liteav/screencapture/a$b;
     //   66: aload_0
     //   67: getfield 72	com/tencent/liteav/screencapture/a:e	I
-    //   70: putfield 205	com/tencent/liteav/screencapture/a$b:a	I
+    //   70: putfield 192	com/tencent/liteav/screencapture/a$b:a	I
     //   73: aload_0
     //   74: getfield 68	com/tencent/liteav/screencapture/a:c	Lcom/tencent/liteav/screencapture/a$b;
     //   77: aload_0
     //   78: getfield 84	com/tencent/liteav/screencapture/a:m	I
-    //   81: putfield 206	com/tencent/liteav/screencapture/a$b:e	I
+    //   81: putfield 193	com/tencent/liteav/screencapture/a$b:e	I
     //   84: aload_0
     //   85: getfield 68	com/tencent/liteav/screencapture/a:c	Lcom/tencent/liteav/screencapture/a$b;
     //   88: aload_0
     //   89: getfield 86	com/tencent/liteav/screencapture/a:n	I
-    //   92: putfield 207	com/tencent/liteav/screencapture/a$b:f	I
+    //   92: putfield 194	com/tencent/liteav/screencapture/a$b:f	I
     //   95: aload_0
     //   96: getfield 68	com/tencent/liteav/screencapture/a:c	Lcom/tencent/liteav/screencapture/a$b;
     //   99: astore_2
@@ -237,12 +235,12 @@ public class a
     //   108: istore_1
     //   109: aload_2
     //   110: iload_1
-    //   111: putfield 208	com/tencent/liteav/screencapture/a$b:g	I
+    //   111: putfield 195	com/tencent/liteav/screencapture/a$b:g	I
     //   114: aload_0
     //   115: monitorexit
     //   116: aload_0
     //   117: bipush 100
-    //   119: invokevirtual 210	com/tencent/liteav/screencapture/a:b	(I)V
+    //   119: invokevirtual 197	com/tencent/liteav/screencapture/a:b	(I)V
     //   122: sipush 16511
     //   125: invokestatic 125	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   128: return
@@ -268,7 +266,6 @@ public class a
     //   12	107	137	finally
     //   109	116	137	finally
     //   129	134	137	finally
-    //   138	140	137	finally
   }
   
   public void a(int paramInt)
@@ -281,10 +278,10 @@ public class a
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(221411);
+    AppMethodBeat.i(228781);
     c(paramInt1, paramInt2);
     b(105, paramInt1, paramInt2);
-    AppMethodBeat.o(221411);
+    AppMethodBeat.o(228781);
   }
   
   protected void a(int paramInt, long paramLong)
@@ -325,26 +322,26 @@ public class a
   
   protected void a(int paramInt1, EGLContext paramEGLContext, int paramInt2, int paramInt3, int paramInt4, long paramLong)
   {
-    AppMethodBeat.i(221416);
+    AppMethodBeat.i(228819);
     b localb = c();
     if (localb != null) {
       localb.a(paramInt1, paramEGLContext, paramInt2, paramInt3, paramInt4, paramLong);
     }
-    AppMethodBeat.o(221416);
+    AppMethodBeat.o(228819);
   }
   
-  public void a(com.tencent.liteav.basic.b.b paramb)
+  public void a(com.tencent.liteav.basic.c.b paramb)
   {
-    AppMethodBeat.i(221410);
+    AppMethodBeat.i(228774);
     this.o = new WeakReference(paramb);
-    AppMethodBeat.o(221410);
+    AppMethodBeat.o(228774);
   }
   
   public void a(b paramb)
   {
-    AppMethodBeat.i(221409);
+    AppMethodBeat.i(228772);
     this.d = new WeakReference(paramb);
-    AppMethodBeat.o(221409);
+    AppMethodBeat.o(228772);
   }
   
   public void a(Object paramObject)
@@ -382,7 +379,7 @@ public class a
     //   11: dup
     //   12: aload_0
     //   13: iload_1
-    //   14: invokespecial 269	com/tencent/liteav/screencapture/a$2:<init>	(Lcom/tencent/liteav/screencapture/a;Z)V
+    //   14: invokespecial 256	com/tencent/liteav/screencapture/a$2:<init>	(Lcom/tencent/liteav/screencapture/a;Z)V
     //   17: astore_2
     //   18: aload_0
     //   19: getfield 68	com/tencent/liteav/screencapture/a:c	Lcom/tencent/liteav/screencapture/a$b;
@@ -390,7 +387,7 @@ public class a
     //   25: aload_0
     //   26: getfield 68	com/tencent/liteav/screencapture/a:c	Lcom/tencent/liteav/screencapture/a$b;
     //   29: aload_2
-    //   30: invokevirtual 265	com/tencent/liteav/screencapture/a$b:post	(Ljava/lang/Runnable;)Z
+    //   30: invokevirtual 252	com/tencent/liteav/screencapture/a$b:post	(Ljava/lang/Runnable;)Z
     //   33: pop
     //   34: aload_0
     //   35: monitorexit
@@ -398,7 +395,7 @@ public class a
     //   39: invokestatic 125	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   42: return
     //   43: aload_2
-    //   44: invokeinterface 274 1 0
+    //   44: invokeinterface 261 1 0
     //   49: goto -15 -> 34
     //   52: astore_2
     //   53: aload_0
@@ -418,7 +415,6 @@ public class a
     //   8	34	52	finally
     //   34	36	52	finally
     //   43	49	52	finally
-    //   53	55	52	finally
   }
   
   protected void b()
@@ -488,7 +484,7 @@ public class a
   
   protected void b(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(221414);
+    AppMethodBeat.i(228808);
     try
     {
       if (this.c != null)
@@ -502,7 +498,7 @@ public class a
     }
     finally
     {
-      AppMethodBeat.o(221414);
+      AppMethodBeat.o(228808);
     }
   }
   
@@ -529,7 +525,7 @@ public class a
   
   protected void b(boolean paramBoolean)
   {
-    AppMethodBeat.i(221417);
+    AppMethodBeat.i(228827);
     if (paramBoolean)
     {
       if (this.f < this.g)
@@ -545,7 +541,7 @@ public class a
       {
         this.n = i1;
         TXCLog.i("TXCScreenCapture", String.format(Locale.ENGLISH, "reset screen capture isPortrait[%b] output size[%d/%d]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(this.m), Integer.valueOf(this.n) }));
-        AppMethodBeat.o(221417);
+        AppMethodBeat.o(228827);
         return;
         i1 = this.g;
         break;
@@ -572,25 +568,25 @@ public class a
   
   protected b c()
   {
-    AppMethodBeat.i(221413);
+    AppMethodBeat.i(228800);
     if (this.d == null)
     {
-      AppMethodBeat.o(221413);
+      AppMethodBeat.o(228800);
       return null;
     }
     b localb = (b)this.d.get();
-    AppMethodBeat.o(221413);
+    AppMethodBeat.o(228800);
     return localb;
   }
   
   protected void c(int paramInt)
   {
-    AppMethodBeat.i(221415);
+    AppMethodBeat.i(228817);
     a locala = d();
     if ((locala != null) && (paramInt == 0)) {
       locala.onScreenCaptureStarted();
     }
-    AppMethodBeat.o(221415);
+    AppMethodBeat.o(228817);
   }
   
   public static abstract interface a
@@ -617,15 +613,15 @@ public class a
     protected boolean h;
     protected long i;
     protected long j;
-    protected com.tencent.liteav.basic.c.b k;
-    protected i l;
+    protected com.tencent.liteav.basic.opengl.b k;
+    protected k l;
     float[] m;
     private boolean o;
     
     public b(Looper paramLooper, a parama)
     {
       super();
-      AppMethodBeat.i(221384);
+      AppMethodBeat.i(228513);
       this.a = 0;
       this.b = null;
       this.c = null;
@@ -641,26 +637,26 @@ public class a
       this.m = new float[16];
       this.o = true;
       TXCLog.i("TXCScreenCapture", "TXCScreenCaptureGLThreadHandler inited. hashCode: %d", new Object[] { Integer.valueOf(hashCode()) });
-      AppMethodBeat.o(221384);
+      AppMethodBeat.o(228513);
     }
     
     protected void a()
     {
-      AppMethodBeat.i(221387);
+      AppMethodBeat.i(228525);
       if ((this.o) && (this.k != null))
       {
         Bundle localBundle = new Bundle();
         localBundle.putString("EVT_MSG", "Screen recording started successfully");
-        f.a(a.a(a.this), 1004, localBundle);
+        h.a(a.a(a.this), 1004, localBundle);
         a.this.c(0);
       }
       this.o = false;
-      AppMethodBeat.o(221387);
+      AppMethodBeat.o(228525);
     }
     
     protected void a(Message paramMessage)
     {
-      AppMethodBeat.i(221386);
+      AppMethodBeat.i(228522);
       this.i = 0L;
       this.j = 0L;
       if (!b())
@@ -669,12 +665,12 @@ public class a
         a.this.b();
         a.this.c(20000003);
       }
-      AppMethodBeat.o(221386);
+      AppMethodBeat.o(228522);
     }
     
     protected void b(Message paramMessage)
     {
-      AppMethodBeat.i(221388);
+      AppMethodBeat.i(228527);
       a.this.i = false;
       paramMessage = a.b(a.this);
       if (paramMessage != null) {
@@ -685,36 +681,36 @@ public class a
         paramMessage.a(a.f(a.this));
       }
       c();
-      AppMethodBeat.o(221388);
+      AppMethodBeat.o(228527);
     }
     
     protected boolean b()
     {
-      AppMethodBeat.i(221391);
+      AppMethodBeat.i(228547);
       TXCLog.i("TXCScreenCapture", String.format("init egl size[%d/%d]", new Object[] { Integer.valueOf(this.e), Integer.valueOf(this.f) }));
-      this.k = com.tencent.liteav.basic.c.b.a(null, null, null, this.e, this.f);
+      this.k = com.tencent.liteav.basic.opengl.b.a(null, null, null, this.e, this.f);
       if (this.k == null)
       {
-        AppMethodBeat.o(221391);
+        AppMethodBeat.o(228547);
         return false;
       }
-      this.l = new i();
+      this.l = new k();
       if (!this.l.a())
       {
-        AppMethodBeat.o(221391);
+        AppMethodBeat.o(228547);
         return false;
       }
       this.l.a(true);
       this.l.a(this.e, this.f);
-      this.l.a(l.e, l.a(k.a, false, false));
+      this.l.a(m.e, m.a(l.a, false, false));
       e();
-      AppMethodBeat.o(221391);
+      AppMethodBeat.o(228547);
       return true;
     }
     
     protected void c()
     {
-      AppMethodBeat.i(221392);
+      AppMethodBeat.i(228551);
       d();
       if (this.l != null)
       {
@@ -726,35 +722,35 @@ public class a
         this.k.c();
         this.k = null;
       }
-      AppMethodBeat.o(221392);
+      AppMethodBeat.o(228551);
     }
     
     protected void c(Message paramMessage)
     {
-      AppMethodBeat.i(221389);
+      AppMethodBeat.i(228535);
       a.this.a(102, 5L);
       if (!a.this.i)
       {
-        AppMethodBeat.o(221389);
+        AppMethodBeat.o(228535);
         return;
       }
       if (this.k == null)
       {
         TXCLog.e("TXCScreenCapture", "eglhelper is null");
-        AppMethodBeat.o(221389);
+        AppMethodBeat.o(228535);
         return;
       }
       if (!this.h)
       {
         this.i = 0L;
         this.j = System.nanoTime();
-        AppMethodBeat.o(221389);
+        AppMethodBeat.o(228535);
         return;
       }
       long l1 = System.nanoTime();
       if (l1 < this.j + this.i * 1000L * 1000L * 1000L / this.g)
       {
-        AppMethodBeat.o(221389);
+        AppMethodBeat.o(228535);
         return;
       }
       if (this.j == 0L) {
@@ -766,7 +762,7 @@ public class a
         if ((this.d != null) && (this.b != null)) {
           break;
         }
-        AppMethodBeat.o(221389);
+        AppMethodBeat.o(228535);
         return;
         if (l1 > this.j + 1000000000L)
         {
@@ -782,7 +778,7 @@ public class a
         GLES20.glViewport(0, 0, this.e, this.f);
         int i1 = this.l.b(this.b[0]);
         a.this.a(0, this.k.d(), i1, this.e, this.f, TXCTimeUtil.getTimeTick());
-        AppMethodBeat.o(221389);
+        AppMethodBeat.o(228535);
         return;
       }
       catch (Exception paramMessage)
@@ -796,14 +792,14 @@ public class a
     
     protected void d()
     {
-      AppMethodBeat.i(221393);
-      new e(Looper.getMainLooper()).a(new Runnable()
+      AppMethodBeat.i(228557);
+      new f(Looper.getMainLooper()).a(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(221426);
+          AppMethodBeat.i(228566);
           c.a(a.g(a.this)).a(a.b.this.c);
-          AppMethodBeat.o(221426);
+          AppMethodBeat.o(228566);
         }
       });
       if (this.c != null)
@@ -823,7 +819,7 @@ public class a
         GLES20.glDeleteTextures(1, this.b, 0);
         this.b = null;
       }
-      AppMethodBeat.o(221393);
+      AppMethodBeat.o(228557);
     }
     
     protected void d(Message paramMessage)
@@ -843,13 +839,13 @@ public class a
     
     protected void e()
     {
-      AppMethodBeat.i(221394);
+      AppMethodBeat.i(228560);
       this.b = new int[1];
-      this.b[0] = j.b();
+      this.b[0] = TXCOpenGlUtils.b();
       if (this.b[0] <= 0)
       {
         this.b = null;
-        AppMethodBeat.o(221394);
+        AppMethodBeat.o(228560);
         return;
       }
       this.d = new SurfaceTexture(this.b[0]);
@@ -859,39 +855,39 @@ public class a
       {
         public void onFrameAvailable(SurfaceTexture paramAnonymousSurfaceTexture)
         {
-          AppMethodBeat.i(221421);
+          AppMethodBeat.i(228584);
           a.this.a(104, new Runnable()
           {
             public void run()
             {
-              AppMethodBeat.i(221407);
+              AppMethodBeat.i(228886);
               a.b.this.h = true;
               a.this.b(102);
-              AppMethodBeat.o(221407);
+              AppMethodBeat.o(228886);
             }
           });
           paramAnonymousSurfaceTexture.setOnFrameAvailableListener(null);
-          AppMethodBeat.o(221421);
+          AppMethodBeat.o(228584);
         }
       });
       new Handler(Looper.getMainLooper()).post(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(221427);
+          AppMethodBeat.i(228439);
           c.a(a.g(a.this)).a(a.b.this.c, a.b.this.e, a.b.this.f, a.h(a.this));
-          AppMethodBeat.o(221427);
+          AppMethodBeat.o(228439);
         }
       });
-      AppMethodBeat.o(221394);
+      AppMethodBeat.o(228560);
     }
     
     protected void e(Message paramMessage)
     {
-      AppMethodBeat.i(221390);
+      AppMethodBeat.i(228543);
       if (paramMessage == null)
       {
-        AppMethodBeat.o(221390);
+        AppMethodBeat.o(228543);
         return;
       }
       this.e = paramMessage.arg1;
@@ -900,20 +896,20 @@ public class a
       this.l.a(this.e, this.f);
       e();
       TXCLog.i("TXCScreenCapture", String.format("set screen capture size[%d/%d]", new Object[] { Integer.valueOf(a.d(a.this)), Integer.valueOf(a.e(a.this)) }));
-      AppMethodBeat.o(221390);
+      AppMethodBeat.o(228543);
     }
     
     public void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(221385);
+      AppMethodBeat.i(228521);
       if (paramMessage == null)
       {
-        AppMethodBeat.o(221385);
+        AppMethodBeat.o(228521);
         return;
       }
       if ((this.a != a.this.e) && (101 != paramMessage.what))
       {
-        AppMethodBeat.o(221385);
+        AppMethodBeat.o(228521);
         return;
       }
       switch (paramMessage.what)
@@ -924,7 +920,7 @@ public class a
         if ((paramMessage != null) && (paramMessage.obj != null)) {
           ((Runnable)paramMessage.obj).run();
         }
-        AppMethodBeat.o(221385);
+        AppMethodBeat.o(228521);
         return;
         a(paramMessage);
         continue;
@@ -950,7 +946,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.screencapture.a
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,8 @@ final class b$6
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(116708);
-    this.IIZ.IIO[0] = paramMotionEvent.getX();
-    this.IIZ.IIO[1] = paramMotionEvent.getY();
+    this.PDo.PDd[0] = paramMotionEvent.getX();
+    this.PDo.PDd[1] = paramMotionEvent.getY();
     AppMethodBeat.o(116708);
     return false;
   }

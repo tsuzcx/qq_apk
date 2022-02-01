@@ -9,10 +9,10 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a;
-import com.tencent.mm.plugin.game.b.b.l;
+import com.tencent.mm.ay.a.a;
+import com.tencent.mm.plugin.game.autogen.b.l;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.at;
+import com.tencent.mm.ui.aw;
 import java.util.LinkedList;
 
 public class GameVideoTagContainer
@@ -52,8 +52,8 @@ public class GameVideoTagContainer
       localObject1 = new ImageView(getContext());
       ((ImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_XY);
       localObject2 = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject2).height = at.fromDPToPix(getContext(), 14);
-      ((LinearLayout.LayoutParams)localObject2).rightMargin = at.fromDPToPix(getContext(), 4);
+      ((LinearLayout.LayoutParams)localObject2).height = aw.fromDPToPix(getContext(), 14);
+      ((LinearLayout.LayoutParams)localObject2).rightMargin = aw.fromDPToPix(getContext(), 4);
       ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       addView((View)localObject1);
     }
@@ -68,8 +68,8 @@ public class GameVideoTagContainer
     {
       localObject1 = (l)paramLinkedList.get(i);
       localObject2 = (ImageView)getChildAt(i);
-      ((LinearLayout.LayoutParams)((ImageView)localObject2).getLayoutParams()).width = at.fromDPToPix(getContext(), ((l)localObject1).width);
-      a.bdb().loadImage(((l)localObject1).xve, (ImageView)localObject2);
+      ((LinearLayout.LayoutParams)((ImageView)localObject2).getLayoutParams()).width = aw.fromDPToPix(getContext(), ((l)localObject1).width);
+      a.bms().loadImage(((l)localObject1).Crx, (ImageView)localObject2);
       ((ImageView)localObject2).setVisibility(0);
       i += 1;
     }

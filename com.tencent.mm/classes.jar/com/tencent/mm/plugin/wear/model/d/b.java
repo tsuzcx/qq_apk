@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.wear.model.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.bp;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.model.bq;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ezq;
-import com.tencent.mm.protocal.protobuf.ezr;
+import com.tencent.mm.protocal.protobuf.fkh;
+import com.tencent.mm.protocal.protobuf.fki;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
@@ -19,7 +19,7 @@ public final class b
   implements m
 {
   private i callback;
-  private d iUB;
+  private d lKU;
   
   public b(String paramString)
   {
@@ -27,18 +27,18 @@ public final class b
     Object localObject = new d.a();
     ((d.a)localObject).funcId = 976;
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/sendyo";
-    ((d.a)localObject).iLN = new ezq();
-    ((d.a)localObject).iLO = new ezr();
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBU = new fkh();
+    ((d.a)localObject).lBV = new fki();
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.iUB = ((d.a)localObject).aXF();
-    localObject = (ezq)this.iUB.iLK.iLR;
-    ((ezq)localObject).xNG = paramString;
-    ((ezq)localObject).MuU = ((ezq)localObject).CreateTime;
-    ((ezq)localObject).CreateTime = ((int)bp.Kw(paramString));
-    ((ezq)localObject).oUv = 63;
-    ((ezq)localObject).NvO = 1;
-    ((ezq)localObject).oTz = 1;
+    this.lKU = ((d.a)localObject).bgN();
+    localObject = (fkh)d.b.b(this.lKU.lBR);
+    ((fkh)localObject).CRQ = paramString;
+    ((fkh)localObject).TFR = ((fkh)localObject).CreateTime;
+    ((fkh)localObject).CreateTime = ((int)bq.RP(paramString));
+    ((fkh)localObject).rWu = 63;
+    ((fkh)localObject).UIZ = 1;
+    ((fkh)localObject).rVx = 1;
     AppMethodBeat.o(30057);
   }
   
@@ -46,7 +46,7 @@ public final class b
   {
     AppMethodBeat.i(30059);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
+    int i = dispatch(paramg, this.lKU, this);
     AppMethodBeat.o(30059);
     return i;
   }
@@ -66,7 +66,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.d.b
  * JD-Core Version:    0.7.0.1
  */

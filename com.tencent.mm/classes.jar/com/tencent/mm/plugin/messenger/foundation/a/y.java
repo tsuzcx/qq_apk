@@ -1,16 +1,22 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.bw.a;
+import com.tencent.mm.kernel.c.a;
+import java.util.Map;
 
-public abstract interface y<T extends a>
+public abstract interface y
+  extends a
 {
-  public abstract void a(T paramT);
+  public abstract void Wz(int paramInt);
   
-  public abstract void b(T paramT);
+  public abstract void a(long paramLong, Map<String, String> paramMap, String paramString);
+  
+  public abstract void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, String paramString2);
+  
+  public abstract void aC(String paramString, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a.y
  * JD-Core Version:    0.7.0.1
  */

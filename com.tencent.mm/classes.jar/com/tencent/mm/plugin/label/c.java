@@ -7,7 +7,7 @@ import java.util.List;
 
 public final class c
 {
-  public static String fj(List<String> paramList)
+  public static String fI(List<String> paramList)
   {
     AppMethodBeat.i(26131);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -30,7 +30,7 @@ public final class c
     return paramList;
   }
   
-  public static String it(String paramString1, String paramString2)
+  public static String iG(String paramString1, String paramString2)
   {
     AppMethodBeat.i(26129);
     Log.d("MicroMsg.Label.LabelUtils", "original:%s,waitToAddLabel:%s", new Object[] { paramString1, paramString2 });
@@ -49,7 +49,8 @@ public final class c
     if (paramString1.endsWith("")) {
       str = paramString1.replace("", "");
     }
-    if (Util.stringsToList(str.split(",")).contains(paramString2))
+    paramString1 = Util.stringsToList(str.split(","));
+    if ((paramString1 != null) && (paramString1.contains(paramString2)))
     {
       paramString1 = str + "";
       AppMethodBeat.o(26129);
@@ -60,7 +61,7 @@ public final class c
     return paramString1;
   }
   
-  public static String iu(String paramString1, String paramString2)
+  public static String iH(String paramString1, String paramString2)
   {
     AppMethodBeat.i(26130);
     Log.d("MicroMsg.Label.LabelUtils", "original:%s,waitToDelLabel:%s", new Object[] { paramString1, paramString2 });
@@ -82,7 +83,7 @@ public final class c
     if (paramString1.contains(paramString2))
     {
       paramString1.remove(paramString2);
-      paramString1 = fj(paramString1);
+      paramString1 = fI(paramString1);
       AppMethodBeat.o(26130);
       return paramString1;
     }

@@ -8,15 +8,16 @@ import android.graphics.Bitmap.CompressFormat;
 import android.view.MenuItem;
 import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.d;
-import com.tencent.mm.av.q;
-import com.tencent.mm.g.a.tt;
-import com.tencent.mm.g.a.tt.a;
-import com.tencent.mm.g.a.tw;
-import com.tencent.mm.game.report.f;
-import com.tencent.mm.ipcinvoker.p;
+import com.tencent.mm.ay.d;
+import com.tencent.mm.ay.q;
+import com.tencent.mm.f.a.uw;
+import com.tencent.mm.f.a.uw.a;
+import com.tencent.mm.f.a.uz;
+import com.tencent.mm.ipcinvoker.s;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.plugin.webview.c.h;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -24,9 +25,9 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.o.f;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.q.g;
 import com.tencent.mm.ui.widget.a.e;
 import com.tencent.mm.ui.widget.a.e.b;
 import java.io.ByteArrayOutputStream;
@@ -38,8 +39,8 @@ public class bk
 {
   public final void a(final Context paramContext, final String paramString, final br.a parama)
   {
-    AppMethodBeat.i(210964);
-    p.y(new Runnable()
+    AppMethodBeat.i(259491);
+    s.y(new Runnable()
     {
       /* Error */
       public final void run()
@@ -50,7 +51,7 @@ public class bk
         //   5: new 53	org/json/JSONObject
         //   8: dup
         //   9: aload_0
-        //   10: getfield 31	com/tencent/mm/plugin/webview/luggage/jsapi/bk$1:lxA	Ljava/lang/String;
+        //   10: getfield 31	com/tencent/mm/plugin/webview/luggage/jsapi/bk$1:osn	Ljava/lang/String;
         //   13: invokespecial 56	org/json/JSONObject:<init>	(Ljava/lang/String;)V
         //   16: astore_3
         //   17: aload_3
@@ -81,7 +82,7 @@ public class bk
         //   64: dup
         //   65: aload_0
         //   66: invokespecial 84	com/tencent/mm/plugin/webview/luggage/jsapi/bk$1$1:<init>	(Lcom/tencent/mm/plugin/webview/luggage/jsapi/bk$1;)V
-        //   69: putfield 88	com/tencent/mm/ui/widget/a/e:HLX	Lcom/tencent/mm/ui/base/o$f;
+        //   69: putfield 88	com/tencent/mm/ui/widget/a/e:ODT	Lcom/tencent/mm/ui/base/q$f;
         //   72: aload_2
         //   73: new 15	com/tencent/mm/plugin/webview/luggage/jsapi/bk$1$2
         //   76: dup
@@ -90,16 +91,16 @@ public class bk
         //   79: aload_1
         //   80: aload_2
         //   81: invokespecial 91	com/tencent/mm/plugin/webview/luggage/jsapi/bk$1$2:<init>	(Lcom/tencent/mm/plugin/webview/luggage/jsapi/bk$1;Lorg/json/JSONObject;Ljava/lang/String;Lcom/tencent/mm/ui/widget/a/e;)V
-        //   84: putfield 95	com/tencent/mm/ui/widget/a/e:HLY	Lcom/tencent/mm/ui/base/o$g;
+        //   84: putfield 95	com/tencent/mm/ui/widget/a/e:ODU	Lcom/tencent/mm/ui/base/q$g;
         //   87: aload_2
         //   88: new 17	com/tencent/mm/plugin/webview/luggage/jsapi/bk$1$3
         //   91: dup
         //   92: aload_0
         //   93: aload_1
         //   94: invokespecial 98	com/tencent/mm/plugin/webview/luggage/jsapi/bk$1$3:<init>	(Lcom/tencent/mm/plugin/webview/luggage/jsapi/bk$1;Ljava/lang/String;)V
-        //   97: putfield 102	com/tencent/mm/ui/widget/a/e:PGl	Lcom/tencent/mm/ui/widget/a/e$b;
+        //   97: putfield 102	com/tencent/mm/ui/widget/a/e:XbB	Lcom/tencent/mm/ui/widget/a/e$b;
         //   100: aload_2
-        //   101: invokevirtual 105	com/tencent/mm/ui/widget/a/e:dGm	()V
+        //   101: invokevirtual 105	com/tencent/mm/ui/widget/a/e:eik	()V
         //   104: ldc 45
         //   106: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   109: return
@@ -111,7 +112,7 @@ public class bk
         //   117: anewarray 4	java/lang/Object
         //   120: invokestatic 116	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
         //   123: aload_0
-        //   124: getfield 33	com/tencent/mm/plugin/webview/luggage/jsapi/bk$1:xwB	Lcom/tencent/mm/plugin/webview/luggage/jsapi/br$a;
+        //   124: getfield 33	com/tencent/mm/plugin/webview/luggage/jsapi/bk$1:CAJ	Lcom/tencent/mm/plugin/webview/luggage/jsapi/br$a;
         //   127: aconst_null
         //   128: aconst_null
         //   129: invokevirtual 121	com/tencent/mm/plugin/webview/luggage/jsapi/br$a:i	(Ljava/lang/String;Lorg/json/JSONObject;)V
@@ -138,12 +139,12 @@ public class bk
         //   35	46	138	java/io/UnsupportedEncodingException
       }
     });
-    AppMethodBeat.o(210964);
+    AppMethodBeat.o(259491);
   }
   
   public final void b(b<com.tencent.mm.plugin.webview.luggage.g>.a paramb) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 2;
   }

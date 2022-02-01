@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.chatroom.ui.a.e;
+import com.tencent.mm.chatroom.ui.a.f;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class SignaturePreference
@@ -19,7 +21,7 @@ public class SignaturePreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(13016);
-    setLayoutResource(2131495538);
+    setLayoutResource(a.f.mm_preference);
     AppMethodBeat.o(13016);
   }
   
@@ -27,10 +29,10 @@ public class SignaturePreference
   {
     AppMethodBeat.i(13017);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.e.content);
     localViewGroup.removeAllViews();
     localViewGroup.setPadding(0, 0, 0, 0);
-    View.inflate(this.mContext, 2131495582, localViewGroup);
+    View.inflate(this.mContext, a.f.jef, localViewGroup);
     AppMethodBeat.o(13017);
     return paramViewGroup;
   }

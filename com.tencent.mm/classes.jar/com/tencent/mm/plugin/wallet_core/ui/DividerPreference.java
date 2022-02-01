@@ -6,16 +6,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class DividerPreference
   extends Preference
 {
-  private boolean AQN;
-  private boolean AQO;
+  private boolean GJY;
+  private boolean GJZ;
   private View mView;
-  private boolean oAJ;
+  private boolean rDs;
   
   public DividerPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,14 +29,14 @@ public class DividerPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(70645);
     this.mView = null;
-    this.AQN = false;
-    this.AQO = false;
-    this.oAJ = true;
-    setLayoutResource(2131493851);
+    this.GJY = false;
+    this.GJZ = false;
+    this.rDs = true;
+    setLayoutResource(a.g.divider_pref);
     AppMethodBeat.o(70645);
   }
   
-  public final View getView(View paramView, ViewGroup paramViewGroup)
+  public final View c(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(70646);
     if (this.mView == null) {
@@ -50,18 +52,18 @@ public class DividerPreference
   {
     AppMethodBeat.i(70647);
     super.onBindView(paramView);
-    paramView = paramView.findViewById(2131299710);
+    paramView = paramView.findViewById(a.f.divider_pref_line);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
     int i = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 10.0F);
-    if (this.AQN) {}
+    if (this.GJY) {}
     for (int j = i;; j = 0)
     {
-      if (this.AQO) {}
+      if (this.GJZ) {}
       for (;;)
       {
         localLayoutParams.setMargins(0, j, 0, i);
         paramView.setLayoutParams(localLayoutParams);
-        if (!this.oAJ)
+        if (!this.rDs)
         {
           paramView.setVisibility(4);
           AppMethodBeat.o(70647);

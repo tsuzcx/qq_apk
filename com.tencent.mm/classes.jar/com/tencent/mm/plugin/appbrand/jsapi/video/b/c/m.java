@@ -8,9 +8,8 @@ import com.tencent.mm.plugin.appbrand.jsapi.video.b.a.i;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.b.l.b;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.b.l.c;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.e.l;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -31,73 +30,73 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class m
 {
-  private static AtomicInteger myV;
-  private static AtomicInteger myW;
-  private volatile boolean aFC;
+  private static AtomicInteger pxp;
+  private static AtomicInteger pxq;
+  private ServerSocket aFm;
+  private Thread aFn;
   private final ExecutorService executorService;
-  private int lkD;
-  com.tencent.mm.plugin.appbrand.jsapi.video.b.a.a mxs;
-  private int myT;
-  private boolean myU;
-  private final p myX;
-  private Map<String, d> myY;
-  private ConcurrentHashMap<String, e> myZ;
-  private Map<String, h> mza;
-  private Map<String, h> mzb;
-  private Map<String, h> mzc;
-  private ServerSocket serverSocket;
-  private Thread waitConnectionThread;
+  private int ofp;
+  com.tencent.mm.plugin.appbrand.jsapi.video.b.a.a pvM;
+  private int pxn;
+  private boolean pxo;
+  private volatile boolean pxr;
+  private final p pxs;
+  private Map<String, d> pxt;
+  private ConcurrentHashMap<String, e> pxu;
+  private Map<String, h> pxv;
+  private Map<String, h> pxw;
+  private Map<String, h> pxx;
   
   static
   {
-    AppMethodBeat.i(234815);
-    myV = new AtomicInteger(10000);
-    myW = new AtomicInteger(10000);
-    AppMethodBeat.o(234815);
+    AppMethodBeat.i(228356);
+    pxp = new AtomicInteger(10000);
+    pxq = new AtomicInteger(10000);
+    AppMethodBeat.o(228356);
   }
   
   public m()
   {
-    AppMethodBeat.i(234805);
-    this.myT = 0;
-    this.myU = true;
-    this.myY = new HashMap();
-    this.myZ = new ConcurrentHashMap(8, 0.75F, 2);
-    this.mza = new ConcurrentHashMap();
-    this.mzb = new ConcurrentHashMap();
-    this.mzc = new ConcurrentHashMap();
-    Object localObject1 = com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bJK().getCacheDir();
-    com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(4, "VideoProxy", "initCache, cache dir:" + com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bJK().getCacheDir());
+    AppMethodBeat.i(228221);
+    this.pxn = 0;
+    this.pxo = true;
+    this.pxt = new HashMap();
+    this.pxu = new ConcurrentHashMap(8, 0.75F, 2);
+    this.pxv = new ConcurrentHashMap();
+    this.pxw = new ConcurrentHashMap();
+    this.pxx = new ConcurrentHashMap();
+    Object localObject1 = com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().getCacheDir();
+    com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(4, "VideoProxy", "initCache, cache dir:" + com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().getCacheDir());
     Object localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      this.mxs = null;
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bJK().mxp.xw(-1);
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bJK().mxa.xw(-1);
+      this.pvM = null;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvJ.AT(-1);
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvu.AT(-1);
       localObject2 = new StringBuilder("initCache, cache:");
-      if (this.mxs != null) {
+      if (this.pvM != null) {
         break label429;
       }
     }
     label429:
-    for (localObject1 = "null";; localObject1 = this.mxs)
+    for (localObject1 = "null";; localObject1 = this.pvM)
     {
       com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(4, "VideoProxy", localObject1);
-      this.myX = new p();
+      this.pxs = new p();
       this.executorService = new com.tencent.mm.plugin.appbrand.jsapi.video.b.e.m.b(TimeUnit.MILLISECONDS, new LinkedBlockingQueue());
       try
       {
         localObject1 = InetAddress.getByName("0.0.0.0");
-        this.serverSocket = new ServerSocket(com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.bKd(), 10, (InetAddress)localObject1);
-        this.lkD = this.serverSocket.getLocalPort();
+        this.aFm = new ServerSocket(com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.bVN(), 10, (InetAddress)localObject1);
+        this.ofp = this.aFm.getLocalPort();
         localObject1 = new CountDownLatch(1);
-        this.waitConnectionThread = new Thread(new c((CountDownLatch)localObject1), "video_proxy_wait_for_connection_thread");
-        this.waitConnectionThread.start();
+        this.aFn = new Thread(new c((CountDownLatch)localObject1), "video_proxy_wait_for_connection_thread");
+        this.aFn.start();
         ((CountDownLatch)localObject1).await();
-        com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(4, "VideoProxy", "proxy server start success, port:" + this.lkD);
-        com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bJK().mxp.xw(0);
-        com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bJK().mxa.xw(0);
-        AppMethodBeat.o(234805);
+        com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(4, "VideoProxy", "proxy server start success, port:" + this.ofp);
+        com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvJ.AT(0);
+        com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvu.AT(0);
+        AppMethodBeat.o(228221);
         return;
       }
       catch (InterruptedException localInterruptedException)
@@ -105,9 +104,9 @@ public final class m
         final long l;
         this.executorService.shutdown();
         com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(6, "VideoProxy", "proxy server start failed " + com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.i(localInterruptedException));
-        com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bJK().mxp.xw(-2);
-        com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bJK().mxa.xw(-2);
-        AppMethodBeat.o(234805);
+        com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvJ.AT(-2);
+        com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvu.AT(-2);
+        AppMethodBeat.o(228221);
         return;
       }
       catch (IllegalStateException localIllegalStateException)
@@ -118,19 +117,19 @@ public final class m
       {
         break label438;
       }
-      l = Math.min(com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.abi((String)localObject1), com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bJK().mxl);
+      l = Math.min(com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.ajc((String)localObject1), com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvF);
       com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(4, "VideoProxy", "initCache, cache availableSpace=".concat(String.valueOf(l)));
       localObject2 = new com.tencent.mm.plugin.appbrand.jsapi.video.b.a.h(l);
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.e.m.a(new Runnable()
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.e.m.c(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(234801);
+          AppMethodBeat.i(229166);
           long l1 = 0L;
           long l3 = System.currentTimeMillis();
           try
           {
-            long l2 = com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.abj(this.mzd);
+            long l2 = com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.ajd(this.pxy);
             l1 = l2;
           }
           catch (OutOfMemoryError localOutOfMemoryError)
@@ -140,72 +139,72 @@ public final class m
               com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(5, "VideoProxy", "initCache, calculate cacheSize OOM usedSpace set to 0");
             }
           }
-          l1 = Math.min(l1 + l, com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bJK().mxl);
-          this.mzf.bGC = l1;
+          l1 = Math.min(l1 + l, com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvF);
+          this.pxA.bqg = l1;
           com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(4, "VideoProxy", "initCache, update cacheSize=" + l1 + ", timeCost=" + (System.currentTimeMillis() - l3));
-          AppMethodBeat.o(234801);
+          AppMethodBeat.o(229166);
         }
       }, "VideoProxy");
-      this.mxs = new i(new o((String)localObject1), (com.tencent.mm.plugin.appbrand.jsapi.video.b.a.d)localObject2);
+      this.pvM = new i(new q((String)localObject1), (com.tencent.mm.plugin.appbrand.jsapi.video.b.a.d)localObject2);
       break;
     }
   }
   
   private a a(com.tencent.mm.plugin.appbrand.jsapi.video.b.b.e parame, com.tencent.mm.plugin.appbrand.jsapi.video.b.b.g paramg, String paramString1, String paramString2, n paramn, Socket paramSocket, String paramString3)
   {
-    AppMethodBeat.i(234809);
+    AppMethodBeat.i(228260);
     locala = new a((byte)0);
-    locala.mzh = 0L;
+    locala.pxC = 0L;
     com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(4, paramString2, "openDataSource, dataSpec=" + paramg.toString());
-    if (!com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.aaW(paramString1)) {
+    if (!com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.aiP(paramString1)) {
       parame.a(paramg);
     }
     for (;;)
     {
-      AppMethodBeat.o(234809);
+      AppMethodBeat.o(228260);
       return locala;
-      o localo = null;
+      q localq = null;
       try
       {
-        if (com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bJK().mxr != null) {
-          localo = com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bJK().mxr.dU(paramString1);
+        if (com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvL != null) {
+          localq = com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvL.ev(paramString1);
         }
-        if ((localo != null) && (localo.exists())) {}
-        for (locala.mzj = localo;; locala.mzj = a(parame, paramg, paramString1, paramn))
+        if ((localq != null) && (localq.ifE())) {}
+        for (locala.pxE = localq;; locala.pxE = a(parame, paramg, paramString1, paramn))
         {
-          if (locala.mzj == null) {
-            break label503;
+          if (locala.pxE == null) {
+            break label500;
           }
-          com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(4, paramString2, "openDataSource, localPlaylist generate success:" + locala.mzj.toString());
+          com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(4, paramString2, "openDataSource, localPlaylist generate success:" + locala.pxE.toString());
           parame = new com.tencent.mm.plugin.appbrand.jsapi.video.b.b.k()
           {
-            public final c bJP()
+            public final c bVy()
             {
-              AppMethodBeat.i(234802);
-              c localc = c.abd(com.tencent.mm.plugin.appbrand.jsapi.video.b.e.c.mzM);
-              AppMethodBeat.o(234802);
+              AppMethodBeat.i(229075);
+              c localc = c.aiX(com.tencent.mm.plugin.appbrand.jsapi.video.b.e.c.pyh);
+              AppMethodBeat.o(229075);
               return localc;
             }
           };
-          parame.a(new com.tencent.mm.plugin.appbrand.jsapi.video.b.b.g(Uri.fromFile(new File(s.k(aa.z(locala.mzj.mUri), false))), paramg.bEP, paramg.position, paramg.length, paramg.key, paramg.flags, paramg.uuid, paramg.priority));
-          locala.mzi = parame;
+          parame.a(new com.tencent.mm.plugin.appbrand.jsapi.video.b.b.g(Uri.fromFile(new File(u.n(locala.pxE.getPath(), false))), paramg.bos, paramg.position, paramg.aFL, paramg.key, paramg.flags, paramg.uuid, paramg.priority));
+          locala.pxD = parame;
           break;
         }
         try
         {
           int j;
           int i;
-          label503:
+          label500:
           paramSocket.close();
-          this.myX.a(paramn);
-          if (paramn.xB(2))
+          this.pxs.a(paramn);
+          if (paramn.AY(2))
           {
-            paramn.xA(256);
+            paramn.AX(256);
             com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(4, paramString2, "openDataSource, videoRequest is interrupted:".concat(String.valueOf(paramn)));
-            paramn.bJW();
-            paramn.ifP = true;
-            locala.ZB = true;
-            AppMethodBeat.o(234809);
+            paramn.bVG();
+            paramn.kUD = true;
+            locala.gY = true;
+            AppMethodBeat.o(228260);
             return locala;
           }
         }
@@ -215,14 +214,14 @@ public final class m
           {
             com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.a(6, paramString2, "openDataSource, socket close exception", parame);
             continue;
-            paramn.xA(257);
+            paramn.AX(257);
           }
         }
       }
       catch (g parame)
       {
         j = 0;
-        com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(6, "VideoProxy/" + paramn.mzr, "openDataSource, localPlaylist generate livePlayListException ".concat(String.valueOf(parame)));
+        com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(6, "VideoProxy/" + paramn.pxM, "openDataSource, localPlaylist generate livePlayListException ".concat(String.valueOf(parame)));
         if (parame.getCause() != null)
         {
           i = j;
@@ -238,8 +237,8 @@ public final class m
         {
           if ((paramn.priority == 90) && (i != 0))
           {
-            locala.mzh = com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.G(i, -99999L);
-            if ((d)this.myY.get(paramString3) != null)
+            locala.pxC = com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.H(i, -99999L);
+            if ((d)this.pxt.get(paramString3) != null)
             {
               System.currentTimeMillis();
               new HashMap();
@@ -248,15 +247,15 @@ public final class m
           try
           {
             paramSocket.close();
-            this.myX.a(paramn);
-            if (paramn.xB(2))
+            this.pxs.a(paramn);
+            if (paramn.AY(2))
             {
-              paramn.xA(256);
+              paramn.AX(256);
               com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(4, paramString2, "openDataSource, videoRequest is interrupted:".concat(String.valueOf(paramn)));
-              paramn.bJW();
-              paramn.ifP = true;
-              locala.ZB = true;
-              AppMethodBeat.o(234809);
+              paramn.bVG();
+              paramn.kUD = true;
+              locala.gY = true;
+              AppMethodBeat.o(228260);
               return locala;
               i = 16;
             }
@@ -267,14 +266,14 @@ public final class m
             {
               com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.a(6, paramString2, "openDataSource, socket close exception", parame);
               continue;
-              paramn.xA(257);
+              paramn.AX(257);
             }
           }
         }
         if (paramn.priority == 90)
         {
-          locala.mzh = com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.G(18L, -99999L);
-          if ((d)this.myY.get(paramString3) != null)
+          locala.pxC = com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.H(18L, -99999L);
+          if ((d)this.pxt.get(paramString3) != null)
           {
             new HashMap();
             System.currentTimeMillis();
@@ -286,69 +285,69 @@ public final class m
   }
   
   /* Error */
-  private o a(com.tencent.mm.plugin.appbrand.jsapi.video.b.b.e parame, com.tencent.mm.plugin.appbrand.jsapi.video.b.b.g paramg, String paramString, n paramn)
+  private q a(com.tencent.mm.plugin.appbrand.jsapi.video.b.b.e parame, com.tencent.mm.plugin.appbrand.jsapi.video.b.b.g paramg, String paramString, n paramn)
   {
     // Byte code:
-    //   0: ldc_w 475
+    //   0: ldc_w 468
     //   3: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: new 115	java/lang/StringBuilder
     //   9: dup
-    //   10: ldc_w 399
+    //   10: ldc_w 392
     //   13: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   16: aload 4
-    //   18: getfield 404	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:mzr	I
+    //   18: getfield 397	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:pxM	I
     //   21: invokevirtual 235	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   24: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   27: astore 23
-    //   29: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bJK	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
-    //   32: invokevirtual 478	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bJL	()Ljava/lang/String;
+    //   29: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bVt	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
+    //   32: invokevirtual 471	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bVu	()Ljava/lang/String;
     //   35: astore 17
     //   37: aload 17
     //   39: ifnonnull +21 -> 60
     //   42: bipush 6
     //   44: aload 23
-    //   46: ldc_w 480
+    //   46: ldc_w 473
     //   49: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   52: ldc_w 475
+    //   52: ldc_w 468
     //   55: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   58: aconst_null
     //   59: areturn
-    //   60: new 278	com/tencent/mm/vfs/o
+    //   60: new 278	com/tencent/mm/vfs/q
     //   63: dup
     //   64: aload 17
-    //   66: invokespecial 279	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   66: invokespecial 279	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   69: astore 18
     //   71: aload 18
-    //   73: invokevirtual 330	com/tencent/mm/vfs/o:exists	()Z
+    //   73: invokevirtual 330	com/tencent/mm/vfs/q:ifE	()Z
     //   76: ifne +9 -> 85
     //   79: aload 18
-    //   81: invokevirtual 483	com/tencent/mm/vfs/o:mkdirs	()Z
+    //   81: invokevirtual 476	com/tencent/mm/vfs/q:ifL	()Z
     //   84: pop
-    //   85: new 278	com/tencent/mm/vfs/o
+    //   85: new 278	com/tencent/mm/vfs/q
     //   88: dup
     //   89: new 115	java/lang/StringBuilder
     //   92: dup
-    //   93: invokespecial 484	java/lang/StringBuilder:<init>	()V
+    //   93: invokespecial 477	java/lang/StringBuilder:<init>	()V
     //   96: aload 17
     //   98: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   101: ldc_w 486
+    //   101: ldc_w 479
     //   104: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   107: invokestatic 437	java/lang/System:currentTimeMillis	()J
-    //   110: getstatic 64	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:myW	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   113: invokevirtual 489	java/util/concurrent/atomic/AtomicInteger:incrementAndGet	()I
+    //   107: invokestatic 430	java/lang/System:currentTimeMillis	()J
+    //   110: getstatic 64	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:pxq	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   113: invokevirtual 482	java/util/concurrent/atomic/AtomicInteger:incrementAndGet	()I
     //   116: i2l
     //   117: ladd
-    //   118: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   121: ldc_w 494
+    //   118: invokevirtual 485	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   121: ldc_w 487
     //   124: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   127: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   130: invokespecial 279	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   130: invokespecial 279	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   133: astore 24
     //   135: iconst_4
     //   136: aload 23
-    //   138: ldc_w 496
+    //   138: ldc_w 489
     //   141: aload 24
-    //   143: invokestatic 409	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   143: invokestatic 402	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   146: invokevirtual 261	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   149: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   152: iconst_0
@@ -362,54 +361,54 @@ public final class m
     //   164: aconst_null
     //   165: astore 17
     //   167: aload 4
-    //   169: getfield 418	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
+    //   169: getfield 411	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
     //   172: bipush 10
     //   174: if_icmpne +3624 -> 3798
     //   177: iconst_1
     //   178: istore 5
     //   180: aload 4
-    //   182: getfield 497	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
+    //   182: getfield 490	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
     //   185: astore 25
     //   187: aconst_null
     //   188: astore 18
     //   190: aload 4
-    //   192: getfield 418	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
+    //   192: getfield 411	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
     //   195: bipush 10
     //   197: if_icmpne +3607 -> 3804
     //   200: iconst_1
     //   201: istore 13
     //   203: iconst_4
     //   204: aload 23
-    //   206: ldc_w 499
+    //   206: ldc_w 492
     //   209: iload 13
-    //   211: invokestatic 502	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   211: invokestatic 495	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   214: invokevirtual 261	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   217: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   220: aload 4
     //   222: aload 4
-    //   224: getfield 505	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:mzs	I
+    //   224: getfield 498	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:pxN	I
     //   227: iconst_5
     //   228: ior
-    //   229: putfield 505	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:mzs	I
-    //   232: ldc_w 507
+    //   229: putfield 498	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:pxN	I
+    //   232: ldc_w 500
     //   235: bipush 34
-    //   237: invokestatic 513	java/util/regex/Pattern:compile	(Ljava/lang/String;I)Ljava/util/regex/Pattern;
+    //   237: invokestatic 506	java/util/regex/Pattern:compile	(Ljava/lang/String;I)Ljava/util/regex/Pattern;
     //   240: astore 26
     //   242: aload_1
     //   243: aload_2
     //   244: invokeinterface 316 2 0
     //   249: pop2
-    //   250: new 515	java/io/BufferedReader
+    //   250: new 508	java/io/BufferedReader
     //   253: dup
-    //   254: new 517	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/f
+    //   254: new 510	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/f
     //   257: dup
     //   258: aload_1
-    //   259: ldc_w 519
-    //   262: invokespecial 522	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/f:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/e;Ljava/lang/String;)V
-    //   265: invokespecial 525	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   259: ldc_w 512
+    //   262: invokespecial 515	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/f:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/e;Ljava/lang/String;)V
+    //   265: invokespecial 518	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   268: astore_2
     //   269: aload 24
-    //   271: invokestatic 529	com/tencent/mm/vfs/s:ap	(Lcom/tencent/mm/vfs/o;)Ljava/io/OutputStream;
+    //   271: invokestatic 522	com/tencent/mm/vfs/u:an	(Lcom/tencent/mm/vfs/q;)Ljava/io/OutputStream;
     //   274: astore_1
     //   275: aload_1
     //   276: astore 17
@@ -419,7 +418,7 @@ public final class m
     //   283: astore 20
     //   285: new 115	java/lang/StringBuilder
     //   288: dup
-    //   289: invokespecial 484	java/lang/StringBuilder:<init>	()V
+    //   289: invokespecial 477	java/lang/StringBuilder:<init>	()V
     //   292: astore 27
     //   294: iconst_0
     //   295: istore 8
@@ -429,7 +428,7 @@ public final class m
     //   302: astore 20
     //   304: iconst_4
     //   305: aload 23
-    //   307: ldc_w 531
+    //   307: ldc_w 524
     //   310: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   313: aload 18
     //   315: astore_1
@@ -441,7 +440,7 @@ public final class m
     //   325: astore 19
     //   327: aload 17
     //   329: astore 20
-    //   331: invokestatic 534	java/lang/Thread:interrupted	()Z
+    //   331: invokestatic 527	java/lang/Thread:interrupted	()Z
     //   334: ifne +3476 -> 3810
     //   337: iconst_1
     //   338: istore 11
@@ -453,14 +452,14 @@ public final class m
     //   350: astore 20
     //   352: aload 4
     //   354: iconst_1
-    //   355: invokevirtual 449	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:xB	(I)Z
+    //   355: invokevirtual 442	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:AY	(I)Z
     //   358: ifne +1671 -> 2029
     //   361: aload_2
     //   362: astore 19
     //   364: aload 17
     //   366: astore 20
     //   368: aload_2
-    //   369: invokevirtual 537	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   369: invokevirtual 530	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   372: astore 28
     //   374: aload 28
     //   376: ifnull +1653 -> 2029
@@ -477,55 +476,55 @@ public final class m
     //   397: aload 17
     //   399: astore 20
     //   401: aload 28
-    //   403: ldc_w 539
-    //   406: invokevirtual 542	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   403: ldc_w 532
+    //   406: invokevirtual 535	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   409: ifeq +1367 -> 1776
     //   412: aload_2
     //   413: astore 19
     //   415: aload 17
     //   417: astore 20
     //   419: aload 28
-    //   421: invokevirtual 545	java/lang/String:toUpperCase	()Ljava/lang/String;
-    //   424: ldc_w 547
-    //   427: invokevirtual 551	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   421: invokevirtual 538	java/lang/String:toUpperCase	()Ljava/lang/String;
+    //   424: ldc_w 540
+    //   427: invokevirtual 544	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   430: ifeq +3323 -> 3753
     //   433: aload_2
     //   434: astore 19
     //   436: aload 17
     //   438: astore 20
     //   440: aload_0
-    //   441: getfield 97	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:mza	Ljava/util/Map;
+    //   441: getfield 97	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:pxv	Ljava/util/Map;
     //   444: aload 25
-    //   446: invokeinterface 554 2 0
+    //   446: invokeinterface 547 2 0
     //   451: ifne +3302 -> 3753
     //   454: aload_2
     //   455: astore 19
     //   457: aload 17
     //   459: astore 20
-    //   461: new 556	java/util/ArrayList
+    //   461: new 549	java/util/ArrayList
     //   464: dup
-    //   465: invokespecial 557	java/util/ArrayList:<init>	()V
+    //   465: invokespecial 550	java/util/ArrayList:<init>	()V
     //   468: astore 18
     //   470: aload_2
     //   471: astore 19
     //   473: aload 17
     //   475: astore 20
     //   477: aload_0
-    //   478: getfield 97	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:mza	Ljava/util/Map;
+    //   478: getfield 97	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:pxv	Ljava/util/Map;
     //   481: aload 25
-    //   483: new 559	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h
+    //   483: new 552	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h
     //   486: dup
-    //   487: invokespecial 560	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h:<init>	()V
-    //   490: invokeinterface 564 3 0
+    //   487: invokespecial 553	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h:<init>	()V
+    //   490: invokeinterface 557 3 0
     //   495: pop
     //   496: aload_2
     //   497: astore 19
     //   499: aload 17
     //   501: astore 20
     //   503: aload 28
-    //   505: invokevirtual 545	java/lang/String:toUpperCase	()Ljava/lang/String;
-    //   508: ldc_w 566
-    //   511: invokevirtual 542	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   505: invokevirtual 538	java/lang/String:toUpperCase	()Ljava/lang/String;
+    //   508: ldc_w 559
+    //   511: invokevirtual 535	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   514: ifeq +3224 -> 3738
     //   517: iload 8
     //   519: ifne +37 -> 556
@@ -535,15 +534,15 @@ public final class m
     //   527: astore 20
     //   529: iconst_4
     //   530: aload 23
-    //   532: ldc_w 568
+    //   532: ldc_w 561
     //   535: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   538: aload_2
     //   539: astore 19
     //   541: aload 17
     //   543: astore 20
-    //   545: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bJK	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
-    //   548: getfield 145	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:mxp	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/d/a;
-    //   551: invokeinterface 571 1 0
+    //   545: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bVt	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
+    //   548: getfield 145	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:pvJ	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/d/a;
+    //   551: invokeinterface 564 1 0
     //   556: iconst_1
     //   557: istore 11
     //   559: iconst_0
@@ -554,10 +553,10 @@ public final class m
     //   567: astore 20
     //   569: aload 4
     //   571: aload 4
-    //   573: getfield 505	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:mzs	I
+    //   573: getfield 498	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:pxN	I
     //   576: bipush 251
     //   578: iand
-    //   579: putfield 505	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:mzs	I
+    //   579: putfield 498	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:pxN	I
     //   582: iconst_1
     //   583: istore 7
     //   585: aload_2
@@ -565,9 +564,9 @@ public final class m
     //   588: aload 17
     //   590: astore 20
     //   592: aload 28
-    //   594: invokevirtual 545	java/lang/String:toUpperCase	()Ljava/lang/String;
-    //   597: ldc_w 573
-    //   600: invokevirtual 542	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   594: invokevirtual 538	java/lang/String:toUpperCase	()Ljava/lang/String;
+    //   597: ldc_w 566
+    //   600: invokevirtual 535	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   603: ifeq +29 -> 632
     //   606: iconst_1
     //   607: istore 11
@@ -579,41 +578,41 @@ public final class m
     //   617: astore 20
     //   619: aload 4
     //   621: aload 4
-    //   623: getfield 505	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:mzs	I
+    //   623: getfield 498	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:pxN	I
     //   626: bipush 251
     //   628: iand
-    //   629: putfield 505	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:mzs	I
+    //   629: putfield 498	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:pxN	I
     //   632: aload_2
     //   633: astore 19
     //   635: aload 17
     //   637: astore 20
     //   639: aload 28
-    //   641: invokevirtual 545	java/lang/String:toUpperCase	()Ljava/lang/String;
-    //   644: ldc_w 575
-    //   647: invokevirtual 542	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   641: invokevirtual 538	java/lang/String:toUpperCase	()Ljava/lang/String;
+    //   644: ldc_w 568
+    //   647: invokevirtual 535	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   650: ifeq +3085 -> 3735
     //   653: aload_2
     //   654: astore 19
     //   656: aload 17
     //   658: astore 20
     //   660: aload 28
-    //   662: invokestatic 579	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:abo	(Ljava/lang/String;)I
+    //   662: invokestatic 572	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:aji	(Ljava/lang/String;)I
     //   665: istore 5
     //   667: aload_2
     //   668: astore 19
     //   670: aload 17
     //   672: astore 20
     //   674: aload 28
-    //   676: invokevirtual 545	java/lang/String:toUpperCase	()Ljava/lang/String;
-    //   679: ldc_w 581
-    //   682: invokevirtual 542	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   676: invokevirtual 538	java/lang/String:toUpperCase	()Ljava/lang/String;
+    //   679: ldc_w 574
+    //   682: invokevirtual 535	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   685: ifeq +3047 -> 3732
     //   688: aload_2
     //   689: astore 19
     //   691: aload 17
     //   693: astore 20
     //   695: aload 28
-    //   697: invokestatic 579	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:abo	(Ljava/lang/String;)I
+    //   697: invokestatic 572	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:aji	(Ljava/lang/String;)I
     //   700: istore 6
     //   702: iload 11
     //   704: istore 9
@@ -624,9 +623,9 @@ public final class m
     //   713: aload 17
     //   715: astore 20
     //   717: aload 28
-    //   719: invokevirtual 545	java/lang/String:toUpperCase	()Ljava/lang/String;
-    //   722: ldc_w 583
-    //   725: invokevirtual 542	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   719: invokevirtual 538	java/lang/String:toUpperCase	()Ljava/lang/String;
+    //   722: ldc_w 576
+    //   725: invokevirtual 535	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   728: ifeq +61 -> 789
     //   731: iload 11
     //   733: istore 9
@@ -637,10 +636,10 @@ public final class m
     //   742: aload 17
     //   744: astore 20
     //   746: aload 28
-    //   748: invokestatic 586	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:abn	(Ljava/lang/String;)Ljava/lang/String;
-    //   751: invokevirtual 545	java/lang/String:toUpperCase	()Ljava/lang/String;
-    //   754: ldc_w 588
-    //   757: invokevirtual 551	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   748: invokestatic 579	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:ajh	(Ljava/lang/String;)Ljava/lang/String;
+    //   751: invokevirtual 538	java/lang/String:toUpperCase	()Ljava/lang/String;
+    //   754: ldc_w 581
+    //   757: invokevirtual 544	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   760: ifeq +29 -> 789
     //   763: iconst_1
     //   764: istore 9
@@ -652,18 +651,18 @@ public final class m
     //   774: astore 20
     //   776: aload 4
     //   778: aload 4
-    //   780: getfield 505	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:mzs	I
+    //   780: getfield 498	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:pxN	I
     //   783: bipush 251
     //   785: iand
-    //   786: putfield 505	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:mzs	I
+    //   786: putfield 498	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:pxN	I
     //   789: aload_2
     //   790: astore 19
     //   792: aload 17
     //   794: astore 20
     //   796: aload 28
-    //   798: invokevirtual 545	java/lang/String:toUpperCase	()Ljava/lang/String;
-    //   801: ldc_w 590
-    //   804: invokevirtual 542	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   798: invokevirtual 538	java/lang/String:toUpperCase	()Ljava/lang/String;
+    //   801: ldc_w 583
+    //   804: invokevirtual 535	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   807: ifeq +536 -> 1343
     //   810: aload_2
     //   811: astore 19
@@ -671,21 +670,21 @@ public final class m
     //   815: astore 20
     //   817: aload 26
     //   819: aload 28
-    //   821: invokevirtual 594	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+    //   821: invokevirtual 587	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
     //   824: astore_1
     //   825: aload_2
     //   826: astore 19
     //   828: aload 17
     //   830: astore 20
     //   832: aload_1
-    //   833: invokevirtual 599	java/util/regex/Matcher:matches	()Z
+    //   833: invokevirtual 592	java/util/regex/Matcher:matches	()Z
     //   836: ifeq +449 -> 1285
     //   839: aload_2
     //   840: astore 19
     //   842: aload 17
     //   844: astore 20
     //   846: aload_1
-    //   847: invokevirtual 602	java/util/regex/Matcher:groupCount	()I
+    //   847: invokevirtual 595	java/util/regex/Matcher:groupCount	()I
     //   850: ifle +435 -> 1285
     //   853: aload_2
     //   854: astore 19
@@ -693,7 +692,7 @@ public final class m
     //   858: astore 20
     //   860: aload_1
     //   861: iconst_1
-    //   862: invokevirtual 605	java/util/regex/Matcher:start	(I)I
+    //   862: invokevirtual 598	java/util/regex/Matcher:start	(I)I
     //   865: istore 11
     //   867: aload_2
     //   868: astore 19
@@ -701,7 +700,7 @@ public final class m
     //   872: astore 20
     //   874: aload_1
     //   875: iconst_1
-    //   876: invokevirtual 608	java/util/regex/Matcher:end	(I)I
+    //   876: invokevirtual 601	java/util/regex/Matcher:end	(I)I
     //   879: istore 12
     //   881: aload_2
     //   882: astore 19
@@ -710,7 +709,7 @@ public final class m
     //   888: aload 28
     //   890: iconst_0
     //   891: iload 11
-    //   893: invokevirtual 612	java/lang/String:substring	(II)Ljava/lang/String;
+    //   893: invokevirtual 605	java/lang/String:substring	(II)Ljava/lang/String;
     //   896: astore 22
     //   898: aload_2
     //   899: astore 19
@@ -719,7 +718,7 @@ public final class m
     //   905: aload 28
     //   907: iload 11
     //   909: iload 12
-    //   911: invokevirtual 612	java/lang/String:substring	(II)Ljava/lang/String;
+    //   911: invokevirtual 605	java/lang/String:substring	(II)Ljava/lang/String;
     //   914: astore_1
     //   915: aload_2
     //   916: astore 19
@@ -727,7 +726,7 @@ public final class m
     //   920: astore 20
     //   922: aload 28
     //   924: iload 12
-    //   926: invokevirtual 614	java/lang/String:substring	(I)Ljava/lang/String;
+    //   926: invokevirtual 607	java/lang/String:substring	(I)Ljava/lang/String;
     //   929: astore 29
     //   931: aload_2
     //   932: astore 19
@@ -736,12 +735,12 @@ public final class m
     //   938: aload_0
     //   939: aload_3
     //   940: aload_1
-    //   941: invokestatic 618	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:dR	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   941: invokestatic 611	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:ec	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   944: iconst_0
     //   945: iconst_0
-    //   946: ldc_w 620
+    //   946: ldc_w 613
     //   949: bipush 90
-    //   951: invokevirtual 623	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:a	(Ljava/lang/String;ZZLjava/lang/String;I)Ljava/lang/String;
+    //   951: invokevirtual 616	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:a	(Ljava/lang/String;ZZLjava/lang/String;I)Ljava/lang/String;
     //   954: astore 21
     //   956: aload 21
     //   958: astore_1
@@ -750,7 +749,7 @@ public final class m
     //   962: aload 17
     //   964: astore 20
     //   966: aload 4
-    //   968: getfield 497	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
+    //   968: getfield 490	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
     //   971: ifnull +68 -> 1039
     //   974: aload_2
     //   975: astore 19
@@ -758,13 +757,13 @@ public final class m
     //   979: astore 20
     //   981: new 115	java/lang/StringBuilder
     //   984: dup
-    //   985: invokespecial 484	java/lang/StringBuilder:<init>	()V
+    //   985: invokespecial 477	java/lang/StringBuilder:<init>	()V
     //   988: aload 21
     //   990: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   993: ldc_w 625
+    //   993: ldc_w 618
     //   996: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   999: aload 4
-    //   1001: getfield 497	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
+    //   1001: getfield 490	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
     //   1004: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1007: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1010: astore_1
@@ -774,10 +773,10 @@ public final class m
     //   1016: astore 20
     //   1018: new 115	java/lang/StringBuilder
     //   1021: dup
-    //   1022: invokespecial 484	java/lang/StringBuilder:<init>	()V
+    //   1022: invokespecial 477	java/lang/StringBuilder:<init>	()V
     //   1025: aload_1
     //   1026: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1029: ldc_w 627
+    //   1029: ldc_w 620
     //   1032: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1035: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1038: astore_1
@@ -792,7 +791,7 @@ public final class m
     //   1054: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1057: aload 29
     //   1059: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1062: ldc_w 629
+    //   1062: ldc_w 622
     //   1065: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1068: pop
     //   1069: aconst_null
@@ -816,24 +815,24 @@ public final class m
     //   1102: aload 17
     //   1104: astore 20
     //   1106: aload 28
-    //   1108: ldc_w 539
-    //   1111: invokevirtual 542	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   1108: ldc_w 532
+    //   1111: invokevirtual 535	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   1114: ifne +2645 -> 3759
     //   1117: aload_2
     //   1118: astore 19
     //   1120: aload 17
     //   1122: astore 20
     //   1124: aload 28
-    //   1126: ldc_w 631
-    //   1129: invokevirtual 634	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   1126: ldc_w 624
+    //   1129: invokevirtual 627	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   1132: ifne +21 -> 1153
     //   1135: aload_2
     //   1136: astore 19
     //   1138: aload 17
     //   1140: astore 20
     //   1142: aload 28
-    //   1144: ldc_w 636
-    //   1147: invokevirtual 634	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   1144: ldc_w 629
+    //   1147: invokevirtual 627	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   1150: ifeq +2609 -> 3759
     //   1153: aload 18
     //   1155: ifnull +2607 -> 3762
@@ -855,9 +854,9 @@ public final class m
     //   1187: aload_1
     //   1188: iconst_1
     //   1189: iconst_1
-    //   1190: ldc_w 638
+    //   1190: ldc_w 631
     //   1193: bipush 10
-    //   1195: invokevirtual 623	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:a	(Ljava/lang/String;ZZLjava/lang/String;I)Ljava/lang/String;
+    //   1195: invokevirtual 616	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:a	(Ljava/lang/String;ZZLjava/lang/String;I)Ljava/lang/String;
     //   1198: astore 21
     //   1200: aload_2
     //   1201: astore 19
@@ -865,18 +864,18 @@ public final class m
     //   1205: astore 20
     //   1207: iconst_4
     //   1208: aload 23
-    //   1210: ldc_w 640
+    //   1210: ldc_w 633
     //   1213: aload 21
-    //   1215: invokestatic 409	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   1215: invokestatic 402	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   1218: invokevirtual 261	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   1221: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   1224: aload_2
     //   1225: astore 19
     //   1227: aload 17
     //   1229: astore 20
-    //   1231: new 642	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/i
+    //   1231: new 635	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/i
     //   1234: dup
-    //   1235: invokespecial 643	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/i:<init>	()V
+    //   1235: invokespecial 636	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/i:<init>	()V
     //   1238: astore 22
     //   1240: aload_2
     //   1241: astore 19
@@ -884,21 +883,21 @@ public final class m
     //   1245: astore 20
     //   1247: aload 22
     //   1249: aload 21
-    //   1251: putfield 646	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/i:proxyUrl	Ljava/lang/String;
+    //   1251: putfield 639	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/i:proxyUrl	Ljava/lang/String;
     //   1254: aload_2
     //   1255: astore 19
     //   1257: aload 17
     //   1259: astore 20
     //   1261: aload 22
     //   1263: aload_1
-    //   1264: putfield 649	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/i:myD	Ljava/lang/String;
+    //   1264: putfield 642	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/i:pwX	Ljava/lang/String;
     //   1267: aload_2
     //   1268: astore 19
     //   1270: aload 17
     //   1272: astore 20
     //   1274: aload 18
     //   1276: aload 22
-    //   1278: invokevirtual 652	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   1278: invokevirtual 645	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1281: pop
     //   1282: goto +2480 -> 3762
     //   1285: aload_2
@@ -908,7 +907,7 @@ public final class m
     //   1292: aload 27
     //   1294: aload 28
     //   1296: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1299: ldc_w 629
+    //   1299: ldc_w 622
     //   1302: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1305: pop
     //   1306: aconst_null
@@ -935,9 +934,9 @@ public final class m
     //   1346: aload 17
     //   1348: astore 20
     //   1350: aload 28
-    //   1352: invokevirtual 545	java/lang/String:toUpperCase	()Ljava/lang/String;
-    //   1355: ldc_w 654
-    //   1358: invokevirtual 542	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   1352: invokevirtual 538	java/lang/String:toUpperCase	()Ljava/lang/String;
+    //   1355: ldc_w 647
+    //   1358: invokevirtual 535	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   1361: ifeq +357 -> 1718
     //   1364: aload_2
     //   1365: astore 19
@@ -945,21 +944,21 @@ public final class m
     //   1369: astore 20
     //   1371: aload 26
     //   1373: aload 28
-    //   1375: invokevirtual 594	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+    //   1375: invokevirtual 587	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
     //   1378: astore_1
     //   1379: aload_2
     //   1380: astore 19
     //   1382: aload 17
     //   1384: astore 20
     //   1386: aload_1
-    //   1387: invokevirtual 599	java/util/regex/Matcher:matches	()Z
+    //   1387: invokevirtual 592	java/util/regex/Matcher:matches	()Z
     //   1390: ifeq +270 -> 1660
     //   1393: aload_2
     //   1394: astore 19
     //   1396: aload 17
     //   1398: astore 20
     //   1400: aload_1
-    //   1401: invokevirtual 602	java/util/regex/Matcher:groupCount	()I
+    //   1401: invokevirtual 595	java/util/regex/Matcher:groupCount	()I
     //   1404: ifle +256 -> 1660
     //   1407: aload_2
     //   1408: astore 19
@@ -967,7 +966,7 @@ public final class m
     //   1412: astore 20
     //   1414: aload_1
     //   1415: iconst_1
-    //   1416: invokevirtual 605	java/util/regex/Matcher:start	(I)I
+    //   1416: invokevirtual 598	java/util/regex/Matcher:start	(I)I
     //   1419: istore 11
     //   1421: aload_2
     //   1422: astore 19
@@ -975,7 +974,7 @@ public final class m
     //   1426: astore 20
     //   1428: aload_1
     //   1429: iconst_1
-    //   1430: invokevirtual 608	java/util/regex/Matcher:end	(I)I
+    //   1430: invokevirtual 601	java/util/regex/Matcher:end	(I)I
     //   1433: istore 12
     //   1435: aload_2
     //   1436: astore 19
@@ -984,7 +983,7 @@ public final class m
     //   1442: aload 28
     //   1444: iconst_0
     //   1445: iload 11
-    //   1447: invokevirtual 612	java/lang/String:substring	(II)Ljava/lang/String;
+    //   1447: invokevirtual 605	java/lang/String:substring	(II)Ljava/lang/String;
     //   1450: astore 22
     //   1452: aload_2
     //   1453: astore 19
@@ -993,7 +992,7 @@ public final class m
     //   1459: aload 28
     //   1461: iload 11
     //   1463: iload 12
-    //   1465: invokevirtual 612	java/lang/String:substring	(II)Ljava/lang/String;
+    //   1465: invokevirtual 605	java/lang/String:substring	(II)Ljava/lang/String;
     //   1468: astore_1
     //   1469: aload_2
     //   1470: astore 19
@@ -1001,7 +1000,7 @@ public final class m
     //   1474: astore 20
     //   1476: aload 28
     //   1478: iload 12
-    //   1480: invokevirtual 614	java/lang/String:substring	(I)Ljava/lang/String;
+    //   1480: invokevirtual 607	java/lang/String:substring	(I)Ljava/lang/String;
     //   1483: astore 29
     //   1485: aload_2
     //   1486: astore 19
@@ -1010,12 +1009,12 @@ public final class m
     //   1492: aload_0
     //   1493: aload_3
     //   1494: aload_1
-    //   1495: invokestatic 618	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:dR	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   1495: invokestatic 611	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:ec	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   1498: iconst_0
     //   1499: iconst_0
-    //   1500: ldc_w 638
+    //   1500: ldc_w 631
     //   1503: bipush 90
-    //   1505: invokevirtual 623	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:a	(Ljava/lang/String;ZZLjava/lang/String;I)Ljava/lang/String;
+    //   1505: invokevirtual 616	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:a	(Ljava/lang/String;ZZLjava/lang/String;I)Ljava/lang/String;
     //   1508: astore 21
     //   1510: aload 21
     //   1512: astore_1
@@ -1024,7 +1023,7 @@ public final class m
     //   1516: aload 17
     //   1518: astore 20
     //   1520: aload 4
-    //   1522: getfield 497	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
+    //   1522: getfield 490	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
     //   1525: ifnull +68 -> 1593
     //   1528: aload_2
     //   1529: astore 19
@@ -1032,13 +1031,13 @@ public final class m
     //   1533: astore 20
     //   1535: new 115	java/lang/StringBuilder
     //   1538: dup
-    //   1539: invokespecial 484	java/lang/StringBuilder:<init>	()V
+    //   1539: invokespecial 477	java/lang/StringBuilder:<init>	()V
     //   1542: aload 21
     //   1544: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1547: ldc_w 625
+    //   1547: ldc_w 618
     //   1550: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1553: aload 4
-    //   1555: getfield 497	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
+    //   1555: getfield 490	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
     //   1558: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1561: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1564: astore_1
@@ -1048,10 +1047,10 @@ public final class m
     //   1570: astore 20
     //   1572: new 115	java/lang/StringBuilder
     //   1575: dup
-    //   1576: invokespecial 484	java/lang/StringBuilder:<init>	()V
+    //   1576: invokespecial 477	java/lang/StringBuilder:<init>	()V
     //   1579: aload_1
     //   1580: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1583: ldc_w 656
+    //   1583: ldc_w 649
     //   1586: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1589: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1592: astore_1
@@ -1066,7 +1065,7 @@ public final class m
     //   1608: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1611: aload 29
     //   1613: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1616: ldc_w 629
+    //   1616: ldc_w 622
     //   1619: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1622: pop
     //   1623: aconst_null
@@ -1095,7 +1094,7 @@ public final class m
     //   1667: aload 27
     //   1669: aload 28
     //   1671: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1674: ldc_w 629
+    //   1674: ldc_w 622
     //   1677: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1680: pop
     //   1681: aconst_null
@@ -1124,7 +1123,7 @@ public final class m
     //   1725: aload 27
     //   1727: aload 28
     //   1729: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1732: ldc_w 629
+    //   1732: ldc_w 622
     //   1735: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1738: pop
     //   1739: aconst_null
@@ -1150,9 +1149,9 @@ public final class m
     //   1777: astore 19
     //   1779: aload 17
     //   1781: astore 20
-    //   1783: ldc_w 658
+    //   1783: ldc_w 651
     //   1786: aload 28
-    //   1788: invokevirtual 661	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   1788: invokevirtual 654	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   1791: ifne +181 -> 1972
     //   1794: aload_2
     //   1795: astore 19
@@ -1160,7 +1159,7 @@ public final class m
     //   1799: astore 20
     //   1801: aload_3
     //   1802: aload 28
-    //   1804: invokestatic 618	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:dR	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   1804: invokestatic 611	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:ec	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   1807: astore 21
     //   1809: aload_2
     //   1810: astore 19
@@ -1170,9 +1169,9 @@ public final class m
     //   1817: aload 21
     //   1819: iconst_0
     //   1820: iconst_0
-    //   1821: ldc_w 638
+    //   1821: ldc_w 631
     //   1824: bipush 90
-    //   1826: invokevirtual 623	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:a	(Ljava/lang/String;ZZLjava/lang/String;I)Ljava/lang/String;
+    //   1826: invokevirtual 616	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:a	(Ljava/lang/String;ZZLjava/lang/String;I)Ljava/lang/String;
     //   1829: astore 22
     //   1831: aload 22
     //   1833: astore 18
@@ -1181,7 +1180,7 @@ public final class m
     //   1838: aload 17
     //   1840: astore 20
     //   1842: aload 4
-    //   1844: getfield 497	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
+    //   1844: getfield 490	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
     //   1847: ifnull +71 -> 1918
     //   1850: aload_2
     //   1851: astore 19
@@ -1189,13 +1188,13 @@ public final class m
     //   1855: astore 20
     //   1857: new 115	java/lang/StringBuilder
     //   1860: dup
-    //   1861: invokespecial 484	java/lang/StringBuilder:<init>	()V
+    //   1861: invokespecial 477	java/lang/StringBuilder:<init>	()V
     //   1864: aload 22
     //   1866: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1869: ldc_w 625
+    //   1869: ldc_w 618
     //   1872: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1875: aload 4
-    //   1877: getfield 497	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
+    //   1877: getfield 490	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
     //   1880: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1883: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1886: astore 18
@@ -1205,10 +1204,10 @@ public final class m
     //   1893: astore 20
     //   1895: new 115	java/lang/StringBuilder
     //   1898: dup
-    //   1899: invokespecial 484	java/lang/StringBuilder:<init>	()V
+    //   1899: invokespecial 477	java/lang/StringBuilder:<init>	()V
     //   1902: aload 18
     //   1904: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1907: ldc_w 656
+    //   1907: ldc_w 649
     //   1910: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1913: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1916: astore 18
@@ -1219,7 +1218,7 @@ public final class m
     //   1925: aload 27
     //   1927: aload 18
     //   1929: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1932: ldc_w 629
+    //   1932: ldc_w 622
     //   1935: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1938: pop
     //   1939: aload_1
@@ -1246,7 +1245,7 @@ public final class m
     //   1979: aload 27
     //   1981: aload 28
     //   1983: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1986: ldc_w 629
+    //   1986: ldc_w 622
     //   1989: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1992: pop
     //   1993: aconst_null
@@ -1274,7 +1273,7 @@ public final class m
     //   2034: astore 20
     //   2036: aload 4
     //   2038: iconst_1
-    //   2039: invokevirtual 449	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:xB	(I)Z
+    //   2039: invokevirtual 442	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:AY	(I)Z
     //   2042: ifeq +148 -> 2190
     //   2045: aload_2
     //   2046: astore 19
@@ -1282,14 +1281,14 @@ public final class m
     //   2050: astore 20
     //   2052: new 295	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/g
     //   2055: dup
-    //   2056: ldc_w 663
-    //   2059: invokespecial 664	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/g:<init>	(Ljava/lang/String;)V
+    //   2056: ldc_w 656
+    //   2059: invokespecial 657	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/g:<init>	(Ljava/lang/String;)V
     //   2062: astore_1
     //   2063: aload_2
     //   2064: astore 19
     //   2066: aload 17
     //   2068: astore 20
-    //   2070: ldc_w 475
+    //   2070: ldc_w 468
     //   2073: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   2076: aload_2
     //   2077: astore 19
@@ -1304,43 +1303,43 @@ public final class m
     //   2090: astore_2
     //   2091: aload 4
     //   2093: iconst_1
-    //   2094: invokevirtual 449	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:xB	(I)Z
+    //   2094: invokevirtual 442	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:AY	(I)Z
     //   2097: ifeq +1248 -> 3345
     //   2100: aload 4
-    //   2102: invokevirtual 667	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:bJX	()V
+    //   2102: invokevirtual 660	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:bVH	()V
     //   2105: aload_1
     //   2106: ifnull +7 -> 2113
     //   2109: aload_1
-    //   2110: invokevirtual 668	java/io/BufferedReader:close	()V
+    //   2110: invokevirtual 661	java/io/BufferedReader:close	()V
     //   2113: aload_2
     //   2114: ifnull +7 -> 2121
     //   2117: aload_2
-    //   2118: invokevirtual 671	java/io/OutputStream:close	()V
+    //   2118: invokevirtual 664	java/io/OutputStream:close	()V
     //   2121: aload 24
-    //   2123: invokevirtual 330	com/tencent/mm/vfs/o:exists	()Z
+    //   2123: invokevirtual 330	com/tencent/mm/vfs/q:ifE	()Z
     //   2126: ifeq +56 -> 2182
     //   2129: aload 24
-    //   2131: invokevirtual 674	com/tencent/mm/vfs/o:isFile	()Z
+    //   2131: invokevirtual 667	com/tencent/mm/vfs/q:ifH	()Z
     //   2134: ifeq +48 -> 2182
     //   2137: aload 24
-    //   2139: invokevirtual 677	com/tencent/mm/vfs/o:delete	()Z
+    //   2139: invokevirtual 670	com/tencent/mm/vfs/q:cFq	()Z
     //   2142: istore 14
     //   2144: iconst_4
     //   2145: aload 23
     //   2147: new 115	java/lang/StringBuilder
     //   2150: dup
-    //   2151: ldc_w 679
+    //   2151: ldc_w 672
     //   2154: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   2157: aload 24
-    //   2159: invokevirtual 337	com/tencent/mm/vfs/o:toString	()Ljava/lang/String;
+    //   2159: invokevirtual 337	com/tencent/mm/vfs/q:toString	()Ljava/lang/String;
     //   2162: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2165: ldc_w 681
+    //   2165: ldc_w 674
     //   2168: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2171: iload 14
-    //   2173: invokevirtual 684	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   2173: invokevirtual 677	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   2176: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2179: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   2182: ldc_w 475
+    //   2182: ldc_w 468
     //   2185: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   2188: aconst_null
     //   2189: areturn
@@ -1350,8 +1349,8 @@ public final class m
     //   2195: astore 19
     //   2197: aload 17
     //   2199: astore 20
-    //   2201: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bJK	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
-    //   2204: getfield 687	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:mxf	Z
+    //   2201: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bVt	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
+    //   2204: getfield 680	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:pvz	Z
     //   2207: ifeq +36 -> 2243
     //   2210: aload_2
     //   2211: astore 19
@@ -1359,16 +1358,16 @@ public final class m
     //   2215: astore 20
     //   2217: aload 4
     //   2219: iconst_1
-    //   2220: invokevirtual 449	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:xB	(I)Z
+    //   2220: invokevirtual 442	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:AY	(I)Z
     //   2223: ifne +20 -> 2243
     //   2226: aload_2
     //   2227: astore 19
     //   2229: aload 17
     //   2231: astore 20
-    //   2233: invokestatic 693	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/l:bJT	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/l;
+    //   2233: invokestatic 686	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/l:bVD	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/l;
     //   2236: aload_1
-    //   2237: ldc_w 695
-    //   2240: invokevirtual 698	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/l:b	(Ljava/util/ArrayList;Ljava/lang/String;)V
+    //   2237: ldc_w 688
+    //   2240: invokevirtual 691	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/l:a	(Ljava/util/ArrayList;Ljava/lang/String;)V
     //   2243: iload 9
     //   2245: ifeq +493 -> 2738
     //   2248: aload_2
@@ -1376,38 +1375,38 @@ public final class m
     //   2251: aload 17
     //   2253: astore 20
     //   2255: aload 4
-    //   2257: getfield 497	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
+    //   2257: getfield 490	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
     //   2260: astore_1
     //   2261: aload_2
     //   2262: astore 19
     //   2264: aload 17
     //   2266: astore 20
     //   2268: aload_0
-    //   2269: getfield 99	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:mzb	Ljava/util/Map;
+    //   2269: getfield 99	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:pxw	Ljava/util/Map;
     //   2272: aload_1
-    //   2273: invokeinterface 554 2 0
+    //   2273: invokeinterface 547 2 0
     //   2278: ifne +28 -> 2306
     //   2281: aload_2
     //   2282: astore 19
     //   2284: aload 17
     //   2286: astore 20
     //   2288: aload_0
-    //   2289: getfield 99	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:mzb	Ljava/util/Map;
+    //   2289: getfield 99	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:pxw	Ljava/util/Map;
     //   2292: aload_1
-    //   2293: new 559	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h
+    //   2293: new 552	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h
     //   2296: dup
-    //   2297: invokespecial 560	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h:<init>	()V
-    //   2300: invokeinterface 564 3 0
+    //   2297: invokespecial 553	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h:<init>	()V
+    //   2300: invokeinterface 557 3 0
     //   2305: pop
     //   2306: aload_2
     //   2307: astore 19
     //   2309: aload 17
     //   2311: astore 20
     //   2313: aload_0
-    //   2314: getfield 99	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:mzb	Ljava/util/Map;
+    //   2314: getfield 99	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:pxw	Ljava/util/Map;
     //   2317: aload_1
-    //   2318: invokeinterface 429 2 0
-    //   2323: checkcast 559	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h
+    //   2318: invokeinterface 422 2 0
+    //   2323: checkcast 552	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h
     //   2326: astore_1
     //   2327: iload 5
     //   2329: iconst_m1
@@ -1418,14 +1417,14 @@ public final class m
     //   2338: astore 20
     //   2340: new 295	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/g
     //   2343: dup
-    //   2344: ldc_w 700
-    //   2347: invokespecial 664	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/g:<init>	(Ljava/lang/String;)V
+    //   2344: ldc_w 693
+    //   2347: invokespecial 657	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/g:<init>	(Ljava/lang/String;)V
     //   2350: astore_1
     //   2351: aload_2
     //   2352: astore 19
     //   2354: aload 17
     //   2356: astore 20
-    //   2358: ldc_w 475
+    //   2358: ldc_w 468
     //   2361: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   2364: aload_2
     //   2365: astore 19
@@ -1442,47 +1441,47 @@ public final class m
     //   2381: astore 20
     //   2383: aload 4
     //   2385: iconst_1
-    //   2386: invokevirtual 449	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:xB	(I)Z
+    //   2386: invokevirtual 442	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:AY	(I)Z
     //   2389: ifeq +1074 -> 3463
     //   2392: aload_2
     //   2393: astore 19
     //   2395: aload_3
     //   2396: astore 20
     //   2398: aload 4
-    //   2400: invokevirtual 667	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:bJX	()V
+    //   2400: invokevirtual 660	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:bVH	()V
     //   2403: aload_2
     //   2404: ifnull +7 -> 2411
     //   2407: aload_2
-    //   2408: invokevirtual 668	java/io/BufferedReader:close	()V
+    //   2408: invokevirtual 661	java/io/BufferedReader:close	()V
     //   2411: aload_3
     //   2412: ifnull +7 -> 2419
     //   2415: aload_3
-    //   2416: invokevirtual 671	java/io/OutputStream:close	()V
+    //   2416: invokevirtual 664	java/io/OutputStream:close	()V
     //   2419: aload 24
-    //   2421: invokevirtual 330	com/tencent/mm/vfs/o:exists	()Z
+    //   2421: invokevirtual 330	com/tencent/mm/vfs/q:ifE	()Z
     //   2424: ifeq +56 -> 2480
     //   2427: aload 24
-    //   2429: invokevirtual 674	com/tencent/mm/vfs/o:isFile	()Z
+    //   2429: invokevirtual 667	com/tencent/mm/vfs/q:ifH	()Z
     //   2432: ifeq +48 -> 2480
     //   2435: aload 24
-    //   2437: invokevirtual 677	com/tencent/mm/vfs/o:delete	()Z
+    //   2437: invokevirtual 670	com/tencent/mm/vfs/q:cFq	()Z
     //   2440: istore 14
     //   2442: iconst_4
     //   2443: aload 23
     //   2445: new 115	java/lang/StringBuilder
     //   2448: dup
-    //   2449: ldc_w 679
+    //   2449: ldc_w 672
     //   2452: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   2455: aload 24
-    //   2457: invokevirtual 337	com/tencent/mm/vfs/o:toString	()Ljava/lang/String;
+    //   2457: invokevirtual 337	com/tencent/mm/vfs/q:toString	()Ljava/lang/String;
     //   2460: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2463: ldc_w 681
+    //   2463: ldc_w 674
     //   2466: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2469: iload 14
-    //   2471: invokevirtual 684	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   2471: invokevirtual 677	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   2474: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2477: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   2480: ldc_w 475
+    //   2480: ldc_w 468
     //   2483: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   2486: aconst_null
     //   2487: areturn
@@ -1495,14 +1494,14 @@ public final class m
     //   2499: astore 20
     //   2501: new 295	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/g
     //   2504: dup
-    //   2505: ldc_w 702
-    //   2508: invokespecial 664	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/g:<init>	(Ljava/lang/String;)V
+    //   2505: ldc_w 695
+    //   2508: invokespecial 657	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/g:<init>	(Ljava/lang/String;)V
     //   2511: astore_1
     //   2512: aload_2
     //   2513: astore 19
     //   2515: aload 17
     //   2517: astore 20
-    //   2519: ldc_w 475
+    //   2519: ldc_w 468
     //   2522: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   2525: aload_2
     //   2526: astore 19
@@ -1520,38 +1519,38 @@ public final class m
     //   2544: aload_2
     //   2545: ifnull +7 -> 2552
     //   2548: aload_2
-    //   2549: invokevirtual 668	java/io/BufferedReader:close	()V
+    //   2549: invokevirtual 661	java/io/BufferedReader:close	()V
     //   2552: aload_3
     //   2553: ifnull +7 -> 2560
     //   2556: aload_3
-    //   2557: invokevirtual 671	java/io/OutputStream:close	()V
+    //   2557: invokevirtual 664	java/io/OutputStream:close	()V
     //   2560: iload 5
     //   2562: ifeq +64 -> 2626
     //   2565: aload 24
-    //   2567: invokevirtual 330	com/tencent/mm/vfs/o:exists	()Z
+    //   2567: invokevirtual 330	com/tencent/mm/vfs/q:ifE	()Z
     //   2570: ifeq +56 -> 2626
     //   2573: aload 24
-    //   2575: invokevirtual 674	com/tencent/mm/vfs/o:isFile	()Z
+    //   2575: invokevirtual 667	com/tencent/mm/vfs/q:ifH	()Z
     //   2578: ifeq +48 -> 2626
     //   2581: aload 24
-    //   2583: invokevirtual 677	com/tencent/mm/vfs/o:delete	()Z
+    //   2583: invokevirtual 670	com/tencent/mm/vfs/q:cFq	()Z
     //   2586: istore 14
     //   2588: iconst_4
     //   2589: aload 23
     //   2591: new 115	java/lang/StringBuilder
     //   2594: dup
-    //   2595: ldc_w 679
+    //   2595: ldc_w 672
     //   2598: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   2601: aload 24
-    //   2603: invokevirtual 337	com/tencent/mm/vfs/o:toString	()Ljava/lang/String;
+    //   2603: invokevirtual 337	com/tencent/mm/vfs/q:toString	()Ljava/lang/String;
     //   2606: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2609: ldc_w 681
+    //   2609: ldc_w 674
     //   2612: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2615: iload 14
-    //   2617: invokevirtual 684	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   2617: invokevirtual 677	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   2620: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2623: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   2626: ldc_w 475
+    //   2626: ldc_w 468
     //   2629: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   2632: aload_1
     //   2633: athrow
@@ -1560,7 +1559,7 @@ public final class m
     //   2637: aload 17
     //   2639: astore 20
     //   2641: aload_1
-    //   2642: getfield 705	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h:myB	I
+    //   2642: getfield 698	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h:pwV	I
     //   2645: iconst_m1
     //   2646: if_icmpne +337 -> 2983
     //   2649: aload_2
@@ -1568,18 +1567,18 @@ public final class m
     //   2652: aload 17
     //   2654: astore 20
     //   2656: aload_0
-    //   2657: getfield 101	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:mzc	Ljava/util/Map;
+    //   2657: getfield 101	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:pxx	Ljava/util/Map;
     //   2660: aload_3
-    //   2661: invokeinterface 429 2 0
+    //   2661: invokeinterface 422 2 0
     //   2666: ifnull +21 -> 2687
     //   2669: aload_2
     //   2670: astore 19
     //   2672: aload 17
     //   2674: astore 20
     //   2676: aload_0
-    //   2677: getfield 101	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:mzc	Ljava/util/Map;
+    //   2677: getfield 101	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:pxx	Ljava/util/Map;
     //   2680: aload_3
-    //   2681: invokeinterface 429 2 0
+    //   2681: invokeinterface 422 2 0
     //   2686: pop
     //   2687: aload_2
     //   2688: astore 19
@@ -1587,9 +1586,9 @@ public final class m
     //   2692: astore 20
     //   2694: iconst_3
     //   2695: aload 23
-    //   2697: ldc_w 707
+    //   2697: ldc_w 700
     //   2700: iload 5
-    //   2702: invokestatic 502	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   2702: invokestatic 495	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   2705: invokevirtual 261	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   2708: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   2711: aload_2
@@ -1598,21 +1597,21 @@ public final class m
     //   2716: astore 20
     //   2718: aload_1
     //   2719: iload 5
-    //   2721: putfield 705	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h:myB	I
+    //   2721: putfield 698	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h:pwV	I
     //   2724: aload_2
     //   2725: astore 19
     //   2727: aload 17
     //   2729: astore 20
     //   2731: aload_1
-    //   2732: invokestatic 437	java/lang/System:currentTimeMillis	()J
-    //   2735: putfield 710	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h:myC	J
+    //   2732: invokestatic 430	java/lang/System:currentTimeMillis	()J
+    //   2735: putfield 703	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h:pwW	J
     //   2738: aload_2
     //   2739: astore 19
     //   2741: aload 17
     //   2743: astore 20
     //   2745: iconst_4
     //   2746: aload 23
-    //   2748: ldc_w 712
+    //   2748: ldc_w 705
     //   2751: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   2754: aload_2
     //   2755: astore 19
@@ -1627,19 +1626,19 @@ public final class m
     //   2773: astore 19
     //   2775: aload 17
     //   2777: astore 20
-    //   2779: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bJK	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
-    //   2782: getfield 715	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:mxh	Z
+    //   2779: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bVt	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
+    //   2782: getfield 708	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:pvB	Z
     //   2785: ifeq +423 -> 3208
-    //   2788: ldc_w 717
+    //   2788: ldc_w 710
     //   2791: astore_1
     //   2792: aload_2
     //   2793: astore 19
     //   2795: aload 17
     //   2797: astore 20
     //   2799: aload_3
-    //   2800: ldc_w 719
+    //   2800: ldc_w 712
     //   2803: aload_1
-    //   2804: invokevirtual 722	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   2804: invokevirtual 715	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   2807: astore_1
     //   2808: aload_2
     //   2809: astore 19
@@ -1647,7 +1646,7 @@ public final class m
     //   2813: astore 20
     //   2815: iconst_4
     //   2816: aload 23
-    //   2818: ldc_w 724
+    //   2818: ldc_w 717
     //   2821: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   2824: aload_2
     //   2825: astore 19
@@ -1663,7 +1662,7 @@ public final class m
     //   2843: astore 20
     //   2845: iconst_4
     //   2846: aload 23
-    //   2848: ldc_w 726
+    //   2848: ldc_w 719
     //   2851: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   2854: aload_2
     //   2855: astore 19
@@ -1671,10 +1670,10 @@ public final class m
     //   2859: astore 20
     //   2861: aload 17
     //   2863: aload_1
-    //   2864: invokevirtual 730	java/lang/String:getBytes	()[B
-    //   2867: invokevirtual 734	java/io/OutputStream:write	([B)V
+    //   2864: invokevirtual 723	java/lang/String:getBytes	()[B
+    //   2867: invokevirtual 727	java/io/OutputStream:write	([B)V
     //   2870: aload_2
-    //   2871: invokevirtual 668	java/io/BufferedReader:close	()V
+    //   2871: invokevirtual 661	java/io/BufferedReader:close	()V
     //   2874: iconst_0
     //   2875: istore 5
     //   2877: iload 5
@@ -1682,42 +1681,42 @@ public final class m
     //   2881: aload 17
     //   2883: ifnull +12 -> 2895
     //   2886: aload 17
-    //   2888: invokevirtual 671	java/io/OutputStream:close	()V
+    //   2888: invokevirtual 664	java/io/OutputStream:close	()V
     //   2891: iload 5
     //   2893: istore 6
     //   2895: iload 11
     //   2897: ifne +679 -> 3576
     //   2900: aload 4
     //   2902: iconst_1
-    //   2903: invokevirtual 449	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:xB	(I)Z
+    //   2903: invokevirtual 442	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:AY	(I)Z
     //   2906: ifeq +8 -> 2914
     //   2909: aload 4
-    //   2911: invokevirtual 667	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:bJX	()V
+    //   2911: invokevirtual 660	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:bVH	()V
     //   2914: aload 24
-    //   2916: invokevirtual 330	com/tencent/mm/vfs/o:exists	()Z
+    //   2916: invokevirtual 330	com/tencent/mm/vfs/q:ifE	()Z
     //   2919: ifeq +56 -> 2975
     //   2922: aload 24
-    //   2924: invokevirtual 674	com/tencent/mm/vfs/o:isFile	()Z
+    //   2924: invokevirtual 667	com/tencent/mm/vfs/q:ifH	()Z
     //   2927: ifeq +48 -> 2975
     //   2930: aload 24
-    //   2932: invokevirtual 677	com/tencent/mm/vfs/o:delete	()Z
+    //   2932: invokevirtual 670	com/tencent/mm/vfs/q:cFq	()Z
     //   2935: istore 14
     //   2937: iconst_4
     //   2938: aload 23
     //   2940: new 115	java/lang/StringBuilder
     //   2943: dup
-    //   2944: ldc_w 736
+    //   2944: ldc_w 729
     //   2947: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   2950: aload 24
-    //   2952: invokevirtual 337	com/tencent/mm/vfs/o:toString	()Ljava/lang/String;
+    //   2952: invokevirtual 337	com/tencent/mm/vfs/q:toString	()Ljava/lang/String;
     //   2955: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2958: ldc_w 681
+    //   2958: ldc_w 674
     //   2961: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2964: iload 14
-    //   2966: invokevirtual 684	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   2966: invokevirtual 677	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   2969: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2972: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   2975: ldc_w 475
+    //   2975: ldc_w 468
     //   2978: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   2981: aconst_null
     //   2982: areturn
@@ -1727,7 +1726,7 @@ public final class m
     //   2988: astore 20
     //   2990: iload 5
     //   2992: aload_1
-    //   2993: getfield 705	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h:myB	I
+    //   2993: getfield 698	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h:pwV	I
     //   2996: if_icmpge +81 -> 3077
     //   2999: aload_2
     //   3000: astore 19
@@ -1737,27 +1736,27 @@ public final class m
     //   3009: dup
     //   3010: new 115	java/lang/StringBuilder
     //   3013: dup
-    //   3014: ldc_w 738
+    //   3014: ldc_w 731
     //   3017: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   3020: aload_1
-    //   3021: getfield 705	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h:myB	I
+    //   3021: getfield 698	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h:pwV	I
     //   3024: invokevirtual 235	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3027: ldc_w 740
+    //   3027: ldc_w 733
     //   3030: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3033: iload 5
     //   3035: invokevirtual 235	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3038: ldc_w 742
+    //   3038: ldc_w 735
     //   3041: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3044: aload_3
     //   3045: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3048: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3051: invokespecial 664	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/g:<init>	(Ljava/lang/String;)V
+    //   3051: invokespecial 657	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/g:<init>	(Ljava/lang/String;)V
     //   3054: astore_1
     //   3055: aload_2
     //   3056: astore 19
     //   3058: aload 17
     //   3060: astore 20
-    //   3062: ldc_w 475
+    //   3062: ldc_w 468
     //   3065: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   3068: aload_2
     //   3069: astore 19
@@ -1771,15 +1770,15 @@ public final class m
     //   3082: astore 20
     //   3084: iload 5
     //   3086: aload_1
-    //   3087: getfield 705	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h:myB	I
+    //   3087: getfield 698	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h:pwV	I
     //   3090: if_icmpne -379 -> 2711
     //   3093: aload_2
     //   3094: astore 19
     //   3096: aload 17
     //   3098: astore 20
-    //   3100: invokestatic 437	java/lang/System:currentTimeMillis	()J
+    //   3100: invokestatic 430	java/lang/System:currentTimeMillis	()J
     //   3103: aload_1
-    //   3104: getfield 710	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h:myC	J
+    //   3104: getfield 703	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/h:pwW	J
     //   3107: lsub
     //   3108: lstore 15
     //   3110: lload 15
@@ -1794,10 +1793,10 @@ public final class m
     //   3126: aload 17
     //   3128: astore 20
     //   3130: aload_0
-    //   3131: getfield 101	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:mzc	Ljava/util/Map;
+    //   3131: getfield 101	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:pxx	Ljava/util/Map;
     //   3134: aload_3
     //   3135: aload_1
-    //   3136: invokeinterface 564 3 0
+    //   3136: invokeinterface 557 3 0
     //   3141: pop
     //   3142: aload_2
     //   3143: astore 19
@@ -1807,22 +1806,22 @@ public final class m
     //   3152: dup
     //   3153: new 115	java/lang/StringBuilder
     //   3156: dup
-    //   3157: ldc_w 744
+    //   3157: ldc_w 737
     //   3160: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   3163: lload 15
-    //   3165: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3168: ldc_w 746
+    //   3165: invokevirtual 485	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   3168: ldc_w 739
     //   3171: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3174: iload 6
     //   3176: invokevirtual 235	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   3179: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3182: invokespecial 664	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/g:<init>	(Ljava/lang/String;)V
+    //   3182: invokespecial 657	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/g:<init>	(Ljava/lang/String;)V
     //   3185: astore_1
     //   3186: aload_2
     //   3187: astore 19
     //   3189: aload 17
     //   3191: astore 20
-    //   3193: ldc_w 475
+    //   3193: ldc_w 468
     //   3196: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   3199: aload_2
     //   3200: astore 19
@@ -1830,7 +1829,7 @@ public final class m
     //   3204: astore 20
     //   3206: aload_1
     //   3207: athrow
-    //   3208: ldc_w 748
+    //   3208: ldc_w 741
     //   3211: astore_1
     //   3212: goto -420 -> 2792
     //   3215: astore_1
@@ -1838,7 +1837,7 @@ public final class m
     //   3218: aload 23
     //   3220: new 115	java/lang/StringBuilder
     //   3223: dup
-    //   3224: ldc_w 750
+    //   3224: ldc_w 743
     //   3227: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   3230: aload_1
     //   3231: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
@@ -1853,7 +1852,7 @@ public final class m
     //   3252: aload 23
     //   3254: new 115	java/lang/StringBuilder
     //   3257: dup
-    //   3258: ldc_w 752
+    //   3258: ldc_w 745
     //   3261: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   3264: aload_1
     //   3265: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
@@ -1868,7 +1867,7 @@ public final class m
     //   3286: aload 23
     //   3288: new 115	java/lang/StringBuilder
     //   3291: dup
-    //   3292: ldc_w 750
+    //   3292: ldc_w 743
     //   3295: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   3298: aload_1
     //   3299: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
@@ -1881,7 +1880,7 @@ public final class m
     //   3317: aload 23
     //   3319: new 115	java/lang/StringBuilder
     //   3322: dup
-    //   3323: ldc_w 752
+    //   3323: ldc_w 745
     //   3326: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   3329: aload_1
     //   3330: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
@@ -1893,14 +1892,14 @@ public final class m
     //   3347: aload 23
     //   3349: new 115	java/lang/StringBuilder
     //   3352: dup
-    //   3353: ldc_w 754
+    //   3353: ldc_w 747
     //   3356: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   3359: aload_3
     //   3360: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   3363: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3366: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   3369: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   3372: ldc_w 475
+    //   3372: ldc_w 468
     //   3375: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   3378: aload_3
     //   3379: athrow
@@ -1923,7 +1922,7 @@ public final class m
     //   3404: aload 23
     //   3406: new 115	java/lang/StringBuilder
     //   3409: dup
-    //   3410: ldc_w 750
+    //   3410: ldc_w 743
     //   3413: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   3416: aload_1
     //   3417: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
@@ -1936,7 +1935,7 @@ public final class m
     //   3435: aload 23
     //   3437: new 115	java/lang/StringBuilder
     //   3440: dup
-    //   3441: ldc_w 752
+    //   3441: ldc_w 745
     //   3444: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   3447: aload_1
     //   3448: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
@@ -1948,7 +1947,7 @@ public final class m
     //   3465: aload 23
     //   3467: new 115	java/lang/StringBuilder
     //   3470: dup
-    //   3471: ldc_w 756
+    //   3471: ldc_w 749
     //   3474: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   3477: aload_1
     //   3478: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
@@ -1958,9 +1957,9 @@ public final class m
     //   3490: new 295	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/g
     //   3493: dup
     //   3494: aload_1
-    //   3495: invokespecial 759	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/g:<init>	(Ljava/lang/Throwable;)V
+    //   3495: invokespecial 752	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/g:<init>	(Ljava/lang/Throwable;)V
     //   3498: astore_1
-    //   3499: ldc_w 475
+    //   3499: ldc_w 468
     //   3502: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   3505: aload_1
     //   3506: athrow
@@ -1973,7 +1972,7 @@ public final class m
     //   3517: aload 23
     //   3519: new 115	java/lang/StringBuilder
     //   3522: dup
-    //   3523: ldc_w 750
+    //   3523: ldc_w 743
     //   3526: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   3529: aload_2
     //   3530: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
@@ -1986,7 +1985,7 @@ public final class m
     //   3548: aload 23
     //   3550: new 115	java/lang/StringBuilder
     //   3553: dup
-    //   3554: ldc_w 752
+    //   3554: ldc_w 745
     //   3557: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   3560: aload_2
     //   3561: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
@@ -1997,34 +1996,34 @@ public final class m
     //   3576: iload 6
     //   3578: ifeq +72 -> 3650
     //   3581: aload 24
-    //   3583: invokevirtual 330	com/tencent/mm/vfs/o:exists	()Z
+    //   3583: invokevirtual 330	com/tencent/mm/vfs/q:ifE	()Z
     //   3586: ifeq +56 -> 3642
     //   3589: aload 24
-    //   3591: invokevirtual 674	com/tencent/mm/vfs/o:isFile	()Z
+    //   3591: invokevirtual 667	com/tencent/mm/vfs/q:ifH	()Z
     //   3594: ifeq +48 -> 3642
     //   3597: aload 24
-    //   3599: invokevirtual 677	com/tencent/mm/vfs/o:delete	()Z
+    //   3599: invokevirtual 670	com/tencent/mm/vfs/q:cFq	()Z
     //   3602: istore 14
     //   3604: iconst_4
     //   3605: aload 23
     //   3607: new 115	java/lang/StringBuilder
     //   3610: dup
-    //   3611: ldc_w 761
+    //   3611: ldc_w 754
     //   3614: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   3617: aload 24
-    //   3619: invokevirtual 337	com/tencent/mm/vfs/o:toString	()Ljava/lang/String;
+    //   3619: invokevirtual 337	com/tencent/mm/vfs/q:toString	()Ljava/lang/String;
     //   3622: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3625: ldc_w 681
+    //   3625: ldc_w 674
     //   3628: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3631: iload 14
-    //   3633: invokevirtual 684	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   3633: invokevirtual 677	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   3636: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   3639: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   3642: ldc_w 475
+    //   3642: ldc_w 468
     //   3645: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   3648: aconst_null
     //   3649: areturn
-    //   3650: ldc_w 475
+    //   3650: ldc_w 468
     //   3653: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   3656: aload 24
     //   3658: areturn
@@ -2146,7 +2145,7 @@ public final class m
     //   954	997	21	str1	String
     //   896	969	22	localObject6	Object
     //   27	3579	23	str2	String
-    //   133	3524	24	localo	o
+    //   133	3524	24	localq	q
     //   185	297	25	str3	String
     //   240	1132	26	localPattern	java.util.regex.Pattern
     //   292	2470	27	localStringBuilder	StringBuilder
@@ -2521,53 +2520,53 @@ public final class m
   private void a(Socket paramSocket, String paramString, java.io.OutputStream paramOutputStream, n paramn)
   {
     // Byte code:
-    //   0: ldc_w 977
+    //   0: ldc_w 969
     //   3: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: new 115	java/lang/StringBuilder
     //   9: dup
-    //   10: ldc_w 399
+    //   10: ldc_w 392
     //   13: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   16: aload 4
-    //   18: getfield 404	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:mzr	I
+    //   18: getfield 397	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:pxM	I
     //   21: invokevirtual 235	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   24: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   27: astore 34
     //   29: new 115	java/lang/StringBuilder
     //   32: dup
-    //   33: invokespecial 484	java/lang/StringBuilder:<init>	()V
+    //   33: invokespecial 477	java/lang/StringBuilder:<init>	()V
     //   36: aload 34
     //   38: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   41: ldc_w 486
+    //   41: ldc_w 479
     //   44: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   47: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   50: astore 28
     //   52: aload 4
-    //   54: getfield 909	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:mzw	Ljava/lang/String;
+    //   54: getfield 902	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:pxR	Ljava/lang/String;
     //   57: astore 35
     //   59: aload_0
-    //   60: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:myZ	Ljava/util/concurrent/ConcurrentHashMap;
+    //   60: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:pxu	Ljava/util/concurrent/ConcurrentHashMap;
     //   63: aload 35
-    //   65: invokevirtual 978	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   68: checkcast 980	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/e
+    //   65: invokevirtual 970	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   68: checkcast 972	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/e
     //   71: astore 29
-    //   73: new 982	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/i
+    //   73: new 974	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/i
     //   76: dup
     //   77: aload_0
-    //   78: getfield 141	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:mxs	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a/a;
+    //   78: getfield 141	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:pvM	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a/a;
     //   81: aload 29
     //   83: aload 4
-    //   85: invokespecial 985	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/i:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a/a;Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/e;Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/n;)V
+    //   85: invokespecial 977	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/i:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a/a;Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/e;Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/n;)V
     //   88: aload_2
     //   89: aload 28
-    //   91: invokeinterface 991 3 0
+    //   91: invokeinterface 983 3 0
     //   96: astore 28
     //   98: aload 28
     //   100: ifnonnull +20 -> 120
     //   103: bipush 6
     //   105: aload 34
-    //   107: ldc_w 993
+    //   107: ldc_w 985
     //   110: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   113: ldc_w 977
+    //   113: ldc_w 969
     //   116: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   119: return
     //   120: iconst_0
@@ -2576,31 +2575,31 @@ public final class m
     //   124: istore 8
     //   126: iconst_0
     //   127: istore 7
-    //   129: ldc2_w 994
+    //   129: ldc2_w 986
     //   132: lstore 21
-    //   134: ldc_w 996
+    //   134: ldc_w 988
     //   137: newarray byte
     //   139: astore 32
-    //   141: getstatic 1002	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/c:myu	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/c;
+    //   141: getstatic 994	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/c:pwO	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/c;
     //   144: astore 30
-    //   146: ldc2_w 994
+    //   146: ldc2_w 986
     //   149: lstore 15
     //   151: aload 4
-    //   153: getfield 915	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:mzu	J
+    //   153: getfield 908	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:pxP	J
     //   156: lstore 25
     //   158: aload 4
-    //   160: getfield 912	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:mzt	J
+    //   160: getfield 905	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:pxO	J
     //   163: lstore 17
     //   165: lload 15
     //   167: lstore 13
     //   169: lload 25
-    //   171: ldc2_w 994
+    //   171: ldc2_w 986
     //   174: lcmp
     //   175: ifeq +25 -> 200
     //   178: lload 15
     //   180: lstore 13
     //   182: lload 25
-    //   184: ldc2_w 1003
+    //   184: ldc2_w 995
     //   187: lcmp
     //   188: ifeq +12 -> 200
     //   191: lload 25
@@ -2610,16 +2609,16 @@ public final class m
     //   197: ladd
     //   198: lstore 13
     //   200: aload_2
-    //   201: invokestatic 1008	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   201: invokestatic 1000	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   204: astore 29
     //   206: lload 17
-    //   208: ldc2_w 994
+    //   208: ldc2_w 986
     //   211: lcmp
     //   212: ifne +157 -> 369
     //   215: lconst_0
     //   216: lstore 15
     //   218: lload 17
-    //   220: ldc2_w 994
+    //   220: ldc2_w 986
     //   223: lcmp
     //   224: ifne +152 -> 376
     //   227: lconst_0
@@ -2633,21 +2632,21 @@ public final class m
     //   242: aload 35
     //   244: iconst_0
     //   245: aload 4
-    //   247: getfield 497	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
+    //   247: getfield 490	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
     //   250: aload 4
-    //   252: getfield 418	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
-    //   255: invokespecial 390	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/g:<init>	(Landroid/net/Uri;JJJLjava/lang/String;ILjava/lang/String;I)V
+    //   252: getfield 411	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
+    //   255: invokespecial 383	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/g:<init>	(Landroid/net/Uri;JJJLjava/lang/String;ILjava/lang/String;I)V
     //   258: astore 33
-    //   260: new 1010	java/io/BufferedOutputStream
+    //   260: new 1002	java/io/BufferedOutputStream
     //   263: dup
     //   264: aload_3
-    //   265: invokespecial 1013	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   265: invokespecial 1005	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   268: astore 36
-    //   270: invokestatic 437	java/lang/System:currentTimeMillis	()J
+    //   270: invokestatic 430	java/lang/System:currentTimeMillis	()J
     //   273: lstore 23
     //   275: iconst_1
     //   276: istore 5
-    //   278: ldc2_w 419
+    //   278: ldc2_w 412
     //   281: lstore 19
     //   283: aload_0
     //   284: aload 28
@@ -2657,34 +2656,34 @@ public final class m
     //   291: aload 4
     //   293: aload_1
     //   294: aload 35
-    //   296: invokespecial 1015	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:a	(Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/e;Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/g;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/n;Ljava/net/Socket;Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/m$a;
+    //   296: invokespecial 1007	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:a	(Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/e;Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/g;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/n;Ljava/net/Socket;Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/m$a;
     //   299: astore_3
     //   300: aload_3
-    //   301: getfield 463	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m$a:ZB	Z
+    //   301: getfield 456	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m$a:gY	Z
     //   304: ifeq +110 -> 414
     //   307: iconst_4
     //   308: aload 34
-    //   310: ldc_w 1017
+    //   310: ldc_w 1009
     //   313: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   316: iconst_4
     //   317: aload 34
     //   319: new 115	java/lang/StringBuilder
     //   322: dup
-    //   323: ldc_w 1019
+    //   323: ldc_w 1011
     //   326: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   329: lload 17
-    //   331: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   334: ldc_w 1021
+    //   331: invokevirtual 485	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   334: ldc_w 1013
     //   337: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   340: lload 25
-    //   342: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   342: invokevirtual 485	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   345: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   348: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   351: aload 28
-    //   353: invokeinterface 1022 1 0
+    //   353: invokeinterface 1014 1 0
     //   358: aload_1
-    //   359: invokevirtual 442	java/net/Socket:close	()V
-    //   362: ldc_w 977
+    //   359: invokevirtual 435	java/net/Socket:close	()V
+    //   362: ldc_w 969
     //   365: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   368: return
     //   369: lload 17
@@ -2696,64 +2695,64 @@ public final class m
     //   383: astore_2
     //   384: iconst_5
     //   385: aload 34
-    //   387: ldc_w 1024
+    //   387: ldc_w 1016
     //   390: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   393: goto -35 -> 358
     //   396: astore_1
     //   397: iconst_5
     //   398: aload 34
-    //   400: ldc_w 1026
+    //   400: ldc_w 1018
     //   403: aload_1
-    //   404: invokestatic 468	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   407: ldc_w 977
+    //   404: invokestatic 461	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   407: ldc_w 969
     //   410: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   413: return
     //   414: aload_3
-    //   415: getfield 302	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m$a:mzh	J
+    //   415: getfield 302	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m$a:pxC	J
     //   418: lstore 13
     //   420: aload_3
-    //   421: getfield 334	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m$a:mzj	Lcom/tencent/mm/vfs/o;
+    //   421: getfield 334	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m$a:pxE	Lcom/tencent/mm/vfs/q;
     //   424: astore 29
     //   426: aload_3
-    //   427: getfield 394	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m$a:mzi	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/e;
-    //   430: ifnull +1551 -> 1981
+    //   427: getfield 387	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m$a:pxD	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/e;
+    //   430: ifnull +1548 -> 1978
     //   433: aload_3
-    //   434: getfield 394	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m$a:mzi	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/e;
+    //   434: getfield 387	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m$a:pxD	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/e;
     //   437: astore_3
     //   438: aload_3
-    //   439: invokeinterface 1027 1 0
+    //   439: invokeinterface 1019 1 0
     //   444: lstore 15
     //   446: aload_3
-    //   447: invokeinterface 1031 1 0
+    //   447: invokeinterface 1023 1 0
     //   452: astore 31
     //   454: aload 31
     //   456: astore 30
     //   458: aload 4
     //   460: lload 15
     //   462: aload 31
-    //   464: invokevirtual 1034	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:a	(JLcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/c;)V
+    //   464: invokevirtual 1026	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:a	(JLcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/c;)V
     //   467: aload 31
     //   469: astore 30
     //   471: aload 31
-    //   473: getstatic 1002	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/c:myu	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/c;
-    //   476: invokevirtual 1035	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/c:equals	(Ljava/lang/Object;)Z
+    //   473: getstatic 994	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/c:pwO	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/c;
+    //   476: invokevirtual 1027	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/c:equals	(Ljava/lang/Object;)Z
     //   479: ifeq +17 -> 496
     //   482: aload 31
     //   484: astore 30
     //   486: bipush 6
     //   488: aload 34
-    //   490: ldc_w 1037
+    //   490: ldc_w 1029
     //   493: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   496: aload 31
     //   498: astore 30
     //   500: aload 31
-    //   502: invokevirtual 1038	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/c:toString	()Ljava/lang/String;
+    //   502: invokevirtual 1030	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/c:toString	()Ljava/lang/String;
     //   505: astore 28
     //   507: aload 31
     //   509: astore 30
     //   511: aload_2
-    //   512: invokestatic 311	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:aaW	(Ljava/lang/String;)Z
-    //   515: ifne +1597 -> 2112
+    //   512: invokestatic 311	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:aiP	(Ljava/lang/String;)Z
+    //   515: ifne +1594 -> 2109
     //   518: iconst_1
     //   519: istore 27
     //   521: aload 31
@@ -2763,7 +2762,7 @@ public final class m
     //   529: lload 15
     //   531: aload 28
     //   533: iload 27
-    //   535: invokestatic 1041	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/f:a	(JJJLjava/lang/String;Z)Ljava/lang/String;
+    //   535: invokestatic 1033	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/f:a	(JJJLjava/lang/String;Z)Ljava/lang/String;
     //   538: astore 28
     //   540: aload 31
     //   542: astore 30
@@ -2771,12 +2770,12 @@ public final class m
     //   545: aload 34
     //   547: new 115	java/lang/StringBuilder
     //   550: dup
-    //   551: ldc_w 1043
+    //   551: ldc_w 1035
     //   554: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   557: invokestatic 437	java/lang/System:currentTimeMillis	()J
+    //   557: invokestatic 430	java/lang/System:currentTimeMillis	()J
     //   560: lload 23
     //   562: lsub
-    //   563: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   563: invokevirtual 485	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   566: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   569: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   572: aload 31
@@ -2785,14 +2784,14 @@ public final class m
     //   577: aload 34
     //   579: new 115	java/lang/StringBuilder
     //   582: dup
-    //   583: ldc_w 1045
+    //   583: ldc_w 1037
     //   586: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   589: lload 15
-    //   591: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   594: ldc_w 1047
+    //   591: invokevirtual 485	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   594: ldc_w 1039
     //   597: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   600: aload 28
-    //   602: invokestatic 892	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:abs	(Ljava/lang/String;)Ljava/lang/String;
+    //   602: invokestatic 885	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:ajm	(Ljava/lang/String;)Ljava/lang/String;
     //   605: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   608: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   611: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
@@ -2800,16 +2799,16 @@ public final class m
     //   616: astore 30
     //   618: aload 36
     //   620: aload 28
-    //   622: ldc_w 519
-    //   625: invokevirtual 1050	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   628: invokevirtual 734	java/io/OutputStream:write	([B)V
+    //   622: ldc_w 512
+    //   625: invokevirtual 1042	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   628: invokevirtual 727	java/io/OutputStream:write	([B)V
     //   631: aload 31
     //   633: astore 30
     //   635: aload 36
-    //   637: invokevirtual 1053	java/io/OutputStream:flush	()V
+    //   637: invokevirtual 1045	java/io/OutputStream:flush	()V
     //   640: aload 31
     //   642: astore 30
-    //   644: invokestatic 437	java/lang/System:currentTimeMillis	()J
+    //   644: invokestatic 430	java/lang/System:currentTimeMillis	()J
     //   647: lstore 21
     //   649: iconst_1
     //   650: istore 5
@@ -2825,12 +2824,12 @@ public final class m
     //   669: istore 9
     //   671: iload 6
     //   673: istore 11
-    //   675: invokestatic 534	java/lang/Thread:interrupted	()Z
-    //   678: ifne +1440 -> 2118
+    //   675: invokestatic 527	java/lang/Thread:interrupted	()Z
+    //   678: ifne +1437 -> 2115
     //   681: iconst_1
     //   682: istore 5
     //   684: iload 5
-    //   686: ifeq +1823 -> 2509
+    //   686: ifeq +1817 -> 2503
     //   689: iload 5
     //   691: istore 8
     //   693: iload 6
@@ -2843,8 +2842,8 @@ public final class m
     //   707: istore 11
     //   709: aload 4
     //   711: iconst_1
-    //   712: invokevirtual 449	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:xB	(I)Z
-    //   715: ifne +1794 -> 2509
+    //   712: invokevirtual 442	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:AY	(I)Z
+    //   715: ifne +1788 -> 2503
     //   718: iload 5
     //   720: istore 8
     //   722: iload 6
@@ -2858,12 +2857,12 @@ public final class m
     //   738: aload_3
     //   739: aload 32
     //   741: iconst_0
-    //   742: ldc_w 996
-    //   745: invokeinterface 1057 4 0
+    //   742: ldc_w 988
+    //   745: invokeinterface 1049 4 0
     //   750: istore 12
     //   752: iload 12
     //   754: iconst_m1
-    //   755: if_icmpeq +1754 -> 2509
+    //   755: if_icmpeq +1748 -> 2503
     //   758: iload 5
     //   760: istore 8
     //   762: iload 6
@@ -2875,8 +2874,8 @@ public final class m
     //   774: iload 6
     //   776: istore 11
     //   778: aload 4
-    //   780: getfield 903	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:mzy	Ljava/lang/String;
-    //   783: ifnull +1341 -> 2124
+    //   780: getfield 896	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:pxT	Ljava/lang/String;
+    //   783: ifnull +1338 -> 2121
     //   786: iload 5
     //   788: istore 8
     //   790: iload 6
@@ -2888,15 +2887,15 @@ public final class m
     //   802: iload 6
     //   804: istore 11
     //   806: aload 4
-    //   808: getfield 903	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:mzy	Ljava/lang/String;
-    //   811: invokevirtual 1060	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   814: ldc_w 1062
-    //   817: invokevirtual 551	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   820: ifeq +1304 -> 2124
+    //   808: getfield 896	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:pxT	Ljava/lang/String;
+    //   811: invokevirtual 1052	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   814: ldc_w 1054
+    //   817: invokevirtual 544	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   820: ifeq +1301 -> 2121
     //   823: iconst_1
     //   824: istore 7
     //   826: iload 7
-    //   828: ifne +1681 -> 2509
+    //   828: ifne +1675 -> 2503
     //   831: iload 5
     //   833: istore 8
     //   835: iload 6
@@ -2907,12 +2906,12 @@ public final class m
     //   845: istore 9
     //   847: iload 6
     //   849: istore 11
-    //   851: invokestatic 437	java/lang/System:currentTimeMillis	()J
+    //   851: invokestatic 430	java/lang/System:currentTimeMillis	()J
     //   854: lload 21
     //   856: lsub
     //   857: lstore 21
     //   859: lload 21
-    //   861: ldc2_w 1063
+    //   861: ldc2_w 1055
     //   864: lcmp
     //   865: ifle +53 -> 918
     //   868: iload 5
@@ -2929,11 +2928,11 @@ public final class m
     //   889: aload 34
     //   891: new 115	java/lang/StringBuilder
     //   894: dup
-    //   895: ldc_w 1066
+    //   895: ldc_w 1058
     //   898: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   901: lload 21
-    //   903: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   906: ldc_w 1068
+    //   903: invokevirtual 485	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   906: ldc_w 1060
     //   909: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   912: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   915: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
@@ -2947,14 +2946,14 @@ public final class m
     //   932: istore 9
     //   934: iload 6
     //   936: istore 11
-    //   938: invokestatic 437	java/lang/System:currentTimeMillis	()J
+    //   938: invokestatic 430	java/lang/System:currentTimeMillis	()J
     //   941: lstore 21
     //   943: iload 6
-    //   945: ifne +1248 -> 2193
+    //   945: ifne +1245 -> 2190
     //   948: lload 17
     //   950: lconst_0
     //   951: lcmp
-    //   952: ifne +1241 -> 2193
+    //   952: ifne +1238 -> 2190
     //   955: aconst_null
     //   956: astore 28
     //   958: iload 5
@@ -2968,8 +2967,8 @@ public final class m
     //   974: iload 6
     //   976: istore 11
     //   978: aload_3
-    //   979: instanceof 1070
-    //   982: ifeq +1148 -> 2130
+    //   979: instanceof 1062
+    //   982: ifeq +1145 -> 2127
     //   985: iload 5
     //   987: istore 8
     //   989: iload 6
@@ -2981,8 +2980,8 @@ public final class m
     //   1001: iload 6
     //   1003: istore 11
     //   1005: aload_3
-    //   1006: checkcast 1070	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/c
-    //   1009: getfield 1073	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/c:mxC	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/e;
+    //   1006: checkcast 1062	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/c
+    //   1009: getfield 1065	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/c:pvW	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/e;
     //   1012: astore 28
     //   1014: iload 5
     //   1016: istore 8
@@ -2995,8 +2994,8 @@ public final class m
     //   1030: iload 6
     //   1032: istore 11
     //   1034: aload 28
-    //   1036: instanceof 1075
-    //   1039: ifeq +1154 -> 2193
+    //   1036: instanceof 1067
+    //   1039: ifeq +1151 -> 2190
     //   1042: iload 5
     //   1044: istore 8
     //   1046: iload 6
@@ -3008,11 +3007,11 @@ public final class m
     //   1058: iload 6
     //   1060: istore 11
     //   1062: aload 28
-    //   1064: checkcast 1075	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l
-    //   1067: invokeinterface 1079 1 0
+    //   1064: checkcast 1067	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l
+    //   1067: invokeinterface 1071 1 0
     //   1072: astore 28
     //   1074: aload 28
-    //   1076: ifnull +1087 -> 2163
+    //   1076: ifnull +1084 -> 2160
     //   1079: iload 5
     //   1081: istore 8
     //   1083: iload 6
@@ -3025,8 +3024,8 @@ public final class m
     //   1097: istore 11
     //   1099: aload 28
     //   1101: aload 32
-    //   1103: invokeinterface 1085 2 0
-    //   1108: ifne +1085 -> 2193
+    //   1103: invokeinterface 1077 2 0
+    //   1108: ifne +1082 -> 2190
     //   1111: iload 5
     //   1113: istore 8
     //   1115: iload 6
@@ -3037,11 +3036,11 @@ public final class m
     //   1125: istore 9
     //   1127: iload 6
     //   1129: istore 11
-    //   1131: new 1087	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$d
+    //   1131: new 1079	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$d
     //   1134: dup
-    //   1135: ldc_w 1089
+    //   1135: ldc_w 1081
     //   1138: aload 33
-    //   1140: invokespecial 1092	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$d:<init>	(Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/g;)V
+    //   1140: invokespecial 1084	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$d:<init>	(Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/g;)V
     //   1143: astore 28
     //   1145: iload 5
     //   1147: istore 8
@@ -3053,7 +3052,7 @@ public final class m
     //   1159: istore 9
     //   1161: iload 6
     //   1163: istore 11
-    //   1165: ldc_w 977
+    //   1165: ldc_w 969
     //   1168: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1171: iload 5
     //   1173: istore 8
@@ -3081,78 +3080,78 @@ public final class m
     //   1214: aload_3
     //   1215: astore 32
     //   1217: aload_3
-    //   1218: instanceof 1094
-    //   1221: ifeq +1864 -> 3085
+    //   1218: instanceof 1086
+    //   1221: ifeq +1852 -> 3073
     //   1224: aload_3
     //   1225: astore 32
     //   1227: aload_3
-    //   1228: checkcast 1094	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$f
+    //   1228: checkcast 1086	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$f
     //   1231: astore 37
     //   1233: aload_3
     //   1234: astore 32
     //   1236: aload_3
     //   1237: astore 33
     //   1239: aload 4
-    //   1241: getfield 418	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
+    //   1241: getfield 411	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
     //   1244: bipush 90
-    //   1246: if_icmpne +3608 -> 4854
+    //   1246: if_icmpne +3596 -> 4842
     //   1249: aload_3
     //   1250: astore 31
     //   1252: aload_3
     //   1253: astore 32
     //   1255: aload 37
-    //   1257: getfield 1097	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$f:responseCode	I
+    //   1257: getfield 1089	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$f:bpg	I
     //   1260: sipush 416
     //   1263: if_icmpne +281 -> 1544
-    //   1266: ldc2_w 994
+    //   1266: ldc2_w 986
     //   1269: lstore 19
     //   1271: aload_3
     //   1272: astore 32
     //   1274: aload_0
-    //   1275: getfield 169	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:myX	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/p;
+    //   1275: getfield 169	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:pxs	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/p;
     //   1278: aload 35
     //   1280: iconst_m1
-    //   1281: invokevirtual 1101	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/p:bP	(Ljava/lang/String;I)Ljava/util/ArrayList;
-    //   1284: invokevirtual 1105	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   1281: invokevirtual 1093	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/p:cm	(Ljava/lang/String;I)Ljava/util/ArrayList;
+    //   1284: invokevirtual 1097	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   1287: astore 31
     //   1289: aload_3
     //   1290: astore 32
     //   1292: aload 31
-    //   1294: invokeinterface 1110 1 0
-    //   1299: ifeq +3567 -> 4866
+    //   1294: invokeinterface 1102 1 0
+    //   1299: ifeq +3555 -> 4854
     //   1302: aload_3
     //   1303: astore 32
     //   1305: aload 31
-    //   1307: invokeinterface 1114 1 0
-    //   1312: checkcast 401	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n
+    //   1307: invokeinterface 1106 1 0
+    //   1312: checkcast 394	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n
     //   1315: astore 33
     //   1317: aload_3
     //   1318: astore 32
     //   1320: aload 33
     //   1322: aload 4
-    //   1324: invokevirtual 1115	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   1324: invokevirtual 1107	java/lang/Object:equals	(Ljava/lang/Object;)Z
     //   1327: ifne -38 -> 1289
     //   1330: aload_3
     //   1331: astore 32
     //   1333: aload 33
-    //   1335: invokevirtual 957	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:getTotalLength	()J
-    //   1338: ldc2_w 994
+    //   1335: invokevirtual 949	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:getTotalLength	()J
+    //   1338: ldc2_w 986
     //   1341: lcmp
     //   1342: ifeq -53 -> 1289
     //   1345: aload_3
     //   1346: astore 32
     //   1348: aload 33
-    //   1350: invokevirtual 957	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:getTotalLength	()J
+    //   1350: invokevirtual 949	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:getTotalLength	()J
     //   1353: lstore 19
     //   1355: aload_3
     //   1356: astore 32
     //   1358: aload 33
-    //   1360: invokevirtual 1116	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:bJP	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/c;
+    //   1360: invokevirtual 1108	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:bVy	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/c;
     //   1363: astore 30
     //   1365: aload_3
     //   1366: astore 31
     //   1368: lload 19
-    //   1370: ldc2_w 994
+    //   1370: ldc2_w 986
     //   1373: lcmp
     //   1374: ifeq +170 -> 1544
     //   1377: aload_3
@@ -3164,19 +3163,19 @@ public final class m
     //   1388: aload_3
     //   1389: astore 31
     //   1391: lload 25
-    //   1393: ldc2_w 1003
+    //   1393: ldc2_w 995
     //   1396: lcmp
     //   1397: ifne +147 -> 1544
     //   1400: aload_3
     //   1401: astore 32
     //   1403: aload 30
-    //   1405: invokevirtual 1038	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/c:toString	()Ljava/lang/String;
+    //   1405: invokevirtual 1030	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/c:toString	()Ljava/lang/String;
     //   1408: astore 31
     //   1410: aload_3
     //   1411: astore 32
     //   1413: aload_2
-    //   1414: invokestatic 311	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:aaW	(Ljava/lang/String;)Z
-    //   1417: ifne +1460 -> 2877
+    //   1414: invokestatic 311	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:aiP	(Ljava/lang/String;)Z
+    //   1417: ifne +1451 -> 2868
     //   1420: iconst_1
     //   1421: istore 27
     //   1423: aload_3
@@ -3186,19 +3185,19 @@ public final class m
     //   1430: lload 19
     //   1432: aload 31
     //   1434: iload 27
-    //   1436: invokestatic 1041	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/f:a	(JJJLjava/lang/String;Z)Ljava/lang/String;
+    //   1436: invokestatic 1033	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/f:a	(JJJLjava/lang/String;Z)Ljava/lang/String;
     //   1439: astore 31
     //   1441: aload_3
     //   1442: astore 32
     //   1444: aload 30
-    //   1446: getstatic 1002	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/c:myu	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/c;
-    //   1449: invokevirtual 1035	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/c:equals	(Ljava/lang/Object;)Z
+    //   1446: getstatic 994	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/c:pwO	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/c;
+    //   1449: invokevirtual 1027	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/c:equals	(Ljava/lang/Object;)Z
     //   1452: ifeq +16 -> 1468
     //   1455: aload_3
     //   1456: astore 32
     //   1458: bipush 6
     //   1460: aload 34
-    //   1462: ldc_w 1118
+    //   1462: ldc_w 1110
     //   1465: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   1468: aload_3
     //   1469: astore 32
@@ -3206,14 +3205,14 @@ public final class m
     //   1472: aload 34
     //   1474: new 115	java/lang/StringBuilder
     //   1477: dup
-    //   1478: ldc_w 1120
+    //   1478: ldc_w 1112
     //   1481: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1484: lload 15
-    //   1486: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1489: ldc_w 1047
+    //   1486: invokevirtual 485	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1489: ldc_w 1039
     //   1492: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1495: aload 31
-    //   1497: invokestatic 892	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:abs	(Ljava/lang/String;)Ljava/lang/String;
+    //   1497: invokestatic 885	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:ajm	(Ljava/lang/String;)Ljava/lang/String;
     //   1500: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1503: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1506: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
@@ -3221,1589 +3220,1585 @@ public final class m
     //   1510: astore 32
     //   1512: aload 36
     //   1514: aload 31
-    //   1516: ldc_w 519
-    //   1519: invokevirtual 1050	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   1522: invokevirtual 734	java/io/OutputStream:write	([B)V
+    //   1516: ldc_w 512
+    //   1519: invokevirtual 1042	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   1522: invokevirtual 727	java/io/OutputStream:write	([B)V
     //   1525: aload_3
     //   1526: astore 32
     //   1528: aload 36
-    //   1530: invokevirtual 1053	java/io/OutputStream:flush	()V
+    //   1530: invokevirtual 1045	java/io/OutputStream:flush	()V
     //   1533: aload_3
     //   1534: astore 32
     //   1536: aload 36
-    //   1538: invokevirtual 671	java/io/OutputStream:close	()V
+    //   1538: invokevirtual 664	java/io/OutputStream:close	()V
     //   1541: aconst_null
     //   1542: astore 31
     //   1544: aload 31
     //   1546: astore 33
     //   1548: aload 31
-    //   1550: ifnull +3304 -> 4854
+    //   1550: ifnull +3292 -> 4842
     //   1553: aload 31
     //   1555: astore 32
     //   1557: iconst_4
     //   1558: aload 34
     //   1560: new 115	java/lang/StringBuilder
     //   1563: dup
-    //   1564: ldc_w 1122
+    //   1564: ldc_w 1114
     //   1567: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1570: aload 4
-    //   1572: getfield 906	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:eby	Ljava/lang/String;
+    //   1572: getfield 899	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:fVx	Ljava/lang/String;
     //   1575: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1578: ldc_w 1124
+    //   1578: ldc_w 1116
     //   1581: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1584: aload 37
-    //   1586: getfield 1127	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$f:bFD	Ljava/util/Map;
-    //   1589: invokestatic 1131	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/f:T	(Ljava/util/Map;)Ljava/lang/String;
+    //   1586: getfield 1119	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$f:bph	Ljava/util/Map;
+    //   1589: invokestatic 1123	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/f:M	(Ljava/util/Map;)Ljava/lang/String;
     //   1592: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1595: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1598: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   1601: aload 31
     //   1603: astore 32
     //   1605: aload 37
-    //   1607: getfield 1127	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$f:bFD	Ljava/util/Map;
-    //   1610: invokestatic 1135	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:U	(Ljava/util/Map;)J
+    //   1607: getfield 1119	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$f:bph	Ljava/util/Map;
+    //   1610: invokestatic 1127	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:N	(Ljava/util/Map;)J
     //   1613: lstore 15
     //   1615: aload 31
     //   1617: astore 32
     //   1619: aload 37
-    //   1621: getfield 1097	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$f:responseCode	I
+    //   1621: getfield 1089	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$f:bpg	I
     //   1624: i2l
     //   1625: lload 15
-    //   1627: invokestatic 423	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:G	(JJ)J
+    //   1627: invokestatic 416	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:H	(JJ)J
     //   1630: lstore 13
     //   1632: aload 31
     //   1634: astore_3
     //   1635: aload 4
     //   1637: iconst_1
-    //   1638: invokevirtual 449	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:xB	(I)Z
+    //   1638: invokevirtual 442	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:AY	(I)Z
     //   1641: ifeq +8 -> 1649
     //   1644: aload 4
-    //   1646: invokevirtual 667	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:bJX	()V
+    //   1646: invokevirtual 660	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:bVH	()V
     //   1649: iconst_4
     //   1650: aload 34
     //   1652: new 115	java/lang/StringBuilder
     //   1655: dup
-    //   1656: ldc_w 1137
+    //   1656: ldc_w 1129
     //   1659: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1662: iload 6
     //   1664: invokevirtual 235	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1667: ldc_w 1139
+    //   1667: ldc_w 1131
     //   1670: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1673: lload 17
-    //   1675: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1678: ldc_w 1021
+    //   1675: invokevirtual 485	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1678: ldc_w 1013
     //   1681: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1684: lload 25
-    //   1686: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1686: invokevirtual 485	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   1689: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1692: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   1695: aload 28
-    //   1697: invokeinterface 1022 1 0
+    //   1697: invokeinterface 1014 1 0
     //   1702: aload_3
     //   1703: ifnonnull +7 -> 1710
     //   1706: aload_1
-    //   1707: invokevirtual 442	java/net/Socket:close	()V
+    //   1707: invokevirtual 435	java/net/Socket:close	()V
     //   1710: aload 29
-    //   1712: ifnull +3127 -> 4839
+    //   1712: ifnull +3115 -> 4827
     //   1715: aload 29
-    //   1717: invokevirtual 674	com/tencent/mm/vfs/o:isFile	()Z
-    //   1720: ifeq +3119 -> 4839
+    //   1717: invokevirtual 667	com/tencent/mm/vfs/q:ifH	()Z
+    //   1720: ifeq +3107 -> 4827
     //   1723: aload 29
-    //   1725: invokevirtual 330	com/tencent/mm/vfs/o:exists	()Z
-    //   1728: ifeq +3111 -> 4839
+    //   1725: invokevirtual 330	com/tencent/mm/vfs/q:ifE	()Z
+    //   1728: ifeq +3099 -> 4827
     //   1731: iconst_4
     //   1732: aload 34
     //   1734: new 115	java/lang/StringBuilder
     //   1737: dup
-    //   1738: ldc_w 1141
+    //   1738: ldc_w 1133
     //   1741: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1744: aload 29
-    //   1746: invokevirtual 337	com/tencent/mm/vfs/o:toString	()Ljava/lang/String;
+    //   1746: invokevirtual 337	com/tencent/mm/vfs/q:toString	()Ljava/lang/String;
     //   1749: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1752: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1755: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   1758: aload 29
-    //   1760: invokevirtual 1145	com/tencent/mm/vfs/o:her	()Landroid/net/Uri;
-    //   1763: invokestatic 352	com/tencent/mm/vfs/aa:z	(Landroid/net/Uri;)Ljava/lang/String;
-    //   1766: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bJK	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
-    //   1769: invokevirtual 478	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bJL	()Ljava/lang/String;
-    //   1772: invokevirtual 542	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   1775: ifeq +3064 -> 4839
-    //   1778: aload 29
-    //   1780: invokevirtual 677	com/tencent/mm/vfs/o:delete	()Z
-    //   1783: ifne +30 -> 1813
-    //   1786: iconst_5
-    //   1787: aload 34
-    //   1789: new 115	java/lang/StringBuilder
-    //   1792: dup
-    //   1793: ldc_w 1147
-    //   1796: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1799: aload 29
-    //   1801: invokevirtual 337	com/tencent/mm/vfs/o:toString	()Ljava/lang/String;
-    //   1804: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1807: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1810: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   1813: aload_0
-    //   1814: getfield 169	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:myX	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/p;
-    //   1817: aload 4
-    //   1819: invokevirtual 445	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/p:a	(Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/n;)V
-    //   1822: aload 4
-    //   1824: iconst_2
-    //   1825: invokevirtual 449	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:xB	(I)Z
-    //   1828: ifeq +2474 -> 4302
-    //   1831: aload 4
-    //   1833: invokevirtual 457	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:bJW	()V
-    //   1836: aload 4
-    //   1838: iconst_1
-    //   1839: putfield 460	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:ifP	Z
-    //   1842: ldc_w 658
-    //   1845: astore_1
-    //   1846: aload 4
-    //   1848: getfield 497	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
-    //   1851: astore 29
-    //   1853: invokestatic 437	java/lang/System:currentTimeMillis	()J
-    //   1856: lload 23
-    //   1858: lsub
-    //   1859: l2i
-    //   1860: istore 5
-    //   1862: aload_0
-    //   1863: getfield 86	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:myY	Ljava/util/Map;
-    //   1866: aload 35
-    //   1868: invokeinterface 429 2 0
-    //   1873: checkcast 431	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/d
-    //   1876: astore 30
-    //   1878: aload_3
-    //   1879: instanceof 1094
-    //   1882: ifeq +2435 -> 4317
-    //   1885: ldc_w 1149
-    //   1888: astore_1
-    //   1889: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bJK	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
-    //   1892: getfield 145	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:mxp	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/d/a;
-    //   1895: ifnull +70 -> 1965
-    //   1898: lload 13
-    //   1900: lload 15
-    //   1902: invokestatic 951	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:H	(JJ)J
-    //   1905: lstore 17
-    //   1907: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bJK	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
-    //   1910: getfield 145	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:mxp	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/d/a;
-    //   1913: aload 29
-    //   1915: aload_2
-    //   1916: aload 4
-    //   1918: getfield 418	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
-    //   1921: aload 4
-    //   1923: getfield 912	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:mzt	J
-    //   1926: aload 4
-    //   1928: getfield 915	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:mzu	J
-    //   1931: aload 4
-    //   1933: invokevirtual 957	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:getTotalLength	()J
-    //   1936: aload 4
-    //   1938: getfield 505	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:mzs	I
-    //   1941: aload 4
-    //   1943: getfield 903	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:mzy	Ljava/lang/String;
-    //   1946: aload 4
-    //   1948: invokevirtual 960	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:bJV	()J
-    //   1951: lload 13
-    //   1953: lload 15
-    //   1955: lload 17
-    //   1957: aload_1
-    //   1958: iload 5
-    //   1960: invokeinterface 963 22 0
-    //   1965: iconst_4
-    //   1966: aload 34
-    //   1968: ldc_w 1151
-    //   1971: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   1974: ldc_w 977
-    //   1977: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1980: return
-    //   1981: aload 28
-    //   1983: instanceof 1070
-    //   1986: ifeq +103 -> 2089
-    //   1989: aload 28
-    //   1991: checkcast 1070	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/c
-    //   1994: getfield 1073	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/c:mxC	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/e;
-    //   1997: astore_3
-    //   1998: aload_3
-    //   1999: instanceof 1075
-    //   2002: ifeq +64 -> 2066
-    //   2005: aload_3
-    //   2006: checkcast 1075	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l
-    //   2009: invokeinterface 1154 1 0
-    //   2014: astore 31
-    //   2016: aload 31
-    //   2018: ifnull +26 -> 2044
-    //   2021: iconst_4
-    //   2022: aload 34
-    //   2024: ldc_w 1156
-    //   2027: aload 31
-    //   2029: invokestatic 409	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   2032: invokevirtual 261	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   2035: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   2038: aload 28
-    //   2040: astore_3
-    //   2041: goto -1603 -> 438
-    //   2044: iconst_4
-    //   2045: aload 34
-    //   2047: ldc_w 1158
-    //   2050: aload_3
-    //   2051: invokestatic 409	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   2054: invokevirtual 261	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   2057: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   2060: aload 28
-    //   2062: astore_3
-    //   2063: goto -1625 -> 438
-    //   2066: bipush 6
-    //   2068: aload 34
-    //   2070: ldc_w 1160
-    //   2073: aload_3
-    //   2074: invokestatic 409	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   2077: invokevirtual 261	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   2080: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   2083: aload 28
-    //   2085: astore_3
-    //   2086: goto -1648 -> 438
-    //   2089: iconst_4
-    //   2090: aload 34
-    //   2092: ldc_w 1162
-    //   2095: aload 28
-    //   2097: invokestatic 409	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   2100: invokevirtual 261	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   2103: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   2106: aload 28
-    //   2108: astore_3
-    //   2109: goto -1671 -> 438
-    //   2112: iconst_0
-    //   2113: istore 27
-    //   2115: goto -1594 -> 521
-    //   2118: iconst_0
-    //   2119: istore 5
-    //   2121: goto -1437 -> 684
-    //   2124: iconst_0
-    //   2125: istore 7
-    //   2127: goto -1301 -> 826
-    //   2130: iload 5
-    //   2132: istore 8
-    //   2134: iload 6
-    //   2136: istore 7
-    //   2138: iload 5
-    //   2140: istore 10
-    //   2142: iload 6
-    //   2144: istore 9
-    //   2146: iload 6
-    //   2148: istore 11
-    //   2150: aload_3
-    //   2151: instanceof 1075
-    //   2154: ifeq -1140 -> 1014
-    //   2157: aload_3
-    //   2158: astore 28
-    //   2160: goto -1146 -> 1014
-    //   2163: iload 5
-    //   2165: istore 8
-    //   2167: iload 6
-    //   2169: istore 7
-    //   2171: iload 5
-    //   2173: istore 10
-    //   2175: iload 6
-    //   2177: istore 9
-    //   2179: iload 6
-    //   2181: istore 11
-    //   2183: bipush 6
-    //   2185: aload 34
-    //   2187: ldc_w 1164
-    //   2190: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   2193: iload 5
-    //   2195: istore 8
-    //   2197: iload 6
-    //   2199: istore 7
-    //   2201: iload 5
-    //   2203: istore 10
-    //   2205: iload 6
-    //   2207: istore 9
-    //   2209: iload 6
-    //   2211: istore 11
-    //   2213: aload 36
-    //   2215: aload 32
-    //   2217: iconst_0
-    //   2218: iload 12
-    //   2220: invokevirtual 1167	java/io/OutputStream:write	([BII)V
-    //   2223: iload 6
-    //   2225: iload 12
-    //   2227: iadd
-    //   2228: istore 6
-    //   2230: iload 5
-    //   2232: istore 8
-    //   2234: iload 6
-    //   2236: istore 7
-    //   2238: iload 5
-    //   2240: istore 10
-    //   2242: iload 6
-    //   2244: istore 9
-    //   2246: iload 6
-    //   2248: istore 11
-    //   2250: aload 4
-    //   2252: iload 12
-    //   2254: invokevirtual 1170	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:xz	(I)V
-    //   2257: iload 5
-    //   2259: istore 8
-    //   2261: iload 6
-    //   2263: istore 7
-    //   2265: iload 5
-    //   2267: istore 10
-    //   2269: iload 6
-    //   2271: istore 9
-    //   2273: iload 6
-    //   2275: istore 11
-    //   2277: aload 4
-    //   2279: iload 6
-    //   2281: invokevirtual 1173	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:xy	(I)V
-    //   2284: goto -1629 -> 655
-    //   2287: astore 28
-    //   2289: iload 10
-    //   2291: istore 5
-    //   2293: iload 9
-    //   2295: istore 6
-    //   2297: iconst_4
-    //   2298: aload 34
-    //   2300: new 115	java/lang/StringBuilder
-    //   2303: dup
-    //   2304: ldc_w 1175
-    //   2307: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   2310: aload 28
-    //   2312: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   2315: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2318: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2321: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   2324: aload 4
-    //   2326: iconst_1
-    //   2327: invokevirtual 449	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:xB	(I)Z
-    //   2330: ifeq +8 -> 2338
-    //   2333: aload 4
-    //   2335: invokevirtual 667	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:bJX	()V
-    //   2338: iconst_4
-    //   2339: aload 34
-    //   2341: new 115	java/lang/StringBuilder
-    //   2344: dup
-    //   2345: ldc_w 1137
-    //   2348: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   2351: iload 6
-    //   2353: invokevirtual 235	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2356: ldc_w 1139
-    //   2359: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2362: lload 17
-    //   2364: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2367: ldc_w 1021
-    //   2370: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2373: lload 25
-    //   2375: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2378: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2381: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   2384: aload_3
-    //   2385: invokeinterface 1022 1 0
-    //   2390: aload 29
-    //   2392: ifnull +2431 -> 4823
-    //   2395: aload 29
-    //   2397: invokevirtual 674	com/tencent/mm/vfs/o:isFile	()Z
-    //   2400: ifeq +2423 -> 4823
-    //   2403: aload 29
-    //   2405: invokevirtual 330	com/tencent/mm/vfs/o:exists	()Z
-    //   2408: ifeq +2415 -> 4823
-    //   2411: iconst_4
-    //   2412: aload 34
-    //   2414: new 115	java/lang/StringBuilder
-    //   2417: dup
-    //   2418: ldc_w 1141
-    //   2421: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   2424: aload 29
-    //   2426: invokevirtual 337	com/tencent/mm/vfs/o:toString	()Ljava/lang/String;
-    //   2429: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2432: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2435: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   2438: aload 29
-    //   2440: invokevirtual 1145	com/tencent/mm/vfs/o:her	()Landroid/net/Uri;
-    //   2443: invokestatic 352	com/tencent/mm/vfs/aa:z	(Landroid/net/Uri;)Ljava/lang/String;
-    //   2446: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bJK	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
-    //   2449: invokevirtual 478	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bJL	()Ljava/lang/String;
-    //   2452: invokevirtual 542	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   2455: ifeq +2368 -> 4823
-    //   2458: aload 29
-    //   2460: invokevirtual 677	com/tencent/mm/vfs/o:delete	()Z
-    //   2463: ifne +30 -> 2493
-    //   2466: iconst_5
-    //   2467: aload 34
-    //   2469: new 115	java/lang/StringBuilder
-    //   2472: dup
-    //   2473: ldc_w 1147
-    //   2476: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   2479: aload 29
-    //   2481: invokevirtual 337	com/tencent/mm/vfs/o:toString	()Ljava/lang/String;
-    //   2484: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2487: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2490: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   2493: aload 28
-    //   2495: astore_1
-    //   2496: ldc2_w 419
-    //   2499: lstore 15
-    //   2501: aload_3
-    //   2502: astore 28
-    //   2504: aload_1
-    //   2505: astore_3
-    //   2506: goto -693 -> 1813
-    //   2509: iload 5
-    //   2511: ifne +60 -> 2571
-    //   2514: iload 5
-    //   2516: istore 8
-    //   2518: iload 6
-    //   2520: istore 7
-    //   2522: iload 5
-    //   2524: istore 10
-    //   2526: iload 6
-    //   2528: istore 9
-    //   2530: iload 6
-    //   2532: istore 11
-    //   2534: aload 4
-    //   2536: sipush 256
-    //   2539: invokevirtual 452	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:xA	(I)V
-    //   2542: iload 5
-    //   2544: istore 8
-    //   2546: iload 6
-    //   2548: istore 7
-    //   2550: iload 5
-    //   2552: istore 10
-    //   2554: iload 6
-    //   2556: istore 9
-    //   2558: iload 6
-    //   2560: istore 11
-    //   2562: iconst_4
-    //   2563: aload 34
-    //   2565: ldc_w 1177
-    //   2568: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   2571: iload 5
-    //   2573: istore 8
-    //   2575: iload 6
-    //   2577: istore 7
-    //   2579: iload 5
-    //   2581: istore 10
-    //   2583: iload 6
-    //   2585: istore 9
-    //   2587: iload 6
-    //   2589: istore 11
-    //   2591: aload 4
-    //   2593: iconst_1
-    //   2594: invokevirtual 449	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:xB	(I)Z
-    //   2597: ifeq +28 -> 2625
-    //   2600: iload 5
-    //   2602: istore 8
-    //   2604: iload 6
-    //   2606: istore 7
-    //   2608: iload 5
-    //   2610: istore 10
-    //   2612: iload 6
-    //   2614: istore 9
-    //   2616: iload 6
-    //   2618: istore 11
-    //   2620: aload 4
-    //   2622: invokevirtual 667	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:bJX	()V
-    //   2625: iload 5
-    //   2627: istore 8
-    //   2629: iload 6
-    //   2631: istore 7
-    //   2633: iload 5
-    //   2635: istore 10
-    //   2637: iload 6
-    //   2639: istore 9
-    //   2641: iload 6
-    //   2643: istore 11
-    //   2645: aload 36
-    //   2647: invokevirtual 1053	java/io/OutputStream:flush	()V
-    //   2650: iload 5
-    //   2652: istore 8
-    //   2654: iload 6
-    //   2656: istore 7
-    //   2658: iload 5
-    //   2660: istore 10
-    //   2662: iload 6
-    //   2664: istore 9
-    //   2666: iload 6
-    //   2668: istore 11
-    //   2670: aload 36
-    //   2672: invokevirtual 671	java/io/OutputStream:close	()V
-    //   2675: iconst_4
-    //   2676: aload 34
-    //   2678: new 115	java/lang/StringBuilder
-    //   2681: dup
-    //   2682: ldc_w 1137
-    //   2685: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   2688: iload 6
-    //   2690: invokevirtual 235	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2693: ldc_w 1139
-    //   2696: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2699: lload 17
-    //   2701: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2704: ldc_w 1021
-    //   2707: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2710: lload 25
-    //   2712: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2715: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2718: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   2721: aload_3
-    //   2722: invokeinterface 1022 1 0
-    //   2727: aload_1
-    //   2728: invokevirtual 442	java/net/Socket:close	()V
-    //   2731: aload 29
-    //   2733: ifnull +2136 -> 4869
-    //   2736: aload 29
-    //   2738: invokevirtual 674	com/tencent/mm/vfs/o:isFile	()Z
-    //   2741: ifeq +2128 -> 4869
-    //   2744: aload 29
-    //   2746: invokevirtual 330	com/tencent/mm/vfs/o:exists	()Z
-    //   2749: ifeq +2120 -> 4869
-    //   2752: iconst_4
-    //   2753: aload 34
-    //   2755: new 115	java/lang/StringBuilder
-    //   2758: dup
-    //   2759: ldc_w 1141
-    //   2762: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   2765: aload 29
-    //   2767: invokevirtual 337	com/tencent/mm/vfs/o:toString	()Ljava/lang/String;
-    //   2770: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2773: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2776: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   2779: aload 29
-    //   2781: invokevirtual 1145	com/tencent/mm/vfs/o:her	()Landroid/net/Uri;
-    //   2784: invokestatic 352	com/tencent/mm/vfs/aa:z	(Landroid/net/Uri;)Ljava/lang/String;
-    //   2787: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bJK	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
-    //   2790: invokevirtual 478	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bJL	()Ljava/lang/String;
-    //   2793: invokevirtual 542	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   2796: ifeq +2073 -> 4869
-    //   2799: aload 29
-    //   2801: invokevirtual 677	com/tencent/mm/vfs/o:delete	()Z
-    //   2804: ifne +30 -> 2834
-    //   2807: iconst_5
-    //   2808: aload 34
-    //   2810: new 115	java/lang/StringBuilder
-    //   2813: dup
-    //   2814: ldc_w 1147
-    //   2817: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   2820: aload 29
-    //   2822: invokevirtual 337	com/tencent/mm/vfs/o:toString	()Ljava/lang/String;
-    //   2825: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2828: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2831: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   2834: aconst_null
-    //   2835: astore_1
-    //   2836: ldc2_w 419
-    //   2839: lstore 15
-    //   2841: aload_3
-    //   2842: astore 28
-    //   2844: aload_1
-    //   2845: astore_3
-    //   2846: goto -1033 -> 1813
-    //   2849: astore 28
-    //   2851: iconst_5
-    //   2852: aload 34
-    //   2854: ldc_w 1024
-    //   2857: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   2860: goto -133 -> 2727
-    //   2863: astore_1
-    //   2864: iconst_5
-    //   2865: aload 34
-    //   2867: ldc_w 1026
-    //   2870: aload_1
-    //   2871: invokestatic 468	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   2874: goto -143 -> 2731
-    //   2877: iconst_0
-    //   2878: istore 27
-    //   2880: goto -1457 -> 1423
-    //   2883: astore 30
-    //   2885: aload_3
-    //   2886: astore 32
-    //   2888: iconst_4
-    //   2889: aload 34
-    //   2891: ldc_w 1179
-    //   2894: aload 30
-    //   2896: invokestatic 468	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   2899: aload_3
-    //   2900: astore 31
-    //   2902: goto -1358 -> 1544
-    //   2905: astore_2
-    //   2906: aload 32
-    //   2908: astore_3
-    //   2909: iload 6
-    //   2911: istore 5
-    //   2913: iconst_4
-    //   2914: aload 34
-    //   2916: new 115	java/lang/StringBuilder
-    //   2919: dup
-    //   2920: ldc_w 1137
-    //   2923: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   2926: iload 5
-    //   2928: invokevirtual 235	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2931: ldc_w 1139
-    //   2934: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2937: lload 17
-    //   2939: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2942: ldc_w 1021
-    //   2945: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2948: lload 25
-    //   2950: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2953: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2956: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   2959: aload 28
-    //   2961: invokeinterface 1022 1 0
-    //   2966: aload_3
-    //   2967: ifnonnull +7 -> 2974
-    //   2970: aload_1
-    //   2971: invokevirtual 442	java/net/Socket:close	()V
-    //   2974: aload 29
-    //   2976: ifnull +101 -> 3077
-    //   2979: aload 29
-    //   2981: invokevirtual 674	com/tencent/mm/vfs/o:isFile	()Z
-    //   2984: ifeq +93 -> 3077
-    //   2987: aload 29
-    //   2989: invokevirtual 330	com/tencent/mm/vfs/o:exists	()Z
-    //   2992: ifeq +85 -> 3077
-    //   2995: iconst_4
-    //   2996: aload 34
-    //   2998: new 115	java/lang/StringBuilder
-    //   3001: dup
-    //   3002: ldc_w 1141
-    //   3005: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   3008: aload 29
-    //   3010: invokevirtual 337	com/tencent/mm/vfs/o:toString	()Ljava/lang/String;
-    //   3013: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3016: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3019: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   3022: aload 29
-    //   3024: invokevirtual 1145	com/tencent/mm/vfs/o:her	()Landroid/net/Uri;
-    //   3027: invokestatic 352	com/tencent/mm/vfs/aa:z	(Landroid/net/Uri;)Ljava/lang/String;
-    //   3030: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bJK	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
-    //   3033: invokevirtual 478	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bJL	()Ljava/lang/String;
-    //   3036: invokevirtual 542	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   3039: ifeq +38 -> 3077
-    //   3042: aload 29
-    //   3044: invokevirtual 677	com/tencent/mm/vfs/o:delete	()Z
-    //   3047: ifne +30 -> 3077
-    //   3050: iconst_5
-    //   3051: aload 34
-    //   3053: new 115	java/lang/StringBuilder
-    //   3056: dup
-    //   3057: ldc_w 1147
-    //   3060: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   3063: aload 29
-    //   3065: invokevirtual 337	com/tencent/mm/vfs/o:toString	()Ljava/lang/String;
-    //   3068: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3071: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3074: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   3077: ldc_w 977
-    //   3080: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   3083: aload_2
-    //   3084: athrow
-    //   3085: aload_3
-    //   3086: astore 32
-    //   3088: aload_3
-    //   3089: instanceof 1181
-    //   3092: ifeq +105 -> 3197
-    //   3095: aload_3
-    //   3096: astore 32
-    //   3098: aload_3
-    //   3099: checkcast 1181	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$e
-    //   3102: astore 30
-    //   3104: aload_3
-    //   3105: astore 32
-    //   3107: iconst_4
-    //   3108: aload 34
-    //   3110: new 115	java/lang/StringBuilder
-    //   3113: dup
-    //   3114: ldc_w 1122
-    //   3117: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   3120: aload 4
-    //   3122: getfield 906	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:eby	Ljava/lang/String;
-    //   3125: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3128: ldc_w 1183
-    //   3131: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3134: aload 30
-    //   3136: getfield 1184	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$e:bFD	Ljava/util/Map;
-    //   3139: invokestatic 1131	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/f:T	(Ljava/util/Map;)Ljava/lang/String;
-    //   3142: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3145: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3148: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   3151: aload_3
-    //   3152: astore 32
-    //   3154: lload 19
-    //   3156: lstore 15
-    //   3158: aload 4
-    //   3160: getfield 418	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
-    //   3163: bipush 90
-    //   3165: if_icmpne +1719 -> 4884
-    //   3168: aload_3
-    //   3169: astore 32
-    //   3171: aload 30
-    //   3173: getfield 1184	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$e:bFD	Ljava/util/Map;
-    //   3176: invokestatic 1135	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:U	(Ljava/util/Map;)J
-    //   3179: lstore 15
-    //   3181: aload_3
-    //   3182: astore 32
-    //   3184: ldc2_w 1185
-    //   3187: lload 15
-    //   3189: invokestatic 423	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:G	(JJ)J
-    //   3192: lstore 13
-    //   3194: goto +1690 -> 4884
-    //   3197: aload_3
-    //   3198: astore 32
-    //   3200: aload_3
-    //   3201: instanceof 1087
-    //   3204: ifeq +73 -> 3277
-    //   3207: aload_3
-    //   3208: astore 32
-    //   3210: iconst_4
-    //   3211: aload 34
-    //   3213: new 115	java/lang/StringBuilder
-    //   3216: dup
-    //   3217: ldc_w 1122
-    //   3220: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   3223: aload 4
-    //   3225: getfield 906	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:eby	Ljava/lang/String;
-    //   3228: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3231: ldc_w 1188
-    //   3234: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3237: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3240: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   3243: aload_3
-    //   3244: astore 32
-    //   3246: aload 4
-    //   3248: getfield 418	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
-    //   3251: bipush 90
-    //   3253: if_icmpne +973 -> 4226
-    //   3256: aload_3
-    //   3257: astore 32
-    //   3259: ldc2_w 1189
-    //   3262: ldc2_w 419
-    //   3265: invokestatic 423	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:G	(JJ)J
-    //   3268: lstore 13
-    //   3270: lload 19
-    //   3272: lstore 15
-    //   3274: goto -1639 -> 1635
-    //   3277: aload_3
-    //   3278: astore 32
-    //   3280: aload_3
-    //   3281: instanceof 1192
-    //   3284: ifeq +73 -> 3357
-    //   3287: aload_3
-    //   3288: astore 32
-    //   3290: iconst_4
-    //   3291: aload 34
-    //   3293: new 115	java/lang/StringBuilder
-    //   3296: dup
-    //   3297: ldc_w 1122
-    //   3300: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   3303: aload 4
-    //   3305: getfield 906	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:eby	Ljava/lang/String;
-    //   3308: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3311: ldc_w 1194
-    //   3314: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3317: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3320: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   3323: aload_3
-    //   3324: astore 32
-    //   3326: aload 4
-    //   3328: getfield 418	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
-    //   3331: bipush 90
-    //   3333: if_icmpne +893 -> 4226
-    //   3336: aload_3
-    //   3337: astore 32
-    //   3339: ldc2_w 1195
-    //   3342: ldc2_w 419
-    //   3345: invokestatic 423	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:G	(JJ)J
-    //   3348: lstore 13
-    //   3350: lload 19
-    //   3352: lstore 15
-    //   3354: goto -1719 -> 1635
-    //   3357: aload_3
-    //   3358: astore 32
-    //   3360: aload_3
-    //   3361: instanceof 415
-    //   3364: ifeq +60 -> 3424
-    //   3367: aload_3
-    //   3368: astore 32
-    //   3370: aload 4
-    //   3372: sipush 256
-    //   3375: invokevirtual 452	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:xA	(I)V
-    //   3378: aload_3
-    //   3379: astore 32
-    //   3381: iconst_5
-    //   3382: aload 34
-    //   3384: new 115	java/lang/StringBuilder
-    //   3387: dup
-    //   3388: ldc_w 1122
-    //   3391: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   3394: aload 4
-    //   3396: getfield 906	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:eby	Ljava/lang/String;
-    //   3399: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3402: ldc_w 1198
-    //   3405: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3408: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3411: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   3414: iconst_0
-    //   3415: istore 5
-    //   3417: lload 19
-    //   3419: lstore 15
-    //   3421: goto -1786 -> 1635
-    //   3424: aload_3
-    //   3425: astore 32
-    //   3427: aload_3
-    //   3428: instanceof 417
-    //   3431: ifeq +60 -> 3491
-    //   3434: aload_3
-    //   3435: astore 32
-    //   3437: aload 4
-    //   3439: sipush 256
-    //   3442: invokevirtual 452	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:xA	(I)V
-    //   3445: aload_3
-    //   3446: astore 32
-    //   3448: iconst_5
-    //   3449: aload 34
-    //   3451: new 115	java/lang/StringBuilder
-    //   3454: dup
-    //   3455: ldc_w 1122
-    //   3458: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   3461: aload 4
-    //   3463: getfield 906	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:eby	Ljava/lang/String;
-    //   3466: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3469: ldc_w 1200
-    //   3472: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3475: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3478: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   3481: iconst_0
-    //   3482: istore 5
-    //   3484: lload 19
-    //   3486: lstore 15
-    //   3488: goto -1853 -> 1635
-    //   3491: aload_3
-    //   3492: astore 32
-    //   3494: aload_3
-    //   3495: instanceof 1202
-    //   3498: ifeq +250 -> 3748
-    //   3501: aload_3
-    //   3502: astore 32
-    //   3504: iconst_5
-    //   3505: aload 34
-    //   3507: new 115	java/lang/StringBuilder
-    //   3510: dup
-    //   3511: ldc_w 1122
-    //   3514: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   3517: aload 4
-    //   3519: getfield 906	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:eby	Ljava/lang/String;
-    //   3522: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3525: ldc_w 1204
-    //   3528: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3531: aload_3
-    //   3532: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   3535: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3538: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3541: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   3544: aload_3
-    //   3545: astore 32
-    //   3547: aload 4
-    //   3549: getfield 418	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
-    //   3552: bipush 90
-    //   3554: if_icmpne +672 -> 4226
-    //   3557: aload_3
-    //   3558: astore 32
-    //   3560: aload 28
-    //   3562: instanceof 1070
-    //   3565: ifeq +141 -> 3706
-    //   3568: aload_3
-    //   3569: astore 32
-    //   3571: aload 28
-    //   3573: checkcast 1070	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/c
-    //   3576: getfield 1073	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/c:mxC	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/e;
-    //   3579: astore 30
-    //   3581: aload_3
-    //   3582: astore 32
-    //   3584: aload 30
-    //   3586: instanceof 1206
-    //   3589: ifeq +91 -> 3680
-    //   3592: aload_3
-    //   3593: astore 32
-    //   3595: aload 30
-    //   3597: checkcast 1206	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j
-    //   3600: getfield 1210	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:mxt	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/g;
-    //   3603: astore 30
-    //   3605: aload 30
-    //   3607: ifnull +1235 -> 4842
-    //   3610: aload_3
-    //   3611: astore 32
-    //   3613: aload 30
-    //   3615: getfield 1213	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/g:uri	Landroid/net/Uri;
-    //   3618: astore 30
-    //   3620: aload 30
-    //   3622: ifnull +1220 -> 4842
-    //   3625: aload_3
-    //   3626: astore 32
-    //   3628: aload 30
-    //   3630: invokevirtual 1216	android/net/Uri:getHost	()Ljava/lang/String;
-    //   3633: ifnull +1209 -> 4842
-    //   3636: aload_3
-    //   3637: astore 32
-    //   3639: aload 30
-    //   3641: invokevirtual 1216	android/net/Uri:getHost	()Ljava/lang/String;
-    //   3644: ldc_w 1218
-    //   3647: invokevirtual 551	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   3650: ifeq +1192 -> 4842
-    //   3653: iconst_1
-    //   3654: istore 7
-    //   3656: goto +1231 -> 4887
-    //   3659: aload_3
-    //   3660: astore 32
-    //   3662: iload 7
-    //   3664: i2l
-    //   3665: ldc2_w 419
-    //   3668: invokestatic 423	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:G	(JJ)J
-    //   3671: lstore 13
-    //   3673: lload 19
-    //   3675: lstore 15
-    //   3677: goto -2042 -> 1635
-    //   3680: aload_3
-    //   3681: astore 32
-    //   3683: iconst_4
-    //   3684: aload 34
-    //   3686: ldc_w 1220
-    //   3689: aload 28
-    //   3691: invokestatic 409	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   3694: invokevirtual 261	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   3697: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   3700: aconst_null
-    //   3701: astore 30
-    //   3703: goto -98 -> 3605
-    //   3706: aload_3
-    //   3707: astore 32
-    //   3709: aload 28
-    //   3711: instanceof 1206
-    //   3714: ifeq +1134 -> 4848
-    //   3717: aload_3
-    //   3718: astore 32
-    //   3720: aload 28
-    //   3722: checkcast 1206	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j
-    //   3725: getfield 1210	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:mxt	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/g;
-    //   3728: astore 30
-    //   3730: goto -125 -> 3605
-    //   3733: aload_3
-    //   3734: astore 32
-    //   3736: invokestatic 1223	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:isNetworkAvailable	()Z
-    //   3739: ifeq +1160 -> 4899
-    //   3742: iconst_5
-    //   3743: istore 7
-    //   3745: goto -86 -> 3659
-    //   3748: aload_3
-    //   3749: astore 32
-    //   3751: aload_3
-    //   3752: instanceof 1225
-    //   3755: ifeq +82 -> 3837
-    //   3758: aload_3
-    //   3759: astore 32
-    //   3761: iconst_5
-    //   3762: aload 34
-    //   3764: new 115	java/lang/StringBuilder
-    //   3767: dup
-    //   3768: ldc_w 1122
-    //   3771: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   3774: aload 4
-    //   3776: getfield 906	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:eby	Ljava/lang/String;
-    //   3779: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3782: ldc_w 1227
-    //   3785: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3788: aload_3
-    //   3789: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   3792: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3795: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3798: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   3801: aload_3
-    //   3802: astore 32
-    //   3804: aload 4
-    //   3806: getfield 418	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
-    //   3809: bipush 90
-    //   3811: if_icmpne +415 -> 4226
-    //   3814: aload_3
-    //   3815: astore 32
-    //   3817: aload_3
-    //   3818: invokestatic 1231	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:h	(Ljava/lang/Throwable;)I
-    //   3821: i2l
-    //   3822: ldc2_w 419
-    //   3825: invokestatic 423	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:G	(JJ)J
-    //   3828: lstore 13
-    //   3830: lload 19
-    //   3832: lstore 15
-    //   3834: goto -2199 -> 1635
-    //   3837: aload_3
-    //   3838: astore 32
-    //   3840: aload 28
-    //   3842: instanceof 1233
-    //   3845: ifeq +90 -> 3935
-    //   3848: aload_3
-    //   3849: astore 32
-    //   3851: aload_3
-    //   3852: instanceof 1235
-    //   3855: ifeq +80 -> 3935
-    //   3858: aload_3
-    //   3859: astore 32
-    //   3861: iconst_5
-    //   3862: aload 34
-    //   3864: new 115	java/lang/StringBuilder
-    //   3867: dup
-    //   3868: ldc_w 1122
-    //   3871: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   3874: aload 4
-    //   3876: getfield 906	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:eby	Ljava/lang/String;
-    //   3879: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3882: ldc_w 1237
-    //   3885: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3888: aload_3
-    //   3889: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   3892: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3895: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3898: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   3901: aload_3
-    //   3902: astore 32
-    //   3904: aload 4
-    //   3906: getfield 418	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
-    //   3909: bipush 90
-    //   3911: if_icmpne +315 -> 4226
-    //   3914: aload_3
-    //   3915: astore 32
-    //   3917: ldc2_w 1238
-    //   3920: ldc2_w 419
-    //   3923: invokestatic 423	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:G	(JJ)J
-    //   3926: lstore 13
-    //   3928: lload 19
-    //   3930: lstore 15
-    //   3932: goto -2297 -> 1635
-    //   3935: aload_3
-    //   3936: astore 32
-    //   3938: aload_3
-    //   3939: instanceof 1241
-    //   3942: ifeq +78 -> 4020
-    //   3945: aload_3
-    //   3946: astore 32
-    //   3948: iconst_5
-    //   3949: aload 34
-    //   3951: new 115	java/lang/StringBuilder
-    //   3954: dup
-    //   3955: ldc_w 1122
-    //   3958: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   3961: aload 4
-    //   3963: getfield 906	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:eby	Ljava/lang/String;
-    //   3966: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3969: ldc_w 1243
-    //   3972: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3975: aload_3
-    //   3976: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   3979: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3982: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3985: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   3988: aload_3
-    //   3989: astore 32
-    //   3991: aload 4
-    //   3993: getfield 418	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
-    //   3996: bipush 90
-    //   3998: if_icmpne +228 -> 4226
-    //   4001: aload_3
-    //   4002: astore 32
-    //   4004: lconst_1
-    //   4005: ldc2_w 419
-    //   4008: invokestatic 423	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:G	(JJ)J
-    //   4011: lstore 13
-    //   4013: lload 19
-    //   4015: lstore 15
-    //   4017: goto -2382 -> 1635
-    //   4020: aload_3
-    //   4021: astore 32
-    //   4023: aload_3
-    //   4024: instanceof 1245
-    //   4027: ifeq +60 -> 4087
-    //   4030: aload_3
-    //   4031: astore 32
-    //   4033: aload 4
-    //   4035: sipush 256
-    //   4038: invokevirtual 452	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:xA	(I)V
-    //   4041: aload_3
-    //   4042: astore 32
-    //   4044: iconst_4
-    //   4045: aload 34
-    //   4047: new 115	java/lang/StringBuilder
-    //   4050: dup
-    //   4051: ldc_w 1122
-    //   4054: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   4057: aload 4
-    //   4059: getfield 906	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:eby	Ljava/lang/String;
-    //   4062: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4065: ldc_w 1247
-    //   4068: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4071: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   4074: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   4077: iconst_0
-    //   4078: istore 5
-    //   4080: lload 19
-    //   4082: lstore 15
-    //   4084: goto -2449 -> 1635
-    //   4087: aload_3
-    //   4088: astore 32
-    //   4090: aload_0
-    //   4091: getfield 1249	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:aFC	Z
-    //   4094: ifeq +22 -> 4116
-    //   4097: aload_3
-    //   4098: astore 32
-    //   4100: iconst_5
-    //   4101: aload 34
-    //   4103: ldc_w 1251
-    //   4106: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   4109: lload 19
-    //   4111: lstore 15
-    //   4113: goto -2478 -> 1635
-    //   4116: aload_3
-    //   4117: astore 32
-    //   4119: aload_3
-    //   4120: invokevirtual 968	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   4123: ldc_w 1253
-    //   4126: invokevirtual 1255	java/lang/String:matches	(Ljava/lang/String;)Z
-    //   4129: ifeq +22 -> 4151
-    //   4132: aload_3
-    //   4133: astore 32
-    //   4135: iconst_5
-    //   4136: aload 34
-    //   4138: ldc_w 1257
-    //   4141: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   4144: lload 19
-    //   4146: lstore 15
-    //   4148: goto -2513 -> 1635
-    //   4151: aload_3
-    //   4152: astore 32
-    //   4154: aload_3
-    //   4155: invokevirtual 1258	java/lang/Exception:toString	()Ljava/lang/String;
-    //   4158: ldc_w 1260
-    //   4161: invokevirtual 634	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   4164: ifeq +22 -> 4186
-    //   4167: aload_3
-    //   4168: astore 32
-    //   4170: iconst_5
-    //   4171: aload 34
-    //   4173: ldc_w 1262
-    //   4176: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   4179: lload 19
-    //   4181: lstore 15
-    //   4183: goto -2548 -> 1635
-    //   4186: aload_3
-    //   4187: astore 32
-    //   4189: iconst_5
-    //   4190: aload 34
-    //   4192: new 115	java/lang/StringBuilder
-    //   4195: dup
-    //   4196: ldc_w 1122
-    //   4199: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   4202: aload 4
-    //   4204: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   4207: ldc_w 1264
-    //   4210: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4213: aload_3
-    //   4214: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   4217: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4220: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   4223: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   4226: lload 19
-    //   4228: lstore 15
-    //   4230: goto -2595 -> 1635
-    //   4233: astore 30
-    //   4235: iconst_5
-    //   4236: aload 34
-    //   4238: ldc_w 1024
-    //   4241: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   4244: goto -2542 -> 1702
-    //   4247: astore_1
-    //   4248: iconst_5
-    //   4249: aload 34
-    //   4251: ldc_w 1026
-    //   4254: aload_1
-    //   4255: invokestatic 468	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   4258: goto -2548 -> 1710
-    //   4261: astore_1
-    //   4262: iconst_5
-    //   4263: aload 34
-    //   4265: ldc_w 1024
-    //   4268: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   4271: goto -1881 -> 2390
-    //   4274: astore 4
-    //   4276: iconst_5
-    //   4277: aload 34
-    //   4279: ldc_w 1024
-    //   4282: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   4285: goto -1319 -> 2966
-    //   4288: astore_1
-    //   4289: iconst_5
-    //   4290: aload 34
-    //   4292: ldc_w 1026
-    //   4295: aload_1
-    //   4296: invokestatic 468	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   4299: goto -1325 -> 2974
-    //   4302: iload 5
-    //   4304: ifeq -2468 -> 1836
-    //   4307: aload 4
-    //   4309: bipush 16
-    //   4311: invokevirtual 452	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:xA	(I)V
-    //   4314: goto -2478 -> 1836
-    //   4317: aload_3
-    //   4318: instanceof 1181
-    //   4321: ifeq +10 -> 4331
-    //   4324: ldc_w 1266
-    //   4327: astore_1
-    //   4328: goto -2439 -> 1889
-    //   4331: aload_3
-    //   4332: instanceof 1087
-    //   4335: ifeq +27 -> 4362
-    //   4338: ldc_w 1268
-    //   4341: astore_3
-    //   4342: aload_3
-    //   4343: astore_1
-    //   4344: aload 30
-    //   4346: ifnull -2457 -> 1889
-    //   4349: new 83	java/util/HashMap
-    //   4352: dup
-    //   4353: invokespecial 84	java/util/HashMap:<init>	()V
-    //   4356: pop
-    //   4357: aload_3
-    //   4358: astore_1
-    //   4359: goto -2470 -> 1889
-    //   4362: aload_3
-    //   4363: instanceof 1192
-    //   4366: ifeq +27 -> 4393
-    //   4369: ldc_w 1270
-    //   4372: astore_3
-    //   4373: aload_3
-    //   4374: astore_1
-    //   4375: aload 30
-    //   4377: ifnull -2488 -> 1889
-    //   4380: new 83	java/util/HashMap
-    //   4383: dup
-    //   4384: invokespecial 84	java/util/HashMap:<init>	()V
-    //   4387: pop
-    //   4388: aload_3
-    //   4389: astore_1
-    //   4390: goto -2501 -> 1889
-    //   4393: aload_3
-    //   4394: instanceof 415
-    //   4397: ifeq +31 -> 4428
-    //   4400: ldc_w 1272
-    //   4403: astore_3
-    //   4404: aload_3
-    //   4405: astore_1
-    //   4406: aload 30
-    //   4408: ifnull -2519 -> 1889
-    //   4411: invokestatic 1223	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:isNetworkAvailable	()Z
-    //   4414: pop
-    //   4415: new 83	java/util/HashMap
-    //   4418: dup
-    //   4419: invokespecial 84	java/util/HashMap:<init>	()V
-    //   4422: pop
-    //   4423: aload_3
-    //   4424: astore_1
-    //   4425: goto -2536 -> 1889
-    //   4428: aload_3
-    //   4429: instanceof 417
-    //   4432: ifeq +31 -> 4463
-    //   4435: ldc_w 1274
-    //   4438: astore_3
-    //   4439: aload_3
-    //   4440: astore_1
-    //   4441: aload 30
-    //   4443: ifnull -2554 -> 1889
-    //   4446: invokestatic 1223	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:isNetworkAvailable	()Z
-    //   4449: pop
-    //   4450: new 83	java/util/HashMap
-    //   4453: dup
-    //   4454: invokespecial 84	java/util/HashMap:<init>	()V
-    //   4457: pop
-    //   4458: aload_3
-    //   4459: astore_1
-    //   4460: goto -2571 -> 1889
-    //   4463: aload_3
-    //   4464: instanceof 1202
-    //   4467: ifeq +31 -> 4498
-    //   4470: ldc_w 1276
-    //   4473: astore_3
-    //   4474: aload_3
-    //   4475: astore_1
-    //   4476: aload 30
-    //   4478: ifnull -2589 -> 1889
-    //   4481: invokestatic 1223	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:isNetworkAvailable	()Z
-    //   4484: pop
-    //   4485: new 83	java/util/HashMap
-    //   4488: dup
-    //   4489: invokespecial 84	java/util/HashMap:<init>	()V
-    //   4492: pop
-    //   4493: aload_3
-    //   4494: astore_1
-    //   4495: goto -2606 -> 1889
-    //   4498: aload_3
-    //   4499: instanceof 1225
-    //   4502: ifeq +35 -> 4537
-    //   4505: ldc_w 1278
-    //   4508: astore 28
-    //   4510: aload 28
-    //   4512: astore_1
-    //   4513: aload 30
-    //   4515: ifnull -2626 -> 1889
-    //   4518: aload_3
-    //   4519: invokestatic 1231	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:h	(Ljava/lang/Throwable;)I
-    //   4522: pop
-    //   4523: new 83	java/util/HashMap
-    //   4526: dup
-    //   4527: invokespecial 84	java/util/HashMap:<init>	()V
-    //   4530: pop
-    //   4531: aload 28
-    //   4533: astore_1
-    //   4534: goto -2645 -> 1889
-    //   4537: aload 28
-    //   4539: instanceof 1233
-    //   4542: ifeq +26 -> 4568
-    //   4545: aload_3
-    //   4546: instanceof 1235
-    //   4549: ifeq +19 -> 4568
-    //   4552: ldc_w 1280
-    //   4555: astore_3
+    //   1760: invokevirtual 1136	com/tencent/mm/vfs/q:bOF	()Ljava/lang/String;
+    //   1763: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bVt	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
+    //   1766: invokevirtual 471	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bVu	()Ljava/lang/String;
+    //   1769: invokevirtual 535	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   1772: ifeq +3055 -> 4827
+    //   1775: aload 29
+    //   1777: invokevirtual 670	com/tencent/mm/vfs/q:cFq	()Z
+    //   1780: ifne +30 -> 1810
+    //   1783: iconst_5
+    //   1784: aload 34
+    //   1786: new 115	java/lang/StringBuilder
+    //   1789: dup
+    //   1790: ldc_w 1138
+    //   1793: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1796: aload 29
+    //   1798: invokevirtual 337	com/tencent/mm/vfs/q:toString	()Ljava/lang/String;
+    //   1801: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1804: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1807: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   1810: aload_0
+    //   1811: getfield 169	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:pxs	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/p;
+    //   1814: aload 4
+    //   1816: invokevirtual 438	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/p:a	(Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/n;)V
+    //   1819: aload 4
+    //   1821: iconst_2
+    //   1822: invokevirtual 442	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:AY	(I)Z
+    //   1825: ifeq +2465 -> 4290
+    //   1828: aload 4
+    //   1830: invokevirtual 450	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:bVG	()V
+    //   1833: aload 4
+    //   1835: iconst_1
+    //   1836: putfield 453	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:kUD	Z
+    //   1839: ldc_w 651
+    //   1842: astore_1
+    //   1843: aload 4
+    //   1845: getfield 490	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:uuid	Ljava/lang/String;
+    //   1848: astore 29
+    //   1850: invokestatic 430	java/lang/System:currentTimeMillis	()J
+    //   1853: lload 23
+    //   1855: lsub
+    //   1856: l2i
+    //   1857: istore 5
+    //   1859: aload_0
+    //   1860: getfield 86	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:pxt	Ljava/util/Map;
+    //   1863: aload 35
+    //   1865: invokeinterface 422 2 0
+    //   1870: checkcast 424	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/d
+    //   1873: astore 30
+    //   1875: aload_3
+    //   1876: instanceof 1086
+    //   1879: ifeq +2426 -> 4305
+    //   1882: ldc_w 1140
+    //   1885: astore_1
+    //   1886: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bVt	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
+    //   1889: getfield 145	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:pvJ	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/d/a;
+    //   1892: ifnull +70 -> 1962
+    //   1895: lload 13
+    //   1897: lload 15
+    //   1899: invokestatic 943	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:I	(JJ)J
+    //   1902: lstore 17
+    //   1904: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bVt	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
+    //   1907: getfield 145	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:pvJ	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/d/a;
+    //   1910: aload 29
+    //   1912: aload_2
+    //   1913: aload 4
+    //   1915: getfield 411	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
+    //   1918: aload 4
+    //   1920: getfield 905	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:pxO	J
+    //   1923: aload 4
+    //   1925: getfield 908	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:pxP	J
+    //   1928: aload 4
+    //   1930: invokevirtual 949	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:getTotalLength	()J
+    //   1933: aload 4
+    //   1935: getfield 498	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:pxN	I
+    //   1938: aload 4
+    //   1940: getfield 896	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:pxT	Ljava/lang/String;
+    //   1943: aload 4
+    //   1945: invokevirtual 952	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:bVF	()J
+    //   1948: lload 13
+    //   1950: lload 15
+    //   1952: lload 17
+    //   1954: aload_1
+    //   1955: iload 5
+    //   1957: invokeinterface 955 22 0
+    //   1962: iconst_4
+    //   1963: aload 34
+    //   1965: ldc_w 1142
+    //   1968: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   1971: ldc_w 969
+    //   1974: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1977: return
+    //   1978: aload 28
+    //   1980: instanceof 1062
+    //   1983: ifeq +103 -> 2086
+    //   1986: aload 28
+    //   1988: checkcast 1062	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/c
+    //   1991: getfield 1065	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/c:pvW	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/e;
+    //   1994: astore_3
+    //   1995: aload_3
+    //   1996: instanceof 1067
+    //   1999: ifeq +64 -> 2063
+    //   2002: aload_3
+    //   2003: checkcast 1067	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l
+    //   2006: invokeinterface 1145 1 0
+    //   2011: astore 31
+    //   2013: aload 31
+    //   2015: ifnull +26 -> 2041
+    //   2018: iconst_4
+    //   2019: aload 34
+    //   2021: ldc_w 1147
+    //   2024: aload 31
+    //   2026: invokestatic 402	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   2029: invokevirtual 261	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   2032: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   2035: aload 28
+    //   2037: astore_3
+    //   2038: goto -1600 -> 438
+    //   2041: iconst_4
+    //   2042: aload 34
+    //   2044: ldc_w 1149
+    //   2047: aload_3
+    //   2048: invokestatic 402	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   2051: invokevirtual 261	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   2054: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   2057: aload 28
+    //   2059: astore_3
+    //   2060: goto -1622 -> 438
+    //   2063: bipush 6
+    //   2065: aload 34
+    //   2067: ldc_w 1151
+    //   2070: aload_3
+    //   2071: invokestatic 402	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   2074: invokevirtual 261	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   2077: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   2080: aload 28
+    //   2082: astore_3
+    //   2083: goto -1645 -> 438
+    //   2086: iconst_4
+    //   2087: aload 34
+    //   2089: ldc_w 1153
+    //   2092: aload 28
+    //   2094: invokestatic 402	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   2097: invokevirtual 261	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   2100: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   2103: aload 28
+    //   2105: astore_3
+    //   2106: goto -1668 -> 438
+    //   2109: iconst_0
+    //   2110: istore 27
+    //   2112: goto -1591 -> 521
+    //   2115: iconst_0
+    //   2116: istore 5
+    //   2118: goto -1434 -> 684
+    //   2121: iconst_0
+    //   2122: istore 7
+    //   2124: goto -1298 -> 826
+    //   2127: iload 5
+    //   2129: istore 8
+    //   2131: iload 6
+    //   2133: istore 7
+    //   2135: iload 5
+    //   2137: istore 10
+    //   2139: iload 6
+    //   2141: istore 9
+    //   2143: iload 6
+    //   2145: istore 11
+    //   2147: aload_3
+    //   2148: instanceof 1067
+    //   2151: ifeq -1137 -> 1014
+    //   2154: aload_3
+    //   2155: astore 28
+    //   2157: goto -1143 -> 1014
+    //   2160: iload 5
+    //   2162: istore 8
+    //   2164: iload 6
+    //   2166: istore 7
+    //   2168: iload 5
+    //   2170: istore 10
+    //   2172: iload 6
+    //   2174: istore 9
+    //   2176: iload 6
+    //   2178: istore 11
+    //   2180: bipush 6
+    //   2182: aload 34
+    //   2184: ldc_w 1155
+    //   2187: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   2190: iload 5
+    //   2192: istore 8
+    //   2194: iload 6
+    //   2196: istore 7
+    //   2198: iload 5
+    //   2200: istore 10
+    //   2202: iload 6
+    //   2204: istore 9
+    //   2206: iload 6
+    //   2208: istore 11
+    //   2210: aload 36
+    //   2212: aload 32
+    //   2214: iconst_0
+    //   2215: iload 12
+    //   2217: invokevirtual 1158	java/io/OutputStream:write	([BII)V
+    //   2220: iload 6
+    //   2222: iload 12
+    //   2224: iadd
+    //   2225: istore 6
+    //   2227: iload 5
+    //   2229: istore 8
+    //   2231: iload 6
+    //   2233: istore 7
+    //   2235: iload 5
+    //   2237: istore 10
+    //   2239: iload 6
+    //   2241: istore 9
+    //   2243: iload 6
+    //   2245: istore 11
+    //   2247: aload 4
+    //   2249: iload 12
+    //   2251: invokevirtual 1161	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:AW	(I)V
+    //   2254: iload 5
+    //   2256: istore 8
+    //   2258: iload 6
+    //   2260: istore 7
+    //   2262: iload 5
+    //   2264: istore 10
+    //   2266: iload 6
+    //   2268: istore 9
+    //   2270: iload 6
+    //   2272: istore 11
+    //   2274: aload 4
+    //   2276: iload 6
+    //   2278: invokevirtual 1164	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:AV	(I)V
+    //   2281: goto -1626 -> 655
+    //   2284: astore 28
+    //   2286: iload 10
+    //   2288: istore 5
+    //   2290: iload 9
+    //   2292: istore 6
+    //   2294: iconst_4
+    //   2295: aload 34
+    //   2297: new 115	java/lang/StringBuilder
+    //   2300: dup
+    //   2301: ldc_w 1166
+    //   2304: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2307: aload 28
+    //   2309: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   2312: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2315: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2318: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   2321: aload 4
+    //   2323: iconst_1
+    //   2324: invokevirtual 442	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:AY	(I)Z
+    //   2327: ifeq +8 -> 2335
+    //   2330: aload 4
+    //   2332: invokevirtual 660	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:bVH	()V
+    //   2335: iconst_4
+    //   2336: aload 34
+    //   2338: new 115	java/lang/StringBuilder
+    //   2341: dup
+    //   2342: ldc_w 1129
+    //   2345: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2348: iload 6
+    //   2350: invokevirtual 235	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2353: ldc_w 1131
+    //   2356: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2359: lload 17
+    //   2361: invokevirtual 485	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2364: ldc_w 1013
+    //   2367: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2370: lload 25
+    //   2372: invokevirtual 485	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2375: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2378: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   2381: aload_3
+    //   2382: invokeinterface 1014 1 0
+    //   2387: aload 29
+    //   2389: ifnull +2422 -> 4811
+    //   2392: aload 29
+    //   2394: invokevirtual 667	com/tencent/mm/vfs/q:ifH	()Z
+    //   2397: ifeq +2414 -> 4811
+    //   2400: aload 29
+    //   2402: invokevirtual 330	com/tencent/mm/vfs/q:ifE	()Z
+    //   2405: ifeq +2406 -> 4811
+    //   2408: iconst_4
+    //   2409: aload 34
+    //   2411: new 115	java/lang/StringBuilder
+    //   2414: dup
+    //   2415: ldc_w 1133
+    //   2418: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2421: aload 29
+    //   2423: invokevirtual 337	com/tencent/mm/vfs/q:toString	()Ljava/lang/String;
+    //   2426: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2429: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2432: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   2435: aload 29
+    //   2437: invokevirtual 1136	com/tencent/mm/vfs/q:bOF	()Ljava/lang/String;
+    //   2440: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bVt	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
+    //   2443: invokevirtual 471	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bVu	()Ljava/lang/String;
+    //   2446: invokevirtual 535	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   2449: ifeq +2362 -> 4811
+    //   2452: aload 29
+    //   2454: invokevirtual 670	com/tencent/mm/vfs/q:cFq	()Z
+    //   2457: ifne +30 -> 2487
+    //   2460: iconst_5
+    //   2461: aload 34
+    //   2463: new 115	java/lang/StringBuilder
+    //   2466: dup
+    //   2467: ldc_w 1138
+    //   2470: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2473: aload 29
+    //   2475: invokevirtual 337	com/tencent/mm/vfs/q:toString	()Ljava/lang/String;
+    //   2478: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2481: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2484: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   2487: aload 28
+    //   2489: astore_1
+    //   2490: ldc2_w 412
+    //   2493: lstore 15
+    //   2495: aload_3
+    //   2496: astore 28
+    //   2498: aload_1
+    //   2499: astore_3
+    //   2500: goto -690 -> 1810
+    //   2503: iload 5
+    //   2505: ifne +60 -> 2565
+    //   2508: iload 5
+    //   2510: istore 8
+    //   2512: iload 6
+    //   2514: istore 7
+    //   2516: iload 5
+    //   2518: istore 10
+    //   2520: iload 6
+    //   2522: istore 9
+    //   2524: iload 6
+    //   2526: istore 11
+    //   2528: aload 4
+    //   2530: sipush 256
+    //   2533: invokevirtual 445	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:AX	(I)V
+    //   2536: iload 5
+    //   2538: istore 8
+    //   2540: iload 6
+    //   2542: istore 7
+    //   2544: iload 5
+    //   2546: istore 10
+    //   2548: iload 6
+    //   2550: istore 9
+    //   2552: iload 6
+    //   2554: istore 11
+    //   2556: iconst_4
+    //   2557: aload 34
+    //   2559: ldc_w 1168
+    //   2562: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   2565: iload 5
+    //   2567: istore 8
+    //   2569: iload 6
+    //   2571: istore 7
+    //   2573: iload 5
+    //   2575: istore 10
+    //   2577: iload 6
+    //   2579: istore 9
+    //   2581: iload 6
+    //   2583: istore 11
+    //   2585: aload 4
+    //   2587: iconst_1
+    //   2588: invokevirtual 442	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:AY	(I)Z
+    //   2591: ifeq +28 -> 2619
+    //   2594: iload 5
+    //   2596: istore 8
+    //   2598: iload 6
+    //   2600: istore 7
+    //   2602: iload 5
+    //   2604: istore 10
+    //   2606: iload 6
+    //   2608: istore 9
+    //   2610: iload 6
+    //   2612: istore 11
+    //   2614: aload 4
+    //   2616: invokevirtual 660	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:bVH	()V
+    //   2619: iload 5
+    //   2621: istore 8
+    //   2623: iload 6
+    //   2625: istore 7
+    //   2627: iload 5
+    //   2629: istore 10
+    //   2631: iload 6
+    //   2633: istore 9
+    //   2635: iload 6
+    //   2637: istore 11
+    //   2639: aload 36
+    //   2641: invokevirtual 1045	java/io/OutputStream:flush	()V
+    //   2644: iload 5
+    //   2646: istore 8
+    //   2648: iload 6
+    //   2650: istore 7
+    //   2652: iload 5
+    //   2654: istore 10
+    //   2656: iload 6
+    //   2658: istore 9
+    //   2660: iload 6
+    //   2662: istore 11
+    //   2664: aload 36
+    //   2666: invokevirtual 664	java/io/OutputStream:close	()V
+    //   2669: iconst_4
+    //   2670: aload 34
+    //   2672: new 115	java/lang/StringBuilder
+    //   2675: dup
+    //   2676: ldc_w 1129
+    //   2679: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2682: iload 6
+    //   2684: invokevirtual 235	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2687: ldc_w 1131
+    //   2690: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2693: lload 17
+    //   2695: invokevirtual 485	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2698: ldc_w 1013
+    //   2701: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2704: lload 25
+    //   2706: invokevirtual 485	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2709: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2712: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   2715: aload_3
+    //   2716: invokeinterface 1014 1 0
+    //   2721: aload_1
+    //   2722: invokevirtual 435	java/net/Socket:close	()V
+    //   2725: aload 29
+    //   2727: ifnull +2130 -> 4857
+    //   2730: aload 29
+    //   2732: invokevirtual 667	com/tencent/mm/vfs/q:ifH	()Z
+    //   2735: ifeq +2122 -> 4857
+    //   2738: aload 29
+    //   2740: invokevirtual 330	com/tencent/mm/vfs/q:ifE	()Z
+    //   2743: ifeq +2114 -> 4857
+    //   2746: iconst_4
+    //   2747: aload 34
+    //   2749: new 115	java/lang/StringBuilder
+    //   2752: dup
+    //   2753: ldc_w 1133
+    //   2756: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2759: aload 29
+    //   2761: invokevirtual 337	com/tencent/mm/vfs/q:toString	()Ljava/lang/String;
+    //   2764: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2767: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2770: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   2773: aload 29
+    //   2775: invokevirtual 1136	com/tencent/mm/vfs/q:bOF	()Ljava/lang/String;
+    //   2778: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bVt	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
+    //   2781: invokevirtual 471	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bVu	()Ljava/lang/String;
+    //   2784: invokevirtual 535	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   2787: ifeq +2070 -> 4857
+    //   2790: aload 29
+    //   2792: invokevirtual 670	com/tencent/mm/vfs/q:cFq	()Z
+    //   2795: ifne +30 -> 2825
+    //   2798: iconst_5
+    //   2799: aload 34
+    //   2801: new 115	java/lang/StringBuilder
+    //   2804: dup
+    //   2805: ldc_w 1138
+    //   2808: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2811: aload 29
+    //   2813: invokevirtual 337	com/tencent/mm/vfs/q:toString	()Ljava/lang/String;
+    //   2816: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2819: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2822: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   2825: aconst_null
+    //   2826: astore_1
+    //   2827: ldc2_w 412
+    //   2830: lstore 15
+    //   2832: aload_3
+    //   2833: astore 28
+    //   2835: aload_1
+    //   2836: astore_3
+    //   2837: goto -1027 -> 1810
+    //   2840: astore 28
+    //   2842: iconst_5
+    //   2843: aload 34
+    //   2845: ldc_w 1016
+    //   2848: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   2851: goto -130 -> 2721
+    //   2854: astore_1
+    //   2855: iconst_5
+    //   2856: aload 34
+    //   2858: ldc_w 1018
+    //   2861: aload_1
+    //   2862: invokestatic 461	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   2865: goto -140 -> 2725
+    //   2868: iconst_0
+    //   2869: istore 27
+    //   2871: goto -1448 -> 1423
+    //   2874: astore 30
+    //   2876: aload_3
+    //   2877: astore 32
+    //   2879: iconst_4
+    //   2880: aload 34
+    //   2882: ldc_w 1170
+    //   2885: aload 30
+    //   2887: invokestatic 461	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   2890: aload_3
+    //   2891: astore 31
+    //   2893: goto -1349 -> 1544
+    //   2896: astore_2
+    //   2897: aload 32
+    //   2899: astore_3
+    //   2900: iload 6
+    //   2902: istore 5
+    //   2904: iconst_4
+    //   2905: aload 34
+    //   2907: new 115	java/lang/StringBuilder
+    //   2910: dup
+    //   2911: ldc_w 1129
+    //   2914: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2917: iload 5
+    //   2919: invokevirtual 235	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2922: ldc_w 1131
+    //   2925: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2928: lload 17
+    //   2930: invokevirtual 485	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2933: ldc_w 1013
+    //   2936: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2939: lload 25
+    //   2941: invokevirtual 485	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2944: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2947: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   2950: aload 28
+    //   2952: invokeinterface 1014 1 0
+    //   2957: aload_3
+    //   2958: ifnonnull +7 -> 2965
+    //   2961: aload_1
+    //   2962: invokevirtual 435	java/net/Socket:close	()V
+    //   2965: aload 29
+    //   2967: ifnull +98 -> 3065
+    //   2970: aload 29
+    //   2972: invokevirtual 667	com/tencent/mm/vfs/q:ifH	()Z
+    //   2975: ifeq +90 -> 3065
+    //   2978: aload 29
+    //   2980: invokevirtual 330	com/tencent/mm/vfs/q:ifE	()Z
+    //   2983: ifeq +82 -> 3065
+    //   2986: iconst_4
+    //   2987: aload 34
+    //   2989: new 115	java/lang/StringBuilder
+    //   2992: dup
+    //   2993: ldc_w 1133
+    //   2996: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2999: aload 29
+    //   3001: invokevirtual 337	com/tencent/mm/vfs/q:toString	()Ljava/lang/String;
+    //   3004: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3007: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3010: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   3013: aload 29
+    //   3015: invokevirtual 1136	com/tencent/mm/vfs/q:bOF	()Ljava/lang/String;
+    //   3018: invokestatic 107	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bVt	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
+    //   3021: invokevirtual 471	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bVu	()Ljava/lang/String;
+    //   3024: invokevirtual 535	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   3027: ifeq +38 -> 3065
+    //   3030: aload 29
+    //   3032: invokevirtual 670	com/tencent/mm/vfs/q:cFq	()Z
+    //   3035: ifne +30 -> 3065
+    //   3038: iconst_5
+    //   3039: aload 34
+    //   3041: new 115	java/lang/StringBuilder
+    //   3044: dup
+    //   3045: ldc_w 1138
+    //   3048: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   3051: aload 29
+    //   3053: invokevirtual 337	com/tencent/mm/vfs/q:toString	()Ljava/lang/String;
+    //   3056: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3059: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3062: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   3065: ldc_w 969
+    //   3068: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   3071: aload_2
+    //   3072: athrow
+    //   3073: aload_3
+    //   3074: astore 32
+    //   3076: aload_3
+    //   3077: instanceof 1172
+    //   3080: ifeq +105 -> 3185
+    //   3083: aload_3
+    //   3084: astore 32
+    //   3086: aload_3
+    //   3087: checkcast 1172	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$e
+    //   3090: astore 30
+    //   3092: aload_3
+    //   3093: astore 32
+    //   3095: iconst_4
+    //   3096: aload 34
+    //   3098: new 115	java/lang/StringBuilder
+    //   3101: dup
+    //   3102: ldc_w 1114
+    //   3105: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   3108: aload 4
+    //   3110: getfield 899	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:fVx	Ljava/lang/String;
+    //   3113: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3116: ldc_w 1174
+    //   3119: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3122: aload 30
+    //   3124: getfield 1175	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$e:bph	Ljava/util/Map;
+    //   3127: invokestatic 1123	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/f:M	(Ljava/util/Map;)Ljava/lang/String;
+    //   3130: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3133: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3136: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   3139: aload_3
+    //   3140: astore 32
+    //   3142: lload 19
+    //   3144: lstore 15
+    //   3146: aload 4
+    //   3148: getfield 411	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
+    //   3151: bipush 90
+    //   3153: if_icmpne +1719 -> 4872
+    //   3156: aload_3
+    //   3157: astore 32
+    //   3159: aload 30
+    //   3161: getfield 1175	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/l$e:bph	Ljava/util/Map;
+    //   3164: invokestatic 1127	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:N	(Ljava/util/Map;)J
+    //   3167: lstore 15
+    //   3169: aload_3
+    //   3170: astore 32
+    //   3172: ldc2_w 1176
+    //   3175: lload 15
+    //   3177: invokestatic 416	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:H	(JJ)J
+    //   3180: lstore 13
+    //   3182: goto +1690 -> 4872
+    //   3185: aload_3
+    //   3186: astore 32
+    //   3188: aload_3
+    //   3189: instanceof 1079
+    //   3192: ifeq +73 -> 3265
+    //   3195: aload_3
+    //   3196: astore 32
+    //   3198: iconst_4
+    //   3199: aload 34
+    //   3201: new 115	java/lang/StringBuilder
+    //   3204: dup
+    //   3205: ldc_w 1114
+    //   3208: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   3211: aload 4
+    //   3213: getfield 899	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:fVx	Ljava/lang/String;
+    //   3216: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3219: ldc_w 1179
+    //   3222: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3225: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3228: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   3231: aload_3
+    //   3232: astore 32
+    //   3234: aload 4
+    //   3236: getfield 411	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
+    //   3239: bipush 90
+    //   3241: if_icmpne +973 -> 4214
+    //   3244: aload_3
+    //   3245: astore 32
+    //   3247: ldc2_w 1180
+    //   3250: ldc2_w 412
+    //   3253: invokestatic 416	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:H	(JJ)J
+    //   3256: lstore 13
+    //   3258: lload 19
+    //   3260: lstore 15
+    //   3262: goto -1627 -> 1635
+    //   3265: aload_3
+    //   3266: astore 32
+    //   3268: aload_3
+    //   3269: instanceof 1183
+    //   3272: ifeq +73 -> 3345
+    //   3275: aload_3
+    //   3276: astore 32
+    //   3278: iconst_4
+    //   3279: aload 34
+    //   3281: new 115	java/lang/StringBuilder
+    //   3284: dup
+    //   3285: ldc_w 1114
+    //   3288: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   3291: aload 4
+    //   3293: getfield 899	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:fVx	Ljava/lang/String;
+    //   3296: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3299: ldc_w 1185
+    //   3302: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3305: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3308: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   3311: aload_3
+    //   3312: astore 32
+    //   3314: aload 4
+    //   3316: getfield 411	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
+    //   3319: bipush 90
+    //   3321: if_icmpne +893 -> 4214
+    //   3324: aload_3
+    //   3325: astore 32
+    //   3327: ldc2_w 1186
+    //   3330: ldc2_w 412
+    //   3333: invokestatic 416	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:H	(JJ)J
+    //   3336: lstore 13
+    //   3338: lload 19
+    //   3340: lstore 15
+    //   3342: goto -1707 -> 1635
+    //   3345: aload_3
+    //   3346: astore 32
+    //   3348: aload_3
+    //   3349: instanceof 408
+    //   3352: ifeq +60 -> 3412
+    //   3355: aload_3
+    //   3356: astore 32
+    //   3358: aload 4
+    //   3360: sipush 256
+    //   3363: invokevirtual 445	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:AX	(I)V
+    //   3366: aload_3
+    //   3367: astore 32
+    //   3369: iconst_5
+    //   3370: aload 34
+    //   3372: new 115	java/lang/StringBuilder
+    //   3375: dup
+    //   3376: ldc_w 1114
+    //   3379: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   3382: aload 4
+    //   3384: getfield 899	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:fVx	Ljava/lang/String;
+    //   3387: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3390: ldc_w 1189
+    //   3393: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3396: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3399: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   3402: iconst_0
+    //   3403: istore 5
+    //   3405: lload 19
+    //   3407: lstore 15
+    //   3409: goto -1774 -> 1635
+    //   3412: aload_3
+    //   3413: astore 32
+    //   3415: aload_3
+    //   3416: instanceof 410
+    //   3419: ifeq +60 -> 3479
+    //   3422: aload_3
+    //   3423: astore 32
+    //   3425: aload 4
+    //   3427: sipush 256
+    //   3430: invokevirtual 445	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:AX	(I)V
+    //   3433: aload_3
+    //   3434: astore 32
+    //   3436: iconst_5
+    //   3437: aload 34
+    //   3439: new 115	java/lang/StringBuilder
+    //   3442: dup
+    //   3443: ldc_w 1114
+    //   3446: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   3449: aload 4
+    //   3451: getfield 899	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:fVx	Ljava/lang/String;
+    //   3454: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3457: ldc_w 1191
+    //   3460: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3463: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3466: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   3469: iconst_0
+    //   3470: istore 5
+    //   3472: lload 19
+    //   3474: lstore 15
+    //   3476: goto -1841 -> 1635
+    //   3479: aload_3
+    //   3480: astore 32
+    //   3482: aload_3
+    //   3483: instanceof 1193
+    //   3486: ifeq +250 -> 3736
+    //   3489: aload_3
+    //   3490: astore 32
+    //   3492: iconst_5
+    //   3493: aload 34
+    //   3495: new 115	java/lang/StringBuilder
+    //   3498: dup
+    //   3499: ldc_w 1114
+    //   3502: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   3505: aload 4
+    //   3507: getfield 899	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:fVx	Ljava/lang/String;
+    //   3510: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3513: ldc_w 1195
+    //   3516: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3519: aload_3
+    //   3520: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   3523: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3526: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3529: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   3532: aload_3
+    //   3533: astore 32
+    //   3535: aload 4
+    //   3537: getfield 411	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
+    //   3540: bipush 90
+    //   3542: if_icmpne +672 -> 4214
+    //   3545: aload_3
+    //   3546: astore 32
+    //   3548: aload 28
+    //   3550: instanceof 1062
+    //   3553: ifeq +141 -> 3694
+    //   3556: aload_3
+    //   3557: astore 32
+    //   3559: aload 28
+    //   3561: checkcast 1062	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/c
+    //   3564: getfield 1065	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/c:pvW	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/e;
+    //   3567: astore 30
+    //   3569: aload_3
+    //   3570: astore 32
+    //   3572: aload 30
+    //   3574: instanceof 1197
+    //   3577: ifeq +91 -> 3668
+    //   3580: aload_3
+    //   3581: astore 32
+    //   3583: aload 30
+    //   3585: checkcast 1197	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j
+    //   3588: getfield 1201	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:pvN	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/g;
+    //   3591: astore 30
+    //   3593: aload 30
+    //   3595: ifnull +1235 -> 4830
+    //   3598: aload_3
+    //   3599: astore 32
+    //   3601: aload 30
+    //   3603: getfield 1205	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/g:uri	Landroid/net/Uri;
+    //   3606: astore 30
+    //   3608: aload 30
+    //   3610: ifnull +1220 -> 4830
+    //   3613: aload_3
+    //   3614: astore 32
+    //   3616: aload 30
+    //   3618: invokevirtual 1208	android/net/Uri:getHost	()Ljava/lang/String;
+    //   3621: ifnull +1209 -> 4830
+    //   3624: aload_3
+    //   3625: astore 32
+    //   3627: aload 30
+    //   3629: invokevirtual 1208	android/net/Uri:getHost	()Ljava/lang/String;
+    //   3632: ldc_w 1210
+    //   3635: invokevirtual 544	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   3638: ifeq +1192 -> 4830
+    //   3641: iconst_1
+    //   3642: istore 7
+    //   3644: goto +1231 -> 4875
+    //   3647: aload_3
+    //   3648: astore 32
+    //   3650: iload 7
+    //   3652: i2l
+    //   3653: ldc2_w 412
+    //   3656: invokestatic 416	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:H	(JJ)J
+    //   3659: lstore 13
+    //   3661: lload 19
+    //   3663: lstore 15
+    //   3665: goto -2030 -> 1635
+    //   3668: aload_3
+    //   3669: astore 32
+    //   3671: iconst_4
+    //   3672: aload 34
+    //   3674: ldc_w 1212
+    //   3677: aload 28
+    //   3679: invokestatic 402	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   3682: invokevirtual 261	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   3685: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   3688: aconst_null
+    //   3689: astore 30
+    //   3691: goto -98 -> 3593
+    //   3694: aload_3
+    //   3695: astore 32
+    //   3697: aload 28
+    //   3699: instanceof 1197
+    //   3702: ifeq +1134 -> 4836
+    //   3705: aload_3
+    //   3706: astore 32
+    //   3708: aload 28
+    //   3710: checkcast 1197	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j
+    //   3713: getfield 1201	com/tencent/mm/plugin/appbrand/jsapi/video/b/b/j:pvN	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/b/g;
+    //   3716: astore 30
+    //   3718: goto -125 -> 3593
+    //   3721: aload_3
+    //   3722: astore 32
+    //   3724: invokestatic 1215	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:isNetworkAvailable	()Z
+    //   3727: ifeq +1160 -> 4887
+    //   3730: iconst_5
+    //   3731: istore 7
+    //   3733: goto -86 -> 3647
+    //   3736: aload_3
+    //   3737: astore 32
+    //   3739: aload_3
+    //   3740: instanceof 1217
+    //   3743: ifeq +82 -> 3825
+    //   3746: aload_3
+    //   3747: astore 32
+    //   3749: iconst_5
+    //   3750: aload 34
+    //   3752: new 115	java/lang/StringBuilder
+    //   3755: dup
+    //   3756: ldc_w 1114
+    //   3759: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   3762: aload 4
+    //   3764: getfield 899	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:fVx	Ljava/lang/String;
+    //   3767: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3770: ldc_w 1219
+    //   3773: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3776: aload_3
+    //   3777: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   3780: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3783: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3786: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   3789: aload_3
+    //   3790: astore 32
+    //   3792: aload 4
+    //   3794: getfield 411	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
+    //   3797: bipush 90
+    //   3799: if_icmpne +415 -> 4214
+    //   3802: aload_3
+    //   3803: astore 32
+    //   3805: aload_3
+    //   3806: invokestatic 1223	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:h	(Ljava/lang/Throwable;)I
+    //   3809: i2l
+    //   3810: ldc2_w 412
+    //   3813: invokestatic 416	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:H	(JJ)J
+    //   3816: lstore 13
+    //   3818: lload 19
+    //   3820: lstore 15
+    //   3822: goto -2187 -> 1635
+    //   3825: aload_3
+    //   3826: astore 32
+    //   3828: aload 28
+    //   3830: instanceof 1225
+    //   3833: ifeq +90 -> 3923
+    //   3836: aload_3
+    //   3837: astore 32
+    //   3839: aload_3
+    //   3840: instanceof 1227
+    //   3843: ifeq +80 -> 3923
+    //   3846: aload_3
+    //   3847: astore 32
+    //   3849: iconst_5
+    //   3850: aload 34
+    //   3852: new 115	java/lang/StringBuilder
+    //   3855: dup
+    //   3856: ldc_w 1114
+    //   3859: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   3862: aload 4
+    //   3864: getfield 899	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:fVx	Ljava/lang/String;
+    //   3867: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3870: ldc_w 1229
+    //   3873: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3876: aload_3
+    //   3877: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   3880: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3883: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3886: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   3889: aload_3
+    //   3890: astore 32
+    //   3892: aload 4
+    //   3894: getfield 411	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
+    //   3897: bipush 90
+    //   3899: if_icmpne +315 -> 4214
+    //   3902: aload_3
+    //   3903: astore 32
+    //   3905: ldc2_w 1230
+    //   3908: ldc2_w 412
+    //   3911: invokestatic 416	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:H	(JJ)J
+    //   3914: lstore 13
+    //   3916: lload 19
+    //   3918: lstore 15
+    //   3920: goto -2285 -> 1635
+    //   3923: aload_3
+    //   3924: astore 32
+    //   3926: aload_3
+    //   3927: instanceof 1233
+    //   3930: ifeq +78 -> 4008
+    //   3933: aload_3
+    //   3934: astore 32
+    //   3936: iconst_5
+    //   3937: aload 34
+    //   3939: new 115	java/lang/StringBuilder
+    //   3942: dup
+    //   3943: ldc_w 1114
+    //   3946: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   3949: aload 4
+    //   3951: getfield 899	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:fVx	Ljava/lang/String;
+    //   3954: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3957: ldc_w 1235
+    //   3960: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3963: aload_3
+    //   3964: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   3967: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3970: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3973: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   3976: aload_3
+    //   3977: astore 32
+    //   3979: aload 4
+    //   3981: getfield 411	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:priority	I
+    //   3984: bipush 90
+    //   3986: if_icmpne +228 -> 4214
+    //   3989: aload_3
+    //   3990: astore 32
+    //   3992: lconst_1
+    //   3993: ldc2_w 412
+    //   3996: invokestatic 416	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:H	(JJ)J
+    //   3999: lstore 13
+    //   4001: lload 19
+    //   4003: lstore 15
+    //   4005: goto -2370 -> 1635
+    //   4008: aload_3
+    //   4009: astore 32
+    //   4011: aload_3
+    //   4012: instanceof 1237
+    //   4015: ifeq +60 -> 4075
+    //   4018: aload_3
+    //   4019: astore 32
+    //   4021: aload 4
+    //   4023: sipush 256
+    //   4026: invokevirtual 445	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:AX	(I)V
+    //   4029: aload_3
+    //   4030: astore 32
+    //   4032: iconst_4
+    //   4033: aload 34
+    //   4035: new 115	java/lang/StringBuilder
+    //   4038: dup
+    //   4039: ldc_w 1114
+    //   4042: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   4045: aload 4
+    //   4047: getfield 899	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:fVx	Ljava/lang/String;
+    //   4050: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4053: ldc_w 1239
+    //   4056: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4059: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4062: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   4065: iconst_0
+    //   4066: istore 5
+    //   4068: lload 19
+    //   4070: lstore 15
+    //   4072: goto -2437 -> 1635
+    //   4075: aload_3
+    //   4076: astore 32
+    //   4078: aload_0
+    //   4079: getfield 1241	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:pxr	Z
+    //   4082: ifeq +22 -> 4104
+    //   4085: aload_3
+    //   4086: astore 32
+    //   4088: iconst_5
+    //   4089: aload 34
+    //   4091: ldc_w 1243
+    //   4094: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   4097: lload 19
+    //   4099: lstore 15
+    //   4101: goto -2466 -> 1635
+    //   4104: aload_3
+    //   4105: astore 32
+    //   4107: aload_3
+    //   4108: invokevirtual 960	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   4111: ldc_w 1245
+    //   4114: invokevirtual 1247	java/lang/String:matches	(Ljava/lang/String;)Z
+    //   4117: ifeq +22 -> 4139
+    //   4120: aload_3
+    //   4121: astore 32
+    //   4123: iconst_5
+    //   4124: aload 34
+    //   4126: ldc_w 1249
+    //   4129: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   4132: lload 19
+    //   4134: lstore 15
+    //   4136: goto -2501 -> 1635
+    //   4139: aload_3
+    //   4140: astore 32
+    //   4142: aload_3
+    //   4143: invokevirtual 1250	java/lang/Exception:toString	()Ljava/lang/String;
+    //   4146: ldc_w 1252
+    //   4149: invokevirtual 627	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   4152: ifeq +22 -> 4174
+    //   4155: aload_3
+    //   4156: astore 32
+    //   4158: iconst_5
+    //   4159: aload 34
+    //   4161: ldc_w 1254
+    //   4164: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   4167: lload 19
+    //   4169: lstore 15
+    //   4171: goto -2536 -> 1635
+    //   4174: aload_3
+    //   4175: astore 32
+    //   4177: iconst_5
+    //   4178: aload 34
+    //   4180: new 115	java/lang/StringBuilder
+    //   4183: dup
+    //   4184: ldc_w 1114
+    //   4187: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   4190: aload 4
+    //   4192: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   4195: ldc_w 1256
+    //   4198: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4201: aload_3
+    //   4202: invokestatic 292	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:i	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   4205: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4208: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4211: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   4214: lload 19
+    //   4216: lstore 15
+    //   4218: goto -2583 -> 1635
+    //   4221: astore 30
+    //   4223: iconst_5
+    //   4224: aload 34
+    //   4226: ldc_w 1016
+    //   4229: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   4232: goto -2530 -> 1702
+    //   4235: astore_1
+    //   4236: iconst_5
+    //   4237: aload 34
+    //   4239: ldc_w 1018
+    //   4242: aload_1
+    //   4243: invokestatic 461	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   4246: goto -2536 -> 1710
+    //   4249: astore_1
+    //   4250: iconst_5
+    //   4251: aload 34
+    //   4253: ldc_w 1016
+    //   4256: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   4259: goto -1872 -> 2387
+    //   4262: astore 4
+    //   4264: iconst_5
+    //   4265: aload 34
+    //   4267: ldc_w 1016
+    //   4270: invokestatic 133	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   4273: goto -1316 -> 2957
+    //   4276: astore_1
+    //   4277: iconst_5
+    //   4278: aload 34
+    //   4280: ldc_w 1018
+    //   4283: aload_1
+    //   4284: invokestatic 461	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   4287: goto -1322 -> 2965
+    //   4290: iload 5
+    //   4292: ifeq -2459 -> 1833
+    //   4295: aload 4
+    //   4297: bipush 16
+    //   4299: invokevirtual 445	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/n:AX	(I)V
+    //   4302: goto -2469 -> 1833
+    //   4305: aload_3
+    //   4306: instanceof 1172
+    //   4309: ifeq +10 -> 4319
+    //   4312: ldc_w 1258
+    //   4315: astore_1
+    //   4316: goto -2430 -> 1886
+    //   4319: aload_3
+    //   4320: instanceof 1079
+    //   4323: ifeq +27 -> 4350
+    //   4326: ldc_w 1260
+    //   4329: astore_3
+    //   4330: aload_3
+    //   4331: astore_1
+    //   4332: aload 30
+    //   4334: ifnull -2448 -> 1886
+    //   4337: new 83	java/util/HashMap
+    //   4340: dup
+    //   4341: invokespecial 84	java/util/HashMap:<init>	()V
+    //   4344: pop
+    //   4345: aload_3
+    //   4346: astore_1
+    //   4347: goto -2461 -> 1886
+    //   4350: aload_3
+    //   4351: instanceof 1183
+    //   4354: ifeq +27 -> 4381
+    //   4357: ldc_w 1262
+    //   4360: astore_3
+    //   4361: aload_3
+    //   4362: astore_1
+    //   4363: aload 30
+    //   4365: ifnull -2479 -> 1886
+    //   4368: new 83	java/util/HashMap
+    //   4371: dup
+    //   4372: invokespecial 84	java/util/HashMap:<init>	()V
+    //   4375: pop
+    //   4376: aload_3
+    //   4377: astore_1
+    //   4378: goto -2492 -> 1886
+    //   4381: aload_3
+    //   4382: instanceof 408
+    //   4385: ifeq +31 -> 4416
+    //   4388: ldc_w 1264
+    //   4391: astore_3
+    //   4392: aload_3
+    //   4393: astore_1
+    //   4394: aload 30
+    //   4396: ifnull -2510 -> 1886
+    //   4399: invokestatic 1215	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:isNetworkAvailable	()Z
+    //   4402: pop
+    //   4403: new 83	java/util/HashMap
+    //   4406: dup
+    //   4407: invokespecial 84	java/util/HashMap:<init>	()V
+    //   4410: pop
+    //   4411: aload_3
+    //   4412: astore_1
+    //   4413: goto -2527 -> 1886
+    //   4416: aload_3
+    //   4417: instanceof 410
+    //   4420: ifeq +31 -> 4451
+    //   4423: ldc_w 1266
+    //   4426: astore_3
+    //   4427: aload_3
+    //   4428: astore_1
+    //   4429: aload 30
+    //   4431: ifnull -2545 -> 1886
+    //   4434: invokestatic 1215	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:isNetworkAvailable	()Z
+    //   4437: pop
+    //   4438: new 83	java/util/HashMap
+    //   4441: dup
+    //   4442: invokespecial 84	java/util/HashMap:<init>	()V
+    //   4445: pop
+    //   4446: aload_3
+    //   4447: astore_1
+    //   4448: goto -2562 -> 1886
+    //   4451: aload_3
+    //   4452: instanceof 1193
+    //   4455: ifeq +31 -> 4486
+    //   4458: ldc_w 1268
+    //   4461: astore_3
+    //   4462: aload_3
+    //   4463: astore_1
+    //   4464: aload 30
+    //   4466: ifnull -2580 -> 1886
+    //   4469: invokestatic 1215	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:isNetworkAvailable	()Z
+    //   4472: pop
+    //   4473: new 83	java/util/HashMap
+    //   4476: dup
+    //   4477: invokespecial 84	java/util/HashMap:<init>	()V
+    //   4480: pop
+    //   4481: aload_3
+    //   4482: astore_1
+    //   4483: goto -2597 -> 1886
+    //   4486: aload_3
+    //   4487: instanceof 1217
+    //   4490: ifeq +35 -> 4525
+    //   4493: ldc_w 1270
+    //   4496: astore 28
+    //   4498: aload 28
+    //   4500: astore_1
+    //   4501: aload 30
+    //   4503: ifnull -2617 -> 1886
+    //   4506: aload_3
+    //   4507: invokestatic 1223	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/m:h	(Ljava/lang/Throwable;)I
+    //   4510: pop
+    //   4511: new 83	java/util/HashMap
+    //   4514: dup
+    //   4515: invokespecial 84	java/util/HashMap:<init>	()V
+    //   4518: pop
+    //   4519: aload 28
+    //   4521: astore_1
+    //   4522: goto -2636 -> 1886
+    //   4525: aload 28
+    //   4527: instanceof 1225
+    //   4530: ifeq +26 -> 4556
+    //   4533: aload_3
+    //   4534: instanceof 1227
+    //   4537: ifeq +19 -> 4556
+    //   4540: ldc_w 1272
+    //   4543: astore_3
+    //   4544: aload_3
+    //   4545: astore_1
+    //   4546: aload 30
+    //   4548: ifnull -2662 -> 1886
+    //   4551: aload_3
+    //   4552: astore_1
+    //   4553: goto -2667 -> 1886
     //   4556: aload_3
-    //   4557: astore_1
-    //   4558: aload 30
-    //   4560: ifnull -2671 -> 1889
-    //   4563: aload_3
-    //   4564: astore_1
-    //   4565: goto -2676 -> 1889
-    //   4568: aload_3
-    //   4569: instanceof 1241
-    //   4572: ifeq -2683 -> 1889
-    //   4575: ldc_w 1282
-    //   4578: astore_3
-    //   4579: aload_3
-    //   4580: astore_1
-    //   4581: aload 30
-    //   4583: ifnull -2694 -> 1889
-    //   4586: new 83	java/util/HashMap
-    //   4589: dup
-    //   4590: invokespecial 84	java/util/HashMap:<init>	()V
-    //   4593: pop
-    //   4594: aload_3
-    //   4595: astore_1
-    //   4596: goto -2707 -> 1889
-    //   4599: astore_2
-    //   4600: aconst_null
-    //   4601: astore 29
-    //   4603: aconst_null
-    //   4604: astore_3
-    //   4605: iload 8
-    //   4607: istore 5
-    //   4609: goto -1696 -> 2913
-    //   4612: astore_2
-    //   4613: aconst_null
-    //   4614: astore_3
-    //   4615: iload 8
-    //   4617: istore 5
-    //   4619: goto -1706 -> 2913
-    //   4622: astore_2
-    //   4623: aconst_null
-    //   4624: astore 4
-    //   4626: aload_3
-    //   4627: astore 28
-    //   4629: aload 4
-    //   4631: astore_3
-    //   4632: iload 8
-    //   4634: istore 5
-    //   4636: goto -1723 -> 2913
-    //   4639: astore_2
-    //   4640: aconst_null
-    //   4641: astore 4
-    //   4643: iload 11
-    //   4645: istore 5
-    //   4647: aload_3
-    //   4648: astore 28
-    //   4650: aload 4
-    //   4652: astore_3
-    //   4653: goto -1740 -> 2913
-    //   4656: astore_2
-    //   4657: iload 6
-    //   4659: istore 5
-    //   4661: goto -1748 -> 2913
-    //   4664: astore_2
-    //   4665: aload 28
-    //   4667: astore 4
-    //   4669: aload_3
-    //   4670: astore 28
-    //   4672: aload 4
-    //   4674: astore_3
-    //   4675: iload 6
-    //   4677: istore 5
-    //   4679: goto -1766 -> 2913
-    //   4682: astore 30
-    //   4684: aconst_null
-    //   4685: astore 29
-    //   4687: lconst_0
-    //   4688: lstore 13
-    //   4690: iconst_1
-    //   4691: istore 5
-    //   4693: aload 28
-    //   4695: astore_3
-    //   4696: aload 30
-    //   4698: astore 28
-    //   4700: goto -2403 -> 2297
-    //   4703: astore 30
-    //   4705: aconst_null
-    //   4706: astore 29
-    //   4708: iconst_1
-    //   4709: istore 5
-    //   4711: aload 28
-    //   4713: astore_3
-    //   4714: aload 30
-    //   4716: astore 28
-    //   4718: goto -2421 -> 2297
-    //   4721: astore 30
-    //   4723: iconst_1
-    //   4724: istore 5
-    //   4726: aload 28
-    //   4728: astore_3
-    //   4729: aload 30
-    //   4731: astore 28
-    //   4733: goto -2436 -> 2297
-    //   4736: astore 28
-    //   4738: iconst_1
-    //   4739: istore 5
-    //   4741: goto -2444 -> 2297
-    //   4744: astore_3
-    //   4745: aconst_null
-    //   4746: astore 29
-    //   4748: lconst_0
-    //   4749: lstore 13
-    //   4751: lload 21
-    //   4753: lstore 15
-    //   4755: iload 7
-    //   4757: istore 6
-    //   4759: goto -3545 -> 1214
-    //   4762: astore_3
-    //   4763: aconst_null
-    //   4764: astore 29
+    //   4557: instanceof 1233
+    //   4560: ifeq -2674 -> 1886
+    //   4563: ldc_w 1274
+    //   4566: astore_3
+    //   4567: aload_3
+    //   4568: astore_1
+    //   4569: aload 30
+    //   4571: ifnull -2685 -> 1886
+    //   4574: new 83	java/util/HashMap
+    //   4577: dup
+    //   4578: invokespecial 84	java/util/HashMap:<init>	()V
+    //   4581: pop
+    //   4582: aload_3
+    //   4583: astore_1
+    //   4584: goto -2698 -> 1886
+    //   4587: astore_2
+    //   4588: aconst_null
+    //   4589: astore 29
+    //   4591: aconst_null
+    //   4592: astore_3
+    //   4593: iload 8
+    //   4595: istore 5
+    //   4597: goto -1693 -> 2904
+    //   4600: astore_2
+    //   4601: aconst_null
+    //   4602: astore_3
+    //   4603: iload 8
+    //   4605: istore 5
+    //   4607: goto -1703 -> 2904
+    //   4610: astore_2
+    //   4611: aconst_null
+    //   4612: astore 4
+    //   4614: aload_3
+    //   4615: astore 28
+    //   4617: aload 4
+    //   4619: astore_3
+    //   4620: iload 8
+    //   4622: istore 5
+    //   4624: goto -1720 -> 2904
+    //   4627: astore_2
+    //   4628: aconst_null
+    //   4629: astore 4
+    //   4631: iload 11
+    //   4633: istore 5
+    //   4635: aload_3
+    //   4636: astore 28
+    //   4638: aload 4
+    //   4640: astore_3
+    //   4641: goto -1737 -> 2904
+    //   4644: astore_2
+    //   4645: iload 6
+    //   4647: istore 5
+    //   4649: goto -1745 -> 2904
+    //   4652: astore_2
+    //   4653: aload 28
+    //   4655: astore 4
+    //   4657: aload_3
+    //   4658: astore 28
+    //   4660: aload 4
+    //   4662: astore_3
+    //   4663: iload 6
+    //   4665: istore 5
+    //   4667: goto -1763 -> 2904
+    //   4670: astore 30
+    //   4672: aconst_null
+    //   4673: astore 29
+    //   4675: lconst_0
+    //   4676: lstore 13
+    //   4678: iconst_1
+    //   4679: istore 5
+    //   4681: aload 28
+    //   4683: astore_3
+    //   4684: aload 30
+    //   4686: astore 28
+    //   4688: goto -2394 -> 2294
+    //   4691: astore 30
+    //   4693: aconst_null
+    //   4694: astore 29
+    //   4696: iconst_1
+    //   4697: istore 5
+    //   4699: aload 28
+    //   4701: astore_3
+    //   4702: aload 30
+    //   4704: astore 28
+    //   4706: goto -2412 -> 2294
+    //   4709: astore 30
+    //   4711: iconst_1
+    //   4712: istore 5
+    //   4714: aload 28
+    //   4716: astore_3
+    //   4717: aload 30
+    //   4719: astore 28
+    //   4721: goto -2427 -> 2294
+    //   4724: astore 28
+    //   4726: iconst_1
+    //   4727: istore 5
+    //   4729: goto -2435 -> 2294
+    //   4732: astore_3
+    //   4733: aconst_null
+    //   4734: astore 29
+    //   4736: lconst_0
+    //   4737: lstore 13
+    //   4739: lload 21
+    //   4741: lstore 15
+    //   4743: iload 7
+    //   4745: istore 6
+    //   4747: goto -3533 -> 1214
+    //   4750: astore_3
+    //   4751: aconst_null
+    //   4752: astore 29
+    //   4754: lload 21
+    //   4756: lstore 15
+    //   4758: iload 7
+    //   4760: istore 6
+    //   4762: goto -3548 -> 1214
+    //   4765: astore_3
     //   4766: lload 21
     //   4768: lstore 15
     //   4770: iload 7
     //   4772: istore 6
     //   4774: goto -3560 -> 1214
-    //   4777: astore_3
-    //   4778: lload 21
-    //   4780: lstore 15
-    //   4782: iload 7
-    //   4784: istore 6
-    //   4786: goto -3572 -> 1214
-    //   4789: astore 31
-    //   4791: aload_3
-    //   4792: astore 28
-    //   4794: aload 31
-    //   4796: astore_3
-    //   4797: lload 21
-    //   4799: lstore 15
-    //   4801: iload 7
-    //   4803: istore 6
-    //   4805: goto -3591 -> 1214
-    //   4808: astore 31
-    //   4810: aload_3
-    //   4811: astore 28
-    //   4813: aload 31
-    //   4815: astore_3
-    //   4816: iload 7
-    //   4818: istore 6
-    //   4820: goto -3606 -> 1214
-    //   4823: aload 28
-    //   4825: astore_1
-    //   4826: ldc2_w 419
-    //   4829: lstore 15
-    //   4831: aload_3
-    //   4832: astore 28
-    //   4834: aload_1
-    //   4835: astore_3
-    //   4836: goto -3023 -> 1813
-    //   4839: goto -3026 -> 1813
-    //   4842: iconst_0
-    //   4843: istore 7
-    //   4845: goto +42 -> 4887
-    //   4848: aconst_null
-    //   4849: astore 30
-    //   4851: goto -1246 -> 3605
-    //   4854: ldc2_w 419
-    //   4857: lstore 15
-    //   4859: aload 33
-    //   4861: astore 31
-    //   4863: goto -3231 -> 1632
-    //   4866: goto -3501 -> 1365
-    //   4869: aconst_null
-    //   4870: astore_1
-    //   4871: ldc2_w 419
-    //   4874: lstore 15
-    //   4876: aload_3
-    //   4877: astore 28
-    //   4879: aload_1
-    //   4880: astore_3
-    //   4881: goto -3068 -> 1813
-    //   4884: goto -3249 -> 1635
-    //   4887: iload 7
-    //   4889: ifeq -1156 -> 3733
-    //   4892: bipush 13
-    //   4894: istore 7
-    //   4896: goto -1237 -> 3659
-    //   4899: bipush 9
-    //   4901: istore 7
-    //   4903: goto -1244 -> 3659
+    //   4777: astore 31
+    //   4779: aload_3
+    //   4780: astore 28
+    //   4782: aload 31
+    //   4784: astore_3
+    //   4785: lload 21
+    //   4787: lstore 15
+    //   4789: iload 7
+    //   4791: istore 6
+    //   4793: goto -3579 -> 1214
+    //   4796: astore 31
+    //   4798: aload_3
+    //   4799: astore 28
+    //   4801: aload 31
+    //   4803: astore_3
+    //   4804: iload 7
+    //   4806: istore 6
+    //   4808: goto -3594 -> 1214
+    //   4811: aload 28
+    //   4813: astore_1
+    //   4814: ldc2_w 412
+    //   4817: lstore 15
+    //   4819: aload_3
+    //   4820: astore 28
+    //   4822: aload_1
+    //   4823: astore_3
+    //   4824: goto -3014 -> 1810
+    //   4827: goto -3017 -> 1810
+    //   4830: iconst_0
+    //   4831: istore 7
+    //   4833: goto +42 -> 4875
+    //   4836: aconst_null
+    //   4837: astore 30
+    //   4839: goto -1246 -> 3593
+    //   4842: ldc2_w 412
+    //   4845: lstore 15
+    //   4847: aload 33
+    //   4849: astore 31
+    //   4851: goto -3219 -> 1632
+    //   4854: goto -3489 -> 1365
+    //   4857: aconst_null
+    //   4858: astore_1
+    //   4859: ldc2_w 412
+    //   4862: lstore 15
+    //   4864: aload_3
+    //   4865: astore 28
+    //   4867: aload_1
+    //   4868: astore_3
+    //   4869: goto -3059 -> 1810
+    //   4872: goto -3237 -> 1635
+    //   4875: iload 7
+    //   4877: ifeq -1156 -> 3721
+    //   4880: bipush 13
+    //   4882: istore 7
+    //   4884: goto -1237 -> 3647
+    //   4887: bipush 9
+    //   4889: istore 7
+    //   4891: goto -1244 -> 3647
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	4906	0	this	m
-    //   0	4906	1	paramSocket	Socket
-    //   0	4906	2	paramString	String
-    //   0	4906	3	paramOutputStream	java.io.OutputStream
-    //   0	4906	4	paramn	n
-    //   276	4464	5	i	int
-    //   121	4698	6	j	int
-    //   127	4775	7	k	int
-    //   124	4509	8	m	int
-    //   669	1996	9	n	int
-    //   665	1996	10	i1	int
-    //   673	3971	11	i2	int
-    //   750	1503	12	i3	int
-    //   167	4583	13	l1	long
-    //   149	4726	15	l2	long
-    //   163	2775	17	l3	long
-    //   228	3999	19	l4	long
-    //   132	4666	21	l5	long
-    //   273	1584	23	l6	long
-    //   156	2793	25	l7	long
-    //   519	2360	27	bool	boolean
-    //   50	2109	28	localObject1	Object
-    //   2287	207	28	localException1	Exception
-    //   2502	341	28	localOutputStream1	java.io.OutputStream
-    //   2849	992	28	localIOException1	IOException
-    //   4508	224	28	localObject2	Object
-    //   4736	1	28	localException2	Exception
-    //   4792	86	28	localOutputStream2	java.io.OutputStream
-    //   71	4694	29	localObject3	Object
-    //   144	1733	30	localObject4	Object
-    //   2883	12	30	localException3	Exception
-    //   3102	627	30	localObject5	Object
-    //   4233	349	30	localIOException2	IOException
-    //   4682	15	30	localException4	Exception
-    //   4703	12	30	localException5	Exception
-    //   4721	9	30	localException6	Exception
-    //   4849	1	30	localObject6	Object
-    //   452	2449	31	localObject7	Object
-    //   4789	6	31	localIOException3	IOException
-    //   4808	6	31	localIOException4	IOException
-    //   4861	1	31	localObject8	Object
+    //   0	4894	0	this	m
+    //   0	4894	1	paramSocket	Socket
+    //   0	4894	2	paramString	String
+    //   0	4894	3	paramOutputStream	java.io.OutputStream
+    //   0	4894	4	paramn	n
+    //   276	4452	5	i	int
+    //   121	4686	6	j	int
+    //   127	4763	7	k	int
+    //   124	4497	8	m	int
+    //   669	1990	9	n	int
+    //   665	1990	10	i1	int
+    //   673	3959	11	i2	int
+    //   750	1500	12	i3	int
+    //   167	4571	13	l1	long
+    //   149	4714	15	l2	long
+    //   163	2766	17	l3	long
+    //   228	3987	19	l4	long
+    //   132	4654	21	l5	long
+    //   273	1581	23	l6	long
+    //   156	2784	25	l7	long
+    //   519	2351	27	bool	boolean
+    //   50	2106	28	localObject1	Object
+    //   2284	204	28	localException1	Exception
+    //   2496	338	28	localOutputStream1	java.io.OutputStream
+    //   2840	989	28	localIOException1	IOException
+    //   4496	224	28	localObject2	Object
+    //   4724	1	28	localException2	Exception
+    //   4780	86	28	localOutputStream2	java.io.OutputStream
+    //   71	4682	29	localObject3	Object
+    //   144	1730	30	localObject4	Object
+    //   2874	12	30	localException3	Exception
+    //   3090	627	30	localObject5	Object
+    //   4221	349	30	localIOException2	IOException
+    //   4670	15	30	localException4	Exception
+    //   4691	12	30	localException5	Exception
+    //   4709	9	30	localException6	Exception
+    //   4837	1	30	localObject6	Object
+    //   452	2440	31	localObject7	Object
+    //   4777	6	31	localIOException3	IOException
+    //   4796	6	31	localIOException4	IOException
+    //   4849	1	31	localObject8	Object
     //   139	963	32	arrayOfByte	byte[]
     //   1194	18	32	localIOException5	IOException
-    //   1215	2973	32	localObject9	Object
-    //   258	4602	33	localObject10	Object
-    //   27	4264	34	str1	String
-    //   57	1810	35	str2	String
-    //   268	2403	36	localBufferedOutputStream	java.io.BufferedOutputStream
+    //   1215	2961	32	localObject9	Object
+    //   258	4590	33	localObject10	Object
+    //   27	4252	34	str1	String
+    //   57	1807	35	str2	String
+    //   268	2397	36	localBufferedOutputStream	java.io.BufferedOutputStream
     //   1231	389	37	localf	com.tencent.mm.plugin.appbrand.jsapi.video.b.b.l.f
     // Exception table:
     //   from	to	target	type
@@ -4825,243 +4820,243 @@ public final class m
     //   1131	1145	1194	java/io/IOException
     //   1165	1171	1194	java/io/IOException
     //   1191	1194	1194	java/io/IOException
-    //   2150	2157	1194	java/io/IOException
-    //   2183	2193	1194	java/io/IOException
-    //   2213	2223	1194	java/io/IOException
-    //   2250	2257	1194	java/io/IOException
-    //   2277	2284	1194	java/io/IOException
-    //   2534	2542	1194	java/io/IOException
-    //   2562	2571	1194	java/io/IOException
-    //   2591	2600	1194	java/io/IOException
-    //   2620	2625	1194	java/io/IOException
-    //   2645	2650	1194	java/io/IOException
-    //   2670	2675	1194	java/io/IOException
-    //   675	681	2287	java/lang/Exception
-    //   709	718	2287	java/lang/Exception
-    //   738	752	2287	java/lang/Exception
-    //   778	786	2287	java/lang/Exception
-    //   806	823	2287	java/lang/Exception
-    //   851	859	2287	java/lang/Exception
-    //   888	918	2287	java/lang/Exception
-    //   938	943	2287	java/lang/Exception
-    //   978	985	2287	java/lang/Exception
-    //   1005	1014	2287	java/lang/Exception
-    //   1034	1042	2287	java/lang/Exception
-    //   1062	1074	2287	java/lang/Exception
-    //   1099	1111	2287	java/lang/Exception
-    //   1131	1145	2287	java/lang/Exception
-    //   1165	1171	2287	java/lang/Exception
-    //   1191	1194	2287	java/lang/Exception
-    //   2150	2157	2287	java/lang/Exception
-    //   2183	2193	2287	java/lang/Exception
-    //   2213	2223	2287	java/lang/Exception
-    //   2250	2257	2287	java/lang/Exception
-    //   2277	2284	2287	java/lang/Exception
-    //   2534	2542	2287	java/lang/Exception
-    //   2562	2571	2287	java/lang/Exception
-    //   2591	2600	2287	java/lang/Exception
-    //   2620	2625	2287	java/lang/Exception
-    //   2645	2650	2287	java/lang/Exception
-    //   2670	2675	2287	java/lang/Exception
-    //   2721	2727	2849	java/io/IOException
-    //   2727	2731	2863	java/io/IOException
-    //   1512	1525	2883	java/lang/Exception
-    //   1528	1533	2883	java/lang/Exception
-    //   1536	1541	2883	java/lang/Exception
-    //   1217	1224	2905	finally
-    //   1227	1233	2905	finally
-    //   1239	1249	2905	finally
-    //   1255	1266	2905	finally
-    //   1274	1289	2905	finally
-    //   1292	1302	2905	finally
-    //   1305	1317	2905	finally
-    //   1320	1330	2905	finally
-    //   1333	1345	2905	finally
-    //   1348	1355	2905	finally
-    //   1358	1365	2905	finally
-    //   1403	1410	2905	finally
-    //   1413	1420	2905	finally
-    //   1426	1441	2905	finally
-    //   1444	1455	2905	finally
-    //   1458	1468	2905	finally
-    //   1471	1509	2905	finally
-    //   1512	1525	2905	finally
-    //   1528	1533	2905	finally
-    //   1536	1541	2905	finally
-    //   1557	1601	2905	finally
-    //   1605	1615	2905	finally
-    //   1619	1632	2905	finally
-    //   2888	2899	2905	finally
-    //   3088	3095	2905	finally
-    //   3098	3104	2905	finally
-    //   3107	3151	2905	finally
-    //   3158	3168	2905	finally
-    //   3171	3181	2905	finally
-    //   3184	3194	2905	finally
-    //   3200	3207	2905	finally
-    //   3210	3243	2905	finally
-    //   3246	3256	2905	finally
-    //   3259	3270	2905	finally
-    //   3280	3287	2905	finally
-    //   3290	3323	2905	finally
-    //   3326	3336	2905	finally
-    //   3339	3350	2905	finally
-    //   3360	3367	2905	finally
-    //   3370	3378	2905	finally
-    //   3381	3414	2905	finally
-    //   3427	3434	2905	finally
-    //   3437	3445	2905	finally
-    //   3448	3481	2905	finally
-    //   3494	3501	2905	finally
-    //   3504	3544	2905	finally
-    //   3547	3557	2905	finally
-    //   3560	3568	2905	finally
-    //   3571	3581	2905	finally
-    //   3584	3592	2905	finally
-    //   3595	3605	2905	finally
-    //   3613	3620	2905	finally
-    //   3628	3636	2905	finally
-    //   3639	3653	2905	finally
-    //   3662	3673	2905	finally
-    //   3683	3700	2905	finally
-    //   3709	3717	2905	finally
-    //   3720	3730	2905	finally
-    //   3736	3742	2905	finally
-    //   3751	3758	2905	finally
-    //   3761	3801	2905	finally
-    //   3804	3814	2905	finally
-    //   3817	3830	2905	finally
-    //   3840	3848	2905	finally
-    //   3851	3858	2905	finally
-    //   3861	3901	2905	finally
-    //   3904	3914	2905	finally
-    //   3917	3928	2905	finally
-    //   3938	3945	2905	finally
-    //   3948	3988	2905	finally
-    //   3991	4001	2905	finally
-    //   4004	4013	2905	finally
-    //   4023	4030	2905	finally
-    //   4033	4041	2905	finally
-    //   4044	4077	2905	finally
-    //   4090	4097	2905	finally
-    //   4100	4109	2905	finally
-    //   4119	4132	2905	finally
-    //   4135	4144	2905	finally
-    //   4154	4167	2905	finally
-    //   4170	4179	2905	finally
-    //   4189	4226	2905	finally
-    //   1695	1702	4233	java/io/IOException
-    //   1706	1710	4247	java/io/IOException
-    //   2384	2390	4261	java/io/IOException
-    //   2959	2966	4274	java/io/IOException
-    //   2970	2974	4288	java/io/IOException
-    //   283	316	4599	finally
-    //   414	420	4599	finally
-    //   420	426	4599	finally
-    //   426	438	4612	finally
-    //   1981	2016	4612	finally
-    //   2021	2038	4612	finally
-    //   2044	2060	4612	finally
-    //   2066	2083	4612	finally
-    //   2089	2106	4612	finally
-    //   438	446	4622	finally
-    //   446	454	4622	finally
-    //   458	467	4622	finally
-    //   471	482	4622	finally
-    //   486	496	4622	finally
-    //   500	507	4622	finally
-    //   511	518	4622	finally
-    //   525	540	4622	finally
-    //   544	572	4622	finally
-    //   576	614	4622	finally
-    //   618	631	4622	finally
-    //   635	640	4622	finally
-    //   644	649	4622	finally
-    //   675	681	4639	finally
-    //   709	718	4639	finally
-    //   738	752	4639	finally
-    //   778	786	4639	finally
-    //   806	823	4639	finally
-    //   851	859	4639	finally
-    //   888	918	4639	finally
-    //   938	943	4639	finally
-    //   978	985	4639	finally
-    //   1005	1014	4639	finally
-    //   1034	1042	4639	finally
-    //   1062	1074	4639	finally
-    //   1099	1111	4639	finally
-    //   1131	1145	4639	finally
-    //   1165	1171	4639	finally
-    //   1191	1194	4639	finally
-    //   2150	2157	4639	finally
-    //   2183	2193	4639	finally
-    //   2213	2223	4639	finally
-    //   2250	2257	4639	finally
-    //   2277	2284	4639	finally
-    //   2534	2542	4639	finally
-    //   2562	2571	4639	finally
-    //   2591	2600	4639	finally
-    //   2620	2625	4639	finally
-    //   2645	2650	4639	finally
-    //   2670	2675	4639	finally
-    //   1635	1649	4656	finally
-    //   2297	2338	4664	finally
-    //   283	316	4682	java/lang/Exception
-    //   414	420	4682	java/lang/Exception
-    //   420	426	4703	java/lang/Exception
-    //   426	438	4721	java/lang/Exception
-    //   1981	2016	4721	java/lang/Exception
-    //   2021	2038	4721	java/lang/Exception
-    //   2044	2060	4721	java/lang/Exception
-    //   2066	2083	4721	java/lang/Exception
-    //   2089	2106	4721	java/lang/Exception
-    //   438	446	4736	java/lang/Exception
-    //   446	454	4736	java/lang/Exception
-    //   458	467	4736	java/lang/Exception
-    //   471	482	4736	java/lang/Exception
-    //   486	496	4736	java/lang/Exception
-    //   500	507	4736	java/lang/Exception
-    //   511	518	4736	java/lang/Exception
-    //   525	540	4736	java/lang/Exception
-    //   544	572	4736	java/lang/Exception
-    //   576	614	4736	java/lang/Exception
-    //   618	631	4736	java/lang/Exception
-    //   635	640	4736	java/lang/Exception
-    //   644	649	4736	java/lang/Exception
-    //   283	316	4744	java/io/IOException
-    //   414	420	4744	java/io/IOException
-    //   420	426	4762	java/io/IOException
-    //   426	438	4777	java/io/IOException
-    //   1981	2016	4777	java/io/IOException
-    //   2021	2038	4777	java/io/IOException
-    //   2044	2060	4777	java/io/IOException
-    //   2066	2083	4777	java/io/IOException
-    //   2089	2106	4777	java/io/IOException
-    //   438	446	4789	java/io/IOException
-    //   446	454	4808	java/io/IOException
-    //   458	467	4808	java/io/IOException
-    //   471	482	4808	java/io/IOException
-    //   486	496	4808	java/io/IOException
-    //   500	507	4808	java/io/IOException
-    //   511	518	4808	java/io/IOException
-    //   525	540	4808	java/io/IOException
-    //   544	572	4808	java/io/IOException
-    //   576	614	4808	java/io/IOException
-    //   618	631	4808	java/io/IOException
-    //   635	640	4808	java/io/IOException
-    //   644	649	4808	java/io/IOException
+    //   2147	2154	1194	java/io/IOException
+    //   2180	2190	1194	java/io/IOException
+    //   2210	2220	1194	java/io/IOException
+    //   2247	2254	1194	java/io/IOException
+    //   2274	2281	1194	java/io/IOException
+    //   2528	2536	1194	java/io/IOException
+    //   2556	2565	1194	java/io/IOException
+    //   2585	2594	1194	java/io/IOException
+    //   2614	2619	1194	java/io/IOException
+    //   2639	2644	1194	java/io/IOException
+    //   2664	2669	1194	java/io/IOException
+    //   675	681	2284	java/lang/Exception
+    //   709	718	2284	java/lang/Exception
+    //   738	752	2284	java/lang/Exception
+    //   778	786	2284	java/lang/Exception
+    //   806	823	2284	java/lang/Exception
+    //   851	859	2284	java/lang/Exception
+    //   888	918	2284	java/lang/Exception
+    //   938	943	2284	java/lang/Exception
+    //   978	985	2284	java/lang/Exception
+    //   1005	1014	2284	java/lang/Exception
+    //   1034	1042	2284	java/lang/Exception
+    //   1062	1074	2284	java/lang/Exception
+    //   1099	1111	2284	java/lang/Exception
+    //   1131	1145	2284	java/lang/Exception
+    //   1165	1171	2284	java/lang/Exception
+    //   1191	1194	2284	java/lang/Exception
+    //   2147	2154	2284	java/lang/Exception
+    //   2180	2190	2284	java/lang/Exception
+    //   2210	2220	2284	java/lang/Exception
+    //   2247	2254	2284	java/lang/Exception
+    //   2274	2281	2284	java/lang/Exception
+    //   2528	2536	2284	java/lang/Exception
+    //   2556	2565	2284	java/lang/Exception
+    //   2585	2594	2284	java/lang/Exception
+    //   2614	2619	2284	java/lang/Exception
+    //   2639	2644	2284	java/lang/Exception
+    //   2664	2669	2284	java/lang/Exception
+    //   2715	2721	2840	java/io/IOException
+    //   2721	2725	2854	java/io/IOException
+    //   1512	1525	2874	java/lang/Exception
+    //   1528	1533	2874	java/lang/Exception
+    //   1536	1541	2874	java/lang/Exception
+    //   1217	1224	2896	finally
+    //   1227	1233	2896	finally
+    //   1239	1249	2896	finally
+    //   1255	1266	2896	finally
+    //   1274	1289	2896	finally
+    //   1292	1302	2896	finally
+    //   1305	1317	2896	finally
+    //   1320	1330	2896	finally
+    //   1333	1345	2896	finally
+    //   1348	1355	2896	finally
+    //   1358	1365	2896	finally
+    //   1403	1410	2896	finally
+    //   1413	1420	2896	finally
+    //   1426	1441	2896	finally
+    //   1444	1455	2896	finally
+    //   1458	1468	2896	finally
+    //   1471	1509	2896	finally
+    //   1512	1525	2896	finally
+    //   1528	1533	2896	finally
+    //   1536	1541	2896	finally
+    //   1557	1601	2896	finally
+    //   1605	1615	2896	finally
+    //   1619	1632	2896	finally
+    //   2879	2890	2896	finally
+    //   3076	3083	2896	finally
+    //   3086	3092	2896	finally
+    //   3095	3139	2896	finally
+    //   3146	3156	2896	finally
+    //   3159	3169	2896	finally
+    //   3172	3182	2896	finally
+    //   3188	3195	2896	finally
+    //   3198	3231	2896	finally
+    //   3234	3244	2896	finally
+    //   3247	3258	2896	finally
+    //   3268	3275	2896	finally
+    //   3278	3311	2896	finally
+    //   3314	3324	2896	finally
+    //   3327	3338	2896	finally
+    //   3348	3355	2896	finally
+    //   3358	3366	2896	finally
+    //   3369	3402	2896	finally
+    //   3415	3422	2896	finally
+    //   3425	3433	2896	finally
+    //   3436	3469	2896	finally
+    //   3482	3489	2896	finally
+    //   3492	3532	2896	finally
+    //   3535	3545	2896	finally
+    //   3548	3556	2896	finally
+    //   3559	3569	2896	finally
+    //   3572	3580	2896	finally
+    //   3583	3593	2896	finally
+    //   3601	3608	2896	finally
+    //   3616	3624	2896	finally
+    //   3627	3641	2896	finally
+    //   3650	3661	2896	finally
+    //   3671	3688	2896	finally
+    //   3697	3705	2896	finally
+    //   3708	3718	2896	finally
+    //   3724	3730	2896	finally
+    //   3739	3746	2896	finally
+    //   3749	3789	2896	finally
+    //   3792	3802	2896	finally
+    //   3805	3818	2896	finally
+    //   3828	3836	2896	finally
+    //   3839	3846	2896	finally
+    //   3849	3889	2896	finally
+    //   3892	3902	2896	finally
+    //   3905	3916	2896	finally
+    //   3926	3933	2896	finally
+    //   3936	3976	2896	finally
+    //   3979	3989	2896	finally
+    //   3992	4001	2896	finally
+    //   4011	4018	2896	finally
+    //   4021	4029	2896	finally
+    //   4032	4065	2896	finally
+    //   4078	4085	2896	finally
+    //   4088	4097	2896	finally
+    //   4107	4120	2896	finally
+    //   4123	4132	2896	finally
+    //   4142	4155	2896	finally
+    //   4158	4167	2896	finally
+    //   4177	4214	2896	finally
+    //   1695	1702	4221	java/io/IOException
+    //   1706	1710	4235	java/io/IOException
+    //   2381	2387	4249	java/io/IOException
+    //   2950	2957	4262	java/io/IOException
+    //   2961	2965	4276	java/io/IOException
+    //   283	316	4587	finally
+    //   414	420	4587	finally
+    //   420	426	4587	finally
+    //   426	438	4600	finally
+    //   1978	2013	4600	finally
+    //   2018	2035	4600	finally
+    //   2041	2057	4600	finally
+    //   2063	2080	4600	finally
+    //   2086	2103	4600	finally
+    //   438	446	4610	finally
+    //   446	454	4610	finally
+    //   458	467	4610	finally
+    //   471	482	4610	finally
+    //   486	496	4610	finally
+    //   500	507	4610	finally
+    //   511	518	4610	finally
+    //   525	540	4610	finally
+    //   544	572	4610	finally
+    //   576	614	4610	finally
+    //   618	631	4610	finally
+    //   635	640	4610	finally
+    //   644	649	4610	finally
+    //   675	681	4627	finally
+    //   709	718	4627	finally
+    //   738	752	4627	finally
+    //   778	786	4627	finally
+    //   806	823	4627	finally
+    //   851	859	4627	finally
+    //   888	918	4627	finally
+    //   938	943	4627	finally
+    //   978	985	4627	finally
+    //   1005	1014	4627	finally
+    //   1034	1042	4627	finally
+    //   1062	1074	4627	finally
+    //   1099	1111	4627	finally
+    //   1131	1145	4627	finally
+    //   1165	1171	4627	finally
+    //   1191	1194	4627	finally
+    //   2147	2154	4627	finally
+    //   2180	2190	4627	finally
+    //   2210	2220	4627	finally
+    //   2247	2254	4627	finally
+    //   2274	2281	4627	finally
+    //   2528	2536	4627	finally
+    //   2556	2565	4627	finally
+    //   2585	2594	4627	finally
+    //   2614	2619	4627	finally
+    //   2639	2644	4627	finally
+    //   2664	2669	4627	finally
+    //   1635	1649	4644	finally
+    //   2294	2335	4652	finally
+    //   283	316	4670	java/lang/Exception
+    //   414	420	4670	java/lang/Exception
+    //   420	426	4691	java/lang/Exception
+    //   426	438	4709	java/lang/Exception
+    //   1978	2013	4709	java/lang/Exception
+    //   2018	2035	4709	java/lang/Exception
+    //   2041	2057	4709	java/lang/Exception
+    //   2063	2080	4709	java/lang/Exception
+    //   2086	2103	4709	java/lang/Exception
+    //   438	446	4724	java/lang/Exception
+    //   446	454	4724	java/lang/Exception
+    //   458	467	4724	java/lang/Exception
+    //   471	482	4724	java/lang/Exception
+    //   486	496	4724	java/lang/Exception
+    //   500	507	4724	java/lang/Exception
+    //   511	518	4724	java/lang/Exception
+    //   525	540	4724	java/lang/Exception
+    //   544	572	4724	java/lang/Exception
+    //   576	614	4724	java/lang/Exception
+    //   618	631	4724	java/lang/Exception
+    //   635	640	4724	java/lang/Exception
+    //   644	649	4724	java/lang/Exception
+    //   283	316	4732	java/io/IOException
+    //   414	420	4732	java/io/IOException
+    //   420	426	4750	java/io/IOException
+    //   426	438	4765	java/io/IOException
+    //   1978	2013	4765	java/io/IOException
+    //   2018	2035	4765	java/io/IOException
+    //   2041	2057	4765	java/io/IOException
+    //   2063	2080	4765	java/io/IOException
+    //   2086	2103	4765	java/io/IOException
+    //   438	446	4777	java/io/IOException
+    //   446	454	4796	java/io/IOException
+    //   458	467	4796	java/io/IOException
+    //   471	482	4796	java/io/IOException
+    //   486	496	4796	java/io/IOException
+    //   500	507	4796	java/io/IOException
+    //   511	518	4796	java/io/IOException
+    //   525	540	4796	java/io/IOException
+    //   544	572	4796	java/io/IOException
+    //   576	614	4796	java/io/IOException
+    //   618	631	4796	java/io/IOException
+    //   635	640	4796	java/io/IOException
+    //   644	649	4796	java/io/IOException
   }
   
   private static int h(Throwable paramThrowable)
   {
-    AppMethodBeat.i(234811);
+    AppMethodBeat.i(228316);
     int i;
     if (paramThrowable.toString().toLowerCase().contains("unexpected end of stream")) {
       i = 6;
     }
     for (;;)
     {
-      AppMethodBeat.o(234811);
+      AppMethodBeat.o(228316);
       return i;
       if ((paramThrowable.getCause() != null) && ((paramThrowable.getCause() instanceof SocketTimeoutException))) {
         i = 14;
@@ -5074,13 +5069,13 @@ public final class m
   public final String a(String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2, int paramInt)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(234807);
-    if ((!com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bJK().mxf) || (this.myT > 3) || (this.executorService.isShutdown()) || (this.executorService.isTerminated()))
+    AppMethodBeat.i(228226);
+    if ((!com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvz) || (this.pxn > 3) || (this.executorService.isShutdown()) || (this.executorService.isTerminated()))
     {
       com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(4, "VideoProxy", "getUrl, proxy disabled or server shutdown");
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bJK().mxa.bJH();
-      paramString1 = com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.abp(paramString1);
-      AppMethodBeat.o(234807);
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvu.bVq();
+      paramString1 = com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.ajj(paramString1);
+      AppMethodBeat.o(228226);
       return paramString1;
     }
     str = paramString1;
@@ -5091,8 +5086,8 @@ public final class m
       bool = paramBoolean2;
       if (!URLUtil.isHttpsUrl(paramString1))
       {
-        str = com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.abp(paramString1);
-        if (!com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.abq(str)) {
+        str = com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.ajj(paramString1);
+        if (!com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.ajk(str)) {
           break label165;
         }
         bool = false;
@@ -5101,23 +5096,23 @@ public final class m
     for (;;)
     {
       localObject1 = paramString2;
-      if (!com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.aaW(str)) {
+      if (!com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.aiP(str)) {
         break label199;
       }
-      if (com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bJK().mxi) {
+      if (com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvC) {
         break label191;
       }
       com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(4, "VideoProxy", "getUrl, hls proxy disabled");
-      AppMethodBeat.o(234807);
+      AppMethodBeat.o(228226);
       return str;
       label165:
-      if (!com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.abr(str)) {
+      if (!com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.ajl(str)) {
         break;
       }
       bool = false;
       str = paramString1;
     }
-    AppMethodBeat.o(234807);
+    AppMethodBeat.o(228226);
     return str;
     label191:
     localObject1 = "application/vnd.apple.mpegurl";
@@ -5136,7 +5131,7 @@ public final class m
         com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(6, "VideoProxy", "invalid url " + com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.i(paramString2));
       }
       paramString2 = Uri.parse(str).getLastPathSegment();
-      paramString1 = bJU() + "/" + paramString2 + "?url=" + paramString1;
+      paramString1 = bVE() + "/" + paramString2 + "?url=" + paramString1;
       paramString2 = paramString1;
       if (!bool) {
         break label361;
@@ -5158,7 +5153,7 @@ public final class m
     if (TextUtils.isEmpty(paramString1))
     {
       com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(6, "VideoProxy", "url is empty ".concat(String.valueOf(paramString1)));
-      AppMethodBeat.o(234807);
+      AppMethodBeat.o(228226);
       return str;
     }
     try
@@ -5173,9 +5168,9 @@ public final class m
     {
       try
       {
-        paramString2 = paramString1 + "&secret=" + l.F("des", l.bKg(), com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.abl(str));
+        paramString2 = paramString1 + "&secret=" + l.G("des", l.bVQ(), com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.ajf(str));
         com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(4, "VideoProxy", "getUrl, url:" + str + ", proxyUrl:" + paramString2);
-        AppMethodBeat.o(234807);
+        AppMethodBeat.o(228226);
         return paramString2;
         paramString2 = paramString2;
         com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(6, "VideoProxy", "unable to encode contentType ".concat(String.valueOf(localObject1)));
@@ -5186,7 +5181,7 @@ public final class m
         for (;;)
         {
           com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.log(6, "VideoProxy", "encode failed:" + com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.i(paramString2));
-          this.myU = false;
+          this.pxo = false;
           paramString2 = paramString1;
         }
       }
@@ -5198,44 +5193,44 @@ public final class m
     label474:
     localObject1 = localObject2;
     if (paramBoolean1) {
-      localObject1 = System.currentTimeMillis() + myV.getAndIncrement();
+      localObject1 = System.currentTimeMillis() + pxp.getAndIncrement();
     }
     paramString1 = paramString2;
     if (localObject1 != null) {
       paramString1 = paramString2 + "&id=" + (String)localObject1;
     }
     paramString2 = paramString1;
-    if (!this.myU) {}
+    if (!this.pxo) {}
   }
   
-  public final long aba(String paramString)
+  public final long aiU(String paramString)
   {
-    AppMethodBeat.i(234812);
-    if ((TextUtils.isEmpty(paramString)) || (this.mxs == null))
+    AppMethodBeat.i(228318);
+    if ((TextUtils.isEmpty(paramString)) || (this.pvM == null))
     {
-      AppMethodBeat.o(234812);
+      AppMethodBeat.o(228318);
       return 0L;
     }
-    paramString = com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.abl(paramString);
-    long l = this.mxs.aba(paramString);
-    AppMethodBeat.o(234812);
+    paramString = com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.ajf(paramString);
+    long l = this.pvM.aiU(paramString);
+    AppMethodBeat.o(228318);
     return l;
   }
   
-  public final String bJU()
+  public final String bVE()
   {
-    AppMethodBeat.i(234806);
-    String str = "http://127.0.0.1:" + this.lkD;
-    AppMethodBeat.o(234806);
+    AppMethodBeat.i(228222);
+    String str = "http://127.0.0.1:" + this.ofp;
+    AppMethodBeat.o(228222);
     return str;
   }
   
   final class a
   {
-    boolean ZB = false;
-    long mzh = -1L;
-    com.tencent.mm.plugin.appbrand.jsapi.video.b.b.e mzi = null;
-    o mzj = null;
+    boolean gY = false;
+    long pxC = -1L;
+    com.tencent.mm.plugin.appbrand.jsapi.video.b.b.e pxD = null;
+    q pxE = null;
     
     private a() {}
   }
@@ -5243,27 +5238,27 @@ public final class m
   final class b
     implements Runnable
   {
-    n mye;
-    Future<?> mzk;
-    CountDownLatch mzl;
-    Socket socket;
+    Socket aFp;
+    n pwy;
+    Future<?> pxF;
+    CountDownLatch pxG;
     
     public b(Socket paramSocket, CountDownLatch paramCountDownLatch)
     {
-      this.socket = paramSocket;
-      this.mzl = paramCountDownLatch;
+      this.aFp = paramSocket;
+      this.pxG = paramCountDownLatch;
     }
     
     public final void run()
     {
-      AppMethodBeat.i(234803);
+      AppMethodBeat.i(229373);
       try
       {
-        this.mzl.await();
-        this.mye = new n();
-        this.mye.mzk = this.mzk;
-        m.a(m.this, this.socket, this.mye);
-        AppMethodBeat.o(234803);
+        this.pxG.await();
+        this.pwy = new n();
+        this.pwy.pxF = this.pxF;
+        m.a(m.this, this.aFp, this.pwy);
+        AppMethodBeat.o(229373);
         return;
       }
       catch (InterruptedException localInterruptedException)
@@ -5279,25 +5274,25 @@ public final class m
   final class c
     implements Runnable
   {
-    private CountDownLatch startSignal;
+    private CountDownLatch aFr;
     
     public c(CountDownLatch paramCountDownLatch)
     {
-      this.startSignal = paramCountDownLatch;
+      this.aFr = paramCountDownLatch;
     }
     
     public final void run()
     {
-      AppMethodBeat.i(234804);
-      this.startSignal.countDown();
+      AppMethodBeat.i(228064);
+      this.aFr.countDown();
       m.a(m.this);
-      AppMethodBeat.o(234804);
+      AppMethodBeat.o(228064);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.c.m
  * JD-Core Version:    0.7.0.1
  */

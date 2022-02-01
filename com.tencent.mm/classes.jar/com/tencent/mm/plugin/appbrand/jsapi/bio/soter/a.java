@@ -9,7 +9,32 @@ import org.json.JSONException;
 
 public final class a
 {
-  public static int ZB(String paramString)
+  public static JSONArray Ad(int paramInt)
+  {
+    AppMethodBeat.i(106570);
+    if (paramInt <= 0)
+    {
+      localObject = new JSONArray();
+      AppMethodBeat.o(106570);
+      return localObject;
+    }
+    Object localObject = new ArrayList(3);
+    if ((paramInt & 0x1) == 1) {
+      ((ArrayList)localObject).add("fingerPrint");
+    }
+    if ((paramInt & 0x8) == 8) {
+      ((ArrayList)localObject).add("facial");
+    }
+    if ((paramInt & 0x2) == 2) {
+      ((ArrayList)localObject).add("speech");
+    }
+    Log.i("MicroMsg.AppBrandSoterTranslateUtil", "hy: final string is: %s", new Object[] { ((ArrayList)localObject).toString() });
+    localObject = new JSONArray((Collection)localObject);
+    AppMethodBeat.o(106570);
+    return localObject;
+  }
+  
+  public static int ahp(String paramString)
   {
     AppMethodBeat.i(106572);
     if ("fingerPrint".equals(paramString))
@@ -54,7 +79,7 @@ public final class a
       }
       try
       {
-        int k = ZB(paramJSONArray.getString(i));
+        int k = ahp(paramJSONArray.getString(i));
         j = (byte)(j | k);
       }
       catch (JSONException localJSONException)
@@ -71,31 +96,6 @@ public final class a
     Log.i("MicroMsg.AppBrandSoterTranslateUtil", "hy: translated bitsetStr: %s", new Object[] { paramJSONArray });
     AppMethodBeat.o(106571);
     return paramJSONArray;
-  }
-  
-  public static JSONArray wO(int paramInt)
-  {
-    AppMethodBeat.i(106570);
-    if (paramInt <= 0)
-    {
-      localObject = new JSONArray();
-      AppMethodBeat.o(106570);
-      return localObject;
-    }
-    Object localObject = new ArrayList(3);
-    if ((paramInt & 0x1) == 1) {
-      ((ArrayList)localObject).add("fingerPrint");
-    }
-    if ((paramInt & 0x8) == 8) {
-      ((ArrayList)localObject).add("facial");
-    }
-    if ((paramInt & 0x2) == 2) {
-      ((ArrayList)localObject).add("speech");
-    }
-    Log.i("MicroMsg.AppBrandSoterTranslateUtil", "hy: final string is: %s", new Object[] { ((ArrayList)localObject).toString() });
-    localObject = new JSONArray((Collection)localObject);
-    AppMethodBeat.o(106570);
-    return localObject;
   }
 }
 

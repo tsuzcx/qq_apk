@@ -7,18 +7,18 @@ import kotlin.g.a.b;
 import kotlin.g.b.a.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/sequences/TakeWhileSequence;", "T", "Lkotlin/sequences/Sequence;", "sequence", "predicate", "Lkotlin/Function1;", "", "(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;)V", "iterator", "", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/sequences/TakeWhileSequence;", "T", "Lkotlin/sequences/Sequence;", "sequence", "predicate", "Lkotlin/Function1;", "", "(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;)V", "iterator", "", "kotlin-stdlib"})
 public final class o<T>
   implements h<T>
 {
-  final h<T> TSt;
-  final b<T, Boolean> TSx;
+  final h<T> abuS;
+  final b<T, Boolean> abuW;
   
   public o(h<? extends T> paramh, b<? super T, Boolean> paramb)
   {
     AppMethodBeat.i(129542);
-    this.TSt = paramh;
-    this.TSx = paramb;
+    this.abuS = paramh;
+    this.abuW = paramb;
     AppMethodBeat.o(129542);
   }
   
@@ -30,47 +30,47 @@ public final class o<T>
     return localIterator;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"kotlin/sequences/TakeWhileSequence$iterator$1", "", "iterator", "getIterator", "()Ljava/util/Iterator;", "nextItem", "getNextItem", "()Ljava/lang/Object;", "setNextItem", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "nextState", "", "getNextState", "()I", "setNextState", "(I)V", "calcNext", "", "hasNext", "", "next", "kotlin-stdlib"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlin/sequences/TakeWhileSequence$iterator$1", "", "iterator", "getIterator", "()Ljava/util/Iterator;", "nextItem", "getNextItem", "()Ljava/lang/Object;", "setNextItem", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "nextState", "", "getNextState", "()I", "setNextState", "(I)V", "calcNext", "", "hasNext", "", "next", "kotlin-stdlib"})
   public static final class a
     implements Iterator<T>, a
   {
-    private int TSy;
-    private T TSz;
-    private final Iterator<T> bXG;
+    private int abuX;
+    private T abuY;
+    private final Iterator<T> bZx;
     
     a()
     {
       AppMethodBeat.i(129523);
-      this.bXG = localObject.TSt.iterator();
-      this.TSy = -1;
+      this.bZx = localObject.abuS.iterator();
+      this.abuX = -1;
       AppMethodBeat.o(129523);
     }
     
-    private final void hMe()
+    private final void iQw()
     {
       AppMethodBeat.i(129520);
-      if (this.bXG.hasNext())
+      if (this.bZx.hasNext())
       {
-        Object localObject = this.bXG.next();
-        if (((Boolean)this.TSQ.TSx.invoke(localObject)).booleanValue())
+        Object localObject = this.bZx.next();
+        if (((Boolean)this.abvp.abuW.invoke(localObject)).booleanValue())
         {
-          this.TSy = 1;
-          this.TSz = localObject;
+          this.abuX = 1;
+          this.abuY = localObject;
           AppMethodBeat.o(129520);
           return;
         }
       }
-      this.TSy = 0;
+      this.abuX = 0;
       AppMethodBeat.o(129520);
     }
     
     public final boolean hasNext()
     {
       AppMethodBeat.i(129522);
-      if (this.TSy == -1) {
-        hMe();
+      if (this.abuX == -1) {
+        iQw();
       }
-      if (this.TSy == 1)
+      if (this.abuX == 1)
       {
         AppMethodBeat.o(129522);
         return true;
@@ -82,18 +82,18 @@ public final class o<T>
     public final T next()
     {
       AppMethodBeat.i(129521);
-      if (this.TSy == -1) {
-        hMe();
+      if (this.abuX == -1) {
+        iQw();
       }
-      if (this.TSy == 0)
+      if (this.abuX == 0)
       {
         localObject = (Throwable)new NoSuchElementException();
         AppMethodBeat.o(129521);
         throw ((Throwable)localObject);
       }
-      Object localObject = this.TSz;
-      this.TSz = null;
-      this.TSy = -1;
+      Object localObject = this.abuY;
+      this.abuY = null;
+      this.abuX = -1;
       AppMethodBeat.o(129521);
       return localObject;
     }
@@ -109,7 +109,7 @@ public final class o<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlin.m.o
  * JD-Core Version:    0.7.0.1
  */

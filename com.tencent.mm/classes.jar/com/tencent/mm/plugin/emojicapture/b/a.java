@@ -4,11 +4,11 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.MemoryInfo;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
-import com.tencent.mm.compatible.deviceinfo.x;
+import com.tencent.mm.compatible.deviceinfo.af;
+import com.tencent.mm.compatible.deviceinfo.y;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.emoji.b.n;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.emoji.b.o;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.media.b.c;
 import com.tencent.mm.n.f;
 import com.tencent.mm.plugin.emojicapture.model.e;
@@ -24,53 +24,53 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/config/EmojiCameraElementConfig;", "Lcom/tencent/mm/media/config/SimpleElementConfig;", "Lcom/tencent/mm/plugin/emojicapture/config/EmojiCameraElementConfig$CameraPreviewConfig;", "()V", "CAPTURE_PREVIEW_SIZE_HIGH", "", "CAPTURE_PREVIEW_SIZE_LOW", "RECORDER_CAPTURE_RESOLUTION_1080P", "RECORDER_CAPTURE_RESOLUTION_720P", "TAG", "", "highPerformance", "", "checkHighPerformance", "", "getIntDynamicConfig", "key", "defValue", "init", "initDefaultConfig", "loadConfig", "setPreviewConfig", "setServerUseCpuCrop", "CameraPreviewConfig", "plugin-emojicapture_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/config/EmojiCameraElementConfig;", "Lcom/tencent/mm/media/config/SimpleElementConfig;", "Lcom/tencent/mm/plugin/emojicapture/config/EmojiCameraElementConfig$CameraPreviewConfig;", "()V", "CAPTURE_PREVIEW_SIZE_HIGH", "", "CAPTURE_PREVIEW_SIZE_LOW", "RECORDER_CAPTURE_RESOLUTION_1080P", "RECORDER_CAPTURE_RESOLUTION_720P", "TAG", "", "highPerformance", "", "checkHighPerformance", "", "getIntDynamicConfig", "key", "defValue", "init", "initDefaultConfig", "loadConfig", "setPreviewConfig", "setServerUseCpuCrop", "CameraPreviewConfig", "plugin-emojicapture_release"})
 public final class a
   extends c<a>
 {
   private static final String TAG = "MicroMsg.EmojiCameraElementConfig";
-  private static boolean rnY;
-  public static final a rnZ;
+  private static boolean uTF;
+  public static final a uTG;
   
   static
   {
     AppMethodBeat.i(134);
-    rnZ = new a();
+    uTG = new a();
     TAG = "MicroMsg.EmojiCameraElementConfig";
-    rnY = true;
+    uTF = true;
     AppMethodBeat.o(134);
   }
   
-  public final void aLS()
+  public final void aTZ()
   {
     boolean bool = true;
     AppMethodBeat.i(132);
-    ((a)aLQ()).ilO = false;
+    ((a)aTX()).laO = false;
     Object localObject;
     if (WeChatEnvironment.hasDebugger())
     {
       if (MMApplicationContext.isMMProcess())
       {
-        localObject = (a)aLQ();
-        bool = n.avh();
-        ((a)localObject).ilO = bool;
+        localObject = (a)aTX();
+        bool = o.aCc();
+        ((a)localObject).laO = bool;
       }
     }
     else {
-      if (!((a)aLQ()).ilO) {
+      if (!((a)aTX()).laO) {
         break label164;
       }
     }
     label164:
-    for (((a)aLQ()).hzj = 720;; ((a)aLQ()).hzj = 1080)
+    for (((a)aTX()).kmg = 720;; ((a)aTX()).kmg = 1080)
     {
-      Log.i(TAG, "config resolution:" + ((a)aLQ()).hzj + ", useCpuCrop:" + ((a)aLQ()).ilO);
+      Log.i(TAG, "config resolution:" + ((a)aTX()).kmg + ", useCpuCrop:" + ((a)aTX()).laO);
       AppMethodBeat.o(132);
       return;
-      a locala = (a)aLQ();
-      localObject = EmojiCaptureProxy.rrF;
+      a locala = (a)aTX();
+      localObject = EmojiCaptureProxy.uXl;
       localObject = locala;
-      if (EmojiCaptureProxy.access$getInstance$cp().getInt(ar.a.OiP, 1) == 0) {
+      if (EmojiCaptureProxy.access$getInstance$cp().getInt(ar.a.Vxf, 1) == 0) {
         break;
       }
       bool = false;
@@ -79,19 +79,19 @@ public final class a
     }
   }
   
-  public final int ab(String paramString, int paramInt)
+  public final int at(String paramString, int paramInt)
   {
     AppMethodBeat.i(133);
-    p.h(paramString, "key");
+    p.k(paramString, "key");
     if (MMApplicationContext.isMMProcess())
     {
-      localObject = g.af(com.tencent.mm.plugin.zero.b.a.class);
-      p.g(localObject, "MMKernel.service<IConfig…onfigService::class.java)");
-      paramInt = Util.getInt(((com.tencent.mm.plugin.zero.b.a)localObject).aqJ().getValue(paramString), paramInt);
+      localObject = h.ae(com.tencent.mm.plugin.zero.b.a.class);
+      p.j(localObject, "MMKernel.service<IConfig…onfigService::class.java)");
+      paramInt = Util.getInt(((com.tencent.mm.plugin.zero.b.a)localObject).axc().getValue(paramString), paramInt);
       AppMethodBeat.o(133);
       return paramInt;
     }
-    Object localObject = EmojiCaptureProxy.rrF;
+    Object localObject = EmojiCaptureProxy.uXl;
     paramInt = Util.getInt(EmojiCaptureProxy.access$getInstance$cp().getDynamicConfig(paramString), paramInt);
     AppMethodBeat.o(133);
     return paramInt;
@@ -114,51 +114,51 @@ public final class a
     ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
     ((ActivityManager)localObject).getMemoryInfo(localMemoryInfo);
     long l = localMemoryInfo.totalMem / 1024L / 1024L;
-    int j = ((b)g.af(b.class)).a(b.a.rWj, 512);
-    int k = ((b)g.af(b.class)).a(b.a.rWi, 2048);
-    if ((d.oD(23)) && (i >= j) && (l >= k))
+    int j = ((b)h.ae(b.class)).a(b.a.vCO, 512);
+    int k = ((b)h.ae(b.class)).a(b.a.vCN, 2048);
+    if ((d.qV(23)) && (i >= j) && (l >= k))
     {
       bool1 = true;
-      rnY = bool1;
+      uTF = bool1;
       if (!bool1) {
         break label585;
       }
-      localObject = e.roB;
-      e.cJh();
+      localObject = e.uUh;
+      e.cXQ();
       label182:
-      Log.i(TAG, "checkHighPerformance: device: " + i + ", " + l + "; high: " + j + ", " + k + "; " + rnY);
-      if (!rnY) {
+      Log.i(TAG, "checkHighPerformance: device: " + i + ", " + l + "; high: " + j + ", " + k + "; " + uTF);
+      if (!uTF) {
         break label596;
       }
-      ((a)aLQ()).roa = ((b)g.af(b.class)).a(b.a.rWk, 640);
-      ((a)aLQ()).rob = ((b)g.af(b.class)).a(b.a.rWl, 1);
+      ((a)aTX()).uTH = ((b)h.ae(b.class)).a(b.a.vCP, 640);
+      ((a)aTX()).uTI = ((b)h.ae(b.class)).a(b.a.vCQ, 1);
       label309:
-      i = ae.gKA.gJc;
-      j = ae.gKA.gJd;
+      i = af.juO.jtu;
+      j = af.juO.jtv;
       if (i != -1)
       {
         Log.i(TAG, "setPreviewConfig: use device preview ".concat(String.valueOf(i)));
-        ((a)aLQ()).roa = i;
+        ((a)aTX()).uTH = i;
       }
       if (j != -1)
       {
         Log.i(TAG, "setPreviewConfig: use device sample size ".concat(String.valueOf(j)));
-        ((a)aLQ()).rob = j;
+        ((a)aTX()).uTI = j;
       }
-      Log.i(TAG, "setPreviewConfig: " + ((a)aLQ()).roa + ", " + ((a)aLQ()).rob);
-      if (ab("VideoRecordUseCpuCrop", 0) != 1) {
+      Log.i(TAG, "setPreviewConfig: " + ((a)aTX()).uTH + ", " + ((a)aTX()).uTI);
+      if (at("VideoRecordUseCpuCrop", 0) != 1) {
         break label655;
       }
       bool1 = true;
       label453:
-      i = ae.gKB.gJa;
+      i = af.juP.jts;
       Log.i(TAG, "setServerUseCpuCrop, serverConfigUseCpuCrop:" + bool1 + ", deviceConfigUseCpuCrop:" + i);
       if (bool1) {
-        ((a)aLQ()).ilO = true;
+        ((a)aTX()).laO = true;
       }
       if (i != -1)
       {
-        localObject = (a)aLQ();
+        localObject = (a)aTX();
         if (i != 1) {
           break label661;
         }
@@ -168,33 +168,33 @@ public final class a
     label661:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      ((a)localObject).ilO = bool1;
-      Log.i(TAG, "final set useCpuCrop:" + ((a)aLQ()).ilO);
+      ((a)localObject).laO = bool1;
+      Log.i(TAG, "final set useCpuCrop:" + ((a)aTX()).laO);
       AppMethodBeat.o(130);
       return;
       bool1 = false;
       break;
       label585:
-      localObject = e.roB;
-      e.cJi();
+      localObject = e.uUh;
+      e.cXR();
       break label182;
       label596:
-      ((a)aLQ()).roa = ((b)g.af(b.class)).a(b.a.rWm, 480);
-      ((a)aLQ()).rob = ((b)g.af(b.class)).a(b.a.rWn, 1);
+      ((a)aTX()).uTH = ((b)h.ae(b.class)).a(b.a.vCR, 480);
+      ((a)aTX()).uTI = ((b)h.ae(b.class)).a(b.a.vCS, 1);
       break label309;
       bool1 = false;
       break label453;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/config/EmojiCameraElementConfig$CameraPreviewConfig;", "", "resolution", "", "useCpuCrop", "", "previewSize", "stickerSampleSize", "useCameraApi2", "(IZIIZ)V", "getPreviewSize", "()I", "setPreviewSize", "(I)V", "getResolution", "setResolution", "getStickerSampleSize", "setStickerSampleSize", "getUseCameraApi2", "()Z", "setUseCameraApi2", "(Z)V", "getUseCpuCrop", "setUseCpuCrop", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "", "plugin-emojicapture_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/config/EmojiCameraElementConfig$CameraPreviewConfig;", "", "resolution", "", "useCpuCrop", "", "previewSize", "stickerSampleSize", "useCameraApi2", "(IZIIZ)V", "getPreviewSize", "()I", "setPreviewSize", "(I)V", "getResolution", "setResolution", "getStickerSampleSize", "setStickerSampleSize", "getUseCameraApi2", "()Z", "setUseCameraApi2", "(Z)V", "getUseCpuCrop", "setUseCpuCrop", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "", "plugin-emojicapture_release"})
   public static final class a
   {
-    public int hzj = 1080;
-    public boolean ilO = false;
-    public int roa = 640;
-    int rob = 1;
-    private boolean roc = false;
+    public int kmg = 1080;
+    public boolean laO = false;
+    public int uTH = 640;
+    int uTI = 1;
+    private boolean uTJ = false;
     
     public final boolean equals(Object paramObject)
     {
@@ -203,7 +203,7 @@ public final class a
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((this.hzj != paramObject.hzj) || (this.ilO != paramObject.ilO) || (this.roa != paramObject.roa) || (this.rob != paramObject.rob) || (this.roc != paramObject.roc)) {}
+          if ((this.kmg != paramObject.kmg) || (this.laO != paramObject.laO) || (this.uTH != paramObject.uTH) || (this.uTI != paramObject.uTI) || (this.uTJ != paramObject.uTJ)) {}
         }
       }
       else {
@@ -220,7 +220,7 @@ public final class a
     public final String toString()
     {
       AppMethodBeat.i(129);
-      String str = "CameraPreviewConfig(resolution=" + this.hzj + ", useCpuCrop=" + this.ilO + ", previewSize=" + this.roa + ", stickerSampleSize=" + this.rob + ", useCameraApi2=" + this.roc + ")";
+      String str = "CameraPreviewConfig(resolution=" + this.kmg + ", useCpuCrop=" + this.laO + ", previewSize=" + this.uTH + ", stickerSampleSize=" + this.uTI + ", useCameraApi2=" + this.uTJ + ")";
       AppMethodBeat.o(129);
       return str;
     }
@@ -228,7 +228,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.b.a
  * JD-Core Version:    0.7.0.1
  */

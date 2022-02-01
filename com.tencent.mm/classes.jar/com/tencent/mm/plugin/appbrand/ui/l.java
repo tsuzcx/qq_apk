@@ -1,94 +1,182 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.view.ViewPropertyAnimator;
-import android.view.animation.Animation;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.MutableContextWrapper;
+import android.content.ServiceConnection;
+import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.t;
+import com.tencent.mm.app.Application;
+import com.tencent.mm.plugin.appbrand.ac.a;
+import com.tencent.mm.ui.ad;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandLoadingSplashUtils;", "", "()V", "fromDPToPix", "", "Landroid/content/Context;", "dp", "hideImmediately", "", "Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplash;", "safeDetachFromWindow", "Landroid/view/View;", "luggage-wxa-app_release"})
 public final class l
+  extends MutableContextWrapper
 {
-  public static final l nUf;
+  private boolean qXR;
+  private ContextThemeWrapper qXS;
   
-  static
+  private l(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(160939);
-    nUf = new l();
-    AppMethodBeat.o(160939);
+    super(paramContext);
+    AppMethodBeat.i(177763);
+    this.qXR = false;
+    this.qXS = new a(paramContext.getApplicationContext(), paramInt);
+    if (!(paramContext instanceof ContextThemeWrapper)) {
+      super.setBaseContext(this.qXS);
+    }
+    for (;;)
+    {
+      this.qXR = (paramContext instanceof AppBrandUI);
+      AppMethodBeat.o(177763);
+      return;
+      paramContext.setTheme(paramInt);
+    }
   }
   
-  public static final void a(ab paramab)
+  public static l en(Context paramContext)
   {
-    AppMethodBeat.i(160938);
-    Object localObject;
-    if (paramab != null)
+    AppMethodBeat.i(48774);
+    paramContext = new l(paramContext, w.ckq());
+    AppMethodBeat.o(48774);
+    return paramContext;
+  }
+  
+  public final Object getSystemService(String paramString)
+  {
+    AppMethodBeat.i(48777);
+    if ("layout_inflater".equals(paramString))
     {
-      localObject = paramab.getView();
-      if (localObject != null)
+      paramString = this.qXS.getSystemService(paramString);
+      AppMethodBeat.o(48777);
+      return paramString;
+    }
+    paramString = super.getSystemService(paramString);
+    AppMethodBeat.o(48777);
+    return paramString;
+  }
+  
+  public final void setBaseContext(final Context paramContext)
+  {
+    AppMethodBeat.i(48776);
+    if (paramContext == getBaseContext())
+    {
+      AppMethodBeat.o(48776);
+      return;
+    }
+    if (this.qXR) {
+      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrandRuntimePersistentContextWrapper", "setBaseContext hash:%d, new:%s, old:%s, stack:%s", new Object[] { Integer.valueOf(hashCode()), paramContext, super.getBaseContext(), android.util.Log.getStackTraceString(new Throwable()) });
+    }
+    if ((paramContext instanceof Activity))
+    {
+      super.setBaseContext(paramContext);
+      this.qXR = true;
+      ((Application)getApplicationContext()).registerActivityLifecycleCallbacks(new a()
       {
-        if (((View)localObject).isAttachedToWindow() != true) {
-          break label143;
+        public final void onActivityDestroyed(Activity paramAnonymousActivity)
+        {
+          AppMethodBeat.i(279986);
+          if (paramContext == paramAnonymousActivity)
+          {
+            ((Application)l.this.getApplicationContext()).unregisterActivityLifecycleCallbacks(this);
+            h.ZvG.n(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(278408);
+                if (l.1.this.val$context == l.this.getBaseContext())
+                {
+                  com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrandRuntimePersistentContextWrapper", "onActivityPostDestroyed auto release ref to %s", new Object[] { l.1.this.val$context });
+                  l.a(l.this, l.a(l.this));
+                }
+                AppMethodBeat.o(278408);
+              }
+            }, 0L);
+          }
+          AppMethodBeat.o(279986);
         }
-        localObject = paramab.getView();
-        p.g(localObject, "view");
-        localObject = ((View)localObject).getAnimation();
-        if (localObject != null) {
-          ((Animation)localObject).cancel();
-        }
-        paramab.getView().animate().cancel();
-        localObject = paramab.getView();
-        p.g(localObject, "view");
-        ((View)localObject).setVisibility(8);
-        localObject = paramab.getView();
-        p.g(localObject, "view");
-        localObject = ((View)localObject).getParent();
-        if (localObject != null) {
-          break label130;
-        }
-        paramab = new t("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(160938);
-        throw paramab;
-      }
+      });
+      AppMethodBeat.o(48776);
+      return;
     }
-    AppMethodBeat.o(160938);
-    return;
-    label130:
-    ((ViewGroup)localObject).removeView(paramab.getView());
-    label143:
-    AppMethodBeat.o(160938);
+    super.setBaseContext(this.qXS);
+    AppMethodBeat.o(48776);
   }
   
-  public static final void cG(View paramView)
+  public final void unbindService(ServiceConnection paramServiceConnection)
   {
-    AppMethodBeat.i(219785);
-    if (paramView == null)
+    AppMethodBeat.i(48778);
+    try
     {
-      AppMethodBeat.o(219785);
+      super.unbindService(paramServiceConnection);
+      AppMethodBeat.o(48778);
       return;
     }
-    paramView.setVisibility(8);
-    ViewParent localViewParent = paramView.getParent();
-    Object localObject = localViewParent;
-    if (!(localViewParent instanceof ViewGroup)) {
-      localObject = null;
-    }
-    localObject = (ViewGroup)localObject;
-    if (localObject != null)
+    catch (IllegalArgumentException paramServiceConnection)
     {
-      ((ViewGroup)localObject).removeView(paramView);
-      AppMethodBeat.o(219785);
+      com.tencent.mm.sdk.platformtools.Log.printErrStackTrace("MicroMsg.AppBrandRuntimePersistentContextWrapper", paramServiceConnection, "[CAPTURED CRASH]", new Object[0]);
+      AppMethodBeat.o(48778);
+    }
+  }
+  
+  public final void unregisterReceiver(BroadcastReceiver paramBroadcastReceiver)
+  {
+    AppMethodBeat.i(272705);
+    try
+    {
+      super.unregisterReceiver(paramBroadcastReceiver);
+      AppMethodBeat.o(272705);
       return;
     }
-    AppMethodBeat.o(219785);
+    catch (IllegalArgumentException paramBroadcastReceiver)
+    {
+      com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AppBrandRuntimePersistentContextWrapper", "unregisterReceiver IllegalArgumentException %s", new Object[] { paramBroadcastReceiver });
+      AppMethodBeat.o(272705);
+    }
+  }
+  
+  static final class a
+    extends ContextThemeWrapper
+  {
+    private volatile LayoutInflater mInflater;
+    
+    public a(Context paramContext, int paramInt)
+    {
+      super(paramInt);
+    }
+    
+    public final Object getSystemService(String paramString)
+    {
+      AppMethodBeat.i(177762);
+      if ("layout_inflater".equals(paramString)) {
+        try
+        {
+          if (this.mInflater == null)
+          {
+            this.mInflater = ((LayoutInflater)getApplicationContext().getSystemService(paramString)).cloneInContext(this);
+            ad.c(this.mInflater);
+          }
+          paramString = this.mInflater;
+          return paramString;
+        }
+        finally
+        {
+          AppMethodBeat.o(177762);
+        }
+      }
+      paramString = super.getSystemService(paramString);
+      AppMethodBeat.o(177762);
+      return paramString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.l
  * JD-Core Version:    0.7.0.1
  */

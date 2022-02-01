@@ -5,14 +5,12 @@ import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.os.Debug.MemoryInfo;
 import android.os.Process;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.ArrayList;
@@ -23,35 +21,35 @@ import java.util.List;
 public final class d
   implements Runnable
 {
-  private static final d AXI;
-  private int AWb;
-  public boolean cQp;
+  private static final d GRt;
+  private int GPz;
+  public boolean dgo;
   private final ActivityManager mActivityManager;
   
   static
   {
-    AppMethodBeat.i(201181);
-    AXI = new d();
-    AppMethodBeat.o(201181);
+    AppMethodBeat.i(200711);
+    GRt = new d();
+    AppMethodBeat.o(200711);
   }
   
   private d()
   {
-    AppMethodBeat.i(201178);
-    this.cQp = false;
-    this.AWb = 0;
+    AppMethodBeat.i(200704);
+    this.dgo = false;
+    this.GPz = 0;
     this.mActivityManager = ((ActivityManager)MMApplicationContext.getContext().getSystemService("activity"));
-    AppMethodBeat.o(201178);
+    AppMethodBeat.o(200704);
   }
   
-  public static d eCN()
+  public static d foB()
   {
-    return AXI;
+    return GRt;
   }
   
-  public final List<d.a> eCO()
+  public final List<a> foC()
   {
-    AppMethodBeat.i(201180);
+    AppMethodBeat.i(200710);
     long l = System.currentTimeMillis();
     Object localObject1 = this.mActivityManager.getRunningAppProcesses();
     ArrayList localArrayList = new ArrayList();
@@ -68,54 +66,77 @@ public final class d
         else
         {
           Debug.MemoryInfo[] arrayOfMemoryInfo = this.mActivityManager.getProcessMemoryInfo(new int[] { ((ActivityManager.RunningAppProcessInfo)localObject2).pid });
-          localObject2 = new d.a(((ActivityManager.RunningAppProcessInfo)localObject2).processName, ((ActivityManager.RunningAppProcessInfo)localObject2).pid);
+          localObject2 = new a(((ActivityManager.RunningAppProcessInfo)localObject2).processName, ((ActivityManager.RunningAppProcessInfo)localObject2).pid);
           if ((arrayOfMemoryInfo != null) && (arrayOfMemoryInfo.length == 1) && (arrayOfMemoryInfo[0] != null)) {
-            ((d.a)localObject2).AXJ = arrayOfMemoryInfo[0].getTotalPss();
+            ((a)localObject2).GRu = arrayOfMemoryInfo[0].getTotalPss();
           }
           localArrayList.add(localObject2);
         }
       }
     }
     Log.i("MicroMsg.ProcessWatchDog", "dumpProcess cost: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    AppMethodBeat.o(201180);
+    AppMethodBeat.o(200710);
     return localArrayList;
   }
   
   public final void run()
   {
-    AppMethodBeat.i(201179);
-    Object localObject1 = eCO();
+    AppMethodBeat.i(200705);
+    Object localObject1 = foC();
     if (!((List)localObject1).isEmpty())
     {
       int i = ((List)localObject1).size();
       Object localObject2 = new ArrayList();
       ((ArrayList)localObject2).add(new IDKey(1474, 0, 1));
-      ((ArrayList)localObject2).add(new IDKey(1474, i, 1));
-      e.Cxv.b((ArrayList)localObject2, false);
-      int j = ((b)g.af(b.class)).a(b.a.smU, 12);
+      if (i <= 127) {
+        ((ArrayList)localObject2).add(new IDKey(1474, i, 1));
+      }
+      f.Iyx.b((ArrayList)localObject2, false);
+      int j = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vXW, 12);
       localObject2 = ((List)localObject1).iterator();
-      for (l = 0L; ((Iterator)localObject2).hasNext(); l = ((d.a)((Iterator)localObject2).next()).AXJ + l) {}
+      for (l = 0L; ((Iterator)localObject2).hasNext(); l = ((a)((Iterator)localObject2).next()).GRu + l) {}
       localObject1 = Arrays.toString(((List)localObject1).toArray()).replace(",", ";");
-      if ((i >= j) && (i > this.AWb))
+      if ((i >= j) && (i > this.GPz))
       {
-        this.AWb = i;
-        e.Cxv.a(20846, new Object[] { Integer.valueOf(i), localObject1, Long.valueOf(l) });
+        this.GPz = i;
+        f.Iyx.a(20846, new Object[] { Integer.valueOf(i), localObject1, Long.valueOf(l) });
       }
       Log.i("MicroMsg.ProcessWatchDog", "DumpProcesses: %s || pssSum : %s", new Object[] { localObject1, Long.valueOf(l) });
     }
-    localObject1 = h.RTc;
-    if (this.cQp) {}
+    localObject1 = com.tencent.e.h.ZvG;
+    if (this.dgo) {}
     for (long l = 300000L;; l = 1800000L)
     {
       ((i)localObject1).o(this, l);
-      AppMethodBeat.o(201179);
+      AppMethodBeat.o(200705);
       return;
+    }
+  }
+  
+  static final class a
+  {
+    long GRu;
+    int pid;
+    String processName;
+    
+    public a(String paramString, int paramInt)
+    {
+      this.processName = paramString;
+      this.pid = paramInt;
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(200685);
+      String str = this.processName + "|pid:" + this.pid + "|pss:" + this.GRu;
+      AppMethodBeat.o(200685);
+      return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.watchdogs.d
  * JD-Core Version:    0.7.0.1
  */

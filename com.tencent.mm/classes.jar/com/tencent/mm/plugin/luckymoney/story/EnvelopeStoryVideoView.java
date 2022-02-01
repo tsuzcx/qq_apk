@@ -4,27 +4,30 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.loader.j.b;
 import com.tencent.mm.modelvideo.MMVideoView;
+import com.tencent.mm.modelvideo.f;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
-import com.tencent.mm.pluginsdk.ui.tools.j;
+import com.tencent.mm.pluginsdk.ui.tools.k;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 
 public class EnvelopeStoryVideoView
   extends MMVideoView
 {
   public static final String ROOT_PATH;
-  private boolean dLQ;
+  boolean EFv;
+  private boolean EFw;
+  public a EFx;
+  private boolean EFy;
+  private boolean fEF;
   private String sessionId;
-  boolean zaZ;
-  private boolean zba;
-  public a zbb;
   
   static
   {
     AppMethodBeat.i(174376);
-    ROOT_PATH = com.tencent.mm.loader.j.b.aKJ() + "hbstoryvideo/";
+    ROOT_PATH = b.aSL() + "hbstoryvideo/";
     AppMethodBeat.o(174376);
   }
   
@@ -32,7 +35,7 @@ public class EnvelopeStoryVideoView
   {
     super(paramContext);
     AppMethodBeat.i(163671);
-    this.zba = false;
+    this.EFw = false;
     init();
     AppMethodBeat.o(163671);
   }
@@ -41,7 +44,7 @@ public class EnvelopeStoryVideoView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(163672);
-    this.zba = false;
+    this.EFw = false;
     init();
     AppMethodBeat.o(163672);
   }
@@ -50,7 +53,7 @@ public class EnvelopeStoryVideoView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(163673);
-    this.zba = false;
+    this.EFw = false;
     init();
     AppMethodBeat.o(163673);
   }
@@ -58,26 +61,26 @@ public class EnvelopeStoryVideoView
   private void init()
   {
     AppMethodBeat.i(163674);
-    if (this.mEB != null) {
-      this.mEB.setVisibility(8);
+    if (this.pDN != null) {
+      this.pDN.setVisibility(8);
     }
     setRootPath(ROOT_PATH);
-    s.bpc(ROOT_PATH);
+    u.bBX(ROOT_PATH);
     setLoop(true);
     AppMethodBeat.o(163674);
   }
   
-  public final boolean YY()
+  public final boolean adH()
   {
     AppMethodBeat.i(174375);
-    if ((this.qbJ instanceof VideoPlayerTextureView))
+    if ((this.txH instanceof VideoPlayerTextureView))
     {
-      boolean bool = ((VideoPlayerTextureView)this.qbJ).YY();
+      boolean bool = ((VideoPlayerTextureView)this.txH).adH();
       AppMethodBeat.o(174375);
       return bool;
     }
     Log.e(this.TAG, "videoview not VideoPlayerTextureView");
-    if (this.jpW == 4)
+    if (this.mfx == 4)
     {
       AppMethodBeat.o(174375);
       return true;
@@ -90,10 +93,13 @@ public class EnvelopeStoryVideoView
   {
     AppMethodBeat.i(163676);
     super.c(paramBoolean, paramString, paramInt);
+    if (this.EFy) {
+      this.mfv = paramString;
+    }
     AppMethodBeat.o(163676);
   }
   
-  public final boolean efT()
+  public final boolean ePu()
   {
     return false;
   }
@@ -101,7 +107,7 @@ public class EnvelopeStoryVideoView
   public int getRealPlayDurationSec()
   {
     AppMethodBeat.i(174374);
-    if (this.zba)
+    if (this.EFw)
     {
       i = getVideoDurationSec();
       AppMethodBeat.o(174374);
@@ -120,9 +126,9 @@ public class EnvelopeStoryVideoView
   public final void onCompletion()
   {
     AppMethodBeat.i(174373);
-    this.zba = true;
-    if ((this.jqj) && (this.zbb != null)) {
-      this.zbb.a(this);
+    this.EFw = true;
+    if ((this.mfK) && (this.EFx != null)) {
+      this.EFx.a(this);
     }
     super.onCompletion();
     AppMethodBeat.o(174373);
@@ -131,17 +137,17 @@ public class EnvelopeStoryVideoView
   public final void onUIPause()
   {
     AppMethodBeat.i(163679);
-    Log.i(this.TAG, "%s onUIPause", new Object[] { bgQ() });
-    if (this.mEw)
+    Log.i(this.TAG, "%s onUIPause", new Object[] { bqf() });
+    if (this.pDI)
     {
-      this.mEH = getCurrPosSec();
-      this.mEI = true;
-      this.mEO = 0;
-      this.mEN = 0L;
+      this.pDT = getCurrPosSec();
+      this.pDU = true;
+      this.pEa = 0;
+      this.pDZ = 0L;
       pause();
       stopTimer();
-      this.mEw = false;
-      yU(getReportIdkey() + 11);
+      this.pDI = false;
+      EW(getReportIdkey() + 11);
     }
     AppMethodBeat.o(163679);
   }
@@ -149,37 +155,42 @@ public class EnvelopeStoryVideoView
   public final void onUIResume()
   {
     AppMethodBeat.i(163678);
-    if (!this.mEw)
+    if (!this.pDI)
     {
-      this.mEw = true;
-      if (this.qbJ != null)
+      this.pDI = true;
+      if (this.txH != null)
       {
-        if (!this.mEI) {
+        if (!this.pDU) {
           break label54;
         }
-        play();
+        bqo();
       }
     }
     for (;;)
     {
-      yU(getReportIdkey() + 10);
+      EW(getReportIdkey() + 10);
       AppMethodBeat.o(163678);
       return;
       label54:
-      ((VideoPlayerTextureView)this.qbJ).bLe();
+      ((VideoPlayerTextureView)this.txH).bXe();
     }
   }
   
   public void setLocal(boolean paramBoolean)
   {
-    this.dLQ = paramBoolean;
+    this.fEF = paramBoolean;
+  }
+  
+  public void setLocalPreDownloadVideo(boolean paramBoolean)
+  {
+    this.EFy = paramBoolean;
   }
   
   public void setMute(boolean paramBoolean)
   {
     AppMethodBeat.i(163675);
     super.setMute(paramBoolean);
-    this.zaZ = paramBoolean;
+    this.EFv = paramBoolean;
     AppMethodBeat.o(163675);
   }
   
@@ -191,37 +202,37 @@ public class EnvelopeStoryVideoView
   public final void start()
   {
     AppMethodBeat.i(163677);
-    Log.i(this.TAG, "%s start cdnMediaId[%s] timeDuration[%d] isLocal[%s]", new Object[] { bgQ(), this.jpT, Integer.valueOf(this.jpY), Boolean.valueOf(this.dLQ) });
-    if (this.qbJ != null)
+    Log.i(this.TAG, "%s start cdnMediaId[%s] timeDuration[%d] isLocal[%s]", new Object[] { bqf(), this.mfu, Integer.valueOf(this.mfz), Boolean.valueOf(this.fEF) });
+    if (this.txH != null)
     {
-      if (!Util.isNullOrNil(this.qbJ.getVideoPath())) {
-        break label174;
+      if (!Util.isNullOrNil(this.txH.getVideoPath())) {
+        break label181;
       }
-      if (this.dLQ)
+      if ((this.fEF) || (this.EFy))
       {
-        bgV();
-        this.jpV = 3;
+        bqm();
+        this.mfw = 3;
         AppMethodBeat.o(163677);
         return;
       }
       showLoading();
-      this.jqi = true;
-      this.jpY = 0;
-      this.jpV = 1;
-      if (this.jpS != null)
+      this.mfJ = true;
+      this.mfz = 0;
+      this.mfw = 1;
+      if (this.mft != null)
       {
-        this.jpS.p(this.jpT, this.jpU, this.url);
-        this.jpS.a(this);
+        this.mft.s(this.mfu, this.mfv, this.url);
+        this.mft.a(this);
       }
-      fgB();
+      fUH();
     }
     for (;;)
     {
-      yU(getReportIdkey() + 1);
+      EW(getReportIdkey() + 1);
       AppMethodBeat.o(163677);
       return;
-      label174:
-      play();
+      label181:
+      bqo();
     }
   }
   
@@ -232,7 +243,7 @@ public class EnvelopeStoryVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.EnvelopeStoryVideoView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.newtips.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.eu;
+import com.tencent.mm.f.c.ez;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends eu
+  extends ez
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   
@@ -83,7 +83,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.b.a
  * JD-Core Version:    0.7.0.1
  */

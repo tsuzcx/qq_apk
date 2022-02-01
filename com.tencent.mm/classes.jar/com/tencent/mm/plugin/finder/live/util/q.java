@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.finder.live.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.core.core.b.c;
+import com.tencent.mm.live.core.core.model.d;
 import java.util.Iterator;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/util/LiveStatisticsUtil;", "", "()V", "TAG", "", "cdnStatistics", "Lcom/tencent/mm/plugin/finder/live/util/CDNStatistics;", "getCdnStatistics", "()Lcom/tencent/mm/plugin/finder/live/util/CDNStatistics;", "setCdnStatistics", "(Lcom/tencent/mm/plugin/finder/live/util/CDNStatistics;)V", "trtcStatistics", "Lcom/tencent/mm/plugin/finder/live/util/TrtcStatistics;", "getTrtcStatistics", "()Lcom/tencent/mm/plugin/finder/live/util/TrtcStatistics;", "setTrtcStatistics", "(Lcom/tencent/mm/plugin/finder/live/util/TrtcStatistics;)V", "doStatistic", "", "value", "", "cache", "Lcom/tencent/mm/plugin/finder/live/util/StatisticsCache;", "reset", "statisticCDN", "qosInfo", "Lcom/tencent/mm/live/core/core/model/LiveQosInfo;", "statisticTRTC", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/util/LiveStatisticsUtil;", "", "()V", "TAG", "", "cdnStatistics", "Lcom/tencent/mm/plugin/finder/live/util/CDNStatistics;", "getCdnStatistics", "()Lcom/tencent/mm/plugin/finder/live/util/CDNStatistics;", "setCdnStatistics", "(Lcom/tencent/mm/plugin/finder/live/util/CDNStatistics;)V", "trtcStatistics", "Lcom/tencent/mm/plugin/finder/live/util/TrtcStatistics;", "getTrtcStatistics", "()Lcom/tencent/mm/plugin/finder/live/util/TrtcStatistics;", "setTrtcStatistics", "(Lcom/tencent/mm/plugin/finder/live/util/TrtcStatistics;)V", "doStatistic", "", "value", "", "cache", "Lcom/tencent/mm/plugin/finder/live/util/StatisticsCache;", "reset", "statisticCDN", "qosInfo", "Lcom/tencent/mm/live/core/core/model/LiveQosInfo;", "statisticTRTC", "plugin-finder-base_release"})
 public final class q
 {
   private static final String TAG = "Finder.LiveStatisticsUtil";
-  private static y uxh;
-  private static h uxi;
-  public static final q uxj;
+  private static z yQP;
+  private static h yQQ;
+  public static final q yQR;
   
   static
   {
-    AppMethodBeat.i(247295);
-    uxj = new q();
+    AppMethodBeat.i(258966);
+    yQR = new q();
     TAG = "Finder.LiveStatisticsUtil";
-    AppMethodBeat.o(247295);
+    AppMethodBeat.o(258966);
   }
   
-  private static void a(int paramInt, w paramw)
+  private static void a(int paramInt, x paramx)
   {
-    AppMethodBeat.i(247294);
-    if (paramw == null)
+    AppMethodBeat.i(258964);
+    if (paramx == null)
     {
-      AppMethodBeat.o(247294);
+      AppMethodBeat.o(258964);
       return;
     }
-    paramw.uxm.value = paramInt;
-    if (!paramw.tuG)
+    paramx.yQV.value = paramInt;
+    if (!paramx.xcp)
     {
-      AppMethodBeat.o(247294);
+      AppMethodBeat.o(258964);
       return;
     }
-    Object localObject = paramw.uxn;
+    Object localObject = paramx.yQW;
     if (localObject != null)
     {
-      if ((((e)localObject).hjI >= 2147483647) || (((e)localObject).uvZ + paramInt >= 9223372036854775807L)) {
+      if ((((e)localObject).mgw >= 2147483647) || (((e)localObject).yPF + paramInt >= 9223372036854775807L)) {
         break label174;
       }
-      ((e)localObject).hjI += 1;
-      ((e)localObject).uvZ += paramInt;
-      ((e)localObject).uwa = (((e)localObject).uvZ / ((e)localObject).hjI);
+      ((e)localObject).mgw += 1;
+      ((e)localObject).yPF += paramInt;
+      ((e)localObject).yPG = (((e)localObject).yPF / ((e)localObject).mgw);
     }
     for (;;)
     {
-      localObject = paramw.uxo;
+      localObject = paramx.yQX;
       if (localObject == null) {
         break label199;
       }
@@ -60,105 +60,105 @@ public final class q
         }
         locali = (i)((Iterator)localObject).next();
       } while (paramInt >= locali.value);
-      if (locali.hjI >= 2147483647) {
+      if (locali.mgw >= 2147483647) {
         break;
       }
-      locali.hjI += 1;
-      AppMethodBeat.o(247294);
+      locali.mgw += 1;
+      AppMethodBeat.o(258964);
       return;
       label174:
-      paramw.tuG = false;
+      paramx.xcp = false;
     }
-    paramw.tuG = false;
-    AppMethodBeat.o(247294);
+    paramx.xcp = false;
+    AppMethodBeat.o(258964);
     return;
-    AppMethodBeat.o(247294);
+    AppMethodBeat.o(258964);
     return;
     label199:
-    AppMethodBeat.o(247294);
+    AppMethodBeat.o(258964);
   }
   
-  public static void a(c paramc)
+  public static void a(d paramd)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(247292);
-    if (paramc != null)
+    AppMethodBeat.i(258961);
+    if (paramd != null)
     {
-      if (uxh == null) {
-        uxh = new y();
+      if (yQP == null) {
+        yQP = new z();
       }
-      int i = (int)paramc.hze;
-      Object localObject1 = uxh;
+      int i = (int)paramd.kmb;
+      Object localObject1 = yQP;
       if (localObject1 != null)
       {
-        localObject1 = ((y)localObject1).uwg;
-        a(i, (w)localObject1);
-        i = paramc.hza;
-        localObject1 = uxh;
+        localObject1 = ((z)localObject1).yPN;
+        a(i, (x)localObject1);
+        i = paramd.klX;
+        localObject1 = yQP;
         if (localObject1 == null) {
           break label304;
         }
-        localObject1 = ((y)localObject1).uxp;
+        localObject1 = ((z)localObject1).yQY;
         label69:
-        a(i, (w)localObject1);
-        i = paramc.upLoss;
-        localObject1 = uxh;
+        a(i, (x)localObject1);
+        i = paramd.upLoss;
+        localObject1 = yQP;
         if (localObject1 == null) {
           break label309;
         }
-        localObject1 = ((y)localObject1).uxq;
+        localObject1 = ((z)localObject1).yQZ;
         label92:
-        a(i, (w)localObject1);
-        i = paramc.downLoss;
-        localObject1 = uxh;
+        a(i, (x)localObject1);
+        i = paramd.downLoss;
+        localObject1 = yQP;
         if (localObject1 == null) {
           break label314;
         }
-        localObject1 = ((y)localObject1).uxr;
+        localObject1 = ((z)localObject1).yRa;
         label115:
-        a(i, (w)localObject1);
-        i = (int)(paramc.sendBytes / 1000L);
-        localObject1 = uxh;
+        a(i, (x)localObject1);
+        i = (int)(paramd.sendBytes / 1000L);
+        localObject1 = yQP;
         if (localObject1 == null) {
           break label319;
         }
-        localObject1 = ((y)localObject1).uxs;
+        localObject1 = ((z)localObject1).yRb;
         label143:
-        a(i, (w)localObject1);
-        i = (int)(paramc.receiveBytes / 1000L);
-        localObject1 = uxh;
+        a(i, (x)localObject1);
+        i = (int)(paramd.receiveBytes / 1000L);
+        localObject1 = yQP;
         if (localObject1 == null) {
           break label324;
         }
-        localObject1 = ((y)localObject1).uxt;
+        localObject1 = ((z)localObject1).yRc;
         label171:
-        a(i, (w)localObject1);
-        i = paramc.width;
-        localObject1 = uxh;
+        a(i, (x)localObject1);
+        i = paramd.width;
+        localObject1 = yQP;
         if (localObject1 == null) {
           break label329;
         }
-        localObject1 = ((y)localObject1).uwk;
+        localObject1 = ((z)localObject1).yPR;
         label194:
-        a(i, (w)localObject1);
-        i = paramc.height;
-        localObject1 = uxh;
+        a(i, (x)localObject1);
+        i = paramd.height;
+        localObject1 = yQP;
         if (localObject1 == null) {
           break label334;
         }
-        localObject1 = ((y)localObject1).uwl;
+        localObject1 = ((z)localObject1).yPS;
         label217:
-        a(i, (w)localObject1);
-        i = paramc.hyI;
-        localObject1 = uxh;
+        a(i, (x)localObject1);
+        i = paramd.klF;
+        localObject1 = yQP;
         if (localObject1 == null) {
           break label339;
         }
-        localObject1 = ((y)localObject1).uwj;
+        localObject1 = ((z)localObject1).yPQ;
         label240:
-        a(i, (w)localObject1);
-        i = paramc.hyK;
-        localObject1 = uxh;
+        a(i, (x)localObject1);
+        i = paramd.klH;
+        localObject1 = yQP;
         if (localObject1 == null) {
           break label344;
         }
@@ -172,17 +172,17 @@ public final class q
       label334:
       label339:
       label344:
-      for (localObject1 = ((y)localObject1).uwh;; localObject1 = null)
+      for (localObject1 = ((z)localObject1).yPO;; localObject1 = null)
       {
-        a(i, (w)localObject1);
-        i = paramc.hyL;
-        localObject1 = uxh;
-        paramc = localObject2;
+        a(i, (x)localObject1);
+        i = paramd.klI;
+        localObject1 = yQP;
+        paramd = localObject2;
         if (localObject1 != null) {
-          paramc = ((y)localObject1).uwi;
+          paramd = ((z)localObject1).yPP;
         }
-        a(i, paramc);
-        AppMethodBeat.o(247292);
+        a(i, paramd);
+        AppMethodBeat.o(258961);
         return;
         localObject1 = null;
         break;
@@ -204,100 +204,100 @@ public final class q
         break label240;
       }
     }
-    AppMethodBeat.o(247292);
+    AppMethodBeat.o(258961);
   }
   
-  public static void b(c paramc)
+  public static void b(d paramd)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(247293);
+    AppMethodBeat.i(258963);
     int i;
-    if (paramc != null)
+    if (paramd != null)
     {
-      if (uxi == null) {
-        uxi = new h();
+      if (yQQ == null) {
+        yQQ = new h();
       }
-      i = (int)paramc.hze;
-      localObject1 = uxi;
+      i = (int)paramd.kmb;
+      localObject1 = yQQ;
       if (localObject1 == null) {
         break label312;
       }
-      localObject1 = ((h)localObject1).uwg;
-      a(i, (w)localObject1);
-      i = paramc.width;
-      localObject1 = uxi;
+      localObject1 = ((h)localObject1).yPN;
+      a(i, (x)localObject1);
+      i = paramd.width;
+      localObject1 = yQQ;
       if (localObject1 == null) {
         break label317;
       }
-      localObject1 = ((h)localObject1).uwk;
+      localObject1 = ((h)localObject1).yPR;
       label69:
-      a(i, (w)localObject1);
-      i = paramc.height;
-      localObject1 = uxi;
+      a(i, (x)localObject1);
+      i = paramd.height;
+      localObject1 = yQQ;
       if (localObject1 == null) {
         break label322;
       }
-      localObject1 = ((h)localObject1).uwl;
+      localObject1 = ((h)localObject1).yPS;
       label92:
-      a(i, (w)localObject1);
-      i = paramc.hyI;
-      localObject1 = uxi;
+      a(i, (x)localObject1);
+      i = paramd.klF;
+      localObject1 = yQQ;
       if (localObject1 == null) {
         break label327;
       }
-      localObject1 = ((h)localObject1).uwj;
+      localObject1 = ((h)localObject1).yPQ;
       label115:
-      a(i, (w)localObject1);
-      i = paramc.hyK;
-      localObject1 = uxi;
+      a(i, (x)localObject1);
+      i = paramd.klH;
+      localObject1 = yQQ;
       if (localObject1 == null) {
         break label332;
       }
-      localObject1 = ((h)localObject1).uwh;
+      localObject1 = ((h)localObject1).yPO;
       label138:
-      a(i, (w)localObject1);
-      i = paramc.hyL;
-      localObject1 = uxi;
+      a(i, (x)localObject1);
+      i = paramd.klI;
+      localObject1 = yQQ;
       if (localObject1 == null) {
         break label337;
       }
-      localObject1 = ((h)localObject1).uwi;
+      localObject1 = ((h)localObject1).yPP;
       label161:
-      a(i, (w)localObject1);
-      i = paramc.hyM;
-      localObject1 = uxi;
+      a(i, (x)localObject1);
+      i = paramd.klJ;
+      localObject1 = yQQ;
       if (localObject1 == null) {
         break label342;
       }
-      localObject1 = ((h)localObject1).uwm;
+      localObject1 = ((h)localObject1).yPT;
       label184:
-      a(i, (w)localObject1);
-      i = paramc.hyT;
-      localObject1 = uxi;
+      a(i, (x)localObject1);
+      i = paramd.klQ;
+      localObject1 = yQQ;
       if (localObject1 == null) {
         break label347;
       }
-      localObject1 = ((h)localObject1).uwn;
+      localObject1 = ((h)localObject1).yPU;
       label207:
-      a(i, (w)localObject1);
-      i = paramc.hyR;
-      localObject1 = uxi;
+      a(i, (x)localObject1);
+      i = paramd.klO;
+      localObject1 = yQQ;
       if (localObject1 == null) {
         break label352;
       }
-      localObject1 = ((h)localObject1).uwo;
+      localObject1 = ((h)localObject1).yPV;
       label230:
-      a(i, (w)localObject1);
-      i = paramc.hyQ;
-      localObject1 = uxi;
+      a(i, (x)localObject1);
+      i = paramd.klN;
+      localObject1 = yQQ;
       if (localObject1 == null) {
         break label357;
       }
-      localObject1 = ((h)localObject1).uwp;
+      localObject1 = ((h)localObject1).yPW;
       label253:
-      a(i, (w)localObject1);
-      i = paramc.hyN;
-      localObject1 = uxi;
+      a(i, (x)localObject1);
+      i = paramd.klK;
+      localObject1 = yQQ;
       if (localObject1 == null) {
         break label362;
       }
@@ -313,17 +313,17 @@ public final class q
     label352:
     label357:
     label362:
-    for (Object localObject1 = ((h)localObject1).uwq;; localObject1 = null)
+    for (Object localObject1 = ((h)localObject1).yPX;; localObject1 = null)
     {
-      a(i, (w)localObject1);
-      i = paramc.hyP;
-      localObject1 = uxi;
-      paramc = localObject2;
+      a(i, (x)localObject1);
+      i = paramd.klM;
+      localObject1 = yQQ;
+      paramd = localObject2;
       if (localObject1 != null) {
-        paramc = ((h)localObject1).uwr;
+        paramd = ((h)localObject1).yPY;
       }
-      a(i, paramc);
-      AppMethodBeat.o(247293);
+      a(i, paramd);
+      AppMethodBeat.o(258963);
       return;
       localObject1 = null;
       break;
@@ -348,25 +348,20 @@ public final class q
     }
   }
   
-  public static y din()
+  public static h dEx()
   {
-    return uxh;
-  }
-  
-  public static h dio()
-  {
-    return uxi;
+    return yQQ;
   }
   
   public static void reset()
   {
-    uxh = null;
-    uxi = null;
+    yQP = null;
+    yQQ = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.util.q
  * JD-Core Version:    0.7.0.1
  */

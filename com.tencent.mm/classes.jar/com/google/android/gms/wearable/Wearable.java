@@ -3,7 +3,7 @@ package com.google.android.gms.wearable;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Looper;
-import android.support.v4.e.m;
+import androidx.core.f.g;
 import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.Api.AbstractClientBuilder;
 import com.google.android.gms.common.api.Api.ApiOptions.Optional;
@@ -85,7 +85,7 @@ public class Wearable
   public static CapabilityClient getCapabilityClient(Activity paramActivity, WearableOptions paramWearableOptions)
   {
     AppMethodBeat.i(100887);
-    m.checkNotNull(paramWearableOptions, "options must not be null");
+    g.checkNotNull(paramWearableOptions, "options must not be null");
     paramActivity = new zzaa(paramActivity, WearableOptions.zza(paramWearableOptions));
     AppMethodBeat.o(100887);
     return paramActivity;
@@ -102,7 +102,7 @@ public class Wearable
   public static CapabilityClient getCapabilityClient(Context paramContext, WearableOptions paramWearableOptions)
   {
     AppMethodBeat.i(100885);
-    m.checkNotNull(paramWearableOptions, "options must not be null");
+    g.checkNotNull(paramWearableOptions, "options must not be null");
     paramContext = new zzaa(paramContext, WearableOptions.zza(paramWearableOptions));
     AppMethodBeat.o(100885);
     return paramContext;
@@ -119,7 +119,7 @@ public class Wearable
   public static ChannelClient getChannelClient(Activity paramActivity, WearableOptions paramWearableOptions)
   {
     AppMethodBeat.i(100895);
-    m.checkNotNull(paramWearableOptions, "options must not be null");
+    g.checkNotNull(paramWearableOptions, "options must not be null");
     paramActivity = new zzao(paramActivity, WearableOptions.zza(paramWearableOptions));
     AppMethodBeat.o(100895);
     return paramActivity;
@@ -136,7 +136,7 @@ public class Wearable
   public static ChannelClient getChannelClient(Context paramContext, WearableOptions paramWearableOptions)
   {
     AppMethodBeat.i(100893);
-    m.checkNotNull(paramWearableOptions, "options must not be null");
+    g.checkNotNull(paramWearableOptions, "options must not be null");
     paramContext = new zzao(paramContext, WearableOptions.zza(paramWearableOptions));
     AppMethodBeat.o(100893);
     return paramContext;
@@ -153,7 +153,7 @@ public class Wearable
   public static DataClient getDataClient(Activity paramActivity, WearableOptions paramWearableOptions)
   {
     AppMethodBeat.i(100879);
-    m.checkNotNull(paramWearableOptions, "options must not be null");
+    g.checkNotNull(paramWearableOptions, "options must not be null");
     paramActivity = new zzcj(paramActivity, WearableOptions.zza(paramWearableOptions));
     AppMethodBeat.o(100879);
     return paramActivity;
@@ -170,7 +170,7 @@ public class Wearable
   public static DataClient getDataClient(Context paramContext, WearableOptions paramWearableOptions)
   {
     AppMethodBeat.i(100877);
-    m.checkNotNull(paramWearableOptions, "options must not be null");
+    g.checkNotNull(paramWearableOptions, "options must not be null");
     paramContext = new zzcj(paramContext, WearableOptions.zza(paramWearableOptions));
     AppMethodBeat.o(100877);
     return paramContext;
@@ -187,7 +187,7 @@ public class Wearable
   public static MessageClient getMessageClient(Activity paramActivity, WearableOptions paramWearableOptions)
   {
     AppMethodBeat.i(100883);
-    m.checkNotNull(paramWearableOptions, "options must not be null");
+    g.checkNotNull(paramWearableOptions, "options must not be null");
     paramActivity = new zzez(paramActivity, WearableOptions.zza(paramWearableOptions));
     AppMethodBeat.o(100883);
     return paramActivity;
@@ -204,7 +204,7 @@ public class Wearable
   public static MessageClient getMessageClient(Context paramContext, WearableOptions paramWearableOptions)
   {
     AppMethodBeat.i(100881);
-    m.checkNotNull(paramWearableOptions, "options must not be null");
+    g.checkNotNull(paramWearableOptions, "options must not be null");
     paramContext = new zzez(paramContext, WearableOptions.zza(paramWearableOptions));
     AppMethodBeat.o(100881);
     return paramContext;
@@ -221,7 +221,7 @@ public class Wearable
   public static NodeClient getNodeClient(Activity paramActivity, WearableOptions paramWearableOptions)
   {
     AppMethodBeat.i(100891);
-    m.checkNotNull(paramWearableOptions, "options must not be null");
+    g.checkNotNull(paramWearableOptions, "options must not be null");
     paramActivity = new zzfl(paramActivity, WearableOptions.zza(paramWearableOptions));
     AppMethodBeat.o(100891);
     return paramActivity;
@@ -238,7 +238,7 @@ public class Wearable
   public static NodeClient getNodeClient(Context paramContext, WearableOptions paramWearableOptions)
   {
     AppMethodBeat.i(100889);
-    m.checkNotNull(paramWearableOptions, "options must not be null");
+    g.checkNotNull(paramWearableOptions, "options must not be null");
     paramContext = new zzfl(paramContext, WearableOptions.zza(paramWearableOptions));
     AppMethodBeat.o(100889);
     return paramContext;
@@ -292,7 +292,7 @@ public class Wearable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.gms.wearable.Wearable
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.u;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/engine/FunctionMsgQueue$Companion;", "", "()V", "TAG", "", "plugin-functionmsg_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/engine/FunctionMsgQueue$Companion;", "", "()V", "TAG", "", "plugin-functionmsg_release"})
 public final class c$a {}
 
 

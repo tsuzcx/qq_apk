@@ -1,46 +1,67 @@
 package com.tencent.mm.xeffect.effect;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Size;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/mm/xeffect/effect/StickerEffect;", "Lcom/tencent/mm/xeffect/effect/VLogEffect;", "Lcom/tencent/mm/xeffect/effect/LayoutInfoEffect;", "ptr", "", "(J)V", "defaultLayout", "Lcom/tencent/mm/xeffect/effect/LayoutInfoEffect$Default;", "getLayout", "Lcom/tencent/mm/xeffect/effect/EffectLayoutInfo;", "setLayout", "", "layoutInfo", "setSize", "width", "", "height", "type", "Lcom/tencent/mm/xeffect/effect/EffectType;", "renderlib_release"})
+@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/effect/StickerDecoder;", "Lcom/tencent/mm/xeffect/effect/IStickerDecoder;", "path", "", "(Ljava/lang/String;)V", "bytes", "", "([B)V", "bitmap", "Landroid/graphics/Bitmap;", "height", "", "width", "destroy", "", "duration", "", "getFrame", "seekTo", "time", "size", "Landroid/util/Size;", "renderlib_release"})
 public final class aa
-  extends ad
-  implements p
+  implements IStickerDecoder
 {
-  private final p.a RxQ;
+  private final Bitmap bitmap;
+  private final int height;
+  private final int width;
   
-  public aa(long paramLong)
+  public aa(String paramString)
   {
-    super(paramLong);
-    AppMethodBeat.i(237116);
-    this.RxQ = new p.a((ad)this);
-    AppMethodBeat.o(237116);
+    AppMethodBeat.i(195863);
+    paramString = BitmapFactory.decodeFile(paramString);
+    p.j(paramString, "BitmapFactory.decodeFile(path)");
+    this.bitmap = paramString;
+    this.width = this.bitmap.getWidth();
+    this.height = this.bitmap.getHeight();
+    AppMethodBeat.o(195863);
   }
   
-  public final void a(f paramf)
+  public aa(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(237114);
-    kotlin.g.b.p.h(paramf, "layoutInfo");
-    this.RxQ.a(paramf);
-    AppMethodBeat.o(237114);
+    AppMethodBeat.i(195864);
+    paramArrayOfByte = BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length);
+    p.j(paramArrayOfByte, "BitmapFactory.decodeByte…ray(bytes, 0, bytes.size)");
+    this.bitmap = paramArrayOfByte;
+    this.width = this.bitmap.getWidth();
+    this.height = this.bitmap.getHeight();
+    AppMethodBeat.o(195864);
   }
   
-  public final j hiu()
+  public final void destroy() {}
+  
+  public final long duration()
   {
-    return j.Ryk;
+    return 1073741824L;
   }
   
-  public final void setSize(int paramInt1, int paramInt2)
+  public final Bitmap getFrame()
   {
-    AppMethodBeat.i(237115);
-    VLogEffectJNI.INSTANCE.setStickerSize$renderlib_release(this.ptr, paramInt1, paramInt2);
-    AppMethodBeat.o(237115);
+    return this.bitmap;
+  }
+  
+  public final void seekTo(long paramLong) {}
+  
+  public final Size size()
+  {
+    AppMethodBeat.i(195861);
+    Size localSize = new Size(this.width, this.height);
+    AppMethodBeat.o(195861);
+    return localSize;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.xeffect.effect.aa
  * JD-Core Version:    0.7.0.1
  */

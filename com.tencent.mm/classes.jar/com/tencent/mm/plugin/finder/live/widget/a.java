@@ -1,186 +1,166 @@
 package com.tencent.mm.plugin.finder.live.widget;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.c.b.b;
-import com.tencent.mm.live.c.b.c;
-import com.tencent.mm.plugin.finder.live.model.cgi.o.a;
-import com.tencent.mm.plugin.finder.live.plugin.d;
-import com.tencent.mm.plugin.finder.live.viewmodel.g;
-import com.tencent.mm.plugin.finder.report.live.k;
-import com.tencent.mm.plugin.finder.report.live.s.f;
-import com.tencent.mm.protocal.protobuf.avy;
-import com.tencent.mm.protocal.protobuf.awe;
+import com.tencent.mm.loader.d;
+import com.tencent.mm.loader.f.e;
+import com.tencent.mm.plugin.finder.live.viewmodel.i.e;
+import com.tencent.mm.plugin.finder.loader.t.a;
+import com.tencent.mm.plugin.finder.loader.w;
+import com.tencent.mm.plugin.finder.loader.x;
+import com.tencent.mm.plugin.finder.storage.u;
+import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
+import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.a;
+import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.b;
+import com.tencent.mm.plugin.recordvideo.jumper.RecordMediaReportInfo;
+import com.tencent.mm.protocal.protobuf.FinderMedia;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveAnchorLotteryEntranceWidget;", "", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "basePlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getBasePlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "getRoot", "()Landroid/view/ViewGroup;", "getStatusMonitor", "()Lcom/tencent/mm/live/plugin/ILiveStatus;", "checkVisible", "", "initView", "isVisible", "", "jumpToCreateLotteryImpl", "jumpToCreateLotttery", "lotteryEntranceLogic", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onPortraitAction", "extraMsg", "Landroid/os/Bundle;", "setVisible", "visible", "showCard", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/widget/FinderGameLivePostCoverWidget;", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$IVideoGenerateCallback;", "activity", "Landroid/app/Activity;", "coverIv", "Landroid/widget/ImageView;", "replaceCoverIv", "Landroid/view/View;", "callback", "Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderLivePostUIC$WidgetStatusCallback;", "(Landroid/app/Activity;Landroid/widget/ImageView;Landroid/view/View;Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderLivePostUIC$WidgetStatusCallback;)V", "MENU_ID_SET_HEADIMG_ALBUM", "", "REQUEST_CODE_IMAGE_BROUND_SEND_COMFIRM", "TAG", "", "getActivity", "()Landroid/app/Activity;", "getCallback", "()Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderLivePostUIC$WidgetStatusCallback;", "choosePath", "getChoosePath", "()Ljava/lang/String;", "setChoosePath", "(Ljava/lang/String;)V", "getCoverIv", "()Landroid/widget/ImageView;", "liveCoverMedia", "Lcom/tencent/mm/protocal/protobuf/FinderMedia;", "getLiveCoverMedia", "()Lcom/tencent/mm/protocal/protobuf/FinderMedia;", "setLiveCoverMedia", "(Lcom/tencent/mm/protocal/protobuf/FinderMedia;)V", "liveCoverUrl", "getLiveCoverUrl", "setLiveCoverUrl", "getReplaceCoverIv", "()Landroid/view/View;", "chooseNewCover", "", "editImage", "", "inputPath", "getCoverMedia", "getDefaultCoverSize", "Landroid/graphics/Point;", "goToPreviewUI", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onEditFinish", "p0", "p1", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordMediaReportInfo;", "p2", "Landroid/os/Bundle;", "onFinishBtnClick", "Landroid/content/Context;", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$IVideoFinishController;", "onMediaGenerated", "context", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "extData", "selectCover", "setCover", "coverUrl", "Companion", "plugin-finder_release"})
 public final class a
+  implements CaptureDataManager.b
 {
-  public static final String uFx = "PORTRAIT_ACTION_GOTO_CREATE_LOTTERY";
-  public static final a uFy;
+  private static final int zln = 300;
+  private static final int zlo = 400;
+  public static final a zlp;
   public final String TAG;
-  public final com.tencent.mm.live.c.b hOp;
-  public final ViewGroup hwr;
-  public final d uFw;
+  public final Activity activity;
+  public final ImageView sDJ;
+  private final View zbu;
+  public String zex;
+  public String zfA;
+  public FinderMedia zlj;
+  public final int zlk;
+  public final int zll;
+  public final i.e zlm;
   
   static
   {
-    AppMethodBeat.i(248020);
-    uFy = new a((byte)0);
-    uFx = "PORTRAIT_ACTION_GOTO_CREATE_LOTTERY";
-    AppMethodBeat.o(248020);
+    AppMethodBeat.i(289456);
+    zlp = new a((byte)0);
+    zln = 300;
+    zlo = 400;
+    AppMethodBeat.o(289456);
   }
   
-  public a(ViewGroup paramViewGroup, com.tencent.mm.live.c.b paramb, d paramd)
+  public a(Activity paramActivity, ImageView paramImageView, View paramView, i.e parame)
   {
-    AppMethodBeat.i(248019);
-    this.hwr = paramViewGroup;
-    this.hOp = paramb;
-    this.uFw = paramd;
-    this.TAG = "Finder.FinderLiveAnchorLotteryEntranceWidget";
-    this.hwr.setOnClickListener((View.OnClickListener)new b(this));
-    AppMethodBeat.o(248019);
-  }
-  
-  public final void djt()
-  {
-    Object localObject2 = null;
-    AppMethodBeat.i(248017);
-    String str = this.uFw.getLiveData().hwg;
-    Object localObject3 = this.TAG;
-    Object localObject4 = new StringBuilder("jumpToCreateLotteryImpl root.context is activity:").append(this.hwr.getContext() instanceof Activity).append(",liveId:");
-    Object localObject1 = this.uFw.getLiveData().liveInfo;
-    label160:
-    int i;
-    if (localObject1 != null)
+    AppMethodBeat.i(289455);
+    this.activity = paramActivity;
+    this.sDJ = paramImageView;
+    this.zbu = paramView;
+    this.zlm = parame;
+    this.TAG = "Finder.FinderLivePostCoverWidget";
+    this.zex = "";
+    this.zfA = "";
+    this.zlk = 10010;
+    this.zll = 10011;
+    this.sDJ.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
-      localObject1 = Long.valueOf(((awe)localObject1).liveId);
-      Log.i((String)localObject3, ((Long)localObject1).longValue() + ",objectId:" + this.uFw.getLiveData().hFK + ",nonceId:" + str);
-      if (!(this.hwr.getContext() instanceof Activity)) {
-        break label370;
-      }
-      localObject1 = this.uFw.getLiveData().liveInfo;
-      if (localObject1 == null) {
-        break label263;
-      }
-      localObject1 = Long.valueOf(((awe)localObject1).liveId);
-      if (localObject1 == null) {
-        break label370;
-      }
-      localObject1 = this.uFw.getLiveData().liveInfo;
-      if (((localObject1 != null) && (((awe)localObject1).liveId == 0L)) || (this.uFw.getLiveData().hFK == 0L)) {
-        break label370;
-      }
-      localObject1 = (CharSequence)str;
-      if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
-        break label268;
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      if (i == 0)
+      public final void onClick(View paramAnonymousView)
       {
-        localObject1 = this.hwr.getContext();
-        if (localObject1 == null)
-        {
-          localObject1 = new t("null cannot be cast to non-null type android.app.Activity");
-          AppMethodBeat.o(248017);
-          throw ((Throwable)localObject1);
-          localObject1 = null;
-          break;
-          label263:
-          localObject1 = null;
-          break label160;
-          label268:
-          i = 0;
-          continue;
-        }
-        localObject3 = (Activity)localObject1;
-        localObject1 = com.tencent.mm.plugin.finder.utils.a.vUU;
-        localObject4 = new Intent();
-        awe localawe = this.uFw.getLiveData().liveInfo;
-        localObject1 = localObject2;
-        if (localawe != null) {
-          localObject1 = Long.valueOf(localawe.liveId);
-        }
-        ((Intent)localObject4).putExtra("KEY_PARAMS_LIVE_ID", ((Long)localObject1).longValue());
-        ((Intent)localObject4).putExtra("KEY_PARAMS_OBJECT_ID", this.uFw.getLiveData().hFK);
-        ((Intent)localObject4).putExtra("KEY_PARAMS_NONCE_ID", str);
-        com.tencent.mm.plugin.finder.utils.a.d((Activity)localObject3, (Intent)localObject4);
+        AppMethodBeat.i(289821);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/widget/FinderGameLivePostCoverWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        a.a(this.zlq);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/widget/FinderGameLivePostCoverWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(289821);
       }
-    }
-    label370:
-    AppMethodBeat.o(248017);
+    });
+    this.zbu.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(287437);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/widget/FinderGameLivePostCoverWidget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        a.b(this.zlq);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/widget/FinderGameLivePostCoverWidget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(287437);
+      }
+    });
+    AppMethodBeat.o(289455);
   }
   
-  public final void rg(int paramInt)
+  public static Point dHG()
   {
-    AppMethodBeat.i(248018);
-    this.hwr.setVisibility(paramInt);
-    AppMethodBeat.o(248018);
+    AppMethodBeat.i(289453);
+    Point localPoint = new Point(zln, zlo);
+    AppMethodBeat.o(289453);
+    return localPoint;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveAnchorLotteryEntranceWidget$Companion;", "", "()V", "PORTRAIT_ACTION_GOTO_CREATE_LOTTERY", "", "getPORTRAIT_ACTION_GOTO_CREATE_LOTTERY", "()Ljava/lang/String;", "plugin-finder_release"})
+  public final void a(Context paramContext, CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel, Bundle paramBundle)
+  {
+    AppMethodBeat.i(289454);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("key_extra_data", paramBundle);
+    if (paramCaptureVideoNormalModel == null)
+    {
+      paramContext = new kotlin.t("null cannot be cast to non-null type android.os.Parcelable");
+      AppMethodBeat.o(289454);
+      throw paramContext;
+    }
+    localIntent.putExtra("KSEGMENTMEDIAINFO", (Parcelable)paramCaptureVideoNormalModel);
+    if (paramContext == null)
+    {
+      paramContext = new kotlin.t("null cannot be cast to non-null type android.app.Activity");
+      AppMethodBeat.o(289454);
+      throw paramContext;
+    }
+    ((Activity)paramContext).setResult(-1, localIntent);
+    ((Activity)paramContext).finish();
+    AppMethodBeat.o(289454);
+  }
+  
+  public final void a(RecordMediaReportInfo paramRecordMediaReportInfo, Bundle paramBundle) {}
+  
+  public final boolean a(Context paramContext, Bundle paramBundle, CaptureDataManager.a parama)
+  {
+    return false;
+  }
+  
+  public final void setCover(String paramString)
+  {
+    AppMethodBeat.i(289452);
+    p.k(paramString, "coverUrl");
+    Log.i(this.TAG, "setCover liveCover:".concat(String.valueOf(paramString)));
+    this.zfA = paramString;
+    this.zlj = null;
+    paramString = com.tencent.mm.plugin.finder.loader.t.ztT;
+    paramString = com.tencent.mm.plugin.finder.loader.t.dJe().bQ(new x(this.zfA, u.Alz));
+    com.tencent.mm.plugin.finder.loader.t localt = com.tencent.mm.plugin.finder.loader.t.ztT;
+    paramString.a(com.tencent.mm.plugin.finder.loader.t.a(t.a.ztU)).a((e)new b(this)).c(this.sDJ);
+    this.zlm.onChange();
+    AppMethodBeat.o(289452);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/widget/FinderGameLivePostCoverWidget$Companion;", "", "()V", "DEFAULT_COVER_HEIGHT", "", "getDEFAULT_COVER_HEIGHT", "()I", "DEFAULT_COVER_WIDTH", "getDEFAULT_COVER_WIDTH", "plugin-finder_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "kotlin.jvm.PlatformType", "view", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "resource", "Landroid/graphics/Bitmap;", "onImageLoadComplete"})
+  static final class b<T, R>
+    implements e<w, Bitmap>
   {
     b(a parama) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(248015);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/live/widget/FinderLiveAnchorLotteryEntranceWidget$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      if (this.uFz.hOp.getLiveRole() == 1)
-      {
-        paramView = k.vkd;
-        k.a(s.f.vnp, "");
-      }
-      a.a(this.uFz);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/widget/FinderLiveAnchorLotteryEntranceWidget$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(248015);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/live/widget/FinderLiveAnchorLotteryEntranceWidget$showCard$1", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveGetLotteryRecord$CallBack;", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetLotteryRecordResponse;", "plugin-finder_release"})
-  public static final class c
-    implements o.a
-  {
-    public final void a(int paramInt1, int paramInt2, String paramString, avy paramavy)
-    {
-      AppMethodBeat.i(248016);
-      p.h(paramavy, "resp");
-      if ((paramInt1 == 0) && (paramInt2 == 0))
-      {
-        this.uFz.uFw.getLiveData().a(paramavy.tWe);
-        this.uFz.uFw.getLiveData().d(paramavy);
-      }
-      b.b.a(this.uFz.hOp, b.c.hNG);
-      paramString = this.uFz.hOp;
-      paramavy = b.c.hNE;
-      Bundle localBundle = new Bundle();
-      localBundle.putBoolean("PARAM_FINDER_LIVE_LOTTERY_CARD_SHOW_STATUS", false);
-      paramString.statusChange(paramavy, localBundle);
-      AppMethodBeat.o(248016);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.widget.a
  * JD-Core Version:    0.7.0.1
  */

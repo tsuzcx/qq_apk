@@ -16,8 +16,8 @@
                     <com.tencent.mm.ui.widget.MMAutoAdjustTextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:text="@string/g08" style="@style/mu" />
                     <TextView android:textSize="@dimen/is" android:textColor="@color/afp" android:id="@id/bgp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bj_" />
                 </LinearLayout>
-                <com.tencent.mm.ui.base.MMFormInputView android:id="@id/gze" android:focusableInTouchMode="false" form:form_hint="@string/f1k" form:form_layout="@layout/b85" form:form_title="@string/elr" style="@style/mv" />
-                <com.tencent.mm.ui.base.MMFormInputView android:id="@id/gzb" android:focusableInTouchMode="false" form:form_hint="@string/a09" form:form_layout="@layout/b87" form:form_title="@string/xb" style="@style/mv" />
+                <com.tencent.mm.plugin.account.sdk.MMImeFormInputView android:id="@id/gze" android:focusableInTouchMode="false" form:form_hint="@string/f1k" form:form_layout="@layout/chl" form:form_title="@string/elr" style="@style/mv" />
+                <com.tencent.mm.plugin.account.sdk.MMImeFormInputView android:id="@id/gzb" android:focusableInTouchMode="false" form:form_hint="@string/a09" form:form_layout="@layout/chm" form:form_title="@string/xb" style="@style/mv" />
                 <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/ijf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hv" android:layout_marginBottom="@dimen/k5">
                     <CheckBox android:id="@id/gz6" android:padding="@dimen/bt" android:layout_width="@dimen/as" android:layout_height="@dimen/ar" android:layout_marginLeft="@dimen/bt" android:layout_marginRight="@dimen/bt" />
                     <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bt" android:text="@string/ee1" />

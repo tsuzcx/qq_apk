@@ -18,60 +18,60 @@ public final class NormsgInfoProvider
   
   static
   {
-    AppMethodBeat.i(187552);
+    AppMethodBeat.i(257892);
     AUTHORITY = WeChatAuthorities.AUTHORITIES_PLUGIN_NORMSG_NMINFO();
     CONTENT_URI = Uri.parse("content://" + AUTHORITY);
-    AppMethodBeat.o(187552);
+    AppMethodBeat.o(257892);
   }
   
-  private boolean aII(String paramString)
+  private boolean aTe(String paramString)
   {
-    AppMethodBeat.i(187549);
+    AppMethodBeat.i(257883);
     try
     {
       String str = getCallingPackage();
       Log.i("MicroMsg.NormsgIP", "isReqFrom " + str + "; expectPkg " + paramString);
       if ((str != null) && (str.equals(paramString)))
       {
-        AppMethodBeat.o(187549);
+        AppMethodBeat.o(257883);
         return true;
       }
-      AppMethodBeat.o(187549);
+      AppMethodBeat.o(257883);
       return false;
     }
     catch (Exception paramString)
     {
       Log.e("MicroMsg.NormsgIP", "isReqFrom error:" + paramString.toString());
-      AppMethodBeat.o(187549);
+      AppMethodBeat.o(257883);
     }
     return false;
   }
   
-  private Bundle exF()
+  private Bundle fjj()
   {
-    AppMethodBeat.i(187550);
-    if (!aII(b.AEu.aIJ(".!\"f=/%' (3n,-!51;.)")))
+    AppMethodBeat.i(257884);
+    if (!aTe(b.Gxy.aTf(".!\"f=/%' (3n,-!51;.)")))
     {
-      AppMethodBeat.o(187550);
+      AppMethodBeat.o(257884);
       return null;
     }
     for (;;)
     {
       try
       {
-        String str = d.AEF.exP();
+        String str = d.GxJ.fjt();
         if (str == null)
         {
           str = "";
           Bundle localBundle = new Bundle();
           localBundle.putString("STR_RESULT", str);
-          AppMethodBeat.o(187550);
+          AppMethodBeat.o(257884);
           return localBundle;
         }
       }
       catch (Throwable localThrowable)
       {
-        AppMethodBeat.o(187550);
+        AppMethodBeat.o(257884);
         return null;
       }
     }
@@ -79,16 +79,16 @@ public final class NormsgInfoProvider
   
   public final Bundle call(String paramString1, String paramString2, Bundle paramBundle)
   {
-    AppMethodBeat.i(187551);
+    AppMethodBeat.i(257885);
     Log.i("MicroMsg.NormsgIP", "invoke: %s, with arg: %s", new Object[] { paramString1, paramString2 });
     if ("m0".equals(paramString1))
     {
-      paramString1 = exF();
-      AppMethodBeat.o(187551);
+      paramString1 = fjj();
+      AppMethodBeat.o(257885);
       return paramString1;
     }
     Log.w("MicroMsg.NormsgIP", "unknown method: %s", new Object[] { paramString1 });
-    AppMethodBeat.o(187551);
+    AppMethodBeat.o(257885);
     return null;
   }
   
@@ -109,9 +109,9 @@ public final class NormsgInfoProvider
   
   public final boolean onCreate()
   {
-    AppMethodBeat.i(187548);
-    d.a(b.AEu);
-    AppMethodBeat.o(187548);
+    AppMethodBeat.i(257882);
+    d.a(b.Gxy);
+    AppMethodBeat.o(257882);
     return true;
   }
   
@@ -127,7 +127,7 @@ public final class NormsgInfoProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.NormsgInfoProvider
  * JD-Core Version:    0.7.0.1
  */

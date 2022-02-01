@@ -340,7 +340,11 @@ public abstract class SQLiteOpenHelper
       SQLiteDatabase localSQLiteDatabase = getDatabaseLocked(false);
       return localSQLiteDatabase;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public SQLiteDatabase getWritableDatabase()
@@ -350,7 +354,11 @@ public abstract class SQLiteOpenHelper
       SQLiteDatabase localSQLiteDatabase = getDatabaseLocked(true);
       return localSQLiteDatabase;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public void onConfigure(SQLiteDatabase paramSQLiteDatabase) {}
@@ -373,7 +381,11 @@ public abstract class SQLiteOpenHelper
       this.mForcedSingleConnection = paramBoolean;
       return;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   /* Error */
@@ -430,12 +442,11 @@ public abstract class SQLiteOpenHelper
     //   49	54	67	finally
     //   54	56	67	finally
     //   57	64	67	finally
-    //   68	70	67	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wcdb.database.SQLiteOpenHelper
  * JD-Core Version:    0.7.0.1
  */

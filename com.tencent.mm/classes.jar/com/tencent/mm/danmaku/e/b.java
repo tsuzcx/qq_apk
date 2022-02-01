@@ -7,14 +7,14 @@ public final class b
 {
   public final void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
-    AppMethodBeat.i(241755);
+    AppMethodBeat.i(284353);
     e.e("DanmakuManager", "danmaku crash thread:" + paramThread.getName(), paramThrowable);
-    AppMethodBeat.o(241755);
+    AppMethodBeat.o(284353);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.danmaku.e.b
  * JD-Core Version:    0.7.0.1
  */

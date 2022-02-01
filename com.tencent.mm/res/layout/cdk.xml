@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/jv6" android:background="@color/a2r" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/azt" android:paddingTop="@dimen/c5" android:paddingBottom="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_marginTop="@dimen/bt" android:layout_marginRight="@dimen/ct" android:layout_marginBottom="@dimen/ct" android:minHeight="@dimen/amh">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/gs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/c5" android:src="@raw/icons_filled_notify" app:iconColor="@color/Yellow" />
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/l4" android:ellipsize="end" android:id="@id/gq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" />
+        </LinearLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/h6o" android:layout_width="10.0dip" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/ct" android:layout_marginRight="@dimen/cb" android:src="@raw/icons_outlined_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/FG_1" />
+    </LinearLayout>
+    <View android:layout_gravity="bottom" android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

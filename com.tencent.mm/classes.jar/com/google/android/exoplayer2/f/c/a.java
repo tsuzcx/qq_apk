@@ -13,17 +13,17 @@ import java.util.regex.Pattern;
 public final class a
   extends b
 {
-  private static final Pattern bCx;
-  private int bCA;
-  private int bCB;
-  private int bCC;
-  private final boolean bCy;
-  private int bCz;
+  private static final Pattern blZ;
+  private final boolean bma;
+  private int bmb;
+  private int bmc;
+  private int bmd;
+  private int bme;
   
   static
   {
     AppMethodBeat.i(92810);
-    bCx = Pattern.compile("(?:(\\d+):)?(\\d+):(\\d+)(?::|\\.)(\\d+)");
+    blZ = Pattern.compile("(?:(\\d+):)?(\\d+):(\\d+)(?::|\\.)(\\d+)");
     AppMethodBeat.o(92810);
   }
   
@@ -38,15 +38,15 @@ public final class a
     AppMethodBeat.i(92804);
     if (paramList != null)
     {
-      this.bCy = true;
+      this.bma = true;
       String str = new String((byte[])paramList.get(0));
       com.google.android.exoplayer2.i.a.checkArgument(str.startsWith("Format: "));
-      bk(str);
+      bv(str);
       B(new m((byte[])paramList.get(1)));
       AppMethodBeat.o(92804);
       return;
     }
-    this.bCy = false;
+    this.bma = false;
     AppMethodBeat.o(92804);
   }
   
@@ -84,24 +84,24 @@ public final class a
             if (localObject == null) {
               break label208;
             }
-            if ((this.bCy) || (!((String)localObject).startsWith("Format: "))) {
+            if ((this.bma) || (!((String)localObject).startsWith("Format: "))) {
               break;
             }
-            bk((String)localObject);
+            bv((String)localObject);
           }
-        } while ((!((String)localObject).startsWith("Dialogue: ")) || (this.bCz == 0));
-        localObject = ((String)localObject).substring(10).split(",", this.bCz);
-        l2 = bl(localObject[this.bCA]);
+        } while ((!((String)localObject).startsWith("Dialogue: ")) || (this.bmb == 0));
+        localObject = ((String)localObject).substring(10).split(",", this.bmb);
+        l2 = bw(localObject[this.bmc]);
       } while (l2 == -9223372036854775807L);
-      String str = localObject[this.bCB];
+      String str = localObject[this.bmd];
       if (str.trim().isEmpty()) {
         break label214;
       }
-      l1 = bl(str);
+      l1 = bw(str);
     } while (l1 == -9223372036854775807L);
     for (;;)
     {
-      paramList.add(new com.google.android.exoplayer2.f.a(localObject[this.bCC].replaceAll("\\{.*?\\}", "").replaceAll("\\\\N", "\n").replaceAll("\\\\n", "\n")));
+      paramList.add(new com.google.android.exoplayer2.f.a(localObject[this.bme].replaceAll("\\{.*?\\}", "").replaceAll("\\\\N", "\n").replaceAll("\\\\n", "\n")));
       paramh.add(l2);
       if (l1 == -9223372036854775807L) {
         break;
@@ -117,18 +117,18 @@ public final class a
     }
   }
   
-  private void bk(String paramString)
+  private void bv(String paramString)
   {
     AppMethodBeat.i(92807);
     paramString = TextUtils.split(paramString.substring(8), ",");
-    this.bCz = paramString.length;
-    this.bCA = -1;
-    this.bCB = -1;
-    this.bCC = -1;
+    this.bmb = paramString.length;
+    this.bmc = -1;
+    this.bmd = -1;
+    this.bme = -1;
     int j = 0;
-    if (j < this.bCz)
+    if (j < this.bmb)
     {
-      String str = x.bH(paramString[j].trim());
+      String str = x.bS(paramString[j].trim());
       label100:
       int i;
       switch (str.hashCode())
@@ -160,20 +160,20 @@ public final class a
         }
         i = 2;
         break label102;
-        this.bCA = j;
+        this.bmc = j;
         continue;
-        this.bCB = j;
+        this.bmd = j;
         continue;
-        this.bCC = j;
+        this.bme = j;
       }
     }
     AppMethodBeat.o(92807);
   }
   
-  private static long bl(String paramString)
+  private static long bw(String paramString)
   {
     AppMethodBeat.i(92808);
-    paramString = bCx.matcher(paramString);
+    paramString = blZ.matcher(paramString);
     if (!paramString.matches())
     {
       AppMethodBeat.o(92808);
@@ -189,7 +189,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.c.a
  * JD-Core Version:    0.7.0.1
  */

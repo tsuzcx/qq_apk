@@ -1,54 +1,34 @@
 package com.tencent.mm.openim.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fb;
+import com.tencent.mm.f.c.fg;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class e
-  extends fb
+  extends fg
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(151334);
+    AppMethodBeat.i(188039);
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[7];
-    localMAutoDBInfo.columns = new String[8];
+    localMAutoDBInfo.fields = new Field[2];
+    localMAutoDBInfo.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "appid";
-    localMAutoDBInfo.colsMap.put("appid", "TEXT");
-    localStringBuilder.append(" appid TEXT");
+    localMAutoDBInfo.columns[0] = "openIMUsername";
+    localMAutoDBInfo.colsMap.put("openIMUsername", "TEXT");
+    localStringBuilder.append(" openIMUsername TEXT");
     localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[1] = "wordingId";
-    localMAutoDBInfo.colsMap.put("wordingId", "TEXT");
-    localStringBuilder.append(" wordingId TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "language";
-    localMAutoDBInfo.colsMap.put("language", "TEXT");
-    localStringBuilder.append(" language TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[3] = "wording";
-    localMAutoDBInfo.colsMap.put("wording", "TEXT");
-    localStringBuilder.append(" wording TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[4] = "pinyin";
-    localMAutoDBInfo.colsMap.put("pinyin", "TEXT");
-    localStringBuilder.append(" pinyin TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[5] = "quanpin";
-    localMAutoDBInfo.colsMap.put("quanpin", "TEXT");
-    localStringBuilder.append(" quanpin TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[6] = "updateTime";
-    localMAutoDBInfo.colsMap.put("updateTime", "LONG default '0' ");
-    localStringBuilder.append(" updateTime LONG default '0' ");
-    localMAutoDBInfo.columns[7] = "rowid";
+    localMAutoDBInfo.columns[1] = "finder_username";
+    localMAutoDBInfo.colsMap.put("finder_username", "TEXT");
+    localStringBuilder.append(" finder_username TEXT");
+    localMAutoDBInfo.columns[2] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
     info = localMAutoDBInfo;
-    AppMethodBeat.o(151334);
+    AppMethodBeat.o(188039);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
@@ -58,7 +38,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.openim.e.e
  * JD-Core Version:    0.7.0.1
  */

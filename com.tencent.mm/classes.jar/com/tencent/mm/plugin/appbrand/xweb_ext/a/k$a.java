@@ -2,67 +2,67 @@ package com.tencent.mm.plugin.appbrand.xweb_ext.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.z;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import kotlin.a.j;
 import kotlin.g.b.p;
-import kotlin.k.f;
+import kotlin.k.e;
 import kotlin.l;
 import kotlin.n.n;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/vfs/VFSFile;", "kotlin.jvm.PlatformType", "name", "", "accept"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/vfs/VFSFile;", "kotlin.jvm.PlatformType", "name", "", "accept"})
 final class k$a
-  implements w
+  implements z
 {
-  k$a(f paramf) {}
+  k$a(e parame) {}
   
-  public final boolean accept(o paramo, String paramString)
+  public final boolean accept(q paramq, String paramString)
   {
-    AppMethodBeat.i(229740);
-    p.h(paramString, "name");
-    paramo = n.a((CharSequence)paramString, new char[] { '.' });
-    if ((2 > paramo.size()) || ((p.j("png", (String)j.ku(paramo)) ^ true)))
+    AppMethodBeat.i(266474);
+    p.k(paramString, "name");
+    paramq = n.a((CharSequence)paramString, new char[] { '.' });
+    if ((2 > paramq.size()) || ((p.h("png", (String)j.lq(paramq)) ^ true)))
     {
       Log.w("MicroMsg.AppBrand.StickerApplyAdapterCoreLogic", "copyStickerItemResourcesIfNeed, invalid res: ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(229740);
+      AppMethodBeat.o(266474);
       return false;
     }
-    paramo = n.a((CharSequence)paramo.get(0), new char[] { '_' });
+    paramq = n.a((CharSequence)paramq.get(0), new char[] { '_' });
     StringBuilder localStringBuilder = new StringBuilder("copyStickerItemResourcesIfNeed, nameList2: ");
-    Object localObject = ((Collection)paramo).toArray(new String[0]);
+    Object localObject = ((Collection)paramq).toArray(new String[0]);
     if (localObject == null)
     {
-      paramo = new t("null cannot be cast to non-null type kotlin.Array<T>");
-      AppMethodBeat.o(229740);
-      throw paramo;
+      paramq = new t("null cannot be cast to non-null type kotlin.Array<T>");
+      AppMethodBeat.o(266474);
+      throw paramq;
     }
     localObject = Arrays.toString((Object[])localObject);
-    p.g(localObject, "java.util.Arrays.toString(this)");
+    p.j(localObject, "java.util.Arrays.toString(this)");
     Log.d("MicroMsg.AppBrand.StickerApplyAdapterCoreLogic", (String)localObject);
-    if (2 > paramo.size())
+    if (2 > paramq.size())
     {
       Log.w("MicroMsg.AppBrand.StickerApplyAdapterCoreLogic", "copyStickerItemResourcesIfNeed, invalid res: ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(229740);
+      AppMethodBeat.o(266474);
       return false;
     }
-    paramString = this.oGS;
-    paramo = n.buA((String)j.ku(paramo));
-    if ((paramo != null) && (paramString.contains(paramo.intValue())))
+    paramString = this.rII;
+    paramq = n.bHC((String)j.lq(paramq));
+    if ((paramq != null) && (paramString.contains(paramq.intValue())))
     {
-      AppMethodBeat.o(229740);
+      AppMethodBeat.o(266474);
       return true;
     }
-    AppMethodBeat.o(229740);
+    AppMethodBeat.o(266474);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.xweb_ext.a.k.a
  * JD-Core Version:    0.7.0.1
  */

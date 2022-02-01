@@ -1,99 +1,100 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.plugin.voip.b.e;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.eus;
-import com.tencent.mm.protocal.protobuf.eut;
-import com.tencent.mm.protocal.protobuf.euu;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.plugin.voip.c.e;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.ffd;
+import com.tencent.mm.protocal.protobuf.ffe;
+import com.tencent.mm.protocal.protobuf.fff;
 import java.util.LinkedList;
 
 public final class l
-  extends n<eut, euu>
+  extends n<ffe, fff>
 {
   public l(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String[] paramArrayOfString1, String[] paramArrayOfString2, String[] paramArrayOfString3, String[] paramArrayOfString4)
   {
     AppMethodBeat.i(115253);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new eut();
-    ((d.a)localObject).iLO = new euu();
+    ((d.a)localObject).lBU = new ffe();
+    ((d.a)localObject).lBV = new fff();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/voipstatreport";
     ((d.a)localObject).funcId = 320;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (eut)this.rr.iLK.iLR;
-    eus localeus = new eus();
-    dqi localdqi = new dqi();
-    localdqi.bhy(paramString1);
-    localeus.NgE = localdqi;
-    paramString1 = new eus();
-    localdqi = new dqi();
-    localdqi.bhy(paramString2);
-    paramString1.NgE = localdqi;
-    paramString2 = new eus();
-    localdqi = new dqi();
-    localdqi.bhy(paramString3);
-    paramString2.NgE = localdqi;
-    paramString3 = new eus();
-    localdqi = new dqi();
-    localdqi.bhy(paramString4);
-    paramString3.NgE = localdqi;
-    paramString4 = new eus();
-    localdqi = new dqi();
-    localdqi.bhy(paramString5);
-    paramString4.NgE = localdqi;
-    ((eut)localObject).NqI = localeus;
-    ((eut)localObject).NsO = paramString1;
-    ((eut)localObject).NsN = paramString2;
-    ((eut)localObject).NsP = paramString3;
-    ((eut)localObject).NsQ = paramString4;
+    this.rr = ((d.a)localObject).bgN();
+    d.b.b(this.rr.lBR);
+    localObject = (ffe)d.b.b(this.rr.lBR);
+    ffd localffd = new ffd();
+    eaf localeaf = new eaf();
+    localeaf.btQ(paramString1);
+    localffd.Uti = localeaf;
+    paramString1 = new ffd();
+    localeaf = new eaf();
+    localeaf.btQ(paramString2);
+    paramString1.Uti = localeaf;
+    paramString2 = new ffd();
+    localeaf = new eaf();
+    localeaf.btQ(paramString3);
+    paramString2.Uti = localeaf;
+    paramString3 = new ffd();
+    localeaf = new eaf();
+    localeaf.btQ(paramString4);
+    paramString3.Uti = localeaf;
+    paramString4 = new ffd();
+    localeaf = new eaf();
+    localeaf.btQ(paramString5);
+    paramString4.Uti = localeaf;
+    ((ffe)localObject).UDE = localffd;
+    ((ffe)localObject).UFL = paramString1;
+    ((ffe)localObject).UFK = paramString2;
+    ((ffe)localObject).UFM = paramString3;
+    ((ffe)localObject).UFN = paramString4;
     e.Logd("MicroMsg.NetSceneVoipStatReport", "natReportList length:" + paramArrayOfString1.length);
     paramString1 = new LinkedList();
     int i = 0;
     while (i < paramArrayOfString1.length)
     {
-      paramString1.add(new dqi().bhy(paramArrayOfString1[i]));
+      paramString1.add(new eaf().btQ(paramArrayOfString1[i]));
       i += 1;
     }
-    ((eut)localObject).NsR = paramString1.size();
-    ((eut)localObject).NsS = paramString1;
+    ((ffe)localObject).UFO = paramString1.size();
+    ((ffe)localObject).UFP = paramString1;
     paramString1 = new LinkedList();
     i = 0;
     while (i < paramArrayOfString2.length)
     {
-      paramString1.add(new dqi().bhy(paramArrayOfString2[i]));
+      paramString1.add(new eaf().btQ(paramArrayOfString2[i]));
       i += 1;
     }
-    ((eut)localObject).Lri = paramString1.size();
-    ((eut)localObject).NsT = paramString1;
+    ((ffe)localObject).SsF = paramString1.size();
+    ((ffe)localObject).UFQ = paramString1;
     paramString1 = new LinkedList();
     i = 0;
     while (i < paramArrayOfString3.length)
     {
-      paramString1.add(new dqi().bhy(paramArrayOfString3[i]));
+      paramString1.add(new eaf().btQ(paramArrayOfString3[i]));
       i += 1;
     }
-    ((eut)localObject).MPZ = paramString1.size();
-    ((eut)localObject).NsU = paramString1;
+    ((ffe)localObject).Ucd = paramString1.size();
+    ((ffe)localObject).UFR = paramString1;
     paramString1 = new LinkedList();
     i = 0;
     while (i < paramArrayOfString4.length)
     {
-      paramString1.add(new dqi().bhy(paramArrayOfString4[i]));
+      paramString1.add(new eaf().btQ(paramArrayOfString4[i]));
       i += 1;
     }
-    ((eut)localObject).NsV = paramString1.size();
-    ((eut)localObject).NsW = paramString1;
+    ((ffe)localObject).UFS = paramString1.size();
+    ((ffe)localObject).UFT = paramString1;
     AppMethodBeat.o(115253);
   }
   
-  public final i fIF()
+  public final i gAU()
   {
     AppMethodBeat.i(115254);
     i local1 = new i()
@@ -116,7 +117,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.a.l
  * JD-Core Version:    0.7.0.1
  */

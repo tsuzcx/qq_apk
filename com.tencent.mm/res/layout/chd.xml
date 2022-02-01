@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_horizontal" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:keybutton="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.base.CustomScrollView android:id="@id/cyj" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:layout_above="@id/aaq" android:overScrollMode="never" style="@style/om">
+        <TextView android:textSize="@dimen/t" android:textColor="@color/ahz" android:id="@id/bop" android:paddingTop="@dimen/ce" android:focusable="true" android:clickable="true" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/jjl" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" />
+    </com.tencent.mm.ui.base.CustomScrollView>
+    <LinearLayout android:gravity="bottom|center" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/aaq" android:paddingBottom="@dimen/cp" android:layout_width="fill_parent" android:layout_height="172.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_1" android:gravity="center_horizontal" android:id="@id/k6f" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb" android:text="@string/jjk" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" />
+        <Button android:textSize="@dimen/t" android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/k5a" android:visibility="gone" android:layout_width="@dimen/c8" android:layout_height="@dimen/cl" android:text="@string/jji" style="@style/ou" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/k4h" android:background="@drawable/kd" android:focusable="true" android:clickable="true" android:layout_width="@dimen/c8" android:layout_height="@dimen/cl">
+            <LinearLayout android:orientation="horizontal" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:rotation="270.0">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/ct" android:layout_height="@dimen/cb" android:src="@raw/icons_filled_back" android:layout_centerVertical="true" android:layout_alignParentEnd="true" keybutton:iconColor="@color/gt" />
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/ct" android:layout_height="@dimen/cb" android:src="@raw/icons_filled_back" android:layout_centerVertical="true" android:layout_alignParentEnd="true" keybutton:iconColor="@color/gt" />
+            </LinearLayout>
+            <com.tencent.mm.plugin.hld.view.ImeNoPaddingText android:textStyle="bold" android:textColor="@color/ag0" android:gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jjj" android:layout_marginStart="@dimen/bt" keybutton:textSize="@dimen/t" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

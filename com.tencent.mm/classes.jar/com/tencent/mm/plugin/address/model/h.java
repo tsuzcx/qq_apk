@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.address.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.address.a.a;
 import com.tencent.mm.plugin.address.d.b;
-import com.tencent.mm.protocal.protobuf.djj;
-import com.tencent.mm.protocal.protobuf.djk;
-import com.tencent.mm.protocal.protobuf.djr;
-import com.tencent.mm.protocal.protobuf.djs;
-import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.protocal.protobuf.dsy;
+import com.tencent.mm.protocal.protobuf.dsz;
+import com.tencent.mm.protocal.protobuf.dtg;
+import com.tencent.mm.protocal.protobuf.dth;
+import com.tencent.mm.protocal.protobuf.eaf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
@@ -32,25 +32,26 @@ public final class h
   {
     AppMethodBeat.i(20786);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new djr();
-    ((d.a)localObject).iLO = new djs();
+    ((d.a)localObject).lBU = new dtg();
+    ((d.a)localObject).lBV = new dth();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/rcptinfoupdate";
     ((d.a)localObject).funcId = 418;
-    ((d.a)localObject).iLP = 203;
+    ((d.a)localObject).lBW = 203;
     ((d.a)localObject).respCmdId = 1000000203;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (djr)this.rr.iLK.iLR;
-    ((djr)localObject).MNr = new djk();
-    ((djr)localObject).MNr.id = paramb.id;
-    ((djr)localObject).MNr.MNy = new dqi().bhy(Util.nullAs(paramb.kti, ""));
-    ((djr)localObject).MNr.MNw = new dqi().bhy(Util.nullAs(paramb.ktg, ""));
-    ((djr)localObject).MNr.MNB = new dqi().bhy(Util.nullAs(paramb.ktl, ""));
-    ((djr)localObject).MNr.MNz = new dqi().bhy(Util.nullAs(paramb.ktj, ""));
-    ((djr)localObject).MNr.MNC = new dqi().bhy(Util.nullAs(paramb.ktm, ""));
-    ((djr)localObject).MNr.MND = new dqi().bhy(Util.nullAs(paramb.ktn, ""));
-    ((djr)localObject).MNr.MNx = new dqi().bhy(Util.nullAs(paramb.kth, ""));
-    ((djr)localObject).MNr.MNA = new dqi().bhy(Util.nullAs(paramb.ktk, ""));
-    ((djr)localObject).MNr.MNE = new dqi().bhy(Util.nullAs(paramb.kto, ""));
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (dtg)d.b.b(this.rr.lBR);
+    ((dtg)localObject).TZk = new dsz();
+    ((dtg)localObject).TZk.id = paramb.id;
+    ((dtg)localObject).TZk.TZr = new eaf().btQ(Util.nullAs(paramb.nkV, ""));
+    ((dtg)localObject).TZk.TZp = new eaf().btQ(Util.nullAs(paramb.nkT, ""));
+    ((dtg)localObject).TZk.TZu = new eaf().btQ(Util.nullAs(paramb.nkY, ""));
+    ((dtg)localObject).TZk.TZs = new eaf().btQ(Util.nullAs(paramb.nkW, ""));
+    ((dtg)localObject).TZk.TZy = new eaf().btQ(Util.nullAs(paramb.nlc, ""));
+    ((dtg)localObject).TZk.TZv = new eaf().btQ(Util.nullAs(paramb.nkZ, ""));
+    ((dtg)localObject).TZk.TZw = new eaf().btQ(Util.nullAs(paramb.nla, ""));
+    ((dtg)localObject).TZk.TZq = new eaf().btQ(Util.nullAs(paramb.nkU, ""));
+    ((dtg)localObject).TZk.TZt = new eaf().btQ(Util.nullAs(paramb.nkX, ""));
+    ((dtg)localObject).TZk.TZx = new eaf().btQ(Util.nullAs(paramb.nlb, ""));
     AppMethodBeat.o(20786);
   }
   
@@ -74,14 +75,14 @@ public final class h
     Log.d("MicroMsg.NetSceneRcptInfoUpdate", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (djs)((d)params).iLL.iLR;
-      if (params.MNs.MNv != null)
+      params = (dth)d.c.b(((d)params).lBS);
+      if (params.TZl.TZo != null)
       {
-        Log.d("MicroMsg.NetSceneRcptInfoUpdate", "resp.rImpl.rcptinfolist.rcptinfolist " + params.MNs.MNv.size());
-        a.bqb();
-        a.bqd().t(params.MNs.MNv);
-        a.bqb();
-        a.bqd().bqf();
+        Log.d("MicroMsg.NetSceneRcptInfoUpdate", "resp.rImpl.rcptinfolist.rcptinfolist " + params.TZl.TZo.size());
+        a.bAn();
+        a.bAp().u(params.TZl.TZo);
+        a.bAn();
+        a.bAp().bAs();
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
@@ -90,7 +91,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.address.model.h
  * JD-Core Version:    0.7.0.1
  */

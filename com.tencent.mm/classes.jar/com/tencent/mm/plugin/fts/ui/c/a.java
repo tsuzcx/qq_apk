@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.fts.ui.c;
 
 public final class a
 {
-  public long xeh;
-  public int xei;
-  public long xej;
+  public long BQq;
+  public int BQr;
+  public long BQs;
   
   public final void reset()
   {
-    this.xeh = 0L;
-    this.xei = 0;
-    this.xej = 0L;
+    this.BQq = 0L;
+    this.BQr = 0;
+    this.BQs = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.c.a
  * JD-Core Version:    0.7.0.1
  */

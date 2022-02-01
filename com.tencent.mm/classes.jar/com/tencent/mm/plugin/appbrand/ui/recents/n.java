@@ -1,23 +1,24 @@
 package com.tencent.mm.plugin.appbrand.ui.recents;
 
 import android.animation.ValueAnimator;
+import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v4.view.aa;
-import android.support.v4.view.u;
-import android.support.v4.view.y;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.f;
-import android.support.v7.widget.RecyclerView.f.a;
-import android.support.v7.widget.RecyclerView.f.c;
-import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.RecyclerView.v;
-import android.support.v7.widget.as;
-import android.support.v7.widget.v;
 import android.view.View;
 import android.view.ViewParent;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Interpolator;
+import androidx.core.g.aa;
+import androidx.core.g.ac;
+import androidx.core.g.w;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.f;
+import androidx.recyclerview.widget.RecyclerView.f.a;
+import androidx.recyclerview.widget.RecyclerView.f.c;
+import androidx.recyclerview.widget.RecyclerView.s;
+import androidx.recyclerview.widget.RecyclerView.v;
+import androidx.recyclerview.widget.g;
+import androidx.recyclerview.widget.y;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appusage.AppBrandRecentTaskInfo;
 import java.util.ArrayList;
@@ -27,115 +28,127 @@ import java.util.List;
 import java.util.Set;
 
 final class n
-  extends v
+  extends g
 {
-  boolean odN;
-  boolean odO;
-  private final RecyclerView.f.a odP;
-  final Set<RecyclerView.f.a> odQ;
-  private final Interpolator odR;
-  private final ArrayList<b> odS;
-  final ArrayList<RecyclerView.v> odT;
-  private final ArrayList<d> odU;
-  final ArrayList<RecyclerView.v> odV;
-  private final ArrayList<AppBrandLauncherRecentsList.e> odW;
-  final ArrayList<AppBrandLauncherRecentsList.e> odX;
-  private final ArrayList<AppBrandLauncherRecentsList.e> odY;
-  final ArrayList<AppBrandLauncherRecentsList.e> odZ;
-  private final ArrayList<f> oea;
-  final ArrayList<AppBrandLauncherRecentsList.e> oeb;
-  private final ArrayList<RecyclerView.v> oec;
-  private final ArrayList<AppBrandLauncherRecentsList.e> oed;
-  final ArrayList<AppBrandLauncherRecentsList.e> oee;
-  final ArrayList<AppBrandLauncherRecentsList.e> oef;
-  boolean oeg;
+  boolean rfA;
+  private final RecyclerView.f.a rfB;
+  private final Set<RecyclerView.f.a> rfC;
+  private final Interpolator rfD;
+  private final ArrayList<Object> rfE;
+  private final ArrayList<RecyclerView.v> rfF;
+  private final ArrayList<Object> rfG;
+  private final ArrayList<RecyclerView.v> rfH;
+  private final ArrayList<AppBrandLauncherRecentsList.e> rfI;
+  private final ArrayList<AppBrandLauncherRecentsList.e> rfJ;
+  private final ArrayList<AppBrandLauncherRecentsList.e> rfK;
+  private final ArrayList<AppBrandLauncherRecentsList.e> rfL;
+  private final ArrayList<d> rfM;
+  private final ArrayList<AppBrandLauncherRecentsList.e> rfN;
+  private final ArrayList<RecyclerView.v> rfO;
+  private final ArrayList<AppBrandLauncherRecentsList.e> rfP;
+  private final ArrayList<AppBrandLauncherRecentsList.e> rfQ;
+  private final ArrayList<AppBrandLauncherRecentsList.e> rfR;
+  private boolean rfS;
+  boolean rfz;
   
   n()
   {
     AppMethodBeat.i(49247);
-    this.odN = false;
-    this.odO = true;
-    this.odP = new RecyclerView.f.a()
+    this.rfz = false;
+    this.rfA = true;
+    this.rfB = new RecyclerView.f.a()
     {
-      public final void lD()
+      public final void lO()
       {
         AppMethodBeat.i(49231);
-        synchronized (n.this.odQ)
+        synchronized (n.a(n.this))
         {
-          Iterator localIterator = new HashSet(n.this.odQ).iterator();
+          Iterator localIterator = new HashSet(n.a(n.this)).iterator();
           if (localIterator.hasNext()) {
-            ((RecyclerView.f.a)localIterator.next()).lD();
+            ((RecyclerView.f.a)localIterator.next()).lO();
           }
         }
-        n.this.oeg = false;
+        n.b(n.this);
         AppMethodBeat.o(49231);
       }
     };
-    this.odQ = new HashSet();
-    this.odR = new AccelerateDecelerateInterpolator();
-    this.odS = new ArrayList();
-    this.odT = new ArrayList();
-    this.odU = new ArrayList();
-    this.odV = new ArrayList();
-    this.odW = new ArrayList();
-    this.odX = new ArrayList();
-    this.odY = new ArrayList();
-    this.odZ = new ArrayList();
-    this.oea = new ArrayList();
-    this.oeb = new ArrayList();
-    this.oec = new ArrayList();
-    this.oed = new ArrayList();
-    this.oee = new ArrayList();
-    this.oef = new ArrayList();
-    this.oeg = false;
+    this.rfC = new HashSet();
+    this.rfD = new AccelerateDecelerateInterpolator();
+    this.rfE = new ArrayList();
+    this.rfF = new ArrayList();
+    this.rfG = new ArrayList();
+    this.rfH = new ArrayList();
+    this.rfI = new ArrayList();
+    this.rfJ = new ArrayList();
+    this.rfK = new ArrayList();
+    this.rfL = new ArrayList();
+    this.rfM = new ArrayList();
+    this.rfN = new ArrayList();
+    this.rfO = new ArrayList();
+    this.rfP = new ArrayList();
+    this.rfQ = new ArrayList();
+    this.rfR = new ArrayList();
+    this.rfS = false;
     AppMethodBeat.o(49247);
   }
   
-  private void e(RecyclerView.v paramv)
+  private void d(RecyclerView.v paramv)
   {
-    AppMethodBeat.i(49250);
-    paramv.aus.animate().setInterpolator(new ValueAnimator().getInterpolator());
-    d(paramv);
-    u.f(paramv.aus, 0.0F);
-    u.g(paramv.aus, 1.0F);
-    AppMethodBeat.o(49250);
-  }
-  
-  public final void C(RecyclerView.v paramv)
-  {
-    AppMethodBeat.i(49253);
-    super.C(paramv);
-    if (!this.oeb.contains(paramv)) {
-      this.oeg = true;
-    }
-    AppMethodBeat.o(49253);
-  }
-  
-  public final void E(RecyclerView.v paramv)
-  {
-    AppMethodBeat.i(49263);
-    super.E(paramv);
-    if (this.oec.contains(paramv)) {
-      ((RecentsRecyclerView)paramv.aus.getParent()).cJ(paramv.aus);
-    }
-    AppMethodBeat.o(49263);
+    AppMethodBeat.i(273821);
+    paramv.amk.animate().setInterpolator(new ValueAnimator().getInterpolator());
+    c(paramv);
+    w.d(paramv.amk, 0.0F);
+    w.e(paramv.amk, 1.0F);
+    AppMethodBeat.o(273821);
   }
   
   public final void F(RecyclerView.v paramv)
   {
-    AppMethodBeat.i(49264);
+    AppMethodBeat.i(273822);
     super.F(paramv);
-    if (this.oec.contains(paramv))
-    {
-      this.oec.remove(paramv);
-      ((RecentsRecyclerView)paramv.aus.getParent()).cK(paramv.aus);
+    if (!this.rfN.contains(paramv)) {
+      this.rfS = true;
     }
-    AppMethodBeat.o(49264);
+    AppMethodBeat.o(273822);
+  }
+  
+  public final void H(RecyclerView.v paramv)
+  {
+    AppMethodBeat.i(273833);
+    super.H(paramv);
+    if (this.rfO.contains(paramv))
+    {
+      RecentsRecyclerView localRecentsRecyclerView = (RecentsRecyclerView)paramv.amk.getParent();
+      paramv = paramv.amk;
+      if (paramv.getParent() == localRecentsRecyclerView)
+      {
+        if (Build.VERSION.SDK_INT >= 21)
+        {
+          paramv.setZ(1.0F);
+          AppMethodBeat.o(273833);
+          return;
+        }
+        localRecentsRecyclerView.rga = paramv;
+      }
+    }
+    AppMethodBeat.o(273833);
+  }
+  
+  public final void I(RecyclerView.v paramv)
+  {
+    AppMethodBeat.i(273835);
+    super.I(paramv);
+    if (this.rfO.contains(paramv))
+    {
+      this.rfO.remove(paramv);
+      ((RecentsRecyclerView)paramv.amk.getParent()).dd(paramv.amk);
+    }
+    AppMethodBeat.o(273835);
   }
   
   public final RecyclerView.f.c a(RecyclerView.s params, RecyclerView.v paramv, int paramInt, List<Object> paramList)
   {
-    AppMethodBeat.i(49265);
+    AppMethodBeat.i(273836);
     if ((paramInt & 0x2) > 0)
     {
       Iterator localIterator = paramList.iterator();
@@ -147,182 +160,182 @@ final class n
           localObject = (Boolean)((Bundle)localObject).get("star");
           if ((localObject != null) && (((Boolean)localObject).booleanValue()))
           {
-            params = new n.c((byte)0).c(paramv, paramInt);
-            AppMethodBeat.o(49265);
+            params = new n.b((byte)0).e(paramv, paramInt);
+            AppMethodBeat.o(273836);
             return params;
           }
           if ((localObject != null) && (!((Boolean)localObject).booleanValue()))
           {
-            params = new n.e((byte)0).c(paramv, paramInt);
-            AppMethodBeat.o(49265);
+            params = new n.c((byte)0).e(paramv, paramInt);
+            AppMethodBeat.o(273836);
             return params;
           }
         }
       }
     }
     params = super.a(params, paramv, paramInt, paramList);
-    params.atr = paramInt;
-    AppMethodBeat.o(49265);
+    params.alk = paramInt;
+    AppMethodBeat.o(273836);
     return params;
+  }
+  
+  public final boolean a(RecyclerView.v paramv)
+  {
+    AppMethodBeat.i(273829);
+    if (!this.rfA)
+    {
+      d(paramv);
+      z(paramv);
+      AppMethodBeat.o(273829);
+      return false;
+    }
+    boolean bool = super.a(paramv);
+    AppMethodBeat.o(273829);
+    return bool;
   }
   
   public final boolean a(RecyclerView.v paramv, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(49254);
-    if (!this.odO)
+    AppMethodBeat.i(273823);
+    if (!this.rfA)
     {
-      e(paramv);
-      x(paramv);
-      AppMethodBeat.o(49254);
+      d(paramv);
+      A(paramv);
+      AppMethodBeat.o(273823);
       return false;
     }
     boolean bool = super.a(paramv, paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(49254);
+    AppMethodBeat.o(273823);
     return bool;
   }
   
   public final boolean a(RecyclerView.v paramv1, RecyclerView.v paramv2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(49260);
-    if (u.ah(paramv1.aus) == null)
+    AppMethodBeat.i(273830);
+    if (w.Q(paramv1.amk) == null)
     {
-      u.g(paramv1.aus, 1.0F);
-      u.f(paramv1.aus, 0.0F);
+      w.e(paramv1.amk, 1.0F);
+      w.d(paramv1.amk, 0.0F);
     }
-    if (u.ah(paramv2.aus) == null)
+    if (w.Q(paramv2.amk) == null)
     {
-      u.g(paramv2.aus, 1.0F);
-      u.f(paramv2.aus, 0.0F);
+      w.e(paramv2.amk, 1.0F);
+      w.d(paramv2.amk, 0.0F);
     }
-    n(paramv1);
-    n(paramv2);
-    AppMethodBeat.o(49260);
+    q(paramv1);
+    q(paramv2);
+    AppMethodBeat.o(273830);
     return false;
   }
   
   public final boolean a(RecyclerView.v paramv1, RecyclerView.v paramv2, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
   {
-    AppMethodBeat.i(49266);
-    if (!this.odO)
+    AppMethodBeat.i(273837);
+    if (!this.rfA)
     {
-      n(paramv1);
-      n(paramv2);
-      AppMethodBeat.o(49266);
+      q(paramv1);
+      q(paramv2);
+      AppMethodBeat.o(273837);
       return false;
     }
     boolean bool = super.a(paramv1, paramv2, paramc1, paramc2);
-    AppMethodBeat.o(49266);
+    AppMethodBeat.o(273837);
     return bool;
   }
   
   public final boolean a(RecyclerView.v paramv, List<Object> paramList)
   {
-    AppMethodBeat.i(49267);
+    AppMethodBeat.i(273838);
     boolean bool = super.a(paramv, paramList);
     if (((paramv instanceof AppBrandLauncherRecentsList.e)) || (bool))
     {
-      AppMethodBeat.o(49267);
+      AppMethodBeat.o(273838);
       return true;
     }
-    AppMethodBeat.o(49267);
+    AppMethodBeat.o(273838);
     return false;
   }
   
   final void b(RecyclerView.f.a parama)
   {
-    AppMethodBeat.i(49248);
+    AppMethodBeat.i(273819);
     if (parama != null) {
-      synchronized (this.odQ)
+      synchronized (this.rfC)
       {
-        this.odQ.add(parama);
-        AppMethodBeat.o(49248);
+        this.rfC.add(parama);
+        AppMethodBeat.o(273819);
         return;
       }
     }
-    AppMethodBeat.o(49248);
+    AppMethodBeat.o(273819);
   }
   
   public final boolean b(RecyclerView.v paramv)
   {
-    AppMethodBeat.i(49259);
-    if (!this.odO)
-    {
-      e(paramv);
-      w(paramv);
-      AppMethodBeat.o(49259);
-      return false;
-    }
-    boolean bool = super.b(paramv);
-    AppMethodBeat.o(49259);
-    return bool;
+    AppMethodBeat.i(273825);
+    d(paramv);
+    q(paramv);
+    AppMethodBeat.o(273825);
+    return false;
   }
   
   final void c(RecyclerView.f.a parama)
   {
-    AppMethodBeat.i(49249);
+    AppMethodBeat.i(273820);
     if (parama != null) {
-      synchronized (this.odQ)
+      synchronized (this.rfC)
       {
-        this.odQ.remove(parama);
-        AppMethodBeat.o(49249);
+        this.rfC.remove(parama);
+        AppMethodBeat.o(273820);
         return;
       }
     }
-    AppMethodBeat.o(49249);
+    AppMethodBeat.o(273820);
   }
   
-  public final boolean c(RecyclerView.v paramv)
+  public final void c(RecyclerView.v paramv)
   {
-    AppMethodBeat.i(49255);
-    e(paramv);
-    n(paramv);
-    AppMethodBeat.o(49255);
-    return false;
-  }
-  
-  public final void d(RecyclerView.v paramv)
-  {
-    AppMethodBeat.i(49256);
-    if (((paramv instanceof AppBrandLauncherRecentsList.e)) && (this.oed.remove(paramv)))
+    AppMethodBeat.i(273826);
+    if (((paramv instanceof AppBrandLauncherRecentsList.e)) && (this.rfP.remove(paramv)))
     {
-      u.f(paramv.aus, 0.0F);
-      n(paramv);
+      w.d(paramv.amk, 0.0F);
+      q(paramv);
     }
-    super.d(paramv);
-    AppMethodBeat.o(49256);
+    super.c(paramv);
+    AppMethodBeat.o(273826);
   }
   
   public final boolean d(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
   {
-    AppMethodBeat.i(49258);
-    if (!this.odO)
+    AppMethodBeat.i(273828);
+    if (!this.rfA)
     {
-      e(paramv);
-      w(paramv);
-      AppMethodBeat.o(49258);
+      d(paramv);
+      z(paramv);
+      AppMethodBeat.o(273828);
       return false;
+    }
+    if ((paramc1 instanceof n.b))
+    {
+      d(paramv);
+      AppMethodBeat.o(273828);
+      return true;
     }
     if ((paramc1 instanceof n.c))
     {
-      e(paramv);
-      AppMethodBeat.o(49258);
+      d(paramv);
+      AppMethodBeat.o(273828);
       return true;
     }
-    if ((paramc1 instanceof n.e))
-    {
-      e(paramv);
-      AppMethodBeat.o(49258);
-      return true;
-    }
-    if (((paramc1.atr & 0x800) > 0) && ((paramv instanceof AppBrandLauncherRecentsList.e)) && (paramc2 == null)) {
+    if (((paramc1.alk & 0x800) > 0) && ((paramv instanceof AppBrandLauncherRecentsList.e)) && (paramc2 == null)) {
       try
       {
-        bool = ((AppBrandLauncherRecentsList.e)paramv).bYC().kVp;
+        bool = ((AppBrandLauncherRecentsList.e)paramv).cln().nPC;
         if (!bool)
         {
-          e(paramv);
-          this.oea.add(new f((AppBrandLauncherRecentsList.e)paramv, paramc1.left, paramc1.top, (byte)0));
-          AppMethodBeat.o(49258);
+          d(paramv);
+          this.rfM.add(new d((AppBrandLauncherRecentsList.e)paramv, paramc1.left, paramc1.top, (byte)0));
+          AppMethodBeat.o(273828);
           return true;
         }
       }
@@ -335,72 +348,72 @@ final class n
       }
     }
     boolean bool = super.d(paramv, paramc1, paramc2);
-    AppMethodBeat.o(49258);
+    AppMethodBeat.o(273828);
     return bool;
   }
   
   public final boolean e(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
   {
-    AppMethodBeat.i(49257);
-    if (!this.odO)
+    AppMethodBeat.i(273827);
+    if (!this.rfA)
     {
-      bool = c(paramv);
-      AppMethodBeat.o(49257);
+      bool = b(paramv);
+      AppMethodBeat.o(273827);
       return bool;
     }
     if ((paramc1 != null) && ((paramc1.left != paramc2.left) || (paramc1.top != paramc2.top)))
     {
       bool = super.a(paramv, paramc1.left, paramc1.top, paramc2.left, paramc2.top);
-      AppMethodBeat.o(49257);
+      AppMethodBeat.o(273827);
       return bool;
     }
-    if ((this.odN) && ((paramv.aus.getParent() instanceof RecyclerView)) && ((paramv instanceof AppBrandLauncherRecentsList.e)))
+    if ((this.rfz) && ((paramv.amk.getParent() instanceof RecyclerView)) && ((paramv instanceof AppBrandLauncherRecentsList.e)))
     {
-      paramc1 = (RecyclerView)paramv.aus.getParent();
+      paramc1 = (RecyclerView)paramv.amk.getParent();
       if (paramc1.getHeight() > 0)
       {
         if (paramc2.bottom >= paramc1.getHeight())
         {
           paramv = (AppBrandLauncherRecentsList.e)paramv;
-          u.f(paramv.aus, paramv.aus.getHeight());
-          this.oed.add(paramv);
-          AppMethodBeat.o(49257);
+          w.d(paramv.amk, paramv.amk.getHeight());
+          this.rfP.add(paramv);
+          AppMethodBeat.o(273827);
           return true;
         }
         if (paramc2.top <= 0)
         {
           paramv = (AppBrandLauncherRecentsList.e)paramv;
-          u.f(paramv.aus, -paramv.aus.getHeight());
-          this.oed.add(paramv);
-          AppMethodBeat.o(49257);
+          w.d(paramv.amk, -paramv.amk.getHeight());
+          this.rfP.add(paramv);
+          AppMethodBeat.o(273827);
           return true;
         }
       }
     }
-    boolean bool = c(paramv);
-    AppMethodBeat.o(49257);
+    boolean bool = b(paramv);
+    AppMethodBeat.o(273827);
     return bool;
   }
   
   public final boolean f(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
   {
-    AppMethodBeat.i(49261);
-    if (!this.odO)
+    AppMethodBeat.i(273831);
+    if (!this.rfA)
     {
-      e(paramv);
-      x(paramv);
-      AppMethodBeat.o(49261);
+      d(paramv);
+      A(paramv);
+      AppMethodBeat.o(273831);
       return false;
     }
     boolean bool = super.f(paramv, paramc1, paramc2);
-    AppMethodBeat.o(49261);
+    AppMethodBeat.o(273831);
     return bool;
   }
   
   public final boolean isRunning()
   {
     AppMethodBeat.i(49251);
-    if ((!this.odS.isEmpty()) || (!this.odT.isEmpty()) || (!this.odU.isEmpty()) || (!this.odV.isEmpty()) || (!this.odW.isEmpty()) || (!this.odX.isEmpty()) || (!this.odY.isEmpty()) || (!this.odZ.isEmpty()) || (!this.oea.isEmpty()) || (!this.oeb.isEmpty()) || (!this.oed.isEmpty()) || (!this.oee.isEmpty()) || (!this.oef.isEmpty()) || (super.isRunning()))
+    if ((!this.rfE.isEmpty()) || (!this.rfF.isEmpty()) || (!this.rfG.isEmpty()) || (!this.rfH.isEmpty()) || (!this.rfI.isEmpty()) || (!this.rfJ.isEmpty()) || (!this.rfK.isEmpty()) || (!this.rfL.isEmpty()) || (!this.rfM.isEmpty()) || (!this.rfN.isEmpty()) || (!this.rfP.isEmpty()) || (!this.rfQ.isEmpty()) || (!this.rfR.isEmpty()) || (super.isRunning()))
     {
       AppMethodBeat.o(49251);
       return true;
@@ -409,161 +422,63 @@ final class n
     return false;
   }
   
-  public final void jD()
+  public final void kl()
   {
     AppMethodBeat.i(49252);
-    a(this.odP);
+    a(this.rfB);
     Object localObject1;
+    if (!this.rfE.isEmpty())
+    {
+      localObject1 = this.rfE.iterator();
+      if (((Iterator)localObject1).hasNext())
+      {
+        ((Iterator)localObject1).next();
+        AppMethodBeat.o(49252);
+        throw null;
+      }
+      this.rfE.clear();
+    }
+    if (!this.rfG.isEmpty())
+    {
+      localObject1 = this.rfG.iterator();
+      if (((Iterator)localObject1).hasNext())
+      {
+        ((Iterator)localObject1).next();
+        AppMethodBeat.o(49252);
+        throw null;
+      }
+      this.rfG.clear();
+    }
     Object localObject2;
     Object localObject3;
-    Object localObject4;
-    Object localObject5;
-    if (!this.odS.isEmpty())
+    if (!this.rfI.isEmpty())
     {
-      localObject1 = this.odS.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (b)((Iterator)localObject1).next();
-        this.odT.add(((b)localObject2).oek);
-        localObject3 = ((b)localObject2).oek;
-        localObject4 = ((b)localObject2).oek.aus;
-        ((b)localObject2).oek.odd.setVisibility(0);
-        u.f((View)localObject4, 0.0F);
-        localObject5 = u.ah((View)localObject4);
-        double d1 = ((b)localObject2).amL / ((b)localObject2).oek.aus.getHeight();
-        double d2 = this.atp;
-        ((y)localObject5).j(Math.max(this.atp, Math.min(Math.round(d1 * d2) + this.atp, 400L)));
-        ((y)localObject5).a(this.odR);
-        ((y)localObject5).a(new aa()
-        {
-          public final void aI(View paramAnonymousView)
-          {
-            AppMethodBeat.i(49232);
-            ((RecentsRecyclerView)paramAnonymousView.getParent()).cJ(paramAnonymousView);
-            n.this.C(this.amA);
-            AppMethodBeat.o(49232);
-          }
-          
-          public final void aJ(View paramAnonymousView)
-          {
-            AppMethodBeat.i(49233);
-            if (paramAnonymousView == null)
-            {
-              AppMethodBeat.o(49233);
-              return;
-            }
-            ((RecentsRecyclerView)paramAnonymousView.getParent()).cK(paramAnonymousView);
-            this.oei.a(null);
-            u.f(paramAnonymousView, 0.0F);
-            n.this.w(this.amA);
-            n.this.odT.remove(this.amA);
-            n.a(n.this);
-            AppMethodBeat.o(49233);
-          }
-          
-          public final void aK(View paramAnonymousView)
-          {
-            AppMethodBeat.i(49234);
-            if (paramAnonymousView == null)
-            {
-              AppMethodBeat.o(49234);
-              return;
-            }
-            u.f(paramAnonymousView, 0.0F);
-            u.g(paramAnonymousView, 1.0F);
-            AppMethodBeat.o(49234);
-          }
-        });
-        ((y)localObject5).z(-((b)localObject2).amL - ((View)localObject4).getHeight()).start();
-      }
-      this.odS.clear();
-    }
-    if (!this.odU.isEmpty())
-    {
-      localObject1 = this.odU.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (d)((Iterator)localObject1).next();
-        this.odV.add(((d)localObject2).oek);
-        localObject3 = ((d)localObject2).oek;
-        localObject5 = ((d)localObject2).oek.aus;
-        localObject4 = (RecentsRecyclerView)((View)localObject5).getParent();
-        ((d)localObject2).oek.odd.setVisibility(8);
-        u.f((View)localObject5, 0.0F);
-        localObject5 = u.ah((View)localObject5);
-        ((y)localObject5).j(this.atp);
-        ((y)localObject5).a(new aa()
-        {
-          public final void aI(View paramAnonymousView)
-          {
-            AppMethodBeat.i(49235);
-            ((RecentsRecyclerView)paramAnonymousView.getParent()).cJ(paramAnonymousView);
-            n.this.C(this.amA);
-            AppMethodBeat.o(49235);
-          }
-          
-          public final void aJ(View paramAnonymousView)
-          {
-            AppMethodBeat.i(49236);
-            if (paramAnonymousView == null)
-            {
-              AppMethodBeat.o(49236);
-              return;
-            }
-            ((RecentsRecyclerView)paramAnonymousView.getParent()).cK(paramAnonymousView);
-            this.oei.a(null);
-            u.f(paramAnonymousView, 0.0F);
-            n.this.w(this.amA);
-            n.this.odV.remove(this.amA);
-            n.a(n.this);
-            AppMethodBeat.o(49236);
-          }
-          
-          public final void aK(View paramAnonymousView)
-          {
-            AppMethodBeat.i(49237);
-            if (paramAnonymousView == null)
-            {
-              AppMethodBeat.o(49237);
-              return;
-            }
-            u.f(paramAnonymousView, 0.0F);
-            u.g(paramAnonymousView, 1.0F);
-            AppMethodBeat.o(49237);
-          }
-        });
-        ((y)localObject5).z(((RecentsRecyclerView)localObject4).getHeight() - ((d)localObject2).amL).start();
-      }
-      this.odU.clear();
-    }
-    if (!this.odW.isEmpty())
-    {
-      localObject1 = this.odW.iterator();
+      localObject1 = this.rfI.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (AppBrandLauncherRecentsList.e)((Iterator)localObject1).next();
-        this.odX.add(localObject2);
-        u.h(((AppBrandLauncherRecentsList.e)localObject2).odd, 0.1F);
-        u.i(((AppBrandLauncherRecentsList.e)localObject2).odd, 0.1F);
-        u.g(((AppBrandLauncherRecentsList.e)localObject2).odd, 0.0F);
-        ((AppBrandLauncherRecentsList.e)localObject2).odd.setVisibility(0);
-        localObject3 = u.ah(((AppBrandLauncherRecentsList.e)localObject2).odd);
-        ((y)localObject3).j(this.atq);
-        ((y)localObject3).a(new aa()
+        this.rfJ.add(localObject2);
+        w.f(((AppBrandLauncherRecentsList.e)localObject2).reP, 0.1F);
+        w.g(((AppBrandLauncherRecentsList.e)localObject2).reP, 0.1F);
+        w.e(((AppBrandLauncherRecentsList.e)localObject2).reP, 0.0F);
+        ((AppBrandLauncherRecentsList.e)localObject2).reP.setVisibility(0);
+        localObject3 = w.Q(((AppBrandLauncherRecentsList.e)localObject2).reP);
+        ((aa)localObject3).f(this.alj);
+        ((aa)localObject3).b(new ac()
         {
-          public final void aI(View paramAnonymousView) {}
+          public final void e(View paramAnonymousView) {}
           
-          public final void aJ(View paramAnonymousView)
+          public final void f(View paramAnonymousView)
           {
             AppMethodBeat.i(49238);
-            this.oei.a(null);
-            n.this.n(this.oej);
-            n.this.odX.remove(this.oej);
-            n.a(n.this);
+            this.rfV.b(null);
+            n.this.q(this.rfU);
+            n.d(n.this).remove(this.rfU);
+            n.c(n.this);
             AppMethodBeat.o(49238);
           }
           
-          public final void aK(View paramAnonymousView)
+          public final void k(View paramAnonymousView)
           {
             AppMethodBeat.i(49239);
             if (paramAnonymousView == null)
@@ -571,112 +486,109 @@ final class n
               AppMethodBeat.o(49239);
               return;
             }
-            u.f(paramAnonymousView, 0.0F);
-            u.g(paramAnonymousView, 1.0F);
+            w.d(paramAnonymousView, 0.0F);
+            w.e(paramAnonymousView, 1.0F);
             AppMethodBeat.o(49239);
           }
         });
-        ((y)localObject3).y(1.0F).A(1.0F).B(1.0F).start();
+        ((aa)localObject3).i(1.0F).k(1.0F).l(1.0F).start();
       }
-      this.odW.clear();
+      this.rfI.clear();
     }
-    if (!this.odY.isEmpty())
+    if (!this.rfK.isEmpty())
     {
-      localObject1 = this.odY.iterator();
+      localObject1 = this.rfK.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (AppBrandLauncherRecentsList.e)((Iterator)localObject1).next();
-        this.odZ.add(localObject2);
-        u.h(((AppBrandLauncherRecentsList.e)localObject2).odd, 1.0F);
-        u.i(((AppBrandLauncherRecentsList.e)localObject2).odd, 1.0F);
-        u.g(((AppBrandLauncherRecentsList.e)localObject2).odd, 1.0F);
-        ((AppBrandLauncherRecentsList.e)localObject2).odd.setVisibility(0);
-        localObject3 = u.ah(((AppBrandLauncherRecentsList.e)localObject2).odd);
-        ((y)localObject3).j(this.atq);
-        ((y)localObject3).a(new aa()
+        this.rfL.add(localObject2);
+        w.f(((AppBrandLauncherRecentsList.e)localObject2).reP, 1.0F);
+        w.g(((AppBrandLauncherRecentsList.e)localObject2).reP, 1.0F);
+        w.e(((AppBrandLauncherRecentsList.e)localObject2).reP, 1.0F);
+        ((AppBrandLauncherRecentsList.e)localObject2).reP.setVisibility(0);
+        localObject3 = w.Q(((AppBrandLauncherRecentsList.e)localObject2).reP);
+        ((aa)localObject3).f(this.alj);
+        ((aa)localObject3).b(new ac()
         {
-          public final void aI(View paramAnonymousView) {}
+          public final void e(View paramAnonymousView) {}
           
-          public final void aJ(View paramAnonymousView)
+          public final void f(View paramAnonymousView)
           {
             AppMethodBeat.i(49240);
-            u.h(this.oej.odd, 1.0F);
-            u.i(this.oej.odd, 1.0F);
-            u.g(this.oej.odd, 1.0F);
-            this.oej.odd.setVisibility(8);
-            n.this.n(this.oej);
-            n.this.odZ.remove(this.oej);
-            n.a(n.this);
+            w.f(this.rfU.reP, 1.0F);
+            w.g(this.rfU.reP, 1.0F);
+            w.e(this.rfU.reP, 1.0F);
+            this.rfU.reP.setVisibility(8);
+            n.this.q(this.rfU);
+            n.e(n.this).remove(this.rfU);
+            n.c(n.this);
             AppMethodBeat.o(49240);
           }
         });
-        ((y)localObject3).y(0.0F).A(0.1F).B(0.1F).start();
+        ((aa)localObject3).i(0.0F).k(0.1F).l(0.1F).start();
       }
-      this.odY.clear();
+      this.rfK.clear();
     }
-    if (!this.oea.isEmpty())
+    if (!this.rfM.isEmpty())
     {
-      localObject1 = this.oea.iterator();
+      localObject1 = this.rfM.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject3 = (f)((Iterator)localObject1).next();
-        this.oeb.add(((f)localObject3).oek);
-        localObject2 = ((f)localObject3).oek.aus;
-        u.f((View)localObject2, 0.0F);
-        u.g((View)localObject2, 1.0F);
-        localObject3 = ((f)localObject3).oek;
-        localObject4 = u.ah((View)localObject2);
-        ((y)localObject4).j(this.atp);
-        ((y)localObject4).a(new aa()
+        localObject3 = (d)((Iterator)localObject1).next();
+        this.rfN.add(((d)localObject3).rfW);
+        localObject2 = ((d)localObject3).rfW.amk;
+        w.d((View)localObject2, 0.0F);
+        w.e((View)localObject2, 1.0F);
+        localObject3 = ((d)localObject3).rfW;
+        aa localaa = w.Q((View)localObject2);
+        localaa.f(this.ali);
+        localaa.b(new ac()
         {
-          public final void aI(View paramAnonymousView)
+          public final void e(View paramAnonymousView)
           {
             AppMethodBeat.i(49241);
-            n.this.C(this.oej);
+            n.this.F(this.rfU);
             AppMethodBeat.o(49241);
           }
           
-          public final void aJ(View paramAnonymousView)
+          public final void f(View paramAnonymousView)
           {
             AppMethodBeat.i(49242);
-            u.f(paramAnonymousView, 0.0F);
-            u.g(paramAnonymousView, 1.0F);
-            n.this.w(this.oej);
-            n.this.oeb.remove(this.oej);
-            n.a(n.this);
+            w.d(paramAnonymousView, 0.0F);
+            w.e(paramAnonymousView, 1.0F);
+            n.this.z(this.rfU);
+            n.f(n.this).remove(this.rfU);
+            n.c(n.this);
             AppMethodBeat.o(49242);
           }
         });
-        ((y)localObject4).y(0.0F).z(-((View)localObject2).getHeight()).start();
+        localaa.i(0.0F).j(-((View)localObject2).getHeight()).start();
       }
-      this.oea.clear();
+      this.rfM.clear();
     }
-    super.jD();
-    if (!this.oed.isEmpty())
+    super.kl();
+    if (!this.rfP.isEmpty())
     {
-      this.oee.addAll(this.oed);
+      this.rfQ.addAll(this.rfP);
       localObject1 = new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(49243);
-          Iterator localIterator = n.this.oee.iterator();
+          Iterator localIterator = n.g(n.this).iterator();
           while (localIterator.hasNext())
           {
             AppBrandLauncherRecentsList.e locale = (AppBrandLauncherRecentsList.e)localIterator.next();
-            n localn = n.this;
-            y localy = u.ah(locale.aus);
-            localn.oef.add(locale);
-            localy.z(0.0F).j(localn.atp).a(new n.8(localn, locale, localy)).start();
+            n.a(n.this, locale);
           }
-          n.this.oee.clear();
+          n.g(n.this).clear();
           AppMethodBeat.o(49243);
         }
       };
-      this.oed.clear();
-      if (this.oeg)
+      this.rfP.clear();
+      if (this.rfS)
       {
-        u.a(((AppBrandLauncherRecentsList.e)this.oee.get(0)).aus, (Runnable)localObject1, ly());
+        w.a(((AppBrandLauncherRecentsList.e)this.rfQ.get(0)).amk, (Runnable)localObject1, lK());
         AppMethodBeat.o(49252);
         return;
       }
@@ -685,48 +597,34 @@ final class n
     AppMethodBeat.o(49252);
   }
   
-  public final void o(RecyclerView.v paramv)
+  public final void r(RecyclerView.v paramv)
   {
-    AppMethodBeat.i(49262);
-    super.o(paramv);
-    ViewParent localViewParent = paramv.aus.getParent();
+    AppMethodBeat.i(273832);
+    super.r(paramv);
+    ViewParent localViewParent = paramv.amk.getParent();
     if ((localViewParent instanceof RecentsRecyclerView)) {
-      ((RecentsRecyclerView)localViewParent).cK(paramv.aus);
+      ((RecentsRecyclerView)localViewParent).dd(paramv.amk);
     }
-    AppMethodBeat.o(49262);
+    AppMethodBeat.o(273832);
   }
-  
-  static final class b
-    extends n.g
-  {}
   
   static final class d
-    extends n.g
-  {}
-  
-  static final class f
   {
-    int amK;
-    int amL;
-    AppBrandLauncherRecentsList.e oek;
+    int agy;
+    int agz;
+    AppBrandLauncherRecentsList.e rfW;
     
-    private f(AppBrandLauncherRecentsList.e parame, int paramInt1, int paramInt2)
+    private d(AppBrandLauncherRecentsList.e parame, int paramInt1, int paramInt2)
     {
-      this.oek = parame;
-      this.amK = paramInt1;
-      this.amL = paramInt2;
+      this.rfW = parame;
+      this.agy = paramInt1;
+      this.agz = paramInt2;
     }
-  }
-  
-  static class g
-  {
-    int amL;
-    AppBrandLauncherRecentsList.e oek;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.n
  * JD-Core Version:    0.7.0.1
  */

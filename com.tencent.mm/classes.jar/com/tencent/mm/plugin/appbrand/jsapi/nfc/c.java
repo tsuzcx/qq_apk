@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc;
 
 import com.tencent.luggage.a.b;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/IHostNFCSwitcher;", "Lcom/tencent/luggage/base/ICustomize;", "disableHostNFC", "", "enableHostNFC", "isNFCUsing", "", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "luggage-commons_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/IHostNFCSwitcher;", "Lcom/tencent/luggage/base/ICustomize;", "disableHostNFC", "", "enableHostNFC", "isNFCUsing", "", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "luggage-commons_release"})
 public abstract interface c
   extends b
 {
-  public abstract void bHK();
+  public abstract void bTt();
   
-  public abstract void bHL();
+  public abstract void bTu();
   
-  public abstract boolean u(f paramf);
+  public abstract boolean x(e parame);
 }
 
 

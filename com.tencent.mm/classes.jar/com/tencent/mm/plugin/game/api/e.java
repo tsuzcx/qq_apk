@@ -7,13 +7,13 @@ import com.tencent.mm.plugin.game.model.r;
 public abstract interface e
   extends a
 {
-  public abstract b dSI();
+  public abstract b evm();
   
-  public abstract r dSJ();
+  public abstract r evn();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.api.e
  * JD-Core Version:    0.7.0.1
  */

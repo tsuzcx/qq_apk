@@ -28,14 +28,14 @@ import org.xml.sax.InputSource;
 
 public final class a
 {
-  private static DocumentBuilder iHe = null;
+  private static DocumentBuilder lxg = null;
   
-  public static a.a Ld(String paramString)
+  public static a.a Sw(String paramString)
   {
     AppMethodBeat.i(153105);
     a.a locala = new a.a();
     Log.d("MicroMsg.ABTestParser", "ABTest msg content: %s", new Object[] { paramString });
-    Object localObject1 = Lf(paramString);
+    Object localObject1 = Sy(paramString);
     if (localObject1 == null)
     {
       Log.e("MicroMsg.ABTestParser", "Msg parsing failed, msg: %s", new Object[] { paramString });
@@ -148,7 +148,7 @@ public final class a
               }
               l1 = System.currentTimeMillis() / 1000L;
             }
-            locala.iHf.add(paramString);
+            locala.lxh.add(paramString);
             if ((((Node)localObject2).getNodeType() == 1) && (((Node)localObject2).getNodeName().equals("expinfo"))) {}
             try
             {
@@ -169,7 +169,7 @@ public final class a
               continue;
               continue;
             }
-            locala.iHg.addAll(paramString);
+            locala.lxi.addAll(paramString);
             j += 1;
             break;
             localObject5 = ((NamedNodeMap)localObject4).getNamedItem("layerid");
@@ -288,11 +288,11 @@ public final class a
     }
   }
   
-  public static Map<String, String> Le(String paramString)
+  public static Map<String, String> Sx(String paramString)
   {
     AppMethodBeat.i(153106);
     HashMap localHashMap = new HashMap();
-    Object localObject1 = Lf(paramString);
+    Object localObject1 = Sy(paramString);
     if (localObject1 == null)
     {
       Log.e("MicroMsg.ABTestParser", "Raw XML string parsing failed, xml: %s", new Object[] { paramString });
@@ -322,14 +322,14 @@ public final class a
     return localHashMap;
   }
   
-  private static Element Lf(String paramString)
+  private static Element Sy(String paramString)
   {
     AppMethodBeat.i(153107);
     try
     {
       InputSource localInputSource = new InputSource(new ByteArrayInputStream(paramString.getBytes()));
-      if (iHe != null) {
-        paramString = iHe;
+      if (lxg != null) {
+        paramString = lxg;
       }
       for (;;)
       {
@@ -339,7 +339,7 @@ public final class a
         AppMethodBeat.o(153107);
         return paramString;
         paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        iHe = paramString;
+        lxg = paramString;
       }
       return null;
     }
@@ -374,7 +374,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.c.a
  * JD-Core Version:    0.7.0.1
  */

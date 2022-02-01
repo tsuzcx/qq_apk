@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.protocal.protobuf.tw;
-import com.tencent.mm.protocal.protobuf.uo;
+import com.tencent.mm.f.c.aq;
+import com.tencent.mm.protocal.protobuf.ty;
+import com.tencent.mm.protocal.protobuf.uq;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
@@ -17,20 +17,20 @@ public final class g
   extends aq
 {
   protected static IAutoDBItem.MAutoDBInfo info;
-  public tw pTA;
-  public uo pTB;
-  public List<a> pTC = null;
-  public List<b> pTD = null;
-  public int pTE = 0;
-  public int pTF = 0;
-  public boolean pTG;
-  public List<c> pTH = null;
-  public String pTu = "";
-  public String pTv = "";
-  public String pTw;
-  public String pTx;
-  public String pTy;
-  public boolean pTz = false;
+  public boolean tpA = false;
+  public ty tpB;
+  public uq tpC;
+  public List<a> tpD = null;
+  public List<b> tpE = null;
+  public int tpF = 0;
+  public int tpG = 0;
+  public boolean tpH;
+  public List<c> tpI = null;
+  public String tpv = "";
+  public String tpw = "";
+  public String tpx;
+  public String tpy;
+  public String tpz;
   
   static
   {
@@ -133,66 +133,66 @@ public final class g
     AppMethodBeat.o(112776);
   }
   
-  public final tw ctH()
+  public final ty cHj()
   {
     AppMethodBeat.i(112771);
-    tw localtw1;
-    if (this.pTA != null)
+    ty localty1;
+    if (this.tpB != null)
     {
-      localtw1 = this.pTA;
+      localty1 = this.tpB;
       AppMethodBeat.o(112771);
-      return localtw1;
+      return localty1;
     }
     try
     {
-      this.pTA = ((tw)new tw().parseFrom(this.field_buttonData));
-      localtw1 = this.pTA;
+      this.tpB = ((ty)new ty().parseFrom(this.field_buttonData));
+      localty1 = this.tpB;
       AppMethodBeat.o(112771);
-      return localtw1;
+      return localty1;
     }
     catch (Exception localException)
     {
       Log.e("MicroMsg.CardMsgInfo", "getCardButton fail, ex = %s", new Object[] { localException.getMessage() });
       Log.printErrStackTrace("MicroMsg.CardMsgInfo", localException, "", new Object[0]);
-      tw localtw2 = new tw();
+      ty localty2 = new ty();
       AppMethodBeat.o(112771);
-      return localtw2;
+      return localty2;
     }
   }
   
-  public final uo ctI()
+  public final uq cHk()
   {
     AppMethodBeat.i(112772);
-    uo localuo1;
-    if (this.pTB != null)
+    uq localuq1;
+    if (this.tpC != null)
     {
-      localuo1 = this.pTB;
+      localuq1 = this.tpC;
       AppMethodBeat.o(112772);
-      return localuo1;
+      return localuq1;
     }
     try
     {
-      this.pTB = ((uo)new uo().parseFrom(this.field_operData));
-      localuo1 = this.pTB;
+      this.tpC = ((uq)new uq().parseFrom(this.field_operData));
+      localuq1 = this.tpC;
       AppMethodBeat.o(112772);
-      return localuo1;
+      return localuq1;
     }
     catch (Exception localException)
     {
       Log.e("MicroMsg.CardMsgInfo", "getOperationRegion fail, ex = %s", new Object[] { localException.getMessage() });
       Log.printErrStackTrace("MicroMsg.CardMsgInfo", localException, "", new Object[0]);
-      uo localuo2 = new uo();
+      uq localuq2 = new uq();
       AppMethodBeat.o(112772);
-      return localuo2;
+      return localuq2;
     }
   }
   
-  public final void ctJ()
+  public final void cHl()
   {
     AppMethodBeat.i(112773);
-    if (this.pTC == null)
+    if (this.tpD == null)
     {
-      this.pTC = new ArrayList();
+      this.tpD = new ArrayList();
       if (Util.isNullOrNil(this.field_accept_buttons))
       {
         AppMethodBeat.o(112773);
@@ -222,12 +222,12 @@ public final class g
           {
             localObject2 = new a();
             ((a)localObject2).title = ((String)localMap.get((String)localObject1 + ".title"));
-            ((a)localObject2).oqZ = ((String)localMap.get((String)localObject1 + ".sub_title"));
-            ((a)localObject2).cardExt = ((String)localMap.get((String)localObject1 + ".card_ext"));
+            ((a)localObject2).rsw = ((String)localMap.get((String)localObject1 + ".sub_title"));
+            ((a)localObject2).tpJ = ((String)localMap.get((String)localObject1 + ".card_ext"));
             ((a)localObject2).cardId = ((String)localMap.get((String)localObject1 + ".card_id"));
-            ((a)localObject2).pTI = Util.getInt((String)localMap.get((String)localObject1 + ".action_type"), 0);
-            ((a)localObject2).iqg = j;
-            this.pTC.add(localObject2);
+            ((a)localObject2).tpK = Util.getInt((String)localMap.get((String)localObject1 + ".action_type"), 0);
+            ((a)localObject2).endTime = j;
+            this.tpD.add(localObject2);
           }
           i += 1;
           break;
@@ -238,12 +238,12 @@ public final class g
     AppMethodBeat.o(112773);
   }
   
-  public final void ctK()
+  public final void cHm()
   {
     AppMethodBeat.i(112774);
-    if (this.pTD == null)
+    if (this.tpE == null)
     {
-      this.pTD = new ArrayList();
+      this.tpE = new ArrayList();
       if (Util.isNullOrNil(this.field_jump_buttons))
       {
         AppMethodBeat.o(112774);
@@ -269,9 +269,9 @@ public final class g
           localObject2 = new b();
           ((b)localObject2).title = ((String)localMap.get((String)localObject1 + ".title"));
           ((b)localObject2).description = ((String)localMap.get((String)localObject1 + ".description"));
-          ((b)localObject2).pTK = ((String)localMap.get((String)localObject1 + ".button_wording"));
-          ((b)localObject2).pTL = ((String)localMap.get((String)localObject1 + ".jump_url"));
-          this.pTD.add(localObject2);
+          ((b)localObject2).tpM = ((String)localMap.get((String)localObject1 + ".button_wording"));
+          ((b)localObject2).jump_url = ((String)localMap.get((String)localObject1 + ".jump_url"));
+          this.tpE.add(localObject2);
           i += 1;
           break;
         }
@@ -281,12 +281,12 @@ public final class g
     AppMethodBeat.o(112774);
   }
   
-  public final void ctL()
+  public final void cHn()
   {
     AppMethodBeat.i(112775);
-    if (this.pTH == null)
+    if (this.tpI == null)
     {
-      this.pTH = new ArrayList();
+      this.tpI = new ArrayList();
       if (Util.isNullOrNil(this.field_unavailable_qr_code_list))
       {
         AppMethodBeat.o(112775);
@@ -310,8 +310,8 @@ public final class g
             break label206;
           }
           localObject2 = new c();
-          ((c)localObject2).pTM = ((String)localMap.get((String)localObject1 + ".code_id"));
-          this.pTH.add(localObject2);
+          ((c)localObject2).tpN = ((String)localMap.get((String)localObject1 + ".code_id"));
+          this.tpI.add(localObject2);
           i += 1;
           break;
         }
@@ -328,12 +328,12 @@ public final class g
   
   public final class a
   {
-    public String cardExt;
     public String cardId;
-    public int iqg;
-    public String oqZ;
-    public int pTI;
+    public int endTime;
+    public String rsw;
     public String title;
+    public String tpJ;
+    public int tpK;
     
     public a() {}
   }
@@ -341,16 +341,16 @@ public final class g
   public final class b
   {
     public String description;
-    public String pTK;
-    public String pTL;
+    public String jump_url;
     public String title;
+    public String tpM;
     
     public b() {}
   }
   
   public final class c
   {
-    public String pTM;
+    public String tpN;
     
     public c() {}
   }

@@ -1,33 +1,24 @@
 package com.tencent.mm.app;
 
 import android.app.Application;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Process;
 import android.os.SystemClock;
 import com.huawei.easygo.sdk.EasyGo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.booter.aa;
+import com.tencent.mm.boot.R.raw;
 import com.tencent.mm.booter.d;
-import com.tencent.mm.cc.b;
 import com.tencent.mm.compatible.util.j;
-import com.tencent.mm.compatible.util.j.b;
-import com.tencent.mm.kernel.b.h;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.l;
 import com.tencent.mm.plugin.report.business.DataPackageFrequencyDetect;
 import com.tencent.mm.sdk.platformtools.AndroidOSafety;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.sdk.platformtools.WeChatHosts;
-import com.tencent.mm.splash.m;
-import com.tencent.mm.ui.NoRomSpaceDexUI;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.vfs.y;
+import com.tencent.mm.splash.n;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.vfs.ab;
 import com.tencent.tinker.entry.ApplicationLifeCycle;
 import com.tencent.tinker.entry.ApplicationLike;
 
@@ -39,7 +30,7 @@ public class MMApplicationWrapper
   private EasyGo easyGoManager;
   private final ApplicationLike lifeCycle;
   private final long processInitTimestamp;
-  private h profile;
+  private com.tencent.mm.kernel.b.h profile;
   private String thisProcess;
   
   public MMApplicationWrapper(ApplicationLike paramApplicationLike, String paramString)
@@ -55,197 +46,174 @@ public class MMApplicationWrapper
     AppMethodBeat.o(160077);
   }
   
-  private void setupXLogDebugger(h paramh)
+  private void setupXLogDebugger(com.tencent.mm.kernel.b.h paramh)
   {
     AppMethodBeat.i(160079);
-    d locald = paramh.gmN;
-    if (paramh.aBb())
+    d locald = paramh.iQW;
+    if (paramh.aIE())
     {
-      locald.CN("MM");
+      locald.JC("MM");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.FY(":push"))
+    if (paramh.MY(":push"))
     {
-      locald.CN("PUSH");
+      locald.JC("PUSH");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.FY(":tools"))
+    if (paramh.MY(":tools"))
     {
-      locald.CN("TOOL");
+      locald.JC("TOOL");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.FY(":toolsmp"))
+    if (paramh.MY(":toolsmp"))
     {
-      locald.CN("TOOLSMP");
+      locald.JC("TOOLSMP");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.FY(":sandbox"))
+    if (paramh.MY(":sandbox"))
     {
-      locald.CN("SANDBOX");
+      locald.JC("SANDBOX");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.FY(":exdevice"))
+    if (paramh.MY(":exdevice"))
     {
-      locald.CN("EXDEVICE");
+      locald.JC("EXDEVICE");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.FY(":patch"))
+    if (paramh.MY(":patch"))
     {
-      locald.CN("PATCH");
+      locald.JC("PATCH");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.FY(":appbrand0"))
+    if (paramh.MY(":appbrand0"))
     {
-      locald.CN("APPBRAND0");
+      locald.JC("APPBRAND0");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.FY(":appbrand1"))
+    if (paramh.MY(":appbrand1"))
     {
-      locald.CN("APPBRAND1");
+      locald.JC("APPBRAND1");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.FY(":appbrand2"))
+    if (paramh.MY(":appbrand2"))
     {
-      locald.CN("APPBRAND2");
+      locald.JC("APPBRAND2");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.FY(":appbrand3"))
+    if (paramh.MY(":appbrand3"))
     {
-      locald.CN("APPBRAND3");
+      locald.JC("APPBRAND3");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.FY(":appbrand4"))
+    if (paramh.MY(":appbrand4"))
     {
-      locald.CN("APPBRAND4");
+      locald.JC("APPBRAND4");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.FY(":TMAssistantDownloadSDKService"))
+    if (paramh.MY(":TMAssistantDownloadSDKService"))
     {
-      locald.CN("TMSDK");
+      locald.JC("TMSDK");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.FY(":dexopt"))
+    if (paramh.MY(":dexopt"))
     {
-      locald.CN("DEXOPT");
+      locald.JC("DEXOPT");
       AppMethodBeat.o(160079);
       return;
     }
-    if (paramh.FY(":extmig")) {
-      locald.CN("EXTMIG");
+    if (paramh.MY(":extmig"))
+    {
+      locald.JC("EXTMIG");
+      AppMethodBeat.o(160079);
+      return;
+    }
+    if (paramh.MY(":hld")) {
+      locald.JC("HLD");
     }
     AppMethodBeat.o(160079);
   }
   
-  public void onBaseContextAttached(final Context paramContext)
+  public void onBaseContextAttached(Context paramContext)
   {
     AppMethodBeat.i(160078);
-    com.tencent.mm.kernel.a.a.hrO = SystemClock.elapsedRealtime();
-    com.tencent.mm.kernel.a.a.hrN = System.currentTimeMillis();
+    com.tencent.mm.kernel.a.a.kdJ = SystemClock.elapsedRealtime();
+    com.tencent.mm.kernel.a.a.kdI = System.currentTimeMillis();
     AndroidOSafety.replaceTargetVersion(paramContext.getApplicationInfo());
-    this.profile = new h(this.thisProcess, this.app, this.lifeCycle);
-    this.profile.htp.htq = this.processInitTimestamp;
-    ai.init(paramContext);
-    j.a(new j.b()
-    {
-      public final boolean Wt()
-      {
-        AppMethodBeat.i(257897);
-        if ((BuildInfo.IS_ARM64) && (!Build.CPU_ABI.equals("arm64-v8a")))
-        {
-          Object localObject1 = paramContext;
-          Object localObject2 = new Intent(paramContext, NoRomSpaceDexUI.class).addFlags(268435456).putExtra("titleRes", 2131756209).putExtra("messageRes", 2131756208).putExtra("buttonRes", 2131756207).putExtra("action", PendingIntent.getActivity(paramContext, 0, new Intent("android.intent.action.VIEW", Uri.parse("http://" + WeChatHosts.domainString(2131761749) + "/")).addFlags(268435456), 0));
-          localObject2 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject2);
-          com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).axQ(), "com/tencent/mm/app/MMApplicationWrapper$1", "onFailure", "(Ljava/lang/String;Ljava/lang/UnsatisfiedLinkError;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/app/MMApplicationWrapper$1", "onFailure", "(Ljava/lang/String;Ljava/lang/UnsatisfiedLinkError;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          localObject1 = com.tencent.mm.hellhoundlib.b.c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
-          localObject2 = new Object();
-          com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).axQ(), "com/tencent/mm/app/MMApplicationWrapper$1", "onFailure", "(Ljava/lang/String;Ljava/lang/UnsatisfiedLinkError;)Z", "android/os/Process_EXEC_", "killProcess", "(I)V");
-          Process.killProcess(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject1).pG(0)).intValue());
-          com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/mm/app/MMApplicationWrapper$1", "onFailure", "(Ljava/lang/String;Ljava/lang/UnsatisfiedLinkError;)Z", "android/os/Process_EXEC_", "killProcess", "(I)V");
-          AppMethodBeat.o(257897);
-          return true;
-        }
-        AppMethodBeat.o(257897);
-        return false;
-      }
-    });
-    y.f(this.profile);
-    com.tencent.f.g.a(this.profile.ca, new aa());
-    boolean bool1 = z.gl(this.thisProcess);
-    boolean bool2 = z.gk(this.thisProcess);
+    this.profile = new com.tencent.mm.kernel.b.h(this.thisProcess, this.app, this.lifeCycle);
+    this.profile.kfk.kfl = l.aHO();
+    this.profile.kfk.kfm = this.processInitTimestamp;
+    ak.init(paramContext);
+    j.a(new MMApplicationWrapper.1(this, paramContext));
+    ab.h(this.profile);
+    com.tencent.e.g.a(this.profile.Zw, new com.tencent.mm.booter.aa());
+    boolean bool1 = aa.gV(this.thisProcess);
+    boolean bool2 = aa.gU(this.thisProcess);
     if (!bool1)
     {
       paramContext.getClassLoader();
-      j.Ed("stlport_shared");
+      j.KW("stlport_shared");
       paramContext.getClassLoader();
-      j.Ed("c++_shared");
-      String str = com.tencent.mm.xlog.app.a.Rza;
+      j.KW("c++_shared");
+      String str = com.tencent.mm.xlog.app.a.ZaI;
       paramContext.getClassLoader();
-      j.Ed(str);
-      this.profile.gmN = d.cg(this.profile.ca);
+      j.KW(str);
+      this.profile.iQW = d.cc(this.profile.Zw);
       setupXLogDebugger(this.profile);
     }
-    com.tencent.mm.splash.a.n(this.app);
-    AppForegroundDelegate.djR.d(this.app);
-    DataPackageFrequencyDetect.CxA.d(this.app);
-    com.tencent.mm.bu.a.a.gtp();
+    com.tencent.mm.splash.a.q(this.app);
+    com.tencent.matrix.a.b.c(this.app);
+    z.c(this.app);
+    AppForegroundDelegate.fby.c(this.app);
+    DataPackageFrequencyDetect.IyC.c(this.app);
+    com.tencent.mm.cb.a.a.hoB();
     if (!bool2)
     {
-      aj.a(this.profile, "com.tencent.mm.app.WeChatSplashStartup");
+      al.a(this.profile, "com.tencent.mm.app.WeChatSplashStartup");
       paramContext = this.app;
-      MMApplicationContext.setResources(b.a(paramContext.getResources(), paramContext, bool2));
-      com.tencent.mm.cc.a.a(new com.tencent.mm.cc.a.a()
-      {
-        public final void Wu()
-        {
-          AppMethodBeat.i(257896);
-          com.tencent.mm.bv.a.iH(MMApplicationContext.getContext());
-          com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-          Object localObject = new Object();
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.axQ(), "com/tencent/mm/app/MMApplicationWrapper$2", "onDensityChange", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
-          System.exit(((Integer)locala.pG(0)).intValue());
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/app/MMApplicationWrapper$2", "onDensityChange", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
-          AppMethodBeat.o(257896);
-        }
-      });
-      if (!com.tencent.mm.cc.c.gvD()) {
-        break label343;
+      MMApplicationContext.setResources(com.tencent.mm.cj.b.a(paramContext.getResources(), paramContext, bool2));
+      com.tencent.mm.cj.a.a(new MMApplicationWrapper.2(this));
+      if (!com.tencent.mm.cj.c.hrB()) {
+        break label422;
       }
       if (!MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).getBoolean("special_dark_mode_set_follow_system", false))
       {
         MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).putBoolean("dark_mode_follow_system", true);
-        ao.gJU();
+        ar.hIV();
         MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).putBoolean("special_dark_mode_set_follow_system", true);
       }
     }
     for (;;)
     {
-      ab.ab(com.tencent.mm.boot.a.a.class);
-      ab.gm("com.tencent.mm.boot");
+      ac.ab(R.raw.class);
+      ac.setPackageName("com.tencent.mm.boot");
+      if (this.thisProcess.endsWith(":hld"))
+      {
+        ac.a(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).Zw, ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).Zw.getResources());
+        com.tencent.mm.plugin.hld.model.g.DCm.gN(MMApplicationContext.getContext());
+      }
       AppMethodBeat.o(160078);
       return;
       Log.i("MicroMsg.MMApplicationWrapper", "is plain process. load nothing");
-      aj.a(this.profile, null);
+      al.a(this.profile, null);
       break;
-      label343:
+      label422:
       if (!MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).getBoolean("dark_mode_set_follow_system", false))
       {
         MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).putBoolean("dark_mode_follow_system", true);
-        ao.gJU();
+        ar.hIV();
         MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).putBoolean("dark_mode_set_follow_system", true);
       }
     }
@@ -263,8 +231,8 @@ public class MMApplicationWrapper
   public void onCreate()
   {
     AppMethodBeat.i(160080);
-    com.tencent.mm.ad.c.g(this.app);
-    m.gyz();
+    com.tencent.mm.ag.c.i(this.app);
+    n.huz();
     AppMethodBeat.o(160080);
   }
   
@@ -297,7 +265,7 @@ public class MMApplicationWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.app.MMApplicationWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -10,27 +10,27 @@ public class FaceContextData
   implements Parcelable
 {
   public static final Parcelable.Creator<FaceContextData> CREATOR;
-  private static volatile FaceContextData sQH;
-  public long sQI;
+  private static volatile FaceContextData wwD;
+  public long wwE;
   
   static
   {
     AppMethodBeat.i(103712);
-    sQH = null;
+    wwD = null;
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(103712);
   }
   
   public FaceContextData()
   {
-    this.sQI = -1L;
+    this.wwE = -1L;
   }
   
   protected FaceContextData(Parcel paramParcel)
   {
     AppMethodBeat.i(103710);
-    this.sQI = -1L;
-    this.sQI = paramParcel.readLong();
+    this.wwE = -1L;
+    this.wwE = paramParcel.readLong();
     AppMethodBeat.o(103710);
   }
   
@@ -39,11 +39,11 @@ public class FaceContextData
     AppMethodBeat.i(103708);
     if (paramFaceContextData == null)
     {
-      sQH = null;
+      wwD = null;
       AppMethodBeat.o(103708);
       return;
     }
-    if (sQH != null)
+    if (wwD != null)
     {
       b(paramFaceContextData);
       AppMethodBeat.o(103708);
@@ -51,12 +51,12 @@ public class FaceContextData
     }
     try
     {
-      if (sQH != null)
+      if (wwD != null)
       {
         b(paramFaceContextData);
         return;
       }
-      sQH = paramFaceContextData;
+      wwD = paramFaceContextData;
       return;
     }
     finally
@@ -68,21 +68,21 @@ public class FaceContextData
   private static void b(FaceContextData paramFaceContextData)
   {
     AppMethodBeat.i(103709);
-    if ((sQH != null) && (paramFaceContextData != null)) {}
+    if ((wwD != null) && (paramFaceContextData != null)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      sQH.sQI = paramFaceContextData.sQI;
+      wwD.wwE = paramFaceContextData.wwE;
       AppMethodBeat.o(103709);
       return;
     }
   }
   
-  public static FaceContextData cST()
+  public static FaceContextData dhX()
   {
     try
     {
-      FaceContextData localFaceContextData = sQH;
+      FaceContextData localFaceContextData = wwD;
       return localFaceContextData;
     }
     finally
@@ -100,7 +100,7 @@ public class FaceContextData
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(103711);
-    paramParcel.writeLong(this.sQI);
+    paramParcel.writeLong(this.wwE);
     AppMethodBeat.o(103711);
   }
 }

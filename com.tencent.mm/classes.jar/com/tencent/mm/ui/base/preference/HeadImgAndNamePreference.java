@@ -10,22 +10,25 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.g.a.a;
+import com.tencent.mm.ah.a.f;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.ui.h.a.a;
 
 public final class HeadImgAndNamePreference
   extends Preference
 {
-  private View OXG;
-  private LinearLayout OXH;
-  private String OXI;
-  private boolean OXJ;
-  private boolean OXK;
-  private a OXL;
-  private ImageView gBZ;
+  private View.OnClickListener Fms;
+  private View WqQ;
+  private LinearLayout WqR;
+  private String WqS;
+  private boolean WqT;
+  private boolean WqU;
+  private a WqV;
   private int height;
-  private TextView jBR;
-  private ImageView qbE;
-  private View.OnClickListener zHh;
+  private ImageView jmf;
+  private TextView mrM;
+  private ImageView txC;
   
   public HeadImgAndNamePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,110 +40,65 @@ public final class HeadImgAndNamePreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164162);
     this.height = -1;
-    this.OXK = false;
-    this.OXL = null;
-    setLayoutResource(2131495538);
+    this.WqU = false;
+    this.WqV = null;
+    setLayoutResource(a.h.mm_preference);
     AppMethodBeat.o(164162);
-  }
-  
-  public final void a(a parama)
-  {
-    this.OXL = parama;
-  }
-  
-  public final void bmf(String paramString)
-  {
-    AppMethodBeat.i(164164);
-    this.OXI = null;
-    if (this.qbE != null) {
-      if (this.OXL != null) {
-        this.OXL.b(paramString, this.qbE);
-      }
-    }
-    while (paramString == null)
-    {
-      this.OXK = false;
-      AppMethodBeat.o(164164);
-      return;
-      if (this.OXJ)
-      {
-        a.d(this.qbE, paramString);
-      }
-      else
-      {
-        a.c(this.qbE, paramString);
-        continue;
-        this.OXI = paramString;
-      }
-    }
-    this.OXK = true;
-    AppMethodBeat.o(164164);
-  }
-  
-  public final void gLE()
-  {
-    this.OXJ = true;
-  }
-  
-  public final void h(View.OnClickListener paramOnClickListener)
-  {
-    this.zHh = paramOnClickListener;
   }
   
   protected final void onBindView(View paramView)
   {
     AppMethodBeat.i(164165);
     super.onBindView(paramView);
-    if (this.qbE == null) {
-      this.qbE = ((ImageView)paramView.findViewById(2131302570));
+    if (this.txC == null) {
+      this.txC = ((ImageView)paramView.findViewById(a.g.image_headimg));
     }
-    if (this.jBR == null) {
-      this.jBR = ((TextView)paramView.findViewById(2131305451));
+    if (this.mrM == null) {
+      this.mrM = ((TextView)paramView.findViewById(a.g.no_header_icon_tip));
     }
-    if (this.OXG == null) {
-      this.OXG = paramView.findViewById(2131304503);
+    if (this.WqQ == null) {
+      this.WqQ = paramView.findViewById(a.g.mask_header_icon);
     }
-    if (this.zHh != null) {
-      this.OXG.setOnClickListener(this.zHh);
+    if (this.Fms != null) {
+      this.WqQ.setOnClickListener(this.Fms);
     }
-    if (this.OXI != null)
+    if (this.WqS != null)
     {
-      if (this.OXL != null)
+      if (this.WqV == null)
       {
-        this.OXL.b(this.OXI, this.qbE);
-        this.OXI = null;
+        if (this.WqT) {
+          a.d(this.txC, this.WqS);
+        }
+      }
+      else {
+        this.WqS = null;
       }
     }
     else
     {
-      if (this.OXK) {
-        break label212;
+      if (this.WqU) {
+        break label196;
       }
-      this.OXG.setVisibility(8);
-      this.jBR.setVisibility(0);
+      this.WqQ.setVisibility(8);
+      this.mrM.setVisibility(0);
     }
     for (;;)
     {
-      paramView = (RelativeLayout)paramView.findViewById(2131304721);
+      paramView = (RelativeLayout)paramView.findViewById(a.g.mm_preference_ll_id);
       if (this.height != -1) {
         paramView.setMinimumHeight(this.height);
       }
       AppMethodBeat.o(164165);
       return;
-      if (this.OXJ)
-      {
-        a.d(this.qbE, this.OXI);
-        break;
-      }
-      a.c(this.qbE, this.OXI);
+      a.c(this.txC, this.WqS);
       break;
-      label212:
-      this.jBR.setVisibility(8);
-      this.OXG.setVisibility(0);
-      if (this.OXJ) {
-        this.OXG.setBackground(this.mContext.getDrawable(2131234775));
+      label196:
+      this.mrM.setVisibility(8);
+      this.WqQ.setVisibility(0);
+      if (this.WqT) {
+        this.WqQ.setBackground(this.mContext.getDrawable(a.f.self_qrcode_header_round_icon_click));
       } else {
-        this.OXG.setBackground(this.mContext.getDrawable(2131234773));
+        this.WqQ.setBackground(this.mContext.getDrawable(a.f.self_qrcode_header_icon_click));
       }
     }
   }
@@ -149,26 +107,23 @@ public final class HeadImgAndNamePreference
   {
     AppMethodBeat.i(164163);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.g.content);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2131495557, localViewGroup);
-    this.qbE = ((ImageView)paramViewGroup.findViewById(2131302570));
-    this.OXG = paramViewGroup.findViewById(2131304504);
-    this.OXH = ((LinearLayout)paramViewGroup.findViewById(2131299507));
-    this.gBZ = ((ImageView)paramViewGroup.findViewById(2131302468));
-    this.jBR = ((TextView)paramViewGroup.findViewById(2131299495));
+    View.inflate(this.mContext, a.h.mm_preference_content_avatar_name, localViewGroup);
+    this.txC = ((ImageView)paramViewGroup.findViewById(a.g.image_headimg));
+    this.WqQ = paramViewGroup.findViewById(a.g.mask_header_img);
+    this.WqR = ((LinearLayout)paramViewGroup.findViewById(a.g.desc_layout));
+    this.jmf = ((ImageView)paramViewGroup.findViewById(a.g.icon));
+    this.mrM = ((TextView)paramViewGroup.findViewById(a.g.desc));
     AppMethodBeat.o(164163);
     return paramViewGroup;
   }
   
-  public static abstract interface a
-  {
-    public abstract void b(String paramString, ImageView paramImageView);
-  }
+  public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.HeadImgAndNamePreference
  * JD-Core Version:    0.7.0.1
  */

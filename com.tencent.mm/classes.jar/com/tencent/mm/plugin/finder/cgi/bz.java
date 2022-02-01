@@ -1,178 +1,118 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.model.z;
-import com.tencent.mm.network.g;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.logic.c;
-import com.tencent.mm.plugin.finder.storage.logic.c.a;
-import com.tencent.mm.plugin.finder.utils.y;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.bad;
-import com.tencent.mm.protocal.protobuf.bae;
+import com.tencent.mm.protocal.protobuf.aqe;
+import com.tencent.mm.protocal.protobuf.beq;
+import com.tencent.mm.protocal.protobuf.ber;
+import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.protocal.protobuf.jh;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import kotlin.a.j;
 import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderOriginalUserFeeds;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "username", "", "refObjectId", "", "refObjectNonceId", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "pullType", "", "(Ljava/lang/String;JLjava/lang/String;Lcom/tencent/mm/protobuf/ByteString;I)V", "TAG", "getTAG", "()Ljava/lang/String;", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "objectList", "", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getObjectList", "()Ljava/util/List;", "setObjectList", "(Ljava/util/List;)V", "getPullType", "()I", "getRefObjectId", "()J", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "getUsername", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResp", "Lcom/tencent/mm/protocal/protobuf/FinderOriginalUserFeedsResponse;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderModEvent;", "Lcom/tencent/mm/plugin/findersdk/cgi/NetSceneFinderBase;", "scene", "", "eventTopicId", "", "finderUserName", "", "objectId", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(ILjava/lang/Long;Ljava/lang/String;Ljava/lang/Long;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "getObjectId", "()Ljava/lang/Long;", "Ljava/lang/Long;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "getScene", "()I", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onCgiEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-finder_release"})
 public final class bz
-  extends q
-  implements m
+  extends com.tencent.mm.plugin.findersdk.b.g
 {
-  private final String TAG;
+  public static final a xdu;
   private i callback;
-  private final b lastBuffer;
-  public final int pullType;
-  public final long refObjectId;
   private d rr;
-  public List<? extends FinderItem> tvo;
-  private final String username;
+  public final int scene;
+  public final Long xdt;
   
-  public bz(String paramString1, long paramLong, String paramString2, b paramb, int paramInt)
+  static
   {
-    AppMethodBeat.i(165253);
-    this.username = paramString1;
-    this.refObjectId = paramLong;
-    this.lastBuffer = paramb;
-    this.pullType = paramInt;
-    this.TAG = "Finder.NetSceneFinderOriginalUserFeeds";
-    paramString1 = new d.a();
-    paramString1.sG(getType());
-    paramb = new bad();
-    paramb.username = this.username;
-    paramb.refObjectId = this.refObjectId;
-    paramb.refObjectNonceId = paramString2;
-    paramb.finderUsername = z.aUg();
-    paramb.lastBuffer = this.lastBuffer;
-    paramString2 = am.tuw;
-    paramb.uli = am.cXY();
-    paramString1.c((a)paramb);
-    paramString1.sG(getType());
-    paramString1.d((a)new bae());
-    paramString1.MB("/cgi-bin/micromsg-bin/finderoriginaluserfeeds");
-    paramString1 = paramString1.aXF();
-    p.g(paramString1, "builder.buildInstance()");
-    this.rr = paramString1;
-    Log.i(this.TAG, "NetSceneFinderOriginalUserFeeds " + this.refObjectId);
-    AppMethodBeat.o(165253);
+    AppMethodBeat.i(272148);
+    xdu = new a((byte)0);
+    AppMethodBeat.o(272148);
   }
   
-  public final bae cYZ()
+  public bz(int paramInt, Long paramLong1, String paramString, Long paramLong2, bid parambid)
   {
-    AppMethodBeat.i(165252);
-    Object localObject = this.rr;
-    if (localObject != null) {}
-    for (localObject = ((d)localObject).aYK(); localObject == null; localObject = null)
-    {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderOriginalUserFeedsResponse");
-      AppMethodBeat.o(165252);
-      throw ((Throwable)localObject);
+    super(parambid);
+    AppMethodBeat.i(272147);
+    this.scene = paramInt;
+    this.xdt = paramLong2;
+    d.a locala = new d.a();
+    locala.vD(getType());
+    beq localbeq = new beq();
+    if (paramLong1 != null) {
+      localbeq.SPF = ((Number)paramLong1).longValue();
     }
-    localObject = (bae)localObject;
-    AppMethodBeat.o(165252);
-    return localObject;
+    localbeq.RLN = paramString;
+    paramLong2 = this.xdt;
+    if (paramLong2 != null) {
+      localbeq.object_id = ((Number)paramLong2).longValue();
+    }
+    localbeq.scene = this.scene;
+    paramLong2 = ao.xcj;
+    localbeq.RLM = ao.a(parambid);
+    aqe localaqe = localbeq.RLM;
+    if (localaqe != null) {
+      if (parambid == null) {
+        break label273;
+      }
+    }
+    label273:
+    for (paramLong2 = Integer.valueOf(parambid.fGo);; paramLong2 = null)
+    {
+      localaqe.scene = paramLong2.intValue();
+      locala.c((a)localbeq);
+      paramLong2 = new ber();
+      paramLong2.setBaseResponse(new jh());
+      locala.d((a)paramLong2);
+      locala.TW("/cgi-bin/micromsg-bin/findermodevent");
+      paramLong2 = locala.bgN();
+      p.j(paramLong2, "builder.buildInstance()");
+      this.rr = paramLong2;
+      Log.i("Finder.NetSceneFinderModEvent", "NetSceneFinderModEvent init eventTopicId: " + paramLong1 + " userName: " + paramString + ", objectId:" + this.xdt);
+      AppMethodBeat.o(272147);
+      return;
+    }
   }
   
-  public final int doScene(g paramg, i parami)
+  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, s params)
   {
-    AppMethodBeat.i(165250);
+    AppMethodBeat.i(272146);
+    Log.i("Finder.NetSceneFinderModEvent", "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
+    if (this.callback != null)
+    {
+      params = this.callback;
+      if (params == null) {
+        p.iCn();
+      }
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
+    }
+    AppMethodBeat.o(272146);
+  }
+  
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  {
+    AppMethodBeat.i(272145);
     this.callback = parami;
     int i = dispatch(paramg, (s)this.rr, (m)this);
-    AppMethodBeat.o(165250);
+    AppMethodBeat.o(272145);
     return i;
   }
   
   public final int getType()
   {
-    return 3581;
+    return 5909;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(165251);
-    Log.i(this.TAG, "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      params = this.rr.aYK();
-      if (params == null)
-      {
-        paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderOriginalUserFeedsResponse");
-        AppMethodBeat.o(165251);
-        throw paramString;
-      }
-      params = ((bae)params).object;
-      if (params == null) {
-        p.hyc();
-      }
-      Log.i(this.TAG, "onGYNetEnd list:" + params.size());
-      if (this.pullType != 2) {}
-      Object localObject1;
-      Object localObject2;
-      for (boolean bool = true;; bool = false)
-      {
-        paramArrayOfByte = c.vGN;
-        paramArrayOfByte = (Iterable)params;
-        params = (Collection)new ArrayList();
-        paramArrayOfByte = paramArrayOfByte.iterator();
-        while (paramArrayOfByte.hasNext())
-        {
-          localObject1 = paramArrayOfByte.next();
-          localObject2 = (FinderObject)localObject1;
-          y localy = y.vXH;
-          if (y.r((FinderObject)localObject2)) {
-            params.add(localObject1);
-          }
-        }
-      }
-      this.tvo = c.a.s((List)params, 2);
-      if (bool)
-      {
-        params = this.tvo;
-        if (params != null)
-        {
-          paramArrayOfByte = c.vGN;
-          paramArrayOfByte = (Iterable)params;
-          params = (Collection)new ArrayList(j.a(paramArrayOfByte, 10));
-          paramArrayOfByte = paramArrayOfByte.iterator();
-          while (paramArrayOfByte.hasNext())
-          {
-            localObject1 = (FinderItem)paramArrayOfByte.next();
-            localObject2 = c.vGN;
-            params.add(c.a.s((FinderItem)localObject1));
-          }
-          c.a.a((List)params, 2, this.username, bool);
-        }
-      }
-    }
-    if (this.callback != null)
-    {
-      params = this.callback;
-      if (params == null) {
-        p.hyc();
-      }
-      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
-    }
-    AppMethodBeat.o(165251);
-  }
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderModEvent$Companion;", "", "()V", "CANCEL_PIN_FEED_TOP_SCENE", "", "DELETE_SCENE", "PIN_FEED_TOP_SCENE", "REMOVE_SCENE", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.bz
  * JD-Core Version:    0.7.0.1
  */

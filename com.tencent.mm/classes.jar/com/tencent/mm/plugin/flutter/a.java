@@ -8,8 +8,7 @@ import com.tencent.mm.plugin.flutter.ui.MMFlutterActivity;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import java.io.File;
 import java.util.HashMap;
 import java.util.UUID;
@@ -69,35 +68,35 @@ public final class a
     return true;
     paramArrayOfString = UUID.randomUUID().toString();
     paramContext = new c();
-    paramContext.wJd = "emotion";
-    paramContext.wJe = "store";
-    paramContext.wJg = 2;
-    paramContext.wJf = new HashMap();
-    paramContext.wJf.put("fontScale", Float.valueOf(com.tencent.mm.cb.a.ez(MMApplicationContext.getContext())));
-    paramContext.wJf.put("layoutScale", Float.valueOf(com.tencent.mm.cb.a.jj(MMApplicationContext.getContext())));
-    paramContext.wJf.put("language", LocaleUtil.getApplicationLanguage());
-    paramContext.wJf.put("sessionId", paramArrayOfString);
+    paramContext.BCt = "emotion";
+    paramContext.fEX = "store";
+    paramContext.BCv = 2;
+    paramContext.BCu = new HashMap();
+    paramContext.BCu.put("fontScale", Float.valueOf(com.tencent.mm.ci.a.ez(MMApplicationContext.getContext())));
+    paramContext.BCu.put("layoutScale", Float.valueOf(com.tencent.mm.ci.a.kn(MMApplicationContext.getContext())));
+    paramContext.BCu.put("language", LocaleUtil.getApplicationLanguage());
+    paramContext.BCu.put("sessionId", paramArrayOfString);
     paramArrayOfString = new Intent(MMApplicationContext.getContext(), MMFlutterActivity.class);
     paramArrayOfString.addFlags(268435456);
-    paramArrayOfString.putExtra("route", paramContext.bua());
+    paramArrayOfString.putExtra("route", paramContext.bFa());
     paramContext = MMApplicationContext.getContext();
-    paramArrayOfString = new com.tencent.mm.hellhoundlib.b.a().bl(paramArrayOfString);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramArrayOfString.axQ(), "com/tencent/mm/plugin/flutter/FlutterCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramArrayOfString.pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/flutter/FlutterCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramArrayOfString = new com.tencent.mm.hellhoundlib.b.a().bm(paramArrayOfString);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramArrayOfString.aFh(), "com/tencent/mm/plugin/flutter/FlutterCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramArrayOfString.sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/flutter/FlutterCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(148836);
     return true;
-    paramArrayOfString = new File(aa.z(new o(paramContext.getCacheDir() + "/flutter").her()));
-    paramContext = new o(paramContext.getCacheDir() + "/flutter");
+    paramArrayOfString = new File(new q(paramContext.getCacheDir() + "/flutter").bOF());
+    paramContext = new q(paramContext.getCacheDir() + "/flutter");
     paramArrayOfString.delete();
-    paramContext.delete();
+    paramContext.cFq();
     AppMethodBeat.o(148836);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.a
  * JD-Core Version:    0.7.0.1
  */

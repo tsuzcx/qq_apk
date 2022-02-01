@@ -1,45 +1,30 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import android.content.Intent;
+import com.tencent.luggage.k.f.c;
+import com.tencent.luggage.sdk.h.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.x.a;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONObject;
 
-public final class bs
-  extends d
+public class bs
+  extends c<j>
 {
-  public static final int CTRL_INDEX = -2;
-  public static final String NAME = "opNativeRedDot";
+  public static final int CTRL_INDEX = 62;
+  public static final String NAME = "openAddress";
+  private final int owi;
   
-  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
+  public bs()
   {
-    AppMethodBeat.i(45560);
-    String str = paramJSONObject.optString("op");
-    int j = paramJSONObject.optInt("redDotType", 0);
-    Log.i("MicroMsg.JsApiOpNativeRedDot", "op:%s redDotType:%d", new Object[] { str, Integer.valueOf(j) });
-    int i = -1;
-    switch (str.hashCode())
-    {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        Log.w("MicroMsg.JsApiOpNativeRedDot", "unknown op:%s", new Object[] { str });
-        paramf.i(paramInt, h("fail unknown op", null));
-        AppMethodBeat.o(45560);
-        return;
-        if (str.equals("clear")) {
-          i = 0;
-        }
-        break;
-      }
-    }
-    a.zc(j);
-    paramf.i(paramInt, h("ok", null));
-    AppMethodBeat.o(45560);
+    AppMethodBeat.i(174754);
+    this.owi = a.aI(this);
+    AppMethodBeat.o(174754);
   }
+  
+  protected void a(Intent paramIntent, j paramj, JSONObject paramJSONObject) {}
 }
 
 

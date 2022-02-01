@@ -8,60 +8,60 @@ import kotlin.a.e;
 
 public final class c
 {
-  private static final f TCT;
-  private static final Pattern TCU;
-  private static final kotlin.g.a.b<String, f> TCV;
-  public final String TCW;
-  private transient b TCX;
-  private transient c TCY;
-  private transient f TCZ;
+  private static final f abfG;
+  private static final Pattern abfH;
+  private static final kotlin.g.a.b<String, f> abfI;
+  public final String abfJ;
+  private transient b abfK;
+  private transient c abfL;
+  private transient f abfM;
   
   static
   {
     AppMethodBeat.i(59315);
-    TCT = f.bua("<root>");
-    TCU = Pattern.compile("\\.");
-    TCV = new kotlin.g.a.b() {};
+    abfG = f.bHd("<root>");
+    abfH = Pattern.compile("\\.");
+    abfI = new kotlin.g.a.b() {};
     AppMethodBeat.o(59315);
   }
   
   private c(String paramString)
   {
     AppMethodBeat.i(59299);
-    this.TCW = paramString;
+    this.abfJ = paramString;
     AppMethodBeat.o(59299);
   }
   
   c(String paramString, b paramb)
   {
     AppMethodBeat.i(59298);
-    this.TCW = paramString;
-    this.TCX = paramb;
+    this.abfJ = paramString;
+    this.abfK = paramb;
     AppMethodBeat.o(59298);
   }
   
   private c(String paramString, c paramc, f paramf)
   {
     AppMethodBeat.i(59300);
-    this.TCW = paramString;
-    this.TCY = paramc;
-    this.TCZ = paramf;
+    this.abfJ = paramString;
+    this.abfL = paramc;
+    this.abfM = paramf;
     AppMethodBeat.o(59300);
   }
   
   private void compute()
   {
     AppMethodBeat.i(59301);
-    int i = this.TCW.lastIndexOf('.');
+    int i = this.abfJ.lastIndexOf('.');
     if (i >= 0)
     {
-      this.TCZ = f.bub(this.TCW.substring(i + 1));
-      this.TCY = new c(this.TCW.substring(0, i));
+      this.abfM = f.bHe(this.abfJ.substring(i + 1));
+      this.abfL = new c(this.abfJ.substring(0, i));
       AppMethodBeat.o(59301);
       return;
     }
-    this.TCZ = f.bub(this.TCW);
-    this.TCY = b.TCQ.hJe();
+    this.abfM = f.bHe(this.abfJ);
+    this.abfL = b.abfD.iNy();
     AppMethodBeat.o(59301);
   }
   
@@ -69,9 +69,9 @@ public final class c
   {
     AppMethodBeat.i(59311);
     if (paramf == null) {
-      atM(16);
+      aDG(16);
     }
-    paramf = new c(paramf.sG(), b.TCQ.hJe(), paramf);
+    paramf = new c(paramf.qu(), b.abfD.iNy(), paramf);
     AppMethodBeat.o(59311);
     return paramf;
   }
@@ -90,7 +90,7 @@ public final class c
       return false;
     }
     paramObject = (c)paramObject;
-    if (!this.TCW.equals(paramObject.TCW))
+    if (!this.abfJ.equals(paramObject.abfJ))
     {
       AppMethodBeat.o(59313);
       return false;
@@ -99,57 +99,65 @@ public final class c
     return true;
   }
   
-  public final f hJg()
+  public final int hashCode()
+  {
+    AppMethodBeat.i(59314);
+    int i = this.abfJ.hashCode();
+    AppMethodBeat.o(59314);
+    return i;
+  }
+  
+  public final f iNA()
   {
     AppMethodBeat.i(59307);
-    if (this.TCZ != null)
+    if (this.abfM != null)
     {
-      localObject = this.TCZ;
+      localObject = this.abfM;
       if (localObject == null) {
-        atM(10);
+        aDG(10);
       }
       AppMethodBeat.o(59307);
       return localObject;
     }
-    if (this.TCW.isEmpty())
+    if (this.abfJ.isEmpty())
     {
       localObject = new IllegalStateException("root");
       AppMethodBeat.o(59307);
       throw ((Throwable)localObject);
     }
     compute();
-    Object localObject = this.TCZ;
+    Object localObject = this.abfM;
     if (localObject == null) {
-      atM(11);
+      aDG(11);
     }
     AppMethodBeat.o(59307);
     return localObject;
   }
   
-  public final f hJh()
+  public final f iNB()
   {
     AppMethodBeat.i(59308);
-    if (this.TCW.isEmpty())
+    if (this.abfJ.isEmpty())
     {
-      localf = TCT;
+      localf = abfG;
       if (localf == null) {
-        atM(12);
+        aDG(12);
       }
       AppMethodBeat.o(59308);
       return localf;
     }
-    f localf = hJg();
+    f localf = iNA();
     if (localf == null) {
-      atM(13);
+      aDG(13);
     }
     AppMethodBeat.o(59308);
     return localf;
   }
   
-  public final boolean hJi()
+  public final boolean iNC()
   {
     AppMethodBeat.i(59303);
-    if ((this.TCX != null) || (sG().indexOf('<') < 0))
+    if ((this.abfK != null) || (qu().indexOf('<') < 0))
     {
       AppMethodBeat.o(59303);
       return true;
@@ -158,107 +166,110 @@ public final class c
     return false;
   }
   
-  public final b hJj()
+  public final b iND()
   {
     AppMethodBeat.i(59304);
-    if (this.TCX != null)
+    if (this.abfK != null)
     {
-      localb = this.TCX;
+      localb = this.abfK;
       if (localb == null) {
-        atM(5);
+        aDG(5);
       }
       AppMethodBeat.o(59304);
       return localb;
     }
-    this.TCX = new b(this);
-    b localb = this.TCX;
+    this.abfK = new b(this);
+    b localb = this.abfK;
     if (localb == null) {
-      atM(6);
+      aDG(6);
     }
     AppMethodBeat.o(59304);
     return localb;
   }
   
-  public final c hJk()
+  public final c iNE()
   {
     AppMethodBeat.i(59305);
-    if (this.TCY != null)
+    if (this.abfL != null)
     {
-      localObject = this.TCY;
+      localObject = this.abfL;
       if (localObject == null) {
-        atM(7);
+        aDG(7);
       }
       AppMethodBeat.o(59305);
       return localObject;
     }
-    if (this.TCW.isEmpty())
+    if (this.abfJ.isEmpty())
     {
       localObject = new IllegalStateException("root");
       AppMethodBeat.o(59305);
       throw ((Throwable)localObject);
     }
     compute();
-    Object localObject = this.TCY;
+    Object localObject = this.abfL;
     if (localObject == null) {
-      atM(8);
+      aDG(8);
     }
     AppMethodBeat.o(59305);
     return localObject;
   }
   
-  public final List<f> hJl()
+  public final List<f> iNF()
   {
     AppMethodBeat.i(59309);
-    if (this.TCW.isEmpty()) {}
-    for (List localList = Collections.emptyList();; localList = e.a(TCU.split(this.TCW), TCV))
+    if (this.abfJ.isEmpty()) {}
+    for (List localList = Collections.emptyList();; localList = e.a(abfH.split(this.abfJ), abfI))
     {
       if (localList == null) {
-        atM(14);
+        aDG(14);
       }
       AppMethodBeat.o(59309);
       return localList;
     }
   }
   
-  public final int hashCode()
-  {
-    AppMethodBeat.i(59314);
-    int i = this.TCW.hashCode();
-    AppMethodBeat.o(59314);
-    return i;
-  }
-  
   public final boolean q(f paramf)
   {
     AppMethodBeat.i(59310);
     if (paramf == null) {
-      atM(15);
+      aDG(15);
     }
-    if (this.TCW.isEmpty())
+    if (this.abfJ.isEmpty())
     {
       AppMethodBeat.o(59310);
       return false;
     }
-    int j = this.TCW.indexOf('.');
-    String str = this.TCW;
-    paramf = paramf.sG();
+    int j = this.abfJ.indexOf('.');
+    String str = this.abfJ;
+    paramf = paramf.qu();
     int i = j;
     if (j == -1) {
-      i = this.TCW.length();
+      i = this.abfJ.length();
     }
     boolean bool = str.regionMatches(0, paramf, 0, i);
     AppMethodBeat.o(59310);
     return bool;
   }
   
+  public final String qu()
+  {
+    AppMethodBeat.i(59302);
+    String str = this.abfJ;
+    if (str == null) {
+      aDG(4);
+    }
+    AppMethodBeat.o(59302);
+    return str;
+  }
+  
   public final c s(f paramf)
   {
     AppMethodBeat.i(59306);
     if (paramf == null) {
-      atM(9);
+      aDG(9);
     }
-    if (this.TCW.isEmpty()) {}
-    for (String str = paramf.sG();; str = this.TCW + "." + paramf.sG())
+    if (this.abfJ.isEmpty()) {}
+    for (String str = paramf.qu();; str = this.abfJ + "." + paramf.qu())
     {
       paramf = new c(str, this, paramf);
       AppMethodBeat.o(59306);
@@ -266,25 +277,14 @@ public final class c
     }
   }
   
-  public final String sG()
-  {
-    AppMethodBeat.i(59302);
-    String str = this.TCW;
-    if (str == null) {
-      atM(4);
-    }
-    AppMethodBeat.o(59302);
-    return str;
-  }
-  
   public final String toString()
   {
     AppMethodBeat.i(59312);
-    if (this.TCW.isEmpty()) {}
-    for (String str = TCT.sG();; str = this.TCW)
+    if (this.abfJ.isEmpty()) {}
+    for (String str = abfG.qu();; str = this.abfJ)
     {
       if (str == null) {
-        atM(17);
+        aDG(17);
       }
       AppMethodBeat.o(59312);
       return str;
@@ -293,7 +293,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.f.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,74 +1,89 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
+import java.util.LinkedList;
 
 public final class ffd
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int MCa;
-  public String NAt;
-  public boolean NAy;
+  public eaf Uti;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(50127);
+    AppMethodBeat.i(115920);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.NAt != null) {
-        paramVarArgs.e(1, this.NAt);
+      if (this.Uti == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: StatReport");
+        AppMethodBeat.o(115920);
+        throw paramVarArgs;
       }
-      paramVarArgs.cc(2, this.NAy);
-      paramVarArgs.aM(3, this.MCa);
-      AppMethodBeat.o(50127);
+      if (this.Uti != null)
+      {
+        paramVarArgs.oE(1, this.Uti.computeSize());
+        this.Uti.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(115920);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.NAt == null) {
-        break label302;
+      if (this.Uti == null) {
+        break label336;
       }
     }
-    label302:
-    for (paramInt = g.a.a.b.b.a.f(1, this.NAt) + 0;; paramInt = 0)
+    label336:
+    for (paramInt = g.a.a.a.oD(1, this.Uti.computeSize()) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.fS(2);
-      int j = g.a.a.b.b.a.bu(3, this.MCa);
-      AppMethodBeat.o(50127);
-      return paramInt + (i + 1) + j;
+      AppMethodBeat.o(115920);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(50127);
+        if (this.Uti == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: StatReport");
+          AppMethodBeat.o(115920);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(115920);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         ffd localffd = (ffd)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(50127);
+          AppMethodBeat.o(115920);
           return -1;
-        case 1: 
-          localffd.NAt = locala.UbS.readString();
-          AppMethodBeat.o(50127);
-          return 0;
-        case 2: 
-          localffd.NAy = locala.UbS.yZ();
-          AppMethodBeat.o(50127);
-          return 0;
         }
-        localffd.MCa = locala.UbS.zi();
-        AppMethodBeat.o(50127);
+        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          eaf localeaf = new eaf();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localeaf.de((byte[])localObject);
+          }
+          localffd.Uti = localeaf;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(115920);
         return 0;
       }
-      AppMethodBeat.o(50127);
+      AppMethodBeat.o(115920);
       return -1;
     }
   }

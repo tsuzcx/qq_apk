@@ -6,154 +6,154 @@ import com.tencent.mm.danmaku.c.l.a;
 
 public final class e
 {
-  private static l.a gQU;
-  public static final int gQV;
-  private static final StringBuilder gQW;
+  private static l.a jBn;
+  public static final int jBo;
+  private static final StringBuilder jBp;
   
   static
   {
-    AppMethodBeat.i(241777);
-    if (c.gNA) {}
+    AppMethodBeat.i(289672);
+    if (c.jxV) {}
     for (int i = 4;; i = 3)
     {
-      gQV = i;
-      gQW = new StringBuilder();
-      AppMethodBeat.o(241777);
+      jBo = i;
+      jBp = new StringBuilder();
+      AppMethodBeat.o(289672);
       return;
     }
   }
   
   public static void a(l.a parama)
   {
-    gQU = parama;
+    jBn = parama;
   }
   
   public static void d(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(241770);
-    if ((gQV >= 4) && (gQU != null)) {
-      gQU.d(paramString1, paramString2);
+    AppMethodBeat.i(289664);
+    if ((jBo >= 4) && (jBn != null)) {
+      jBn.d(paramString1, paramString2);
     }
-    AppMethodBeat.o(241770);
+    AppMethodBeat.o(289664);
   }
   
   public static void d(String paramString, Object... paramVarArgs)
   {
     int i = 0;
-    AppMethodBeat.i(241769);
-    if ((gQV >= 4) && (gQU != null))
+    AppMethodBeat.i(289663);
+    if ((jBo >= 4) && (jBn != null))
     {
-      gQW.setLength(0);
+      jBp.setLength(0);
       int j = paramVarArgs.length;
       while (i < j)
       {
         Object localObject = paramVarArgs[i];
-        gQW.append(localObject);
+        jBp.append(localObject);
         i += 1;
       }
-      gQU.d(paramString, gQW.toString());
+      jBn.d(paramString, jBp.toString());
     }
-    AppMethodBeat.o(241769);
+    AppMethodBeat.o(289663);
   }
   
   public static void e(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(241775);
-    if ((gQV > 0) && (gQU != null)) {
-      gQU.e(paramString1, paramString2);
+    AppMethodBeat.i(289670);
+    if ((jBo > 0) && (jBn != null)) {
+      jBn.e(paramString1, paramString2);
     }
-    AppMethodBeat.o(241775);
+    AppMethodBeat.o(289670);
   }
   
   public static void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    AppMethodBeat.i(241776);
-    if ((gQV > 0) && (gQU != null)) {
-      gQU.e(paramString1, paramString2, paramThrowable);
+    AppMethodBeat.i(289671);
+    if ((jBo > 0) && (jBn != null)) {
+      jBn.e(paramString1, paramString2, paramThrowable);
     }
-    AppMethodBeat.o(241776);
+    AppMethodBeat.o(289671);
   }
   
   public static void e(String paramString, Object... paramVarArgs)
   {
-    AppMethodBeat.i(241774);
-    if ((gQV > 0) && (gQU != null))
+    AppMethodBeat.i(289669);
+    if ((jBo > 0) && (jBn != null))
     {
-      gQW.setLength(0);
+      jBp.setLength(0);
       int i = 0;
       while (i <= 0)
       {
         Object localObject = paramVarArgs[0];
-        gQW.append(localObject);
+        jBp.append(localObject);
         i += 1;
       }
-      gQU.e(paramString, gQW.toString());
+      jBn.e(paramString, jBp.toString());
     }
-    AppMethodBeat.o(241774);
+    AppMethodBeat.o(289669);
   }
   
   public static void i(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(241772);
-    if ((gQV >= 3) && (gQU != null)) {
-      gQU.i(paramString1, paramString2);
+    AppMethodBeat.i(289666);
+    if ((jBo >= 3) && (jBn != null)) {
+      jBn.i(paramString1, paramString2);
     }
-    AppMethodBeat.o(241772);
+    AppMethodBeat.o(289666);
   }
   
   public static void i(String paramString, Object... paramVarArgs)
   {
     int i = 0;
-    AppMethodBeat.i(241771);
-    if ((gQV >= 3) && (gQU != null))
+    AppMethodBeat.i(289665);
+    if ((jBo >= 3) && (jBn != null))
     {
-      gQW.setLength(0);
+      jBp.setLength(0);
       while (i < 2)
       {
         Object localObject = paramVarArgs[i];
-        gQW.append(localObject);
+        jBp.append(localObject);
         i += 1;
       }
-      gQU.i(paramString, gQW.toString());
+      jBn.i(paramString, jBp.toString());
     }
-    AppMethodBeat.o(241771);
+    AppMethodBeat.o(289665);
   }
   
   public static void v(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(241768);
-    if ((gQV >= 5) && (gQU != null)) {
-      gQU.v(paramString1, paramString2);
+    AppMethodBeat.i(289662);
+    if ((jBo >= 5) && (jBn != null)) {
+      jBn.v(paramString1, paramString2);
     }
-    AppMethodBeat.o(241768);
+    AppMethodBeat.o(289662);
   }
   
   public static void v(String paramString, Object... paramVarArgs)
   {
     int i = 0;
-    AppMethodBeat.i(241767);
-    if ((gQV >= 5) && (gQU != null))
+    AppMethodBeat.i(289661);
+    if ((jBo >= 5) && (jBn != null))
     {
-      gQW.setLength(0);
+      jBp.setLength(0);
       int j = paramVarArgs.length;
       while (i < j)
       {
         Object localObject = paramVarArgs[i];
-        gQW.append(localObject);
+        jBp.append(localObject);
         i += 1;
       }
-      gQU.v(paramString, gQW.toString());
+      jBn.v(paramString, jBp.toString());
     }
-    AppMethodBeat.o(241767);
+    AppMethodBeat.o(289661);
   }
   
   public static void w(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(241773);
-    if ((gQV >= 2) && (gQU != null)) {
-      gQU.w(paramString1, paramString2);
+    AppMethodBeat.i(289667);
+    if ((jBo >= 2) && (jBn != null)) {
+      jBn.w(paramString1, paramString2);
     }
-    AppMethodBeat.o(241773);
+    AppMethodBeat.o(289667);
   }
 }
 

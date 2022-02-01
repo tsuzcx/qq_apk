@@ -1,81 +1,76 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class bcw
-  extends com.tencent.mm.bw.a
+  extends dyy
 {
-  public int LLE;
-  public int LMd;
-  public String dQx;
-  public long uOx;
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209685);
+    AppMethodBeat.i(200134);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.LMd);
-      if (this.dQx != null) {
-        paramVarArgs.e(2, this.dQx);
-      }
-      paramVarArgs.aM(3, this.LLE);
-      paramVarArgs.bb(4, this.uOx);
-      AppMethodBeat.o(209685);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.bu(1, this.LMd) + 0;
-      paramInt = i;
-      if (this.dQx != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.dQx);
-      }
-      i = g.a.a.b.b.a.bu(3, this.LLE);
-      int j = g.a.a.b.b.a.r(4, this.uOx);
-      AppMethodBeat.o(209685);
-      return paramInt + i + j;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
-      }
-      AppMethodBeat.o(209685);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      bcw localbcw = (bcw)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.BaseResponse != null)
       {
-      default: 
-        AppMethodBeat.o(209685);
-        return -1;
-      case 1: 
-        localbcw.LMd = locala.UbS.zi();
-        AppMethodBeat.o(209685);
-        return 0;
-      case 2: 
-        localbcw.dQx = locala.UbS.readString();
-        AppMethodBeat.o(209685);
-        return 0;
-      case 3: 
-        localbcw.LLE = locala.UbS.zi();
-        AppMethodBeat.o(209685);
-        return 0;
+        paramVarArgs.oE(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      localbcw.uOx = locala.UbS.zl();
-      AppMethodBeat.o(209685);
+      AppMethodBeat.o(200134);
       return 0;
     }
-    AppMethodBeat.o(209685);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseResponse == null) {
+        break label288;
+      }
+    }
+    label288:
+    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    {
+      AppMethodBeat.o(200134);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
+        }
+        AppMethodBeat.o(200134);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        bcw localbcw = (bcw)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(200134);
+          return -1;
+        }
+        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          jh localjh = new jh();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localjh.parseFrom((byte[])localObject);
+          }
+          localbcw.BaseResponse = localjh;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(200134);
+        return 0;
+      }
+      AppMethodBeat.o(200134);
+      return -1;
+    }
   }
 }
 

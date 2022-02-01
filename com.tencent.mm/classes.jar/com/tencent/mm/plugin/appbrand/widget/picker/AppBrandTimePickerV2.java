@@ -2,9 +2,13 @@ package com.tencent.mm.plugin.appbrand.widget.picker;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.annotation.Keep;
 import android.view.View;
+import androidx.annotation.Keep;
+import androidx.core.content.a;
+import com.tencent.luggage.b.a.a.b;
+import com.tencent.luggage.b.a.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.picker.b.b;
 import com.tencent.mm.picker.base.view.WheelView;
 import java.util.Calendar;
 import java.util.Date;
@@ -13,7 +17,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class AppBrandTimePickerV2
-  implements com.tencent.mm.plugin.appbrand.jsapi.r.c<String>
+  implements com.tencent.mm.plugin.appbrand.jsapi.s.c<String>
 {
   private Context context;
   private int currentHour;
@@ -43,22 +47,22 @@ public class AppBrandTimePickerV2
     AppMethodBeat.i(138078);
     if (paramList.size() == 1)
     {
-      ((WheelView)paramList.get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165296), 0, this.context.getResources().getDimensionPixelSize(2131165296));
+      ((WheelView)paramList.get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(a.c.Edge_2A), 0, this.context.getResources().getDimensionPixelSize(a.c.Edge_2A));
       AppMethodBeat.o(138078);
       return;
     }
     if (paramList.size() == 2)
     {
-      ((WheelView)paramList.get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165296));
-      ((WheelView)paramList.get(1)).setPadding(this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165296), 0, this.context.getResources().getDimensionPixelSize(2131165296));
+      ((WheelView)paramList.get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(a.c.Edge_2A), this.context.getResources().getDimensionPixelSize(a.c.Edge_2A), this.context.getResources().getDimensionPixelSize(a.c.Edge_2A));
+      ((WheelView)paramList.get(1)).setPadding(this.context.getResources().getDimensionPixelSize(a.c.Edge_2A), this.context.getResources().getDimensionPixelSize(a.c.Edge_2A), 0, this.context.getResources().getDimensionPixelSize(a.c.Edge_2A));
       AppMethodBeat.o(138078);
       return;
     }
     if (paramList.size() == 3)
     {
-      ((WheelView)paramList.get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165277), this.context.getResources().getDimensionPixelSize(2131165296));
-      ((WheelView)paramList.get(1)).setPadding(this.context.getResources().getDimensionPixelSize(2131165277), this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165277), this.context.getResources().getDimensionPixelSize(2131165296));
-      ((WheelView)paramList.get(2)).setPadding(this.context.getResources().getDimensionPixelSize(2131165277), this.context.getResources().getDimensionPixelSize(2131165296), 0, this.context.getResources().getDimensionPixelSize(2131165296));
+      ((WheelView)paramList.get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(a.c.Edge_2A), this.context.getResources().getDimensionPixelSize(a.c.Edge_0_5_A), this.context.getResources().getDimensionPixelSize(a.c.Edge_2A));
+      ((WheelView)paramList.get(1)).setPadding(this.context.getResources().getDimensionPixelSize(a.c.Edge_0_5_A), this.context.getResources().getDimensionPixelSize(a.c.Edge_2A), this.context.getResources().getDimensionPixelSize(a.c.Edge_0_5_A), this.context.getResources().getDimensionPixelSize(a.c.Edge_2A));
+      ((WheelView)paramList.get(2)).setPadding(this.context.getResources().getDimensionPixelSize(a.c.Edge_0_5_A), this.context.getResources().getDimensionPixelSize(a.c.Edge_2A), 0, this.context.getResources().getDimensionPixelSize(a.c.Edge_2A));
     }
     AppMethodBeat.o(138078);
   }
@@ -76,7 +80,7 @@ public class AppBrandTimePickerV2
   public String currentValue()
   {
     AppMethodBeat.i(138080);
-    this.pvTime.blg();
+    this.pvTime.buV();
     String str = String.format(Locale.US, "%02d:%02d", new Object[] { Integer.valueOf(this.currentHour), Integer.valueOf(this.currentMinute) });
     AppMethodBeat.o(138080);
     return str;
@@ -86,7 +90,7 @@ public class AppBrandTimePickerV2
   {
     AppMethodBeat.i(138081);
     if (this.mView == null) {
-      this.mView = this.pvTime.bli();
+      this.mView = this.pvTime.buX();
     }
     View localView = this.mView;
     AppMethodBeat.o(138081);
@@ -105,7 +109,7 @@ public class AppBrandTimePickerV2
     Calendar localCalendar2 = Calendar.getInstance();
     localCalendar2.set(11, this.mMaxTimeHour);
     localCalendar2.set(12, this.mMaxTimeMinute);
-    localObject = new com.tencent.mm.picker.b.b(this.context, new com.tencent.mm.picker.d.e()
+    new b(this.context, new com.tencent.mm.picker.d.e()
     {
       public final void a(Date paramAnonymousDate)
       {
@@ -113,18 +117,15 @@ public class AppBrandTimePickerV2
         AppBrandTimePickerV2.access$000(AppBrandTimePickerV2.this, paramAnonymousDate);
         AppMethodBeat.o(138075);
       }
-    }).b(new boolean[] { 0, 0, 0, 1, 1, 0 }).a((Calendar)localObject).a(localCalendar1, localCalendar2).bkZ();
-    paramInt1 = android.support.v4.content.b.n(this.context, 2131099657);
-    ((com.tencent.mm.picker.b.b)localObject).jKP.jKu = paramInt1;
-    ((com.tencent.mm.picker.b.b)localObject).a(this.pvTime);
-    this.pvTime.setDividerHeight(this.context.getResources().getDimensionPixelSize(2131165950));
-    this.context.getResources().getDimensionPixelSize(2131166801);
-    this.pvTime.dE(this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165296));
-    localObject = this.pvTime.jLJ.bll().iterator();
+    }).c(new boolean[] { 0, 0, 0, 1, 1, 0 }).a((Calendar)localObject).a(localCalendar1, localCalendar2).buN().xQ(a.w(this.context, a.b.BW_0_Alpha_0_1)).a(this.pvTime);
+    this.pvTime.setDividerHeight(this.context.getResources().getDimensionPixelSize(a.c.bottomsheet_dividing_line_height));
+    this.context.getResources().getDimensionPixelSize(a.c.picker_item_height);
+    this.pvTime.ec(this.context.getResources().getDimensionPixelSize(a.c.Edge_2A), this.context.getResources().getDimensionPixelSize(a.c.Edge_2A));
+    localObject = this.pvTime.mCN.bvb().iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((WheelView)((Iterator)localObject).next()).uL(android.support.v4.content.b.n(this.context, 2131099669)).uK(this.context.getResources().getDimensionPixelSize(2131165296)).setBackgroundColor(android.support.v4.content.b.n(this.context, 2131099653));
+      ((WheelView)((Iterator)localObject).next()).xN(a.w(this.context, a.b.BW_0_Alpha_0_9)).xM(this.context.getResources().getDimensionPixelSize(a.c.Edge_2A)).setBackgroundColor(a.w(this.context, a.b.BG_5));
     }
-    configPadding(this.pvTime.jLJ.bll());
+    configPadding(this.pvTime.mCN.bvb());
     AppMethodBeat.o(138077);
   }
   
@@ -155,7 +156,7 @@ public class AppBrandTimePickerV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.AppBrandTimePickerV2
  * JD-Core Version:    0.7.0.1
  */

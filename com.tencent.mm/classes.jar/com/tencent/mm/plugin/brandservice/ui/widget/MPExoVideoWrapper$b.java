@@ -5,18 +5,18 @@ import kotlin.g.a.a;
 import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
 final class MPExoVideoWrapper$b
   extends q
   implements a<Boolean>
 {
-  public static final b pNC;
+  public static final b sUA;
   
   static
   {
-    AppMethodBeat.i(196008);
-    pNC = new b();
-    AppMethodBeat.o(196008);
+    AppMethodBeat.i(262510);
+    sUA = new b();
+    AppMethodBeat.o(262510);
   }
   
   MPExoVideoWrapper$b()

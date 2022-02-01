@@ -15,6 +15,7 @@ public class XWalkPreferences
   public static final String SPATIAL_NAVIGATION = "enable-spatial-navigation";
   public static final String SUPPORT_MULTIPLE_WINDOWS = "support-multiple-windows";
   public static final String XWEBSDK_VERSION = "xwebsdk-version";
+  public static final String XWEB_LANGUAGE = "lang";
   public static final String XWEB_VERSION = "xweb-version";
   private static XWalkCoreWrapper coreWrapper;
   private static ReflectMethod getBooleanValueStringMethod;
@@ -236,7 +237,7 @@ public class XWalkPreferences
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.XWalkPreferences
  * JD-Core Version:    0.7.0.1
  */

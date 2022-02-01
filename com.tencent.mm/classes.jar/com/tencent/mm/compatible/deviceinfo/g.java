@@ -7,24 +7,25 @@ import android.os.Looper;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
-public final class g
+final class g
   implements d.a
 {
   public static d.a.a a(Context paramContext, int paramInt, Looper paramLooper)
   {
     AppMethodBeat.i(155650);
     d.a.a locala = new d.a.a();
-    locala.gGr = null;
+    locala.jqD = null;
     try
     {
       l = Util.currentTicks();
       Log.i("MicroMsg.CameraUtil", "ashu::begin to try Call Camera.open cameraID %d", new Object[] { Integer.valueOf(paramInt) });
-      locala.gGr = w.b(paramInt, paramLooper);
+      locala.jqD = x.b(paramInt, paramLooper);
       Log.i("MicroMsg.CameraUtil", "ashu::Call Camera.open back,  %dms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
-      if (locala.gGr == null)
+      if (locala.jqD == null)
       {
         Log.e("MicroMsg.CameraUtil", "open camera error, not exception, but camera null");
         AppMethodBeat.o(155650);
@@ -38,36 +39,42 @@ public final class g
       AppMethodBeat.o(155650);
       return null;
     }
-    paramLooper = new Camera.CameraInfo();
     long l = Util.currentTicks();
     Log.i("MicroMsg.CameraUtil", "ashu::begin to Call Camera.getCameraInfo cameraID %d", new Object[] { Integer.valueOf(paramInt) });
-    Camera.getCameraInfo(paramInt, paramLooper);
-    Log.i("MicroMsg.CameraUtil", "ashu::Call Camera.getCameraInfo back, use %dms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
-    switch (((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getRotation())
+    paramLooper = new Camera.CameraInfo();
+    if (d.gaj)
     {
-    default: 
-      paramInt = 0;
-      if (paramLooper.facing != 1) {
-        break;
+      paramLooper = a.jnC.qJ(paramInt);
+      Log.i("MicroMsg.CameraUtil", "ashu::Call Camera.getCameraInfo back, use %dms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
+      switch (((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getRotation())
+      {
+      default: 
+        paramInt = 0;
+        label250:
+        if (paramLooper.facing != 1) {
+          break;
+        }
       }
     }
     for (paramInt = (360 - paramLooper.orientation % 360) % 360;; paramInt = (paramLooper.orientation - paramInt + 360) % 360)
     {
       l = Util.currentTicks();
       Log.i("MicroMsg.CameraUtil", "ashu::begin to Call Camera.setDisplayOrientation %d", new Object[] { Integer.valueOf(paramInt) });
-      locala.gGr.setDisplayOrientation(paramInt);
+      locala.jqD.qO(paramInt);
       Log.i("MicroMsg.CameraUtil", "ashu::Call Camera.setDisplayOrientation back, use %dms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
-      locala.dYT = paramLooper.orientation;
+      locala.fSM = paramLooper.orientation;
       AppMethodBeat.o(155650);
       return locala;
+      Camera.getCameraInfo(paramInt, paramLooper);
+      break;
       paramInt = 0;
-      break;
+      break label250;
       paramInt = 90;
-      break;
+      break label250;
       paramInt = 180;
-      break;
+      break label250;
       paramInt = 270;
-      break;
+      break label250;
     }
   }
 }

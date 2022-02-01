@@ -7,7 +7,7 @@ public abstract interface a
 {
   public abstract void a(Intent paramIntent, BaseSmallView paramBaseSmallView);
   
-  public abstract boolean dZV();
+  public abstract boolean eIT();
 }
 
 

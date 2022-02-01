@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import g.a.a.b;
 
 public final class j
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String xJh;
+  public String CNo;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -14,37 +14,37 @@ public final class j
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.xJh == null)
+      if (this.CNo == null)
       {
         paramVarArgs = new b("Not all required fields were included: AppStoreUrl");
         AppMethodBeat.o(149408);
         throw paramVarArgs;
       }
-      if (this.xJh != null) {
-        paramVarArgs.e(1, this.xJh);
+      if (this.CNo != null) {
+        paramVarArgs.f(1, this.CNo);
       }
       AppMethodBeat.o(149408);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.xJh == null) {
+      if (this.CNo == null) {
         break label261;
       }
     }
     label261:
-    for (paramInt = g.a.a.b.b.a.f(1, this.xJh) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.CNo) + 0;; paramInt = 0)
     {
       AppMethodBeat.o(149408);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.xJh == null)
+        if (this.CNo == null)
         {
           paramVarArgs = new b("Not all required fields were included: AppStoreUrl");
           AppMethodBeat.o(149408);
@@ -63,7 +63,7 @@ public final class j
           AppMethodBeat.o(149408);
           return -1;
         }
-        localj.xJh = locala.UbS.readString();
+        localj.CNo = locala.abFh.readString();
         AppMethodBeat.o(149408);
         return 0;
       }

@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.walletlock.fingerprint.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.network.m;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.network.s;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.soter.a.f.b;
@@ -12,19 +12,19 @@ import com.tencent.soter.a.f.e.b;
 
 public final class g
   extends com.tencent.mm.plugin.soter.b.d
-  implements m, e
+  implements e
 {
+  private b<e.b> Bzg = null;
   private i callback;
-  private String krw = null;
-  public com.tencent.mm.ak.d rr;
-  private b<e.b> wGj = null;
+  private String njf = null;
+  public com.tencent.mm.an.d rr;
   
   public g(String paramString)
   {
-    this.krw = paramString;
+    this.njf = paramString;
   }
   
-  public final void MO(int paramInt)
+  public final void Sl(int paramInt)
   {
     AppMethodBeat.i(129692);
     Log.i("MicroMsg.NetSceneUploadWalletLockSoterAuthKey", "hy: onError: errType: %d, errcode: %d", new Object[] { Integer.valueOf(3), Integer.valueOf(paramInt) });
@@ -36,7 +36,7 @@ public final class g
   
   public final void a(b<e.b> paramb)
   {
-    this.wGj = paramb;
+    this.Bzg = paramb;
   }
   
   public final void d(int paramInt1, int paramInt2, String paramString, s params)
@@ -46,32 +46,17 @@ public final class g
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
-    if (this.wGj != null)
+    if (this.Bzg != null)
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        this.wGj.eB(new e.b(true));
+        this.Bzg.eH(new e.b(true));
         AppMethodBeat.o(129690);
         return;
       }
-      this.wGj.eB(new e.b(false));
+      this.Bzg.eH(new e.b(false));
     }
     AppMethodBeat.o(129690);
-  }
-  
-  public final void dKB()
-  {
-    AppMethodBeat.i(129691);
-    Log.i("MicroMsg.NetSceneUploadWalletLockSoterAuthKey", "hy: authkey required");
-    if (this.callback != null) {
-      this.callback.onSceneEnd(4, -1, "", this);
-    }
-    if (this.wGj != null)
-    {
-      Log.e("MicroMsg.NetSceneUploadWalletLockSoterAuthKey", "alvinluo pay auth key expired when upload pay auth key");
-      this.wGj.eB(new e.b(false));
-    }
-    AppMethodBeat.o(129691);
   }
   
   public final int doScene(com.tencent.mm.network.g paramg, i parami)
@@ -83,10 +68,25 @@ public final class g
     return i;
   }
   
+  public final void epa()
+  {
+    AppMethodBeat.i(129691);
+    Log.i("MicroMsg.NetSceneUploadWalletLockSoterAuthKey", "hy: authkey required");
+    if (this.callback != null) {
+      this.callback.onSceneEnd(4, -1, "", this);
+    }
+    if (this.Bzg != null)
+    {
+      Log.e("MicroMsg.NetSceneUploadWalletLockSoterAuthKey", "alvinluo pay auth key expired when upload pay auth key");
+      this.Bzg.eH(new e.b(false));
+    }
+    AppMethodBeat.o(129691);
+  }
+  
   public final void execute()
   {
     AppMethodBeat.i(129693);
-    com.tencent.mm.kernel.g.azz().a(this, 0);
+    h.aGY().a(this, 0);
     AppMethodBeat.o(129693);
   }
   
@@ -97,7 +97,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.fingerprint.a.g
  * JD-Core Version:    0.7.0.1
  */

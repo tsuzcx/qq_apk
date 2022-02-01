@@ -6,9 +6,9 @@ import com.tencent.mm.storage.az;
 public abstract interface e
   extends a
 {
-  public abstract boolean bVr();
-  
   public abstract void c(az paramaz);
+  
+  public abstract boolean ciC();
 }
 
 

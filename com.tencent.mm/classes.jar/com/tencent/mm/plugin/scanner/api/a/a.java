@@ -8,15 +8,15 @@ import com.tencent.mm.plugin.scanner.api.e;
 
 public abstract interface a
 {
-  public abstract boolean It(long paramLong);
+  public abstract boolean PN(long paramLong);
   
   public abstract long a(e parame, d paramd, c paramc);
   
-  public abstract void eN(View paramView);
+  public abstract boolean fBX();
   
-  public abstract void eO(View paramView);
+  public abstract void fS(View paramView);
   
-  public abstract boolean eOV();
+  public abstract void fT(View paramView);
   
   public abstract void onConfigurationChanged(Configuration paramConfiguration);
   
@@ -26,7 +26,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.api.a.a
  * JD-Core Version:    0.7.0.1
  */

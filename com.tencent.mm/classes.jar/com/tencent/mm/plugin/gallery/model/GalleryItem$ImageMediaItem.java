@@ -29,16 +29,16 @@ public class GalleryItem$ImageMediaItem
     super(paramLong, paramString1, paramString2, paramString3);
   }
   
-  public final String aQn()
+  public final String aZe()
   {
     AppMethodBeat.i(111316);
-    if (!Util.isNullOrNil(this.sUB))
+    if (!Util.isNullOrNil(this.wAy))
     {
-      str = this.sUB;
+      str = this.wAy;
       AppMethodBeat.o(111316);
       return str;
     }
-    String str = this.xiW;
+    String str = this.AAz;
     AppMethodBeat.o(111316);
     return str;
   }
@@ -56,18 +56,19 @@ public class GalleryItem$ImageMediaItem
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(111317);
-    paramParcel.writeString(this.xiW);
-    paramParcel.writeString(this.sUB);
-    paramParcel.writeLong(this.xiZ);
-    paramParcel.writeLong(this.xja);
+    paramParcel.writeString(this.AAz);
+    paramParcel.writeString(this.wAy);
+    paramParcel.writeLong(this.BVl);
+    paramParcel.writeLong(this.BVm);
+    paramParcel.writeString(this.BVn);
     paramParcel.writeString(this.mMimeType);
-    paramParcel.writeSerializable(this.xje);
+    paramParcel.writeSerializable(this.BVt);
     AppMethodBeat.o(111317);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.GalleryItem.ImageMediaItem
  * JD-Core Version:    0.7.0.1
  */

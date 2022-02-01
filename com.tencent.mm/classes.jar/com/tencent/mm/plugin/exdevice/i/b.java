@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.exdevice.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.do;
+import com.tencent.mm.f.c.ds;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class b
-  extends do
+  extends ds
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   
@@ -87,7 +87,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.i.b
  * JD-Core Version:    0.7.0.1
  */

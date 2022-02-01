@@ -5,9 +5,8 @@ import android.graphics.Bitmap;
 import android.os.Looper;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.c;
-import com.tencent.mm.aj.e;
-import com.tencent.mm.aj.p;
+import com.tencent.mm.am.f;
+import com.tencent.mm.am.q;
 import com.tencent.mm.plugin.ipcall.a.a;
 import com.tencent.mm.sdk.platformtools.LruCache;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -18,22 +17,22 @@ import java.lang.ref.WeakReference;
 
 public final class d
 {
+  QueueWorkerThread DTZ;
   LruCache<String, WeakReference<Bitmap>> cache;
   Context context;
-  private MMHandler hAk;
-  QueueWorkerThread ytV;
+  private MMHandler knk;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(25637);
     this.cache = new LruCache(50);
-    this.hAk = new MMHandler(Looper.getMainLooper());
-    this.ytV = new QueueWorkerThread(5, "IPCallAddressAvatarLoader", 1, Looper.getMainLooper());
+    this.knk = new MMHandler(Looper.getMainLooper());
+    this.DTZ = new QueueWorkerThread(5, "IPCallAddressAvatarLoader", 1, Looper.getMainLooper());
     this.context = paramContext;
     AppMethodBeat.o(25637);
   }
   
-  private static String aCi(String paramString)
+  private static String aMp(String paramString)
   {
     AppMethodBeat.i(25645);
     paramString = paramString + "@username";
@@ -41,7 +40,7 @@ public final class d
     return paramString;
   }
   
-  private static String aCj(String paramString)
+  private static String aMq(String paramString)
   {
     AppMethodBeat.i(25646);
     paramString = paramString + "@contactId";
@@ -52,7 +51,7 @@ public final class d
   private boolean b(String paramString1, String paramString2, ImageView paramImageView)
   {
     AppMethodBeat.i(25643);
-    boolean bool = h(in(paramString1, paramString2), paramImageView);
+    boolean bool = h(iA(paramString1, paramString2), paramImageView);
     AppMethodBeat.o(25643);
     return bool;
   }
@@ -60,7 +59,7 @@ public final class d
   private boolean e(String paramString, ImageView paramImageView)
   {
     AppMethodBeat.i(25640);
-    boolean bool = h(aCj(paramString), paramImageView);
+    boolean bool = h(aMq(paramString), paramImageView);
     AppMethodBeat.o(25640);
     return bool;
   }
@@ -68,7 +67,7 @@ public final class d
   private boolean g(String paramString, ImageView paramImageView)
   {
     AppMethodBeat.i(25642);
-    boolean bool = h(aCi(paramString), paramImageView);
+    boolean bool = h(aMp(paramString), paramImageView);
     AppMethodBeat.o(25642);
     return bool;
   }
@@ -93,7 +92,7 @@ public final class d
     return false;
   }
   
-  public static String in(String paramString1, String paramString2)
+  public static String iA(String paramString1, String paramString2)
   {
     AppMethodBeat.i(25647);
     paramString1 = paramString1 + "@" + paramString2 + "@contactId@username";
@@ -109,21 +108,21 @@ public final class d
       AppMethodBeat.o(25638);
       return;
     }
-    final String str = in(paramString1, paramString2);
+    final String str = iA(paramString1, paramString2);
     paramImageView.setTag(str);
     if (!b(paramString1, paramString2, paramImageView)) {
-      this.ytV.add(new QueueWorkerThread.ThreadObject()
+      this.DTZ.add(new QueueWorkerThread.ThreadObject()
       {
-        private boolean htV = false;
+        private boolean fFA = false;
         
         public final boolean doInBackground()
         {
           AppMethodBeat.i(25631);
-          Bitmap localBitmap = a.bd(d.this.context, paramString1);
+          Bitmap localBitmap = a.bp(d.this.context, paramString1);
           if (localBitmap != null)
           {
             d.this.cache.put(str, new WeakReference(localBitmap));
-            this.htV = true;
+            this.fFA = true;
             d.a(d.this, paramImageView, str, localBitmap);
           }
           AppMethodBeat.o(25631);
@@ -133,14 +132,14 @@ public final class d
         public final boolean onPostExecute()
         {
           AppMethodBeat.i(25632);
-          if (!this.htV)
+          if (!this.fFA)
           {
             d locald = d.this;
             String str2 = paramString1;
             String str1 = paramString2;
             ImageView localImageView = paramImageView;
-            str2 = d.in(str2, str1);
-            locald.ytV.add(new d.2(locald, str1, localImageView, str2));
+            str2 = d.iA(str2, str1);
+            locald.DTZ.add(new d.2(locald, str1, localImageView, str2));
           }
           AppMethodBeat.o(25632);
           return true;
@@ -158,15 +157,15 @@ public final class d
       AppMethodBeat.o(25639);
       return;
     }
-    final String str = aCj(paramString);
+    final String str = aMq(paramString);
     paramImageView.setTag(str);
     if (!e(paramString, paramImageView)) {
-      this.ytV.add(new QueueWorkerThread.ThreadObject()
+      this.DTZ.add(new QueueWorkerThread.ThreadObject()
       {
         public final boolean doInBackground()
         {
           AppMethodBeat.i(25634);
-          Bitmap localBitmap = a.bd(d.this.context, paramString);
+          Bitmap localBitmap = a.bp(d.this.context, paramString);
           d.a(d.this, paramImageView, str, localBitmap);
           AppMethodBeat.o(25634);
           return true;
@@ -189,20 +188,20 @@ public final class d
       AppMethodBeat.o(25641);
       return;
     }
-    final String str = aCi(paramString);
+    final String str = aMp(paramString);
     paramImageView.setTag(str);
     if (!g(paramString, paramImageView)) {
-      this.ytV.add(new QueueWorkerThread.ThreadObject()
+      this.DTZ.add(new QueueWorkerThread.ThreadObject()
       {
         public final boolean doInBackground()
         {
           AppMethodBeat.i(25635);
-          Bitmap localBitmap2 = c.a(paramString, false, -1, null);
+          Bitmap localBitmap2 = com.tencent.mm.am.d.a(paramString, false, -1, null);
           Bitmap localBitmap1 = localBitmap2;
           if (localBitmap2 == null)
           {
-            p.aYn();
-            localBitmap1 = e.Mn(paramString);
+            q.bhz();
+            localBitmap1 = f.TI(paramString);
           }
           d.a(d.this, paramImageView, str, localBitmap1);
           AppMethodBeat.o(25635);
@@ -220,7 +219,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.d
  * JD-Core Version:    0.7.0.1
  */

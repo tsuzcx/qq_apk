@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.bottle;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.pluginsdk.b.c;
+import com.tencent.mm.model.be;
+import com.tencent.mm.pluginsdk.c.c;
 import com.tencent.mm.pluginsdk.n;
 
 public final class Plugin
-  implements com.tencent.mm.pluginsdk.b.d
+  implements com.tencent.mm.pluginsdk.c.d
 {
-  private c pkO;
+  private c smX;
   
   public Plugin()
   {
     AppMethodBeat.i(22640);
-    this.pkO = new c()
+    this.smX = new c()
     {
-      public final com.tencent.mm.pluginsdk.b.a ak(Context paramAnonymousContext, String paramAnonymousString)
+      public final com.tencent.mm.pluginsdk.c.a ak(Context paramAnonymousContext, String paramAnonymousString)
       {
         return null;
       }
@@ -32,7 +32,7 @@ public final class Plugin
     return locala;
   }
   
-  public final bd createSubCore()
+  public final be createSubCore()
   {
     AppMethodBeat.i(22642);
     com.tencent.mm.plugin.bottle.a.d locald = new com.tencent.mm.plugin.bottle.a.d();
@@ -42,12 +42,12 @@ public final class Plugin
   
   public final c getContactWidgetFactory()
   {
-    return this.pkO;
+    return this.smX;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.bottle.Plugin
  * JD-Core Version:    0.7.0.1
  */

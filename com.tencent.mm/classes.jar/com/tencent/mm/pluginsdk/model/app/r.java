@@ -11,15 +11,18 @@ import android.os.Build.VERSION;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.comm.c.h;
 import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.pluginsdk.permission.d;
 import com.tencent.mm.sdk.platformtools.FileProviderHelper;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 
 public final class r
 {
@@ -37,9 +40,9 @@ public final class r
       if ((Build.VERSION.SDK_INT >= 26) && (!paramContext.getPackageManager().canRequestPackageInstalls()))
       {
         Log.i("MicroMsg.ApplicationUtil", "request install apk permission");
-        b.a(new Intent("android.settings.MANAGE_UNKNOWN_APP_SOURCES", Uri.parse("package:" + paramContext.getPackageName())), MMApplicationContext.getContext().getString(2131763890), MMApplicationContext.getContext().getString(2131761789), new com.tencent.mm.pluginsdk.permission.d()
+        b.a(new Intent("android.settings.MANAGE_UNKNOWN_APP_SOURCES", Uri.parse("package:" + paramContext.getPackageName())), MMApplicationContext.getContext().getString(c.h.permission_tips_title), MMApplicationContext.getContext().getString(c.h.install_unknow_app_nead_settings_permission), new d()
         {
-          public final void Xq(int paramAnonymousInt)
+          public final void aep(int paramAnonymousInt)
           {
             AppMethodBeat.i(151777);
             Log.i("MicroMsg.ApplicationUtil", "onRequestPermissionsResult, resultCode = %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
@@ -49,14 +52,14 @@ public final class r
               {
                 Context localContext = this.val$context;
                 Object localObject = paramIntent;
-                localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-                com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/pluginsdk/model/app/ApplicationUtil$1", "onRequestPermissionsResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-                com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/pluginsdk/model/app/ApplicationUtil$1", "onRequestPermissionsResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+                com.tencent.mm.hellhoundlib.a.a.b(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/pluginsdk/model/app/ApplicationUtil$1", "onRequestPermissionsResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+                com.tencent.mm.hellhoundlib.a.a.c(localContext, "com/tencent/mm/pluginsdk/model/app/ApplicationUtil$1", "onRequestPermissionsResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                 if (parama == null) {
-                  break label180;
+                  break label181;
                 }
-                parama.hk(true);
+                parama.ia(true);
                 AppMethodBeat.o(151777);
                 return;
               }
@@ -71,12 +74,12 @@ public final class r
             else
             {
               Log.e("MicroMsg.ApplicationUtil", "no get!!!");
-              Toast.makeText(MMApplicationContext.getContext(), 2131763588, 1).show();
+              Toast.makeText(MMApplicationContext.getContext(), c.h.no_install_unknow_app_permission, 1).show();
               if (parama != null) {
-                parama.hk(false);
+                parama.ia(false);
               }
             }
-            label180:
+            label181:
             AppMethodBeat.o(151777);
           }
         });
@@ -84,10 +87,10 @@ public final class r
         return;
       }
       Log.i("MicroMsg.ApplicationUtil", "install directly");
-      com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, locala.axQ(), "com/tencent/mm/pluginsdk/model/app/ApplicationUtil", "installApp", "(Landroid/content/Context;Landroid/content/Intent;Lcom/tencent/mm/pluginsdk/permission/InstallApkListener;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)locala.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/pluginsdk/model/app/ApplicationUtil", "installApp", "(Landroid/content/Context;Landroid/content/Intent;Lcom/tencent/mm/pluginsdk/permission/InstallApkListener;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(paramContext, locala.aFh(), "com/tencent/mm/pluginsdk/model/app/ApplicationUtil", "installApp", "(Landroid/content/Context;Landroid/content/Intent;Lcom/tencent/mm/pluginsdk/permission/InstallApkListener;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)locala.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/pluginsdk/model/app/ApplicationUtil", "installApp", "(Landroid/content/Context;Landroid/content/Intent;Lcom/tencent/mm/pluginsdk/permission/InstallApkListener;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     catch (Exception paramContext)
     {
@@ -95,12 +98,12 @@ public final class r
       {
         Log.printErrStackTrace("MicroMsg.ApplicationUtil", paramContext, "install app failed! %s", new Object[] { paramIntent });
         if (parama != null) {
-          parama.hk(false);
+          parama.ia(false);
         }
       }
     }
     if (parama != null) {
-      parama.hk(true);
+      parama.ia(true);
     }
     AppMethodBeat.o(151781);
   }
@@ -119,7 +122,7 @@ public final class r
   {
     AppMethodBeat.i(151782);
     Intent localIntent = new Intent("android.intent.action.VIEW");
-    FileProviderHelper.setIntentDataAndType(paramContext, localIntent, new o(paramString), "application/vnd.android.package-archive", false);
+    FileProviderHelper.setIntentDataAndType(paramContext, localIntent, new q(paramString), "application/vnd.android.package-archive", false);
     localIntent.addFlags(268435456);
     a(paramContext, localIntent, parama, paramBoolean);
     AppMethodBeat.o(151782);
@@ -134,11 +137,11 @@ public final class r
       AppMethodBeat.o(151783);
       return;
     }
-    h.a(MainProcessIPCService.dkO, new IPCInstallApp.IPCInstallAppParam(1, paramString, null, paramBoolean), IPCInstallApp.class, new com.tencent.mm.ipcinvoker.d() {});
+    j.a(MainProcessIPCService.PROCESS_NAME, new IPCInstallApp.IPCInstallAppParam(1, paramString, null, paramBoolean), IPCInstallApp.class, new f() {});
     AppMethodBeat.o(151783);
   }
   
-  public static String bdM(String paramString)
+  public static String bqi(String paramString)
   {
     AppMethodBeat.i(151780);
     StringBuffer localStringBuffer = new StringBuffer();
@@ -149,7 +152,7 @@ public final class r
     return paramString;
   }
   
-  public static String bdN(String paramString)
+  public static String bqj(String paramString)
   {
     AppMethodBeat.i(151789);
     if (Util.isNullOrNil(paramString))
@@ -180,7 +183,7 @@ public final class r
     return paramString;
   }
   
-  public static int bdO(String paramString)
+  public static int bqk(String paramString)
   {
     AppMethodBeat.i(151790);
     if (Util.isNullOrNil(paramString))
@@ -211,7 +214,7 @@ public final class r
     return i;
   }
   
-  public static boolean ck(Context paramContext, String paramString)
+  public static boolean cw(Context paramContext, String paramString)
   {
     AppMethodBeat.i(151786);
     Uri localUri = Uri.parse(paramString);
@@ -226,10 +229,10 @@ public final class r
     {
       try
       {
-        paramString = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.axQ(), "com/tencent/mm/pluginsdk/model/app/ApplicationUtil", "installAppWithGP", "(Landroid/content/Context;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)paramString.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/pluginsdk/model/app/ApplicationUtil", "installAppWithGP", "(Landroid/content/Context;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramString = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
+        com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramString.aFh(), "com/tencent/mm/pluginsdk/model/app/ApplicationUtil", "installAppWithGP", "(Landroid/content/Context;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)paramString.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/pluginsdk/model/app/ApplicationUtil", "installAppWithGP", "(Landroid/content/Context;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(151786);
         return true;
       }
@@ -240,10 +243,10 @@ public final class r
         {
           paramString = new Intent("android.intent.action.VIEW", localUri);
           paramString.addFlags(268435456);
-          paramString = new com.tencent.mm.hellhoundlib.b.a().bl(paramString);
-          com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.axQ(), "com/tencent/mm/pluginsdk/model/app/ApplicationUtil", "installAppWithGP", "(Landroid/content/Context;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramContext.startActivity((Intent)paramString.pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/pluginsdk/model/app/ApplicationUtil", "installAppWithGP", "(Landroid/content/Context;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramString = new com.tencent.mm.hellhoundlib.b.a().bm(paramString);
+          com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramString.aFh(), "com/tencent/mm/pluginsdk/model/app/ApplicationUtil", "installAppWithGP", "(Landroid/content/Context;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramContext.startActivity((Intent)paramString.sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/pluginsdk/model/app/ApplicationUtil", "installAppWithGP", "(Landroid/content/Context;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(151786);
           return true;
         }
@@ -284,7 +287,7 @@ public final class r
     }
   }
   
-  public static void l(Context paramContext, Uri paramUri)
+  public static void i(Context paramContext, Uri paramUri)
   {
     AppMethodBeat.i(151785);
     if (MMApplicationContext.isMainProcess())
@@ -293,11 +296,11 @@ public final class r
       AppMethodBeat.o(151785);
       return;
     }
-    h.a(MainProcessIPCService.dkO, new IPCInstallApp.IPCInstallAppParam(2, "", paramUri, false), IPCInstallApp.class, new com.tencent.mm.ipcinvoker.d() {});
+    j.a(MainProcessIPCService.PROCESS_NAME, new IPCInstallApp.IPCInstallAppParam(2, "", paramUri, false), IPCInstallApp.class, new f() {});
     AppMethodBeat.o(151785);
   }
   
-  public static boolean s(Context paramContext, String paramString)
+  public static boolean u(Context paramContext, String paramString)
   {
     AppMethodBeat.i(151787);
     if (getPackageInfo(paramContext, paramString) != null)

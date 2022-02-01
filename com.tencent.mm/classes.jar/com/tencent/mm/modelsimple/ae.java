@@ -1,16 +1,16 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ckd;
-import com.tencent.mm.protocal.protobuf.cke;
+import com.tencent.mm.protocal.protobuf.csx;
+import com.tencent.mm.protocal.protobuf.csy;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class ae
@@ -24,14 +24,14 @@ public final class ae
   {
     AppMethodBeat.i(150963);
     d.a locala = new d.a();
-    locala.iLN = new ckd();
-    locala.iLO = new cke();
+    locala.lBU = new csx();
+    locala.lBV = new csy();
     locala.uri = "/cgi-bin/micromsg-bin/logoutwebwx";
     locala.funcId = 281;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    ((ckd)this.rr.iLK.iLR).OpCode = paramInt;
+    this.rr = locala.bgN();
+    ((csx)d.b.b(this.rr.lBR)).RLe = paramInt;
     AppMethodBeat.o(150963);
   }
   

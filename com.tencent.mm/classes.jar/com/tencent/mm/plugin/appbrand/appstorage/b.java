@@ -10,13 +10,13 @@ import com.tencent.mm.sdk.storage.MAutoStorage;
 public class b
   extends MAutoStorage<a>
 {
-  public static final String[] iBh;
+  public static final String[] lqL;
   private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(44450);
-    iBh = new String[] { MAutoStorage.getCreateSQLs(a.info, "AppBrandIdentifierInfo") };
+    lqL = new String[] { MAutoStorage.getCreateSQLs(a.info, "AppBrandIdentifierInfo") };
     AppMethodBeat.o(44450);
   }
   
@@ -26,7 +26,7 @@ public class b
     this.db = paramISQLiteDatabase;
   }
   
-  public final String VH(String paramString)
+  public final String ads(String paramString)
   {
     AppMethodBeat.i(44448);
     Cursor localCursor = this.db.query("AppBrandIdentifierInfo", new String[] { "appId" }, "username=?", new String[] { paramString }, null, null, null);
@@ -42,7 +42,7 @@ public class b
     }
   }
   
-  public final String VI(String paramString)
+  public final String adt(String paramString)
   {
     AppMethodBeat.i(44449);
     Cursor localCursor = this.db.query("AppBrandIdentifierInfo", new String[] { "username" }, "appId=?", new String[] { paramString }, null, null, null);
@@ -58,7 +58,7 @@ public class b
     }
   }
   
-  public final boolean cy(String paramString1, String paramString2)
+  public final boolean cD(String paramString1, String paramString2)
   {
     AppMethodBeat.i(44447);
     Log.i("MicroMsg.AppBrand.AppBrandIdentifierInfoStorage", "addIdentifierInfo: appId = [%s], userName = [%s]", new Object[] { paramString1, paramString2 });
@@ -77,7 +77,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.b
  * JD-Core Version:    0.7.0.1
  */

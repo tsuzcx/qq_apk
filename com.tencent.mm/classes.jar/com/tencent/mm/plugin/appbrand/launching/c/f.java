@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.appbrand.launching.c;
 
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.report.i;
+import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.plugin.appbrand.report.j;
 import com.tencent.mm.plugin.appbrand.ui.AppBrand404PageUI;
 
 final class f
@@ -14,10 +15,10 @@ final class f
     AppMethodBeat.i(47415);
     if (paramUri == null) {}
     for (paramString = "";; paramString = paramUri.getQueryParameter("appid")) {
-      switch (1.mYr[parama.ordinal()])
+      switch (1.pYQ[parama.ordinal()])
       {
       default: 
-        AppBrand404PageUI.show(2131755441);
+        AppBrand404PageUI.CR(au.i.app_brand_error);
         AppMethodBeat.o(47415);
         return;
       }
@@ -25,26 +26,26 @@ final class f
     if ((paramUri != null) && (paramUri.getBooleanQueryParameter("debug", false)))
     {
       i = 1;
-      AppBrand404PageUI.show(2131755691);
+      AppBrand404PageUI.CR(au.i.app_brand_scan_qrcode_parameter_error);
       if (i == 0) {
-        break label125;
+        break label127;
       }
     }
-    label125:
+    label127:
     for (int i = j;; i = 0)
     {
-      i.T(paramString, 2, i + 1);
+      j.V(paramString, 2, i + 1);
       AppMethodBeat.o(47415);
       return;
       i = 0;
       break;
     }
-    AppBrand404PageUI.show(2131755652);
-    i.T("", 3, 2);
+    AppBrand404PageUI.CR(au.i.app_brand_qrcode_result_dev_qrcode_expired);
+    j.V("", 3, 2);
     AppMethodBeat.o(47415);
     return;
-    AppBrand404PageUI.show(2131755653);
-    i.T("", 4, 2);
+    AppBrand404PageUI.CR(au.i.app_brand_qrcode_result_uin_invalid);
+    j.V("", 4, 2);
     AppMethodBeat.o(47415);
     return;
     AppMethodBeat.o(47415);
@@ -52,7 +53,7 @@ final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.c.f
  * JD-Core Version:    0.7.0.1
  */

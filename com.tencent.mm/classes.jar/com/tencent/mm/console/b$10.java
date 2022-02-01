@@ -1,23 +1,28 @@
 package com.tencent.mm.console;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ClipboardHelper;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.bv.a;
+import com.tencent.mm.model.c;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.g;
 
 final class b$10
-  implements DialogInterface.OnClickListener
+  implements bv.a
 {
-  b$10(String paramString, Context paramContext) {}
-  
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void a(g paramg)
   {
-    AppMethodBeat.i(20122);
-    ClipboardHelper.setText(this.val$key);
-    Toast.makeText(this.gMA, 2131767303, 0).show();
-    AppMethodBeat.o(20122);
+    AppMethodBeat.i(276418);
+    if (paramg == null)
+    {
+      AppMethodBeat.o(276418);
+      return;
+    }
+    paramg = paramg.biw();
+    bh.beI();
+    int i = c.getUin();
+    paramg.a(new byte[0], new byte[0], new byte[0], i);
+    AppMethodBeat.o(276418);
   }
 }
 

@@ -2,6 +2,10 @@
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.tencent.mm.plugin.webview.ui.tools.WebViewKeyboardLinearLayout android:id="@id/jkw" android:background="@color/BW_93" style="@style/rj">
+        <RelativeLayout android:id="@id/kv1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/cc">
+            <TextView android:textColor="@color/FG_2" android:id="@id/kv3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+            <ProgressBar android:id="@id/kv2" android:visibility="invisible" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/bt" android:layout_toEndOf="@id/kv3" style="@style/a71" />
+        </RelativeLayout>
         <FrameLayout android:id="@id/h8y" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
             <FrameLayout android:id="@id/be3" android:layout_width="fill_parent" android:layout_height="fill_parent">
                 <FrameLayout android:id="@id/jkx" android:background="@color/afj" android:layout_width="fill_parent" android:layout_height="fill_parent">
@@ -11,10 +15,11 @@
                     </FrameLayout>
                 </FrameLayout>
                 <com.tencent.mm.plugin.webview.ui.tools.LogoWebViewWrapper android:id="@id/esn" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                    <FrameLayout android:id="@id/eso" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="containerFrameLayout" />
+                    <FrameLayout android:id="@id/eso" android:layout_width="fill_parent" android:layout_height="fill_parent" />
                 </com.tencent.mm.plugin.webview.ui.tools.LogoWebViewWrapper>
             </FrameLayout>
             <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <View android:id="@id/k3h" android:background="@color/ac_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
                 <com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewRedesignInputFooter android:layout_gravity="bottom" android:id="@id/jkr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
                 <com.tencent.mm.plugin.webview.ui.tools.widget.WebViewSearchContentInputFooter android:layout_gravity="bottom" android:id="@id/hdp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:imeOptions="actionSearch" />
             </FrameLayout>

@@ -4,9 +4,9 @@ import android.webkit.WebResourceResponse;
 
 public abstract interface c
 {
-  public abstract String Pl();
+  public abstract String SK();
   
-  public abstract WebResourceResponse cX(String paramString);
+  public abstract WebResourceResponse dx(String paramString);
 }
 
 

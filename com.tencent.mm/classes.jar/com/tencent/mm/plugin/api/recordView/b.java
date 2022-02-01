@@ -6,18 +6,18 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  public static int aB(String paramString1, String paramString2)
+  public static int aE(String paramString1, String paramString2)
   {
     AppMethodBeat.i(89209);
     int[] arrayOfInt = new int[1];
-    int i = ac(paramString1, 35633);
+    int i = au(paramString1, 35633);
     if (i == 0)
     {
       Log.e("MicroMsg.MMSightCameraGLUtil", "load vertex shader failed");
       AppMethodBeat.o(89209);
       return 0;
     }
-    int j = ac(paramString2, 35632);
+    int j = au(paramString2, 35632);
     if (j == 0)
     {
       Log.e("MicroMsg.MMSightCameraGLUtil", "load fragment shader failed");
@@ -41,7 +41,7 @@ public final class b
     return k;
   }
   
-  public static int aMZ()
+  public static int aVC()
   {
     AppMethodBeat.i(89207);
     int[] arrayOfInt = new int[1];
@@ -56,7 +56,7 @@ public final class b
     return i;
   }
   
-  private static int ac(String paramString, int paramInt)
+  private static int au(String paramString, int paramInt)
   {
     AppMethodBeat.i(89208);
     int[] arrayOfInt = new int[1];
@@ -76,7 +76,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.api.recordView.b
  * JD-Core Version:    0.7.0.1
  */

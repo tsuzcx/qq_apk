@@ -1,17 +1,17 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bru;
-import com.tencent.mm.protocal.protobuf.brv;
+import com.tencent.mm.protocal.protobuf.bzq;
+import com.tencent.mm.protocal.protobuf.bzr;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class j
@@ -19,20 +19,20 @@ public final class j
   implements m
 {
   private i callback;
-  public String dVa;
+  public String fOC;
   private final d rr;
   
   public j(String paramString)
   {
     AppMethodBeat.i(151206);
     d.a locala = new d.a();
-    locala.iLN = new bru();
-    locala.iLO = new brv();
+    locala.lBU = new bzq();
+    locala.lBV = new bzr();
     locala.uri = "/cgi-bin/micromsg-bin/getopenurl";
     locala.funcId = 913;
-    this.rr = locala.aXF();
+    this.rr = locala.bgN();
     Log.i("MicroMsg.NetSceneGetOpenIMUrl", "NetSceneGetOpenIMUrl username: %s", new Object[] { paramString });
-    ((bru)this.rr.iLK.iLR).userName = paramString;
+    ((bzq)d.b.b(this.rr.lBR)).userName = paramString;
     AppMethodBeat.o(151206);
   }
   
@@ -60,8 +60,8 @@ public final class j
       AppMethodBeat.o(151208);
       return;
     }
-    this.dVa = ((brv)this.rr.iLL.iLR).dVa;
-    Log.i("MicroMsg.NetSceneGetOpenIMUrl", "openUrl %s", new Object[] { this.dVa });
+    this.fOC = ((bzr)d.c.b(this.rr.lBS)).fOC;
+    Log.i("MicroMsg.NetSceneGetOpenIMUrl", "openUrl %s", new Object[] { this.fOC });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(151208);
   }

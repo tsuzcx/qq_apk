@@ -1,84 +1,54 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
-import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.luggage.l.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.service.m;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherFolderUI;
+import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.ui.widget.a.d.a;
+import com.tencent.mm.ui.widget.a.j;
 
 public final class n
-  implements m
 {
-  public final void a(Context paramContext, int paramInt, String paramString)
+  public static d a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    int j = 14;
-    AppMethodBeat.i(49314);
-    int i;
-    Intent localIntent;
-    if (1 == paramInt)
-    {
-      i = 15;
-      localIntent = new Intent(paramContext, AppBrandLauncherFolderUI.class);
-      localIntent.putExtra("extra_use_system_default_enter_exit_anim", true);
-      localIntent.putExtra("extra_enter_scene", i);
-      localIntent.putExtra("extra_enter_scene_note", paramString);
-      localIntent.putExtra("KEY_MODE", 1);
-      if (!(paramContext instanceof Activity)) {
-        break label189;
-      }
-    }
-    label189:
-    for (paramInt = 0;; paramInt = 268435456)
-    {
-      localIntent.addFlags(paramInt);
-      localIntent.addFlags(536870912);
-      localIntent.addFlags(134217728);
-      paramString = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.axQ(), "com/tencent/mm/plugin/appbrand/utils/ExtOpenWxaDesktopFavoriteHelperImpl", "openWxaDesktop", "(Landroid/content/Context;ILjava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramString.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/utils/ExtOpenWxaDesktopFavoriteHelperImpl", "openWxaDesktop", "(Landroid/content/Context;ILjava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(49314);
-      return;
-      i = j;
-      if (2 == paramInt) {
-        break;
-      }
-      i = j;
-      if (paramInt == 0) {
-        break;
-      }
-      i = -1;
-      break;
-    }
+    AppMethodBeat.i(147716);
+    paramContext = new d.a(paramContext).bBc(paramString2).bBd(paramString1).bBj(paramString3).c(paramOnClickListener1).bBk(paramString4).d(paramOnClickListener2).icu();
+    paramContext.show();
+    AppMethodBeat.o(147716);
+    return paramContext;
   }
   
-  public final void af(Context paramContext, String paramString)
+  public static ProgressDialog b(Context paramContext, CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(49315);
-    Intent localIntent = new Intent(paramContext, AppBrandLauncherFolderUI.class);
-    localIntent.putExtra("extra_use_system_default_enter_exit_anim", true);
-    localIntent.putExtra("extra_enter_scene", 4);
-    localIntent.putExtra("extra_enter_scene_note", paramString);
-    localIntent.putExtra("KEY_MODE", 2);
-    if ((paramContext instanceof Activity)) {}
-    for (int i = 0;; i = 268435456)
-    {
-      localIntent.addFlags(i);
-      localIntent.addFlags(536870912);
-      localIntent.addFlags(134217728);
-      paramString = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.axQ(), "com/tencent/mm/plugin/appbrand/utils/ExtOpenWxaDesktopFavoriteHelperImpl", "openWxaMyFavorite", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramString.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/utils/ExtOpenWxaDesktopFavoriteHelperImpl", "openWxaMyFavorite", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(49315);
-      return;
-    }
+    AppMethodBeat.i(147713);
+    paramContext = j.b(paramContext, paramCharSequence, true);
+    AppMethodBeat.o(147713);
+    return paramContext;
+  }
+  
+  public static d b(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    AppMethodBeat.i(147715);
+    paramContext = new d.a(paramContext).bBc(paramString1).bBj(paramString2).c(paramOnClickListener).icu();
+    paramContext.show();
+    AppMethodBeat.o(147715);
+    return paramContext;
+  }
+  
+  public static d c(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    AppMethodBeat.i(147717);
+    paramContext = new d.a(paramContext).bBc(paramString2).bBd(paramString1).ayj(a.g.luggage_wxa_app_ok).c(paramOnClickListener).HG(false).icu();
+    paramContext.show();
+    AppMethodBeat.o(147717);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.n
  * JD-Core Version:    0.7.0.1
  */

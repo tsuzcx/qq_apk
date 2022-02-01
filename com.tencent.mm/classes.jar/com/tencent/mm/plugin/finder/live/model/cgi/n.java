@@ -1,57 +1,29 @@
 package com.tencent.mm.plugin.finder.live.model.cgi;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.plugin.finder.cgi.am;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.asl;
-import com.tencent.mm.protocal.protobuf.asm;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.plugin.findersdk.b.c;
+import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.protocal.protobuf.dyy;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveGetLastObject;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderGetLatestLiveObjectResponse;", "username", "", "callback", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveGetLastObject$CallBack;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveGetLastObject$CallBack;)V", "TAG", "request", "Lcom/tencent/mm/protocal/protobuf/FinderGetLatestLiveObjectRequest;", "initReqResp", "", "onCgiEnd", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder_release"})
-public final class n
-  extends k<asm>
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "_Resp", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "statId", "", "getStatId", "()J", "plugin-finder_release"})
+public abstract class n<_Resp extends dyy>
+  extends c<_Resp>
 {
-  private final String TAG;
-  private a ukX;
-  private asl ukY;
+  private final long yjh = 1552L;
   
-  public n(String paramString, a parama)
+  public n(bid parambid)
   {
-    super((byte)0);
-    AppMethodBeat.i(246324);
-    this.TAG = "Finder.CgiFinderLiveGetLastObject";
-    this.ukX = parama;
-    this.ukY = new asl();
-    this.ukY.LAN = paramString;
-    paramString = this.ukY;
-    parama = am.tuw;
-    paramString.LAI = am.cXY();
-    paramString = new d.a();
-    paramString.c((a)this.ukY);
-    parama = new asm();
-    parama.setBaseResponse(new BaseResponse());
-    parama.getBaseResponse().ErrMsg = new dqi();
-    paramString.d((a)parama);
-    paramString.MB("/cgi-bin/micromsg-bin/findergetlatestliveobject");
-    paramString.sG(6482);
-    c(paramString.aXF());
-    Log.i(this.TAG, "CgiFinderLiveGetLastObject init username:" + this.ukY.LAN);
-    AppMethodBeat.o(246324);
+    super(parambid);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveGetLastObject$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderGetLatestLiveObjectResponse;", "plugin-finder_release"})
-  public static abstract interface a
+  protected final long dzW()
   {
-    public abstract void a(asm paramasm);
+    return this.yjh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.cgi.n
  * JD-Core Version:    0.7.0.1
  */

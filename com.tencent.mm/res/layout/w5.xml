@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|right" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="@dimen/is" android:textColor="@color/g7" android:id="@id/ff8" android:background="@drawable/c5" android:paddingLeft="@dimen/r" android:paddingRight="@dimen/r" android:visibility="gone" android:layout_width="wrap_content" style="@style/p5" />
-    <Button android:textSize="@dimen/is" android:textColor="@color/g7" android:id="@id/ff9" android:background="@drawable/c5" android:paddingLeft="@dimen/r" android:paddingRight="@dimen/r" android:visibility="gone" android:layout_width="wrap_content" style="@style/p5" />
-    <Button android:textSize="@dimen/is" android:textColor="@color/g7" android:id="@id/ff_" android:background="@drawable/c5" android:paddingLeft="@dimen/r" android:paddingRight="@dimen/r" android:visibility="gone" android:layout_width="wrap_content" style="@style/p5" />
+    <Button android:textSize="@dimen/is" android:textStyle="bold" android:textColor="@color/g7" android:id="@id/ff8" android:background="@drawable/c5" android:visibility="gone" android:layout_width="fill_parent" android:minHeight="@dimen/cp" style="@style/p5" />
+    <Button android:textSize="@dimen/is" android:textStyle="bold" android:textColor="@color/g7" android:id="@id/ff9" android:background="@drawable/b6d" android:visibility="gone" android:layout_width="fill_parent" android:minHeight="@dimen/cp" style="@style/p5" />
+    <Button android:textSize="@dimen/is" android:textStyle="bold" android:textColor="@color/FG_0_5" android:id="@id/ff_" android:background="@drawable/bdl" android:paddingLeft="@dimen/r" android:paddingRight="@dimen/r" android:visibility="gone" android:layout_width="fill_parent" android:minHeight="@dimen/cp" style="@style/p5" />
 </LinearLayout>

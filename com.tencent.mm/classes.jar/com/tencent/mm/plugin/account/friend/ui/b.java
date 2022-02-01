@@ -8,55 +8,57 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.p;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.account.a.a.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.account.friend.a.c;
+import com.tencent.mm.plugin.account.friend.a.d;
 import com.tencent.mm.plugin.account.friend.a.q;
-import com.tencent.mm.protocal.protobuf.bfo;
-import com.tencent.mm.protocal.protobuf.ctl;
+import com.tencent.mm.plugin.account.sdk.a.a;
+import com.tencent.mm.protocal.protobuf.bmp;
+import com.tencent.mm.protocal.protobuf.dck;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
 final class b
   extends BaseAdapter
 {
-  LinkedList<bfo> gYE;
-  private LinkedList<ctl> iAd;
-  private final LayoutInflater kgB;
-  boolean kgC;
-  private boolean[] kgD;
+  LinkedList<bmp> jJE;
+  private LinkedList<dck> lpz;
+  private final LayoutInflater mYa;
+  boolean mYb;
+  private boolean[] mYc;
   
   public b(LayoutInflater paramLayoutInflater)
   {
-    this.kgB = paramLayoutInflater;
+    this.mYa = paramLayoutInflater;
   }
   
-  public final void a(LinkedList<ctl> paramLinkedList, int paramInt)
+  public final void a(LinkedList<dck> paramLinkedList, int paramInt)
   {
     AppMethodBeat.i(131225);
     if (paramInt < 0) {
-      this.iAd = paramLinkedList;
+      this.lpz = paramLinkedList;
     }
     for (;;)
     {
-      this.kgD = new boolean[this.iAd.size()];
+      this.mYc = new boolean[this.lpz.size()];
       AppMethodBeat.o(131225);
       return;
-      this.iAd = new LinkedList();
+      this.lpz = new LinkedList();
       int i = 0;
       while (i < paramLinkedList.size())
       {
-        if (paramInt == ((ctl)paramLinkedList.get(i)).Ltr) {
-          this.iAd.add(paramLinkedList.get(i));
+        if (paramInt == ((dck)paramLinkedList.get(i)).SvP) {
+          this.lpz.add(paramLinkedList.get(i));
         }
         i += 1;
       }
     }
   }
   
-  public final String[] boI()
+  public final String[] byR()
   {
     AppMethodBeat.i(131226);
-    Object localObject = this.kgD;
+    Object localObject = this.mYc;
     int m = localObject.length;
     int i = 0;
     int k;
@@ -71,12 +73,12 @@ final class b
     localObject = new String[j];
     i = 0;
     j = 0;
-    if (j < this.iAd.size())
+    if (j < this.lpz.size())
     {
-      if (this.kgD[j] == 0) {
+      if (this.mYc[j] == 0) {
         break label115;
       }
-      localObject[i] = ((ctl)this.iAd.get(j)).UserName;
+      localObject[i] = ((dck)this.lpz.get(j)).UserName;
       i += 1;
     }
     label115:
@@ -93,20 +95,20 @@ final class b
   {
     AppMethodBeat.i(131227);
     int i;
-    if (this.kgC)
+    if (this.mYb)
     {
-      if (this.gYE == null)
+      if (this.jJE == null)
       {
         AppMethodBeat.o(131227);
         return 0;
       }
-      i = this.gYE.size();
+      i = this.jJE.size();
       AppMethodBeat.o(131227);
       return i;
     }
-    if (this.iAd != null)
+    if (this.lpz != null)
     {
-      i = this.iAd.size();
+      i = this.lpz.size();
       AppMethodBeat.o(131227);
       return i;
     }
@@ -117,13 +119,13 @@ final class b
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(131228);
-    if (this.kgC)
+    if (this.mYb)
     {
-      localObject = this.gYE.get(paramInt);
+      localObject = this.jJE.get(paramInt);
       AppMethodBeat.o(131228);
       return localObject;
     }
-    Object localObject = this.iAd.get(paramInt);
+    Object localObject = this.lpz.get(paramInt);
     AppMethodBeat.o(131228);
     return localObject;
   }
@@ -138,113 +140,113 @@ final class b
     AppMethodBeat.i(131229);
     Object localObject;
     View localView;
-    if (this.kgC)
+    if (this.mYb)
     {
-      localObject = (bfo)this.gYE.get(paramInt);
+      localObject = (bmp)this.jJE.get(paramInt);
       if ((paramView == null) || (((a)paramView.getTag()).type != 2))
       {
-        localView = this.kgB.inflate(2131495084, paramViewGroup, false);
+        localView = this.mYa.inflate(a.d.inviteqqfriendsgroup_item, paramViewGroup, false);
         paramView = new a();
         paramView.type = 2;
-        paramView.kgE = ((TextView)localView.findViewById(2131306333));
+        paramView.mYd = ((TextView)localView.findViewById(a.c.qq_friend_group_name));
         localView.setTag(paramView);
         paramViewGroup = paramView;
       }
       for (;;)
       {
-        paramViewGroup.kgE.setText(((bfo)localObject).LPg);
+        paramViewGroup.mYd.setText(((bmp)localObject).SXx);
         AppMethodBeat.o(131229);
         return localView;
         paramViewGroup = (a)paramView.getTag();
         localView = paramView;
       }
     }
-    ctl localctl = (ctl)this.iAd.get(paramInt);
+    dck localdck = (dck)this.lpz.get(paramInt);
     if ((paramView == null) || (((a)paramView.getTag()).type != 1))
     {
-      localView = this.kgB.inflate(2131495083, paramViewGroup, false);
+      localView = this.mYa.inflate(a.d.inviteqqfriends_item, paramViewGroup, false);
       paramViewGroup = new a();
       paramViewGroup.type = 1;
-      paramViewGroup.gwR = ((TextView)localView.findViewById(2131302731));
-      paramViewGroup.kgF = ((TextView)localView.findViewById(2131302729));
-      paramViewGroup.kgH = ((CheckBox)localView.findViewById(2131302732));
-      paramViewGroup.kgG = ((TextView)localView.findViewById(2131302718));
+      paramViewGroup.jbe = ((TextView)localView.findViewById(a.c.inviteqqfriends_nickname_tv));
+      paramViewGroup.mYe = ((TextView)localView.findViewById(a.c.inviteqqfriends_email_tv));
+      paramViewGroup.mYg = ((CheckBox)localView.findViewById(a.c.inviteqqfriends_send_cb));
+      paramViewGroup.mYf = ((TextView)localView.findViewById(a.c.invite_friends_open_already_state));
       localView.setTag(paramViewGroup);
-      if (!((q)((a)g.ah(a.class)).getInviteFriendOpenStg()).Tf(localctl.UserName)) {
-        break label379;
+      if (!((q)((a)h.ag(a.class)).getInviteFriendOpenStg()).aaL(localdck.UserName)) {
+        break label386;
       }
-      paramViewGroup.kgG.setVisibility(0);
-      label279:
-      TextView localTextView = paramViewGroup.gwR;
-      if (localctl == null) {
-        break label470;
+      paramViewGroup.mYf.setVisibility(0);
+      label286:
+      TextView localTextView = paramViewGroup.jbe;
+      if (localdck == null) {
+        break label477;
       }
-      paramView = localctl.LoI;
+      paramView = localdck.Sqe;
       if ((paramView == null) || (paramView.length() <= 0)) {
-        break label391;
+        break label398;
       }
-      label307:
+      label314:
       localTextView.setText(paramView);
-      localObject = paramViewGroup.kgF;
-      if (localctl == null) {
-        break label570;
+      localObject = paramViewGroup.mYe;
+      if (localdck == null) {
+        break label577;
       }
-      if (localctl.Mjk != 0) {
-        break label476;
+      if (localdck.TtY != 0) {
+        break label483;
       }
-      paramView = localctl.UserName;
+      paramView = localdck.UserName;
     }
-    label391:
-    label570:
+    label386:
+    label398:
+    label577:
     for (;;)
     {
       ((TextView)localObject).setText(paramView);
-      paramViewGroup.kgH.setChecked(this.kgD[paramInt]);
+      paramViewGroup.mYg.setChecked(this.mYc[paramInt]);
       AppMethodBeat.o(131229);
       return localView;
       paramViewGroup = (a)paramView.getTag();
       localView = paramView;
       break;
-      label379:
-      paramViewGroup.kgG.setVisibility(8);
-      break label279;
-      localObject = localctl.oUJ;
+      paramViewGroup.mYf.setVisibility(8);
+      break label286;
+      localObject = localdck.rWI;
       if (localObject != null)
       {
         paramView = (View)localObject;
         if (((String)localObject).length() > 0) {
-          break label307;
+          break label314;
         }
       }
-      localObject = new p(localctl.rBx).toString();
+      localObject = new p(localdck.vhf).toString();
       if (localObject != null)
       {
         paramView = (View)localObject;
         if (((String)localObject).length() > 0) {
-          break label307;
+          break label314;
         }
       }
-      localObject = localctl.KPz;
+      localObject = localdck.RQx;
       if (localObject != null)
       {
         paramView = (View)localObject;
         if (((String)localObject).length() > 0) {
-          break label307;
+          break label314;
         }
       }
-      label470:
+      label477:
       paramView = "";
-      break label307;
-      label476:
-      if (localctl.Mjk == 2)
+      break label314;
+      label483:
+      if (localdck.TtY == 2)
       {
-        paramView = localctl.UserName;
+        paramView = localdck.UserName;
       }
       else
       {
-        if (localctl.Mjk == 1)
+        if (localdck.TtY == 1)
         {
-          paramView = localctl.UserName;
+          paramView = localdck.UserName;
           if (!Util.isNullOrNil(paramView))
           {
             paramView = paramView.split("@");
@@ -262,15 +264,15 @@ final class b
     }
   }
   
-  public final void vl(int paramInt)
+  public final void yp(int paramInt)
   {
     AppMethodBeat.i(131224);
-    if ((paramInt < 0) || (paramInt >= this.kgD.length))
+    if ((paramInt < 0) || (paramInt >= this.mYc.length))
     {
       AppMethodBeat.o(131224);
       return;
     }
-    boolean[] arrayOfBoolean = this.kgD;
+    boolean[] arrayOfBoolean = this.mYc;
     if (arrayOfBoolean[paramInt] == 0) {}
     for (int i = 1;; i = 0)
     {
@@ -283,17 +285,17 @@ final class b
   
   static final class a
   {
-    TextView gwR;
-    TextView kgE;
-    TextView kgF;
-    TextView kgG;
-    CheckBox kgH;
+    TextView jbe;
+    TextView mYd;
+    TextView mYe;
+    TextView mYf;
+    CheckBox mYg;
     int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.b
  * JD-Core Version:    0.7.0.1
  */

@@ -5,27 +5,27 @@ import com.tencent.mm.sdk.platformtools.SimpleObjectPool;
 
 public abstract class b
 {
-  private SimpleObjectPool<a> kZX = new SimpleObjectPool(100);
+  private SimpleObjectPool<a> nUi = new SimpleObjectPool(100);
   
   public void a(a parama)
   {
     if (parama == null) {
       return;
     }
-    this.kZX.release(parama);
+    this.nUi.release(parama);
   }
   
-  public final a bzl()
+  public final a bKA()
   {
-    a locala2 = (a)this.kZX.acquire();
+    a locala2 = (a)this.nUi.acquire();
     a locala1 = locala2;
     if (locala2 == null) {
-      locala1 = bzm();
+      locala1 = bKB();
     }
     return locala1;
   }
   
-  public abstract a bzm();
+  public abstract a bKB();
 }
 
 

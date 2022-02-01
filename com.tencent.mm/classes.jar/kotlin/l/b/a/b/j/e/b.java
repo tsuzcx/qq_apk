@@ -10,41 +10,41 @@ import kotlin.l.b.a.b.d.a.e.aa;
 
 public final class b
 {
-  public final kotlin.l.b.a.b.d.a.c.g TIV;
-  private final kotlin.l.b.a.b.d.a.a.g TqV;
+  private final kotlin.l.b.a.b.d.a.a.g aaTP;
+  public final kotlin.l.b.a.b.d.a.c.g ablx;
   
   public b(kotlin.l.b.a.b.d.a.c.g paramg, kotlin.l.b.a.b.d.a.a.g paramg1)
   {
     AppMethodBeat.i(60164);
-    this.TIV = paramg;
-    this.TqV = paramg1;
+    this.ablx = paramg;
+    this.aaTP = paramg1;
     AppMethodBeat.o(60164);
   }
   
   public final e c(kotlin.l.b.a.b.d.a.e.g paramg)
   {
     AppMethodBeat.i(60163);
-    p.h(paramg, "javaClass");
-    Object localObject1 = paramg.hBk();
-    if ((localObject1 != null) && (aa.TtD == null))
+    p.k(paramg, "javaClass");
+    Object localObject1 = paramg.iFy();
+    if ((localObject1 != null) && (aa.aaWx == null))
     {
-      paramg = this.TqV.n((kotlin.l.b.a.b.f.b)localObject1);
+      paramg = this.aaTP.n((kotlin.l.b.a.b.f.b)localObject1);
       AppMethodBeat.o(60163);
       return paramg;
     }
-    Object localObject2 = paramg.hCL();
+    Object localObject2 = paramg.iHd();
     if (localObject2 != null)
     {
       localObject1 = c((kotlin.l.b.a.b.d.a.e.g)localObject2);
       if (localObject1 != null)
       {
-        localObject1 = ((e)localObject1).hAN();
+        localObject1 = ((e)localObject1).iFa();
         if (localObject1 == null) {
           break label125;
         }
       }
       label125:
-      for (paramg = ((kotlin.l.b.a.b.j.f.h)localObject1).c(paramg.hAH(), (a)c.TnU);; paramg = null)
+      for (paramg = ((kotlin.l.b.a.b.j.f.h)localObject1).c(paramg.iEU(), (a)c.aaQO);; paramg = null)
       {
         localObject1 = paramg;
         if (!(paramg instanceof e)) {
@@ -62,10 +62,10 @@ public final class b
       AppMethodBeat.o(60163);
       return null;
     }
-    localObject2 = this.TIV;
-    localObject1 = ((kotlin.l.b.a.b.f.b)localObject1).hJf();
-    p.g(localObject1, "fqName.parent()");
-    localObject1 = (kotlin.l.b.a.b.d.a.c.a.h)j.kt(((kotlin.l.b.a.b.d.a.c.g)localObject2).f((kotlin.l.b.a.b.f.b)localObject1));
+    localObject2 = this.ablx;
+    localObject1 = ((kotlin.l.b.a.b.f.b)localObject1).iNz();
+    p.j(localObject1, "fqName.parent()");
+    localObject1 = (kotlin.l.b.a.b.d.a.c.a.h)j.lp(((kotlin.l.b.a.b.d.a.c.g)localObject2).f((kotlin.l.b.a.b.f.b)localObject1));
     if (localObject1 != null)
     {
       paramg = ((kotlin.l.b.a.b.d.a.c.a.h)localObject1).d(paramg);
@@ -78,7 +78,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.j.e.b
  * JD-Core Version:    0.7.0.1
  */

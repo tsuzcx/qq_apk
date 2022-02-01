@@ -11,12 +11,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.setting.b.f;
+import com.tencent.mm.plugin.setting.b.g;
+import com.tencent.mm.plugin.setting.b.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.widget.e;
-import com.tencent.mm.ui.widget.picker.b.a;
+import com.tencent.mm.ui.widget.g;
+import com.tencent.mm.ui.widget.picker.a.a;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -25,37 +28,37 @@ import java.util.Date;
 public class FixToolsUplogUI
   extends MMWizardActivity
 {
-  private static String BrH;
-  private Button CYB;
-  private TextView CYC;
-  private SimpleDateFormat CYD;
-  private LinearLayout oMS;
-  private SimpleDateFormat oMZ;
+  private static String Hma;
+  private Button Jeh;
+  private TextView Jei;
+  private SimpleDateFormat Jej;
+  private LinearLayout rOO;
+  private SimpleDateFormat rOV;
   
   public FixToolsUplogUI()
   {
     AppMethodBeat.i(73827);
-    this.CYD = new SimpleDateFormat("yyyy.MM.dd");
-    this.oMZ = new SimpleDateFormat("yyyyMMdd");
+    this.Jej = new SimpleDateFormat("yyyy.MM.dd");
+    this.rOV = new SimpleDateFormat("yyyyMMdd");
     AppMethodBeat.o(73827);
   }
   
   public int getLayoutId()
   {
-    return 2131494695;
+    return b.g.fix_tools_uplog;
   }
   
   public void initView()
   {
     AppMethodBeat.i(73830);
-    setMMTitle(2131760723);
-    this.CYB = ((Button)findViewById(2131301560));
-    this.oMS = ((LinearLayout)findViewById(2131298661));
-    this.CYC = ((TextView)findViewById(2131301555));
-    this.CYC.setText(this.CYD.format(new Date()));
-    BrH = this.oMZ.format(new Date());
-    this.CYB.setOnClickListener(new FixToolsUplogUI.2(this));
-    this.oMS.setOnClickListener(new FixToolsUplogUI.3(this));
+    setMMTitle(b.i.fix_tools_uplog);
+    this.Jeh = ((Button)findViewById(b.f.fix_tools_uplog_upload));
+    this.rOO = ((LinearLayout)findViewById(b.f.choose_time));
+    this.Jei = ((TextView)findViewById(b.f.fix_tools_log_time));
+    this.Jei.setText(this.Jej.format(new Date()));
+    Hma = this.rOV.format(new Date());
+    this.Jeh.setOnClickListener(new FixToolsUplogUI.2(this));
+    this.rOO.setOnClickListener(new FixToolsUplogUI.3(this));
     setBackBtn(new FixToolsUplogUI.4(this));
     AppMethodBeat.o(73830);
   }
@@ -70,8 +73,8 @@ public class FixToolsUplogUI
       return;
     }
     int i = getIntent().getIntExtra("entry_fix_tools_uplog", 5);
-    h.CyF.idkeyStat(873L, i, 1L, false);
-    h.CyF.idkeyStat(873L, 8L, 1L, false);
+    h.IzE.idkeyStat(873L, i, 1L, false);
+    h.IzE.idkeyStat(873L, 8L, 1L, false);
     initView();
     AppMethodBeat.o(73828);
   }
@@ -86,7 +89,7 @@ public class FixToolsUplogUI
     int j = ((Calendar)localObject).get(2);
     final long l3 = l1 / 86400000L * 86400000L + 57600000L - 1L;
     long l2 = l1 / 86400000L * 86400000L + 57600000L - 864000000L;
-    localObject = new e(getContext(), new DatePickerDialog.OnDateSetListener()
+    localObject = new g(getContext(), new DatePickerDialog.OnDateSetListener()
     {
       public final void onDateSet(DatePicker paramAnonymousDatePicker, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
@@ -100,12 +103,12 @@ public class FixToolsUplogUI
           return;
           paramAnonymousDatePicker = new StringBuffer().append(String.format("%02d", new Object[] { Integer.valueOf(paramAnonymousInt1) })).append(".").append(String.format("%02d", new Object[] { Integer.valueOf(paramAnonymousInt2 + 1) })).append(".").append(String.format("%02d", new Object[] { Integer.valueOf(paramAnonymousInt3) }));
           FixToolsUplogUI.a(FixToolsUplogUI.this).setText(paramAnonymousDatePicker);
-          FixToolsUplogUI.eU(String.format("%02d", new Object[] { Integer.valueOf(paramAnonymousInt1) }) + String.format("%02d", new Object[] { Integer.valueOf(paramAnonymousInt2 + 1) }) + String.format("%02d", new Object[] { Integer.valueOf(paramAnonymousInt3) }));
-          Log.i("MicroMsg.FixToolsUplogUI", "uplog choose time maxTime[%d], date[%s]", new Object[] { Long.valueOf(l3), FixToolsUplogUI.BrH });
+          FixToolsUplogUI.fO(String.format("%02d", new Object[] { Integer.valueOf(paramAnonymousInt1) }) + String.format("%02d", new Object[] { Integer.valueOf(paramAnonymousInt2 + 1) }) + String.format("%02d", new Object[] { Integer.valueOf(paramAnonymousInt3) }));
+          Log.i("MicroMsg.FixToolsUplogUI", "uplog choose time maxTime[%d], date[%s]", new Object[] { Long.valueOf(l3), FixToolsUplogUI.Hma });
         }
       }
-    }, i, j, ((Calendar)localObject).get(5), ((Calendar)localObject).getTimeInMillis(), (byte)0);
-    ((e)localObject).setCanceledOnTouchOutside(false);
+    }, i, j, ((Calendar)localObject).get(5), ((Calendar)localObject).getTimeInMillis(), '\000');
+    ((g)localObject).setCanceledOnTouchOutside(false);
     if (l2 > 0L) {
       l1 = l2;
     }
@@ -113,8 +116,8 @@ public class FixToolsUplogUI
     {
       for (;;)
       {
-        ((e)localObject).Ob(l1);
-        ((e)localObject).Oa(l3);
+        ((g)localObject).Wn(l1);
+        ((g)localObject).Wm(l3);
         AppMethodBeat.o(73829);
         return localObject;
         l1 = 0L;
@@ -137,7 +140,7 @@ public class FixToolsUplogUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.fixtools.FixToolsUplogUI
  * JD-Core Version:    0.7.0.1
  */

@@ -8,55 +8,58 @@ import com.tencent.mm.plugin.game.luggage.d.a.c;
 import com.tencent.mm.plugin.game.luggage.d.a.e;
 import com.tencent.mm.plugin.game.luggage.d.a.f;
 import com.tencent.mm.plugin.game.luggage.d.a.g;
+import com.tencent.mm.plugin.game.luggage.d.a.h;
 import com.tencent.mm.plugin.game.luggage.d.a.i;
-import com.tencent.mm.plugin.game.luggage.d.a.j;
 import com.tencent.mm.plugin.game.luggage.d.a.k;
 import com.tencent.mm.plugin.game.luggage.d.a.l;
+import com.tencent.mm.plugin.game.luggage.d.a.m;
+import com.tencent.mm.plugin.game.luggage.d.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import org.json.JSONArray;
 
 public final class d
   implements com.tencent.mm.plugin.game.luggage.a.a
 {
-  private static void azB(String paramString)
+  private static void aJl(String paramString)
   {
     AppMethodBeat.i(82990);
     Log.i("MicroMsg.LuggageGameService", "clearGameCache key:%s", new Object[] { paramString });
     JSONArray localJSONArray = new JSONArray();
     localJSONArray.put(paramString);
-    com.tencent.mm.plugin.webview.b.b.gam().b("wx62d9035fd4fd2059", localJSONArray);
+    com.tencent.mm.plugin.webview.b.b.gTg().b("wx62d9035fd4fd2059", localJSONArray);
     AppMethodBeat.o(82990);
   }
   
-  public final boolean azA(String paramString)
+  public final String aJj(String paramString)
+  {
+    AppMethodBeat.i(82988);
+    com.tencent.mm.plugin.webview.b.b.gTg();
+    paramString = com.tencent.mm.plugin.webview.b.b.bjM(paramString);
+    AppMethodBeat.o(82988);
+    return paramString;
+  }
+  
+  public final boolean aJk(String paramString)
   {
     AppMethodBeat.i(82989);
     if (MMApplicationContext.isMainProcess()) {
-      azB(paramString);
+      aJl(paramString);
     }
     for (;;)
     {
       AppMethodBeat.o(82989);
       return false;
-      com.tencent.mm.ipcinvoker.h.a(MainProcessIPCService.dkO, new IPCString(paramString), a.class, null);
+      com.tencent.mm.ipcinvoker.j.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramString), a.class, null);
     }
   }
   
-  public final String azz(String paramString)
+  public final Map<String, Class> ewv()
   {
-    AppMethodBeat.i(82988);
-    com.tencent.mm.plugin.webview.b.b.gam();
-    paramString = com.tencent.mm.plugin.webview.b.b.aXS(paramString);
-    AppMethodBeat.o(82988);
-    return paramString;
-  }
-  
-  public final Map<String, Class> dTm()
-  {
-    AppMethodBeat.i(186826);
+    AppMethodBeat.i(231670);
     HashMap localHashMap = new HashMap();
     localHashMap.put("addDownloadTaskStraight", com.tencent.mm.plugin.game.luggage.d.a.a.class);
     localHashMap.put("bookDownloadGame", com.tencent.mm.plugin.game.luggage.d.a.b.class);
@@ -65,18 +68,29 @@ public final class d
     localHashMap.put("getInstallState", e.class);
     localHashMap.put("installDownloadTask", f.class);
     localHashMap.put("jumpDownloaderWidget", g.class);
-    localHashMap.put("launchApplication", com.tencent.mm.plugin.game.luggage.d.a.h.class);
-    localHashMap.put("pauseDownloadTask", i.class);
-    localHashMap.put("queryDownloadTask", j.class);
-    localHashMap.put("resumeDownloadTask", k.class);
-    localHashMap.put("startGameWebview", l.class);
-    localHashMap.put("startGameWebView", l.class);
-    AppMethodBeat.o(186826);
+    localHashMap.put("launchApplication", h.class);
+    localHashMap.put("pauseDownloadTask", k.class);
+    localHashMap.put("queryDownloadTask", l.class);
+    localHashMap.put("resumeDownloadTask", m.class);
+    localHashMap.put("startGameWebview", n.class);
+    localHashMap.put("startGameWebView", n.class);
+    localHashMap.put("openGameCenter", i.class);
+    localHashMap.put("openGameTabHome", com.tencent.mm.plugin.game.luggage.d.a.j.class);
+    AppMethodBeat.o(231670);
     return localHashMap;
   }
   
+  public final LinkedList<Class> eww()
+  {
+    AppMethodBeat.i(231674);
+    LinkedList localLinkedList = new LinkedList(com.tencent.mm.plugin.game.luggage.i.b.ewB());
+    AppMethodBeat.o(231674);
+    return localLinkedList;
+  }
+  
+  @com.tencent.mm.ipcinvoker.c.a
   static class a
-    implements com.tencent.mm.ipcinvoker.b<IPCString, Bundle>
+    implements com.tencent.mm.ipcinvoker.d<IPCString, Bundle>
   {}
 }
 

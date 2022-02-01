@@ -5,13 +5,13 @@ import kotlin.g.a.a;
 import kotlin.g.a.b;
 import kotlin.g.b.p;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"createFailure", "", "exception", "", "runCatching", "Lkotlin/Result;", "R", "block", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "fold", "T", "onSuccess", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "value", "onFailure", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "getOrDefault", "defaultValue", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "getOrElse", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "getOrThrow", "(Ljava/lang/Object;)Ljava/lang/Object;", "map", "transform", "mapCatching", "action", "", "recover", "recoverCatching", "Lkotlin/ExtensionFunctionType;", "throwOnFailure", "(Ljava/lang/Object;)V", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"createFailure", "", "exception", "", "runCatching", "Lkotlin/Result;", "R", "block", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "fold", "T", "onSuccess", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "value", "onFailure", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "getOrDefault", "defaultValue", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "getOrElse", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "getOrThrow", "(Ljava/lang/Object;)Ljava/lang/Object;", "map", "transform", "mapCatching", "action", "", "recover", "recoverCatching", "Lkotlin/ExtensionFunctionType;", "throwOnFailure", "(Ljava/lang/Object;)V", "kotlin-stdlib"})
 public final class ResultKt
 {
   public static final Object createFailure(Throwable paramThrowable)
   {
     AppMethodBeat.i(129575);
-    p.h(paramThrowable, "exception");
+    p.k(paramThrowable, "exception");
     paramThrowable = new Result.Failure(paramThrowable);
     AppMethodBeat.o(129575);
     return paramThrowable;
@@ -19,77 +19,77 @@ public final class ResultKt
   
   private static final <R, T> R fold(Object paramObject, b<? super T, ? extends R> paramb, b<? super Throwable, ? extends R> paramb1)
   {
-    AppMethodBeat.i(206198);
+    AppMethodBeat.i(217013);
     Throwable localThrowable = Result.exceptionOrNull-impl(paramObject);
     if (localThrowable == null)
     {
       paramObject = paramb.invoke(paramObject);
-      AppMethodBeat.o(206198);
+      AppMethodBeat.o(217013);
       return paramObject;
     }
     paramObject = paramb1.invoke(localThrowable);
-    AppMethodBeat.o(206198);
+    AppMethodBeat.o(217013);
     return paramObject;
   }
   
   private static final <R, T extends R> R getOrDefault(Object paramObject, R paramR)
   {
-    AppMethodBeat.i(206197);
+    AppMethodBeat.i(217012);
     if (Result.isFailure-impl(paramObject))
     {
-      AppMethodBeat.o(206197);
+      AppMethodBeat.o(217012);
       return paramR;
     }
-    AppMethodBeat.o(206197);
+    AppMethodBeat.o(217012);
     return paramObject;
   }
   
   private static final <R, T extends R> R getOrElse(Object paramObject, b<? super Throwable, ? extends R> paramb)
   {
-    AppMethodBeat.i(206196);
+    AppMethodBeat.i(217011);
     Throwable localThrowable = Result.exceptionOrNull-impl(paramObject);
     if (localThrowable == null)
     {
-      AppMethodBeat.o(206196);
+      AppMethodBeat.o(217011);
       return paramObject;
     }
     paramObject = paramb.invoke(localThrowable);
-    AppMethodBeat.o(206196);
+    AppMethodBeat.o(217011);
     return paramObject;
   }
   
   private static final <T> T getOrThrow(Object paramObject)
   {
-    AppMethodBeat.i(206195);
+    AppMethodBeat.i(217010);
     throwOnFailure(paramObject);
-    AppMethodBeat.o(206195);
+    AppMethodBeat.o(217010);
     return paramObject;
   }
   
   private static final <R, T> Object map(Object paramObject, b<? super T, ? extends R> paramb)
   {
-    AppMethodBeat.i(206199);
+    AppMethodBeat.i(217015);
     if (Result.isSuccess-impl(paramObject))
     {
       Result.Companion localCompanion = Result.Companion;
       paramObject = Result.constructor-impl(paramb.invoke(paramObject));
-      AppMethodBeat.o(206199);
+      AppMethodBeat.o(217015);
       return paramObject;
     }
     paramObject = Result.constructor-impl(paramObject);
-    AppMethodBeat.o(206199);
+    AppMethodBeat.o(217015);
     return paramObject;
   }
   
   private static final <R, T> Object mapCatching(Object paramObject, b<? super T, ? extends R> paramb)
   {
-    AppMethodBeat.i(206200);
+    AppMethodBeat.i(217017);
     if (Result.isSuccess-impl(paramObject)) {
       try
       {
         Result.Companion localCompanion = Result.Companion;
         paramObject = Result.constructor-impl(paramb.invoke(paramObject));
-        AppMethodBeat.o(206200);
+        AppMethodBeat.o(217017);
         return paramObject;
       }
       catch (Throwable paramObject)
@@ -102,60 +102,60 @@ public final class ResultKt
       }
     }
     paramObject = Result.constructor-impl(paramObject);
-    AppMethodBeat.o(206200);
+    AppMethodBeat.o(217017);
     return paramObject;
   }
   
   private static final <T> Object onFailure(Object paramObject, b<? super Throwable, x> paramb)
   {
-    AppMethodBeat.i(206203);
+    AppMethodBeat.i(217020);
     Throwable localThrowable = Result.exceptionOrNull-impl(paramObject);
     if (localThrowable != null) {
       paramb.invoke(localThrowable);
     }
-    AppMethodBeat.o(206203);
+    AppMethodBeat.o(217020);
     return paramObject;
   }
   
   private static final <T> Object onSuccess(Object paramObject, b<? super T, x> paramb)
   {
-    AppMethodBeat.i(206204);
+    AppMethodBeat.i(217021);
     if (Result.isSuccess-impl(paramObject)) {
       paramb.invoke(paramObject);
     }
-    AppMethodBeat.o(206204);
+    AppMethodBeat.o(217021);
     return paramObject;
   }
   
   private static final <R, T extends R> Object recover(Object paramObject, b<? super Throwable, ? extends R> paramb)
   {
-    AppMethodBeat.i(206201);
+    AppMethodBeat.i(217018);
     Throwable localThrowable = Result.exceptionOrNull-impl(paramObject);
     if (localThrowable == null)
     {
-      AppMethodBeat.o(206201);
+      AppMethodBeat.o(217018);
       return paramObject;
     }
     paramObject = Result.Companion;
     paramObject = Result.constructor-impl(paramb.invoke(localThrowable));
-    AppMethodBeat.o(206201);
+    AppMethodBeat.o(217018);
     return paramObject;
   }
   
   private static final <R, T extends R> Object recoverCatching(Object paramObject, b<? super Throwable, ? extends R> paramb)
   {
-    AppMethodBeat.i(206202);
+    AppMethodBeat.i(217019);
     Throwable localThrowable = Result.exceptionOrNull-impl(paramObject);
     if (localThrowable == null)
     {
-      AppMethodBeat.o(206202);
+      AppMethodBeat.o(217019);
       return paramObject;
     }
     try
     {
       paramObject = Result.Companion;
       paramObject = Result.constructor-impl(paramb.invoke(localThrowable));
-      AppMethodBeat.o(206202);
+      AppMethodBeat.o(217019);
       return paramObject;
     }
     catch (Throwable paramObject)
@@ -170,12 +170,12 @@ public final class ResultKt
   
   private static final <T, R> Object runCatching(T paramT, b<? super T, ? extends R> paramb)
   {
-    AppMethodBeat.i(206194);
+    AppMethodBeat.i(217009);
     try
     {
       Result.Companion localCompanion = Result.Companion;
       paramT = Result.constructor-impl(paramb.invoke(paramT));
-      AppMethodBeat.o(206194);
+      AppMethodBeat.o(217009);
       return paramT;
     }
     catch (Throwable paramT)
@@ -190,12 +190,12 @@ public final class ResultKt
   
   private static final <R> Object runCatching(a<? extends R> parama)
   {
-    AppMethodBeat.i(206193);
+    AppMethodBeat.i(217008);
     try
     {
       localCompanion = Result.Companion;
       parama = Result.constructor-impl(parama.invoke());
-      AppMethodBeat.o(206193);
+      AppMethodBeat.o(217008);
       return parama;
     }
     catch (Throwable parama)
@@ -217,7 +217,7 @@ public final class ResultKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlin.ResultKt
  * JD-Core Version:    0.7.0.1
  */

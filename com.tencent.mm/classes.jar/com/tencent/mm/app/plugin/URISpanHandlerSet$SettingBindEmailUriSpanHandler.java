@@ -17,14 +17,9 @@ class URISpanHandlerSet$SettingBindEmailUriSpanHandler
     super(paramURISpanHandlerSet);
   }
   
-  final int[] Xp()
-  {
-    return new int[] { 7 };
-  }
-  
   final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
   {
-    AppMethodBeat.i(231446);
+    AppMethodBeat.i(269054);
     if (paramu.type == 7)
     {
       if (parami != null) {
@@ -32,15 +27,15 @@ class URISpanHandlerSet$SettingBindEmailUriSpanHandler
       }
       paramView = LauncherUI.getInstance();
       if (paramView != null) {
-        paramView.ODR.getMainTabUI().blU("tab_settings");
+        paramView.VXk.getMainTabUI().byt("tab_settings");
       }
       if (parami != null) {
         parami.b(paramu);
       }
-      AppMethodBeat.o(231446);
+      AppMethodBeat.o(269054);
       return true;
     }
-    AppMethodBeat.o(231446);
+    AppMethodBeat.o(269054);
     return false;
   }
   
@@ -49,7 +44,12 @@ class URISpanHandlerSet$SettingBindEmailUriSpanHandler
     return false;
   }
   
-  final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
+  final int[] abR()
+  {
+    return new int[] { 7 };
+  }
+  
+  final com.tencent.mm.pluginsdk.ui.applet.u hi(String paramString)
   {
     AppMethodBeat.i(19737);
     if (paramString.trim().startsWith("weixin://setting/bindemail"))

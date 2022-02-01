@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.appbrand.keylogger.stepview;
 
 import android.content.Context;
-import android.support.v4.content.b;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +8,10 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import androidx.core.content.a;
+import com.tencent.luggage.a.b;
+import com.tencent.luggage.a.e;
+import com.tencent.luggage.a.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
@@ -16,14 +19,14 @@ public class VerticalStepView
   extends LinearLayout
   implements VerticalStepViewIndicator.a
 {
-  private TextView Ws;
-  private int mAk;
-  private RelativeLayout mPK;
-  public VerticalStepViewIndicator mPL;
-  public List<c> mPM;
-  private int mPN;
-  private int mPO;
-  private int mPP;
+  private RelativeLayout pQD;
+  public VerticalStepViewIndicator pQE;
+  public List<c> pQF;
+  private int pQG;
+  private int pQH;
+  private int pQI;
+  private int pyF;
+  private TextView rR;
   
   public VerticalStepView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,57 +36,57 @@ public class VerticalStepView
   public VerticalStepView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(221336);
-    this.mPO = b.n(getContext(), 2131101299);
-    this.mPP = b.n(getContext(), 17170443);
-    this.mAk = 14;
-    paramContext = LayoutInflater.from(getContext()).inflate(2131497103, this);
-    this.mPL = ((VerticalStepViewIndicator)paramContext.findViewById(2131308417));
-    this.mPL.setOnDrawListener(this);
-    this.mPK = ((RelativeLayout)paramContext.findViewById(2131307121));
-    AppMethodBeat.o(221336);
+    AppMethodBeat.i(208121);
+    this.pQH = a.w(getContext(), a.b.uncompleted_text_color);
+    this.pQI = a.w(getContext(), 17170443);
+    this.pyF = 14;
+    paramContext = LayoutInflater.from(getContext()).inflate(a.f.widget_vertical_stepsview, this);
+    this.pQE = ((VerticalStepViewIndicator)paramContext.findViewById(a.e.steps_indicator));
+    this.pQE.setOnDrawListener(this);
+    this.pQD = ((RelativeLayout)paramContext.findViewById(a.e.rl_text_container));
+    AppMethodBeat.o(208121);
   }
   
-  public final void bNc()
+  public final void bZu()
   {
-    AppMethodBeat.i(221338);
-    if (this.mPK != null)
+    AppMethodBeat.i(208124);
+    if (this.pQD != null)
     {
-      this.mPK.removeAllViews();
-      List localList = this.mPL.getCircleCenterPointPositionList();
-      if ((this.mPM != null) && (localList != null) && (localList.size() > 0))
+      this.pQD.removeAllViews();
+      List localList = this.pQE.getCircleCenterPointPositionList();
+      if ((this.pQF != null) && (localList != null) && (localList.size() > 0))
       {
         int i = 0;
-        if (i < this.mPM.size())
+        if (i < this.pQF.size())
         {
-          this.Ws = new TextView(getContext());
-          this.Ws.setTextSize(2, this.mAk);
-          this.Ws.setText(((c)this.mPM.get(i)).mPJ);
-          this.Ws.setY(((Float)localList.get(i)).floatValue() - this.mPL.getCircleRadius() / 2.0F);
-          this.Ws.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-          if (i <= this.mPN)
+          this.rR = new TextView(getContext());
+          this.rR.setTextSize(2, this.pyF);
+          this.rR.setText(((c)this.pQF.get(i)).pQC);
+          this.rR.setY(((Float)localList.get(i)).floatValue() - this.pQE.getCircleRadius() / 2.0F);
+          this.rR.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+          if (i <= this.pQG)
           {
-            this.Ws.setTypeface(null, 1);
-            this.Ws.setTextColor(this.mPP);
+            this.rR.setTypeface(null, 1);
+            this.rR.setTextColor(this.pQI);
           }
           for (;;)
           {
-            this.mPK.addView(this.Ws);
+            this.pQD.addView(this.rR);
             i += 1;
             break;
-            this.Ws.setTextColor(this.mPO);
+            this.rR.setTextColor(this.pQH);
           }
         }
       }
     }
-    AppMethodBeat.o(221338);
+    AppMethodBeat.o(208124);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(221337);
+    AppMethodBeat.i(208122);
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(221337);
+    AppMethodBeat.o(208122);
   }
 }
 

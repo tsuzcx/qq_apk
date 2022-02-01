@@ -4,7 +4,7 @@ import android.opengl.GLES20;
 import android.opengl.Matrix;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.structs.TXSVideoFrame;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -59,7 +59,7 @@ public class TXCYuvTextureRender
   {
     AppMethodBeat.i(16749);
     TAG = TXCYuvTextureRender.class.getSimpleName();
-    f.f();
+    h.f();
     AppMethodBeat.o(16749);
   }
   
@@ -287,7 +287,7 @@ public class TXCYuvTextureRender
   
   public void flipVertical(boolean paramBoolean)
   {
-    AppMethodBeat.i(222345);
+    AppMethodBeat.i(220899);
     float[] arrayOfFloat;
     if (paramBoolean)
     {
@@ -315,7 +315,7 @@ public class TXCYuvTextureRender
       this.mTextureBuffer = ByteBuffer.allocateDirect(32).order(ByteOrder.nativeOrder()).asFloatBuffer();
       this.mTextureBuffer.put(arrayOfFloat);
       this.mTextureBuffer.position(0);
-      AppMethodBeat.o(222345);
+      AppMethodBeat.o(220899);
       return;
       arrayOfFloat = new float[8];
       float[] tmp100_99 = arrayOfFloat;
@@ -369,7 +369,7 @@ public class TXCYuvTextureRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.renderer.TXCYuvTextureRender
  * JD-Core Version:    0.7.0.1
  */

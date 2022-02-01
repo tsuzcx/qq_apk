@@ -14,15 +14,15 @@ import java.util.Iterator;
 public final class d
   extends MAutoStorage<c>
 {
+  private static final String[] DSJ;
   public static final String[] SQL_CREATE;
-  private static final String[] ysF;
   public ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(25547);
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(c.info, "IPCallAddressItem") };
-    ysF = new String[] { "*", "rowid" };
+    DSJ = new String[] { "*", "rowid" };
     AppMethodBeat.o(25547);
   }
   
@@ -32,18 +32,18 @@ public final class d
     this.db = paramISQLiteDatabase;
   }
   
-  private Cursor aBY(String paramString)
+  private Cursor aMf(String paramString)
   {
     AppMethodBeat.i(25544);
-    paramString = this.db.query("IPCallAddressItem", ysF, "systemAddressBookUsername LIKE ? or sortKey LIKE ?", new String[] { "%" + paramString + "%", "%" + paramString + "%" }, null, null, "upper(sortKey) asc");
+    paramString = this.db.query("IPCallAddressItem", DSJ, "systemAddressBookUsername LIKE ? or sortKey LIKE ?", new String[] { "%" + paramString + "%", "%" + paramString + "%" }, null, null, "upper(sortKey) asc");
     AppMethodBeat.o(25544);
     return paramString;
   }
   
-  public final c GR(long paramLong)
+  public final c Og(long paramLong)
   {
     AppMethodBeat.i(25540);
-    localCursor = this.db.query("IPCallAddressItem", ysF, "rowid=?", new String[] { String.valueOf(paramLong) }, null, null, null, 2);
+    localCursor = this.db.query("IPCallAddressItem", DSJ, "rowid=?", new String[] { String.valueOf(paramLong) }, null, null, null, 2);
     try
     {
       if (localCursor.moveToFirst())
@@ -78,7 +78,7 @@ public final class d
     return null;
   }
   
-  public final void GS(long paramLong)
+  public final void Oh(long paramLong)
   {
     AppMethodBeat.i(25546);
     if (((this.db instanceof h)) && (paramLong != -1L)) {
@@ -87,7 +87,7 @@ public final class d
     AppMethodBeat.o(25546);
   }
   
-  public final c aBV(String paramString)
+  public final c aMc(String paramString)
   {
     AppMethodBeat.i(25538);
     if (Util.isNullOrNil(paramString))
@@ -95,7 +95,7 @@ public final class d
       AppMethodBeat.o(25538);
       return null;
     }
-    paramString = this.db.query("IPCallAddressItem", ysF, "contactId=?", new String[] { paramString }, null, null, null, 2);
+    paramString = this.db.query("IPCallAddressItem", DSJ, "contactId=?", new String[] { paramString }, null, null, null, 2);
     try
     {
       if (paramString.moveToFirst())
@@ -130,7 +130,7 @@ public final class d
     return null;
   }
   
-  public final c aBW(String paramString)
+  public final c aMd(String paramString)
   {
     AppMethodBeat.i(25539);
     if (Util.isNullOrNil(paramString))
@@ -138,7 +138,7 @@ public final class d
       AppMethodBeat.o(25539);
       return null;
     }
-    paramString = this.db.query("IPCallAddressItem", ysF, "systemAddressBookUsername=?", new String[] { paramString }, null, null, null, 2);
+    paramString = this.db.query("IPCallAddressItem", DSJ, "systemAddressBookUsername=?", new String[] { paramString }, null, null, null, 2);
     try
     {
       if (paramString.moveToFirst())
@@ -173,7 +173,7 @@ public final class d
     return null;
   }
   
-  public final Cursor aBX(String paramString)
+  public final Cursor aMe(String paramString)
   {
     AppMethodBeat.i(25543);
     System.currentTimeMillis();
@@ -188,7 +188,7 @@ public final class d
         }
       }
     }
-    for (paramString = aBY(paramString);; paramString = this.db.query("IPCallAddressItem", ysF, "contactId IN ".concat(String.valueOf(paramString)), null, null, null, "upper(sortKey) asc"))
+    for (paramString = aMf(paramString);; paramString = this.db.query("IPCallAddressItem", DSJ, "contactId IN ".concat(String.valueOf(paramString)), null, null, null, "upper(sortKey) asc"))
     {
       System.currentTimeMillis();
       AppMethodBeat.o(25543);
@@ -198,8 +198,8 @@ public final class d
       i = 1;
       break label33;
       label67:
-      Object localObject1 = a.aCC(paramString);
-      paramString = aBY(paramString);
+      Object localObject1 = a.aMJ(paramString);
+      paramString = aMf(paramString);
       try
       {
         if (paramString.moveToFirst()) {
@@ -257,10 +257,10 @@ public final class d
     return -1L;
   }
   
-  public final ArrayList<c> eaY()
+  public final ArrayList<c> eJW()
   {
     AppMethodBeat.i(25541);
-    Cursor localCursor = this.db.query("IPCallAddressItem", ysF, null, null, null, null, null, 2);
+    Cursor localCursor = this.db.query("IPCallAddressItem", DSJ, null, null, null, null, null, 2);
     if (localCursor != null) {}
     try
     {
@@ -293,17 +293,17 @@ public final class d
     }
   }
   
-  public final Cursor eaZ()
+  public final Cursor eJX()
   {
     AppMethodBeat.i(25542);
-    Cursor localCursor = this.db.query("IPCallAddressItem", ysF, null, null, null, null, "upper(sortKey) asc");
+    Cursor localCursor = this.db.query("IPCallAddressItem", DSJ, null, null, null, null, "upper(sortKey) asc");
     AppMethodBeat.o(25542);
     return localCursor;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.h.d
  * JD-Core Version:    0.7.0.1
  */

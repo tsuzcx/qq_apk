@@ -1,53 +1,28 @@
 package com.b.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.ByteArrayOutputStream;
-import java.util.zip.GZIPOutputStream;
 
-final class g
+public final class g
+  extends e
 {
-  protected static byte[] compress(byte[] paramArrayOfByte)
+  private final long aFQ;
+  
+  public g(long paramLong)
   {
-    AppMethodBeat.i(87928);
-    Object localObject4 = null;
-    Object localObject3 = null;
-    localObject1 = localObject3;
-    localObject2 = localObject4;
-    try
+    AppMethodBeat.i(183628);
+    if (paramLong <= 0L)
     {
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(paramArrayOfByte.length);
-      localObject1 = localObject3;
-      localObject2 = localObject4;
-      GZIPOutputStream localGZIPOutputStream = new GZIPOutputStream(localByteArrayOutputStream);
-      localObject1 = localObject3;
-      localObject2 = localObject4;
-      localGZIPOutputStream.write(paramArrayOfByte);
-      localObject1 = localObject3;
-      localObject2 = localObject4;
-      localGZIPOutputStream.close();
-      localObject1 = localObject3;
-      localObject2 = localObject4;
-      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
-      localObject1 = paramArrayOfByte;
-      localObject2 = paramArrayOfByte;
-      localByteArrayOutputStream.close();
+      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Max size must be positive number!");
+      AppMethodBeat.o(183628);
+      throw localIllegalArgumentException;
     }
-    catch (Error paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte = (byte[])localObject1;
-      }
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte = (byte[])localObject2;
-      }
-    }
-    AppMethodBeat.o(87928);
-    return paramArrayOfByte;
+    this.aFQ = paramLong;
+    AppMethodBeat.o(183628);
+  }
+  
+  protected final boolean t(long paramLong)
+  {
+    return paramLong <= this.aFQ;
   }
 }
 

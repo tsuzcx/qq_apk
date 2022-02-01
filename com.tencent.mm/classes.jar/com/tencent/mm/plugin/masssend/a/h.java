@@ -1,16 +1,15 @@
 package com.tencent.mm.plugin.masssend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.c;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.cg;
-import com.tencent.mm.model.cj;
-import com.tencent.mm.model.cj.a;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.c;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.model.ck;
+import com.tencent.mm.model.ck.a;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.protocal.protobuf.db;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -18,14 +17,14 @@ import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class h
-  implements bd
+  implements be
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private cj.a zjF;
-  private b znv;
-  private c znw;
-  private i znx;
-  private g zny;
+  private ck.a EOW;
+  private b ESM;
+  private c ESN;
+  private i ESO;
+  private g ESP;
   
   static
   {
@@ -45,19 +44,19 @@ public final class h
   public h()
   {
     AppMethodBeat.i(26366);
-    this.znx = new i();
-    this.zny = new g();
-    this.zjF = new cj.a()
+    this.ESO = new i();
+    this.ESP = new g();
+    this.EOW = new ck.a()
     {
       public final void a(h.a paramAnonymousa)
       {
         AppMethodBeat.i(26365);
-        paramAnonymousa = z.a(paramAnonymousa.heO.KHn);
+        paramAnonymousa = z.a(paramAnonymousa.jQG.RIF);
         Log.i("MicroMsg.SubCoreMassSend", "MassSendTopConfXml:".concat(String.valueOf(paramAnonymousa)));
-        h.ehG().aDM(paramAnonymousa);
-        h.ehG().ehB();
-        h.ehG();
-        c.Ha(Util.nowMilliSecond());
+        h.eRn().aNW(paramAnonymousa);
+        h.eRn().eRi();
+        h.eRn();
+        c.Op(Util.nowMilliSecond());
         AppMethodBeat.o(26365);
       }
       
@@ -66,43 +65,43 @@ public final class h
     AppMethodBeat.o(26366);
   }
   
-  private static h ehE()
+  private static h eRl()
   {
     AppMethodBeat.i(26367);
-    bg.aVz();
-    h localh2 = (h)cg.KG("plugin.masssend");
+    bh.beC();
+    h localh2 = (h)ch.RZ("plugin.masssend");
     h localh1 = localh2;
     if (localh2 == null)
     {
       localh1 = new h();
-      bg.aVz().a("plugin.favorite", localh1);
+      bh.beC().a("plugin.favorite", localh1);
     }
     AppMethodBeat.o(26367);
     return localh1;
   }
   
-  public static b ehF()
+  public static b eRm()
   {
     AppMethodBeat.i(26368);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (ehE().znv == null)
+    com.tencent.mm.kernel.h.aHE().aGH();
+    if (eRl().ESM == null)
     {
-      localObject = ehE();
-      bg.aVF();
-      ((h)localObject).znv = new b(com.tencent.mm.model.c.getDataDB());
+      localObject = eRl();
+      bh.beI();
+      ((h)localObject).ESM = new b(com.tencent.mm.model.c.getDataDB());
     }
-    Object localObject = ehE().znv;
+    Object localObject = eRl().ESM;
     AppMethodBeat.o(26368);
     return localObject;
   }
   
-  public static c ehG()
+  public static c eRn()
   {
     AppMethodBeat.i(26369);
-    if (ehE().znw == null) {
-      ehE().znw = new c();
+    if (eRl().ESN == null) {
+      eRl().ESN = new c();
     }
-    c localc = ehE().znw;
+    c localc = eRl().ESN;
     AppMethodBeat.o(26369);
     return localc;
   }
@@ -117,18 +116,18 @@ public final class h
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(26371);
-    bg.getSysCmdMsgExtension().a("masssendapp", this.zjF, false);
-    EventCenter.instance.addListener(this.znx);
-    EventCenter.instance.addListener(this.zny);
+    bh.getSysCmdMsgExtension().a("masssendapp", this.EOW, false);
+    EventCenter.instance.addListener(this.ESO);
+    EventCenter.instance.addListener(this.ESP);
     AppMethodBeat.o(26371);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(26370);
-    bg.getSysCmdMsgExtension().b("masssendapp", this.zjF, false);
-    EventCenter.instance.removeListener(this.znx);
-    EventCenter.instance.removeListener(this.zny);
+    bh.getSysCmdMsgExtension().b("masssendapp", this.EOW, false);
+    EventCenter.instance.removeListener(this.ESO);
+    EventCenter.instance.removeListener(this.ESP);
     AppMethodBeat.o(26370);
   }
   
@@ -136,7 +135,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.a.h
  * JD-Core Version:    0.7.0.1
  */

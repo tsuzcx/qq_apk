@@ -1,6 +1,6 @@
 package com.tencent.sqlitelint.util;
 
-import com.tencent.matrix.g.c;
+import com.tencent.matrix.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class SLog
@@ -100,7 +100,7 @@ public class SLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.sqlitelint.util.SLog
  * JD-Core Version:    0.7.0.1
  */

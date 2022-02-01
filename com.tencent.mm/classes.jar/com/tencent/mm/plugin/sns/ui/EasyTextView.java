@@ -7,12 +7,13 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.i.c;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 
 public class EasyTextView
   extends View
 {
-  private static final Paint iuG;
+  private static final Paint ljP;
   private static int textSize;
   private Context context;
   private String text;
@@ -20,11 +21,11 @@ public class EasyTextView
   static
   {
     AppMethodBeat.i(97853);
-    iuG = new Paint();
+    ljP = new Paint();
     textSize = -1;
-    iuG.setAntiAlias(true);
-    iuG.setFilterBitmap(true);
-    iuG.setColor(737373);
+    ljP.setAntiAlias(true);
+    ljP.setFilterBitmap(true);
+    ljP.setColor(737373);
     AppMethodBeat.o(97853);
   }
   
@@ -37,9 +38,9 @@ public class EasyTextView
     if (textSize == -1)
     {
       textSize = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, 12.0F);
-      iuG.setTextSize(textSize);
+      ljP.setTextSize(textSize);
     }
-    iuG.setColor(this.context.getResources().getColor(2131100042));
+    ljP.setColor(this.context.getResources().getColor(i.c.black));
     AppMethodBeat.o(97850);
   }
   
@@ -48,7 +49,7 @@ public class EasyTextView
     AppMethodBeat.i(97852);
     super.draw(paramCanvas);
     int i = getHeight();
-    paramCanvas.drawText(this.text, 0.0F, i / 2, iuG);
+    paramCanvas.drawText(this.text, 0.0F, i / 2, ljP);
     AppMethodBeat.o(97852);
   }
   
@@ -64,7 +65,7 @@ public class EasyTextView
   public void setTextSize(int paramInt)
   {
     AppMethodBeat.i(97851);
-    iuG.setTextSize(paramInt);
+    ljP.setTextSize(paramInt);
     AppMethodBeat.o(97851);
   }
 }

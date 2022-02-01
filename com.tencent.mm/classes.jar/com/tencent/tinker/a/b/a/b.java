@@ -5,32 +5,15 @@ import com.tencent.tinker.a.b.b.a;
 
 public final class b
 {
-  public static short OH(long paramLong)
+  public static short WX(long paramLong)
   {
     if (paramLong != (short)(int)paramLong) {
-      throw new j("Literal out of range: " + a.OI(paramLong));
+      throw new j("Literal out of range: " + a.WY(paramLong));
     }
     return (short)(int)paramLong;
   }
   
-  public static short W(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if ((paramInt1 & 0xFFFFFFF0) != 0) {
-      throw new IllegalArgumentException("bogus nibble0");
-    }
-    if ((paramInt2 & 0xFFFFFFF0) != 0) {
-      throw new IllegalArgumentException("bogus nibble1");
-    }
-    if ((paramInt3 & 0xFFFFFFF0) != 0) {
-      throw new IllegalArgumentException("bogus nibble2");
-    }
-    if ((paramInt4 & 0xFFFFFFF0) != 0) {
-      throw new IllegalArgumentException("bogus nibble3");
-    }
-    return (short)(paramInt2 << 4 | paramInt1 | paramInt3 << 8 | paramInt4 << 12);
-  }
-  
-  public static short arS(int paramInt)
+  public static short aBG(int paramInt)
   {
     if ((0xFFFF0000 & paramInt) != 0) {
       throw new IllegalArgumentException("bogus unsigned code unit");
@@ -38,28 +21,28 @@ public final class b
     return (short)paramInt;
   }
   
-  public static int arT(int paramInt)
+  public static int aBH(int paramInt)
   {
     return paramInt >> 8 & 0xFF;
   }
   
-  public static short arU(int paramInt)
+  public static short aBI(int paramInt)
   {
     if ((0xFFFF0000 & paramInt) != 0) {
-      throw new j("Register A out of range: " + a.OI(paramInt));
+      throw new j("Register A out of range: " + a.WY(paramInt));
     }
     return (short)paramInt;
   }
   
-  public static short arV(int paramInt)
+  public static short aBJ(int paramInt)
   {
     if ((0xFFFF0000 & paramInt) != 0) {
-      throw new j("Register B out of range: " + a.OI(paramInt));
+      throw new j("Register B out of range: " + a.WY(paramInt));
     }
     return (short)paramInt;
   }
   
-  public static int arW(int paramInt)
+  public static int aBK(int paramInt)
   {
     switch (paramInt)
     {
@@ -120,7 +103,24 @@ public final class b
     return 1;
   }
   
-  public static short mG(int paramInt1, int paramInt2)
+  public static short ab(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if ((paramInt1 & 0xFFFFFFF0) != 0) {
+      throw new IllegalArgumentException("bogus nibble0");
+    }
+    if ((paramInt2 & 0xFFFFFFF0) != 0) {
+      throw new IllegalArgumentException("bogus nibble1");
+    }
+    if ((paramInt3 & 0xFFFFFFF0) != 0) {
+      throw new IllegalArgumentException("bogus nibble2");
+    }
+    if ((paramInt4 & 0xFFFFFFF0) != 0) {
+      throw new IllegalArgumentException("bogus nibble3");
+    }
+    return (short)(paramInt2 << 4 | paramInt1 | paramInt3 << 8 | paramInt4 << 12);
+  }
+  
+  public static short nX(int paramInt1, int paramInt2)
   {
     if ((paramInt1 & 0xFFFFFF00) != 0) {
       throw new IllegalArgumentException("bogus lowByte");
@@ -131,7 +131,7 @@ public final class b
     return (short)(paramInt2 << 8 | paramInt1);
   }
   
-  public static int mH(int paramInt1, int paramInt2)
+  public static int nY(int paramInt1, int paramInt2)
   {
     if ((paramInt1 & 0xFFFFFFF0) != 0) {
       throw new IllegalArgumentException("bogus lowNibble");
@@ -142,18 +142,18 @@ public final class b
     return paramInt2 << 4 | paramInt1;
   }
   
-  public static short mI(int paramInt1, int paramInt2)
+  public static short nZ(int paramInt1, int paramInt2)
   {
     paramInt1 -= paramInt2;
     if (paramInt1 != (short)paramInt1) {
-      throw new j("Target out of range: " + a.asc(paramInt1) + ", perhaps you need to enable force jumbo mode.");
+      throw new j("Target out of range: " + a.aBQ(paramInt1) + ", perhaps you need to enable force jumbo mode.");
     }
     return (short)paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.tinker.a.b.a.b
  * JD-Core Version:    0.7.0.1
  */

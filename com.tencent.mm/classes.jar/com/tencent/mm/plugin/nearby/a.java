@@ -7,22 +7,22 @@ import com.tencent.mm.pluginsdk.n;
 public final class a
   implements n
 {
-  public static m jRt;
-  public static l jRu;
+  public static m mIG;
+  public static l mIH;
   
   public final void a(l paraml)
   {
-    jRu = paraml;
+    mIH = paraml;
   }
   
   public final void a(m paramm)
   {
-    jRt = paramm;
+    mIG = paramm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.a
  * JD-Core Version:    0.7.0.1
  */

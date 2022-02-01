@@ -10,11 +10,11 @@ import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.t;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.b.h;
-import com.tencent.mm.kernel.d;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.plugin.fts.ui.o.d;
+import com.tencent.mm.plugin.fts.ui.o.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -25,29 +25,29 @@ import com.tencent.mm.sdk.platformtools.Util;
 public class FTSVoiceInputLayoutImpl
   extends VoiceInputLayout
 {
-  private View.OnLongClickListener aYy;
-  private View.OnTouchListener aZa;
-  private View xfA;
-  private TextView xfB;
-  private a xfC;
-  private boolean xfD;
-  private boolean xfE;
-  private long xfF;
+  private View BRL;
+  private TextView BRM;
+  private a BRN;
+  private boolean BRO;
+  private boolean BRP;
+  private long BRQ;
+  private View.OnLongClickListener aHT;
+  private View.OnTouchListener aIw;
   
   public FTSVoiceInputLayoutImpl(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(112315);
-    this.xfD = false;
-    this.xfE = false;
-    this.aYy = new View.OnLongClickListener()
+    this.BRO = false;
+    this.BRP = false;
+    this.aHT = new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(112307);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputLayoutImpl$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputLayoutImpl$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
         Log.d("MicroMsg.FTSVoiceInputLayoutImpl", "btn onLongClickListener currentState %s", new Object[] { Integer.valueOf(FTSVoiceInputLayoutImpl.this.currentState) });
         FTSVoiceInputLayoutImpl.a(FTSVoiceInputLayoutImpl.this, true);
         paramAnonymousView = FTSVoiceInputLayoutImpl.b(FTSVoiceInputLayoutImpl.this);
@@ -59,7 +59,7 @@ public class FTSVoiceInputLayoutImpl
         return true;
       }
     };
-    this.aZa = new View.OnTouchListener()
+    this.aIw = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -74,20 +74,20 @@ public class FTSVoiceInputLayoutImpl
           if (!NetStatusUtil.isConnected(FTSVoiceInputLayoutImpl.this.getContext()))
           {
             FTSVoiceInputLayoutImpl.b(FTSVoiceInputLayoutImpl.this, true);
-            FTSVoiceInputLayoutImpl.this.xhi.Nx(12);
+            FTSVoiceInputLayoutImpl.this.BTv.SL(12);
           }
           else
           {
             FTSVoiceInputLayoutImpl.b(FTSVoiceInputLayoutImpl.this, false);
             FTSVoiceInputLayoutImpl.a(FTSVoiceInputLayoutImpl.this, false);
             FTSVoiceInputLayoutImpl.a(FTSVoiceInputLayoutImpl.this, Util.currentTicks());
-            ((FTSVoiceInputLayoutImpl.a)FTSVoiceInputLayoutImpl.this.xhi).dPP();
+            ((FTSVoiceInputLayoutImpl.a)FTSVoiceInputLayoutImpl.this.BTv).eso();
             Log.d("MicroMsg.FTSVoiceInputLayoutImpl", "btn onTouch ACTION_DOWN currentState %s longClickStartTime %s", new Object[] { Integer.valueOf(FTSVoiceInputLayoutImpl.this.currentState), Long.valueOf(FTSVoiceInputLayoutImpl.c(FTSVoiceInputLayoutImpl.this)) });
             paramAnonymousView = FTSVoiceInputLayoutImpl.b(FTSVoiceInputLayoutImpl.this);
             Log.d("MicroMsg.FTSVoiceInputDrawable", "readyPressState %s", new Object[] { Integer.valueOf(paramAnonymousView.currentState) });
             paramAnonymousView.currentState = 6;
             paramAnonymousView.invalidateSelf();
-            FTSVoiceInputLayoutImpl.this.T(false, false);
+            FTSVoiceInputLayoutImpl.this.ab(false, false);
             FTSVoiceInputLayoutImpl.d(FTSVoiceInputLayoutImpl.this);
             continue;
             if (!FTSVoiceInputLayoutImpl.e(FTSVoiceInputLayoutImpl.this)) {
@@ -99,16 +99,16 @@ public class FTSVoiceInputLayoutImpl
         Log.d("MicroMsg.FTSVoiceInputLayoutImpl", "btn onTouch ACTION_UP currentState %s longClickDown %s", new Object[] { Integer.valueOf(FTSVoiceInputLayoutImpl.this.currentState), Boolean.valueOf(FTSVoiceInputLayoutImpl.f(FTSVoiceInputLayoutImpl.this)) });
         if (FTSVoiceInputLayoutImpl.f(FTSVoiceInputLayoutImpl.this))
         {
-          FTSVoiceInputLayoutImpl.this.T(true, false);
+          FTSVoiceInputLayoutImpl.this.ab(true, false);
           FTSVoiceInputLayoutImpl.a(FTSVoiceInputLayoutImpl.this, false);
           FTSVoiceInputLayoutImpl.a(FTSVoiceInputLayoutImpl.this, 0L);
         }
         for (;;)
         {
           FTSVoiceInputLayoutImpl.g(FTSVoiceInputLayoutImpl.this);
-          ((FTSVoiceInputLayoutImpl.a)FTSVoiceInputLayoutImpl.this.xhi).dPO();
+          ((FTSVoiceInputLayoutImpl.a)FTSVoiceInputLayoutImpl.this.BTv).esn();
           break;
-          FTSVoiceInputLayoutImpl.this.T(false, true);
+          FTSVoiceInputLayoutImpl.this.ab(false, true);
         }
       }
     };
@@ -120,16 +120,16 @@ public class FTSVoiceInputLayoutImpl
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(112314);
-    this.xfD = false;
-    this.xfE = false;
-    this.aYy = new View.OnLongClickListener()
+    this.BRO = false;
+    this.BRP = false;
+    this.aHT = new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(112307);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputLayoutImpl$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputLayoutImpl$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
         Log.d("MicroMsg.FTSVoiceInputLayoutImpl", "btn onLongClickListener currentState %s", new Object[] { Integer.valueOf(FTSVoiceInputLayoutImpl.this.currentState) });
         FTSVoiceInputLayoutImpl.a(FTSVoiceInputLayoutImpl.this, true);
         paramAnonymousView = FTSVoiceInputLayoutImpl.b(FTSVoiceInputLayoutImpl.this);
@@ -141,7 +141,7 @@ public class FTSVoiceInputLayoutImpl
         return true;
       }
     };
-    this.aZa = new View.OnTouchListener()
+    this.aIw = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -156,20 +156,20 @@ public class FTSVoiceInputLayoutImpl
           if (!NetStatusUtil.isConnected(FTSVoiceInputLayoutImpl.this.getContext()))
           {
             FTSVoiceInputLayoutImpl.b(FTSVoiceInputLayoutImpl.this, true);
-            FTSVoiceInputLayoutImpl.this.xhi.Nx(12);
+            FTSVoiceInputLayoutImpl.this.BTv.SL(12);
           }
           else
           {
             FTSVoiceInputLayoutImpl.b(FTSVoiceInputLayoutImpl.this, false);
             FTSVoiceInputLayoutImpl.a(FTSVoiceInputLayoutImpl.this, false);
             FTSVoiceInputLayoutImpl.a(FTSVoiceInputLayoutImpl.this, Util.currentTicks());
-            ((FTSVoiceInputLayoutImpl.a)FTSVoiceInputLayoutImpl.this.xhi).dPP();
+            ((FTSVoiceInputLayoutImpl.a)FTSVoiceInputLayoutImpl.this.BTv).eso();
             Log.d("MicroMsg.FTSVoiceInputLayoutImpl", "btn onTouch ACTION_DOWN currentState %s longClickStartTime %s", new Object[] { Integer.valueOf(FTSVoiceInputLayoutImpl.this.currentState), Long.valueOf(FTSVoiceInputLayoutImpl.c(FTSVoiceInputLayoutImpl.this)) });
             paramAnonymousView = FTSVoiceInputLayoutImpl.b(FTSVoiceInputLayoutImpl.this);
             Log.d("MicroMsg.FTSVoiceInputDrawable", "readyPressState %s", new Object[] { Integer.valueOf(paramAnonymousView.currentState) });
             paramAnonymousView.currentState = 6;
             paramAnonymousView.invalidateSelf();
-            FTSVoiceInputLayoutImpl.this.T(false, false);
+            FTSVoiceInputLayoutImpl.this.ab(false, false);
             FTSVoiceInputLayoutImpl.d(FTSVoiceInputLayoutImpl.this);
             continue;
             if (!FTSVoiceInputLayoutImpl.e(FTSVoiceInputLayoutImpl.this)) {
@@ -181,16 +181,16 @@ public class FTSVoiceInputLayoutImpl
         Log.d("MicroMsg.FTSVoiceInputLayoutImpl", "btn onTouch ACTION_UP currentState %s longClickDown %s", new Object[] { Integer.valueOf(FTSVoiceInputLayoutImpl.this.currentState), Boolean.valueOf(FTSVoiceInputLayoutImpl.f(FTSVoiceInputLayoutImpl.this)) });
         if (FTSVoiceInputLayoutImpl.f(FTSVoiceInputLayoutImpl.this))
         {
-          FTSVoiceInputLayoutImpl.this.T(true, false);
+          FTSVoiceInputLayoutImpl.this.ab(true, false);
           FTSVoiceInputLayoutImpl.a(FTSVoiceInputLayoutImpl.this, false);
           FTSVoiceInputLayoutImpl.a(FTSVoiceInputLayoutImpl.this, 0L);
         }
         for (;;)
         {
           FTSVoiceInputLayoutImpl.g(FTSVoiceInputLayoutImpl.this);
-          ((FTSVoiceInputLayoutImpl.a)FTSVoiceInputLayoutImpl.this.xhi).dPO();
+          ((FTSVoiceInputLayoutImpl.a)FTSVoiceInputLayoutImpl.this.BTv).esn();
           break;
-          FTSVoiceInputLayoutImpl.this.T(false, true);
+          FTSVoiceInputLayoutImpl.this.ab(false, true);
         }
       }
     };
@@ -198,7 +198,26 @@ public class FTSVoiceInputLayoutImpl
     AppMethodBeat.o(112314);
   }
   
-  private void dPX()
+  private static boolean dvr()
+  {
+    AppMethodBeat.i(112321);
+    if (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).aIE())
+    {
+      boolean bool = esx();
+      AppMethodBeat.o(112321);
+      return bool;
+    }
+    if (NetStatusUtil.isConnected(MMApplicationContext.getContext())) {}
+    for (int i = 6; i == 6; i = 0)
+    {
+      AppMethodBeat.o(112321);
+      return true;
+    }
+    AppMethodBeat.o(112321);
+    return false;
+  }
+  
+  private void esw()
   {
     AppMethodBeat.i(112319);
     runOnUiThread(new Runnable()
@@ -213,14 +232,14 @@ public class FTSVoiceInputLayoutImpl
         AppMethodBeat.o(112309);
       }
     });
-    dQp();
+    esP();
     AppMethodBeat.o(112319);
   }
   
-  private static boolean dPY()
+  private static boolean esx()
   {
     AppMethodBeat.i(112320);
-    int i = g.azz().aYS();
+    int i = com.tencent.mm.kernel.h.aGY().bih();
     if ((i == 4) || (i == 6))
     {
       AppMethodBeat.o(112320);
@@ -230,45 +249,26 @@ public class FTSVoiceInputLayoutImpl
     return false;
   }
   
-  private static boolean dzA()
-  {
-    AppMethodBeat.i(112321);
-    if (((h)g.aAe().azG()).aBb())
-    {
-      boolean bool = dPY();
-      AppMethodBeat.o(112321);
-      return bool;
-    }
-    if (NetStatusUtil.isConnected(MMApplicationContext.getContext())) {}
-    for (int i = 6; i == 6; i = 0)
-    {
-      AppMethodBeat.o(112321);
-      return true;
-    }
-    AppMethodBeat.o(112321);
-    return false;
-  }
-  
   private void init(Context paramContext)
   {
     AppMethodBeat.i(112316);
-    View localView = inflate(paramContext, 2131494777, this);
-    this.xfA = localView.findViewById(2131309993);
-    this.xfA.setLayerType(1, null);
-    this.xfC = new a(paramContext);
-    this.xfA.setBackground(this.xfC);
-    this.xfA.setEnabled(true);
-    this.xfA.setOnTouchListener(this.aZa);
-    this.xfA.setOnLongClickListener(this.aYy);
-    this.xfB = ((TextView)localView.findViewById(2131301812));
+    View localView = inflate(paramContext, o.e.fts_voice_input_layout, this);
+    this.BRL = localView.findViewById(o.d.voice_search_start_btn);
+    this.BRL.setLayerType(1, null);
+    this.BRN = new a(paramContext);
+    this.BRL.setBackground(this.BRN);
+    this.BRL.setEnabled(true);
+    this.BRL.setOnTouchListener(this.aIw);
+    this.BRL.setOnLongClickListener(this.aHT);
+    this.BRM = ((TextView)localView.findViewById(o.d.fts_voice_search_hint));
     reset(true);
     if (isInEditMode())
     {
       AppMethodBeat.o(112316);
       return;
     }
-    if (!dzA()) {
-      dPX();
+    if (!dvr()) {
+      esw();
     }
     AppMethodBeat.o(112316);
   }
@@ -286,7 +286,7 @@ public class FTSVoiceInputLayoutImpl
     AppMethodBeat.o(112326);
   }
   
-  protected final void Ny(final int paramInt)
+  protected final void SM(final int paramInt)
   {
     AppMethodBeat.i(112325);
     runOnUiThread(new Runnable()
@@ -297,16 +297,16 @@ public class FTSVoiceInputLayoutImpl
         a locala = FTSVoiceInputLayoutImpl.b(FTSVoiceInputLayoutImpl.this);
         int i = paramInt;
         Log.d("MicroMsg.FTSVoiceInputDrawable", "recordingState() called with: maxAmplitudeRate = [%s]", new Object[] { Integer.valueOf(i) });
-        locala.xfj = a.Nw(i);
+        locala.BRu = a.SK(i);
         locala.invalidateSelf();
-        locala.xfl = i;
+        locala.BRw = i;
         AppMethodBeat.o(112313);
       }
     });
     AppMethodBeat.o(112325);
   }
   
-  public final void T(boolean paramBoolean1, boolean paramBoolean2)
+  public final void ab(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(112318);
     Log.d("MicroMsg.FTSVoiceInputLayoutImpl", "directStart currentState = %s longUp = %s clickUp = %s", new Object[] { Integer.valueOf(this.currentState), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
@@ -314,13 +314,13 @@ public class FTSVoiceInputLayoutImpl
     {
       if ((!paramBoolean1) && (!paramBoolean2))
       {
-        dQm();
+        esM();
         AppMethodBeat.o(112318);
         return;
       }
       if ((paramBoolean1) && (!paramBoolean2))
       {
-        this.xfC.dPL();
+        this.BRN.esk();
         AppMethodBeat.o(112318);
       }
     }
@@ -328,15 +328,15 @@ public class FTSVoiceInputLayoutImpl
     {
       if (!paramBoolean2)
       {
-        dQn();
+        esN();
         AppMethodBeat.o(112318);
         return;
       }
-      this.xfC.dPL();
-      biE();
-      if (this.xfw != null)
+      this.BRN.esk();
+      bsc();
+      if (this.BRH != null)
       {
-        this.xfw.dPW();
+        this.BRH.esv();
         AppMethodBeat.o(112318);
       }
     }
@@ -344,18 +344,18 @@ public class FTSVoiceInputLayoutImpl
     {
       if ((!paramBoolean1) && (!paramBoolean2))
       {
-        biE();
+        bsc();
         AppMethodBeat.o(112318);
         return;
       }
       if ((paramBoolean1) && (!paramBoolean2)) {
-        this.xfC.dPL();
+        this.BRN.esk();
       }
     }
     AppMethodBeat.o(112318);
   }
   
-  protected final void dPZ()
+  protected final void esy()
   {
     AppMethodBeat.i(112322);
     runOnUiThread(new Runnable()
@@ -364,21 +364,21 @@ public class FTSVoiceInputLayoutImpl
       {
         AppMethodBeat.i(112310);
         a locala = FTSVoiceInputLayoutImpl.b(FTSVoiceInputLayoutImpl.this);
-        boolean bool = this.xfH;
+        boolean bool = this.BRS;
         Log.d("MicroMsg.FTSVoiceInputDrawable", "recordingStartState() called with: maxAmplitudeRate = [%s] fromLongCkick = %s", new Object[] { Integer.valueOf(0), Boolean.valueOf(bool) });
         if (!bool) {
           locala.currentState = 3;
         }
-        locala.xfj = a.Nw(0);
+        locala.BRu = a.SK(0);
         locala.invalidateSelf();
-        locala.xfl = 0;
+        locala.BRw = 0;
         AppMethodBeat.o(112310);
       }
     });
     AppMethodBeat.o(112322);
   }
   
-  protected final void dQa()
+  protected final void esz()
   {
     AppMethodBeat.i(112323);
     runOnUiThread(new Runnable()
@@ -404,7 +404,7 @@ public class FTSVoiceInputLayoutImpl
       {
         AppMethodBeat.i(112312);
         FTSVoiceInputLayoutImpl.g(FTSVoiceInputLayoutImpl.this);
-        FTSVoiceInputLayoutImpl.b(FTSVoiceInputLayoutImpl.this).dPL();
+        FTSVoiceInputLayoutImpl.b(FTSVoiceInputLayoutImpl.this).esk();
         AppMethodBeat.o(112312);
       }
     });
@@ -421,14 +421,14 @@ public class FTSVoiceInputLayoutImpl
   public static abstract interface a
     extends VoiceInputLayout.b
   {
-    public abstract void dPO();
+    public abstract void esn();
     
-    public abstract void dPP();
+    public abstract void eso();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.FTSVoiceInputLayoutImpl
  * JD-Core Version:    0.7.0.1
  */

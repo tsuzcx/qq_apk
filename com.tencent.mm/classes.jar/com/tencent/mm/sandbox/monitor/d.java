@@ -6,7 +6,7 @@ import java.io.File;
 final class d
 {
   /* Error */
-  public static int A(String paramString, byte[] paramArrayOfByte)
+  public static int F(String paramString, byte[] paramArrayOfByte)
   {
     // Byte code:
     //   0: ldc 11
@@ -232,105 +232,7 @@ final class d
     //   34	42	321	java/lang/Exception
   }
   
-  /* Error */
-  private static String C(File paramFile)
-  {
-    // Byte code:
-    //   0: ldc2_w 76
-    //   3: lstore_1
-    //   4: ldc 78
-    //   6: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: aload_0
-    //   10: invokevirtual 84	java/io/File:exists	()Z
-    //   13: ifne +10 -> 23
-    //   16: ldc 78
-    //   18: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   21: aconst_null
-    //   22: areturn
-    //   23: new 86	java/io/FileInputStream
-    //   26: dup
-    //   27: aload_0
-    //   28: invokespecial 89	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   31: astore_3
-    //   32: ldc2_w 76
-    //   35: aload_0
-    //   36: invokevirtual 93	java/io/File:length	()J
-    //   39: lcmp
-    //   40: ifgt +25 -> 65
-    //   43: aload_3
-    //   44: lload_1
-    //   45: l2i
-    //   46: invokestatic 99	com/tencent/mm/b/g:b	(Ljava/io/InputStream;I)Ljava/lang/String;
-    //   49: astore_0
-    //   50: aload_3
-    //   51: invokevirtual 100	java/io/FileInputStream:close	()V
-    //   54: aload_3
-    //   55: invokevirtual 100	java/io/FileInputStream:close	()V
-    //   58: ldc 78
-    //   60: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   63: aload_0
-    //   64: areturn
-    //   65: aload_0
-    //   66: invokevirtual 93	java/io/File:length	()J
-    //   69: lstore_1
-    //   70: goto -27 -> 43
-    //   73: astore_0
-    //   74: aconst_null
-    //   75: astore_0
-    //   76: aload_0
-    //   77: ifnull +7 -> 84
-    //   80: aload_0
-    //   81: invokevirtual 100	java/io/FileInputStream:close	()V
-    //   84: ldc 78
-    //   86: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   89: aconst_null
-    //   90: areturn
-    //   91: astore_0
-    //   92: aconst_null
-    //   93: astore_3
-    //   94: aload_3
-    //   95: ifnull +7 -> 102
-    //   98: aload_3
-    //   99: invokevirtual 100	java/io/FileInputStream:close	()V
-    //   102: ldc 78
-    //   104: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   107: aload_0
-    //   108: athrow
-    //   109: astore_3
-    //   110: goto -52 -> 58
-    //   113: astore_0
-    //   114: goto -30 -> 84
-    //   117: astore_3
-    //   118: goto -16 -> 102
-    //   121: astore_0
-    //   122: goto -28 -> 94
-    //   125: astore_0
-    //   126: aload_3
-    //   127: astore_0
-    //   128: goto -52 -> 76
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	131	0	paramFile	File
-    //   3	67	1	l	long
-    //   31	68	3	localFileInputStream	java.io.FileInputStream
-    //   109	1	3	localIOException1	java.io.IOException
-    //   117	10	3	localIOException2	java.io.IOException
-    // Exception table:
-    //   from	to	target	type
-    //   23	32	73	java/lang/Exception
-    //   23	32	91	finally
-    //   54	58	109	java/io/IOException
-    //   80	84	113	java/io/IOException
-    //   98	102	117	java/io/IOException
-    //   32	43	121	finally
-    //   43	54	121	finally
-    //   65	70	121	finally
-    //   32	43	125	java/lang/Exception
-    //   43	54	125	java/lang/Exception
-    //   65	70	125	java/lang/Exception
-  }
-  
-  public static final boolean YS(String paramString)
+  public static final boolean agG(String paramString)
   {
     AppMethodBeat.i(169804);
     if (paramString == null)
@@ -347,7 +249,7 @@ final class d
     return false;
   }
   
-  public static int bhI(String paramString)
+  public static int bua(String paramString)
   {
     AppMethodBeat.i(169802);
     if (paramString == null)
@@ -367,36 +269,36 @@ final class d
   }
   
   /* Error */
-  public static byte[] bhJ(String paramString)
+  public static byte[] bub(String paramString)
   {
     // Byte code:
-    //   0: ldc 112
+    //   0: ldc 95
     //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: ifnonnull +10 -> 16
-    //   9: ldc 112
+    //   9: ldc 95
     //   11: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   14: aconst_null
     //   15: areturn
-    //   16: new 80	java/io/File
+    //   16: new 78	java/io/File
     //   19: dup
     //   20: aload_0
-    //   21: invokespecial 106	java/io/File:<init>	(Ljava/lang/String;)V
+    //   21: invokespecial 81	java/io/File:<init>	(Ljava/lang/String;)V
     //   24: astore_3
     //   25: aload_3
-    //   26: invokevirtual 84	java/io/File:exists	()Z
+    //   26: invokevirtual 85	java/io/File:exists	()Z
     //   29: ifne +10 -> 39
-    //   32: ldc 112
+    //   32: ldc 95
     //   34: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   37: aconst_null
     //   38: areturn
     //   39: aload_3
-    //   40: invokevirtual 93	java/io/File:length	()J
+    //   40: invokevirtual 92	java/io/File:length	()J
     //   43: l2i
     //   44: istore_2
     //   45: iload_2
     //   46: ifgt +10 -> 56
-    //   49: ldc 112
+    //   49: ldc 95
     //   51: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   54: aconst_null
     //   55: areturn
@@ -406,20 +308,20 @@ final class d
     //   59: iconst_0
     //   60: iadd
     //   61: aload_3
-    //   62: invokevirtual 93	java/io/File:length	()J
+    //   62: invokevirtual 92	java/io/File:length	()J
     //   65: l2i
     //   66: if_icmple +11 -> 77
     //   69: aload_3
-    //   70: invokevirtual 93	java/io/File:length	()J
+    //   70: invokevirtual 92	java/io/File:length	()J
     //   73: l2i
     //   74: iconst_0
     //   75: iadd
     //   76: istore_1
-    //   77: new 114	java/io/RandomAccessFile
+    //   77: new 97	java/io/RandomAccessFile
     //   80: dup
     //   81: aload_0
-    //   82: ldc 116
-    //   84: invokespecial 119	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   82: ldc 99
+    //   84: invokespecial 102	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   87: astore 6
     //   89: aload 6
     //   91: astore 4
@@ -430,17 +332,17 @@ final class d
     //   99: astore 4
     //   101: aload 6
     //   103: lconst_0
-    //   104: invokevirtual 123	java/io/RandomAccessFile:seek	(J)V
+    //   104: invokevirtual 106	java/io/RandomAccessFile:seek	(J)V
     //   107: aload 6
     //   109: astore 4
     //   111: aload 6
     //   113: aload_3
-    //   114: invokevirtual 127	java/io/RandomAccessFile:readFully	([B)V
+    //   114: invokevirtual 110	java/io/RandomAccessFile:readFully	([B)V
     //   117: aload 6
-    //   119: invokevirtual 128	java/io/RandomAccessFile:close	()V
+    //   119: invokevirtual 111	java/io/RandomAccessFile:close	()V
     //   122: aload_3
     //   123: astore_0
-    //   124: ldc 112
+    //   124: ldc 95
     //   126: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   129: aload_0
     //   130: areturn
@@ -452,7 +354,7 @@ final class d
     //   140: anewarray 4	java/lang/Object
     //   143: invokestatic 44	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   146: ldc 36
-    //   148: ldc 130
+    //   148: ldc 113
     //   150: iconst_5
     //   151: anewarray 4	java/lang/Object
     //   154: dup
@@ -500,7 +402,7 @@ final class d
     //   223: aload 6
     //   225: astore 4
     //   227: ldc 36
-    //   229: ldc 132
+    //   229: ldc 115
     //   231: iconst_5
     //   232: anewarray 4	java/lang/Object
     //   235: dup
@@ -532,7 +434,7 @@ final class d
     //   275: aload 6
     //   277: ifnull +184 -> 461
     //   280: aload 6
-    //   282: invokevirtual 128	java/io/RandomAccessFile:close	()V
+    //   282: invokevirtual 111	java/io/RandomAccessFile:close	()V
     //   285: aload_3
     //   286: astore_0
     //   287: goto -163 -> 124
@@ -544,7 +446,7 @@ final class d
     //   299: anewarray 4	java/lang/Object
     //   302: invokestatic 44	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   305: ldc 36
-    //   307: ldc 130
+    //   307: ldc 113
     //   309: iconst_5
     //   310: anewarray 4	java/lang/Object
     //   313: dup
@@ -582,8 +484,8 @@ final class d
     //   362: aload 4
     //   364: ifnull +8 -> 372
     //   367: aload 4
-    //   369: invokevirtual 128	java/io/RandomAccessFile:close	()V
-    //   372: ldc 112
+    //   369: invokevirtual 111	java/io/RandomAccessFile:close	()V
+    //   372: ldc 95
     //   374: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   377: aload_3
     //   378: athrow
@@ -595,7 +497,7 @@ final class d
     //   388: anewarray 4	java/lang/Object
     //   391: invokestatic 44	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   394: ldc 36
-    //   396: ldc 130
+    //   396: ldc 113
     //   398: iconst_5
     //   399: anewarray 4	java/lang/Object
     //   402: dup
@@ -672,7 +574,7 @@ final class d
     //   111	117	456	java/lang/Exception
   }
   
-  public static String bhK(String paramString)
+  public static String buc(String paramString)
   {
     AppMethodBeat.i(169805);
     if (paramString == null)
@@ -683,7 +585,7 @@ final class d
     paramString = new File(paramString);
     if (paramString.exists())
     {
-      paramString = C(paramString);
+      paramString = v(paramString);
       AppMethodBeat.o(169805);
       return paramString;
     }
@@ -709,10 +611,108 @@ final class d
     AppMethodBeat.o(169801);
     return true;
   }
+  
+  /* Error */
+  private static String v(File paramFile)
+  {
+    // Byte code:
+    //   0: ldc2_w 128
+    //   3: lstore_1
+    //   4: ldc 130
+    //   6: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: aload_0
+    //   10: invokevirtual 85	java/io/File:exists	()Z
+    //   13: ifne +10 -> 23
+    //   16: ldc 130
+    //   18: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   21: aconst_null
+    //   22: areturn
+    //   23: new 132	java/io/FileInputStream
+    //   26: dup
+    //   27: aload_0
+    //   28: invokespecial 135	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   31: astore_3
+    //   32: ldc2_w 128
+    //   35: aload_0
+    //   36: invokevirtual 92	java/io/File:length	()J
+    //   39: lcmp
+    //   40: ifgt +25 -> 65
+    //   43: aload_3
+    //   44: lload_1
+    //   45: l2i
+    //   46: invokestatic 141	com/tencent/mm/b/g:b	(Ljava/io/InputStream;I)Ljava/lang/String;
+    //   49: astore_0
+    //   50: aload_3
+    //   51: invokevirtual 142	java/io/FileInputStream:close	()V
+    //   54: aload_3
+    //   55: invokevirtual 142	java/io/FileInputStream:close	()V
+    //   58: ldc 130
+    //   60: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   63: aload_0
+    //   64: areturn
+    //   65: aload_0
+    //   66: invokevirtual 92	java/io/File:length	()J
+    //   69: lstore_1
+    //   70: goto -27 -> 43
+    //   73: astore_0
+    //   74: aconst_null
+    //   75: astore_0
+    //   76: aload_0
+    //   77: ifnull +7 -> 84
+    //   80: aload_0
+    //   81: invokevirtual 142	java/io/FileInputStream:close	()V
+    //   84: ldc 130
+    //   86: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   89: aconst_null
+    //   90: areturn
+    //   91: astore_0
+    //   92: aconst_null
+    //   93: astore_3
+    //   94: aload_3
+    //   95: ifnull +7 -> 102
+    //   98: aload_3
+    //   99: invokevirtual 142	java/io/FileInputStream:close	()V
+    //   102: ldc 130
+    //   104: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   107: aload_0
+    //   108: athrow
+    //   109: astore_3
+    //   110: goto -52 -> 58
+    //   113: astore_0
+    //   114: goto -30 -> 84
+    //   117: astore_3
+    //   118: goto -16 -> 102
+    //   121: astore_0
+    //   122: goto -28 -> 94
+    //   125: astore_0
+    //   126: aload_3
+    //   127: astore_0
+    //   128: goto -52 -> 76
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	131	0	paramFile	File
+    //   3	67	1	l	long
+    //   31	68	3	localFileInputStream	java.io.FileInputStream
+    //   109	1	3	localIOException1	java.io.IOException
+    //   117	10	3	localIOException2	java.io.IOException
+    // Exception table:
+    //   from	to	target	type
+    //   23	32	73	java/lang/Exception
+    //   23	32	91	finally
+    //   54	58	109	java/io/IOException
+    //   80	84	113	java/io/IOException
+    //   98	102	117	java/io/IOException
+    //   32	43	121	finally
+    //   43	54	121	finally
+    //   65	70	121	finally
+    //   32	43	125	java/lang/Exception
+    //   43	54	125	java/lang/Exception
+    //   65	70	125	java/lang/Exception
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sandbox.monitor.d
  * JD-Core Version:    0.7.0.1
  */

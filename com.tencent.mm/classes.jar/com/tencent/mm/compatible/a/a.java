@@ -8,7 +8,7 @@ public final class a
   public static boolean a(int paramInt, a parama)
   {
     AppMethodBeat.i(157475);
-    if (d.oD(paramInt))
+    if (d.qV(paramInt))
     {
       parama.run();
       AppMethodBeat.o(157475);
@@ -25,7 +25,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.compatible.a.a
  * JD-Core Version:    0.7.0.1
  */

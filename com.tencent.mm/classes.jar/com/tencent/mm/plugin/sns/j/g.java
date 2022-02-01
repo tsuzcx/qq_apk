@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.sns.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int DRV;
+  public int Kfc;
   public String postId;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -15,9 +15,9 @@ public final class g
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.postId != null) {
-        paramVarArgs.e(1, this.postId);
+        paramVarArgs.f(1, this.postId);
       }
-      paramVarArgs.aM(2, this.DRV);
+      paramVarArgs.aY(2, this.Kfc);
       AppMethodBeat.o(96158);
       return 0;
     }
@@ -27,17 +27,17 @@ public final class g
       }
     }
     label258:
-    for (paramInt = g.a.a.b.b.a.f(1, this.postId) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.postId) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bu(2, this.DRV);
+      int i = g.a.a.b.b.a.bM(2, this.Kfc);
       AppMethodBeat.o(96158);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         AppMethodBeat.o(96158);
@@ -53,11 +53,11 @@ public final class g
           AppMethodBeat.o(96158);
           return -1;
         case 1: 
-          localg.postId = locala.UbS.readString();
+          localg.postId = locala.abFh.readString();
           AppMethodBeat.o(96158);
           return 0;
         }
-        localg.DRV = locala.UbS.zi();
+        localg.Kfc = locala.abFh.AK();
         AppMethodBeat.o(96158);
         return 0;
       }

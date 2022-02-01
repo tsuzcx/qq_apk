@@ -10,14 +10,14 @@ final class t
 {
   private String appId = null;
   private MMHandler handler = null;
-  private int jjN = 0;
+  private int lZJ = 0;
   private String url = null;
   
   public t(MMHandler paramMMHandler, String paramString1, int paramInt, String paramString2)
   {
     this.handler = paramMMHandler;
     this.appId = paramString1;
-    this.jjN = paramInt;
+    this.lZJ = paramInt;
     this.url = paramString2;
   }
   
@@ -30,7 +30,7 @@ final class t
       return;
     }
     Object localObject = Util.httpGet(this.url);
-    localObject = new x(this.appId, this.jjN, (byte[])localObject);
+    localObject = new x(this.appId, this.lZJ, (byte[])localObject);
     Message localMessage = Message.obtain();
     localMessage.obj = localObject;
     this.handler.sendMessage(localMessage);

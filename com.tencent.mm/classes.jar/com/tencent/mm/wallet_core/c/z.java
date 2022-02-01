@@ -5,42 +5,42 @@ import java.util.UUID;
 
 public final class z
 {
-  private static boolean Rue = false;
-  private static int Ruf = -1;
-  private static String Rug = "";
+  private static boolean YVD = false;
+  private static int YVE = -1;
+  private static String YVF = "";
   
-  public static void aqh(int paramInt)
+  public static void azF(int paramInt)
   {
     AppMethodBeat.i(72805);
-    if (!Rue)
+    if (!YVD)
     {
-      Rue = true;
-      Ruf = paramInt;
-      Rug = UUID.randomUUID().toString();
+      YVD = true;
+      YVE = paramInt;
+      YVF = UUID.randomUUID().toString();
     }
     AppMethodBeat.o(72805);
   }
   
   public static String getBindCardUuid()
   {
-    return Rug;
+    return YVF;
   }
   
-  public static boolean hhq()
+  public static boolean iiS()
   {
-    return Rue;
+    return YVD;
   }
   
-  public static int hhr()
+  public static int iiT()
   {
-    return Ruf;
+    return YVE;
   }
   
-  public static void hhs()
+  public static void iiU()
   {
-    Rue = false;
-    Ruf = -1;
-    Rug = "";
+    YVD = false;
+    YVE = -1;
+    YVF = "";
   }
 }
 

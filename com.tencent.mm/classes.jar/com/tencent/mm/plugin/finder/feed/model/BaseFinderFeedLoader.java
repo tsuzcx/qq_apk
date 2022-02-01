@@ -1,33 +1,38 @@
 package com.tencent.mm.plugin.finder.feed.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.hg;
-import com.tencent.mm.g.a.hg.a;
-import com.tencent.mm.g.a.hn;
-import com.tencent.mm.g.a.hn.a;
+import com.tencent.mm.f.a.hn;
+import com.tencent.mm.f.a.hn.a;
+import com.tencent.mm.f.a.hu;
+import com.tencent.mm.f.a.hu.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.finder.api.i;
 import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
+import com.tencent.mm.plugin.finder.feed.model.internal.f;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.bo;
+import com.tencent.mm.plugin.finder.model.bu;
 import com.tencent.mm.plugin.finder.model.d.a;
 import com.tencent.mm.plugin.finder.model.w;
+import com.tencent.mm.plugin.finder.model.y;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.storage.data.e;
 import com.tencent.mm.plugin.finder.storage.data.e.a;
-import com.tencent.mm.plugin.finder.storage.data.i;
-import com.tencent.mm.plugin.finder.storage.data.l.a;
+import com.tencent.mm.plugin.finder.storage.data.h;
+import com.tencent.mm.plugin.finder.storage.data.k.a;
 import com.tencent.mm.plugin.finder.storage.logic.c;
 import com.tencent.mm.plugin.finder.storage.logic.c.a;
+import com.tencent.mm.plugin.finder.upload.g;
 import com.tencent.mm.plugin.finder.upload.g.a;
+import com.tencent.mm.plugin.finder.utils.aj;
 import com.tencent.mm.protocal.protobuf.FinderContact;
 import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
-import com.tencent.mm.protocal.protobuf.arb;
-import com.tencent.mm.protocal.protobuf.arl;
-import com.tencent.mm.protocal.protobuf.awe;
-import com.tencent.mm.protocal.protobuf.azs;
-import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.protocal.protobuf.ath;
+import com.tencent.mm.protocal.protobuf.bac;
+import com.tencent.mm.protocal.protobuf.bfv;
+import com.tencent.mm.protocal.protobuf.bid;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -37,46 +42,46 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.g.b.p;
+import kotlin.a.j;
 import kotlin.n.n;
 import kotlin.o;
 import kotlin.t;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lcom/tencent/mm/plugin/finder/upload/IFinderPostListener;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "feedChangeListener", "com/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader$feedChangeListener$1", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader$feedChangeListener$1;", "feedDeleteListener", "com/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader$feedDeleteListener$1", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader$feedDeleteListener$1;", "addRvFeed", "", "index", "", "feed", "colletExtraPageName", "", "getItem", "feedId", "", "getPageName", "insert", "notify", "", "interceptMvFeed", "interceptMvPostStart", "interceptPostStart", "isObservePostEvent", "onAlive", "onDataChanged", "onDead", "onMvPostStart", "item", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "onPostEnd", "localId", "isOk", "onPostNotify", "onPostOk", "svrID", "onPostStart", "isFromSns", "remove", "removeByLocalId", "feedLocalId", "transformFinderObj", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "feedObj", "transformToMusicData", "updateByLocalId", "newFeed", "updateFinderPageItem", "updateItem", "svrId", "updateProgressByLocalId", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lcom/tencent/mm/plugin/finder/upload/IFinderPostListener;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "feedChangeListener", "com/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader$feedChangeListener$1", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader$feedChangeListener$1;", "feedDeleteListener", "com/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader$feedDeleteListener$1", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader$feedDeleteListener$1;", "addRvFeed", "", "index", "", "feed", "colletExtraPageName", "", "getItem", "feedId", "", "getPageName", "insert", "notify", "", "insertAll", "feeds", "interceptMvFeed", "interceptMvPostStart", "interceptPostStart", "isObservePostEvent", "onAlive", "onDataChanged", "onDead", "onMvPostStart", "item", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "onPostEnd", "localId", "isOk", "onPostNotify", "onPostOk", "svrID", "onPostStart", "isFromSns", "remove", "removeAll", "afterIndex", "removeByLocalId", "feedLocalId", "transformFinderObj", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "feedObj", "transformToMusicData", "updateByLocalId", "newFeed", "updateFinderPageItem", "updateItem", "svrId", "updateProgressByLocalId", "plugin-finder_release"})
 public abstract class BaseFinderFeedLoader
-  extends BaseFeedLoader<bo>
+  extends BaseFeedLoader<bu>
   implements com.tencent.mm.plugin.finder.upload.q
 {
   private byte _hellAccFlag_;
   private final feedChangeListener.1 feedChangeListener;
   private final feedDeleteListener.1 feedDeleteListener = new IListener()
   {
-    public final boolean callback(final hg paramAnonymoushg)
+    public final boolean callback(final hn paramAnonymoushn)
     {
-      AppMethodBeat.i(244544);
-      if (paramAnonymoushg != null) {
-        com.tencent.mm.ac.d.h((kotlin.g.a.a)new kotlin.g.b.q(paramAnonymoushg)
+      AppMethodBeat.i(288235);
+      if (paramAnonymoushn != null) {
+        com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new kotlin.g.b.q(paramAnonymoushn)
         {
           public final void invoke()
           {
-            AppMethodBeat.i(244543);
-            if (paramAnonymoushg.dLJ.dLK == 1)
+            AppMethodBeat.i(288678);
+            if (paramAnonymoushn.fEy.fEz == 1)
             {
-              AppMethodBeat.o(244543);
+              AppMethodBeat.o(288678);
               return;
             }
-            if (paramAnonymoushg.dLJ.id != 0L)
+            if (paramAnonymoushn.fEy.id != 0L)
             {
-              this.this$0.this$0.remove(paramAnonymoushg.dLJ.id, true);
-              AppMethodBeat.o(244543);
+              this.this$0.this$0.remove(paramAnonymoushn.fEy.id, true);
+              AppMethodBeat.o(288678);
               return;
             }
-            this.this$0.this$0.removeByLocalId(paramAnonymoushg.dLJ.localId, true);
-            AppMethodBeat.o(244543);
+            this.this$0.this$0.removeByLocalId(paramAnonymoushn.fEy.localId, true);
+            AppMethodBeat.o(288678);
           }
         });
       }
-      AppMethodBeat.o(244544);
+      AppMethodBeat.o(288235);
       return false;
     }
   };
@@ -86,42 +91,43 @@ public abstract class BaseFinderFeedLoader
     this(null, 1, null);
   }
   
-  public BaseFinderFeedLoader(final bbn parambbn)
+  public BaseFinderFeedLoader(final bid parambid)
   {
-    super(parambbn);
+    super(parambid);
     this.feedChangeListener = new IListener()
     {
-      public final boolean callback(final hn paramAnonymoushn)
+      public final boolean callback(final hu paramAnonymoushu)
       {
-        AppMethodBeat.i(244542);
-        p.h(paramAnonymoushn, "event");
-        com.tencent.mm.ac.d.a(0L, (kotlin.g.a.a)new kotlin.g.b.q(paramAnonymoushn)
+        AppMethodBeat.i(282567);
+        kotlin.g.b.p.k(paramAnonymoushu, "event");
+        com.tencent.mm.ae.d.a(0L, (kotlin.g.a.a)new kotlin.g.b.q(paramAnonymoushu)
         {
           public final void invoke()
           {
+            Object localObject2 = null;
             int i2 = 0;
             int n = 0;
             int i1 = 0;
             int k = 0;
             int m = 0;
-            AppMethodBeat.i(244541);
-            if (paramAnonymoushn.dLW.dLK == 1)
+            AppMethodBeat.i(288108);
+            if (paramAnonymoushu.fEL.fEz == 1)
             {
-              AppMethodBeat.o(244541);
+              AppMethodBeat.o(288108);
               return;
             }
-            Log.i(this.this$0.this$0.getTAG(), "feedChangeListener " + paramAnonymoushn.dLW.id + ",fav = " + paramAnonymoushn.dLW.dLX + ',' + "like = " + paramAnonymoushn.dLW.dLZ + ",likeCount = " + paramAnonymoushn.dLW.likeCount + " ,needChangeData = " + paramAnonymoushn.dLW.dLY);
+            Log.i(this.this$0.this$0.getTAG(), "feedChangeListener " + paramAnonymoushu.fEL.id + ",fav = " + paramAnonymoushu.fEL.fEM + ',' + "like = " + paramAnonymoushu.fEL.fEO + ",likeCount = " + paramAnonymoushu.fEL.likeCount + " ,needChangeData = " + paramAnonymoushu.fEL.fEN);
             int i = m;
             Object localObject1;
-            Object localObject2;
-            label339:
+            label363:
             Object localObject3;
             int j;
-            label396:
-            label580:
-            label846:
-            label2005:
-            switch (paramAnonymoushn.dLW.type)
+            label420:
+            label835:
+            label1740:
+            label1746:
+            label2770:
+            switch (paramAnonymoushu.fEL.type)
             {
             default: 
               i = m;
@@ -129,6 +135,7 @@ public abstract class BaseFinderFeedLoader
             case 2: 
             case 3: 
             case 10: 
+            case 14: 
             case 0: 
             case 4: 
             case 5: 
@@ -137,9 +144,11 @@ public abstract class BaseFinderFeedLoader
             case 12: 
             case 13: 
             case 8: 
-              label471:
-              label639:
-              label767:
+              label495:
+              label1016:
+              label1148:
+              label2303:
+              label2431:
               do
               {
                 do
@@ -163,17 +172,17 @@ public abstract class BaseFinderFeedLoader
                                   if (i != 0) {
                                     this.this$0.this$0.onDataChanged();
                                   }
-                                  AppMethodBeat.o(244541);
+                                  AppMethodBeat.o(288108);
                                   return;
                                   i = m;
-                                  if (paramAnonymoushn.dLW.id != 0L)
+                                  if (paramAnonymoushu.fEL.id != 0L)
                                   {
-                                    localObject1 = e.vFX;
-                                    localObject1 = paramAnonymoushn.dLW;
+                                    localObject1 = e.AmW;
+                                    localObject1 = paramAnonymoushu.fEL;
                                     if (localObject1 == null) {
-                                      p.hyc();
+                                      kotlin.g.b.p.iCn();
                                     }
-                                    localObject1 = e.a.Fy(((hn.a)localObject1).id);
+                                    localObject1 = e.a.MH(((hu.a)localObject1).id);
                                     i = m;
                                     if (localObject1 != null)
                                     {
@@ -181,12 +190,12 @@ public abstract class BaseFinderFeedLoader
                                       i = 0;
                                       if (((Iterator)localObject2).hasNext())
                                       {
-                                        localObject3 = (bo)((Iterator)localObject2).next();
-                                        if (((localObject3 instanceof BaseFinderFeed)) && (((BaseFinderFeed)localObject3).feedObject.getId() == paramAnonymoushn.dLW.id))
+                                        localObject3 = (bu)((Iterator)localObject2).next();
+                                        if (((localObject3 instanceof BaseFinderFeed)) && (((BaseFinderFeed)localObject3).feedObject.getId() == paramAnonymoushu.fEL.id))
                                         {
                                           j = 1;
                                           if (j == 0) {
-                                            break label471;
+                                            break label495;
                                           }
                                         }
                                       }
@@ -199,26 +208,26 @@ public abstract class BaseFinderFeedLoader
                                           this.this$0.this$0.dispatcher().onItemRangeChanged(j, 1, Integer.valueOf(1));
                                           i = 1;
                                         }
-                                        localObject1 = kotlin.x.SXb;
+                                        localObject1 = kotlin.x.aazN;
                                         break;
                                         j = 0;
-                                        break label396;
+                                        break label420;
                                         i += 1;
-                                        break label339;
+                                        break label363;
                                       }
                                       i = m;
-                                      if (paramAnonymoushn.dLW.id != 0L)
+                                      if (paramAnonymoushu.fEL.id != 0L)
                                       {
                                         localObject1 = ((List)this.this$0.this$0.getDataList()).iterator();
                                         i = 0;
                                         if (((Iterator)localObject1).hasNext())
                                         {
-                                          localObject2 = (bo)((Iterator)localObject1).next();
-                                          if (((localObject2 instanceof BaseFinderFeed)) && (((BaseFinderFeed)localObject2).feedObject.getId() == paramAnonymoushn.dLW.id))
+                                          localObject2 = (bu)((Iterator)localObject1).next();
+                                          if (((localObject2 instanceof BaseFinderFeed)) && (((BaseFinderFeed)localObject2).feedObject.getId() == paramAnonymoushu.fEL.id))
                                           {
                                             j = 1;
                                             if (j == 0) {
-                                              break label639;
+                                              break label663;
                                             }
                                           }
                                         }
@@ -230,38 +239,38 @@ public abstract class BaseFinderFeedLoader
                                           }
                                           localObject1 = this.this$0.this$0.getDataList().get(j);
                                           if (localObject1 != null) {
-                                            break label651;
+                                            break label675;
                                           }
                                           localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.model.BaseFinderFeed");
-                                          AppMethodBeat.o(244541);
+                                          AppMethodBeat.o(288108);
                                           throw ((Throwable)localObject1);
                                           j = 0;
-                                          break label580;
+                                          break label604;
                                           i += 1;
-                                          break label523;
+                                          break label547;
                                         }
                                         localObject1 = (BaseFinderFeed)localObject1;
-                                        if (paramAnonymoushn.dLW.dLY == 1)
+                                        if (paramAnonymoushu.fEL.fEN == 1)
                                         {
-                                          i = paramAnonymoushn.dLW.dLZ;
+                                          i = paramAnonymoushu.fEL.fEO;
                                           k = ((BaseFinderFeed)localObject1).feedObject.getLikeFlag();
                                           Log.i(this.this$0.this$0.getTAG(), "TYPE_FEED_LIKE_CHANGED oldFlag:" + k + ", newFlag:" + i);
                                           if (k != i)
                                           {
                                             ((BaseFinderFeed)localObject1).feedObject.setLikeFlag(i);
                                             if (k != 0) {
-                                              break label846;
+                                              break label870;
                                             }
                                             localObject2 = ((BaseFinderFeed)localObject1).feedObject;
                                             ((FinderItem)localObject2).setLikeCount(((FinderItem)localObject2).getLikeCount() + 1);
                                             if (i != 1) {
-                                              break label872;
+                                              break label896;
                                             }
                                             localObject2 = ((BaseFinderFeed)localObject1).feedObject;
                                             ((FinderItem)localObject2).setFriendLikeCount(((FinderItem)localObject2).getFriendLikeCount() + 1);
-                                            localObject2 = com.tencent.mm.plugin.finder.upload.action.j.vUw;
-                                            com.tencent.mm.plugin.finder.upload.action.j.dBt();
-                                            com.tencent.mm.plugin.finder.upload.action.j.aG(((BaseFinderFeed)localObject1).feedObject.getLikeList());
+                                            localObject2 = com.tencent.mm.plugin.finder.upload.action.l.ACj;
+                                            com.tencent.mm.plugin.finder.upload.action.l.ecG();
+                                            com.tencent.mm.plugin.finder.upload.action.l.aX(((BaseFinderFeed)localObject1).feedObject.getLikeList());
                                             this.this$0.this$0.dispatcher().onItemRangeChanged(j, 1, new o(Integer.valueOf(3), Integer.valueOf(1)));
                                           }
                                         }
@@ -270,39 +279,39 @@ public abstract class BaseFinderFeedLoader
                                           i = 1;
                                           break;
                                           if (i != 0) {
-                                            break label767;
+                                            break label791;
                                           }
                                           localObject2 = ((BaseFinderFeed)localObject1).feedObject;
                                           ((FinderItem)localObject2).setLikeCount(((FinderItem)localObject2).getLikeCount() - 1);
-                                          break label767;
+                                          break label791;
                                           if (k != 1) {
-                                            break label811;
+                                            break label835;
                                           }
                                           localObject2 = ((BaseFinderFeed)localObject1).feedObject;
                                           ((FinderItem)localObject2).setFriendLikeCount(((FinderItem)localObject2).getFriendLikeCount() - 1);
-                                          localObject2 = com.tencent.mm.plugin.finder.upload.action.j.vUw;
-                                          com.tencent.mm.plugin.finder.upload.action.j.dBt();
-                                          com.tencent.mm.plugin.finder.upload.action.j.aI(((BaseFinderFeed)localObject1).feedObject.getLikeList());
-                                          break label811;
+                                          localObject2 = com.tencent.mm.plugin.finder.upload.action.l.ACj;
+                                          com.tencent.mm.plugin.finder.upload.action.l.ecG();
+                                          com.tencent.mm.plugin.finder.upload.action.l.aZ(((BaseFinderFeed)localObject1).feedObject.getLikeList());
+                                          break label835;
                                           this.this$0.this$0.dispatcher().onItemRangeChanged(j, 1, new o(Integer.valueOf(3), Integer.valueOf(1)));
                                         }
                                         i = m;
-                                        if (paramAnonymoushn.dLW.id != 0L)
+                                        if (paramAnonymoushu.fEL.id != 0L)
                                         {
                                           localObject1 = ((List)this.this$0.this$0.getDataList()).iterator();
                                           i = 0;
                                           if (((Iterator)localObject1).hasNext())
                                           {
-                                            localObject2 = (bo)((Iterator)localObject1).next();
-                                            if (((localObject2 instanceof BaseFinderFeed)) && (((BaseFinderFeed)localObject2).feedObject.getId() == paramAnonymoushn.dLW.id))
+                                            localObject2 = (bu)((Iterator)localObject1).next();
+                                            if (((localObject2 instanceof BaseFinderFeed)) && (((BaseFinderFeed)localObject2).feedObject.getId() == paramAnonymoushu.fEL.id))
                                             {
                                               j = 1;
                                               if (j == 0) {
-                                                break label1124;
+                                                break label1148;
                                               }
                                               j = i;
-                                              if (paramAnonymoushn.dLW.dLX != 1) {
-                                                break label1136;
+                                              if (paramAnonymoushu.fEL.fEM != 1) {
+                                                break label1160;
                                               }
                                             }
                                           }
@@ -314,28 +323,30 @@ public abstract class BaseFinderFeedLoader
                                             }
                                             localObject1 = this.this$0.this$0.getDataList().get(j);
                                             if (localObject1 != null) {
-                                              break label1141;
+                                              break label1165;
                                             }
                                             localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.model.BaseFinderFeed");
-                                            AppMethodBeat.o(244541);
+                                            AppMethodBeat.o(288108);
                                             throw ((Throwable)localObject1);
                                             j = 0;
-                                            break label1049;
+                                            break label1073;
                                             i += 1;
-                                            break label992;
+                                            break label1016;
                                             j = -1;
-                                            break label1055;
+                                            break label1079;
                                           }
                                           localObject1 = (BaseFinderFeed)localObject1;
                                           i = n;
                                           if (((BaseFinderFeed)localObject1).feedObject.getFavFlag() != k) {
                                             i = 1;
                                           }
-                                          if (paramAnonymoushn.dLW.dLY == 1) {
+                                          if (paramAnonymoushu.fEL.fEN == 1) {
                                             ((BaseFinderFeed)localObject1).feedObject.setFavFlag(k);
                                           }
-                                          if (i != 0) {
+                                          if (i != 0)
+                                          {
                                             this.this$0.this$0.dispatcher().onItemRangeChanged(j, 1, new o(Integer.valueOf(4), Integer.valueOf(1)));
+                                            this.this$0.this$0.dispatcher().onItemRangeChanged(j, 1, new o(Integer.valueOf(9), Integer.valueOf(1)));
                                           }
                                           i = 1;
                                         }
@@ -344,17 +355,17 @@ public abstract class BaseFinderFeedLoader
                                   }
                                 }
                                 i = m;
-                              } while (paramAnonymoushn.dLW.id == 0L);
+                              } while (paramAnonymoushu.fEL.id == 0L);
                               localObject1 = ((List)this.this$0.this$0.getDataList()).iterator();
                               i = 0;
                               if (((Iterator)localObject1).hasNext())
                               {
-                                localObject2 = (bo)((Iterator)localObject1).next();
-                                if (((localObject2 instanceof BaseFinderFeed)) && (((BaseFinderFeed)localObject2).feedObject.getId() == paramAnonymoushn.dLW.id))
+                                localObject2 = (bu)((Iterator)localObject1).next();
+                                if (((localObject2 instanceof BaseFinderFeed)) && (((BaseFinderFeed)localObject2).feedObject.getId() == paramAnonymoushu.fEL.id))
                                 {
                                   j = 1;
                                   if (j == 0) {
-                                    break label1378;
+                                    break label1433;
                                   }
                                 }
                               }
@@ -368,69 +379,69 @@ public abstract class BaseFinderFeedLoader
                                 i = 1;
                                 break;
                                 j = 0;
-                                break label1324;
+                                break label1379;
                                 i += 1;
-                                break label1267;
+                                break label1322;
                               }
                               i = m;
-                            } while (paramAnonymoushn.dLW.id == 0L);
+                            } while (paramAnonymoushu.fEL.id == 0L);
                             localObject1 = this.this$0.$contextObj;
-                            if ((localObject1 != null) && (((bbn)localObject1).tCE == 17)) {
+                            if ((localObject1 != null) && (((bid)localObject1).xkX == 17)) {
                               break;
                             }
                             localObject1 = this.this$0.$contextObj;
-                            if ((localObject1 != null) && (((bbn)localObject1).tCE == 18)) {
+                            if ((localObject1 != null) && (((bid)localObject1).xkX == 18)) {
                               break;
                             }
                             localObject1 = this.this$0.$contextObj;
-                            if ((localObject1 != null) && (((bbn)localObject1).tCE == 20)) {
+                            if ((localObject1 != null) && (((bid)localObject1).xkX == 20)) {
                               break;
                             }
                             localObject1 = this.this$0.$contextObj;
-                            if ((localObject1 != null) && (((bbn)localObject1).tCE == 16)) {
+                            if ((localObject1 != null) && (((bid)localObject1).xkX == 16)) {
                               break;
                             }
                             localObject1 = this.this$0.$contextObj;
-                            if ((localObject1 != null) && (((bbn)localObject1).tCE == 6)) {
+                            if ((localObject1 != null) && (((bid)localObject1).xkX == 6)) {
                               break;
                             }
                             localObject1 = this.this$0.$contextObj;
-                            if ((localObject1 != null) && (((bbn)localObject1).tCE == 27)) {
+                            if ((localObject1 != null) && (((bid)localObject1).xkX == 27)) {
                               break;
                             }
                             localObject1 = this.this$0.$contextObj;
-                            if ((localObject1 != null) && (((bbn)localObject1).tCE == 9)) {
+                            if ((localObject1 != null) && (((bid)localObject1).xkX == 9)) {
                               break;
                             }
                             localObject1 = this.this$0.$contextObj;
                             i = m;
                           } while (localObject1 == null);
                           i = m;
-                        } while (((bbn)localObject1).tCE != 25);
+                        } while (((bid)localObject1).xkX != 25);
                         localObject1 = ((List)this.this$0.this$0.getDataList()).iterator();
                         i = 0;
                         if (!((Iterator)localObject1).hasNext()) {
-                          break label1820;
+                          break label1875;
                         }
-                        localObject2 = (bo)((Iterator)localObject1).next();
-                        if ((!(localObject2 instanceof BaseFinderFeed)) || (((BaseFinderFeed)localObject2).feedObject.getId() != paramAnonymoushn.dLW.id)) {
+                        localObject2 = (bu)((Iterator)localObject1).next();
+                        if ((!(localObject2 instanceof BaseFinderFeed)) || (((BaseFinderFeed)localObject2).feedObject.getId() != paramAnonymoushu.fEL.id)) {
                           break;
                         }
                         j = 1;
                         if (j == 0) {
-                          break label1813;
+                          break label1868;
                         }
                         j = i;
                         i = m;
                       } while (j == -1);
-                      localObject1 = (bo)this.this$0.this$0.getDataList().get(j);
+                      localObject1 = (bu)this.this$0.this$0.getDataList().get(j);
                       i = i1;
                       boolean bool2;
                       if ((localObject1 instanceof BaseFinderFeed))
                       {
                         bool2 = ((BaseFinderFeed)localObject1).showCommentEdu;
-                        if (paramAnonymoushn.dLW.dLY != 1) {
-                          break label1825;
+                        if (paramAnonymoushu.fEL.fEN != 1) {
+                          break label1880;
                         }
                       }
                       for (boolean bool1 = true;; bool1 = false)
@@ -440,30 +451,30 @@ public abstract class BaseFinderFeedLoader
                           i = 1;
                         }
                         if (i != 0) {
-                          this.this$0.this$0.dispatcher().onItemRangeChanged(j, 1, new o(Integer.valueOf(6), paramAnonymoushn));
+                          this.this$0.this$0.dispatcher().onItemRangeChanged(j, 1, new o(Integer.valueOf(6), paramAnonymoushu));
                         }
                         i = 1;
                         break;
                         j = 0;
-                        break label1685;
+                        break label1740;
                         i += 1;
-                        break label1628;
+                        break label1683;
                         j = -1;
-                        break label1691;
+                        break label1746;
                       }
-                      Log.i(this.this$0.this$0.getTAG(), "FeedUpdateEvent TYPE_ACTIVITY_REMOVED id:" + paramAnonymoushn.dLW.id + ",username:" + paramAnonymoushn.dLW.username + ",liveStaus:" + paramAnonymoushn.dLW.liveStatus);
+                      Log.i(this.this$0.this$0.getTAG(), "FeedUpdateEvent TYPE_ACTIVITY_REMOVED id:" + paramAnonymoushu.fEL.id + ",username:" + paramAnonymoushu.fEL.username + ",liveStaus:" + paramAnonymoushu.fEL.liveStatus);
                       i = m;
-                    } while (paramAnonymoushn.dLW.id == 0L);
+                    } while (paramAnonymoushu.fEL.id == 0L);
                     localObject1 = ((List)this.this$0.this$0.getDataList()).iterator();
                     i = 0;
                     if (((Iterator)localObject1).hasNext())
                     {
-                      localObject2 = (bo)((Iterator)localObject1).next();
-                      if (((localObject2 instanceof BaseFinderFeed)) && (((BaseFinderFeed)localObject2).feedObject.getId() == paramAnonymoushn.dLW.id))
+                      localObject2 = (bu)((Iterator)localObject1).next();
+                      if (((localObject2 instanceof BaseFinderFeed)) && (((BaseFinderFeed)localObject2).feedObject.getId() == paramAnonymoushu.fEL.id))
                       {
                         j = 1;
                         if (j == 0) {
-                          break label2064;
+                          break label2119;
                         }
                       }
                     }
@@ -475,45 +486,45 @@ public abstract class BaseFinderFeedLoader
                       }
                       localObject1 = this.this$0.this$0.getDataList().get(j);
                       if (localObject1 != null) {
-                        break label2076;
+                        break label2131;
                       }
                       localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.model.BaseFinderFeed");
-                      AppMethodBeat.o(244541);
+                      AppMethodBeat.o(288108);
                       throw ((Throwable)localObject1);
                       j = 0;
-                      break label2005;
+                      break label2060;
                       i += 1;
-                      break label1948;
+                      break label2003;
                     }
                     localObject1 = (BaseFinderFeed)localObject1;
-                    if (paramAnonymoushn.dLW.dLY == 1)
+                    if (paramAnonymoushu.fEL.fEN == 1)
                     {
                       localObject2 = ((BaseFinderFeed)localObject1).feedObject.getFeedObject().objectDesc;
                       if (localObject2 != null) {
                         ((FinderObjectDesc)localObject2).event = null;
                       }
-                      this.this$0.this$0.dispatcher().IN(j);
+                      this.this$0.this$0.dispatcher().MF(j);
                       BaseFinderFeedLoader.access$updateFinderPageItem(this.this$0.this$0, (BaseFinderFeed)localObject1);
                     }
                     for (;;)
                     {
                       i = 1;
                       break;
-                      this.this$0.this$0.dispatcher().IN(j);
+                      this.this$0.this$0.dispatcher().MF(j);
                     }
-                    Log.i(this.this$0.this$0.getTAG(), "FeedUpdateEvent TYPE_ACTIVITY_ANTI_SPAM id:" + paramAnonymoushn.dLW.id);
+                    Log.i(this.this$0.this$0.getTAG(), "FeedUpdateEvent TYPE_ACTIVITY_ANTI_SPAM id:" + paramAnonymoushu.fEL.id);
                     i = m;
-                  } while (paramAnonymoushn.dLW.id == 0L);
+                  } while (paramAnonymoushu.fEL.id == 0L);
                   localObject1 = ((List)this.this$0.this$0.getDataList()).iterator();
                   i = 0;
                   if (((Iterator)localObject1).hasNext())
                   {
-                    localObject2 = (bo)((Iterator)localObject1).next();
-                    if (((localObject2 instanceof BaseFinderFeed)) && (((BaseFinderFeed)localObject2).feedObject.getId() == paramAnonymoushn.dLW.id))
+                    localObject2 = (bu)((Iterator)localObject1).next();
+                    if (((localObject2 instanceof BaseFinderFeed)) && (((BaseFinderFeed)localObject2).feedObject.getId() == paramAnonymoushu.fEL.id))
                     {
                       j = 1;
                       if (j == 0) {
-                        break label2364;
+                        break label2419;
                       }
                     }
                   }
@@ -525,18 +536,18 @@ public abstract class BaseFinderFeedLoader
                     }
                     localObject1 = this.this$0.this$0.getDataList().get(j);
                     if (localObject1 != null) {
-                      break label2376;
+                      break label2431;
                     }
                     localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.model.BaseFinderFeed");
-                    AppMethodBeat.o(244541);
+                    AppMethodBeat.o(288108);
                     throw ((Throwable)localObject1);
                     j = 0;
-                    break label2305;
+                    break label2360;
                     i += 1;
-                    break label2248;
+                    break label2303;
                   }
                   localObject1 = (BaseFinderFeed)localObject1;
-                  if (paramAnonymoushn.dLW.dLY == 1)
+                  if (paramAnonymoushu.fEL.fEN == 1)
                   {
                     localObject2 = ((BaseFinderFeed)localObject1).feedObject.getFeedObject().objectDesc;
                     if (localObject2 != null)
@@ -544,51 +555,50 @@ public abstract class BaseFinderFeedLoader
                       localObject2 = ((FinderObjectDesc)localObject2).event;
                       if (localObject2 != null)
                       {
-                        ((azs)localObject2).eventName = "";
-                        ((azs)localObject2).LJx = "";
+                        ((bfv)localObject2).eventName = "";
+                        ((bfv)localObject2).SQA = "";
                         Log.i(this.this$0.this$0.getTAG(), "TYPE_ACTIVITY_ANTI_SPAM value changed");
-                        localObject2 = kotlin.x.SXb;
+                        localObject2 = kotlin.x.aazN;
                       }
                     }
-                    this.this$0.this$0.dispatcher().IN(j);
+                    this.this$0.this$0.dispatcher().MF(j);
                     BaseFinderFeedLoader.access$updateFinderPageItem(this.this$0.this$0, (BaseFinderFeed)localObject1);
                   }
                   for (;;)
                   {
                     i = 1;
                     break;
-                    this.this$0.this$0.dispatcher().IN(j);
+                    this.this$0.this$0.dispatcher().MF(j);
                   }
-                  Log.i(this.this$0.this$0.getTAG(), "FeedUpdateEvent TYPE_LIVE_CHANGE id:" + paramAnonymoushn.dLW.id + ",username:" + paramAnonymoushn.dLW.username + ",liveStaus:" + paramAnonymoushn.dLW.liveStatus);
+                  Log.i(this.this$0.this$0.getTAG(), "FeedUpdateEvent TYPE_LIVE_CHANGE id:" + paramAnonymoushu.fEL.id + ",username:" + paramAnonymoushu.fEL.username + ",liveStaus:" + paramAnonymoushu.fEL.liveStatus);
                   i = m;
-                } while (paramAnonymoushn.dLW.id == 0L);
+                } while (paramAnonymoushu.fEL.id == 0L);
                 i = m;
-              } while (paramAnonymoushn.dLW.dLY != 1);
-              label872:
-              label1136:
-              label1141:
+              } while (paramAnonymoushu.fEL.fEN != 1);
+              label604:
+              label870:
+              label2419:
               localObject1 = ((List)this.this$0.this$0.getDataList()).iterator();
-              label992:
-              label1124:
-              label1267:
+              label1379:
               i = 0;
-              label1378:
+              label1875:
+              label1880:
               if (((Iterator)localObject1).hasNext())
               {
-                localObject2 = (bo)((Iterator)localObject1).next();
+                localObject2 = (bu)((Iterator)localObject1).next();
                 if ((localObject2 instanceof w))
                 {
                   localObject2 = ((w)localObject2).feedObject.getLiveInfo();
-                  if ((localObject2 != null) && (((awe)localObject2).liveId == paramAnonymoushn.dLW.id))
+                  if ((localObject2 != null) && (((bac)localObject2).liveId == paramAnonymoushu.fEL.id))
                   {
                     j = 1;
                     if (j == 0) {
-                      break label3094;
+                      break label3245;
                     }
                     if (i < 0) {
-                      break label4560;
+                      break label5877;
                     }
-                    localObject2 = (bo)this.this$0.this$0.getDataList().get(i);
+                    localObject2 = (bu)this.this$0.this$0.getDataList().get(i);
                     localObject1 = localObject2;
                     if (!(localObject2 instanceof w)) {
                       localObject1 = null;
@@ -598,201 +608,217 @@ public abstract class BaseFinderFeedLoader
                     {
                       localObject1 = ((BaseFinderFeed)localObject1).feedObject.getLiveInfo();
                       if (localObject1 != null) {
-                        ((awe)localObject1).liveStatus = paramAnonymoushn.dLW.liveStatus;
+                        ((bac)localObject1).liveStatus = paramAnonymoushu.fEL.liveStatus;
                       }
-                      this.this$0.this$0.dispatcher().IN(i);
-                      localObject1 = kotlin.x.SXb;
+                      this.this$0.this$0.dispatcher().MF(i);
+                      localObject1 = kotlin.x.aazN;
                     }
                   }
                 }
               }
-              label1628:
+              label2003:
+              label2131:
+              label2774:
               break;
             }
-            label523:
-            label651:
-            label811:
-            label1324:
-            label2248:
-            label2376:
-            label4552:
-            label4557:
-            label4560:
+            label547:
+            label675:
+            label1073:
+            label1079:
+            label1868:
+            label2897:
+            label2923:
+            label3056:
+            label5874:
+            label5877:
             for (i = 1;; i = 0)
             {
               localObject1 = ((List)this.this$0.this$0.getDataList()).iterator();
               j = 0;
               if (((Iterator)localObject1).hasNext()) {
-                if (((bo)((Iterator)localObject1).next() instanceof com.tencent.mm.plugin.finder.model.x)) {
+                if (((bu)((Iterator)localObject1).next() instanceof com.tencent.mm.plugin.finder.model.x)) {
                   if (j >= 0)
                   {
-                    localObject1 = (bo)this.this$0.this$0.getDataList().get(j);
+                    localObject1 = (bu)this.this$0.this$0.getDataList().get(j);
                     if ((localObject1 instanceof com.tencent.mm.plugin.finder.model.x))
                     {
-                      i = ((com.tencent.mm.plugin.finder.model.x)localObject1).getIndex(paramAnonymoushn.dLW.id);
+                      i = ((com.tencent.mm.plugin.finder.model.x)localObject1).Mb(paramAnonymoushu.fEL.id);
                       if (i >= 0)
                       {
-                        if (paramAnonymoushn.dLW.liveStatus != 2) {
-                          break label3118;
+                        if (paramAnonymoushu.fEL.liveStatus != 2) {
+                          break label3293;
                         }
-                        localObject1 = (com.tencent.mm.plugin.finder.model.y)((com.tencent.mm.plugin.finder.model.x)localObject1).dtS.remove(i);
-                        this.this$0.this$0.dispatcher().IN(j);
-                        localObject2 = this.this$0.this$0.getTAG();
-                        localObject3 = new StringBuilder("FeedUpdateEvent nickname:");
-                        if (localObject1 == null) {
-                          break label3198;
+                        localObject1 = (com.tencent.mm.plugin.finder.model.x)localObject1;
+                        m = ((com.tencent.mm.plugin.finder.model.x)localObject1).fmA.size();
+                        if (i >= 0) {
+                          break label3269;
                         }
-                        localObject1 = ((com.tencent.mm.plugin.finder.model.y)localObject1).uOo;
-                        if (localObject1 == null) {
-                          break label3198;
+                        if (!((Collection)((com.tencent.mm.plugin.finder.model.x)localObject1).dKy()).isEmpty()) {
+                          break label3288;
                         }
-                        localObject1 = ((FinderObject)localObject1).contact;
-                        if (localObject1 == null) {
-                          break label3198;
+                        i = 1;
+                        if (i != 0)
+                        {
+                          ((com.tencent.mm.plugin.finder.model.x)localObject1).fmA.clear();
+                          Log.i("FinderFeedLiveList", "removeItem clear list!");
+                        }
+                        localObject1 = kotlin.x.aazN;
+                        this.this$0.this$0.dispatcher().MF(j);
+                        if ((localObject1 instanceof y))
+                        {
+                          localObject2 = ((y)localObject1).zAF;
+                          if (localObject2 != null)
+                          {
+                            localObject2 = ((FinderObject)localObject2).liveInfo;
+                            if (localObject2 != null) {
+                              ((bac)localObject2).liveStatus = paramAnonymoushu.fEL.liveStatus;
+                            }
+                          }
+                          localObject2 = this.this$0.this$0.getTAG();
+                          localObject3 = new StringBuilder("FeedUpdateEvent nickname:");
+                          localObject1 = ((y)localObject1).zAF;
+                          if (localObject1 == null) {
+                            break label3318;
+                          }
+                          localObject1 = ((FinderObject)localObject1).contact;
+                          if (localObject1 == null) {
+                            break label3318;
+                          }
                         }
                       }
                     }
                   }
                 }
               }
-              label3198:
+              label3318:
               for (localObject1 = ((FinderContact)localObject1).nickname;; localObject1 = null)
               {
-                Log.i((String)localObject2, (String)localObject1 + ", live status:" + paramAnonymoushn.dLW.liveStatus);
+                Log.i((String)localObject2, (String)localObject1 + ", live status:" + paramAnonymoushu.fEL.liveStatus);
                 i = 1;
-                localObject2 = paramAnonymoushn.dLW.username;
+                localObject2 = paramAnonymoushu.fEL.username;
                 if (!Util.isNullOrNil((String)localObject2)) {
-                  break label3204;
+                  break label3324;
                 }
-                AppMethodBeat.o(244541);
+                AppMethodBeat.o(288108);
                 return;
                 j = 0;
-                break label2715;
+                break label2770;
                 i += 1;
                 break;
                 i = -1;
-                break label2719;
+                break label2774;
                 j += 1;
-                break label2842;
+                break label2897;
                 j = -1;
-                break label2868;
-                localObject2 = (com.tencent.mm.plugin.finder.model.y)((com.tencent.mm.plugin.finder.model.x)localObject1).dtS.get(i);
-                localObject1 = localObject2;
-                if (localObject2 == null) {
-                  break label2953;
+                break label2923;
+                if (m <= i) {
+                  break label3012;
                 }
-                localObject3 = ((com.tencent.mm.plugin.finder.model.y)localObject2).uOo;
-                localObject1 = localObject2;
-                if (localObject3 == null) {
-                  break label2953;
-                }
-                localObject3 = ((FinderObject)localObject3).liveInfo;
-                localObject1 = localObject2;
-                if (localObject3 == null) {
-                  break label2953;
-                }
-                ((awe)localObject3).liveStatus = paramAnonymoushn.dLW.liveStatus;
-                localObject1 = localObject2;
-                break label2953;
+                ((com.tencent.mm.plugin.finder.model.x)localObject1).fmA.remove(i);
+                break label3012;
+                i = 0;
+                break label3030;
+                localObject1 = ((com.tencent.mm.plugin.finder.model.x)localObject1).fmA.get(i);
+                kotlin.g.b.p.j(localObject1, "liveList.list[indexListItem]");
+                break label3056;
               }
+              label3324:
               localObject3 = ((Iterable)this.this$0.this$0.getDataList()).iterator();
               j = k;
               Object localObject4;
-              label3289:
               Object localObject5;
               Object localObject6;
               if (((Iterator)localObject3).hasNext())
               {
                 localObject1 = ((Iterator)localObject3).next();
                 if (j < 0) {
-                  kotlin.a.j.hxH();
+                  j.iBO();
                 }
-                localObject4 = (bo)localObject1;
+                localObject4 = (bu)localObject1;
                 if (!(localObject4 instanceof BaseFinderFeed)) {
-                  break label4557;
+                  break label5874;
                 }
                 localObject1 = ((BaseFinderFeed)localObject4).contact;
                 if (localObject1 != null)
                 {
-                  localObject1 = ((com.tencent.mm.plugin.finder.api.g)localObject1).getUsername();
-                  if (!p.j(localObject1, localObject2)) {
-                    break label4557;
+                  localObject1 = ((i)localObject1).getUsername();
+                  if (!kotlin.g.b.p.h(localObject1, localObject2)) {
+                    break label5874;
                   }
                   localObject1 = ((BaseFinderFeed)localObject4).contact;
                   if (localObject1 != null)
                   {
-                    ((com.tencent.mm.plugin.finder.api.g)localObject1).field_liveStatus = paramAnonymoushn.dLW.liveStatus;
-                    localObject1 = kotlin.x.SXb;
+                    ((i)localObject1).field_liveStatus = paramAnonymoushu.fEL.liveStatus;
+                    localObject1 = kotlin.x.aazN;
                   }
                   localObject1 = ((BaseFinderFeed)localObject4).feedObject.getFeedObject().contact;
                   if (localObject1 != null)
                   {
-                    ((FinderContact)localObject1).liveStatus = paramAnonymoushn.dLW.liveStatus;
-                    localObject1 = kotlin.x.SXb;
+                    ((FinderContact)localObject1).liveStatus = paramAnonymoushu.fEL.liveStatus;
+                    localObject1 = kotlin.x.aazN;
                   }
-                  this.this$0.this$0.dispatcher().onItemRangeChanged(j, 1, new o(Integer.valueOf(7), paramAnonymoushn));
+                  this.this$0.this$0.dispatcher().onItemRangeChanged(j, 1, new o(Integer.valueOf(7), paramAnonymoushu));
                   BaseFinderFeedLoader.access$updateFinderPageItem(this.this$0.this$0, (BaseFinderFeed)localObject4);
                   localObject5 = this.this$0.this$0.getTAG();
                   localObject6 = new StringBuilder("FeedUpdateEvent TYPE_LIVE_CHANGE username:").append((String)localObject2).append(",nickname:");
                   localObject1 = ((BaseFinderFeed)localObject4).contact;
                   if (localObject1 == null) {
-                    break label3543;
+                    break label3663;
                   }
-                  localObject1 = ((com.tencent.mm.plugin.finder.api.g)localObject1).getNickname();
-                  Log.i((String)localObject5, (String)localObject1 + ",feed id:" + ((bo)localObject4).lT() + ",live status:" + paramAnonymoushn.dLW.liveStatus);
+                  localObject1 = ((i)localObject1).getNickname();
+                  Log.i((String)localObject5, (String)localObject1 + ",feed id:" + ((bu)localObject4).mf() + ",live status:" + paramAnonymoushu.fEL.liveStatus);
                   i = 1;
                 }
               }
               for (;;)
               {
                 j += 1;
-                break label3226;
+                break label3346;
                 localObject1 = null;
-                break label3289;
-                label3543:
+                break label3409;
                 localObject1 = null;
-                break label3478;
+                break label3598;
                 break;
-                Log.i(this.this$0.this$0.getTAG(), "FeedUpdateEvent TYPE_LIVE_STREAM_CHANGE id:" + paramAnonymoushn.dLW.id + ",feedList:" + paramAnonymoushn.dLW.dMc + ",liveStaus:" + paramAnonymoushn.dLW.liveStatus + ",username:" + paramAnonymoushn.dLW.username);
-                if (paramAnonymoushn.dLW.dLY == 1)
+                Log.i(this.this$0.this$0.getTAG(), "FeedUpdateEvent TYPE_LIVE_STREAM_CHANGE id:" + paramAnonymoushu.fEL.id + ",feedList:" + paramAnonymoushu.fEL.fEQ + ",liveStaus:" + paramAnonymoushu.fEL.liveStatus + ",username:" + paramAnonymoushu.fEL.username);
+                if (paramAnonymoushu.fEL.fEN == 1)
                 {
                   localObject1 = ((List)this.this$0.this$0.getDataList()).iterator();
                   i = 0;
                   if (((Iterator)localObject1).hasNext())
                   {
-                    localObject2 = (bo)((Iterator)localObject1).next();
-                    if (((localObject2 instanceof com.tencent.mm.plugin.finder.model.x)) && (((com.tencent.mm.plugin.finder.model.x)localObject2).uOl == paramAnonymoushn.dLW.id))
+                    localObject2 = (bu)((Iterator)localObject1).next();
+                    if (((localObject2 instanceof com.tencent.mm.plugin.finder.model.x)) && (((com.tencent.mm.plugin.finder.model.x)localObject2).zAB == paramAnonymoushu.fEL.id))
                     {
                       j = 1;
                       if (j == 0) {
-                        break label4243;
+                        break label4383;
                       }
                       if (i < 0) {
-                        break label4552;
+                        break label5869;
                       }
-                      localObject2 = (bo)this.this$0.this$0.getDataList().get(i);
+                      localObject2 = (bu)this.this$0.this$0.getDataList().get(i);
                       localObject1 = localObject2;
                       if (!(localObject2 instanceof com.tencent.mm.plugin.finder.model.x)) {
                         localObject1 = null;
                       }
                       if ((com.tencent.mm.plugin.finder.model.x)localObject1 != null)
                       {
-                        this.this$0.this$0.dispatcher().onItemRangeChanged(i, 1, Integer.valueOf(2));
-                        localObject1 = kotlin.x.SXb;
+                        this.this$0.this$0.dispatcher().onItemRangeChanged(i, 1, new o(Integer.valueOf(2), Long.valueOf(paramAnonymoushu.fEL.id)));
+                        localObject1 = kotlin.x.aazN;
                       }
                     }
                   }
                 }
                 for (i = 1;; i = 0)
                 {
-                  localObject1 = com.tencent.mm.plugin.finder.model.d.uNN;
-                  localObject1 = paramAnonymoushn.dLW.username;
-                  p.g(localObject1, "event.data.username");
-                  localObject2 = ((Iterable)d.a.auh((String)localObject1)).iterator();
+                  localObject1 = com.tencent.mm.plugin.finder.model.d.zAb;
+                  localObject1 = paramAnonymoushu.fEL.username;
+                  kotlin.g.b.p.j(localObject1, "event.data.username");
+                  localObject2 = ((Iterable)d.a.aDt((String)localObject1)).iterator();
                   for (;;)
                   {
                     if (!((Iterator)localObject2).hasNext()) {
-                      break label4276;
+                      break label4416;
                     }
                     localObject3 = (String)((Iterator)localObject2).next();
                     localObject4 = ((Iterable)this.this$0.this$0.getDataList()).iterator();
@@ -801,10 +827,10 @@ public abstract class BaseFinderFeedLoader
                     {
                       localObject1 = ((Iterator)localObject4).next();
                       if (j < 0) {
-                        kotlin.a.j.hxH();
+                        j.iBO();
                       }
-                      localObject5 = (bo)localObject1;
-                      label3947:
+                      localObject5 = (bu)localObject1;
+                      label4087:
                       StringBuilder localStringBuilder;
                       if (((CharSequence)localObject3).length() > 0)
                       {
@@ -817,61 +843,61 @@ public abstract class BaseFinderFeedLoader
                           {
                             localObject1 = ((BaseFinderFeed)localObject5).contact;
                             if (localObject1 == null) {
-                              break label4261;
+                              break label4401;
                             }
-                            localObject1 = ((com.tencent.mm.plugin.finder.api.g)localObject1).getUsername();
+                            localObject1 = ((i)localObject1).getUsername();
                             k = i;
-                            if (p.j(localObject1, localObject3))
+                            if (kotlin.g.b.p.h(localObject1, localObject3))
                             {
                               localObject1 = ((BaseFinderFeed)localObject5).contact;
                               if (localObject1 != null)
                               {
-                                ((com.tencent.mm.plugin.finder.api.g)localObject1).field_liveStatus = paramAnonymoushn.dLW.liveStatus;
-                                localObject1 = kotlin.x.SXb;
+                                ((i)localObject1).field_liveStatus = paramAnonymoushu.fEL.liveStatus;
+                                localObject1 = kotlin.x.aazN;
                               }
                               localObject1 = ((BaseFinderFeed)localObject5).feedObject.getFeedObject().contact;
                               if (localObject1 != null)
                               {
-                                ((FinderContact)localObject1).liveStatus = paramAnonymoushn.dLW.liveStatus;
-                                localObject1 = kotlin.x.SXb;
+                                ((FinderContact)localObject1).liveStatus = paramAnonymoushu.fEL.liveStatus;
+                                localObject1 = kotlin.x.aazN;
                               }
-                              this.this$0.this$0.dispatcher().onItemRangeChanged(j, 1, new o(Integer.valueOf(7), paramAnonymoushn));
+                              this.this$0.this$0.dispatcher().onItemRangeChanged(j, 1, new o(Integer.valueOf(7), paramAnonymoushu));
                               BaseFinderFeedLoader.access$updateFinderPageItem(this.this$0.this$0, (BaseFinderFeed)localObject5);
                               localObject6 = this.this$0.this$0.getTAG();
                               localStringBuilder = new StringBuilder("FeedUpdateEvent username:").append((String)localObject3).append(",nickname:");
                               localObject1 = ((BaseFinderFeed)localObject5).contact;
                               if (localObject1 == null) {
-                                break label4267;
+                                break label4407;
                               }
                             }
                           }
                         }
                       }
-                      for (localObject1 = ((com.tencent.mm.plugin.finder.api.g)localObject1).getNickname();; localObject1 = null)
+                      for (localObject1 = ((i)localObject1).getNickname();; localObject1 = null)
                       {
-                        Log.i((String)localObject6, (String)localObject1 + ",feed id:" + ((bo)localObject5).lT() + ",live status:" + paramAnonymoushn.dLW.liveStatus);
+                        Log.i((String)localObject6, (String)localObject1 + ",feed id:" + ((bu)localObject5).mf() + ",live status:" + paramAnonymoushu.fEL.liveStatus);
                         k = 1;
                         j += 1;
                         i = k;
-                        break label3898;
+                        break label4038;
                         j = 0;
-                        break label3738;
+                        break label3858;
                         i += 1;
                         break;
                         i = -1;
-                        break label3742;
+                        break label3862;
                         m = 0;
-                        break label3947;
+                        break label4087;
                         localObject1 = null;
-                        break label3986;
+                        break label4126;
                       }
                     }
                   }
                   break;
-                  localObject1 = f.tWl;
-                  localObject1 = paramAnonymoushn.dLW.username;
-                  p.g(localObject1, "event.data.username");
-                  p.h(localObject1, "str");
+                  localObject1 = k.xIe;
+                  localObject1 = paramAnonymoushu.fEL.username;
+                  kotlin.g.b.p.j(localObject1, "event.data.username");
+                  kotlin.g.b.p.k(localObject1, "str");
                   localObject2 = ((Iterable)n.b((CharSequence)localObject1, new String[] { "," })).iterator();
                   i = m;
                   if (!((Iterator)localObject2).hasNext()) {
@@ -884,41 +910,213 @@ public abstract class BaseFinderFeedLoader
                   {
                     localObject1 = ((Iterator)localObject4).next();
                     if (i < 0) {
-                      kotlin.a.j.hxH();
+                      j.iBO();
                     }
-                    localObject1 = (bo)localObject1;
+                    localObject1 = (bu)localObject1;
                     if (((CharSequence)localObject3).length() <= 0) {
-                      break label4541;
+                      break label4681;
                     }
                     j = 1;
-                    label4435:
                     if ((j != 0) && ((localObject1 instanceof BaseFinderFeed)))
                     {
                       localObject1 = ((BaseFinderFeed)localObject1).contact;
                       if (localObject1 == null) {
-                        break label4546;
+                        break label4686;
                       }
                     }
                   }
-                  for (localObject1 = ((com.tencent.mm.plugin.finder.api.g)localObject1).getUsername();; localObject1 = null)
+                  for (localObject1 = ((i)localObject1).getUsername();; localObject1 = null)
                   {
-                    if (p.j(localObject1, localObject3))
+                    if (kotlin.g.b.p.h(localObject1, localObject3))
                     {
-                      this.this$0.this$0.dispatcher().onItemRangeChanged(i, 1, new o(Integer.valueOf(8), paramAnonymoushn));
+                      this.this$0.this$0.dispatcher().onItemRangeChanged(i, 1, new o(Integer.valueOf(8), paramAnonymoushu));
                       Log.i(this.this$0.this$0.getTAG(), "TYPE_FEED_LIVE_NOTICE username:".concat(String.valueOf(localObject3)));
                     }
                     i += 1;
-                    break label4387;
+                    break label4527;
                     break;
                     j = 0;
-                    break label4435;
+                    break label4575;
+                  }
+                  localObject1 = ((List)this.this$0.this$0.getDataList()).iterator();
+                  i = 0;
+                  if (((Iterator)localObject1).hasNext())
+                  {
+                    localObject2 = (bu)((Iterator)localObject1).next();
+                    if (((localObject2 instanceof BaseFinderFeed)) && (((BaseFinderFeed)localObject2).feedObject.getId() == paramAnonymoushu.fEL.id))
+                    {
+                      j = 1;
+                      if (j == 0) {
+                        break label4879;
+                      }
+                    }
+                  }
+                  for (j = i;; j = -1)
+                  {
+                    i = m;
+                    if (j == -1) {
+                      break;
+                    }
+                    this.this$0.this$0.dispatcher().onItemRangeChanged(j, 1, new o(Integer.valueOf(26), Integer.valueOf(1)));
+                    Log.i(this.this$0.this$0.getTAG(), "TYPE_FINDER_AD_MUTUAL_INFO index:" + j + " id:" + com.tencent.mm.ae.d.Fw(paramAnonymoushu.fEL.id));
+                    i = m;
+                    break;
+                    j = 0;
+                    break label4771;
+                    i += 1;
+                    break label4714;
+                  }
+                  localObject1 = ((List)this.this$0.this$0.getDataList()).iterator();
+                  i = 0;
+                  if (((Iterator)localObject1).hasNext())
+                  {
+                    localObject2 = (bu)((Iterator)localObject1).next();
+                    if (((localObject2 instanceof BaseFinderFeed)) && (((BaseFinderFeed)localObject2).feedObject.getId() == paramAnonymoushu.fEL.id))
+                    {
+                      j = 1;
+                      if (j == 0) {
+                        break label5079;
+                      }
+                    }
+                  }
+                  for (j = i;; j = -1)
+                  {
+                    i = m;
+                    if (j == -1) {
+                      break;
+                    }
+                    this.this$0.this$0.dispatcher().onItemRangeChanged(j, 1, new o(Integer.valueOf(27), Integer.valueOf(10)));
+                    Log.i(this.this$0.this$0.getTAG(), "TYPE_FINDER_AD_SNS_INFO index:" + j + " id:" + com.tencent.mm.ae.d.Fw(paramAnonymoushu.fEL.id));
+                    i = m;
+                    break;
+                    j = 0;
+                    break label4970;
+                    i += 1;
+                    break label4913;
+                  }
+                  localObject1 = ((List)this.this$0.this$0.getDataList()).iterator();
+                  i = 0;
+                  label5113:
+                  if (((Iterator)localObject1).hasNext())
+                  {
+                    localObject2 = (bu)((Iterator)localObject1).next();
+                    if (((localObject2 instanceof BaseFinderFeed)) && (((BaseFinderFeed)localObject2).feedObject.getId() == paramAnonymoushu.fEL.id))
+                    {
+                      j = 1;
+                      if (j == 0) {
+                        break label5449;
+                      }
+                    }
+                  }
+                  for (j = i;; j = -1)
+                  {
+                    i = m;
+                    if (j == -1) {
+                      break;
+                    }
+                    localObject2 = this.this$0.this$0.getDataList().get(j);
+                    localObject1 = localObject2;
+                    if (!(localObject2 instanceof BaseFinderFeed)) {
+                      localObject1 = null;
+                    }
+                    localObject1 = (BaseFinderFeed)localObject1;
+                    if (localObject1 != null)
+                    {
+                      localObject1 = ((BaseFinderFeed)localObject1).feedObject;
+                      if (localObject1 != null)
+                      {
+                        localObject1 = ((FinderItem)localObject1).getFeedObject();
+                        if (localObject1 != null)
+                        {
+                          i = m;
+                          if (((FinderObject)localObject1).adFlag == paramAnonymoushu.fEL.adFlag) {
+                            break;
+                          }
+                        }
+                      }
+                    }
+                    localObject2 = this.this$0.this$0.getDataList().get(j);
+                    localObject1 = localObject2;
+                    if (!(localObject2 instanceof BaseFinderFeed)) {
+                      localObject1 = null;
+                    }
+                    localObject1 = (BaseFinderFeed)localObject1;
+                    if (localObject1 != null)
+                    {
+                      localObject1 = ((BaseFinderFeed)localObject1).feedObject;
+                      if (localObject1 != null)
+                      {
+                        localObject1 = ((FinderItem)localObject1).getFeedObject();
+                        if (localObject1 != null) {
+                          ((FinderObject)localObject1).adFlag = paramAnonymoushu.fEL.adFlag;
+                        }
+                      }
+                    }
+                    this.this$0.this$0.dispatcher().onItemRangeChanged(j, 1, new o(Integer.valueOf(28), Integer.valueOf(10)));
+                    Log.i(this.this$0.this$0.getTAG(), "TYPE_FINDER_AD_STAT_CHANGED index:" + j + " id:" + com.tencent.mm.ae.d.Fw(paramAnonymoushu.fEL.id));
+                    i = m;
+                    break;
+                    j = 0;
+                    break label5170;
+                    i += 1;
+                    break label5113;
+                  }
+                  Log.i(this.this$0.this$0.getTAG(), "FeedLiveListItemUpdateEvent TYPE_LIVE_LIST_ITEM_STATUS_CHANGE id:" + paramAnonymoushu.fEL.id + ",feedList:" + paramAnonymoushu.fEL.fEQ + ",liveStaus:" + paramAnonymoushu.fEL.liveStatus + ",username:" + paramAnonymoushu.fEL.username);
+                  localObject1 = ((List)this.this$0.this$0.getDataList()).iterator();
+                  i = 0;
+                  if (((Iterator)localObject1).hasNext()) {
+                    if (!((bu)((Iterator)localObject1).next() instanceof com.tencent.mm.plugin.finder.model.x)) {}
+                  }
+                  for (j = i;; j = -1)
+                  {
+                    i = m;
+                    if (j < 0) {
+                      break;
+                    }
+                    localObject1 = (bu)this.this$0.this$0.getDataList().get(j);
+                    i = m;
+                    if (!(localObject1 instanceof com.tencent.mm.plugin.finder.model.x)) {
+                      break;
+                    }
+                    localObject1 = ((com.tencent.mm.plugin.finder.model.x)localObject1).Mc(paramAnonymoushu.fEL.id);
+                    i = m;
+                    if (localObject1 == null) {
+                      break;
+                    }
+                    localObject3 = ((y)localObject1).zAF;
+                    if (localObject3 != null)
+                    {
+                      localObject3 = ((FinderObject)localObject3).liveInfo;
+                      if (localObject3 != null) {
+                        ((bac)localObject3).liveStatus = paramAnonymoushu.fEL.liveStatus;
+                      }
+                    }
+                    localObject3 = this.this$0.this$0.getTAG();
+                    localObject4 = new StringBuilder("FeedLiveListItemUpdateEvent nickname:");
+                    localObject5 = ((y)localObject1).zAF;
+                    localObject1 = localObject2;
+                    if (localObject5 != null)
+                    {
+                      localObject5 = ((FinderObject)localObject5).contact;
+                      localObject1 = localObject2;
+                      if (localObject5 != null) {
+                        localObject1 = ((FinderContact)localObject5).nickname;
+                      }
+                    }
+                    Log.i((String)localObject3, (String)localObject1 + ", live status:" + paramAnonymoushu.fEL.liveStatus);
+                    this.this$0.this$0.dispatcher().onItemRangeChanged(j, 1, new o(Integer.valueOf(3), Long.valueOf(paramAnonymoushu.fEL.id)));
+                    localObject1 = kotlin.x.aazN;
+                    i = 1;
+                    break;
+                    i += 1;
+                    break label5579;
                   }
                 }
               }
             }
           }
         });
-        AppMethodBeat.o(244542);
+        AppMethodBeat.o(282567);
         return false;
       }
     };
@@ -935,30 +1133,26 @@ public abstract class BaseFinderFeedLoader
       int i = ((Number)((Iterator)localObject1).next()).intValue();
       if (i >= 0)
       {
-        Object localObject2 = com.tencent.mm.plugin.finder.storage.data.l.vGw;
-        long l = paramBaseFinderFeed.lT();
+        Object localObject2 = com.tencent.mm.plugin.finder.storage.data.k.Anu;
+        long l = paramBaseFinderFeed.mf();
         localObject2 = paramBaseFinderFeed.feedObject.getFeedObject();
-        p.h(localObject2, "item");
+        kotlin.g.b.p.k(localObject2, "item");
         Log.i("Finder.FinderPage", "updatePageData pageName:" + i + ", svrId:" + l);
         if (i >= 0) {
           try
           {
-            l.a.Lf(i);
-            Object localObject3 = com.tencent.mm.plugin.finder.storage.data.l.dyD().Lg(i).vFP.zns;
+            k.a.Qp(i);
+            Object localObject3 = k.a.a(com.tencent.mm.plugin.finder.storage.data.k.dZv().Qq(i), "");
             if (localObject3 != null)
             {
-              localObject3 = (arl)kotlin.a.j.L((List)localObject3, 0);
+              localObject3 = ((ath)localObject3).jmy;
               if (localObject3 != null)
               {
-                localObject3 = ((arl)localObject3).gCs;
-                if (localObject3 != null)
+                h localh = h.Ang;
+                if (h.a(l, (FinderObject)localObject2, (LinkedList)localObject3))
                 {
-                  i locali = i.vGl;
-                  if (i.a(l, (FinderObject)localObject2, (LinkedList)localObject3))
-                  {
-                    localObject2 = com.tencent.mm.plugin.finder.storage.data.l.vGw;
-                    l.a.a(com.tencent.mm.plugin.finder.storage.data.l.dyD().Lg(i));
-                  }
+                  localObject2 = com.tencent.mm.plugin.finder.storage.data.k.Anu;
+                  k.a.a(com.tencent.mm.plugin.finder.storage.data.k.dZv().Qq(i));
                 }
               }
             }
@@ -975,10 +1169,10 @@ public abstract class BaseFinderFeedLoader
     }
   }
   
-  public void addRvFeed(int paramInt, bo parambo)
+  public void addRvFeed(int paramInt, bu parambu)
   {
-    p.h(parambo, "feed");
-    getDataList().add(paramInt, parambo);
+    kotlin.g.b.p.k(parambu, "feed");
+    getDataList().add(paramInt, parambu);
   }
   
   public List<Integer> colletExtraPageName()
@@ -986,13 +1180,13 @@ public abstract class BaseFinderFeedLoader
     return (List)new ArrayList();
   }
   
-  protected final bo getItem(long paramLong)
+  protected final bu getItem(long paramLong)
   {
     Iterator localIterator = ((List)getDataList()).iterator();
     int i = 0;
     int j;
     if (localIterator.hasNext()) {
-      if (((bo)localIterator.next()).lT() == paramLong)
+      if (((bu)localIterator.next()).mf() == paramLong)
       {
         j = 1;
         label49:
@@ -1006,7 +1200,7 @@ public abstract class BaseFinderFeedLoader
       if ((i == -1) || (i >= getDataList().size())) {
         break label100;
       }
-      return (bo)getDataList().get(i);
+      return (bu)getDataList().get(i);
       j = 0;
       break label49;
       label88:
@@ -1023,10 +1217,10 @@ public abstract class BaseFinderFeedLoader
     return -1;
   }
   
-  public int insert(bo parambo, int paramInt, boolean paramBoolean)
+  public int insert(bu parambu, int paramInt, boolean paramBoolean)
   {
-    p.h(parambo, "feed");
-    int i = getDataList().indexOf(parambo);
+    kotlin.g.b.p.k(parambu, "feed");
+    int i = getDataList().indexOf(parambu);
     if (i == paramInt) {}
     do
     {
@@ -1034,13 +1228,23 @@ public abstract class BaseFinderFeedLoader
       {
         return paramInt;
         if (i >= 0) {
-          getDataList().remove(parambo);
+          getDataList().remove(parambu);
         }
       } while (paramInt < 0);
-      addRvFeed(paramInt, parambo);
+      addRvFeed(paramInt, parambu);
     } while (!paramBoolean);
-    dispatcher().onItemRangeRemoved(paramInt, 1);
+    dispatcher().onItemRangeInserted(paramInt, 1);
     return paramInt;
+  }
+  
+  public void insertAll(List<? extends bu> paramList, int paramInt)
+  {
+    kotlin.g.b.p.k(paramList, "feeds");
+    if (paramInt >= 0)
+    {
+      getDataList().addAll(paramInt, (Collection)paramList);
+      dispatcher().onItemRangeInserted(paramInt, paramList.size());
+    }
   }
   
   public boolean interceptMvFeed()
@@ -1068,8 +1272,8 @@ public abstract class BaseFinderFeedLoader
     super.onAlive();
     if (isObservePostEvent())
     {
-      g.a locala = com.tencent.mm.plugin.finder.upload.g.vSJ;
-      com.tencent.mm.plugin.finder.upload.g.dBa().a((com.tencent.mm.plugin.finder.upload.q)this);
+      g.a locala = g.AAk;
+      g.ecj().a((com.tencent.mm.plugin.finder.upload.q)this);
     }
     this.feedDeleteListener.alive();
     this.feedChangeListener.alive();
@@ -1082,8 +1286,8 @@ public abstract class BaseFinderFeedLoader
     super.onDead();
     if (isObservePostEvent())
     {
-      g.a locala = com.tencent.mm.plugin.finder.upload.g.vSJ;
-      com.tencent.mm.plugin.finder.upload.g.dBa().b((com.tencent.mm.plugin.finder.upload.q)this);
+      g.a locala = g.AAk;
+      g.ecj().b((com.tencent.mm.plugin.finder.upload.q)this);
     }
     this.feedDeleteListener.dead();
     this.feedChangeListener.dead();
@@ -1091,16 +1295,16 @@ public abstract class BaseFinderFeedLoader
   
   public void onFetchDone(IResponse paramIResponse)
   {
-    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bm(paramIResponse);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader", "com/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader", "onFetchDone", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;)V", this, localb.axR());
+    b localb = new b();
+    localb.bn(paramIResponse);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader", "com/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader", "onFetchDone", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;)V", this, localb.aFi());
     super.onFetchDone(paramIResponse);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader", "com/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader", "onFetchDone", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;)V");
   }
   
   public void onMvPostStart(FinderItem paramFinderItem)
   {
-    p.h(paramFinderItem, "item");
+    kotlin.g.b.p.k(paramFinderItem, "item");
   }
   
   public void onPostEnd(long paramLong, boolean paramBoolean)
@@ -1138,45 +1342,45 @@ public abstract class BaseFinderFeedLoader
       do
       {
         return;
-        localObject = c.vGN;
-        localObject = c.a.FS(paramLong);
+        localObject = c.AnK;
+        localObject = c.a.MS(paramLong);
       } while (localObject == null);
       localArrayList = new ArrayList();
       localBaseFinderFeed = transformFinderObj((FinderItem)localObject);
     } while ((localBaseFinderFeed.feedObject.isMvFeed()) && (interceptMvPostStart()));
     Log.i(getTAG(), "onPostStart localId " + paramLong + " feed " + localBaseFinderFeed);
-    com.tencent.mm.plugin.finder.utils.y localy = com.tencent.mm.plugin.finder.utils.y.vXH;
-    if (!com.tencent.mm.plugin.finder.utils.y.dnv()) {}
+    aj localaj = aj.AGc;
+    if (!aj.dOO()) {}
     for (boolean bool = true;; bool = false)
     {
       localBaseFinderFeed.showLikeTips = bool;
       localBaseFinderFeed.showShareSns = paramBoolean;
-      if (!(kotlin.a.j.kt((List)getDataList()) instanceof com.tencent.mm.plugin.finder.model.x)) {
+      if (!(j.lp((List)getDataList()) instanceof com.tencent.mm.plugin.finder.model.x)) {
         break;
       }
-      com.tencent.mm.ac.d.h((kotlin.g.a.a)new kotlin.g.b.q(localBaseFinderFeed)
+      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new kotlin.g.b.q(localBaseFinderFeed)
       {
         public final void invoke()
         {
-          AppMethodBeat.i(244546);
+          AppMethodBeat.i(223265);
           jdField_this.getDataList().add(1, this.$feed$inlined);
           jdField_this.dispatcher().onItemRangeInserted(1, 1);
-          AppMethodBeat.o(244546);
+          AppMethodBeat.o(223265);
         }
       });
       return;
     }
     localArrayList.add(localBaseFinderFeed);
-    com.tencent.mm.plugin.finder.feed.model.internal.b.mergeDataAndNotify$default(getMerger(), 2, (List)localArrayList, true, null, 8, null);
+    com.tencent.mm.plugin.finder.feed.model.internal.d.mergeDataAndNotify$default(getMerger(), 2, (List)localArrayList, true, null, 8, null);
   }
   
-  public final int remove(long paramLong, boolean paramBoolean)
+  public int remove(long paramLong, boolean paramBoolean)
   {
     Iterator localIterator = ((List)getDataList()).iterator();
     int i = 0;
     int j;
     if (localIterator.hasNext()) {
-      if (((bo)localIterator.next()).lT() == paramLong)
+      if (((bu)localIterator.next()).mf() == paramLong)
       {
         j = 1;
         label50:
@@ -1189,7 +1393,7 @@ public abstract class BaseFinderFeedLoader
     {
       if (i != -1)
       {
-        p.g(getDataList().remove(i), "dataList.removeAt(index)");
+        kotlin.g.b.p.j(getDataList().remove(i), "dataList.removeAt(index)");
         if (paramBoolean)
         {
           dispatcher().onItemRangeRemoved(i, 1);
@@ -1206,6 +1410,23 @@ public abstract class BaseFinderFeedLoader
     }
   }
   
+  public void removeAll(int paramInt)
+  {
+    int i = getDataList().size();
+    if ((paramInt != -1) && (paramInt <= i))
+    {
+      LinkedList localLinkedList = new LinkedList((Collection)getDataList().subList(0, paramInt));
+      getDataList().clear();
+      getDataList().addAll((Collection)localLinkedList);
+      i -= localLinkedList.size();
+      if (i > 0)
+      {
+        dispatcher().onItemRangeRemoved(paramInt, i);
+        onDataChanged();
+      }
+    }
+  }
+  
   public final int removeByLocalId(long paramLong, boolean paramBoolean)
   {
     Iterator localIterator = ((List)getDataList()).iterator();
@@ -1213,8 +1434,8 @@ public abstract class BaseFinderFeedLoader
     int j;
     if (localIterator.hasNext())
     {
-      bo localbo = (bo)localIterator.next();
-      if (((localbo instanceof BaseFinderFeed)) && (((BaseFinderFeed)localbo).feedObject.getLocalId() == paramLong))
+      bu localbu = (bu)localIterator.next();
+      if (((localbu instanceof BaseFinderFeed)) && (((BaseFinderFeed)localbu).feedObject.getLocalId() == paramLong))
       {
         j = 1;
         label66:
@@ -1227,7 +1448,7 @@ public abstract class BaseFinderFeedLoader
     {
       if (i != -1)
       {
-        p.g(getDataList().remove(i), "dataList.removeAt(index)");
+        kotlin.g.b.p.j(getDataList().remove(i), "dataList.removeAt(index)");
         if (paramBoolean) {
           dispatcher().onItemRangeRemoved(i, 1);
         }
@@ -1244,20 +1465,20 @@ public abstract class BaseFinderFeedLoader
   
   public BaseFinderFeed transformFinderObj(FinderItem paramFinderItem)
   {
-    p.h(paramFinderItem, "feedObj");
-    c.a locala = c.vGN;
-    return c.a.s(paramFinderItem);
+    kotlin.g.b.p.k(paramFinderItem, "feedObj");
+    c.a locala = c.AnK;
+    return c.a.a(paramFinderItem);
   }
   
   public BaseFinderFeed transformToMusicData(FinderItem paramFinderItem)
   {
-    p.h(paramFinderItem, "item");
+    kotlin.g.b.p.k(paramFinderItem, "item");
     return transformFinderObj(paramFinderItem);
   }
   
   public final int updateByLocalId(BaseFinderFeed paramBaseFinderFeed, boolean paramBoolean)
   {
-    p.h(paramBaseFinderFeed, "newFeed");
+    kotlin.g.b.p.k(paramBaseFinderFeed, "newFeed");
     int j;
     if (paramBaseFinderFeed.feedObject.getLocalId() <= 0L)
     {
@@ -1273,9 +1494,9 @@ public abstract class BaseFinderFeedLoader
       }
       Object localObject = localIterator.next();
       if (i < 0) {
-        kotlin.a.j.hxH();
+        j.iBO();
       }
-      localObject = (bo)localObject;
+      localObject = (bu)localObject;
       if (((localObject instanceof BaseFinderFeed)) && (((BaseFinderFeed)localObject).feedObject.getLocalId() == paramBaseFinderFeed.feedObject.getLocalId()))
       {
         paramBaseFinderFeed.showLikeTips = ((BaseFinderFeed)localObject).showLikeTips;
@@ -1302,8 +1523,8 @@ public abstract class BaseFinderFeedLoader
   
   protected final BaseFinderFeed updateItem(long paramLong1, long paramLong2)
   {
-    Object localObject = e.vFX;
-    localObject = e.a.Fy(paramLong2);
+    Object localObject = e.AmW;
+    localObject = e.a.MH(paramLong2);
     if (localObject != null) {
       ((FinderItem)localObject).setLocalId(paramLong1);
     }
@@ -1319,8 +1540,8 @@ public abstract class BaseFinderFeedLoader
   
   protected final void updateItem(long paramLong)
   {
-    Object localObject = c.vGN;
-    localObject = c.a.FS(paramLong);
+    Object localObject = c.AnK;
+    localObject = c.a.MS(paramLong);
     if (localObject != null)
     {
       Log.i(getTAG(), "updateItem localId:" + paramLong + " itemLoadId:" + ((FinderItem)localObject).getLocalId() + " itemId:" + ((FinderItem)localObject).getId());
@@ -1333,24 +1554,24 @@ public abstract class BaseFinderFeedLoader
     if (paramLong <= 0L) {
       return;
     }
-    com.tencent.mm.ac.d.h((kotlin.g.a.a)new kotlin.g.b.q(paramLong)
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new kotlin.g.b.q(paramLong)
     {
       public final void invoke()
       {
-        AppMethodBeat.i(244548);
+        AppMethodBeat.i(292184);
         Iterator localIterator = ((Iterable)this.this$0.getDataList()).iterator();
         int i = 0;
         while (localIterator.hasNext())
         {
           Object localObject1 = localIterator.next();
           if (i < 0) {
-            kotlin.a.j.hxH();
+            j.iBO();
           }
-          localObject1 = (bo)localObject1;
+          localObject1 = (bu)localObject1;
           if (((localObject1 instanceof BaseFinderFeed)) && (((BaseFinderFeed)localObject1).feedObject.getLocalId() == paramLong))
           {
-            Object localObject2 = c.vGN;
-            Object localObject3 = c.a.FS(paramLong);
+            Object localObject2 = c.AnK;
+            Object localObject3 = c.a.MS(paramLong);
             if (localObject3 != null)
             {
               boolean bool = ((BaseFinderFeed)localObject1).showLikeTips;
@@ -1365,7 +1586,7 @@ public abstract class BaseFinderFeedLoader
           }
           i += 1;
         }
-        AppMethodBeat.o(244548);
+        AppMethodBeat.o(292184);
       }
     });
   }

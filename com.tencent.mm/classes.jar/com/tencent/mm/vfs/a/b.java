@@ -9,76 +9,76 @@ import java.util.NoSuchElementException;
 final class b<S, T>
   implements Iterator<T>
 {
-  private final a.a<S, ? extends T> ReQ;
-  private final Iterator<? extends S> ReR;
-  private Iterator<? extends T> ReS;
-  private T ReT;
-  private boolean ReU;
+  private final a.a<S, ? extends T> YFK;
+  private final Iterator<? extends S> YFL;
+  private Iterator<? extends T> YFM;
+  private T YFN;
+  private boolean YFO;
   
   public b(Iterator<? extends S> paramIterator, a.a<S, ? extends T> parama)
   {
-    AppMethodBeat.i(187770);
-    this.ReR = paramIterator;
-    this.ReQ = parama;
-    this.ReS = Collections.emptyList().iterator();
-    AppMethodBeat.o(187770);
+    AppMethodBeat.i(237039);
+    this.YFL = paramIterator;
+    this.YFK = parama;
+    this.YFM = Collections.emptyList().iterator();
+    AppMethodBeat.o(237039);
   }
   
   public final boolean hasNext()
   {
-    AppMethodBeat.i(187771);
-    if (this.ReU)
+    AppMethodBeat.i(237040);
+    if (this.YFO)
     {
-      AppMethodBeat.o(187771);
+      AppMethodBeat.o(237040);
       return true;
     }
-    if (this.ReS == null)
+    if (this.YFM == null)
     {
-      AppMethodBeat.o(187771);
+      AppMethodBeat.o(237040);
       return false;
     }
-    if (!this.ReS.hasNext())
+    if (!this.YFM.hasNext())
     {
-      this.ReT = null;
-      this.ReS = null;
-      if (this.ReR.hasNext())
+      this.YFN = null;
+      this.YFM = null;
+      if (this.YFL.hasNext())
       {
-        Object localObject = this.ReQ.eq(this.ReR.next());
+        Object localObject = this.YFK.ew(this.YFL.next());
         if (localObject != null) {}
         for (localObject = ((Iterable)localObject).iterator();; localObject = Collections.emptyList().iterator())
         {
-          this.ReS = ((Iterator)localObject);
+          this.YFM = ((Iterator)localObject);
           break;
         }
       }
-      AppMethodBeat.o(187771);
+      AppMethodBeat.o(237040);
       return false;
     }
-    this.ReT = this.ReS.next();
-    this.ReU = true;
-    AppMethodBeat.o(187771);
+    this.YFN = this.YFM.next();
+    this.YFO = true;
+    AppMethodBeat.o(237040);
     return true;
   }
   
   public final T next()
   {
-    AppMethodBeat.i(187772);
-    if ((!this.ReU) && (!hasNext()))
+    AppMethodBeat.i(237041);
+    if ((!this.YFO) && (!hasNext()))
     {
       localObject = new NoSuchElementException();
-      AppMethodBeat.o(187772);
+      AppMethodBeat.o(237041);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.ReT;
-    this.ReT = null;
-    this.ReU = false;
-    AppMethodBeat.o(187772);
+    Object localObject = this.YFN;
+    this.YFN = null;
+    this.YFO = false;
+    AppMethodBeat.o(237041);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vfs.a.b
  * JD-Core Version:    0.7.0.1
  */

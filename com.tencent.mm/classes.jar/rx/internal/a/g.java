@@ -11,20 +11,20 @@ import rx.i;
 public final class g
   implements d.a<Long>
 {
-  final TimeUnit UkI;
-  final rx.g UkJ;
-  final long jJj = 0L;
-  final long period = 1000L;
+  final long JiN = 1000L;
+  final TimeUnit abOe;
+  final rx.g abOf;
+  final long mAo = 0L;
   
   public g(long paramLong1, long paramLong2, TimeUnit paramTimeUnit, rx.g paramg)
   {
-    this.UkI = paramTimeUnit;
-    this.UkJ = paramg;
+    this.abOe = paramTimeUnit;
+    this.abOf = paramg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.internal.a.g
  * JD-Core Version:    0.7.0.1
  */

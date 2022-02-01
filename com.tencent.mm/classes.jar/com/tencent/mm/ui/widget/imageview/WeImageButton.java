@@ -7,29 +7,30 @@ import android.graphics.Canvas;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatImageButton;
 import android.util.AttributeSet;
+import androidx.appcompat.widget.AppCompatImageButton;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ck.a.a;
+import com.tencent.mm.cr.a.c;
+import com.tencent.mm.cr.a.k;
 
 public class WeImageButton
   extends AppCompatImageButton
 {
-  private int Kxl;
-  private int QRf;
-  private float QRg;
-  private int QRh;
-  private boolean QRi;
+  private int RyZ;
+  private int YpQ;
+  private float YpR;
+  private int YpS;
+  private boolean YpT;
   private int mAlpha;
   
   public WeImageButton(Context paramContext)
   {
     super(paramContext, null);
     AppMethodBeat.i(159405);
-    this.QRg = 1.0F;
+    this.YpR = 1.0F;
     this.mAlpha = 255;
-    this.QRh = 255;
-    this.QRi = true;
+    this.YpS = 255;
+    this.YpT = true;
     init(paramContext, null);
     AppMethodBeat.o(159405);
   }
@@ -38,10 +39,10 @@ public class WeImageButton
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159406);
-    this.QRg = 1.0F;
+    this.YpR = 1.0F;
     this.mAlpha = 255;
-    this.QRh = 255;
-    this.QRi = true;
+    this.YpS = 255;
+    this.YpT = true;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(159406);
   }
@@ -50,10 +51,10 @@ public class WeImageButton
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159407);
-    this.QRg = 1.0F;
+    this.YpR = 1.0F;
     this.mAlpha = 255;
-    this.QRh = 255;
-    this.QRi = true;
+    this.YpS = 255;
+    this.YpT = true;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(159407);
   }
@@ -61,16 +62,16 @@ public class WeImageButton
   private void init(Context paramContext, AttributeSet paramAttributeSet)
   {
     AppMethodBeat.i(159409);
-    this.QRf = paramContext.getResources().getColor(2131099746);
+    this.YpQ = paramContext.getResources().getColor(a.c.FG_0);
     if (paramAttributeSet != null)
     {
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.WeImageBtn);
-      this.Kxl = paramContext.getColor(1, this.QRf);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.k.WeImageBtn);
+      this.RyZ = paramContext.getColor(a.k.WeImageBtn_btnIconColor, this.YpQ);
       paramContext.recycle();
       AppMethodBeat.o(159409);
       return;
     }
-    this.Kxl = this.QRf;
+    this.RyZ = this.YpQ;
     AppMethodBeat.o(159409);
   }
   
@@ -78,11 +79,11 @@ public class WeImageButton
   {
     AppMethodBeat.i(159410);
     super.onDraw(paramCanvas);
-    if ((getDrawable() != null) && (this.QRi))
+    if ((getDrawable() != null) && (this.YpT))
     {
-      paramCanvas = new PorterDuffColorFilter(this.Kxl, PorterDuff.Mode.SRC_ATOP);
+      paramCanvas = new PorterDuffColorFilter(this.RyZ, PorterDuff.Mode.SRC_ATOP);
       getDrawable().setColorFilter(paramCanvas);
-      this.QRi = false;
+      this.YpT = false;
     }
     AppMethodBeat.o(159410);
   }
@@ -90,15 +91,15 @@ public class WeImageButton
   public void setIconColor(int paramInt)
   {
     AppMethodBeat.i(159408);
-    this.Kxl = paramInt;
-    this.QRi = true;
+    this.RyZ = paramInt;
+    this.YpT = true;
     invalidate();
     AppMethodBeat.o(159408);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.imageview.WeImageButton
  * JD-Core Version:    0.7.0.1
  */

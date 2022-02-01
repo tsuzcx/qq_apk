@@ -1,46 +1,103 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
+import android.content.ComponentName;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
-import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.c;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import java.lang.ref.WeakReference;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
 import kotlin.l;
+import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIEnterAnimationCompleteIPCNotify;", "", "()V", "doNotify", "", "processName", "", "appBrandUiName", "IPC_Notify", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIMoveTaskToBackGuardIPCHelper;", "", "()V", "TAG", "", "register", "", "activity", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI;", "unregister", "makeKey", "plugin-appbrand-integration_release"})
 public final class s
 {
-  public static final s nXy;
+  public static final s qZq;
   
   static
   {
-    AppMethodBeat.i(51152);
-    nXy = new s();
-    AppMethodBeat.o(51152);
+    AppMethodBeat.i(281981);
+    qZq = new s();
+    AppMethodBeat.o(281981);
   }
   
-  public static void eK(String paramString1, String paramString2)
+  private static String j(AppBrandUI paramAppBrandUI)
   {
-    AppMethodBeat.i(51151);
-    Object localObject = (CharSequence)paramString1;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
-    for (int i = 1; i != 0; i = 0)
+    AppMethodBeat.i(281974);
+    StringBuilder localStringBuilder = new StringBuilder();
+    ComponentName localComponentName = paramAppBrandUI.getComponentName();
+    p.j(localComponentName, "this.componentName");
+    paramAppBrandUI = localComponentName.getShortClassName() + '@' + paramAppBrandUI.hashCode();
+    AppMethodBeat.o(281974);
+    return paramAppBrandUI;
+  }
+  
+  public static final void k(AppBrandUI paramAppBrandUI)
+  {
+    AppMethodBeat.i(281976);
+    p.k(paramAppBrandUI, "activity");
+    if ((paramAppBrandUI instanceof AppBrandPluginUI))
     {
-      AppMethodBeat.o(51151);
+      AppMethodBeat.o(281976);
       return;
     }
-    localObject = paramString2;
-    if (paramString2 == null) {
-      localObject = "null";
-    }
-    XIPCInvoker.a(paramString1, new IPCString((String)localObject), a.class, null);
-    AppMethodBeat.o(51151);
+    final WeakReference localWeakReference = new WeakReference(paramAppBrandUI);
+    paramAppBrandUI = j(paramAppBrandUI);
+    com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new IPCString(paramAppBrandUI), (d)a.qZr, (f)new b(paramAppBrandUI, localWeakReference));
+    AppMethodBeat.o(281976);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIEnterAnimationCompleteIPCNotify$IPC_Notify;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
-  static final class a
-    implements b<IPCString, IPCVoid>
-  {}
+  public static final void l(AppBrandUI paramAppBrandUI)
+  {
+    AppMethodBeat.i(281977);
+    p.k(paramAppBrandUI, "activity");
+    if ((paramAppBrandUI instanceof AppBrandPluginUI))
+    {
+      AppMethodBeat.o(281977);
+      return;
+    }
+    com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new IPCString(j(paramAppBrandUI)), (d)c.qZs, null);
+    AppMethodBeat.o(281977);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "data", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  static final class a<InputType, ResultType>
+    implements d<IPCString, IPCVoid>
+  {
+    public static final a qZr;
+    
+    static
+    {
+      AppMethodBeat.i(275330);
+      qZr = new a();
+      AppMethodBeat.o(275330);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  static final class b<T>
+    implements f<IPCVoid>
+  {
+    b(String paramString, WeakReference paramWeakReference) {}
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "data", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  static final class c<InputType, ResultType>
+    implements c<IPCString, IPCVoid>
+  {
+    public static final c qZs;
+    
+    static
+    {
+      AppMethodBeat.i(244189);
+      qZs = new c();
+      AppMethodBeat.o(244189);
+    }
+  }
 }
 
 

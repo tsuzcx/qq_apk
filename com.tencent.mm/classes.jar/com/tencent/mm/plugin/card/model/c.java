@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.card.model;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
@@ -36,15 +36,15 @@ public final class c
     Object localObject = "update UserCardInfo set stickyIndex=0, stickyEndTime=0 where stickyIndex>0 and (" + l + ">stickyEndTime and stickyEndTime<>0)";
     this.db.execSQL("UserCardInfo", (String)localObject);
     localObject = new StringBuilder("select * from UserCardInfo");
-    switch (1.pTm[parama.ordinal()])
+    switch (1.tpn[parama.ordinal()])
     {
     }
     for (;;)
     {
       ((StringBuilder)localObject).append(" order by stickyIndex desc, status asc , updateTime desc");
-      if (parama == n.a.pTV)
+      if (parama == n.a.tpW)
       {
-        int i = ((Integer)g.aAh().azQ().get(ar.a.NUo, Integer.valueOf(3))).intValue();
+        int i = ((Integer)h.aHG().aHp().get(ar.a.Vio, Integer.valueOf(3))).intValue();
         ((StringBuilder)localObject).append(" LIMIT ").append(i);
       }
       parama = this.db.rawQuery(((StringBuilder)localObject).toString(), null);
@@ -64,7 +64,7 @@ public final class c
     }
   }
   
-  public final CardInfo ajk(String paramString)
+  public final CardInfo aqX(String paramString)
   {
     AppMethodBeat.i(112768);
     CardInfo localCardInfo = new CardInfo();
@@ -79,7 +79,7 @@ public final class c
   }
   
   /* Error */
-  public final java.util.List<CardInfo> ctG()
+  public final java.util.List<CardInfo> cHi()
   {
     // Byte code:
     //   0: ldc 179

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.groupsolitaire.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.groupsolitaire.PluginGroupSolitaire;
 
 final class c$1
@@ -12,13 +12,13 @@ final class c$1
   public final void run()
   {
     AppMethodBeat.i(110366);
-    ((PluginGroupSolitaire)g.ah(PluginGroupSolitaire.class)).getGroupSolitatireStorage().r(this.gtu, this.val$key, true);
+    ((PluginGroupSolitaire)h.ag(PluginGroupSolitaire.class)).getGroupSolitatireStorage().t(this.iXG, this.val$key, true);
     AppMethodBeat.o(110366);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.groupsolitaire.b.c.1
  * JD-Core Version:    0.7.0.1
  */

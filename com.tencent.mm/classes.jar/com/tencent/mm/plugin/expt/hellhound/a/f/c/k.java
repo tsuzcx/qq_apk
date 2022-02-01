@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.c;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cbm;
-import com.tencent.mm.protocal.protobuf.dvg;
-import com.tencent.mm.protocal.protobuf.dvi;
-import com.tencent.mm.protocal.protobuf.dvj;
-import com.tencent.mm.protocal.protobuf.dvk;
-import com.tencent.mm.protocal.protobuf.erd;
+import com.tencent.mm.protocal.protobuf.cjp;
+import com.tencent.mm.protocal.protobuf.efi;
+import com.tencent.mm.protocal.protobuf.efk;
+import com.tencent.mm.protocal.protobuf.efl;
+import com.tencent.mm.protocal.protobuf.efm;
+import com.tencent.mm.protocal.protobuf.fbo;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -18,50 +18,50 @@ import java.util.Set;
 
 public final class k
 {
-  public static void a(cbm paramcbm)
+  public static void a(cjp paramcjp)
   {
     AppMethodBeat.i(177391);
-    if (TextUtils.isEmpty(paramcbm.dRM))
+    if (TextUtils.isEmpty(paramcjp.fLj))
     {
       AppMethodBeat.o(177391);
       return;
     }
-    Object localObject1 = paramcbm.dRM;
-    dvj localdvj;
+    Object localObject1 = paramcjp.fLj;
+    efl localefl;
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      localdvj = aqP("mmkv_key_hellSPMatchinghe_");
-      if ((localdvj == null) || (localdvj.MWq.isEmpty())) {
-        localdvj = null;
+      localefl = ayQ("mmkv_key_hellSPMatchinghe_");
+      if ((localefl == null) || (localefl.UiL.isEmpty())) {
+        localefl = null;
       }
     }
-    while (localdvj == null)
+    while (localefl == null)
     {
-      cQB();
+      dfv();
       AppMethodBeat.o(177391);
       return;
-      if (!((String)localObject1).equals(((dvi)localdvj.MWq.get(0)).dRM)) {
-        localdvj = null;
+      if (!((String)localObject1).equals(((efk)localefl.UiL.get(0)).fLj)) {
+        localefl = null;
       }
     }
-    Log.i("HABBYGE-MALI.SessionPageMatchingCache", "SessionPageMatchingCache, addPage: %s", new Object[] { paramcbm.dRM });
-    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqn(paramcbm.dRM);
+    Log.i("HABBYGE-MALI.SessionPageMatchingCache", "SessionPageMatchingCache, addPage: %s", new Object[] { paramcjp.fLj });
+    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.ayn(paramcjp.fLj);
     if (localObject1 == null)
     {
       AppMethodBeat.o(177391);
       return;
     }
-    List localList = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqw((String)localObject1);
+    List localList = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.ayw((String)localObject1);
     if ((localList == null) || (localList.isEmpty()))
     {
-      cQB();
+      dfv();
       AppMethodBeat.o(177391);
       return;
     }
-    int i = localdvj.MWq.size() - 1;
+    int i = localefl.UiL.size() - 1;
     if (i >= 0)
     {
-      dvi localdvi = (dvi)localdvj.MWq.get(i);
+      efk localefk = (efk)localefl.UiL.get(i);
       Object localObject2 = null;
       Object localObject3 = localList.iterator();
       do
@@ -70,89 +70,89 @@ public final class k
         if (!((Iterator)localObject3).hasNext()) {
           break;
         }
-        localObject1 = (dvk)((Iterator)localObject3).next();
-      } while (((dvk)localObject1).LPN != localdvi.LPN);
+        localObject1 = (efm)((Iterator)localObject3).next();
+      } while (((efm)localObject1).SYb != localefk.SYb);
       if (localObject1 != null) {
-        if ((localdvi.index <= 0) || (localdvi.index >= ((dvk)localObject1).MWr.size() - 1)) {
-          localdvj.MWq.remove(i);
+        if ((localefk.index <= 0) || (localefk.index >= ((efm)localObject1).UiM.size() - 1)) {
+          localefl.UiL.remove(i);
         }
       }
       for (;;)
       {
         i -= 1;
         break;
-        localObject3 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(((cbm)localdvi.MWp.getLast()).dMl);
+        localObject3 = com.tencent.mm.plugin.expt.hellhound.core.b.awD(((cjp)localefk.UiK.getLast()).fFe);
         if (localObject3 == null)
         {
-          localdvj.MWq.remove(i);
+          localefl.UiL.remove(i);
         }
         else
         {
-          localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(paramcbm.dMl);
+          localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.awD(paramcjp.fFe);
           if (((String)localObject3).equals(localObject2))
           {
             Log.i("HABBYGE-MALI.SessionPageMatchingCache", "SessionPageMatchingCache, addPage, 7Event: %s", new Object[] { localObject2 });
           }
           else
           {
-            localObject3 = (dvg)((dvk)localObject1).MWr.get(localdvi.index + 1);
+            localObject3 = (efi)((efm)localObject1).UiM.get(localefk.index + 1);
             if (localObject3 == null)
             {
-              localdvj.MWq.remove(i);
+              localefl.UiL.remove(i);
             }
             else
             {
-              localObject3 = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(((dvg)localObject3).dMl);
+              localObject3 = com.tencent.mm.plugin.expt.hellhound.core.b.awD(((efi)localObject3).fFe);
               if (localObject3 == null)
               {
-                localdvj.MWq.remove(i);
+                localefl.UiL.remove(i);
               }
               else if (((String)localObject3).equals(localObject2))
               {
                 Log.i("HABBYGE-MALI.SessionPageMatchingCache", "SessionPageMatchingCache, addPage, real: %s", new Object[] { localObject2 });
-                localdvi.MWp.addLast(paramcbm);
-                localdvi.index += 1;
-                if (localdvi.index == ((dvk)localObject1).MWr.size() - 1)
+                localefk.UiK.addLast(paramcjp);
+                localefk.index += 1;
+                if (localefk.index == ((efm)localObject1).UiM.size() - 1)
                 {
-                  localdvi.index = -1;
-                  localdvi.MWo = true;
-                  Log.i("HABBYGE-MALI.SessionPageMatchingCache", "move2SuccessCache: %s, %s, %s", new Object[] { localdvi.LPM, localdvi.dRM, Long.valueOf(localdvi.LPN) });
-                  localObject2 = aqP("mmkv_key_hellSPMatchSuche_");
+                  localefk.index = -1;
+                  localefk.UiJ = true;
+                  Log.i("HABBYGE-MALI.SessionPageMatchingCache", "move2SuccessCache: %s, %s, %s", new Object[] { localefk.SYa, localefk.fLj, Long.valueOf(localefk.SYb) });
+                  localObject2 = ayQ("mmkv_key_hellSPMatchSuche_");
                   localObject1 = localObject2;
                   if (localObject2 == null) {
-                    localObject1 = new dvj();
+                    localObject1 = new efl();
                   }
-                  ((dvj)localObject1).MWq.addLast(localdvi);
-                  a((dvj)localObject1, "mmkv_key_hellSPMatchSuche_");
-                  localdvj.MWq.remove(i);
+                  ((efl)localObject1).UiL.addLast(localefk);
+                  a((efl)localObject1, "mmkv_key_hellSPMatchSuche_");
+                  localefl.UiL.remove(i);
                 }
               }
               else
               {
                 Log.i("HABBYGE-MALI.SessionPageMatchingCache", "SessionPageMatchingCache, addPage, misMatch: %s, %s", new Object[] { localObject2, localObject3 });
-                localdvj.MWq.remove(i);
+                localefl.UiL.remove(i);
                 continue;
-                localdvj.MWq.remove(i);
+                localefl.UiL.remove(i);
               }
             }
           }
         }
       }
     }
-    if (localdvj.MWq.isEmpty())
+    if (localefl.UiL.isEmpty())
     {
-      cQB();
+      dfv();
       AppMethodBeat.o(177391);
       return;
     }
-    a(localdvj, "mmkv_key_hellSPMatchinghe_");
+    a(localefl, "mmkv_key_hellSPMatchinghe_");
     AppMethodBeat.o(177391);
   }
   
-  private static void a(dvj paramdvj, String paramString)
+  private static void a(efl paramefl, String paramString)
   {
     AppMethodBeat.i(177394);
-    if (paramdvj == null)
+    if (paramefl == null)
     {
       AppMethodBeat.o(177394);
       return;
@@ -165,53 +165,53 @@ public final class k
     }
     try
     {
-      com.tencent.mm.plugin.expt.hellhound.core.a.b.o(paramString + i, paramdvj.toByteArray());
+      com.tencent.mm.plugin.expt.hellhound.core.a.b.r(paramString + i, paramefl.toByteArray());
       AppMethodBeat.o(177394);
       return;
     }
-    catch (Exception paramdvj)
+    catch (Exception paramefl)
     {
-      Log.printErrStackTrace("HABBYGE-MALI.SessionPageMatchingCache", paramdvj, "SessionPageMatchingCache.write: %s", new Object[] { paramdvj.getMessage() });
+      Log.printErrStackTrace("HABBYGE-MALI.SessionPageMatchingCache", paramefl, "SessionPageMatchingCache.write: %s", new Object[] { paramefl.getMessage() });
       AppMethodBeat.o(177394);
     }
   }
   
-  public static void a(erd paramerd, String paramString)
+  public static void a(fbo paramfbo, String paramString)
   {
-    AppMethodBeat.i(220564);
-    if ((paramerd == null) || (paramString == null))
+    AppMethodBeat.i(252923);
+    if ((paramfbo == null) || (paramString == null))
     {
-      AppMethodBeat.o(220564);
+      AppMethodBeat.o(252923);
       return;
     }
-    a(paramerd, paramString, aqP("mmkv_key_hellSPMatchSuche_"), false);
-    a(paramerd, paramString, aqP("mmkv_key_hellSPMatchinghe_"), true);
-    AppMethodBeat.o(220564);
+    a(paramfbo, paramString, ayQ("mmkv_key_hellSPMatchSuche_"), false);
+    a(paramfbo, paramString, ayQ("mmkv_key_hellSPMatchinghe_"), true);
+    AppMethodBeat.o(252923);
   }
   
-  private static void a(erd paramerd, String paramString, dvj paramdvj, boolean paramBoolean)
+  private static void a(fbo paramfbo, String paramString, efl paramefl, boolean paramBoolean)
   {
-    AppMethodBeat.i(220565);
-    if ((paramdvj == null) || (paramdvj.MWq.isEmpty()))
+    AppMethodBeat.i(252926);
+    if ((paramefl == null) || (paramefl.UiL.isEmpty()))
     {
-      AppMethodBeat.o(220565);
+      AppMethodBeat.o(252926);
       return;
     }
-    paramString = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(paramString);
-    Iterator localIterator = paramdvj.MWq.iterator();
+    paramString = com.tencent.mm.plugin.expt.hellhound.core.b.awD(paramString);
+    Iterator localIterator = paramefl.UiL.iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
-      Object localObject = (dvi)localIterator.next();
-      if ((localObject != null) && (!((dvi)localObject).MWp.isEmpty()))
+      Object localObject = (efk)localIterator.next();
+      if ((localObject != null) && (!((efk)localObject).UiK.isEmpty()))
       {
-        localObject = (cbm)((dvi)localObject).MWp.getLast();
+        localObject = (cjp)((efk)localObject).UiK.getLast();
         if (localObject != null)
         {
-          String str = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(((cbm)localObject).dMl);
+          String str = com.tencent.mm.plugin.expt.hellhound.core.b.awD(((cjp)localObject).fFe);
           if ((str != null) && (str.equals(paramString)))
           {
-            ((cbm)localObject).LPH.add(paramerd);
+            ((cjp)localObject).SXV.add(paramfbo);
             i = 1;
           }
         }
@@ -221,16 +221,16 @@ public final class k
     {
       if (paramBoolean)
       {
-        a(paramdvj, "mmkv_key_hellSPMatchinghe_");
-        AppMethodBeat.o(220565);
+        a(paramefl, "mmkv_key_hellSPMatchinghe_");
+        AppMethodBeat.o(252926);
         return;
       }
-      a(paramdvj, "mmkv_key_hellSPMatchSuche_");
+      a(paramefl, "mmkv_key_hellSPMatchSuche_");
     }
-    AppMethodBeat.o(220565);
+    AppMethodBeat.o(252926);
   }
   
-  public static dvj aqP(String paramString)
+  public static efl ayQ(String paramString)
   {
     AppMethodBeat.i(177395);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -239,18 +239,18 @@ public final class k
       AppMethodBeat.o(177395);
       return null;
     }
-    paramString = com.tencent.mm.plugin.expt.hellhound.core.a.b.getBytes(paramString + i);
+    paramString = com.tencent.mm.plugin.expt.hellhound.core.a.b.awZ(paramString + i);
     if ((paramString == null) || (paramString.length <= 0))
     {
       AppMethodBeat.o(177395);
       return null;
     }
-    dvj localdvj = new dvj();
+    efl localefl = new efl();
     try
     {
-      localdvj.parseFrom(paramString);
+      localefl.parseFrom(paramString);
       AppMethodBeat.o(177395);
-      return localdvj;
+      return localefl;
     }
     catch (Exception paramString)
     {
@@ -260,7 +260,7 @@ public final class k
     return null;
   }
   
-  public static void cQB()
+  public static void dfv()
   {
     AppMethodBeat.i(177392);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -271,7 +271,7 @@ public final class k
     }
     try
     {
-      com.tencent.mm.plugin.expt.hellhound.core.a.b.o("mmkv_key_hellSPMatchinghe_".concat(String.valueOf(i)), new byte[0]);
+      com.tencent.mm.plugin.expt.hellhound.core.a.b.r("mmkv_key_hellSPMatchinghe_".concat(String.valueOf(i)), new byte[0]);
       AppMethodBeat.o(177392);
       return;
     }
@@ -282,7 +282,7 @@ public final class k
     }
   }
   
-  public static void cQC()
+  public static void dfw()
   {
     AppMethodBeat.i(177393);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -293,7 +293,7 @@ public final class k
     }
     try
     {
-      com.tencent.mm.plugin.expt.hellhound.core.a.b.o("mmkv_key_hellSPMatchSuche_".concat(String.valueOf(i)), new byte[0]);
+      com.tencent.mm.plugin.expt.hellhound.core.a.b.r("mmkv_key_hellSPMatchSuche_".concat(String.valueOf(i)), new byte[0]);
       AppMethodBeat.o(177393);
       return;
     }
@@ -304,7 +304,7 @@ public final class k
     }
   }
   
-  public static void k(Map<Long, dvi> paramMap, String paramString)
+  public static void k(Map<Long, efk> paramMap, String paramString)
   {
     AppMethodBeat.i(177390);
     if ((TextUtils.isEmpty(paramString)) || (paramMap.isEmpty()))
@@ -312,27 +312,27 @@ public final class k
       AppMethodBeat.o(177390);
       return;
     }
-    dvj localdvj = new dvj();
+    efl localefl = new efl();
     paramMap = paramMap.entrySet().iterator();
     while (paramMap.hasNext())
     {
-      dvi localdvi = (dvi)((Map.Entry)paramMap.next()).getValue();
-      if ((localdvi.dRM.equals(paramString)) && (localdvi.index > 0)) {
-        localdvj.MWq.addLast(localdvi);
+      efk localefk = (efk)((Map.Entry)paramMap.next()).getValue();
+      if ((localefk.fLj.equals(paramString)) && (localefk.index > 0)) {
+        localefl.UiL.addLast(localefk);
       }
     }
-    if (localdvj.MWq.isEmpty())
+    if (localefl.UiL.isEmpty())
     {
       AppMethodBeat.o(177390);
       return;
     }
-    a(localdvj, "mmkv_key_hellSPMatchinghe_");
+    a(localefl, "mmkv_key_hellSPMatchinghe_");
     AppMethodBeat.o(177390);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.c.k
  * JD-Core Version:    0.7.0.1
  */

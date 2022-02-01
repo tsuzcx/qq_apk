@@ -3,48 +3,42 @@ package com.tencent.mm.live.core.core;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$NetStatus;", "", "()V", "NET_BAD", "", "getNET_BAD", "()I", "NET_DISABLE", "getNET_DISABLE", "NET_GOOD", "getNET_GOOD", "NET_NORMAL", "getNET_NORMAL", "plugin-core_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$MicSettingFlag;", "", "()V", "EnableBuyProductAudience", "", "getEnableBuyProductAudience", "()I", "EnableFollowedAnchorAudience", "getEnableFollowedAnchorAudience", "EnableRewardedAnchorAudience", "getEnableRewardedAnchorAudience", "plugin-core_release"})
 public final class e$h
 {
-  private static final int hxW = 0;
-  private static final int hxX = 1;
-  private static final int hxY = 2;
-  private static final int hxZ = 3;
-  public static final h hya;
+  private static final int kkn = 1;
+  private static final int kko = 2;
+  private static final int kkp = 4;
+  public static final h kkq;
   
   static
   {
-    AppMethodBeat.i(196409);
-    hya = new h();
-    hxX = 1;
-    hxY = 2;
-    hxZ = 3;
-    AppMethodBeat.o(196409);
+    AppMethodBeat.i(199444);
+    kkq = new h();
+    kkn = 1;
+    kko = 2;
+    kkp = 4;
+    AppMethodBeat.o(199444);
   }
   
-  public static int aCS()
+  public static int aKu()
   {
-    return hxW;
+    return kkn;
   }
   
-  public static int aCT()
+  public static int aKv()
   {
-    return hxX;
+    return kko;
   }
   
-  public static int aCU()
+  public static int aKw()
   {
-    return hxY;
-  }
-  
-  public static int aCV()
-  {
-    return hxZ;
+    return kkp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.core.core.e.h
  * JD-Core Version:    0.7.0.1
  */

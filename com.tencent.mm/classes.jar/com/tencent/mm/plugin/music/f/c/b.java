@@ -7,14 +7,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class b
 {
-  private static b Amn = null;
-  private ConcurrentHashMap<Class<? extends a>, a> Amo;
+  private static b FTt = null;
+  private ConcurrentHashMap<Class<? extends a>, a> FTu;
   private Context ctx;
   
   private b(Context paramContext)
   {
     AppMethodBeat.i(137414);
-    this.Amo = new ConcurrentHashMap();
+    this.FTu = new ConcurrentHashMap();
     this.ctx = paramContext;
     AppMethodBeat.o(137414);
   }
@@ -22,32 +22,32 @@ public final class b
   public static void a(Class<? extends a> paramClass, a parama)
   {
     AppMethodBeat.i(137418);
-    eva().Amo.put(paramClass, parama);
+    ffu().FTu.put(paramClass, parama);
     AppMethodBeat.o(137418);
   }
   
-  public static <T extends a> T aS(Class<T> paramClass)
+  public static void af(Class<? extends a> paramClass)
+  {
+    AppMethodBeat.i(137419);
+    ffu().FTu.remove(paramClass);
+    AppMethodBeat.o(137419);
+  }
+  
+  public static <T extends a> T bm(Class<T> paramClass)
   {
     AppMethodBeat.i(137420);
-    paramClass = (a)eva().Amo.get(paramClass);
+    paramClass = (a)ffu().FTu.get(paramClass);
     AppMethodBeat.o(137420);
     return paramClass;
   }
   
-  public static void ag(Class<? extends a> paramClass)
-  {
-    AppMethodBeat.i(137419);
-    eva().Amo.remove(paramClass);
-    AppMethodBeat.o(137419);
-  }
-  
-  private static b eva()
+  private static b ffu()
   {
     AppMethodBeat.i(137416);
-    if (Amn == null) {
+    if (FTt == null) {
       init(null);
     }
-    b localb = Amn;
+    b localb = FTt;
     AppMethodBeat.o(137416);
     return localb;
   }
@@ -60,7 +60,7 @@ public final class b
     //   2: monitorenter
     //   3: ldc 72
     //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 15	com/tencent/mm/plugin/music/f/c/b:Amn	Lcom/tencent/mm/plugin/music/f/c/b;
+    //   8: getstatic 15	com/tencent/mm/plugin/music/f/c/b:FTt	Lcom/tencent/mm/plugin/music/f/c/b;
     //   11: ifnull +12 -> 23
     //   14: ldc 72
     //   16: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -74,7 +74,7 @@ public final class b
     //   33: dup
     //   34: aload_0
     //   35: invokespecial 83	com/tencent/mm/plugin/music/f/c/b:<init>	(Landroid/content/Context;)V
-    //   38: putstatic 15	com/tencent/mm/plugin/music/f/c/b:Amn	Lcom/tencent/mm/plugin/music/f/c/b;
+    //   38: putstatic 15	com/tencent/mm/plugin/music/f/c/b:FTt	Lcom/tencent/mm/plugin/music/f/c/b;
     //   41: ldc 72
     //   43: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   46: goto -27 -> 19
@@ -98,10 +98,10 @@ public final class b
     {
       AppMethodBeat.i(137417);
       Log.i("MicroMsg.Audio.AudioPlayerCoreService", "release");
-      b localb = Amn;
-      localb.Amo.clear();
+      b localb = FTt;
+      localb.FTu.clear();
       localb.ctx = null;
-      Amn = null;
+      FTt = null;
       AppMethodBeat.o(137417);
       return;
     }
@@ -114,7 +114,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.c.b
  * JD-Core Version:    0.7.0.1
  */

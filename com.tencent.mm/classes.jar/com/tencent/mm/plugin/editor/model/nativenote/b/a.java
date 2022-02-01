@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.editor.model.nativenote.b;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.mm.plugin.editor.model.nativenote.manager.WXRTEditText;
 
 public abstract interface a
 {
-  public abstract void Fr(int paramInt);
+  public abstract void IY(int paramInt);
   
-  public abstract void Fs(int paramInt);
+  public abstract void IZ(int paramInt);
   
-  public abstract void Ft(int paramInt);
+  public abstract void Ja(int paramInt);
   
-  public abstract void Fu(int paramInt);
+  public abstract void Jb(int paramInt);
   
   public abstract void Q(int paramInt, long paramLong);
   
@@ -19,45 +19,45 @@ public abstract interface a
   
   public abstract void a(WXRTEditText paramWXRTEditText, boolean paramBoolean, int paramInt);
   
-  public abstract void cCA();
+  public abstract void cRa();
   
-  public abstract void cCB();
+  public abstract void cRb();
   
-  public abstract void cCC();
+  public abstract void cRc();
   
-  public abstract void cCD();
+  public abstract void cRd();
   
-  public abstract int cCE();
+  public abstract void cRe();
   
-  public abstract int cCF();
+  public abstract void cRf();
   
-  public abstract boolean cCG();
+  public abstract void cRg();
   
-  public abstract RecyclerView cCH();
+  public abstract void cRh();
   
-  public abstract void cCU();
+  public abstract void cRi();
   
-  public abstract void cCv();
+  public abstract int cRj();
   
-  public abstract void cCw();
+  public abstract int cRk();
   
-  public abstract void cCx();
+  public abstract boolean cRl();
   
-  public abstract void cCy();
+  public abstract RecyclerView cRm();
   
-  public abstract void cCz();
+  public abstract void cRz();
   
   public abstract void e(boolean paramBoolean, long paramLong);
   
-  public abstract void ft(int paramInt1, int paramInt2);
+  public abstract void fQ(int paramInt1, int paramInt2);
   
-  public abstract void fu(int paramInt1, int paramInt2);
+  public abstract void fR(int paramInt1, int paramInt2);
   
-  public abstract void fv(int paramInt1, int paramInt2);
+  public abstract void fS(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.b.a
  * JD-Core Version:    0.7.0.1
  */

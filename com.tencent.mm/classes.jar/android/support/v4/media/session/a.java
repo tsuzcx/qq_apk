@@ -13,9 +13,11 @@ import java.util.List;
 public abstract interface a
   extends IInterface
 {
-  public abstract void F(boolean paramBoolean);
+  public abstract void I(int paramInt);
   
-  public abstract void G(boolean paramBoolean);
+  public abstract void J(int paramInt);
+  
+  public abstract void Z();
   
   public abstract void a(MediaMetadataCompat paramMediaMetadataCompat);
   
@@ -23,13 +25,11 @@ public abstract interface a
   
   public abstract void a(PlaybackStateCompat paramPlaybackStateCompat);
   
-  public abstract void aA(int paramInt);
-  
-  public abstract void aB(int paramInt);
-  
   public abstract void d(String paramString, Bundle paramBundle);
   
-  public abstract void eR();
+  public abstract void n(boolean paramBoolean);
+  
+  public abstract void o(boolean paramBoolean);
   
   public abstract void onExtrasChanged(Bundle paramBundle);
   
@@ -140,14 +140,14 @@ public abstract interface a
         return true;
       case 9: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaControllerCallback");
-        aA(paramParcel1.readInt());
+        I(paramParcel1.readInt());
         return true;
       case 10: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaControllerCallback");
         if (paramParcel1.readInt() != 0) {}
         for (bool = true;; bool = false)
         {
-          F(bool);
+          n(bool);
           return true;
         }
       case 11: 
@@ -155,15 +155,15 @@ public abstract interface a
         if (paramParcel1.readInt() != 0) {
           bool = true;
         }
-        G(bool);
+        o(bool);
         return true;
       case 12: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaControllerCallback");
-        aB(paramParcel1.readInt());
+        J(paramParcel1.readInt());
         return true;
       }
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaControllerCallback");
-      eR();
+      Z();
       return true;
     }
     
@@ -177,100 +177,51 @@ public abstract interface a
         this.mRemote = paramIBinder;
       }
       
-      /* Error */
-      public final void F(boolean paramBoolean)
+      public final void I(int paramInt)
       {
-        // Byte code:
-        //   0: iconst_1
-        //   1: istore_2
-        //   2: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   5: astore_3
-        //   6: aload_3
-        //   7: ldc 29
-        //   9: invokevirtual 33	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-        //   12: iload_1
-        //   13: ifeq +28 -> 41
-        //   16: aload_3
-        //   17: iload_2
-        //   18: invokevirtual 37	android/os/Parcel:writeInt	(I)V
-        //   21: aload_0
-        //   22: getfield 18	android/support/v4/media/session/a$a$a:mRemote	Landroid/os/IBinder;
-        //   25: bipush 10
-        //   27: aload_3
-        //   28: aconst_null
-        //   29: iconst_1
-        //   30: invokeinterface 43 5 0
-        //   35: pop
-        //   36: aload_3
-        //   37: invokevirtual 46	android/os/Parcel:recycle	()V
-        //   40: return
-        //   41: iconst_0
-        //   42: istore_2
-        //   43: goto -27 -> 16
-        //   46: astore 4
-        //   48: aload_3
-        //   49: invokevirtual 46	android/os/Parcel:recycle	()V
-        //   52: aload 4
-        //   54: athrow
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	55	0	this	a
-        //   0	55	1	paramBoolean	boolean
-        //   1	42	2	i	int
-        //   5	44	3	localParcel	Parcel
-        //   46	7	4	localObject	Object
-        // Exception table:
-        //   from	to	target	type
-        //   6	12	46	finally
-        //   16	36	46	finally
+        Parcel localParcel = Parcel.obtain();
+        try
+        {
+          localParcel.writeInterfaceToken("android.support.v4.media.session.IMediaControllerCallback");
+          localParcel.writeInt(paramInt);
+          this.mRemote.transact(9, localParcel, null, 1);
+          return;
+        }
+        finally
+        {
+          localParcel.recycle();
+        }
       }
       
-      /* Error */
-      public final void G(boolean paramBoolean)
+      public final void J(int paramInt)
       {
-        // Byte code:
-        //   0: iconst_1
-        //   1: istore_2
-        //   2: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   5: astore_3
-        //   6: aload_3
-        //   7: ldc 29
-        //   9: invokevirtual 33	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-        //   12: iload_1
-        //   13: ifeq +28 -> 41
-        //   16: aload_3
-        //   17: iload_2
-        //   18: invokevirtual 37	android/os/Parcel:writeInt	(I)V
-        //   21: aload_0
-        //   22: getfield 18	android/support/v4/media/session/a$a$a:mRemote	Landroid/os/IBinder;
-        //   25: bipush 11
-        //   27: aload_3
-        //   28: aconst_null
-        //   29: iconst_1
-        //   30: invokeinterface 43 5 0
-        //   35: pop
-        //   36: aload_3
-        //   37: invokevirtual 46	android/os/Parcel:recycle	()V
-        //   40: return
-        //   41: iconst_0
-        //   42: istore_2
-        //   43: goto -27 -> 16
-        //   46: astore 4
-        //   48: aload_3
-        //   49: invokevirtual 46	android/os/Parcel:recycle	()V
-        //   52: aload 4
-        //   54: athrow
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	55	0	this	a
-        //   0	55	1	paramBoolean	boolean
-        //   1	42	2	i	int
-        //   5	44	3	localParcel	Parcel
-        //   46	7	4	localObject	Object
-        // Exception table:
-        //   from	to	target	type
-        //   6	12	46	finally
-        //   16	36	46	finally
+        Parcel localParcel = Parcel.obtain();
+        try
+        {
+          localParcel.writeInterfaceToken("android.support.v4.media.session.IMediaControllerCallback");
+          localParcel.writeInt(paramInt);
+          this.mRemote.transact(12, localParcel, null, 1);
+          return;
+        }
+        finally
+        {
+          localParcel.recycle();
+        }
+      }
+      
+      public final void Z()
+      {
+        Parcel localParcel = Parcel.obtain();
+        try
+        {
+          localParcel.writeInterfaceToken("android.support.v4.media.session.IMediaControllerCallback");
+          this.mRemote.transact(13, localParcel, null, 1);
+          return;
+        }
+        finally
+        {
+          localParcel.recycle();
+        }
       }
       
       /* Error */
@@ -286,7 +237,7 @@ public abstract interface a
         //   11: ifnull +33 -> 44
         //   14: aload_2
         //   15: iconst_1
-        //   16: invokevirtual 37	android/os/Parcel:writeInt	(I)V
+        //   16: invokevirtual 36	android/os/Parcel:writeInt	(I)V
         //   19: aload_1
         //   20: aload_2
         //   21: iconst_0
@@ -297,18 +248,18 @@ public abstract interface a
         //   30: aload_2
         //   31: aconst_null
         //   32: iconst_1
-        //   33: invokeinterface 43 5 0
+        //   33: invokeinterface 42 5 0
         //   38: pop
         //   39: aload_2
-        //   40: invokevirtual 46	android/os/Parcel:recycle	()V
+        //   40: invokevirtual 45	android/os/Parcel:recycle	()V
         //   43: return
         //   44: aload_2
         //   45: iconst_0
-        //   46: invokevirtual 37	android/os/Parcel:writeInt	(I)V
+        //   46: invokevirtual 36	android/os/Parcel:writeInt	(I)V
         //   49: goto -24 -> 25
         //   52: astore_1
         //   53: aload_2
-        //   54: invokevirtual 46	android/os/Parcel:recycle	()V
+        //   54: invokevirtual 45	android/os/Parcel:recycle	()V
         //   57: aload_1
         //   58: athrow
         // Local variable table:
@@ -337,7 +288,7 @@ public abstract interface a
         //   11: ifnull +34 -> 45
         //   14: aload_2
         //   15: iconst_1
-        //   16: invokevirtual 37	android/os/Parcel:writeInt	(I)V
+        //   16: invokevirtual 36	android/os/Parcel:writeInt	(I)V
         //   19: aload_1
         //   20: aload_2
         //   21: iconst_0
@@ -348,18 +299,18 @@ public abstract interface a
         //   31: aload_2
         //   32: aconst_null
         //   33: iconst_1
-        //   34: invokeinterface 43 5 0
+        //   34: invokeinterface 42 5 0
         //   39: pop
         //   40: aload_2
-        //   41: invokevirtual 46	android/os/Parcel:recycle	()V
+        //   41: invokevirtual 45	android/os/Parcel:recycle	()V
         //   44: return
         //   45: aload_2
         //   46: iconst_0
-        //   47: invokevirtual 37	android/os/Parcel:writeInt	(I)V
+        //   47: invokevirtual 36	android/os/Parcel:writeInt	(I)V
         //   50: goto -25 -> 25
         //   53: astore_1
         //   54: aload_2
-        //   55: invokevirtual 46	android/os/Parcel:recycle	()V
+        //   55: invokevirtual 45	android/os/Parcel:recycle	()V
         //   58: aload_1
         //   59: athrow
         // Local variable table:
@@ -388,7 +339,7 @@ public abstract interface a
         //   11: ifnull +33 -> 44
         //   14: aload_2
         //   15: iconst_1
-        //   16: invokevirtual 37	android/os/Parcel:writeInt	(I)V
+        //   16: invokevirtual 36	android/os/Parcel:writeInt	(I)V
         //   19: aload_1
         //   20: aload_2
         //   21: iconst_0
@@ -399,18 +350,18 @@ public abstract interface a
         //   30: aload_2
         //   31: aconst_null
         //   32: iconst_1
-        //   33: invokeinterface 43 5 0
+        //   33: invokeinterface 42 5 0
         //   38: pop
         //   39: aload_2
-        //   40: invokevirtual 46	android/os/Parcel:recycle	()V
+        //   40: invokevirtual 45	android/os/Parcel:recycle	()V
         //   43: return
         //   44: aload_2
         //   45: iconst_0
-        //   46: invokevirtual 37	android/os/Parcel:writeInt	(I)V
+        //   46: invokevirtual 36	android/os/Parcel:writeInt	(I)V
         //   49: goto -24 -> 25
         //   52: astore_1
         //   53: aload_2
-        //   54: invokevirtual 46	android/os/Parcel:recycle	()V
+        //   54: invokevirtual 45	android/os/Parcel:recycle	()V
         //   57: aload_1
         //   58: athrow
         // Local variable table:
@@ -424,38 +375,6 @@ public abstract interface a
         //   14	25	52	finally
         //   25	39	52	finally
         //   44	49	52	finally
-      }
-      
-      public final void aA(int paramInt)
-      {
-        Parcel localParcel = Parcel.obtain();
-        try
-        {
-          localParcel.writeInterfaceToken("android.support.v4.media.session.IMediaControllerCallback");
-          localParcel.writeInt(paramInt);
-          this.mRemote.transact(9, localParcel, null, 1);
-          return;
-        }
-        finally
-        {
-          localParcel.recycle();
-        }
-      }
-      
-      public final void aB(int paramInt)
-      {
-        Parcel localParcel = Parcel.obtain();
-        try
-        {
-          localParcel.writeInterfaceToken("android.support.v4.media.session.IMediaControllerCallback");
-          localParcel.writeInt(paramInt);
-          this.mRemote.transact(12, localParcel, null, 1);
-          return;
-        }
-        finally
-        {
-          localParcel.recycle();
-        }
       }
       
       public final IBinder asBinder()
@@ -474,34 +393,34 @@ public abstract interface a
         //   7: invokevirtual 33	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
         //   10: aload_3
         //   11: aload_1
-        //   12: invokevirtual 71	android/os/Parcel:writeString	(Ljava/lang/String;)V
+        //   12: invokevirtual 69	android/os/Parcel:writeString	(Ljava/lang/String;)V
         //   15: aload_2
         //   16: ifnull +33 -> 49
         //   19: aload_3
         //   20: iconst_1
-        //   21: invokevirtual 37	android/os/Parcel:writeInt	(I)V
+        //   21: invokevirtual 36	android/os/Parcel:writeInt	(I)V
         //   24: aload_2
         //   25: aload_3
         //   26: iconst_0
-        //   27: invokevirtual 74	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
+        //   27: invokevirtual 72	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
         //   30: aload_0
         //   31: getfield 18	android/support/v4/media/session/a$a$a:mRemote	Landroid/os/IBinder;
         //   34: iconst_1
         //   35: aload_3
         //   36: aconst_null
         //   37: iconst_1
-        //   38: invokeinterface 43 5 0
+        //   38: invokeinterface 42 5 0
         //   43: pop
         //   44: aload_3
-        //   45: invokevirtual 46	android/os/Parcel:recycle	()V
+        //   45: invokevirtual 45	android/os/Parcel:recycle	()V
         //   48: return
         //   49: aload_3
         //   50: iconst_0
-        //   51: invokevirtual 37	android/os/Parcel:writeInt	(I)V
+        //   51: invokevirtual 36	android/os/Parcel:writeInt	(I)V
         //   54: goto -24 -> 30
         //   57: astore_1
         //   58: aload_3
-        //   59: invokevirtual 46	android/os/Parcel:recycle	()V
+        //   59: invokevirtual 45	android/os/Parcel:recycle	()V
         //   62: aload_1
         //   63: athrow
         // Local variable table:
@@ -518,19 +437,100 @@ public abstract interface a
         //   49	54	57	finally
       }
       
-      public final void eR()
+      /* Error */
+      public final void n(boolean paramBoolean)
       {
-        Parcel localParcel = Parcel.obtain();
-        try
-        {
-          localParcel.writeInterfaceToken("android.support.v4.media.session.IMediaControllerCallback");
-          this.mRemote.transact(13, localParcel, null, 1);
-          return;
-        }
-        finally
-        {
-          localParcel.recycle();
-        }
+        // Byte code:
+        //   0: iconst_1
+        //   1: istore_2
+        //   2: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   5: astore_3
+        //   6: aload_3
+        //   7: ldc 29
+        //   9: invokevirtual 33	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+        //   12: iload_1
+        //   13: ifeq +28 -> 41
+        //   16: aload_3
+        //   17: iload_2
+        //   18: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+        //   21: aload_0
+        //   22: getfield 18	android/support/v4/media/session/a$a$a:mRemote	Landroid/os/IBinder;
+        //   25: bipush 10
+        //   27: aload_3
+        //   28: aconst_null
+        //   29: iconst_1
+        //   30: invokeinterface 42 5 0
+        //   35: pop
+        //   36: aload_3
+        //   37: invokevirtual 45	android/os/Parcel:recycle	()V
+        //   40: return
+        //   41: iconst_0
+        //   42: istore_2
+        //   43: goto -27 -> 16
+        //   46: astore 4
+        //   48: aload_3
+        //   49: invokevirtual 45	android/os/Parcel:recycle	()V
+        //   52: aload 4
+        //   54: athrow
+        // Local variable table:
+        //   start	length	slot	name	signature
+        //   0	55	0	this	a
+        //   0	55	1	paramBoolean	boolean
+        //   1	42	2	i	int
+        //   5	44	3	localParcel	Parcel
+        //   46	7	4	localObject	Object
+        // Exception table:
+        //   from	to	target	type
+        //   6	12	46	finally
+        //   16	36	46	finally
+      }
+      
+      /* Error */
+      public final void o(boolean paramBoolean)
+      {
+        // Byte code:
+        //   0: iconst_1
+        //   1: istore_2
+        //   2: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   5: astore_3
+        //   6: aload_3
+        //   7: ldc 29
+        //   9: invokevirtual 33	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+        //   12: iload_1
+        //   13: ifeq +28 -> 41
+        //   16: aload_3
+        //   17: iload_2
+        //   18: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+        //   21: aload_0
+        //   22: getfield 18	android/support/v4/media/session/a$a$a:mRemote	Landroid/os/IBinder;
+        //   25: bipush 11
+        //   27: aload_3
+        //   28: aconst_null
+        //   29: iconst_1
+        //   30: invokeinterface 42 5 0
+        //   35: pop
+        //   36: aload_3
+        //   37: invokevirtual 45	android/os/Parcel:recycle	()V
+        //   40: return
+        //   41: iconst_0
+        //   42: istore_2
+        //   43: goto -27 -> 16
+        //   46: astore 4
+        //   48: aload_3
+        //   49: invokevirtual 45	android/os/Parcel:recycle	()V
+        //   52: aload 4
+        //   54: athrow
+        // Local variable table:
+        //   start	length	slot	name	signature
+        //   0	55	0	this	a
+        //   0	55	1	paramBoolean	boolean
+        //   1	42	2	i	int
+        //   5	44	3	localParcel	Parcel
+        //   46	7	4	localObject	Object
+        // Exception table:
+        //   from	to	target	type
+        //   6	12	46	finally
+        //   16	36	46	finally
       }
       
       /* Error */
@@ -546,29 +546,29 @@ public abstract interface a
         //   11: ifnull +34 -> 45
         //   14: aload_2
         //   15: iconst_1
-        //   16: invokevirtual 37	android/os/Parcel:writeInt	(I)V
+        //   16: invokevirtual 36	android/os/Parcel:writeInt	(I)V
         //   19: aload_1
         //   20: aload_2
         //   21: iconst_0
-        //   22: invokevirtual 74	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
+        //   22: invokevirtual 72	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
         //   25: aload_0
         //   26: getfield 18	android/support/v4/media/session/a$a$a:mRemote	Landroid/os/IBinder;
         //   29: bipush 7
         //   31: aload_2
         //   32: aconst_null
         //   33: iconst_1
-        //   34: invokeinterface 43 5 0
+        //   34: invokeinterface 42 5 0
         //   39: pop
         //   40: aload_2
-        //   41: invokevirtual 46	android/os/Parcel:recycle	()V
+        //   41: invokevirtual 45	android/os/Parcel:recycle	()V
         //   44: return
         //   45: aload_2
         //   46: iconst_0
-        //   47: invokevirtual 37	android/os/Parcel:writeInt	(I)V
+        //   47: invokevirtual 36	android/os/Parcel:writeInt	(I)V
         //   50: goto -25 -> 25
         //   53: astore_1
         //   54: aload_2
-        //   55: invokevirtual 46	android/os/Parcel:recycle	()V
+        //   55: invokevirtual 45	android/os/Parcel:recycle	()V
         //   58: aload_1
         //   59: athrow
         // Local variable table:
@@ -613,7 +613,7 @@ public abstract interface a
         //   11: ifnull +34 -> 45
         //   14: aload_2
         //   15: iconst_1
-        //   16: invokevirtual 37	android/os/Parcel:writeInt	(I)V
+        //   16: invokevirtual 36	android/os/Parcel:writeInt	(I)V
         //   19: aload_1
         //   20: aload_2
         //   21: iconst_0
@@ -624,18 +624,18 @@ public abstract interface a
         //   31: aload_2
         //   32: aconst_null
         //   33: iconst_1
-        //   34: invokeinterface 43 5 0
+        //   34: invokeinterface 42 5 0
         //   39: pop
         //   40: aload_2
-        //   41: invokevirtual 46	android/os/Parcel:recycle	()V
+        //   41: invokevirtual 45	android/os/Parcel:recycle	()V
         //   44: return
         //   45: aload_2
         //   46: iconst_0
-        //   47: invokevirtual 37	android/os/Parcel:writeInt	(I)V
+        //   47: invokevirtual 36	android/os/Parcel:writeInt	(I)V
         //   50: goto -25 -> 25
         //   53: astore_1
         //   54: aload_2
-        //   55: invokevirtual 46	android/os/Parcel:recycle	()V
+        //   55: invokevirtual 45	android/os/Parcel:recycle	()V
         //   58: aload_1
         //   59: athrow
         // Local variable table:
@@ -670,7 +670,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     android.support.v4.media.session.a
  * JD-Core Version:    0.7.0.1
  */

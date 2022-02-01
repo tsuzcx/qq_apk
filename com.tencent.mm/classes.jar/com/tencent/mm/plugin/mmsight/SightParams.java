@@ -4,34 +4,36 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.modelcontrol.VideoTransPara;
+import com.tencent.mm.modelcontrol.e;
 import com.tencent.mm.storage.ao;
 
 public class SightParams
   implements Parcelable
 {
   public static final Parcelable.Creator<SightParams> CREATOR;
-  public VideoTransPara irT;
+  public String AvN;
+  public int EYi;
+  public String EYj;
+  public String EYk;
+  public String EYl;
+  public String EYm;
+  public String EYn;
+  public boolean EYo;
+  public boolean EYp;
+  public boolean EYq;
+  public boolean EYr;
+  public int EYs;
+  public VideoTransPara lgX;
   public int mode;
   public int scene;
-  public String vPa;
-  public int zsH;
-  public String zsI;
-  public String zsJ;
-  public String zsK;
-  public String zsL;
-  public String zsM;
-  public boolean zsN;
-  public boolean zsO;
-  public boolean zsP;
-  public boolean zsQ;
-  public int zsR;
   
   static
   {
     AppMethodBeat.i(148787);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new SightParams.1();
     AppMethodBeat.o(148787);
   }
   
@@ -39,35 +41,35 @@ public class SightParams
   {
     AppMethodBeat.i(148784);
     this.mode = 0;
-    this.zsH = 2;
-    this.zsI = "";
-    this.zsJ = "";
-    this.zsK = "";
-    this.zsL = "";
-    this.zsM = "";
-    this.zsN = true;
+    this.EYi = 2;
+    this.EYj = "";
+    this.EYk = "";
+    this.EYl = "";
+    this.EYm = "";
+    this.EYn = "";
+    this.EYo = true;
     this.scene = -1;
-    this.zsO = true;
-    this.vPa = "";
-    this.zsP = true;
-    this.zsQ = false;
+    this.EYp = true;
+    this.AvN = "";
+    this.EYq = true;
+    this.EYr = false;
     if (paramInt1 == 1) {
-      this.irT = com.tencent.mm.modelcontrol.e.baZ().bba();
+      this.lgX = e.bkp().bkq();
     }
     for (;;)
     {
       this.scene = paramInt1;
       this.mode = paramInt2;
-      g.aAi();
-      this.zsR = ((Integer)g.aAh().azQ().get(344066, Integer.valueOf(0))).intValue();
+      h.aHH();
+      this.EYs = ((Integer)h.aHG().aHp().b(344066, Integer.valueOf(0))).intValue();
       AppMethodBeat.o(148784);
       return;
       if ((paramInt1 == 2) || (paramInt1 == 3) || (paramInt1 == 4)) {
-        this.irT = com.tencent.mm.modelcontrol.e.baZ().bbb();
+        this.lgX = e.bkp().bkr();
       } else if (paramInt1 == 7) {
-        this.irT = com.tencent.mm.modelcontrol.e.baZ().bbh();
+        this.lgX = e.bkp().bkw();
       } else {
-        this.irT = com.tencent.mm.modelcontrol.e.baZ().bbb();
+        this.lgX = e.bkp().bkr();
       }
     }
   }
@@ -76,44 +78,44 @@ public class SightParams
   {
     AppMethodBeat.i(148785);
     this.mode = 0;
-    this.zsH = 2;
-    this.zsI = "";
-    this.zsJ = "";
-    this.zsK = "";
-    this.zsL = "";
-    this.zsM = "";
-    this.zsN = true;
+    this.EYi = 2;
+    this.EYj = "";
+    this.EYk = "";
+    this.EYl = "";
+    this.EYm = "";
+    this.EYn = "";
+    this.EYo = true;
     this.scene = -1;
-    this.zsO = true;
-    this.vPa = "";
-    this.zsP = true;
-    this.zsQ = false;
+    this.EYp = true;
+    this.AvN = "";
+    this.EYq = true;
+    this.EYr = false;
     this.mode = paramParcel.readInt();
-    this.irT = ((VideoTransPara)paramParcel.readParcelable(VideoTransPara.class.getClassLoader()));
-    this.zsI = paramParcel.readString();
-    this.zsJ = paramParcel.readString();
-    this.zsK = paramParcel.readString();
-    this.zsL = paramParcel.readString();
-    this.zsR = paramParcel.readInt();
-    this.zsH = paramParcel.readInt();
+    this.lgX = ((VideoTransPara)paramParcel.readParcelable(VideoTransPara.class.getClassLoader()));
+    this.EYj = paramParcel.readString();
+    this.EYk = paramParcel.readString();
+    this.EYl = paramParcel.readString();
+    this.EYm = paramParcel.readString();
+    this.EYs = paramParcel.readInt();
+    this.EYi = paramParcel.readInt();
     if (paramParcel.readInt() > 0)
     {
       bool1 = true;
-      this.zsN = bool1;
+      this.EYo = bool1;
       this.scene = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
         break label237;
       }
       bool1 = true;
       label185:
-      this.zsO = bool1;
-      this.vPa = paramParcel.readString();
+      this.EYp = bool1;
+      this.AvN = paramParcel.readString();
       if (paramParcel.readByte() == 0) {
         break label242;
       }
       bool1 = true;
       label207:
-      this.zsP = bool1;
+      this.EYq = bool1;
       if (paramParcel.readByte() == 0) {
         break label247;
       }
@@ -123,7 +125,7 @@ public class SightParams
     label247:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.zsQ = bool1;
+      this.EYr = bool1;
       AppMethodBeat.o(148785);
       return;
       bool1 = false;
@@ -135,18 +137,18 @@ public class SightParams
     }
   }
   
+  public final SightParams A(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    this.EYl = paramString1;
+    this.EYj = paramString2;
+    this.EYk = paramString3;
+    this.EYm = paramString4;
+    return this;
+  }
+  
   public int describeContents()
   {
     return 0;
-  }
-  
-  public final SightParams v(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    this.zsK = paramString1;
-    this.zsI = paramString2;
-    this.zsJ = paramString3;
-    this.zsL = paramString4;
-    return this;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -154,33 +156,33 @@ public class SightParams
     int i = 1;
     AppMethodBeat.i(148786);
     paramParcel.writeInt(this.mode);
-    paramParcel.writeParcelable(this.irT, paramInt);
-    paramParcel.writeString(this.zsI);
-    paramParcel.writeString(this.zsJ);
-    paramParcel.writeString(this.zsK);
-    paramParcel.writeString(this.zsL);
-    paramParcel.writeInt(this.zsR);
-    paramParcel.writeInt(this.zsH);
+    paramParcel.writeParcelable(this.lgX, paramInt);
+    paramParcel.writeString(this.EYj);
+    paramParcel.writeString(this.EYk);
+    paramParcel.writeString(this.EYl);
+    paramParcel.writeString(this.EYm);
+    paramParcel.writeInt(this.EYs);
+    paramParcel.writeInt(this.EYi);
     byte b;
-    if (this.zsN)
+    if (this.EYo)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
       paramParcel.writeInt(this.scene);
-      if (!this.zsO) {
+      if (!this.EYp) {
         break label159;
       }
       b = 1;
       label104:
       paramParcel.writeByte(b);
-      paramParcel.writeString(this.vPa);
-      if (!this.zsP) {
+      paramParcel.writeString(this.AvN);
+      if (!this.EYq) {
         break label164;
       }
       paramInt = 1;
       label126:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.zsQ) {
+      if (!this.EYr) {
         break label169;
       }
     }

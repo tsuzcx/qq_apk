@@ -11,15 +11,15 @@ final class ContactLabelManagerUI$10
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(26217);
-    this.yCF.finish();
-    AppMethodBeat.o(26217);
+    AppMethodBeat.i(26216);
+    ContactLabelManagerUI.b(this.EdX);
+    AppMethodBeat.o(26216);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.label.ui.ContactLabelManagerUI.10
  * JD-Core Version:    0.7.0.1
  */

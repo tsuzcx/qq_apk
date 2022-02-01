@@ -6,18 +6,19 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.widget.CheckBox;
+import com.tencent.luggage.l.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.msgsubscription.SubscribeMsgRequestDialogUiData;
 import com.tencent.mm.msgsubscription.SubscribeMsgRequestResult;
 import com.tencent.mm.msgsubscription.SubscribeMsgTmpItem;
 import com.tencent.mm.msgsubscription.WordingInfo;
-import com.tencent.mm.msgsubscription.ui.b;
-import com.tencent.mm.msgsubscription.ui.b.a.a;
-import com.tencent.mm.msgsubscription.ui.b.b;
-import com.tencent.mm.msgsubscription.ui.b.d;
+import com.tencent.mm.msgsubscription.ui.c;
+import com.tencent.mm.msgsubscription.ui.c.a.a;
+import com.tencent.mm.msgsubscription.ui.c.c;
+import com.tencent.mm.msgsubscription.ui.c.e;
+import com.tencent.mm.msgsubscription.ui.c.f;
 import com.tencent.mm.msgsubscription.util.a.a;
-import com.tencent.mm.plugin.appbrand.widget.dialog.k;
-import com.tencent.mm.plugin.appbrand.widget.dialog.n;
+import com.tencent.mm.plugin.appbrand.widget.dialog.m;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.util.ArrayList;
@@ -26,29 +27,28 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import kotlin.a.j;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor;", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/ISubscribeMsgCGIExecutor;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "username", "", "tmplIds", "", "eventListener", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor$EventListener;", "appid", "appType", "", "(Ljava/lang/String;Ljava/util/List;Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor$EventListener;Ljava/lang/String;I)V", "(Ljava/lang/String;Ljava/util/List;Ljava/lang/String;I)V", "dispatcher", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IDispatcher;", "getDispatcher", "()Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IDispatcher;", "setDispatcher", "(Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IDispatcher;)V", "getEventListener", "()Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor$EventListener;", "setEventListener", "(Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor$EventListener;)V", "subscribeMsgRequestDialog", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog;", "getSubscribeMsgRequestDialog", "()Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog;", "setSubscribeMsgRequestDialog", "(Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog;)V", "getTmplIds", "()Ljava/util/List;", "dealWithCgiResult", "", "context", "Landroid/content/Context;", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "describeContents", "itemsToReportList", "", "", "subscribeMsgTmpItems", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "items", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Item;", "onNetSceneEndCallback", "errType", "errCode", "errMsg", "report", "templateItems", "alwaysKeepSelected", "", "userOpType", "indexStr", "clickCountStr", "requestCgi", "toReportMap", "isCheck", "Lkotlin/Function1;", "writeToParcel", "dest", "flags", "Companion", "EventListener", "luggage-wechat-full-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor;", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/ISubscribeMsgCGIExecutor;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "username", "", "tmplIds", "", "eventListener", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor$EventListener;", "appid", "appType", "", "(Ljava/lang/String;Ljava/util/List;Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor$EventListener;Ljava/lang/String;I)V", "(Ljava/lang/String;Ljava/util/List;Ljava/lang/String;I)V", "dispatcher", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IDispatcher;", "getDispatcher", "()Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IDispatcher;", "setDispatcher", "(Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IDispatcher;)V", "getEventListener", "()Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor$EventListener;", "setEventListener", "(Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor$EventListener;)V", "subscribeMsgRequestDialog", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog;", "getSubscribeMsgRequestDialog", "()Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog;", "setSubscribeMsgRequestDialog", "(Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog;)V", "getTmplIds", "()Ljava/util/List;", "dealWithCgiResult", "", "context", "Landroid/content/Context;", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "describeContents", "itemsToReportList", "", "", "subscribeMsgTmpItems", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "items", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Item;", "onNetSceneEndCallback", "errType", "errCode", "errMsg", "report", "templateItems", "alwaysKeepSelected", "", "userOpType", "indexStr", "clickCountStr", "requestCgi", "toReportMap", "isCheck", "Lkotlin/Function1;", "writeToParcel", "dest", "flags", "Companion", "EventListener", "luggage-wechat-full-sdk_release"})
 public final class GetSubscribeMsgListExecutor
   implements ISubscribeMsgCGIExecutor
 {
   public static final Parcelable.Creator<GetSubscribeMsgListExecutor> CREATOR;
-  public static final GetSubscribeMsgListExecutor.a mfB;
+  public static final GetSubscribeMsgListExecutor.a pdH;
   private final int appType;
-  private final String dNI;
-  final List<String> mfA;
-  a.a mfx;
-  c mfy;
-  public b mfz;
+  private final String appid;
+  a.a pdD;
+  c pdE;
+  public c pdF;
+  final List<String> pdG;
   final String username;
   
   static
   {
     AppMethodBeat.i(50595);
-    mfB = new GetSubscribeMsgListExecutor.a((byte)0);
+    pdH = new GetSubscribeMsgListExecutor.a((byte)0);
     CREATOR = (Parcelable.Creator)new GetSubscribeMsgListExecutor.b();
     AppMethodBeat.o(50595);
   }
@@ -59,7 +59,7 @@ public final class GetSubscribeMsgListExecutor
   {
     this(paramString1, paramList, paramString2, paramInt);
     AppMethodBeat.i(50594);
-    this.mfy = paramc;
+    this.pdE = paramc;
     AppMethodBeat.o(50594);
   }
   
@@ -67,18 +67,18 @@ public final class GetSubscribeMsgListExecutor
   {
     AppMethodBeat.i(169633);
     this.username = paramString1;
-    this.mfA = paramList;
-    this.dNI = paramString2;
+    this.pdG = paramList;
+    this.appid = paramString2;
     this.appType = paramInt;
-    this.mfx = ((a.a)a.mfw);
+    this.pdD = ((a.a)a.pdC);
     AppMethodBeat.o(169633);
   }
   
   public final void a(int paramInt1, int paramInt2, String paramString, SubscribeMsgRequestResult paramSubscribeMsgRequestResult)
   {
     AppMethodBeat.i(50591);
-    p.h(paramString, "errMsg");
-    c localc = this.mfy;
+    p.k(paramString, "errMsg");
+    c localc = this.pdE;
     if (localc != null)
     {
       localc.a(paramInt1, paramInt2, paramString, paramSubscribeMsgRequestResult);
@@ -90,15 +90,16 @@ public final class GetSubscribeMsgListExecutor
   
   public final void a(final Context paramContext, final SubscribeMsgRequestResult paramSubscribeMsgRequestResult)
   {
+    final boolean bool2 = true;
     AppMethodBeat.i(50590);
-    p.h(paramContext, "context");
-    p.h(paramSubscribeMsgRequestResult, "result");
-    if (paramSubscribeMsgRequestResult.jyk.size() == 0)
+    p.k(paramContext, "context");
+    p.k(paramSubscribeMsgRequestResult, "result");
+    if (paramSubscribeMsgRequestResult.mnO.size() == 0)
     {
-      paramContext = this.mfy;
+      paramContext = this.pdE;
       if (paramContext != null)
       {
-        paramContext.a(this.username, (List)paramSubscribeMsgRequestResult.jyk, null);
+        paramContext.a(this.username, (List)paramSubscribeMsgRequestResult.mnO, null);
         AppMethodBeat.o(50590);
         return;
       }
@@ -106,39 +107,59 @@ public final class GetSubscribeMsgListExecutor
       return;
     }
     final List localList = (List)new ArrayList();
-    Iterator localIterator = paramSubscribeMsgRequestResult.jyk.iterator();
+    Iterator localIterator = paramSubscribeMsgRequestResult.mnO.iterator();
+    final boolean bool1;
     if (localIterator.hasNext())
     {
       SubscribeMsgTmpItem localSubscribeMsgTmpItem = (SubscribeMsgTmpItem)localIterator.next();
-      if (localSubscribeMsgTmpItem.jyd == 1) {}
-      for (bool = true;; bool = false)
+      if (localSubscribeMsgTmpItem.mok)
       {
-        localList.add(new b.b(bool, localSubscribeMsgTmpItem.title, localSubscribeMsgTmpItem.jyA, localSubscribeMsgTmpItem.ixM));
+        if (localSubscribeMsgTmpItem.mnG == 1) {}
+        for (bool1 = true;; bool1 = false)
+        {
+          localList.add(new c.e(bool1, localSubscribeMsgTmpItem.title, localSubscribeMsgTmpItem.moe, localSubscribeMsgTmpItem.lnb, localSubscribeMsgTmpItem.mol));
+          break;
+        }
+      }
+      if (localSubscribeMsgTmpItem.mnG == 1) {}
+      for (bool1 = true;; bool1 = false)
+      {
+        localList.add(new c.c(bool1, localSubscribeMsgTmpItem.title, localSubscribeMsgTmpItem.moe, localSubscribeMsgTmpItem.lnb));
         break;
       }
     }
-    if (paramSubscribeMsgRequestResult.jyq == 1) {}
-    for (final boolean bool = true;; bool = false)
+    if (paramSubscribeMsgRequestResult.mnU == 1)
     {
-      if (bool) {
-        ((b.b)localList.get(0)).jCx = true;
+      bool1 = true;
+      if (bool1) {
+        ((c.c)localList.get(0)).msB = true;
       }
-      final int i = ((SubscribeMsgTmpItem)paramSubscribeMsgRequestResult.jyk.get(0)).jyz;
-      MMHandlerThread.postToMainThread((Runnable)new d(this, paramSubscribeMsgRequestResult, paramContext, localList, (Map)new LinkedHashMap(), bool, i));
+      if ((localList.size() != 1) || (!(localList.get(0) instanceof c.e))) {
+        break label353;
+      }
+    }
+    for (;;)
+    {
+      final int i = ((SubscribeMsgTmpItem)paramSubscribeMsgRequestResult.mnO.get(0)).mod;
+      MMHandlerThread.postToMainThread((Runnable)new d(this, paramSubscribeMsgRequestResult, paramContext, localList, (Map)new LinkedHashMap(), bool1, bool2, i));
       AppMethodBeat.o(50590);
       return;
+      bool1 = false;
+      break;
+      label353:
+      bool2 = false;
     }
   }
   
-  public final b bHz()
+  public final c bTh()
   {
     AppMethodBeat.i(50589);
-    b localb = this.mfz;
-    if (localb == null) {
-      p.btv("subscribeMsgRequestDialog");
+    c localc = this.pdF;
+    if (localc == null) {
+      p.bGy("subscribeMsgRequestDialog");
     }
     AppMethodBeat.o(50589);
-    return localb;
+    return localc;
   }
   
   public final int describeContents()
@@ -153,10 +174,10 @@ public final class GetSubscribeMsgListExecutor
       paramParcel.writeString(this.username);
     }
     if (paramParcel != null) {
-      paramParcel.writeStringList(this.mfA);
+      paramParcel.writeStringList(this.pdG);
     }
     if (paramParcel != null) {
-      paramParcel.writeString(this.dNI);
+      paramParcel.writeString(this.appid);
     }
     if (paramParcel != null)
     {
@@ -167,21 +188,21 @@ public final class GetSubscribeMsgListExecutor
     AppMethodBeat.o(50592);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor$EventListener;", "", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "onUserActionCompleted", "username", "items", "", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "uIData", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;", "showDialog", "dialog", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAppBrandDialog;", "luggage-wechat-full-sdk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor$EventListener;", "", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "onUserActionCompleted", "username", "items", "", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "uIData", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;", "showDialog", "dialog", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAppBrandDialog;", "luggage-wechat-full-sdk_release"})
   public static abstract interface c
   {
     public abstract void a(int paramInt1, int paramInt2, String paramString, SubscribeMsgRequestResult paramSubscribeMsgRequestResult);
     
-    public abstract void a(String paramString, List<SubscribeMsgTmpItem> paramList, SubscribeMsgRequestDialogUiData paramSubscribeMsgRequestDialogUiData);
+    public abstract void a(com.tencent.mm.plugin.appbrand.widget.dialog.j paramj);
     
-    public abstract void b(k paramk);
+    public abstract void a(String paramString, List<SubscribeMsgTmpItem> paramList, SubscribeMsgRequestDialogUiData paramSubscribeMsgRequestDialogUiData);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
-    d(GetSubscribeMsgListExecutor paramGetSubscribeMsgListExecutor, SubscribeMsgRequestResult paramSubscribeMsgRequestResult, Context paramContext, List paramList, Map paramMap, boolean paramBoolean, int paramInt) {}
+    d(GetSubscribeMsgListExecutor paramGetSubscribeMsgListExecutor, SubscribeMsgRequestResult paramSubscribeMsgRequestResult, Context paramContext, List paramList, Map paramMap, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
     
     public final void run()
     {
@@ -189,18 +210,18 @@ public final class GetSubscribeMsgListExecutor
       Object localObject2 = (kotlin.g.a.q)new a(this);
       if ((paramContext instanceof Application))
       {
-        ((kotlin.g.a.q)localObject2).d(Integer.valueOf(2), localList, Boolean.FALSE);
+        ((kotlin.g.a.q)localObject2).c(Integer.valueOf(2), localList, Boolean.FALSE);
         Log.w("AppBrandSubscribeMsg.GetSubscribeMsgListExecutor", "a context which is Application to perform show dialog will case [UnsupportedOperationException] here");
         AppMethodBeat.o(183058);
         return;
       }
-      Object localObject1 = this.mfC;
-      localObject2 = new b(n.eA(paramContext), localList, (b.d)new b.d()
+      Object localObject1 = this.pdI;
+      localObject2 = new c(m.eA(paramContext), localList, (c.f)new c.f()
       {
-        public final void c(int paramAnonymousInt, List<b.b> paramAnonymousList)
+        public final void c(int paramAnonymousInt, List<? extends c.c> paramAnonymousList)
         {
           AppMethodBeat.i(183056);
-          p.h(paramAnonymousList, "resultData");
+          p.k(paramAnonymousList, "resultData");
           List localList = (List)new ArrayList();
           localList.addAll((Collection)paramAnonymousList);
           switch (paramAnonymousInt)
@@ -208,24 +229,24 @@ public final class GetSubscribeMsgListExecutor
           }
           for (;;)
           {
-            paramAnonymousList = j.p((Iterable)this.mfF.mfD.keySet());
+            paramAnonymousList = kotlin.a.j.p((Iterable)this.pdM.pdJ.keySet());
             localList = (List)new ArrayList();
             localObject1 = paramAnonymousList.iterator();
             while (((Iterator)localObject1).hasNext())
             {
               int i = ((Number)((Iterator)localObject1).next()).intValue();
-              localObject2 = (Integer)this.mfF.mfD.get(Integer.valueOf(i));
+              localObject2 = (Integer)this.pdM.pdJ.get(Integer.valueOf(i));
               if (localObject2 != null) {
                 localList.add(Integer.valueOf(((Number)localObject2).intValue()));
               }
             }
-            this.mfG.d(Integer.valueOf(paramAnonymousInt), localList, Boolean.valueOf(this.mfF.mfC.bHz().jCa.isChecked()));
+            this.pdN.c(Integer.valueOf(paramAnonymousInt), localList, Boolean.valueOf(this.pdM.pdI.bTh().mrV.isChecked()));
           }
-          Object localObject1 = this.mfF.mfC;
+          Object localObject1 = this.pdM.pdI;
           Object localObject2 = (List)new ArrayList();
-          ((List)localObject2).addAll((Collection)this.mfF.jAc.jyk);
-          localObject2 = GetSubscribeMsgListExecutor.i((List)localObject2, this.mfF.jAe);
-          boolean bool = this.mfF.mfC.bHz().jCa.isChecked();
+          ((List)localObject2).addAll((Collection)this.pdM.mpI.mnO);
+          localObject2 = GetSubscribeMsgListExecutor.k((List)localObject2, this.pdM.mpK);
+          boolean bool = this.pdM.pdI.bTh().mrV.isChecked();
           switch (paramAnonymousInt)
           {
           default: 
@@ -233,7 +254,7 @@ public final class GetSubscribeMsgListExecutor
           }
           for (;;)
           {
-            GetSubscribeMsgListExecutor.a((GetSubscribeMsgListExecutor)localObject1, (List)localObject2, bool, paramAnonymousInt, j.a((Iterable)paramAnonymousList, (CharSequence)"#", null, null, 0, null, null, 62), j.a((Iterable)localList, (CharSequence)"#", null, null, 0, null, null, 62));
+            GetSubscribeMsgListExecutor.a((GetSubscribeMsgListExecutor)localObject1, (List)localObject2, bool, paramAnonymousInt, kotlin.a.j.a((Iterable)paramAnonymousList, (CharSequence)"#", null, null, 0, null, null, 62), kotlin.a.j.a((Iterable)localList, (CharSequence)"#", null, null, 0, null, null, 62));
             AppMethodBeat.o(183056);
             return;
             paramAnonymousInt = 3;
@@ -243,94 +264,88 @@ public final class GetSubscribeMsgListExecutor
             paramAnonymousInt = 1;
           }
         }
-      }, bool);
-      p.h(localObject2, "<set-?>");
-      ((GetSubscribeMsgListExecutor)localObject1).mfz = ((b)localObject2);
-      label190:
-      Object localObject3;
-      if (i == 3)
+      }, bool1, bool2);
+      p.k(localObject2, "<set-?>");
+      ((GetSubscribeMsgListExecutor)localObject1).pdF = ((c)localObject2);
+      c localc = this.pdI.bTh();
+      localObject2 = paramSubscribeMsgRequestResult.mnW;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      localc.setDesc((String)localObject1);
+      localc = this.pdI.bTh();
+      localObject2 = paramSubscribeMsgRequestResult.mnX;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      localc.Zj((String)localObject1);
+      this.pdI.bTh().Zc(paramSubscribeMsgRequestResult.appName);
+      localc = this.pdI.bTh();
+      localObject1 = paramSubscribeMsgRequestResult.mnR;
+      if (localObject1 != null)
       {
-        if (bool) {
-          this.mfC.bHz().RK(((SubscribeMsgTmpItem)paramSubscribeMsgRequestResult.jyk.get(0)).jyy);
-        }
+        localObject2 = ((WordingInfo)localObject1).mor;
+        localObject1 = localObject2;
+        if (localObject2 != null) {}
       }
       else
       {
-        if (i != 2) {
-          break label496;
-        }
-        localObject1 = this.mfC.bHz();
-        localObject2 = paramSubscribeMsgRequestResult.jyn;
+        localObject1 = "";
+      }
+      localc.Zd((String)localObject1);
+      this.pdI.bTh().setIconUrl(paramSubscribeMsgRequestResult.mnM);
+      localObject1 = this.pdI.bTh();
+      localObject2 = paramSubscribeMsgRequestResult.mnR;
+      if (localObject2 == null) {
+        p.iCn();
+      }
+      ((c)localObject1).Zg(((WordingInfo)localObject2).mon);
+      localObject1 = this.pdI.bTh();
+      localObject2 = paramSubscribeMsgRequestResult.mnR;
+      if (localObject2 == null) {
+        p.iCn();
+      }
+      ((c)localObject1).Zh(((WordingInfo)localObject2).moo);
+      localObject1 = this.pdI.bTh();
+      localObject2 = paramSubscribeMsgRequestResult.mnR;
+      if (localObject2 == null) {
+        p.iCn();
+      }
+      ((c)localObject1).Zi(((WordingInfo)localObject2).mop);
+      this.pdI.bTh().mso = a.c.miniprogram_default_avatar;
+      if (i == 2)
+      {
+        localObject1 = this.pdI.bTh();
+        localObject2 = paramSubscribeMsgRequestResult.mnR;
         if (localObject2 == null) {
-          p.hyc();
+          p.iCn();
         }
-        ((b)localObject1).setDesc(((WordingInfo)localObject2).jyN);
-        this.mfC.bHz().RD(paramSubscribeMsgRequestResult.appName);
-        localObject3 = this.mfC.bHz();
-        localObject1 = paramSubscribeMsgRequestResult.jyn;
-        if (localObject1 != null)
-        {
-          localObject2 = ((WordingInfo)localObject1).jyL;
-          localObject1 = localObject2;
-          if (localObject2 != null) {}
-        }
-        else
-        {
-          localObject1 = "";
-        }
-        ((b)localObject3).RE((String)localObject1);
-        this.mfC.bHz().setIconUrl(paramSubscribeMsgRequestResult.jyi);
-        localObject1 = this.mfC.bHz();
-        localObject2 = paramSubscribeMsgRequestResult.jyn;
-        if (localObject2 == null) {
-          p.hyc();
-        }
-        ((b)localObject1).RH(((WordingInfo)localObject2).jyH);
-        localObject1 = this.mfC.bHz();
-        localObject2 = paramSubscribeMsgRequestResult.jyn;
-        if (localObject2 == null) {
-          p.hyc();
-        }
-        ((b)localObject1).RI(((WordingInfo)localObject2).jyI);
-        localObject1 = this.mfC.bHz();
-        localObject2 = paramSubscribeMsgRequestResult.jyn;
-        if (localObject2 == null) {
-          p.hyc();
-        }
-        ((b)localObject1).RJ(((WordingInfo)localObject2).jyJ);
-        this.mfC.bHz().jCq = 2131233911;
-        if (i != 2) {
-          break label606;
-        }
-        localObject1 = this.mfC.bHz();
-        localObject2 = paramSubscribeMsgRequestResult.jyn;
-        if (localObject2 == null) {
-          p.hyc();
-        }
-        ((b)localObject1).RF(((WordingInfo)localObject2).jyK);
+        ((c)localObject1).Ze(((WordingInfo)localObject2).moq);
       }
       for (;;)
       {
-        this.mfC.bHz().jCg = ((b.a.a)new b.a.a()
+        this.pdI.bTh().msd = ((c.a.a)new c.a.a()
         {
-          public final void aC(String paramAnonymousString, int paramAnonymousInt)
+          public final void aV(String paramAnonymousString, int paramAnonymousInt)
           {
             AppMethodBeat.i(183057);
-            p.h(paramAnonymousString, "templateId");
-            Iterator localIterator = ((Iterable)this.mfF.jAc.jyk).iterator();
+            p.k(paramAnonymousString, "templateId");
+            Iterator localIterator = ((Iterable)this.pdM.mpI.mnO).iterator();
             Object localObject;
             for (;;)
             {
               if (localIterator.hasNext())
               {
                 localObject = localIterator.next();
-                if (TextUtils.equals((CharSequence)((SubscribeMsgTmpItem)localObject).ixM, (CharSequence)paramAnonymousString))
+                if (TextUtils.equals((CharSequence)((SubscribeMsgTmpItem)localObject).lnb, (CharSequence)paramAnonymousString))
                 {
                   paramAnonymousString = (String)localObject;
                   if ((SubscribeMsgTmpItem)paramAnonymousString != null)
                   {
-                    paramAnonymousString = this.mfF.mfD;
-                    localObject = (Integer)this.mfF.mfD.get(Integer.valueOf(paramAnonymousInt));
+                    paramAnonymousString = this.pdM.pdJ;
+                    localObject = (Integer)this.pdM.pdJ.get(Integer.valueOf(paramAnonymousInt));
                     if (localObject == null) {
                       break label149;
                     }
@@ -349,55 +364,27 @@ public final class GetSubscribeMsgListExecutor
             }
           }
         });
-        localObject1 = this.mfC.mfy;
+        localObject1 = this.pdI.pdE;
         if (localObject1 == null) {
-          break label640;
+          break;
         }
-        ((GetSubscribeMsgListExecutor.c)localObject1).b((k)this.mfC.bHz());
+        ((GetSubscribeMsgListExecutor.c)localObject1).a((com.tencent.mm.plugin.appbrand.widget.dialog.j)this.pdI.bTh());
         AppMethodBeat.o(183058);
         return;
-        localObject1 = this.mfC.bHz();
-        localObject2 = paramSubscribeMsgRequestResult.jyn;
+        localObject1 = this.pdI.bTh();
+        localObject2 = paramSubscribeMsgRequestResult.mnR;
         if (localObject2 == null) {
-          p.hyc();
+          p.iCn();
         }
-        ((b)localObject1).RK(((WordingInfo)localObject2).jyQ);
-        break;
-        label496:
-        if (bool)
-        {
-          localObject1 = this.mfC.bHz();
-          localObject2 = new StringBuilder();
-          localObject3 = paramSubscribeMsgRequestResult.jyn;
-          if (localObject3 == null) {
-            p.hyc();
-          }
-          ((b)localObject1).setDesc(((WordingInfo)localObject3).jyO + ((SubscribeMsgTmpItem)paramSubscribeMsgRequestResult.jyk.get(0)).title);
-          break label190;
-        }
-        localObject1 = this.mfC.bHz();
-        localObject2 = paramSubscribeMsgRequestResult.jyn;
-        if (localObject2 == null) {
-          p.hyc();
-        }
-        ((b)localObject1).setDesc(((WordingInfo)localObject2).jyR);
-        break label190;
-        label606:
-        localObject1 = this.mfC.bHz();
-        localObject2 = paramSubscribeMsgRequestResult.jyn;
-        if (localObject2 == null) {
-          p.hyc();
-        }
-        ((b)localObject1).RG(((WordingInfo)localObject2).jyM);
+        ((c)localObject1).Zf(((WordingInfo)localObject2).mos);
       }
-      label640:
       AppMethodBeat.o(183058);
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<no name provided>", "", "event", "", "items", "", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Item;", "alwaysKeepSelected", "", "invoke"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<no name provided>", "", "event", "", "items", "", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$Item;", "alwaysKeepSelected", "", "invoke"})
     static final class a
       extends kotlin.g.b.q
-      implements kotlin.g.a.q<Integer, List<b.b>, Boolean, x>
+      implements kotlin.g.a.q<Integer, List<c.c>, Boolean, x>
     {
       a(GetSubscribeMsgListExecutor.d paramd)
       {

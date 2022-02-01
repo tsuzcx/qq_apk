@@ -1,15 +1,17 @@
 package com.tencent.mm.plugin.appbrand.widget.recent;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
 import android.util.AttributeSet;
+import android.view.View;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import java.util.List;
 
 public abstract class AppBrandRecentView
   extends RecyclerView
 {
-  private AppBrandRecentView.e oBW;
-  l.a oBX;
+  private d rEE;
+  k.a rEF;
   
   public AppBrandRecentView(Context paramContext)
   {
@@ -21,43 +23,62 @@ public abstract class AppBrandRecentView
     super(paramContext, paramAttributeSet);
   }
   
+  public abstract void bfU();
+  
   public abstract RecyclerView.a getAdapter();
   
   public abstract int getCount();
   
-  public abstract AppBrandRecentView.b getOnItemClickListener();
+  public abstract a getOnItemClickListener();
   
-  public AppBrandRecentView.e getRefreshListener()
+  public d getRefreshListener()
   {
-    return this.oBW;
+    return this.rEE;
   }
   
-  public l.a getSceneFactory()
+  public k.a getSceneFactory()
   {
-    return this.oBX;
+    return this.rEF;
   }
-  
-  public abstract void refresh();
   
   public abstract void release();
   
-  public abstract void setDataQuery(AppBrandRecentView.c paramc);
+  public abstract void setDataQuery(b paramb);
   
-  public abstract void setOnItemClickListener(AppBrandRecentView.b paramb);
+  public abstract void setOnItemClickListener(a parama);
   
-  public void setRefreshListener(AppBrandRecentView.e parame)
+  public void setRefreshListener(d paramd)
   {
-    this.oBW = parame;
+    this.rEE = paramd;
   }
   
-  public void setSceneFactory(l.a parama)
+  public void setSceneFactory(k.a parama)
   {
-    this.oBX = parama;
+    this.rEF = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract boolean a(View paramView, e parame, float paramFloat1, float paramFloat2);
+    
+    public abstract boolean b(View paramView, e parame, float paramFloat1, float paramFloat2);
+  }
+  
+  public static abstract interface b<T>
+  {
+    public abstract List<T> Ej(int paramInt);
+  }
+  
+  public static abstract interface c {}
+  
+  public static abstract interface d
+  {
+    public abstract void ceK();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.recent.AppBrandRecentView
  * JD-Core Version:    0.7.0.1
  */

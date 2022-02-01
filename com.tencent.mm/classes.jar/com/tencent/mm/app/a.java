@@ -7,40 +7,40 @@ import com.tencent.mm.compatible.deviceinfo.p;
 @Deprecated
 public final class a
 {
-  private static String cQi;
-  private static final a djA;
-  private static final b djB;
-  private static a djC;
-  private static b djD;
-  private static int djE;
-  private static int djF;
-  private static String djG;
-  private static boolean djH;
-  private static boolean djI;
-  private static int djx;
-  private static int djy;
-  private static p djz;
+  private static String cQP;
+  private static int fbe;
+  private static int fbf;
+  private static p fbg;
+  private static final a fbh;
+  private static final b fbi;
+  private static a fbj;
+  private static b fbk;
+  private static int fbl;
+  private static int fbm;
+  private static String fbn;
+  private static boolean fbo;
+  private static boolean fbp;
   
   static
   {
     AppMethodBeat.i(19427);
-    djx = 0;
-    djy = 0;
-    djz = new p(Process.myPid());
-    djA = new a() {};
-    djB = new b() {};
-    djC = djA;
-    djD = djB;
-    djE = 4500;
-    djF = 500;
-    djG = "";
-    djH = true;
-    djI = false;
-    cQi = "";
+    fbe = 0;
+    fbf = 0;
+    fbg = new p(Process.myPid());
+    fbh = new a() {};
+    fbi = new b() {};
+    fbj = fbh;
+    fbk = fbi;
+    fbl = 4500;
+    fbm = 500;
+    fbn = "";
+    fbo = true;
+    fbp = false;
+    cQP = "";
     AppMethodBeat.o(19427);
   }
   
-  public static void VP() {}
+  public static void aak() {}
   
   public static abstract interface a {}
   

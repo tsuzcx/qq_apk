@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.webview.luggage.jsapi;
 import android.content.Context;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.downloader.g.a;
 import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader.model.f;
@@ -42,7 +42,7 @@ public class aq
       AppMethodBeat.o(78593);
       return;
     }
-    a locala = d.Cw(l);
+    a locala = d.IF(l);
     if (locala == null)
     {
       parama.i(null, null);
@@ -66,12 +66,12 @@ public class aq
       {
         public final void i(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
         {
-          AppMethodBeat.i(210949);
+          AppMethodBeat.i(265280);
           parama.i(paramAnonymousString, paramAnonymousJSONObject);
-          AppMethodBeat.o(210949);
+          AppMethodBeat.o(265280);
         }
       };
-      if (!f.cBv().Cp(l)) {
+      if (!f.cPZ().Iy(l)) {
         break label374;
       }
       if (!NetStatusUtil.isWifi(paramContext)) {
@@ -81,19 +81,19 @@ public class aq
       AppMethodBeat.o(78593);
       return;
     }
-    if (d.Cw(l) == null)
+    if (d.IF(l) == null)
     {
       paramString.i(null, null);
       AppMethodBeat.o(78593);
       return;
     }
-    if ((i != 0) && (((com.tencent.mm.game.report.a.b)g.af(com.tencent.mm.game.report.a.b.class)).a(b.a.rOq, false))) {}
+    if ((i != 0) && (((com.tencent.mm.game.report.a.b)h.ae(com.tencent.mm.game.report.a.b.class)).a(b.a.vul, false))) {}
     for (i = 1;; i = 0)
     {
       if (i != 0)
       {
         parama = new JSONObject();
-        ((com.tencent.mm.plugin.downloader_app.api.b)g.af(com.tencent.mm.plugin.downloader_app.api.b.class)).a(paramContext, new o.7(l, paramString), new o.8(l, paramString, parama));
+        ((com.tencent.mm.plugin.downloader_app.api.b)h.ae(com.tencent.mm.plugin.downloader_app.api.b.class)).a(paramContext, new o.7(l, paramString), new o.8(l, paramString, parama));
         AppMethodBeat.o(78593);
         return;
       }
@@ -109,7 +109,7 @@ public class aq
   
   public final void b(com.tencent.luggage.d.b<s>.a paramb) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 2;
   }

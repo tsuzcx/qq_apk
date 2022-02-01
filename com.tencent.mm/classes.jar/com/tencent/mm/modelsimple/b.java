@@ -1,40 +1,40 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 
 public final class b
   implements com.tencent.mm.plugin.appbrand.service.o
 {
-  public final int beL()
+  public final int boa()
   {
-    AppMethodBeat.i(231566);
-    int i = o.bfc();
-    AppMethodBeat.o(231566);
+    AppMethodBeat.i(288684);
+    int i = o.bor();
+    AppMethodBeat.o(288684);
     return i;
   }
   
-  public final int beM()
+  public final int bob()
   {
-    AppMethodBeat.i(231567);
-    int i = o.beM();
-    AppMethodBeat.o(231567);
+    AppMethodBeat.i(288685);
+    int i = o.bob();
+    AppMethodBeat.o(288685);
     return i;
   }
   
-  public final boolean beN()
+  public final boolean boc()
   {
-    AppMethodBeat.i(231568);
-    bg.aVF();
-    boolean bool = c.azn();
-    AppMethodBeat.o(231568);
+    AppMethodBeat.i(288686);
+    bh.beI();
+    boolean bool = c.aGK();
+    AppMethodBeat.o(288686);
     return bool;
   }
   
-  public final String beO()
+  public final String bod()
   {
-    return o.jjJ;
+    return o.lZF;
   }
 }
 

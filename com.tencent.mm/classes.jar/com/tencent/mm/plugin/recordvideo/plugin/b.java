@@ -1,183 +1,211 @@
 package com.tencent.mm.plugin.recordvideo.plugin;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Point;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.api.ac;
+import com.tencent.mm.api.ac.a;
+import com.tencent.mm.api.ad;
+import com.tencent.mm.api.r;
+import com.tencent.mm.emoji.b.b.n;
+import com.tencent.mm.plugin.recordvideo.b.g;
+import com.tencent.mm.plugin.recordvideo.d.c;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
-import com.tencent.mm.protocal.protobuf.dlg;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.au;
+import com.tencent.mm.view.SmileyPanelImpl;
+import kotlin.g;
 import kotlin.g.b.p;
+import kotlin.g.b.q;
 import kotlin.l;
+import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddPoiPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "addPoiBtn", "Landroid/widget/ImageView;", "addPoiGroup", "Landroid/widget/RelativeLayout;", "addPoiTip", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "storyLocation", "Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "checkLocation", "", "getLocationResult", "data", "Landroid/content/Intent;", "initSafeArea", "name", "", "onActivityResult", "requestCode", "", "resultCode", "onBackPress", "", "onClick", "v", "Landroid/view/View;", "reset", "setVisibility", "visibility", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddEmojiPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseIconPlugin;", "parent", "Landroid/view/ViewGroup;", "view", "Landroid/widget/ImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Landroid/widget/ImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "emojiPanel", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/panel/EditorEmojiPanel;", "getEmojiPanel", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/panel/EditorEmojiPanel;", "emojiPanel$delegate", "Lkotlin/Lazy;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/widget/ImageView;", "setView", "(Landroid/widget/ImageView;)V", "addExternalPanel", "", "externalPanelDataProvider", "Lcom/tencent/mm/emoji/model/panel/ExternalPanelDataProvider;", "hideEmojiPanel", "initEmojiPanel", "onBackPress", "", "onClick", "v", "Landroid/view/View;", "release", "resetIconColor", "iconColor", "", "setVisibility", "visibility", "showEmojiPanel", "plugin-recordvideo_release"})
 public final class b
-  implements View.OnClickListener, t
+  extends a
+  implements View.OnClickListener
 {
-  private final RelativeLayout BPR;
-  private final ImageView BPS;
-  private final ImageView BPT;
-  private dlg BPU;
-  private ViewGroup parent;
-  private d wgr;
+  d APl;
+  private final kotlin.f HMD;
+  private ImageView wRg;
   
-  public b(ViewGroup paramViewGroup, d paramd)
+  public b(ViewGroup paramViewGroup, ImageView paramImageView, d paramd)
   {
-    AppMethodBeat.i(75464);
-    this.parent = paramViewGroup;
-    this.wgr = paramd;
-    paramViewGroup = this.parent.findViewById(2131299865);
-    p.g(paramViewGroup, "parent.findViewById(R.id…ditor_add_location_group)");
-    this.BPR = ((RelativeLayout)paramViewGroup);
-    paramViewGroup = this.parent.findViewById(2131299863);
-    p.g(paramViewGroup, "parent.findViewById(R.id.editor_add_location)");
-    this.BPS = ((ImageView)paramViewGroup);
-    paramViewGroup = this.parent.findViewById(2131299864);
-    p.g(paramViewGroup, "parent.findViewById(R.id…ditor_add_location_check)");
-    this.BPT = ((ImageView)paramViewGroup);
-    this.BPU = new dlg();
-    this.BPS.setImageDrawable(ar.m(this.parent.getContext(), 2131690589, -1));
-    paramViewGroup = this.BPT;
-    paramd = this.parent.getContext();
-    p.g(paramd, "parent.context");
-    paramViewGroup.setImageDrawable(paramd.getResources().getDrawable(2131691336));
-    this.BPR.setOnClickListener((View.OnClickListener)this);
-    paramViewGroup = au.az(this.parent.getContext());
-    int i = paramViewGroup.y;
-    i = paramViewGroup.x;
-    AppMethodBeat.o(75464);
+    super(paramd, (byte)0);
+    AppMethodBeat.i(75458);
+    this.wRg = paramImageView;
+    this.APl = paramd;
+    this.HMD = g.ar((kotlin.g.a.a)new a(paramViewGroup));
+    this.wRg.setOnClickListener((View.OnClickListener)this);
+    this.wRg.setImageDrawable(au.o(this.wRg.getContext(), b.g.icons_filled_sticker, -1));
+    AppMethodBeat.o(75458);
   }
   
-  public final void aSs() {}
-  
-  public final void eKn()
+  private final com.tencent.mm.plugin.recordvideo.ui.editor.a.a fwC()
   {
-    AppMethodBeat.i(75459);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("get_poi_classify_id", this.BPU.LIb);
-    localIntent.putExtra("get_poi_from_scene", "story");
-    localIntent.putExtra("get_city", this.BPU.kea);
-    localIntent.putExtra("poi_show_none", true);
-    localIntent.putExtra("select_radio_icon_color", "#0E9CE6");
-    com.tencent.mm.br.c.b(this.parent.getContext(), "nearlife", "com.tencent.mm.plugin.nearlife.ui.CheckInLifeUI", localIntent, 2);
-    AppMethodBeat.o(75459);
+    AppMethodBeat.i(223966);
+    com.tencent.mm.plugin.recordvideo.ui.editor.a.a locala = (com.tencent.mm.plugin.recordvideo.ui.editor.a.a)this.HMD.getValue();
+    AppMethodBeat.o(223966);
+    return locala;
   }
   
-  public final String name()
+  private final void fwD()
   {
-    return "plugin_tip";
-  }
-  
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    AppMethodBeat.i(75462);
-    if ((2 == paramInt1) && (paramInt2 == -1) && (paramIntent != null))
+    AppMethodBeat.i(223974);
+    if (fwC().HYF != null) {}
+    for (int i = 1;; i = 0)
     {
-      this.BPU.kHV = Util.nullAs(paramIntent.getStringExtra("get_poi_name"), "");
-      this.BPU.kea = Util.nullAs(paramIntent.getStringExtra("get_city"), "");
-      this.BPU.LbD = paramIntent.getFloatExtra("get_lat", -1000.0F);
-      this.BPU.LbC = paramIntent.getFloatExtra("get_lng", -1000.0F);
-      this.BPU.LIb = paramIntent.getStringExtra("get_poi_classify_id");
-      if ((!Util.isNullOrNil(this.BPU.kHV)) || (!Util.isNullOrNil(this.BPU.kea)))
+      if (i == 0)
       {
-        paramInt1 = 1;
-        if (paramInt1 == 0) {
-          break label184;
-        }
-        this.BPT.setVisibility(0);
+        fwC().HYF = ((kotlin.g.a.b)new b(this));
+        Object localObject = fwC();
+        ac.a locala = (ac.a)new c(this);
+        p.k(locala, "callback");
+        ac localac = ad.aaf();
+        p.j(localac, "callbackWrapper");
+        localac.a(locala);
+        ((com.tencent.mm.emoji.view.a)localObject).jPK.setCallback((com.tencent.mm.pluginsdk.ui.chat.f)localac);
+        localObject = com.tencent.mm.plugin.recordvideo.e.f.Ifk;
+        com.tencent.mm.plugin.recordvideo.e.f.a(fwC());
       }
-      for (;;)
-      {
-        paramIntent = new Bundle();
-        paramIntent.putByteArray("PARAM_EDIT_POI_INFO", this.BPU.toByteArray());
-        this.wgr.a(d.c.BVc, paramIntent);
-        AppMethodBeat.o(75462);
-        return;
-        paramInt1 = 0;
-        break;
-        label184:
-        this.BPT.setVisibility(8);
-      }
+      AppMethodBeat.o(223974);
+      return;
     }
-    AppMethodBeat.o(75462);
+  }
+  
+  public final void a(n paramn)
+  {
+    AppMethodBeat.i(223978);
+    p.k(paramn, "externalPanelDataProvider");
+    com.tencent.mm.plugin.recordvideo.ui.editor.a.a locala = fwC();
+    p.k(paramn, "externalPanelDataProvider");
+    locala.jPK.a(paramn);
+    AppMethodBeat.o(223978);
+  }
+  
+  public final void acl(int paramInt)
+  {
+    AppMethodBeat.i(223989);
+    this.wRg.setImageDrawable(au.o(this.wRg.getContext(), b.g.icons_filled_sticker, paramInt));
+    AppMethodBeat.o(223989);
+  }
+  
+  public final void ePv()
+  {
+    AppMethodBeat.i(223983);
+    fwC().setShow(false);
+    AppMethodBeat.o(223983);
+  }
+  
+  public final void fwE()
+  {
+    AppMethodBeat.i(223981);
+    fwD();
+    fwC().setShow(true);
+    AppMethodBeat.o(223981);
   }
   
   public final boolean onBackPress()
   {
+    AppMethodBeat.i(75456);
+    if (fwC().jPJ.getVisibility() == 0) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      fwC().setShow(false);
+      AppMethodBeat.o(75456);
+      return true;
+    }
+    AppMethodBeat.o(75456);
     return false;
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(75460);
-    Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-    a.b("com/tencent/mm/plugin/recordvideo/plugin/EditAddPoiPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-    localObject = WeChatBrands.Business.Entries.SessionLocation;
-    if (localObject != null)
-    {
-      if (paramView != null) {}
-      for (paramView = paramView.getContext(); !((WeChatBrands.Business.Entries)localObject).checkAvailable(paramView); paramView = null)
-      {
-        a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/EditAddPoiPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(75460);
-        return;
-      }
-    }
-    eKn();
-    paramView = com.tencent.mm.plugin.recordvideo.d.c.BXI;
-    com.tencent.mm.plugin.recordvideo.d.c.VI(10);
-    a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/EditAddPoiPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(75460);
+    AppMethodBeat.i(75454);
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/recordvideo/plugin/EditAddEmojiPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    fwE();
+    paramView = c.HUw;
+    c.aVY("KEY_CLICK_EMOJI_COUNT_INT");
+    paramView = c.HUw;
+    c.acq(4);
+    paramView = c.HUw;
+    c.acr(6);
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/EditAddEmojiPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(75454);
   }
   
-  public final void onDetach() {}
-  
-  public final void onPause() {}
-  
-  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public final void release()
   {
-    AppMethodBeat.i(237267);
-    p.h(paramArrayOfString, "permissions");
-    p.h(paramArrayOfInt, "grantResults");
-    t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(237267);
-  }
-  
-  public final void onResume() {}
-  
-  public final void release() {}
-  
-  public final void reset()
-  {
-    AppMethodBeat.i(75463);
-    this.BPU = new dlg();
-    this.BPT.setVisibility(8);
-    AppMethodBeat.o(75463);
+    AppMethodBeat.i(75455);
+    fwC().jPK.destroy();
+    AppMethodBeat.o(75455);
   }
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(75461);
-    this.BPR.setVisibility(paramInt);
-    AppMethodBeat.o(75461);
+    AppMethodBeat.i(75457);
+    super.setVisibility(paramInt);
+    this.wRg.setVisibility(paramInt);
+    AppMethodBeat.o(75457);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/panel/EditorEmojiPanel;", "invoke"})
+  static final class a
+    extends q
+    implements kotlin.g.a.a<com.tencent.mm.plugin.recordvideo.ui.editor.a.a>
+  {
+    a(ViewGroup paramViewGroup)
+    {
+      super();
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
+  static final class b
+    extends q
+    implements kotlin.g.a.b<Boolean, x>
+  {
+    b(b paramb)
+    {
+      super();
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/recordvideo/plugin/EditAddEmojiPlugin$initEmojiPanel$2", "Lcom/tencent/mm/api/SmileyPanelCallbackWrapper$Callback;", "onHide", "", "onSelectedEmoji", "emojiInfo", "Lcom/tencent/mm/api/IEmojiInfo;", "plugin-recordvideo_release"})
+  public static final class c
+    implements ac.a
+  {
+    public final void a(r paramr)
+    {
+      AppMethodBeat.i(223666);
+      p.k(paramr, "emojiInfo");
+      Log.i("MicroMsg.EditorVideoPluginLayoutNew", "[onSelectedEmoji] emojiInfo:%s", new Object[] { paramr });
+      Bundle localBundle = new Bundle();
+      localBundle.putParcelable("PARAM_EDIT_EMOJI_INFO", (Parcelable)paramr);
+      this.HME.APl.a(d.c.HTa, localBundle);
+      onHide();
+      AppMethodBeat.o(223666);
+    }
+    
+    public final void onHide()
+    {
+      AppMethodBeat.i(223667);
+      b.a(this.HME).setShow(false);
+      AppMethodBeat.o(223667);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,54 @@
 package com.tencent.mm.plugin.appbrand.r;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.a;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bzi;
-import com.tencent.mm.protocal.protobuf.bzj;
+import com.tencent.mm.protocal.protobuf.chc;
+import com.tencent.mm.protocal.protobuf.chd;
+import com.tencent.mm.protocal.protobuf.dyy;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.lang.ref.WeakReference;
+import kotlin.Result;
+import kotlin.g.a.b;
 import kotlin.g.b.p;
 import kotlin.l;
+import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/netscene/NetSceneGetWxaOrderInfo;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "onNetSceneGetWxaOrderInfoCallback", "Lcom/tencent/mm/plugin/appbrand/netscene/NetSceneGetWxaOrderInfo$IOnNetSceneGetWxaOrderInfoCallback;", "", "(Lcom/tencent/mm/plugin/appbrand/netscene/NetSceneGetWxaOrderInfo$IOnNetSceneGetWxaOrderInfoCallback;)V", "TAG", "", "mCallback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "resp", "Lcom/tencent/mm/modelbase/CommReqResp;", "getResp", "()Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "callback", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "IOnNetSceneGetWxaOrderInfoCallback", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/netscene/NetSceneGetWxaOrderInfo;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "()V", "TAG", "", "mCallback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "resp", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "callback", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "send", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetWxaOrderInfoResp;", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "plugin-appbrand-integration_release"})
 public final class c
-  extends q
-  implements m
+  extends com.tencent.mm.an.q
+  implements com.tencent.mm.network.m
 {
   private final String TAG;
-  private i heq;
-  public final d nhw;
-  private final a<c, ? extends Object> nhx;
+  private i jQg;
+  private final d qif;
   
-  public c(a<c, ? extends Object> parama)
+  public c()
   {
-    AppMethodBeat.i(50892);
-    this.nhx = parama;
+    AppMethodBeat.i(256481);
     this.TAG = "MicroMsg.webview.NetSceneGetWxaOrderInfo";
-    parama = new d.a();
-    parama.c((a)new bzi());
-    parama.d((a)new bzj());
-    parama.MB("/cgi-bin/mmbiz-bin/wxaboss/getwxaorderinfo");
-    parama.sG(1893);
-    parama.sI(0);
-    parama.sJ(0);
-    parama = parama.aXF();
-    p.g(parama, "builder.buildInstance()");
-    this.nhw = parama;
-    AppMethodBeat.o(50892);
+    Object localObject = new d.a();
+    ((d.a)localObject).c((a)new chc());
+    ((d.a)localObject).d((a)new chd());
+    ((d.a)localObject).TW("/cgi-bin/mmbiz-bin/wxaboss/getwxaorderinfo");
+    ((d.a)localObject).vD(1893);
+    ((d.a)localObject).vF(0);
+    ((d.a)localObject).vG(0);
+    localObject = ((d.a)localObject).bgN();
+    p.j(localObject, "builder.buildInstance()");
+    this.qif = ((d)localObject);
+    AppMethodBeat.o(256481);
   }
   
   public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(50890);
-    this.heq = parami;
-    int i = dispatch(paramg, (s)this.nhw, (m)this);
+    this.jQg = parami;
+    int i = dispatch(paramg, (s)this.qif, (com.tencent.mm.network.m)this);
     AppMethodBeat.o(50890);
     return i;
   }
@@ -62,35 +62,54 @@ public final class c
   {
     AppMethodBeat.i(50891);
     Log.i(this.TAG, "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    params = this.heq;
-    if (params != null) {
-      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
-    }
-    paramArrayOfByte = this.nhx;
-    if (paramArrayOfByte != null)
+    params = this.jQg;
+    if (params != null)
     {
-      params = paramString;
-      if (paramString == null) {
-        params = "";
-      }
-      paramArrayOfByte.a(paramInt2, paramInt3, params, (q)this);
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (com.tencent.mm.an.q)this);
       AppMethodBeat.o(50891);
       return;
     }
     AppMethodBeat.o(50891);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/netscene/NetSceneGetWxaOrderInfo$IOnNetSceneGetWxaOrderInfoCallback;", "T", "Lcom/tencent/mm/modelbase/NetSceneBase;", "U", "", "ui", "Ljava/lang/ref/WeakReference;", "(Ljava/lang/ref/WeakReference;)V", "getUi", "()Ljava/lang/ref/WeakReference;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "scene", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "plugin-appbrand-integration_release"})
-  public static abstract class a<T extends q, U>
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/netscene/NetSceneGetWxaOrderInfo$send$2$sceneEndListener$1", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-appbrand-integration_release"})
+  public static final class a
+    implements i
   {
-    public final WeakReference<U> nhy;
+    public a(kotlinx.coroutines.m paramm, c paramc) {}
     
-    public a(WeakReference<U> paramWeakReference)
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
     {
-      this.nhy = paramWeakReference;
+      AppMethodBeat.i(281013);
+      if (p.h(this.qig, paramq))
+      {
+        Object localObject1 = h.aHF();
+        p.j(localObject1, "MMKernel.network()");
+        ((com.tencent.mm.kernel.c)localObject1).aGY().b(this.qig.getType(), (i)this);
+        localObject1 = this.khs;
+        Object localObject2 = Result.Companion;
+        localObject2 = c.a(this.qig).bhY();
+        if (localObject2 == null)
+        {
+          paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetWxaOrderInfoResp");
+          AppMethodBeat.o(281013);
+          throw paramString;
+        }
+        ((kotlinx.coroutines.m)localObject1).resumeWith(Result.constructor-impl(com.tencent.mm.an.c.a.a(paramInt1, paramInt2, paramString, (dyy)localObject2, paramq, null)));
+      }
+      AppMethodBeat.o(281013);
     }
-    
-    public abstract void a(int paramInt1, int paramInt2, String paramString, T paramT);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke", "com/tencent/mm/plugin/appbrand/netscene/NetSceneGetWxaOrderInfo$send$2$1"})
+  public static final class b
+    extends kotlin.g.b.q
+    implements b<Throwable, x>
+  {
+    public b(c.a parama, c paramc)
+    {
+      super();
+    }
   }
 }
 

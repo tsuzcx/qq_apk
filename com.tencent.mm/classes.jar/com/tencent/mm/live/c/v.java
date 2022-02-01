@@ -15,126 +15,129 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.live.b.m;
-import com.tencent.mm.live.b.o.b;
-import com.tencent.mm.live.b.r;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.live.b.e;
+import com.tencent.mm.live.b.g;
+import com.tencent.mm.live.b.j;
+import com.tencent.mm.live.b.l.b;
+import com.tencent.mm.live.b.o;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.at;
 import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.ax;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/plugin/LiveGuestRightPanelPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "fetcherListener", "Lkotlin/Function0;", "", "likeBtn", "Landroid/widget/ImageView;", "likeBtnClickArea", "Landroid/widget/RelativeLayout;", "likeCount", "", "likeCountTv", "Landroid/widget/TextView;", "likeLayout", "Landroid/widget/LinearLayout;", "likeTooMuch", "", "liveVisitorMicPlugin", "Lcom/tencent/mm/live/plugin/LiveVisitorMicPlugin;", "needPostLike", "postLikeTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "vibrator", "", "kotlin.jvm.PlatformType", "checkBtnLayout", "isWaitingMic", "mount", "onBackPress", "onClick", "v", "Landroid/view/View;", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "postLike", "scaleAnimate", "target", "targetValue", "", "setVisible", "visible", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "unMount", "Companion", "plugin-logic_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/plugin/LiveGuestRightPanelPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "fetcherListener", "Lkotlin/Function0;", "", "likeBtn", "Landroid/widget/ImageView;", "likeBtnClickArea", "Landroid/widget/RelativeLayout;", "likeCount", "", "likeCountTv", "Landroid/widget/TextView;", "likeLayout", "Landroid/widget/LinearLayout;", "likeTooMuch", "", "liveVisitorMicPlugin", "Lcom/tencent/mm/live/plugin/LiveVisitorMicPlugin;", "needPostLike", "postLikeTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "vibrator", "", "kotlin.jvm.PlatformType", "checkBtnLayout", "isWaitingMic", "mount", "onBackPress", "onClick", "v", "Landroid/view/View;", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "postLike", "scaleAnimate", "target", "targetValue", "", "setVisible", "visible", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "unMount", "Companion", "plugin-logic_release"})
 public final class v
   extends a
   implements View.OnClickListener, i
 {
-  public static final a hQq;
-  private final TextView hOf;
-  private final b hOp;
-  public final bi hQi;
-  private final ImageView hQj;
-  private final RelativeLayout hQk;
-  private final LinearLayout hQl;
-  private boolean hQm;
-  private final Object hQn;
-  private final kotlin.g.a.a<x> hQo;
-  private final MTimerHandler hQp;
+  public static final a kEN;
+  private final TextView kCB;
+  private final b kCL;
+  public final bi kEF;
+  private final ImageView kEG;
+  private final RelativeLayout kEH;
+  private final LinearLayout kEI;
+  private boolean kEJ;
+  private final Object kEK;
+  private final kotlin.g.a.a<x> kEL;
+  private final MTimerHandler kEM;
   private int likeCount;
   
   static
   {
-    AppMethodBeat.i(208022);
-    hQq = new a((byte)0);
-    AppMethodBeat.o(208022);
+    AppMethodBeat.i(188399);
+    kEN = new a((byte)0);
+    AppMethodBeat.o(188399);
   }
   
   public v(final ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(208021);
-    this.hOp = paramb;
-    paramb = paramViewGroup.findViewById(2131303638);
-    p.g(paramb, "root.findViewById(R.id.live_visitor_mic_parent)");
-    this.hQi = new bi((ViewGroup)paramb, this.hOp);
-    paramb = paramViewGroup.findViewById(2131303548);
-    p.g(paramb, "root.findViewById(R.id.live_right_panel_like)");
-    this.hQj = ((ImageView)paramb);
-    paramb = paramViewGroup.findViewById(2131303549);
-    p.g(paramb, "root.findViewById(R.id.l…ht_panel_like_click_area)");
-    this.hQk = ((RelativeLayout)paramb);
-    paramb = paramViewGroup.findViewById(2131303550);
-    p.g(paramb, "root.findViewById(R.id.l…ight_panel_like_count_tv)");
-    this.hOf = ((TextView)paramb);
-    paramb = paramViewGroup.findViewById(2131303422);
-    p.g(paramb, "root.findViewById(R.id.live_like_layout)");
-    this.hQl = ((LinearLayout)paramb);
-    this.hQm = true;
-    this.hQn = paramViewGroup.getContext().getSystemService("vibrator");
-    this.hQo = ((kotlin.g.a.a)new b(this, paramViewGroup));
-    this.hQp = new MTimerHandler("RoomLiveLike::Timer", (MTimerHandler.CallBack)new e(this), true);
-    paramb = this.hQj;
+    AppMethodBeat.i(188398);
+    this.kCL = paramb;
+    paramb = paramViewGroup.findViewById(b.e.live_visitor_mic_parent);
+    p.j(paramb, "root.findViewById(R.id.live_visitor_mic_parent)");
+    this.kEF = new bi((ViewGroup)paramb, this.kCL);
+    paramb = paramViewGroup.findViewById(b.e.live_right_panel_like);
+    p.j(paramb, "root.findViewById(R.id.live_right_panel_like)");
+    this.kEG = ((ImageView)paramb);
+    paramb = paramViewGroup.findViewById(b.e.live_right_panel_like_click_area);
+    p.j(paramb, "root.findViewById(R.id.l…ht_panel_like_click_area)");
+    this.kEH = ((RelativeLayout)paramb);
+    paramb = paramViewGroup.findViewById(b.e.live_right_panel_like_count_tv);
+    p.j(paramb, "root.findViewById(R.id.l…ight_panel_like_count_tv)");
+    this.kCB = ((TextView)paramb);
+    paramb = paramViewGroup.findViewById(b.e.live_like_layout);
+    p.j(paramb, "root.findViewById(R.id.live_like_layout)");
+    this.kEI = ((LinearLayout)paramb);
+    this.kEJ = true;
+    this.kEK = paramViewGroup.getContext().getSystemService("vibrator");
+    this.kEL = ((kotlin.g.a.a)new b(this, paramViewGroup));
+    this.kEM = new MTimerHandler("RoomLiveLike::Timer", (MTimerHandler.CallBack)new e(this), true);
+    paramb = this.kEG;
     Context localContext = paramViewGroup.getContext();
-    p.g(localContext, "root.context");
-    paramb.setImageDrawable(ar.e(localContext.getResources().getDrawable(2131690500), -1));
-    this.hQk.setOnTouchListener((View.OnTouchListener)new View.OnTouchListener()
+    p.j(localContext, "root.context");
+    paramb.setImageDrawable(au.e(localContext.getResources().getDrawable(b.g.icons_filled_call_good), -1));
+    this.kEH.setOnTouchListener((View.OnTouchListener)new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(208007);
-        p.g(paramAnonymousMotionEvent, "event");
+        AppMethodBeat.i(195421);
+        p.j(paramAnonymousMotionEvent, "event");
         switch (paramAnonymousMotionEvent.getActionMasked())
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(208007);
+          AppMethodBeat.o(195421);
           return true;
-          v.s((View)v.h(this.hQr), 1.7F);
-          v.d(this.hQr).setVisibility(4);
-          v.i(this.hQr).startTimer(0L, 200L);
+          v.s((View)v.h(this.kEO), 1.7F);
+          v.d(this.kEO).setVisibility(4);
+          v.i(this.kEO).startTimer(0L, 200L);
           continue;
-          v.i(this.hQr).stopTimer();
-          v.s((View)v.h(this.hQr), 1.0F);
-          v.d(this.hQr).setVisibility(0);
-          if (v.j(this.hQr))
+          v.i(this.kEO).stopTimer();
+          v.s((View)v.h(this.kEO), 1.0F);
+          v.d(this.kEO).setVisibility(0);
+          if (v.j(this.kEO))
           {
-            paramAnonymousView = r.hIg;
-            r.qR(v.e(this.hQr));
-            v.k(this.hQr);
-            v.f(this.hQr);
+            paramAnonymousView = o.kvA;
+            o.tG(v.e(this.kEO));
+            v.k(this.kEO);
+            v.f(this.kEO);
           }
         }
       }
     });
-    paramb = m.hGg;
-    m.d(name(), this.hQo);
-    if (paramViewGroup.findViewById(2131299216) != null)
+    paramb = j.kue;
+    j.d(name(), this.kEL);
+    if (paramViewGroup.findViewById(b.e.content_root_view) != null)
     {
       paramb = new LinearLayout.LayoutParams(-1, -1);
-      paramb.bottomMargin = au.aD(paramViewGroup.getContext());
-      paramViewGroup = paramViewGroup.findViewById(2131299216);
-      p.g(paramViewGroup, "root.findViewById<Linear…>(R.id.content_root_view)");
+      paramb.bottomMargin = ax.aB(paramViewGroup.getContext());
+      paramViewGroup = paramViewGroup.findViewById(b.e.content_root_view);
+      p.j(paramViewGroup, "root.findViewById<Linear…>(R.id.content_root_view)");
       ((LinearLayout)paramViewGroup).setLayoutParams((ViewGroup.LayoutParams)paramb);
     }
-    AppMethodBeat.o(208021);
+    AppMethodBeat.o(188398);
   }
   
   public final void mount()
   {
-    AppMethodBeat.i(208018);
-    com.tencent.mm.kernel.b localb = g.aAg();
-    p.g(localb, "MMKernel.network()");
-    localb.azz().a(3957, (i)this);
-    AppMethodBeat.o(208018);
+    AppMethodBeat.i(188385);
+    c localc = h.aHF();
+    p.j(localc, "MMKernel.network()");
+    localc.aGY().a(3957, (i)this);
+    AppMethodBeat.o(188385);
   }
   
   public final boolean onBackPress()
@@ -144,129 +147,131 @@ public final class v
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(208015);
+    AppMethodBeat.i(188369);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveGuestRightPanelPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/plugin/LiveGuestRightPanelPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+    int i;
     if (paramView != null)
     {
       paramView = Integer.valueOf(paramView.getId());
+      i = b.e.live_right_panel_like_click_area;
       if (paramView != null) {
-        break label86;
+        break label90;
       }
     }
     for (;;)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveGuestRightPanelPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(208015);
+      AppMethodBeat.o(188369);
       return;
       paramView = null;
       break;
-      label86:
-      if (paramView.intValue() == 2131303549)
+      label90:
+      if (paramView.intValue() == i)
       {
         paramView = new Bundle();
         localObject = new int[2];
-        tmp110_108 = localObject;
-        tmp110_108[0] = 0;
-        tmp114_110 = tmp110_108;
-        tmp114_110[1] = 0;
-        tmp114_110;
-        this.hQk.getLocationOnScreen((int[])localObject);
-        int i = localObject[0];
-        int j = this.hQk.getWidth() / 2;
-        o.b localb = o.b.hGo;
-        paramView.putInt("PARAM_LIVE_LIKE_CONFETTI_X", i + j - o.b.aFl() / 2);
+        tmp113_111 = localObject;
+        tmp113_111[0] = 0;
+        tmp117_113 = tmp113_111;
+        tmp117_113[1] = 0;
+        tmp117_113;
+        this.kEH.getLocationOnScreen((int[])localObject);
+        i = localObject[0];
+        int j = this.kEH.getWidth() / 2;
+        l.b localb = l.b.kum;
+        paramView.putInt("PARAM_LIVE_LIKE_CONFETTI_X", i + j - l.b.aNC() / 2);
         i = localObject[1];
-        j = at.fromDPToPix(this.hwr.getContext(), 16);
-        localObject = o.b.hGo;
-        paramView.putInt("PARAM_LIVE_LIKE_CONFETTI_Y", i - j - o.b.aFl());
-        this.hOp.statusChange(b.c.hMa, paramView);
+        j = aw.fromDPToPix(this.kiF.getContext(), 16);
+        localObject = l.b.kum;
+        paramView.putInt("PARAM_LIVE_LIKE_CONFETTI_Y", i - j - l.b.aNC());
+        this.kCL.statusChange(b.c.kzs, paramView);
         this.likeCount += 1;
-        if (this.hQm)
+        if (this.kEJ)
         {
-          paramView = r.hIg;
-          r.qR(this.likeCount);
-          this.hQm = false;
+          paramView = o.kvA;
+          o.tG(this.likeCount);
+          this.kEJ = false;
           this.likeCount = 0;
         }
       }
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
   {
-    AppMethodBeat.i(208020);
+    AppMethodBeat.i(188394);
     if ((paramq instanceof com.tencent.mm.live.b.a.q))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        d.h((kotlin.g.a.a)new c(this));
+        d.uiThread((kotlin.g.a.a)new c(this));
       }
       Log.i("MicroMsg.LiveGuestRightPanelPlugin", "onSceneEnd errType:" + paramInt1 + " errCode:" + paramInt2 + " likeCount:" + this.likeCount);
       if (this.likeCount > 0)
       {
-        paramString = r.hIg;
-        r.qR(this.likeCount);
-        this.hQm = false;
+        paramString = o.kvA;
+        o.tG(this.likeCount);
+        this.kEJ = false;
         this.likeCount = 0;
-        AppMethodBeat.o(208020);
+        AppMethodBeat.o(188394);
         return;
       }
-      this.hQm = true;
+      this.kEJ = true;
       this.likeCount = 0;
     }
-    AppMethodBeat.o(208020);
-  }
-  
-  public final void rg(int paramInt)
-  {
-    AppMethodBeat.i(208016);
-    this.hwr.setVisibility(paramInt);
-    AppMethodBeat.o(208016);
+    AppMethodBeat.o(188394);
   }
   
   public final void statusChange(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(208017);
-    p.h(paramc, "status");
+    AppMethodBeat.i(188382);
+    p.k(paramc, "status");
     super.statusChange(paramc, paramBundle);
     switch (w.$EnumSwitchMapping$0[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(208017);
+      AppMethodBeat.o(188382);
       return;
-      rg(8);
-      AppMethodBeat.o(208017);
+      tU(8);
+      AppMethodBeat.o(188382);
       return;
-      rg(0);
-      this.hwr.post((Runnable)new f(this));
-      AppMethodBeat.o(208017);
+      tU(0);
+      this.kiF.post((Runnable)new f(this));
+      AppMethodBeat.o(188382);
       return;
       if ((paramBundle != null) && (paramBundle.getBoolean("PARAM_IS_ENTERING_COMMENT") == true))
       {
-        rg(8);
-        AppMethodBeat.o(208017);
+        tU(8);
+        AppMethodBeat.o(188382);
         return;
       }
-      rg(0);
+      tU(0);
     }
+  }
+  
+  public final void tU(int paramInt)
+  {
+    AppMethodBeat.i(188371);
+    this.kiF.setVisibility(paramInt);
+    AppMethodBeat.o(188371);
   }
   
   public final void unMount()
   {
-    AppMethodBeat.i(208019);
-    com.tencent.mm.kernel.b localb = g.aAg();
-    p.g(localb, "MMKernel.network()");
-    localb.azz().b(3957, (i)this);
-    AppMethodBeat.o(208019);
+    AppMethodBeat.i(188389);
+    c localc = h.aHF();
+    p.j(localc, "MMKernel.network()");
+    localc.aGY().b(3957, (i)this);
+    AppMethodBeat.o(188389);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/plugin/LiveGuestRightPanelPlugin$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/plugin/LiveGuestRightPanelPlugin$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class b
     extends kotlin.g.b.q
     implements kotlin.g.a.a<x>
@@ -277,7 +282,7 @@ public final class v
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class c
     extends kotlin.g.b.q
     implements kotlin.g.a.a<x>
@@ -288,7 +293,7 @@ public final class v
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class d
     extends kotlin.g.b.q
     implements kotlin.g.a.a<x>
@@ -299,7 +304,7 @@ public final class v
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onTimerExpired"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onTimerExpired"})
   static final class e
     implements MTimerHandler.CallBack
   {
@@ -307,19 +312,19 @@ public final class v
     
     public final boolean onTimerExpired()
     {
-      AppMethodBeat.i(208013);
-      if (v.e(this.hQr) < 9)
+      AppMethodBeat.i(197018);
+      if (v.e(this.kEO) < 9)
       {
-        v.g(this.hQr);
-        AppMethodBeat.o(208013);
+        v.g(this.kEO);
+        AppMethodBeat.o(197018);
         return true;
       }
-      AppMethodBeat.o(208013);
+      AppMethodBeat.o(197018);
       return false;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class f
     implements Runnable
   {
@@ -327,15 +332,15 @@ public final class v
     
     public final void run()
     {
-      AppMethodBeat.i(208014);
-      v.c(this.hQr);
-      AppMethodBeat.o(208014);
+      AppMethodBeat.i(196348);
+      v.c(this.kEO);
+      AppMethodBeat.o(196348);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.c.v
  * JD-Core Version:    0.7.0.1
  */

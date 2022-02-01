@@ -10,15 +10,15 @@ public final class a
   extends b
 {
   private final Bitmap bitmap;
-  private final float jJg;
-  private final float jJh;
+  private final float mAl;
+  private final float mAm;
   
   public a(Bitmap paramBitmap)
   {
     AppMethodBeat.i(151371);
     this.bitmap = paramBitmap;
-    this.jJg = (paramBitmap.getWidth() / 2.0F);
-    this.jJh = (paramBitmap.getHeight() / 2.0F);
+    this.mAl = (paramBitmap.getWidth() / 2.0F);
+    this.mAm = (paramBitmap.getHeight() / 2.0F);
     AppMethodBeat.o(151371);
   }
   
@@ -26,7 +26,7 @@ public final class a
   {
     AppMethodBeat.i(151374);
     paramMatrix.preTranslate(paramFloat1, paramFloat2);
-    paramMatrix.preRotate(paramFloat3, this.jJg, this.jJh);
+    paramMatrix.preRotate(paramFloat3, this.mAl, this.mAm);
     paramCanvas.drawBitmap(this.bitmap, paramMatrix, paramPaint);
     AppMethodBeat.o(151374);
   }
@@ -49,7 +49,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.particles.a.a
  * JD-Core Version:    0.7.0.1
  */

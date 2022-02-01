@@ -7,39 +7,39 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class r
   implements i
 {
-  private Map<Class<? extends j>, j> cEr;
+  private Map<Class<? extends j>, j> cEY;
   
   public r()
   {
-    AppMethodBeat.i(215555);
-    this.cEr = new ConcurrentHashMap();
-    AppMethodBeat.o(215555);
+    AppMethodBeat.i(226724);
+    this.cEY = new ConcurrentHashMap();
+    AppMethodBeat.o(226724);
   }
   
   public final <AddOn extends j> AddOn X(Class<AddOn> paramClass)
   {
-    AppMethodBeat.i(215557);
-    j localj = (j)this.cEr.get(paramClass);
+    AppMethodBeat.i(226729);
+    j localj = (j)this.cEY.get(paramClass);
     if ((localj != null) && (paramClass.isInstance(localj)))
     {
-      AppMethodBeat.o(215557);
+      AppMethodBeat.o(226729);
       return localj;
     }
-    AppMethodBeat.o(215557);
+    AppMethodBeat.o(226729);
     return null;
   }
   
   public final <AddOn extends j> void a(Class<AddOn> paramClass, AddOn paramAddOn)
   {
-    AppMethodBeat.i(215556);
+    AppMethodBeat.i(226725);
     if (paramAddOn == null)
     {
-      this.cEr.remove(paramClass);
-      AppMethodBeat.o(215556);
+      this.cEY.remove(paramClass);
+      AppMethodBeat.o(226725);
       return;
     }
-    this.cEr.put(paramClass, paramAddOn);
-    AppMethodBeat.o(215556);
+    this.cEY.put(paramClass, paramAddOn);
+    AppMethodBeat.o(226725);
   }
   
   public final String getName()

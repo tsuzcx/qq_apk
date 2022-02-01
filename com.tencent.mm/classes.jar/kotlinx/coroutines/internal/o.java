@@ -1,64 +1,100 @@
 package kotlinx.coroutines.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ServiceLoader;
 import kotlin.l;
-import kotlinx.coroutines.ce;
+import kotlin.m.i;
+import kotlinx.coroutines.ci;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"FAST_SERVICE_LOADER_PROPERTY_NAME", "", "SUPPORT_MISSING", "", "SUPPORT_MISSING$annotations", "()V", "createMissingDispatcher", "Lkotlinx/coroutines/internal/MissingMainCoroutineDispatcher;", "cause", "", "errorHint", "throwMissingMainDispatcherException", "", "isMissing", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "tryCreateDispatcher", "Lkotlinx/coroutines/internal/MainDispatcherFactory;", "factories", "", "kotlinx-coroutines-core"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/internal/MainDispatcherLoader;", "", "()V", "FAST_SERVICE_LOADER_ENABLED", "", "dispatcher", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "loadMainDispatcher", "kotlinx-coroutines-core"})
 public final class o
 {
-  private static final boolean TWc = true;
+  private static final boolean abzq;
+  public static final ci abzr;
+  public static final o abzs;
   
-  public static final ce a(MainDispatcherFactory paramMainDispatcherFactory, List<? extends MainDispatcherFactory> paramList)
+  static
   {
-    AppMethodBeat.i(192441);
-    try
+    AppMethodBeat.i(204990);
+    abzs = new o();
+    abzq = y.bHG("kotlinx.coroutines.fast.service.loader");
+    abzr = iSU();
+    AppMethodBeat.o(204990);
+  }
+  
+  private static ci iSU()
+  {
+    AppMethodBeat.i(204989);
+    for (;;)
     {
-      paramList = paramMainDispatcherFactory.createDispatcher(paramList);
-      paramMainDispatcherFactory = paramList;
-    }
-    catch (Throwable paramList)
-    {
-      for (;;)
+      try
       {
-        paramMainDispatcherFactory = (ce)e(paramList, paramMainDispatcherFactory.hintOnError());
+        if (!abzq) {
+          continue;
+        }
+        localObject1 = g.abzb;
+        localList = g.iSH();
+        localIterator = ((Iterable)localList).iterator();
+        if (localIterator.hasNext()) {
+          continue;
+        }
+        localObject2 = null;
+        localObject1 = (MainDispatcherFactory)localObject2;
+        if (localObject1 != null)
+        {
+          localObject2 = p.a((MainDispatcherFactory)localObject1, localList);
+          localObject1 = localObject2;
+          if (localObject2 != null) {}
+        }
+        else
+        {
+          localObject1 = (ci)p.b(null, 3);
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        Object localObject1;
+        List localList;
+        Iterator localIterator;
+        Object localObject2;
+        int i;
+        ci localci = (ci)p.b(localThrowable, 2);
+        continue;
+        continue;
+      }
+      AppMethodBeat.o(204989);
+      return localObject1;
+      localList = i.c(i.d(ServiceLoader.load(MainDispatcherFactory.class, MainDispatcherFactory.class.getClassLoader()).iterator()));
+      continue;
+      localObject1 = localIterator.next();
+      if (localIterator.hasNext()) {
+        continue;
+      }
+      localObject2 = localObject1;
+    }
+    i = ((MainDispatcherFactory)localObject1).getLoadPriority();
+    for (;;)
+    {
+      localObject2 = localIterator.next();
+      int j = ((MainDispatcherFactory)localObject2).getLoadPriority();
+      if (i >= j) {
+        break label206;
+      }
+      localObject1 = localObject2;
+      i = j;
+      boolean bool = localIterator.hasNext();
+      localObject2 = localObject1;
+      if (!bool) {
+        break;
       }
     }
-    AppMethodBeat.o(192441);
-    return paramMainDispatcherFactory;
-  }
-  
-  private static final p e(Throwable paramThrowable, String paramString)
-  {
-    AppMethodBeat.i(192442);
-    if (TWc)
-    {
-      paramThrowable = new p(paramThrowable, paramString);
-      AppMethodBeat.o(192442);
-      return paramThrowable;
-    }
-    if (paramThrowable != null)
-    {
-      AppMethodBeat.o(192442);
-      throw paramThrowable;
-    }
-    hNP();
-    AppMethodBeat.o(192442);
-    throw null;
-  }
-  
-  public static final Void hNP()
-  {
-    AppMethodBeat.i(192444);
-    Throwable localThrowable = (Throwable)new IllegalStateException("Module with the Main dispatcher is missing. Add dependency providing the Main dispatcher, e.g. 'kotlinx-coroutines-android' and ensure it has the same version as 'kotlinx-coroutines-core'");
-    AppMethodBeat.o(192444);
-    throw localThrowable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.internal.o
  * JD-Core Version:    0.7.0.1
  */

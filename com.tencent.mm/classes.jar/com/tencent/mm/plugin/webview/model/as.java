@@ -1,56 +1,44 @@
 package com.tencent.mm.plugin.webview.model;
 
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
-import com.tencent.mm.plugin.x.a;
-import com.tencent.mm.sdk.platformtools.IntentUtil;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.fkz;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/model/WebViewSecretMsgReporter;", "", "()V", "secretMsgInfo", "Lcom/tencent/mm/protocal/protobuf/WebPageSecretMsgInfo;", "getSecretMsgInfo", "init", "", "intent", "Landroid/content/Intent;", "reportOpen", "Companion", "SecretMsgLaunchAppResult", "SecretMsgOpType", "SecretMsgScene", "plugin-webview_release"})
 public final class as
-  extends a
 {
-  private static String bl(Intent paramIntent)
+  public static final a PVJ;
+  public fkz PVI;
+  
+  static
   {
-    AppMethodBeat.i(79039);
-    try
-    {
-      paramIntent = URLDecoder.decode(IntentUtil.getStringExtra(paramIntent, "ext_info"), "utf-8");
-      AppMethodBeat.o(79039);
-      return paramIntent;
-    }
-    catch (UnsupportedEncodingException paramIntent)
-    {
-      AppMethodBeat.o(79039);
-    }
-    return "";
+    AppMethodBeat.i(266327);
+    PVJ = new a((byte)0);
+    AppMethodBeat.o(266327);
   }
   
-  public final int getType()
+  public static final void a(fkz paramfkz)
   {
-    return 4;
+    AppMethodBeat.i(266328);
+    a.a(paramfkz);
+    AppMethodBeat.o(266328);
   }
   
-  public final void k(Context paramContext, Intent paramIntent)
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/model/WebViewSecretMsgReporter$Companion;", "", "()V", "TAG", "", "report", "", "secretMsgInfo", "Lcom/tencent/mm/protocal/protobuf/WebPageSecretMsgInfo;", "plugin-webview_release"})
+  public static final class a
   {
-    AppMethodBeat.i(79038);
-    paramIntent.putExtra("type", 4);
-    paramIntent.putExtra("id", "");
-    paramIntent = bl(paramIntent);
-    if (Util.isNullOrNil(paramIntent))
+    public static void a(fkz paramfkz)
     {
-      AppMethodBeat.o(79038);
-      return;
+      AppMethodBeat.i(215881);
+      if (paramfkz == null)
+      {
+        AppMethodBeat.o(215881);
+        return;
+      }
+      h.IzE.a(23341, new Object[] { Integer.valueOf(paramfkz.fwM), paramfkz.url, Integer.valueOf(paramfkz.opType), paramfkz.appId, Integer.valueOf(paramfkz.scene), paramfkz.UJN, Integer.valueOf(paramfkz.UJO) });
+      AppMethodBeat.o(215881);
     }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("rawUrl", paramIntent);
-    localIntent.putExtra("from_shortcut", true);
-    localIntent.addFlags(268435456);
-    c.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
-    AppMethodBeat.o(79038);
   }
 }
 

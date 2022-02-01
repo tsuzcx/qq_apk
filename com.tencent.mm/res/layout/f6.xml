@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:orientation="horizontal" android:id="@id/qj" android:paddingTop="@dimen/rk" android:paddingBottom="@dimen/rl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/rl" android:paddingEnd="@dimen/rl"
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="horizontal" android:id="@id/qj" android:paddingTop="@dimen/rk" android:paddingBottom="@dimen/rl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/rl" android:paddingEnd="@dimen/rl"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView android:id="@id/qm" android:layout_width="20.0dip" android:layout_height="20.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
     <TextView android:textSize="@dimen/hc" android:textColor="@color/BW_0_Alpha_0_5" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/qk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_marginStart="8.0dip" app:layout_constraintBottom_toBottomOf="@id/qm" app:layout_constraintStart_toEndOf="@id/qm" app:layout_constraintTop_toTopOf="@id/qm" />
     <ImageView android:id="@id/ql" android:layout_width="12.0dip" android:layout_height="24.0dip" android:layout_marginLeft="2.0dip" android:layout_marginTop="1.0dip" android:src="@raw/arrow_right" android:scaleType="center" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintStart_toEndOf="@id/qk" app:layout_constraintTop_toTopOf="g8m" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

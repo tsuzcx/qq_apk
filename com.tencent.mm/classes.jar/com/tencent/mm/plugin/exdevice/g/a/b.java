@@ -1,19 +1,18 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 
 public final class b
 {
-  public static String anz(String paramString)
+  public static String avy(String paramString)
   {
     AppMethodBeat.i(23501);
     if ((Util.isNullOrNil(paramString)) || ("#".equals(paramString)))
@@ -22,17 +21,17 @@ public final class b
       return "";
     }
     Object localObject = MD5Util.getMD5String(paramString);
-    localObject = new o(d.cKY(), (String)localObject);
-    if (((o)localObject).exists())
+    localObject = new q(d.cZL(), (String)localObject);
+    if (((q)localObject).ifE())
     {
-      paramString = aa.z(((o)localObject).her());
+      paramString = ((q)localObject).bOF();
       AppMethodBeat.o(23501);
       return paramString;
     }
     try
     {
-      ((o)localObject).createNewFile();
-      bg.aAk().postToWorker(new a(paramString, (o)localObject));
+      ((q)localObject).ifM();
+      bh.aHJ().postToWorker(new a(paramString, (q)localObject));
       AppMethodBeat.o(23501);
       return "";
     }
@@ -48,13 +47,13 @@ public final class b
   static final class a
     implements Runnable
   {
-    private o rCg;
     private String url;
+    private q vhO;
     
-    a(String paramString, o paramo)
+    a(String paramString, q paramq)
     {
       this.url = paramString;
-      this.rCg = paramo;
+      this.vhO = paramq;
     }
     
     public final void run()
@@ -62,7 +61,7 @@ public final class b
       AppMethodBeat.i(23499);
       byte[] arrayOfByte = Util.httpGet(this.url);
       if (arrayOfByte != null) {
-        s.f(aa.z(this.rCg.mUri), arrayOfByte, arrayOfByte.length);
+        u.H(this.vhO.getPath(), arrayOfByte);
       }
       AppMethodBeat.o(23499);
     }
@@ -78,7 +77,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.a.b
  * JD-Core Version:    0.7.0.1
  */

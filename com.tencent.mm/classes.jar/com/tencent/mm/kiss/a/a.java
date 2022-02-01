@@ -5,13 +5,13 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public final class a
 {
-  private static a htI;
+  private static a kfF;
   public MMHandler mHandler;
   
   static
   {
     AppMethodBeat.i(140995);
-    htI = new a();
+    kfF = new a();
     AppMethodBeat.o(140995);
   }
   
@@ -22,14 +22,14 @@ public final class a
     AppMethodBeat.o(140994);
   }
   
-  public static a aBg()
+  public static a aIJ()
   {
-    return htI;
+    return kfF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.kiss.a.a
  * JD-Core Version:    0.7.0.1
  */

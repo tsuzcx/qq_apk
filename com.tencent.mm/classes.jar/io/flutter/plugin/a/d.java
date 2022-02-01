@@ -1,32 +1,33 @@
 package io.flutter.plugin.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import io.flutter.b;
 import java.nio.ByteBuffer;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
 public final class d
 {
-  final l SSe;
+  final l aauF;
+  final c aauy;
   final String name;
-  final c wJt;
   
   public d(c paramc, String paramString)
   {
-    this(paramc, paramString, o.SSr);
+    this(paramc, paramString, o.aauS);
   }
   
   private d(c paramc, String paramString, l paraml)
   {
-    this.wJt = paramc;
+    this.aauy = paramc;
     this.name = paramString;
-    this.SSe = paraml;
+    this.aauF = paraml;
   }
   
-  public final void a(d.c paramc)
+  public final void a(c paramc)
   {
     AppMethodBeat.i(9835);
-    c localc = this.wJt;
+    c localc = this.aauy;
     String str = this.name;
     if (paramc == null) {}
     for (paramc = null;; paramc = new b(paramc))
@@ -37,32 +38,40 @@ public final class d
     }
   }
   
+  public static abstract interface a
+  {
+    public abstract void aEn();
+    
+    public abstract void b(String paramString1, String paramString2, Object paramObject);
+    
+    public abstract void bb(Object paramObject);
+  }
+  
   final class b
     implements c.a
   {
-    private final d.c SSf;
-    final AtomicReference<d.a> SSg;
+    private final d.c aauG;
+    final AtomicReference<d.a> aauH;
     
     b(d.c paramc)
     {
       AppMethodBeat.i(9843);
-      this.SSg = new AtomicReference(null);
-      this.SSf = paramc;
+      this.aauH = new AtomicReference(null);
+      this.aauG = paramc;
       AppMethodBeat.o(9843);
     }
     
     public final void a(ByteBuffer paramByteBuffer, c.b paramb)
     {
       AppMethodBeat.i(9844);
-      paramByteBuffer = d.this.SSe.K(paramByteBuffer);
+      paramByteBuffer = d.this.aauF.G(paramByteBuffer);
       if (paramByteBuffer.method.equals("listen"))
       {
-        paramByteBuffer = paramByteBuffer.SxX;
-        a locala = new a((byte)0);
-        if ((d.a)this.SSg.getAndSet(locala) != null) {}
+        paramByteBuffer = new a((byte)0);
+        if ((d.a)this.aauH.getAndSet(paramByteBuffer) != null) {}
         try
         {
-          this.SSf.sT();
+          this.aauG.qH();
         }
         catch (RuntimeException localRuntimeException)
         {
@@ -70,98 +79,108 @@ public final class d
           {
             try
             {
-              this.SSf.a(paramByteBuffer, locala);
-              paramb.I(d.this.SSe.eQ(null));
+              this.aauG.a(paramByteBuffer);
+              paramb.E(d.this.aauF.eV(null));
               AppMethodBeat.o(9844);
               return;
             }
             catch (RuntimeException paramByteBuffer)
             {
-              this.SSg.set(null);
+              this.aauH.set(null);
               new StringBuilder("EventChannel#").append(d.this.name);
-              paramb.I(d.this.SSe.h("error", paramByteBuffer.getMessage(), null));
+              b.iAi();
+              paramb.E(d.this.aauF.h("error", paramByteBuffer.getMessage(), null));
               AppMethodBeat.o(9844);
               return;
             }
             localRuntimeException = localRuntimeException;
             new StringBuilder("EventChannel#").append(d.this.name);
+            b.iAi();
           }
         }
       }
       if (paramByteBuffer.method.equals("cancel"))
       {
-        if ((d.a)this.SSg.getAndSet(null) != null) {
+        if ((d.a)this.aauH.getAndSet(null) != null) {
           try
           {
-            this.SSf.sT();
-            paramb.I(d.this.SSe.eQ(null));
+            this.aauG.qH();
+            paramb.E(d.this.aauF.eV(null));
             AppMethodBeat.o(9844);
             return;
           }
           catch (RuntimeException paramByteBuffer)
           {
             new StringBuilder("EventChannel#").append(d.this.name);
-            paramb.I(d.this.SSe.h("error", paramByteBuffer.getMessage(), null));
+            b.iAi();
+            paramb.E(d.this.aauF.h("error", paramByteBuffer.getMessage(), null));
             AppMethodBeat.o(9844);
             return;
           }
         }
-        paramb.I(d.this.SSe.h("error", "No active stream to cancel", null));
+        paramb.E(d.this.aauF.h("error", "No active stream to cancel", null));
         AppMethodBeat.o(9844);
         return;
       }
-      paramb.I(null);
+      paramb.E(null);
       AppMethodBeat.o(9844);
     }
     
     final class a
       implements d.a
     {
-      final AtomicBoolean SSi;
+      final AtomicBoolean aauJ;
       
       private a()
       {
         AppMethodBeat.i(9831);
-        this.SSi = new AtomicBoolean(false);
+        this.aauJ = new AtomicBoolean(false);
         AppMethodBeat.o(9831);
       }
       
-      public final void awU()
+      public final void aEn()
       {
         AppMethodBeat.i(9834);
-        if ((this.SSi.getAndSet(true)) || (d.b.this.SSg.get() != this))
+        if ((this.aauJ.getAndSet(true)) || (d.b.this.aauH.get() != this))
         {
           AppMethodBeat.o(9834);
           return;
         }
-        d.this.wJt.a(d.this.name, null);
+        d.this.aauy.a(d.this.name, null);
         AppMethodBeat.o(9834);
       }
       
       public final void b(String paramString1, String paramString2, Object paramObject)
       {
         AppMethodBeat.i(9833);
-        if ((this.SSi.get()) || (d.b.this.SSg.get() != this))
+        if ((this.aauJ.get()) || (d.b.this.aauH.get() != this))
         {
           AppMethodBeat.o(9833);
           return;
         }
-        d.this.wJt.a(d.this.name, d.this.SSe.h(paramString1, paramString2, paramObject));
+        d.this.aauy.a(d.this.name, d.this.aauF.h(paramString1, paramString2, paramObject));
         AppMethodBeat.o(9833);
       }
       
-      public final void ba(Object paramObject)
+      public final void bb(Object paramObject)
       {
         AppMethodBeat.i(9832);
-        if ((this.SSi.get()) || (d.b.this.SSg.get() != this))
+        if ((this.aauJ.get()) || (d.b.this.aauH.get() != this))
         {
           AppMethodBeat.o(9832);
           return;
         }
-        d.this.wJt.a(d.this.name, d.this.SSe.eQ(paramObject));
+        d.this.aauy.a(d.this.name, d.this.aauF.eV(paramObject));
         AppMethodBeat.o(9832);
       }
     }
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void a(d.a parama);
+    
+    public abstract void qH();
   }
 }
 

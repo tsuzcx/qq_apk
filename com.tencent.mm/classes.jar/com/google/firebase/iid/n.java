@@ -16,13 +16,13 @@ final class n
   public final void handleMessage(Message paramMessage)
   {
     AppMethodBeat.i(4179);
-    m.a(this.bLK, paramMessage);
+    m.a(this.bJp, paramMessage);
     AppMethodBeat.o(4179);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.n
  * JD-Core Version:    0.7.0.1
  */

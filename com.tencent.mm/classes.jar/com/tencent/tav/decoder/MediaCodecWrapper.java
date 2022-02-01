@@ -19,10 +19,10 @@ class MediaCodecWrapper
   
   MediaCodecWrapper(VideoDecoder paramVideoDecoder)
   {
-    AppMethodBeat.i(218241);
+    AppMethodBeat.i(191094);
     this.TAG = ("MediaCodecWrapper@" + Integer.toHexString(hashCode()));
     this.videoDecoder = paramVideoDecoder;
-    AppMethodBeat.o(218241);
+    AppMethodBeat.o(191094);
   }
   
   private boolean isLollipop()
@@ -32,11 +32,11 @@ class MediaCodecWrapper
   
   private void resetMediaCodec(MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(218244);
+    AppMethodBeat.i(191105);
     if (isLollipop())
     {
       this.mediaCodec.reset();
-      AppMethodBeat.o(218244);
+      AppMethodBeat.o(191105);
       return;
     }
     try
@@ -45,7 +45,7 @@ class MediaCodecWrapper
       label32:
       this.mediaCodec.release();
       this.mediaCodec = MediaCodec.createDecoderByType(paramMediaFormat.getString("mime"));
-      AppMethodBeat.o(218244);
+      AppMethodBeat.o(191105);
       return;
     }
     catch (Exception localException)
@@ -56,11 +56,11 @@ class MediaCodecWrapper
   
   private void tryLogMediaCodecError(MediaCodec.CodecException paramCodecException)
   {
-    AppMethodBeat.i(218253);
+    AppMethodBeat.i(191134);
     if (Build.VERSION.SDK_INT >= 23) {
       Logger.e(this.TAG, "CodecException - isTransient = " + paramCodecException.isTransient() + " , isRecoverable = " + paramCodecException.isRecoverable() + " , errorCode = " + paramCodecException.getErrorCode());
     }
-    AppMethodBeat.o(218253);
+    AppMethodBeat.o(191134);
   }
   
   boolean decoderConfigure(MediaFormat paramMediaFormat, Surface paramSurface)
@@ -69,7 +69,7 @@ class MediaCodecWrapper
     {
       try
       {
-        AppMethodBeat.i(218242);
+        AppMethodBeat.i(191101);
         long l = System.currentTimeMillis();
         this.mediaCodec = MediaCodec.createDecoderByType(paramMediaFormat.getString("mime"));
         boolean bool;
@@ -77,7 +77,7 @@ class MediaCodecWrapper
         {
           this.mediaCodec.configure(paramMediaFormat, paramSurface, null, 0);
           Logger.d(this.TAG, "decoderConfigure cost:" + (System.currentTimeMillis() - l));
-          AppMethodBeat.o(218242);
+          AppMethodBeat.o(191101);
           bool = true;
           return bool;
         }
@@ -88,13 +88,13 @@ class MediaCodecWrapper
           Logger.d(this.TAG, "createdDecoder---time---".concat(String.valueOf(i)));
           if (i > 10)
           {
-            AppMethodBeat.o(218242);
+            AppMethodBeat.o(191101);
             bool = false;
             continue;
           }
           this.mediaCodec.configure(paramMediaFormat, paramSurface, null, 0);
           Logger.d(this.TAG, "decoderConfigure cost:" + (System.currentTimeMillis() - l));
-          AppMethodBeat.o(218242);
+          AppMethodBeat.o(191101);
           bool = true;
         }
         catch (Exception localException)
@@ -107,7 +107,7 @@ class MediaCodecWrapper
         if ((!((MediaCodec.CodecException)localException).isTransient()) && (!((MediaCodec.CodecException)localException).isRecoverable()))
         {
           this.mediaCodec.release();
-          AppMethodBeat.o(218242);
+          AppMethodBeat.o(191101);
           throw localException;
         }
       }
@@ -196,13 +196,13 @@ class MediaCodecWrapper
   {
     try
     {
-      AppMethodBeat.i(218246);
+      AppMethodBeat.i(191114);
       for (;;)
       {
         try
         {
           i = this.mediaCodec.dequeueOutputBuffer(paramBufferInfo, 1000L);
-          AppMethodBeat.o(218246);
+          AppMethodBeat.o(191114);
           return i;
         }
         catch (Exception localException)
@@ -221,9 +221,9 @@ class MediaCodecWrapper
         }
         waitTime(20L);
         int i = dequeueOutputBuffer(paramBufferInfo);
-        AppMethodBeat.o(218246);
+        AppMethodBeat.o(191114);
       }
-      AppMethodBeat.o(218246);
+      AppMethodBeat.o(191114);
     }
     finally {}
     throw localException;
@@ -231,9 +231,9 @@ class MediaCodecWrapper
   
   void flushDecoder()
   {
-    AppMethodBeat.i(218254);
+    AppMethodBeat.i(191136);
     this.mediaCodec.flush();
-    AppMethodBeat.o(218254);
+    AppMethodBeat.o(191136);
   }
   
   /* Error */
@@ -482,13 +482,13 @@ class MediaCodecWrapper
   
   void release()
   {
-    AppMethodBeat.i(218255);
+    AppMethodBeat.i(191137);
     if (this.mediaCodec != null) {
       new Thread()
       {
         public void run()
         {
-          AppMethodBeat.i(218240);
+          AppMethodBeat.i(191091);
           try
           {
             MediaCodecWrapper.this.videoDecoder.releaseOutputBuffer();
@@ -509,10 +509,10 @@ class MediaCodecWrapper
             finally
             {
               MediaCodecWrapper.access$102(MediaCodecWrapper.this, null);
-              AppMethodBeat.o(218240);
+              AppMethodBeat.o(191091);
             }
             MediaCodecWrapper.access$102(MediaCodecWrapper.this, null);
-            AppMethodBeat.o(218240);
+            AppMethodBeat.o(191091);
             return;
           }
           catch (Exception localException1)
@@ -525,7 +525,7 @@ class MediaCodecWrapper
         }
       }.start();
     }
-    AppMethodBeat.o(218255);
+    AppMethodBeat.o(191137);
   }
   
   /* Error */
@@ -618,10 +618,10 @@ class MediaCodecWrapper
     {
       try
       {
-        AppMethodBeat.i(218243);
+        AppMethodBeat.i(191104);
         if (this.videoDecoder.isReleased)
         {
-          AppMethodBeat.o(218243);
+          AppMethodBeat.o(191104);
           return;
         }
         Logger.d(this.TAG, "reset");
@@ -633,12 +633,12 @@ class MediaCodecWrapper
           resetMediaCodec(paramMediaFormat);
           decoderConfigure(paramMediaFormat, paramSurface);
           startDecoder(paramSurface, paramMediaFormat);
-          AppMethodBeat.o(218243);
+          AppMethodBeat.o(191104);
         }
         catch (Exception paramSurface)
         {
           Logger.e(this.TAG, "reset", paramSurface);
-          AppMethodBeat.o(218243);
+          AppMethodBeat.o(191104);
         }
         paramSurface = finally;
       }
@@ -651,13 +651,13 @@ class MediaCodecWrapper
     {
       try
       {
-        AppMethodBeat.i(218245);
+        AppMethodBeat.i(191110);
         try
         {
           long l = System.currentTimeMillis();
           this.mediaCodec.start();
           Logger.i(this.TAG, "startDecoder cost:" + (System.currentTimeMillis() - l));
-          AppMethodBeat.o(218245);
+          AppMethodBeat.o(191110);
           return;
         }
         catch (Exception localException)
@@ -675,7 +675,7 @@ class MediaCodecWrapper
         {
           waitTime(20L);
           startDecoder(paramSurface, paramMediaFormat);
-          AppMethodBeat.o(218245);
+          AppMethodBeat.o(191110);
           continue;
         }
         if (!((MediaCodec.CodecException)localException).isRecoverable()) {
@@ -684,10 +684,10 @@ class MediaCodecWrapper
       }
       finally {}
       reset(paramSurface, paramMediaFormat);
-      AppMethodBeat.o(218245);
+      AppMethodBeat.o(191110);
     }
     this.videoDecoder.release(false);
-    AppMethodBeat.o(218245);
+    AppMethodBeat.o(191110);
     throw localException;
   }
   
@@ -695,17 +695,17 @@ class MediaCodecWrapper
   {
     try
     {
-      AppMethodBeat.i(218252);
+      AppMethodBeat.i(191129);
       try
       {
         this.videoDecoder.wait(paramLong);
-        AppMethodBeat.o(218252);
+        AppMethodBeat.o(191129);
       }
       catch (InterruptedException localInterruptedException)
       {
         for (;;)
         {
-          AppMethodBeat.o(218252);
+          AppMethodBeat.o(191129);
         }
       }
       return;
@@ -715,7 +715,7 @@ class MediaCodecWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.decoder.MediaCodecWrapper
  * JD-Core Version:    0.7.0.1
  */

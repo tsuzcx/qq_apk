@@ -1,17 +1,28 @@
 package com.tencent.mm.plugin.appbrand.jsapi.pay;
 
+import android.content.Intent;
+import com.tencent.luggage.k.f.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.MMActivity.a;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class s
-  extends d<c>
+  extends c<v>
 {
-  public static final int CTRL_INDEX = 85;
-  public static final String NAME = "verifyPaymentPassword";
+  public static final int CTRL_INDEX = 285;
+  public static final String NAME = "requestVirtualPayment";
+  boolean pkE = false;
+  
+  public final boolean bPy()
+  {
+    return true;
+  }
 }
 
 

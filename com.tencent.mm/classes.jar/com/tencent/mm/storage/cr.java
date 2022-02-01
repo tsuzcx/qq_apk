@@ -1,53 +1,51 @@
 package com.tencent.mm.storage;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gy;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.f.c.hd;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.storagebase.h;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class cr
-  extends gy
+  extends MAutoStorage<hd>
 {
-  protected static IAutoDBItem.MAutoDBInfo info;
+  public static final String[] SQL_CREATE;
+  public h lvy;
   
   static
   {
-    AppMethodBeat.i(32886);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[3];
-    localMAutoDBInfo.columns = new String[4];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "openId";
-    localMAutoDBInfo.colsMap.put("openId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" openId TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "openId";
-    localMAutoDBInfo.columns[1] = "appId";
-    localMAutoDBInfo.colsMap.put("appId", "TEXT");
-    localStringBuilder.append(" appId TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "username";
-    localMAutoDBInfo.colsMap.put("username", "TEXT");
-    localStringBuilder.append(" username TEXT");
-    localMAutoDBInfo.columns[3] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
-    AppMethodBeat.o(32886);
+    AppMethodBeat.i(133310);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(cq.info, "TablesVersion") };
+    AppMethodBeat.o(133310);
   }
   
-  public cr() {}
-  
-  public cr(String paramString1, String paramString2, String paramString3)
+  public cr(h paramh)
   {
-    this.field_appId = paramString1;
-    this.field_username = paramString2;
-    this.field_openId = paramString3;
+    super(paramh, cq.info, "TablesVersion", hd.INDEX_CREATE);
+    this.lvy = paramh;
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  public final ConcurrentHashMap<Integer, String> hAP()
   {
-    return info;
+    AppMethodBeat.i(133309);
+    Cursor localCursor = this.lvy.rawQuery("select * from TablesVersion", new String[0]);
+    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(133309);
+      return localConcurrentHashMap;
+    }
+    try
+    {
+      if (localCursor.moveToNext()) {}
+      return localConcurrentHashMap1;
+    }
+    finally
+    {
+      localCursor.close();
+      AppMethodBeat.o(133309);
+    }
   }
 }
 

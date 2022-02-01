@@ -9,8 +9,8 @@ public class UserAuthItemParcelable
   implements Parcelable
 {
   public static final Parcelable.Creator<UserAuthItemParcelable> CREATOR;
-  public String CYp;
-  public int CYq;
+  public String JdV;
+  public int JdW;
   public String scope;
   public int state;
   
@@ -30,9 +30,9 @@ public class UserAuthItemParcelable
   {
     AppMethodBeat.i(73803);
     paramParcel.writeString(this.scope);
-    paramParcel.writeString(this.CYp);
+    paramParcel.writeString(this.JdV);
     paramParcel.writeInt(this.state);
-    paramParcel.writeInt(this.CYq);
+    paramParcel.writeInt(this.JdW);
     AppMethodBeat.o(73803);
   }
 }

@@ -1,67 +1,82 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cps
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int MvI;
-  public int MvJ;
+  public LinkedList<cpr> jmy;
+  
+  public cps()
+  {
+    AppMethodBeat.i(146309);
+    this.jmy = new LinkedList();
+    AppMethodBeat.o(146309);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(127497);
+    AppMethodBeat.i(146310);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.MvI);
-      paramVarArgs.aM(2, this.MvJ);
-      AppMethodBeat.o(127497);
+      ((g.a.a.c.a)paramVarArgs[0]).e(1, 8, this.jmy);
+      AppMethodBeat.o(146310);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bu(1, this.MvI);
-      int i = g.a.a.b.b.a.bu(2, this.MvJ);
-      AppMethodBeat.o(127497);
-      return paramInt + 0 + i;
+      paramInt = g.a.a.a.c(1, 8, this.jmy);
+      AppMethodBeat.o(146310);
+      return paramInt + 0;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.jmy.clear();
+      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(127497);
+      AppMethodBeat.o(146310);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject = (g.a.a.a.a)paramVarArgs[0];
       cps localcps = (cps)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(127497);
+        AppMethodBeat.o(146310);
         return -1;
-      case 1: 
-        localcps.MvI = locala.UbS.zi();
-        AppMethodBeat.o(127497);
-        return 0;
       }
-      localcps.MvJ = locala.UbS.zi();
-      AppMethodBeat.o(127497);
+      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+      int i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject = (byte[])paramVarArgs.get(paramInt);
+        cpr localcpr = new cpr();
+        if ((localObject != null) && (localObject.length > 0)) {
+          localcpr.parseFrom((byte[])localObject);
+        }
+        localcps.jmy.add(localcpr);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(146310);
       return 0;
     }
-    AppMethodBeat.o(127497);
+    AppMethodBeat.o(146310);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cps
  * JD-Core Version:    0.7.0.1
  */

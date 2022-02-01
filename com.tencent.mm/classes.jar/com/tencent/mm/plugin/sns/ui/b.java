@@ -19,10 +19,14 @@ import android.widget.ListView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.sns.ad.g.k;
-import com.tencent.mm.plugin.sns.ad.i.i;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.sns.ad.f.l;
+import com.tencent.mm.plugin.sns.ad.i.j;
+import com.tencent.mm.plugin.sns.data.e;
 import com.tencent.mm.plugin.sns.h.g;
+import com.tencent.mm.plugin.sns.i.a;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
 import com.tencent.mm.plugin.sns.model.aj;
 import com.tencent.mm.plugin.sns.storage.ADXml;
 import com.tencent.mm.plugin.sns.storage.SnsInfo;
@@ -34,94 +38,94 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.aa;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.ar;
 
 public final class b
 {
-  private int CHZ;
-  private com.tencent.mm.plugin.sns.ui.d.c DQs;
-  private FrameLayout DQt;
-  AbsoluteLayout DQu;
-  protected Animation DQv;
-  protected Animation DQw;
-  boolean DQx;
-  k DzW;
-  private com.tencent.mm.plugin.sns.h.b Eni;
-  private com.tencent.mm.plugin.sns.ad.timeline.feedback.c Enj;
-  TextView Enk;
-  ListView Enl;
-  View Enm;
+  boolean AJP;
+  private int INC;
+  l JHg;
+  private com.tencent.mm.plugin.sns.h.b KAr;
+  private com.tencent.mm.plugin.sns.ad.timeline.feedback.c KAs;
+  TextView KAt;
+  ListView KAu;
+  View KAv;
+  private FrameLayout KdA;
+  AbsoluteLayout KdB;
+  protected Animation KdC;
+  protected Animation KdD;
+  boolean KdE;
+  private com.tencent.mm.plugin.sns.ui.d.c Kdz;
   private Context mContext;
-  boolean onr;
   
   public b(Context paramContext, com.tencent.mm.plugin.sns.ui.d.c paramc, FrameLayout paramFrameLayout, com.tencent.mm.plugin.sns.h.b paramb)
   {
     AppMethodBeat.i(97689);
-    this.DQu = null;
-    this.DQx = false;
-    this.onr = false;
-    this.CHZ = -1;
+    this.KdB = null;
+    this.KdE = false;
+    this.AJP = false;
+    this.INC = -1;
     this.mContext = paramContext;
-    this.Eni = paramb;
-    this.DQs = paramc;
-    this.DQt = paramFrameLayout;
-    this.DQv = new ScaleAnimation(1.0F, 1.0F, 0.0F, 1.0F, 1, 1.0F, 1, 0.0F);
-    this.DQv = AnimationUtils.loadAnimation(paramContext, 2130772028);
-    this.DQw = new ScaleAnimation(1.0F, 1.0F, 1.0F, 0.0F, 1, 1.0F, 1, 0.0F);
-    this.DQw = AnimationUtils.loadAnimation(paramContext, 2130772029);
-    this.Enj = com.tencent.mm.plugin.sns.ad.timeline.feedback.c.a(paramContext, paramc);
+    this.KAr = paramb;
+    this.Kdz = paramc;
+    this.KdA = paramFrameLayout;
+    this.KdC = new ScaleAnimation(1.0F, 1.0F, 0.0F, 1.0F, 1, 1.0F, 1, 0.0F);
+    this.KdC = AnimationUtils.loadAnimation(paramContext, i.a.dropdown_down);
+    this.KdD = new ScaleAnimation(1.0F, 1.0F, 1.0F, 0.0F, 1, 1.0F, 1, 0.0F);
+    this.KdD = AnimationUtils.loadAnimation(paramContext, i.a.dropdown_up);
+    this.KAs = com.tencent.mm.plugin.sns.ad.timeline.feedback.c.a(paramContext, paramc);
     AppMethodBeat.o(97689);
   }
   
-  public final boolean fcl()
+  public final boolean fQe()
   {
     AppMethodBeat.i(97691);
-    if ((this.Eni != null) && (aj.faG().fco())) {
-      this.Eni.fcl();
+    if ((this.KAr != null) && (aj.fOA().fQh())) {
+      this.KAr.fQe();
     }
-    if (this.DQu != null)
+    if (this.KdB != null)
     {
-      this.DQt.removeView(this.DQu);
-      this.DQu = null;
+      this.KdA.removeView(this.KdB);
+      this.KdB = null;
       AppMethodBeat.o(97691);
       return true;
     }
-    this.DQx = false;
-    this.Enl = null;
-    this.Enm = null;
+    this.KdE = false;
+    this.KAu = null;
+    this.KAv = null;
     AppMethodBeat.o(97691);
     return false;
   }
   
-  public final boolean ffh()
+  public final boolean fTc()
   {
     AppMethodBeat.i(97692);
-    final int k = this.Enk.getHeight();
-    this.Enk.setVisibility(8);
+    final int k = this.KAt.getHeight();
+    this.KAt.setVisibility(8);
     int i = 0;
     Object localObject = null;
     final int j = 0;
-    while (i < this.Enl.getAdapter().getCount())
+    while (i < this.KAu.getAdapter().getCount())
     {
-      localObject = this.Enl.getAdapter().getView(i, (View)localObject, null);
-      ((View)localObject).measure(this.Enm.getWidth(), -2);
+      localObject = this.KAu.getAdapter().getView(i, (View)localObject, null);
+      ((View)localObject).measure(this.KAv.getWidth(), -2);
       j += ((View)localObject).getMeasuredHeight();
       i += 1;
     }
-    ((RelativeLayout.LayoutParams)this.Enl.getLayoutParams()).bottomMargin = (k - j);
-    this.Enl.setVisibility(0);
+    ((RelativeLayout.LayoutParams)this.KAu.getLayoutParams()).bottomMargin = (k - j);
+    this.KAu.setVisibility(0);
     localObject = new Animation()
     {
       protected final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
       {
         AppMethodBeat.i(97688);
-        paramAnonymousTransformation = (RelativeLayout.LayoutParams)b.this.Enl.getLayoutParams();
+        paramAnonymousTransformation = (RelativeLayout.LayoutParams)b.this.KAu.getLayoutParams();
         if (paramAnonymousFloat == 1.0F) {}
         for (int i = 0;; i = (int)((k - j) * (1.0F - paramAnonymousFloat)))
         {
           paramAnonymousTransformation.bottomMargin = i;
-          b.this.Enl.requestLayout();
+          b.this.KAu.requestLayout();
           AppMethodBeat.o(97688);
           return;
         }
@@ -133,18 +137,18 @@ public final class b
       }
     };
     ((Animation)localObject).setDuration(250L);
-    this.Enl.startAnimation((Animation)localObject);
+    this.KAu.startAnimation((Animation)localObject);
     AppMethodBeat.o(97692);
     return true;
   }
   
-  public final boolean fn(final View paramView)
+  public final boolean gu(final View paramView)
   {
     AppMethodBeat.i(97690);
     int i;
-    if ((aj.faG().fco()) && (this.Eni != null))
+    if ((aj.fOA().fQh()) && (this.KAr != null))
     {
-      i = this.Eni.fk(paramView);
+      i = this.KAr.gr(paramView);
       if ((i == 0) || (i == 1))
       {
         AppMethodBeat.o(97690);
@@ -154,7 +158,7 @@ public final class b
     }
     for (;;)
     {
-      if (this.DQx)
+      if (this.KdE)
       {
         AppMethodBeat.o(97690);
         return false;
@@ -162,15 +166,15 @@ public final class b
       try
       {
         localObject1 = paramView.getTag();
-        if (!(localObject1 instanceof com.tencent.mm.plugin.sns.data.c)) {
+        if (!(localObject1 instanceof e)) {
           continue;
         }
-        localObject1 = aj.faO().aQm(((com.tencent.mm.plugin.sns.data.c)localObject1).dHp);
-        i.a(com.tencent.mm.plugin.sns.ad.timeline.feedback.a.b.a((SnsInfo)localObject1, false, paramView, this.DzW));
-        if (this.Enj == null) {
+        localObject1 = aj.fOI().bbl(((e)localObject1).fAg);
+        j.a(com.tencent.mm.plugin.sns.ad.timeline.feedback.a.b.a((SnsInfo)localObject1, false, paramView, this.JHg));
+        if (this.KAs == null) {
           continue;
         }
-        boolean bool = this.Enj.a(paramView, (SnsInfo)localObject1);
+        boolean bool = this.KAs.a(paramView, (SnsInfo)localObject1);
         if (!bool) {
           continue;
         }
@@ -178,14 +182,14 @@ public final class b
         return true;
       }
       catch (Throwable localThrowable) {}
-      if (this.DQu != null)
+      if (this.KdB != null)
       {
-        if ((this.DQu.getTag() instanceof a))
+        if ((this.KdB.getTag() instanceof a))
         {
-          paramView = ((a)this.DQu.getTag()).Atk;
-          this.DQx = true;
-          paramView.startAnimation(this.DQw);
-          this.DQw.setAnimationListener(new Animation.AnimationListener()
+          paramView = ((a)this.KdB.getTag()).GiP;
+          this.KdE = true;
+          paramView.startAnimation(this.KdD);
+          this.KdD.setAnimationListener(new Animation.AnimationListener()
           {
             public final void onAnimationEnd(Animation paramAnonymousAnimation)
             {
@@ -194,9 +198,9 @@ public final class b
               {
                 paramView.clearAnimation();
                 paramView.setVisibility(8);
-                b.this.fcl();
+                b.this.fQe();
               }
-              b.this.DQx = false;
+              b.this.KdE = false;
               AppMethodBeat.o(97687);
             }
             
@@ -204,7 +208,7 @@ public final class b
             
             public final void onAnimationStart(Animation paramAnonymousAnimation)
             {
-              b.this.DQx = true;
+              b.this.KdE = true;
             }
           });
         }
@@ -212,27 +216,27 @@ public final class b
         {
           AppMethodBeat.o(97690);
           return false;
-          fcl();
+          fQe();
         }
       }
-      if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof com.tencent.mm.plugin.sns.data.c)))
+      if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof e)))
       {
         AppMethodBeat.o(97690);
         return false;
       }
-      com.tencent.mm.plugin.sns.data.c localc = (com.tencent.mm.plugin.sns.data.c)paramView.getTag();
-      Object localObject2 = localc.dHp;
-      this.DQu = new AbsoluteLayout(this.mContext);
-      this.DQu.setId(2131296543);
+      e locale = (e)paramView.getTag();
+      Object localObject2 = locale.fAg;
+      this.KdB = new AbsoluteLayout(this.mContext);
+      this.KdB.setId(i.f.address);
       new FrameLayout.LayoutParams(-1, -1);
-      this.DQt.addView(this.DQu);
+      this.KdA.addView(this.KdB);
       int j = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 150.0F);
       int k = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 17.0F);
       BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 40.0F);
-      final View localView = aa.jQ(this.mContext).inflate(2131492973, null);
-      TextView localTextView = (TextView)localView.findViewById(2131296517);
+      final View localView = ad.kS(this.mContext).inflate(i.g.ad_unlike_content, null);
+      TextView localTextView = (TextView)localView.findViewById(i.f.ad_unlike_tip);
       Object localObject1 = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
-      ADXml localADXml = localc.DDr.EQY;
+      ADXml localADXml = locale.JPW.LeX;
       if (localADXml != null)
       {
         if (!"zh_CN".equals(localObject1)) {
@@ -246,23 +250,23 @@ public final class b
         }
       }
       new Rect();
-      i = h.im(this.mContext);
-      localObject1 = localc.DDr.fjW();
+      i = h.jp(this.mContext);
+      localObject1 = locale.JPW.fYf();
       Log.d("MicroMsg.AdNotLikeHelper", "addCommentView getLocationInWindow " + localObject1[0] + "  " + localObject1[1] + " height: " + i);
-      this.CHZ = ao.getStatusBarHeight(this.mContext);
-      if (this.onr)
+      this.INC = ar.getStatusBarHeight(this.mContext);
+      if (this.AJP)
       {
         i = a.fromDPToPix(this.mContext, 2);
-        this.CHZ = 0;
+        this.INC = 0;
       }
       for (;;)
       {
-        localObject1 = new AbsoluteLayout.LayoutParams(-2, -2, localObject1[0] - j, localObject1[1] - this.CHZ - i + k);
+        localObject1 = new AbsoluteLayout.LayoutParams(-2, -2, localObject1[0] - j, localObject1[1] - this.INC - i + k);
         localObject2 = new a((String)localObject2, localView);
-        this.DQu.setTag(localObject2);
-        this.DQu.addView(localView, (ViewGroup.LayoutParams)localObject1);
+        this.KdB.setTag(localObject2);
+        this.KdB.addView(localView, (ViewGroup.LayoutParams)localObject1);
         localView.setVisibility(8);
-        this.DQx = true;
+        this.KdE = true;
         new MMHandler().post(new Runnable()
         {
           public final void run()
@@ -289,19 +293,19 @@ public final class b
   
   final class a
   {
-    View Atk = null;
-    String DQN;
+    View GiP = null;
+    String KdU;
     
     public a(String paramString, View paramView)
     {
-      this.DQN = paramString;
-      this.Atk = paramView;
+      this.KdU = paramString;
+      this.GiP = paramView;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.b
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.g.e;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class GameBestSellingTitle
@@ -25,7 +26,7 @@ public class GameBestSellingTitle
       return;
     }
     setVisibility(0);
-    ((TextView)findViewById(2131301874)).setText(paramString);
+    ((TextView)findViewById(g.e.ChS)).setText(paramString);
     AppMethodBeat.o(41898);
   }
 }

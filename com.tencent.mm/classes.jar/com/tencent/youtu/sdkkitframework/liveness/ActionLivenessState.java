@@ -68,14 +68,14 @@ public class ActionLivenessState
   
   static
   {
-    AppMethodBeat.i(187150);
+    AppMethodBeat.i(247058);
     TAG = ActionLivenessState.class.getSimpleName();
-    AppMethodBeat.o(187150);
+    AppMethodBeat.o(247058);
   }
   
   public ActionLivenessState()
   {
-    AppMethodBeat.i(187133);
+    AppMethodBeat.i(247013);
     this.legitimatePoseVersion = "3.5.4";
     this.continuousDetectCount = 0;
     this.poseState = SilentLivenessState.FacePreviewingAdvise.ADVISE_NAN;
@@ -96,12 +96,12 @@ public class ActionLivenessState
     this.controlConfig = "";
     this.actReflectUXMode = 0;
     this.needCheckMultiFaces = false;
-    AppMethodBeat.o(187133);
+    AppMethodBeat.o(247013);
   }
   
   private void AddOptPose(byte[] paramArrayOfByte, int paramInt1, int paramInt2, float[] paramArrayOfFloat, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    AppMethodBeat.i(187147);
+    AppMethodBeat.i(247035);
     float f = YtSDKKitCommon.ProcessHelper.preCheckCloseEyeScore(paramArrayOfFloat);
     BestFrame localBestFrame = new BestFrame();
     localBestFrame.eyeScore = f;
@@ -114,21 +114,21 @@ public class ActionLivenessState
     if (this.bestFrames.size() > 20) {
       this.bestFrames.remove(0);
     }
-    AppMethodBeat.o(187147);
+    AppMethodBeat.o(247035);
   }
   
   private boolean changeToNextAction(String[] paramArrayOfString, int paramInt)
   {
-    AppMethodBeat.i(187145);
+    AppMethodBeat.i(247031);
     if (paramArrayOfString.length == 0)
     {
-      AppMethodBeat.o(187145);
+      AppMethodBeat.o(247031);
       return false;
     }
     this.actionCurrentIndex = paramInt;
     if (this.actionCurrentIndex >= paramArrayOfString.length)
     {
-      AppMethodBeat.o(187145);
+      AppMethodBeat.o(247031);
       return false;
     }
     paramInt = Integer.parseInt(paramArrayOfString[this.actionCurrentIndex]);
@@ -141,7 +141,7 @@ public class ActionLivenessState
       YtLogger.i(TAG, "action check rounds: " + this.actionCurrentIndex + "start check pose: " + this.actionLiveType);
       YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE)).handleStateAction("reset_timeout", null);
       this.poseReadyCount = 0;
-      AppMethodBeat.o(187145);
+      AppMethodBeat.o(247031);
       return true;
       this.actionLiveType = 1;
       continue;
@@ -157,7 +157,7 @@ public class ActionLivenessState
   
   private void clearData()
   {
-    AppMethodBeat.i(187138);
+    AppMethodBeat.i(247020);
     this.bestFrames = new ArrayList();
     this.actionContinuousFailedCount = 0;
     this.isActionFinished = false;
@@ -168,73 +168,73 @@ public class ActionLivenessState
     this.nextStateName = YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE;
     this.videoEncoder.abortEncoding();
     startPose();
-    AppMethodBeat.o(187138);
+    AppMethodBeat.o(247020);
   }
   
   private String getTipsByPoseType(int paramInt)
   {
-    AppMethodBeat.i(187144);
+    AppMethodBeat.i(247028);
     if (paramInt == 1)
     {
-      AppMethodBeat.o(187144);
+      AppMethodBeat.o(247028);
       return "fl_act_blink";
     }
     if (paramInt == 2)
     {
-      AppMethodBeat.o(187144);
+      AppMethodBeat.o(247028);
       return "fl_act_open_mouth";
     }
     if (paramInt == 4)
     {
-      AppMethodBeat.o(187144);
+      AppMethodBeat.o(247028);
       return "fl_act_shake_head";
     }
     if (paramInt == 3)
     {
-      AppMethodBeat.o(187144);
+      AppMethodBeat.o(247028);
       return "fl_act_nod_head";
     }
     if (paramInt == 5)
     {
-      AppMethodBeat.o(187144);
+      AppMethodBeat.o(247028);
       return "fl_act_silence";
     }
     String str = "fl_act_error".concat(String.valueOf(paramInt));
-    AppMethodBeat.o(187144);
+    AppMethodBeat.o(247028);
     return str;
   }
   
   private void sendFSMEvent(HashMap<String, Object> paramHashMap)
   {
-    AppMethodBeat.i(187146);
+    AppMethodBeat.i(247033);
     YtFSM.getInstance().sendFSMEvent(paramHashMap);
-    AppMethodBeat.o(187146);
+    AppMethodBeat.o(247033);
   }
   
   private void startPose()
   {
-    AppMethodBeat.i(187139);
+    AppMethodBeat.i(247021);
     this.actionFrameHandler = new YTPoseDetectInterface.PoseDetectOnFrame()
     {
       public void onCanReflect()
       {
-        AppMethodBeat.i(187126);
+        AppMethodBeat.i(246975);
         ActionLivenessState.access$902(ActionLivenessState.this, YTPoseDetectInterface.getActReflectData());
-        AppMethodBeat.o(187126);
+        AppMethodBeat.o(246975);
       }
       
       public void onFailed(int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
       {
-        AppMethodBeat.i(187125);
+        AppMethodBeat.i(246972);
         YtSDKStats.getInstance().reportInfo("pose state ".concat(String.valueOf(paramAnonymousInt)));
         YtLogger.d(ActionLivenessState.TAG, "YTPoseDetectInterface.poseDetect.onFailed: " + paramAnonymousInt + " s: " + paramAnonymousString1);
         ActionLivenessState.access$808(ActionLivenessState.this);
-        AppMethodBeat.o(187125);
+        AppMethodBeat.o(246972);
       }
       
       public void onRecordingDone(byte[][] paramAnonymousArrayOfByte, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(187127);
+        AppMethodBeat.i(246976);
         YtLogger.d(ActionLivenessState.TAG, "收到视频上传通知，帧数：" + paramAnonymousArrayOfByte.length + " 每帧width：" + paramAnonymousInt1 + " 每帧height: " + paramAnonymousInt2);
         if (!ActionLivenessState.this.videoEncoder.isEncodingStarted())
         {
@@ -256,7 +256,7 @@ public class ActionLivenessState
         if (!ActionLivenessState.this.isActionFinished)
         {
           YTPoseDetectInterface.reset();
-          AppMethodBeat.o(187127);
+          AppMethodBeat.o(246976);
           return;
         }
         ActionLivenessState.this.videoEncoder.stopEncoding();
@@ -285,15 +285,15 @@ public class ActionLivenessState
               {
                 public void onGetBestImage(byte[] paramAnonymous2ArrayOfByte, int paramAnonymous2Int1, int paramAnonymous2Int2)
                 {
-                  AppMethodBeat.i(187122);
+                  AppMethodBeat.i(246963);
                   YtLogger.d(ActionLivenessState.TAG, "获取到最优图. width:" + paramAnonymous2Int1 + " height: " + paramAnonymous2Int2 + " bytes size: " + paramAnonymous2ArrayOfByte.length);
                   paramAnonymous2ArrayOfByte = new YuvImage(paramAnonymous2ArrayOfByte, 17, paramAnonymous2Int1, paramAnonymous2Int2, null);
                   ActionLivenessState.this.stateData.put("best_frame", paramAnonymous2ArrayOfByte);
                   ActionLivenessState.access$1802(ActionLivenessState.this, YtSDKKitCommon.StateNameHelper.StateClassName.NET_LIVENESS_REQ_RESULT_STATE);
-                  AppMethodBeat.o(187122);
+                  AppMethodBeat.o(246963);
                 }
               }, true);
-              AppMethodBeat.o(187127);
+              AppMethodBeat.o(246976);
               return;
             }
             catch (Exception localException2)
@@ -310,7 +310,7 @@ public class ActionLivenessState
               {
                 public void onGetBestImage(byte[] paramAnonymous2ArrayOfByte, int paramAnonymous2Int1, int paramAnonymous2Int2)
                 {
-                  AppMethodBeat.i(187123);
+                  AppMethodBeat.i(246967);
                   YtLogger.d(ActionLivenessState.TAG, "获取到最优图. width:" + paramAnonymous2Int1 + " height: " + paramAnonymous2Int2 + " bytes size: " + paramAnonymous2ArrayOfByte.length);
                   paramAnonymous2ArrayOfByte = new YuvImage(paramAnonymous2ArrayOfByte, 17, paramAnonymous2Int1, paramAnonymous2Int2, null);
                   ActionLivenessState.this.stateData.put("best_frame", paramAnonymous2ArrayOfByte);
@@ -326,14 +326,14 @@ public class ActionLivenessState
                   ActionLivenessState.this.stateData.put("frame_list", paramAnonymous2ArrayOfByte);
                   ActionLivenessState.this.stateData.put("act_reflect_data", ActionLivenessState.this.actReflectData);
                   ActionLivenessState.access$1802(ActionLivenessState.this, YtSDKKitCommon.StateNameHelper.StateClassName.REFLECT_STATE);
-                  AppMethodBeat.o(187123);
+                  AppMethodBeat.o(246967);
                 }
               }, true);
-              AppMethodBeat.o(187127);
+              AppMethodBeat.o(246976);
               return;
             }
             YtLogger.e(ActionLivenessState.TAG, "unimplemented work mode " + YtFSM.getInstance().getWorkMode());
-            AppMethodBeat.o(187127);
+            AppMethodBeat.o(246976);
             return;
           }
         }
@@ -341,7 +341,7 @@ public class ActionLivenessState
       
       public void onSuccess(int paramAnonymousInt)
       {
-        AppMethodBeat.i(187124);
+        AppMethodBeat.i(246970);
         ActionLivenessState.access$102(ActionLivenessState.this, "");
         if (paramAnonymousInt == 1)
         {
@@ -353,7 +353,7 @@ public class ActionLivenessState
         for (;;)
         {
           YtSDKStats.getInstance().reportInfo("pose state ".concat(String.valueOf(paramAnonymousInt)));
-          AppMethodBeat.o(187124);
+          AppMethodBeat.o(246970);
           return;
           YtLogger.i(ActionLivenessState.TAG, "action seq all done");
           ActionLivenessState.access$702(ActionLivenessState.this, true);
@@ -379,26 +379,26 @@ public class ActionLivenessState
     {
       public void onFailed(final int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
       {
-        AppMethodBeat.i(187130);
+        AppMethodBeat.i(246985);
         YtSDKStats.getInstance().reportError(paramAnonymousInt, "failed to init pose sdk");
         YtFSM.getInstance().sendFSMEvent(new HashMap() {});
         ActionLivenessState.access$1802(ActionLivenessState.this, YtSDKKitCommon.StateNameHelper.StateClassName.IDLE_STATE);
-        AppMethodBeat.o(187130);
+        AppMethodBeat.o(246985);
       }
       
       public void onSuccess()
       {
-        AppMethodBeat.i(187129);
+        AppMethodBeat.i(246983);
         YtLogger.d(ActionLivenessState.TAG, "start success");
-        AppMethodBeat.o(187129);
+        AppMethodBeat.o(246983);
       }
     });
-    AppMethodBeat.o(187139);
+    AppMethodBeat.o(247021);
   }
   
   public void enter()
   {
-    AppMethodBeat.i(187137);
+    AppMethodBeat.i(247019);
     super.enter();
     for (;;)
     {
@@ -429,7 +429,7 @@ public class ActionLivenessState
             this.actionDataParsed = new String[] { "5" };
           }
           this.stateData.put("action_seq", this.actionDataParsed);
-          AppMethodBeat.o(187137);
+          AppMethodBeat.o(247019);
           return;
         }
       }
@@ -437,7 +437,7 @@ public class ActionLivenessState
       {
         YtLogger.e(TAG, "action enter failed " + localException.getLocalizedMessage());
         CommonUtils.reportException("action enter failed ", localException);
-        AppMethodBeat.o(187137);
+        AppMethodBeat.o(247019);
         return;
       }
       this.actionLiveType = 1;
@@ -454,7 +454,7 @@ public class ActionLivenessState
   
   public void enterFirst()
   {
-    AppMethodBeat.i(187136);
+    AppMethodBeat.i(247016);
     YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE)).handleStateAction("reset_timeout", null);
     Object localObject1 = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.NET_FETCH_STATE));
     if (localObject1 != null) {}
@@ -489,7 +489,7 @@ public class ActionLivenessState
       YTFaceTrackParam localYTFaceTrackParam = this.mOriginParam;
       localYTFaceTrackParam.detect_interval = 30;
       YTFaceTrack.getInstance().SetFaceTrackParam(localYTFaceTrackParam);
-      AppMethodBeat.o(187136);
+      AppMethodBeat.o(247016);
     }
     if (!this.controlConfig.isEmpty())
     {
@@ -512,12 +512,12 @@ public class ActionLivenessState
   
   public void handleEvent(YtSDKKitFramework.YtFrameworkFireEventType paramYtFrameworkFireEventType, Object paramObject)
   {
-    AppMethodBeat.i(187141);
+    AppMethodBeat.i(247024);
     super.handleEvent(paramYtFrameworkFireEventType, paramObject);
     if ((this.needManualTrigger) && (paramYtFrameworkFireEventType == YtSDKKitFramework.YtFrameworkFireEventType.YT_EVENT_TRIGGER_CANCEL_LIVENESS)) {
       clearData();
     }
-    AppMethodBeat.o(187141);
+    AppMethodBeat.o(247024);
   }
   
   /* Error */
@@ -940,31 +940,31 @@ public class ActionLivenessState
   
   public void moveToNextState()
   {
-    AppMethodBeat.i(187143);
+    AppMethodBeat.i(247027);
     super.moveToNextState();
     if (this.nextStateName == YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE)
     {
       YtFSM.getInstance().transitNextRound(YtSDKKitCommon.StateNameHelper.classNameOfState(this.nextStateName));
-      AppMethodBeat.o(187143);
+      AppMethodBeat.o(247027);
       return;
     }
     YTFaceTrack.getInstance().SetFaceTrackParam(this.mOriginParam);
     YTPoseDetectInterface.stop();
     YtFSM.getInstance().transitNow(YtSDKKitCommon.StateNameHelper.classNameOfState(this.nextStateName));
-    AppMethodBeat.o(187143);
+    AppMethodBeat.o(247027);
   }
   
   public void reset()
   {
-    AppMethodBeat.i(187140);
+    AppMethodBeat.i(247022);
     clearData();
     super.reset();
-    AppMethodBeat.o(187140);
+    AppMethodBeat.o(247022);
   }
   
   public void unload()
   {
-    AppMethodBeat.i(187135);
+    AppMethodBeat.i(247015);
     super.unload();
     if (YTPoseDetectInterface.isDetecting()) {
       YTPoseDetectInterface.stop();
@@ -975,12 +975,12 @@ public class ActionLivenessState
       this.videoEncoder.abortEncoding();
       this.videoEncoder = null;
     }
-    AppMethodBeat.o(187135);
+    AppMethodBeat.o(247015);
   }
   
   public void update(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    AppMethodBeat.i(187142);
+    AppMethodBeat.i(247026);
     super.update(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramLong);
     if ((this.faceStatus != null) && (this.faceStatus.length > 0) && (this.continuousDetectCount > 0))
     {
@@ -992,7 +992,7 @@ public class ActionLivenessState
       if (this.actionFrameHandler == null)
       {
         YtLogger.e(TAG, "FrameHandle is null, check init first");
-        AppMethodBeat.o(187142);
+        AppMethodBeat.o(247026);
         return;
       }
       if ((this.poseReadyCount > this.stableCountNum + 10) && (!this.isActionFinished)) {
@@ -1003,7 +1003,7 @@ public class ActionLivenessState
       AddOptPose(paramArrayOfByte, paramInt1, paramInt2, this.faceStatus[0].xys, this.faceStatus[0].pitch, this.faceStatus[0].yaw, this.faceStatus[0].roll);
     }
     moveToNextState();
-    AppMethodBeat.o(187142);
+    AppMethodBeat.o(247026);
   }
   
   public class BestFrame

@@ -17,14 +17,9 @@ class URISpanHandlerSet$FlowStatUriSpanHandler
     super(paramURISpanHandlerSet);
   }
   
-  final int[] Xp()
-  {
-    return new int[] { 16 };
-  }
-  
   final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
   {
-    AppMethodBeat.i(231429);
+    AppMethodBeat.i(291422);
     if (paramu.type == 16)
     {
       if (parami != null) {
@@ -32,15 +27,15 @@ class URISpanHandlerSet$FlowStatUriSpanHandler
       }
       paramView = LauncherUI.getInstance();
       if (paramView != null) {
-        paramView.ODR.getMainTabUI().blU("tab_settings");
+        paramView.VXk.getMainTabUI().byt("tab_settings");
       }
       if (parami != null) {
         parami.b(paramu);
       }
-      AppMethodBeat.o(231429);
+      AppMethodBeat.o(291422);
       return true;
     }
-    AppMethodBeat.o(231429);
+    AppMethodBeat.o(291422);
     return false;
   }
   
@@ -51,7 +46,7 @@ class URISpanHandlerSet$FlowStatUriSpanHandler
     {
       paramString = LauncherUI.getInstance();
       if (paramString != null) {
-        paramString.ODR.getMainTabUI().blU("tab_settings");
+        paramString.VXk.getMainTabUI().byt("tab_settings");
       }
       AppMethodBeat.o(19707);
       return true;
@@ -60,7 +55,12 @@ class URISpanHandlerSet$FlowStatUriSpanHandler
     return false;
   }
   
-  final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
+  final int[] abR()
+  {
+    return new int[] { 16 };
+  }
+  
+  final com.tencent.mm.pluginsdk.ui.applet.u hi(String paramString)
   {
     AppMethodBeat.i(19705);
     if (paramString.trim().startsWith("weixin://flowstat"))

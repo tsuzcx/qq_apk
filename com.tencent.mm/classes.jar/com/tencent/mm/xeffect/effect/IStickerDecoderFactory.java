@@ -1,9 +1,9 @@
 package com.tencent.mm.xeffect.effect;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import kotlin.l;
 
-@l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/mm/xeffect/effect/IStickerDecoderFactory;", "", "getDecoder", "Lcom/tencent/mm/xeffect/effect/IStickerDecoder;", "bytes", "", "path", "", "renderlib_release"})
+@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/effect/IStickerDecoderFactory;", "", "getDecoder", "Lcom/tencent/mm/xeffect/effect/IStickerDecoder;", "bytes", "", "path", "", "renderlib_release"})
 @Keep
 public abstract interface IStickerDecoderFactory
 {
@@ -13,7 +13,7 @@ public abstract interface IStickerDecoderFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.xeffect.effect.IStickerDecoderFactory
  * JD-Core Version:    0.7.0.1
  */

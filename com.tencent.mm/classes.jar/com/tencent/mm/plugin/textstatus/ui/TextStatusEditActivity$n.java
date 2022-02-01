@@ -1,32 +1,48 @@
 package com.tencent.mm.plugin.textstatus.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.textstatus.emoji.TextStatusEmojiView;
+import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-final class TextStatusEditActivity$n
-  implements View.OnClickListener
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/textstatus/ui/TextStatusEditActivity$getUpAnimator$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-textstatus_release"})
+public final class TextStatusEditActivity$n
+  implements Animator.AnimatorListener
 {
-  TextStatusEditActivity$n(TextStatusEditActivity paramTextStatusEditActivity) {}
-  
-  public final void onClick(View paramView)
+  public final void onAnimationCancel(Animator paramAnimator)
   {
-    AppMethodBeat.i(216503);
-    b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/textstatus/ui/TextStatusEditActivity$onCreate$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    this.GeQ.hideVKB();
-    a.a(this, "com/tencent/mm/plugin/textstatus/ui/TextStatusEditActivity$onCreate$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(216503);
+    AppMethodBeat.i(232632);
+    p.k(paramAnimator, "animation");
+    AppMethodBeat.o(232632);
+  }
+  
+  public final void onAnimationEnd(Animator paramAnimator)
+  {
+    AppMethodBeat.i(232630);
+    p.k(paramAnimator, "animation");
+    AppMethodBeat.o(232630);
+  }
+  
+  public final void onAnimationRepeat(Animator paramAnimator)
+  {
+    AppMethodBeat.i(232635);
+    p.k(paramAnimator, "animation");
+    AppMethodBeat.o(232635);
+  }
+  
+  public final void onAnimationStart(Animator paramAnimator)
+  {
+    AppMethodBeat.i(232627);
+    p.k(paramAnimator, "animation");
+    TextStatusEditActivity.g(this.MMz).setVisibility(0);
+    AppMethodBeat.o(232627);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.ui.TextStatusEditActivity.n
  * JD-Core Version:    0.7.0.1
  */

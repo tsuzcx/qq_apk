@@ -14,10 +14,10 @@ final class VideoTextureView$2
     AppMethodBeat.i(134065);
     try
     {
-      if ((this.mEu != null) && (this.mEu.isValid()))
+      if ((this.pDF != null) && (this.pDF.isValid()))
       {
-        Log.i("MicroMsg.VideoTextureView", "%d release surface [%d]", new Object[] { Integer.valueOf(this.KwQ.hashCode()), Integer.valueOf(this.mEu.hashCode()) });
-        this.mEu.release();
+        Log.i("MicroMsg.VideoTextureView", "%d release surface [%d]", new Object[] { Integer.valueOf(this.Ryh.hashCode()), Integer.valueOf(this.pDF.hashCode()) });
+        this.pDF.release();
       }
       AppMethodBeat.o(134065);
       return;

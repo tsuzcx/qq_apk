@@ -1,11 +1,6 @@
 package com.tencent.mm.plugin.ball.d;
 
-public abstract interface e
-{
-  public abstract int aZ(float paramFloat);
-  
-  public abstract void setFloatBallAlpha(float paramFloat);
-}
+public abstract interface e {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar

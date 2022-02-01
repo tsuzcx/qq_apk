@@ -1,105 +1,54 @@
 package com.tencent.mm.plugin.s;
 
-import android.app.Activity;
-import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.PersistableBundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.e.p;
+import com.tencent.mm.kernel.api.bucket.d;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.storage.bz;
+import com.tencent.mm.storagebase.h.b;
+import java.util.HashMap;
 
 public final class a
+  implements com.tencent.mm.kernel.api.bucket.a, d, com.tencent.mm.plugin.s.a.a
 {
-  private static final Application.ActivityLifecycleCallbacks ARR;
+  private bz ETR;
   
-  static
+  public final bz bbT()
   {
-    AppMethodBeat.i(116071);
-    ARR = new com.tencent.mm.plugin.appbrand.ac.a()
+    AppMethodBeat.i(151497);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHE().aGH();
+    bz localbz = this.ETR;
+    AppMethodBeat.o(151497);
+    return localbz;
+  }
+  
+  public final HashMap<Integer, h.b> collectDatabaseFactory()
+  {
+    AppMethodBeat.i(151499);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(Integer.valueOf("MediaCheckDumplicationStorage".hashCode()), new h.b()
     {
-      public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
+      public final String[] getSQLs()
       {
-        AppMethodBeat.i(116064);
-        try
-        {
-          if (Util.nullAsNil(paramAnonymousActivity.getLocalClassName()).contains("WebView"))
-          {
-            paramAnonymousBundle = paramAnonymousActivity.getLocalClassName();
-            if (paramAnonymousActivity.getIntent() != null) {
-              break label59;
-            }
-          }
-          label59:
-          for (paramAnonymousActivity = null;; paramAnonymousActivity = paramAnonymousActivity.getIntent().getStringExtra(e.p.OzI))
-          {
-            Log.i("MicroMsg.WxPayAdUxInfoTracer", "onActivityCreated-%s, adUxInfo=%s", new Object[] { paramAnonymousBundle, paramAnonymousActivity });
-            AppMethodBeat.o(116064);
-            return;
-          }
-          return;
-        }
-        catch (Exception paramAnonymousActivity)
-        {
-          AppMethodBeat.o(116064);
-        }
+        return bz.SQL_CREATE;
       }
-    };
-    AppMethodBeat.o(116071);
+    });
+    AppMethodBeat.o(151499);
+    return localHashMap;
   }
   
-  public static void a(String paramString, PersistableBundle paramPersistableBundle)
-  {
-    AppMethodBeat.i(116067);
-    a("onCreate", paramString, paramPersistableBundle);
-    AppMethodBeat.o(116067);
-  }
+  public final void onDataBaseClosed(com.tencent.mm.storagebase.h paramh1, com.tencent.mm.storagebase.h paramh2) {}
   
-  private static void a(String paramString1, String paramString2, PersistableBundle paramPersistableBundle)
+  public final void onDataBaseOpened(com.tencent.mm.storagebase.h paramh1, com.tencent.mm.storagebase.h paramh2)
   {
-    AppMethodBeat.i(116069);
-    if (paramPersistableBundle == null) {}
-    for (paramPersistableBundle = null;; paramPersistableBundle = paramPersistableBundle.getString("adUxInfo"))
-    {
-      Log.i("MicroMsg.WxPayAdUxInfoTracer", "AppBrandRuntime(%s)-%s, adUxInfo=%s", new Object[] { paramString2, paramString1, paramPersistableBundle });
-      AppMethodBeat.o(116069);
-      return;
-    }
-  }
-  
-  public static void b(String paramString, PersistableBundle paramPersistableBundle)
-  {
-    AppMethodBeat.i(116068);
-    a("onNewConfig", paramString, paramPersistableBundle);
-    AppMethodBeat.o(116068);
-  }
-  
-  public static void m(Application paramApplication)
-  {
-    AppMethodBeat.i(116065);
-    paramApplication.registerActivityLifecycleCallbacks(ARR);
-    AppMethodBeat.o(116065);
-  }
-  
-  public static void p(String paramString, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(116066);
-    Log.i("MicroMsg.WxPayAdUxInfoTracer", "trace: ".concat(String.valueOf(paramString)), paramVarArgs);
-    AppMethodBeat.o(116066);
-  }
-  
-  public static void x(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    AppMethodBeat.i(116070);
-    Log.i("MicroMsg.WxPayAdUxInfoTracer", "trace: scene[%s] api[%s] udUxInfo[%s] source[%s]", new Object[] { paramString1, paramString2, paramString3, paramString4 });
-    AppMethodBeat.o(116070);
+    AppMethodBeat.i(151498);
+    this.ETR = new bz(paramh1);
+    AppMethodBeat.o(151498);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.s.a
  * JD-Core Version:    0.7.0.1
  */

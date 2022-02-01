@@ -7,30 +7,33 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import java.util.List;
 
 public final class t
   extends BaseAdapter
 {
-  private List<String> Kgd;
-  private List<String> jWf;
+  private List<String> RgR;
   private Context mContext;
+  private List<String> mNr;
   
   public t(Context paramContext, List<String> paramList1, List<String> paramList2)
   {
     this.mContext = paramContext;
-    this.jWf = paramList2;
-    this.Kgd = paramList1;
+    this.mNr = paramList2;
+    this.RgR = paramList1;
   }
   
-  private static a gn(View paramView)
+  private static a hx(View paramView)
   {
     AppMethodBeat.i(31426);
     a locala = new a((byte)0);
-    locala.gvv = ((ImageView)paramView.findViewById(2131298303));
-    locala.kgE = ((TextView)paramView.findViewById(2131298306));
+    locala.iZG = ((ImageView)paramView.findViewById(R.h.chatroom_member_avatar));
+    locala.mYd = ((TextView)paramView.findViewById(R.h.chatroom_member_name));
     paramView.setTag(locala);
     AppMethodBeat.o(31426);
     return locala;
@@ -39,7 +42,7 @@ public final class t
   public final int getCount()
   {
     AppMethodBeat.i(31423);
-    int i = this.jWf.size();
+    int i = this.mNr.size();
     AppMethodBeat.o(31423);
     return i;
   }
@@ -47,7 +50,7 @@ public final class t
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(31424);
-    Object localObject = this.jWf.get(paramInt);
+    Object localObject = this.mNr.get(paramInt);
     AppMethodBeat.o(31424);
     return localObject;
   }
@@ -62,24 +65,24 @@ public final class t
     AppMethodBeat.i(31425);
     if (paramView == null)
     {
-      paramView = View.inflate(this.mContext, 2131493464, null);
-      paramViewGroup = gn(paramView);
+      paramView = View.inflate(this.mContext, R.i.chatroom_avatar_item, null);
+      paramViewGroup = hx(paramView);
     }
-    label260:
+    label262:
     for (;;)
     {
-      int i = this.jWf.size();
-      if ((paramInt >= 0) && (paramInt < this.jWf.size()) && (paramInt < this.Kgd.size()))
+      int i = this.mNr.size();
+      if ((paramInt >= 0) && (paramInt < this.mNr.size()) && (paramInt < this.RgR.size()))
       {
-        paramViewGroup.gvv.setVisibility(0);
-        paramViewGroup.kgE.setVisibility(0);
-        a.b.c(paramViewGroup.gvv, (String)this.Kgd.get(paramInt));
-        paramViewGroup.kgE.setText((CharSequence)this.jWf.get(paramInt));
-        paramViewGroup.kgE.setText(((com.tencent.mm.plugin.emoji.b.a)g.af(com.tencent.mm.plugin.emoji.b.a.class)).a(this.mContext, (CharSequence)this.jWf.get(paramInt), paramViewGroup.kgE.getTextSize()));
-        if ((this.jWf.size() <= 12) || (paramInt < this.jWf.size() - i % 4)) {
-          break label246;
+        paramViewGroup.iZG.setVisibility(0);
+        paramViewGroup.mYd.setVisibility(0);
+        a.b.c(paramViewGroup.iZG, (String)this.RgR.get(paramInt));
+        paramViewGroup.mYd.setText((CharSequence)this.mNr.get(paramInt));
+        paramViewGroup.mYd.setText(((com.tencent.mm.plugin.emoji.b.a)h.ae(com.tencent.mm.plugin.emoji.b.a.class)).a(this.mContext, (CharSequence)this.mNr.get(paramInt), paramViewGroup.mYd.getTextSize()));
+        if ((this.mNr.size() <= 12) || (paramInt < this.mNr.size() - i % 4)) {
+          break label248;
         }
-        paramViewGroup.kgE.setPadding(0, 0, 0, com.tencent.mm.cb.a.aG(this.mContext, 2131165262));
+        paramViewGroup.mYd.setPadding(0, 0, 0, com.tencent.mm.ci.a.aY(this.mContext, R.f.DialogAvatarLinePadding));
       }
       for (;;)
       {
@@ -87,25 +90,25 @@ public final class t
         return paramView;
         paramViewGroup = (a)paramView.getTag();
         if (paramViewGroup != null) {
-          break label260;
+          break label262;
         }
-        paramViewGroup = gn(paramView);
+        paramViewGroup = hx(paramView);
         break;
-        label246:
-        paramViewGroup.kgE.setPadding(0, 0, 0, 0);
+        label248:
+        paramViewGroup.mYd.setPadding(0, 0, 0, 0);
       }
     }
   }
   
   static final class a
   {
-    public ImageView gvv;
-    public TextView kgE;
+    public ImageView iZG;
+    public TextView mYd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.t
  * JD-Core Version:    0.7.0.1
  */

@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
+import com.tencent.mm.plugin.scanner.l.c;
+import com.tencent.mm.plugin.scanner.l.f;
+import com.tencent.mm.plugin.scanner.l.g;
 import com.tencent.mm.plugin.scanner.util.q;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -18,8 +21,8 @@ public final class b
   extends Preference
   implements u.a
 {
-  private ImageView CJe;
-  String CJf;
+  private ImageView IOE;
+  String IOF;
   private Context mContext;
   private View mView;
   f screen;
@@ -29,14 +32,14 @@ public final class b
     super(paramContext);
     AppMethodBeat.i(51677);
     this.mView = null;
-    this.CJe = null;
-    setLayoutResource(2131495951);
+    this.IOE = null;
+    setLayoutResource(l.g.IEi);
     u.a(this);
     this.mContext = paramContext;
     AppMethodBeat.o(51677);
   }
   
-  public final View getView(View paramView, ViewGroup paramViewGroup)
+  public final View c(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(51678);
     if (this.mView == null) {
@@ -51,10 +54,10 @@ public final class b
   public final void k(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(51680);
-    if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.CJf)) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
+    if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.IOF)) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      this.CJe.setImageBitmap(paramBitmap);
-      this.CJe.setBackgroundColor(0);
+      this.IOE.setImageBitmap(paramBitmap);
+      this.IOE.setBackgroundColor(0);
       if (this.screen != null) {
         this.screen.notifyDataSetChanged();
       }
@@ -66,26 +69,26 @@ public final class b
   {
     AppMethodBeat.i(51679);
     super.onBindView(paramView);
-    this.CJe = ((ImageView)paramView.findViewById(2131297329));
-    if (!Util.isNullOrNil(this.CJf))
+    this.IOE = ((ImageView)paramView.findViewById(l.f.ICw));
+    if (!Util.isNullOrNil(this.IOF))
     {
-      paramView = u.a(new q(this.CJf));
+      paramView = u.a(new q(this.IOF));
       if ((paramView != null) && (!paramView.isRecycled()))
       {
-        this.CJe.setImageBitmap(paramView);
-        this.CJe.setBackgroundColor(0);
+        this.IOE.setImageBitmap(paramView);
+        this.IOE.setBackgroundColor(0);
         AppMethodBeat.o(51679);
         return;
       }
-      this.CJe.setBackgroundColor(this.mContext.getResources().getColor(2131100583));
-      this.CJe.setImageBitmap(null);
+      this.IOE.setBackgroundColor(this.mContext.getResources().getColor(l.c.IBU));
+      this.IOE.setImageBitmap(null);
     }
     AppMethodBeat.o(51679);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.b
  * JD-Core Version:    0.7.0.1
  */

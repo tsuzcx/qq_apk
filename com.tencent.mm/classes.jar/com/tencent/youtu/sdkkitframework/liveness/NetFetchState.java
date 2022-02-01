@@ -40,28 +40,28 @@ public class NetFetchState
   
   static
   {
-    AppMethodBeat.i(187187);
+    AppMethodBeat.i(247225);
     TAG = NetFetchState.class.getSimpleName();
-    AppMethodBeat.o(187187);
+    AppMethodBeat.o(247225);
   }
   
   private void onReflectRequest()
   {
-    AppMethodBeat.i(187186);
+    AppMethodBeat.i(247212);
     YTAGReflectLiveCheckInterface.getLiveCheckType(YtFSM.getInstance().getContext().currentAppContext, new YTAGReflectLiveCheckInterface.GetLiveStyleResult()
     {
       public void onFailed(final int paramAnonymousInt, final String paramAnonymousString1, final String paramAnonymousString2)
       {
-        AppMethodBeat.i(187178);
+        AppMethodBeat.i(247177);
         YtLogger.e(NetFetchState.TAG, "network failed " + paramAnonymousString1 + " fix " + paramAnonymousString2);
         YtSDKStats.getInstance().reportError(paramAnonymousInt, paramAnonymousString1);
         YtFSM.getInstance().sendFSMEvent(new HashMap() {});
-        AppMethodBeat.o(187178);
+        AppMethodBeat.o(247177);
       }
       
       public void onSuccess(LiveStyleRequester.YTLiveStyleReq paramAnonymousYTLiveStyleReq, LiveStyleResponse paramAnonymousLiveStyleResponse)
       {
-        AppMethodBeat.i(187177);
+        AppMethodBeat.i(247176);
         NetFetchState.this.stateData.put("select_data", paramAnonymousYTLiveStyleReq.select_data);
         if (((!NetFetchState.this.localColorData.isEmpty()) && (NetFetchState.this.needLocalConfig)) || (NetFetchState.this.configUrl == null))
         {
@@ -92,7 +92,7 @@ public class NetFetchState
               continue;
             }
             NetFetchState.this.moveToNextState();
-            AppMethodBeat.o(187177);
+            AppMethodBeat.o(247176);
             return;
             YtLogger.e(NetFetchState.TAG, "select data is null");
             YtSDKStats.getInstance().reportInfo("select data is null");
@@ -112,7 +112,7 @@ public class NetFetchState
             public void onNetworkResponseEvent(HashMap<String, String> paramAnonymous2HashMap, final Exception paramAnonymous2Exception)
             {
               int k = 0;
-              AppMethodBeat.i(187175);
+              AppMethodBeat.i(247154);
               Object localObject2;
               if (paramAnonymous2Exception != null)
               {
@@ -127,7 +127,7 @@ public class NetFetchState
                   }
                 }
                 YtFSM.getInstance().sendFSMEvent(new HashMap() {});
-                AppMethodBeat.o(187175);
+                AppMethodBeat.o(247154);
                 return;
               }
               YtLogger.d(NetFetchState.TAG, "response : " + (String)paramAnonymous2HashMap.get("response"));
@@ -195,7 +195,7 @@ public class NetFetchState
                     }
                     YtFSM.getInstance().sendFSMEvent(new HashMap() {});
                   }
-                  AppMethodBeat.o(187175);
+                  AppMethodBeat.o(247154);
                   return;
                   try
                   {
@@ -266,7 +266,7 @@ public class NetFetchState
               }
             }
           });
-          AppMethodBeat.o(187177);
+          AppMethodBeat.o(247176);
           return;
           paramAnonymousLiveStyleResponse = new YtLivenessNetProtoHelper.GetLiveTypeReqData();
           paramAnonymousLiveStyleResponse.baseInfo = new YtLivenessNetProtoHelper.NetBaseInfoData();
@@ -279,12 +279,12 @@ public class NetFetchState
         }
       }
     });
-    AppMethodBeat.o(187186);
+    AppMethodBeat.o(247212);
   }
   
   public void enter()
   {
-    AppMethodBeat.i(187182);
+    AppMethodBeat.i(247204);
     super.enter();
     YtFSM.getInstance().sendFSMEvent(new HashMap() {});
     switch (4.$SwitchMap$com$tencent$youtu$sdkkitframework$framework$YtSDKKitFramework$YtSDKKitFrameworkWorkMode[YtFSM.getInstance().getWorkMode().ordinal()])
@@ -292,9 +292,9 @@ public class NetFetchState
     }
     for (;;)
     {
-      AppMethodBeat.o(187182);
+      AppMethodBeat.o(247204);
       return;
-      AppMethodBeat.o(187182);
+      AppMethodBeat.o(247204);
       return;
       onReflectRequest();
     }
@@ -304,14 +304,14 @@ public class NetFetchState
   
   public void exit()
   {
-    AppMethodBeat.i(187184);
+    AppMethodBeat.i(247208);
     super.exit();
-    AppMethodBeat.o(187184);
+    AppMethodBeat.o(247208);
   }
   
   public void loadStateWith(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(187180);
+    AppMethodBeat.i(247200);
     super.loadStateWith(paramString, paramJSONObject);
     label366:
     for (;;)
@@ -368,7 +368,7 @@ public class NetFetchState
           if (paramJSONObject.has("net_request_timeout_ms")) {
             YtSDKKitFramework.getInstance().setNetworkRequestTimeoutMS(paramJSONObject.getInt("net_request_timeout_ms"));
           }
-          AppMethodBeat.o(187180);
+          AppMethodBeat.o(247200);
           return;
         }
         this.extraConfig = " version 2";
@@ -378,7 +378,7 @@ public class NetFetchState
       catch (JSONException paramString)
       {
         YtLogger.e(TAG, "Failed to parse json:" + paramString.getLocalizedMessage());
-        AppMethodBeat.o(187180);
+        AppMethodBeat.o(247200);
         return;
       }
     }
@@ -386,7 +386,7 @@ public class NetFetchState
   
   public void moveToNextState()
   {
-    AppMethodBeat.i(187185);
+    AppMethodBeat.i(247210);
     super.moveToNextState();
     for (;;)
     {
@@ -398,34 +398,34 @@ public class NetFetchState
           final String str = "Unknown work mode " + YtFSM.getInstance().getWorkMode();
           YtSDKStats.getInstance().reportError(4194304, str);
           YtFSM.getInstance().sendFSMEvent(new HashMap() {});
-          AppMethodBeat.o(187185);
+          AppMethodBeat.o(247210);
           return;
         }
       }
       catch (Exception localException)
       {
         YtLogger.e(TAG, "move to next stat failed " + localException.getLocalizedMessage());
-        AppMethodBeat.o(187185);
+        AppMethodBeat.o(247210);
         return;
       }
       YtFSM.getInstance().transitNextRound(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE));
-      AppMethodBeat.o(187185);
+      AppMethodBeat.o(247210);
       return;
     }
   }
   
   public void reset()
   {
-    AppMethodBeat.i(187183);
+    AppMethodBeat.i(247206);
     super.reset();
-    AppMethodBeat.o(187183);
+    AppMethodBeat.o(247206);
   }
   
   public void unload()
   {
-    AppMethodBeat.i(187181);
+    AppMethodBeat.i(247202);
     super.unload();
-    AppMethodBeat.o(187181);
+    AppMethodBeat.o(247202);
   }
 }
 

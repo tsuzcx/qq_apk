@@ -12,22 +12,22 @@ import kotlin.g.b.i;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/collections/EmptyList;", "", "", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "Ljava/util/RandomAccess;", "Lkotlin/collections/RandomAccess;", "()V", "serialVersionUID", "", "size", "", "getSize", "()I", "contains", "", "element", "containsAll", "elements", "", "equals", "other", "", "get", "index", "hashCode", "indexOf", "isEmpty", "iterator", "", "lastIndexOf", "listIterator", "", "readResolve", "subList", "fromIndex", "toIndex", "toString", "", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/collections/EmptyList;", "", "", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "Ljava/util/RandomAccess;", "Lkotlin/collections/RandomAccess;", "()V", "serialVersionUID", "", "size", "", "getSize", "()I", "contains", "", "element", "containsAll", "elements", "", "equals", "other", "", "get", "index", "hashCode", "indexOf", "isEmpty", "iterator", "", "lastIndexOf", "listIterator", "", "readResolve", "subList", "fromIndex", "toIndex", "toString", "", "kotlin-stdlib"})
 public final class v
   implements Serializable, List, RandomAccess, a
 {
-  public static final v SXr;
+  public static final v aaAd;
   
   static
   {
     AppMethodBeat.i(129160);
-    SXr = new v();
+    aaAd = new v();
     AppMethodBeat.o(129160);
   }
   
   private final Object readResolve()
   {
-    return SXr;
+    return aaAd;
   }
   
   public final boolean addAll(int paramInt, Collection paramCollection)
@@ -62,7 +62,7 @@ public final class v
       AppMethodBeat.o(129153);
       return false;
     }
-    p.h((Void)paramObject, "element");
+    p.k((Void)paramObject, "element");
     AppMethodBeat.o(129153);
     return false;
   }
@@ -70,7 +70,7 @@ public final class v
   public final boolean containsAll(Collection paramCollection)
   {
     AppMethodBeat.i(129154);
-    p.h(paramCollection, "elements");
+    p.k(paramCollection, "elements");
     boolean bool = paramCollection.isEmpty();
     AppMethodBeat.o(129154);
     return bool;
@@ -101,7 +101,7 @@ public final class v
       AppMethodBeat.o(129156);
       return -1;
     }
-    p.h((Void)paramObject, "element");
+    p.k((Void)paramObject, "element");
     AppMethodBeat.o(129156);
     return -1;
   }
@@ -113,7 +113,7 @@ public final class v
   
   public final Iterator iterator()
   {
-    return (Iterator)u.SXq;
+    return (Iterator)u.aaAc;
   }
   
   public final int lastIndexOf(Object paramObject)
@@ -124,14 +124,14 @@ public final class v
       AppMethodBeat.o(129157);
       return -1;
     }
-    p.h((Void)paramObject, "element");
+    p.k((Void)paramObject, "element");
     AppMethodBeat.o(129157);
     return -1;
   }
   
   public final ListIterator listIterator()
   {
-    return (ListIterator)u.SXq;
+    return (ListIterator)u.aaAc;
   }
   
   public final ListIterator listIterator(int paramInt)
@@ -143,7 +143,7 @@ public final class v
       AppMethodBeat.o(129158);
       throw ((Throwable)localObject);
     }
-    Object localObject = (ListIterator)u.SXq;
+    Object localObject = (ListIterator)u.aaAc;
     AppMethodBeat.o(129158);
     return localObject;
   }
@@ -189,7 +189,7 @@ public final class v
   public final Object[] toArray()
   {
     AppMethodBeat.i(129171);
-    Object[] arrayOfObject = i.w(this);
+    Object[] arrayOfObject = i.u(this);
     AppMethodBeat.o(129171);
     return arrayOfObject;
   }
@@ -197,7 +197,7 @@ public final class v
   public final <T> T[] toArray(T[] paramArrayOfT)
   {
     AppMethodBeat.i(129172);
-    paramArrayOfT = i.a(this, paramArrayOfT);
+    paramArrayOfT = i.b(this, paramArrayOfT);
     AppMethodBeat.o(129172);
     return paramArrayOfT;
   }

@@ -1,43 +1,19 @@
 package com.tencent.mm.plugin.sns.ad.i;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.j;
+import com.tencent.mm.modelsns.SnsAdClick;
 
 public final class k
 {
-  public static void a(b paramb)
+  public static void a(SnsAdClick paramSnsAdClick, int paramInt)
   {
-    AppMethodBeat.i(202364);
-    if (paramb == null)
-    {
-      AppMethodBeat.o(202364);
-      return;
+    if (paramSnsAdClick != null) {
+      paramSnsAdClick.maW = paramInt;
     }
-    j.b(paramb.eYp(), paramb.eYq(), 0, 0, paramb.eYo());
-    AppMethodBeat.o(202364);
-  }
-  
-  public static abstract class a
-    implements k.b
-  {
-    public final String eYo()
-    {
-      return "";
-    }
-  }
-  
-  public static abstract interface b
-  {
-    public abstract String eYo();
-    
-    public abstract String eYp();
-    
-    public abstract String eYq();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.i.k
  * JD-Core Version:    0.7.0.1
  */

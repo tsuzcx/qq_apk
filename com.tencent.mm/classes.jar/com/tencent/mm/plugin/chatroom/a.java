@@ -1,34 +1,32 @@
 package com.tencent.mm.plugin.chatroom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ap;
-import com.tencent.mm.n.f;
+import com.tencent.mm.kernel.api.c;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.model.aq;
+import com.tencent.mm.plugin.chatroom.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ah;
 import com.tencent.mm.storage.ai;
-import com.tencent.mm.storagebase.h;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import java.util.List;
 
 public final class a
-  implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.c, com.tencent.mm.kernel.c.a, com.tencent.mm.plugin.chatroom.a.c
+  implements com.tencent.mm.kernel.api.bucket.a, c, b
 {
   private boolean isDebugMode;
-  private ai qnb;
-  private HashMap<String, Boolean> qnc;
+  private ai tLS;
+  private HashMap<String, Boolean> tLT;
   
   public a()
   {
     AppMethodBeat.i(116862);
-    this.qnc = new HashMap();
+    this.tLT = new HashMap();
     AppMethodBeat.o(116862);
   }
   
-  public final boolean akx(String paramString)
+  public final boolean asl(String paramString)
   {
     AppMethodBeat.i(116864);
     if (this.isDebugMode)
@@ -41,28 +39,28 @@ public final class a
     {
       try
       {
-        if (this.qnc.containsKey(paramString))
+        if (this.tLT.containsKey(paramString))
         {
-          bool = ((Boolean)this.qnc.get(paramString)).booleanValue();
+          bool = ((Boolean)this.tLT.get(paramString)).booleanValue();
           AppMethodBeat.o(116864);
           return bool;
         }
-        ah localah = this.qnb.Kd(paramString);
+        ah localah = this.tLS.Rw(paramString);
         if ((localah.field_chatroomStatus & 0x4000) != 0L)
         {
           bool = true;
-          int i = ((com.tencent.mm.plugin.zero.b.a)g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getInt("ChatRoomAdminSwitch", -1);
-          int j = ((com.tencent.mm.plugin.zero.b.a)g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getInt("ChatRoomAdminMinMemberCount", -1);
-          Log.i("MicroMsg.ChatroomService", "[isEnableRoomManager] chatroomName:%s isStatusEnable:%s switchFlag:%s minCount:%d memberCount:%d", new Object[] { paramString, Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(localah.bax().size()) });
+          int i = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.zero.b.a.class)).axc().getInt("ChatRoomAdminSwitch", -1);
+          int j = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.zero.b.a.class)).axc().getInt("ChatRoomAdminMinMemberCount", -1);
+          Log.i("MicroMsg.ChatroomService", "[isEnableRoomManager] chatroomName:%s isStatusEnable:%s switchFlag:%s minCount:%d memberCount:%d", new Object[] { paramString, Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(localah.bjL().size()) });
           if (i > 0)
           {
             if (bool) {
               break label255;
             }
-            if (j <= localah.bax().size())
+            if (j <= localah.bjL().size())
             {
               break label255;
-              this.qnc.put(paramString, Boolean.valueOf(bool));
+              this.tLT.put(paramString, Boolean.valueOf(bool));
               AppMethodBeat.o(116864);
               return bool;
             }
@@ -86,7 +84,7 @@ public final class a
     }
   }
   
-  public final ap b(h paramh)
+  public final aq c(com.tencent.mm.storagebase.h paramh)
   {
     AppMethodBeat.i(116863);
     paramh = new ai(paramh);
@@ -109,10 +107,10 @@ public final class a
     return localHashMap;
   }
   
-  public final void onAccountInitialized(e.c paramc)
+  public final void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(116866);
-    this.qnb = new ai(g.aAh().hqK);
+    this.tLS = new ai(com.tencent.mm.kernel.h.aHG().kcF);
     AppMethodBeat.o(116866);
   }
   
@@ -125,7 +123,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.chatroom.a
  * JD-Core Version:    0.7.0.1
  */

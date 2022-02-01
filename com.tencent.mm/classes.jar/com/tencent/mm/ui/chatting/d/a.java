@@ -2,50 +2,48 @@ package com.tencent.mm.ui.chatting.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.chatting.d.b.j;
-import com.tencent.mm.ui.chatting.d.b.n;
-import com.tencent.mm.ui.l;
 import com.tencent.mm.ui.m;
 
 public class a
-  extends l
-  implements ag, m
+  extends m
+  implements ah, com.tencent.mm.ui.n
 {
-  protected com.tencent.mm.ui.chatting.e.a dom;
+  protected com.tencent.mm.ui.chatting.e.a fgR;
   
   public void a(com.tencent.mm.ui.chatting.e.a parama)
   {
     AppMethodBeat.i(35067);
-    this.dom = parama;
-    ((j)this.dom.bh(j.class)).a(this);
-    ((n)this.dom.bh(n.class)).a(this);
+    this.fgR = parama;
+    ((j)this.fgR.bC(j.class)).a(this);
+    ((com.tencent.mm.ui.chatting.d.b.n)this.fgR.bC(com.tencent.mm.ui.chatting.d.b.n.class)).a(this);
     AppMethodBeat.o(35067);
   }
   
-  public void cFx() {}
+  public void hGU() {}
   
-  public void cFy() {}
+  public void hGV() {}
   
-  public void gIk() {}
+  public void hGW() {}
   
-  public void gIl() {}
+  public void hGX() {}
   
-  public void gIm() {}
+  public void hGY() {}
   
-  public void gIn() {}
+  public void hGZ() {}
   
-  public void gIo() {}
+  public void hHa() {}
   
-  public void gOK()
+  public void hNZ()
   {
     AppMethodBeat.i(35068);
-    ((j)this.dom.bh(j.class)).b(this);
-    ((n)this.dom.bh(n.class)).b(this);
+    ((j)this.fgR.bC(j.class)).b(this);
+    ((com.tencent.mm.ui.chatting.d.b.n)this.fgR.bC(com.tencent.mm.ui.chatting.d.b.n.class)).b(this);
     AppMethodBeat.o(35068);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.a
  * JD-Core Version:    0.7.0.1
  */

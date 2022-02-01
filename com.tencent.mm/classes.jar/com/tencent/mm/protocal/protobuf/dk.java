@@ -1,104 +1,144 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import java.util.LinkedList;
 
 public final class dk
-  extends com.tencent.mm.bw.a
+  extends dyl
 {
-  public long KHA;
-  public String KHz;
-  public String jGZ;
+  public String GHy;
+  public String OkX;
+  public int Olc;
+  public String RIU;
+  public int day;
+  public String fvP;
+  public long gbJ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152487);
+    AppMethodBeat.i(91346);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.jGZ == null)
+      if (this.BaseRequest != null)
       {
-        paramVarArgs = new b("Not all required fields were included: tp_username");
-        AppMethodBeat.o(152487);
-        throw paramVarArgs;
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.KHz == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: antispam_ticket");
-        AppMethodBeat.o(152487);
-        throw paramVarArgs;
+      paramVarArgs.bm(2, this.gbJ);
+      if (this.fvP != null) {
+        paramVarArgs.f(3, this.fvP);
       }
-      if (this.jGZ != null) {
-        paramVarArgs.e(1, this.jGZ);
+      if (this.GHy != null) {
+        paramVarArgs.f(4, this.GHy);
       }
-      if (this.KHz != null) {
-        paramVarArgs.e(2, this.KHz);
+      if (this.OkX != null) {
+        paramVarArgs.f(5, this.OkX);
       }
-      paramVarArgs.bb(3, this.KHA);
-      AppMethodBeat.o(152487);
+      paramVarArgs.aY(6, this.day);
+      if (this.RIU != null) {
+        paramVarArgs.f(7, this.RIU);
+      }
+      paramVarArgs.aY(8, this.Olc);
+      AppMethodBeat.o(91346);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.jGZ == null) {
-        break label414;
+      if (this.BaseRequest == null) {
+        break label668;
       }
     }
-    label414:
-    for (paramInt = g.a.a.b.b.a.f(1, this.jGZ) + 0;; paramInt = 0)
+    label668:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.KHz != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.KHz);
+      int i = paramInt + g.a.a.b.b.a.p(2, this.gbJ);
+      paramInt = i;
+      if (this.fvP != null) {
+        paramInt = i + g.a.a.b.b.a.g(3, this.fvP);
       }
-      paramInt = g.a.a.b.b.a.r(3, this.KHA);
-      AppMethodBeat.o(152487);
-      return i + paramInt;
+      i = paramInt;
+      if (this.GHy != null) {
+        i = paramInt + g.a.a.b.b.a.g(4, this.GHy);
+      }
+      paramInt = i;
+      if (this.OkX != null) {
+        paramInt = i + g.a.a.b.b.a.g(5, this.OkX);
+      }
+      i = paramInt + g.a.a.b.b.a.bM(6, this.day);
+      paramInt = i;
+      if (this.RIU != null) {
+        paramInt = i + g.a.a.b.b.a.g(7, this.RIU);
+      }
+      i = g.a.a.b.b.a.bM(8, this.Olc);
+      AppMethodBeat.o(91346);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.jGZ == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: tp_username");
-          AppMethodBeat.o(152487);
-          throw paramVarArgs;
-        }
-        if (this.KHz == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: antispam_ticket");
-          AppMethodBeat.o(152487);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(152487);
+        AppMethodBeat.o(91346);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         dk localdk = (dk)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(152487);
+          AppMethodBeat.o(91346);
           return -1;
         case 1: 
-          localdk.jGZ = locala.UbS.readString();
-          AppMethodBeat.o(152487);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            jg localjg = new jg();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localjg.parseFrom((byte[])localObject);
+            }
+            localdk.BaseRequest = localjg;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(91346);
           return 0;
         case 2: 
-          localdk.KHz = locala.UbS.readString();
-          AppMethodBeat.o(152487);
+          localdk.gbJ = ((g.a.a.a.a)localObject).abFh.AN();
+          AppMethodBeat.o(91346);
+          return 0;
+        case 3: 
+          localdk.fvP = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(91346);
+          return 0;
+        case 4: 
+          localdk.GHy = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(91346);
+          return 0;
+        case 5: 
+          localdk.OkX = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(91346);
+          return 0;
+        case 6: 
+          localdk.day = ((g.a.a.a.a)localObject).abFh.AK();
+          AppMethodBeat.o(91346);
+          return 0;
+        case 7: 
+          localdk.RIU = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(91346);
           return 0;
         }
-        localdk.KHA = locala.UbS.zl();
-        AppMethodBeat.o(152487);
+        localdk.Olc = ((g.a.a.a.a)localObject).abFh.AK();
+        AppMethodBeat.o(91346);
         return 0;
       }
-      AppMethodBeat.o(152487);
+      AppMethodBeat.o(91346);
       return -1;
     }
   }

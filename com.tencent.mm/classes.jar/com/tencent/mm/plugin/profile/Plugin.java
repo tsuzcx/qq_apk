@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.profile;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.pluginsdk.b.c;
+import com.tencent.mm.model.be;
+import com.tencent.mm.pluginsdk.c.c;
 import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class Plugin
-  implements com.tencent.mm.pluginsdk.b.d
+  implements com.tencent.mm.pluginsdk.c.d
 {
   public Plugin()
   {
@@ -25,7 +25,7 @@ public final class Plugin
     return localb;
   }
   
-  public final bd createSubCore()
+  public final be createSubCore()
   {
     AppMethodBeat.i(26858);
     Log.i("MicroMsg.Plugin.profile", "profile createSubCore " + System.currentTimeMillis());
@@ -44,7 +44,7 @@ public final class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.Plugin
  * JD-Core Version:    0.7.0.1
  */

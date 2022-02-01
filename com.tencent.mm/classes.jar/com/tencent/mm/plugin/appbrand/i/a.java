@@ -14,26 +14,26 @@ import java.util.concurrent.ConcurrentHashMap;
 public class a
   extends SkiaCanvasExternalTexturePluginWithSurfaceTextureDelegate
 {
-  private static a lqm;
-  private Map<Integer, c> lqn;
+  private static a okW;
+  private Map<Integer, c> okX;
   
   private a()
   {
     AppMethodBeat.i(139394);
-    this.lqn = new ConcurrentHashMap();
+    this.okX = new ConcurrentHashMap();
     AppMethodBeat.o(139394);
   }
   
-  public static a bCz()
+  public static a bNU()
   {
     AppMethodBeat.i(139395);
-    if (lqm == null) {}
+    if (okW == null) {}
     try
     {
-      if (lqm == null) {
-        lqm = new a();
+      if (okW == null) {
+        okW = new a();
       }
-      a locala = lqm;
+      a locala = okW;
       AppMethodBeat.o(139395);
       return locala;
     }
@@ -49,7 +49,7 @@ public class a
     if ((paramSurfaceTexture != null) && ((paramInt2 != 0) || (paramInt3 != 0)))
     {
       Log.i("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "registerMediaPlayer, id:%s, width:%s, height:%s, surface:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramSurfaceTexture.hashCode()) });
-      this.lqn.put(Integer.valueOf(paramInt1), paramc);
+      this.okX.put(Integer.valueOf(paramInt1), paramc);
       registerInstance(paramInt1, paramString, paramInt2, paramInt3, paramSurfaceTexture);
     }
     AppMethodBeat.o(177195);
@@ -75,7 +75,7 @@ public class a
   public void replaceDisplaySurface(int paramInt, String paramString, SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(177196);
-    paramString = (c)this.lqn.get(Integer.valueOf(paramInt));
+    paramString = (c)this.okX.get(Integer.valueOf(paramInt));
     if ((paramString != null) && (paramSurfaceTexture != null))
     {
       Log.w("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "replaceDisplaySurface, surface:%s", new Object[] { Integer.valueOf(paramSurfaceTexture.hashCode()) });

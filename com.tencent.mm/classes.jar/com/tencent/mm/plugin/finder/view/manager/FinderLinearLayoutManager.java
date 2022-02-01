@@ -1,137 +1,152 @@
 package com.tencent.mm.plugin.finder.view.manager;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.n;
-import android.support.v7.widget.RecyclerView.r;
-import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.ae;
 import android.util.DisplayMetrics;
 import android.view.View;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.n;
+import androidx.recyclerview.widget.RecyclerView.r;
+import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.view.MediaBanner.b;
 import kotlin.f;
 import kotlin.g;
 import kotlin.g.a.a;
-import kotlin.g.b.p;
 import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/manager/FinderLinearLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "Lcom/tencent/mm/view/MediaBanner$ILayoutManagerScrollEnableCallback;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "orientation", "", "reverseLayout", "", "(Landroid/content/Context;IZ)V", "canScrollVertically", "getCanScrollVertically", "()Z", "setCanScrollVertically", "(Z)V", "isSupportScrollConflictAdapt", "setSupportScrollConflictAdapt", "scrollState", "smoothScrollerSpeed", "", "getSmoothScrollerSpeed", "()F", "setSmoothScrollerSpeed", "(F)V", "touchSlop", "getTouchSlop", "()I", "touchSlop$delegate", "Lkotlin/Lazy;", "canScrollHorizontally", "init", "", "onScrollStateChanged", "state", "scrollHorizontallyBy", "dx", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "Landroid/support/v7/widget/RecyclerView$State;", "scrollToPosition", "position", "scrollToPositionWithOffset", "offset", "scrollVerticallyBy", "dy", "setScrollVerticallyEnable", "enable", "smoothScrollToPosition", "recyclerView", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/manager/FinderLinearLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "Lcom/tencent/mm/view/MediaBanner$ILayoutManagerScrollEnableCallback;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "orientation", "", "reverseLayout", "", "(Landroid/content/Context;IZ)V", "canScrollVertically", "getCanScrollVertically", "()Z", "setCanScrollVertically", "(Z)V", "extraLayoutSpace", "getExtraLayoutSpace", "()I", "setExtraLayoutSpace", "(I)V", "isSupportScrollConflictAdapt", "setSupportScrollConflictAdapt", "scrollState", "smoothScrollerSpeed", "", "getSmoothScrollerSpeed", "()F", "setSmoothScrollerSpeed", "(F)V", "touchSlop", "getTouchSlop", "touchSlop$delegate", "Lkotlin/Lazy;", "canScrollHorizontally", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "init", "", "onScrollStateChanged", "scrollHorizontallyBy", "dx", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "Landroidx/recyclerview/widget/RecyclerView;", "scrollToPosition", "position", "scrollToPositionWithOffset", "offset", "scrollVerticallyBy", "dy", "setScrollVerticallyEnable", "enable", "smoothScrollToPosition", "recyclerView", "Companion", "plugin-finder_release"})
 public final class FinderLinearLayoutManager
   extends LinearLayoutManager
   implements MediaBanner.b
 {
-  public static final a wtm;
+  public static final a BfD;
+  private final f ALs;
+  public float BdV;
+  private boolean BfB;
+  public boolean BfC;
+  private int bFP;
   private Context context;
-  private int vp;
-  private final f wcJ;
-  public float wsx;
-  private boolean wtk;
-  public boolean wtl;
+  public int uqm;
   
   static
   {
-    AppMethodBeat.i(255279);
-    wtm = new a((byte)0);
-    AppMethodBeat.o(255279);
+    AppMethodBeat.i(233386);
+    BfD = new a((byte)0);
+    AppMethodBeat.o(233386);
   }
   
   public FinderLinearLayoutManager(Context paramContext)
   {
-    AppMethodBeat.i(255277);
-    this.wcJ = g.ah((a)new c(this));
+    AppMethodBeat.i(233380);
+    this.ALs = g.ar((a)new c(this));
     setItemPrefetchEnabled(true);
-    ca(6);
-    this.wsx = 5.0F;
-    this.wtl = true;
+    cC(6);
+    this.BdV = 5.0F;
+    this.uqm = -1;
+    this.BfC = true;
     init(paramContext);
-    AppMethodBeat.o(255277);
+    AppMethodBeat.o(233380);
   }
   
   public FinderLinearLayoutManager(Context paramContext, byte paramByte)
   {
     super(0, false);
-    AppMethodBeat.i(255278);
-    this.wcJ = g.ah((a)new c(this));
+    AppMethodBeat.i(233384);
+    this.ALs = g.ar((a)new c(this));
     setItemPrefetchEnabled(true);
-    ca(6);
-    this.wsx = 5.0F;
-    this.wtl = true;
+    cC(6);
+    this.BdV = 5.0F;
+    this.uqm = -1;
+    this.BfC = true;
     init(paramContext);
-    AppMethodBeat.o(255278);
+    AppMethodBeat.o(233384);
   }
   
   private final int getTouchSlop()
   {
-    AppMethodBeat.i(255267);
-    int i = ((Number)this.wcJ.getValue()).intValue();
-    AppMethodBeat.o(255267);
+    AppMethodBeat.i(233344);
+    int i = ((Number)this.ALs.getValue()).intValue();
+    AppMethodBeat.o(233344);
     return i;
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(255268);
-    p.h(paramContext, "context");
+    AppMethodBeat.i(233346);
+    kotlin.g.b.p.k(paramContext, "context");
     this.context = paramContext;
-    AppMethodBeat.o(255268);
+    AppMethodBeat.o(233346);
   }
   
-  public final void ah(int paramInt1, int paramInt2)
+  public final void au(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(255270);
-    super.ah(paramInt1, paramInt2);
+    AppMethodBeat.i(233356);
+    super.au(paramInt1, paramInt2);
     Log.i("Finder.FinderLayoutManager", "[scrollToPositionWithOffset] position=" + paramInt1 + " offset=" + paramInt2);
-    AppMethodBeat.o(255270);
+    AppMethodBeat.o(233356);
+  }
+  
+  public final int b(RecyclerView.s params)
+  {
+    AppMethodBeat.i(233348);
+    if (this.uqm == -1)
+    {
+      i = super.b(params);
+      AppMethodBeat.o(233348);
+      return i;
+    }
+    int i = this.uqm;
+    AppMethodBeat.o(233348);
+    return i;
   }
   
   public final boolean canScrollHorizontally()
   {
-    AppMethodBeat.i(255276);
+    AppMethodBeat.i(233372);
     boolean bool = super.canScrollHorizontally();
-    AppMethodBeat.o(255276);
+    AppMethodBeat.o(233372);
     return bool;
   }
   
   public final boolean canScrollVertically()
   {
-    AppMethodBeat.i(255275);
-    if ((this.wtl) && (super.canScrollVertically()))
+    AppMethodBeat.i(233370);
+    if ((this.BfC) && (super.canScrollVertically()))
     {
-      AppMethodBeat.o(255275);
+      AppMethodBeat.o(233370);
       return true;
     }
-    AppMethodBeat.o(255275);
+    AppMethodBeat.o(233370);
     return false;
   }
   
   public final void onScrollStateChanged(int paramInt)
   {
-    AppMethodBeat.i(255273);
+    AppMethodBeat.i(233366);
     super.onScrollStateChanged(paramInt);
-    this.vp = paramInt;
-    AppMethodBeat.o(255273);
+    this.bFP = paramInt;
+    AppMethodBeat.o(233366);
   }
   
-  public final void pc(boolean paramBoolean)
+  public final void rw(boolean paramBoolean)
   {
-    this.wtl = paramBoolean;
+    this.BfC = paramBoolean;
   }
   
   public final int scrollHorizontallyBy(int paramInt, RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(255272);
-    if ((this.wtk) && (Math.abs(paramInt) >= getTouchSlop()))
+    AppMethodBeat.i(233364);
+    if ((this.BfB) && (Math.abs(paramInt) >= getTouchSlop()))
     {
       super.scrollHorizontallyBy(paramInt, paramn, params);
-      AppMethodBeat.o(255272);
+      AppMethodBeat.o(233364);
       return paramInt;
     }
     int i = super.scrollHorizontallyBy(paramInt, paramn, params);
-    if ((i == 0) && (paramInt != 0) && (this.vp == 2))
+    if ((i == 0) && (paramInt != 0) && (this.bFP == 2))
     {
       paramn = getChildAt(0);
       if (paramn == null) {
@@ -148,32 +163,32 @@ public final class FinderLinearLayoutManager
       paramn = (RecyclerView)params;
       Log.i("Finder.FinderLayoutManager", "horizontal fling to end, " + paramInt + ' ' + i + ", " + paramn);
       if (paramn != null) {
-        paramn.kQ();
+        paramn.ld();
       }
-      AppMethodBeat.o(255272);
+      AppMethodBeat.o(233364);
       return i;
     }
   }
   
   public final void scrollToPosition(int paramInt)
   {
-    AppMethodBeat.i(255269);
+    AppMethodBeat.i(233353);
     super.scrollToPosition(paramInt);
     Log.i("Finder.FinderLayoutManager", "[scrollToPosition] position=".concat(String.valueOf(paramInt)));
-    AppMethodBeat.o(255269);
+    AppMethodBeat.o(233353);
   }
   
   public final int scrollVerticallyBy(int paramInt, RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(255274);
-    if ((this.wtk) && (Math.abs(paramInt) >= getTouchSlop()))
+    AppMethodBeat.i(233368);
+    if ((this.BfB) && (Math.abs(paramInt) >= getTouchSlop()))
     {
       super.scrollVerticallyBy(paramInt, paramn, params);
-      AppMethodBeat.o(255274);
+      AppMethodBeat.o(233368);
       return paramInt;
     }
     int i = super.scrollVerticallyBy(paramInt, paramn, params);
-    if ((i == 0) && (paramInt != 0) && (this.vp == 2))
+    if ((i == 0) && (paramInt != 0) && (this.bFP == 2))
     {
       paramn = getChildAt(0);
       if (paramn == null) {
@@ -190,33 +205,33 @@ public final class FinderLinearLayoutManager
       paramn = (RecyclerView)params;
       Log.i("Finder.FinderLayoutManager", "vertical fling to end, " + paramInt + ' ' + i + ", " + paramn);
       if (paramn != null) {
-        paramn.kQ();
+        paramn.ld();
       }
-      AppMethodBeat.o(255274);
+      AppMethodBeat.o(233368);
       return i;
     }
   }
   
   public final void smoothScrollToPosition(RecyclerView paramRecyclerView, RecyclerView.s params, int paramInt)
   {
-    AppMethodBeat.i(255271);
+    AppMethodBeat.i(233360);
     Log.i("Finder.FinderLayoutManager", "[smoothScrollToPosition] position=".concat(String.valueOf(paramInt)));
     paramRecyclerView = this.context;
     if (paramRecyclerView == null) {
-      p.btv("context");
+      kotlin.g.b.p.bGy("context");
     }
     paramRecyclerView = new b(this, paramRecyclerView);
-    paramRecyclerView.ct(paramInt);
+    paramRecyclerView.cV(paramInt);
     startSmoothScroll((RecyclerView.r)paramRecyclerView);
-    AppMethodBeat.o(255271);
+    AppMethodBeat.o(233360);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/manager/FinderLinearLayoutManager$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/manager/FinderLinearLayoutManager$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/view/manager/FinderLinearLayoutManager$smoothScrollToPosition$linearSmoothScroller$1", "Landroid/support/v7/widget/LinearSmoothScroller;", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/manager/FinderLinearLayoutManager$smoothScrollToPosition$linearSmoothScroller$1", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-finder_release"})
   public static final class b
-    extends ae
+    extends androidx.recyclerview.widget.p
   {
     b(Context paramContext)
     {
@@ -225,15 +240,15 @@ public final class FinderLinearLayoutManager
     
     public final float a(DisplayMetrics paramDisplayMetrics)
     {
-      AppMethodBeat.i(255265);
-      p.h(paramDisplayMetrics, "displayMetrics");
-      float f = this.wtn.wsx / paramDisplayMetrics.densityDpi;
-      AppMethodBeat.o(255265);
+      AppMethodBeat.i(282244);
+      kotlin.g.b.p.k(paramDisplayMetrics, "displayMetrics");
+      float f = this.BfE.BdV / paramDisplayMetrics.densityDpi;
+      AppMethodBeat.o(282244);
       return f;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class c
     extends q
     implements a<Integer>
@@ -246,7 +261,7 @@ public final class FinderLinearLayoutManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.manager.FinderLinearLayoutManager
  * JD-Core Version:    0.7.0.1
  */

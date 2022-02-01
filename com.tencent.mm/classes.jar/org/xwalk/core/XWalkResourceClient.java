@@ -38,6 +38,7 @@ public class XWalkResourceClient
   private LazyReflectMethod onLoadStartedXWalkViewInternalStringMethod;
   private LazyReflectMethod onProgressChangedXWalkViewInternalintMethod;
   private LazyReflectMethod onReceivedClientCertRequestXWalkViewInternalClientCertRequestInternalMethod;
+  private LazyReflectMethod onReceivedErrorXWalkViewInternalXWalkWebResourceRequestInternalXWalkWebResourceErrorInternalMethod;
   private LazyReflectMethod onReceivedHttpAuthRequestXWalkViewInternalXWalkHttpAuthHandlerInternalStringStringMethod;
   private LazyReflectMethod onReceivedLoadErrorXWalkViewInternalintStringStringMethod;
   private LazyReflectMethod onReceivedResponseHeadersXWalkViewInternalXWalkWebResourceRequestInternalXWalkWebResourceResponseInternalMethod;
@@ -69,6 +70,7 @@ public class XWalkResourceClient
     this.shouldInterceptLoadRequestXWalkViewInternalStringMethod = new LazyReflectMethod(null, "shouldInterceptLoadRequest", new Class[0]);
     this.shouldInterceptLoadRequestXWalkViewInternalXWalkWebResourceRequestInternalMethod = new LazyReflectMethod(null, "shouldInterceptLoadRequest", new Class[0]);
     this.onReceivedLoadErrorXWalkViewInternalintStringStringMethod = new LazyReflectMethod(null, "onReceivedLoadError", new Class[0]);
+    this.onReceivedErrorXWalkViewInternalXWalkWebResourceRequestInternalXWalkWebResourceErrorInternalMethod = new LazyReflectMethod(null, "onReceivedLoadError2", new Class[0]);
     this.shouldOverrideUrlLoadingXWalkViewInternalStringMethod = new LazyReflectMethod(null, "shouldOverrideUrlLoading", new Class[0]);
     this.onReceivedSslErrorXWalkViewInternalValueCallbackSslErrorMethod = new LazyReflectMethod(null, "onReceivedSslError", new Class[0]);
     this.onReceivedClientCertRequestXWalkViewInternalClientCertRequestInternalMethod = new LazyReflectMethod(null, "onReceivedClientCertRequest", new Class[0]);
@@ -314,6 +316,28 @@ public class XWalkResourceClient
     }
   }
   
+  public void onReceivedLoadError2(XWalkView paramXWalkView, XWalkWebResourceRequest paramXWalkWebResourceRequest, XWalkWebResourceError paramXWalkWebResourceError)
+  {
+    AppMethodBeat.i(206349);
+    try
+    {
+      this.onReceivedErrorXWalkViewInternalXWalkWebResourceRequestInternalXWalkWebResourceErrorInternalMethod.invoke(new Object[] { paramXWalkView.getBridge(), ((XWalkWebResourceRequestHandler)paramXWalkWebResourceRequest).getBridge(), paramXWalkWebResourceError.getBridge() });
+      AppMethodBeat.o(206349);
+      return;
+    }
+    catch (UnsupportedOperationException paramXWalkView)
+    {
+      if (this.coreWrapper == null)
+      {
+        paramXWalkView = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(206349);
+        throw paramXWalkView;
+      }
+      XWalkCoreWrapper.handleRuntimeError(paramXWalkView);
+      AppMethodBeat.o(206349);
+    }
+  }
+  
   public void onReceivedResponseHeaders(XWalkView paramXWalkView, XWalkWebResourceRequest paramXWalkWebResourceRequest, XWalkWebResourceResponse paramXWalkWebResourceResponse)
   {
     AppMethodBeat.i(154852);
@@ -413,6 +437,7 @@ public class XWalkResourceClient
       this.shouldInterceptLoadRequestXWalkViewInternalStringMethod.init(this.bridge, null, "shouldInterceptLoadRequestSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class });
       this.shouldInterceptLoadRequestXWalkViewInternalXWalkWebResourceRequestInternalMethod.init(this.bridge, null, "shouldInterceptLoadRequestSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), this.coreWrapper.getBridgeClass("XWalkWebResourceRequestHandlerBridge") });
       this.onReceivedLoadErrorXWalkViewInternalintStringStringMethod.init(this.bridge, null, "onReceivedLoadErrorSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), Integer.TYPE, String.class, String.class });
+      this.onReceivedErrorXWalkViewInternalXWalkWebResourceRequestInternalXWalkWebResourceErrorInternalMethod.init(this.bridge, null, "onReceivedLoadError2Super", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), this.coreWrapper.getBridgeClass("XWalkWebResourceRequestHandlerBridge"), this.coreWrapper.getBridgeClass("XWalkWebResourceErrorBridge") });
       this.shouldOverrideUrlLoadingXWalkViewInternalStringMethod.init(this.bridge, null, "shouldOverrideUrlLoadingSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class });
       this.onReceivedSslErrorXWalkViewInternalValueCallbackSslErrorMethod.init(this.bridge, null, "onReceivedSslErrorSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), ValueCallback.class, SslError.class });
       this.onReceivedClientCertRequestXWalkViewInternalClientCertRequestInternalMethod.init(this.bridge, null, "onReceivedClientCertRequestSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), this.coreWrapper.getBridgeClass("ClientCertRequestHandlerBridge") });
@@ -506,7 +531,7 @@ public class XWalkResourceClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.XWalkResourceClient
  * JD-Core Version:    0.7.0.1
  */

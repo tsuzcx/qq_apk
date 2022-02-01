@@ -6,18 +6,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
 import com.tencent.mm.pluginsdk.ui.ProfileDescribeView;
 import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.cn;
+import com.tencent.mm.storage.co;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ProfileDescribePreference
   extends Preference
 {
-  public cn BzG;
-  private ProfileDescribeView Kqf;
-  public as rjX;
-  private View zlc;
+  private View EQs;
+  public co Hvc;
+  private ProfileDescribeView RqV;
+  public as uNk;
   
   public ProfileDescribePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,30 +34,30 @@ public class ProfileDescribePreference
   {
     AppMethodBeat.i(31905);
     super.onBindView(paramView);
-    if (this.rjX == null)
+    if (this.uNk == null)
     {
       AppMethodBeat.o(31905);
       return;
     }
-    this.Kqf.eEV();
+    this.RqV.fqK();
     AppMethodBeat.o(31905);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(31904);
-    if (this.zlc == null)
+    if (this.EQs == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
       localViewGroup.removeAllViews();
       ProfileDescribeView localProfileDescribeView = new ProfileDescribeView(paramViewGroup.getContext());
-      this.Kqf = localProfileDescribeView;
+      this.RqV = localProfileDescribeView;
       localViewGroup.addView(localProfileDescribeView, new AbsListView.LayoutParams(-1, -2));
-      this.Kqf.aj(this.rjX);
-      this.zlc = paramViewGroup;
+      this.RqV.ap(this.uNk);
+      this.EQs = paramViewGroup;
     }
-    paramViewGroup = this.zlc;
+    paramViewGroup = this.EQs;
     AppMethodBeat.o(31904);
     return paramViewGroup;
   }

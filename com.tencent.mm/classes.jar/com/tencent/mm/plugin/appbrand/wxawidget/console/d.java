@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.appbrand.wxawidget.console;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d.e;
-import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.ipcinvoker.f.a;
-import com.tencent.mm.ipcinvoker.f.b;
 import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.h.a;
+import com.tencent.mm.ipcinvoker.h.b;
+import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.plugin.appbrand.wxawidget.a;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,35 +15,35 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class d
 {
-  private static final Map<String, List<a>> hno;
-  private static List<a> oFF;
-  private static final e oFG;
+  private static final Map<String, List<a>> jZc;
+  private static List<a> rHu;
+  private static final e rHv;
   
   static
   {
     AppMethodBeat.i(121621);
-    hno = new ConcurrentHashMap();
-    oFF = new LinkedList();
-    oFG = new e() {};
+    jZc = new ConcurrentHashMap();
+    rHu = new LinkedList();
+    rHv = new e() {};
     AppMethodBeat.o(121621);
   }
   
   public static boolean a(a parama)
   {
     AppMethodBeat.i(121618);
-    if (oFF.contains(parama))
+    if (rHu.contains(parama))
     {
       AppMethodBeat.o(121618);
       return false;
     }
     Object localObject;
     e locale;
-    f localf;
-    if ((hno.isEmpty()) && (oFF.isEmpty()))
+    h localh;
+    if ((jZc.isEmpty()) && (rHu.isEmpty()))
     {
-      localObject = c.oFE;
-      locale = oFG;
-      localf = ((com.tencent.mm.ipcinvoker.d.d)localObject).hnu;
+      localObject = c.rHt;
+      locale = rHv;
+      localh = ((com.tencent.mm.ipcinvoker.d.d)localObject).jZj;
       localObject = ((com.tencent.mm.ipcinvoker.d.d)localObject).event;
       if ((localObject != null) && (((String)localObject).length() != 0) && (locale != null)) {
         break label102;
@@ -51,28 +51,28 @@ public final class d
     }
     for (;;)
     {
-      boolean bool = oFF.add(parama);
+      boolean bool = rHu.add(parama);
       AppMethodBeat.o(121618);
       return bool;
       label102:
       Bundle localBundle = new Bundle();
-      localBundle.putString("Token", f.bo(locale));
+      localBundle.putString("Token", h.bo(locale));
       localBundle.putString("Event", (String)localObject);
-      h.a(localf.hmX, localBundle, f.a.class, locale);
+      j.a(localh.jYH, localBundle, h.a.class, locale);
     }
   }
   
   public static boolean b(a parama)
   {
     AppMethodBeat.i(121619);
-    boolean bool = oFF.remove(parama);
+    boolean bool = rHu.remove(parama);
     Object localObject;
-    f localf;
-    if ((hno.isEmpty()) && (oFF.isEmpty()))
+    h localh;
+    if ((jZc.isEmpty()) && (rHu.isEmpty()))
     {
-      localObject = c.oFE;
-      parama = oFG;
-      localf = ((com.tencent.mm.ipcinvoker.d.d)localObject).hnu;
+      localObject = c.rHt;
+      parama = rHv;
+      localh = ((com.tencent.mm.ipcinvoker.d.d)localObject).jZj;
       localObject = ((com.tencent.mm.ipcinvoker.d.d)localObject).event;
       if ((localObject != null) && (((String)localObject).length() != 0) && (parama != null)) {
         break label77;
@@ -84,15 +84,15 @@ public final class d
       return bool;
       label77:
       Bundle localBundle = new Bundle();
-      localBundle.putString("Token", f.bo(parama));
+      localBundle.putString("Token", h.bo(parama));
       localBundle.putString("Event", (String)localObject);
-      h.a(localf.hmX, localBundle, f.b.class, null);
+      j.a(localh.jYH, localBundle, h.b.class, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.wxawidget.console.d
  * JD-Core Version:    0.7.0.1
  */

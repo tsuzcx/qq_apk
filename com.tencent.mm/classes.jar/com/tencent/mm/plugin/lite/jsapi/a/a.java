@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.lite.jsapi.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.service.r;
 import com.tencent.mm.plugin.lite.jsapi.b;
 import com.tencent.mm.plugin.lite.jsapi.b.a;
@@ -12,10 +12,10 @@ import org.json.JSONObject;
 public class a
   extends b
 {
-  public final void a(String paramString, JSONObject paramJSONObject)
+  public final void a(String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
     int j = 1;
-    AppMethodBeat.i(198836);
+    AppMethodBeat.i(234347);
     String str2 = paramJSONObject.optString("targetAppId");
     String str3 = paramJSONObject.optString("currentUrl");
     String str1 = paramJSONObject.optString("preVerifyAppId");
@@ -25,14 +25,14 @@ public class a
     }
     if (Util.isNullOrNil(str2))
     {
-      this.yEn.aCS("invalid_targetAppId");
-      AppMethodBeat.o(198836);
+      this.Ega.aNa("invalid_targetAppId");
+      AppMethodBeat.o(234347);
       return;
     }
     if (Util.isNullOrNil(paramString))
     {
-      this.yEn.aCS("invalid_referrerAppId");
-      AppMethodBeat.o(198836);
+      this.Ega.aNa("invalid_referrerAppId");
+      AppMethodBeat.o(234347);
       return;
     }
     str1 = Util.nullAsNil(paramJSONObject.optString("envVersion"));
@@ -48,9 +48,9 @@ public class a
     for (j = 0;; j = 2)
     {
       paramJSONObject = paramJSONObject.optString("path");
-      ((r)g.af(r.class)).b(MMApplicationContext.getContext(), str3, paramString, str2, j, paramJSONObject, 0);
-      this.yEn.ecz();
-      AppMethodBeat.o(198836);
+      ((r)h.ae(r.class)).b(MMApplicationContext.getContext(), str3, paramString, str2, j, paramJSONObject, 0);
+      this.Ega.eLC();
+      AppMethodBeat.o(234347);
       return;
       if (!str1.equals("develop")) {
         break;
@@ -65,7 +65,7 @@ public class a
     }
   }
   
-  public final int dTw()
+  public final int ewF()
   {
     return 1;
   }

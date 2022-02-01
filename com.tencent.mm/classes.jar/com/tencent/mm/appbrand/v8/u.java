@@ -2,7 +2,7 @@ package com.tencent.mm.appbrand.v8;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.utils.x;
+import com.tencent.mm.plugin.appbrand.utils.z;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.nio.ByteBuffer;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -10,16 +10,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class u
   implements e
 {
-  private final AtomicInteger dqV;
-  private final AtomicInteger dqW;
-  private final SparseArray<ByteBuffer> dqX;
+  private final AtomicInteger fjC;
+  private final AtomicInteger fjD;
+  private final SparseArray<ByteBuffer> fjE;
   
   public u()
   {
     AppMethodBeat.i(144103);
-    this.dqV = new AtomicInteger(0);
-    this.dqW = new AtomicInteger(0);
-    this.dqX = new SparseArray();
+    this.fjC = new AtomicInteger(0);
+    this.fjD = new AtomicInteger(0);
+    this.fjE = new SparseArray();
     AppMethodBeat.o(144103);
   }
   
@@ -35,8 +35,8 @@ public final class u
     AppMethodBeat.i(144104);
     try
     {
-      int i = this.dqV.addAndGet(1);
-      this.dqX.put(i, null);
+      int i = this.fjC.addAndGet(1);
+      this.fjE.put(i, null);
       Log.i("V8EngineBufferStore", "generateId:%d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(144104);
       return i;
@@ -49,25 +49,25 @@ public final class u
   
   public final ByteBuffer getBuffer(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(216907);
+    AppMethodBeat.i(262463);
     try
     {
-      ByteBuffer localByteBuffer1 = (ByteBuffer)this.dqX.get(paramInt);
-      this.dqX.remove(paramInt);
+      ByteBuffer localByteBuffer1 = (ByteBuffer)this.fjE.get(paramInt);
+      this.fjE.remove(paramInt);
       if (localByteBuffer1 == null)
       {
         Log.e("V8EngineBufferStore", "getBuffer:%d not contains", new Object[] { Integer.valueOf(paramInt) });
-        AppMethodBeat.o(216907);
+        AppMethodBeat.o(262463);
         return null;
       }
     }
     finally
     {
-      AppMethodBeat.o(216907);
+      AppMethodBeat.o(262463);
     }
     int i = localByteBuffer2.capacity();
-    Log.i("V8EngineBufferStore", "getBuffer:%d remains[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.dqW.addAndGet(-i)) });
-    AppMethodBeat.o(216907);
+    Log.i("V8EngineBufferStore", "getBuffer:%d remains[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.fjD.addAndGet(-i)) });
+    AppMethodBeat.o(262463);
     return localByteBuffer2;
   }
   
@@ -81,7 +81,7 @@ public final class u
       AppMethodBeat.o(144106);
       return;
     }
-    ByteBuffer localByteBuffer = x.q(paramByteBuffer);
+    ByteBuffer localByteBuffer = z.n(paramByteBuffer);
     if (!localByteBuffer.isDirect())
     {
       Log.i("V8EngineBufferStore", "setBuffer:%d cannot convert to direct buffer", new Object[] { Integer.valueOf(paramInt) });
@@ -90,13 +90,13 @@ public final class u
     }
     try
     {
-      if (this.dqX.indexOfKey(paramInt) < 0)
+      if (this.fjE.indexOfKey(paramInt) < 0)
       {
         Log.i("V8EngineBufferStore", "setBuffer:%d not contains", new Object[] { Integer.valueOf(paramInt) });
         return;
       }
-      this.dqX.put(paramInt, localByteBuffer);
-      Log.i("V8EngineBufferStore", "setBuffer %d isDirect:%b remains[%d]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramByteBuffer.isDirect()), Integer.valueOf(this.dqW.addAndGet(paramByteBuffer.capacity())) });
+      this.fjE.put(paramInt, localByteBuffer);
+      Log.i("V8EngineBufferStore", "setBuffer %d isDirect:%b remains[%d]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramByteBuffer.isDirect()), Integer.valueOf(this.fjD.addAndGet(paramByteBuffer.capacity())) });
       AppMethodBeat.o(144106);
       return;
     }
@@ -113,7 +113,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.u
  * JD-Core Version:    0.7.0.1
  */

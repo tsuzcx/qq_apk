@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.exdevice.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.exdevice.f.f;
 import com.tencent.mm.plugin.exdevice.f.g;
@@ -28,10 +28,10 @@ public final class e
   public final void a(int paramInt1, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(23152);
-    Log.i("MicroMsg.exdevice.ExDeviceCmdInit", "------initResponse------ errorCode = %d, errMsg = %s, filter = %s, challenge = %s, initScene = %d, second = %d", new Object[] { Integer.valueOf(paramInt1), paramString, b.bw(paramArrayOfByte1), b.bw(paramArrayOfByte2), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Log.i("MicroMsg.exdevice.ExDeviceCmdInit", "------initResponse------ errorCode = %d, errMsg = %s, filter = %s, challenge = %s, initScene = %d, second = %d", new Object[] { Integer.valueOf(paramInt1), paramString, b.bK(paramArrayOfByte1), b.bK(paramArrayOfByte2), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     g localg = new g();
-    localg.rCc = aQ(0, "ok");
-    paramString = z.aTY();
+    localg.vhK = aP(0, "ok");
+    paramString = z.bcZ();
     long l;
     label159:
     label196:
@@ -45,29 +45,29 @@ public final class e
         Log.e("MicroMsg.exdevice.Util", "get hash code failed, value is null or nill");
         l = 0L;
         paramString = new int[] { (int)(l >> 32 & 0xFFFFFFFF), (int)(l & 0xFFFFFFFF) };
-        localg.rBP = paramString[0];
-        localg.rBQ = paramString[1];
+        localg.vhx = paramString[0];
+        localg.vhy = paramString[1];
         if (!Util.isNullOrNil(paramArrayOfByte2))
         {
           if ((paramArrayOfByte2 != null) && (paramArrayOfByte2.length != 0)) {
             break label532;
           }
           paramInt1 = 0;
-          localg.rBR = paramInt1;
+          localg.vhz = paramInt1;
         }
         if (!Util.isNullOrNil(paramArrayOfByte1))
         {
           if ((paramArrayOfByte1[0] & 0x4) != 0) {
-            localg.oTJ = com.tencent.mm.protocal.d.KyJ;
+            localg.rVH = com.tencent.mm.protocal.d.RAx;
           }
           if ((paramArrayOfByte1[0] & 0x8) != 0) {
-            localg.rBW = com.tencent.mm.protocal.d.KyM;
+            localg.vhE = com.tencent.mm.protocal.d.RAA;
           }
           if ((paramArrayOfByte1[0] & 0x2) != 0) {
-            localg.rBV = 2;
+            localg.vhD = 2;
           }
           if ((paramArrayOfByte1[0] & 0x10) != 0) {
-            localg.rBX = ((int)Util.nowSecond());
+            localg.vhF = ((int)Util.nowSecond());
           }
           if ((paramArrayOfByte1[0] & 0x20) != 0)
           {
@@ -86,17 +86,17 @@ public final class e
     {
       int j = i / 3600 + paramInt1;
       Log.i("MicroMsg.exdevice.Util", "getTimeZone, rawSecond = %d, dt = %d, re = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(j) });
-      localg.rBY = j;
+      localg.vhG = j;
       if ((paramArrayOfByte1[0] & 0x40) != 0) {
-        localg.rBZ = b.cMi();
+        localg.vhH = b.daW();
       }
       if ((paramArrayOfByte1[0] & 0x1) != 0) {
-        localg.rBU = z.aUa();
+        localg.vhC = z.bdb();
       }
-      localg.rBS = paramInt2;
-      localg.rBT = paramInt3;
-      this.rxz = localg;
-      this.rxx = 20003;
+      localg.vhA = paramInt2;
+      localg.vhB = paramInt3;
+      this.vdf = localg;
+      this.vdd = 20003;
       AppMethodBeat.o(23152);
       return;
       j = 0;
@@ -127,7 +127,7 @@ public final class e
     }
   }
   
-  protected final a bu(byte[] paramArrayOfByte)
+  protected final a bI(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23151);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
@@ -141,7 +141,7 @@ public final class e
     {
       localf.parseFrom(paramArrayOfByte);
       Log.i("MicroMsg.exdevice.ExDeviceCmdInit", "------Init Request parse is ok------ ");
-      this.rxA = localf;
+      this.vdg = localf;
       AppMethodBeat.o(23151);
       return localf;
     }
@@ -156,7 +156,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.c.e
  * JD-Core Version:    0.7.0.1
  */

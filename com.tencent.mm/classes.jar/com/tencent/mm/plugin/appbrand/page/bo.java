@@ -1,190 +1,352 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.a.h;
-import com.tencent.mm.plugin.appbrand.page.c.a;
-import com.tencent.mm.plugin.appbrand.page.c.c.b;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.page.a.f;
+import com.tencent.mm.plugin.appbrand.page.a.f.a;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/page/MPPageViewStatusBarExtensionImpl;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewStatusBarExtension;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewExtensionLifecycle;", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;)V", "H", "Lcom/tencent/mm/plugin/appbrand/page/statusbar/IPageStatusBarHelper;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;Lcom/tencent/mm/plugin/appbrand/page/statusbar/IPageStatusBarHelper;)V", "hideStatusBar", "", "isStatusBarHidden", "", "onActionbarInstalled", "actionBar", "Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar;", "onBackground", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onDestroy", "onForeground", "showStatusBar", "luggage-wechat-full-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewPullDownExtension;", "mPageView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "mPullDownWrapper", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPullDownWebView;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;Lcom/tencent/mm/plugin/appbrand/page/AppBrandPullDownWebView;)V", "TAG", "", "enablePullDown", "", "enable", "", "enablePullDownRefresh", "getPullDownBackgroundColor", "", "requestDisallowInterceptTouchEvent", "disallow", "runOnUiThread", "block", "Lkotlin/Function0;", "setPullDownBackground", "style", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewPullDownExtension$BackgroundTextStyle;", "color", "colorStr", "setPullDownBackgroundStyle", "setPullDownText", "text", "startPullDownRefresh", "stopPullDownRefresh", "luggage-wechat-full-sdk_release"})
 public class bo
-  implements com.tencent.mm.plugin.appbrand.page.a.b, h
+  implements f
 {
-  private final ac cxr;
-  private final com.tencent.mm.plugin.appbrand.page.c.c nuj;
+  private final String TAG;
+  private final ad cvo;
+  private final ak qoJ;
   
-  public bo(ac paramac)
+  public bo(ad paramad, ak paramak)
   {
-    this(paramac, localc);
-    AppMethodBeat.i(148006);
-    AppMethodBeat.o(148006);
+    AppMethodBeat.i(147996);
+    this.cvo = paramad;
+    this.qoJ = paramak;
+    this.TAG = "Luggage.MPPageViewPullDownExtensionImpl";
+    AppMethodBeat.o(147996);
   }
   
-  public bo(ac paramac, com.tencent.mm.plugin.appbrand.page.c.c paramc)
+  public void a(final f.a parama, final int paramInt)
   {
-    AppMethodBeat.i(148005);
-    this.cxr = paramac;
-    this.nuj = paramc;
-    AppMethodBeat.o(148005);
-  }
-  
-  public final void Nj()
-  {
-    AppMethodBeat.i(148000);
-    Object localObject = (d)this.cxr;
-    if (MMHandlerThread.isMainThread())
+    AppMethodBeat.i(147991);
+    p.k(parama, "style");
+    if (!this.cvo.isRunning())
     {
-      this.nuj.Nj();
-      AppMethodBeat.o(148000);
+      com.tencent.mm.sdk.platformtools.Log.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + android.util.Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147991);
       return;
     }
-    localObject = ((d)localObject).getContentView();
-    if (localObject != null)
+    this.cvo.P((Runnable)new d(this, this, parama, paramInt));
+    AppMethodBeat.o(147991);
+  }
+  
+  public final void alQ(final String paramString)
+  {
+    AppMethodBeat.i(147993);
+    p.k(paramString, "style");
+    if (!this.cvo.isRunning())
     {
-      ((View)localObject).post((Runnable)new c(this));
-      AppMethodBeat.o(148000);
+      com.tencent.mm.sdk.platformtools.Log.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + android.util.Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147993);
       return;
     }
-    AppMethodBeat.o(148000);
+    this.cvo.P((Runnable)new f(this, this, paramString));
+    AppMethodBeat.o(147993);
   }
   
-  public final void Nk()
+  public final void cfe()
   {
-    AppMethodBeat.i(148001);
-    Object localObject = (d)this.cxr;
-    if (MMHandlerThread.isMainThread())
+    AppMethodBeat.i(147987);
+    com.tencent.mm.sdk.platformtools.Log.i(this.TAG, "AppBrandPullDown invoke entered startPullDownRefresh appId:" + this.cvo.getAppId() + " url:" + this.cvo.btD());
+    if (!this.cvo.isRunning())
     {
-      this.nuj.Nk();
-      AppMethodBeat.o(148001);
+      com.tencent.mm.sdk.platformtools.Log.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + android.util.Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147987);
       return;
     }
-    localObject = ((d)localObject).getContentView();
-    if (localObject != null)
+    this.cvo.P((Runnable)new h(this, this));
+    AppMethodBeat.o(147987);
+  }
+  
+  public final void cff()
+  {
+    AppMethodBeat.i(147988);
+    if (!this.cvo.isRunning())
     {
-      ((View)localObject).post((Runnable)new a(this));
-      AppMethodBeat.o(148001);
+      com.tencent.mm.sdk.platformtools.Log.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + android.util.Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147988);
       return;
     }
-    AppMethodBeat.o(148001);
+    this.cvo.P((Runnable)new i(this, this));
+    AppMethodBeat.o(147988);
   }
   
-  public final boolean Nm()
+  public void eS(final String paramString1, final String paramString2)
   {
-    AppMethodBeat.i(148004);
-    if (this.nuj.Nl() == c.b.nwa)
+    AppMethodBeat.i(147992);
+    if (!this.cvo.isRunning())
     {
-      AppMethodBeat.o(148004);
-      return true;
-    }
-    AppMethodBeat.o(148004);
-    return false;
-  }
-  
-  public final void a(com.tencent.mm.plugin.appbrand.widget.actionbar.b paramb)
-  {
-    AppMethodBeat.i(230122);
-    p.h(paramb, "actionBar");
-    AppMethodBeat.o(230122);
-  }
-  
-  public final void onBackground() {}
-  
-  public final void onConfigurationChanged(final Configuration paramConfiguration)
-  {
-    AppMethodBeat.i(148003);
-    p.h(paramConfiguration, "newConfig");
-    com.tencent.mm.plugin.appbrand.page.c.c localc = this.nuj;
-    Object localObject = localc;
-    if (!(localc instanceof a)) {
-      localObject = null;
-    }
-    localObject = (a)localObject;
-    if (localObject != null)
-    {
-      this.cxr.post((Runnable)new b((a)localObject, this, paramConfiguration));
-      AppMethodBeat.o(148003);
+      com.tencent.mm.sdk.platformtools.Log.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + android.util.Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147992);
       return;
     }
-    AppMethodBeat.o(148003);
+    this.cvo.P((Runnable)new e(this, this, paramString1, paramString2));
+    AppMethodBeat.o(147992);
   }
   
-  public final void onDestroy() {}
-  
-  public final void onForeground()
+  public final void jg(final boolean paramBoolean)
   {
-    AppMethodBeat.i(148002);
-    this.nuj.MV();
-    Object localObject2 = this.nuj;
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof a)) {
-      localObject1 = null;
-    }
-    localObject1 = (a)localObject1;
-    if (localObject1 != null)
+    AppMethodBeat.i(147989);
+    if (!this.cvo.isRunning())
     {
-      boolean bool = this.cxr.getWindowAndroid().OD();
-      localObject2 = this.cxr.getContext();
-      p.g(localObject2, "page.context");
-      localObject2 = ((Context)localObject2).getResources();
-      p.g(localObject2, "page.context.resources");
-      ((a)localObject1).u(bool, ((Resources)localObject2).getConfiguration().orientation);
-      AppMethodBeat.o(148002);
+      com.tencent.mm.sdk.platformtools.Log.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + android.util.Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147989);
       return;
     }
-    AppMethodBeat.o(148002);
+    this.cvo.P((Runnable)new b(this, this, paramBoolean));
+    AppMethodBeat.o(147989);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/AppBrandComponentViewWxa$runOnUiThread$1"})
+  public final void ji(final boolean paramBoolean)
+  {
+    AppMethodBeat.i(147990);
+    if (!this.cvo.isRunning())
+    {
+      com.tencent.mm.sdk.platformtools.Log.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + android.util.Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147990);
+      return;
+    }
+    this.cvo.P((Runnable)new a(this, this, paramBoolean));
+    AppMethodBeat.o(147990);
+  }
+  
+  public final void requestDisallowInterceptTouchEvent(final boolean paramBoolean)
+  {
+    AppMethodBeat.i(147995);
+    if (!this.cvo.isRunning())
+    {
+      com.tencent.mm.sdk.platformtools.Log.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + android.util.Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147995);
+      return;
+    }
+    this.cvo.P((Runnable)new c(this, this, paramBoolean));
+    AppMethodBeat.o(147995);
+  }
+  
+  public final void setPullDownText(final String paramString)
+  {
+    AppMethodBeat.i(147994);
+    p.k(paramString, "text");
+    if (!this.cvo.isRunning())
+    {
+      com.tencent.mm.sdk.platformtools.Log.e(this.TAG, "runOnUiThread PageView destroyed, stack=" + android.util.Log.getStackTraceString(new Throwable()));
+      AppMethodBeat.o(147994);
+      return;
+    }
+    this.cvo.P((Runnable)new g(this, this, paramString));
+    AppMethodBeat.o(147994);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
   public static final class a
     implements Runnable
   {
-    public a(bo parambo) {}
+    public a(bo parambo1, bo parambo2, boolean paramBoolean) {}
     
     public final void run()
     {
-      AppMethodBeat.i(147997);
-      bo.a(this.nuk).Nk();
-      AppMethodBeat.o(147997);
+      AppMethodBeat.i(147978);
+      if (!bo.b(this.qvF).isRunning())
+      {
+        com.tencent.mm.sdk.platformtools.Log.e(bo.a(this.qvF), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147978);
+        return;
+      }
+      bo.c(jdField_this).setPullDownEnabled(paramBoolean);
+      AppMethodBeat.o(147978);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewStatusBarExtensionImpl$onConfigurationChanged$1$1"})
-  static final class b
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class b
     implements Runnable
   {
-    b(a parama, bo parambo, Configuration paramConfiguration) {}
+    public b(bo parambo1, bo parambo2, boolean paramBoolean) {}
     
     public final void run()
     {
-      AppMethodBeat.i(147998);
-      this.nul.u(bo.b(jdField_this).getWindowAndroid().OD(), paramConfiguration.orientation);
-      AppMethodBeat.o(147998);
+      AppMethodBeat.i(147979);
+      if (!bo.b(this.qvF).isRunning())
+      {
+        com.tencent.mm.sdk.platformtools.Log.e(bo.a(this.qvF), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147979);
+        return;
+      }
+      bo.c(jdField_this).setPullDownEnabled(paramBoolean);
+      bo.c(jdField_this).jg(paramBoolean);
+      AppMethodBeat.o(147979);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/AppBrandComponentViewWxa$runOnUiThread$1"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
   public static final class c
     implements Runnable
   {
-    public c(bo parambo) {}
+    public c(bo parambo1, bo parambo2, boolean paramBoolean) {}
     
     public final void run()
     {
-      AppMethodBeat.i(147999);
-      bo.a(this.nuk).Nj();
-      AppMethodBeat.o(147999);
+      AppMethodBeat.i(147980);
+      if (!bo.b(this.qvF).isRunning())
+      {
+        com.tencent.mm.sdk.platformtools.Log.e(bo.a(this.qvF), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147980);
+        return;
+      }
+      bo.c(jdField_this).requestDisallowInterceptTouchEvent(paramBoolean);
+      AppMethodBeat.o(147980);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class d
+    implements Runnable
+  {
+    public d(bo parambo1, bo parambo2, f.a parama, int paramInt) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147981);
+      if (!bo.b(this.qvF).isRunning())
+      {
+        com.tencent.mm.sdk.platformtools.Log.e(bo.a(this.qvF), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147981);
+        return;
+      }
+      bo.c(jdField_this).cz(parama.cfF(), paramInt);
+      AppMethodBeat.o(147981);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class e
+    implements Runnable
+  {
+    public e(bo parambo1, bo parambo2, String paramString1, String paramString2) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147982);
+      if (!bo.b(this.qvF).isRunning())
+      {
+        com.tencent.mm.sdk.platformtools.Log.e(bo.a(this.qvF), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147982);
+        return;
+      }
+      bo.c(jdField_this).cz(paramString1, g.cO(paramString2, -1));
+      AppMethodBeat.o(147982);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class f
+    implements Runnable
+  {
+    public f(bo parambo1, bo parambo2, String paramString) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147983);
+      if (!bo.b(this.qvF).isRunning())
+      {
+        com.tencent.mm.sdk.platformtools.Log.e(bo.a(this.qvF), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147983);
+        return;
+      }
+      bo.c(jdField_this).setBackgroundTextStyle(paramString);
+      AppMethodBeat.o(147983);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class g
+    implements Runnable
+  {
+    public g(bo parambo1, bo parambo2, String paramString) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147984);
+      if (!bo.b(this.qvF).isRunning())
+      {
+        com.tencent.mm.sdk.platformtools.Log.e(bo.a(this.qvF), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147984);
+        return;
+      }
+      bo.c(jdField_this).setPullDownText(paramString);
+      AppMethodBeat.o(147984);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class h
+    implements Runnable
+  {
+    public h(bo parambo1, bo parambo2) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147985);
+      if (!bo.b(this.qvF).isRunning())
+      {
+        com.tencent.mm.sdk.platformtools.Log.e(bo.a(this.qvF), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147985);
+        return;
+      }
+      com.tencent.mm.sdk.platformtools.Log.i(bo.a(jdField_this), "AppBrandPullDown OnUiThread startPullDownRefresh appId:" + bo.b(jdField_this).getAppId() + " url:" + bo.b(jdField_this).btD());
+      try
+      {
+        bd localbd = bo.b(jdField_this).cea();
+        p.j(localbd, "mPageView.webView");
+        if (localbd.getWebScrollY() != 0) {
+          bo.b(jdField_this).cea().PE();
+        }
+        bo.c(jdField_this).jg(true);
+        bo.c(jdField_this).ceM();
+        AppMethodBeat.o(147985);
+        return;
+      }
+      catch (NullPointerException localNullPointerException)
+      {
+        com.tencent.mm.sdk.platformtools.Log.e(bo.a(jdField_this), "AppBrandPullDown OnUiThread startPullDownRefresh appId:" + bo.b(jdField_this).getAppId() + " url:" + bo.b(jdField_this).btD() + " e:" + localNullPointerException);
+        Throwable localThrowable = (Throwable)localNullPointerException;
+        AppMethodBeat.o(147985);
+        throw localThrowable;
+      }
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewPullDownExtensionImpl$runOnUiThread$1"})
+  public static final class i
+    implements Runnable
+  {
+    public i(bo parambo1, bo parambo2) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(147986);
+      if (!bo.b(this.qvF).isRunning())
+      {
+        com.tencent.mm.sdk.platformtools.Log.e(bo.a(this.qvF), "runOnUiThread in ui-thread PageView destroyed");
+        AppMethodBeat.o(147986);
+        return;
+      }
+      bo.c(jdField_this).ceQ();
+      AppMethodBeat.o(147986);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bo
  * JD-Core Version:    0.7.0.1
  */

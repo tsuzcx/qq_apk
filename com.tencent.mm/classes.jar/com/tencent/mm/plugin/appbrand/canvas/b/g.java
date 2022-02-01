@@ -36,7 +36,7 @@ public final class g
     return true;
   }
   
-  public final BasePathActionArg bzv()
+  public final BasePathActionArg bKK()
   {
     AppMethodBeat.i(145371);
     PathLineToActionArg localPathLineToActionArg = new PathLineToActionArg();
@@ -51,7 +51,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.b.g
  * JD-Core Version:    0.7.0.1
  */

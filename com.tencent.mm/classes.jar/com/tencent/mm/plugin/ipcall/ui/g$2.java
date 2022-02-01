@@ -11,13 +11,13 @@ final class g$2
   public final void run()
   {
     AppMethodBeat.i(25770);
-    g.a(this.ywg).fullScroll(130);
+    g.a(this.DWk).fullScroll(130);
     AppMethodBeat.o(25770);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.g.2
  * JD-Core Version:    0.7.0.1
  */

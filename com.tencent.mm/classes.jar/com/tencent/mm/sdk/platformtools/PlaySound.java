@@ -20,9 +20,9 @@ public class PlaySound
   
   public static void play(Context paramContext, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(230372);
+    AppMethodBeat.i(194164);
     playRoot(paramContext, paramInt1, PlaySound.SPEAKERON.NOTSET, paramInt2, false, null);
-    AppMethodBeat.o(230372);
+    AppMethodBeat.o(194164);
   }
   
   public static void play(Context paramContext, int paramInt, OnPlayCompletionListener paramOnPlayCompletionListener)
@@ -34,43 +34,43 @@ public class PlaySound
   
   public static void play(Context paramContext, int paramInt, boolean paramBoolean, OnPlayCompletionListener paramOnPlayCompletionListener)
   {
-    AppMethodBeat.i(230371);
+    AppMethodBeat.i(194163);
     if (paramBoolean) {}
     for (PlaySound.SPEAKERON localSPEAKERON = PlaySound.SPEAKERON.ON;; localSPEAKERON = PlaySound.SPEAKERON.OFF)
     {
       playRoot(paramContext, paramInt, localSPEAKERON, false, paramOnPlayCompletionListener);
-      AppMethodBeat.o(230371);
+      AppMethodBeat.o(194163);
       return;
     }
   }
   
   public static void play(Context paramContext, int paramInt, boolean paramBoolean1, boolean paramBoolean2, OnPlayCompletionListener paramOnPlayCompletionListener)
   {
-    AppMethodBeat.i(230370);
+    AppMethodBeat.i(194161);
     if (paramBoolean1) {}
     for (PlaySound.SPEAKERON localSPEAKERON = PlaySound.SPEAKERON.ON;; localSPEAKERON = PlaySound.SPEAKERON.OFF)
     {
       playRoot(paramContext, paramInt, localSPEAKERON, paramBoolean2, paramOnPlayCompletionListener);
-      AppMethodBeat.o(230370);
+      AppMethodBeat.o(194161);
       return;
     }
   }
   
   public static void playLoop(Context paramContext, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(230373);
+    AppMethodBeat.i(194165);
     playRoot(paramContext, paramInt1, PlaySound.SPEAKERON.NOTSET, paramInt2, true, null);
-    AppMethodBeat.o(230373);
+    AppMethodBeat.o(194165);
   }
   
   public static MediaPlayer playReturn(Context paramContext, int paramInt, boolean paramBoolean, OnPlayCompletionListener paramOnPlayCompletionListener)
   {
-    AppMethodBeat.i(230369);
+    AppMethodBeat.i(194158);
     if (paramBoolean) {}
     for (PlaySound.SPEAKERON localSPEAKERON = PlaySound.SPEAKERON.ON;; localSPEAKERON = PlaySound.SPEAKERON.OFF)
     {
       paramContext = playRoot(paramContext, paramInt, localSPEAKERON, false, paramOnPlayCompletionListener);
-      AppMethodBeat.o(230369);
+      AppMethodBeat.o(194158);
       return paramContext;
     }
   }
@@ -378,9 +378,9 @@ public class PlaySound
   
   public static MediaPlayer playRoot(Context paramContext, int paramInt, PlaySound.SPEAKERON paramSPEAKERON, boolean paramBoolean, OnPlayCompletionListener paramOnPlayCompletionListener)
   {
-    AppMethodBeat.i(230368);
+    AppMethodBeat.i(194149);
     paramContext = playRoot(paramContext, paramInt, paramSPEAKERON, -1, paramBoolean, paramOnPlayCompletionListener);
-    AppMethodBeat.o(230368);
+    AppMethodBeat.o(194149);
     return paramContext;
   }
   
@@ -391,7 +391,7 @@ public class PlaySound
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.PlaySound
  * JD-Core Version:    0.7.0.1
  */

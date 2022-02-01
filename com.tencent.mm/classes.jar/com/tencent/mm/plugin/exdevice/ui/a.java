@@ -1,9 +1,7 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,45 +10,53 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.aa;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.model.cm;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.appbrand.service.q;
 import com.tencent.mm.plugin.appbrand.service.q.a;
-import com.tencent.mm.pluginsdk.i.f;
+import com.tencent.mm.pluginsdk.j.f;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.protobuf.bxc;
-import com.tencent.mm.protocal.protobuf.ecf;
-import com.tencent.mm.protocal.protobuf.ecx;
+import com.tencent.mm.protocal.protobuf.cew;
+import com.tencent.mm.protocal.protobuf.emg;
+import com.tencent.mm.protocal.protobuf.emy;
+import com.tencent.mm.ui.component.g;
+import com.tencent.mm.ui.component.g.a;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import kotlin.a.j;
+import kotlin.g.b.aa.f;
 import kotlin.g.b.p;
-import kotlin.g.b.z.f;
 import kotlin.t;
 
 final class a
   extends BaseAdapter
 {
   private Context context;
-  private boolean rIK;
   private String username;
+  private boolean vos;
   
   public a(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(231697);
+    AppMethodBeat.i(282535);
     this.context = paramContext;
     this.username = paramString;
-    this.rIK = z.aTY().equals(paramString);
-    AppMethodBeat.o(231697);
+    this.vos = z.bcZ().equals(paramString);
+    AppMethodBeat.o(282535);
   }
   
   public final int getCount()
   {
-    if (this.rIK) {
+    if (this.vos) {
       return 2;
     }
     return 1;
@@ -83,8 +89,8 @@ final class a
     paramViewGroup = paramView;
     if (paramView == null)
     {
-      paramView = com.tencent.mm.ui.component.a.PRN;
-      paramViewGroup = (SportProfileUIC)com.tencent.mm.ui.component.a.ko(this.context).get(SportProfileUIC.class);
+      paramView = g.Xox;
+      paramViewGroup = (e)g.lm(this.context).i(e.class);
     }
     Object localObject1;
     String str;
@@ -93,11 +99,11 @@ final class a
     default: 
       paramView = null;
       paramViewGroup = paramView;
-      paramView = com.tencent.mm.ui.component.a.PRN;
-      localObject1 = (SportProfileUIC)com.tencent.mm.ui.component.a.ko(this.context).get(SportProfileUIC.class);
+      paramView = g.Xox;
+      localObject1 = (e)g.lm(this.context).i(e.class);
       str = this.username;
-      p.h(paramViewGroup, "itemView");
-      p.h(str, "username");
+      p.k(paramViewGroup, "itemView");
+      p.k(str, "username");
       switch (paramInt)
       {
       }
@@ -107,66 +113,66 @@ final class a
     {
       AppMethodBeat.o(24078);
       return paramViewGroup;
-      paramView = LayoutInflater.from((Context)paramViewGroup.getActivity()).inflate(2131494032, null);
-      paramViewGroup = new SportProfileUIC.a(paramViewGroup);
-      paramViewGroup.rMS = paramView.findViewById(2131301650);
-      paramViewGroup.rMT = paramView.findViewById(2131299728);
+      paramView = LayoutInflater.from((Context)paramViewGroup.getActivity()).inflate(R.i.egB, null);
+      paramViewGroup = new e.a(paramViewGroup);
+      paramViewGroup.vsC = paramView.findViewById(R.h.follow_layout);
+      paramViewGroup.vsD = paramView.findViewById(R.h.dEV);
       paramView.setTag(paramViewGroup);
       break;
-      paramView = LayoutInflater.from((Context)paramViewGroup.getActivity()).inflate(2131494033, null);
-      paramViewGroup = new SportProfileUIC.b(paramViewGroup);
-      localObject1 = paramView.findViewById(2131300204);
+      paramView = LayoutInflater.from((Context)paramViewGroup.getActivity()).inflate(R.i.egC, null);
+      paramViewGroup = new e.b(paramViewGroup);
+      localObject1 = paramView.findViewById(R.h.dGa);
       if (localObject1 == null)
       {
         paramView = new t("null cannot be cast to non-null type android.widget.ImageView");
         AppMethodBeat.o(24078);
         throw paramView;
       }
-      paramViewGroup.qyu = ((ImageView)localObject1);
-      localObject1 = paramView.findViewById(2131299419);
+      paramViewGroup.tXu = ((ImageView)localObject1);
+      localObject1 = paramView.findViewById(R.h.date_tv);
       if (localObject1 == null)
       {
         paramView = new t("null cannot be cast to non-null type android.widget.TextView");
         AppMethodBeat.o(24078);
         throw paramView;
       }
-      paramViewGroup.qpf = ((TextView)localObject1);
-      localObject1 = paramView.findViewById(2131300200);
+      paramViewGroup.tNP = ((TextView)localObject1);
+      localObject1 = paramView.findViewById(R.h.dFW);
       if (localObject1 == null)
       {
         paramView = new t("null cannot be cast to non-null type android.widget.TextView");
         AppMethodBeat.o(24078);
         throw paramView;
       }
-      paramViewGroup.rIw = ((TextView)localObject1);
-      localObject1 = paramView.findViewById(2131300206);
+      paramViewGroup.voe = ((TextView)localObject1);
+      localObject1 = paramView.findViewById(R.h.dGb);
       if (localObject1 == null)
       {
         paramView = new t("null cannot be cast to non-null type android.widget.TextView");
         AppMethodBeat.o(24078);
         throw paramView;
       }
-      paramViewGroup.rMV = ((TextView)localObject1);
-      localObject1 = paramView.findViewById(2131300181);
+      paramViewGroup.vsF = ((TextView)localObject1);
+      localObject1 = paramView.findViewById(R.h.dFM);
       if (localObject1 == null)
       {
         paramView = new t("null cannot be cast to non-null type android.widget.TextView");
         AppMethodBeat.o(24078);
         throw paramView;
       }
-      paramViewGroup.rMW = ((TextView)localObject1);
-      localObject1 = paramView.findViewById(2131297002);
+      paramViewGroup.vsG = ((TextView)localObject1);
+      localObject1 = paramView.findViewById(R.h.drr);
       if (localObject1 == null)
       {
         paramView = new t("null cannot be cast to non-null type android.widget.LinearLayout");
         AppMethodBeat.o(24078);
         throw paramView;
       }
-      paramViewGroup.rMX = ((LinearLayout)localObject1);
-      paramViewGroup.rMY = paramView.findViewById(2131297001);
-      paramViewGroup.rMZ = paramView.findViewById(2131309262);
-      paramViewGroup.rNa = ((ImageView)paramView.findViewById(2131300199));
-      paramViewGroup.rNb = ((TextView)paramView.findViewById(2131296529));
+      paramViewGroup.vsH = ((LinearLayout)localObject1);
+      paramViewGroup.vsI = paramView.findViewById(R.h.drq);
+      paramViewGroup.vsJ = paramView.findViewById(R.h.dXE);
+      paramViewGroup.vsK = ((ImageView)paramView.findViewById(R.h.dFV));
+      paramViewGroup.vsL = ((TextView)paramView.findViewById(R.h.dqd));
       paramView.setTag(paramViewGroup);
       break;
       paramView = paramViewGroup.getTag();
@@ -176,17 +182,17 @@ final class a
         AppMethodBeat.o(24078);
         throw paramView;
       }
-      paramView = (SportProfileUIC.a)paramView;
-      Object localObject2 = paramView.rMT;
+      paramView = (e.a)paramView;
+      Object localObject2 = paramView.vsD;
       if (localObject2 != null) {
-        ((View)localObject2).setOnClickListener((View.OnClickListener)new SportProfileUIC.d((SportProfileUIC)localObject1));
+        ((View)localObject2).setOnClickListener((View.OnClickListener)new e.d((e)localObject1));
       }
-      paramView = paramView.rMS;
+      paramView = paramView.vsC;
       if (paramView != null)
       {
-        paramView.setOnClickListener((View.OnClickListener)new SportProfileUIC.f((SportProfileUIC)localObject1));
+        paramView.setOnClickListener((View.OnClickListener)new e.f((e)localObject1));
         continue;
-        localObject2 = new z.f();
+        localObject2 = new aa.f();
         paramView = paramViewGroup.getTag();
         if (paramView == null)
         {
@@ -194,209 +200,209 @@ final class a
           AppMethodBeat.o(24078);
           throw paramView;
         }
-        ((z.f)localObject2).SYG = ((SportProfileUIC.b)paramView);
-        a.b.c(((SportProfileUIC.b)((z.f)localObject2).SYG).qyu, str);
-        paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMV;
+        ((aa.f)localObject2).aaBC = ((e.b)paramView);
+        a.b.c(((e.b)((aa.f)localObject2).aaBC).tXu, str);
+        paramView = ((e.b)((aa.f)localObject2).aaBC).vsF;
         if (paramView != null) {
-          paramView.setText((CharSequence)aa.getDisplayName(str));
+          paramView.setText((CharSequence)aa.PJ(str));
         }
-        paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).qpf;
+        paramView = ((e.b)((aa.f)localObject2).aaBC).tNP;
         if (paramView != null) {
-          paramView.setText((CharSequence)f.formatTime(((SportProfileUIC)localObject1).getActivity().getString(2131760813), cl.aWB()));
+          paramView.setText((CharSequence)f.formatTime(((e)localObject1).getActivity().getString(R.l.fmt_date), cm.bfF()));
         }
-        paramView = ((SportProfileUIC)localObject1).rMR;
-        label834:
-        label875:
+        paramView = ((e)localObject1).vsB;
+        label849:
+        label890:
         Object localObject3;
-        label952:
-        label1016:
-        label1020:
-        z.f localf;
-        label1066:
-        label1095:
+        label967:
+        label1110:
+        aa.f localf;
+        label1031:
+        label1035:
+        label1081:
         Object localObject4;
         if (paramView != null)
         {
-          paramView = paramView.KHS;
+          paramView = paramView.RJm;
           if (paramView != null)
           {
-            paramView = (ecx)j.kv((List)paramView);
+            paramView = (emy)j.lr((List)paramView);
             if (paramView != null)
             {
-              paramInt = paramView.lCq;
-              paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMW;
+              paramInt = paramView.oxQ;
+              paramView = ((e.b)((aa.f)localObject2).aaBC).vsG;
               if (paramView != null) {
                 paramView.setText((CharSequence)String.valueOf(paramInt));
               }
               if (paramInt < 10000) {
-                break label1415;
+                break label1430;
               }
-              paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMW;
+              paramView = ((e.b)((aa.f)localObject2).aaBC).vsG;
               if (paramView != null) {
-                paramView.setTextColor(((SportProfileUIC)localObject1).getActivity().getResources().getColor(2131100342));
+                paramView.setTextColor(((e)localObject1).getActivity().getResources().getColor(R.e.dkt));
               }
-              paramView = ((SportProfileUIC)localObject1).rMR;
-              if ((paramView == null) || (paramView.ApK != true)) {
-                break label1452;
+              paramView = ((e)localObject1).vsB;
+              if ((paramView == null) || (paramView.Gbs != true)) {
+                break label1467;
               }
-              paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rNa;
+              paramView = ((e.b)((aa.f)localObject2).aaBC).vsK;
               if (paramView != null) {
-                paramView.setImageResource(2131690082);
+                paramView.setImageResource(R.k.device_rank_item_liked);
               }
-              if (p.j(str, z.aTY()))
+              if (p.h(str, z.bcZ()))
               {
-                paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rNa;
+                paramView = ((e.b)((aa.f)localObject2).aaBC).vsK;
                 if (paramView != null) {
-                  paramView.setOnClickListener((View.OnClickListener)new SportProfileUIC.g((SportProfileUIC)localObject1));
+                  paramView.setOnClickListener((View.OnClickListener)new e.g((e)localObject1));
                 }
               }
-              paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rIw;
+              paramView = ((e.b)((aa.f)localObject2).aaBC).voe;
               if (paramView != null)
               {
-                localObject3 = ((SportProfileUIC)localObject1).rMR;
+                localObject3 = ((e)localObject1).vsB;
                 if (localObject3 == null) {
-                  break label1478;
+                  break label1493;
                 }
-                paramInt = ((bxc)localObject3).Lqb;
+                paramInt = ((cew)localObject3).Sry;
                 paramView.setText((CharSequence)String.valueOf(paramInt));
               }
-              paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMX;
+              paramView = ((e.b)((aa.f)localObject2).aaBC).vsH;
               if (paramView != null) {
                 paramView.removeAllViews();
               }
-              paramView = ((SportProfileUIC)localObject1).rMR;
+              paramView = ((e)localObject1).vsB;
               if (paramView == null) {
-                break label1493;
+                break label1508;
               }
-              paramView = paramView.McT;
+              paramView = paramView.Tmu;
               if (paramView == null) {
-                break label1493;
+                break label1508;
               }
               if (((Collection)paramView).isEmpty()) {
-                break label1483;
+                break label1498;
               }
               paramInt = 1;
               if (paramInt == 0) {
-                break label1488;
+                break label1503;
               }
               if (paramView == null) {
-                break label1493;
+                break label1508;
               }
-              paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMX;
+              paramView = ((e.b)((aa.f)localObject2).aaBC).vsH;
               if (paramView != null) {
                 paramView.setVisibility(0);
               }
-              paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMY;
+              paramView = ((e.b)((aa.f)localObject2).aaBC).vsI;
               if (paramView != null) {
                 paramView.setVisibility(0);
               }
-              paramView = ((SportProfileUIC)localObject1).rMR;
+              paramView = ((e)localObject1).vsB;
               if (paramView == null) {
-                break label1574;
+                break label1589;
               }
-              paramView = paramView.McT;
+              paramView = paramView.Tmu;
               if (paramView == null) {
-                break label1574;
+                break label1589;
               }
               paramView = ((Iterable)paramView).iterator();
               if (!paramView.hasNext()) {
-                break label1574;
+                break label1589;
               }
-              localObject3 = (ecf)paramView.next();
-              localf = new z.f();
-              localf.SYG = ((SportProfileUIC)localObject1).getActivity().getLayoutInflater().inflate(2131494034, (ViewGroup)((SportProfileUIC.b)((z.f)localObject2).SYG).rMX, false);
-              localObject4 = ((View)localf.SYG).findViewById(2131296987);
-              p.g(localObject4, "view.findViewById<TextVi…(R.id.appbrand_info_1_tv)");
-              ((TextView)localObject4).setText((CharSequence)((ecf)localObject3).Ncs);
-              localObject4 = ((View)localf.SYG).findViewById(2131296988);
-              p.g(localObject4, "view.findViewById<TextVi…(R.id.appbrand_info_2_tv)");
-              ((TextView)localObject4).setText((CharSequence)String.valueOf(((ecf)localObject3).Nct));
-              localObject4 = ((View)localf.SYG).findViewById(2131296989);
-              p.g(localObject4, "view.findViewById<TextVi…(R.id.appbrand_info_3_tv)");
-              ((TextView)localObject4).setText((CharSequence)((ecf)localObject3).Ncu);
-              localObject4 = (ImageView)((View)localf.SYG).findViewById(2131296986);
-              if (!(p.j("21f9d636b41b25be", ((ecf)localObject3).appId) ^ true)) {
-                break label1540;
+              localObject3 = (emg)paramView.next();
+              localf = new aa.f();
+              localf.aaBC = ((e)localObject1).getActivity().getLayoutInflater().inflate(R.i.egD, (ViewGroup)((e.b)((aa.f)localObject2).aaBC).vsH, false);
+              localObject4 = ((View)localf.aaBC).findViewById(R.h.drj);
+              p.j(localObject4, "view.findViewById<TextVi…(R.id.appbrand_info_1_tv)");
+              ((TextView)localObject4).setText((CharSequence)((emg)localObject3).UoP);
+              localObject4 = ((View)localf.aaBC).findViewById(R.h.drk);
+              p.j(localObject4, "view.findViewById<TextVi…(R.id.appbrand_info_2_tv)");
+              ((TextView)localObject4).setText((CharSequence)String.valueOf(((emg)localObject3).UoQ));
+              localObject4 = ((View)localf.aaBC).findViewById(R.h.drl);
+              p.j(localObject4, "view.findViewById<TextVi…(R.id.appbrand_info_3_tv)");
+              ((TextView)localObject4).setText((CharSequence)((emg)localObject3).UoR);
+              localObject4 = (ImageView)((View)localf.aaBC).findViewById(R.h.dri);
+              if (!(p.h("21f9d636b41b25be", ((emg)localObject3).appId) ^ true)) {
+                break label1555;
               }
-              ((q)g.af(q.class)).b(((ecf)localObject3).appId, (q.a)new SportProfileUIC.h(localf, (ImageView)localObject4));
+              ((q)h.ae(q.class)).b(((emg)localObject3).appId, (q.a)new e.h(localf, (ImageView)localObject4));
             }
           }
         }
         for (;;)
         {
-          localObject4 = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMX;
+          localObject4 = ((e.b)((aa.f)localObject2).aaBC).vsH;
           if (localObject4 != null) {
-            ((LinearLayout)localObject4).addView((View)localf.SYG);
+            ((LinearLayout)localObject4).addView((View)localf.aaBC);
           }
-          ((View)localf.SYG).setOnClickListener((View.OnClickListener)new SportProfileUIC.c((ecf)localObject3, (SportProfileUIC)localObject1, (z.f)localObject2));
-          break label1095;
+          ((View)localf.aaBC).setOnClickListener((View.OnClickListener)new e.c((emg)localObject3, (e)localObject1, (aa.f)localObject2));
+          break label1110;
           paramInt = 0;
           break;
-          label1415:
-          paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMW;
+          label1430:
+          paramView = ((e.b)((aa.f)localObject2).aaBC).vsG;
           if (paramView == null) {
-            break label834;
+            break label849;
           }
-          paramView.setTextColor(((SportProfileUIC)localObject1).getActivity().getResources().getColor(2131100341));
-          break label834;
-          label1452:
-          paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rNa;
+          paramView.setTextColor(((e)localObject1).getActivity().getResources().getColor(R.e.dks));
+          break label849;
+          label1467:
+          paramView = ((e.b)((aa.f)localObject2).aaBC).vsK;
           if (paramView == null) {
-            break label875;
+            break label890;
           }
-          paramView.setImageResource(2131690083);
-          break label875;
-          label1478:
-          paramInt = 0;
-          break label952;
-          label1483:
-          paramInt = 0;
-          break label1016;
-          label1488:
-          paramView = null;
-          break label1020;
+          paramView.setImageResource(R.k.device_rank_item_unliked);
+          break label890;
           label1493:
-          paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMX;
+          paramInt = 0;
+          break label967;
+          label1498:
+          paramInt = 0;
+          break label1031;
+          label1503:
+          paramView = null;
+          break label1035;
+          label1508:
+          paramView = ((e.b)((aa.f)localObject2).aaBC).vsH;
           if (paramView != null) {
             paramView.setVisibility(8);
           }
-          paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMY;
+          paramView = ((e.b)((aa.f)localObject2).aaBC).vsI;
           if (paramView == null) {
-            break label1066;
+            break label1081;
           }
           paramView.setVisibility(8);
-          break label1066;
-          label1540:
-          ((TextView)((View)localf.SYG).findViewById(2131296992)).setText(2131766360);
-          ((ImageView)localObject4).setImageResource(2131690736);
+          break label1081;
+          label1555:
+          ((TextView)((View)localf.aaBC).findViewById(R.h.drn)).setText(R.l.eTD);
+          ((ImageView)localObject4).setImageResource(R.k.icons_outlined_apple_watch);
         }
-        label1574:
-        paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rMZ;
+        label1589:
+        paramView = ((e.b)((aa.f)localObject2).aaBC).vsJ;
         if (paramView != null) {
-          paramView.setOnClickListener((View.OnClickListener)new SportProfileUIC.i((SportProfileUIC)localObject1, str));
+          paramView.setOnClickListener((View.OnClickListener)new e.i((e)localObject1, str));
         }
-        paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).qyu;
+        paramView = ((e.b)((aa.f)localObject2).aaBC).tXu;
         if (paramView != null) {
-          paramView.setOnClickListener((View.OnClickListener)new SportProfileUIC.j((SportProfileUIC)localObject1, str));
+          paramView.setOnClickListener((View.OnClickListener)new e.j((e)localObject1, str));
         }
-        if ((p.j(str, z.aTY()) ^ true))
+        if ((p.h(str, z.bcZ()) ^ true))
         {
-          paramView = ((SportProfileUIC)localObject1).rMR;
-          if ((paramView == null) || (paramView.rCx != true))
+          paramView = ((e)localObject1).vsB;
+          if ((paramView == null) || (paramView.vih != true))
           {
-            paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rNb;
+            paramView = ((e.b)((aa.f)localObject2).aaBC).vsL;
             if (paramView != null) {
               paramView.setVisibility(0);
             }
-            paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rNb;
+            paramView = ((e.b)((aa.f)localObject2).aaBC).vsL;
             if (paramView == null) {
               continue;
             }
-            paramView.setOnClickListener((View.OnClickListener)new SportProfileUIC.e((SportProfileUIC)localObject1));
+            paramView.setOnClickListener((View.OnClickListener)new e.e((e)localObject1));
             continue;
           }
         }
-        paramView = ((SportProfileUIC.b)((z.f)localObject2).SYG).rNb;
+        paramView = ((e.b)((aa.f)localObject2).aaBC).vsL;
         if (paramView != null) {
           paramView.setVisibility(8);
         }
@@ -406,7 +412,7 @@ final class a
   
   public final int getViewTypeCount()
   {
-    if (this.rIK) {
+    if (this.vos) {
       return 2;
     }
     return 1;

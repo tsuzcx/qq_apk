@@ -12,18 +12,18 @@ import java.util.List;
 public final class a
   extends com.tencent.mm.plugin.fts.a.a
 {
-  public SQLiteStatement wZA;
-  public SQLiteStatement wZB;
-  private SQLiteStatement wZC;
-  public SQLiteStatement wZD;
-  public SQLiteStatement wZE;
-  private SQLiteStatement wZF;
-  public SQLiteStatement wZG;
+  public SQLiteStatement BLA;
+  private SQLiteStatement BLB;
+  public SQLiteStatement BLC;
+  public SQLiteStatement BLD;
+  private SQLiteStatement BLE;
+  public SQLiteStatement BLF;
+  public SQLiteStatement BLz;
   
   public final Cursor a(com.tencent.mm.plugin.fts.a.a.h paramh, String paramString, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
     AppMethodBeat.i(52792);
-    String str = paramh.dOz();
+    String str = paramh.eqQ();
     if (Util.isNullOrNil(paramString))
     {
       paramh = "";
@@ -40,8 +40,8 @@ public final class a
     label202:
     for (paramArrayOfInt1 = " AND subtype IN " + d.C(paramArrayOfInt2);; paramArrayOfInt1 = "")
     {
-      paramh = String.format("SELECT aux_index, type, subtype FROM %s NOT INDEXED JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s'" + paramh + paramString + paramArrayOfInt1 + " AND status >= 0 ORDER BY subtype;", new Object[] { dOt(), dOu(), dOt(), dOu(), dOu(), str });
-      paramh = this.wUt.rawQuery(paramh, null);
+      paramh = String.format("SELECT aux_index, type, subtype FROM %s NOT INDEXED JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s'" + paramh + paramString + paramArrayOfInt1 + " AND status >= 0 ORDER BY subtype;", new Object[] { eqI(), eqJ(), eqI(), eqJ(), eqJ(), str });
+      paramh = this.BGp.rawQuery(paramh, null);
       AppMethodBeat.o(52792);
       return paramh;
       paramh = String.format(" AND aux_index = '%s'", new Object[] { paramString });
@@ -51,32 +51,32 @@ public final class a
     }
   }
   
-  public final void awY()
+  public final void aEr()
   {
     AppMethodBeat.i(52783);
-    if (awZ()) {
-      this.wUt.W(-102L, 5L);
+    if (aEs()) {
+      this.BGp.ad(-102L, 5L);
     }
-    this.wUt.execSQL("CREATE TABLE IF NOT EXISTS FTS5ChatRoomMembers (chatroom TEXT, member TEXT);");
-    this.wUt.execSQL("CREATE INDEX IF NOT EXISTS FTS5ChatRoomMembers_chatroom ON FTS5ChatRoomMembers(chatroom);");
-    this.wUt.execSQL("CREATE INDEX IF NOT EXISTS FTS5ChatRoomMembers_member ON FTS5ChatRoomMembers(member);");
-    this.wUt.execSQL("CREATE TABLE IF NOT EXISTS FTS5ContactLabels (user TEXT, label_id INTEGER);");
-    this.wUt.execSQL("CREATE INDEX IF NOT EXISTS FTS5ContactLabels_user ON FTS5ContactLabels(user);");
-    this.wUt.execSQL("CREATE INDEX IF NOT EXISTS FTS5ContactLabels_label ON FTS5ContactLabels(label_id);");
-    this.wZA = this.wUt.compileStatement("INSERT INTO FTS5ChatRoomMembers (chatroom, member) VALUES (?, ?);");
-    this.wZB = this.wUt.compileStatement("DELETE FROM FTS5ChatRoomMembers WHERE chatroom=? AND member=?;");
-    this.wZC = this.wUt.compileStatement("DELETE FROM FTS5ChatRoomMembers WHERE chatroom=?;");
-    this.wZD = this.wUt.compileStatement("INSERT INTO FTS5ContactLabels (user, label_id) VALUES (?, ?);");
-    this.wZE = this.wUt.compileStatement("DELETE FROM FTS5ContactLabels WHERE user=? AND label_id=?;");
-    this.wZF = this.wUt.compileStatement("DELETE FROM FTS5ContactLabels WHERE user=?;");
-    this.wZG = this.wUt.compileStatement("SELECT changes();");
+    this.BGp.execSQL("CREATE TABLE IF NOT EXISTS FTS5ChatRoomMembers (chatroom TEXT, member TEXT);");
+    this.BGp.execSQL("CREATE INDEX IF NOT EXISTS FTS5ChatRoomMembers_chatroom ON FTS5ChatRoomMembers(chatroom);");
+    this.BGp.execSQL("CREATE INDEX IF NOT EXISTS FTS5ChatRoomMembers_member ON FTS5ChatRoomMembers(member);");
+    this.BGp.execSQL("CREATE TABLE IF NOT EXISTS FTS5ContactLabels (user TEXT, label_id INTEGER);");
+    this.BGp.execSQL("CREATE INDEX IF NOT EXISTS FTS5ContactLabels_user ON FTS5ContactLabels(user);");
+    this.BGp.execSQL("CREATE INDEX IF NOT EXISTS FTS5ContactLabels_label ON FTS5ContactLabels(label_id);");
+    this.BLz = this.BGp.compileStatement("INSERT INTO FTS5ChatRoomMembers (chatroom, member) VALUES (?, ?);");
+    this.BLA = this.BGp.compileStatement("DELETE FROM FTS5ChatRoomMembers WHERE chatroom=? AND member=?;");
+    this.BLB = this.BGp.compileStatement("DELETE FROM FTS5ChatRoomMembers WHERE chatroom=?;");
+    this.BLC = this.BGp.compileStatement("INSERT INTO FTS5ContactLabels (user, label_id) VALUES (?, ?);");
+    this.BLD = this.BGp.compileStatement("DELETE FROM FTS5ContactLabels WHERE user=? AND label_id=?;");
+    this.BLE = this.BGp.compileStatement("DELETE FROM FTS5ContactLabels WHERE user=?;");
+    this.BLF = this.BGp.compileStatement("SELECT changes();");
     AppMethodBeat.o(52783);
   }
   
-  public final boolean awZ()
+  public final boolean aEs()
   {
     AppMethodBeat.i(52791);
-    if (!gD(-102, 5))
+    if (!hw(-102, 5))
     {
       AppMethodBeat.o(52791);
       return true;
@@ -85,82 +85,82 @@ public final class a
     return false;
   }
   
-  public final boolean axa()
+  public final boolean aEt()
   {
     AppMethodBeat.i(52784);
-    super.axa();
-    this.wZA.close();
-    this.wZB.close();
-    this.wZC.close();
-    this.wZD.close();
-    this.wZE.close();
-    this.wZF.close();
-    this.wZG.close();
+    super.aEt();
+    this.BLz.close();
+    this.BLA.close();
+    this.BLB.close();
+    this.BLC.close();
+    this.BLD.close();
+    this.BLE.close();
+    this.BLF.close();
     AppMethodBeat.o(52784);
     return true;
   }
   
-  public final void ayG(String paramString)
+  public final void aIb(String paramString)
   {
     AppMethodBeat.i(52786);
-    this.wZF.bindString(1, paramString);
-    this.wZF.execute();
+    this.BLE.bindString(1, paramString);
+    this.BLE.execute();
     AppMethodBeat.o(52786);
   }
   
-  public final Cursor ayH(String paramString)
+  public final Cursor aIc(String paramString)
   {
     AppMethodBeat.i(52787);
-    paramString = this.wUt.rawQuery("SELECT DISTINCT chatroom FROM FTS5ChatRoomMembers WHERE member=?;", new String[] { paramString });
+    paramString = this.BGp.rawQuery("SELECT DISTINCT chatroom FROM FTS5ChatRoomMembers WHERE member=?;", new String[] { paramString });
     AppMethodBeat.o(52787);
     return paramString;
   }
   
-  public final void ayI(String paramString)
+  public final void aId(String paramString)
   {
     AppMethodBeat.i(52789);
-    this.wZC.bindString(1, paramString);
-    this.wZC.execute();
+    this.BLB.bindString(1, paramString);
+    this.BLB.execute();
     AppMethodBeat.o(52789);
   }
   
   public final boolean b(com.tencent.mm.plugin.fts.a.a.h paramh)
   {
     AppMethodBeat.i(52793);
-    String str1 = dOt();
-    String str2 = dOu();
-    String str3 = dOt();
-    String str4 = dOu();
-    String str5 = dOu();
+    String str1 = eqI();
+    String str2 = eqJ();
+    String str3 = eqI();
+    String str4 = eqJ();
+    String str5 = eqJ();
     StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;
-    while (i < paramh.wWF.size())
+    while (i < paramh.BIA.size())
     {
       localStringBuffer.append("(");
-      localStringBuffer.append(((h.c)paramh.wWF.get(i)).dOB());
+      localStringBuffer.append(((h.c)paramh.BIA.get(i)).eqS());
       localStringBuffer.append(")");
-      if (i != paramh.wWF.size() - 1) {
+      if (i != paramh.BIA.size() - 1) {
         localStringBuffer.append(" OR ");
       }
       i += 1;
     }
     paramh = String.format("SELECT 1 FROM %s NOT INDEXED JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s' AND type=131072 LIMIT 1;", new Object[] { str1, str2, str3, str4, str5, localStringBuffer.toString() });
-    paramh = this.wUt.rawQuery(paramh, null);
+    paramh = this.BGp.rawQuery(paramh, null);
     boolean bool = paramh.moveToNext();
     paramh.close();
     AppMethodBeat.o(52793);
     return bool;
   }
   
-  public final String cVp()
+  public final String dkv()
   {
     AppMethodBeat.i(52790);
-    String str = String.format("CREATE TABLE IF NOT EXISTS %s (docid INTEGER PRIMARY KEY, type INT, subtype INT DEFAULT 0, entity_id INTEGER, aux_index TEXT, timestamp INTEGER, status INT DEFAULT 0);", new Object[] { dOt() });
+    String str = String.format("CREATE TABLE IF NOT EXISTS %s (docid INTEGER PRIMARY KEY, type INT, subtype INT DEFAULT 0, entity_id INTEGER, aux_index TEXT, timestamp INTEGER, status INT DEFAULT 0);", new Object[] { eqI() });
     AppMethodBeat.o(52790);
     return str;
   }
   
-  public final boolean dOv()
+  public final boolean eqM()
   {
     return true;
   }
@@ -185,7 +185,7 @@ public final class a
     return 3;
   }
   
-  public final void k(String paramString, String[] paramArrayOfString)
+  public final void j(String paramString, String[] paramArrayOfString)
   {
     AppMethodBeat.i(52788);
     if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
@@ -193,27 +193,27 @@ public final class a
       AppMethodBeat.o(52788);
       return;
     }
-    boolean bool = this.wUt.inTransaction();
+    boolean bool = this.BGp.inTransaction();
     if (!bool) {
-      this.wUt.beginTransaction();
+      this.BGp.beginTransaction();
     }
-    this.wZA.bindString(1, paramString);
+    this.BLz.bindString(1, paramString);
     int j = paramArrayOfString.length;
     int i = 0;
     while (i < j)
     {
       paramString = paramArrayOfString[i];
-      this.wZA.bindString(2, paramString);
-      this.wZA.execute();
+      this.BLz.bindString(2, paramString);
+      this.BLz.execute();
       i += 1;
     }
     if (!bool) {
-      this.wUt.commit();
+      this.BGp.commit();
     }
     AppMethodBeat.o(52788);
   }
   
-  public final void u(String paramString, List<Long> paramList)
+  public final void v(String paramString, List<Long> paramList)
   {
     AppMethodBeat.i(52785);
     if ((paramList == null) || (paramList.isEmpty()))
@@ -221,27 +221,27 @@ public final class a
       AppMethodBeat.o(52785);
       return;
     }
-    boolean bool = this.wUt.inTransaction();
+    boolean bool = this.BGp.inTransaction();
     if (!bool) {
-      this.wUt.beginTransaction();
+      this.BGp.beginTransaction();
     }
-    this.wZD.bindString(1, paramString);
+    this.BLC.bindString(1, paramString);
     paramString = paramList.iterator();
     while (paramString.hasNext())
     {
       long l = ((Long)paramString.next()).longValue();
-      this.wZD.bindLong(2, l);
-      this.wZD.execute();
+      this.BLC.bindLong(2, l);
+      this.BLC.execute();
     }
     if (!bool) {
-      this.wUt.commit();
+      this.BGp.commit();
     }
     AppMethodBeat.o(52785);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.c.a
  * JD-Core Version:    0.7.0.1
  */

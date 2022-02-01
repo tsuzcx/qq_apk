@@ -24,13 +24,13 @@ public class u
   
   public u(Context paramContext, File paramFile, String paramString)
   {
-    AppMethodBeat.i(193543);
+    AppMethodBeat.i(236590);
     this.e = "d";
     this.f = (this.e + "_");
     this.g = 20480L;
     if (paramContext == null)
     {
-      AppMethodBeat.o(193543);
+      AppMethodBeat.o(236590);
       return;
     }
     this.d = paramContext.getApplicationContext();
@@ -52,7 +52,7 @@ public class u
       if ((this.h != null) && (this.h.exists())) {
         this.h.delete();
       }
-      AppMethodBeat.o(193543);
+      AppMethodBeat.o(236590);
       return;
       label168:
       if (!paramContext.exists()) {
@@ -218,7 +218,7 @@ public class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.map.tools.internal.u
  * JD-Core Version:    0.7.0.1
  */

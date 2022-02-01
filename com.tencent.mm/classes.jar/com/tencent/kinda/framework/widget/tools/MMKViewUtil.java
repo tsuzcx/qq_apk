@@ -54,22 +54,22 @@ public class MMKViewUtil
   @SuppressLint({"ResourceType"})
   public static void setId4KindaImplView(Context paramContext, String paramString, View paramView)
   {
-    AppMethodBeat.i(214575);
+    AppMethodBeat.i(263912);
     int i = paramContext.getResources().getIdentifier(paramString, "id", paramContext.getPackageName());
     if (i > 0)
     {
       paramView.setId(i);
       com.tencent.mm.sdk.platformtools.Log.d("MMKViewUtil", "setViewId has set rid: ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(214575);
+      AppMethodBeat.o(263912);
       return;
     }
     com.tencent.mm.sdk.platformtools.Log.d("MMKViewUtil", "setViewId has not set rid: " + paramString + ", because no found res.");
-    AppMethodBeat.o(214575);
+    AppMethodBeat.o(263912);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.tools.MMKViewUtil
  * JD-Core Version:    0.7.0.1
  */

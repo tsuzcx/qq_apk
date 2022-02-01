@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.report.kvdata;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class SubDirInfo
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
   public long dirCount_;
   public long fileCount_;
@@ -17,30 +17,30 @@ public class SubDirInfo
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.tag_);
-      paramVarArgs.bb(2, this.totalSize_);
-      paramVarArgs.bb(3, this.dirCount_);
-      paramVarArgs.bb(4, this.fileCount_);
-      paramVarArgs.bb(5, this.fileLenInvalidCount);
+      paramVarArgs.aY(1, this.tag_);
+      paramVarArgs.bm(2, this.totalSize_);
+      paramVarArgs.bm(3, this.dirCount_);
+      paramVarArgs.bm(4, this.fileCount_);
+      paramVarArgs.bm(5, this.fileLenInvalidCount);
       AppMethodBeat.o(151539);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bu(1, this.tag_);
-      int i = g.a.a.b.b.a.r(2, this.totalSize_);
-      int j = g.a.a.b.b.a.r(3, this.dirCount_);
-      int k = g.a.a.b.b.a.r(4, this.fileCount_);
-      int m = g.a.a.b.b.a.r(5, this.fileLenInvalidCount);
+      paramInt = g.a.a.b.b.a.bM(1, this.tag_);
+      int i = g.a.a.b.b.a.p(2, this.totalSize_);
+      int j = g.a.a.b.b.a.p(3, this.dirCount_);
+      int k = g.a.a.b.b.a.p(4, this.fileCount_);
+      int m = g.a.a.b.b.a.p(5, this.fileLenInvalidCount);
       AppMethodBeat.o(151539);
       return paramInt + 0 + i + j + k + m;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
       AppMethodBeat.o(151539);
@@ -56,23 +56,23 @@ public class SubDirInfo
         AppMethodBeat.o(151539);
         return -1;
       case 1: 
-        localSubDirInfo.tag_ = locala.UbS.zi();
+        localSubDirInfo.tag_ = locala.abFh.AK();
         AppMethodBeat.o(151539);
         return 0;
       case 2: 
-        localSubDirInfo.totalSize_ = locala.UbS.zl();
+        localSubDirInfo.totalSize_ = locala.abFh.AN();
         AppMethodBeat.o(151539);
         return 0;
       case 3: 
-        localSubDirInfo.dirCount_ = locala.UbS.zl();
+        localSubDirInfo.dirCount_ = locala.abFh.AN();
         AppMethodBeat.o(151539);
         return 0;
       case 4: 
-        localSubDirInfo.fileCount_ = locala.UbS.zl();
+        localSubDirInfo.fileCount_ = locala.abFh.AN();
         AppMethodBeat.o(151539);
         return 0;
       }
-      localSubDirInfo.fileLenInvalidCount = locala.UbS.zl();
+      localSubDirInfo.fileLenInvalidCount = locala.abFh.AN();
       AppMethodBeat.o(151539);
       return 0;
     }
@@ -82,7 +82,7 @@ public class SubDirInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.report.kvdata.SubDirInfo
  * JD-Core Version:    0.7.0.1
  */

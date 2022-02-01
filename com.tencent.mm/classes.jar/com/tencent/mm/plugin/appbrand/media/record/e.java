@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.appbrand.media.record;
 
 public abstract interface e
 {
-  public abstract void bOV();
+  public abstract void cbl();
   
-  public abstract void bOW();
+  public abstract void cbm();
 }
 
 

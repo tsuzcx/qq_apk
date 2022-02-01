@@ -10,14 +10,6 @@ import java.util.regex.Pattern;
 
 public final class b
 {
-  public static u a(Context paramContext, String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(152260);
-    paramContext = a(paramContext, paramString, paramInt1, paramInt2, 0, 0);
-    AppMethodBeat.o(152260);
-    return paramContext;
-  }
-  
   public static u a(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(152261);
@@ -25,7 +17,7 @@ public final class b
     if (paramContext == null) {
       localContext = MMApplicationContext.getContext();
     }
-    paramContext = d.a.KqD.w(localContext, paramString);
+    paramContext = d.a.RrK.y(localContext, paramString);
     if (paramContext != null)
     {
       paramContext.start = paramInt1;
@@ -37,16 +29,24 @@ public final class b
     return paramContext;
   }
   
-  public static ArrayList<u> cn(Context paramContext, String paramString)
+  public static u b(Context paramContext, String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(152260);
+    paramContext = a(paramContext, paramString, paramInt1, paramInt2, 0, 0);
+    AppMethodBeat.o(152260);
+    return paramContext;
+  }
+  
+  public static ArrayList<u> cz(Context paramContext, String paramString)
   {
     AppMethodBeat.i(152259);
     ArrayList localArrayList = new ArrayList();
-    paramString = k.a.KqO.matcher(paramString);
+    paramString = k.a.RrV.matcher(paramString);
     while (paramString.find())
     {
       int i = paramString.start();
       int j = paramString.end();
-      u localu = a(paramContext, paramString.group(), i, j);
+      u localu = b(paramContext, paramString.group(), i, j);
       if (localu != null) {
         localArrayList.add(localu);
       }

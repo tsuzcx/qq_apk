@@ -1,10 +1,10 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.az.a.b;
-import com.tencent.mm.ui.chatting.d.af;
+import com.tencent.mm.bc.a.b;
+import com.tencent.mm.ui.chatting.d.ag;
 
 public abstract interface ah
-  extends a.b, af
+  extends a.b, ag
 {}
 
 

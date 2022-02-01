@@ -14,8 +14,8 @@ final class m$c
   public m$c(int paramInt)
   {
     this(2, 2, TimeUnit.MILLISECONDS, new PriorityBlockingQueue());
-    AppMethodBeat.i(234898);
-    AppMethodBeat.o(234898);
+    AppMethodBeat.i(228362);
+    AppMethodBeat.o(228362);
   }
   
   private m$c(int paramInt1, int paramInt2, TimeUnit paramTimeUnit, BlockingQueue<Runnable> paramBlockingQueue)
@@ -23,11 +23,11 @@ final class m$c
     super(paramInt1, paramInt2, 0L, paramTimeUnit, paramBlockingQueue);
   }
   
-  public final void k(Runnable paramRunnable, long paramLong)
+  public final void j(Runnable paramRunnable, long paramLong)
   {
-    AppMethodBeat.i(234899);
+    AppMethodBeat.i(228363);
     super.execute(new m.a(paramRunnable, paramLong));
-    AppMethodBeat.o(234899);
+    AppMethodBeat.o(228363);
   }
   
   protected final <T> RunnableFuture<T> newTaskFor(Runnable paramRunnable, T paramT)
@@ -42,7 +42,7 @@ final class m$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.e.m.c
  * JD-Core Version:    0.7.0.1
  */

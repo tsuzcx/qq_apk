@@ -26,23 +26,23 @@ public abstract class i
   public static final class a
     extends i
   {
-    public static final a TPf;
+    public static final a abrE;
     
     static
     {
       AppMethodBeat.i(61057);
-      TPf = new a();
+      abrE = new a();
       AppMethodBeat.o(61057);
     }
     
     public final Collection<ab> D(e parame)
     {
       AppMethodBeat.i(61053);
-      p.h(parame, "classDescriptor");
-      parame = parame.hzz();
-      p.g(parame, "classDescriptor.typeConstructor");
-      parame = parame.hBV();
-      p.g(parame, "classDescriptor.typeConstructor.supertypes");
+      p.k(parame, "classDescriptor");
+      parame = parame.iDL();
+      p.j(parame, "classDescriptor.typeConstructor");
+      parame = parame.iGk();
+      p.j(parame, "classDescriptor.typeConstructor.supertypes");
       AppMethodBeat.o(61053);
       return parame;
     }
@@ -50,7 +50,7 @@ public abstract class i
     public final ab aK(ab paramab)
     {
       AppMethodBeat.i(61052);
-      p.h(paramab, "type");
+      p.k(paramab, "type");
       AppMethodBeat.o(61052);
       return paramab;
     }
@@ -58,7 +58,7 @@ public abstract class i
     public final boolean f(y paramy)
     {
       AppMethodBeat.i(61056);
-      p.h(paramy, "moduleDescriptor");
+      p.k(paramy, "moduleDescriptor");
       AppMethodBeat.o(61056);
       return false;
     }
@@ -66,7 +66,7 @@ public abstract class i
     public final e h(a parama)
     {
       AppMethodBeat.i(61055);
-      p.h(parama, "classId");
+      p.k(parama, "classId");
       AppMethodBeat.o(61055);
       return null;
     }
@@ -74,7 +74,7 @@ public abstract class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.a.i
  * JD-Core Version:    0.7.0.1
  */

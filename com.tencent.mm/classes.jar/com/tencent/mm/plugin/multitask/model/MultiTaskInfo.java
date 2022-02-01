@@ -4,15 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.es;
-import com.tencent.mm.protocal.protobuf.cru;
+import com.tencent.mm.f.c.ex;
+import com.tencent.mm.protocal.protobuf.dar;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
+import org.json.JSONObject;
 
 public class MultiTaskInfo
-  extends es
+  extends ex
   implements Parcelable
 {
   public static final Parcelable.Creator<MultiTaskInfo> CREATOR;
@@ -20,7 +21,7 @@ public class MultiTaskInfo
   
   static
   {
-    AppMethodBeat.i(208699);
+    AppMethodBeat.i(205499);
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
     localMAutoDBInfo.fields = new Field[6];
     localMAutoDBInfo.columns = new String[7];
@@ -56,34 +57,34 @@ public class MultiTaskInfo
     {
       private static MultiTaskInfo n(Parcel paramAnonymousParcel)
       {
-        AppMethodBeat.i(208695);
+        AppMethodBeat.i(205508);
         MultiTaskInfo localMultiTaskInfo = new MultiTaskInfo();
         localMultiTaskInfo.field_id = paramAnonymousParcel.readString();
         localMultiTaskInfo.field_type = paramAnonymousParcel.readInt();
         localMultiTaskInfo.field_createTime = paramAnonymousParcel.readLong();
         localMultiTaskInfo.field_updateTime = paramAnonymousParcel.readLong();
-        Object localObject = new cru();
-        ((cru)localObject).nickname = paramAnonymousParcel.readString();
-        ((cru)localObject).title = paramAnonymousParcel.readString();
-        ((cru)localObject).MwQ = paramAnonymousParcel.readString();
-        ((cru)localObject).Eso = paramAnonymousParcel.readInt();
-        ((cru)localObject).gCr = paramAnonymousParcel.readString();
-        ((cru)localObject).MwR = paramAnonymousParcel.readString();
-        ((cru)localObject).MwS = paramAnonymousParcel.readInt();
+        Object localObject = new dar();
+        ((dar)localObject).nickname = paramAnonymousParcel.readString();
+        ((dar)localObject).title = paramAnonymousParcel.readString();
+        ((dar)localObject).TIf = paramAnonymousParcel.readString();
+        ((dar)localObject).KFK = paramAnonymousParcel.readInt();
+        ((dar)localObject).jmx = paramAnonymousParcel.readString();
+        ((dar)localObject).TIg = paramAnonymousParcel.readString();
+        ((dar)localObject).TIh = paramAnonymousParcel.readInt();
         boolean bool;
         if (paramAnonymousParcel.readInt() != 0) {
           bool = true;
         }
         for (;;)
         {
-          ((cru)localObject).MwT = bool;
-          localMultiTaskInfo.field_showData = ((cru)localObject);
+          ((dar)localObject).TIi = bool;
+          localMultiTaskInfo.field_showData = ((dar)localObject);
           try
           {
             localObject = new byte[paramAnonymousParcel.readInt()];
             paramAnonymousParcel.readByteArray((byte[])localObject);
             localMultiTaskInfo.field_data = ((byte[])localObject);
-            AppMethodBeat.o(208695);
+            AppMethodBeat.o(205508);
             return localMultiTaskInfo;
             bool = false;
           }
@@ -97,7 +98,44 @@ public class MultiTaskInfo
         }
       }
     };
-    AppMethodBeat.o(208699);
+    AppMethodBeat.o(205499);
+  }
+  
+  public static JSONObject aRa(String paramString)
+  {
+    AppMethodBeat.i(205497);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("field_id", paramString);
+      AppMethodBeat.o(205497);
+      return localJSONObject;
+    }
+    catch (Exception paramString)
+    {
+      Log.printErrStackTrace("MicroMsg.MultiTaskInfo", paramString, "convertMultiTaskToJSONObject fail, exception:%s", new Object[] { paramString });
+      AppMethodBeat.o(205497);
+    }
+    return null;
+  }
+  
+  public static MultiTaskInfo bk(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(205498);
+    try
+    {
+      paramJSONObject = paramJSONObject.getString("field_id");
+      MultiTaskInfo localMultiTaskInfo = new MultiTaskInfo();
+      localMultiTaskInfo.field_id = paramJSONObject;
+      AppMethodBeat.o(205498);
+      return localMultiTaskInfo;
+    }
+    catch (Exception paramJSONObject)
+    {
+      Log.printErrStackTrace("MicroMsg.MultiTaskInfo", paramJSONObject, "convertJSONObjectToMultiTaskInfo fail, exception:%s", new Object[] { paramJSONObject });
+      AppMethodBeat.o(205498);
+    }
+    return null;
   }
   
   public int describeContents()
@@ -105,15 +143,15 @@ public class MultiTaskInfo
     return 0;
   }
   
-  public final cru erh()
+  public final dar fbc()
   {
-    AppMethodBeat.i(208697);
+    AppMethodBeat.i(205495);
     if (this.field_showData == null) {
-      this.field_showData = new cru();
+      this.field_showData = new dar();
     }
-    cru localcru = this.field_showData;
-    AppMethodBeat.o(208697);
-    return localcru;
+    dar localdar = this.field_showData;
+    AppMethodBeat.o(205495);
+    return localdar;
   }
   
   public IAutoDBItem.MAutoDBInfo getDBInfo()
@@ -123,32 +161,32 @@ public class MultiTaskInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(208698);
+    AppMethodBeat.i(205496);
     paramParcel.writeString(this.field_id);
     paramParcel.writeInt(this.field_type);
     paramParcel.writeLong(this.field_createTime);
     paramParcel.writeLong(this.field_updateTime);
     paramParcel.writeString(this.field_showData.nickname);
     paramParcel.writeString(this.field_showData.title);
-    paramParcel.writeString(this.field_showData.MwQ);
-    paramParcel.writeInt(this.field_showData.Eso);
-    paramParcel.writeString(this.field_showData.gCr);
-    paramParcel.writeString(this.field_showData.MwR);
-    paramParcel.writeInt(this.field_showData.MwS);
-    if (this.field_showData.MwT) {}
+    paramParcel.writeString(this.field_showData.TIf);
+    paramParcel.writeInt(this.field_showData.KFK);
+    paramParcel.writeString(this.field_showData.jmx);
+    paramParcel.writeString(this.field_showData.TIg);
+    paramParcel.writeInt(this.field_showData.TIh);
+    if (this.field_showData.TIi) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
       paramParcel.writeInt(this.field_data.length);
       paramParcel.writeByteArray(this.field_data);
-      AppMethodBeat.o(208698);
+      AppMethodBeat.o(205496);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.model.MultiTaskInfo
  * JD-Core Version:    0.7.0.1
  */

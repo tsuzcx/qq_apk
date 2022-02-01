@@ -10,6 +10,9 @@ import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
 import com.tencent.mm.plugin.voiceprint.model.p;
 import com.tencent.mm.plugin.voiceprint.model.p.a;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -23,41 +26,72 @@ import com.tencent.mm.sdk.platformtools.PlaySound;
 import com.tencent.mm.sdk.platformtools.PlaySound.OnPlayCompletionListener;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 
 public abstract class BaseVoicePrintUI
   extends MMActivity
 {
-  VoiceTipInfoView GRA;
-  p GRB = null;
-  String GRC = null;
-  private boolean GRD = false;
-  private View GRE;
-  private boolean GRF = false;
-  private final p.a GRG = new p.a()
+  private final MTimerHandler EnG = new MTimerHandler(new MTimerHandler.CallBack()
   {
-    public final void fEG()
+    public final boolean onTimerExpired()
+    {
+      AppMethodBeat.i(29813);
+      if (BaseVoicePrintUI.a(BaseVoicePrintUI.this) == null)
+      {
+        AppMethodBeat.o(29813);
+        return true;
+      }
+      p localp = BaseVoicePrintUI.a(BaseVoicePrintUI.this);
+      if (localp.fhj != null)
+      {
+        i = localp.fhj.aeK();
+        if (i > p.ftG) {
+          p.ftG = i;
+        }
+        Log.d("MicroMsg.VoicePrintRecoder", " map: " + i + " max:" + p.ftG + " per:" + i * 100 / p.ftG);
+      }
+      for (int i = i * 100 / p.ftG;; i = 0)
+      {
+        BaseVoicePrintUI.a(BaseVoicePrintUI.this, i);
+        AppMethodBeat.o(29813);
+        return true;
+      }
+    }
+  }, true);
+  private boolean Enx = false;
+  Button NHI;
+  View NHJ;
+  VoicePrintVolumeMeter NHK;
+  VoiceTipInfoView NHL;
+  p NHM = null;
+  String NHN = null;
+  private boolean NHO = false;
+  private View NHP;
+  private boolean NHQ = false;
+  private final p.a NHR = new p.a()
+  {
+    public final void gwT()
     {
       AppMethodBeat.i(29811);
       p localp = BaseVoicePrintUI.a(BaseVoicePrintUI.this);
-      if (localp.doF != null)
+      if (localp.fhj != null)
       {
-        localp.doF.ZZ();
+        localp.fhj.aeJ();
         Log.e("MicroMsg.VoicePrintRecoder", "Reset recorder.stopReocrd");
       }
       localp.fileName = "";
-      localp.GRo = null;
-      localp.FKi = 0;
-      localp.qPl = 0L;
-      localp.GRr.wN(true);
+      localp.NHz = null;
+      localp.Mef = 0;
+      localp.urr = 0L;
+      localp.NHC.AF(true);
       Log.e("MicroMsg.BaseVoicePrintUI", "record stop on error");
       BaseVoicePrintUI.a(BaseVoicePrintUI.this, null);
       BaseVoicePrintUI.b(BaseVoicePrintUI.this);
       AppMethodBeat.o(29811);
     }
   };
-  MTimerHandler GRH = new MTimerHandler(new BaseVoicePrintUI.4(this), true);
-  private MMHandler GRI = new MMHandler(Looper.getMainLooper(), new MMHandler.Callback()
+  MTimerHandler NHS = new MTimerHandler(new BaseVoicePrintUI.4(this), true);
+  private MMHandler NHT = new MMHandler(Looper.getMainLooper(), new MMHandler.Callback()
   {
     public final boolean handleMessage(Message paramAnonymousMessage)
     {
@@ -65,7 +99,7 @@ public abstract class BaseVoicePrintUI
       if (paramAnonymousMessage.what == 1)
       {
         Log.d("MicroMsg.BaseVoicePrintUI", "start record");
-        PlaySound.play(MMApplicationContext.getContext(), 2131766638, new PlaySound.OnPlayCompletionListener()
+        PlaySound.play(MMApplicationContext.getContext(), R.l.talkroom_press, new PlaySound.OnPlayCompletionListener()
         {
           public final void onCompletion()
           {
@@ -80,84 +114,65 @@ public abstract class BaseVoicePrintUI
         BaseVoicePrintUI localBaseVoicePrintUI = BaseVoicePrintUI.this;
         paramAnonymousMessage.fileName = ((String)localObject);
         Log.d("MicroMsg.VoicePrintRecoder", "start filename %s", new Object[] { paramAnonymousMessage.fileName });
-        paramAnonymousMessage.GRr.hx(localBaseVoicePrintUI);
+        paramAnonymousMessage.NHC.iD(localBaseVoicePrintUI);
         BaseVoicePrintUI.e(BaseVoicePrintUI.this).startTimer(100L);
         paramAnonymousMessage = BaseVoicePrintUI.this;
-        paramAnonymousMessage.GRA.fEY();
-        localObject = paramAnonymousMessage.GRA;
-        Log.d("MicroMsg.VoiceTipInfoView", "hideTitle, titleTv.getVisibility:%d, mAnimingTitle:%b", new Object[] { Integer.valueOf(((VoiceTipInfoView)localObject).mPa.getVisibility()), Boolean.valueOf(((VoiceTipInfoView)localObject).GSx) });
-        if ((((VoiceTipInfoView)localObject).mPa.getVisibility() == 0) && (!((VoiceTipInfoView)localObject).GSx))
+        paramAnonymousMessage.NHL.gxk();
+        localObject = paramAnonymousMessage.NHL;
+        Log.d("MicroMsg.VoiceTipInfoView", "hideTitle, titleTv.getVisibility:%d, mAnimingTitle:%b", new Object[] { Integer.valueOf(((VoiceTipInfoView)localObject).pPT.getVisibility()), Boolean.valueOf(((VoiceTipInfoView)localObject).NII) });
+        if ((((VoiceTipInfoView)localObject).pPT.getVisibility() == 0) && (!((VoiceTipInfoView)localObject).NII))
         {
-          ((VoiceTipInfoView)localObject).mPa.clearAnimation();
-          ((VoiceTipInfoView)localObject).GSx = true;
-          a.a(((VoiceTipInfoView)localObject).mPa, ((VoiceTipInfoView)localObject).getContext(), new VoiceTipInfoView.3((VoiceTipInfoView)localObject));
+          ((VoiceTipInfoView)localObject).pPT.clearAnimation();
+          ((VoiceTipInfoView)localObject).NII = true;
+          a.a(((VoiceTipInfoView)localObject).pPT, ((VoiceTipInfoView)localObject).getContext(), new VoiceTipInfoView.3((VoiceTipInfoView)localObject));
         }
         for (;;)
         {
-          paramAnonymousMessage.GRA.setTipText(paramAnonymousMessage.GRf);
-          paramAnonymousMessage.GRH.stopTimer();
-          paramAnonymousMessage.GRH.startTimer(500L);
-          paramAnonymousMessage.GRy.setVisibility(0);
-          paramAnonymousMessage = paramAnonymousMessage.GRz;
+          paramAnonymousMessage.NHL.setTipText(paramAnonymousMessage.NHq);
+          paramAnonymousMessage.NHS.stopTimer();
+          paramAnonymousMessage.NHS.startTimer(500L);
+          paramAnonymousMessage.NHJ.setVisibility(0);
+          paramAnonymousMessage = paramAnonymousMessage.NHK;
           paramAnonymousMessage.reset();
-          paramAnonymousMessage.gNC = true;
-          paramAnonymousMessage.GSg.startTimer(VoicePrintVolumeMeter.yKE);
-          paramAnonymousMessage.fES();
+          paramAnonymousMessage.jxX = true;
+          paramAnonymousMessage.NIr.startTimer(VoicePrintVolumeMeter.Eox);
+          paramAnonymousMessage.gxf();
           AppMethodBeat.o(29816);
           return true;
           Log.d("MicroMsg.VoiceTipInfoView", "hideTitle, directly set to INVISIBLE");
-          ((VoiceTipInfoView)localObject).mPa.clearAnimation();
-          ((VoiceTipInfoView)localObject).mPa.setVisibility(4);
-          ((VoiceTipInfoView)localObject).mPa.invalidate();
+          ((VoiceTipInfoView)localObject).pPT.clearAnimation();
+          ((VoiceTipInfoView)localObject).pPT.setVisibility(4);
+          ((VoiceTipInfoView)localObject).pPT.invalidate();
         }
       }
       AppMethodBeat.o(29816);
       return false;
     }
   });
-  String GRf = null;
-  Button GRx;
-  View GRy;
-  VoicePrintVolumeMeter GRz;
-  private boolean yJE = false;
-  private final MTimerHandler yJN = new MTimerHandler(new MTimerHandler.CallBack()
-  {
-    public final boolean onTimerExpired()
-    {
-      AppMethodBeat.i(29813);
-      if (BaseVoicePrintUI.a(BaseVoicePrintUI.this) == null)
-      {
-        AppMethodBeat.o(29813);
-        return true;
-      }
-      p localp = BaseVoicePrintUI.a(BaseVoicePrintUI.this);
-      if (localp.doF != null)
-      {
-        i = localp.doF.getMaxAmplitude();
-        if (i > p.dAR) {
-          p.dAR = i;
-        }
-        Log.d("MicroMsg.VoicePrintRecoder", " map: " + i + " max:" + p.dAR + " per:" + i * 100 / p.dAR);
-      }
-      for (int i = i * 100 / p.dAR;; i = 0)
-      {
-        BaseVoicePrintUI.a(BaseVoicePrintUI.this, i);
-        AppMethodBeat.o(29813);
-        return true;
-      }
-    }
-  }, true);
+  String NHq = null;
   
-  protected final void acL(int paramInt)
+  protected final void akv(int paramInt)
   {
-    this.GRA.ekF();
-    this.GRA.setErr(paramInt);
-    this.GRA.fEX();
+    this.NHL.eUn();
+    this.NHL.setErr(paramInt);
+    this.NHL.gxj();
   }
   
-  protected abstract void edG();
+  protected final void bga(String paramString)
+  {
+    this.NHL.eUn();
+    this.NHL.setErr(paramString);
+    this.NHL.gxj();
+  }
   
-  protected final void fEH()
+  protected abstract void eNb();
+  
+  public int getLayoutId()
+  {
+    return R.i.elR;
+  }
+  
+  protected final void gwU()
   {
     MMHandlerThread.postToMainThreadDelayed(new Runnable()
     {
@@ -172,22 +187,22 @@ public abstract class BaseVoicePrintUI
     }, 1300L);
   }
   
-  protected final void fEI()
+  protected final void gwV()
   {
-    if ((this.GRE.getVisibility() == 4) || (this.GRE.getVisibility() == 8)) {
+    if ((this.NHP.getVisibility() == 4) || (this.NHP.getVisibility() == 8)) {
       return;
     }
-    if (this.GRF)
+    if (this.NHQ)
     {
-      this.GRE.setVisibility(4);
+      this.NHP.setVisibility(4);
       return;
     }
-    this.GRF = true;
-    a.a(this.GRE, this, new a.a()
+    this.NHQ = true;
+    a.a(this.NHP, this, new a.a()
     {
-      public final void fEL() {}
+      public final void gwY() {}
       
-      public final void fEM()
+      public final void gwZ()
       {
         AppMethodBeat.i(29820);
         BaseVoicePrintUI.j(BaseVoicePrintUI.this).setVisibility(4);
@@ -197,35 +212,30 @@ public abstract class BaseVoicePrintUI
     });
   }
   
-  protected final void fEJ()
+  protected final void gwW()
   {
-    acL(2131767174);
+    akv(R.l.eUZ);
   }
   
-  protected abstract void fEK();
-  
-  public int getLayoutId()
-  {
-    return 2131496844;
-  }
+  protected abstract void gwX();
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     hideTitleView();
-    this.GRA = ((VoiceTipInfoView)findViewById(2131309155));
-    this.GRx = ((Button)findViewById(2131306656));
-    this.GRy = findViewById(2131310092);
-    this.GRz = ((VoicePrintVolumeMeter)findViewById(2131310093));
-    this.GRE = findViewById(2131297930);
-    this.GRA.fEY();
-    this.GRz.setArchView(this.GRx);
-    this.GRB = new p();
-    this.GRB.GRs = this.GRG;
-    this.GRx.setOnTouchListener(new View.OnTouchListener()
+    this.NHL = ((VoiceTipInfoView)findViewById(R.h.dXs));
+    this.NHI = ((Button)findViewById(R.h.dSp));
+    this.NHJ = findViewById(R.h.volume_layout);
+    this.NHK = ((VoicePrintVolumeMeter)findViewById(R.h.volume_meter));
+    this.NHP = findViewById(R.h.duP);
+    this.NHL.gxk();
+    this.NHK.setArchView(this.NHI);
+    this.NHM = new p();
+    this.NHM.NHD = this.NHR;
+    this.NHI.setOnTouchListener(new View.OnTouchListener()
     {
-      private boolean GRL = false;
-      private long yKl = 0L;
+      private long Eoe = 0L;
+      private boolean NHW = false;
       
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -238,18 +248,18 @@ public abstract class BaseVoicePrintUI
           AppMethodBeat.o(29821);
           return false;
           BaseVoicePrintUI.a(BaseVoicePrintUI.this, false);
-          if (!Util.isNullOrNil(BaseVoicePrintUI.this.GRf))
+          if (!Util.isNullOrNil(BaseVoicePrintUI.this.NHq))
           {
-            this.yKl = System.currentTimeMillis();
+            this.Eoe = System.currentTimeMillis();
             BaseVoicePrintUI.f(BaseVoicePrintUI.this).setPressed(true);
             BaseVoicePrintUI.l(BaseVoicePrintUI.this);
-            BaseVoicePrintUI.this.fEI();
+            BaseVoicePrintUI.this.gwV();
             BaseVoicePrintUI.m(BaseVoicePrintUI.this).sendEmptyMessageDelayed(1, 300L);
             Log.i("MicroMsg.BaseVoicePrintUI", "mic press down");
             continue;
             BaseVoicePrintUI.f(BaseVoicePrintUI.this).setPressed(false);
             BaseVoicePrintUI.m(BaseVoicePrintUI.this).removeMessages(1);
-            if (System.currentTimeMillis() - this.yKl < 300L)
+            if (System.currentTimeMillis() - this.Eoe < 300L)
             {
               Log.d("MicroMsg.BaseVoicePrintUI", "just little touch the button, set touchDown to false");
               BaseVoicePrintUI.a(BaseVoicePrintUI.this, false);
@@ -259,56 +269,56 @@ public abstract class BaseVoicePrintUI
               Log.i("MicroMsg.BaseVoicePrintUI", "mic press up %d, hasTouchDown:%b", new Object[] { Integer.valueOf(paramAnonymousMotionEvent.getAction()), Boolean.valueOf(BaseVoicePrintUI.n(BaseVoicePrintUI.this)) });
               BaseVoicePrintUI.g(BaseVoicePrintUI.this).stop();
               BaseVoicePrintUI.e(BaseVoicePrintUI.this).stopTimer();
-              BaseVoicePrintUI.a(BaseVoicePrintUI.this).Qt();
+              BaseVoicePrintUI.a(BaseVoicePrintUI.this).TV();
               if (BaseVoicePrintUI.n(BaseVoicePrintUI.this)) {
-                break label293;
+                break label294;
               }
-              BaseVoicePrintUI.c(BaseVoicePrintUI.this).setErr(2131767173);
-              BaseVoicePrintUI.c(BaseVoicePrintUI.this).fEX();
+              BaseVoicePrintUI.c(BaseVoicePrintUI.this).setErr(R.l.eUY);
+              BaseVoicePrintUI.c(BaseVoicePrintUI.this).gxj();
               break;
               BaseVoicePrintUI.a(BaseVoicePrintUI.this, true);
             }
-            label293:
+            label294:
             paramAnonymousView = BaseVoicePrintUI.this;
             Log.d("MicroMsg.BaseVoicePrintUI", "releaseMic");
-            if (!paramAnonymousView.GRB.GRq)
+            if (!paramAnonymousView.NHM.NHB)
             {
-              paramAnonymousView.GRH.stopTimer();
-              paramAnonymousView.GRA.setErr(2131767173);
-              paramAnonymousView.GRA.fEX();
-              paramAnonymousView.GRC = null;
+              paramAnonymousView.NHS.stopTimer();
+              paramAnonymousView.NHL.setErr(R.l.eUY);
+              paramAnonymousView.NHL.gxj();
+              paramAnonymousView.NHN = null;
             }
-            paramAnonymousView.GRy.setVisibility(8);
-            paramAnonymousView.GRA.fEV();
-            paramAnonymousView.GRA.setTipText(paramAnonymousView.GRf);
+            paramAnonymousView.NHJ.setVisibility(8);
+            paramAnonymousView.NHL.gxh();
+            paramAnonymousView.NHL.setTipText(paramAnonymousView.NHq);
             Log.d("MicroMsg.BaseVoicePrintUI", "localMsgFileName %s", new Object[] { BaseVoicePrintUI.d(BaseVoicePrintUI.this) });
             if (!Util.isNullOrNil(BaseVoicePrintUI.d(BaseVoicePrintUI.this))) {
-              BaseVoicePrintUI.this.fEK();
+              BaseVoicePrintUI.this.gwX();
             }
-            this.yKl = 0L;
-            this.GRL = false;
+            this.Eoe = 0L;
+            this.NHW = false;
             BaseVoicePrintUI.a(BaseVoicePrintUI.this, false);
           }
         }
       }
     });
-    findViewById(2131303137).setOnClickListener(new BaseVoicePrintUI.2(this));
-    edG();
+    findViewById(R.h.left_btn).setOnClickListener(new BaseVoicePrintUI.2(this));
+    eNb();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.GRz.GSg.stopTimer();
+    this.NHK.NIr.stopTimer();
     Log.d("MicroMsg.VoicePrintVolumeMeter", "destroy, quit factor thread");
     Log.d("MicroMsg.VoicePrintLogic", "delete voiceprint voice file");
-    o localo = new o(com.tencent.mm.plugin.voiceprint.model.m.cz("voice_pt_voice_print_record.rec", false));
-    if (localo.exists()) {
-      localo.delete();
+    q localq = new q(com.tencent.mm.plugin.voiceprint.model.m.cN("voice_pt_voice_print_record.rec", false));
+    if (localq.ifE()) {
+      localq.cFq();
     }
-    localo = new o(com.tencent.mm.plugin.voiceprint.model.m.cz("voice_pt_voice_print_noise_detect.rec", false));
-    if (localo.exists()) {
-      localo.delete();
+    localq = new q(com.tencent.mm.plugin.voiceprint.model.m.cN("voice_pt_voice_print_noise_detect.rec", false));
+    if (localq.ifE()) {
+      localq.cFq();
     }
   }
   

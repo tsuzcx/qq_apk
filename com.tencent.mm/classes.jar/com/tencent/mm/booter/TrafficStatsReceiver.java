@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.SystemClock;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -18,7 +18,7 @@ public class TrafficStatsReceiver
 {
   private long mLastTime = -1L;
   
-  public static void cm(Context paramContext)
+  public static void ci(Context paramContext)
   {
     AppMethodBeat.i(131938);
     Intent localIntent = new Intent("com.tencent.mm.TrafficStatsReceiver");
@@ -27,7 +27,7 @@ public class TrafficStatsReceiver
     AppMethodBeat.o(131938);
   }
   
-  public static void cn(Context paramContext)
+  public static void cj(Context paramContext)
   {
     AppMethodBeat.i(131939);
     a.c(paramContext, new Intent("com.tencent.mm.TrafficStatsReceiver"));
@@ -38,11 +38,11 @@ public class TrafficStatsReceiver
   {
     AppMethodBeat.i(131937);
     Log.d("MicroMsg.TrafficStats", "onRecieve");
-    h.RTc.b(new Runnable()
+    h.ZvG.d(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(196983);
+        AppMethodBeat.i(215359);
         long l1 = SystemClock.elapsedRealtime();
         if (Build.VERSION.SDK_INT >= 28) {
           TrafficStats.updateNsm(MMApplicationContext.getContext());
@@ -59,7 +59,7 @@ public class TrafficStatsReceiver
             Log.i("MicroMsg.TrafficStats", "Time: %d ms, System - [Mobile: %d, Wifi: %d, Speed: %.2f], WeChat - [Mobile: %d, Wifi: %d, Speed: %.2f]", new Object[] { Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4), Double.valueOf((l3 + l4) / (l2 / 1000L)), Long.valueOf(l5), Long.valueOf(l6), Double.valueOf((l5 + l6) / (l2 / 1000L)) });
           }
           TrafficStatsReceiver.a(TrafficStatsReceiver.this, l1);
-          AppMethodBeat.o(196983);
+          AppMethodBeat.o(215359);
           return;
           TrafficStats.update();
         }
@@ -70,7 +70,7 @@ public class TrafficStatsReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.booter.TrafficStatsReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -1,132 +1,239 @@
 package com.tencent.mm.plugin.report.b;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.preference.PreferenceManager;
-import com.tencent.b.a.a.i;
-import com.tencent.b.a.a.i.1;
-import com.tencent.b.a.a.s;
+import com.tencent.mars.smc.SmcLogic;
+import com.tencent.mars.smc.SmcProtoBufUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.a.a.j;
+import com.tencent.mm.protocal.ac;
+import com.tencent.mm.protocal.protobuf.aap;
+import com.tencent.mm.protocal.protobuf.aaq;
+import com.tencent.mm.protocal.protobuf.cjk;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
 
 public final class d
+  extends q
+  implements m
 {
-  private static i CxM;
-  private static int CxN;
+  private aap IyO;
+  private a IyP;
+  private com.tencent.mm.an.i callback;
+  private int channel;
+  private boolean isLogin;
+  private com.tencent.mm.an.d rr;
   
-  static
+  public d(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(134233);
-    CxM = i.bq(MMApplicationContext.getContext());
-    CxN = 2;
-    AppMethodBeat.o(134233);
+    AppMethodBeat.i(143791);
+    this.isLogin = false;
+    this.IyO = null;
+    this.channel = 0;
+    this.IyP = new a();
+    if (paramArrayOfByte == null)
+    {
+      paramArrayOfByte = new NullPointerException("data must not be null");
+      AppMethodBeat.o(143791);
+      throw paramArrayOfByte;
+    }
+    this.channel = paramInt;
+    com.tencent.mm.kernel.h.aHE();
+    this.isLogin = com.tencent.mm.kernel.b.aGL();
+    if (paramInt == 1) {}
+    for (;;)
+    {
+      Object localObject;
+      try
+      {
+        localObject = new com.tencent.mm.protocal.a.a.i();
+        ((com.tencent.mm.protocal.a.a.i)localObject).parseFrom(paramArrayOfByte);
+        this.IyO = SmcProtoBufUtil.toMMReportKvReq((com.tencent.mm.protocal.a.a.i)localObject);
+        if (this.IyO == null) {
+          break;
+        }
+        this.IyO.SmN = new cjk();
+        this.IyO.SmN.TqO = a.acX(this.channel);
+        AppMethodBeat.o(143791);
+        return;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        Log.e("MicroMsg.NetSceneCliReportKV", "parse data error");
+        com.tencent.mm.kernel.h.aHH();
+        com.tencent.mm.kernel.h.aHJ().postToWorker(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(143789);
+            SmcLogic.OnReportResp(3, -1, null, d.a(d.this));
+            AppMethodBeat.o(143789);
+          }
+        });
+        continue;
+      }
+      if (paramInt == 2) {
+        try
+        {
+          localObject = new com.tencent.mm.protocal.a.a.g();
+          ((com.tencent.mm.protocal.a.a.g)localObject).parseFrom(paramArrayOfByte);
+          this.IyO = SmcProtoBufUtil.toMMReportIdkeyReq((com.tencent.mm.protocal.a.a.g)localObject);
+        }
+        catch (Exception paramArrayOfByte)
+        {
+          Log.e("MicroMsg.NetSceneCliReportKV", "parse data error");
+          com.tencent.mm.kernel.h.aHH();
+          com.tencent.mm.kernel.h.aHJ().postToWorker(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(143790);
+              SmcLogic.OnReportResp(3, -1, null, d.a(d.this));
+              AppMethodBeat.o(143790);
+            }
+          });
+        }
+      }
+    }
+    Log.i("MicroMsg.NetSceneCliReportKV", "NetSceneCliReportKV parse req is null, stack[%s]", new Object[] { Util.getStack() });
+    AppMethodBeat.o(143791);
   }
   
-  public static int E(int paramInt1, int paramInt2, String paramString)
+  public final int doScene(com.tencent.mm.network.g paramg, com.tencent.mm.an.i parami)
   {
-    AppMethodBeat.i(134232);
-    if (!g.aAc())
+    AppMethodBeat.i(143793);
+    this.callback = parami;
+    if (this.IyO == null)
     {
-      Log.i("MicroMsg.MidHelper", "checkReportMid acc not ready");
-      AppMethodBeat.o(134232);
-      return -1;
+      Log.e("MicroMsg.NetSceneCliReportKV", "do scene but req is null!");
+      AppMethodBeat.o(143793);
+      return -2;
     }
-    long l = Util.nowSecond();
-    if ((paramInt1 == 3) && (Util.nullAs((Long)g.aAh().azQ().get(331778, null), 0L) >= l))
-    {
-      AppMethodBeat.o(134232);
-      return 0;
+    if (!this.isLogin) {
+      this.IyO.SmM = com.tencent.mm.cd.b.cU(Util.getUuidRandom());
     }
-    int i;
-    if (NetStatusUtil.is2G(MMApplicationContext.getContext())) {
-      i = 1;
+    d.a locala = new d.a();
+    locala.lBX = false;
+    locala.lBU = this.IyO;
+    locala.lBV = new aaq();
+    if (1 == this.channel) {
+      parami = "/cgi-bin/micromsg-bin/newreportkvcomm";
     }
     for (;;)
     {
-      String str = eOz();
-      Log.i("MicroMsg.MidHelper", "querymid checkReportMid moment:%d mid[%s]", new Object[] { Integer.valueOf(paramInt1), str });
-      com.tencent.mm.plugin.report.e.Cxv.a(11402, new Object[] { str, Integer.valueOf(paramInt1), Integer.valueOf(i), q.aoG(), Integer.valueOf(paramInt2), paramString, NetStatusUtil.getISPName(MMApplicationContext.getContext()), Integer.valueOf(0), q.dr(false) });
-      g.aAh().azQ().set(331778, Long.valueOf(259200L + l));
-      AppMethodBeat.o(134232);
-      return 0;
-      if (NetStatusUtil.isWifi(MMApplicationContext.getContext())) {
-        i = 3;
-      } else if (NetStatusUtil.is3G(MMApplicationContext.getContext())) {
-        i = 2;
-      } else {
-        i = 0;
-      }
-    }
-  }
-  
-  public static void aMs(String paramString)
-  {
-    AppMethodBeat.i(134231);
-    try
-    {
-      i locali = CxM;
-      if (i.mContext != null)
+      String str;
+      label111:
+      int i;
+      if (1 == this.channel)
       {
-        i.dfO = System.currentTimeMillis();
-        com.tencent.b.a.a.n.dfZ = -1L;
+        str = "/cgi-bin/micromsg-bin/newreportkvcommrsa";
+        if (!this.isLogin) {
+          break label230;
+        }
+        locala.uri = parami;
+        locala.funcId = getType();
+        this.rr = locala.bgN();
+        if (!this.isLogin)
+        {
+          this.rr.setRsaInfo(ac.hpi());
+          this.rr.option = 1;
+        }
+        i = dispatch(paramg, this.rr, this);
+        if (i < 0) {
+          Log.i("MicroMsg.NetSceneCliReportKV", "mark all failed. do scene %d", new Object[] { Integer.valueOf(i) });
+        }
       }
       try
       {
-        SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(i.mContext).edit();
-        localEditor.putLong("__MID_LAST_CHECK_TIME__", i.dfO);
-        localEditor.commit();
-        if (i.mHandler != null) {
-          i.mHandler.post(new i.1(locali, paramString));
-        }
-        Log.i("MicroMsg.MidHelper", "QueryMid local:%s", new Object[] { CxM.Ua() });
-        AppMethodBeat.o(134231);
-        return;
+        SmcLogic.OnReportResp(3, -1, null, this.channel);
+        AppMethodBeat.o(143793);
+        return i;
+        parami = "/cgi-bin/micromsg-bin/newreportidkey";
+        continue;
+        str = "/cgi-bin/micromsg-bin/newreportidkeyrsa";
+        break label111;
+        label230:
+        parami = str;
       }
-      catch (Exception localException)
+      catch (Exception paramg)
       {
         for (;;)
         {
-          s.Uh();
+          Log.e("MicroMsg.NetSceneCliReportKV", "updateReportStrategy failed  hash:%d  , ex:%s", new Object[] { Integer.valueOf(hashCode()), Util.stackTraceToString(paramg) });
         }
       }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      Log.e("MicroMsg.MidHelper", "procReturnData Error e:%s", new Object[] { Util.stackTraceToString(paramString) });
-      AppMethodBeat.o(134231);
     }
   }
   
-  public static String eOz()
+  public final int getType()
   {
-    AppMethodBeat.i(134230);
+    if (!this.isLogin)
+    {
+      if (1 == this.channel) {
+        return 997;
+      }
+      return 987;
+    }
+    if (1 == this.channel) {
+      return 996;
+    }
+    return 986;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(143792);
+    if ((com.tencent.mm.kernel.h.aHF().kcd == null) || (com.tencent.mm.kernel.h.aHF().kcd.lCD == null))
+    {
+      Log.f("MicroMsg.NetSceneCliReportKV", "null == MMCore.getNetSceneQueue().getDispatcher(), can't give response to kvcomm.");
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(143792);
+      return;
+    }
+    if (paramInt2 != 0)
+    {
+      Log.e("MicroMsg.NetSceneCliReportKV", "get cli_report_kv strategy err, errType:" + paramInt2 + ", errCode:" + paramInt3);
+      SmcLogic.OnReportResp(paramInt2, paramInt3, null, this.channel);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(143792);
+      return;
+    }
+    Log.d("MicroMsg.NetSceneCliReportKV", "get cli_report_kv strategy ok, channel:" + this.channel);
+    params = (aaq)d.c.b(this.rr.lBS);
+    this.IyP.a(params.SmX, this.channel);
     try
     {
-      i.a(new d.1());
-      String str = CxM.TZ();
-      Log.i("MicroMsg.MidHelper", "QueryMid try Get Now getMid:%s getLocalMid:%s", new Object[] { str, CxM.Ua() });
-      AppMethodBeat.o(134230);
-      return str;
+      if (this.channel == 1) {
+        SmcLogic.OnReportResp(0, 0, SmcProtoBufUtil.toSmcReportKvResp(params).toByteArray(), this.channel);
+      }
+      for (;;)
+      {
+        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+        AppMethodBeat.o(143792);
+        return;
+        if (this.channel == 2) {
+          SmcLogic.OnReportResp(0, 0, SmcProtoBufUtil.toSmcReportIdkeyResp(params).toByteArray(), this.channel);
+        }
+      }
     }
-    catch (Exception localException)
+    catch (Exception params)
     {
-      Log.e("MicroMsg.MidHelper", "QueryMid Error e:%s", new Object[] { Util.stackTraceToString(localException) });
-      AppMethodBeat.o(134230);
+      for (;;)
+      {
+        Log.e("MicroMsg.NetSceneCliReportKV", "updateReportStrategy failed  hash:%d  , ex:%s", new Object[] { Integer.valueOf(hashCode()), Util.stackTraceToString(params) });
+      }
     }
-    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.report.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,6 @@ package com.google.android.gms.iid;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.support.v4.content.b;
-import android.support.v4.e.a;
 import android.util.Log;
 import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -32,11 +30,11 @@ public final class zzak
   private zzak(Context paramContext, zzn paramzzn)
   {
     AppMethodBeat.i(2504);
-    this.zzdb = new a();
+    this.zzdb = new androidx.b.a();
     this.zzk = paramContext;
     this.zzcz = paramContext.getSharedPreferences("com.google.android.gms.appid", 0);
     this.zzda = paramzzn;
-    paramContext = new File(b.U(this.zzk), "com.google.android.gms.appid-no-backup");
+    paramContext = new File(androidx.core.content.a.R(this.zzk), "com.google.android.gms.appid-no-backup");
     if (!paramContext.exists()) {
       try
       {
@@ -291,7 +289,7 @@ public final class zzak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.iid.zzak
  * JD-Core Version:    0.7.0.1
  */

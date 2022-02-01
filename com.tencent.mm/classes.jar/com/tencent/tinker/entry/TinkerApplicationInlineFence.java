@@ -83,6 +83,8 @@ public final class TinkerApplicationInlineFence
     }
   }
   
+  public final void dispatchMessage(Message paramMessage) {}
+  
   public final void handleMessage(Message paramMessage)
   {
     handleMessage_$noinline$(paramMessage);
@@ -90,7 +92,7 @@ public final class TinkerApplicationInlineFence
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.entry.TinkerApplicationInlineFence
  * JD-Core Version:    0.7.0.1
  */

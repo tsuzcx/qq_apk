@@ -6,106 +6,106 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class b
 {
+  public long DOr = 0L;
+  public long DPJ = 0L;
+  public int DPL = 0;
+  public int DQO = 0;
+  public int DQP = 0;
+  public int DQQ = 0;
+  public int DQR = 0;
+  public int DQS = 0;
+  public long DQT = 0L;
+  public long DQU = 0L;
+  public int DQV = 0;
+  public long DQW = 0L;
+  public int DQX = 0;
+  public long DQY = 0L;
+  public int DQZ = 0;
+  public String DRa = "";
+  public long DRb = 0L;
+  public long DRc = 0L;
+  public long DRd = 0L;
+  public long DRe = 0L;
+  public String DRf = "";
+  public String DRg = "";
+  public String DRh = "";
+  public long DRi = 0L;
+  public long DRj = 0L;
+  public long DRk = 0L;
+  public int DRl = 0;
+  public int DRm = 0;
+  public int DRn = 0;
+  public int DRo = 0;
   public String countryCode = "";
-  public String kik = "";
+  public String mZK = "";
   public int roomId = 0;
-  public long yop = 0L;
-  public long ypH = 0L;
-  public int ypJ = 0;
-  public int yqM = 0;
-  public int yqN = 0;
-  public int yqO = 0;
-  public int yqP = 0;
-  public int yqQ = 0;
-  public long yqR = 0L;
-  public long yqS = 0L;
-  public int yqT = 0;
-  public long yqU = 0L;
-  public int yqV = 0;
-  public long yqW = 0L;
-  public int yqX = 0;
-  public String yqY = "";
-  public long yqZ = 0L;
-  public long yra = 0L;
-  public long yrb = 0L;
-  public long yrc = 0L;
-  public String yrd = "";
-  public String yre = "";
-  public String yrf = "";
-  public long yrg = 0L;
-  public long yrh = 0L;
-  public long yri = 0L;
-  public int yrj = 0;
-  public int yrk = 0;
-  public int yrl = 0;
-  public int yrm = 0;
   
-  public final void eaO()
+  public final void eJM()
   {
     AppMethodBeat.i(25446);
     Log.i("MicroMsg.IPCallReportHelper", "selfShutdown");
-    this.yqQ = 1;
+    this.DQS = 1;
     AppMethodBeat.o(25446);
   }
   
-  public final void eaP()
+  public final void eJN()
   {
     AppMethodBeat.i(25447);
     Log.i("MicroMsg.IPCallReportHelper", "selfCancel");
-    this.yqP = 1;
-    if ((this.yri == 0L) && (this.yqZ != 0L))
+    this.DQR = 1;
+    if ((this.DRk == 0L) && (this.DRb != 0L))
     {
-      this.yri = (System.currentTimeMillis() - this.yqZ);
-      Log.d("MicroMsg.IPCallReportHelper", "cancelTime: %d", new Object[] { Long.valueOf(this.yri) });
+      this.DRk = (System.currentTimeMillis() - this.DRb);
+      Log.d("MicroMsg.IPCallReportHelper", "cancelTime: %d", new Object[] { Long.valueOf(this.DRk) });
     }
     AppMethodBeat.o(25447);
   }
   
-  public final void eaQ()
+  public final void eJO()
   {
     AppMethodBeat.i(25448);
     Log.i("MicroMsg.IPCallReportHelper", "channelConnect");
-    this.yqT = 1;
+    this.DQV = 1;
     AppMethodBeat.o(25448);
   }
   
-  public final void eaR()
+  public final void eJP()
   {
-    if (this.yrl == 0) {
-      this.yrl = 1;
+    if (this.DRn == 0) {
+      this.DRn = 1;
     }
   }
   
-  public final void eaS()
+  public final void eJQ()
   {
     AppMethodBeat.i(25449);
     Log.d("MicroMsg.IPCallReportHelper", "markConnect");
-    if (this.yrg == 0L)
+    if (this.DRi == 0L)
     {
-      this.yrg = System.currentTimeMillis();
-      this.yrh = (this.yrg - this.yqZ);
-      Log.d("MicroMsg.IPCallReportHelper", "connectTime: %d", new Object[] { Long.valueOf(this.yrh) });
+      this.DRi = System.currentTimeMillis();
+      this.DRj = (this.DRi - this.DRb);
+      Log.d("MicroMsg.IPCallReportHelper", "connectTime: %d", new Object[] { Long.valueOf(this.DRj) });
     }
     AppMethodBeat.o(25449);
   }
   
-  public final void eaT()
+  public final void eJR()
   {
     AppMethodBeat.i(25450);
     Log.d("MicroMsg.IPCallReportHelper", "markStartTalk");
-    if (this.yrb == 0L) {
-      this.yrb = System.currentTimeMillis();
+    if (this.DRd == 0L) {
+      this.DRd = System.currentTimeMillis();
     }
     AppMethodBeat.o(25450);
   }
   
-  public final void gQ(int paramInt1, int paramInt2)
+  public final void hU(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(25445);
-    if (this.ypJ == paramInt1)
+    if (this.DPL == paramInt1)
     {
       Log.d("MicroMsg.IPCallReportHelper", "setInviteCgiRet: %d", new Object[] { Integer.valueOf(paramInt2) });
-      this.yqX = paramInt2;
+      this.DQZ = paramInt2;
     }
     AppMethodBeat.o(25445);
   }
@@ -122,7 +122,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.d.b
  * JD-Core Version:    0.7.0.1
  */

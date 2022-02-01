@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.wallet_payu.create.a;
 
-public final class d
+public class d
 {
-  public int Itg;
-  public int Ith;
-  public int titleRes;
+  public int PlQ;
+  public int PlR;
+  public int PlS;
   
   public d(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.Itg = paramInt1;
-    this.titleRes = paramInt2;
-    this.Ith = paramInt3;
+    this.PlQ = paramInt1;
+    this.PlR = paramInt2;
+    this.PlS = paramInt3;
   }
 }
 

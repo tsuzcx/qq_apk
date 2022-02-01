@@ -9,7 +9,7 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
 {
-  public static a dWb()
+  public static a ezj()
   {
     AppMethodBeat.i(41660);
     Object localObject = new IntentFilter("android.intent.action.BATTERY_CHANGED");
@@ -37,10 +37,10 @@ public final class a
         boolean bool = true;
         continue;
       }
-      ((a)localObject).ohV = bool;
+      ((a)localObject).rjK = bool;
       i = localIntent.getIntExtra("level", -1);
       j = localIntent.getIntExtra("scale", -1);
-      ((a)localObject).xIk = (i / j);
+      ((a)localObject).CMo = (i / j);
       AppMethodBeat.o(41660);
       return localObject;
       bool = false;
@@ -49,13 +49,13 @@ public final class a
   
   public static final class a
   {
-    boolean ohV = false;
-    float xIk = 0.0F;
+    float CMo = 0.0F;
+    boolean rjK = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.a.a
  * JD-Core Version:    0.7.0.1
  */

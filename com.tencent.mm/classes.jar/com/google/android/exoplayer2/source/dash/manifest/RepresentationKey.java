@@ -9,9 +9,9 @@ public final class RepresentationKey
   implements Parcelable, Comparable<RepresentationKey>
 {
   public static final Parcelable.Creator<RepresentationKey> CREATOR;
-  public final int bwx;
-  public final int bxq;
-  public final int bxr;
+  public final int bfZ;
+  public final int bgS;
+  public final int bgT;
   
   static
   {
@@ -22,9 +22,9 @@ public final class RepresentationKey
   
   public RepresentationKey(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.bwx = paramInt1;
-    this.bxq = paramInt2;
-    this.bxr = paramInt3;
+    this.bfZ = paramInt1;
+    this.bgS = paramInt2;
+    this.bgT = paramInt3;
   }
   
   public final int describeContents()
@@ -35,7 +35,7 @@ public final class RepresentationKey
   public final String toString()
   {
     AppMethodBeat.i(10568);
-    String str = this.bwx + "." + this.bxq + "." + this.bxr;
+    String str = this.bfZ + "." + this.bgS + "." + this.bgT;
     AppMethodBeat.o(10568);
     return str;
   }
@@ -43,15 +43,15 @@ public final class RepresentationKey
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(10569);
-    paramParcel.writeInt(this.bwx);
-    paramParcel.writeInt(this.bxq);
-    paramParcel.writeInt(this.bxr);
+    paramParcel.writeInt(this.bfZ);
+    paramParcel.writeInt(this.bgS);
+    paramParcel.writeInt(this.bgT);
     AppMethodBeat.o(10569);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.dash.manifest.RepresentationKey
  * JD-Core Version:    0.7.0.1
  */

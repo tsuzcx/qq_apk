@@ -24,6 +24,7 @@ public class TXSVideoEncoderParam
   public Object glContext = null;
   public int gop = 3;
   public int height = 0;
+  public boolean isH265EncoderEnabled = false;
   public boolean realTime = false;
   public boolean record = false;
   public int streamType = 0;
@@ -32,7 +33,7 @@ public class TXSVideoEncoderParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.TXSVideoEncoderParam
  * JD-Core Version:    0.7.0.1
  */

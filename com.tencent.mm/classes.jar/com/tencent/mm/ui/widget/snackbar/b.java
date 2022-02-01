@@ -7,11 +7,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static boolean QVB = false;
+  private static boolean VVb = false;
   
-  public static void Dt(boolean paramBoolean)
+  public static void HQ(boolean paramBoolean)
   {
-    QVB = paramBoolean;
+    VVb = paramBoolean;
   }
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, a.b paramb)
@@ -19,7 +19,7 @@ public final class b
     AppMethodBeat.i(159712);
     paramActivity = new a.a(paramActivity);
     paramActivity.mMessage = paramString1;
-    paramActivity.QVo = paramString2;
+    paramActivity.YtZ = paramString2;
     a(paramActivity.a(Short.valueOf((short)2500)), paramb, null);
     AppMethodBeat.o(159712);
   }
@@ -29,7 +29,7 @@ public final class b
     AppMethodBeat.i(159715);
     paramActivity = new a.a(paramActivity);
     paramActivity.mMessage = paramString1;
-    paramActivity.QVo = paramString2;
+    paramActivity.YtZ = paramString2;
     a(paramActivity.a(Short.valueOf((short)2500)), paramb, paramc);
     AppMethodBeat.o(159715);
   }
@@ -43,7 +43,7 @@ public final class b
     if (paramc != null) {
       paramContext.a(paramc);
     }
-    paramContext.hcA();
+    paramContext.idQ();
     AppMethodBeat.o(159716);
   }
   
@@ -52,7 +52,7 @@ public final class b
     AppMethodBeat.i(168815);
     paramContext = new a.a(paramContext, paramView);
     paramContext.mMessage = paramString1;
-    paramContext.QVo = paramString2;
+    paramContext.YtZ = paramString2;
     a(paramContext.a(Short.valueOf((short)2500)), paramb, null);
     AppMethodBeat.o(168815);
   }
@@ -62,7 +62,7 @@ public final class b
     AppMethodBeat.i(159714);
     paramContext = new a.a(paramContext, paramView);
     paramContext.mMessage = paramString1;
-    paramContext.QVo = paramString2;
+    paramContext.YtZ = paramString2;
     a(paramContext.a(Short.valueOf((short)2500)), paramb, paramc);
     AppMethodBeat.o(159714);
   }
@@ -76,13 +76,13 @@ public final class b
     if (paramc != null) {
       parama.a(paramc);
     }
-    parama.hcA();
+    parama.idQ();
     AppMethodBeat.o(159718);
   }
   
-  public static boolean bJw()
+  public static boolean bVd()
   {
-    return QVB;
+    return VVb;
   }
   
   public static void r(Activity paramActivity, String paramString)

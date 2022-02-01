@@ -10,8 +10,11 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.n.f;
 import com.tencent.mm.n.h;
+import com.tencent.mm.plugin.setting.b.c;
+import com.tencent.mm.plugin.setting.b.f;
+import com.tencent.mm.plugin.setting.b.g;
 import com.tencent.mm.plugin.setting.d;
-import com.tencent.mm.protocal.protobuf.ye;
+import com.tencent.mm.protocal.protobuf.yk;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMWizardActivity;
@@ -21,95 +24,95 @@ import java.util.List;
 public class SettingsModifyAliasCheckUI
   extends MMWizardActivity
 {
-  private List<ye> Dbs;
-  private boolean Dbt;
-  private List<View> DcA;
-  private LinearLayout Dcz;
+  private List<yk> JgT;
+  private boolean JgU;
+  private LinearLayout Jia;
+  private List<View> Jib;
   
   public SettingsModifyAliasCheckUI()
   {
-    AppMethodBeat.i(256550);
-    this.Dbs = null;
-    this.DcA = new ArrayList();
-    this.Dbt = false;
-    AppMethodBeat.o(256550);
+    AppMethodBeat.i(263658);
+    this.JgT = null;
+    this.Jib = new ArrayList();
+    this.JgU = false;
+    AppMethodBeat.o(263658);
   }
   
   public int getLayoutId()
   {
-    return 2131496246;
+    return b.g.settings_alias_check;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(256552);
+    AppMethodBeat.i(263661);
     setMMTitle("");
     hideActionbarLine();
-    setActionbarColor(getResources().getColor(2131101424));
+    setActionbarColor(getResources().getColor(b.c.white));
     setBackBtn(new SettingsModifyAliasCheckUI.1(this));
-    this.Dcz = ((LinearLayout)findViewById(2131307711));
-    ((TextView)findViewById(2131307712)).setOnClickListener(new SettingsModifyAliasCheckUI.2(this));
-    this.Dbs = d.eSE();
-    if ((this.Dbs != null) && (!this.Dbs.isEmpty()))
+    this.Jia = ((LinearLayout)findViewById(b.f.settings_modify_alias_conditions));
+    ((TextView)findViewById(b.f.settings_modify_alias_help)).setOnClickListener(new SettingsModifyAliasCheckUI.2(this));
+    this.JgT = d.fFH();
+    if ((this.JgT != null) && (!this.JgT.isEmpty()))
     {
-      Log.i("MicroMsg.SettingsModifyAliasCheckUI", "conditions %s", new Object[] { Integer.valueOf(this.Dbs.size()) });
-      this.Dcz.removeAllViews();
-      this.Dbt = true;
+      Log.i("MicroMsg.SettingsModifyAliasCheckUI", "conditions %s", new Object[] { Integer.valueOf(this.JgT.size()) });
+      this.Jia.removeAllViews();
+      this.JgU = true;
       int i = 0;
-      if (i < this.Dbs.size())
+      if (i < this.JgT.size())
       {
-        View localView = View.inflate(this, 2131496258, null);
-        this.DcA.add(localView);
-        TextView localTextView1 = (TextView)localView.findViewById(2131304831);
-        TextView localTextView2 = (TextView)localView.findViewById(2131304829);
-        TextView localTextView3 = (TextView)localView.findViewById(2131304830);
-        localTextView1.setText(((ye)this.Dbs.get(i)).title);
-        if (!Util.isNullOrNil(((ye)this.Dbs.get(i)).desc))
+        View localView = View.inflate(this, b.g.settings_modify_alias_check_condition, null);
+        this.Jib.add(localView);
+        TextView localTextView1 = (TextView)localView.findViewById(b.f.modify_alias_condition_title);
+        TextView localTextView2 = (TextView)localView.findViewById(b.f.modify_alias_condition_desc);
+        TextView localTextView3 = (TextView)localView.findViewById(b.f.modify_alias_condition_result);
+        localTextView1.setText(((yk)this.JgT.get(i)).title);
+        if (!Util.isNullOrNil(((yk)this.JgT.get(i)).desc))
         {
-          localTextView2.setText(((ye)this.Dbs.get(i)).desc);
+          localTextView2.setText(((yk)this.JgT.get(i)).desc);
           localTextView2.setVisibility(0);
         }
-        localTextView3.setText(((ye)this.Dbs.get(i)).result);
-        if (((ye)this.Dbs.get(i)).Lje)
+        localTextView3.setText(((yk)this.JgT.get(i)).result);
+        if (((yk)this.JgT.get(i)).Skv)
         {
-          localTextView3.setTextColor(getResources().getColor(2131100566));
-          label328:
+          localTextView3.setTextColor(getResources().getColor(b.c.green_text_color));
+          label336:
           if (i % 2 == 0) {
-            localView.findViewById(2131304832).setVisibility(0);
+            localView.findViewById(b.f.modify_alias_condition_top_divider).setVisibility(0);
           }
-          localView.findViewById(2131304828).setVisibility(0);
-          this.Dcz.addView(localView, new LinearLayout.LayoutParams(-1, -2));
-          if ((!this.Dbt) || (!((ye)this.Dbs.get(i)).Lje)) {
-            break label429;
+          localView.findViewById(b.f.modify_alias_condition_bottom_divider).setVisibility(0);
+          this.Jia.addView(localView, new LinearLayout.LayoutParams(-1, -2));
+          if ((!this.JgU) || (!((yk)this.JgT.get(i)).Skv)) {
+            break label440;
           }
         }
-        label429:
+        label440:
         for (boolean bool = true;; bool = false)
         {
-          this.Dbt = bool;
+          this.JgU = bool;
           i += 1;
           break;
-          localTextView3.setTextColor(getResources().getColor(2131100996));
-          break label328;
+          localTextView3.setTextColor(getResources().getColor(b.c.red_text_color));
+          break label336;
         }
       }
-      AppMethodBeat.o(256552);
+      AppMethodBeat.o(263661);
       return;
     }
-    this.Dbt = false;
-    this.Dcz.removeAllViews();
-    AppMethodBeat.o(256552);
+    this.JgU = false;
+    this.Jia.removeAllViews();
+    AppMethodBeat.o(263661);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(256551);
+    AppMethodBeat.i(263659);
     super.onCreate(paramBundle);
     initView();
-    if (h.aqJ().getInt("EnableModAlias", 0) == 0) {
+    if (h.axc().getInt("EnableModAlias", 0) == 0) {
       finish();
     }
-    AppMethodBeat.o(256551);
+    AppMethodBeat.o(263659);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -120,7 +123,7 @@ public class SettingsModifyAliasCheckUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsModifyAliasCheckUI
  * JD-Core Version:    0.7.0.1
  */

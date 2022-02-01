@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.os.Process;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
-import com.tencent.matrix.report.a.a;
+import com.tencent.matrix.report.d.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
@@ -22,7 +22,7 @@ public final class BackgroundActivationsListener
 {
   public final void onCreate()
   {
-    AppMethodBeat.i(200993);
+    AppMethodBeat.i(200691);
     super.onCreate();
     Log.i("MicroMsg.battery.BackgroundActivationsListener", "#onCreate");
     ComponentName localComponentName = new ComponentName(this, BackgroundActivationsListener.class);
@@ -30,7 +30,7 @@ public final class BackgroundActivationsListener
     {
       Log.i("MicroMsg.battery.BackgroundActivationsListener", "requestRebind");
       requestRebind(localComponentName);
-      AppMethodBeat.o(200993);
+      AppMethodBeat.o(200691);
       return;
     }
     Log.i("MicroMsg.battery.BackgroundActivationsListener", "requestRebind Legacy");
@@ -38,14 +38,14 @@ public final class BackgroundActivationsListener
     if (localObject == null)
     {
       Log.w("MicroMsg.battery.BackgroundActivationsListener", "am is null");
-      AppMethodBeat.o(200993);
+      AppMethodBeat.o(200691);
       return;
     }
     localObject = ((ActivityManager)localObject).getRunningServices(2147483647);
     if ((localObject == null) || (((List)localObject).isEmpty()))
     {
       Log.w("MicroMsg.battery.BackgroundActivationsListener", "runningServices is empty");
-      AppMethodBeat.o(200993);
+      AppMethodBeat.o(200691);
       return;
     }
     localObject = ((List)localObject).iterator();
@@ -62,7 +62,7 @@ public final class BackgroundActivationsListener
       if (i != 0)
       {
         Log.i("MicroMsg.battery.BackgroundActivationsListener", "service is running, skip");
-        AppMethodBeat.o(200993);
+        AppMethodBeat.o(200691);
         return;
       }
       Log.i("MicroMsg.battery.BackgroundActivationsListener", "try manually rebind service");
@@ -70,38 +70,38 @@ public final class BackgroundActivationsListener
       localObject = getPackageManager();
       ((PackageManager)localObject).setComponentEnabledSetting(localComponentName, 2, 1);
       ((PackageManager)localObject).setComponentEnabledSetting(localComponentName, 1, 1);
-      AppMethodBeat.o(200993);
+      AppMethodBeat.o(200691);
       return;
     }
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(200994);
+    AppMethodBeat.i(200692);
     Log.i("MicroMsg.battery.BackgroundActivationsListener", "#onDestroy");
     super.onDestroy();
-    AppMethodBeat.o(200994);
+    AppMethodBeat.o(200692);
   }
   
   public final void onListenerConnected()
   {
-    AppMethodBeat.i(200997);
+    AppMethodBeat.i(200700);
     super.onListenerConnected();
     Log.i("MicroMsg.battery.BackgroundActivationsListener", "#onListenerConnected");
-    AppMethodBeat.o(200997);
+    AppMethodBeat.o(200700);
   }
   
   public final void onListenerDisconnected()
   {
-    AppMethodBeat.i(200998);
+    AppMethodBeat.i(200701);
     super.onListenerDisconnected();
     Log.i("MicroMsg.battery.BackgroundActivationsListener", "#onListenerDisconnected");
-    AppMethodBeat.o(200998);
+    AppMethodBeat.o(200701);
   }
   
   public final void onNotificationPosted(StatusBarNotification paramStatusBarNotification)
   {
-    AppMethodBeat.i(200995);
+    AppMethodBeat.i(200698);
     super.onNotificationPosted(paramStatusBarNotification);
     Log.i("MicroMsg.battery.BackgroundActivationsListener", "#onNotificationPosted");
     Notification localNotification = paramStatusBarNotification.getNotification();
@@ -131,7 +131,7 @@ public final class BackgroundActivationsListener
         break label163;
       }
       Log.w("MicroMsg.battery.BackgroundActivationsListener", "AMS on updateForegroundApps, notification = " + localNotification.toString());
-      a.a.cB(false);
+      d.a.cV(false);
     }
     for (;;)
     {
@@ -141,23 +141,23 @@ public final class BackgroundActivationsListener
       break;
       label163:
       Log.w("MicroMsg.battery.BackgroundActivationsListener", "AMS on updateForegroundApps for others, pkg = ".concat(String.valueOf(localObject)));
-      a.a.cB(true);
+      d.a.cV(true);
     }
     label185:
-    AppMethodBeat.o(200995);
+    AppMethodBeat.o(200698);
   }
   
   public final void onNotificationRemoved(StatusBarNotification paramStatusBarNotification)
   {
-    AppMethodBeat.i(200996);
+    AppMethodBeat.i(200699);
     super.onNotificationRemoved(paramStatusBarNotification);
     Log.i("MicroMsg.battery.BackgroundActivationsListener", "#onNotificationRemoved");
-    AppMethodBeat.o(200996);
+    AppMethodBeat.o(200699);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.battery.BackgroundActivationsListener
  * JD-Core Version:    0.7.0.1
  */

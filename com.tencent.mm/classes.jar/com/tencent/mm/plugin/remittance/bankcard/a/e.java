@@ -1,40 +1,40 @@
 package com.tencent.mm.plugin.remittance.bankcard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.agp;
-import com.tencent.mm.protocal.protobuf.agq;
+import com.tencent.mm.protocal.protobuf.agy;
+import com.tencent.mm.protocal.protobuf.agz;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
   extends b
 {
-  public agq CiM;
+  public agz IfF;
   private final String TAG;
   private i callback;
-  public String qvC;
   private d rr;
+  public String tUB;
   
   public e(String paramString)
   {
     AppMethodBeat.i(67361);
     this.TAG = "MicroMsg.NetSceneBankRemitDeleteHistory";
     d.a locala = new d.a();
-    locala.iLN = new agp();
-    locala.iLO = new agq();
+    locala.lBU = new agy();
+    locala.lBV = new agz();
     locala.funcId = 1737;
     locala.uri = "/cgi-bin/mmpay-bin/deletehistoryrecord_tsbc";
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    ((agp)this.rr.iLK.iLR).KZa = paramString;
-    this.qvC = paramString;
+    this.rr = locala.bgN();
+    ((agy)d.b.b(this.rr.lBR)).Saj = paramString;
+    this.tUB = paramString;
     AppMethodBeat.o(67361);
   }
   
@@ -42,8 +42,8 @@ public final class e
   {
     AppMethodBeat.i(67363);
     Log.i("MicroMsg.NetSceneBankRemitDeleteHistory", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.CiM = ((agq)((d)params).iLL.iLR);
-    Log.i("MicroMsg.NetSceneBankRemitDeleteHistory", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.CiM.dDN), this.CiM.qwn });
+    this.IfF = ((agz)d.c.b(((d)params).lBS));
+    Log.i("MicroMsg.NetSceneBankRemitDeleteHistory", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.IfF.fwx), this.IfF.tVo });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
@@ -59,11 +59,13 @@ public final class e
     return i;
   }
   
-  public final void e(s params)
+  public final void f(s params)
   {
-    params = (agq)((d)params).iLL.iLR;
-    this.RtZ = params.dDN;
-    this.Rua = params.qwn;
+    AppMethodBeat.i(205316);
+    params = (agz)d.c.b(((d)params).lBS);
+    this.YVy = params.fwx;
+    this.YVz = params.tVo;
+    AppMethodBeat.o(205316);
   }
   
   public final int getType()

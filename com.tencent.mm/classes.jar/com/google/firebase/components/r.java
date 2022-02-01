@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class r
 {
-  public static void b(boolean paramBoolean, String paramString)
+  public static void c(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(4098);
     if (!paramBoolean)
@@ -31,7 +31,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.components.r
  * JD-Core Version:    0.7.0.1
  */

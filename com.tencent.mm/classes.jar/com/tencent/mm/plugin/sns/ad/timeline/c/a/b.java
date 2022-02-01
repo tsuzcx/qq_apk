@@ -1,260 +1,301 @@
 package com.tencent.mm.plugin.sns.ad.timeline.c.a;
 
-import android.app.Activity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.b;
 import android.text.TextUtils;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.a.d;
-import com.tencent.mm.plugin.sns.ad.a.e;
-import com.tencent.mm.plugin.sns.ad.i.c;
-import com.tencent.mm.plugin.sns.ad.i.m;
-import com.tencent.mm.plugin.sns.ad.timeline.dynamic.b.a.b;
-import com.tencent.mm.plugin.sns.ad.timeline.dynamic.listener.RequestListenerManager;
-import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.ad.adxml.i;
+import com.tencent.mm.plugin.sns.ad.adxml.j;
+import com.tencent.mm.plugin.sns.ad.i.d;
+import com.tencent.mm.plugin.sns.ad.i.j.b;
+import com.tencent.mm.plugin.sns.data.t;
 import com.tencent.mm.plugin.sns.storage.ADXml;
 import com.tencent.mm.plugin.sns.storage.SnsInfo;
-import com.tencent.mm.protocal.protobuf.cnb;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.lang.ref.WeakReference;
-import java.util.Collection;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public final class b
-  implements com.tencent.mm.plugin.sns.ad.timeline.dynamic.listener.a
+  extends j.b
 {
-  SnsInfo DqO;
-  TextView Dzu;
-  com.tencent.mm.plugin.sns.ad.timeline.dynamic.a.a Dzv;
-  WeakReference<Activity> mActivityRef;
-  RecyclerView mRecyclerView;
+  List<a> JJJ;
+  int JyE;
+  String adExtInfo;
+  int currentIndex;
+  String fLp;
+  int scene;
+  String uxInfo;
   
-  public b(Activity paramActivity, TextView paramTextView, RecyclerView paramRecyclerView)
+  public b(int paramInt)
   {
-    AppMethodBeat.i(202269);
-    if (paramActivity != null)
-    {
-      this.mActivityRef = new WeakReference(paramActivity);
-      this.Dzv = new com.tencent.mm.plugin.sns.ad.timeline.dynamic.a.a(paramActivity);
-    }
-    this.Dzu = paramTextView;
-    this.mRecyclerView = paramRecyclerView;
-    AppMethodBeat.o(202269);
+    AppMethodBeat.i(257091);
+    this.JJJ = new ArrayList();
+    this.currentIndex = -1;
+    this.scene = paramInt;
+    AppMethodBeat.o(257091);
   }
   
-  private void d(SnsInfo paramSnsInfo, boolean paramBoolean)
+  private void I(JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(202271);
+    AppMethodBeat.i(257101);
+    if (d.isEmpty(this.JJJ))
+    {
+      AppMethodBeat.o(257101);
+      return;
+    }
+    Iterator localIterator = this.JJJ.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (a)localIterator.next();
+      if (localObject != null)
+      {
+        localObject = ((a)localObject).toJson();
+        if (localObject != null) {
+          paramJSONArray.put(localObject);
+        }
+      }
+    }
+    AppMethodBeat.o(257101);
+  }
+  
+  private void aYI(String paramString)
+  {
+    AppMethodBeat.i(257096);
+    this.uxInfo = Util.nullAsNil(paramString);
+    AppMethodBeat.o(257096);
+  }
+  
+  private void aYJ(String paramString)
+  {
+    AppMethodBeat.i(257097);
+    this.adExtInfo = Util.nullAsNil(paramString);
+    AppMethodBeat.o(257097);
+  }
+  
+  private boolean aeX(int paramInt)
+  {
+    AppMethodBeat.i(257107);
+    int i = this.JJJ.size();
+    if ((paramInt >= 0) && (paramInt < i))
+    {
+      AppMethodBeat.o(257107);
+      return true;
+    }
+    AppMethodBeat.o(257107);
+    return false;
+  }
+  
+  private void setSnsId(String paramString)
+  {
+    AppMethodBeat.i(257093);
+    this.fLp = Util.nullAsNil(paramString);
+    AppMethodBeat.o(257093);
+  }
+  
+  public final void a(SnsInfo paramSnsInfo, int paramInt, j paramj)
+  {
+    AppMethodBeat.i(257092);
     if (paramSnsInfo == null)
     {
-      Log.w("SnsAd.TopicCardDynamic", "Are you OK??? The input sns info or listener is null!!");
-      AppMethodBeat.o(202271);
+      Log.i("SlideFullCardAdChannelData", "the sns info is null!");
+      AppMethodBeat.o(257092);
       return;
     }
-    if (this.Dzv == null)
+    Object localObject = t.w(paramSnsInfo);
+    if ((!TextUtils.isEmpty(this.fLp)) && (this.fLp.equals(localObject)))
     {
-      Log.w("SnsAd.TopicCardDynamic", "Are you OK??? I think the activity is null, which is input in constructor!!!!");
-      AppMethodBeat.o(202271);
+      Log.i("SlideFullCardAdChannelData", "the new sns id is same as the old one!");
+      AppMethodBeat.o(257092);
       return;
     }
-    Object localObject1 = r.v(paramSnsInfo);
-    if ((TextUtils.isEmpty((CharSequence)localObject1)) || ("0".equals(localObject1)))
-    {
-      Log.w("SnsAd.TopicCardDynamic", "the sns id is empty!! Are you sure?");
-      AppMethodBeat.o(202271);
-      return;
+    setSnsId((String)localObject);
+    if (paramSnsInfo.getAdInfo(paramInt) != null) {
+      aYI(paramSnsInfo.getUxinfo());
     }
-    Object localObject2 = getActivity();
-    if (localObject2 == null)
+    aYJ(paramSnsInfo.getAdXml().adExtInfo);
+    this.JJJ.clear();
+    if ((paramj != null) && (paramj.Jym != null))
     {
-      Log.w("SnsAd.TopicCardDynamic", "the context is null! Is activity destroyed?");
-      AppMethodBeat.o(202271);
-      return;
-    }
-    localObject2 = RequestListenerManager.aF((Activity)localObject2);
-    if (localObject2 == null)
-    {
-      Log.w("SnsAd.TopicCardDynamic", "OK, i fu le you!!! the activity is not life cycle owner!");
-      AppMethodBeat.o(202271);
-      return;
-    }
-    ((RequestListenerManager)localObject2).a((String)localObject1, this);
-    localObject1 = com.tencent.mm.plugin.sns.ad.timeline.dynamic.a.eXI();
-    if (localObject1 == null)
-    {
-      Log.w("SnsAd.TopicCardDynamic", "OK, i fule you!!! the request manager is null. Isn't the RequestManager singleton?");
-      AppMethodBeat.o(202271);
-      return;
-    }
-    this.DqO = paramSnsInfo;
-    ((com.tencent.mm.plugin.sns.ad.timeline.dynamic.a)localObject1).a(paramSnsInfo, paramBoolean, this.Dzv);
-    AppMethodBeat.o(202271);
-  }
-  
-  private Activity getActivity()
-  {
-    AppMethodBeat.i(202273);
-    if (this.mActivityRef == null)
-    {
-      AppMethodBeat.o(202273);
-      return null;
-    }
-    Activity localActivity = (Activity)this.mActivityRef.get();
-    AppMethodBeat.o(202273);
-    return localActivity;
-  }
-  
-  public final void A(String paramString, Object paramObject)
-  {
-    int i = 0;
-    AppMethodBeat.i(202272);
-    Object localObject1;
-    try
-    {
-      localObject1 = r.v(this.DqO);
-      if ((TextUtils.isEmpty((CharSequence)localObject1)) || (!((String)localObject1).equals(paramString)))
+      int j = paramj.Jym.size();
+      this.JyE = paramj.JyE;
+      paramInt = 0;
+      if ((paramInt < j) && ((this.JyE > 4) || (paramInt != this.JyE)))
       {
-        Log.w("SnsAd.TopicCardDynamic", "en ?? the sns is not same as the one when request used!");
-        AppMethodBeat.o(202272);
-        return;
-      }
-      if (!(paramObject instanceof com.tencent.mm.plugin.sns.ad.timeline.dynamic.b.a))
-      {
-        Log.w("SnsAd.TopicCardDynamic", "Crazy!!! the result data is not TopicCardResponseModel!");
-        AppMethodBeat.o(202272);
-        return;
-      }
-    }
-    catch (Throwable paramString)
-    {
-      Log.e("SnsAd.TopicCardDynamic", "the on result failed!");
-      AppMethodBeat.o(202272);
-      return;
-    }
-    paramString = this.DqO;
-    if ((paramString == null) || (paramString.getAdXml() == null))
-    {
-      AppMethodBeat.o(202272);
-      return;
-    }
-    paramString = paramString.getAdXml().adFinderTopicInfo;
-    if (paramString == null)
-    {
-      Log.w("SnsAd.TopicCardDynamic", "Yep !!! topicInfo is null, please check!!!");
-      AppMethodBeat.o(202272);
-      return;
-    }
-    paramObject = (com.tencent.mm.plugin.sns.ad.timeline.dynamic.b.a)paramObject;
-    if (paramString == null) {}
-    for (;;)
-    {
-      if (paramString == null)
-      {
-        Log.w("SnsAd.TopicCardDynamic", "Yep !!! after converting, the topic info is null!!! Don't update!");
-        AppMethodBeat.o(202272);
-        return;
-        localObject1 = paramString.DrS;
-        if ((!c.isEmpty((Collection)localObject1)) && (!c.isEmpty(paramObject.DxV)) && (((List)localObject1).size() == paramObject.DxV.size())) {
-          break label552;
+        paramSnsInfo = (i)paramj.Jym.get(paramInt);
+        localObject = new a();
+        ((a)localObject).index = paramInt;
+        this.JJJ.add(localObject);
+        if (paramSnsInfo != null) {
+          if (!paramSnsInfo.fJE()) {
+            break label228;
+          }
         }
-        Log.w("SnsAd.TopicCardResponseModel", "the targetResInfoList size is not same as res infos size");
-      }
-      for (;;)
-      {
-        if (i == 0) {
-          break label569;
-        }
-        if (!TextUtils.isEmpty(paramObject.DrQ)) {
-          paramString.DrQ = paramObject.DrQ;
-        }
-        for (;;)
+        label228:
+        for (int i = 2;; i = 1)
         {
-          if ((i >= paramObject.DxV.size()) || (i >= ((List)localObject1).size())) {
-            break label564;
-          }
-          Object localObject2 = (e)((List)localObject1).get(i);
-          Object localObject3 = (a.b)paramObject.DxV.get(i);
-          if ((localObject2 != null) && (localObject3 != null))
-          {
-            if (((a.b)localObject3).uNR != null) {
-              ((e)localObject2).uNR = ((a.b)localObject3).uNR;
-            }
-            if (((a.b)localObject3).nickname != null) {
-              ((e)localObject2).nickname = ((a.b)localObject3).nickname;
-            }
-            if (((a.b)localObject3).tag != null) {
-              ((e)localObject2).tag = ((a.b)localObject3).tag;
-            }
-            if (((a.b)localObject3).desc != null) {
-              ((e)localObject2).desc = ((a.b)localObject3).desc;
-            }
-            if (((a.b)localObject3).DrT != null) {
-              ((e)localObject2).DrT = ((a.b)localObject3).DrT;
-            }
-            if (((a.b)localObject3).DrV != null) {
-              ((e)localObject2).DrV = ((a.b)localObject3).DrV;
-            }
-            if (((a.b)localObject3).DxW != null)
-            {
-              localObject3 = ((a.b)localObject3).DxW;
-              localObject2 = ((e)localObject2).ebR;
-              if ((localObject3 != null) && (localObject2 != null) && (!TextUtils.isEmpty(((com.tencent.mm.plugin.sns.ad.timeline.dynamic.b.a.a)localObject3).wQO)) && (!TextUtils.isEmpty(((com.tencent.mm.plugin.sns.ad.timeline.dynamic.b.a.a)localObject3).url)) && (!TextUtils.isEmpty(((com.tencent.mm.plugin.sns.ad.timeline.dynamic.b.a.a)localObject3).dWJ)))
-              {
-                ((cnb)localObject2).Id = ((com.tencent.mm.plugin.sns.ad.timeline.dynamic.b.a.a)localObject3).wQO;
-                ((cnb)localObject2).Url = ((com.tencent.mm.plugin.sns.ad.timeline.dynamic.b.a.a)localObject3).url;
-                ((cnb)localObject2).Msz = ((com.tencent.mm.plugin.sns.ad.timeline.dynamic.b.a.a)localObject3).dWJ;
-                break label557;
-                if (paramString.DrQ != null) {
-                  m.f(this.Dzu, paramString.DrQ);
-                }
-                if (this.mRecyclerView != null)
-                {
-                  paramString = this.mRecyclerView.getAdapter();
-                  if (paramString != null) {
-                    paramString.atj.notifyChanged();
-                  }
-                }
-                AppMethodBeat.o(202272);
-                return;
-                break;
-                label552:
-                i = 0;
-                continue;
-              }
-            }
-          }
-          label557:
-          i += 1;
+          ((a)localObject).mediaType = i;
+          paramInt += 1;
+          break;
         }
-        label564:
-        i = 1;
       }
-      label569:
-      paramString = null;
+    }
+    AppMethodBeat.o(257092);
+  }
+  
+  public final void aeV(int paramInt)
+  {
+    AppMethodBeat.i(257104);
+    a locala = aeY(paramInt);
+    if (locala != null) {
+      locala.clickCount += 1;
+    }
+    AppMethodBeat.o(257104);
+  }
+  
+  public final void aeW(int paramInt)
+  {
+    AppMethodBeat.i(257105);
+    a locala = aeY(paramInt);
+    if (locala != null) {
+      locala.JGC += 1;
+    }
+    AppMethodBeat.o(257105);
+  }
+  
+  final a aeY(int paramInt)
+  {
+    AppMethodBeat.i(257108);
+    int i = paramInt;
+    if (this.JyE <= 4) {
+      i = paramInt % this.JyE;
+    }
+    if (aeX(i))
+    {
+      a locala = (a)this.JJJ.get(i);
+      AppMethodBeat.o(257108);
+      return locala;
+    }
+    AppMethodBeat.o(257108);
+    return null;
+  }
+  
+  public final void bw(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(257099);
+    try
+    {
+      paramJSONObject.putOpt("snsid", this.fLp);
+      paramJSONObject.putOpt("uxinfo", this.uxInfo);
+      paramJSONObject.putOpt("adExtInfo", this.adExtInfo);
+      paramJSONObject.putOpt("scene", Integer.valueOf(this.scene));
+      AppMethodBeat.o(257099);
+      return;
+    }
+    catch (Throwable paramJSONObject)
+    {
+      AppMethodBeat.o(257099);
     }
   }
   
-  public final void c(SnsInfo paramSnsInfo, boolean paramBoolean)
+  public final void bx(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(202270);
+    AppMethodBeat.i(257100);
     try
     {
-      d(paramSnsInfo, paramBoolean);
-      AppMethodBeat.o(202270);
+      JSONArray localJSONArray = new JSONArray();
+      paramJSONObject.putOpt("reportItemList", localJSONArray);
+      I(localJSONArray);
+      AppMethodBeat.o(257100);
       return;
     }
-    catch (Throwable paramSnsInfo)
+    catch (Throwable paramJSONObject)
     {
-      Log.e("SnsAd.TopicCardDynamic", "doDynamicRequest failed!!!");
-      AppMethodBeat.o(202270);
+      AppMethodBeat.o(257100);
+    }
+  }
+  
+  public final String fJK()
+  {
+    return "sns_ad_slider_card_report";
+  }
+  
+  public final String getContent()
+  {
+    AppMethodBeat.i(257103);
+    String str = super.getContent();
+    if (this.JJJ != null) {
+      this.JJJ.clear();
+    }
+    this.fLp = "";
+    AppMethodBeat.o(257103);
+    return str;
+  }
+  
+  public final void jx(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(257106);
+    a locala = aeY(paramInt1);
+    if (locala != null)
+    {
+      locala.JJO = paramInt2;
+      locala.JJM += locala.JJP;
+      locala.JJP = 0;
+    }
+    AppMethodBeat.o(257106);
+  }
+  
+  static final class a
+  {
+    int FPs;
+    int JGC;
+    int JGy;
+    int JJK;
+    int JJL;
+    int JJM;
+    int JJN;
+    int JJO;
+    int JJP;
+    int clickCount;
+    int index;
+    int mediaType;
+    
+    final JSONObject toJson()
+    {
+      AppMethodBeat.i(196764);
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.putOpt("index", Integer.valueOf(this.index));
+        localJSONObject.putOpt("mediaType", Integer.valueOf(this.mediaType));
+        localJSONObject.putOpt("exposureCount", Integer.valueOf(this.JGy));
+        localJSONObject.putOpt("autoSlideInCount", Integer.valueOf(this.JJK));
+        localJSONObject.putOpt("clickCount", Integer.valueOf(this.clickCount));
+        localJSONObject.putOpt("btnClickCount", Integer.valueOf(this.JGC));
+        localJSONObject.putOpt("playCount", Integer.valueOf(this.FPs));
+        localJSONObject.putOpt("finishPlayCount", Integer.valueOf(this.JJL));
+        localJSONObject.putOpt("playTotalTime", Integer.valueOf(this.JJM + this.JJP));
+        if (this.JJL > 0) {}
+        for (int i = this.JJO;; i = this.JJN)
+        {
+          localJSONObject.putOpt("maxPlayTime", Integer.valueOf(i));
+          localJSONObject.putOpt("videoTotalTime", Integer.valueOf(this.JJO));
+          AppMethodBeat.o(196764);
+          return localJSONObject;
+        }
+        return null;
+      }
+      catch (Throwable localThrowable)
+      {
+        AppMethodBeat.o(196764);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.c.a.b
  * JD-Core Version:    0.7.0.1
  */

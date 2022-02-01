@@ -6,7 +6,7 @@
             <ImageView android:id="@id/e6" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" />
         </LinearLayout>
     </LinearLayout>
-    <FrameLayout android:id="@id/h70" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+    <FrameLayout android:id="@id/h70" android:layout_width="wrap_content" android:layout_height="@dimen/or" android:layout_alignParentRight="true" android:layout_centerVertical="true">
         <com.tencent.mm.plugin.appbrand.page.capsulebar.AppBrandCapsuleBarPlaceHolderView android:layout_gravity="center|right" android:id="@id/dv" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/p5" android:layout_height="@dimen/p4" android:layout_marginRight="@dimen/op" />
         <ViewStub android:layout_gravity="center|right" android:id="@id/bjr" android:layout="@layout/d3" android:layout_width="@dimen/ox" android:layout_height="@dimen/ox" android:layout_marginRight="16.0dip" />
     </FrameLayout>

@@ -13,16 +13,24 @@ public class DefaultSnsServiceImpl
     AppMethodBeat.i(18707);
     ITransmitKvData localITransmitKvData = super.generateSnsUseCaseData();
     Object localObject = this.mBean.getPayInfo();
-    if ((localObject == null) || (((PayInfo)localObject).iqp == null))
+    if ((localObject == null) || (((PayInfo)localObject).lfu == null))
     {
       AppMethodBeat.o(18707);
       return localITransmitKvData;
     }
-    localObject = ((PayInfo)localObject).iqp;
+    localObject = ((PayInfo)localObject).lfu;
     localITransmitKvData.putString("cashier_desc", ((Bundle)localObject).getString("cashier_desc"));
     localITransmitKvData.putString("succ_tip", ((Bundle)localObject).getString("succ_tip"));
     localITransmitKvData.putString("prepay_page_payee", ((Bundle)localObject).getString("prepay_page_payee"));
     localITransmitKvData.putBool("need_kinda_cashier_Loading", ((Bundle)localObject).getBoolean("need_kinda_cashier_Loading", false));
+    if ((this.mBean.getPayScene() == 32) || (this.mBean.getPayScene() == 33))
+    {
+      localITransmitKvData.putBinary("after_place_order_commreq", ((Bundle)localObject).getByteArray("after_place_order_commreq"));
+      localITransmitKvData.putString("suc_page_extend", ((Bundle)localObject).getString("suc_page_extend"));
+      localITransmitKvData.putInt("fault_flag", ((Bundle)localObject).getInt("fault_flag"));
+      localITransmitKvData.putString("suc_page_name", ((Bundle)localObject).getString("suc_page_name"));
+      localITransmitKvData.putString("rece_photo_url", ((Bundle)localObject).getString("rece_photo_url"));
+    }
     AppMethodBeat.o(18707);
     return localITransmitKvData;
   }

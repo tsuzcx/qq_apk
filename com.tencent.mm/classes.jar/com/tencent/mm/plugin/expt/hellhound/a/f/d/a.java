@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.cbl;
+import com.tencent.mm.protocal.protobuf.cjo;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
   /* Error */
-  static void a(cbl paramcbl)
+  static void a(cjo paramcjo)
   {
     // Byte code:
     //   0: ldc 2
@@ -23,7 +23,7 @@ public final class a
     //   19: monitorexit
     //   20: return
     //   21: aload_0
-    //   22: invokestatic 19	com/tencent/mm/plugin/expt/hellhound/a/f/d/a:b	(Lcom/tencent/mm/protocal/protobuf/cbl;)V
+    //   22: invokestatic 19	com/tencent/mm/plugin/expt/hellhound/a/f/d/a:b	(Lcom/tencent/mm/protocal/protobuf/cjo;)V
     //   25: ldc 7
     //   27: invokestatic 16	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   30: goto -13 -> 17
@@ -34,7 +34,7 @@ public final class a
     //   38: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	39	0	paramcbl	cbl
+    //   0	39	0	paramcjo	cjo
     // Exception table:
     //   from	to	target	type
     //   3	8	33	finally
@@ -42,55 +42,55 @@ public final class a
     //   21	30	33	finally
   }
   
-  private static void b(cbl paramcbl)
+  private static void b(cjo paramcjo)
   {
     AppMethodBeat.i(122171);
     try
     {
-      b.o("mmkv_key_hell_PFLOW", paramcbl.toByteArray());
+      b.r("mmkv_key_hell_PFLOW", paramcjo.toByteArray());
       AppMethodBeat.o(122171);
       return;
     }
-    catch (Exception paramcbl)
+    catch (Exception paramcjo)
     {
-      Log.printErrStackTrace("HABBYGE-MALI.HellPageFlowDao", paramcbl, "HellPageFlowDao.writeBack crash: %s", new Object[] { paramcbl.getMessage() });
+      Log.printErrStackTrace("HABBYGE-MALI.HellPageFlowDao", paramcjo, "HellPageFlowDao.writeBack crash: %s", new Object[] { paramcjo.getMessage() });
       AppMethodBeat.o(122171);
     }
   }
   
-  public static cbl cQH()
+  public static cjo dfB()
   {
     try
     {
       AppMethodBeat.i(122170);
-      cbl localcbl2 = cQI();
-      cbl localcbl1 = localcbl2;
-      if (localcbl2 == null)
+      cjo localcjo2 = dfC();
+      cjo localcjo1 = localcjo2;
+      if (localcjo2 == null)
       {
-        localcbl1 = new cbl();
-        b(localcbl1);
+        localcjo1 = new cjo();
+        b(localcjo1);
       }
       AppMethodBeat.o(122170);
-      return localcbl1;
+      return localcjo1;
     }
     finally {}
   }
   
-  private static cbl cQI()
+  private static cjo dfC()
   {
     AppMethodBeat.i(122172);
-    byte[] arrayOfByte = b.getBytes("mmkv_key_hell_PFLOW");
+    byte[] arrayOfByte = b.awZ("mmkv_key_hell_PFLOW");
     if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
     {
       AppMethodBeat.o(122172);
       return null;
     }
-    cbl localcbl = new cbl();
+    cjo localcjo = new cjo();
     try
     {
-      localcbl.parseFrom(arrayOfByte);
+      localcjo.parseFrom(arrayOfByte);
       AppMethodBeat.o(122172);
-      return localcbl;
+      return localcjo;
     }
     catch (Exception localException)
     {
@@ -106,7 +106,7 @@ public final class a
     {
       AppMethodBeat.i(122173);
       long l = System.currentTimeMillis();
-      b.o("mmkv_key_hell_PFLOW", new byte[0]);
+      b.r("mmkv_key_hell_PFLOW", new byte[0]);
       Log.i("HABBYGE-MALI.HellPageFlowDao", "HellPageFlowDao-reset-time: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       AppMethodBeat.o(122173);
       return;
@@ -120,7 +120,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.d.a
  * JD-Core Version:    0.7.0.1
  */

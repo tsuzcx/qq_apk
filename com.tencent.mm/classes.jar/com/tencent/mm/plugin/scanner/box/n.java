@@ -3,19 +3,20 @@ package com.tencent.mm.plugin.scanner.box;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.d;
-import com.tencent.mm.av.q;
-import com.tencent.mm.br.c;
+import com.tencent.mm.ay.d;
+import com.tencent.mm.ay.q;
+import com.tencent.mm.by.c;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.plugin.scanner.l.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
-import com.tencent.mm.ui.base.u;
+import com.tencent.mm.ui.base.w;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,71 +24,71 @@ import kotlin.g.b.p;
 import kotlin.l;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxShareHelper;", "Lcom/tencent/mm/ui/MMActivity$IMMOnActivityResult;", "()V", "TAG", "", "mBottomSheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "reportData", "Landroid/os/Bundle;", "shareData", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxShareData;", "shareInfo", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxShareData$ScanBoxShareInfo;", "clearShareData", "", "mmOnActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onShareToFriendResult", "pushThumbToCache", "imageUrl", "setReportData", "shareToFriend", "context", "Landroid/content/Context;", "params", "showShareMenu", "updateShareData", "updateShareToFriendData", "Lorg/json/JSONObject;", "MenuId", "RequestCode", "ShareAction", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxShareHelper;", "Lcom/tencent/mm/ui/MMActivity$IMMOnActivityResult;", "()V", "TAG", "", "mBottomSheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "reportData", "Landroid/os/Bundle;", "shareData", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxShareData;", "shareInfo", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxShareData$ScanBoxShareInfo;", "clearShareData", "", "mmOnActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onShareToFriendResult", "pushThumbToCache", "imageUrl", "setReportData", "shareToFriend", "context", "Landroid/content/Context;", "params", "showShareMenu", "updateShareData", "updateShareToFriendData", "Lorg/json/JSONObject;", "MenuId", "RequestCode", "ShareAction", "plugin-scan_release"})
 public final class n
   implements MMActivity.a
 {
-  private static Bundle CDg;
-  private static m.a CDh;
-  private static final m CDi;
-  public static final n CDj;
+  private static Bundle IHG;
+  private static m.a IHH;
+  private static final m IHI;
+  public static final n IHJ;
   
   static
   {
-    AppMethodBeat.i(240299);
-    CDj = new n();
-    CDi = new m();
-    AppMethodBeat.o(240299);
+    AppMethodBeat.i(222737);
+    IHJ = new n();
+    IHI = new m();
+    AppMethodBeat.o(222737);
   }
   
-  public static final void av(Bundle paramBundle)
+  public static final void ar(Bundle paramBundle)
   {
-    AppMethodBeat.i(240294);
-    p.h(paramBundle, "data");
-    CDg = paramBundle;
-    AppMethodBeat.o(240294);
+    AppMethodBeat.i(222717);
+    p.k(paramBundle, "data");
+    IHG = paramBundle;
+    AppMethodBeat.o(222717);
   }
   
-  public static final void bu(Context paramContext, String paramString)
+  public static final void bH(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(240297);
-    p.h(paramContext, "context");
-    n localn = CDj;
+    AppMethodBeat.i(222734);
+    p.k(paramContext, "context");
+    n localn = IHJ;
     for (;;)
     {
       try
       {
         Object localObject2 = new JSONObject(paramString).optString("url");
-        paramString = CDi;
-        p.g(localObject2, "url");
-        p.h(localObject2, "key");
-        CDh = (m.a)paramString.CDe.get(localObject2);
+        paramString = IHI;
+        p.j(localObject2, "url");
+        p.k(localObject2, "key");
+        IHH = (m.a)paramString.IHE.get(localObject2);
         Object localObject1 = new StringBuilder("shareToFriend, imageUrl: ");
-        paramString = CDh;
+        paramString = IHH;
         if (paramString != null)
         {
           paramString = paramString.imageUrl;
           localObject1 = ((StringBuilder)localObject1).append(paramString).append(", desc: ");
-          paramString = CDh;
+          paramString = IHH;
           if (paramString != null)
           {
-            paramString = paramString.CDf;
+            paramString = paramString.IHF;
             if (paramString != null)
             {
               paramString = paramString.description;
               localObject1 = ((StringBuilder)localObject1).append(paramString).append(", title: ");
-              paramString = CDh;
+              paramString = IHH;
               if (paramString == null) {
                 continue;
               }
-              paramString = paramString.CDf;
+              paramString = paramString.IHF;
               if (paramString == null) {
                 continue;
               }
               paramString = paramString.title;
               Log.i("MicroMsg.ScanBoxShareHelper", paramString + ", url: " + (String)localObject2);
               HashMap localHashMap = new HashMap();
-              paramString = CDh;
+              paramString = IHH;
               if (paramString == null) {
                 break label501;
               }
@@ -97,11 +98,11 @@ public final class n
                 break label501;
               }
               localHashMap.put("img_url", paramString);
-              paramString = CDh;
+              paramString = IHH;
               if (paramString == null) {
                 break label507;
               }
-              paramString = paramString.CDf;
+              paramString = paramString.IHF;
               if (paramString == null) {
                 break label507;
               }
@@ -111,11 +112,11 @@ public final class n
                 break label507;
               }
               localHashMap.put("desc", paramString);
-              paramString = CDh;
+              paramString = IHH;
               if (paramString == null) {
                 break label513;
               }
-              paramString = paramString.CDf;
+              paramString = paramString.IHF;
               if (paramString == null) {
                 break label513;
               }
@@ -135,7 +136,7 @@ public final class n
               if (!(paramContext instanceof MMActivity)) {
                 continue;
               }
-              paramString = CDh;
+              paramString = IHH;
               if (paramString == null) {
                 break label519;
               }
@@ -152,11 +153,11 @@ public final class n
                 continue;
               }
               break label525;
-              if ((i == 0) && (kotlin.n.n.J(paramString, "http", false))) {
-                q.bcQ().a(paramString, null);
+              if ((i == 0) && (kotlin.n.n.M(paramString, "http", false))) {
+                q.bmg().a(paramString, null);
               }
               c.a((MMActivity)paramContext, ".ui.transmit.SelectConversationUI", (Intent)localObject2, 1, (MMActivity.a)localn);
-              AppMethodBeat.o(240297);
+              AppMethodBeat.o(222734);
             }
           }
         }
@@ -176,7 +177,7 @@ public final class n
       catch (Exception paramContext)
       {
         Log.printErrStackTrace("MicroMsg.ScanBoxShareHelper", (Throwable)paramContext, "shareToFriend exception", new Object[0]);
-        AppMethodBeat.o(240297);
+        AppMethodBeat.o(222734);
         return;
       }
       label501:
@@ -195,22 +196,22 @@ public final class n
     }
   }
   
-  public static final void ePw()
+  public static final void fCj()
   {
-    AppMethodBeat.i(240296);
-    CDi.CDe.clear();
-    AppMethodBeat.o(240296);
+    AppMethodBeat.i(222725);
+    IHI.IHE.clear();
+    AppMethodBeat.o(222725);
   }
   
   public static final void updateShareData(String paramString)
   {
-    AppMethodBeat.i(240295);
+    AppMethodBeat.i(222724);
     Object localObject1 = (CharSequence)paramString;
     if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
       Log.e("MicroMsg.ScanBoxShareHelper", "updateShareData params is invalid");
-      AppMethodBeat.o(240295);
+      AppMethodBeat.o(222724);
       return;
     }
     localObject1 = new JSONObject(paramString);
@@ -219,7 +220,7 @@ public final class n
     switch (i)
     {
     default: 
-      AppMethodBeat.o(240295);
+      AppMethodBeat.o(222724);
       return;
     }
     paramString = ((JSONObject)localObject1).optString("url");
@@ -232,10 +233,10 @@ public final class n
       String str1 = ((JSONObject)localObject1).optString("desc");
       String str2 = ((JSONObject)localObject1).optString("image_url");
       Log.i("MicroMsg.ScanBoxShareHelper", "shareToFriend, imageUrl: " + str2 + ", desc: " + str1 + ", title: " + (String)localObject2 + ", url: " + paramString);
-      localObject1 = new m.a(r.bm((JSONObject)localObject1), str2);
-      localObject2 = CDi;
-      p.h(paramString, "key");
-      ((Map)((m)localObject2).CDe).put(paramString, localObject1);
+      localObject1 = new m.a(r.bv((JSONObject)localObject1), str2);
+      localObject2 = IHI;
+      p.k(paramString, "key");
+      ((Map)((m)localObject2).IHE).put(paramString, localObject1);
       break;
     }
   }
@@ -243,7 +244,7 @@ public final class n
   public final void d(int paramInt1, int paramInt2, Intent paramIntent)
   {
     String str = null;
-    AppMethodBeat.i(240298);
+    AppMethodBeat.i(222736);
     Object localObject1 = new StringBuilder("onActivityResult requestCode: ").append(paramInt1).append(", resultCode: ").append(paramInt2).append(", data == null: ");
     boolean bool;
     if (paramIntent == null)
@@ -256,7 +257,7 @@ public final class n
     }
     for (;;)
     {
-      AppMethodBeat.o(240298);
+      AppMethodBeat.o(222736);
       return;
       bool = false;
       break;
@@ -265,23 +266,23 @@ public final class n
       default: 
         break;
       case -1: 
-        if (CDh != null)
+        if (IHH != null)
         {
-          localObject1 = CDh;
+          localObject1 = IHH;
           if (localObject1 == null) {
             break label187;
           }
         }
       case 0: 
         label187:
-        for (localObject1 = ((m.a)localObject1).CDf; localObject1 == null; localObject1 = null)
+        for (localObject1 = ((m.a)localObject1).IHF; localObject1 == null; localObject1 = null)
         {
           Log.e("MicroMsg.ScanBoxShareHelper", "onShareToFriendResult shareInfo invalid");
-          AppMethodBeat.o(240298);
+          AppMethodBeat.o(222736);
           return;
           Log.w("MicroMsg.ScanBoxShareHelper", "onShareToFriendResult cancel");
-          s.aw(CDg);
-          AppMethodBeat.o(240298);
+          s.as(IHG);
+          AppMethodBeat.o(222736);
           return;
         }
         if (paramIntent != null)
@@ -299,7 +300,7 @@ public final class n
             break label260;
           }
           Log.e("MicroMsg.ScanBoxShareHelper", "onShareToFriendResult fail, toUser is null");
-          AppMethodBeat.o(240298);
+          AppMethodBeat.o(222736);
           return;
           localObject1 = null;
           break;
@@ -310,44 +311,44 @@ public final class n
         if (localObject2 == null) {
           paramIntent = "";
         }
-        localObject2 = r.CDy;
-        localObject2 = CDh;
+        localObject2 = r.IHY;
+        localObject2 = IHH;
         if (localObject2 == null) {
-          p.hyc();
+          p.iCn();
         }
-        localObject2 = ((m.a)localObject2).CDf;
-        m.a locala = CDh;
+        localObject2 = ((m.a)localObject2).IHF;
+        m.a locala = IHH;
         if (locala != null) {
           str = locala.imageUrl;
         }
         bool = r.b((WXMediaMessage)localObject2, (String)localObject1, str, paramIntent);
         Log.i("MicroMsg.ScanBoxShareHelper", "onShareToFriendResult sendOk: %b", new Object[] { Boolean.valueOf(bool) });
         if (bool) {
-          h.RTc.n((Runnable)a.CDk, 200L);
+          h.ZvG.n((Runnable)a.IHK, 200L);
         }
-        s.b(bool, ab.Eq((String)localObject1), CDg);
+        s.b(bool, ab.Lj((String)localObject1), IHG);
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
-    public static final a CDk;
+    public static final a IHK;
     
     static
     {
-      AppMethodBeat.i(240293);
-      CDk = new a();
-      AppMethodBeat.o(240293);
+      AppMethodBeat.i(222386);
+      IHK = new a();
+      AppMethodBeat.o(222386);
     }
     
     public final void run()
     {
-      AppMethodBeat.i(240292);
-      u.cG(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(2131755979));
-      AppMethodBeat.o(240292);
+      AppMethodBeat.i(222385);
+      w.cR(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(l.i.app_sent));
+      AppMethodBeat.o(222385);
     }
   }
 }

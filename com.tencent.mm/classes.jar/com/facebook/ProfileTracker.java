@@ -4,13 +4,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.v4.content.d;
+import androidx.h.a.a;
 import com.facebook.internal.Validate;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class ProfileTracker
 {
-  private final d broadcastManager;
+  private final a broadcastManager;
   private boolean isTracking = false;
   private final BroadcastReceiver receiver;
   
@@ -18,7 +18,7 @@ public abstract class ProfileTracker
   {
     Validate.sdkInitialized();
     this.receiver = new ProfileBroadcastReceiver(null);
-    this.broadcastManager = d.W(FacebookSdk.getApplicationContext());
+    this.broadcastManager = a.V(FacebookSdk.getApplicationContext());
     startTracking();
   }
   
@@ -74,7 +74,7 @@ public abstract class ProfileTracker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.ProfileTracker
  * JD-Core Version:    0.7.0.1
  */

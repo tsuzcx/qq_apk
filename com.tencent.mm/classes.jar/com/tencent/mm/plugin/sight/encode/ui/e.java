@@ -14,7 +14,7 @@ import android.hardware.SensorEventListener;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.v;
+import com.tencent.mm.compatible.deviceinfo.w;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -25,35 +25,35 @@ import java.util.List;
 final class e
   implements SensorEventListener
 {
-  private static int ztL = 2147483647;
-  com.tencent.mm.pluginsdk.l.a Dqi;
-  Camera.PreviewCallback Dqj;
-  a Dqk;
-  v gGr;
+  private static int EZm = 2147483647;
+  private boolean EZD;
+  boolean EZj;
+  boolean EZk;
+  int EZl;
+  private float EZo;
+  private float EZp;
+  private float EZq;
+  com.tencent.mm.pluginsdk.m.a JvN;
+  Camera.PreviewCallback JvO;
+  a JvP;
+  w jqD;
   private Context mContext;
-  boolean ztI;
-  boolean ztJ;
-  private int ztK;
-  private float ztN;
-  private float ztO;
-  private float ztP;
-  private boolean zuc;
   
   public e()
   {
     AppMethodBeat.i(28778);
-    this.ztI = false;
-    this.gGr = null;
-    this.ztJ = false;
-    this.ztK = 0;
-    this.ztN = 0.0F;
-    this.ztO = 0.0F;
-    this.ztP = 0.0F;
-    this.Dqj = null;
+    this.EZj = false;
+    this.jqD = null;
+    this.EZk = false;
+    this.EZl = 0;
+    this.EZo = 0.0F;
+    this.EZp = 0.0F;
+    this.EZq = 0.0F;
+    this.JvO = null;
     this.mContext = null;
-    this.zuc = false;
-    this.Dqk = new a(Looper.getMainLooper());
-    this.Dqi = com.tencent.mm.pluginsdk.l.a.goh();
+    this.EZD = false;
+    this.JvP = new a(Looper.getMainLooper());
+    this.JvN = com.tencent.mm.pluginsdk.m.a.hiR();
     AppMethodBeat.o(28778);
   }
   
@@ -65,13 +65,13 @@ final class e
     float f1 = paramSensorEvent.values[0];
     float f2 = paramSensorEvent.values[1];
     float f3 = paramSensorEvent.values[2];
-    if ((Math.abs(this.ztN - f1) > 3.0F) || (Math.abs(this.ztO - f2) > 3.0F) || (Math.abs(this.ztP - f3) > 3.0F))
+    if ((Math.abs(this.EZo - f1) > 3.0F) || (Math.abs(this.EZp - f2) > 3.0F) || (Math.abs(this.EZq - f3) > 3.0F))
     {
       Log.i("MicroMsg.SightCamera", "match accel limit %f, try auto focus", new Object[] { Float.valueOf(3.0F) });
-      a.g(this.gGr);
-      this.ztN = f1;
-      this.ztO = f2;
-      this.ztP = f3;
+      a.g(this.jqD);
+      this.EZo = f1;
+      this.EZp = f2;
+      this.EZq = f3;
     }
     AppMethodBeat.o(28779);
   }
@@ -79,28 +79,28 @@ final class e
   static final class a
     extends MMHandler
   {
-    static Camera.AutoFocusCallback iml;
-    static boolean zud;
-    float gZZ;
-    float haa;
-    int imO;
-    int imP;
-    boolean imv = false;
-    boolean ztI = false;
-    int zuk = 0;
-    boolean zul = false;
+    static boolean EZE;
+    static Camera.AutoFocusCallback lbl;
+    int EZL = 0;
+    boolean EZM = false;
+    boolean EZj = false;
+    float jLa;
+    float jLb;
+    int lbP;
+    int lbQ;
+    boolean lbw = false;
     
     static
     {
       AppMethodBeat.i(28777);
-      zud = true;
-      iml = new Camera.AutoFocusCallback()
+      EZE = true;
+      lbl = new Camera.AutoFocusCallback()
       {
         public final void onAutoFocus(boolean paramAnonymousBoolean, Camera paramAnonymousCamera)
         {
           AppMethodBeat.i(28771);
           Log.v("MicroMsg.SightCamera", "auto focus callback");
-          e.a.zud = true;
+          e.a.EZE = true;
           AppMethodBeat.o(28771);
         }
       };
@@ -112,7 +112,7 @@ final class e
       super();
     }
     
-    private static int QN(int paramInt)
+    private static int Xb(int paramInt)
     {
       int i;
       if (paramInt > 1000) {
@@ -129,15 +129,15 @@ final class e
     private static Rect a(float paramFloat1, float paramFloat2, float paramFloat3, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(28772);
-      int i = Float.valueOf(com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 72) * paramFloat3).intValue();
+      int i = Float.valueOf(com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 72) * paramFloat3).intValue();
       Object localObject = new RectF();
       ((RectF)localObject).set((paramFloat1 - i / 2) * 2000.0F / paramInt1 - 1000.0F, (paramFloat2 - i / 2) * 2000.0F / paramInt2 - 1000.0F, (i / 2 + paramFloat1) * 2000.0F / paramInt1 - 1000.0F, (i / 2 + paramFloat2) * 2000.0F / paramInt2 - 1000.0F);
-      localObject = new Rect(QN(Math.round(((RectF)localObject).left)), QN(Math.round(((RectF)localObject).top)), QN(Math.round(((RectF)localObject).right)), QN(Math.round(((RectF)localObject).bottom)));
+      localObject = new Rect(Xb(Math.round(((RectF)localObject).left)), Xb(Math.round(((RectF)localObject).top)), Xb(Math.round(((RectF)localObject).right)), Xb(Math.round(((RectF)localObject).bottom)));
       AppMethodBeat.o(28772);
       return localObject;
     }
     
-    private static int d(Camera.Parameters paramParameters)
+    private static int g(Camera.Parameters paramParameters)
     {
       AppMethodBeat.i(28774);
       if (paramParameters == null)
@@ -165,43 +165,43 @@ final class e
       return i;
     }
     
-    static int e(Camera.Parameters paramParameters)
+    static void g(w paramw)
+    {
+      AppMethodBeat.i(28773);
+      if (paramw == null) {
+        Log.w("MicroMsg.SightCamera", "want to auto focus, but camera is null, do nothing");
+      }
+      if (!EZE)
+      {
+        Log.w("MicroMsg.SightCamera", "auto focus not back");
+        AppMethodBeat.o(28773);
+        return;
+      }
+      EZE = false;
+      try
+      {
+        paramw.a(lbl);
+        AppMethodBeat.o(28773);
+        return;
+      }
+      catch (Exception paramw)
+      {
+        Log.w("MicroMsg.SightCamera", "autofocus fail, exception %s", new Object[] { paramw.getMessage() });
+        EZE = true;
+        AppMethodBeat.o(28773);
+      }
+    }
+    
+    static int h(Camera.Parameters paramParameters)
     {
       AppMethodBeat.i(28775);
-      int j = d(paramParameters) / 6;
+      int j = g(paramParameters) / 6;
       int i = j;
       if (j <= 0) {
         i = 1;
       }
       AppMethodBeat.o(28775);
       return i;
-    }
-    
-    static void g(v paramv)
-    {
-      AppMethodBeat.i(28773);
-      if (paramv == null) {
-        Log.w("MicroMsg.SightCamera", "want to auto focus, but camera is null, do nothing");
-      }
-      if (!zud)
-      {
-        Log.w("MicroMsg.SightCamera", "auto focus not back");
-        AppMethodBeat.o(28773);
-        return;
-      }
-      zud = false;
-      try
-      {
-        paramv.autoFocus(iml);
-        AppMethodBeat.o(28773);
-        return;
-      }
-      catch (Exception paramv)
-      {
-        Log.w("MicroMsg.SightCamera", "autofocus fail, exception %s", new Object[] { paramv.getMessage() });
-        zud = true;
-        AppMethodBeat.o(28773);
-      }
     }
     
     public final void handleMessage(Message paramMessage)
@@ -215,27 +215,27 @@ final class e
       {
         AppMethodBeat.o(28776);
         return;
-        paramMessage = (v)paramMessage.obj;
-        if ((this.imO == 0) || (this.imO == 0) || (d.oE(14)))
+        paramMessage = (w)paramMessage.obj;
+        if ((this.lbP == 0) || (this.lbP == 0) || (d.qW(14)))
         {
           g(paramMessage);
           AppMethodBeat.o(28776);
           return;
         }
-        float f1 = this.gZZ;
-        float f2 = this.haa;
-        int i = this.imO;
-        j = this.imP;
+        float f1 = this.jLa;
+        float f2 = this.jLb;
+        int i = this.lbP;
+        j = this.lbQ;
         if (paramMessage == null) {
           Log.w("MicroMsg.SightCamera", "want to auto focus, but camera is null, do nothing");
         }
-        if (!zud)
+        if (!EZE)
         {
           Log.w("MicroMsg.SightCamera", "auto focus not back");
           AppMethodBeat.o(28776);
           return;
         }
-        zud = false;
+        EZE = false;
         Object localObject2;
         try
         {
@@ -243,7 +243,7 @@ final class e
           localObject2 = a(f1, f2, 1.0F, i, j);
           localObject1 = a(f1, f2, 1.5F, i, j);
           Log.i("MicroMsg.SightCamera", "ashutest:: focus rect %s, meter rect %s", new Object[] { localObject2, localObject1 });
-          localParameters = paramMessage.getParameters();
+          localParameters = paramMessage.avd();
           Object localObject3 = localParameters.getSupportedFocusModes();
           if ((localObject3 != null) && (((List)localObject3).contains("auto"))) {
             localParameters.setFocusMode("auto");
@@ -260,30 +260,30 @@ final class e
             ((ArrayList)localObject2).add(new Camera.Area((Rect)localObject1, 1000));
             localParameters.setMeteringAreas((List)localObject2);
           }
-          paramMessage.setParameters(localParameters);
-          paramMessage.autoFocus(iml);
+          paramMessage.c(localParameters);
+          paramMessage.a(lbl);
           AppMethodBeat.o(28776);
           return;
         }
         catch (Exception paramMessage)
         {
           Log.w("MicroMsg.SightCamera", "autofocus with area fail, exception %s", new Object[] { paramMessage.getMessage() });
-          zud = true;
+          EZE = true;
           AppMethodBeat.o(28776);
           return;
         }
-        if (this.imv)
+        if (this.lbw)
         {
           AppMethodBeat.o(28776);
           return;
         }
         Object localObject1 = (Camera)paramMessage.obj;
         Camera.Parameters localParameters = ((Camera)localObject1).getParameters();
-        Log.i("MicroMsg.SightCamera", "zoomed %s curZoomStep %s params.getZoom() %s", new Object[] { Boolean.valueOf(this.ztI), Integer.valueOf(this.zuk), Integer.valueOf(localParameters.getZoom()) });
-        i = localParameters.getZoom() + this.zuk;
-        if (this.ztI)
+        Log.i("MicroMsg.SightCamera", "zoomed %s curZoomStep %s params.getZoom() %s", new Object[] { Boolean.valueOf(this.EZj), Integer.valueOf(this.EZL), Integer.valueOf(localParameters.getZoom()) });
+        i = localParameters.getZoom() + this.EZL;
+        if (this.EZj)
         {
-          int k = d(localParameters);
+          int k = g(localParameters);
           if (i >= k)
           {
             i = k;
@@ -297,12 +297,12 @@ final class e
           if (j == 0) {
             continue;
           }
-          this.imO = 0;
-          this.imP = 0;
+          this.lbP = 0;
+          this.lbQ = 0;
           sendMessageDelayed(obtainMessage(4354, paramMessage.obj), 20L);
           continue;
           localObject2 = obtainMessage(4353, paramMessage.obj);
-          if (this.zul) {}
+          if (this.EZM) {}
           for (long l = 10L;; l = 20L)
           {
             sendMessageDelayed((Message)localObject2, l);
@@ -315,7 +315,7 @@ final class e
             break label511;
           }
           localObject2 = obtainMessage(4353, paramMessage.obj);
-          if (this.zul) {}
+          if (this.EZM) {}
           for (l = 10L;; l = 20L)
           {
             sendMessageDelayed((Message)localObject2, l);
@@ -336,7 +336,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.encode.ui.e
  * JD-Core Version:    0.7.0.1
  */

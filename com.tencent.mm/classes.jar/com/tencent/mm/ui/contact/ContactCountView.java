@@ -6,11 +6,14 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.j;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.z;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -19,21 +22,21 @@ import com.tencent.mm.storage.bv;
 public class ContactCountView
   extends FrameLayout
 {
-  private int PUr;
+  private TextView DUp;
   private int count;
-  private View jxm;
-  private boolean nsS;
+  private View fyN;
+  private boolean quL;
   private boolean visible;
-  private TextView yul;
+  private int xbL;
   
   public ContactCountView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(37723);
-    this.nsS = false;
+    this.quL = false;
     this.count = 0;
     this.visible = true;
-    this.PUr = 1;
+    this.xbL = 1;
     init();
     AppMethodBeat.o(37723);
   }
@@ -42,10 +45,10 @@ public class ContactCountView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(37722);
-    this.nsS = false;
+    this.quL = false;
     this.count = 0;
     this.visible = true;
-    this.PUr = 1;
+    this.xbL = 1;
     init();
     AppMethodBeat.o(37722);
   }
@@ -53,29 +56,29 @@ public class ContactCountView
   private void init()
   {
     AppMethodBeat.i(37724);
-    inflate(getContext(), 2131493715, this);
+    inflate(getContext(), R.i.eeQ, this);
     AppMethodBeat.o(37724);
   }
   
-  public final void gUw()
+  public final void hUp()
   {
     AppMethodBeat.i(37726);
-    h.RTc.aX(new Runnable()
+    h.ZvG.be(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(233997);
+        AppMethodBeat.i(222206);
         String[] arrayOfString;
         ContactCountView localContactCountView;
         if (!ContactCountView.a(ContactCountView.this))
         {
-          arrayOfString = ab.iCO;
+          arrayOfString = ab.lsO;
           if (ContactCountView.b(ContactCountView.this) != 1) {
             break label124;
           }
           localContactCountView = ContactCountView.this;
-          bg.aVF();
-          ContactCountView.a(localContactCountView, c.aSN().c(arrayOfString, new String[] { z.aTY(), "weixin", "helper_entry", "filehelper" }));
+          bh.beI();
+          ContactCountView.a(localContactCountView, c.bbL().c(arrayOfString, new String[] { z.bcZ(), "weixin", "helper_entry", "filehelper" }));
         }
         for (;;)
         {
@@ -84,30 +87,30 @@ public class ContactCountView
           {
             public final void run()
             {
-              AppMethodBeat.i(233996);
+              AppMethodBeat.i(265874);
               if (ContactCountView.d(ContactCountView.this) != null)
               {
                 if (ContactCountView.b(ContactCountView.this) != 1) {
-                  break label119;
+                  break label120;
                 }
-                ContactCountView.d(ContactCountView.this).setText(ContactCountView.this.getContext().getResources().getQuantityString(2131623937, ContactCountView.c(ContactCountView.this), new Object[] { Integer.valueOf(ContactCountView.c(ContactCountView.this)) }));
+                ContactCountView.d(ContactCountView.this).setText(ContactCountView.this.getContext().getResources().getQuantityString(R.j.emi, ContactCountView.c(ContactCountView.this), new Object[] { Integer.valueOf(ContactCountView.c(ContactCountView.this)) }));
               }
               for (;;)
               {
                 ContactCountView.this.setVisible(ContactCountView.e(ContactCountView.this));
-                AppMethodBeat.o(233996);
+                AppMethodBeat.o(265874);
                 return;
-                label119:
-                ContactCountView.d(ContactCountView.this).setText(ContactCountView.this.getContext().getResources().getQuantityString(2131623936, ContactCountView.c(ContactCountView.this), new Object[] { Integer.valueOf(ContactCountView.c(ContactCountView.this)) }));
+                label120:
+                ContactCountView.d(ContactCountView.this).setText(ContactCountView.this.getContext().getResources().getQuantityString(R.j.emh, ContactCountView.c(ContactCountView.this), new Object[] { Integer.valueOf(ContactCountView.c(ContactCountView.this)) }));
               }
             }
           });
-          AppMethodBeat.o(233997);
+          AppMethodBeat.o(222206);
           return;
           label124:
           localContactCountView = ContactCountView.this;
-          bg.aVF();
-          ContactCountView.a(localContactCountView, c.aSN().d(arrayOfString, new String[] { z.aTY(), "weixin", "helper_entry", "filehelper" }));
+          bh.beI();
+          ContactCountView.a(localContactCountView, c.bbL().d(arrayOfString, new String[] { z.bcZ(), "weixin", "helper_entry", "filehelper" }));
         }
       }
     });
@@ -118,27 +121,27 @@ public class ContactCountView
   {
     AppMethodBeat.i(37725);
     Log.d("MicroMsg.ContactCountView", "onMeasure");
-    if (this.jxm == null)
+    if (this.fyN == null)
     {
-      this.jxm = ((FrameLayout)findViewById(2131299029));
-      this.yul = ((TextView)findViewById(2131299028));
+      this.fyN = ((FrameLayout)findViewById(R.h.dAF));
+      this.DUp = ((TextView)findViewById(R.h.dAE));
     }
-    gUw();
+    hUp();
     super.onMeasure(paramInt1, paramInt2);
     AppMethodBeat.o(37725);
   }
   
   public void setContactType(int paramInt)
   {
-    this.PUr = paramInt;
+    this.xbL = paramInt;
   }
   
   public void setFixedContactCount(int paramInt)
   {
     AppMethodBeat.i(180043);
-    this.nsS = true;
+    this.quL = true;
     this.count = paramInt;
-    gUw();
+    hUp();
     AppMethodBeat.o(180043);
   }
   
@@ -147,9 +150,9 @@ public class ContactCountView
     AppMethodBeat.i(37727);
     this.visible = paramBoolean;
     View localView;
-    if (this.jxm != null)
+    if (this.fyN != null)
     {
-      localView = this.jxm;
+      localView = this.fyN;
       if ((!paramBoolean) || (this.count <= 0)) {
         break label46;
       }
@@ -165,7 +168,7 @@ public class ContactCountView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ContactCountView
  * JD-Core Version:    0.7.0.1
  */

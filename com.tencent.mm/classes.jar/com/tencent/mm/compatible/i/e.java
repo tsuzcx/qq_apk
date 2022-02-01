@@ -3,7 +3,7 @@ package com.tencent.mm.compatible.i;
 import android.annotation.TargetApi;
 import android.media.MediaRecorder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import java.io.File;
 import java.io.FileDescriptor;
 
@@ -11,8 +11,8 @@ import java.io.FileDescriptor;
 public final class e
   extends MediaRecorder
 {
-  private FileDescriptor gLG;
-  private o mFile;
+  private FileDescriptor jvV;
+  private q mFile;
   
   /* Error */
   public final void prepare()
@@ -21,11 +21,11 @@ public final class e
     //   0: ldc 20
     //   2: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 28	com/tencent/mm/compatible/i/e:gLG	Ljava/io/FileDescriptor;
+    //   6: getfield 28	com/tencent/mm/compatible/i/e:jvV	Ljava/io/FileDescriptor;
     //   9: ifnull +21 -> 30
     //   12: aload_0
     //   13: aload_0
-    //   14: getfield 28	com/tencent/mm/compatible/i/e:gLG	Ljava/io/FileDescriptor;
+    //   14: getfield 28	com/tencent/mm/compatible/i/e:jvV	Ljava/io/FileDescriptor;
     //   17: invokespecial 32	android/media/MediaRecorder:setOutputFile	(Ljava/io/FileDescriptor;)V
     //   20: aload_0
     //   21: invokespecial 34	android/media/MediaRecorder:prepare	()V
@@ -33,88 +33,82 @@ public final class e
     //   26: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   29: return
     //   30: aload_0
-    //   31: getfield 39	com/tencent/mm/compatible/i/e:mFile	Lcom/tencent/mm/vfs/o;
-    //   34: ifnull +100 -> 134
+    //   31: getfield 39	com/tencent/mm/compatible/i/e:mFile	Lcom/tencent/mm/vfs/q;
+    //   34: ifnull +91 -> 125
     //   37: aload_0
-    //   38: getfield 39	com/tencent/mm/compatible/i/e:mFile	Lcom/tencent/mm/vfs/o;
-    //   41: astore_1
-    //   42: aload_1
-    //   43: getfield 45	com/tencent/mm/vfs/o:mUri	Landroid/net/Uri;
-    //   46: aload_1
-    //   47: invokevirtual 49	com/tencent/mm/vfs/o:heo	()Lcom/tencent/mm/vfs/g$e;
-    //   50: ldc 51
-    //   52: invokestatic 57	com/tencent/mm/vfs/s:a	(Landroid/net/Uri;Lcom/tencent/mm/vfs/g$e;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
-    //   55: astore_3
-    //   56: aconst_null
-    //   57: astore_2
-    //   58: aload_0
-    //   59: aload_3
-    //   60: invokevirtual 63	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
-    //   63: invokespecial 32	android/media/MediaRecorder:setOutputFile	(Ljava/io/FileDescriptor;)V
-    //   66: aload_0
-    //   67: invokespecial 34	android/media/MediaRecorder:prepare	()V
-    //   70: aload_3
-    //   71: ifnull +57 -> 128
-    //   74: aload_3
-    //   75: invokevirtual 66	android/os/ParcelFileDescriptor:close	()V
-    //   78: ldc 20
-    //   80: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   83: return
-    //   84: astore_2
-    //   85: ldc 20
-    //   87: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   90: aload_2
-    //   91: athrow
-    //   92: astore_1
-    //   93: aload_3
-    //   94: ifnull +11 -> 105
-    //   97: aload_2
-    //   98: ifnull +23 -> 121
-    //   101: aload_3
-    //   102: invokevirtual 66	android/os/ParcelFileDescriptor:close	()V
-    //   105: ldc 20
-    //   107: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   110: aload_1
-    //   111: athrow
-    //   112: astore_3
-    //   113: aload_2
-    //   114: aload_3
-    //   115: invokevirtual 70	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   118: goto -13 -> 105
-    //   121: aload_3
-    //   122: invokevirtual 66	android/os/ParcelFileDescriptor:close	()V
-    //   125: goto -20 -> 105
-    //   128: ldc 20
-    //   130: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   133: return
-    //   134: new 72	java/io/IOException
-    //   137: dup
-    //   138: ldc 74
-    //   140: invokespecial 77	java/io/IOException:<init>	(Ljava/lang/String;)V
-    //   143: astore_1
-    //   144: ldc 20
-    //   146: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   149: aload_1
-    //   150: athrow
-    //   151: astore_1
-    //   152: goto -59 -> 93
+    //   38: getfield 39	com/tencent/mm/compatible/i/e:mFile	Lcom/tencent/mm/vfs/q;
+    //   41: ldc 41
+    //   43: invokestatic 47	com/tencent/mm/vfs/u:h	(Lcom/tencent/mm/vfs/q;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
+    //   46: astore_3
+    //   47: aconst_null
+    //   48: astore_2
+    //   49: aload_0
+    //   50: aload_3
+    //   51: invokevirtual 53	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
+    //   54: invokespecial 32	android/media/MediaRecorder:setOutputFile	(Ljava/io/FileDescriptor;)V
+    //   57: aload_0
+    //   58: invokespecial 34	android/media/MediaRecorder:prepare	()V
+    //   61: aload_3
+    //   62: ifnull +57 -> 119
+    //   65: aload_3
+    //   66: invokevirtual 56	android/os/ParcelFileDescriptor:close	()V
+    //   69: ldc 20
+    //   71: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   74: return
+    //   75: astore_2
+    //   76: ldc 20
+    //   78: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   81: aload_2
+    //   82: athrow
+    //   83: astore_1
+    //   84: aload_3
+    //   85: ifnull +11 -> 96
+    //   88: aload_2
+    //   89: ifnull +23 -> 112
+    //   92: aload_3
+    //   93: invokevirtual 56	android/os/ParcelFileDescriptor:close	()V
+    //   96: ldc 20
+    //   98: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   101: aload_1
+    //   102: athrow
+    //   103: astore_3
+    //   104: aload_2
+    //   105: aload_3
+    //   106: invokevirtual 60	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   109: goto -13 -> 96
+    //   112: aload_3
+    //   113: invokevirtual 56	android/os/ParcelFileDescriptor:close	()V
+    //   116: goto -20 -> 96
+    //   119: ldc 20
+    //   121: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   124: return
+    //   125: new 62	java/io/IOException
+    //   128: dup
+    //   129: ldc 64
+    //   131: invokespecial 67	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   134: astore_1
+    //   135: ldc 20
+    //   137: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   140: aload_1
+    //   141: athrow
+    //   142: astore_1
+    //   143: goto -59 -> 84
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	155	0	this	e
-    //   41	6	1	localo	o
-    //   92	19	1	localObject1	java.lang.Object
-    //   143	7	1	localIOException	java.io.IOException
-    //   151	1	1	localObject2	java.lang.Object
-    //   57	1	2	localObject3	java.lang.Object
-    //   84	30	2	localThrowable1	java.lang.Throwable
-    //   55	47	3	localParcelFileDescriptor	android.os.ParcelFileDescriptor
-    //   112	10	3	localThrowable2	java.lang.Throwable
+    //   0	146	0	this	e
+    //   83	19	1	localObject1	java.lang.Object
+    //   134	7	1	localIOException	java.io.IOException
+    //   142	1	1	localObject2	java.lang.Object
+    //   48	1	2	localObject3	java.lang.Object
+    //   75	30	2	localThrowable1	java.lang.Throwable
+    //   46	47	3	localParcelFileDescriptor	android.os.ParcelFileDescriptor
+    //   103	10	3	localThrowable2	java.lang.Throwable
     // Exception table:
     //   from	to	target	type
-    //   58	70	84	java/lang/Throwable
-    //   85	92	92	finally
-    //   101	105	112	java/lang/Throwable
-    //   58	70	151	finally
+    //   49	61	75	java/lang/Throwable
+    //   76	83	83	finally
+    //   92	96	103	java/lang/Throwable
+    //   49	61	142	finally
   }
   
   @Deprecated
@@ -128,17 +122,17 @@ public final class e
   public final void setOutputFile(FileDescriptor paramFileDescriptor)
   {
     this.mFile = null;
-    this.gLG = paramFileDescriptor;
+    this.jvV = paramFileDescriptor;
   }
   
   public final void setOutputFile(String paramString)
   {
     AppMethodBeat.i(155941);
     if (paramString == null) {}
-    for (paramString = null;; paramString = new o(paramString))
+    for (paramString = null;; paramString = new q(paramString))
     {
       this.mFile = paramString;
-      this.gLG = null;
+      this.jvV = null;
       AppMethodBeat.o(155941);
       return;
     }
@@ -146,7 +140,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.compatible.i.e
  * JD-Core Version:    0.7.0.1
  */

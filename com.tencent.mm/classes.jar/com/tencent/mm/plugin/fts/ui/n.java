@@ -10,13 +10,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.plugin.fts.a.a.e;
-import com.tencent.mm.plugin.fts.a.a.h;
+import com.tencent.mm.plugin.fts.a.a.g;
 import com.tencent.mm.plugin.fts.a.d;
 import com.tencent.mm.plugin.fts.a.d.c;
 import com.tencent.mm.plugin.fts.a.d.c.a;
 import com.tencent.mm.plugin.messenger.a.b;
+import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -30,7 +31,7 @@ import org.json.JSONObject;
 
 public final class n
 {
-  public static String Nu(int paramInt)
+  public static String SI(int paramInt)
   {
     AppMethodBeat.i(112043);
     int j = 0;
@@ -44,29 +45,29 @@ public final class n
     {
       AppMethodBeat.o(112043);
       return null;
-      i = 2131761019;
+      i = o.g.fts_header_top_hits;
       continue;
-      i = 2131761006;
+      i = o.g.fts_header_favorite;
       continue;
-      i = 2131761010;
+      i = o.g.fts_header_message;
       continue;
-      i = 2131761002;
+      i = o.g.fts_header_chatroom;
       continue;
-      i = 2131761003;
+      i = o.g.fts_header_contact;
       continue;
-      i = 2131761009;
+      i = o.g.fts_header_game;
       continue;
-      i = 2131761007;
+      i = o.g.fts_header_feature;
       continue;
-      i = 2131761008;
+      i = o.g.fts_header_focus_biz;
       continue;
-      i = 2131761012;
+      i = o.g.fts_header_mobile_friend;
       continue;
-      i = 2131761020;
+      i = o.g.fts_header_we_app;
       continue;
-      i = 2131761011;
+      i = o.g.fts_header_mini_game;
       continue;
-      i = 2131761021;
+      i = o.g.fts_header_we_app_search;
     }
     String str = MMApplicationContext.getContext().getString(i);
     AppMethodBeat.o(112043);
@@ -84,8 +85,8 @@ public final class n
       i = j;
       if (j == 0)
       {
-        if (!paramString.equals(paramContext.getString(2131765074))) {
-          break label53;
+        if (!paramString.equals(paramContext.getString(o.g.search_education_article))) {
+          break label54;
         }
         i = 2;
       }
@@ -96,12 +97,12 @@ public final class n
       return i;
       j = paramJSONObject.optInt("businessType");
       break;
-      label53:
-      if (paramString.equals(paramContext.getString(2131765078)))
+      label54:
+      if (paramString.equals(paramContext.getString(o.g.search_education_timeline)))
       {
         i = 8;
       }
-      else if (paramString.equals(paramContext.getString(2131765075)))
+      else if (paramString.equals(paramContext.getString(o.g.search_education_biz_contact)))
       {
         i = 1;
       }
@@ -113,7 +114,7 @@ public final class n
     }
   }
   
-  public static CharSequence a(Context paramContext, List<com.tencent.mm.plugin.fts.a.a.g> paramList, String[] paramArrayOfString, h paramh, TextPaint paramTextPaint)
+  public static CharSequence a(Context paramContext, List<g> paramList, String[] paramArrayOfString, com.tencent.mm.plugin.fts.a.a.h paramh, TextPaint paramTextPaint)
   {
     AppMethodBeat.i(112044);
     Arrays.sort(paramArrayOfString, new Comparator() {});
@@ -123,20 +124,20 @@ public final class n
     Object localObject2;
     if (i < paramList.size())
     {
-      localObject1 = (com.tencent.mm.plugin.fts.a.a.g)paramList.get(i);
+      localObject1 = (g)paramList.get(i);
       String str1;
       String str2;
-      if (((com.tencent.mm.plugin.fts.a.a.g)localObject1).wWv < paramArrayOfString.length)
+      if (((g)localObject1).BIq < paramArrayOfString.length)
       {
-        localObject2 = paramArrayOfString[localObject1.wWv];
+        localObject2 = paramArrayOfString[localObject1.BIq];
         if (!Util.isNullOrNil((String)localObject2))
         {
-          localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn((String)localObject2);
+          localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().RG((String)localObject2);
           if (localObject2 != null)
           {
             str1 = ((ax)localObject2).field_username;
-            str2 = ((b)com.tencent.mm.kernel.g.af(b.class)).b((as)localObject2, str1);
-            switch (((com.tencent.mm.plugin.fts.a.a.g)localObject1).wVW)
+            str2 = ((b)com.tencent.mm.kernel.h.ae(b.class)).b((as)localObject2, str1);
+            switch (((g)localObject1).BHR)
             {
             }
           }
@@ -144,60 +145,60 @@ public final class n
       }
       for (;;)
       {
-        if ((!Util.isNullOrNil(((com.tencent.mm.plugin.fts.a.a.g)localObject1).wWx)) && (((com.tencent.mm.plugin.fts.a.a.g)localObject1).wWx.contains(paramh.wWB))) {
-          ((com.tencent.mm.plugin.fts.a.a.g)localObject1).wWz += 10;
+        if ((!Util.isNullOrNil(((g)localObject1).BIs)) && (((g)localObject1).BIs.contains(paramh.BIw))) {
+          ((g)localObject1).BIu += 10;
         }
         i += 1;
         break;
-        ((com.tencent.mm.plugin.fts.a.a.g)localObject1).wWx = d.hw(str1, ((as)localObject2).ajx());
-        ((com.tencent.mm.plugin.fts.a.a.g)localObject1).wWy = str2;
+        ((g)localObject1).BIs = d.hD(str1, ((as)localObject2).apf());
+        ((g)localObject1).BIt = str2;
         continue;
-        ((com.tencent.mm.plugin.fts.a.a.g)localObject1).wWA = true;
-        ((com.tencent.mm.plugin.fts.a.a.g)localObject1).wWe = true;
-        ((com.tencent.mm.plugin.fts.a.a.g)localObject1).wWx = ((ax)localObject2).field_nickname;
+        ((g)localObject1).BIv = true;
+        ((g)localObject1).BHZ = true;
+        ((g)localObject1).BIs = ((ax)localObject2).field_nickname;
         if (!((ax)localObject2).field_nickname.equals(str2))
         {
-          ((com.tencent.mm.plugin.fts.a.a.g)localObject1).wWy = str2;
+          ((g)localObject1).BIt = str2;
           continue;
-          ((com.tencent.mm.plugin.fts.a.a.g)localObject1).wWA = true;
-          ((com.tencent.mm.plugin.fts.a.a.g)localObject1).wWe = true;
-          ((com.tencent.mm.plugin.fts.a.a.g)localObject1).wWx = str2;
+          ((g)localObject1).BIv = true;
+          ((g)localObject1).BHZ = true;
+          ((g)localObject1).BIs = str2;
           continue;
-          ((com.tencent.mm.plugin.fts.a.a.g)localObject1).wWx = ((com.tencent.mm.plugin.fts.a.a.g)localObject1).content;
-          ((com.tencent.mm.plugin.fts.a.a.g)localObject1).wWy = str2;
+          ((g)localObject1).BIs = ((g)localObject1).content;
+          ((g)localObject1).BIt = str2;
           continue;
-          ((com.tencent.mm.plugin.fts.a.a.g)localObject1).wWx = ((ax)localObject2).fuR;
-          ((com.tencent.mm.plugin.fts.a.a.g)localObject1).wWy = str2;
+          ((g)localObject1).BIs = ((ax)localObject2).hDq;
+          ((g)localObject1).BIt = str2;
         }
       }
     }
     Collections.sort(paramList, new Comparator() {});
     i = 0;
     float f = 0.0F;
-    while ((i < paramList.size()) && (i < paramh.wWD.length))
+    while ((i < paramList.size()) && (i < paramh.BIy.length))
     {
-      f = b.a.wZP - 100 - f;
+      f = b.a.BLO - 100 - f;
       if (f <= 100.0F) {
         break;
       }
-      paramArrayOfString = (com.tencent.mm.plugin.fts.a.a.g)paramList.get(i);
-      localObject1 = com.tencent.mm.pluginsdk.ui.span.l.b(paramContext, paramArrayOfString.wWx, paramTextPaint.getTextSize());
+      paramArrayOfString = (g)paramList.get(i);
+      localObject1 = l.b(paramContext, paramArrayOfString.BIs, paramTextPaint.getTextSize());
       if (localSpannableStringBuilder.length() > 0) {
         localSpannableStringBuilder.append(", ");
       }
       localObject2 = new e();
-      ((e)localObject2).wWc = ((CharSequence)localObject1);
-      ((e)localObject2).wWd = paramh;
-      ((e)localObject2).wWe = paramArrayOfString.wWe;
-      ((e)localObject2).wWf = paramArrayOfString.wWA;
-      ((e)localObject2).wWi = f;
-      ((e)localObject2).iW = paramTextPaint;
-      if (!Util.isNullOrNil(paramArrayOfString.wWy))
+      ((e)localObject2).BHX = ((CharSequence)localObject1);
+      ((e)localObject2).BHY = paramh;
+      ((e)localObject2).BHZ = paramArrayOfString.BHZ;
+      ((e)localObject2).BIa = paramArrayOfString.BIv;
+      ((e)localObject2).BId = f;
+      ((e)localObject2).bzo = paramTextPaint;
+      if (!Util.isNullOrNil(paramArrayOfString.BIt))
       {
-        ((e)localObject2).wWj = TextUtils.concat(new CharSequence[] { com.tencent.mm.pluginsdk.ui.span.l.b(paramContext, paramArrayOfString.wWy, paramTextPaint.getTextSize()), "(" });
-        ((e)localObject2).wWk = ")";
+        ((e)localObject2).BIe = TextUtils.concat(new CharSequence[] { l.b(paramContext, paramArrayOfString.BIt, paramTextPaint.getTextSize()), "(" });
+        ((e)localObject2).BIf = ")";
       }
-      localSpannableStringBuilder.append(com.tencent.mm.plugin.fts.a.f.a((e)localObject2).wWu);
+      localSpannableStringBuilder.append(com.tencent.mm.plugin.fts.a.f.a((e)localObject2).BIp);
       f = paramTextPaint.measureText(localSpannableStringBuilder.toString());
       i += 1;
     }
@@ -241,13 +242,33 @@ public final class n
     return false;
   }
   
+  public static boolean a(String paramString, TextView paramTextView)
+  {
+    AppMethodBeat.i(112038);
+    if (paramTextView == null)
+    {
+      AppMethodBeat.o(112038);
+      return false;
+    }
+    if ((paramString != null) && (paramString.length() != 0))
+    {
+      paramTextView.setText(l.b(paramTextView.getContext(), paramString, paramTextView.getTextSize()));
+      paramTextView.setVisibility(0);
+      AppMethodBeat.o(112038);
+      return true;
+    }
+    paramTextView.setVisibility(8);
+    AppMethodBeat.o(112038);
+    return false;
+  }
+  
   private static void b(Context paramContext, ImageView paramImageView, String paramString1, String paramString2, int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(112042);
-    ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.fts.a.n.class)).getFTSImageLoader().a(paramImageView, paramString1, paramString2, paramBoolean, paramInt2, paramInt3);
+    ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.fts.a.n.class)).getFTSImageLoader().a(paramImageView, paramString1, paramString2, paramBoolean, paramInt2, paramInt3);
     if ((!Util.isNullOrNil(paramString1)) || (!Util.isNullOrNil(paramString2)))
     {
-      Bitmap localBitmap = ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.fts.a.n.class)).getFTSImageLoader().b(paramString1, paramString2, paramBoolean, paramInt2, paramInt3);
+      Bitmap localBitmap = ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.fts.a.n.class)).getFTSImageLoader().c(paramString1, paramString2, paramBoolean, paramInt2, paramInt3);
       if ((localBitmap != null) && (!localBitmap.isRecycled()))
       {
         c.a.a(paramContext.getResources(), localBitmap, paramImageView);
@@ -260,9 +281,9 @@ public final class n
       }
       for (;;)
       {
-        ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.fts.a.n.class)).getFTSImageLoader().a(paramContext, paramImageView, paramString1, paramString2, paramBoolean, paramInt2, paramInt3);
+        ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.fts.a.n.class)).getFTSImageLoader().a(paramContext, paramImageView, paramString1, paramString2, paramBoolean, paramInt2, paramInt3);
         break;
-        paramImageView.setImageResource(2131101287);
+        paramImageView.setImageResource(o.a.transparent);
       }
     }
     if ((paramInt1 > 0) && ((!Util.isNullOrNil(paramString1)) || (!Util.isNullOrNil(paramString2))))
@@ -273,26 +294,6 @@ public final class n
     }
     paramImageView.setVisibility(8);
     AppMethodBeat.o(112042);
-  }
-  
-  public static boolean b(String paramString, TextView paramTextView)
-  {
-    AppMethodBeat.i(112038);
-    if (paramTextView == null)
-    {
-      AppMethodBeat.o(112038);
-      return false;
-    }
-    if ((paramString != null) && (paramString.length() != 0))
-    {
-      paramTextView.setText(com.tencent.mm.pluginsdk.ui.span.l.b(paramTextView.getContext(), paramString, paramTextView.getTextSize()));
-      paramTextView.setVisibility(0);
-      AppMethodBeat.o(112038);
-      return true;
-    }
-    paramTextView.setVisibility(8);
-    AppMethodBeat.o(112038);
-    return false;
   }
   
   public static final void q(View paramView, boolean paramBoolean)
@@ -313,11 +314,11 @@ public final class n
     AppMethodBeat.i(112046);
     if (paramBoolean)
     {
-      paramView.setBackgroundResource(2131231898);
+      paramView.setBackgroundResource(o.c.comm_list_item_selector);
       AppMethodBeat.o(112046);
       return;
     }
-    paramView.setBackgroundResource(2131232860);
+    paramView.setBackgroundResource(o.c.fts_web_search_result_header_bg);
     AppMethodBeat.o(112046);
   }
   
@@ -326,17 +327,17 @@ public final class n
     AppMethodBeat.i(112047);
     if (paramBoolean)
     {
-      paramView.setBackgroundResource(2131233327);
+      paramView.setBackgroundResource(o.c.list_item_normal);
       AppMethodBeat.o(112047);
       return;
     }
-    paramView.setBackgroundResource(2131233974);
+    paramView.setBackgroundResource(o.c.mm_trans);
     AppMethodBeat.o(112047);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.n
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,51 @@
 package com.tencent.mm.plugin.luckymoney.f2f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.wallet_core.model.k;
-import com.tencent.mm.protocal.protobuf.alj;
-import com.tencent.mm.protocal.protobuf.alk;
-import com.tencent.mm.protocal.protobuf.bf;
+import com.tencent.mm.protocal.protobuf.amk;
+import com.tencent.mm.protocal.protobuf.aml;
+import com.tencent.mm.protocal.protobuf.bd;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
   extends q
   implements m
 {
+  private amk EvE;
+  private aml EvF;
   private i callback;
-  public int dDN;
-  private d hJu;
-  public String qwn;
-  private alj yRG;
-  private alk yRH;
+  public int fwx;
+  private d kwO;
+  public String tVo;
   
   public b(String paramString)
   {
     AppMethodBeat.i(65038);
     Object localObject = new d.a();
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    ((d.a)localObject).iLN = new alj();
-    ((d.a)localObject).iLO = new alk();
+    ((d.a)localObject).lBU = new amk();
+    ((d.a)localObject).lBV = new aml();
     ((d.a)localObject).funcId = getType();
     ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/ftfhb/ffwxhbinvalidateshareurl";
-    this.hJu = ((d.a)localObject).aXF();
-    this.yRG = ((alj)this.hJu.iLK.iLR);
-    localObject = k.fQy();
+    this.kwO = ((d.a)localObject).bgN();
+    this.EvE = ((amk)d.b.b(this.kwO.lBR));
+    localObject = k.gJe();
     if (localObject != null)
     {
-      this.yRG.latitude = ((bf)localObject).latitude;
-      this.yRG.longitude = ((bf)localObject).longitude;
+      this.EvE.latitude = ((bd)localObject).latitude;
+      this.EvE.longitude = ((bd)localObject).longitude;
     }
-    this.yRG.Lum = paramString;
+    this.EvE.SwK = paramString;
     AppMethodBeat.o(65038);
   }
   
@@ -53,7 +53,7 @@ public final class b
   {
     AppMethodBeat.i(65039);
     this.callback = parami;
-    int i = dispatch(paramg, this.hJu, this);
+    int i = dispatch(paramg, this.kwO, this);
     AppMethodBeat.o(65039);
     return i;
   }
@@ -67,11 +67,11 @@ public final class b
   {
     AppMethodBeat.i(65040);
     Log.i(" NetSceneF2FLuckyMoneyInvalid", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.yRH = ((alk)((d)params).iLL.iLR);
-    this.dDN = this.yRH.dDN;
-    this.qwn = this.yRH.qwn;
+    this.EvF = ((aml)d.c.b(((d)params).lBS));
+    this.fwx = this.EvF.fwx;
+    this.tVo = this.EvF.tVo;
     if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, this.yRH.dDN, this.yRH.qwn, this);
+      this.callback.onSceneEnd(paramInt2, this.EvF.fwx, this.EvF.tVo, this);
     }
     AppMethodBeat.o(65040);
   }

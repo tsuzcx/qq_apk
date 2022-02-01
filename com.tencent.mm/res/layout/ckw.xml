@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/knw" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="14.0dip" android:textColor="#ff7186b0" android:id="@id/knr" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sz" android:layout_centerVertical="true" android:layout_marginStart="@dimen/cb" android:layout_alignParentEnd="true" />
+    <RelativeLayout android:id="@id/knv" android:background="@drawable/czr" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kns" android:visibility="gone" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@raw/icons_filled_close2" android:layout_centerVertical="true" android:layout_marginStart="10.0dip" android:layout_marginEnd="10.0dip" android:layout_alignParentEnd="true" app:iconColor="@color/BW_100_Alpha_0_3" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/knx" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_filled_search" android:layout_centerVertical="true" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="@dimen/bt" app:iconColor="@color/BW_100_Alpha_0_3" />
+        <EditText android:textSize="17.0dip" android:textColor="@color/am" android:textColorHint="@color/BW_100_Alpha_0_3" android:id="@id/knt" android:background="@color/ac_" android:paddingTop="@dimen/ct" android:paddingBottom="@dimen/ct" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/jwq" android:maxLines="1" android:singleLine="true" android:layout_centerVertical="true" android:imeOptions="actionSearch" android:layout_toStartOf="@id/kns" android:layout_toEndOf="@id/knx" />
+    </RelativeLayout>
+</RelativeLayout>

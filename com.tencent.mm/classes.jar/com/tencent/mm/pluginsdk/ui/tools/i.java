@@ -1,181 +1,188 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
 import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
+import android.content.Intent;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.multitask.b.a;
+import com.tencent.mm.plugin.multitask.b.c;
+import com.tencent.mm.plugin.multitask.g;
+import com.tencent.mm.plugin.multitask.j.h;
+import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
+import com.tencent.mm.protocal.protobuf.aco;
+import com.tencent.mm.protocal.protobuf.apf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.PlaySound;
+import com.tencent.mm.vfs.u;
 
 public final class i
-  implements y.a
+  extends c
 {
-  public static i Kvp = null;
-  private SensorEventListener Jtm;
-  private float[] Kvl;
-  int Kvm;
-  int Kvn;
-  private SensorManager Kvo;
-  public boolean hasInit;
+  private static i Rwx;
+  public boolean VX = false;
+  String mFileName = "";
+  public String mFilePath = "";
+  String qia = "";
+  public int tOb = 0;
+  
+  static
+  {
+    AppMethodBeat.i(246563);
+    Rwx = new i();
+    AppMethodBeat.o(246563);
+  }
   
   public i()
   {
-    AppMethodBeat.i(152387);
-    this.hasInit = false;
-    this.Kvl = new float[3];
-    this.Kvm = -10000;
-    this.Kvn = -10000;
-    AppMethodBeat.o(152387);
+    super((byte)0);
   }
   
-  private void gsx()
+  public static String asq(String paramString)
   {
-    AppMethodBeat.i(152391);
-    Log.d("MicroMsg.HeadingPitchSensorMgr", "releaseSensor");
-    if ((this.Kvo != null) && (this.Jtm != null))
+    AppMethodBeat.i(246561);
+    paramString = u.asq(bkf(paramString));
+    AppMethodBeat.o(246561);
+    return paramString;
+  }
+  
+  private static String bkf(String paramString)
+  {
+    AppMethodBeat.i(246562);
+    try
     {
-      Log.d("MicroMsg.HeadingPitchSensorMgr", "releaseSensor");
-      this.Kvo.unregisterListener(this.Jtm);
-      this.Kvo = null;
-      this.Jtm = null;
+      int j = paramString.lastIndexOf('/') + 1;
+      if (j < 0) {
+        break label79;
+      }
+      i = j;
+      if (j != paramString.length()) {}
     }
-    this.hasInit = false;
-    AppMethodBeat.o(152391);
-  }
-  
-  public final void gbt()
-  {
-    AppMethodBeat.i(152392);
-    Kvp = null;
-    gsx();
-    AppMethodBeat.o(152392);
-  }
-  
-  public final void gbu()
-  {
-    AppMethodBeat.i(152394);
-    gsx();
-    AppMethodBeat.o(152394);
-  }
-  
-  public final String getName()
-  {
-    return "HeadingPitchSensorMgr";
-  }
-  
-  public final int getPitch()
-  {
-    AppMethodBeat.i(152389);
-    Log.d("MicroMsg.HeadingPitchSensorMgr", "getPitch() " + this.Kvn);
-    int i = this.Kvn;
-    AppMethodBeat.o(152389);
-    return i;
-  }
-  
-  public final int gsw()
-  {
-    AppMethodBeat.i(152388);
-    Log.d("MicroMsg.HeadingPitchSensorMgr", "getHeading() " + this.Kvm);
-    int i = this.Kvm;
-    AppMethodBeat.o(152388);
-    return i;
-  }
-  
-  public final void hU(Context paramContext)
-  {
-    AppMethodBeat.i(152393);
-    iB(paramContext);
-    AppMethodBeat.o(152393);
-  }
-  
-  public final void iB(Context paramContext)
-  {
-    AppMethodBeat.i(152390);
-    Log.d("MicroMsg.HeadingPitchSensorMgr", "initSensor() ");
-    if (paramContext == null)
+    catch (Exception paramString)
     {
-      Log.e("MicroMsg.HeadingPitchSensorMgr", "initSensor() context == null");
-      AppMethodBeat.o(152390);
+      for (;;)
+      {
+        Log.e("MicroMsg.FilesFloatBall.FilesMultiTaskHelper", "get file name error " + paramString.getMessage());
+        paramString = " ";
+        continue;
+        int i = 0;
+      }
+    }
+    paramString = paramString.substring(i, paramString.length());
+    AppMethodBeat.o(246562);
+    return paramString;
+  }
+  
+  private void hnA()
+  {
+    AppMethodBeat.i(246559);
+    this.FHd.fbc().jmx = this.qia;
+    this.FHd.fbc().title = this.mFileName;
+    faR();
+    AppMethodBeat.o(246559);
+  }
+  
+  public static i hnB()
+  {
+    return Rwx;
+  }
+  
+  public final void M(String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(246557);
+    b(paramString1, paramString2, "", paramInt, faF());
+    AppMethodBeat.o(246557);
+  }
+  
+  public final boolean Q(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(246560);
+    paramBoolean = super.Q(paramInt, this.VX);
+    AppMethodBeat.o(246560);
+    return paramBoolean;
+  }
+  
+  public final void b(String paramString1, String paramString2, String paramString3, int paramInt, aco paramaco)
+  {
+    AppMethodBeat.i(246558);
+    Log.i("MicroMsg.FilesFloatBall.FilesMultiTaskHelper", "onCreate, filePath:%s fileExt:%s fileName:%s sence:%s", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt) });
+    super.I(4, g.aQW(paramString1));
+    this.mFilePath = paramString1;
+    this.qia = paramString2;
+    this.mFileName = paramString3;
+    if (TextUtils.isEmpty(this.mFileName)) {
+      this.mFileName = bkf(paramString1);
+    }
+    this.VX = false;
+    this.tOb = paramInt;
+    b(paramaco);
+    paramString3 = new apf();
+    paramString3.SCl = false;
+    paramString3.filePath = paramString1;
+    paramString3.jmx = paramString2;
+    paramString3.Rwe = u.bBQ(paramString1);
+    paramString3.tNG = paramInt;
+    try
+    {
+      this.FHd.field_data = paramString3.toByteArray();
+      faR();
+      hnA();
+      AppMethodBeat.o(246558);
       return;
     }
-    if (this.Kvo == null) {
-      this.Kvo = ((SensorManager)MMApplicationContext.getContext().getSystemService("sensor"));
-    }
-    if (this.Jtm == null) {
-      this.Jtm = new SensorEventListener()
+    catch (Exception paramString1)
+    {
+      for (;;)
       {
-        public final void onAccuracyChanged(Sensor paramAnonymousSensor, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(152386);
-          Log.i("MicroMsg.HeadingPitchSensorMgr", "onAccuracyChanged");
-          AppMethodBeat.o(152386);
-        }
-        
-        public final void onSensorChanged(SensorEvent paramAnonymousSensorEvent)
-        {
-          AppMethodBeat.i(152385);
-          if (paramAnonymousSensorEvent.sensor.getType() == 3)
-          {
-            i.a(i.this)[0] = paramAnonymousSensorEvent.values[0];
-            i.a(i.this)[1] = paramAnonymousSensorEvent.values[1];
-            i.a(i.this)[2] = paramAnonymousSensorEvent.values[2];
-            if (i.this.Kvm == -10000) {
-              i.this.Kvm = ((int)i.a(i.this)[0]);
-            }
-            for (;;)
-            {
-              if (i.this.Kvm == 0) {
-                i.this.Kvm = 1;
-              }
-              if (i.this.Kvm == 365) {
-                i.this.Kvm = 364;
-              }
-              if (i.this.Kvn != -10000) {
-                break;
-              }
-              i.this.Kvn = ((int)i.a(i.this)[1]);
-              AppMethodBeat.o(152385);
-              return;
-              if ((i.a(i.this)[0] - i.this.Kvm > 300.0F) || (i.a(i.this)[0] - i.this.Kvm < -300.0F)) {
-                i.this.Kvm = ((int)i.a(i.this)[0]);
-              } else {
-                i.this.Kvm = ((int)(i.this.Kvm * 0.6D + i.a(i.this)[0] * 0.4D));
-              }
-            }
-            if (i.a(i.this)[1] < -68.0F)
-            {
-              int j = (int)(-68.0D + (i.a(i.this)[1] + 68.0F) / 1.5D);
-              int i = j;
-              if (j < -89) {
-                i = -89;
-              }
-              i.this.Kvn = i;
-              AppMethodBeat.o(152385);
-              return;
-            }
-            if (i.a(i.this)[1] > 89.0F)
-            {
-              i.this.Kvn = 89;
-              AppMethodBeat.o(152385);
-              return;
-            }
-            i.this.Kvn = ((int)(i.this.Kvn * 0.6D + i.a(i.this)[1] * 0.4D));
-          }
-          AppMethodBeat.o(152385);
-        }
-      };
+        Log.printErrStackTrace("MicroMsg.FilesFloatBall.FilesMultiTaskHelper", paramString1, "", new Object[0]);
+      }
     }
-    boolean bool = this.Kvo.registerListener(this.Jtm, this.Kvo.getDefaultSensor(3), 3);
-    this.hasInit = true;
-    Log.d("MicroMsg.HeadingPitchSensorMgr", "initSensor() finish, %s", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(152390);
+  }
+  
+  public final boolean cbG()
+  {
+    return false;
+  }
+  
+  public final boolean cbH()
+  {
+    return false;
+  }
+  
+  public final long faO()
+  {
+    return 1500L;
+  }
+  
+  public final void iV(boolean paramBoolean)
+  {
+    AppMethodBeat.i(246556);
+    if (paramBoolean)
+    {
+      Log.i("MicroMsg.FilesFloatBall.FilesMultiTaskHelper", "onMenuFloatBallSelected, enter float ball");
+      b(null, true);
+      PlaySound.play(MMApplicationContext.getContext(), j.h.webview_minimize_sound_path);
+      Context localContext = MMApplicationContext.getContext();
+      Intent localIntent = new Intent("com.tencent.QQBrowser.action.sdk.document.receiver");
+      localIntent.setPackage("com.tencent.mtt");
+      localIntent.putExtra("key_reader_sdk_window_close", true);
+      try
+      {
+        localContext.sendBroadcast(localIntent);
+        AppMethodBeat.o(246556);
+        return;
+      }
+      catch (Exception localException)
+      {
+        Log.e("MicroMsg.FilesFloatBall.FilesMultiTaskHelper", "closeQb() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+      }
+    }
+    AppMethodBeat.o(246556);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.i
  * JD-Core Version:    0.7.0.1
  */

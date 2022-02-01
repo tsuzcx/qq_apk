@@ -4,22 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import kotlin.a.ab;
 import kotlin.g.b.p;
-import kotlin.k.j;
+import kotlin.k.i;
 import kotlin.l;
 import org.json.JSONArray;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"toDoubleArray", "", "Lorg/json/JSONArray;", "toJsonArray", "plugin-sticker_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"toDoubleArray", "", "Lorg/json/JSONArray;", "toJsonArray", "plugin-sticker_release"})
 public final class b
 {
-  public static final double[] W(JSONArray paramJSONArray)
+  public static final double[] Y(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(105887);
-    p.h(paramJSONArray, "$this$toDoubleArray");
+    p.k(paramJSONArray, "$this$toDoubleArray");
     double[] arrayOfDouble = new double[paramJSONArray.length()];
-    Iterator localIterator = ((Iterable)j.mY(0, paramJSONArray.length())).iterator();
+    Iterator localIterator = ((Iterable)i.ou(0, paramJSONArray.length())).iterator();
     while (localIterator.hasNext())
     {
-      int i = ((ab)localIterator).nextInt();
+      int i = ((ab)localIterator).zD();
       arrayOfDouble[i] = paramJSONArray.getDouble(i);
     }
     AppMethodBeat.o(105887);
@@ -29,7 +29,7 @@ public final class b
   public static final JSONArray c(double[] paramArrayOfDouble)
   {
     AppMethodBeat.i(105888);
-    p.h(paramArrayOfDouble, "$this$toJsonArray");
+    p.k(paramArrayOfDouble, "$this$toJsonArray");
     JSONArray localJSONArray = new JSONArray();
     int j = paramArrayOfDouble.length;
     int i = 0;
@@ -44,7 +44,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.sticker.b
  * JD-Core Version:    0.7.0.1
  */

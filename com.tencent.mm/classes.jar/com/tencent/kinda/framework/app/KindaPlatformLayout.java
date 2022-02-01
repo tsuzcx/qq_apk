@@ -1,6 +1,7 @@
 package com.tencent.kinda.framework.app;
 
 import android.content.Context;
+import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -38,9 +39,9 @@ public class KindaPlatformLayout
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(18467);
-    long l1 = System.currentTimeMillis();
+    long l1 = SystemClock.elapsedRealtime();
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    long l2 = System.currentTimeMillis();
+    long l2 = SystemClock.elapsedRealtime();
     TestMeasure localTestMeasure = this.measure;
     localTestMeasure.valLayout = (l2 - l1 + localTestMeasure.valLayout);
     AppMethodBeat.o(18467);
@@ -49,9 +50,9 @@ public class KindaPlatformLayout
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(18465);
-    long l1 = System.currentTimeMillis();
+    long l1 = SystemClock.elapsedRealtime();
     super.onMeasure(paramInt1, paramInt2);
-    long l2 = System.currentTimeMillis();
+    long l2 = SystemClock.elapsedRealtime();
     TestMeasure localTestMeasure = this.measure;
     localTestMeasure.valMeasure = (l2 - l1 + localTestMeasure.valMeasure);
     AppMethodBeat.o(18465);
@@ -66,7 +67,7 @@ public class KindaPlatformLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaPlatformLayout
  * JD-Core Version:    0.7.0.1
  */

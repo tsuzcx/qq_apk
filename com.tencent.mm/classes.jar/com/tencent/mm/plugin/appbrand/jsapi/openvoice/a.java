@@ -17,7 +17,7 @@ public final class a
   public a()
   {
     AppMethodBeat.i(174844);
-    com.tencent.mm.plugin.appbrand.permission.c.aem("exitVoIPChat");
+    com.tencent.mm.plugin.appbrand.permission.c.amg("exitVoIPChat");
     AppMethodBeat.o(174844);
   }
   
@@ -25,16 +25,16 @@ public final class a
   {
     AppMethodBeat.i(46670);
     Log.i("MicroMsg.OpenVoice.JsApiCloudVoiceExitVoIPChat", "hy: invoke JsApiCloudVoiceExitVoIPChat");
-    hl(false);
+    ib(false);
     paramJSONObject = paramc.getAppId();
     final long l = Util.currentTicks();
-    q.qta.a(new b() {}, q.a.quL);
+    q.tRM.a(new b() {}, q.a.tTx);
     AppMethodBeat.o(46670);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.openvoice.a
  * JD-Core Version:    0.7.0.1
  */

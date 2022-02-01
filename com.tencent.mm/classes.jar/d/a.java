@@ -8,44 +8,44 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends JceStruct
 {
-  public String SKY = "";
-  public String SKZ = "";
-  public String SLa = "";
-  public String SLb = "";
+  public String aamT = "";
+  public String aamU = "";
+  public String aamV = "";
+  public String aamW = "";
   
   public final void display(StringBuilder paramStringBuilder, int paramInt) {}
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(214833);
-    this.SLa = paramJceInputStream.readString(0, false);
-    this.SKY = paramJceInputStream.readString(1, false);
-    this.SLb = paramJceInputStream.readString(2, false);
-    this.SKZ = paramJceInputStream.readString(3, false);
-    AppMethodBeat.o(214833);
+    AppMethodBeat.i(208155);
+    this.aamV = paramJceInputStream.readString(0, false);
+    this.aamT = paramJceInputStream.readString(1, false);
+    this.aamW = paramJceInputStream.readString(2, false);
+    this.aamU = paramJceInputStream.readString(3, false);
+    AppMethodBeat.o(208155);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(214832);
-    if (this.SLa != null) {
-      paramJceOutputStream.write(this.SLa, 0);
+    AppMethodBeat.i(208154);
+    if (this.aamV != null) {
+      paramJceOutputStream.write(this.aamV, 0);
     }
-    if (this.SKY != null) {
-      paramJceOutputStream.write(this.SKY, 1);
+    if (this.aamT != null) {
+      paramJceOutputStream.write(this.aamT, 1);
     }
-    if (this.SLb != null) {
-      paramJceOutputStream.write(this.SLb, 2);
+    if (this.aamW != null) {
+      paramJceOutputStream.write(this.aamW, 2);
     }
-    if (this.SKZ != null) {
-      paramJceOutputStream.write(this.SKZ, 3);
+    if (this.aamU != null) {
+      paramJceOutputStream.write(this.aamU, 3);
     }
-    AppMethodBeat.o(214832);
+    AppMethodBeat.o(208154);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     d.a
  * JD-Core Version:    0.7.0.1
  */

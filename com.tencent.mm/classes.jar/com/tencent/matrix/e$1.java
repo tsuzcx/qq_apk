@@ -14,18 +14,18 @@ final class e$1
   public final void onClick(View paramView)
   {
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/matrix/MatrixSettingUIHandler$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+    ((b)localObject).bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/matrix/MatrixSettingUIHandler$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
     Log.i("Matrix.UISettingHandler", "[onClick] FrameDecorator");
     localObject = new Intent();
     ((Intent)localObject).setClassName(MMApplicationContext.getContext(), "com.tencent.mm.ui.matrix.MatrixSettingUI");
     ((Intent)localObject).addFlags(67108864);
     ((Intent)localObject).addFlags(268435456);
     paramView = MMApplicationContext.getContext();
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/matrix/MatrixSettingUIHandler$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/matrix/MatrixSettingUIHandler$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/matrix/MatrixSettingUIHandler$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramView, "com/tencent/matrix/MatrixSettingUIHandler$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/matrix/MatrixSettingUIHandler$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
   }
 }

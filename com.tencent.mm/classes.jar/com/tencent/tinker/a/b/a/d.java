@@ -4,28 +4,28 @@ import com.tencent.tinker.a.a.j;
 
 public final class d
 {
-  private final g Shn;
+  private final g ZJY;
   
   public d(g paramg)
   {
-    this.Shn = paramg;
+    this.ZJY = paramg;
   }
   
   public final void a(e parame)
   {
-    Object localObject = this.Shn;
-    ((a)localObject).Shk.mSize = 0;
-    ((a)localObject).apk = 0;
+    Object localObject = this.ZJY;
+    ((a)localObject).ZJV.mSize = 0;
+    ((a)localObject).YO = 0;
     for (;;)
     {
-      localObject = this.Shn;
-      if (((a)localObject).apk < ((g)localObject).Shs.length) {}
+      localObject = this.ZJY;
+      if (((a)localObject).YO < ((g)localObject).ZKd.length) {}
       int i1;
       int n;
       for (int i = 1; i != 0; i = 0)
       {
-        i1 = this.Shn.apk;
-        n = this.Shn.read();
+        i1 = this.ZJY.YO;
+        n = this.ZJY.read();
         j = n & 0xFF;
         if (j != 0)
         {
@@ -39,73 +39,73 @@ public final class d
         switch (i)
         {
         default: 
-          throw new IllegalStateException("Unknown opcode: " + com.tencent.tinker.a.b.b.a.arZ(i));
+          throw new IllegalStateException("Unknown opcode: " + com.tencent.tinker.a.b.b.a.aBN(i));
         }
       }
       parame.a(i1, n, 0, 1, 0, 0L);
       continue;
-      parame.a(i1, n & 0xFF, 0, 1, i1 + (byte)b.arT(n), 0L);
+      parame.a(i1, n & 0xFF, 0, 1, i1 + (byte)b.aBH(n), 0L);
       continue;
-      parame.a(i1, n & 0xFF, 0, 1, 0, b.arT(n));
+      parame.a(i1, n & 0xFF, 0, 1, 0, b.aBH(n));
       continue;
       parame.a(i1, n & 0xFF, 0, 1, 0, (n >> 12 & 0xF) << 28 >> 28, n >> 8 & 0xF);
       continue;
-      parame.a(i1, n & 0xFF, 0, 1, 0, 0L, b.arT(n));
+      parame.a(i1, n & 0xFF, 0, 1, 0, 0L, b.aBH(n));
       continue;
       parame.a(i1, n & 0xFF, 0, 1, 0, 0L, n >> 8 & 0xF, n >> 12 & 0xF);
       continue;
-      i = b.arT(n);
-      parame.a(i1, n & 0xFF, 0, 1, i1 + (short)this.Shn.read(), i);
+      i = b.aBH(n);
+      parame.a(i1, n & 0xFF, 0, 1, i1 + (short)this.ZJY.read(), i);
       continue;
       i = n & 0xFF;
-      int j = b.arT(n);
-      parame.a(i1, i, this.Shn.read(), b.arW(i), 0, 0L, j);
+      int j = b.aBH(n);
+      parame.a(i1, i, this.ZJY.read(), b.aBK(i), 0, 0L, j);
       continue;
       j = n & 0xFF;
-      int k = b.arT(n);
-      long l = (short)this.Shn.read();
+      int k = b.aBH(n);
+      long l = (short)this.ZJY.read();
       if (j == 21) {}
       for (i = 16;; i = 48)
       {
         parame.a(i1, j, 0, 1, 0, l << i, k);
         break;
       }
-      i = b.arT(n);
-      parame.a(i1, n & 0xFF, 0, 1, 0, (short)this.Shn.read(), i);
+      i = b.aBH(n);
+      parame.a(i1, n & 0xFF, 0, 1, 0, (short)this.ZJY.read(), i);
       continue;
-      i = b.arT(n);
-      parame.a(i1, n & 0xFF, 0, 1, i1 + (short)this.Shn.read(), 0L, i);
+      i = b.aBH(n);
+      parame.a(i1, n & 0xFF, 0, 1, i1 + (short)this.ZJY.read(), 0L, i);
       continue;
-      i = b.arT(n);
-      j = this.Shn.read();
-      parame.a(i1, n & 0xFF, 0, 1, 0, (byte)b.arT(j), i, j & 0xFF);
-      continue;
-      i = n & 0xFF;
-      parame.a(i1, i, this.Shn.read(), b.arW(i), 0, 0L, n >> 8 & 0xF, n >> 12 & 0xF);
-      continue;
-      parame.a(i1, n & 0xFF, 0, 1, 0, (short)this.Shn.read(), n >> 8 & 0xF, n >> 12 & 0xF);
-      continue;
-      parame.a(i1, n & 0xFF, 0, 1, i1 + (short)this.Shn.read(), 0L, n >> 8 & 0xF, n >> 12 & 0xF);
-      continue;
-      parame.a(i1, n & 0xFF, 0, 1, 0, 0L, b.arT(n), this.Shn.read());
-      continue;
-      i = b.arT(n);
-      j = this.Shn.read();
-      parame.a(i1, n & 0xFF, 0, 1, 0, 0L, i, j & 0xFF, b.arT(j));
-      continue;
-      i = b.arT(n);
-      parame.a(i1, n & 0xFF, 0, 1, i1 + this.Shn.readInt(), i);
+      i = b.aBH(n);
+      j = this.ZJY.read();
+      parame.a(i1, n & 0xFF, 0, 1, 0, (byte)b.aBH(j), i, j & 0xFF);
       continue;
       i = n & 0xFF;
-      j = b.arT(n);
-      parame.a(i1, i, this.Shn.readInt(), b.arW(i), 0, 0L, j);
+      parame.a(i1, i, this.ZJY.read(), b.aBK(i), 0, 0L, n >> 8 & 0xF, n >> 12 & 0xF);
       continue;
-      i = b.arT(n);
-      parame.a(i1, n & 0xFF, 0, 1, 0, this.Shn.readInt(), i);
+      parame.a(i1, n & 0xFF, 0, 1, 0, (short)this.ZJY.read(), n >> 8 & 0xF, n >> 12 & 0xF);
+      continue;
+      parame.a(i1, n & 0xFF, 0, 1, i1 + (short)this.ZJY.read(), 0L, n >> 8 & 0xF, n >> 12 & 0xF);
+      continue;
+      parame.a(i1, n & 0xFF, 0, 1, 0, 0L, b.aBH(n), this.ZJY.read());
+      continue;
+      i = b.aBH(n);
+      j = this.ZJY.read();
+      parame.a(i1, n & 0xFF, 0, 1, 0, 0L, i, j & 0xFF, b.aBH(j));
+      continue;
+      i = b.aBH(n);
+      parame.a(i1, n & 0xFF, 0, 1, i1 + this.ZJY.readInt(), i);
       continue;
       i = n & 0xFF;
-      j = b.arT(n);
-      k = i1 + this.Shn.readInt();
+      j = b.aBH(n);
+      parame.a(i1, i, this.ZJY.readInt(), b.aBK(i), 0, 0L, j);
+      continue;
+      i = b.aBH(n);
+      parame.a(i1, n & 0xFF, 0, 1, 0, this.ZJY.readInt(), i);
+      continue;
+      i = n & 0xFF;
+      j = b.aBH(n);
+      k = i1 + this.ZJY.readInt();
       switch (i)
       {
       }
@@ -113,22 +113,22 @@ public final class d
       {
         parame.a(i1, i, 0, 1, k, 0L, j);
         break;
-        this.Shn.mF(k + 1, i1);
+        this.ZJY.nW(k + 1, i1);
       }
-      i = b.arT(n);
-      j = this.Shn.read();
-      k = this.Shn.read();
+      i = b.aBH(n);
+      j = this.ZJY.read();
+      k = this.ZJY.read();
       parame.a(i1, n & 0xFF, 0, 1, 0, i, j, k);
       continue;
       i = n & 0xFF;
       j = n >> 12 & 0xF;
-      k = this.Shn.read();
-      int i4 = this.Shn.read();
+      k = this.ZJY.read();
+      int i4 = this.ZJY.read();
       int m = i4 & 0xF;
       int i2 = i4 >> 4 & 0xF;
       int i3 = i4 >> 8 & 0xF;
       i4 = i4 >> 12 & 0xF;
-      int i5 = b.arW(i);
+      int i5 = b.aBK(i);
       switch (j)
       {
       default: 
@@ -152,16 +152,16 @@ public final class d
         parame.a(i1, i, k, i5, 0, 0L, m, i2, i3, i4, n >> 8 & 0xF);
         continue;
         i = n & 0xFF;
-        j = b.arT(n);
-        k = this.Shn.read();
-        m = this.Shn.read();
-        parame.b(i1, i, k, b.arW(i), 0, 0L, m, j);
+        j = b.aBH(n);
+        k = this.ZJY.read();
+        m = this.ZJY.read();
+        parame.b(i1, i, k, b.aBK(i), 0, 0L, m, j);
         continue;
-        i = b.arT(n);
-        parame.a(i1, n & 0xFF, 0, 1, 0, this.Shn.readLong(), i);
+        i = b.aBH(n);
+        parame.a(i1, n & 0xFF, 0, 1, 0, this.ZJY.readLong(), i);
         continue;
-        i = this.Shn.read();
-        i2 = this.Shn.readInt();
+        i = this.ZJY.read();
+        i2 = this.ZJY.readInt();
         switch (i)
         {
         case 3: 
@@ -169,7 +169,7 @@ public final class d
         case 6: 
         case 7: 
         default: 
-          throw new j("bogus element_width: " + com.tencent.tinker.a.b.b.a.asa(i));
+          throw new j("bogus element_width: " + com.tencent.tinker.a.b.b.a.aBO(i));
         case 1: 
           localObject = new byte[i2];
           i = 0;
@@ -179,7 +179,7 @@ public final class d
           {
             m = i;
             if (j != 0) {
-              m = this.Shn.read();
+              m = this.ZJY.read();
             }
             localObject[k] = ((byte)(m & 0xFF));
             k += 1;
@@ -199,7 +199,7 @@ public final class d
           i = 0;
           while (i < i2)
           {
-            localObject[i] = ((short)this.Shn.read());
+            localObject[i] = ((short)this.ZJY.read());
             i += 1;
           }
           parame.a(i1, n, localObject, localObject.length, 2);
@@ -209,7 +209,7 @@ public final class d
           i = 0;
           while (i < i2)
           {
-            localObject[i] = this.Shn.readInt();
+            localObject[i] = this.ZJY.readInt();
             i += 1;
           }
           parame.a(i1, n, localObject, localObject.length, 4);
@@ -219,37 +219,37 @@ public final class d
           i = 0;
           while (i < i2)
           {
-            localObject[i] = this.Shn.readLong();
+            localObject[i] = this.ZJY.readLong();
             i += 1;
           }
           parame.a(i1, n, localObject, localObject.length, 8);
           continue;
-          j = this.Shn.hoX();
-          k = this.Shn.read();
-          m = this.Shn.readInt();
+          j = this.ZJY.isy();
+          k = this.ZJY.read();
+          m = this.ZJY.readInt();
           localObject = new int[k];
           i = 0;
           while (i < k)
           {
-            localObject[i] = (this.Shn.readInt() + j);
+            localObject[i] = (this.ZJY.readInt() + j);
             i += 1;
           }
           parame.a(i1, n, m, (int[])localObject);
           continue;
-          j = this.Shn.hoX();
-          k = this.Shn.read();
+          j = this.ZJY.isy();
+          k = this.ZJY.read();
           localObject = new int[k];
           int[] arrayOfInt = new int[k];
           i = 0;
           while (i < k)
           {
-            localObject[i] = this.Shn.readInt();
+            localObject[i] = this.ZJY.readInt();
             i += 1;
           }
           i = 0;
           while (i < k)
           {
-            arrayOfInt[i] = (this.Shn.readInt() + j);
+            arrayOfInt[i] = (this.ZJY.readInt() + j);
             i += 1;
           }
           parame.a(i1, n, (int[])localObject, arrayOfInt);
@@ -261,7 +261,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.tinker.a.b.a.d
  * JD-Core Version:    0.7.0.1
  */

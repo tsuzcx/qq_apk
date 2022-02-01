@@ -12,25 +12,27 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.story.a.d;
+import com.tencent.mm.plugin.story.a.e;
 import java.util.Random;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/StoryCommentColorSelector;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "allColorDrawable", "Landroid/graphics/drawable/Drawable;", "blackView", "Landroid/widget/ImageView;", "insetSize", "onColorSelected", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "color", "", "getOnColorSelected", "()Lkotlin/jvm/functions/Function1;", "setOnColorSelected", "(Lkotlin/jvm/functions/Function1;)V", "randomRoot", "randomText", "Landroid/widget/TextView;", "randomView", "selectedColor", "getSelectedColor", "()I", "setSelectedColor", "(I)V", "strokeWidth", "whiteView", "createAllColorDrawable", "Landroid/graphics/drawable/GradientDrawable;", "createDrawable", "insetDrawable", "Landroid/graphics/drawable/InsetDrawable;", "origin", "notifyView", "randowmColor", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/StoryCommentColorSelector;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "allColorDrawable", "Landroid/graphics/drawable/Drawable;", "blackView", "Landroid/widget/ImageView;", "insetSize", "onColorSelected", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "color", "", "getOnColorSelected", "()Lkotlin/jvm/functions/Function1;", "setOnColorSelected", "(Lkotlin/jvm/functions/Function1;)V", "randomRoot", "randomText", "Landroid/widget/TextView;", "randomView", "selectedColor", "getSelectedColor", "()I", "setSelectedColor", "(I)V", "strokeWidth", "whiteView", "createAllColorDrawable", "Landroid/graphics/drawable/GradientDrawable;", "createDrawable", "insetDrawable", "Landroid/graphics/drawable/InsetDrawable;", "origin", "notifyView", "randowmColor", "plugin-story_release"})
 public final class StoryCommentColorSelector
   extends LinearLayout
 {
-  private final int FBF;
-  private final Drawable FBG;
-  private final ImageView FBH;
-  private final ImageView FBI;
-  private final ImageView FBJ;
-  private final LinearLayout FBK;
-  private final TextView FBL;
-  private kotlin.g.a.b<? super Integer, x> FBM;
-  private int ruC;
+  private final int LVJ;
+  private final Drawable LVK;
+  private final ImageView LVL;
+  private final ImageView LVM;
+  private final ImageView LVN;
+  private final LinearLayout LVO;
+  private final TextView LVP;
+  private kotlin.g.a.b<? super Integer, x> LVQ;
   private final int strokeWidth;
+  private int vag;
   
   public StoryCommentColorSelector(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -43,155 +45,155 @@ public final class StoryCommentColorSelector
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120101);
-    this.ruC = -1;
-    View.inflate(paramContext, 2131496575, (ViewGroup)this);
+    this.vag = -1;
+    View.inflate(paramContext, a.e.LCJ, (ViewGroup)this);
     setOrientation(0);
-    paramAttributeSet = findViewById(2131308498);
-    p.g(paramAttributeSet, "findViewById(R.id.story_…ent_color_selector_white)");
-    this.FBH = ((ImageView)paramAttributeSet);
-    paramAttributeSet = findViewById(2131308494);
-    p.g(paramAttributeSet, "findViewById(R.id.story_…ent_color_selector_black)");
-    this.FBI = ((ImageView)paramAttributeSet);
-    paramAttributeSet = findViewById(2131308496);
-    p.g(paramAttributeSet, "findViewById(R.id.story_…lor_selector_random_icon)");
-    this.FBJ = ((ImageView)paramAttributeSet);
-    paramAttributeSet = findViewById(2131308495);
-    p.g(paramAttributeSet, "findViewById(R.id.story_…nt_color_selector_random)");
-    this.FBK = ((LinearLayout)paramAttributeSet);
-    paramAttributeSet = findViewById(2131308497);
-    p.g(paramAttributeSet, "findViewById(R.id.story_…lor_selector_random_text)");
-    this.FBL = ((TextView)paramAttributeSet);
-    this.FBH.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    paramAttributeSet = findViewById(a.d.LAB);
+    p.j(paramAttributeSet, "findViewById(R.id.story_…ent_color_selector_white)");
+    this.LVL = ((ImageView)paramAttributeSet);
+    paramAttributeSet = findViewById(a.d.LAx);
+    p.j(paramAttributeSet, "findViewById(R.id.story_…ent_color_selector_black)");
+    this.LVM = ((ImageView)paramAttributeSet);
+    paramAttributeSet = findViewById(a.d.LAz);
+    p.j(paramAttributeSet, "findViewById(R.id.story_…lor_selector_random_icon)");
+    this.LVN = ((ImageView)paramAttributeSet);
+    paramAttributeSet = findViewById(a.d.LAy);
+    p.j(paramAttributeSet, "findViewById(R.id.story_…nt_color_selector_random)");
+    this.LVO = ((LinearLayout)paramAttributeSet);
+    paramAttributeSet = findViewById(a.d.LAA);
+    p.j(paramAttributeSet, "findViewById(R.id.story_…lor_selector_random_text)");
+    this.LVP = ((TextView)paramAttributeSet);
+    this.LVL.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(120096);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/StoryCommentColorSelector$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        this.FBN.setSelectedColor(-1);
-        StoryCommentColorSelector.a(this.FBN);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/view/StoryCommentColorSelector$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        this.LVR.setSelectedColor(-1);
+        StoryCommentColorSelector.a(this.LVR);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/StoryCommentColorSelector$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(120096);
       }
     });
-    this.FBI.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.LVM.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(120097);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/StoryCommentColorSelector$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        this.FBN.setSelectedColor(-16777216);
-        StoryCommentColorSelector.a(this.FBN);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/view/StoryCommentColorSelector$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        this.LVR.setSelectedColor(-16777216);
+        StoryCommentColorSelector.a(this.LVR);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/StoryCommentColorSelector$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(120097);
       }
     });
-    this.FBK.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.LVO.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(120098);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/StoryCommentColorSelector$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        this.FBN.setSelectedColor(StoryCommentColorSelector.frY());
-        StoryCommentColorSelector.a(this.FBN);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/view/StoryCommentColorSelector$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        this.LVR.setSelectedColor(StoryCommentColorSelector.ggw());
+        StoryCommentColorSelector.a(this.LVR);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/StoryCommentColorSelector$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(120098);
       }
     });
-    this.strokeWidth = com.tencent.mm.cb.a.fromDPToPix(paramContext, 2);
-    this.FBF = com.tencent.mm.cb.a.fromDPToPix(paramContext, 4);
+    this.strokeWidth = com.tencent.mm.ci.a.fromDPToPix(paramContext, 2);
+    this.LVJ = com.tencent.mm.ci.a.fromDPToPix(paramContext, 4);
     paramContext = new GradientDrawable();
     paramContext.setColors(new int[] { -372399, -352965, -15616, -7220480, -16268960, -15683841, -15432210, -10197008, -372399 });
     paramContext.setGradientType(2);
     paramContext.setStroke(this.strokeWidth, -1);
     paramContext.setShape(1);
     paramContext = (Drawable)paramContext;
-    p.h(paramContext, "origin");
-    this.FBG = ((Drawable)new InsetDrawable(paramContext, this.FBF));
-    frX();
+    p.k(paramContext, "origin");
+    this.LVK = ((Drawable)new InsetDrawable(paramContext, this.LVJ));
+    ggv();
     AppMethodBeat.o(120101);
   }
   
-  private final void frX()
+  private final void ggv()
   {
     AppMethodBeat.i(120099);
     Object localObject;
-    switch (this.ruC)
+    switch (this.vag)
     {
     default: 
-      this.FBH.setSelected(false);
-      this.FBI.setSelected(false);
-      localObject = this.FBJ;
-      int i = this.ruC;
+      this.LVL.setSelected(false);
+      this.LVM.setSelected(false);
+      localObject = this.LVN;
+      int i = this.vag;
       GradientDrawable localGradientDrawable = new GradientDrawable();
       localGradientDrawable.setColor(i);
       localGradientDrawable.setStroke(this.strokeWidth, -1);
       localGradientDrawable.setShape(1);
       ((ImageView)localObject).setImageDrawable((Drawable)localGradientDrawable);
-      this.FBL.setVisibility(0);
+      this.LVP.setVisibility(0);
     }
     for (;;)
     {
-      localObject = this.FBM;
+      localObject = this.LVQ;
       if (localObject == null) {
         break;
       }
-      ((kotlin.g.a.b)localObject).invoke(Integer.valueOf(this.ruC));
+      ((kotlin.g.a.b)localObject).invoke(Integer.valueOf(this.vag));
       AppMethodBeat.o(120099);
       return;
-      this.FBH.setSelected(true);
-      this.FBI.setSelected(false);
-      this.FBJ.setImageDrawable(this.FBG);
-      this.FBL.setVisibility(8);
+      this.LVL.setSelected(true);
+      this.LVM.setSelected(false);
+      this.LVN.setImageDrawable(this.LVK);
+      this.LVP.setVisibility(8);
       continue;
-      this.FBH.setSelected(false);
-      this.FBI.setSelected(true);
-      this.FBJ.setImageDrawable(this.FBG);
-      this.FBL.setVisibility(8);
+      this.LVL.setSelected(false);
+      this.LVM.setSelected(true);
+      this.LVN.setImageDrawable(this.LVK);
+      this.LVP.setVisibility(8);
     }
     AppMethodBeat.o(120099);
   }
   
-  public static int frY()
+  public static int ggw()
   {
     AppMethodBeat.i(120100);
     Object localObject = new Random();
-    StoryCommentView.a locala = StoryCommentView.FCD;
-    int i = ((Random)localObject).nextInt(StoryCommentView.fsa().length);
-    localObject = StoryCommentView.FCD;
-    i = StoryCommentView.fsa()[i];
+    StoryCommentView.a locala = StoryCommentView.LWH;
+    int i = ((Random)localObject).nextInt(StoryCommentView.ggy().length);
+    localObject = StoryCommentView.LWH;
+    i = StoryCommentView.ggy()[i];
     AppMethodBeat.o(120100);
     return i;
   }
   
   public final kotlin.g.a.b<Integer, x> getOnColorSelected()
   {
-    return this.FBM;
+    return this.LVQ;
   }
   
   public final int getSelectedColor()
   {
-    return this.ruC;
+    return this.vag;
   }
   
   public final void setOnColorSelected(kotlin.g.a.b<? super Integer, x> paramb)
   {
-    this.FBM = paramb;
+    this.LVQ = paramb;
   }
   
   public final void setSelectedColor(int paramInt)
   {
-    this.ruC = paramInt;
+    this.vag = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.StoryCommentColorSelector
  * JD-Core Version:    0.7.0.1
  */

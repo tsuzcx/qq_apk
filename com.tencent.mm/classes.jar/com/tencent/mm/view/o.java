@@ -14,13 +14,13 @@ public final class o
   
   public final h[] getFeatures()
   {
-    if (this.Riw == null) {
-      this.Riw = new h[] { h.diH, h.diJ, h.diI, h.diM };
+    if (this.YKd == null) {
+      this.YKd = new h[] { h.fan, h.fap, h.fao, h.fas };
     }
-    return this.Riw;
+    return this.YKd;
   }
   
-  protected final com.tencent.mm.view.b.a hfv()
+  protected final com.tencent.mm.view.b.a igR()
   {
     AppMethodBeat.i(9370);
     com.tencent.mm.view.b.d locald = new com.tencent.mm.view.b.d(getContext(), getPresenter());
@@ -28,7 +28,7 @@ public final class o
     return locald;
   }
   
-  protected final com.tencent.mm.view.footer.a hfw()
+  protected final com.tencent.mm.view.footer.a igS()
   {
     AppMethodBeat.i(9371);
     com.tencent.mm.view.footer.d locald = new com.tencent.mm.view.footer.d(getContext(), getPresenter());
@@ -38,7 +38,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.view.o
  * JD-Core Version:    0.7.0.1
  */

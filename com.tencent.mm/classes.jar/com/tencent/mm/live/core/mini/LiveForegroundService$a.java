@@ -2,7 +2,7 @@ package com.tencent.mm.live.core.mini;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/mini/LiveForegroundService$Companion;", "", "()V", "PARAM_ACTIVITY_NAME", "", "PARAM_CONTENT", "PARAM_TICKER", "PARAM_TITLE", "TAG", "plugin-core_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/mini/LiveForegroundService$Companion;", "", "()V", "PARAM_ACTIVITY_NAME", "", "PARAM_CONTENT", "PARAM_TICKER", "PARAM_TITLE", "TAG", "plugin-core_release"})
 public final class LiveForegroundService$a {}
 
 

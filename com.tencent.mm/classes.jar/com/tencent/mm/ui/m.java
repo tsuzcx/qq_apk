@@ -1,24 +1,32 @@
 package com.tencent.mm.ui;
 
-public abstract interface m
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.view.KeyEvent;
+import android.widget.AbsListView;
+
+public abstract class m
 {
-  public abstract void cFx();
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public abstract void cFy();
+  public void onConfigurationChanged(Configuration paramConfiguration) {}
   
-  public abstract void gIk();
+  public void onFinish() {}
   
-  public abstract void gIl();
+  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  {
+    return false;
+  }
   
-  public abstract void gIm();
+  public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
   
-  public abstract void gIn();
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public abstract void gIo();
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.m
  * JD-Core Version:    0.7.0.1
  */

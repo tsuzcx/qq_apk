@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.sport;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.plugin.sport.model.l;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.sport.model.o;
 import com.tencent.mm.plugin.sport.ui.a.b;
-import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.c.c;
 import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
-  implements d
+  implements com.tencent.mm.pluginsdk.c.d
 {
   public n createApplication()
   {
     AppMethodBeat.i(28808);
-    c localc = new c();
+    d locald = new d();
     AppMethodBeat.o(28808);
-    return localc;
+    return locald;
   }
   
-  public bd createSubCore()
+  public be createSubCore()
   {
     AppMethodBeat.i(28810);
-    l locall = new l();
+    o localo = new o();
     AppMethodBeat.o(28810);
-    return locall;
+    return localo;
   }
   
-  public com.tencent.mm.pluginsdk.b.c getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     AppMethodBeat.i(28809);
     b localb = new b();

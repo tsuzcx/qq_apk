@@ -20,7 +20,7 @@ public final class m
   }
   
   /* Error */
-  public static PublicKey o(android.content.Context paramContext, String paramString)
+  public static PublicKey q(android.content.Context paramContext, String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -103,7 +103,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.b.m
  * JD-Core Version:    0.7.0.1
  */

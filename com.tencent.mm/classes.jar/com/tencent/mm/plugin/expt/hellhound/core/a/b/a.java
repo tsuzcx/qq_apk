@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.expt.hellhound.core.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/core/component/reflector/HellKReflector;", "", "()V", "Companion", "plugin-expt_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/core/component/reflector/HellKReflector;", "", "()V", "Companion", "plugin-expt_release"})
 public final class a
 {
-  public static final a szr;
+  public static final a wfn;
   
   static
   {
     AppMethodBeat.i(122559);
-    szr = new a((byte)0);
+    wfn = new a((byte)0);
     AppMethodBeat.o(122559);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/core/component/reflector/HellKReflector$Companion;", "", "()V", "ActivityThreadClass", "Ljava/lang/Class;", "TAG", "", "sCurrentActivityThread", "sMainThreadHandler", "Landroid/os/Handler;", "execOnMainThread", "", "runnable", "Ljava/lang/Runnable;", "execOnMainThreadDelayed", "delayMillis", "", "getActivityThread", "getActivityThreadClazz", "getAllInterfaces", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "clazz", "interfacesFound", "Ljava/util/HashSet;", "getClass", "className", "getDeclaredField", "Ljava/lang/reflect/Field;", "fieldName", "getDeclaredMethod", "Ljava/lang/reflect/Method;", "methodName", "paramTypes", "", "(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;", "getFieldAndObj", "Lkotlin/Pair;", "obj", "getFieldObject", "field", "getStaticFieldAndObj", "getStaticFieldObject", "init", "invokeMethod", "params", "(Ljava/lang/Class;Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;", "method", "args", "(Ljava/lang/Object;Ljava/lang/reflect/Method;[Ljava/lang/Object;)Ljava/lang/Object;", "invokeStaticMethod", "(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;", "isInstance", "", "classType", "newProxy", "classLoader", "Ljava/lang/ClassLoader;", "interfaces", "handle", "Ljava/lang/reflect/InvocationHandler;", "(Ljava/lang/ClassLoader;[Ljava/lang/Class;Ljava/lang/reflect/InvocationHandler;)Ljava/lang/Object;", "reflect", "Lcom/tencent/mm/plugin/expt/hellhound/core/component/reflector/HellKArgs;", "setField", "value", "plugin-expt_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/core/component/reflector/HellKReflector$Companion;", "", "()V", "ActivityThreadClass", "Ljava/lang/Class;", "TAG", "", "sCurrentActivityThread", "sMainThreadHandler", "Landroid/os/Handler;", "execOnMainThread", "", "runnable", "Ljava/lang/Runnable;", "execOnMainThreadDelayed", "delayMillis", "", "getActivityThread", "getActivityThreadClazz", "getAllInterfaces", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "clazz", "interfacesFound", "Ljava/util/HashSet;", "getClass", "className", "getDeclaredField", "Ljava/lang/reflect/Field;", "fieldName", "getDeclaredMethod", "Ljava/lang/reflect/Method;", "methodName", "paramTypes", "", "(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;", "getFieldAndObj", "Lkotlin/Pair;", "obj", "getFieldObject", "field", "getStaticFieldAndObj", "getStaticFieldObject", "init", "invokeMethod", "params", "(Ljava/lang/Class;Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;", "method", "args", "(Ljava/lang/Object;Ljava/lang/reflect/Method;[Ljava/lang/Object;)Ljava/lang/Object;", "invokeStaticMethod", "(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;", "isInstance", "", "classType", "newProxy", "classLoader", "Ljava/lang/ClassLoader;", "interfaces", "handle", "Ljava/lang/reflect/InvocationHandler;", "(Ljava/lang/ClassLoader;[Ljava/lang/Class;Ljava/lang/reflect/InvocationHandler;)Ljava/lang/Object;", "reflect", "Lcom/tencent/mm/plugin/expt/hellhound/core/component/reflector/HellKArgs;", "setField", "value", "plugin-expt_release"})
   public static final class a
   {
     public static boolean b(Object paramObject, Class<?> paramClass)

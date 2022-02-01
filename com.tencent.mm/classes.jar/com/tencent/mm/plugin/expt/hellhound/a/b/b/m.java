@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.expt.hellhound.a.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.reflect.Field;
 import java.util.List;
@@ -9,93 +9,93 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback;", "", "()V", "hasMore_Field", "Ljava/lang/reflect/Field;", "incrementList_Field", "isNeedClear_Field", "lastBuffer_Field", "pullType_Field", "getArgsOnFetchDone", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "args", "", "([Ljava/lang/Object;)Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "startMonitor", "", "ArgsOnFetchDone", "Companion", "FinderPullType", "plugin-expt_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback;", "", "()V", "hasMore_Field", "Ljava/lang/reflect/Field;", "incrementList_Field", "isNeedClear_Field", "lastBuffer_Field", "pullType_Field", "getArgsOnFetchDone", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "args", "", "([Ljava/lang/Object;)Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "startMonitor", "", "ArgsOnFetchDone", "Companion", "FinderPullType", "plugin-expt_release"})
 public final class m
 {
-  public static final b sGi;
-  private Field sGd;
-  private Field sGe;
-  private Field sGf;
-  private Field sGg;
-  private Field sGh;
+  public static final b wmd;
+  private Field wlY;
+  private Field wlZ;
+  private Field wma;
+  private Field wmb;
+  private Field wmc;
   
   static
   {
-    AppMethodBeat.i(221014);
-    sGi = new b((byte)0);
-    AppMethodBeat.o(221014);
+    AppMethodBeat.i(254124);
+    wmd = new b((byte)0);
+    AppMethodBeat.o(254124);
   }
   
   public m()
   {
-    AppMethodBeat.i(221013);
+    AppMethodBeat.i(254123);
     try
     {
       Object localObject = Class.forName("com.tencent.mm.plugin.finder.feed.model.internal.IResponse");
-      p.g(localObject, "Class.forName(\"com.tence…odel.internal.IResponse\")");
+      p.j(localObject, "Class.forName(\"com.tence…odel.internal.IResponse\")");
       Field localField = ((Class)localObject).getDeclaredField("incrementList");
-      p.g(localField, "clazz.getDeclaredField(\"incrementList\")");
-      this.sGd = localField;
-      localField = this.sGd;
+      p.j(localField, "clazz.getDeclaredField(\"incrementList\")");
+      this.wlY = localField;
+      localField = this.wlY;
       if (localField == null) {
-        p.btv("incrementList_Field");
+        p.bGy("incrementList_Field");
       }
       localField.setAccessible(true);
       localField = ((Class)localObject).getDeclaredField("lastBuffer");
-      p.g(localField, "clazz.getDeclaredField(\"lastBuffer\")");
-      this.sGe = localField;
-      localField = this.sGe;
+      p.j(localField, "clazz.getDeclaredField(\"lastBuffer\")");
+      this.wlZ = localField;
+      localField = this.wlZ;
       if (localField == null) {
-        p.btv("lastBuffer_Field");
+        p.bGy("lastBuffer_Field");
       }
       localField.setAccessible(true);
       localField = ((Class)localObject).getDeclaredField("pullType");
-      p.g(localField, "clazz.getDeclaredField(\"pullType\")");
-      this.sGf = localField;
-      localField = this.sGf;
+      p.j(localField, "clazz.getDeclaredField(\"pullType\")");
+      this.wma = localField;
+      localField = this.wma;
       if (localField == null) {
-        p.btv("pullType_Field");
+        p.bGy("pullType_Field");
       }
       localField.setAccessible(true);
       localField = ((Class)localObject).getDeclaredField("hasMore");
-      p.g(localField, "clazz.getDeclaredField(\"hasMore\")");
-      this.sGg = localField;
-      localField = this.sGg;
+      p.j(localField, "clazz.getDeclaredField(\"hasMore\")");
+      this.wmb = localField;
+      localField = this.wmb;
       if (localField == null) {
-        p.btv("hasMore_Field");
+        p.bGy("hasMore_Field");
       }
       localField.setAccessible(true);
       localObject = ((Class)localObject).getDeclaredField("isNeedClear");
-      p.g(localObject, "clazz.getDeclaredField(\"isNeedClear\")");
-      this.sGh = ((Field)localObject);
-      localObject = this.sGh;
+      p.j(localObject, "clazz.getDeclaredField(\"isNeedClear\")");
+      this.wmc = ((Field)localObject);
+      localObject = this.wmc;
       if (localObject == null) {
-        p.btv("isNeedClear_Field");
+        p.bGy("isNeedClear_Field");
       }
       ((Field)localObject).setAccessible(true);
-      AppMethodBeat.o(221013);
+      AppMethodBeat.o(254123);
       return;
     }
     catch (Exception localException)
     {
       Log.printErrStackTrace("HABBYGE-MALI.RefreshLoadMoreCallback", (Throwable)localException, "init crash: " + localException.getMessage(), new Object[0]);
-      AppMethodBeat.o(221013);
+      AppMethodBeat.o(254123);
     }
   }
   
   public final a p(Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(221012);
-    p.h(paramArrayOfObject, "args");
+    AppMethodBeat.i(254121);
+    p.k(paramArrayOfObject, "args");
     Object localObject2 = paramArrayOfObject[0];
     Object localObject1;
     for (;;)
     {
       try
       {
-        paramArrayOfObject = this.sGd;
+        paramArrayOfObject = this.wlY;
         if (paramArrayOfObject == null) {
-          p.btv("incrementList_Field");
+          p.bGy("incrementList_Field");
         }
         localObject1 = paramArrayOfObject.get(localObject2);
         paramArrayOfObject = (Object[])localObject1;
@@ -103,65 +103,65 @@ public final class m
           paramArrayOfObject = null;
         }
         localObject1 = (List)paramArrayOfObject;
-        paramArrayOfObject = this.sGe;
+        paramArrayOfObject = this.wlZ;
         if (paramArrayOfObject == null) {
-          p.btv("lastBuffer_Field");
+          p.bGy("lastBuffer_Field");
         }
         paramArrayOfObject = paramArrayOfObject.get(localObject2);
         if (paramArrayOfObject == null)
         {
           paramArrayOfObject = null;
-          localObject3 = this.sGf;
+          localObject3 = this.wma;
           if (localObject3 == null) {
-            p.btv("pullType_Field");
+            p.bGy("pullType_Field");
           }
           localObject3 = ((Field)localObject3).get(localObject2);
           if (localObject3 != null) {
             break;
           }
           paramArrayOfObject = new t("null cannot be cast to non-null type kotlin.Int");
-          AppMethodBeat.o(221012);
+          AppMethodBeat.o(254121);
           throw paramArrayOfObject;
         }
       }
       catch (Exception paramArrayOfObject)
       {
         Log.printErrStackTrace("HABBYGE-MALI.RefreshLoadMoreCallback", (Throwable)paramArrayOfObject, "getArgsOnFetchDone crash: " + paramArrayOfObject.getMessage(), new Object[0]);
-        AppMethodBeat.o(221012);
+        AppMethodBeat.o(254121);
         return null;
       }
       paramArrayOfObject = (b)paramArrayOfObject;
     }
     int i = ((Integer)localObject3).intValue();
-    Object localObject3 = this.sGg;
+    Object localObject3 = this.wmb;
     if (localObject3 == null) {
-      p.btv("hasMore_Field");
+      p.bGy("hasMore_Field");
     }
     localObject3 = ((Field)localObject3).get(localObject2);
     if (localObject3 == null)
     {
       paramArrayOfObject = new t("null cannot be cast to non-null type kotlin.Boolean");
-      AppMethodBeat.o(221012);
+      AppMethodBeat.o(254121);
       throw paramArrayOfObject;
     }
     boolean bool = ((Boolean)localObject3).booleanValue();
-    localObject3 = this.sGh;
+    localObject3 = this.wmc;
     if (localObject3 == null) {
-      p.btv("isNeedClear_Field");
+      p.bGy("isNeedClear_Field");
     }
     localObject2 = ((Field)localObject3).get(localObject2);
     if (localObject2 == null)
     {
       paramArrayOfObject = new t("null cannot be cast to non-null type kotlin.Boolean");
-      AppMethodBeat.o(221012);
+      AppMethodBeat.o(254121);
       throw paramArrayOfObject;
     }
     paramArrayOfObject = new a((List)localObject1, paramArrayOfObject, i, bool, ((Boolean)localObject2).booleanValue());
-    AppMethodBeat.o(221012);
+    AppMethodBeat.o(254121);
     return paramArrayOfObject;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "", "incrementList", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "pullType", "", "hasMore", "", "isNeedClear", "(Ljava/util/List;Lcom/tencent/mm/protobuf/ByteString;IZZ)V", "getHasMore", "()Z", "setHasMore", "(Z)V", "getIncrementList", "()Ljava/util/List;", "setIncrementList", "(Ljava/util/List;)V", "setNeedClear", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "getPullType", "()I", "setPullType", "(I)V", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "", "plugin-expt_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "", "incrementList", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "pullType", "", "hasMore", "", "isNeedClear", "(Ljava/util/List;Lcom/tencent/mm/protobuf/ByteString;IZZ)V", "getHasMore", "()Z", "setHasMore", "(Z)V", "getIncrementList", "()Ljava/util/List;", "setIncrementList", "(Ljava/util/List;)V", "setNeedClear", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "getPullType", "()I", "setPullType", "(I)V", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "", "plugin-expt_release"})
   public static final class a
   {
     private boolean hasMore;
@@ -181,21 +181,21 @@ public final class m
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(221008);
+      AppMethodBeat.i(253246);
       if (this != paramObject)
       {
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((!p.j(this.incrementList, paramObject.incrementList)) || (!p.j(this.lastBuffer, paramObject.lastBuffer)) || (this.pullType != paramObject.pullType) || (this.hasMore != paramObject.hasMore) || (this.isNeedClear != paramObject.isNeedClear)) {}
+          if ((!p.h(this.incrementList, paramObject.incrementList)) || (!p.h(this.lastBuffer, paramObject.lastBuffer)) || (this.pullType != paramObject.pullType) || (this.hasMore != paramObject.hasMore) || (this.isNeedClear != paramObject.isNeedClear)) {}
         }
       }
       else
       {
-        AppMethodBeat.o(221008);
+        AppMethodBeat.o(253246);
         return true;
       }
-      AppMethodBeat.o(221008);
+      AppMethodBeat.o(253246);
       return false;
     }
     
@@ -206,43 +206,15 @@ public final class m
     
     public final String toString()
     {
-      AppMethodBeat.i(221006);
+      AppMethodBeat.i(253243);
       String str = "ArgsOnFetchDone(incrementList=" + this.incrementList + ", lastBuffer=" + this.lastBuffer + ", pullType=" + this.pullType + ", hasMore=" + this.hasMore + ", isNeedClear=" + this.isNeedClear + ")";
-      AppMethodBeat.o(221006);
+      AppMethodBeat.o(253243);
       return str;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$Companion;", "", "()V", "TAG", "", "plugin-expt_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$Companion;", "", "()V", "TAG", "", "plugin-expt_release"})
   public static final class b {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$FinderPullType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "PULL_TYPE_ENTER", "PULL_TYPE_TOP", "PULL_TYPE_BOTTOM", "PULL_TYPE_PRE_FETCH", "PULL_TYPE_REFRESH", "plugin-expt_release"})
-  public static enum c
-  {
-    final int value;
-    
-    static
-    {
-      AppMethodBeat.i(221009);
-      c localc1 = new c("PULL_TYPE_ENTER", 0, 0);
-      sGj = localc1;
-      c localc2 = new c("PULL_TYPE_TOP", 1, 1);
-      sGk = localc2;
-      c localc3 = new c("PULL_TYPE_BOTTOM", 2, 2);
-      sGl = localc3;
-      c localc4 = new c("PULL_TYPE_PRE_FETCH", 3, 3);
-      sGm = localc4;
-      c localc5 = new c("PULL_TYPE_REFRESH", 4, 4);
-      sGn = localc5;
-      sGo = new c[] { localc1, localc2, localc3, localc4, localc5 };
-      AppMethodBeat.o(221009);
-    }
-    
-    private c(int paramInt)
-    {
-      this.value = paramInt;
-    }
-  }
 }
 
 

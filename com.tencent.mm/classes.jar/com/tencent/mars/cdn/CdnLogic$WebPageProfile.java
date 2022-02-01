@@ -3,7 +3,7 @@ package com.tencent.mars.cdn;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 
 @Keep
 public class CdnLogic$WebPageProfile
@@ -132,7 +132,7 @@ public class CdnLogic$WebPageProfile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.cdn.CdnLogic.WebPageProfile
  * JD-Core Version:    0.7.0.1
  */

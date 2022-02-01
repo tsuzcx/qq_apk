@@ -1,126 +1,77 @@
 package com.tencent.mm.plugin.finder.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.storage.x;
-import com.tencent.mm.plugin.finder.utils.al;
-import com.tencent.mm.protocal.protobuf.cjl;
-import kotlin.g.b.p;
+import com.tencent.mm.plugin.finder.storage.u;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/loader/FinderVideoLoadData;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "mediaObj", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "type", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "codingFormat", "", "username", "", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;ILjava/lang/String;)V", "getCodingFormat", "()I", "getMediaObj", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "uniqueValue", "getDecodeKey", "getMediaType", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "toString", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/loader/FinderLivePag;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "url", "", "id", "name", "isPreviewPag", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V", "getDecodeKey", "getMediaType", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "uniqueValue", "plugin-finder_release"})
 public final class s
-  implements o
+  implements w
 {
-  private String uId;
-  public final cjl uIw;
-  public final x uIx;
-  public final int uJN;
-  private final String username;
+  private final String id;
+  private final String name;
+  private final String url;
+  private final boolean ztS;
   
-  private s(cjl paramcjl, x paramx, int paramInt, String paramString)
+  public s(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    AppMethodBeat.i(248244);
-    this.uIw = paramcjl;
-    this.uIx = paramx;
-    this.uJN = paramInt;
-    this.username = paramString;
-    AppMethodBeat.o(248244);
+    AppMethodBeat.i(288494);
+    this.url = paramString1;
+    this.id = paramString2;
+    this.name = paramString3;
+    this.ztS = paramBoolean;
+    AppMethodBeat.o(288494);
   }
   
-  public final String aBE()
+  public final String aBv()
   {
-    AppMethodBeat.i(248242);
-    String str2 = this.uIw.thumbUrl;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
+    AppMethodBeat.i(288493);
+    String str = this.id + '_' + dIX();
+    AppMethodBeat.o(288493);
+    return str;
+  }
+  
+  public final String aJi()
+  {
+    return this.url;
+  }
+  
+  public final u dIX()
+  {
+    if (this.ztS) {
+      return u.AlN;
     }
-    p.g(str1, "mediaObj.thumbUrl ?: \"\"");
-    AppMethodBeat.o(248242);
-    return str1;
+    return u.AlM;
   }
   
-  public final String auA()
+  public final String dIY()
   {
-    AppMethodBeat.i(248241);
-    Object localObject2 = this.uId;
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      localObject2 = (s)this;
-      localObject1 = al.waC;
-      localObject1 = al.an(((s)localObject2).uIx.detail, ((s)localObject2).uIw.mediaId, ((s)localObject2).uIw.url);
-      ((s)localObject2).uId = ((String)localObject1);
-    }
-    AppMethodBeat.o(248241);
-    return localObject1;
+    return "";
   }
   
-  public final x djU()
+  public final String dIZ()
   {
-    return this.uIx;
+    return "";
   }
   
-  public final String djV()
+  public final String dJa()
   {
-    String str2 = this.uIw.decodeKey;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    return str1;
-  }
-  
-  public final String djW()
-  {
-    String str2 = this.uIw.url_token;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    return str1;
-  }
-  
-  public final String djX()
-  {
-    String str2 = this.uIw.thumb_url_token;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    return str1;
+    return "";
   }
   
   public final String getPath()
   {
-    AppMethodBeat.i(248240);
-    Object localObject = al.waC;
-    localObject = al.c(this);
-    AppMethodBeat.o(248240);
-    return localObject;
+    return "";
   }
   
   public final String getUrl()
   {
-    String str2 = this.uIw.url;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    return str1;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(248243);
-    String str = this.uIw.mediaId + " url=" + this.uIw.url;
-    AppMethodBeat.o(248243);
-    return str;
+    return this.url;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.loader.s
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,12 @@ package com.tencent.mm.model;
 
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.chatroom.a.b;
+import com.tencent.mm.plugin.messenger.b.d;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -18,19 +21,19 @@ import java.util.Set;
 
 public final class aa
 {
-  private static Set<String> iCC;
+  private static Set<String> lsx;
   
   static
   {
     AppMethodBeat.i(90684);
-    iCC = new HashSet();
+    lsx = new HashSet();
     AppMethodBeat.o(90684);
   }
   
-  public static String Iq(String paramString)
+  public static String PH(String paramString)
   {
     AppMethodBeat.i(90675);
-    as localas = ((l)g.af(l.class)).aSN().Kn(paramString);
+    as localas = ((n)h.ae(n.class)).bbL().RG(paramString);
     if (localas == null)
     {
       AppMethodBeat.o(90675);
@@ -42,7 +45,7 @@ public final class aa
       AppMethodBeat.o(90675);
       return paramString;
     }
-    if (ab.IR(paramString))
+    if (ab.Qk(paramString))
     {
       AppMethodBeat.o(90675);
       return " ";
@@ -51,7 +54,7 @@ public final class aa
     return paramString;
   }
   
-  public static String Ir(String paramString)
+  public static String PI(String paramString)
   {
     AppMethodBeat.i(90677);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -59,29 +62,29 @@ public final class aa
       AppMethodBeat.o(90677);
       return "";
     }
-    as localas = ((l)g.af(l.class)).aSN().Kn(paramString);
+    as localas = ((n)h.ae(n.class)).bbL().RG(paramString);
     Log.d("MicroMsg.ContactCommDisplay", "username: %s", new Object[] { paramString });
     if (localas == null)
     {
       AppMethodBeat.o(90677);
       return paramString;
     }
-    if ((ab.Eq(paramString)) && (Util.isNullOrNil(localas.field_nickname)))
+    if ((ab.Lj(paramString)) && (Util.isNullOrNil(localas.field_nickname)))
     {
-      String str = ((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().getDisplayName(paramString);
+      String str = ((b)h.ae(b.class)).bbV().PJ(paramString);
       if (!Util.isNullOrNil(str))
       {
         AppMethodBeat.o(90677);
         return str;
       }
     }
-    if ((localas.arI() != null) && (localas.arI().length() > 0))
+    if ((localas.ayr() != null) && (localas.ayr().length() > 0))
     {
-      paramString = localas.arI();
+      paramString = localas.ayr();
       AppMethodBeat.o(90677);
       return paramString;
     }
-    if (ab.IR(paramString))
+    if (ab.Qk(paramString))
     {
       AppMethodBeat.o(90677);
       return " ";
@@ -90,10 +93,23 @@ public final class aa
     return paramString;
   }
   
-  public static String Is(String paramString)
+  public static String PJ(String paramString)
+  {
+    AppMethodBeat.i(90678);
+    if ((paramString == null) || (paramString.length() <= 0))
+    {
+      AppMethodBeat.o(90678);
+      return "";
+    }
+    paramString = b(((n)h.ae(n.class)).bbL().RG(paramString), paramString);
+    AppMethodBeat.o(90678);
+    return paramString;
+  }
+  
+  public static String PK(String paramString)
   {
     AppMethodBeat.i(90682);
-    paramString = ((l)g.af(l.class)).aSN().Kn(paramString);
+    paramString = ((n)h.ae(n.class)).bbL().RG(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(90682);
@@ -109,10 +125,10 @@ public final class aa
     return "";
   }
   
-  public static String It(String paramString)
+  public static String PL(String paramString)
   {
     AppMethodBeat.i(90683);
-    if (iCC.contains(paramString))
+    if (lsx.contains(paramString))
     {
       AppMethodBeat.o(90683);
       return "";
@@ -131,23 +147,23 @@ public final class aa
     }
     if ((paramBoolean) && (Util.isNullOrNil(paramas.field_nickname)) && (Util.isNullOrNil(paramas.field_conRemark)))
     {
-      paramas = ((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().getDisplayName(paramString);
+      paramas = ((b)h.ae(b.class)).bbV().PJ(paramString);
       AppMethodBeat.o(90680);
       return paramas;
     }
-    if ((paramas.arJ() != null) && (paramas.arJ().length() > 0))
+    if ((paramas.ays() != null) && (paramas.ays().length() > 0))
     {
-      paramas = paramas.arJ();
+      paramas = paramas.ays();
       AppMethodBeat.o(90680);
       return paramas;
     }
-    if ((Util.isNullOrNil(paramas.field_nickname)) && (ab.JB(paramString)))
+    if ((Util.isNullOrNil(paramas.field_nickname)) && (ab.QU(paramString)))
     {
-      paramas = com.tencent.mm.contact.c.Ew(paramString);
+      paramas = d.Lp(paramString);
       AppMethodBeat.o(90680);
       return paramas;
     }
-    if (ab.IR(paramString))
+    if (ab.Qk(paramString))
     {
       AppMethodBeat.o(90680);
       return " ";
@@ -156,30 +172,56 @@ public final class aa
     return paramString;
   }
   
+  public static String aL(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(90676);
+    if (Util.isNullOrNil(paramString2))
+    {
+      paramString1 = PJ(paramString1);
+      AppMethodBeat.o(90676);
+      return paramString1;
+    }
+    String str = PK(paramString1);
+    if (!Util.isNullOrNil(str))
+    {
+      AppMethodBeat.o(90676);
+      return str;
+    }
+    paramString2 = v.al(paramString1, paramString2);
+    if (Util.isNullOrNil(paramString2))
+    {
+      paramString1 = PJ(paramString1);
+      AppMethodBeat.o(90676);
+      return paramString1;
+    }
+    AppMethodBeat.o(90676);
+    return paramString2;
+  }
+  
   public static String b(as paramas)
   {
     AppMethodBeat.i(90681);
-    Object localObject = getDisplayName(paramas.field_username);
-    if (ab.Eq(paramas.field_username))
+    Object localObject = PJ(paramas.field_username);
+    if (ab.Lj(paramas.field_username))
     {
       if ((localObject != null) && (!((String)localObject).equals(paramas.field_username)))
       {
         AppMethodBeat.o(90681);
         return localObject;
       }
-      localObject = ((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kh(paramas.field_username);
+      localObject = ((b)h.ae(b.class)).bbV().RA(paramas.field_username);
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         paramas = new ArrayList();
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
-          paramas.add(getDisplayName((String)((Iterator)localObject).next()));
+          paramas.add(PJ((String)((Iterator)localObject).next()));
         }
         paramas = "(" + Util.listToString(paramas, ", ") + ")";
         AppMethodBeat.o(90681);
         return paramas;
       }
-      paramas = MMApplicationContext.getResources().getString(2131755196);
+      paramas = MMApplicationContext.getResources().getString(b.d.address_chatroom_contact_nick);
       AppMethodBeat.o(90681);
       return paramas;
     }
@@ -190,53 +232,14 @@ public final class aa
   public static String b(as paramas, String paramString)
   {
     AppMethodBeat.i(186094);
-    paramas = a(paramas, paramString, ab.Eq(paramString));
+    paramas = a(paramas, paramString, ab.Lj(paramString));
     AppMethodBeat.o(186094);
     return paramas;
   }
   
   public static void f(Set<String> paramSet)
   {
-    iCC = paramSet;
-  }
-  
-  public static String getDisplayName(String paramString)
-  {
-    AppMethodBeat.i(90678);
-    if ((paramString == null) || (paramString.length() <= 0))
-    {
-      AppMethodBeat.o(90678);
-      return "";
-    }
-    paramString = b(((l)g.af(l.class)).aSN().Kn(paramString), paramString);
-    AppMethodBeat.o(90678);
-    return paramString;
-  }
-  
-  public static String getDisplayName(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(90676);
-    if (Util.isNullOrNil(paramString2))
-    {
-      paramString1 = getDisplayName(paramString1);
-      AppMethodBeat.o(90676);
-      return paramString1;
-    }
-    String str = Is(paramString1);
-    if (!Util.isNullOrNil(str))
-    {
-      AppMethodBeat.o(90676);
-      return str;
-    }
-    paramString2 = v.ah(paramString1, paramString2);
-    if (Util.isNullOrNil(paramString2))
-    {
-      paramString1 = getDisplayName(paramString1);
-      AppMethodBeat.o(90676);
-      return paramString1;
-    }
-    AppMethodBeat.o(90676);
-    return paramString2;
+    lsx = paramSet;
   }
 }
 

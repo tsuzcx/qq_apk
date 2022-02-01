@@ -11,7 +11,7 @@ public class SeMiterLimitActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SeMiterLimitActionArg> CREATOR;
-  public float kZI;
+  public float nTT;
   
   static
   {
@@ -50,7 +50,7 @@ public class SeMiterLimitActionArg
       AppMethodBeat.o(145128);
       return false;
     }
-    if (Float.compare(((SeMiterLimitActionArg)paramObject).kZI, this.kZI) == 0)
+    if (Float.compare(((SeMiterLimitActionArg)paramObject).nTT, this.nTT) == 0)
     {
       AppMethodBeat.o(145128);
       return true;
@@ -62,7 +62,7 @@ public class SeMiterLimitActionArg
   public int hashCode()
   {
     AppMethodBeat.i(145129);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.kZI) });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.nTT) });
     AppMethodBeat.o(145129);
     return i;
   }
@@ -71,7 +71,7 @@ public class SeMiterLimitActionArg
   {
     AppMethodBeat.i(145125);
     super.i(paramParcel);
-    this.kZI = paramParcel.readFloat();
+    this.nTT = paramParcel.readFloat();
     AppMethodBeat.o(145125);
   }
   
@@ -79,7 +79,7 @@ public class SeMiterLimitActionArg
   {
     AppMethodBeat.i(145126);
     super.parse(paramJSONObject);
-    this.kZI = ((float)paramJSONObject.optJSONArray("data").optDouble(0));
+    this.nTT = ((float)paramJSONObject.optJSONArray("data").optDouble(0));
     AppMethodBeat.o(145126);
   }
   
@@ -87,13 +87,13 @@ public class SeMiterLimitActionArg
   {
     AppMethodBeat.i(145127);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.kZI);
+    paramParcel.writeFloat(this.nTT);
     AppMethodBeat.o(145127);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SeMiterLimitActionArg
  * JD-Core Version:    0.7.0.1
  */

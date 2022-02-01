@@ -1,213 +1,129 @@
 package com.tencent.mm.plugin.finder.live.view.adapter;
 
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.plugin.finder.live.plugin.aa;
-import com.tencent.mm.plugin.finder.live.plugin.aa.a;
-import com.tencent.mm.plugin.finder.loader.m;
-import com.tencent.mm.plugin.finder.storage.s;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.at;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.h;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
-import kotlin.g.a.r;
+import kotlin.a.j;
+import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.t;
+import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveGiftGridAdapter;", "Landroid/widget/BaseAdapter;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getContext", "()Landroid/content/Context;", "giftList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/storage/FinderLiveGiftInfo;", "Lkotlin/collections/ArrayList;", "onGiftItemClick", "Lkotlin/Function4;", "Landroid/view/ViewGroup;", "Lkotlin/ParameterName;", "name", "view", "Landroid/view/View;", "curThumbView", "giftId", "", "bottomMargin", "", "getOnGiftItemClick", "()Lkotlin/jvm/functions/Function4;", "setOnGiftItemClick", "(Lkotlin/jvm/functions/Function4;)V", "getCount", "getItem", "", "position", "getItemId", "", "getView", "convertView", "parent", "updateGift", "", "pageIndex", "FinderLiveGiftItemHolder", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveAnchorApplyLinkAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveAnchorApplyLinkAdapter$ApplyLinkViewHolder;", "()V", "MAX_COUNT", "", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/live/viewmodel/data/FinderLiveLinkMicUser;", "Lkotlin/collections/ArrayList;", "liveData", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "getLiveData", "()Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "setLiveData", "(Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;)V", "onAcceptLinkUser", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "acceptUser", "", "getOnAcceptLinkUser", "()Lkotlin/jvm/functions/Function1;", "setOnAcceptLinkUser", "(Lkotlin/jvm/functions/Function1;)V", "getDataList", "", "getItemCount", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "type", "updateData", "data", "ApplyLinkViewHolder", "plugin-finder_release"})
 public final class d
-  extends BaseAdapter
+  extends RecyclerView.a<a>
 {
-  private final String TAG;
-  private final Context context;
-  private final ArrayList<s> uAK;
-  public r<? super ViewGroup, ? super View, ? super String, ? super Integer, kotlin.x> upn;
+  private final int MAX_COUNT;
+  private final ArrayList<h> mXB;
+  public com.tencent.mm.plugin.finder.live.model.context.a xYp;
+  public kotlin.g.a.b<? super h, x> yVS;
   
-  public d(Context paramContext)
+  public d()
   {
-    AppMethodBeat.i(247778);
-    this.context = paramContext;
-    this.TAG = "FinderLiveGiftGridAdapter";
-    this.uAK = new ArrayList();
-    AppMethodBeat.o(247778);
+    AppMethodBeat.i(274449);
+    this.mXB = new ArrayList();
+    this.MAX_COUNT = 300;
+    AppMethodBeat.o(274449);
   }
   
-  public final int getCount()
+  public final void aa(List<h> paramList)
   {
-    AppMethodBeat.i(247777);
-    Log.i(this.TAG, "getCount:" + this.uAK.size());
-    int i = this.uAK.size();
-    AppMethodBeat.o(247777);
+    AppMethodBeat.i(274448);
+    p.k(paramList, "data");
+    this.mXB.clear();
+    ArrayList localArrayList = this.mXB;
+    Object localObject1 = (Iterable)paramList;
+    paramList = (Collection)new ArrayList();
+    localObject1 = ((Iterable)localObject1).iterator();
+    int i = 0;
+    if (((Iterator)localObject1).hasNext())
+    {
+      Object localObject2 = ((Iterator)localObject1).next();
+      if (i < 0) {
+        j.iBO();
+      }
+      if (i < this.MAX_COUNT) {}
+      for (int j = 1;; j = 0)
+      {
+        if (j != 0) {
+          paramList.add(localObject2);
+        }
+        i += 1;
+        break;
+      }
+    }
+    localArrayList.addAll((Collection)paramList);
+    AppMethodBeat.o(274448);
+  }
+  
+  public final int getItemCount()
+  {
+    AppMethodBeat.i(274446);
+    int i = this.mXB.size();
+    AppMethodBeat.o(274446);
     return i;
   }
   
-  public final Object getItem(int paramInt)
-  {
-    AppMethodBeat.i(247775);
-    Log.i(this.TAG, "getItem:".concat(String.valueOf(paramInt)));
-    Object localObject = this.uAK.get(paramInt);
-    kotlin.g.b.p.g(localObject, "giftList[position]");
-    AppMethodBeat.o(247775);
-    return localObject;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    AppMethodBeat.i(247776);
-    Log.i(this.TAG, "getItemId:".concat(String.valueOf(paramInt)));
-    long l = paramInt;
-    AppMethodBeat.o(247776);
-    return l;
-  }
-  
-  public final View getView(int paramInt, View paramView, final ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(247774);
-    Object localObject1 = this.TAG;
-    Object localObject2 = new StringBuilder("getView position:").append(paramInt).append(",convertView is null:");
-    boolean bool;
-    if (paramView == null)
-    {
-      bool = true;
-      Log.i((String)localObject1, bool);
-      if (paramView != null) {
-        break label223;
-      }
-      paramView = LayoutInflater.from(this.context).inflate(2131494397, paramViewGroup, false);
-      kotlin.g.b.p.g(paramView, "LayoutInflater.from(cont…t_item_ui, parent, false)");
-      paramViewGroup = new a(paramView);
-      paramView.setTag(paramViewGroup);
-      label92:
-      localObject1 = this.uAK.get(paramInt);
-      kotlin.g.b.p.g(localObject1, "giftList[position]");
-      localObject1 = (s)localObject1;
-      localObject2 = m.uJa;
-      m.djY().bQ(new com.tencent.mm.plugin.finder.loader.p(((s)localObject1).field_thumbnailFileUrl, com.tencent.mm.plugin.finder.storage.x.vEo)).c(paramViewGroup.uAL);
-      paramViewGroup.uAM.setText((CharSequence)((s)localObject1).field_name);
-      paramInt = (int)((s)localObject1).field_price;
-      if (paramInt <= 0) {
-        break label258;
-      }
-      paramViewGroup.uAP.setText((CharSequence)String.valueOf(paramInt));
-    }
-    for (;;)
-    {
-      paramViewGroup.aus.setOnClickListener((View.OnClickListener)new b(this, paramViewGroup, (s)localObject1));
-      AppMethodBeat.o(247774);
-      return paramView;
-      bool = false;
-      break;
-      label223:
-      paramViewGroup = paramView.getTag();
-      if (paramViewGroup == null)
-      {
-        paramView = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.live.view.adapter.FinderLiveGiftGridAdapter.FinderLiveGiftItemHolder");
-        AppMethodBeat.o(247774);
-        throw paramView;
-      }
-      paramViewGroup = (a)paramViewGroup;
-      break label92;
-      label258:
-      paramViewGroup.uAP.setText((CharSequence)String.valueOf(((s)localObject1).field_price));
-    }
-  }
-  
-  public final void r(List<s> paramList, int paramInt)
-  {
-    AppMethodBeat.i(247773);
-    kotlin.g.b.p.h(paramList, "giftList");
-    int j = paramList.size();
-    Log.i(this.TAG, "updateGift pageIndex:" + paramInt + ",size:" + j);
-    this.uAK.clear();
-    aa.a locala = aa.ups;
-    int i = aa.dhj() * paramInt;
-    locala = aa.ups;
-    int k = aa.dhj();
-    paramInt = i;
-    while ((paramInt < j) && (paramInt < k + i))
-    {
-      this.uAK.add(paramList.get(paramInt));
-      paramInt += 1;
-    }
-    AppMethodBeat.o(247773);
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveGiftGridAdapter$FinderLiveGiftItemHolder;", "", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "giftName", "Landroid/widget/TextView;", "getGiftName", "()Landroid/widget/TextView;", "giftPriceGroup", "getGiftPriceGroup", "()Landroid/view/View;", "giftPriceIcon", "Landroid/widget/ImageView;", "getGiftPriceIcon", "()Landroid/widget/ImageView;", "giftPriceTv", "getGiftPriceTv", "giftThumb", "getGiftThumb", "getItemView", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveAnchorApplyLinkAdapter$ApplyLinkViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "acceptBtn", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "getAcceptBtn", "()Landroid/widget/TextView;", "avatar", "Landroid/widget/ImageView;", "getAvatar", "()Landroid/widget/ImageView;", "descTv", "getDescTv", "nicknameTv", "getNicknameTv", "typeIcon", "getTypeIcon", "plugin-finder_release"})
   public static final class a
+    extends RecyclerView.v
   {
-    final View aus;
-    final ImageView uAL;
-    final TextView uAM;
-    final View uAN;
-    private final ImageView uAO;
-    final TextView uAP;
+    final TextView kEs;
+    final ImageView mWb;
+    final TextView xoK;
+    final ImageView yVT;
+    final TextView yVU;
     
     public a(View paramView)
     {
-      AppMethodBeat.i(247771);
-      this.aus = paramView;
-      paramView = this.aus.findViewById(2131301023);
-      kotlin.g.b.p.g(paramView, "itemView.findViewById(R.id.finder_live_gift_thumb)");
-      this.uAL = ((ImageView)paramView);
-      paramView = this.aus.findViewById(2131300998);
-      kotlin.g.b.p.g(paramView, "itemView.findViewById(R.id.finder_live_gift_name)");
-      this.uAM = ((TextView)paramView);
-      paramView = this.aus.findViewById(2131301015);
-      kotlin.g.b.p.g(paramView, "itemView.findViewById(R.…er_live_gift_price_group)");
-      this.uAN = paramView;
-      paramView = this.aus.findViewById(2131301016);
-      kotlin.g.b.p.g(paramView, "itemView.findViewById(R.…der_live_gift_price_icon)");
-      this.uAO = ((ImageView)paramView);
-      paramView = this.aus.findViewById(2131301017);
-      kotlin.g.b.p.g(paramView, "itemView.findViewById(R.…inder_live_gift_price_tv)");
-      this.uAP = ((TextView)paramView);
-      this.uAM.setTextSize(1, 12.0F);
-      this.uAP.setTextSize(1, 12.0F);
-      AppMethodBeat.o(247771);
+      super();
+      AppMethodBeat.i(291208);
+      this.mWb = ((ImageView)paramView.findViewById(b.f.finder_live_link_anchor_apply_item_avatar_icon));
+      this.xoK = ((TextView)paramView.findViewById(b.f.finder_live_link_anchor_apply_item_nickname_tv));
+      this.yVT = ((ImageView)paramView.findViewById(b.f.finder_live_link_anchor_apply_item_type_icon));
+      this.yVU = ((TextView)paramView.findViewById(b.f.finder_live_link_anchor_apply_item_action_btn));
+      this.kEs = ((TextView)paramView.findViewById(b.f.finder_live_link_apply_item_desc_tv));
+      AppMethodBeat.o(291208);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
-    b(d paramd, d.a parama, s params) {}
+    b(d paramd, int paramInt) {}
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(247772);
+      AppMethodBeat.i(272832);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-      a.b("com/tencent/mm/plugin/finder/live/view/adapter/FinderLiveGiftGridAdapter$getView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-      int i = paramViewGroup.uAN.getMeasuredHeight();
-      int j = paramViewGroup.uAM.getMeasuredHeight();
-      kotlin.g.b.p.g(paramView, "it");
-      int k = at.fromDPToPix(paramView.getContext(), 12);
-      localObject = this.uAQ.upn;
-      if (localObject != null)
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/adapter/FinderLiveAnchorApplyLinkAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+      paramView = (h)j.M((List)d.a(this.yVV), this.jEN);
+      if (paramView != null)
       {
-        paramView = (ViewGroup)paramView;
-        ImageView localImageView = paramViewGroup.uAL;
-        String str = this.uAS.field_rewardProductId;
-        kotlin.g.b.p.g(str, "giftInfo.field_rewardProductId");
-        ((r)localObject).invoke(paramView, localImageView, str, Integer.valueOf(i + j + k));
+        localObject = this.yVV.yVS;
+        if (localObject != null) {
+          ((kotlin.g.a.b)localObject).invoke(paramView);
+        }
       }
-      a.a(this, "com/tencent/mm/plugin/finder/live/view/adapter/FinderLiveGiftGridAdapter$getView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(247772);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/view/adapter/FinderLiveAnchorApplyLinkAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(272832);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.view.adapter.d
  * JD-Core Version:    0.7.0.1
  */

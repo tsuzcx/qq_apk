@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="utf-8"?>
+<textStateResource>
+  <version>10013</version>
+  <categoryArray>
+    <categoryItem categoryId="6">
+      <description>
+        <en><![CDATA[Time-Limited Status]]></en>
+        <zh_CN><![CDATA[限时状态]]></zh_CN>
+        <zh_HK><![CDATA[限時狀態]]></zh_HK>
+        <zh_TW><![CDATA[限時狀態]]></zh_TW>
+      </description>
+      <iconArray/>
+    </categoryItem>
+    <categoryItem categoryId="1">
+      <description>
+        <en><![CDATA[Feelings]]></en>
+        <zh_CN><![CDATA[心情想法]]></zh_CN>
+        <zh_HK><![CDATA[心情想法]]></zh_HK>
+        <zh_TW><![CDATA[心情想法]]></zh_TW>
+      </description>
+      <iconArray>
+        <iconItem iconId="1000">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Happy]]></en>
+            <zh_CN><![CDATA[美滋滋]]></zh_CN>
+            <zh_HK><![CDATA[開心]]></zh_HK>
+            <zh_TW><![CDATA[開心]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Happy" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在美滋滋]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都開心]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在開心]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1001">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Broken]]></en>
+            <zh_CN><![CDATA[裂开]]></zh_CN>
+            <zh_HK><![CDATA[炸裂]]></zh_HK>
+            <zh_TW><![CDATA[崩潰]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Broken" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在裂开]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度炸裂]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在崩潰]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1032">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Haha]]></en>
+            <zh_CN><![CDATA[哈哈哈]]></zh_CN>
+            <zh_HK><![CDATA[哈哈哈]]></zh_HK>
+            <zh_TW><![CDATA[哈哈哈]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Haha" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在哈哈哈]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度哈哈哈]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在哈哈哈]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1030">
+          <effectTime><![CDATA[1612353600]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Thinking]]></en>
+            <zh_CN><![CDATA[胡思乱想]]></zh_CN>
+            <zh_HK><![CDATA[胡思亂想]]></zh_HK>
+            <zh_TW><![CDATA[胡思亂想]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Thinking" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在胡思乱想]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度胡思亂想]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在胡思亂想]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1002">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Zoning Out]]></en>
+            <zh_CN><![CDATA[发呆]]></zh_CN>
+            <zh_HK><![CDATA[發吽哣]]></zh_HK>
+            <zh_TW><![CDATA[放空]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Zoning-out" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在发呆]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都發吽哣]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在放空]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1003">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Insomnia]]></en>
+            <zh_CN><![CDATA[数羊]]></zh_CN>
+            <zh_HK><![CDATA[瞓唔著]]></zh_HK>
+            <zh_TW><![CDATA[失眠]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Insomnia" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在数羊]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都瞓唔著]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在失眠]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+      </iconArray>
+    </categoryItem>
+    <categoryItem categoryId="2">
+      <description>
+        <en><![CDATA[Work & Study]]></en>
+        <zh_CN><![CDATA[工作学习]]></zh_CN>
+        <zh_HK><![CDATA[工作學習]]></zh_HK>
+        <zh_TW><![CDATA[工作學習]]></zh_TW>
+      </description>
+      <iconArray>
+        <iconItem iconId="1008">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Hardworking]]></en>
+            <zh_CN><![CDATA[搬砖]]></zh_CN>
+            <zh_HK><![CDATA[開工]]></zh_HK>
+            <zh_TW><![CDATA[努力工作]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Hardworking" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在搬砖]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度開工]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也都在努力工作]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1025">
+          <effectTime><![CDATA[1612353600]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Studying]]></en>
+            <zh_CN><![CDATA[沉迷学习]]></zh_CN>
+            <zh_HK><![CDATA[沈迷學習]]></zh_HK>
+            <zh_TW><![CDATA[沈迷學習]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Studying" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在沉迷学习]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度沉迷學習]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在沈迷學習]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1006">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Busy]]></en>
+            <zh_CN><![CDATA[忙]]></zh_CN>
+            <zh_HK><![CDATA[勁忙]]></zh_HK>
+            <zh_TW><![CDATA[忙碌]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Busy" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在忙]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都忙到爆]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在忙碌]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1007">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Slackin']]></en>
+            <zh_CN><![CDATA[摸鱼]]></zh_CN>
+            <zh_HK><![CDATA[摸魚]]></zh_HK>
+            <zh_TW><![CDATA[摸魚]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Slackin'" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在摸鱼]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度摸魚]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在摸魚]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1028">
+          <effectTime><![CDATA[1612353600]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[In a Meeting]]></en>
+            <zh_CN><![CDATA[开会]]></zh_CN>
+            <zh_HK><![CDATA[開會]]></zh_HK>
+            <zh_TW><![CDATA[開會]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Meeting" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在开会]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度開會]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在開會]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1023">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Work Trip]]></en>
+            <zh_CN><![CDATA[出差]]></zh_CN>
+            <zh_HK><![CDATA[出差]]></zh_HK>
+            <zh_TW><![CDATA[出差]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Work trip" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在出差]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度出差]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在出差]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+      </iconArray>
+    </categoryItem>
+    <categoryItem categoryId="3">
+      <description>
+        <en><![CDATA[Activities]]></en>
+        <zh_CN><![CDATA[活动]]></zh_CN>
+        <zh_HK><![CDATA[活動]]></zh_HK>
+        <zh_TW><![CDATA[活動]]></zh_TW>
+      </description>
+      <iconArray>
+      <iconItem iconId="1029">
+          <effectTime><![CDATA[1612353600]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Having Fun]]></en>
+            <zh_CN><![CDATA[浪]]></zh_CN>
+            <zh_HK><![CDATA[出去玩]]></zh_HK>
+            <zh_TW><![CDATA[玩樂]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Having fun" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在浪]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都出去玩]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在玩樂]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1009">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Checking-In]]></en>
+            <zh_CN><![CDATA[打卡]]></zh_CN>
+            <zh_HK><![CDATA[打卡]]></zh_HK>
+            <zh_TW><![CDATA[打卡]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Checking-in" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在打卡]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都度打卡]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在打卡]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1013">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Workout]]></en>
+            <zh_CN><![CDATA[运动]]></zh_CN>
+            <zh_HK><![CDATA[運動]]></zh_HK>
+            <zh_TW><![CDATA[運動]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Workout" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在运动]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度運動]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在運動]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+                <iconItem iconId="1011">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Coffee]]></en>
+            <zh_CN><![CDATA[喝咖啡]]></zh_CN>
+            <zh_HK><![CDATA[飲咖啡]]></zh_HK>
+            <zh_TW><![CDATA[喝咖啡]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Coffee" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在喝咖啡]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度喝咖啡]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在喝咖啡]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1012">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Drinking]]></en>
+            <zh_CN><![CDATA[喝酒]]></zh_CN>
+            <zh_HK><![CDATA[飲酒]]></zh_HK>
+            <zh_TW><![CDATA[喝酒]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Drinking" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在喝酒]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度飲酒]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在喝酒]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1027">
+          <effectTime><![CDATA[1612353600]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Milk Tea]]></en>
+            <zh_CN><![CDATA[喝奶茶]]></zh_CN>
+            <zh_HK><![CDATA[飲奶茶]]></zh_HK>
+            <zh_TW><![CDATA[喝奶茶]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Milk tea" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在喝奶茶]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度飲奶茶]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在喝奶茶]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1010">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Eating]]></en>
+            <zh_CN><![CDATA[干饭]]></zh_CN>
+            <zh_HK><![CDATA[食飯]]></zh_HK>
+            <zh_TW><![CDATA[吃飯]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Eating" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在干饭]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度食飯]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在吃飯]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1026">
+          <effectTime><![CDATA[1612353600]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Super Parent]]></en>
+            <zh_CN><![CDATA[鸡娃]]></zh_CN>
+            <zh_HK><![CDATA[凑仔]]></zh_HK>
+            <zh_TW><![CDATA[帶孩子]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Super parent" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在鸡娃]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度凑仔]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在帶孩子]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1033">
+          <effectTime><![CDATA[1612353600]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Saving the World]]></en>
+            <zh_CN><![CDATA[拯救世界]]></zh_CN>
+            <zh_HK><![CDATA[拯救世界]]></zh_HK>
+            <zh_TW><![CDATA[拯救世界]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Saving the World" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在拯救世界]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度拯救世界]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在拯救世界]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+      </iconArray>
+    </categoryItem>
+    <categoryItem categoryId="4">
+      <description>
+        <en><![CDATA[Breaks]]></en>
+        <zh_CN><![CDATA[休息]]></zh_CN>
+        <zh_HK><![CDATA[休息]]></zh_HK>
+        <zh_TW><![CDATA[休息]]></zh_TW>
+      </description>
+      <iconArray>
+        <iconItem iconId="1016">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Music]]></en>
+            <zh_CN><![CDATA[听歌]]></zh_CN>
+            <zh_HK><![CDATA[聽歌]]></zh_HK>
+            <zh_TW><![CDATA[聽歌]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Music" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在听歌]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度聽歌]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在聽歌]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1017">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Watching TV]]></en>
+            <zh_CN><![CDATA[追剧]]></zh_CN>
+            <zh_HK><![CDATA[追劇]]></zh_HK>
+            <zh_TW><![CDATA[追劇]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Watching TV" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在追剧]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度追劇]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在追劇]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1018">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Gossiping]]></en>
+            <zh_CN><![CDATA[吃瓜]]></zh_CN>
+            <zh_HK><![CDATA[食花生]]></zh_HK>
+            <zh_TW><![CDATA[看熱鬧]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Gossiping" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在吃瓜]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度食花生]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在看熱鬧]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1019">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Gaming]]></en>
+            <zh_CN><![CDATA[玩游戏]]></zh_CN>
+            <zh_HK><![CDATA[打機]]></zh_HK>
+            <zh_TW><![CDATA[打遊戲]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Gaming" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在玩游戏]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度打機]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在打遊戲]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1031">
+          <effectTime><![CDATA[1612353600]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Chillin' at Home]]></en>
+            <zh_CN><![CDATA[宅]]></zh_CN>
+            <zh_HK><![CDATA[宅]]></zh_HK>
+            <zh_TW><![CDATA[宅]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Chillin' at home" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在宅]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度宅]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在宅]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1021">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Sleeping]]></en>
+            <zh_CN><![CDATA[睡觉]]></zh_CN>
+            <zh_HK><![CDATA[瞓覺]]></zh_HK>
+            <zh_TW><![CDATA[睡覺]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Sleeping" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在睡觉]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度瞓覺]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在睡覺]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+      </iconArray>
+    </categoryItem>
+    <categoryItem categoryId="5">
+      <description>
+        <en><![CDATA[Others]]></en>
+        <zh_CN><![CDATA[其他]]></zh_CN>
+        <zh_HK><![CDATA[其他]]></zh_HK>
+        <zh_TW><![CDATA[其他]]></zh_TW>
+      </description>
+      <iconArray>
+        <iconItem iconId="1024">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[(Mysterious)]]></en>
+            <zh_CN><![CDATA[(未知)]]></zh_CN>
+            <zh_HK><![CDATA[(未知)]]></zh_HK>
+            <zh_TW><![CDATA[(未知)]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Mysterious" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在(未知)]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都度(未知)]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在(未知)]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+      </iconArray>
+    </categoryItem>
+  </categoryArray>
+  <otherIcons categoryId="0">
+    <description>
+      <zh_CN><![CDATA[不显示在列表]]></zh_CN>
+    </description>
+    <iconArray>
+      <iconItem iconId="2021">
+        <effectTime><![CDATA[1612713600]]></effectTime>
+        <expireTime><![CDATA[1614355200]]></expireTime>
+        <useOriginalImage><![CDATA[1]]></useOriginalImage>
+        <residentAfterPublish><![CDATA[1]]></residentAfterPublish>
+        <residentCategoryId><![CDATA[6]]></residentCategoryId>
+        <styleArray>
+          <styleItem styleId="1">
+            <beginTime><![CDATA[1613059200]]></beginTime>
+            <endTime><![CDATA[0]]></endTime>
+          </styleItem>
+        </styleArray>
+        <description>
+          <en><![CDATA[Spring Festival]]></en>
+          <zh_CN><![CDATA[迎新春]]></zh_CN>
+          <zh_HK><![CDATA[迎新春]]></zh_HK>
+          <zh_TW><![CDATA[迎新春]]></zh_TW>
+        </description>
+        <sameFriendsTip>
+          <en><![CDATA["Spring Festival" status is shared by %d friend(s)]]></en>
+          <zh_CN><![CDATA[%d个朋友也在迎新春]]></zh_CN>
+          <zh_HK><![CDATA[%d位朋友亦都係度迎新春]]></zh_HK>
+          <zh_TW><![CDATA[%d位朋友也在迎新春]]></zh_TW>
+        </sameFriendsTip>
+      </iconItem>
+      <iconItem iconId="1022">
+        <effectTime><![CDATA[0]]></effectTime>
+        <expireTime><![CDATA[0]]></expireTime>
+        <description>
+          <en><![CDATA[WeChat 8.0]]></en>
+          <zh_CN><![CDATA[微信8.0]]></zh_CN>
+          <zh_HK><![CDATA[WeChat 8.0]]></zh_HK>
+          <zh_TW><![CDATA[WeChat 8.0]]></zh_TW>
+        </description>
+        <sameFriendsTip>
+          <en><![CDATA["WeChat 8.0" status is shared by %d friend(s)]]></en>
+          <zh_CN><![CDATA[%d个朋友也在微信8.0]]></zh_CN>
+          <zh_HK><![CDATA[%d位朋友亦都用緊 WeChat 8.0]]></zh_HK>
+          <zh_TW><![CDATA[%d位朋友也在 WeChat 8.0]]></zh_TW>
+        </sameFriendsTip>
+      </iconItem>
+      <iconItem iconId="1014">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Shopping]]></en>
+            <zh_CN><![CDATA[逛街]]></zh_CN>
+            <zh_HK><![CDATA[行街]]></zh_HK>
+            <zh_TW><![CDATA[逛街]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Shopping" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在逛街]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度行街]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在逛街]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+        <iconItem iconId="1020">
+          <effectTime><![CDATA[0]]></effectTime>
+          <expireTime><![CDATA[0]]></expireTime>
+          <description>
+            <en><![CDATA[Streamin']]></en>
+            <zh_CN><![CDATA[看直播]]></zh_CN>
+            <zh_HK><![CDATA[睇Live]]></zh_HK>
+            <zh_TW><![CDATA[看直播]]></zh_TW>
+          </description>
+          <sameFriendsTip>
+            <en><![CDATA["Stream'" status is shared by %d friend(s)]]></en>
+            <zh_CN><![CDATA[%d个朋友也在看直播]]></zh_CN>
+            <zh_HK><![CDATA[%d位朋友亦都係度睇Live]]></zh_HK>
+            <zh_TW><![CDATA[%d位朋友也在看直播]]></zh_TW>
+          </sameFriendsTip>
+        </iconItem>
+    </iconArray>
+  </otherIcons>
+</textStateResource>

@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/kb"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="10.0dip" android:id="@id/da5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="toast" />
-    <Button android:textSize="10.0dip" android:id="@id/da6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="alert" />
-</LinearLayout>
+<ImageView android:id="@id/kqb" android:background="@drawable/d1j" android:padding="@dimen/bt" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

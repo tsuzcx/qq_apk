@@ -1,41 +1,31 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
-import java.util.Collections;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.ArrayList;
 import java.util.List;
 
-public abstract class z
+public final class z
+  extends aa
 {
-  public String DZi;
-  public int DZj;
-  public float DZk = -2.0F;
-  public float DZl = -2.0F;
-  public boolean DZm;
-  public String DZn = "";
-  public int DZo;
-  public int DZp;
-  public boolean DZq;
-  public boolean DZr;
-  public boolean DZs;
-  public boolean DZt;
-  public String DZu;
-  public String DZv;
-  public float height;
-  public float paddingBottom;
-  public float paddingLeft;
-  public float paddingRight;
-  public float paddingTop;
-  public int subType;
-  public int type;
-  public float width;
+  public aq KmA;
+  public List<aa> ayS;
+  public int cornerRadius;
   
-  public List<z> eXg()
+  public z()
   {
-    return Collections.emptyList();
+    AppMethodBeat.i(96321);
+    this.ayS = new ArrayList();
+    AppMethodBeat.o(96321);
+  }
+  
+  public final List<aa> fKw()
+  {
+    return this.ayS;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.z
  * JD-Core Version:    0.7.0.1
  */

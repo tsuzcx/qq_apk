@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.finder.view.tabcomp;
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.Window;
+import androidx.viewpager.widget.ViewPager;
+import com.google.android.material.tabs.TabLayout;
 import com.tencent.mm.view.HardTouchableLayout;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabContainer;", "", "getBackBtn", "Landroid/view/View;", "getLayoutId", "", "getTabLayout", "Landroid/support/design/widget/TabLayout;", "getTabLayoutContainer", "Lcom/tencent/mm/view/HardTouchableLayout;", "getViewPager", "Landroid/support/v4/view/ViewPager;", "onLayoutInflated", "", "window", "Landroid/view/Window;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabContainer;", "", "getBackBtn", "Landroid/view/View;", "getLayoutId", "", "getTabLayout", "Lcom/google/android/material/tabs/TabLayout;", "getTabLayoutContainer", "Lcom/tencent/mm/view/HardTouchableLayout;", "getViewPager", "Landroidx/viewpager/widget/ViewPager;", "onLayoutInflated", "", "window", "Landroid/view/Window;", "plugin-finder_release"})
 public abstract interface g
 {
   public abstract void c(Window paramWindow);
   
-  public abstract TabLayout dHJ();
+  public abstract TabLayout ejU();
   
-  public abstract HardTouchableLayout dHK();
+  public abstract HardTouchableLayout ejV();
   
-  public abstract ViewPager dHL();
+  public abstract ViewPager ejW();
   
   public abstract View getBackBtn();
   

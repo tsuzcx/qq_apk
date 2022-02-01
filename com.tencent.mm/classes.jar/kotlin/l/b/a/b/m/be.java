@@ -9,8 +9,8 @@ public final class be
   public static final bg a(bg parambg, ab paramab)
   {
     AppMethodBeat.i(60904);
-    p.h(parambg, "$this$inheritEnhancement");
-    p.h(paramab, "origin");
+    p.k(parambg, "$this$inheritEnhancement");
+    p.k(paramab, "origin");
     parambg = b(parambg, aJ(paramab));
     AppMethodBeat.o(60904);
     return parambg;
@@ -19,10 +19,10 @@ public final class be
   public static final ab aJ(ab paramab)
   {
     AppMethodBeat.i(60903);
-    p.h(paramab, "$this$getEnhancement");
+    p.k(paramab, "$this$getEnhancement");
     if ((paramab instanceof bd))
     {
-      paramab = ((bd)paramab).hLD();
+      paramab = ((bd)paramab).iPV();
       AppMethodBeat.o(60903);
       return paramab;
     }
@@ -33,7 +33,7 @@ public final class be
   public static final bg b(bg parambg, ab paramab)
   {
     AppMethodBeat.i(60905);
-    p.h(parambg, "$this$wrapEnhancement");
+    p.k(parambg, "$this$wrapEnhancement");
     if (paramab == null)
     {
       AppMethodBeat.o(60905);
@@ -58,7 +58,7 @@ public final class be
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.be
  * JD-Core Version:    0.7.0.1
  */

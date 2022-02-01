@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class InputPanelFrameLayout
   extends FrameLayout
-  implements b.a
+  implements c.a
 {
-  private b QBN;
-  private b.a QBO;
+  private c Yam;
+  private c.a Yan;
   
   public InputPanelFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -21,40 +21,40 @@ public class InputPanelFrameLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143322);
-    this.QBN = new b(this, this);
+    this.Yam = new c(this, this);
     AppMethodBeat.o(143322);
   }
   
-  public void f(boolean paramBoolean, int paramInt)
+  public c getInputPanelHelper()
   {
-    AppMethodBeat.i(143323);
-    if (this.QBO != null) {
-      this.QBO.f(paramBoolean, paramInt);
-    }
-    AppMethodBeat.o(143323);
+    return this.Yam;
   }
   
-  public b getInputPanelHelper()
+  public void h(boolean paramBoolean, int paramInt)
   {
-    return this.QBN;
+    AppMethodBeat.i(143323);
+    if (this.Yan != null) {
+      this.Yan.h(paramBoolean, paramInt);
+    }
+    AppMethodBeat.o(143323);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(143324);
-    this.QBN.aou(paramInt2);
+    this.Yam.axC(paramInt2);
     super.onMeasure(paramInt1, paramInt2);
     AppMethodBeat.o(143324);
   }
   
-  public void setExternalListener(b.a parama)
+  public void setExternalListener(c.a parama)
   {
-    this.QBO = parama;
+    this.Yan = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.InputPanelFrameLayout
  * JD-Core Version:    0.7.0.1
  */

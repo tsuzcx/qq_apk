@@ -1,12 +1,6 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.LifecycleObserver;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.l;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnLongClickListener;
@@ -14,9 +8,18 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.k;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.plugin.appbrand.appusage.a.d;
+import com.tencent.mm.plugin.appbrand.au.c;
+import com.tencent.mm.plugin.appbrand.au.f;
+import com.tencent.mm.plugin.appbrand.au.g;
+import com.tencent.mm.plugin.appbrand.au.i;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherUI.Fragment;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView.a;
@@ -29,19 +32,19 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandLauncherRecommendList;", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandLauncherUI$Fragment;", "()V", "uiLogic", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;", "getUiLogic", "()Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;", "uiLogic$delegate", "Lkotlin/Lazy;", "getLayoutId", "", "initView", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroyView", "onPause", "onTitleDoubleTap", "Companion", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandLauncherRecommendList;", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandLauncherUI$Fragment;", "()V", "uiLogic", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;", "getUiLogic", "()Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;", "uiLogic$delegate", "Lkotlin/Lazy;", "getLayoutId", "", "initView", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroyView", "onPause", "onTitleDoubleTap", "Companion", "plugin-appbrand-integration_release"})
 public final class AppBrandLauncherRecommendList
   extends AppBrandLauncherUI.Fragment
 {
   private static final String TAG = "MicroMsg.AppBrandLauncherRecommendsList";
-  public static final AppBrandLauncherRecommendList.a oeA;
+  public static final AppBrandLauncherRecommendList.a rgm;
   private HashMap _$_findViewCache;
-  private final f oez;
+  private final f rgl;
   
   static
   {
     AppMethodBeat.i(51309);
-    oeA = new AppBrandLauncherRecommendList.a((byte)0);
+    rgm = new AppBrandLauncherRecommendList.a((byte)0);
     TAG = "MicroMsg.AppBrandLauncherRecommendsList";
     AppMethodBeat.o(51309);
   }
@@ -49,28 +52,28 @@ public final class AppBrandLauncherRecommendList
   public AppBrandLauncherRecommendList()
   {
     AppMethodBeat.i(51316);
-    this.oez = kotlin.g.ah((kotlin.g.a.a)new b(this));
+    this.rgl = kotlin.g.ar((kotlin.g.a.a)new b(this));
     AppMethodBeat.o(51316);
   }
   
-  private final AppBrandRecommendUILogic bYM()
+  private final AppBrandRecommendUILogic clw()
   {
     AppMethodBeat.i(51310);
-    AppBrandRecommendUILogic localAppBrandRecommendUILogic = (AppBrandRecommendUILogic)this.oez.getValue();
+    AppBrandRecommendUILogic localAppBrandRecommendUILogic = (AppBrandRecommendUILogic)this.rgl.getValue();
     AppMethodBeat.o(51310);
     return localAppBrandRecommendUILogic;
   }
   
-  public final void bXb()
+  public final void cjF()
   {
     AppMethodBeat.i(51313);
-    super.bXb();
+    super.cjF();
     Log.i(TAG, "onTitleDoubleTap");
-    LoadMoreRecyclerView localLoadMoreRecyclerView = bYM().bZc();
+    LoadMoreRecyclerView localLoadMoreRecyclerView = clw().clL();
     com.tencent.mm.hellhoundlib.b.a locala = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-    com.tencent.mm.hellhoundlib.a.a.a(localLoadMoreRecyclerView, locala.axQ(), "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandLauncherRecommendList", "onTitleDoubleTap", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
-    localLoadMoreRecyclerView.smoothScrollToPosition(((Integer)locala.pG(0)).intValue());
-    com.tencent.mm.hellhoundlib.a.a.a(localLoadMoreRecyclerView, "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandLauncherRecommendList", "onTitleDoubleTap", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
+    com.tencent.mm.hellhoundlib.a.a.b(localLoadMoreRecyclerView, locala.aFh(), "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandLauncherRecommendList", "onTitleDoubleTap", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
+    localLoadMoreRecyclerView.smoothScrollToPosition(((Integer)locala.sf(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.c(localLoadMoreRecyclerView, "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandLauncherRecommendList", "onTitleDoubleTap", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
     AppMethodBeat.o(51313);
   }
   
@@ -83,8 +86,8 @@ public final class AppBrandLauncherRecommendList
   {
     boolean bool2 = true;
     AppMethodBeat.i(51312);
-    Object localObject1 = bYM();
-    ((AppBrandRecommendUILogic)localObject1).bZc().setLayoutManager((RecyclerView.LayoutManager)((AppBrandRecommendUILogic)localObject1).ofw);
+    Object localObject1 = clw();
+    ((AppBrandRecommendUILogic)localObject1).clL().setLayoutManager((RecyclerView.LayoutManager)((AppBrandRecommendUILogic)localObject1).rhh);
     Object localObject2 = ((AppBrandRecommendUILogic)localObject1).getContentView();
     if (localObject2 == null)
     {
@@ -92,70 +95,70 @@ public final class AppBrandLauncherRecommendList
       AppMethodBeat.o(51312);
       throw ((Throwable)localObject1);
     }
-    ((FrameLayout)localObject2).addView((View)((AppBrandRecommendUILogic)localObject1).bZc(), new ViewGroup.LayoutParams(-1, -1));
-    ((AppBrandRecommendUILogic)localObject1).ofu.au(true);
-    localObject2 = ((AppBrandRecommendUILogic)localObject1).ofu;
+    ((FrameLayout)localObject2).addView((View)((AppBrandRecommendUILogic)localObject1).clL(), new ViewGroup.LayoutParams(-1, -1));
+    ((AppBrandRecommendUILogic)localObject1).rhf.aw(true);
+    localObject2 = ((AppBrandRecommendUILogic)localObject1).rhf;
     Object localObject3 = (m)new AppBrandRecommendUILogic.m((AppBrandRecommendUILogic)localObject1);
-    p.h(localObject3, "<set-?>");
-    ((a)localObject2).oeE = ((m)localObject3);
-    localObject2 = ((AppBrandRecommendUILogic)localObject1).ofu;
+    p.k(localObject3, "<set-?>");
+    ((a)localObject2).rgq = ((m)localObject3);
+    localObject2 = ((AppBrandRecommendUILogic)localObject1).rhf;
     localObject3 = (m)new AppBrandRecommendUILogic.n((AppBrandRecommendUILogic)localObject1);
-    p.h(localObject3, "<set-?>");
-    ((a)localObject2).oeG = ((m)localObject3);
-    localObject2 = ((AppBrandRecommendUILogic)localObject1).ofu;
+    p.k(localObject3, "<set-?>");
+    ((a)localObject2).rgs = ((m)localObject3);
+    localObject2 = ((AppBrandRecommendUILogic)localObject1).rhf;
     localObject3 = (m)new AppBrandRecommendUILogic.o((AppBrandRecommendUILogic)localObject1);
-    p.h(localObject3, "<set-?>");
-    ((a)localObject2).oeF = ((m)localObject3);
-    ((AppBrandRecommendUILogic)localObject1).bZc().setAdapter((RecyclerView.a)((AppBrandRecommendUILogic)localObject1).ofu);
-    if (((AppBrandRecommendUILogic)localObject1).bYO())
+    p.k(localObject3, "<set-?>");
+    ((a)localObject2).rgr = ((m)localObject3);
+    ((AppBrandRecommendUILogic)localObject1).clL().setAdapter((RecyclerView.a)((AppBrandRecommendUILogic)localObject1).rhf);
+    if (((AppBrandRecommendUILogic)localObject1).cly())
     {
-      ((AppBrandRecommendUILogic)localObject1).bZc().addHeaderView(((AppBrandRecommendUILogic)localObject1).ofx.bYp());
-      localObject2 = ((AppBrandRecommendUILogic)localObject1).ofx.bYp();
+      ((AppBrandRecommendUILogic)localObject1).clL().dI(((AppBrandRecommendUILogic)localObject1).rhi.getItemView());
+      localObject2 = ((AppBrandRecommendUILogic)localObject1).rhi.getItemView();
       if (localObject2 != null) {
         ((View)localObject2).setVisibility(8);
       }
-      ((AppBrandRecommendUILogic)localObject1).ofx.bSx();
-      ((AppBrandRecommendUILogic)localObject1).ofx.zu(0);
-      ((AppBrandRecommendUILogic)localObject1).ofx.zv(0);
+      ((AppBrandRecommendUILogic)localObject1).rhi.cfx();
+      ((AppBrandRecommendUILogic)localObject1).rhi.CX(0);
+      ((AppBrandRecommendUILogic)localObject1).rhi.CY(0);
     }
-    localObject2 = LayoutInflater.from(((AppBrandRecommendUILogic)localObject1).context).inflate(2131493087, (ViewGroup)((AppBrandRecommendUILogic)localObject1).bZc(), false);
-    ((AppBrandRecommendUILogic)localObject1).bZc().addHeaderView((View)localObject2);
-    localObject3 = ((View)localObject2).findViewById(2131302319);
+    localObject2 = LayoutInflater.from(((AppBrandRecommendUILogic)localObject1).context).inflate(au.g.app_brand_recommend_list_header_view, (ViewGroup)((AppBrandRecommendUILogic)localObject1).clL(), false);
+    ((AppBrandRecommendUILogic)localObject1).clL().dI((View)localObject2);
+    localObject3 = ((View)localObject2).findViewById(au.f.header_view_tv);
     if (localObject3 == null)
     {
       localObject1 = new t("null cannot be cast to non-null type android.widget.TextView");
       AppMethodBeat.o(51312);
       throw ((Throwable)localObject1);
     }
-    ((TextView)localObject3).setText((CharSequence)((AppBrandRecommendUILogic)localObject1).bYN());
-    ((View)localObject2).setOnLongClickListener((View.OnLongClickListener)AppBrandRecommendUILogic.g.ofT);
-    ((AppBrandRecommendUILogic)localObject1).bZc().setLoadingView(((AppBrandRecommendUILogic)localObject1).bZe().bYp());
+    ((TextView)localObject3).setText((CharSequence)((AppBrandRecommendUILogic)localObject1).clx());
+    ((View)localObject2).setOnLongClickListener((View.OnLongClickListener)AppBrandRecommendUILogic.g.rhE);
+    ((AppBrandRecommendUILogic)localObject1).clL().setLoadingView(((AppBrandRecommendUILogic)localObject1).clN().getItemView());
     i.a((AppBrandRecommendUILogic)localObject1, false);
     i.b((AppBrandRecommendUILogic)localObject1, false);
-    ((AppBrandRecommendUILogic)localObject1).bZe();
-    ((AppBrandRecommendUILogic)localObject1).bZe().bYE();
-    ((AppBrandRecommendUILogic)localObject1).ofv.jlo = ((AppBrandRecommendUILogic)localObject1).bZd().kWZ;
-    localObject2 = ((AppBrandRecommendUILogic)localObject1).ofv;
-    if (((AppBrandRecommendUILogic)localObject1).bZd().kWY > 0)
+    ((AppBrandRecommendUILogic)localObject1).clN();
+    ((AppBrandRecommendUILogic)localObject1).clN().CZ(au.c.transparent);
+    ((AppBrandRecommendUILogic)localObject1).rhg.page = ((AppBrandRecommendUILogic)localObject1).clM().nRl;
+    localObject2 = ((AppBrandRecommendUILogic)localObject1).rhg;
+    if (((AppBrandRecommendUILogic)localObject1).clM().nRk > 0)
     {
       bool1 = true;
-      ((AppBrandRecommendUILogic.b)localObject2).ofK = bool1;
-      ((AppBrandRecommendUILogic)localObject1).bZd().kXf = ((kotlin.g.a.q)new AppBrandRecommendUILogic.f((AppBrandRecommendUILogic)localObject1));
-      if ((((AppBrandRecommendUILogic)localObject1).bZd().byK().isEmpty()) || (!((AppBrandRecommendUILogic)localObject1).bZd().kXa)) {
-        break label542;
+      ((AppBrandRecommendUILogic.b)localObject2).rhv = bool1;
+      ((AppBrandRecommendUILogic)localObject1).clM().nRr = ((kotlin.g.a.q)new AppBrandRecommendUILogic.f((AppBrandRecommendUILogic)localObject1));
+      if ((((AppBrandRecommendUILogic)localObject1).clM().bJY().isEmpty()) || (!((AppBrandRecommendUILogic)localObject1).clM().nRm)) {
+        break label545;
       }
     }
-    label542:
+    label545:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      ((AppBrandRecommendUILogic)localObject1).iV(bool1);
+      ((AppBrandRecommendUILogic)localObject1).jS(bool1);
       if (!bool1) {
-        g.zz(2);
+        g.Dd(2);
       }
-      ((AppBrandRecommendUILogic)localObject1).bZc().setOnLoadingStateChangedListener((LoadMoreRecyclerView.a)new AppBrandRecommendUILogic.h((AppBrandRecommendUILogic)localObject1));
-      ((AppBrandRecommendUILogic)localObject1).bZc().a((RecyclerView.l)((AppBrandRecommendUILogic)localObject1).ofG);
-      ((AppBrandRecommendUILogic)localObject1).ofy.bYX();
-      ((AppBrandRecommendUILogic)localObject1).ofu.notifyDataSetChanged();
+      ((AppBrandRecommendUILogic)localObject1).clL().setOnLoadingStateChangedListener((LoadMoreRecyclerView.a)new AppBrandRecommendUILogic.h((AppBrandRecommendUILogic)localObject1));
+      ((AppBrandRecommendUILogic)localObject1).clL().a((RecyclerView.l)((AppBrandRecommendUILogic)localObject1).rhr);
+      ((AppBrandRecommendUILogic)localObject1).rhj.clG();
+      ((AppBrandRecommendUILogic)localObject1).rhf.notifyDataSetChanged();
       AppMethodBeat.o(51312);
       return;
       bool1 = false;
@@ -168,7 +171,7 @@ public final class AppBrandLauncherRecommendList
     AppMethodBeat.i(51311);
     super.onCreate(paramBundle);
     Log.i(TAG, "onCreate");
-    getLifecycle().addObserver((LifecycleObserver)bYM());
+    getLifecycle().a((k)clw());
     AppMethodBeat.o(51311);
   }
   
@@ -177,9 +180,9 @@ public final class AppBrandLauncherRecommendList
     AppMethodBeat.i(51314);
     super.onDestroyView();
     Log.i(TAG, "onDestroyView");
-    Lifecycle localLifecycle = getLifecycle();
-    p.g(localLifecycle, "lifecycle");
-    localLifecycle.getCurrentState();
+    androidx.lifecycle.h localh = getLifecycle();
+    p.j(localh, "lifecycle");
+    localh.jc();
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
@@ -194,7 +197,7 @@ public final class AppBrandLauncherRecommendList
     AppMethodBeat.o(51315);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandLauncherRecommendList$uiLogic$2$1", "invoke", "()Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandLauncherRecommendList$uiLogic$2$1;"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandLauncherRecommendList$uiLogic$2$1", "invoke", "()Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandLauncherRecommendList$uiLogic$2$1;"})
   static final class b
     extends kotlin.g.b.q
     implements kotlin.g.a.a<AppBrandLauncherRecommendList.uiLogic.2.1>

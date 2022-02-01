@@ -8,29 +8,29 @@ import org.json.JSONObject;
 
 public final class b
 {
-  public double Cpd = 0.0D;
-  public String HVg;
-  public LinkedList<b.b> HVh;
-  public String HVi;
-  public String HVj;
-  public a HVk;
-  public int Hvm = 0;
-  public int Hvn = 0;
-  public int Hvo = 0;
-  public double Hvp = 0.0D;
+  public double Ims = 0.0D;
+  public String ONh;
+  public LinkedList<b> ONi;
+  public String ONj;
+  public String ONk;
+  public a ONl;
+  public int OmZ = 0;
+  public int Ona = 0;
+  public int Onb = 0;
+  public double Onc = 0.0D;
   
-  public static a bz(JSONObject paramJSONObject)
+  public static a bK(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70212);
     a locala = new a();
     if (paramJSONObject != null) {
       try
       {
-        locala.HVl = paramJSONObject.optString("sector_title", "");
+        locala.ONm = paramJSONObject.optString("sector_title", "");
         paramJSONObject = paramJSONObject.optJSONArray("label");
         if (paramJSONObject != null)
         {
-          locala.HVm = new c[paramJSONObject.length()];
+          locala.ONn = new c[paramJSONObject.length()];
           int i = 0;
           while (i < paramJSONObject.length())
           {
@@ -38,12 +38,12 @@ public final class b
             c localc = new c();
             localc.title = localJSONObject.optString("title", "");
             localc.desc = localJSONObject.optString("desc", "");
-            localc.iwv = localJSONObject.optString("logo_url", "");
-            localc.uSc = localJSONObject.optInt("jump_type");
-            localc.pTL = localJSONObject.optString("jump_url", "");
+            localc.llI = localJSONObject.optString("logo_url", "");
+            localc.jump_type = localJSONObject.optInt("jump_type");
+            localc.jump_url = localJSONObject.optString("jump_url", "");
             localc.username = localJSONObject.optString("username", "");
             localc.path = localJSONObject.optString("path", "");
-            locala.HVm[i] = localc;
+            locala.ONn[i] = localc;
             i += 1;
           }
         }
@@ -56,26 +56,32 @@ public final class b
   
   public static final class a
   {
-    public String HVl;
-    public b.c[] HVm;
+    public String ONm;
+    public b.c[] ONn;
     
     public a()
     {
       AppMethodBeat.i(70211);
-      this.HVl = "";
-      this.HVm = new b.c[0];
+      this.ONm = "";
+      this.ONn = new b.c[0];
       AppMethodBeat.o(70211);
     }
+  }
+  
+  public static final class b
+  {
+    public String key;
+    public String value;
   }
   
   public static final class c
   {
     public String desc;
-    public String iwv;
-    public String pTL;
+    public int jump_type;
+    public String jump_url;
+    public String llI;
     public String path;
     public String title;
-    public int uSc;
     public String username;
   }
 }

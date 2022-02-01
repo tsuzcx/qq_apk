@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ public class PluginGroupCollect
     AppMethodBeat.o(175282);
   }
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(175280);
     Log.i("MicroMsg.groupcollect.PluginGroupCollect", "onAccountInitialized");

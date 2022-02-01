@@ -6,27 +6,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d
 {
-  int bCV;
-  boolean bCW;
-  boolean bCX;
-  int bCY = -1;
-  int bCZ = -1;
-  int bDa = -1;
-  int bDb = -1;
-  int bDc = -1;
-  d bDd;
-  Layout.Alignment bDe;
   int backgroundColor;
+  int bmA = -1;
+  int bmB = -1;
+  int bmC = -1;
+  int bmD = -1;
+  d bmE;
+  Layout.Alignment bmF;
+  int bmx;
+  boolean bmy;
+  boolean bmz;
   String fontFamily;
   float fontSize;
   String id;
+  int italic = -1;
   
-  public final d aU(boolean paramBoolean)
+  public final d aS(boolean paramBoolean)
   {
     int i = 1;
     AppMethodBeat.i(92858);
     boolean bool;
-    if (this.bDd == null)
+    if (this.bmE == null)
     {
       bool = true;
       a.checkState(bool);
@@ -36,7 +36,7 @@ final class d
     }
     for (;;)
     {
-      this.bCY = i;
+      this.bmA = i;
       AppMethodBeat.o(92858);
       return this;
       bool = false;
@@ -46,12 +46,12 @@ final class d
     }
   }
   
-  public final d aV(boolean paramBoolean)
+  public final d aT(boolean paramBoolean)
   {
     int i = 1;
     AppMethodBeat.i(92859);
     boolean bool;
-    if (this.bDd == null)
+    if (this.bmE == null)
     {
       bool = true;
       a.checkState(bool);
@@ -61,7 +61,7 @@ final class d
     }
     for (;;)
     {
-      this.bCZ = i;
+      this.bmB = i;
       AppMethodBeat.o(92859);
       return this;
       bool = false;
@@ -76,71 +76,71 @@ final class d
     AppMethodBeat.i(92861);
     if (paramd != null)
     {
-      if ((!this.bCW) && (paramd.bCW)) {
-        eS(paramd.bCV);
+      if ((!this.bmy) && (paramd.bmy)) {
+        fk(paramd.bmx);
       }
-      if (this.bDa == -1) {
-        this.bDa = paramd.bDa;
+      if (this.bmC == -1) {
+        this.bmC = paramd.bmC;
       }
-      if (this.bDb == -1) {
-        this.bDb = paramd.bDb;
+      if (this.italic == -1) {
+        this.italic = paramd.italic;
       }
       if (this.fontFamily == null) {
         this.fontFamily = paramd.fontFamily;
       }
-      if (this.bCY == -1) {
-        this.bCY = paramd.bCY;
+      if (this.bmA == -1) {
+        this.bmA = paramd.bmA;
       }
-      if (this.bCZ == -1) {
-        this.bCZ = paramd.bCZ;
+      if (this.bmB == -1) {
+        this.bmB = paramd.bmB;
       }
-      if (this.bDe == null) {
-        this.bDe = paramd.bDe;
+      if (this.bmF == null) {
+        this.bmF = paramd.bmF;
       }
-      if (this.bDc == -1)
+      if (this.bmD == -1)
       {
-        this.bDc = paramd.bDc;
+        this.bmD = paramd.bmD;
         this.fontSize = paramd.fontSize;
       }
-      if ((!this.bCX) && (paramd.bCX)) {
-        eT(paramd.backgroundColor);
+      if ((!this.bmz) && (paramd.bmz)) {
+        fl(paramd.backgroundColor);
       }
     }
     AppMethodBeat.o(92861);
     return this;
   }
   
-  public final d eS(int paramInt)
+  public final d fk(int paramInt)
   {
     AppMethodBeat.i(92860);
-    if (this.bDd == null) {}
+    if (this.bmE == null) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      this.bCV = paramInt;
-      this.bCW = true;
+      this.bmx = paramInt;
+      this.bmy = true;
       AppMethodBeat.o(92860);
       return this;
     }
   }
   
-  public final d eT(int paramInt)
+  public final d fl(int paramInt)
   {
     this.backgroundColor = paramInt;
-    this.bCX = true;
+    this.bmz = true;
     return this;
   }
   
-  public final int getStyle()
+  public final int uv()
   {
     int j = 0;
-    if ((this.bDa == -1) && (this.bDb == -1)) {
+    if ((this.bmC == -1) && (this.italic == -1)) {
       return -1;
     }
-    if (this.bDa == 1) {}
+    if (this.bmC == 1) {}
     for (int i = 1;; i = 0)
     {
-      if (this.bDb == 1) {
+      if (this.italic == 1) {
         j = 2;
       }
       return i | j;
@@ -149,7 +149,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.e.d
  * JD-Core Version:    0.7.0.1
  */

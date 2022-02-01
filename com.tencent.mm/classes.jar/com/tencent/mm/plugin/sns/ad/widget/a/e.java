@@ -10,14 +10,14 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.i.h;
+import com.tencent.mm.plugin.sns.ad.i.i;
 import java.util.ArrayList;
 
 public final class e
   extends a
 {
-  protected int DBc;
-  protected int DBd;
+  protected int JMN;
+  protected int JMO;
   
   public e(Context paramContext, FrameLayout paramFrameLayout, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
@@ -26,45 +26,45 @@ public final class e
   
   protected final void c(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(202454);
-    if (this.DBc == 0) {
-      this.DBc = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 180);
+    AppMethodBeat.i(270311);
+    if (this.JMN == 0) {
+      this.JMN = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 180);
     }
-    if (this.DBd == 0) {
-      this.DBd = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 220);
+    if (this.JMO == 0) {
+      this.JMO = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 220);
     }
-    paramInt2 = (int)h.al(this.DBc, this.DBd);
-    paramInt1 = this.DAR + this.mMaxSize - paramInt1;
+    paramInt2 = (int)i.an(this.JMN, this.JMO);
+    paramInt1 = this.JMD + this.mMaxSize - paramInt1;
     paramInt2 = paramInt1 * 1000 / paramInt2;
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { 1.0F, 1.0F });
-    localObjectAnimator.setDuration((int)h.al(0.0F, this.atU));
+    localObjectAnimator.setDuration((int)i.an(0.0F, this.alM));
     paramView = ObjectAnimator.ofFloat(paramView, "translationX", new float[] { 0.0F, paramInt1 });
     paramView.setInterpolator(new LinearInterpolator());
     paramView.setDuration(paramInt2);
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.play(paramView).after(localObjectAnimator);
     localAnimatorSet.start();
-    AppMethodBeat.o(202454);
+    AppMethodBeat.o(270311);
   }
   
-  protected final Rect eYz()
+  protected final Rect fMj()
   {
-    AppMethodBeat.i(202455);
+    AppMethodBeat.i(270313);
     Rect localRect = new Rect();
     int i = 0;
-    int j = (int)h.al(this.DAQ, this.mMaxSize);
-    int k = (int)h.al(j / 2, this.DAS - j / 2);
-    a(localRect, (int)h.al(-this.mMaxSize, -this.mMaxSize), k, j);
+    int j = (int)i.an(this.DIY, this.mMaxSize);
+    int k = (int)i.an(j / 2, this.JME - j / 2);
+    a(localRect, (int)i.an(-this.mMaxSize, -this.mMaxSize), k, j);
     j = 0;
     label75:
-    if (j < this.DAW.size()) {
-      if (!Rect.intersects((Rect)this.DAW.get(j), localRect)) {}
+    if (j < this.JMI.size()) {
+      if (!Rect.intersects((Rect)this.JMI.get(j), localRect)) {}
     }
     for (j = 1;; j = 0)
     {
       if (j == 0)
       {
-        AppMethodBeat.o(202455);
+        AppMethodBeat.o(270313);
         return localRect;
         j += 1;
         break label75;
@@ -72,7 +72,7 @@ public final class e
       i += 1;
       if (i > 20)
       {
-        AppMethodBeat.o(202455);
+        AppMethodBeat.o(270313);
         return localRect;
       }
       break;
@@ -81,7 +81,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.a.e
  * JD-Core Version:    0.7.0.1
  */

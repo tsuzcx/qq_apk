@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.eggspring.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.t.a.n;
-import com.tencent.mm.t.a.o;
+import com.tencent.mm.an.c;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.t.a.g;
+import com.tencent.mm.t.a.h;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/eggspring/cgi/GetMoneyCgi;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/eggspring/model/OpenMoneyResp;", "uxInfo", "", "source", "", "materialId", "", "traceId", "(Ljava/lang/String;IJLjava/lang/String;)V", "plugin-eggspring_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/eggspring/cgi/GetInteractionMaterialCgi;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/eggspring/model/GetInteractionMaterialResp;", "keyword", "", "uxinfo", "source", "", "traceId", "(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V", "plugin-eggspring_release"})
 public final class d
-  extends c<o>
+  extends c<h>
 {
-  public d(String paramString1, long paramLong, String paramString2)
+  public d(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(194567);
-    n localn = new n();
-    localn.gTk = paramString1;
-    localn.source = 1;
-    localn.gTC = paramLong;
-    localn.gTl = paramString2;
+    AppMethodBeat.i(249462);
+    g localg = new g();
+    localg.fwe = paramString1;
+    localg.jDL = paramString2;
+    localg.source = 0;
+    localg.jDM = paramString3;
     paramString1 = new d.a();
-    paramString1.c((a)localn);
-    paramString1.d((a)new o());
-    paramString1.sI(0);
-    paramString1.sJ(0);
-    paramString1.sG(4919);
-    paramString1.MB("/cgi-bin/mmoc-bin/interaction/open_money ");
-    c(paramString1.aXF());
-    AppMethodBeat.o(194567);
+    paramString1.c((a)localg);
+    paramString1.d((a)new h());
+    paramString1.vF(0);
+    paramString1.vG(0);
+    paramString1.TW("/cgi-bin/mmoc-bin/interaction/get_interaction_material");
+    paramString1.vD(4310);
+    c(paramString1.bgN());
+    AppMethodBeat.o(249462);
   }
 }
 

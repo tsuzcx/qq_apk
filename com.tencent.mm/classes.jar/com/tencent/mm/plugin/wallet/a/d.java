@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.wallet.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String Coh;
-  public int HEl;
+  public String Ila;
+  public int Owe;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -14,30 +14,30 @@ public final class d
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Coh != null) {
-        paramVarArgs.e(1, this.Coh);
+      if (this.Ila != null) {
+        paramVarArgs.f(1, this.Ila);
       }
-      paramVarArgs.aM(2, this.HEl);
+      paramVarArgs.aY(2, this.Owe);
       AppMethodBeat.o(91288);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Coh == null) {
+      if (this.Ila == null) {
         break label258;
       }
     }
     label258:
-    for (paramInt = g.a.a.b.b.a.f(1, this.Coh) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.Ila) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bu(2, this.HEl);
+      int i = g.a.a.b.b.a.bM(2, this.Owe);
       AppMethodBeat.o(91288);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         AppMethodBeat.o(91288);
@@ -53,11 +53,11 @@ public final class d
           AppMethodBeat.o(91288);
           return -1;
         case 1: 
-          locald.Coh = locala.UbS.readString();
+          locald.Ila = locala.abFh.readString();
           AppMethodBeat.o(91288);
           return 0;
         }
-        locald.HEl = locala.UbS.zi();
+        locald.Owe = locala.abFh.AK();
         AppMethodBeat.o(91288);
         return 0;
       }
@@ -68,7 +68,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.a.d
  * JD-Core Version:    0.7.0.1
  */

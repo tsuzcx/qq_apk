@@ -2,27 +2,31 @@ package io.flutter.embedding.android;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.View.BaseSavedState;
 import android.widget.FrameLayout;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.embedding.engine.b.b;
+import io.flutter.embedding.engine.a;
 import io.flutter.embedding.engine.dart.DartExecutor;
 
 final class FlutterSplashView
   extends FrameLayout
 {
   private static String TAG = "FlutterSplashView";
-  private final b SMD;
-  private j Syh;
-  private View Syi;
-  private String Syj;
-  private final FlutterView.a Syk;
-  private final Runnable Syl;
+  private FlutterView BCI;
+  private j ZZo;
+  private View ZZp;
+  private String ZZq;
+  private final FlutterView.a ZZr;
+  private final Runnable ZZs;
+  private final io.flutter.embedding.engine.renderer.b aaoE;
   private String previousCompletedSplashIsolate;
   private Bundle splashScreenState;
-  private FlutterView wKM;
   
   public FlutterSplashView(Context paramContext)
   {
@@ -38,9 +42,9 @@ final class FlutterSplashView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(10060);
-    this.Syk = new FlutterView.a()
+    this.ZZr = new FlutterView.a()
     {
-      public final void hrW()
+      public final void ivI()
       {
         AppMethodBeat.i(10025);
         FlutterSplashView.a(FlutterSplashView.this).b(this);
@@ -48,20 +52,20 @@ final class FlutterSplashView
         AppMethodBeat.o(10025);
       }
     };
-    this.SMD = new b()
+    this.aaoE = new io.flutter.embedding.engine.renderer.b()
     {
-      public final void dLt()
+      public final void epX()
       {
-        AppMethodBeat.i(215094);
+        AppMethodBeat.i(255510);
         if (FlutterSplashView.b(FlutterSplashView.this) != null) {
           FlutterSplashView.c(FlutterSplashView.this);
         }
-        AppMethodBeat.o(215094);
+        AppMethodBeat.o(255510);
       }
       
-      public final void dLu() {}
+      public final void epY() {}
     };
-    this.Syl = new Runnable()
+    this.ZZs = new Runnable()
     {
       public final void run()
       {
@@ -75,10 +79,10 @@ final class FlutterSplashView
     AppMethodBeat.o(10060);
   }
   
-  private boolean hrT()
+  private boolean ivF()
   {
     AppMethodBeat.i(10064);
-    if ((this.wKM != null) && (this.wKM.hwA()) && (!this.wKM.SNn) && (!hrV()))
+    if ((this.BCI != null) && (this.BCI.iAE()) && (!this.BCI.aapl) && (!ivH()))
     {
       AppMethodBeat.o(10064);
       return true;
@@ -87,33 +91,33 @@ final class FlutterSplashView
     return false;
   }
   
-  private boolean hrU()
+  private boolean ivG()
   {
-    AppMethodBeat.i(215015);
-    if (this.wKM != null) {
-      this.wKM.hwA();
+    AppMethodBeat.i(254916);
+    if (this.BCI != null) {
+      this.BCI.iAE();
     }
-    AppMethodBeat.o(215015);
+    AppMethodBeat.o(254916);
     return false;
   }
   
-  private boolean hrV()
+  private boolean ivH()
   {
     AppMethodBeat.i(10065);
     IllegalStateException localIllegalStateException;
-    if (this.wKM == null)
+    if (this.BCI == null)
     {
       localIllegalStateException = new IllegalStateException("Cannot determine if splash has completed when no FlutterView is set.");
       AppMethodBeat.o(10065);
       throw localIllegalStateException;
     }
-    if (!this.wKM.hwA())
+    if (!this.BCI.iAE())
     {
       localIllegalStateException = new IllegalStateException("Cannot determine if splash has completed when no FlutterEngine is attached to our FlutterView. This question depends on an isolate ID to differentiate Flutter experiences.");
       AppMethodBeat.o(10065);
       throw localIllegalStateException;
     }
-    if ((this.wKM.getAttachedFlutterEngine().SNW.SOJ != null) && (this.wKM.getAttachedFlutterEngine().SNW.SOJ.equals(this.previousCompletedSplashIsolate)))
+    if ((this.BCI.getAttachedFlutterEngine().aapU.aaqH != null) && (this.BCI.getAttachedFlutterEngine().aapU.aaqH.equals(this.previousCompletedSplashIsolate)))
     {
       AppMethodBeat.o(10065);
       return true;
@@ -125,33 +129,33 @@ final class FlutterSplashView
   public final void a(FlutterView paramFlutterView, j paramj)
   {
     AppMethodBeat.i(10063);
-    if (this.wKM != null)
+    if (this.BCI != null)
     {
-      this.wKM.b(this.SMD);
-      removeView(this.wKM);
+      this.BCI.b(this.aaoE);
+      removeView(this.BCI);
     }
-    if (this.Syi != null) {
-      removeView(this.Syi);
+    if (this.ZZp != null) {
+      removeView(this.ZZp);
     }
-    this.wKM = paramFlutterView;
+    this.BCI = paramFlutterView;
     addView(paramFlutterView);
-    this.Syh = paramj;
+    this.ZZo = paramj;
     if (paramj != null)
     {
-      if (hrT())
+      if (ivF())
       {
-        io.flutter.a.hwd();
-        this.Syi = paramj.lM(getContext());
-        addView(this.Syi);
-        paramFlutterView.a(this.SMD);
+        io.flutter.b.iAd();
+        this.ZZp = paramj.mJ(getContext());
+        addView(this.ZZp);
+        paramFlutterView.a(this.aaoE);
         AppMethodBeat.o(10063);
         return;
       }
-      hrU();
-      if (!paramFlutterView.hwA())
+      ivG();
+      if (!paramFlutterView.iAE())
       {
-        io.flutter.a.hwd();
-        paramFlutterView.a(this.Syk);
+        io.flutter.b.iAd();
+        paramFlutterView.a(this.ZZr);
       }
     }
     AppMethodBeat.o(10063);
@@ -160,21 +164,60 @@ final class FlutterSplashView
   protected final void onRestoreInstanceState(Parcelable paramParcelable)
   {
     AppMethodBeat.i(10062);
-    paramParcelable = (FlutterSplashView.SavedState)paramParcelable;
+    paramParcelable = (SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    this.previousCompletedSplashIsolate = FlutterSplashView.SavedState.access$600(paramParcelable);
-    this.splashScreenState = FlutterSplashView.SavedState.access$700(paramParcelable);
+    this.previousCompletedSplashIsolate = paramParcelable.previousCompletedSplashIsolate;
+    this.splashScreenState = paramParcelable.splashScreenState;
     AppMethodBeat.o(10062);
   }
   
   protected final Parcelable onSaveInstanceState()
   {
     AppMethodBeat.i(10061);
-    FlutterSplashView.SavedState localSavedState = new FlutterSplashView.SavedState(super.onSaveInstanceState());
-    FlutterSplashView.SavedState.access$602(localSavedState, this.previousCompletedSplashIsolate);
-    FlutterSplashView.SavedState.access$702(localSavedState, null);
+    SavedState localSavedState = new SavedState(super.onSaveInstanceState());
+    SavedState.access$602(localSavedState, this.previousCompletedSplashIsolate);
+    SavedState.access$702(localSavedState, null);
     AppMethodBeat.o(10061);
     return localSavedState;
+  }
+  
+  @Keep
+  public static class SavedState
+    extends View.BaseSavedState
+  {
+    public static Parcelable.Creator<SavedState> CREATOR;
+    private String previousCompletedSplashIsolate;
+    private Bundle splashScreenState;
+    
+    static
+    {
+      AppMethodBeat.i(9966);
+      CREATOR = new Parcelable.Creator() {};
+      AppMethodBeat.o(9966);
+    }
+    
+    SavedState(Parcel paramParcel)
+    {
+      super();
+      AppMethodBeat.i(9964);
+      this.previousCompletedSplashIsolate = paramParcel.readString();
+      this.splashScreenState = paramParcel.readBundle(getClass().getClassLoader());
+      AppMethodBeat.o(9964);
+    }
+    
+    SavedState(Parcelable paramParcelable)
+    {
+      super();
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(9965);
+      super.writeToParcel(paramParcel, paramInt);
+      paramParcel.writeString(this.previousCompletedSplashIsolate);
+      paramParcel.writeBundle(this.splashScreenState);
+      AppMethodBeat.o(9965);
+    }
   }
 }
 

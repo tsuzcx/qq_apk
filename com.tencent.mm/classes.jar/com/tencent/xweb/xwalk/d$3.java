@@ -15,17 +15,17 @@ final class d$3
   {
     AppMethodBeat.i(154154);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/xweb/xwalk/WebDebugPage$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    this.SGe.SFW.setVisibility(8);
-    this.SGe.bCn();
+    localb.bn(paramView);
+    a.c("com/tencent/xweb/xwalk/WebDebugPage$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    this.aaht.aahl.setVisibility(8);
+    this.aaht.bNI();
     a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(154154);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.xwalk.d.3
  * JD-Core Version:    0.7.0.1
  */

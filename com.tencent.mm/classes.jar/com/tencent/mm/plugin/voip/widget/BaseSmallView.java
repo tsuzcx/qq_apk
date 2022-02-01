@@ -8,8 +8,9 @@ import android.util.AttributeSet;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.g.d;
 import com.tencent.mm.plugin.voip.ui.c;
@@ -23,15 +24,13 @@ import java.lang.ref.WeakReference;
 public abstract class BaseSmallView
   extends FrameLayout
 {
-  protected int GUk = -1;
-  protected long GUl;
-  public d GgP;
-  protected WeakReference<c> Hen;
-  private Point HpF = new Point();
-  private Point HpG = new Point();
-  private Point HpH = new Point();
-  private Point HpI;
-  Runnable HpJ = new Runnable()
+  public d MRb;
+  protected int NKw = -1;
+  protected long NKx;
+  protected WeakReference<c> NVe;
+  private Point OgA = new Point();
+  private Point OgB;
+  Runnable OgC = new Runnable()
   {
     public final void run()
     {
@@ -41,26 +40,34 @@ public abstract class BaseSmallView
         public final void run()
         {
           AppMethodBeat.i(184093);
-          BaseSmallView.this.eoL();
+          BaseSmallView.this.eYC();
           AppMethodBeat.o(184093);
         }
       });
       AppMethodBeat.o(115757);
     }
   };
-  protected MMHandler czp;
+  private Point Ogy = new Point();
+  private Point Ogz = new Point();
+  protected MMHandler cyl;
   private WindowManager mWindowManager;
-  private PointF okA = new PointF();
-  @Deprecated
-  CaptureView qsJ;
+  private PointF rmS = new PointF();
   public SurfaceTexture surfaceTexture;
+  @Deprecated
+  private CaptureView tRv;
   
   public BaseSmallView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     this.mWindowManager = ((WindowManager)paramContext.getSystemService("window"));
-    this.czp = new MMHandler();
-    this.HpI = new Point(this.mWindowManager.getDefaultDisplay().getWidth(), this.mWindowManager.getDefaultDisplay().getHeight());
+    this.cyl = new MMHandler();
+    this.OgB = new Point(this.mWindowManager.getDefaultDisplay().getWidth(), this.mWindowManager.getDefaultDisplay().getHeight());
+  }
+  
+  public void Be(boolean paramBoolean)
+  {
+    h.ZvG.bDh("resumeIcon");
+    h.ZvG.a(this.OgC, 2000L, "resumeIcon");
   }
   
   @Deprecated
@@ -69,35 +76,56 @@ public abstract class BaseSmallView
   @Deprecated
   public void a(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
   
-  public void aGx(String paramString) {}
+  public void aQM(String paramString) {}
   
-  public void aGy(String paramString) {}
+  public void aQN(String paramString) {}
   
-  public void enR()
+  @Deprecated
+  protected final void c(CaptureView paramCaptureView)
   {
-    h.RTc.bqo("resumeIcon");
-    h.RTc.a(this.HpJ, 2000L, "resumeIcon");
+    Log.printDebugStack("MicroMsg.Voip.BaseSmallView", "addCaptureView", new Object[0]);
+    if (this.tRv != null)
+    {
+      removeView(this.tRv);
+      this.tRv = null;
+    }
+    if (paramCaptureView != null)
+    {
+      this.tRv = paramCaptureView;
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(1, 1);
+      localLayoutParams.leftMargin = 20;
+      localLayoutParams.topMargin = 20;
+      addView(paramCaptureView, localLayoutParams);
+      paramCaptureView.setVisibility(0);
+      Log.d("MicroMsg.Voip.BaseSmallView", "CaptureView added");
+    }
   }
   
-  public boolean eoK()
+  public void eXH()
   {
-    h.RTc.bqo("resumeIcon");
+    h.ZvG.bDh("resumeIcon");
+    h.ZvG.a(this.OgC, 2000L, "resumeIcon");
+  }
+  
+  public boolean eYB()
+  {
+    h.ZvG.bDh("resumeIcon");
     return true;
   }
   
-  public void eoL() {}
+  public void eYC() {}
   
-  public void eoM() {}
+  public void eYD() {}
   
   @Deprecated
   public void f(int paramInt1, int paramInt2, byte[] paramArrayOfByte) {}
   
-  public void fJm() {}
+  public void gBJ() {}
   
   @Deprecated
-  public void fJx() {}
+  public void gBT() {}
   
-  public void fMf() {}
+  public void gEJ() {}
   
   @Deprecated
   public OpenGlRender getBeautyData()
@@ -112,7 +140,7 @@ public abstract class BaseSmallView
   }
   
   @Deprecated
-  public void jA(int paramInt1, int paramInt2) {}
+  public void kN(int paramInt1, int paramInt2) {}
   
   @Deprecated
   protected void onAnimationEnd() {}
@@ -128,7 +156,7 @@ public abstract class BaseSmallView
   
   public void setConnectSec(long paramLong)
   {
-    this.GUl = paramLong;
+    this.NKx = paramLong;
   }
   
   @Deprecated
@@ -141,8 +169,8 @@ public abstract class BaseSmallView
   
   public void setVoicePlayDevice(int paramInt)
   {
-    h.RTc.bqo("resumeIcon");
-    h.RTc.a(this.HpJ, 2000L, "resumeIcon");
+    h.ZvG.bDh("resumeIcon");
+    h.ZvG.a(this.OgC, 2000L, "resumeIcon");
   }
   
   @Deprecated
@@ -151,23 +179,17 @@ public abstract class BaseSmallView
   public void setVoipUIListener(c paramc)
   {
     Log.i("MicroMsg.Voip.BaseSmallView", "hwViewSmall setVoipUIListener, before initHWView");
-    this.Hen = new WeakReference(paramc);
+    this.NVe = new WeakReference(paramc);
   }
   
   public void uninit()
   {
     this.mWindowManager = null;
   }
-  
-  public void xm(boolean paramBoolean)
-  {
-    h.RTc.bqo("resumeIcon");
-    h.RTc.a(this.HpJ, 2000L, "resumeIcon");
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.widget.BaseSmallView
  * JD-Core Version:    0.7.0.1
  */

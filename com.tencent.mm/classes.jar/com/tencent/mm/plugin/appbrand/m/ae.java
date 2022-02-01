@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.appbrand.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.app.m;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storagebase.h;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.f;
+import com.tencent.mm.vfs.u;
 import com.tencent.wcdb.database.SQLiteDatabase;
 import com.tencent.wcdb.database.SQLiteException;
 import com.tencent.wcdb.database.SQLiteStatement;
@@ -16,60 +17,31 @@ import kotlin.a.j;
 import kotlin.g.a.q;
 import kotlin.g.b.p;
 import kotlin.l;
+import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsruntime/V8WasmCacheCleanupLogic;", "", "()V", "TAG", "", "clearByAppId", "", "appId", "doCleanup", "compileStatement", "Lcom/tencent/wcdb/database/SQLiteStatement;", "Lcom/tencent/mm/storagebase/SqliteDB;", "sql", "isEmptyDirectory", "", "Lcom/tencent/mm/vfs/FileEntry;", "rootDir", "USER_SCRIPT_HANDLER", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsruntime/V8WasmCacheCleanupLogic;", "", "()V", "TAG", "", "clearByAppId", "", "appId", "doCleanup", "compileStatement", "Lcom/tencent/wcdb/database/SQLiteStatement;", "Lcom/tencent/mm/storagebase/SqliteDB;", "sql", "isEmptyDirectory", "", "Lcom/tencent/mm/vfs/FileEntry;", "rootDir", "USER_SCRIPT_HANDLER", "plugin-appbrand-integration_release"})
 public final class ae
 {
-  public static final ae mOe;
+  public static final ae pOW;
   
   static
   {
-    AppMethodBeat.i(228614);
-    mOe = new ae();
-    AppMethodBeat.o(228614);
+    AppMethodBeat.i(283748);
+    pOW = new ae();
+    AppMethodBeat.o(283748);
   }
   
-  public static final void WY(String paramString)
+  private static boolean a(f paramf, String paramString)
   {
-    AppMethodBeat.i(228610);
-    p.h(paramString, "appId");
-    Object localObject = s.dC(af.bDt(), false);
-    if (localObject != null)
+    AppMethodBeat.i(283746);
+    if (paramf.YCj)
     {
-      localObject = ((Iterable)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      paramf = u.dP(paramString + "/" + paramf.name, false);
+      if (paramf != null)
       {
-        e locale = (e)((Iterator)localObject).next();
-        if ((locale.RbJ) && (p.j(paramString, locale.name)))
-        {
-          if (s.dy(af.bDt() + "/" + locale.name, true))
-          {
-            Log.d("MicroMsg.AppBrand.V8WasmCacheCleanupLogic", "wasm cache %s removed.", new Object[] { paramString });
-            AppMethodBeat.o(228610);
-            return;
-          }
-          Log.e("MicroMsg.AppBrand.V8WasmCacheCleanupLogic", "wasm cache %s remove failed.", new Object[] { paramString });
-          AppMethodBeat.o(228610);
-          return;
-        }
-      }
-      AppMethodBeat.o(228610);
-      return;
-    }
-    AppMethodBeat.o(228610);
-  }
-  
-  private static boolean a(e parame, String paramString)
-  {
-    AppMethodBeat.i(258054);
-    if (parame.RbJ)
-    {
-      parame = s.dC(paramString + "/" + parame.name, false);
-      if (parame != null)
-      {
-        parame = j.p(parame);
-        parame = (Collection)parame;
-        if ((parame != null) && (!parame.isEmpty())) {
+        paramf = j.p(paramf);
+        paramf = (Collection)paramf;
+        if ((paramf != null) && (!paramf.isEmpty())) {
           break label88;
         }
       }
@@ -79,25 +51,25 @@ public final class ae
         if (i == 0) {
           break label93;
         }
-        AppMethodBeat.o(258054);
+        AppMethodBeat.o(283746);
         return true;
-        parame = null;
+        paramf = null;
         break;
       }
     }
     label93:
-    AppMethodBeat.o(258054);
+    AppMethodBeat.o(283746);
     return false;
   }
   
   private static SQLiteStatement b(h paramh, String paramString)
   {
     Object localObject = null;
-    AppMethodBeat.i(228613);
+    AppMethodBeat.i(283747);
     try
     {
-      paramh = paramh.gFH().compileStatement(paramString);
-      AppMethodBeat.o(228613);
+      paramh = paramh.hBZ().compileStatement(paramString);
+      AppMethodBeat.o(283747);
       return paramh;
     }
     catch (SQLiteException paramh)
@@ -118,10 +90,10 @@ public final class ae
     }
   }
   
-  public static final void bMJ()
+  public static final void bZa()
   {
-    AppMethodBeat.i(228611);
-    Object localObject1 = com.tencent.mm.plugin.appbrand.app.n.buy();
+    AppMethodBeat.i(283744);
+    Object localObject1 = m.bFB();
     long l;
     Object localObject2;
     int j;
@@ -130,7 +102,7 @@ public final class ae
     {
       localObject1 = new a((h)localObject1);
       l = Util.currentTicks();
-      localObject2 = s.dC(af.bDt(), false);
+      localObject2 = u.dP(af.bOR(), false);
       if (localObject2 != null)
       {
         localObject2 = ((Iterable)localObject2).iterator();
@@ -147,12 +119,12 @@ public final class ae
         if (!((Iterator)localObject2).hasNext()) {
           break;
         }
-        e locale1 = (e)((Iterator)localObject2).next();
-        if (locale1.RbJ)
+        f localf1 = (f)((Iterator)localObject2).next();
+        if (localf1.YCj)
         {
-          String str1 = locale1.name;
-          String str2 = af.bDt() + "/" + locale1.name;
-          Object localObject3 = s.dC(str2, false);
+          String str1 = localf1.name;
+          String str2 = af.bOR() + "/" + localf1.name;
+          Object localObject3 = u.dP(str2, false);
           m = j;
           k = i;
           if (localObject3 != null)
@@ -163,34 +135,34 @@ public final class ae
             i = k;
             while (((Iterator)localObject3).hasNext())
             {
-              e locale2 = (e)((Iterator)localObject3).next();
-              if (locale2.RbJ)
+              f localf2 = (f)((Iterator)localObject3).next();
+              if (localf2.YCj)
               {
                 j += 1;
-                p.g(str1, "appId");
-                p.g(locale2, "subDir");
-                k = ((a)localObject1).a(str1, str2, locale2).intValue();
-                if (a(locale2, str2)) {
-                  locale2.delete();
+                p.j(str1, "appId");
+                p.j(localf2, "subDir");
+                k = ((a)localObject1).a(str1, str2, localf2).intValue();
+                if (a(localf2, str2)) {
+                  localf2.cFq();
                 }
                 i = k + i;
                 continue;
-                AppMethodBeat.o(228611);
+                AppMethodBeat.o(283744);
                 return;
               }
             }
             k = j;
             m = i;
           }
-          p.g(locale1, "dir");
-          str2 = af.bDt();
-          p.g(str2, "V8WasmCachePathRetriever.retrieve()");
+          p.j(localf1, "dir");
+          str2 = af.bOR();
+          p.j(str2, "V8WasmCachePathRetriever.retrieve()");
           j = m;
           i = k;
-          if (a(locale1, str2))
+          if (a(localf1, str2))
           {
-            Log.i("MicroMsg.AppBrand.V8WasmCacheCleanupLogic", "delete appID %s relPath %s", new Object[] { str1, locale1.NGP });
-            locale1.delete();
+            Log.i("MicroMsg.AppBrand.V8WasmCacheCleanupLogic", "delete appID %s relPath %s", new Object[] { str1, localf1.UUr });
+            localf1.cFq();
             j = m;
             i = k;
           }
@@ -200,91 +172,121 @@ public final class ae
     int m = 0;
     int k = 0;
     Log.i("MicroMsg.AppBrand.V8WasmCacheCleanupLogic", "doCleanup() cost:" + (Util.currentTicks() - l) + "ms, dirVisitedCount:" + k + ", fileDeletedCount:" + m);
-    AppMethodBeat.o(228611);
+    AppMethodBeat.o(283744);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsruntime/V8WasmCacheCleanupLogic$USER_SCRIPT_HANDLER;", "Lkotlin/Function3;", "", "Lcom/tencent/mm/vfs/FileEntry;", "", "Lcom/tencent/mm/plugin/appbrand/jsruntime/WasmCacheDirHandler;", "db", "Lcom/tencent/mm/storagebase/SqliteDB;", "(Lcom/tencent/mm/storagebase/SqliteDB;)V", "stmt", "Lcom/tencent/wcdb/database/SQLiteStatement;", "stmt2", "invoke", "appId", "rootDir", "dir", "(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/vfs/FileEntry;)Ljava/lang/Integer;", "plugin-appbrand-integration_release"})
-  static final class a
-    implements q<String, String, e, Integer>
+  public static final void dU(String paramString)
   {
-    private final SQLiteStatement mOb;
-    private final SQLiteStatement mOc;
+    AppMethodBeat.i(283741);
+    p.k(paramString, "appId");
+    Object localObject = u.dP(af.bOR(), false);
+    if (localObject != null)
+    {
+      localObject = ((Iterable)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        f localf = (f)((Iterator)localObject).next();
+        if ((localf.YCj) && (p.h(paramString, localf.name)))
+        {
+          if (u.dK(af.bOR() + "/" + localf.name, true))
+          {
+            Log.d("MicroMsg.AppBrand.V8WasmCacheCleanupLogic", "wasm cache %s removed.", new Object[] { paramString });
+            AppMethodBeat.o(283741);
+            return;
+          }
+          Log.e("MicroMsg.AppBrand.V8WasmCacheCleanupLogic", "wasm cache %s remove failed.", new Object[] { paramString });
+          AppMethodBeat.o(283741);
+          return;
+        }
+      }
+      AppMethodBeat.o(283741);
+      return;
+    }
+    AppMethodBeat.o(283741);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsruntime/V8WasmCacheCleanupLogic$USER_SCRIPT_HANDLER;", "Lkotlin/Function3;", "", "Lcom/tencent/mm/vfs/FileEntry;", "", "Lcom/tencent/mm/plugin/appbrand/jsruntime/WasmCacheDirHandler;", "db", "Lcom/tencent/mm/storagebase/SqliteDB;", "(Lcom/tencent/mm/storagebase/SqliteDB;)V", "stmt", "Lcom/tencent/wcdb/database/SQLiteStatement;", "stmt2", "invoke", "appId", "rootDir", "dir", "(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/vfs/FileEntry;)Ljava/lang/Integer;", "plugin-appbrand-integration_release"})
+  static final class a
+    implements q<String, String, f, Integer>
+  {
+    private final SQLiteStatement pOT;
+    private final SQLiteStatement pOU;
     
     public a(h paramh)
     {
-      AppMethodBeat.i(228609);
-      ae localae = ae.mOe;
-      this.mOb = ae.d(paramh, "SELECT COUNT(*) FROM AppBrandWxaPkgManifestRecord WHERE appId LIKE ? AND versionMd5=? ;");
-      localae = ae.mOe;
-      this.mOc = ae.d(paramh, "SELECT COUNT(*) FROM AppBrandWxaPkgManifestRecord WHERE appId LIKE ? AND NewMd5=? ;");
-      AppMethodBeat.o(228609);
+      AppMethodBeat.i(242934);
+      ae localae = ae.pOW;
+      this.pOT = ae.d(paramh, "SELECT COUNT(*) FROM AppBrandWxaPkgManifestRecord WHERE appId LIKE ? AND versionMd5=? ;");
+      localae = ae.pOW;
+      this.pOU = ae.d(paramh, "SELECT COUNT(*) FROM AppBrandWxaPkgManifestRecord WHERE appId LIKE ? AND NewMd5=? ;");
+      AppMethodBeat.o(242934);
     }
     
-    public final Integer a(String paramString1, String paramString2, e parame)
+    public final Integer a(String paramString1, String paramString2, f paramf)
     {
-      AppMethodBeat.i(258052);
-      p.h(paramString1, "appId");
-      p.h(paramString2, "rootDir");
-      p.h(parame, "dir");
-      if (this.mOb == null)
+      AppMethodBeat.i(242932);
+      p.k(paramString1, "appId");
+      p.k(paramString2, "rootDir");
+      p.k(paramf, "dir");
+      if (this.pOT == null)
       {
-        AppMethodBeat.o(258052);
+        AppMethodBeat.o(242932);
         return Integer.valueOf(0);
       }
-      if (this.mOc == null)
+      if (this.pOU == null)
       {
-        AppMethodBeat.o(258052);
+        AppMethodBeat.o(242932);
         return Integer.valueOf(0);
       }
-      paramString2 = s.dC(paramString2 + "/" + parame.name, false);
+      paramString2 = u.dP(paramString2 + "/" + paramf.name, false);
       int i;
       int j;
-      e locale;
+      f localf;
       if (paramString2 != null)
       {
-        parame = paramString2.iterator();
+        paramf = paramString2.iterator();
         i = 0;
         do
         {
           j = i;
-          if (!parame.hasNext()) {
+          if (!paramf.hasNext()) {
             break;
           }
-          locale = (e)parame.next();
-        } while (locale.RbJ);
-        paramString2 = locale.name;
-        String str = locale.name;
-        p.g(str, "file.name");
-        if (!kotlin.n.n.e((CharSequence)str, (CharSequence)".")) {
+          localf = (f)paramf.next();
+        } while (localf.YCj);
+        paramString2 = localf.name;
+        String str = localf.name;
+        p.j(str, "file.name");
+        if (!n.g((CharSequence)str, (CharSequence)".")) {
           break label355;
         }
-        paramString2 = locale.name;
-        p.g(paramString2, "file.name");
-        paramString2 = (String)kotlin.n.n.b((CharSequence)paramString2, new String[] { "." }).get(0);
+        paramString2 = localf.name;
+        p.j(paramString2, "file.name");
+        paramString2 = (String)n.b((CharSequence)paramString2, new String[] { "." }).get(0);
       }
       label352:
       label355:
       for (;;)
       {
-        this.mOb.bindString(1, paramString1 + "%%");
-        this.mOb.bindString(2, paramString2);
+        this.pOT.bindString(1, paramString1 + "%%");
+        this.pOT.bindString(2, paramString2);
         for (;;)
         {
           try
           {
-            l1 = this.mOb.simpleQueryForLong();
-            this.mOc.bindString(1, paramString1 + "%%");
-            this.mOc.bindString(2, paramString2);
+            l1 = this.pOT.simpleQueryForLong();
+            this.pOU.bindString(1, paramString1 + "%%");
+            this.pOU.bindString(2, paramString2);
           }
           catch (SQLiteException localSQLiteException)
           {
             try
             {
-              l2 = this.mOc.simpleQueryForLong();
+              l2 = this.pOU.simpleQueryForLong();
               if (l1 + l2 > 0L) {
                 break label352;
               }
-              locale.delete();
+              localf.cFq();
               i += 1;
               break;
               localSQLiteException = localSQLiteException;
@@ -297,7 +299,7 @@ public final class ae
             }
           }
           j = 0;
-          AppMethodBeat.o(258052);
+          AppMethodBeat.o(242932);
           return Integer.valueOf(j);
         }
       }
@@ -306,7 +308,7 @@ public final class ae
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.m.ae
  * JD-Core Version:    0.7.0.1
  */

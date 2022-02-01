@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.shortlink;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/shortlink/WxaShortLinkLaunchErrorCode;", "", "code", "", "errorMsg", "", "(Ljava/lang/String;IILjava/lang/String;)V", "getCode", "()I", "getErrorMsg", "()Ljava/lang/String;", "SUCCESS", "ILLEGAL_LINK", "DECODE_LINK_FAIL", "USER_CANCEL", "CONTEXT_RELEASE", "INTERRUPT", "LAUNCH_PHASE_FAIL", "luggage-wechat-full-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/shortlink/WxaShortLinkLaunchErrorCode;", "", "code", "", "errorMsg", "", "(Ljava/lang/String;IILjava/lang/String;)V", "getCode", "()I", "getErrorMsg", "()Ljava/lang/String;", "SUCCESS", "ILLEGAL_LINK", "DECODE_LINK_FAIL", "USER_CANCEL", "CONTEXT_RELEASE", "INTERRUPT", "LAUNCH_PHASE_FAIL", "luggage-wechat-full-sdk_release"})
 @Keep
 public enum WxaShortLinkLaunchErrorCode
 {
@@ -13,7 +13,7 @@ public enum WxaShortLinkLaunchErrorCode
   
   static
   {
-    AppMethodBeat.i(230174);
+    AppMethodBeat.i(243683);
     WxaShortLinkLaunchErrorCode localWxaShortLinkLaunchErrorCode1 = new WxaShortLinkLaunchErrorCode("SUCCESS", 0, 0, "OK");
     SUCCESS = localWxaShortLinkLaunchErrorCode1;
     WxaShortLinkLaunchErrorCode localWxaShortLinkLaunchErrorCode2 = new WxaShortLinkLaunchErrorCode("ILLEGAL_LINK", 1, -1001, "illegal link");
@@ -29,7 +29,7 @@ public enum WxaShortLinkLaunchErrorCode
     WxaShortLinkLaunchErrorCode localWxaShortLinkLaunchErrorCode7 = new WxaShortLinkLaunchErrorCode("LAUNCH_PHASE_FAIL", 6, -1006, "launch phase fail");
     LAUNCH_PHASE_FAIL = localWxaShortLinkLaunchErrorCode7;
     $VALUES = new WxaShortLinkLaunchErrorCode[] { localWxaShortLinkLaunchErrorCode1, localWxaShortLinkLaunchErrorCode2, localWxaShortLinkLaunchErrorCode3, localWxaShortLinkLaunchErrorCode4, localWxaShortLinkLaunchErrorCode5, localWxaShortLinkLaunchErrorCode6, localWxaShortLinkLaunchErrorCode7 };
-    AppMethodBeat.o(230174);
+    AppMethodBeat.o(243683);
   }
   
   private WxaShortLinkLaunchErrorCode(int paramInt, String paramString)
@@ -50,7 +50,7 @@ public enum WxaShortLinkLaunchErrorCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.shortlink.WxaShortLinkLaunchErrorCode
  * JD-Core Version:    0.7.0.1
  */

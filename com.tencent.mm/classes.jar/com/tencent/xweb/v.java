@@ -2,7 +2,9 @@ package com.tencent.xweb;
 
 public abstract interface v
 {
-  public abstract void bLx();
+  public abstract boolean Bh(int paramInt);
+  
+  public abstract void bXx();
   
   public abstract void onVideoEnded();
   
@@ -27,12 +29,10 @@ public abstract interface v
   public abstract void onVideoTimeUpdate(double paramDouble1, double paramDouble2, double[] paramArrayOfDouble);
   
   public abstract void onVideoWaiting();
-  
-  public abstract boolean xJ(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.xweb.v
  * JD-Core Version:    0.7.0.1
  */

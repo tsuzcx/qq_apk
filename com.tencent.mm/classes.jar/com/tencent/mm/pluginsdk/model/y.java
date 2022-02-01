@@ -1,108 +1,144 @@
 package com.tencent.mm.pluginsdk.model;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.net.Uri;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.n.f;
-import com.tencent.mm.n.h;
+import com.tencent.mm.n.d;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public final class y
-  extends t
 {
-  public final boolean bdn(String paramString)
+  private static volatile y QVM = null;
+  
+  public static x C(int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(109481);
-    if ((paramString != null) && ("com.tencent.map".equals(paramString)))
+    AppMethodBeat.i(109474);
+    switch (paramInt)
     {
-      AppMethodBeat.o(109481);
-      return true;
+    default: 
+      paramBundle = new v();
+      AppMethodBeat.o(109474);
+      return paramBundle;
+    case 2: 
+      paramBundle = new f(paramBundle);
+      AppMethodBeat.o(109474);
+      return paramBundle;
     }
-    AppMethodBeat.o(109481);
-    return false;
+    paramBundle = new ac();
+    AppMethodBeat.o(109474);
+    return paramBundle;
   }
   
-  public final String blB()
+  public static int apD(int paramInt)
   {
-    return "http://softroute.map.qq.com/downloadfile?cid=00008&referer=wx_client";
+    AppMethodBeat.i(109475);
+    switch (paramInt)
+    {
+    default: 
+      AppMethodBeat.o(109475);
+      return 5;
+    case 0: 
+      paramInt = Util.getInt(com.tencent.mm.n.h.axd().ao("QQBroswer", "RecommendCount"), 5);
+      AppMethodBeat.o(109475);
+      return paramInt;
+    }
+    AppMethodBeat.o(109475);
+    return 2147483647;
   }
   
-  public final String c(Context paramContext, ResolveInfo paramResolveInfo)
+  public static void apE(int paramInt)
   {
-    AppMethodBeat.i(109483);
-    if ((paramContext == null) || (paramResolveInfo == null) || (paramResolveInfo.activityInfo == null))
+    AppMethodBeat.i(109476);
+    switch (paramInt)
     {
-      AppMethodBeat.o(109483);
-      return null;
     }
-    paramContext = paramResolveInfo.activityInfo.loadLabel(paramContext.getPackageManager());
-    if (paramContext != null)
+    for (;;)
     {
-      paramResolveInfo = paramContext.toString();
-      paramResolveInfo = Pattern.compile("\\(.*推荐.*\\)", 2).matcher(paramResolveInfo);
-      if (paramResolveInfo.find())
-      {
-        paramContext = paramResolveInfo.replaceAll("");
-        AppMethodBeat.o(109483);
-        return paramContext;
+      AppMethodBeat.o(109476);
+      return;
+      com.tencent.mm.plugin.report.service.h.IzE.a(10998, new Object[] { Integer.valueOf(0) });
+      AppMethodBeat.o(109476);
+      return;
+      com.tencent.mm.plugin.report.service.h.IzE.a(11091, new Object[] { Integer.valueOf(0) });
+    }
+  }
+  
+  public static void apF(int paramInt)
+  {
+    AppMethodBeat.i(109477);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(109477);
+      return;
+      com.tencent.mm.plugin.report.service.h.IzE.a(10998, new Object[] { Integer.valueOf(1) });
+      AppMethodBeat.o(109477);
+      return;
+      com.tencent.mm.plugin.report.service.h.IzE.a(11091, new Object[] { Integer.valueOf(1) });
+    }
+  }
+  
+  public static void apG(int paramInt)
+  {
+    AppMethodBeat.i(109478);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(109478);
+      return;
+      com.tencent.mm.plugin.report.service.h.IzE.a(10998, new Object[] { Integer.valueOf(3) });
+      AppMethodBeat.o(109478);
+      return;
+      com.tencent.mm.plugin.report.service.h.IzE.a(11091, new Object[] { Integer.valueOf(3) });
+    }
+  }
+  
+  public static void apH(int paramInt)
+  {
+    AppMethodBeat.i(109479);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(109479);
+      return;
+      com.tencent.mm.plugin.report.service.h.IzE.a(10998, new Object[] { Integer.valueOf(2) });
+      AppMethodBeat.o(109479);
+      return;
+      com.tencent.mm.plugin.report.service.h.IzE.a(11091, new Object[] { Integer.valueOf(2) });
+    }
+  }
+  
+  public static y hhf()
+  {
+    AppMethodBeat.i(109473);
+    if (QVM == null) {}
+    try
+    {
+      if (QVM == null) {
+        QVM = new y();
       }
-      paramContext = paramContext.toString();
-      AppMethodBeat.o(109483);
-      return paramContext;
+      y localy = QVM;
+      AppMethodBeat.o(109473);
+      return localy;
     }
-    AppMethodBeat.o(109483);
-    return null;
-  }
-  
-  public final String gmq()
-  {
-    return "TencentMap.apk";
-  }
-  
-  public final u.a gmr()
-  {
-    AppMethodBeat.i(109482);
-    u.a locala = new u.a();
-    locala.JVB = 2131766699;
-    String str = h.aqJ().getValue("QQMapDownloadTips");
-    if (!Util.isNullOrNil(str)) {
-      locala.JVC = str;
-    }
-    locala.JVD = 2131766704;
-    locala.JVA = 2131233116;
-    AppMethodBeat.o(109482);
-    return locala;
-  }
-  
-  public final boolean in(Context paramContext)
-  {
-    AppMethodBeat.i(109480);
-    Object localObject = new Intent("android.intent.action.VIEW", Uri.parse("sosomap://type=nav"));
-    paramContext = paramContext.getPackageManager().queryIntentActivities((Intent)localObject, 0);
-    if ((paramContext != null) && (paramContext.size() > 0))
+    finally
     {
-      int j = paramContext.size();
-      int i = 0;
-      while (i < j)
-      {
-        localObject = (ResolveInfo)paramContext.get(i);
-        if ((localObject != null) && (((ResolveInfo)localObject).activityInfo != null) && ("com.tencent.map".equals(((ResolveInfo)localObject).activityInfo.packageName)))
-        {
-          AppMethodBeat.o(109480);
-          return true;
-        }
-        i += 1;
-      }
+      AppMethodBeat.o(109473);
     }
-    AppMethodBeat.o(109480);
-    return false;
+  }
+  
+  public static final class a
+  {
+    public int QVN;
+    public int QVO;
+    public String QVP;
+    public int QVQ;
+    public String QVR;
   }
 }
 

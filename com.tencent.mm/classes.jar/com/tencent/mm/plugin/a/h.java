@@ -9,24 +9,24 @@ public final class h
 {
   private long duration;
   private String filePath;
-  private long gra;
-  public List<p> jQA;
-  private long jQs;
-  private long[] jQv;
-  private int jQw;
-  private List<n> jQx;
-  private List<Pair> jQy;
-  public m jQz;
+  private long iVj;
+  private long mHC;
+  private long[] mHF;
+  private int mHG;
+  private List<n> mHH;
+  private List<Pair> mHI;
+  public m mHJ;
+  public List<p> mHK;
   
   public h()
   {
     AppMethodBeat.i(133868);
-    this.jQA = new ArrayList();
+    this.mHK = new ArrayList();
     AppMethodBeat.o(133868);
   }
   
   /* Error */
-  public final boolean Sy(String paramString)
+  public final boolean aaa(String paramString)
   {
     // Byte code:
     //   0: ldc 48
@@ -36,39 +36,39 @@ public final class h
     //   7: putfield 50	com/tencent/mm/plugin/a/h:filePath	Ljava/lang/String;
     //   10: aload_0
     //   11: aconst_null
-    //   12: putfield 52	com/tencent/mm/plugin/a/h:jQv	[J
+    //   12: putfield 52	com/tencent/mm/plugin/a/h:mHF	[J
     //   15: aload_0
     //   16: iconst_0
-    //   17: putfield 54	com/tencent/mm/plugin/a/h:jQw	I
+    //   17: putfield 54	com/tencent/mm/plugin/a/h:mHG	I
     //   20: aload_0
     //   21: lconst_0
     //   22: putfield 56	com/tencent/mm/plugin/a/h:duration	J
     //   25: aload_0
     //   26: lconst_0
-    //   27: putfield 58	com/tencent/mm/plugin/a/h:jQs	J
+    //   27: putfield 58	com/tencent/mm/plugin/a/h:mHC	J
     //   30: aload_0
     //   31: lconst_0
-    //   32: putfield 60	com/tencent/mm/plugin/a/h:gra	J
+    //   32: putfield 60	com/tencent/mm/plugin/a/h:iVj	J
     //   35: aload_0
-    //   36: getfield 62	com/tencent/mm/plugin/a/h:jQx	Ljava/util/List;
+    //   36: getfield 62	com/tencent/mm/plugin/a/h:mHH	Ljava/util/List;
     //   39: ifnull +12 -> 51
     //   42: aload_0
-    //   43: getfield 62	com/tencent/mm/plugin/a/h:jQx	Ljava/util/List;
+    //   43: getfield 62	com/tencent/mm/plugin/a/h:mHH	Ljava/util/List;
     //   46: invokeinterface 67 1 0
     //   51: aload_0
-    //   52: getfield 69	com/tencent/mm/plugin/a/h:jQy	Ljava/util/List;
+    //   52: getfield 69	com/tencent/mm/plugin/a/h:mHI	Ljava/util/List;
     //   55: ifnull +12 -> 67
     //   58: aload_0
-    //   59: getfield 69	com/tencent/mm/plugin/a/h:jQy	Ljava/util/List;
+    //   59: getfield 69	com/tencent/mm/plugin/a/h:mHI	Ljava/util/List;
     //   62: invokeinterface 67 1 0
     //   67: aload_0
-    //   68: getfield 39	com/tencent/mm/plugin/a/h:jQA	Ljava/util/List;
+    //   68: getfield 39	com/tencent/mm/plugin/a/h:mHK	Ljava/util/List;
     //   71: ifnull +12 -> 83
     //   74: aload_0
-    //   75: getfield 39	com/tencent/mm/plugin/a/h:jQA	Ljava/util/List;
+    //   75: getfield 39	com/tencent/mm/plugin/a/h:mHK	Ljava/util/List;
     //   78: invokeinterface 67 1 0
     //   83: aload_1
-    //   84: invokestatic 74	com/tencent/mm/vfs/s:YS	(Ljava/lang/String;)Z
+    //   84: invokestatic 74	com/tencent/mm/vfs/u:agG	(Ljava/lang/String;)Z
     //   87: ifne +10 -> 97
     //   90: ldc 48
     //   92: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -78,19 +78,19 @@ public final class h
     //   98: astore 13
     //   100: aload_1
     //   101: iconst_0
-    //   102: invokestatic 78	com/tencent/mm/vfs/s:dB	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
+    //   102: invokestatic 78	com/tencent/mm/vfs/u:dO	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
     //   105: astore_1
     //   106: bipush 8
     //   108: newarray byte
     //   110: astore 14
     //   112: aload_1
     //   113: aload 14
-    //   115: getstatic 83	com/tencent/mm/plugin/a/a:blk	I
+    //   115: getstatic 83	com/tencent/mm/plugin/a/a:aUM	I
     //   118: invokestatic 89	com/tencent/mm/plugin/a/c:a	(Ljava/io/RandomAccessFile;[BI)Lcom/tencent/mm/plugin/a/a;
     //   121: astore 13
     //   123: ldc2_w 90
     //   126: aload 13
-    //   128: getfield 94	com/tencent/mm/plugin/a/a:jPV	J
+    //   128: getfield 94	com/tencent/mm/plugin/a/a:mHf	J
     //   131: ladd
     //   132: lstore 8
     //   134: aload 13
@@ -118,7 +118,7 @@ public final class h
     //   175: invokestatic 112	com/tencent/mm/plugin/a/c:readInt	([BI)I
     //   178: istore_2
     //   179: iload_2
-    //   180: getstatic 115	com/tencent/mm/plugin/a/a:blm	I
+    //   180: getstatic 115	com/tencent/mm/plugin/a/a:aUO	I
     //   183: if_icmpne +427 -> 610
     //   186: new 117	com/tencent/mm/plugin/a/p
     //   189: dup
@@ -156,7 +156,7 @@ public final class h
     //   249: lsub
     //   250: lstore 6
     //   252: iload 5
-    //   254: getstatic 124	com/tencent/mm/plugin/a/a:bly	I
+    //   254: getstatic 124	com/tencent/mm/plugin/a/a:aVa	I
     //   257: if_icmpne +288 -> 545
     //   260: aload 15
     //   262: iload 4
@@ -168,16 +168,16 @@ public final class h
     //   272: lsub
     //   273: invokestatic 133	com/tencent/mm/plugin/a/i:f	(IIJ)Lcom/tencent/mm/plugin/a/a;
     //   276: checkcast 135	com/tencent/mm/plugin/a/d
-    //   279: putfield 139	com/tencent/mm/plugin/a/p:jRr	Lcom/tencent/mm/plugin/a/d;
+    //   279: putfield 139	com/tencent/mm/plugin/a/p:mIC	Lcom/tencent/mm/plugin/a/d;
     //   282: aload 15
-    //   284: getfield 139	com/tencent/mm/plugin/a/p:jRr	Lcom/tencent/mm/plugin/a/d;
+    //   284: getfield 139	com/tencent/mm/plugin/a/p:mIC	Lcom/tencent/mm/plugin/a/d;
     //   287: astore 16
     //   289: aload_1
     //   290: ldc 141
-    //   292: invokestatic 147	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   292: invokestatic 147	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
     //   295: aload 14
     //   297: ldc 149
-    //   299: invokestatic 147	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   299: invokestatic 147	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
     //   302: aload_1
     //   303: aload 14
     //   305: invokevirtual 108	java/io/RandomAccessFile:read	([B)I
@@ -186,7 +186,7 @@ public final class h
     //   313: aload 14
     //   315: iconst_4
     //   316: invokestatic 112	com/tencent/mm/plugin/a/c:readInt	([BI)I
-    //   319: getstatic 152	com/tencent/mm/plugin/a/a:blz	I
+    //   319: getstatic 152	com/tencent/mm/plugin/a/a:aVb	I
     //   322: if_icmpne +220 -> 542
     //   325: iconst_4
     //   326: newarray byte
@@ -225,9 +225,9 @@ public final class h
     //   388: invokevirtual 108	java/io/RandomAccessFile:read	([B)I
     //   391: pop
     //   392: aload 16
-    //   394: getfield 155	com/tencent/mm/plugin/a/d:jQa	Ljava/util/List;
+    //   394: getfield 155	com/tencent/mm/plugin/a/d:mHk	Ljava/util/List;
     //   397: aload 13
-    //   399: invokestatic 159	com/tencent/mm/plugin/a/c:aE	([B)J
+    //   399: invokestatic 159	com/tencent/mm/plugin/a/c:aP	([B)J
     //   402: invokestatic 165	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   405: invokeinterface 169 2 0
     //   410: pop
@@ -236,9 +236,9 @@ public final class h
     //   414: invokevirtual 108	java/io/RandomAccessFile:read	([B)I
     //   417: pop
     //   418: aload 16
-    //   420: getfield 172	com/tencent/mm/plugin/a/d:jQb	Ljava/util/List;
+    //   420: getfield 172	com/tencent/mm/plugin/a/d:mHl	Ljava/util/List;
     //   423: aload 13
-    //   425: invokestatic 159	com/tencent/mm/plugin/a/c:aE	([B)J
+    //   425: invokestatic 159	com/tencent/mm/plugin/a/c:aP	([B)J
     //   428: invokestatic 165	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   431: invokeinterface 169 2 0
     //   436: pop
@@ -256,7 +256,7 @@ public final class h
     //   455: invokevirtual 108	java/io/RandomAccessFile:read	([B)I
     //   458: pop
     //   459: aload 16
-    //   461: getfield 155	com/tencent/mm/plugin/a/d:jQa	Ljava/util/List;
+    //   461: getfield 155	com/tencent/mm/plugin/a/d:mHk	Ljava/util/List;
     //   464: aload 13
     //   466: iconst_0
     //   467: invokestatic 112	com/tencent/mm/plugin/a/c:readInt	([BI)I
@@ -269,7 +269,7 @@ public final class h
     //   483: invokevirtual 108	java/io/RandomAccessFile:read	([B)I
     //   486: pop
     //   487: aload 16
-    //   489: getfield 172	com/tencent/mm/plugin/a/d:jQb	Ljava/util/List;
+    //   489: getfield 172	com/tencent/mm/plugin/a/d:mHl	Ljava/util/List;
     //   492: aload 13
     //   494: iconst_0
     //   495: invokestatic 112	com/tencent/mm/plugin/a/c:readInt	([BI)I
@@ -280,7 +280,7 @@ public final class h
     //   508: goto -71 -> 437
     //   511: astore 13
     //   513: aload_0
-    //   514: getfield 39	com/tencent/mm/plugin/a/h:jQA	Ljava/util/List;
+    //   514: getfield 39	com/tencent/mm/plugin/a/h:mHK	Ljava/util/List;
     //   517: aload 15
     //   519: invokeinterface 169 2 0
     //   524: pop
@@ -297,7 +297,7 @@ public final class h
     //   539: goto -394 -> 145
     //   542: goto -328 -> 214
     //   545: iload 5
-    //   547: getstatic 180	com/tencent/mm/plugin/a/a:bln	I
+    //   547: getstatic 180	com/tencent/mm/plugin/a/a:aUP	I
     //   550: if_icmpne +40 -> 590
     //   553: aload 15
     //   555: iload 4
@@ -309,9 +309,9 @@ public final class h
     //   565: lsub
     //   566: invokestatic 133	com/tencent/mm/plugin/a/i:f	(IIJ)Lcom/tencent/mm/plugin/a/a;
     //   569: checkcast 182	com/tencent/mm/plugin/a/g
-    //   572: putfield 186	com/tencent/mm/plugin/a/p:jRq	Lcom/tencent/mm/plugin/a/g;
+    //   572: putfield 186	com/tencent/mm/plugin/a/p:mIB	Lcom/tencent/mm/plugin/a/g;
     //   575: aload 15
-    //   577: getfield 186	com/tencent/mm/plugin/a/p:jRq	Lcom/tencent/mm/plugin/a/g;
+    //   577: getfield 186	com/tencent/mm/plugin/a/p:mIB	Lcom/tencent/mm/plugin/a/g;
     //   580: aload_1
     //   581: aload 14
     //   583: invokevirtual 189	com/tencent/mm/plugin/a/g:a	(Ljava/io/RandomAccessFile;[B)Z
@@ -328,7 +328,7 @@ public final class h
     //   604: ifeq -91 -> 513
     //   607: goto -393 -> 214
     //   610: iload_2
-    //   611: getstatic 192	com/tencent/mm/plugin/a/a:bll	I
+    //   611: getstatic 192	com/tencent/mm/plugin/a/a:aUN	I
     //   614: if_icmpne -89 -> 525
     //   617: aload_0
     //   618: new 194	com/tencent/mm/plugin/a/m
@@ -337,16 +337,16 @@ public final class h
     //   623: lload 8
     //   625: iload_2
     //   626: invokespecial 195	com/tencent/mm/plugin/a/m:<init>	(IJI)V
-    //   629: putfield 197	com/tencent/mm/plugin/a/h:jQz	Lcom/tencent/mm/plugin/a/m;
+    //   629: putfield 197	com/tencent/mm/plugin/a/h:mHJ	Lcom/tencent/mm/plugin/a/m;
     //   632: aload_0
-    //   633: getfield 197	com/tencent/mm/plugin/a/h:jQz	Lcom/tencent/mm/plugin/a/m;
+    //   633: getfield 197	com/tencent/mm/plugin/a/h:mHJ	Lcom/tencent/mm/plugin/a/m;
     //   636: astore 13
     //   638: aload_1
     //   639: ldc 141
-    //   641: invokestatic 147	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   641: invokestatic 147	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
     //   644: aload 14
     //   646: ldc 149
-    //   648: invokestatic 147	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   648: invokestatic 147	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
     //   651: iconst_4
     //   652: newarray byte
     //   654: astore 15
@@ -363,7 +363,7 @@ public final class h
     //   675: iconst_0
     //   676: invokestatic 112	com/tencent/mm/plugin/a/c:readInt	([BI)I
     //   679: i2l
-    //   680: putfield 200	com/tencent/mm/plugin/a/m:jQs	J
+    //   680: putfield 200	com/tencent/mm/plugin/a/m:mHC	J
     //   683: aload_1
     //   684: aload 15
     //   686: invokevirtual 108	java/io/RandomAccessFile:read	([B)I
@@ -376,12 +376,12 @@ public final class h
     //   699: putfield 201	com/tencent/mm/plugin/a/m:duration	J
     //   702: aload_0
     //   703: aload_0
-    //   704: getfield 197	com/tencent/mm/plugin/a/h:jQz	Lcom/tencent/mm/plugin/a/m;
-    //   707: getfield 200	com/tencent/mm/plugin/a/m:jQs	J
-    //   710: putfield 58	com/tencent/mm/plugin/a/h:jQs	J
+    //   704: getfield 197	com/tencent/mm/plugin/a/h:mHJ	Lcom/tencent/mm/plugin/a/m;
+    //   707: getfield 200	com/tencent/mm/plugin/a/m:mHC	J
+    //   710: putfield 58	com/tencent/mm/plugin/a/h:mHC	J
     //   713: aload_0
     //   714: aload_0
-    //   715: getfield 197	com/tencent/mm/plugin/a/h:jQz	Lcom/tencent/mm/plugin/a/m;
+    //   715: getfield 197	com/tencent/mm/plugin/a/h:mHJ	Lcom/tencent/mm/plugin/a/m;
     //   718: getfield 201	com/tencent/mm/plugin/a/m:duration	J
     //   721: putfield 56	com/tencent/mm/plugin/a/h:duration	J
     //   724: new 203	java/lang/StringBuilder
@@ -389,7 +389,7 @@ public final class h
     //   728: ldc 205
     //   730: invokespecial 208	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   733: aload_0
-    //   734: getfield 58	com/tencent/mm/plugin/a/h:jQs	J
+    //   734: getfield 58	com/tencent/mm/plugin/a/h:mHC	J
     //   737: invokevirtual 212	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   740: ldc 214
     //   742: invokevirtual 217	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -491,7 +491,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.a.h
  * JD-Core Version:    0.7.0.1
  */

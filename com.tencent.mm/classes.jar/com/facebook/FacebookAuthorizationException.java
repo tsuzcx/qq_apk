@@ -24,7 +24,7 @@ public class FacebookAuthorizationException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.FacebookAuthorizationException
  * JD-Core Version:    0.7.0.1
  */

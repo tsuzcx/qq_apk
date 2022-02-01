@@ -7,21 +7,23 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.tools.u;
+import com.tencent.mm.ui.tools.v;
 import junit.framework.Assert;
 
 public class AppHeaderPreference
   extends Preference
 {
-  private a FMq;
-  private boolean eeO = false;
-  private TextView gCd;
-  private ImageView gyr;
-  private boolean kac = false;
-  private TextView kib;
-  private TextView kuu;
+  private a Mgs;
+  private boolean fZd = false;
+  private ImageView jiu;
+  private TextView jmj;
+  private boolean mRv = false;
+  private TextView mZA;
+  private TextView nmi;
   
   public AppHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,8 +42,8 @@ public class AppHeaderPreference
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      this.FMq = parama;
-      this.eeO = paramBoolean;
+      this.Mgs = parama;
+      this.fZd = paramBoolean;
       AppMethodBeat.o(29134);
       return;
     }
@@ -50,83 +52,83 @@ public class AppHeaderPreference
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(29133);
-    this.gyr = ((ImageView)paramView.findViewById(2131299034));
-    this.gCd = ((TextView)paramView.findViewById(2131299084));
-    this.kib = ((TextView)paramView.findViewById(2131299068));
-    this.kuu = ((TextView)paramView.findViewById(2131299054));
-    this.kac = true;
-    if ((!this.kac) || (this.FMq == null)) {
-      Log.w("MicroMsg.HeaderPreference", "initView : bindView = " + this.kac);
+    this.jiu = ((ImageView)paramView.findViewById(R.h.contact_info_avatar_iv));
+    this.jmj = ((TextView)paramView.findViewById(R.h.contact_info_status_tv));
+    this.mZA = ((TextView)paramView.findViewById(R.h.contact_info_nickname_tv));
+    this.nmi = ((TextView)paramView.findViewById(R.h.contact_info_helper_hing_tv));
+    this.mRv = true;
+    if ((!this.mRv) || (this.Mgs == null)) {
+      Log.w("MicroMsg.HeaderPreference", "initView : bindView = " + this.mRv);
     }
     for (;;)
     {
       super.onBindView(paramView);
       AppMethodBeat.o(29133);
       return;
-      Object localObject = this.FMq.ftr();
-      if ((this.gyr != null) && (localObject != null) && (!((Bitmap)localObject).isRecycled())) {
-        this.gyr.setImageBitmap((Bitmap)localObject);
+      Object localObject = this.Mgs.ghR();
+      if ((this.jiu != null) && (localObject != null) && (!((Bitmap)localObject).isRecycled())) {
+        this.jiu.setImageBitmap((Bitmap)localObject);
       }
-      localObject = this.FMq.ftq();
-      if ((this.kib != null) && (localObject != null) && (((String)localObject).length() > 0)) {
-        this.kib.setText((CharSequence)localObject);
+      localObject = this.Mgs.ghQ();
+      if ((this.mZA != null) && (localObject != null) && (((String)localObject).length() > 0)) {
+        this.mZA.setText((CharSequence)localObject);
       }
-      localObject = this.FMq.getHint();
+      localObject = this.Mgs.getHint();
       if (localObject != null)
       {
-        this.kuu.setText((CharSequence)localObject);
-        this.kuu.setVisibility(0);
+        this.nmi.setText((CharSequence)localObject);
+        this.nmi.setVisibility(0);
       }
       for (;;)
       {
-        boolean bool = this.eeO;
-        if (this.gCd == null) {
+        boolean bool = this.fZd;
+        if (this.jmj == null) {
           break;
         }
-        localObject = this.FMq.wf(bool);
+        localObject = this.Mgs.zL(bool);
         if (!bool) {
-          break label314;
+          break label319;
         }
         if ((localObject == null) || (((String)localObject).length() <= 0)) {
-          break label302;
+          break label307;
         }
-        this.gCd.setTextColor(u.kF(this.mContext));
-        this.gCd.setText((CharSequence)localObject);
-        this.gCd.setCompoundDrawablesWithIntrinsicBounds(2131235049, 0, 0, 0);
+        this.jmj.setTextColor(v.lC(this.mContext));
+        this.jmj.setText((CharSequence)localObject);
+        this.jmj.setCompoundDrawablesWithIntrinsicBounds(R.g.status_enable, 0, 0, 0);
         break;
-        this.kuu.setVisibility(8);
+        this.nmi.setVisibility(8);
       }
-      label302:
-      this.gCd.setVisibility(8);
+      label307:
+      this.jmj.setVisibility(8);
       continue;
-      label314:
+      label319:
       if ((localObject != null) && (((String)localObject).length() > 0))
       {
-        this.gCd.setTextColor(u.kG(this.mContext));
-        this.gCd.setText((CharSequence)localObject);
-        this.gCd.setCompoundDrawablesWithIntrinsicBounds(2131235048, 0, 0, 0);
+        this.jmj.setTextColor(v.lD(this.mContext));
+        this.jmj.setText((CharSequence)localObject);
+        this.jmj.setCompoundDrawablesWithIntrinsicBounds(R.g.status_disable, 0, 0, 0);
       }
       else
       {
-        this.gCd.setVisibility(8);
+        this.jmj.setVisibility(8);
       }
     }
   }
   
   public static abstract interface a
   {
-    public abstract String ftq();
-    
-    public abstract Bitmap ftr();
-    
     public abstract String getHint();
     
-    public abstract String wf(boolean paramBoolean);
+    public abstract String ghQ();
+    
+    public abstract Bitmap ghR();
+    
+    public abstract String zL(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.openapi.AppHeaderPreference
  * JD-Core Version:    0.7.0.1
  */

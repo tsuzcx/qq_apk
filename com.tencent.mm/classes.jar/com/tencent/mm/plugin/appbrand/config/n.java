@@ -7,30 +7,30 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public enum n
 {
-  private static final a leP;
-  private static final a leQ;
+  private static final a nZc;
+  private static final a nZd;
   
   static
   {
     AppMethodBeat.i(147003);
-    leR = new n[0];
-    leP = new a((byte)0);
-    leQ = new a((byte)0);
+    nZe = new n[0];
+    nZc = new a((byte)0);
+    nZd = new a((byte)0);
     AppMethodBeat.o(147003);
   }
   
-  public static int Xg(String paramString)
+  public static int aeS(String paramString)
   {
     AppMethodBeat.i(147000);
-    int j = leP.Xi(paramString);
+    int j = nZc.aeU(paramString);
     i = j;
     if (j <= 0) {
       localObject = null;
     }
     try
     {
-      ab.bAu();
-      WxaAttributes localWxaAttributes = ab.e(paramString, new String[] { "dynamicInfo" });
+      ab.bLM();
+      WxaAttributes localWxaAttributes = ab.d(paramString, new String[] { "dynamicInfo" });
       localObject = localWxaAttributes;
     }
     catch (Exception localException)
@@ -39,7 +39,7 @@ public enum n
       {
         Log.printErrStackTrace("MicroMsg.AppServiceSettingsResolver", localException, "queryWithAppId(%s)", new Object[] { paramString });
         continue;
-        i = localObject.bAo().lgD.cza;
+        i = localObject.bLG().obf.cxI;
         continue;
         i = 5;
       }
@@ -51,25 +51,25 @@ public enum n
       if (localObject == null) {
         break label137;
       }
-      i = localObject.bAo().lgD.cza;
-      bw(paramString, i);
+      i = localObject.bLG().obf.cxI;
+      bP(paramString, i);
       AppMethodBeat.o(147000);
       return i * 1048576;
     }
   }
   
-  public static int Xh(String paramString)
+  public static int aeT(String paramString)
   {
     AppMethodBeat.i(147002);
-    int j = leQ.Xi(paramString);
+    int j = nZd.aeU(paramString);
     i = j;
     if (j <= 0) {
       localObject = null;
     }
     try
     {
-      ab.bAu();
-      WxaAttributes localWxaAttributes = ab.e(paramString, new String[] { "dynamicInfo" });
+      ab.bLM();
+      WxaAttributes localWxaAttributes = ab.d(paramString, new String[] { "dynamicInfo" });
       localObject = localWxaAttributes;
     }
     catch (Exception localException)
@@ -78,7 +78,7 @@ public enum n
       {
         Log.printErrStackTrace("MicroMsg.AppServiceSettingsResolver", localException, "queryWithAppId(%s)", new Object[] { paramString });
         continue;
-        i = localObject.bAo().lgD.lgF;
+        i = localObject.bLG().obf.obh;
         continue;
         i = 5;
       }
@@ -90,39 +90,39 @@ public enum n
       if (localObject == null) {
         break label137;
       }
-      i = localObject.bAo().lgD.lgF;
-      bx(paramString, i);
+      i = localObject.bLG().obf.obh;
+      bQ(paramString, i);
       AppMethodBeat.o(147002);
       return i * 1048576;
     }
   }
   
-  public static void bw(String paramString, int paramInt)
+  public static void bP(String paramString, int paramInt)
   {
     AppMethodBeat.i(146999);
-    leP.put(paramString, paramInt);
+    nZc.bR(paramString, paramInt);
     AppMethodBeat.o(146999);
   }
   
-  public static void bx(String paramString, int paramInt)
+  public static void bQ(String paramString, int paramInt)
   {
     AppMethodBeat.i(147001);
-    leQ.put(paramString, paramInt);
+    nZd.bR(paramString, paramInt);
     AppMethodBeat.o(147001);
   }
   
   static final class a
   {
-    private final SparseIntArray leS;
+    private final SparseIntArray nZf;
     
     private a()
     {
       AppMethodBeat.i(146994);
-      this.leS = new SparseIntArray();
+      this.nZf = new SparseIntArray();
       AppMethodBeat.o(146994);
     }
     
-    public final int Xi(String paramString)
+    public final int aeU(String paramString)
     {
       AppMethodBeat.i(146996);
       if (TextUtils.isEmpty(paramString))
@@ -130,15 +130,15 @@ public enum n
         AppMethodBeat.o(146996);
         return -1;
       }
-      synchronized (this.leS)
+      synchronized (this.nZf)
       {
-        int i = this.leS.get(paramString.hashCode(), -1);
+        int i = this.nZf.get(paramString.hashCode(), -1);
         AppMethodBeat.o(146996);
         return i;
       }
     }
     
-    public final void put(String paramString, int paramInt)
+    public final void bR(String paramString, int paramInt)
     {
       AppMethodBeat.i(146995);
       if (TextUtils.isEmpty(paramString))
@@ -146,9 +146,9 @@ public enum n
         AppMethodBeat.o(146995);
         return;
       }
-      synchronized (this.leS)
+      synchronized (this.nZf)
       {
-        this.leS.put(paramString.hashCode(), paramInt);
+        this.nZf.put(paramString.hashCode(), paramInt);
         AppMethodBeat.o(146995);
         return;
       }
@@ -157,7 +157,7 @@ public enum n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.n
  * JD-Core Version:    0.7.0.1
  */

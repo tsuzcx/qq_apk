@@ -6,6 +6,7 @@ import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.comm.c.b;
 import com.tencent.mm.pluginsdk.ui.applet.u;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -144,7 +145,7 @@ public class p
       this.mClickListener.a(paramView, this.mHrefInfo);
       this.mClickListener.mContext = null;
       if (this.mAdTagClickCallback != null) {
-        this.mAdTagClickCallback.iL(this.position, this.mAdTagClickScene);
+        this.mAdTagClickCallback.jU(this.position, this.mAdTagClickScene);
       }
       AppMethodBeat.o(152343);
       return;
@@ -179,16 +180,17 @@ public class p
     {
       AppMethodBeat.o(152342);
       return;
-      setColor(localContext.getResources().getColor(2131100169), localContext.getResources().getColor(2131099657));
+      setColor(localContext.getResources().getColor(c.b.chat_url_color), localContext.getResources().getColor(c.b.BW_0_Alpha_0_1));
       AppMethodBeat.o(152342);
       return;
-      setColor(localContext.getResources().getColor(2131100168), localContext.getResources().getColor(2131099657));
+      setColor(localContext.getResources().getColor(c.b.chat_to_url_color), localContext.getResources().getColor(c.b.BW_0_Alpha_0_1));
       AppMethodBeat.o(152342);
       return;
-      setColor(localContext.getResources().getColor(2131100063), localContext.getResources().getColor(2131101130));
+      setColor(localContext.getResources().getColor(c.b.brand_text_color), localContext.getResources().getColor(c.b.sns_link_bg_color));
       AppMethodBeat.o(152342);
       return;
-      setColor(localContext.getResources().getColor(2131101139), localContext.getResources().getColor(2131101130));
+      setColor(localContext.getResources().getColor(c.b.sns_lucky_item_gold), localContext.getResources().getColor(c.b.sns_link_bg_color));
+      setColor(localContext.getResources().getColor(c.b.red_packet_link_color), localContext.getResources().getColor(c.b.sns_link_bg_color));
     }
   }
   
@@ -245,7 +247,7 @@ public class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.span.p
  * JD-Core Version:    0.7.0.1
  */

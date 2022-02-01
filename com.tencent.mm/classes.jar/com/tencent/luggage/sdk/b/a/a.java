@@ -1,7 +1,7 @@
 package com.tencent.luggage.sdk.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Collection;
 import java.util.HashMap;
@@ -10,25 +10,25 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class a<ComponentImpType extends b, ComponentLogicImp extends a, Component extends f>
+public class a<ComponentImpType extends b, ComponentLogicImp extends a, Component extends e>
 {
-  private ConcurrentHashMap<String, Class<? extends ComponentLogicImp>> czl;
+  private ConcurrentHashMap<String, Class<? extends ComponentLogicImp>> cyh;
   
   public a()
   {
     AppMethodBeat.i(146714);
-    this.czl = new ConcurrentHashMap(2);
+    this.cyh = new ConcurrentHashMap(2);
     AppMethodBeat.o(146714);
   }
   
   public final ComponentLogicImp a(ComponentImpType paramComponentImpType, Component paramComponent)
   {
     AppMethodBeat.i(146716);
-    Class localClass = (Class)this.czl.get(paramComponentImpType.getClass().getName());
+    Class localClass = (Class)this.cyh.get(paramComponentImpType.getClass().getName());
     if (localClass != null) {
       try
       {
-        paramComponentImpType = (a)org.a.a.bF(localClass).ak(new Object[] { paramComponent }).object;
+        paramComponentImpType = (a)org.a.a.ce(localClass).ao(new Object[] { paramComponent }).object;
         AppMethodBeat.o(146716);
         return paramComponentImpType;
       }
@@ -47,26 +47,26 @@ public class a<ComponentImpType extends b, ComponentLogicImp extends a, Componen
   public final void a(ComponentImpType paramComponentImpType, Class<? extends ComponentLogicImp> paramClass)
   {
     AppMethodBeat.i(146715);
-    this.czl.put(paramComponentImpType.getClass().getName(), paramClass);
+    this.cyh.put(paramComponentImpType.getClass().getName(), paramClass);
     AppMethodBeat.o(146715);
   }
   
-  public static abstract class a<Component extends f>
+  public static abstract class a<Component extends e>
   {
-    protected Component czm;
-    protected final Map<Class, Object> czn = new HashMap(2);
+    private Component cyi;
+    private final Map<Class, Object> cyj = new HashMap(2);
     
     public a(Component paramComponent)
     {
-      this.czm = paramComponent;
+      this.cyi = paramComponent;
     }
     
-    public final Component NN()
+    public final Component QK()
     {
       try
       {
-        f localf = this.czm;
-        return localf;
+        e locale = this.cyi;
+        return locale;
       }
       finally
       {
@@ -75,23 +75,23 @@ public class a<ComponentImpType extends b, ComponentLogicImp extends a, Componen
       }
     }
     
-    protected final Collection<Object> NO()
+    protected final Collection<Object> QL()
     {
-      synchronized (this.czn)
+      synchronized (this.cyj)
       {
-        LinkedList localLinkedList = new LinkedList(this.czn.values());
+        LinkedList localLinkedList = new LinkedList(this.cyj.values());
         return localLinkedList;
       }
     }
     
-    public <T> T S(Class<T> paramClass)
+    public <T> T R(Class<T> paramClass)
     {
-      synchronized (this.czn)
+      synchronized (this.cyj)
       {
-        Object localObject1 = paramClass.cast(this.czn.get(paramClass));
+        Object localObject1 = paramClass.cast(this.cyj.get(paramClass));
         if (localObject1 == null)
         {
-          localObject1 = this.czn.values().iterator();
+          localObject1 = this.cyj.values().iterator();
           Object localObject2;
           do
           {
@@ -104,16 +104,33 @@ public class a<ComponentImpType extends b, ComponentLogicImp extends a, Componen
           return paramClass;
         }
         return localObject1;
+        return null;
       }
-      return null;
+    }
+    
+    protected final void a(a parama)
+    {
+      synchronized (this.cyj)
+      {
+        this.cyj.putAll(parama.cyj);
+        return;
+      }
     }
     
     protected final <T> void b(Class<T> paramClass, T paramT)
     {
-      synchronized (this.czn)
+      synchronized (this.cyj)
       {
-        this.czn.put(paramClass, paramT);
+        this.cyj.put(paramClass, paramT);
         return;
+      }
+    }
+    
+    protected final void cleanup()
+    {
+      synchronized (this.cyj)
+      {
+        this.cyj.clear();
       }
     }
   }
@@ -122,7 +139,7 @@ public class a<ComponentImpType extends b, ComponentLogicImp extends a, Componen
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,11 +7,14 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.honey_pay.a.k;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.dhd;
-import com.tencent.mm.protocal.protobuf.eig;
+import com.tencent.mm.protocal.protobuf.dqy;
+import com.tencent.mm.protocal.protobuf.esi;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.c.ah;
 import com.tencent.mm.wallet_core.c.r;
@@ -21,28 +24,28 @@ import com.tencent.mm.wallet_core.ui.WalletTextView;
 public class HoneyPayCardBackUI
   extends HoneyPayBaseUI
 {
-  private CdnImageView yjT;
-  private WalletTextView yjU;
-  private TextView yjV;
-  private TextView yjW;
-  private TextView yjX;
-  private String yjY;
-  private eig yjZ;
+  private CdnImageView DJV;
+  private WalletTextView DJW;
+  private TextView DJX;
+  private TextView DJY;
+  private TextView DJZ;
+  private String DKa;
+  private esi DKb;
   
   public int getLayoutId()
   {
-    return 2131495015;
+    return a.g.honey_pay_card_back_ui;
   }
   
   public void initView()
   {
     AppMethodBeat.i(64664);
-    this.yjT = ((CdnImageView)findViewById(2131302361));
-    this.yjU = ((WalletTextView)findViewById(2131302365));
-    this.yjV = ((TextView)findViewById(2131302366));
-    this.yjW = ((TextView)findViewById(2131302362));
-    this.yjX = ((TextView)findViewById(2131302364));
-    this.yjU.setPrefix(ah.hhz());
+    this.DJV = ((CdnImageView)findViewById(a.f.hpcb_avatar_iv));
+    this.DJW = ((WalletTextView)findViewById(a.f.hpcb_quota_remained_tv));
+    this.DJX = ((TextView)findViewById(a.f.hpcb_quota_tv));
+    this.DJY = ((TextView)findViewById(a.f.hpcb_card_type_name_tv));
+    this.DJZ = ((TextView)findViewById(a.f.hpcb_desc_tv));
+    this.DJW.setPrefix(ah.ijb());
     AppMethodBeat.o(64664);
   }
   
@@ -61,7 +64,7 @@ public class HoneyPayCardBackUI
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(64663);
-    this.wwG = 2131100598;
+    this.BkW = a.c.honey_pay_orange;
     fixStatusbar(true);
     super.onCreate(paramBundle);
     setMMTitle("");
@@ -78,11 +81,11 @@ public class HoneyPayCardBackUI
       }
     });
     addSceneEndListener(2851);
-    this.yjY = getIntent().getStringExtra("key_card_no");
+    this.DKa = getIntent().getStringExtra("key_card_no");
     initView();
-    Log.i(this.TAG, "do qry card detail: %s", new Object[] { this.yjY });
-    paramBundle = new k(this.yjY);
-    paramBundle.t(this);
+    Log.i(this.TAG, "do qry card detail: %s", new Object[] { this.DKa });
+    paramBundle = new k(this.DKa);
+    paramBundle.u(this);
     doSceneProgress(paramBundle, true);
     AppMethodBeat.o(64663);
   }
@@ -103,19 +106,19 @@ public class HoneyPayCardBackUI
       paramString = (k)paramq;
       paramString.a(new r.a()
       {
-        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+        public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
           AppMethodBeat.i(64662);
-          HoneyPayCardBackUI.a(HoneyPayCardBackUI.this, paramString.yjI.LUW);
-          HoneyPayCardBackUI.a(HoneyPayCardBackUI.this, paramString.yjI);
+          HoneyPayCardBackUI.a(HoneyPayCardBackUI.this, paramString.DJK.TdE);
+          HoneyPayCardBackUI.a(HoneyPayCardBackUI.this, paramString.DJK);
           AppMethodBeat.o(64662);
         }
       }).b(new r.a()
       {
-        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq) {}
+        public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq) {}
       }).c(new r.a()
       {
-        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq) {}
+        public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq) {}
       });
     }
     AppMethodBeat.o(64666);

@@ -1,14 +1,6 @@
 package com.tencent.mm.plugin.vlog.ui.plugin.caption;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.l;
-import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.RecyclerView.v;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +9,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.l;
+import androidx.recyclerview.widget.RecyclerView.s;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.c;
-import com.tencent.mm.protocal.protobuf.sy;
+import com.tencent.mm.plugin.recordvideo.b.d;
+import com.tencent.mm.plugin.recordvideo.b.e;
+import com.tencent.mm.plugin.recordvideo.b.f;
+import com.tencent.mm.plugin.recordvideo.b.g;
+import com.tencent.mm.protocal.protobuf.ta;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.au;
 import java.util.ArrayList;
 import java.util.List;
 import kotlin.a.j;
@@ -34,246 +37,246 @@ import kotlin.l;
 import kotlin.t;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "adapters", "", "Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$EditorCaptionAdapter;", "captionPanel", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "getCaptionPanel", "()Landroid/view/ViewGroup;", "captionPanel$delegate", "Lkotlin/Lazy;", "captionTab", "getCaptionTab", "captionTab$delegate", "captionTabIndicator", "Landroid/view/View;", "getCaptionTabIndicator", "()Landroid/view/View;", "captionTabIndicator$delegate", "captionTabSpace", "getCaptionTabSpace", "captionTabSpace$delegate", "captionTabText", "Landroid/widget/TextView;", "getCaptionTabText", "()Landroid/widget/TextView;", "captionTabText$delegate", "captionViews", "Landroid/support/v7/widget/RecyclerView;", "getCaptionViews", "()Ljava/util/List;", "captionViews$delegate", "clearRecordBtn", "getClearRecordBtn", "clearRecordBtn$delegate", "clearTransListener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "type", "", "hasTranslate", "", "getClearTransListener", "()Lkotlin/jvm/functions/Function2;", "setClearTransListener", "(Lkotlin/jvm/functions/Function2;)V", "contentLayout", "getContentLayout", "()Landroid/widget/LinearLayout;", "contentLayout$delegate", "curTab", "currentPos", "", "dismissListener", "Lkotlin/Function0;", "getDismissListener", "()Lkotlin/jvm/functions/Function0;", "setDismissListener", "(Lkotlin/jvm/functions/Function0;)V", "emptyLayout", "getEmptyLayout", "emptyLayout$delegate", "emptyTipTxt", "getEmptyTipTxt", "emptyTipTxt$delegate", "itemClickListener", "Lcom/tencent/mm/protocal/protobuf/CCTransResult;", "result", "getItemClickListener", "setItemClickListener", "loadingView", "getLoadingView", "loadingView$delegate", "onTouchingView", "recordCaptionPanel", "getRecordCaptionPanel", "recordCaptionPanel$delegate", "recordCaptionTab", "getRecordCaptionTab", "recordCaptionTab$delegate", "recordCaptionTabIndicator", "getRecordCaptionTabIndicator", "recordCaptionTabIndicator$delegate", "recordCaptionTabText", "getRecordCaptionTabText", "recordCaptionTabText$delegate", "recordContentLayout", "getRecordContentLayout", "recordContentLayout$delegate", "recordEmptyLayout", "getRecordEmptyLayout", "recordEmptyLayout$delegate", "recordLoadingView", "getRecordLoadingView", "recordLoadingView$delegate", "recordTransBtn", "getRecordTransBtn", "recordTransBtn$delegate", "startTransListener", "Lkotlin/Function1;", "getStartTransListener", "()Lkotlin/jvm/functions/Function1;", "setStartTransListener", "(Lkotlin/jvm/functions/Function1;)V", "transBtn", "getTransBtn", "transBtn$delegate", "videoPauseListener", "getVideoPauseListener", "setVideoPauseListener", "videoSeekListener", "", "timestampMs", "getVideoSeekListener", "setVideoSeekListener", "addCaptionItemData", "items", "clearCaption", "tip", "", "clearCaptionData", "disableRecordCaption", "enableRecordCaption", "ifCenter", "view", "notifyDataSetChanged", "scrollToMid", "scrollToTimeMs", "timeStampMs", "showCaption", "showLoading", "switchTab", "tabIndex", "time2Pos", "updateSelectItemData", "transResult", "CaptionScrollListener", "Companion", "EditorCaptionAdapter", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "adapters", "", "Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$EditorCaptionAdapter;", "captionPanel", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "getCaptionPanel", "()Landroid/view/ViewGroup;", "captionPanel$delegate", "Lkotlin/Lazy;", "captionTab", "getCaptionTab", "captionTab$delegate", "captionTabIndicator", "Landroid/view/View;", "getCaptionTabIndicator", "()Landroid/view/View;", "captionTabIndicator$delegate", "captionTabSpace", "getCaptionTabSpace", "captionTabSpace$delegate", "captionTabText", "Landroid/widget/TextView;", "getCaptionTabText", "()Landroid/widget/TextView;", "captionTabText$delegate", "captionViews", "Landroidx/recyclerview/widget/RecyclerView;", "getCaptionViews", "()Ljava/util/List;", "captionViews$delegate", "clearRecordBtn", "getClearRecordBtn", "clearRecordBtn$delegate", "clearTransListener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "type", "", "hasTranslate", "", "getClearTransListener", "()Lkotlin/jvm/functions/Function2;", "setClearTransListener", "(Lkotlin/jvm/functions/Function2;)V", "contentLayout", "getContentLayout", "()Landroid/widget/LinearLayout;", "contentLayout$delegate", "curTab", "currentPos", "", "dismissListener", "Lkotlin/Function0;", "getDismissListener", "()Lkotlin/jvm/functions/Function0;", "setDismissListener", "(Lkotlin/jvm/functions/Function0;)V", "emptyLayout", "getEmptyLayout", "emptyLayout$delegate", "emptyTipTxt", "getEmptyTipTxt", "emptyTipTxt$delegate", "itemClickListener", "Lcom/tencent/mm/protocal/protobuf/CCTransResult;", "result", "getItemClickListener", "setItemClickListener", "loadingView", "getLoadingView", "loadingView$delegate", "onTouchingView", "recordCaptionPanel", "getRecordCaptionPanel", "recordCaptionPanel$delegate", "recordCaptionTab", "getRecordCaptionTab", "recordCaptionTab$delegate", "recordCaptionTabIndicator", "getRecordCaptionTabIndicator", "recordCaptionTabIndicator$delegate", "recordCaptionTabText", "getRecordCaptionTabText", "recordCaptionTabText$delegate", "recordContentLayout", "getRecordContentLayout", "recordContentLayout$delegate", "recordEmptyLayout", "getRecordEmptyLayout", "recordEmptyLayout$delegate", "recordLoadingView", "getRecordLoadingView", "recordLoadingView$delegate", "recordTransBtn", "getRecordTransBtn", "recordTransBtn$delegate", "startTransListener", "Lkotlin/Function1;", "getStartTransListener", "()Lkotlin/jvm/functions/Function1;", "setStartTransListener", "(Lkotlin/jvm/functions/Function1;)V", "transBtn", "getTransBtn", "transBtn$delegate", "videoPauseListener", "getVideoPauseListener", "setVideoPauseListener", "videoSeekListener", "", "timestampMs", "getVideoSeekListener", "setVideoSeekListener", "addCaptionItemData", "items", "clearCaption", "tip", "", "clearCaptionData", "disableRecordCaption", "enableRecordCaption", "hasInit", "ifCenter", "view", "notifyDataSetChanged", "scrollToMid", "scrollToTimeMs", "timeStampMs", "showCaption", "showLoading", "switchTab", "tabIndex", "time2Pos", "updateSelectItemData", "transResult", "CaptionScrollListener", "Companion", "EditorCaptionAdapter", "plugin-vlog_release"})
 public final class d
   extends LinearLayout
 {
-  public static final d.b GLf;
-  private final f GKD;
-  private final f GKE;
-  private final f GKF;
-  private final f GKG;
-  private final f GKH;
-  private final f GKI;
-  private final f GKJ;
-  private final f GKK;
-  private final f GKL;
-  private final f GKM;
-  private final f GKN;
-  private final f GKO;
-  private final f GKP;
-  private final f GKQ;
-  private final f GKR;
-  private final f GKS;
-  private final f GKT;
-  private final f GKU;
-  private final f GKV;
-  final List<c> GKW;
-  private kotlin.g.a.a<x> GKX;
-  private kotlin.g.a.b<? super Long, x> GKY;
-  private kotlin.g.a.b<? super Integer, x> GKZ;
-  private m<? super Integer, ? super Boolean, x> GLa;
-  private kotlin.g.a.a<x> GLb;
-  private List<Integer> GLc;
-  private boolean GLd;
-  private int GLe;
-  private m<? super Integer, ? super sy, x> rsD;
-  private final f uZY;
+  public static final b NyF;
+  private m<? super Integer, ? super Boolean, x> NyA;
+  private kotlin.g.a.a<x> NyB;
+  private List<Integer> NyC;
+  private boolean NyD;
+  private int NyE;
+  private final f Nyd;
+  private final f Nye;
+  private final f Nyf;
+  private final f Nyg;
+  private final f Nyh;
+  private final f Nyi;
+  private final f Nyj;
+  private final f Nyk;
+  private final f Nyl;
+  private final f Nym;
+  private final f Nyn;
+  private final f Nyo;
+  private final f Nyp;
+  private final f Nyq;
+  private final f Nyr;
+  private final f Nys;
+  private final f Nyt;
+  private final f Nyu;
+  private final f Nyv;
+  final List<c> Nyw;
+  private kotlin.g.a.a<x> Nyx;
+  private kotlin.g.a.b<? super Long, x> Nyy;
+  private kotlin.g.a.b<? super Integer, x> Nyz;
+  m<? super Integer, ? super ta, x> uYj;
+  private final f zQn;
   
   static
   {
-    AppMethodBeat.i(191731);
-    GLf = new d.b((byte)0);
-    AppMethodBeat.o(191731);
+    AppMethodBeat.i(229435);
+    NyF = new b((byte)0);
+    AppMethodBeat.o(229435);
   }
   
   public d(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(191730);
-    this.GKD = g.ah((kotlin.g.a.a)new e(this));
-    this.GKE = g.ah((kotlin.g.a.a)new h(this));
-    this.GKF = g.ah((kotlin.g.a.a)new f(this));
-    this.GKG = g.ah((kotlin.g.a.a)new p(this));
-    this.GKH = g.ah((kotlin.g.a.a)new r(this));
-    this.GKI = g.ah((kotlin.g.a.a)new q(this));
-    this.GKJ = g.ah((kotlin.g.a.a)new g(this));
-    this.GKK = g.ah((kotlin.g.a.a)new d(this));
-    this.GKL = g.ah((kotlin.g.a.a)new o(this));
-    this.GKM = g.ah((kotlin.g.a.a)new w(this));
-    this.GKN = g.ah((kotlin.g.a.a)new v(this));
-    this.GKO = g.ah((kotlin.g.a.a)new s(this));
-    this.GKP = g.ah((kotlin.g.a.a)new u(this));
-    this.GKQ = g.ah((kotlin.g.a.a)new t(this));
-    this.GKR = g.ah((kotlin.g.a.a)new j(this));
-    this.GKS = g.ah((kotlin.g.a.a)new i(this));
-    this.GKT = g.ah((kotlin.g.a.a)new l(this));
-    this.GKU = g.ah((kotlin.g.a.a)new m(this));
-    this.uZY = g.ah((kotlin.g.a.a)new k(this));
-    this.GKV = g.ah((kotlin.g.a.a)new n(this));
-    this.GKW = j.listOf(new c[] { new c(0, paramContext), new c(1, paramContext) });
-    this.GLc = j.mutableListOf(new Integer[] { Integer.valueOf(0), Integer.valueOf(0) });
-    LayoutInflater.from(paramContext).inflate(2131493895, (ViewGroup)this, true);
-    setBackgroundResource(2131231174);
+    AppMethodBeat.i(229433);
+    this.Nyd = g.ar((kotlin.g.a.a)new e(this));
+    this.Nye = g.ar((kotlin.g.a.a)new h(this));
+    this.Nyf = g.ar((kotlin.g.a.a)new f(this));
+    this.Nyg = g.ar((kotlin.g.a.a)new p(this));
+    this.Nyh = g.ar((kotlin.g.a.a)new r(this));
+    this.Nyi = g.ar((kotlin.g.a.a)new q(this));
+    this.Nyj = g.ar((kotlin.g.a.a)new g(this));
+    this.Nyk = g.ar((kotlin.g.a.a)new d(this));
+    this.Nyl = g.ar((kotlin.g.a.a)new o(this));
+    this.Nym = g.ar((kotlin.g.a.a)new w(this));
+    this.Nyn = g.ar((kotlin.g.a.a)new v(this));
+    this.Nyo = g.ar((kotlin.g.a.a)new s(this));
+    this.Nyp = g.ar((kotlin.g.a.a)new u(this));
+    this.Nyq = g.ar((kotlin.g.a.a)new t(this));
+    this.Nyr = g.ar((kotlin.g.a.a)new j(this));
+    this.Nys = g.ar((kotlin.g.a.a)new i(this));
+    this.Nyt = g.ar((kotlin.g.a.a)new l(this));
+    this.Nyu = g.ar((kotlin.g.a.a)new m(this));
+    this.zQn = g.ar((kotlin.g.a.a)new k(this));
+    this.Nyv = g.ar((kotlin.g.a.a)new n(this));
+    this.Nyw = j.listOf(new c[] { new c(0, paramContext), new c(1, paramContext) });
+    this.NyC = j.mutableListOf(new Integer[] { Integer.valueOf(0), Integer.valueOf(0) });
+    LayoutInflater.from(paramContext).inflate(b.f.editor_text_caption_view, (ViewGroup)this, true);
+    setBackgroundResource(b.d.bg_black_corner);
     setOrientation(1);
     Object localObject = getContentLayout();
-    p.g(localObject, "contentLayout");
+    p.j(localObject, "contentLayout");
     ((LinearLayout)localObject).setVisibility(4);
     localObject = getEmptyLayout();
-    p.g(localObject, "emptyLayout");
+    p.j(localObject, "emptyLayout");
     ((LinearLayout)localObject).setVisibility(0);
     getCaptionTab().setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(191663);
+        AppMethodBeat.i(243548);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        d.c(this.GLg, 0);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        d.c(this.NyG, 0);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(191663);
+        AppMethodBeat.o(243548);
       }
     });
     getRecordCaptionTab().setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(191664);
+        AppMethodBeat.i(251891);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        d.c(this.GLg, 1);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        d.c(this.NyG, 1);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(191664);
+        AppMethodBeat.o(251891);
       }
     });
-    findViewById(2131297975).setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    findViewById(b.e.caption_close).setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(191665);
+        AppMethodBeat.i(251375);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        paramAnonymousView = this.GLg.getDismissListener();
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        paramAnonymousView = this.NyG.getDismissListener();
         if (paramAnonymousView != null) {
           paramAnonymousView.invoke();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(191665);
+        AppMethodBeat.o(251375);
       }
     });
-    findViewById(2131309388).setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    findViewById(b.e.trans_btn).setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(191666);
+        AppMethodBeat.i(248554);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        paramAnonymousView = d.e(this.GLg);
-        p.g(paramAnonymousView, "contentLayout");
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        paramAnonymousView = d.e(this.NyG);
+        p.j(paramAnonymousView, "contentLayout");
         paramAnonymousView.setVisibility(0);
-        paramAnonymousView = d.f(this.GLg);
-        p.g(paramAnonymousView, "emptyLayout");
+        paramAnonymousView = d.f(this.NyG);
+        p.j(paramAnonymousView, "emptyLayout");
         paramAnonymousView.setVisibility(4);
-        paramAnonymousView = this.GLg.getStartTransListener();
+        paramAnonymousView = this.NyG.getStartTransListener();
         if (paramAnonymousView != null) {
           paramAnonymousView.invoke(Integer.valueOf(0));
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(191666);
+        AppMethodBeat.o(248554);
       }
     });
-    findViewById(2131298745).setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    findViewById(b.e.clear_caption).setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(191667);
+        AppMethodBeat.i(250108);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        d.a(this.GLg, 0);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        d.a(this.NyG, 0);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(191667);
+        AppMethodBeat.o(250108);
       }
     });
     getRecordTransBtn().setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(191668);
+        AppMethodBeat.i(244203);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        paramAnonymousView = d.g(this.GLg);
-        p.g(paramAnonymousView, "recordContentLayout");
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        paramAnonymousView = d.g(this.NyG);
+        p.j(paramAnonymousView, "recordContentLayout");
         paramAnonymousView.setVisibility(0);
-        paramAnonymousView = d.h(this.GLg);
-        p.g(paramAnonymousView, "recordEmptyLayout");
+        paramAnonymousView = d.h(this.NyG);
+        p.j(paramAnonymousView, "recordEmptyLayout");
         paramAnonymousView.setVisibility(4);
-        paramAnonymousView = this.GLg.getStartTransListener();
+        paramAnonymousView = this.NyG.getStartTransListener();
         if (paramAnonymousView != null) {
           paramAnonymousView.invoke(Integer.valueOf(1));
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(191668);
+        AppMethodBeat.o(244203);
       }
     });
     getClearRecordBtn().setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(191669);
+        AppMethodBeat.i(223890);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        d.a(this.GLg, 1);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        d.a(this.NyG, 1);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(191669);
+        AppMethodBeat.o(223890);
       }
     });
     int i = 0;
     while (i < 2)
     {
       localObject = getCaptionViews().get(i);
-      p.g(localObject, "captionViews[i]");
+      p.j(localObject, "captionViews[i]");
       ((RecyclerView)localObject).setLayoutManager((RecyclerView.LayoutManager)new EditorCaptionLayoutManager(paramContext));
       localObject = getCaptionViews().get(i);
-      p.g(localObject, "captionViews[i]");
-      ((RecyclerView)localObject).setAdapter((RecyclerView.a)this.GKW.get(i));
+      p.j(localObject, "captionViews[i]");
+      ((RecyclerView)localObject).setAdapter((RecyclerView.a)this.Nyw.get(i));
       ((RecyclerView)getCaptionViews().get(i)).a((RecyclerView.l)new a(i));
       i += 1;
     }
-    AppMethodBeat.o(191730);
+    AppMethodBeat.o(229433);
   }
   
-  private final int aM(int paramInt, long paramLong)
+  private final int aY(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(191728);
-    if (((Number)this.GLc.get(paramInt)).intValue() >= ((c)this.GKW.get(paramInt)).GKy.size())
+    AppMethodBeat.i(229430);
+    if (((Number)this.NyC.get(paramInt)).intValue() >= ((c)this.Nyw.get(paramInt)).NxY.size())
     {
       Log.i("MicroMsg.EditorTextCaptionView", "maybe clear captionItems");
-      this.GLc.set(paramInt, Integer.valueOf(((c)this.GKW.get(paramInt)).GKy.size() - 1));
+      this.NyC.set(paramInt, Integer.valueOf(((c)this.Nyw.get(paramInt)).NxY.size() - 1));
     }
     int i;
-    if (((sy)((c)this.GKW.get(paramInt)).GKy.get(((Number)this.GLc.get(paramInt)).intValue())).LaT > paramLong)
+    if (((ta)((c)this.Nyw.get(paramInt)).NxY.get(((Number)this.NyC.get(paramInt)).intValue())).Scf > paramLong)
     {
-      this.GLc.set(paramInt, Integer.valueOf(0));
+      this.NyC.set(paramInt, Integer.valueOf(0));
       i = 1;
     }
     for (;;)
     {
       Object localObject;
-      if (((sy)((c)this.GKW.get(paramInt)).GKy.get(((Number)this.GLc.get(paramInt)).intValue())).LaU < paramLong)
+      if (((ta)((c)this.Nyw.get(paramInt)).NxY.get(((Number)this.NyC.get(paramInt)).intValue())).Scg < paramLong)
       {
-        localObject = this.GLc;
+        localObject = this.NyC;
         ((List)localObject).set(paramInt, Integer.valueOf(((Number)((List)localObject).get(paramInt)).intValue() + 1));
       }
       else
       {
-        ((c)this.GKW.get(paramInt)).ady = ((Number)this.GLc.get(paramInt)).intValue();
+        ((c)this.Nyw.get(paramInt)).agM = ((Number)this.NyC.get(paramInt)).intValue();
         if (i != 0)
         {
           localObject = (RecyclerView)getCaptionViews().get(paramInt);
-          com.tencent.mm.hellhoundlib.b.a locala = c.a(((Number)this.GLc.get(paramInt)).intValue(), new com.tencent.mm.hellhoundlib.b.a());
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.axQ(), "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView", "time2Pos", "(IJ)I", "Undefined", "scrollToPosition", "(I)V");
-          ((RecyclerView)localObject).scrollToPosition(((Integer)locala.pG(0)).intValue());
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView", "time2Pos", "(IJ)I", "Undefined", "scrollToPosition", "(I)V");
+          com.tencent.mm.hellhoundlib.b.a locala = c.a(((Number)this.NyC.get(paramInt)).intValue(), new com.tencent.mm.hellhoundlib.b.a());
+          com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aFh(), "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView", "time2Pos", "(IJ)I", "Undefined", "scrollToPosition", "(I)V");
+          ((RecyclerView)localObject).scrollToPosition(((Integer)locala.sf(0)).intValue());
+          com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView", "time2Pos", "(IJ)I", "Undefined", "scrollToPosition", "(I)V");
         }
-        paramInt = ((Number)this.GLc.get(paramInt)).intValue();
-        AppMethodBeat.o(191728);
+        paramInt = ((Number)this.NyC.get(paramInt)).intValue();
+        AppMethodBeat.o(229430);
         return paramInt;
         i = 0;
       }
@@ -282,185 +285,173 @@ public final class d
   
   private final ViewGroup getCaptionPanel()
   {
-    AppMethodBeat.i(191710);
-    ViewGroup localViewGroup = (ViewGroup)this.GKK.getValue();
-    AppMethodBeat.o(191710);
+    AppMethodBeat.i(229378);
+    ViewGroup localViewGroup = (ViewGroup)this.Nyk.getValue();
+    AppMethodBeat.o(229378);
     return localViewGroup;
   }
   
   private final ViewGroup getCaptionTab()
   {
-    AppMethodBeat.i(191703);
-    ViewGroup localViewGroup = (ViewGroup)this.GKD.getValue();
-    AppMethodBeat.o(191703);
+    AppMethodBeat.i(229369);
+    ViewGroup localViewGroup = (ViewGroup)this.Nyd.getValue();
+    AppMethodBeat.o(229369);
     return localViewGroup;
+  }
+  
+  private final View getCaptionTabIndicator()
+  {
+    AppMethodBeat.i(229371);
+    View localView = (View)this.Nyf.getValue();
+    AppMethodBeat.o(229371);
+    return localView;
+  }
+  
+  private final View getCaptionTabSpace()
+  {
+    AppMethodBeat.i(229376);
+    View localView = (View)this.Nyj.getValue();
+    AppMethodBeat.o(229376);
+    return localView;
+  }
+  
+  private final TextView getCaptionTabText()
+  {
+    AppMethodBeat.i(229370);
+    TextView localTextView = (TextView)this.Nye.getValue();
+    AppMethodBeat.o(229370);
+    return localTextView;
   }
   
   private final List<RecyclerView> getCaptionViews()
   {
-    AppMethodBeat.i(191718);
-    List localList = (List)this.GKS.getValue();
-    AppMethodBeat.o(191718);
+    AppMethodBeat.i(229395);
+    List localList = (List)this.Nys.getValue();
+    AppMethodBeat.o(229395);
     return localList;
   }
   
   private final ViewGroup getClearRecordBtn()
   {
-    AppMethodBeat.i(191717);
-    ViewGroup localViewGroup = (ViewGroup)this.GKR.getValue();
-    AppMethodBeat.o(191717);
+    AppMethodBeat.i(229393);
+    ViewGroup localViewGroup = (ViewGroup)this.Nyr.getValue();
+    AppMethodBeat.o(229393);
     return localViewGroup;
   }
   
   private final TextView getEmptyTipTxt()
   {
-    AppMethodBeat.i(191720);
-    TextView localTextView = (TextView)this.GKU.getValue();
-    AppMethodBeat.o(191720);
+    AppMethodBeat.i(229398);
+    TextView localTextView = (TextView)this.Nyu.getValue();
+    AppMethodBeat.o(229398);
     return localTextView;
   }
   
   private final ViewGroup getRecordCaptionPanel()
   {
-    AppMethodBeat.i(191711);
-    ViewGroup localViewGroup = (ViewGroup)this.GKL.getValue();
-    AppMethodBeat.o(191711);
+    AppMethodBeat.i(229379);
+    ViewGroup localViewGroup = (ViewGroup)this.Nyl.getValue();
+    AppMethodBeat.o(229379);
+    return localViewGroup;
+  }
+  
+  private final ViewGroup getRecordCaptionTab()
+  {
+    AppMethodBeat.i(229372);
+    ViewGroup localViewGroup = (ViewGroup)this.Nyg.getValue();
+    AppMethodBeat.o(229372);
     return localViewGroup;
   }
   
   private final View getRecordCaptionTabIndicator()
   {
-    AppMethodBeat.i(191708);
-    View localView = (View)this.GKI.getValue();
-    AppMethodBeat.o(191708);
+    AppMethodBeat.i(229375);
+    View localView = (View)this.Nyi.getValue();
+    AppMethodBeat.o(229375);
     return localView;
   }
   
   private final TextView getRecordCaptionTabText()
   {
-    AppMethodBeat.i(191707);
-    TextView localTextView = (TextView)this.GKH.getValue();
-    AppMethodBeat.o(191707);
+    AppMethodBeat.i(229374);
+    TextView localTextView = (TextView)this.Nyh.getValue();
+    AppMethodBeat.o(229374);
     return localTextView;
   }
   
   private final TextView getRecordTransBtn()
   {
-    AppMethodBeat.i(191713);
-    TextView localTextView = (TextView)this.GKN.getValue();
-    AppMethodBeat.o(191713);
+    AppMethodBeat.i(229385);
+    TextView localTextView = (TextView)this.Nyn.getValue();
+    AppMethodBeat.o(229385);
     return localTextView;
   }
   
-  final void VT(int paramInt)
+  private final TextView getTransBtn()
   {
-    AppMethodBeat.i(191729);
-    this.GLe = paramInt;
-    if (this.GLe == 0)
-    {
-      localObject = getCaptionTabIndicator();
-      p.g(localObject, "captionTabIndicator");
-      ((View)localObject).setVisibility(0);
-      localObject = getRecordCaptionTabIndicator();
-      p.g(localObject, "recordCaptionTabIndicator");
-      ((View)localObject).setVisibility(4);
-      localObject = getCaptionTabText();
-      localContext = getContext();
-      p.g(localContext, "context");
-      ((TextView)localObject).setTextColor(localContext.getResources().getColor(2131101427));
-      localObject = getRecordCaptionTabText();
-      localContext = getContext();
-      p.g(localContext, "context");
-      ((TextView)localObject).setTextColor(localContext.getResources().getColor(2131101428));
-      localObject = getCaptionPanel();
-      p.g(localObject, "captionPanel");
-      ((ViewGroup)localObject).setVisibility(0);
-      localObject = getRecordCaptionPanel();
-      p.g(localObject, "recordCaptionPanel");
-      ((ViewGroup)localObject).setVisibility(8);
-      AppMethodBeat.o(191729);
-      return;
-    }
-    Object localObject = getCaptionTabIndicator();
-    p.g(localObject, "captionTabIndicator");
-    ((View)localObject).setVisibility(4);
-    localObject = getRecordCaptionTabIndicator();
-    p.g(localObject, "recordCaptionTabIndicator");
-    ((View)localObject).setVisibility(0);
-    localObject = getCaptionTabText();
-    Context localContext = getContext();
-    p.g(localContext, "context");
-    ((TextView)localObject).setTextColor(localContext.getResources().getColor(2131101428));
-    localObject = getRecordCaptionTabText();
-    localContext = getContext();
-    p.g(localContext, "context");
-    ((TextView)localObject).setTextColor(localContext.getResources().getColor(2131101427));
-    localObject = getCaptionPanel();
-    p.g(localObject, "captionPanel");
-    ((ViewGroup)localObject).setVisibility(8);
-    localObject = getRecordCaptionPanel();
-    p.g(localObject, "recordCaptionPanel");
-    ((ViewGroup)localObject).setVisibility(0);
-    AppMethodBeat.o(191729);
+    AppMethodBeat.i(229382);
+    TextView localTextView = (TextView)this.Nym.getValue();
+    AppMethodBeat.o(229382);
+    return localTextView;
   }
   
-  public final void aL(int paramInt, long paramLong)
+  public final void aX(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(191727);
-    if ((this.GLd) || (((c)this.GKW.get(paramInt)).GKy.isEmpty()))
+    AppMethodBeat.i(229427);
+    if ((this.NyD) || (((c)this.Nyw.get(paramInt)).NxY.isEmpty()))
     {
-      AppMethodBeat.o(191727);
+      AppMethodBeat.o(229427);
       return;
     }
-    int i = ((Number)this.GLc.get(paramInt)).intValue();
-    aM(paramInt, paramLong);
+    int i = ((Number)this.NyC.get(paramInt)).intValue();
+    aY(paramInt, paramLong);
     Object localObject = getCaptionViews().get(paramInt);
-    p.g(localObject, "captionViews[type]");
+    p.j(localObject, "captionViews[type]");
     localObject = ((RecyclerView)localObject).getLayoutManager();
     if (localObject != null)
     {
-      ((RecyclerView.LayoutManager)localObject).smoothScrollToPosition((RecyclerView)getCaptionViews().get(paramInt), new RecyclerView.s(), ((Number)this.GLc.get(paramInt)).intValue());
-      this.GKW.get(paramInt);
-      c.fZ(((RecyclerView.LayoutManager)localObject).findViewByPosition(i));
-      this.GKW.get(paramInt);
-      c.fY(((RecyclerView.LayoutManager)localObject).findViewByPosition(((Number)this.GLc.get(paramInt)).intValue()));
-      AppMethodBeat.o(191727);
+      ((RecyclerView.LayoutManager)localObject).smoothScrollToPosition((RecyclerView)getCaptionViews().get(paramInt), new RecyclerView.s(), ((Number)this.NyC.get(paramInt)).intValue());
+      this.Nyw.get(paramInt);
+      c.hi(((RecyclerView.LayoutManager)localObject).findViewByPosition(i));
+      this.Nyw.get(paramInt);
+      c.hh(((RecyclerView.LayoutManager)localObject).findViewByPosition(((Number)this.NyC.get(paramInt)).intValue()));
+      AppMethodBeat.o(229427);
       return;
     }
-    AppMethodBeat.o(191727);
+    AppMethodBeat.o(229427);
   }
   
-  final void acH(int paramInt)
+  final void akq(int paramInt)
   {
-    AppMethodBeat.i(191725);
-    ((c)this.GKW.get(paramInt)).GKy.clear();
-    AppMethodBeat.o(191725);
+    AppMethodBeat.i(229420);
+    ((c)this.Nyw.get(paramInt)).NxY.clear();
+    AppMethodBeat.o(229420);
   }
   
-  public final void acI(int paramInt)
+  public final void akr(int paramInt)
   {
-    AppMethodBeat.i(191726);
-    ((c)this.GKW.get(paramInt)).notifyDataSetChanged();
-    AppMethodBeat.o(191726);
+    AppMethodBeat.i(229424);
+    ((c)this.Nyw.get(paramInt)).notifyDataSetChanged();
+    AppMethodBeat.o(229424);
   }
   
-  public final void cE(int paramInt, String paramString)
+  public final void cF(int paramInt, String paramString)
   {
     boolean bool = false;
-    AppMethodBeat.i(191723);
-    acH(paramInt);
-    acI(paramInt);
+    AppMethodBeat.i(229415);
+    akq(paramInt);
+    akr(paramInt);
     Object localObject;
     if (paramInt == 0)
     {
       localObject = getLoadingView();
-      p.g(localObject, "loadingView");
+      p.j(localObject, "loadingView");
       ((View)localObject).setVisibility(4);
       localObject = getContentLayout();
-      p.g(localObject, "contentLayout");
+      p.j(localObject, "contentLayout");
       ((LinearLayout)localObject).setVisibility(4);
       localObject = getEmptyLayout();
-      p.g(localObject, "emptyLayout");
+      p.j(localObject, "emptyLayout");
       ((LinearLayout)localObject).setVisibility(0);
     }
     for (;;)
@@ -468,19 +459,19 @@ public final class d
       if (paramString != null)
       {
         localObject = getEmptyTipTxt();
-        p.g(localObject, "emptyTipTxt");
+        p.j(localObject, "emptyTipTxt");
         ((TextView)localObject).setText((CharSequence)paramString);
       }
-      paramString = this.GLa;
+      paramString = this.NyA;
       if (paramString == null) {
         break;
       }
       localObject = getEmptyLayout();
-      p.g(localObject, "emptyLayout");
+      p.j(localObject, "emptyLayout");
       if (((LinearLayout)localObject).getVisibility() != 4)
       {
         localObject = getRecordEmptyLayout();
-        p.g(localObject, "recordEmptyLayout");
+        p.j(localObject, "recordEmptyLayout");
         if (((ViewGroup)localObject).getVisibility() != 4) {}
       }
       else
@@ -488,170 +479,130 @@ public final class d
         bool = true;
       }
       paramString.invoke(Integer.valueOf(paramInt), Boolean.valueOf(bool));
-      AppMethodBeat.o(191723);
+      AppMethodBeat.o(229415);
       return;
       localObject = getRecordLoadingView();
-      p.g(localObject, "recordLoadingView");
+      p.j(localObject, "recordLoadingView");
       ((View)localObject).setVisibility(4);
       localObject = getRecordContentLayout();
-      p.g(localObject, "recordContentLayout");
+      p.j(localObject, "recordContentLayout");
       ((ViewGroup)localObject).setVisibility(4);
       localObject = getRecordEmptyLayout();
-      p.g(localObject, "recordEmptyLayout");
+      p.j(localObject, "recordEmptyLayout");
       ((ViewGroup)localObject).setVisibility(0);
     }
-    AppMethodBeat.o(191723);
-  }
-  
-  final View getCaptionTabIndicator()
-  {
-    AppMethodBeat.i(191705);
-    View localView = (View)this.GKF.getValue();
-    AppMethodBeat.o(191705);
-    return localView;
-  }
-  
-  final View getCaptionTabSpace()
-  {
-    AppMethodBeat.i(191709);
-    View localView = (View)this.GKJ.getValue();
-    AppMethodBeat.o(191709);
-    return localView;
-  }
-  
-  final TextView getCaptionTabText()
-  {
-    AppMethodBeat.i(191704);
-    TextView localTextView = (TextView)this.GKE.getValue();
-    AppMethodBeat.o(191704);
-    return localTextView;
+    AppMethodBeat.o(229415);
   }
   
   public final m<Integer, Boolean, x> getClearTransListener()
   {
-    return this.GLa;
+    return this.NyA;
   }
   
   final LinearLayout getContentLayout()
   {
-    AppMethodBeat.i(191721);
-    LinearLayout localLinearLayout = (LinearLayout)this.uZY.getValue();
-    AppMethodBeat.o(191721);
+    AppMethodBeat.i(229400);
+    LinearLayout localLinearLayout = (LinearLayout)this.zQn.getValue();
+    AppMethodBeat.o(229400);
     return localLinearLayout;
   }
   
   public final kotlin.g.a.a<x> getDismissListener()
   {
-    return this.GLb;
+    return this.NyB;
   }
   
   final LinearLayout getEmptyLayout()
   {
-    AppMethodBeat.i(191719);
-    LinearLayout localLinearLayout = (LinearLayout)this.GKT.getValue();
-    AppMethodBeat.o(191719);
+    AppMethodBeat.i(229396);
+    LinearLayout localLinearLayout = (LinearLayout)this.Nyt.getValue();
+    AppMethodBeat.o(229396);
     return localLinearLayout;
   }
   
-  public final m<Integer, sy, x> getItemClickListener()
+  public final m<Integer, ta, x> getItemClickListener()
   {
-    return this.rsD;
+    return this.uYj;
   }
   
   final View getLoadingView()
   {
-    AppMethodBeat.i(191722);
-    View localView = (View)this.GKV.getValue();
-    AppMethodBeat.o(191722);
+    AppMethodBeat.i(229402);
+    View localView = (View)this.Nyv.getValue();
+    AppMethodBeat.o(229402);
     return localView;
-  }
-  
-  final ViewGroup getRecordCaptionTab()
-  {
-    AppMethodBeat.i(191706);
-    ViewGroup localViewGroup = (ViewGroup)this.GKG.getValue();
-    AppMethodBeat.o(191706);
-    return localViewGroup;
   }
   
   final ViewGroup getRecordContentLayout()
   {
-    AppMethodBeat.i(191714);
-    ViewGroup localViewGroup = (ViewGroup)this.GKO.getValue();
-    AppMethodBeat.o(191714);
+    AppMethodBeat.i(229387);
+    ViewGroup localViewGroup = (ViewGroup)this.Nyo.getValue();
+    AppMethodBeat.o(229387);
     return localViewGroup;
   }
   
   final ViewGroup getRecordEmptyLayout()
   {
-    AppMethodBeat.i(191716);
-    ViewGroup localViewGroup = (ViewGroup)this.GKQ.getValue();
-    AppMethodBeat.o(191716);
+    AppMethodBeat.i(229391);
+    ViewGroup localViewGroup = (ViewGroup)this.Nyq.getValue();
+    AppMethodBeat.o(229391);
     return localViewGroup;
   }
   
   final View getRecordLoadingView()
   {
-    AppMethodBeat.i(191715);
-    View localView = (View)this.GKP.getValue();
-    AppMethodBeat.o(191715);
+    AppMethodBeat.i(229390);
+    View localView = (View)this.Nyp.getValue();
+    AppMethodBeat.o(229390);
     return localView;
   }
   
   public final kotlin.g.a.b<Integer, x> getStartTransListener()
   {
-    return this.GKZ;
-  }
-  
-  final TextView getTransBtn()
-  {
-    AppMethodBeat.i(191712);
-    TextView localTextView = (TextView)this.GKM.getValue();
-    AppMethodBeat.o(191712);
-    return localTextView;
+    return this.Nyz;
   }
   
   public final kotlin.g.a.a<x> getVideoPauseListener()
   {
-    return this.GKX;
+    return this.Nyx;
   }
   
   public final kotlin.g.a.b<Long, x> getVideoSeekListener()
   {
-    return this.GKY;
+    return this.Nyy;
   }
   
   public final void setClearTransListener(m<? super Integer, ? super Boolean, x> paramm)
   {
-    this.GLa = paramm;
+    this.NyA = paramm;
   }
   
   public final void setDismissListener(kotlin.g.a.a<x> parama)
   {
-    this.GLb = parama;
+    this.NyB = parama;
   }
   
-  public final void setItemClickListener(m<? super Integer, ? super sy, x> paramm)
+  public final void setItemClickListener(m<? super Integer, ? super ta, x> paramm)
   {
-    this.rsD = paramm;
+    this.uYj = paramm;
   }
   
   public final void setStartTransListener(kotlin.g.a.b<? super Integer, x> paramb)
   {
-    this.GKZ = paramb;
+    this.Nyz = paramb;
   }
   
   public final void setVideoPauseListener(kotlin.g.a.a<x> parama)
   {
-    this.GKX = parama;
+    this.Nyx = parama;
   }
   
   public final void setVideoSeekListener(kotlin.g.a.b<? super Long, x> paramb)
   {
-    this.GKY = paramb;
+    this.Nyy = paramb;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$CaptionScrollListener;", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "type", "", "(Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView;I)V", "getType", "()I", "onScrollStateChanged", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "newState", "onScrolled", "dx", "dy", "plugin-vlog_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$CaptionScrollListener;", "Landroidx/recyclerview/widget/RecyclerView$OnScrollListener;", "type", "", "(Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView;I)V", "getType", "()I", "onScrollStateChanged", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "newState", "onScrolled", "dx", "dy", "plugin-vlog_release"})
   public final class a
     extends RecyclerView.l
   {
@@ -665,12 +616,12 @@ public final class d
     
     public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
     {
-      AppMethodBeat.i(191670);
+      AppMethodBeat.i(250866);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramRecyclerView);
-      localb.pH(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$CaptionScrollListener", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.axR());
-      p.h(paramRecyclerView, "recyclerView");
+      localb.bn(paramRecyclerView);
+      localb.sg(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$CaptionScrollListener", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
+      p.k(paramRecyclerView, "recyclerView");
       super.onScrollStateChanged(paramRecyclerView, paramInt);
       switch (paramInt)
       {
@@ -679,8 +630,8 @@ public final class d
       {
         for (;;)
         {
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$CaptionScrollListener", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-          AppMethodBeat.o(191670);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$CaptionScrollListener", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
+          AppMethodBeat.o(250866);
           return;
           Log.d("MicroMsg.EditorTextCaptionView", "SCROLL_STATE_DRAGGING");
           d.a(d.this, true);
@@ -690,7 +641,7 @@ public final class d
           }
         }
       } while (!d.a(d.this));
-      long l = ((sy)((d.c)d.b(d.this).get(this.type)).GKy.get(((Number)d.c(d.this).get(this.type)).intValue())).LaT;
+      long l = ((ta)((d.c)d.b(d.this).get(this.type)).NxY.get(((Number)d.c(d.this).get(this.type)).intValue())).Scf;
       paramRecyclerView = d.this.getVideoSeekListener();
       if (paramRecyclerView != null) {
         if (l >= 2147483637L) {
@@ -710,36 +661,36 @@ public final class d
     
     public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(191671);
+      AppMethodBeat.i(250868);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramRecyclerView);
-      localb.pH(paramInt1);
-      localb.pH(paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$CaptionScrollListener", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.axR());
-      p.h(paramRecyclerView, "recyclerView");
+      localb.bn(paramRecyclerView);
+      localb.sg(paramInt1);
+      localb.sg(paramInt2);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$CaptionScrollListener", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
+      p.k(paramRecyclerView, "recyclerView");
       super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
       if (!d.a(d.this))
       {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$CaptionScrollListener", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-        AppMethodBeat.o(191671);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$CaptionScrollListener", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
+        AppMethodBeat.o(250868);
         return;
       }
       paramInt2 = ((Number)d.c(d.this).get(this.type)).intValue();
       paramRecyclerView = d.d(d.this).get(this.type);
-      p.g(paramRecyclerView, "captionViews[type]");
+      p.j(paramRecyclerView, "captionViews[type]");
       paramRecyclerView = ((RecyclerView)paramRecyclerView).getLayoutManager();
       if (paramRecyclerView == null)
       {
-        paramRecyclerView = new t("null cannot be cast to non-null type android.support.v7.widget.LinearLayoutManager");
-        AppMethodBeat.o(191671);
+        paramRecyclerView = new t("null cannot be cast to non-null type androidx.recyclerview.widget.LinearLayoutManager");
+        AppMethodBeat.o(250868);
         throw paramRecyclerView;
       }
       paramRecyclerView = (LinearLayoutManager)paramRecyclerView;
-      int i = (paramRecyclerView.ks() + paramRecyclerView.ku()) / 2;
-      if (i == ((d.c)d.b(d.this).get(this.type)).ady)
+      int i = (paramRecyclerView.kJ() + paramRecyclerView.kL()) / 2;
+      if (i == ((d.c)d.b(d.this).get(this.type)).agM)
       {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$CaptionScrollListener", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-        AppMethodBeat.o(191671);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$CaptionScrollListener", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
+        AppMethodBeat.o(250868);
         return;
       }
       paramInt1 = i - 1;
@@ -750,17 +701,17 @@ public final class d
         if (d.a(d.this, this.type, paramRecyclerView.findViewByPosition(paramInt1)))
         {
           d.c(d.this).set(this.type, Integer.valueOf(paramInt1));
-          ((d.c)d.b(d.this).get(this.type)).ady = ((Number)d.c(d.this).get(this.type)).intValue();
+          ((d.c)d.b(d.this).get(this.type)).agM = ((Number)d.c(d.this).get(this.type)).intValue();
           d.b(d.this).get(this.type);
-          d.c.fZ(paramRecyclerView.findViewByPosition(paramInt2));
+          d.c.hi(paramRecyclerView.findViewByPosition(paramInt2));
           d.b(d.this).get(this.type);
-          d.c.fY(paramRecyclerView.findViewByPosition(((Number)d.c(d.this).get(this.type)).intValue()));
+          d.c.hh(paramRecyclerView.findViewByPosition(((Number)d.c(d.this).get(this.type)).intValue()));
           Log.d("MicroMsg.EditorTextCaptionView", "onScrolled currentPos  " + d.c(d.this) + ' ' + paramInt2);
         }
         while (paramInt1 == i)
         {
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$CaptionScrollListener", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-          AppMethodBeat.o(191671);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$CaptionScrollListener", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
+          AppMethodBeat.o(250868);
           return;
         }
         paramInt1 += 1;
@@ -768,129 +719,132 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$EditorCaptionAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "type", "", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView;ILandroid/content/Context;)V", "captionItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/CCTransResult;", "Lkotlin/collections/ArrayList;", "getCaptionItems", "()Ljava/util/ArrayList;", "setCaptionItems", "(Ljava/util/ArrayList;)V", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "currentPos", "getCurrentPos", "()I", "setCurrentPos", "(I)V", "getItemCount", "getString", "", "byte", "Lcom/tencent/mm/protobuf/ByteString;", "onBindViewHolder", "", "viewHolder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "selectView", "itemView", "Landroid/view/View;", "ccTransResult", "unSelectView", "plugin-vlog_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$Companion;", "", "()V", "LIST_ROW", "", "TAG", "", "TYPE_CAPTION", "TYPE_RECORD_CAPTION", "UNSELECTED_ALPHA", "", "plugin-vlog_release"})
+  public static final class b {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$EditorCaptionAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "type", "", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView;ILandroid/content/Context;)V", "captionItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/CCTransResult;", "Lkotlin/collections/ArrayList;", "getCaptionItems", "()Ljava/util/ArrayList;", "setCaptionItems", "(Ljava/util/ArrayList;)V", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "currentPos", "getCurrentPos", "()I", "setCurrentPos", "(I)V", "getItemCount", "getString", "", "byte", "Lcom/tencent/mm/protobuf/ByteString;", "onBindViewHolder", "", "viewHolder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "selectView", "itemView", "Landroid/view/View;", "ccTransResult", "unSelectView", "plugin-vlog_release"})
   public final class c
     extends RecyclerView.a<RecyclerView.v>
   {
-    ArrayList<sy> GKy;
-    int ady;
+    ArrayList<ta> NxY;
+    int agM;
     private Context context;
     private final int type;
     
     public c(Context paramContext)
     {
-      AppMethodBeat.i(191680);
+      AppMethodBeat.i(234855);
       this.type = paramContext;
       this.context = localObject;
-      this.GKy = new ArrayList();
-      AppMethodBeat.o(191680);
+      this.NxY = new ArrayList();
+      AppMethodBeat.o(234855);
     }
     
-    private static void a(View paramView, sy paramsy)
+    private static void a(View paramView, ta paramta)
     {
-      AppMethodBeat.i(191676);
+      AppMethodBeat.i(234849);
       if (paramView == null)
       {
-        AppMethodBeat.o(191676);
+        AppMethodBeat.o(234849);
         return;
       }
       paramView.setAlpha(1.0F);
-      paramView = (ImageView)paramView.findViewById(2131297978);
-      if ((paramsy != null) && (paramsy.LaV == true))
+      paramView = (ImageView)paramView.findViewById(b.e.caption_edit);
+      if ((paramta != null) && (paramta.Sch == true))
       {
-        p.g(paramView, "img");
+        p.j(paramView, "img");
         paramView.setVisibility(4);
-        AppMethodBeat.o(191676);
+        AppMethodBeat.o(234849);
         return;
       }
-      p.g(paramView, "img");
-      paramView.setImageDrawable(ar.m(paramView.getContext(), 2131690644, -1));
+      p.j(paramView, "img");
+      paramView.setImageDrawable(au.o(paramView.getContext(), b.g.icons_filled_pencil, -1));
       paramView.setVisibility(0);
-      AppMethodBeat.o(191676);
+      AppMethodBeat.o(234849);
     }
     
-    private static String d(com.tencent.mm.bw.b paramb)
+    private static String e(com.tencent.mm.cd.b paramb)
     {
-      AppMethodBeat.i(191679);
+      AppMethodBeat.i(234854);
       if (paramb == null)
       {
-        AppMethodBeat.o(191679);
+        AppMethodBeat.o(234854);
         return "";
       }
       paramb = paramb.toString("UTF-8");
-      p.g(paramb, "byte.toString(\"UTF-8\")");
-      AppMethodBeat.o(191679);
+      p.j(paramb, "byte.toString(\"UTF-8\")");
+      AppMethodBeat.o(234854);
       return paramb;
     }
     
-    public static void fZ(View paramView)
+    public static void hi(View paramView)
     {
-      AppMethodBeat.i(191678);
+      AppMethodBeat.i(234852);
       if (paramView == null)
       {
-        AppMethodBeat.o(191678);
+        AppMethodBeat.o(234852);
         return;
       }
       paramView.setAlpha(0.5F);
-      paramView = paramView.findViewById(2131297978);
-      p.g(paramView, "itemView.findViewById<Im…eView>(R.id.caption_edit)");
+      paramView = paramView.findViewById(b.e.caption_edit);
+      p.j(paramView, "itemView.findViewById<Im…eView>(R.id.caption_edit)");
       ((ImageView)paramView).setVisibility(4);
-      AppMethodBeat.o(191678);
+      AppMethodBeat.o(234852);
     }
     
-    public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
+    public final RecyclerView.v b(ViewGroup paramViewGroup, int paramInt)
     {
-      AppMethodBeat.i(191673);
-      p.h(paramViewGroup, "parent");
-      paramViewGroup = LayoutInflater.from(this.context).inflate(2131493894, paramViewGroup, false);
+      AppMethodBeat.i(234842);
+      p.k(paramViewGroup, "parent");
+      paramViewGroup = LayoutInflater.from(this.context).inflate(b.f.editor_text_caption_item, paramViewGroup, false);
       if (paramViewGroup == null)
       {
         paramViewGroup = new t("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(191673);
+        AppMethodBeat.o(234842);
         throw paramViewGroup;
       }
       paramViewGroup = (ViewGroup)paramViewGroup;
       paramViewGroup = (RecyclerView.v)new b(paramViewGroup, (View)paramViewGroup);
-      AppMethodBeat.o(191673);
+      AppMethodBeat.o(234842);
       return paramViewGroup;
     }
     
-    public final void a(RecyclerView.v paramv, final int paramInt)
+    public final void d(RecyclerView.v paramv, final int paramInt)
     {
-      AppMethodBeat.i(191675);
-      p.h(paramv, "viewHolder");
-      Object localObject = paramv.aus;
-      p.g(localObject, "viewHolder.itemView");
-      if ((TextUtils.isEmpty((CharSequence)d(((sy)this.GKy.get(paramInt)).LaS))) || (((sy)this.GKy.get(paramInt)).LaV))
+      AppMethodBeat.i(234846);
+      p.k(paramv, "viewHolder");
+      Object localObject = paramv.amk;
+      p.j(localObject, "viewHolder.itemView");
+      if ((TextUtils.isEmpty((CharSequence)e(((ta)this.NxY.get(paramInt)).Sce))) || (((ta)this.NxY.get(paramInt)).Sch))
       {
         ((View)localObject).setVisibility(4);
-        paramv.aus.setOnClickListener((View.OnClickListener)new a(this, paramInt));
-        AppMethodBeat.o(191675);
+        paramv.amk.setOnClickListener((View.OnClickListener)new a(this, paramInt));
+        AppMethodBeat.o(234846);
         return;
       }
       ((View)localObject).setVisibility(0);
-      if (this.ady == paramInt) {
-        a((View)localObject, (sy)this.GKy.get(paramInt));
+      if (this.agM == paramInt) {
+        a((View)localObject, (ta)this.NxY.get(paramInt));
       }
       for (;;)
       {
-        localObject = (TextView)((View)localObject).findViewById(2131297976);
-        p.g(localObject, "contentView");
-        ((TextView)localObject).setText((CharSequence)d(((sy)this.GKy.get(paramInt)).LaS));
+        localObject = (TextView)((View)localObject).findViewById(b.e.caption_content);
+        p.j(localObject, "contentView");
+        ((TextView)localObject).setText((CharSequence)e(((ta)this.NxY.get(paramInt)).Sce));
         break;
-        fZ((View)localObject);
+        hi((View)localObject);
       }
     }
     
     public final int getItemCount()
     {
-      AppMethodBeat.i(191674);
-      int i = this.GKy.size();
-      AppMethodBeat.o(191674);
+      AppMethodBeat.i(234845);
+      int i = this.NxY.size();
+      AppMethodBeat.o(234845);
       return i;
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class a
       implements View.OnClickListener
     {
@@ -898,27 +852,27 @@ public final class d
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(191672);
+        AppMethodBeat.i(237967);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$EditorCaptionAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-        if (!((sy)this.GLh.GKy.get(paramInt)).LaV)
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$EditorCaptionAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+        if (!((ta)this.NyH.NxY.get(paramInt)).Sch)
         {
-          paramView = this.GLh.GLg.getItemClickListener();
+          paramView = this.NyH.NyG.getItemClickListener();
           if (paramView != null)
           {
-            int i = d.c.a(this.GLh);
-            localObject = this.GLh.GKy.get(paramInt);
-            p.g(localObject, "captionItems[position]");
+            int i = d.c.a(this.NyH);
+            localObject = this.NyH.NxY.get(paramInt);
+            p.j(localObject, "captionItems[position]");
             paramView.invoke(Integer.valueOf(i), localObject);
           }
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$EditorCaptionAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(191672);
+        AppMethodBeat.o(237967);
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$EditorCaptionAdapter$onCreateViewHolder$1", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "plugin-vlog_release"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorTextCaptionView$EditorCaptionAdapter$onCreateViewHolder$1", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "plugin-vlog_release"})
     public static final class b
       extends RecyclerView.v
     {
@@ -929,7 +883,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
   static final class d
     extends q
     implements kotlin.g.a.a<ViewGroup>
@@ -940,7 +894,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
   static final class e
     extends q
     implements kotlin.g.a.a<ViewGroup>
@@ -951,7 +905,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
   static final class f
     extends q
     implements kotlin.g.a.a<View>
@@ -962,7 +916,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
   static final class g
     extends q
     implements kotlin.g.a.a<View>
@@ -973,7 +927,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class h
     extends q
     implements kotlin.g.a.a<TextView>
@@ -984,7 +938,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "Landroid/support/v7/widget/RecyclerView;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Landroidx/recyclerview/widget/RecyclerView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class i
     extends q
     implements kotlin.g.a.a<List<? extends RecyclerView>>
@@ -995,7 +949,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
   static final class j
     extends q
     implements kotlin.g.a.a<ViewGroup>
@@ -1006,7 +960,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType", "invoke"})
   static final class k
     extends q
     implements kotlin.g.a.a<LinearLayout>
@@ -1017,7 +971,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType", "invoke"})
   static final class l
     extends q
     implements kotlin.g.a.a<LinearLayout>
@@ -1028,7 +982,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class m
     extends q
     implements kotlin.g.a.a<TextView>
@@ -1039,7 +993,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
   static final class n
     extends q
     implements kotlin.g.a.a<View>
@@ -1050,7 +1004,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
   static final class o
     extends q
     implements kotlin.g.a.a<ViewGroup>
@@ -1061,7 +1015,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
   static final class p
     extends q
     implements kotlin.g.a.a<ViewGroup>
@@ -1072,7 +1026,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
   static final class q
     extends q
     implements kotlin.g.a.a<View>
@@ -1083,7 +1037,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class r
     extends q
     implements kotlin.g.a.a<TextView>
@@ -1094,7 +1048,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
   static final class s
     extends q
     implements kotlin.g.a.a<ViewGroup>
@@ -1105,7 +1059,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
   static final class t
     extends q
     implements kotlin.g.a.a<ViewGroup>
@@ -1116,7 +1070,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
   static final class u
     extends q
     implements kotlin.g.a.a<View>
@@ -1127,7 +1081,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class v
     extends q
     implements kotlin.g.a.a<TextView>
@@ -1138,7 +1092,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class w
     extends q
     implements kotlin.g.a.a<TextView>
@@ -1151,7 +1105,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.caption.d
  * JD-Core Version:    0.7.0.1
  */

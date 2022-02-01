@@ -10,7 +10,7 @@ import java.util.Iterator;
 public abstract class d
   implements Iterable<Byte>
 {
-  public static final d TDp;
+  public static final d abgb;
   
   static
   {
@@ -18,7 +18,7 @@ public abstract class d
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      TDp = new p(new byte[0]);
+      abgb = new q(new byte[0]);
       return;
     }
   }
@@ -35,16 +35,16 @@ public abstract class d
       }
     }
     for (paramIterable = localArrayList; paramIterable.isEmpty(); paramIterable = (Collection)paramIterable) {
-      return TDp;
+      return abgb;
     }
     return a(paramIterable.iterator(), paramIterable.size());
   }
   
-  public static d V(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public static d X(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     byte[] arrayOfByte = new byte[paramInt2];
     System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, paramInt2);
-    return new p(arrayOfByte);
+    return new q(arrayOfByte);
   }
   
   private static d a(Iterator<d> paramIterator, int paramInt)
@@ -57,11 +57,11 @@ public abstract class d
     return a(paramIterator, i).a(a(paramIterator, paramInt - i));
   }
   
-  public static d bud(String paramString)
+  public static d bHg(String paramString)
   {
     try
     {
-      paramString = new p(paramString.getBytes("UTF-8"));
+      paramString = new q(paramString.getBytes("UTF-8"));
       return paramString;
     }
     catch (UnsupportedEncodingException paramString)
@@ -70,15 +70,32 @@ public abstract class d
     }
   }
   
-  public static d di(byte[] paramArrayOfByte)
+  public static d dG(byte[] paramArrayOfByte)
   {
-    return V(paramArrayOfByte, 0, paramArrayOfByte.length);
+    return X(paramArrayOfByte, 0, paramArrayOfByte.length);
   }
   
-  public static b hJo()
+  public static b iNH()
   {
     return new b();
   }
+  
+  public final String Ap()
+  {
+    try
+    {
+      String str = toString("UTF-8");
+      return str;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      throw new RuntimeException("UTF-8 not supported?", localUnsupportedEncodingException);
+    }
+  }
+  
+  public abstract boolean Aq();
+  
+  protected abstract int As();
   
   public final d a(d paramd)
   {
@@ -87,7 +104,7 @@ public abstract class d
     if (i + j >= 2147483647L) {
       throw new IllegalArgumentException(53 + "ByteString would be too long: " + i + "+" + j);
     }
-    return u.a(this, paramd);
+    return v.a(this, paramd);
   }
   
   final void a(OutputStream paramOutputStream, int paramInt1, int paramInt2)
@@ -108,21 +125,17 @@ public abstract class d
   
   abstract void b(OutputStream paramOutputStream, int paramInt1, int paramInt2);
   
-  protected abstract int bi(int paramInt1, int paramInt2, int paramInt3);
+  protected abstract int bn(int paramInt1, int paramInt2, int paramInt3);
   
-  protected abstract int bj(int paramInt1, int paramInt2, int paramInt3);
+  protected abstract int bo(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract a hJm();
+  public abstract a iNG();
   
-  public abstract e hJn();
+  protected abstract int iNI();
   
-  protected abstract int hJp();
+  protected abstract boolean iNJ();
   
-  protected abstract boolean hJq();
-  
-  protected abstract int hJr();
-  
-  public final void j(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  public final void k(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt1 < 0) {
       throw new IndexOutOfBoundsException(30 + "Source offset < 0: " + paramInt1);
@@ -140,11 +153,11 @@ public abstract class d
       throw new IndexOutOfBoundsException(34 + "Target end offset < 0: " + (paramInt2 + paramInt3));
     }
     if (paramInt3 > 0) {
-      l(paramArrayOfByte, paramInt1, paramInt2, paramInt3);
+      m(paramArrayOfByte, paramInt1, paramInt2, paramInt3);
     }
   }
   
-  protected abstract void l(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
+  protected abstract void m(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
   
   public abstract int size();
   
@@ -152,10 +165,10 @@ public abstract class d
   {
     int i = size();
     if (i == 0) {
-      return j.EMPTY_BYTE_ARRAY;
+      return k.EMPTY_BYTE_ARRAY;
     }
     byte[] arrayOfByte = new byte[i];
-    l(arrayOfByte, 0, 0, i);
+    m(arrayOfByte, 0, 0, i);
     return arrayOfByte;
   }
   
@@ -165,21 +178,6 @@ public abstract class d
   }
   
   public abstract String toString(String paramString);
-  
-  public final String yO()
-  {
-    try
-    {
-      String str = toString("UTF-8");
-      return str;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      throw new RuntimeException("UTF-8 not supported?", localUnsupportedEncodingException);
-    }
-  }
-  
-  public abstract boolean yP();
   
   public static abstract interface a
     extends Iterator<Byte>
@@ -191,28 +189,28 @@ public abstract class d
     extends OutputStream
   {
     private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
-    private final int TDq;
-    private final ArrayList<d> TDr;
-    private int TDs;
+    private final int abgc;
+    private final ArrayList<d> abgd;
+    private int abge;
     private byte[] buffer;
-    private int cbm;
+    private int ccP;
     
     b()
     {
       AppMethodBeat.i(59370);
-      this.TDq = 128;
-      this.TDr = new ArrayList();
+      this.abgc = 128;
+      this.abgd = new ArrayList();
       this.buffer = new byte[''];
       AppMethodBeat.o(59370);
     }
     
-    private void avw(int paramInt)
+    private void aFq(int paramInt)
     {
       AppMethodBeat.i(59375);
-      this.TDr.add(new p(this.buffer));
-      this.TDs += this.buffer.length;
-      this.buffer = new byte[Math.max(this.TDq, Math.max(paramInt, this.TDs >>> 1))];
-      this.cbm = 0;
+      this.abgd.add(new q(this.buffer));
+      this.abge += this.buffer.length;
+      this.buffer = new byte[Math.max(this.abgc, Math.max(paramInt, this.abge >>> 1))];
+      this.ccP = 0;
       AppMethodBeat.o(59375);
     }
     
@@ -220,8 +218,8 @@ public abstract class d
     {
       try
       {
-        int i = this.TDs;
-        int j = this.cbm;
+        int i = this.abge;
+        int j = this.ccP;
         return i + j;
       }
       finally
@@ -232,7 +230,7 @@ public abstract class d
     }
     
     /* Error */
-    public final d hJs()
+    public final d iNK()
     {
       // Byte code:
       //   0: aload_0
@@ -240,19 +238,19 @@ public abstract class d
       //   2: ldc 70
       //   4: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 65	kotlin/l/b/a/b/h/d$b:cbm	I
+      //   8: getfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
       //   11: aload_0
       //   12: getfield 41	kotlin/l/b/a/b/h/d$b:buffer	[B
       //   15: arraylength
       //   16: if_icmpge +88 -> 104
       //   19: aload_0
-      //   20: getfield 65	kotlin/l/b/a/b/h/d$b:cbm	I
+      //   20: getfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
       //   23: ifle +46 -> 69
       //   26: aload_0
       //   27: getfield 41	kotlin/l/b/a/b/h/d$b:buffer	[B
       //   30: astore_2
       //   31: aload_0
-      //   32: getfield 65	kotlin/l/b/a/b/h/d$b:cbm	I
+      //   32: getfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
       //   35: istore_1
       //   36: iload_1
       //   37: newarray byte
@@ -267,25 +265,25 @@ public abstract class d
       //   47: invokestatic 73	java/lang/Math:min	(II)I
       //   50: invokestatic 79	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
       //   53: aload_0
-      //   54: getfield 39	kotlin/l/b/a/b/h/d$b:TDr	Ljava/util/ArrayList;
-      //   57: new 48	kotlin/l/b/a/b/h/p
+      //   54: getfield 39	kotlin/l/b/a/b/h/d$b:abgd	Ljava/util/ArrayList;
+      //   57: new 48	kotlin/l/b/a/b/h/q
       //   60: dup
       //   61: aload_3
-      //   62: invokespecial 51	kotlin/l/b/a/b/h/p:<init>	([B)V
+      //   62: invokespecial 51	kotlin/l/b/a/b/h/q:<init>	([B)V
       //   65: invokevirtual 55	java/util/ArrayList:add	(Ljava/lang/Object;)Z
       //   68: pop
       //   69: aload_0
       //   70: aload_0
-      //   71: getfield 57	kotlin/l/b/a/b/h/d$b:TDs	I
+      //   71: getfield 57	kotlin/l/b/a/b/h/d$b:abge	I
       //   74: aload_0
-      //   75: getfield 65	kotlin/l/b/a/b/h/d$b:cbm	I
+      //   75: getfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
       //   78: iadd
-      //   79: putfield 57	kotlin/l/b/a/b/h/d$b:TDs	I
+      //   79: putfield 57	kotlin/l/b/a/b/h/d$b:abge	I
       //   82: aload_0
       //   83: iconst_0
-      //   84: putfield 65	kotlin/l/b/a/b/h/d$b:cbm	I
+      //   84: putfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
       //   87: aload_0
-      //   88: getfield 39	kotlin/l/b/a/b/h/d$b:TDr	Ljava/util/ArrayList;
+      //   88: getfield 39	kotlin/l/b/a/b/h/d$b:abgd	Ljava/util/ArrayList;
       //   91: invokestatic 83	kotlin/l/b/a/b/h/d:F	(Ljava/lang/Iterable;)Lkotlin/l/b/a/b/h/d;
       //   94: astore_2
       //   95: ldc 70
@@ -295,12 +293,12 @@ public abstract class d
       //   102: aload_2
       //   103: areturn
       //   104: aload_0
-      //   105: getfield 39	kotlin/l/b/a/b/h/d$b:TDr	Ljava/util/ArrayList;
-      //   108: new 48	kotlin/l/b/a/b/h/p
+      //   105: getfield 39	kotlin/l/b/a/b/h/d$b:abgd	Ljava/util/ArrayList;
+      //   108: new 48	kotlin/l/b/a/b/h/q
       //   111: dup
       //   112: aload_0
       //   113: getfield 41	kotlin/l/b/a/b/h/d$b:buffer	[B
-      //   116: invokespecial 51	kotlin/l/b/a/b/h/p:<init>	([B)V
+      //   116: invokespecial 51	kotlin/l/b/a/b/h/q:<init>	([B)V
       //   119: invokevirtual 55	java/util/ArrayList:add	(Ljava/lang/Object;)Z
       //   122: pop
       //   123: aload_0
@@ -339,12 +337,12 @@ public abstract class d
       try
       {
         AppMethodBeat.i(59371);
-        if (this.cbm == this.buffer.length) {
-          avw(1);
+        if (this.ccP == this.buffer.length) {
+          aFq(1);
         }
         byte[] arrayOfByte = this.buffer;
-        int i = this.cbm;
-        this.cbm = (i + 1);
+        int i = this.ccP;
+        this.ccP = (i + 1);
         arrayOfByte[i] = ((byte)paramInt);
         AppMethodBeat.o(59371);
         return;
@@ -365,7 +363,7 @@ public abstract class d
       //   9: getfield 41	kotlin/l/b/a/b/h/d$b:buffer	[B
       //   12: arraylength
       //   13: aload_0
-      //   14: getfield 65	kotlin/l/b/a/b/h/d$b:cbm	I
+      //   14: getfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
       //   17: isub
       //   18: if_icmpgt +35 -> 53
       //   21: aload_1
@@ -373,15 +371,15 @@ public abstract class d
       //   23: aload_0
       //   24: getfield 41	kotlin/l/b/a/b/h/d$b:buffer	[B
       //   27: aload_0
-      //   28: getfield 65	kotlin/l/b/a/b/h/d$b:cbm	I
+      //   28: getfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
       //   31: iload_3
       //   32: invokestatic 79	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
       //   35: aload_0
       //   36: aload_0
-      //   37: getfield 65	kotlin/l/b/a/b/h/d$b:cbm	I
+      //   37: getfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
       //   40: iload_3
       //   41: iadd
-      //   42: putfield 65	kotlin/l/b/a/b/h/d$b:cbm	I
+      //   42: putfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
       //   45: ldc 118
       //   47: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   50: aload_0
@@ -391,7 +389,7 @@ public abstract class d
       //   54: getfield 41	kotlin/l/b/a/b/h/d$b:buffer	[B
       //   57: arraylength
       //   58: aload_0
-      //   59: getfield 65	kotlin/l/b/a/b/h/d$b:cbm	I
+      //   59: getfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
       //   62: isub
       //   63: istore 4
       //   65: aload_1
@@ -399,7 +397,7 @@ public abstract class d
       //   67: aload_0
       //   68: getfield 41	kotlin/l/b/a/b/h/d$b:buffer	[B
       //   71: aload_0
-      //   72: getfield 65	kotlin/l/b/a/b/h/d$b:cbm	I
+      //   72: getfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
       //   75: iload 4
       //   77: invokestatic 79	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
       //   80: iload_3
@@ -408,7 +406,7 @@ public abstract class d
       //   84: istore_3
       //   85: aload_0
       //   86: iload_3
-      //   87: invokespecial 116	kotlin/l/b/a/b/h/d$b:avw	(I)V
+      //   87: invokespecial 116	kotlin/l/b/a/b/h/d$b:aFq	(I)V
       //   90: aload_1
       //   91: iload_2
       //   92: iload 4
@@ -420,7 +418,7 @@ public abstract class d
       //   101: invokestatic 79	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
       //   104: aload_0
       //   105: iload_3
-      //   106: putfield 65	kotlin/l/b/a/b/h/d$b:cbm	I
+      //   106: putfield 65	kotlin/l/b/a/b/h/d$b:ccP	I
       //   109: ldc 118
       //   111: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   114: goto -64 -> 50
@@ -446,7 +444,7 @@ public abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.h.d
  * JD-Core Version:    0.7.0.1
  */

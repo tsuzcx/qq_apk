@@ -4,93 +4,87 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class os
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String KSV;
-  public LinkedList<String> KUB;
-  public String KUE;
-  
-  public os()
-  {
-    AppMethodBeat.i(212244);
-    this.KUB = new LinkedList();
-    AppMethodBeat.o(212244);
-  }
+  public ach RWQ;
+  public boolean RWR;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(212245);
+    AppMethodBeat.i(207311);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.KSV != null) {
-        paramVarArgs.e(1, this.KSV);
+      if (this.RWQ != null)
+      {
+        paramVarArgs.oE(1, this.RWQ.computeSize());
+        this.RWQ.writeFields(paramVarArgs);
       }
-      paramVarArgs.e(2, 1, this.KUB);
-      if (this.KUE != null) {
-        paramVarArgs.e(3, this.KUE);
-      }
-      AppMethodBeat.o(212245);
+      paramVarArgs.co(2, this.RWR);
+      AppMethodBeat.o(207311);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.KSV == null) {
-        break label334;
+      if (this.RWQ == null) {
+        break label332;
       }
     }
-    label334:
-    for (paramInt = g.a.a.b.b.a.f(1, this.KSV) + 0;; paramInt = 0)
+    label332:
+    for (paramInt = g.a.a.a.oD(1, this.RWQ.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.a.c(2, 1, this.KUB);
-      paramInt = i;
-      if (this.KUE != null) {
-        paramInt = i + g.a.a.b.b.a.f(3, this.KUE);
-      }
-      AppMethodBeat.o(212245);
-      return paramInt;
+      int i = g.a.a.b.b.a.gL(2);
+      AppMethodBeat.o(207311);
+      return paramInt + (i + 1);
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.KUB.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(212245);
+        AppMethodBeat.o(207311);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         os localos = (os)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(212245);
+          AppMethodBeat.o(207311);
           return -1;
         case 1: 
-          localos.KSV = locala.UbS.readString();
-          AppMethodBeat.o(212245);
-          return 0;
-        case 2: 
-          localos.KUB.add(locala.UbS.readString());
-          AppMethodBeat.o(212245);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            ach localach = new ach();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localach.parseFrom((byte[])localObject);
+            }
+            localos.RWQ = localach;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(207311);
           return 0;
         }
-        localos.KUE = locala.UbS.readString();
-        AppMethodBeat.o(212245);
+        localos.RWR = ((g.a.a.a.a)localObject).abFh.AB();
+        AppMethodBeat.o(207311);
         return 0;
       }
-      AppMethodBeat.o(212245);
+      AppMethodBeat.o(207311);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.os
  * JD-Core Version:    0.7.0.1
  */

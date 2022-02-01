@@ -28,19 +28,19 @@ class Help30Impl
   
   private void eglSetup()
   {
-    AppMethodBeat.i(230304);
+    AppMethodBeat.i(193617);
     this.mEGLDisplay = EGL14.eglGetDisplay(0);
     if (this.mEGLDisplay == EGL14.EGL_NO_DISPLAY)
     {
       Log.e("MicroMsg.GPU_TAG", "EGL_NO_DISPLAY");
-      AppMethodBeat.o(230304);
+      AppMethodBeat.o(193617);
       return;
     }
     Object localObject = new int[2];
     if (!EGL14.eglInitialize(this.mEGLDisplay, (int[])localObject, 0, (int[])localObject, 1))
     {
       Log.e("MicroMsg.GPU_TAG", "eglInitialize");
-      AppMethodBeat.o(230304);
+      AppMethodBeat.o(193617);
       return;
     }
     localObject = new EGLConfig[1];
@@ -49,7 +49,7 @@ class Help30Impl
     this.mEGLContext = EGL14.eglCreateContext(this.mEGLDisplay, localObject[0], EGL14.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 }, 0);
     this.mEGLSurface = EGL14.eglCreatePbufferSurface(this.mEGLDisplay, localObject[0], new int[] { 12344 }, 0);
     EGL14.eglMakeCurrent(this.mEGLDisplay, this.mEGLSurface, this.mEGLSurface, this.mEGLContext);
-    AppMethodBeat.o(230304);
+    AppMethodBeat.o(193617);
   }
   
   public static Help30Impl getInstance()
@@ -78,21 +78,21 @@ class Help30Impl
   
   public boolean canUseHardwareAcceleration(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(230303);
+    AppMethodBeat.i(193611);
     Log.d("MicroMsg.GPU_TAG", "canUseHardwareAcceleration maxTextureSize %s w %s h %s.", new Object[] { Integer.valueOf(this.maxTextureSize), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if ((paramInt1 < this.maxTextureSize) && (paramInt2 < this.maxTextureSize))
     {
-      AppMethodBeat.o(230303);
+      AppMethodBeat.o(193611);
       return true;
     }
-    AppMethodBeat.o(230303);
+    AppMethodBeat.o(193611);
     return false;
   }
   
   public void decideLayerType(View paramView, int paramInt1, int paramInt2)
   {
     int i = 0;
-    AppMethodBeat.i(230302);
+    AppMethodBeat.i(193610);
     Log.d("MicroMsg.GPU_TAG", "decideLayerType maxTextureSize %s.", new Object[] { Integer.valueOf(this.maxTextureSize) });
     if (paramInt1 < this.maxTextureSize)
     {
@@ -106,7 +106,7 @@ class Help30Impl
     if (paramView.getLayerType() != paramInt1) {
       paramView.setLayerType(paramInt1, null);
     }
-    AppMethodBeat.o(230302);
+    AppMethodBeat.o(193610);
   }
   
   public int getMaxTextureSize()
@@ -116,20 +116,20 @@ class Help30Impl
   
   public void setLayerType(View paramView)
   {
-    AppMethodBeat.i(230301);
+    AppMethodBeat.i(193608);
     if (paramView.getLayerType() == 1)
     {
-      AppMethodBeat.o(230301);
+      AppMethodBeat.o(193608);
       return;
     }
     paramView.setLayerType(1, null);
-    AppMethodBeat.o(230301);
+    AppMethodBeat.o(193608);
   }
   
   public void updateTextureMaxSize()
   {
     int i = 2048;
-    AppMethodBeat.i(230300);
+    AppMethodBeat.i(193606);
     Log.i("MicroMsg.GPU_TAG", "pennqin, updateTextureMaxSize, before: %s.", new Object[] { Integer.valueOf(this.maxTextureSize) });
     try
     {
@@ -145,19 +145,19 @@ class Help30Impl
       try
       {
         release();
-        AppMethodBeat.o(230300);
+        AppMethodBeat.o(193606);
         return;
       }
       catch (Throwable localThrowable1)
       {
         Log.printErrStackTrace("MicroMsg.GPU_TAG", localThrowable1, "release err: %s", new Object[] { localThrowable1.getMessage() });
-        AppMethodBeat.o(230300);
+        AppMethodBeat.o(193606);
         return;
       }
       try
       {
         release();
-        AppMethodBeat.o(230300);
+        AppMethodBeat.o(193606);
         throw localObject;
       }
       catch (Throwable localThrowable4)
@@ -175,13 +175,13 @@ class Help30Impl
       try
       {
         release();
-        AppMethodBeat.o(230300);
+        AppMethodBeat.o(193606);
         return;
       }
       catch (Throwable localThrowable3)
       {
         Log.printErrStackTrace("MicroMsg.GPU_TAG", localThrowable3, "release err: %s", new Object[] { localThrowable3.getMessage() });
-        AppMethodBeat.o(230300);
+        AppMethodBeat.o(193606);
         return;
       }
     }
@@ -205,7 +205,7 @@ class Help30Impl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.Help30Impl
  * JD-Core Version:    0.7.0.1
  */

@@ -15,39 +15,39 @@ import java.util.List;
 public abstract class b<T extends CharacterStyle>
   implements Serializable
 {
-  private int Pc;
-  protected LinkedList<RectF> RAL;
-  public CharacterStyle RAM;
-  private int avh;
+  protected LinkedList<RectF> Zco;
+  public CharacterStyle Zcp;
+  private int tH;
+  private int tI;
   
   b(int paramInt1, int paramInt2, CharacterStyle paramCharacterStyle)
   {
-    this.avh = paramInt1;
-    this.Pc = paramInt2;
-    this.RAM = paramCharacterStyle;
+    this.tH = paramInt1;
+    this.tI = paramInt2;
+    this.Zcp = paramCharacterStyle;
   }
   
   private void readObject(ObjectInputStream paramObjectInputStream)
   {
-    this.avh = paramObjectInputStream.readInt();
-    this.Pc = paramObjectInputStream.readInt();
+    this.tH = paramObjectInputStream.readInt();
+    this.tI = paramObjectInputStream.readInt();
     int j = paramObjectInputStream.readInt();
-    this.RAL = new LinkedList();
+    this.Zco = new LinkedList();
     int i = 0;
     while (i < j)
     {
       RectF localRectF = new RectF(paramObjectInputStream.readFloat(), paramObjectInputStream.readFloat(), paramObjectInputStream.readFloat(), paramObjectInputStream.readFloat());
-      this.RAL.add(localRectF);
+      this.Zco.add(localRectF);
       i += 1;
     }
   }
   
   private void writeObject(ObjectOutputStream paramObjectOutputStream)
   {
-    paramObjectOutputStream.writeInt(this.avh);
-    paramObjectOutputStream.writeInt(this.Pc);
-    paramObjectOutputStream.writeInt(this.RAL.size());
-    Iterator localIterator = this.RAL.iterator();
+    paramObjectOutputStream.writeInt(this.tH);
+    paramObjectOutputStream.writeInt(this.tI);
+    paramObjectOutputStream.writeInt(this.Zco.size());
+    Iterator localIterator = this.Zco.iterator();
     while (localIterator.hasNext())
     {
       RectF localRectF = (RectF)localIterator.next();
@@ -60,12 +60,12 @@ public abstract class b<T extends CharacterStyle>
   
   public abstract void a(Canvas paramCanvas, TextPaint paramTextPaint, List<d> paramList);
   
-  public final boolean aF(float paramFloat1, float paramFloat2)
+  public final boolean aM(float paramFloat1, float paramFloat2)
   {
-    if (this.RAL == null) {
+    if (this.Zco == null) {
       return false;
     }
-    Iterator localIterator = this.RAL.iterator();
+    Iterator localIterator = this.Zco.iterator();
     while (localIterator.hasNext()) {
       if (((RectF)localIterator.next()).contains(paramFloat1, paramFloat2)) {
         return true;
@@ -84,14 +84,14 @@ public abstract class b<T extends CharacterStyle>
         return false;
       } while (!(paramObject instanceof b));
       paramObject = (b)paramObject;
-    } while ((paramObject.avh != this.avh) || (paramObject.Pc != this.Pc));
+    } while ((paramObject.tH != this.tH) || (paramObject.tI != this.tI));
     int i = 0;
     for (;;)
     {
-      if (i >= this.RAL.size()) {
+      if (i >= this.Zco.size()) {
         break label88;
       }
-      if (!((RectF)this.RAL.get(i)).equals((RectF)paramObject.RAL.get(i))) {
+      if (!((RectF)this.Zco.get(i)).equals((RectF)paramObject.Zco.get(i))) {
         break;
       }
       i += 1;
@@ -104,19 +104,19 @@ public abstract class b<T extends CharacterStyle>
   {
     int i = 0;
     int j = 0;
-    while (i < this.RAL.size())
+    while (i < this.Zco.size())
     {
-      j += ((RectF)this.RAL.get(i)).hashCode();
+      j += ((RectF)this.Zco.get(i)).hashCode();
       i += 1;
     }
-    return this.avh + this.Pc + j;
+    return this.tH + this.tI + j;
   }
   
-  final void kb(List<d> paramList)
+  final void kV(List<d> paramList)
   {
-    if (this.RAL == null)
+    if (this.Zco == null)
     {
-      this.RAL = new LinkedList();
+      this.Zco = new LinkedList();
       paramList = paramList.iterator();
     }
     for (;;)
@@ -125,27 +125,27 @@ public abstract class b<T extends CharacterStyle>
       if (paramList.hasNext())
       {
         locald = (d)paramList.next();
-        if ((locald.avh <= this.avh) && (this.Pc < locald.Pc)) {
-          this.RAL.add(locald.mo(this.avh, this.Pc));
+        if ((locald.tH <= this.tH) && (this.tI < locald.tI)) {
+          this.Zco.add(locald.nF(this.tH, this.tI));
         }
       }
       else
       {
         return;
       }
-      if ((locald.avh <= this.avh) && (this.avh < locald.Pc) && (locald.Pc <= this.Pc))
+      if ((locald.tH <= this.tH) && (this.tH < locald.tI) && (locald.tI <= this.tI))
       {
-        this.RAL.add(locald.mo(this.avh, locald.Pc));
+        this.Zco.add(locald.nF(this.tH, locald.tI));
       }
       else
       {
-        if ((this.avh < locald.avh) && (this.Pc < locald.Pc) && (this.Pc >= locald.avh))
+        if ((this.tH < locald.tH) && (this.tI < locald.tI) && (this.tI >= locald.tH))
         {
-          this.RAL.add(locald.mo(locald.avh, this.Pc));
+          this.Zco.add(locald.nF(locald.tH, this.tI));
           return;
         }
-        if ((this.avh < locald.avh) && (this.Pc >= locald.Pc)) {
-          this.RAL.add(locald.mo(locald.avh, locald.Pc));
+        if ((this.tH < locald.tH) && (this.tI >= locald.tI)) {
+          this.Zco.add(locald.nF(locald.tH, locald.tI));
         }
       }
     }
@@ -153,12 +153,12 @@ public abstract class b<T extends CharacterStyle>
   
   public String toString()
   {
-    return "CharacterBgStyle{mRectFList=" + this.RAL + ", mStart=" + this.avh + ", mEnd=" + this.Pc + '}';
+    return "CharacterBgStyle{mRectFList=" + this.Zco + ", mStart=" + this.tH + ", mEnd=" + this.tI + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.neattextview.textview.b.b
  * JD-Core Version:    0.7.0.1
  */

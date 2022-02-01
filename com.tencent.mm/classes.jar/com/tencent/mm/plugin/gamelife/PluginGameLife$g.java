@@ -5,25 +5,25 @@ import com.tencent.mm.plugin.gamelife.j.c;
 import com.tencent.mm.storagebase.h.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "", "kotlin.jvm.PlatformType", "getSQLs", "()[Ljava/lang/String;"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "", "kotlin.jvm.PlatformType", "getSQLs", "()[Ljava/lang/String;"})
 final class PluginGameLife$g
   implements h.b
 {
-  public static final g yav;
+  public static final g Dfb;
   
   static
   {
-    AppMethodBeat.i(241200);
-    yav = new g();
-    AppMethodBeat.o(241200);
+    AppMethodBeat.i(202770);
+    Dfb = new g();
+    AppMethodBeat.o(202770);
   }
   
   public final String[] getSQLs()
   {
-    AppMethodBeat.i(241199);
-    Object localObject = c.ycx;
-    localObject = c.dax();
-    AppMethodBeat.o(241199);
+    AppMethodBeat.i(202769);
+    Object localObject = c.Dic;
+    localObject = c.dqy();
+    AppMethodBeat.o(202769);
     return localObject;
   }
 }

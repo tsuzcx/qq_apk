@@ -1,202 +1,158 @@
 package com.tencent.mm.aj;
 
-import android.content.Context;
-import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.b.f;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.y;
-import com.tencent.mm.model.z;
-import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storagebase.h.b;
-import java.util.HashMap;
+import java.util.LinkedList;
 
-public class p
-  implements bd
+public final class p
+  extends com.tencent.mm.cd.a
 {
-  private static HashMap<Integer, h.b> baseDBFactories;
-  private j iLp;
-  private e iLq;
-  private d iLr;
-  private h iLs;
-  private MTimerHandler iLt;
+  public String Url;
+  public String lpn;
+  public String lps;
+  public o lpt;
+  public n lpu;
+  public String lpv;
   
-  static
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(150331);
-    HashMap localHashMap = new HashMap();
-    baseDBFactories = localHashMap;
-    localHashMap.put(Integer.valueOf("IMG_FLAG_TABLE".hashCode()), new h.b()
+    AppMethodBeat.i(116411);
+    if (paramInt == 0)
     {
-      public final String[] getSQLs()
-      {
-        return j.SQL_CREATE;
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.lps != null) {
+        paramVarArgs.f(1, this.lps);
       }
-    });
-    baseDBFactories.put(Integer.valueOf("HDHEADIMGINFO_TABLE".hashCode()), new h.b()
-    {
-      public final String[] getSQLs()
-      {
-        return h.SQL_CREATE;
+      if (this.Url != null) {
+        paramVarArgs.f(2, this.Url);
       }
-    });
-    AppMethodBeat.o(150331);
-  }
-  
-  public p()
-  {
-    AppMethodBeat.i(150321);
-    this.iLt = new MTimerHandler(com.tencent.mm.kernel.g.aAk().getLooper(), new p.3(this), false);
-    AppMethodBeat.o(150321);
-  }
-  
-  public static p aYA()
-  {
-    AppMethodBeat.i(150320);
-    p localp = (p)y.at(p.class);
-    AppMethodBeat.o(150320);
-    return localp;
-  }
-  
-  public static j aYB()
-  {
-    AppMethodBeat.i(150322);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (aYA().iLp == null) {
-      aYA().iLp = new j(com.tencent.mm.kernel.g.aAh().hqK);
+      if (this.lpn != null) {
+        paramVarArgs.f(3, this.lpn);
+      }
+      if (this.lpt != null)
+      {
+        paramVarArgs.oE(4, this.lpt.computeSize());
+        this.lpt.writeFields(paramVarArgs);
+      }
+      if (this.lpu != null)
+      {
+        paramVarArgs.oE(5, this.lpu.computeSize());
+        this.lpu.writeFields(paramVarArgs);
+      }
+      if (this.lpv != null) {
+        paramVarArgs.f(6, this.lpv);
+      }
+      AppMethodBeat.o(116411);
+      return 0;
     }
-    j localj = aYA().iLp;
-    AppMethodBeat.o(150322);
-    return localj;
-  }
-  
-  public static h aYC()
-  {
-    AppMethodBeat.i(150324);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (aYA().iLs == null) {
-      aYA().iLs = new h(com.tencent.mm.kernel.g.aAh().hqK);
+    if (paramInt == 1) {
+      if (this.lps == null) {
+        break label662;
+      }
     }
-    h localh = aYA().iLs;
-    AppMethodBeat.o(150324);
-    return localh;
-  }
-  
-  public static d aYD()
-  {
-    AppMethodBeat.i(150325);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (aYA().iLr == null) {
-      aYA().iLr = new d();
-    }
-    d locald = aYA().iLr;
-    AppMethodBeat.o(150325);
-    return locald;
-  }
-  
-  public static boolean aYE()
-  {
-    AppMethodBeat.i(150329);
-    if (Util.nullAs((Boolean)com.tencent.mm.kernel.g.aAh().azQ().get(59, null), false))
+    label662:
+    for (int i = g.a.a.b.b.a.g(1, this.lps) + 0;; i = 0)
     {
-      AppMethodBeat.o(150329);
-      return true;
+      paramInt = i;
+      if (this.Url != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.Url);
+      }
+      i = paramInt;
+      if (this.lpn != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.lpn);
+      }
+      paramInt = i;
+      if (this.lpt != null) {
+        paramInt = i + g.a.a.a.oD(4, this.lpt.computeSize());
+      }
+      i = paramInt;
+      if (this.lpu != null) {
+        i = paramInt + g.a.a.a.oD(5, this.lpu.computeSize());
+      }
+      paramInt = i;
+      if (this.lpv != null) {
+        paramInt = i + g.a.a.b.b.a.g(6, this.lpv);
+      }
+      AppMethodBeat.o(116411);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
+        }
+        AppMethodBeat.o(116411);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        p localp = (p)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(116411);
+          return -1;
+        case 1: 
+          localp.lps = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(116411);
+          return 0;
+        case 2: 
+          localp.Url = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(116411);
+          return 0;
+        case 3: 
+          localp.lpn = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(116411);
+          return 0;
+        case 4: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new o();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((o)localObject2).parseFrom((byte[])localObject1);
+            }
+            localp.lpt = ((o)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(116411);
+          return 0;
+        case 5: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new n();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((n)localObject2).parseFrom((byte[])localObject1);
+            }
+            localp.lpu = ((n)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(116411);
+          return 0;
+        }
+        localp.lpv = ((g.a.a.a.a)localObject1).abFh.readString();
+        AppMethodBeat.o(116411);
+        return 0;
+      }
+      AppMethodBeat.o(116411);
+      return -1;
     }
-    String str = z.aTY();
-    if (Util.isNullOrNil(str))
-    {
-      AppMethodBeat.o(150329);
-      return false;
-    }
-    aYn();
-    if (e.Mm(str))
-    {
-      AppMethodBeat.o(150329);
-      return true;
-    }
-    Bitmap localBitmap = e.b.Mt(com.tencent.mm.plugin.image.d.aSY() + "user_" + com.tencent.mm.b.g.getMessageDigest(str.getBytes()) + ".png");
-    if ((localBitmap == null) || (localBitmap.isRecycled()))
-    {
-      AppMethodBeat.o(150329);
-      return false;
-    }
-    boolean bool = aYn().e(str, localBitmap);
-    AppMethodBeat.o(150329);
-    return bool;
   }
-  
-  public static e aYn()
-  {
-    AppMethodBeat.i(150323);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (aYA().iLq == null) {
-      aYA().iLq = new e();
-    }
-    e locale = aYA().iLq;
-    AppMethodBeat.o(150323);
-    return locale;
-  }
-  
-  static Context getContext()
-  {
-    AppMethodBeat.i(150328);
-    Context localContext = MMApplicationContext.getContext();
-    AppMethodBeat.o(150328);
-    return localContext;
-  }
-  
-  public void clearPluginData(int paramInt) {}
-  
-  public HashMap<Integer, h.b> getBaseDBFactories()
-  {
-    return baseDBFactories;
-  }
-  
-  public void onAccountPostReset(boolean paramBoolean)
-  {
-    AppMethodBeat.i(150327);
-    if (paramBoolean)
-    {
-      Log.d("MicroMsg.SubCoreAvatar", "update all plugin avatars");
-      com.tencent.mm.kernel.g.aAh().azQ().set(90113, Boolean.TRUE);
-    }
-    this.iLt.startTimer(10000L);
-    b.a(new com.tencent.mm.plugin.avatar.a(), new String[] { "//avatar" });
-    AppMethodBeat.o(150327);
-  }
-  
-  public void onAccountRelease()
-  {
-    AppMethodBeat.i(150326);
-    this.iLt.stopTimer();
-    if (aYA().iLq != null) {
-      e.reset();
-    }
-    Object localObject = aYA().iLr;
-    if (localObject != null) {
-      com.tencent.mm.kernel.g.azz().b(123, (i)localObject);
-    }
-    localObject = aYA().iLp;
-    if (localObject != null) {
-      ((j)localObject).iLa.clear();
-    }
-    b.V(new String[] { "//avatar" });
-    AppMethodBeat.o(150326);
-  }
-  
-  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.aj.p
  * JD-Core Version:    0.7.0.1
  */

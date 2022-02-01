@@ -1,37 +1,38 @@
 package com.tencent.mm.plugin.story.f.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.je;
-import com.tencent.mm.g.b.a.jm;
+import com.tencent.mm.f.b.a.ln;
+import com.tencent.mm.f.b.a.lv;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.plugin.story.c.a.c.a;
 import com.tencent.mm.plugin.story.f.g.a;
 import com.tencent.mm.plugin.story.f.j.b;
-import com.tencent.mm.plugin.story.h.h;
+import com.tencent.mm.plugin.story.f.s;
 import com.tencent.mm.plugin.story.i.a.g;
 import com.tencent.mm.plugin.story.i.k;
-import com.tencent.mm.protocal.protobuf.edk;
-import com.tencent.mm.protocal.protobuf.edt;
-import com.tencent.mm.protocal.protobuf.edu;
-import com.tencent.mm.protocal.protobuf.eek;
+import com.tencent.mm.protocal.protobuf.enl;
+import com.tencent.mm.protocal.protobuf.enu;
+import com.tencent.mm.protocal.protobuf.env;
+import com.tencent.mm.protocal.protobuf.eol;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.u;
 import java.util.LinkedList;
 import kotlin.g.b.p;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/upload/UploadTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "storyInfo", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "(Lcom/tencent/mm/plugin/story/storage/StoryInfo;)V", "getStoryInfo", "()Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "setStoryInfo", "call", "", "checkRemuxVideo", "", "filePath", "", "postInfo", "Lcom/tencent/mm/protocal/protobuf/StoryMediaPostInfo;", "doUploadStory", "uniqueId", "Companion", "plugin-story_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/model/upload/UploadTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "storyInfo", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "(Lcom/tencent/mm/plugin/story/storage/StoryInfo;)V", "getStoryInfo", "()Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "setStoryInfo", "call", "", "checkRemuxVideo", "", "filePath", "", "postInfo", "Lcom/tencent/mm/protocal/protobuf/StoryMediaPostInfo;", "doUploadStory", "uniqueId", "Companion", "plugin-story_release"})
 public final class e
   extends com.tencent.mm.loader.g.c
 {
-  public static final a FqK;
+  public static final a LKN;
   private static final String TAG = "MicroMsg.StoryUploadTask";
-  private com.tencent.mm.plugin.story.i.j Fqr;
+  private com.tencent.mm.plugin.story.i.j LKu;
   
   static
   {
     AppMethodBeat.i(119137);
-    FqK = new a((byte)0);
+    LKN = new a((byte)0);
     TAG = "MicroMsg.StoryUploadTask";
     AppMethodBeat.o(119137);
   }
@@ -39,14 +40,14 @@ public final class e
   public e(com.tencent.mm.plugin.story.i.j paramj)
   {
     AppMethodBeat.i(119136);
-    this.Fqr = paramj;
+    this.LKu = paramj;
     AppMethodBeat.o(119136);
   }
   
-  public final String auK()
+  public final String aBG()
   {
     AppMethodBeat.i(119135);
-    int i = (int)this.Fqr.systemRowid;
+    int i = (int)this.LKu.systemRowid;
     AppMethodBeat.o(119135);
     return String.valueOf(i);
   }
@@ -54,46 +55,46 @@ public final class e
   public final void call()
   {
     AppMethodBeat.i(119134);
-    Object localObject3 = this.Fqr.frI();
-    Object localObject4 = (edt)this.Fqr.frG().NeB.LoV.get(0);
-    Object localObject1 = com.tencent.mm.plugin.story.f.l.FmK;
-    localObject1 = com.tencent.mm.plugin.story.f.l.aRW(((edt)localObject4).Id);
-    Object localObject2 = com.tencent.mm.plugin.story.f.l.FmK;
-    localObject2 = com.tencent.mm.plugin.story.f.l.aRV(((edt)localObject4).Id);
-    int i = ((edu)localObject3).Mpa;
-    Object localObject5 = a.g.FvU;
-    if (i == a.g.frs())
+    Object localObject3 = this.LKu.gge();
+    Object localObject4 = (enu)this.LKu.ggc().Ura.Sqr.get(0);
+    Object localObject1 = com.tencent.mm.plugin.story.f.l.LGM;
+    localObject1 = com.tencent.mm.plugin.story.f.l.bda(((enu)localObject4).Id);
+    Object localObject2 = com.tencent.mm.plugin.story.f.l.LGM;
+    localObject2 = com.tencent.mm.plugin.story.f.l.bcZ(((enu)localObject4).Id);
+    int i = ((env)localObject3).TAg;
+    Object localObject5 = a.g.LPX;
+    if (i == a.g.gfO())
     {
-      a(com.tencent.mm.loader.g.j.ibw);
+      a(com.tencent.mm.loader.g.j.kQd);
       AppMethodBeat.o(119134);
       return;
     }
-    if (((edu)localObject3).ibG > 5)
+    if (((env)localObject3).kQn > 5)
     {
-      localObject1 = f.FqO;
-      f.a(this.Fqr, -1, "", (kotlin.g.a.a)e.b.FqL);
-      a(com.tencent.mm.loader.g.j.ibx);
+      localObject1 = f.LKR;
+      f.a(this.LKu, -1, "", (kotlin.g.a.a)e.b.LKO);
+      a(com.tencent.mm.loader.g.j.kQe);
       AppMethodBeat.o(119134);
       return;
     }
-    if (com.tencent.mm.vfs.s.boW((String)localObject1) < 0L)
+    if (u.bBQ((String)localObject1) < 0L)
     {
-      localObject1 = f.FqO;
-      f.a(this.Fqr, -1, "", (kotlin.g.a.a)e.c.FqM);
-      a(com.tencent.mm.loader.g.j.ibx);
+      localObject1 = f.LKR;
+      f.a(this.LKu, -1, "", (kotlin.g.a.a)e.c.LKP);
+      a(com.tencent.mm.loader.g.j.kQe);
       AppMethodBeat.o(119134);
       return;
     }
-    localObject5 = a.g.FvU;
-    ((edu)localObject3).Mpa = a.g.fru();
-    localObject5 = this.Fqr;
-    Object localObject6 = ((edu)localObject3).toByteArray();
-    p.g(localObject6, "postInfo.toByteArray()");
+    localObject5 = a.g.LPX;
+    ((env)localObject3).TAg = a.g.gfQ();
+    localObject5 = this.LKu;
+    Object localObject6 = ((env)localObject3).toByteArray();
+    p.j(localObject6, "postInfo.toByteArray()");
     ((com.tencent.mm.plugin.story.i.j)localObject5).setPostBuf((byte[])localObject6);
-    localObject5 = com.tencent.mm.plugin.story.f.j.Fmy;
-    j.b.foc().a((int)this.Fqr.systemRowid, this.Fqr);
-    localObject5 = com.tencent.mm.plugin.story.f.s.Fny;
-    localObject4 = com.tencent.mm.plugin.story.f.s.a((edt)localObject4);
+    localObject5 = com.tencent.mm.plugin.story.f.j.LGA;
+    j.b.gcw().a((int)this.LKu.systemRowid, this.LKu);
+    localObject5 = s.LHA;
+    localObject4 = s.a((enu)localObject4);
     boolean bool1;
     long l;
     label385:
@@ -101,36 +102,36 @@ public final class e
     int i2;
     int j;
     int k;
-    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rPC, 0) == 1)
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vvN, 0) == 1)
     {
       bool1 = true;
       boolean bool2 = bool1;
       if (Log.getLogLevel() >= 0)
       {
-        localObject5 = com.tencent.mm.plugin.recordvideo.b.e.BNm;
+        localObject5 = com.tencent.mm.plugin.recordvideo.b.f.HJU;
         bool2 = bool1;
-        if (com.tencent.mm.plugin.recordvideo.b.e.eJu()) {
+        if (com.tencent.mm.plugin.recordvideo.b.f.fvD()) {
           bool2 = true;
         }
       }
-      Log.i(TAG, "checkRemuxVideo isImageVideo:%s, enable:%s", new Object[] { Boolean.valueOf(((edu)localObject3).Neh), Boolean.valueOf(bool2) });
-      if (((edu)localObject3).Neh)
+      Log.i(TAG, "checkRemuxVideo isImageVideo:%s, enable:%s", new Object[] { Boolean.valueOf(((env)localObject3).UqG), Boolean.valueOf(bool2) });
+      if (((env)localObject3).UqG)
       {
-        localObject5 = h.FuH;
-        h.fqu().sg(System.currentTimeMillis());
-        localObject5 = h.FuH;
-        localObject5 = h.fqu();
+        localObject5 = com.tencent.mm.plugin.story.h.h.LOJ;
+        com.tencent.mm.plugin.story.h.h.geQ().wi(System.currentTimeMillis());
+        localObject5 = com.tencent.mm.plugin.story.h.h.LOJ;
+        localObject5 = com.tencent.mm.plugin.story.h.h.geQ();
         if (!bool2) {
           break label1341;
         }
         l = 1L;
-        ((jm)localObject5).sh(l);
+        ((lv)localObject5).wj(l);
       }
-      if ((!((edu)localObject3).Neh) || (!bool2) || (com.tencent.mm.plugin.story.c.c.isEnable()))
+      if ((!((env)localObject3).UqG) || (!bool2) || (com.tencent.mm.plugin.story.c.c.isEnable()))
       {
-        localObject5 = com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class);
-        p.g(localObject5, "MMKernel.service<IConfig…onfigService::class.java)");
-        if (Util.getInt(((com.tencent.mm.plugin.zero.b.a)localObject5).aqJ().getValue("StoryCheckSendVideoBitrateExceed"), 0) != 1) {
+        localObject5 = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.zero.b.a.class);
+        p.j(localObject5, "MMKernel.service<IConfig…onfigService::class.java)");
+        if (Util.getInt(((com.tencent.mm.plugin.zero.b.a)localObject5).axc().getValue("StoryCheckSendVideoBitrateExceed"), 0) != 1) {
           break label1752;
         }
       }
@@ -138,38 +139,38 @@ public final class e
         break label1752;
       }
       Log.i(TAG, "checkRemuxVideo, filePath:".concat(String.valueOf(localObject4)));
-      if (((edu)localObject3).Neh)
+      if (((env)localObject3).UqG)
       {
-        localObject5 = com.tencent.mm.plugin.story.h.d.Fug;
-        com.tencent.mm.plugin.story.h.d.fpW();
+        localObject5 = com.tencent.mm.plugin.story.h.d.LOh;
+        com.tencent.mm.plugin.story.h.d.ger();
       }
-      localObject6 = (c.a)com.tencent.mm.plugin.story.c.a.c.FkZ.aLT();
+      localObject6 = (c.a)com.tencent.mm.plugin.story.c.a.c.LFb.aUb();
       if (localObject4 == null) {
-        p.hyc();
+        p.iCn();
       }
-      if (!((c.a)localObject6).aRJ((String)localObject4)) {
+      if (!((c.a)localObject6).bcN((String)localObject4)) {
         break label1743;
       }
       Log.i(TAG, "checkRemuxVideo, exceed bitrate:".concat(String.valueOf(localObject4)));
-      if (((edu)localObject3).Neh)
+      if (((env)localObject3).UqG)
       {
-        localObject5 = com.tencent.mm.plugin.story.h.d.Fug;
-        com.tencent.mm.plugin.story.h.d.fpU();
-        localObject5 = h.FuH;
-        h.fqu().ahu();
+        localObject5 = com.tencent.mm.plugin.story.h.d.LOh;
+        com.tencent.mm.plugin.story.h.d.gep();
+        localObject5 = com.tencent.mm.plugin.story.h.h.LOJ;
+        com.tencent.mm.plugin.story.h.h.geQ().amQ();
       }
-      localObject5 = com.tencent.mm.plugin.story.h.g.Fuj;
-      com.tencent.mm.plugin.story.h.g.fqg();
-      p.h(localObject4, "path");
+      localObject5 = com.tencent.mm.plugin.story.h.g.LOk;
+      com.tencent.mm.plugin.story.h.g.geC();
+      p.k(localObject4, "path");
       Log.i("MicroMsg.IEncodeConfig", "videoConfigForLocalFile: ".concat(String.valueOf(localObject4)));
-      localObject5 = com.tencent.mm.plugin.sight.base.e.aNx((String)localObject4);
+      localObject5 = com.tencent.mm.plugin.sight.base.f.aYg((String)localObject4);
       if (localObject5 == null) {
         break label1347;
       }
-      i1 = ((com.tencent.mm.plugin.sight.base.a)localObject5).width;
-      n = ((com.tencent.mm.plugin.sight.base.a)localObject5).height;
-      m = ((com.tencent.mm.plugin.sight.base.a)localObject5).videoBitrate;
-      i2 = ((com.tencent.mm.plugin.sight.base.a)localObject5).frameRate;
+      i1 = ((com.tencent.mm.plugin.sight.base.b)localObject5).width;
+      n = ((com.tencent.mm.plugin.sight.base.b)localObject5).height;
+      m = ((com.tencent.mm.plugin.sight.base.b)localObject5).videoBitrate;
+      i2 = ((com.tencent.mm.plugin.sight.base.b)localObject5).frameRate;
       if (n > 0)
       {
         i = n;
@@ -219,8 +220,8 @@ public final class e
     int n = i2;
     if (i2 <= 0)
     {
-      localObject5 = com.tencent.mm.plugin.story.c.a.c.FkZ;
-      n = com.tencent.mm.plugin.story.c.a.c.aRI((String)localObject4);
+      localObject5 = com.tencent.mm.plugin.story.c.a.c.LFb;
+      n = com.tencent.mm.plugin.story.c.a.c.bcM((String)localObject4);
     }
     int i1 = SightVideoJNI.getMp4RotateVFS((String)localObject4);
     Log.i("MicroMsg.IEncodeConfig", "videoWidth: " + j + " , videoHeight :" + i + "  , videoBitrate:" + k + " ,videoBitrate " + ((c.a)localObject6).videoBitrate + ", videoFrameRate:" + n + " , videoRotate : " + i1);
@@ -244,42 +245,42 @@ public final class e
       label997:
       i = m;
       if (m % 16 != 0) {
-        i = com.tencent.mm.plugin.mmsight.d.QH(m);
+        i = com.tencent.mm.plugin.mmsight.d.WV(m);
       }
       j = k;
       if (k % 16 != 0) {
-        j = com.tencent.mm.plugin.mmsight.d.QH(k);
+        j = com.tencent.mm.plugin.mmsight.d.WV(k);
       }
       if (((c.a)localObject6).frameRate > n) {
         ((c.a)localObject6).frameRate = n;
       }
       ((c.a)localObject6).targetHeight = i;
       ((c.a)localObject6).targetWidth = j;
-      ((c.a)localObject6).ihS = i1;
+      ((c.a)localObject6).kWG = i1;
       label1070:
       localObject5 = (String)localObject4 + ".remux";
       Log.i(TAG, "remux outputFilepath:".concat(String.valueOf(localObject5)));
       l = Util.currentTicks();
-      i = SightVideoJNI.remuxingVFS((String)localObject4, (String)localObject5, ((c.a)localObject6).targetWidth, ((c.a)localObject6).targetHeight, ((c.a)localObject6).videoBitrate, com.tencent.mm.plugin.sight.base.c.Dmc, 8, 2, 25.0F, ((c.a)localObject6).frameRate, null, 0, com.tencent.mm.plugin.sight.base.c.Dmb, 0, 51);
+      i = SightVideoJNI.remuxingVFS((String)localObject4, (String)localObject5, ((c.a)localObject6).targetWidth, ((c.a)localObject6).targetHeight, ((c.a)localObject6).videoBitrate, com.tencent.mm.plugin.sight.base.d.JrH, 8, 2, 25.0F, ((c.a)localObject6).frameRate, null, 0, com.tencent.mm.plugin.sight.base.d.JrG, 0, 51);
       Log.i(TAG, "checkRemuxVideo remux cost:" + Util.ticksToNow(l) + "ms, ret:" + i);
       if (i < 0) {
         break label1625;
       }
-      if (((edu)localObject3).Neh)
+      if (((env)localObject3).UqG)
       {
         l = Util.ticksToNow(l);
-        localObject3 = com.tencent.mm.plugin.story.h.d.Fug;
-        com.tencent.mm.plugin.story.h.d.fpV();
-        localObject3 = com.tencent.mm.plugin.story.h.d.Fug;
-        com.tencent.mm.plugin.story.h.d.Kr(l);
-        localObject3 = h.FuH;
-        h.fqu().lM(i);
-        localObject3 = h.FuH;
-        h.fqu().si(l);
-        localObject3 = h.FuH;
-        h.fqv();
+        localObject3 = com.tencent.mm.plugin.story.h.d.LOh;
+        com.tencent.mm.plugin.story.h.d.geq();
+        localObject3 = com.tencent.mm.plugin.story.h.d.LOh;
+        com.tencent.mm.plugin.story.h.d.RL(l);
+        localObject3 = com.tencent.mm.plugin.story.h.h.LOJ;
+        com.tencent.mm.plugin.story.h.h.geQ().nM(i);
+        localObject3 = com.tencent.mm.plugin.story.h.h.LOJ;
+        com.tencent.mm.plugin.story.h.h.geQ().wk(l);
+        localObject3 = com.tencent.mm.plugin.story.h.h.LOJ;
+        com.tencent.mm.plugin.story.h.h.geR();
       }
-      com.tencent.mm.vfs.s.nx((String)localObject5, (String)localObject4);
+      u.oo((String)localObject5, (String)localObject4);
     }
     for (;;)
     {
@@ -287,9 +288,9 @@ public final class e
       {
         if (i == 0)
         {
-          localObject3 = h.FuH;
-          h.fqs().rs(System.currentTimeMillis());
-          new b(this.Fqr, (String)localObject1, (String)localObject2, (g.a)new d(this)).fpu();
+          localObject3 = com.tencent.mm.plugin.story.h.h.LOJ;
+          com.tencent.mm.plugin.story.h.h.geO().vu(System.currentTimeMillis());
+          new b(this.LKu, (String)localObject1, (String)localObject2, (g.a)new d(this)).gdO();
         }
         AppMethodBeat.o(119134);
         return;
@@ -299,26 +300,26 @@ public final class e
         l = 0L;
         break label385;
         label1347:
-        com.tencent.mm.plugin.recordvideo.b.e.BNm.eJv();
-        localObject5 = com.tencent.mm.plugin.recordvideo.b.e.BNm;
-        ((c.a)localObject6).targetWidth = com.tencent.mm.plugin.recordvideo.b.e.getWidth();
-        localObject5 = com.tencent.mm.plugin.recordvideo.b.e.BNm;
-        ((c.a)localObject6).targetHeight = com.tencent.mm.plugin.recordvideo.b.e.getHeight();
-        localObject5 = com.tencent.mm.plugin.recordvideo.b.e.BNm;
-        ((c.a)localObject6).frameRate = com.tencent.mm.plugin.recordvideo.b.e.getFrameRate();
+        com.tencent.mm.plugin.recordvideo.b.f.HJU.fvF();
+        localObject5 = com.tencent.mm.plugin.recordvideo.b.f.HJU;
+        ((c.a)localObject6).targetWidth = com.tencent.mm.plugin.recordvideo.b.f.getWidth();
+        localObject5 = com.tencent.mm.plugin.recordvideo.b.f.HJU;
+        ((c.a)localObject6).targetHeight = com.tencent.mm.plugin.recordvideo.b.f.getHeight();
+        localObject5 = com.tencent.mm.plugin.recordvideo.b.f.HJU;
+        ((c.a)localObject6).frameRate = com.tencent.mm.plugin.recordvideo.b.f.getFrameRate();
         float f1 = 1.0F;
         bool1 = com.tencent.mm.plugin.story.c.c.isEnable();
         if (!bool1)
         {
-          float f2 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rVN, 2.0F);
+          float f2 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vCn, 2.0F);
           f1 = f2;
           if (f2 <= 1.0F) {
             f1 = 1.0F;
           }
         }
         ((c.a)localObject6).videoBitrate = ((int)(((c.a)localObject6).videoBitrate * f1));
-        ((c.a)localObject6).ihS = 0;
-        Log.i("MicroMsg.IEncodeConfig", "videoConfigForLocalFile imageVideo, config:" + ((c.a)localObject6).targetWidth + ", " + ((c.a)localObject6).targetHeight + ", " + ((c.a)localObject6).frameRate + ", " + ((c.a)localObject6).ihS + ", " + ((c.a)localObject6).videoBitrate + ", " + f1 + ", " + bool1);
+        ((c.a)localObject6).kWG = 0;
+        Log.i("MicroMsg.IEncodeConfig", "videoConfigForLocalFile imageVideo, config:" + ((c.a)localObject6).targetWidth + ", " + ((c.a)localObject6).targetHeight + ", " + ((c.a)localObject6).frameRate + ", " + ((c.a)localObject6).kWG + ", " + ((c.a)localObject6).videoBitrate + ", " + f1 + ", " + bool1);
         break label1070;
         m = i;
         k = j;
@@ -335,63 +336,63 @@ public final class e
         k = ((c.a)localObject6).targetWidth;
         break label997;
         label1625:
-        if (((edu)localObject3).Neh)
+        if (((env)localObject3).UqG)
         {
-          localObject4 = com.tencent.mm.plugin.story.h.d.Fug;
-          com.tencent.mm.plugin.story.h.d.fpT();
-          localObject4 = h.FuH;
-          h.fqu().lM(i);
-          localObject4 = h.FuH;
-          h.fqv();
+          localObject4 = com.tencent.mm.plugin.story.h.d.LOh;
+          com.tencent.mm.plugin.story.h.d.geo();
+          localObject4 = com.tencent.mm.plugin.story.h.h.LOJ;
+          com.tencent.mm.plugin.story.h.h.geQ().nM(i);
+          localObject4 = com.tencent.mm.plugin.story.h.h.LOJ;
+          com.tencent.mm.plugin.story.h.h.geR();
         }
-        ((edu)localObject3).ibG += 1;
-        localObject4 = this.Fqr;
-        localObject3 = ((edu)localObject3).toByteArray();
-        p.g(localObject3, "postInfo.toByteArray()");
+        ((env)localObject3).kQn += 1;
+        localObject4 = this.LKu;
+        localObject3 = ((env)localObject3).toByteArray();
+        p.j(localObject3, "postInfo.toByteArray()");
         ((com.tencent.mm.plugin.story.i.j)localObject4).setPostBuf((byte[])localObject3);
-        localObject3 = com.tencent.mm.plugin.story.f.j.Fmy;
-        j.b.foc().a((int)this.Fqr.systemRowid, this.Fqr);
-        com.tencent.mm.vfs.s.deleteFile((String)localObject5);
-        a(com.tencent.mm.loader.g.j.ibx);
+        localObject3 = com.tencent.mm.plugin.story.f.j.LGA;
+        j.b.gcw().a((int)this.LKu.systemRowid, this.LKu);
+        u.deleteFile((String)localObject5);
+        a(com.tencent.mm.loader.g.j.kQe);
       }
       label1743:
       Log.i(TAG, "checkRemuxVideo, no need remux");
       label1752:
-      if (((edu)localObject3).Neh)
+      if (((env)localObject3).UqG)
       {
-        localObject3 = h.FuH;
-        h.fqv();
+        localObject3 = com.tencent.mm.plugin.story.h.h.LOJ;
+        com.tencent.mm.plugin.story.h.h.geR();
       }
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/upload/UploadTask$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-story_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/model/upload/UploadTask$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-story_release"})
   public static final class a {}
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/story/model/upload/UploadTask$doUploadStory$sightUpload$1", "Lcom/tencent/mm/plugin/story/model/StoryCdnUpload$ISightCdnUploadCallback;", "onSightUpLoadEnd", "", "errorCode", "", "isOk", "", "upload", "Lcom/tencent/mm/plugin/story/model/StoryCdnUpload;", "plugin-story_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/model/upload/UploadTask$doUploadStory$sightUpload$1", "Lcom/tencent/mm/plugin/story/model/StoryCdnUpload$ISightCdnUploadCallback;", "onSightUpLoadEnd", "", "errorCode", "", "isOk", "", "upload", "Lcom/tencent/mm/plugin/story/model/StoryCdnUpload;", "plugin-story_release"})
   public static final class d
     implements g.a
   {
     public final void a(int paramInt, boolean paramBoolean, com.tencent.mm.plugin.story.f.g paramg)
     {
       AppMethodBeat.i(119133);
-      p.h(paramg, "upload");
-      paramg = h.FuH;
-      h.fqs().rt(paramInt);
-      paramg = h.FuH;
-      paramg = h.fqs();
+      p.k(paramg, "upload");
+      paramg = com.tencent.mm.plugin.story.h.h.LOJ;
+      com.tencent.mm.plugin.story.h.h.geO().vv(paramInt);
+      paramg = com.tencent.mm.plugin.story.h.h.LOJ;
+      paramg = com.tencent.mm.plugin.story.h.h.geO();
       long l = System.currentTimeMillis();
-      h localh = h.FuH;
-      paramg.rs(l - h.fqs().agP());
-      paramg = h.FuH;
-      h.fqt();
+      com.tencent.mm.plugin.story.h.h localh = com.tencent.mm.plugin.story.h.h.LOJ;
+      paramg.vu(l - com.tencent.mm.plugin.story.h.h.geO().alW());
+      paramg = com.tencent.mm.plugin.story.h.h.LOJ;
+      com.tencent.mm.plugin.story.h.h.geP();
       if (paramBoolean)
       {
-        this.FqN.a(com.tencent.mm.loader.g.j.ibw);
+        this.LKQ.a(com.tencent.mm.loader.g.j.kQd);
         AppMethodBeat.o(119133);
         return;
       }
-      this.FqN.a(com.tencent.mm.loader.g.j.ibx);
+      this.LKQ.a(com.tencent.mm.loader.g.j.kQe);
       AppMethodBeat.o(119133);
     }
   }

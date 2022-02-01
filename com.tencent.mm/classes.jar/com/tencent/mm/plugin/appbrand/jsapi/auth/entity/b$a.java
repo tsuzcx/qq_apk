@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.auth.entity;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
 public final class b$a {}
 
 

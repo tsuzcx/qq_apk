@@ -6,19 +6,19 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/search/report/SimilarEmojiIdKey;", "", "()V", "KEY", "", "enableReport", "", "start", "markEmojiLoad", "", "markEmojiLoadTime", "time", "markSendDialogSimilarEmoji", "markSendSosSimilarEmoji", "markShowSimilarEmojiDialog", "markShowSimilarEmojiMenu", "markShowSosPage", "markSimilarRequest", "markSimilarRequestTime", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/search/report/SimilarEmojiIdKey;", "", "()V", "KEY", "", "enableReport", "", "start", "markEmojiLoad", "", "markEmojiLoadTime", "time", "markSendDialogSimilarEmoji", "markSendSosSimilarEmoji", "markShowSimilarEmojiDialog", "markShowSimilarEmojiMenu", "markShowSosPage", "markSimilarRequest", "markSimilarRequestTime", "plugin-emojisdk_release"})
 public final class a
 {
-  public static final a NJv;
+  public static final a UWW;
   
   static
   {
     AppMethodBeat.i(105851);
-    NJv = new a();
+    UWW = new a();
     AppMethodBeat.o(105851);
   }
   
-  public static void MF(long paramLong)
+  public static void Un(long paramLong)
   {
     AppMethodBeat.i(105847);
     switch (NetStatusUtil.getIOSNetType(MMApplicationContext.getContext()))
@@ -28,20 +28,20 @@ public final class a
     {
       AppMethodBeat.o(105847);
       return;
-      h.CyF.n(1257L, 101L, paramLong);
+      h.IzE.p(1257L, 101L, paramLong);
       AppMethodBeat.o(105847);
       return;
-      h.CyF.n(1257L, 104L, paramLong);
+      h.IzE.p(1257L, 104L, paramLong);
       AppMethodBeat.o(105847);
       return;
-      h.CyF.n(1257L, 107L, paramLong);
+      h.IzE.p(1257L, 107L, paramLong);
       AppMethodBeat.o(105847);
       return;
-      h.CyF.n(1257L, 110L, paramLong);
+      h.IzE.p(1257L, 110L, paramLong);
     }
   }
   
-  public static void MG(long paramLong)
+  public static void Uo(long paramLong)
   {
     AppMethodBeat.i(105849);
     switch (NetStatusUtil.getIOSNetType(MMApplicationContext.getContext()))
@@ -51,20 +51,20 @@ public final class a
     {
       AppMethodBeat.o(105849);
       return;
-      h.CyF.n(1257L, 116L, paramLong);
+      h.IzE.p(1257L, 116L, paramLong);
       AppMethodBeat.o(105849);
       return;
-      h.CyF.n(1257L, 119L, paramLong);
+      h.IzE.p(1257L, 119L, paramLong);
       AppMethodBeat.o(105849);
       return;
-      h.CyF.n(1257L, 122L, paramLong);
+      h.IzE.p(1257L, 122L, paramLong);
       AppMethodBeat.o(105849);
       return;
-      h.CyF.n(1257L, 125L, paramLong);
+      h.IzE.p(1257L, 125L, paramLong);
     }
   }
   
-  public static boolean MH(long paramLong)
+  public static boolean Up(long paramLong)
   {
     AppMethodBeat.i(105850);
     if (System.currentTimeMillis() - paramLong > 10000L)
@@ -76,42 +76,42 @@ public final class a
     return true;
   }
   
-  public static void gxr()
+  public static void htp()
   {
     AppMethodBeat.i(105841);
-    h.CyF.F(1257L, 1L);
+    h.IzE.F(1257L, 1L);
     AppMethodBeat.o(105841);
   }
   
-  public static void gxs()
+  public static void htq()
   {
     AppMethodBeat.i(105842);
-    h.CyF.F(1257L, 2L);
+    h.IzE.F(1257L, 2L);
     AppMethodBeat.o(105842);
   }
   
-  public static void gxt()
+  public static void htr()
   {
     AppMethodBeat.i(105843);
-    h.CyF.F(1257L, 3L);
+    h.IzE.F(1257L, 3L);
     AppMethodBeat.o(105843);
   }
   
-  public static void gxu()
+  public static void hts()
   {
     AppMethodBeat.i(105844);
-    h.CyF.F(1257L, 4L);
+    h.IzE.F(1257L, 4L);
     AppMethodBeat.o(105844);
   }
   
-  public static void gxv()
+  public static void htt()
   {
     AppMethodBeat.i(105845);
-    h.CyF.F(1257L, 5L);
+    h.IzE.F(1257L, 5L);
     AppMethodBeat.o(105845);
   }
   
-  public static void gxw()
+  public static void htu()
   {
     AppMethodBeat.i(105846);
     switch (NetStatusUtil.getIOSNetType(MMApplicationContext.getContext()))
@@ -121,20 +121,20 @@ public final class a
     {
       AppMethodBeat.o(105846);
       return;
-      h.CyF.F(1257L, 100L);
+      h.IzE.F(1257L, 100L);
       AppMethodBeat.o(105846);
       return;
-      h.CyF.F(1257L, 103L);
+      h.IzE.F(1257L, 103L);
       AppMethodBeat.o(105846);
       return;
-      h.CyF.F(1257L, 106L);
+      h.IzE.F(1257L, 106L);
       AppMethodBeat.o(105846);
       return;
-      h.CyF.F(1257L, 109L);
+      h.IzE.F(1257L, 109L);
     }
   }
   
-  public static void gxx()
+  public static void htv()
   {
     AppMethodBeat.i(105848);
     switch (NetStatusUtil.getIOSNetType(MMApplicationContext.getContext()))
@@ -144,16 +144,16 @@ public final class a
     {
       AppMethodBeat.o(105848);
       return;
-      h.CyF.F(1257L, 115L);
+      h.IzE.F(1257L, 115L);
       AppMethodBeat.o(105848);
       return;
-      h.CyF.F(1257L, 118L);
+      h.IzE.F(1257L, 118L);
       AppMethodBeat.o(105848);
       return;
-      h.CyF.F(1257L, 121L);
+      h.IzE.F(1257L, 121L);
       AppMethodBeat.o(105848);
       return;
-      h.CyF.F(1257L, 124L);
+      h.IzE.F(1257L, 124L);
     }
   }
 }

@@ -6,6 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.downloader.WXFileDownloaderBridge;
 import com.tencent.xweb.downloader.a;
 import com.tencent.xweb.downloader.c;
+import com.tencent.xweb.xwalk.XWalkUpdater.UpdateConfig;
 import java.io.File;
 
 public class XWalkLibraryLoader
@@ -91,18 +92,24 @@ public class XWalkLibraryLoader
   
   public static void startHttpDownload(DownloadListener paramDownloadListener, Context paramContext, XWalkUpdater.UpdateConfig paramUpdateConfig)
   {
-    AppMethodBeat.i(154795);
-    paramContext = new WXFileDownloaderTask(true, paramDownloadListener, paramUpdateConfig.downUrl, paramUpdateConfig.getDownloadPath(), paramUpdateConfig.getUpdateBizType());
-    if ((paramUpdateConfig.bUseCdn) && (paramContext.isValid()))
+    AppMethodBeat.i(206376);
+    paramContext = paramUpdateConfig.aaju;
+    String str = paramUpdateConfig.fst();
+    if (paramUpdateConfig.aajs) {}
+    for (int i = 2;; i = 1)
     {
+      paramContext = new WXFileDownloaderTask(true, paramDownloadListener, paramContext, str, i);
+      if ((!paramUpdateConfig.aajx) || (!paramContext.isValid())) {
+        break;
+      }
       Log.i("XWalkLib", "use wx file downloader");
       paramContext.execute(new Void[0]);
-      AppMethodBeat.o(154795);
+      AppMethodBeat.o(206376);
       return;
     }
     Log.i("XWalkLib", "use default file downloader");
-    new HttpDownloadTask(true, paramDownloadListener, paramUpdateConfig.downUrl, paramUpdateConfig.getDownloadPath()).execute(new Void[0]);
-    AppMethodBeat.o(154795);
+    new HttpDownloadTask(true, paramDownloadListener, paramUpdateConfig.aaju, paramUpdateConfig.fst()).execute(new Void[0]);
+    AppMethodBeat.o(206376);
   }
   
   public static abstract interface ActivateListener
@@ -896,7 +903,7 @@ public class XWalkLibraryLoader
       this.mDownloadInfo.mIsRuntime = paramBoolean;
       this.mDownloadInfo.mBizType = paramInt;
       this.mWXFileDownloaderBridge = new WXFileDownloaderBridge();
-      this.mWXFileDownloaderBridge.SAY = this;
+      this.mWXFileDownloaderBridge.aabT = this;
       AppMethodBeat.o(154777);
     }
     
@@ -917,8 +924,8 @@ public class XWalkLibraryLoader
       ??? = this.mWXFileDownloaderBridge;
       String str1 = this.mDownloadInfo.mUrl;
       String str2 = this.mDownloadInfo.mSavePath;
-      if (WXFileDownloaderBridge.SAX != null) {}
-      for (int i = WXFileDownloaderBridge.SAX.a(str1, str2, ???);; i = -1)
+      if (WXFileDownloaderBridge.aabS != null) {}
+      for (int i = WXFileDownloaderBridge.aabS.a(str1, str2, ???);; i = -1)
       {
         if (i != 0)
         {
@@ -1077,7 +1084,7 @@ public class XWalkLibraryLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.XWalkLibraryLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -7,15 +7,15 @@ public enum h
   static
   {
     AppMethodBeat.i(149427);
-    diG = new h("DEFAULT", 0);
-    diH = new h("DOODLE", 1);
-    diI = new h("TEXT", 2);
-    diJ = new h("EMOJI", 3);
-    diK = new h("MOSAIC", 4);
-    diL = new h("CROP_PHOTO", 5);
-    diM = new h("CROP_VIDEO", 6);
-    diN = new h("FILTER", 7);
-    diO = new h[] { diG, diH, diI, diJ, diK, diL, diM, diN };
+    fam = new h("DEFAULT", 0);
+    fan = new h("DOODLE", 1);
+    fao = new h("TEXT", 2);
+    fap = new h("EMOJI", 3);
+    faq = new h("MOSAIC", 4);
+    far = new h("CROP_PHOTO", 5);
+    fas = new h("CROP_VIDEO", 6);
+    fat = new h("FILTER", 7);
+    fau = new h[] { fam, fan, fao, fap, faq, far, fas, fat };
     AppMethodBeat.o(149427);
   }
   
@@ -23,7 +23,7 @@ public enum h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.api.h
  * JD-Core Version:    0.7.0.1
  */

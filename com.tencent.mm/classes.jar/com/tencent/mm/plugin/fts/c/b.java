@@ -16,13 +16,13 @@ import java.util.List;
 public final class b
   extends a
 {
-  private SQLiteStatement wZH;
+  private SQLiteStatement BLG;
   
-  public final d Np(int paramInt)
+  public final d SD(int paramInt)
   {
     AppMethodBeat.i(52798);
     Object localObject1 = "Select * from Feature where featureId = ".concat(String.valueOf(paramInt));
-    localObject1 = this.wUt.rawQuery((String)localObject1, null);
+    localObject1 = this.BGp.rawQuery((String)localObject1, null);
     try
     {
       boolean bool = ((Cursor)localObject1).moveToFirst();
@@ -40,33 +40,33 @@ public final class b
     }
   }
   
-  public final void awY()
+  public final void aEr()
   {
     AppMethodBeat.i(52794);
-    if (awZ())
+    if (aEs())
     {
       localObject = String.format("DROP TABLE IF EXISTS %s", new Object[] { "Feature" });
-      this.wUt.execSQL((String)localObject);
-      W(-101L, 3L);
+      this.BGp.execSQL((String)localObject);
+      ad(-101L, 3L);
     }
-    if (!this.wUt.ayi("Feature"))
+    if (!this.BGp.aHB("Feature"))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("CREATE TABLE IF NOT EXISTS Feature ( ");
       ((StringBuilder)localObject).append(d.info.sql);
       ((StringBuilder)localObject).append(");");
       localObject = ((StringBuilder)localObject).toString();
-      this.wUt.execSQL((String)localObject);
+      this.BGp.execSQL((String)localObject);
     }
     Object localObject = String.format("INSERT INTO %s (featureId, title, titlePY, titleShortPY, tag, actionType, url, helpUrl, updateUrl, androidUrl, iconPath, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", new Object[] { "Feature" });
-    this.wZH = this.wUt.compileStatement((String)localObject);
+    this.BLG = this.BGp.compileStatement((String)localObject);
     AppMethodBeat.o(52794);
   }
   
-  public final boolean awZ()
+  public final boolean aEs()
   {
     AppMethodBeat.i(52795);
-    if (!gD(-101, 3))
+    if (!hw(-101, 3))
     {
       AppMethodBeat.o(52795);
       return true;
@@ -75,29 +75,34 @@ public final class b
     return false;
   }
   
-  public final boolean axa()
+  public final boolean aEt()
   {
     AppMethodBeat.i(52799);
-    super.axa();
-    this.wZH.close();
+    super.aEt();
+    this.BLG.close();
     AppMethodBeat.o(52799);
     return true;
   }
   
-  public final List<a> dOY()
+  public final boolean eqM()
+  {
+    return true;
+  }
+  
+  public final List<a> ers()
   {
     AppMethodBeat.i(52796);
     ArrayList localArrayList = new ArrayList();
     HashSet localHashSet = new HashSet();
-    Object localObject = String.format("SELECT entity_id, timestamp FROM %s", new Object[] { dOt() });
-    localObject = this.wUt.rawQuery((String)localObject, null);
+    Object localObject = String.format("SELECT entity_id, timestamp FROM %s", new Object[] { eqI() });
+    localObject = this.BGp.rawQuery((String)localObject, null);
     while (((Cursor)localObject).moveToNext())
     {
       int i = ((Cursor)localObject).getInt(0);
       if (localHashSet.add(Integer.valueOf(i)))
       {
         a locala = new a();
-        locala.wZI = i;
+        locala.BLH = i;
         locala.timestamp = ((Cursor)localObject).getLong(1);
         localArrayList.add(locala);
       }
@@ -107,43 +112,38 @@ public final class b
     return localArrayList;
   }
   
-  public final boolean dOv()
-  {
-    return true;
-  }
-  
-  public final boolean eR(List<d> paramList)
+  public final boolean fh(List<d> paramList)
   {
     AppMethodBeat.i(52797);
-    boolean bool = this.wUt.inTransaction();
+    boolean bool = this.BGp.inTransaction();
     if (!bool) {
-      this.wUt.beginTransaction();
+      this.BGp.beginTransaction();
     }
-    this.wUt.execSQL("Delete from Feature");
+    this.BGp.execSQL("Delete from Feature");
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       d locald = (d)paramList.next();
       try
       {
-        this.wZH.bindLong(1, locald.field_featureId);
-        this.wZH.bindString(2, locald.field_title);
-        this.wZH.bindString(3, locald.field_titlePY);
-        this.wZH.bindString(4, locald.field_titleShortPY);
-        this.wZH.bindString(5, locald.field_tag);
-        this.wZH.bindLong(6, locald.field_actionType);
-        this.wZH.bindString(7, locald.field_url);
-        this.wZH.bindString(8, locald.field_helpUrl);
-        this.wZH.bindString(9, locald.field_updateUrl);
-        this.wZH.bindString(10, locald.field_androidUrl);
-        this.wZH.bindString(11, locald.field_iconPath);
-        this.wZH.bindLong(12, locald.field_timestamp);
-        Log.d("MicroMsg.FTS.FTS5FeatureStorage", "insertFeatureItem rowid=%d timestamp=%d", new Object[] { Long.valueOf(this.wZH.executeInsert()), Long.valueOf(locald.field_timestamp) });
+        this.BLG.bindLong(1, locald.field_featureId);
+        this.BLG.bindString(2, locald.field_title);
+        this.BLG.bindString(3, locald.field_titlePY);
+        this.BLG.bindString(4, locald.field_titleShortPY);
+        this.BLG.bindString(5, locald.field_tag);
+        this.BLG.bindLong(6, locald.field_actionType);
+        this.BLG.bindString(7, locald.field_url);
+        this.BLG.bindString(8, locald.field_helpUrl);
+        this.BLG.bindString(9, locald.field_updateUrl);
+        this.BLG.bindString(10, locald.field_androidUrl);
+        this.BLG.bindString(11, locald.field_iconPath);
+        this.BLG.bindLong(12, locald.field_timestamp);
+        Log.d("MicroMsg.FTS.FTS5FeatureStorage", "insertFeatureItem rowid=%d timestamp=%d", new Object[] { Long.valueOf(this.BLG.executeInsert()), Long.valueOf(locald.field_timestamp) });
       }
       catch (Exception localException) {}
     }
     if (!bool) {
-      this.wUt.commit();
+      this.BGp.commit();
     }
     AppMethodBeat.o(52797);
     return true;
@@ -171,13 +171,13 @@ public final class b
   
   public static final class a
   {
+    public int BLH;
     public long timestamp;
-    public int wZI;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.c.b
  * JD-Core Version:    0.7.0.1
  */

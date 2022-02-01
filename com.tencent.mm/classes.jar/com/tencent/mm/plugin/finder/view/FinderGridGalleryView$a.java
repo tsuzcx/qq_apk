@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.finder.view;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderGridGalleryView$Companion;", "", "()V", "SELECTED_MEDIA_ITEMS", "", "getSELECTED_MEDIA_ITEMS", "()Ljava/lang/String;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderGridGalleryView$Companion;", "", "()V", "SELECTED_MEDIA_ITEMS", "", "getSELECTED_MEDIA_ITEMS", "()Ljava/lang/String;", "plugin-finder_release"})
 public final class FinderGridGalleryView$a {}
 
 

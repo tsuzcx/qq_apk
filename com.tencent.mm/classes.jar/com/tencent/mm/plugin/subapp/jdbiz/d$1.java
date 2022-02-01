@@ -13,10 +13,10 @@ final class d$1
   public final void onAppForeground(String paramString)
   {
     AppMethodBeat.i(28878);
-    if (com.tencent.mm.pluginsdk.i.d.JYo != null)
+    if (com.tencent.mm.pluginsdk.j.d.QYQ != null)
     {
-      d.fsQ();
-      d.fsX();
+      d.ghp();
+      d.ghw();
     }
     AppMethodBeat.o(28878);
   }

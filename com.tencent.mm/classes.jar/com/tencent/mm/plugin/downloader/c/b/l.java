@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.downloader.c.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class l
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public boolean qHd;
-  public String qHe;
-  public String qHf;
-  public String qHg;
-  public int qHh;
-  public boolean qHi;
+  public boolean uge;
+  public String ugf;
+  public String ugg;
+  public String ugh;
+  public int ugi;
+  public boolean ugj;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -18,47 +18,47 @@ public final class l
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.cc(1, this.qHd);
-      if (this.qHe != null) {
-        paramVarArgs.e(2, this.qHe);
+      paramVarArgs.co(1, this.uge);
+      if (this.ugf != null) {
+        paramVarArgs.f(2, this.ugf);
       }
-      if (this.qHf != null) {
-        paramVarArgs.e(3, this.qHf);
+      if (this.ugg != null) {
+        paramVarArgs.f(3, this.ugg);
       }
-      if (this.qHg != null) {
-        paramVarArgs.e(4, this.qHg);
+      if (this.ugh != null) {
+        paramVarArgs.f(4, this.ugh);
       }
-      paramVarArgs.aM(5, this.qHh);
-      paramVarArgs.cc(6, this.qHi);
+      paramVarArgs.aY(5, this.ugi);
+      paramVarArgs.co(6, this.ugj);
       AppMethodBeat.o(153072);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.fS(1) + 1 + 0;
+      int i = g.a.a.b.b.a.gL(1) + 1 + 0;
       paramInt = i;
-      if (this.qHe != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.qHe);
+      if (this.ugf != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.ugf);
       }
       i = paramInt;
-      if (this.qHf != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.qHf);
+      if (this.ugg != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.ugg);
       }
       paramInt = i;
-      if (this.qHg != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.qHg);
+      if (this.ugh != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.ugh);
       }
-      i = g.a.a.b.b.a.bu(5, this.qHh);
-      int j = g.a.a.b.b.a.fS(6);
+      i = g.a.a.b.b.a.bM(5, this.ugi);
+      int j = g.a.a.b.b.a.gL(6);
       AppMethodBeat.o(153072);
       return paramInt + i + (j + 1);
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
       AppMethodBeat.o(153072);
@@ -74,27 +74,27 @@ public final class l
         AppMethodBeat.o(153072);
         return -1;
       case 1: 
-        locall.qHd = locala.UbS.yZ();
+        locall.uge = locala.abFh.AB();
         AppMethodBeat.o(153072);
         return 0;
       case 2: 
-        locall.qHe = locala.UbS.readString();
+        locall.ugf = locala.abFh.readString();
         AppMethodBeat.o(153072);
         return 0;
       case 3: 
-        locall.qHf = locala.UbS.readString();
+        locall.ugg = locala.abFh.readString();
         AppMethodBeat.o(153072);
         return 0;
       case 4: 
-        locall.qHg = locala.UbS.readString();
+        locall.ugh = locala.abFh.readString();
         AppMethodBeat.o(153072);
         return 0;
       case 5: 
-        locall.qHh = locala.UbS.zi();
+        locall.ugi = locala.abFh.AK();
         AppMethodBeat.o(153072);
         return 0;
       }
-      locall.qHi = locala.UbS.yZ();
+      locall.ugj = locala.abFh.AB();
       AppMethodBeat.o(153072);
       return 0;
     }
@@ -104,7 +104,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.c.b.l
  * JD-Core Version:    0.7.0.1
  */

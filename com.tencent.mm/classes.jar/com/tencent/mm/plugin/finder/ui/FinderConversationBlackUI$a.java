@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.finder.ui;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationBlackUI$Companion;", "", "()V", "KEY_TALKER_TYPE", "", "PAGE_COUNT", "", "PAGE_INITIAL_COUNT", "PREFETCH_DISTANCE", "TAG", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationBlackUI$Companion;", "", "()V", "KEY_TALKER_TYPE", "", "PAGE_COUNT", "", "PAGE_INITIAL_COUNT", "PREFETCH_DISTANCE", "TAG", "plugin-finder_release"})
 public final class FinderConversationBlackUI$a {}
 
 

@@ -1,8 +1,6 @@
 package com.tencent.mm.plugin.wallet_payu.create.ui;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.support.v4.view.q;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +9,12 @@ import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
+import androidx.viewpager.widget.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_payu.create.a.d;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.ui.base.MMAutoHeightViewPager;
 import com.tencent.mm.ui.base.MMPageControlView;
 import java.util.ArrayList;
@@ -20,11 +22,11 @@ import java.util.ArrayList;
 public class WalletPayUOpenIntroView
   extends LinearLayout
 {
-  private MMAutoHeightViewPager Iti;
-  private MMPageControlView Itj;
-  private a Itk;
-  private d[] Itl;
-  private ArrayList<View> axq;
+  private MMAutoHeightViewPager PlT;
+  private MMPageControlView PlU;
+  private a PlV;
+  private d[] PlW;
+  private ArrayList<View> ann;
   private Context mContext;
   
   public WalletPayUOpenIntroView(Context paramContext, AttributeSet paramAttributeSet)
@@ -37,11 +39,11 @@ public class WalletPayUOpenIntroView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(72033);
     this.mContext = paramContext;
-    paramContext = LayoutInflater.from(this.mContext).inflate(2131495914, this, true);
-    this.Iti = ((MMAutoHeightViewPager)paramContext.findViewById(2131305772));
-    this.Itj = ((MMPageControlView)paramContext.findViewById(2131299238));
-    this.Itj.setVisibility(0);
-    this.Iti.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
+    paramContext = LayoutInflater.from(this.mContext).inflate(a.g.payu_view_open_intro, this, true);
+    this.PlT = ((MMAutoHeightViewPager)paramContext.findViewById(a.f.pager));
+    this.PlU = ((MMPageControlView)paramContext.findViewById(a.f.controller));
+    this.PlU.setVisibility(0);
+    this.PlT.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
     {
       public final void onPageScrollStateChanged(int paramAnonymousInt) {}
       
@@ -63,32 +65,32 @@ public class WalletPayUOpenIntroView
   public void setPagerData(d[] paramArrayOfd)
   {
     AppMethodBeat.i(72034);
-    this.Itl = paramArrayOfd;
-    this.axq = new ArrayList();
-    if (this.Itl != null)
+    this.PlW = paramArrayOfd;
+    this.ann = new ArrayList();
+    if (this.PlW != null)
     {
       i = 0;
-      while (i < this.Itl.length)
+      while (i < this.PlW.length)
       {
-        paramArrayOfd = LayoutInflater.from(this.mContext).inflate(2131495915, null);
-        this.axq.add(paramArrayOfd);
+        paramArrayOfd = LayoutInflater.from(this.mContext).inflate(a.g.payu_view_open_intro_item, null);
+        this.ann.add(paramArrayOfd);
         i += 1;
       }
     }
-    this.Itk = new a((byte)0);
-    this.Iti.setAdapter(this.Itk);
-    paramArrayOfd = this.Itj;
-    if (this.Itl == null) {}
-    for (int i = 0;; i = this.Itl.length)
+    this.PlV = new a((byte)0);
+    this.PlT.setAdapter(this.PlV);
+    paramArrayOfd = this.PlU;
+    if (this.PlW == null) {}
+    for (int i = 0;; i = this.PlW.length)
     {
-      paramArrayOfd.kX(i, 0);
+      paramArrayOfd.mp(i, 0);
       AppMethodBeat.o(72034);
       return;
     }
   }
   
   final class a
-    extends q
+    extends a
   {
     private a() {}
     
@@ -118,12 +120,12 @@ public class WalletPayUOpenIntroView
       View localView = (View)WalletPayUOpenIntroView.d(WalletPayUOpenIntroView.this).get(paramInt);
       paramViewGroup.addView(localView);
       paramViewGroup = WalletPayUOpenIntroView.c(WalletPayUOpenIntroView.this)[paramInt];
-      ImageView localImageView = (ImageView)localView.findViewById(2131303814);
-      TextView localTextView1 = (TextView)localView.findViewById(2131309139);
-      TextView localTextView2 = (TextView)localView.findViewById(2131302328);
-      localImageView.setImageResource(paramViewGroup.Itg);
-      localTextView1.setText(paramViewGroup.titleRes);
-      localTextView2.setText(paramViewGroup.Ith);
+      ImageView localImageView = (ImageView)localView.findViewById(a.f.logo);
+      TextView localTextView1 = (TextView)localView.findViewById(a.f.tip);
+      TextView localTextView2 = (TextView)localView.findViewById(a.f.hint);
+      localImageView.setImageResource(paramViewGroup.PlQ);
+      localTextView1.setText(paramViewGroup.PlR);
+      localTextView2.setText(paramViewGroup.PlS);
       AppMethodBeat.o(72031);
       return localView;
     }

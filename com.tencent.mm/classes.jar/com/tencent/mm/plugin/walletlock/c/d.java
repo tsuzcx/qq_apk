@@ -14,20 +14,20 @@ import java.util.List;
 public final class d
   implements b.b
 {
-  private static d IwN = null;
+  private static d PqS = null;
   
-  public static d fVq()
+  public static d gNW()
   {
     AppMethodBeat.i(129896);
-    if (IwN == null) {
-      IwN = new d();
+    if (PqS == null) {
+      PqS = new d();
     }
-    d locald = IwN;
+    d locald = PqS;
     AppMethodBeat.o(129896);
     return locald;
   }
   
-  public final boolean aR(Activity paramActivity)
+  public final boolean aW(Activity paramActivity)
   {
     AppMethodBeat.i(129895);
     Object localObject = ((ActivityManager.RunningTaskInfo)((ActivityManager)MMApplicationContext.getContext().getSystemService("activity")).getRunningTasks(1).get(0)).topActivity;
@@ -47,7 +47,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.c.d
  * JD-Core Version:    0.7.0.1
  */

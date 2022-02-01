@@ -11,27 +11,27 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 public final class i
   implements c
 {
+  private MediaRecorder FbE;
+  private boolean FbF;
+  c.a Fbl;
+  private MMHandler Fbr;
   private int audioBitrate;
   private int audioChannelCount;
   private int audioSampleRate;
-  c.a zvM;
-  private MMHandler zvS;
-  private MediaRecorder zwf;
-  private boolean zwg;
   
   public i(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(89496);
-    this.zwg = false;
-    this.zvS = new MMHandler()
+    this.FbF = false;
+    this.Fbr = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(89495);
-        if (i.this.zvM != null)
+        if (i.this.Fbl != null)
         {
-          i.this.zvM.aQY();
-          i.this.zvM = null;
+          i.this.Fbl.aZS();
+          i.this.Fbl = null;
         }
         AppMethodBeat.o(89495);
       }
@@ -46,21 +46,21 @@ public final class i
     AppMethodBeat.o(89496);
   }
   
-  public final int H(int paramInt, String paramString)
+  public final int J(int paramInt, String paramString)
   {
     AppMethodBeat.i(89497);
     Log.i("MicroMsg.MMSightAACMediaRecorder", "MMSightAACMediaRecorder init tempPath[%s], sampleRate[%d]", new Object[] { paramString, Integer.valueOf(this.audioSampleRate) });
-    this.zwf = new e();
-    this.zwf.setAudioSource(1);
-    this.zwf.setOutputFormat(2);
-    this.zwf.setAudioEncoder(3);
-    this.zwf.setAudioChannels(this.audioChannelCount);
-    this.zwf.setAudioEncodingBitRate(this.audioBitrate);
-    this.zwf.setAudioSamplingRate(this.audioSampleRate);
-    this.zwf.setOutputFile(paramString);
+    this.FbE = new e();
+    this.FbE.setAudioSource(1);
+    this.FbE.setOutputFormat(2);
+    this.FbE.setAudioEncoder(3);
+    this.FbE.setAudioChannels(this.audioChannelCount);
+    this.FbE.setAudioEncodingBitRate(this.audioBitrate);
+    this.FbE.setAudioSamplingRate(this.audioSampleRate);
+    this.FbE.setOutputFile(paramString);
     try
     {
-      this.zwf.prepare();
+      this.FbE.prepare();
       AppMethodBeat.o(89497);
       return 0;
     }
@@ -76,11 +76,11 @@ public final class i
   {
     AppMethodBeat.i(89498);
     Log.i("MicroMsg.MMSightAACMediaRecorder", "start, onPcmReady: %s", new Object[] { parama });
-    this.zvM = parama;
+    this.Fbl = parama;
     try
     {
-      if ((this.zwf != null) && (!this.zwg)) {
-        this.zwf.start();
+      if ((this.FbE != null) && (!this.FbF)) {
+        this.FbE.start();
       }
       return 0;
     }
@@ -91,7 +91,7 @@ public final class i
     }
     finally
     {
-      this.zvS.sendEmptyMessage(0);
+      this.Fbr.sendEmptyMessage(0);
       AppMethodBeat.o(89498);
     }
   }
@@ -99,25 +99,25 @@ public final class i
   public final int a(c.b paramb)
   {
     AppMethodBeat.i(89499);
-    Log.i("MicroMsg.MMSightAACMediaRecorder", "stop, mediaRecorder: %s, callback: %s", new Object[] { this.zwf, paramb });
-    if (this.zwf == null)
+    Log.i("MicroMsg.MMSightAACMediaRecorder", "stop, mediaRecorder: %s, callback: %s", new Object[] { this.FbE, paramb });
+    if (this.FbE == null)
     {
       if (paramb != null) {
-        paramb.aQX();
+        paramb.aZQ();
       }
       AppMethodBeat.o(89499);
       return 0;
     }
     try
     {
-      if (!this.zwg)
+      if (!this.FbF)
       {
-        this.zwf.stop();
-        this.zwf.release();
+        this.FbE.stop();
+        this.FbE.release();
       }
-      this.zwf = null;
+      this.FbE = null;
       if (paramb != null) {
-        paramb.aQX();
+        paramb.aZQ();
       }
       AppMethodBeat.o(89499);
       return 0;
@@ -135,14 +135,14 @@ public final class i
     AppMethodBeat.i(89500);
     try
     {
-      if (this.zwf != null)
+      if (this.FbE != null)
       {
-        if (!this.zwg)
+        if (!this.FbF)
         {
-          this.zwf.stop();
-          this.zwf.release();
+          this.FbE.stop();
+          this.FbE.release();
         }
-        this.zwf = null;
+        this.FbE = null;
       }
       AppMethodBeat.o(89500);
       return;
@@ -154,9 +154,9 @@ public final class i
     }
   }
   
-  public final void ejW() {}
+  public final void eTD() {}
   
-  public final com.tencent.mm.audio.b.c.a ejX()
+  public final com.tencent.mm.audio.b.c.a eTE()
   {
     return null;
   }
@@ -164,31 +164,31 @@ public final class i
   public final void pause()
   {
     AppMethodBeat.i(89501);
-    if (d.oD(24)) {
-      this.zwf.pause();
+    if (d.qV(24)) {
+      this.FbE.pause();
     }
     AppMethodBeat.o(89501);
-  }
-  
-  public final void rA(int paramInt) {}
-  
-  public final void rc(boolean paramBoolean)
-  {
-    this.zwg = paramBoolean;
   }
   
   public final void resume()
   {
     AppMethodBeat.i(89502);
-    if (d.oD(24)) {
-      this.zwf.resume();
+    if (d.qV(24)) {
+      this.FbE.resume();
     }
     AppMethodBeat.o(89502);
   }
+  
+  public final void uf(boolean paramBoolean)
+  {
+    this.FbF = paramBoolean;
+  }
+  
+  public final void uu(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.i
  * JD-Core Version:    0.7.0.1
  */

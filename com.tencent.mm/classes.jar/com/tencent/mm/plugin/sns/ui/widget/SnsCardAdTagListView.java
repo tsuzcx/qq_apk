@@ -18,11 +18,14 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.i.c;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
 import com.tencent.mm.plugin.sns.storage.ADXml.d;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,16 +33,16 @@ import java.util.List;
 public class SnsCardAdTagListView
   extends LinearLayout
 {
-  private List<View> EDW;
-  private volatile String Ffa;
+  private List<View> KRL;
+  private volatile String LtF;
   private Activity activity;
-  private int tCv;
+  private int space;
   
   public SnsCardAdTagListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(100491);
-    this.EDW = new ArrayList();
+    this.KRL = new ArrayList();
     AppMethodBeat.o(100491);
   }
   
@@ -47,158 +50,148 @@ public class SnsCardAdTagListView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(100492);
-    this.EDW = new ArrayList();
+    this.KRL = new ArrayList();
     AppMethodBeat.o(100492);
-  }
-  
-  private void a(ADXml.d paramd, boolean paramBoolean)
-  {
-    AppMethodBeat.i(203995);
-    if (paramd == null)
-    {
-      AppMethodBeat.o(203995);
-      return;
-    }
-    String str = paramd.DWn;
-    Object localObject;
-    if (ao.isDarkMode()) {
-      localObject = paramd.DWp;
-    }
-    for (;;)
-    {
-      int i;
-      int k;
-      int j;
-      try
-      {
-        if (Util.isNullOrNil(paramd.DWt)) {
-          i = getContext().getResources().getColor(2131100245);
-        }
-        try
-        {
-          if (!Util.isNullOrNil(paramd.DWr)) {
-            continue;
-          }
-          k = getContext().getResources().getColor(2131101114);
-          paramd = (ADXml.d)localObject;
-          j = i;
-          i = k;
-        }
-        catch (Throwable paramd)
-        {
-          TextView localTextView;
-          WeImageView localWeImageView;
-          LinearLayout.LayoutParams localLayoutParams;
-          k = getContext().getResources().getColor(2131101114);
-          Log.e("MicroMsg.SnsCardTagListView", paramd.toString());
-          j = i;
-          i = k;
-          paramd = (ADXml.d)localObject;
-          continue;
-        }
-        if (!Util.isNullOrNil(str))
-        {
-          localObject = this.activity.getLayoutInflater().inflate(2131492968, null);
-          ((View)localObject).getBackground().setColorFilter(i, PorterDuff.Mode.SRC);
-          localTextView = (TextView)((View)localObject).findViewById(2131298030);
-          localWeImageView = (WeImageView)((View)localObject).findViewById(2131298028);
-          localWeImageView.setVisibility(8);
-          localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-          if (paramBoolean) {
-            localLayoutParams.leftMargin = this.tCv;
-          }
-          localTextView.setText(str);
-          localTextView.setTextColor(j);
-          if ((!Util.isNullOrNil(paramd)) && (!TextUtils.equals((String)localWeImageView.getTag(2131307979), paramd)))
-          {
-            localWeImageView.setImageDrawable(null);
-            if (!TextUtils.isEmpty(paramd))
-            {
-              Log.d("SnsCardAdTagUtils", "loadImage, hash=" + localWeImageView.hashCode() + ", url=" + paramd);
-              localWeImageView.setTag(2131307979, paramd);
-              h.a(paramd, false, new b.1(localWeImageView, paramd, localTextView));
-            }
-          }
-          addView((View)localObject, localLayoutParams);
-          this.EDW.add(localObject);
-        }
-        AppMethodBeat.o(203995);
-        return;
-        i = Color.parseColor(paramd.DWt);
-        continue;
-      }
-      catch (Throwable localThrowable1)
-      {
-        i = getContext().getResources().getColor(2131100245);
-        Log.e("MicroMsg.SnsCardTagListView", localThrowable1.toString());
-        continue;
-        k = Color.parseColor(paramd.DWr);
-        continue;
-      }
-      localObject = paramd.DWo;
-      try
-      {
-        if (Util.isNullOrNil(paramd.DWs)) {
-          i = getContext().getResources().getColor(2131100245);
-        }
-      }
-      catch (Throwable localThrowable2)
-      {
-        try
-        {
-          label433:
-          if (Util.isNullOrNil(paramd.DWq)) {}
-          for (j = getContext().getResources().getColor(2131101114);; j = Color.parseColor(paramd.DWq))
-          {
-            k = i;
-            i = j;
-            j = k;
-            paramd = (ADXml.d)localObject;
-            break;
-            i = Color.parseColor(paramd.DWs);
-            break label433;
-            localThrowable2 = localThrowable2;
-            i = getContext().getResources().getColor(2131100245);
-            Log.e("MicroMsg.SnsCardTagListView", localThrowable2.toString());
-            break label433;
-          }
-        }
-        catch (Throwable paramd)
-        {
-          k = getContext().getResources().getColor(2131101114);
-          Log.e("MicroMsg.SnsCardTagListView", paramd.toString());
-          j = i;
-          i = k;
-          paramd = (ADXml.d)localObject;
-        }
-      }
-    }
   }
   
   public String getOriginSnsId()
   {
-    return this.Ffa;
+    return this.LtF;
   }
   
-  public final void ho(List<ADXml.d> paramList)
+  public final void hX(List<ADXml.d> paramList)
   {
     AppMethodBeat.i(100493);
-    int i;
+    int m;
     if (paramList != null)
     {
-      i = 0;
-      if (i < paramList.size()) {
-        if (i != 0) {
-          break label57;
+      m = 0;
+      if (m < paramList.size()) {
+        if (m != 0) {
+          break label623;
         }
       }
     }
-    label57:
-    for (boolean bool = false;; bool = true)
+    label459:
+    label491:
+    label623:
+    for (int n = 0;; n = 1)
     {
-      a((ADXml.d)paramList.get(i), bool);
-      i += 1;
-      break;
+      Object localObject = (ADXml.d)paramList.get(m);
+      String str2;
+      String str1;
+      if (localObject != null)
+      {
+        str2 = ((ADXml.d)localObject).Kjy;
+        if (!ar.isDarkMode()) {
+          break label459;
+        }
+        str1 = ((ADXml.d)localObject).KjA;
+      }
+      for (;;)
+      {
+        int i;
+        int k;
+        int j;
+        try
+        {
+          if (Util.isNullOrNil(((ADXml.d)localObject).KjE)) {
+            i = getContext().getResources().getColor(i.c.desc_text_color);
+          }
+          try
+          {
+            if (!Util.isNullOrNil(((ADXml.d)localObject).KjC)) {
+              continue;
+            }
+            k = getContext().getResources().getColor(i.c.sns_ad_tag_bg);
+            j = i;
+            i = k;
+          }
+          catch (Throwable localThrowable1)
+          {
+            TextView localTextView;
+            WeImageView localWeImageView;
+            LinearLayout.LayoutParams localLayoutParams;
+            k = getContext().getResources().getColor(i.c.sns_ad_tag_bg);
+            Log.e("MicroMsg.SnsCardTagListView", localThrowable1.toString());
+            j = i;
+            i = k;
+            continue;
+          }
+          if (!Util.isNullOrNil(str2))
+          {
+            localObject = this.activity.getLayoutInflater().inflate(i.g.ad_card_tag_item, null);
+            ((View)localObject).getBackground().setColorFilter(i, PorterDuff.Mode.SRC);
+            localTextView = (TextView)((View)localObject).findViewById(i.f.card_ad_tag_text);
+            localWeImageView = (WeImageView)((View)localObject).findViewById(i.f.card_ad_tag_icon);
+            localWeImageView.setVisibility(8);
+            localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+            if (n != 0) {
+              localLayoutParams.leftMargin = this.space;
+            }
+            localTextView.setText(str2);
+            localTextView.setTextColor(j);
+            if ((!Util.isNullOrNil(str1)) && (!TextUtils.equals((String)localWeImageView.getTag(i.f.sns_ad_card_img_url), str1)))
+            {
+              localWeImageView.setImageDrawable(null);
+              if (!TextUtils.isEmpty(str1))
+              {
+                Log.d("SnsCardAdTagUtils", "loadImage, hash=" + localWeImageView.hashCode() + ", url=" + str1);
+                localWeImageView.setTag(i.f.sns_ad_card_img_url, str1);
+                h.a(str1, false, new b.1(localWeImageView, str1, localTextView));
+              }
+            }
+            addView((View)localObject, localLayoutParams);
+            this.KRL.add(localObject);
+          }
+          m += 1;
+          break;
+          i = Color.parseColor(((ADXml.d)localObject).KjE);
+          continue;
+        }
+        catch (Throwable localThrowable3)
+        {
+          i = getContext().getResources().getColor(i.c.desc_text_color);
+          Log.e("MicroMsg.SnsCardTagListView", localThrowable3.toString());
+          continue;
+          k = Color.parseColor(((ADXml.d)localObject).KjC);
+          continue;
+        }
+        str1 = localThrowable1.Kjz;
+        try
+        {
+          if (Util.isNullOrNil(localThrowable1.KjD)) {
+            i = getContext().getResources().getColor(i.c.desc_text_color);
+          }
+        }
+        catch (Throwable localThrowable4)
+        {
+          try
+          {
+            if (Util.isNullOrNil(localThrowable1.KjB)) {}
+            for (j = getContext().getResources().getColor(i.c.sns_ad_tag_bg);; j = Color.parseColor(localThrowable1.KjB))
+            {
+              k = i;
+              i = j;
+              j = k;
+              break;
+              i = Color.parseColor(localThrowable1.KjD);
+              break label491;
+              localThrowable4 = localThrowable4;
+              i = getContext().getResources().getColor(i.c.desc_text_color);
+              Log.e("MicroMsg.SnsCardTagListView", localThrowable4.toString());
+              break label491;
+            }
+          }
+          catch (Throwable localThrowable2)
+          {
+            k = getContext().getResources().getColor(i.c.sns_ad_tag_bg);
+            Log.e("MicroMsg.SnsCardTagListView", localThrowable2.toString());
+            j = i;
+            i = k;
+          }
+        }
+      }
       AppMethodBeat.o(100493);
       return;
     }
@@ -211,15 +204,15 @@ public class SnsCardAdTagListView
     paramInt2 = 0;
     paramInt1 = 0;
     int i = paramInt1;
-    if (paramInt1 < this.EDW.size())
+    if (paramInt1 < this.KRL.size())
     {
       if (paramInt1 <= 0) {
-        break label220;
+        break label221;
       }
-      paramInt2 += this.tCv;
+      paramInt2 += this.space;
     }
     label54:
-    label220:
+    label221:
     for (;;)
     {
       if (paramInt2 >= getMeasuredWidth()) {
@@ -227,10 +220,10 @@ public class SnsCardAdTagListView
       }
       for (;;)
       {
-        if ((i >= 0) && (i < this.EDW.size()))
+        if ((i >= 0) && (i < this.KRL.size()))
         {
-          final View localView = (View)this.EDW.get(i);
-          final TextView localTextView = (TextView)localView.findViewById(2131298030);
+          final View localView = (View)this.KRL.get(i);
+          final TextView localTextView = (TextView)localView.findViewById(i.f.card_ad_tag_text);
           localTextView.setEllipsize(TextUtils.TruncateAt.END);
           getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
           {
@@ -250,13 +243,13 @@ public class SnsCardAdTagListView
           paramInt1 = i + 1;
           for (;;)
           {
-            if (paramInt1 < this.EDW.size())
+            if (paramInt1 < this.KRL.size())
             {
-              removeView((View)this.EDW.get(paramInt1));
-              this.EDW.remove(paramInt1);
+              removeView((View)this.KRL.get(paramInt1));
+              this.KRL.remove(paramInt1);
               paramInt1 += 1;
               continue;
-              paramInt2 = ((View)this.EDW.get(paramInt1)).getMeasuredWidth() + paramInt2;
+              paramInt2 = ((View)this.KRL.get(paramInt1)).getMeasuredWidth() + paramInt2;
               i = paramInt1;
               if (paramInt2 >= getMeasuredWidth()) {
                 break label54;
@@ -276,7 +269,7 @@ public class SnsCardAdTagListView
   {
     AppMethodBeat.i(100494);
     super.removeAllViews();
-    this.EDW.clear();
+    this.KRL.clear();
     AppMethodBeat.o(100494);
   }
   
@@ -287,17 +280,17 @@ public class SnsCardAdTagListView
   
   public void setOriginSnsId(String paramString)
   {
-    this.Ffa = paramString;
+    this.LtF = paramString;
   }
   
   public void setTagSpace(int paramInt)
   {
-    this.tCv = paramInt;
+    this.space = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.SnsCardAdTagListView
  * JD-Core Version:    0.7.0.1
  */

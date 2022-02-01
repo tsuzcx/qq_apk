@@ -59,7 +59,7 @@ public class ad
           AppMethodBeat.o(78568);
         }
       };
-      a.jRt.a((Intent)localObject, hashCode() & 0xFFFF, paramString, (MMActivity)paramContext);
+      a.mIG.a((Intent)localObject, hashCode() & 0xFFFF, paramString, (MMActivity)paramContext);
       AppMethodBeat.o(78569);
       return;
     }
@@ -73,7 +73,7 @@ public class ad
   
   public final void b(b.a parama) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 2;
   }

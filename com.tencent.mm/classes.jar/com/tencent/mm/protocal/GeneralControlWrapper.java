@@ -4,24 +4,22 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bgt;
+import com.tencent.mm.protocal.protobuf.bob;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class GeneralControlWrapper
   implements Parcelable
 {
   public static final Parcelable.Creator<GeneralControlWrapper> CREATOR;
-  public static final GeneralControlWrapper Kzg;
-  public static final GeneralControlWrapper Kzh;
-  private static Boolean Kzj;
-  public int Kzi;
+  public static final GeneralControlWrapper RAX;
+  public static final GeneralControlWrapper RAY;
+  public int RAZ;
   
   static
   {
     AppMethodBeat.i(152449);
-    Kzg = new GeneralControlWrapper(10);
-    Kzh = new GeneralControlWrapper(1);
-    Kzj = null;
+    RAX = new GeneralControlWrapper(10);
+    RAY = new GeneralControlWrapper(1);
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(152449);
   }
@@ -29,7 +27,7 @@ public class GeneralControlWrapper
   public GeneralControlWrapper(int paramInt)
   {
     AppMethodBeat.i(152439);
-    this.Kzi = paramInt;
+    this.RAZ = paramInt;
     Log.d("MicroMsg.GeneralControlWrapper", "edw <init>, ".concat(String.valueOf(this)));
     AppMethodBeat.o(152439);
   }
@@ -37,15 +35,15 @@ public class GeneralControlWrapper
   private GeneralControlWrapper(Parcel paramParcel)
   {
     AppMethodBeat.i(152448);
-    this.Kzi = paramParcel.readInt();
+    this.RAZ = paramParcel.readInt();
     AppMethodBeat.o(152448);
   }
   
-  public GeneralControlWrapper(bgt parambgt)
+  public GeneralControlWrapper(bob parambob)
   {
     AppMethodBeat.i(152438);
-    if (parambgt == null) {}
-    for (this.Kzi = 0;; this.Kzi = parambgt.LQC)
+    if (parambob == null) {}
+    for (this.RAZ = 0;; this.RAZ = parambob.SZd)
     {
       Log.d("MicroMsg.GeneralControlWrapper", "edw <init>, ".concat(String.valueOf(this)));
       AppMethodBeat.o(152438);
@@ -58,22 +56,22 @@ public class GeneralControlWrapper
     return 0;
   }
   
-  public final boolean gtB()
+  public final boolean hoR()
   {
-    AppMethodBeat.i(223874);
-    if ((this.Kzi & 0x2000) != 0) {}
+    AppMethodBeat.i(195651);
+    if ((this.RAZ & 0x2000) != 0) {}
     for (boolean bool = true;; bool = false)
     {
       Log.d("MicroMsg.GeneralControlWrapper", "allowOuterOpenUrl, ret = ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(223874);
+      AppMethodBeat.o(195651);
       return bool;
     }
   }
   
-  public final boolean gtC()
+  public final boolean hoS()
   {
     AppMethodBeat.i(152441);
-    if ((this.Kzi & 0x2) > 0) {}
+    if ((this.RAZ & 0x2) > 0) {}
     for (boolean bool = true;; bool = false)
     {
       Log.d("MicroMsg.GeneralControlWrapper", "allowInnerOpenUrl, ret = ".concat(String.valueOf(bool)));
@@ -82,10 +80,10 @@ public class GeneralControlWrapper
     }
   }
   
-  public final boolean gtD()
+  public final boolean hoT()
   {
     AppMethodBeat.i(152442);
-    if ((this.Kzi & 0x40) > 0) {}
+    if ((this.RAZ & 0x40) > 0) {}
     for (boolean bool = true;; bool = false)
     {
       Log.d("MicroMsg.GeneralControlWrapper", "allowScanQRCode, ret = ".concat(String.valueOf(bool)));
@@ -94,34 +92,34 @@ public class GeneralControlWrapper
     }
   }
   
-  public final boolean gtE()
+  public final boolean hoU()
   {
-    AppMethodBeat.i(223875);
-    if ((this.Kzi & 0x200) > 0) {}
+    AppMethodBeat.i(195655);
+    if ((this.RAZ & 0x200) > 0) {}
     for (boolean bool = true;; bool = false)
     {
       Log.d("MicroMsg.GeneralControlWrapper", "allowUploadHosts, ret = ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(223875);
+      AppMethodBeat.o(195655);
       return bool;
     }
   }
   
-  public final boolean gtF()
+  public final boolean hoV()
   {
-    AppMethodBeat.i(223876);
-    if ((this.Kzi & 0x400) > 0) {}
+    AppMethodBeat.i(195657);
+    if ((this.RAZ & 0x400) > 0) {}
     for (boolean bool = true;; bool = false)
     {
       Log.d("MicroMsg.GeneralControlWrapper", "allowUploadHTML, ret = ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(223876);
+      AppMethodBeat.o(195657);
       return bool;
     }
   }
   
-  public final boolean gtG()
+  public final boolean hoW()
   {
     AppMethodBeat.i(152443);
-    if ((this.Kzi & 0x800) > 0) {}
+    if ((this.RAZ & 0x800) > 0) {}
     for (boolean bool = true;; bool = false)
     {
       Log.d("MicroMsg.GeneralControlWrapper", "allowReportPageEvent, ret = ".concat(String.valueOf(bool)));
@@ -130,10 +128,10 @@ public class GeneralControlWrapper
     }
   }
   
-  public final boolean gtH()
+  public final boolean hoX()
   {
     AppMethodBeat.i(152444);
-    if ((this.Kzi & 0x4000) > 0) {}
+    if ((this.RAZ & 0x4000) > 0) {}
     for (boolean bool = true;; bool = false)
     {
       Log.d("MicroMsg.GeneralControlWrapper", "allowReportPageEvent, ret = ".concat(String.valueOf(bool)));
@@ -142,10 +140,10 @@ public class GeneralControlWrapper
     }
   }
   
-  public final boolean gtI()
+  public final boolean hoY()
   {
     AppMethodBeat.i(152445);
-    if ((this.Kzi & 0x8000) > 0) {}
+    if ((this.RAZ & 0x8000) > 0) {}
     for (boolean bool = true;; bool = false)
     {
       Log.d("MicroMsg.GeneralControlWrapper", "allowFavImage, ret = ".concat(String.valueOf(bool)));
@@ -159,7 +157,7 @@ public class GeneralControlWrapper
     AppMethodBeat.i(152446);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[bitset=0x");
-    ((StringBuilder)localObject).append(Integer.toHexString(this.Kzi));
+    ((StringBuilder)localObject).append(Integer.toHexString(this.RAZ));
     ((StringBuilder)localObject).append("]");
     localObject = ((StringBuilder)localObject).toString();
     AppMethodBeat.o(152446);
@@ -169,7 +167,7 @@ public class GeneralControlWrapper
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(152447);
-    paramParcel.writeInt(this.Kzi);
+    paramParcel.writeInt(this.RAZ);
     AppMethodBeat.o(152447);
   }
 }

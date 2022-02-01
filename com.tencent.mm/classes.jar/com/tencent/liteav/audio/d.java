@@ -2,11 +2,11 @@ package com.tencent.liteav.audio;
 
 public abstract interface d
 {
-  public abstract void onAudioPlayPcmData(String paramString, byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2);
+  public abstract void onAudioJitterBufferNotify(String paramString1, int paramInt, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.d
  * JD-Core Version:    0.7.0.1
  */

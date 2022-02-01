@@ -5,16 +5,16 @@ import java.util.ListIterator;
 import kotlin.g.b.a.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/collections/EmptyIterator;", "", "", "()V", "hasNext", "", "hasPrevious", "next", "nextIndex", "", "previous", "previousIndex", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/collections/EmptyIterator;", "", "", "()V", "hasNext", "", "hasPrevious", "next", "nextIndex", "", "previous", "previousIndex", "kotlin-stdlib"})
 public final class u
   implements ListIterator, a
 {
-  public static final u SXq;
+  public static final u aaAc;
   
   static
   {
     AppMethodBeat.i(129012);
-    SXq = new u();
+    aaAc = new u();
     AppMethodBeat.o(129012);
   }
   

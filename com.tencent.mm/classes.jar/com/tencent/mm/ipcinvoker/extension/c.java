@@ -10,21 +10,21 @@ import java.util.Map;
 
 public final class c
 {
-  private static List<a> hnv;
-  private static Map<String, a> hnw;
+  private static List<a> jZk;
+  private static Map<String, a> jZl;
   
   static
   {
     AppMethodBeat.i(158796);
-    hnv = new LinkedList();
-    hnw = new HashMap();
+    jZk = new LinkedList();
+    jZl = new HashMap();
     AppMethodBeat.o(158796);
   }
   
   public static Object a(String paramString, Parcel paramParcel)
   {
     AppMethodBeat.i(158794);
-    paramString = (a)hnw.get(paramString);
+    paramString = (a)jZl.get(paramString);
     if (paramString != null)
     {
       paramString = paramString.d(paramParcel);
@@ -38,13 +38,13 @@ public final class c
   public static void a(a parama)
   {
     AppMethodBeat.i(158795);
-    if ((parama == null) || (hnv.contains(parama)))
+    if ((parama == null) || (jZk.contains(parama)))
     {
       AppMethodBeat.o(158795);
       return;
     }
-    hnw.put(parama.getClass().getName(), parama);
-    hnv.add(parama);
+    jZl.put(parama.getClass().getName(), parama);
+    jZk.add(parama);
     AppMethodBeat.o(158795);
   }
   
@@ -61,7 +61,7 @@ public final class c
   public static a bq(Object paramObject)
   {
     AppMethodBeat.i(158792);
-    Iterator localIterator = hnv.iterator();
+    Iterator localIterator = jZk.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();

@@ -2,12 +2,11 @@ package com.tencent.mm.plugin.setting;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.contact.c;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bp;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.bq;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -28,24 +27,24 @@ final class d$1
     if (paramInt == 2)
     {
       paramMStorageEx = (String)paramObject;
-      paramObject = ((l)g.af(l.class)).aSN().bjF(paramMStorageEx);
-      if ((paramObject != null) && (!c.oR(paramObject.field_type)) && (paramObject.arw()) && (!paramObject.arx())) {
-        g.aAk().postToWorkerDelayed(new Runnable()
+      paramObject = ((n)h.ae(n.class)).bbL().bwc(paramMStorageEx);
+      if ((paramObject != null) && (!com.tencent.mm.contact.d.rk(paramObject.field_type)) && (paramObject.aya()) && (!paramObject.ayb())) {
+        h.aHJ().postToWorkerDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(73745);
-            Object localObject = ((l)g.af(l.class)).aSN().Kn(paramMStorageEx);
-            if ((localObject != null) && (!c.oR(((ax)localObject).field_type)) && (((as)localObject).arw()) && (!((as)localObject).arx()))
+            Object localObject = ((n)h.ae(n.class)).bbL().RG(paramMStorageEx);
+            if ((localObject != null) && (!com.tencent.mm.contact.d.rk(((ax)localObject).field_type)) && (((as)localObject).aya()) && (!((as)localObject).ayb()))
             {
               localObject = new ca();
-              ((ca)localObject).nv(0);
-              ((ca)localObject).Cy(paramMStorageEx);
+              ((ca)localObject).pJ(0);
+              ((ca)localObject).Jm(paramMStorageEx);
               ((ca)localObject).setStatus(6);
-              ((ca)localObject).setContent(MMApplicationContext.getContext().getString(2131765420));
-              ((ca)localObject).setCreateTime(bp.C(paramMStorageEx, System.currentTimeMillis() / 1000L));
+              ((ca)localObject).setContent(MMApplicationContext.getContext().getString(b.i.settings_jump_to_verifypage_tips));
+              ((ca)localObject).setCreateTime(bq.z(paramMStorageEx, System.currentTimeMillis() / 1000L));
               ((ca)localObject).setType(10000);
-              ((l)g.af(l.class)).eiy().aC((ca)localObject);
+              ((n)h.ae(n.class)).eSe().aM((ca)localObject);
               Log.i("MicroMsg.SubCoreSetting", "insert chatcontact verify sysmsg. %s", new Object[] { paramMStorageEx });
             }
             AppMethodBeat.o(73745);
@@ -58,7 +57,7 @@ final class d$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.d.1
  * JD-Core Version:    0.7.0.1
  */

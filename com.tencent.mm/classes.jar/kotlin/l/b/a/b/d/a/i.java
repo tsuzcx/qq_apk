@@ -14,22 +14,22 @@ import kotlin.l.b.a.b.f.b;
 
 public final class i
 {
-  private static final HashMap<b, b> ToY;
-  public static final i ToZ;
+  private static final HashMap<b, b> aaRS;
+  public static final i aaRT;
   
   static
   {
     AppMethodBeat.i(57579);
-    ToZ = new i();
-    ToY = new HashMap();
-    b localb = g.TcO.TdO;
-    p.g(localb, "FQ_NAMES.mutableList");
+    aaRT = new i();
+    aaRS = new HashMap();
+    b localb = g.aaFI.aaGI;
+    p.j(localb, "FQ_NAMES.mutableList");
     a(localb, ai(new String[] { "java.util.ArrayList", "java.util.LinkedList" }));
-    localb = g.TcO.TdQ;
-    p.g(localb, "FQ_NAMES.mutableSet");
+    localb = g.aaFI.aaGK;
+    p.j(localb, "FQ_NAMES.mutableSet");
     a(localb, ai(new String[] { "java.util.HashSet", "java.util.TreeSet", "java.util.LinkedHashSet" }));
-    localb = g.TcO.TdR;
-    p.g(localb, "FQ_NAMES.mutableMap");
+    localb = g.aaFI.aaGL;
+    p.j(localb, "FQ_NAMES.mutableMap");
     a(localb, ai(new String[] { "java.util.HashMap", "java.util.TreeMap", "java.util.LinkedHashMap", "java.util.concurrent.ConcurrentHashMap", "java.util.concurrent.ConcurrentSkipListMap" }));
     a(new b("java.util.function.Function"), ai(new String[] { "java.util.function.UnaryOperator" }));
     a(new b("java.util.function.BiFunction"), ai(new String[] { "java.util.function.BinaryOperator" }));
@@ -40,7 +40,7 @@ public final class i
   {
     AppMethodBeat.i(57577);
     Object localObject = (Iterable)paramList;
-    paramList = (Map)ToY;
+    paramList = (Map)aaRS;
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
       paramList.put(((Iterator)localObject).next(), paramb);
@@ -67,15 +67,15 @@ public final class i
   public static b m(b paramb)
   {
     AppMethodBeat.i(57576);
-    p.h(paramb, "classFqName");
-    paramb = (b)ToY.get(paramb);
+    p.k(paramb, "classFqName");
+    paramb = (b)aaRS.get(paramb);
     AppMethodBeat.o(57576);
     return paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.i
  * JD-Core Version:    0.7.0.1
  */

@@ -4,15 +4,15 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.b;
-import com.tencent.mm.g.a.ny;
-import com.tencent.mm.model.cl;
-import com.tencent.mm.plugin.messenger.foundation.a.p;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.b;
+import com.tencent.mm.f.a.ov;
+import com.tencent.mm.model.cm;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
 import com.tencent.mm.plugin.newtips.b.b;
 import com.tencent.mm.plugin.newtips.b.c;
-import com.tencent.mm.protocal.protobuf.ehx;
-import com.tencent.mm.protocal.protobuf.ehy;
+import com.tencent.mm.protocal.protobuf.erz;
+import com.tencent.mm.protocal.protobuf.esa;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -28,23 +28,23 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class l
-  implements p
+  implements s
 {
-  private static final Long duN;
-  private ConcurrentHashMap<String, a> ADO;
+  private static final Long fnv;
+  private ConcurrentHashMap<String, a> GwS;
   
   static
   {
     AppMethodBeat.i(127261);
-    duN = Long.valueOf(604800L);
+    fnv = Long.valueOf(604800L);
     AppMethodBeat.o(127261);
   }
   
   public l()
   {
-    AppMethodBeat.i(188566);
-    this.ADO = new ConcurrentHashMap();
-    AppMethodBeat.o(188566);
+    AppMethodBeat.i(186691);
+    this.GwS = new ConcurrentHashMap();
+    AppMethodBeat.o(186691);
   }
   
   public final h.b a(String paramString, Map<String, String> paramMap, h.a parama)
@@ -87,7 +87,7 @@ public final class l
         if (paramMap.containsKey(".sysmsg.newtips.control.tips_type")) {
           j = Util.getInt((String)paramMap.get(".sysmsg.newtips.control.tips_type"), 0);
         }
-        parama = com.tencent.mm.plugin.newtips.a.exn().aIE(paramString);
+        parama = com.tencent.mm.plugin.newtips.a.fiQ().aTa(paramString);
         Log.i("MicroMsg.NewTips.NewTipsXMLConsumer", "checkLogicValidOp() newTips type(%s) unique_id(%s) op(%s)", new Object[] { Integer.valueOf(j), paramString, Integer.valueOf(k) });
         if (parama.size() > 0) {
           break label372;
@@ -123,7 +123,7 @@ public final class l
               break;
               i = 1;
               break label255;
-              if (j == d.ACZ)
+              if (j == d.Gwd)
               {
                 i = 0;
                 break label255;
@@ -158,7 +158,7 @@ public final class l
       Log.i("MicroMsg.NewTips.NewTipsXMLConsumer", "checkLogicValidOp() unique_id(%s) exist(op:%s)", new Object[] { paramString, Integer.valueOf(k) });
       i = 0;
       break;
-      localObject1 = this.ADO.entrySet().iterator();
+      localObject1 = this.GwS.entrySet().iterator();
       Object localObject3;
       while (((Iterator)localObject1).hasNext())
       {
@@ -177,16 +177,16 @@ public final class l
           {
             AppMethodBeat.i(127258);
             Log.i("MicroMsg.NewTips.NewTipsXMLConsumer", "consumeNewXml() batch delete expire data!!");
-            com.tencent.mm.plugin.newtips.a.exn().Hw(cl.aWy() / 1000L);
+            com.tencent.mm.plugin.newtips.a.fiQ().OQ(cm.bfC() / 1000L);
             AppMethodBeat.o(127258);
           }
         }, 30000L);
         label602:
         AppMethodBeat.o(127260);
         return null;
-        Log.i("MicroMsg.NewTips.NewTipsXMLConsumer", "handleNewXml() update localNewTips state to NEW_TIPS_STATE_CANCEL. ret: %s", new Object[] { Integer.valueOf(com.tencent.mm.plugin.newtips.a.exn().fI(parama)) });
-        com.tencent.mm.plugin.newtips.a.exl();
-        i.fH(parama);
+        Log.i("MicroMsg.NewTips.NewTipsXMLConsumer", "handleNewXml() update localNewTips state to NEW_TIPS_STATE_CANCEL. ret: %s", new Object[] { Integer.valueOf(com.tencent.mm.plugin.newtips.a.fiQ().gm(parama)) });
+        com.tencent.mm.plugin.newtips.a.fiO();
+        i.gl(parama);
       }
       int i4 = (int)l3;
       localObject2 = new ArrayList();
@@ -210,8 +210,8 @@ public final class l
         do
         {
           i = (int)l3;
-          f.exq();
-          parama = f.Tz(i);
+          f.fiT();
+          parama = f.aam(i);
           if (parama != null) {
             break label2306;
           }
@@ -219,7 +219,7 @@ public final class l
           if (!bool) {
             break label2381;
           }
-          parama = this.ADO.entrySet().iterator();
+          parama = this.GwS.entrySet().iterator();
           do
           {
             if (!parama.hasNext()) {
@@ -261,7 +261,7 @@ public final class l
           l5 = l1;
           if (l1 == 0L)
           {
-            l5 = cl.aWy() / 1000L;
+            l5 = cm.bfC() / 1000L;
             Log.i("MicroMsg.NewTips.NewTipsXMLConsumer", "parseNewTips() doudi(unique_id:%s) => beginShowTime==0", new Object[] { paramString });
           }
           l1 = l2;
@@ -270,7 +270,7 @@ public final class l
             l1 = l2;
             if (l4 == 0L)
             {
-              l1 = l5 + duN.longValue();
+              l1 = l5 + fnv.longValue();
               Log.i("MicroMsg.NewTips.NewTipsXMLConsumer", "parseNewTips() doudi(unique_id:%s) => disappearTime==0", new Object[] { paramString });
             }
           }
@@ -283,7 +283,7 @@ public final class l
           ((c)localObject3).field_title = Util.nullAsNil((String)paramMap.get(".sysmsg.newtips.tips_showInfo_list.tips_showInfo.title")).trim();
           ((c)localObject3).field_icon_url = Util.nullAsNil((String)paramMap.get(".sysmsg.newtips.tips_showInfo_list.tips_showInfo.icon_url")).trim();
           localObject1 = Util.nullAsNil((String)paramMap.get(".sysmsg.newtips.tips_showInfo_list.tips_showInfo.path")).trim();
-          i2 = g.aIB((String)localObject1);
+          i2 = g.aSW((String)localObject1);
           if (i2 == 0)
           {
             ((c)localObject3).field_dynamicPath = ((String)localObject1);
@@ -297,11 +297,11 @@ public final class l
         label2915:
         for (int i2 = Util.getInt((String)paramMap.get(".sysmsg.newtips.tips_showInfo_list.tips_showInfo.parents.size"), 0);; i2 = 0)
         {
-          ehy localehy;
+          esa localesa;
           int i3;
           if (i2 != 0)
           {
-            localehy = new ehy();
+            localesa = new esa();
             i3 = 0;
             if (i3 < i2)
             {
@@ -309,7 +309,7 @@ public final class l
               for (localObject1 = Util.nullAsNil((String)paramMap.get(".sysmsg.newtips.tips_showInfo_list.tips_showInfo.parents.parent")).trim();; localObject1 = Util.nullAsNil((String)paramMap.get(".sysmsg.newtips.tips_showInfo_list.tips_showInfo.parents.parent".concat(String.valueOf(i3)))).trim())
               {
                 if (!Util.isNullOrNil((String)localObject1)) {
-                  localehy.gCs.add(localObject1);
+                  localesa.jmy.add(localObject1);
                 }
                 i3 += 1;
                 break label1335;
@@ -317,14 +317,14 @@ public final class l
                 break;
               }
             }
-            if (localehy.gCs.size() > 0) {
-              ((c)localObject3).field_parents = localehy;
+            if (localesa.jmy.size() > 0) {
+              ((c)localObject3).field_parents = localesa;
             }
           }
-          localObject1 = k.TE(((c)localObject3).field_showType);
+          localObject1 = k.aar(((c)localObject3).field_showType);
           label2790:
           label2796:
-          switch (2.ADy[localObject1.ordinal()])
+          switch (2.GwD[localObject1.ordinal()])
           {
           case 1: 
           case 2: 
@@ -339,7 +339,7 @@ public final class l
             ((c)localObject3).field_title = Util.nullAsNil((String)paramMap.get(".sysmsg.newtips.tips_showInfo_list.tips_showInfo" + i1 + ".title")).trim();
             ((c)localObject3).field_icon_url = Util.nullAsNil((String)paramMap.get(".sysmsg.newtips.tips_showInfo_list.tips_showInfo" + i1 + ".icon_url")).trim();
             localObject1 = Util.nullAsNil(((String)paramMap.get(".sysmsg.newtips.tips_showInfo_list.tips_showInfo" + i1 + ".path")).trim());
-            i2 = g.aIB((String)localObject1);
+            i2 = g.aSW((String)localObject1);
             if (i2 == 0)
             {
               ((c)localObject3).field_dynamicPath = ((String)localObject1);
@@ -356,7 +356,7 @@ public final class l
               if (i2 == 0) {
                 break label1454;
               }
-              localehy = new ehy();
+              localesa = new esa();
               i3 = 0;
               if (i3 < i2)
               {
@@ -364,7 +364,7 @@ public final class l
                 for (localObject1 = Util.nullAsNil((String)paramMap.get(".sysmsg.newtips.tips_showInfo_list.tips_showInfo" + i1 + ".parents.parent")).trim();; localObject1 = Util.nullAsNil((String)paramMap.get(".sysmsg.newtips.tips_showInfo_list.tips_showInfo" + i1 + ".parents.parent" + i3)).trim())
                 {
                   if (!Util.isNullOrNil((String)localObject1)) {
-                    localehy.gCs.add(localObject1);
+                    localesa.jmy.add(localObject1);
                   }
                   i3 += 1;
                   break label1839;
@@ -372,10 +372,10 @@ public final class l
                   break;
                 }
               }
-              if (localehy.gCs.size() <= 0) {
+              if (localesa.jmy.size() <= 0) {
                 break label1454;
               }
-              ((c)localObject3).field_parents = localehy;
+              ((c)localObject3).field_parents = localesa;
               break label1454;
               if (!Util.isNullOrNil(((c)localObject3).field_title)) {
                 break label1516;
@@ -407,31 +407,31 @@ public final class l
               ((c)localObject3).field_showType = 2;
               Log.i("MicroMsg.NewTips.NewTipsXMLConsumer", "parseNewTips() doudi(unique_id:%s path:%s showType:%s) => field_icon_url==null", new Object[] { ((c)localObject3).field_uniqueId, Integer.valueOf(((c)localObject3).field_path), ((k)localObject1).toString() });
               break label1516;
-              bool = parama.exr();
+              bool = parama.fiU();
               break label720;
-              i = com.tencent.mm.plugin.newtips.a.exn().bb((List)localObject2);
-              paramMap = new ny();
-              paramMap.dUa.dUb = paramString;
+              i = com.tencent.mm.plugin.newtips.a.fiQ().aZ((List)localObject2);
+              paramMap = new ov();
+              paramMap.fNC.fND = paramString;
               EventCenter.instance.publish(paramMap);
               Log.i("MicroMsg.NewTips.NewTipsXMLConsumer", "handleNewXml() insert ret:%s", new Object[] { Integer.valueOf(i) });
-              com.tencent.mm.plugin.newtips.a.exl();
-              i.fH((List)localObject2);
+              com.tencent.mm.plugin.newtips.a.fiO();
+              i.gl((List)localObject2);
               break;
               Log.i("MicroMsg.NewTips.NewTipsXMLConsumer", "handleNewXml() no insert");
               break;
-              com.tencent.mm.plugin.newtips.a.exl();
-              localObject1 = i.as(paramMap);
+              com.tencent.mm.plugin.newtips.a.fiO();
+              localObject1 = i.am(paramMap);
               if (localObject1 == null) {
                 break label602;
               }
               if (localObject1 == null)
               {
                 Log.e("MicroMsg.NewTips.NewTipsXMLConsumer", "reportNewTips, newTipsInfo is null !!");
-                paramString = com.tencent.mm.plugin.newtips.a.exl().ADB;
+                paramString = com.tencent.mm.plugin.newtips.a.fiO().GwG;
                 if (paramString == null) {
                   break label602;
                 }
-                com.tencent.mm.plugin.newtips.a.exo();
+                com.tencent.mm.plugin.newtips.a.fiR();
                 if (!e.d((com.tencent.mm.plugin.newtips.b.a)localObject1)) {
                   break label602;
                 }
@@ -446,7 +446,7 @@ public final class l
               MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_newtips_report", 0).edit().putLong("newtips_gettipstime", l1).commit();
               if (((com.tencent.mm.plugin.newtips.b.a)localObject1).field_tipsShowInfo != null)
               {
-                j = ((com.tencent.mm.plugin.newtips.b.a)localObject1).field_tipsShowInfo.dDG;
+                j = ((com.tencent.mm.plugin.newtips.b.a)localObject1).field_tipsShowInfo.fwp;
                 if (((com.tencent.mm.plugin.newtips.b.a)localObject1).field_tipsShowInfo == null) {
                   break label2790;
                 }
@@ -454,12 +454,12 @@ public final class l
                 if (((com.tencent.mm.plugin.newtips.b.a)localObject1).field_tipsShowInfo == null) {
                   break label2796;
                 }
-                paramMap = ((com.tencent.mm.plugin.newtips.b.a)localObject1).field_tipsShowInfo.qGB;
+                paramMap = ((com.tencent.mm.plugin.newtips.b.a)localObject1).field_tipsShowInfo.ufC;
                 if (((com.tencent.mm.plugin.newtips.b.a)localObject1).field_tipsShowInfo == null) {
                   break label2802;
                 }
                 parama = ((com.tencent.mm.plugin.newtips.b.a)localObject1).field_tipsShowInfo.path;
-                com.tencent.mm.plugin.newtips.a.exo();
+                com.tencent.mm.plugin.newtips.a.fiR();
                 if (localObject1 != null) {
                   break label2808;
                 }
@@ -468,7 +468,7 @@ public final class l
               label2929:
               for (;;)
               {
-                com.tencent.mm.plugin.report.service.h.CyF.a(14995, new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Long.valueOf(l1), "", "", "", "", "", "", "", Integer.valueOf(j), paramString, paramMap, parama, Integer.valueOf(i), Integer.valueOf(d.ADo), "" });
+                com.tencent.mm.plugin.report.service.h.IzE.a(14995, new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Long.valueOf(l1), "", "", "", "", "", "", "", Integer.valueOf(j), paramString, paramMap, parama, Integer.valueOf(i), Integer.valueOf(d.Gws), "" });
                 break;
                 j = 0;
                 break label2583;
@@ -504,7 +504,7 @@ public final class l
                     }
                     i = 5;
                     break;
-                    localObject2 = com.tencent.mm.plugin.newtips.a.exm().TF(((com.tencent.mm.plugin.newtips.b.a)localObject1).field_tipId);
+                    localObject2 = com.tencent.mm.plugin.newtips.a.fiP().aas(((com.tencent.mm.plugin.newtips.b.a)localObject1).field_tipId);
                     if ((localObject2 == null) || (((com.tencent.mm.plugin.newtips.b.a)localObject1).field_tipType != ((com.tencent.mm.plugin.newtips.b.a)localObject2).field_tipType)) {
                       break label2864;
                     }
@@ -519,7 +519,7 @@ public final class l
                     }
                     i = 6;
                     break;
-                    if (com.tencent.mm.plugin.newtips.a.exm().TF(((com.tencent.mm.plugin.newtips.b.a)localObject1).field_tipId) == null) {
+                    if (com.tencent.mm.plugin.newtips.a.fiP().aas(((com.tencent.mm.plugin.newtips.b.a)localObject1).field_tipId) == null) {
                       break label2929;
                     }
                   }
@@ -539,9 +539,9 @@ public final class l
   
   public final void a(String paramString, a parama)
   {
-    AppMethodBeat.i(188567);
-    this.ADO.put(paramString, parama);
-    AppMethodBeat.o(188567);
+    AppMethodBeat.i(186693);
+    this.GwS.put(paramString, parama);
+    AppMethodBeat.o(186693);
   }
   
   public static abstract interface a
@@ -553,7 +553,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.a.l
  * JD-Core Version:    0.7.0.1
  */

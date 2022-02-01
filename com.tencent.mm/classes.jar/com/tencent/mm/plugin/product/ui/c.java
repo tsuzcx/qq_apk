@@ -10,19 +10,19 @@ import com.tencent.mm.platformtools.s.b;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import java.io.IOException;
 
 public final class c
   implements s
 {
-  private static final String pTN;
+  private static final String tpO;
   private String url;
   
   static
   {
     AppMethodBeat.i(66955);
-    pTN = com.tencent.mm.wallet_core.c.hgG();
+    tpO = com.tencent.mm.wallet_core.c.iii();
     AppMethodBeat.o(66955);
   }
   
@@ -31,7 +31,7 @@ public final class c
     this.url = paramString;
   }
   
-  public static String aKj(String paramString)
+  public static String aUH(String paramString)
   {
     AppMethodBeat.i(66954);
     if (Util.isNullOrNil(paramString))
@@ -40,7 +40,7 @@ public final class c
       AppMethodBeat.o(66954);
       return null;
     }
-    paramString = String.format("%s/%s", new Object[] { pTN, g.getMessageDigest(paramString.getBytes()) });
+    paramString = String.format("%s/%s", new Object[] { tpO, g.getMessageDigest(paramString.getBytes()) });
     AppMethodBeat.o(66954);
     return paramString;
   }
@@ -48,10 +48,10 @@ public final class c
   public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
     AppMethodBeat.i(66953);
-    if (s.a.jNh == parama) {}
+    if (s.a.mEp == parama) {}
     try
     {
-      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, aKj(this.url), false);
+      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, aUH(this.url), false);
       Log.d("MicroMsg.WalletGetPicStrategy", "get bitmap, from %s", new Object[] { parama.toString() });
       AppMethodBeat.o(66953);
       return paramBitmap;
@@ -62,12 +62,12 @@ public final class c
       {
         try
         {
-          paramString = new o(pTN);
-          if (!paramString.exists()) {
-            paramString.mkdirs();
+          paramString = new q(tpO);
+          if (!paramString.ifE()) {
+            paramString.ifK();
           }
           Log.w("MicroMsg.WalletGetPicStrategy", " retry saving bitmap");
-          BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, aKj(this.url), false);
+          BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, aUH(this.url), false);
         }
         catch (IOException paramString)
         {
@@ -78,49 +78,44 @@ public final class c
     }
   }
   
-  public final void a(s.a parama, String paramString) {}
+  public final void a(s.a parama) {}
   
-  public final void ad(String paramString, boolean paramBoolean) {}
+  public final s.b bvp()
+  {
+    return null;
+  }
   
-  public final String blA()
+  public final String bvq()
   {
     AppMethodBeat.i(66952);
-    String str = aKj(this.url);
+    String str = aUH(this.url);
     AppMethodBeat.o(66952);
     return str;
   }
   
-  public final String blB()
+  public final String bvr()
   {
     return this.url;
   }
   
-  public final String blC()
+  public final String bvs()
   {
     return this.url;
   }
   
-  public final boolean blD()
+  public final boolean bvt()
   {
     return true;
   }
   
-  public final boolean blE()
-  {
-    return false;
-  }
-  
-  public final Bitmap blF()
+  public final Bitmap bvu()
   {
     return null;
   }
   
-  public final void blG() {}
+  public final void bvv() {}
   
-  public final s.b blz()
-  {
-    return null;
-  }
+  public final void bvw() {}
   
   public final String getCacheKey()
   {

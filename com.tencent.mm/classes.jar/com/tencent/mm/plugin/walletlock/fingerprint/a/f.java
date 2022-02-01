@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.walletlock.fingerprint.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cxa;
-import com.tencent.mm.protocal.protobuf.cxb;
+import com.tencent.mm.protocal.protobuf.dgk;
+import com.tencent.mm.protocal.protobuf.dgl;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class f
@@ -24,18 +24,18 @@ public final class f
   {
     AppMethodBeat.i(129686);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new cxa();
-    ((d.a)localObject).iLO = new cxb();
+    ((d.a)localObject).lBU = new dgk();
+    ((d.a)localObject).lBV = new dgl();
     ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/opensotertouchlock";
     ((d.a)localObject).funcId = 1967;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (cxa)this.rr.iLK.iLR;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (dgk)d.b.b(this.rr.lBR);
     Log.d("MicroMsg.NetSceneOpenSoterFingerprintLock", "alvinluo json: %s, signature: %s, token: %s", new Object[] { paramString1, paramString2, paramString3 });
-    ((cxa)localObject).MBA = paramString1;
-    ((cxa)localObject).signature = paramString2;
-    ((cxa)localObject).HQm = paramString3;
+    ((dgk)localObject).TNh = paramString1;
+    ((dgk)localObject).signature = paramString2;
+    ((dgk)localObject).OIv = paramString3;
     AppMethodBeat.o(129686);
   }
   
@@ -65,7 +65,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.fingerprint.a.f
  * JD-Core Version:    0.7.0.1
  */

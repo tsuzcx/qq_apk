@@ -1,43 +1,32 @@
 package com.tencent.mm.ay;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.i.d;
+import com.tencent.mm.modelmulti.o.d;
+import com.tencent.mm.modelmulti.o.e;
+import com.tencent.mm.protocal.protobuf.eyc;
+
 public final class c
+  extends o.e
 {
-  public int atU = -1;
-  public boolean dSG = false;
-  public int jeP = -1;
-  public String jeQ = "";
-  public int mPosition = -1;
-  public int mStatus = 2;
+  public String aesKey;
+  public d jYa;
+  public eyc lNr;
+  public g lNs;
+  public o.a lNt;
   
-  public c(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static c blC()
   {
-    this.atU = paramInt1;
-    this.mPosition = paramInt2;
-    this.mStatus = paramInt3;
-    this.jeP = paramInt4;
-  }
-  
-  public final int getDuration()
-  {
-    return this.atU;
-  }
-  
-  public final int getPosition()
-  {
-    return this.mPosition;
-  }
-  
-  public final void t(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.atU = paramInt1;
-    this.mPosition = paramInt2;
-    this.mStatus = paramInt3;
-    this.jeP = paramInt4;
+    AppMethodBeat.i(198744);
+    c localc = new c();
+    localc.lUB = o.d.lUm;
+    AppMethodBeat.o(198744);
+    return localc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ay.c
  * JD-Core Version:    0.7.0.1
  */

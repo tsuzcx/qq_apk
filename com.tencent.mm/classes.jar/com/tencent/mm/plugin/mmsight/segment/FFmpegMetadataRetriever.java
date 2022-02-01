@@ -80,7 +80,7 @@ public class FFmpegMetadataRetriever
   private void _setDataSourceVFS(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
     AppMethodBeat.i(107612);
-    _setDataSource(q.k(paramString, false), paramArrayOfString1, paramArrayOfString2);
+    _setDataSource(q.n(paramString, false), paramArrayOfString1, paramArrayOfString2);
     AppMethodBeat.o(107612);
   }
   
@@ -202,7 +202,7 @@ public class FFmpegMetadataRetriever
     {
       AppMethodBeat.o(107615);
       return null;
-      locala.zxY = localHashMap;
+      locala.Fds = localHashMap;
       i = 1;
     }
     AppMethodBeat.o(107615);
@@ -544,16 +544,16 @@ public class FFmpegMetadataRetriever
     AppMethodBeat.o(107611);
   }
   
-  public final class a
+  public class a
   {
-    HashMap<String, String> zxY;
+    HashMap<String, String> Fds;
     
     public a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.FFmpegMetadataRetriever
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ public abstract interface d
   
   public abstract void close();
   
-  public abstract boolean connect();
+  public abstract boolean cyb();
   
-  public abstract boolean exx();
+  public abstract boolean fjb();
   
   public abstract boolean isConnected();
 }

@@ -3,24 +3,25 @@ package com.tencent.mm.plugin.webview.fts;
 import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.f.a.sa;
 import com.tencent.mm.plugin.websearch.api.a;
 import com.tencent.mm.plugin.websearch.api.ai;
 import com.tencent.mm.plugin.websearch.api.v;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.f;
-import com.tencent.mm.pluginsdk.j.a.a.b;
-import com.tencent.mm.protocal.protobuf.aca;
-import com.tencent.mm.protocal.protobuf.ctz;
-import com.tencent.mm.protocal.protobuf.egk;
-import com.tencent.mm.protocal.protobuf.eou;
+import com.tencent.mm.plugin.webview.modeltools.f;
+import com.tencent.mm.pluginsdk.k.a.a.b;
+import com.tencent.mm.protocal.protobuf.aci;
+import com.tencent.mm.protocal.protobuf.ddb;
+import com.tencent.mm.protocal.protobuf.eqm;
+import com.tencent.mm.protocal.protobuf.ezc;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.d;
+import com.tencent.mm.ui.e;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -32,56 +33,56 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class i
-  implements com.tencent.mm.ak.i
+  implements com.tencent.mm.an.i
 {
-  private static final long IOO;
-  private static i IOX;
-  private MMHandler IOP;
-  private Set<String> IOQ;
-  public a IOR;
-  private volatile boolean IOT;
-  private volatile boolean IOU;
-  private volatile CountDownLatch IOV;
-  private volatile v IOW;
-  private volatile boolean IOY;
-  public IListener IOZ;
+  private static final long PLf;
+  private static i PLn;
+  private MMHandler PLg;
+  private Set<String> PLh;
+  public a PLi;
+  private volatile boolean PLj;
+  private volatile boolean PLk;
+  private volatile CountDownLatch PLl;
+  private volatile v PLm;
+  private volatile boolean PLo;
+  public IListener PLp;
   
   static
   {
     AppMethodBeat.i(77950);
-    IOO = d.gGT() + 500;
-    IOX = new i();
+    PLf = e.hFA() + 500;
+    PLn = new i();
     AppMethodBeat.o(77950);
   }
   
   public i()
   {
     AppMethodBeat.i(77941);
-    this.IOP = new MMHandler("RecommendLogic_worker");
-    this.IOR = new a((byte)0);
-    this.IOZ = new i.1(this);
+    this.PLg = new MMHandler("RecommendLogic_worker");
+    this.PLi = new a((byte)0);
+    this.PLp = new IListener() {};
     Log.d("MicroMsg.TopStory.RecommendLogic", "create RecommendLogic");
     Log.d("MicroMsg.TopStory.RecommendLogic", "create RecommendLogic, duplicate for patch fix");
-    this.IOZ.alive();
-    this.IOQ = new HashSet();
-    this.IOQ.add("netType");
-    this.IOQ.add("time_zone_min");
-    this.IOQ.add("currentPage");
-    this.IOQ.add("is_prefetch");
-    this.IOQ.add("direction");
-    this.IOQ.add("seq");
-    this.IOQ.add("client_exposed_info");
-    this.IOQ.add("requestId");
-    this.IOQ.add("recType");
-    this.IOQ.add("redPointMsgId");
-    gaA();
+    this.PLp.alive();
+    this.PLh = new HashSet();
+    this.PLh.add("netType");
+    this.PLh.add("time_zone_min");
+    this.PLh.add("currentPage");
+    this.PLh.add("is_prefetch");
+    this.PLh.add("direction");
+    this.PLh.add("seq");
+    this.PLh.add("client_exposed_info");
+    this.PLh.add("requestId");
+    this.PLh.add("recType");
+    this.PLh.add("redPointMsgId");
+    gTu();
     AppMethodBeat.o(77941);
   }
   
   private void a(final int paramInt, final String paramString1, final boolean paramBoolean, final String paramString2)
   {
     AppMethodBeat.i(77947);
-    this.IOP.postToWorker(new Runnable()
+    this.PLg.postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -99,9 +100,9 @@ public final class i
             if (i.b(i.this) == null) {
               break;
             }
-            int j = i.b(i.this).dVL;
+            int j = i.b(i.this).fPp;
             i = j;
-            if (!i.b(i.this).IDV) {
+            if (!i.b(i.this).Pyl) {
               break;
             }
             i = j;
@@ -120,7 +121,7 @@ public final class i
           Log.i("MicroMsg.TopStory.RecommendLogic", "count down latch null");
         }
         Log.i("MicroMsg.TopStory.RecommendLogic", "calling back to webview, id %d, reqId %s,  %s", new Object[] { Integer.valueOf(i), paramString2, i.b(i.this) });
-        com.tencent.mm.plugin.webview.ui.tools.jsapi.g.ahd(i).a(paramString1, paramBoolean, paramString2, null);
+        com.tencent.mm.plugin.webview.ui.tools.jsapi.i.aoU(i).a(paramString1, paramBoolean, paramString2, null);
         AppMethodBeat.o(77938);
       }
     });
@@ -128,14 +129,14 @@ public final class i
   }
   
   /* Error */
-  private static Set<String> bD(Map<String, Object> paramMap)
+  private static Set<String> bI(Map<String, Object> paramMap)
   {
     // Byte code:
     //   0: ldc 158
-    //   2: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: ldc 160
-    //   8: invokestatic 166	com/tencent/mm/plugin/websearch/api/ai:N	(Ljava/util/Map;Ljava/lang/String;)Ljava/lang/String;
+    //   8: invokestatic 166	com/tencent/mm/plugin/websearch/api/ai:aa	(Ljava/util/Map;Ljava/lang/String;)Ljava/lang/String;
     //   11: astore_0
     //   12: aload_0
     //   13: invokestatic 172	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
@@ -161,9 +162,9 @@ public final class i
     //   49: iload_1
     //   50: invokevirtual 182	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
     //   53: astore_0
-    //   54: new 184	com/tencent/mm/protocal/protobuf/aca
+    //   54: new 184	com/tencent/mm/protocal/protobuf/aci
     //   57: dup
-    //   58: invokespecial 185	com/tencent/mm/protocal/protobuf/aca:<init>	()V
+    //   58: invokespecial 185	com/tencent/mm/protocal/protobuf/aci:<init>	()V
     //   61: pop
     //   62: aload_2
     //   63: aload_0
@@ -187,7 +188,7 @@ public final class i
     //   93: anewarray 4	java/lang/Object
     //   96: invokestatic 199	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   99: ldc 158
-    //   101: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   101: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   104: aload_0
     //   105: areturn
     //   106: invokestatic 205	java/util/Collections:emptySet	()Ljava/util/Set;
@@ -215,40 +216,40 @@ public final class i
     //   40	77	113	java/lang/Exception
   }
   
-  private static v bE(Map<String, Object> paramMap)
+  private static v bJ(Map<String, Object> paramMap)
   {
     AppMethodBeat.i(77945);
     v localv = new v();
-    localv.dDv = ai.N(paramMap, "query");
+    localv.fwe = ai.aa(paramMap, "query");
     localv.offset = ai.b(paramMap, "offset", 0);
     localv.businessType = ai.b(paramMap, "type", 0);
     localv.scene = ai.b(paramMap, "scene", 0);
-    localv.IDG = ai.N(paramMap, "sugId");
-    localv.IDI = ai.b(paramMap, "sugType", 0);
-    localv.IDH = ai.N(paramMap, "prefixSug");
-    localv.IDT = ai.N(paramMap, "poiInfo");
+    localv.PxW = ai.aa(paramMap, "sugId");
+    localv.PxY = ai.b(paramMap, "sugType", 0);
+    localv.PxX = ai.aa(paramMap, "prefixSug");
+    localv.Pyj = ai.aa(paramMap, "poiInfo");
     int i;
-    if (ai.O(paramMap, "isHomePage")) {
+    if (ai.ab(paramMap, "isHomePage")) {
       i = 1;
     }
     Object localObject4;
     Object localObject5;
     for (;;)
     {
-      localv.IDE = i;
-      localv.rjq = ai.N(paramMap, "searchId");
+      localv.PxU = i;
+      localv.uMC = ai.aa(paramMap, "searchId");
       if (paramMap.containsKey("sessionId")) {
-        localv.sessionId = ai.N(paramMap, "sessionId");
+        localv.sessionId = ai.aa(paramMap, "sessionId");
       }
-      localv.dVS = ai.b(paramMap, "sceneActionType", 1);
-      localv.IDK = ai.b(paramMap, "displayPattern", 2);
-      localv.IDL = ai.b(paramMap, "sugPosition", 0);
-      localv.IDM = ai.N(paramMap, "sugBuffer");
-      localv.dPI = ai.N(paramMap, "requestId");
-      localv.sessionId = ai.N(paramMap, "sessionId");
-      localv.dVO = ai.N(paramMap, "subSessionId");
-      localv.IDU = ai.N(paramMap, "tagId");
-      Object localObject1 = ai.N(paramMap, "extReqParams");
+      localv.fPw = ai.b(paramMap, "sceneActionType", 1);
+      localv.Pya = ai.b(paramMap, "displayPattern", 2);
+      localv.Pyb = ai.b(paramMap, "sugPosition", 0);
+      localv.Pyc = ai.aa(paramMap, "sugBuffer");
+      localv.fIY = ai.aa(paramMap, "requestId");
+      localv.sessionId = ai.aa(paramMap, "sessionId");
+      localv.fPs = ai.aa(paramMap, "subSessionId");
+      localv.Pyk = ai.aa(paramMap, "tagId");
+      Object localObject1 = ai.aa(paramMap, "extReqParams");
       if (!Util.isNullOrNil((String)localObject1)) {
         try
         {
@@ -257,11 +258,11 @@ public final class i
           while (i < ((JSONArray)localObject1).length())
           {
             localObject4 = ((JSONArray)localObject1).getJSONObject(i);
-            localObject5 = new aca();
-            ((aca)localObject5).key = ((JSONObject)localObject4).optString("key", "");
-            ((aca)localObject5).LmC = ((JSONObject)localObject4).optInt("uintValue", 0);
-            ((aca)localObject5).LmD = ((JSONObject)localObject4).optString("textValue", "");
-            localv.IDO.add(localObject5);
+            localObject5 = new aci();
+            ((aci)localObject5).key = ((JSONObject)localObject4).optString("key", "");
+            ((aci)localObject5).SnV = ((JSONObject)localObject4).optInt("uintValue", 0);
+            ((aci)localObject5).SnW = ((JSONObject)localObject4).optString("textValue", "");
+            localv.Pye.add(localObject5);
             i += 1;
             continue;
             i = 0;
@@ -273,18 +274,18 @@ public final class i
         }
       }
     }
-    Object localObject2 = ai.N(paramMap, "matchUser");
+    Object localObject2 = ai.aa(paramMap, "matchUser");
     if (!Util.isNullOrNil((String)localObject2)) {}
     try
     {
       localObject2 = new JSONObject((String)localObject2);
-      localObject4 = new eou();
-      ((eou)localObject4).UserName = ((JSONObject)localObject2).optString("userName");
-      ((eou)localObject4).NmU = ((JSONObject)localObject2).optString("matchWord");
-      if (!TextUtils.isEmpty(((eou)localObject4).UserName)) {
-        localv.IDF.add(localObject4);
+      localObject4 = new ezc();
+      ((ezc)localObject4).UserName = ((JSONObject)localObject2).optString("userName");
+      ((ezc)localObject4).UzH = ((JSONObject)localObject2).optString("matchWord");
+      if (!TextUtils.isEmpty(((ezc)localObject4).UserName)) {
+        localv.PxV.add(localObject4);
       }
-      localObject2 = ai.N(paramMap, "prefixQuery");
+      localObject2 = ai.aa(paramMap, "prefixQuery");
       if (Util.isNullOrNil((String)localObject2)) {}
     }
     catch (Exception localException2)
@@ -296,7 +297,7 @@ public final class i
         while (i < ((JSONArray)localObject2).length())
         {
           localObject4 = ((JSONArray)localObject2).getString(i);
-          localv.IDJ.add(localObject4);
+          localv.PxZ.add(localObject4);
           i += 1;
           continue;
           localException2 = localException2;
@@ -307,16 +308,16 @@ public final class i
       {
         Log.printErrStackTrace("MicroMsg.TopStory.RecommendLogic", localException3, "prefixQueryJSONArray", new Object[0]);
       }
-      Object localObject3 = ai.N(paramMap, "tagInfo");
+      Object localObject3 = ai.aa(paramMap, "tagInfo");
       if (!Util.isNullOrNil((String)localObject3)) {}
       try
       {
         localObject3 = new JSONObject((String)localObject3);
-        localv.IDN = new egk();
-        localv.IDN.Ngs = ((JSONObject)localObject3).optString("tagText");
-        localv.IDN.Ngr = ((JSONObject)localObject3).optInt("tagType");
-        localv.IDN.Ngt = ((JSONObject)localObject3).optString("tagExtValue");
-        localObject3 = ai.N(paramMap, "numConditions");
+        localv.Pyd = new eqm();
+        localv.Pyd.UsW = ((JSONObject)localObject3).optString("tagText");
+        localv.Pyd.UsV = ((JSONObject)localObject3).optInt("tagType");
+        localv.Pyd.UsX = ((JSONObject)localObject3).optString("tagExtValue");
+        localObject3 = ai.aa(paramMap, "numConditions");
         if (Util.isNullOrNil((String)localObject3)) {}
       }
       catch (Exception localException4)
@@ -328,11 +329,11 @@ public final class i
           while (i < ((JSONArray)localObject3).length())
           {
             localObject4 = ((JSONArray)localObject3).optJSONObject(i);
-            localObject5 = new ctz();
-            ((ctz)localObject5).Mzn = ((JSONObject)localObject4).optLong("from");
-            ((ctz)localObject5).Mzo = ((JSONObject)localObject4).optLong("to");
-            ((ctz)localObject5).Mzm = ((JSONObject)localObject4).optInt("field");
-            localv.IDP.add(localObject5);
+            localObject5 = new ddb();
+            ((ddb)localObject5).TKT = ((JSONObject)localObject4).optLong("from");
+            ((ddb)localObject5).TKU = ((JSONObject)localObject4).optLong("to");
+            ((ddb)localObject5).TKS = ((JSONObject)localObject4).optInt("field");
+            localv.Pyf.add(localObject5);
             i += 1;
             continue;
             localException4 = localException4;
@@ -343,20 +344,20 @@ public final class i
         {
           Log.printErrStackTrace("MicroMsg.TopStory.RecommendLogic", localException5, "numConditionsArray", new Object[0]);
         }
-        localv.dVL = Util.nullAsInt(paramMap.get("webview_instance_id"), -1);
+        localv.fPp = Util.nullAsInt(paramMap.get("webview_instance_id"), -1);
         localv.language = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
-        localv.wVW = ai.b(paramMap, "subType", 0);
+        localv.BHR = ai.b(paramMap, "subType", 0);
         localv.channelId = ai.b(paramMap, "channelId", 0);
-        localv.IDW = ai.N(paramMap, "navigationId");
+        localv.Pym = ai.aa(paramMap, "navigationId");
         AppMethodBeat.o(77945);
       }
     }
     return localv;
   }
   
-  public static i gaz()
+  public static i gTt()
   {
-    return IOX;
+    return PLn;
   }
   
   public static void start()
@@ -377,7 +378,7 @@ public final class i
   private boolean w(Set<String> paramSet)
   {
     AppMethodBeat.i(77942);
-    if ((paramSet == null) || (this.IOQ.containsAll(paramSet)))
+    if ((paramSet == null) || (this.PLh.containsAll(paramSet)))
     {
       AppMethodBeat.o(77942);
       return true;
@@ -386,25 +387,25 @@ public final class i
     return false;
   }
   
-  public final boolean bC(Map<String, Object> paramMap)
+  public final boolean bH(Map<String, Object> paramMap)
   {
     AppMethodBeat.i(77943);
     Log.i("MicroMsg.TopStory.RecommendLogic", "getSearchData: %s", new Object[] { paramMap.toString() });
-    com.tencent.mm.plugin.webview.ui.tools.jsapi.g.ahd(Util.nullAsInt(paramMap.get("webview_instance_id"), -1)).d(ai.b(paramMap, "type", 0), ai.N(paramMap, "query"), paramMap);
+    com.tencent.mm.plugin.webview.ui.tools.jsapi.i.aoU(Util.nullAsInt(paramMap.get("webview_instance_id"), -1)).d(ai.b(paramMap, "type", 0), ai.aa(paramMap, "query"), paramMap);
     int i;
-    if (this.IOT)
+    if (this.PLj)
     {
-      this.IOT = false;
+      this.PLj = false;
       i = Util.nullAsInt(paramMap.get("webview_instance_id"), -1);
-      if (this.IOW != null) {
-        this.IOW.dVL = i;
+      if (this.PLm != null) {
+        this.PLm.fPp = i;
       }
-      if (!w(bD(paramMap)))
+      if (!w(bI(paramMap)))
       {
         Log.e("MicroMsg.TopStory.RecommendLogic", "wtf , recv unsupported commKvSet after pre get, interrupt pre get now");
-        this.IOU = true;
-        if (this.IOV != null) {
-          this.IOV.countDown();
+        this.PLk = true;
+        if (this.PLl != null) {
+          this.PLl.countDown();
         }
         i = 0;
       }
@@ -413,44 +414,44 @@ public final class i
     {
       AppMethodBeat.o(77943);
       return false;
-      if (this.IOV != null) {
-        this.IOV.countDown();
+      if (this.PLl != null) {
+        this.PLl.countDown();
       }
-      if (this.IOW != null) {
-        Log.i("MicroMsg.TopStory.RecommendLogic", "do not send this call, wait for pre get, webivewId %d, %s", new Object[] { Integer.valueOf(this.IOW.dVL), this.IOW });
+      if (this.PLm != null) {
+        Log.i("MicroMsg.TopStory.RecommendLogic", "do not send this call, wait for pre get, webivewId %d, %s", new Object[] { Integer.valueOf(this.PLm.fPp), this.PLm });
       }
       i = 1;
       continue;
-      if (this.IOV != null) {
-        this.IOV.countDown();
+      if (this.PLl != null) {
+        this.PLl.countDown();
       }
       i = 0;
     }
-    paramMap = bE(paramMap);
-    a locala = this.IOR;
-    if (locala.IPf != null) {
-      locala.IPf.stopped = true;
+    paramMap = bJ(paramMap);
+    a locala = this.PLi;
+    if (locala.PLv != null) {
+      locala.PLv.aFI = true;
     }
-    locala.IPf = new i.a.a(locala, (byte)0);
-    locala.IPf.IDt = paramMap;
-    locala.IPa.IOW = paramMap;
-    locala.IPf.run();
+    locala.PLv = new i.a.a(locala, (byte)0);
+    locala.PLv.PxJ = paramMap;
+    locala.PLq.PLm = paramMap;
+    locala.PLv.run();
     AppMethodBeat.o(77943);
     return false;
   }
   
-  public final void gaA()
+  public final void gTu()
   {
     AppMethodBeat.i(77949);
-    String str = ai.fXW();
+    String str = ai.gQH();
     Log.i("MicroMsg.TopStory.RecommendLogic", "config commKV %s", new Object[] { str });
     if (TextUtils.isEmpty(str))
     {
-      this.IOY = true;
+      this.PLo = true;
       AppMethodBeat.o(77949);
       return;
     }
-    this.IOY = w(new HashSet(Arrays.asList(str.split(","))));
+    this.PLo = w(new HashSet(Arrays.asList(str.split(","))));
     AppMethodBeat.o(77949);
   }
   
@@ -466,7 +467,7 @@ public final class i
       Log.v("MicroMsg.TopStory.RecommendLogic", "onSceneEnd(type : %s), errType : %s, errCode : %s, errMsg : %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(i) });
       if ((paramq instanceof a))
       {
-        com.tencent.mm.kernel.g.azz().b(paramq.getType(), this);
+        com.tencent.mm.kernel.h.aGY().b(paramq.getType(), this);
         paramString = (a)paramq;
         if ((paramInt1 != 0) || (paramInt2 != 0))
         {
@@ -479,20 +480,20 @@ public final class i
         paramq.put("ret", -1);
         label128:
         paramq = paramq.toString();
-        a(paramString.fXz(), paramq, paramString.fXA(), paramString.fXE());
+        a(paramString.gQm(), paramq, paramString.gQn(), paramString.gQr());
         AppMethodBeat.o(77946);
         return;
         i = 0;
         continue;
-        paramq = paramString.fXC();
-        paramInt1 = paramString.fXD();
+        paramq = paramString.gQp();
+        paramInt1 = paramString.gQq();
         Log.i("MicroMsg.TopStory.RecommendLogic", "callback %s", new Object[] { paramString.getKeyword() });
-        a(paramString.fXz(), paramq, paramString.fXA(), paramString.fXE());
+        a(paramString.gQm(), paramq, paramString.gQn(), paramString.gQr());
         if (paramInt1 > 0)
         {
           Log.i("MicroMsg.TopStory.RecommendLogic", "updateCode %d, need update", new Object[] { Integer.valueOf(paramInt1) });
-          b.gnC();
-          b.ahP(27);
+          b.hii();
+          b.apP(27);
         }
         AppMethodBeat.o(77946);
         return;
@@ -507,8 +508,8 @@ public final class i
   public final class a
     implements Comparable
   {
-    public a IPe;
-    public a IPf;
+    public a PLu;
+    public a PLv;
     
     private a() {}
     
@@ -520,8 +521,8 @@ public final class i
     public final class a
       implements Runnable
     {
-      v IDt;
-      public volatile boolean stopped;
+      v PxJ;
+      public volatile boolean aFI;
       
       private a() {}
       
@@ -533,26 +534,26 @@ public final class i
           AppMethodBeat.o(77939);
           return;
         }
-        if (Util.isNullOrNil(this.IDt.dDv))
+        if (Util.isNullOrNil(this.PxJ.fwe))
         {
-          Log.i("MicroMsg.TopStory.RecommendLogic", "error query %d %d %d %d %s %d", new Object[] { Integer.valueOf(this.IDt.businessType), Integer.valueOf(this.IDt.scene), Integer.valueOf(this.IDt.IDE), Integer.valueOf(this.IDt.dVS), this.IDt.rjq, Integer.valueOf(this.IDt.offset) });
+          Log.i("MicroMsg.TopStory.RecommendLogic", "error query %d %d %d %d %s %d", new Object[] { Integer.valueOf(this.PxJ.businessType), Integer.valueOf(this.PxJ.scene), Integer.valueOf(this.PxJ.PxU), Integer.valueOf(this.PxJ.fPw), this.PxJ.uMC, Integer.valueOf(this.PxJ.offset) });
           AppMethodBeat.o(77939);
           return;
         }
-        Log.i("MicroMsg.TopStory.RecommendLogic", "start New NetScene %s ,  %d", new Object[] { this.IDt.dDv, Integer.valueOf(this.IDt.dVL) });
+        Log.i("MicroMsg.TopStory.RecommendLogic", "start New NetScene %s ,  %d", new Object[] { this.PxJ.fwe, Integer.valueOf(this.PxJ.fPp) });
         if (i.a.a(i.a.this) != null) {
-          com.tencent.mm.kernel.g.azz().a(i.a.a(i.a.this));
+          com.tencent.mm.kernel.h.aGY().a(i.a.a(i.a.this));
         }
-        if (this.stopped)
+        if (this.aFI)
         {
           Log.i("MicroMsg.TopStory.RecommendLogic", "was cancelled");
           AppMethodBeat.o(77939);
           return;
         }
-        com.tencent.mm.plugin.webview.modeltools.g.gds().IOd.v(this.IDt.scene, this.IDt.dDv, this.IDt.businessType);
-        i.a.a(i.a.this, i.a.a(this.IDt));
-        com.tencent.mm.kernel.g.azz().a(i.a.a(i.a.this).getType(), i.this);
-        com.tencent.mm.kernel.g.azz().a(i.a.a(i.a.this), 0);
+        f.gWq().PKu.x(this.PxJ.scene, this.PxJ.fwe, this.PxJ.businessType);
+        i.a.a(i.a.this, i.a.a(this.PxJ));
+        com.tencent.mm.kernel.h.aGY().a(i.a.a(i.a.this).getType(), i.this);
+        com.tencent.mm.kernel.h.aGY().a(i.a.a(i.a.this), 0);
         Log.i("MicroMsg.TopStory.RecommendLogic", "doScene(type : %s)", new Object[] { Integer.valueOf(i.a.a(i.a.this).getType()) });
         AppMethodBeat.o(77939);
       }
@@ -561,7 +562,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.i
  * JD-Core Version:    0.7.0.1
  */

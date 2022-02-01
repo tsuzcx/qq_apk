@@ -5,8 +5,8 @@ import android.widget.Button;
 
 public final class d
 {
-  View QhD;
-  Button QhE;
+  View XEO;
+  Button XEP;
 }
 
 

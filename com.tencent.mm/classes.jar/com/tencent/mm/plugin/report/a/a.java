@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.report.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bf;
+import com.tencent.mm.f.c.bf;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;

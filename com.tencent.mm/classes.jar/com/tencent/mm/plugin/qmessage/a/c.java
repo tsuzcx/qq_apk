@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.qmessage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bom;
-import com.tencent.mm.protocal.protobuf.bon;
+import com.tencent.mm.protocal.protobuf.bwb;
+import com.tencent.mm.protocal.protobuf.bwc;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
   extends q
   implements m
 {
-  private i Bqf;
-  public final d jof;
+  private i Hky;
+  public final d mdu;
   
   public c()
   {
     AppMethodBeat.i(27716);
     d.a locala = new d.a();
-    locala.iLN = new bom();
-    locala.iLO = new bon();
+    locala.lBU = new bwb();
+    locala.lBV = new bwc();
     locala.uri = "/cgi-bin/micromsg-bin/getimunreadmsgcount";
     locala.funcId = getType();
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.jof = locala.aXF();
+    this.mdu = locala.bgN();
     AppMethodBeat.o(27716);
   }
   
@@ -37,8 +37,8 @@ public final class c
   {
     AppMethodBeat.i(27718);
     Log.d("MicroMsg.NetSceneGetImUnreadMsgCount", "get im unread msg count");
-    this.Bqf = parami;
-    int i = dispatch(paramg, this.jof, this);
+    this.Hky = parami;
+    int i = dispatch(paramg, this.mdu, this);
     AppMethodBeat.o(27718);
     return i;
   }
@@ -52,7 +52,7 @@ public final class c
   {
     AppMethodBeat.i(27717);
     Log.d("MicroMsg.NetSceneGetImUnreadMsgCount", "end get im unread msg count, errType: %d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.Bqf.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    this.Hky.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(27717);
   }
 }

@@ -6,8 +6,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.d.g;
@@ -19,46 +22,46 @@ public class WalletECardCheckOtherCardUI
   extends WalletECardBaseUI
   implements WalletFormView.a
 {
-  private WalletFormView Cjy;
-  private WalletFormView HSp;
-  private Button krs;
+  private WalletFormView Igr;
+  private WalletFormView OKw;
   private String mTrueName;
+  private Button njb;
   
   public int getLayoutId()
   {
-    return 2131493866;
+    return a.g.ecard_check_other_card_ui;
   }
   
   public void initView()
   {
     AppMethodBeat.i(71769);
-    this.Cjy = ((WalletFormView)findViewById(2131298616));
-    this.HSp = ((WalletFormView)findViewById(2131298617));
-    this.krs = ((Button)findViewById(2131298618));
-    com.tencent.mm.wallet_core.ui.formview.a.b(this.Cjy);
-    com.tencent.mm.wallet_core.ui.formview.a.c(this, this.HSp);
+    this.Igr = ((WalletFormView)findViewById(a.f.check_other_card_input_et));
+    this.OKw = ((WalletFormView)findViewById(a.f.check_other_card_mobile_input_et));
+    this.njb = ((Button)findViewById(a.f.check_other_card_next_btn));
+    com.tencent.mm.wallet_core.ui.formview.a.b(this.Igr);
+    com.tencent.mm.wallet_core.ui.formview.a.c(this, this.OKw);
     if (!Util.isNullOrNil(this.mTrueName)) {
-      this.Cjy.setHint(getString(2131758438, new Object[] { this.mTrueName }));
+      this.Igr.setHint(getString(a.i.ecard_check_other_card_hint_text, new Object[] { this.mTrueName }));
     }
     for (;;)
     {
-      this.HSp.setHint(getString(2131758440));
-      this.Cjy.setOnInputValidChangeListener(this);
-      this.HSp.setOnInputValidChangeListener(this);
-      setEditFocusListener(this.Cjy, 0, false);
-      setEditFocusListener(this.HSp, 0, false);
-      this.krs.setEnabled(false);
-      this.krs.setClickable(false);
-      this.krs.setOnClickListener(new View.OnClickListener()
+      this.OKw.setHint(getString(a.i.ecard_check_other_card_phone_hint_text));
+      this.Igr.setOnInputValidChangeListener(this);
+      this.OKw.setOnInputValidChangeListener(this);
+      setEditFocusListener(this.Igr, 0, false);
+      setEditFocusListener(this.OKw, 0, false);
+      this.njb.setEnabled(false);
+      this.njb.setClickable(false);
+      this.njb.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(71767);
           Object localObject = new b();
-          ((b)localObject).bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_ecard/ui/WalletECardCheckOtherCardUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+          ((b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_ecard/ui/WalletECardCheckOtherCardUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
           Log.i("MicroMsg.WalletECardCheckOtherCardUI", "do check card");
-          if ((WalletECardCheckOtherCardUI.a(WalletECardCheckOtherCardUI.this).bql()) && (WalletECardCheckOtherCardUI.b(WalletECardCheckOtherCardUI.this).bql()))
+          if ((WalletECardCheckOtherCardUI.a(WalletECardCheckOtherCardUI.this).bAz()) && (WalletECardCheckOtherCardUI.b(WalletECardCheckOtherCardUI.this).bAz()))
           {
             paramAnonymousView = WalletECardCheckOtherCardUI.a(WalletECardCheckOtherCardUI.this).getText();
             localObject = WalletECardCheckOtherCardUI.b(WalletECardCheckOtherCardUI.this).getText();
@@ -75,7 +78,7 @@ public class WalletECardCheckOtherCardUI
       });
       AppMethodBeat.o(71769);
       return;
-      this.Cjy.setHint(getString(2131758439));
+      this.Igr.setHint(getString(a.i.ecard_check_other_card_hint_without_name_text));
     }
   }
   
@@ -83,8 +86,8 @@ public class WalletECardCheckOtherCardUI
   {
     AppMethodBeat.i(71768);
     super.onCreate(paramBundle);
-    this.mTrueName = getInput().getString(com.tencent.mm.plugin.wallet_ecard.a.a.IpH, "");
-    setMMTitle(getString(2131758441));
+    this.mTrueName = getInput().getString(com.tencent.mm.plugin.wallet_ecard.a.a.Pip, "");
+    setMMTitle(getString(a.i.ecard_check_other_card_title));
     this.mNetSceneMgr.addSceneEndListener(385);
     initView();
     AppMethodBeat.o(71768);
@@ -102,15 +105,15 @@ public class WalletECardCheckOtherCardUI
   {
     AppMethodBeat.i(71771);
     Log.d("MicroMsg.WalletECardCheckOtherCardUI", "is valid: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    if ((this.Cjy.bql()) && (this.HSp.bql()))
+    if ((this.Igr.bAz()) && (this.OKw.bAz()))
     {
-      this.krs.setEnabled(true);
-      this.krs.setClickable(true);
+      this.njb.setEnabled(true);
+      this.njb.setClickable(true);
       AppMethodBeat.o(71771);
       return;
     }
-    this.krs.setEnabled(false);
-    this.krs.setClickable(false);
+    this.njb.setEnabled(false);
+    this.njb.setClickable(false);
     AppMethodBeat.o(71771);
   }
   

@@ -102,7 +102,7 @@ public final class f
   
   public final Object callSheetStaMth(Class paramClass, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(193527);
+    AppMethodBeat.i(236334);
     Object localObject = null;
     try
     {
@@ -110,7 +110,7 @@ public final class f
       try
       {
         paramClass = b.a(paramClass, paramString, paramArrayOfObject);
-        AppMethodBeat.o(193527);
+        AppMethodBeat.o(236334);
         return paramClass;
       }
       catch (Exception paramClass)
@@ -118,11 +118,11 @@ public final class f
         if ((paramClass instanceof InvocationTargetException))
         {
           paramClass = new RuntimeException(((InvocationTargetException)paramClass).getTargetException());
-          AppMethodBeat.o(193527);
+          AppMethodBeat.o(236334);
           throw paramClass;
         }
         paramClass = new RuntimeException(paramClass);
-        AppMethodBeat.o(193527);
+        AppMethodBeat.o(236334);
         throw paramClass;
       }
     }
@@ -254,7 +254,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.map.tools.internal.f
  * JD-Core Version:    0.7.0.1
  */

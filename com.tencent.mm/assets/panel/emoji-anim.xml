@@ -45,7 +45,7 @@
             <key><![CDATA[/:bome]]></key>
             <animFile>Bomb.wxam</animFile>
             <screenEffect>
-                <delay>625</delay>
+                <delay>300</delay>
             </screenEffect>
         </item>
         <item>
@@ -441,6 +441,13 @@
         <item>
             <key><![CDATA[/::Z]]></key>
             <animFile>Sleep.wxam</animFile>
+        </item>
+        <item>
+            <key><![CDATA[[Firecracker]]]></key>
+            <animFile>Firecracker.wxam</animFile>
+            <screenEffect>
+                <delay>300</delay>
+            </screenEffect>
         </item>
     </emoji>
 </emojiAnim>

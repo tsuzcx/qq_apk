@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends BitmapFactory
 {
-  private static a gLb = null;
+  private static a jvq = null;
   
   /* Error */
   private static Bitmap a(Resources paramResources, int paramInt, BitmapFactory.Options paramOptions)
@@ -141,7 +141,7 @@ public final class a
   
   public static void a(a parama)
   {
-    gLb = parama;
+    jvq = parama;
   }
   
   public static Bitmap decodeResource(Resources paramResources, int paramInt)
@@ -155,9 +155,9 @@ public final class a
   public static Bitmap decodeResource(Resources paramResources, int paramInt, BitmapFactory.Options paramOptions)
   {
     AppMethodBeat.i(155855);
-    if (gLb != null)
+    if (jvq != null)
     {
-      Bitmap localBitmap = gLb.decodeResource(paramResources, paramInt, paramOptions);
+      Bitmap localBitmap = jvq.decodeResource(paramResources, paramInt, paramOptions);
       if (localBitmap != null)
       {
         AppMethodBeat.o(155855);
@@ -176,7 +176,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.compatible.f.a
  * JD-Core Version:    0.7.0.1
  */

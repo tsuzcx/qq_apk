@@ -1,69 +1,55 @@
 package com.tencent.mm.plugin.appbrand.jsapi.u;
 
-import com.tencent.luggage.a.e;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Looper;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.TouchDelegate;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
+import android.view.View.OnLayoutChangeListener;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.TextView.BufferType;
+import androidx.core.g.w;
+import com.tencent.luggage.wxa.c.a.c;
+import com.tencent.luggage.wxa.c.a.d;
+import com.tencent.luggage.wxa.c.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.k.c;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.widget.g.b;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Collections;
-import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
-import org.json.JSONObject;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"REFERRER_HEADER_NAME", "", "TAG", "buildHeaders", "", "referrer", "updateReferrers", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "referrerPolicyContainer", "Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/IReferrerPolicyContainer;", "data", "Lorg/json/JSONObject;", "luggage-commons_release"})
 public final class d
+  extends c<v>
 {
-  public static final String a(f paramf, b paramb, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(221366);
-    p.h(paramb, "referrerPolicyContainer");
-    p.h(paramJSONObject, "data");
-    if (paramf == null)
-    {
-      Log.w("MicroMsg.AppBrand.Referrers", "updateReferrers, component is null");
-      AppMethodBeat.o(221366);
-      return null;
-    }
-    a locala = (a)e.M(a.class);
-    if (locala == null)
-    {
-      Log.w("MicroMsg.AppBrand.Referrers", "updateReferrers, referrerHelper is null");
-      AppMethodBeat.o(221366);
-      return null;
-    }
-    if (paramb.getReferrerPolicy() == null) {
-      paramb.setReferrerPolicy(locala.bIw());
-    }
-    paramJSONObject = locala.a(paramJSONObject, paramf);
-    if (paramJSONObject != null) {
-      paramb.setReferrerPolicy(paramJSONObject);
-    }
-    Log.i("MicroMsg.AppBrand.Referrers", "updateReferrers, referrerPolicy: " + paramb.getReferrerPolicy());
-    if (c.mou == paramb.getReferrerPolicy())
-    {
-      AppMethodBeat.o(221366);
-      return null;
-    }
-    paramf = locala.y(paramf);
-    Log.i("MicroMsg.AppBrand.Referrers", "updateReferrers, mReferrer: ".concat(String.valueOf(paramf)));
-    AppMethodBeat.o(221366);
-    return paramf;
-  }
-  
-  public static final Map<String, String> aaG(String paramString)
-  {
-    AppMethodBeat.i(221367);
-    Map localMap = null;
-    if (paramString != null) {
-      localMap = Collections.singletonMap("Referer", paramString);
-    }
-    AppMethodBeat.o(221367);
-    return localMap;
-  }
+  private static final int CTRL_INDEX = 105;
+  private static final String NAME = "showToast";
+  MTimerHandler ndv;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.u.d
  * JD-Core Version:    0.7.0.1
  */

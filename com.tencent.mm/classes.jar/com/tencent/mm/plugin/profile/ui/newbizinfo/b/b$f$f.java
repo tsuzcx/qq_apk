@@ -1,0 +1,24 @@
+package com.tencent.mm.plugin.profile.ui.newbizinfo.b;
+
+import java.util.HashSet;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
+
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+final class b$f$f
+  extends q
+  implements a<x>
+{
+  b$f$f(HashSet paramHashSet, int paramInt)
+  {
+    super(0);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+ * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.b.b.f.f
+ * JD-Core Version:    0.7.0.1
+ */

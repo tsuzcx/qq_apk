@@ -16,11 +16,11 @@ public class h
   {
     AppMethodBeat.i(78525);
     Log.i("MicroMsg.JsApiCheckJsApi", "invoke");
-    paramb.c("fail", null);
+    paramb.a("fail", null);
     AppMethodBeat.o(78525);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

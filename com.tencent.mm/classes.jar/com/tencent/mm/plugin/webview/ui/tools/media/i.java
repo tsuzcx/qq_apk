@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.webview.ui.tools.media;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.c;
-import com.tencent.mm.ay.f;
-import com.tencent.mm.ay.g;
-import com.tencent.mm.g.a.mx;
-import com.tencent.mm.g.a.mx.a;
+import com.tencent.mm.bb.c;
+import com.tencent.mm.bb.f;
+import com.tencent.mm.bb.g;
+import com.tencent.mm.f.a.np;
+import com.tencent.mm.f.a.np.a;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.plugin.image.d;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.ui.tools.z;
-import com.tencent.mm.protocal.protobuf.faw;
-import com.tencent.mm.protocal.protobuf.fax;
+import com.tencent.mm.pluginsdk.ui.tools.ab;
+import com.tencent.mm.protocal.protobuf.flp;
+import com.tencent.mm.protocal.protobuf.flq;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -33,92 +33,91 @@ import kotlin.x;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/media/WebViewMusicAlbumHelper;", "", "ct", "Landroid/content/Context;", "(Landroid/content/Context;)V", "checkTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "kvSlot", "Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "getKvSlot", "()Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "lastMusicId", "", "getLastMusicId", "()Ljava/lang/String;", "setLastMusicId", "(Ljava/lang/String;)V", "mContext", "mCurrentAlbumId", "mWebViewAlbumInfo", "Lcom/tencent/mm/protocal/protobuf/WebViewAlbumInfo;", "musicPlayerListener", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/MusicPlayerEvent;", "getMusicPlayerListener", "()Lcom/tencent/mm/sdk/event/IListener;", "playActionSource", "", "getPlayActionSource", "()I", "setPlayActionSource", "(I)V", "playId", "getPlayId", "setPlayId", "doReport", "", "event", "info", "Lcom/tencent/mm/protocal/protobuf/WebViewAudioInfo;", "eventType", "formatReportData", "data", "getAlbumIdFromMusicId", "musicId", "getAudioIdFromMusicId", "getAudioListState", "domain", "albumId", "getDomainFromMusicId", "getWebViewAlbumInfoInfo", "getWebViewAudioInfo", "playAudioList", "", "playAudioId", "appId", "saveCurrentAudioPlayTime", "saveWebViewAlbumInfoInfo", "saveWebViewAudioInfo", "startTimer", "stopTimer", "albumInfoKey", "audioInfoKey", "Companion", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/media/WebViewMusicAlbumHelper;", "", "ct", "Landroid/content/Context;", "(Landroid/content/Context;)V", "checkTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "kvSlot", "Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "getKvSlot", "()Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "lastMusicId", "", "getLastMusicId", "()Ljava/lang/String;", "setLastMusicId", "(Ljava/lang/String;)V", "mContext", "mCurrentAlbumId", "mWebViewAlbumInfo", "Lcom/tencent/mm/protocal/protobuf/WebViewAlbumInfo;", "musicPlayerListener", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/MusicPlayerEvent;", "getMusicPlayerListener", "()Lcom/tencent/mm/sdk/event/IListener;", "playActionSource", "", "getPlayActionSource", "()I", "setPlayActionSource", "(I)V", "playId", "getPlayId", "setPlayId", "doReport", "", "event", "info", "Lcom/tencent/mm/protocal/protobuf/WebViewAudioInfo;", "eventType", "formatReportData", "data", "getAlbumIdFromMusicId", "musicId", "getAudioIdFromMusicId", "getAudioListState", "domain", "albumId", "getDomainFromMusicId", "getWebViewAlbumInfoInfo", "getWebViewAudioInfo", "playAudioList", "", "playAudioId", "appId", "saveCurrentAudioPlayTime", "saveWebViewAlbumInfoInfo", "saveWebViewAudioInfo", "startTimer", "stopTimer", "albumInfoKey", "audioInfoKey", "Companion", "plugin-webview_release"})
 public final class i
 {
-  private static i JwQ;
-  public static final a JwR;
-  private faw JwL;
-  private String JwM;
-  private int JwN;
-  private String JwO;
-  private String JwP;
-  final IListener<mx> lEl;
+  private static i QuF;
+  public static final a QuG;
+  private flp QuA;
+  private String QuB;
+  private int QuC;
+  private String QuD;
+  private String QuE;
   private Context mContext;
-  private MTimerHandler mEP;
-  private final MMKVSlotManager pvV;
+  final IListener<np> ozM;
+  private MTimerHandler pEb;
+  private final MMKVSlotManager sFn;
   
   static
   {
     AppMethodBeat.i(182673);
-    JwR = new a((byte)0);
+    QuG = new a((byte)0);
     AppMethodBeat.o(182673);
   }
   
   private i(Context paramContext)
   {
     AppMethodBeat.i(182672);
-    this.JwM = "";
+    this.QuB = "";
     MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("__web_music_slot_mmkv_key__");
-    p.g(localMultiProcessMMKV, "MultiProcessMMKV.getMMKV…b_music_slot_mmkv_key__\")");
-    this.pvV = new MMKVSlotManager(localMultiProcessMMKV, 15552000L);
-    this.lEl = ((IListener)new c(this));
-    this.mEP = new MTimerHandler("MicroMsg.MusicAlbumHelper", (MTimerHandler.CallBack)new b(this), true);
-    this.JwN = 1;
-    this.JwO = "";
-    this.JwP = "";
+    p.j(localMultiProcessMMKV, "MultiProcessMMKV.getMMKV…b_music_slot_mmkv_key__\")");
+    this.sFn = new MMKVSlotManager(localMultiProcessMMKV, 15552000L);
+    this.ozM = ((IListener)new c(this));
+    this.pEb = new MTimerHandler("MicroMsg.MusicAlbumHelper", (MTimerHandler.CallBack)new b(this), true);
+    this.QuC = 1;
+    this.QuD = "";
+    this.QuE = "";
     this.mContext = paramContext;
     AppMethodBeat.o(182672);
   }
   
-  private final void a(fax paramfax, int paramInt)
+  private final void a(flq paramflq, int paramInt)
   {
-    AppMethodBeat.i(210571);
-    if (paramfax == null)
+    AppMethodBeat.i(238231);
+    if (paramflq == null)
     {
-      AppMethodBeat.o(210571);
+      AppMethodBeat.o(238231);
       return;
     }
     long l = System.currentTimeMillis();
-    h.CyF.a(19839, new Object[] { paramfax.NhM, Long.valueOf(paramfax.msgId), Integer.valueOf(paramfax.idx), paramfax.Nxj, paramfax.dtX, Integer.valueOf(paramfax.dLt), Long.valueOf(paramfax.prZ), paramfax.Nxk, Integer.valueOf(paramfax.scene), Integer.valueOf(paramfax.pHw), this.JwO, Integer.valueOf(paramfax.duration), Integer.valueOf(paramfax.Dzt), Long.valueOf(l), Integer.valueOf(paramInt), Integer.valueOf(this.JwN), z.bfG(paramfax.Nxl), Integer.valueOf(paramfax.Nxo), bbc(paramfax.Nxm), bbc(paramfax.Nxn) });
-    AppMethodBeat.o(210571);
+    h.IzE.a(19839, new Object[] { paramflq.Uus, Long.valueOf(paramflq.msgId), Integer.valueOf(paramflq.idx), paramflq.UKz, paramflq.fmF, Integer.valueOf(paramflq.fEi), Long.valueOf(paramflq.sBg), paramflq.UKA, Integer.valueOf(paramflq.scene), Integer.valueOf(paramflq.wGA), this.QuD, Integer.valueOf(paramflq.duration), Integer.valueOf(paramflq.JJP), Long.valueOf(l), Integer.valueOf(paramInt), Integer.valueOf(this.QuC), ab.aXb(paramflq.UKB), Integer.valueOf(paramflq.UKE), bna(paramflq.UKC), bna(paramflq.UKD) });
+    AppMethodBeat.o(238231);
   }
   
-  private final void a(String paramString, fax paramfax)
+  private final void a(String paramString, flq paramflq)
   {
-    AppMethodBeat.i(210567);
-    Object localObject = (CharSequence)paramString;
-    if ((localObject == null) || (n.aL((CharSequence)localObject))) {}
+    AppMethodBeat.i(238218);
+    CharSequence localCharSequence = (CharSequence)paramString;
+    if ((localCharSequence == null) || (n.ba(localCharSequence))) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(210567);
+      AppMethodBeat.o(238218);
       return;
     }
-    localObject = (MultiProcessMMKV)this.pvV.getSlot();
     try
     {
-      ((MultiProcessMMKV)localObject).encode(baZ(paramString), paramfax.toByteArray());
-      AppMethodBeat.o(210567);
+      ((MultiProcessMMKV)this.sFn.getSlotForWrite()).encode(bmX(paramString), paramflq.toByteArray());
+      AppMethodBeat.o(238218);
       return;
     }
     catch (Exception paramString)
     {
       Log.e("MicroMsg.MusicAlbumHelper", "saveWebViewAudioInfo ex " + paramString.getMessage());
-      AppMethodBeat.o(210567);
+      AppMethodBeat.o(238218);
     }
   }
   
-  private final void a(String paramString1, String paramString2, faw paramfaw)
+  private final void a(String paramString1, String paramString2, flp paramflp)
   {
-    AppMethodBeat.i(210569);
-    Object localObject = (CharSequence)paramString1;
-    if ((localObject == null) || (n.aL((CharSequence)localObject)))
+    AppMethodBeat.i(238223);
+    CharSequence localCharSequence = (CharSequence)paramString1;
+    if ((localCharSequence == null) || (n.ba(localCharSequence)))
     {
       i = 1;
       if (i == 0)
       {
-        localObject = (CharSequence)paramString2;
-        if ((localObject != null) && (!n.aL((CharSequence)localObject))) {
+        localCharSequence = (CharSequence)paramString2;
+        if ((localCharSequence != null) && (!n.ba(localCharSequence))) {
           break label73;
         }
       }
@@ -129,141 +128,145 @@ public final class i
       if (i == 0) {
         break label79;
       }
-      AppMethodBeat.o(210569);
+      AppMethodBeat.o(238223);
       return;
       i = 0;
       break;
     }
-    label79:
-    localObject = (MultiProcessMMKV)this.pvV.getSlot();
     try
     {
-      ((MultiProcessMMKV)localObject).encode(mi(paramString1, paramString2), paramfaw.toByteArray());
-      AppMethodBeat.o(210569);
+      label79:
+      ((MultiProcessMMKV)this.sFn.getSlotForWrite()).encode(mJ(paramString1, paramString2), paramflp.toByteArray());
+      AppMethodBeat.o(238223);
       return;
     }
     catch (Exception paramString1)
     {
       Log.e("MicroMsg.MusicAlbumHelper", "saveWebViewAlbumInfoInfo ex " + paramString1.getMessage());
-      AppMethodBeat.o(210569);
+      AppMethodBeat.o(238223);
     }
   }
   
-  private static String baZ(String paramString)
-  {
-    AppMethodBeat.i(210564);
-    p.h(paramString, "$this$audioInfoKey");
-    paramString = "audioInfo_" + paramString + '}';
-    AppMethodBeat.o(210564);
-    return paramString;
-  }
-  
-  private final fax bbb(String paramString)
-  {
-    AppMethodBeat.i(210566);
-    Object localObject = (CharSequence)paramString;
-    if ((localObject == null) || (n.aL((CharSequence)localObject))) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      AppMethodBeat.o(210566);
-      return null;
-    }
-    localObject = (MultiProcessMMKV)this.pvV.getSlot();
-    paramString = baZ(paramString);
-    if (((MultiProcessMMKV)localObject).containsKey(paramString))
-    {
-      paramString = ((MultiProcessMMKV)localObject).decodeBytes(paramString);
-      if (paramString != null) {
-        if (paramString.length == 0)
-        {
-          i = 1;
-          if (i != 0) {
-            break label130;
-          }
-          i = 1;
-          label88:
-          if (i == 0) {
-            break label153;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        localObject = fax.class.newInstance();
-        ((com.tencent.mm.bw.a)localObject).parseFrom(paramString);
-        paramString = (com.tencent.mm.bw.a)localObject;
-        paramString = (fax)paramString;
-        AppMethodBeat.o(210566);
-        return paramString;
-      }
-      catch (Exception paramString)
-      {
-        label130:
-        Log.printErrStackTrace("MultiProcessMMKV.decodeProtoBuffer", (Throwable)paramString, "decode ProtoBuffer", new Object[0]);
-      }
-      i = 0;
-      break;
-      i = 0;
-      break label88;
-      label153:
-      paramString = null;
-    }
-  }
-  
-  private static String bbc(String paramString)
-  {
-    AppMethodBeat.i(210572);
-    CharSequence localCharSequence = (CharSequence)paramString;
-    if ((localCharSequence == null) || (n.aL(localCharSequence))) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      AppMethodBeat.o(210572);
-      return "";
-    }
-    paramString = n.j(paramString, ",", "", false);
-    AppMethodBeat.o(210572);
-    return paramString;
-  }
-  
-  private static String bh(String paramString1, String paramString2, String paramString3)
+  private static String bc(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(182661);
-    p.h(paramString1, "$this$musicId");
-    p.h(paramString2, "albumId");
+    p.k(paramString1, "$this$musicId");
+    p.k(paramString2, "albumId");
     paramString1 = paramString3 + '_' + paramString2 + '_' + paramString1;
     AppMethodBeat.o(182661);
     return paramString1;
   }
   
-  private final void c(mx parammx)
+  private static String bmX(String paramString)
+  {
+    AppMethodBeat.i(238201);
+    p.k(paramString, "$this$audioInfoKey");
+    paramString = "audioInfo_" + paramString + '}';
+    AppMethodBeat.o(238201);
+    return paramString;
+  }
+  
+  private final flq bmZ(String paramString)
+  {
+    AppMethodBeat.i(238216);
+    Object localObject = (CharSequence)paramString;
+    if ((localObject == null) || (n.ba((CharSequence)localObject))) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(238216);
+      return null;
+    }
+    localObject = this.sFn;
+    paramString = bmX(paramString);
+    localObject = (MultiProcessMMKV)((MMKVSlotManager)localObject).findSlot(paramString);
+    if (localObject != null) {
+      if (((MultiProcessMMKV)localObject).containsKey(paramString))
+      {
+        paramString = ((MultiProcessMMKV)localObject).decodeBytes(paramString);
+        if (paramString != null) {
+          if (paramString.length == 0)
+          {
+            i = 1;
+            if (i != 0) {
+              break label137;
+            }
+            i = 1;
+            label95:
+            if (i == 0) {
+              break label160;
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject = flq.class.newInstance();
+        ((com.tencent.mm.cd.a)localObject).parseFrom(paramString);
+        paramString = (com.tencent.mm.cd.a)localObject;
+        paramString = (flq)paramString;
+        AppMethodBeat.o(238216);
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        label137:
+        Log.printErrStackTrace("MultiProcessMMKV.decodeProtoBuffer", (Throwable)paramString, "decode ProtoBuffer", new Object[0]);
+      }
+      i = 0;
+      break;
+      i = 0;
+      break label95;
+      label160:
+      paramString = null;
+      continue;
+      paramString = null;
+    }
+  }
+  
+  private static String bna(String paramString)
+  {
+    AppMethodBeat.i(238233);
+    CharSequence localCharSequence = (CharSequence)paramString;
+    if ((localCharSequence == null) || (n.ba(localCharSequence))) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(238233);
+      return "";
+    }
+    paramString = n.l(paramString, ",", "", false);
+    AppMethodBeat.o(238233);
+    return paramString;
+  }
+  
+  private final void d(np paramnp)
   {
     for (;;)
     {
       try
       {
-        AppMethodBeat.i(210570);
-        Object localObject2 = parammx.dSE.dSy;
+        AppMethodBeat.i(238227);
+        Object localObject2 = paramnp.fMc.fLV;
         Object localObject1 = localObject2;
         if (localObject2 == null) {
-          localObject1 = com.tencent.mm.ay.a.bef();
+          localObject1 = com.tencent.mm.bb.a.bnA();
         }
         if (localObject1 == null)
         {
-          AppMethodBeat.o(210570);
+          AppMethodBeat.o(238227);
           return;
         }
-        if (Util.isNullOrNil(this.JwP))
+        if (Util.isNullOrNil(this.QuE))
         {
-          localObject2 = ((f)localObject1).jeV;
-          p.g(localObject2, "musicWrapper.MusicId");
-          this.JwP = ((String)localObject2);
-          this.JwO = String.valueOf(System.currentTimeMillis());
+          localObject2 = ((f)localObject1).lVt;
+          p.j(localObject2, "musicWrapper.MusicId");
+          this.QuE = ((String)localObject2);
+          this.QuD = String.valueOf(System.currentTimeMillis());
         }
-        Log.i("MicroMsg.MusicAlbumHelper", "doWebViewReport musicId = " + this.JwP + ", playId=" + this.JwO + ", playActionSource=" + this.JwN + "，action=" + parammx.dSE.action);
-        switch (parammx.dSE.action)
+        Log.i("MicroMsg.MusicAlbumHelper", "doWebViewReport musicId = " + this.QuE + ", playId=" + this.QuD + ", playActionSource=" + this.QuC + "，action=" + paramnp.fMc.action);
+        switch (paramnp.fMc.action)
         {
         case 5: 
         case 6: 
@@ -273,15 +276,15 @@ public final class i
         case 12: 
         case 13: 
         case 14: 
-          if (!Util.isEqual(this.JwP, ((f)localObject1).jeV))
+          if (!Util.isEqual(this.QuE, ((f)localObject1).lVt))
           {
-            localObject1 = ((f)localObject1).jeV;
-            p.g(localObject1, "musicWrapper.MusicId");
-            this.JwP = ((String)localObject1);
-            this.JwO = String.valueOf(System.currentTimeMillis());
-            Log.i("MicroMsg.MusicAlbumHelper", "doWebViewReport new music musicId = " + this.JwP + ", playId=" + this.JwO);
+            localObject1 = ((f)localObject1).lVt;
+            p.j(localObject1, "musicWrapper.MusicId");
+            this.QuE = ((String)localObject1);
+            this.QuD = String.valueOf(System.currentTimeMillis());
+            Log.i("MicroMsg.MusicAlbumHelper", "doWebViewReport new music musicId = " + this.QuE + ", playId=" + this.QuD);
           }
-          switch (parammx.dSE.action)
+          switch (paramnp.fMc.action)
           {
           case 2: 
           case 3: 
@@ -290,71 +293,71 @@ public final class i
           case 6: 
           case 7: 
           case 10: 
-            AppMethodBeat.o(210570);
+            AppMethodBeat.o(238227);
           }
           break;
         case 3: 
-          a(bbb(this.JwP), 4);
+          a(bmZ(this.QuE), 4);
         }
       }
       finally {}
-      AppMethodBeat.o(210570);
+      AppMethodBeat.o(238227);
       continue;
-      a(bbb(this.JwP), 7);
-      AppMethodBeat.o(210570);
+      a(bmZ(this.QuE), 7);
+      AppMethodBeat.o(238227);
       continue;
-      a(bbb(this.JwP), 8);
-      AppMethodBeat.o(210570);
+      a(bmZ(this.QuE), 8);
+      AppMethodBeat.o(238227);
       continue;
-      a(bbb(this.JwP), 9);
-      AppMethodBeat.o(210570);
+      a(bmZ(this.QuE), 9);
+      AppMethodBeat.o(238227);
       continue;
-      a(bbb(this.JwP), 100);
-      AppMethodBeat.o(210570);
+      a(bmZ(this.QuE), 100);
+      AppMethodBeat.o(238227);
       continue;
-      this.JwN = 2;
-      AppMethodBeat.o(210570);
+      this.QuC = 2;
+      AppMethodBeat.o(238227);
       continue;
-      this.JwN = 3;
-      AppMethodBeat.o(210570);
+      this.QuC = 3;
+      AppMethodBeat.o(238227);
       continue;
-      a(bbb(this.JwP), 1);
-      AppMethodBeat.o(210570);
+      a(bmZ(this.QuE), 1);
+      AppMethodBeat.o(238227);
       continue;
-      a(bbb(this.JwP), 2);
-      AppMethodBeat.o(210570);
+      a(bmZ(this.QuE), 2);
+      AppMethodBeat.o(238227);
       continue;
-      a(bbb(this.JwP), 3);
-      AppMethodBeat.o(210570);
+      a(bmZ(this.QuE), 3);
+      AppMethodBeat.o(238227);
       continue;
-      a(bbb(this.JwP), 5);
-      AppMethodBeat.o(210570);
+      a(bmZ(this.QuE), 5);
+      AppMethodBeat.o(238227);
       continue;
-      a(bbb(this.JwP), 6);
+      a(bmZ(this.QuE), 6);
       continue;
     }
   }
   
-  private static String mi(String paramString1, String paramString2)
+  private static String mJ(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(210565);
-    p.h(paramString1, "$this$albumInfoKey");
+    AppMethodBeat.i(238204);
+    p.k(paramString1, "$this$albumInfoKey");
     paramString1 = "album_" + paramString2 + '_' + paramString1 + '}';
-    AppMethodBeat.o(210565);
+    AppMethodBeat.o(238204);
     return paramString1;
   }
   
-  private final faw mk(String paramString1, String paramString2)
+  private final flp mL(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(210568);
+    AppMethodBeat.i(238221);
     Object localObject = (CharSequence)paramString1;
-    if ((localObject == null) || (n.aL((CharSequence)localObject)))
+    if ((localObject == null) || (n.ba((CharSequence)localObject)))
     {
       i = 1;
       if (i == 0)
       {
         localObject = (CharSequence)paramString2;
-        if ((localObject != null) && (!n.aL((CharSequence)localObject))) {
+        if ((localObject != null) && (!n.ba((CharSequence)localObject))) {
           break label69;
         }
       }
@@ -365,28 +368,31 @@ public final class i
       if (i == 0) {
         break label74;
       }
-      AppMethodBeat.o(210568);
+      AppMethodBeat.o(238221);
       return null;
       i = 0;
       break;
     }
     label74:
-    localObject = (MultiProcessMMKV)this.pvV.getSlot();
-    paramString1 = mi(paramString1, paramString2);
-    if (((MultiProcessMMKV)localObject).containsKey(paramString1))
-    {
-      paramString1 = ((MultiProcessMMKV)localObject).decodeBytes(paramString1);
-      if (paramString1 != null) {
-        if (paramString1.length == 0)
-        {
-          i = 1;
-          if (i != 0) {
-            break label168;
-          }
-          i = 1;
-          label125:
-          if (i == 0) {
-            break label191;
+    localObject = this.sFn;
+    paramString1 = mJ(paramString1, paramString2);
+    paramString2 = (MultiProcessMMKV)((MMKVSlotManager)localObject).findSlot(paramString1);
+    if (paramString2 != null) {
+      if (paramString2.containsKey(paramString1))
+      {
+        paramString1 = paramString2.decodeBytes(paramString1);
+        if (paramString1 != null) {
+          if (paramString1.length == 0)
+          {
+            i = 1;
+            if (i != 0) {
+              break label174;
+            }
+            i = 1;
+            label131:
+            if (i == 0) {
+              break label197;
+            }
           }
         }
       }
@@ -395,23 +401,25 @@ public final class i
     {
       try
       {
-        paramString2 = faw.class.newInstance();
-        ((com.tencent.mm.bw.a)paramString2).parseFrom(paramString1);
-        paramString1 = (com.tencent.mm.bw.a)paramString2;
-        paramString1 = (faw)paramString1;
-        AppMethodBeat.o(210568);
+        paramString2 = flp.class.newInstance();
+        ((com.tencent.mm.cd.a)paramString2).parseFrom(paramString1);
+        paramString1 = (com.tencent.mm.cd.a)paramString2;
+        paramString1 = (flp)paramString1;
+        AppMethodBeat.o(238221);
         return paramString1;
       }
       catch (Exception paramString1)
       {
-        label168:
+        label174:
         Log.printErrStackTrace("MultiProcessMMKV.decodeProtoBuffer", (Throwable)paramString1, "decode ProtoBuffer", new Object[0]);
       }
       i = 0;
       break;
       i = 0;
-      break label125;
-      label191:
+      break label131;
+      label197:
+      paramString1 = null;
+      continue;
       paramString1 = null;
     }
   }
@@ -420,16 +428,16 @@ public final class i
   {
     AppMethodBeat.i(182671);
     Log.d("MicroMsg.MusicAlbumHelper", "stop timer");
-    this.mEP.stopTimer();
+    this.pEb.stopTimer();
     AppMethodBeat.o(182671);
   }
   
-  public final String bba(String paramString)
+  public final String bmY(String paramString)
   {
     try
     {
       AppMethodBeat.i(182667);
-      paramString = mj(((MultiProcessMMKV)this.pvV.getSlot()).decodeString("currentAlbumId"), paramString);
+      paramString = mK(MMKVSlotManager.decodeString$default(this.sFn, "currentAlbumId", null, 2, null), paramString);
       AppMethodBeat.o(182667);
       return paramString;
     }
@@ -440,87 +448,87 @@ public final class i
     }
   }
   
-  public final String bbd(String paramString)
+  public final String bnb(String paramString)
   {
-    AppMethodBeat.i(210573);
-    paramString = bbb(paramString);
+    AppMethodBeat.i(238235);
+    paramString = bmZ(paramString);
     if (paramString != null)
     {
-      paramString = paramString.Nxj;
-      AppMethodBeat.o(210573);
+      paramString = paramString.UKz;
+      AppMethodBeat.o(238235);
       return paramString;
     }
-    AppMethodBeat.o(210573);
+    AppMethodBeat.o(238235);
     return null;
   }
   
-  public final String bbe(String paramString)
+  public final String bnc(String paramString)
   {
-    AppMethodBeat.i(210574);
-    paramString = bbb(paramString);
+    AppMethodBeat.i(238237);
+    paramString = bmZ(paramString);
     if (paramString != null)
     {
-      paramString = paramString.dtX;
-      AppMethodBeat.o(210574);
+      paramString = paramString.fmF;
+      AppMethodBeat.o(238237);
       return paramString;
     }
-    AppMethodBeat.o(210574);
+    AppMethodBeat.o(238237);
     return null;
   }
   
-  public final void ghV()
+  public final void hbt()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(182670);
-        Object localObject1 = com.tencent.mm.ay.a.bef();
+        Object localObject1 = com.tencent.mm.bb.a.bnA();
         if (localObject1 == null) {
           break label262;
         }
-        if (((f)localObject1).jeV == null)
+        if (((f)localObject1).lVt == null)
         {
           AppMethodBeat.o(182670);
           return;
         }
-        Object localObject5 = com.tencent.mm.ay.a.beg();
+        Object localObject5 = com.tencent.mm.bb.a.bnB();
         if (localObject5 == null) {
           break label253;
         }
-        Object localObject4 = (MultiProcessMMKV)this.pvV.getSlot();
-        Object localObject6 = bbb(((f)localObject1).jeV);
+        Object localObject4 = (MultiProcessMMKV)this.sFn.getSlotForWrite();
+        Object localObject6 = bmZ(((f)localObject1).lVt);
         if (localObject6 == null) {
           break label244;
         }
-        if (((fax)localObject6).Dzt < 0) {
+        if (((flq)localObject6).JJP < 0) {
           break label235;
         }
         if (((c)localObject5).getPosition() > 0) {
-          ((fax)localObject6).Dzt = ((c)localObject5).getPosition();
+          ((flq)localObject6).JJP = ((c)localObject5).getPosition();
         }
-        ((fax)localObject6).duration = Math.max(0, ((c)localObject5).getDuration());
-        a(((f)localObject1).jeV, (fax)localObject6);
-        localObject5 = bbd(((f)localObject1).jeV);
-        localObject6 = bbe(((f)localObject1).jeV);
-        localObject1 = bbb(((f)localObject1).jeV);
+        ((flq)localObject6).duration = Math.max(0, ((c)localObject5).getDuration());
+        a(((f)localObject1).lVt, (flq)localObject6);
+        localObject5 = bnb(((f)localObject1).lVt);
+        localObject6 = bnc(((f)localObject1).lVt);
+        localObject1 = bmZ(((f)localObject1).lVt);
         if (localObject1 != null)
         {
-          localObject1 = ((fax)localObject1).domain;
+          localObject1 = ((flq)localObject1).domain;
           if ((Util.isNullOrNil((String)localObject5)) || (Util.isNullOrNil((String)localObject6))) {
             break label235;
           }
           ((MultiProcessMMKV)localObject4).encode("currentAlbumId", (String)localObject5);
-          localObject4 = mk((String)localObject5, (String)localObject1);
+          localObject4 = mL((String)localObject5, (String)localObject1);
           if (localObject4 == null) {
             break label235;
           }
-          faw localfaw = this.JwL;
-          if (localfaw != null) {
-            localfaw.Nxh = ((String)localObject6);
+          flp localflp = this.QuA;
+          if (localflp != null) {
+            localflp.UKx = ((String)localObject6);
           }
-          ((faw)localObject4).Nxh = ((String)localObject6);
-          a((String)localObject5, (String)localObject1, (faw)localObject4);
+          ((flp)localObject4).UKx = ((String)localObject6);
+          a((String)localObject5, (String)localObject1, (flp)localObject4);
           AppMethodBeat.o(182670);
           continue;
         }
@@ -542,7 +550,7 @@ public final class i
     }
   }
   
-  public final boolean k(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public final boolean j(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     AppMethodBeat.i(182669);
     if ((Util.isNullOrNil(paramString2)) || (Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString3)))
@@ -571,8 +579,8 @@ public final class i
     localList = (List)new ArrayList();
     try
     {
-      this.JwL = new faw();
-      this.JwM = paramString1;
+      this.QuA = new flp();
+      this.QuB = paramString1;
       j = 0;
       k = localJSONArray.length();
       i = 0;
@@ -620,66 +628,66 @@ public final class i
             AppMethodBeat.o(182669);
             return false;
           }
-          Object localObject3 = this.JwL;
+          Object localObject3 = this.QuA;
           if (localObject3 != null)
           {
-            localObject3 = ((faw)localObject3).Nxi;
+            localObject3 = ((flp)localObject3).UKy;
             if (localObject3 != null) {
               ((LinkedList)localObject3).add(str2);
             }
           }
-          localObject2 = g.a(10, str9, str6, str8, str10, str11, (String)localObject2, str1, b.aKJ(), d.aSY() + str9.hashCode(), str7, paramString5);
-          ((f)localObject2).jfs = paramString4;
-          ((f)localObject2).dvv = (m * 1000);
-          ((f)localObject2).jft = paramString2;
+          localObject2 = g.a(10, str9, str6, str8, str10, str11, (String)localObject2, str1, b.aSL(), d.bbW() + str9.hashCode(), str7, paramString5);
+          ((f)localObject2).lVQ = paramString4;
+          ((f)localObject2).fod = (m * 1000);
+          ((f)localObject2).lVR = paramString2;
           ((f)localObject2).protocol = ((String)localObject1);
-          ((f)localObject2).jfv = str3;
-          ((f)localObject2).jfe = str4;
-          ((f)localObject2).eag = str5;
-          ((f)localObject2).iJH = d1;
+          ((f)localObject2).lVT = str3;
+          ((f)localObject2).lVC = str4;
+          ((f)localObject2).fUd = str5;
+          ((f)localObject2).lzL = d1;
           ((f)localObject2).volume = ((float)d2);
-          localObject1 = bbb(str1);
+          localObject1 = bmZ(str1);
           paramString2 = (String)localObject1;
           if (localObject1 == null) {
-            paramString2 = new fax();
+            paramString2 = new flq();
           }
-          if (paramString2.Dzt <= 0)
+          if (paramString2.JJP <= 0)
           {
-            paramString2.Dzt = 0;
-            paramString2.Nxj = paramString1;
-            paramString2.dtX = str2;
-            paramString2.Nxp = ((float)d1);
+            paramString2.JJP = 0;
+            paramString2.UKz = paramString1;
+            paramString2.fmF = str2;
+            paramString2.UKF = ((float)d1);
             localObject1 = localJSONObject.optJSONObject("reportData");
             if (localObject1 != null)
             {
-              paramString2.dLt = ((JSONObject)localObject1).optInt("VoiceType", 0);
-              paramString2.NhM = ((JSONObject)localObject1).optString("BizUin", "");
+              paramString2.fEi = ((JSONObject)localObject1).optInt("VoiceType", 0);
+              paramString2.Uus = ((JSONObject)localObject1).optString("BizUin", "");
               paramString2.msgId = ((JSONObject)localObject1).optLong("MsgId", 0L);
               paramString2.idx = ((JSONObject)localObject1).optInt("Idx", 0);
-              paramString2.Nxk = ((JSONObject)localObject1).optString("SessionIdStr", "0");
-              paramString2.Nxl = ((JSONObject)localObject1).optString("AlbumURL", "");
-              paramString2.Nxm = ((JSONObject)localObject1).optString("AlbumTitle", "");
-              paramString2.Nxn = ((JSONObject)localObject1).optString("AudioTitle", "");
-              paramString2.prZ = ((JSONObject)localObject1).optLong("EnterId", 0L);
+              paramString2.UKA = ((JSONObject)localObject1).optString("SessionIdStr", "0");
+              paramString2.UKB = ((JSONObject)localObject1).optString("AlbumURL", "");
+              paramString2.UKC = ((JSONObject)localObject1).optString("AlbumTitle", "");
+              paramString2.UKD = ((JSONObject)localObject1).optString("AudioTitle", "");
+              paramString2.sBg = ((JSONObject)localObject1).optLong("EnterId", 0L);
               paramString2.scene = ((JSONObject)localObject1).optInt("Scene", 0);
-              paramString2.pHw = ((JSONObject)localObject1).optInt("SubScene", 0);
-              paramString2.Nxo = ((JSONObject)localObject1).optInt("AudioPos", 0);
+              paramString2.wGA = ((JSONObject)localObject1).optInt("SubScene", 0);
+              paramString2.UKE = ((JSONObject)localObject1).optInt("AudioPos", 0);
             }
             paramString2.domain = paramString4;
             a(str1, paramString2);
           }
-          p.g(localObject2, "wrapper");
+          p.j(localObject2, "wrapper");
           localList.add(localObject2);
           j += 1;
           break;
-          paramString2 = this.JwL;
+          paramString2 = this.QuA;
           if (paramString2 == null) {
-            p.hyc();
+            p.iCn();
           }
           a(paramString1, paramString4, paramString2);
           break label204;
-          this.JwN = 1;
-          com.tencent.mm.ay.a.f(localList, i);
+          this.QuC = 1;
+          com.tencent.mm.bb.a.f(localList, i);
           AppMethodBeat.o(182669);
           return true;
           paramString1 = paramString1;
@@ -720,12 +728,12 @@ public final class i
         AppMethodBeat.o(182669);
         return false;
       }
-      p.g(str2, "audioId");
+      p.j(str2, "audioId");
       if (paramString1 == null) {
-        p.hyc();
+        p.iCn();
       }
-      str1 = bh(str2, paramString1, paramString4);
-      bool = p.j(str2, paramString3);
+      str1 = bc(str2, paramString1, paramString4);
+      bool = p.h(str2, paramString3);
       if (!bool) {
         break label1011;
       }
@@ -733,7 +741,7 @@ public final class i
     }
   }
   
-  public final String mj(String paramString1, String paramString2)
+  public final String mK(String paramString1, String paramString2)
   {
     label454:
     for (;;)
@@ -747,15 +755,15 @@ public final class i
           paramString1 = null;
           return paramString1;
         }
-        ghV();
+        hbt();
         Object localObject1;
-        if ((Util.isEqual(paramString1, this.JwM)) && (this.JwL != null))
+        if ((Util.isEqual(paramString1, this.QuB)) && (this.QuA != null))
         {
-          localObject1 = this.JwL;
+          localObject1 = this.QuA;
           if (localObject1 == null) {
-            p.hyc();
+            p.iCn();
           }
-          localObject1 = ((faw)localObject1).Nxi;
+          localObject1 = ((flp)localObject1).UKy;
           if (Util.isNullOrNil((List)localObject1))
           {
             AppMethodBeat.o(182668);
@@ -764,12 +772,12 @@ public final class i
         }
         else
         {
-          localObject1 = mk(paramString1, paramString2);
+          localObject1 = mL(paramString1, paramString2);
           if (localObject1 != null)
           {
-            this.JwL = ((faw)localObject1);
-            this.JwM = paramString1;
-            localObject1 = ((faw)localObject1).Nxi;
+            this.QuA = ((flp)localObject1);
+            this.QuB = paramString1;
+            localObject1 = ((flp)localObject1).UKy;
             continue;
           }
           localObject1 = null;
@@ -781,10 +789,10 @@ public final class i
         {
           localJSONObject1 = new JSONObject();
           localJSONObject1.put("albumId", paramString1);
-          Object localObject2 = this.JwL;
+          Object localObject2 = this.QuA;
           if (localObject2 != null)
           {
-            str = ((faw)localObject2).Nxh;
+            str = ((flp)localObject2).UKx;
             localObject2 = str;
             if (str != null) {}
           }
@@ -805,7 +813,7 @@ public final class i
           if (localObject1 == null) {
             break label454;
           }
-          if (!n.aL((CharSequence)localObject1)) {
+          if (!n.ba((CharSequence)localObject1)) {
             continue;
           }
         }
@@ -820,22 +828,22 @@ public final class i
         if (i == 0)
         {
           if (paramString1 == null) {
-            p.hyc();
+            p.iCn();
           }
-          localObject1 = bbb(bh(str, paramString1, paramString2));
+          localObject1 = bmZ(bc(str, paramString1, paramString2));
           localJSONObject2 = new JSONObject();
           if (localObject1 != null)
           {
-            i = ((fax)localObject1).Dzt;
+            i = ((flq)localObject1).JJP;
             localJSONObject2.put("currentTime", i / 1000);
             if (localObject1 != null)
             {
-              i = ((fax)localObject1).duration;
+              i = ((flq)localObject1).duration;
               localJSONObject2.put("duration", i / 1000);
               if (localObject1 == null) {
                 continue;
               }
-              localObject1 = Float.valueOf(((fax)localObject1).Nxp);
+              localObject1 = Float.valueOf(((flq)localObject1).UKF);
               localJSONObject2.put("playbackRate", localObject1);
               localJSONObject1.put(str, localJSONObject2);
               continue;
@@ -863,31 +871,31 @@ public final class i
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/media/WebViewMusicAlbumHelper$Companion;", "", "()V", "TAG", "", "albumDelimiter", "currentAlbumIdKey", "<set-?>", "Lcom/tencent/mm/plugin/webview/ui/tools/media/WebViewMusicAlbumHelper;", "instance", "getInstance", "()Lcom/tencent/mm/plugin/webview/ui/tools/media/WebViewMusicAlbumHelper;", "setInstance", "(Lcom/tencent/mm/plugin/webview/ui/tools/media/WebViewMusicAlbumHelper;)V", "plugin-webview_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/media/WebViewMusicAlbumHelper$Companion;", "", "()V", "TAG", "", "albumDelimiter", "currentAlbumIdKey", "<set-?>", "Lcom/tencent/mm/plugin/webview/ui/tools/media/WebViewMusicAlbumHelper;", "instance", "getInstance", "()Lcom/tencent/mm/plugin/webview/ui/tools/media/WebViewMusicAlbumHelper;", "setInstance", "(Lcom/tencent/mm/plugin/webview/ui/tools/media/WebViewMusicAlbumHelper;)V", "plugin-webview_release"})
   public static final class a
   {
-    public static i ghX()
+    public static i hbv()
     {
       AppMethodBeat.i(182656);
-      if (i.ghW() == null) {}
+      if (i.hbu() == null) {}
       try
       {
-        if (i.ghW() == null)
+        if (i.hbu() == null)
         {
           localObject1 = MMApplicationContext.getContext();
-          p.g(localObject1, "MMApplicationContext.getContext()");
+          p.j(localObject1, "MMApplicationContext.getContext()");
           i.d(new i((Context)localObject1, (byte)0));
-          localObject1 = i.ghW();
+          localObject1 = i.hbu();
           if (localObject1 != null)
           {
-            localObject1 = ((i)localObject1).lEl;
+            localObject1 = ((i)localObject1).ozM;
             if (localObject1 != null) {
               ((IListener)localObject1).alive();
             }
           }
         }
-        Object localObject1 = x.SXb;
-        localObject1 = i.ghW();
+        Object localObject1 = x.aazN;
+        localObject1 = i.hbu();
         AppMethodBeat.o(182656);
         return localObject1;
       }
@@ -898,7 +906,7 @@ public final class i
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onTimerExpired"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onTimerExpired"})
   static final class b
     implements MTimerHandler.CallBack
   {
@@ -907,15 +915,15 @@ public final class i
     public final boolean onTimerExpired()
     {
       AppMethodBeat.i(182659);
-      this.JwS.ghV();
+      this.QuH.hbt();
       AppMethodBeat.o(182659);
       return true;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/webview/ui/tools/media/WebViewMusicAlbumHelper$musicPlayerListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/MusicPlayerEvent;", "callback", "", "event", "plugin-webview_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/webview/ui/tools/media/WebViewMusicAlbumHelper$musicPlayerListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/MusicPlayerEvent;", "callback", "", "event", "plugin-webview_release"})
   public static final class c
-    extends IListener<mx>
+    extends IListener<np>
   {}
 }
 

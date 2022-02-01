@@ -1,102 +1,58 @@
 package com.tencent.mm.plugin.textstatus.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dop;
-import com.tencent.mm.protocal.protobuf.jr;
-import java.util.LinkedList;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/model/NetSceneTextStatusGetHistory;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "topicId", "", "(Ljava/lang/String;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "commReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/plugin/textstatus/model/NetSceneTextStatusGetHistory$TextStatusGetHistoryReq;", "<set-?>", "Lcom/tencent/mm/plugin/textstatus/model/NetSceneTextStatusGetHistory$TextStatusGetHistoryResp;", "response", "getResponse", "()Lcom/tencent/mm/plugin/textstatus/model/NetSceneTextStatusGetHistory$TextStatusGetHistoryResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "TextStatusGetHistoryReq", "TextStatusGetHistoryResp", "plugin-textstatus_release"})
 public final class e
-  extends dop
+  extends q
+  implements m
 {
-  public String Gas;
-  public int scene;
+  public static final a MDg;
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  static
   {
-    AppMethodBeat.i(222823);
-    if (paramInt == 0)
-    {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
-      }
-      if (this.Gas != null) {
-        paramVarArgs.e(2, this.Gas);
-      }
-      paramVarArgs.aM(3, this.scene);
-      AppMethodBeat.o(222823);
-      return 0;
-    }
-    if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label414;
-      }
-    }
-    label414:
-    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
-    {
-      int i = paramInt;
-      if (this.Gas != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.Gas);
-      }
-      paramInt = g.a.a.b.b.a.bu(3, this.scene);
-      AppMethodBeat.o(222823);
-      return i + paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
-          }
-        }
-        AppMethodBeat.o(222823);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-        e locale = (e)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(222823);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            locale.BaseRequest = ((jr)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(222823);
-          return 0;
-        case 2: 
-          locale.Gas = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(222823);
-          return 0;
-        }
-        locale.scene = ((g.a.a.a.a)localObject1).UbS.zi();
-        AppMethodBeat.o(222823);
-        return 0;
-      }
-      AppMethodBeat.o(222823);
-      return -1;
-    }
+    AppMethodBeat.i(235575);
+    MDg = new a((byte)0);
+    AppMethodBeat.o(235575);
   }
+  
+  public final int doScene(g paramg, i parami)
+  {
+    AppMethodBeat.i(235570);
+    p.k(paramg, "dispatcher");
+    p.k(parami, "callback");
+    AppMethodBeat.o(235570);
+    throw null;
+  }
+  
+  public final int getType()
+  {
+    return 6253;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(235574);
+    p.k(params, "rr");
+    Log.i("MicroMsg.TextStatus.NetSceneTextStatusGetHistory", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.o(235574);
+    throw null;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/model/NetSceneTextStatusGetHistory$Companion;", "", "()V", "TAG", "", "plugin-textstatus_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.g.e
  * JD-Core Version:    0.7.0.1
  */

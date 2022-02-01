@@ -12,8 +12,9 @@ import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.pluginsdk.ui.tools.s;
+import com.tencent.mm.R.l;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.pluginsdk.ui.tools.u;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMBaseActivity;
@@ -28,16 +29,16 @@ public class ShareImageRedirectUI
 {
   private String imagePath;
   
-  private void dRW()
+  private void euy()
   {
     AppMethodBeat.i(39128);
-    s.d(this, com.tencent.mm.loader.j.b.aKV(), "microMsg." + System.currentTimeMillis() + ".jpg", 0);
+    u.d(this, com.tencent.mm.loader.j.b.aSX(), "microMsg." + System.currentTimeMillis() + ".jpg", 0);
     getWindow().getDecorView().setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(39124);
-        Toast.makeText(ShareImageRedirectUI.this, 2131765849, 1).show();
+        Toast.makeText(ShareImageRedirectUI.this, R.l.eTu, 1).show();
         ShareImageRedirectUI.this.finish();
         AppMethodBeat.o(39124);
         return false;
@@ -65,8 +66,8 @@ public class ShareImageRedirectUI
       return;
     case 0: 
       localObject = getApplicationContext();
-      bg.aVF();
-      this.imagePath = s.h((Context)localObject, paramIntent, com.tencent.mm.model.c.aSY());
+      bh.beI();
+      this.imagePath = u.g((Context)localObject, paramIntent, com.tencent.mm.model.c.bbW());
       if (this.imagePath == null)
       {
         AppMethodBeat.o(39130);
@@ -85,10 +86,10 @@ public class ShareImageRedirectUI
     {
       paramIntent = new Intent(this, ChattingUI.class);
       paramIntent.putExtra("Chat_User", (String)((ArrayList)localObject).get(0));
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.axQ(), "com/tencent/mm/ui/tools/ShareImageRedirectUI", "onActivityResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramIntent.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/tools/ShareImageRedirectUI", "onActivityResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(this, paramIntent.aFh(), "com/tencent/mm/ui/tools/ShareImageRedirectUI", "onActivityResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramIntent.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/ui/tools/ShareImageRedirectUI", "onActivityResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       finish();
       AppMethodBeat.o(39130);
       return;
@@ -102,7 +103,7 @@ public class ShareImageRedirectUI
     paramIntent = new Intent();
     paramIntent.putExtra("Ksnsupload_type", 0);
     paramIntent.putExtra("sns_kemdia_path", this.imagePath);
-    com.tencent.mm.br.c.b(this, "sns", ".ui.SnsUploadUI", paramIntent);
+    com.tencent.mm.by.c.b(this, "sns", ".ui.SnsUploadUI", paramIntent);
     finish();
     AppMethodBeat.o(39130);
   }
@@ -118,7 +119,7 @@ public class ShareImageRedirectUI
       AppMethodBeat.o(39127);
       return;
     }
-    dRW();
+    euy();
     AppMethodBeat.o(39127);
   }
   
@@ -141,21 +142,21 @@ public class ShareImageRedirectUI
       return;
       if (paramArrayOfInt[0] == 0)
       {
-        dRW();
+        euy();
         AppMethodBeat.o(39129);
         return;
       }
-      h.a(this, getString(2131763864), getString(2131763890), getString(2131762043), getString(2131756929), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      h.a(this, getString(R.l.permission_camera_request_again_msg), getString(R.l.permission_tips_title), getString(R.l.jump_to_settings), getString(R.l.cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(39125);
           paramAnonymousDialogInterface = ShareImageRedirectUI.this;
           Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/ui/tools/ShareImageRedirectUI$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/ui/tools/ShareImageRedirectUI$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/ui/tools/ShareImageRedirectUI$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousDialogInterface, "com/tencent/mm/ui/tools/ShareImageRedirectUI$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           ShareImageRedirectUI.this.finish();
           AppMethodBeat.o(39125);
         }
@@ -179,7 +180,7 @@ public class ShareImageRedirectUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.tools.ShareImageRedirectUI
  * JD-Core Version:    0.7.0.1
  */

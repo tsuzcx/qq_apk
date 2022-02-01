@@ -257,10 +257,10 @@ public class CacheDataSource
       {
         public void run()
         {
-          AppMethodBeat.i(190301);
+          AppMethodBeat.i(247543);
           Logger.i("CacheDataSource", "[scheduleRestart] restart loading from position: " + paramLong1);
           CacheDataSource.access$200(CacheDataSource.this, paramLong1);
-          AppMethodBeat.o(190301);
+          AppMethodBeat.o(247543);
         }
       };
       this.restartHandler.schedule(this.pendingTask, paramLong2);
@@ -570,9 +570,9 @@ public class CacheDataSource
           {
             public boolean isToAbandonLock()
             {
-              AppMethodBeat.i(190300);
+              AppMethodBeat.i(247530);
               boolean bool = CacheDataSource.this.isToReleaseLock;
-              AppMethodBeat.o(190300);
+              AppMethodBeat.o(247530);
               return bool;
             }
           });
@@ -616,10 +616,10 @@ public class CacheDataSource
   
   public void releaseLock()
   {
-    AppMethodBeat.i(190302);
+    AppMethodBeat.i(247801);
     Logger.i("CacheDataSource", "[releaseLock]");
     this.isToReleaseLock = true;
-    AppMethodBeat.o(190302);
+    AppMethodBeat.o(247801);
   }
   
   public void setListener(Listener paramListener)
@@ -629,11 +629,11 @@ public class CacheDataSource
   
   protected boolean waitForFirstPiece(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(190303);
+    AppMethodBeat.i(247802);
     this.isWaitingForFirstPiece = true;
     boolean bool = this.cachedDataTracker.lock(0L, paramInt, paramLong, null);
     this.isWaitingForFirstPiece = false;
-    AppMethodBeat.o(190303);
+    AppMethodBeat.o(247802);
     return bool;
   }
   
@@ -901,7 +901,7 @@ public class CacheDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.upstream.CacheDataSource
  * JD-Core Version:    0.7.0.1
  */

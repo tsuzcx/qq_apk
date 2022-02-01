@@ -5,71 +5,75 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.h;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.textstatus.f.e.e;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.textstatus.b.e;
+import com.tencent.mm.plugin.textstatus.b.f;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.s;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
 import com.tencent.mm.view.recyclerview.f;
-import com.tencent.mm.view.recyclerview.g.b;
+import com.tencent.mm.view.recyclerview.h.b;
 import java.util.ArrayList;
 import kotlin.g.b.p;
 import kotlin.l;
+import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/textstatus/ui/TextStatusSquareActivity;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/textstatus/model/square/SquareItem;", "Lkotlin/collections/ArrayList;", "getDataList", "()Ljava/util/ArrayList;", "setDataList", "(Ljava/util/ArrayList;)V", "mProgressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getMProgressDialog", "()Lcom/tencent/mm/ui/base/MMProgressDialog;", "setMProgressDialog", "(Lcom/tencent/mm/ui/base/MMProgressDialog;)V", "onSceneEnd", "com/tencent/mm/plugin/textstatus/ui/TextStatusSquareActivity$onSceneEnd$1", "Lcom/tencent/mm/plugin/textstatus/ui/TextStatusSquareActivity$onSceneEnd$1;", "recycleView", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "getRecycleView", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "setRecycleView", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerView;)V", "topicId", "", "getTopicId", "()Ljava/lang/String;", "setTopicId", "(Ljava/lang/String;)V", "buildItemConverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-textstatus_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/ui/TextStatusSquareActivity;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/textstatus/model/square/SquareItem;", "Lkotlin/collections/ArrayList;", "getDataList", "()Ljava/util/ArrayList;", "setDataList", "(Ljava/util/ArrayList;)V", "mProgressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getMProgressDialog", "()Lcom/tencent/mm/ui/base/MMProgressDialog;", "setMProgressDialog", "(Lcom/tencent/mm/ui/base/MMProgressDialog;)V", "onSceneEnd", "com/tencent/mm/plugin/textstatus/ui/TextStatusSquareActivity$onSceneEnd$1", "Lcom/tencent/mm/plugin/textstatus/ui/TextStatusSquareActivity$onSceneEnd$1;", "recycleView", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "getRecycleView", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "setRecycleView", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerView;)V", "topicId", "", "getTopicId", "()Ljava/lang/String;", "setTopicId", "(Ljava/lang/String;)V", "buildItemConverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-textstatus_release"})
 public final class TextStatusSquareActivity
   extends MMActivity
 {
-  public static final TextStatusSquareActivity.a GfR;
-  private String FZz;
-  private final e GfQ;
-  com.tencent.mm.ui.base.q gxX;
-  private ArrayList<e> kgc;
-  WxRecyclerView rHX;
+  public static final a MOl;
+  private final e MOk;
+  s jhZ;
+  private ArrayList<com.tencent.mm.plugin.textstatus.g.d.e> mXB;
+  private String topicId;
+  WxRecyclerView vnF;
   
   static
   {
-    AppMethodBeat.i(216672);
-    GfR = new TextStatusSquareActivity.a((byte)0);
-    AppMethodBeat.o(216672);
+    AppMethodBeat.i(234782);
+    MOl = new a((byte)0);
+    AppMethodBeat.o(234782);
   }
   
   public TextStatusSquareActivity()
   {
-    AppMethodBeat.i(216671);
-    this.kgc = new ArrayList();
-    this.GfQ = new e(this);
-    AppMethodBeat.o(216671);
+    AppMethodBeat.i(234779);
+    this.mXB = new ArrayList();
+    this.MOk = new e(this);
+    AppMethodBeat.o(234779);
   }
   
   public final int getLayoutId()
   {
-    return 2131496703;
+    return b.f.Myi;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(216670);
+    AppMethodBeat.i(234778);
     super.onCreate(paramBundle);
     setMMTitle("");
     setBackBtn((MenuItem.OnMenuItemClickListener)new c(this));
     paramBundle = getIntent();
-    p.g(paramBundle, "intent");
+    p.j(paramBundle, "intent");
     paramBundle = paramBundle.getExtras();
     if (paramBundle != null)
     {
       paramBundle = paramBundle.getString("TEXT_STATUS");
       localObject = getIntent();
-      p.g(localObject, "intent");
+      p.j(localObject, "intent");
       localObject = ((Intent)localObject).getExtras();
       if (localObject == null) {
         break label164;
@@ -78,9 +82,9 @@ public final class TextStatusSquareActivity
     label164:
     for (Object localObject = ((Bundle)localObject).getString("TOPIC_ID");; localObject = null)
     {
-      this.FZz = ((String)localObject);
+      this.topicId = ((String)localObject);
       localObject = getIntent();
-      p.g(localObject, "intent");
+      p.j(localObject, "intent");
       localObject = ((Intent)localObject).getExtras();
       if (localObject != null) {
         ((Bundle)localObject).getString("STATUS_ID");
@@ -88,38 +92,38 @@ public final class TextStatusSquareActivity
       int i = 0;
       while (i <= 10)
       {
-        this.kgc.add(new e(String.valueOf(i), "test", "", "", ""));
+        this.mXB.add(new com.tencent.mm.plugin.textstatus.g.d.e(String.valueOf(i), "test", "", "", ""));
         i += 1;
       }
       paramBundle = null;
       break;
     }
-    this.rHX = ((WxRecyclerView)findViewById(2131306757));
-    localObject = this.rHX;
+    this.vnF = ((WxRecyclerView)findViewById(b.e.recycler_view));
+    localObject = this.vnF;
     if (localObject != null) {
       ((WxRecyclerView)localObject).setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager(1, false));
     }
-    localObject = this.rHX;
+    localObject = this.vnF;
     if (localObject != null) {
-      ((WxRecyclerView)localObject).setAdapter((RecyclerView.a)new WxRecyclerAdapter((f)new TextStatusSquareActivity.b(), this.kgc));
+      ((WxRecyclerView)localObject).setAdapter((RecyclerView.a)new WxRecyclerAdapter((f)new b(), this.mXB));
     }
-    localObject = this.rHX;
+    localObject = this.vnF;
     if (localObject != null) {}
     for (localObject = ((WxRecyclerView)localObject).getAdapter(); localObject == null; localObject = null)
     {
-      paramBundle = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.view.recyclerview.WxRecyclerAdapter<*>");
-      AppMethodBeat.o(216670);
+      paramBundle = new t("null cannot be cast to non-null type com.tencent.mm.view.recyclerview.WxRecyclerAdapter<*>");
+      AppMethodBeat.o(234778);
       throw paramBundle;
     }
-    com.tencent.mm.view.recyclerview.g.a((WxRecyclerAdapter)localObject, (g.b)new com.tencent.mm.plugin.textstatus.f.e.d("#".concat(String.valueOf(paramBundle)), "共324人 同城23人"));
-    paramBundle = this.rHX;
+    com.tencent.mm.view.recyclerview.h.a((WxRecyclerAdapter)localObject, (h.b)new com.tencent.mm.plugin.textstatus.g.d.d("#".concat(String.valueOf(paramBundle)), "共324人 同城23人"));
+    paramBundle = this.vnF;
     if (paramBundle != null)
     {
       paramBundle.b((RecyclerView.h)new d(this));
-      AppMethodBeat.o(216670);
+      AppMethodBeat.o(234778);
       return;
     }
-    AppMethodBeat.o(216670);
+    AppMethodBeat.o(234778);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -128,7 +132,30 @@ public final class TextStatusSquareActivity
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/ui/TextStatusSquareActivity$Companion;", "", "()V", "TAG", "", "start", "", "context", "Landroid/content/Context;", "p", "Landroid/os/Bundle;", "plugin-textstatus_release"})
+  public static final class a {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/textstatus/ui/TextStatusSquareActivity$buildItemConverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-textstatus_release"})
+  public static final class b
+    implements f
+  {
+    public final com.tencent.mm.view.recyclerview.e<?> yx(int paramInt)
+    {
+      AppMethodBeat.i(233251);
+      switch (paramInt)
+      {
+      default: 
+        locale = (com.tencent.mm.view.recyclerview.e)new com.tencent.mm.plugin.textstatus.b.e();
+        AppMethodBeat.o(233251);
+        return locale;
+      }
+      com.tencent.mm.view.recyclerview.e locale = (com.tencent.mm.view.recyclerview.e)new com.tencent.mm.plugin.textstatus.b.d();
+      AppMethodBeat.o(233251);
+      return locale;
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class c
     implements MenuItem.OnMenuItemClickListener
   {
@@ -136,23 +163,23 @@ public final class TextStatusSquareActivity
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(216667);
-      this.GfS.onBackPressed();
-      AppMethodBeat.o(216667);
+      AppMethodBeat.i(235301);
+      this.MOm.onBackPressed();
+      AppMethodBeat.o(235301);
       return true;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/textstatus/ui/TextStatusSquareActivity$onCreate$2", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "itemPosition", "", "parent", "Landroid/support/v7/widget/RecyclerView;", "plugin-textstatus_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/textstatus/ui/TextStatusSquareActivity$onCreate$2", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "itemPosition", "", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-textstatus_release"})
   public static final class d
     extends RecyclerView.h
   {
     public final void a(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
     {
-      AppMethodBeat.i(216668);
-      p.h(paramRect, "outRect");
-      p.h(paramRecyclerView, "parent");
-      paramRecyclerView = this.GfS.rHX;
+      AppMethodBeat.i(233231);
+      p.k(paramRect, "outRect");
+      p.k(paramRecyclerView, "parent");
+      paramRecyclerView = this.MOm.vnF;
       if (paramRecyclerView != null)
       {
         paramRecyclerView = paramRecyclerView.getAdapter();
@@ -160,51 +187,42 @@ public final class TextStatusSquareActivity
       }
       for (int i = paramRecyclerView.getItemCount(); paramInt == i - 1; i = 1)
       {
-        paramRect.bottom = a.fromDPToPix((Context)this.GfS, 16);
-        AppMethodBeat.o(216668);
+        paramRect.bottom = a.fromDPToPix((Context)this.MOm, 16);
+        AppMethodBeat.o(233231);
         return;
       }
-      paramRect.bottom = a.fromDPToPix((Context)this.GfS, 8);
-      AppMethodBeat.o(216668);
+      paramRect.bottom = a.fromDPToPix((Context)this.MOm, 8);
+      AppMethodBeat.o(233231);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/textstatus/ui/TextStatusSquareActivity$onSceneEnd$1", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-textstatus_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/textstatus/ui/TextStatusSquareActivity$onSceneEnd$1", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-textstatus_release"})
   public static final class e
     implements i
   {
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
     {
-      AppMethodBeat.i(216669);
-      if ((paramq instanceof com.tencent.mm.plugin.textstatus.f.d))
+      AppMethodBeat.i(237042);
+      if ((paramq instanceof com.tencent.mm.plugin.textstatus.g.e))
       {
-        com.tencent.mm.kernel.g.azz().b(((com.tencent.mm.plugin.textstatus.f.d)paramq).getType(), (i)this);
-        if ((paramInt1 == 0) && (paramInt2 == 0))
-        {
-          paramString = this.GfS.rHX;
-          if (paramString != null)
-          {
-            paramString = paramString.getAdapter();
-            if (paramString != null) {
-              paramString.notifyDataSetChanged();
-            }
-          }
-        }
+        com.tencent.mm.kernel.h.aGY();
+        AppMethodBeat.o(237042);
+        throw null;
       }
-      paramString = this.GfS.gxX;
+      paramString = this.MOm.jhZ;
       if (paramString != null)
       {
         paramString.dismiss();
-        AppMethodBeat.o(216669);
+        AppMethodBeat.o(237042);
         return;
       }
-      AppMethodBeat.o(216669);
+      AppMethodBeat.o(237042);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.ui.TextStatusSquareActivity
  * JD-Core Version:    0.7.0.1
  */

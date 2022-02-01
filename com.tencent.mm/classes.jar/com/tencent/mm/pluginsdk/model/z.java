@@ -1,59 +1,53 @@
 package com.tencent.mm.pluginsdk.model;
 
+import android.os.FileObserver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.s;
 
 public final class z
+  extends FileObserver
 {
-  private static String TAG = "MicroMsg.VideoUploadConfig";
+  private String Jfj;
+  private a QVS;
   
-  public static boolean bdv(String paramString)
+  public z(String paramString, a parama)
   {
-    AppMethodBeat.i(240892);
-    long l = s.boW(paramString);
-    boolean bool = ((b)g.af(b.class)).a(b.a.rPI, true);
-    Log.i(TAG, "C2C send big file:%s size:%s enable:%s", new Object[] { paramString, Long.valueOf(l), Boolean.valueOf(bool) });
-    if ((l >= 25165824L) && (bool))
-    {
-      AppMethodBeat.o(240892);
-      return true;
-    }
-    AppMethodBeat.o(240892);
-    return false;
+    super(paramString);
+    AppMethodBeat.i(151647);
+    Log.i("MicroMsg.ScreenshotObserver", "observer  ".concat(String.valueOf(paramString)));
+    this.QVS = parama;
+    AppMethodBeat.o(151647);
   }
   
-  public static boolean bdw(String paramString)
+  public final void onEvent(int paramInt, String paramString)
   {
-    AppMethodBeat.i(240894);
-    long l = s.boW(paramString);
-    boolean bool = ((b)g.af(b.class)).a(b.a.rPH, true);
-    Log.i(TAG, "SNS send big file:%s size:%s enable:%s", new Object[] { paramString, Long.valueOf(l), Boolean.valueOf(bool) });
-    if ((l >= 25165824L) && (bool))
+    AppMethodBeat.i(151648);
+    if ((paramString != null) && (paramInt == 8) && ((this.Jfj == null) || (!paramString.equalsIgnoreCase(this.Jfj))))
     {
-      AppMethodBeat.o(240894);
-      return true;
+      this.Jfj = paramString;
+      this.QVS.fok();
+      Log.i("MicroMsg.ScreenshotObserver", "Send event to listener. ".concat(String.valueOf(paramString)));
     }
-    AppMethodBeat.o(240894);
-    return false;
+    AppMethodBeat.o(151648);
   }
   
-  public static int gmL()
+  public final void start()
   {
-    AppMethodBeat.i(240893);
-    boolean bool = ((b)g.af(b.class)).a(b.a.rPI, true);
-    int i = ((b)g.af(b.class)).a(b.a.rPJ, 100);
-    Log.i(TAG, "getBigVideoSize  enable:%s configMB:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
-    if (bool)
-    {
-      AppMethodBeat.o(240893);
-      return i * 1024 * 1024;
-    }
-    AppMethodBeat.o(240893);
-    return 26214400;
+    AppMethodBeat.i(151649);
+    super.startWatching();
+    AppMethodBeat.o(151649);
+  }
+  
+  public final void stop()
+  {
+    AppMethodBeat.i(151650);
+    super.stopWatching();
+    AppMethodBeat.o(151650);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void fok();
   }
 }
 

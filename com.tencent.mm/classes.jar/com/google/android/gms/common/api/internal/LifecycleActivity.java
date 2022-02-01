@@ -1,7 +1,7 @@
 package com.google.android.gms.common.api.internal;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
+import androidx.fragment.app.FragmentActivity;
 import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.internal.Preconditions;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -41,7 +41,7 @@ public class LifecycleActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.LifecycleActivity
  * JD-Core Version:    0.7.0.1
  */

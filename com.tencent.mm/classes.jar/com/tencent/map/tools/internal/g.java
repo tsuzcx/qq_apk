@@ -29,7 +29,7 @@ public class g
     AppMethodBeat.i(180792);
     this.i = g.class.getSimpleName();
     this.d = paramContext.getApplicationContext();
-    this.a = new HandlerThread("d_thread");
+    this.a = new HandlerThread("tms-module");
     this.a.start();
     this.h = this.a.getLooper();
     this.b = new a(this.h);
@@ -125,7 +125,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.map.tools.internal.g
  * JD-Core Version:    0.7.0.1
  */

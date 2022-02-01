@@ -1,35 +1,40 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.c.a;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.co.f;
-import com.tencent.mm.protocal.protobuf.dop;
-import com.tencent.mm.protocal.protobuf.dpc;
+import com.tencent.mm.an.c;
+import com.tencent.mm.an.c.a;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.cw.f;
+import com.tencent.mm.protocal.protobuf.dyl;
+import com.tencent.mm.protocal.protobuf.dyy;
 
-public abstract class a<Req extends dop, Resp extends dpc>
+public abstract class a<Req extends dyl, Resp extends dyy>
 {
-  private c yPq;
-  Req yPr;
-  private Resp yPs;
+  private c Etp;
+  private Req Etq;
+  private Resp Etr;
+  
+  public final void a(Req paramReq)
+  {
+    this.Etq = paramReq;
+  }
   
   public final <T> f<T> b(com.tencent.mm.vending.c.a<T, c.a<Resp>> parama)
   {
     boolean bool2 = true;
-    eeD();
-    this.yPs = eeC();
-    this.yPq = new c();
-    c localc = this.yPq;
-    dop localdop = this.yPr;
-    dpc localdpc = this.yPs;
-    if ((localdop == null) || (localdpc == null))
+    eNY();
+    this.Etr = eNX();
+    this.Etp = new c();
+    c localc = this.Etp;
+    dyl localdyl = this.Etq;
+    dyy localdyy = this.Etr;
+    if ((localdyl == null) || (localdyy == null))
     {
       parama = new StringBuilder("CgiBase called withoud req or resp req?[");
-      if (localdop == null)
+      if (localdyl == null)
       {
         bool1 = true;
         parama = parama.append(bool1).append("] resp?[");
-        if (localdpc != null) {
+        if (localdyy != null) {
           break label114;
         }
       }
@@ -44,17 +49,17 @@ public abstract class a<Req extends dop, Resp extends dpc>
     d.a locala = new d.a();
     locala.funcId = getFuncId();
     locala.uri = getUri();
-    locala.iLN = localdop;
-    locala.iLO = localdpc;
-    localc.c(locala.aXF());
-    this.yPq.aYI().g(new com.tencent.mm.vending.c.a() {}).b(parama);
+    locala.lBU = localdyl;
+    locala.lBV = localdyy;
+    localc.c(locala.bgN());
+    this.Etp.bhW().g(new com.tencent.mm.vending.c.a() {}).b(parama);
   }
   
-  protected abstract Resp eeC();
+  protected abstract Resp eNX();
   
-  protected void eeD() {}
+  protected void eNY() {}
   
-  protected void eeE() {}
+  protected void eNZ() {}
   
   protected abstract int getFuncId();
   

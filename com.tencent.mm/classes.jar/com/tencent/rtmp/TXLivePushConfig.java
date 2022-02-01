@@ -1,7 +1,8 @@
 package com.tencent.rtmp;
 
 import android.graphics.Bitmap;
-import com.tencent.liteav.basic.a.c;
+import com.tencent.liteav.basic.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 
 public class TXLivePushConfig
@@ -378,10 +379,18 @@ public class TXLivePushConfig
     this.mWatermarkX = paramInt1;
     this.mWatermarkY = paramInt2;
   }
+  
+  public String toString()
+  {
+    AppMethodBeat.i(216832);
+    String str = "[resolution:" + this.mVideoResolution + "][fps:" + this.mVideoFPS + "][gop:" + this.mVideoEncodeGop + "][bitrate:" + this.mVideoBitrate + "][maxBitrate:" + this.mMaxVideoBitrate + "][minBitrate:" + this.mMinVideoBitrate + "][highCapture:" + this.mEnableHighResolutionCapture + "][hwAcc:" + this.mHardwareAccel + "][homeOrientation:" + this.mHomeOrientation + "][volumeType:" + this.mVolumeType + "][earMonitor:" + this.mEnableAudioPreview + "][agc:" + this.mEnableAgc + "][ans:" + this.mEnableAns + "][aec:" + this.mEnableAec + "][sample:" + this.mAudioSample + "][pureAudioPush:" + this.mEnablePureAudioPush + "]";
+    AppMethodBeat.o(216832);
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.rtmp.TXLivePushConfig
  * JD-Core Version:    0.7.0.1
  */

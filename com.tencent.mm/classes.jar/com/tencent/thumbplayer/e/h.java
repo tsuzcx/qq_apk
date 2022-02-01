@@ -6,28 +6,28 @@ import com.tencent.thumbplayer.core.downloadproxy.api.ITPDownloadProxy;
 public final class h
   implements b
 {
-  private ITPDownloadProxy RZp;
+  private ITPDownloadProxy ZBZ;
   
   public h(ITPDownloadProxy paramITPDownloadProxy)
   {
-    this.RZp = paramITPDownloadProxy;
+    this.ZBZ = paramITPDownloadProxy;
   }
   
-  public final ITPDownloadProxy hnx()
+  public final ITPDownloadProxy iqY()
   {
-    return this.RZp;
+    return this.ZBZ;
   }
   
   public final void pushEvent(int paramInt)
   {
-    AppMethodBeat.i(189240);
-    this.RZp.pushEvent(paramInt);
-    AppMethodBeat.o(189240);
+    AppMethodBeat.i(220575);
+    this.ZBZ.pushEvent(paramInt);
+    AppMethodBeat.o(220575);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.e.h
  * JD-Core Version:    0.7.0.1
  */

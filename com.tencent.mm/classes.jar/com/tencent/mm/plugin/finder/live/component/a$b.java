@@ -1,29 +1,36 @@
 package com.tencent.mm.plugin.finder.live.component;
 
+import android.view.View;
+import com.tencent.mm.plugin.finder.live.model.aq;
 import com.tencent.mm.plugin.finder.presenter.base.c;
-import kotlin.g.a.a;
+import java.util.List;
 import kotlin.l;
-import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLotteryBubbleContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/presenter/base/IViewCallback;", "Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLotteryBubbleContract$Presenter;", "initView", "", "reset", "resumeLotteryBubble", "callback", "Lkotlin/Function0;", "showLotteryComputing", "showLotteryFinish", "showPrepareLottery", "updateCountDown", "remainTime", "", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/component/FinderLiveAnchorMusicContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/presenter/base/IViewCallback;", "Lcom/tencent/mm/plugin/finder/live/component/FinderLiveAnchorMusicContract$Presenter;", "getTouchLoc", "", "hideEditView", "", "hideVolumeView", "withAnim", "", "initView", "showEmptyView", "showLoadingView", "showMusicView", "musicData", "", "Lcom/tencent/mm/plugin/finder/live/model/MusicItem;", "showPopupMemu", "view", "Landroid/view/View;", "pos", "", "musicItem", "anchorPosX", "anchorPosY", "volumeAction", "plugin-finder_release"})
 public abstract interface a$b
   extends c<a.a>
 {
-  public abstract void H(a<x> parama);
+  public abstract void a(View paramView, int paramInt1, aq paramaq, int paramInt2, int paramInt3);
   
-  public abstract void I(a<x> parama);
+  public abstract void dwX();
   
-  public abstract void ats(String paramString);
+  public abstract void dwZ();
   
-  public abstract void dfa();
+  public abstract int[] dxa();
   
-  public abstract void dfb();
+  public abstract void dxb();
+  
+  public abstract void ej(List<aq> paramList);
   
   public abstract void initView();
+  
+  public abstract void nO(boolean paramBoolean);
+  
+  public abstract void oF(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.component.a.b
  * JD-Core Version:    0.7.0.1
  */

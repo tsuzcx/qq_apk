@@ -26,11 +26,11 @@ public class WaidProvider
   extends ContentProvider
 {
   private static final String AUTHORITY;
-  private static String[] FgM;
-  private long FgN;
-  private int FgO;
-  private a FgP;
-  private volatile boolean FgQ;
+  private static String[] Lvr;
+  private long Lvs;
+  private int Lvt;
+  private a Lvu;
+  private volatile boolean Lvv;
   private final Object mLock;
   private UriMatcher mUriMatcher;
   
@@ -38,7 +38,7 @@ public class WaidProvider
   {
     AppMethodBeat.i(100606);
     AUTHORITY = WeChatAuthorities.AUTHORITIES_WAIDPROVIDER();
-    FgM = new String[] { "pkg", "appWaid", "errCode" };
+    Lvr = new String[] { "pkg", "appWaid", "errCode" };
     AppMethodBeat.o(100606);
   }
   
@@ -46,9 +46,9 @@ public class WaidProvider
   {
     AppMethodBeat.i(100598);
     this.mUriMatcher = new UriMatcher(-1);
-    this.FgO = 0;
+    this.Lvt = 0;
     this.mLock = new Object();
-    this.FgQ = false;
+    this.Lvv = false;
     AppMethodBeat.o(100598);
   }
   
@@ -67,20 +67,20 @@ public class WaidProvider
     //   14: dup
     //   15: ldc 87
     //   17: invokespecial 90	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   20: invokestatic 96	com/tencent/mm/plugin/sns/waid/b:flv	()Z
+    //   20: invokestatic 96	com/tencent/mm/plugin/sns/waid/b:fZR	()Z
     //   23: invokevirtual 100	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   26: ldc 102
     //   28: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   31: aload_0
-    //   32: getfield 76	com/tencent/mm/plugin/sns/waid/WaidProvider:FgQ	Z
+    //   32: getfield 76	com/tencent/mm/plugin/sns/waid/WaidProvider:Lvv	Z
     //   35: invokevirtual 100	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   38: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   41: invokestatic 113	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   44: invokestatic 96	com/tencent/mm/plugin/sns/waid/b:flv	()Z
+    //   44: invokestatic 96	com/tencent/mm/plugin/sns/waid/b:fZR	()Z
     //   47: ifeq +17 -> 64
     //   50: aload_0
     //   51: iconst_1
-    //   52: putfield 76	com/tencent/mm/plugin/sns/waid/WaidProvider:FgQ	Z
+    //   52: putfield 76	com/tencent/mm/plugin/sns/waid/WaidProvider:Lvv	Z
     //   55: ldc 81
     //   57: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   60: aload_0
@@ -89,7 +89,7 @@ public class WaidProvider
     //   63: ireturn
     //   64: aload_0
     //   65: iconst_0
-    //   66: putfield 76	com/tencent/mm/plugin/sns/waid/WaidProvider:FgQ	Z
+    //   66: putfield 76	com/tencent/mm/plugin/sns/waid/WaidProvider:Lvv	Z
     //   69: aload_1
     //   70: iconst_1
     //   71: putfield 118	com/tencent/mm/pointers/PInt:value	I
@@ -104,7 +104,7 @@ public class WaidProvider
     //   92: invokestatic 132	java/lang/System:currentTimeMillis	()J
     //   95: lstore_3
     //   96: aload_0
-    //   97: getfield 76	com/tencent/mm/plugin/sns/waid/WaidProvider:FgQ	Z
+    //   97: getfield 76	com/tencent/mm/plugin/sns/waid/WaidProvider:Lvv	Z
     //   100: ifne +69 -> 169
     //   103: aload_0
     //   104: getfield 74	com/tencent/mm/plugin/sns/waid/WaidProvider:mLock	Ljava/lang/Object;
@@ -154,27 +154,27 @@ public class WaidProvider
     //   190: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   193: invokestatic 132	java/lang/System:currentTimeMillis	()J
     //   196: aload_0
-    //   197: getfield 150	com/tencent/mm/plugin/sns/waid/WaidProvider:FgN	J
+    //   197: getfield 150	com/tencent/mm/plugin/sns/waid/WaidProvider:Lvs	J
     //   200: lsub
     //   201: invokevirtual 146	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   204: ldc 152
     //   206: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   209: aload_0
-    //   210: getfield 69	com/tencent/mm/plugin/sns/waid/WaidProvider:FgO	I
+    //   210: getfield 69	com/tencent/mm/plugin/sns/waid/WaidProvider:Lvt	I
     //   213: invokevirtual 155	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   216: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   219: invokestatic 113	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   222: aload_0
     //   223: aload_0
-    //   224: getfield 69	com/tencent/mm/plugin/sns/waid/WaidProvider:FgO	I
+    //   224: getfield 69	com/tencent/mm/plugin/sns/waid/WaidProvider:Lvt	I
     //   227: iconst_1
     //   228: iadd
-    //   229: putfield 69	com/tencent/mm/plugin/sns/waid/WaidProvider:FgO	I
-    //   232: invokestatic 96	com/tencent/mm/plugin/sns/waid/b:flv	()Z
+    //   229: putfield 69	com/tencent/mm/plugin/sns/waid/WaidProvider:Lvt	I
+    //   232: invokestatic 96	com/tencent/mm/plugin/sns/waid/b:fZR	()Z
     //   235: ifne +25 -> 260
     //   238: aload_0
     //   239: iconst_0
-    //   240: putfield 76	com/tencent/mm/plugin/sns/waid/WaidProvider:FgQ	Z
+    //   240: putfield 76	com/tencent/mm/plugin/sns/waid/WaidProvider:Lvv	Z
     //   243: ldc 83
     //   245: ldc 157
     //   247: invokestatic 141	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
@@ -200,33 +200,32 @@ public class WaidProvider
     //   from	to	target	type
     //   110	117	122	finally
     //   117	119	122	finally
-    //   124	126	122	finally
     //   141	166	122	finally
     //   4	60	134	finally
     //   64	96	134	finally
     //   96	110	134	finally
-    //   126	134	134	finally
+    //   124	134	134	finally
     //   169	255	134	finally
     //   260	272	134	finally
     //   110	117	139	java/lang/Exception
   }
   
-  private static MatrixCursor aj(String paramString1, String paramString2, int paramInt)
+  private static MatrixCursor aq(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(204053);
-    MatrixCursor localMatrixCursor = new MatrixCursor(FgM, 1);
+    AppMethodBeat.i(209324);
+    MatrixCursor localMatrixCursor = new MatrixCursor(Lvr, 1);
     MatrixCursor.RowBuilder localRowBuilder = localMatrixCursor.newRow();
     localRowBuilder.add("pkg", paramString1);
     localRowBuilder.add("appWaid", paramString2);
     localRowBuilder.add("errCode", Integer.valueOf(paramInt));
-    AppMethodBeat.o(204053);
+    AppMethodBeat.o(209324);
     return localMatrixCursor;
   }
   
   private Cursor b(Uri paramUri, String[] paramArrayOfString)
   {
     int i = 1;
-    AppMethodBeat.i(204052);
+    AppMethodBeat.i(209323);
     for (;;)
     {
       Object localObject1;
@@ -235,7 +234,7 @@ public class WaidProvider
         long l = System.currentTimeMillis();
         String str = "";
         Object localObject2 = "";
-        a locala = flw();
+        a locala = fZS();
         localObject1 = localObject2;
         if (paramArrayOfString != null)
         {
@@ -244,39 +243,39 @@ public class WaidProvider
             localObject1 = Util.nullAsNil(paramArrayOfString[0]).trim();
           }
         }
-        com.tencent.mm.sdk.platformtools.Log.i("ad.waid.WaidProvider", "handleQuery queryPkg=" + (String)localObject1 + ", callingPkg=" + locala.FgU + ", thread.hash=" + Thread.currentThread().hashCode());
+        com.tencent.mm.sdk.platformtools.Log.i("ad.waid.WaidProvider", "handleQuery queryPkg=" + (String)localObject1 + ", callingPkg=" + locala.Lvz + ", thread.hash=" + Thread.currentThread().hashCode());
         localObject2 = new PInt();
         if (!a((PInt)localObject2))
         {
           com.tencent.mm.sdk.platformtools.Log.e("ad.waid.WaidProvider", "checkWXEnv failed");
-          paramUri = aj("", "", -1);
-          AppMethodBeat.o(204052);
+          paramUri = aq("", "", -1);
+          AppMethodBeat.o(209323);
           return paramUri;
         }
         int j;
         int k;
         int m;
-        if (TextUtils.isEmpty(locala.FgU))
+        if (TextUtils.isEmpty(locala.Lvz))
         {
           com.tencent.mm.sdk.platformtools.Log.e("ad.waid.WaidProvider", "handleQuery callingPkg empty");
           paramUri = "";
           paramArrayOfString = str;
           j = (int)(System.currentTimeMillis() - l);
-          str = locala.FgU;
-          k = locala.FgT;
+          str = locala.Lvz;
+          k = locala.Lvy;
           m = ((PInt)localObject2).value;
-          if (!b.flv())
+          if (!b.fZR())
           {
             com.tencent.mm.sdk.platformtools.Log.e("ad.waid.WaidReporter", "reportQuery isWxEnvInitDone==false");
             c.a(locala, (String)localObject1);
-            paramUri = aj(paramUri, Util.nullAsNil(paramArrayOfString), i);
-            AppMethodBeat.o(204052);
+            paramUri = aq(paramUri, Util.nullAsNil(paramArrayOfString), i);
+            AppMethodBeat.o(209323);
             return paramUri;
           }
         }
         else
         {
-          if (!b.fls())
+          if (!b.fZO())
           {
             com.tencent.mm.sdk.platformtools.Log.e("ad.waid.WaidProvider", "handleQuery isExptWaidEnable==false");
             paramUri = "";
@@ -295,15 +294,15 @@ public class WaidProvider
           if (!TextUtils.isEmpty((CharSequence)localObject1)) {
             break label593;
           }
-          paramUri = locala.FgU;
-          if (!locala.FgU.equals(paramUri))
+          paramUri = locala.Lvz;
+          if (!locala.Lvz.equals(paramUri))
           {
-            com.tencent.mm.sdk.platformtools.Log.e("ad.waid.WaidProvider", "handleQuery queryPkg!=callingPkg, queryPkg=" + paramUri + ", callingPkg=" + locala.FgU);
+            com.tencent.mm.sdk.platformtools.Log.e("ad.waid.WaidProvider", "handleQuery queryPkg!=callingPkg, queryPkg=" + paramUri + ", callingPkg=" + locala.Lvz);
             i = 4;
             paramArrayOfString = str;
             continue;
           }
-          paramArrayOfString = b.aRz(paramUri);
+          paramArrayOfString = b.bcE(paramUri);
           com.tencent.mm.sdk.platformtools.Log.i("ad.waid.WaidProvider", "handleQuery, appWaid=".concat(String.valueOf(paramArrayOfString)));
           boolean bool = TextUtils.isEmpty(paramArrayOfString);
           if (!bool) {
@@ -321,9 +320,9 @@ public class WaidProvider
           ((JSONObject)localObject2).put("errCode", i);
           ((JSONObject)localObject2).put("waitInit", m);
           ((JSONObject)localObject2).put("timeCost", j);
-          str = c.aRB(((JSONObject)localObject2).toString());
+          str = c.bcG(((JSONObject)localObject2).toString());
           com.tencent.mm.sdk.platformtools.Log.i("ad.waid.WaidReporter", "reportQuery data=".concat(String.valueOf(str)));
-          h.CyF.a(18666, new Object[] { Integer.valueOf(2000), str });
+          h.IzE.a(18666, new Object[] { Integer.valueOf(2000), str });
         }
         catch (Throwable localThrowable)
         {
@@ -335,7 +334,7 @@ public class WaidProvider
       catch (Throwable paramUri)
       {
         com.tencent.mm.sdk.platformtools.Log.e("ad.waid.WaidProvider", "handleQuery exp=" + paramUri.toString());
-        AppMethodBeat.o(204052);
+        AppMethodBeat.o(209323);
         return null;
       }
       label588:
@@ -345,13 +344,13 @@ public class WaidProvider
     }
   }
   
-  private a flw()
+  private a fZS()
   {
-    AppMethodBeat.i(204054);
+    AppMethodBeat.i(209325);
     a locala = new a();
     try
     {
-      locala.FgR = getCallingPackage();
+      locala.Lvw = getCallingPackage();
     }
     catch (Throwable localThrowable1)
     {
@@ -360,16 +359,16 @@ public class WaidProvider
         for (;;)
         {
           i = Binder.getCallingUid();
-          locala.FgS = getContext().getPackageManager().getPackagesForUid(i);
-          if ((locala.FgS == null) || (locala.FgS.length <= 0)) {
+          locala.Lvx = getContext().getPackageManager().getPackagesForUid(i);
+          if ((locala.Lvx == null) || (locala.Lvx.length <= 0)) {
             break label252;
           }
-          if (!TextUtils.isEmpty(locala.FgR)) {
+          if (!TextUtils.isEmpty(locala.Lvw)) {
             break;
           }
-          locala.FgT = 1;
-          locala.FgU = locala.FgS[0];
-          AppMethodBeat.o(204054);
+          locala.Lvy = 1;
+          locala.Lvz = locala.Lvx[0];
+          AppMethodBeat.o(209325);
           return locala;
           localThrowable1 = localThrowable1;
           com.tencent.mm.sdk.platformtools.Log.e("ad.waid.WaidProvider", "getCallingPkg exp=" + localThrowable1.toString());
@@ -381,34 +380,34 @@ public class WaidProvider
         {
           com.tencent.mm.sdk.platformtools.Log.e("ad.waid.WaidProvider", "getCallingUid exp=" + localThrowable2.toString());
         }
-        String[] arrayOfString = locala.FgS;
+        String[] arrayOfString = locala.Lvx;
         int j = arrayOfString.length;
         int i = 0;
         while (i < j)
         {
           String str = arrayOfString[i];
-          if (locala.FgR.equals(str))
+          if (locala.Lvw.equals(str))
           {
-            if (locala.FgS.length > 1) {}
-            for (locala.FgT = 2;; locala.FgT = 3)
+            if (locala.Lvx.length > 1) {}
+            for (locala.Lvy = 2;; locala.Lvy = 3)
             {
-              locala.FgU = str;
-              AppMethodBeat.o(204054);
+              locala.Lvz = str;
+              AppMethodBeat.o(209325);
               return locala;
             }
           }
           i += 1;
         }
-        locala.FgT = 4;
-        locala.FgU = locala.FgS[0];
-        AppMethodBeat.o(204054);
+        locala.Lvy = 4;
+        locala.Lvz = locala.Lvx[0];
+        AppMethodBeat.o(209325);
         return locala;
       }
     }
     label252:
-    locala.FgT = 5;
-    locala.FgU = locala.FgR;
-    AppMethodBeat.o(204054);
+    locala.Lvy = 5;
+    locala.Lvz = locala.Lvw;
+    AppMethodBeat.o(209325);
     return locala;
   }
   
@@ -435,17 +434,17 @@ public class WaidProvider
   {
     AppMethodBeat.i(100599);
     this.mUriMatcher.addURI(AUTHORITY, "appWaid", 1);
-    this.FgN = System.currentTimeMillis();
-    this.FgP = new a();
-    a locala = this.FgP;
+    this.Lvs = System.currentTimeMillis();
+    this.Lvu = new a();
+    a locala = this.Lvu;
     try
     {
       com.tencent.mm.sdk.platformtools.Log.i("InitTaskMgr", "start");
-      Iterator localIterator = locala.FgH.iterator();
+      Iterator localIterator = locala.Lvm.iterator();
       while (localIterator.hasNext())
       {
         Runnable localRunnable = (Runnable)localIterator.next();
-        locala.FgJ.post(localRunnable);
+        locala.Lvo.post(localRunnable);
         continue;
         com.tencent.mm.sdk.platformtools.Log.i("ad.waid.WaidProvider", "onCreate, this.hash=" + hashCode());
       }
@@ -458,8 +457,8 @@ public class WaidProvider
     {
       AppMethodBeat.o(100599);
       return true;
-      localException.FgH.clear();
-      localException.FgI.quitSafely();
+      localException.Lvm.clear();
+      localException.Lvn.quitSafely();
     }
   }
   
@@ -478,72 +477,72 @@ public class WaidProvider
   
   protected static final class a
   {
-    String FgR;
-    String[] FgS;
-    int FgT;
-    String FgU;
+    String Lvw;
+    String[] Lvx;
+    int Lvy;
+    String Lvz;
   }
   
   final class b
     extends Thread
   {
-    private int FgV;
-    private int dKi;
+    private int LvA;
+    private int fCX;
     
     public b()
     {
-      AppMethodBeat.i(204049);
-      this.dKi = 0;
-      this.FgV = 12000;
+      AppMethodBeat.i(217311);
+      this.fCX = 0;
+      this.LvA = 12000;
       int j = 12000 - WaidProvider.a(WaidProvider.this) * 4000;
       if (j < 2000) {}
       for (;;)
       {
-        this.FgV = i;
-        AppMethodBeat.o(204049);
+        this.LvA = i;
+        AppMethodBeat.o(217311);
         return;
         i = j;
       }
     }
     
-    private void flx()
+    private void fZT()
     {
-      AppMethodBeat.i(204051);
+      AppMethodBeat.i(217315);
       synchronized (WaidProvider.b(WaidProvider.this))
       {
-        com.tencent.mm.sdk.platformtools.Log.i("ad.waid.WaidProvider", "break Wait, waitTime=" + this.dKi);
+        com.tencent.mm.sdk.platformtools.Log.i("ad.waid.WaidProvider", "break Wait, waitTime=" + this.fCX);
         WaidProvider.c(WaidProvider.this);
         WaidProvider.b(WaidProvider.this).notifyAll();
-        AppMethodBeat.o(204051);
+        AppMethodBeat.o(217315);
         return;
       }
     }
     
     public final void run()
     {
-      AppMethodBeat.i(204050);
+      AppMethodBeat.i(217314);
       com.tencent.mm.sdk.platformtools.Log.i("ad.waid.WaidProvider", "CheckThread run, thread.hash=" + hashCode());
       for (;;)
       {
-        if (b.flv())
+        if (b.fZR())
         {
           com.tencent.mm.sdk.platformtools.Log.i("ad.waid.WaidProvider", "init done");
-          flx();
-          AppMethodBeat.o(204050);
+          fZT();
+          AppMethodBeat.o(217314);
           return;
         }
         com.tencent.mm.sdk.platformtools.Log.d("ad.waid.WaidProvider", "wait, delay=200");
         try
         {
           Thread.sleep(200L);
-          this.dKi += 200;
+          this.fCX += 200;
           label77:
-          if (this.dKi < this.FgV) {
+          if (this.fCX < this.LvA) {
             continue;
           }
-          com.tencent.mm.sdk.platformtools.Log.e("ad.waid.WaidProvider", "wait expired, expiredDuration=" + this.FgV);
-          flx();
-          AppMethodBeat.o(204050);
+          com.tencent.mm.sdk.platformtools.Log.e("ad.waid.WaidProvider", "wait expired, expiredDuration=" + this.LvA);
+          fZT();
+          AppMethodBeat.o(217314);
           return;
         }
         catch (Exception localException)

@@ -2,7 +2,8 @@ package com.tencent.mm.emoji.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.emoji.b.l;
-import com.tencent.mm.emoji.b.l.b;
+import com.tencent.mm.emoji.b.m;
+import com.tencent.mm.emoji.b.m.b;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 
 public final class g
@@ -12,25 +13,26 @@ public final class g
   {
     super(paramEmojiInfo, paramBoolean, parama);
     AppMethodBeat.i(104496);
-    new l(paramEmojiInfo, paramBoolean, paramEmojiInfo.field_attachedText, paramEmojiInfo.hRL(), paramEmojiInfo.field_imitateMd5).gXA = new l.b()
+    new m(paramEmojiInfo, paramBoolean, paramEmojiInfo.field_attachedText, paramEmojiInfo.ifg(), paramEmojiInfo.field_imitateMd5).jIy = new m.b()
     {
       public final void b(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(104495);
-        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
+        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0)) {
+          g.this.D(0, paramAnonymousString);
+        }
+        for (;;)
         {
-          g.this.C(0, paramAnonymousString);
+          paramAnonymousString = l.jIq;
+          l.aBO();
           AppMethodBeat.o(104495);
           return;
+          if (paramAnonymousBoolean) {
+            g.this.rP(2);
+          } else {
+            g.this.rP(paramAnonymousInt2);
+          }
         }
-        if (paramAnonymousBoolean)
-        {
-          g.this.pt(2);
-          AppMethodBeat.o(104495);
-          return;
-        }
-        g.this.pt(paramAnonymousInt2);
-        AppMethodBeat.o(104495);
       }
     };
     AppMethodBeat.o(104496);
@@ -38,7 +40,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.emoji.d.g
  * JD-Core Version:    0.7.0.1
  */

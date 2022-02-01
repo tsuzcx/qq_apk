@@ -10,27 +10,32 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.d;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.aa;
+import com.tencent.mm.ui.ad;
 import com.tencent.mm.ui.widget.MMSpinnerDatePicker;
 
 public class DatePickerDialogView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private CollectRadioBtnView qCh;
-  private CollectRadioBtnView qCi;
-  private CollectRadioBtnView qCj;
-  private MMSpinnerDatePicker qCk;
-  private TextView qCl;
-  private TextView qCm;
-  private int qCn;
+  private CollectRadioBtnView ubh;
+  private CollectRadioBtnView ubi;
+  private CollectRadioBtnView ubj;
+  private MMSpinnerDatePicker ubk;
+  private TextView ubl;
+  private TextView ubm;
+  private int ubn;
   
   public DatePickerDialogView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(64198);
-    this.qCn = 0;
+    this.ubn = 0;
     init(paramContext);
     AppMethodBeat.o(64198);
   }
@@ -39,7 +44,7 @@ public class DatePickerDialogView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(64199);
-    this.qCn = 0;
+    this.ubn = 0;
     init(paramContext);
     AppMethodBeat.o(64199);
   }
@@ -48,36 +53,36 @@ public class DatePickerDialogView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(64200);
-    this.qCn = 0;
+    this.ubn = 0;
     init(paramContext);
     AppMethodBeat.o(64200);
   }
   
-  private void cAH()
+  private void cPh()
   {
     AppMethodBeat.i(64203);
-    if (this.qCn == 2)
+    if (this.ubn == 2)
     {
-      this.qCh.setRadioSrc(2131691380);
-      this.qCi.setRadioSrc(2131691379);
-      this.qCj.setRadioSrc(2131691379);
+      this.ubh.setRadioSrc(a.h.radio_on);
+      this.ubi.setRadioSrc(a.h.radio_off);
+      this.ubj.setRadioSrc(a.h.radio_off);
     }
     for (;;)
     {
-      this.qCk.setPickerMode(this.qCn);
+      this.ubk.setPickerMode(this.ubn);
       AppMethodBeat.o(64203);
       return;
-      if (this.qCn == 1)
+      if (this.ubn == 1)
       {
-        this.qCh.setRadioSrc(2131691379);
-        this.qCi.setRadioSrc(2131691380);
-        this.qCj.setRadioSrc(2131691379);
+        this.ubh.setRadioSrc(a.h.radio_off);
+        this.ubi.setRadioSrc(a.h.radio_on);
+        this.ubj.setRadioSrc(a.h.radio_off);
       }
       else
       {
-        this.qCh.setRadioSrc(2131691379);
-        this.qCi.setRadioSrc(2131691379);
-        this.qCj.setRadioSrc(2131691380);
+        this.ubh.setRadioSrc(a.h.radio_off);
+        this.ubi.setRadioSrc(a.h.radio_off);
+        this.ubj.setRadioSrc(a.h.radio_on);
       }
     }
   }
@@ -85,28 +90,28 @@ public class DatePickerDialogView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(64201);
-    paramContext = aa.jQ(paramContext).inflate(2131493663, this);
-    this.qCh = ((CollectRadioBtnView)paramContext.findViewById(2131310680));
-    this.qCi = ((CollectRadioBtnView)paramContext.findViewById(2131304854));
-    this.qCj = ((CollectRadioBtnView)paramContext.findViewById(2131299422));
-    this.qCl = ((TextView)paramContext.findViewById(2131298990));
-    this.qCm = ((TextView)paramContext.findViewById(2131297963));
-    this.qCh.setOnClickListener(this);
-    this.qCi.setOnClickListener(this);
-    this.qCj.setOnClickListener(this);
-    this.qCh.setTitleText("年");
-    this.qCi.setTitleText("月");
-    this.qCj.setTitleText("日");
-    this.qCk = ((MMSpinnerDatePicker)paramContext.findViewById(2131299420));
-    this.qCk.gYR();
-    this.qCk.setTextSize(2131165535);
+    paramContext = ad.kS(paramContext).inflate(a.g.collect_bill_datepicker_dialog_view, this);
+    this.ubh = ((CollectRadioBtnView)paramContext.findViewById(a.f.year_btn));
+    this.ubi = ((CollectRadioBtnView)paramContext.findViewById(a.f.month_btn));
+    this.ubj = ((CollectRadioBtnView)paramContext.findViewById(a.f.day_btn));
+    this.ubl = ((TextView)paramContext.findViewById(a.f.confirm_btn));
+    this.ubm = ((TextView)paramContext.findViewById(a.f.cancel_btn));
+    this.ubh.setOnClickListener(this);
+    this.ubi.setOnClickListener(this);
+    this.ubj.setOnClickListener(this);
+    this.ubh.setTitleText("年");
+    this.ubi.setTitleText("月");
+    this.ubj.setTitleText("日");
+    this.ubk = ((MMSpinnerDatePicker)paramContext.findViewById(a.f.datepicker));
+    this.ubk.axD(a.c.transparent);
+    this.ubk.setTextSize(a.d.NormalTextSize);
     AppMethodBeat.o(64201);
   }
   
   public int getDatePickerMode()
   {
     AppMethodBeat.i(64210);
-    int i = this.qCk.getPickerMode();
+    int i = this.ubk.getPickerMode();
     AppMethodBeat.o(64210);
     return i;
   }
@@ -114,7 +119,7 @@ public class DatePickerDialogView
   public int getDayOfMonth()
   {
     AppMethodBeat.i(64209);
-    int i = this.qCk.getDayOfMonth();
+    int i = this.ubk.getDayOfMonth();
     AppMethodBeat.o(64209);
     return i;
   }
@@ -122,7 +127,7 @@ public class DatePickerDialogView
   public int getMonth()
   {
     AppMethodBeat.i(64208);
-    int i = this.qCk.getMonth();
+    int i = this.ubk.getMonth();
     AppMethodBeat.o(64208);
     return i;
   }
@@ -130,7 +135,7 @@ public class DatePickerDialogView
   public int getYear()
   {
     AppMethodBeat.i(64207);
-    int i = this.qCk.getYear();
+    int i = this.ubk.getYear();
     AppMethodBeat.o(64207);
     return i;
   }
@@ -139,22 +144,22 @@ public class DatePickerDialogView
   {
     AppMethodBeat.i(64202);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/collect/ui/DatePickerDialogView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/collect/ui/DatePickerDialogView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
     int i = paramView.getId();
-    if (i == 2131310680) {
-      this.qCn = 2;
+    if (i == a.f.year_btn) {
+      this.ubn = 2;
     }
     for (;;)
     {
-      cAH();
+      cPh();
       a.a(this, "com/tencent/mm/plugin/collect/ui/DatePickerDialogView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(64202);
       return;
-      if (i == 2131304854) {
-        this.qCn = 1;
-      } else if (i == 2131299422) {
-        this.qCn = 0;
+      if (i == a.f.month_btn) {
+        this.ubn = 1;
+      } else if (i == a.f.day_btn) {
+        this.ubn = 0;
       } else {
         Log.i("MicroMsg.DatePickerDialogView", "unhandled click view: %s", new Object[] { paramView.getClass().toString() });
       }
@@ -164,22 +169,22 @@ public class DatePickerDialogView
   public void setDatePickerMode(int paramInt)
   {
     AppMethodBeat.i(64204);
-    this.qCn = paramInt;
-    cAH();
+    this.ubn = paramInt;
+    cPh();
     AppMethodBeat.o(64204);
   }
   
   public void setOnCancelBtnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(64206);
-    this.qCm.setOnClickListener(paramOnClickListener);
+    this.ubm.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(64206);
   }
   
   public void setOnOkBtnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(64205);
-    this.qCl.setOnClickListener(paramOnClickListener);
+    this.ubl.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(64205);
   }
 }

@@ -16,29 +16,29 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class NewPullDownView
   extends View
 {
-  private float FSi;
-  private boolean FSo;
-  private float ONi;
-  private float ONj;
-  private Paint ONk;
-  private Paint ONl;
+  private float Mnm;
+  private boolean Mns;
+  private float WgG;
+  private float WgH;
+  private Paint WgI;
+  private Paint WgJ;
   
   public NewPullDownView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(33826);
-    this.FSi = 0.0F;
-    this.FSo = false;
-    this.ONi = (20.0F * getResources().getDisplayMetrics().density);
-    this.ONj = (14.0F * getResources().getDisplayMetrics().density - getResources().getDisplayMetrics().density * 4.0F);
-    this.ONk = new Paint(1);
-    this.ONk.setStyle(Paint.Style.FILL);
-    this.ONk.setColor(-4408132);
-    this.ONl = new Paint(1);
-    this.ONl.setStyle(Paint.Style.STROKE);
-    this.ONl.setColor(0);
-    this.ONl.setStrokeWidth(getResources().getDisplayMetrics().density * 4.0F);
-    this.ONl.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    this.Mnm = 0.0F;
+    this.Mns = false;
+    this.WgG = (20.0F * getResources().getDisplayMetrics().density);
+    this.WgH = (14.0F * getResources().getDisplayMetrics().density - getResources().getDisplayMetrics().density * 4.0F);
+    this.WgI = new Paint(1);
+    this.WgI.setStyle(Paint.Style.FILL);
+    this.WgI.setColor(-4408132);
+    this.WgJ = new Paint(1);
+    this.WgJ.setStyle(Paint.Style.STROKE);
+    this.WgJ.setColor(0);
+    this.WgJ.setStrokeWidth(getResources().getDisplayMetrics().density * 4.0F);
+    this.WgJ.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
     AppMethodBeat.o(33826);
   }
   
@@ -49,9 +49,9 @@ public class NewPullDownView
     float f1 = getMeasuredWidth() / 2;
     float f2 = getMeasuredHeight() / 2;
     paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null, 31);
-    paramCanvas.drawCircle(f1, f2, this.FSi * this.ONi / 2.0F, this.ONk);
-    if (this.FSi >= 0.4F) {
-      paramCanvas.drawCircle(f1, f2, (this.FSi - 0.4F) / 0.6F * this.ONj / 2.0F, this.ONl);
+    paramCanvas.drawCircle(f1, f2, this.Mnm * this.WgG / 2.0F, this.WgI);
+    if (this.Mnm >= 0.4F) {
+      paramCanvas.drawCircle(f1, f2, (this.Mnm - 0.4F) / 0.6F * this.WgH / 2.0F, this.WgJ);
     }
     paramCanvas.restore();
     AppMethodBeat.o(33827);
@@ -62,17 +62,17 @@ public class NewPullDownView
     AppMethodBeat.i(33828);
     Log.i("MicroMsg.PullDownView", "[setVerticalScrollPercent] percent:%s", new Object[] { Float.valueOf(paramFloat) });
     float f = paramFloat;
-    if (this.FSo) {
+    if (this.Mns) {
       f = 1.0F - paramFloat;
     }
-    this.FSi = Math.max(0.0F, Math.min(f, 1.0F));
+    this.Mnm = Math.max(0.0F, Math.min(f, 1.0F));
     postInvalidate();
     AppMethodBeat.o(33828);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.appbrand.NewPullDownView
  * JD-Core Version:    0.7.0.1
  */

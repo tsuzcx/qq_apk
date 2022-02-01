@@ -1,17 +1,19 @@
 package io.flutter.embedding.engine;
 
 import android.content.Context;
+import android.content.pm.PackageManager.NameNotFoundException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.embedding.engine.c.d;
-import io.flutter.embedding.engine.c.e;
-import io.flutter.embedding.engine.c.f;
-import io.flutter.embedding.engine.c.g;
-import io.flutter.embedding.engine.c.i;
-import io.flutter.embedding.engine.c.j;
-import io.flutter.embedding.engine.c.k;
-import io.flutter.embedding.engine.c.l;
-import io.flutter.embedding.engine.c.m;
+import io.flutter.embedding.engine.b.d;
+import io.flutter.embedding.engine.b.e;
+import io.flutter.embedding.engine.b.f;
+import io.flutter.embedding.engine.b.g;
+import io.flutter.embedding.engine.b.h;
+import io.flutter.embedding.engine.b.j;
+import io.flutter.embedding.engine.b.k;
+import io.flutter.embedding.engine.b.l;
+import io.flutter.embedding.engine.b.m;
 import io.flutter.embedding.engine.dart.DartExecutor;
+import io.flutter.embedding.engine.deferredcomponents.DeferredComponentManager;
 import io.flutter.plugin.platform.PlatformViewsController;
 import java.lang.reflect.Method;
 import java.util.HashSet;
@@ -20,25 +22,25 @@ import java.util.Set;
 
 public class a
 {
-  public final io.flutter.embedding.engine.c.b SMo;
-  public final io.flutter.embedding.engine.b.a SMr;
-  private final FlutterJNI SNV;
-  public final DartExecutor SNW;
-  public final c SNX;
-  public final io.flutter.embedding.engine.c.a SNY;
-  public final io.flutter.embedding.engine.c.c SNZ;
-  private final d SOa;
-  public final e SOb;
-  public final f SOc;
-  public final i SOd;
-  public final g SOe;
-  private final k SOf;
-  public final j SOg;
-  public final l SOh;
-  public final m SOi;
-  private final a SOj;
+  public final io.flutter.embedding.engine.b.c aaon;
+  public final io.flutter.embedding.engine.renderer.a aaos;
+  private final FlutterJNI aapT;
+  public final DartExecutor aapU;
+  public final c aapV;
+  public final io.flutter.embedding.engine.b.a aapW;
+  private final io.flutter.embedding.engine.b.b aapX;
+  public final d aapY;
+  private final e aapZ;
+  public final f aaqa;
+  public final g aaqb;
+  public final j aaqc;
+  public final h aaqd;
+  public final k aaqe;
+  public final l aaqf;
+  public final m aaqg;
+  private final a aaqh;
   private final Set<a> engineLifecycleListeners;
-  public final io.flutter.plugin.c.a localizationPlugin;
+  public final io.flutter.plugin.b.a localizationPlugin;
   public final PlatformViewsController platformViewsController;
   
   public a(Context paramContext)
@@ -50,125 +52,153 @@ public class a
   
   private a(Context paramContext, byte paramByte)
   {
-    this(paramContext, io.flutter.embedding.engine.a.a.hwT(), new FlutterJNI(), true);
-    AppMethodBeat.i(214941);
-    AppMethodBeat.o(214941);
+    this(paramContext, new FlutterJNI(), true);
+    AppMethodBeat.i(254763);
+    AppMethodBeat.o(254763);
   }
   
   public a(Context paramContext, char paramChar)
   {
-    this(paramContext, io.flutter.embedding.engine.a.a.hwT(), new FlutterJNI(), false);
-    AppMethodBeat.i(214942);
-    AppMethodBeat.o(214942);
+    this(paramContext, new FlutterJNI(), false);
+    AppMethodBeat.i(254764);
+    AppMethodBeat.o(254764);
   }
   
-  private a(Context paramContext, io.flutter.embedding.engine.a.a parama, FlutterJNI paramFlutterJNI, PlatformViewsController paramPlatformViewsController, String[] paramArrayOfString, boolean paramBoolean)
+  private a(Context paramContext, FlutterJNI paramFlutterJNI, PlatformViewsController paramPlatformViewsController, String[] paramArrayOfString, boolean paramBoolean)
   {
-    this(paramContext, parama, paramFlutterJNI, paramPlatformViewsController, null, paramBoolean, false);
+    this(paramContext, null, paramFlutterJNI, paramPlatformViewsController, null, paramBoolean, false);
   }
   
-  private a(Context paramContext, io.flutter.embedding.engine.a.a parama, FlutterJNI paramFlutterJNI, PlatformViewsController paramPlatformViewsController, String[] paramArrayOfString, boolean paramBoolean1, boolean paramBoolean2)
+  private a(Context paramContext, FlutterJNI paramFlutterJNI, boolean paramBoolean)
   {
-    AppMethodBeat.i(214945);
+    this(paramContext, paramFlutterJNI, new PlatformViewsController(), null, paramBoolean);
+    AppMethodBeat.i(254766);
+    AppMethodBeat.o(254766);
+  }
+  
+  private a(Context paramContext, io.flutter.embedding.engine.a.c paramc, FlutterJNI paramFlutterJNI, PlatformViewsController paramPlatformViewsController, String[] paramArrayOfString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(254769);
     this.engineLifecycleListeners = new HashSet();
-    this.SOj = new a()
+    this.aaqh = new a()
     {
       public final void onPreEngineRestart()
       {
         AppMethodBeat.i(10115);
-        io.flutter.a.hwd();
+        io.flutter.b.iAd();
         Iterator localIterator = a.e(a.this).iterator();
         while (localIterator.hasNext()) {
           ((a.a)localIterator.next()).onPreEngineRestart();
         }
-        a.f(a.this).hxs();
-        a.g(a.this).SRe = null;
+        a.f(a.this).iBw();
+        a.g(a.this).aatD = null;
         AppMethodBeat.o(10115);
       }
     };
-    this.SNW = new DartExecutor(paramFlutterJNI, paramContext.getAssets());
-    this.SNW.onAttachedToJNI();
-    this.SNY = new io.flutter.embedding.engine.c.a(this.SNW, paramFlutterJNI);
-    this.SMo = new io.flutter.embedding.engine.c.b(this.SNW);
-    this.SNZ = new io.flutter.embedding.engine.c.c(this.SNW);
-    this.SOa = new d(this.SNW);
-    this.SOb = new e(this.SNW);
-    this.SOc = new f(this.SNW);
-    this.SOe = new g(this.SNW);
-    this.SOd = new i(this.SNW, paramBoolean2);
-    this.SOf = new k(this.SNW);
-    this.SOg = new j(this.SNW);
-    this.SOh = new l(this.SNW);
-    this.SOi = new m(this.SNW);
-    this.localizationPlugin = new io.flutter.plugin.c.a(paramContext, this.SOa);
-    this.SNV = paramFlutterJNI;
-    parama.startInitialization(paramContext.getApplicationContext());
-    parama.ensureInitializationComplete(paramContext, paramArrayOfString);
-    paramFlutterJNI.addEngineLifecycleListener(this.SOj);
-    paramFlutterJNI.setPlatformViewsController(paramPlatformViewsController);
-    paramFlutterJNI.setLocalizationPlugin(this.localizationPlugin);
-    io.flutter.a.hwd();
-    this.SNV.attachToNative(false);
-    if (!this.SNV.isAttached())
+    try
     {
-      paramContext = new RuntimeException("FlutterEngine failed to attach to its native Object reference.");
-      AppMethodBeat.o(214945);
-      throw paramContext;
-    }
-    this.SMr = new io.flutter.embedding.engine.b.a(paramFlutterJNI);
-    this.platformViewsController = paramPlatformViewsController;
-    this.platformViewsController.onAttachedToJNI();
-    this.SNX = new c(paramContext.getApplicationContext(), this, parama);
-    if (paramBoolean1) {
-      try
-      {
-        Class.forName("io.flutter.plugins.GeneratedPluginRegistrant").getDeclaredMethod("registerWith", new Class[] { a.class }).invoke(null, new Object[] { this });
-        AppMethodBeat.o(214945);
-        return;
+      paramc = paramContext.createPackageContext(paramContext.getPackageName(), 0).getAssets();
+      this.aapU = new DartExecutor(paramFlutterJNI, paramc);
+      this.aapU.onAttachedToJNI();
+      paramc = io.flutter.a.iAc().deferredComponentManager;
+      this.aapW = new io.flutter.embedding.engine.b.a(this.aapU, paramFlutterJNI);
+      this.aapX = new io.flutter.embedding.engine.b.b(this.aapU);
+      this.aaon = new io.flutter.embedding.engine.b.c(this.aapU);
+      this.aapY = new d(this.aapU);
+      this.aapZ = new e(this.aapU);
+      this.aaqa = new f(this.aapU);
+      this.aaqb = new g(this.aapU);
+      this.aaqd = new h(this.aapU);
+      this.aaqc = new j(this.aapU, paramBoolean2);
+      this.aaqe = new k(this.aapU);
+      this.aaqf = new l(this.aapU);
+      this.aaqg = new m(this.aapU);
+      if (paramc != null) {
+        paramc.a(this.aapX);
       }
-      catch (Exception paramContext)
+      this.localizationPlugin = new io.flutter.plugin.b.a(paramContext, this.aapZ);
+      this.aapT = paramFlutterJNI;
+      paramc = io.flutter.a.iAc().aanR;
+      if (!paramFlutterJNI.isAttached())
       {
-        new StringBuilder("Tried to automatically register plugins with FlutterEngine (").append(this).append(") but could not find and invoke the GeneratedPluginRegistrant.");
-        io.flutter.a.hwf();
+        paramc.startInitialization(paramContext.getApplicationContext());
+        paramc.ensureInitializationComplete(paramContext, paramArrayOfString);
+      }
+      paramFlutterJNI.addEngineLifecycleListener(this.aaqh);
+      paramFlutterJNI.setPlatformViewsController(paramPlatformViewsController);
+      paramFlutterJNI.setLocalizationPlugin(this.localizationPlugin);
+      paramFlutterJNI.setDeferredComponentManager(io.flutter.a.iAc().deferredComponentManager);
+      if (!paramFlutterJNI.isAttached())
+      {
+        io.flutter.b.iAd();
+        this.aapT.attachToNative(false);
+        if (!this.aapT.isAttached())
+        {
+          paramContext = new RuntimeException("FlutterEngine failed to attach to its native Object reference.");
+          AppMethodBeat.o(254769);
+          throw paramContext;
+        }
       }
     }
-    AppMethodBeat.o(214945);
-  }
-  
-  private a(Context paramContext, io.flutter.embedding.engine.a.a parama, FlutterJNI paramFlutterJNI, boolean paramBoolean)
-  {
-    this(paramContext, parama, paramFlutterJNI, new PlatformViewsController(), null, paramBoolean);
-    AppMethodBeat.i(214944);
-    AppMethodBeat.o(214944);
+    catch (PackageManager.NameNotFoundException paramc)
+    {
+      for (;;)
+      {
+        paramc = paramContext.getAssets();
+      }
+      this.aaos = new io.flutter.embedding.engine.renderer.a(paramFlutterJNI);
+      this.platformViewsController = paramPlatformViewsController;
+      this.platformViewsController.onAttachedToJNI();
+      this.aapV = new c(paramContext.getApplicationContext(), this, paramc);
+      if (paramBoolean1) {
+        try
+        {
+          Class.forName("io.flutter.plugins.GeneratedPluginRegistrant").getDeclaredMethod("registerWith", new Class[] { a.class }).invoke(null, new Object[] { this });
+          AppMethodBeat.o(254769);
+          return;
+        }
+        catch (Exception paramContext)
+        {
+          new StringBuilder("Tried to automatically register plugins with FlutterEngine (").append(this).append(") but could not find and invoke the GeneratedPluginRegistrant.");
+          io.flutter.b.iAf();
+        }
+      }
+      AppMethodBeat.o(254769);
+    }
   }
   
   public a(Context paramContext, String[] paramArrayOfString, boolean paramBoolean)
   {
-    this(paramContext, io.flutter.embedding.engine.a.a.hwT(), new FlutterJNI(), new PlatformViewsController(), paramArrayOfString, false, paramBoolean);
-    AppMethodBeat.i(214943);
-    AppMethodBeat.o(214943);
+    this(paramContext, null, new FlutterJNI(), new PlatformViewsController(), paramArrayOfString, false, paramBoolean);
+    AppMethodBeat.i(254765);
+    AppMethodBeat.o(254765);
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(10181);
-    io.flutter.a.hwd();
-    this.SNX.destroy();
+    io.flutter.b.iAd();
+    Iterator localIterator = this.engineLifecycleListeners.iterator();
+    while (localIterator.hasNext()) {
+      localIterator.next();
+    }
+    this.aapV.destroy();
     this.platformViewsController.onDetachedFromJNI();
-    this.SNW.onDetachedFromJNI();
-    this.SNV.removeEngineLifecycleListener(this.SOj);
-    this.SNV.detachFromNativeAndReleaseResources();
+    this.aapU.onDetachedFromJNI();
+    this.aapT.removeEngineLifecycleListener(this.aaqh);
+    this.aapT.setDeferredComponentManager(null);
+    this.aapT.detachFromNativeAndReleaseResources();
+    if (io.flutter.a.iAc().deferredComponentManager != null)
+    {
+      io.flutter.a.iAc().deferredComponentManager.destroy();
+      this.aapX.deferredComponentManager = null;
+    }
     AppMethodBeat.o(10181);
   }
   
   public final DartExecutor getDartExecutor()
   {
-    return this.SNW;
-  }
-  
-  public final io.flutter.embedding.engine.plugins.b hwF()
-  {
-    return this.SNX;
+    return this.aapU;
   }
   
   public static abstract interface a

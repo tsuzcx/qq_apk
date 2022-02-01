@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.choosemsgfile.b.b;
 
-import android.support.v7.widget.RecyclerView.v;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,24 +9,27 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.choosemsgfile.a.e;
+import com.tencent.mm.plugin.choosemsgfile.a.f;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
 
 public final class n
   extends RecyclerView.v
 {
-  public final ImageView gBZ;
-  public final CheckBox gxr;
-  public final TextView gxs;
-  public final ImageView gyr;
-  public final TextView hPW;
-  public final View jWr;
-  public final ProgressBar kdb;
-  public final LinearLayout qnZ;
-  public final MMPinProgressBtn qoc;
-  public final ImageView qoj;
-  public final View qol;
+  public final CheckBox jbE;
+  public final TextView jbF;
+  public final ImageView jiu;
+  public final ImageView jmf;
+  public final TextView kEs;
+  public final View mND;
+  public final ProgressBar mUB;
+  public final LinearLayout tMH;
+  public final MMPinProgressBtn tMK;
+  public final ImageView tMR;
+  public final View tMT;
   public final TextView timeTv;
   public final TextView titleTv;
   
@@ -35,27 +37,27 @@ public final class n
   {
     super(paramView);
     AppMethodBeat.i(123305);
-    this.qnZ = ((LinearLayout)paramView.findViewById(2131299179));
-    this.gyr = ((ImageView)paramView.findViewById(2131297134));
-    this.gxs = ((TextView)paramView.findViewById(2131305220));
-    this.timeTv = ((TextView)paramView.findViewById(2131309101));
-    this.gxr = ((CheckBox)paramView.findViewById(2131307508));
-    this.qol = paramView.findViewById(2131307526);
-    this.qoj = ((ImageView)paramView.findViewById(2131300158));
-    this.gBZ = ((ImageView)paramView.findViewById(2131302497));
-    this.titleTv = ((TextView)paramView.findViewById(2131309249));
-    this.hPW = ((TextView)paramView.findViewById(2131299567));
-    this.qoc = ((MMPinProgressBtn)paramView.findViewById(2131299794));
-    this.kdb = ((ProgressBar)paramView.findViewById(2131303709));
-    this.jWr = paramView.findViewById(2131299682);
-    this.qnZ.setOnClickListener(new View.OnClickListener()
+    this.tMH = ((LinearLayout)paramView.findViewById(a.e.container_ll));
+    this.jiu = ((ImageView)paramView.findViewById(a.e.avatar_iv));
+    this.jbF = ((TextView)paramView.findViewById(a.e.name_tv));
+    this.timeTv = ((TextView)paramView.findViewById(a.e.time_tv));
+    this.jbE = ((CheckBox)paramView.findViewById(a.e.select_cb));
+    this.tMT = paramView.findViewById(a.e.select_fl);
+    this.tMR = ((ImageView)paramView.findViewById(a.e.error_iv));
+    this.jmf = ((ImageView)paramView.findViewById(a.e.icon_iv));
+    this.titleTv = ((TextView)paramView.findViewById(a.e.title_tv));
+    this.kEs = ((TextView)paramView.findViewById(a.e.detail_tv));
+    this.tMK = ((MMPinProgressBtn)paramView.findViewById(a.e.downloading_pb));
+    this.mUB = ((ProgressBar)paramView.findViewById(a.e.loading_pb));
+    this.mND = paramView.findViewById(a.e.divider);
+    this.tMH.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(123303);
         Object localObject = new b();
-        ((b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/choosemsgfile/logic/model/ViewHolderList$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+        ((b)localObject).bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/choosemsgfile/logic/model/ViewHolderList$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
         localObject = (a)paramAnonymousView.getTag();
         if (localObject == null)
         {
@@ -68,14 +70,14 @@ public final class n
         AppMethodBeat.o(123303);
       }
     });
-    this.qol.setOnClickListener(new View.OnClickListener()
+    this.tMT.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(123304);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/choosemsgfile/logic/model/ViewHolderList$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/choosemsgfile/logic/model/ViewHolderList$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         paramAnonymousView = (a)paramAnonymousView.getTag();
         if (paramAnonymousView == null)
         {
@@ -83,12 +85,12 @@ public final class n
           AppMethodBeat.o(123304);
           return;
         }
-        if (!n.this.gxr.isChecked()) {}
+        if (!n.this.jbE.isChecked()) {}
         for (boolean bool = true;; bool = false)
         {
           if (paramAnonymousView.isEnable())
           {
-            n.this.gxr.setChecked(bool);
+            n.this.jbE.setChecked(bool);
             paramAnonymousView.a(bool, paramAnonymousView, n.this);
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/choosemsgfile/logic/model/ViewHolderList$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -100,17 +102,17 @@ public final class n
     AppMethodBeat.o(123305);
   }
   
-  public static RecyclerView.v o(ViewGroup paramViewGroup)
+  public static RecyclerView.v p(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(123306);
-    paramViewGroup = new n(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131493645, paramViewGroup, false));
-    AppMethodBeat.o(123306);
+    AppMethodBeat.i(243276);
+    paramViewGroup = new n(LayoutInflater.from(paramViewGroup.getContext()).inflate(a.f.choose_msg_file_list_item, paramViewGroup, false));
+    AppMethodBeat.o(243276);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.n
  * JD-Core Version:    0.7.0.1
  */

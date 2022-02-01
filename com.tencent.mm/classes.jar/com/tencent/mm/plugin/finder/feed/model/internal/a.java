@@ -1,108 +1,54 @@
 package com.tencent.mm.plugin.finder.feed.model.internal;
 
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.plugin.finder.model.bo;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import kotlin.g.b.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.cm;
+import com.tencent.mm.plugin.finder.feed.model.o;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/internal/DataFetchNetscene;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "map", "", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "alive", "", "callInit", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "dead", "dealOnSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "fetch", "netscene", "", "callback", "fetchInit", "fetchLoadMore", "fetchPreload", "fetchRefresh", "genLoadMoreNetScene", "genRefreshNetScene", "getCmdIds", "", "onSceneEnd", "plugin-finder_release"})
-public abstract class a
-  extends g<bo>
-  implements i
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/AdCache;", "Lcom/tencent/mm/plugin/finder/feed/model/IFinderCache;", "cacheId", "", "(J)V", "createTime", "getCreateTime", "()J", "expireLimit", "getExpireLimit", "setExpireLimit", "id", "isValid", "", "Companion", "plugin-finder-base_release"})
+public class a
+  implements o
 {
-  private final Map<q, f<bo>> map = (Map)new LinkedHashMap();
+  public static final a xKd;
+  private final long createTime;
+  private long xKb;
+  private final long xKc;
   
-  public void alive()
+  static
   {
-    super.alive();
-    Iterator localIterator = ((Iterable)getCmdIds()).iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(260385);
+    xKd = new a((byte)0);
+    AppMethodBeat.o(260385);
+  }
+  
+  public a(long paramLong)
+  {
+    AppMethodBeat.i(260382);
+    this.xKc = paramLong;
+    this.createTime = cm.bfE();
+    this.xKb = 259200000L;
+    AppMethodBeat.o(260382);
+  }
+  
+  public final long dux()
+  {
+    return this.xKc;
+  }
+  
+  public final boolean isValid()
+  {
+    AppMethodBeat.i(260380);
+    if (cm.bfE() - this.createTime < this.xKb)
     {
-      int i = ((Number)localIterator.next()).intValue();
-      com.tencent.mm.kernel.g.azz().a(i, (i)this);
+      AppMethodBeat.o(260380);
+      return true;
     }
+    AppMethodBeat.o(260380);
+    return false;
   }
   
-  public IResponse<bo> callInit()
-  {
-    return (IResponse)new c();
-  }
-  
-  public void dead()
-  {
-    super.dead();
-    Iterator localIterator = ((Iterable)getCmdIds()).iterator();
-    while (localIterator.hasNext())
-    {
-      int i = ((Number)localIterator.next()).intValue();
-      com.tencent.mm.kernel.g.azz().b(i, (i)this);
-    }
-  }
-  
-  public abstract IResponse<bo> dealOnSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq);
-  
-  public void fetch(Object paramObject, f<bo> paramf)
-  {
-    p.h(paramf, "callback");
-    if ((paramObject != null) && ((paramObject instanceof q)))
-    {
-      this.map.put(paramObject, paramf);
-      com.tencent.mm.kernel.g.azz().b((q)paramObject);
-    }
-  }
-  
-  public void fetchInit(f<bo> paramf)
-  {
-    p.h(paramf, "callback");
-    IResponse localIResponse = callInit();
-    localIResponse.setPullType(1000);
-    paramf.onFetchDone(localIResponse);
-  }
-  
-  public void fetchLoadMore(f<bo> paramf)
-  {
-    p.h(paramf, "callback");
-    fetch(genLoadMoreNetScene(), paramf);
-  }
-  
-  public void fetchPreload(f<bo> paramf)
-  {
-    p.h(paramf, "callback");
-    super.fetchPreload(paramf);
-    fetch(genRefreshNetScene(), paramf);
-  }
-  
-  public void fetchRefresh(f<bo> paramf)
-  {
-    p.h(paramf, "callback");
-    fetch(genRefreshNetScene(), paramf);
-  }
-  
-  public abstract q genLoadMoreNetScene();
-  
-  public abstract q genRefreshNetScene();
-  
-  public abstract List<Integer> getCmdIds();
-  
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
-  {
-    p.h(paramq, "scene");
-    f localf = (f)this.map.get(paramq);
-    if (localf != null)
-    {
-      this.map.remove(paramq);
-      paramString = dealOnSceneEnd(paramInt1, paramInt2, paramString, paramq);
-      if (paramString != null) {
-        localf.onFetchDone(paramString);
-      }
-    }
-  }
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/AdCache$Companion;", "", "()V", "EXPIRE_LIMIT", "", "plugin-finder-base_release"})
+  public static final class a {}
 }
 
 

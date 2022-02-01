@@ -1,52 +1,52 @@
 package kotlin.l.b.a.b.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l.b.a.b.h.j.a;
-import kotlin.l.b.a.b.h.j.b;
+import kotlin.l.b.a.b.h.k.a;
+import kotlin.l.b.a.b.h.k.b;
 
 public enum a$w
-  implements j.a
+  implements k.a
 {
-  private static j.b<w> Txp;
+  private static k.b<w> abag;
   private final int value;
   
   static
   {
     AppMethodBeat.i(59045);
-    TAs = new w("INTERNAL", 0, 0);
-    TAt = new w("PRIVATE", 1, 1);
-    TAu = new w("PROTECTED", 2, 2);
-    TAv = new w("PUBLIC", 3, 3);
-    TAw = new w("PRIVATE_TO_THIS", 4, 4);
-    TAx = new w("LOCAL", 5, 5);
-    TAy = new w[] { TAs, TAt, TAu, TAv, TAw, TAx };
-    Txp = new j.b() {};
+    abdj = new w("INTERNAL", 0, 0);
+    abdk = new w("PRIVATE", 1, 1);
+    abdl = new w("PROTECTED", 2, 2);
+    abdm = new w("PUBLIC", 3, 3);
+    abdn = new w("PRIVATE_TO_THIS", 4, 4);
+    abdo = new w("LOCAL", 5, 5);
+    abdp = new w[] { abdj, abdk, abdl, abdm, abdn, abdo };
+    abag = new k.b() {};
     AppMethodBeat.o(59045);
   }
   
-  private a$w(int paramInt1, int paramInt2)
+  private a$w(int paramInt)
   {
-    this.value = paramInt1;
+    this.value = paramInt;
   }
   
-  public static w avj(int paramInt)
+  public static w aFd(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 0: 
-      return TAs;
+      return abdj;
     case 1: 
-      return TAt;
+      return abdk;
     case 2: 
-      return TAu;
+      return abdl;
     case 3: 
-      return TAv;
+      return abdm;
     case 4: 
-      return TAw;
+      return abdn;
     }
-    return TAx;
+    return abdo;
   }
   
   public final int getNumber()
@@ -56,7 +56,7 @@ public enum a$w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.e.a.w
  * JD-Core Version:    0.7.0.1
  */

@@ -8,24 +8,24 @@ import kotlin.l;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/config/AppBrandAppConfigTrimHelper;", "", "()V", "TAG", "", "trimOffInjectConfigFields", "", "appId", "injectConfig", "Lorg/json/JSONObject;", "pruneWxConfigByPage", "", "luggage-wxa-app_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/config/AppBrandAppConfigTrimHelper;", "", "()V", "TAG", "", "trimOffInjectConfigFields", "", "appId", "injectConfig", "Lorg/json/JSONObject;", "pruneWxConfigByPage", "", "luggage-wxa-app_release"})
 public final class c
 {
-  public static final c lcF;
+  public static final c nWO;
   
   static
   {
     AppMethodBeat.i(135557);
-    lcF = new c();
+    nWO = new c();
     AppMethodBeat.o(135557);
   }
   
-  public static final void a(String paramString, JSONObject paramJSONObject, boolean paramBoolean)
+  public static final void c(String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
     int j = 0;
     AppMethodBeat.i(135556);
-    p.h(paramString, "appId");
-    p.h(paramJSONObject, "injectConfig");
+    p.k(paramString, "appId");
+    p.k(paramJSONObject, "injectConfig");
     long l1 = Util.nowMilliSecond();
     Object localObject = paramJSONObject.optJSONObject("tabBar");
     int k;

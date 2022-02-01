@@ -16,7 +16,7 @@ public final class n$3
   public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
     AppMethodBeat.i(31923);
-    paramView = this.Krl.iterator();
+    paramView = this.Rss.iterator();
     while (paramView.hasNext()) {
       paramContextMenu.add(0, 0, 0, (String)paramView.next());
     }

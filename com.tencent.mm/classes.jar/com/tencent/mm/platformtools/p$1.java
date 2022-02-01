@@ -1,7 +1,7 @@
 package com.tencent.mm.platformtools;
 
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.Executor;
 
@@ -10,9 +10,9 @@ final class p$1
 {
   public final void execute(Runnable paramRunnable)
   {
-    AppMethodBeat.i(223653);
-    h.RTc.aX(paramRunnable);
-    AppMethodBeat.o(223653);
+    AppMethodBeat.i(199054);
+    h.ZvG.d(paramRunnable, "MicroMsg.ExportFileUtil");
+    AppMethodBeat.o(199054);
   }
 }
 

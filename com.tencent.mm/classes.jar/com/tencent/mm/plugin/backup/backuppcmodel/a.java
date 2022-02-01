@@ -18,28 +18,28 @@ public final class a
   implements b.a
 {
   private Object lock;
-  public long oLe;
-  private LinkedList<f.b> oLf;
-  private LinkedList<f.b> oLg;
-  private LinkedList<f.b> oLh;
-  public boolean oLi;
-  com.tencent.mm.plugin.backup.c.b oMd;
-  public boolean oOb;
-  public b.a oOc;
+  public long rMU;
+  private LinkedList<f.b> rMV;
+  private LinkedList<f.b> rMW;
+  private LinkedList<f.b> rMX;
+  public boolean rMY;
+  com.tencent.mm.plugin.backup.c.b rNY;
+  public boolean rPY;
+  public b.a rPZ;
   
   public a()
   {
     AppMethodBeat.i(21537);
-    this.oOb = false;
+    this.rPY = false;
     this.lock = new Object();
-    this.oLf = null;
-    this.oLg = null;
-    this.oLh = null;
-    this.oLi = false;
+    this.rMV = null;
+    this.rMW = null;
+    this.rMX = null;
+    this.rMY = false;
     AppMethodBeat.o(21537);
   }
   
-  private static long F(LinkedList<f.b> paramLinkedList)
+  private static long G(LinkedList<f.b> paramLinkedList)
   {
     AppMethodBeat.i(21538);
     long l1 = 0L;
@@ -49,16 +49,16 @@ public final class a
       l2 = l1;
       if (paramLinkedList.size() > 0)
       {
-        l1 = ((f.b)paramLinkedList.get(0)).oJr;
+        l1 = ((f.b)paramLinkedList.get(0)).rLh;
         paramLinkedList = paramLinkedList.iterator();
         l2 = l1;
         if (paramLinkedList.hasNext())
         {
           f.b localb = (f.b)paramLinkedList.next();
-          if (l1 <= localb.oJr) {
+          if (l1 <= localb.rLh) {
             break label89;
           }
-          l1 = localb.oJr;
+          l1 = localb.rLh;
         }
       }
     }
@@ -71,72 +71,72 @@ public final class a
     }
   }
   
-  private LinkedList<f.b> cfs()
+  private LinkedList<f.b> csF()
   {
     AppMethodBeat.i(21543);
-    if (this.oLh == null) {
-      this.oLh = new LinkedList();
+    if (this.rMX == null) {
+      this.rMX = new LinkedList();
     }
-    LinkedList localLinkedList = this.oLh;
+    LinkedList localLinkedList = this.rMX;
     AppMethodBeat.o(21543);
     return localLinkedList;
   }
   
-  public final void C(LinkedList<f.b> paramLinkedList)
+  public final void D(LinkedList<f.b> paramLinkedList)
   {
     AppMethodBeat.i(21545);
     if (paramLinkedList == null) {}
     for (int i = -1;; i = paramLinkedList.size())
     {
       Log.i("MicroMsg.BackupPcChooseServer", "onCalcuConvFinish, conv size[%d]", new Object[] { Integer.valueOf(i) });
-      this.oLi = true;
+      this.rMY = true;
       if ((paramLinkedList != null) && (paramLinkedList.size() != 0)) {
         break;
       }
-      if (this.oOc != null) {
-        this.oOc.C(paramLinkedList);
+      if (this.rPZ != null) {
+        this.rPZ.D(paramLinkedList);
       }
-      if (this.oOb)
+      if (this.rPY)
       {
-        paramLinkedList = b.cga().cgc();
-        e.oOE = true;
-        paramLinkedList.oMe.cff();
-        b.cga().cfw().stop();
-        b.cga().ceM().oJc = -23;
-        b.cga().cgc().xI(-23);
+        paramLinkedList = b.ctm().cto();
+        e.rQB = true;
+        paramLinkedList.rNZ.css();
+        b.ctm().csJ().stop();
+        b.ctm().crZ().rKS = -23;
+        b.ctm().cto().Bg(-23);
       }
       AppMethodBeat.o(21545);
       return;
     }
-    this.oLf = new LinkedList(paramLinkedList);
-    this.oLe = F(this.oLf);
-    b.cga();
-    SharedPreferences localSharedPreferences = b.ceR();
-    a(localSharedPreferences.getInt("BACKUP_PC_CHOOSE_SELECT_TIME_MODE", 0), localSharedPreferences.getLong("BACKUP_PC_CHOOSE_SELECT_START_TIME", 0L), localSharedPreferences.getLong("BACKUP_PC_CHOOSE_SELECT_END_TIME", 0L), cfq());
-    Log.i("MicroMsg.BackupPcChooseServer", "onCalcuConvFinish, calAllConvNames size[%d], showConvNames size[%d]", new Object[] { Integer.valueOf(paramLinkedList.size()), Integer.valueOf(cfr().size()) });
-    if (this.oOb)
+    this.rMV = new LinkedList(paramLinkedList);
+    this.rMU = G(this.rMV);
+    b.ctm();
+    SharedPreferences localSharedPreferences = b.cse();
+    a(localSharedPreferences.getInt("BACKUP_PC_CHOOSE_SELECT_TIME_MODE", 0), localSharedPreferences.getLong("BACKUP_PC_CHOOSE_SELECT_START_TIME", 0L), localSharedPreferences.getLong("BACKUP_PC_CHOOSE_SELECT_END_TIME", 0L), csD());
+    Log.i("MicroMsg.BackupPcChooseServer", "onCalcuConvFinish, calAllConvNames size[%d], showConvNames size[%d]", new Object[] { Integer.valueOf(paramLinkedList.size()), Integer.valueOf(csE().size()) });
+    if (this.rPY)
     {
-      H(cfr());
-      b.cga().cgc().G(g.B(cfs()));
-      b.cga().cgc().Bv(cfs().size());
+      I(csE());
+      b.ctm().cto().H(g.C(csF()));
+      b.ctm().cto().HI(csF().size());
     }
-    if (this.oOc != null) {
-      this.oOc.C(cfr());
+    if (this.rPZ != null) {
+      this.rPZ.D(csE());
     }
     AppMethodBeat.o(21545);
   }
   
-  public final void H(LinkedList<f.b> paramLinkedList)
+  public final void I(LinkedList<f.b> paramLinkedList)
   {
     AppMethodBeat.i(21542);
     if ((paramLinkedList == null) || (paramLinkedList.size() == 0))
     {
-      this.oLh = new LinkedList();
+      this.rMX = new LinkedList();
       AppMethodBeat.o(21542);
       return;
     }
-    this.oLh = new LinkedList(paramLinkedList.subList(paramLinkedList.size() * 3 / 4, paramLinkedList.size()));
-    this.oLh.addAll(paramLinkedList.subList(0, paramLinkedList.size() * 3 / 4));
+    this.rMX = new LinkedList(paramLinkedList.subList(paramLinkedList.size() * 3 / 4, paramLinkedList.size()));
+    this.rMX.addAll(paramLinkedList.subList(0, paramLinkedList.size() * 3 / 4));
     AppMethodBeat.o(21542);
   }
   
@@ -145,12 +145,12 @@ public final class a
     AppMethodBeat.i(21541);
     if (paramInt == 0)
     {
-      this.oLg = new LinkedList(paramLinkedList);
+      this.rMW = new LinkedList(paramLinkedList);
       AppMethodBeat.o(21541);
       return;
     }
-    if (this.oLg == null) {
-      this.oLg = new LinkedList();
+    if (this.rMW == null) {
+      this.rMW = new LinkedList();
     }
     for (;;)
     {
@@ -158,11 +158,11 @@ public final class a
       while (paramLinkedList.hasNext())
       {
         f.b localb = (f.b)paramLinkedList.next();
-        if (d.cgP().cgQ().aSQ().H(localb.oJq, paramLong1, paramLong2) > 0) {
-          this.oLg.add(localb);
+        if (d.cua().cub().bbO().G(localb.rLg, paramLong1, paramLong2) > 0) {
+          this.rMW.add(localb);
         }
       }
-      this.oLg.clear();
+      this.rMW.clear();
     }
     AppMethodBeat.o(21541);
   }
@@ -173,63 +173,63 @@ public final class a
     Log.i("MicroMsg.BackupPcChooseServer", "cancel, stack:%s", new Object[] { Util.getStack() });
     synchronized (this.lock)
     {
-      if (this.oMd != null)
+      if (this.rNY != null)
       {
-        this.oMd.cancel();
-        this.oMd = null;
+        this.rNY.cancel();
+        this.rNY = null;
       }
-      this.oLi = false;
+      this.rMY = false;
       AppMethodBeat.o(21546);
       return;
     }
   }
   
-  public final void cfZ()
-  {
-    this.oLf = null;
-    this.oLh = null;
-    this.oLg = null;
-    this.oLi = false;
-  }
-  
-  public final LinkedList<f.b> cfq()
+  public final LinkedList<f.b> csD()
   {
     AppMethodBeat.i(21539);
-    if (this.oLf == null) {
-      this.oLf = new LinkedList();
+    if (this.rMV == null) {
+      this.rMV = new LinkedList();
     }
-    LinkedList localLinkedList = this.oLf;
+    LinkedList localLinkedList = this.rMV;
     AppMethodBeat.o(21539);
     return localLinkedList;
   }
   
-  public final LinkedList<f.b> cfr()
+  public final LinkedList<f.b> csE()
   {
     AppMethodBeat.i(21540);
-    if (this.oLg == null) {
-      this.oLg = new LinkedList();
+    if (this.rMW == null) {
+      this.rMW = new LinkedList();
     }
-    LinkedList localLinkedList = this.oLg;
+    LinkedList localLinkedList = this.rMW;
     AppMethodBeat.o(21540);
     return localLinkedList;
   }
   
-  public final void jD(boolean paramBoolean)
+  public final void ctl()
+  {
+    this.rMV = null;
+    this.rMX = null;
+    this.rMW = null;
+    this.rMY = false;
+  }
+  
+  public final void kO(boolean paramBoolean)
   {
     AppMethodBeat.i(21544);
     Log.i("MicroMsg.BackupPcChooseServer", "calculateToChoose, isChooseAllRecords[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.oOb = paramBoolean;
-    d.cgP().cgS();
+    this.rPY = paramBoolean;
+    d.cua().cud();
     ThreadPool.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(21536);
-        if (a.this.oMd != null) {
-          a.this.oMd.cancel();
+        if (a.this.rNY != null) {
+          a.this.rNY.cancel();
         }
-        a.this.oMd = new com.tencent.mm.plugin.backup.c.b();
-        a.this.oMd.a(a.this);
+        a.this.rNY = new com.tencent.mm.plugin.backup.c.b();
+        a.this.rNY.a(a.this);
         AppMethodBeat.o(21536);
       }
     }, "BackupPcChooseServer.calculateToChoose");
@@ -238,7 +238,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backuppcmodel.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@
             <View android:id="@id/bij" android:background="#bf232323" android:layout_width="fill_parent" android:layout_height="wrap_content" />
             <View android:id="@id/bik" android:layout_width="fill_parent" android:layout_height="wrap_content" />
             <FrameLayout android:background="#bf232323" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-                <TextView android:textSize="@dimen/eo" android:textColor="@color/BW_100_Alpha_0_5" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:text="@string/d0v" />
+                <TextView android:textSize="@dimen/eo" android:textColor="@color/BW_100_Alpha_0_5" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:text="@string/k60" />
             </FrameLayout>
         </LinearLayout>
     </FrameLayout>

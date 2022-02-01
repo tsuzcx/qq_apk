@@ -8,14 +8,14 @@ import java.util.List;
 
 public final class a
 {
-  public static MallRechargeProduct gb(List<MallRechargeProduct> paramList)
+  public static MallRechargeProduct gF(List<MallRechargeProduct> paramList)
   {
     AppMethodBeat.i(67155);
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
     {
       MallRechargeProduct localMallRechargeProduct = (MallRechargeProduct)localIterator.next();
-      if ((localMallRechargeProduct.isDefault) && (localMallRechargeProduct.isValid()))
+      if ((localMallRechargeProduct.lJx) && (localMallRechargeProduct.isValid()))
       {
         Log.d("MicroMsg.MallRechargeLogic", "find the defaultProduct");
         AppMethodBeat.o(67155);
@@ -30,7 +30,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.ui.a
  * JD-Core Version:    0.7.0.1
  */

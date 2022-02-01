@@ -25,23 +25,28 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Toast;
-import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.g.a.tw;
-import com.tencent.mm.g.a.wp;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.an.t;
+import com.tencent.mm.f.a.uz;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.service.r;
 import com.tencent.mm.plugin.exdevice.g.a.j;
 import com.tencent.mm.plugin.exdevice.g.a.j.a;
-import com.tencent.mm.plugin.exdevice.g.b.f;
-import com.tencent.mm.plugin.exdevice.model.ac;
-import com.tencent.mm.plugin.exdevice.model.ac.a;
 import com.tencent.mm.plugin.exdevice.model.ad;
+import com.tencent.mm.plugin.exdevice.model.ad.a;
+import com.tencent.mm.plugin.exdevice.model.ae;
+import com.tencent.mm.plugin.messenger.a.g;
 import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.LifecycleEventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -50,147 +55,150 @@ import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.ui.base.MMPullDownView;
 import com.tencent.mm.ui.base.MMPullDownView.a;
 import com.tencent.mm.ui.base.MMPullDownView.b;
-import com.tencent.mm.ui.base.o.g;
-import com.tencent.mm.ui.base.q;
+import com.tencent.mm.ui.base.MMPullDownView.c;
+import com.tencent.mm.ui.base.MMPullDownView.d;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.base.s;
 import com.tencent.mm.ui.report.MMSecDataActivity;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.Executor;
 import junit.framework.Assert;
 
 public class ExdeviceRankInfoUI
   extends MMSecDataActivity
-  implements j.a, com.tencent.mm.plugin.exdevice.g.b.e, f, c
+  implements j.a, com.tencent.mm.plugin.exdevice.g.b.e, com.tencent.mm.plugin.exdevice.g.b.f, c
 {
-  private static int rJm = 128;
+  private static int voU = 128;
   private int likeCount;
   private boolean mIsDestroyed;
-  private String mRa;
-  private String mwj;
-  public boolean rCL;
-  public String rCM;
-  private boolean rCz;
-  private q rGN;
-  private String rIS;
-  private ImageView rIY;
-  private Map<String, String> rJE;
-  private View rJc;
-  private String rJd;
-  private String rJe;
-  private ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.c> rKA;
-  private ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.d> rKB;
-  private boolean rKC;
-  private boolean rKD;
-  private String rKE;
-  private boolean rKF;
-  private j rKG;
-  private com.tencent.mm.plugin.exdevice.b.b<j> rKH;
-  private ListView rKn;
-  private b rKo;
-  private View rKp;
-  private ExdeviceRankListHeaderView rKq;
-  private ExdeviceRankChampionInfoView rKr;
-  private View rKs;
-  private String rKt;
-  private String rKu;
-  private String rKv;
-  private com.tencent.mm.plugin.exdevice.g.b.a.a rKw;
-  private String rKx;
-  private int rKy;
-  private List<d> rKz;
+  private String pRV;
+  private String puJ;
+  private boolean vij;
+  public boolean viv;
+  public String viw;
+  private s vmw;
+  private String voA;
+  private ImageView voG;
+  private View voK;
+  private String voL;
+  private String voM;
+  private ListView vpW;
+  private b vpX;
+  private View vpY;
+  private ExdeviceRankListHeaderView vpZ;
+  private Map<String, String> vpm;
+  private ExdeviceRankChampionInfoView vqa;
+  private View vqb;
+  private String vqc;
+  private String vqd;
+  private String vqe;
+  private com.tencent.mm.plugin.exdevice.g.b.a.a vqf;
+  private String vqg;
+  private int vqh;
+  private List<d> vqi;
+  private ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.c> vqj;
+  private ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.d> vqk;
+  private boolean vql;
+  private boolean vqm;
+  private String vqn;
+  private boolean vqo;
+  private j vqp;
+  private com.tencent.mm.plugin.exdevice.b.b<j> vqq;
   
   public ExdeviceRankInfoUI()
   {
     AppMethodBeat.i(24235);
-    this.rGN = null;
-    this.rJE = new HashMap();
-    this.rKH = new com.tencent.mm.plugin.exdevice.b.b() {};
+    this.vmw = null;
+    this.vpm = new HashMap();
+    this.vqq = new com.tencent.mm.plugin.exdevice.b.b() {};
     AppMethodBeat.o(24235);
   }
   
-  private int anV(String paramString)
+  private int avT(String paramString)
   {
     AppMethodBeat.i(24240);
-    Log.i("MicroMsg.Sport.ExdeviceRankInfoUI", "locateToUser, locate2User(%s), username(%s).", new Object[] { paramString, this.mRa });
+    Log.i("MicroMsg.Sport.ExdeviceRankInfoUI", "locateToUser, locate2User(%s), username(%s).", new Object[] { paramString, this.pRV });
     if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(24240);
       return -1;
     }
-    if ((this.rKz == null) || (this.rKz.size() == 0))
+    if ((this.vqi == null) || (this.vqi.size() == 0))
     {
       AppMethodBeat.o(24240);
       return -2;
     }
     int i = 0;
-    while (i < this.rKz.size())
+    while (i < this.vqi.size())
     {
-      Object localObject = ((d)this.rKz.get(i)).rMD;
-      int j = ((d)this.rKz.get(i)).rME;
-      if ((localObject != null) && (paramString.equalsIgnoreCase(((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject).field_username)) && (!paramString.equalsIgnoreCase(this.mRa)) && ((j & 0x2) != 2))
+      Object localObject = ((d)this.vqi.get(i)).vsn;
+      int j = ((d)this.vqi.get(i)).vso;
+      if ((localObject != null) && (paramString.equalsIgnoreCase(((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject).field_username)) && (!paramString.equalsIgnoreCase(this.pRV)) && ((j & 0x2) != 2))
       {
         localObject = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
         j = ((DisplayMetrics)localObject).heightPixels;
         Log.i("MicroMsg.Sport.ExdeviceRankInfoUI", "locateToUser pos(%d).(h : %d)", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-        this.rKn.setSelectionFromTop(i, j / 4);
-        this.rKo.rJF = paramString;
-        this.rKo.notifyDataSetInvalidated();
-        cLY();
+        this.vpW.setSelectionFromTop(i, j / 4);
+        this.vpX.vpn = paramString;
+        this.vpX.notifyDataSetInvalidated();
+        daL();
         AppMethodBeat.o(24240);
         return i;
       }
       i += 1;
     }
-    this.rKo.rJF = null;
+    this.vpX.vpn = null;
     AppMethodBeat.o(24240);
     return -3;
   }
   
-  private void cLR()
+  private void daE()
   {
     AppMethodBeat.i(24241);
-    if ((this.rKw != null) && (this.mRa != null) && (this.mRa.equals(this.rKw.field_username)) && (Util.isNullOrNil(this.rKw.field_championUrl)))
+    if ((this.vqf != null) && (this.pRV != null) && (this.pRV.equals(this.vqf.field_username)) && (Util.isNullOrNil(this.vqf.field_championUrl)))
     {
-      if (this.rJc != null) {
-        this.rJc.setVisibility(0);
+      if (this.voK != null) {
+        this.voK.setVisibility(0);
       }
-      if (this.rKq != null)
+      if (this.vpZ != null)
       {
-        this.rKq.setOnViewClickListener(new ExdeviceRankInfoUI.23(this));
+        this.vpZ.setOnViewClickListener(new ExdeviceRankInfoUI.21(this));
         AppMethodBeat.o(24241);
       }
     }
     else
     {
-      if (this.rJc != null) {
-        this.rJc.setVisibility(8);
+      if (this.voK != null) {
+        this.voK.setVisibility(8);
       }
-      if ((this.rKw != null) && (!Util.nullAs(this.rKw.field_username, "").equals(this.mRa)) && (!Util.isNullOrNil(this.rKw.field_championUrl))) {
-        this.rKq.setOnViewClickListener(new ExdeviceRankInfoUI.24(this));
+      if ((this.vqf != null) && (!Util.nullAs(this.vqf.field_username, "").equals(this.pRV)) && (!Util.isNullOrNil(this.vqf.field_championUrl))) {
+        this.vpZ.setOnViewClickListener(new ExdeviceRankInfoUI.22(this));
       }
     }
     AppMethodBeat.o(24241);
   }
   
-  private void cLU()
+  private void daH()
   {
     AppMethodBeat.i(24238);
     Log.i("MicroMsg.Sport.ExdeviceRankInfoUI", "updateRankInfoUIFromServer");
-    this.rKG = new j(this.rIS, this.rKv, this.rKx, this.rKC, this.rKH);
-    this.rKG.rCO = this;
-    bg.azz().a(this.rKG, 0);
+    this.vqp = new j(this.voA, this.vqe, this.vqg, this.vql, this.vqq);
+    this.vqp.viy = this;
+    bh.aGY().a(this.vqp, 0);
     AppMethodBeat.o(24238);
   }
   
-  private void cLV()
+  private void daI()
   {
     AppMethodBeat.i(24239);
-    Log.i("MicroMsg.Sport.ExdeviceRankInfoUI", "try2LocateToUser, locate2User(%s), username(%s).", new Object[] { this.rKE, this.mRa });
-    if ((Util.isNullOrNil(this.rKE)) || (anV(this.rKE) < 0))
+    Log.i("MicroMsg.Sport.ExdeviceRankInfoUI", "try2LocateToUser, locate2User(%s), username(%s).", new Object[] { this.vqn, this.pRV });
+    if ((Util.isNullOrNil(this.vqn)) || (avT(this.vqn) < 0))
     {
       Log.d("MicroMsg.Sport.ExdeviceRankInfoUI", "locate to username is null or nil.");
       AppMethodBeat.o(24239);
@@ -199,25 +207,25 @@ public class ExdeviceRankInfoUI
     AppMethodBeat.o(24239);
   }
   
-  private void cLW()
+  private void daJ()
   {
     AppMethodBeat.i(24242);
-    String str = cLX();
+    String str = daK();
     if (!Util.isNullOrNil(str)) {
-      this.rKx = str;
+      this.vqg = str;
     }
     AppMethodBeat.o(24242);
   }
   
-  private String cLX()
+  private String daK()
   {
     AppMethodBeat.i(24243);
-    if (this.rKz != null)
+    if (this.vqi != null)
     {
-      Object localObject = this.rKz.iterator();
+      Object localObject = this.vqi.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        com.tencent.mm.plugin.exdevice.g.b.a.d locald = ((d)((Iterator)localObject).next()).rMD;
+        com.tencent.mm.plugin.exdevice.g.b.a.d locald = ((d)((Iterator)localObject).next()).vsn;
         if ((locald != null) && (locald.field_ranknum == 1))
         {
           localObject = locald.field_username;
@@ -230,72 +238,72 @@ public class ExdeviceRankInfoUI
     return null;
   }
   
-  private void cLY()
+  private void daL()
   {
     AppMethodBeat.i(24245);
-    View localView = this.rKn.getChildAt(0);
+    View localView = this.vpW.getChildAt(0);
     int[] arrayOfInt = new int[2];
     if (localView != null)
     {
-      if (this.rKn.getFirstVisiblePosition() == 0)
+      if (this.vpW.getFirstVisiblePosition() == 0)
       {
         localView.getLocationOnScreen(arrayOfInt);
-        if ((Util.isNullOrNil(this.rKE)) && (rJm == 128)) {
-          rJm = arrayOfInt[1];
+        if ((Util.isNullOrNil(this.vqn)) && (voU == 128)) {
+          voU = arrayOfInt[1];
         }
         int i = arrayOfInt[1];
         if (i > 0)
         {
-          if (i >= rJm) {}
-          for (float f = 1.0F;; f = i / rJm)
+          if (i >= voU) {}
+          for (float f = 1.0F;; f = i / voU)
           {
             Log.d("MicroMsg.Sport.ExdeviceRankInfoUI", "ap-alpha: %s", new Object[] { Float.valueOf(f) });
-            this.rKr.setAlpha(f);
-            this.rKr.setVisibility(0);
-            this.rJc.setAlpha(f);
+            this.vqa.setAlpha(f);
+            this.vqa.setVisibility(0);
+            this.voK.setAlpha(f);
             AppMethodBeat.o(24245);
             return;
           }
         }
       }
-      this.rKr.setAlpha(0.0F);
-      this.rJc.setAlpha(0.0F);
-      this.rKr.setVisibility(8);
+      this.vqa.setAlpha(0.0F);
+      this.voK.setAlpha(0.0F);
+      this.vqa.setVisibility(8);
     }
     AppMethodBeat.o(24245);
   }
   
-  private void cLZ()
+  private void daM()
   {
     AppMethodBeat.i(24250);
-    if (this.rKw != null)
+    if (this.vqf != null)
     {
-      if ((this.mwj != this.rKw.field_championUrl) && ((this.mwj == null) || (!this.mwj.equals(this.rKw.field_championUrl))))
+      if ((this.puJ != this.vqf.field_championUrl) && ((this.puJ == null) || (!this.puJ.equals(this.vqf.field_championUrl))))
       {
-        com.tencent.mm.plugin.exdevice.g.a.e.a(this, this.rIY, this.rKw.field_championUrl);
-        this.mwj = this.rKw.field_championUrl;
+        com.tencent.mm.plugin.exdevice.g.a.e.a(this, this.voG, this.vqf.field_championUrl, R.e.darkgrey);
+        this.puJ = this.vqf.field_championUrl;
         AppMethodBeat.o(24250);
       }
     }
     else
     {
-      this.rIY.setImageResource(2131100237);
-      this.mwj = null;
+      this.voG.setImageResource(R.e.darkgrey);
+      this.puJ = null;
     }
     AppMethodBeat.o(24250);
   }
   
-  private void cMb()
+  private void daO()
   {
     AppMethodBeat.i(24259);
-    if (Util.isNullOrNil(this.rCM))
+    if (Util.isNullOrNil(this.viw))
     {
-      localObject = ad.cKP().anF(this.mRa);
+      localObject = ae.cZC().avE(this.pRV);
       if (localObject != null) {
-        this.rCM = ((com.tencent.mm.plugin.exdevice.g.b.a.a)localObject).field_championUrl;
+        this.viw = ((com.tencent.mm.plugin.exdevice.g.b.a.a)localObject).field_championUrl;
       }
     }
-    com.tencent.mm.plugin.exdevice.g.b.a.d locald = b.h(this.mRa, this.rKB);
+    com.tencent.mm.plugin.exdevice.g.b.a.d locald = b.h(this.pRV, this.vqk);
     Object localObject = "--";
     String str = "0";
     if (locald != null)
@@ -303,28 +311,28 @@ public class ExdeviceRankInfoUI
       localObject = String.valueOf(locald.field_ranknum);
       str = String.valueOf(locald.field_score);
     }
-    new ac().a(this, (String)localObject, str, this.rCM, new ExdeviceRankInfoUI.13(this));
+    new ad().a(this, (String)localObject, str, this.viw, new ExdeviceRankInfoUI.11(this));
     AppMethodBeat.o(24259);
   }
   
-  private void lR(boolean paramBoolean)
+  private void nc(boolean paramBoolean)
   {
     AppMethodBeat.i(24236);
-    if ((this.rKD) && (!paramBoolean))
+    if ((this.vqm) && (!paramBoolean))
     {
       AppMethodBeat.o(24236);
       return;
     }
-    ad.cKT();
-    this.rKB = com.tencent.mm.plugin.exdevice.g.b.c.anB(this.rIS);
-    this.rKA = ad.cKN().cKZ();
-    this.rKz = this.rKo.b(this.rKA, this.rKB, this.rCL);
+    ae.cZG();
+    this.vqk = com.tencent.mm.plugin.exdevice.g.b.c.avA(this.voA);
+    this.vqj = ae.cZA().cZM();
+    this.vqi = this.vpX.b(this.vqj, this.vqk, this.viv);
     runOnUiThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(24206);
-        ExdeviceRankInfoUI.b(ExdeviceRankInfoUI.this).rJD = ExdeviceRankInfoUI.a(ExdeviceRankInfoUI.this);
+        ExdeviceRankInfoUI.b(ExdeviceRankInfoUI.this).vpl = ExdeviceRankInfoUI.a(ExdeviceRankInfoUI.this);
         ExdeviceRankInfoUI.b(ExdeviceRankInfoUI.this).notifyDataSetChanged();
         ExdeviceRankInfoUI.c(ExdeviceRankInfoUI.this);
         AppMethodBeat.o(24206);
@@ -333,20 +341,20 @@ public class ExdeviceRankInfoUI
     AppMethodBeat.o(24236);
   }
   
-  private void lS(boolean paramBoolean)
+  private void nd(boolean paramBoolean)
   {
     AppMethodBeat.i(24251);
     if (paramBoolean) {
-      cLW();
+      daJ();
     }
-    if (!Util.isNullOrNil(this.rKv))
+    if (!Util.isNullOrNil(this.vqe))
     {
-      this.rKr.anT(this.rKx);
-      this.rKr.setVisibility(0);
+      this.vqa.avR(this.vqg);
+      this.vqa.setVisibility(0);
       AppMethodBeat.o(24251);
       return;
     }
-    this.rKr.setVisibility(8);
+    this.vqa.setVisibility(8);
     AppMethodBeat.o(24251);
   }
   
@@ -357,75 +365,75 @@ public class ExdeviceRankInfoUI
     {
       public final void run()
       {
-        AppMethodBeat.i(24225);
+        AppMethodBeat.i(24224);
         if ((ExdeviceRankInfoUI.e(ExdeviceRankInfoUI.this) != null) && (ExdeviceRankInfoUI.e(ExdeviceRankInfoUI.this).isShowing()))
         {
           ExdeviceRankInfoUI.e(ExdeviceRankInfoUI.this).dismiss();
           ExdeviceRankInfoUI.f(ExdeviceRankInfoUI.this);
           Log.d("MicroMsg.Sport.ExdeviceRankInfoUI", "dismiss tips dialog.");
         }
-        AppMethodBeat.o(24225);
+        AppMethodBeat.o(24224);
       }
     });
-    this.rJd = paramj.rCq;
-    this.rJe = paramj.msN;
-    this.rCM = paramj.rCM;
-    this.rCL = paramj.rCL;
-    this.rCz = paramj.rCz;
-    this.rKB = paramj.rCE;
-    this.rKA = paramj.rCF;
-    this.rKz = this.rKo.b(this.rKA, this.rKB, this.rCL);
+    this.voL = paramj.vhY;
+    this.voM = paramj.pqW;
+    this.viw = paramj.viw;
+    this.viv = paramj.viv;
+    this.vij = paramj.vij;
+    this.vqk = paramj.vio;
+    this.vqj = paramj.vip;
+    this.vqi = this.vpX.b(this.vqj, this.vqk, this.viv);
     runOnUiThread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(179640);
-        ExdeviceRankInfoUI.b(ExdeviceRankInfoUI.this).rJD = ExdeviceRankInfoUI.a(ExdeviceRankInfoUI.this);
+        AppMethodBeat.i(24225);
+        ExdeviceRankInfoUI.b(ExdeviceRankInfoUI.this).vpl = ExdeviceRankInfoUI.a(ExdeviceRankInfoUI.this);
         ExdeviceRankInfoUI.b(ExdeviceRankInfoUI.this).notifyDataSetChanged();
         ExdeviceRankInfoUI.c(ExdeviceRankInfoUI.this);
-        AppMethodBeat.o(179640);
+        AppMethodBeat.o(24225);
       }
     });
     AppMethodBeat.o(24260);
   }
   
-  public final void anC(String paramString)
+  public final void avB(String paramString)
   {
     AppMethodBeat.i(24253);
     Log.d("MicroMsg.Sport.ExdeviceRankInfoUI", "hy: rank changed to %s", new Object[] { paramString });
-    this.rIS = paramString;
+    this.voA = paramString;
     AppMethodBeat.o(24253);
   }
   
-  public final void anW(String paramString)
+  public final void avU(String paramString)
   {
     AppMethodBeat.i(24254);
-    com.tencent.mm.plugin.sport.a.c.pl(6);
+    com.tencent.mm.plugin.sport.a.d.rE(6);
     Intent localIntent = new Intent(this, ExdeviceProfileUI.class);
     localIntent.putExtra("username", paramString);
-    localIntent.putExtra("usernickname", (String)this.rJE.get(paramString));
-    localIntent.putExtra("app_username", this.rKv);
-    localIntent.putExtra("rank_id", this.rIS);
+    localIntent.putExtra("usernickname", (String)this.vpm.get(paramString));
+    localIntent.putExtra("app_username", this.vqe);
+    localIntent.putExtra("rank_id", this.voA);
     startActivityForResult(localIntent, 4);
     AppMethodBeat.o(24254);
   }
   
-  public final boolean anX(String paramString)
+  public final boolean avV(String paramString)
   {
     AppMethodBeat.i(24258);
-    if ((!Util.isNullOrNil(this.rIS)) && (!"#".equals(this.rIS)))
+    if ((!Util.isNullOrNil(this.voA)) && (!"#".equals(this.voA)))
     {
-      if (z.aTY().equals(paramString))
+      if (z.bcZ().equals(paramString))
       {
         Log.d("MicroMsg.Sport.ExdeviceRankInfoUI", "hy: is self. see who likes me");
         paramString = new Intent(this, ExdeviceLikeUI.class);
-        paramString.putExtra("app_username", this.rKv);
-        paramString.putExtra("rank_id", this.rIS);
+        paramString.putExtra("app_username", this.vqe);
+        paramString.putExtra("rank_id", this.voA);
         paramString.putExtra("key_is_like_read_only", true);
-        paramString = new com.tencent.mm.hellhoundlib.b.a().bl(paramString);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramString.axQ(), "com/tencent/mm/plugin/exdevice/ui/ExdeviceRankInfoUI", "beforeLikeBtnClicked", "(Ljava/lang/String;I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramString.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceRankInfoUI", "beforeLikeBtnClicked", "(Ljava/lang/String;I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramString = new com.tencent.mm.hellhoundlib.b.a().bm(paramString);
+        com.tencent.mm.hellhoundlib.a.a.b(this, paramString.aFh(), "com/tencent/mm/plugin/exdevice/ui/ExdeviceRankInfoUI", "beforeLikeBtnClicked", "(Ljava/lang/String;I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramString.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceRankInfoUI", "beforeLikeBtnClicked", "(Ljava/lang/String;I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(24258);
         return true;
       }
@@ -433,7 +441,7 @@ public class ExdeviceRankInfoUI
       return false;
     }
     Log.d("MicroMsg.Sport.ExdeviceRankInfoUI", "hy: rank id is not valid.abort the event");
-    Toast.makeText(this, getString(2131758887), 0).show();
+    Toast.makeText(this, getString(R.l.eDX), 0).show();
     AppMethodBeat.o(24258);
     return true;
   }
@@ -448,23 +456,23 @@ public class ExdeviceRankInfoUI
       if (!"HardDeviceRankInfo".equals(paramString)) {
         break;
       }
-      if ((this.rIS == null) || (!this.rIS.equals(paramd.rCB))) {
+      if ((this.voA == null) || (!this.voA.equals(paramd.vil))) {
         break label216;
       }
-      Log.i("MicroMsg.Sport.ExdeviceRankInfoUI", "onRankChange, rankId(%s).", new Object[] { this.rIS });
-      lR(true);
-      if ((Util.isNullOrNil(this.rKx)) || (!this.rKx.equals(cLX())))
+      Log.i("MicroMsg.Sport.ExdeviceRankInfoUI", "onRankChange, rankId(%s).", new Object[] { this.voA });
+      nc(true);
+      if ((Util.isNullOrNil(this.vqg)) || (!this.vqg.equals(daK())))
       {
-        cLW();
-        this.rKw = ad.cKP().anF(this.rKx);
+        daJ();
+        this.vqf = ae.cZC().avE(this.vqg);
         runOnUiThread(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(24215);
+            AppMethodBeat.i(24214);
             ExdeviceRankInfoUI.s(ExdeviceRankInfoUI.this);
             ExdeviceRankInfoUI.t(ExdeviceRankInfoUI.this);
-            AppMethodBeat.o(24215);
+            AppMethodBeat.o(24214);
           }
         });
       }
@@ -472,32 +480,32 @@ public class ExdeviceRankInfoUI
       {
         public final void run()
         {
-          AppMethodBeat.i(24216);
+          AppMethodBeat.i(24215);
           ExdeviceRankInfoUI.u(ExdeviceRankInfoUI.this);
           if (!ExdeviceRankInfoUI.v(ExdeviceRankInfoUI.this))
           {
             ExdeviceRankInfoUI.h(ExdeviceRankInfoUI.this);
-            AppMethodBeat.o(24216);
+            AppMethodBeat.o(24215);
             return;
           }
           ExdeviceRankInfoUI.b(ExdeviceRankInfoUI.this).notifyDataSetChanged();
-          AppMethodBeat.o(24216);
+          AppMethodBeat.o(24215);
         }
       });
       AppMethodBeat.o(24252);
       return;
     }
-    if (("HardDeviceChampionInfo".equals(paramString)) && (!Util.isNullOrNil(this.rKx)) && (this.rKx.equals(paramd.username)))
+    if (("HardDeviceChampionInfo".equals(paramString)) && (!Util.isNullOrNil(this.vqg)) && (this.vqg.equals(paramd.username)))
     {
-      this.rKw = ad.cKP().anF(this.rKx);
+      this.vqf = ae.cZC().avE(this.vqg);
       runOnUiThread(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(179638);
+          AppMethodBeat.i(24216);
           ExdeviceRankInfoUI.s(ExdeviceRankInfoUI.this);
           ExdeviceRankInfoUI.t(ExdeviceRankInfoUI.this);
-          AppMethodBeat.o(179638);
+          AppMethodBeat.o(24216);
         }
       });
     }
@@ -505,21 +513,13 @@ public class ExdeviceRankInfoUI
     AppMethodBeat.o(24252);
   }
   
-  public final void cMa()
-  {
-    AppMethodBeat.i(24255);
-    com.tencent.mm.plugin.sport.a.c.pl(31);
-    cMb();
-    AppMethodBeat.o(24255);
-  }
-  
-  public final void di(String paramString, int paramInt)
+  public final void dD(String paramString, int paramInt)
   {
     AppMethodBeat.i(24256);
-    ad.cKT();
-    String str1 = this.rIS;
-    String str2 = this.rKv;
-    com.tencent.mm.plugin.exdevice.g.b.b.d locald = ad.cKM();
+    ae.cZG();
+    String str1 = this.voA;
+    String str2 = this.vqe;
+    com.tencent.mm.plugin.exdevice.g.b.b.d locald = ae.cZz();
     boolean bool;
     com.tencent.mm.plugin.exdevice.g.b.a.d locald1;
     if ((!Util.isNullOrNil(str1)) && (!Util.isNullOrNil(paramString)) && ((paramInt == 1) || (paramInt == 0) || (paramInt == 2)))
@@ -555,27 +555,35 @@ public class ExdeviceRankInfoUI
     }
   }
   
+  public final void daN()
+  {
+    AppMethodBeat.i(24255);
+    com.tencent.mm.plugin.sport.a.d.rE(31);
+    daO();
+    AppMethodBeat.o(24255);
+  }
+  
   public int getLayoutId()
   {
-    return 2131494044;
+    return R.i.egN;
   }
   
   public void initView()
   {
     AppMethodBeat.i(24244);
-    this.rKp = findViewById(2131305499);
+    this.vpY = findViewById(R.h.dPG);
     Object localObject1 = new ExdeviceRankListHeaderView(this);
     Object localObject2 = new Rect();
     getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject2);
     int j = ((Rect)localObject2).top;
     int i = j;
     if (j == 0) {
-      i = com.tencent.mm.plugin.exdevice.k.b.D(this, getResources().getDimensionPixelSize(2131165327));
+      i = com.tencent.mm.plugin.exdevice.k.b.F(this, getResources().getDimensionPixelSize(R.f.dkS));
     }
     localObject2 = getResources().getDisplayMetrics();
     if (((DisplayMetrics)localObject2).widthPixels > ((DisplayMetrics)localObject2).heightPixels)
     {
-      j = getResources().getDimensionPixelSize(2131165255);
+      j = getResources().getDimensionPixelSize(R.f.DefaultActionbarHeightLand);
       localObject2 = getWindowManager().getDefaultDisplay();
       j = ((Display)localObject2).getHeight() / 2 - i - j;
       if (((Display)localObject2).getHeight() > 0)
@@ -585,19 +593,19 @@ public class ExdeviceRankInfoUI
       }
       else
       {
-        i = getResources().getDimensionPixelSize(2131165321);
+        i = getResources().getDimensionPixelSize(R.f.dkR);
       }
       ((ExdeviceRankListHeaderView)localObject1).setMinimumHeight(i);
       ((ExdeviceRankListHeaderView)localObject1).setMinimumWidth(((Display)localObject2).getWidth());
       ((ExdeviceRankListHeaderView)localObject1).setTag(Integer.valueOf(i));
-      this.rKq = ((ExdeviceRankListHeaderView)localObject1);
-      localObject1 = (MMPullDownView)findViewById(2131306316);
-      this.rKn = ((ListView)findViewById(2131300215));
-      this.rKr = ((ExdeviceRankChampionInfoView)findViewById(2131298275));
-      this.rJc = findViewById(2131307646);
-      this.rJc.setOnClickListener(new ExdeviceRankInfoUI.25(this));
-      this.rKq.setIsShowTip(false);
-      cLR();
+      this.vpZ = ((ExdeviceRankListHeaderView)localObject1);
+      localObject1 = (MMPullDownView)findViewById(R.h.dRG);
+      this.vpW = ((ListView)findViewById(R.h.dGd));
+      this.vqa = ((ExdeviceRankChampionInfoView)findViewById(R.h.dvl));
+      this.voK = findViewById(R.h.dTO);
+      this.voK.setOnClickListener(new ExdeviceRankInfoUI.23(this));
+      this.vpZ.setIsShowTip(false);
+      daE();
       ((MMPullDownView)localObject1).setIsBottomShowAll(false);
       ((MMPullDownView)localObject1).setTopViewVisible(false);
       ((MMPullDownView)localObject1).setBottomViewVisible(false);
@@ -608,86 +616,119 @@ public class ExdeviceRankInfoUI
       {
         public final boolean onInterceptTouchEvent(MotionEvent paramAnonymousMotionEvent)
         {
-          AppMethodBeat.i(179630);
+          AppMethodBeat.i(24234);
           paramAnonymousMotionEvent = ExdeviceRankInfoUI.this;
           if ((ExdeviceRankInfoUI.a(ExdeviceRankInfoUI.this) != null) && (ExdeviceRankInfoUI.a(ExdeviceRankInfoUI.this).size() != 0)) {}
           for (boolean bool = true;; bool = false)
           {
             ExdeviceRankInfoUI.b(paramAnonymousMotionEvent, bool);
-            AppMethodBeat.o(179630);
+            AppMethodBeat.o(24234);
             return false;
           }
         }
       });
-      ((MMPullDownView)localObject1).setAtBottomCallBack(new ExdeviceRankInfoUI.3(this));
-      ((MMPullDownView)localObject1).setOnScrollChangedListener(new MMPullDownView.b()
+      ((MMPullDownView)localObject1).setAtBottomCallBack(new MMPullDownView.c()
       {
-        public final void cLT()
+        public final boolean cOL()
         {
-          AppMethodBeat.i(179632);
-          ExdeviceRankInfoUI.r(ExdeviceRankInfoUI.this);
-          AppMethodBeat.o(179632);
+          AppMethodBeat.i(24207);
+          View localView = ExdeviceRankInfoUI.q(ExdeviceRankInfoUI.this).getChildAt(ExdeviceRankInfoUI.q(ExdeviceRankInfoUI.this).getChildCount() - 1);
+          int i = ExdeviceRankInfoUI.q(ExdeviceRankInfoUI.this).getCount();
+          if ((i > 0) && (localView != null) && (localView.getBottom() <= ExdeviceRankInfoUI.q(ExdeviceRankInfoUI.this).getHeight()) && (ExdeviceRankInfoUI.q(ExdeviceRankInfoUI.this).getLastVisiblePosition() == i - 1))
+          {
+            AppMethodBeat.o(24207);
+            return true;
+          }
+          AppMethodBeat.o(24207);
+          return false;
         }
       });
-      ((MMPullDownView)localObject1).setAtTopCallBack(new ExdeviceRankInfoUI.5(this));
-      this.rKn.setOnScrollListener(new AbsListView.OnScrollListener()
+      ((MMPullDownView)localObject1).setOnScrollChangedListener(new MMPullDownView.b()
+      {
+        public final void daG()
+        {
+          AppMethodBeat.i(24208);
+          ExdeviceRankInfoUI.r(ExdeviceRankInfoUI.this);
+          AppMethodBeat.o(24208);
+        }
+      });
+      ((MMPullDownView)localObject1).setAtTopCallBack(new MMPullDownView.d()
+      {
+        public final boolean cOK()
+        {
+          AppMethodBeat.i(24209);
+          int i = ExdeviceRankInfoUI.q(ExdeviceRankInfoUI.this).getFirstVisiblePosition();
+          if (i == 0)
+          {
+            View localView = ExdeviceRankInfoUI.q(ExdeviceRankInfoUI.this).getChildAt(i);
+            if ((localView != null) && (localView.getTop() >= 0))
+            {
+              AppMethodBeat.o(24209);
+              return true;
+            }
+          }
+          AppMethodBeat.o(24209);
+          return false;
+        }
+      });
+      this.vpW.setOnScrollListener(new AbsListView.OnScrollListener()
       {
         public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
         {
-          AppMethodBeat.i(179635);
+          AppMethodBeat.i(24211);
           ExdeviceRankInfoUI.r(ExdeviceRankInfoUI.this);
-          AppMethodBeat.o(179635);
+          AppMethodBeat.o(24211);
         }
         
         public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt)
         {
-          AppMethodBeat.i(179634);
+          AppMethodBeat.i(24210);
           ExdeviceRankInfoUI.r(ExdeviceRankInfoUI.this);
-          AppMethodBeat.o(179634);
+          AppMethodBeat.o(24210);
         }
       });
-      this.rKn.addHeaderView(this.rKq, null, false);
-      localObject2 = getLayoutInflater().inflate(2131494042, null);
-      this.rKs = ((View)localObject2).findViewById(2131302710);
-      ((View)localObject2).findViewById(2131302709).setOnClickListener(new ExdeviceRankInfoUI.7(this));
-      this.rKs.setVisibility(8);
-      this.rKn.addFooterView((View)localObject2);
-      if (this.rKA == null) {
+      this.vpW.addHeaderView(this.vpZ, null, false);
+      localObject2 = getLayoutInflater().inflate(R.i.egL, null);
+      this.vqb = ((View)localObject2).findViewById(R.h.dJo);
+      ((View)localObject2).findViewById(R.h.dJn).setOnClickListener(new ExdeviceRankInfoUI.6(this));
+      this.vqb.setVisibility(8);
+      this.vpW.addFooterView((View)localObject2);
+      if (this.vqj == null) {
         break label759;
       }
     }
     label759:
-    for (i = this.rKA.size();; i = 0)
+    for (i = this.vqj.size();; i = 0)
     {
-      if (this.rKB != null) {}
-      for (j = this.rKB.size();; j = 0)
+      if (this.vqk != null) {}
+      for (j = this.vqk.size();; j = 0)
       {
         if (i + j == 0)
         {
-          this.rKz = new ArrayList();
-          this.rKo.rJD = this.rKz;
-          getString(2131755998);
-          this.rGN = com.tencent.mm.ui.base.h.a(this, getString(2131762446), true, new DialogInterface.OnCancelListener()
+          this.vqi = new ArrayList();
+          this.vpX.vpl = this.vqi;
+          getString(R.l.app_tip);
+          this.vmw = com.tencent.mm.ui.base.h.a(this, getString(R.l.loading_tips), true, new DialogInterface.OnCancelListener()
           {
             public final void onCancel(DialogInterface paramAnonymousDialogInterface)
             {
-              AppMethodBeat.i(179637);
+              AppMethodBeat.i(24213);
               if (ExdeviceRankInfoUI.e(ExdeviceRankInfoUI.this) != null)
               {
                 ExdeviceRankInfoUI.e(ExdeviceRankInfoUI.this).dismiss();
                 ExdeviceRankInfoUI.f(ExdeviceRankInfoUI.this);
               }
               ExdeviceRankInfoUI.this.finish();
-              AppMethodBeat.o(179637);
+              AppMethodBeat.o(24213);
             }
           });
         }
-        this.rKn.setAdapter(this.rKo);
-        this.rKo.rJG = this;
-        if (this.rKy == 1)
+        this.vpW.setAdapter(this.vpX);
+        this.vpX.vpo = this;
+        if (this.vqh == 1)
         {
-          this.rKn.setVisibility(0);
-          this.rKp.setVisibility(8);
+          this.vpW.setVisibility(0);
+          this.vpY.setVisibility(8);
         }
         for (i = 1;; i = 0)
         {
@@ -698,27 +739,27 @@ public class ExdeviceRankInfoUI
           finish();
           AppMethodBeat.o(24244);
           return;
-          j = getResources().getDimensionPixelSize(2131165256);
+          j = getResources().getDimensionPixelSize(R.f.DefaultActionbarHeightPort);
           break;
-          this.rKn.setVisibility(8);
-          this.rKp.setVisibility(0);
+          this.vpW.setVisibility(8);
+          this.vpY.setVisibility(0);
         }
         label638:
-        this.rIY = ((ImageView)findViewById(2131300193));
+        this.voG = ((ImageView)findViewById(R.h.dFR));
         ((MMPullDownView)localObject1).setCanOverScrool(false);
-        int k = com.tencent.mm.cb.a.jn(this);
-        j = ((Integer)this.rKq.getTag()).intValue();
+        int k = com.tencent.mm.ci.a.kr(this);
+        j = ((Integer)this.vpZ.getTag()).intValue();
         i = j;
-        if (this.rCL)
+        if (this.viv)
         {
-          i = getResources().getDimensionPixelSize(2131165337);
-          int m = getResources().getDimensionPixelSize(2131165336);
+          i = getResources().getDimensionPixelSize(R.f.dkU);
+          int m = getResources().getDimensionPixelSize(R.f.dkT);
           i = j + (i / 2 + m);
         }
         localObject1 = new RelativeLayout.LayoutParams(k, i);
-        this.rIY.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        cLZ();
-        lS(false);
+        this.voG.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        daM();
+        nd(false);
         AppMethodBeat.o(24244);
         return;
       }
@@ -729,7 +770,7 @@ public class ExdeviceRankInfoUI
   {
     AppMethodBeat.i(24257);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (com.tencent.mm.plugin.exdevice.g.a.e.a(this, paramInt1, paramInt2, paramIntent, this.rKv))
+    if (com.tencent.mm.plugin.exdevice.g.a.e.a(this, paramInt1, paramInt2, paramIntent, this.vqe))
     {
       AppMethodBeat.o(24257);
       return;
@@ -757,12 +798,12 @@ public class ExdeviceRankInfoUI
         return;
       }
       paramIntent = paramIntent.getStringExtra("custom_send_text");
-      ac.a(this, (String)localObject, ac.fb(this), paramIntent, this.rJe);
-      com.tencent.mm.ui.base.h.cD(getContext(), getResources().getString(2131755986));
+      ad.a(this, (String)localObject, ad.ff(this), paramIntent, this.voM);
+      com.tencent.mm.ui.base.h.cO(getContext(), getResources().getString(R.l.app_shared));
       Log.d("MicroMsg.Sport.ExdeviceRankInfoUI", "Select conversation return.");
       AppMethodBeat.o(24257);
       return;
-      com.tencent.mm.ui.base.h.cD(getContext(), getResources().getString(2131755986));
+      com.tencent.mm.ui.base.h.cO(getContext(), getResources().getString(R.l.app_shared));
       Log.d("MicroMsg.Sport.ExdeviceRankInfoUI", "Share to timeline return.");
       AppMethodBeat.o(24257);
       return;
@@ -774,21 +815,21 @@ public class ExdeviceRankInfoUI
         while (((Iterator)localObject).hasNext())
         {
           String str = (String)((Iterator)localObject).next();
-          com.tencent.mm.plugin.messenger.a.g.eir().s("gh_43f2581f6fd6", str, ab.Eq(str));
+          g.eRW().u("gh_43f2581f6fd6", str, ab.Lj(str));
           if (!Util.isNullOrNil(paramIntent))
           {
-            tw localtw = new tw();
-            localtw.eaq.dkV = str;
-            localtw.eaq.content = paramIntent;
-            localtw.eaq.type = ab.JG(str);
-            localtw.eaq.flags = 0;
-            EventCenter.instance.publish(localtw);
+            uz localuz = new uz();
+            localuz.fUn.fcD = str;
+            localuz.fUn.content = paramIntent;
+            localuz.fUn.type = ab.QZ(str);
+            localuz.fUn.flags = 0;
+            EventCenter.instance.publish(localuz);
           }
         }
         AppMethodBeat.o(24257);
         return;
         if ((paramIntent != null) && (paramIntent.getBooleanExtra("KeyNeedUpdateRank", false))) {
-          cLU();
+          daH();
         }
       }
     }
@@ -799,26 +840,26 @@ public class ExdeviceRankInfoUI
     AppMethodBeat.i(24237);
     super.onCreate(paramBundle);
     this.mIsDestroyed = false;
-    this.mRa = z.aTY();
+    this.pRV = z.bcZ();
     paramBundle = getIntent();
-    this.rKt = paramBundle.getStringExtra("key_rank_info");
-    this.rKu = paramBundle.getStringExtra("key_rank_semi");
-    this.rKv = paramBundle.getStringExtra("app_username");
-    this.rIS = paramBundle.getStringExtra("rank_id");
-    this.rKC = paramBundle.getBooleanExtra("key_is_latest", false);
-    this.rKx = paramBundle.getStringExtra("key_champioin_username");
-    this.rKy = paramBundle.getIntExtra("device_type", 0);
-    this.rKE = paramBundle.getStringExtra("locate_to_username");
-    this.rKD = paramBundle.getBooleanExtra("key_only_show_latest_rank", false);
+    this.vqc = paramBundle.getStringExtra("key_rank_info");
+    this.vqd = paramBundle.getStringExtra("key_rank_semi");
+    this.vqe = paramBundle.getStringExtra("app_username");
+    this.voA = paramBundle.getStringExtra("rank_id");
+    this.vql = paramBundle.getBooleanExtra("key_is_latest", false);
+    this.vqg = paramBundle.getStringExtra("key_champioin_username");
+    this.vqh = paramBundle.getIntExtra("device_type", 0);
+    this.vqn = paramBundle.getStringExtra("locate_to_username");
+    this.vqm = paramBundle.getBooleanExtra("key_only_show_latest_rank", false);
     Object localObject;
-    if ((Util.isNullOrNil(this.rIS)) || ("#".equals(this.rIS))) {
-      if (!this.rKD)
+    if ((Util.isNullOrNil(this.voA)) || ("#".equals(this.voA))) {
+      if (!this.vqm)
       {
-        paramBundle = ad.cKM();
+        paramBundle = ae.cZz();
         localObject = String.format("select * from %s order by %s desc limit 1", new Object[] { "HardDeviceRankInfo", "rankID" });
         localObject = paramBundle.db.rawQuery((String)localObject, null, 2);
         if (localObject != null) {
-          break label749;
+          break label734;
         }
         Log.e("MicroMsg.ExdeviceRankInfoStg", "Get no rank in DB");
         paramBundle = null;
@@ -828,99 +869,89 @@ public class ExdeviceRankInfoUI
     {
       if (paramBundle != null)
       {
-        this.rIS = paramBundle.field_rankID;
-        this.rKv = paramBundle.field_appusername;
+        this.voA = paramBundle.field_rankID;
+        this.vqe = paramBundle.field_appusername;
       }
-      this.rKx = null;
-      this.rKC = true;
-      ad.cKT();
-      this.rKB = com.tencent.mm.plugin.exdevice.g.b.c.anB(this.rIS);
-      if (!this.rKD)
+      this.vqg = null;
+      this.vql = true;
+      ae.cZG();
+      this.vqk = com.tencent.mm.plugin.exdevice.g.b.c.avA(this.voA);
+      if (!this.vqm)
       {
-        if ((this.rKB == null) || (this.rKB.size() <= 0))
+        if ((this.vqk == null) || (this.vqk.size() <= 0))
         {
-          this.rKA = new ArrayList();
-          this.rKB = com.tencent.mm.plugin.exdevice.g.a.a.a(this.rIS, this.rKv, this.rKt, this.rKu, this.rJE, this.rKA);
-          ad.cKT();
-          com.tencent.mm.plugin.exdevice.g.b.c.f(this.rIS, this.rKB);
+          this.vqj = new ArrayList();
+          this.vqk = com.tencent.mm.plugin.exdevice.g.a.a.a(this.voA, this.vqe, this.vqc, this.vqd, this.vpm, this.vqj);
+          ae.cZG();
+          com.tencent.mm.plugin.exdevice.g.b.c.f(this.voA, this.vqk);
           label341:
-          this.rKA = ad.cKN().cKZ();
+          this.vqj = ae.cZA().cZM();
         }
       }
       else
       {
-        this.rKo = new b(this, this.rKv);
-        this.rKo.rJE = this.rJE;
-        this.rKz = this.rKo.b(this.rKA, this.rKB, this.rCL);
-        this.rKo.rJD = this.rKz;
-        if (Util.isNullOrNil(this.rKx)) {
-          cLW();
+        this.vpX = new b(this, this.vqe);
+        this.vpX.vpm = this.vpm;
+        this.vqi = this.vpX.b(this.vqj, this.vqk, this.viv);
+        this.vpX.vpl = this.vqi;
+        if (Util.isNullOrNil(this.vqg)) {
+          daJ();
         }
-        this.rKw = ad.cKP().anF(this.rKx);
-        if ((this.rKw == null) && (!Util.isNullOrNil(this.rKx)))
+        this.vqf = ae.cZC().avE(this.vqg);
+        if ((this.vqf == null) && (!Util.isNullOrNil(this.vqg)))
         {
-          this.rKw = new com.tencent.mm.plugin.exdevice.g.b.a.a();
-          this.rKw.field_username = this.rKx;
-          this.rKw.field_championMotto = getIntent().getStringExtra("key_champion_info");
-          this.rKw.field_championUrl = getIntent().getStringExtra("key_champion_coverimg");
-          ad.cKT();
-          paramBundle = this.rKw;
-          ad.cKP().a(paramBundle);
+          this.vqf = new com.tencent.mm.plugin.exdevice.g.b.a.a();
+          this.vqf.field_username = this.vqg;
+          this.vqf.field_championMotto = getIntent().getStringExtra("key_champion_info");
+          this.vqf.field_championUrl = getIntent().getStringExtra("key_champion_coverimg");
+          ae.cZG();
+          paramBundle = this.vqf;
+          ae.cZC().a(paramBundle);
         }
         initView();
-        if ((this.rKB != null) && (this.rKB.size() > 0))
+        if ((this.vqk != null) && (this.vqk.size() > 0))
         {
-          paramBundle = ((com.tencent.mm.plugin.exdevice.g.b.a.d)this.rKB.get(0)).field_username;
-          this.rKr.anT(paramBundle);
+          paramBundle = ((com.tencent.mm.plugin.exdevice.g.b.a.d)this.vqk.get(0)).field_username;
+          this.vqa.avR(paramBundle);
         }
-        ad.cKU().a(this);
-        ad.cKT().rCX = this;
-        cLU();
+        ae.cZH().a(this);
+        ae.cZG().viH = this;
+        daH();
         setBackBtn(new MenuItem.OnMenuItemClickListener()
         {
           public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
           {
-            AppMethodBeat.i(179644);
+            AppMethodBeat.i(24228);
             ExdeviceRankInfoUI.this.finish();
-            AppMethodBeat.o(179644);
+            AppMethodBeat.o(24228);
             return false;
           }
         });
-        setMMTitle(2131758928);
+        setMMTitle(R.l.eEm);
         showOptionMenu(true);
-        cLV();
-        paramBundle = new wp();
-        paramBundle.ecH.action = 2;
-        EventCenter.instance.asyncPublish(paramBundle, new Executor()
-        {
-          public final void execute(Runnable paramAnonymousRunnable)
-          {
-            AppMethodBeat.i(179643);
-            com.tencent.f.h.RTc.aX(paramAnonymousRunnable);
-            AppMethodBeat.o(179643);
-          }
-        });
-        if (!com.tencent.mm.compatible.util.d.oF(28)) {}
+        daI();
+        ((com.tencent.mm.plugin.sport.a.c)LifecycleEventCenter.getEvent(com.tencent.mm.plugin.sport.a.c.class)).publish(Integer.valueOf(2));
+        if (!com.tencent.mm.compatible.util.d.qX(28)) {}
       }
       try
       {
-        if (android.support.v4.content.b.checkSelfPermission(this, "android.permission.ACTIVITY_RECOGNITION") != 0)
+        if (androidx.core.content.a.checkSelfPermission(this, "android.permission.ACTIVITY_RECOGNITION") != 0)
         {
           Log.i("MicroMsg.Sport.ExdeviceRankInfoUI", "no ACTIVITY_RECOGNITION permission");
-          android.support.v4.app.a.a(this, new String[] { "android.permission.ACTIVITY_RECOGNITION" }, 5);
+          androidx.core.app.a.a(this, new String[] { "android.permission.ACTIVITY_RECOGNITION" }, 5);
         }
         for (;;)
         {
-          label692:
-          if (com.tencent.mm.kernel.g.aAh().azQ().getInt(ar.a.OnQ, 0) == 1)
+          label677:
+          if (com.tencent.mm.kernel.h.aHG().aHp().getInt(ar.a.VDg, 0) == 1)
           {
             Log.i("MicroMsg.Sport.ExdeviceRankInfoUI", "toast get step fail");
-            Toast.makeText(this, 2131758896, 0).show();
-            com.tencent.mm.plugin.report.e.Cxv.idkeyStat(323L, 6L, 1L, false);
+            Toast.makeText(this, R.l.eDZ, 0).show();
+            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(323L, 6L, 1L, false);
           }
           AppMethodBeat.o(24237);
           return;
-          label749:
+          label734:
           if (!((Cursor)localObject).moveToFirst())
           {
             Log.d("MicroMsg.ExdeviceRankInfoStg", "hy: no record");
@@ -933,14 +964,14 @@ public class ExdeviceRankInfoUI
             paramBundle = new com.tencent.mm.plugin.exdevice.g.b.a.d();
             paramBundle.convertFrom((Cursor)localObject);
           }
-          com.tencent.mm.plugin.exdevice.g.a.a.b(this.rKt, this.rKu, this.rJE);
+          com.tencent.mm.plugin.exdevice.g.a.a.b(this.vqc, this.vqd, this.vpm);
           break label341;
           Log.i("MicroMsg.Sport.ExdeviceRankInfoUI", "has ACTIVITY_RECOGNITION permission");
         }
       }
       catch (Exception paramBundle)
       {
-        break label692;
+        break label677;
       }
     }
   }
@@ -949,21 +980,21 @@ public class ExdeviceRankInfoUI
   {
     AppMethodBeat.i(24248);
     this.mIsDestroyed = true;
-    if (this.rKo != null) {
+    if (this.vpX != null) {
       b.finish();
     }
     super.onDestroy();
-    if (this.rKG != null) {
-      this.rKG.rCO = null;
+    if (this.vqp != null) {
+      this.vqp.viy = null;
     }
-    ad.cKU().b(this);
-    ad.cKT().rCX = null;
-    ad.cKT().rCY = null;
+    ae.cZH().b(this);
+    ae.cZG().viH = null;
+    ae.cZG().viI = null;
     if (this.likeCount > 0)
     {
       int i = this.likeCount;
       Log.v("MicroMsg.Sport.SportReportLogic", "reportLikeCount count=%d", new Object[] { Integer.valueOf(i) });
-      com.tencent.mm.plugin.report.e.Cxv.a(13168, new Object[] { Integer.valueOf(0), Integer.valueOf(i) });
+      com.tencent.mm.plugin.report.f.Iyx.a(13168, new Object[] { Integer.valueOf(0), Integer.valueOf(i) });
     }
     AppMethodBeat.o(24248);
   }
@@ -979,7 +1010,7 @@ public class ExdeviceRankInfoUI
   {
     AppMethodBeat.i(24247);
     super.onRestart();
-    lR(true);
+    nc(true);
     AppMethodBeat.o(24247);
   }
   

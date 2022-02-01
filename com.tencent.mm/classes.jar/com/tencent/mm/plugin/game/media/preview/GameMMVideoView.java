@@ -23,24 +23,24 @@ public class GameMMVideoView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void bgX()
+  public final void bqp()
   {
     AppMethodBeat.i(41216);
-    super.bgX();
+    super.bqp();
     AppMethodBeat.o(41216);
   }
   
-  public final boolean dUD()
+  public final boolean exK()
   {
     AppMethodBeat.i(41217);
-    boolean bool = super.dUD();
+    boolean bool = super.exK();
     AppMethodBeat.o(41217);
     return bool;
   }
   
   public String getFilePath()
   {
-    return this.jpU;
+    return this.mfv;
   }
   
   public String getMediaId()
@@ -67,7 +67,7 @@ public class GameMMVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.preview.GameMMVideoView
  * JD-Core Version:    0.7.0.1
  */

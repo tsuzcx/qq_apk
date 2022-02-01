@@ -3,10 +3,10 @@ package com.tencent.tinker.a.c;
 public final class b
   implements Cloneable
 {
-  private static final int[] bYn = new int[0];
-  public int[] Pi;
-  public int[] Shv;
+  private static final int[] bZR = new int[0];
+  public int[] ZKg;
   public int mSize;
+  private int[] zX;
   
   public b()
   {
@@ -16,25 +16,17 @@ public final class b
   public b(int paramInt)
   {
     if (paramInt == 0) {
-      this.Pi = bYn;
+      this.zX = bZR;
     }
-    for (this.Shv = bYn;; this.Shv = new int[this.Pi.length])
+    for (this.ZKg = bZR;; this.ZKg = new int[this.zX.length])
     {
       this.mSize = 0;
       return;
-      this.Pi = new int[paramInt];
+      this.zX = new int[paramInt];
     }
   }
   
-  private static int av(int paramInt)
-  {
-    if (paramInt <= 4) {
-      return 8;
-    }
-    return (paramInt >> 1) + paramInt;
-  }
-  
-  private static int b(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  private static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
     int i = paramInt1 - 1;
     paramInt1 = 0;
@@ -70,14 +62,22 @@ public final class b
       paramArrayOfInt[paramInt2] = paramInt3;
       return paramArrayOfInt;
     }
-    int[] arrayOfInt = new int[av(paramInt1)];
+    int[] arrayOfInt = new int[bq(paramInt1)];
     System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, paramInt2);
     arrayOfInt[paramInt2] = paramInt3;
     System.arraycopy(paramArrayOfInt, paramInt2, arrayOfInt, paramInt2 + 1, paramArrayOfInt.length - paramInt2);
     return arrayOfInt;
   }
   
-  private static int[] h(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  private static int bq(int paramInt)
+  {
+    if (paramInt <= 4) {
+      return 8;
+    }
+    return (paramInt >> 1) + paramInt;
+  }
+  
+  private static int[] g(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
     if (paramInt1 > paramArrayOfInt.length) {
       throw new IllegalArgumentException("Bad currentSize, originalSize: " + paramArrayOfInt.length + " currentSize: " + paramInt1);
@@ -85,14 +85,14 @@ public final class b
     int[] arrayOfInt = paramArrayOfInt;
     if (paramInt1 + 1 > paramArrayOfInt.length)
     {
-      arrayOfInt = new int[av(paramInt1)];
+      arrayOfInt = new int[bq(paramInt1)];
       System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, paramInt1);
     }
     arrayOfInt[paramInt1] = paramInt2;
     return arrayOfInt;
   }
   
-  private b hpa()
+  private b isB()
   {
     try
     {
@@ -103,8 +103,8 @@ public final class b
     {
       try
       {
-        localb.Pi = ((int[])this.Pi.clone());
-        localb.Shv = ((int[])this.Shv.clone());
+        localb.zX = ((int[])this.zX.clone());
+        localb.ZKg = ((int[])this.ZKg.clone());
         return localb;
       }
       catch (CloneNotSupportedException localCloneNotSupportedException2) {}
@@ -113,53 +113,58 @@ public final class b
     }
   }
   
-  public final void append(int paramInt1, int paramInt2)
+  public final int aP(int paramInt)
   {
-    if ((this.mSize != 0) && (paramInt1 <= this.Pi[(this.mSize - 1)]))
-    {
-      put(paramInt1, paramInt2);
-      return;
-    }
-    this.Pi = h(this.Pi, this.mSize, paramInt1);
-    this.Shv = h(this.Shv, this.mSize, paramInt2);
-    this.mSize += 1;
+    return this.zX[paramInt];
   }
   
-  public final int ase(int paramInt)
+  public final int aQ(int paramInt)
   {
-    paramInt = b(this.Pi, this.mSize, paramInt);
-    if (paramInt < 0) {
-      return 0;
-    }
-    return this.Shv[paramInt];
+    return a(this.zX, this.mSize, paramInt);
+  }
+  
+  public final void clear()
+  {
+    this.mSize = 0;
   }
   
   public final int get(int paramInt)
   {
-    return ase(paramInt);
+    paramInt = a(this.zX, this.mSize, paramInt);
+    if (paramInt < 0) {
+      return 0;
+    }
+    return this.ZKg[paramInt];
   }
   
-  public final int indexOfKey(int paramInt)
+  public final boolean iM(int paramInt)
   {
-    return b(this.Pi, this.mSize, paramInt);
+    return aQ(paramInt) >= 0;
   }
   
-  public final int keyAt(int paramInt)
+  public final void oa(int paramInt1, int paramInt2)
   {
-    return this.Pi[paramInt];
+    if ((this.mSize != 0) && (paramInt1 <= this.zX[(this.mSize - 1)]))
+    {
+      put(paramInt1, paramInt2);
+      return;
+    }
+    this.zX = g(this.zX, this.mSize, paramInt1);
+    this.ZKg = g(this.ZKg, this.mSize, paramInt2);
+    this.mSize += 1;
   }
   
   public final void put(int paramInt1, int paramInt2)
   {
-    int i = b(this.Pi, this.mSize, paramInt1);
+    int i = a(this.zX, this.mSize, paramInt1);
     if (i >= 0)
     {
-      this.Shv[i] = paramInt2;
+      this.ZKg[i] = paramInt2;
       return;
     }
     i ^= 0xFFFFFFFF;
-    this.Pi = b(this.Pi, this.mSize, i, paramInt1);
-    this.Shv = b(this.Shv, this.mSize, i, paramInt2);
+    this.zX = b(this.zX, this.mSize, i, paramInt1);
+    this.ZKg = b(this.ZKg, this.mSize, i, paramInt2);
     this.mSize += 1;
   }
   
@@ -181,9 +186,9 @@ public final class b
       if (i > 0) {
         localStringBuilder.append(", ");
       }
-      localStringBuilder.append(this.Pi[i]);
+      localStringBuilder.append(this.zX[i]);
       localStringBuilder.append('=');
-      localStringBuilder.append(this.Shv[i]);
+      localStringBuilder.append(this.ZKg[i]);
       i += 1;
     }
     localStringBuilder.append('}');
@@ -192,7 +197,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tinker.a.c.b
  * JD-Core Version:    0.7.0.1
  */

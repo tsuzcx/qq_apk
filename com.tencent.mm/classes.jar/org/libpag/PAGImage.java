@@ -12,10 +12,10 @@ public class PAGImage
   
   static
   {
-    AppMethodBeat.i(236891);
+    AppMethodBeat.i(195067);
     b.loadLibrary("pag");
     nativeInit();
-    AppMethodBeat.o(236891);
+    AppMethodBeat.o(195067);
   }
   
   PAGImage(long paramLong)
@@ -25,84 +25,84 @@ public class PAGImage
   
   public static PAGImage FromAssets(AssetManager paramAssetManager, String paramString)
   {
-    AppMethodBeat.i(236884);
+    AppMethodBeat.i(195030);
     long l = LoadFromAssets(paramAssetManager, paramString);
     if (l == 0L)
     {
-      AppMethodBeat.o(236884);
+      AppMethodBeat.o(195030);
       return null;
     }
     paramAssetManager = new PAGImage(l);
-    AppMethodBeat.o(236884);
+    AppMethodBeat.o(195030);
     return paramAssetManager;
   }
   
   public static PAGImage FromBitmap(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(236881);
+    AppMethodBeat.i(195018);
     long l = LoadFromBitmap(paramBitmap);
     if (l == 0L)
     {
-      AppMethodBeat.o(236881);
+      AppMethodBeat.o(195018);
       return null;
     }
     paramBitmap = new PAGImage(l);
-    AppMethodBeat.o(236881);
+    AppMethodBeat.o(195018);
     return paramBitmap;
   }
   
   public static PAGImage FromBytes(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(236883);
+    AppMethodBeat.i(195027);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
-      AppMethodBeat.o(236883);
+      AppMethodBeat.o(195027);
       return null;
     }
     long l = LoadFromBytes(paramArrayOfByte, paramArrayOfByte.length);
     if (l == 0L)
     {
-      AppMethodBeat.o(236883);
+      AppMethodBeat.o(195027);
       return null;
     }
     paramArrayOfByte = new PAGImage(l);
-    AppMethodBeat.o(236883);
+    AppMethodBeat.o(195027);
     return paramArrayOfByte;
   }
   
   public static PAGImage FromPath(String paramString)
   {
-    AppMethodBeat.i(236882);
+    AppMethodBeat.i(195023);
     long l = LoadFromPath(paramString);
     if (l == 0L)
     {
-      AppMethodBeat.o(236882);
+      AppMethodBeat.o(195023);
       return null;
     }
     paramString = new PAGImage(l);
-    AppMethodBeat.o(236882);
+    AppMethodBeat.o(195023);
     return paramString;
   }
   
   public static PAGImage FromTexture(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(236885);
+    AppMethodBeat.i(195032);
     PAGImage localPAGImage = FromTexture(paramInt1, paramInt2, paramInt3, paramInt4, false);
-    AppMethodBeat.o(236885);
+    AppMethodBeat.o(195032);
     return localPAGImage;
   }
   
   public static PAGImage FromTexture(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
-    AppMethodBeat.i(236886);
+    AppMethodBeat.i(195034);
     long l = LoadFromTexture(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean);
     if (l == 0L)
     {
-      AppMethodBeat.o(236886);
+      AppMethodBeat.o(195034);
       return null;
     }
     PAGImage localPAGImage = new PAGImage(l);
-    AppMethodBeat.o(236886);
+    AppMethodBeat.o(195034);
     return localPAGImage;
   }
   
@@ -128,40 +128,40 @@ public class PAGImage
   
   protected void finalize()
   {
-    AppMethodBeat.i(236890);
+    AppMethodBeat.i(195063);
     nativeFinalize();
-    AppMethodBeat.o(236890);
+    AppMethodBeat.o(195063);
   }
   
   public native int height();
   
   public Matrix matrix()
   {
-    AppMethodBeat.i(236887);
+    AppMethodBeat.i(195050);
     float[] arrayOfFloat = new float[9];
     nativeGetMatrix(arrayOfFloat);
     Matrix localMatrix = new Matrix();
     localMatrix.setValues(arrayOfFloat);
-    AppMethodBeat.o(236887);
+    AppMethodBeat.o(195050);
     return localMatrix;
   }
   
   public void release()
   {
-    AppMethodBeat.i(236889);
+    AppMethodBeat.i(195060);
     nativeRelease();
-    AppMethodBeat.o(236889);
+    AppMethodBeat.o(195060);
   }
   
   public native int scaleMode();
   
   public void setMatrix(Matrix paramMatrix)
   {
-    AppMethodBeat.i(236888);
+    AppMethodBeat.i(195054);
     float[] arrayOfFloat = new float[9];
     paramMatrix.getValues(arrayOfFloat);
     nativeSetMatrix(arrayOfFloat[0], arrayOfFloat[3], arrayOfFloat[1], arrayOfFloat[4], arrayOfFloat[2], arrayOfFloat[5]);
-    AppMethodBeat.o(236888);
+    AppMethodBeat.o(195054);
   }
   
   public native void setScaleMode(int paramInt);
@@ -170,7 +170,7 @@ public class PAGImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     org.libpag.PAGImage
  * JD-Core Version:    0.7.0.1
  */

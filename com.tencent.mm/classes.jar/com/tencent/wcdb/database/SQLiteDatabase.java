@@ -70,7 +70,7 @@ public final class SQLiteDatabase
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      SQLiteGlobal.loadLib();
+      SQLiteGlobal.initialize();
       sActiveDatabases = new WeakHashMap();
       CONFLICT_VALUES = new String[] { "", " OR ROLLBACK ", " OR ABORT ", " OR FAIL ", " OR IGNORE ", " OR REPLACE " };
       AppMethodBeat.o(3225);
@@ -109,11 +109,11 @@ public final class SQLiteDatabase
   {
     // Byte code:
     //   0: sipush 3123
-    //   3: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokevirtual 152	com/tencent/wcdb/database/SQLiteDatabase:acquireReference	()V
+    //   7: invokevirtual 151	com/tencent/wcdb/database/SQLiteDatabase:acquireReference	()V
     //   10: aload_0
-    //   11: invokevirtual 156	com/tencent/wcdb/database/SQLiteDatabase:getThreadSession	()Lcom/tencent/wcdb/database/SQLiteSession;
+    //   11: invokevirtual 155	com/tencent/wcdb/database/SQLiteDatabase:getThreadSession	()Lcom/tencent/wcdb/database/SQLiteSession;
     //   14: astore 4
     //   16: iload_2
     //   17: ifeq +29 -> 46
@@ -124,22 +124,22 @@ public final class SQLiteDatabase
     //   25: aload_1
     //   26: aload_0
     //   27: iconst_0
-    //   28: invokevirtual 160	com/tencent/wcdb/database/SQLiteDatabase:getThreadDefaultConnectionFlags	(Z)I
+    //   28: invokevirtual 159	com/tencent/wcdb/database/SQLiteDatabase:getThreadDefaultConnectionFlags	(Z)I
     //   31: aconst_null
-    //   32: invokevirtual 165	com/tencent/wcdb/database/SQLiteSession:beginTransaction	(ILandroid/database/sqlite/SQLiteTransactionListener;ILcom/tencent/wcdb/support/CancellationSignal;)V
+    //   32: invokevirtual 164	com/tencent/wcdb/database/SQLiteSession:beginTransaction	(ILandroid/database/sqlite/SQLiteTransactionListener;ILcom/tencent/wcdb/support/CancellationSignal;)V
     //   35: aload_0
-    //   36: invokevirtual 168	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+    //   36: invokevirtual 167	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
     //   39: sipush 3123
-    //   42: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   42: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   45: return
     //   46: iconst_1
     //   47: istore_3
     //   48: goto -26 -> 22
     //   51: astore_1
     //   52: aload_0
-    //   53: invokevirtual 168	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+    //   53: invokevirtual 167	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
     //   56: sipush 3123
-    //   59: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   59: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   62: aload_1
     //   63: athrow
     // Local variable table:
@@ -765,60 +765,60 @@ public final class SQLiteDatabase
   {
     // Byte code:
     //   0: sipush 3185
-    //   3: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokevirtual 152	com/tencent/wcdb/database/SQLiteDatabase:acquireReference	()V
-    //   10: new 202	java/lang/StringBuilder
+    //   7: invokevirtual 151	com/tencent/wcdb/database/SQLiteDatabase:acquireReference	()V
+    //   10: new 201	java/lang/StringBuilder
     //   13: dup
-    //   14: ldc_w 528
-    //   17: invokespecial 406	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   14: ldc_w 527
+    //   17: invokespecial 405	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   20: aload_1
-    //   21: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   24: astore 5
     //   26: aload_2
-    //   27: invokestatic 311	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   27: invokestatic 310	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   30: ifne +56 -> 86
-    //   33: ldc_w 530
+    //   33: ldc_w 529
     //   36: aload_2
-    //   37: invokestatic 534	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   40: invokevirtual 537	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   37: invokestatic 533	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   40: invokevirtual 536	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   43: astore_1
-    //   44: new 295	com/tencent/wcdb/database/SQLiteStatement
+    //   44: new 294	com/tencent/wcdb/database/SQLiteStatement
     //   47: dup
     //   48: aload_0
     //   49: aload 5
     //   51: aload_1
-    //   52: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: invokevirtual 216	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   52: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   58: aload_3
-    //   59: invokespecial 298	com/tencent/wcdb/database/SQLiteStatement:<init>	(Lcom/tencent/wcdb/database/SQLiteDatabase;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   59: invokespecial 297	com/tencent/wcdb/database/SQLiteStatement:<init>	(Lcom/tencent/wcdb/database/SQLiteDatabase;Ljava/lang/String;[Ljava/lang/Object;)V
     //   62: astore_1
     //   63: aload_1
-    //   64: invokevirtual 539	com/tencent/wcdb/database/SQLiteStatement:executeUpdateDelete	()I
+    //   64: invokevirtual 538	com/tencent/wcdb/database/SQLiteStatement:executeUpdateDelete	()I
     //   67: istore 4
     //   69: aload_1
-    //   70: invokevirtual 303	com/tencent/wcdb/database/SQLiteStatement:close	()V
+    //   70: invokevirtual 302	com/tencent/wcdb/database/SQLiteStatement:close	()V
     //   73: aload_0
-    //   74: invokevirtual 168	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+    //   74: invokevirtual 167	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
     //   77: sipush 3185
-    //   80: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   80: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   83: iload 4
     //   85: ireturn
-    //   86: ldc 103
+    //   86: ldc 102
     //   88: astore_1
     //   89: goto -45 -> 44
     //   92: astore_2
     //   93: aload_1
-    //   94: invokevirtual 303	com/tencent/wcdb/database/SQLiteStatement:close	()V
+    //   94: invokevirtual 302	com/tencent/wcdb/database/SQLiteStatement:close	()V
     //   97: sipush 3185
-    //   100: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   100: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   103: aload_2
     //   104: athrow
     //   105: astore_1
     //   106: aload_0
-    //   107: invokevirtual 168	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+    //   107: invokevirtual 167	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
     //   110: sipush 3185
-    //   113: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   113: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   116: aload_1
     //   117: athrow
     // Local variable table:
@@ -1013,100 +1013,100 @@ public final class SQLiteDatabase
   {
     // Byte code:
     //   0: sipush 3219
-    //   3: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 251	java/util/ArrayList
+    //   3: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 250	java/util/ArrayList
     //   9: dup
-    //   10: invokespecial 325	java/util/ArrayList:<init>	()V
+    //   10: invokespecial 324	java/util/ArrayList:<init>	()V
     //   13: astore_2
     //   14: aload_0
-    //   15: getfield 131	com/tencent/wcdb/database/SQLiteDatabase:mLock	Ljava/lang/Object;
+    //   15: getfield 130	com/tencent/wcdb/database/SQLiteDatabase:mLock	Ljava/lang/Object;
     //   18: astore_1
     //   19: aload_1
     //   20: monitorenter
     //   21: aload_0
-    //   22: getfield 172	com/tencent/wcdb/database/SQLiteDatabase:mConnectionPoolLocked	Lcom/tencent/wcdb/database/SQLiteConnectionPool;
+    //   22: getfield 171	com/tencent/wcdb/database/SQLiteDatabase:mConnectionPoolLocked	Lcom/tencent/wcdb/database/SQLiteConnectionPool;
     //   25: ifnonnull +13 -> 38
     //   28: aload_1
     //   29: monitorexit
     //   30: sipush 3219
-    //   33: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   33: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   36: aconst_null
     //   37: areturn
     //   38: aload_0
-    //   39: getfield 290	com/tencent/wcdb/database/SQLiteDatabase:mHasAttachedDbsLocked	Z
+    //   39: getfield 289	com/tencent/wcdb/database/SQLiteDatabase:mHasAttachedDbsLocked	Z
     //   42: ifne +35 -> 77
     //   45: aload_2
-    //   46: new 585	android/util/Pair
+    //   46: new 584	android/util/Pair
     //   49: dup
-    //   50: ldc_w 587
+    //   50: ldc_w 586
     //   53: aload_0
-    //   54: getfield 142	com/tencent/wcdb/database/SQLiteDatabase:mConfigurationLocked	Lcom/tencent/wcdb/database/SQLiteDatabaseConfiguration;
-    //   57: getfield 590	com/tencent/wcdb/database/SQLiteDatabaseConfiguration:path	Ljava/lang/String;
-    //   60: invokespecial 593	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   63: invokevirtual 594	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   54: getfield 141	com/tencent/wcdb/database/SQLiteDatabase:mConfigurationLocked	Lcom/tencent/wcdb/database/SQLiteDatabaseConfiguration;
+    //   57: getfield 589	com/tencent/wcdb/database/SQLiteDatabaseConfiguration:path	Ljava/lang/String;
+    //   60: invokespecial 592	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   63: invokevirtual 593	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   66: pop
     //   67: aload_1
     //   68: monitorexit
     //   69: sipush 3219
-    //   72: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   72: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   75: aload_2
     //   76: areturn
     //   77: aload_0
-    //   78: invokevirtual 152	com/tencent/wcdb/database/SQLiteDatabase:acquireReference	()V
+    //   78: invokevirtual 151	com/tencent/wcdb/database/SQLiteDatabase:acquireReference	()V
     //   81: aload_1
     //   82: monitorexit
     //   83: aload_0
-    //   84: ldc_w 596
+    //   84: ldc_w 595
     //   87: aconst_null
-    //   88: invokevirtual 600	com/tencent/wcdb/database/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/Object;)Lcom/tencent/wcdb/Cursor;
+    //   88: invokevirtual 599	com/tencent/wcdb/database/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/Object;)Lcom/tencent/wcdb/Cursor;
     //   91: astore_1
     //   92: aload_1
-    //   93: invokeinterface 605 1 0
+    //   93: invokeinterface 604 1 0
     //   98: ifeq +75 -> 173
     //   101: aload_2
-    //   102: new 585	android/util/Pair
+    //   102: new 584	android/util/Pair
     //   105: dup
     //   106: aload_1
     //   107: iconst_1
-    //   108: invokeinterface 609 2 0
+    //   108: invokeinterface 608 2 0
     //   113: aload_1
     //   114: iconst_2
-    //   115: invokeinterface 609 2 0
-    //   120: invokespecial 593	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   123: invokevirtual 594	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   115: invokeinterface 608 2 0
+    //   120: invokespecial 592	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   123: invokevirtual 593	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   126: pop
     //   127: goto -35 -> 92
     //   130: astore_2
     //   131: aload_1
     //   132: ifnull +9 -> 141
     //   135: aload_1
-    //   136: invokeinterface 610 1 0
+    //   136: invokeinterface 609 1 0
     //   141: sipush 3219
-    //   144: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   144: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   147: aload_2
     //   148: athrow
     //   149: astore_1
     //   150: aload_0
-    //   151: invokevirtual 168	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+    //   151: invokevirtual 167	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
     //   154: sipush 3219
-    //   157: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   157: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   160: aload_1
     //   161: athrow
     //   162: astore_2
     //   163: aload_1
     //   164: monitorexit
     //   165: sipush 3219
-    //   168: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   168: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   171: aload_2
     //   172: athrow
     //   173: aload_1
     //   174: ifnull +9 -> 183
     //   177: aload_1
-    //   178: invokeinterface 610 1 0
+    //   178: invokeinterface 609 1 0
     //   183: aload_0
-    //   184: invokevirtual 168	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+    //   184: invokevirtual 167	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
     //   187: sipush 3219
-    //   190: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   190: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   193: aload_2
     //   194: areturn
     //   195: astore_2
@@ -1132,7 +1132,6 @@ public final class SQLiteDatabase
     //   21	30	162	finally
     //   38	69	162	finally
     //   77	83	162	finally
-    //   163	165	162	finally
     //   83	92	195	finally
   }
   
@@ -1408,127 +1407,127 @@ public final class SQLiteDatabase
   {
     // Byte code:
     //   0: sipush 3220
-    //   3: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokevirtual 152	com/tencent/wcdb/database/SQLiteDatabase:acquireReference	()V
+    //   7: invokevirtual 151	com/tencent/wcdb/database/SQLiteDatabase:acquireReference	()V
     //   10: aload_0
-    //   11: invokevirtual 717	com/tencent/wcdb/database/SQLiteDatabase:getAttachedDbs	()Ljava/util/List;
+    //   11: invokevirtual 716	com/tencent/wcdb/database/SQLiteDatabase:getAttachedDbs	()Ljava/util/List;
     //   14: astore_3
     //   15: aload_3
     //   16: ifnonnull +212 -> 228
-    //   19: new 321	java/lang/IllegalStateException
+    //   19: new 320	java/lang/IllegalStateException
     //   22: dup
-    //   23: new 202	java/lang/StringBuilder
+    //   23: new 201	java/lang/StringBuilder
     //   26: dup
-    //   27: ldc_w 719
-    //   30: invokespecial 406	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   27: ldc_w 718
+    //   30: invokespecial 405	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   33: aload_0
-    //   34: invokevirtual 720	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
-    //   37: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: ldc_w 722
-    //   43: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: invokevirtual 216	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   49: invokespecial 324	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   34: invokevirtual 719	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
+    //   37: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   40: ldc_w 721
+    //   43: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   49: invokespecial 323	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
     //   52: astore_2
     //   53: sipush 3220
-    //   56: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   56: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   59: aload_2
     //   60: athrow
     //   61: astore_2
-    //   62: new 251	java/util/ArrayList
+    //   62: new 250	java/util/ArrayList
     //   65: dup
-    //   66: invokespecial 325	java/util/ArrayList:<init>	()V
+    //   66: invokespecial 324	java/util/ArrayList:<init>	()V
     //   69: astore_3
     //   70: aload_3
-    //   71: new 585	android/util/Pair
+    //   71: new 584	android/util/Pair
     //   74: dup
-    //   75: ldc_w 587
+    //   75: ldc_w 586
     //   78: aload_0
-    //   79: invokevirtual 720	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
-    //   82: invokespecial 593	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   85: invokeinterface 725 2 0
+    //   79: invokevirtual 719	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
+    //   82: invokespecial 592	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   85: invokeinterface 724 2 0
     //   90: pop
     //   91: goto +196 -> 287
     //   94: iload_1
     //   95: aload_3
-    //   96: invokeinterface 726 1 0
+    //   96: invokeinterface 725 1 0
     //   101: if_icmpge +170 -> 271
     //   104: aload_3
     //   105: iload_1
-    //   106: invokeinterface 729 2 0
-    //   111: checkcast 585	android/util/Pair
+    //   106: invokeinterface 728 2 0
+    //   111: checkcast 584	android/util/Pair
     //   114: astore 4
     //   116: aload_0
-    //   117: new 202	java/lang/StringBuilder
+    //   117: new 201	java/lang/StringBuilder
     //   120: dup
-    //   121: ldc_w 731
-    //   124: invokespecial 406	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   121: ldc_w 730
+    //   124: invokespecial 405	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   127: aload 4
-    //   129: getfield 734	android/util/Pair:first	Ljava/lang/Object;
-    //   132: checkcast 101	java/lang/String
-    //   135: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   138: ldc_w 736
-    //   141: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   144: invokevirtual 216	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   147: invokevirtual 738	com/tencent/wcdb/database/SQLiteDatabase:compileStatement	(Ljava/lang/String;)Lcom/tencent/wcdb/database/SQLiteStatement;
+    //   129: getfield 733	android/util/Pair:first	Ljava/lang/Object;
+    //   132: checkcast 100	java/lang/String
+    //   135: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: ldc_w 735
+    //   141: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   144: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   147: invokevirtual 737	com/tencent/wcdb/database/SQLiteDatabase:compileStatement	(Ljava/lang/String;)Lcom/tencent/wcdb/database/SQLiteStatement;
     //   150: astore_2
     //   151: aload_2
-    //   152: invokevirtual 741	com/tencent/wcdb/database/SQLiteStatement:simpleQueryForString	()Ljava/lang/String;
+    //   152: invokevirtual 740	com/tencent/wcdb/database/SQLiteStatement:simpleQueryForString	()Ljava/lang/String;
     //   155: astore 5
     //   157: aload 5
-    //   159: ldc_w 743
-    //   162: invokestatic 747	com/tencent/wcdb/DatabaseUtils:objectEquals	(Ljava/lang/Object;Ljava/lang/Object;)Z
+    //   159: ldc_w 742
+    //   162: invokestatic 746	com/tencent/wcdb/DatabaseUtils:objectEquals	(Ljava/lang/Object;Ljava/lang/Object;)Z
     //   165: ifne +66 -> 231
-    //   168: ldc 54
-    //   170: new 202	java/lang/StringBuilder
+    //   168: ldc 53
+    //   170: new 201	java/lang/StringBuilder
     //   173: dup
-    //   174: ldc_w 749
-    //   177: invokespecial 406	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   174: ldc_w 748
+    //   177: invokespecial 405	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   180: aload 4
-    //   182: getfield 752	android/util/Pair:second	Ljava/lang/Object;
-    //   185: checkcast 101	java/lang/String
-    //   188: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   191: ldc_w 754
-    //   194: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   182: getfield 751	android/util/Pair:second	Ljava/lang/Object;
+    //   185: checkcast 100	java/lang/String
+    //   188: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   191: ldc_w 753
+    //   194: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   197: aload 5
-    //   199: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   202: invokevirtual 216	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   205: invokestatic 756	com/tencent/wcdb/support/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   199: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   202: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   205: invokestatic 755	com/tencent/wcdb/support/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   208: aload_2
     //   209: ifnull +7 -> 216
     //   212: aload_2
-    //   213: invokevirtual 303	com/tencent/wcdb/database/SQLiteStatement:close	()V
+    //   213: invokevirtual 302	com/tencent/wcdb/database/SQLiteStatement:close	()V
     //   216: aload_0
-    //   217: invokevirtual 168	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+    //   217: invokevirtual 167	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
     //   220: sipush 3220
-    //   223: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   223: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   226: iconst_0
     //   227: ireturn
     //   228: goto +59 -> 287
     //   231: aload_2
     //   232: ifnull +60 -> 292
     //   235: aload_2
-    //   236: invokevirtual 303	com/tencent/wcdb/database/SQLiteStatement:close	()V
+    //   236: invokevirtual 302	com/tencent/wcdb/database/SQLiteStatement:close	()V
     //   239: goto +53 -> 292
     //   242: aload_2
     //   243: ifnull +7 -> 250
     //   246: aload_2
-    //   247: invokevirtual 303	com/tencent/wcdb/database/SQLiteStatement:close	()V
+    //   247: invokevirtual 302	com/tencent/wcdb/database/SQLiteStatement:close	()V
     //   250: sipush 3220
-    //   253: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   253: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   256: aload_3
     //   257: athrow
     //   258: astore_2
     //   259: aload_0
-    //   260: invokevirtual 168	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+    //   260: invokevirtual 167	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
     //   263: sipush 3220
-    //   266: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   266: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   269: aload_2
     //   270: athrow
     //   271: aload_0
-    //   272: invokevirtual 168	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+    //   272: invokevirtual 167	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
     //   275: sipush 3220
-    //   278: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   278: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   281: iconst_1
     //   282: ireturn
     //   283: astore_3
@@ -1610,15 +1609,12 @@ public final class SQLiteDatabase
   
   public final boolean isOpen()
   {
-    for (;;)
+    synchronized (this.mLock)
     {
-      synchronized (this.mLock)
+      if (this.mConnectionPoolLocked != null)
       {
-        if (this.mConnectionPoolLocked != null)
-        {
-          bool = true;
-          return bool;
-        }
+        bool = true;
+        return bool;
       }
       boolean bool = false;
     }
@@ -1768,39 +1764,39 @@ public final class SQLiteDatabase
   {
     // Byte code:
     //   0: sipush 3178
-    //   3: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokevirtual 152	com/tencent/wcdb/database/SQLiteDatabase:acquireReference	()V
-    //   10: new 804	com/tencent/wcdb/database/SQLiteDirectCursorDriver
+    //   7: invokevirtual 151	com/tencent/wcdb/database/SQLiteDatabase:acquireReference	()V
+    //   10: new 803	com/tencent/wcdb/database/SQLiteDirectCursorDriver
     //   13: dup
     //   14: aload_0
     //   15: aload_2
     //   16: aload 4
     //   18: aload 5
-    //   20: invokespecial 807	com/tencent/wcdb/database/SQLiteDirectCursorDriver:<init>	(Lcom/tencent/wcdb/database/SQLiteDatabase;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/wcdb/support/CancellationSignal;)V
+    //   20: invokespecial 806	com/tencent/wcdb/database/SQLiteDirectCursorDriver:<init>	(Lcom/tencent/wcdb/database/SQLiteDatabase;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/wcdb/support/CancellationSignal;)V
     //   23: astore_2
     //   24: aload_1
     //   25: ifnull +24 -> 49
     //   28: aload_2
     //   29: aload_1
     //   30: aload_3
-    //   31: invokeinterface 812 3 0
+    //   31: invokeinterface 811 3 0
     //   36: astore_1
     //   37: aload_0
-    //   38: invokevirtual 168	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+    //   38: invokevirtual 167	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
     //   41: sipush 3178
-    //   44: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   44: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   47: aload_1
     //   48: areturn
     //   49: aload_0
-    //   50: getfield 133	com/tencent/wcdb/database/SQLiteDatabase:mCursorFactory	Lcom/tencent/wcdb/database/SQLiteDatabase$CursorFactory;
+    //   50: getfield 132	com/tencent/wcdb/database/SQLiteDatabase:mCursorFactory	Lcom/tencent/wcdb/database/SQLiteDatabase$CursorFactory;
     //   53: astore_1
     //   54: goto -26 -> 28
     //   57: astore_1
     //   58: aload_0
-    //   59: invokevirtual 168	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+    //   59: invokevirtual 167	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
     //   62: sipush 3178
-    //   65: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   65: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   68: aload_1
     //   69: athrow
     // Local variable table:
@@ -2275,15 +2271,10 @@ public final class SQLiteDatabase
     
     public abstract SQLiteProgram newQuery(SQLiteDatabase paramSQLiteDatabase, String paramString, Object[] paramArrayOfObject, CancellationSignal paramCancellationSignal);
   }
-  
-  public static abstract interface CustomFunction
-  {
-    public abstract void callback(String[] paramArrayOfString);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wcdb.database.SQLiteDatabase
  * JD-Core Version:    0.7.0.1
  */

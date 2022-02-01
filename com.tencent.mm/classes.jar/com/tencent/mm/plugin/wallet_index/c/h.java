@@ -1,20 +1,18 @@
 package com.tencent.mm.plugin.wallet_index.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.network.g;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.s;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.plugin.wallet_core.model.k;
-import com.tencent.mm.protocal.protobuf.czm;
-import com.tencent.mm.protocal.protobuf.czn;
+import com.tencent.mm.protocal.protobuf.dja;
+import com.tencent.mm.protocal.protobuf.djb;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.c.j;
 import com.tencent.mm.wallet_core.c.w;
-import com.tencent.mm.wallet_core.ui.f;
 
 public class h
   extends w
@@ -27,32 +25,32 @@ public class h
   {
     AppMethodBeat.i(71822);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new czm();
-    ((d.a)localObject).iLO = new czn();
+    ((d.a)localObject).lBU = new dja();
+    ((d.a)localObject).lBV = new djb();
     ((d.a)localObject).uri = getUri();
     ((d.a)localObject).funcId = getType();
-    ((d.a)localObject).iLP = 188;
+    ((d.a)localObject).lBW = 188;
     ((d.a)localObject).respCmdId = 1000000188;
-    ((d.a)localObject).routeInfo = f.bpA(paramPayReq.prepayId);
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (czm)this.rr.iLK.iLR;
-    ((czm)localObject).jfi = paramPayReq.appId;
-    ((czm)localObject).MEM = paramPayReq.partnerId;
-    ((czm)localObject).LQv = paramPayReq.prepayId;
-    ((czm)localObject).Lkp = paramPayReq.nonceStr;
-    ((czm)localObject).MEN = paramPayReq.timeStamp;
-    ((czm)localObject).Lkq = paramPayReq.packageValue;
-    ((czm)localObject).Lkr = paramPayReq.sign;
-    ((czm)localObject).Lks = paramPayReq.signType;
-    ((czm)localObject).MEO = paramString1;
-    ((czm)localObject).xuk = paramString2;
-    ((czm)localObject).xMq = paramString3;
-    ((czm)localObject).Lcc = k.fQy();
-    ((czm)localObject).MEQ = paramString4;
+    ((d.a)localObject).routeInfo = com.tencent.mm.wallet_core.ui.g.bCx(paramPayReq.prepayId);
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (dja)d.b.b(this.rr.lBR);
+    ((dja)localObject).lVG = paramPayReq.appId;
+    ((dja)localObject).TQy = paramPayReq.partnerId;
+    ((dja)localObject).SYW = paramPayReq.prepayId;
+    ((dja)localObject).Sly = paramPayReq.nonceStr;
+    ((dja)localObject).TQz = paramPayReq.timeStamp;
+    ((dja)localObject).Slz = paramPayReq.packageValue;
+    ((dja)localObject).SlA = paramPayReq.sign;
+    ((dja)localObject).SlB = paramPayReq.signType;
+    ((dja)localObject).TQA = paramString1;
+    ((dja)localObject).CqB = paramString2;
+    ((dja)localObject).CQz = paramString3;
+    ((dja)localObject).Sdp = k.gJe();
+    ((dja)localObject).TQC = paramString4;
     AppMethodBeat.o(71822);
   }
   
-  public int doScene(g paramg, i parami)
+  public int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(71823);
     this.callback = parami;

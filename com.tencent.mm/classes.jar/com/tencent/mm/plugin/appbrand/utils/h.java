@@ -1,94 +1,158 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
-import android.app.Activity;
-import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.ComponentName;
 import android.content.Context;
-import android.os.Bundle;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ac.m;
+import com.tencent.mm.plugin.appbrand.ac.m.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class h
-  implements Application.ActivityLifecycleCallbacks
 {
-  public Application app;
-  public final Queue<a> ogJ;
-  private int ogK;
-  public boolean ogL;
+  private static final char[] INVALID;
+  private static final String[] VALID;
+  private static final Set<Object> riv;
   
-  public h()
+  static
   {
-    AppMethodBeat.i(137911);
-    this.ogJ = new LinkedList();
-    this.ogK = 0;
-    this.ogL = false;
-    AppMethodBeat.o(137911);
+    AppMethodBeat.i(135362);
+    riv = new HashSet();
+    INVALID = new char[] { 60, 62, 34, 39, 38, 32, 39 };
+    VALID = new String[] { "&lt;", "&gt;", "&quot;", "&apos;", "&amp;", "&nbsp;", "&#39;" };
+    AppMethodBeat.o(135362);
   }
   
-  public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
+  public static String anj(String paramString)
   {
-    AppMethodBeat.i(137912);
-    this.ogK += 1;
-    if (this.ogK == 1)
+    AppMethodBeat.i(135356);
+    StringBuffer localStringBuffer = new StringBuffer();
+    int m = paramString.length();
+    int i = 0;
+    while (i < m)
     {
-      Log.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.notifyOnActivityCreated ");
-      paramBundle = this.ogJ.iterator();
-      while (paramBundle.hasNext()) {
-        ((a)paramBundle.next()).er(paramActivity);
-      }
-    }
-    AppMethodBeat.o(137912);
-  }
-  
-  public final void onActivityDestroyed(Activity paramActivity)
-  {
-    AppMethodBeat.i(137913);
-    this.ogK -= 1;
-    if (this.ogK == 0)
-    {
-      Log.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.notifyOnNoActivityLeft ");
-      paramActivity = this.ogJ.iterator();
-      while (paramActivity.hasNext()) {
-        ((a)paramActivity.next()).bZq();
-      }
-      if ((this.ogL) && (this.app != null))
+      int j = 0;
+      while (j < INVALID.length)
       {
-        paramActivity = this.app;
-        Log.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.release ");
-        paramActivity.unregisterActivityLifecycleCallbacks(this);
-        this.ogJ.clear();
-        this.app = null;
-        this.ogL = false;
-        this.ogL = false;
-        this.app = null;
+        String str = VALID[j];
+        int k = 0;
+        while ((k < str.length()) && (i + k < m) && (str.charAt(k) == paramString.charAt(i + k))) {
+          k += 1;
+        }
+        if (k == str.length()) {
+          break;
+        }
+        j += 1;
+      }
+      if (j != INVALID.length)
+      {
+        localStringBuffer.append(INVALID[j]);
+        i = VALID[j].length() + i;
+      }
+      else
+      {
+        localStringBuffer.append(paramString.charAt(i));
+        i += 1;
       }
     }
-    AppMethodBeat.o(137913);
+    paramString = localStringBuffer.toString();
+    AppMethodBeat.o(135356);
+    return paramString;
   }
   
-  public final void onActivityPaused(Activity paramActivity) {}
-  
-  public final void onActivityResumed(Activity paramActivity) {}
-  
-  public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public final void onActivityStarted(Activity paramActivity) {}
-  
-  public final void onActivityStopped(Activity paramActivity) {}
-  
-  public static abstract interface a
+  public static String ank(String paramString)
   {
-    public abstract void bZq();
-    
-    public abstract void er(Context paramContext);
+    AppMethodBeat.i(135357);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(135357);
+      return null;
+    }
+    paramString = paramString.replace(' ', '\n').replace(' ', '\n');
+    AppMethodBeat.o(135357);
+    return paramString;
+  }
+  
+  public static void bs(Object paramObject)
+  {
+    AppMethodBeat.i(135353);
+    riv.remove(paramObject);
+    AppMethodBeat.o(135353);
+  }
+  
+  public static <T> T cQ(T paramT)
+  {
+    AppMethodBeat.i(135352);
+    riv.add(paramT);
+    AppMethodBeat.o(135352);
+    return paramT;
+  }
+  
+  @Deprecated
+  public static void clU()
+  {
+    AppMethodBeat.i(135354);
+    m.clU();
+    AppMethodBeat.o(135354);
+  }
+  
+  @Deprecated
+  public static m.a clV()
+  {
+    AppMethodBeat.i(242729);
+    m.a locala = m.clV();
+    AppMethodBeat.o(242729);
+    return locala;
+  }
+  
+  public static String e(ComponentName paramComponentName)
+  {
+    AppMethodBeat.i(135358);
+    if (paramComponentName == null)
+    {
+      AppMethodBeat.o(135358);
+      return "[UNKNOWN]";
+    }
+    PackageManager localPackageManager = MMApplicationContext.getContext().getPackageManager();
+    if (localPackageManager == null)
+    {
+      AppMethodBeat.o(135358);
+      return "[UNKNOWN]";
+    }
+    try
+    {
+      paramComponentName = localPackageManager.getActivityInfo(paramComponentName, 128);
+      if (paramComponentName != null)
+      {
+        paramComponentName = paramComponentName.taskAffinity;
+        AppMethodBeat.o(135358);
+        return paramComponentName;
+      }
+    }
+    catch (Exception paramComponentName)
+    {
+      Log.e("MicroMsg.AppBrandUtil", "getActivityTaskAffinity e = %s", new Object[] { paramComponentName });
+      AppMethodBeat.o(135358);
+    }
+    return "[UNKNOWN]";
+  }
+  
+  public static String getMMString(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(135351);
+    paramVarArgs = MMApplicationContext.getResources().getString(paramInt, paramVarArgs);
+    AppMethodBeat.o(135351);
+    return paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.h
  * JD-Core Version:    0.7.0.1
  */

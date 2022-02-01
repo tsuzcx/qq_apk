@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.appbrand.appusage;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.ac.m;
 import com.tencent.mm.plugin.appbrand.ac.m.a;
 import com.tencent.mm.plugin.appbrand.config.aa.d;
@@ -14,18 +14,18 @@ import com.tencent.mm.storage.ar.a;
 public final class j
   extends MStorage
 {
-  private static volatile j kUu = null;
+  private static volatile j nOH = null;
   
-  public static j bxQ()
+  public static j bJf()
   {
     AppMethodBeat.i(44482);
-    if (kUu == null) {}
+    if (nOH == null) {}
     try
     {
-      if (kUu == null) {
-        kUu = new j();
+      if (nOH == null) {
+        nOH = new j();
       }
-      j localj = kUu;
+      j localj = nOH;
       AppMethodBeat.o(44482);
       return localj;
     }
@@ -35,22 +35,22 @@ public final class j
     }
   }
   
-  public static boolean bxS()
+  public static boolean bJh()
   {
     AppMethodBeat.i(44485);
-    if (!g.aAc())
+    if (!h.aHB())
     {
       AppMethodBeat.o(44485);
       return false;
     }
-    boolean bool = ((Boolean)g.aAh().azQ().get(ar.a.NXR, Boolean.FALSE)).booleanValue();
+    boolean bool = ((Boolean)h.aHG().aHp().get(ar.a.VlR, Boolean.FALSE)).booleanValue();
     AppMethodBeat.o(44485);
     return bool;
   }
   
   public static void release()
   {
-    kUu = null;
+    nOH = null;
   }
   
   public final void a(long paramLong, boolean paramBoolean, Bundle paramBundle, int paramInt1, int paramInt2)
@@ -62,8 +62,8 @@ public final class j
   
   public final void a(final long paramLong1, final boolean paramBoolean, Bundle paramBundle, final int paramInt1, final int paramInt2, final int paramInt3, final long paramLong2, final a parama)
   {
-    AppMethodBeat.i(226385);
-    m.bZn().postToWorker(new Runnable()
+    AppMethodBeat.i(274436);
+    m.clV().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -71,22 +71,22 @@ public final class j
         j localj = j.this;
         int j = paramInt1;
         int k = paramInt2;
-        if ((paramBoolean & v.bym())) {}
+        if ((paramBoolean & v.bJA())) {}
         for (int i = 2;; i = 0)
         {
-          j.a(localj, j, k, i | 0x1, paramLong1, paramBoolean, paramInt3, paramLong2, parama, this.kUB);
+          j.a(localj, j, k, i | 0x1, paramLong1, paramBoolean, paramInt3, paramLong2, parama, this.nOO);
           AppMethodBeat.o(44480);
           return;
         }
       }
     });
-    AppMethodBeat.o(226385);
+    AppMethodBeat.o(274436);
   }
   
-  public final void bxR()
+  public final void bJg()
   {
     AppMethodBeat.i(44483);
-    m.bZn().postToWorker(new Runnable()
+    m.clV().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -100,12 +100,12 @@ public final class j
   
   public static abstract interface a
   {
-    public abstract void n(boolean paramBoolean, String paramString);
+    public abstract void r(boolean paramBoolean, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.j
  * JD-Core Version:    0.7.0.1
  */

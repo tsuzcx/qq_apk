@@ -25,13 +25,13 @@ import java.util.ArrayList;
 public class GWalletUI
   extends HellActivity
 {
+  private b Dra;
   BroadcastReceiver mReceiver;
-  private b ygY;
   
   public GWalletUI()
   {
     AppMethodBeat.i(64575);
-    this.ygY = null;
+    this.Dra = null;
     this.mReceiver = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
@@ -76,17 +76,17 @@ public class GWalletUI
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(64581);
-    b localb = this.ygY;
+    b localb = this.Dra;
     Object localObject;
     if (paramInt1 == localb.mRequestCode)
     {
-      localb.aBu("handleActivityResult");
+      localb.aLi("handleActivityResult");
       if (paramIntent == null)
       {
-        b.aBv("Null data in IAB activity result.");
+        b.aLj("Null data in IAB activity result.");
         paramIntent = new c(-1002, "Null data in IAB result");
-        if (localb.yhp != null) {
-          localb.yhp.b(paramIntent, null);
+        if (localb.Drr != null) {
+          localb.Drr.b(paramIntent, null);
         }
         AppMethodBeat.o(64581);
         return;
@@ -95,7 +95,7 @@ public class GWalletUI
       if (localObject != null) {
         break label239;
       }
-      b.aBv("Intent with no response code, assuming OK (known issue)");
+      b.aLj("Intent with no response code, assuming OK (known issue)");
       paramInt1 = 0;
     }
     for (;;)
@@ -105,10 +105,10 @@ public class GWalletUI
       Log.d("MicroMsg.IabHelper", "Purchase data: ".concat(String.valueOf(localObject)));
       Log.d("MicroMsg.IabHelper", "Data signature: ".concat(String.valueOf(str)));
       Log.d("MicroMsg.IabHelper", "Extras: " + paramIntent.getExtras());
-      Log.d("MicroMsg.IabHelper", "Expected item type: " + localb.yhq);
+      Log.d("MicroMsg.IabHelper", "Expected item type: " + localb.Drs);
       localObject = new c(paramInt1, "Null data in IAB result");
-      if (localb.yhp != null) {
-        localb.yhp.b((c)localObject, paramIntent);
+      if (localb.Drr != null) {
+        localb.Drr.b((c)localObject, paramIntent);
       }
       AppMethodBeat.o(64581);
       return;
@@ -125,8 +125,8 @@ public class GWalletUI
         paramInt1 = (int)((Long)localObject).longValue();
       }
     }
-    b.aBv("Unexpected type for intent response code.");
-    b.aBv(localObject.getClass().getName());
+    b.aLj("Unexpected type for intent response code.");
+    b.aLj(localObject.getClass().getName());
     paramIntent = new RuntimeException("Unexpected type for intent response code: " + localObject.getClass().getName());
     AppMethodBeat.o(64581);
     throw paramIntent;
@@ -138,9 +138,9 @@ public class GWalletUI
     super.onCreate(paramBundle);
     requestWindowFeature(1);
     Log.d("MicroMsg.GWalletUI", "Creating IAB helper.");
-    this.ygY = new b(this);
+    this.Dra = new b(this);
     Log.d("MicroMsg.GWalletUI", "Starting setup.");
-    this.ygY.a(new b.a()
+    this.Dra.a(new b.a()
     {
       public final void a(c paramAnonymousc)
       {
@@ -161,7 +161,7 @@ public class GWalletUI
           AppMethodBeat.o(64570);
           return;
         }
-        GWalletUI.this.qb(GWalletUI.this.getIntent().getBooleanExtra("is_direct", true));
+        GWalletUI.this.sB(GWalletUI.this.getIntent().getBooleanExtra("is_direct", true));
         AppMethodBeat.o(64570);
       }
     });
@@ -172,10 +172,10 @@ public class GWalletUI
   {
     AppMethodBeat.i(64582);
     Log.d("MicroMsg.GWalletUI", "Destroying helper.");
-    if (this.ygY != null) {
-      this.ygY.dispose();
+    if (this.Dra != null) {
+      this.Dra.dispose();
     }
-    this.ygY = null;
+    this.Dra = null;
     super.onDestroy();
     AppMethodBeat.o(64582);
   }
@@ -184,7 +184,7 @@ public class GWalletUI
   {
     AppMethodBeat.i(64578);
     if ("com.tencent.mm.gwallet.ACTION_QUERY_REQUEST".equals(paramIntent.getAction())) {
-      qb(paramIntent.getBooleanExtra("is_direct", true));
+      sB(paramIntent.getBooleanExtra("is_direct", true));
     }
     super.onNewIntent(paramIntent);
     AppMethodBeat.o(64578);
@@ -214,10 +214,10 @@ public class GWalletUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void qb(final boolean paramBoolean)
+  public final void sB(final boolean paramBoolean)
   {
     AppMethodBeat.i(64577);
-    b localb = this.ygY;
+    b localb = this.Dra;
     b.b local4 = new b.b()
     {
       @JgMethodChecked(author=20, fComment="checked", lastDate="20140429", reviewer=20, vComment={com.jg.EType.INTENTCHECK})
@@ -243,14 +243,14 @@ public class GWalletUI
       }
     };
     MMHandler localMMHandler = new MMHandler();
-    localb.aBu("queryInventory");
+    localb.aLi("queryInventory");
     ThreadPool.post(new b.3(localb, "inapp", localMMHandler, local4), "IabHelper_queryInventoryAsync");
     AppMethodBeat.o(64577);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gwallet.GWalletUI
  * JD-Core Version:    0.7.0.1
  */

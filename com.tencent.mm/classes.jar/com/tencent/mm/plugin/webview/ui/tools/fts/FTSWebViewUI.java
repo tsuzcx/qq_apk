@@ -4,51 +4,52 @@ import android.app.Activity;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.websearch.api.ar;
+import com.tencent.mm.plugin.webview.c.i;
 
 public class FTSWebViewUI
   extends FTSBaseWebViewUI
 {
-  private void ggY()
+  private void har()
   {
     AppMethodBeat.i(80714);
-    if (this.scene == 21) {
-      ar.afB(19);
+    if (getScene() == 21) {
+      ar.anp(19);
     }
     AppMethodBeat.o(80714);
   }
   
-  public final void bXg()
+  public final void cjK()
   {
     AppMethodBeat.i(80708);
-    super.bXg();
-    ar.afz(this.scene);
-    if (this.scene == 21) {
-      ar.afB(17);
+    super.cjK();
+    ar.ann(getScene());
+    if (getScene() == 21) {
+      ar.anp(17);
     }
     AppMethodBeat.o(80708);
+  }
+  
+  public final void gZc()
+  {
+    AppMethodBeat.i(80715);
+    har();
+    super.gZc();
+    AppMethodBeat.o(80715);
   }
   
   protected final String getHint()
   {
     AppMethodBeat.i(80707);
-    String str = getString(2131755972);
+    String str = getString(c.i.app_search);
     AppMethodBeat.o(80707);
     return str;
-  }
-  
-  public final void gfR()
-  {
-    AppMethodBeat.i(80715);
-    ggY();
-    super.gfR();
-    AppMethodBeat.o(80715);
   }
   
   public void onBackPressed()
   {
     AppMethodBeat.i(80712);
     super.onBackPressed();
-    ggY();
+    har();
     AppMethodBeat.o(80712);
   }
   
@@ -64,10 +65,10 @@ public class FTSWebViewUI
   {
     AppMethodBeat.i(80711);
     super.onDestroy();
-    ar.fYo();
-    ar.fYp();
-    if (this.scene == 21) {
-      ar.afB(18);
+    ar.gQZ();
+    ar.gRa();
+    if (getScene() == 21) {
+      ar.anp(18);
     }
     AppMethodBeat.o(80711);
   }
@@ -76,7 +77,7 @@ public class FTSWebViewUI
   {
     AppMethodBeat.i(80710);
     super.onPause();
-    ar.fYn();
+    ar.gQY();
     AppMethodBeat.o(80710);
   }
   
@@ -84,7 +85,7 @@ public class FTSWebViewUI
   {
     AppMethodBeat.i(80709);
     super.onResume();
-    ar.fYm();
+    ar.gQX();
     AppMethodBeat.o(80709);
   }
   
@@ -96,7 +97,7 @@ public class FTSWebViewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.FTSWebViewUI
  * JD-Core Version:    0.7.0.1
  */

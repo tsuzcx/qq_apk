@@ -11,84 +11,85 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.multitalk.a.e;
 import com.tencent.mm.pluginsdk.ui.a.b;
 
 public final class l
   implements View.OnClickListener
 {
+  private int AOJ;
+  private int FxM;
+  private int FxP;
+  private LinearLayout Fzc;
+  private LinearLayout Fzd;
+  private LinearLayout Fze;
+  private int Fzf;
+  private int Fzg;
+  private int Fzh;
+  private int Fzi;
+  public int Fzj;
   private Context context;
   private int size;
-  private int wfQ;
-  private int zSk;
-  private int zSn;
-  private LinearLayout zTA;
-  private LinearLayout zTB;
-  private LinearLayout zTC;
-  private int zTD;
-  private int zTE;
-  private int zTF;
-  private int zTG;
-  public int zTH;
   
   public l(Activity paramActivity)
   {
     AppMethodBeat.i(114726);
     this.size = 0;
-    this.wfQ = f.wfQ;
-    this.zTF = (f.wfQ + f.zSd);
-    this.zTG = (f.wfQ * 2 + f.zSd);
-    this.zSk = (f.wfQ * 4);
-    this.zSn = f.zSn;
+    this.AOJ = f.AOJ;
+    this.Fzh = (f.AOJ + f.FxF);
+    this.Fzi = (f.AOJ * 2 + f.FxF);
+    this.FxM = (f.AOJ * 4);
+    this.FxP = f.FxP;
     this.context = paramActivity.getBaseContext();
-    int i = com.tencent.mm.cb.a.jn(this.context) - this.zSk * 2;
-    this.zTD = ((i - this.zTF * 10) / 5);
-    this.zTE = ((i - this.zTG * 10) / 5);
-    this.zTA = ((LinearLayout)paramActivity.findViewById(2131297128));
-    paramActivity = (RelativeLayout.LayoutParams)this.zTA.getLayoutParams();
-    paramActivity.topMargin = (this.wfQ * 2);
-    paramActivity.bottomMargin = (this.wfQ * 2);
-    paramActivity.leftMargin = this.zSk;
-    paramActivity.rightMargin = this.zSk;
-    this.zTA.setLayoutParams(paramActivity);
-    this.zTB = new LinearLayout(this.context);
-    this.zTC = new LinearLayout(this.context);
+    int i = com.tencent.mm.ci.a.kr(this.context) - this.FxM * 2;
+    this.Fzf = ((i - this.Fzh * 10) / 5);
+    this.Fzg = ((i - this.Fzi * 10) / 5);
+    this.Fzc = ((LinearLayout)paramActivity.findViewById(a.e.avatar_container));
+    paramActivity = (RelativeLayout.LayoutParams)this.Fzc.getLayoutParams();
+    paramActivity.topMargin = (this.AOJ * 2);
+    paramActivity.bottomMargin = (this.AOJ * 2);
+    paramActivity.leftMargin = this.FxM;
+    paramActivity.rightMargin = this.FxM;
+    this.Fzc.setLayoutParams(paramActivity);
+    this.Fzd = new LinearLayout(this.context);
+    this.Fze = new LinearLayout(this.context);
     paramActivity = new LinearLayout.LayoutParams(-2, -2);
-    this.zTB.setLayoutParams(paramActivity);
+    this.Fzd.setLayoutParams(paramActivity);
     paramActivity = new RelativeLayout.LayoutParams(-2, -2);
     paramActivity.addRule(14);
-    this.zTC.setLayoutParams(paramActivity);
+    this.Fze.setLayoutParams(paramActivity);
     paramActivity = new LinearLayout.LayoutParams(-1, -2);
     RelativeLayout localRelativeLayout = new RelativeLayout(this.context);
-    localRelativeLayout.addView(this.zTC);
+    localRelativeLayout.addView(this.Fze);
     localRelativeLayout.setLayoutParams(paramActivity);
-    this.zTA.addView(this.zTB);
-    this.zTA.addView(localRelativeLayout);
+    this.Fzc.addView(this.Fzd);
+    this.Fzc.addView(localRelativeLayout);
     AppMethodBeat.o(114726);
   }
   
-  private void Rt(int paramInt)
+  private void XI(int paramInt)
   {
     AppMethodBeat.i(114728);
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.zTB.getLayoutParams();
-    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)this.zTC.getLayoutParams();
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.Fzd.getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)this.Fze.getLayoutParams();
     if (paramInt <= 5)
     {
-      localLayoutParams.height = this.zTD;
-      this.zTC.setVisibility(8);
+      localLayoutParams.height = this.Fzf;
+      this.Fze.setVisibility(8);
       AppMethodBeat.o(114728);
       return;
     }
-    localLayoutParams.height = this.zTE;
-    localLayoutParams.topMargin = (this.wfQ * 2);
-    localLayoutParams.bottomMargin = (this.wfQ * 2);
-    this.zTC.setVisibility(0);
-    localLayoutParams1.height = this.zTE;
-    localLayoutParams1.topMargin = (this.wfQ * 2);
-    localLayoutParams1.bottomMargin = (this.wfQ * 2);
+    localLayoutParams.height = this.Fzg;
+    localLayoutParams.topMargin = (this.AOJ * 2);
+    localLayoutParams.bottomMargin = (this.AOJ * 2);
+    this.Fze.setVisibility(0);
+    localLayoutParams1.height = this.Fzg;
+    localLayoutParams1.topMargin = (this.AOJ * 2);
+    localLayoutParams1.bottomMargin = (this.AOJ * 2);
     AppMethodBeat.o(114728);
   }
   
-  private void Ru(int paramInt)
+  private void XJ(int paramInt)
   {
     int k = 0;
     int j = 0;
@@ -101,23 +102,23 @@ public final class l
       for (;;)
       {
         i = j;
-        if (paramInt >= this.zTB.getChildCount()) {
+        if (paramInt >= this.Fzd.getChildCount()) {
           break;
         }
-        localLayoutParams = (LinearLayout.LayoutParams)this.zTB.getChildAt(paramInt).getLayoutParams();
-        localLayoutParams.width = this.zTD;
-        localLayoutParams.height = this.zTD;
-        localLayoutParams.rightMargin = this.zTF;
-        localLayoutParams.leftMargin = this.zTF;
+        localLayoutParams = (LinearLayout.LayoutParams)this.Fzd.getChildAt(paramInt).getLayoutParams();
+        localLayoutParams.width = this.Fzf;
+        localLayoutParams.height = this.Fzf;
+        localLayoutParams.rightMargin = this.Fzh;
+        localLayoutParams.leftMargin = this.Fzh;
         paramInt += 1;
       }
-      while (i < this.zTC.getChildCount())
+      while (i < this.Fze.getChildCount())
       {
-        localLayoutParams = (LinearLayout.LayoutParams)this.zTC.getChildAt(i).getLayoutParams();
-        localLayoutParams.width = this.zTE;
-        localLayoutParams.height = this.zTE;
-        localLayoutParams.rightMargin = this.zTF;
-        localLayoutParams.leftMargin = this.zTF;
+        localLayoutParams = (LinearLayout.LayoutParams)this.Fze.getChildAt(i).getLayoutParams();
+        localLayoutParams.width = this.Fzg;
+        localLayoutParams.height = this.Fzg;
+        localLayoutParams.rightMargin = this.Fzh;
+        localLayoutParams.leftMargin = this.Fzh;
         i += 1;
       }
       AppMethodBeat.o(114729);
@@ -127,29 +128,29 @@ public final class l
     for (;;)
     {
       i = k;
-      if (paramInt >= this.zTB.getChildCount()) {
+      if (paramInt >= this.Fzd.getChildCount()) {
         break;
       }
-      localLayoutParams = (LinearLayout.LayoutParams)this.zTB.getChildAt(paramInt).getLayoutParams();
-      localLayoutParams.width = this.zTE;
-      localLayoutParams.height = this.zTE;
-      localLayoutParams.rightMargin = this.zTG;
-      localLayoutParams.leftMargin = this.zTG;
+      localLayoutParams = (LinearLayout.LayoutParams)this.Fzd.getChildAt(paramInt).getLayoutParams();
+      localLayoutParams.width = this.Fzg;
+      localLayoutParams.height = this.Fzg;
+      localLayoutParams.rightMargin = this.Fzi;
+      localLayoutParams.leftMargin = this.Fzi;
       paramInt += 1;
     }
-    while (i < this.zTC.getChildCount())
+    while (i < this.Fze.getChildCount())
     {
-      localLayoutParams = (LinearLayout.LayoutParams)this.zTC.getChildAt(i).getLayoutParams();
-      localLayoutParams.width = this.zTE;
-      localLayoutParams.height = this.zTE;
-      localLayoutParams.rightMargin = this.zTG;
-      localLayoutParams.leftMargin = this.zTG;
+      localLayoutParams = (LinearLayout.LayoutParams)this.Fze.getChildAt(i).getLayoutParams();
+      localLayoutParams.width = this.Fzg;
+      localLayoutParams.height = this.Fzg;
+      localLayoutParams.rightMargin = this.Fzi;
+      localLayoutParams.leftMargin = this.Fzi;
       i += 1;
     }
     AppMethodBeat.o(114729);
   }
   
-  public final void KK(String paramString)
+  public final void Sd(String paramString)
   {
     int m = 1;
     AppMethodBeat.i(178927);
@@ -161,8 +162,8 @@ public final class l
     int j = -1;
     int i = 0;
     int k;
-    if (i < this.zTB.getChildCount()) {
-      if (this.zTB.getChildAt(i).getTag().equals(paramString)) {
+    if (i < this.Fzd.getChildCount()) {
+      if (this.Fzd.getChildAt(i).getTag().equals(paramString)) {
         k = 1;
       }
     }
@@ -172,8 +173,8 @@ public final class l
       {
         j = 0;
         label63:
-        if (j < this.zTC.getChildCount()) {
-          if (!this.zTC.getChildAt(j).getTag().equals(paramString)) {}
+        if (j < this.Fze.getChildCount()) {
+          if (!this.Fze.getChildAt(j).getTag().equals(paramString)) {}
         }
       }
       for (i = m;; i = m)
@@ -189,7 +190,7 @@ public final class l
         }
         if (i != 0)
         {
-          this.zTC.removeViewAt(j);
+          this.Fze.removeViewAt(j);
           this.size -= 1;
         }
         if (k != 0)
@@ -197,19 +198,19 @@ public final class l
           if (this.size > 5) {
             break label194;
           }
-          this.zTB.removeViewAt(j);
+          this.Fzd.removeViewAt(j);
         }
         for (this.size -= 1;; this.size -= 1)
         {
-          Rt(this.size);
-          Ru(this.size);
+          XI(this.size);
+          XJ(this.size);
           AppMethodBeat.o(178927);
           return;
           label194:
-          this.zTB.removeViewAt(j);
-          paramString = this.zTC.getChildAt(0);
-          this.zTC.removeViewAt(0);
-          this.zTB.addView(paramString);
+          this.Fzd.removeViewAt(j);
+          paramString = this.Fze.getChildAt(0);
+          this.Fze.removeViewAt(0);
+          this.Fzd.addView(paramString);
         }
         m = 0;
         j = i;
@@ -219,7 +220,7 @@ public final class l
     }
   }
   
-  public final void aGw(String paramString)
+  public final void aQL(String paramString)
   {
     AppMethodBeat.i(114727);
     this.size += 1;
@@ -229,15 +230,15 @@ public final class l
     localImageView.setOnClickListener(this);
     a.b.c(localImageView, paramString);
     if (this.size <= 5) {
-      this.zTB.addView(localImageView);
+      this.Fzd.addView(localImageView);
     }
     for (;;)
     {
-      Rt(this.size);
-      Ru(this.size);
+      XI(this.size);
+      XJ(this.size);
       AppMethodBeat.o(114727);
       return;
-      this.zTC.addView(localImageView);
+      this.Fze.addView(localImageView);
     }
   }
   
@@ -245,9 +246,9 @@ public final class l
   {
     AppMethodBeat.i(114730);
     b localb = new b();
-    localb.bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkSelectContactGallery", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    this.zTH += 1;
+    localb.bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkSelectContactGallery", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    this.Fzj += 1;
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkSelectContactGallery", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(114730);
   }

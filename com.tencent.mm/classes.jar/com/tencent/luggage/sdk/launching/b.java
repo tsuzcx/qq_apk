@@ -8,25 +8,25 @@ public enum b
 {
   static
   {
-    AppMethodBeat.i(229869);
-    cBB = new b("LEGACY", 0);
-    cBC = new b("PRE_RENDER", 1);
-    cBD = new b[] { cBB, cBC };
-    AppMethodBeat.o(229869);
+    AppMethodBeat.i(240531);
+    cBe = new b("LEGACY", 0);
+    cBf = new b("PRE_RENDER", 1);
+    cBg = new b[] { cBe, cBf };
+    AppMethodBeat.o(240531);
   }
   
   private b() {}
   
   public static void a(b paramb, Parcel paramParcel)
   {
-    AppMethodBeat.i(229867);
+    AppMethodBeat.i(240524);
     paramParcel.writeInt(paramb.ordinal());
-    AppMethodBeat.o(229867);
+    AppMethodBeat.o(240524);
   }
   
   public static b b(Parcel paramParcel)
   {
-    AppMethodBeat.i(229868);
+    AppMethodBeat.i(240528);
     int j = paramParcel.readInt();
     paramParcel = values();
     int k = paramParcel.length;
@@ -36,28 +36,28 @@ public enum b
       b localb = paramParcel[i];
       if (j == localb.ordinal())
       {
-        AppMethodBeat.o(229868);
+        AppMethodBeat.o(240528);
         return localb;
       }
       i += 1;
     }
     Log.e("Luggage.WxaColdStartMode", "readFromParcel get unrecognized ordinal %d", new Object[] { Integer.valueOf(j) });
-    paramParcel = cBB;
-    AppMethodBeat.o(229868);
+    paramParcel = cBe;
+    AppMethodBeat.o(240528);
     return paramParcel;
   }
   
-  public final long OC()
+  public final long RJ()
   {
-    AppMethodBeat.i(229866);
+    AppMethodBeat.i(240521);
     long l = ordinal();
-    AppMethodBeat.o(229866);
+    AppMethodBeat.o(240521);
     return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.sdk.launching.b
  * JD-Core Version:    0.7.0.1
  */

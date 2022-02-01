@@ -1,29 +1,18 @@
 package com.tencent.mm.plugin.appbrand.openmaterial;
 
-import android.os.Looper;
-import com.tencent.f.h;
-import com.tencent.f.i;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.vending.e.a;
 
 public abstract interface j
+  extends a
 {
-  public static final j nlj = new j()
+  public static final j qmL = new j()
   {
-    public final void ae(Runnable paramAnonymousRunnable)
-    {
-      AppMethodBeat.i(194341);
-      if (Looper.getMainLooper() == Looper.myLooper())
-      {
-        paramAnonymousRunnable.run();
-        AppMethodBeat.o(194341);
-        return;
-      }
-      h.RTc.aV(paramAnonymousRunnable);
-      AppMethodBeat.o(194341);
-    }
+    public final void a(j.a paramAnonymousa) {}
+    
+    public final void dead() {}
   };
   
-  public abstract void ae(Runnable paramRunnable);
+  public abstract void a(j.a parama);
 }
 
 

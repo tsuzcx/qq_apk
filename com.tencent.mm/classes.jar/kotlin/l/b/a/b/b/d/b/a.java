@@ -11,25 +11,25 @@ import kotlin.t;
 
 final class a
 {
-  private static a TmU;
-  public static final a TmV;
+  private static a aaPO;
+  public static final a aaPP;
   
   static
   {
     AppMethodBeat.i(57394);
-    TmV = new a();
+    aaPP = new a();
     AppMethodBeat.o(57394);
   }
   
   private static a a(Member paramMember)
   {
     AppMethodBeat.i(57392);
-    p.h(paramMember, "member");
+    p.k(paramMember, "member");
     paramMember = paramMember.getClass();
     try
     {
       Method localMethod = paramMember.getMethod("getParameters", new Class[0]);
-      paramMember = new a(localMethod, b.bx(paramMember).loadClass("java.lang.reflect.Parameter").getMethod("getName", new Class[0]));
+      paramMember = new a(localMethod, b.bW(paramMember).loadClass("java.lang.reflect.Parameter").getMethod("getName", new Class[0]));
       AppMethodBeat.o(57392);
       return paramMember;
     }
@@ -44,21 +44,21 @@ final class a
   public static List<String> b(Member paramMember)
   {
     AppMethodBeat.i(57393);
-    p.h(paramMember, "member");
-    Object localObject2 = TmU;
+    p.k(paramMember, "member");
+    Object localObject2 = aaPO;
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = a(paramMember);
-      TmU = (a)localObject1;
+      aaPO = (a)localObject1;
     }
-    localObject2 = ((a)localObject1).TmW;
+    localObject2 = ((a)localObject1).aaPQ;
     if (localObject2 == null)
     {
       AppMethodBeat.o(57393);
       return null;
     }
-    localObject1 = ((a)localObject1).TmX;
+    localObject1 = ((a)localObject1).aaPR;
     if (localObject1 == null)
     {
       AppMethodBeat.o(57393);
@@ -94,19 +94,19 @@ final class a
   
   public static final class a
   {
-    final Method TmW;
-    final Method TmX;
+    final Method aaPQ;
+    final Method aaPR;
     
     public a(Method paramMethod1, Method paramMethod2)
     {
-      this.TmW = paramMethod1;
-      this.TmX = paramMethod2;
+      this.aaPQ = paramMethod1;
+      this.aaPR = paramMethod2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -10,30 +10,31 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.sns.i.c;
 
 public class ViewPagerControlView
   extends LinearLayout
 {
-  protected int Fgm;
-  private float Fgn;
-  private float Fgo;
-  private Paint Fgp;
-  private Paint Fgq;
-  private Paint Fgr;
-  private Paint Fgs;
-  private int Fgt;
-  private float Fgu;
-  private int Fgv;
-  private float Fgw;
-  private float Fgx;
+  protected int LuR;
+  private float LuS;
+  private float LuT;
+  private Paint LuU;
+  private Paint LuV;
+  private Paint LuW;
+  private Paint LuX;
+  private int LuY;
+  private float LuZ;
+  private int Lva;
+  private float Lvb;
+  private float Lvc;
   private boolean autoCarousel;
   protected Context context;
   protected int count;
   private float height;
   private float left;
-  private Paint lun;
-  private int mEX;
+  private Paint opm;
+  private int pEj;
   float progress;
   private float radius;
   private float width;
@@ -51,43 +52,43 @@ public class ViewPagerControlView
   public ViewPagerControlView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(204030);
+    AppMethodBeat.i(263901);
     this.autoCarousel = false;
     this.context = paramContext;
-    this.mEX = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ap.ha(this.context)[0];
+    this.pEj = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ao.ib(this.context)[0];
     this.width = a.fromDPToPix(this.context, 28);
     this.height = a.fromDPToPix(this.context, 7);
     this.radius = (this.height / 2.0F);
-    this.Fgo = (this.width - this.height);
-    this.Fgp = new Paint();
-    this.Fgp.setFlags(1);
-    this.Fgp.setColor(this.context.getResources().getColor(2131101101));
-    this.Fgq = new Paint();
-    this.Fgq.setStyle(Paint.Style.STROKE);
-    this.Fgq.setStrokeWidth(0.5F);
-    this.Fgq.setFlags(1);
-    this.Fgq.setColor(this.context.getResources().getColor(2131101100));
-    this.Fgr = new Paint();
-    this.Fgr.setFlags(1);
-    this.Fgr.setColor(this.context.getResources().getColor(2131101101));
-    this.Fgs = new Paint();
-    this.Fgs.setFlags(1);
-    this.Fgs.setColor(-1);
-    this.Fgs.setAlpha(0);
-    this.lun = new Paint();
-    this.lun.setFlags(1);
-    this.lun.setColor(-1);
-    this.lun.setAlpha(0);
-    this.lun.setStyle(Paint.Style.STROKE);
-    this.lun.setStrokeWidth(this.height);
-    this.lun.setStrokeCap(Paint.Cap.ROUND);
+    this.LuT = (this.width - this.height);
+    this.LuU = new Paint();
+    this.LuU.setFlags(1);
+    this.LuU.setColor(this.context.getResources().getColor(i.c.sns_ad_gallery_control_view_point_color));
+    this.LuV = new Paint();
+    this.LuV.setStyle(Paint.Style.STROKE);
+    this.LuV.setStrokeWidth(0.5F);
+    this.LuV.setFlags(1);
+    this.LuV.setColor(this.context.getResources().getColor(i.c.sns_ad_gallery_control_view_border_color));
+    this.LuW = new Paint();
+    this.LuW.setFlags(1);
+    this.LuW.setColor(this.context.getResources().getColor(i.c.sns_ad_gallery_control_view_point_color));
+    this.LuX = new Paint();
+    this.LuX.setFlags(1);
+    this.LuX.setColor(-1);
+    this.LuX.setAlpha(0);
+    this.opm = new Paint();
+    this.opm.setFlags(1);
+    this.opm.setColor(-1);
+    this.opm.setAlpha(0);
+    this.opm.setStyle(Paint.Style.STROKE);
+    this.opm.setStrokeWidth(this.height);
+    this.opm.setStrokeCap(Paint.Cap.ROUND);
     setWillNotDraw(false);
-    AppMethodBeat.o(204030);
+    AppMethodBeat.o(263901);
   }
   
   private void e(Canvas paramCanvas, boolean paramBoolean)
   {
-    AppMethodBeat.i(204034);
+    AppMethodBeat.i(263909);
     float f2;
     float f3;
     float f4;
@@ -98,40 +99,40 @@ public class ViewPagerControlView
     if (paramBoolean)
     {
       f2 = this.width;
-      f3 = this.Fgu;
-      f4 = this.Fgo;
-      if (this.Fgu <= 0.3F)
+      f3 = this.LuZ;
+      f4 = this.LuT;
+      if (this.LuZ <= 0.3F)
       {
-        f1 = 1.0F - this.Fgu * 10.0F / 3.0F;
+        f1 = 1.0F - this.LuZ * 10.0F / 3.0F;
         f2 -= f3 * f4;
         i = (int)(f1 * 255.0F);
         f1 = this.left + f2;
         localRectF = new RectF(this.left, 0.0F, f1, this.height);
-        paramCanvas.drawRoundRect(localRectF, this.radius, this.radius, this.Fgp);
+        paramCanvas.drawRoundRect(localRectF, this.radius, this.radius, this.LuU);
         if (!paramBoolean) {
           break label288;
         }
-        this.lun.setAlpha(i);
-        f3 = this.Fgw;
+        this.opm.setAlpha(i);
+        f3 = this.Lvb;
         f4 = this.radius;
-        f5 = this.Fgw;
-        paramCanvas.drawLine(f3, f4, (f2 - this.radius * 2.0F) * this.progress + f5, this.radius, this.lun);
+        f5 = this.Lvb;
+        paramCanvas.drawLine(f3, f4, (f2 - this.radius * 2.0F) * this.progress + f5, this.radius, this.opm);
       }
     }
     for (;;)
     {
-      paramCanvas.drawRoundRect(localRectF, this.radius, this.radius, this.Fgq);
+      paramCanvas.drawRoundRect(localRectF, this.radius, this.radius, this.LuV);
       this.left = (this.height + f1);
-      this.Fgw = (this.left + this.radius);
-      AppMethodBeat.o(204034);
+      this.Lvb = (this.left + this.radius);
+      AppMethodBeat.o(263909);
       return;
       f1 = 0.0F;
       break;
-      f2 = this.Fgu;
-      f3 = this.Fgo;
+      f2 = this.LuZ;
+      f3 = this.LuT;
       f4 = this.height;
-      if (this.Fgu >= 0.7F) {}
-      for (f1 = (this.Fgu - 0.7F) * 10.0F / 3.0F;; f1 = 0.0F)
+      if (this.LuZ >= 0.7F) {}
+      for (f1 = (this.LuZ - 0.7F) * 10.0F / 3.0F;; f1 = 0.0F)
       {
         f2 = f4 + f2 * f3;
         break;
@@ -139,104 +140,104 @@ public class ViewPagerControlView
       label288:
       if (!this.autoCarousel)
       {
-        this.lun.setAlpha(i);
-        f3 = this.Fgw;
+        this.opm.setAlpha(i);
+        f3 = this.Lvb;
         f4 = this.radius;
-        f5 = this.Fgw;
-        paramCanvas.drawLine(f3, f4, (f2 - this.radius * 2.0F) * this.progress + f5, this.radius, this.lun);
+        f5 = this.Lvb;
+        paramCanvas.drawLine(f3, f4, (f2 - this.radius * 2.0F) * this.progress + f5, this.radius, this.opm);
       }
       else
       {
-        this.Fgs.setAlpha(i);
-        paramCanvas.drawCircle(this.Fgw, this.Fgx, this.radius, this.Fgs);
+        this.LuX.setAlpha(i);
+        paramCanvas.drawCircle(this.Lvb, this.Lvc, this.radius, this.LuX);
       }
     }
   }
   
-  private void v(Canvas paramCanvas)
+  private void y(Canvas paramCanvas)
   {
-    AppMethodBeat.i(204033);
-    paramCanvas.drawCircle(this.Fgw, this.Fgx, this.radius, this.Fgr);
-    paramCanvas.drawCircle(this.Fgw, this.Fgx, this.radius, this.Fgq);
+    AppMethodBeat.i(263908);
+    paramCanvas.drawCircle(this.Lvb, this.Lvc, this.radius, this.LuW);
+    paramCanvas.drawCircle(this.Lvb, this.Lvc, this.radius, this.LuV);
     this.left += 2.0F * this.height;
-    this.Fgw = (this.left + this.radius);
-    AppMethodBeat.o(204033);
+    this.Lvb = (this.left + this.radius);
+    AppMethodBeat.o(263908);
   }
   
-  public final void aX(int paramInt, boolean paramBoolean)
+  public final void bi(int paramInt, boolean paramBoolean)
   {
     this.count = paramInt;
-    this.Fgm = (paramInt - 2);
-    this.Fgn = ((this.mEX - (this.Fgm - 1) * 2 * this.height - this.width) / 2.0F);
+    this.LuR = (paramInt - 2);
+    this.LuS = ((this.pEj - (this.LuR - 1) * 2 * this.height - this.width) / 2.0F);
     this.autoCarousel = paramBoolean;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     int i = 2;
-    AppMethodBeat.i(204032);
+    AppMethodBeat.i(263907);
     super.onDraw(paramCanvas);
-    this.left = this.Fgn;
-    this.Fgw = (this.left + this.radius);
-    this.Fgx = this.radius;
-    if ((this.Fgv == 1) || (this.Fgv == 2))
+    this.left = this.LuS;
+    this.Lvb = (this.left + this.radius);
+    this.Lvc = this.radius;
+    if ((this.Lva == 1) || (this.Lva == 2))
     {
       e(paramCanvas, false);
-      while (i <= this.Fgm - 1)
+      while (i <= this.LuR - 1)
       {
-        v(paramCanvas);
+        y(paramCanvas);
         i += 1;
       }
       e(paramCanvas, true);
-      AppMethodBeat.o(204032);
+      AppMethodBeat.o(263907);
       return;
     }
     i = 1;
-    while (i < this.Fgt)
+    while (i < this.LuY)
     {
-      v(paramCanvas);
+      y(paramCanvas);
       i += 1;
     }
     e(paramCanvas, true);
     e(paramCanvas, false);
-    i = this.Fgt + 2;
-    while (i <= this.Fgm)
+    i = this.LuY + 2;
+    while (i <= this.LuR)
     {
-      v(paramCanvas);
+      y(paramCanvas);
       i += 1;
     }
-    AppMethodBeat.o(204032);
+    AppMethodBeat.o(263907);
   }
   
-  public final void v(int paramInt, float paramFloat)
+  public final void w(int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(204031);
-    if (paramInt > this.Fgm)
+    AppMethodBeat.i(263905);
+    if (paramInt > this.LuR)
     {
-      AppMethodBeat.o(204031);
+      AppMethodBeat.o(263905);
       return;
     }
     if (paramInt <= 0) {
-      this.Fgv = 1;
+      this.Lva = 1;
     }
     for (;;)
     {
-      this.Fgt = paramInt;
-      this.Fgu = paramFloat;
+      this.LuY = paramInt;
+      this.LuZ = paramFloat;
       invalidate();
-      AppMethodBeat.o(204031);
+      AppMethodBeat.o(263905);
       return;
-      if (paramInt == this.Fgm) {
-        this.Fgv = 2;
+      if (paramInt == this.LuR) {
+        this.Lva = 2;
       } else {
-        this.Fgv = 0;
+        this.Lva = 0;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.ad.ViewPagerControlView
  * JD-Core Version:    0.7.0.1
  */

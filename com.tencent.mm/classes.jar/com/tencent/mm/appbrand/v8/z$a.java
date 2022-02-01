@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(185105);
-    dry = new a("NONE", 0);
-    drz = new a("RESUME", 1);
-    drA = new a("ENQUEUE", 2);
-    drB = new a[] { dry, drz, drA };
+    fkk = new a("NONE", 0);
+    fkl = new a("RESUME", 1);
+    fkm = new a("ENQUEUE", 2);
+    fkn = new a[] { fkk, fkl, fkm };
     AppMethodBeat.o(185105);
   }
   
@@ -18,7 +18,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.z.a
  * JD-Core Version:    0.7.0.1
  */

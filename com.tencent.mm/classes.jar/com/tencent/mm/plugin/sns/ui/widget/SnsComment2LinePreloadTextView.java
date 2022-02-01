@@ -9,9 +9,9 @@ import com.tencent.mm.kiss.widget.textview.a.a;
 public class SnsComment2LinePreloadTextView
   extends PLTextView
 {
-  private static a Ffe = null;
-  private static int Fff = 0;
-  private boolean Ffg = false;
+  private static a LtJ = null;
+  private static int LtK = 0;
+  private boolean LtL = false;
   
   public SnsComment2LinePreloadTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,10 +26,10 @@ public class SnsComment2LinePreloadTextView
   public static a getTextViewConfig()
   {
     AppMethodBeat.i(100498);
-    if (Ffe == null) {
-      Ffe = c.flh().getTextViewConfig();
+    if (LtJ == null) {
+      LtJ = c.fZA().getTextViewConfig();
     }
-    a locala = Ffe;
+    a locala = LtJ;
     AppMethodBeat.o(100498);
     return locala;
   }
@@ -37,35 +37,35 @@ public class SnsComment2LinePreloadTextView
   public static int getViewWidth()
   {
     AppMethodBeat.i(100501);
-    if (Fff == 0) {
-      Fff = c.flh().getViewWidth();
+    if (LtK == 0) {
+      LtK = c.fZA().getViewWidth();
     }
-    int i = Fff;
+    int i = LtK;
     AppMethodBeat.o(100501);
     return i;
   }
   
-  public final void A(CharSequence paramCharSequence)
+  public final void G(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(100500);
-    super.A(paramCharSequence);
+    super.G(paramCharSequence);
     AppMethodBeat.o(100500);
   }
   
-  public final void B(CharSequence paramCharSequence)
+  public final void H(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(100499);
-    super.B(paramCharSequence);
+    super.H(paramCharSequence);
     AppMethodBeat.o(100499);
   }
   
-  public final a aBn()
+  public final a aIQ()
   {
     AppMethodBeat.i(100497);
-    if (Ffe == null) {
-      Ffe = c.flh().getTextViewConfig();
+    if (LtJ == null) {
+      LtJ = c.fZA().getTextViewConfig();
     }
-    a locala = Ffe;
+    a locala = LtJ;
     AppMethodBeat.o(100497);
     return locala;
   }
@@ -79,7 +79,7 @@ public class SnsComment2LinePreloadTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.SnsComment2LinePreloadTextView
  * JD-Core Version:    0.7.0.1
  */

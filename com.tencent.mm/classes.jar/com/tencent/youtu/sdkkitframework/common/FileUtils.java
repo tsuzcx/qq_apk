@@ -17,23 +17,23 @@ public class FileUtils
   
   static
   {
-    AppMethodBeat.i(192557);
+    AppMethodBeat.i(256530);
     TAG = FileUtils.class.getSimpleName();
     mLoadedLibrary = new HashMap();
-    AppMethodBeat.o(192557);
+    AppMethodBeat.o(256530);
   }
   
   private FileUtils()
   {
-    AppMethodBeat.i(192550);
+    AppMethodBeat.i(256519);
     AssertionError localAssertionError = new AssertionError();
-    AppMethodBeat.o(192550);
+    AppMethodBeat.o(256519);
     throw localAssertionError;
   }
   
   public static boolean copyAsset(AssetManager paramAssetManager, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192553);
+    AppMethodBeat.i(256525);
     try
     {
       paramAssetManager = paramAssetManager.open(paramString1);
@@ -43,19 +43,19 @@ public class FileUtils
       paramAssetManager.close();
       paramString1.flush();
       paramString1.close();
-      AppMethodBeat.o(192553);
+      AppMethodBeat.o(256525);
       return true;
     }
     catch (Exception paramAssetManager)
     {
-      AppMethodBeat.o(192553);
+      AppMethodBeat.o(256525);
     }
     return false;
   }
   
   public static void copyFile(InputStream paramInputStream, OutputStream paramOutputStream)
   {
-    AppMethodBeat.i(192555);
+    AppMethodBeat.i(256528);
     byte[] arrayOfByte = new byte[1024];
     for (;;)
     {
@@ -65,12 +65,12 @@ public class FileUtils
       }
       paramOutputStream.write(arrayOfByte, 0, i);
     }
-    AppMethodBeat.o(192555);
+    AppMethodBeat.o(256528);
   }
   
   public static void copyFileOrDir(AssetManager paramAssetManager, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192554);
+    AppMethodBeat.i(256527);
     for (;;)
     {
       try
@@ -79,7 +79,7 @@ public class FileUtils
         if (arrayOfString.length == 0)
         {
           copyAsset(paramAssetManager, paramString1, paramString2 + "/" + paramString1);
-          AppMethodBeat.o(192554);
+          AppMethodBeat.o(256527);
           return;
         }
         Object localObject;
@@ -104,13 +104,13 @@ public class FileUtils
           localObject = paramString2 + File.separator + paramString1;
           continue;
         }
-        AppMethodBeat.o(192554);
+        AppMethodBeat.o(256527);
         return;
       }
       catch (IOException paramAssetManager)
       {
         YtLogger.e("tag", "I/O Exception".concat(String.valueOf(paramAssetManager)));
-        AppMethodBeat.o(192554);
+        AppMethodBeat.o(256527);
         return;
       }
       label212:
@@ -120,7 +120,7 @@ public class FileUtils
   
   public static void loadLibrary(String paramString)
   {
-    AppMethodBeat.i(192556);
+    AppMethodBeat.i(256529);
     if (mLoadedLibrary.get(paramString) == null) {
       YtLogger.i(TAG, "[YTUtils.loadLibrary] " + System.getProperty("java.library.path"));
     }
@@ -128,7 +128,7 @@ public class FileUtils
     {
       System.loadLibrary(paramString);
       mLoadedLibrary.put(paramString, "loaded");
-      AppMethodBeat.o(192556);
+      AppMethodBeat.o(256529);
       return;
     }
     catch (Exception localException)
@@ -441,7 +441,7 @@ public class FileUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.FileUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,82 +1,58 @@
 package com.tencent.mm.storage;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.f.c.hf;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class cs
-  extends MAutoStorage<cr>
+  extends hf
 {
-  public static final String[] SQL_CREATE;
-  public ISQLiteDatabase db;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(32891);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(cr.info, "UserOpenIdInApp") };
-    AppMethodBeat.o(32891);
+    AppMethodBeat.i(32886);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[3];
+    localMAutoDBInfo.columns = new String[4];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localMAutoDBInfo.columns[0] = "openId";
+    localMAutoDBInfo.colsMap.put("openId", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" openId TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.primaryKey = "openId";
+    localMAutoDBInfo.columns[1] = "appId";
+    localMAutoDBInfo.colsMap.put("appId", "TEXT");
+    localStringBuilder.append(" appId TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[2] = "username";
+    localMAutoDBInfo.colsMap.put("username", "TEXT");
+    localStringBuilder.append(" username TEXT");
+    localMAutoDBInfo.columns[3] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
+    AppMethodBeat.o(32886);
   }
   
-  public cs(ISQLiteDatabase paramISQLiteDatabase)
+  public cs() {}
+  
+  public cs(String paramString1, String paramString2, String paramString3)
   {
-    super(paramISQLiteDatabase, cr.info, "UserOpenIdInApp", null);
-    AppMethodBeat.i(32887);
-    this.db = paramISQLiteDatabase;
-    paramISQLiteDatabase.execSQL("UserOpenIdInApp", "CREATE INDEX IF NOT EXISTS userOpenIdInAppAppIdUsernameIndex ON UserOpenIdInApp ( appId,username )");
-    paramISQLiteDatabase.execSQL("UserOpenIdInApp", "CREATE INDEX IF NOT EXISTS userOpenIdInAppOpenIdIndex ON UserOpenIdInApp ( openId )");
-    AppMethodBeat.o(32887);
+    this.field_appId = paramString1;
+    this.field_username = paramString2;
+    this.field_openId = paramString3;
   }
   
-  public final boolean a(cr paramcr)
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(32889);
-    if ((paramcr == null) || (Util.isNullOrNil(paramcr.field_appId)) || (Util.isNullOrNil(paramcr.field_openId)) || (Util.isNullOrNil(paramcr.field_username)))
-    {
-      Log.w("MicroMsg.scanner.UserOpenIdInAppStorage", "wrong argument");
-      AppMethodBeat.o(32889);
-      return false;
-    }
-    ContentValues localContentValues = paramcr.convertTo();
-    if (this.db.replace("UserOpenIdInApp", cr.info.primaryKey, localContentValues) > 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Log.d("MicroMsg.scanner.UserOpenIdInAppStorage", "replace: appId=%s, username=%s, ret=%s ", new Object[] { paramcr.field_appId, paramcr.field_username, Boolean.valueOf(bool) });
-      AppMethodBeat.o(32889);
-      return bool;
-    }
-  }
-  
-  public final cr bkX(String paramString)
-  {
-    AppMethodBeat.i(32888);
-    if ((paramString == null) || (paramString.length() <= 0))
-    {
-      AppMethodBeat.o(32888);
-      return null;
-    }
-    Cursor localCursor = this.db.query("UserOpenIdInApp", null, "openId=?", new String[] { Util.escapeSqlValue(paramString) }, null, null, null, 2);
-    if (!localCursor.moveToFirst())
-    {
-      Log.w("MicroMsg.scanner.UserOpenIdInAppStorage", "get null with openId:".concat(String.valueOf(paramString)));
-      localCursor.close();
-      AppMethodBeat.o(32888);
-      return null;
-    }
-    paramString = new cr();
-    paramString.convertFrom(localCursor);
-    localCursor.close();
-    AppMethodBeat.o(32888);
-    return paramString;
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.cs
  * JD-Core Version:    0.7.0.1
  */

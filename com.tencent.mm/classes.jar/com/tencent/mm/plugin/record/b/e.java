@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.record.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.yx;
-import com.tencent.mm.protocal.protobuf.yy;
+import com.tencent.mm.protocal.protobuf.zb;
+import com.tencent.mm.protocal.protobuf.zc;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -19,7 +19,7 @@ public final class e
   extends q
   implements m
 {
-  private a BGv;
+  private a HCA;
   private i callback;
   private d rr;
   
@@ -27,20 +27,20 @@ public final class e
   {
     AppMethodBeat.i(9462);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new yx();
-    ((d.a)localObject).iLO = new yy();
+    ((d.a)localObject).lBU = new zb();
+    ((d.a)localObject).lBV = new zc();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/checkmd5";
     ((d.a)localObject).funcId = 939;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (yx)this.rr.iLK.iLR;
-    ((yx)localObject).fileid = paramString1;
-    ((yx)localObject).md5 = paramString2;
-    ((yx)localObject).LaE = paramString3;
-    ((yx)localObject).LjY = paramInt;
-    this.BGv = parama;
-    Log.i("MicroMsg.NetSceneCheckMd5", "summersafecdn NetSceneCheckMd5 fileid[%s], md5[%s], newmd5[%s], crc[%d], stack[%s]", new Object[] { ((yx)localObject).fileid, ((yx)localObject).md5, ((yx)localObject).LaE, Integer.valueOf(((yx)localObject).LjY), Util.getStack() });
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (zb)d.b.b(this.rr.lBR);
+    ((zb)localObject).fileid = paramString1;
+    ((zb)localObject).md5 = paramString2;
+    ((zb)localObject).SbN = paramString3;
+    ((zb)localObject).Slf = paramInt;
+    this.HCA = parama;
+    Log.i("MicroMsg.NetSceneCheckMd5", "summersafecdn NetSceneCheckMd5 fileid[%s], md5[%s], newmd5[%s], crc[%d], stack[%s]", new Object[] { ((zb)localObject).fileid, ((zb)localObject).md5, ((zb)localObject).SbN, Integer.valueOf(((zb)localObject).Slf), Util.getStack() });
     AppMethodBeat.o(9462);
   }
   
@@ -63,12 +63,12 @@ public final class e
     AppMethodBeat.i(9464);
     Log.i("MicroMsg.NetSceneCheckMd5", "summersafecdn onGYNetEnd [%d, %d, %s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    if (this.BGv != null)
+    if (this.HCA != null)
     {
       if ((paramInt2 == 0) && (paramInt3 == 0)) {
         break label101;
       }
-      paramString = this.BGv;
+      paramString = this.HCA;
     }
     for (;;)
     {
@@ -76,12 +76,12 @@ public final class e
       params = paramString;
       for (paramString = paramArrayOfByte;; paramString = paramArrayOfByte)
       {
-        params.ax(paramString, paramInt2, paramInt3);
+        params.aA(paramString, paramInt2, paramInt3);
         AppMethodBeat.o(9464);
         return;
         label101:
-        params = (yy)((d)params).iLL.iLR;
-        paramString = this.BGv;
+        params = (zc)d.c.b(((d)params).lBS);
+        paramString = this.HCA;
         if (params == null) {
           break;
         }
@@ -93,7 +93,7 @@ public final class e
   
   public static abstract interface a
   {
-    public abstract void ax(String paramString, int paramInt1, int paramInt2);
+    public abstract void aA(String paramString, int paramInt1, int paramInt2);
   }
 }
 

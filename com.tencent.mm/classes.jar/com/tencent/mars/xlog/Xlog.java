@@ -3,10 +3,9 @@ package com.tencent.mars.xlog;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Log.LogImp;
 import com.tencent.mm.sdk.platformtools.LogDecryptor;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
 import com.tencent.mm.vfs.q;
 import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 
 public class Xlog
   implements Log.LogImp
@@ -125,17 +124,17 @@ public class Xlog
     for (;;)
     {
       return;
-      Object localObject1 = new o(mCacheDir);
-      if (((o)localObject1).exists())
+      Object localObject1 = new q(mCacheDir);
+      if (((q)localObject1).ifE())
       {
-        localObject1 = ((o)localObject1).a(new q()
+        localObject1 = ((q)localObject1).a(new s()
         {
-          public boolean accept(o paramAnonymouso)
+          public boolean accept(q paramAnonymousq)
           {
-            if (paramAnonymouso.isDirectory()) {
+            if (paramAnonymousq.isDirectory()) {
               return false;
             }
-            return paramAnonymouso.getName().toLowerCase().endsWith(".xlog");
+            return paramAnonymousq.getName().toLowerCase().endsWith(".xlog");
           }
         });
         if (localObject1.length != 0)
@@ -145,7 +144,7 @@ public class Xlog
           while (i < j)
           {
             Object localObject2 = localObject1[i];
-            s.nx(aa.z(localObject2.mUri), mLogDir + "/" + localObject2.getName());
+            u.oo(localObject2.getPath(), mLogDir + "/" + localObject2.getName());
             i += 1;
           }
         }
@@ -206,7 +205,7 @@ public class Xlog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mars.xlog.Xlog
  * JD-Core Version:    0.7.0.1
  */

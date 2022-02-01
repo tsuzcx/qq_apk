@@ -10,8 +10,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.q;
-import com.tencent.mm.plugin.emoji.model.k;
+import com.tencent.mm.ay.q;
+import com.tencent.mm.plugin.emoji.i.c;
+import com.tencent.mm.plugin.emoji.i.d;
+import com.tencent.mm.plugin.emoji.i.e;
+import com.tencent.mm.plugin.emoji.i.f;
+import com.tencent.mm.plugin.emoji.i.h;
+import com.tencent.mm.plugin.emoji.model.p;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMStack;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -23,45 +28,45 @@ import java.util.List;
 public final class e
   extends ArrayAdapter<EmojiGroupInfo>
 {
-  private static final int qXn = 2131493946;
+  private static final int uAb = i.f.emoji_sort_item;
   private final String TAG;
   private Context mContext;
-  private int qXo;
-  public List<EmojiGroupInfo> qXp;
+  private int uAc;
+  public List<EmojiGroupInfo> uAd;
   
   public e(Context paramContext, List<EmojiGroupInfo> paramList)
   {
-    super(paramContext, qXn, paramList);
+    super(paramContext, uAb, paramList);
     AppMethodBeat.i(108316);
     this.TAG = "MicroMsg.emoji.EmojiSortAdapter";
-    this.qXo = paramContext.getResources().getDimensionPixelSize(2131166272);
+    this.uAc = paramContext.getResources().getDimensionPixelSize(i.c.emoji_item_list_height);
     this.mContext = paramContext;
-    this.qXp = paramList;
+    this.uAd = paramList;
     AppMethodBeat.o(108316);
   }
   
-  public final void cFn()
+  public final void cTP()
   {
     AppMethodBeat.i(108317);
-    if (this.qXp == null)
+    if (this.uAd == null)
     {
       AppMethodBeat.o(108317);
       return;
     }
-    int j = this.qXp.size();
+    int j = this.uAd.size();
     int i = 0;
     while (i < j)
     {
-      ((EmojiGroupInfo)this.qXp.get(i)).field_idx = i;
+      ((EmojiGroupInfo)this.uAd.get(i)).field_idx = i;
       i += 1;
     }
-    k.getEmojiStorageMgr().OpO.iY(this.qXp);
-    EmojiGroupInfo localEmojiGroupInfo = k.getEmojiStorageMgr().OpO.di(EmojiGroupInfo.Uun, false);
-    localEmojiGroupInfo.field_sort = (this.qXp.size() + 2);
-    k.getEmojiStorageMgr();
-    if (!c.gEJ())
+    p.getEmojiStorageMgr().VFI.jQ(this.uAd);
+    EmojiGroupInfo localEmojiGroupInfo = p.getEmojiStorageMgr().VFI.dt(EmojiGroupInfo.YCv, false);
+    localEmojiGroupInfo.field_sort = (this.uAd.size() + 2);
+    p.getEmojiStorageMgr();
+    if (!c.hAZ())
     {
-      c localc = k.getEmojiStorageMgr().OpO;
+      c localc = p.getEmojiStorageMgr().VFI;
       if (localEmojiGroupInfo != null)
       {
         Log.d("MicroMsg.emoji.EmojiGroupInfoStorage", "jacks updateEmojiGroupInfo: packname: %s, lasttime: %d, sort: %d", new Object[] { localEmojiGroupInfo.field_packName, Long.valueOf(localEmojiGroupInfo.field_lastUseTime), Integer.valueOf(localEmojiGroupInfo.field_sort) });
@@ -78,52 +83,52 @@ public final class e
     EmojiGroupInfo localEmojiGroupInfo;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(qXn, null);
+      paramView = LayoutInflater.from(this.mContext).inflate(uAb, null);
       paramViewGroup = new a(paramView);
       paramView.setTag(paramViewGroup);
       localEmojiGroupInfo = (EmojiGroupInfo)getItem(paramInt);
-      if (!com.tencent.mm.plugin.emoji.h.a.b(localEmojiGroupInfo)) {
-        break label132;
+      if (!com.tencent.mm.plugin.emoji.i.a.b(localEmojiGroupInfo)) {
+        break label135;
       }
-      paramViewGroup.jVO.setText(2131758679);
-      label73:
-      if (!com.tencent.mm.plugin.emoji.h.a.b(localEmojiGroupInfo)) {
-        break label147;
+      paramViewGroup.mNb.setText(i.h.emoji_store_tuzi_title);
+      label74:
+      if (!com.tencent.mm.plugin.emoji.i.a.b(localEmojiGroupInfo)) {
+        break label150;
       }
-      paramViewGroup.nnL.setImageResource(2131233072);
+      paramViewGroup.qps.setImageResource(i.d.icon_002_cover);
     }
     for (;;)
     {
       if (paramInt + 1 == getCount()) {
-        paramViewGroup.qXq.setBackgroundResource(2131231901);
+        paramViewGroup.uAe.setBackgroundResource(i.d.comm_list_item_selector_no_divider);
       }
       paramView.setVisibility(0);
       AppMethodBeat.o(108318);
       return paramView;
       paramViewGroup = (a)paramView.getTag();
       break;
-      label132:
-      paramViewGroup.jVO.setText(localEmojiGroupInfo.field_packName);
-      break label73;
-      label147:
-      q.bcV().a(localEmojiGroupInfo.field_packIconUrl, paramViewGroup.nnL, com.tencent.mm.plugin.emoji.e.e.fQ(localEmojiGroupInfo.field_productID, localEmojiGroupInfo.field_packIconUrl));
+      label135:
+      paramViewGroup.mNb.setText(localEmojiGroupInfo.field_packName);
+      break label74;
+      label150:
+      q.bml().a(localEmojiGroupInfo.field_packIconUrl, paramViewGroup.qps, com.tencent.mm.plugin.emoji.e.e.gd(localEmojiGroupInfo.field_productID, localEmojiGroupInfo.field_packIconUrl));
     }
   }
   
   final class a
   {
-    TextView jVO;
-    ImageView nnL;
-    View qXq;
-    ImageView qXr;
+    TextView mNb;
+    ImageView qps;
+    View uAe;
+    ImageView uAf;
     
     public a(View paramView)
     {
       AppMethodBeat.i(108315);
-      this.qXr = ((ImageView)paramView.findViewById(2131300058));
-      this.nnL = ((ImageView)paramView.findViewById(2131300056));
-      this.jVO = ((TextView)paramView.findViewById(2131300057));
-      this.qXq = paramView.findViewById(2131299994);
+      this.uAf = ((ImageView)paramView.findViewById(i.e.emoji_store_manager_list_item_updonw));
+      this.qps = ((ImageView)paramView.findViewById(i.e.emoji_store_manager_list_item_icon));
+      this.mNb = ((TextView)paramView.findViewById(i.e.emoji_store_manager_list_item_title));
+      this.uAe = paramView.findViewById(i.e.emoji_item_container);
       ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
       if (localLayoutParams != null)
       {
@@ -136,7 +141,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.e
  * JD-Core Version:    0.7.0.1
  */

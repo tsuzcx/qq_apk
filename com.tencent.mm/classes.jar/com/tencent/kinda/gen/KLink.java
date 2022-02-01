@@ -4,6 +4,8 @@ public abstract interface KLink
 {
   public abstract void setBackground(DynamicColor paramDynamicColor, int paramInt);
   
+  public abstract void setFontStyle(FontStyle paramFontStyle);
+  
   public abstract void setLinkCallbackImpl(VoidCallback paramVoidCallback);
   
   public abstract void setLinkColor(DynamicColor paramDynamicColor);
@@ -18,7 +20,7 @@ public abstract interface KLink
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.gen.KLink
  * JD-Core Version:    0.7.0.1
  */

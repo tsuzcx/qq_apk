@@ -1,54 +1,56 @@
 package com.tencent.mm.plugin.aa.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.wallet_core.model.k;
+import com.tencent.mm.protocal.protobuf.j;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class h
-  extends com.tencent.mm.ak.q
+  extends com.tencent.mm.an.q
   implements m
 {
-  private com.tencent.mm.ak.i callback;
+  private com.tencent.mm.an.i callback;
   public String chatroomName;
-  private d hJu;
-  private com.tencent.mm.protocal.protobuf.h jTi;
-  public com.tencent.mm.protocal.protobuf.i jTj;
+  private d kwO;
+  private com.tencent.mm.protocal.protobuf.i mKw;
+  public j mKx;
   
-  public h(String paramString1, int paramInt, String paramString2, long paramLong, String paramString3, String paramString4, String paramString5)
+  public h(String paramString1, int paramInt, String paramString2, long paramLong, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    AppMethodBeat.i(212945);
+    AppMethodBeat.i(271106);
     d.a locala = new d.a();
-    locala.iLN = new com.tencent.mm.protocal.protobuf.h();
-    locala.iLO = new com.tencent.mm.protocal.protobuf.i();
+    locala.lBU = new com.tencent.mm.protocal.protobuf.i();
+    locala.lBV = new j();
     locala.funcId = 2831;
     locala.uri = "/cgi-bin/mmpay-bin/newaalaunchbypayercustomize";
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.hJu = locala.aXF();
-    this.jTi = ((com.tencent.mm.protocal.protobuf.h)this.hJu.iLK.iLR);
-    this.hJu.setIsUserCmd(true);
+    this.kwO = locala.bgN();
+    this.mKw = ((com.tencent.mm.protocal.protobuf.i)d.b.b(this.kwO.lBR));
+    this.kwO.setIsUserCmd(true);
     try
     {
-      this.jTi.title = com.tencent.mm.compatible.util.q.encode(paramString1, "UTF-8");
-      this.jTi.scene = paramInt;
-      this.jTi.KBt = paramString2;
-      this.jTi.KBy = k.fQy();
-      this.jTi.KBz = paramLong;
-      this.jTi.KBA = paramString3;
-      this.jTi.KBB = paramString4;
-      this.jTi.KBC = paramString5;
-      Log.d("MicroMsg.NetSceneAALaunchByPersonCustomize", "location %s", new Object[] { this.jTi.KBy });
+      this.mKw.title = com.tencent.mm.compatible.util.q.an(paramString1, "UTF-8");
+      this.mKw.scene = paramInt;
+      this.mKw.RDj = paramString2;
+      this.mKw.RDo = k.gJe();
+      this.mKw.RDp = paramLong;
+      this.mKw.RDq = paramString3;
+      this.mKw.RDr = paramString4;
+      this.mKw.RDs = paramString5;
+      this.mKw.RDt = paramString6;
+      Log.d("MicroMsg.NetSceneAALaunchByPersonCustomize", "location %s", new Object[] { this.mKw.RDo });
       this.chatroomName = paramString2;
-      Log.i("MicroMsg.NetSceneAALaunchByPersonCustomize", "NetSceneAALaunchByPersonCustomize, title: %s, scene: %s, groupid: %s, timestamp: %s, pic_cdn_url: %s, pic_cdn_thumb_url: %s, pf_order_no: %s", new Object[] { this.jTi.title, Integer.valueOf(this.jTi.scene), this.jTi.KBt, Long.valueOf(this.jTi.KBz), Util.nullAs(this.jTi.KBA, ""), Util.nullAs(this.jTi.KBB, ""), Util.nullAs(this.jTi.KBC, "") });
-      AppMethodBeat.o(212945);
+      Log.i("MicroMsg.NetSceneAALaunchByPersonCustomize", "NetSceneAALaunchByPersonCustomize, title: %s, scene: %s, groupid: %s, timestamp: %s, pic_cdn_url: %s, pic_cdn_thumb_url: %s, pf_order_no: %s , pic_cdn_md5: %s", new Object[] { this.mKw.title, Integer.valueOf(this.mKw.scene), this.mKw.RDj, Long.valueOf(this.mKw.RDp), Util.nullAs(this.mKw.RDq, ""), Util.nullAs(this.mKw.RDr, ""), Util.nullAs(this.mKw.RDs, ""), Util.nullAs(this.mKw.RDt, "") });
+      AppMethodBeat.o(271106);
       return;
     }
     catch (Exception paramString1)
@@ -60,12 +62,12 @@ public final class h
     }
   }
   
-  public final int doScene(g paramg, com.tencent.mm.ak.i parami)
+  public final int doScene(g paramg, com.tencent.mm.an.i parami)
   {
-    AppMethodBeat.i(212946);
+    AppMethodBeat.i(271107);
     this.callback = parami;
-    int i = dispatch(paramg, this.hJu, this);
-    AppMethodBeat.o(212946);
+    int i = dispatch(paramg, this.kwO, this);
+    AppMethodBeat.o(271107);
     return i;
   }
   
@@ -76,28 +78,28 @@ public final class h
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(212947);
+    AppMethodBeat.i(271108);
     Log.i("MicroMsg.NetSceneAALaunchByPersonCustomize", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.jTj = ((com.tencent.mm.protocal.protobuf.i)((d)params).iLL.iLR);
-    paramInt1 = this.jTj.dDN;
-    params = this.jTj.qwn;
-    paramArrayOfByte = this.jTj.KBs;
-    if (this.jTj.KBu == null) {}
+    this.mKx = ((j)d.c.b(((d)params).lBS));
+    paramInt1 = this.mKx.fwx;
+    params = this.mKx.tVo;
+    paramArrayOfByte = this.mKx.RDi;
+    if (this.mKx.RDk == null) {}
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.NetSceneAALaunchByPersonCustomize", "retcode: %s, retmsg: %s, bill_no: %s, msgxml==null: %s", new Object[] { Integer.valueOf(paramInt1), params, paramArrayOfByte, Boolean.valueOf(bool) });
-      Log.d("MicroMsg.NetSceneAALaunchByPersonCustomize", "msgxml: %s", new Object[] { this.jTj.KBu });
+      Log.d("MicroMsg.NetSceneAALaunchByPersonCustomize", "msgxml: %s", new Object[] { this.mKx.RDk });
       if (this.callback != null) {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }
-      AppMethodBeat.o(212947);
+      AppMethodBeat.o(271108);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.cgi.h
  * JD-Core Version:    0.7.0.1
  */

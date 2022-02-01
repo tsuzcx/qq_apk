@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.agd;
-import com.tencent.mm.protocal.protobuf.age;
-import com.tencent.mm.protocal.protobuf.eoo;
+import com.tencent.mm.protocal.protobuf.agm;
+import com.tencent.mm.protocal.protobuf.agn;
+import com.tencent.mm.protocal.protobuf.eyw;
 
 public final class d
   extends q
@@ -31,16 +31,16 @@ public final class d
     AppMethodBeat.i(73764);
     this.callback = parami;
     parami = new d.a();
-    agd localagd = new agd();
-    localagd.dNI = this.appId;
-    localagd.eaQ = this.scene;
-    parami.iLN = localagd;
+    agm localagm = new agm();
+    localagm.appid = this.appId;
+    localagm.fUN = this.scene;
+    parami.lBU = localagm;
     parami.uri = "/cgi-bin/mmbiz-bin/deluserauth";
-    parami.iLO = new age();
+    parami.lBV = new agn();
     parami.funcId = getType();
-    parami.iLP = 0;
+    parami.lBW = 0;
     parami.respCmdId = 0;
-    int i = dispatch(paramg, parami.aXF(), this);
+    int i = dispatch(paramg, parami.bgN(), this);
     AppMethodBeat.o(73764);
     return i;
   }
@@ -53,8 +53,8 @@ public final class d
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(73765);
-    paramString = (age)((com.tencent.mm.ak.d)params).iLL.iLR;
-    this.callback.onSceneEnd(paramInt2, paramString.Lqs.dIZ, paramString.Lqs.dJa, this);
+    paramString = (agn)d.c.b(((com.tencent.mm.an.d)params).lBS);
+    this.callback.onSceneEnd(paramInt2, paramString.SrP.fBP, paramString.SrP.errmsg, this);
     AppMethodBeat.o(73765);
   }
 }

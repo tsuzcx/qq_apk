@@ -8,9 +8,9 @@ public abstract class h
 {
   public void a(b paramb, Collection<? extends b> paramCollection)
   {
-    p.h(paramb, "member");
-    p.h(paramCollection, "overridden");
-    paramb.x(paramCollection);
+    p.k(paramb, "member");
+    p.k(paramCollection, "overridden");
+    paramb.v(paramCollection);
   }
   
   public abstract void b(b paramb1, b paramb2);
@@ -21,7 +21,7 @@ public abstract class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.j.h
  * JD-Core Version:    0.7.0.1
  */

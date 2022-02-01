@@ -8,13 +8,13 @@ import java.util.List;
 
 final class a
 {
-  static final String[] lvD;
+  static final String[] oqz;
   
   static
   {
     AppMethodBeat.i(138799);
     LinkedList localLinkedList = new LinkedList();
-    Field[] arrayOfField = android.support.e.a.class.getDeclaredFields();
+    Field[] arrayOfField = androidx.e.a.a.class.getDeclaredFields();
     int j = arrayOfField.length;
     int i = 0;
     for (;;)
@@ -31,7 +31,7 @@ final class a
         label85:
         i += 1;
         continue;
-        lvD = (String[])localLinkedList.toArray(new String[localLinkedList.size()]);
+        oqz = (String[])localLinkedList.toArray(new String[localLinkedList.size()]);
         AppMethodBeat.o(138799);
         return;
       }
@@ -42,28 +42,28 @@ final class a
     }
   }
   
-  static void a(android.support.e.a parama1, android.support.e.a parama2)
+  static void a(androidx.e.a.a parama1, androidx.e.a.a parama2)
   {
-    AppMethodBeat.i(138798);
-    String[] arrayOfString = lvD;
+    AppMethodBeat.i(249241);
+    String[] arrayOfString = oqz;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
     {
       String str1 = arrayOfString[i];
-      String str2 = parama1.getAttribute(str1);
+      String str2 = parama1.I(str1);
       if (str2 != null) {
-        parama2.setAttribute(str1, str2);
+        parama2.c(str1, str2);
       }
       i += 1;
     }
-    parama2.saveAttributes();
-    AppMethodBeat.o(138798);
+    parama2.ib();
+    AppMethodBeat.o(249241);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.l.a
  * JD-Core Version:    0.7.0.1
  */

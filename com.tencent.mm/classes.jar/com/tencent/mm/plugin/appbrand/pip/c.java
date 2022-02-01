@@ -5,27 +5,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
 {
   public final String appId;
-  public final String dCx;
+  public final String fve;
   public final String videoUrl;
   
   public c(String paramString1, String paramString2, String paramString3)
   {
     this.appId = paramString1;
-    this.dCx = paramString2;
+    this.fve = paramString2;
     this.videoUrl = paramString3;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(219508);
-    String str = "AppBrandPipEventBaseInfo{appId='" + this.appId + '\'' + ", pagePath='" + this.dCx + '\'' + ", videoUrl='" + this.videoUrl + '\'' + '}';
-    AppMethodBeat.o(219508);
+    AppMethodBeat.i(245898);
+    String str = "AppBrandPipEventBaseInfo{appId='" + this.appId + '\'' + ", pagePath='" + this.fve + '\'' + ", videoUrl='" + this.videoUrl + '\'' + '}';
+    AppMethodBeat.o(245898);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.pip.c
  * JD-Core Version:    0.7.0.1
  */

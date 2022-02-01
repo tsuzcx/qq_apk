@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.cbl;
-import com.tencent.mm.protocal.protobuf.cbm;
+import com.tencent.mm.protocal.protobuf.cjo;
+import com.tencent.mm.protocal.protobuf.cjp;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,19 +13,19 @@ import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPageBackup;", "", "()V", "Companion", "plugin-expt_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPageBackup;", "", "()V", "Companion", "plugin-expt_release"})
 public final class j
 {
-  public static final a sIK;
+  public static final a woH;
   
   static
   {
     AppMethodBeat.i(185603);
-    sIK = new a((byte)0);
+    woH = new a((byte)0);
     AppMethodBeat.o(185603);
   }
   
-  public static final void akH(String paramString)
+  public static final void asv(String paramString)
   {
     AppMethodBeat.i(185605);
     if (paramString == null)
@@ -33,34 +33,34 @@ public final class j
       AppMethodBeat.o(185605);
       return;
     }
-    cbl localcbl = a.cQA();
-    if (localcbl == null)
+    cjo localcjo = a.dfu();
+    if (localcjo == null)
     {
       AppMethodBeat.o(185605);
       return;
     }
-    int i = localcbl.Mhn.size() - 1;
+    int i = localcjo.Trb.size() - 1;
     if (i >= 0)
     {
-      cbm localcbm = (cbm)localcbl.Mhn.get(i);
-      if ((localcbm == null) || ((p.j(paramString, localcbm.dRM) ^ true))) {}
+      cjp localcjp = (cjp)localcjo.Trb.get(i);
+      if ((localcjp == null) || ((p.h(paramString, localcjp.fLj) ^ true))) {}
       for (;;)
       {
         i -= 1;
         break;
-        localcbl.Mhn.remove(i);
+        localcjo.Trb.remove(i);
       }
     }
-    if ((localcbl == null) || (localcbl.Mhn.isEmpty()))
+    if ((localcjo == null) || (localcjo.Trb.isEmpty()))
     {
       AppMethodBeat.o(185605);
       return;
     }
     try
     {
-      paramString = localcbl.toByteArray();
+      paramString = localcjo.toByteArray();
       if (paramString != null) {
-        b.o("mmkv_ssionPg_matched_bckup", paramString);
+        b.r("mmkv_ssionPg_matched_bckup", paramString);
       }
       AppMethodBeat.o(185605);
       return;
@@ -72,7 +72,7 @@ public final class j
     }
   }
   
-  public static final List<cbm> aqO(String paramString)
+  public static final List<cjp> ayP(String paramString)
   {
     AppMethodBeat.i(185604);
     if (paramString == null)
@@ -80,19 +80,19 @@ public final class j
       AppMethodBeat.o(185604);
       return null;
     }
-    Object localObject = a.cQA();
+    Object localObject = a.dfu();
     if (localObject == null)
     {
       AppMethodBeat.o(185604);
       return null;
     }
     ArrayList localArrayList = new ArrayList();
-    localObject = ((cbl)localObject).Mhn.iterator();
+    localObject = ((cjo)localObject).Trb.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      cbm localcbm = (cbm)((Iterator)localObject).next();
-      if ((localcbm != null) && (!(p.j(paramString, localcbm.dRM) ^ true))) {
-        localArrayList.add(localcbm);
+      cjp localcjp = (cjp)((Iterator)localObject).next();
+      if ((localcjp != null) && (!(p.h(paramString, localcjp.fLj) ^ true))) {
+        localArrayList.add(localcjp);
       }
     }
     paramString = (List)localArrayList;
@@ -100,13 +100,13 @@ public final class j
     return paramString;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPageBackup$Companion;", "", "()V", "KEY_MMKV", "", "TAG", "_read", "Lcom/tencent/mm/protocal/protobuf/HellPageFlow;", "_write", "", "path", "backup", "pageItems", "", "Lcom/tencent/mm/protocal/protobuf/HellPageFlowItem;", "getBackup", "sessionId", "reset", "plugin-expt_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPageBackup$Companion;", "", "()V", "KEY_MMKV", "", "TAG", "_read", "Lcom/tencent/mm/protocal/protobuf/HellPageFlow;", "_write", "", "path", "backup", "pageItems", "", "Lcom/tencent/mm/protocal/protobuf/HellPageFlowItem;", "getBackup", "sessionId", "reset", "plugin-expt_release"})
   public static final class a
   {
-    static cbl cQA()
+    static cjo dfu()
     {
       AppMethodBeat.i(185602);
-      byte[] arrayOfByte = b.getBytes("mmkv_ssionPg_matched_bckup");
+      byte[] arrayOfByte = b.awZ("mmkv_ssionPg_matched_bckup");
       if (arrayOfByte != null) {
         if (arrayOfByte.length != 0) {
           break label33;
@@ -118,12 +118,12 @@ public final class j
         AppMethodBeat.o(185602);
         return null;
       }
-      cbl localcbl = new cbl();
+      cjo localcjo = new cjo();
       try
       {
-        localcbl.parseFrom(arrayOfByte);
+        localcjo.parseFrom(arrayOfByte);
         AppMethodBeat.o(185602);
-        return localcbl;
+        return localcjo;
       }
       catch (IOException localIOException)
       {
@@ -136,14 +136,14 @@ public final class j
     public static void reset()
     {
       AppMethodBeat.i(185601);
-      b.o("mmkv_ssionPg_matched_bckup", new byte[0]);
+      b.r("mmkv_ssionPg_matched_bckup", new byte[0]);
       AppMethodBeat.o(185601);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.c.j
  * JD-Core Version:    0.7.0.1
  */

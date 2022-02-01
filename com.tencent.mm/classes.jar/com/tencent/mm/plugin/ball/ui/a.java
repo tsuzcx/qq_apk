@@ -11,8 +11,9 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.AppForegroundDelegate;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.ball.c.g;
 import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.plugin.ball.service.e;
 import com.tencent.mm.plugin.ball.view.FloatBallView;
 import com.tencent.mm.plugin.ball.view.FloatMenuView;
 import com.tencent.mm.plugin.ball.view.FloatMenuView.5;
@@ -26,13 +27,13 @@ public final class a
 {
   int displayHeight;
   private int lastOrientation;
-  com.tencent.mm.plugin.ball.c.b oWG;
-  public FloatBallView oXH;
-  FloatMenuView oXI;
-  private com.tencent.mm.plugin.ball.view.c oXJ;
-  public boolean oXK;
-  final com.tencent.mm.plugin.ball.e.a oXL;
-  boolean oXM;
+  com.tencent.mm.plugin.ball.c.b rYG;
+  public FloatBallView rZJ;
+  FloatMenuView rZK;
+  private com.tencent.mm.plugin.ball.view.c rZL;
+  public boolean rZM;
+  final com.tencent.mm.plugin.ball.e.a rZN;
+  boolean rZO;
   private WindowManager windowManager;
   
   public a(Context paramContext)
@@ -40,24 +41,24 @@ public final class a
     AppMethodBeat.i(106273);
     this.displayHeight = 0;
     this.lastOrientation = 1;
-    this.oXM = false;
+    this.rZO = false;
     this.windowManager = ((WindowManager)paramContext.getSystemService("window"));
-    this.oWG = ((com.tencent.mm.plugin.ball.c.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class));
-    this.oXL = new com.tencent.mm.plugin.ball.e.a();
-    this.displayHeight = com.tencent.mm.cb.a.jo(paramContext);
-    this.oWG.BC(this.displayHeight);
-    this.oXH = new FloatBallView(paramContext);
-    this.oWG.dn(this.oXH);
-    this.oXJ = new com.tencent.mm.plugin.ball.view.c(paramContext);
-    this.oXH.setInnerView(this.oXJ.oZK);
-    this.oXH.a(new com.tencent.mm.plugin.ball.c.g()
+    this.rYG = ((com.tencent.mm.plugin.ball.c.b)h.ae(com.tencent.mm.plugin.ball.c.b.class));
+    this.rZN = new com.tencent.mm.plugin.ball.e.a();
+    this.displayHeight = com.tencent.mm.ci.a.ks(paramContext);
+    this.rYG.Fd(this.displayHeight);
+    this.rZJ = new FloatBallView(paramContext);
+    this.rYG.dK(this.rZJ);
+    this.rZL = new com.tencent.mm.plugin.ball.view.c(paramContext);
+    this.rZJ.setInnerView(this.rZL.sbL);
+    this.rZJ.a(new g()
     {
-      public final void M(MotionEvent paramAnonymousMotionEvent)
+      public final void T(MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(184604);
         Log.i("MicroMsg.FloatBallContainer", "onBallLongPressTouchEvent");
-        FloatMenuView localFloatMenuView = a.this.oXI;
-        if (localFloatMenuView.oVp) {
+        FloatMenuView localFloatMenuView = a.this.rZK;
+        if (localFloatMenuView.rXo) {
           switch (paramAnonymousMotionEvent.getAction())
           {
           }
@@ -66,32 +67,32 @@ public final class a
         {
           AppMethodBeat.o(184604);
           return;
-          localFloatMenuView.P(paramAnonymousMotionEvent);
+          localFloatMenuView.W(paramAnonymousMotionEvent);
           AppMethodBeat.o(184604);
           return;
-          localFloatMenuView.P(paramAnonymousMotionEvent);
-          if ((localFloatMenuView.pcC != null) && ((localFloatMenuView.pcC.getTag() instanceof BallInfo)))
+          localFloatMenuView.W(paramAnonymousMotionEvent);
+          if ((localFloatMenuView.seE != null) && ((localFloatMenuView.seE.getTag() instanceof BallInfo)))
           {
-            FloatMenuView.dp(localFloatMenuView.pcC);
-            paramAnonymousMotionEvent = (BallInfo)localFloatMenuView.pcC.getTag();
-            if (paramAnonymousMotionEvent.oWr)
+            FloatMenuView.dM(localFloatMenuView.seE);
+            paramAnonymousMotionEvent = (BallInfo)localFloatMenuView.seE.getTag();
+            if (paramAnonymousMotionEvent.rYr)
             {
               Log.i("MicroMsg.FloatMenuView", "passive ballInfo, call back pressed");
-              localFloatMenuView.cjK();
+              localFloatMenuView.cxb();
             }
           }
           for (;;)
           {
-            localFloatMenuView.oVp = false;
-            localFloatMenuView.pcC = null;
-            localFloatMenuView.pcD = -1;
+            localFloatMenuView.rXo = false;
+            localFloatMenuView.seE = null;
+            localFloatMenuView.seF = -1;
             AppMethodBeat.o(184604);
             return;
-            paramAnonymousMotionEvent.oWs.opType = 2;
-            localFloatMenuView.M(paramAnonymousMotionEvent);
+            paramAnonymousMotionEvent.rYs.opType = 2;
+            localFloatMenuView.N(paramAnonymousMotionEvent);
             continue;
             Log.i("MicroMsg.FloatMenuView", "no lastTouchedItemView, call back pressed");
-            localFloatMenuView.cjK();
+            localFloatMenuView.cxb();
           }
           Log.i("MicroMsg.FloatMenuView", "onBallLongPressTouchEvent, CANCEL(%s, %s)", new Object[] { Float.valueOf(paramAnonymousMotionEvent.getRawX()), Float.valueOf(paramAnonymousMotionEvent.getRawY()) });
         }
@@ -103,81 +104,81 @@ public final class a
         if (paramAnonymousBoolean1)
         {
           Log.i("MicroMsg.FloatBallContainer", "onBallSettled, x:%s, y:%s, height:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3) });
-          FloatMenuView localFloatMenuView = a.this.oXI;
-          localFloatMenuView.oVo = paramAnonymousBoolean2;
-          if ((paramAnonymousInt1 != localFloatMenuView.pco) || (paramAnonymousInt2 != localFloatMenuView.pcp) || (paramAnonymousInt3 != localFloatMenuView.pcB))
+          FloatMenuView localFloatMenuView = a.this.rZK;
+          localFloatMenuView.rXn = paramAnonymousBoolean2;
+          if ((paramAnonymousInt1 != localFloatMenuView.seo) || (paramAnonymousInt2 != localFloatMenuView.sep) || (paramAnonymousInt3 != localFloatMenuView.seD))
           {
             Log.i("MicroMsg.FloatMenuView", "onBallPositionChanged, position:[%s, %s], height:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3) });
-            localFloatMenuView.pcB = paramAnonymousInt3;
+            localFloatMenuView.seD = paramAnonymousInt3;
             localFloatMenuView.post(new FloatMenuView.5(localFloatMenuView, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousBoolean2));
           }
-          e.ciJ();
-          if (paramAnonymousInt1 != e.oXw)
+          com.tencent.mm.plugin.ball.service.d.cwb();
+          if (paramAnonymousInt1 != com.tencent.mm.plugin.ball.service.d.rZw)
           {
-            e.oXw = paramAnonymousInt1;
-            MultiProcessMMKV.getMMKV(e.cik()).encode("pos_x", e.oXw);
+            com.tencent.mm.plugin.ball.service.d.rZw = paramAnonymousInt1;
+            MultiProcessMMKV.getMMKV(com.tencent.mm.plugin.ball.service.d.cvw()).encode("pos_x", com.tencent.mm.plugin.ball.service.d.rZw);
           }
-          if (paramAnonymousInt2 != e.oXx)
+          if (paramAnonymousInt2 != com.tencent.mm.plugin.ball.service.d.rZx)
           {
-            e.oXx = paramAnonymousInt2;
-            MultiProcessMMKV.getMMKV(e.cik()).encode("pos_y", e.oXx);
+            com.tencent.mm.plugin.ball.service.d.rZx = paramAnonymousInt2;
+            MultiProcessMMKV.getMMKV(com.tencent.mm.plugin.ball.service.d.cvw()).encode("pos_y", com.tencent.mm.plugin.ball.service.d.rZx);
           }
-          if (paramAnonymousBoolean2 != e.oXy)
+          if (paramAnonymousBoolean2 != com.tencent.mm.plugin.ball.service.d.rZy)
           {
-            e.oXy = paramAnonymousBoolean2;
-            MultiProcessMMKV.getMMKV(e.cik()).encode("dock_left", e.oXy);
+            com.tencent.mm.plugin.ball.service.d.rZy = paramAnonymousBoolean2;
+            MultiProcessMMKV.getMMKV(com.tencent.mm.plugin.ball.service.d.cvw()).encode("dock_left", com.tencent.mm.plugin.ball.service.d.rZy);
           }
         }
         AppMethodBeat.o(184607);
       }
       
-      public final void chY()
+      public final void cvk()
       {
         AppMethodBeat.i(184602);
         Log.i("MicroMsg.FloatBallContainer", "onBallClicked");
-        a.this.oXL.iOB = Util.nowMilliSecond();
-        a.this.oXH.b(false, null);
-        a.this.oXI.setInLongPressMode(false);
-        a.this.oXI.cjD();
+        a.this.rZN.lER = Util.nowMilliSecond();
+        a.this.rZJ.b(false, null);
+        a.this.rZK.setInLongPressMode(false);
+        a.this.rZK.cwU();
         AppMethodBeat.o(184602);
       }
       
-      public final void chZ()
+      public final void cvl()
       {
         AppMethodBeat.i(184603);
         Log.i("MicroMsg.FloatBallContainer", "onBallLongPressed");
-        a.this.oXL.iOB = Util.nowMilliSecond();
-        a.this.oXH.b(false, null);
-        a.this.oXI.setInLongPressMode(true);
-        a.this.oXI.cjD();
+        a.this.rZN.lER = Util.nowMilliSecond();
+        a.this.rZJ.b(false, null);
+        a.this.rZK.setInLongPressMode(true);
+        a.this.rZK.cwU();
         AppMethodBeat.o(184603);
       }
       
-      public final void cia()
+      public final void cvm()
       {
         AppMethodBeat.i(184605);
-        Log.i("MicroMsg.FloatBallContainer", "onBallDragStart needProcessFloatViewFlags: %b", new Object[] { Boolean.valueOf(a.this.oXK) });
-        if (a.this.oXK) {
-          a.this.chW();
+        Log.i("MicroMsg.FloatBallContainer", "onBallDragStart needProcessFloatViewFlags: %b", new Object[] { Boolean.valueOf(a.this.rZM) });
+        if (a.this.rZM) {
+          a.this.cvi();
         }
         AppMethodBeat.o(184605);
       }
       
-      public final void cib()
+      public final void cvn()
       {
         AppMethodBeat.i(184606);
-        Log.i("MicroMsg.FloatBallContainer", "onBallDragEnd needProcessFloatViewFlags: %b", new Object[] { Boolean.valueOf(a.this.oXK) });
-        if ((a.this.oXK) && (a.this.oWG != null && (!a.this.oWG.c(new AnimatorListenerAdapter()
+        Log.i("MicroMsg.FloatBallContainer", "onBallDragEnd needProcessFloatViewFlags: %b", new Object[] { Boolean.valueOf(a.this.rZM) });
+        if ((a.this.rZM) && (a.this.rYG != null && (!a.this.rYG.c(new AnimatorListenerAdapter()
         {
           public final void onAnimationEnd(Animator paramAnonymous2Animator)
           {
             AppMethodBeat.i(184601);
             super.onAnimationEnd(paramAnonymous2Animator);
-            a.this.chX();
+            a.this.cvj();
             AppMethodBeat.o(184601);
           }
         }))) {
-          a.this.chX();
+          a.this.cvj();
         }
         AppMethodBeat.o(184606);
       }
@@ -189,47 +190,47 @@ public final class a
         AppMethodBeat.o(184608);
       }
     });
-    this.oXI = new FloatMenuView(paramContext);
-    paramContext = this.oXI;
+    this.rZK = new FloatMenuView(paramContext);
+    paramContext = this.rZK;
     com.tencent.mm.plugin.ball.d.c local1 = new com.tencent.mm.plugin.ball.d.c()
     {
       public final void a(BallInfo paramAnonymousBallInfo, int paramAnonymousInt)
       {
         AppMethodBeat.i(106263);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousBallInfo);
-        localb.pH(paramAnonymousInt);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ball/ui/FloatBallContainer$1", "com/tencent/mm/plugin/ball/listener/OnFloatMenuViewListener", "onFloatMenuItemRemoved", "(Lcom/tencent/mm/plugin/ball/model/BallInfo;I)V", this, localb.axR());
+        localb.bn(paramAnonymousBallInfo);
+        localb.sg(paramAnonymousInt);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/ball/ui/FloatBallContainer$1", "com/tencent/mm/plugin/ball/listener/OnFloatMenuViewListener", "onFloatMenuItemRemoved", "(Lcom/tencent/mm/plugin/ball/model/BallInfo;I)V", this, localb.aFi());
         Log.i("MicroMsg.FloatBallContainer", "onFloatMenuItemRemoved");
-        paramAnonymousBallInfo.oWs.opType = 9;
-        a.this.oWG.l(paramAnonymousBallInfo);
-        if ((!paramAnonymousBallInfo.oWr) && (a.this.oXM))
+        paramAnonymousBallInfo.rYs.opType = 9;
+        a.this.rYG.l(paramAnonymousBallInfo);
+        if ((!paramAnonymousBallInfo.rYr) && (a.this.rZO))
         {
-          a.this.oXL.BF(4);
-          a.this.oXI.setCanAddFloatBallWhenHide(true);
+          a.this.rZN.Fg(4);
+          a.this.rZK.setCanAddFloatBallWhenHide(true);
           a.a(a.this);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ball/ui/FloatBallContainer$1", "com/tencent/mm/plugin/ball/listener/OnFloatMenuViewListener", "onFloatMenuItemRemoved", "(Lcom/tencent/mm/plugin/ball/model/BallInfo;I)V");
         AppMethodBeat.o(106263);
       }
       
-      public final void cic()
+      public final void cvo()
       {
         AppMethodBeat.i(106259);
         com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ball/ui/FloatBallContainer$1", "com/tencent/mm/plugin/ball/listener/OnFloatMenuViewListener", "onFloatMenuBackgroundClicked", "()V", this);
         Log.i("MicroMsg.FloatBallContainer", "onFloatMenuBackgroundClicked");
-        a.this.oXL.BF(2);
+        a.this.rZN.Fg(2);
         a.a(a.this);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ball/ui/FloatBallContainer$1", "com/tencent/mm/plugin/ball/listener/OnFloatMenuViewListener", "onFloatMenuBackgroundClicked", "()V");
         AppMethodBeat.o(106259);
       }
       
-      public final void cid()
+      public final void cvp()
       {
         AppMethodBeat.i(106260);
         com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ball/ui/FloatBallContainer$1", "com/tencent/mm/plugin/ball/listener/OnFloatMenuViewListener", "onFloatMenuBackPressed", "()V", this);
         Log.i("MicroMsg.FloatBallContainer", "onFloatMenuBackPressed");
-        a.this.oXL.BF(5);
+        a.this.rZN.Fg(5);
         a.a(a.this);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ball/ui/FloatBallContainer$1", "com/tencent/mm/plugin/ball/listener/OnFloatMenuViewListener", "onFloatMenuBackPressed", "()V");
         AppMethodBeat.o(106260);
@@ -238,7 +239,7 @@ public final class a
       public final void d(BallInfo paramAnonymousBallInfo)
       {
         AppMethodBeat.i(106264);
-        a.this.oWG.n(paramAnonymousBallInfo);
+        a.this.rYG.n(paramAnonymousBallInfo);
         AppMethodBeat.o(106264);
       }
       
@@ -253,17 +254,17 @@ public final class a
       {
         AppMethodBeat.i(106262);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousBallInfo);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ball/ui/FloatBallContainer$1", "com/tencent/mm/plugin/ball/listener/OnFloatMenuViewListener", "onFloatMenuItemClicked", "(Lcom/tencent/mm/plugin/ball/model/BallInfo;)V", this, localb.axR());
+        localb.bn(paramAnonymousBallInfo);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/ball/ui/FloatBallContainer$1", "com/tencent/mm/plugin/ball/listener/OnFloatMenuViewListener", "onFloatMenuItemClicked", "(Lcom/tencent/mm/plugin/ball/model/BallInfo;)V", this, localb.aFi());
         Log.i("MicroMsg.FloatBallContainer", "onFloatMenuItemClicked");
-        a.this.oXL.BF(3);
-        a.this.oXI.e(new AnimatorListenerAdapter()
+        a.this.rZN.Fg(3);
+        a.this.rZK.e(new AnimatorListenerAdapter()
         {
           public final void onAnimationCancel(Animator paramAnonymous2Animator)
           {
             AppMethodBeat.i(106257);
             super.onAnimationEnd(paramAnonymous2Animator);
-            a.this.oWG.m(paramAnonymousBallInfo);
+            a.this.rYG.m(paramAnonymousBallInfo);
             AppMethodBeat.o(106257);
           }
           
@@ -271,7 +272,7 @@ public final class a
           {
             AppMethodBeat.i(106258);
             super.onAnimationEnd(paramAnonymous2Animator);
-            a.this.oWG.m(paramAnonymousBallInfo);
+            a.this.rYG.m(paramAnonymousBallInfo);
             AppMethodBeat.o(106258);
           }
           
@@ -279,7 +280,7 @@ public final class a
           {
             AppMethodBeat.i(106256);
             super.onAnimationStart(paramAnonymous2Animator);
-            a.this.oXH.cjy();
+            a.this.rZJ.cwP();
             AppMethodBeat.o(106256);
           }
         });
@@ -287,17 +288,17 @@ public final class a
         AppMethodBeat.o(106262);
       }
     };
-    paramContext.pcu.add(local1);
-    this.oXI.setOnMeasuredListener(new com.tencent.mm.plugin.ball.d.d()
+    paramContext.sev.add(local1);
+    this.rZK.setOnMeasuredListener(new com.tencent.mm.plugin.ball.d.d()
     {
-      public final void cie()
+      public final void cvq()
       {
         AppMethodBeat.i(184600);
-        Log.d("MicroMsg.FloatBallContainer", "alvinluo onMeasure floatMenuView height: %d", new Object[] { Integer.valueOf(a.this.oXI.getMeasuredHeight()) });
-        if (a.this.oXI.getMeasuredHeight() != a.this.displayHeight)
+        Log.d("MicroMsg.FloatBallContainer", "alvinluo onMeasure floatMenuView height: %d", new Object[] { Integer.valueOf(a.this.rZK.getMeasuredHeight()) });
+        if (a.this.rZK.getMeasuredHeight() != a.this.displayHeight)
         {
-          a.this.displayHeight = a.this.oXI.getMeasuredHeight();
-          a.this.oWG.BC(a.this.displayHeight);
+          a.this.displayHeight = a.this.rZK.getMeasuredHeight();
+          a.this.rYG.Fd(a.this.displayHeight);
         }
         AppMethodBeat.o(184600);
       }
@@ -305,68 +306,68 @@ public final class a
     AppMethodBeat.o(106273);
   }
   
-  public final void a(com.tencent.mm.plugin.ball.c.g paramg)
+  public final void a(g paramg)
   {
-    AppMethodBeat.i(217046);
-    if (this.oXH != null) {
-      this.oXH.a(paramg);
+    AppMethodBeat.i(188549);
+    if (this.rZJ != null) {
+      this.rZJ.a(paramg);
     }
-    AppMethodBeat.o(217046);
+    AppMethodBeat.o(188549);
   }
   
   public final void a(List<BallInfo> paramList, BallInfo paramBallInfo)
   {
     AppMethodBeat.i(184611);
-    List localList = com.tencent.mm.plugin.ball.f.d.ci(paramList);
+    List localList = com.tencent.mm.plugin.ball.f.d.ce(paramList);
     Object localObject;
     boolean bool2;
     boolean bool1;
-    if (com.tencent.mm.plugin.ball.f.d.h(paramList))
+    if (com.tencent.mm.plugin.ball.f.d.checkListNotEmpty(paramList))
     {
       localObject = Integer.valueOf(paramList.size());
       Log.d("MicroMsg.FloatBallContainer", "onFloatBallInfoChanged, size:%s, nonHidden: %d", new Object[] { localObject, Integer.valueOf(localList.size()) });
-      if (!com.tencent.mm.plugin.ball.f.d.h(localList)) {
+      if (!com.tencent.mm.plugin.ball.f.d.checkListNotEmpty(localList)) {
         break label385;
       }
-      localObject = com.tencent.mm.plugin.ball.f.d.ck(localList);
+      localObject = com.tencent.mm.plugin.ball.f.d.cg(localList);
       Log.d("MicroMsg.FloatBallContainer", "onFloaxtBallInfoChanged, videoBallInfo: %s", new Object[] { localObject });
       if ((localObject != null) && (localList.size() == 1))
       {
         Log.i("MicroMsg.FloatBallContainer", "onFloatBallInfoChanged, hide FloatMenuView for VIDEO");
-        this.oXI.cjG();
+        this.rZK.cwX();
       }
-      bool2 = AppForegroundDelegate.djR.cPB;
-      if ((!ciT()) && (!this.oWG.chM())) {
+      bool2 = AppForegroundDelegate.fby.cQt;
+      if ((!cwl()) && (!this.rYG.cuW())) {
         break label335;
       }
       bool1 = true;
       label148:
-      if ((!bool2) || (bool1) || (this.oWG.chV())) {
+      if ((!bool2) || (bool1) || (this.rYG.cvh())) {
         break label340;
       }
-      Log.i("MicroMsg.FloatBallContainer", "onFloatBallInfoChanged, show FloatBallView %b", new Object[] { Boolean.valueOf(this.oXH.oYj) });
-      if (!this.oXH.oYj) {
-        this.oXH.cjy();
+      Log.i("MicroMsg.FloatBallContainer", "onFloatBallInfoChanged, show FloatBallView %b", new Object[] { Boolean.valueOf(this.rZJ.sak) });
+      if (!this.rZJ.sak) {
+        this.rZJ.cwP();
       }
       label210:
-      if ((localObject != null) && (!ciT()) && (!this.oWG.chV()))
+      if ((localObject != null) && (!cwl()) && (!this.rYG.cvh()))
       {
         Log.i("MicroMsg.FloatBallContainer", "onFloatBallInfoChanged, show FloatBallView for VIDEO, nonHiddenSize: %d", new Object[] { Integer.valueOf(localList.size()) });
-        this.oXH.cjy();
+        this.rZJ.cwP();
       }
     }
     for (;;)
     {
-      if (this.oXH != null) {
-        this.oXH.a(paramList, paramBallInfo);
+      if (this.rZJ != null) {
+        this.rZJ.a(paramList, paramBallInfo);
       }
-      if (this.oXJ != null) {
-        this.oXJ.a(paramList, paramBallInfo);
+      if (this.rZL != null) {
+        this.rZL.a(paramList, paramBallInfo);
       }
-      if (this.oXI != null) {
-        this.oXI.a(paramList, paramBallInfo);
+      if (this.rZK != null) {
+        this.rZK.a(paramList, paramBallInfo);
       }
-      this.oXL.oWD = paramList;
+      this.rZN.rYD = paramList;
       AppMethodBeat.o(184611);
       return;
       localObject = "0";
@@ -375,101 +376,101 @@ public final class a
       bool1 = false;
       break label148;
       label340:
-      Log.i("MicroMsg.FloatBallContainer", "onFloatBallInfoChanged, foreground:%s, canNotShowFloatBall:%s, forceHideAllFloatBall: %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), Boolean.valueOf(this.oWG.chV()) });
+      Log.i("MicroMsg.FloatBallContainer", "onFloatBallInfoChanged, foreground:%s, canNotShowFloatBall:%s, forceHideAllFloatBall: %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), Boolean.valueOf(this.rYG.cvh()) });
       break label210;
       label385:
-      if (this.oXI.getVisibility() == 0)
+      if (this.rZK.getVisibility() == 0)
       {
         Log.i("MicroMsg.FloatBallContainer", "onFloatBallInfoChanged, hide FloatBallView and FloatMenuView");
-        this.oXI.e(null);
-        this.oXH.b(false, null);
+        this.rZK.e(null);
+        this.rZJ.b(false, null);
       }
-      else if (this.oXH.getVisibility() == 0)
+      else if (this.rZJ.getVisibility() == 0)
       {
         Log.i("MicroMsg.FloatBallContainer", "onFloatBallInfoChanged, hide FloatBallView");
-        this.oXH.b(false, null);
+        this.rZJ.b(false, null);
       }
     }
   }
   
   public final void b(boolean paramBoolean, AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
-    AppMethodBeat.i(217042);
-    if (this.oXH != null)
+    AppMethodBeat.i(188530);
+    if (this.rZJ != null)
     {
       Log.i("MicroMsg.FloatBallContainer", "hide FloatBallView, animation:%s", new Object[] { Boolean.valueOf(paramBoolean) });
-      this.oXH.b(paramBoolean, paramAnimatorListenerAdapter);
+      this.rZJ.b(paramBoolean, paramAnimatorListenerAdapter);
     }
-    if ((this.oXI != null) && (!this.oXI.pcE))
+    if ((this.rZK != null) && (!this.rZK.seG))
     {
       Log.i("MicroMsg.FloatBallContainer", "hide FloatMenuView, animation:%s", new Object[] { Boolean.valueOf(paramBoolean) });
-      this.oXI.e(paramAnimatorListenerAdapter);
+      this.rZK.e(paramAnimatorListenerAdapter);
     }
-    AppMethodBeat.o(217042);
+    AppMethodBeat.o(188530);
   }
   
   public final void c(boolean paramBoolean, AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
-    AppMethodBeat.i(217044);
-    if (this.oXI != null)
+    AppMethodBeat.i(188537);
+    if (this.rZK != null)
     {
       if (paramBoolean)
       {
-        this.oXI.e(paramAnimatorListenerAdapter);
-        AppMethodBeat.o(217044);
+        this.rZK.e(paramAnimatorListenerAdapter);
+        AppMethodBeat.o(188537);
         return;
       }
-      this.oXI.cjG();
+      this.rZK.cwX();
     }
-    AppMethodBeat.o(217044);
+    AppMethodBeat.o(188537);
   }
   
-  public final void chW()
+  public final void cvi()
   {
     AppMethodBeat.i(184613);
-    if ((this.oXH != null) && (this.oXH.getLayoutParams() != null))
+    if ((this.rZJ != null) && (this.rZJ.getLayoutParams() != null))
     {
-      ViewGroup.LayoutParams localLayoutParams = this.oXH.getLayoutParams();
+      ViewGroup.LayoutParams localLayoutParams = this.rZJ.getLayoutParams();
       if ((localLayoutParams instanceof WindowManager.LayoutParams))
       {
         Log.d("MicroMsg.FloatBallContainer", "alvinluo addFloatBallViewLayoutParamsFlag flag: %d", new Object[] { Integer.valueOf(131072) });
         WindowManager.LayoutParams localLayoutParams1 = (WindowManager.LayoutParams)localLayoutParams;
         localLayoutParams1.flags |= 0x20000;
-        this.oXH.setLayoutParams(localLayoutParams);
+        this.rZJ.setLayoutParams(localLayoutParams);
         Log.i("MicroMsg.FloatBallContainer", "alvinluo addFloatBallViewLayoutParamsFlag result: %d", new Object[] { Integer.valueOf(((WindowManager.LayoutParams)localLayoutParams).flags) });
       }
     }
     AppMethodBeat.o(184613);
   }
   
-  public final void chX()
+  public final void cvj()
   {
     AppMethodBeat.i(184614);
-    if ((this.oXH != null) && (this.oXH.getLayoutParams() != null))
+    if ((this.rZJ != null) && (this.rZJ.getLayoutParams() != null))
     {
-      ViewGroup.LayoutParams localLayoutParams = this.oXH.getLayoutParams();
+      ViewGroup.LayoutParams localLayoutParams = this.rZJ.getLayoutParams();
       if ((localLayoutParams instanceof WindowManager.LayoutParams))
       {
         Log.d("MicroMsg.FloatBallContainer", "alvinluo removeFloatBallViewLayoutParamsFlag flag: %d", new Object[] { Integer.valueOf(131072) });
         WindowManager.LayoutParams localLayoutParams1 = (WindowManager.LayoutParams)localLayoutParams;
         localLayoutParams1.flags &= 0xFFFDFFFF;
-        this.oXH.setLayoutParams(localLayoutParams);
+        this.rZJ.setLayoutParams(localLayoutParams);
         Log.i("MicroMsg.FloatBallContainer", "alvinluo removeFloatBallViewLayoutParamsFlag result: %d", new Object[] { Integer.valueOf(((WindowManager.LayoutParams)localLayoutParams).flags) });
       }
     }
     AppMethodBeat.o(184614);
   }
   
-  final void ciR()
+  final void cwj()
   {
     AppMethodBeat.i(106274);
-    boolean bool1 = AppForegroundDelegate.djR.cPB;
-    boolean bool2 = this.oWG.chO();
-    boolean bool3 = this.oWG.chM();
+    boolean bool1 = AppForegroundDelegate.fby.cQt;
+    boolean bool2 = this.rYG.cuY();
+    boolean bool3 = this.rYG.cuW();
     Log.i("MicroMsg.FloatBallContainer", "checkShowFloatBallIfNeed, isAppForeground:%s, isQBFileViewPage:%s, isNoFloatBallPage", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
     if ((!bool3) && ((bool1) || (bool2)))
     {
-      this.oXH.cjy();
+      this.rZJ.cwP();
       AppMethodBeat.o(106274);
       return;
     }
@@ -477,25 +478,25 @@ public final class a
     AppMethodBeat.o(106274);
   }
   
-  public final void ciS()
+  public final void cwk()
   {
     AppMethodBeat.i(176968);
-    if (this.oXH != null)
+    if (this.rZJ != null)
     {
-      FloatBallView localFloatBallView = this.oXH;
-      if (localFloatBallView.paY != null)
+      FloatBallView localFloatBallView = this.rZJ;
+      if (localFloatBallView.scY != null)
       {
-        localFloatBallView.paY.removeAllViews();
-        localFloatBallView.vk = null;
+        localFloatBallView.scY.removeAllViews();
+        localFloatBallView.bFK = null;
       }
     }
     AppMethodBeat.o(176968);
   }
   
-  public final boolean ciT()
+  public final boolean cwl()
   {
     AppMethodBeat.i(106275);
-    if ((this.oXI != null) && (this.oXI.getVisibility() == 0))
+    if ((this.rZK != null) && (this.rZK.getVisibility() == 0))
     {
       AppMethodBeat.o(106275);
       return true;
@@ -505,13 +506,13 @@ public final class a
   }
   
   /* Error */
-  public final void ciU()
+  public final void cwm()
   {
     // Byte code:
     //   0: ldc_w 341
     //   3: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 124	com/tencent/mm/plugin/ball/ui/a:oXI	Lcom/tencent/mm/plugin/ball/view/FloatMenuView;
+    //   7: getfield 124	com/tencent/mm/plugin/ball/ui/a:rZK	Lcom/tencent/mm/plugin/ball/view/FloatMenuView;
     //   10: bipush 8
     //   12: invokevirtual 177	com/tencent/mm/plugin/ball/view/FloatMenuView:setVisibility	(I)V
     //   15: aload_0
@@ -522,7 +523,7 @@ public final class a
     //   26: invokespecial 342	android/view/WindowManager$LayoutParams:<init>	()V
     //   29: astore_1
     //   30: bipush 26
-    //   32: invokestatic 348	com/tencent/mm/compatible/util/d:oD	(I)Z
+    //   32: invokestatic 348	com/tencent/mm/compatible/util/d:qV	(I)Z
     //   35: ifeq +267 -> 302
     //   38: aload_1
     //   39: sipush 2038
@@ -547,22 +548,22 @@ public final class a
     //   80: iconst_m1
     //   81: putfield 379	android/view/WindowManager$LayoutParams:height	I
     //   84: aload_1
-    //   85: invokestatic 382	com/tencent/mm/plugin/ball/f/d:cjg	()I
+    //   85: invokestatic 382	com/tencent/mm/plugin/ball/f/d:cwy	()I
     //   88: putfield 385	android/view/WindowManager$LayoutParams:x	I
     //   91: aload_1
-    //   92: invokestatic 388	com/tencent/mm/plugin/ball/f/d:cjh	()I
+    //   92: invokestatic 388	com/tencent/mm/plugin/ball/f/d:cwz	()I
     //   95: putfield 391	android/view/WindowManager$LayoutParams:y	I
     //   98: aload_0
     //   99: getfield 66	com/tencent/mm/plugin/ball/ui/a:windowManager	Landroid/view/WindowManager;
     //   102: aload_0
-    //   103: getfield 124	com/tencent/mm/plugin/ball/ui/a:oXI	Lcom/tencent/mm/plugin/ball/view/FloatMenuView;
+    //   103: getfield 124	com/tencent/mm/plugin/ball/ui/a:rZK	Lcom/tencent/mm/plugin/ball/view/FloatMenuView;
     //   106: aload_1
     //   107: invokeinterface 395 3 0
     //   112: ldc 154
     //   114: ldc_w 397
     //   117: invokestatic 214	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   120: aload_0
-    //   121: getfield 96	com/tencent/mm/plugin/ball/ui/a:oXH	Lcom/tencent/mm/plugin/ball/view/FloatBallView;
+    //   121: getfield 96	com/tencent/mm/plugin/ball/ui/a:rZJ	Lcom/tencent/mm/plugin/ball/view/FloatBallView;
     //   124: bipush 8
     //   126: invokevirtual 398	com/tencent/mm/plugin/ball/view/FloatBallView:setVisibility	(I)V
     //   129: aload_0
@@ -573,7 +574,7 @@ public final class a
     //   140: invokespecial 342	android/view/WindowManager$LayoutParams:<init>	()V
     //   143: astore_1
     //   144: bipush 26
-    //   146: invokestatic 348	com/tencent/mm/compatible/util/d:oD	(I)Z
+    //   146: invokestatic 348	com/tencent/mm/compatible/util/d:qV	(I)Z
     //   149: ifeq +191 -> 340
     //   152: aload_1
     //   153: sipush 2038
@@ -598,22 +599,22 @@ public final class a
     //   195: bipush 254
     //   197: putfield 379	android/view/WindowManager$LayoutParams:height	I
     //   200: aload_1
-    //   201: invokestatic 382	com/tencent/mm/plugin/ball/f/d:cjg	()I
+    //   201: invokestatic 382	com/tencent/mm/plugin/ball/f/d:cwy	()I
     //   204: putfield 385	android/view/WindowManager$LayoutParams:x	I
     //   207: aload_1
-    //   208: invokestatic 388	com/tencent/mm/plugin/ball/f/d:cjh	()I
+    //   208: invokestatic 388	com/tencent/mm/plugin/ball/f/d:cwz	()I
     //   211: putfield 391	android/view/WindowManager$LayoutParams:y	I
     //   214: aload_0
     //   215: getfield 66	com/tencent/mm/plugin/ball/ui/a:windowManager	Landroid/view/WindowManager;
     //   218: aload_0
-    //   219: getfield 96	com/tencent/mm/plugin/ball/ui/a:oXH	Lcom/tencent/mm/plugin/ball/view/FloatBallView;
+    //   219: getfield 96	com/tencent/mm/plugin/ball/ui/a:rZJ	Lcom/tencent/mm/plugin/ball/view/FloatBallView;
     //   222: aload_1
     //   223: invokeinterface 395 3 0
     //   228: ldc 154
     //   230: ldc_w 401
     //   233: invokestatic 214	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   236: aload_0
-    //   237: getfield 76	com/tencent/mm/plugin/ball/ui/a:oWG	Lcom/tencent/mm/plugin/ball/c/b;
+    //   237: getfield 76	com/tencent/mm/plugin/ball/ui/a:rYG	Lcom/tencent/mm/plugin/ball/c/b;
     //   240: invokeinterface 405 1 0
     //   245: astore_1
     //   246: ldc 154
@@ -686,69 +687,69 @@ public final class a
     //   214	236	350	java/lang/Exception
   }
   
-  public final boolean ciV()
+  public final boolean cwn()
   {
-    AppMethodBeat.i(217045);
-    if ((this.oXI != null) && (this.oXI.getVisibility() == 0))
+    AppMethodBeat.i(188539);
+    if ((this.rZK != null) && (this.rZK.getVisibility() == 0))
     {
-      AppMethodBeat.o(217045);
+      AppMethodBeat.o(188539);
       return true;
     }
-    AppMethodBeat.o(217045);
+    AppMethodBeat.o(188539);
     return false;
   }
   
-  final void ciW()
+  final void cwo()
   {
-    AppMethodBeat.i(217047);
+    AppMethodBeat.i(188553);
     try
     {
       if (this.windowManager != null)
       {
-        if (this.oXH != null) {
-          this.oXH.listeners.clear();
+        if (this.rZJ != null) {
+          this.rZJ.listeners.clear();
         }
-        this.windowManager.removeView(this.oXH);
-        this.windowManager.removeView(this.oXI);
-        if (this.oWG != null) {
-          this.oWG.chU();
+        this.windowManager.removeView(this.rZJ);
+        this.windowManager.removeView(this.rZK);
+        if (this.rYG != null) {
+          this.rYG.cvg();
         }
         Log.i("MicroMsg.FloatBallContainer", "detachFromWindowInternal, detach all views");
-        AppMethodBeat.o(217047);
+        AppMethodBeat.o(188553);
         return;
       }
       Log.e("MicroMsg.FloatBallContainer", "detachFromWindowInternal, window manager is null");
-      AppMethodBeat.o(217047);
+      AppMethodBeat.o(188553);
       return;
     }
     catch (Exception localException)
     {
       Log.printErrStackTrace("MicroMsg.FloatBallContainer", localException, "detachFromWindowInternal exception", new Object[0]);
-      AppMethodBeat.o(217047);
+      AppMethodBeat.o(188553);
     }
   }
   
   public final int getPositionY()
   {
     AppMethodBeat.i(184610);
-    if (this.oXH != null)
+    if (this.rZJ != null)
     {
-      i = this.oXH.getPositionY();
+      i = this.rZJ.getPositionY();
       AppMethodBeat.o(184610);
       return i;
     }
-    int i = com.tencent.mm.plugin.ball.f.d.cjh();
+    int i = com.tencent.mm.plugin.ball.f.d.cwz();
     AppMethodBeat.o(184610);
     return i;
   }
   
   public final void setNeedTranslateAnimation(boolean paramBoolean)
   {
-    AppMethodBeat.i(217043);
-    if (this.oXH != null) {
-      this.oXH.setNeedTranslateAnimation(paramBoolean);
+    AppMethodBeat.i(188535);
+    if (this.rZJ != null) {
+      this.rZJ.setNeedTranslateAnimation(paramBoolean);
     }
-    AppMethodBeat.o(217043);
+    AppMethodBeat.o(188535);
   }
 }
 

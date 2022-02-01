@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:gravity="center" android:id="@id/jwc" android:background="@drawable/cuv" android:layout_width="fill_parent" android:layout_height="@dimen/cp" android:layout_marginBottom="@dimen/ce" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/jwd" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@raw/icons_filled_add" android:layout_centerVertical="true" app:iconColor="@color/ua" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/ua" android:id="@id/jwe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jaj" android:layout_centerVertical="true" android:layout_marginStart="@dimen/ct" android:layout_toEndOf="@id/jwd" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/jw8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/jwc" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb">
+        <TextView android:textSize="14.0dip" android:textColor="@color/ua" android:id="@id/jw_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ja7" />
+        <View android:id="@id/jw9" android:background="@color/BW_100_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="0.5px" android:layout_marginTop="@dimen/cb" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/jw7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/jwa" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="@dimen/by" android:layout_below="@id/jwc" android:layout_centerHorizontal="true">
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/jwb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jag" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" />
+    </RelativeLayout>
+</RelativeLayout>

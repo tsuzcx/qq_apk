@@ -1,62 +1,62 @@
 package com.tencent.mm.plugin.recordvideo.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.recordvideo.b.h;
+import com.tencent.mm.plugin.recordvideo.b.i;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/BasicElementConfig;", "Lcom/tencent/mm/plugin/recordvideo/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/BasicElementConfig$StoryBasicConfig;", "Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/IRecordBasicConfig;", "()V", "enableFavorite", "", "enableImage2Video", "enableLyrics", "enableMusic", "enableSnsNotify", "enableTips", "getDurationFromAlbum", "", "getElementName", "Lcom/tencent/mm/plugin/recordvideo/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "StoryBasicConfig", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/BasicElementConfig;", "Lcom/tencent/mm/plugin/recordvideo/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/BasicElementConfig$StoryBasicConfig;", "Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/IRecordBasicConfig;", "()V", "enableFavorite", "", "enableImage2Video", "enableLyrics", "enableMusic", "enableSnsNotify", "enableTips", "getDurationFromAlbum", "", "getElementName", "Lcom/tencent/mm/plugin/recordvideo/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "StoryBasicConfig", "plugin-recordvideo_release"})
 public final class a
-  extends h<a>
+  extends i<a>
 {
-  public static final a BNL;
+  public static final a HKu;
   
   static
   {
     AppMethodBeat.i(75393);
-    BNL = new a();
+    HKu = new a();
     AppMethodBeat.o(75393);
   }
   
-  public final void aLS()
+  public final void aTZ()
   {
     boolean bool2 = true;
     AppMethodBeat.i(75390);
-    a locala = (a)aLQ();
-    if (ab("StoryEditVideoBgmSwitch", 1) == 1)
+    a locala = (a)aTX();
+    if (at("StoryEditVideoBgmSwitch", 1) == 1)
     {
       bool1 = true;
-      locala.BNX = bool1;
-      int i = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 1);
-      ((a)aLQ()).BNY = (i * 100);
-      ((a)aLQ()).BNZ = (i * 100);
+      locala.HKF = bool1;
+      int i = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 1);
+      ((a)aTX()).HKG = (i * 100);
+      ((a)aTX()).HKH = (i * 100);
       if ((!BuildInfo.IS_FLAVOR_RED) && (!BuildInfo.IS_FLAVOR_PURPLE) && (!BuildInfo.DEBUG)) {
         break label294;
       }
-      ((a)aLQ()).BNM = true;
-      ((a)aLQ()).BNN = true;
-      ((a)aLQ()).BNO = true;
-      ((a)aLQ()).BNR = true;
-      ((a)aLQ()).BNQ = true;
-      locala = (a)aLQ();
+      ((a)aTX()).HKv = true;
+      ((a)aTX()).HKw = true;
+      ((a)aTX()).HKx = true;
+      ((a)aTX()).HKA = true;
+      ((a)aTX()).HKz = true;
+      locala = (a)aTX();
       bool1 = true;
       label155:
-      locala.BNT = bool1;
-      ((a)aLQ()).BNU = ab("StoryFeaturedExpiredTime", 15552000);
-      ((a)aLQ()).BNV = ((b)g.af(b.class)).a(b.a.rPD, 10);
-      locala = (a)aLQ();
-      if (((b)g.af(b.class)).a(b.a.rPz, 1) != 1) {
+      locala.HKB = bool1;
+      ((a)aTX()).HKC = at("StoryFeaturedExpiredTime", 15552000);
+      ((a)aTX()).HKD = ((b)h.ae(b.class)).a(b.a.vvO, 10);
+      locala = (a)aTX();
+      if (((b)h.ae(b.class)).a(b.a.vvK, 1) != 1) {
         break label549;
       }
       bool1 = true;
       label239:
-      locala.BNP = bool1;
-      locala = (a)aLQ();
-      if (((b)g.af(b.class)).a(b.a.rPG, 1) != 1) {
+      locala.HKy = bool1;
+      locala = (a)aTX();
+      if (((b)h.ae(b.class)).a(b.a.vvR, 1) != 1) {
         break label554;
       }
     }
@@ -64,47 +64,47 @@ public final class a
     label554:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      locala.BNS = bool1;
+      locala.ynt = bool1;
       AppMethodBeat.o(75390);
       return;
       bool1 = false;
       break;
-      locala = (a)aLQ();
-      if (((b)g.af(b.class)).a(b.a.rPw, 0) == 1)
+      locala = (a)aTX();
+      if (((b)h.ae(b.class)).a(b.a.vvH, 0) == 1)
       {
         bool1 = true;
         label326:
-        locala.BNM = bool1;
-        locala = (a)aLQ();
-        if (((b)g.af(b.class)).a(b.a.rPx, 0) != 1) {
+        locala.HKv = bool1;
+        locala = (a)aTX();
+        if (((b)h.ae(b.class)).a(b.a.vvI, 0) != 1) {
           break label524;
         }
         bool1 = true;
         label364:
-        locala.BNN = bool1;
-        locala = (a)aLQ();
-        if (((b)g.af(b.class)).a(b.a.rPy, 0) != 1) {
+        locala.HKw = bool1;
+        locala = (a)aTX();
+        if (((b)h.ae(b.class)).a(b.a.vvJ, 0) != 1) {
           break label529;
         }
         bool1 = true;
-        locala.BNO = bool1;
-        locala = (a)aLQ();
-        if (((b)g.af(b.class)).a(b.a.rPB, 1) != 1) {
+        locala.HKx = bool1;
+        locala = (a)aTX();
+        if (((b)h.ae(b.class)).a(b.a.vvM, 1) != 1) {
           break label534;
         }
         bool1 = true;
         label440:
-        locala.BNR = bool1;
-        locala = (a)aLQ();
-        if (((b)g.af(b.class)).a(b.a.rPA, 1) != 1) {
+        locala.HKA = bool1;
+        locala = (a)aTX();
+        if (((b)h.ae(b.class)).a(b.a.vvL, 1) != 1) {
           break label539;
         }
       }
       for (bool1 = true;; bool1 = false)
       {
-        locala.BNQ = bool1;
-        locala = (a)aLQ();
-        if (((b)g.af(b.class)).a(b.a.rPF, 0) != 1) {
+        locala.HKz = bool1;
+        locala = (a)aTX();
+        if (((b)h.ae(b.class)).a(b.a.vvQ, 0) != 1) {
           break label544;
         }
         bool1 = true;
@@ -125,39 +125,39 @@ public final class a
     }
   }
   
-  public final boolean eJD()
+  public final boolean fvN()
   {
     AppMethodBeat.i(75391);
-    boolean bool = ((a)aLT()).BNN;
+    boolean bool = ((a)aUb()).HKw;
     AppMethodBeat.o(75391);
     return bool;
   }
   
-  public final int eJE()
+  public final int fvO()
   {
-    AppMethodBeat.i(237257);
-    int i = ((a)aLT()).BNV;
-    AppMethodBeat.o(237257);
+    AppMethodBeat.i(219750);
+    int i = ((a)aUb()).HKD;
+    AppMethodBeat.o(219750);
     return i;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/BasicElementConfig$StoryBasicConfig;", "", "repeatMD5", "", "showMusicIcon", "", "albumThumbHeight", "albumThumbWidth", "(IZII)V", "getAlbumThumbHeight", "()I", "setAlbumThumbHeight", "(I)V", "getAlbumThumbWidth", "setAlbumThumbWidth", "durationFromAlbum", "getDurationFromAlbum", "setDurationFromAlbum", "enableBlurMouth", "getEnableBlurMouth", "()Z", "setEnableBlurMouth", "(Z)V", "enableFavorite", "getEnableFavorite", "setEnableFavorite", "enableImage2Video", "getEnableImage2Video", "setEnableImage2Video", "enableLyrics", "getEnableLyrics", "setEnableLyrics", "enableMusic", "getEnableMusic", "setEnableMusic", "enableReply", "getEnableReply", "setEnableReply", "enableSnsNotify", "getEnableSnsNotify", "setEnableSnsNotify", "enableTips", "getEnableTips", "setEnableTips", "favExpiredTime", "getFavExpiredTime", "setFavExpiredTime", "getRepeatMD5", "setRepeatMD5", "getShowMusicIcon", "setShowMusicIcon", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "", "plugin-recordvideo_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/BasicElementConfig$StoryBasicConfig;", "", "repeatMD5", "", "showMusicIcon", "", "albumThumbHeight", "albumThumbWidth", "(IZII)V", "getAlbumThumbHeight", "()I", "setAlbumThumbHeight", "(I)V", "getAlbumThumbWidth", "setAlbumThumbWidth", "durationFromAlbum", "getDurationFromAlbum", "setDurationFromAlbum", "enableBlurMouth", "getEnableBlurMouth", "()Z", "setEnableBlurMouth", "(Z)V", "enableFavorite", "getEnableFavorite", "setEnableFavorite", "enableImage2Video", "getEnableImage2Video", "setEnableImage2Video", "enableLyrics", "getEnableLyrics", "setEnableLyrics", "enableMusic", "getEnableMusic", "setEnableMusic", "enableReply", "getEnableReply", "setEnableReply", "enableSnsNotify", "getEnableSnsNotify", "setEnableSnsNotify", "enableTips", "getEnableTips", "setEnableTips", "favExpiredTime", "getFavExpiredTime", "setFavExpiredTime", "getRepeatMD5", "setRepeatMD5", "getShowMusicIcon", "setShowMusicIcon", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "", "plugin-recordvideo_release"})
   public static final class a
   {
-    boolean BNM;
-    boolean BNN;
-    boolean BNO;
-    public boolean BNP;
-    boolean BNQ;
-    public boolean BNR;
-    public boolean BNS = true;
-    boolean BNT;
-    int BNU = 15552000;
-    int BNV = 10;
-    private int BNW = 2;
-    boolean BNX = true;
-    int BNY = 0;
-    int BNZ = 0;
+    public boolean HKA;
+    boolean HKB;
+    int HKC = 15552000;
+    int HKD = 10;
+    private int HKE = 2;
+    boolean HKF = true;
+    int HKG = 0;
+    int HKH = 0;
+    boolean HKv;
+    boolean HKw;
+    boolean HKx;
+    public boolean HKy;
+    boolean HKz;
+    public boolean ynt = true;
     
     public final boolean equals(Object paramObject)
     {
@@ -166,7 +166,7 @@ public final class a
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((this.BNW != paramObject.BNW) || (this.BNX != paramObject.BNX) || (this.BNY != paramObject.BNY) || (this.BNZ != paramObject.BNZ)) {}
+          if ((this.HKE != paramObject.HKE) || (this.HKF != paramObject.HKF) || (this.HKG != paramObject.HKG) || (this.HKH != paramObject.HKH)) {}
         }
       }
       else {
@@ -183,7 +183,7 @@ public final class a
     public final String toString()
     {
       AppMethodBeat.i(75388);
-      String str = "StoryBasicConfig(repeatMD5=" + this.BNW + ", showMusicIcon=" + this.BNX + ", albumThumbHeight=" + this.BNY + ", albumThumbWidth=" + this.BNZ + ")";
+      String str = "StoryBasicConfig(repeatMD5=" + this.HKE + ", showMusicIcon=" + this.HKF + ", albumThumbHeight=" + this.HKG + ", albumThumbWidth=" + this.HKH + ")";
       AppMethodBeat.o(75388);
       return str;
     }
@@ -191,7 +191,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.b.a.a
  * JD-Core Version:    0.7.0.1
  */

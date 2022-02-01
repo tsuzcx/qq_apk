@@ -12,19 +12,19 @@ public class PAGPlayer
   
   static
   {
-    AppMethodBeat.i(236911);
+    AppMethodBeat.i(195198);
     b.loadLibrary("pag");
     nativeInit();
-    AppMethodBeat.o(236911);
+    AppMethodBeat.o(195198);
   }
   
   public PAGPlayer()
   {
-    AppMethodBeat.i(236905);
+    AppMethodBeat.i(195147);
     this.pagSurface = null;
     this.nativeContext = 0L;
     nativeSetup();
-    AppMethodBeat.o(236905);
+    AppMethodBeat.o(195147);
   }
   
   private native void nativeFinalize();
@@ -49,9 +49,9 @@ public class PAGPlayer
   
   protected void finalize()
   {
-    AppMethodBeat.i(236910);
+    AppMethodBeat.i(195189);
     nativeFinalize();
-    AppMethodBeat.o(236910);
+    AppMethodBeat.o(195189);
   }
   
   public native boolean flush();
@@ -73,12 +73,12 @@ public class PAGPlayer
   
   public Matrix matrix()
   {
-    AppMethodBeat.i(236907);
+    AppMethodBeat.i(195167);
     float[] arrayOfFloat = new float[9];
     nativeGetMatrix(arrayOfFloat);
     Matrix localMatrix = new Matrix();
     localMatrix.setValues(arrayOfFloat);
-    AppMethodBeat.o(236907);
+    AppMethodBeat.o(195167);
     return localMatrix;
   }
   
@@ -86,9 +86,9 @@ public class PAGPlayer
   
   public void release()
   {
-    AppMethodBeat.i(236909);
+    AppMethodBeat.i(195184);
     nativeRelease();
-    AppMethodBeat.o(236909);
+    AppMethodBeat.o(195184);
   }
   
   public native int scaleMode();
@@ -101,11 +101,11 @@ public class PAGPlayer
   
   public void setMatrix(Matrix paramMatrix)
   {
-    AppMethodBeat.i(236908);
+    AppMethodBeat.i(195175);
     float[] arrayOfFloat = new float[9];
     paramMatrix.getValues(arrayOfFloat);
     nativeSetMatrix(arrayOfFloat[0], arrayOfFloat[3], arrayOfFloat[1], arrayOfFloat[4], arrayOfFloat[2], arrayOfFloat[5]);
-    AppMethodBeat.o(236908);
+    AppMethodBeat.o(195175);
   }
   
   public native void setMaxFrameRate(float paramFloat);
@@ -116,16 +116,16 @@ public class PAGPlayer
   
   public void setSurface(PAGSurface paramPAGSurface)
   {
-    AppMethodBeat.i(236906);
+    AppMethodBeat.i(195152);
     this.pagSurface = paramPAGSurface;
     if (paramPAGSurface == null)
     {
       nativeSetSurface(0L);
-      AppMethodBeat.o(236906);
+      AppMethodBeat.o(195152);
       return;
     }
     nativeSetSurface(paramPAGSurface.nativeSurface);
-    AppMethodBeat.o(236906);
+    AppMethodBeat.o(195152);
   }
   
   public native void setVideoEnabled(boolean paramBoolean);
@@ -134,7 +134,7 @@ public class PAGPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     org.libpag.PAGPlayer
  * JD-Core Version:    0.7.0.1
  */

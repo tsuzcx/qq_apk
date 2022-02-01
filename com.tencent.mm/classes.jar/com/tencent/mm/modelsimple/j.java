@@ -1,8 +1,8 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
@@ -19,24 +19,24 @@ public final class j
   implements m
 {
   private i callback;
-  public byte[] content;
-  private s iMO;
-  public String jje;
+  public byte[] fPk;
+  private s lCW;
+  public String lZa;
   
   public j(l.e parame)
   {
     AppMethodBeat.i(20614);
-    this.jje = "";
+    this.lZa = "";
     parame = (p.b)parame;
-    this.jje = parame.jje;
-    this.content = parame.content;
+    this.lZa = parame.lZa;
+    this.fPk = parame.fPk;
     AppMethodBeat.o(20614);
   }
   
   public j(List<String> paramList, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(20613);
-    this.jje = "";
+    this.lZa = "";
     if ((paramList.size() > 0) && (paramArrayOfByte != null)) {}
     int j;
     String str;
@@ -52,16 +52,16 @@ public final class j
         i += 1;
       }
     }
-    this.iMO = new a();
-    paramList = (p.a)this.iMO.getReqObj();
-    paramList.dKy = 111;
-    paramList.cSx = 0;
-    paramList.jlm = j;
+    this.lCW = new a();
+    paramList = (p.a)this.lCW.getReqObj();
+    paramList.fDn = 111;
+    paramList.cUP = 0;
+    paramList.mbp = j;
     if (str != null)
     {
       bool1 = true;
       Assert.assertTrue(bool1);
-      paramList.KzO = str;
+      paramList.RBE = str;
       if (paramArrayOfByte == null) {
         break label276;
       }
@@ -70,7 +70,7 @@ public final class j
     for (bool1 = bool2;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      paramList.KzP = paramArrayOfByte;
+      paramList.RBF = paramArrayOfByte;
       Log.d("MicroMsg.NetSceneDirectSend", "NetSceneDirectSend: cmdId=111 seq=" + j);
       Log.d("MicroMsg.NetSceneDirectSend", "NetSceneDirectSend: lstReceiver=" + str + " status = " + com.tencent.mm.b.o.v(paramArrayOfByte, 0));
       AppMethodBeat.o(20613);
@@ -84,7 +84,7 @@ public final class j
   {
     AppMethodBeat.i(20615);
     this.callback = parami;
-    int i = dispatch(paramg, this.iMO, this);
+    int i = dispatch(paramg, this.lCW, this);
     AppMethodBeat.o(20615);
     return i;
   }
@@ -107,27 +107,27 @@ public final class j
   }
   
   public static final class a
-    extends com.tencent.mm.ak.o
+    extends com.tencent.mm.an.o
   {
-    private final p.a jjf;
-    private final p.b jjg;
+    private final p.a lZb;
+    private final p.b lZc;
     
     public a()
     {
       AppMethodBeat.i(20612);
-      this.jjf = new p.a();
-      this.jjg = new p.b();
+      this.lZb = new p.a();
+      this.lZc = new p.b();
       AppMethodBeat.o(20612);
     }
     
     public final l.d getReqObjImp()
     {
-      return this.jjf;
+      return this.lZb;
     }
     
     public final l.e getRespObj()
     {
-      return this.jjg;
+      return this.lZc;
     }
     
     public final int getType()
@@ -143,7 +143,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelsimple.j
  * JD-Core Version:    0.7.0.1
  */

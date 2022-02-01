@@ -4,8 +4,8 @@
     <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/k5" android:paddingRight="@dimen/k5" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
             <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/dnu" android:background="@drawable/c2n" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:textSize="@dimen/ka" android:textColor="@color/ad" android:gravity="center" android:id="@id/ac4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs" />
-                <TextView android:textSize="@dimen/s" android:textColor="@color/ae" android:gravity="center" android:id="@id/ipm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/r" android:layout_marginBottom="@dimen/hv" />
+                <TextView android:textSize="@dimen/ka" android:textColor="@color/UN_BW_0_Alpha_0_5" android:gravity="center" android:id="@id/ac4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs" />
+                <TextView android:textSize="@dimen/s" android:textColor="@color/UN_BW_0_Alpha_0_9" android:gravity="center" android:id="@id/ipm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/r" android:layout_marginBottom="@dimen/hv" />
                 <LinearLayout android:gravity="center" android:id="@id/s5" android:background="@drawable/lq" android:visibility="gone" android:layout_width="62.0dip" android:layout_height="62.0dip">
                     <ImageView android:id="@id/s4" android:layout_width="@dimen/v2" android:layout_height="@dimen/v2" android:layout_marginTop="@dimen/ib" android:layout_marginBottom="@dimen/ib" android:src="@drawable/ci4" android:scaleType="fitCenter" android:layout_centerHorizontal="true" />
                 </LinearLayout>
@@ -13,11 +13,11 @@
             <View android:id="@id/bkd" android:background="@drawable/rc" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/ib" android:layout_marginRight="@dimen/ib" android:layout_marginBottom="0.0dip" android:layout_alignBottom="@id/dnu" android:layerType="software" />
         </RelativeLayout>
         <LinearLayout android:orientation="vertical" android:id="@id/b56" android:background="@drawable/c2l" android:paddingTop="42.0dip" android:paddingBottom="42.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/ad" android:gravity="center" android:id="@id/aog" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/UN_BW_0_Alpha_0_5" android:gravity="center" android:id="@id/aog" android:layout_width="fill_parent" android:layout_height="wrap_content" />
             <ViewStub android:id="@id/alf" android:layout="@layout/me" android:inflatedId="@id/ale" android:layout_width="fill_parent" android:layout_height="wrap_content" />
             <ViewStub android:id="@id/ala" android:layout="@layout/m_" android:inflatedId="@id/al_" android:layout_width="fill_parent" android:layout_height="wrap_content" />
             <ViewStub android:id="@id/ali" android:layout="@layout/mf" android:inflatedId="@id/alh" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/ad" android:gravity="center" android:id="@id/ao8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" />
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/UN_BW_0_Alpha_0_5" android:gravity="center" android:id="@id/ao8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" />
             <ViewStub android:id="@id/aoh" android:layout="@layout/oa" android:inflatedId="@id/aoe" android:layout_width="fill_parent" android:layout_height="wrap_content" />
         </LinearLayout>
         <RelativeLayout android:gravity="top" android:layout_gravity="top" android:id="@id/g2i" android:focusable="false" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs" android:layout_weight="1.0">

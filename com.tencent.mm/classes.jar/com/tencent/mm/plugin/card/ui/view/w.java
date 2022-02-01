@@ -9,32 +9,35 @@ import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.card.a.c;
+import com.tencent.mm.plugin.card.a.d;
+import com.tencent.mm.plugin.card.a.e;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.ui.a.g;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.abz;
-import com.tencent.mm.protocal.protobuf.ty;
-import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.protocal.protobuf.acg;
+import com.tencent.mm.protocal.protobuf.ua;
+import com.tencent.mm.protocal.protobuf.vb;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.aa;
+import com.tencent.mm.ui.ad;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class w
   extends i
 {
-  private View qkt;
-  private View qku;
+  private View tGp;
+  private View tGq;
   
-  public final void cxw()
+  public final void cKY()
   {
     AppMethodBeat.i(113710);
-    if (this.qkt != null) {
-      this.qkt.setVisibility(8);
+    if (this.tGp != null) {
+      this.tGp.setVisibility(8);
     }
-    if (this.qku != null) {
-      this.qku.setVisibility(8);
+    if (this.tGq != null) {
+      this.tGq.setVisibility(8);
     }
     AppMethodBeat.o(113710);
   }
@@ -44,103 +47,103 @@ public final class w
   public final void update()
   {
     AppMethodBeat.i(113709);
-    b localb = this.qjX.cvq();
-    g localg = this.qjX.cvv();
+    b localb = this.tFT.cIS();
+    g localg = this.tFT.cIX();
     Object localObject1;
     Object localObject2;
     Object localObject3;
     int i;
-    if ((localb.csR().Lcs != null) && (localb.csR().Lcs.size() > 1))
+    if ((localb.cGt().SdF != null) && (localb.cGt().SdF.size() > 1))
     {
-      if (this.qkt == null) {
-        this.qkt = ((ViewStub)findViewById(2131298208)).inflate();
+      if (this.tGp == null) {
+        this.tGp = ((ViewStub)findViewById(a.d.tdp)).inflate();
       }
-      if (this.qku != null) {
-        this.qku.setVisibility(8);
+      if (this.tGq != null) {
+        this.tGq.setVisibility(8);
       }
-      localObject1 = this.qjX.cvt();
-      localObject2 = this.qkt;
-      localObject3 = this.qjX.cvu();
-      LinkedList localLinkedList = localb.csR().Lcs;
-      int j = l.ake(localb.csQ().ixw);
+      localObject1 = this.tFT.cIV();
+      localObject2 = this.tGp;
+      localObject3 = this.tFT.cIW();
+      LinkedList localLinkedList = localb.cGt().SdF;
+      int j = l.arR(localb.cGs().lmL);
       ((ViewGroup)localObject2).removeAllViews();
       Iterator localIterator = localLinkedList.iterator();
-      label370:
+      label376:
       while (localIterator.hasNext())
       {
-        Object localObject4 = (abz)localIterator.next();
-        View localView = aa.jQ((Context)localObject1).inflate(2131493426, (ViewGroup)localObject2, false);
-        localView.setId(2131298209);
+        Object localObject4 = (acg)localIterator.next();
+        View localView = ad.kS((Context)localObject1).inflate(a.e.tja, (ViewGroup)localObject2, false);
+        localView.setId(a.d.tdq);
         localView.setTag(Integer.valueOf(localLinkedList.indexOf(localObject4)));
         localView.setOnClickListener((View.OnClickListener)localObject3);
-        if ((TextUtils.isEmpty(((abz)localObject4).url)) && (Util.isNullOrNil(((abz)localObject4).Leo))) {
+        if ((TextUtils.isEmpty(((acg)localObject4).url)) && (Util.isNullOrNil(((acg)localObject4).SfB))) {
           localView.setEnabled(false);
         }
-        ((TextView)localView.findViewById(2131307443)).setText(((abz)localObject4).title);
-        TextView localTextView = (TextView)localView.findViewById(2131307440);
-        localTextView.setText(((abz)localObject4).pRY);
+        ((TextView)localView.findViewById(a.d.tgz)).setText(((acg)localObject4).title);
+        TextView localTextView = (TextView)localView.findViewById(a.d.tgw);
+        localTextView.setText(((acg)localObject4).tnY);
         localTextView.setTextColor(j);
         ((ViewGroup)localObject2).addView(localView);
         if (localLinkedList.indexOf(localObject4) + 1 != localLinkedList.size()) {}
         for (i = 1;; i = 0)
         {
           if (i == 0) {
-            break label370;
+            break label376;
           }
-          localObject4 = aa.jQ((Context)localObject1).inflate(2131493427, (ViewGroup)localObject2, false);
+          localObject4 = ad.kS((Context)localObject1).inflate(a.e.tjb, (ViewGroup)localObject2, false);
           ((ViewGroup)localObject2).addView((View)localObject4);
           break;
         }
       }
-      if ((localb.csx()) && (localb.csR().Lcz != null) && (!TextUtils.isEmpty(localb.csR().Lcz.title))) {
-        this.qkt.setBackgroundResource(2131233974);
+      if ((localb.cFY()) && (localb.cGt().SdM != null) && (!TextUtils.isEmpty(localb.cGt().SdM.title))) {
+        this.tGp.setBackgroundResource(a.c.mm_trans);
       }
-      if ((!localb.csx()) && (localg.cwK()))
+      if ((!localb.cFY()) && (localg.cKn()))
       {
-        this.qkt.setBackgroundResource(2131233974);
+        this.tGp.setBackgroundResource(a.c.mm_trans);
         AppMethodBeat.o(113709);
       }
     }
-    else if ((localb.csR().Lcs != null) && (localb.csR().Lcs.size() == 1))
+    else if ((localb.cGt().SdF != null) && (localb.cGt().SdF.size() == 1))
     {
-      if (this.qku == null) {
-        this.qku = ((ViewStub)findViewById(2131298207)).inflate();
+      if (this.tGq == null) {
+        this.tGq = ((ViewStub)findViewById(a.d.tdo)).inflate();
       }
-      if (this.qkt != null) {
-        this.qkt.setVisibility(8);
+      if (this.tGp != null) {
+        this.tGp.setVisibility(8);
       }
-      localObject1 = this.qku;
-      localObject2 = this.qjX.cvu();
-      localObject3 = localb.csR().Lcs;
+      localObject1 = this.tGq;
+      localObject2 = this.tFT.cIW();
+      localObject3 = localb.cGt().SdF;
       if (((LinkedList)localObject3).size() == 1)
       {
-        ((View)localObject1).findViewById(2131298210).setVisibility(0);
-        localObject3 = (abz)((LinkedList)localObject3).get(0);
-        ((TextView)((View)localObject1).findViewById(2131307444)).setText(((abz)localObject3).title);
-        ((TextView)((View)localObject1).findViewById(2131307441)).setText(((abz)localObject3).pRY);
-        i = l.ake(localb.csQ().ixw);
-        ((TextView)((View)localObject1).findViewById(2131307441)).setTextColor(i);
-        ((View)localObject1).findViewById(2131298210).setOnClickListener((View.OnClickListener)localObject2);
-        if (TextUtils.isEmpty(((abz)localObject3).url)) {
-          ((View)localObject1).findViewById(2131298210).setEnabled(false);
+        ((View)localObject1).findViewById(a.d.tdr).setVisibility(0);
+        localObject3 = (acg)((LinkedList)localObject3).get(0);
+        ((TextView)((View)localObject1).findViewById(a.d.tgA)).setText(((acg)localObject3).title);
+        ((TextView)((View)localObject1).findViewById(a.d.tgx)).setText(((acg)localObject3).tnY);
+        i = l.arR(localb.cGs().lmL);
+        ((TextView)((View)localObject1).findViewById(a.d.tgx)).setTextColor(i);
+        ((View)localObject1).findViewById(a.d.tdr).setOnClickListener((View.OnClickListener)localObject2);
+        if (TextUtils.isEmpty(((acg)localObject3).url)) {
+          ((View)localObject1).findViewById(a.d.tdr).setEnabled(false);
         }
       }
-      if ((localb.csx()) && (localb.csR().Lcz != null) && (!TextUtils.isEmpty(localb.csR().Lcz.title))) {
-        this.qku.setBackgroundResource(2131233974);
+      if ((localb.cFY()) && (localb.cGt().SdM != null) && (!TextUtils.isEmpty(localb.cGt().SdM.title))) {
+        this.tGq.setBackgroundResource(a.c.mm_trans);
       }
-      if ((!localb.csx()) && (localg.cwK()))
+      if ((!localb.cFY()) && (localg.cKn()))
       {
-        this.qku.setBackgroundResource(2131233974);
+        this.tGq.setBackgroundResource(a.c.mm_trans);
         AppMethodBeat.o(113709);
       }
     }
     else
     {
-      if (this.qkt != null) {
-        this.qkt.setVisibility(8);
+      if (this.tGp != null) {
+        this.tGp.setVisibility(8);
       }
-      if (this.qku != null) {
-        this.qku.setVisibility(8);
+      if (this.tGq != null) {
+        this.tGq.setVisibility(8);
       }
     }
     AppMethodBeat.o(113709);

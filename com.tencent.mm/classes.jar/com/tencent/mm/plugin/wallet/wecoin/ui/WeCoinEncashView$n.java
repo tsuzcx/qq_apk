@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "v", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "actionId", "", "event", "Landroid/view/KeyEvent;", "onEditorAction"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "actionId", "", "event", "Landroid/view/KeyEvent;", "onEditorAction"})
 final class WeCoinEncashView$n
   implements TextView.OnEditorActionListener
 {
@@ -16,26 +16,26 @@ final class WeCoinEncashView$n
   
   public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(212812);
+    AppMethodBeat.i(270482);
     if (paramKeyEvent == null)
     {
-      AppMethodBeat.o(212812);
+      AppMethodBeat.o(270482);
       return true;
     }
     if ((paramKeyEvent.getAction() == 1) && (paramKeyEvent.getKeyCode() == 66))
     {
       Log.i("MicroMsg.WeCoinEncashView", "click enter");
-      this.HOT.onClick(null);
-      AppMethodBeat.o(212812);
+      this.OGQ.onClick(null);
+      AppMethodBeat.o(270482);
       return true;
     }
-    AppMethodBeat.o(212812);
+    AppMethodBeat.o(270482);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.wecoin.ui.WeCoinEncashView.n
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.card.ui.a;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.ui.e.a;
-import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.protocal.protobuf.vb;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 
@@ -15,16 +15,23 @@ public final class h
     super(paramMMActivity);
   }
   
-  public final boolean cwF()
+  protected final void cJX()
+  {
+    AppMethodBeat.i(113650);
+    super.cJX();
+    AppMethodBeat.o(113650);
+  }
+  
+  public final boolean cKi()
   {
     AppMethodBeat.i(113651);
-    ArrayList localArrayList = com.tencent.mm.plugin.card.sharecard.a.b.ajt(this.pQV.csV());
-    if (((!this.pZU.pSh) || (this.pZU.gwE == 4)) && (!TextUtils.isEmpty(this.pQV.csW())))
+    ArrayList localArrayList = com.tencent.mm.plugin.card.sharecard.a.b.arg(this.tmU.cGx());
+    if (((!this.tvQ.tog) || (this.tvQ.jaR == 4)) && (!TextUtils.isEmpty(this.tmU.cGy())))
     {
       AppMethodBeat.o(113651);
       return true;
     }
-    if (((this.pZU.pSh) && (localArrayList != null) && (localArrayList.size() > 0)) || ((!TextUtils.isEmpty(this.pQV.csW())) && (cwG())))
+    if (((this.tvQ.tog) && (localArrayList != null) && (localArrayList.size() > 0)) || ((!TextUtils.isEmpty(this.tmU.cGy())) && (cKj())))
     {
       AppMethodBeat.o(113651);
       return true;
@@ -33,35 +40,38 @@ public final class h
     return false;
   }
   
-  public final boolean cwG()
+  public final boolean cKj()
   {
-    return this.pZU.gwE == 3;
+    return this.tvQ.jaR == 3;
   }
   
-  public final boolean cwH()
-  {
-    return false;
-  }
-  
-  public final boolean cwJ()
-  {
-    return this.qeD;
-  }
-  
-  public final boolean cwK()
+  public final boolean cKk()
   {
     return false;
   }
   
-  public final boolean cwM()
+  public final boolean cKm()
+  {
+    AppMethodBeat.i(252287);
+    boolean bool = cJq();
+    AppMethodBeat.o(252287);
+    return bool;
+  }
+  
+  public final boolean cKn()
   {
     return false;
   }
   
-  public final boolean cwN()
+  public final boolean cKp()
+  {
+    return false;
+  }
+  
+  public final boolean cKq()
   {
     AppMethodBeat.i(113652);
-    if ((this.qeD) && (super.cwN()))
+    if ((cJq()) && (super.cKq()))
     {
       AppMethodBeat.o(113652);
       return true;
@@ -70,30 +80,30 @@ public final class h
     return false;
   }
   
-  public final boolean cwR()
+  public final boolean cKu()
   {
     return false;
   }
   
-  public final boolean cwS()
+  public final boolean cKv()
   {
     return false;
   }
   
-  public final boolean cwT()
+  public final boolean cKw()
   {
     AppMethodBeat.i(113653);
-    if (super.cwT())
+    if (super.cKw())
     {
       AppMethodBeat.o(113653);
       return true;
     }
-    if (cwU())
+    if (cKx())
     {
       AppMethodBeat.o(113653);
       return true;
     }
-    if ((this.pQV.csw()) && (this.qeD))
+    if ((this.tmU.cFX()) && (cJq()))
     {
       AppMethodBeat.o(113653);
       return true;
@@ -102,23 +112,16 @@ public final class h
     return false;
   }
   
-  public final boolean cwU()
+  public final boolean cKx()
   {
     AppMethodBeat.i(113654);
-    if ((!this.qeD) && (this.pQV.csQ().LeX == 1))
+    if ((!cJq()) && (this.tmU.cGs().Sgl == 1))
     {
       AppMethodBeat.o(113654);
       return true;
     }
     AppMethodBeat.o(113654);
     return false;
-  }
-  
-  protected final void cwv()
-  {
-    AppMethodBeat.i(113650);
-    super.cwv();
-    AppMethodBeat.o(113650);
   }
 }
 

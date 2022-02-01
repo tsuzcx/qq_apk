@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.address.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.address.a.a;
-import com.tencent.mm.protocal.protobuf.djj;
-import com.tencent.mm.protocal.protobuf.djl;
-import com.tencent.mm.protocal.protobuf.djm;
+import com.tencent.mm.protocal.protobuf.dsy;
+import com.tencent.mm.protocal.protobuf.dta;
+import com.tencent.mm.protocal.protobuf.dtb;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
@@ -22,8 +22,8 @@ public final class e
   implements m
 {
   private i callback;
-  public boolean ksQ;
   public String nickname;
+  public boolean nkx;
   private d rr;
   public String username;
   
@@ -31,18 +31,18 @@ public final class e
   {
     AppMethodBeat.i(20777);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new djl();
-    ((d.a)localObject).iLO = new djm();
+    ((d.a)localObject).lBU = new dta();
+    ((d.a)localObject).lBV = new dtb();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/rcptinfoquery";
     ((d.a)localObject).funcId = 417;
-    ((d.a)localObject).iLP = 202;
+    ((d.a)localObject).lBW = 202;
     ((d.a)localObject).respCmdId = 1000000202;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (djl)this.rr.iLK.iLR;
-    ((djl)localObject).qwL = 0;
-    ((djl)localObject).MNF = paramString1;
-    ((djl)localObject).dNI = paramString2;
-    ((djl)localObject).scene = paramInt;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (dta)d.b.b(this.rr.lBR);
+    ((dta)localObject).dXr = 0;
+    ((dta)localObject).TZz = paramString1;
+    ((dta)localObject).appid = paramString2;
+    ((dta)localObject).scene = paramInt;
     AppMethodBeat.o(20777);
   }
   
@@ -67,23 +67,23 @@ public final class e
     Log.d("MicroMsg.NetSceneRcptInfoQuery", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (djm)((d)params).iLL.iLR;
-      this.username = params.rJH;
-      this.nickname = params.MNI;
-      if (params.MNH != 1) {
+      params = (dtb)d.c.b(((d)params).lBS);
+      this.username = params.vpp;
+      this.nickname = params.TZC;
+      if (params.TZB != 1) {
         break label198;
       }
     }
     for (;;)
     {
-      this.ksQ = bool;
-      if (params.MNs.MNv != null)
+      this.nkx = bool;
+      if (params.TZl.TZo != null)
       {
-        Log.d("MicroMsg.NetSceneRcptInfoQuery", "resp.rImpl.rcptinfolist.rcptinfolist " + params.MNs.MNv.size());
-        a.bqb();
-        a.bqd().t(params.MNs.MNv);
-        a.bqb();
-        a.bqd().bqf();
+        Log.d("MicroMsg.NetSceneRcptInfoQuery", "resp.rImpl.rcptinfolist.rcptinfolist " + params.TZl.TZo.size());
+        a.bAn();
+        a.bAp().u(params.TZl.TZo);
+        a.bAn();
+        a.bAp().bAs();
       }
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(20778);
@@ -95,7 +95,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.address.model.e
  * JD-Core Version:    0.7.0.1
  */

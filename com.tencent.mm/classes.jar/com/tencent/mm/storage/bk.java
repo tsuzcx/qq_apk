@@ -17,13 +17,13 @@ public final class bk
     e(getDB(), "bottlemessage");
     e(getDB(), "qmessage");
     e(getDB(), "tmessage");
-    a(new i.b(8, "bottlemessage", i.b.a(2000001L, 2500000L, 96000001L, 99000000L)));
-    a(new i.b(2, "qmessage", i.b.a(1000001L, 1500000L, 90000001L, 93000000L)));
-    a(new i.b(4, "tmessage", i.b.a(1500001L, 2000000L, 93000001L, 96000000L)));
+    a(new i.b(8, "bottlemessage", i.b.b(2000001L, 2500000L, 96000001L, 99000000L)));
+    a(new i.b(2, "qmessage", i.b.b(1000001L, 1500000L, 90000001L, 93000000L)));
+    a(new i.b(4, "tmessage", i.b.b(1500001L, 2000000L, 93000001L, 96000000L)));
     AppMethodBeat.o(32878);
   }
   
-  public final String avu(String paramString)
+  public final String aEK(String paramString)
   {
     AppMethodBeat.i(32879);
     if ((paramString != null) && (paramString.length() > 0)) {}
@@ -41,7 +41,7 @@ public final class bk
       AppMethodBeat.o(32879);
       return "qmessage";
     }
-    if (as.IG(paramString))
+    if (as.PY(paramString))
     {
       AppMethodBeat.o(32879);
       return "bottlemessage";

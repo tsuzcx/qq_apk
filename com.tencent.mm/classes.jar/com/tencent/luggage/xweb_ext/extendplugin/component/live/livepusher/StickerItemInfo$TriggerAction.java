@@ -1,10 +1,10 @@
 package com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$TriggerAction;", "", "jsonVal", "", "(Ljava/lang/String;II)V", "getJsonVal", "()I", "DEFAULT_ACTION_LOOP", "FACE_ACTION_MOUTH_OPEN", "FACE_ACTION_MOUTH_KISS", "FACE_ACTION_LEFT_EYE_BLINK", "FACE_ACTION_RIGHT_EYE_BLINK", "FACE_ACTION_EYE_BLINK", "FACE_ACTION_EYEBROW_UP", "FACE_ACTION_HEAD_SHAKE", "FACE_ACTION_HEAD_NOD", "HAND_ACTION_HEART", "HAND_ACTION_PAPER", "HAND_ACTION_SCISSOR", "HAND_ACTION_FIST", "HAND_ACTION_ONE", "HAND_ACTION_LOVE", "HAND_ACTION_LIKE", "HAND_ACTION_OK", "HAND_ACTION_ROCK", "HAND_ACTION_SIX", "HAND_ACTION_EIGHT", "HAND_ACTION_LIFT", "HAND_ACTION_GOOD_FORTUNE", "Companion", "luggage-xweb-ext_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$TriggerAction;", "", "jsonVal", "", "(Ljava/lang/String;II)V", "getJsonVal", "()I", "DEFAULT_ACTION_LOOP", "FACE_ACTION_MOUTH_OPEN", "FACE_ACTION_MOUTH_KISS", "FACE_ACTION_LEFT_EYE_BLINK", "FACE_ACTION_RIGHT_EYE_BLINK", "FACE_ACTION_EYE_BLINK", "FACE_ACTION_EYEBROW_UP", "FACE_ACTION_HEAD_SHAKE", "FACE_ACTION_HEAD_NOD", "HAND_ACTION_HEART", "HAND_ACTION_PAPER", "HAND_ACTION_SCISSOR", "HAND_ACTION_FIST", "HAND_ACTION_ONE", "HAND_ACTION_LOVE", "HAND_ACTION_LIKE", "HAND_ACTION_OK", "HAND_ACTION_ROCK", "HAND_ACTION_SIX", "HAND_ACTION_EIGHT", "HAND_ACTION_LIFT", "HAND_ACTION_GOOD_FORTUNE", "Companion", "luggage-xweb-ext_release"})
 @Keep
 public enum StickerItemInfo$TriggerAction
 {
@@ -13,7 +13,7 @@ public enum StickerItemInfo$TriggerAction
   
   static
   {
-    AppMethodBeat.i(215977);
+    AppMethodBeat.i(222688);
     TriggerAction localTriggerAction1 = new TriggerAction("DEFAULT_ACTION_LOOP", 0, -1);
     DEFAULT_ACTION_LOOP = localTriggerAction1;
     TriggerAction localTriggerAction2 = new TriggerAction("FACE_ACTION_MOUTH_OPEN", 1, 10);
@@ -60,7 +60,7 @@ public enum StickerItemInfo$TriggerAction
     HAND_ACTION_GOOD_FORTUNE = localTriggerAction22;
     $VALUES = new TriggerAction[] { localTriggerAction1, localTriggerAction2, localTriggerAction3, localTriggerAction4, localTriggerAction5, localTriggerAction6, localTriggerAction7, localTriggerAction8, localTriggerAction9, localTriggerAction10, localTriggerAction11, localTriggerAction12, localTriggerAction13, localTriggerAction14, localTriggerAction15, localTriggerAction16, localTriggerAction17, localTriggerAction18, localTriggerAction19, localTriggerAction20, localTriggerAction21, localTriggerAction22 };
     Companion = new a((byte)0);
-    AppMethodBeat.o(215977);
+    AppMethodBeat.o(222688);
   }
   
   private StickerItemInfo$TriggerAction(int paramInt)
@@ -70,23 +70,10 @@ public enum StickerItemInfo$TriggerAction
   
   public static final TriggerAction from(int paramInt)
   {
-    AppMethodBeat.i(215980);
-    TriggerAction[] arrayOfTriggerAction = values();
-    int k = arrayOfTriggerAction.length;
-    int i = 0;
-    while (i < k)
-    {
-      TriggerAction localTriggerAction = arrayOfTriggerAction[i];
-      if (paramInt == localTriggerAction.getJsonVal()) {}
-      for (int j = 1; j != 0; j = 0)
-      {
-        AppMethodBeat.o(215980);
-        return localTriggerAction;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(215980);
-    return null;
+    AppMethodBeat.i(222695);
+    TriggerAction localTriggerAction = a.from(paramInt);
+    AppMethodBeat.o(222695);
+    return localTriggerAction;
   }
   
   public final int getJsonVal()
@@ -94,12 +81,34 @@ public enum StickerItemInfo$TriggerAction
     return this.jsonVal;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$TriggerAction$Companion;", "", "()V", "from", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$TriggerAction;", "actionInt", "", "luggage-xweb-ext_release"})
-  public static final class a {}
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$TriggerAction$Companion;", "", "()V", "from", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$TriggerAction;", "actionInt", "", "luggage-xweb-ext_release"})
+  public static final class a
+  {
+    public static StickerItemInfo.TriggerAction from(int paramInt)
+    {
+      AppMethodBeat.i(226801);
+      StickerItemInfo.TriggerAction[] arrayOfTriggerAction = StickerItemInfo.TriggerAction.values();
+      int k = arrayOfTriggerAction.length;
+      int i = 0;
+      while (i < k)
+      {
+        StickerItemInfo.TriggerAction localTriggerAction = arrayOfTriggerAction[i];
+        if (paramInt == localTriggerAction.getJsonVal()) {}
+        for (int j = 1; j != 0; j = 0)
+        {
+          AppMethodBeat.o(226801);
+          return localTriggerAction;
+        }
+        i += 1;
+      }
+      AppMethodBeat.o(226801);
+      return null;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.StickerItemInfo.TriggerAction
  * JD-Core Version:    0.7.0.1
  */

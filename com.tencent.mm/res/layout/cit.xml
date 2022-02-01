@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/kib" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="@dimen/c1"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/ki3" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/finder_down_arrow" app:iconColor="@color/BW_0_Alpha_0_9" />
+        <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_9" android:layout_gravity="center_vertical" android:id="@id/ki4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cnb" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

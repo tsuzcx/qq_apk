@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.music.e;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.f;
-import com.tencent.mm.g.a.mx;
+import com.tencent.mm.bb.f;
+import com.tencent.mm.f.a.np;
 import com.tencent.mm.plugin.music.d.a;
 import com.tencent.mm.plugin.music.f.e;
 import com.tencent.mm.sdk.event.EventCenter;
@@ -13,126 +13,113 @@ import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 public abstract class h
   implements c
 {
-  private Runnable AjA = new Runnable()
+  private com.tencent.mm.plugin.music.f.d FQv = new com.tencent.mm.plugin.music.f.d();
+  private e FQw = new e();
+  private a FQx = new a();
+  private Runnable FQy = new Runnable()
   {
     public final void run()
     {
       AppMethodBeat.i(137281);
-      boolean bool1 = h.this.etW().bee();
-      boolean bool2 = h.this.etW().bec();
+      boolean bool1 = h.this.feg().bnz();
+      boolean bool2 = h.this.feg().bnx();
       Log.i("MicroMsg.Music.MusicBasePlayEngine", "stopMusicDelayRunnable, isStartPlayMusic:%b, isPlayingMusic:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
       if ((bool1) && (!bool2)) {
-        h.this.etW().stopPlay();
+        h.this.feg().stopPlay();
       }
       AppMethodBeat.o(137281);
     }
   };
-  private com.tencent.mm.plugin.music.f.d Ajx = new com.tencent.mm.plugin.music.f.d();
-  private e Ajy = new e();
-  private a Ajz = new a();
   
-  private void euh()
-  {
-    if (this.Ajx.bec()) {
-      this.Ajx.stopPlay();
-    }
-    if (this.Ajy.bec()) {
-      this.Ajy.stopPlay();
-    }
-    if (this.Ajz.bec()) {
-      this.Ajz.stopPlay();
-    }
-  }
-  
-  public static void eui()
+  public static void fes()
   {
     Log.i("MicroMsg.Music.MusicBasePlayEngine", "sendPreemptedEvent");
-    mx localmx = new mx();
-    localmx.dSE.action = 10;
-    localmx.dSE.state = "preempted";
-    localmx.dSE.appId = "not from app brand appid";
-    localmx.dSE.dSG = true;
-    EventCenter.instance.asyncPublish(localmx, Looper.getMainLooper());
+    np localnp = new np();
+    localnp.fMc.action = 10;
+    localnp.fMc.state = "preempted";
+    localnp.fMc.appId = "not from app brand appid";
+    localnp.fMc.fMe = true;
+    EventCenter.instance.asyncPublish(localnp, Looper.getMainLooper());
   }
   
-  public void SP(int paramInt)
+  public void Zl(int paramInt)
   {
     Log.i("MicroMsg.Music.MusicBasePlayEngine", "stopMusicDelayIfPaused, delay_ms:%d", new Object[] { Integer.valueOf(paramInt) });
-    MMHandlerThread.removeRunnable(this.AjA);
-    MMHandlerThread.postToMainThreadDelayed(this.AjA, paramInt);
+    MMHandlerThread.removeRunnable(this.FQy);
+    MMHandlerThread.postToMainThreadDelayed(this.FQy, paramInt);
   }
   
-  public void bea()
+  public void bnv()
   {
-    this.Ajx.stopPlay();
-    if (this.Ajy != null) {
-      this.Ajy.stopPlay();
+    this.FQv.stopPlay();
+    if (this.FQw != null) {
+      this.FQw.stopPlay();
     }
-    if (this.Ajz != null) {
-      this.Ajz.stopPlay();
+    if (this.FQx != null) {
+      this.FQx.stopPlay();
     }
-    MMHandlerThread.removeRunnable(this.AjA);
+    MMHandlerThread.removeRunnable(this.FQy);
   }
   
-  public f etU()
+  public f fed()
   {
     return null;
   }
   
-  public com.tencent.mm.plugin.music.f.a.d etW()
+  public com.tencent.mm.plugin.music.f.a.d feg()
   {
-    f localf = etU();
+    f localf = fed();
     if (com.tencent.mm.plugin.music.h.c.U(localf)) {
-      return this.Ajz;
+      return this.FQx;
     }
-    if ((localf != null) && (com.tencent.mm.plugin.music.h.c.Th(localf.jeT))) {
-      return this.Ajy;
+    if ((localf != null) && (com.tencent.mm.plugin.music.h.c.ZB(localf.lVr))) {
+      return this.FQw;
     }
-    return this.Ajx;
+    return this.FQv;
+  }
+  
+  public final void fer()
+  {
+    if (this.FQv.bnx()) {
+      this.FQv.stopPlay();
+    }
+    if (this.FQw.bnx()) {
+      this.FQw.stopPlay();
+    }
+    if (this.FQx.bnx()) {
+      this.FQx.stopPlay();
+    }
   }
   
   public void finish()
   {
-    bea();
+    bnv();
     release();
   }
   
   public void m(f paramf)
   {
-    if (this.Ajx.bec()) {
-      this.Ajx.m(paramf);
+    if (this.FQv.bnx()) {
+      this.FQv.m(paramf);
     }
-    if (this.Ajy.bec()) {
-      this.Ajy.m(paramf);
+    if (this.FQw.bnx()) {
+      this.FQw.m(paramf);
     }
-    if (this.Ajz.bec()) {
-      this.Ajz.m(paramf);
+    if (this.FQx.bnx()) {
+      this.FQx.m(paramf);
     }
   }
   
   public void release()
   {
     Log.i("MicroMsg.Music.MusicBasePlayEngine", "release");
-    if (this.Ajy != null) {
-      this.Ajy.release();
+    if (this.FQw != null) {
+      this.FQw.release();
     }
-    if (this.Ajz != null) {
-      this.Ajz.release();
+    if (this.FQx != null) {
+      this.FQx.release();
     }
-    MMHandlerThread.removeRunnable(this.AjA);
-  }
-  
-  public void sl(boolean paramBoolean)
-  {
-    if (this.Ajx.bec()) {
-      this.Ajx.dSH = paramBoolean;
-    }
-    if (this.Ajy.bec()) {
-      this.Ajy.dSH = paramBoolean;
-    }
-    if (this.Ajz.bec()) {
-      this.Ajz.dSH = paramBoolean;
-    }
+    MMHandlerThread.removeRunnable(this.FQy);
   }
   
   public final void t(f paramf)
@@ -140,26 +127,26 @@ public abstract class h
     if (com.tencent.mm.plugin.music.h.c.U(paramf))
     {
       Log.i("MicroMsg.Music.MusicBasePlayEngine", "use exoMusicPlayer");
-      euh();
-      this.Ajz.h(paramf);
+      fer();
+      this.FQx.h(paramf);
     }
     for (;;)
     {
-      if (paramf.jeT != 11) {
-        eui();
+      if (paramf.lVr != 11) {
+        fes();
       }
       return;
-      if (com.tencent.mm.plugin.music.h.c.Th(paramf.jeT))
+      if (com.tencent.mm.plugin.music.h.c.ZB(paramf.lVr))
       {
         Log.i("MicroMsg.Music.MusicBasePlayEngine", "use qqMusicPlayer");
-        euh();
-        this.Ajy.h(paramf);
+        fer();
+        this.FQw.h(paramf);
       }
       else
       {
         Log.i("MicroMsg.Music.MusicBasePlayEngine", "use musicPlayer");
-        euh();
-        this.Ajx.h(paramf);
+        fer();
+        this.FQv.h(paramf);
       }
     }
   }
@@ -168,20 +155,33 @@ public abstract class h
   {
     if (com.tencent.mm.plugin.music.h.c.U(paramf))
     {
-      this.Ajz.P(paramf);
+      this.FQx.P(paramf);
       return;
     }
-    if ((paramf != null) && (com.tencent.mm.plugin.music.h.c.Th(paramf.jeT)))
+    if ((paramf != null) && (com.tencent.mm.plugin.music.h.c.ZB(paramf.lVr)))
     {
-      this.Ajy.P(paramf);
+      this.FQw.P(paramf);
       return;
     }
-    this.Ajx.P(paramf);
+    this.FQv.P(paramf);
+  }
+  
+  public void vq(boolean paramBoolean)
+  {
+    if (this.FQv.bnx()) {
+      this.FQv.fMf = paramBoolean;
+    }
+    if (this.FQw.bnx()) {
+      this.FQw.fMf = paramBoolean;
+    }
+    if (this.FQx.bnx()) {
+      this.FQx.fMf = paramBoolean;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.e.h
  * JD-Core Version:    0.7.0.1
  */

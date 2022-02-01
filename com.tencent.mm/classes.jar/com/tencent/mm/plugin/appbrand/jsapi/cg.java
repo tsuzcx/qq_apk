@@ -2,26 +2,17 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.app.Activity;
 import android.content.Intent;
-import com.tencent.luggage.h.f.c;
-import com.tencent.luggage.sdk.g.a;
+import com.tencent.luggage.k.f.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.wallet.e;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class cg
-  extends d<k>
+  extends c<j>
 {
-  public static final int CTRL_INDEX = 616;
-  public static final String NAME = "openWCPayLQTDetail";
-  final int lBa;
-  
-  public cg()
-  {
-    AppMethodBeat.i(174765);
-    this.lBa = a.aK(this);
-    AppMethodBeat.o(174765);
-  }
+  public static final int CTRL_INDEX = 617;
+  public static final String NAME = "openWCPayLQTSave";
 }
 
 

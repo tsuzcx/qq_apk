@@ -9,11 +9,11 @@ class Snack
   implements Parcelable
 {
   public static final Parcelable.Creator<Snack> CREATOR;
-  final String QVo;
-  final int QVp;
-  final Parcelable QVq;
-  final short QVr;
-  final int QVs;
+  final String YtZ;
+  final int Yua;
+  final Parcelable Yub;
+  final short Yuc;
+  final int Yud;
   final String mMessage;
   
   static
@@ -27,22 +27,22 @@ class Snack
   {
     AppMethodBeat.i(159697);
     this.mMessage = paramParcel.readString();
-    this.QVo = paramParcel.readString();
-    this.QVp = paramParcel.readInt();
-    this.QVq = paramParcel.readParcelable(paramParcel.getClass().getClassLoader());
-    this.QVr = ((short)paramParcel.readInt());
-    this.QVs = paramParcel.readInt();
+    this.YtZ = paramParcel.readString();
+    this.Yua = paramParcel.readInt();
+    this.Yub = paramParcel.readParcelable(paramParcel.getClass().getClassLoader());
+    this.Yuc = ((short)paramParcel.readInt());
+    this.Yud = paramParcel.readInt();
     AppMethodBeat.o(159697);
   }
   
   Snack(String paramString1, String paramString2, int paramInt1, Parcelable paramParcelable, short paramShort, int paramInt2)
   {
     this.mMessage = paramString1;
-    this.QVo = paramString2;
-    this.QVp = paramInt1;
-    this.QVq = paramParcelable;
-    this.QVr = paramShort;
-    this.QVs = paramInt2;
+    this.YtZ = paramString2;
+    this.Yua = paramInt1;
+    this.Yub = paramParcelable;
+    this.Yuc = paramShort;
+    this.Yud = paramInt2;
   }
   
   public int describeContents()
@@ -54,11 +54,11 @@ class Snack
   {
     AppMethodBeat.i(159698);
     paramParcel.writeString(this.mMessage);
-    paramParcel.writeString(this.QVo);
-    paramParcel.writeInt(this.QVp);
-    paramParcel.writeParcelable(this.QVq, 0);
-    paramParcel.writeInt(this.QVr);
-    paramParcel.writeInt(this.QVs);
+    paramParcel.writeString(this.YtZ);
+    paramParcel.writeInt(this.Yua);
+    paramParcel.writeParcelable(this.Yub, 0);
+    paramParcel.writeInt(this.Yuc);
+    paramParcel.writeInt(this.Yud);
     AppMethodBeat.o(159698);
   }
 }

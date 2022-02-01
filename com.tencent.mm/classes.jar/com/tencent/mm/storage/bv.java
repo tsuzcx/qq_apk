@@ -1,17 +1,20 @@
 package com.tencent.mm.storage;
 
 import android.database.Cursor;
+import com.tencent.mm.sdk.observer.ILifecycleObserverOwner;
 import com.tencent.mm.sdk.storage.IStorageEx;
+import com.tencent.mm.sdk.storage.observer.IStorageObserver;
+import com.tencent.mm.sdk.storage.observer.StorageObserverEvent;
 import java.util.List;
 
 public abstract interface bv
-  extends IStorageEx
+  extends ILifecycleObserverOwner<IStorageObserver<Object>, StorageObserverEvent<Object>>, IStorageEx
 {
-  public abstract int B(String paramString, byte[] paramArrayOfByte);
+  public abstract int G(String paramString, byte[] paramArrayOfByte);
   
-  public abstract as Kn(String paramString);
+  public abstract as RG(String paramString);
   
-  public abstract as Nh(long paramLong);
+  public abstract as UT(long paramLong);
   
   public abstract Cursor a(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2, boolean paramBoolean1, boolean paramBoolean2);
   
@@ -23,21 +26,17 @@ public abstract interface bv
   
   public abstract void a(a parama);
   
-  public abstract int aNa(String paramString);
+  public abstract void aHy(String paramString);
   
-  public abstract String aZD();
+  public abstract void as(as paramas);
   
-  public abstract void am(as paramas);
+  public abstract boolean at(as paramas);
   
-  public abstract boolean an(as paramas);
+  public abstract boolean au(as paramas);
   
-  public abstract boolean ao(as paramas);
+  public abstract boolean av(as paramas);
   
-  public abstract boolean ap(as paramas);
-  
-  public abstract int aq(as paramas);
-  
-  public abstract void ayf(String paramString);
+  public abstract int aw(as paramas);
   
   public abstract Cursor b(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2, boolean paramBoolean1, boolean paramBoolean2);
   
@@ -49,41 +48,43 @@ public abstract interface bv
   
   public abstract int[] b(String[] paramArrayOfString, String paramString1, String paramString2, String paramString3, List<String> paramList);
   
-  public abstract as bjF(String paramString);
+  public abstract String biT();
   
-  public abstract boolean bjG(String paramString);
+  public abstract as bwc(String paramString);
   
-  public abstract as bjH(String paramString);
+  public abstract boolean bwd(String paramString);
   
-  public abstract Cursor bjI(String paramString);
+  public abstract as bwe(String paramString);
   
-  public abstract as bjJ(String paramString);
+  public abstract Cursor bwf(String paramString);
   
-  public abstract as bjK(String paramString);
+  public abstract as bwg(String paramString);
   
-  public abstract as bjL(String paramString);
+  public abstract as bwh(String paramString);
   
-  public abstract long bjM(String paramString);
+  public abstract as bwj(String paramString);
   
-  public abstract boolean bjN(String paramString);
+  public abstract long bwk(String paramString);
   
-  public abstract boolean bjO(String paramString);
+  public abstract boolean bwl(String paramString);
   
-  public abstract byte[] bjP(String paramString);
+  public abstract boolean bwm(String paramString);
   
-  public abstract int bjQ(String paramString);
+  public abstract byte[] bwn(String paramString);
   
-  public abstract String bjR(String paramString);
+  public abstract int bwo(String paramString);
   
-  public abstract int bjS(String paramString);
+  public abstract int bwp(String paramString);
   
-  public abstract String bjT(String paramString);
+  public abstract String bwq(String paramString);
+  
+  public abstract int bwr(String paramString);
+  
+  public abstract String bws(String paramString);
   
   public abstract int c(String paramString, as paramas);
   
   public abstract int c(String[] paramArrayOfString1, String... paramVarArgs);
-  
-  public abstract Cursor c(String paramString1, String paramString2, List<String> paramList);
   
   public abstract Cursor c(List<String> paramList1, String paramString, List<String> paramList2);
   
@@ -91,7 +92,7 @@ public abstract interface bv
   
   public abstract int[] c(String[] paramArrayOfString, String paramString1, String paramString2, String paramString3, List<String> paramList);
   
-  public abstract int ce(String paramString, long paramLong);
+  public abstract int cl(String paramString, long paramLong);
   
   public abstract int d(String paramString, as paramas);
   
@@ -107,63 +108,67 @@ public abstract interface bv
   
   public abstract void e(String paramString, as paramas);
   
-  public abstract String f(String paramString1, String paramString2, List<String> paramList);
+  public abstract Cursor f(String paramString1, String paramString2, List<String> paramList);
   
-  public abstract List<String> gBY();
+  public abstract String g(String paramString1, String paramString2, List<String> paramList);
   
-  public abstract List<String> gBZ();
+  public abstract Cursor hyA();
   
-  public abstract Cursor gCa();
+  public abstract Cursor hyB();
   
-  public abstract Cursor gCb();
+  public abstract Cursor hyC();
   
-  public abstract Cursor gCc();
+  public abstract Cursor hyD();
   
-  public abstract Cursor gCd();
+  public abstract List<String> hyk();
   
-  public abstract int gCe();
+  public abstract List<String> hyl();
   
-  public abstract int gCn();
+  public abstract Cursor hym();
   
-  public abstract Cursor gCo();
+  public abstract Cursor hyn();
   
-  public abstract Cursor gCp();
+  public abstract Cursor hyo();
   
-  public abstract Cursor gCq();
+  public abstract Cursor hyp();
   
-  public abstract Cursor iJ(List<String> paramList);
+  public abstract int hyq();
   
-  public abstract Cursor iK(List<String> paramList);
+  public abstract int hyz();
   
-  public abstract Cursor iL(List<String> paramList);
+  public abstract Cursor jB(List<String> paramList);
   
-  public abstract Cursor iM(List<String> paramList);
+  public abstract Cursor jC(List<String> paramList);
   
-  public abstract Cursor iP(List<String> paramList);
+  public abstract Cursor jD(List<String> paramList);
   
-  public abstract Cursor iQ(List<String> paramList);
+  public abstract Cursor jE(List<String> paramList);
   
-  public abstract Cursor iR(List<String> paramList);
+  public abstract Cursor jH(List<String> paramList);
   
-  public abstract Cursor iS(List<String> paramList);
+  public abstract Cursor jI(List<String> paramList);
   
-  public abstract Cursor iT(List<String> paramList);
+  public abstract Cursor jJ(List<String> paramList);
   
-  public abstract List<String> iU(List<String> paramList);
+  public abstract Cursor jK(List<String> paramList);
   
-  public abstract int[] iV(List<String> paramList);
+  public abstract Cursor jL(List<String> paramList);
   
-  public abstract int[] iW(List<String> paramList);
+  public abstract List<String> jM(List<String> paramList);
   
-  public abstract Cursor mR(String paramString1, String paramString2);
+  public abstract int[] jN(List<String> paramList);
   
-  public abstract int mS(String paramString1, String paramString2);
+  public abstract int[] jO(List<String> paramList);
   
-  public abstract Cursor x(List<String> paramList, boolean paramBoolean);
+  public abstract Cursor nI(String paramString1, String paramString2);
+  
+  public abstract int nJ(String paramString1, String paramString2);
+  
+  public abstract Cursor z(List<String> paramList, boolean paramBoolean);
   
   public static abstract interface a
   {
-    public abstract as Kn(String paramString);
+    public abstract as RG(String paramString);
     
     public abstract void a(bv parambv, as paramas);
     
@@ -172,7 +177,7 @@ public abstract interface bv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.bv
  * JD-Core Version:    0.7.0.1
  */

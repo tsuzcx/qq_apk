@@ -1,27 +1,31 @@
 package com.tencent.mm.plugin.sns.b;
 
-import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.model.ad.b;
-import com.tencent.mm.modelsns.m;
-import com.tencent.mm.pointers.PString;
-import com.tencent.mm.storage.ca;
+import android.content.Intent;
 
 public abstract interface j
-  extends a
 {
-  public abstract String a(String paramString, PString paramPString);
+  public abstract void a(int paramInt, String paramString, a parama);
   
-  public abstract void a(String paramString, ad.b paramb, ca paramca);
+  public abstract void a(int paramInt1, String paramString, boolean paramBoolean, int paramInt2);
   
-  public abstract void aO(ca paramca);
+  public abstract boolean a(a parama, int paramInt);
   
-  public abstract String ag(ca paramca);
+  public abstract void aYP(String paramString);
   
-  public abstract void b(String paramString, m paramm);
+  public abstract Intent f(Intent paramIntent, String paramString);
+  
+  public static abstract interface a
+  {
+    public abstract void a(String paramString1, String paramString2, boolean paramBoolean, int paramInt, b paramb);
+    
+    public abstract void a(String paramString, boolean paramBoolean, int paramInt, b paramb);
+    
+    public abstract void b(String paramString, boolean paramBoolean, int paramInt, b paramb);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.b.j
  * JD-Core Version:    0.7.0.1
  */

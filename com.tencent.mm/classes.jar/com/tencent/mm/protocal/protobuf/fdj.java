@@ -1,74 +1,103 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class fdj
-  extends com.tencent.mm.bw.a
+  extends dyl
 {
-  public boolean NyU;
-  public boolean NyV;
-  public int NyW;
+  public long Svv;
+  public long TVZ;
+  public long Urf;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(50120);
+    AppMethodBeat.i(125496);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.cc(1, this.NyU);
-      paramVarArgs.cc(2, this.NyV);
-      paramVarArgs.aM(3, this.NyW);
-      AppMethodBeat.o(50120);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.b.b.a.fS(1);
-      int i = g.a.a.b.b.a.fS(2);
-      int j = g.a.a.b.b.a.bu(3, this.NyW);
-      AppMethodBeat.o(50120);
-      return paramInt + 1 + 0 + (i + 1) + j;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
-      }
-      AppMethodBeat.o(50120);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      fdj localfdj = (fdj)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.BaseRequest != null)
       {
-      default: 
-        AppMethodBeat.o(50120);
-        return -1;
-      case 1: 
-        localfdj.NyU = locala.UbS.yZ();
-        AppMethodBeat.o(50120);
-        return 0;
-      case 2: 
-        localfdj.NyV = locala.UbS.yZ();
-        AppMethodBeat.o(50120);
-        return 0;
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      localfdj.NyW = locala.UbS.zi();
-      AppMethodBeat.o(50120);
+      paramVarArgs.bm(2, this.Urf);
+      paramVarArgs.bm(3, this.Svv);
+      paramVarArgs.bm(4, this.TVZ);
+      AppMethodBeat.o(125496);
       return 0;
     }
-    AppMethodBeat.o(50120);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label424;
+      }
+    }
+    label424:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = g.a.a.b.b.a.p(2, this.Urf);
+      int j = g.a.a.b.b.a.p(3, this.Svv);
+      int k = g.a.a.b.b.a.p(4, this.TVZ);
+      AppMethodBeat.o(125496);
+      return paramInt + i + j + k;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
+        }
+        AppMethodBeat.o(125496);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        fdj localfdj = (fdj)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(125496);
+          return -1;
+        case 1: 
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            jg localjg = new jg();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localjg.parseFrom((byte[])localObject);
+            }
+            localfdj.BaseRequest = localjg;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(125496);
+          return 0;
+        case 2: 
+          localfdj.Urf = ((g.a.a.a.a)localObject).abFh.AN();
+          AppMethodBeat.o(125496);
+          return 0;
+        case 3: 
+          localfdj.Svv = ((g.a.a.a.a)localObject).abFh.AN();
+          AppMethodBeat.o(125496);
+          return 0;
+        }
+        localfdj.TVZ = ((g.a.a.a.a)localObject).abFh.AN();
+        AppMethodBeat.o(125496);
+        return 0;
+      }
+      AppMethodBeat.o(125496);
+      return -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.fdj
  * JD-Core Version:    0.7.0.1
  */

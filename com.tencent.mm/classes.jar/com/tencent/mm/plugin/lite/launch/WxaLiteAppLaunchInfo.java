@@ -7,24 +7,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/lite/launch/WxaLiteAppLaunchInfo;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "appId", "", "getAppId", "()Ljava/lang/String;", "setAppId", "(Ljava/lang/String;)V", "path", "getPath", "setPath", "pkgPath", "getPkgPath", "setPkgPath", "qrUrlQueryStr", "getQrUrlQueryStr", "setQrUrlQueryStr", "query", "getQuery", "setQuery", "signatureKey", "getSignatureKey", "setSignatureKey", "startTime", "", "getStartTime", "()J", "setStartTime", "(J)V", "describeContents", "", "toString", "writeToParcel", "", "dest", "flags", "CREATOR", "luggage-lite-app_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/lite/launch/WxaLiteAppLaunchInfo;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "appId", "", "getAppId", "()Ljava/lang/String;", "setAppId", "(Ljava/lang/String;)V", "path", "getPath", "setPath", "pkgPath", "getPkgPath", "setPkgPath", "qrUrlQueryStr", "getQrUrlQueryStr", "setQrUrlQueryStr", "query", "getQuery", "setQuery", "signatureKey", "getSignatureKey", "setSignatureKey", "startTime", "", "getStartTime", "()J", "setStartTime", "(J)V", "describeContents", "", "toString", "writeToParcel", "", "dest", "flags", "CREATOR", "luggage-lite-app_release"})
 public final class WxaLiteAppLaunchInfo
   implements Parcelable
 {
   public static final a CREATOR;
+  public String Egl = "";
   public String appId = "";
-  public String crh = "";
+  public String coX = "";
   public String path = "";
   public String pkgPath = "";
   public String query = "";
   public long startTime;
-  public String yEx = "";
   
   static
   {
-    AppMethodBeat.i(198973);
+    AppMethodBeat.i(233560);
     CREATOR = new a((byte)0);
-    AppMethodBeat.o(198973);
+    AppMethodBeat.o(233560);
   }
   
   public WxaLiteAppLaunchInfo() {}
@@ -32,19 +32,19 @@ public final class WxaLiteAppLaunchInfo
   public WxaLiteAppLaunchInfo(Parcel paramParcel)
   {
     this();
-    AppMethodBeat.i(198972);
+    AppMethodBeat.i(233558);
     String str = paramParcel.readString();
     if (str != null) {}
     for (;;)
     {
       this.appId = str;
       this.pkgPath = paramParcel.readString();
-      this.crh = paramParcel.readString();
+      this.coX = paramParcel.readString();
       this.path = paramParcel.readString();
       this.query = paramParcel.readString();
-      this.yEx = paramParcel.readString();
+      this.Egl = paramParcel.readString();
       this.startTime = paramParcel.readLong();
-      AppMethodBeat.o(198972);
+      AppMethodBeat.o(233558);
       return;
       str = "";
     }
@@ -57,35 +57,35 @@ public final class WxaLiteAppLaunchInfo
   
   public final void setAppId(String paramString)
   {
-    AppMethodBeat.i(198969);
-    p.h(paramString, "<set-?>");
+    AppMethodBeat.i(233554);
+    p.k(paramString, "<set-?>");
     this.appId = paramString;
-    AppMethodBeat.o(198969);
+    AppMethodBeat.o(233554);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(198970);
+    AppMethodBeat.i(233556);
     String str = "appId:" + this.appId + " \n pkgPath: " + this.pkgPath + " signatureKey :xxx";
-    AppMethodBeat.o(198970);
+    AppMethodBeat.o(233556);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(198971);
-    p.h(paramParcel, "dest");
+    AppMethodBeat.i(233557);
+    p.k(paramParcel, "dest");
     paramParcel.writeString(this.appId);
     paramParcel.writeString(this.pkgPath);
-    paramParcel.writeString(this.crh);
+    paramParcel.writeString(this.coX);
     paramParcel.writeString(this.path);
     paramParcel.writeString(this.query);
-    paramParcel.writeString(this.yEx);
+    paramParcel.writeString(this.Egl);
     paramParcel.writeLong(this.startTime);
-    AppMethodBeat.o(198971);
+    AppMethodBeat.o(233557);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/lite/launch/WxaLiteAppLaunchInfo$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/lite/launch/WxaLiteAppLaunchInfo;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/lite/launch/WxaLiteAppLaunchInfo;", "luggage-lite-app_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/lite/launch/WxaLiteAppLaunchInfo$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/lite/launch/WxaLiteAppLaunchInfo;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/lite/launch/WxaLiteAppLaunchInfo;", "luggage-lite-app_release"})
   public static final class a
     implements Parcelable.Creator<WxaLiteAppLaunchInfo>
   {}

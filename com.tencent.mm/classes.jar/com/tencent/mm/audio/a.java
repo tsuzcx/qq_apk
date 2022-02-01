@@ -9,275 +9,276 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/audio/SceneVoicePlayerAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseMusicAudioManager;", "context", "Landroid/content/Context;", "onAudioFocusChanged", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "status", "", "(Landroid/content/Context;Lkotlin/jvm/functions/Function1;)V", "abandonFocusOnStop", "", "audioFocusListener", "Lcom/tencent/mm/compatible/util/AudioFocusHelper$AudioFocusListener;", "bluetoothResumeSpeaker", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "hasAudioFocus", "mAudioFocusHelper", "Lcom/tencent/mm/compatible/util/AudioFocusHelper;", "needFocusOnPlay", "player", "Lcom/tencent/mm/modelvoice/IVoicePlayer;", "getPlayer", "()Lcom/tencent/mm/modelvoice/IVoicePlayer;", "setPlayer", "(Lcom/tencent/mm/modelvoice/IVoicePlayer;)V", "value", "speakerOn", "getSpeakerOn", "()Z", "setSpeakerOn", "(Z)V", "onAudioDeviceStateChanged", "onErrorPlaying", "pausePlaying", "abandonFocus", "releaseAudioPlayingDevice", "isContinuousPlay", "requestAudioPlayingDevice", "requestSpeakerOn", "resumePlaying", "startPlay", "filepath", "", "position", "stopPlaying", "unInit", "Companion", "plugin-audiologic_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/audio/SceneVoicePlayerAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseMusicAudioManager;", "context", "Landroid/content/Context;", "onAudioFocusChanged", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "status", "", "(Landroid/content/Context;Lkotlin/jvm/functions/Function1;)V", "abandonFocusOnStop", "", "audioFocusListener", "Lcom/tencent/mm/compatible/util/AudioFocusHelper$AudioFocusListener;", "bluetoothResumeSpeaker", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "hasAudioFocus", "mAudioFocusHelper", "Lcom/tencent/mm/compatible/util/AudioFocusHelper;", "needFocusOnPlay", "player", "Lcom/tencent/mm/modelvoice/IVoicePlayer;", "getPlayer", "()Lcom/tencent/mm/modelvoice/IVoicePlayer;", "setPlayer", "(Lcom/tencent/mm/modelvoice/IVoicePlayer;)V", "value", "speakerOn", "getSpeakerOn", "()Z", "setSpeakerOn", "(Z)V", "onAudioDeviceStateChanged", "onErrorPlaying", "pausePlaying", "abandonFocus", "releaseAudioPlayingDevice", "isContinuousPlay", "requestAudioPlayingDevice", "requestSpeakerOn", "resumePlaying", "startPlay", "filepath", "", "position", "stopPlaying", "unInit", "Companion", "plugin-audiologic_release"})
 public final class a
   extends c
 {
-  public static final a.a dtI;
+  public static final a.a fmq;
   public Context context;
-  private boolean dtA;
-  private boolean dtB;
-  public boolean dtC;
-  private boolean dtD;
-  public boolean dtE;
-  public com.tencent.mm.modelvoice.d dtF;
-  private final b.a dtG;
-  private kotlin.g.a.b<? super Integer, x> dtH;
-  public com.tencent.mm.compatible.util.b dtz;
+  public com.tencent.mm.compatible.util.b fmh;
+  private boolean fmi;
+  private boolean fmj;
+  public boolean fmk;
+  private boolean fml;
+  public boolean fmm;
+  public com.tencent.mm.modelvoice.d fmn;
+  private final b.a fmo;
+  private kotlin.g.a.b<? super Integer, x> fmp;
   
   static
   {
-    AppMethodBeat.i(187341);
-    dtI = new a.a((byte)0);
-    AppMethodBeat.o(187341);
+    AppMethodBeat.i(227505);
+    fmq = new a.a((byte)0);
+    AppMethodBeat.o(227505);
   }
   
   public a(Context paramContext, kotlin.g.a.b<? super Integer, x> paramb)
   {
-    AppMethodBeat.i(187340);
-    this.dtH = paramb;
-    this.dtA = true;
-    this.dtB = true;
+    AppMethodBeat.i(227503);
+    this.fmp = paramb;
+    this.fmi = true;
+    this.fmj = true;
     this.context = paramContext;
-    this.dtz = new com.tencent.mm.compatible.util.b(paramContext);
-    com.tencent.mm.plugin.audio.d.b.cet();
-    com.tencent.mm.plugin.audio.d.d.cet();
-    paramContext = com.tencent.mm.plugin.audio.c.a.oIh;
+    this.fmh = new com.tencent.mm.compatible.util.b(paramContext);
+    com.tencent.mm.plugin.audio.d.b.crG();
+    com.tencent.mm.plugin.audio.d.d.crG();
+    paramContext = com.tencent.mm.plugin.audio.c.a.rJX;
     com.tencent.mm.plugin.audio.c.a.a.a((com.tencent.mm.plugin.audio.b.a)this, "music");
-    this.dtG = ((b.a)new b(this));
-    AppMethodBeat.o(187340);
+    this.fmo = ((b.a)new b(this));
+    AppMethodBeat.o(227503);
   }
   
-  public final void Yl()
+  public final void P(String paramString, int paramInt)
   {
-    AppMethodBeat.i(187333);
-    Object localObject = this.dtF;
-    if (localObject != null) {
-      ((com.tencent.mm.modelvoice.d)localObject).c(this.dtG);
+    AppMethodBeat.i(227489);
+    p.k(paramString, "filepath");
+    com.tencent.mm.modelvoice.d locald = this.fmn;
+    if (locald == null) {
+      p.iCn();
     }
-    localObject = this.dtF;
-    if (localObject != null) {
-      ((com.tencent.mm.modelvoice.d)localObject).bhQ();
-    }
-    if (this.dtA)
+    if (!locald.d(paramString, this.fmm, paramInt))
     {
-      localObject = this.dtz;
-      if (localObject != null) {
-        ((com.tencent.mm.compatible.util.b)localObject).a(this.dtG);
-      }
-      localObject = this.dtz;
-      if (localObject != null) {
-        ((com.tencent.mm.compatible.util.b)localObject).requestFocus();
-      }
-      this.dtC = true;
+      Log.i("MicroMsg.SceneVoiceAudioManager", "start play error fileName[" + paramString + "], [" + this.fmm + ']');
+      anT("music");
     }
-    this.dtB = true;
-    localObject = com.tencent.mm.plugin.audio.c.a.oIh;
-    if (!com.tencent.mm.plugin.audio.c.a.a.cea().cdW())
+    AppMethodBeat.o(227489);
+  }
+  
+  public final void acR()
+  {
+    AppMethodBeat.i(227481);
+    Object localObject = this.fmn;
+    if (localObject != null) {
+      ((com.tencent.mm.modelvoice.d)localObject).c(this.fmo);
+    }
+    localObject = this.fmn;
+    if (localObject != null) {
+      ((com.tencent.mm.modelvoice.d)localObject).bro();
+    }
+    if (this.fmi)
+    {
+      this.fmh = new com.tencent.mm.compatible.util.b(this.context);
+      localObject = this.fmh;
+      if (localObject != null) {
+        ((com.tencent.mm.compatible.util.b)localObject).a(this.fmo);
+      }
+      localObject = this.fmh;
+      if (localObject != null) {
+        ((com.tencent.mm.compatible.util.b)localObject).avy();
+      }
+      this.fmk = true;
+    }
+    this.fmj = true;
+    localObject = com.tencent.mm.plugin.audio.c.a.rJX;
+    if (!com.tencent.mm.plugin.audio.c.a.a.crn().crh())
     {
       b("music", Integer.valueOf(2));
-      AppMethodBeat.o(187333);
+      AppMethodBeat.o(227481);
       return;
     }
     b("music", Integer.valueOf(1));
-    AppMethodBeat.o(187333);
+    AppMethodBeat.o(227481);
   }
   
-  public final boolean Ym()
+  public final boolean acS()
   {
-    AppMethodBeat.i(187337);
-    Object localObject = this.dtF;
+    AppMethodBeat.i(227495);
+    Object localObject = this.fmn;
     if (localObject != null) {}
     for (boolean bool = ((com.tencent.mm.modelvoice.d)localObject).resume();; bool = false)
     {
       if (bool)
       {
         b("music", Integer.valueOf(2));
-        localObject = com.tencent.mm.plugin.audio.c.a.oIh;
-        localObject = com.tencent.mm.plugin.audio.d.b.oIo;
-        if (com.tencent.mm.plugin.audio.d.b.ceb()) {
-          cU(false);
+        localObject = com.tencent.mm.plugin.audio.c.a.rJX;
+        localObject = com.tencent.mm.plugin.audio.d.b.rKe;
+        if (com.tencent.mm.plugin.audio.d.b.cro()) {
+          dr(false);
         }
-        jp(this.dtE);
+        kA(this.fmm);
       }
-      if (this.dtC)
+      if (this.fmk)
       {
-        localObject = this.dtz;
+        localObject = this.fmh;
         if (localObject != null) {
-          ((com.tencent.mm.compatible.util.b)localObject).requestFocus();
+          ((com.tencent.mm.compatible.util.b)localObject).avy();
         }
-        this.dtC = false;
+        this.fmk = true;
       }
-      AppMethodBeat.o(187337);
+      AppMethodBeat.o(227495);
       return bool;
     }
   }
   
-  public final void Yn()
+  public final void acT()
   {
-    AppMethodBeat.i(187338);
-    cdV();
-    if ((this.dtC) && (this.dtB))
+    AppMethodBeat.i(227497);
+    crg();
+    if ((this.fmk) && (this.fmj))
     {
-      com.tencent.mm.compatible.util.b localb = this.dtz;
+      com.tencent.mm.compatible.util.b localb = this.fmh;
       if (localb != null) {
-        localb.apm();
+        localb.avz();
       }
-      this.dtC = false;
+      this.fmk = false;
     }
-    AppMethodBeat.o(187338);
+    AppMethodBeat.o(227497);
   }
   
-  public final void cU(boolean paramBoolean)
+  public final void dr(boolean paramBoolean)
   {
-    this.dtE = paramBoolean;
-    this.dtD = paramBoolean;
+    this.fmm = paramBoolean;
+    this.fml = paramBoolean;
   }
   
-  public final void cV(boolean paramBoolean)
+  public final void ds(boolean paramBoolean)
   {
-    AppMethodBeat.i(187332);
-    if (this.dtE == paramBoolean)
+    AppMethodBeat.i(227476);
+    if (this.fmm == paramBoolean)
     {
-      AppMethodBeat.o(187332);
+      AppMethodBeat.o(227476);
       return;
     }
-    if (this.dtF != null)
+    if (this.fmn != null)
     {
-      com.tencent.mm.modelvoice.d locald = this.dtF;
+      com.tencent.mm.modelvoice.d locald = this.fmn;
       if (locald == null) {
-        break label78;
+        break label81;
       }
       if (locald.isPlaying() == true)
       {
-        locald = this.dtF;
+        locald = this.fmn;
         if (locald != null) {
-          locald.cU(paramBoolean);
+          locald.dr(paramBoolean);
         }
-        jp(paramBoolean);
-        cU(paramBoolean);
+        kA(paramBoolean);
+        dr(paramBoolean);
       }
     }
-    AppMethodBeat.o(187332);
+    AppMethodBeat.o(227476);
     return;
-    label78:
-    AppMethodBeat.o(187332);
+    label81:
+    AppMethodBeat.o(227476);
   }
   
-  public final void cW(boolean paramBoolean)
+  public final void dt(boolean paramBoolean)
   {
-    AppMethodBeat.i(187334);
-    cdV();
+    AppMethodBeat.i(227483);
+    crg();
     if (!paramBoolean) {
-      agq("music");
+      anT("music");
     }
-    if (this.dtC)
+    if (this.fmk)
     {
-      com.tencent.mm.compatible.util.b localb = this.dtz;
+      com.tencent.mm.compatible.util.b localb = this.fmh;
       if (localb != null) {
-        localb.apm();
+        localb.avz();
       }
-      localb = this.dtz;
+      localb = this.fmh;
       if (localb != null) {
-        localb.b(this.dtG);
+        localb.b(this.fmo);
       }
-      this.dtz = null;
-      this.dtC = false;
+      this.fmh = null;
+      this.fmk = false;
     }
-    AppMethodBeat.o(187334);
+    AppMethodBeat.o(227483);
   }
   
-  public final boolean cX(boolean paramBoolean)
+  public final boolean du(boolean paramBoolean)
   {
-    AppMethodBeat.i(187336);
-    Object localObject = this.dtF;
+    AppMethodBeat.i(227493);
+    Object localObject = this.fmn;
     if (localObject != null)
     {
       if (((com.tencent.mm.modelvoice.d)localObject).isPlaying() != true) {
-        break label94;
+        break label96;
       }
-      localObject = this.dtF;
+      localObject = this.fmn;
       if (localObject == null) {
-        break label89;
+        break label91;
       }
-      paramBoolean = ((com.tencent.mm.modelvoice.d)localObject).da(paramBoolean);
+      paramBoolean = ((com.tencent.mm.modelvoice.d)localObject).dA(paramBoolean);
     }
     for (;;)
     {
-      localObject = com.tencent.mm.plugin.audio.c.a.oIh;
-      com.tencent.mm.plugin.audio.c.a.a.cea().cdV();
-      if (this.dtC)
+      localObject = com.tencent.mm.plugin.audio.c.a.rJX;
+      com.tencent.mm.plugin.audio.c.a.a.crn().crg();
+      if (this.fmk)
       {
-        localObject = this.dtz;
+        localObject = this.fmh;
         if (localObject != null) {
-          ((com.tencent.mm.compatible.util.b)localObject).apm();
+          ((com.tencent.mm.compatible.util.b)localObject).avz();
         }
-        this.dtC = false;
+        this.fmk = false;
       }
-      AppMethodBeat.o(187336);
+      AppMethodBeat.o(227493);
       return paramBoolean;
       paramBoolean = false;
       continue;
-      label89:
+      label91:
       paramBoolean = false;
       continue;
-      label94:
+      label96:
       paramBoolean = false;
     }
   }
   
-  public final void iY(int paramInt)
+  public final void ko(int paramInt)
   {
-    AppMethodBeat.i(187339);
-    super.iY(paramInt);
+    AppMethodBeat.i(227500);
+    super.ko(paramInt);
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(187339);
+      AppMethodBeat.o(227500);
       return;
-      cV(false);
-      AppMethodBeat.o(187339);
+      ds(false);
+      AppMethodBeat.o(227500);
       return;
-      cU(this.dtD);
+      dr(this.fml);
     }
   }
   
-  public final void x(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(187335);
-    p.h(paramString, "filepath");
-    com.tencent.mm.modelvoice.d locald = this.dtF;
-    if (locald == null) {
-      p.hyc();
-    }
-    if (!locald.c(paramString, this.dtE, paramInt))
-    {
-      Log.i("MicroMsg.SceneVoiceAudioManager", "start play error fileName[" + paramString + "], [" + this.dtE + ']');
-      agq("music");
-    }
-    AppMethodBeat.o(187335);
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "focusChange", "", "onChange"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "focusChange", "", "onChange"})
   static final class b
     implements b.a
   {
     b(a parama) {}
     
-    public final void iZ(int paramInt)
+    public final void kp(int paramInt)
     {
-      AppMethodBeat.i(187331);
+      AppMethodBeat.i(226396);
       Log.i("MicroMsg.SceneVoiceAudioManager", "on audio focus change: %s", new Object[] { Integer.valueOf(paramInt) });
-      a.a(this.dtJ).invoke(Integer.valueOf(paramInt));
-      AppMethodBeat.o(187331);
+      a.a(this.fmr).invoke(Integer.valueOf(paramInt));
+      AppMethodBeat.o(226396);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.audio.a
  * JD-Core Version:    0.7.0.1
  */

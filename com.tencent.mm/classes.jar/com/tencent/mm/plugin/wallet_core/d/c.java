@@ -1,7 +1,9 @@
 package com.tencent.mm.plugin.wallet_core.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wallet_core.model.BankcardScene;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.Iterator;
@@ -47,7 +49,7 @@ public final class c
     return false;
   }
   
-  public final boolean aeN(int paramInt)
+  public final boolean amA(int paramInt)
   {
     AppMethodBeat.i(70595);
     String str = "delete from WalletBankcardScene where scene=".concat(String.valueOf(paramInt));
@@ -56,15 +58,21 @@ public final class c
     return bool;
   }
   
-  public final boolean bnU()
+  public final boolean byd()
   {
     AppMethodBeat.i(70594);
-    boolean bool = this.db.execSQL("WalletBankcardScene", "delete from WalletBankcardScene");
+    int i = getCount();
+    int j = this.db.delete("WalletBankcardScene", "", new String[0]);
+    if (i != j)
+    {
+      Log.w("MicroMsg.BankcardScene", "count: %s, deleteCount: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+      h.IzE.el(1589, 6);
+    }
     AppMethodBeat.o(70594);
-    return bool;
+    return true;
   }
   
-  public final boolean ib(List<BankcardScene> paramList)
+  public final boolean iR(List<BankcardScene> paramList)
   {
     AppMethodBeat.i(70592);
     paramList = paramList.iterator();

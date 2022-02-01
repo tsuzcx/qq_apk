@@ -9,14 +9,17 @@ import android.view.View.OnTouchListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelvideo.j;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.l;
+import com.tencent.mm.modelvideo.n;
 
 public class SightDraftContainerView
   extends ListView
 {
-  private boolean DoG;
-  private a DoH;
-  b DoI;
+  private boolean Jul;
+  private a Jum;
+  b Jun;
   
   public SightDraftContainerView(Context paramContext)
   {
@@ -45,15 +48,15 @@ public class SightDraftContainerView
   private void init()
   {
     AppMethodBeat.i(28689);
-    setBackgroundColor(getResources().getColor(2131100042));
-    setSelector(2131101287);
-    int i = getResources().getDimensionPixelSize(2131165586);
-    int j = getResources().getDimensionPixelSize(2131165498);
+    setBackgroundColor(getResources().getColor(R.e.black));
+    setSelector(R.e.transparent);
+    int i = getResources().getDimensionPixelSize(R.f.SmallPadding);
+    int j = getResources().getDimensionPixelSize(R.f.LargePadding);
     TextView localTextView = new TextView(getContext());
-    localTextView.setText(2131765893);
-    localTextView.setTextSize(0, com.tencent.mm.cb.a.aG(getContext(), 2131165482));
+    localTextView.setText(R.l.sight_draft_tips);
+    localTextView.setTextSize(0, com.tencent.mm.ci.a.aY(getContext(), R.f.HintTextSize));
     localTextView.setGravity(17);
-    localTextView.setTextColor(getResources().getColor(2131100595));
+    localTextView.setTextColor(getResources().getColor(R.e.hint_text_color_dark_bg));
     localTextView.setTextSize(1, 11.0F);
     localTextView.setPadding(0, i, 0, j);
     addFooterView(localTextView);
@@ -63,11 +66,11 @@ public class SightDraftContainerView
       {
         AppMethodBeat.i(28685);
         paramAnonymousView = SightDraftContainerView.this;
-        if (paramAnonymousView.DoI != null)
+        if (paramAnonymousView.Jun != null)
         {
-          paramAnonymousView = paramAnonymousView.DoI;
+          paramAnonymousView = paramAnonymousView.Jun;
           paramAnonymousView.a(null);
-          paramAnonymousView.Dom.eVV();
+          paramAnonymousView.JtR.fIY();
         }
         AppMethodBeat.o(28685);
         return false;
@@ -76,53 +79,53 @@ public class SightDraftContainerView
     AppMethodBeat.o(28689);
   }
   
-  public final void eVW()
+  public final void fIZ()
   {
     AppMethodBeat.i(28690);
-    if (this.DoG)
+    if (this.Jul)
     {
-      this.DoI.Dot = 12;
-      this.DoI.a(b.d.Doz, false);
-      this.DoI.onNotifyChange(null, null);
+      this.Jun.JtY = 12;
+      this.Jun.a(b.d.Jue, false);
+      this.Jun.onNotifyChange(null, null);
       setSelection(0);
       AppMethodBeat.o(28690);
       return;
     }
-    this.DoG = true;
-    this.DoI = new b(getContext(), this.DoH);
-    this.DoI.Dot = 12;
-    setAdapter(this.DoI);
+    this.Jul = true;
+    this.Jun = new b(getContext(), this.Jum);
+    this.Jun.JtY = 12;
+    setAdapter(this.Jun);
     AppMethodBeat.o(28690);
   }
   
-  public j getLastDrafInfo()
+  public n getLastDrafInfo()
   {
-    b localb = this.DoI;
-    if (localb.Dox == null) {
+    b localb = this.Jun;
+    if (localb.Juc == null) {
       return null;
     }
-    return localb.Dox.DoE;
+    return localb.Juc.Juj;
   }
   
   public void setSightDraftCallback(a parama)
   {
-    this.DoH = parama;
-    if (this.DoI != null) {
-      this.DoI.Dor = parama;
+    this.Jum = parama;
+    if (this.Jun != null) {
+      this.Jun.JtW = parama;
     }
   }
   
   public void setTipsResId(int paramInt)
   {
-    if (this.DoI == null) {
+    if (this.Jun == null) {
       return;
     }
-    this.DoI.Dos = paramInt;
+    this.Jun.JtX = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.draft.ui.SightDraftContainerView
  * JD-Core Version:    0.7.0.1
  */

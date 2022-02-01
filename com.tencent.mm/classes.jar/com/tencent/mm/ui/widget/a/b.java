@@ -7,8 +7,6 @@ import android.content.res.Resources;
 import android.content.res.Resources.Theme;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout.d;
-import android.support.v7.app.e;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -20,14 +18,19 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
+import androidx.appcompat.app.e;
+import androidx.coordinatorlayout.widget.CoordinatorLayout.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cr.a.f;
+import com.tencent.mm.cr.a.g;
+import com.tencent.mm.cr.a.j;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.ax;
 
 public final class b
   extends e
 {
-  private FrameLayout DAU;
+  private FrameLayout JMG;
   private Context mContext;
   
   public b(Context paramContext)
@@ -37,10 +40,10 @@ public final class b
   
   private b(Context paramContext, byte paramByte)
   {
-    super(paramContext, 2131820868);
+    super(paramContext, a.j.CustomSheetStyle);
     AppMethodBeat.i(159284);
     this.mContext = paramContext;
-    gR();
+    bb();
     AppMethodBeat.o(159284);
   }
   
@@ -49,22 +52,22 @@ public final class b
     AppMethodBeat.i(159289);
     Object localObject1 = getWindow();
     Object localObject2;
-    label70:
+    label71:
     View localView;
     if (isLandscape())
     {
       ((Window)localObject1).setGravity(5);
-      ((Window)localObject1).setWindowAnimations(2131821287);
+      ((Window)localObject1).setWindowAnimations(a.j.RightToLeftAnimation);
       ((Window)localObject1).getDecorView().setPadding(0, 0, 0, 0);
       localObject2 = ((Window)localObject1).getAttributes();
       if (!isLandscape()) {
-        break label222;
+        break label227;
       }
       ((WindowManager.LayoutParams)localObject2).width = -2;
       ((WindowManager.LayoutParams)localObject2).height = -1;
       ((Window)localObject1).setAttributes((WindowManager.LayoutParams)localObject2);
-      localObject2 = (ViewGroup)LayoutInflater.from(this.mContext).inflate(2131495486, null);
-      localView = ((ViewGroup)localObject2).findViewById(2131309368);
+      localObject2 = (ViewGroup)LayoutInflater.from(this.mContext).inflate(a.g.menu_sheet_dialog, null);
+      localView = ((ViewGroup)localObject2).findViewById(a.f.touch_outside);
       localObject1 = paramView;
       if (paramInt != 0)
       {
@@ -74,28 +77,28 @@ public final class b
         }
       }
       if (!isLandscape()) {
-        break label238;
+        break label243;
       }
-      this.DAU = ((FrameLayout)((ViewGroup)localObject2).findViewById(2131304632));
-      label152:
-      hbi();
-      this.DAU.setVisibility(0);
+      this.JMG = ((FrameLayout)((ViewGroup)localObject2).findViewById(a.f.menu_sheet_right_container));
+      label156:
+      ico();
+      this.JMG.setVisibility(0);
       if (paramLayoutParams != null) {
-        break label255;
+        break label261;
       }
-      this.DAU.addView((View)localObject1);
+      this.JMG.addView((View)localObject1);
     }
     for (;;)
     {
-      if (ghl()) {
+      if (haG()) {
         localView.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(159283);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bm(paramAnonymousView);
-            a.b("com/tencent/mm/ui/widget/dialog/CustomSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            localb.bn(paramAnonymousView);
+            a.c("com/tencent/mm/ui/widget/dialog/CustomSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
             if (b.this.isShowing()) {
               b.this.cancel();
             }
@@ -107,17 +110,17 @@ public final class b
       AppMethodBeat.o(159289);
       return localObject2;
       ((Window)localObject1).setGravity(80);
-      ((Window)localObject1).setWindowAnimations(2131820792);
+      ((Window)localObject1).setWindowAnimations(a.j.BottomToTopAnimation);
       break;
-      label222:
+      label227:
       ((WindowManager.LayoutParams)localObject2).width = -1;
       ((WindowManager.LayoutParams)localObject2).height = -2;
-      break label70;
-      label238:
-      this.DAU = ((FrameLayout)((ViewGroup)localObject2).findViewById(2131304630));
-      break label152;
-      label255:
-      this.DAU.addView((View)localObject1, paramLayoutParams);
+      break label71;
+      label243:
+      this.JMG = ((FrameLayout)((ViewGroup)localObject2).findViewById(a.f.menu_sheet_bottom_container));
+      break label156;
+      label261:
+      this.JMG.addView((View)localObject1, paramLayoutParams);
     }
   }
   
@@ -130,7 +133,7 @@ public final class b
     return i;
   }
   
-  private boolean ghl()
+  private boolean haG()
   {
     AppMethodBeat.i(159290);
     if (Build.VERSION.SDK_INT < 11)
@@ -153,25 +156,25 @@ public final class b
     return false;
   }
   
-  private void hbi()
+  private void ico()
   {
-    AppMethodBeat.i(198215);
-    if ((au.aA(this.mContext)) && (Build.VERSION.SDK_INT < 30)) {}
-    for (int i = au.aD(this.mContext);; i = 0)
+    AppMethodBeat.i(252538);
+    if ((ax.av(this.mContext)) && (Build.VERSION.SDK_INT < 30)) {}
+    for (int i = ax.aB(this.mContext);; i = 0)
     {
       CoordinatorLayout.d locald;
       if (isLandscape())
       {
-        if (this.DAU != null)
+        if (this.JMG != null)
         {
-          locald = (CoordinatorLayout.d)this.DAU.getLayoutParams();
+          locald = (CoordinatorLayout.d)this.JMG.getLayoutParams();
           if (getRotation() == 1) {
             locald.setMargins(0, 0, i, 0);
           }
           for (;;)
           {
-            this.DAU.setLayoutParams(locald);
-            AppMethodBeat.o(198215);
+            this.JMG.setLayoutParams(locald);
+            AppMethodBeat.o(252538);
             return;
             if (getRotation() == 3) {
               locald.setMargins(i, 0, 0, 0);
@@ -179,13 +182,13 @@ public final class b
           }
         }
       }
-      else if (this.DAU != null)
+      else if (this.JMG != null)
       {
-        locald = (CoordinatorLayout.d)this.DAU.getLayoutParams();
+        locald = (CoordinatorLayout.d)this.JMG.getLayoutParams();
         locald.setMargins(0, 0, 0, i);
-        this.DAU.setLayoutParams(locald);
+        this.JMG.setLayoutParams(locald);
       }
-      AppMethodBeat.o(198215);
+      AppMethodBeat.o(252538);
       return;
     }
   }
@@ -204,10 +207,10 @@ public final class b
   
   public final void onAttachedToWindow()
   {
-    AppMethodBeat.i(198214);
+    AppMethodBeat.i(252534);
     super.onAttachedToWindow();
-    hbi();
-    AppMethodBeat.o(198214);
+    ico();
+    AppMethodBeat.o(252534);
   }
   
   public final void onCreate(Bundle paramBundle)

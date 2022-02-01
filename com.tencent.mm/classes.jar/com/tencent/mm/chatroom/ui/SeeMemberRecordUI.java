@@ -8,44 +8,60 @@ import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.ui.contact.t;
 import org.xwalk.core.Log;
 
 public class SeeMemberRecordUI
   extends SelectMemberUI
 {
+  private void KD(String paramString)
+  {
+    AppMethodBeat.i(188032);
+    hideVKB();
+    Intent localIntent = new Intent(this, SelectedMemberChattingRecordUI.class);
+    localIntent.putExtra("RoomInfo_Id", this.jaK);
+    localIntent.putExtra("room_member", paramString);
+    localIntent.putExtra("title", getString(a.i.jha));
+    paramString = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(this, paramString.aFh(), "com/tencent/mm/chatroom/ui/SeeMemberRecordUI", "doSeeMemberRecord", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramString.sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/chatroom/ui/SeeMemberRecordUI", "doSeeMemberRecord", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(188032);
+  }
+  
   protected final void a(View paramView, int paramInt, long paramLong)
   {
     AppMethodBeat.i(12823);
     super.a(paramView, paramInt, paramLong);
-    paramView = this.gAA.on(paramInt);
-    if (paramView == null)
+    if (getContentLV().getAdapter() == this.jkE)
     {
-      Log.e("MicroMsg.SeeMemberRecordUI", "item is null!");
+      paramView = this.jkE.qC(paramInt);
+      if (paramView == null)
+      {
+        Log.e("MicroMsg.SeeMemberRecordUI", "item is null!");
+        AppMethodBeat.o(12823);
+        return;
+      }
+      if (paramView.contact == null)
+      {
+        Log.e("MicroMsg.SeeMemberRecordUI", "contact is null!");
+        AppMethodBeat.o(12823);
+        return;
+      }
+      KD(paramView.contact.field_username);
       AppMethodBeat.o(12823);
       return;
     }
-    if (paramView.contact == null)
-    {
-      Log.e("MicroMsg.SeeMemberRecordUI", "contact is null!");
-      AppMethodBeat.o(12823);
-      return;
+    if (getContentLV().getAdapter() == this.jkD) {
+      KD(this.jkD.awM(paramInt).contact.field_username);
     }
-    paramView = paramView.contact.field_username;
-    hideVKB();
-    Intent localIntent = new Intent(this, SelectedMemberChattingRecordUI.class);
-    localIntent.putExtra("RoomInfo_Id", this.gwx);
-    localIntent.putExtra("room_member", paramView);
-    localIntent.putExtra("title", getString(2131765113));
-    paramView = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(this, paramView.axQ(), "com/tencent/mm/chatroom/ui/SeeMemberRecordUI", "doSeeMemberRecord", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)paramView.pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/chatroom/ui/SeeMemberRecordUI", "doSeeMemberRecord", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(12823);
   }
   
-  public final boolean anc()
+  public final boolean atd()
   {
     return true;
   }
@@ -57,7 +73,7 @@ public class SeeMemberRecordUI
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramBundle = TransitionInflater.from(this).inflateTransition(17760258);
-      paramBundle.excludeTarget(getWindow().getDecorView().findViewById(2131296366), true);
+      paramBundle.excludeTarget(getWindow().getDecorView().findViewById(a.e.action_bar_container), true);
       paramBundle.excludeTarget(16908335, true);
       getWindow().setEnterTransition(paramBundle);
     }
@@ -72,7 +88,7 @@ public class SeeMemberRecordUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.SeeMemberRecordUI
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ class FloatBallServiceProxy$SetFloatBallAlphaParcel
 {
   public static final Parcelable.Creator<SetFloatBallAlphaParcel> CREATOR;
   float alpha;
-  BallInfo oWE;
+  BallInfo rYE;
   
   static
   {
@@ -20,17 +20,11 @@ class FloatBallServiceProxy$SetFloatBallAlphaParcel
     AppMethodBeat.o(106181);
   }
   
-  public FloatBallServiceProxy$SetFloatBallAlphaParcel(float paramFloat, BallInfo paramBallInfo)
-  {
-    this.alpha = paramFloat;
-    this.oWE = paramBallInfo;
-  }
-  
   protected FloatBallServiceProxy$SetFloatBallAlphaParcel(Parcel paramParcel)
   {
     AppMethodBeat.i(106179);
     this.alpha = paramParcel.readFloat();
-    this.oWE = ((BallInfo)paramParcel.readParcelable(BallInfo.class.getClassLoader()));
+    this.rYE = ((BallInfo)paramParcel.readParcelable(BallInfo.class.getClassLoader()));
     AppMethodBeat.o(106179);
   }
   
@@ -43,13 +37,13 @@ class FloatBallServiceProxy$SetFloatBallAlphaParcel
   {
     AppMethodBeat.i(106180);
     paramParcel.writeFloat(this.alpha);
-    paramParcel.writeParcelable(this.oWE, paramInt);
+    paramParcel.writeParcelable(this.rYE, paramInt);
     AppMethodBeat.o(106180);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.service.FloatBallServiceProxy.SetFloatBallAlphaParcel
  * JD-Core Version:    0.7.0.1
  */

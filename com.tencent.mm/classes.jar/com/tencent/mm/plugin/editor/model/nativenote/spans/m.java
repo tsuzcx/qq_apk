@@ -17,8 +17,8 @@ public abstract class m<V, C extends h<V>>
   {
     int k = paramSpannable.getSpanStart(paramObject);
     int i = paramSpannable.getSpanEnd(paramObject);
-    int j = paramg.avh;
-    int m = paramg.Pc;
+    int j = paramg.tH;
+    int m = paramg.tI;
     int n = Math.max(k, j);
     int i1 = Math.min(i, m);
     if (n > i1) {}
@@ -31,16 +31,16 @@ public abstract class m<V, C extends h<V>>
       if (((k > j) && (i < m)) || ((j > k) && (m < i))) {
         return true;
       }
-      if (paramq != q.qTB) {
+      if (paramq != q.uvH) {
         break;
       }
     } while ((k != j) || (i != m) || (j != m));
     return true;
     k = paramSpannable.getSpanFlags(paramObject) & 0x33;
     if (i == j) {
-      return e(k, new int[] { 34, 18 });
+      return d(k, new int[] { 34, 18 });
     }
-    return e(k, new int[] { 17, 18 });
+    return d(k, new int[] { 17, 18 });
   }
   
   protected final ArrayList<Object> a(Spannable paramSpannable, g paramg, q paramq)
@@ -51,7 +51,7 @@ public abstract class m<V, C extends h<V>>
       return null;
     }
     localObject1 = (Class)localObject1[(localObject1.length - 1)];
-    localObject1 = paramSpannable.getSpans(paramg.avh, paramg.Pc, (Class)localObject1);
+    localObject1 = paramSpannable.getSpans(paramg.tH, paramg.tI, (Class)localObject1);
     int j = localObject1.length;
     int i = 0;
     while (i < j)
@@ -67,7 +67,7 @@ public abstract class m<V, C extends h<V>>
   
   protected final void a(Spannable paramSpannable, l paraml, n paramn)
   {
-    paramn.a(a(paramSpannable, paraml, q.qTB), paraml);
+    paramn.a(a(paramSpannable, paraml, q.uvH), paraml);
   }
   
   public abstract void a(WXRTEditText paramWXRTEditText, g paramg, V paramV);
@@ -75,10 +75,10 @@ public abstract class m<V, C extends h<V>>
   public final void a(WXRTEditText paramWXRTEditText, V paramV)
   {
     g localg = paramWXRTEditText.getParagraphsInSelection();
-    if ((paramWXRTEditText.qRq) && (paramWXRTEditText.getSelection().avh == localg.avh) && (localg.avh > 1))
+    if ((paramWXRTEditText.utw) && (paramWXRTEditText.getSelection().tH == localg.tH) && (localg.tH > 1))
     {
-      Object localObject1 = a(paramWXRTEditText.getText(), localg, q.qTC);
-      if ((!((ArrayList)localObject1).isEmpty()) && (paramWXRTEditText.getLayout().getPrimaryHorizontal(paramWXRTEditText.getSelection().avh) == f.cDE()))
+      Object localObject1 = a(paramWXRTEditText.getText(), localg, q.uvI);
+      if ((!((ArrayList)localObject1).isEmpty()) && (paramWXRTEditText.getLayout().getPrimaryHorizontal(paramWXRTEditText.getSelection().tH) == f.cSj()))
       {
         localObject1 = ((ArrayList)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())
@@ -86,7 +86,7 @@ public abstract class m<V, C extends h<V>>
           Object localObject2 = ((Iterator)localObject1).next();
           paramWXRTEditText.getText().removeSpan(localObject2);
         }
-        paramWXRTEditText.getText().insert(localg.avh - 1, "\n");
+        paramWXRTEditText.getText().insert(localg.tH - 1, "\n");
       }
     }
     a(paramWXRTEditText, localg, paramV);
@@ -100,7 +100,7 @@ public abstract class m<V, C extends h<V>>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.spans.m
  * JD-Core Version:    0.7.0.1
  */

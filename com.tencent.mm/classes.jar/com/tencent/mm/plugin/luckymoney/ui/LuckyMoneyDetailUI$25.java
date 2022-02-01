@@ -1,34 +1,41 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Dialog;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.luckymoney.model.af;
-import com.tencent.mm.plugin.luckymoney.model.q;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vending.g.d.a;
 
 final class LuckyMoneyDetailUI$25
-  implements View.OnClickListener
+  implements d.a
 {
-  LuckyMoneyDetailUI$25(LuckyMoneyDetailUI paramLuckyMoneyDetailUI, q paramq) {}
+  LuckyMoneyDetailUI$25(LuckyMoneyDetailUI paramLuckyMoneyDetailUI, Dialog paramDialog) {}
   
-  public final void onClick(View paramView)
+  public final void cm(Object paramObject)
   {
-    AppMethodBeat.i(213377);
-    b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyDetailUI$31", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    h.CyF.a(11701, new Object[] { Integer.valueOf(LuckyMoneyDetailUI.PS(this.zct.yVv)), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(3) });
-    af.a(this.zee, 1, false);
-    a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyDetailUI$31", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(213377);
+    AppMethodBeat.i(275029);
+    if (this.wJe != null) {
+      this.wJe.dismiss();
+    }
+    Log.i("MicroMsg.LuckyMoneyDetailUI", "fetch detail failed: %s", new Object[] { paramObject });
+    if (paramObject != null) {
+      if (!(paramObject instanceof String)) {
+        break label71;
+      }
+    }
+    label71:
+    for (paramObject = paramObject.toString();; paramObject = this.EIF.getString(a.i.wallet_lqt_network_error))
+    {
+      Toast.makeText(this.EIF.getContext(), paramObject, 1).show();
+      AppMethodBeat.o(275029);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyDetailUI.25
  * JD-Core Version:    0.7.0.1
  */

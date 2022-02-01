@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.appbrand.ui.autofill;
 
-import com.tencent.mm.protocal.protobuf.dyd;
-import com.tencent.mm.protocal.protobuf.hu;
-import com.tencent.mm.protocal.protobuf.hv;
+import com.tencent.mm.protocal.protobuf.eie;
+import com.tencent.mm.protocal.protobuf.hk;
+import com.tencent.mm.protocal.protobuf.hl;
 
 public abstract interface AppBrandIDCardUI$a
 {
-  public abstract void a(hu paramhu);
+  public abstract void a(hk paramhk);
   
-  public abstract void a(String paramString, hu paramhu);
+  public abstract void a(String paramString, hk paramhk);
   
-  public abstract void aft(String paramString);
+  public abstract void amV(String paramString);
   
-  public abstract void afu(String paramString);
+  public abstract void amW(String paramString);
   
-  public abstract void afv(String paramString);
+  public abstract void amX(String paramString);
   
-  public abstract void bXR();
+  public abstract void ckA();
   
-  public abstract void bXS();
+  public abstract void ckC();
   
-  public abstract void bXT();
+  public abstract void ckD();
   
-  public abstract dyd bXU();
+  public abstract void ckE();
   
-  public abstract hv bXV();
+  public abstract eie ckF();
   
-  public abstract void back();
+  public abstract hl ckG();
   
   public abstract void onSwipeBack();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.autofill.AppBrandIDCardUI.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(24470);
-    sNO = new a("PREFIX", 0);
-    sNP = new a("SUBDOMAIN", 1);
-    sNQ = new a("DOMAIN", 2);
-    sNR = new a[] { sNO, sNP, sNQ };
+    wtJ = new a("PREFIX", 0);
+    wtK = new a("SUBDOMAIN", 1);
+    wtL = new a("DOMAIN", 2);
+    wtM = new a[] { wtJ, wtK, wtL };
     AppMethodBeat.o(24470);
   }
   

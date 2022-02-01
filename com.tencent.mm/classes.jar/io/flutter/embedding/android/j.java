@@ -5,9 +5,9 @@ import android.view.View;
 
 public abstract interface j
 {
-  public abstract void bc(Runnable paramRunnable);
+  public abstract void bj(Runnable paramRunnable);
   
-  public abstract View lM(Context paramContext);
+  public abstract View mJ(Context paramContext);
 }
 
 

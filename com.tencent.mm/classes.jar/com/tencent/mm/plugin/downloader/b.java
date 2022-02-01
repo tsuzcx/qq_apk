@@ -1,25 +1,24 @@
 package com.tencent.mm.plugin.downloader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.api.bucket.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.thread.ThreadPool;
-import com.tencent.mm.storagebase.h;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class b
-  implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.d, com.tencent.mm.plugin.downloader.a.d
+  implements a, com.tencent.mm.kernel.api.bucket.d, com.tencent.mm.plugin.downloader.a.d
 {
-  private com.tencent.mm.plugin.downloader.g.b qFb;
-  private long qFc = 0L;
+  private com.tencent.mm.plugin.downloader.g.b uec;
+  private long ued = 0L;
   
-  public final com.tencent.mm.plugin.downloader.g.b aSU()
+  public final com.tencent.mm.plugin.downloader.g.b bbS()
   {
     AppMethodBeat.i(88817);
-    g.aAi();
-    g.aAf().azk();
-    com.tencent.mm.plugin.downloader.g.b localb = this.qFb;
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHE().aGH();
+    com.tencent.mm.plugin.downloader.g.b localb = this.uec;
     AppMethodBeat.o(88817);
     return localb;
   }
@@ -40,38 +39,38 @@ public final class b
     return localHashMap;
   }
   
-  public final void kR(boolean paramBoolean)
+  public final void md(boolean paramBoolean)
   {
     AppMethodBeat.i(88819);
     Log.i("MicroMsg.FileDownloaderService", "active: ".concat(String.valueOf(paramBoolean)));
-    if ((!paramBoolean) && ((System.currentTimeMillis() - this.qFc) / 1000L > 1800L))
+    if ((!paramBoolean) && ((System.currentTimeMillis() - this.ued) / 1000L > 1800L))
     {
       ThreadPool.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(88815);
-          b.cBl();
+          b.cPP();
           AppMethodBeat.o(88815);
         }
       }, "checkDownloadFile");
-      this.qFc = System.currentTimeMillis();
+      this.ued = System.currentTimeMillis();
     }
     AppMethodBeat.o(88819);
   }
   
-  public final void onDataBaseClosed(h paramh1, h paramh2) {}
+  public final void onDataBaseClosed(com.tencent.mm.storagebase.h paramh1, com.tencent.mm.storagebase.h paramh2) {}
   
-  public final void onDataBaseOpened(h paramh1, h paramh2)
+  public final void onDataBaseOpened(com.tencent.mm.storagebase.h paramh1, com.tencent.mm.storagebase.h paramh2)
   {
     AppMethodBeat.i(88816);
-    this.qFb = new com.tencent.mm.plugin.downloader.g.b(paramh1);
+    this.uec = new com.tencent.mm.plugin.downloader.g.b(paramh1);
     AppMethodBeat.o(88816);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,71 +1,34 @@
 package com.tencent.mm.plugin.appbrand.jsapi.ag;
 
-import com.tencent.luggage.xweb_ext.extendplugin.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.h;
-import com.tencent.mm.plugin.appbrand.h.d;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.permission.c;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/voip/JsApUpdateXWebCloudVoice;", "Lcom/tencent/mm/plugin/appbrand/jsapi/voip/AppBrandCloudVoiceJsApi;", "()V", "Companion", "plugin-appbrand-integration_release"})
 public final class b
+  extends a
 {
-  public static int abL(String paramString)
+  public static final int CTRL_INDEX = 935;
+  public static final String NAME = "updateXWebVoIPView";
+  public static final b.a pFh;
+  
+  static
   {
-    AppMethodBeat.i(215795);
-    paramString = h.Uc(paramString);
-    int i = 1;
-    if (paramString == h.d.kzV) {
-      i = 2;
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(215795);
-      return i;
-      if (paramString == h.d.kzQ) {
-        i = 3;
-      } else if (paramString == h.d.kzP) {
-        i = 4;
-      } else if (paramString == h.d.kzW) {
-        i = 5;
-      } else if (paramString == h.d.kzT) {
-        i = 6;
-      } else if (paramString == h.d.kzU) {
-        i = 7;
-      } else if (paramString == h.d.kzS) {
-        i = 8;
-      }
-    }
+    AppMethodBeat.i(284200);
+    pFh = new b.a((byte)0);
+    AppMethodBeat.o(284200);
   }
   
-  public static AppBrandRuntime y(a parama)
+  public b()
   {
-    AppMethodBeat.i(215796);
-    if ((parama instanceof com.tencent.mm.plugin.appbrand.h.b))
-    {
-      parama = parama.NN();
-      if ((parama instanceof ac))
-      {
-        parama = ((ac)parama).getRuntime();
-        AppMethodBeat.o(215796);
-        return parama;
-      }
-      if ((parama instanceof s))
-      {
-        parama = ((s)parama).getRuntime();
-        AppMethodBeat.o(215796);
-        return parama;
-      }
-      AppMethodBeat.o(215796);
-      return null;
-    }
-    AppMethodBeat.o(215796);
-    return null;
+    AppMethodBeat.i(284199);
+    c.amg("updateXWebVoIPView");
+    AppMethodBeat.o(284199);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ag.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,11 @@
 package com.tencent.mm.opensdk.modelbiz;
 
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.opensdk.modelbase.BaseReq;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+
 public class WXLaunchWxaRedirectingPage
 {
   public static final String URI_PATH = "launchWxaOpenApiRedirectingPage";
@@ -9,6 +15,99 @@ public class WXLaunchWxaRedirectingPage
     public static final String KEY_CALLBACK_ACTIVITY = "_launch_wx_wxa_redirecting_page_callback_activity";
     public static final String KEY_CALLBACK_MSG = "_launch_wx_wxa_redirecting_page_callback_msg";
     public static final String KEY_INVOKE_TICKET = "_launch_wx_wxa_redirecting_page_invoke_ticket";
+  }
+  
+  public static final class Req
+    extends BaseReq
+  {
+    private static final String TAG = "MicroMsg.SDK.WXLaunchWxaRedirectingPage.Req";
+    public String callbackActivity;
+    public String invokeTicket;
+    
+    public final boolean checkArgs()
+    {
+      AppMethodBeat.i(253641);
+      boolean bool = TextUtils.isEmpty(this.invokeTicket);
+      AppMethodBeat.o(253641);
+      return bool ^ true;
+    }
+    
+    public final void fromArray(String[] paramArrayOfString)
+    {
+      this.invokeTicket = paramArrayOfString[0];
+      this.callbackActivity = paramArrayOfString[1];
+    }
+    
+    public final void fromBundle(Bundle paramBundle)
+    {
+      AppMethodBeat.i(253642);
+      super.fromBundle(paramBundle);
+      this.invokeTicket = paramBundle.getString("_launch_wx_wxa_redirecting_page_invoke_ticket");
+      this.callbackActivity = paramBundle.getString("_launch_wx_wxa_redirecting_page_callback_activity");
+      AppMethodBeat.o(253642);
+    }
+    
+    public final int getType()
+    {
+      return 30;
+    }
+    
+    public final String[] toArray()
+    {
+      return new String[] { this.invokeTicket, this.callbackActivity };
+    }
+    
+    public final void toBundle(Bundle paramBundle)
+    {
+      AppMethodBeat.i(253644);
+      super.toBundle(paramBundle);
+      paramBundle.putString("_launch_wx_wxa_redirecting_page_invoke_ticket", this.invokeTicket);
+      paramBundle.putString("_launch_wx_wxa_redirecting_page_callback_activity", this.callbackActivity);
+      AppMethodBeat.o(253644);
+    }
+  }
+  
+  public static final class Resp
+    extends BaseResp
+  {
+    private static final String TAG = "MicroMsg.SDK.WXLaunchWxaFRedirectingPage.Resp";
+    public String callbackActivity;
+    public String invokeTicket;
+    
+    public Resp(Bundle paramBundle)
+    {
+      AppMethodBeat.i(255194);
+      fromBundle(paramBundle);
+      AppMethodBeat.o(255194);
+    }
+    
+    public final boolean checkArgs()
+    {
+      return true;
+    }
+    
+    public final void fromBundle(Bundle paramBundle)
+    {
+      AppMethodBeat.i(255199);
+      super.fromBundle(paramBundle);
+      this.invokeTicket = paramBundle.getString("_launch_wx_wxa_redirecting_page_invoke_ticket");
+      this.callbackActivity = paramBundle.getString("_launch_wx_wxa_redirecting_page_callback_activity");
+      AppMethodBeat.o(255199);
+    }
+    
+    public final int getType()
+    {
+      return 30;
+    }
+    
+    public final void toBundle(Bundle paramBundle)
+    {
+      AppMethodBeat.i(255196);
+      super.toBundle(paramBundle);
+      paramBundle.putString("_launch_wx_wxa_redirecting_page_invoke_ticket", this.invokeTicket);
+      paramBundle.putString("_launch_wx_wxa_redirecting_page_callback_activity", this.callbackActivity);
+      AppMethodBeat.o(255196);
+    }
   }
 }
 

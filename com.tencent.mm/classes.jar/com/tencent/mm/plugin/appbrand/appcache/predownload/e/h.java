@@ -8,42 +8,42 @@ import com.tencent.mm.sdk.storage.MAutoStorage;
 public class h
   extends MAutoStorage<g>
 {
-  public static final String[] iBh;
+  public static final String[] lqL;
   
   static
   {
     AppMethodBeat.i(44445);
-    iBh = new String[] { MAutoStorage.getCreateSQLs(g.iBg, "WxaAttrVersionServerNotifyRecord") };
+    lqL = new String[] { MAutoStorage.getCreateSQLs(g.lqK, "WxaAttrVersionServerNotifyRecord") };
     AppMethodBeat.o(44445);
   }
   
   public h(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, g.iBg, "WxaAttrVersionServerNotifyRecord", g.INDEX_CREATE);
+    super(paramISQLiteDatabase, g.lqK, "WxaAttrVersionServerNotifyRecord", g.INDEX_CREATE);
   }
   
-  public final g VG(String paramString)
+  public final g adr(String paramString)
   {
-    AppMethodBeat.i(226381);
+    AppMethodBeat.i(274481);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(226381);
+      AppMethodBeat.o(274481);
       return null;
     }
     g localg = new g();
     localg.field_username = paramString;
     if (get(localg, new String[0]))
     {
-      AppMethodBeat.o(226381);
+      AppMethodBeat.o(274481);
       return localg;
     }
-    AppMethodBeat.o(226381);
+    AppMethodBeat.o(274481);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.predownload.e.h
  * JD-Core Version:    0.7.0.1
  */

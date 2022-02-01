@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.textstatus.ui;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/textstatus/ui/StatusCardView$Companion;", "", "()V", "TAG", "", "plugin-textstatus_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/ui/MoreTabCardView$Companion;", "", "()V", "TAG", "", "plugin-textstatus_release"})
 public final class f$a {}
 
 

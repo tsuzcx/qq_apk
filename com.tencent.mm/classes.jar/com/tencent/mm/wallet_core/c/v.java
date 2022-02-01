@@ -1,62 +1,62 @@
 package com.tencent.mm.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.epu;
-import com.tencent.mm.protocal.protobuf.epv;
+import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.faf;
+import com.tencent.mm.protocal.protobuf.fag;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class v
   extends w
 {
-  public int Irs;
+  public int Pkb;
   private i callback;
   public int errCode;
-  public String rcD;
-  public String rcF;
   private final d rr;
+  public String uFI;
+  public String uFK;
   
   public v(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
     AppMethodBeat.i(72800);
-    this.rcD = null;
-    this.Irs = 0;
+    this.uFI = null;
+    this.Pkb = 0;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new epu();
-    ((d.a)localObject).iLO = new epv();
+    ((d.a)localObject).lBU = new faf();
+    ((d.a)localObject).lBV = new fag();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/verifypurchase";
     ((d.a)localObject).funcId = 414;
-    ((d.a)localObject).iLP = 215;
+    ((d.a)localObject).lBW = 215;
     ((d.a)localObject).respCmdId = 1000000215;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (epu)this.rr.iLK.iLR;
-    this.rcD = paramString1;
-    ((epu)localObject).ProductID = paramString1;
-    ((epu)localObject).Nnp = paramInt1;
-    ((epu)localObject).MJB = paramInt3;
-    ((epu)localObject).APa = paramInt2;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (faf)d.b.b(this.rr.lBR);
+    this.uFI = paramString1;
+    ((faf)localObject).ProductID = paramString1;
+    ((faf)localObject).UAg = paramInt1;
+    ((faf)localObject).TVq = paramInt3;
+    ((faf)localObject).GIo = paramInt2;
     if (!Util.isNullOrNil(paramString6))
     {
-      ((epu)localObject).MJz = paramString6;
-      ((epu)localObject).MJA = paramString5;
+      ((faf)localObject).TVo = paramString6;
+      ((faf)localObject).TVp = paramString5;
     }
-    ((epu)localObject).MJC = paramString2;
-    ((epu)localObject).Nnr = paramString4;
+    ((faf)localObject).TVr = paramString2;
+    ((faf)localObject).UAi = paramString4;
     if (paramString3 != null) {
       paramString1 = paramString3.getBytes();
     }
-    for (((epu)localObject).Nno = new SKBuiltinBuffer_t().setBuffer(paramString1);; ((epu)localObject).Nno = new SKBuiltinBuffer_t())
+    for (((faf)localObject).UAf = new eae().dc(paramString1);; ((faf)localObject).UAf = new eae())
     {
-      ((epu)localObject).Nnq = ((int)Util.nowSecond());
-      Log.i("MicroMsg.NetSceneVerifyPurchase", "productId:" + this.rcD + ",verifyType:" + paramInt1 + ",palyType:" + paramInt2 + ",payload:" + paramString2 + ",purchaseData:" + paramString3 + ",dataSignature:" + paramString4);
+      ((faf)localObject).UAh = ((int)Util.nowSecond());
+      Log.i("MicroMsg.NetSceneVerifyPurchase", "productId:" + this.uFI + ",verifyType:" + paramInt1 + ",palyType:" + paramInt2 + ",payload:" + paramString2 + ",purchaseData:" + paramString3 + ",dataSignature:" + paramString4);
       AppMethodBeat.o(72800);
       return;
     }
@@ -88,13 +88,13 @@ public final class v
       AppMethodBeat.o(72801);
       return;
     }
-    params = (epv)((d)params).iLL.iLR;
+    params = (fag)d.c.b(((d)params).lBS);
     if (params.BaseResponse != null)
     {
-      this.Irs = params.Nnt;
-      Log.d("MicroMsg.NetSceneVerifyPurchase", " Get Series ID is " + params.SeriesID);
-      Log.d("MicroMsg.NetSceneVerifyPurchase", " Get Biz Type is " + params.Nns);
-      this.rcF = params.SeriesID;
+      this.Pkb = params.UAk;
+      Log.d("MicroMsg.NetSceneVerifyPurchase", " Get Series ID is " + params.SvE);
+      Log.d("MicroMsg.NetSceneVerifyPurchase", " Get Biz Type is " + params.UAj);
+      this.uFK = params.SvE;
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(72801);

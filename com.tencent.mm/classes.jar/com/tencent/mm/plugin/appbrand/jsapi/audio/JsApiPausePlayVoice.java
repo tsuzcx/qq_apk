@@ -4,16 +4,16 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.c.b;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 public final class JsApiPausePlayVoice
-  extends d<s>
+  extends c<v>
 {
   public static final int CTRL_INDEX = 34;
   public static final String NAME = "pauseVoice";
-  private PausePlayVoice lEG;
+  private PausePlayVoice oAh;
   
   static class PausePlayVoice
     extends MainProcessTask
@@ -27,7 +27,7 @@ public final class JsApiPausePlayVoice
       AppMethodBeat.o(45948);
     }
     
-    public final void bjj()
+    public final void RW()
     {
       AppMethodBeat.i(45947);
       MMHandlerThread.postToMainThread(new Runnable()
@@ -35,7 +35,7 @@ public final class JsApiPausePlayVoice
         public final void run()
         {
           AppMethodBeat.i(45945);
-          b localb = b.lbt;
+          b localb = b.nVC;
           b.pause();
           AppMethodBeat.o(45945);
         }
@@ -46,7 +46,7 @@ public final class JsApiPausePlayVoice
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.JsApiPausePlayVoice
  * JD-Core Version:    0.7.0.1
  */

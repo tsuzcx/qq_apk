@@ -3,11 +3,13 @@ package com.tencent.mm.plugin.game.media.background;
 import android.database.Cursor;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.game.api.d;
 import com.tencent.mm.plugin.game.api.f;
+import com.tencent.mm.plugin.game.media.g;
 import com.tencent.mm.plugin.recordvideo.background.c;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
-import com.tencent.mm.protocal.protobuf.ald;
+import com.tencent.mm.protocal.protobuf.ame;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.b.p;
 
@@ -23,30 +25,30 @@ public final class b
       AppMethodBeat.o(41213);
       return;
     }
-    Object localObject = com.tencent.mm.plugin.recordvideo.background.e.BKp;
-    p.h(paramString, "taskId");
-    localObject = com.tencent.mm.plugin.recordvideo.background.e.aLf(paramString);
+    Object localObject = com.tencent.mm.plugin.recordvideo.background.e.HGz;
+    p.k(paramString, "taskId");
+    localObject = com.tencent.mm.plugin.recordvideo.background.e.aVH(paramString);
     if (localObject == null) {}
-    for (localObject = new Bundle(); ((Bundle)localObject).getInt("key_game_haowan_flag", 0) != 10; localObject = com.tencent.mm.plugin.recordvideo.background.e.aLl((String)localObject))
+    for (localObject = new Bundle(); ((Bundle)localObject).getInt("key_game_haowan_flag", 0) != 10; localObject = com.tencent.mm.plugin.recordvideo.background.e.aVN((String)localObject))
     {
       Log.i("MicroMsg.Haowan.VideoMixCallback", "not game haowan task");
       AppMethodBeat.o(41213);
       return;
       localObject = ((c)localObject).field_userData;
-      p.g(localObject, "videoEditData.field_userData");
+      p.j(localObject, "videoEditData.field_userData");
     }
     a.a(paramCaptureVideoNormalModel, (Bundle)localObject);
     if ((paramBoolean) && (paramCaptureVideoNormalModel != null))
     {
-      localObject = com.tencent.mm.plugin.recordvideo.background.e.BKp;
-      localObject = com.tencent.mm.plugin.recordvideo.background.e.aLk(paramString);
+      localObject = com.tencent.mm.plugin.recordvideo.background.e.HGz;
+      localObject = com.tencent.mm.plugin.recordvideo.background.e.aVM(paramString);
       if (localObject != null)
       {
-        a.a(((ald)localObject).BOA, paramCaptureVideoNormalModel);
-        a.b(((ald)localObject).Lue, paramCaptureVideoNormalModel);
+        a.a(((ame)localObject).HLg, paramCaptureVideoNormalModel);
+        a.b(((ame)localObject).SwC, paramCaptureVideoNormalModel);
       }
     }
-    paramCaptureVideoNormalModel = ((f)com.tencent.mm.kernel.g.af(f.class)).dSN();
+    paramCaptureVideoNormalModel = ((f)h.ae(f.class)).evr();
     paramString = String.format("select * from %s where %s=\"%s\"", new Object[] { "GameHaowanPublishEdition", "bgMixTaskId", paramString });
     Log.i("MicroMsg.Haowan.GameHaowanPublishStorage", "queryTaskByBgMixId, sql : %s", new Object[] { paramString });
     paramCaptureVideoNormalModel = paramCaptureVideoNormalModel.rawQuery(paramString, new String[0]);
@@ -72,25 +74,25 @@ public final class b
       AppMethodBeat.o(41213);
       return;
     }
-    ((d)com.tencent.mm.kernel.g.af(d.class)).azm(paramString.field_taskId);
+    ((d)h.ae(d.class)).aIM(paramString.field_taskId);
     AppMethodBeat.o(41213);
   }
   
-  public final void aAd(String paramString)
+  public final void aJO(String paramString)
   {
     AppMethodBeat.i(41210);
     Log.i("MicroMsg.Haowan.VideoMixCallback", "onInit, taskId:%s", new Object[] { paramString });
     AppMethodBeat.o(41210);
   }
   
-  public final void aAe(String paramString)
+  public final void aJP(String paramString)
   {
     AppMethodBeat.i(41212);
     Log.i("MicroMsg.Haowan.VideoMixCallback", "onWait, taskId:%s", new Object[] { paramString });
     AppMethodBeat.o(41212);
   }
   
-  public final void eh(String paramString, int paramInt)
+  public final void eF(String paramString, int paramInt)
   {
     AppMethodBeat.i(41211);
     Log.i("MicroMsg.Haowan.VideoMixCallback", "onRun, taskId:%s, runNum:%d", new Object[] { paramString, Integer.valueOf(paramInt) });
@@ -99,7 +101,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.background.b
  * JD-Core Version:    0.7.0.1
  */

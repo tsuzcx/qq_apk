@@ -1,6 +1,6 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.a.a.e;
+import com.google.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.b.a.a.a.a;
 import com.tencent.pb.common.b.a.a.a.z;
@@ -10,9 +10,9 @@ import com.tencent.wecall.talkroom.model.c;
 public final class b
   extends d
 {
-  public long HgX;
-  public String xOr;
-  public int yvK;
+  public String CSB;
+  public int DVO;
+  public long NXM;
   
   public b(String paramString, int paramInt, long paramLong, String[] paramArrayOfString)
   {
@@ -22,15 +22,15 @@ public final class b
     try
     {
       locala.groupId = paramString;
-      this.xOr = paramString;
-      locala.GXO = paramInt;
-      this.yvK = paramInt;
-      locala.GXP = paramLong;
-      this.HgX = paramLong;
-      locala.RDn = paramArrayOfString;
-      locala.GXO = paramInt;
-      this.mNetType = 3;
-      this.RCJ = c.hqY().brj(paramString);
+      this.CSB = paramString;
+      locala.NOc = paramInt;
+      this.DVO = paramInt;
+      locala.NOd = paramLong;
+      this.NXM = paramLong;
+      locala.ZeP = paramArrayOfString;
+      locala.NOc = paramInt;
+      aAc(3);
+      aAd(c.iuI().bEi(paramString));
       c(145, locala);
       AppMethodBeat.o(62533);
       return;
@@ -44,7 +44,7 @@ public final class b
     }
   }
   
-  public final Object cO(byte[] paramArrayOfByte)
+  public final Object dn(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62534);
     if (paramArrayOfByte != null) {}
@@ -71,7 +71,7 @@ public final class b
     return 204;
   }
   
-  public final String hiV()
+  public final String ikF()
   {
     return "CsCmd.Cmd_V_CSAddVoiceGroupMemberReq";
   }

@@ -51,15 +51,58 @@ public final class m
     AppMethodBeat.o(93171);
   }
   
-  public final int capacity()
+  public final void fs(int paramInt)
   {
-    if (this.data == null) {
-      return 0;
+    AppMethodBeat.i(93167);
+    if (vh() < paramInt) {}
+    for (byte[] arrayOfByte = new byte[paramInt];; arrayOfByte = this.data)
+    {
+      n(arrayOfByte, paramInt);
+      AppMethodBeat.o(93167);
+      return;
     }
-    return this.data.length;
   }
   
-  public final long dE()
+  public final void ft(int paramInt)
+  {
+    AppMethodBeat.i(93168);
+    if ((paramInt >= 0) && (paramInt <= this.data.length)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a.checkArgument(bool);
+      this.limit = paramInt;
+      AppMethodBeat.o(93168);
+      return;
+    }
+  }
+  
+  public final void fu(int paramInt)
+  {
+    AppMethodBeat.i(93170);
+    setPosition(this.position + paramInt);
+    AppMethodBeat.o(93170);
+  }
+  
+  public final String fv(int paramInt)
+  {
+    AppMethodBeat.i(93179);
+    if (paramInt == 0)
+    {
+      AppMethodBeat.o(93179);
+      return "";
+    }
+    int i = this.position + paramInt - 1;
+    if ((i < this.limit) && (this.data[i] == 0)) {}
+    for (i = paramInt - 1;; i = paramInt)
+    {
+      String str = new String(this.data, this.position, i);
+      this.position += paramInt;
+      AppMethodBeat.o(93179);
+      return str;
+    }
+  }
+  
+  public final long ii()
   {
     byte[] arrayOfByte = this.data;
     int i = this.position;
@@ -77,45 +120,6 @@ public final class m
     i = this.position;
     this.position = (i + 1);
     return (l1 & 0xFF) << 24 | (l2 & 0xFF) << 16 | (l3 & 0xFF) << 8 | arrayOfByte[i] & 0xFF;
-  }
-  
-  public final void eY(int paramInt)
-  {
-    AppMethodBeat.i(93168);
-    if ((paramInt >= 0) && (paramInt <= this.data.length)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a.checkArgument(bool);
-      this.limit = paramInt;
-      AppMethodBeat.o(93168);
-      return;
-    }
-  }
-  
-  public final void eZ(int paramInt)
-  {
-    AppMethodBeat.i(93170);
-    setPosition(this.position + paramInt);
-    AppMethodBeat.o(93170);
-  }
-  
-  public final String fa(int paramInt)
-  {
-    AppMethodBeat.i(93179);
-    if (paramInt == 0)
-    {
-      AppMethodBeat.o(93179);
-      return "";
-    }
-    int i = this.position + paramInt - 1;
-    if ((i < this.limit) && (this.data[i] == 0)) {}
-    for (i = paramInt - 1;; i = paramInt)
-    {
-      String str = new String(this.data, this.position, i);
-      this.position += paramInt;
-      AppMethodBeat.o(93179);
-      return str;
-    }
   }
   
   public final void n(byte[] paramArrayOfByte, int paramInt)
@@ -156,13 +160,13 @@ public final class m
   public final String readLine()
   {
     AppMethodBeat.i(93181);
-    if (xd() == 0)
+    if (vg() == 0)
     {
       AppMethodBeat.o(93181);
       return null;
     }
     int i = this.position;
-    while ((i < this.limit) && (!x.fd(this.data[i]))) {
+    while ((i < this.limit) && (!x.fy(this.data[i]))) {
       i += 1;
     }
     if ((i - this.position >= 3) && (this.data[this.position] == -17) && (this.data[(this.position + 1)] == -69) && (this.data[(this.position + 2)] == -65)) {
@@ -261,18 +265,6 @@ public final class m
     this.limit = 0;
   }
   
-  public final void reset(int paramInt)
-  {
-    AppMethodBeat.i(93167);
-    if (capacity() < paramInt) {}
-    for (byte[] arrayOfByte = new byte[paramInt];; arrayOfByte = this.data)
-    {
-      n(arrayOfByte, paramInt);
-      AppMethodBeat.o(93167);
-      return;
-    }
-  }
-  
   public final void setPosition(int paramInt)
   {
     boolean bool = true;
@@ -291,12 +283,20 @@ public final class m
     }
   }
   
-  public final int xd()
+  public final int vg()
   {
     return this.limit - this.position;
   }
   
-  public final int xe()
+  public final int vh()
+  {
+    if (this.data == null) {
+      return 0;
+    }
+    return this.data.length;
+  }
+  
+  public final int vi()
   {
     byte[] arrayOfByte = this.data;
     int i = this.position;
@@ -308,7 +308,7 @@ public final class m
     return i & 0xFF | (arrayOfByte[j] & 0xFF) << 8;
   }
   
-  public final int xf()
+  public final int vj()
   {
     byte[] arrayOfByte = this.data;
     int i = this.position;
@@ -324,7 +324,7 @@ public final class m
     return (i & 0xFF) << 16 | (j & 0xFF) << 8 | arrayOfByte[k] & 0xFF;
   }
   
-  public final long xg()
+  public final long vk()
   {
     byte[] arrayOfByte = this.data;
     int i = this.position;
@@ -344,7 +344,7 @@ public final class m
     return l1 & 0xFF | (l2 & 0xFF) << 8 | (l3 & 0xFF) << 16 | (arrayOfByte[i] & 0xFF) << 24;
   }
   
-  public final int xh()
+  public final int vl()
   {
     byte[] arrayOfByte = this.data;
     int i = this.position;
@@ -364,7 +364,7 @@ public final class m
     return i & 0xFF | (j & 0xFF) << 8 | (k & 0xFF) << 16 | (arrayOfByte[m] & 0xFF) << 24;
   }
   
-  public final long xi()
+  public final long vm()
   {
     byte[] arrayOfByte = this.data;
     int i = this.position;
@@ -400,7 +400,7 @@ public final class m
     return l1 & 0xFF | (l2 & 0xFF) << 8 | (l3 & 0xFF) << 16 | (l4 & 0xFF) << 24 | (l5 & 0xFF) << 32 | (l6 & 0xFF) << 40 | (l7 & 0xFF) << 48 | (arrayOfByte[i] & 0xFF) << 56;
   }
   
-  public final int xj()
+  public final int vn()
   {
     AppMethodBeat.i(93173);
     int i = readUnsignedByte();
@@ -411,7 +411,7 @@ public final class m
     return i << 21 | j << 14 | k << 7 | m;
   }
   
-  public final int xk()
+  public final int vo()
   {
     AppMethodBeat.i(93174);
     int i = readInt();
@@ -425,10 +425,10 @@ public final class m
     return i;
   }
   
-  public final int xl()
+  public final int vp()
   {
     AppMethodBeat.i(93175);
-    int i = xh();
+    int i = vl();
     if (i < 0)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("Top bit not zero: ".concat(String.valueOf(i)));
@@ -439,7 +439,7 @@ public final class m
     return i;
   }
   
-  public final long xm()
+  public final long vq()
   {
     AppMethodBeat.i(93176);
     long l = readLong();
@@ -453,10 +453,10 @@ public final class m
     return l;
   }
   
-  public final String xn()
+  public final String vr()
   {
     AppMethodBeat.i(93180);
-    if (xd() == 0)
+    if (vg() == 0)
     {
       AppMethodBeat.o(93180);
       return null;
@@ -476,7 +476,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.i.m
  * JD-Core Version:    0.7.0.1
  */

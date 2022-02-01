@@ -3,41 +3,44 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bep
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String LOr;
+  public String finderUsername;
+  public int opType;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152994);
+    AppMethodBeat.i(205376);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.LOr != null) {
-        paramVarArgs.e(1, this.LOr);
+      if (this.finderUsername != null) {
+        paramVarArgs.f(1, this.finderUsername);
       }
-      AppMethodBeat.o(152994);
+      paramVarArgs.aY(2, this.opType);
+      AppMethodBeat.o(205376);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.LOr == null) {
-        break label213;
+      if (this.finderUsername == null) {
+        break label258;
       }
     }
-    label213:
-    for (paramInt = g.a.a.b.b.a.f(1, this.LOr) + 0;; paramInt = 0)
+    label258:
+    for (paramInt = g.a.a.b.b.a.g(1, this.finderUsername) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(152994);
-      return paramInt;
+      int i = g.a.a.b.b.a.bM(2, this.opType);
+      AppMethodBeat.o(205376);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(152994);
+        AppMethodBeat.o(205376);
         return 0;
       }
       if (paramInt == 3)
@@ -47,21 +50,25 @@ public final class bep
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(152994);
+          AppMethodBeat.o(205376);
           return -1;
+        case 1: 
+          localbep.finderUsername = locala.abFh.readString();
+          AppMethodBeat.o(205376);
+          return 0;
         }
-        localbep.LOr = locala.UbS.readString();
-        AppMethodBeat.o(152994);
+        localbep.opType = locala.abFh.AK();
+        AppMethodBeat.o(205376);
         return 0;
       }
-      AppMethodBeat.o(152994);
+      AppMethodBeat.o(205376);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bep
  * JD-Core Version:    0.7.0.1
  */

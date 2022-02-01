@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <input-method android:icon="@raw/hld_icon" android:settingsActivity="com.tencent.mm.ui.HldContactUI"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <subtype android:icon="@raw/hld_icon" android:imeSubtypeLocale="zh_CN" android:imeSubtypeMode="keyboard" />
-</input-method>
+  xmlns:android="http://schemas.android.com/apk/res/android" />

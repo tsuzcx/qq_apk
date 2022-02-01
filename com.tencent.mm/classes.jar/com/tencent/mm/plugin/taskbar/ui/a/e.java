@@ -4,134 +4,134 @@ import android.content.Context;
 import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/taskbar/ui/dynamicbackground/DynamicBgServiceImpl;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "()V", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "", "isInitCrash", "loadDynamicBgLibrary", "", "markDrawEndPoint", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "setEnableNativeDynamicBackground", "enable", "willCrash", "Companion", "plugin-taskbar_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/taskbar/ui/dynamicbackground/DynamicBgServiceImpl;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "()V", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "", "isInitCrash", "loadDynamicBgLibrary", "", "markDrawEndPoint", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "setEnableNativeDynamicBackground", "enable", "willCrash", "Companion", "plugin-taskbar_release"})
 public final class e
   implements com.tencent.mm.dynamicbackground.model.c
 {
-  public static final e.a FVf;
+  public static final e.a MqA;
   
   static
   {
-    AppMethodBeat.i(238491);
-    FVf = new e.a((byte)0);
-    AppMethodBeat.o(238491);
+    AppMethodBeat.i(215638);
+    MqA = new e.a((byte)0);
+    AppMethodBeat.o(215638);
   }
   
-  public final boolean atB()
+  public final boolean aAA()
   {
-    AppMethodBeat.i(238481);
-    boolean bool = com.tencent.mm.plugin.taskbar.e.atB();
-    AppMethodBeat.o(238481);
+    AppMethodBeat.i(215628);
+    boolean bool = c.aAA();
+    AppMethodBeat.o(215628);
     return bool;
   }
   
-  public final void atC()
+  public final boolean aAB()
   {
-    AppMethodBeat.i(238489);
-    com.tencent.mm.plugin.taskbar.e.wj(false);
-    AppMethodBeat.o(238489);
+    AppMethodBeat.i(215633);
+    boolean bool = c.aAB();
+    AppMethodBeat.o(215633);
+    return bool;
   }
   
-  public final void atD()
+  public final void aAC()
   {
-    AppMethodBeat.i(238480);
+    AppMethodBeat.i(215630);
+    c.aAC();
+    AppMethodBeat.o(215630);
+  }
+  
+  public final void aAD()
+  {
+    AppMethodBeat.i(215629);
+    c.aAD();
+    AppMethodBeat.o(215629);
+  }
+  
+  public final float aAE()
+  {
+    AppMethodBeat.i(215625);
+    a locala = a.Mqu;
+    float f = a.gjW();
+    AppMethodBeat.o(215625);
+    return f;
+  }
+  
+  public final boolean aAt()
+  {
+    AppMethodBeat.i(215627);
+    boolean bool = com.tencent.mm.plugin.taskbar.e.aAt();
+    AppMethodBeat.o(215627);
+    return bool;
+  }
+  
+  public final void aAu()
+  {
+    AppMethodBeat.i(215636);
+    com.tencent.mm.plugin.taskbar.e.zP(false);
+    AppMethodBeat.o(215636);
+  }
+  
+  public final void aAv()
+  {
+    AppMethodBeat.i(215626);
     Log.i("MicroMsg.DynamicBgServiceImpl", "alvinluo loadDynamicBgLibrary");
-    if (com.tencent.mm.plugin.taskbar.e.atB()) {
-      c.fve();
+    if (com.tencent.mm.plugin.taskbar.e.aAt()) {
+      c.gkc();
     }
     try
     {
       System.loadLibrary("dynamicBg");
-      AppMethodBeat.o(238480);
+      AppMethodBeat.o(215626);
       return;
     }
     catch (Throwable localThrowable)
     {
       Log.printErrStackTrace("MicroMsg.DynamicBgServiceImpl", localThrowable, "alvinluo DynamicBackgroundNative exception", new Object[0]);
-      c.fvd();
-      AppMethodBeat.o(238480);
+      c.gkb();
+      AppMethodBeat.o(215626);
     }
   }
   
-  public final boolean atE()
+  public final boolean aAw()
   {
-    AppMethodBeat.i(238490);
-    boolean bool = c.fvg();
-    AppMethodBeat.o(238490);
+    AppMethodBeat.i(215637);
+    boolean bool = c.gke();
+    AppMethodBeat.o(215637);
     return bool;
   }
   
-  public final void atF()
+  public final void aAx()
   {
-    AppMethodBeat.i(238485);
-    c.atF();
-    AppMethodBeat.o(238485);
+    AppMethodBeat.i(215632);
+    c.aAx();
+    AppMethodBeat.o(215632);
   }
   
-  public final void atG()
+  public final void aAy()
   {
-    AppMethodBeat.i(238487);
-    c.fvd();
-    AppMethodBeat.o(238487);
+    AppMethodBeat.i(215634);
+    c.gkb();
+    AppMethodBeat.o(215634);
   }
   
-  public final void atH()
+  public final void aAz()
   {
-    AppMethodBeat.i(238488);
-    c.fvf();
-    AppMethodBeat.o(238488);
+    AppMethodBeat.i(215635);
+    c.gkd();
+    AppMethodBeat.o(215635);
   }
   
-  public final boolean atI()
+  public final Point au(Context paramContext)
   {
-    AppMethodBeat.i(238482);
-    boolean bool = c.atI();
-    AppMethodBeat.o(238482);
-    return bool;
-  }
-  
-  public final boolean atJ()
-  {
-    AppMethodBeat.i(238486);
-    boolean bool = c.atJ();
-    AppMethodBeat.o(238486);
-    return bool;
-  }
-  
-  public final void atK()
-  {
-    AppMethodBeat.i(238484);
-    c.atK();
-    AppMethodBeat.o(238484);
-  }
-  
-  public final void atL()
-  {
-    AppMethodBeat.i(238483);
-    c.atL();
-    AppMethodBeat.o(238483);
-  }
-  
-  public final float atM()
-  {
-    AppMethodBeat.i(238479);
-    a locala = a.FUZ;
-    float f = a.fuY();
-    AppMethodBeat.o(238479);
-    return f;
-  }
-  
-  public final Point az(Context paramContext)
-  {
-    AppMethodBeat.i(238478);
-    p.h(paramContext, "context");
-    paramContext = ao.az(paramContext);
-    p.g(paramContext, "UIUtils.getDisplayRealSize(context)");
-    AppMethodBeat.o(238478);
+    AppMethodBeat.i(215624);
+    p.k(paramContext, "context");
+    paramContext = ar.au(paramContext);
+    p.j(paramContext, "UIUtils.getDisplayRealSize(context)");
+    AppMethodBeat.o(215624);
     return paramContext;
   }
 }

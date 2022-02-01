@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$a
 {
-  Object[] SYh;
+  Object[] aaAT;
   int size;
   
   public final void add(Object paramObject)
   {
     AppMethodBeat.i(90427);
     int i = this.size;
-    Object localObject = this.SYh;
+    Object localObject = this.aaAT;
     if (localObject == null)
     {
       localObject = new Object[16];
-      this.SYh = ((Object[])localObject);
+      this.aaAT = ((Object[])localObject);
     }
     for (;;)
     {
@@ -27,7 +27,7 @@ final class b$a
       {
         Object[] arrayOfObject = new Object[(i >> 2) + i];
         System.arraycopy(localObject, 0, arrayOfObject, 0, i);
-        this.SYh = arrayOfObject;
+        this.aaAT = arrayOfObject;
         localObject = arrayOfObject;
       }
     }
@@ -35,7 +35,7 @@ final class b$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     rx.c.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,22 @@
 package com.tencent.mm.plugin.appbrand.backgroundfetch;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.c;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.cm;
 import com.tencent.mm.plugin.appbrand.ac.m.a;
-import com.tencent.mm.plugin.appbrand.app.n;
 import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
 import com.tencent.mm.plugin.appbrand.appusage.x;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.y;
-import com.tencent.mm.plugin.appbrand.task.h;
-import com.tencent.mm.plugin.appbrand.task.p;
-import com.tencent.mm.protocal.protobuf.ddx;
-import com.tencent.mm.protocal.protobuf.fcy;
-import com.tencent.mm.protocal.protobuf.fcz;
-import com.tencent.mm.protocal.protobuf.ii;
+import com.tencent.mm.plugin.appbrand.task.i;
+import com.tencent.mm.protocal.protobuf.dnn;
+import com.tencent.mm.protocal.protobuf.fnz;
+import com.tencent.mm.protocal.protobuf.foa;
+import com.tencent.mm.protocal.protobuf.hx;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
@@ -33,9 +30,9 @@ import java.util.Map;
 
 public final class b
 {
-  private static long kXM = 0L;
+  private static long nRY = 0L;
   
-  private static void a(final int paramInt, List<ii> paramList, m paramm)
+  private static void a(final int paramInt, List<hx> paramList, m paramm)
   {
     AppMethodBeat.i(44696);
     if ((paramList.isEmpty()) || (paramm == null))
@@ -45,35 +42,35 @@ public final class b
       return;
     }
     Log.i("MicroMsg.AppBrand.AppBrandBackgroundFetchDataHandler", "batchFetchDataInternal, size:%d", new Object[] { Integer.valueOf(paramList.size()) });
-    final fcy localfcy = new fcy();
-    localfcy.NyK.addAll(paramList);
+    final fnz localfnz = new fnz();
+    localfnz.UMo.addAll(paramList);
     paramList = new d.a();
     paramList.funcId = 1733;
     paramList.uri = "/cgi-bin/mmbiz-bin/wxabusiness/fetchdata";
-    paramList.iLN = localfcy;
-    paramList.iLO = new fcz();
-    IPCRunCgi.a(paramList.aXF(), new IPCRunCgi.a()
+    paramList.lBU = localfnz;
+    paramList.lBV = new foa();
+    IPCRunCgi.a(paramList.bgN(), new IPCRunCgi.a()
     {
-      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd)
+      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.an.d paramAnonymousd)
       {
         AppMethodBeat.i(44692);
-        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && (paramAnonymousd != null) && (paramAnonymousd.iLL.iLR != null) && ((paramAnonymousd.iLL.iLR instanceof fcz)))
+        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && (paramAnonymousd != null) && (d.c.b(paramAnonymousd.lBS) != null) && ((d.c.b(paramAnonymousd.lBS) instanceof foa)))
         {
-          paramAnonymousString = (fcz)paramAnonymousd.iLL.iLR;
-          if ((paramAnonymousString.NyL != null) && (!paramAnonymousString.NyL.isEmpty()))
+          paramAnonymousString = (foa)d.c.b(paramAnonymousd.lBS);
+          if ((paramAnonymousString.UMp != null) && (!paramAnonymousString.UMp.isEmpty()))
           {
             Log.i("MicroMsg.AppBrand.AppBrandBackgroundFetchDataHandler", "batchFetchDataInternal, batch fetch data success");
-            this.kXN.g(paramAnonymousString.NyL, localfcy.NyK);
+            this.nRZ.i(paramAnonymousString.UMp, localfnz.UMo);
             AppMethodBeat.o(44692);
             return;
           }
           Log.e("MicroMsg.AppBrand.AppBrandBackgroundFetchDataHandler", "batchFetchDataInternal, batch fetch data fail:data is null");
-          this.kXN.onFail(paramInt);
+          this.nRZ.onFail(paramInt);
           AppMethodBeat.o(44692);
           return;
         }
         Log.e("MicroMsg.AppBrand.AppBrandBackgroundFetchDataHandler", "batchFetchDataInternal, batch fetch data fail:request fail");
-        this.kXN.onFail(paramInt);
+        this.nRZ.onFail(paramInt);
         AppMethodBeat.o(44692);
       }
     });
@@ -89,8 +86,8 @@ public final class b
       AppMethodBeat.o(44695);
       return;
     }
-    Object localObject1 = y.Xs(paramString2);
-    if ((localObject1 != null) && (!((a)localObject1).kXI))
+    Object localObject1 = y.afe(paramString2);
+    if ((localObject1 != null) && (!((a)localObject1).nRU))
     {
       Log.i("MicroMsg.AppBrand.AppBrandBackgroundFetchDataHandler", "preFetchData, app(%s_v%d) can not pre fetch data", new Object[] { paramString2, Integer.valueOf(paramInt1) });
       AppMethodBeat.o(44695);
@@ -114,32 +111,32 @@ public final class b
     }
     for (;;)
     {
-      localObject1 = com.tencent.mm.vending.j.a.Q(localObject1, localObject2);
+      localObject1 = com.tencent.mm.vending.j.a.J(localObject1, localObject2);
       paramString3 = (String)((com.tencent.mm.vending.j.b)localObject1).get(0);
       localObject2 = (String)((c)localObject1).get(1);
       Log.i("MicroMsg.AppBrand.AppBrandBackgroundFetchDataHandler", "preFetchDataInternal, app(%s) pre fetch data start, path:%s, query:%s, scene:%d", new Object[] { paramString2, paramString3, localObject2, Integer.valueOf(paramInt2) });
-      localObject1 = new ii();
-      ((ii)localObject1).dNI = paramString1;
-      ((ii)localObject1).username = paramString2;
-      ((ii)localObject1).KMw = 0;
-      ((ii)localObject1).KMx = new ddx();
-      ((ii)localObject1).KMx.scene = paramInt2;
-      if (g.af(l.class) != null)
+      localObject1 = new hx();
+      ((hx)localObject1).appid = paramString1;
+      ((hx)localObject1).username = paramString2;
+      ((hx)localObject1).RNq = 0;
+      ((hx)localObject1).RNr = new dnn();
+      ((hx)localObject1).RNr.scene = paramInt2;
+      if (h.ae(l.class) != null)
       {
-        paramString2 = ((l)g.af(l.class)).Wy(paramString2);
+        paramString2 = ((l)h.ae(l.class)).aek(paramString2);
         if ((paramString2 == null) || (Util.isNullOrNil(paramString2.token))) {
           break label374;
         }
-        Log.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataHandler", "preFetchDataInternal, app(%s) token:%s", new Object[] { ((ii)localObject1).username, paramString2.token });
-        ((ii)localObject1).token = paramString2.token;
+        Log.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataHandler", "preFetchDataInternal, app(%s) token:%s", new Object[] { ((hx)localObject1).username, paramString2.token });
+        ((hx)localObject1).token = paramString2.token;
       }
       for (;;)
       {
         if (!Util.isNullOrNil(paramString3)) {
-          ((ii)localObject1).KMx.path = paramString3;
+          ((hx)localObject1).RNr.path = paramString3;
         }
         if (!Util.isNullOrNil((String)localObject2)) {
-          ((ii)localObject1).KMx.query = ((String)localObject2);
+          ((hx)localObject1).RNr.query = ((String)localObject2);
         }
         paramString1 = new LinkedList();
         paramString1.add(localObject1);
@@ -157,7 +154,7 @@ public final class b
     }
   }
   
-  public static void byO()
+  public static void bKc()
   {
     AppMethodBeat.i(44693);
     if (!NetStatusUtil.isWifi(MMApplicationContext.getContext()))
@@ -166,20 +163,20 @@ public final class b
       AppMethodBeat.o(44693);
       return;
     }
-    long l = cl.aWy();
-    if (l - kXM < 900000L)
+    long l = cm.bfC();
+    if (l - nRY < 900000L)
     {
       Log.i("MicroMsg.AppBrand.AppBrandBackgroundFetchDataHandler", "periodFetchDataWhenAppEnterForeground, too frequent");
       AppMethodBeat.o(44693);
       return;
     }
-    kXM = l;
-    com.tencent.mm.plugin.appbrand.ac.m.bZn().postToWorker(new Runnable()
+    nRY = l;
+    com.tencent.mm.plugin.appbrand.ac.m.clV().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(44690);
-        Object localObject = n.buJ().vZ(200);
+        Object localObject = com.tencent.mm.plugin.appbrand.app.m.bFN().zk(200);
         if (((List)localObject).isEmpty())
         {
           Log.i("MicroMsg.AppBrand.AppBrandBackgroundFetchDataHandler", "worker:periodFetchDataWhenAppEnterForeground, no recent apps");
@@ -192,7 +189,7 @@ public final class b
         while (((Iterator)localObject).hasNext())
         {
           LocalUsageInfo localLocalUsageInfo = (LocalUsageInfo)((Iterator)localObject).next();
-          if ((!localHashMap.containsKey(localLocalUsageInfo.username)) && (b.bs(localLocalUsageInfo.username, localLocalUsageInfo.iOo)))
+          if ((!localHashMap.containsKey(localLocalUsageInfo.username)) && (b.bL(localLocalUsageInfo.username, localLocalUsageInfo.cBU)))
           {
             localHashMap.put(localLocalUsageInfo.username, localLocalUsageInfo.appId);
             if (localHashMap.size() >= 20) {
@@ -213,7 +210,7 @@ public final class b
     AppMethodBeat.o(44693);
   }
   
-  public static String cM(String paramString1, final String paramString2)
+  public static String cV(String paramString1, final String paramString2)
   {
     AppMethodBeat.i(44694);
     Log.i("MicroMsg.AppBrand.AppBrandBackgroundFetchDataHandler", "forcePeriodFetchData, userName:%s, appId:%s", new Object[] { paramString1, paramString2 });
@@ -223,9 +220,9 @@ public final class b
       AppMethodBeat.o(44694);
       return "fail:not wifi network";
     }
-    if (g.af(l.class) != null)
+    if (h.ae(l.class) != null)
     {
-      AppBrandBackgroundFetchDataTokenParcel localAppBrandBackgroundFetchDataTokenParcel = ((l)g.af(l.class)).Wy(paramString1);
+      AppBrandBackgroundFetchDataTokenParcel localAppBrandBackgroundFetchDataTokenParcel = ((l)h.ae(l.class)).aek(paramString1);
       if ((localAppBrandBackgroundFetchDataTokenParcel == null) || (Util.isNullOrNil(localAppBrandBackgroundFetchDataTokenParcel.token)))
       {
         Log.w("MicroMsg.AppBrand.AppBrandBackgroundFetchDataHandler", "forcePeriodFetchData, app(%s) token is empty", new Object[] { paramString1 });
@@ -233,13 +230,13 @@ public final class b
         return "fail:token not set";
       }
     }
-    com.tencent.mm.plugin.appbrand.ac.m.bZn().postToWorker(new Runnable()
+    com.tencent.mm.plugin.appbrand.ac.m.clV().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(44691);
         HashMap localHashMap = new HashMap();
-        localHashMap.put(this.gtz, paramString2);
+        localHashMap.put(this.iXL, paramString2);
         b.a(localHashMap, new j());
         AppMethodBeat.o(44691);
       }
@@ -251,7 +248,7 @@ public final class b
   public static boolean d(AppBrandInitConfigWC paramAppBrandInitConfigWC)
   {
     AppMethodBeat.i(44697);
-    if ((paramAppBrandInitConfigWC != null) && (!Util.isNullOrNil(paramAppBrandInitConfigWC.appId)) && (!h.bWb().afi(paramAppBrandInitConfigWC.appId)))
+    if ((paramAppBrandInitConfigWC != null) && (!Util.isNullOrNil(paramAppBrandInitConfigWC.appId)) && (!i.cjb().w(paramAppBrandInitConfigWC.appId, -1)))
     {
       AppMethodBeat.o(44697);
       return true;
@@ -262,7 +259,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundfetch.b
  * JD-Core Version:    0.7.0.1
  */

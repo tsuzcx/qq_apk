@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -121,6 +122,7 @@ public class XWalkView
   private LazyReflectMethod setBottomHeightMethod;
   private LazyReflectMethod setDownloadListenerXWalkDownloadListenerInternalMethod;
   private LazyReflectMethod setExtendCanvasClientXWalkExtendCanvasClientInternalMethod;
+  private LazyReflectMethod setExtendInputClientXWalkExtendInputClientInternalMethod;
   private LazyReflectMethod setExtendPluginClientXWalkExtendPluginClientInternalMethod;
   private LazyReflectMethod setExtendTextAreaClientXWalkExtendTextAreaClientInternalMethod;
   private LazyReflectMethod setFindListenerXWalkFindListenerInternalMethod;
@@ -136,6 +138,7 @@ public class XWalkView
   private LazyReflectMethod setUIClientXWalkUIClientInternalMethod;
   private LazyReflectMethod setUserAgentStringStringMethod;
   private LazyReflectMethod setVerticalScrollBarEnablebooleanMethod;
+  private LazyReflectMethod setWebContentsSizeintintMethod;
   private LazyReflectMethod setXWalkViewInternalVisibilityintMethod;
   private LazyReflectMethod setZOrderOnTopbooleanMethod;
   private LazyReflectMethod smoothScrollintintMethod;
@@ -208,6 +211,8 @@ public class XWalkView
     this.setExtendPluginClientXWalkExtendPluginClientInternalMethod = new LazyReflectMethod(null, "setExtendPluginClient", new Class[0]);
     this.setExtendCanvasClientXWalkExtendCanvasClientInternalMethod = new LazyReflectMethod(null, "setExtendCanvasClient", new Class[0]);
     this.setExtendTextAreaClientXWalkExtendTextAreaClientInternalMethod = new LazyReflectMethod(null, "setExtendTextAreaClient", new Class[0]);
+    this.setExtendInputClientXWalkExtendInputClientInternalMethod = new LazyReflectMethod(null, "setExtendInputClient", new Class[0]);
+    this.setWebContentsSizeintintMethod = new LazyReflectMethod(null, "setWebContentsSize", new Class[0]);
     this.setResourceClientXWalkResourceClientInternalMethod = new LazyReflectMethod(null, "setResourceClient", new Class[0]);
     this.setProxyWebViewClientExtensionInternalMethod = new LazyReflectMethod(null, "setProxyWebViewClientExtension", new Class[0]);
     this.setBackgroundColorintMethod = new LazyReflectMethod(null, "setBackgroundColor", new Class[0]);
@@ -324,6 +329,8 @@ public class XWalkView
     this.setExtendPluginClientXWalkExtendPluginClientInternalMethod = new LazyReflectMethod(null, "setExtendPluginClient", new Class[0]);
     this.setExtendCanvasClientXWalkExtendCanvasClientInternalMethod = new LazyReflectMethod(null, "setExtendCanvasClient", new Class[0]);
     this.setExtendTextAreaClientXWalkExtendTextAreaClientInternalMethod = new LazyReflectMethod(null, "setExtendTextAreaClient", new Class[0]);
+    this.setExtendInputClientXWalkExtendInputClientInternalMethod = new LazyReflectMethod(null, "setExtendInputClient", new Class[0]);
+    this.setWebContentsSizeintintMethod = new LazyReflectMethod(null, "setWebContentsSize", new Class[0]);
     this.setResourceClientXWalkResourceClientInternalMethod = new LazyReflectMethod(null, "setResourceClient", new Class[0]);
     this.setProxyWebViewClientExtensionInternalMethod = new LazyReflectMethod(null, "setProxyWebViewClientExtension", new Class[0]);
     this.setBackgroundColorintMethod = new LazyReflectMethod(null, "setBackgroundColor", new Class[0]);
@@ -441,6 +448,8 @@ public class XWalkView
     this.setExtendPluginClientXWalkExtendPluginClientInternalMethod = new LazyReflectMethod(null, "setExtendPluginClient", new Class[0]);
     this.setExtendCanvasClientXWalkExtendCanvasClientInternalMethod = new LazyReflectMethod(null, "setExtendCanvasClient", new Class[0]);
     this.setExtendTextAreaClientXWalkExtendTextAreaClientInternalMethod = new LazyReflectMethod(null, "setExtendTextAreaClient", new Class[0]);
+    this.setExtendInputClientXWalkExtendInputClientInternalMethod = new LazyReflectMethod(null, "setExtendInputClient", new Class[0]);
+    this.setWebContentsSizeintintMethod = new LazyReflectMethod(null, "setWebContentsSize", new Class[0]);
     this.setResourceClientXWalkResourceClientInternalMethod = new LazyReflectMethod(null, "setResourceClient", new Class[0]);
     this.setProxyWebViewClientExtensionInternalMethod = new LazyReflectMethod(null, "setProxyWebViewClientExtension", new Class[0]);
     this.setBackgroundColorintMethod = new LazyReflectMethod(null, "setBackgroundColor", new Class[0]);
@@ -520,13 +529,6 @@ public class XWalkView
     AppMethodBeat.i(155127);
     onFocusChanged(paramBoolean, paramInt, paramRect);
     AppMethodBeat.o(155127);
-  }
-  
-  private void onOverScrolledDelegate(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(155128);
-    onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
-    AppMethodBeat.o(155128);
   }
   
   private void onOverscrollRefresh(boolean paramBoolean)
@@ -1373,7 +1375,7 @@ public class XWalkView
     try
     {
       this.getTranslateSampleStringintMethod.invoke(new Object[] { Integer.valueOf(paramInt) });
-      h.mO(938, 103);
+      h.og(938, 103);
       AppMethodBeat.o(155149);
       return;
     }
@@ -1865,6 +1867,15 @@ public class XWalkView
     return false;
   }
   
+  public void onOverScrolledDelegate(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
+  {
+    AppMethodBeat.i(204757);
+    if (this.mOverScrolledListener != null) {
+      this.mOverScrolledListener.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramView);
+    }
+    AppMethodBeat.o(204757);
+  }
+  
   public void onPause()
   {
     AppMethodBeat.i(155081);
@@ -1974,6 +1985,19 @@ public class XWalkView
       XWalkCoreWrapper.handleRuntimeError(paramMotionEvent);
       AppMethodBeat.o(155125);
     }
+    return false;
+  }
+  
+  public boolean overScrollByDelegate(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
+  {
+    AppMethodBeat.i(204756);
+    if (this.mOverScrolledListener != null)
+    {
+      paramBoolean = this.mOverScrolledListener.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean, paramView);
+      AppMethodBeat.o(204756);
+      return paramBoolean;
+    }
+    AppMethodBeat.o(204756);
     return false;
   }
   
@@ -2152,6 +2176,8 @@ public class XWalkView
         this.setExtendPluginClientXWalkExtendPluginClientInternalMethod.init(this.bridge, null, "setExtendPluginClientSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkExtendPluginClientBridge") });
         this.setExtendCanvasClientXWalkExtendCanvasClientInternalMethod.init(this.bridge, null, "setExtendCanvasClientSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkExtendCanvasClientBridge") });
         this.setExtendTextAreaClientXWalkExtendTextAreaClientInternalMethod.init(this.bridge, null, "setExtendTextAreaClientSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkExtendTextAreaClientBridge") });
+        this.setExtendInputClientXWalkExtendInputClientInternalMethod.init(this.bridge, null, "setExtendInputClientSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkExtendInputClientBridge") });
+        this.setWebContentsSizeintintMethod.init(this.bridge, null, "setWebContentsSizeSuper", new Class[] { Integer.TYPE, Integer.TYPE });
         this.setResourceClientXWalkResourceClientInternalMethod.init(this.bridge, null, "setResourceClientSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkResourceClientBridge") });
         this.setProxyWebViewClientExtensionInternalMethod.init(this.bridge, null, "setProxyWebViewClientExtensionSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkProxyWebViewClientExtensionBridge") });
         this.setBackgroundColorintMethod.init(this.bridge, null, "setBackgroundColorSuper", new Class[] { Integer.TYPE });
@@ -2563,6 +2589,29 @@ public class XWalkView
     }
   }
   
+  public void setExtendInputClient(XWalkExtendInputClient paramXWalkExtendInputClient)
+  {
+    AppMethodBeat.i(204748);
+    try
+    {
+      this.setExtendInputClientXWalkExtendInputClientInternalMethod.invoke(new Object[] { paramXWalkExtendInputClient.getBridge() });
+      AppMethodBeat.o(204748);
+      return;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      if (this.coreWrapper == null)
+      {
+        this.setExtendInputClientXWalkExtendInputClientInternalMethod.setArguments(new Object[] { new LazyReflectMethod(paramXWalkExtendInputClient, "getBridge", new Class[0]) });
+        XWalkCoreWrapper.reserveReflectMethod(this.setExtendInputClientXWalkExtendInputClientInternalMethod);
+        AppMethodBeat.o(204748);
+        return;
+      }
+      XWalkCoreWrapper.handleRuntimeError(localUnsupportedOperationException);
+      AppMethodBeat.o(204748);
+    }
+  }
+  
   public void setExtendPluginClient(XWalkExtendPluginClient paramXWalkExtendPluginClient)
   {
     AppMethodBeat.i(155094);
@@ -2946,6 +2995,22 @@ public class XWalkView
     AppMethodBeat.o(155119);
   }
   
+  public void setWebContentsSize(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(204749);
+    try
+    {
+      this.setWebContentsSizeintintMethod.invoke(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(204749);
+      return;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      XWalkCoreWrapper.handleRuntimeError(localUnsupportedOperationException);
+      AppMethodBeat.o(204749);
+    }
+  }
+  
   public void setXWalkViewInternalVisibility(int paramInt)
   {
     AppMethodBeat.i(155121);
@@ -3134,7 +3199,11 @@ public class XWalkView
   
   public static abstract interface OverScrolledListener
   {
+    public abstract void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView);
+    
     public abstract void onOverScrolled(boolean paramBoolean);
+    
+    public abstract boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView);
   }
   
   public static abstract interface ScrollChangedListener
@@ -3144,7 +3213,7 @@ public class XWalkView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.XWalkView
  * JD-Core Version:    0.7.0.1
  */

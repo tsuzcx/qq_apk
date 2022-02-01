@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop.a;
 
-import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
+import androidx.recyclerview.widget.RecyclerView.v;
 
 public abstract interface a
 {
-  public abstract View Q(RecyclerView.v paramv);
+  public abstract View P(RecyclerView.v paramv);
+  
+  public abstract boolean Q(RecyclerView.v paramv);
   
   public abstract boolean R(RecyclerView.v paramv);
   
-  public abstract boolean S(RecyclerView.v paramv);
+  public abstract void U(int paramInt, boolean paramBoolean);
   
-  public abstract void a(RecyclerView.v paramv, View paramView, Object paramObject, int paramInt);
+  public abstract void cS(Object paramObject);
   
-  public abstract void b(int paramInt1, int paramInt2, Object paramObject, boolean paramBoolean);
+  public abstract void e(View paramView, float paramFloat1, float paramFloat2);
   
-  public abstract boolean c(RecyclerView.v paramv, Object paramObject);
+  public abstract void f(int paramInt1, int paramInt2, Object paramObject);
   
-  public abstract void cR(View paramView);
-  
-  public abstract void cT(Object paramObject);
+  public abstract void k(Object paramObject, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.a.a
  * JD-Core Version:    0.7.0.1
  */

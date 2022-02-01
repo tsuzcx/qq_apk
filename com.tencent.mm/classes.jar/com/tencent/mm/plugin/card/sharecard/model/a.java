@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.card.sharecard.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.card.model.am;
-import com.tencent.mm.protocal.protobuf.afz;
-import com.tencent.mm.protocal.protobuf.aga;
+import com.tencent.mm.protocal.protobuf.agi;
+import com.tencent.mm.protocal.protobuf.agj;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
@@ -20,24 +20,24 @@ public final class a
   implements m
 {
   private i callback;
-  private String eaO;
-  public int pTZ;
+  private String fUL;
   private final d rr;
+  public int tqa;
   
   public a(String paramString)
   {
     AppMethodBeat.i(112954);
-    this.eaO = "";
+    this.fUL = "";
     d.a locala = new d.a();
-    locala.iLN = new afz();
-    locala.iLO = new aga();
+    locala.lBU = new agi();
+    locala.lBV = new agj();
     locala.uri = "/cgi-bin/mmbiz-bin/card/delsharecard";
     locala.funcId = 1163;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    ((afz)this.rr.iLK.iLR).eaO = paramString;
-    this.eaO = paramString;
+    this.rr = locala.bgN();
+    ((agi)d.b.b(this.rr.lBR)).fUL = paramString;
+    this.fUL = paramString;
     AppMethodBeat.o(112954);
   }
   
@@ -61,11 +61,11 @@ public final class a
     Log.i("MicroMsg.NetSceneDelShareCard", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (aga)this.rr.iLL.iLR;
-      Log.i("MicroMsg.NetSceneDelShareCard", "ret_code:" + params.pTZ);
-      this.pTZ = params.pTZ;
-      if (this.pTZ == 0) {
-        am.ctY().ajz(this.eaO);
+      params = (agj)d.c.b(this.rr.lBS);
+      Log.i("MicroMsg.NetSceneDelShareCard", "ret_code:" + params.tqa);
+      this.tqa = params.tqa;
+      if (this.tqa == 0) {
+        am.cHA().arm(this.fUL);
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);

@@ -1,8 +1,8 @@
 package com.tencent.mm.wallet_core.ui.noscale;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
+import androidx.appcompat.widget.AppCompatImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class NoScaleImageView
@@ -20,10 +20,10 @@ public class NoScaleImageView
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(214346);
+    AppMethodBeat.i(191032);
     super.onFinishInflate();
-    a.hL(this);
-    AppMethodBeat.o(214346);
+    a.jg(this);
+    AppMethodBeat.o(191032);
   }
 }
 

@@ -8,8 +8,8 @@ public final class c<E>
   extends a<E>
 {
   private static final Integer MAX_LOOK_AHEAD_STEP;
-  final AtomicLong UnE;
-  final AtomicLong UnF;
+  final AtomicLong abQS;
+  final AtomicLong abQT;
   final int lookAheadStep;
   long producerLookAhead;
   
@@ -24,8 +24,8 @@ public final class c<E>
   {
     super(paramInt);
     AppMethodBeat.i(90185);
-    this.UnE = new AtomicLong();
-    this.UnF = new AtomicLong();
+    this.abQS = new AtomicLong();
+    this.abQT = new AtomicLong();
     this.lookAheadStep = Math.min(paramInt / 4, MAX_LOOK_AHEAD_STEP.intValue());
     AppMethodBeat.o(90185);
   }
@@ -33,7 +33,7 @@ public final class c<E>
   public final boolean isEmpty()
   {
     AppMethodBeat.i(90190);
-    if (this.UnE.get() == this.UnF.get())
+    if (this.abQS.get() == this.abQT.get())
     {
       AppMethodBeat.o(90190);
       return true;
@@ -51,9 +51,9 @@ public final class c<E>
       AppMethodBeat.o(90186);
       throw paramE;
     }
-    AtomicReferenceArray localAtomicReferenceArray = this.TXf;
+    AtomicReferenceArray localAtomicReferenceArray = this.abAw;
     int i = this.mask;
-    long l = this.UnE.get();
+    long l = this.abQS.get();
     int j = (int)l & i;
     if (l >= this.producerLookAhead)
     {
@@ -67,7 +67,7 @@ public final class c<E>
     while (localAtomicReferenceArray.get(j) == null)
     {
       localAtomicReferenceArray.lazySet(j, paramE);
-      this.UnE.lazySet(1L + l);
+      this.abQS.lazySet(1L + l);
       AppMethodBeat.o(90186);
       return true;
     }
@@ -78,7 +78,7 @@ public final class c<E>
   public final E peek()
   {
     AppMethodBeat.i(90188);
-    Object localObject = awp(Px(this.UnF.get()));
+    Object localObject = aGk(XN(this.abQT.get()));
     AppMethodBeat.o(90188);
     return localObject;
   }
@@ -86,9 +86,9 @@ public final class c<E>
   public final E poll()
   {
     AppMethodBeat.i(90187);
-    long l = this.UnF.get();
-    int i = Px(l);
-    AtomicReferenceArray localAtomicReferenceArray = this.TXf;
+    long l = this.abQT.get();
+    int i = XN(l);
+    AtomicReferenceArray localAtomicReferenceArray = this.abAw;
     Object localObject = localAtomicReferenceArray.get(i);
     if (localObject == null)
     {
@@ -96,7 +96,7 @@ public final class c<E>
       return null;
     }
     localAtomicReferenceArray.lazySet(i, null);
-    this.UnF.lazySet(l + 1L);
+    this.abQT.lazySet(l + 1L);
     AppMethodBeat.o(90187);
     return localObject;
   }
@@ -105,10 +105,10 @@ public final class c<E>
   {
     AppMethodBeat.i(90189);
     long l2;
-    for (long l1 = this.UnF.get();; l1 = l2)
+    for (long l1 = this.abQT.get();; l1 = l2)
     {
-      long l3 = this.UnE.get();
-      l2 = this.UnF.get();
+      long l3 = this.abQS.get();
+      l2 = this.abQT.get();
       if (l1 == l2)
       {
         int i = (int)(l3 - l2);
@@ -120,7 +120,7 @@ public final class c<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     rx.internal.util.a.c
  * JD-Core Version:    0.7.0.1
  */

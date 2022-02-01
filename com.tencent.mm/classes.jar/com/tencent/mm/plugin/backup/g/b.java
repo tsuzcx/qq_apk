@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.backup.g;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -24,42 +24,42 @@ public abstract class b
   extends q
 {
   private static final MMHandler handler = new MMHandler(Looper.getMainLooper());
-  static int oIY = -1;
-  private static final Map<Integer, Set<i>> oPn = new HashMap();
-  private static final LinkedHashMap<Integer, b> oPo = new LinkedHashMap();
-  private static d oPp;
-  static a oPq;
-  private static f oPr = null;
-  private static j oPs = null;
-  private static g oPt = null;
-  private static h oPu = null;
-  private static int oPv = new Random(Util.nowMilliSecond()).nextInt(1147483648);
-  private static c oPw = null;
-  private PByteArray oPm = new PByteArray();
+  private static int rKO = -1;
+  private static final Map<Integer, Set<i>> rRk = new HashMap();
+  private static final LinkedHashMap<Integer, b> rRl = new LinkedHashMap();
+  private static d rRm;
+  private static a rRn;
+  private static f rRo = null;
+  private static j rRp = null;
+  private static g rRq = null;
+  private static h rRr = null;
+  private static int rRs = new Random(Util.nowMilliSecond()).nextInt(1147483648);
+  private static c rRt = null;
+  private PByteArray rRj = new PByteArray();
   
-  public static void Bb(int paramInt)
+  public static void EC(int paramInt)
   {
-    oIY = paramInt;
+    rKO = paramInt;
   }
   
-  public static void Bn(int paramInt)
+  public static void EO(int paramInt)
   {
-    if (oPt != null)
+    if (rRq != null)
     {
-      g localg = oPt;
+      g localg = rRq;
       try
       {
         Log.i("MicroMsg.BackupLogManager", "end backupMode[%d]", new Object[] { Integer.valueOf(paramInt) });
-        if ((g.startTime == 0L) || (g.oPR == 0L))
+        if ((g.startTime == 0L) || (g.rRO == 0L))
         {
-          Log.e("MicroMsg.BackupLogManager", "end is zero, startTime[%d], startLogSize[%d], skip report", new Object[] { Long.valueOf(g.startTime), Long.valueOf(g.oPR) });
+          Log.e("MicroMsg.BackupLogManager", "end is zero, startTime[%d], startLogSize[%d], skip report", new Object[] { Long.valueOf(g.startTime), Long.valueOf(g.rRO) });
           return;
         }
         g.endTime = Util.nowMilliSecond();
-        g.oPS = localg.K(g.startTime, g.endTime);
-        Log.i("MicroMsg.BackupLogManager", "end, backupMode[%d], endTime[%d], startTime[%d], endLogSize[%d], startLogSize[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(g.endTime), Long.valueOf(g.startTime), Long.valueOf(g.oPS), Long.valueOf(g.oPR) });
-        if ((g.oPS != 0L) && (g.oPS > g.oPR)) {
-          localg.a(paramInt, g.endTime - g.startTime, g.oPS - g.oPR, false);
+        g.rRP = localg.L(g.startTime, g.endTime);
+        Log.i("MicroMsg.BackupLogManager", "end, backupMode[%d], endTime[%d], startTime[%d], endLogSize[%d], startLogSize[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(g.endTime), Long.valueOf(g.startTime), Long.valueOf(g.rRP), Long.valueOf(g.rRO) });
+        if ((g.rRP != 0L) && (g.rRP > g.rRO)) {
+          localg.a(paramInt, g.endTime - g.startTime, g.rRP - g.rRO, false);
         }
         g.init();
         return;
@@ -71,42 +71,42 @@ public abstract class b
     }
   }
   
-  public static void Bo(int paramInt)
+  public static void EP(int paramInt)
   {
-    if (oPu != null) {
-      oPu.oPZ = paramInt;
+    if (rRr != null) {
+      rRr.rRW = paramInt;
     }
   }
   
-  public static void Bp(int paramInt)
+  public static void EQ(int paramInt)
   {
-    if (oPs != null)
+    if (rRp != null)
     {
-      j localj = oPs;
-      localj.oQh = (paramInt + localj.oQh);
+      j localj = rRp;
+      localj.rSe = (paramInt + localj.rSe);
     }
   }
   
-  public static boolean D(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public static boolean F(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     PByteArray localPByteArray = new PByteArray();
-    com.tencent.mm.plugin.backup.f.j.a(paramArrayOfByte, paramInt2, (short)paramInt1, localPByteArray, oIY);
-    if (oPq != null) {
-      oPq.l(paramInt2, localPByteArray.value);
+    com.tencent.mm.plugin.backup.f.j.a(paramArrayOfByte, paramInt2, (short)paramInt1, localPByteArray, rKO);
+    if (rRn != null) {
+      rRn.m(paramInt2, localPByteArray.value);
     }
     Log.i("MicroMsg.BackupBaseScene", "sendResp sendSeq[%d], type[%d], len[%d]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Integer.valueOf(localPByteArray.value.length) });
     return true;
   }
   
-  public static boolean N(byte[] paramArrayOfByte, int paramInt)
+  public static boolean O(byte[] paramArrayOfByte, int paramInt)
   {
     PByteArray localPByteArray = new PByteArray();
-    synchronized (oPo)
+    synchronized (rRl)
     {
-      int i = cgC();
-      com.tencent.mm.plugin.backup.f.j.a(paramArrayOfByte, i, (short)paramInt, localPByteArray, oIY);
-      if (oPq != null) {
-        oPq.l(i, localPByteArray.value);
+      int i = ctO();
+      com.tencent.mm.plugin.backup.f.j.a(paramArrayOfByte, i, (short)paramInt, localPByteArray, rKO);
+      if (rRn != null) {
+        rRn.m(i, localPByteArray.value);
       }
       Log.i("MicroMsg.BackupBaseScene", "sendBuf sendSeq[%d], type[%d], buflen[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(localPByteArray.value.length) });
       return true;
@@ -115,13 +115,13 @@ public abstract class b
   
   public static void a(int paramInt, i parami)
   {
-    synchronized (oPn)
+    synchronized (rRk)
     {
-      if (!oPn.containsKey(Integer.valueOf(paramInt))) {
-        oPn.put(Integer.valueOf(paramInt), new HashSet());
+      if (!rRk.containsKey(Integer.valueOf(paramInt))) {
+        rRk.put(Integer.valueOf(paramInt), new HashSet());
       }
-      if (!((Set)oPn.get(Integer.valueOf(paramInt))).contains(parami)) {
-        ((Set)oPn.get(Integer.valueOf(paramInt))).add(parami);
+      if (!((Set)rRk.get(Integer.valueOf(paramInt))).contains(parami)) {
+        ((Set)rRk.get(Integer.valueOf(paramInt))).add(parami);
       }
       return;
     }
@@ -129,7 +129,7 @@ public abstract class b
   
   public static void a(a parama)
   {
-    oPq = parama;
+    rRn = parama;
   }
   
   public static void a(b paramb)
@@ -146,10 +146,10 @@ public abstract class b
         for (;;)
         {
           long l;
-          synchronized (b.cgE())
+          synchronized (b.ctQ())
           {
             l = Util.nowMilliSecond();
-            Iterator localIterator = b.cgE().entrySet().iterator();
+            Iterator localIterator = b.ctQ().entrySet().iterator();
             if (!localIterator.hasNext()) {
               break label321;
             }
@@ -163,10 +163,10 @@ public abstract class b
               if (localPByteArray == null) {
                 break label297;
               }
-              if (b.cgF() == null) {
+              if (b.ctR() == null) {
                 continue;
               }
-              b.cgF().m(((Integer)localEntry.getKey()).intValue(), localPByteArray.value);
+              b.ctR().n(((Integer)localEntry.getKey()).intValue(), localPByteArray.value);
               Log.i("MicroMsg.BackupBaseScene", "resendSceneMap sceneSeq[%d], type[%d], sceneBuf[%d]", new Object[] { localEntry.getKey(), Integer.valueOf(((b)localEntry.getValue()).getType()), Integer.valueOf(localPByteArray.value.length) });
             }
             catch (Exception localException)
@@ -177,15 +177,15 @@ public abstract class b
             }
             i += 1;
             if ((i > 0) && (i % 5 == 0)) {
-              this.oPy.jE(false);
+              this.rRv.kP(false);
             }
             continue;
             Log.e("MicroMsg.BackupBaseScene", "resendSceneMap engineSender null, sceneSeq[%d], type[%d], sceneBuf[%d]", new Object[] { localEntry.getKey(), Integer.valueOf(((b)localEntry.getValue()).getType()), Integer.valueOf(localPByteArray.value.length) });
           }
           Log.e("MicroMsg.BackupBaseScene", "resendSceneMap sceneBuf null, sceneSeq[%d]", new Object[] { localException.getKey() });
           continue;
-          this.oPy.jE(true);
-          Log.i("MicroMsg.BackupBaseScene", "resendSceneMap finish, sceneMap[%d], time[%d]", new Object[] { Integer.valueOf(b.cgE().size()), Long.valueOf(Util.milliSecondsToNow(l)) });
+          this.rRv.kP(true);
+          Log.i("MicroMsg.BackupBaseScene", "resendSceneMap finish, sceneMap[%d], time[%d]", new Object[] { Integer.valueOf(b.ctQ().size()), Long.valueOf(Util.milliSecondsToNow(l)) });
           AppMethodBeat.o(21699);
           return;
         }
@@ -195,19 +195,19 @@ public abstract class b
   
   public static void a(c paramc)
   {
-    oPw = paramc;
+    rRt = paramc;
   }
   
   public static void a(d paramd)
   {
-    oPp = paramd;
+    rRm = paramd;
   }
   
   public static void a(h.a parama)
   {
-    if (oPu != null)
+    if (rRr != null)
     {
-      if (!oPu.stopped)
+      if (!rRr.aFI)
       {
         Log.e("MicroMsg.BackupBaseScene", "startBackupReconnectHandler, backupReconnectHandler already running, ignore it.");
         return;
@@ -217,15 +217,15 @@ public abstract class b
     for (;;)
     {
       parama = new h(parama);
-      oPu = parama;
+      rRr = parama;
       Log.i("MicroMsg.BackupReconnectHandler", "start backupReconnectTimeHandler.");
       h.index = 0;
-      parama.stopped = false;
-      parama.oPZ = 1;
-      if (parama.oPY == null) {
+      parama.aFI = false;
+      parama.rRW = 1;
+      if (parama.rRV == null) {
         break;
       }
-      parama.oQa.startTimer(0L);
+      parama.rRX.startTimer(0L);
       return;
       Log.i("MicroMsg.BackupBaseScene", "startBackupReconnectHandler, no old backupReconnectHandler is stopped, new one.");
     }
@@ -233,17 +233,17 @@ public abstract class b
   
   public static void a(j.a parama)
   {
-    oPs = new j(parama);
+    rRp = new j(parama);
   }
   
   public static void b(int paramInt, i parami)
   {
-    synchronized (oPn)
+    synchronized (rRk)
     {
       try
       {
-        if (oPn.get(Integer.valueOf(paramInt)) != null) {
-          ((Set)oPn.get(Integer.valueOf(paramInt))).remove(parami);
+        if (rRk.get(Integer.valueOf(paramInt)) != null) {
+          ((Set)rRk.get(Integer.valueOf(paramInt))).remove(parami);
         }
         return;
       }
@@ -291,14 +291,14 @@ public abstract class b
         str = new String(paramArrayOfByte);
       }
     }
-    if (oPr != null)
+    if (rRo != null)
     {
-      oPr.cgJ();
+      rRo.ctV();
       Log.d("MicroMsg.BackupBaseScene", "updateHeartBeatTimeStamp type:%d, current time stamp:%d", new Object[] { Integer.valueOf(paramInt2), Long.valueOf(Util.nowMilliSecond()) });
     }
-    synchronized (oPo)
+    synchronized (rRl)
     {
-      ??? = (b)oPo.remove(Integer.valueOf(paramInt1));
+      ??? = (b)rRl.remove(Integer.valueOf(paramInt1));
       if (??? == null) {
         break label262;
       }
@@ -309,14 +309,14 @@ public abstract class b
         }
         catch (Exception paramArrayOfByte)
         {
-          ((b)???).q(3, -1, "buf to resq fail");
+          ((b)???).r(3, -1, "buf to resq fail");
           Log.printErrStackTrace("MicroMsg.BackupBaseScene", paramArrayOfByte, "%s ", new Object[] { paramArrayOfByte.toString() });
           return;
         }
       }
     }
-    ((b)???).cgq().parseFrom(paramArrayOfByte);
-    ((b)???).Bm(paramInt1);
+    ((b)???).ctC().parseFrom(paramArrayOfByte);
+    ((b)???).EN(paramInt1);
     return;
     label262:
     Log.i("MicroMsg.BackupBaseScene", "notify scene null type:%d", new Object[] { Integer.valueOf(paramInt2) });
@@ -325,14 +325,14 @@ public abstract class b
       for (;;)
       {
         b localb;
-        synchronized (oPo)
+        synchronized (rRl)
         {
-          Iterator localIterator = new HashSet(oPo.keySet()).iterator();
+          Iterator localIterator = new HashSet(rRl.keySet()).iterator();
           if (!localIterator.hasNext()) {
             break;
           }
           Integer localInteger2 = (Integer)localIterator.next();
-          localb = (b)oPo.get(localInteger2);
+          localb = (b)rRl.get(localInteger2);
           if (localb == null)
           {
             ??? = "null";
@@ -340,15 +340,15 @@ public abstract class b
             if ((localb == null) || (localb.getType() != 15)) {
               continue;
             }
-            oPo.remove(localInteger2);
+            rRl.remove(localInteger2);
             try
             {
-              localb.cgq().parseFrom(paramArrayOfByte);
-              localb.Bm(paramInt1);
+              localb.ctC().parseFrom(paramArrayOfByte);
+              localb.EN(paramInt1);
             }
             catch (Exception localException2)
             {
-              localb.q(3, -1, "buf to tagResp fail");
+              localb.r(3, -1, "buf to tagResp fail");
               Log.printErrStackTrace("MicroMsg.BackupBaseScene", localException2, "buf to tagResp error, type[%d], errMsg:%s ", new Object[] { Integer.valueOf(localb.getType()), localException2.toString() });
             }
           }
@@ -368,9 +368,9 @@ public abstract class b
       public final void run()
       {
         AppMethodBeat.i(21697);
-        if (b.cgD() != null)
+        if (b.ctP() != null)
         {
-          b.cgD().a(this.oJE, paramInt1, paramArrayOfByte, paramInt2);
+          b.ctP().a(this.rLu, paramInt1, paramArrayOfByte, paramInt2);
           AppMethodBeat.o(21697);
           return;
         }
@@ -380,104 +380,113 @@ public abstract class b
     });
   }
   
-  public static int ceP()
+  public static void clear()
   {
-    return oIY;
-  }
-  
-  public static void cfK()
-  {
-    if (oPw != null) {
-      oPw.cfK();
+    Log.i("MicroMsg.BackupBaseScene", "BackupBaseScene clear.");
+    synchronized (rRl)
+    {
+      rRl.clear();
+    }
+    synchronized (rRk)
+    {
+      rRk.clear();
+      return;
+      localObject2 = finally;
+      throw localObject2;
     }
   }
   
-  public static int cgC()
+  public static void csV()
   {
-    int i = oPv;
-    oPv += 1;
-    return i;
+    if (rRt != null) {
+      rRt.csV();
+    }
   }
   
-  public static void cgs()
+  public static int csc()
   {
-    if (oPr != null) {
-      oPr.stop();
+    return rKO;
+  }
+  
+  public static void ctE()
+  {
+    if (rRo != null) {
+      rRo.stop();
     }
     f localf = new f();
-    oPr = localf;
+    rRo = localf;
     localf.start(true);
   }
   
-  public static void cgt()
+  public static void ctF()
   {
-    if (oPr != null) {
-      oPr.stop();
+    if (rRo != null) {
+      rRo.stop();
     }
   }
   
-  public static void cgu()
+  public static void ctG()
   {
     int i = 0;
-    if (oPs != null)
+    if (rRp != null)
     {
-      j localj = oPs;
+      j localj = rRp;
       Log.i("MicroMsg.BackupSpeedCalculator", "start backupGetSpeedTimeHandler.");
-      localj.oQi = Util.nowMilliSecond();
-      localj.oQh = 0L;
-      localj.oQf = 0L;
-      localj.oQl.clear();
-      localj.oQk = 0;
-      localj.oQj = 0L;
+      localj.rSf = Util.nowMilliSecond();
+      localj.rSe = 0L;
+      localj.rSc = 0L;
+      localj.rSi.clear();
+      localj.rSh = 0;
+      localj.rSg = 0L;
       while (i < 10)
       {
-        localj.oQl.offer(Long.valueOf(204800L));
+        localj.rSi.offer(Long.valueOf(204800L));
         i += 1;
       }
-      localj.oQm.startTimer(1000L);
+      localj.rSj.startTimer(1000L);
       return;
     }
     Log.e("MicroMsg.BackupBaseScene", "startSpeedCalculator backupSpeedCalculator is null!");
   }
   
-  public static void cgv()
+  public static void ctH()
   {
-    if (oPs != null)
+    if (rRp != null)
     {
-      j localj = oPs;
+      j localj = rRp;
       Log.i("MicroMsg.BackupSpeedCalculator", "stop backupGetSpeedTimeHandler.");
-      localj.oQm.stopTimer();
-      localj.oQk = 0;
+      localj.rSj.stopTimer();
+      localj.rSh = 0;
     }
   }
   
-  public static String cgw()
+  public static String ctI()
   {
-    if (oPs == null) {
+    if (rRp == null) {
       return "0B";
     }
-    String str = j.Bx(oPs.oQg);
+    String str = j.HK(rRp.rSd);
     Log.i("MicroMsg.BackupSpeedCalculator", "getBackupSpeed[%s]", new Object[] { str });
     return str;
   }
   
-  public static void cgx()
+  public static void ctJ()
   {
-    if (oPt == null) {
-      oPt = new g();
+    if (rRq == null) {
+      rRq = new g();
     }
-    g localg = oPt;
+    g localg = rRq;
     try
     {
       Log.i("MicroMsg.BackupLogManager", "start");
       g.init();
-      if (localg.oPT != null)
+      if (localg.rRQ != null)
       {
-        localg.oPT.stopTimer();
-        localg.oPT = null;
+        localg.rRQ.stopTimer();
+        localg.rRQ = null;
       }
       g.startTime = Util.nowMilliSecond();
-      g.oPR = localg.Bw(g.startTime);
+      g.rRO = localg.HJ(g.startTime);
       return;
     }
     catch (Exception localException)
@@ -486,72 +495,75 @@ public abstract class b
     }
   }
   
-  public static void cgy()
+  public static void ctK()
   {
-    if (oPu != null)
+    if (rRr != null)
     {
-      oPu.oPZ = 0;
-      h localh = oPu;
-      if (!localh.stopped)
+      rRr.rRW = 0;
+      h localh = rRr;
+      if (!localh.aFI)
       {
         Log.i("MicroMsg.BackupReconnectHandler", "stop backupReconnectTimeHandler.");
-        localh.oQa.stopTimer();
-        localh.stopped = true;
+        localh.rRX.stopTimer();
+        localh.aFI = true;
       }
     }
   }
   
-  public static int cgz()
+  public static int ctL()
   {
-    if (oPu == null) {
+    if (rRr == null) {
       return 0;
     }
-    return oPu.oPZ;
+    return rRr.rRW;
   }
   
-  public static void clear()
+  public static int ctO()
   {
-    Log.i("MicroMsg.BackupBaseScene", "BackupBaseScene clear.");
-    synchronized (oPo)
-    {
-      oPo.clear();
-    }
-    synchronized (oPn)
-    {
-      oPn.clear();
-      return;
-      localObject2 = finally;
-      throw localObject2;
-    }
+    int i = rRs;
+    rRs += 1;
+    return i;
   }
   
-  public abstract void Bm(int paramInt);
+  public abstract void EN(int paramInt);
+  
+  public final boolean N(byte[] paramArrayOfByte, int paramInt)
+  {
+    if (rRn != null) {
+      Log.i("MicroMsg.BackupBaseScene", "doSceneSameThread ret[%d], sendSeq[%d], type[%d], buflen[%d]", new Object[] { Integer.valueOf(rRn.n(paramInt, paramArrayOfByte)), Integer.valueOf(paramInt), Integer.valueOf(getType()), Integer.valueOf(paramArrayOfByte.length) });
+    }
+    return true;
+  }
   
   public final void a(int paramInt, PByteArray arg2)
   {
-    this.oPm = new PByteArray();
-    this.oPm.value = ???.value;
-    synchronized (oPo)
+    this.rRj = new PByteArray();
+    this.rRj.value = ???.value;
+    synchronized (rRl)
     {
-      oPo.put(Integer.valueOf(paramInt), this);
+      rRl.put(Integer.valueOf(paramInt), this);
       return;
     }
   }
   
-  public boolean cgA()
+  public abstract a ctC();
+  
+  public abstract a ctD();
+  
+  public boolean ctM()
   {
     try
     {
-      byte[] arrayOfByte = cgr().toByteArray();
-      synchronized (oPo)
+      byte[] arrayOfByte = ctD().toByteArray();
+      synchronized (rRl)
       {
-        int i = cgC();
-        com.tencent.mm.plugin.backup.f.j.a(arrayOfByte, i, (short)getType(), this.oPm, oIY);
-        if (oPq != null) {
-          oPq.l(i, this.oPm.value);
+        int i = ctO();
+        com.tencent.mm.plugin.backup.f.j.a(arrayOfByte, i, (short)getType(), this.rRj, rKO);
+        if (rRn != null) {
+          rRn.m(i, this.rRj.value);
         }
-        Log.i("MicroMsg.BackupBaseScene", "doScene sendSeq[%d], type[%d], buflen[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(getType()), Integer.valueOf(this.oPm.value.length) });
-        oPo.put(Integer.valueOf(i), this);
+        Log.i("MicroMsg.BackupBaseScene", "doScene sendSeq[%d], type[%d], buflen[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(getType()), Integer.valueOf(this.rRj.value.length) });
+        rRl.put(Integer.valueOf(i), this);
         return true;
       }
       return false;
@@ -562,20 +574,20 @@ public abstract class b
     }
   }
   
-  public final boolean cgB()
+  public final boolean ctN()
   {
     try
     {
-      byte[] arrayOfByte = cgr().toByteArray();
-      synchronized (oPo)
+      byte[] arrayOfByte = ctD().toByteArray();
+      synchronized (rRl)
       {
-        int i = cgC();
-        com.tencent.mm.plugin.backup.f.j.a(arrayOfByte, i, (short)getType(), this.oPm, oIY);
-        if (oPq != null) {
-          oPq.m(i, this.oPm.value);
+        int i = ctO();
+        com.tencent.mm.plugin.backup.f.j.a(arrayOfByte, i, (short)getType(), this.rRj, rKO);
+        if (rRn != null) {
+          rRn.n(i, this.rRj.value);
         }
-        Log.i("MicroMsg.BackupBaseScene", "doSceneSameThread sendSeq[%d], type[%d], buflen[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(getType()), Integer.valueOf(this.oPm.value.length) });
-        oPo.put(Integer.valueOf(i), this);
+        Log.i("MicroMsg.BackupBaseScene", "doSceneSameThread sendSeq[%d], type[%d], buflen[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(getType()), Integer.valueOf(this.rRj.value.length) });
+        rRl.put(Integer.valueOf(i), this);
         return true;
       }
       return false;
@@ -585,10 +597,6 @@ public abstract class b
       Log.printErrStackTrace("MicroMsg.BackupBaseScene", localException, "req to buf fail: " + localException.toString(), new Object[0]);
     }
   }
-  
-  public abstract a cgq();
-  
-  public abstract a cgr();
   
   public int doScene(com.tencent.mm.network.g paramg, i parami)
   {
@@ -597,26 +605,26 @@ public abstract class b
   
   public abstract int getType();
   
-  protected final void q(int paramInt1, int paramInt2, String paramString)
+  protected final void r(int paramInt1, int paramInt2, String paramString)
   {
     handler.post(new b.2(this, paramInt1, paramInt2, paramString));
   }
   
   public static abstract interface a
   {
-    public abstract void l(int paramInt, byte[] paramArrayOfByte);
+    public abstract void m(int paramInt, byte[] paramArrayOfByte);
     
-    public abstract int m(int paramInt, byte[] paramArrayOfByte);
+    public abstract int n(int paramInt, byte[] paramArrayOfByte);
   }
   
   public static abstract interface b
   {
-    public abstract void jE(boolean paramBoolean);
+    public abstract void kP(boolean paramBoolean);
   }
   
   public static abstract interface c
   {
-    public abstract void cfK();
+    public abstract void csV();
   }
   
   public static abstract interface d
@@ -626,7 +634,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.g.b
  * JD-Core Version:    0.7.0.1
  */

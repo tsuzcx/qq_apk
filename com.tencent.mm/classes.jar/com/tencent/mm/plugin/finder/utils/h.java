@@ -1,21 +1,18 @@
 package com.tencent.mm.plugin.finder.utils;
 
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/FinderEnhanceUtils;", "", "()V", "FinderEnhanceType", "PosTriggerConfig", "plugin-finder-base_release"})
 public final class h
 {
-  public static String awf(String paramString)
+  public static final h ADf;
+  
+  static
   {
-    AppMethodBeat.i(241812);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(241812);
-      return "";
-    }
-    paramString = paramString.substring(0, Math.min(4, paramString.length()));
-    AppMethodBeat.o(241812);
-    return paramString;
+    AppMethodBeat.i(262204);
+    ADf = new h();
+    AppMethodBeat.o(262204);
   }
 }
 

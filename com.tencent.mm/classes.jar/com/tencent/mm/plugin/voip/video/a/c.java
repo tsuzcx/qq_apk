@@ -5,56 +5,56 @@ import com.tencent.mm.compatible.util.j;
 
 public class c
 {
-  public static boolean Hla;
+  public static boolean ObP;
   
   static
   {
     AppMethodBeat.i(115716);
-    Hla = false;
-    fLC();
+    ObP = false;
+    gEc();
     AppMethodBeat.o(115716);
   }
   
-  public static void fLC()
+  public static void gEc()
   {
     AppMethodBeat.i(115715);
     System.currentTimeMillis();
-    if (!Hla) {
+    if (!ObP) {
       try
       {
         c.class.getClassLoader();
-        j.Ed("image_filter_common");
+        j.KW("image_filter_common");
         c.class.getClassLoader();
-        j.Ed("image_filter_gpu");
+        j.KW("image_filter_gpu");
         c.class.getClassLoader();
-        j.Ed("format_convert");
+        j.KW("format_convert");
         c.class.getClassLoader();
-        j.Ed("YTCommon");
+        j.KW("YTCommon");
         c.class.getClassLoader();
-        j.Ed("YTFaceTrackPro");
+        j.KW("YTFaceTrackPro");
         c.class.getClassLoader();
-        j.Ed("algo_youtu_jni");
+        j.KW("algo_youtu_jni");
         c.class.getClassLoader();
-        j.Ed("pitu_tools");
-        Hla = true;
+        j.KW("pitu_tools");
+        ObP = true;
         AppMethodBeat.o(115715);
         return;
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
       {
-        Hla = false;
+        ObP = false;
         AppMethodBeat.o(115715);
         return;
       }
       catch (RuntimeException localRuntimeException)
       {
-        Hla = false;
+        ObP = false;
         AppMethodBeat.o(115715);
         return;
       }
       catch (Exception localException)
       {
-        Hla = false;
+        ObP = false;
       }
     }
     AppMethodBeat.o(115715);
@@ -62,7 +62,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.a.c
  * JD-Core Version:    0.7.0.1
  */

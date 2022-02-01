@@ -3,14 +3,11 @@ package com.tencent.mm.plugin.fts.b;
 import android.database.Cursor;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.g.a.sw;
-import com.tencent.mm.g.a.sx;
-import com.tencent.mm.g.a.ur;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.f.a.vu;
+import com.tencent.mm.f.c.et;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bp;
+import com.tencent.mm.model.bq;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.fts.PluginFTS;
 import com.tencent.mm.plugin.fts.a.a.h.a;
@@ -21,8 +18,8 @@ import com.tencent.mm.plugin.fts.a.e.a;
 import com.tencent.mm.plugin.fts.jni.FTSJNIUtils;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.protocal.protobuf.bcj;
+import com.tencent.mm.protocal.protobuf.bje;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -50,38 +47,38 @@ public final class c
   extends b
   implements i.a
 {
-  private IListener gsS;
-  private IListener gsT;
-  com.tencent.mm.plugin.fts.a.m hgI;
-  com.tencent.mm.plugin.fts.a.j tbO;
-  com.tencent.mm.plugin.fts.c.c wYQ;
-  boolean wYR;
-  private IListener wYS;
-  IListener wYT;
-  MTimerHandler wYU;
-  h.a wYV;
+  private com.tencent.mm.plugin.fts.c.c BKP;
+  private boolean BKQ;
+  private IListener BKR;
+  private IListener BKS;
+  MTimerHandler BKT;
+  private h.a BKU;
+  private IListener iXe;
+  private IListener iXf;
+  private com.tencent.mm.plugin.fts.a.m jSC;
+  private com.tencent.mm.plugin.fts.a.j wHT;
   
   public c()
   {
     AppMethodBeat.i(52735);
-    this.wYR = false;
-    this.gsS = new IListener() {};
-    this.gsT = new IListener() {};
-    this.wYS = new IListener() {};
-    this.wYT = new IListener() {};
-    this.wYU = new MTimerHandler(g.aAk().getLooper(), new MTimerHandler.CallBack()
+    this.BKQ = false;
+    this.iXe = new c.1(this);
+    this.iXf = new c.2(this);
+    this.BKR = new IListener() {};
+    this.BKS = new IListener() {};
+    this.BKT = new MTimerHandler(com.tencent.mm.kernel.h.aHJ().getLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(52716);
-        if (!c.this.wYR)
+        if (!c.e(c.this))
         {
-          c.this.wYR = true;
-          if (c.this.hgI != null) {
-            c.this.hgI.a(131112, new c.a(c.this, (byte)0));
+          c.a(c.this, true);
+          if (c.d(c.this) != null) {
+            c.d(c.this).a(131112, new c.a(c.this, (byte)0));
           }
         }
-        EventCenter.instance.removeListener(c.this.wYT);
+        EventCenter.instance.removeListener(c.f(c.this));
         AppMethodBeat.o(52716);
         return false;
       }
@@ -94,34 +91,34 @@ public final class c
         return str;
       }
     }, false);
-    this.wYV = new h.a()
+    this.BKU = new h.a()
     {
-      public final String[] ayy(String paramAnonymousString)
-      {
-        AppMethodBeat.i(52719);
-        paramAnonymousString = com.tencent.mm.plugin.fts.a.c.a.wVe.split(paramAnonymousString, 2);
-        AppMethodBeat.o(52719);
-        return paramAnonymousString;
-      }
-      
-      public final String[] split(String paramAnonymousString)
+      public final String[] aHS(String paramAnonymousString)
       {
         AppMethodBeat.i(52718);
-        if (((PluginFTS)g.ah(PluginFTS.class)).getFTSIndexDB().wTE)
+        if (((PluginFTS)com.tencent.mm.kernel.h.ag(PluginFTS.class)).getFTSIndexDB().BFB)
         {
-          paramAnonymousString = Util.listToStrings(c.ayE(paramAnonymousString));
+          paramAnonymousString = Util.listToStrings(c.aHZ(paramAnonymousString));
           AppMethodBeat.o(52718);
           return paramAnonymousString;
         }
-        paramAnonymousString = com.tencent.mm.plugin.fts.a.c.a.wVe.split(paramAnonymousString);
+        paramAnonymousString = com.tencent.mm.plugin.fts.a.c.a.BHa.split(paramAnonymousString);
         AppMethodBeat.o(52718);
+        return paramAnonymousString;
+      }
+      
+      public final String[] aHT(String paramAnonymousString)
+      {
+        AppMethodBeat.i(52719);
+        paramAnonymousString = com.tencent.mm.plugin.fts.a.c.a.BHa.split(paramAnonymousString, 2);
+        AppMethodBeat.o(52719);
         return paramAnonymousString;
       }
     };
     AppMethodBeat.o(52735);
   }
   
-  public static List<String> ayE(String paramString)
+  public static List<String> aHZ(String paramString)
   {
     AppMethodBeat.i(52740);
     String str1 = paramString;
@@ -217,20 +214,20 @@ public final class c
   public final com.tencent.mm.plugin.fts.a.a.a a(com.tencent.mm.plugin.fts.a.a.j paramj)
   {
     AppMethodBeat.i(52736);
-    switch (paramj.kXb)
+    switch (paramj.nRn)
     {
     default: 
       paramj = new i(paramj);
     }
     for (;;)
     {
-      paramj = this.hgI.a(-65536, paramj);
+      paramj = this.jSC.a(-65536, paramj);
       AppMethodBeat.o(52736);
       return paramj;
       paramj = new f(paramj);
       continue;
-      Log.i("MicroMsg.FTS.FTS5SearchMessageLogic", "total message count %d", new Object[] { Long.valueOf(e.wVl.wVr) });
-      if (e.wVl.wVr >= 1000000L)
+      Log.i("MicroMsg.FTS.FTS5SearchMessageLogic", "total message count %d", new Object[] { Long.valueOf(e.BHh.BHn) });
+      if (e.BHh.BHn >= 1000000L)
       {
         paramj = new g(paramj);
       }
@@ -247,16 +244,63 @@ public final class c
     }
   }
   
-  public final void a(com.tencent.mm.plugin.messenger.foundation.a.a.i parami, i.c paramc)
+  public final boolean aEt()
+  {
+    AppMethodBeat.i(52738);
+    ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).eSe().a(this);
+    this.BKS.dead();
+    this.BKR.dead();
+    this.iXf.dead();
+    this.iXe.dead();
+    this.BKP = null;
+    this.jSC = null;
+    this.BKT.stopTimer();
+    AppMethodBeat.o(52738);
+    return true;
+  }
+  
+  public final String getName()
+  {
+    return "FTS5SearchMessageLogic";
+  }
+  
+  public final boolean onCreate()
+  {
+    AppMethodBeat.i(52737);
+    if (!((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.fts.a.n.class)).isFTSContextReady())
+    {
+      Log.i("MicroMsg.FTS.FTS5SearchMessageLogic", "Create Fail!");
+      AppMethodBeat.o(52737);
+      return false;
+    }
+    Log.i("MicroMsg.FTS.FTS5SearchMessageLogic", "Create Success!");
+    this.BKP = ((com.tencent.mm.plugin.fts.c.c)((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(4));
+    this.jSC = ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.fts.a.n.class)).getFTSTaskDaemon();
+    this.wHT = ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.fts.a.n.class)).getFTSMainDB();
+    this.BKS.alive();
+    this.BKR.alive();
+    this.iXf.alive();
+    this.iXe.alive();
+    ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).eSe().a(this, null);
+    AppMethodBeat.o(52737);
+    return true;
+  }
+  
+  public final void onNotifyChange(com.tencent.mm.plugin.messenger.foundation.a.a.i parami, i.c paramc)
   {
     AppMethodBeat.i(52739);
-    if (paramc.zqn.equals("insert"))
+    if (CrashReportFactory.isBackupMerge())
+    {
+      AppMethodBeat.o(52739);
+      return;
+    }
+    if (paramc.EVM.equals("insert"))
     {
       parami = new ArrayList();
       int j = 0;
-      if (j < paramc.hIs.size())
+      if (j < paramc.kvM.size())
       {
-        ca localca = (ca)paramc.hIs.get(j);
+        ca localca = (ca)paramc.kvM.get(j);
         int i;
         if ((localca == null) || (Util.isNullOrNil(localca.field_talker)) || (Util.isNullOrNil(localca.field_content))) {
           i = 0;
@@ -270,9 +314,9 @@ public final class c
           break;
           if (localca.field_talker.contains("@bottle")) {
             i = 0;
-          } else if (as.bjw(localca.field_talker)) {
+          } else if (as.bvS(localca.field_talker)) {
             i = 0;
-          } else if ((localca.getType() != 1) && (!localca.dOQ()) && (!localca.dOS())) {
+          } else if ((localca.getType() != 1) && (!localca.erk()) && (!localca.erm())) {
             i = 0;
           } else {
             i = 1;
@@ -280,103 +324,53 @@ public final class c
         }
       }
       if (parami.size() > 0) {
-        this.hgI.a(65576, new c(parami));
+        this.jSC.a(65576, new c(parami));
       }
     }
     AppMethodBeat.o(52739);
   }
   
-  public final boolean axa()
-  {
-    AppMethodBeat.i(52738);
-    ((l)g.af(l.class)).eiy().a(this);
-    this.wYT.dead();
-    this.wYS.dead();
-    this.gsT.dead();
-    this.gsS.dead();
-    this.wYQ = null;
-    this.hgI = null;
-    this.wYU.stopTimer();
-    AppMethodBeat.o(52738);
-    return true;
-  }
-  
-  public final String getName()
-  {
-    return "FTS5SearchMessageLogic";
-  }
-  
-  public final boolean onCreate()
-  {
-    AppMethodBeat.i(52737);
-    if (!((com.tencent.mm.plugin.fts.a.n)g.ah(com.tencent.mm.plugin.fts.a.n.class)).isFTSContextReady())
-    {
-      Log.i("MicroMsg.FTS.FTS5SearchMessageLogic", "Create Fail!");
-      AppMethodBeat.o(52737);
-      return false;
-    }
-    Log.i("MicroMsg.FTS.FTS5SearchMessageLogic", "Create Success!");
-    this.wYQ = ((com.tencent.mm.plugin.fts.c.c)((com.tencent.mm.plugin.fts.a.n)g.ah(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(4));
-    this.hgI = ((com.tencent.mm.plugin.fts.a.n)g.ah(com.tencent.mm.plugin.fts.a.n.class)).getFTSTaskDaemon();
-    this.tbO = ((com.tencent.mm.plugin.fts.a.n)g.ah(com.tencent.mm.plugin.fts.a.n.class)).getFTSMainDB();
-    this.wYT.alive();
-    this.wYS.alive();
-    this.gsT.alive();
-    this.gsS.alive();
-    ((l)g.af(l.class)).eiy().a(this, null);
-    AppMethodBeat.o(52737);
-    return true;
-  }
-  
   final class a
     extends com.tencent.mm.plugin.fts.a.a.a
   {
-    private long lhY = 9223372036854775807L;
+    private HashSet<Pair<Long, Long>> BKX = null;
+    private ArrayList<Long> BKY = null;
+    private long BKZ = -1L;
+    private int BLa = 0;
     private int mFailedCount = 0;
-    private int tbV = 0;
-    private int tbW = 0;
-    private HashSet<Pair<Long, Long>> wYY = null;
-    private ArrayList<Long> wYZ = null;
-    private long wZa = -1L;
-    private int wZb = 0;
+    private long ocG = 9223372036854775807L;
+    private int wIa = 0;
+    private int wIb = 0;
     
     private a() {}
     
-    public final String bCQ()
-    {
-      AppMethodBeat.i(52721);
-      String str = String.format("{new: %d removed: %d failed: %d}", new Object[] { Integer.valueOf(this.tbV), Integer.valueOf(this.tbW), Integer.valueOf(this.mFailedCount) });
-      AppMethodBeat.o(52721);
-      return str;
-    }
-    
-    public final boolean execute()
+    public final boolean aEv()
     {
       AppMethodBeat.i(52720);
-      this.lhY = c.this.wYQ.wUt.V(-200L, 9223372036854775807L);
-      this.wZa = ((l)g.af(l.class)).aTq().aEk("");
-      if (this.lhY > this.wZa)
+      this.ocG = c.b(c.this).BGp.ac(-200L, 9223372036854775807L);
+      this.BKZ = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bco().aOu("");
+      if (this.ocG > this.BKZ)
       {
-        c.this.wYQ.W(-310L, System.currentTimeMillis());
-        c.this.wYQ.W(-311L, com.tencent.mm.protocal.d.KyO);
+        c.b(c.this).ad(-310L, System.currentTimeMillis());
+        c.b(c.this).ad(-311L, com.tencent.mm.protocal.d.RAD);
       }
-      Log.i("MicroMsg.FTS.FTS5SearchMessageLogic", "Start building message index, last createTime: %s last from createTime: %s", new Object[] { Long.valueOf(this.lhY), Long.valueOf(this.wZa) });
+      Log.i("MicroMsg.FTS.FTS5SearchMessageLogic", "Start building message index, last createTime: %s last from createTime: %s", new Object[] { Long.valueOf(this.ocG), Long.valueOf(this.BKZ) });
       long l1;
       long l2;
-      if (this.wYY == null)
+      if (this.BKX == null)
       {
-        this.wYY = new HashSet();
-        this.wYZ = new ArrayList();
-        localObject1 = c.this.wYQ.a(com.tencent.mm.plugin.fts.a.c.wUC, true, true, false, true, true);
+        this.BKX = new HashSet();
+        this.BKY = new ArrayList();
+        localObject1 = c.b(c.this).a(com.tencent.mm.plugin.fts.a.c.BGy, true, true, false, true, true);
         while (((Cursor)localObject1).moveToNext())
         {
           l1 = ((Cursor)localObject1).getLong(0);
           l2 = ((Cursor)localObject1).getLong(1);
           long l3 = ((Cursor)localObject1).getLong(2);
           if (((Cursor)localObject1).getInt(3) == -1) {
-            this.wYZ.add(Long.valueOf(l1));
-          } else if (l3 <= this.lhY) {
-            this.wYY.add(new Pair(Long.valueOf(l2), Long.valueOf(l3)));
+            this.BKY.add(Long.valueOf(l1));
+          } else if (l3 <= this.ocG) {
+            this.BKX.add(new Pair(Long.valueOf(l2), Long.valueOf(l3)));
           }
         }
         ((Cursor)localObject1).close();
@@ -392,10 +386,10 @@ public final class c
       Object localObject2 = new ArrayList();
       if (i >= 50)
       {
-        localObject1[0] = Long.toString(this.lhY);
-        localObject1[1] = Long.toString(this.wZa);
-        localObject1[2] = Integer.toString(this.wZb);
-        Object localObject3 = c.this.tbO.rawQuery("SELECT msgId, talker, createTime, content, type, isSend FROM message WHERE createTime<=? AND createTime>? AND type in (1, 49) ORDER BY createTime DESC, msgId DESC LIMIT 50 OFFSET ?;", (String[])localObject1);
+        localObject1[0] = Long.toString(this.ocG);
+        localObject1[1] = Long.toString(this.BKZ);
+        localObject1[2] = Integer.toString(this.BLa);
+        Object localObject3 = c.c(c.this).rawQuery("SELECT msgId, talker, createTime, content, type, isSend FROM message WHERE createTime<=? AND createTime>? AND type in (1, 49) ORDER BY createTime DESC, msgId DESC LIMIT 50 OFFSET ?;", (String[])localObject1);
         l1 = 0L;
         i = 0;
         c.d locald;
@@ -407,11 +401,11 @@ public final class c
           locald.createTime = ((Cursor)localObject3).getLong(2);
           locald.content = ((Cursor)localObject3).getString(3);
           locald.msgType = ((Cursor)localObject3).getInt(4);
-          locald.wZf = ((Cursor)localObject3).getInt(5);
-          locald.wZe = 41;
+          locald.BLe = ((Cursor)localObject3).getInt(5);
+          locald.BLd = 41;
           if (c.a(locald))
           {
-            locald.dOT();
+            locald.ern();
             if (locald.isAvailable()) {
               ((List)localObject2).add(locald);
             }
@@ -429,11 +423,11 @@ public final class c
         int j = ((List)localObject2).size();
         if (j == 0)
         {
-          Log.i("MicroMsg.FTS.FTS5SearchMessageLogic", "build msgRecList size %d offset %s", new Object[] { Integer.valueOf(j), Integer.valueOf(this.wZb) });
+          Log.i("MicroMsg.FTS.FTS5SearchMessageLogic", "build msgRecList size %d offset %s", new Object[] { Integer.valueOf(j), Integer.valueOf(this.BLa) });
           if (j <= 0) {
             break label1009;
           }
-          c.this.wYQ.beginTransaction();
+          c.b(c.this).beginTransaction();
           localObject3 = ((List)localObject2).iterator();
           label639:
           if (!((Iterator)localObject3).hasNext()) {
@@ -442,38 +436,38 @@ public final class c
           locald = (c.d)((Iterator)localObject3).next();
           l1 = locald.msgId;
           l2 = locald.createTime;
-          if (l2 != this.lhY) {
+          if (l2 != this.ocG) {
             break label938;
           }
         }
-        for (this.wZb += 1;; this.wZb = 0)
+        for (this.BLa += 1;; this.BLa = 0)
         {
           for (;;)
           {
             Pair localPair = new Pair(Long.valueOf(l1), Long.valueOf(l2));
-            if (this.wYY.remove(localPair)) {
+            if (this.BKX.remove(localPair)) {
               break;
             }
             try
             {
-              c.this.wYQ.a(locald.wZe, l1, locald.talker, l2, locald.wZg, locald.wZh);
-              this.tbV += 1;
+              c.b(c.this).a(locald.BLd, l1, locald.talker, l2, locald.BLf, locald.BLg);
+              this.wIa += 1;
             }
             catch (Exception localException)
             {
-              Log.printErrStackTrace("MicroMsg.FTS.FTS5SearchMessageLogic", localException, "Build message index failed with exception. \n%s", new Object[] { locald.wZg });
+              Log.printErrStackTrace("MicroMsg.FTS.FTS5SearchMessageLogic", localException, "Build message index failed with exception. \n%s", new Object[] { locald.BLf });
               this.mFailedCount += 1;
             }
           }
           break label639;
-          Log.i("MicroMsg.FTS.FTS5SearchMessageLogic", "build msgRecList size %d Id FROM %d to %d Time FROM %s to %s offset %s", new Object[] { Integer.valueOf(j), Long.valueOf(((c.d)((List)localObject2).get(0)).msgId), Long.valueOf(((c.d)((List)localObject2).get(j - 1)).msgId), com.tencent.mm.pluginsdk.i.f.formatTime("yyyy-MM-dd HH:mm:ss", ((c.d)((List)localObject2).get(0)).createTime / 1000L), com.tencent.mm.pluginsdk.i.f.formatTime("yyyy-MM-dd HH:mm:ss", ((c.d)((List)localObject2).get(j - 1)).createTime / 1000L), Integer.valueOf(this.wZb) });
+          Log.i("MicroMsg.FTS.FTS5SearchMessageLogic", "build msgRecList size %d Id FROM %d to %d Time FROM %s to %s offset %s", new Object[] { Integer.valueOf(j), Long.valueOf(((c.d)((List)localObject2).get(0)).msgId), Long.valueOf(((c.d)((List)localObject2).get(j - 1)).msgId), com.tencent.mm.pluginsdk.j.f.formatTime("yyyy-MM-dd HH:mm:ss", ((c.d)((List)localObject2).get(0)).createTime / 1000L), com.tencent.mm.pluginsdk.j.f.formatTime("yyyy-MM-dd HH:mm:ss", ((c.d)((List)localObject2).get(j - 1)).createTime / 1000L), Integer.valueOf(this.BLa) });
           break;
           label938:
-          this.lhY = l2;
+          this.ocG = l2;
         }
         label952:
-        c.this.wYQ.commit();
-        c.this.wYQ.W(-200L, this.lhY);
+        c.b(c.this).commit();
+        c.b(c.this).ad(-200L, this.ocG);
         for (;;)
         {
           ((List)localObject2).clear();
@@ -484,72 +478,80 @@ public final class c
           AppMethodBeat.o(52720);
           throw ((Throwable)localObject1);
           label1009:
-          this.lhY = l1;
-          this.wZb = 0;
+          this.ocG = l1;
+          this.BLa = 0;
         }
       }
       i = 50;
-      localObject1 = this.wYY.iterator();
+      localObject1 = this.BKX.iterator();
       if (((Iterator)localObject1).hasNext())
       {
         if (Thread.interrupted())
         {
-          c.this.wYQ.commit();
+          c.b(c.this).commit();
           localObject1 = new InterruptedException();
           AppMethodBeat.o(52720);
           throw ((Throwable)localObject1);
         }
         if (i < 50) {
-          break label1372;
+          break label1373;
         }
-        c.this.wYQ.commit();
-        c.this.wYQ.beginTransaction();
+        c.b(c.this).commit();
+        c.b(c.this).beginTransaction();
         i = 0;
       }
-      label1369:
-      label1372:
+      label1370:
+      label1373:
       for (;;)
       {
         localObject2 = (Pair)((Iterator)localObject1).next();
-        c.this.wYQ.a(com.tencent.mm.plugin.fts.a.c.wUC, ((Long)((Pair)localObject2).first).longValue(), ((Long)((Pair)localObject2).second).longValue());
+        c.b(c.this).a(com.tencent.mm.plugin.fts.a.c.BGy, ((Long)((Pair)localObject2).first).longValue(), ((Long)((Pair)localObject2).second).longValue());
         i += 1;
-        this.tbW += 1;
+        this.wIb += 1;
         ((Iterator)localObject1).remove();
         break;
-        c.this.wYQ.commit();
+        c.b(c.this).commit();
         i = 50;
-        localObject1 = this.wYZ.listIterator(this.wYZ.size());
+        localObject1 = this.BKY.listIterator(this.BKY.size());
         if (((ListIterator)localObject1).hasPrevious())
         {
           if (Thread.interrupted())
           {
-            c.this.wYQ.commit();
+            c.b(c.this).commit();
             localObject1 = new InterruptedException();
             AppMethodBeat.o(52720);
             throw ((Throwable)localObject1);
           }
           if (i < 50) {
-            break label1369;
+            break label1370;
           }
-          c.this.wYQ.commit();
-          c.this.wYQ.beginTransaction();
+          c.b(c.this).commit();
+          c.b(c.this).beginTransaction();
           i = 0;
         }
         for (;;)
         {
           l1 = ((Long)((ListIterator)localObject1).previous()).longValue();
-          c.this.wYQ.GC(l1);
+          c.b(c.this).NE(l1);
           i += 1;
-          this.tbW += 1;
+          this.wIb += 1;
           ((ListIterator)localObject1).remove();
           break;
-          c.this.wYQ.W(-200L, this.lhY - 1L);
-          c.this.wYQ.commit();
-          c.this.wYR = false;
+          c.b(c.this).ad(-200L, this.ocG - 1L);
+          c.b(c.this).commit();
+          c.a(c.this, false);
           AppMethodBeat.o(52720);
           return true;
         }
       }
+    }
+    
+    public final String bOl()
+    {
+      AppMethodBeat.i(52721);
+      String str = String.format("{new: %d removed: %d failed: %d}", new Object[] { Integer.valueOf(this.wIa), Integer.valueOf(this.wIb), Integer.valueOf(this.mFailedCount) });
+      AppMethodBeat.o(52721);
+      return str;
     }
     
     public final int getId()
@@ -563,114 +565,82 @@ public final class c
     }
   }
   
-  final class b
-    extends com.tencent.mm.plugin.fts.a.a.a
-  {
-    private long gof;
-    
-    public b(long paramLong)
-    {
-      this.gof = paramLong;
-    }
-    
-    public final String bCQ()
-    {
-      AppMethodBeat.i(52723);
-      String str = String.format("{MsgId: %d}", new Object[] { Long.valueOf(this.gof) });
-      AppMethodBeat.o(52723);
-      return str;
-    }
-    
-    public final boolean execute()
-    {
-      AppMethodBeat.i(52722);
-      c.this.wYQ.c(com.tencent.mm.plugin.fts.a.c.wUC, this.gof);
-      AppMethodBeat.o(52722);
-      return true;
-    }
-    
-    public final String getName()
-    {
-      return "DeleteMessageTask";
-    }
-  }
-  
   final class c
     extends com.tencent.mm.plugin.fts.a.a.a
   {
-    private List<ca> wZc;
-    private StringBuffer wZd;
+    private List<ca> BLb;
+    private StringBuffer BLc;
     
     public c()
     {
       AppMethodBeat.i(52724);
-      this.wZc = new ArrayList();
+      this.BLb = new ArrayList();
       Collection localCollection;
-      this.wZc.addAll(localCollection);
-      this.wZd = new StringBuffer();
+      this.BLb.addAll(localCollection);
+      this.BLc = new StringBuffer();
       AppMethodBeat.o(52724);
     }
     
-    public final String bCQ()
-    {
-      AppMethodBeat.i(52726);
-      String str = this.wZd.toString();
-      AppMethodBeat.o(52726);
-      return str;
-    }
-    
-    public final boolean execute()
+    public final boolean aEv()
     {
       AppMethodBeat.i(52725);
       Object localObject1 = new ArrayList();
-      Object localObject2 = this.wZc.iterator();
+      Object localObject2 = this.BLb.iterator();
       Object localObject3;
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (ca)((Iterator)localObject2).next();
         c.d locald = new c.d(c.this, (byte)0);
-        locald.msgId = ((eo)localObject3).field_msgId;
-        locald.talker = ((eo)localObject3).field_talker;
-        locald.createTime = ((eo)localObject3).field_createTime;
-        locald.content = ((eo)localObject3).field_content;
+        locald.msgId = ((et)localObject3).field_msgId;
+        locald.talker = ((et)localObject3).field_talker;
+        locald.createTime = ((et)localObject3).field_createTime;
+        locald.content = ((et)localObject3).field_content;
         locald.msgType = ((ca)localObject3).getType();
-        locald.wZf = ((eo)localObject3).field_isSend;
+        locald.BLe = ((et)localObject3).field_isSend;
         if (c.a(locald))
         {
-          locald.dOT();
+          locald.ern();
           if (locald.isAvailable()) {
             ((List)localObject1).add(locald);
           }
         }
       }
-      this.wZd.append("{MsgId: ");
+      this.BLc.append("{MsgId: ");
       localObject2 = ((List)localObject1).iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (c.d)((Iterator)localObject2).next();
-        this.wZd.append(((c.d)localObject3).msgId);
-        this.wZd.append(",");
-        this.wZd.append(((c.d)localObject3).talker);
-        this.wZd.append(",");
-        this.wZd.append(((c.d)localObject3).createTime);
-        this.wZd.append(" ");
+        this.BLc.append(((c.d)localObject3).msgId);
+        this.BLc.append(",");
+        this.BLc.append(((c.d)localObject3).talker);
+        this.BLc.append(",");
+        this.BLc.append(((c.d)localObject3).createTime);
+        this.BLc.append(" ");
       }
-      this.wZd.append("count: ");
-      this.wZd.append(((List)localObject1).size());
-      this.wZd.append("}");
+      this.BLc.append("count: ");
+      this.BLc.append(((List)localObject1).size());
+      this.BLc.append("}");
       if (((List)localObject1).size() > 0)
       {
-        c.this.wYQ.beginTransaction();
+        c.b(c.this).beginTransaction();
         localObject1 = ((List)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (c.d)((Iterator)localObject1).next();
-          c.this.wYQ.a(((c.d)localObject2).wZe, ((c.d)localObject2).msgId, ((c.d)localObject2).talker, ((c.d)localObject2).createTime, ((c.d)localObject2).wZg, ((c.d)localObject2).wZh);
+          c.b(c.this).a(((c.d)localObject2).BLd, ((c.d)localObject2).msgId, ((c.d)localObject2).talker, ((c.d)localObject2).createTime, ((c.d)localObject2).BLf, ((c.d)localObject2).BLg);
         }
-        c.this.wYQ.commit();
+        c.b(c.this).commit();
       }
       AppMethodBeat.o(52725);
       return true;
+    }
+    
+    public final String bOl()
+    {
+      AppMethodBeat.i(52726);
+      String str = this.BLc.toString();
+      AppMethodBeat.o(52726);
+      return str;
     }
     
     public final String getName()
@@ -681,61 +651,61 @@ public final class c
   
   final class d
   {
+    int BLd;
+    int BLe;
+    String BLf;
+    String BLg;
     String content;
     long createTime;
     long msgId;
     int msgType;
     String talker;
-    int wZe;
-    int wZf;
-    String wZg;
-    String wZh;
     
     private d() {}
     
-    public final boolean dOQ()
+    public final boolean erk()
     {
       return (this.msgType & 0xFFFF) == 49;
     }
     
-    public final boolean dOR()
+    public final boolean erl()
     {
       return this.msgType == 1;
     }
     
-    public final boolean dOS()
+    public final boolean erm()
     {
       return this.msgType == 48;
     }
     
-    public final void dOT()
+    public final void ern()
     {
       AppMethodBeat.i(52727);
-      if (dOR())
+      if (erl())
       {
-        this.wZe = 41;
-        if ((ab.Eq(this.talker)) && (this.wZf == 0)) {
-          this.wZg = bp.Kt(this.content);
+        this.BLd = 41;
+        if ((ab.Lj(this.talker)) && (this.BLe == 0)) {
+          this.BLf = bq.RM(this.content);
         }
       }
       for (;;)
       {
-        if (!Util.isNullOrNil(this.wZg)) {
-          this.wZg = com.tencent.mm.plugin.fts.a.d.ayp(this.wZg);
+        if (!Util.isNullOrNil(this.BLf)) {
+          this.BLf = com.tencent.mm.plugin.fts.a.d.aHI(this.BLf);
         }
-        if (!as.HF(this.talker)) {
+        if (!as.OS(this.talker)) {
           break;
         }
-        this.wZh = this.talker;
+        this.BLg = this.talker;
         this.talker = "appbrandcustomerservicemsg";
         AppMethodBeat.o(52727);
         return;
-        this.wZg = this.content;
+        this.BLf = this.content;
         continue;
         Object localObject;
-        if (dOQ())
+        if (erk())
         {
-          localObject = k.b.HD(this.content);
+          localObject = k.b.OQ(this.content);
           if (localObject != null) {
             switch (((k.b)localObject).type)
             {
@@ -744,8 +714,8 @@ public final class c
             case 1: 
             case 53: 
             case 57: 
-              this.wZg = Util.nullAs(((k.b)localObject).getTitle(), "");
-              this.wZe = 52;
+              this.BLf = Util.nullAs(((k.b)localObject).getTitle(), "");
+              this.BLd = 52;
               break;
             case 3: 
             case 4: 
@@ -757,102 +727,103 @@ public final class c
             case 16: 
             case 20: 
             case 25: 
-              this.wZg = Util.nullAs(((k.b)localObject).getTitle(), "");
-              this.wZe = 43;
+              this.BLf = Util.nullAs(((k.b)localObject).getTitle(), "");
+              this.BLd = 43;
               break;
             case 6: 
-              this.wZg = Util.nullAs(((k.b)localObject).getTitle(), "");
-              this.wZe = 42;
+            case 74: 
+              this.BLf = Util.nullAs(((k.b)localObject).getTitle(), "");
+              this.BLd = 42;
               break;
             case 19: 
-              this.wZg = Util.nullAs(((k.b)localObject).getDescription(), "");
-              if (this.wZg != null) {
-                this.wZg = this.wZg.replace(":", "​");
+              this.BLf = Util.nullAs(((k.b)localObject).getDescription(), "");
+              if (this.BLf != null) {
+                this.BLf = this.BLf.replace(":", "​");
               }
-              this.wZe = 44;
+              this.BLd = 44;
               break;
             case 24: 
-              this.wZg = Util.nullAs(((k.b)localObject).getDescription(), "");
-              if (this.wZg != null) {
-                this.wZg = this.wZg.replace(":", "​");
+              this.BLf = Util.nullAs(((k.b)localObject).getDescription(), "");
+              if (this.BLf != null) {
+                this.BLf = this.BLf.replace(":", "​");
               }
-              this.wZe = 49;
+              this.BLd = 49;
               break;
             case 33: 
-              this.wZg = Util.nullAs(((k.b)localObject).getTitle(), "");
-              this.wZe = 48;
+              this.BLf = Util.nullAs(((k.b)localObject).getTitle(), "");
+              this.BLd = 48;
               break;
             case 2000: 
-              this.wZg = (Util.nullAs(((k.b)localObject).title, "") + "​" + Util.nullAs(((k.b)localObject).description, ""));
-              this.wZe = 45;
+              this.BLf = (Util.nullAs(((k.b)localObject).title, "") + "​" + Util.nullAs(((k.b)localObject).description, ""));
+              this.BLd = 45;
               break;
             case 2001: 
-              if ("1001".equals(((k.b)localObject).iyq))
+              if ("1001".equals(((k.b)localObject).lnG))
               {
-                this.wZe = 47;
-                if (this.wZf == 1)
+                this.BLd = 47;
+                if (this.BLe == 1)
                 {
-                  this.wZg = (Util.nullAs(((k.b)localObject).iyo, "") + "​" + Util.nullAs(((k.b)localObject).iyl, ""));
+                  this.BLf = (Util.nullAs(((k.b)localObject).lnE, "") + "​" + Util.nullAs(((k.b)localObject).lnB, ""));
                   continue;
                 }
-                this.wZg = (Util.nullAs(((k.b)localObject).iyo, "") + "​" + Util.nullAs(((k.b)localObject).iyk, ""));
+                this.BLf = (Util.nullAs(((k.b)localObject).lnE, "") + "​" + Util.nullAs(((k.b)localObject).lnA, ""));
                 continue;
               }
-              if (!"1002".equals(((k.b)localObject).iyq)) {
+              if (!"1002".equals(((k.b)localObject).lnG)) {
                 continue;
               }
-              this.wZe = 46;
-              if (this.wZf == 1)
+              this.BLd = 46;
+              if (this.BLe == 1)
               {
-                this.wZg = (Util.nullAs(((k.b)localObject).iyo, "") + "​" + Util.nullAs(((k.b)localObject).iyl, ""));
+                this.BLf = (Util.nullAs(((k.b)localObject).lnE, "") + "​" + Util.nullAs(((k.b)localObject).lnB, ""));
                 continue;
               }
-              this.wZg = (Util.nullAs(((k.b)localObject).iyo, "") + "​" + Util.nullAs(((k.b)localObject).iyk, ""));
+              this.BLf = (Util.nullAs(((k.b)localObject).lnE, "") + "​" + Util.nullAs(((k.b)localObject).lnA, ""));
               break;
             case 51: 
-              this.wZg = Util.nullAs(((com.tencent.mm.plugin.i.a.f)((k.b)localObject).as(com.tencent.mm.plugin.i.a.f.class)).jlg.nickname, "");
-              this.wZe = 53;
+              this.BLf = Util.nullAs(((com.tencent.mm.plugin.findersdk.a.f)((k.b)localObject).ar(com.tencent.mm.plugin.findersdk.a.f.class)).mbi.nickname, "");
+              this.BLd = 53;
               break;
             }
           }
         }
-        else if (dOS())
+        else if (erm())
         {
-          this.wZe = 50;
-          if (ab.Eq(this.talker)) {}
-          for (localObject = bp.Kt(this.content);; localObject = this.content)
+          this.BLd = 50;
+          if (ab.Lj(this.talker)) {}
+          for (localObject = bq.RM(this.content);; localObject = this.content)
           {
-            localObject = ((l)g.af(l.class)).eiy().aEL((String)localObject);
-            if (!((ca.b)localObject).gEa()) {
-              break label902;
+            localObject = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).eSe().aOV((String)localObject);
+            if (!((ca.b)localObject).hAq()) {
+              break label910;
             }
-            this.wZg = (((ca.b)localObject).kHV + "​" + ((ca.b)localObject).label);
+            this.BLf = (((ca.b)localObject).poiName + "​" + ((ca.b)localObject).label);
             break;
           }
-          label902:
-          this.wZg = ((ca.b)localObject).label;
+          label910:
+          this.BLf = ((ca.b)localObject).label;
         }
       }
-      if (this.wZf == 1)
+      if (this.BLe == 1)
       {
-        this.wZh = z.aTY();
+        this.BLg = z.bcZ();
         AppMethodBeat.o(52727);
         return;
       }
-      if (ab.Eq(this.talker))
+      if (ab.Lj(this.talker))
       {
-        this.wZh = Util.nullAs(bp.Ks(this.content), this.talker);
+        this.BLg = Util.nullAs(bq.RL(this.content), this.talker);
         AppMethodBeat.o(52727);
         return;
       }
-      this.wZh = this.talker;
+      this.BLg = this.talker;
       AppMethodBeat.o(52727);
     }
     
     public final boolean isAvailable()
     {
       AppMethodBeat.i(52728);
-      if (!Util.isNullOrNil(this.wZg))
+      if (!Util.isNullOrNil(this.BLf))
       {
         AppMethodBeat.o(52728);
         return true;
@@ -873,34 +844,34 @@ public final class c
     public final void a(k paramk)
     {
       AppMethodBeat.i(52729);
-      ayx("start");
-      paramk.wWd = com.tencent.mm.plugin.fts.a.a.h.a(this.wWO.query, false, c.this.wYV);
-      Object localObject1 = com.tencent.mm.plugin.fts.a.a.h.bE(this.wWO.wWT, true);
+      aHR("start");
+      paramk.BHY = com.tencent.mm.plugin.fts.a.a.h.a(this.BIJ.query, false, c.a(c.this));
+      Object localObject1 = com.tencent.mm.plugin.fts.a.a.h.bJ(this.BIJ.BIO, true);
       HashMap localHashMap = new HashMap();
-      Object localObject2 = ((com.tencent.mm.plugin.fts.c.a)((com.tencent.mm.plugin.fts.a.n)g.ah(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(3)).a((com.tencent.mm.plugin.fts.a.a.h)localObject1, this.wWO.talker, com.tencent.mm.plugin.fts.a.c.wUL, com.tencent.mm.plugin.fts.a.c.wUP);
+      Object localObject2 = ((com.tencent.mm.plugin.fts.c.a)((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(3)).a((com.tencent.mm.plugin.fts.a.a.h)localObject1, this.BIJ.talker, com.tencent.mm.plugin.fts.a.c.BGH, com.tencent.mm.plugin.fts.a.c.BGL);
       do
       {
         if (!((Cursor)localObject2).moveToNext()) {
           break;
         }
         localObject3 = new com.tencent.mm.plugin.fts.a.a.n();
-        ((com.tencent.mm.plugin.fts.a.a.m)localObject3).wVX = ((Cursor)localObject2).getString(0);
+        ((com.tencent.mm.plugin.fts.a.a.m)localObject3).BHS = ((Cursor)localObject2).getString(0);
         ((com.tencent.mm.plugin.fts.a.a.m)localObject3).type = ((Cursor)localObject2).getInt(1);
-        ((com.tencent.mm.plugin.fts.a.a.m)localObject3).wVW = ((Cursor)localObject2).getInt(2);
-        ((com.tencent.mm.plugin.fts.a.a.m)localObject3).wWd = ((com.tencent.mm.plugin.fts.a.a.h)localObject1);
-        if (!localHashMap.containsKey(((com.tencent.mm.plugin.fts.a.a.m)localObject3).wVX)) {
-          localHashMap.put(((com.tencent.mm.plugin.fts.a.a.m)localObject3).wVX, localObject3);
+        ((com.tencent.mm.plugin.fts.a.a.m)localObject3).BHR = ((Cursor)localObject2).getInt(2);
+        ((com.tencent.mm.plugin.fts.a.a.m)localObject3).BHY = ((com.tencent.mm.plugin.fts.a.a.h)localObject1);
+        if (!localHashMap.containsKey(((com.tencent.mm.plugin.fts.a.a.m)localObject3).BHS)) {
+          localHashMap.put(((com.tencent.mm.plugin.fts.a.a.m)localObject3).BHS, localObject3);
         }
       } while (localHashMap.size() <= 100);
       ((Cursor)localObject2).close();
-      ayx("findHitContact");
-      localObject2 = c.this.wYQ.a(paramk.wWd, this.wWO.wWS, localHashMap.keySet());
+      aHR("findHitContact");
+      localObject2 = c.b(c.this).a(paramk.BHY, this.BIJ.BIN, localHashMap.keySet());
       Object localObject3 = new HashMap();
       if (((Cursor)localObject2).moveToNext())
       {
-        com.tencent.mm.plugin.fts.a.a.n localn = new com.tencent.mm.plugin.fts.a.a.n().g((Cursor)localObject2);
-        localn.wWd = paramk.wWd;
-        localn.userData = Integer.valueOf(1);
+        com.tencent.mm.plugin.fts.a.a.n localn = new com.tencent.mm.plugin.fts.a.a.n().i((Cursor)localObject2);
+        localn.BHY = paramk.BHY;
+        localn.BJh = Integer.valueOf(1);
         if (((HashMap)localObject3).containsKey(localn.talker)) {}
         for (localObject1 = (List)((HashMap)localObject3).get(localn.talker);; localObject1 = new ArrayList())
         {
@@ -910,7 +881,7 @@ public final class c
         }
       }
       ((Cursor)localObject2).close();
-      paramk.wXb = new ArrayList();
+      paramk.BIW = new ArrayList();
       localObject1 = ((HashMap)localObject3).entrySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
@@ -918,14 +889,14 @@ public final class c
         localObject3 = (com.tencent.mm.plugin.fts.a.a.m)localHashMap.get(((Map.Entry)localObject2).getKey());
         if (localObject3 != null)
         {
-          Collections.sort((List)((Map.Entry)localObject2).getValue(), this.wWO.wWY);
-          ((com.tencent.mm.plugin.fts.a.a.m)localObject3).userData = ((Map.Entry)localObject2).getValue();
+          Collections.sort((List)((Map.Entry)localObject2).getValue(), this.BIJ.BIT);
+          ((com.tencent.mm.plugin.fts.a.a.m)localObject3).BJh = ((Map.Entry)localObject2).getValue();
           ((com.tencent.mm.plugin.fts.a.a.m)localObject3).timestamp = ((com.tencent.mm.plugin.fts.a.a.m)((List)((Map.Entry)localObject2).getValue()).get(0)).timestamp;
-          paramk.wXb.add(localObject3);
+          paramk.BIW.add(localObject3);
         }
       }
-      Collections.sort(paramk.wXb, this.wWO.wWY);
-      ayx("findHitMessage");
+      Collections.sort(paramk.BIW, this.BIJ.BIT);
+      aHR("findHitMessage");
       AppMethodBeat.o(52729);
     }
     
@@ -951,35 +922,35 @@ public final class c
     public final void a(k paramk)
     {
       AppMethodBeat.i(52730);
-      ayx("start");
-      paramk.wWd = com.tencent.mm.plugin.fts.a.a.h.a(this.wWO.query, false, c.this.wYV);
-      Object localObject1 = c.this.wYQ;
-      Object localObject3 = paramk.wWd;
-      Object localObject2 = this.wWO.wWS;
-      localObject3 = ((com.tencent.mm.plugin.fts.a.a.h)localObject3).dOz();
-      localObject3 = String.format("SELECT %s.docid, type, subtype, entity_id, aux_index, timestamp, talker FROM %s JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s' AND aux_index = ? AND status >= 0 ORDER BY timestamp desc;", new Object[] { ((com.tencent.mm.plugin.fts.c.c)localObject1).dOt(), ((com.tencent.mm.plugin.fts.c.c)localObject1).dOt(), ((com.tencent.mm.plugin.fts.c.c)localObject1).dOu(), ((com.tencent.mm.plugin.fts.c.c)localObject1).dOt(), ((com.tencent.mm.plugin.fts.c.c)localObject1).dOu(), ((com.tencent.mm.plugin.fts.c.c)localObject1).dOu(), localObject3 });
-      localObject1 = ((com.tencent.mm.plugin.fts.a.a)localObject1).wUt.rawQuery((String)localObject3, new String[] { localObject2 });
-      paramk.wXb = new ArrayList();
+      aHR("start");
+      paramk.BHY = com.tencent.mm.plugin.fts.a.a.h.a(this.BIJ.query, false, c.a(c.this));
+      Object localObject1 = c.b(c.this);
+      Object localObject3 = paramk.BHY;
+      Object localObject2 = this.BIJ.BIN;
+      localObject3 = ((com.tencent.mm.plugin.fts.a.a.h)localObject3).eqQ();
+      localObject3 = String.format("SELECT %s.docid, type, subtype, entity_id, aux_index, timestamp, talker FROM %s JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s' AND aux_index = ? AND status >= 0 ORDER BY timestamp desc;", new Object[] { ((com.tencent.mm.plugin.fts.c.c)localObject1).eqI(), ((com.tencent.mm.plugin.fts.c.c)localObject1).eqI(), ((com.tencent.mm.plugin.fts.c.c)localObject1).eqJ(), ((com.tencent.mm.plugin.fts.c.c)localObject1).eqI(), ((com.tencent.mm.plugin.fts.c.c)localObject1).eqJ(), ((com.tencent.mm.plugin.fts.c.c)localObject1).eqJ(), localObject3 });
+      localObject1 = ((com.tencent.mm.plugin.fts.a.a)localObject1).BGp.rawQuery((String)localObject3, new String[] { localObject2 });
+      paramk.BIW = new ArrayList();
       while (((Cursor)localObject1).moveToNext())
       {
-        localObject2 = new com.tencent.mm.plugin.fts.a.a.n().g((Cursor)localObject1);
-        ((com.tencent.mm.plugin.fts.a.a.n)localObject2).userData = Integer.valueOf(1);
-        paramk.wXb.add(localObject2);
+        localObject2 = new com.tencent.mm.plugin.fts.a.a.n().i((Cursor)localObject1);
+        ((com.tencent.mm.plugin.fts.a.a.n)localObject2).BJh = Integer.valueOf(1);
+        paramk.BIW.add(localObject2);
       }
       ((Cursor)localObject1).close();
-      ayx("findConversationMessage");
-      if ((paramk.wWd.wWE.length > 1) && (!this.wWO.wWX.contains("create_talker_message​")))
+      aHR("findConversationMessage");
+      if ((paramk.BHY.BIz.length > 1) && (!this.BIJ.BIS.contains("create_talker_message​")))
       {
-        localObject1 = com.tencent.mm.plugin.fts.a.a.h.bE(paramk.wWd.wWE[0], true);
-        localObject1 = ((com.tencent.mm.plugin.fts.c.a)((com.tencent.mm.plugin.fts.a.n)g.ah(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(3)).a((com.tencent.mm.plugin.fts.a.a.h)localObject1, null, com.tencent.mm.plugin.fts.a.c.wUL, com.tencent.mm.plugin.fts.a.c.wUP);
+        localObject1 = com.tencent.mm.plugin.fts.a.a.h.bJ(paramk.BHY.BIz[0], true);
+        localObject1 = ((com.tencent.mm.plugin.fts.c.a)((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(3)).a((com.tencent.mm.plugin.fts.a.a.h)localObject1, null, com.tencent.mm.plugin.fts.a.c.BGH, com.tencent.mm.plugin.fts.a.c.BGL);
         if (((Cursor)localObject1).moveToNext())
         {
           localObject2 = new com.tencent.mm.plugin.fts.a.a.m();
-          ((com.tencent.mm.plugin.fts.a.a.m)localObject2).wVX = "create_talker_message​";
-          paramk.wXb.add(0, localObject2);
+          ((com.tencent.mm.plugin.fts.a.a.m)localObject2).BHS = "create_talker_message​";
+          paramk.BIW.add(0, localObject2);
         }
         ((Cursor)localObject1).close();
-        ayx("findTalkerConversation");
+        aHR("findTalkerConversation");
       }
       AppMethodBeat.o(52730);
     }
@@ -1006,12 +977,12 @@ public final class c
     public final void a(k paramk)
     {
       AppMethodBeat.i(52731);
-      ayx("start");
-      paramk.wWd = com.tencent.mm.plugin.fts.a.a.h.a(this.wWO.query, false, c.this.wYV);
-      Object localObject1 = c.this.wYQ;
-      Object localObject2 = paramk.wWd.dOz();
-      localObject2 = String.format("SELECT type, subtype, entity_id, aux_index, timestamp FROM %s NOT INDEXED JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s' AND status >= 0 ORDER BY timestamp desc;", new Object[] { ((com.tencent.mm.plugin.fts.c.c)localObject1).dOt(), ((com.tencent.mm.plugin.fts.c.c)localObject1).dOu(), ((com.tencent.mm.plugin.fts.c.c)localObject1).dOt(), ((com.tencent.mm.plugin.fts.c.c)localObject1).dOu(), ((com.tencent.mm.plugin.fts.c.c)localObject1).dOu(), localObject2 });
-      localObject2 = ((com.tencent.mm.plugin.fts.a.a)localObject1).wUt.rawQuery((String)localObject2, null);
+      aHR("start");
+      paramk.BHY = com.tencent.mm.plugin.fts.a.a.h.a(this.BIJ.query, false, c.a(c.this));
+      Object localObject1 = c.b(c.this);
+      Object localObject2 = paramk.BHY.eqQ();
+      localObject2 = String.format("SELECT type, subtype, entity_id, aux_index, timestamp FROM %s NOT INDEXED JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s' AND status >= 0 ORDER BY timestamp desc;", new Object[] { ((com.tencent.mm.plugin.fts.c.c)localObject1).eqI(), ((com.tencent.mm.plugin.fts.c.c)localObject1).eqJ(), ((com.tencent.mm.plugin.fts.c.c)localObject1).eqI(), ((com.tencent.mm.plugin.fts.c.c)localObject1).eqJ(), ((com.tencent.mm.plugin.fts.c.c)localObject1).eqJ(), localObject2 });
+      localObject2 = ((com.tencent.mm.plugin.fts.a.a)localObject1).BGp.rawQuery((String)localObject2, null);
       localObject1 = new ArrayList();
       Object localObject3 = new HashSet();
       Object localObject4 = new ArrayList();
@@ -1025,20 +996,20 @@ public final class c
         {
           a locala = new a((byte)0);
           locala.type = ((Cursor)localObject2).getInt(0);
-          locala.wVW = ((Cursor)localObject2).getInt(1);
-          locala.wXe = ((Cursor)localObject2).getLong(2);
-          locala.wVX = ((Cursor)localObject2).getString(3);
+          locala.BHR = ((Cursor)localObject2).getInt(1);
+          locala.BIZ = ((Cursor)localObject2).getLong(2);
+          locala.BHS = ((Cursor)localObject2).getString(3);
           locala.timestamp = ((Cursor)localObject2).getLong(4);
           ((List)localObject1).add(locala);
           ((List)localObject4).add(str);
         }
-      } while (((List)localObject1).size() <= this.wWO.wWW);
+      } while (((List)localObject1).size() <= this.BIJ.BIR);
       ((Cursor)localObject2).close();
-      paramk.wXb = new LinkedList();
-      ayx("findUsername");
+      paramk.BIW = new LinkedList();
+      aHR("findUsername");
       if (((List)localObject4).size() > 0)
       {
-        localObject3 = c.this.wYQ.a(paramk.wWd, (List)localObject4);
+        localObject3 = c.b(c.this).a(paramk.BHY, (List)localObject4);
         localObject2 = new HashMap();
         if (((Cursor)localObject3).moveToNext())
         {
@@ -1057,37 +1028,37 @@ public final class c
           localObject3 = (a)((Iterator)localObject1).next();
           localObject4 = new com.tencent.mm.plugin.fts.a.a.m();
           ((com.tencent.mm.plugin.fts.a.a.m)localObject4).type = ((a)localObject3).type;
-          ((com.tencent.mm.plugin.fts.a.a.m)localObject4).wVW = ((a)localObject3).wVW;
-          ((com.tencent.mm.plugin.fts.a.a.m)localObject4).wXe = ((a)localObject3).wXe;
-          ((com.tencent.mm.plugin.fts.a.a.m)localObject4).wVX = ((a)localObject3).wVX;
+          ((com.tencent.mm.plugin.fts.a.a.m)localObject4).BHR = ((a)localObject3).BHR;
+          ((com.tencent.mm.plugin.fts.a.a.m)localObject4).BIZ = ((a)localObject3).BIZ;
+          ((com.tencent.mm.plugin.fts.a.a.m)localObject4).BHS = ((a)localObject3).BHS;
           ((com.tencent.mm.plugin.fts.a.a.m)localObject4).timestamp = ((a)localObject3).timestamp;
-          if (!((HashMap)localObject2).containsKey(((com.tencent.mm.plugin.fts.a.a.m)localObject4).wVX)) {
+          if (!((HashMap)localObject2).containsKey(((com.tencent.mm.plugin.fts.a.a.m)localObject4).BHS)) {
             break label699;
           }
         }
       }
       label699:
-      for (int i = ((Integer)((HashMap)localObject2).get(((com.tencent.mm.plugin.fts.a.a.m)localObject4).wVX)).intValue();; i = 1)
+      for (int i = ((Integer)((HashMap)localObject2).get(((com.tencent.mm.plugin.fts.a.a.m)localObject4).BHS)).intValue();; i = 1)
       {
-        if (ab.JB(((com.tencent.mm.plugin.fts.a.a.m)localObject4).wVX)) {
+        if (ab.QU(((com.tencent.mm.plugin.fts.a.a.m)localObject4).BHS)) {
           i = 0;
         }
-        ((com.tencent.mm.plugin.fts.a.a.m)localObject4).userData = Integer.valueOf(i);
-        paramk.wXb.add(localObject4);
+        ((com.tencent.mm.plugin.fts.a.a.m)localObject4).BJh = Integer.valueOf(i);
+        paramk.BIW.add(localObject4);
         break;
-        ayx("findCount");
-        if ((paramk.wWd.wWE.length > 1) && (paramk.wXb.size() <= 3))
+        aHR("findCount");
+        if ((paramk.BHY.BIz.length > 1) && (paramk.BIW.size() <= 3))
         {
-          localObject1 = com.tencent.mm.plugin.fts.a.a.h.bE(paramk.wWd.wWE[0], true);
-          localObject1 = ((com.tencent.mm.plugin.fts.c.a)((com.tencent.mm.plugin.fts.a.n)g.ah(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(3)).a((com.tencent.mm.plugin.fts.a.a.h)localObject1, null, com.tencent.mm.plugin.fts.a.c.wUL, com.tencent.mm.plugin.fts.a.c.wUP);
+          localObject1 = com.tencent.mm.plugin.fts.a.a.h.bJ(paramk.BHY.BIz[0], true);
+          localObject1 = ((com.tencent.mm.plugin.fts.c.a)((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(3)).a((com.tencent.mm.plugin.fts.a.a.h)localObject1, null, com.tencent.mm.plugin.fts.a.c.BGH, com.tencent.mm.plugin.fts.a.c.BGL);
           if (((Cursor)localObject1).moveToNext())
           {
             localObject2 = new com.tencent.mm.plugin.fts.a.a.m();
-            ((com.tencent.mm.plugin.fts.a.a.m)localObject2).wVX = "create_talker_message​";
-            paramk.wXb.add(localObject2);
+            ((com.tencent.mm.plugin.fts.a.a.m)localObject2).BHS = "create_talker_message​";
+            paramk.BIW.add(localObject2);
           }
           ((Cursor)localObject1).close();
-          ayx("findTalkerConversation");
+          aHR("findTalkerConversation");
         }
         AppMethodBeat.o(52731);
         return;
@@ -1106,11 +1077,11 @@ public final class c
     
     final class a
     {
+      int BHR;
+      String BHS;
+      long BIZ;
       long timestamp;
       int type;
-      int wVW;
-      String wVX;
-      long wXe;
       
       private a() {}
     }
@@ -1127,51 +1098,51 @@ public final class c
     public final void a(k paramk)
     {
       AppMethodBeat.i(52732);
-      ayx("start");
-      paramk.wWd = com.tencent.mm.plugin.fts.a.a.h.a(this.wWO.query, false, c.this.wYV);
-      Object localObject1 = com.tencent.mm.plugin.fts.a.a.h.bE(this.wWO.wWT, true);
+      aHR("start");
+      paramk.BHY = com.tencent.mm.plugin.fts.a.a.h.a(this.BIJ.query, false, c.a(c.this));
+      Object localObject1 = com.tencent.mm.plugin.fts.a.a.h.bJ(this.BIJ.BIO, true);
       Object localObject2 = new HashMap();
-      Object localObject3 = ((com.tencent.mm.plugin.fts.c.a)((com.tencent.mm.plugin.fts.a.n)g.ah(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(3)).a((com.tencent.mm.plugin.fts.a.a.h)localObject1, null, com.tencent.mm.plugin.fts.a.c.wUL, com.tencent.mm.plugin.fts.a.c.wUP);
+      Object localObject3 = ((com.tencent.mm.plugin.fts.c.a)((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(3)).a((com.tencent.mm.plugin.fts.a.a.h)localObject1, null, com.tencent.mm.plugin.fts.a.c.BGH, com.tencent.mm.plugin.fts.a.c.BGL);
       do
       {
         if (!((Cursor)localObject3).moveToNext()) {
           break;
         }
         localObject4 = new com.tencent.mm.plugin.fts.a.a.n();
-        ((com.tencent.mm.plugin.fts.a.a.n)localObject4).wVX = ((Cursor)localObject3).getString(0);
+        ((com.tencent.mm.plugin.fts.a.a.n)localObject4).BHS = ((Cursor)localObject3).getString(0);
         ((com.tencent.mm.plugin.fts.a.a.n)localObject4).type = ((Cursor)localObject3).getInt(1);
-        ((com.tencent.mm.plugin.fts.a.a.n)localObject4).wVW = ((Cursor)localObject3).getInt(2);
-        ((com.tencent.mm.plugin.fts.a.a.n)localObject4).wWd = ((com.tencent.mm.plugin.fts.a.a.h)localObject1);
-        ((com.tencent.mm.plugin.fts.a.a.n)localObject4).userData = Integer.valueOf(1);
-        if (!((HashMap)localObject2).containsKey(((com.tencent.mm.plugin.fts.a.a.n)localObject4).wVX)) {
-          ((HashMap)localObject2).put(((com.tencent.mm.plugin.fts.a.a.n)localObject4).wVX, localObject4);
+        ((com.tencent.mm.plugin.fts.a.a.n)localObject4).BHR = ((Cursor)localObject3).getInt(2);
+        ((com.tencent.mm.plugin.fts.a.a.n)localObject4).BHY = ((com.tencent.mm.plugin.fts.a.a.h)localObject1);
+        ((com.tencent.mm.plugin.fts.a.a.n)localObject4).BJh = Integer.valueOf(1);
+        if (!((HashMap)localObject2).containsKey(((com.tencent.mm.plugin.fts.a.a.n)localObject4).BHS)) {
+          ((HashMap)localObject2).put(((com.tencent.mm.plugin.fts.a.a.n)localObject4).BHS, localObject4);
         }
       } while (((HashMap)localObject2).size() <= 100);
       ((Cursor)localObject3).close();
-      ayx("findHitContact");
-      Object localObject4 = c.this.wYQ.a(paramk.wWd, null, ((HashMap)localObject2).keySet());
+      aHR("findHitContact");
+      Object localObject4 = c.b(c.this).a(paramk.BHY, null, ((HashMap)localObject2).keySet());
       localObject3 = new HashMap();
       if (((Cursor)localObject4).moveToNext())
       {
-        com.tencent.mm.plugin.fts.a.a.n localn = new com.tencent.mm.plugin.fts.a.a.n().g((Cursor)localObject4);
-        localn.wWd = paramk.wWd;
-        localn.userData = Integer.valueOf(1);
+        com.tencent.mm.plugin.fts.a.a.n localn = new com.tencent.mm.plugin.fts.a.a.n().i((Cursor)localObject4);
+        localn.BHY = paramk.BHY;
+        localn.BJh = Integer.valueOf(1);
         label306:
         com.tencent.mm.plugin.fts.a.a.m localm;
         int i;
         if (((HashMap)localObject3).containsKey(localn.talker))
         {
           localObject1 = (HashMap)((HashMap)localObject3).get(localn.talker);
-          if (!((HashMap)localObject1).containsKey(localn.wVX)) {
+          if (!((HashMap)localObject1).containsKey(localn.BHS)) {
             break label431;
           }
-          localm = (com.tencent.mm.plugin.fts.a.a.m)((HashMap)localObject1).get(localn.wVX);
-          i = ((Integer)localm.userData).intValue() + 1;
+          localm = (com.tencent.mm.plugin.fts.a.a.m)((HashMap)localObject1).get(localn.BHS);
+          i = ((Integer)localm.BJh).intValue() + 1;
           if (localm.timestamp >= localn.timestamp) {
             break label407;
           }
-          localn.userData = Integer.valueOf(i);
-          ((HashMap)localObject1).put(localn.wVX, localn);
+          localn.BJh = Integer.valueOf(i);
+          ((HashMap)localObject1).put(localn.BHS, localn);
         }
         for (;;)
         {
@@ -1180,31 +1151,31 @@ public final class c
           localObject1 = new HashMap();
           break label306;
           label407:
-          localm.userData = Integer.valueOf(i);
-          ((HashMap)localObject1).put(localm.wVX, localm);
+          localm.BJh = Integer.valueOf(i);
+          ((HashMap)localObject1).put(localm.BHS, localm);
           continue;
           label431:
-          ((HashMap)localObject1).put(localn.wVX, localn);
+          ((HashMap)localObject1).put(localn.BHS, localn);
         }
       }
       ((Cursor)localObject4).close();
-      paramk.wXb = new ArrayList();
+      paramk.BIW = new ArrayList();
       localObject1 = ((HashMap)localObject2).values().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (com.tencent.mm.plugin.fts.a.a.m)((Iterator)localObject1).next();
-        if (((HashMap)localObject3).containsKey(((com.tencent.mm.plugin.fts.a.a.m)localObject2).wVX))
+        if (((HashMap)localObject3).containsKey(((com.tencent.mm.plugin.fts.a.a.m)localObject2).BHS))
         {
           localObject4 = new ArrayList();
-          ((List)localObject4).addAll(((HashMap)((HashMap)localObject3).get(((com.tencent.mm.plugin.fts.a.a.m)localObject2).wVX)).values());
-          Collections.sort((List)localObject4, this.wWO.wWY);
-          ((com.tencent.mm.plugin.fts.a.a.m)localObject2).userData = localObject4;
+          ((List)localObject4).addAll(((HashMap)((HashMap)localObject3).get(((com.tencent.mm.plugin.fts.a.a.m)localObject2).BHS)).values());
+          Collections.sort((List)localObject4, this.BIJ.BIT);
+          ((com.tencent.mm.plugin.fts.a.a.m)localObject2).BJh = localObject4;
           ((com.tencent.mm.plugin.fts.a.a.m)localObject2).timestamp = ((com.tencent.mm.plugin.fts.a.a.m)((List)localObject4).get(0)).timestamp;
-          paramk.wXb.add(localObject2);
+          paramk.BIW.add(localObject2);
         }
       }
-      Collections.sort(paramk.wXb, this.wWO.wWY);
-      ayx("findHitMessage");
+      Collections.sort(paramk.BIW, this.BIJ.BIT);
+      aHR("findHitMessage");
       AppMethodBeat.o(52732);
     }
     
@@ -1222,8 +1193,8 @@ public final class c
   final class i
     extends com.tencent.mm.plugin.fts.a.a.i
   {
-    private int wZj = 0;
-    private int wZk = 0;
+    private int BLi = 0;
+    private int BLj = 0;
     
     public i(com.tencent.mm.plugin.fts.a.a.j paramj)
     {
@@ -1233,64 +1204,64 @@ public final class c
     public final void a(k paramk)
     {
       AppMethodBeat.i(52733);
-      ayx("start");
-      paramk.wWd = com.tencent.mm.plugin.fts.a.a.h.a(this.wWO.query, false, c.this.wYV);
-      Object localObject2 = c.this.wYQ;
-      Object localObject1 = paramk.wWd;
-      int i = this.wWO.wWW;
-      String str = ((com.tencent.mm.plugin.fts.a.a.h)localObject1).dOz();
+      aHR("start");
+      paramk.BHY = com.tencent.mm.plugin.fts.a.a.h.a(this.BIJ.query, false, c.a(c.this));
+      Object localObject2 = c.b(c.this);
+      Object localObject1 = paramk.BHY;
+      int i = this.BIJ.BIR;
+      String str = ((com.tencent.mm.plugin.fts.a.a.h)localObject1).eqQ();
       if (i != 2147483647) {}
       for (localObject1 = " LIMIT " + (i + 1);; localObject1 = "")
       {
-        localObject1 = String.format("SELECT type, subtype, entity_id, aux_index, MAX(timestamp) as maxTime, count(aux_index) as msgCount FROM %s NOT INDEXED JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s' AND status >= 0 GROUP BY aux_index ORDER BY timestamp desc" + (String)localObject1 + ";", new Object[] { ((com.tencent.mm.plugin.fts.c.c)localObject2).dOt(), ((com.tencent.mm.plugin.fts.c.c)localObject2).dOu(), ((com.tencent.mm.plugin.fts.c.c)localObject2).dOt(), ((com.tencent.mm.plugin.fts.c.c)localObject2).dOu(), ((com.tencent.mm.plugin.fts.c.c)localObject2).dOu(), str });
-        localObject1 = ((com.tencent.mm.plugin.fts.a.a)localObject2).wUt.rawQuery((String)localObject1, null);
-        paramk.wXb = new LinkedList();
+        localObject1 = String.format("SELECT type, subtype, entity_id, aux_index, MAX(timestamp) as maxTime, count(aux_index) as msgCount FROM %s NOT INDEXED JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s' AND status >= 0 GROUP BY aux_index ORDER BY timestamp desc" + (String)localObject1 + ";", new Object[] { ((com.tencent.mm.plugin.fts.c.c)localObject2).eqI(), ((com.tencent.mm.plugin.fts.c.c)localObject2).eqJ(), ((com.tencent.mm.plugin.fts.c.c)localObject2).eqI(), ((com.tencent.mm.plugin.fts.c.c)localObject2).eqJ(), ((com.tencent.mm.plugin.fts.c.c)localObject2).eqJ(), str });
+        localObject1 = ((com.tencent.mm.plugin.fts.a.a)localObject2).BGp.rawQuery((String)localObject1, null);
+        paramk.BIW = new LinkedList();
         while (((Cursor)localObject1).moveToNext())
         {
           localObject2 = new com.tencent.mm.plugin.fts.a.a.m();
           ((com.tencent.mm.plugin.fts.a.a.m)localObject2).type = ((Cursor)localObject1).getInt(0);
-          ((com.tencent.mm.plugin.fts.a.a.m)localObject2).wVW = ((Cursor)localObject1).getInt(1);
-          ((com.tencent.mm.plugin.fts.a.a.m)localObject2).wXe = ((Cursor)localObject1).getLong(2);
-          ((com.tencent.mm.plugin.fts.a.a.m)localObject2).wVX = ((Cursor)localObject1).getString(3);
+          ((com.tencent.mm.plugin.fts.a.a.m)localObject2).BHR = ((Cursor)localObject1).getInt(1);
+          ((com.tencent.mm.plugin.fts.a.a.m)localObject2).BIZ = ((Cursor)localObject1).getLong(2);
+          ((com.tencent.mm.plugin.fts.a.a.m)localObject2).BHS = ((Cursor)localObject1).getString(3);
           ((com.tencent.mm.plugin.fts.a.a.m)localObject2).timestamp = ((Cursor)localObject1).getLong(4);
           int j = ((Cursor)localObject1).getInt(5);
           i = j;
           if (j == 1)
           {
             i = j;
-            if (ab.JB(((com.tencent.mm.plugin.fts.a.a.m)localObject2).wVX)) {
+            if (ab.QU(((com.tencent.mm.plugin.fts.a.a.m)localObject2).BHS)) {
               i = 0;
             }
           }
-          ((com.tencent.mm.plugin.fts.a.a.m)localObject2).userData = Integer.valueOf(i);
-          paramk.wXb.add(localObject2);
-          i = this.wZj;
-          this.wZj = (((Integer)((com.tencent.mm.plugin.fts.a.a.m)localObject2).userData).intValue() + i);
-          this.wZk += 1;
+          ((com.tencent.mm.plugin.fts.a.a.m)localObject2).BJh = Integer.valueOf(i);
+          paramk.BIW.add(localObject2);
+          i = this.BLi;
+          this.BLi = (((Integer)((com.tencent.mm.plugin.fts.a.a.m)localObject2).BJh).intValue() + i);
+          this.BLj += 1;
         }
       }
       ((Cursor)localObject1).close();
-      ayx("groupMessage");
-      if (paramk.wWd.wWE.length > 1)
+      aHR("groupMessage");
+      if (paramk.BHY.BIz.length > 1)
       {
-        localObject1 = com.tencent.mm.plugin.fts.a.a.h.bE(paramk.wWd.wWE[0], true);
-        localObject1 = ((com.tencent.mm.plugin.fts.c.a)((com.tencent.mm.plugin.fts.a.n)g.ah(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(3)).a((com.tencent.mm.plugin.fts.a.a.h)localObject1, null, com.tencent.mm.plugin.fts.a.c.wUL, com.tencent.mm.plugin.fts.a.c.wUP);
+        localObject1 = com.tencent.mm.plugin.fts.a.a.h.bJ(paramk.BHY.BIz[0], true);
+        localObject1 = ((com.tencent.mm.plugin.fts.c.a)((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(3)).a((com.tencent.mm.plugin.fts.a.a.h)localObject1, null, com.tencent.mm.plugin.fts.a.c.BGH, com.tencent.mm.plugin.fts.a.c.BGL);
         if (((Cursor)localObject1).moveToNext())
         {
           localObject2 = new com.tencent.mm.plugin.fts.a.a.m();
-          ((com.tencent.mm.plugin.fts.a.a.m)localObject2).wVX = "create_talker_message​";
-          paramk.wXb.add(0, localObject2);
+          ((com.tencent.mm.plugin.fts.a.a.m)localObject2).BHS = "create_talker_message​";
+          paramk.BIW.add(0, localObject2);
         }
         ((Cursor)localObject1).close();
-        ayx("findTalkerConversation");
+        aHR("findTalkerConversation");
       }
       AppMethodBeat.o(52733);
     }
     
-    public final String bCQ()
+    public final String bOl()
     {
       AppMethodBeat.i(52734);
-      String str = String.format("{totalMsgCount: %d conversationCount: %d}", new Object[] { Integer.valueOf(this.wZj), Integer.valueOf(this.wZk) });
+      String str = String.format("{totalMsgCount: %d conversationCount: %d}", new Object[] { Integer.valueOf(this.BLi), Integer.valueOf(this.BLj) });
       AppMethodBeat.o(52734);
       return str;
     }
@@ -1316,23 +1287,23 @@ public final class c
     
     public final void a(k paramk)
     {
-      AppMethodBeat.i(187310);
-      ayx("start");
-      paramk.wXb = new LinkedList();
-      Cursor localCursor = c.this.wYQ.d(this.wWO.wWV, this.wWO.wWS);
+      AppMethodBeat.i(254260);
+      aHR("start");
+      paramk.BIW = new LinkedList();
+      Cursor localCursor = c.b(c.this).d(this.BIJ.BIQ, this.BIJ.BIN);
       while (localCursor.moveToNext())
       {
         com.tencent.mm.plugin.fts.a.a.m localm = new com.tencent.mm.plugin.fts.a.a.m();
         localm.type = localCursor.getInt(0);
-        localm.wVW = localCursor.getInt(1);
-        localm.wXe = localCursor.getLong(2);
-        localm.wVX = localCursor.getString(3);
+        localm.BHR = localCursor.getInt(1);
+        localm.BIZ = localCursor.getLong(2);
+        localm.BHS = localCursor.getString(3);
         localm.timestamp = localCursor.getLong(4);
         localm.talker = localCursor.getString(5);
-        paramk.wXb.add(localm);
+        paramk.BIW.add(localm);
       }
       localCursor.close();
-      AppMethodBeat.o(187310);
+      AppMethodBeat.o(254260);
     }
     
     public final String getName()
@@ -1343,7 +1314,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.c
  * JD-Core Version:    0.7.0.1
  */

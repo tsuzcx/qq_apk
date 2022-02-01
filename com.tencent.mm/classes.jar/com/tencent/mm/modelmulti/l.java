@@ -1,18 +1,18 @@
 package com.tencent.mm.modelmulti;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jm;
+import com.tencent.mm.f.a.kc;
 import com.tencent.mm.jni.utils.UtilsJni;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.protocal.MMProtocalJni;
 import com.tencent.mm.protocal.ad;
 import com.tencent.mm.protocal.l.c;
-import com.tencent.mm.protocal.protobuf.cts;
+import com.tencent.mm.protocal.protobuf.dcr;
 import com.tencent.mm.protocal.v.b;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -37,16 +37,16 @@ public final class l
       Log.i("MicroMsg.NewSyncMgr", "summerdiz dealWithPushResp unpack ret:" + bool1 + ", noticeid:" + bool1, new Object[] { Integer.valueOf(localPInt1.value) });
       if (localPInt1.value != 0)
       {
-        paramArrayOfByte2 = new jm();
-        paramArrayOfByte2.dOn.dOo = localPInt1.value;
+        paramArrayOfByte2 = new kc();
+        paramArrayOfByte2.fHy.fHz = localPInt1.value;
         boolean bool2 = EventCenter.instance.publish(paramArrayOfByte2);
         Log.i("MicroMsg.NewSyncMgr", "summerdiz publish GetDisasterInfoEvent noticeid[%d] publish[%b]", new Object[] { Integer.valueOf(localPInt1.value), Boolean.valueOf(bool2) });
         localPInt1.value = 0;
       }
       if (((PInt)localObject).value == 13)
       {
-        g.aAi();
-        paramArrayOfByte2 = g.aAg().qe(3);
+        h.aHH();
+        paramArrayOfByte2 = h.aHF().sE(3);
         localPByteArray1.value = UtilsJni.AesGcmDecryptWithUncompress(paramArrayOfByte2, localPByteArray1.value);
         localObject = new StringBuilder("summerdiz dealWithPushResp unpack AES_GCM_ENCRYPT serverSession");
         if (paramArrayOfByte2 != null) {
@@ -85,19 +85,19 @@ public final class l
       Log.d("MicroMsg.NewSyncMgr", "bufToResp using protobuf ok");
       localb.setRetCode(i);
       localb.setBufferSize(paramArrayOfByte1.length);
-      g.aAi();
-      paramArrayOfByte1 = Util.decodeHexString(Util.nullAsNil((String)g.aAh().azQ().get(8195, null)));
-      paramArrayOfByte2 = z.a(localb.KAh.Lev);
-      g.aAi();
-      g.aAf().cU(localb.KAh.oTW, localb.KAh.Mzb);
-      a.qc(localb.KAh.oTW);
-      if ((Util.isNullOrNil(paramArrayOfByte2)) || (!ad.m(paramArrayOfByte1, paramArrayOfByte2)))
+      h.aHH();
+      paramArrayOfByte1 = Util.decodeHexString(Util.nullAsNil((String)h.aHG().aHp().b(8195, null)));
+      paramArrayOfByte2 = z.a(localb.RBX.SfI);
+      h.aHH();
+      h.aHE().dp(localb.RBX.rVU, localb.RBX.TKC);
+      com.tencent.mm.kernel.b.sB(localb.RBX.rVU);
+      if ((Util.isNullOrNil(paramArrayOfByte2)) || (!ad.o(paramArrayOfByte1, paramArrayOfByte2)))
       {
         Log.e("MicroMsg.NewSyncMgr", "compareKeybuf syncKey failed");
         AppMethodBeat.o(132585);
         return;
       }
-      ((com.tencent.mm.plugin.zero.b.b)g.af(com.tencent.mm.plugin.zero.b.b.class)).bdS().a(localb, paramInt, paramLong);
+      ((com.tencent.mm.plugin.zero.b.b)h.ae(com.tencent.mm.plugin.zero.b.b.class)).bnn().a(localb, paramInt, paramLong);
     }
     catch (Exception paramArrayOfByte1)
     {
@@ -110,8 +110,8 @@ public final class l
     }
     if (localPInt1.value != 0)
     {
-      paramArrayOfByte1 = new jm();
-      paramArrayOfByte1.dOn.dOo = localPInt1.value;
+      paramArrayOfByte1 = new kc();
+      paramArrayOfByte1.fHy.fHz = localPInt1.value;
       bool1 = EventCenter.instance.publish(paramArrayOfByte1);
       Log.i("MicroMsg.NewSyncMgr", "summerdiz publish GetDisasterInfoEvent noticeid[%d] publish[%b]", new Object[] { Integer.valueOf(localPInt1.value), Boolean.valueOf(bool1) });
       localPInt1.value = 0;
@@ -119,14 +119,14 @@ public final class l
     AppMethodBeat.o(132585);
   }
   
-  public static boolean bdN()
+  public static boolean bni()
   {
     AppMethodBeat.i(132584);
-    g.aAi();
-    if (Util.nullAsNil((String)g.aAh().azQ().get(8195, null)).length() > 0)
+    h.aHH();
+    if (Util.nullAsNil((String)h.aHG().aHp().b(8195, null)).length() > 0)
     {
-      g.aAi();
-      if (Util.nullAsNil((Integer)g.aAh().azQ().get(15, null)) != 0) {
+      h.aHH();
+      if (Util.nullAsNil((Integer)h.aHG().aHp().b(15, null)) != 0) {
         break label89;
       }
     }
@@ -141,7 +141,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelmulti.l
  * JD-Core Version:    0.7.0.1
  */

@@ -6,9 +6,9 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public final class f
 {
-  private static AtomicReference<byte[]> SkI = new AtomicReference();
+  private static AtomicReference<byte[]> ZNt = new AtomicReference();
   
-  public static int T(InputStream paramInputStream)
+  public static int R(InputStream paramInputStream)
   {
     int i = -1;
     byte[] arrayOfByte = new byte[1];
@@ -45,7 +45,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.d.a.f
  * JD-Core Version:    0.7.0.1
  */

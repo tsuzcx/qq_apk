@@ -13,79 +13,82 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.zv;
+import com.tencent.mm.an.q;
+import com.tencent.mm.f.a.abc;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet.balance.model.c;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.f;
 
 @com.tencent.mm.ui.base.a(19)
 public class WalletBalanceResultUI
   extends WalletBaseUI
 {
-  protected Orders CwO;
-  protected TextView Hwu;
-  protected CheckBox Hwv;
-  protected Bankcard Hww;
-  protected Button krs;
+  protected Orders Ivh;
+  protected TextView Ooh;
+  protected CheckBox Ooi;
+  protected Bankcard Ooj;
+  protected Button njb;
   
-  private void fNr()
+  private void gFV()
   {
-    AppMethodBeat.i(213910);
+    AppMethodBeat.i(255327);
     int i = getInput().getInt("key_pay_flag", 0);
     String str1 = getInput().getString("key_pwd1");
     String str2 = getInput().getString("key_verify_code");
     PayInfo localPayInfo = (PayInfo)getInput().getParcelable("key_pay_info");
-    int j = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.sma, 1);
+    int j = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vWP, 1);
     if ((localPayInfo != null) && (j == 1))
     {
-      if (this.Hww == null)
+      if (this.Ooj == null)
       {
-        Log.d("MicroMsg.WalletBalanceResultUI", "flag: %s, verifycode: %s, reqkey: %s, payScene: %s, ignoreBind: %s", new Object[] { Integer.valueOf(i), str2, localPayInfo.dDL, Integer.valueOf(localPayInfo.dVv), "0" });
-        doSceneProgress(new c(i, str1, str2, localPayInfo.dDL, localPayInfo.dVv, "0"));
-        AppMethodBeat.o(213910);
+        Log.d("MicroMsg.WalletBalanceResultUI", "flag: %s, verifycode: %s, reqkey: %s, payScene: %s, ignoreBind: %s", new Object[] { Integer.valueOf(i), str2, localPayInfo.fwv, Integer.valueOf(localPayInfo.fOY), "0" });
+        doSceneProgress(new c(i, str1, str2, localPayInfo.fwv, localPayInfo.fOY, "0"));
+        AppMethodBeat.o(255327);
         return;
       }
-      Log.d("MicroMsg.WalletBalanceResultUI", "flag: %s, verifycode: %s, reqkey: %s, payScene: %s, ignoreBind: %s", new Object[] { Integer.valueOf(i), str2, localPayInfo.dDL, Integer.valueOf(localPayInfo.dVv), "1" });
-      doSceneProgress(new c(i, str1, str2, localPayInfo.dDL, localPayInfo.dVv, "1"), false);
+      Log.d("MicroMsg.WalletBalanceResultUI", "flag: %s, verifycode: %s, reqkey: %s, payScene: %s, ignoreBind: %s", new Object[] { Integer.valueOf(i), str2, localPayInfo.fwv, Integer.valueOf(localPayInfo.fOY), "1" });
+      doSceneProgress(new c(i, str1, str2, localPayInfo.fwv, localPayInfo.fOY, "1"), false);
     }
     next();
-    AppMethodBeat.o(213910);
+    AppMethodBeat.o(255327);
   }
   
   public int getLayoutId()
   {
-    return 2131496886;
+    return a.g.wallet_balance_save_result_ui;
   }
   
   public void initView()
   {
     AppMethodBeat.i(68688);
-    this.Hwu = ((TextView)findViewById(2131310341));
-    this.krs = ((Button)findViewById(2131310340));
-    if (this.CwO == null)
+    this.Ooh = ((TextView)findViewById(a.f.wbsr_money_tv));
+    this.njb = ((Button)findViewById(a.f.wbsr_finish_btn));
+    if (this.Ivh == null)
     {
       finish();
       AppMethodBeat.o(68688);
       return;
     }
-    this.Hwu.setText(f.d(this.CwO.dDO, this.CwO.AOl));
-    this.krs.setOnClickListener(new View.OnClickListener()
+    this.Ooh.setText(com.tencent.mm.wallet_core.ui.g.d(this.Ivh.fwy, this.Ivh.GHz));
+    this.njb.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(68683);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceResultUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceResultUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         Log.i("MicroMsg.WalletBalanceResultUI", "click finish btn");
         WalletBalanceResultUI.a(WalletBalanceResultUI.this);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceResultUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -102,14 +105,14 @@ public class WalletBalanceResultUI
         return false;
       }
     });
-    this.Hww = ((Bankcard)getInput().getParcelable("key_bankcard"));
+    this.Ooj = ((Bankcard)getInput().getParcelable("key_bankcard"));
     AppMethodBeat.o(68688);
   }
   
   public void next()
   {
     AppMethodBeat.i(68689);
-    if (!getNetController().r(new Object[] { this.CwO })) {
+    if (!getNetController().r(new Object[] { this.Ivh })) {
       super.next();
     }
     AppMethodBeat.o(68689);
@@ -121,10 +124,10 @@ public class WalletBalanceResultUI
   {
     AppMethodBeat.i(68687);
     super.onCreate(paramBundle);
-    this.CwO = ((Orders)getInput().getParcelable("key_orders"));
+    this.Ivh = ((Orders)getInput().getParcelable("key_orders"));
     initView();
     setMMTitle("");
-    setActionbarColor(getResources().getColor(2131101424));
+    setActionbarColor(getResources().getColor(a.c.white));
     hideActionbarLine();
     showHomeBtn(false);
     AppMethodBeat.o(68687);
@@ -135,14 +138,14 @@ public class WalletBalanceResultUI
     AppMethodBeat.i(68690);
     if ((paramq instanceof c))
     {
-      if (((c)paramq).HsS)
+      if (((c)paramq).OkD)
       {
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          s.fOg();
-          s.fOh().IbS = Util.nowSecond();
-          paramString = new zv();
-          paramString.efR.scene = 15;
+          s.gGL();
+          s.gGM().OUe = Util.nowSecond();
+          paramString = new abc();
+          paramString.gah.scene = 15;
           paramString.callback = new Runnable()
           {
             public final void run()

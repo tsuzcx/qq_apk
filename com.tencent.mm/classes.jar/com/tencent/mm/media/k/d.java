@@ -15,48 +15,57 @@ import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/util/GpuDetectorUtil;", "", "()V", "eGLEnvironment", "Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "renderThread", "Landroid/os/HandlerThread;", "checkForJni", "", "queryGpuInfo", "release", "reportKvInfo", "archName", "", "code", "coreSum", "name", "", "vendor", "version", "rating", "archNameDetail", "saveGpuDetectorVersion", "saveGpuDeviceModel", "deviceModel", "Lcom/tencent/gpudetector/JniGPUDetector$GpuDeviceModel;", "saveGpuRating", "Companion", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/util/GpuDetectorUtil;", "", "()V", "eGLEnvironment", "Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "renderThread", "Landroid/os/HandlerThread;", "checkForJni", "", "queryGpuInfo", "release", "reportKvInfo", "archName", "", "code", "coreSum", "name", "", "vendor", "version", "rating", "archNameDetail", "saveGpuDetectorVersion", "saveGpuDeviceModel", "deviceModel", "Lcom/tencent/gpudetector/JniGPUDetector$GpuDeviceModel;", "saveGpuRating", "Companion", "plugin-mediaeditor_release"})
 public final class d
 {
-  public static final a ilx;
+  public static final a law;
   public MMHandler handler;
-  private HandlerThread igZ;
-  private c.b ilw;
+  private HandlerThread kVN;
+  private c.b lav;
   
   static
   {
-    AppMethodBeat.i(218808);
-    ilx = new a((byte)0);
-    ilx.getClass().getClassLoader();
-    j.Ed("GPUDetector");
-    AppMethodBeat.o(218808);
+    AppMethodBeat.i(263820);
+    law = new a((byte)0);
+    law.getClass().getClassLoader();
+    j.KW("GPUDetector");
+    AppMethodBeat.o(263820);
   }
   
-  public static final int aNd()
+  public static final int aVG()
   {
-    AppMethodBeat.i(218810);
-    int i = ilx.aNd();
-    AppMethodBeat.o(218810);
+    AppMethodBeat.i(263824);
+    int i = law.aVG();
+    AppMethodBeat.o(263824);
     return i;
   }
   
-  public final void aNb()
+  public static final String aVH()
   {
-    AppMethodBeat.i(218807);
+    AppMethodBeat.i(263825);
+    Object localObject = law;
+    localObject = p.I(((a)localObject).aVJ(), " \n Rating is " + ((a)localObject).aVI());
+    AppMethodBeat.o(263825);
+    return localObject;
+  }
+  
+  public final void aVE()
+  {
+    AppMethodBeat.i(263817);
     for (;;)
     {
       try
       {
-        if ((a.aNg() == -1) || (a.aNh() == null) || (a.aNi() == null) || ((p.j(JniGPUDetector.Companion.getVersion(), a.aNi()) ^ true)))
+        if ((a.aVK() == -1) || (a.aVL() == null) || (a.aVM() == null) || ((p.h(JniGPUDetector.Companion.getVersion(), a.aVM()) ^ true)))
         {
-          this.igZ = com.tencent.f.c.d.hC("GpuDetectorUtil", 5);
-          Object localObject1 = this.igZ;
+          this.kVN = com.tencent.e.c.d.im("GpuDetectorUtil", 5);
+          Object localObject1 = this.kVN;
           if (localObject1 != null) {
             ((HandlerThread)localObject1).start();
           }
-          localObject1 = this.igZ;
+          localObject1 = this.kVN;
           if (localObject1 == null) {
-            break label167;
+            break label173;
           }
           localObject1 = ((HandlerThread)localObject1).getLooper();
           this.handler = new MMHandler((Looper)localObject1);
@@ -64,86 +73,77 @@ public final class d
           if (localObject1 != null)
           {
             ((MMHandler)localObject1).post((Runnable)new b(this));
-            AppMethodBeat.o(218807);
+            AppMethodBeat.o(263817);
             return;
           }
-          AppMethodBeat.o(218807);
+          AppMethodBeat.o(263817);
           return;
         }
       }
       catch (Exception localException)
       {
         Log.printInfoStack("MicroMsg.GpuDetectorUtil", "error happened ".concat(String.valueOf(localException)), new Object[0]);
-        AppMethodBeat.o(218807);
+        AppMethodBeat.o(263817);
         return;
       }
       Log.i("MicroMsg.GpuDetectorUtil", "sp has value and not to do queryGpuInfo");
-      AppMethodBeat.o(218807);
+      AppMethodBeat.o(263817);
       return;
-      label167:
+      label173:
       Object localObject2 = null;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/util/GpuDetectorUtil$Companion;", "", "()V", "GPU_DETECTOR_VERSION", "", "GPU_INFO_DEVICE_MODEL", "GPU_INFO_HAS_BEEN_QUERY", "GPU_INFO_RATING", "KV_NAME", "TAG", "checkGpuDetectorVersionFormSharePreference", "checkGpuDeviceModelFormSharePreference", "checkGpuRatingFormSharePreference", "", "getMMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "queryGpuDeviceModel", "queryGpuRating", "queryGpuRatingWithoutCheck", "spToMMKV", "", "plugin-mediaeditor_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/util/GpuDetectorUtil$Companion;", "", "()V", "GPU_DETECTOR_VERSION", "", "GPU_INFO_DEVICE_MODEL", "GPU_INFO_HAS_BEEN_QUERY", "GPU_INFO_RATING", "KV_NAME", "TAG", "checkGpuDetectorVersionFormSharePreference", "checkGpuDeviceModelFormSharePreference", "checkGpuRatingFormSharePreference", "", "getMMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "queryGpuDeviceModel", "queryGpuRating", "queryGpuRatingWithoutCheck", "showInformation", "spToMMKV", "", "plugin-mediaeditor_release"})
   public static final class a
   {
-    static MultiProcessMMKV VQ()
+    static int aVK()
     {
-      AppMethodBeat.i(218802);
-      MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("mmkv_gpu_info");
-      p.g(localMultiProcessMMKV, "MultiProcessMMKV.getMMKV(KV_NAME)");
-      AppMethodBeat.o(218802);
-      return localMultiProcessMMKV;
-    }
-    
-    static int aNg()
-    {
-      AppMethodBeat.i(218799);
-      int i = VQ().getInt("gpu_info_rating", -1);
+      AppMethodBeat.i(258208);
+      int i = aal().getInt("gpu_info_rating", -1);
       if (i == -1) {
-        aNj();
+        aVN();
       }
-      AppMethodBeat.o(218799);
+      AppMethodBeat.o(258208);
       return i;
     }
     
-    static String aNh()
+    static String aVL()
     {
-      AppMethodBeat.i(218800);
-      String str = VQ().getString("gpu_info_device_model", null);
+      AppMethodBeat.i(258209);
+      String str = aal().getString("gpu_info_device_model", null);
       CharSequence localCharSequence = (CharSequence)str;
       if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
       for (int i = 1;; i = 0)
       {
         if (i != 0) {
-          aNj();
+          aVN();
         }
-        AppMethodBeat.o(218800);
+        AppMethodBeat.o(258209);
         return str;
       }
     }
     
-    static String aNi()
+    static String aVM()
     {
-      AppMethodBeat.i(218801);
-      String str = VQ().getString("gpu_detector_version", null);
+      AppMethodBeat.i(258210);
+      String str = aal().getString("gpu_detector_version", null);
       CharSequence localCharSequence = (CharSequence)str;
       if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
       for (int i = 1;; i = 0)
       {
         if (i != 0) {
-          aNj();
+          aVN();
         }
-        AppMethodBeat.o(218801);
+        AppMethodBeat.o(258210);
         return str;
       }
     }
     
-    private static void aNj()
+    private static void aVN()
     {
-      AppMethodBeat.i(218803);
-      MultiProcessMMKV localMultiProcessMMKV = VQ();
+      AppMethodBeat.i(258212);
+      MultiProcessMMKV localMultiProcessMMKV = aal();
       for (;;)
       {
         try
@@ -176,7 +176,7 @@ public final class d
                   continue;
                 }
                 localMultiProcessMMKV.putString("gpu_detector_version", (String)localObject1);
-                AppMethodBeat.o(218803);
+                AppMethodBeat.o(258212);
               }
             }
             else
@@ -192,7 +192,7 @@ public final class d
         catch (Exception localException)
         {
           Log.printErrStackTrace("MicroMsg.GpuDetectorUtil", (Throwable)localException, "", new Object[0]);
-          AppMethodBeat.o(218803);
+          AppMethodBeat.o(258212);
           return;
         }
         label177:
@@ -202,16 +202,25 @@ public final class d
       }
     }
     
-    public final int aNd()
+    static MultiProcessMMKV aal()
     {
-      AppMethodBeat.i(218797);
+      AppMethodBeat.i(258211);
+      MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("mmkv_gpu_info");
+      p.j(localMultiProcessMMKV, "MultiProcessMMKV.getMMKV(KV_NAME)");
+      AppMethodBeat.o(258211);
+      return localMultiProcessMMKV;
+    }
+    
+    public final int aVG()
+    {
+      AppMethodBeat.i(258206);
       try
       {
-        int j = aNg();
+        int j = aVK();
         i = j;
         if (j == -1)
         {
-          new d().aNb();
+          new d().aVE();
           i = j;
         }
       }
@@ -223,26 +232,26 @@ public final class d
           int i = -1;
         }
       }
-      AppMethodBeat.o(218797);
+      AppMethodBeat.o(258206);
       return i;
     }
     
-    public final int aNe()
+    public final int aVI()
     {
-      AppMethodBeat.i(218796);
+      AppMethodBeat.i(258205);
       try
       {
-        int j = aNg();
-        String str1 = aNi();
+        int j = aVK();
+        String str1 = aVM();
         String str2 = JniGPUDetector.Companion.getVersion();
         if ((j != -1) && (str1 != null))
         {
           i = j;
-          if (!(p.j(str2, str2) ^ true)) {}
+          if (!(p.h(str2, str2) ^ true)) {}
         }
         else
         {
-          new d().aNb();
+          new d().aVE();
           i = j;
         }
       }
@@ -254,20 +263,20 @@ public final class d
           int i = -1;
         }
       }
-      AppMethodBeat.o(218796);
+      AppMethodBeat.o(258205);
       return i;
     }
     
-    public final String aNf()
+    public final String aVJ()
     {
-      AppMethodBeat.i(218798);
+      AppMethodBeat.i(258207);
       try
       {
-        String str2 = aNh();
+        String str2 = aVL();
         str1 = str2;
         if (str2 == null)
         {
-          new d().aNb();
+          new d().aVE();
           str1 = str2;
         }
       }
@@ -280,12 +289,12 @@ public final class d
           Object localObject = null;
         }
       }
-      AppMethodBeat.o(218798);
+      AppMethodBeat.o(258207);
       return str1;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -293,48 +302,48 @@ public final class d
     
     public final void run()
     {
-      AppMethodBeat.i(218805);
-      d.a(this.ily, c.a.a(c.ilt, null, 1, 1, null, 16));
-      d.aNc();
-      MMHandler localMMHandler = d.b(this.ily);
+      AppMethodBeat.i(258806);
+      d.a(this.lax, c.a.a(c.lar, null, 1, 1, null, 16));
+      d.aVF();
+      MMHandler localMMHandler = d.b(this.lax);
       if (localMMHandler != null) {
         localMMHandler.removeCallbacksAndMessages(null);
       }
-      localMMHandler = d.b(this.ily);
+      localMMHandler = d.b(this.lax);
       if (localMMHandler != null)
       {
         localMMHandler.post((Runnable)new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(218804);
-            if (d.a(this.ilz.ily) != null)
+            AppMethodBeat.i(259426);
+            if (d.a(this.lay.lax) != null)
             {
-              localObject = c.ilt;
-              localObject = d.a(this.ilz.ily);
+              localObject = c.lar;
+              localObject = d.a(this.lay.lax);
               if (localObject == null) {
-                p.hyc();
+                p.iCn();
               }
               c.a.a((c.b)localObject);
             }
-            Object localObject = d.c(this.ilz.ily);
+            Object localObject = d.c(this.lay.lax);
             if (localObject != null)
             {
               ((HandlerThread)localObject).quitSafely();
-              AppMethodBeat.o(218804);
+              AppMethodBeat.o(259426);
               return;
             }
-            AppMethodBeat.o(218804);
+            AppMethodBeat.o(259426);
           }
         });
-        AppMethodBeat.o(218805);
+        AppMethodBeat.o(258806);
         return;
       }
-      AppMethodBeat.o(218805);
+      AppMethodBeat.o(258806);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   public static final class c
     implements Runnable
   {
@@ -342,30 +351,30 @@ public final class d
     
     public final void run()
     {
-      AppMethodBeat.i(218806);
-      if (d.a(this.ily) != null)
+      AppMethodBeat.i(260303);
+      if (d.a(this.lax) != null)
       {
-        localObject = c.ilt;
-        localObject = d.a(this.ily);
+        localObject = c.lar;
+        localObject = d.a(this.lax);
         if (localObject == null) {
-          p.hyc();
+          p.iCn();
         }
         c.a.a((c.b)localObject);
       }
-      Object localObject = d.c(this.ily);
+      Object localObject = d.c(this.lax);
       if (localObject != null)
       {
         ((HandlerThread)localObject).quitSafely();
-        AppMethodBeat.o(218806);
+        AppMethodBeat.o(260303);
         return;
       }
-      AppMethodBeat.o(218806);
+      AppMethodBeat.o(260303);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.media.k.d
  * JD-Core Version:    0.7.0.1
  */

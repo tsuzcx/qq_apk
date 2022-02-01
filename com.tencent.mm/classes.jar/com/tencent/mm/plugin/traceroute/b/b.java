@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.traceroute.b;
 
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -13,7 +13,7 @@ import java.util.concurrent.TimeoutException;
 
 public final class b
 {
-  public static List<Object> S(String[] paramArrayOfString)
+  public static List<Object> T(String[] paramArrayOfString)
   {
     AppMethodBeat.i(29672);
     String str = " ";
@@ -27,7 +27,7 @@ public final class b
     Log.i("MicroMsg.MMTraceRoute", str);
     Object localObject = new ArrayList();
     paramArrayOfString = new a(paramArrayOfString, (List)localObject);
-    paramArrayOfString = com.tencent.f.h.RTc.aX(paramArrayOfString);
+    paramArrayOfString = com.tencent.e.h.ZvG.be(paramArrayOfString);
     try
     {
       paramArrayOfString.get(5000L, TimeUnit.MILLISECONDS);
@@ -50,7 +50,7 @@ public final class b
     }
   }
   
-  public static String aTK(String paramString)
+  public static String bfi(String paramString)
   {
     AppMethodBeat.i(29670);
     Log.i("MicroMsg.MMTraceRoute", "output string: ".concat(String.valueOf(paramString)));
@@ -77,7 +77,7 @@ public final class b
     return paramString;
   }
   
-  public static int aTL(String paramString)
+  public static int bfj(String paramString)
   {
     AppMethodBeat.i(29671);
     int i = paramString.indexOf("ttl=");
@@ -99,15 +99,15 @@ public final class b
   }
   
   static final class a
-    implements com.tencent.f.i.h
+    implements com.tencent.e.i.h
   {
-    private String[] GrB;
-    private List<Object> mWl;
+    private String[] Nem;
+    private List<Object> pWR;
     
     public a(String[] paramArrayOfString, List<Object> paramList)
     {
-      this.GrB = paramArrayOfString;
-      this.mWl = paramList;
+      this.Nem = paramArrayOfString;
+      this.pWR = paramList;
     }
     
     public final String getKey()
@@ -128,7 +128,7 @@ public final class b
       //   15: new 48	java/lang/ProcessBuilder
       //   18: dup
       //   19: aload_0
-      //   20: getfield 21	com/tencent/mm/plugin/traceroute/b/b$a:GrB	[Ljava/lang/String;
+      //   20: getfield 21	com/tencent/mm/plugin/traceroute/b/b$a:Nem	[Ljava/lang/String;
       //   23: invokespecial 51	java/lang/ProcessBuilder:<init>	([Ljava/lang/String;)V
       //   26: astore 11
       //   28: aload 11
@@ -212,13 +212,13 @@ public final class b
       //   187: aload 14
       //   189: invokestatic 118	com/tencent/mm/plugin/traceroute/b/b:a	(Ljava/lang/Process;Ljava/io/BufferedReader;)V
       //   192: aload_0
-      //   193: getfield 23	com/tencent/mm/plugin/traceroute/b/b$a:mWl	Ljava/util/List;
+      //   193: getfield 23	com/tencent/mm/plugin/traceroute/b/b$a:pWR	Ljava/util/List;
       //   196: aload 16
       //   198: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
       //   201: invokeinterface 124 2 0
       //   206: pop
       //   207: aload_0
-      //   208: getfield 23	com/tencent/mm/plugin/traceroute/b/b$a:mWl	Ljava/util/List;
+      //   208: getfield 23	com/tencent/mm/plugin/traceroute/b/b$a:pWR	Ljava/util/List;
       //   211: lload_1
       //   212: lload 9
       //   214: lsub
@@ -408,7 +408,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.traceroute.b.b
  * JD-Core Version:    0.7.0.1
  */

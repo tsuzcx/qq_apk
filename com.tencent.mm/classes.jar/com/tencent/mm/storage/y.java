@@ -1,17 +1,17 @@
 package com.tencent.mm.storage;
 
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.aa.a;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.al.ag;
-import com.tencent.mm.al.c;
-import com.tencent.mm.protocal.protobuf.dli;
-import com.tencent.mm.protocal.protobuf.dlk;
-import com.tencent.mm.protocal.protobuf.dll;
-import com.tencent.mm.protocal.protobuf.dlm;
-import com.tencent.mm.protocal.protobuf.dlo;
-import com.tencent.mm.protocal.protobuf.ege;
+import com.tencent.mm.an.aa.a;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.ao.af;
+import com.tencent.mm.ao.c;
+import com.tencent.mm.protocal.protobuf.dva;
+import com.tencent.mm.protocal.protobuf.dvc;
+import com.tencent.mm.protocal.protobuf.dvd;
+import com.tencent.mm.protocal.protobuf.dve;
+import com.tencent.mm.protocal.protobuf.dvg;
+import com.tencent.mm.protocal.protobuf.eqg;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMKVSlotManager;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
@@ -25,73 +25,90 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/storage/BizRecycleCardLogic;", "", "()V", "DEFAULT_INTERVAL", "", "TAG", "", "cardRecycleSlot", "Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "getCardRecycleSlot", "()Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "cardRecycleSlot$delegate", "Lkotlin/Lazy;", "isRecycleCard", "", "()Z", "setRecycleCard", "(Z)V", "isRecycleCardCheckOpen", "isRecycleCardCheckOpen$delegate", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "recycleCardOpen", "getRecycleCardOpen", "recycleCardOpen$delegate", "checkRecycleReportStatus", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "doRecycleCard", "", "fromScene", "Lcom/tencent/mm/storage/BizRecycleCardLogic$RecycleCardScene;", "handleRecycleCardResult", "list", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RecycleCard;", "recycleCard", "reportIdKey", "key", "RecycleCardFlag", "RecycleCardScene", "RecycleCardStatus", "plugin-biz_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/storage/BizRecycleCardLogic;", "", "()V", "DEFAULT_INTERVAL", "", "MAX_KEEP_DIGEST_TIME", "TAG", "", "cardRecycleSlot", "Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "getCardRecycleSlot", "()Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "cardRecycleSlot$delegate", "Lkotlin/Lazy;", "isRecycleCard", "", "()Z", "setRecycleCard", "(Z)V", "isRecycleCardCheckOpen", "isRecycleCardCheckOpen$delegate", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "recycleCardOpen", "getRecycleCardOpen", "recycleCardOpen$delegate", "checkRecycleReportStatus", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "doRecycleCard", "", "fromScene", "Lcom/tencent/mm/storage/BizRecycleCardLogic$RecycleCardScene;", "handleRecycleCardResult", "list", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RecycleCard;", "isDigestExposed", "recycleCard", "reportIdKey", "key", "RecycleCardFlag", "RecycleCardScene", "RecycleCardStatus", "plugin-biz_release"})
 public final class y
 {
-  private static final f NPL;
-  private static final f NPM;
-  private static final f NPN;
-  private static boolean NPO;
-  public static final y NPP;
-  private static final f iBW;
+  private static final f VdD;
+  private static final f VdE;
+  private static final f VdF;
+  private static boolean VdG;
+  public static final y VdH;
+  private static final f lrB;
   
   static
   {
-    AppMethodBeat.i(212601);
-    NPP = new y();
-    NPL = g.ah((kotlin.g.a.a)y.d.NQb);
-    iBW = g.ah((kotlin.g.a.a)y.h.NQf);
-    NPM = g.ah((kotlin.g.a.a)y.j.NQi);
-    NPN = g.ah((kotlin.g.a.a)g.NQe);
-    AppMethodBeat.o(212601);
+    AppMethodBeat.i(205707);
+    VdH = new y();
+    VdD = g.ar((kotlin.g.a.a)y.d.VdT);
+    lrB = g.ar((kotlin.g.a.a)y.h.VdX);
+    VdE = g.ar((kotlin.g.a.a)y.j.Vea);
+    VdF = g.ar((kotlin.g.a.a)g.VdW);
+    AppMethodBeat.o(205707);
   }
   
-  private static boolean A(z paramz)
+  private static boolean D(z paramz)
   {
-    AppMethodBeat.i(212599);
-    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)gAl().getSlot();
+    AppMethodBeat.i(205702);
     paramz = "CardRecycleReport" + paramz.field_msgId + '-' + paramz.field_recommendCardId;
-    if (localMultiProcessMMKV.decodeBool(paramz, false))
+    if (hws().decodeBool(paramz, false))
     {
-      AppMethodBeat.o(212599);
+      AppMethodBeat.o(205702);
       return false;
     }
-    localMultiProcessMMKV.encode(paramz, true);
-    AppMethodBeat.o(212599);
+    ((MultiProcessMMKV)hws().getSlotForWrite()).encode(paramz, true);
+    AppMethodBeat.o(205702);
     return true;
   }
   
-  public static void Bt(long paramLong)
+  private static boolean E(z paramz)
   {
-    AppMethodBeat.i(212600);
-    com.tencent.mm.plugin.report.service.h.CyF.n(1534L, paramLong, 1L);
-    AppMethodBeat.o(212600);
+    AppMethodBeat.i(205703);
+    if (System.currentTimeMillis() - paramz.field_createTime > 172800000L)
+    {
+      AppMethodBeat.o(205703);
+      return false;
+    }
+    if (c.lEh.decodeInt(String.valueOf(paramz.field_msgId), 0) == 1)
+    {
+      AppMethodBeat.o(205703);
+      return true;
+    }
+    AppMethodBeat.o(205703);
+    return false;
+  }
+  
+  public static void HG(long paramLong)
+  {
+    AppMethodBeat.i(205705);
+    com.tencent.mm.plugin.report.service.h.IzE.p(1534L, paramLong, 1L);
+    AppMethodBeat.o(205705);
   }
   
   public static void a(b paramb)
   {
-    AppMethodBeat.i(212597);
-    p.h(paramb, "fromScene");
-    com.tencent.f.h.RTc.a((Runnable)new e(paramb), 1000L, "BizRecycleCardLogic");
-    AppMethodBeat.o(212597);
+    AppMethodBeat.i(205699);
+    p.k(paramb, "fromScene");
+    com.tencent.e.h.ZvG.a((Runnable)new e(paramb), 1000L, "BizRecycleCardLogic");
+    AppMethodBeat.o(205699);
   }
   
-  public static void a(LinkedList<dli> paramLinkedList, b paramb)
+  public static void a(LinkedList<dva> paramLinkedList, b paramb)
   {
-    AppMethodBeat.i(212598);
-    p.h(paramLinkedList, "list");
-    p.h(paramb, "fromScene");
+    AppMethodBeat.i(205701);
+    p.k(paramLinkedList, "list");
+    p.k(paramb, "fromScene");
     if (((Collection)paramLinkedList).isEmpty()) {}
     for (int i = 1; i != 0; i = 0)
     {
       Log.i("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult list is empty");
-      AppMethodBeat.o(212598);
+      AppMethodBeat.o(205701);
       return;
     }
     LinkedList localLinkedList = new LinkedList();
-    label184:
+    Object localObject4;
+    label190:
     Object localObject5;
-    if (paramb == b.NPV)
+    if (paramb == b.VdN)
     {
       localObject2 = (Iterable)paramLinkedList;
       localObject1 = (Collection)new ArrayList();
@@ -99,13 +116,13 @@ public final class y
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = ((Iterator)localObject2).next();
-        localObject4 = (dli)localObject3;
-        Log.d("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult flag " + ((dli)localObject4).cSx);
-        if (((dli)localObject4).cSx == y.a.NPR.cSx) {}
+        localObject4 = (dva)localObject3;
+        Log.d("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult flag " + ((dva)localObject4).cUP);
+        if (((dva)localObject4).cUP == y.a.VdJ.cUP) {}
         for (i = 1;; i = 0)
         {
           if (i == 0) {
-            break label184;
+            break label190;
           }
           ((Collection)localObject1).add(localObject3);
           break;
@@ -117,128 +134,126 @@ public final class y
         if (!((Iterator)localObject2).hasNext()) {
           break;
         }
-        localObject3 = (dli)((Iterator)localObject2).next();
-        localObject4 = ag.ban().MM(((dli)localObject3).KVE);
-      } while ((localObject4 == null) || (!((z)localObject4).gAu()));
-      localObject5 = new dlk();
-      localObject1 = ((z)localObject4).gAD();
+        localObject3 = (dva)((Iterator)localObject2).next();
+        localObject4 = af.bjB().Uw(((dva)localObject3).RWK);
+      } while ((localObject4 == null) || (!((z)localObject4).hwB()));
+      localObject5 = new dvc();
+      localObject1 = ((z)localObject4).hwL();
       if (localObject1 != null) {}
-      for (localObject1 = ((ege)localObject1).dSJ;; localObject1 = null)
+      for (localObject1 = ((eqg)localObject1).fMh;; localObject1 = null)
       {
-        ((dlk)localObject5).KUp = ((String)localObject1);
-        ((dlk)localObject5).KVE = ((dli)localObject3).KVE;
-        ((dlk)localObject5).MPh = ((dli)localObject3).MPh;
+        ((dvc)localObject5).zaX = ((String)localObject1);
+        ((dvc)localObject5).RWK = ((dva)localObject3).RWK;
+        ((dvc)localObject5).SRj = ((dva)localObject3).SRj;
         localLinkedList.add(localObject5);
-        ag.ban().MX(((dli)localObject3).KVE);
+        af.bjB().UI(((dva)localObject3).RWK);
         Log.i("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult ok " + ((z)localObject4).field_msgId);
-        Bt(12L);
+        HG(12L);
         break;
       }
     }
-    Object localObject1 = ag.ban();
-    p.g(localObject1, "SubCoreBiz.getBizTimeLineInfoStorage()");
-    Object localObject2 = ((aa)localObject1).gAN();
-    Object localObject3 = (MultiProcessMMKV)c.iNQ.getSlot();
-    Object localObject4 = (Iterable)paramLinkedList;
+    Object localObject1 = af.bjB();
+    p.j(localObject1, "SubCoreBiz.getBizTimeLineInfoStorage()");
+    Object localObject2 = ((aa)localObject1).hwV();
+    Object localObject3 = (Iterable)paramLinkedList;
     localObject1 = (Collection)new ArrayList();
-    localObject4 = ((Iterable)localObject4).iterator();
-    dli localdli;
-    label510:
-    while (((Iterator)localObject4).hasNext())
+    localObject3 = ((Iterable)localObject3).iterator();
+    label507:
+    while (((Iterator)localObject3).hasNext())
     {
-      localObject5 = ((Iterator)localObject4).next();
-      localdli = (dli)localObject5;
-      Log.d("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult flag " + localdli.cSx);
-      if (localdli.cSx == y.a.NPR.cSx) {}
+      localObject4 = ((Iterator)localObject3).next();
+      localObject5 = (dva)localObject4;
+      Log.d("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult flag " + ((dva)localObject5).cUP);
+      if (((dva)localObject5).cUP == y.a.VdJ.cUP) {}
       for (i = 1;; i = 0)
       {
         if (i == 0) {
-          break label510;
+          break label507;
         }
-        ((Collection)localObject1).add(localObject5);
+        ((Collection)localObject1).add(localObject4);
         break;
       }
     }
-    localObject4 = ((Iterable)localObject1).iterator();
-    while (((Iterator)localObject4).hasNext())
+    localObject3 = ((Iterable)localObject1).iterator();
+    while (((Iterator)localObject3).hasNext())
     {
-      localdli = (dli)((Iterator)localObject4).next();
-      localObject5 = ag.ban().MM(localdli.KVE);
-      if ((localObject5 != null) && (((z)localObject5).gAu())) {
-        if ((((z)localObject5).field_isRead == 1) && (gAm()))
+      localObject5 = (dva)((Iterator)localObject3).next();
+      localObject4 = af.bjB().Uw(((dva)localObject5).RWK);
+      if ((localObject4 != null) && (((z)localObject4).hwB())) {
+        if ((((z)localObject4).field_isRead == 1) && (hwt()))
         {
-          if (A((z)localObject5))
+          if (D((z)localObject4))
           {
-            Bt(1L);
-            localObject1 = s.NPC;
-            i = c.NPX.status;
-            localObject1 = ((z)localObject5).gAD();
+            HG(1L);
+            localObject1 = s.Vdo;
+            i = c.VdP.status;
+            localObject1 = ((z)localObject4).hwL();
             if (localObject1 != null) {}
-            for (localObject1 = ((ege)localObject1).dSJ;; localObject1 = null)
+            for (localObject1 = ((eqg)localObject1).fMh;; localObject1 = null)
             {
-              s.di(i, (String)localObject1);
-              Log.i("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult msgIsRead " + ((z)localObject5).field_msgId);
+              s.dh(i, (String)localObject1);
+              Log.i("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult msgIsRead " + ((z)localObject4).field_msgId);
               break;
             }
           }
-          Log.d("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult msgIsRead " + ((z)localObject5).field_msgId);
+          Log.d("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult msgIsRead " + ((z)localObject4).field_msgId);
         }
-        else if ((((MultiProcessMMKV)localObject3).decodeInt(String.valueOf(((z)localObject5).field_msgId), 0) == 1) && (gAm()))
+        else if ((E((z)localObject4)) && (hwt()))
         {
-          if (A((z)localObject5))
+          if (D((z)localObject4))
           {
-            Bt(2L);
-            localObject1 = s.NPC;
-            i = c.NPY.status;
-            localObject1 = ((z)localObject5).gAD();
+            HG(2L);
+            localObject1 = s.Vdo;
+            i = c.VdQ.status;
+            localObject1 = ((z)localObject4).hwL();
             if (localObject1 != null) {}
-            for (localObject1 = ((ege)localObject1).dSJ;; localObject1 = null)
+            for (localObject1 = ((eqg)localObject1).fMh;; localObject1 = null)
             {
-              s.di(i, (String)localObject1);
-              Log.i("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult msg digest IsRead " + ((z)localObject5).field_msgId);
+              s.dh(i, (String)localObject1);
+              Log.i("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult msg digest IsRead " + ((z)localObject4).field_msgId);
               break;
             }
           }
-          Log.d("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult msg digest IsRead " + ((z)localObject5).field_msgId);
+          Log.d("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult msg digest IsRead " + ((z)localObject4).field_msgId);
         }
-        else if ((((z)localObject5).field_msgId == ((z)localObject2).field_msgId) && (gAm()))
+        else if ((((z)localObject4).field_msgId == ((z)localObject2).field_msgId) && (hwt()))
         {
-          if (A((z)localObject5))
+          if (D((z)localObject4))
           {
-            Bt(3L);
-            localObject1 = s.NPC;
-            i = c.NPZ.status;
-            localObject1 = ((z)localObject5).gAD();
+            HG(3L);
+            localObject1 = s.Vdo;
+            i = c.VdR.status;
+            localObject1 = ((z)localObject4).hwL();
             if (localObject1 != null) {}
-            for (localObject1 = ((ege)localObject1).dSJ;; localObject1 = null)
+            for (localObject1 = ((eqg)localObject1).fMh;; localObject1 = null)
             {
-              s.di(i, (String)localObject1);
-              Log.i("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult msg is newest card " + ((z)localObject5).field_msgId);
+              s.dh(i, (String)localObject1);
+              Log.i("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult msg is newest card " + ((z)localObject4).field_msgId);
               break;
             }
           }
-          Log.d("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult msg is newest card " + ((z)localObject5).field_msgId);
+          Log.d("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult msg is newest card " + ((z)localObject4).field_msgId);
         }
         else
         {
-          ag.ban().MX(localdli.KVE);
-          Log.i("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult ok " + ((z)localObject5).field_msgId);
-          Bt(4L);
-          dlk localdlk = new dlk();
-          localObject1 = ((z)localObject5).gAD();
+          af.bjB().UI(((dva)localObject5).RWK);
+          Log.i("MicroMsg.BizRecycleCardLogic", "handleRecycleCardResult ok " + ((z)localObject4).field_msgId);
+          HG(4L);
+          dvc localdvc = new dvc();
+          localObject1 = ((z)localObject4).hwL();
           if (localObject1 != null) {}
-          for (localObject1 = ((ege)localObject1).dSJ;; localObject1 = null)
+          for (localObject1 = ((eqg)localObject1).fMh;; localObject1 = null)
           {
-            localdlk.KUp = ((String)localObject1);
-            localdlk.KVE = localdli.KVE;
-            localdlk.MPh = localdli.MPh;
-            localLinkedList.add(localdlk);
-            localObject1 = ((z)localObject5).gAD();
-            if ((localObject1 == null) || (((ege)localObject1).MOD != 2)) {
+            localdvc.zaX = ((String)localObject1);
+            localdvc.RWK = ((dva)localObject5).RWK;
+            localdvc.SRj = ((dva)localObject5).SRj;
+            localLinkedList.add(localdvc);
+            localObject1 = ((z)localObject4).hwL();
+            if ((localObject1 == null) || (((eqg)localObject1).Uax != 2)) {
               break;
             }
-            localObject1 = ac.NRc;
-            ac.Nd(20L);
+            localObject1 = ac.VeT;
+            ac.UO(20L);
             break;
           }
         }
@@ -248,107 +263,104 @@ public final class y
     if (((Collection)localLinkedList).isEmpty()) {}
     for (i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(212598);
+      AppMethodBeat.o(205701);
       return;
     }
     int k = 0;
+    int j = 0;
+    int m = 0;
     i = 0;
-    paramLinkedList = ag.ban();
-    paramb = ag.ban();
-    p.g(paramb, "SubCoreBiz.getBizTimeLineInfoStorage()");
-    paramLinkedList = paramLinkedList.MO(paramb.gAS() << 32);
-    int m;
+    paramLinkedList = af.bjB();
+    paramb = af.bjB();
+    p.j(paramb, "SubCoreBiz.getBizTimeLineInfoStorage()");
+    paramLinkedList = paramLinkedList.Uy(paramb.hxb() << 32);
     if (paramLinkedList != null)
     {
       paramLinkedList = ((Iterable)paramLinkedList).iterator();
-      int j = 0;
-      m = j;
-      k = i;
+      k = j;
+      m = i;
       if (paramLinkedList.hasNext())
       {
         paramb = (z)paramLinkedList.next();
-        p.g(paramb, "it");
-        if (paramb.gAt())
+        p.j(paramb, "it");
+        if (paramb.hwA())
         {
           k = 1;
-          label1295:
-          if (!paramb.gAu()) {
-            break label1324;
+          label1294:
+          k = j + k;
+          if (!paramb.hwB()) {
+            break label1325;
           }
         }
-        label1324:
-        for (m = 1;; m = 0)
+        label1325:
+        for (j = 1;; j = 0)
         {
-          j = m + j;
-          i = k + i;
+          i = j + i;
+          j = k;
           break;
           k = 0;
-          break label1295;
+          break label1294;
         }
       }
     }
-    else
-    {
-      m = 0;
-    }
     paramLinkedList = new d.a();
-    paramb = new dll();
-    paramb.gCs = localLinkedList;
-    paramb.MPj = k;
-    paramb.MPk = m;
-    paramLinkedList.c((com.tencent.mm.bw.a)paramb);
-    paramLinkedList.d((com.tencent.mm.bw.a)new dlm());
-    paramLinkedList.MB("/cgi-bin/mmbiz-bin/timeline/recyclecardreport");
-    paramLinkedList.sG(4768);
-    com.tencent.mm.ak.aa.a(paramLinkedList.aXF(), (aa.a)y.f.NQd);
-    AppMethodBeat.o(212598);
+    paramb = new dvd();
+    paramb.jmy = localLinkedList;
+    paramb.Ubk = k;
+    paramb.Ubl = m;
+    paramLinkedList.c((com.tencent.mm.cd.a)paramb);
+    paramLinkedList.d((com.tencent.mm.cd.a)new dve());
+    paramLinkedList.TW("/cgi-bin/mmbiz-bin/timeline/recyclecardreport");
+    paramLinkedList.vD(4768);
+    com.tencent.mm.an.aa.a(paramLinkedList.bgN(), (aa.a)y.f.VdV);
+    AppMethodBeat.o(205701);
   }
   
-  public static MultiProcessMMKV aTI()
+  public static MultiProcessMMKV bcJ()
   {
-    AppMethodBeat.i(212595);
-    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)iBW.getValue();
-    AppMethodBeat.o(212595);
+    AppMethodBeat.i(205697);
+    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)lrB.getValue();
+    AppMethodBeat.o(205697);
     return localMultiProcessMMKV;
   }
   
-  private static MMKVSlotManager gAl()
+  private static MMKVSlotManager hws()
   {
-    AppMethodBeat.i(212594);
-    MMKVSlotManager localMMKVSlotManager = (MMKVSlotManager)NPL.getValue();
-    AppMethodBeat.o(212594);
+    AppMethodBeat.i(205696);
+    MMKVSlotManager localMMKVSlotManager = (MMKVSlotManager)VdD.getValue();
+    AppMethodBeat.o(205696);
     return localMMKVSlotManager;
   }
   
-  private static boolean gAm()
+  private static boolean hwt()
   {
-    AppMethodBeat.i(212596);
-    boolean bool = ((Boolean)NPN.getValue()).booleanValue();
-    AppMethodBeat.o(212596);
+    AppMethodBeat.i(205698);
+    boolean bool = ((Boolean)VdF.getValue()).booleanValue();
+    AppMethodBeat.o(205698);
     return bool;
   }
   
-  public static void gAn()
+  public static void hwu()
   {
-    NPO = false;
+    VdG = false;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/storage/BizRecycleCardLogic$RecycleCardScene;", "", "scene", "", "(Ljava/lang/String;II)V", "getScene", "()I", "RECYCLE_CARD_SCENE_NEW_MSG", "RECYCLE_CARD_SCENE_ENTER_BOX", "RECYCLE_CARD_SCENE_FEEDBACK", "plugin-biz_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/storage/BizRecycleCardLogic$RecycleCardScene;", "", "scene", "", "(Ljava/lang/String;II)V", "getScene", "()I", "RECYCLE_CARD_SCENE_NEW_MSG", "RECYCLE_CARD_SCENE_ENTER_BOX", "RECYCLE_CARD_SCENE_FEEDBACK", "plugin-biz_release"})
   public static enum b
   {
     final int scene;
     
     static
     {
-      AppMethodBeat.i(212575);
+      AppMethodBeat.i(205794);
       b localb1 = new b("RECYCLE_CARD_SCENE_NEW_MSG", 0, 1);
-      NPT = localb1;
+      VdL = localb1;
       b localb2 = new b("RECYCLE_CARD_SCENE_ENTER_BOX", 1, 2);
-      NPU = localb2;
+      VdM = localb2;
       b localb3 = new b("RECYCLE_CARD_SCENE_FEEDBACK", 2, 3);
-      NPV = localb3;
-      NPW = new b[] { localb1, localb2, localb3 };
-      AppMethodBeat.o(212575);
+      VdN = localb3;
+      VdO = new b[] { localb1, localb2, localb3 };
+      AppMethodBeat.o(205794);
     }
     
     private b(int paramInt)
@@ -357,22 +369,22 @@ public final class y
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/storage/BizRecycleCardLogic$RecycleCardStatus;", "", "status", "", "(Ljava/lang/String;II)V", "getStatus", "()I", "RECYCLE_CARD_STATUS_CARD_EXPOSURE", "RECYCLE_CARD_STATUS_DIGEST_EXPOSURE", "RECYCLE_CARD_STATUS_NEWEST_CARD", "plugin-biz_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/storage/BizRecycleCardLogic$RecycleCardStatus;", "", "status", "", "(Ljava/lang/String;II)V", "getStatus", "()I", "RECYCLE_CARD_STATUS_CARD_EXPOSURE", "RECYCLE_CARD_STATUS_DIGEST_EXPOSURE", "RECYCLE_CARD_STATUS_NEWEST_CARD", "plugin-biz_release"})
   public static enum c
   {
     final int status;
     
     static
     {
-      AppMethodBeat.i(212578);
+      AppMethodBeat.i(210758);
       c localc1 = new c("RECYCLE_CARD_STATUS_CARD_EXPOSURE", 0, 1);
-      NPX = localc1;
+      VdP = localc1;
       c localc2 = new c("RECYCLE_CARD_STATUS_DIGEST_EXPOSURE", 1, 2);
-      NPY = localc2;
+      VdQ = localc2;
       c localc3 = new c("RECYCLE_CARD_STATUS_NEWEST_CARD", 2, 3);
-      NPZ = localc3;
-      NQa = new c[] { localc1, localc2, localc3 };
-      AppMethodBeat.o(212578);
+      VdR = localc3;
+      VdS = new c[] { localc1, localc2, localc3 };
+      AppMethodBeat.o(210758);
     }
     
     private c(int paramInt)
@@ -381,7 +393,7 @@ public final class y
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class e
     implements Runnable
   {
@@ -389,25 +401,25 @@ public final class y
     
     public final void run()
     {
-      AppMethodBeat.i(212583);
-      y localy = y.NPP;
-      y.b(this.NQc);
-      AppMethodBeat.o(212583);
+      AppMethodBeat.i(205210);
+      y localy = y.VdH;
+      y.b(this.VdU);
+      AppMethodBeat.o(205210);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class g
     extends kotlin.g.b.q
     implements kotlin.g.a.a<Boolean>
   {
-    public static final g NQe;
+    public static final g VdW;
     
     static
     {
-      AppMethodBeat.i(212587);
-      NQe = new g();
-      AppMethodBeat.o(212587);
+      AppMethodBeat.i(206312);
+      VdW = new g();
+      AppMethodBeat.o(206312);
     }
     
     g()
@@ -416,46 +428,46 @@ public final class y
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "errType", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "errType", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback"})
   static final class i
     implements aa.a
   {
     i(y.b paramb) {}
     
-    public final int a(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.ak.d paramd, com.tencent.mm.ak.q paramq)
+    public final int a(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.an.d paramd, com.tencent.mm.an.q paramq)
     {
-      AppMethodBeat.i(212591);
-      paramString = y.NPP;
-      y.aTI().encode("RecycleCardLastTime", System.currentTimeMillis() / 1000L);
+      AppMethodBeat.i(205422);
+      paramString = y.VdH;
+      y.bcJ().encode("RecycleCardLastTime", System.currentTimeMillis() / 1000L);
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        paramString = y.NPP;
-        y.gAn();
-        AppMethodBeat.o(212591);
+        paramString = y.VdH;
+        y.hwu();
+        AppMethodBeat.o(205422);
         return 0;
       }
-      p.g(paramd, "rr");
-      paramString = (dlo)paramd.aYK();
+      p.j(paramd, "rr");
+      paramString = (dvg)paramd.bhY();
       if (paramString == null)
       {
-        paramString = y.NPP;
-        y.gAn();
-        AppMethodBeat.o(212591);
+        paramString = y.VdH;
+        y.hwu();
+        AppMethodBeat.o(205422);
         return 0;
       }
-      paramd = y.NPP;
-      y.aTI().encode("RecycleCardInterval", paramString.KVL);
-      paramd = y.NPP;
-      y.aTI().encode("RecycleCardMaxMsgCount", paramString.KUq);
-      com.tencent.mm.ac.d.b("BizRecycleCardLogic", (kotlin.g.a.a)new kotlin.g.b.q(paramString) {});
-      AppMethodBeat.o(212591);
+      paramd = y.VdH;
+      y.bcJ().encode("RecycleCardInterval", paramString.RWY);
+      paramd = y.VdH;
+      y.bcJ().encode("RecycleCardMaxMsgCount", paramString.RVn);
+      com.tencent.mm.ae.d.b("BizRecycleCardLogic", (kotlin.g.a.a)new kotlin.g.b.q(paramString) {});
+      AppMethodBeat.o(205422);
       return 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.storage.y
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
 {
-  public static int ST(int paramInt)
+  public static int Zo(int paramInt)
   {
     AppMethodBeat.i(63138);
     Log.i("MicroMsg.Music.MusicPlayIdKeyReport", "getQQMusicPlayerErrIdKey, errCode:".concat(String.valueOf(paramInt)));
@@ -79,7 +79,7 @@ public final class c
     return 38;
   }
   
-  public static int SU(int paramInt)
+  public static int Zp(int paramInt)
   {
     AppMethodBeat.i(63139);
     Log.i("MicroMsg.Music.MusicPlayIdKeyReport", "getMusicPlayerErrIdKey, errCode:".concat(String.valueOf(paramInt)));
@@ -114,7 +114,7 @@ public final class c
     return 44;
   }
   
-  public static int SV(int paramInt)
+  public static int Zq(int paramInt)
   {
     AppMethodBeat.i(63140);
     Log.i("MicroMsg.Music.MusicPlayIdKeyReport", "getMusicPlayerSumidKeyByMusicType, musicType:".concat(String.valueOf(paramInt)));
@@ -151,7 +151,7 @@ public final class c
     return 112;
   }
   
-  public static int SW(int paramInt)
+  public static int Zr(int paramInt)
   {
     AppMethodBeat.i(63141);
     Log.i("MicroMsg.Music.MusicPlayIdKeyReport", "getQQMusicPlayerSumidKeyByMusicType, musicType:".concat(String.valueOf(paramInt)));
@@ -194,7 +194,7 @@ public final class c
     return 126;
   }
   
-  public static int aHV(String paramString)
+  public static int aSl(String paramString)
   {
     AppMethodBeat.i(63142);
     if ("audio/3gpp".equalsIgnoreCase(paramString))
@@ -288,7 +288,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.d.c
  * JD-Core Version:    0.7.0.1
  */

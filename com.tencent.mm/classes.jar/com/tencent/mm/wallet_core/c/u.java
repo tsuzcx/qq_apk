@@ -1,46 +1,46 @@
 package com.tencent.mm.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.del;
-import com.tencent.mm.protocal.protobuf.dem;
+import com.tencent.mm.protocal.protobuf.dob;
+import com.tencent.mm.protocal.protobuf.doc;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class u
   extends w
 {
-  public String IqF;
-  public String IqG;
+  public String Pjo;
+  public String Pjp;
   private i callback;
-  public String rcD;
   public final d rr;
+  public String uFI;
   
   public u(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4)
   {
     AppMethodBeat.i(72797);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new del();
-    ((d.a)localObject).iLO = new dem();
+    ((d.a)localObject).lBU = new dob();
+    ((d.a)localObject).lBV = new doc();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/preparepurchase";
     ((d.a)localObject).funcId = 422;
-    ((d.a)localObject).iLP = 214;
+    ((d.a)localObject).lBW = 214;
     ((d.a)localObject).respCmdId = 1000000214;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (del)this.rr.iLK.iLR;
-    this.rcD = paramString1;
-    ((del)localObject).ProductID = paramString1;
-    this.IqG = paramString2;
-    ((del)localObject).MJz = paramString2;
-    this.IqF = paramString3;
-    ((del)localObject).MJA = paramString3;
-    ((del)localObject).APa = paramInt2;
-    ((del)localObject).MJB = paramInt1;
-    ((del)localObject).xNU = paramString4;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (dob)d.b.b(this.rr.lBR);
+    this.uFI = paramString1;
+    ((dob)localObject).ProductID = paramString1;
+    this.Pjp = paramString2;
+    ((dob)localObject).TVo = paramString2;
+    this.Pjo = paramString3;
+    ((dob)localObject).TVp = paramString3;
+    ((dob)localObject).GIo = paramInt2;
+    ((dob)localObject).TVq = paramInt1;
+    ((dob)localObject).CSe = paramString4;
     Log.d("MicroMsg.NetScenePreparePurchase", "productId:" + paramString1 + ",price:" + paramString2 + ",currencyType:" + paramString3 + ",payType:" + paramInt2);
     AppMethodBeat.o(72797);
   }
@@ -75,7 +75,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.u
  * JD-Core Version:    0.7.0.1
  */

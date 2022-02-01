@@ -3,21 +3,20 @@ package com.tencent.mm.plugin.topstory.a;
 import android.content.Context;
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.plugin.misc.a.a;
 import com.tencent.mm.plugin.websearch.api.ai;
 import com.tencent.mm.plugin.websearch.api.at;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.protobuf.aca;
-import com.tencent.mm.protocal.protobuf.any;
-import com.tencent.mm.protocal.protobuf.dyi;
-import com.tencent.mm.protocal.protobuf.eir;
-import com.tencent.mm.protocal.protobuf.eit;
-import com.tencent.mm.protocal.protobuf.eiu;
-import com.tencent.mm.protocal.protobuf.eiw;
-import com.tencent.mm.protocal.protobuf.eiy;
-import com.tencent.mm.protocal.protobuf.fat;
+import com.tencent.mm.protocal.protobuf.aci;
+import com.tencent.mm.protocal.protobuf.aoz;
+import com.tencent.mm.protocal.protobuf.eij;
+import com.tencent.mm.protocal.protobuf.est;
+import com.tencent.mm.protocal.protobuf.esv;
+import com.tencent.mm.protocal.protobuf.esw;
+import com.tencent.mm.protocal.protobuf.esy;
+import com.tencent.mm.protocal.protobuf.eta;
+import com.tencent.mm.protocal.protobuf.flm;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -40,7 +39,7 @@ import org.json.JSONObject;
 
 public final class h
 {
-  private static List<dyi> I(JSONArray paramJSONArray)
+  private static List<eij> K(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(90982);
     ArrayList localArrayList = new ArrayList();
@@ -48,120 +47,120 @@ public final class h
     while (i < paramJSONArray.length())
     {
       JSONObject localJSONObject = paramJSONArray.optJSONObject(i);
-      dyi localdyi = new dyi();
-      localdyi.id = localJSONObject.optString("id", "");
-      localdyi.dQx = localJSONObject.optString("wording", "");
-      localdyi.MXW = localJSONObject.optLong("category", 0L);
-      localdyi.actionType = localJSONObject.optInt("actionType", 0);
-      localdyi.url = localJSONObject.optString("url", "");
-      localdyi.title = localJSONObject.optString("title", "");
-      localdyi.oqZ = localJSONObject.optString("subTitle", "");
-      localdyi.icon = localJSONObject.optString("icon", "");
-      localArrayList.add(localdyi);
+      eij localeij = new eij();
+      localeij.id = localJSONObject.optString("id", "");
+      localeij.wording = localJSONObject.optString("wording", "");
+      localeij.Ukr = localJSONObject.optLong("category", 0L);
+      localeij.actionType = localJSONObject.optInt("actionType", 0);
+      localeij.url = localJSONObject.optString("url", "");
+      localeij.title = localJSONObject.optString("title", "");
+      localeij.rsw = localJSONObject.optString("subTitle", "");
+      localeij.icon = localJSONObject.optString("icon", "");
+      localArrayList.add(localeij);
       i += 1;
     }
     AppMethodBeat.o(90982);
     return localArrayList;
   }
   
-  public static final eit a(eit parameit)
+  public static final esv a(esv paramesv)
   {
     AppMethodBeat.i(90977);
-    eit localeit = new eit();
-    localeit.sGQ = parameit.sGQ;
-    localeit.scene = parameit.scene;
-    localeit.dDv = parameit.dDv;
-    localeit.hes = parameit.hes;
-    localeit.Nic = parameit.Nic;
-    localeit.Nib = parameit.Nib;
-    localeit.NhY = parameit.NhY;
-    localeit.NhZ = parameit.NhZ;
-    localeit.Nia = parameit.Nia;
-    localeit.NhX = parameit.NhX;
-    localeit.IDO.addAll(parameit.IDO);
-    localeit.guh = parameit.guh;
-    localeit.Nii = parameit.Nii;
-    localeit.Nij = parameit.Nij;
+    esv localesv = new esv();
+    localesv.wmL = paramesv.wmL;
+    localesv.scene = paramesv.scene;
+    localesv.fwe = paramesv.fwe;
+    localesv.jQi = paramesv.jQi;
+    localesv.UuI = paramesv.UuI;
+    localesv.UuH = paramesv.UuH;
+    localesv.UuE = paramesv.UuE;
+    localesv.UuF = paramesv.UuF;
+    localesv.UuG = paramesv.UuG;
+    localesv.UuD = paramesv.UuD;
+    localesv.Pye.addAll(paramesv.Pye);
+    localesv.iYs = paramesv.iYs;
+    localesv.UuO = paramesv.UuO;
+    localesv.UuP = paramesv.UuP;
     AppMethodBeat.o(90977);
-    return localeit;
+    return localesv;
   }
   
-  public static final eit a(fat paramfat, int paramInt, String paramString)
+  public static final esv a(flm paramflm, int paramInt, String paramString)
   {
     AppMethodBeat.i(90974);
-    eit localeit = new eit();
-    localeit.sGQ = UUID.randomUUID().toString();
-    localeit.Nic = new eiw();
-    localeit.Nic.title = paramfat.msN;
-    localeit.Nic.wWb = ("video-" + paramfat.IEy);
-    localeit.Nic.psI = paramfat.IEy;
-    localeit.Nic.Nio = paramfat.thumbUrl;
-    if (Util.isNullOrNil(localeit.Nic.Nio)) {
-      localeit.Nic.Nio = ("http://shp.qpic.cn/qqvideo_ori/0/" + paramfat.IEy + String.format("_%s_%s/0", new Object[] { Integer.valueOf(496), Integer.valueOf(280) }));
+    esv localesv = new esv();
+    localesv.wmL = UUID.randomUUID().toString();
+    localesv.UuI = new esy();
+    localesv.UuI.title = paramflm.pqW;
+    localesv.UuI.BHW = ("video-" + paramflm.PyQ);
+    localesv.UuI.Crh = paramflm.PyQ;
+    localesv.UuI.UuU = paramflm.thumbUrl;
+    if (Util.isNullOrNil(localesv.UuI.UuU)) {
+      localesv.UuI.UuU = ("http://shp.qpic.cn/qqvideo_ori/0/" + paramflm.PyQ + String.format("_%s_%s/0", new Object[] { Integer.valueOf(496), Integer.valueOf(280) }));
     }
-    localeit.Nic.IEG = paramfat.IEG;
-    localeit.Nic.source = paramfat.source;
-    localeit.Nic.eby = paramfat.eby;
-    localeit.Nic.Nir = paramfat.IEz;
-    localeit.Nic.Nit = paramfat.IEz;
-    localeit.Nic.IEE = paramfat.IEE;
-    if (paramfat.IEK == 100203L)
+    localesv.UuI.PyY = paramflm.PyY;
+    localesv.UuI.source = paramflm.source;
+    localesv.UuI.fVx = paramflm.fVx;
+    localesv.UuI.UuX = paramflm.PyR;
+    localesv.UuI.UuZ = paramflm.PyR;
+    localesv.UuI.PyW = paramflm.PyW;
+    if (paramflm.Pzc == 100203L)
     {
-      localeit.Nic.thumbWidth = 360;
-      localeit.Nic.thumbHeight = 640;
+      localesv.UuI.thumbWidth = 360;
+      localesv.UuI.thumbHeight = 640;
     }
     for (;;)
     {
-      localeit.Nic.timestamp = System.currentTimeMillis();
-      if (!Util.isNullOrNil(paramfat.IEJ)) {
+      localesv.UuI.timestamp = System.currentTimeMillis();
+      if (!Util.isNullOrNil(paramflm.Pzb)) {
         try
         {
-          JSONArray localJSONArray = new JSONArray(paramfat.IEJ);
+          JSONArray localJSONArray = new JSONArray(paramflm.Pzb);
           int i = 0;
           while (i < localJSONArray.length())
           {
             JSONObject localJSONObject = localJSONArray.getJSONObject(i);
-            dyi localdyi = new dyi();
-            localdyi.id = localJSONObject.optString("id");
-            localdyi.dQx = localJSONObject.optString("wording");
-            localdyi.MXW = localJSONObject.optLong("category");
-            localdyi.actionType = localJSONObject.optInt("actionType");
-            localdyi.url = localJSONObject.optString("url");
-            localdyi.title = localJSONObject.optString("title");
-            localdyi.oqZ = localJSONObject.optString("subTitle");
-            localdyi.icon = localJSONObject.optString("icon");
-            localeit.Nic.xuO.add(localdyi);
+            eij localeij = new eij();
+            localeij.id = localJSONObject.optString("id");
+            localeij.wording = localJSONObject.optString("wording");
+            localeij.Ukr = localJSONObject.optLong("category");
+            localeij.actionType = localJSONObject.optInt("actionType");
+            localeij.url = localJSONObject.optString("url");
+            localeij.title = localJSONObject.optString("title");
+            localeij.rsw = localJSONObject.optString("subTitle");
+            localeij.icon = localJSONObject.optString("icon");
+            localesv.UuI.Crg.add(localeij);
             i += 1;
             continue;
-            localeit.Nic.thumbWidth = 496;
-            localeit.Nic.thumbHeight = 280;
+            localesv.UuI.thumbWidth = 496;
+            localesv.UuI.thumbHeight = 280;
           }
         }
         catch (Exception localException) {}
       }
     }
-    localeit.NhX = paramfat.IEy;
-    localeit.NhY = paramfat.IEz;
-    localeit.NhZ = paramfat.IEA;
-    localeit.Nia = paramfat.IEB;
-    localeit.Nib = paramfat.IEK;
-    if (localeit.Nib <= 0L) {
-      localeit.Nib = 100201L;
+    localesv.UuD = paramflm.PyQ;
+    localesv.UuE = paramflm.PyR;
+    localesv.UuF = paramflm.PyS;
+    localesv.UuG = paramflm.PyT;
+    localesv.UuH = paramflm.Pzc;
+    if (localesv.UuH <= 0L) {
+      localesv.UuH = 100201L;
     }
-    localeit.Nie = false;
-    if (!Util.isNullOrNil(paramfat.IEI)) {
-      q(localeit.IDO, paramfat.IEI);
+    localesv.UuK = false;
+    if (!Util.isNullOrNil(paramflm.Pza)) {
+      s(localesv.Pye, paramflm.Pza);
     }
-    localeit.hes = "";
-    localeit.scene = paramInt;
-    localeit.dDv = paramString;
-    if (!Util.isNullOrNil(paramfat.IEL))
+    localesv.jQi = "";
+    localesv.scene = paramInt;
+    localesv.fwe = paramString;
+    if (!Util.isNullOrNil(paramflm.Pzd))
     {
-      localeit.Nid = new dyi();
-      localeit.Nid.title = paramfat.IEL;
+      localesv.UuJ = new eij();
+      localesv.UuJ.title = paramflm.Pzd;
     }
     AppMethodBeat.o(90974);
-    return localeit;
+    return localesv;
   }
   
   public static String a(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, int paramInt3, String paramString6, String paramString7)
@@ -202,11 +201,11 @@ public final class h
     }
     try
     {
-      localHashMap.put("deviceName", URLEncoder.encode(d.DEVICE_NAME, "utf8"));
+      localHashMap.put("deviceName", URLEncoder.encode(d.RAB, "utf8"));
       localHashMap.put("deviceBrand", URLEncoder.encode(Build.BRAND, "utf8"));
       localHashMap.put("deviceModel", URLEncoder.encode(Build.MODEL, "utf8"));
-      localHashMap.put("ostype", d.KyK);
-      paramString1 = n(localHashMap);
+      localHashMap.put("ostype", d.RAy);
+      paramString1 = q(localHashMap);
       AppMethodBeat.o(90983);
       return paramString1;
     }
@@ -219,40 +218,32 @@ public final class h
     }
   }
   
-  public static String aTv(String paramString)
-  {
-    AppMethodBeat.i(90979);
-    paramString = MMApplicationContext.getContext().getCacheDir() + "/topstory/" + paramString + "/";
-    AppMethodBeat.o(90979);
-    return paramString;
-  }
-  
-  public static final eit aU(Map<String, Object> paramMap)
+  public static final esv aO(Map<String, Object> paramMap)
   {
     int j = 0;
     AppMethodBeat.i(90976);
-    eit localeit = new eit();
-    localeit.dDv = ai.N(paramMap, "query");
-    localeit.scene = ai.b(paramMap, "scene", 21);
-    localeit.sGQ = UUID.randomUUID().toString();
-    localeit.hes = ai.N(paramMap, "searchId");
+    esv localesv = new esv();
+    localesv.fwe = ai.aa(paramMap, "query");
+    localesv.scene = ai.b(paramMap, "scene", 21);
+    localesv.wmL = UUID.randomUUID().toString();
+    localesv.jQi = ai.aa(paramMap, "searchId");
     if ((NetStatusUtil.isConnected(MMApplicationContext.getContext())) && (!NetStatusUtil.isWifi(MMApplicationContext.getContext()))) {
-      localeit.Nie = true;
+      localesv.UuK = true;
     }
-    Object localObject2 = ai.N(paramMap, "videoId");
+    Object localObject2 = ai.aa(paramMap, "videoId");
     Object localObject1 = new ArrayList();
     int i;
     try
     {
-      JSONArray localJSONArray = new JSONArray(ai.N(paramMap, "videoUrls"));
+      JSONArray localJSONArray = new JSONArray(ai.aa(paramMap, "videoUrls"));
       if (localJSONArray.length() > 0)
       {
         i = 0;
         while (i < localJSONArray.length())
         {
-          eiy localeiy = new eiy();
-          localeiy.url = localJSONArray.getString(i);
-          ((ArrayList)localObject1).add(localeiy);
+          eta localeta = new eta();
+          localeta.url = localJSONArray.getString(i);
+          ((ArrayList)localObject1).add(localeta);
           i += 1;
         }
       }
@@ -261,70 +252,70 @@ public final class h
       }
     }
     catch (JSONException localJSONException3) {}
-    localeit.Nic = new eiw();
-    localeit.Nic.title = ai.N(paramMap, "title");
-    localeit.Nic.Nio = ai.N(paramMap, "thumbUrl");
-    localeit.Nic.Eso = ai.b(paramMap, "mediaDuration", 0);
-    localeit.Nic.psI = ((String)localObject2);
-    localeit.Nic.IEG = ai.N(paramMap, "strPlayCount");
-    localeit.Nic.rCq = ai.N(paramMap, "shareUrl");
-    localeit.Nic.msN = ai.N(paramMap, "shareTitle");
-    localeit.Nic.IEH = ai.N(paramMap, "titleUrl");
-    localeit.Nic.xDQ = ai.N(paramMap, "shareDesc");
-    localeit.Nic.IED = ai.N(paramMap, "shareImgUrl");
-    localeit.Nic.IEE = ai.N(paramMap, "shareString");
-    localeit.Nic.IEF = ai.N(paramMap, "shareStringUrl");
-    localeit.Nic.source = ai.N(paramMap, "source");
-    localeit.Nic.eby = ai.N(paramMap, "sourceUrl");
-    localeit.Nic.Nip = ai.a(paramMap, "relevant_category", -1L);
-    localeit.Nic.Niq = ai.N(paramMap, "shareOpenId");
-    localeit.Nic.wWb = ai.N(paramMap, "docID");
-    localeit.Nic.Niv = ai.a(paramMap, "videoSize", 0L);
-    localeit.Nic.timestamp = Util.currentTicks();
-    localeit.Nic.Nis = ai.b(paramMap, "itemType", 0);
-    localeit.Nic.Nix = ai.b(paramMap, "switchFlag", 0);
-    if (Util.isNullOrNil(localeit.Nic.Nio)) {
-      localeit.Nic.Nio = ("http://shp.qpic.cn/qqvideo_ori/0/" + localeit.Nic.psI + String.format("_%s_%s/0", new Object[] { Integer.valueOf(496), Integer.valueOf(280) }));
+    localesv.UuI = new esy();
+    localesv.UuI.title = ai.aa(paramMap, "title");
+    localesv.UuI.UuU = ai.aa(paramMap, "thumbUrl");
+    localesv.UuI.KFK = ai.b(paramMap, "mediaDuration", 0);
+    localesv.UuI.Crh = ((String)localObject2);
+    localesv.UuI.PyY = ai.aa(paramMap, "strPlayCount");
+    localesv.UuI.vhY = ai.aa(paramMap, "shareUrl");
+    localesv.UuI.pqW = ai.aa(paramMap, "shareTitle");
+    localesv.UuI.PyZ = ai.aa(paramMap, "titleUrl");
+    localesv.UuI.CHR = ai.aa(paramMap, "shareDesc");
+    localesv.UuI.PyV = ai.aa(paramMap, "shareImgUrl");
+    localesv.UuI.PyW = ai.aa(paramMap, "shareString");
+    localesv.UuI.PyX = ai.aa(paramMap, "shareStringUrl");
+    localesv.UuI.source = ai.aa(paramMap, "source");
+    localesv.UuI.fVx = ai.aa(paramMap, "sourceUrl");
+    localesv.UuI.UuV = ai.a(paramMap, "relevant_category", -1L);
+    localesv.UuI.UuW = ai.aa(paramMap, "shareOpenId");
+    localesv.UuI.BHW = ai.aa(paramMap, "docID");
+    localesv.UuI.Uvb = ai.a(paramMap, "videoSize", 0L);
+    localesv.UuI.timestamp = Util.currentTicks();
+    localesv.UuI.UuY = ai.b(paramMap, "itemType", 0);
+    localesv.UuI.Uvd = ai.b(paramMap, "switchFlag", 0);
+    if (Util.isNullOrNil(localesv.UuI.UuU)) {
+      localesv.UuI.UuU = ("http://shp.qpic.cn/qqvideo_ori/0/" + localesv.UuI.Crh + String.format("_%s_%s/0", new Object[] { Integer.valueOf(496), Integer.valueOf(280) }));
     }
     try
     {
-      localObject2 = new JSONObject(ai.N(paramMap, "block"));
-      localeit.Nic.Niu = ((JSONObject)localObject2).optLong("resultType");
-      localeit.Nic.dDw = ((JSONObject)localObject2).optLong("type");
+      localObject2 = new JSONObject(ai.aa(paramMap, "block"));
+      localesv.UuI.Uva = ((JSONObject)localObject2).optLong("resultType");
+      localesv.UuI.fwf = ((JSONObject)localObject2).optLong("type");
       label602:
-      localeit.Nic.Nir = ai.N(paramMap, "expand");
-      localeit.Nic.Niw.addAll((Collection)localObject1);
-      localObject1 = hJ((List)localObject1);
+      localesv.UuI.UuX = ai.aa(paramMap, "expand");
+      localesv.UuI.Uvc.addAll((Collection)localObject1);
+      localObject1 = iy((List)localObject1);
       if (localObject1 != null)
       {
-        localeit.Nic.videoUrl = ((eiy)localObject1).url;
-        localeit.Nic.NiF = ((eiy)localObject1).NiF;
+        localesv.UuI.videoUrl = ((eta)localObject1).url;
+        localesv.UuI.Uvk = ((eta)localObject1).Uvk;
       }
-      localObject1 = ai.N(paramMap, "show_tag_list");
+      localObject1 = ai.aa(paramMap, "show_tag_list");
       if (!Util.isNullOrNil((String)localObject1)) {}
       try
       {
         localObject1 = new JSONArray((String)localObject1);
-        localeit.Nic.xuO.addAll(I((JSONArray)localObject1));
+        localesv.UuI.Crg.addAll(K((JSONArray)localObject1));
         label709:
-        localeit.Nib = localeit.Nic.Nip;
-        localeit.NhY = ai.N(paramMap, "expand");
-        localeit.NhZ = localeit.hes;
-        localeit.NhX = localeit.Nic.psI;
-        if (localeit.Nib == 100203L)
+        localesv.UuH = localesv.UuI.UuV;
+        localesv.UuE = ai.aa(paramMap, "expand");
+        localesv.UuF = localesv.jQi;
+        localesv.UuD = localesv.UuI.Crh;
+        if (localesv.UuH == 100203L)
         {
-          localeit.Nic.thumbWidth = 360;
-          localeit.Nic.thumbHeight = 640;
+          localesv.UuI.thumbWidth = 360;
+          localesv.UuI.thumbHeight = 640;
         }
         for (;;)
         {
-          localObject1 = ai.N(paramMap, "videoChannelTitle");
-          if ((!Util.isNullOrNil(localeit.Nic.IEE)) && ((localeit.Nib == 100202L) || (localeit.Nib == 100204L) || (localeit.Nib == 100205L)))
+          localObject1 = ai.aa(paramMap, "videoChannelTitle");
+          if ((!Util.isNullOrNil(localesv.UuI.PyW)) && ((localesv.UuH == 100202L) || (localesv.UuH == 100204L) || (localesv.UuH == 100205L)))
           {
-            localeit.Nid = new dyi();
-            localeit.Nid.title = ((String)localObject1);
+            localesv.UuJ = new eij();
+            localesv.UuJ.title = ((String)localObject1);
           }
-          paramMap = ai.N(paramMap, "extReqParams");
+          paramMap = ai.aa(paramMap, "extReqParams");
           if (!Util.isNullOrNil(paramMap)) {
             try
             {
@@ -333,15 +324,15 @@ public final class h
               while (i < paramMap.length())
               {
                 localObject1 = paramMap.getJSONObject(i);
-                localObject2 = new aca();
-                ((aca)localObject2).key = ((JSONObject)localObject1).optString("key", "");
-                ((aca)localObject2).LmC = ((JSONObject)localObject1).optInt("uintValue", 0);
-                ((aca)localObject2).LmD = ((JSONObject)localObject1).optString("textValue", "");
-                localeit.IDO.add(localObject2);
+                localObject2 = new aci();
+                ((aci)localObject2).key = ((JSONObject)localObject1).optString("key", "");
+                ((aci)localObject2).SnV = ((JSONObject)localObject1).optInt("uintValue", 0);
+                ((aci)localObject2).SnW = ((JSONObject)localObject1).optString("textValue", "");
+                localesv.Pye.add(localObject2);
                 i += 1;
                 continue;
-                localeit.Nic.thumbWidth = 496;
-                localeit.Nic.thumbHeight = 280;
+                localesv.UuI.thumbWidth = 496;
+                localesv.UuI.thumbHeight = 280;
               }
             }
             catch (Exception paramMap) {}
@@ -349,7 +340,7 @@ public final class h
         }
         label992:
         AppMethodBeat.o(90976);
-        return localeit;
+        return localesv;
       }
       catch (JSONException localJSONException1)
       {
@@ -362,16 +353,21 @@ public final class h
     }
   }
   
-  public static final eit br(JSONObject paramJSONObject)
+  public static final boolean aju(int paramInt)
+  {
+    return (paramInt == 110) || (paramInt == 700);
+  }
+  
+  public static final esv bA(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(90975);
-    eit localeit = new eit();
-    localeit.dDv = paramJSONObject.optString("query", "");
-    localeit.scene = paramJSONObject.optInt("scene", 21);
-    localeit.sGQ = UUID.randomUUID().toString();
-    localeit.NhZ = paramJSONObject.optString("searchId", "");
+    esv localesv = new esv();
+    localesv.fwe = paramJSONObject.optString("query", "");
+    localesv.scene = paramJSONObject.optInt("scene", 21);
+    localesv.wmL = UUID.randomUUID().toString();
+    localesv.UuF = paramJSONObject.optString("searchId", "");
     if ((NetStatusUtil.isConnected(MMApplicationContext.getContext())) && (!NetStatusUtil.isWifi(MMApplicationContext.getContext()))) {
-      localeit.Nie = true;
+      localesv.UuK = true;
     }
     Object localObject2 = paramJSONObject.optString("videoId", "");
     Object localObject1 = new ArrayList();
@@ -384,9 +380,9 @@ public final class h
         i = 0;
         while (i < localJSONArray.length())
         {
-          eiy localeiy = new eiy();
-          localeiy.url = localJSONArray.getString(i);
-          ((ArrayList)localObject1).add(localeiy);
+          eta localeta = new eta();
+          localeta.url = localJSONArray.getString(i);
+          ((ArrayList)localObject1).add(localeta);
           i += 1;
         }
       }
@@ -395,69 +391,69 @@ public final class h
       }
     }
     catch (JSONException localJSONException3) {}
-    localeit.Nic = new eiw();
-    localeit.Nic.title = paramJSONObject.optString("title", "");
-    localeit.Nic.Nio = paramJSONObject.optString("thumbUrl", "");
-    localeit.Nic.Eso = paramJSONObject.optInt("mediaDuration", 0);
-    localeit.Nic.psI = ((String)localObject2);
-    localeit.Nic.IEG = paramJSONObject.optString("strPlayCount", "");
-    localeit.Nic.rCq = paramJSONObject.optString("shareUrl", "");
-    localeit.Nic.msN = paramJSONObject.optString("shareTitle", "");
-    localeit.Nic.IEH = paramJSONObject.optString("titleUrl", "");
-    localeit.Nic.xDQ = paramJSONObject.optString("shareDesc", "");
-    localeit.Nic.IED = paramJSONObject.optString("shareImgUrl", "");
-    localeit.Nic.IEE = paramJSONObject.optString("shareString", "");
-    localeit.Nic.IEF = paramJSONObject.optString("shareStringUrl", "");
-    localeit.Nic.source = paramJSONObject.optString("source", "");
-    localeit.Nic.eby = paramJSONObject.optString("sourceUrl", "");
-    localeit.Nic.Nip = paramJSONObject.optInt("relevant_category", -1);
-    localeit.Nic.Niq = paramJSONObject.optString("shareOpenId", "");
-    localeit.Nic.wWb = paramJSONObject.optString("docID", "");
-    localeit.Nic.Niv = paramJSONObject.optInt("videoSize", 0);
-    localeit.Nic.timestamp = Util.currentTicks();
-    localeit.Nic.Nis = paramJSONObject.optInt("itemType", 0);
+    localesv.UuI = new esy();
+    localesv.UuI.title = paramJSONObject.optString("title", "");
+    localesv.UuI.UuU = paramJSONObject.optString("thumbUrl", "");
+    localesv.UuI.KFK = paramJSONObject.optInt("mediaDuration", 0);
+    localesv.UuI.Crh = ((String)localObject2);
+    localesv.UuI.PyY = paramJSONObject.optString("strPlayCount", "");
+    localesv.UuI.vhY = paramJSONObject.optString("shareUrl", "");
+    localesv.UuI.pqW = paramJSONObject.optString("shareTitle", "");
+    localesv.UuI.PyZ = paramJSONObject.optString("titleUrl", "");
+    localesv.UuI.CHR = paramJSONObject.optString("shareDesc", "");
+    localesv.UuI.PyV = paramJSONObject.optString("shareImgUrl", "");
+    localesv.UuI.PyW = paramJSONObject.optString("shareString", "");
+    localesv.UuI.PyX = paramJSONObject.optString("shareStringUrl", "");
+    localesv.UuI.source = paramJSONObject.optString("source", "");
+    localesv.UuI.fVx = paramJSONObject.optString("sourceUrl", "");
+    localesv.UuI.UuV = paramJSONObject.optInt("relevant_category", -1);
+    localesv.UuI.UuW = paramJSONObject.optString("shareOpenId", "");
+    localesv.UuI.BHW = paramJSONObject.optString("docID", "");
+    localesv.UuI.Uvb = paramJSONObject.optInt("videoSize", 0);
+    localesv.UuI.timestamp = Util.currentTicks();
+    localesv.UuI.UuY = paramJSONObject.optInt("itemType", 0);
     try
     {
       localObject2 = new JSONObject(paramJSONObject.optString("block", ""));
-      localeit.Nic.Niu = ((JSONObject)localObject2).optLong("resultType");
-      localeit.Nic.dDw = ((JSONObject)localObject2).optLong("type");
+      localesv.UuI.Uva = ((JSONObject)localObject2).optLong("resultType");
+      localesv.UuI.fwf = ((JSONObject)localObject2).optLong("type");
       label578:
-      localeit.Nic.Nir = paramJSONObject.optString("expand", "");
-      localeit.Nic.Niw.addAll((Collection)localObject1);
-      localObject1 = hJ((List)localObject1);
+      localesv.UuI.UuX = paramJSONObject.optString("expand", "");
+      localesv.UuI.Uvc.addAll((Collection)localObject1);
+      localObject1 = iy((List)localObject1);
       if (localObject1 != null)
       {
-        localeit.Nic.videoUrl = ((eiy)localObject1).url;
-        localeit.Nic.NiF = ((eiy)localObject1).NiF;
+        localesv.UuI.videoUrl = ((eta)localObject1).url;
+        localesv.UuI.Uvk = ((eta)localObject1).Uvk;
       }
-      if (Util.isNullOrNil(localeit.Nic.Nio)) {
-        localeit.Nic.Nio = ("http://shp.qpic.cn/qqvideo_ori/0/" + localeit.Nic.psI + String.format("_%s_%s/0", new Object[] { Integer.valueOf(496), Integer.valueOf(280) }));
+      if (Util.isNullOrNil(localesv.UuI.UuU)) {
+        localesv.UuI.UuU = ("http://shp.qpic.cn/qqvideo_ori/0/" + localesv.UuI.Crh + String.format("_%s_%s/0", new Object[] { Integer.valueOf(496), Integer.valueOf(280) }));
       }
       localObject1 = paramJSONObject.optString("tagList", "");
       if (!Util.isNullOrNil((String)localObject1)) {}
       try
       {
         localObject1 = new JSONArray((String)localObject1);
-        localeit.Nic.xuO.addAll(I((JSONArray)localObject1));
+        localesv.UuI.Crg.addAll(K((JSONArray)localObject1));
         label758:
         if (!paramJSONObject.optBoolean("not_show_feedback", false))
         {
-          localeit.Nic.NiE = new eiu();
+          localesv.UuI.Uvj = new esw();
           localObject1 = paramJSONObject.optJSONObject("feedbackObj");
           if (localObject1 != null)
           {
-            localeit.Nic.NiE.Nil = ((JSONObject)localObject1).optString("detailWording");
-            localeit.Nic.NiE.Nim = ((JSONObject)localObject1).optString("detailUrl");
+            localesv.UuI.Uvj.UuR = ((JSONObject)localObject1).optString("detailWording");
+            localesv.UuI.Uvj.UuS = ((JSONObject)localObject1).optString("detailUrl");
             localObject1 = ((JSONObject)localObject1).optJSONArray("feedbackData");
             if (localObject1 != null)
             {
               i = 0;
               while (i < ((JSONArray)localObject1).length())
               {
-                localObject2 = new any();
-                ((any)localObject2).id = ((JSONArray)localObject1).optJSONObject(i).optString("id", "");
-                ((any)localObject2).dQx = ((JSONArray)localObject1).optJSONObject(i).optString("wording", "");
-                localeit.Nic.NiE.Nin.add(localObject2);
+                localObject2 = new aoz();
+                ((aoz)localObject2).id = ((JSONArray)localObject1).optJSONObject(i).optString("id", "");
+                ((aoz)localObject2).wording = ((JSONArray)localObject1).optJSONObject(i).optString("wording", "");
+                localesv.UuI.Uvj.UuT.add(localObject2);
                 i += 1;
               }
             }
@@ -468,48 +464,48 @@ public final class h
         try
         {
           localObject1 = new JSONArray((String)localObject1);
-          localeit.Nic.xuO.addAll(I((JSONArray)localObject1));
+          localesv.UuI.Crg.addAll(K((JSONArray)localObject1));
           label963:
-          localeit.Nib = localeit.Nic.Nip;
-          localeit.NhY = paramJSONObject.optString("expand", "");
-          localeit.hes = "";
-          localeit.NhX = localeit.Nic.psI;
-          localeit.Nic.Nix = paramJSONObject.optInt("switchFlag", 0);
-          localObject1 = localeit.Nic;
+          localesv.UuH = localesv.UuI.UuV;
+          localesv.UuE = paramJSONObject.optString("expand", "");
+          localesv.jQi = "";
+          localesv.UuD = localesv.UuI.Crh;
+          localesv.UuI.Uvd = paramJSONObject.optInt("switchFlag", 0);
+          localObject1 = localesv.UuI;
           boolean bool;
           if ((paramJSONObject.optJSONObject("colikeInfo") != null) && (paramJSONObject.optJSONObject("colikeInfo").optBoolean("isSelfThumb")))
           {
             bool = true;
-            ((eiw)localObject1).NiC = bool;
-            localObject2 = localeit.Nic;
+            ((esy)localObject1).Uvi = bool;
+            localObject2 = localesv.UuI;
             if (paramJSONObject.optJSONObject("colikeInfo") == null) {
               break label1413;
             }
             localObject1 = paramJSONObject.optJSONObject("colikeInfo").optString("byPass", "");
             label1098:
-            ((eiw)localObject2).NiD = ((String)localObject1);
-            if (localeit.Nib != 100203L) {
+            ((esy)localObject2).zGJ = ((String)localObject1);
+            if (localesv.UuH != 100203L) {
               break label1419;
             }
-            localeit.Nic.thumbWidth = 360;
+            localesv.UuI.thumbWidth = 360;
           }
-          for (localeit.Nic.thumbHeight = 640;; localeit.Nic.thumbHeight = 280)
+          for (localesv.UuI.thumbHeight = 640;; localesv.UuI.thumbHeight = 280)
           {
             for (;;)
             {
               localObject1 = paramJSONObject.optJSONObject("secondVideoInfo");
               if (localObject1 != null)
               {
-                localeit.Nic.Niz = new eir();
-                localeit.Nic.Niz.NhR = ((JSONObject)localObject1).optInt("videoSecondType");
-                localeit.Nic.Niz.NhT = ((JSONObject)localObject1).optInt("requestDuration");
-                localeit.Nic.Niz.NhU = ((JSONObject)localObject1).optInt("requestPercent");
+                localesv.UuI.Uvf = new est();
+                localesv.UuI.Uvf.Uux = ((JSONObject)localObject1).optInt("videoSecondType");
+                localesv.UuI.Uvf.Uuz = ((JSONObject)localObject1).optInt("requestDuration");
+                localesv.UuI.Uvf.UuA = ((JSONObject)localObject1).optInt("requestPercent");
               }
               localObject1 = paramJSONObject.optString("videoChannelTitle", "");
-              if ((!Util.isNullOrNil((String)localObject1)) && ((localeit.Nib == 100202L) || (localeit.Nib == 100204L) || (localeit.Nib == 100205L)))
+              if ((!Util.isNullOrNil((String)localObject1)) && ((localesv.UuH == 100202L) || (localesv.UuH == 100204L) || (localesv.UuH == 100205L)))
               {
-                localeit.Nid = new dyi();
-                localeit.Nid.title = ((String)localObject1);
+                localesv.UuJ = new eij();
+                localesv.UuJ.title = ((String)localObject1);
               }
               localObject1 = paramJSONObject.optString("extReqParams", "");
               if (Util.isNullOrNil((String)localObject1)) {
@@ -524,11 +520,11 @@ public final class h
                 while (i < ((JSONArray)localObject1).length())
                 {
                   localObject2 = ((JSONArray)localObject1).getJSONObject(i);
-                  aca localaca = new aca();
-                  localaca.key = ((JSONObject)localObject2).optString("key", "");
-                  localaca.LmC = ((JSONObject)localObject2).optInt("uintValue", 0);
-                  localaca.LmD = ((JSONObject)localObject2).optString("textValue", "");
-                  localeit.IDO.add(localaca);
+                  aci localaci = new aci();
+                  localaci.key = ((JSONObject)localObject2).optString("key", "");
+                  localaci.SnV = ((JSONObject)localObject2).optInt("uintValue", 0);
+                  localaci.SnW = ((JSONObject)localObject2).optString("textValue", "");
+                  localesv.Pye.add(localaci);
                   i += 1;
                 }
                 bool = false;
@@ -537,21 +533,21 @@ public final class h
             }
             localObject1 = "";
             break label1098;
-            localeit.Nic.thumbWidth = 496;
+            localesv.UuI.thumbWidth = 496;
           }
-          localeit.Nii = paramJSONObject.optString("preNetType", "");
-          if (localeit.Nii.equals("wangka")) {
-            localeit.Nij = 1;
+          localesv.UuO = paramJSONObject.optString("preNetType", "");
+          if (localesv.UuO.equals("wangka")) {
+            localesv.UuP = 1;
           }
           for (;;)
           {
             label1479:
             AppMethodBeat.o(90975);
-            return localeit;
-            if ((localeit.Nii.equals("2g")) || (localeit.Nii.equals("3g")) || (localeit.Nii.equals("4g"))) {
-              localeit.Nij = 2;
+            return localesv;
+            if ((localesv.UuO.equals("2g")) || (localesv.UuO.equals("3g")) || (localesv.UuO.equals("4g"))) {
+              localesv.UuP = 2;
             } else {
-              localeit.Nij = 0;
+              localesv.UuP = 0;
             }
           }
         }
@@ -571,7 +567,15 @@ public final class h
     }
   }
   
-  public static String fxQ()
+  public static String beT(String paramString)
+  {
+    AppMethodBeat.i(90979);
+    paramString = MMApplicationContext.getContext().getCacheDir() + "/topstory/" + paramString + "/";
+    AppMethodBeat.o(90979);
+    return paramString;
+  }
+  
+  public static String gpL()
   {
     AppMethodBeat.i(90978);
     String str = MMApplicationContext.getContext().getCacheDir() + "/topstory/";
@@ -579,7 +583,7 @@ public final class h
     return str;
   }
   
-  public static boolean fxR()
+  public static boolean gpM()
   {
     AppMethodBeat.i(90980);
     if (1 >= Log.getLogLevel())
@@ -591,40 +595,55 @@ public final class h
     return false;
   }
   
-  public static String fxS()
+  public static String gpN()
   {
     AppMethodBeat.i(90986);
-    String str = b.aKC().replace("/data/user/0", "/data/data") + "topstory/homecache/";
+    String str = b.aSE() + "topstory/homecache/";
     AppMethodBeat.o(90986);
     return str;
   }
   
-  public static String fxT()
+  public static String gpO()
   {
     AppMethodBeat.i(90987);
-    String str = b.aKC().replace("/data/user/0", "/data/data") + "topstory/negcache/";
+    String str = b.aSE() + "topstory/negcache/";
     AppMethodBeat.o(90987);
     return str;
   }
   
-  public static final eiy hJ(List<eiy> paramList)
+  public static boolean isFreeSimCard()
+  {
+    AppMethodBeat.i(90988);
+    int i = ((a)com.tencent.mm.kernel.h.ae(a.class)).eSB();
+    switch (i)
+    {
+    }
+    for (boolean bool = false;; bool = true)
+    {
+      Log.i("MicroMsg.TopStory.TopStoryApiLogic", "isFreeSimCard result :%b simType: %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
+      AppMethodBeat.o(90988);
+      return bool;
+    }
+  }
+  
+  public static final eta iy(List<eta> paramList)
   {
     AppMethodBeat.i(90973);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      eiy localeiy = (eiy)paramList.next();
-      if ((localeiy != null) && (!Util.isNullOrNil(localeiy.url)))
+      eta localeta = (eta)paramList.next();
+      if ((localeta != null) && (!Util.isNullOrNil(localeta.url)))
       {
         AppMethodBeat.o(90973);
-        return localeiy;
+        return localeta;
       }
     }
     AppMethodBeat.o(90973);
     return null;
   }
   
-  public static JSONArray hK(List<dyi> paramList)
+  public static JSONArray iz(List<eij> paramList)
   {
     AppMethodBeat.i(90981);
     JSONArray localJSONArray = new JSONArray();
@@ -635,15 +654,15 @@ public final class h
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        dyi localdyi = (dyi)paramList.get(i);
-        localJSONObject.put("id", localdyi.id);
-        localJSONObject.put("wording", localdyi.dQx);
-        localJSONObject.put("category", localdyi.MXW);
-        localJSONObject.put("actionType", localdyi.actionType);
-        localJSONObject.put("url", localdyi.url);
-        localJSONObject.put("title", localdyi.title);
-        localJSONObject.put("subTitle", localdyi.oqZ);
-        localJSONObject.put("icon", localdyi.icon);
+        eij localeij = (eij)paramList.get(i);
+        localJSONObject.put("id", localeij.id);
+        localJSONObject.put("wording", localeij.wording);
+        localJSONObject.put("category", localeij.Ukr);
+        localJSONObject.put("actionType", localeij.actionType);
+        localJSONObject.put("url", localeij.url);
+        localJSONObject.put("title", localeij.title);
+        localJSONObject.put("subTitle", localeij.rsw);
+        localJSONObject.put("icon", localeij.icon);
         localJSONArray.put(localJSONObject);
         label148:
         i += 1;
@@ -658,28 +677,13 @@ public final class h
     }
   }
   
-  public static boolean isFreeSimCard()
-  {
-    AppMethodBeat.i(90988);
-    int i = ((a)g.af(a.class)).eiV();
-    switch (i)
-    {
-    }
-    for (boolean bool = false;; bool = true)
-    {
-      Log.i("MicroMsg.TopStory.TopStoryApiLogic", "isFreeSimCard result :%b simType: %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
-      AppMethodBeat.o(90988);
-      return bool;
-    }
-  }
-  
-  public static String n(HashMap<String, String> paramHashMap)
+  public static String q(HashMap<String, String> paramHashMap)
   {
     AppMethodBeat.i(90984);
-    o(paramHashMap);
+    r(paramHashMap);
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append("file://");
-    localStringBuffer.append(ai.afr(1).fYs());
+    localStringBuffer.append(ai.anf(1).gRd());
     localStringBuffer.append("/");
     localStringBuffer.append("app.html");
     localStringBuffer.append("?");
@@ -689,19 +693,19 @@ public final class h
     return paramHashMap;
   }
   
-  private static void o(HashMap<String, String> paramHashMap)
+  private static void r(HashMap<String, String> paramHashMap)
   {
     AppMethodBeat.i(90985);
     paramHashMap.put("lang", LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()));
     paramHashMap.put("platform", "android");
-    paramHashMap.put("version", String.valueOf(ai.afr(1).bbw()));
-    paramHashMap.put("netType", ai.ait());
+    paramHashMap.put("version", String.valueOf(ai.anf(1).bkM()));
+    paramHashMap.put("netType", ai.anV());
     paramHashMap.put("isClientLoading", "1");
     paramHashMap.put("wechatVersion", BuildInfo.CLIENT_VERSION);
     AppMethodBeat.o(90985);
   }
   
-  public static final void q(List<aca> paramList, String paramString)
+  public static final void s(List<aci> paramList, String paramString)
   {
     int i = 0;
     AppMethodBeat.i(90990);
@@ -712,11 +716,11 @@ public final class h
         while (i < paramString.length())
         {
           JSONObject localJSONObject = paramString.getJSONObject(i);
-          aca localaca = new aca();
-          localaca.key = localJSONObject.optString("key", "");
-          localaca.LmC = localJSONObject.optInt("uintValue", 0);
-          localaca.LmD = localJSONObject.optString("textValue", "");
-          paramList.add(localaca);
+          aci localaci = new aci();
+          localaci.key = localJSONObject.optString("key", "");
+          localaci.SnV = localJSONObject.optInt("uintValue", 0);
+          localaci.SnW = localJSONObject.optString("textValue", "");
+          paramList.add(localaci);
           i += 1;
         }
         AppMethodBeat.o(90990);
@@ -729,7 +733,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a.h
  * JD-Core Version:    0.7.0.1
  */

@@ -9,35 +9,35 @@ public enum c
   implements Choreographer.FrameCallback
 {
   private Choreographer choreographer;
-  private int gTn;
-  public long hkf;
-  public int hkg;
-  double hkh;
-  public boolean hki;
+  private int interval;
+  public long jVO;
+  public int jVP;
+  double jVQ;
+  public boolean jVR;
   private final Object lock;
   
   static
   {
-    AppMethodBeat.i(238322);
-    FVi = new c("INSTANCE");
-    FVj = new c[] { FVi };
-    AppMethodBeat.o(238322);
+    AppMethodBeat.i(214196);
+    MqD = new c("INSTANCE");
+    MqE = new c[] { MqD };
+    AppMethodBeat.o(214196);
   }
   
   private c()
   {
-    AppMethodBeat.i(238319);
-    this.hkf = 0L;
-    this.hkg = 0;
-    this.hkh = 0.0D;
-    this.gTn = 500;
-    this.hki = false;
+    AppMethodBeat.i(214184);
+    this.jVO = 0L;
+    this.jVP = 0;
+    this.jVQ = 0.0D;
+    this.interval = 500;
+    this.jVR = false;
     this.lock = new Object();
-    AppMethodBeat.o(238319);
+    AppMethodBeat.o(214184);
   }
   
   /* Error */
-  public final Choreographer axF()
+  public final Choreographer aEX()
   {
     // Byte code:
     //   0: ldc 94
@@ -112,38 +112,36 @@ public enum c
     // Exception table:
     //   from	to	target	type
     //   62	71	85	finally
-    //   86	88	85	finally
     //   55	62	95	java/lang/InterruptedException
-    //   88	95	95	java/lang/InterruptedException
+    //   86	95	95	java/lang/InterruptedException
     //   14	55	109	finally
     //   55	62	109	finally
     //   71	73	109	finally
-    //   88	95	109	finally
+    //   86	95	109	finally
     //   99	106	109	finally
-    //   110	112	109	finally
   }
   
   public final void doFrame(long paramLong)
   {
-    AppMethodBeat.i(238321);
+    AppMethodBeat.i(214191);
     paramLong = TimeUnit.NANOSECONDS.toMillis(paramLong);
-    if (this.hkf > 0L)
+    if (this.jVO > 0L)
     {
-      long l = paramLong - this.hkf;
-      this.hkg += 1;
-      if (l > this.gTn)
+      long l = paramLong - this.jVO;
+      this.jVP += 1;
+      if (l > this.interval)
       {
-        this.hkh = (this.hkg * 1000 / l);
-        this.hkf = paramLong;
-        this.hkg = 0;
+        this.jVQ = (this.jVP * 1000 / l);
+        this.jVO = paramLong;
+        this.jVP = 0;
       }
     }
     for (;;)
     {
-      axF().postFrameCallback(this);
-      AppMethodBeat.o(238321);
+      aEX().postFrameCallback(this);
+      AppMethodBeat.o(214191);
       return;
-      this.hkf = paramLong;
+      this.jVO = paramLong;
     }
   }
 }

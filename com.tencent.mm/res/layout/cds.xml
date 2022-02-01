@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/ag1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/b9"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dt5" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginTop="@dimen/cn" android:src="@raw/icons_filled_info" app:iconColor="@color/Blue" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+    <TextView android:textSize="@dimen/h_" android:textStyle="bold" android:textColor="@color/fo" android:id="@id/ijq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:text="@string/jqf" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toBottomOf="@id/dt5" />
+    <TextView android:gravity="center" android:id="@id/jzy" android:layout_width="@dimen/c8" android:layout_height="@dimen/cl" android:layout_marginBottom="@dimen/bx" android:text="@string/jqe" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" style="@style/p3" />
+</androidx.constraintlayout.widget.ConstraintLayout>

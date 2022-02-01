@@ -1,167 +1,152 @@
 package com.tencent.mm.plugin.webview.ui.tools.game;
 
-import android.os.Bundle;
+import android.content.ComponentName;
+import android.net.Uri;
+import android.os.IBinder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.it;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.webview.f.g;
+import com.tencent.mm.plugin.webview.model.al;
+import com.tencent.mm.plugin.webview.stub.e;
+import com.tencent.mm.plugin.webview.stub.e.a;
+import com.tencent.mm.plugin.webview.ui.tools.widget.k;
+import com.tencent.mm.plugin.webview.ui.tools.widget.k.a;
+import com.tencent.mm.plugin.webview.ui.tools.widget.k.c;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.ui.widget.MMWebView;
 
 public class c
+  extends k
 {
-  private long Jqf;
-  Bundle Jqg;
-  public a Jqh;
-  long mStartTime;
-  long xOJ;
-  long xyY;
-  
-  public c()
+  public c(MMWebView paramMMWebView)
   {
-    AppMethodBeat.i(80856);
-    this.Jqf = 0L;
-    this.xyY = 0L;
-    this.mStartTime = 0L;
-    this.xOJ = 0L;
-    this.Jqh = new a();
-    AppMethodBeat.o(80856);
+    super(paramMMWebView, (byte)0);
+    AppMethodBeat.i(80849);
+    this.Qxc = new a((byte)0);
+    AppMethodBeat.o(80849);
   }
   
-  private String baI(String paramString)
+  public boolean bmE(String paramString)
   {
-    AppMethodBeat.i(80858);
-    Matcher localMatcher = Pattern.compile("\\(.*?\\)").matcher(paramString);
-    while (localMatcher.find()) {
-      try
-      {
-        String str2 = Util.nullAsNil(localMatcher.group());
-        String str1 = str2.replace("(", "").replace(")", "").replace(" ", "");
-        String[] arrayOfString;
-        if (str1.contains("__ALLSTAYTIME__"))
-        {
-          str1 = str1.replace("__ALLSTAYTIME__", String.valueOf(this.Jqf / 1000L));
-          arrayOfString = str1.split("\\+");
-          if (arrayOfString.length == 2) {
-            str1 = String.valueOf(Util.safeParseLong(arrayOfString[0]) + Util.safeParseLong(arrayOfString[1]));
-          }
-          paramString = paramString.replace(str2, str1);
-        }
-        else if (str2.contains("__FOREGROUNDTIME__"))
-        {
-          str1 = str1.replace("__FOREGROUNDTIME__", String.valueOf(this.xyY / 1000L));
-          arrayOfString = str1.split("\\+");
-          if (arrayOfString.length == 2) {
-            str1 = String.valueOf(Util.safeParseLong(arrayOfString[0]) + Util.safeParseLong(arrayOfString[1]));
-          }
-          paramString = paramString.replace(str2, str1);
-        }
-      }
-      catch (NumberFormatException paramString)
-      {
-        Log.i("MicroMsg.GamePageTimeReport", "matchTimeMark, err:%s", new Object[] { paramString.getMessage() });
-        AppMethodBeat.o(80858);
-        return null;
-      }
-    }
-    AppMethodBeat.o(80858);
-    return paramString;
+    AppMethodBeat.i(80850);
+    boolean bool = super.bmE(paramString);
+    AppMethodBeat.o(80850);
+    return bool;
   }
   
-  public static void bl(Bundle paramBundle)
+  public void hax()
   {
-    AppMethodBeat.i(80857);
-    if (paramBundle == null)
-    {
-      AppMethodBeat.o(80857);
-      return;
-    }
-    Object localObject = paramBundle.keySet();
-    if (localObject == null)
-    {
-      AppMethodBeat.o(80857);
-      return;
-    }
-    JSONObject localJSONObject = new JSONObject();
+    AppMethodBeat.i(80851);
     try
     {
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      this.Qnq.a(this.QwQ, true, null);
+      if (bnk(this.QwQ))
       {
-        String str = (String)((Iterator)localObject).next();
-        localJSONObject.put(str, paramBundle.get(str));
+        AppMethodBeat.o(80851);
+        return;
       }
-      paramBundle = new it();
     }
-    catch (JSONException paramBundle)
+    catch (Exception localException)
     {
-      AppMethodBeat.o(80857);
-      return;
+      for (;;)
+      {
+        Log.w("MicroMsg.GameFloatWebViewClient", "postBinded, jumpToActivity, ex = " + localException.getMessage());
+      }
+      Uri localUri = Uri.parse(this.QwQ);
+      Object localObject = localUri;
+      if (localUri.getScheme() == null)
+      {
+        this.QwQ += "http://";
+        localObject = Uri.parse(this.QwQ);
+      }
+      if (((Uri)localObject).getScheme().startsWith("http"))
+      {
+        Log.i("MicroMsg.GameFloatWebViewClient", "uri scheme not startwith http, scheme = " + ((Uri)localObject).getScheme());
+        if (this.QwW) {}
+        for (localObject = "";; localObject = this.QwQ)
+        {
+          this.QwO = new k.a((String)localObject);
+          this.QwW = false;
+          if ((!this.QwK) && (!this.pIm.has(this.QwQ))) {
+            break label299;
+          }
+          if (al.bkB(this.QwQ)) {
+            break;
+          }
+          Log.f("MicroMsg.GameFloatWebViewClient", "loadInitialUrl, canLoadUrl fail, url = " + this.QwQ);
+          bmF(this.QwQ);
+          AppMethodBeat.o(80851);
+          return;
+        }
+        if (bmD(this.QwQ))
+        {
+          aJy(this.QwQ);
+          AppMethodBeat.o(80851);
+          return;
+        }
+        this.lxa.loadUrl(this.QwQ);
+        AppMethodBeat.o(80851);
+        return;
+        label299:
+        if (bmD(this.QwQ))
+        {
+          aJy(this.QwQ);
+          this.QwR = this.QwQ;
+        }
+        ax(this.QwQ, false);
+        AppMethodBeat.o(80851);
+        return;
+      }
+      if (!al.bkB(this.QwQ))
+      {
+        bmF(this.QwQ);
+        AppMethodBeat.o(80851);
+        return;
+      }
+      this.lxa.loadUrl(this.QwQ);
+      AppMethodBeat.o(80851);
     }
-    paramBundle.dNs.EX = 4;
-    paramBundle.dNs.param = localJSONObject.toString();
-    EventCenter.instance.publish(paramBundle);
-    AppMethodBeat.o(80857);
   }
   
-  protected void an(Bundle paramBundle) {}
-  
-  public final class a
+  final class a
+    extends k.c
   {
-    public a() {}
-    
-    public final void LZ()
+    private a()
     {
-      AppMethodBeat.i(80852);
-      c.this.mStartTime = System.currentTimeMillis();
-      c.this.xOJ = System.currentTimeMillis();
-      AppMethodBeat.o(80852);
+      super();
     }
     
-    public final void bm(Bundle paramBundle)
+    public final void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
     {
-      AppMethodBeat.i(80853);
-      c.this.Jqg = paramBundle;
-      Log.i("MicroMsg.GamePageTimeReport", "setGamePageReportData");
-      if ((paramBundle != null) && (paramBundle.getBoolean("game_page_report_time_begin")))
+      AppMethodBeat.i(80847);
+      Log.i("MicroMsg.GameFloatWebViewClient", "onServiceConnected");
+      if (c.a(c.this) == null)
       {
-        c.this.xyY = 0L;
-        c.this.mStartTime = System.currentTimeMillis();
-        c.this.xOJ = System.currentTimeMillis();
+        Log.e("MicroMsg.GameFloatWebViewClient", "onServiceConnected, activity destroyed");
+        AppMethodBeat.o(80847);
+        return;
       }
-      AppMethodBeat.o(80853);
+      try
+      {
+        c.a(c.this, e.a.L(paramIBinder));
+        c.d(c.this).a(c.b(c.this), c.c(c.this).hashCode());
+        c.e(c.this);
+        c.a(c.this, c.f(c.this), c.g(c.this));
+        c.this.hax();
+        AppMethodBeat.o(80847);
+        return;
+      }
+      catch (Exception paramComponentName)
+      {
+        Log.e("MicroMsg.GameFloatWebViewClient", "addCallback fail, ex = %s", new Object[] { paramComponentName.getMessage() });
+        AppMethodBeat.o(80847);
+      }
     }
     
-    public final void ghf()
+    public final void onServiceDisconnected(ComponentName paramComponentName)
     {
-      c.this.Jqg = null;
-      c.this.mStartTime = 0L;
-      c.this.xyY = 0L;
-      c.this.mStartTime = 0L;
-      c.this.xOJ = 0L;
-    }
-    
-    public final void onPause()
-    {
-      AppMethodBeat.i(80855);
-      if (c.this.xOJ != 0L) {
-        c.this.xyY += System.currentTimeMillis() - c.this.xOJ;
-      }
-      AppMethodBeat.o(80855);
-    }
-    
-    public final void onResume()
-    {
-      AppMethodBeat.i(80854);
-      if (c.this.xOJ != 0L) {
-        c.this.xOJ = System.currentTimeMillis();
-      }
-      AppMethodBeat.o(80854);
+      AppMethodBeat.i(80848);
+      super.onServiceDisconnected(paramComponentName);
+      AppMethodBeat.o(80848);
     }
   }
 }

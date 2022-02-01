@@ -23,24 +23,24 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class c
 {
   private final Context context;
-  public Map<String, d> lMA;
-  public volatile h lMB;
-  public volatile g lMC;
+  public Map<String, d> oIQ;
+  public volatile h oIR;
+  public volatile g oIS;
   
   public c(Context paramContext)
   {
     this.context = paramContext;
   }
   
-  public static List<com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.d> bFq()
+  public static List<com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.d> bQU()
   {
-    AppMethodBeat.i(215153);
+    AppMethodBeat.i(199259);
     ArrayList localArrayList = new ArrayList();
-    Object localObject = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bFB();
+    Object localObject = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bRj();
     if (localObject == null)
     {
       a.w("MicroMsg.Ble.BleConnectMgr", "getConnectedBleDevicesSysImpl, bluetoothManager is null", new Object[0]);
-      AppMethodBeat.o(215153);
+      AppMethodBeat.o(199259);
       return localArrayList;
     }
     localObject = ((BluetoothManager)localObject).getConnectedDevices(7).iterator();
@@ -49,11 +49,11 @@ public final class c
       BluetoothDevice localBluetoothDevice = (BluetoothDevice)((Iterator)localObject).next();
       localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.d(localBluetoothDevice.getName(), localBluetoothDevice.getAddress()));
     }
-    AppMethodBeat.o(215153);
+    AppMethodBeat.o(199259);
     return localArrayList;
   }
   
-  private static boolean h(List<String> paramList1, List<String> paramList2)
+  private static boolean j(List<String> paramList1, List<String> paramList2)
   {
     AppMethodBeat.i(175629);
     String str;
@@ -77,7 +77,7 @@ public final class c
   }
   
   /* Error */
-  public final d ZE(String paramString)
+  public final d ahs(String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -85,7 +85,7 @@ public final class c
     //   2: ldc 121
     //   4: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 123	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/a/c:lMA	Ljava/util/Map;
+    //   8: getfield 123	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/a/c:oIQ	Ljava/util/Map;
     //   11: ifnonnull +25 -> 36
     //   14: ldc 53
     //   16: ldc 125
@@ -101,7 +101,7 @@ public final class c
     //   34: aload_2
     //   35: areturn
     //   36: aload_0
-    //   37: getfield 123	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/a/c:lMA	Ljava/util/Map;
+    //   37: getfield 123	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/a/c:oIQ	Ljava/util/Map;
     //   40: aload_1
     //   41: invokeinterface 131 2 0
     //   46: checkcast 133	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/a/d
@@ -125,15 +125,15 @@ public final class c
     //   78: dup
     //   79: aload_0
     //   80: invokespecial 142	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/a/c$1:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/a/c;)V
-    //   83: putfield 144	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/a/d:lMC	Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/c/g;
+    //   83: putfield 144	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/a/d:oIS	Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/c/g;
     //   86: aload_2
     //   87: new 8	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/a/c$2
     //   90: dup
     //   91: aload_0
     //   92: invokespecial 145	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/a/c$2:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/a/c;)V
-    //   95: putfield 147	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/a/d:lMB	Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/c/h;
+    //   95: putfield 147	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/a/d:oIR	Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/c/h;
     //   98: aload_0
-    //   99: getfield 123	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/a/c:lMA	Ljava/util/Map;
+    //   99: getfield 123	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/a/c:oIQ	Ljava/util/Map;
     //   102: aload_1
     //   103: aload_2
     //   104: invokeinterface 151 3 0
@@ -161,30 +161,53 @@ public final class c
     //   110	115	118	finally
   }
   
-  public final List<com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.d> bB(List<String> paramList)
+  public final List<com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.d> bQT()
   {
-    AppMethodBeat.i(215152);
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      paramList = bFp();
-      AppMethodBeat.o(215152);
-      return paramList;
-    }
-    ArrayList localArrayList1 = new ArrayList();
-    if (this.lMA == null)
+    AppMethodBeat.i(199251);
+    ArrayList localArrayList = new ArrayList();
+    if (this.oIQ == null)
     {
       a.w("MicroMsg.Ble.BleConnectMgr", "getConnectedBleDevices, connectWorkers is null", new Object[0]);
-      AppMethodBeat.o(215152);
-      return localArrayList1;
+      AppMethodBeat.o(199251);
+      return localArrayList;
     }
-    Iterator localIterator = this.lMA.values().iterator();
+    Iterator localIterator = this.oIQ.values().iterator();
     while (localIterator.hasNext())
     {
       d locald = (d)localIterator.next();
-      BluetoothGatt localBluetoothGatt = locald.lMG;
+      BluetoothGatt localBluetoothGatt = locald.oIW;
+      if (localBluetoothGatt != null) {
+        localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.d(Util.nullAsNil(localBluetoothGatt.getDevice().getName()), locald.fzB));
+      }
+    }
+    AppMethodBeat.o(199251);
+    return localArrayList;
+  }
+  
+  public final List<com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.d> bz(List<String> paramList)
+  {
+    AppMethodBeat.i(199255);
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      paramList = bQT();
+      AppMethodBeat.o(199255);
+      return paramList;
+    }
+    ArrayList localArrayList1 = new ArrayList();
+    if (this.oIQ == null)
+    {
+      a.w("MicroMsg.Ble.BleConnectMgr", "getConnectedBleDevices, connectWorkers is null", new Object[0]);
+      AppMethodBeat.o(199255);
+      return localArrayList1;
+    }
+    Iterator localIterator = this.oIQ.values().iterator();
+    while (localIterator.hasNext())
+    {
+      d locald = (d)localIterator.next();
+      BluetoothGatt localBluetoothGatt = locald.oIW;
       if (localBluetoothGatt != null)
       {
-        Object localObject = locald.getServices();
+        Object localObject = locald.bQX();
         if ((localObject == null) || (((List)localObject).isEmpty()))
         {
           a.w("MicroMsg.Ble.BleConnectMgr", "getConnectedBleDevices, services is empty", new Object[0]);
@@ -196,54 +219,31 @@ public final class c
           while (((Iterator)localObject).hasNext())
           {
             e locale = (e)((Iterator)localObject).next();
-            if (locale.lNt) {
+            if (locale.oJH) {
               localArrayList2.add(locale.uuid);
             }
           }
-          if (h(paramList, localArrayList2)) {
-            localArrayList1.add(new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.d(Util.nullAsNil(localBluetoothGatt.getDevice().getName()), locald.dGL));
+          if (j(paramList, localArrayList2)) {
+            localArrayList1.add(new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.d(Util.nullAsNil(localBluetoothGatt.getDevice().getName()), locald.fzB));
           }
         }
       }
     }
-    AppMethodBeat.o(215152);
+    AppMethodBeat.o(199255);
     return localArrayList1;
-  }
-  
-  public final List<com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.d> bFp()
-  {
-    AppMethodBeat.i(215151);
-    ArrayList localArrayList = new ArrayList();
-    if (this.lMA == null)
-    {
-      a.w("MicroMsg.Ble.BleConnectMgr", "getConnectedBleDevices, connectWorkers is null", new Object[0]);
-      AppMethodBeat.o(215151);
-      return localArrayList;
-    }
-    Iterator localIterator = this.lMA.values().iterator();
-    while (localIterator.hasNext())
-    {
-      d locald = (d)localIterator.next();
-      BluetoothGatt localBluetoothGatt = locald.lMG;
-      if (localBluetoothGatt != null) {
-        localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.d(Util.nullAsNil(localBluetoothGatt.getDevice().getName()), locald.dGL));
-      }
-    }
-    AppMethodBeat.o(215151);
-    return localArrayList;
   }
   
   public final void init()
   {
     try
     {
-      AppMethodBeat.i(215148);
+      AppMethodBeat.i(199242);
       a.i("MicroMsg.Ble.BleConnectMgr", "init", new Object[0]);
-      if (this.lMA == null) {
-        this.lMA = new ConcurrentHashMap();
+      if (this.oIQ == null) {
+        this.oIQ = new ConcurrentHashMap();
       }
-      this.lMA.clear();
-      AppMethodBeat.o(215148);
+      this.oIQ.clear();
+      AppMethodBeat.o(199242);
       return;
     }
     finally {}
@@ -253,31 +253,31 @@ public final class c
   {
     try
     {
-      AppMethodBeat.i(215149);
+      AppMethodBeat.i(199248);
       a.i("MicroMsg.Ble.BleConnectMgr", "uninit", new Object[0]);
-      if (this.lMA == null) {
+      if (this.oIQ == null) {
         break label83;
       }
-      Iterator localIterator = this.lMA.values().iterator();
+      Iterator localIterator = this.oIQ.values().iterator();
       while (localIterator.hasNext()) {
         ((d)localIterator.next()).uninit();
       }
-      this.lMA.clear();
+      this.oIQ.clear();
     }
     finally {}
-    this.lMA = null;
+    this.oIQ = null;
     label83:
-    AppMethodBeat.o(215149);
+    AppMethodBeat.o(199248);
   }
   
   public static abstract interface a
   {
-    public static final a lME = new a() {};
+    public static final a oIU = new a() {};
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.c
  * JD-Core Version:    0.7.0.1
  */

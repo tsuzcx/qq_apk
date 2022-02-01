@@ -6,14 +6,14 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import com.tencent.f.i.b;
+import com.tencent.e.i.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.c;
+import com.tencent.mm.am.d;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 
 public final class VoipBaseFragment$a
   extends b
@@ -29,14 +29,14 @@ public final class VoipBaseFragment$a
   {
     AppMethodBeat.i(115367);
     Log.i("MicroMsg.VoipBaseFragment", "try load blur bitmap,timestamp: " + System.currentTimeMillis());
-    Bitmap localBitmap2 = c.a(this.HeK.goe, false, -1, null);
-    if ((localBitmap2 == null) || (this.HeK.ncd == null))
+    Bitmap localBitmap2 = d.a(this.NVB.iSn, false, -1, null);
+    if ((localBitmap2 == null) || (this.NVB.qcr == null))
     {
       AppMethodBeat.o(115367);
       return;
     }
     int i = 0;
-    while (((this.HeK.ncd.getHeight() == 0) || (this.HeK.ncd.getWidth() == 0)) && (i < 10)) {
+    while (((this.NVB.qcr.getHeight() == 0) || (this.NVB.qcr.getWidth() == 0)) && (i < 10)) {
       try
       {
         Thread.sleep(300L);
@@ -61,7 +61,7 @@ public final class VoipBaseFragment$a
         }
       }
     }
-    float f = ao.az(MMApplicationContext.getContext()).y / ao.az(MMApplicationContext.getContext()).x;
+    float f = ar.au(MMApplicationContext.getContext()).y / ar.au(MMApplicationContext.getContext()).x;
     i = (int)(localBitmap1.getHeight() / f);
     localBitmap1 = BitmapUtil.extractThumbNail(localBitmap1, localBitmap1.getHeight(), i, true, false);
     if (localBitmap1 == null)
@@ -74,17 +74,17 @@ public final class VoipBaseFragment$a
     {
       localBitmap1 = BitmapUtil.fastblur(localBitmap1, 20);
       Log.i("MicroMsg.VoipBaseFragment", "blur ok, timestamp: " + System.currentTimeMillis());
-      this.HeK.kAn.post(new Runnable()
+      this.NVB.ntw.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(115366);
-          if (VoipBaseFragment.a.this.HeK.HeC != null)
+          if (VoipBaseFragment.a.this.NVB.NVt != null)
           {
-            VoipBaseFragment.a.this.HeK.HeC.setBackgroundDrawable(new BitmapDrawable(localBitmap1));
-            VoipBaseFragment.a.this.HeK.HeC.getBackground().setAlpha(128);
+            VoipBaseFragment.a.this.NVB.NVt.setBackgroundDrawable(new BitmapDrawable(localBitmap1));
+            VoipBaseFragment.a.this.NVB.NVt.getBackground().setAlpha(128);
           }
-          VoipBaseFragment.a(VoipBaseFragment.a.this.HeK);
+          VoipBaseFragment.a(VoipBaseFragment.a.this.NVB);
           AppMethodBeat.o(115366);
         }
       });
@@ -100,7 +100,7 @@ public final class VoipBaseFragment$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.VoipBaseFragment.a
  * JD-Core Version:    0.7.0.1
  */

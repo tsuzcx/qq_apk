@@ -22,13 +22,13 @@ public final class f
   implements d
 {
   public static final SQLiteDatabase.CursorFactory FACTORY;
-  private final h OtX;
-  private final Throwable OtY;
-  public a OtZ;
-  private boolean Oua;
-  private b<a> Oub;
-  c Ouc;
-  private boolean Oud;
+  private final h VJV;
+  private final Throwable VJW;
+  public a VJX;
+  private boolean VJY;
+  private b<a> VJZ;
+  c VKa;
+  private boolean VKb;
   private Map<String, Integer> mColumnNameMap;
   private final String[] mColumns;
   private int mCount;
@@ -71,31 +71,31 @@ public final class f
       AppMethodBeat.o(133479);
       throw paramSQLiteCursorDriver;
     }
-    this.OtY = null;
+    this.VJW = null;
     this.mDriver = paramSQLiteCursorDriver;
     this.mEditTable = paramString;
     this.mColumnNameMap = null;
-    this.OtX = paramh;
+    this.VJV = paramh;
     this.mColumns = paramh.getColumnNames();
     this.mRowIdColumnIndex = DatabaseUtils.findRowIdColumnIndex(this.mColumns);
     AppMethodBeat.o(133479);
   }
   
-  private int akC(int paramInt)
+  private int asZ(int paramInt)
   {
     AppMethodBeat.i(133484);
-    if (this.Oua)
+    if (this.VJY)
     {
-      if (this.Oub == null) {
-        this.Oub = new b()
+      if (this.VJZ == null) {
+        this.VJZ = new b()
         {
-          public final ArrayList<a> bo(ArrayList<Object> paramAnonymousArrayList)
+          public final ArrayList<a> bD(ArrayList<Object> paramAnonymousArrayList)
           {
             AppMethodBeat.i(133476);
             f localf = f.this;
-            if (localf.OtZ != null)
+            if (localf.VJX != null)
             {
-              paramAnonymousArrayList = localf.OtZ.bo(paramAnonymousArrayList);
+              paramAnonymousArrayList = localf.VJX.bD(paramAnonymousArrayList);
               AppMethodBeat.o(133476);
               return paramAnonymousArrayList;
             }
@@ -103,13 +103,13 @@ public final class f
             return null;
           }
           
-          public final a gFJ()
+          public final a hCa()
           {
             AppMethodBeat.i(133475);
             Object localObject = f.this;
-            if (((f)localObject).OtZ != null)
+            if (((f)localObject).VJX != null)
             {
-              localObject = ((f)localObject).OtZ.gFJ();
+              localObject = ((f)localObject).VJX.hCa();
               AppMethodBeat.o(133475);
               return localObject;
             }
@@ -118,47 +118,47 @@ public final class f
           }
         };
       }
-      this.Oub.mStartPos = paramInt;
-      paramInt = this.OtX.a(this.Oub, paramInt, this.pageSize);
+      this.VJZ.mStartPos = paramInt;
+      paramInt = this.VJV.a(this.VJZ, paramInt, this.pageSize);
       AppMethodBeat.o(133484);
       return paramInt;
     }
-    gFK();
-    paramInt = this.OtX.a(this.Ouc, paramInt, this.pageSize);
+    hCb();
+    paramInt = this.VJV.a(this.VKa, paramInt, this.pageSize);
     AppMethodBeat.o(133484);
     return paramInt;
   }
   
-  private void gFK()
+  private void hCb()
   {
     AppMethodBeat.i(133481);
-    if (this.Ouc == null) {
-      this.Ouc = new c(this.mColumns, (byte)0);
+    if (this.VKa == null) {
+      this.VKa = new c(this.mColumns, (byte)0);
     }
     AppMethodBeat.o(133481);
   }
   
-  public final void AO(boolean paramBoolean)
+  public final void EV(boolean paramBoolean)
   {
-    this.Oua = paramBoolean;
+    this.VJY = paramBoolean;
   }
   
   public final void a(a parama)
   {
-    this.OtZ = parama;
+    this.VJX = parama;
   }
   
   public final boolean a(Object paramObject, a parama)
   {
     AppMethodBeat.i(133499);
-    if ((this.Oua) && (this.Oub != null))
+    if ((this.VJY) && (this.VJZ != null))
     {
-      if ((!this.Oud) && ((paramObject instanceof Object[])) && (this.Oub.ed(paramObject)))
+      if ((!this.VKb) && ((paramObject instanceof Object[])) && (this.VJZ.eh(paramObject)))
       {
         this.mCount -= ((Object[])paramObject).length;
         this.pageSize -= ((Object[])paramObject).length;
       }
-      b localb = this.Oub;
+      b localb = this.VJZ;
       if (parama != null)
       {
         com.tencent.mm.sdk.platformtools.Log.v("MicroMsg.CursorDataWindow", "newcursor cursor update Memory key : " + paramObject + "values : " + parama);
@@ -176,79 +176,72 @@ public final class f
           while (i < j)
           {
             parama = paramObject[i];
-            localb.OtM.remove(parama);
+            localb.VJK.remove(parama);
             i += 1;
           }
           localb.E(paramObject);
         }
         else
         {
-          if (localb.OtN == null) {
-            localb.OtN = new ArrayList();
+          if (localb.VJL == null) {
+            localb.VJL = new ArrayList();
           }
-          if (!localb.OtN.contains(paramObject))
+          if (!localb.VJL.contains(paramObject))
           {
-            localb.OtN.add(paramObject);
+            localb.VJL.add(paramObject);
             com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.CursorDataWindow", "newcursor cursor clearData : ".concat(String.valueOf(paramObject)));
           }
-          localb.OtM.remove(paramObject);
+          localb.VJK.remove(paramObject);
         }
       }
     }
-    if (!this.Oua)
+    if (!this.VJY)
     {
-      paramObject = this.Ouc;
+      paramObject = this.VKa;
       paramObject.mPos = 0;
-      paramObject.OtP.clear();
+      paramObject.VJN.clear();
     }
     AppMethodBeat.o(133499);
     return false;
   }
   
-  public final void akA(int paramInt)
+  public final boolean asV(int paramInt)
   {
-    if ((paramInt <= 15000) && (paramInt >= 2000)) {
-      this.pageSize = paramInt;
-    }
-  }
-  
-  public final boolean aky(int paramInt)
-  {
-    if (!this.Oua) {}
+    if (!this.VJY) {}
     b localb;
     do
     {
       do
       {
         return false;
-        localb = this.Oub;
+        localb = this.VJZ;
       } while (paramInt > 50);
-      if (localb.OtL < 10) {
+      if (localb.VJJ < 10) {
         return true;
       }
-    } while (paramInt / localb.OtL >= 0.1D);
+    } while (paramInt / localb.VJJ >= 0.1D);
     return true;
   }
   
-  public final a akz(int paramInt)
+  public final a asW(int paramInt)
   {
     Object localObject1 = null;
     int i = 0;
     AppMethodBeat.i(133498);
-    if (this.Oub != null)
+    if (this.VJZ != null)
     {
-      b localb = this.Oub;
-      if (localb.akB(paramInt))
+      b localb = this.VJZ;
+      if (localb.asY(paramInt))
       {
-        Object localObject2 = localb.OtK.get(paramInt);
-        a locala = (a)localb.OtM.get(localObject2);
+        Object localObject2 = localb.VJI.get(paramInt);
+        a locala = (a)localb.VJK.get(localObject2);
         localObject1 = locala;
         if (locala == null)
         {
           com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.CursorDataWindow", "get data null %s", new Object[] { localObject2 });
-          if (localb.OtN.size() != 0)
+          if (localb.VJL.size() != 0)
           {
-            localObject1 = localb.bo(localb.OtN);
+            localObject1 = localb.bD(localb.VJL);
             if (localObject1 != null) {
               if (i < ((ArrayList)localObject1).size())
               {
@@ -264,9 +257,9 @@ public final class f
                 }
               }
             }
-            localb.OtN.clear();
+            localb.VJL.clear();
           }
-          locala = (a)localb.OtM.get(localObject2);
+          locala = (a)localb.VJK.get(localObject2);
           localObject1 = locala;
           if (locala == null)
           {
@@ -279,11 +272,18 @@ public final class f
       {
         AppMethodBeat.o(133498);
         return localObject1;
-        com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.CursorDataWindow", "newcursor cursor getItem error: pos " + paramInt + " loaded num :" + localb.OtK.size());
+        com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.CursorDataWindow", "newcursor cursor getItem error: pos " + paramInt + " loaded num :" + localb.VJI.size());
       }
     }
     AppMethodBeat.o(133498);
     return null;
+  }
+  
+  public final void asX(int paramInt)
+  {
+    if ((paramInt <= 15000) && (paramInt >= 2000)) {
+      this.pageSize = paramInt;
+    }
   }
   
   public final void checkPosition()
@@ -299,7 +299,7 @@ public final class f
     super.close();
     try
     {
-      this.OtX.close();
+      this.VJV.close();
       this.mDriver.cursorClosed();
       return;
     }
@@ -319,46 +319,46 @@ public final class f
     AppMethodBeat.o(133486);
   }
   
-  public final boolean ed(Object paramObject)
+  public final boolean eh(Object paramObject)
   {
     AppMethodBeat.i(133500);
-    if (!this.Oua)
+    if (!this.VJY)
     {
       AppMethodBeat.o(133500);
       return false;
     }
-    if (this.Oub == null)
+    if (this.VJZ == null)
     {
       AppMethodBeat.o(133500);
       return false;
     }
-    boolean bool = this.Oub.ed(paramObject);
+    boolean bool = this.VJZ.eh(paramObject);
     AppMethodBeat.o(133500);
     return bool;
   }
   
-  public final a ee(Object paramObject)
+  public final a ei(Object paramObject)
   {
     AppMethodBeat.i(133501);
-    if (!this.Oua)
+    if (!this.VJY)
     {
       com.tencent.wcdb.support.Log.e("WCDB.SQLiteNewCursor", "newcursor getItemByKey error ".concat(String.valueOf(paramObject)));
       AppMethodBeat.o(133501);
       return null;
     }
-    if (this.Oub == null)
+    if (this.VJZ == null)
     {
       com.tencent.wcdb.support.Log.e("WCDB.SQLiteNewCursor", "newcursor error getItemByKey window is null");
       AppMethodBeat.o(133501);
       return null;
     }
-    b localb = this.Oub;
-    if (localb.OtM == null)
+    b localb = this.VJZ;
+    if (localb.VJK == null)
     {
       AppMethodBeat.o(133501);
       return null;
     }
-    paramObject = (a)localb.OtM.get(paramObject);
+    paramObject = (a)localb.VJK.get(paramObject);
     AppMethodBeat.o(133501);
     return paramObject;
   }
@@ -368,7 +368,7 @@ public final class f
     AppMethodBeat.i(133489);
     try
     {
-      if (this.Oub != null) {
+      if (this.VJZ != null) {
         close();
       }
       return;
@@ -380,30 +380,12 @@ public final class f
     }
   }
   
-  public final SparseArray<Object>[] gFv()
-  {
-    if (!this.Oua) {
-      return null;
-    }
-    return new SparseArray[] { this.Oub.OtK };
-  }
-  
-  public final HashMap gFw()
-  {
-    return this.Oub.OtM;
-  }
-  
-  public final boolean gFx()
-  {
-    return this.Oud;
-  }
-  
   public final byte[] getBlob(int paramInt)
   {
     AppMethodBeat.i(133497);
-    if (!this.Oua)
+    if (!this.VJY)
     {
-      byte[] arrayOfByte = this.Ouc.getBlob(paramInt);
+      byte[] arrayOfByte = this.VKa.getBlob(paramInt);
       AppMethodBeat.o(133497);
       return arrayOfByte;
     }
@@ -456,9 +438,9 @@ public final class f
     AppMethodBeat.i(133482);
     if (this.mCount == -1)
     {
-      this.mCount = akC(0);
-      if (this.Oub != null) {
-        if ((this.mCount == -1) || (this.mCount != this.Oub.OtK.size())) {
+      this.mCount = asZ(0);
+      if (this.VJZ != null) {
+        if ((this.mCount == -1) || (this.mCount != this.VJZ.VJI.size())) {
           break label91;
         }
       }
@@ -466,17 +448,17 @@ public final class f
     label91:
     for (boolean bool = true;; bool = false)
     {
-      this.Oud = bool;
-      if ((!this.Oua) || (!this.Oud)) {
+      this.VKb = bool;
+      if ((!this.VJY) || (!this.VKb)) {
         break label115;
       }
-      if (this.Oub != null) {
+      if (this.VJZ != null) {
         break;
       }
       AppMethodBeat.o(133482);
       return 0;
     }
-    int i = this.Oub.OtK.size();
+    int i = this.VJZ.VJI.size();
     AppMethodBeat.o(133482);
     return i;
     label115:
@@ -488,9 +470,9 @@ public final class f
   public final double getDouble(int paramInt)
   {
     AppMethodBeat.i(133495);
-    if (!this.Oua)
+    if (!this.VJY)
     {
-      double d = this.Ouc.getDouble(paramInt);
+      double d = this.VKa.getDouble(paramInt);
       AppMethodBeat.o(133495);
       return d;
     }
@@ -501,9 +483,9 @@ public final class f
   public final float getFloat(int paramInt)
   {
     AppMethodBeat.i(133494);
-    if (!this.Oua)
+    if (!this.VJY)
     {
-      float f = this.Ouc.getFloat(paramInt);
+      float f = this.VKa.getFloat(paramInt);
       AppMethodBeat.o(133494);
       return f;
     }
@@ -514,9 +496,9 @@ public final class f
   public final int getInt(int paramInt)
   {
     AppMethodBeat.i(133492);
-    if (!this.Oua)
+    if (!this.VJY)
     {
-      paramInt = this.Ouc.getInt(paramInt);
+      paramInt = this.VKa.getInt(paramInt);
       AppMethodBeat.o(133492);
       return paramInt;
     }
@@ -527,9 +509,9 @@ public final class f
   public final long getLong(int paramInt)
   {
     AppMethodBeat.i(133493);
-    if (!this.Oua)
+    if (!this.VJY)
     {
-      long l = this.Ouc.getLong(paramInt);
+      long l = this.VKa.getLong(paramInt);
       AppMethodBeat.o(133493);
       return l;
     }
@@ -540,9 +522,9 @@ public final class f
   public final short getShort(int paramInt)
   {
     AppMethodBeat.i(133491);
-    if (!this.Oua)
+    if (!this.VJY)
     {
-      short s = this.Ouc.getShort(paramInt);
+      short s = this.VKa.getShort(paramInt);
       AppMethodBeat.o(133491);
       return s;
     }
@@ -553,9 +535,9 @@ public final class f
   public final String getString(int paramInt)
   {
     AppMethodBeat.i(133490);
-    if (!this.Oua)
+    if (!this.VJY)
     {
-      String str = this.Ouc.getString(paramInt);
+      String str = this.VKa.getString(paramInt);
       AppMethodBeat.o(133490);
       return str;
     }
@@ -563,12 +545,30 @@ public final class f
     return null;
   }
   
+  public final SparseArray<Object>[] hBN()
+  {
+    if (!this.VJY) {
+      return null;
+    }
+    return new SparseArray[] { this.VJZ.VJI };
+  }
+  
+  public final HashMap hBO()
+  {
+    return this.VJZ.VJK;
+  }
+  
+  public final boolean hBP()
+  {
+    return this.VKb;
+  }
+  
   public final boolean isNull(int paramInt)
   {
     AppMethodBeat.i(133496);
-    if (!this.Oua)
+    if (!this.VJY)
     {
-      boolean bool = this.Ouc.isNull(paramInt);
+      boolean bool = this.VKa.isNull(paramInt);
       AppMethodBeat.o(133496);
       return bool;
     }
@@ -579,31 +579,31 @@ public final class f
   public final boolean onMove(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(133480);
-    if (this.Oua)
+    if (this.VJY)
     {
-      if ((this.Oub == null) || (!this.Oub.akB(paramInt2))) {
-        akC(paramInt2 / this.pageSize * this.pageSize);
+      if ((this.VJZ == null) || (!this.VJZ.asY(paramInt2))) {
+        asZ(paramInt2 / this.pageSize * this.pageSize);
       }
       AppMethodBeat.o(133480);
       return true;
     }
-    if (this.Ouc == null) {
-      gFK();
+    if (this.VKa == null) {
+      hCb();
     }
-    c localc = this.Ouc;
-    paramInt1 = paramInt2 / localc.OtQ;
-    if (localc.OtP.indexOfKey(paramInt1) >= 0)
+    c localc = this.VKa;
+    paramInt1 = paramInt2 / localc.VJO;
+    if (localc.VJN.indexOfKey(paramInt1) >= 0)
     {
-      int i = localc.OtQ;
+      int i = localc.VJO;
       int j = localc.columnCount;
-      if (((Object[])localc.OtP.get(paramInt1))[(paramInt2 % i * j)] == null) {}
+      if (((Object[])localc.VJN.get(paramInt1))[(paramInt2 % i * j)] == null) {}
     }
     for (paramInt1 = 1;; paramInt1 = 0)
     {
       if (paramInt1 == 0) {
-        akC(paramInt2 / this.pageSize * this.pageSize);
+        asZ(paramInt2 / this.pageSize * this.pageSize);
       }
-      this.Ouc.moveToPosition(paramInt2);
+      this.VKa.moveToPosition(paramInt2);
       break;
     }
   }
@@ -628,7 +628,7 @@ public final class f
     //   21: aload_0
     //   22: monitorenter
     //   23: aload_0
-    //   24: getfield 83	com/tencent/mm/storagebase/a/f:OtX	Lcom/tencent/mm/storagebase/a/h;
+    //   24: getfield 83	com/tencent/mm/storagebase/a/f:VJV	Lcom/tencent/mm/storagebase/a/h;
     //   27: invokevirtual 448	com/tencent/mm/storagebase/a/h:getDatabase	()Lcom/tencent/wcdb/database/SQLiteDatabase;
     //   30: invokevirtual 453	com/tencent/wcdb/database/SQLiteDatabase:isOpen	()Z
     //   33: ifne +13 -> 46
@@ -639,10 +639,10 @@ public final class f
     //   44: iconst_0
     //   45: ireturn
     //   46: aload_0
-    //   47: getfield 107	com/tencent/mm/storagebase/a/f:Oub	Lcom/tencent/mm/storagebase/a/b;
+    //   47: getfield 107	com/tencent/mm/storagebase/a/f:VJZ	Lcom/tencent/mm/storagebase/a/b;
     //   50: ifnull +10 -> 60
     //   53: aload_0
-    //   54: getfield 107	com/tencent/mm/storagebase/a/f:Oub	Lcom/tencent/mm/storagebase/a/b;
+    //   54: getfield 107	com/tencent/mm/storagebase/a/f:VJZ	Lcom/tencent/mm/storagebase/a/b;
     //   57: invokevirtual 456	com/tencent/mm/storagebase/a/b:clearData	()V
     //   60: aload_0
     //   61: iconst_m1
@@ -681,7 +681,7 @@ public final class f
     //   124: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   127: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   130: iconst_1
-    //   131: anewarray 259	java/lang/Object
+    //   131: anewarray 258	java/lang/Object
     //   134: dup
     //   135: iconst_0
     //   136: aload_2
@@ -702,7 +702,6 @@ public final class f
     //   23	38	95	finally
     //   46	60	95	finally
     //   60	82	95	finally
-    //   96	98	95	finally
     //   82	87	106	java/lang/IllegalStateException
   }
   
@@ -712,14 +711,14 @@ public final class f
   
   public static abstract interface a
   {
-    public abstract ArrayList<a> bo(ArrayList<Object> paramArrayList);
+    public abstract ArrayList<a> bD(ArrayList<Object> paramArrayList);
     
-    public abstract a gFJ();
+    public abstract a hCa();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storagebase.a.f
  * JD-Core Version:    0.7.0.1
  */

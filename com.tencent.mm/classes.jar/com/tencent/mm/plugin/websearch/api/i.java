@@ -10,11 +10,11 @@ public abstract interface i
   
   public abstract boolean b(Context paramContext, Runnable paramRunnable);
   
-  public abstract void fXu();
+  public abstract void gQh();
   
-  public abstract void fXv();
+  public abstract void gQi();
   
-  public abstract boolean fXw();
+  public abstract boolean gQj();
 }
 
 

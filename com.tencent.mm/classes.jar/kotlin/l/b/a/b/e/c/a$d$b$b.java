@@ -1,43 +1,43 @@
 package kotlin.l.b.a.b.e.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l.b.a.b.h.j.a;
-import kotlin.l.b.a.b.h.j.b;
+import kotlin.l.b.a.b.h.k.a;
+import kotlin.l.b.a.b.h.k.b;
 
 public enum a$d$b$b
-  implements j.a
+  implements k.a
 {
-  private static j.b<b> Txp;
+  private static k.b<b> abag;
   final int value;
   
   static
   {
     AppMethodBeat.i(59200);
-    TCr = new b("NONE", 0, 0);
-    TCs = new b("INTERNAL_TO_CLASS_ID", 1, 1);
-    TCt = new b("DESC_TO_CLASS_ID", 2, 2);
-    TCu = new b[] { TCr, TCs, TCt };
-    Txp = new j.b() {};
+    abff = new b("NONE", 0, 0);
+    abfg = new b("INTERNAL_TO_CLASS_ID", 1, 1);
+    abfh = new b("DESC_TO_CLASS_ID", 2, 2);
+    abfi = new b[] { abff, abfg, abfh };
+    abag = new k.b() {};
     AppMethodBeat.o(59200);
   }
   
-  private a$d$b$b(int paramInt1, int paramInt2)
+  private a$d$b$b(int paramInt)
   {
-    this.value = paramInt1;
+    this.value = paramInt;
   }
   
-  public static b avv(int paramInt)
+  public static b aFp(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 0: 
-      return TCr;
+      return abff;
     case 1: 
-      return TCs;
+      return abfg;
     }
-    return TCt;
+    return abfh;
   }
   
   public final int getNumber()
@@ -47,7 +47,7 @@ public enum a$d$b$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.e.c.a.d.b.b
  * JD-Core Version:    0.7.0.1
  */

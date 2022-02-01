@@ -28,73 +28,73 @@ public class APPluginConfig
   
   public static File getLibPath(Context paramContext)
   {
-    AppMethodBeat.i(193035);
+    AppMethodBeat.i(252544);
     paramContext = paramContext.getDir(PLUGIN_LIB_DIR_NAME + "_" + libExtend, 0);
-    AppMethodBeat.o(193035);
+    AppMethodBeat.o(252544);
     return paramContext;
   }
   
   static File getOptimizedDexPath(Context paramContext)
   {
-    AppMethodBeat.i(193034);
+    AppMethodBeat.i(252543);
     paramContext = paramContext.getDir(PLUGIN_ODEX_DIR_NAME, 0);
-    AppMethodBeat.o(193034);
+    AppMethodBeat.o(252543);
     return paramContext;
   }
   
   static File getPluginBackUpPath(Context paramContext)
   {
-    AppMethodBeat.i(193033);
+    AppMethodBeat.i(252542);
     paramContext = paramContext.getDir(PLUGIN_BACKUP_TEMP_DIR_NAME, 0);
-    AppMethodBeat.o(193033);
+    AppMethodBeat.o(252542);
     return paramContext;
   }
   
   static File getPluginEmptyResPath(Context paramContext)
   {
-    AppMethodBeat.i(193037);
+    AppMethodBeat.i(252547);
     paramContext = paramContext.getDir(PLUGIN_EMPTY_RES_DIR_NAME, 0);
-    AppMethodBeat.o(193037);
+    AppMethodBeat.o(252547);
     return paramContext;
   }
   
   public static File getPluginPath(Context paramContext)
   {
-    AppMethodBeat.i(193032);
+    AppMethodBeat.i(252541);
     paramContext = paramContext.getDir(PLUGIN_DIR_NAME, 0);
-    AppMethodBeat.o(193032);
+    AppMethodBeat.o(252541);
     return paramContext;
   }
   
   static File getPluginUpdatePath(Context paramContext)
   {
-    AppMethodBeat.i(193036);
+    AppMethodBeat.i(252546);
     paramContext = paramContext.getDir(PLUGIN_UPDATE_DIR_NAME, 0);
-    AppMethodBeat.o(193036);
+    AppMethodBeat.o(252546);
     return paramContext;
   }
   
   public static void setPluginDirName(String paramString)
   {
-    AppMethodBeat.i(193031);
+    AppMethodBeat.i(252540);
     if (!TextUtils.isEmpty(paramString)) {
       PLUGIN_DIR_NAME = paramString;
     }
-    AppMethodBeat.o(193031);
+    AppMethodBeat.o(252540);
   }
   
   public static void setSignFileName(String paramString)
   {
-    AppMethodBeat.i(193030);
+    AppMethodBeat.i(252539);
     if (!TextUtils.isEmpty(paramString)) {
       SIGN_FILE_NAME = paramString;
     }
-    AppMethodBeat.o(193030);
+    AppMethodBeat.o(252539);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.plugin.APPluginConfig
  * JD-Core Version:    0.7.0.1
  */

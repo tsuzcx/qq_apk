@@ -2,60 +2,69 @@ package com.tencent.mm.plugin.performance.diagnostic.b;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.performance.diagnostic.a.a;
+import com.tencent.mm.plugin.performance.diagnostic.c;
+import com.tencent.mm.plugin.performance.diagnostic.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
 
 public final class a
-  extends a.a
+  extends c.a
 {
-  private final String ATE;
-  private final String ATF;
-  private final String ATG;
-  private final String ATH;
-  private final String ATI;
-  private final String ATJ;
-  private final String ATK;
-  private final String ATL;
-  private final String ATM;
+  private final String GMZ;
+  private final String GNa;
+  private final String GNb;
+  private final String GNc;
+  private final String GNd;
+  private final String GNe;
+  private final String GNf;
+  private final String GNg;
+  private final String GNh;
   
-  public a(com.tencent.mm.plugin.performance.diagnostic.a<? extends com.tencent.wxperf.jni.a, ? extends a.a> parama)
+  public a(c<? extends com.tencent.matrix.hook.a, ? extends c.a> paramc)
   {
-    super(parama);
-    AppMethodBeat.i(201047);
-    this.ATE = (parama.eBC() + ".$hook");
-    this.ATF = (parama.eBC() + ".$ignore");
-    this.ATG = (parama.eBC() + ".$stack");
-    this.ATH = (parama.eBC() + ".$min");
-    this.ATI = (parama.eBC() + ".$max");
-    this.ATJ = (parama.eBC() + ".$sampling");
-    this.ATK = (parama.eBC() + ".$extreme");
-    this.ATL = (parama.eBC() + ".$mmap");
-    this.ATM = (parama.eBC() + ".$stacklog");
-    AppMethodBeat.o(201047);
+    super(paramc);
+    AppMethodBeat.i(201404);
+    this.GMZ = (paramc.fnm() + ".$hook");
+    this.GNa = (paramc.fnm() + ".$ignore");
+    this.GNb = (paramc.fnm() + ".$stack");
+    this.GNc = (paramc.fnm() + ".$min");
+    this.GNd = (paramc.fnm() + ".$max");
+    this.GNe = (paramc.fnm() + ".$sampling");
+    this.GNf = (paramc.fnm() + ".$extreme");
+    this.GNg = (paramc.fnm() + ".$mmap");
+    this.GNh = (paramc.fnm() + ".$stacklog");
+    AppMethodBeat.o(201404);
   }
   
-  public final void aB(Map<String, String> paramMap)
+  public final String aUr(String paramString)
   {
-    AppMethodBeat.i(201048);
-    super.aB(paramMap);
-    String str2 = (String)paramMap.get(this.ATE);
+    AppMethodBeat.i(201419);
+    paramString = this.fbr.decodeString(this.GMZ, paramString);
+    AppMethodBeat.o(201419);
+    return paramString;
+  }
+  
+  public final void av(Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(201415);
+    super.av(paramMap);
+    String str2 = (String)paramMap.get(this.GMZ);
     if (TextUtils.isEmpty(str2))
     {
       Log.e("MicroMsg.MemoryHookConfigStg", "ERROR(MemoryHook): hook regex is blank");
-      AppMethodBeat.o(201048);
+      AppMethodBeat.o(201415);
       return;
     }
-    String str1 = (String)paramMap.get(this.ATF);
-    boolean bool1 = "1".equals(paramMap.get(this.ATG));
-    int k = Util.getInt((String)paramMap.get(this.ATH), 0);
-    int m = Util.getInt((String)paramMap.get(this.ATI), 0);
-    double d = Util.getDouble((String)paramMap.get(this.ATJ), 1.0D);
-    boolean bool2 = "1".equals(paramMap.get(this.ATK));
-    boolean bool3 = "1".equals(paramMap.get(this.ATL));
-    int i = Util.getInt((String)paramMap.get(this.ATM), 52428800);
+    String str1 = (String)paramMap.get(this.GNa);
+    boolean bool1 = "1".equals(paramMap.get(this.GNb));
+    int k = Util.getInt((String)paramMap.get(this.GNc), 0);
+    int m = Util.getInt((String)paramMap.get(this.GNd), 0);
+    double d = Util.getDouble((String)paramMap.get(this.GNe), 1.0D);
+    boolean bool2 = "1".equals(paramMap.get(this.GNf));
+    boolean bool3 = "1".equals(paramMap.get(this.GNg));
+    int i = Util.getInt((String)paramMap.get(this.GNh), 52428800);
     if (!bool2) {
       if (str1 == null) {
         paramMap = ".*libutils\\.so$;.*libcutils\\.so$;.*libskia\\.so$;.*libbinder.*\\.so$;.*libhwbinder\\.so$;.*libicuuc\\.so$;.*libicui18n\\.so$;.*libart.*\\.so$;.*libandroidfw\\.so$;.*libandroid_runtime\\.so$;.*libjavacore\\.so$;.*libopenjdk.*\\.so$;.*libmemfence\\.so$";
@@ -72,16 +81,16 @@ public final class a
         if (i < 0) {
           j = 0;
         }
-        this.djK.encode(this.ATE, str2);
-        this.djK.encode(this.ATF, paramMap);
-        this.djK.encode(this.ATG, bool1);
-        this.djK.encode(this.ATH, k);
-        this.djK.encode(this.ATI, m);
-        this.djK.encode(this.ATJ, d);
-        this.djK.encode(this.ATK, bool2);
-        this.djK.encode(this.ATL, bool3);
-        this.djK.encode(this.ATM, j);
-        AppMethodBeat.o(201048);
+        this.fbr.encode(this.GMZ, str2);
+        this.fbr.encode(this.GNa, paramMap);
+        this.fbr.encode(this.GNb, bool1);
+        this.fbr.encode(this.GNc, k);
+        this.fbr.encode(this.GNd, m);
+        this.fbr.encode(this.GNe, d);
+        this.fbr.encode(this.GNf, bool2);
+        this.fbr.encode(this.GNg, bool3);
+        this.fbr.encode(this.GNh, j);
+        AppMethodBeat.o(201415);
         return;
         paramMap = str1;
         if (!TextUtils.isEmpty(str1))
@@ -98,89 +107,81 @@ public final class a
     }
   }
   
-  public final String aJV(String paramString)
+  public final String fnM()
   {
-    AppMethodBeat.i(201050);
-    paramString = this.djK.decodeString(this.ATE, paramString);
-    AppMethodBeat.o(201050);
-    return paramString;
-  }
-  
-  public final String eBZ()
-  {
-    AppMethodBeat.i(201049);
-    String str = aJV("");
-    AppMethodBeat.o(201049);
+    AppMethodBeat.i(201417);
+    String str = aUr("");
+    AppMethodBeat.o(201417);
     return str;
   }
   
-  public final String eCa()
+  public final String fnN()
   {
-    AppMethodBeat.i(201051);
-    String str = this.djK.decodeString(this.ATF, "");
-    AppMethodBeat.o(201051);
+    AppMethodBeat.i(201420);
+    String str = this.fbr.decodeString(this.GNa, "");
+    AppMethodBeat.o(201420);
     return str;
   }
   
-  public final boolean eCb()
+  public final boolean fnO()
   {
-    AppMethodBeat.i(201052);
-    boolean bool = this.djK.decodeBool(this.ATG, false);
-    AppMethodBeat.o(201052);
+    AppMethodBeat.i(201421);
+    boolean bool = this.fbr.decodeBool(this.GNb, false);
+    AppMethodBeat.o(201421);
     return bool;
   }
   
-  public final int eCc()
+  public final int fnP()
   {
-    AppMethodBeat.i(201053);
-    int i = this.djK.decodeInt(this.ATH, 0);
-    AppMethodBeat.o(201053);
+    AppMethodBeat.i(201422);
+    int i = this.fbr.decodeInt(this.GNc, 0);
+    AppMethodBeat.o(201422);
     return i;
   }
   
-  public final int eCd()
+  public final int fnQ()
   {
-    AppMethodBeat.i(201054);
-    int i = this.djK.decodeInt(this.ATI, 0);
-    AppMethodBeat.o(201054);
+    AppMethodBeat.i(201425);
+    int i = this.fbr.decodeInt(this.GNd, 0);
+    AppMethodBeat.o(201425);
     return i;
   }
   
-  public final double eCe()
+  public final double fnR()
   {
-    AppMethodBeat.i(201055);
-    double d = this.djK.decodeDouble(this.ATJ, 1.0D);
-    AppMethodBeat.o(201055);
+    AppMethodBeat.i(201426);
+    double d = this.fbr.decodeDouble(this.GNe, 1.0D);
+    AppMethodBeat.o(201426);
     return d;
   }
   
-  public final boolean eCf()
+  public final boolean fnS()
   {
-    AppMethodBeat.i(201056);
-    boolean bool = this.djK.decodeBool(this.ATK, false);
-    AppMethodBeat.o(201056);
+    AppMethodBeat.i(201427);
+    boolean bool = this.fbr.decodeBool(this.GNf, false);
+    AppMethodBeat.o(201427);
     return bool;
   }
   
-  public final boolean eCg()
+  public final boolean fnT()
   {
-    AppMethodBeat.i(201057);
-    boolean bool = this.djK.decodeBool(this.ATL, false);
-    AppMethodBeat.o(201057);
+    AppMethodBeat.i(201428);
+    boolean bool = this.fbr.decodeBool(this.GNg, false);
+    AppMethodBeat.o(201428);
     return bool;
   }
   
-  public final int eCh()
+  public final int fnU()
   {
-    AppMethodBeat.i(201058);
-    int i = this.djK.decodeInt(this.ATM, 52428800);
-    AppMethodBeat.o(201058);
+    AppMethodBeat.i(201429);
+    int i = this.fbr.decodeInt(this.GNh, 52428800);
+    AppMethodBeat.o(201429);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.diagnostic.b.a
  * JD-Core Version:    0.7.0.1
  */

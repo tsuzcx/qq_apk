@@ -1,159 +1,163 @@
 package com.tencent.mm.plugin.finder.extension.reddot;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.Lifecycle.State;
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
+import androidx.lifecycle.r;
+import androidx.lifecycle.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.i.a.ad;
-import com.tencent.mm.protocal.protobuf.bbi;
-import com.tencent.mm.protocal.protobuf.bdo;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.findersdk.a.ae;
+import com.tencent.mm.protocal.protobuf.bhw;
+import com.tencent.mm.protocal.protobuf.bkn;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.a.a;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
-import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier;", "", "()V", "TAG", "", "discoveryTab", "Landroid/arch/lifecycle/MutableLiveData;", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "getDiscoveryTab", "()Landroid/arch/lifecycle/MutableLiveData;", "finderAuthorProfileFans", "getFinderAuthorProfileFans", "finderAuthorProfileNotify", "getFinderAuthorProfileNotify", "finderCreatorEntrance", "getFinderCreatorEntrance", "finderEntrance", "getFinderEntrance", "finderFirstFav", "getFinderFirstFav", "finderLiveEntrance", "getFinderLiveEntrance", "finderMessage", "getFinderMessage", "finderMyTabRedPack", "getFinderMyTabRedPack", "finderOriginalEntrance", "getFinderOriginalEntrance", "finderProfileEntrance", "getFinderProfileEntrance", "finderProfileSetting", "getFinderProfileSetting", "finderSelfRedPack", "getFinderSelfRedPack", "finderTlCamera", "getFinderTlCamera", "finderTlPersonalCenter", "getFinderTlPersonalCenter", "finderTlPostCamera", "getFinderTlPostCamera", "finderTlTabFollow", "getFinderTlTabFollow", "finderTlTabFriend", "getFinderTlTabFriend", "finderTlTabLbs", "getFinderTlTabLbs", "finderTlTabMachine", "getFinderTlTabMachine", "finderTlWxBubble", "getFinderTlWxBubble", "finderTlWxMessageBubble", "getFinderTlWxMessageBubble", "finderWxMessage", "getFinderWxMessage", "nearbyEntrance", "getNearbyEntrance", "nearbyTabFeed", "getNearbyTabFeed", "nearbyTabLive", "getNearbyTabLive", "nearbyTabPeople", "getNearbyTabPeople", "notify", "", "isShow", "", "path", "tipsInfo", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "ctrInfo", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "observeForeverWithNotify", "T", "observer", "Landroid/arch/lifecycle/Observer;", "observeWithNotify", "owner", "Landroid/arch/lifecycle/LifecycleOwner;", "Result", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier;", "", "()V", "TAG", "", "discoveryTab", "Landroidx/lifecycle/MutableLiveData;", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "getDiscoveryTab", "()Landroidx/lifecycle/MutableLiveData;", "finderAuthorProfileFans", "getFinderAuthorProfileFans", "finderAuthorProfileNotify", "getFinderAuthorProfileNotify", "finderCreateFinderEntrance", "getFinderCreateFinderEntrance", "finderCreatorEntrance", "getFinderCreatorEntrance", "finderEntrance", "getFinderEntrance", "finderFirstFav", "getFinderFirstFav", "finderLiveEntrance", "getFinderLiveEntrance", "finderLiveForFindPageEntrance", "getFinderLiveForFindPageEntrance", "finderLiveInComeEntrance", "getFinderLiveInComeEntrance", "finderMessage", "getFinderMessage", "finderOriginalEntrance", "getFinderOriginalEntrance", "finderPosterEntrace", "getFinderPosterEntrace", "finderProfileEntrance", "getFinderProfileEntrance", "finderProfileSetting", "getFinderProfileSetting", "finderProfileTop", "getFinderProfileTop", "finderSettingLiveTask", "getFinderSettingLiveTask", "finderTlCamera", "getFinderTlCamera", "finderTlPersonalCenter", "getFinderTlPersonalCenter", "finderTlPostCamera", "getFinderTlPostCamera", "finderTlTabFollow", "getFinderTlTabFollow", "finderTlTabFriend", "getFinderTlTabFriend", "finderTlTabLbs", "getFinderTlTabLbs", "finderTlTabMachine", "getFinderTlTabMachine", "finderTlWxBubble", "getFinderTlWxBubble", "finderTlWxMessageBubble", "getFinderTlWxMessageBubble", "finderWxMessage", "getFinderWxMessage", "nearbyEntrance", "getNearbyEntrance", "nearbyTabFeed", "getNearbyTabFeed", "nearbyTabLive", "getNearbyTabLive", "nearbyTabPeople", "getNearbyTabPeople", "checkPathAndNotify", "", "path", "notify", "isShow", "", "tipsInfo", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "ctrInfo", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "observeForeverWithNotify", "T", "observer", "Landroidx/lifecycle/Observer;", "observeWithNotify", "owner", "Landroidx/lifecycle/LifecycleOwner;", "Result", "plugin-finder_release"})
 public final class h
 {
-  private static final MutableLiveData<a> tKA;
-  private static final MutableLiveData<a> tKB;
-  private static final MutableLiveData<a> tKC;
-  private static final MutableLiveData<a> tKD;
-  private static final MutableLiveData<a> tKE;
-  private static final MutableLiveData<a> tKF;
-  private static final MutableLiveData<a> tKG;
-  private static final MutableLiveData<a> tKH;
-  private static final MutableLiveData<a> tKI;
-  private static final MutableLiveData<a> tKJ;
-  private static final MutableLiveData<a> tKK;
-  private static final MutableLiveData<a> tKL;
-  private static final MutableLiveData<a> tKM;
-  private static final MutableLiveData<a> tKN;
-  private static final MutableLiveData<a> tKO;
-  private static final MutableLiveData<a> tKP;
-  private static final MutableLiveData<a> tKQ;
-  public static final h tKR;
-  private static final MutableLiveData<a> tKq;
-  private static final MutableLiveData<a> tKr;
-  private static final MutableLiveData<a> tKs;
-  private static final MutableLiveData<a> tKt;
-  private static final MutableLiveData<a> tKu;
-  private static final MutableLiveData<a> tKv;
-  private static final MutableLiveData<a> tKw;
-  private static final MutableLiveData<a> tKx;
-  private static final MutableLiveData<a> tKy;
-  private static final MutableLiveData<a> tKz;
+  private static final r<a> xtK;
+  private static final r<a> xtL;
+  private static final r<a> xtM;
+  private static final r<a> xtN;
+  private static final r<a> xtO;
+  private static final r<a> xtP;
+  private static final r<a> xtQ;
+  private static final r<a> xtR;
+  private static final r<a> xtS;
+  private static final r<a> xtT;
+  private static final r<a> xtU;
+  private static final r<a> xtV;
+  private static final r<a> xtW;
+  private static final r<a> xtX;
+  private static final r<a> xtY;
+  private static final r<a> xtZ;
+  private static final r<a> xua;
+  private static final r<a> xub;
+  private static final r<a> xuc;
+  private static final r<a> xud;
+  private static final r<a> xue;
+  private static final r<a> xuf;
+  private static final r<a> xug;
+  private static final r<a> xuh;
+  private static final r<a> xui;
+  private static final r<a> xuj;
+  private static final r<a> xuk;
+  private static final r<a> xul;
+  private static final r<a> xum;
+  private static final r<a> xun;
+  private static final r<a> xuo;
+  public static final h xup;
   
   static
   {
     AppMethodBeat.i(178190);
-    tKR = new h();
-    tKq = new MutableLiveData();
-    tKr = new MutableLiveData();
-    tKs = new MutableLiveData();
-    tKt = new MutableLiveData();
-    tKu = new MutableLiveData();
-    tKv = new MutableLiveData();
-    tKw = new MutableLiveData();
-    tKx = new MutableLiveData();
-    tKy = new MutableLiveData();
-    tKz = new MutableLiveData();
-    tKA = new MutableLiveData();
-    tKB = new MutableLiveData();
-    tKC = new MutableLiveData();
-    tKD = new MutableLiveData();
-    tKE = new MutableLiveData();
-    tKF = new MutableLiveData();
-    tKG = new MutableLiveData();
-    tKH = new MutableLiveData();
-    tKI = new MutableLiveData();
-    tKJ = new MutableLiveData();
-    tKK = new MutableLiveData();
-    tKL = new MutableLiveData();
-    tKM = new MutableLiveData();
-    tKN = new MutableLiveData();
-    tKO = new MutableLiveData();
-    tKP = new MutableLiveData();
-    tKQ = new MutableLiveData();
+    xup = new h();
+    xtK = new r();
+    xtL = new r();
+    xtM = new r();
+    xtN = new r();
+    xtO = new r();
+    xtP = new r();
+    xtQ = new r();
+    xtR = new r();
+    xtS = new r();
+    xtT = new r();
+    xtU = new r();
+    xtV = new r();
+    xtW = new r();
+    xtX = new r();
+    xtY = new r();
+    xtZ = new r();
+    xua = new r();
+    xub = new r();
+    xuc = new r();
+    xud = new r();
+    xue = new r();
+    xuf = new r();
+    xug = new r();
+    xuh = new r();
+    xui = new r();
+    xuj = new r();
+    xuk = new r();
+    xul = new r();
+    xum = new r();
+    xun = new r();
+    xuo = new r();
     AppMethodBeat.o(178190);
   }
   
-  public static <T> void a(MutableLiveData<T> paramMutableLiveData, final LifecycleOwner paramLifecycleOwner, final Observer<T> paramObserver)
+  public static <T> void a(r<T> paramr, final androidx.lifecycle.l paraml, final s<T> params)
   {
-    AppMethodBeat.i(178188);
-    p.h(paramMutableLiveData, "$this$observeWithNotify");
-    p.h(paramLifecycleOwner, "owner");
-    p.h(paramObserver, "observer");
-    d.h((a)new c(paramMutableLiveData, paramLifecycleOwner, paramObserver));
-    AppMethodBeat.o(178188);
+    AppMethodBeat.i(273992);
+    p.k(paramr, "$this$observeWithNotify");
+    p.k(paraml, "owner");
+    p.k(params, "observer");
+    d.uiThread((a)new c(paramr, paraml, params));
+    AppMethodBeat.o(273992);
   }
   
-  public static <T> void a(MutableLiveData<T> paramMutableLiveData, final Observer<T> paramObserver)
+  public static <T> void a(r<T> paramr, final s<T> params)
   {
-    AppMethodBeat.i(243610);
-    p.h(paramMutableLiveData, "$this$observeForeverWithNotify");
-    p.h(paramObserver, "observer");
-    d.h((a)new b(paramMutableLiveData, paramObserver));
-    AppMethodBeat.o(243610);
+    AppMethodBeat.i(273993);
+    p.k(paramr, "$this$observeForeverWithNotify");
+    p.k(params, "observer");
+    d.uiThread((a)new b(paramr, params));
+    AppMethodBeat.o(273993);
   }
   
-  public static void a(boolean paramBoolean, String paramString, bdo parambdo, k paramk)
+  public static void a(boolean paramBoolean, String paramString, bkn parambkn, l paraml)
   {
     Object localObject2 = null;
     AppMethodBeat.i(178189);
-    p.h(paramString, "path");
+    p.k(paramString, "path");
     StringBuilder localStringBuilder = new StringBuilder("[notify] isShow=").append(paramBoolean).append(" path=").append(paramString).append(" show_type=");
-    if (parambdo != null)
+    if (parambkn != null)
     {
-      localObject1 = Integer.valueOf(parambdo.xGz);
+      localObject1 = Integer.valueOf(parambkn.CKC);
       localStringBuilder = localStringBuilder.append(localObject1).append(" count=");
-      if (parambdo == null) {
-        break label282;
-      }
-      localObject1 = Integer.valueOf(parambdo.count);
-      label84:
-      localStringBuilder = localStringBuilder.append(localObject1).append(' ').append("title=");
-      if (parambdo == null) {
+      if (parambkn == null) {
         break label288;
       }
-      localObject1 = parambdo.title;
-      label114:
-      localStringBuilder = localStringBuilder.append((String)localObject1).append(" clear_type=");
-      if (parambdo == null) {
+      localObject1 = Integer.valueOf(parambkn.count);
+      label89:
+      localStringBuilder = localStringBuilder.append(localObject1).append(' ').append("title=");
+      if (parambkn == null) {
         break label294;
       }
-      localObject1 = Integer.valueOf(parambdo.LNm);
-      label142:
-      localStringBuilder = localStringBuilder.append(localObject1).append(" parent=");
-      if (parambdo == null) {
+      localObject1 = parambkn.title;
+      label119:
+      localStringBuilder = localStringBuilder.append((String)localObject1).append(" clear_type=");
+      if (parambkn == null) {
         break label300;
       }
+      localObject1 = Integer.valueOf(parambkn.SVs);
+      label147:
+      localStringBuilder = localStringBuilder.append(localObject1).append(" parent=");
+      if (parambkn == null) {
+        break label306;
+      }
     }
-    label282:
     label288:
     label294:
     label300:
-    for (Object localObject1 = parambdo.Bvg;; localObject1 = null)
+    label306:
+    for (Object localObject1 = parambkn.HpB;; localObject1 = null)
     {
       localStringBuilder = localStringBuilder.append((String)localObject1).append(" icon=");
       localObject1 = localObject2;
-      if (parambdo != null) {
-        localObject1 = parambdo.qGB;
+      if (parambkn != null) {
+        localObject1 = parambkn.ufC;
       }
       Log.i("Finder.RedDotNotifier", (String)localObject1);
       if (!paramBoolean) {
-        break label306;
+        break label312;
       }
-      localObject1 = g.af(ad.class);
-      p.g(localObject1, "MMKernel.service(IFinder…enModeConfig::class.java)");
-      if ((!((ad)localObject1).dxX()) || ((paramk != null) && (paramk.field_ctrInfo.type == 8))) {
-        break label306;
+      localObject1 = com.tencent.mm.kernel.h.ae(ae.class);
+      p.j(localObject1, "MMKernel.service(IFinder…enModeConfig::class.java)");
+      if ((!((ae)localObject1).dYT()) || ((paraml != null) && (paraml.field_ctrInfo.type == 8))) {
+        break label312;
       }
       Log.i("Finder.RedDotManager", "[notify] 青少年模式且只看关注的模式下只notify关注的红点展示");
       AppMethodBeat.o(178189);
@@ -161,14 +165,14 @@ public final class h
       localObject1 = null;
       break;
       localObject1 = null;
-      break label84;
+      break label89;
       localObject1 = null;
-      break label114;
+      break label119;
       localObject1 = null;
-      break label142;
+      break label147;
     }
-    label306:
-    parambdo = new a(paramBoolean, parambdo, paramk);
+    label312:
+    parambkn = new a(paramBoolean, parambkn, paraml);
     switch (paramString.hashCode())
     {
     }
@@ -176,78 +180,156 @@ public final class h
     {
       do
       {
-        do
+        for (;;)
         {
-          do
+          AppMethodBeat.o(178189);
+          return;
+          if (paramString.equals("OriginalEntrance"))
           {
-            do
+            xtT.L(parambkn);
+            AppMethodBeat.o(178189);
+            return;
+            if (paramString.equals("finder_wx_private_msg_entrance"))
             {
-              do
+              xub.L(parambkn);
+              AppMethodBeat.o(178189);
+              return;
+              if (paramString.equals("FinderProfileBanner"))
               {
-                do
+                xug.L(parambkn);
+                AppMethodBeat.o(178189);
+                return;
+                if (paramString.equals("NearbyPeopleTab"))
                 {
-                  do
+                  xuj.L(parambkn);
+                  AppMethodBeat.o(178189);
+                  return;
+                  if (paramString.equals("TLRecommendTab"))
                   {
-                    do
+                    xtW.L(parambkn);
+                    AppMethodBeat.o(178189);
+                    return;
+                    if (paramString.equals("TLWxPrivateMsgBubble"))
                     {
-                      do
+                      xuc.L(parambkn);
+                      AppMethodBeat.o(178189);
+                      return;
+                      if (paramString.equals("NearbyEntrance"))
                       {
-                        do
+                        xul.L(parambkn);
+                        AppMethodBeat.o(178189);
+                        return;
+                        if (paramString.equals("FinderEntrance"))
                         {
-                          do
+                          xtL.L(parambkn);
+                          AppMethodBeat.o(178189);
+                          return;
+                          if (paramString.equals("NearbyLiveTab"))
                           {
-                            do
+                            xui.L(parambkn);
+                            AppMethodBeat.o(178189);
+                            return;
+                            if (paramString.equals("TLPostCamera"))
                             {
-                              do
+                              xtN.L(parambkn);
+                              AppMethodBeat.o(178189);
+                              return;
+                              if (paramString.equals("finder_tl_hot_tab"))
                               {
-                                do
+                                xtY.L(parambkn);
+                                AppMethodBeat.o(178189);
+                                return;
+                                if (paramString.equals("FinderLiveEntrance"))
                                 {
-                                  do
+                                  xuk.L(parambkn);
+                                  AppMethodBeat.o(178189);
+                                  return;
+                                  if (paramString.equals("FinderLiveIncomeEntrance"))
                                   {
-                                    do
+                                    xum.L(parambkn);
+                                    AppMethodBeat.o(178189);
+                                    return;
+                                    if (paramString.equals("finder_private_msg_entrance"))
                                     {
-                                      do
+                                      xua.L(parambkn);
+                                      AppMethodBeat.o(178189);
+                                      return;
+                                      if (paramString.equals("ProfileEntrance"))
                                       {
-                                        do
+                                        xtP.L(parambkn);
+                                        AppMethodBeat.o(178189);
+                                        return;
+                                        if (paramString.equals("TLCamera"))
                                         {
-                                          do
+                                          xtM.L(parambkn);
+                                          AppMethodBeat.o(178189);
+                                          return;
+                                          if (paramString.equals("Discovery"))
                                           {
-                                            for (;;)
+                                            xtK.L(parambkn);
+                                            AppMethodBeat.o(178189);
+                                            return;
+                                            if (paramString.equals("AuthorProfileFans"))
                                             {
+                                              xtQ.L(parambkn);
                                               AppMethodBeat.o(178189);
                                               return;
-                                              if (paramString.equals("OriginalEntrance"))
+                                              if (paramString.equals("FinderSetting"))
                                               {
-                                                tKz.postValue(parambdo);
+                                                xtU.L(parambkn);
                                                 AppMethodBeat.o(178189);
                                                 return;
-                                                if (paramString.equals("finder_wx_private_msg_entrance"))
+                                                if (paramString.equals("Personal_Center_FavList_Entrance"))
                                                 {
-                                                  tKH.postValue(parambdo);
+                                                  xtX.L(parambkn);
                                                   AppMethodBeat.o(178189);
                                                   return;
-                                                  if (paramString.equals("FinderSelfRedPack"))
+                                                  if (paramString.equals("CreateFinderEntrance"))
                                                   {
-                                                    tKL.postValue(parambdo);
+                                                    xuf.L(parambkn);
                                                     AppMethodBeat.o(178189);
                                                     return;
-                                                    if (paramString.equals("NearbyPeopleTab"))
+                                                    if (paramString.equals("TLPersonalCenter"))
                                                     {
-                                                      tKP.postValue(parambdo);
+                                                      xtS.L(parambkn);
                                                       AppMethodBeat.o(178189);
                                                       return;
-                                                      if (paramString.equals("TLRecommendTab"))
+                                                      if (paramString.equals("NearbyFeedTab"))
                                                       {
-                                                        tKC.postValue(parambdo);
+                                                        xuh.L(parambkn);
                                                         AppMethodBeat.o(178189);
                                                         return;
-                                                        if (paramString.equals("TLWxPrivateMsgBubble"))
+                                                        if (paramString.equals("CreatorCenter"))
                                                         {
-                                                          tKI.postValue(parambdo);
+                                                          xue.L(parambkn);
                                                           AppMethodBeat.o(178189);
                                                           return;
-                                                          if (paramString.equals("NearbyEntrance")) {
-                                                            tKQ.postValue(parambdo);
+                                                          if (paramString.equals("FinderSelfLiveEntrance"))
+                                                          {
+                                                            xud.L(parambkn);
+                                                            AppMethodBeat.o(178189);
+                                                            return;
+                                                            if (paramString.equals("TLFollow"))
+                                                            {
+                                                              xtV.L(parambkn);
+                                                              AppMethodBeat.o(178189);
+                                                              return;
+                                                              if (paramString.equals("AuthorProfileNotify"))
+                                                              {
+                                                                xtR.L(parambkn);
+                                                                AppMethodBeat.o(178189);
+                                                                return;
+                                                                if (paramString.equals("FinderPosterEntrance"))
+                                                                {
+                                                                  xuo.L(parambkn);
+                                                                  AppMethodBeat.o(178189);
+                                                                  return;
+                                                                  if (paramString.equals("FinderSettingLiveTask")) {
+                                                                    xun.L(parambkn);
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
                                                           }
                                                         }
                                                       }
@@ -256,214 +338,204 @@ public final class h
                                                 }
                                               }
                                             }
-                                          } while (!paramString.equals("FinderEntrance"));
-                                          tKr.postValue(parambdo);
-                                          AppMethodBeat.o(178189);
-                                          return;
-                                        } while (!paramString.equals("NearbyLiveTab"));
-                                        tKO.postValue(parambdo);
-                                        AppMethodBeat.o(178189);
-                                        return;
-                                      } while (!paramString.equals("TLPostCamera"));
-                                      tKt.postValue(parambdo);
-                                      AppMethodBeat.o(178189);
-                                      return;
-                                    } while (!paramString.equals("finder_tl_hot_tab"));
-                                    tKE.postValue(parambdo);
-                                    AppMethodBeat.o(178189);
-                                    return;
-                                  } while (!paramString.equals("finder_private_msg_entrance"));
-                                  tKG.postValue(parambdo);
-                                  AppMethodBeat.o(178189);
-                                  return;
-                                } while (!paramString.equals("ProfileEntrance"));
-                                tKv.postValue(parambdo);
-                                AppMethodBeat.o(178189);
-                                return;
-                              } while (!paramString.equals("TLCamera"));
-                              tKs.postValue(parambdo);
-                              AppMethodBeat.o(178189);
-                              return;
-                            } while (!paramString.equals("Discovery"));
-                            tKq.postValue(parambdo);
-                            AppMethodBeat.o(178189);
-                            return;
-                          } while (!paramString.equals("AuthorProfileFans"));
-                          tKw.postValue(parambdo);
-                          AppMethodBeat.o(178189);
-                          return;
-                        } while (!paramString.equals("FinderSetting"));
-                        tKA.postValue(parambdo);
-                        AppMethodBeat.o(178189);
-                        return;
-                      } while (!paramString.equals("Personal_Center_FavList_Entrance"));
-                      tKD.postValue(parambdo);
-                      AppMethodBeat.o(178189);
-                      return;
-                    } while (!paramString.equals("FinderMyTabRedPack"));
-                    tKM.postValue(parambdo);
-                    AppMethodBeat.o(178189);
-                    return;
-                  } while (!paramString.equals("TLPersonalCenter"));
-                  tKy.postValue(parambdo);
-                  AppMethodBeat.o(178189);
-                  return;
-                } while (!paramString.equals("NearbyFeedTab"));
-                tKN.postValue(parambdo);
-                AppMethodBeat.o(178189);
-                return;
-              } while (!paramString.equals("CreatorCenter"));
-              tKK.postValue(parambdo);
-              AppMethodBeat.o(178189);
-              return;
-            } while (!paramString.equals("FinderSelfLiveEntrance"));
-            tKJ.postValue(parambdo);
-            AppMethodBeat.o(178189);
-            return;
-          } while (!paramString.equals("TLFollow"));
-          tKB.postValue(parambdo);
-          AppMethodBeat.o(178189);
-          return;
-        } while (!paramString.equals("AuthorProfileNotify"));
-        tKx.postValue(parambdo);
-        AppMethodBeat.o(178189);
-        return;
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       } while (!paramString.equals("finder_tl_nearby_tab"));
-      tKF.postValue(parambdo);
+      xtZ.L(parambkn);
       AppMethodBeat.o(178189);
       return;
     } while (!paramString.equals("TLWxBubble"));
-    tKu.postValue(parambdo);
+    xtO.L(parambkn);
     AppMethodBeat.o(178189);
   }
   
-  public static MutableLiveData<a> daJ()
+  public static void aBk(String paramString)
   {
-    return tKq;
+    AppMethodBeat.i(273994);
+    p.k(paramString, "path");
+    Object localObject = com.tencent.mm.kernel.h.ag(PluginFinder.class);
+    p.j(localObject, "MMKernel.plugin(PluginFinder::class.java)");
+    localObject = ((PluginFinder)localObject).getRedDotManager().aBf(paramString);
+    if (localObject != null)
+    {
+      bkn localbkn = ((l)localObject).aBy(paramString);
+      if (localbkn != null)
+      {
+        a(true, paramString, localbkn, (l)localObject);
+        AppMethodBeat.o(273994);
+        return;
+      }
+      a(false, paramString, null, (l)localObject);
+      AppMethodBeat.o(273994);
+      return;
+    }
+    a(false, paramString, null, null);
+    AppMethodBeat.o(273994);
   }
   
-  public static MutableLiveData<a> daK()
+  public static r<a> dqN()
   {
-    return tKr;
+    return xtK;
   }
   
-  public static MutableLiveData<a> daL()
+  public static r<a> dqO()
   {
-    return tKs;
+    return xtL;
   }
   
-  public static MutableLiveData<a> daM()
+  public static r<a> dqP()
   {
-    return tKv;
+    return xtM;
   }
   
-  public static MutableLiveData<a> daN()
+  public static r<a> dqQ()
   {
-    return tKy;
+    return xtP;
   }
   
-  public static MutableLiveData<a> daO()
+  public static r<a> dqR()
   {
-    return tKz;
+    return xtS;
   }
   
-  public static MutableLiveData<a> daP()
+  public static r<a> dqS()
   {
-    return tKA;
+    return xtT;
   }
   
-  public static MutableLiveData<a> daQ()
+  public static r<a> dqT()
   {
-    return tKB;
+    return xtU;
   }
   
-  public static MutableLiveData<a> daR()
+  public static r<a> dqU()
   {
-    return tKC;
+    return xtV;
   }
   
-  public static MutableLiveData<a> daS()
+  public static r<a> dqV()
   {
-    return tKD;
+    return xtW;
   }
   
-  public static MutableLiveData<a> daT()
+  public static r<a> dqW()
   {
-    return tKE;
+    return xtX;
   }
   
-  public static MutableLiveData<a> daU()
+  public static r<a> dqX()
   {
-    return tKF;
+    return xtY;
   }
   
-  public static MutableLiveData<a> daV()
+  public static r<a> dqY()
   {
-    return tKG;
+    return xtZ;
   }
   
-  public static MutableLiveData<a> daW()
+  public static r<a> dqZ()
   {
-    return tKH;
+    return xua;
   }
   
-  public static MutableLiveData<a> daX()
+  public static r<a> dra()
   {
-    return tKI;
+    return xub;
   }
   
-  public static MutableLiveData<a> daY()
+  public static r<a> drb()
   {
-    return tKJ;
+    return xuc;
   }
   
-  public static MutableLiveData<a> daZ()
+  public static r<a> drc()
   {
-    return tKK;
+    return xud;
   }
   
-  public static MutableLiveData<a> dba()
+  public static r<a> drd()
   {
-    return tKL;
+    return xue;
   }
   
-  public static MutableLiveData<a> dbb()
+  public static r<a> dre()
   {
-    return tKM;
+    return xuf;
   }
   
-  public static MutableLiveData<a> dbc()
+  public static r<a> drf()
   {
-    return tKN;
+    return xug;
   }
   
-  public static MutableLiveData<a> dbd()
+  public static r<a> drg()
   {
-    return tKO;
+    return xuh;
   }
   
-  public static MutableLiveData<a> dbe()
+  public static r<a> drh()
   {
-    return tKP;
+    return xui;
   }
   
-  public static MutableLiveData<a> dbf()
+  public static r<a> dri()
   {
-    return tKQ;
+    return xuj;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "", "isShow", "", "info", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "ctrInfo", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "(ZLcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;)V", "getCtrInfo", "()Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "getInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "setInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;)V", "()Z", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
+  public static r<a> drj()
+  {
+    return xuk;
+  }
+  
+  public static r<a> drk()
+  {
+    return xul;
+  }
+  
+  public static r<a> drl()
+  {
+    return xum;
+  }
+  
+  public static r<a> drm()
+  {
+    return xun;
+  }
+  
+  public static r<a> drn()
+  {
+    return xuo;
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "", "isShow", "", "info", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "ctrInfo", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "(ZLcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;)V", "getCtrInfo", "()Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "getInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "setInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;)V", "()Z", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
   public static final class a
   {
-    public final boolean dEF;
-    public bdo tKS;
-    public final k tKT;
+    public final boolean fxt;
+    public bkn xuq;
+    public final l xur;
     
-    public a(boolean paramBoolean, bdo parambdo, k paramk)
+    public a(boolean paramBoolean, bkn parambkn, l paraml)
     {
-      this.dEF = paramBoolean;
-      this.tKS = parambdo;
-      this.tKT = paramk;
+      this.fxt = paramBoolean;
+      this.xuq = parambkn;
+      this.xur = paraml;
     }
     
     public final boolean equals(Object paramObject)
@@ -474,7 +546,7 @@ public final class h
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((this.dEF != paramObject.dEF) || (!p.j(this.tKS, paramObject.tKS)) || (!p.j(this.tKT, paramObject.tKT))) {}
+          if ((this.fxt != paramObject.fxt) || (!p.h(this.xuq, paramObject.xuq)) || (!p.h(this.xur, paramObject.xur))) {}
         }
       }
       else
@@ -496,30 +568,30 @@ public final class h
       Object localObject2 = null;
       AppMethodBeat.i(178185);
       StringBuilder localStringBuilder = new StringBuilder("tipId=");
-      Object localObject1 = this.tKT;
+      Object localObject1 = this.xur;
       if (localObject1 != null)
       {
-        localObject1 = ((k)localObject1).field_tipsId;
+        localObject1 = ((l)localObject1).field_tipsId;
         localStringBuilder = localStringBuilder.append((String)localObject1).append(" type=");
-        localObject1 = this.tKT;
+        localObject1 = this.xur;
         if (localObject1 == null) {
           break label184;
         }
-        localObject1 = ((k)localObject1).field_ctrInfo;
+        localObject1 = ((l)localObject1).field_ctrInfo;
         if (localObject1 == null) {
           break label184;
         }
-        localObject1 = Integer.valueOf(((bbi)localObject1).type);
+        localObject1 = Integer.valueOf(((bhw)localObject1).type);
         label68:
-        localStringBuilder = localStringBuilder.append(localObject1).append(" isShow=").append(this.dEF).append(" path=");
-        localObject1 = this.tKS;
+        localStringBuilder = localStringBuilder.append(localObject1).append(" isShow=").append(this.fxt).append(" path=");
+        localObject1 = this.xuq;
         if (localObject1 == null) {
           break label189;
         }
-        localObject1 = ((bdo)localObject1).path;
+        localObject1 = ((bkn)localObject1).path;
         label105:
         localStringBuilder = localStringBuilder.append((String)localObject1).append(" showType=");
-        localObject1 = this.tKS;
+        localObject1 = this.xuq;
         if (localObject1 == null) {
           break label194;
         }
@@ -527,13 +599,13 @@ public final class h
       label184:
       label189:
       label194:
-      for (localObject1 = Integer.valueOf(((bdo)localObject1).xGz);; localObject1 = null)
+      for (localObject1 = Integer.valueOf(((bkn)localObject1).CKC);; localObject1 = null)
       {
         localStringBuilder = localStringBuilder.append(localObject1).append(" title=");
-        bdo localbdo = this.tKS;
+        bkn localbkn = this.xuq;
         localObject1 = localObject2;
-        if (localbdo != null) {
-          localObject1 = localbdo.title;
+        if (localbkn != null) {
+          localObject1 = localbkn.title;
         }
         localObject1 = (String)localObject1;
         AppMethodBeat.o(178185);
@@ -548,23 +620,23 @@ public final class h
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "invoke"})
   static final class b
     extends q
     implements a<x>
   {
-    b(MutableLiveData paramMutableLiveData, Observer paramObserver)
+    b(r paramr, s params)
     {
       super();
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "invoke"})
   static final class c
     extends q
     implements a<x>
   {
-    c(MutableLiveData paramMutableLiveData, LifecycleOwner paramLifecycleOwner, Observer paramObserver)
+    c(r paramr, androidx.lifecycle.l paraml, s params)
     {
       super();
     }
@@ -572,7 +644,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.extension.reddot.h
  * JD-Core Version:    0.7.0.1
  */

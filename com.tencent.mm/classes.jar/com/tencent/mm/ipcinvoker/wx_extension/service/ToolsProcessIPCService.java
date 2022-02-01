@@ -3,38 +3,38 @@ package com.tencent.mm.ipcinvoker.wx_extension.service;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.BaseIPCService;
-import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class ToolsProcessIPCService
   extends BaseIPCService
 {
-  public static final String dkO;
-  static int hnR;
-  private static a hnS;
+  public static final String PROCESS_NAME;
+  static int jZI;
+  private static a jZJ;
   
   static
   {
-    AppMethodBeat.i(225240);
-    dkO = MMApplicationContext.getPackageName() + ":tools";
-    hnR = 0;
-    AppMethodBeat.o(225240);
+    AppMethodBeat.i(205336);
+    PROCESS_NAME = MMApplicationContext.getPackageName() + ":tools";
+    jZI = 0;
+    AppMethodBeat.o(205336);
   }
   
   public static void a(a parama)
   {
-    hnS = parama;
+    jZJ = parama;
   }
   
-  public static <T extends b<InputType, ResultType>, InputType extends Parcelable, ResultType extends Parcelable> boolean a(InputType paramInputType, Class<T> paramClass)
+  public static <T extends d<InputType, ResultType>, InputType extends Parcelable, ResultType extends Parcelable> boolean a(InputType paramInputType, Class<T> paramClass)
   {
     AppMethodBeat.i(146441);
-    boolean bool2 = h.a(dkO, paramInputType, paramClass, null);
+    boolean bool2 = j.a(PROCESS_NAME, paramInputType, paramClass, null);
     boolean bool1 = bool2;
-    if (!ayt()) {
-      if ((!h.a(ToolsMpProcessIPCService.dkO, paramInputType, paramClass, null)) || (!bool2)) {
+    if (!aFM()) {
+      if ((!j.a(ToolsMpProcessIPCService.PROCESS_NAME, paramInputType, paramClass, null)) || (!bool2)) {
         break label48;
       }
     }
@@ -46,24 +46,24 @@ public class ToolsProcessIPCService
     }
   }
   
-  public static <T extends b<InputType, ResultType>, InputType extends Parcelable, ResultType extends Parcelable> boolean a(InputType paramInputType, Class<T> paramClass, d<ResultType> paramd)
+  public static <T extends d<InputType, ResultType>, InputType extends Parcelable, ResultType extends Parcelable> boolean a(InputType paramInputType, Class<T> paramClass, f<ResultType> paramf)
   {
     boolean bool3 = true;
     AppMethodBeat.i(146440);
     boolean bool1;
     if (MMApplicationContext.isProcessExist(MMApplicationContext.getPackageName() + ":tools")) {
-      if (h.a(dkO, paramInputType, paramClass, paramd)) {
+      if (j.a(PROCESS_NAME, paramInputType, paramClass, paramf)) {
         bool1 = true;
       }
     }
     for (;;)
     {
       boolean bool2 = bool1;
-      if (!ayt())
+      if (!aFM())
       {
         bool2 = bool1;
         if (MMApplicationContext.isProcessExist(MMApplicationContext.getPackageName() + ":toolsmp")) {
-          if ((!h.a(ToolsMpProcessIPCService.dkO, paramInputType, paramClass, paramd)) || (!bool1)) {
+          if ((!j.a(ToolsMpProcessIPCService.PROCESS_NAME, paramInputType, paramClass, paramf)) || (!bool1)) {
             break label123;
           }
         }
@@ -81,34 +81,34 @@ public class ToolsProcessIPCService
     }
   }
   
-  public static <T extends b<InputType, ResultType>, InputType extends Parcelable, ResultType extends Parcelable> boolean a(Class<T> paramClass, d<ResultType> paramd)
+  public static <T extends d<InputType, ResultType>, InputType extends Parcelable, ResultType extends Parcelable> boolean a(Class<T> paramClass, f<ResultType> paramf)
   {
     AppMethodBeat.i(146442);
-    boolean bool = h.a(dkO, null, paramClass, paramd);
+    boolean bool = j.a(PROCESS_NAME, null, paramClass, paramf);
     AppMethodBeat.o(146442);
     return bool;
   }
   
-  public static boolean ayt()
+  public static boolean aFM()
   {
     AppMethodBeat.i(146439);
     boolean bool;
-    if (hnR == 0)
+    if (jZI == 0)
     {
-      a locala = hnS;
+      a locala = jZJ;
       if (locala == null) {
         break label47;
       }
-      bool = locala.ayt();
+      bool = locala.aFM();
       if (!bool) {
         break label52;
       }
     }
     label47:
     label52:
-    for (hnR = 1;; hnR = -1)
+    for (jZI = 1;; jZI = -1)
     {
-      if (hnR <= 0) {
+      if (jZI <= 0) {
         break label59;
       }
       AppMethodBeat.o(146439);
@@ -123,12 +123,12 @@ public class ToolsProcessIPCService
   
   public final String getProcessName()
   {
-    return dkO;
+    return PROCESS_NAME;
   }
   
   public static abstract interface a
   {
-    public abstract boolean ayt();
+    public abstract boolean aFM();
   }
 }
 

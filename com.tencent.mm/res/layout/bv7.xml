@@ -8,5 +8,5 @@
             <ImageView android:layout_width="wrap_content" android:layout_height="@dimen/ajv" android:layout_marginLeft="@dimen/ib" android:src="@raw/arrow_right" />
         </LinearLayout>
     </LinearLayout>
-    <android.support.v7.widget.RecyclerView android:id="@id/ku" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/ku" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
 </RelativeLayout>

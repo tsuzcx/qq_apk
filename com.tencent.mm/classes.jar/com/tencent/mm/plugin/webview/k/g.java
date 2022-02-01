@@ -1,68 +1,55 @@
 package com.tencent.mm.plugin.webview.k;
 
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.widget.a.d.a;
-import java.util.HashMap;
+import com.tencent.mm.loader.j.b;
+import com.tencent.mm.sdk.platformtools.FileProviderHelper;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.vfs.q;
 
 public final class g
 {
-  public HashMap<String, a> JBy;
-  
-  public g()
+  public static Intent bkR(String paramString)
   {
-    AppMethodBeat.i(82381);
-    this.JBy = new HashMap();
-    AppMethodBeat.o(82381);
+    AppMethodBeat.i(205996);
+    Intent localIntent = new Intent("android.media.action.IMAGE_CAPTURE");
+    paramString = getFilePath(paramString);
+    localIntent.putExtra("output", FileProviderHelper.getUriForFile(MMApplicationContext.getContext(), new q(paramString)));
+    AppMethodBeat.o(205996);
+    return localIntent;
   }
   
-  public static void a(Context paramContext, String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  public static Intent gVS()
   {
-    AppMethodBeat.i(82382);
-    d.a locala = new d.a(paramContext);
-    locala.Dk(false);
-    locala.aoR(3);
-    locala.bon(paramContext.getString(2131768594));
-    if (!Util.isNullOrNil(paramString))
-    {
-      locala.Di(true);
-      locala.aB(paramString);
+    AppMethodBeat.i(205997);
+    Intent localIntent = new Intent("android.media.action.VIDEO_CAPTURE");
+    AppMethodBeat.o(205997);
+    return localIntent;
+  }
+  
+  public static Intent gVT()
+  {
+    AppMethodBeat.i(205998);
+    Intent localIntent = new Intent("android.provider.MediaStore.RECORD_SOUND");
+    AppMethodBeat.o(205998);
+    return localIntent;
+  }
+  
+  public static String getFilePath(String paramString)
+  {
+    AppMethodBeat.i(205994);
+    Object localObject = new q(b.aSX());
+    if (!((q)localObject).ifL()) {
+      Log.i("MicroMsg.WebJSSDKUtil", "mkdirs failed.File is exist = " + ((q)localObject).ifE());
     }
-    locala.Dj(true);
-    locala.bos(paramContext.getString(2131768593));
-    locala.bou(paramContext.getString(2131755921));
-    locala.aoX(paramContext.getResources().getColor(2131100685));
-    locala.c(paramOnClickListener);
-    locala.bov(paramContext.getString(2131755761));
-    paramString = MultiProcessMMKV.getMMKV("key_webview_menu_haokan");
-    if (paramString.decodeBool("show_first_tips", true))
-    {
-      paramString.encode("show_first_tips", false);
-      paramString.apply();
-      locala.aA(paramContext.getString(2131768592));
+    if (!((q)localObject).ifE()) {
+      Log.e("MicroMsg.WebJSSDKUtil", "camera storage path do not exist.(%s)", new Object[] { b.aSX() });
     }
-    locala.hbn().show();
-    AppMethodBeat.o(82382);
-  }
-  
-  public final a bbo(String paramString)
-  {
-    AppMethodBeat.i(82383);
-    paramString = (a)this.JBy.get(paramString);
-    AppMethodBeat.o(82383);
-    return paramString;
-  }
-  
-  public static final class a
-  {
-    public int JBz;
-    public int permission;
-    public String title;
+    localObject = ((q)localObject).bOF() + "/" + paramString + ".jpg";
+    Log.i("MicroMsg.WebJSSDKUtil", "get file path from capture file name : %s == %s", new Object[] { paramString, localObject });
+    AppMethodBeat.o(205994);
+    return localObject;
   }
 }
 

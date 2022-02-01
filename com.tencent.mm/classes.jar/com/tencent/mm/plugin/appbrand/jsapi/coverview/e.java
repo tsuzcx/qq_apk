@@ -5,17 +5,16 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
 import com.tencent.mm.plugin.appbrand.jsapi.base.d;
 import com.tencent.mm.plugin.appbrand.jsapi.base.i;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,7 +25,7 @@ public final class e
   public static final int CTRL_INDEX = 342;
   public static final String NAME = "animateCoverView";
   
-  public final int H(JSONObject paramJSONObject)
+  public final int K(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137519);
     int i = paramJSONObject.getInt("viewId");
@@ -34,7 +33,7 @@ public final class e
     return i;
   }
   
-  public final boolean b(h paramh, int paramInt, View paramView, JSONObject paramJSONObject, final i parami)
+  public final boolean b(com.tencent.mm.plugin.appbrand.jsapi.g paramg, int paramInt, final View paramView, JSONObject paramJSONObject, final i parami)
   {
     AppMethodBeat.i(137520);
     int i = -1;
@@ -43,19 +42,19 @@ public final class e
       String str;
       try
       {
-        paramh = paramJSONObject.getJSONObject("finalStyle");
-        float f1 = g.a(paramh, "left", g.aS(paramView.getX()));
-        float f2 = g.a(paramh, "top", g.aS(paramView.getY()));
-        float f3 = (float)paramh.optDouble("opacity", paramView.getAlpha());
-        float f4 = (float)paramh.optDouble("rotate", paramView.getRotation());
-        float f5 = (float)paramh.optDouble("scaleX", paramView.getScaleX());
-        float f6 = (float)paramh.optDouble("scaleY", paramView.getScaleY());
-        if (!paramh.has("width")) {
+        paramg = paramJSONObject.getJSONObject("finalStyle");
+        float f1 = com.tencent.mm.plugin.appbrand.ac.g.a(paramg, "left", com.tencent.mm.plugin.appbrand.ac.g.aT(paramView.getX()));
+        float f2 = com.tencent.mm.plugin.appbrand.ac.g.a(paramg, "top", com.tencent.mm.plugin.appbrand.ac.g.aT(paramView.getY()));
+        float f3 = (float)paramg.optDouble("opacity", paramView.getAlpha());
+        float f4 = (float)paramg.optDouble("rotate", paramView.getRotation());
+        float f5 = (float)paramg.optDouble("scaleX", paramView.getScaleX());
+        float f6 = (float)paramg.optDouble("scaleY", paramView.getScaleY());
+        if (!paramg.has("width")) {
           break label638;
         }
-        paramInt = g.a(paramh, "width", g.zC(paramView.getWidth()));
-        if (paramh.has("height")) {
-          i = g.a(paramh, "height", g.zC(paramView.getWidth()));
+        paramInt = com.tencent.mm.plugin.appbrand.ac.g.a(paramg, "width", com.tencent.mm.plugin.appbrand.ac.g.Dh(paramView.getWidth()));
+        if (paramg.has("height")) {
+          i = com.tencent.mm.plugin.appbrand.ac.g.a(paramg, "height", com.tencent.mm.plugin.appbrand.ac.g.Dh(paramView.getWidth()));
         }
         int j = paramJSONObject.optInt("duration", 300);
         str = paramJSONObject.optString("easing", "linear");
@@ -68,17 +67,17 @@ public final class e
         AnimatorSet localAnimatorSet = new AnimatorSet();
         localAnimatorSet.setDuration(j);
         paramJSONObject = null;
-        paramh = paramJSONObject;
+        paramg = paramJSONObject;
         if (str != null)
         {
           if (str.equals("ease")) {
-            paramh = new AccelerateDecelerateInterpolator();
+            paramg = new AccelerateDecelerateInterpolator();
           }
         }
         else
         {
-          paramJSONObject = paramh;
-          if (paramh == null) {
+          paramJSONObject = paramg;
+          if (paramg == null) {
             paramJSONObject = new LinearInterpolator();
           }
           localAnimatorSet.setInterpolator(paramJSONObject);
@@ -87,52 +86,72 @@ public final class e
             public final void onAnimationEnd(Animator paramAnonymousAnimator)
             {
               AppMethodBeat.i(137518);
-              parami.ZA(e.this.h("ok", null));
+              parami.aho(e.this.h("ok", null));
               AppMethodBeat.o(137518);
             }
           });
-          paramh = new ArrayList();
-          paramh.add(localObjectAnimator1);
-          paramh.add(localObjectAnimator2);
-          paramh.add(localObjectAnimator3);
-          paramh.add(localObjectAnimator4);
-          paramh.add(localObjectAnimator5);
-          paramh.add(localObjectAnimator6);
+          paramg = new ArrayList();
+          paramg.add(localObjectAnimator1);
+          paramg.add(localObjectAnimator2);
+          paramg.add(localObjectAnimator3);
+          paramg.add(localObjectAnimator4);
+          paramg.add(localObjectAnimator5);
+          paramg.add(localObjectAnimator6);
           if (paramInt != -1)
           {
             paramJSONObject = ValueAnimator.ofInt(new int[] { paramView.getWidth(), paramInt });
-            paramh.add(paramJSONObject);
-            paramJSONObject.addUpdateListener(new e.2(this, paramView));
+            paramg.add(paramJSONObject);
+            paramJSONObject.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+            {
+              public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+              {
+                AppMethodBeat.i(205529);
+                paramAnonymousValueAnimator = (Integer)paramAnonymousValueAnimator.getAnimatedValue();
+                paramView.getLayoutParams().width = paramAnonymousValueAnimator.intValue();
+                paramView.requestLayout();
+                AppMethodBeat.o(205529);
+              }
+            });
           }
           if (i != -1)
           {
             paramJSONObject = ValueAnimator.ofInt(new int[] { paramView.getHeight(), i });
-            paramh.add(paramJSONObject);
-            paramJSONObject.addUpdateListener(new e.3(this, paramView));
+            paramg.add(paramJSONObject);
+            paramJSONObject.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+            {
+              public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+              {
+                AppMethodBeat.i(205639);
+                paramAnonymousValueAnimator = (Integer)paramAnonymousValueAnimator.getAnimatedValue();
+                paramView.getLayoutParams().height = paramAnonymousValueAnimator.intValue();
+                paramView.requestLayout();
+                AppMethodBeat.o(205639);
+              }
+            });
           }
-          localAnimatorSet.playTogether(paramh);
+          localAnimatorSet.playTogether(paramg);
           localAnimatorSet.start();
           AppMethodBeat.o(137520);
           return true;
         }
       }
-      catch (JSONException paramh)
+      catch (JSONException paramg)
       {
-        com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.JsApiAnimateCoverView", "get finalStyle error : %s", new Object[] { android.util.Log.getStackTraceString(paramh) });
-        parami.ZA(h("fail:missing finalStyle", null));
+        com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.JsApiAnimateCoverView", "get finalStyle error : %s", new Object[] { android.util.Log.getStackTraceString(paramg) });
+        parami.aho(h("fail:missing finalStyle", null));
         AppMethodBeat.o(137520);
         return false;
       }
       if (str.equals("ease-in"))
       {
-        paramh = new AccelerateInterpolator();
+        paramg = new AccelerateInterpolator();
       }
       else
       {
-        paramh = paramJSONObject;
+        paramg = paramJSONObject;
         if (str.equals("ease-out"))
         {
-          paramh = new DecelerateInterpolator();
+          paramg = new DecelerateInterpolator();
           continue;
           label638:
           paramInt = -1;
@@ -141,14 +160,14 @@ public final class e
     }
   }
   
-  public final boolean bEV()
+  public final boolean bQz()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.e
  * JD-Core Version:    0.7.0.1
  */

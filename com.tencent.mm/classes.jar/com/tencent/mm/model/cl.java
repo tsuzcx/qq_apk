@@ -1,120 +1,58 @@
 package com.tencent.mm.model;
 
-import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.h;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.b;
+import com.tencent.mm.an.h.c;
+import com.tencent.mm.protocal.protobuf.db;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
 import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import java.util.Map;
 
 public final class cl
+  implements h
 {
-  private static volatile boolean iFZ;
-  private static long iGa;
-  private static long iGb;
-  private static final Object lock;
-  
-  static
+  public final h.b b(h.a parama)
   {
-    AppMethodBeat.i(196998);
-    iFZ = false;
-    iGa = -1L;
-    iGb = -1L;
-    lock = new Object();
-    AppMethodBeat.o(196998);
-  }
-  
-  public static void Af(long paramLong)
-  {
-    AppMethodBeat.i(132282);
-    synchronized (lock)
+    AppMethodBeat.i(20397);
+    parama = parama.jQG;
+    if (parama == null)
     {
-      if (!iFZ)
-      {
-        iGa = paramLong;
-        iGb = SystemClock.elapsedRealtime();
-        iFZ = true;
-        ??? = g.aAh().azQ();
-        ((ao)???).set(ar.a.ObQ, Long.valueOf(iGa));
-        ((ao)???).set(ar.a.ObR, Long.valueOf(iGb));
-        AppMethodBeat.o(132282);
-        return;
-      }
-      iGa = Math.max(paramLong, aWA());
-    }
-  }
-  
-  public static long aWA()
-  {
-    AppMethodBeat.i(162133);
-    if (iFZ) {
-      synchronized (lock)
-      {
-        l1 = Math.max(0L, SystemClock.elapsedRealtime() - iGb);
-        long l2 = iGa;
-        AppMethodBeat.o(162133);
-        return l1 + l2;
-      }
-    }
-    long l1 = System.currentTimeMillis();
-    AppMethodBeat.o(162133);
-    return l1;
-  }
-  
-  public static int aWB()
-  {
-    AppMethodBeat.i(132284);
-    int i = (int)(aWA() / 1000L);
-    AppMethodBeat.o(132284);
-    return i;
-  }
-  
-  public static long aWy()
-  {
-    AppMethodBeat.i(132281);
-    if ((MMApplicationContext.isMainProcess()) && (g.aAi().hrr))
-    {
-      g.aAi();
-      if (g.aAf().azp()) {}
-    }
-    else
-    {
-      Log.i("MicroMsg.TimeHelper", "account error");
-      AppMethodBeat.o(132281);
-      return 0L;
+      Log.e("MicroMsg.SysNoticeMsgExtension", "onPreAddMessage cmdAM is null");
+      AppMethodBeat.o(20397);
+      return null;
     }
     try
     {
-      long l = aWA();
-      AppMethodBeat.o(132281);
-      return l;
+      parama = XmlParser.parseXml("<root>" + parama.RIF + "</root>", "root", null);
+      int i = Integer.valueOf((String)parama.get(".root.newcount")).intValue();
+      int j = Integer.valueOf((String)parama.get(".root.version")).intValue();
+      bh.beI();
+      parama = c.aHp();
+      if (j == Util.nullAsNil((Integer)parama.b(12305, null)))
+      {
+        Log.i("MicroMsg.SysNoticeMsgExtension", "ignore new sys notice count, same version");
+        AppMethodBeat.o(20397);
+        return null;
+      }
+      parama.i(12304, Integer.valueOf(i));
+      parama.i(12305, Integer.valueOf(j));
     }
-    catch (Throwable localThrowable)
+    catch (Exception parama)
     {
-      Log.e("MicroMsg.TimeHelper", localThrowable.getMessage());
-      AppMethodBeat.o(132281);
+      for (;;)
+      {
+        Log.e("MicroMsg.SysNoticeMsgExtension", "exception:%s", new Object[] { Util.stackTraceToString(parama) });
+      }
     }
-    return 0L;
+    AppMethodBeat.o(20397);
+    return null;
   }
   
-  public static long aWz()
-  {
-    AppMethodBeat.i(258484);
-    long l = aWA();
-    AppMethodBeat.o(258484);
-    return l;
-  }
-  
-  public static long secondsToNow(long paramLong)
-  {
-    AppMethodBeat.i(132285);
-    long l = aWA() / 1000L;
-    AppMethodBeat.o(132285);
-    return l - paramLong;
-  }
+  public final void b(h.c paramc) {}
 }
 
 

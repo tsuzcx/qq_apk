@@ -4,17 +4,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.protocal.protobuf.ddb;
+import com.tencent.mm.an.q;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.protocal.protobuf.dmr;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.d.a;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.f;
 
 public final class b
 {
@@ -23,10 +22,10 @@ public final class b
     AppMethodBeat.i(71687);
     Log.i("MicroMsg.ECardUtil", "start open ecard process, scene: %s, token==null%s, eCardType: %s, extraData: %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(Util.isNullOrNil(paramString1)), paramString2, paramString3 });
     Bundle localBundle = new Bundle();
-    localBundle.putInt(a.Ipq, paramInt);
-    localBundle.putString(a.Ipr, paramString1);
-    localBundle.putString(a.Ipv, paramString2);
-    localBundle.putString(a.Ipw, paramString3);
+    localBundle.putInt(a.PhY, paramInt);
+    localBundle.putString(a.PhZ, paramString1);
+    localBundle.putString(a.Pid, paramString2);
+    localBundle.putString(a.Pie, paramString3);
     com.tencent.mm.wallet_core.a.a((Activity)paramContext, com.tencent.mm.plugin.wallet_ecard.b.b.class, localBundle, parama);
     AppMethodBeat.o(71687);
   }
@@ -56,10 +55,10 @@ public final class b
     }
   }
   
-  public static boolean a(final WalletBaseUI paramWalletBaseUI, ddb paramddb)
+  public static boolean a(final WalletBaseUI paramWalletBaseUI, dmr paramdmr)
   {
     AppMethodBeat.i(71684);
-    if (paramddb == null) {
+    if (paramdmr == null) {
       Log.i("MicroMsg.ECardUtil", "no popItem");
     }
     do
@@ -68,53 +67,17 @@ public final class b
       {
         AppMethodBeat.o(71684);
         return false;
-      } while (Util.isNullOrNil(paramddb.LZw));
-      if ((!Util.isNullOrNil(paramddb.HFD)) && (!Util.isNullOrNil(paramddb.MIh)))
+      } while (Util.isNullOrNil(paramdmr.TiP));
+      if ((!Util.isNullOrNil(paramdmr.Oxw)) && (!Util.isNullOrNil(paramdmr.TTV)))
       {
         Log.i("MicroMsg.ECardUtil", "show guide info 1");
-        com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramddb.LZw, "", paramddb.HFD, paramddb.MIh, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(71681);
-            WalletBaseUI localWalletBaseUI;
-            String str;
-            Object localObject;
-            if (!Util.isNullOrNil(this.IpO.yUB))
-            {
-              localWalletBaseUI = paramWalletBaseUI;
-              str = this.IpO.yUB;
-              localObject = this.IpQ;
-              Log.i("MicroMsg.ECardUtil", "url: %s", new Object[] { str });
-              if (!Util.isNullOrNil(str))
-              {
-                if (!str.startsWith("native.")) {
-                  break label146;
-                }
-                Log.i("MicroMsg.ECardUtil", "goto native");
-                if (((localObject != null) && (((b.a)localObject).fUk())) || (str.equals("native.qryacctdesc")) || (str.equals("native.openecardauth")) || (str.equals("native.cancloseecard")) || (!str.equals("native.withdraw"))) {}
-              }
-            }
-            for (;;)
-            {
-              paramAnonymousDialogInterface.dismiss();
-              AppMethodBeat.o(71681);
-              return;
-              label146:
-              Log.d("MicroMsg.ECardUtil", "url: %s", new Object[] { str });
-              localObject = new Intent();
-              ((Intent)localObject).putExtra("rawUrl", str);
-              ((Intent)localObject).putExtra("showShare", false);
-              f.aA(localWalletBaseUI, (Intent)localObject);
-            }
-          }
-        }, new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramdmr.TiP, "", paramdmr.Oxw, paramdmr.TTV, false, new b.1(paramdmr, paramWalletBaseUI), new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(71682);
             d locald;
-            if (this.IpO.MeU == a.Ipm)
+            if (this.Piw.Tow == a.PhU)
             {
               Log.i("MicroMsg.ECardUtil", "do end process");
               locald = paramWalletBaseUI.getProcess();
@@ -129,12 +92,12 @@ public final class b
               return;
               paramWalletBaseUI.finish();
               continue;
-              if (this.IpO.MeU == a.Ipp)
+              if (this.Piw.Tow == a.PhX)
               {
                 Log.i("MicroMsg.ECardUtil", "back bank list");
                 locald = paramWalletBaseUI.getProcess();
                 if (locald != null) {
-                  locald.g(paramWalletBaseUI, 100);
+                  locald.h(paramWalletBaseUI, 100);
                 } else {
                   paramWalletBaseUI.finish();
                 }
@@ -145,15 +108,15 @@ public final class b
         AppMethodBeat.o(71684);
         return true;
       }
-    } while (Util.isNullOrNil(paramddb.MIh));
+    } while (Util.isNullOrNil(paramdmr.TTV));
     Log.i("MicroMsg.ECardUtil", "show guide info 2");
-    com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramddb.LZw, "", paramddb.MIh, false, new DialogInterface.OnClickListener()
+    com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramdmr.TiP, "", paramdmr.TTV, false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(71683);
         d locald;
-        if (this.IpO.MeU == a.Ipm)
+        if (this.Piw.Tow == a.PhU)
         {
           Log.i("MicroMsg.ECardUtil", "do end process");
           locald = paramWalletBaseUI.getProcess();
@@ -168,12 +131,12 @@ public final class b
           return;
           paramWalletBaseUI.finish();
           continue;
-          if (this.IpO.MeU == a.Ipp)
+          if (this.Piw.Tow == a.PhX)
           {
             Log.i("MicroMsg.ECardUtil", "back bank list");
             locald = paramWalletBaseUI.getProcess();
             if (locald != null) {
-              locald.g(paramWalletBaseUI, 100);
+              locald.h(paramWalletBaseUI, 100);
             } else {
               paramWalletBaseUI.finish();
             }
@@ -185,10 +148,10 @@ public final class b
     return true;
   }
   
-  public static String d(Context paramContext, String... paramVarArgs)
+  public static String e(Context paramContext, String... paramVarArgs)
   {
     AppMethodBeat.i(71685);
-    paramContext = paramContext.getString(2131768354);
+    paramContext = paramContext.getString(a.i.wallet_unknown_err);
     int i;
     if (paramVarArgs.length > 0)
     {
@@ -209,11 +172,6 @@ public final class b
       i += 1;
       break;
     }
-  }
-  
-  public static abstract interface a
-  {
-    public abstract boolean fUk();
   }
 }
 

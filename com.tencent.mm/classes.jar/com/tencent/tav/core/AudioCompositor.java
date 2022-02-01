@@ -19,21 +19,21 @@ public class AudioCompositor
   
   public AudioCompositor(AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(217845);
+    AppMethodBeat.i(189043);
     this.TAG = ("AudioCompositor@" + Integer.toHexString(hashCode()));
     this.audioMixer = new AudioMixer(paramAudioInfo.sampleRate, paramAudioInfo.channelCount);
     this.audioResample = new AudioResample();
-    AppMethodBeat.o(217845);
+    AppMethodBeat.o(189043);
   }
   
   private AudioInfo resample(CMSampleBuffer paramCMSampleBuffer, AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(217849);
+    AppMethodBeat.i(189048);
     ByteBuffer localByteBuffer2 = paramCMSampleBuffer.getSampleByteBuffer();
     if ((localByteBuffer2 == null) || (localByteBuffer2.limit() <= 0))
     {
       Logger.d(this.audioResample.TAG, "resample: 不进行重采样 byteBuffer = ".concat(String.valueOf(localByteBuffer2)));
-      AppMethodBeat.o(217849);
+      AppMethodBeat.o(189048);
       return paramAudioInfo;
     }
     ByteBuffer localByteBuffer1;
@@ -47,7 +47,7 @@ public class AudioCompositor
     for (;;)
     {
       paramCMSampleBuffer.setSampleByteBuffer(localByteBuffer1);
-      AppMethodBeat.o(217849);
+      AppMethodBeat.o(189048);
       return paramAudioInfo;
       localByteBuffer1 = localByteBuffer2;
     }
@@ -70,10 +70,10 @@ public class AudioCompositor
   
   public ByteBuffer processFrame(ByteBuffer paramByteBuffer, float paramFloat1, float paramFloat2, AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(217848);
+    AppMethodBeat.i(189047);
     this.audioMixer.setAudioInfo(paramAudioInfo.sampleRate, paramAudioInfo.channelCount, paramAudioInfo.pcmEncoding);
     paramByteBuffer = this.audioMixer.processBytes(paramByteBuffer, paramFloat2, paramFloat1, 1.0F);
-    AppMethodBeat.o(217848);
+    AppMethodBeat.o(189047);
     return paramByteBuffer;
   }
   
@@ -495,14 +495,14 @@ public class AudioCompositor
   
   public void setAudioInfo(AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(217846);
+    AppMethodBeat.i(189044);
     this.audioMixer = new AudioMixer(paramAudioInfo.sampleRate, paramAudioInfo.channelCount);
-    AppMethodBeat.o(217846);
+    AppMethodBeat.o(189044);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.core.AudioCompositor
  * JD-Core Version:    0.7.0.1
  */

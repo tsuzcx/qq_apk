@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.editor.adapter;
 
-import android.support.v7.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.editor.model.nativenote.manager.j;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -9,15 +9,15 @@ public final class b
   extends RecyclerView.a<com.tencent.mm.plugin.editor.adapter.a.a>
 {
   private final String TAG;
-  private j qNG;
-  private com.tencent.mm.plugin.editor.adapter.a.c qOl;
+  private j uoT;
+  private com.tencent.mm.plugin.editor.adapter.a.c uqp;
   
   public b(j paramj)
   {
     AppMethodBeat.i(181638);
     this.TAG = "MicroMsg.EditorAdapter";
-    this.qNG = paramj;
-    this.qOl = new com.tencent.mm.plugin.editor.adapter.a.c();
+    this.uoT = paramj;
+    this.uqp = new com.tencent.mm.plugin.editor.adapter.a.c();
     AppMethodBeat.o(181638);
   }
   
@@ -29,8 +29,8 @@ public final class b
       try
       {
         AppMethodBeat.i(181641);
-        com.tencent.mm.plugin.editor.model.a.a locala = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().Fw(paramInt);
-        if ((locala != null) && (locala.getType() == parama.cCY()))
+        com.tencent.mm.plugin.editor.model.a.a locala = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().Jd(paramInt);
+        if ((locala != null) && (locala.getType() == parama.cRD()))
         {
           parama.a(locala, paramInt, locala.getType());
           AppMethodBeat.o(181641);
@@ -53,7 +53,7 @@ public final class b
   public final int getItemCount()
   {
     AppMethodBeat.i(181639);
-    int i = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().size();
+    int i = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().size();
     AppMethodBeat.o(181639);
     return i;
   }
@@ -61,7 +61,7 @@ public final class b
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(181640);
-    com.tencent.mm.plugin.editor.model.a.a locala = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cDo().Fw(paramInt);
+    com.tencent.mm.plugin.editor.model.a.a locala = com.tencent.mm.plugin.editor.model.nativenote.manager.c.cRT().Jd(paramInt);
     if (locala != null)
     {
       paramInt = locala.getType();
@@ -75,7 +75,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.adapter.b
  * JD-Core Version:    0.7.0.1
  */

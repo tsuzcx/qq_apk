@@ -7,11 +7,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class ScaleLayoutManager
   extends ViewPagerLayoutManager
 {
-  public float aXu;
-  private int hbd;
-  private float yYh;
-  private float yYi;
-  private float yYj;
+  private float ECq;
+  private float ECr;
+  private float ECs;
+  public float aGO;
+  private int itemSpace;
   
   public ScaleLayoutManager(Context paramContext)
   {
@@ -23,25 +23,15 @@ public class ScaleLayoutManager
   private ScaleLayoutManager(Context paramContext, int paramInt1, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt2, float paramFloat4, int paramInt3, int paramInt4, boolean paramBoolean)
   {
     super(paramInt2, paramBoolean);
-    AppMethodBeat.i(213334);
-    assertNotInLayoutOrScroll(null);
-    if (this.yYC != paramInt4)
-    {
-      this.yYC = paramInt4;
-      removeAllViews();
-    }
-    assertNotInLayoutOrScroll(null);
-    if (this.yYA != paramInt3)
-    {
-      this.yYA = paramInt3;
-      removeAllViews();
-    }
-    this.hbd = paramInt1;
-    this.aXu = paramFloat1;
-    this.yYh = paramFloat4;
-    this.yYi = paramFloat2;
-    this.yYj = paramFloat3;
-    AppMethodBeat.o(213334);
+    AppMethodBeat.i(271451);
+    VX(paramInt4);
+    VV(paramInt3);
+    this.itemSpace = paramInt1;
+    this.aGO = paramFloat1;
+    this.ECq = paramFloat4;
+    this.ECr = paramFloat2;
+    this.ECs = paramFloat3;
+    AppMethodBeat.o(271451);
   }
   
   private ScaleLayoutManager(a parama)
@@ -51,34 +41,34 @@ public class ScaleLayoutManager
     AppMethodBeat.o(65336);
   }
   
-  protected final float efn()
+  protected final float eOL()
   {
-    return this.hbd + this.yYp;
+    return this.itemSpace + this.ECy;
   }
   
-  protected final float efo()
+  protected final float eOM()
   {
-    if (this.yYh == 0.0F) {
+    if (this.ECq == 0.0F) {
       return 3.4028235E+38F;
     }
-    return 1.0F / this.yYh;
+    return 1.0F / this.ECq;
   }
   
   protected final void v(View paramView, float paramFloat)
   {
     AppMethodBeat.i(65338);
-    float f2 = Math.abs(this.yYr + paramFloat - this.yYr);
+    float f2 = Math.abs(this.ECA + paramFloat - this.ECA);
     float f1 = f2;
-    if (f2 - this.yYp > 0.0F) {
-      f1 = this.yYp;
+    if (f2 - this.ECy > 0.0F) {
+      f1 = this.ECy;
     }
-    f1 = 1.0F - f1 / this.yYp * (1.0F - this.aXu);
+    f1 = 1.0F - f1 / this.ECy * (1.0F - this.aGO);
     paramView.setScaleX(f1);
     paramView.setScaleY(f1);
     f1 = Math.abs(paramFloat);
-    paramFloat = (this.yYj - this.yYi) / this.yYw * f1 + this.yYi;
-    if (f1 >= this.yYw) {
-      paramFloat = this.yYj;
+    paramFloat = (this.ECs - this.ECr) / this.ECE * f1 + this.ECr;
+    if (f1 >= this.ECE) {
+      paramFloat = this.ECs;
     }
     paramView.setAlpha(paramFloat);
     AppMethodBeat.o(65338);
@@ -86,36 +76,36 @@ public class ScaleLayoutManager
   
   public static final class a
   {
-    private static float yYk = 1.0F;
-    private static float yYl = 1.0F;
-    private float aXu;
-    private boolean atu;
+    private static float ECt = 1.0F;
+    private static float ECu = 1.0F;
+    private float ECq;
+    private float ECr;
+    private float ECs;
+    private int ECv;
+    private int ECw;
+    private int FO;
+    private float aGO;
+    private boolean aln;
     private Context context;
-    private int hbd = 0;
-    private int orientation;
-    private float yYh;
-    private float yYi;
-    private float yYj;
-    private int yYm;
-    private int yYn;
+    private int itemSpace = 0;
     
     public a(Context paramContext, int paramInt)
     {
       this.context = paramContext;
-      this.orientation = 0;
-      this.aXu = 0.8F;
-      this.yYh = 1.0F;
-      this.yYi = yYl;
-      this.yYj = yYk;
-      this.atu = false;
-      this.yYn = 2147483647;
-      this.yYm = -1;
+      this.FO = 0;
+      this.aGO = 0.8F;
+      this.ECq = 1.0F;
+      this.ECr = ECu;
+      this.ECs = ECt;
+      this.aln = false;
+      this.ECw = 2147483647;
+      this.ECv = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.scaledLayout.ScaleLayoutManager
  * JD-Core Version:    0.7.0.1
  */

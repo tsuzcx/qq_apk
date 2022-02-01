@@ -1,273 +1,147 @@
 package com.tencent.mm.plugin.finder.storage;
 
 import android.content.Context;
-import android.database.Cursor;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager.b;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.h;
+import androidx.recyclerview.widget.RecyclerView.m;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.modelmulti.c;
-import com.tencent.mm.n.f;
-import com.tencent.mm.n.h;
-import com.tencent.mm.plugin.finder.cgi.br;
-import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.bdk;
-import com.tencent.mm.protocal.protobuf.cpm;
-import com.tencent.mm.protocal.protobuf.cpn;
-import com.tencent.mm.protocal.protobuf.kx;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.plugin.finder.convert.ad;
+import com.tencent.mm.plugin.finder.convert.ai;
+import com.tencent.mm.plugin.finder.convert.cd;
+import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
+import com.tencent.mm.plugin.finder.utils.aj;
+import com.tencent.mm.plugin.finder.viewmodel.c;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.component.g;
+import com.tencent.mm.ui.component.g.a;
+import com.tencent.mm.view.recyclerview.e;
+import kotlin.g.a.b;
 import kotlin.g.b.p;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderNotSeeMyListConfig;", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig;", "()V", "canAddList", "", "getCache", "Lcom/tencent/mm/plugin/finder/storage/data/FinderContactPage;", "getEmptyTips", "", "getInitData", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "getItemData", "netScene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "getLastBuff", "Lcom/tencent/mm/protobuf/ByteString;", "getNetScene", "lastBuff", "getSubTitleStrId", "getTitleStrId", "needLoadMore", "onAddUserList", "", "nameList", "", "", "onItemDelete", "contact", "callBack", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig$OnItemDelCallBack;", "onSearchBarClick", "context", "Landroid/content/Context;", "setContactFlag", "userName", "setFlag", "Companion", "plugin-finder_release"})
-public final class ae
-  implements ak
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderProfileGridLayoutConfig;", "Lcom/tencent/mm/plugin/finder/storage/IFinderLayoutConfig;", "gridSpanCount", "", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "isSelfFlag", "", "username", "", "(ILcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;ZLjava/lang/String;)V", "getFeedLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "getGridSpanCount", "()I", "getDefaultConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroidx/recyclerview/widget/RecyclerView$LayoutManager;", "context", "Landroid/content/Context;", "getViewPool", "Landroidx/recyclerview/widget/RecyclerView$RecycledViewPool;", "Lcom/tencent/mm/ui/MMActivity;", "plugin-finder_release"})
+public class ae
+  extends ak
 {
-  public static final a vEW;
+  private final int Amp;
+  final String username;
+  final BaseFinderFeedLoader xnX;
+  final boolean xnY;
   
-  static
+  public ae(BaseFinderFeedLoader paramBaseFinderFeedLoader, boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(251848);
-    vEW = new a((byte)0);
-    AppMethodBeat.o(251848);
+    AppMethodBeat.i(288754);
+    this.Amp = 3;
+    this.xnX = paramBaseFinderFeedLoader;
+    this.xnY = paramBoolean;
+    this.username = paramString;
+    AppMethodBeat.o(288754);
   }
   
-  private static void bu(String paramString, boolean paramBoolean)
+  public static e<?> Qk(int paramInt)
   {
-    AppMethodBeat.i(251847);
-    com.tencent.mm.kernel.c.a locala = com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-    p.g(locala, "MMKernel.service(IMessengerStorage::class.java)");
-    paramString = ((com.tencent.mm.plugin.messenger.foundation.a.l)locala).aSN().Kn(paramString);
-    if (paramString != null)
-    {
-      if (paramBoolean) {
-        paramString.arl();
-      }
-      for (;;)
-      {
-        locala = com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-        p.g(locala, "MMKernel.service(IMessengerStorage::class.java)");
-        ((com.tencent.mm.plugin.messenger.foundation.a.l)locala).aSN().c(paramString.getUsername(), paramString);
-        AppMethodBeat.o(251847);
-        return;
-        paramString.arm();
-      }
-    }
-    AppMethodBeat.o(251847);
+    AppMethodBeat.i(288752);
+    Object localObject = aj.AGc;
+    aj.em("FinderProfileGridLayoutConfig", paramInt);
+    localObject = (e)new com.tencent.mm.plugin.finder.convert.f();
+    AppMethodBeat.o(288752);
+    return localObject;
   }
   
-  public final void a(FinderContact paramFinderContact, ak.a parama)
+  public com.tencent.mm.view.recyclerview.f O(final b<? super Integer, ? extends e<?>> paramb)
   {
-    AppMethodBeat.i(251843);
-    p.h(paramFinderContact, "contact");
-    LinkedList localLinkedList = new LinkedList();
-    Log.d("FinderNotSeeMyListConfig", "deleted user:" + paramFinderContact.username);
-    paramFinderContact = paramFinderContact.username;
-    if (paramFinderContact != null) {
-      localLinkedList.add(paramFinderContact);
-    }
-    int i = h.aqJ().getInt("MMBatchModContactTypeMaxNumForServer", 30);
-    paramFinderContact = com.tencent.mm.kernel.g.aAg();
-    p.g(paramFinderContact, "MMKernel.network()");
-    paramFinderContact.azz().a(3990, (i)new c(parama));
-    paramFinderContact = new c((List)localLinkedList, 134217728, 2, i);
-    com.tencent.mm.kernel.g.azz().b((q)paramFinderContact);
-    AppMethodBeat.o(251843);
+    AppMethodBeat.i(288751);
+    paramb = (com.tencent.mm.view.recyclerview.f)new a(this, paramb);
+    AppMethodBeat.o(288751);
+    return paramb;
   }
   
-  public final q c(com.tencent.mm.bw.b paramb)
+  public final RecyclerView.LayoutManager eW(Context paramContext)
   {
-    return null;
+    AppMethodBeat.i(288749);
+    p.k(paramContext, "context");
+    paramContext = new GridLayoutManager(this.Amp);
+    paramContext.a((GridLayoutManager.b)new c());
+    paramContext.setItemPrefetchEnabled(true);
+    paramContext = (RecyclerView.LayoutManager)paramContext;
+    AppMethodBeat.o(288749);
+    return paramContext;
   }
   
-  public final int dql()
+  public final RecyclerView.m g(MMActivity paramMMActivity)
   {
-    return 2131760350;
+    AppMethodBeat.i(288753);
+    p.k(paramMMActivity, "context");
+    g localg = g.Xox;
+    paramMMActivity = ((c)g.b((AppCompatActivity)paramMMActivity).i(c.class)).BgW;
+    AppMethodBeat.o(288753);
+    return paramMMActivity;
   }
   
-  public final int dqm()
+  public final RecyclerView.h getItemDecoration()
   {
-    return -1;
+    AppMethodBeat.i(288750);
+    RecyclerView.h localh = (RecyclerView.h)new ae.b();
+    AppMethodBeat.o(288750);
+    return localh;
   }
   
-  public final boolean dqn()
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/storage/FinderProfileGridLayoutConfig$getItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
+  public static final class a
+    implements com.tencent.mm.view.recyclerview.f
   {
-    return true;
-  }
-  
-  public final com.tencent.mm.plugin.finder.storage.data.g dqo()
-  {
-    return null;
-  }
-  
-  public final LinkedList<FinderContact> dqp()
-  {
-    AppMethodBeat.i(251845);
-    LinkedList localLinkedList = new LinkedList();
-    Object localObject1 = com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-    p.g(localObject1, "MMKernel.service(IMessengerStorage::class.java)");
-    localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject1).aSN().d(null, "", "@finder.block.my.liked.android", "", null);
-    Object localObject2 = new StringBuilder("count = ");
-    p.g(localObject1, "dataCursor");
-    Log.i("FinderNotSeeMyListConfig", ((Cursor)localObject1).getCount());
-    while (((Cursor)localObject1).moveToNext())
-    {
-      localObject2 = new as();
-      ((as)localObject2).convertFrom((Cursor)localObject1);
-      FinderContact localFinderContact = new FinderContact();
-      localFinderContact.username = ((as)localObject2).getUsername();
-      localLinkedList.add(localFinderContact);
-    }
-    AppMethodBeat.o(251845);
-    return localLinkedList;
-  }
-  
-  public final boolean dqq()
-  {
-    return false;
-  }
-  
-  public final int dqr()
-  {
-    return 2131759564;
-  }
-  
-  public final void es(final List<String> paramList)
-  {
-    AppMethodBeat.i(251846);
-    p.h(paramList, "nameList");
-    LinkedList localLinkedList = new LinkedList();
-    Log.d("FinderNotSeeMyListConfig", "add user:" + paramList.size());
-    localLinkedList.addAll((Collection)paramList);
-    Object localObject = ((Iterable)localLinkedList).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      bu((String)((Iterator)localObject).next(), true);
-    }
-    localObject = com.tencent.mm.kernel.g.aAg();
-    p.g(localObject, "MMKernel.network()");
-    ((com.tencent.mm.kernel.b)localObject).azz().a(3990, (i)new b(this, paramList));
-    int i = h.aqJ().getInt("MMBatchModContactTypeMaxNumForServer", 30);
-    paramList = new c((List)localLinkedList, 134217728, 1, i);
-    com.tencent.mm.kernel.g.azz().b((q)paramList);
-    AppMethodBeat.o(251846);
-  }
-  
-  public final void fq(Context paramContext)
-  {
-    AppMethodBeat.i(251842);
-    p.h(paramContext, "context");
-    com.tencent.mm.plugin.finder.utils.a locala = com.tencent.mm.plugin.finder.utils.a.vUU;
-    com.tencent.mm.plugin.finder.utils.a.aE(paramContext, "@finder.block.my.liked.android");
-    AppMethodBeat.o(251842);
-  }
-  
-  public final com.tencent.mm.bw.b i(q paramq)
-  {
-    return null;
-  }
-  
-  public final LinkedList<FinderContact> j(q paramq)
-  {
-    AppMethodBeat.i(251844);
-    LinkedList localLinkedList = new LinkedList();
-    if (paramq == null)
-    {
-      paramq = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderGetTagContact");
-      AppMethodBeat.o(251844);
-      throw paramq;
-    }
-    paramq = ((br)paramq).cYF();
-    if (paramq != null)
-    {
-      paramq = ((Iterable)paramq).iterator();
-      while (paramq.hasNext())
-      {
-        FinderContact localFinderContact = ((bdk)paramq.next()).contact;
-        if (localFinderContact != null) {
-          localLinkedList.add(localFinderContact);
-        }
-      }
-    }
-    AppMethodBeat.o(251844);
-    return localLinkedList;
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderNotSeeMyListConfig$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/storage/FinderNotSeeMyListConfig$onAddUserList$2", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
-  public static final class b
-    implements i
-  {
-    b(List paramList) {}
+    a(b paramb) {}
     
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+    public final e<?> yx(int paramInt)
     {
-      AppMethodBeat.i(251840);
-      paramString = com.tencent.mm.kernel.g.aAg();
-      p.g(paramString, "MMKernel.network()");
-      paramString.azz().b(3990, (i)this);
-      if ((paramq instanceof c))
+      AppMethodBeat.i(225400);
+      switch (paramInt)
       {
-        if ((paramInt1 == 0) && (paramInt2 == 0))
+      default: 
+        localObject = paramb;
+        if (localObject != null)
         {
-          paramString = ((c)paramq).bdI();
-          if (paramString != null)
-          {
-            paramString = paramString.KOP;
-            if (paramString != null)
-            {
-              paramString = ((Iterable)paramString).iterator();
-              while (paramString.hasNext())
-              {
-                paramq = ((cpn)paramString.next()).MvE.UserName;
-                p.g(paramq, "it.ModOperation.UserName");
-                ae.avx(paramq);
-              }
-              AppMethodBeat.o(251840);
-              return;
-            }
-          }
-          AppMethodBeat.o(251840);
-          return;
+          e locale = (e)((b)localObject).invoke(Integer.valueOf(paramInt));
+          localObject = locale;
+          if (locale != null) {}
         }
-        paramString = ((Iterable)paramList).iterator();
-        while (paramString.hasNext()) {
-          ae.avx((String)paramString.next());
+        else
+        {
+          localObject = ae.Qk(paramInt);
         }
+        AppMethodBeat.o(225400);
+        return localObject;
+      case 4: 
+      case 3002: 
+        localObject = (e)new cd(this.Amq.xnX, this.Amq.username, this.Amq.xnY, (byte)0);
+        AppMethodBeat.o(225400);
+        return localObject;
+      case 2: 
+      case 3001: 
+        localObject = (e)new cd(this.Amq.xnX, this.Amq.username, this.Amq.xnY, (byte)0);
+        AppMethodBeat.o(225400);
+        return localObject;
+      case -3: 
+        localObject = (e)new ai();
+        AppMethodBeat.o(225400);
+        return localObject;
       }
-      AppMethodBeat.o(251840);
+      Object localObject = (e)new ad();
+      AppMethodBeat.o(225400);
+      return localObject;
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/storage/FinderNotSeeMyListConfig$onItemDelete$2", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/storage/FinderProfileGridLayoutConfig$getLayoutManager$1", "Landroidx/recyclerview/widget/GridLayoutManager$SpanSizeLookup;", "getSpanSize", "", "position", "plugin-finder_release"})
   public static final class c
-    implements i
+    extends GridLayoutManager.b
   {
-    c(ak.a parama) {}
-    
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+    public final int cx(int paramInt)
     {
-      AppMethodBeat.i(251841);
-      paramString = com.tencent.mm.kernel.g.aAg();
-      p.g(paramString, "MMKernel.network()");
-      paramString.azz().b(3990, (i)this);
-      paramString = this.vEV;
-      if (paramString != null)
-      {
-        if ((paramInt1 == 0) && (paramInt2 == 0)) {}
-        for (boolean bool = true;; bool = false)
-        {
-          paramString.nN(bool);
-          AppMethodBeat.o(251841);
-          return;
-        }
-      }
-      AppMethodBeat.o(251841);
+      return 1;
     }
   }
 }

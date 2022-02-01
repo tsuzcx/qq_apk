@@ -4,7 +4,7 @@ import android.os.Build.VERSION;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.os.SystemClock;
-import com.tencent.matrix.g.c;
+import com.tencent.matrix.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.matrix.trace.core.AppMethodBeat.a;
 import java.lang.reflect.Field;
@@ -16,25 +16,20 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class a
 {
-  private static long dbA = 0L;
-  private static long dbB = 0L;
-  public static AppMethodBeat.a dbC = new AppMethodBeat.a();
-  public static AppMethodBeat.a dbD = new AppMethodBeat.a();
-  public static int dbE = -2147483648;
-  private static boolean dbF = false;
+  private static long dfC = 0L;
+  private static long dfD = 0L;
+  public static AppMethodBeat.a dfE = new AppMethodBeat.a();
+  public static AppMethodBeat.a dfF = new AppMethodBeat.a();
+  public static int dfG = -2147483648;
+  private static boolean dfH = false;
   private static final HashSet<b> listeners = new HashSet();
   
-  public static boolean TA()
-  {
-    return dbF;
-  }
-  
-  public static void Tx()
+  public static void Yb()
   {
     try
     {
-      dbA = SystemClock.uptimeMillis();
-      dbD = AppMethodBeat.getInstance().maskIndex("ApplicationCreateBeginMethodIndex");
+      dfC = SystemClock.uptimeMillis();
+      dfF = AppMethodBeat.getInstance().maskIndex("ApplicationCreateBeginMethodIndex");
       Object localObject1 = Class.forName("android.app.ActivityThread");
       Object localObject2 = ((Class)localObject1).getDeclaredField("sCurrentActivityThread");
       ((Field)localObject2).setAccessible(true);
@@ -49,7 +44,7 @@ public final class a
         ((Field)localObject2).setAccessible(true);
         ((Field)localObject2).set(localObject1, new a((Handler.Callback)((Field)localObject2).get(localObject1)));
       }
-      c.i("Matrix.ActivityThreadHacker", "hook system handler completed. start:%s SDK_INT:%s", new Object[] { Long.valueOf(dbA), Integer.valueOf(Build.VERSION.SDK_INT) });
+      c.i("Matrix.ActivityThreadHacker", "hook system handler completed. start:%s SDK_INT:%s", new Object[] { Long.valueOf(dfC), Integer.valueOf(Build.VERSION.SDK_INT) });
       return;
     }
     catch (Exception localException)
@@ -58,14 +53,19 @@ public final class a
     }
   }
   
-  public static long Ty()
+  public static long Yc()
   {
-    return dbB - dbA;
+    return dfD - dfC;
   }
   
-  public static long Tz()
+  public static long Yd()
   {
-    return dbA;
+    return dfC;
+  }
+  
+  public static boolean Ye()
+  {
+    return dfH;
   }
   
   public static void a(b paramb)
@@ -80,14 +80,14 @@ public final class a
   static final class a
     implements Handler.Callback
   {
-    private static boolean dbG = false;
-    private static int dbH = 2147483647;
-    private final Handler.Callback dbI;
+    private static boolean dfI = false;
+    private static int dfJ = 2147483647;
+    private final Handler.Callback dfK;
     private Method method = null;
     
     a(Handler.Callback paramCallback)
     {
-      this.dbI = paramCallback;
+      this.dfK = paramCallback;
     }
     
     private boolean g(Message paramMessage)
@@ -163,41 +163,41 @@ public final class a
         }
       }
       if (!AppMethodBeat.isRealTrace()) {
-        return (this.dbI != null) && (this.dbI.handleMessage(paramMessage));
+        return (this.dfK != null) && (this.dfK.handleMessage(paramMessage));
       }
       boolean bool = g(paramMessage);
-      if (dbH > 0)
+      if (dfJ > 0)
       {
         c.i("Matrix.ActivityThreadHacker", "[handleMessage] msg.what:%s begin:%s isLaunchActivity:%s SDK_INT=%s", new Object[] { Integer.valueOf(paramMessage.what), Long.valueOf(SystemClock.uptimeMillis()), Boolean.valueOf(bool), Integer.valueOf(Build.VERSION.SDK_INT) });
-        dbH -= 1;
+        dfJ -= 1;
       }
-      if ((!dbG) && ((bool) || (paramMessage.what == 114) || (paramMessage.what == 113)))
+      if ((!dfI) && ((bool) || (paramMessage.what == 114) || (paramMessage.what == 113)))
       {
-        a.be(SystemClock.uptimeMillis());
-        a.dbE = paramMessage.what;
-        dbG = true;
+        a.bq(SystemClock.uptimeMillis());
+        a.dfG = paramMessage.what;
+        dfI = true;
         a.access$102(bool);
         c.i("Matrix.ActivityThreadHacker", "application create end, sApplicationCreateScene:%d, isLaunchActivity:%s", new Object[] { Integer.valueOf(paramMessage.what), Boolean.valueOf(bool) });
-        synchronized (a.TB())
+        synchronized (a.Yf())
         {
-          Iterator localIterator = a.TB().iterator();
+          Iterator localIterator = a.Yf().iterator();
           if (localIterator.hasNext()) {
-            ((a.b)localIterator.next()).TC();
+            ((a.b)localIterator.next()).Yg();
           }
         }
       }
-      return (this.dbI != null) && (this.dbI.handleMessage(paramMessage));
+      return (this.dfK != null) && (this.dfK.handleMessage(paramMessage));
     }
   }
   
   public static abstract interface b
   {
-    public abstract void TC();
+    public abstract void Yg();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.trace.c.a
  * JD-Core Version:    0.7.0.1
  */

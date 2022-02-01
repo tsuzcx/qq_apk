@@ -1,34 +1,35 @@
 package com.tencent.mm.booter.notification.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.a;
+import com.tencent.mm.R.g;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.n.g;
 
 public final class c
 {
-  public int gov = -1;
+  public int iSE = -1;
   
-  public final int F(String paramString, int paramInt)
+  public final int X(String paramString, int paramInt)
   {
     AppMethodBeat.i(20042);
-    this.gov = a.ezb();
-    if ((!g.oJ(paramInt)) || (g.Em(paramString))) {}
+    this.iSE = a.fkG();
+    if ((!g.rc(paramInt)) || (g.Lf(paramString))) {}
     try
     {
-      this.gov = 2131235544;
+      this.iSE = R.g.dpx;
       for (;;)
       {
-        label33:
-        if (this.gov < 0) {
-          this.gov = a.ezb();
+        label34:
+        if (this.iSE < 0) {
+          this.iSE = a.fkG();
         }
-        paramInt = this.gov;
+        paramInt = this.iSE;
         AppMethodBeat.o(20042);
         return paramInt;
-        if (g.En(paramString)) {
+        if (g.Lg(paramString)) {
           try
           {
-            this.gov = 2131235544;
+            this.iSE = R.g.dpx;
           }
           catch (Exception paramString) {}
         }
@@ -36,13 +37,13 @@ public final class c
     }
     catch (Exception paramString)
     {
-      break label33;
+      break label34;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.booter.notification.a.c
  * JD-Core Version:    0.7.0.1
  */

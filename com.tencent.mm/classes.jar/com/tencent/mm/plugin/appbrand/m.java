@@ -1,358 +1,125 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.text.TextUtils;
-import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.co.f;
-import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
-import com.tencent.mm.plugin.appbrand.debugger.DebuggerShell;
-import com.tencent.mm.plugin.appbrand.page.ag;
-import com.tencent.mm.plugin.appbrand.page.bs;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.report.quality.j;
-import com.tencent.mm.plugin.appbrand.step.KSProcessWeAppLaunch;
-import com.tencent.mm.plugin.appbrand.task.e.b;
-import com.tencent.mm.plugin.appbrand.utils.k;
-import com.tencent.mm.plugin.expansions.a.b;
+import com.tencent.mm.plugin.appbrand.api.f;
+import com.tencent.mm.plugin.appbrand.api.f.a;
+import com.tencent.mm.plugin.appbrand.api.f.b;
+import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
+import com.tencent.mm.plugin.appbrand.launching.t;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.toolkit.frontia.a.c.a;
-import com.tencent.mm.vending.g.d.a;
-import com.tencent.mm.vending.g.d.b;
-import com.tencent.mm.vending.g.e.c;
-import com.tencent.mm.vfs.s;
-import com.tencent.xweb.WebView;
-import com.tencent.xweb.WebView.c;
-import java.io.IOException;
-import java.util.Locale;
-import java.util.concurrent.atomic.AtomicBoolean;
-import kotlin.x;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.g.b.p;
+import kotlin.l;
 
-final class m
-  extends AppBrandRuntime.b
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/AppBrandPreRenderColdStartService;", "", "()V", "TAG", "", "start", "", "bundle", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenBundle;", "callback", "Lcom/tencent/mm/plugin/appbrand/api/PreRenderColdStartResultCallback;", "startInternal", "requestId", "", "plugin-appbrand-integration_release"})
+public final class m
 {
-  private volatile a kBA;
-  volatile ag kBB;
-  volatile com.tencent.mm.plugin.appbrand.service.c kBC;
-  private final AtomicBoolean kBD;
-  private final AtomicBoolean kBE;
-  com.tencent.mm.vending.g.e<com.tencent.mm.plugin.appbrand.service.c> kBF;
-  com.tencent.mm.vending.g.e<ag> kBG;
-  final q kBw;
-  private final k kBx;
-  volatile boolean kBy;
-  private volatile boolean kBz;
+  public static final m ntn;
   
-  m(q paramq)
+  static
   {
-    AppMethodBeat.i(43832);
-    this.kBy = false;
-    this.kBz = false;
-    this.kBD = new AtomicBoolean(false);
-    this.kBE = new AtomicBoolean(false);
-    this.kBw = paramq;
-    this.kBx = new k(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(43799);
-        if ((m.this.kBy) || (m.this.kBB == null)) {}
-        try
-        {
-          com.tencent.mm.plugin.appbrand.report.quality.b.aeU(m.this.kBw.mAppId).nLA = j.nKR;
-          label44:
-          m.this.n("countDown == 0, notify process ready", new Object[0]);
-          m.this.KY();
-          AppMethodBeat.o(43799);
-          return;
-        }
-        catch (Exception localException)
-        {
-          break label44;
-        }
-      }
-    }, 2);
-    AppMethodBeat.o(43832);
+    AppMethodBeat.i(279056);
+    ntn = new m();
+    AppMethodBeat.o(279056);
   }
   
-  private String brS()
+  public static void a(com.tencent.mm.plugin.appbrand.api.g paramg, f paramf)
   {
-    AppMethodBeat.i(43835);
-    String str = String.format(Locale.US, "Runtime[%s %d %s]~~%d~~ ", new Object[] { this.kBw.mAppId, Integer.valueOf(this.kBw.kAq.eix), com.tencent.mm.plugin.appbrand.task.g.iD(this.kBw.NA()).name(), Integer.valueOf(hashCode()) });
-    AppMethodBeat.o(43835);
-    return str;
-  }
-  
-  final f<Void> Ug(final String paramString)
-  {
-    AppMethodBeat.i(226162);
-    paramString = new f()
+    AppMethodBeat.i(279055);
+    p.k(paramg, "bundle");
+    int j = paramg.hashCode();
+    final long l = Util.currentTicks();
+    Log.i("MicroMsg.AppBrandPreRenderColdStartService", "start with id:" + j + " username:" + paramg.username + " appId:" + paramg.appId + " versionType:" + paramg.cBU + " path:" + paramg.nBq + " scene:" + paramg.scene);
+    com.tencent.mm.plugin.report.service.h.IzE.el(1519, 0);
+    paramf = (f)new a(j, l, paramf);
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vBa, 1) <= 0)
     {
-      public final f<Void> a(com.tencent.mm.vending.e.b paramAnonymousb)
-      {
-        AppMethodBeat.i(226158);
-        paramAnonymousb.keep(new com.tencent.mm.vending.e.a()
-        {
-          public final void dead()
-          {
-            AppMethodBeat.i(226157);
-            m.this.n("pipeline(%s) will be stopped", new Object[] { m.16.this.cCZ });
-            AppMethodBeat.o(226157);
-          }
-        });
-        paramAnonymousb = super.a(paramAnonymousb);
-        AppMethodBeat.o(226158);
-        return paramAnonymousb;
-      }
-    }.a(this.kBw).L(new Object[0]);
-    AppMethodBeat.o(226162);
-    return paramString;
-  }
-  
-  final void a(final a parama)
-  {
-    AppMethodBeat.i(43838);
-    if ((this.kBG == null) || (this.kBy))
-    {
-      n("tryPreloadBeforeResourceDone mPageViewPipeline null || mProcessExpired", new Object[0]);
-      AppMethodBeat.o(43838);
+      f.a.a(paramf, -8);
+      AppMethodBeat.o(279055);
       return;
     }
-    if (this.kBz)
-    {
-      n("tryPreloadBeforeResourceDone function already appended by reason[%s]", new Object[] { this.kBA });
-      AppMethodBeat.o(43838);
-      return;
-    }
-    n("tryPreloadBeforeResourceDone tryDoAheadPreloadPageView by reason[%s]", new Object[] { parama });
-    this.kBz = true;
-    this.kBA = parama;
-    if (this.kBG.QZR)
-    {
-      n("mPageViewPipeline has stopped", new Object[0]);
-      AppMethodBeat.o(43838);
-      return;
-    }
-    this.kBG.c(new com.tencent.mm.vending.c.a() {});
-    AppMethodBeat.o(43838);
-  }
-  
-  final void brQ()
-  {
-    AppMethodBeat.i(174647);
-    if (!this.kBE.getAndSet(true)) {
-      this.kBx.countDown();
-    }
-    AppMethodBeat.o(174647);
-  }
-  
-  final void brR()
-  {
-    AppMethodBeat.i(174648);
-    if (!this.kBD.getAndSet(true)) {
-      this.kBx.countDown();
-    }
-    AppMethodBeat.o(174648);
-  }
-  
-  final com.tencent.mm.plugin.appbrand.service.c brT()
-  {
-    com.tencent.mm.plugin.appbrand.service.c localc = this.kBC;
-    this.kBC = null;
-    return localc;
-  }
-  
-  final ag brU()
-  {
-    ag localag = this.kBB;
-    this.kBB = null;
-    return localag;
-  }
-  
-  public final void interrupt()
-  {
-    AppMethodBeat.i(43836);
-    o("interrupt()", new Object[0]);
-    this.kBy = true;
-    Object localObject = brT();
-    if (localObject != null) {}
     try
     {
-      ((com.tencent.mm.plugin.appbrand.service.c)localObject).cleanup();
-      if (this.kBF != null) {
-        this.kBF.Dv(true);
-      }
-      localObject = brU();
-      if (localObject == null) {}
-    }
-    catch (Throwable localThrowable1)
-    {
-      try
+      Object localObject = t.pUE;
+      t.a(paramg);
+      localObject = t.pUE;
+      localObject = t.b(paramg);
+      CharSequence localCharSequence = (CharSequence)paramg.appId;
+      if ((localCharSequence == null) || (localCharSequence.length() == 0))
       {
-        ((ag)localObject).cleanup();
-        if (this.kBG != null) {
-          this.kBG.Dv(true);
+        i = 1;
+        if (i != 0) {
+          break label313;
         }
-        AppMethodBeat.o(43836);
-        return;
-        localThrowable1 = localThrowable1;
-        o("interrupt() cleanup service e=%s", new Object[] { localThrowable1 });
-      }
-      catch (Throwable localThrowable2)
-      {
-        for (;;)
-        {
-          o("interrupt() cleanup page e=%s", new Object[] { localThrowable2 });
-        }
+        paramg = paramg.appId;
+        paramg = com.tencent.mm.plugin.appbrand.report.quality.g.c((LaunchParcel)localObject, paramg);
+        ((LaunchParcel)localObject).cxe = com.tencent.luggage.sdk.launching.b.cBf;
+        ((LaunchParcel)localObject).pZk = Util.nowMilliSecond();
+        com.tencent.e.h.ZvG.bg((Runnable)new an(j, (LaunchParcel)localObject, paramg, paramf));
+        AppMethodBeat.o(279055);
       }
     }
-  }
-  
-  final void n(String paramString, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(43833);
-    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrand.AppBrandRuntimeBoostStrategy[preload]", brS() + paramString, paramVarArgs);
-    AppMethodBeat.o(43833);
-  }
-  
-  final void o(String paramString, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(43834);
-    com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AppBrand.AppBrandRuntimeBoostStrategy[preload]", brS() + paramString, paramVarArgs);
-    AppMethodBeat.o(43834);
-  }
-  
-  public final void prepare()
-  {
-    AppMethodBeat.i(43837);
-    final k localk = new k(new Runnable()
+    catch (Exception localException)
     {
-      public final void run()
+      for (;;)
       {
-        Object localObject2 = null;
-        AppMethodBeat.i(43818);
-        if (!m.this.kBy)
+        if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE))
         {
-          m localm = m.this;
-          if (localm.kBw.OQ())
-          {
-            localm.n("service countDown by remoteDebug", new Object[0]);
-            localm.kBF = null;
-            localm.brQ();
-            if (!localm.kBw.NA()) {
-              break label324;
-            }
-            localm.n("tryPreloadPageView ignore for game, countdown", new Object[0]);
-            localm.kBG = null;
-            localm.brR();
-          }
-          for (;;)
-          {
-            for (;;)
-            {
-              if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rUA, 0) <= 0) {
-                break label493;
-              }
-              try
-              {
-                localm.a(m.a.kBZ);
-                AppMethodBeat.o(43818);
-                return;
-              }
-              catch (e.c localc)
-              {
-                String str1;
-                String str2;
-                Object localObject1;
-                com.tencent.mm.sdk.platformtools.Log.printErrStackTrace("MicroMsg.AppBrand.AppBrandRuntimeBoostStrategy[preload]", localc, "tryPreloadBeforeResourceDone(PreloadReason.X_CONFIG)", new Object[0]);
-              }
-              if ((localm.kBw.ON().cyA.scene == 1030) && (DebuggerShell.bAx()))
-              {
-                str1 = com.tencent.mm.plugin.appbrand.debugger.e.cU(localm.kBw.mAppId, "Needjs");
-                if ((!TextUtils.isEmpty(str1)) && (s.YS(str1))) {
-                  try
-                  {
-                    str1 = s.boY(str1);
-                    if (!TextUtils.isEmpty(str1)) {
-                      localm.kBF = ((com.tencent.mm.vending.g.e)localm.Ug("preloadMonkeyTestAppService").h(new m.21(localm, str1)).a(com.tencent.mm.vending.h.d.LOGIC, new m.20(localm)).a(com.tencent.mm.vending.h.d.LOGIC, new m.19(localm)));
-                    }
-                  }
-                  catch (IOException localIOException1)
-                  {
-                    for (;;)
-                    {
-                      com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AppBrand.AppBrandRuntimeBoostStrategy[preload]", "beforeEvaluateScriptFile, try read WAAutoService.js, exception=%s", new Object[] { localIOException1 });
-                      str2 = null;
-                    }
-                  }
-                }
-              }
-            }
-            localm.kBF = ((com.tencent.mm.vending.g.e)localm.Ug("preloadAppService").h(new m.3(localm)).g(new m.2(localm)).a(com.tencent.mm.vending.h.d.LOGIC, new m.23(localm)).a(com.tencent.mm.vending.h.d.LOGIC, new m.22(localm)));
-            break;
-            label324:
-            if ((localm.kBw.ON().cyA.scene == 1030) && (DebuggerShell.bAx()))
-            {
-              str2 = com.tencent.mm.plugin.appbrand.debugger.e.cU(localm.kBw.mAppId, "Needwebviewjs");
-              if ((!TextUtils.isEmpty(str2)) && (s.YS(str2))) {
-                try
-                {
-                  str2 = s.boY(str2);
-                  if (!TextUtils.isEmpty(str2)) {
-                    localm.kBG = localm.Ug("tryPreloadMonkeyTestAppPageView").h(new m.5(localm)).b(new m.4(localm, str2));
-                  }
-                }
-                catch (IOException localIOException2)
-                {
-                  for (;;)
-                  {
-                    com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AppBrand.AppBrandRuntimeBoostStrategy[preload]", "beforeEvaluateScriptFile, try read WAAutoWebView.js, exception=%s", new Object[] { localIOException2 });
-                    localObject1 = localObject2;
-                  }
-                }
-              }
-            }
-            localm.kBG = localm.Ug("tryPreloadPageView").h(new m.7(localm)).g(new m.6(localm));
-          }
+          paramg = (Throwable)localException;
+          AppMethodBeat.o(279055);
+          throw paramg;
         }
-        label493:
-        AppMethodBeat.o(43818);
+        f.a.a(paramf, -1);
+        continue;
+        int i = 0;
+        continue;
+        label313:
+        paramg = com.tencent.mm.plugin.appbrand.launching.e.h.a(localException);
       }
-    }, 2);
-    com.tencent.mm.plugin.appbrand.keylogger.c.a(this.kBw.mAppId, KSProcessWeAppLaunch.stepInstallLibraries);
-    com.tencent.mm.plugin.expansions.a.a(new a.b()
-    {
-      public final void a(c.a paramAnonymousa)
-      {
-        AppMethodBeat.i(43819);
-        localk.countDown();
-        com.tencent.mm.plugin.appbrand.keylogger.c.b(m.this.kBw.mAppId, KSProcessWeAppLaunch.stepInstallLibraries);
-        AppMethodBeat.o(43819);
-      }
-    });
-    com.tencent.mm.plugin.appbrand.launching.g.a(this.kBw, new kotlin.g.a.b() {});
-    AppMethodBeat.o(43837);
+    }
   }
   
-  public static enum a
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/AppBrandPreRenderColdStartService$start$1", "Lcom/tencent/mm/plugin/appbrand/api/PreRenderColdStartResultCallback;", "onError", "", "errCode", "", "errMsg", "", "onSuccess", "plugin-appbrand-integration_release"})
+  public static final class a
+    implements f
   {
-    static
+    a(int paramInt, long paramLong, f paramf) {}
+    
+    public final void onError(int paramInt, String paramString)
     {
-      AppMethodBeat.i(43831);
-      kBW = new a("SYNC_LAUNCH", 0);
-      kBX = new a("SYNC_GET_CODE", 1);
-      kBY = new a("SYNC_JSAPIINFO", 2);
-      kBZ = new a("X_CONFIG", 3);
-      kCa = new a[] { kBW, kBX, kBY, kBZ };
-      AppMethodBeat.o(43831);
+      AppMethodBeat.i(271574);
+      Object localObject = new StringBuilder("onError, requestId:").append(this.nto).append(", errCode:");
+      f.b localb = f.b.nBp;
+      Log.e("MicroMsg.AppBrandPreRenderColdStartService", f.b.yX(paramInt) + ", errMsg:" + paramString + ", cost:" + Util.ticksToNow(l));
+      localObject = this.ntq;
+      if (localObject != null) {
+        ((f)localObject).onError(paramInt, paramString);
+      }
+      paramString = com.tencent.mm.plugin.report.service.h.IzE;
+      localObject = at.nyS;
+      paramString.el(1519, at.yO(paramInt));
+      AppMethodBeat.o(271574);
     }
     
-    private a() {}
+    public final void onSuccess()
+    {
+      AppMethodBeat.i(271573);
+      Log.i("MicroMsg.AppBrandPreRenderColdStartService", "onSuccess, requestId:" + this.nto + ", cost:" + Util.ticksToNow(l));
+      f localf = this.ntq;
+      if (localf != null) {
+        localf.onSuccess();
+      }
+      com.tencent.mm.plugin.report.service.h.IzE.el(1519, 1);
+      AppMethodBeat.o(271573);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.m
  * JD-Core Version:    0.7.0.1
  */

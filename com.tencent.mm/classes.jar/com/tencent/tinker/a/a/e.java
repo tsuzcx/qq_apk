@@ -5,23 +5,23 @@ import com.tencent.tinker.a.a.b.c;
 public final class e
   extends s.a.a<e>
 {
-  public a[] SfE;
-  public a[] SfF;
-  public b[] SfG;
-  public b[] SfH;
+  public a[] ZIp;
+  public a[] ZIq;
+  public b[] ZIr;
+  public b[] ZIs;
   
   public e(int paramInt, a[] paramArrayOfa1, a[] paramArrayOfa2, b[] paramArrayOfb1, b[] paramArrayOfb2)
   {
     super(paramInt);
-    this.SfE = paramArrayOfa1;
-    this.SfF = paramArrayOfa2;
-    this.SfG = paramArrayOfb1;
-    this.SfH = paramArrayOfb2;
+    this.ZIp = paramArrayOfa1;
+    this.ZIq = paramArrayOfa2;
+    this.ZIr = paramArrayOfb1;
+    this.ZIs = paramArrayOfb2;
   }
   
   private int a(e parame)
   {
-    int i = c.a(this.SfE, parame.SfE);
+    int i = c.a(this.ZIp, parame.ZIp);
     if (i != 0) {}
     int j;
     do
@@ -29,13 +29,13 @@ public final class e
       do
       {
         return i;
-        j = c.a(this.SfF, parame.SfF);
+        j = c.a(this.ZIq, parame.ZIq);
         i = j;
       } while (j != 0);
-      j = c.a(this.SfG, parame.SfG);
+      j = c.a(this.ZIr, parame.ZIr);
       i = j;
     } while (j != 0);
-    return c.a(this.SfH, parame.SfH);
+    return c.a(this.ZIs, parame.ZIs);
   }
   
   public final boolean equals(Object paramObject)
@@ -49,28 +49,28 @@ public final class e
   
   public final int hashCode()
   {
-    return com.tencent.tinker.a.a.b.e.hash(new Object[] { this.SfE, this.SfF, this.SfG, this.SfH });
+    return com.tencent.tinker.a.a.b.e.hash(new Object[] { this.ZIp, this.ZIq, this.ZIr, this.ZIs });
   }
   
   public static final class a
     implements Comparable<a>
   {
-    public int SfI;
-    public int SfJ;
+    public int ZIt;
+    public int ZIu;
     
     public a(int paramInt1, int paramInt2)
     {
-      this.SfI = paramInt1;
-      this.SfJ = paramInt2;
+      this.ZIt = paramInt1;
+      this.ZIu = paramInt2;
     }
     
     private int a(a parama)
     {
-      int i = c.mD(this.SfI, parama.SfI);
+      int i = c.nU(this.ZIt, parama.ZIt);
       if (i != 0) {
         return i;
       }
-      return c.mE(this.SfJ, parama.SfJ);
+      return c.nV(this.ZIu, parama.ZIu);
     }
     
     public final boolean equals(Object paramObject)
@@ -84,36 +84,36 @@ public final class e
     
     public final int hashCode()
     {
-      return com.tencent.tinker.a.a.b.e.hash(new Object[] { Integer.valueOf(this.SfI), Integer.valueOf(this.SfJ) });
+      return com.tencent.tinker.a.a.b.e.hash(new Object[] { Integer.valueOf(this.ZIt), Integer.valueOf(this.ZIu) });
     }
   }
   
   public static final class b
     implements Comparable<b>
   {
-    public int SfJ;
-    public int SfK;
-    public int SfL;
+    public int ZIu;
+    public int ZIv;
+    public int ZIw;
     
     public b(int paramInt1, int paramInt2, int paramInt3)
     {
-      this.SfK = paramInt1;
-      this.SfJ = paramInt2;
-      this.SfL = paramInt3;
+      this.ZIv = paramInt1;
+      this.ZIu = paramInt2;
+      this.ZIw = paramInt3;
     }
     
     private int a(b paramb)
     {
-      int i = c.mD(this.SfK, paramb.SfK);
+      int i = c.nU(this.ZIv, paramb.ZIv);
       if (i != 0) {}
       int j;
       do
       {
         return i;
-        j = c.mE(this.SfJ, paramb.SfJ);
+        j = c.nV(this.ZIu, paramb.ZIu);
         i = j;
       } while (j != 0);
-      return c.mE(this.SfL, paramb.SfL);
+      return c.nV(this.ZIw, paramb.ZIw);
     }
     
     public final boolean equals(Object paramObject)
@@ -127,13 +127,13 @@ public final class e
     
     public final int hashCode()
     {
-      return com.tencent.tinker.a.a.b.e.hash(new Object[] { Integer.valueOf(this.SfK), Integer.valueOf(this.SfJ), Integer.valueOf(this.SfL) });
+      return com.tencent.tinker.a.a.b.e.hash(new Object[] { Integer.valueOf(this.ZIv), Integer.valueOf(this.ZIu), Integer.valueOf(this.ZIw) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.tinker.a.a.e
  * JD-Core Version:    0.7.0.1
  */

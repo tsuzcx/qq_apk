@@ -1,17 +1,17 @@
 package com.tencent.mm.modelvoiceaddr.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.doj;
-import com.tencent.mm.protocal.protobuf.dok;
-import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.protocal.protobuf.dyd;
+import com.tencent.mm.protocal.protobuf.dye;
+import com.tencent.mm.protocal.protobuf.eaf;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
@@ -20,25 +20,25 @@ public final class a
   implements m
 {
   private i callback;
-  doj jxM;
+  dyd mnp;
   private d rr;
   
-  a(int paramInt, LinkedList<dqi> paramLinkedList, dqi paramdqi1, dqi paramdqi2)
+  a(int paramInt, LinkedList<eaf> paramLinkedList, eaf parameaf1, eaf parameaf2)
   {
     AppMethodBeat.i(148644);
     d.a locala = new d.a();
-    locala.iLN = new doj();
-    locala.iLO = new dok();
+    locala.lBU = new dyd();
+    locala.lBV = new dye();
     locala.uri = "/cgi-bin/micromsg-bin/reportvoiceresult";
     locala.funcId = 228;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    this.jxM = ((doj)this.rr.iLK.iLR);
-    this.jxM.MRJ = paramInt;
-    this.jxM.MRK = paramLinkedList;
-    this.jxM.MRL = paramdqi1;
-    this.jxM.MRM = paramdqi2;
+    this.rr = locala.bgN();
+    this.mnp = ((dyd)d.b.b(this.rr.lBR));
+    this.mnp.UdQ = paramInt;
+    this.mnp.UdR = paramLinkedList;
+    this.mnp.UdS = parameaf1;
+    this.mnp.UdT = parameaf2;
     AppMethodBeat.o(148644);
   }
   

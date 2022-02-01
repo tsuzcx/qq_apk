@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.aa;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.qq;
+import com.tencent.mm.f.a.rq;
 import com.tencent.mm.sdk.event.IListener;
 
 final class b$1
-  extends IListener<qq>
+  extends IListener<rq>
 {
   b$1(b paramb)
   {
     super(0);
     AppMethodBeat.i(160782);
-    this.__eventId = qq.class.getName().hashCode();
+    this.__eventId = rq.class.getName().hashCode();
     AppMethodBeat.o(160782);
   }
 }

@@ -1,86 +1,86 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class ayl
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String LIM;
-  public long LIN;
-  public LinkedList<String> LIO;
-  
-  public ayl()
-  {
-    AppMethodBeat.i(209592);
-    this.LIO = new LinkedList();
-    AppMethodBeat.o(209592);
-  }
+  public int SKA;
+  public String SKB;
+  public int SKC;
+  public String background_color;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209593);
+    AppMethodBeat.i(207457);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.LIM != null) {
-        paramVarArgs.e(1, this.LIM);
+      paramVarArgs.aY(1, this.SKA);
+      if (this.SKB != null) {
+        paramVarArgs.f(2, this.SKB);
       }
-      paramVarArgs.bb(2, this.LIN);
-      paramVarArgs.e(3, 1, this.LIO);
-      AppMethodBeat.o(209593);
+      paramVarArgs.aY(3, this.SKC);
+      if (this.background_color != null) {
+        paramVarArgs.f(4, this.background_color);
+      }
+      AppMethodBeat.o(207457);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.LIM == null) {
-        break label318;
-      }
-    }
-    label318:
-    for (paramInt = g.a.a.b.b.a.f(1, this.LIM) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.r(2, this.LIN);
-      int j = g.a.a.a.c(3, 1, this.LIO);
-      AppMethodBeat.o(209593);
-      return paramInt + i + j;
-      if (paramInt == 2)
-      {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.LIO.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
-          }
-        }
-        AppMethodBeat.o(209593);
-        return 0;
+      int i = g.a.a.b.b.a.bM(1, this.SKA) + 0;
+      paramInt = i;
+      if (this.SKB != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.SKB);
       }
-      if (paramInt == 3)
-      {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-        ayl localayl = (ayl)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(209593);
-          return -1;
-        case 1: 
-          localayl.LIM = locala.UbS.readString();
-          AppMethodBeat.o(209593);
-          return 0;
-        case 2: 
-          localayl.LIN = locala.UbS.zl();
-          AppMethodBeat.o(209593);
-          return 0;
-        }
-        localayl.LIO.add(locala.UbS.readString());
-        AppMethodBeat.o(209593);
-        return 0;
+      i = paramInt + g.a.a.b.b.a.bM(3, this.SKC);
+      paramInt = i;
+      if (this.background_color != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.background_color);
       }
-      AppMethodBeat.o(209593);
-      return -1;
+      AppMethodBeat.o(207457);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.iUs();
+        }
+      }
+      AppMethodBeat.o(207457);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      ayl localayl = (ayl)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(207457);
+        return -1;
+      case 1: 
+        localayl.SKA = locala.abFh.AK();
+        AppMethodBeat.o(207457);
+        return 0;
+      case 2: 
+        localayl.SKB = locala.abFh.readString();
+        AppMethodBeat.o(207457);
+        return 0;
+      case 3: 
+        localayl.SKC = locala.abFh.AK();
+        AppMethodBeat.o(207457);
+        return 0;
+      }
+      localayl.background_color = locala.abFh.readString();
+      AppMethodBeat.o(207457);
+      return 0;
+    }
+    AppMethodBeat.o(207457);
+    return -1;
   }
 }
 

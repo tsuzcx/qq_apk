@@ -7,14 +7,16 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 
 public class NearLifeErrorContent
   extends FrameLayout
 {
-  private TextView ACw;
-  private View ACx;
+  private View GvA;
+  private TextView Gvz;
   private View contentView;
-  private ListView hUI;
+  private ListView kJh;
   private Context mContext;
   
   public NearLifeErrorContent(Context paramContext, AttributeSet paramAttributeSet)
@@ -38,13 +40,13 @@ public class NearLifeErrorContent
   private void init()
   {
     AppMethodBeat.i(26618);
-    this.contentView = View.inflate(this.mContext, 2131495809, this);
-    this.ACw = ((TextView)this.contentView.findViewById(2131305235));
-    this.ACx = this.contentView.findViewById(2131305256);
+    this.contentView = View.inflate(this.mContext, R.i.ejo, this);
+    this.Gvz = ((TextView)this.contentView.findViewById(R.h.dNk));
+    this.GvA = this.contentView.findViewById(R.h.dNl);
     AppMethodBeat.o(26618);
   }
   
-  public final void Tx(int paramInt)
+  public final void aaj(int paramInt)
   {
     AppMethodBeat.i(26619);
     switch (paramInt)
@@ -54,30 +56,30 @@ public class NearLifeErrorContent
     {
       AppMethodBeat.o(26619);
       return;
-      this.ACw.setVisibility(8);
-      this.ACx.setVisibility(8);
-      this.hUI.setVisibility(0);
+      this.Gvz.setVisibility(8);
+      this.GvA.setVisibility(8);
+      this.kJh.setVisibility(0);
       AppMethodBeat.o(26619);
       return;
-      this.ACw.setVisibility(0);
-      this.ACx.setVisibility(8);
-      this.hUI.setVisibility(8);
+      this.Gvz.setVisibility(0);
+      this.GvA.setVisibility(8);
+      this.kJh.setVisibility(8);
       AppMethodBeat.o(26619);
       return;
-      this.ACw.setVisibility(8);
-      this.ACx.setVisibility(0);
-      this.hUI.setVisibility(8);
+      this.Gvz.setVisibility(8);
+      this.GvA.setVisibility(0);
+      this.kJh.setVisibility(8);
     }
   }
   
   public void setListView(ListView paramListView)
   {
-    this.hUI = paramListView;
+    this.kJh = paramListView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.NearLifeErrorContent
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,66 @@
 package com.tencent.mm.plugin.expt.hellhound.a.b.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cym;
-import com.tencent.mm.protocal.protobuf.cyn;
-import com.tencent.mm.protocal.protobuf.cyo;
+import com.tencent.mm.protocal.protobuf.dhy;
+import com.tencent.mm.protocal.protobuf.dhz;
+import com.tencent.mm.protocal.protobuf.dia;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/PageStatisticsDao;", "", "()V", "Companion", "plugin-expt_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/PageStatisticsDao;", "", "()V", "Companion", "plugin-expt_release"})
 public final class f
 {
-  public static final a sHi;
+  public static final a wnd;
   
   static
   {
-    AppMethodBeat.i(221082);
-    sHi = new a((byte)0);
-    AppMethodBeat.o(221082);
+    AppMethodBeat.i(252332);
+    wnd = new a((byte)0);
+    AppMethodBeat.o(252332);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/PageStatisticsDao$Companion;", "", "()V", "MMKV_KEY", "", "MMKV_KEY_WITHOUT_78EVENT", "TAG", "_read", "Lcom/tencent/mm/protocal/protobuf/PageStatisticsMap;", "_readWith78Event", "_write", "", "pageMap", "_writeWith78Event", "getLastStatics", "Lcom/tencent/mm/protocal/protobuf/PageStatistics;", "getLastStaticsWith78Event", "read", "sPageName", "hashCode", "", "readWith78Event", "remove", "removeWith78Event", "reset", "resetWith78Event", "update", "statics", "updateWith78Event", "write", "writeWith78Event", "plugin-expt_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/PageStatisticsDao$Companion;", "", "()V", "MMKV_KEY", "", "MMKV_KEY_WITHOUT_78EVENT", "TAG", "_read", "Lcom/tencent/mm/protocal/protobuf/PageStatisticsMap;", "_readWith78Event", "_write", "", "pageMap", "_writeWith78Event", "getLastStatics", "Lcom/tencent/mm/protocal/protobuf/PageStatistics;", "getLastStaticsWith78Event", "read", "sPageName", "hashCode", "", "readWith78Event", "remove", "removeWith78Event", "reset", "resetWith78Event", "update", "statics", "updateWith78Event", "write", "writeWith78Event", "plugin-expt_release"})
   public static final class a
   {
-    private static void a(cyo paramcyo)
+    private static void a(dia paramdia)
     {
-      AppMethodBeat.i(221073);
+      AppMethodBeat.i(255145);
       try
       {
-        com.tencent.mm.plugin.expt.hellhound.core.a.b.o("hell_pge_sttics_d_1", paramcyo.toByteArray());
-        AppMethodBeat.o(221073);
+        com.tencent.mm.plugin.expt.hellhound.core.a.b.r("hell_pge_sttics_d_1", paramdia.toByteArray());
+        AppMethodBeat.o(255145);
         return;
       }
-      catch (Exception paramcyo)
+      catch (Exception paramdia)
       {
-        Log.printErrStackTrace("HABBYGE-MALI.PageStatisticsDao", (Throwable)paramcyo, "_write, exception: " + paramcyo.getMessage(), new Object[0]);
-        AppMethodBeat.o(221073);
+        Log.printErrStackTrace("HABBYGE-MALI.PageStatisticsDao", (Throwable)paramdia, "_write, exception: " + paramdia.getMessage(), new Object[0]);
+        AppMethodBeat.o(255145);
       }
     }
     
-    private static void b(cyo paramcyo)
+    private static void b(dia paramdia)
     {
-      AppMethodBeat.i(221081);
+      AppMethodBeat.i(255160);
       try
       {
-        com.tencent.mm.plugin.expt.hellhound.core.a.b.o("hell_pge_sttics_d_3", paramcyo.toByteArray());
-        AppMethodBeat.o(221081);
+        com.tencent.mm.plugin.expt.hellhound.core.a.b.r("hell_pge_sttics_d_3", paramdia.toByteArray());
+        AppMethodBeat.o(255160);
         return;
       }
-      catch (Exception paramcyo)
+      catch (Exception paramdia)
       {
-        Log.printErrStackTrace("HABBYGE-MALI.PageStatisticsDao", (Throwable)paramcyo, "_writeWith78Event, exception: " + paramcyo.getMessage(), new Object[0]);
-        AppMethodBeat.o(221081);
+        Log.printErrStackTrace("HABBYGE-MALI.PageStatisticsDao", (Throwable)paramdia, "_writeWith78Event, exception: " + paramdia.getMessage(), new Object[0]);
+        AppMethodBeat.o(255160);
       }
     }
     
-    private static cyo cPp()
+    private static dia dej()
     {
-      AppMethodBeat.i(221072);
-      byte[] arrayOfByte = com.tencent.mm.plugin.expt.hellhound.core.a.b.getBytes("hell_pge_sttics_d_1");
+      AppMethodBeat.i(255144);
+      byte[] arrayOfByte = com.tencent.mm.plugin.expt.hellhound.core.a.b.awZ("hell_pge_sttics_d_1");
       if (arrayOfByte != null) {
         if (arrayOfByte.length != 0) {
           break label33;
@@ -69,15 +69,15 @@ public final class f
       label33:
       for (int i = 1; i != 0; i = 0)
       {
-        AppMethodBeat.o(221072);
+        AppMethodBeat.o(255144);
         return null;
       }
-      cyo localcyo = new cyo();
+      dia localdia = new dia();
       try
       {
-        localcyo.parseFrom(arrayOfByte);
-        AppMethodBeat.o(221072);
-        return localcyo;
+        localdia.parseFrom(arrayOfByte);
+        AppMethodBeat.o(255144);
+        return localdia;
       }
       catch (Exception localException)
       {
@@ -89,10 +89,10 @@ public final class f
       }
     }
     
-    private static cyo cPs()
+    private static dia dem()
     {
-      AppMethodBeat.i(221080);
-      byte[] arrayOfByte = com.tencent.mm.plugin.expt.hellhound.core.a.b.getBytes("hell_pge_sttics_d_3");
+      AppMethodBeat.i(255158);
+      byte[] arrayOfByte = com.tencent.mm.plugin.expt.hellhound.core.a.b.awZ("hell_pge_sttics_d_3");
       if (arrayOfByte != null) {
         if (arrayOfByte.length != 0) {
           break label33;
@@ -101,15 +101,15 @@ public final class f
       label33:
       for (int i = 1; i != 0; i = 0)
       {
-        AppMethodBeat.o(221080);
+        AppMethodBeat.o(255158);
         return null;
       }
-      cyo localcyo = new cyo();
+      dia localdia = new dia();
       try
       {
-        localcyo.parseFrom(arrayOfByte);
-        AppMethodBeat.o(221080);
-        return localcyo;
+        localdia.parseFrom(arrayOfByte);
+        AppMethodBeat.o(255158);
+        return localdia;
       }
       catch (Exception localException)
       {
@@ -121,39 +121,39 @@ public final class f
       }
     }
     
-    public final void a(cym paramcym)
+    public final void a(dhy paramdhy)
     {
       label171:
       for (;;)
       {
         try
         {
-          AppMethodBeat.i(221066);
-          p.h(paramcym, "statics");
-          cyo localcyo = cPp();
-          if (localcyo != null) {
+          AppMethodBeat.i(255129);
+          p.k(paramdhy, "statics");
+          dia localdia = dej();
+          if (localdia != null) {
             break label171;
           }
-          localcyo = new cyo();
-          String str = paramcym.dMl + paramcym.aHK;
-          Object localObject = localcyo.Mlv;
-          p.g(localObject, "pageMap.map");
+          localdia = new dia();
+          String str = paramdhy.fFe + paramdhy.aNf;
+          Object localObject = localdia.Two;
+          p.j(localObject, "pageMap.map");
           localObject = ((Iterable)localObject).iterator();
           if (((Iterator)localObject).hasNext())
           {
-            if (!p.j(str, ((cyn)((Iterator)localObject).next()).key)) {
+            if (!p.h(str, ((dhz)((Iterator)localObject).next()).key)) {
               continue;
             }
             i = 1;
             if (i == 0)
             {
-              localObject = new cyn();
-              ((cyn)localObject).key = str;
-              ((cyn)localObject).MDw = paramcym;
-              localcyo.Mlv.add(localObject);
-              a(localcyo);
+              localObject = new dhz();
+              ((dhz)localObject).key = str;
+              ((dhz)localObject).TPf = paramdhy;
+              localdia.Two.add(localObject);
+              a(localdia);
             }
-            AppMethodBeat.o(221066);
+            AppMethodBeat.o(255129);
             return;
           }
         }
@@ -162,41 +162,41 @@ public final class f
       }
     }
     
-    public final void b(cym paramcym)
+    public final void b(dhy paramdhy)
     {
       label181:
       for (;;)
       {
         try
         {
-          AppMethodBeat.i(221067);
-          p.h(paramcym, "statics");
-          cyo localcyo = cPp();
-          if (localcyo != null) {
+          AppMethodBeat.i(255131);
+          p.k(paramdhy, "statics");
+          dia localdia = dej();
+          if (localdia != null) {
             break label181;
           }
-          localcyo = new cyo();
-          String str = paramcym.dMl + paramcym.aHK;
-          Object localObject = localcyo.Mlv;
-          p.g(localObject, "pageMap.map");
+          localdia = new dia();
+          String str = paramdhy.fFe + paramdhy.aNf;
+          Object localObject = localdia.Two;
+          p.j(localObject, "pageMap.map");
           localObject = ((Iterable)localObject).iterator();
           if (((Iterator)localObject).hasNext())
           {
-            cyn localcyn = (cyn)((Iterator)localObject).next();
-            if (!p.j(str, localcyn.key)) {
+            dhz localdhz = (dhz)((Iterator)localObject).next();
+            if (!p.h(str, localdhz.key)) {
               continue;
             }
-            localcyn.MDw = paramcym;
+            localdhz.TPf = paramdhy;
             i = 1;
             if (i == 0)
             {
-              localObject = new cyn();
-              ((cyn)localObject).key = str;
-              ((cyn)localObject).MDw = paramcym;
-              localcyo.Mlv.add(localObject);
+              localObject = new dhz();
+              ((dhz)localObject).key = str;
+              ((dhz)localObject).TPf = paramdhy;
+              localdia.Two.add(localObject);
             }
-            a(localcyo);
-            AppMethodBeat.o(221067);
+            a(localdia);
+            AppMethodBeat.o(255131);
             return;
           }
         }
@@ -205,39 +205,39 @@ public final class f
       }
     }
     
-    public final void c(cym paramcym)
+    public final void c(dhy paramdhy)
     {
       label171:
       for (;;)
       {
         try
         {
-          AppMethodBeat.i(221074);
-          p.h(paramcym, "statics");
-          cyo localcyo = cPs();
-          if (localcyo != null) {
+          AppMethodBeat.i(255146);
+          p.k(paramdhy, "statics");
+          dia localdia = dem();
+          if (localdia != null) {
             break label171;
           }
-          localcyo = new cyo();
-          String str = paramcym.dMl + paramcym.aHK;
-          Object localObject = localcyo.Mlv;
-          p.g(localObject, "pageMap.map");
+          localdia = new dia();
+          String str = paramdhy.fFe + paramdhy.aNf;
+          Object localObject = localdia.Two;
+          p.j(localObject, "pageMap.map");
           localObject = ((Iterable)localObject).iterator();
           if (((Iterator)localObject).hasNext())
           {
-            if (!p.j(str, ((cyn)((Iterator)localObject).next()).key)) {
+            if (!p.h(str, ((dhz)((Iterator)localObject).next()).key)) {
               continue;
             }
             i = 1;
             if (i == 0)
             {
-              localObject = new cyn();
-              ((cyn)localObject).key = str;
-              ((cyn)localObject).MDw = paramcym;
-              localcyo.Mlv.add(localObject);
-              b(localcyo);
+              localObject = new dhz();
+              ((dhz)localObject).key = str;
+              ((dhz)localObject).TPf = paramdhy;
+              localdia.Two.add(localObject);
+              b(localdia);
             }
-            AppMethodBeat.o(221074);
+            AppMethodBeat.o(255146);
             return;
           }
         }
@@ -246,310 +246,310 @@ public final class f
       }
     }
     
-    public final cym cPo()
+    public final void d(dhy paramdhy)
     {
-      cym localcym = null;
+      label181:
       for (;;)
       {
         try
         {
-          AppMethodBeat.i(221070);
-          cyo localcyo = cPp();
-          if (localcyo == null)
-          {
-            AppMethodBeat.o(221070);
-            return localcym;
+          AppMethodBeat.i(255149);
+          p.k(paramdhy, "statics");
+          dia localdia = dem();
+          if (localdia != null) {
+            break label181;
           }
-          if (localcyo.Mlv.isEmpty())
+          localdia = new dia();
+          String str = paramdhy.fFe + paramdhy.aNf;
+          Object localObject = localdia.Two;
+          p.j(localObject, "pageMap.map");
+          localObject = ((Iterable)localObject).iterator();
+          if (((Iterator)localObject).hasNext())
           {
-            AppMethodBeat.o(221070);
-            continue;
+            dhz localdhz = (dhz)((Iterator)localObject).next();
+            if (!p.h(str, localdhz.key)) {
+              continue;
+            }
+            localdhz.TPf = paramdhy;
+            i = 1;
+            if (i == 0)
+            {
+              localObject = new dhz();
+              ((dhz)localObject).key = str;
+              ((dhz)localObject).TPf = paramdhy;
+              localdia.Two.add(localObject);
+            }
+            b(localdia);
+            AppMethodBeat.o(255149);
+            return;
           }
-          localObject2 = localcyo.Mlv;
         }
         finally {}
-        p.g(localObject2, "pageMap.map");
-        Object localObject2 = ((cyn)((LinkedList)localObject2).getLast()).MDw;
-        AppMethodBeat.o(221070);
+        int i = 0;
       }
     }
     
-    public final cym cPq()
+    public final dhy dF(String paramString, int paramInt)
     {
-      cym localcym = null;
       for (;;)
       {
         try
         {
-          AppMethodBeat.i(221078);
-          cyo localcyo = cPs();
-          if (localcyo == null)
+          AppMethodBeat.i(255134);
+          if (paramString == null)
           {
-            AppMethodBeat.o(221078);
-            return localcym;
+            AppMethodBeat.o(255134);
+            paramString = null;
+            return paramString;
           }
-          if (localcyo.Mlv.isEmpty())
+          Object localObject = dej();
+          if (localObject == null)
           {
-            AppMethodBeat.o(221078);
+            AppMethodBeat.o(255134);
+            paramString = null;
             continue;
           }
-          localObject2 = localcyo.Mlv;
+          paramString = paramString + String.valueOf(paramInt);
+          localObject = ((dia)localObject).Two;
+          p.j(localObject, "pageMap.map");
+          localObject = ((Iterable)localObject).iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            dhz localdhz = (dhz)((Iterator)localObject).next();
+            if (!p.h(paramString, localdhz.key)) {
+              continue;
+            }
+            paramString = localdhz.TPf;
+            AppMethodBeat.o(255134);
+            continue;
+          }
+          AppMethodBeat.o(255134);
         }
         finally {}
-        p.g(localObject2, "pageMap.map");
-        Object localObject2 = ((cyn)((LinkedList)localObject2).getLast()).MDw;
-        AppMethodBeat.o(221078);
+        paramString = null;
       }
     }
     
-    public final void cPr()
+    public final void dG(String paramString, int paramInt)
+    {
+      dia localdia;
+      try
+      {
+        AppMethodBeat.i(255137);
+        if (paramString == null) {
+          AppMethodBeat.o(255137);
+        }
+        for (;;)
+        {
+          return;
+          localdia = dej();
+          if (localdia != null) {
+            break;
+          }
+          AppMethodBeat.o(255137);
+        }
+        paramString = paramString + paramInt;
+      }
+      finally {}
+      Object localObject = localdia.Two;
+      p.j(localObject, "pageMap.map");
+      localObject = ((Iterable)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        dhz localdhz = (dhz)((Iterator)localObject).next();
+        if (p.h(paramString, localdhz.key)) {
+          localdia.Two.remove(localdhz);
+        }
+      }
+      for (paramInt = 1;; paramInt = 0)
+      {
+        if (paramInt != 0)
+        {
+          if (localdia.Two.isEmpty())
+          {
+            com.tencent.mm.plugin.expt.hellhound.core.a.b.r("hell_pge_sttics_d_1", new byte[0]);
+            AppMethodBeat.o(255137);
+            break;
+          }
+          a(localdia);
+        }
+        AppMethodBeat.o(255137);
+        break;
+      }
+    }
+    
+    public final dhy dH(String paramString, int paramInt)
+    {
+      for (;;)
+      {
+        try
+        {
+          AppMethodBeat.i(255151);
+          if (paramString == null)
+          {
+            AppMethodBeat.o(255151);
+            paramString = null;
+            return paramString;
+          }
+          Object localObject = dem();
+          if (localObject == null)
+          {
+            AppMethodBeat.o(255151);
+            paramString = null;
+            continue;
+          }
+          paramString = paramString + String.valueOf(paramInt);
+          localObject = ((dia)localObject).Two;
+          p.j(localObject, "pageMap.map");
+          localObject = ((Iterable)localObject).iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            dhz localdhz = (dhz)((Iterator)localObject).next();
+            if (!p.h(paramString, localdhz.key)) {
+              continue;
+            }
+            paramString = localdhz.TPf;
+            AppMethodBeat.o(255151);
+            continue;
+          }
+          AppMethodBeat.o(255151);
+        }
+        finally {}
+        paramString = null;
+      }
+    }
+    
+    public final void dI(String paramString, int paramInt)
+    {
+      dia localdia;
+      try
+      {
+        AppMethodBeat.i(255153);
+        if (paramString == null) {
+          AppMethodBeat.o(255153);
+        }
+        for (;;)
+        {
+          return;
+          localdia = dem();
+          if (localdia != null) {
+            break;
+          }
+          AppMethodBeat.o(255153);
+        }
+        paramString = paramString + paramInt;
+      }
+      finally {}
+      Object localObject = localdia.Two;
+      p.j(localObject, "pageMap.map");
+      localObject = ((Iterable)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        dhz localdhz = (dhz)((Iterator)localObject).next();
+        if (p.h(paramString, localdhz.key)) {
+          localdia.Two.remove(localdhz);
+        }
+      }
+      for (paramInt = 1;; paramInt = 0)
+      {
+        if (paramInt != 0)
+        {
+          if (localdia.Two.isEmpty())
+          {
+            com.tencent.mm.plugin.expt.hellhound.core.a.b.r("hell_pge_sttics_d_3", new byte[0]);
+            AppMethodBeat.o(255153);
+            break;
+          }
+          b(localdia);
+        }
+        AppMethodBeat.o(255153);
+        break;
+      }
+    }
+    
+    public final dhy dei()
+    {
+      dhy localdhy = null;
+      for (;;)
+      {
+        try
+        {
+          AppMethodBeat.i(255140);
+          dia localdia = dej();
+          if (localdia == null)
+          {
+            AppMethodBeat.o(255140);
+            return localdhy;
+          }
+          if (localdia.Two.isEmpty())
+          {
+            AppMethodBeat.o(255140);
+            continue;
+          }
+          localObject2 = localdia.Two;
+        }
+        finally {}
+        p.j(localObject2, "pageMap.map");
+        Object localObject2 = ((dhz)((LinkedList)localObject2).getLast()).TPf;
+        AppMethodBeat.o(255140);
+      }
+    }
+    
+    public final dhy dek()
+    {
+      dhy localdhy = null;
+      for (;;)
+      {
+        try
+        {
+          AppMethodBeat.i(255154);
+          dia localdia = dem();
+          if (localdia == null)
+          {
+            AppMethodBeat.o(255154);
+            return localdhy;
+          }
+          if (localdia.Two.isEmpty())
+          {
+            AppMethodBeat.o(255154);
+            continue;
+          }
+          localObject2 = localdia.Two;
+        }
+        finally {}
+        p.j(localObject2, "pageMap.map");
+        Object localObject2 = ((dhz)((LinkedList)localObject2).getLast()).TPf;
+        AppMethodBeat.o(255154);
+      }
+    }
+    
+    public final void del()
     {
       try
       {
-        AppMethodBeat.i(221079);
+        AppMethodBeat.i(255156);
         if (com.tencent.mm.plugin.expt.hellhound.core.b.isMMProcess())
         {
           Log.i("HABBYGE-MALI.PageStatisticsDao", "resetWith78Event");
-          com.tencent.mm.plugin.expt.hellhound.core.a.b.o("hell_pge_sttics_d_3", new byte[0]);
+          com.tencent.mm.plugin.expt.hellhound.core.a.b.r("hell_pge_sttics_d_3", new byte[0]);
         }
-        AppMethodBeat.o(221079);
+        AppMethodBeat.o(255156);
         return;
       }
       finally {}
-    }
-    
-    public final void d(cym paramcym)
-    {
-      label181:
-      for (;;)
-      {
-        try
-        {
-          AppMethodBeat.i(221075);
-          p.h(paramcym, "statics");
-          cyo localcyo = cPs();
-          if (localcyo != null) {
-            break label181;
-          }
-          localcyo = new cyo();
-          String str = paramcym.dMl + paramcym.aHK;
-          Object localObject = localcyo.Mlv;
-          p.g(localObject, "pageMap.map");
-          localObject = ((Iterable)localObject).iterator();
-          if (((Iterator)localObject).hasNext())
-          {
-            cyn localcyn = (cyn)((Iterator)localObject).next();
-            if (!p.j(str, localcyn.key)) {
-              continue;
-            }
-            localcyn.MDw = paramcym;
-            i = 1;
-            if (i == 0)
-            {
-              localObject = new cyn();
-              ((cyn)localObject).key = str;
-              ((cyn)localObject).MDw = paramcym;
-              localcyo.Mlv.add(localObject);
-            }
-            b(localcyo);
-            AppMethodBeat.o(221075);
-            return;
-          }
-        }
-        finally {}
-        int i = 0;
-      }
-    }
-    
-    public final cym dk(String paramString, int paramInt)
-    {
-      for (;;)
-      {
-        try
-        {
-          AppMethodBeat.i(221068);
-          if (paramString == null)
-          {
-            AppMethodBeat.o(221068);
-            paramString = null;
-            return paramString;
-          }
-          Object localObject = cPp();
-          if (localObject == null)
-          {
-            AppMethodBeat.o(221068);
-            paramString = null;
-            continue;
-          }
-          paramString = paramString + String.valueOf(paramInt);
-          localObject = ((cyo)localObject).Mlv;
-          p.g(localObject, "pageMap.map");
-          localObject = ((Iterable)localObject).iterator();
-          if (((Iterator)localObject).hasNext())
-          {
-            cyn localcyn = (cyn)((Iterator)localObject).next();
-            if (!p.j(paramString, localcyn.key)) {
-              continue;
-            }
-            paramString = localcyn.MDw;
-            AppMethodBeat.o(221068);
-            continue;
-          }
-          AppMethodBeat.o(221068);
-        }
-        finally {}
-        paramString = null;
-      }
-    }
-    
-    public final void dl(String paramString, int paramInt)
-    {
-      cyo localcyo;
-      try
-      {
-        AppMethodBeat.i(221069);
-        if (paramString == null) {
-          AppMethodBeat.o(221069);
-        }
-        for (;;)
-        {
-          return;
-          localcyo = cPp();
-          if (localcyo != null) {
-            break;
-          }
-          AppMethodBeat.o(221069);
-        }
-        paramString = paramString + paramInt;
-      }
-      finally {}
-      Object localObject = localcyo.Mlv;
-      p.g(localObject, "pageMap.map");
-      localObject = ((Iterable)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        cyn localcyn = (cyn)((Iterator)localObject).next();
-        if (p.j(paramString, localcyn.key)) {
-          localcyo.Mlv.remove(localcyn);
-        }
-      }
-      for (paramInt = 1;; paramInt = 0)
-      {
-        if (paramInt != 0)
-        {
-          if (localcyo.Mlv.isEmpty())
-          {
-            com.tencent.mm.plugin.expt.hellhound.core.a.b.o("hell_pge_sttics_d_1", new byte[0]);
-            AppMethodBeat.o(221069);
-            break;
-          }
-          a(localcyo);
-        }
-        AppMethodBeat.o(221069);
-        break;
-      }
-    }
-    
-    public final cym dm(String paramString, int paramInt)
-    {
-      for (;;)
-      {
-        try
-        {
-          AppMethodBeat.i(221076);
-          if (paramString == null)
-          {
-            AppMethodBeat.o(221076);
-            paramString = null;
-            return paramString;
-          }
-          Object localObject = cPs();
-          if (localObject == null)
-          {
-            AppMethodBeat.o(221076);
-            paramString = null;
-            continue;
-          }
-          paramString = paramString + String.valueOf(paramInt);
-          localObject = ((cyo)localObject).Mlv;
-          p.g(localObject, "pageMap.map");
-          localObject = ((Iterable)localObject).iterator();
-          if (((Iterator)localObject).hasNext())
-          {
-            cyn localcyn = (cyn)((Iterator)localObject).next();
-            if (!p.j(paramString, localcyn.key)) {
-              continue;
-            }
-            paramString = localcyn.MDw;
-            AppMethodBeat.o(221076);
-            continue;
-          }
-          AppMethodBeat.o(221076);
-        }
-        finally {}
-        paramString = null;
-      }
-    }
-    
-    public final void dn(String paramString, int paramInt)
-    {
-      cyo localcyo;
-      try
-      {
-        AppMethodBeat.i(221077);
-        if (paramString == null) {
-          AppMethodBeat.o(221077);
-        }
-        for (;;)
-        {
-          return;
-          localcyo = cPs();
-          if (localcyo != null) {
-            break;
-          }
-          AppMethodBeat.o(221077);
-        }
-        paramString = paramString + paramInt;
-      }
-      finally {}
-      Object localObject = localcyo.Mlv;
-      p.g(localObject, "pageMap.map");
-      localObject = ((Iterable)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        cyn localcyn = (cyn)((Iterator)localObject).next();
-        if (p.j(paramString, localcyn.key)) {
-          localcyo.Mlv.remove(localcyn);
-        }
-      }
-      for (paramInt = 1;; paramInt = 0)
-      {
-        if (paramInt != 0)
-        {
-          if (localcyo.Mlv.isEmpty())
-          {
-            com.tencent.mm.plugin.expt.hellhound.core.a.b.o("hell_pge_sttics_d_3", new byte[0]);
-            AppMethodBeat.o(221077);
-            break;
-          }
-          b(localcyo);
-        }
-        AppMethodBeat.o(221077);
-        break;
-      }
     }
     
     public final void reset()
     {
       try
       {
-        AppMethodBeat.i(221071);
+        AppMethodBeat.i(255143);
         if (com.tencent.mm.plugin.expt.hellhound.core.b.isMMProcess())
         {
           Log.i("HABBYGE-MALI.PageStatisticsDao", "reset");
-          com.tencent.mm.plugin.expt.hellhound.core.a.b.o("hell_pge_sttics_d_1", new byte[0]);
+          com.tencent.mm.plugin.expt.hellhound.core.a.b.r("hell_pge_sttics_d_1", new byte[0]);
         }
-        AppMethodBeat.o(221071);
+        AppMethodBeat.o(255143);
         return;
       }
       finally {}
@@ -558,7 +558,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.b.d.f
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mm.wallet_core.c.j;
 import com.tencent.mm.wallet_core.tenpay.model.ITenpaySave;
 import com.tencent.mm.wallet_core.tenpay.model.ITenpaySave.RetryPayInfo;
 import com.tencent.mm.wallet_core.tenpay.model.m;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.g;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.HashMap;
@@ -17,24 +17,24 @@ public final class e
   extends m
   implements j, ITenpaySave
 {
-  public boolean HsT;
-  public String HsU;
-  public String dNQ;
-  public String egd;
-  public String ege;
-  public String egf;
-  public String egg;
-  public String egh;
+  public boolean OkE;
+  public String OkF;
+  public String fHb;
+  public String gat;
+  public String gau;
+  public String gav;
+  public String gaw;
+  public String gax;
   private ITenpaySave.RetryPayInfo retryPayInfo;
   
   public e(double paramDouble, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(68396);
-    this.dNQ = null;
-    this.HsT = false;
-    this.HsU = "";
+    this.fHb = null;
+    this.OkE = false;
+    this.OkF = "";
     HashMap localHashMap = new HashMap();
-    localHashMap.put("total_fee", f.c(String.valueOf(paramDouble), "100", 0, RoundingMode.HALF_UP).toString());
+    localHashMap.put("total_fee", g.c(String.valueOf(paramDouble), "100", 0, RoundingMode.HALF_UP).toString());
     localHashMap.put("fee_type", paramString1);
     localHashMap.put("bind_serial", paramString2);
     localHashMap.put("bank_type", paramString3);
@@ -71,21 +71,21 @@ public final class e
       AppMethodBeat.o(68397);
       return;
     }
-    this.dNQ = paramJSONObject.optString("req_key");
-    this.HsT = "1".equals(paramJSONObject.optString("should_alert"));
-    this.HsU = paramJSONObject.optString("alert_msg");
+    this.fHb = paramJSONObject.optString("req_key");
+    this.OkE = "1".equals(paramJSONObject.optString("should_alert"));
+    this.OkF = paramJSONObject.optString("alert_msg");
     if (paramJSONObject.has("real_name_info"))
     {
       paramString = paramJSONObject.optJSONObject("real_name_info");
       Log.i("Micromsg.NetSceneTenpayBalanceSave", "get real_name_info %s", new Object[] { paramString.toString() });
-      this.egd = paramString.optString("guide_flag");
-      this.ege = paramString.optString("guide_wording");
-      this.egf = paramString.optString("left_button_wording");
-      this.egg = paramString.optString("right_button_wording");
-      this.egh = paramString.optString("upload_credit_url");
+      this.gat = paramString.optString("guide_flag");
+      this.gau = paramString.optString("guide_wording");
+      this.gav = paramString.optString("left_button_wording");
+      this.gaw = paramString.optString("right_button_wording");
+      this.gax = paramString.optString("upload_credit_url");
     }
     this.retryPayInfo = new ITenpaySave.RetryPayInfo();
-    this.retryPayInfo.bK(paramJSONObject);
+    this.retryPayInfo.bV(paramJSONObject);
     AppMethodBeat.o(68397);
   }
 }

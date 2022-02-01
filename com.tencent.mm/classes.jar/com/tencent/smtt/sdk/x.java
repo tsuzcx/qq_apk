@@ -13,7 +13,7 @@ class x
   
   public static x a()
   {
-    AppMethodBeat.i(188322);
+    AppMethodBeat.i(194813);
     if (a == null) {}
     try
     {
@@ -21,12 +21,12 @@ class x
         a = new x();
       }
       x localx = a;
-      AppMethodBeat.o(188322);
+      AppMethodBeat.o(194813);
       return localx;
     }
     finally
     {
-      AppMethodBeat.o(188322);
+      AppMethodBeat.o(194813);
     }
   }
   
@@ -96,7 +96,6 @@ class x
     //   51	58	98	finally
     //   58	61	98	finally
     //   72	95	98	finally
-    //   99	102	98	finally
   }
   
   /* Error */
@@ -473,7 +472,7 @@ class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sdk.x
  * JD-Core Version:    0.7.0.1
  */

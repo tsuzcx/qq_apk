@@ -2,7 +2,7 @@ package io.flutter.a;
 
 public abstract interface c<T>
 {
-  public abstract boolean test(T paramT);
+  public abstract boolean eX(T paramT);
 }
 
 

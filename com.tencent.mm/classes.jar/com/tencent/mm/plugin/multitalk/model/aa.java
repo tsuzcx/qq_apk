@@ -15,50 +15,50 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/model/ScreenCastHWRenderHelper;", "", "()V", "decoderOutputSurface", "Landroid/view/Surface;", "decoderOutputSurfaceTexture", "Landroid/graphics/SurfaceTexture;", "decoderOutputTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "eglEnvironment", "Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "handler", "Landroid/os/Handler;", "handlerThread", "Landroid/os/HandlerThread;", "height", "", "renderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcExternalTexture;", "width", "getSurface", "init", "", "post", "task", "Lkotlin/Function0;", "release", "requestRender", "setRgbBufferListener", "listener", "Lkotlin/Function3;", "Ljava/nio/ByteBuffer;", "Lkotlin/ParameterName;", "name", "buffer", "setSize", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/model/ScreenCastHWRenderHelper;", "", "()V", "decoderOutputSurface", "Landroid/view/Surface;", "decoderOutputSurfaceTexture", "Landroid/graphics/SurfaceTexture;", "decoderOutputTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "eglEnvironment", "Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "handler", "Landroid/os/Handler;", "handlerThread", "Landroid/os/HandlerThread;", "height", "", "renderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcExternalTexture;", "width", "getSurface", "init", "", "post", "task", "Lkotlin/Function0;", "release", "requestRender", "setRgbBufferListener", "listener", "Lkotlin/Function3;", "Ljava/nio/ByteBuffer;", "Lkotlin/ParameterName;", "name", "buffer", "setSize", "plugin-multitalk_release"})
 public final class aa
 {
-  c.b hDs;
+  com.tencent.mm.media.g.d Fuc;
+  SurfaceTexture Fud;
+  Surface Fue;
+  c Fuf;
   private Handler handler;
   HandlerThread handlerThread;
   int height = 1;
+  c.b krl;
   int width = 1;
-  com.tencent.mm.media.g.d zOF;
-  SurfaceTexture zOG;
-  Surface zOH;
-  c zOI;
   
-  public final void U(a<x> parama)
+  public final void X(a<x> parama)
   {
-    AppMethodBeat.i(239676);
-    p.h(parama, "task");
+    AppMethodBeat.i(195681);
+    p.k(parama, "task");
     Handler localHandler = this.handler;
     if (localHandler != null)
     {
       localHandler.post((Runnable)new ab(parama));
-      AppMethodBeat.o(239676);
+      AppMethodBeat.o(195681);
       return;
     }
-    AppMethodBeat.o(239676);
+    AppMethodBeat.o(195681);
   }
   
   public final void c(final kotlin.g.a.q<? super ByteBuffer, ? super Integer, ? super Integer, x> paramq)
   {
-    AppMethodBeat.i(239675);
-    p.h(paramq, "listener");
-    U((a)new d(this, paramq));
-    AppMethodBeat.o(239675);
+    AppMethodBeat.i(195678);
+    p.k(paramq, "listener");
+    X((a)new d(this, paramq));
+    AppMethodBeat.o(195678);
   }
   
-  public final void eog()
+  public final void eXW()
   {
-    AppMethodBeat.i(239674);
+    AppMethodBeat.i(195677);
     if (this.handlerThread != null)
     {
-      AppMethodBeat.o(239674);
+      AppMethodBeat.o(195677);
       return;
     }
-    HandlerThread localHandlerThread = com.tencent.f.c.d.hz("multatalk_HW_render_thread", -4);
+    HandlerThread localHandlerThread = com.tencent.e.c.d.ij("multatalk_HW_render_thread", -4);
     if (localHandlerThread != null)
     {
       localHandlerThread.start();
@@ -67,14 +67,14 @@ public final class aa
     for (;;)
     {
       this.handlerThread = localHandlerThread;
-      U((a)new a(this));
-      AppMethodBeat.o(239674);
+      X((a)new a(this));
+      AppMethodBeat.o(195677);
       return;
       localHandlerThread = null;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class a
     extends kotlin.g.b.q
     implements a<x>
@@ -84,7 +84,7 @@ public final class aa
       super();
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/graphics/SurfaceTexture;", "kotlin.jvm.PlatformType", "onFrameAvailable", "com/tencent/mm/plugin/multitalk/model/ScreenCastHWRenderHelper$init$2$1$1$1", "com/tencent/mm/plugin/multitalk/model/ScreenCastHWRenderHelper$init$2$$special$$inlined$apply$lambda$1"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/graphics/SurfaceTexture;", "kotlin.jvm.PlatformType", "onFrameAvailable", "com/tencent/mm/plugin/multitalk/model/ScreenCastHWRenderHelper$init$2$1$1$1", "com/tencent/mm/plugin/multitalk/model/ScreenCastHWRenderHelper$init$2$$special$$inlined$apply$lambda$1"})
     static final class a
       implements SurfaceTexture.OnFrameAvailableListener
     {
@@ -92,16 +92,16 @@ public final class aa
       
       public final void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
       {
-        AppMethodBeat.i(239667);
-        paramSurfaceTexture = this.zOL.zOJ;
-        paramSurfaceTexture.U((a)new aa.c(paramSurfaceTexture));
-        this.zOK.updateTexImage();
-        AppMethodBeat.o(239667);
+        AppMethodBeat.i(201391);
+        paramSurfaceTexture = this.Fui.Fug;
+        paramSurfaceTexture.X((a)new aa.c(paramSurfaceTexture));
+        this.Fuh.updateTexImage();
+        AppMethodBeat.o(201391);
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class b
     extends kotlin.g.b.q
     implements a<x>
@@ -112,7 +112,7 @@ public final class aa
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class c
     extends kotlin.g.b.q
     implements a<x>
@@ -123,7 +123,7 @@ public final class aa
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class d
     extends kotlin.g.b.q
     implements a<x>
@@ -136,7 +136,7 @@ public final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.aa
  * JD-Core Version:    0.7.0.1
  */

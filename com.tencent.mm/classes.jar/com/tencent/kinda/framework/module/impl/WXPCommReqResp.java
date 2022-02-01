@@ -2,7 +2,7 @@ package com.tencent.kinda.framework.module.impl;
 
 import com.tencent.kinda.gen.KNetworkMockManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.o;
+import com.tencent.mm.an.o;
 import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l.b;
 import com.tencent.mm.protocal.l.c;
@@ -339,7 +339,7 @@ public class WXPCommReqResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.WXPCommReqResp
  * JD-Core Version:    0.7.0.1
  */

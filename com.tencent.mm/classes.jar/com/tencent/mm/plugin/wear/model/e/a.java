@@ -12,17 +12,17 @@ import java.util.List;
 
 public abstract class a
 {
-  protected boolean afg(int paramInt)
+  protected boolean amU(int paramInt)
   {
     return false;
   }
   
-  protected boolean afh(int paramInt)
+  protected boolean amV(int paramInt)
   {
     return false;
   }
   
-  public boolean afi(int paramInt)
+  public boolean amW(int paramInt)
   {
     return false;
   }
@@ -30,12 +30,12 @@ public abstract class a
   public final void c(int paramInt1, int paramInt2, int paramInt3, final byte[] paramArrayOfByte)
   {
     Object localObject = paramArrayOfByte;
-    if (afh(paramInt3))
+    if (amV(paramInt3))
     {
       localObject = paramArrayOfByte;
       if (paramArrayOfByte != null)
       {
-        paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.fVM().cw(paramArrayOfByte);
+        paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.gOt().cN(paramArrayOfByte);
         localObject = paramArrayOfByte;
         if (paramArrayOfByte == null) {
           Log.e("MicroMsg.Wear.BaseHttpServer", "request data decrypt error");
@@ -45,11 +45,11 @@ public abstract class a
     do
     {
       return;
-      localObject = s(paramInt3, (byte[])localObject);
-    } while (!fWf());
+      localObject = t(paramInt3, (byte[])localObject);
+    } while (!gOO());
     paramArrayOfByte = (byte[])localObject;
-    if (afg(paramInt3)) {
-      paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.fVM().cx((byte[])localObject);
+    if (amU(paramInt3)) {
+      paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.gOt().cO((byte[])localObject);
     }
     localObject = new ByteArrayOutputStream();
     DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
@@ -66,10 +66,10 @@ public abstract class a
           localDataOutputStream.write(paramArrayOfByte);
           paramArrayOfByte = ((ByteArrayOutputStream)localObject).toByteArray();
           Log.i("MicroMsg.Wear.BaseHttpServer", "send data funId=%d length=%d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramArrayOfByte.length) });
-          if (afi(paramInt3)) {
+          if (amW(paramInt3)) {
             break;
           }
-          com.tencent.mm.plugin.wear.model.a.fVM().cv(paramArrayOfByte);
+          com.tencent.mm.plugin.wear.model.a.gOt().cM(paramArrayOfByte);
           return;
         }
       }
@@ -85,24 +85,24 @@ public abstract class a
       public final void run()
       {
         AppMethodBeat.i(30066);
-        com.tencent.mm.plugin.wear.model.a.fVM().cv(paramArrayOfByte);
+        com.tencent.mm.plugin.wear.model.a.gOt().cM(paramArrayOfByte);
         AppMethodBeat.o(30066);
       }
     }, "WearSendResponseTask");
   }
   
-  public abstract List<Integer> fWe();
+  public abstract List<Integer> gON();
   
-  public boolean fWf()
+  public boolean gOO()
   {
     return true;
   }
   
-  protected abstract byte[] s(int paramInt, byte[] paramArrayOfByte);
+  protected abstract byte[] t(int paramInt, byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e.a
  * JD-Core Version:    0.7.0.1
  */

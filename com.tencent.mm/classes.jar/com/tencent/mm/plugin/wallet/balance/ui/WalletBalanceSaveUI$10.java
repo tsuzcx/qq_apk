@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.wallet.balance.ui;
 import android.app.Dialog;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.vending.g.d.a;
 
@@ -11,11 +12,11 @@ final class WalletBalanceSaveUI$10
 {
   WalletBalanceSaveUI$10(WalletBalanceSaveUI paramWalletBalanceSaveUI, Dialog paramDialog) {}
   
-  public final void cn(Object paramObject)
+  public final void cm(Object paramObject)
   {
     AppMethodBeat.i(68701);
-    if (this.tcT != null) {
-      this.tcT.dismiss();
+    if (this.wJe != null) {
+      this.wJe.dismiss();
     }
     Log.i("MicroMsg.WalletBalanceSaveUI", "fetch detail failed: %s", new Object[] { paramObject });
     if (paramObject != null) {
@@ -24,9 +25,9 @@ final class WalletBalanceSaveUI$10
       }
     }
     label71:
-    for (paramObject = paramObject.toString();; paramObject = this.HwD.getString(2131767869))
+    for (paramObject = paramObject.toString();; paramObject = this.Ooq.getString(a.i.wallet_lqt_network_error))
     {
-      Toast.makeText(this.HwD.getContext(), paramObject, 1).show();
+      Toast.makeText(this.Ooq.getContext(), paramObject, 1).show();
       AppMethodBeat.o(68701);
       return;
     }

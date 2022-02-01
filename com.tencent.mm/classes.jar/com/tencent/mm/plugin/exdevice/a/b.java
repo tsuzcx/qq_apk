@@ -9,7 +9,7 @@ public abstract interface b
   
   public static abstract interface a
   {
-    public abstract void w(boolean paramBoolean1, boolean paramBoolean2);
+    public abstract void z(boolean paramBoolean1, boolean paramBoolean2);
   }
 }
 

@@ -8,7 +8,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
 {
-  public static int aA(Bitmap paramBitmap)
+  public static int ax(Bitmap paramBitmap)
   {
     AppMethodBeat.i(97278);
     if (paramBitmap == null)
@@ -42,7 +42,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.widget.SphereImageView.c
  * JD-Core Version:    0.7.0.1
  */

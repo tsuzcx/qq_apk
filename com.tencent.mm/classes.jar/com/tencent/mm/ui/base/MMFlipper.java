@@ -11,26 +11,26 @@ import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class MMFlipper
   extends ViewGroup
 {
-  protected int OPT;
-  private int OPU;
-  private boolean OPV;
-  private c OPW;
-  private a OPX;
-  private b OPY;
-  private Interpolator OPZ;
-  private int OPg;
-  protected int OPi;
-  protected int OPj;
-  private boolean OPl;
-  int OQa;
-  int OQb;
+  private int Win;
+  protected int Wip;
+  protected int Wiq;
+  private boolean Wis;
+  protected int Wja;
+  private int Wjb;
+  private boolean Wjc;
+  private c Wjd;
+  private a Wje;
+  private b Wjf;
+  private Interpolator Wjg;
+  int Wjh;
+  int Wji;
   private float mLastMotionX;
   private float mLastMotionY;
   private Scroller mScroller;
@@ -49,31 +49,31 @@ public class MMFlipper
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(141898);
-    this.OPU = 0;
-    this.OPg = 0;
-    this.OPV = false;
-    this.OPl = true;
-    this.OQa = -123454321;
-    this.OQb = -123454321;
+    this.Wjb = 0;
+    this.Win = 0;
+    this.Wjc = false;
+    this.Wis = true;
+    this.Wjh = -123454321;
+    this.Wji = -123454321;
     init(paramContext);
     AppMethodBeat.o(141898);
   }
   
-  private void alu(int paramInt)
+  private void aus(int paramInt)
   {
     AppMethodBeat.i(141903);
     paramInt = Math.max(0, Math.min(paramInt, getChildCount() - 1));
     if (getScrollX() != getWidth() * paramInt)
     {
       int i = getWidth() * paramInt - getScrollX();
-      this.mScroller.startScroll(getScrollX(), 0, i, 0, a.E(getContext(), (int)(Math.abs(i) * 1.3F)));
-      if (this.OPi != paramInt)
+      this.mScroller.startScroll(getScrollX(), 0, i, 0, a.H(getContext(), (int)(Math.abs(i) * 1.3F)));
+      if (this.Wip != paramInt)
       {
-        this.OPV = true;
-        this.OPT += paramInt - this.OPi;
+        this.Wjc = true;
+        this.Wja += paramInt - this.Wip;
       }
-      this.OPj = this.OPi;
-      this.OPi = paramInt;
+      this.Wiq = this.Wip;
+      this.Wip = paramInt;
       invalidate();
     }
     AppMethodBeat.o(141903);
@@ -82,33 +82,33 @@ public class MMFlipper
   private void init(Context paramContext)
   {
     AppMethodBeat.i(141900);
-    this.OPZ = getInterpolator();
-    this.mScroller = new Scroller(paramContext, this.OPZ);
-    this.OPj = -1;
-    int i = this.OPU;
-    this.OPi = i;
-    this.OPT = i;
+    this.Wjg = getInterpolator();
+    this.mScroller = new Scroller(paramContext, this.Wjg);
+    this.Wiq = -1;
+    int i = this.Wjb;
+    this.Wip = i;
+    this.Wja = i;
     this.mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
     AppMethodBeat.o(141900);
   }
   
-  public final void alx(int paramInt)
+  public final void auv(int paramInt)
   {
     AppMethodBeat.i(141904);
     paramInt = Math.max(0, Math.min(paramInt, getChildCount() - 1));
-    this.OPV = false;
+    this.Wjc = false;
     if (!this.mScroller.isFinished()) {
       this.mScroller.abortAnimation();
     }
-    this.OPj = this.OPi;
-    this.OPi = paramInt;
+    this.Wiq = this.Wip;
+    this.Wip = paramInt;
     scrollTo(paramInt * getWidth(), 0);
     AppMethodBeat.o(141904);
   }
   
-  public final void aly(int paramInt)
+  public final void auw(int paramInt)
   {
-    this.OPT = paramInt;
+    this.Wja = paramInt;
   }
   
   public void computeScroll()
@@ -122,18 +122,18 @@ public class MMFlipper
       AppMethodBeat.o(141907);
       return;
     }
-    if (this.OPV)
+    if (this.Wjc)
     {
-      this.OPV = false;
-      if (this.OPW != null)
+      this.Wjc = false;
+      if (this.Wjd != null)
       {
-        this.OPW.z(this.OPj, this.OPT, true);
+        this.Wjd.E(this.Wiq, this.Wja, true);
         AppMethodBeat.o(141907);
       }
     }
-    else if ((this.OPX != null) && (this.mLastMotionX == 0.0F) && (this.OPj != this.OPi))
+    else if ((this.Wje != null) && (this.mLastMotionX == 0.0F) && (this.Wiq != this.Wip))
     {
-      this.OPX.aiv(this.OPT);
+      this.Wje.aqx(this.Wja);
     }
     AppMethodBeat.o(141907);
   }
@@ -141,8 +141,8 @@ public class MMFlipper
   public int getCurScreen()
   {
     AppMethodBeat.i(141906);
-    Log.d("MicroMsg.MMFlipper", "cur screen is %d", new Object[] { Integer.valueOf(this.OPi) });
-    int i = this.OPi;
+    Log.d("MicroMsg.MMFlipper", "cur screen is %d", new Object[] { Integer.valueOf(this.Wip) });
+    int i = this.Wip;
     AppMethodBeat.o(141906);
     return i;
   }
@@ -150,7 +150,7 @@ public class MMFlipper
   protected Interpolator getInterpolator()
   {
     AppMethodBeat.i(141899);
-    MMFlipper.d locald = new MMFlipper.d();
+    d locald = new d();
     AppMethodBeat.o(141899);
     return locald;
   }
@@ -159,7 +159,7 @@ public class MMFlipper
   {
     AppMethodBeat.i(141909);
     boolean bool;
-    if (!this.OPl)
+    if (!this.Wis)
     {
       bool = super.onInterceptTouchEvent(paramMotionEvent);
       AppMethodBeat.o(141909);
@@ -172,7 +172,7 @@ public class MMFlipper
       return bool;
     }
     int i = paramMotionEvent.getAction();
-    if ((i == 2) && (this.OPg != 0))
+    if ((i == 2) && (this.Win != 0))
     {
       AppMethodBeat.o(141909);
       return true;
@@ -182,7 +182,7 @@ public class MMFlipper
     switch (i)
     {
     }
-    while (this.OPg != 0)
+    while (this.Win != 0)
     {
       AppMethodBeat.o(141909);
       return true;
@@ -195,21 +195,21 @@ public class MMFlipper
         if (i == 0) {
           break label230;
         }
-        this.OPg = 1;
+        this.Win = 1;
         break;
       }
       label230:
-      this.OPg = 0;
+      this.Win = 0;
       continue;
       this.mLastMotionX = f1;
       this.mLastMotionY = f2;
       if (this.mScroller.isFinished()) {}
       for (i = 0;; i = 1)
       {
-        this.OPg = i;
+        this.Win = i;
         break;
       }
-      this.OPg = 0;
+      this.Win = 0;
     }
     AppMethodBeat.o(141909);
     return false;
@@ -247,11 +247,11 @@ public class MMFlipper
     super.onMeasure(paramInt1, paramInt2);
     int j = View.MeasureSpec.getSize(paramInt1);
     int i = View.MeasureSpec.getSize(paramInt2);
-    if (this.OPY != null) {
-      this.OPY.ig(j, i);
+    if (this.Wjf != null) {
+      this.Wjf.jl(j, i);
     }
-    this.OQa = j;
-    this.OQb = i;
+    this.Wjh = j;
+    this.Wji = i;
     int k = getChildCount();
     i = 0;
     while (i < k)
@@ -259,7 +259,7 @@ public class MMFlipper
       getChildAt(i).measure(paramInt1, paramInt2);
       i += 1;
     }
-    scrollTo(this.OPi * j, 0);
+    scrollTo(this.Wip * j, 0);
     Log.i("MicroMsg.MMFlipper", "flipper onMeasure:" + j + "," + View.MeasureSpec.getSize(paramInt2) + " childCount:" + k + ", use " + Util.ticksToNow(l));
     AppMethodBeat.o(141902);
   }
@@ -302,8 +302,8 @@ public class MMFlipper
     paramMotionEvent = this.mVelocityTracker;
     paramMotionEvent.computeCurrentVelocity(1000);
     i = (int)paramMotionEvent.getXVelocity();
-    if ((i > 600) && (this.OPi > 0)) {
-      alu(this.OPi - 1);
+    if ((i > 600) && (this.Wip > 0)) {
+      aus(this.Wip - 1);
     }
     for (;;)
     {
@@ -312,78 +312,90 @@ public class MMFlipper
         this.mVelocityTracker.recycle();
         this.mVelocityTracker = null;
       }
-      this.OPg = 0;
+      this.Win = 0;
       this.mLastMotionX = 0.0F;
       this.mLastMotionY = 0.0F;
       break;
-      if ((i < -600) && (this.OPi < getChildCount() - 1))
+      if ((i < -600) && (this.Wip < getChildCount() - 1))
       {
-        alu(this.OPi + 1);
+        aus(this.Wip + 1);
       }
       else
       {
         i = getWidth();
-        alu((getScrollX() + i / 2) / i);
+        aus((getScrollX() + i / 2) / i);
       }
     }
   }
   
   public void setOnFlipperViewShowedListener(a parama)
   {
-    this.OPX = parama;
+    this.Wje = parama;
   }
   
   public void setOnMeasureListener(b paramb)
   {
-    this.OPY = paramb;
+    this.Wjf = paramb;
   }
   
   public void setOnScreenChangedListener(c paramc)
   {
-    this.OPW = paramc;
+    this.Wjd = paramc;
   }
   
   public void setScrollEnable(boolean paramBoolean)
   {
-    this.OPl = paramBoolean;
+    this.Wis = paramBoolean;
   }
   
   public void setToScreen(int paramInt)
   {
     AppMethodBeat.i(141905);
     paramInt = Math.max(0, Math.min(paramInt, getChildCount() - 1));
-    this.OPV = false;
+    this.Wjc = false;
     if (!this.mScroller.isFinished()) {
       this.mScroller.abortAnimation();
     }
-    if (this.OPW != null) {
-      this.OPW.z(this.OPj, paramInt, false);
+    if (this.Wjd != null) {
+      this.Wjd.E(this.Wiq, paramInt, false);
     }
-    this.OPj = this.OPi;
-    this.OPi = paramInt;
-    this.OPT = paramInt;
+    this.Wiq = this.Wip;
+    this.Wip = paramInt;
+    this.Wja = paramInt;
     scrollTo(paramInt * getWidth(), 0);
     AppMethodBeat.o(141905);
   }
   
   public static abstract interface a
   {
-    public abstract void aiv(int paramInt);
+    public abstract void aqx(int paramInt);
   }
   
   public static abstract interface b
   {
-    public abstract void ig(int paramInt1, int paramInt2);
+    public abstract void jl(int paramInt1, int paramInt2);
   }
   
   public static abstract interface c
   {
-    public abstract void z(int paramInt1, int paramInt2, boolean paramBoolean);
+    public abstract void E(int paramInt1, int paramInt2, boolean paramBoolean);
+  }
+  
+  static final class d
+    implements Interpolator
+  {
+    private float Hvz = 1.3F;
+    
+    public final float getInterpolation(float paramFloat)
+    {
+      paramFloat -= 1.0F;
+      return paramFloat * (paramFloat * paramFloat) + 1.0F;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMFlipper
  * JD-Core Version:    0.7.0.1
  */

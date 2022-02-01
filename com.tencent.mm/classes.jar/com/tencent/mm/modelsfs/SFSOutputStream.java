@@ -8,14 +8,14 @@ import java.io.OutputStream;
 public class SFSOutputStream
   extends OutputStream
 {
-  private StackTraceElement[] jiV;
+  private StackTraceElement[] lYS;
   private long mNativePtr;
   
   public SFSOutputStream(long paramLong)
   {
     AppMethodBeat.i(156032);
     this.mNativePtr = paramLong;
-    this.jiV = Thread.currentThread().getStackTrace();
+    this.lYS = Thread.currentThread().getStackTrace();
     AppMethodBeat.o(156032);
   }
   
@@ -47,7 +47,7 @@ public class SFSOutputStream
     if (this.mNativePtr != 0L)
     {
       StringBuilder localStringBuilder = new StringBuilder("SFSOutputStream leaked:\n");
-      StackTraceElement[] arrayOfStackTraceElement = this.jiV;
+      StackTraceElement[] arrayOfStackTraceElement = this.lYS;
       int j = arrayOfStackTraceElement.length;
       int i = 0;
       while (i < j)
@@ -108,7 +108,7 @@ public class SFSOutputStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelsfs.SFSOutputStream
  * JD-Core Version:    0.7.0.1
  */

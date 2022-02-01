@@ -19,15 +19,15 @@ public final class a
   public final ab b(y paramy)
   {
     AppMethodBeat.i(60038);
-    p.h(paramy, "module");
-    paramy = ((c)getValue()).hBy();
+    p.k(paramy, "module");
+    paramy = ((c)getValue()).iFN();
     AppMethodBeat.o(60038);
     return paramy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.j.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -5,20 +5,21 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.scanner.l.d;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabView;", "Lcom/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "tabPaddingVertical", "init", "", "onAddTab", "tab", "Lcom/tencent/mm/plugin/scanner/ui/widget/IScrollTab;", "onTabSelected", "index", "onTabUnselected", "Companion", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabView;", "Lcom/tencent/mm/plugin/scanner/ui/widget/BaseScrollTabView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "tabPaddingVertical", "init", "", "onAddTab", "tab", "Lcom/tencent/mm/plugin/scanner/ui/widget/IScrollTab;", "onTabSelected", "index", "onTabUnselected", "Companion", "plugin-scan_release"})
 public final class ScanScrollTabView
   extends BaseScrollTabView
 {
-  public static final a CSz;
-  private int CSy;
+  public static final a IXR;
+  private int IXQ;
   
   static
   {
     AppMethodBeat.i(52448);
-    CSz = new a((byte)0);
+    IXR = new a((byte)0);
     AppMethodBeat.o(52448);
   }
   
@@ -33,16 +34,16 @@ public final class ScanScrollTabView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(52447);
-    this.CSy = paramContext.getResources().getDimensionPixelSize(2131165498);
+    this.IXQ = paramContext.getResources().getDimensionPixelSize(l.d.LargePadding);
     AppMethodBeat.o(52447);
   }
   
   protected final void a(a parama)
   {
     AppMethodBeat.i(52443);
-    p.h(parama, "tab");
+    p.k(parama, "tab");
     if ((parama instanceof View)) {
-      ((View)parama).setPadding(this.CSy, 0, this.CSy, 0);
+      ((View)parama).setPadding(this.IXQ, 0, this.IXQ, 0);
     }
     AppMethodBeat.o(52443);
   }
@@ -50,7 +51,7 @@ public final class ScanScrollTabView
   protected final void a(a parama, int paramInt)
   {
     AppMethodBeat.i(52444);
-    p.h(parama, "tab");
+    p.k(parama, "tab");
     super.a(parama, paramInt);
     AppMethodBeat.o(52444);
   }
@@ -58,12 +59,12 @@ public final class ScanScrollTabView
   protected final void b(a parama, int paramInt)
   {
     AppMethodBeat.i(52445);
-    p.h(parama, "tab");
+    p.k(parama, "tab");
     super.b(parama, paramInt);
     AppMethodBeat.o(52445);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabView$Companion;", "", "()V", "TAG", "", "plugin-scan_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabView$Companion;", "", "()V", "TAG", "", "plugin-scan_release"})
   public static final class a {}
 }
 

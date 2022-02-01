@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.fts.a.a.d;
 import com.tencent.mm.plugin.fts.a.a.e;
 import com.tencent.mm.plugin.fts.a.a.m;
@@ -15,27 +15,30 @@ import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
 import com.tencent.mm.plugin.fts.a.d.a.b;
+import com.tencent.mm.plugin.fts.ui.o.d;
+import com.tencent.mm.plugin.fts.ui.o.e;
+import com.tencent.mm.plugin.fts.ui.o.f;
 
 public final class j
   extends a
 {
+  public CharSequence BPi;
+  public d BPj;
+  private b BPk;
+  a BPl;
   public int actionType;
-  public String jgI;
-  public m lqW;
-  public CharSequence tjG;
-  public String tjJ;
-  public CharSequence xdk;
-  public d xdl;
-  private b xdm;
-  a xdn;
+  public String lXl;
+  public m olG;
+  public CharSequence wPX;
+  public String wQa;
   
   public j(int paramInt)
   {
     super(3, paramInt);
     AppMethodBeat.i(112087);
     this.actionType = -1;
-    this.xdm = new b();
-    this.xdn = new a();
+    this.BPk = new b();
+    this.BPl = new a();
     AppMethodBeat.o(112087);
   }
   
@@ -44,19 +47,19 @@ public final class j
     boolean bool2 = true;
     AppMethodBeat.i(112088);
     super.a(paramContext, parama, paramVarArgs);
-    this.xdl = ((d)this.lqW.userData);
-    if (this.xdl == null)
+    this.BPj = ((d)this.olG.BJh);
+    if (this.BPj == null)
     {
       AppMethodBeat.o(112088);
       return;
     }
-    this.tjG = this.xdl.field_title;
-    this.xdk = this.xdl.field_tag;
-    this.tjJ = this.xdl.field_iconPath;
-    this.jgI = this.xdl.field_androidUrl;
-    this.actionType = this.xdl.field_actionType;
+    this.wPX = this.BPj.field_title;
+    this.BPi = this.BPj.field_tag;
+    this.wQa = this.BPj.field_iconPath;
+    this.lXl = this.BPj.field_androidUrl;
+    this.actionType = this.BPj.field_actionType;
     boolean bool1;
-    switch (this.lqW.wVW)
+    switch (this.olG.BHR)
     {
     default: 
       AppMethodBeat.o(112088);
@@ -66,10 +69,10 @@ public final class j
     }
     for (;;)
     {
-      this.tjG = com.tencent.mm.plugin.fts.a.f.a(e.a(this.tjG, this.wWd, bool2, bool1)).wWu;
+      this.wPX = com.tencent.mm.plugin.fts.a.f.a(e.a(this.wPX, this.BHY, bool2, bool1)).BIp;
       AppMethodBeat.o(112088);
       return;
-      this.xdk = com.tencent.mm.plugin.fts.a.f.a(e.a(this.xdk, this.wWd)).wWu;
+      this.BPi = com.tencent.mm.plugin.fts.a.f.a(e.a(this.BPi, this.BHY)).BIp;
       break;
       bool1 = false;
       continue;
@@ -78,28 +81,28 @@ public final class j
     }
   }
   
-  public final a.b axc()
+  public final a.b aEw()
   {
-    return this.xdm;
+    return this.BPk;
   }
   
-  public final String bCR()
+  public final String bOm()
   {
-    return this.xdl.field_title;
+    return this.BPj.field_title;
   }
   
-  public final int bCS()
+  public final int bOn()
   {
-    return this.lqW.wXn;
+    return this.olG.BJj;
   }
   
   public final class a
     extends a.a
   {
     public View contentView;
-    public ImageView gvv;
-    public TextView jBR;
-    public TextView jVO;
+    public ImageView iZG;
+    public TextView mNb;
+    public TextView mrM;
     
     public a()
     {
@@ -118,12 +121,12 @@ public final class j
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(112084);
-      paramContext = LayoutInflater.from(paramContext).inflate(2131494744, paramViewGroup, false);
-      paramViewGroup = (j.a)j.this.xdn;
-      paramViewGroup.gvv = ((ImageView)paramContext.findViewById(2131297134));
-      paramViewGroup.jVO = ((TextView)paramContext.findViewById(2131309249));
-      paramViewGroup.jBR = ((TextView)paramContext.findViewById(2131299510));
-      paramViewGroup.contentView = paramContext.findViewById(2131307399);
+      paramContext = LayoutInflater.from(paramContext).inflate(o.e.fts_contact_item, paramViewGroup, false);
+      paramViewGroup = (j.a)j.this.BPl;
+      paramViewGroup.iZG = ((ImageView)paramContext.findViewById(o.d.avatar_iv));
+      paramViewGroup.mNb = ((TextView)paramContext.findViewById(o.d.title_tv));
+      paramViewGroup.mrM = ((TextView)paramContext.findViewById(o.d.desc_tv));
+      paramViewGroup.contentView = paramContext.findViewById(o.d.search_item_content_layout);
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(112084);
       return paramContext;
@@ -134,25 +137,25 @@ public final class j
       AppMethodBeat.i(112085);
       parama = (j.a)parama;
       parama1 = (j)parama1;
-      com.tencent.mm.plugin.fts.ui.n.r(parama.contentView, j.this.wXK);
-      com.tencent.mm.plugin.fts.ui.n.a(j.this.tjG, parama.jVO);
-      com.tencent.mm.plugin.fts.ui.n.a(j.this.xdk, parama.jBR);
-      com.tencent.mm.plugin.fts.ui.n.a(paramContext, parama.gvv, null, parama1.tjJ, 2131690349, true);
+      com.tencent.mm.plugin.fts.ui.n.r(parama.contentView, j.this.BJG);
+      com.tencent.mm.plugin.fts.ui.n.a(j.this.wPX, parama.mNb);
+      com.tencent.mm.plugin.fts.ui.n.a(j.this.BPi, parama.mrM);
+      com.tencent.mm.plugin.fts.ui.n.a(paramContext, parama.iZG, null, parama1.wQa, o.f.fts_default_img, true);
       AppMethodBeat.o(112085);
     }
     
     public final boolean a(Context paramContext, View paramView, a paramVarArgs)
     {
-      AppMethodBeat.i(235401);
-      boolean bool = ((com.tencent.mm.plugin.fts.a.n)g.ah(com.tencent.mm.plugin.fts.a.n.class)).getItemClickHandler(j.this.qcr).a(paramContext, paramView, paramVarArgs);
-      AppMethodBeat.o(235401);
+      AppMethodBeat.i(193609);
+      boolean bool = ((com.tencent.mm.plugin.fts.a.n)h.ag(com.tencent.mm.plugin.fts.a.n.class)).getItemClickHandler(j.this.viewType).a(paramContext, paramView, paramVarArgs);
+      AppMethodBeat.o(193609);
       return bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.j
  * JD-Core Version:    0.7.0.1
  */

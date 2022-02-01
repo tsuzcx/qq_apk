@@ -1,100 +1,107 @@
 package com.tencent.mm.console.a;
 
 import android.content.Context;
-import android.os.Looper;
-import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ge;
-import com.tencent.mm.hellhoundlib.b.c;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ck;
-import java.util.Calendar;
+import com.tencent.mm.modelstat.WatchDogPushReceiver;
+import com.tencent.mm.pluginsdk.cmd.a;
+import com.tencent.mm.pluginsdk.cmd.b;
+import com.tencent.mm.protocal.MMProtocalJni;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import junit.framework.Assert;
 
 public final class i
-  implements com.tencent.mm.pluginsdk.cmd.a
+  implements a
 {
   static
   {
-    AppMethodBeat.i(20184);
-    com.tencent.mm.pluginsdk.cmd.b.a(new i(), new String[] { "//sport" });
-    AppMethodBeat.o(20184);
+    AppMethodBeat.i(20186);
+    b.a(new i(), new String[] { "//assert", "//netassert", "//jniassert", "//jnipushassert", "//pushassert", "//anrassert" });
+    AppMethodBeat.o(20186);
   }
   
   public static void init() {}
   
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    AppMethodBeat.i(20183);
-    if (Log.getLogLevel() > 1)
-    {
-      AppMethodBeat.o(20183);
-      return false;
-    }
-    if (paramArrayOfString.length < 2)
-    {
-      AppMethodBeat.o(20183);
-      return true;
-    }
-    paramContext = paramArrayOfString[1];
-    int i = -1;
+    AppMethodBeat.i(20185);
+    paramContext = paramArrayOfString[0];
+    label72:
+    int i;
     switch (paramContext.hashCode())
     {
     default: 
-      switch (i)
-      {
-      }
-      break;
+      i = -1;
     }
     for (;;)
     {
-      AppMethodBeat.o(20183);
+      switch (i)
+      {
+      default: 
+        AppMethodBeat.o(20185);
+        return false;
+        if (!paramContext.equals("//assert")) {
+          break label72;
+        }
+        i = 0;
+        continue;
+        if (!paramContext.equals("//netassert")) {
+          break label72;
+        }
+        i = 1;
+        continue;
+        if (!paramContext.equals("//jniassert")) {
+          break label72;
+        }
+        i = 2;
+        continue;
+        if (!paramContext.equals("//jnipushassert")) {
+          break label72;
+        }
+        i = 3;
+        continue;
+        if (!paramContext.equals("//pushassert")) {
+          break label72;
+        }
+        i = 4;
+        continue;
+        if (!paramContext.equals("//anrassert")) {
+          break label72;
+        }
+        i = 5;
+      }
+    }
+    Assert.assertTrue("test errlog " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()), false);
+    AppMethodBeat.o(20185);
+    return true;
+    Assert.assertTrue("NetsceneQueue forbid in ", false);
+    AppMethodBeat.o(20185);
+    return true;
+    MMProtocalJni.setClientPackVersion(-1);
+    AppMethodBeat.o(20185);
+    return true;
+    WatchDogPushReceiver.wY(2);
+    AppMethodBeat.o(20185);
+    return true;
+    WatchDogPushReceiver.wY(1);
+    AppMethodBeat.o(20185);
+    return true;
+    try
+    {
+      Thread.sleep(10000L);
+      label317:
+      AppMethodBeat.o(20185);
       return true;
-      if (!paramContext.equals("setdevicestep")) {
-        break;
-      }
-      i = 0;
-      break;
-      if (!paramContext.equals("clear")) {
-        break;
-      }
-      i = 1;
-      break;
-      if (!paramContext.equals("setextapistep")) {
-        break;
-      }
-      i = 2;
-      break;
-      i = Integer.valueOf(paramArrayOfString[2]).intValue();
-      Util.getBeginTimeOfToday();
-      paramContext = Calendar.getInstance();
-      paramContext.set(11, 0);
-      paramContext.set(12, 0);
-      paramContext.set(13, 0);
-      long l1 = paramContext.getTimeInMillis();
-      long l2 = System.currentTimeMillis();
-      ((com.tencent.mm.plugin.sport.a.b)g.af(com.tencent.mm.plugin.sport.a.b.class)).b("", "gh_43f2581f6fd6", (int)(l1 / 1000L), (int)(l2 / 1000L), i, ck.getFingerprint());
-      continue;
-      ((com.tencent.mm.plugin.sport.a.b)g.af(com.tencent.mm.plugin.sport.a.b.class)).fmh();
-      paramContext = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
-      paramArrayOfString = new Object();
-      com.tencent.mm.hellhoundlib.a.a.a(paramArrayOfString, paramContext.axQ(), "com/tencent/mm/console/command/SportCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "android/os/Process_EXEC_", "killProcess", "(I)V");
-      Process.killProcess(((Integer)paramContext.pG(0)).intValue());
-      com.tencent.mm.hellhoundlib.a.a.a(paramArrayOfString, "com/tencent/mm/console/command/SportCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "android/os/Process_EXEC_", "killProcess", "(I)V");
-      continue;
-      paramContext = new ge();
-      paramContext.dJP.action = 2;
-      paramContext.dJP.dJS = Integer.valueOf(paramArrayOfString[2]).intValue();
-      paramContext.dJP.bqc = 1L;
-      EventCenter.instance.asyncPublish(paramContext, Looper.getMainLooper());
+    }
+    catch (InterruptedException paramContext)
+    {
+      break label317;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.console.a.i
  * JD-Core Version:    0.7.0.1
  */

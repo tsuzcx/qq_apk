@@ -5,127 +5,93 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout.LayoutParams;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ui.b.b.b.a;
-import com.tencent.mm.plugin.sns.ui.c.a.a;
+import com.tencent.mm.plugin.sns.ui.c.a.b;
 import com.tencent.mm.plugin.sns.ui.c.a.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ao;
 
 public final class k
-  extends b
+  extends a
 {
-  private AnimatorSet CPA;
-  private ValueAnimator EUa;
-  private ValueAnimator EUb;
-  ViewGroup EUc;
-  FrameLayout.LayoutParams EUj;
-  f EUt;
-  LinearLayout.LayoutParams EUu;
-  int[] wrA;
+  private AnimatorSet IVc;
+  private ValueAnimator Lif;
+  f Lio;
   
-  public k(final MMActivity paramMMActivity, a parama)
+  public k(MMActivity paramMMActivity, b paramb)
   {
-    AppMethodBeat.i(99947);
-    this.wrA = new int[2];
-    this.activity = paramMMActivity;
-    this.EUt = ((f)parama);
-    this.EUa = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-    this.EUa.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    AppMethodBeat.i(266574);
+    try
     {
-      public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+      this.activity = paramMMActivity;
+      this.Lio = ((f)paramb);
+      this.Lif = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.Lif.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
-        AppMethodBeat.i(99943);
-        float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        if (f != 1.0D)
+        public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
-          k.this.EUt.contentView.setScaleX(f);
-          k.this.EUt.contentView.setScaleY(f);
-          k.this.EUt.contentView.setAlpha(f);
+          AppMethodBeat.i(268494);
+          float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
+          if (f != 0.0F)
+          {
+            k.this.Lio.JJt.setScaleX(f);
+            k.this.Lio.JJt.setScaleY(f);
+            k.this.Lio.JJt.setAlpha(f);
+          }
+          AppMethodBeat.o(268494);
         }
-        AppMethodBeat.o(99943);
-      }
-    });
-    this.EUa.setDuration(400L);
-    this.EUb = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-    this.EUb.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
-    {
-      public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+      });
+      this.Lif.setDuration(400L);
+      this.IVc = new AnimatorSet();
+      this.IVc.playTogether(new Animator[] { this.Lif });
+      this.IVc.addListener(new AnimatorListenerAdapter()
       {
-        AppMethodBeat.i(99944);
-        float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        k.this.EUt.EWg.setAlpha(f);
-        k.this.EUt.EWf.setAlpha(f);
-        AppMethodBeat.o(99944);
-      }
-    });
-    this.EUb.setDuration(100L);
-    this.EUu = ((LinearLayout.LayoutParams)this.EUt.contentView.getLayoutParams());
-    this.EUc = ((FrameLayout)this.activity.getBodyView().getParent());
-    this.CPA = new AnimatorSet();
-    this.CPA.playTogether(new Animator[] { this.EUa, this.EUb });
-    this.CPA.addListener(new AnimatorListenerAdapter()
-    {
-      public final void onAnimationEnd(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(99946);
-        Log.i("MicroMsg.TurnCardAdDetailClickAnimation", "onAnimation end");
-        ((ViewGroup)k.this.activity.getBodyView().getParent()).removeView(k.this.EUt.contentView);
-        ((ViewGroup)k.this.EUt.EAV).addView(k.this.EUt.contentView, k.this.EUu);
-        k.this.EUt.contentView.setScaleX(1.0F);
-        k.this.EUt.contentView.setScaleY(1.0F);
-        k.this.EUt.contentView.setAlpha(1.0F);
-        k.this.EUt.EWg.setAlpha(1.0F);
-        k.this.EUt.EWf.setAlpha(1.0F);
-        if (k.this.ETY != null) {
-          k.this.ETY.onAnimationEnd();
+        public final void onAnimationEnd(Animator paramAnonymousAnimator)
+        {
+          AppMethodBeat.i(253145);
+          Log.i("MicroMsg.SlideFullCardItemAdBackAnimation", "onAnimation end");
+          k.this.Lio.JJt.setScaleX(1.0F);
+          k.this.Lio.JJt.setScaleY(1.0F);
+          k.this.Lio.JJt.setAlpha(1.0F);
+          if (k.this.Lia != null) {
+            k.this.Lia.onAnimationEnd();
+          }
+          AppMethodBeat.o(253145);
         }
-        AppMethodBeat.o(99946);
-      }
-      
-      public final void onAnimationStart(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(99945);
-        Log.i("MicroMsg.TurnCardAdDetailClickAnimation", "onAnimation start");
-        k.this.EUt.contentView.getLocationInWindow(k.this.wrA);
-        Log.i("MicroMsg.TurnCardAdDetailClickAnimation", "location in window %s, %s", new Object[] { Integer.valueOf(k.this.wrA[0]), Integer.valueOf(k.this.wrA[1]) });
-        ((ViewGroup)k.this.EUt.EAV).removeView(k.this.EUt.contentView);
-        paramAnonymousAnimator = k.this.EUt.EAV.getLayoutParams();
-        paramAnonymousAnimator.width = k.this.EUt.contentView.getWidth();
-        paramAnonymousAnimator.height = (k.this.EUt.contentView.getHeight() + k.this.EUu.topMargin + k.this.EUu.bottomMargin);
-        k.this.EUt.EAV.setLayoutParams(paramAnonymousAnimator);
-        k.this.EUj = new FrameLayout.LayoutParams(-2, -2);
-        k.this.EUj.leftMargin = k.this.wrA[0];
-        k.this.EUj.rightMargin = (k.this.EUc.getWidth() - k.this.EUj.leftMargin - k.this.EUt.contentView.getWidth());
-        k.this.EUj.topMargin = (k.this.wrA[1] - ao.getStatusBarHeight(paramMMActivity));
-        k.this.EUj.bottomMargin = (k.this.EUc.getHeight() - k.this.EUj.topMargin - k.this.EUt.contentView.getHeight());
-        k.this.EUc.addView(k.this.EUt.contentView, k.this.EUj);
-        AppMethodBeat.o(99945);
-      }
-    });
-    AppMethodBeat.o(99947);
+        
+        public final void onAnimationStart(Animator paramAnonymousAnimator)
+        {
+          AppMethodBeat.i(253142);
+          Log.i("MicroMsg.SlideFullCardItemAdBackAnimation", "onAnimation start");
+          AppMethodBeat.o(253142);
+        }
+      });
+      AppMethodBeat.o(266574);
+      return;
+    }
+    catch (Throwable paramMMActivity)
+    {
+      Log.e("MicroMsg.SlideFullCardItemAdBackAnimation", "init exp=" + paramMMActivity.toString());
+      AppMethodBeat.o(266574);
+    }
   }
   
-  public final void JW(long paramLong)
+  public final void Rq(long paramLong)
   {
-    AppMethodBeat.i(99948);
-    if (!this.CPA.isStarted())
+    AppMethodBeat.i(266576);
+    if ((this.IVc != null) && (!this.IVc.isStarted()))
     {
-      this.CPA.setStartDelay(paramLong);
-      this.CPA.start();
+      this.IVc.setStartDelay(paramLong);
+      this.IVc.start();
     }
-    AppMethodBeat.o(99948);
+    AppMethodBeat.o(266576);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.b.a.k
  * JD-Core Version:    0.7.0.1
  */

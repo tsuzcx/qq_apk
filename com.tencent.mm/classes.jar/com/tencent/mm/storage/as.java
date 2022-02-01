@@ -3,20 +3,19 @@ package com.tencent.mm.storage;
 import android.database.Cursor;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.contact.c;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.n.d;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.zero.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class as
-  extends c
+  extends com.tencent.mm.contact.d
   implements Cloneable
 {
-  public CharSequence NON;
-  public String Ooy = null;
+  public static long VEq = 86400L;
+  public String VEr = null;
+  public CharSequence Vcw;
   
   public as() {}
   
@@ -25,7 +24,7 @@ public class as
     super(paramString);
   }
   
-  public static boolean HF(String paramString)
+  public static boolean OS(String paramString)
   {
     AppMethodBeat.i(43175);
     if (paramString != null)
@@ -38,7 +37,7 @@ public class as
     return false;
   }
   
-  public static boolean IG(String paramString)
+  public static boolean PY(String paramString)
   {
     AppMethodBeat.i(43174);
     if (paramString != null)
@@ -55,25 +54,25 @@ public class as
     return false;
   }
   
-  public static boolean akh(int paramInt)
+  public static boolean aEF(String paramString)
+  {
+    AppMethodBeat.i(240831);
+    if (paramString != null)
+    {
+      boolean bool = paramString.endsWith("@findermsg");
+      AppMethodBeat.o(240831);
+      return bool;
+    }
+    AppMethodBeat.o(240831);
+    return false;
+  }
+  
+  public static boolean asD(int paramInt)
   {
     return (paramInt & 0x8) > 0;
   }
   
-  public static boolean avl(String paramString)
-  {
-    AppMethodBeat.i(225982);
-    if (paramString != null)
-    {
-      boolean bool = paramString.endsWith("@findermsg");
-      AppMethodBeat.o(225982);
-      return bool;
-    }
-    AppMethodBeat.o(225982);
-    return false;
-  }
-  
-  public static boolean bjm(String paramString)
+  public static boolean bvH(String paramString)
   {
     AppMethodBeat.i(43168);
     if (paramString != null)
@@ -86,7 +85,7 @@ public class as
     return false;
   }
   
-  public static boolean bjn(String paramString)
+  public static boolean bvI(String paramString)
   {
     AppMethodBeat.i(43169);
     if (paramString != null)
@@ -99,7 +98,7 @@ public class as
     return false;
   }
   
-  public static boolean bjo(String paramString)
+  public static boolean bvJ(String paramString)
   {
     AppMethodBeat.i(43170);
     if (paramString != null)
@@ -112,7 +111,7 @@ public class as
     return false;
   }
   
-  public static boolean bjp(String paramString)
+  public static boolean bvK(String paramString)
   {
     AppMethodBeat.i(43171);
     if (paramString != null)
@@ -125,7 +124,7 @@ public class as
     return false;
   }
   
-  public static boolean bjq(String paramString)
+  public static boolean bvL(String paramString)
   {
     AppMethodBeat.i(43172);
     if (paramString != null)
@@ -138,7 +137,7 @@ public class as
     return false;
   }
   
-  public static boolean bjr(String paramString)
+  public static boolean bvM(String paramString)
   {
     AppMethodBeat.i(43173);
     if (paramString != null)
@@ -151,75 +150,100 @@ public class as
     return false;
   }
   
-  public static boolean bjs(String paramString)
+  public static boolean bvN(String paramString)
   {
-    AppMethodBeat.i(225983);
+    AppMethodBeat.i(240832);
     if ((paramString != null) && (paramString.endsWith("@findermsgstranger")))
     {
-      AppMethodBeat.o(225983);
+      AppMethodBeat.o(240832);
       return true;
     }
-    AppMethodBeat.o(225983);
+    AppMethodBeat.o(240832);
     return false;
   }
   
-  public static boolean bjt(String paramString)
+  public static boolean bvO(String paramString)
   {
-    AppMethodBeat.i(225984);
+    AppMethodBeat.i(240833);
+    if ((paramString != null) && (paramString.endsWith("@findermsgalias")))
+    {
+      AppMethodBeat.o(240833);
+      return true;
+    }
+    AppMethodBeat.o(240833);
+    return false;
+  }
+  
+  public static boolean bvP(String paramString)
+  {
+    AppMethodBeat.i(240834);
     if (paramString != null)
     {
       boolean bool = paramString.endsWith("@finder");
-      AppMethodBeat.o(225984);
+      AppMethodBeat.o(240834);
       return bool;
     }
-    AppMethodBeat.o(225984);
+    AppMethodBeat.o(240834);
     return false;
   }
   
-  public static boolean bju(String paramString)
+  public static boolean bvQ(String paramString)
   {
-    AppMethodBeat.i(225985);
+    AppMethodBeat.i(240835);
     if (paramString != null)
     {
       boolean bool = paramString.endsWith("@gamelifesess");
-      AppMethodBeat.o(225985);
+      AppMethodBeat.o(240835);
       return bool;
     }
-    AppMethodBeat.o(225985);
+    AppMethodBeat.o(240835);
     return false;
   }
   
-  public static boolean bjv(String paramString)
+  public static boolean bvR(String paramString)
   {
-    AppMethodBeat.i(225986);
+    AppMethodBeat.i(240836);
     if (paramString != null)
     {
       boolean bool = paramString.endsWith("@gamelife");
-      AppMethodBeat.o(225986);
+      AppMethodBeat.o(240836);
       return bool;
     }
-    AppMethodBeat.o(225986);
+    AppMethodBeat.o(240836);
     return false;
   }
   
-  public static boolean bjw(String paramString)
+  public static boolean bvS(String paramString)
   {
-    AppMethodBeat.i(225987);
+    AppMethodBeat.i(240837);
     if (!TextUtils.isEmpty(paramString))
     {
       if ((paramString.endsWith("@findermsg")) || (paramString.endsWith("@gamelifesess")))
       {
-        AppMethodBeat.o(225987);
+        AppMethodBeat.o(240837);
         return true;
       }
-      AppMethodBeat.o(225987);
+      AppMethodBeat.o(240837);
       return false;
     }
-    AppMethodBeat.o(225987);
+    AppMethodBeat.o(240837);
     return false;
   }
   
-  public static boolean bjx(String paramString)
+  public static boolean bvT(String paramString)
+  {
+    AppMethodBeat.i(240838);
+    if (paramString != null)
+    {
+      boolean bool = paramString.endsWith("@stranger");
+      AppMethodBeat.o(240838);
+      return bool;
+    }
+    AppMethodBeat.o(240838);
+    return false;
+  }
+  
+  public static boolean bvU(String paramString)
   {
     AppMethodBeat.i(43176);
     if (Util.isNullOrNil(paramString))
@@ -228,12 +252,12 @@ public class as
       AppMethodBeat.o(43176);
       return false;
     }
-    if (bjp(paramString))
+    if (bvK(paramString))
     {
       AppMethodBeat.o(43176);
       return true;
     }
-    Object localObject = ((a)g.af(a.class)).aqK().aj("HideWechatID", "idprefix");
+    Object localObject = ((a)h.ae(a.class)).axd().ao("HideWechatID", "idprefix");
     if (localObject != null)
     {
       localObject = ((String)localObject).split(";");
@@ -252,7 +276,7 @@ public class as
     return false;
   }
   
-  public static boolean bjy(String paramString)
+  public static boolean bvV(String paramString)
   {
     AppMethodBeat.i(43177);
     if (Util.isNullOrNil(paramString))
@@ -277,10 +301,10 @@ public class as
     return false;
   }
   
-  public static String bjz(String paramString)
+  public static String bvW(String paramString)
   {
     AppMethodBeat.i(43178);
-    if (IG(paramString))
+    if (PY(paramString))
     {
       String[] arrayOfString = paramString.split(":");
       if ((arrayOfString == null) || (arrayOfString.length <= 0))
@@ -302,17 +326,17 @@ public class as
     return paramString;
   }
   
-  public static int gBO()
+  public static int hxZ()
   {
     return 16;
   }
   
-  public static int gBP()
+  public static int hya()
   {
     return 8;
   }
   
-  public static String p(Cursor paramCursor)
+  public static String s(Cursor paramCursor)
   {
     AppMethodBeat.i(43180);
     paramCursor = paramCursor.getString(paramCursor.getColumnIndex("username"));
@@ -321,144 +345,32 @@ public class as
   }
   
   @Deprecated
-  public final void BW(String paramString)
+  public final void IK(String paramString)
   {
     AppMethodBeat.i(43185);
-    super.BW(paramString);
+    super.IK(paramString);
     AppMethodBeat.o(43185);
   }
   
   @Deprecated
-  public final void BX(String paramString)
+  public final void IL(String paramString)
   {
     AppMethodBeat.i(43186);
-    super.BX(paramString);
+    super.IL(paramString);
     AppMethodBeat.o(43186);
   }
   
-  public final void Cb(String paramString)
+  public final void IP(String paramString)
   {
     AppMethodBeat.i(43181);
-    super.Cb(paramString);
-    gBS();
+    super.IP(paramString);
+    hyd();
     AppMethodBeat.o(43181);
   }
   
-  public final void ao(CharSequence paramCharSequence)
+  public final void aC(CharSequence paramCharSequence)
   {
-    this.NON = paramCharSequence;
-  }
-  
-  public final CharSequence gBL()
-  {
-    return this.NON;
-  }
-  
-  public final boolean gBM()
-  {
-    return (this.field_verifyFlag & 0x8) > 0;
-  }
-  
-  public final boolean gBN()
-  {
-    return (this.field_verifyFlag & 0x80) > 0;
-  }
-  
-  public final boolean gBQ()
-  {
-    AppMethodBeat.i(43179);
-    if ((int)Util.nowSecond() - this.fuP > 86400L)
-    {
-      AppMethodBeat.o(43179);
-      return true;
-    }
-    AppMethodBeat.o(43179);
-    return false;
-  }
-  
-  public final String gBR()
-  {
-    AppMethodBeat.i(43183);
-    Object localObject = this.fuO;
-    if (Util.isNullOrNil((String)localObject))
-    {
-      AppMethodBeat.o(43183);
-      return "";
-    }
-    localObject = ((String)localObject).split("_");
-    if ((localObject == null) || (localObject.length < 2))
-    {
-      AppMethodBeat.o(43183);
-      return "";
-    }
-    localObject = Util.nullAsNil(localObject[1]);
-    AppMethodBeat.o(43183);
-    return localObject;
-  }
-  
-  public final void gBS()
-  {
-    AppMethodBeat.i(43189);
-    Object localObject = this.fuO;
-    if (Util.isNullOrNil((String)localObject))
-    {
-      AppMethodBeat.o(43189);
-      return;
-    }
-    localObject = ((String)localObject).split("_");
-    if (localObject.length > 0)
-    {
-      if (localObject.length > 2)
-      {
-        if (RegionCodeDecoder.bkO(localObject[0]))
-        {
-          RegionCodeDecoder.gEm();
-          super.BW(RegionCodeDecoder.mW(localObject[0], localObject[1]));
-        }
-        for (;;)
-        {
-          RegionCodeDecoder.gEm();
-          super.BX(RegionCodeDecoder.bs(localObject[0], localObject[1], localObject[2]));
-          AppMethodBeat.o(43189);
-          return;
-          RegionCodeDecoder.gEm();
-          super.BW(RegionCodeDecoder.bkP(localObject[0]));
-        }
-      }
-      if (localObject.length == 2)
-      {
-        RegionCodeDecoder.gEm();
-        super.BW(RegionCodeDecoder.bkP(localObject[0]));
-        RegionCodeDecoder.gEm();
-        super.BX(RegionCodeDecoder.mW(localObject[0], localObject[1]));
-        AppMethodBeat.o(43189);
-        return;
-      }
-      RegionCodeDecoder.gEm();
-      super.BW(RegionCodeDecoder.bkP(localObject[0]));
-      super.BX("");
-    }
-    AppMethodBeat.o(43189);
-  }
-  
-  public final as gBT()
-  {
-    AppMethodBeat.i(43190);
-    try
-    {
-      as localas = (as)super.clone();
-      AppMethodBeat.o(43190);
-      return localas;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Log.printErrStackTrace("MicroMsg.Contact", localException, "", new Object[0]);
-        Log.e("MicroMsg.Contact", "clone Contact error. e: " + localException.toString());
-        Object localObject = null;
-      }
-    }
+    this.Vcw = paramCharSequence;
   }
   
   public final String getCity()
@@ -472,7 +384,7 @@ public class as
   public final String getCityCode()
   {
     AppMethodBeat.i(43184);
-    Object localObject = this.fuO;
+    Object localObject = this.hDn;
     if (Util.isNullOrNil((String)localObject))
     {
       AppMethodBeat.o(43184);
@@ -492,7 +404,7 @@ public class as
   public final String getCountryCode()
   {
     AppMethodBeat.i(43182);
-    Object localObject = this.fuO;
+    Object localObject = this.hDn;
     if (Util.isNullOrNil((String)localObject))
     {
       AppMethodBeat.o(43182);
@@ -516,10 +428,127 @@ public class as
     AppMethodBeat.o(43187);
     return str;
   }
+  
+  public final CharSequence hxW()
+  {
+    return this.Vcw;
+  }
+  
+  public final boolean hxX()
+  {
+    return (this.field_verifyFlag & 0x8) > 0;
+  }
+  
+  public final boolean hxY()
+  {
+    return (this.field_verifyFlag & 0x80) > 0;
+  }
+  
+  public final boolean hyb()
+  {
+    AppMethodBeat.i(43179);
+    if ((int)Util.nowSecond() - this.hDo > VEq)
+    {
+      AppMethodBeat.o(43179);
+      return true;
+    }
+    AppMethodBeat.o(43179);
+    return false;
+  }
+  
+  public final String hyc()
+  {
+    AppMethodBeat.i(43183);
+    Object localObject = this.hDn;
+    if (Util.isNullOrNil((String)localObject))
+    {
+      AppMethodBeat.o(43183);
+      return "";
+    }
+    localObject = ((String)localObject).split("_");
+    if ((localObject == null) || (localObject.length < 2))
+    {
+      AppMethodBeat.o(43183);
+      return "";
+    }
+    localObject = Util.nullAsNil(localObject[1]);
+    AppMethodBeat.o(43183);
+    return localObject;
+  }
+  
+  public final void hyd()
+  {
+    AppMethodBeat.i(43189);
+    Object localObject = this.hDn;
+    if (Util.isNullOrNil((String)localObject))
+    {
+      AppMethodBeat.o(43189);
+      return;
+    }
+    localObject = ((String)localObject).split("_");
+    if (localObject.length > 0)
+    {
+      if (localObject.length > 2)
+      {
+        if (RegionCodeDecoder.bxn(localObject[0]))
+        {
+          RegionCodeDecoder.hAC();
+          super.IK(RegionCodeDecoder.nO(localObject[0], localObject[1]));
+        }
+        for (;;)
+        {
+          RegionCodeDecoder.hAC();
+          super.IL(RegionCodeDecoder.bn(localObject[0], localObject[1], localObject[2]));
+          AppMethodBeat.o(43189);
+          return;
+          RegionCodeDecoder.hAC();
+          super.IK(RegionCodeDecoder.bxp(localObject[0]));
+        }
+      }
+      if (localObject.length == 2)
+      {
+        RegionCodeDecoder.hAC();
+        super.IK(RegionCodeDecoder.bxp(localObject[0]));
+        RegionCodeDecoder.hAC();
+        super.IL(RegionCodeDecoder.nO(localObject[0], localObject[1]));
+        AppMethodBeat.o(43189);
+        return;
+      }
+      RegionCodeDecoder.hAC();
+      super.IK(RegionCodeDecoder.bxp(localObject[0]));
+      super.IL("");
+    }
+    AppMethodBeat.o(43189);
+  }
+  
+  public final CharSequence hye()
+  {
+    return this.Vcw;
+  }
+  
+  public final as hyf()
+  {
+    AppMethodBeat.i(43190);
+    try
+    {
+      as localas = (as)super.clone();
+      AppMethodBeat.o(43190);
+      return localas;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.Contact", localException, "", new Object[0]);
+        Log.e("MicroMsg.Contact", "clone Contact error. e: " + localException.toString());
+        Object localObject = null;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.as
  * JD-Core Version:    0.7.0.1
  */

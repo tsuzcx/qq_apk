@@ -8,18 +8,10 @@ import java.math.BigDecimal;
 
 public final class a
 {
-  public static double VX(int paramInt)
-  {
-    AppMethodBeat.i(67397);
-    double d = jJ(String.valueOf(paramInt), "100");
-    AppMethodBeat.o(67397);
-    return d;
-  }
-  
-  public static char aLU(String paramString)
+  public static char aWy(String paramString)
   {
     AppMethodBeat.i(67398);
-    paramString = SpellMap.x(paramString.charAt(0));
+    paramString = SpellMap.D(paramString.charAt(0));
     Log.d("MicroMsg.BankRemitUtil", "pinyin: %s", new Object[] { paramString });
     if (!Util.isNullOrNil(paramString))
     {
@@ -31,7 +23,15 @@ public final class a
     return '#';
   }
   
-  public static long jI(String paramString1, String paramString2)
+  public static double acL(int paramInt)
+  {
+    AppMethodBeat.i(67397);
+    double d = jY(String.valueOf(paramInt), "100");
+    AppMethodBeat.o(67397);
+    return d;
+  }
+  
+  public static long jX(String paramString1, String paramString2)
   {
     AppMethodBeat.i(67394);
     try
@@ -52,7 +52,7 @@ public final class a
     }
   }
   
-  public static double jJ(String paramString1, String paramString2)
+  public static double jY(String paramString1, String paramString2)
   {
     AppMethodBeat.i(67395);
     try
@@ -73,7 +73,7 @@ public final class a
     }
   }
   
-  public static double jK(String paramString1, String paramString2)
+  public static double jZ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(67396);
     try
@@ -101,7 +101,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.model.a
  * JD-Core Version:    0.7.0.1
  */

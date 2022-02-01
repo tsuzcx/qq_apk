@@ -1,40 +1,32 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.e;
 
 public final class a$av
   extends e
 {
-  public int RFr = 0;
-  public int RFs = 0;
+  public int sceneType = 0;
   
   public a$av()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int j = super.Ig();
+    int j = super.JG();
     int i = j;
-    if (this.RFr != 0) {
-      i = j + b.bu(1, this.RFr);
+    if (this.sceneType != 0) {
+      i = j + b.bM(1, this.sceneType);
     }
-    j = i;
-    if (this.RFs != 0) {
-      j = i + b.bu(2, this.RFs);
-    }
-    return j;
+    return i;
   }
   
   public final void a(b paramb)
   {
-    if (this.RFr != 0) {
-      paramb.bs(1, this.RFr);
-    }
-    if (this.RFs != 0) {
-      paramb.bs(2, this.RFs);
+    if (this.sceneType != 0) {
+      paramb.bJ(1, this.sceneType);
     }
     super.a(paramb);
   }

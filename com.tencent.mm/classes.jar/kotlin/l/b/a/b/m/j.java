@@ -12,66 +12,65 @@ import kotlin.l.b.a.b.b.e;
 
 public final class j
   extends b
-  implements at
 {
-  private final e ThF;
-  private final Collection<ab> TlT;
+  private final e aaKz;
+  private final Collection<ab> aaON;
   private final List<as> parameters;
   
   public j(e parame, List<? extends as> paramList, Collection<ab> paramCollection, kotlin.l.b.a.b.l.j paramj)
   {
     super(paramj);
     AppMethodBeat.i(60613);
-    this.ThF = parame;
+    this.aaKz = parame;
     this.parameters = Collections.unmodifiableList(new ArrayList(paramList));
-    this.TlT = Collections.unmodifiableCollection(paramCollection);
+    this.aaON = Collections.unmodifiableCollection(paramCollection);
     AppMethodBeat.o(60613);
   }
   
-  public final List<as> getParameters()
+  public final List<as> iCb()
   {
     AppMethodBeat.i(60614);
     List localList = this.parameters;
     if (localList == null) {
-      atM(4);
+      aDG(4);
     }
     AppMethodBeat.o(60614);
     return localList;
   }
   
-  protected final Collection<ab> hzR()
+  protected final Collection<ab> iEe()
   {
     AppMethodBeat.i(60617);
-    Collection localCollection = this.TlT;
+    Collection localCollection = this.aaON;
     if (localCollection == null) {
-      atM(6);
+      aDG(6);
     }
     AppMethodBeat.o(60617);
     return localCollection;
   }
   
-  public final e hzT()
+  public final e iEg()
   {
     AppMethodBeat.i(60616);
-    e locale = this.ThF;
+    e locale = this.aaKz;
     if (locale == null) {
-      atM(5);
+      aDG(5);
     }
     AppMethodBeat.o(60616);
     return locale;
   }
   
-  public final boolean hzU()
+  public final boolean iEh()
   {
     return true;
   }
   
-  protected final aq hzV()
+  protected final aq iEi()
   {
     AppMethodBeat.i(60618);
-    aq.a locala = aq.a.ThM;
+    aq.a locala = aq.a.aaKG;
     if (locala == null) {
-      atM(7);
+      aDG(7);
     }
     AppMethodBeat.o(60618);
     return locala;
@@ -80,14 +79,14 @@ public final class j
   public final String toString()
   {
     AppMethodBeat.i(60615);
-    String str = kotlin.l.b.a.b.j.c.n(this.ThF).sG();
+    String str = kotlin.l.b.a.b.j.c.n(this.aaKz).qu();
     AppMethodBeat.o(60615);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.j
  * JD-Core Version:    0.7.0.1
  */

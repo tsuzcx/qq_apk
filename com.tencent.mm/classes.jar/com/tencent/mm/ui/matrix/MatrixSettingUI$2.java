@@ -8,11 +8,11 @@ final class MatrixSettingUI$2
 {
   MatrixSettingUI$2(MatrixSettingUI paramMatrixSettingUI) {}
   
-  public final void aok(int paramInt)
+  public final void axp(int paramInt)
   {
     AppMethodBeat.i(38887);
     Log.i("Matrix.SettingUI", "[onConfirm] threshold=".concat(String.valueOf(paramInt)));
-    MatrixSettingUI.cj("MODIFY_EVIL_THRESHOLD", paramInt);
+    MatrixSettingUI.cq("MODIFY_EVIL_THRESHOLD", paramInt);
     AppMethodBeat.o(38887);
   }
 }

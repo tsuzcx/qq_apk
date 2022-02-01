@@ -19,81 +19,79 @@ import java.util.HashMap;
 
 public final class d
 {
-  private static d glr;
+  private static d iPz;
   private final String[] columns;
   private Context ctx;
-  public int glq;
+  public int iPy;
   private final HashMap<String, Object> values;
   
   private d(Context paramContext)
   {
     AppMethodBeat.i(131871);
-    this.glq = -1;
+    this.iPy = -1;
     this.columns = new String[] { "_id", "key", "type", "value" };
     this.values = new HashMap();
     this.ctx = paramContext;
-    Object localObject1 = paramContext.getContentResolver();
+    if (!"18c867f0717aa67b2ab7347505ba07ed".equals(Util.getSignaturesMd5("com.tencent.mm.coolassist", paramContext)))
+    {
+      AppMethodBeat.o(131871);
+      return;
+    }
+    Object localObject = paramContext.getContentResolver();
     try
     {
-      localObject1 = ((ContentResolver)localObject1).query(Uri.parse("content://" + paramContext.getPackageName() + ".coolassist.debugprovider/config"), this.columns, null, null, null);
-      if (localObject1 == null)
+      paramContext = ((ContentResolver)localObject).query(Uri.parse("content://" + paramContext.getPackageName() + ".coolassist.debugprovider/config"), this.columns, null, null, null);
+      if (paramContext == null)
       {
         AppMethodBeat.o(131871);
         return;
       }
     }
-    catch (Exception localException)
+    catch (Exception paramContext)
     {
-      Object localObject2;
       for (;;)
       {
-        localObject2 = null;
+        paramContext = null;
       }
-      if (localObject2.getCount() <= 0)
+      if (paramContext.getCount() <= 0)
       {
-        localObject2.close();
-        AppMethodBeat.o(131871);
-        return;
-      }
-      if (!"18c867f0717aa67b2ab7347505ba07ed".equals(Util.getSignaturesMd5("com.tencent.mm.coolassist", paramContext)))
-      {
-        localObject2.close();
+        paramContext.close();
         AppMethodBeat.o(131871);
         return;
       }
       CrashReportFactory.setHasDebuger(true);
-      int i = localObject2.getColumnIndex("key");
-      int j = localObject2.getColumnIndex("type");
-      int k = localObject2.getColumnIndex("value");
-      while (localObject2.moveToNext())
+      int i = paramContext.getColumnIndex("key");
+      int j = paramContext.getColumnIndex("type");
+      int k = paramContext.getColumnIndex("value");
+      while (paramContext.moveToNext())
       {
-        paramContext = a.resolveObj(localObject2.getInt(j), localObject2.getString(k));
-        this.values.put(localObject2.getString(i), paramContext);
+        localObject = d.a.resolveObj(paramContext.getInt(j), paramContext.getString(k));
+        this.values.put(paramContext.getString(i), localObject);
       }
-      localObject2.close();
+      paramContext.close();
       AppMethodBeat.o(131871);
     }
   }
   
-  public static d cg(Context paramContext)
+  public static d cc(Context paramContext)
   {
     AppMethodBeat.i(131870);
-    if (glr == null) {
-      glr = new d(paramContext);
+    if (iPz == null) {
+      iPz = new d(paramContext);
     }
-    paramContext = glr;
+    paramContext = iPz;
     AppMethodBeat.o(131870);
     return paramContext;
   }
   
-  public final void CN(String paramString)
+  public final void JC(String paramString)
   {
     boolean bool3 = false;
     AppMethodBeat.i(131872);
-    Integer localInteger = getInteger(".com.tencent.mm.debug.log.level");
-    boolean bool4 = Util.nullAs(CO(".com.tencent.mm.debug.log.append_mode"), true);
+    Integer localInteger = JD(".com.tencent.mm.debug.log.level");
+    boolean bool4 = Util.nullAs(JE(".com.tencent.mm.debug.log.append_mode"), true);
     boolean bool2;
-    if ((Util.isNullOrNil(getString(".com.tencent.mm.debug.log.mmlog"))) && (Util.nullAs(CO(".com.tencent.mm.debug.test.uploadLog"), false)))
+    if ((Util.isNullOrNil(getString(".com.tencent.mm.debug.log.mmlog"))) && (Util.nullAs(JE(".com.tencent.mm.debug.test.uploadLog"), false)))
     {
       bool1 = true;
       if (bool1)
@@ -103,38 +101,38 @@ public final class d
           com.tencent.mars.xlog.Xlog.logDecryptor = new LogDecryptor(str);
         }
       }
-      bool2 = this.ctx.getSharedPreferences("system_config_prefs", g.aps()).getBoolean("first_launch_weixin", true);
+      bool2 = this.ctx.getSharedPreferences("system_config_prefs", g.avK()).getBoolean("first_launch_weixin", true);
       if (!"MM".equalsIgnoreCase(paramString)) {
         bool2 = false;
       }
       if (bool2) {
-        break label245;
+        break label244;
       }
       bool2 = true;
       label130:
-      XLogSetup.keep_setupXLog(bool2, ar.NSf, b.aKQ(), localInteger, Boolean.valueOf(bool4), Boolean.valueOf(bool1), paramString);
+      XLogSetup.keep_setupXLog(bool2, ar.Vgc, b.aSS(), localInteger, Boolean.valueOf(bool4), Boolean.valueOf(bool1), paramString);
       Log.setLevel(Log.getLogLevel(), true);
       if (Util.getInt(Util.nullAs(getString(".com.tencent.mm.debug.monkeyEnv"), "0"), 0) != 1) {
-        break label250;
+        break label249;
       }
       bool1 = true;
-      label182:
+      label181:
       WeChatEnvironment.setMonkeyEnv(bool1);
       WeChatEnvironment.isMonkeyEnv();
-      if (getInteger(".com.tencent.mm.debug.log.level") == null) {
-        break label255;
+      if (JD(".com.tencent.mm.debug.log.level") == null) {
+        break label254;
       }
     }
-    label245:
-    label250:
-    label255:
+    label244:
+    label249:
+    label254:
     for (boolean bool1 = true;; bool1 = false)
     {
       WeChatEnvironment.setCoolassistEnv(bool1);
       if (!WeChatEnvironment.isMonkeyEnv())
       {
         bool1 = bool3;
-        if (!Util.nullAs(CO(".com.tencent.mm.debug.blockReleasedPatch"), false)) {}
+        if (!Util.nullAs(JE(".com.tencent.mm.debug.blockReleasedPatch"), false)) {}
       }
       else
       {
@@ -148,11 +146,26 @@ public final class d
       bool2 = false;
       break label130;
       bool1 = false;
-      break label182;
+      break label181;
     }
   }
   
-  public final Boolean CO(String paramString)
+  public final Integer JD(String paramString)
+  {
+    AppMethodBeat.i(131874);
+    Object localObject = this.values.get(paramString);
+    if ((localObject instanceof Integer))
+    {
+      Log.d("MicroMsg.Debugger", "getInteger(): key=" + paramString + ", value=" + localObject.toString());
+      paramString = (Integer)localObject;
+      AppMethodBeat.o(131874);
+      return paramString;
+    }
+    AppMethodBeat.o(131874);
+    return null;
+  }
+  
+  public final Boolean JE(String paramString)
   {
     AppMethodBeat.i(131875);
     Object localObject = this.values.get(paramString);
@@ -172,21 +185,6 @@ public final class d
     return null;
   }
   
-  public final Integer getInteger(String paramString)
-  {
-    AppMethodBeat.i(131874);
-    Object localObject = this.values.get(paramString);
-    if ((localObject instanceof Integer))
-    {
-      Log.d("MicroMsg.Debugger", "getInteger(): key=" + paramString + ", value=" + localObject.toString());
-      paramString = (Integer)localObject;
-      AppMethodBeat.o(131874);
-      return paramString;
-    }
-    AppMethodBeat.o(131874);
-    return null;
-  }
-  
   public final String getString(String paramString)
   {
     AppMethodBeat.i(131873);
@@ -201,49 +199,10 @@ public final class d
     AppMethodBeat.o(131873);
     return null;
   }
-  
-  public static final class a
-  {
-    public static Object resolveObj(int paramInt, String paramString)
-    {
-      AppMethodBeat.i(131869);
-      switch (paramInt)
-      {
-      }
-      try
-      {
-        Log.e("MicroMsg.Debugger.Resolver", "unknown type");
-        label51:
-        AppMethodBeat.o(131869);
-        return null;
-        paramString = Integer.valueOf(paramString);
-        AppMethodBeat.o(131869);
-        return paramString;
-        paramString = Long.valueOf(paramString);
-        AppMethodBeat.o(131869);
-        return paramString;
-        AppMethodBeat.o(131869);
-        return paramString;
-        paramString = Boolean.valueOf(paramString);
-        AppMethodBeat.o(131869);
-        return paramString;
-        paramString = Float.valueOf(paramString);
-        AppMethodBeat.o(131869);
-        return paramString;
-        paramString = Double.valueOf(paramString);
-        AppMethodBeat.o(131869);
-        return paramString;
-      }
-      catch (Exception paramString)
-      {
-        break label51;
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.booter.d
  * JD-Core Version:    0.7.0.1
  */

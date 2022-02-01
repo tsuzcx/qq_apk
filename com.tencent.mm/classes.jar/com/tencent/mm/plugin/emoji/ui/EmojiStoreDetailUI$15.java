@@ -4,9 +4,10 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.emoji.i.h;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 
@@ -19,16 +20,16 @@ final class EmojiStoreDetailUI$15
   {
     AppMethodBeat.i(108993);
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    a.b("com/tencent/mm/plugin/emoji/ui/EmojiStoreDetailUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+    ((b)localObject).bn(paramView);
+    a.c("com/tencent/mm/plugin/emoji/ui/EmojiStoreDetailUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
     Log.d("MicroMsg.emoji.EmojiStoreDetailUI", "ApplicationLanguage" + LocaleUtil.getApplicationLanguage());
-    paramView = this.rix.getString(2131758531) + LocaleUtil.getApplicationLanguage();
+    paramView = this.uLG.getString(i.h.emoji_complaints_doc) + LocaleUtil.getApplicationLanguage();
     localObject = new Intent();
-    ((Intent)localObject).putExtra("title", this.rix.getString(2131758607));
+    ((Intent)localObject).putExtra("title", this.uLG.getString(i.h.emoji_store_complaints));
     ((Intent)localObject).putExtra("rawUrl", paramView);
     ((Intent)localObject).putExtra("showShare", false);
     ((Intent)localObject).putExtra("neverGetA8Key", true);
-    c.b(this.rix, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", (Intent)localObject);
+    c.b(this.uLG, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", (Intent)localObject);
     a.a(this, "com/tencent/mm/plugin/emoji/ui/EmojiStoreDetailUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(108993);
   }

@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.wear.model.f;
 
-import com.tencent.mm.g.a.aap;
+import com.tencent.mm.f.a.abw;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -10,22 +10,22 @@ public abstract class c
 {
   protected final void execute()
   {
-    if (a.fVM().fVW())
+    if (a.gOt().gOG())
     {
-      aap localaap = new aap();
-      localaap.ehC.dDe = 11;
-      EventCenter.instance.publish(localaap);
-      send();
+      abw localabw = new abw();
+      localabw.gbS.fvK = 11;
+      EventCenter.instance.publish(localabw);
+      gOA();
       return;
     }
     Log.i("MicroMsg.WearBaseSendTask", "can not send message to wear");
   }
   
-  protected abstract void send();
+  protected abstract void gOA();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.c
  * JD-Core Version:    0.7.0.1
  */

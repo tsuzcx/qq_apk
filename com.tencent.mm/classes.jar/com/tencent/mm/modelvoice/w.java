@@ -16,26 +16,26 @@ public final class w
   extends MStorage
 {
   public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS voiceinfo ( FileName TEXT PRIMARY KEY, User TEXT, MsgId INT, NetOffset INT, FileNowSize INT, TotalLen INT, Status INT, CreateTime INT, LastModifyTime INT, ClientId TEXT, VoiceLength INT, MsgLocalId INT, Human TEXT, reserved1 INT, reserved2 TEXT, MsgSource TEXT, MsgFlag INT, MsgSeq INT, MasterBufId INT, checksum INT DEFAULT 0, VoiceFlag INT DEFAULT 0 )", "CREATE INDEX IF NOT EXISTS voiceinfomsgidindex ON voiceinfo ( MsgId ) ", "CREATE UNIQUE INDEX IF NOT EXISTS voiceinfouniqueindex ON voiceinfo ( FileName )", "CREATE INDEX IF NOT EXISTS voice_unfinish_info_index ON voiceinfo ( Status,User,CreateTime )" };
-  public h iFy;
-  Map<String, a> jvK;
-  Map<String, n> jvL;
-  Map<String, j> jvM;
+  public h lvy;
+  Map<String, a> mln;
+  Map<String, n> mlo;
+  Map<String, j> mlp;
   
   public w(h paramh)
   {
     AppMethodBeat.i(148504);
-    this.jvK = new HashMap();
-    this.jvL = new HashMap();
-    this.jvM = new HashMap();
+    this.mln = new HashMap();
+    this.mlo = new HashMap();
+    this.mlp = new HashMap();
     a(paramh);
-    this.iFy = paramh;
+    this.lvy = paramh;
     AppMethodBeat.o(148504);
   }
   
-  public static String Rq(String paramString)
+  public static String YN(String paramString)
   {
     AppMethodBeat.i(148506);
-    paramString = x.x(paramString, Util.nowMilliSecond());
+    paramString = x.u(paramString, Util.nowMilliSecond());
     AppMethodBeat.o(148506);
     return paramString;
   }
@@ -111,12 +111,12 @@ public final class w
     }
   }
   
-  public final r AP(long paramLong)
+  public final r GX(long paramLong)
   {
     r localr = null;
     AppMethodBeat.i(148510);
     Object localObject = "SELECT FileName, User, MsgId, NetOffset, FileNowSize, TotalLen, Status, CreateTime, LastModifyTime, ClientId, VoiceLength, MsgLocalId, Human, reserved1, reserved2, MsgSource, MsgFlag, MsgSeq, MasterBufId, checksum, VoiceFlag" + " FROM voiceinfo WHERE MsgId=" + paramLong;
-    localObject = this.iFy.rawQuery((String)localObject, null, 2);
+    localObject = this.lvy.rawQuery((String)localObject, null, 2);
     if (((Cursor)localObject).moveToFirst())
     {
       localr = new r();
@@ -127,12 +127,12 @@ public final class w
     return localr;
   }
   
-  public final r Rr(String paramString)
+  public final r YO(String paramString)
   {
     AppMethodBeat.i(148512);
     Object localObject1 = null;
     Object localObject2 = "SELECT FileName, User, MsgId, NetOffset, FileNowSize, TotalLen, Status, CreateTime, LastModifyTime, ClientId, VoiceLength, MsgLocalId, Human, reserved1, reserved2, MsgSource, MsgFlag, MsgSeq, MasterBufId, checksum, VoiceFlag" + " FROM voiceinfo WHERE FileName= ?";
-    localObject2 = this.iFy.rawQuery((String)localObject2, new String[] { paramString }, 2);
+    localObject2 = this.lvy.rawQuery((String)localObject2, new String[] { paramString }, 2);
     paramString = localObject1;
     if (((Cursor)localObject2).moveToFirst())
     {
@@ -166,7 +166,7 @@ public final class w
     }
     label59:
     label64:
-    while (this.iFy.update("voiceinfo", paramr, "FileName= ?", new String[] { paramString }) <= 0)
+    while (this.lvy.update("voiceinfo", paramr, "FileName= ?", new String[] { paramString }) <= 0)
     {
       AppMethodBeat.o(148509);
       return false;
@@ -195,7 +195,7 @@ public final class w
       Log.e("MicroMsg.VoiceStorage", "insert falied, no values set");
     }
     label46:
-    while (this.iFy.insert("voiceinfo", "FileName", paramr) == -1L)
+    while (this.lvy.insert("voiceinfo", "FileName", paramr) == -1L)
     {
       AppMethodBeat.o(148507);
       return false;
@@ -207,14 +207,14 @@ public final class w
     return true;
   }
   
-  public final boolean gC(String paramString)
+  public final boolean ho(String paramString)
   {
     AppMethodBeat.i(148508);
     if (paramString.length() > 0) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if (this.iFy.delete("voiceinfo", "FileName= ?", new String[] { paramString }) <= 0) {
+      if (this.lvy.delete("voiceinfo", "FileName= ?", new String[] { paramString }) <= 0) {
         Log.w("MicroMsg.VoiceStorage", "delete failed, no such file:".concat(String.valueOf(paramString)));
       }
       AppMethodBeat.o(148508);
@@ -222,12 +222,12 @@ public final class w
     }
   }
   
-  public final r uk(int paramInt)
+  public final r xk(int paramInt)
   {
     r localr = null;
     AppMethodBeat.i(148511);
     Object localObject = "SELECT FileName, User, MsgId, NetOffset, FileNowSize, TotalLen, Status, CreateTime, LastModifyTime, ClientId, VoiceLength, MsgLocalId, Human, reserved1, reserved2, MsgSource, MsgFlag, MsgSeq, MasterBufId, checksum, VoiceFlag" + " FROM voiceinfo WHERE MsgLocalId=" + paramInt;
-    localObject = this.iFy.rawQuery((String)localObject, null, 2);
+    localObject = this.lvy.rawQuery((String)localObject, null, 2);
     if (((Cursor)localObject).moveToFirst())
     {
       localr = new r();
@@ -240,7 +240,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelvoice.w
  * JD-Core Version:    0.7.0.1
  */

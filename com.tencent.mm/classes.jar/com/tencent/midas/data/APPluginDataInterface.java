@@ -54,21 +54,21 @@ public class APPluginDataInterface
   
   static
   {
-    AppMethodBeat.i(192999);
+    AppMethodBeat.i(253252);
     gInstance = new APPluginDataInterface();
-    AppMethodBeat.o(192999);
+    AppMethodBeat.o(253252);
   }
   
   public static void init()
   {
-    AppMethodBeat.i(192997);
+    AppMethodBeat.i(253231);
     gInstance = new APPluginDataInterface();
-    AppMethodBeat.o(192997);
+    AppMethodBeat.o(253231);
   }
   
   public static APPluginDataInterface singleton()
   {
-    AppMethodBeat.i(192998);
+    AppMethodBeat.i(253232);
     if (gInstance == null) {}
     try
     {
@@ -76,12 +76,12 @@ public class APPluginDataInterface
         gInstance = new APPluginDataInterface();
       }
       APPluginDataInterface localAPPluginDataInterface = gInstance;
-      AppMethodBeat.o(192998);
+      AppMethodBeat.o(253232);
       return localAPPluginDataInterface;
     }
     finally
     {
-      AppMethodBeat.o(192998);
+      AppMethodBeat.o(253232);
     }
   }
   
@@ -507,7 +507,7 @@ public class APPluginDataInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.data.APPluginDataInterface
  * JD-Core Version:    0.7.0.1
  */

@@ -4,10 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bj.d;
-import com.tencent.mm.contact.c;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.model.bp;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.model.bq;
 import com.tencent.mm.pluginsdk.ui.preference.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -16,8 +14,8 @@ import com.tencent.mm.storage.bn;
 import com.tencent.mm.storage.bo;
 import com.tencent.mm.storage.bx;
 import com.tencent.mm.storage.by;
-import com.tencent.mm.storage.cl;
 import com.tencent.mm.storage.cm;
+import com.tencent.mm.storage.cn;
 
 public final class q
 {
@@ -25,7 +23,7 @@ public final class q
   {
     AppMethodBeat.i(27228);
     String str = Util.nullAsNil(((Activity)paramContext).getIntent().getStringExtra("Verify_ticket"));
-    if (c.oR(paramas.field_type))
+    if (com.tencent.mm.contact.d.rk(paramas.field_type))
     {
       AppMethodBeat.o(27228);
       return null;
@@ -39,21 +37,21 @@ public final class q
     if (paramInt == 18)
     {
       Log.d("MicroMsg.FMessageUtil", "initAddContent, scene is lbs");
-      paramContext = b.a(paramContext, d.bgO().bkx(paramas.field_username));
+      paramContext = b.a(paramContext, com.tencent.mm.bl.d.bqd().bwW(paramas.field_username));
     }
     while ((paramContext == null) || (paramContext.length == 0))
     {
       AppMethodBeat.o(27228);
       return null;
-      if (bp.sb(paramInt))
+      if (bq.uY(paramInt))
       {
         Log.d("MicroMsg.FMessageUtil", "initAddContent, scene is shake");
-        paramContext = b.a(paramContext, d.bgP().bkW(paramas.field_username));
+        paramContext = b.a(paramContext, com.tencent.mm.bl.d.bqe().bxw(paramas.field_username));
       }
       else
       {
         Log.d("MicroMsg.FMessageUtil", "initAddContent, scene is other");
-        paramContext = b.a(paramContext, d.bgM().bku(paramas.field_username));
+        paramContext = b.a(paramContext, com.tencent.mm.bl.d.bqb().bwT(paramas.field_username));
       }
     }
     AppMethodBeat.o(27228);
@@ -64,7 +62,7 @@ public final class q
   {
     AppMethodBeat.i(27229);
     paramContext = Util.nullAsNil(((Activity)paramContext).getIntent().getStringExtra("Verify_ticket"));
-    if (c.oR(paramas.field_type))
+    if (com.tencent.mm.contact.d.rk(paramas.field_type))
     {
       AppMethodBeat.o(27229);
       return null;
@@ -79,7 +77,7 @@ public final class q
     if (paramInt == 18)
     {
       Log.d("MicroMsg.FMessageUtil", "initAddContent, scene is lbs");
-      paramas = d.bgO().bkx(paramas.field_username);
+      paramas = com.tencent.mm.bl.d.bqd().bwW(paramas.field_username);
       if (paramas.length > 0) {
         paramContext = paramas[0].field_svrid;
       }
@@ -88,10 +86,10 @@ public final class q
     {
       AppMethodBeat.o(27229);
       return paramContext;
-      if (bp.sb(paramInt))
+      if (bq.uY(paramInt))
       {
         Log.d("MicroMsg.FMessageUtil", "initAddContent, scene is shake");
-        paramas = d.bgP().bkW(paramas.field_username);
+        paramas = com.tencent.mm.bl.d.bqe().bxw(paramas.field_username);
         if (paramas.length > 0) {
           paramContext = paramas[0].field_svrid;
         }
@@ -99,7 +97,7 @@ public final class q
       else
       {
         Log.d("MicroMsg.FMessageUtil", "initAddContent, scene is other");
-        paramas = d.bgM().bku(paramas.field_username);
+        paramas = com.tencent.mm.bl.d.bqb().bwT(paramas.field_username);
         if (paramas.length > 0) {
           paramContext = paramas[0].field_svrId;
         }

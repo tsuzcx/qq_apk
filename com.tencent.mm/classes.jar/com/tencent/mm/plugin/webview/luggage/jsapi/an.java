@@ -10,7 +10,8 @@ import com.tencent.luggage.d.h;
 import com.tencent.luggage.d.j;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -27,21 +28,21 @@ public class an
   {
     AppMethodBeat.i(78590);
     Log.i("MicroMsg.JsApiOpenUrlWithExtraWebview", "invokeInOwn");
-    final String str = paramb.ctb.csi.optString("url");
+    final String str = paramb.crh.cqn.optString("url");
     Log.i("MicroMsg.JsApiOpenUrlWithExtraWebview", "url: %s", new Object[] { str });
     if (Util.isNullOrNil(str))
     {
-      paramb.c("fail", null);
+      paramb.a("fail", null);
       AppMethodBeat.o(78590);
       return;
     }
     Object localObject = Uri.parse(str);
-    if ((Util.nullAsNil(((Uri)localObject).getQueryParameter("not_in_game_luggage")).equals("1")) || ((((Uri)localObject).getHost() != null) && (!((Uri)localObject).getHost().equals(WeChatHosts.domainString(2131761707)))))
+    if ((Util.nullAsNil(((Uri)localObject).getQueryParameter("not_in_game_luggage")).equals("1")) || ((((Uri)localObject).getHost() != null) && (!((Uri)localObject).getHost().equals(WeChatHosts.domainString(c.i.host_game_weixin_qq_com)))))
     {
       localObject = new Intent();
       ((Intent)localObject).putExtra("rawUrl", str);
-      c.b(((g)paramb.cta).mContext, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
-      paramb.c("", null);
+      c.b(((g)paramb.crg).mContext, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+      paramb.a("", null);
       AppMethodBeat.o(78590);
       return;
     }
@@ -52,16 +53,16 @@ public class an
         AppMethodBeat.i(78589);
         Bundle localBundle = new Bundle();
         localBundle.putString("rawUrl", str);
-        localBundle.putBoolean("from_find_more_friend", ((g)paramb.cta).mParams.getBoolean("from_find_more_friend", false));
-        ((g)paramb.cta).ctg.Ly().h(str, localBundle);
+        localBundle.putBoolean("from_find_more_friend", ((g)paramb.crg).mParams.getBoolean("from_find_more_friend", false));
+        ((g)paramb.crg).crm.Oo().m(str, localBundle);
         AppMethodBeat.o(78589);
       }
     });
-    paramb.c("", null);
+    paramb.a("", null);
     AppMethodBeat.o(78590);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

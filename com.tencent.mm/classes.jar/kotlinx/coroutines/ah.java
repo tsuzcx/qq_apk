@@ -1,75 +1,55 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.d.a;
+import kotlin.a;
+import kotlin.d.f;
 import kotlin.d.f.c;
-import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/CoroutineName;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "name", "", "(Ljava/lang/String;)V", "getName", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "", "hashCode", "", "toString", "Key", "kotlinx-coroutines-core"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"CoroutineExceptionHandler", "Lkotlinx/coroutines/CoroutineExceptionHandler;", "handler", "Lkotlin/Function2;", "Lkotlin/coroutines/CoroutineContext;", "", "", "handleCoroutineException", "context", "exception", "handlerException", "originalException", "thrownException", "kotlinx-coroutines-core"})
 public final class ah
-  extends a
 {
-  public static final a TTW;
-  final String name;
-  
-  static
+  public static final Throwable b(Throwable paramThrowable1, Throwable paramThrowable2)
   {
-    AppMethodBeat.i(118179);
-    TTW = new a((byte)0);
-    AppMethodBeat.o(118179);
+    AppMethodBeat.i(118053);
+    if (paramThrowable1 == paramThrowable2)
+    {
+      AppMethodBeat.o(118053);
+      return paramThrowable1;
+    }
+    paramThrowable2 = new RuntimeException("Exception while trying to handle coroutine exception", paramThrowable2);
+    a.a((Throwable)paramThrowable2, paramThrowable1);
+    paramThrowable1 = (Throwable)paramThrowable2;
+    AppMethodBeat.o(118053);
+    return paramThrowable1;
   }
   
-  public final boolean equals(Object paramObject)
+  public static final void b(f paramf, Throwable paramThrowable)
   {
-    AppMethodBeat.i(118181);
-    if (this != paramObject)
+    AppMethodBeat.i(204222);
+    try
     {
-      if ((paramObject instanceof ah))
+      CoroutineExceptionHandler localCoroutineExceptionHandler = (CoroutineExceptionHandler)paramf.get((f.c)CoroutineExceptionHandler.abww);
+      if (localCoroutineExceptionHandler != null)
       {
-        paramObject = (ah)paramObject;
-        if (!p.j(this.name, paramObject.name)) {}
+        localCoroutineExceptionHandler.handleException(paramf, paramThrowable);
+        AppMethodBeat.o(204222);
+        return;
       }
     }
-    else
+    catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(118181);
-      return true;
+      ag.a(paramf, b(paramThrowable, localThrowable));
+      AppMethodBeat.o(204222);
+      return;
     }
-    AppMethodBeat.o(118181);
-    return false;
+    ag.a(paramf, paramThrowable);
+    AppMethodBeat.o(204222);
   }
-  
-  public final int hashCode()
-  {
-    AppMethodBeat.i(118180);
-    String str = this.name;
-    if (str != null)
-    {
-      int i = str.hashCode();
-      AppMethodBeat.o(118180);
-      return i;
-    }
-    AppMethodBeat.o(118180);
-    return 0;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(118178);
-    String str = "CoroutineName(" + this.name + ')';
-    AppMethodBeat.o(118178);
-    return str;
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/CoroutineName$Key;", "Lkotlin/coroutines/CoroutineContext$Key;", "Lkotlinx/coroutines/CoroutineName;", "()V", "kotlinx-coroutines-core"})
-  public static final class a
-    implements f.c<ah>
-  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlinx.coroutines.ah
  * JD-Core Version:    0.7.0.1
  */

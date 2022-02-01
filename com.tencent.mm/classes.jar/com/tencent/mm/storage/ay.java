@@ -3,7 +3,8 @@ package com.tencent.mm.storage;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.memory.a.c;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -12,7 +13,7 @@ import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.sdk.storage.MStorageEx;
-import com.tencent.mm.storagebase.d;
+import com.tencent.mm.storagebase.a.e;
 import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -27,31 +28,31 @@ public final class ay
   implements bv
 {
   public static final String[] INDEX_CREATE;
-  private static String OoK;
-  private static String OoL;
   public static final String[] SQL_CREATE;
-  private ISQLiteDatabase OoG;
-  public final com.tencent.mm.b.f<String, as> OoH;
-  public final com.tencent.mm.b.f<String, Integer> OoI;
-  private a OoJ;
+  private static String VED;
+  private static String VEE;
+  public final com.tencent.mm.b.f<String, as> VEA;
+  public final com.tencent.mm.b.f<String, Integer> VEB;
+  private a VEC;
+  private ISQLiteDatabase VEz;
   private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(117060);
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(as.info, "rcontact"), MAutoStorage.getCreateSQLs(as.info, "bottlecontact"), MAutoStorage.getCreateSQLs(at.info, "ContactCmdBuf"), "CREATE TABLE IF NOT EXISTS contact ( contactID INTEGER PRIMARY KEY, sex INT, type INT, showHead INT, username VARCHAR(40), nickname VARCHAR(40), pyInitial VARCHAR(40), quanPin VARCHAR(60), reserved TEXT );", "CREATE TABLE IF NOT EXISTS contact_ext ( username VARCHAR(40), Uin INTEGER DEFAULT 0, Email VARCHAR(128), Mobile VARCHAR(40), ShowFlag INTEGER DEFAULT 0 , ConType INTEGER DEFAULT 0 , ConRemark TEXT, ConRemark_PYShort TEXT, ConRemark_PYFull TEXT, ConQQMBlog TEXT, ConSMBlog TEXT, DomainList TEXT, reserved1 INT DEFAULT 0 , reserved2 INT DEFAULT 0 , reserved3 INT DEFAULT 0 , reserved4 INT DEFAULT 0 , reserved5 INT DEFAULT 0 , reserved6 TEXT, reserved7 TEXT, reserved8 TEXT, reserved9 TEXT, reserved10 TEXT, weiboflag  INT DEFAULT 0 ,weibonickname TEXT  );" };
-    INDEX_CREATE = new String[] { "CREATE UNIQUE INDEX IF NOT EXISTS  contact_username_unique_index ON rcontact ( username )", "CREATE INDEX IF NOT EXISTS  contact_alias_index ON rcontact ( alias )", "CREATE INDEX IF NOT EXISTS  en_username_unique_index ON rcontact ( encryptUsername )", "CREATE UNIQUE INDEX IF NOT EXISTS  bottle_username_unique_index ON bottlecontact ( username )", "CREATE INDEX IF NOT EXISTS type_verifyFlag_index ON rcontact ( type,verifyFlag ) " };
-    OoK = "showHead = 32";
-    OoL = "type & 64 !=0 ";
+    INDEX_CREATE = new String[] { "CREATE UNIQUE INDEX IF NOT EXISTS  contact_username_unique_index ON rcontact ( username )", "CREATE INDEX IF NOT EXISTS  contact_alias_index ON rcontact ( alias )", "CREATE INDEX IF NOT EXISTS  en_username_unique_index ON rcontact ( encryptUsername )", "CREATE UNIQUE INDEX IF NOT EXISTS  bottle_username_unique_index ON bottlecontact ( username )", "CREATE INDEX IF NOT EXISTS type_verifyFlag_index ON rcontact ( type,verifyFlag ) ", "CREATE INDEX IF NOT EXISTS contact_usernameflag_index ON rcontact ( usernameFlag ) " };
+    VED = "showHead = 32";
+    VEE = "type & 64 !=0  AND type >= 64";
     AppMethodBeat.o(117060);
   }
   
   public ay(h paramh)
   {
     AppMethodBeat.i(116970);
-    this.OoH = new com.tencent.mm.memory.a.c(200);
-    this.OoI = new com.tencent.mm.memory.a.c(400);
-    this.OoJ = new a((byte)0);
+    this.VEA = new c(200);
+    this.VEB = new c(400);
+    this.VEC = new a((byte)0);
     Object localObject = paramh.rawQuery("PRAGMA table_info( contact_ext )", null, 2);
     int n = ((Cursor)localObject).getColumnIndex("name");
     int j = 0;
@@ -88,11 +89,11 @@ public final class ay
       if (i == 0) {
         paramh.execSQL("rcontact", "Alter table rcontact add verifyFlag INT DEFAULT 0 ");
       }
-      localObject = MAutoStorage.getUpdateSQLs(com.tencent.mm.contact.c.info, "bottlecontact", paramh).iterator();
+      localObject = MAutoStorage.getUpdateSQLs(com.tencent.mm.contact.d.info, "bottlecontact", paramh).iterator();
       while (((Iterator)localObject).hasNext()) {
         paramh.execSQL("bottlecontact", (String)((Iterator)localObject).next());
       }
-      localObject = MAutoStorage.getUpdateSQLs(com.tencent.mm.contact.c.info, "rcontact", paramh).iterator();
+      localObject = MAutoStorage.getUpdateSQLs(com.tencent.mm.contact.d.info, "rcontact", paramh).iterator();
       while (((Iterator)localObject).hasNext()) {
         paramh.execSQL("rcontact", (String)((Iterator)localObject).next());
       }
@@ -105,13 +106,36 @@ public final class ay
         i += 1;
       }
       this.db = paramh;
-      this.OoG = paramh;
+      this.VEz = paramh;
       AppMethodBeat.o(116970);
       return;
     }
   }
   
-  private static String L(String paramString, List<String> paramList)
+  private static String A(List<String> paramList, boolean paramBoolean)
+  {
+    AppMethodBeat.i(117047);
+    String str2 = bk(false, paramBoolean) + " AND " + VEE;
+    String str1 = "";
+    Object localObject = str1;
+    if (paramList != null)
+    {
+      localObject = str1;
+      if (paramList.size() > 0)
+      {
+        localObject = paramList.iterator();
+        for (paramList = ""; ((Iterator)localObject).hasNext(); paramList = paramList + " AND username != '" + str1 + "'") {
+          str1 = (String)((Iterator)localObject).next();
+        }
+        localObject = paramList;
+      }
+    }
+    paramList = str2 + (String)localObject;
+    AppMethodBeat.o(117047);
+    return paramList;
+  }
+  
+  private static String K(String paramString, List<String> paramList)
   {
     AppMethodBeat.i(117034);
     if ((paramString == null) || (paramString.equals("")))
@@ -145,35 +169,65 @@ public final class ay
     return paramString;
   }
   
-  private static String Y(String[] paramArrayOfString)
+  private static String Z(String[] paramArrayOfString)
   {
+    int i = 0;
     AppMethodBeat.i(117035);
     if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
     {
       AppMethodBeat.o(117035);
       return "";
     }
-    String str1 = " and (";
-    int i = 0;
-    while (i < paramArrayOfString.length)
+    if (paramArrayOfString.length >= 950)
     {
-      String str2 = str1;
-      if (i > 0) {
-        str2 = str1 + " or ";
+      if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
+      {
+        AppMethodBeat.o(117035);
+        return "";
       }
-      str1 = str2 + "username = '" + paramArrayOfString[i] + "' ";
-      i += 1;
+      localObject = new StringBuilder("");
+      if (i < paramArrayOfString.length)
+      {
+        if (i == paramArrayOfString.length - 1) {
+          ((StringBuilder)localObject).append(" '" + paramArrayOfString[i].trim() + "' ");
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          ((StringBuilder)localObject).append(" '" + paramArrayOfString[i].trim() + "' ,");
+        }
+      }
+      paramArrayOfString = String.valueOf(" and " + "username in (" + ((StringBuilder)localObject).toString() + ") ");
+      AppMethodBeat.o(117035);
+      return paramArrayOfString;
     }
-    paramArrayOfString = str1 + " )";
-    AppMethodBeat.o(117035);
-    return paramArrayOfString;
+    Object localObject = " and (";
+    i = 0;
+    if (i < paramArrayOfString.length)
+    {
+      if (i <= 0) {
+        break label298;
+      }
+      localObject = (String)localObject + " or ";
+    }
+    label298:
+    for (;;)
+    {
+      localObject = (String)localObject + "username = '" + paramArrayOfString[i] + "' ";
+      i += 1;
+      break;
+      paramArrayOfString = (String)localObject + " )";
+      AppMethodBeat.o(117035);
+      return paramArrayOfString;
+    }
   }
   
   private static String a(String paramString1, List<String> paramList1, String paramString2, List<String> paramList2)
   {
     AppMethodBeat.i(116981);
     paramString1 = paramString1 + " and OpenIMWordingInfo.language='" + paramString2 + "' ";
-    String str = paramString1 + gCm();
+    String str = paramString1 + hyy();
     paramString2 = "";
     paramString1 = paramString2;
     if (paramList2 != null)
@@ -216,26 +270,7 @@ public final class ay
     return paramString1;
   }
   
-  private static String aY(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(117040);
-    String str2 = "type & " + com.tencent.mm.contact.c.arn() + "!=0";
-    String str1 = str2;
-    if (paramBoolean1) {
-      str1 = str2 + " or type & " + com.tencent.mm.contact.c.art() + "!=0";
-    }
-    str1 = " where (" + str1 + ")";
-    str1 = str1 + " and type & " + com.tencent.mm.contact.c.aru() + "=0 ";
-    str2 = str1 + " and type & " + com.tencent.mm.contact.c.aro() + " =0 ";
-    str1 = str2;
-    if (!paramBoolean2) {
-      str1 = str2 + " and verifyFlag & " + as.gBP() + " =0 ";
-    }
-    AppMethodBeat.o(117040);
-    return str1;
-  }
-  
-  private static boolean ar(as paramas)
+  private static boolean ax(as paramas)
   {
     boolean bool = false;
     AppMethodBeat.i(117054);
@@ -255,10 +290,29 @@ public final class ay
     }
   }
   
-  private static String bjD(String paramString)
+  private static String bk(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(117040);
+    String str2 = "type & " + com.tencent.mm.contact.d.axN() + "!=0";
+    String str1 = str2;
+    if (paramBoolean1) {
+      str1 = str2 + " or type & " + com.tencent.mm.contact.d.axX() + "!=0";
+    }
+    str1 = " where (" + str1 + ")";
+    str1 = str1 + " and type & " + com.tencent.mm.contact.d.axY() + "=0 ";
+    str2 = str1 + " and type & " + com.tencent.mm.contact.d.axO() + " =0 ";
+    str1 = str2;
+    if (!paramBoolean2) {
+      str1 = str2 + " and verifyFlag & " + as.hya() + " =0 ";
+    }
+    AppMethodBeat.o(117040);
+    return str1;
+  }
+  
+  private static String bwa(String paramString)
   {
     AppMethodBeat.i(116968);
-    if (as.IG(paramString))
+    if (as.PY(paramString))
     {
       paramString = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from " + "bottlecontact";
       AppMethodBeat.o(116968);
@@ -269,10 +323,10 @@ public final class ay
     return paramString;
   }
   
-  private static String bjE(String paramString)
+  private static String bwb(String paramString)
   {
     AppMethodBeat.i(116969);
-    if (as.IG(paramString))
+    if (as.PY(paramString))
     {
       AppMethodBeat.o(116969);
       return "bottlecontact";
@@ -281,7 +335,7 @@ public final class ay
     return "rcontact";
   }
   
-  private as bjU(String paramString)
+  private as bwt(String paramString)
   {
     AppMethodBeat.i(117058);
     if (Util.isNullOrNil(paramString))
@@ -289,19 +343,19 @@ public final class ay
       AppMethodBeat.o(117058);
       return null;
     }
-    if (as.IG(paramString))
+    if (as.PY(paramString))
     {
       AppMethodBeat.o(117058);
       return null;
     }
     as localas = new as();
-    paramString = "select  *,rowid  from rcontact where username=" + h.Fl(paramString) + " or encryptUsername=" + h.Fl(paramString);
+    paramString = "select  *,rowid  from rcontact where username=" + h.Mi(paramString) + " or encryptUsername=" + h.Mi(paramString);
     paramString = this.db.rawQuery(paramString, null, 2);
     if (paramString.moveToFirst())
     {
       localas.convertFrom(paramString);
       paramString.close();
-      localas.gBS();
+      localas.hyd();
       d(localas, false);
     }
     for (;;)
@@ -312,28 +366,28 @@ public final class ay
     }
   }
   
-  private as bjV(String paramString)
+  private as bwu(String paramString)
   {
-    AppMethodBeat.i(187497);
+    AppMethodBeat.i(188703);
     as localas = new as();
-    paramString = bjD(paramString) + " where username=" + h.Fl(paramString) + " or encryptUsername=" + h.Fl(paramString);
+    paramString = bwa(paramString) + " where username=" + h.Mi(paramString) + " or encryptUsername=" + h.Mi(paramString);
     paramString = this.db.rawQuery(paramString, null, 2);
     if (paramString.moveToFirst())
     {
       localas.convertFrom(paramString);
       paramString.close();
-      localas.gBS();
+      localas.hyd();
       d(localas, false);
     }
     for (;;)
     {
-      AppMethodBeat.o(187497);
+      AppMethodBeat.o(188703);
       return localas;
       paramString.close();
     }
   }
   
-  private static String gCf()
+  private static String hyr()
   {
     AppMethodBeat.i(117037);
     Object localObject = new StringBuffer();
@@ -350,11 +404,11 @@ public final class ay
     return localObject;
   }
   
-  private static String gCg()
+  private static String hys()
   {
     AppMethodBeat.i(117039);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(" order by case when verifyFlag & " + as.gBP() + " != 0 then 0 else 1 end , showHead asc, ");
+    ((StringBuffer)localObject).append(" order by case when verifyFlag & " + as.hya() + " != 0 then 0 else 1 end , showHead asc, ");
     ((StringBuffer)localObject).append(" case when length(conRemarkPYFull) > 0 then upper(conRemarkPYFull) ");
     ((StringBuffer)localObject).append(" else upper(quanPin) end asc, ");
     ((StringBuffer)localObject).append(" case when length(conRemark) > 0 then upper(conRemark) ");
@@ -367,62 +421,62 @@ public final class ay
     return localObject;
   }
   
-  private static String gCh()
+  private static String hyt()
   {
     AppMethodBeat.i(117041);
-    String str = "type & " + com.tencent.mm.contact.c.arn() + " !=0 ";
+    String str = "type & " + com.tencent.mm.contact.d.axN() + " !=0 ";
     str = " where (" + str + ") and ";
-    str = str + "type & " + com.tencent.mm.contact.c.aru() + " =0 and ";
-    str = str + "type & " + com.tencent.mm.contact.c.aro() + " =0";
+    str = str + "type & " + com.tencent.mm.contact.d.axY() + " =0 and ";
+    str = str + "type & " + com.tencent.mm.contact.d.axO() + " =0";
     AppMethodBeat.o(117041);
     return str;
   }
   
-  private static String gCi()
+  private static String hyu()
   {
     AppMethodBeat.i(117042);
-    String str = "type & " + com.tencent.mm.contact.c.arn() + "!=0";
+    String str = "type & " + com.tencent.mm.contact.d.axN() + "!=0";
     str = " where (" + str + ") and ";
-    str = str + "type & " + com.tencent.mm.contact.c.aru() + "=0  ";
+    str = str + "type & " + com.tencent.mm.contact.d.axY() + "=0  ";
     AppMethodBeat.o(117042);
     return str;
   }
   
-  private static String gCj()
+  private static String hyv()
   {
     AppMethodBeat.i(117043);
-    String str = "type & " + com.tencent.mm.contact.c.arn() + "!=0";
-    str = "( (" + str + ") and type & " + com.tencent.mm.contact.c.aro() + "=0 and (username like '%@chatroom') or (username like '%@im.chatroom" + "'))";
+    String str = "type & " + com.tencent.mm.contact.d.axN() + "!=0";
+    str = "( (" + str + ") and type & " + com.tencent.mm.contact.d.axO() + "=0" + ab.c("username", new String[] { "@chatroom", "@im.chatroom" }, new String[0]) + ")";
     AppMethodBeat.o(117043);
     return str;
   }
   
-  private static String gCk()
+  private static String hyw()
   {
     AppMethodBeat.i(117044);
-    String str = "type & " + com.tencent.mm.contact.c.arn() + "!=0";
-    str = "( (" + str + ") and type & " + com.tencent.mm.contact.c.aro() + "=0 and username like '%@talkroom')";
+    String str = "type & " + com.tencent.mm.contact.d.axN() + "!=0";
+    str = "( (" + str + ") and type & " + com.tencent.mm.contact.d.axO() + "=0" + ab.a("username", "@talkroom", new String[0]) + ")";
     AppMethodBeat.o(117044);
     return str;
   }
   
-  private static String gCl()
+  private static String hyx()
   {
     AppMethodBeat.i(117045);
-    String str = "type & " + com.tencent.mm.contact.c.aro() + "=0 and username like '%@openim'";
+    String str = "type & " + com.tencent.mm.contact.d.axO() + "=0" + ab.a("username", "@openim", new String[0]);
     AppMethodBeat.o(117045);
     return str;
   }
   
-  private static String gCm()
+  private static String hyy()
   {
     AppMethodBeat.i(117046);
-    String str = gCi() + " and " + gCl();
+    String str = hyu() + " and " + hyx();
     AppMethodBeat.o(117046);
     return str;
   }
   
-  private static String iN(List<String> paramList)
+  private static String jF(List<String> paramList)
   {
     AppMethodBeat.i(117013);
     if ((paramList == null) || (paramList.size() == 0))
@@ -442,10 +496,10 @@ public final class ay
     return paramList;
   }
   
-  private static String iO(List<String> paramList)
+  private static String jG(List<String> paramList)
   {
     AppMethodBeat.i(117015);
-    String str = iN(paramList);
+    String str = jF(paramList);
     int i = str.indexOf("or");
     paramList = str;
     if (i <= 2) {
@@ -455,11 +509,11 @@ public final class ay
     return paramList;
   }
   
-  private static String iX(List<String> paramList)
+  private static String jP(List<String> paramList)
   {
     AppMethodBeat.i(117048);
-    Object localObject = aY(false, false) + " AND " + OoL;
-    String str2 = (String)localObject + " and ( username not like '%@openim')";
+    Object localObject = bk(false, false) + " AND " + VEE;
+    String str2 = (String)localObject + ab.a("username", "@openim", true, new String[0]);
     String str1 = "";
     localObject = str1;
     if (paramList != null)
@@ -479,30 +533,7 @@ public final class ay
     return paramList;
   }
   
-  private static String y(List<String> paramList, boolean paramBoolean)
-  {
-    AppMethodBeat.i(117047);
-    String str2 = aY(false, paramBoolean) + " AND " + OoL;
-    String str1 = "";
-    Object localObject = str1;
-    if (paramList != null)
-    {
-      localObject = str1;
-      if (paramList.size() > 0)
-      {
-        localObject = paramList.iterator();
-        for (paramList = ""; ((Iterator)localObject).hasNext(); paramList = paramList + " AND username != '" + str1 + "'") {
-          str1 = (String)((Iterator)localObject).next();
-        }
-        localObject = paramList;
-      }
-    }
-    paramList = str2 + (String)localObject;
-    AppMethodBeat.o(117047);
-    return paramList;
-  }
-  
-  public final int B(String paramString, byte[] paramArrayOfByte)
+  public final int G(String paramString, byte[] paramArrayOfByte)
   {
     int i = -1;
     AppMethodBeat.i(116999);
@@ -526,37 +557,40 @@ public final class ay
     }
   }
   
-  public final as Kn(String paramString)
+  public final as RG(String paramString)
   {
-    AppMethodBeat.i(116991);
+    AppMethodBeat.i(292434);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(116991);
+      AppMethodBeat.o(292434);
       return null;
     }
     String str = paramString;
-    if (as.IG(paramString)) {
-      str = as.bjz(paramString);
+    if (as.PY(paramString)) {
+      str = as.bvW(paramString);
     }
-    paramString = bjF(str);
+    paramString = bwc(str);
     if (paramString != null)
     {
-      AppMethodBeat.o(116991);
+      Log.d("MicroMsg.ContactStorage", "[get]getFromCache:%s %s", new Object[] { str, Integer.valueOf(paramString.field_type) });
+      AppMethodBeat.o(292434);
       return paramString;
     }
-    paramString = this.OoJ.Kn(str);
+    paramString = this.VEC.RG(str);
     if (paramString != null)
     {
+      Log.i("MicroMsg.ContactStorage", "[get]extensions:%s %s", new Object[] { str, Integer.valueOf(paramString.field_type) });
       d(paramString, false);
-      AppMethodBeat.o(116991);
+      AppMethodBeat.o(292434);
       return paramString;
     }
-    paramString = bjV(str);
-    AppMethodBeat.o(116991);
+    paramString = bwu(str);
+    Log.i("MicroMsg.ContactStorage", "[get]getRaw:%s %s", new Object[] { str, Integer.valueOf(paramString.field_type) });
+    AppMethodBeat.o(292434);
     return paramString;
   }
   
-  public final as Nh(long paramLong)
+  public final as UT(long paramLong)
   {
     as localas = null;
     AppMethodBeat.i(116992);
@@ -575,7 +609,7 @@ public final class ay
     }
     ((Cursor)localObject).close();
     if (localas != null) {
-      localas.gBS();
+      localas.hyd();
     }
     AppMethodBeat.o(116992);
     return localas;
@@ -584,21 +618,21 @@ public final class ay
   public final Cursor a(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(116979);
-    paramString1 = "select username ,nickname ,alias,conRemark,verifyFlag,showHead,weiboFlag,rowid ,deleteFlag,lvbuff,descWordingId,openImAppid from rcontact " + f(paramString1, paramString2, paramList1) + iN(paramList2) + gCf();
+    paramString1 = "select username ,nickname ,alias,conRemark,verifyFlag,showHead,weiboFlag,rowid ,deleteFlag,lvbuff,descWordingId,openImAppid from rcontact " + g(paramString1, paramString2, paramList1) + jF(paramList2) + hyr();
     Log.v("MicroMsg.ContactStorage", paramString1);
     if (paramBoolean1)
     {
-      paramString2 = "select username ,nickname ,alias,conRemark,verifyFlag,showHead,weiboFlag,rowid ,deleteFlag,lvbuff,descWordingId,openImAppid from rcontact " + y(paramList1, paramBoolean2) + gCg();
+      paramString2 = "select username ,nickname ,alias,conRemark,verifyFlag,showHead,weiboFlag,rowid ,deleteFlag,lvbuff,descWordingId,openImAppid from rcontact " + A(paramList1, paramBoolean2) + hys();
       Log.v("MicroMsg.ContactStorage", "favourSql ".concat(String.valueOf(paramString1)));
       paramString2 = this.db.rawQuery(paramString2, null, 4);
       paramString1 = this.db.rawQuery(paramString1, null, 4);
       if (((paramString2 instanceof com.tencent.mm.storagebase.a.f)) && ((paramString1 instanceof com.tencent.mm.storagebase.a.f)))
       {
-        paramString1 = new com.tencent.mm.storagebase.a.e(new com.tencent.mm.storagebase.a.f[] { (com.tencent.mm.storagebase.a.f)paramString2, (com.tencent.mm.storagebase.a.f)paramString1 });
+        paramString1 = new e(new com.tencent.mm.storagebase.a.f[] { (com.tencent.mm.storagebase.a.f)paramString2, (com.tencent.mm.storagebase.a.f)paramString1 });
         AppMethodBeat.o(116979);
         return paramString1;
       }
-      paramString1 = d.gFu();
+      paramString1 = com.tencent.mm.storagebase.d.hBM();
       AppMethodBeat.o(116979);
       return paramString1;
     }
@@ -622,11 +656,11 @@ public final class ay
     AppMethodBeat.i(117033);
     if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
     {
-      paramArrayOfString = d.gFu();
+      paramArrayOfString = com.tencent.mm.storagebase.d.hBM();
       AppMethodBeat.o(117033);
       return paramArrayOfString;
     }
-    paramArrayOfString = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + f(paramString1, paramString2, paramList2) + Y(paramArrayOfString) + L(paramString2, paramList1) + gCf();
+    paramArrayOfString = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + g(paramString1, paramString2, paramList2) + Z(paramArrayOfString) + K(paramString2, paramList1) + hyr();
     Log.i("MicroMsg.ContactStorage", paramArrayOfString);
     paramArrayOfString = this.db.rawQuery(paramArrayOfString, null);
     AppMethodBeat.o(117033);
@@ -636,7 +670,7 @@ public final class ay
   public final Cursor a(String[] paramArrayOfString, String paramString, List<String> paramList)
   {
     AppMethodBeat.i(117032);
-    paramString = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + f(paramString, null, paramList) + Y(paramArrayOfString);
+    paramString = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + g(paramString, null, paramList) + Z(paramArrayOfString);
     paramList = paramString;
     if (paramArrayOfString != null)
     {
@@ -666,63 +700,34 @@ public final class ay
   
   public final void a(bv.a parama)
   {
-    AppMethodBeat.i(187488);
-    this.OoJ.JWm.put(parama, new Object());
-    AppMethodBeat.o(187488);
+    AppMethodBeat.i(188541);
+    this.VEC.QWB.put(parama, new Object());
+    AppMethodBeat.o(188541);
   }
   
-  public final int aNa(String paramString)
+  public final void aHy(String paramString)
   {
-    AppMethodBeat.i(117002);
-    if (paramString.length() > 0) {}
-    String str;
-    int i;
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(116975);
+    if (!Util.isNullOrNil(paramString))
     {
-      Assert.assertTrue(bool);
-      str = paramString;
-      if (as.IG(paramString)) {
-        str = as.bjz(paramString);
-      }
-      ayf(str);
-      paramString = new as(str);
-      paramString.setType(0);
-      paramString.setUsername("fake_" + Util.nowMilliSecond());
-      paramString.BK("fake_" + Util.nowMilliSecond());
-      paramString.setSource(0);
-      i = this.db.update(bjE(str), paramString.convertTo(), "username=?", new String[] { String.valueOf(str) });
-      bjQ(str);
-      Log.w("MicroMsg.ContactStorage", "delete (because the fucking talker id , dk just mark it  disappear .) user:%s res:%s %s", new Object[] { str, Integer.valueOf(i), Util.getStack() });
-      if (i != 0) {
-        break;
-      }
-      AppMethodBeat.o(117002);
-      return i;
+      this.VEA.remove(paramString);
+      this.VEB.remove(paramString);
+      Log.d("MicroMsg.ContactStorage", "removeFromCache(%s) username：%s", new Object[] { this.VEA, paramString });
     }
-    doNotify(5, this, str);
-    AppMethodBeat.o(117002);
-    return i;
+    AppMethodBeat.o(116975);
   }
   
-  public final String aZD()
-  {
-    AppMethodBeat.i(258723);
-    String str = gCf();
-    AppMethodBeat.o(258723);
-    return str;
-  }
-  
-  public final void am(as paramas)
+  public final void as(as paramas)
   {
     AppMethodBeat.i(116974);
     d(paramas, false);
     AppMethodBeat.o(116974);
   }
   
-  public final boolean an(as paramas)
+  public final boolean at(as paramas)
   {
     AppMethodBeat.i(116977);
-    if (bjN(paramas.field_username))
+    if (bwl(paramas.field_username))
     {
       if (c(paramas.field_username, paramas) == 0)
       {
@@ -732,7 +737,7 @@ public final class ay
       AppMethodBeat.o(116977);
       return false;
     }
-    if (aq(paramas) >= 0)
+    if (aw(paramas) >= 0)
     {
       AppMethodBeat.o(116977);
       return true;
@@ -741,33 +746,33 @@ public final class ay
     return false;
   }
   
-  public final boolean ao(as paramas)
+  public final boolean au(as paramas)
   {
     AppMethodBeat.i(116996);
     if (paramas != null) {}
     for (boolean bool1 = true;; bool1 = false)
     {
       Assert.assertTrue("contact NULL !", bool1);
-      if (ar(paramas)) {
+      if (ax(paramas)) {
         break;
       }
       AppMethodBeat.o(116996);
       return true;
     }
-    paramas.nd(paramas.aqN());
-    this.OoJ.a(this, paramas);
-    if (this.OoJ.b(paramas, false) > 0)
+    paramas.pq(paramas.axh());
+    this.VEC.a(this, paramas);
+    if (this.VEC.b(paramas, false) > 0)
     {
       bool1 = true;
-      Log.d("MicroMsg.ContactStorage", "[replace] ret:%s username=%s, showHead=%d, verifyFlag=%d", new Object[] { Boolean.valueOf(bool1), paramas.field_username, Integer.valueOf(paramas.field_showHead), Integer.valueOf(paramas.field_verifyFlag) });
+      Log.i("MicroMsg.ContactStorage", "[replace] ret:%s username=%s, showHead=%d, verifyFlag=%d", new Object[] { Boolean.valueOf(bool1), paramas.field_username, Integer.valueOf(paramas.field_showHead), Integer.valueOf(paramas.field_verifyFlag) });
       bool2 = bool1;
       if (!bool1)
       {
         ContentValues localContentValues = paramas.convertTo();
-        if ((int)paramas.gMZ > 0) {
-          localContentValues.put("rowid", Integer.valueOf((int)paramas.gMZ));
+        if ((int)paramas.jxt > 0) {
+          localContentValues.put("rowid", Integer.valueOf((int)paramas.jxt));
         }
-        if (this.db.replace(bjE(paramas.field_username), com.tencent.mm.contact.c.info.primaryKey, localContentValues) <= 0L) {
+        if (this.db.replace(bwb(paramas.field_username), com.tencent.mm.contact.d.info.primaryKey, localContentValues) <= 0L) {
           break label227;
         }
       }
@@ -775,9 +780,9 @@ public final class ay
     label227:
     for (boolean bool2 = true;; bool2 = false)
     {
-      ayf(paramas.field_username);
+      aHy(paramas.field_username);
       if (!Util.isNullOrNil(paramas.field_encryptUsername)) {
-        ayf(paramas.field_encryptUsername);
+        aHy(paramas.field_encryptUsername);
       }
       if (bool2) {
         break label232;
@@ -788,15 +793,15 @@ public final class ay
       break;
     }
     label232:
-    doNotify(4, this, paramas.field_username);
+    doNotify(4, this, paramas.field_username, paramas);
     AppMethodBeat.o(116996);
     return true;
   }
   
-  public final boolean ap(as paramas)
+  public final boolean av(as paramas)
   {
     AppMethodBeat.i(116997);
-    if (aq(paramas) > 0)
+    if (aw(paramas) > 0)
     {
       AppMethodBeat.o(116997);
       return true;
@@ -805,7 +810,7 @@ public final class ay
     return false;
   }
   
-  public final int aq(as paramas)
+  public final int aw(as paramas)
   {
     AppMethodBeat.i(116998);
     if (Util.nullAsNil(paramas.field_username).length() <= 0)
@@ -814,43 +819,43 @@ public final class ay
       AppMethodBeat.o(116998);
       return -1;
     }
-    paramas.nd(paramas.aqN());
-    this.OoJ.a(this, paramas);
-    int j = this.OoJ.b(paramas, false);
+    paramas.pq(paramas.axh());
+    this.VEC.a(this, paramas);
+    int j = this.VEC.b(paramas, false);
     Log.i("MicroMsg.ContactStorage", "extensions replace=%s %s", new Object[] { Integer.valueOf(j), paramas.field_username });
     int i = j;
     if (j < 0)
     {
       Object localObject = paramas.convertTo();
       long l = System.currentTimeMillis();
-      int k = (int)this.db.insert(bjE(paramas.field_username), com.tencent.mm.contact.c.info.primaryKey, (ContentValues)localObject);
+      int k = (int)this.db.insert(bwb(paramas.field_username), com.tencent.mm.contact.d.info.primaryKey, (ContentValues)localObject);
       int m = (int)Util.milliSecondsToNow(l);
       boolean bool = CrashReportFactory.foreground;
-      localObject = com.tencent.mm.plugin.report.e.Cxv;
+      localObject = com.tencent.mm.plugin.report.f.Iyx;
       if (bool)
       {
         i = 11;
         if (!bool) {
-          break label290;
+          break label291;
         }
       }
-      label290:
+      label291:
       for (j = 12;; j = 15)
       {
-        ((com.tencent.mm.plugin.report.e)localObject).b(463, i, j, m, false);
+        ((com.tencent.mm.plugin.report.f)localObject).c(463, i, j, m, false);
         Log.i("MicroMsg.ContactStorage", "insert : username=%s, showHead=%d, verifyFlag=%d, ret=:%d take[%s]ms fg:%b", new Object[] { paramas.field_username, Integer.valueOf(paramas.field_showHead), Integer.valueOf(paramas.field_verifyFlag), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) });
         if (k == -1) {
-          break label296;
+          break label297;
         }
-        paramas.gMZ = k;
+        paramas.jxt = k;
         d(paramas, false);
-        doNotify(2, this, paramas.field_username);
+        doNotify(2, this, paramas.field_username, paramas);
         AppMethodBeat.o(116998);
         return k;
         i = 14;
         break;
       }
-      label296:
+      label297:
       Log.e("MicroMsg.ContactStorage", "insert failed: username=%s", new Object[] { paramas.field_username });
       i = k;
     }
@@ -858,35 +863,24 @@ public final class ay
     return i;
   }
   
-  public final void ayf(String paramString)
-  {
-    AppMethodBeat.i(116975);
-    if (!Util.isNullOrNil(paramString))
-    {
-      this.OoH.remove(paramString);
-      this.OoI.remove(paramString);
-    }
-    AppMethodBeat.o(116975);
-  }
-  
   public final Cursor b(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(116988);
-    paramString1 = "select username from rcontact " + f(paramString1, paramString2, paramList1) + iN(paramList2) + gCf();
+    paramString1 = "select username from rcontact " + g(paramString1, paramString2, paramList1) + jF(paramList2) + hyr();
     Log.v("MicroMsg.ContactStorage", paramString1);
     if (paramBoolean1)
     {
-      paramString2 = "select username from rcontact " + y(paramList1, paramBoolean2) + gCg();
+      paramString2 = "select username from rcontact " + A(paramList1, paramBoolean2) + hys();
       Log.v("MicroMsg.ContactStorage", "favourSql ".concat(String.valueOf(paramString1)));
       paramString2 = this.db.rawQuery(paramString2, null, 4);
       paramString1 = this.db.rawQuery(paramString1, null, 4);
       if (((paramString2 instanceof com.tencent.mm.storagebase.a.f)) && ((paramString1 instanceof com.tencent.mm.storagebase.a.f)))
       {
-        paramString1 = new com.tencent.mm.storagebase.a.e(new com.tencent.mm.storagebase.a.f[] { (com.tencent.mm.storagebase.a.f)paramString2, (com.tencent.mm.storagebase.a.f)paramString1 });
+        paramString1 = new e(new com.tencent.mm.storagebase.a.f[] { (com.tencent.mm.storagebase.a.f)paramString2, (com.tencent.mm.storagebase.a.f)paramString1 });
         AppMethodBeat.o(116988);
         return paramString1;
       }
-      paramString1 = d.gFu();
+      paramString1 = com.tencent.mm.storagebase.d.hBM();
       AppMethodBeat.o(116988);
       return paramString1;
     }
@@ -910,14 +904,14 @@ public final class ay
   public final void b(bv.a parama)
   {
     AppMethodBeat.i(116972);
-    this.OoJ.JWm.remove(parama);
+    this.VEC.QWB.remove(parama);
     AppMethodBeat.o(116972);
   }
   
   public final int[] b(String paramString1, String paramString2, String[] paramArrayOfString, List<String> paramList)
   {
     AppMethodBeat.i(117026);
-    paramString1 = "select distinct showHead from rcontact " + f(paramString1, paramString2, paramList) + Y(paramArrayOfString) + gCf();
+    paramString1 = "select distinct showHead from rcontact " + g(paramString1, paramString2, paramList) + Z(paramArrayOfString) + hyr();
     long l = System.currentTimeMillis();
     paramString1 = this.db.rawQuery(paramString1, null);
     Log.d("MicroMsg.ContactStorage", "kevin MMCore.getAccStg().getContactStg().getShowHeadDistinct db.rawQuery last" + (System.currentTimeMillis() - l));
@@ -945,8 +939,8 @@ public final class ay
   
   public final int[] b(String[] paramArrayOfString, String paramString1, String paramString2, String paramString3, List<String> paramList)
   {
-    AppMethodBeat.i(187491);
-    paramArrayOfString = "select distinct showHead from rcontact " + f(paramString1, paramString2, paramList) + Y(paramArrayOfString) + bjR(paramString3) + gCf();
+    AppMethodBeat.i(188627);
+    paramArrayOfString = "select distinct showHead from rcontact " + g(paramString1, paramString2, paramList) + Z(paramArrayOfString) + bwq(paramString3) + hyr();
     long l = System.currentTimeMillis();
     paramArrayOfString = this.db.rawQuery(paramArrayOfString, null);
     Log.d("MicroMsg.ContactStorage", "kevin MMCore.getAccStg().getContactStg().getShowSectionByShowHead db.rawQuery : " + (System.currentTimeMillis() - l));
@@ -968,14 +962,22 @@ public final class ay
       }
     }
     paramArrayOfString.close();
-    AppMethodBeat.o(187491);
+    AppMethodBeat.o(188627);
     return paramString1;
   }
   
-  public final as bjF(String paramString)
+  public final String biT()
+  {
+    AppMethodBeat.i(292896);
+    String str = hyr();
+    AppMethodBeat.o(292896);
+    return str;
+  }
+  
+  public final as bwc(String paramString)
   {
     AppMethodBeat.i(116973);
-    paramString = (as)this.OoH.aT(paramString);
+    paramString = (as)this.VEA.aX(paramString);
     if (paramString != null)
     {
       AppMethodBeat.o(116973);
@@ -985,7 +987,7 @@ public final class ay
     return null;
   }
   
-  public final boolean bjG(String paramString)
+  public final boolean bwd(String paramString)
   {
     AppMethodBeat.i(116976);
     if ((Util.isNullOrNil(paramString)) || ((paramString.contains("@")) && (!paramString.endsWith("@stranger"))))
@@ -993,27 +995,27 @@ public final class ay
       AppMethodBeat.o(116976);
       return false;
     }
-    Object localObject = (Integer)this.OoI.get(paramString);
+    Object localObject = (Integer)this.VEB.get(paramString);
     if (localObject != null)
     {
-      bool = com.tencent.mm.contact.c.oR(((Integer)localObject).intValue());
+      bool = com.tencent.mm.contact.d.rk(((Integer)localObject).intValue());
       AppMethodBeat.o(116976);
       return bool;
     }
-    localObject = Kn(paramString);
+    localObject = RG(paramString);
     if ((localObject == null) || ((!((ax)localObject).field_username.equals(paramString)) && (!paramString.equals(((ax)localObject).field_encryptUsername))))
     {
-      this.OoI.x(paramString, Integer.valueOf(0));
+      this.VEB.q(paramString, Integer.valueOf(0));
       AppMethodBeat.o(116976);
       return false;
     }
-    this.OoI.x(paramString, Integer.valueOf(((ax)localObject).field_type));
-    boolean bool = com.tencent.mm.contact.c.oR(((ax)localObject).field_type);
+    this.VEB.q(paramString, Integer.valueOf(((ax)localObject).field_type));
+    boolean bool = com.tencent.mm.contact.d.rk(((ax)localObject).field_type);
     AppMethodBeat.o(116976);
     return bool;
   }
   
-  public final as bjH(String paramString)
+  public final as bwe(String paramString)
   {
     AppMethodBeat.i(116978);
     if (Util.isNullOrNil(paramString))
@@ -1021,7 +1023,7 @@ public final class ay
       AppMethodBeat.o(116978);
       return null;
     }
-    as localas = this.OoJ.Kn(paramString);
+    as localas = this.VEC.RG(paramString);
     if (localas != null)
     {
       d(localas, false);
@@ -1029,7 +1031,7 @@ public final class ay
       return localas;
     }
     localas = new as();
-    paramString = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact where alias=" + h.Fl(paramString);
+    paramString = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact where alias=" + h.Mi(paramString);
     paramString = this.db.rawQuery(paramString, null, 2);
     if (paramString.moveToFirst())
     {
@@ -1037,12 +1039,12 @@ public final class ay
       d(localas, false);
     }
     paramString.close();
-    localas.gBS();
+    localas.hyd();
     AppMethodBeat.o(116978);
     return localas;
   }
   
-  public final Cursor bjI(String paramString)
+  public final Cursor bwf(String paramString)
   {
     AppMethodBeat.i(116985);
     paramString = this.db.rawQuery(paramString, null, 4);
@@ -1050,7 +1052,7 @@ public final class ay
     return paramString;
   }
   
-  public final as bjJ(String paramString)
+  public final as bwg(String paramString)
   {
     AppMethodBeat.i(116989);
     if (Util.isNullOrNil(paramString))
@@ -1059,17 +1061,17 @@ public final class ay
       return null;
     }
     Object localObject = paramString;
-    if (as.IG(paramString)) {
-      localObject = as.bjz(paramString);
+    if (as.PY(paramString)) {
+      localObject = as.bvW(paramString);
     }
-    paramString = bjF((String)localObject);
+    paramString = bwc((String)localObject);
     if (paramString != null)
     {
-      paramString.gBS();
+      paramString.hyd();
       AppMethodBeat.o(116989);
       return paramString;
     }
-    paramString = this.OoJ.Kn((String)localObject);
+    paramString = this.VEC.RG((String)localObject);
     if (paramString != null)
     {
       d(paramString, false);
@@ -1077,7 +1079,7 @@ public final class ay
       return paramString;
     }
     paramString = new as();
-    localObject = bjD((String)localObject) + " where username=" + h.Fl((String)localObject);
+    localObject = bwa((String)localObject) + " where username=" + h.Mi((String)localObject);
     localObject = this.db.rawQuery((String)localObject, null, 2);
     if (((Cursor)localObject).moveToFirst())
     {
@@ -1085,12 +1087,12 @@ public final class ay
       d(paramString, false);
     }
     ((Cursor)localObject).close();
-    paramString.gBS();
+    paramString.hyd();
     AppMethodBeat.o(116989);
     return paramString;
   }
   
-  public final as bjK(String paramString)
+  public final as bwh(String paramString)
   {
     AppMethodBeat.i(116990);
     if (Util.isNullOrNil(paramString))
@@ -1099,17 +1101,17 @@ public final class ay
       return null;
     }
     Object localObject = paramString;
-    if (as.IG(paramString)) {
-      localObject = as.bjz(paramString);
+    if (as.PY(paramString)) {
+      localObject = as.bvW(paramString);
     }
-    paramString = bjF((String)localObject);
+    paramString = bwc((String)localObject);
     if (paramString != null)
     {
       AppMethodBeat.o(116990);
       return paramString;
     }
     paramString = new as();
-    localObject = bjD((String)localObject) + " where username=" + h.Fl((String)localObject) + " or encryptUsername=" + h.Fl((String)localObject);
+    localObject = bwa((String)localObject) + " where username=" + h.Mi((String)localObject) + " or encryptUsername=" + h.Mi((String)localObject);
     localObject = this.db.rawQuery((String)localObject, null, 2);
     if (((Cursor)localObject).moveToFirst())
     {
@@ -1121,52 +1123,52 @@ public final class ay
     return paramString;
   }
   
-  public final as bjL(String paramString)
+  public final as bwj(String paramString)
   {
-    AppMethodBeat.i(187490);
+    AppMethodBeat.i(188573);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(187490);
+      AppMethodBeat.o(188573);
       return null;
     }
     Object localObject = paramString;
-    if (as.IG(paramString)) {
-      localObject = as.bjz(paramString);
+    if (as.PY(paramString)) {
+      localObject = as.bvW(paramString);
     }
     paramString = new as();
-    localObject = bjD((String)localObject) + " where username=" + h.Fl((String)localObject) + " or encryptUsername=" + h.Fl((String)localObject);
+    localObject = bwa((String)localObject) + " where username=" + h.Mi((String)localObject) + " or encryptUsername=" + h.Mi((String)localObject);
     localObject = this.db.rawQuery((String)localObject, null, 2);
     if (((Cursor)localObject).moveToFirst())
     {
       paramString.convertFrom((Cursor)localObject);
-      paramString.gBS();
+      paramString.hyd();
     }
     ((Cursor)localObject).close();
-    AppMethodBeat.o(187490);
+    AppMethodBeat.o(188573);
     return paramString;
   }
   
-  public final long bjM(String paramString)
+  public final long bwk(String paramString)
   {
     AppMethodBeat.i(116993);
     long l2 = -1L;
-    paramString = Kn(paramString);
+    paramString = RG(paramString);
     long l1 = l2;
     if (paramString != null)
     {
       l1 = l2;
-      if (paramString.gMZ > 0L) {
-        l1 = (int)paramString.gMZ;
+      if (paramString.jxt > 0L) {
+        l1 = (int)paramString.jxt;
       }
     }
     AppMethodBeat.o(116993);
     return l1;
   }
   
-  public final boolean bjN(String paramString)
+  public final boolean bwl(String paramString)
   {
     AppMethodBeat.i(116994);
-    as localas = Kn(paramString);
+    as localas = RG(paramString);
     if ((localas != null) && (!Util.isNullOrNil(localas.field_username)) && (localas.field_username.equals(paramString)))
     {
       AppMethodBeat.o(116994);
@@ -1176,7 +1178,7 @@ public final class ay
     return false;
   }
   
-  public final boolean bjO(String paramString)
+  public final boolean bwm(String paramString)
   {
     boolean bool2 = false;
     AppMethodBeat.i(116995);
@@ -1185,7 +1187,7 @@ public final class ay
       AppMethodBeat.o(116995);
       return false;
     }
-    paramString = "select count(*) from " + bjE(paramString) + " where type & " + com.tencent.mm.contact.c.aro() + " !=0 and username=" + h.Fl(paramString);
+    paramString = "select count(*) from " + bwb(paramString) + " where type & " + com.tencent.mm.contact.d.axO() + " !=0 and username=" + h.Mi(paramString);
     paramString = this.db.rawQuery(paramString, null, 2);
     boolean bool1 = bool2;
     if (paramString.moveToFirst())
@@ -1200,7 +1202,7 @@ public final class ay
     return bool1;
   }
   
-  public final byte[] bjP(String paramString)
+  public final byte[] bwn(String paramString)
   {
     AppMethodBeat.i(117000);
     if (Util.isNullOrNil(paramString))
@@ -1225,7 +1227,7 @@ public final class ay
     }
   }
   
-  public final int bjQ(String paramString)
+  public final int bwo(String paramString)
   {
     AppMethodBeat.i(117001);
     if (Util.isNullOrNil(paramString))
@@ -1240,7 +1242,40 @@ public final class ay
     return i;
   }
   
-  public final String bjR(String paramString)
+  public final int bwp(String paramString)
+  {
+    AppMethodBeat.i(117002);
+    if (paramString.length() > 0) {}
+    String str;
+    int i;
+    for (boolean bool = true;; bool = false)
+    {
+      Assert.assertTrue(bool);
+      str = paramString;
+      if (as.PY(paramString)) {
+        str = as.bvW(paramString);
+      }
+      aHy(str);
+      paramString = new as(str);
+      paramString.setType(0);
+      paramString.setUsername("fake_" + Util.nowMilliSecond());
+      paramString.Iy("fake_" + Util.nowMilliSecond());
+      paramString.setSource(0);
+      i = this.db.update(bwb(str), paramString.convertTo(), "username=?", new String[] { String.valueOf(str) });
+      bwo(str);
+      Log.w("MicroMsg.ContactStorage", "delete (because the fucking talker id , dk just mark it  disappear .) user:%s res:%s %s", new Object[] { str, Integer.valueOf(i), Util.getStack() });
+      if (i != 0) {
+        break;
+      }
+      AppMethodBeat.o(117002);
+      return i;
+    }
+    doNotify(5, this, str, paramString);
+    AppMethodBeat.o(117002);
+    return i;
+  }
+  
+  public final String bwq(String paramString)
   {
     AppMethodBeat.i(117036);
     if ((paramString == null) || (paramString.equals("")))
@@ -1260,11 +1295,11 @@ public final class ay
     return paramString;
   }
   
-  public final int bjS(String paramString)
+  public final int bwr(String paramString)
   {
-    AppMethodBeat.i(187495);
+    AppMethodBeat.i(188681);
     long l = System.currentTimeMillis();
-    paramString = "select count(username) from rcontact" + f(paramString, null, null) + bjR(null);
+    paramString = "select count(username) from rcontact" + g(paramString, null, null) + bwq(null);
     Cursor localCursor = this.db.rawQuery(paramString, null, 2);
     int i;
     if ((localCursor != null) && (localCursor.moveToFirst()))
@@ -1275,16 +1310,16 @@ public final class ay
     for (;;)
     {
       Log.i("MicroMsg.ContactStorage", "getCountByFilterType, sql:%s, count:%d, time:%d", new Object[] { paramString, Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l) });
-      AppMethodBeat.o(187495);
+      AppMethodBeat.o(188681);
       return i;
       i = 0;
     }
   }
   
-  public final String bjT(String paramString)
+  public final String bws(String paramString)
   {
     AppMethodBeat.i(117057);
-    as localas = bjU(paramString);
+    as localas = bwt(paramString);
     if (localas != null)
     {
       Log.i("MicroMsg.ContactStorage", "getSendMsgTicket %s %s", new Object[] { Util.nullAs(paramString, ""), Integer.valueOf(Util.nullAs(localas.field_ticket, "").length()) });
@@ -1300,39 +1335,40 @@ public final class ay
   public final int c(String paramString, as paramas)
   {
     AppMethodBeat.i(117003);
-    Log.i("MicroMsg.ContactStorage", "begin to update contact : ".concat(String.valueOf(paramString)));
-    if (!ar(paramas))
+    Log.i("MicroMsg.ContactStorage", "begin to update contact :%s, usernameFlag=%d", new Object[] { paramString, Long.valueOf(paramas.field_usernameFlag) });
+    if (!ax(paramas))
     {
       AppMethodBeat.o(117003);
       return 1;
     }
     long l = System.currentTimeMillis();
     String str = paramString;
-    if (as.IG(paramString)) {
-      str = as.bjz(paramString);
+    if (as.PY(paramString)) {
+      str = as.bvW(paramString);
     }
-    paramas.nd(paramas.aqN());
-    this.OoJ.a(this, paramas);
-    int j = this.OoJ.b(paramas, true);
+    paramas.pq(paramas.axh());
+    paramas.Fa(ar.bvF(paramas.field_username));
+    this.VEC.a(this, paramas);
+    int j = this.VEC.b(paramas, true);
     int i = j;
     if (j < 0)
     {
       paramString = paramas.convertTo();
-      if ((int)paramas.gMZ > 0) {
-        paramString.put("rowid", Integer.valueOf((int)paramas.gMZ));
+      if ((int)paramas.jxt > 0) {
+        paramString.put("rowid", Integer.valueOf((int)paramas.jxt));
       }
       i = j;
       if (paramString.size() > 0) {
-        i = this.db.update(bjE(str), paramString, "username=?", new String[] { String.valueOf(str) });
+        i = this.db.update(bwb(str), paramString, "username=?", new String[] { String.valueOf(str) });
       }
     }
-    Log.i("MicroMsg.ContactStorage", "[update] ret=%s username=%s, showHead=%d, verifyFlag=%d, take[%d]ms", new Object[] { Integer.valueOf(i), paramas.field_username, Integer.valueOf(paramas.field_showHead), Integer.valueOf(paramas.field_verifyFlag), Long.valueOf(System.currentTimeMillis() - l) });
-    ayf(str);
+    Log.i("MicroMsg.ContactStorage", "[update] ret=%s username=%s, showHead=%d, verifyFlag=%d, usernameFlag=%d, take[%d]ms", new Object[] { Integer.valueOf(i), paramas.field_username, Integer.valueOf(paramas.field_showHead), Integer.valueOf(paramas.field_verifyFlag), Long.valueOf(paramas.field_usernameFlag), Long.valueOf(System.currentTimeMillis() - l) });
+    aHy(str);
     if (!Util.isNullOrNil(paramas.field_encryptUsername)) {
-      ayf(paramas.field_encryptUsername);
+      aHy(paramas.field_encryptUsername);
     }
     if (i != 0) {
-      doNotify(4, this, paramas.field_username);
+      doNotify(4, this, paramas.field_username, paramas);
     }
     AppMethodBeat.o(117003);
     return i;
@@ -1344,11 +1380,11 @@ public final class ay
     long l = System.currentTimeMillis();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("select count(username) from rcontact where ");
-    localStringBuilder.append("type & ").append(com.tencent.mm.contact.c.arn()).append(" !=0 and ");
-    localStringBuilder.append("type & ").append(com.tencent.mm.contact.c.aru()).append(" =0 and ");
-    localStringBuilder.append("type & ").append(com.tencent.mm.contact.c.aro()).append(" =0 and ");
+    localStringBuilder.append("type & ").append(com.tencent.mm.contact.d.axN()).append(" !=0 and ");
+    localStringBuilder.append("type & ").append(com.tencent.mm.contact.d.axY()).append(" =0 and ");
+    localStringBuilder.append("type & ").append(com.tencent.mm.contact.d.axO()).append(" =0 and ");
     localStringBuilder.append("verifyFlag & 8 = 0 ");
-    localStringBuilder.append(" and ( username not like '%@%')");
+    localStringBuilder.append(ab.a("username", "@micromsg.qq.com", new String[0]));
     if ((paramArrayOfString1 != null) && (paramArrayOfString1.length > 0))
     {
       int j = paramArrayOfString1.length;
@@ -1388,16 +1424,6 @@ public final class ay
     }
   }
   
-  public final Cursor c(String paramString1, String paramString2, List<String> paramList)
-  {
-    AppMethodBeat.i(117014);
-    paramString1 = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + f(paramString1, paramString2, paramList) + iN(null) + gCf();
-    Log.v("MicroMsg.ContactStorage", paramString1);
-    paramString1 = this.db.rawQuery(paramString1, null);
-    AppMethodBeat.o(117014);
-    return paramString1;
-  }
-  
   public final Cursor c(List<String> paramList1, String paramString, List<String> paramList2)
   {
     AppMethodBeat.i(116984);
@@ -1414,7 +1440,7 @@ public final class ay
   {
     Object localObject = null;
     AppMethodBeat.i(117031);
-    paramString1 = "select count(*) from rcontact " + f(paramString1, paramString2, paramList) + Y(paramArrayOfString);
+    paramString1 = "select count(*) from rcontact " + g(paramString1, paramString2, paramList) + Z(paramArrayOfString);
     paramString1 = paramString1 + " group by showHead";
     paramArrayOfString = this.db.rawQuery(paramString1, null);
     paramString1 = localObject;
@@ -1441,9 +1467,9 @@ public final class ay
   
   public final int[] c(String[] paramArrayOfString, String paramString1, String paramString2, String paramString3, List<String> paramList)
   {
-    AppMethodBeat.i(187492);
+    AppMethodBeat.i(188629);
     long l = System.currentTimeMillis();
-    paramArrayOfString = "select count(*) from rcontact " + f(paramString1, paramString2, paramList) + Y(paramArrayOfString) + bjR(paramString3);
+    paramArrayOfString = "select count(*) from rcontact " + g(paramString1, paramString2, paramList) + Z(paramArrayOfString) + bwq(paramString3);
     paramArrayOfString = paramArrayOfString + " group by showHead";
     paramString2 = this.db.rawQuery(paramArrayOfString, null);
     Log.d("MicroMsg.ContactStorage", "kevin MMCore.getAccStg().getContactStg().getSectionNumByShowHead db.rawQuery : " + (System.currentTimeMillis() - l));
@@ -1467,23 +1493,23 @@ public final class ay
       }
     }
     paramString2.close();
-    AppMethodBeat.o(187492);
+    AppMethodBeat.o(188629);
     return paramArrayOfString;
   }
   
-  public final int ce(String paramString, long paramLong)
+  public final int cl(String paramString, long paramLong)
   {
     AppMethodBeat.i(169111);
     Log.i("MicroMsg.ContactStorage", "updateSendMsgTicketByUser %s %s", new Object[] { Util.nullAs(paramString, ""), Long.valueOf(paramLong) });
-    as localas = bjJ(paramString);
+    as localas = bwg(paramString);
     if (localas != null)
     {
-      if (Util.isEqual(localas.fvd, paramLong))
+      if (Util.isEqual(localas.hDC, paramLong))
       {
         AppMethodBeat.o(169111);
         return 0;
       }
-      localas.yy(paramLong);
+      localas.Ez(paramLong);
       int i = c(paramString, localas);
       AppMethodBeat.o(169111);
       return i;
@@ -1494,7 +1520,6 @@ public final class ay
   
   public final int d(String paramString, as paramas)
   {
-    int j = 0;
     AppMethodBeat.i(117004);
     if ((Util.isNullOrNil(paramString)) || (paramas == null) || (Util.isNullOrNil(paramas.field_username)))
     {
@@ -1502,62 +1527,62 @@ public final class ay
       AppMethodBeat.o(117004);
       return 0;
     }
-    Log.d("MicroMsg.ContactStorage", "updateEncryptUser contact: " + paramas.field_username + " enUsername: " + paramString);
-    if (!ar(paramas))
+    Log.i("MicroMsg.ContactStorage", "updateEncryptUser contact: " + paramas.field_username + " enUsername: " + paramString);
+    if (!ax(paramas))
     {
       AppMethodBeat.o(117004);
       return 1;
     }
-    if (as.IG(paramas.field_username)) {
-      paramas.setUsername(as.bjz(paramas.field_username));
+    if (as.PY(paramas.field_username)) {
+      paramas.setUsername(as.bvW(paramas.field_username));
     }
-    paramas.nd(paramas.aqN());
-    this.OoJ.a(this, paramas);
+    paramas.pq(paramas.axh());
+    paramas.Fa(ar.bvF(paramas.field_username));
+    this.VEC.a(this, paramas);
     boolean bool;
     ContentValues localContentValues;
     as localas;
     int i;
-    if (this.OoJ.b(paramas, true) > 0)
+    if (this.VEC.b(paramas, true) > 0)
     {
       bool = true;
-      Log.d("MicroMsg.ContactStorage", "[update] ret=%s oldUsername=%s, username=%s, showHead=%d, verifyFlag=%d", new Object[] { Boolean.valueOf(bool), paramString, paramas.field_username, Integer.valueOf(paramas.field_showHead), Integer.valueOf(paramas.field_verifyFlag) });
+      Log.i("MicroMsg.ContactStorage", "[update] ret=%s oldUsername=%s, username=%s, showHead=%d, verifyFlag=%d type:%s", new Object[] { Boolean.valueOf(bool), paramString, paramas.field_username, Integer.valueOf(paramas.field_showHead), Integer.valueOf(paramas.field_verifyFlag), Integer.valueOf(paramas.field_type) });
       localContentValues = paramas.convertTo();
-      if ((bool) || (paramas.gMZ > 0L)) {
-        break label460;
+      if ((bool) || (paramas.jxt > 0L)) {
+        break label509;
       }
       localas = new as(paramString);
       localas.setType(0);
       localas.setUsername("fake_" + Util.nowMilliSecond());
-      localas.BK("fake_" + Util.nowMilliSecond());
-      i = this.db.update(bjE(paramString), localas.convertTo(), "username=?", new String[] { String.valueOf(paramString) });
-      Log.d("MicroMsg.ContactStorage", "newContact.contactId <= 0 | delete " + bjE(paramString) + " user :" + paramString + ", res:" + i);
-      i = j;
-      if (localContentValues.size() > 0) {
-        i = (int)this.db.replace(bjE(paramas.field_username), com.tencent.mm.contact.c.info.primaryKey, localContentValues);
+      localas.Iy("fake_" + Util.nowMilliSecond());
+      i = this.db.update(bwb(paramString), localas.convertTo(), "username=?", new String[] { String.valueOf(paramString) });
+      Log.i("MicroMsg.ContactStorage", "newContact.contactId <= 0 | delete " + bwb(paramString) + " user :" + paramString + ", res:" + i);
+      if (localContentValues.size() <= 0) {
+        break label819;
       }
+      i = (int)this.db.replace(bwb(paramas.field_username), com.tencent.mm.contact.d.info.primaryKey, localContentValues);
     }
     for (;;)
     {
-      ayf(paramas.field_username);
+      Log.i("MicroMsg.ContactStorage", "updateEncryptUser values:%s, result1:%s", new Object[] { Integer.valueOf(localContentValues.size()), Integer.valueOf(i) });
+      aHy(paramas.field_username);
       if (!Util.isNullOrNil(paramas.field_encryptUsername)) {
-        ayf(paramas.field_encryptUsername);
+        aHy(paramas.field_encryptUsername);
       }
-      doNotify(3, this, paramString);
-      doNotify(3, this, paramas.field_username);
+      doNotify(3, this, paramString, paramas);
+      doNotify(3, this, paramas.field_username, paramas);
       AppMethodBeat.o(117004);
       return i;
       bool = false;
       break;
-      label460:
-      i = j;
+      label509:
       if (!bool) {
         if (paramString.equals(paramas.field_username))
         {
-          i = j;
           if (localContentValues.size() > 0)
           {
-            i = this.db.update(bjE(paramas.field_username), localContentValues, "rowid=?", new String[] { paramas.gMZ });
-            Log.i("MicroMsg.ContactStorage", "summercontact en equal username[%s], result1[%d], contactId[%d]", new Object[] { paramas.field_username, Integer.valueOf(i), Long.valueOf(paramas.gMZ) });
+            i = this.db.update(bwb(paramas.field_username), localContentValues, "rowid=?", new String[] { paramas.jxt });
+            Log.i("MicroMsg.ContactStorage", "summercontact en equal username[%s], result1[%d], contactId[%d]", new Object[] { paramas.field_username, Integer.valueOf(i), Long.valueOf(paramas.jxt) });
           }
         }
         else
@@ -1565,15 +1590,18 @@ public final class ay
           localas = new as(paramString);
           localas.setType(0);
           localas.setUsername("fake_" + Util.nowMilliSecond());
-          localas.BK("fake_" + Util.nowMilliSecond());
-          i = this.db.update(bjE(paramString), localas.convertTo(), "username=?", new String[] { String.valueOf(paramString) });
-          Log.d("MicroMsg.ContactStorage", "delete " + bjE(paramString) + " user :" + paramString + ", res:" + i);
-          i = j;
-          if (localContentValues.size() > 0) {
-            i = this.db.update(bjE(paramas.field_username), localContentValues, "rowid=?", new String[] { paramas.gMZ });
+          localas.Iy("fake_" + Util.nowMilliSecond());
+          i = this.db.update(bwb(paramString), localas.convertTo(), "username=?", new String[] { String.valueOf(paramString) });
+          Log.i("MicroMsg.ContactStorage", "delete " + bwb(paramString) + " user :" + paramString + ", res:" + i);
+          if (localContentValues.size() > 0)
+          {
+            i = this.db.update(bwb(paramas.field_username), localContentValues, "rowid=?", new String[] { paramas.jxt });
+            continue;
           }
         }
       }
+      label819:
+      i = 0;
     }
   }
   
@@ -1582,12 +1610,11 @@ public final class ay
     AppMethodBeat.i(117051);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("select count(username) from rcontact where ");
-    localStringBuilder.append("type & ").append(com.tencent.mm.contact.c.arn()).append(" !=0 and ");
-    localStringBuilder.append("type & ").append(com.tencent.mm.contact.c.aru()).append(" =0 and ");
-    localStringBuilder.append("type & ").append(com.tencent.mm.contact.c.aro()).append(" =0 and ");
-    localStringBuilder.append("verifyFlag & 8 = 0 and ");
-    localStringBuilder.append("(( username like '%@chatroom') or ");
-    localStringBuilder.append("( username like '%@im.chatroom'))");
+    localStringBuilder.append("type & ").append(com.tencent.mm.contact.d.axN()).append(" !=0 and ");
+    localStringBuilder.append("type & ").append(com.tencent.mm.contact.d.axY()).append(" =0 and ");
+    localStringBuilder.append("type & ").append(com.tencent.mm.contact.d.axO()).append(" =0 and ");
+    localStringBuilder.append("verifyFlag & 8 = 0");
+    localStringBuilder.append(ab.c("username", new String[] { "@chatroom", "@im.chatroom" }, new String[0]));
     if ((paramArrayOfString1 != null) && (paramArrayOfString1.length > 0))
     {
       int j = paramArrayOfString1.length;
@@ -1624,42 +1651,43 @@ public final class ay
   
   public final Cursor d(String paramString1, String paramString2, List<String> paramList)
   {
-    AppMethodBeat.i(117022);
-    paramString1 = c(paramString1, paramString2, paramList);
-    AppMethodBeat.o(117022);
+    AppMethodBeat.i(117014);
+    paramString1 = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + g(paramString1, paramString2, paramList) + jF(null) + hyr();
+    Log.v("MicroMsg.ContactStorage", paramString1);
+    paramString1 = this.db.rawQuery(paramString1, null);
+    AppMethodBeat.o(117014);
     return paramString1;
   }
   
   public final Cursor d(String[] paramArrayOfString, String paramString1, String paramString2, String paramString3, List<String> paramList)
   {
-    AppMethodBeat.i(187493);
-    paramArrayOfString = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + f(paramString2, paramString3, paramList) + Y(paramArrayOfString) + bjR(paramString1) + gCf();
+    AppMethodBeat.i(188652);
+    paramArrayOfString = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + g(paramString2, paramString3, paramList) + Z(paramArrayOfString) + bwq(paramString1) + hyr();
     Log.v("MicroMsg.ContactStorage", paramArrayOfString);
     paramArrayOfString = this.db.rawQuery(paramArrayOfString, null);
-    AppMethodBeat.o(187493);
+    AppMethodBeat.o(188652);
     return paramArrayOfString;
   }
   
   public final void d(as paramas, boolean paramBoolean)
   {
-    AppMethodBeat.i(187489);
+    AppMethodBeat.i(188551);
     if ((paramas == null) || (paramas.field_username == null) || ((paramas.field_type == 0) && (!paramBoolean)))
     {
-      AppMethodBeat.o(187489);
+      AppMethodBeat.o(188551);
       return;
     }
-    this.OoH.x(paramas.field_username, paramas);
-    this.OoI.x(paramas.field_username, Integer.valueOf(paramas.field_type));
-    AppMethodBeat.o(187489);
+    this.VEA.q(paramas.field_username, paramas);
+    this.VEB.q(paramas.field_username, Integer.valueOf(paramas.field_type));
+    Log.d("MicroMsg.ContactStorage", "updateToCache(%s) username：%s %s", new Object[] { this.VEA, paramas.field_username, Util.getStack() });
+    AppMethodBeat.o(188551);
   }
   
   public final Cursor e(String paramString1, String paramString2, List<String> paramList)
   {
-    AppMethodBeat.i(117023);
-    paramString1 = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + f(paramString1, paramString2, paramList) + gCf();
-    Log.v("MicroMsg.ContactStorage", paramString1);
-    paramString1 = this.db.rawQuery(paramString1, null);
-    AppMethodBeat.o(117023);
+    AppMethodBeat.i(117022);
+    paramString1 = d(paramString1, paramString2, paramList);
+    AppMethodBeat.o(117022);
     return paramString1;
   }
   
@@ -1672,56 +1700,61 @@ public final class ay
       return;
     }
     String str = paramString;
-    if (as.IG(paramString)) {
-      str = as.bjz(paramString);
+    if (as.PY(paramString)) {
+      str = as.bvW(paramString);
     }
-    paramas.nd(paramas.aqN());
+    paramas.pq(paramas.axh());
+    paramas.Fa(ar.bvF(paramas.field_username));
     if (ab.p(paramas))
     {
-      paramas.nd(43);
-      paramas.BF(com.tencent.mm.platformtools.f.Si(paramas.arI()));
-      paramas.BG(com.tencent.mm.platformtools.f.Sh(paramas.arI()));
-      paramas.BI(com.tencent.mm.platformtools.f.Sh(paramas.arJ()));
-      paramas.BJ(paramas.arJ());
+      paramas.pq(43);
+      paramas.It(com.tencent.mm.platformtools.f.ZK(paramas.ayr()));
+      paramas.Iu(com.tencent.mm.platformtools.f.ZJ(paramas.ayr()));
+      paramas.Iw(com.tencent.mm.platformtools.f.ZJ(paramas.ays()));
+      paramas.Ix(paramas.ays());
       AppMethodBeat.o(117005);
       return;
     }
-    if (ab.Js(paramas.field_username))
+    if (ab.QL(paramas.field_username))
     {
       Log.i("MicroMsg.ContactStorage", "update official account helper showhead %d", new Object[] { Integer.valueOf(31) });
-      paramas.nd(31);
+      paramas.pq(31);
     }
-    this.OoJ.a(this, paramas);
-    int i = this.OoJ.b(paramas, true);
-    Log.d("MicroMsg.ContactStorage", "ret=%s username=%s, showHead=%d, verifyFlag=%d", new Object[] { Integer.valueOf(i), paramas.field_username, Integer.valueOf(paramas.field_showHead), Integer.valueOf(paramas.field_verifyFlag) });
+    this.VEC.a(this, paramas);
+    int i = this.VEC.b(paramas, true);
+    Log.i("MicroMsg.ContactStorage", "ret=%s username=%s, showHead=%d, verifyFlag=%d", new Object[] { Integer.valueOf(i), paramas.field_username, Integer.valueOf(paramas.field_showHead), Integer.valueOf(paramas.field_verifyFlag) });
     if (i > 0)
     {
       AppMethodBeat.o(117005);
       return;
     }
     paramString = paramas.convertTo();
-    if ((int)paramas.gMZ > 0) {
-      paramString.put("rowid", Integer.valueOf((int)paramas.gMZ));
+    if ((int)paramas.jxt > 0) {
+      paramString.put("rowid", Integer.valueOf((int)paramas.jxt));
     }
     if (paramString.size() > 0) {
-      this.db.update(bjE(str), paramString, "username=?", new String[] { String.valueOf(str) });
+      this.db.update(bwb(str), paramString, "username=?", new String[] { String.valueOf(str) });
     }
     AppMethodBeat.o(117005);
   }
   
-  public final String f(String paramString1, String paramString2, List<String> paramList)
+  public final Cursor f(String paramString1, String paramString2, List<String> paramList)
+  {
+    AppMethodBeat.i(117023);
+    paramString1 = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + g(paramString1, paramString2, paramList) + hyr();
+    Log.v("MicroMsg.ContactStorage", paramString1);
+    paramString1 = this.db.rawQuery(paramString1, null);
+    AppMethodBeat.o(117023);
+    return paramString1;
+  }
+  
+  public final String g(String paramString1, String paramString2, List<String> paramList)
   {
     boolean bool2 = true;
-    boolean bool3 = true;
-    boolean bool4 = true;
-    boolean bool5 = true;
-    boolean bool6 = true;
-    boolean bool7 = true;
-    boolean bool8 = true;
     boolean bool1 = true;
     AppMethodBeat.i(117049);
     if ((paramString1 == null) || (paramString1.equals("@all.android"))) {
-      paramString1 = "" + aY(true, false);
+      paramString1 = "" + bk(true, false);
     }
     for (;;)
     {
@@ -1740,63 +1773,78 @@ public final class ay
       }
       if (paramString1.equals("@all.contact.android"))
       {
-        paramString1 = "" + gCi();
+        paramString1 = "" + hyu();
       }
       else if (paramString1.equals("@all.chatroom.contact"))
       {
         paramString1 = new StringBuilder().append("");
-        paramString2 = "(type & " + com.tencent.mm.contact.c.arn() + "!=0 and (username like '%@chatroom' or username like '%@im.chatroom" + "'))";
+        paramString2 = "(type & " + com.tencent.mm.contact.d.axN() + "!=0" + ab.c("username", new String[] { "@chatroom", "@im.chatroom" }, new String[0]) + ")";
         paramString2 = " where (" + paramString2 + ") and ";
-        paramString1 = new StringBuilder().append(paramString2).append("type & ").append(com.tencent.mm.contact.c.aru()).append("=0 ").toString();
+        paramString1 = new StringBuilder().append(paramString2).append("type & ").append(com.tencent.mm.contact.d.axY()).append("=0 ").toString();
       }
       else
       {
         if (paramString1.equals("@all.contact.without.chatroom"))
         {
           paramString1 = new StringBuilder().append("");
-          paramString2 = aY(false, false);
+          paramString2 = bk(false, false);
           if ((paramString2 != null) && (paramString2.length() > 0)) {}
-          for (;;)
+          for (bool1 = true;; bool1 = false)
           {
             Assert.assertTrue(bool1);
-            str1 = " or (" + gCk() + ')' + " or (" + gCl() + ")";
-            paramString1 = new StringBuilder().append(paramString2).append(" and ( username not like '%@%'").append(str1).append(")").toString();
+            str1 = " or (" + hyw() + ')' + " or (" + hyx() + ")";
+            paramString1 = new StringBuilder().append(paramString2).append(ab.a("username", "@micromsg.qq.com", new String[] { str1 })).toString();
             break;
-            bool1 = false;
           }
         }
         if ((paramString1.equals("@all.contact.without.chatroom.without.openim")) || (paramString1.equals("@all.contact.without.chatroom.without.openim.without.openimfavour")))
         {
           paramString1 = new StringBuilder().append("");
-          paramString2 = aY(false, false);
+          paramString2 = bk(false, false);
           if ((paramString2 != null) && (paramString2.length() > 0)) {}
-          for (bool1 = bool2;; bool1 = false)
+          for (bool1 = true;; bool1 = false)
           {
             Assert.assertTrue(bool1);
-            str1 = " or (" + gCk() + ')';
-            paramString1 = new StringBuilder().append(paramString2).append(" and ( username not like '%@%'").append(str1).append(")").toString();
+            str1 = " or (" + hyw() + ')';
+            paramString1 = new StringBuilder().append(paramString2).append(ab.a("username", "@micromsg.qq.com", new String[] { str1 })).toString();
             break;
           }
         }
         if (paramString1.equals("@black.android"))
         {
-          paramString1 = "" + new StringBuilder(" where type & ").append(com.tencent.mm.contact.c.aro()).append("!=0").toString();
+          paramString1 = "" + new StringBuilder(" where type & ").append(com.tencent.mm.contact.d.axO()).append("!=0 and type >= ").append(com.tencent.mm.contact.d.axO()).toString();
         }
         else if (paramString1.equals("@werun.black.android"))
         {
-          paramString1 = "" + new StringBuilder(" where type & ").append(com.tencent.mm.contact.c.arp()).append("!=0").toString();
+          paramString1 = "" + new StringBuilder(" where type & ").append(com.tencent.mm.contact.d.axP()).append("!=0").toString();
+        }
+        else if (paramString1.equals("@tophistory.black.android"))
+        {
+          paramString1 = "" + new StringBuilder(" where type & ").append(com.tencent.mm.contact.d.axQ()).append("!=0").toString();
+        }
+        else if (paramString1.equals("@tophistory.unlike.android"))
+        {
+          paramString1 = "" + new StringBuilder(" where type & ").append(com.tencent.mm.contact.d.axR()).append("!=0").toString();
         }
         else if (paramString1.equals("@social.black.android"))
         {
-          paramString1 = "" + new StringBuilder().append(gCi()).append(" and type & ").append(com.tencent.mm.contact.c.arq()).append("!=0").toString();
+          paramString1 = "" + new StringBuilder().append(hyu()).append(" and type & ").append(com.tencent.mm.contact.d.axS()).append("!=0").toString();
+        }
+        else if (paramString1.equals("@sns.black.android"))
+        {
+          paramString1 = "" + new StringBuilder().append(hyu()).append(" and type & ").append(com.tencent.mm.contact.d.axT()).append("!=0").toString();
+        }
+        else if (paramString1.equals("@sns.unlike.android"))
+        {
+          paramString1 = "" + new StringBuilder().append(hyu()).append(" and type & ").append(com.tencent.mm.contact.d.axU()).append("!=0").toString();
         }
         else if (paramString1.equals("@finder.block.his.liked.android"))
         {
-          paramString1 = "" + new StringBuilder().append(gCi()).append(" and type & ").append(com.tencent.mm.contact.c.arr()).append("!=0").toString();
+          paramString1 = "" + new StringBuilder().append(hyu()).append(" and type & ").append(com.tencent.mm.contact.d.axV()).append("!=0").toString();
         }
         else if (paramString1.equals("@finder.block.my.liked.android"))
         {
-          paramString1 = "" + new StringBuilder().append(gCi()).append(" and type & ").append(com.tencent.mm.contact.c.ars()).append("!=0").toString();
+          paramString1 = "" + new StringBuilder().append(hyu()).append(" and type & ").append(com.tencent.mm.contact.d.axW()).append("!=0").toString();
         }
         else if (paramString1.equals("@t.qq.com"))
         {
@@ -1807,88 +1855,89 @@ public final class ay
           if (paramString1.equals("@domain.android"))
           {
             paramString1 = new StringBuilder().append("");
-            str1 = aY(true, false);
+            str1 = bk(true, false);
             if ((str1 != null) && (str1.length() > 0)) {}
-            for (bool1 = bool3;; bool1 = false)
+            for (;;)
             {
               Assert.assertTrue(bool1);
               paramString1 = new StringBuilder().append(str1).append(" and domainList like '%").append(paramString2).append("%'").toString();
               break;
+              bool1 = false;
             }
           }
           if (paramString1.equals("@micromsg.qq.com"))
           {
             paramString1 = new StringBuilder().append("");
-            paramString2 = aY(false, false);
+            paramString2 = bk(false, false);
             if ((paramString2 != null) && (paramString2.length() > 0)) {}
-            for (bool1 = bool4;; bool1 = false)
+            for (bool1 = true;; bool1 = false)
             {
               Assert.assertTrue(bool1);
-              str1 = " or (" + gCj() + ')';
-              String str2 = " or (" + gCk() + ')';
-              paramString1 = new StringBuilder().append(paramString2).append(" and ( username not like '%@%'").append(str1).append(str2).append(")").toString();
+              str1 = " or (" + hyv() + ')';
+              String str2 = " or (" + hyw() + ')';
+              paramString1 = new StringBuilder().append(paramString2).append(ab.a("username", "@micromsg.qq.com", new String[] { str1, str2 })).toString();
               break;
             }
           }
           if (paramString1.equals("@micromsg.no.verify.biz.qq.com"))
           {
             paramString1 = new StringBuilder().append("");
-            paramString2 = "type & " + com.tencent.mm.contact.c.arn() + " !=0 ";
+            paramString2 = "type & " + com.tencent.mm.contact.d.axN() + " !=0 ";
             paramString2 = " where (" + paramString2 + ") and ";
-            paramString2 = paramString2 + "type & " + com.tencent.mm.contact.c.aru() + " =0 and ";
-            paramString2 = paramString2 + "type & " + com.tencent.mm.contact.c.aro() + " =0 and ";
-            paramString2 = paramString2 + "verifyFlag & " + as.gBP() + " =0";
+            paramString2 = paramString2 + "type & " + com.tencent.mm.contact.d.axY() + " =0 and ";
+            paramString2 = paramString2 + "type & " + com.tencent.mm.contact.d.axO() + " =0 and ";
+            paramString2 = paramString2 + "verifyFlag & " + as.hya() + " =0";
             if ((paramString2 != null) && (paramString2.length() > 0)) {}
-            for (bool1 = bool5;; bool1 = false)
+            for (bool1 = true;; bool1 = false)
             {
               Assert.assertTrue(bool1);
-              str1 = " or (" + gCj() + ')';
-              paramString1 = new StringBuilder().append(paramString2).append(" and ( username not like '%@%'").append(str1).append(")").toString();
+              str1 = " or (" + hyv() + ')';
+              paramString1 = new StringBuilder().append(paramString2).append(ab.a("username", "@micromsg.qq.com", new String[] { str1 })).toString();
               break;
             }
           }
           if (paramString1.equals("@micromsg.with.all.biz.qq.com"))
           {
             paramString1 = new StringBuilder().append("");
-            paramString2 = gCh();
+            paramString2 = hyt();
             if ((paramString2 != null) && (paramString2.length() > 0)) {}
-            for (bool1 = bool6;; bool1 = false)
+            for (bool1 = true;; bool1 = false)
             {
               Assert.assertTrue(bool1);
-              str1 = " or (" + gCj() + ')';
-              paramString1 = new StringBuilder().append(paramString2).append(" and ( username not like '%@%'").append(str1).append(")").toString();
+              str1 = " or (" + hyv() + ')';
+              paramString1 = new StringBuilder().append(paramString2).append(ab.a("username", "@micromsg.qq.com", new String[] { str1 })).toString();
               break;
             }
           }
           if (paramString1.equals("@micromsg.with.all.biz.qq.com.openim"))
           {
             paramString1 = new StringBuilder().append("");
-            paramString2 = gCh();
+            paramString2 = hyt();
             if ((paramString2 != null) && (paramString2.length() > 0)) {}
-            for (bool1 = bool7;; bool1 = false)
+            for (bool1 = true;; bool1 = false)
             {
               Assert.assertTrue(bool1);
-              str1 = " or (" + gCj() + ')';
-              paramString1 = new StringBuilder().append(paramString2).append(" and ( username not like '%@%'").append(str1).append(" or (username like '%@openim'))").toString();
+              str1 = " or (" + hyv() + ')';
+              paramString1 = new StringBuilder().append(paramString2).append(ab.a("username", "@micromsg.qq.com", new String[] { str1, " or ((username like '%@openim'))" })).toString();
               break;
             }
           }
           if (paramString1.equals("@qqim"))
           {
             paramString1 = new StringBuilder().append("");
-            paramString2 = aY(false, false);
+            paramString2 = bk(false, false);
             if ((paramString2 != null) && (paramString2.length() > 0)) {}
-            for (bool1 = bool8;; bool1 = false)
+            for (bool1 = bool2;; bool1 = false)
             {
               Assert.assertTrue(bool1);
-              paramString1 = new StringBuilder().append(paramString2).append(" and username like '%").append("@qqim").append("'").toString();
+              paramString1 = new StringBuilder().append(paramString2).append(ab.a("username", "@qqim", new String[0])).toString();
               break;
             }
           }
           if (paramString1.equals("@all.chatroom"))
           {
             paramString1 = new StringBuilder().append("");
-            paramString2 = "type & " + com.tencent.mm.contact.c.arn() + " !=0";
+            paramString2 = "type & " + com.tencent.mm.contact.d.axN() + " !=0";
             paramString2 = paramString2 + " or type & 2 !=0";
             paramString2 = paramString2 + " or type & 4 !=0";
             paramString2 = paramString2 + " or 1";
@@ -1897,31 +1946,31 @@ public final class ay
           else if (paramString1.equals("@verify.contact"))
           {
             paramString1 = new StringBuilder().append("");
-            paramString2 = "type & " + com.tencent.mm.contact.c.arn() + " != 0 and ";
-            paramString2 = paramString2 + "verifyFlag & " + as.gBO() + " != 0";
+            paramString2 = "type & " + com.tencent.mm.contact.d.axN() + " != 0 and ";
+            paramString2 = paramString2 + "verifyFlag & " + as.hxZ() + " != 0";
             paramString1 = new StringBuilder(" where (").append(paramString2).append(") ").toString();
           }
           else if (paramString1.equals("@biz.contact"))
           {
             paramString1 = new StringBuilder().append("");
-            paramString2 = "type & " + com.tencent.mm.contact.c.arn() + " != 0 and ";
-            paramString2 = paramString2 + "verifyFlag & " + as.gBP() + " != 0";
+            paramString2 = "type & " + com.tencent.mm.contact.d.axN() + " != 0 and ";
+            paramString2 = paramString2 + "verifyFlag & " + as.hya() + " != 0";
             paramString1 = new StringBuilder(" where (").append(paramString2).append(") ").toString();
           }
           else if (paramString1.equals("@all.weixin.android"))
           {
             paramString1 = new StringBuilder().append("");
-            paramString2 = "type & " + com.tencent.mm.contact.c.arn() + " != 0 or  (username not like '%@qqim' and username not like '%@qr" + "' and username not like '%@bottle' and username not like '%@fb" + "' and username not like '%@google' and username not like '%@t.qq.com" + "' and username not like '%@t.sina.com' and username not like '%@t.sina.com" + "')";
+            paramString2 = "type & " + com.tencent.mm.contact.d.axN() + " != 0 or  (username not like '%@qqim' and username not like '%@qr" + "' and username not like '%@bottle' and username not like '%@fb" + "' and username not like '%@google' and username not like '%@t.qq.com" + "' and username not like '%@t.sina.com' and username not like '%@t.sina.com" + "')";
             paramString1 = new StringBuilder(" where (").append(paramString2).append(") ").toString();
           }
           else if (paramString1.equals("@openim.contact"))
           {
-            paramString1 = "" + gCm();
+            paramString1 = "" + hyy();
           }
           else
           {
             Log.d("MicroMsg.ContactStorage", "unknow role type");
-            paramString1 = "" + aY(false, false);
+            paramString1 = "" + bk(false, false);
           }
         }
       }
@@ -1931,10 +1980,62 @@ public final class ay
     return paramString1;
   }
   
-  public final List<String> gBY()
+  public final Cursor hyA()
+  {
+    AppMethodBeat.i(117052);
+    Cursor localCursor = this.db.rawQuery("select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact  where rowid = -1", null);
+    AppMethodBeat.o(117052);
+    return localCursor;
+  }
+  
+  public final Cursor hyB()
+  {
+    AppMethodBeat.i(117055);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("select username ,nickname ,alias,conRemark,verifyFlag,showHead,weiboFlag,rowid ,deleteFlag,lvbuff,descWordingId,openImAppid from rcontact  where ");
+    ((StringBuilder)localObject).append("type & ").append(com.tencent.mm.contact.d.axN()).append(" !=0 and ");
+    ((StringBuilder)localObject).append("type & ").append(com.tencent.mm.contact.d.axY()).append(" =0 and ");
+    ((StringBuilder)localObject).append("type & ").append(com.tencent.mm.contact.d.axO()).append(" =0 and ");
+    ((StringBuilder)localObject).append("verifyFlag & 8 = 0");
+    ((StringBuilder)localObject).append(ab.a("username", "@micromsg.qq.com", new String[0]));
+    ((StringBuilder)localObject).append(" or username = 'weixin'");
+    localObject = ((StringBuilder)localObject).toString();
+    Cursor localCursor = this.db.rawQuery((String)localObject, null, 2);
+    Log.i("MicroMsg.ContactStorage", "[oneliang]getNormalContactCursor, sql:%s", new Object[] { localObject });
+    AppMethodBeat.o(117055);
+    return localCursor;
+  }
+  
+  public final Cursor hyC()
+  {
+    AppMethodBeat.i(117056);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("select username ,nickname ,alias,conRemark,verifyFlag,showHead,weiboFlag,rowid ,deleteFlag,lvbuff,descWordingId,openImAppid from rcontact  where ");
+    ((StringBuilder)localObject).append("type & ").append(com.tencent.mm.contact.d.axN()).append(" !=0 and ");
+    ((StringBuilder)localObject).append("type & ").append(com.tencent.mm.contact.d.axY()).append(" =0 and ");
+    ((StringBuilder)localObject).append("type & ").append(com.tencent.mm.contact.d.axO()).append(" =0 and ");
+    ((StringBuilder)localObject).append("verifyFlag & 8 = 0");
+    ((StringBuilder)localObject).append(ab.a("username", "@micromsg.qq.com", new String[0]));
+    ((StringBuilder)localObject).append(" or username = 'weixin'");
+    Log.d("MicroMsg.ContactStorage", "get friend cursor, sql is %s", new Object[] { ((StringBuilder)localObject).toString() });
+    localObject = this.db.rawQuery(((StringBuilder)localObject).toString(), null, 2);
+    AppMethodBeat.o(117056);
+    return localObject;
+  }
+  
+  public final Cursor hyD()
+  {
+    AppMethodBeat.i(188705);
+    Log.v("MicroMsg.ContactStorage", "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact ");
+    Cursor localCursor = this.db.rawQuery("select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact ", null);
+    AppMethodBeat.o(188705);
+    return localCursor;
+  }
+  
+  public final List<String> hyk()
   {
     AppMethodBeat.i(116980);
-    Object localObject1 = " select openImAppid from rcontact" + gCm() + " group by openImAppid ";
+    Object localObject1 = " select openImAppid from rcontact" + hyy() + " group by openImAppid ";
     localObject1 = this.db.rawQuery((String)localObject1, null, 4);
     Object localObject2 = new ArrayList();
     String str;
@@ -1966,10 +2067,10 @@ public final class ay
     return localObject1;
   }
   
-  public final List<String> gBZ()
+  public final List<String> hyl()
   {
     AppMethodBeat.i(117008);
-    Object localObject = "select username from rcontact where " + gCj();
+    Object localObject = "select username from rcontact where " + hyv();
     localObject = this.db.rawQuery((String)localObject, null, 2);
     ArrayList localArrayList = new ArrayList();
     if (localObject == null)
@@ -1988,50 +2089,50 @@ public final class ay
     return localArrayList;
   }
   
-  public final Cursor gCa()
+  public final Cursor hym()
   {
     AppMethodBeat.i(117009);
-    Object localObject = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact  where " + new StringBuilder("type & ").append(com.tencent.mm.contact.c.aro()).append("=0 and username like '%@chatroom'").toString();
+    Object localObject = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact  where " + new StringBuilder("type & ").append(com.tencent.mm.contact.d.axO()).append("=0").append(ab.a("username", "@chatroom", new String[0])).toString();
     localObject = this.db.rawQuery((String)localObject, null);
     AppMethodBeat.o(117009);
     return localObject;
   }
   
-  public final Cursor gCb()
+  public final Cursor hyn()
   {
     AppMethodBeat.i(186129);
-    Object localObject = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + gCi() + " AND type & 256 !=0 ";
+    Object localObject = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + hyu() + " AND type & 256 !=0  AND type >= 256";
     Log.v("MicroMsg.ContactStorage", (String)localObject);
     localObject = this.db.rawQuery((String)localObject, null);
     AppMethodBeat.o(186129);
     return localObject;
   }
   
-  public final Cursor gCc()
+  public final Cursor hyo()
   {
     AppMethodBeat.i(117011);
-    Object localObject = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact  where " + OoL + " and verifyFlag & " + as.gBP() + " !=0 ";
+    Object localObject = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact  where " + VEE + " and verifyFlag & " + as.hya() + " !=0 ";
     Log.v("MicroMsg.ContactStorage", "dkbf:".concat(String.valueOf(localObject)));
     localObject = this.db.rawQuery((String)localObject, null);
     AppMethodBeat.o(117011);
     return localObject;
   }
   
-  public final Cursor gCd()
+  public final Cursor hyp()
   {
     AppMethodBeat.i(117012);
-    Object localObject = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + gCi() + " AND " + OoL + " AND " + OoK + gCg();
+    Object localObject = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + hyu() + " AND " + VEE + " AND " + VED + hys();
     Log.v("MicroMsg.ContactStorage", (String)localObject);
     localObject = this.db.rawQuery((String)localObject, null);
     AppMethodBeat.o(117012);
     return localObject;
   }
   
-  public final int gCe()
+  public final int hyq()
   {
     int i = 0;
     AppMethodBeat.i(117024);
-    Object localObject = "select count(rowid) from rcontact " + f("@biz.contact", null, null);
+    Object localObject = "select count(rowid) from rcontact " + g("@biz.contact", null, null);
     Log.v("MicroMsg.ContactStorage", (String)localObject);
     localObject = this.db.rawQuery((String)localObject, null, 2);
     if (((Cursor)localObject).moveToFirst()) {
@@ -2042,16 +2143,17 @@ public final class ay
     return i;
   }
   
-  public final int gCn()
+  public final int hyz()
   {
-    AppMethodBeat.i(187496);
+    AppMethodBeat.i(188684);
     long l = System.currentTimeMillis();
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("select count(username) from rcontact where ");
-    ((StringBuilder)localObject).append("type & ").append(com.tencent.mm.contact.c.arn()).append(" !=0 and ");
-    ((StringBuilder)localObject).append("type & ").append(com.tencent.mm.contact.c.aru()).append(" =0 and ");
-    ((StringBuilder)localObject).append("type & ").append(com.tencent.mm.contact.c.aro()).append(" =0 ");
-    ((StringBuilder)localObject).append(" limit 1000 ");
+    ((StringBuilder)localObject).append("select count(1) from");
+    ((StringBuilder)localObject).append(" (");
+    ((StringBuilder)localObject).append("select verifyFlag from rcontact where ");
+    ((StringBuilder)localObject).append("type & ").append(com.tencent.mm.contact.d.axN()).append(" !=0 and ");
+    ((StringBuilder)localObject).append("type & ").append(com.tencent.mm.contact.d.axY()).append(" =0 and ");
+    ((StringBuilder)localObject).append("type & ").append(com.tencent.mm.contact.d.axO()).append(" =0  )");
     localObject = ((StringBuilder)localObject).toString();
     Cursor localCursor = this.db.rawQuery((String)localObject, null, 2);
     int i;
@@ -2063,55 +2165,13 @@ public final class ay
     for (;;)
     {
       Log.i("MicroMsg.ContactStorage", "getNormalContactAndHelperCount, sql:%s, result:%d, time:%d", new Object[] { localObject, Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l) });
-      AppMethodBeat.o(187496);
+      AppMethodBeat.o(188684);
       return i;
       i = 0;
     }
   }
   
-  public final Cursor gCo()
-  {
-    AppMethodBeat.i(117052);
-    Cursor localCursor = this.db.rawQuery("select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact  where rowid = -1", null);
-    AppMethodBeat.o(117052);
-    return localCursor;
-  }
-  
-  public final Cursor gCp()
-  {
-    AppMethodBeat.i(117055);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("select username ,nickname ,alias,conRemark,verifyFlag,showHead,weiboFlag,rowid ,deleteFlag,lvbuff,descWordingId,openImAppid from rcontact  where ");
-    ((StringBuilder)localObject).append("type & ").append(com.tencent.mm.contact.c.arn()).append(" !=0 and ");
-    ((StringBuilder)localObject).append("type & ").append(com.tencent.mm.contact.c.aru()).append(" =0 and ");
-    ((StringBuilder)localObject).append("type & ").append(com.tencent.mm.contact.c.aro()).append(" =0 and ");
-    ((StringBuilder)localObject).append("verifyFlag & 8 = 0 and ");
-    ((StringBuilder)localObject).append("( username not like '%@%')");
-    ((StringBuilder)localObject).append(" or username = 'weixin'");
-    localObject = ((StringBuilder)localObject).toString();
-    Cursor localCursor = this.db.rawQuery((String)localObject, null, 2);
-    Log.i("MicroMsg.ContactStorage", "[oneliang]getNormalContactCursor, sql:%s", new Object[] { localObject });
-    AppMethodBeat.o(117055);
-    return localCursor;
-  }
-  
-  public final Cursor gCq()
-  {
-    AppMethodBeat.i(117056);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("select username ,nickname ,alias,conRemark,verifyFlag,showHead,weiboFlag,rowid ,deleteFlag,lvbuff,descWordingId,openImAppid from rcontact  where ");
-    ((StringBuilder)localObject).append("type & ").append(com.tencent.mm.contact.c.arn()).append(" !=0 and ");
-    ((StringBuilder)localObject).append("type & ").append(com.tencent.mm.contact.c.aru()).append(" =0 and ");
-    ((StringBuilder)localObject).append("type & ").append(com.tencent.mm.contact.c.aro()).append(" =0 and ");
-    ((StringBuilder)localObject).append("verifyFlag & 8 = 0 and ");
-    ((StringBuilder)localObject).append("( username not like '%@%')");
-    ((StringBuilder)localObject).append(" or username = 'weixin'");
-    localObject = this.db.rawQuery(((StringBuilder)localObject).toString(), null, 2);
-    AppMethodBeat.o(117056);
-    return localObject;
-  }
-  
-  public final Cursor iJ(List<String> paramList)
+  public final Cursor jB(List<String> paramList)
   {
     int i = 0;
     AppMethodBeat.i(116986);
@@ -2138,13 +2198,13 @@ public final class ay
       break;
     }
     label146:
-    paramList = str + gCf();
+    paramList = str + hyr();
     paramList = this.db.rawQuery(paramList, null);
     AppMethodBeat.o(116986);
     return paramList;
   }
   
-  public final Cursor iK(List<String> paramList)
+  public final Cursor jC(List<String> paramList)
   {
     int i = 0;
     AppMethodBeat.i(116987);
@@ -2175,13 +2235,13 @@ public final class ay
       localStringBuilder.append(" '").append((String)paramList.get(i)).append("',");
     }
     label136:
-    localStringBuilder.append(" )").append(gCf());
+    localStringBuilder.append(" )").append(hyr());
     paramList = this.db.rawQuery(localStringBuilder.toString(), null);
     AppMethodBeat.o(116987);
     return paramList;
   }
   
-  public final Cursor iL(List<String> paramList)
+  public final Cursor jD(List<String> paramList)
   {
     int i = 0;
     AppMethodBeat.i(117006);
@@ -2212,13 +2272,13 @@ public final class ay
       localStringBuilder.append(" '").append((String)paramList.get(i)).append("',");
     }
     label136:
-    localStringBuilder.append(" )").append(gCf());
+    localStringBuilder.append(" )").append(hyr());
     paramList = this.db.rawQuery(localStringBuilder.toString(), null);
     AppMethodBeat.o(117006);
     return paramList;
   }
   
-  public final Cursor iM(List<String> paramList)
+  public final Cursor jE(List<String> paramList)
   {
     int j = 0;
     AppMethodBeat.i(117007);
@@ -2260,10 +2320,10 @@ public final class ay
     return paramList;
   }
   
-  public final Cursor iP(List<String> paramList)
+  public final Cursor jH(List<String> paramList)
   {
     AppMethodBeat.i(117017);
-    String str = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + gCi() + " and ( " + iO(paramList) + " ) ";
+    String str = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + hyu() + " and ( " + jG(paramList) + " ) ";
     str = str + " order by case username ";
     int i = 0;
     while (i < paramList.size())
@@ -2279,28 +2339,28 @@ public final class ay
     return paramList;
   }
   
-  public final Cursor iQ(List<String> paramList)
+  public final Cursor jI(List<String> paramList)
   {
     AppMethodBeat.i(117018);
-    paramList = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact where (" + OoL + ") and (" + iO(paramList) + ")" + gCg();
+    paramList = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact where (" + VEE + ") and (" + jG(paramList) + ")" + hys();
     paramList = this.db.rawQuery(paramList, null);
     AppMethodBeat.o(117018);
     return paramList;
   }
   
-  public final Cursor iR(List<String> paramList)
+  public final Cursor jJ(List<String> paramList)
   {
     AppMethodBeat.i(117019);
-    paramList = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact where (" + OoL + ") and (" + iO(paramList) + ")" + gCg() + " and (username like  '%@openim' )";
+    paramList = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact where (" + VEE + ") and (" + jG(paramList) + ")" + hys() + " and (username like  '%@openim' )";
     paramList = this.db.rawQuery(paramList, null);
     AppMethodBeat.o(117019);
     return paramList;
   }
   
-  public final Cursor iS(List<String> paramList)
+  public final Cursor jK(List<String> paramList)
   {
     AppMethodBeat.i(117020);
-    paramList = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + y(paramList, false) + gCg();
+    paramList = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + A(paramList, false) + hys();
     Log.v("MicroMsg.ContactStorage", "favourSql ".concat(String.valueOf(paramList)));
     Log.i("MicroMsg.ContactStorage", "getFavCursor favourSql = %s", new Object[] { paramList });
     paramList = this.db.rawQuery(paramList, null);
@@ -2308,10 +2368,10 @@ public final class ay
     return paramList;
   }
   
-  public final Cursor iT(List<String> paramList)
+  public final Cursor jL(List<String> paramList)
   {
     AppMethodBeat.i(117021);
-    paramList = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + iX(paramList) + gCg();
+    paramList = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + jP(paramList) + hys();
     Log.v("MicroMsg.ContactStorage", "favourSql ".concat(String.valueOf(paramList)));
     Log.i("MicroMsg.ContactStorage", "getFavCursorWithoutOpenIM favourSql = %s", new Object[] { paramList });
     paramList = this.db.rawQuery(paramList, null);
@@ -2319,7 +2379,7 @@ public final class ay
     return paramList;
   }
   
-  public final List<String> iU(List<String> paramList)
+  public final List<String> jM(List<String> paramList)
   {
     AppMethodBeat.i(117025);
     if (paramList.isEmpty())
@@ -2345,7 +2405,7 @@ public final class ay
     localStringBuilder.append("quanPin asc, ");
     localStringBuilder.append("nickname asc, ");
     localStringBuilder.append("username asc ");
-    localObject = String.format("select %s from %s where (%s) and (%s & %d != 0)  order by %s", new Object[] { "username", "rcontact", ((StringBuilder)localObject).toString(), "type", Integer.valueOf(com.tencent.mm.contact.c.arn()), localStringBuilder.toString() });
+    localObject = String.format("select %s from %s where (%s) and (%s & %d != 0)  order by %s", new Object[] { "username", "rcontact", ((StringBuilder)localObject).toString(), "type", Integer.valueOf(com.tencent.mm.contact.d.axN()), localStringBuilder.toString() });
     Log.i("MicroMsg.ContactStorage", "getFilterList: sql is %s", new Object[] { localObject });
     localObject = this.db.rawQuery((String)localObject, null, 2);
     if (localObject != null)
@@ -2360,10 +2420,10 @@ public final class ay
     return localLinkedList;
   }
   
-  public final int[] iV(List<String> paramList)
+  public final int[] jN(List<String> paramList)
   {
     AppMethodBeat.i(117028);
-    paramList = "select distinct showHead from rcontact  where (" + iO(paramList) + ") " + gCf();
+    paramList = "select distinct showHead from rcontact  where (" + jG(paramList) + ") " + hyr();
     long l = System.currentTimeMillis();
     paramList = this.db.rawQuery(paramList, null);
     Log.d("MicroMsg.ContactStorage", "kevin MMCore.getAccStg().getContactStg().getShowSectionByShowHead db.rawQuery : " + (System.currentTimeMillis() - l));
@@ -2390,12 +2450,12 @@ public final class ay
     return arrayOfInt;
   }
   
-  public final int[] iW(List<String> paramList)
+  public final int[] jO(List<String> paramList)
   {
     int[] arrayOfInt = null;
     AppMethodBeat.i(117030);
     long l = System.currentTimeMillis();
-    paramList = "select count(*) from rcontact " + "where " + iO(paramList);
+    paramList = "select count(*) from rcontact " + "where " + jG(paramList);
     paramList = paramList + " group by showHead";
     Cursor localCursor = this.db.rawQuery(paramList, null, 2);
     Log.d("MicroMsg.ContactStorage", "kevin MMCore.getAccStg().getContactStg().getSectionNumByShowHead db.rawQuery : " + (System.currentTimeMillis() - l));
@@ -2423,21 +2483,21 @@ public final class ay
     return paramList;
   }
   
-  public final Cursor mR(String paramString1, String paramString2)
+  public final Cursor nI(String paramString1, String paramString2)
   {
     AppMethodBeat.i(185151);
-    paramString1 = "select username from rcontact " + f(paramString1, paramString2, null);
+    paramString1 = "select username from rcontact " + g(paramString1, paramString2, null);
     Log.v("MicroMsg.ContactStorage", paramString1);
     paramString1 = this.db.rawQuery(paramString1, null);
     AppMethodBeat.o(185151);
     return paramString1;
   }
   
-  public final int mS(String paramString1, String paramString2)
+  public final int nJ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(117059);
     Log.i("MicroMsg.ContactStorage", "updateSendMsgTicketByUser %s %s", new Object[] { Util.nullAs(paramString1, ""), Integer.valueOf(Util.nullAs(paramString2, "").length()) });
-    as localas = bjU(paramString1);
+    as localas = bwt(paramString1);
     if (localas != null)
     {
       if (Util.isEqual(localas.field_ticket, paramString2))
@@ -2445,7 +2505,7 @@ public final class ay
         AppMethodBeat.o(117059);
         return 0;
       }
-      localas.BP(paramString2);
+      localas.ID(paramString2);
       int i = c(paramString1, localas);
       AppMethodBeat.o(117059);
       return i;
@@ -2471,13 +2531,13 @@ public final class ay
     return true;
   }
   
-  public final Cursor x(List<String> paramList, boolean paramBoolean)
+  public final Cursor z(List<String> paramList, boolean paramBoolean)
   {
     AppMethodBeat.i(117016);
-    String str = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact  where " + iO(paramList);
+    String str = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact  where " + jG(paramList);
     paramList = str;
     if (paramBoolean) {
-      paramList = str + " " + gCf();
+      paramList = str + " " + hyr();
     }
     Log.d("MicroMsg.ContactStorage", "sql ".concat(String.valueOf(paramList)));
     paramList = this.db.rawQuery(paramList, null);
@@ -2488,48 +2548,48 @@ public final class ay
   static final class a
     implements bv.a
   {
-    ConcurrentHashMap<bv.a, Object> JWm;
+    ConcurrentHashMap<bv.a, Object> QWB;
     
     private a()
     {
-      AppMethodBeat.i(187484);
-      this.JWm = new ConcurrentHashMap();
-      AppMethodBeat.o(187484);
+      AppMethodBeat.i(188172);
+      this.QWB = new ConcurrentHashMap();
+      AppMethodBeat.o(188172);
     }
     
-    public final as Kn(String paramString)
+    public final as RG(String paramString)
     {
-      AppMethodBeat.i(187486);
-      Iterator localIterator = this.JWm.keySet().iterator();
+      AppMethodBeat.i(188178);
+      Iterator localIterator = this.QWB.keySet().iterator();
       while (localIterator.hasNext())
       {
         bv.a locala = (bv.a)localIterator.next();
-        as localas = locala.Kn(paramString);
+        as localas = locala.RG(paramString);
         if (localas != null)
         {
           Log.i("MicroMsg.ContactStorage", "[get] contact=%s listener=%s", new Object[] { localas.field_username, locala });
-          AppMethodBeat.o(187486);
+          AppMethodBeat.o(188178);
           return localas;
         }
       }
-      AppMethodBeat.o(187486);
+      AppMethodBeat.o(188178);
       return null;
     }
     
     public final void a(bv parambv, as paramas)
     {
-      AppMethodBeat.i(187485);
-      Iterator localIterator = this.JWm.keySet().iterator();
+      AppMethodBeat.i(188174);
+      Iterator localIterator = this.QWB.keySet().iterator();
       while (localIterator.hasNext()) {
         ((bv.a)localIterator.next()).a(parambv, paramas);
       }
-      AppMethodBeat.o(187485);
+      AppMethodBeat.o(188174);
     }
     
     public final int b(as paramas, boolean paramBoolean)
     {
-      AppMethodBeat.i(187487);
-      Iterator localIterator = this.JWm.keySet().iterator();
+      AppMethodBeat.i(188181);
+      Iterator localIterator = this.QWB.keySet().iterator();
       while (localIterator.hasNext())
       {
         bv.a locala = (bv.a)localIterator.next();
@@ -2537,11 +2597,11 @@ public final class ay
         if (i > 0)
         {
           Log.i("MicroMsg.ContactStorage", "[replace] ret=%s listener=%s", new Object[] { Integer.valueOf(i), locala });
-          AppMethodBeat.o(187487);
+          AppMethodBeat.o(188181);
           return i;
         }
       }
-      AppMethodBeat.o(187487);
+      AppMethodBeat.o(188181);
       return -1;
     }
   }

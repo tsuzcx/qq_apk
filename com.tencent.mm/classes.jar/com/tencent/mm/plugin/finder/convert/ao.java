@@ -1,132 +1,181 @@
 package com.tencent.mm.plugin.finder.convert;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.view.TouchDelegate;
+import android.content.Intent;
+import android.graphics.Paint;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.finder.api.g;
-import com.tencent.mm.plugin.finder.model.af;
-import com.tencent.mm.plugin.finder.view.r;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.h;
+import com.tencent.mm.loader.d;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.loader.t;
+import com.tencent.mm.plugin.finder.loader.t.a;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.view.FinderFoldedScrollLayout.b;
+import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.ar;
+import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderFollowConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderFollowData;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "adjustNickNameTvSize", "", "nicknameTv", "Landroid/widget/TextView;", "authIconIV", "Landroid/view/View;", "userOnLive", "getLayoutId", "", "onBindViewHolder", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
-public final class ao
-  extends e<af>
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderFoldedConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "controller", "Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$FoldedController;", "layoutResId", "", "(Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$FoldedController;I)V", "getController", "()Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$FoldedController;", "getLayoutId", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"})
+public abstract class ao
+  extends com.tencent.mm.view.recyclerview.e<BaseFinderFeed>
 {
-  final String TAG = "FinderFollowConvert";
+  final FinderFoldedScrollLayout.b xmL;
+  private final int xmc;
   
-  public final void a(RecyclerView paramRecyclerView, h paramh, int paramInt)
+  public ao(FinderFoldedScrollLayout.b paramb, int paramInt)
   {
-    AppMethodBeat.i(243135);
-    p.h(paramRecyclerView, "recyclerView");
-    p.h(paramh, "holder");
-    paramRecyclerView = paramh.Mn(2131301215);
-    paramRecyclerView.post((Runnable)new c(paramRecyclerView));
-    AppMethodBeat.o(243135);
+    this.xmL = paramb;
+    this.xmc = paramInt;
+  }
+  
+  public void a(RecyclerView paramRecyclerView, final com.tencent.mm.view.recyclerview.i parami, int paramInt)
+  {
+    p.k(paramRecyclerView, "recyclerView");
+    p.k(parami, "holder");
+    parami.amk.setOnClickListener((View.OnClickListener)new a(this, parami));
+    this.xmL.dpx();
+    paramRecyclerView = (ImageView)parami.RD(b.f.finder_avatar);
+    TextView localTextView = (TextView)parami.RD(b.f.finder_nickname);
+    if (localTextView != null) {
+      localTextView.setOnClickListener((View.OnClickListener)new ao.b(paramRecyclerView));
+    }
+    if (paramRecyclerView != null) {
+      paramRecyclerView.setOnClickListener((View.OnClickListener)new c(parami));
+    }
+  }
+  
+  public void a(com.tencent.mm.view.recyclerview.i parami, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+  {
+    p.k(parami, "holder");
+    p.k(paramBaseFinderFeed, "item");
+    Object localObject1 = (ImageView)parami.RD(b.f.finder_avatar);
+    Object localObject2 = (TextView)parami.RD(b.f.finder_nickname);
+    parami.RD(b.f.like_count_tv);
+    if (this.xmL.dpz() == 1)
+    {
+      p.j(localObject1, "avatar");
+      ((ImageView)localObject1).setVisibility(0);
+      paramList = t.ztT;
+      d locald = t.dJh();
+      paramList = paramBaseFinderFeed.contact;
+      if (paramList != null)
+      {
+        paramList = paramList.Mm();
+        paramList = new com.tencent.mm.plugin.finder.loader.e(Util.nullAsNil(paramList));
+        t localt = t.ztT;
+        locald.a(paramList, (ImageView)localObject1, t.a(t.a.ztX));
+        if (localObject2 != null)
+        {
+          ((TextView)localObject2).setVisibility(0);
+          ((TextView)localObject2).setText((CharSequence)paramBaseFinderFeed.feedObject.getNickNameSpan());
+          ar.a((Paint)((TextView)localObject2).getPaint(), 0.8F);
+        }
+        paramList = (ImageView)parami.RD(b.f.auth_icon);
+        if (paramList != null)
+        {
+          localObject1 = paramBaseFinderFeed.contact;
+          if (localObject1 != null)
+          {
+            localObject2 = com.tencent.mm.plugin.finder.utils.aj.AGc;
+            com.tencent.mm.plugin.finder.utils.aj.a(paramList, ((com.tencent.mm.plugin.finder.api.i)localObject1).field_authInfo);
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      paramList = parami.RD(b.f.finder_like_container);
+      if (paramList != null)
+      {
+        paramBaseFinderFeed.feedObject.getLikeCount();
+        this.xmL.dpy();
+        paramList.setVisibility(8);
+        this.xmL.dpy();
+      }
+      parami = (TextView)parami.RD(b.f.finder_desc);
+      if (parami != null)
+      {
+        if (Util.isNullOrNil(paramBaseFinderFeed.feedObject.getDescription())) {
+          break label368;
+        }
+        parami.setVisibility(0);
+        parami.setText((CharSequence)paramBaseFinderFeed.feedObject.getDescriptionSpan());
+      }
+      return;
+      paramList = null;
+      break;
+      if (localObject1 != null) {
+        ((ImageView)localObject1).setVisibility(8);
+      }
+      if (localObject2 != null) {
+        ((TextView)localObject2).setVisibility(8);
+      }
+      paramList = (ImageView)parami.RD(b.f.auth_icon);
+      if (paramList != null) {
+        paramList.setVisibility(8);
+      }
+    }
+    label368:
+    parami.setText((CharSequence)"");
   }
   
   public final int getLayoutId()
   {
-    return 2131494221;
+    return this.xmc;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/convert/FinderFollowConvert$adjustNickNameTvSize$1", "Landroid/view/ViewTreeObserver$OnPreDrawListener;", "onPreDraw", "", "plugin-finder_release"})
-  public static final class a
-    implements ViewTreeObserver.OnPreDrawListener
-  {
-    a(TextView paramTextView, View paramView1, View paramView2) {}
-    
-    public final boolean onPreDraw()
-    {
-      AppMethodBeat.i(243132);
-      this.tEn.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)this);
-      Object localObject = this.tEn.getParent();
-      if (localObject == null)
-      {
-        localObject = new t("null cannot be cast to non-null type android.view.View");
-        AppMethodBeat.o(243132);
-        throw ((Throwable)localObject);
-      }
-      int k = ((View)localObject).getWidth();
-      int i = 0;
-      if (this.tEo.getVisibility() == 0) {
-        i = this.tEo.getWidth() + (int)this.tEo.getResources().getDimension(2131165297) + 0;
-      }
-      int j = i;
-      if (this.tEp.getVisibility() == 0) {
-        j = i + (this.tEp.getWidth() + (int)this.tEp.getResources().getDimension(2131165314));
-      }
-      if (this.tEn.getWidth() + j > k)
-      {
-        this.tEn.setMaxWidth(k - j);
-        Log.i(this.tEm.TAG, "adjustNickNameTvSize titleW:" + this.tEn.getWidth() + ", containerW:" + k + ",iconW:" + j);
-      }
-      AppMethodBeat.o(243132);
-      return true;
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class a
     implements View.OnClickListener
   {
-    b(View paramView, g paramg, h paramh) {}
+    a(ao paramao, com.tencent.mm.view.recyclerview.i parami) {}
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(243133);
+      AppMethodBeat.i(279514);
       b localb = new b();
-      localb.bm(paramView);
-      a.b("com/tencent/mm/plugin/finder/convert/FinderFollowConvert$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      paramView = this.tEq.getContext();
-      p.g(paramView, "onliveWidget.context");
-      new r(paramView, this.tEr.getUsername(), this.qhp.lR(), false).dzC();
-      a.a(this, "com/tencent/mm/plugin/finder/convert/FinderFollowConvert$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(243133);
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/convert/FinderFoldedConvert$onCreateViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      this.xmM.xmL.j(parami);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/convert/FinderFoldedConvert$onCreateViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(279514);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
-    implements Runnable
+    implements View.OnClickListener
   {
-    c(View paramView) {}
+    c(com.tencent.mm.view.recyclerview.i parami) {}
     
-    public final void run()
+    public final void onClick(View paramView)
     {
-      AppMethodBeat.i(243134);
-      Object localObject1 = new Rect();
-      this.tEq.getHitRect((Rect)localObject1);
-      Object localObject2 = MMApplicationContext.getContext();
-      p.g(localObject2, "MMApplicationContext.getContext()");
-      int i = ((Context)localObject2).getResources().getDimensionPixelOffset(2131165277);
-      ((Rect)localObject1).inset(-i, -i);
-      localObject2 = this.tEq;
-      p.g(localObject2, "onliveWidget");
-      localObject2 = ((View)localObject2).getParent();
-      if (localObject2 == null)
-      {
-        localObject1 = new t("null cannot be cast to non-null type android.view.View");
-        AppMethodBeat.o(243134);
-        throw ((Throwable)localObject1);
-      }
-      ((View)localObject2).setTouchDelegate(new TouchDelegate((Rect)localObject1, this.tEq));
-      AppMethodBeat.o(243134);
+      AppMethodBeat.i(288152);
+      Object localObject1 = new b();
+      ((b)localObject1).bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/convert/FinderFoldedConvert$onCreateViewHolder$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject1).aFi());
+      paramView = new Intent();
+      localObject1 = (BaseFinderFeed)this.tDl.ihX();
+      paramView.putExtra("finder_username", ((BaseFinderFeed)localObject1).feedObject.getUserName());
+      Object localObject2 = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
+      localObject2 = this.tDl.getContext();
+      p.j(localObject2, "holder.context");
+      aj.a.a((Context)localObject2, paramView, ((BaseFinderFeed)localObject1).mf(), 5, false, 64);
+      localObject1 = com.tencent.mm.plugin.finder.utils.a.ACH;
+      localObject1 = this.tDl.getContext();
+      p.j(localObject1, "holder.context");
+      com.tencent.mm.plugin.finder.utils.a.enterFinderProfileUI((Context)localObject1, paramView);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/convert/FinderFoldedConvert$onCreateViewHolder$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(288152);
     }
   }
 }

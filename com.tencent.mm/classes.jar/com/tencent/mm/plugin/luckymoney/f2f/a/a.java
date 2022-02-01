@@ -1,41 +1,41 @@
 package com.tencent.mm.plugin.luckymoney.f2f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.alh;
-import com.tencent.mm.protocal.protobuf.ali;
+import com.tencent.mm.protocal.protobuf.ami;
+import com.tencent.mm.protocal.protobuf.amj;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
   extends q
   implements m
 {
+  private ami EvC;
+  private amj EvD;
   private i callback;
-  private d hJu;
-  private alh yRE;
-  private ali yRF;
+  private d kwO;
   
   public a(String paramString)
   {
     AppMethodBeat.i(65035);
     d.a locala = new d.a();
-    locala.iLN = new alh();
-    locala.iLO = new ali();
+    locala.lBU = new ami();
+    locala.lBV = new amj();
     locala.funcId = getType();
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
     locala.uri = "/cgi-bin/mmpay-bin/ftfhb/ffclearwxhb";
-    this.hJu = locala.aXF();
-    this.yRE = ((alh)this.hJu.iLK.iLR);
-    this.yRE.yQE = paramString;
+    this.kwO = locala.bgN();
+    this.EvC = ((ami)d.b.b(this.kwO.lBR));
+    this.EvC.ybP = paramString;
     AppMethodBeat.o(65035);
   }
   
@@ -43,7 +43,7 @@ public final class a
   {
     AppMethodBeat.i(65037);
     this.callback = parami;
-    int i = dispatch(paramg, this.hJu, this);
+    int i = dispatch(paramg, this.kwO, this);
     AppMethodBeat.o(65037);
     return i;
   }
@@ -56,17 +56,17 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(65036);
-    this.yRF = ((ali)((d)params).iLL.iLR);
-    Log.i("NetSceneF2FLuckyMoneyClear", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(this.yRF.dDN), this.yRF.qwn });
+    this.EvD = ((amj)d.c.b(((d)params).lBS));
+    Log.i("NetSceneF2FLuckyMoneyClear", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(this.EvD.fwx), this.EvD.tVo });
     if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, this.yRF.dDN, this.yRF.qwn, this);
+      this.callback.onSceneEnd(paramInt2, this.EvD.fwx, this.EvD.tVo, this);
     }
     AppMethodBeat.o(65036);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.f2f.a.a
  * JD-Core Version:    0.7.0.1
  */

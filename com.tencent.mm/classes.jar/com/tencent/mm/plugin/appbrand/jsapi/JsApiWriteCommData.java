@@ -6,7 +6,6 @@ import android.content.SharedPreferences.Editor;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -14,15 +13,15 @@ import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public final class JsApiWriteCommData
-  extends d
+  extends c
 {
   public static final int CTRL_INDEX = 445;
   public static final String NAME = "writeCommData";
   
-  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
+  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(139854);
-    AppBrandMainProcessService.a(new WriteCommDataTask(this, paramf, paramInt, paramJSONObject));
+    new WriteCommDataTask(this, parame, paramInt, paramJSONObject).bsM();
     AppMethodBeat.o(139854);
   }
   
@@ -30,13 +29,13 @@ public final class JsApiWriteCommData
     extends MainProcessTask
   {
     public static final Parcelable.Creator<WriteCommDataTask> CREATOR;
-    private int csv;
-    private f kSY;
-    private p lAi;
-    private boolean lAq;
-    private String lAr;
+    private int cqA;
     private String mData;
     private String mPackageName;
+    private e nNw;
+    private boolean ovH;
+    private String ovI;
+    private o ovz;
     
     static
     {
@@ -52,19 +51,19 @@ public final class JsApiWriteCommData
       AppMethodBeat.o(139848);
     }
     
-    public WriteCommDataTask(p paramp, f paramf, int paramInt, JSONObject paramJSONObject)
+    public WriteCommDataTask(o paramo, e parame, int paramInt, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(139847);
-      this.lAi = paramp;
-      this.kSY = paramf;
-      this.csv = paramInt;
+      this.ovz = paramo;
+      this.nNw = parame;
+      this.cqA = paramInt;
       this.mPackageName = paramJSONObject.optString("packageName");
       this.mData = paramJSONObject.optString("data");
-      this.lAq = true;
+      this.ovH = true;
       AppMethodBeat.o(139847);
     }
     
-    public final void bjj()
+    public final void RW()
     {
       boolean bool = false;
       AppMethodBeat.i(139849);
@@ -73,30 +72,30 @@ public final class JsApiWriteCommData
       }
       for (;;)
       {
-        bDU();
+        bPt();
         AppMethodBeat.o(139849);
         return;
         if (!MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getPackageName() + "_comm_preferences", 0).edit().putString(this.mPackageName, this.mData).commit()) {
           bool = true;
         }
-        this.lAq = bool;
+        this.ovH = bool;
       }
     }
     
-    public final void bjk()
+    public final void bsK()
     {
       AppMethodBeat.i(139850);
-      if (this.lAq)
+      if (this.ovH)
       {
-        if (Util.isNullOrNil(this.lAr)) {}
-        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.lAr }))
+        if (Util.isNullOrNil(this.ovI)) {}
+        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.ovI }))
         {
-          this.kSY.i(this.csv, this.lAi.h(str, null));
+          this.nNw.j(this.cqA, this.ovz.h(str, null));
           AppMethodBeat.o(139850);
           return;
         }
       }
-      this.kSY.i(this.csv, this.lAi.h("ok", null));
+      this.nNw.j(this.cqA, this.ovz.h("ok", null));
       AppMethodBeat.o(139850);
     }
     
@@ -109,8 +108,8 @@ public final class JsApiWriteCommData
       if (paramParcel.readInt() == 1) {}
       for (;;)
       {
-        this.lAq = bool;
-        this.lAr = paramParcel.readString();
+        this.ovH = bool;
+        this.ovI = paramParcel.readString();
         AppMethodBeat.o(139851);
         return;
         bool = false;
@@ -122,11 +121,11 @@ public final class JsApiWriteCommData
       AppMethodBeat.i(139852);
       paramParcel.writeString(this.mPackageName);
       paramParcel.writeString(this.mData);
-      if (this.lAq) {}
+      if (this.ovH) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.lAr);
+        paramParcel.writeString(this.ovI);
         AppMethodBeat.o(139852);
         return;
       }

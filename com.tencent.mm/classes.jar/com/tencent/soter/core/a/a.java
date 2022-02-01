@@ -7,19 +7,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 @Deprecated
 public final class a
 {
-  public static final e RPk;
+  public static final e ZrP;
   public Context mContext;
   
   static
   {
     AppMethodBeat.i(88614);
-    if (com.tencent.soter.core.a.hlj())
+    if (com.tencent.soter.core.a.ioI())
     {
-      RPk = new a.a();
+      ZrP = new a.a();
       AppMethodBeat.o(88614);
       return;
     }
-    RPk = new f();
+    ZrP = new f();
     AppMethodBeat.o(88614);
   }
   
@@ -28,7 +28,7 @@ public final class a
     this.mContext = paramContext;
   }
   
-  public static a lf(Context paramContext)
+  public static a md(Context paramContext)
   {
     AppMethodBeat.i(88611);
     paramContext = new a(paramContext);
@@ -39,21 +39,21 @@ public final class a
   public final void a(a.d paramd, CancellationSignal paramCancellationSignal, b paramb)
   {
     AppMethodBeat.i(88613);
-    RPk.a(this.mContext, paramd, paramCancellationSignal, paramb);
+    ZrP.a(this.mContext, paramd, paramCancellationSignal, paramb);
     AppMethodBeat.o(88613);
   }
   
-  public final boolean hasEnrolledFingerprints()
+  public final boolean ioP()
   {
     AppMethodBeat.i(88612);
-    boolean bool = RPk.hasEnrolledFingerprints(this.mContext);
+    boolean bool = ZrP.hasEnrolledFingerprints(this.mContext);
     AppMethodBeat.o(88612);
     return bool;
   }
   
   public static abstract class b
   {
-    public void fme() {}
+    public void gaA() {}
     
     public void onAuthenticationCancelled() {}
     
@@ -91,7 +91,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.soter.core.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.an.t;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMBaseActivity;
@@ -30,20 +32,20 @@ public class WebWXPopupUnlockUI
       {
         final com.tencent.mm.plugin.crashfix.b.a locala = new com.tencent.mm.plugin.crashfix.b.a(this);
         locala.requestWindowFeature(1);
-        View localView = View.inflate(this, 2131494053, null);
-        TextView localTextView = (TextView)localView.findViewById(2131299576);
-        ((TextView)localView.findViewById(2131309591)).setOnClickListener(new View.OnClickListener()
+        View localView = View.inflate(this, R.i.egT, null);
+        TextView localTextView = (TextView)localView.findViewById(R.h.dEk);
+        ((TextView)localView.findViewById(R.h.dYt)).setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(30241);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bm(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webwx/ui/WebWXPopupUnlockUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            localb.bn(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webwx/ui/WebWXPopupUnlockUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
             paramAnonymousView = new com.tencent.mm.plugin.webwx.a.b(2);
-            bg.azz().a(paramAnonymousView, 0);
+            bh.aGY().a(paramAnonymousView, 0);
             Log.d("MicroMsg.WebWxPopUnlockUI", "doScene netSceneExtDeviceControl : UNLOCK");
-            com.tencent.mm.plugin.webwx.a.jRu.iO(1);
+            com.tencent.mm.plugin.webwx.a.mIH.kd(1);
             Log.d("MicroMsg.WebWxPopUnlockUI", "trigger netSceneSync notify");
             locala.dismiss();
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webwx/ui/WebWXPopupUnlockUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");

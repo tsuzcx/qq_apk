@@ -1,207 +1,86 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
-import java.util.LinkedList;
 
 public final class air
-  extends dop
+  extends com.tencent.mm.cd.a
 {
-  public String KLN;
-  public int KMz;
-  public SKBuiltinBuffer_t KPW;
-  public String KPz;
-  public String KQi;
-  public String Lsi;
-  public String Lsj;
-  public int Lsk;
-  public String rBI;
+  public String data;
+  public String wdY;
+  public long wdZ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(155402);
+    AppMethodBeat.i(258170);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.KPW == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: RandomEncryKey");
-        AppMethodBeat.o(155402);
-        throw paramVarArgs;
+      if (this.wdY != null) {
+        paramVarArgs.f(1, this.wdY);
       }
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs.bm(2, this.wdZ);
+      if (this.data != null) {
+        paramVarArgs.f(3, this.data);
       }
-      if (this.KPW != null)
-      {
-        paramVarArgs.ni(2, this.KPW.computeSize());
-        this.KPW.writeFields(paramVarArgs);
-      }
-      paramVarArgs.aM(3, this.KMz);
-      if (this.KPz != null) {
-        paramVarArgs.e(4, this.KPz);
-      }
-      if (this.rBI != null) {
-        paramVarArgs.e(5, this.rBI);
-      }
-      if (this.KQi != null) {
-        paramVarArgs.e(6, this.KQi);
-      }
-      if (this.Lsi != null) {
-        paramVarArgs.e(7, this.Lsi);
-      }
-      if (this.KLN != null) {
-        paramVarArgs.e(8, this.KLN);
-      }
-      if (this.Lsj != null) {
-        paramVarArgs.e(9, this.Lsj);
-      }
-      paramVarArgs.aM(10, this.Lsk);
-      AppMethodBeat.o(155402);
+      AppMethodBeat.o(258170);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label970;
+      if (this.wdY == null) {
+        break label318;
       }
     }
-    label970:
-    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label318:
+    for (paramInt = g.a.a.b.b.a.g(1, this.wdY) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.KPW != null) {
-        i = paramInt + g.a.a.a.nh(2, this.KPW.computeSize());
-      }
-      i += g.a.a.b.b.a.bu(3, this.KMz);
+      int i = paramInt + g.a.a.b.b.a.p(2, this.wdZ);
       paramInt = i;
-      if (this.KPz != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.KPz);
+      if (this.data != null) {
+        paramInt = i + g.a.a.b.b.a.g(3, this.data);
       }
-      i = paramInt;
-      if (this.rBI != null) {
-        i = paramInt + g.a.a.b.b.a.f(5, this.rBI);
-      }
-      paramInt = i;
-      if (this.KQi != null) {
-        paramInt = i + g.a.a.b.b.a.f(6, this.KQi);
-      }
-      i = paramInt;
-      if (this.Lsi != null) {
-        i = paramInt + g.a.a.b.b.a.f(7, this.Lsi);
-      }
-      paramInt = i;
-      if (this.KLN != null) {
-        paramInt = i + g.a.a.b.b.a.f(8, this.KLN);
-      }
-      i = paramInt;
-      if (this.Lsj != null) {
-        i = paramInt + g.a.a.b.b.a.f(9, this.Lsj);
-      }
-      paramInt = g.a.a.b.b.a.bu(10, this.Lsk);
-      AppMethodBeat.o(155402);
-      return i + paramInt;
+      AppMethodBeat.o(258170);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.KPW == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: RandomEncryKey");
-          AppMethodBeat.o(155402);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(155402);
+        AppMethodBeat.o(258170);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         air localair = (air)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(155402);
+          AppMethodBeat.o(258170);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localair.BaseRequest = ((jr)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(155402);
+          localair.wdY = locala.abFh.readString();
+          AppMethodBeat.o(258170);
           return 0;
         case 2: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new SKBuiltinBuffer_t();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localair.KPW = ((SKBuiltinBuffer_t)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(155402);
-          return 0;
-        case 3: 
-          localair.KMz = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(155402);
-          return 0;
-        case 4: 
-          localair.KPz = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(155402);
-          return 0;
-        case 5: 
-          localair.rBI = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(155402);
-          return 0;
-        case 6: 
-          localair.KQi = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(155402);
-          return 0;
-        case 7: 
-          localair.Lsi = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(155402);
-          return 0;
-        case 8: 
-          localair.KLN = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(155402);
-          return 0;
-        case 9: 
-          localair.Lsj = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(155402);
+          localair.wdZ = locala.abFh.AN();
+          AppMethodBeat.o(258170);
           return 0;
         }
-        localair.Lsk = ((g.a.a.a.a)localObject1).UbS.zi();
-        AppMethodBeat.o(155402);
+        localair.data = locala.abFh.readString();
+        AppMethodBeat.o(258170);
         return 0;
       }
-      AppMethodBeat.o(155402);
+      AppMethodBeat.o(258170);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.air
  * JD-Core Version:    0.7.0.1
  */

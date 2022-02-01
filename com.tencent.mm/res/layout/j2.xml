@@ -10,7 +10,7 @@
                     <TextView android:textSize="15.0dip" android:textColor="@color/a2x" android:gravity="center_horizontal" android:id="@id/bgk" android:layout_width="48.0dip" android:layout_height="wrap_content" android:singleLine="true" />
                     <TextView android:textSize="8.0dip" android:textColor="@color/a2x" android:gravity="center_horizontal" android:id="@id/bgp" android:layout_width="48.0dip" android:layout_height="wrap_content" android:text="@string/bj_" android:singleLine="true" />
                 </LinearLayout>
-                <EditText android:id="@id/a47" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" android:layout_marginBottom="10.0dip" android:hint="@string/afj" android:inputType="phone" style="@style/nn" />
+                <com.tencent.mm.plugin.account.sdk.ImeEditText android:id="@id/a47" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" android:layout_marginBottom="10.0dip" android:hint="@string/afj" android:inputType="phone" style="@style/nn" />
             </LinearLayout>
             <Button android:id="@id/a4g" android:visibility="gone" android:text="@string/afc" style="@style/p5" />
         </LinearLayout>

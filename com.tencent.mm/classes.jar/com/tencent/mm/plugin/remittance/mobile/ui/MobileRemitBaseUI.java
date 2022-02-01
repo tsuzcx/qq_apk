@@ -11,17 +11,17 @@ import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 public abstract class MobileRemitBaseUI
   extends WalletBaseUI
 {
-  protected a Cmp = a.Cmq;
+  protected a Iji = a.Ijj;
   
-  protected final void eNv()
+  protected final void fAk()
   {
     Object localObject = new Intent();
     ((Intent)localObject).setComponent(new ComponentName(MMApplicationContext.getPackageName(), "com.tencent.mm.ui.LauncherUI"));
     ((Intent)localObject).addFlags(67108864);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitBaseUI", "finishMobileRemitProcess", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitBaseUI", "finishMobileRemitProcess", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitBaseUI", "finishMobileRemitProcess", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitBaseUI", "finishMobileRemitProcess", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
   }
   
   public boolean needLockPage()
@@ -42,13 +42,13 @@ public abstract class MobileRemitBaseUI
   public void onPause()
   {
     super.onPause();
-    this.Cmp = a.Cms;
+    this.Iji = a.Ijl;
   }
   
   public void onResume()
   {
     super.onResume();
-    this.Cmp = a.Cmr;
+    this.Iji = a.Ijk;
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -62,10 +62,10 @@ public abstract class MobileRemitBaseUI
     static
     {
       AppMethodBeat.i(67680);
-      Cmq = new a("ACTIVITY_INIT", 0);
-      Cmr = new a("ACTIVITY_RESUME", 1);
-      Cms = new a("ACTIVITY_PAUSE", 2);
-      Cmt = new a[] { Cmq, Cmr, Cms };
+      Ijj = new a("ACTIVITY_INIT", 0);
+      Ijk = new a("ACTIVITY_RESUME", 1);
+      Ijl = new a("ACTIVITY_PAUSE", 2);
+      Ijm = new a[] { Ijj, Ijk, Ijl };
       AppMethodBeat.o(67680);
     }
     

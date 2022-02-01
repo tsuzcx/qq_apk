@@ -4,13 +4,13 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import kotlin.g.a.m;
 import kotlin.l;
 
-@l(hxD={1, 1, 16})
+@l(iBK={1, 1, 16})
 final class h
   implements CompoundButton.OnCheckedChangeListener
 {
   h(m paramm)
   {
-    this.hEX = paramm;
+    this.ktc = paramm;
   }
 }
 

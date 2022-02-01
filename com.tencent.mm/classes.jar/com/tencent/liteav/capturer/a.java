@@ -13,7 +13,7 @@ import android.hardware.Camera.Size;
 import android.os.Build.VERSION;
 import com.tencent.liteav.basic.d.c;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.d;
+import com.tencent.liteav.basic.util.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -109,9 +109,9 @@ public class a
     }
   }
   
-  private static d a(Camera.Parameters paramParameters, int paramInt1, int paramInt2)
+  private static e a(Camera.Parameters paramParameters, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(222330);
+    AppMethodBeat.i(222006);
     TXCLog.d("TXCCameraCapturer", "camera preview wanted: %d x %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     paramParameters = paramParameters.getSupportedPreviewSizes();
     float f1 = 1.0F * paramInt1 / paramInt2;
@@ -165,22 +165,22 @@ public class a
     {
       break;
       TXCLog.i("TXCCameraCapturer", "best match preview size: %d x %d", new Object[] { Integer.valueOf(paramParameters.width), Integer.valueOf(paramParameters.height) });
-      paramParameters = new d(paramParameters.width, paramParameters.height);
-      AppMethodBeat.o(222330);
+      paramParameters = new e(paramParameters.width, paramParameters.height);
+      AppMethodBeat.o(222006);
       return paramParameters;
     }
   }
   
-  private static d b(boolean paramBoolean, int paramInt1, int paramInt2)
+  private static e b(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(222328);
+    AppMethodBeat.i(221982);
     if (paramBoolean)
     {
-      locald1 = new d(paramInt1, paramInt2);
-      AppMethodBeat.o(222328);
-      return locald1;
+      locale1 = new e(paramInt1, paramInt2);
+      AppMethodBeat.o(221982);
+      return locale1;
     }
-    d locald1 = new d(1080, 1920);
+    e locale1 = new e(1080, 1920);
     float f1 = Math.min(paramInt1, paramInt2);
     float f2 = Math.max(paramInt1, paramInt2);
     int i2 = 0;
@@ -190,19 +190,19 @@ public class a
       int i1 = paramInt2;
       if (i2 <= 0)
       {
-        d locald2 = new d[] { locald1 }[0];
-        if ((f1 <= locald2.a) && (f2 <= locald2.b))
+        e locale2 = new e[] { locale1 }[0];
+        if ((f1 <= locale2.a) && (f2 <= locale2.b))
         {
-          f1 = Math.min(locald2.a / f1, locald2.b / f2);
+          f1 = Math.min(locale2.a / f1, locale2.b / f2);
           i3 = (int)(paramInt1 * f1);
           i1 = (int)(f1 * paramInt2);
         }
       }
       else
       {
-        locald1 = new d(i3, i1);
-        AppMethodBeat.o(222328);
-        return locald1;
+        locale1 = new e(i3, i1);
+        AppMethodBeat.o(221982);
+        return locale1;
       }
       i2 += 1;
     }
@@ -211,18 +211,18 @@ public class a
   private int d(int paramInt)
   {
     int i1 = 0;
-    AppMethodBeat.i(222331);
+    AppMethodBeat.i(222012);
     Object localObject = a();
     if (localObject == null)
     {
-      AppMethodBeat.o(222331);
+      AppMethodBeat.o(222012);
       return 1;
     }
     localObject = ((Camera.Parameters)localObject).getSupportedPreviewFrameRates();
     if (localObject == null)
     {
       TXCLog.e("TXCCameraCapturer", "getSupportedFPS error");
-      AppMethodBeat.o(222331);
+      AppMethodBeat.o(222012);
       return 1;
     }
     int i3;
@@ -236,19 +236,19 @@ public class a
       i1 += 1;
     }
     TXCLog.i("TXCCameraCapturer", "choose fps=".concat(String.valueOf(i2)));
-    AppMethodBeat.o(222331);
+    AppMethodBeat.o(222012);
     return i2;
   }
   
   private int[] e(int paramInt)
   {
-    AppMethodBeat.i(222332);
+    AppMethodBeat.i(222022);
     paramInt *= 1000;
     String str = "camera supported preview fps range: wantFPS = " + paramInt + "\n";
     Object localObject1 = a();
     if (localObject1 == null)
     {
-      AppMethodBeat.o(222332);
+      AppMethodBeat.o(222022);
       return null;
     }
     Object localObject2 = ((Camera.Parameters)localObject1).getSupportedPreviewFpsRange();
@@ -280,9 +280,9 @@ public class a
     for (;;)
     {
       TXCLog.i("TXCCameraCapturer", str + "choose preview fps range: " + localObject1[0] + " - " + localObject1[1]);
-      AppMethodBeat.o(222332);
+      AppMethodBeat.o(222022);
       return localObject1;
-      AppMethodBeat.o(222332);
+      AppMethodBeat.o(222022);
       return null;
     }
   }
@@ -324,22 +324,22 @@ public class a
   
   public Camera.Parameters a()
   {
-    AppMethodBeat.i(222318);
+    AppMethodBeat.i(221885);
     if (this.c == null)
     {
-      AppMethodBeat.o(222318);
+      AppMethodBeat.o(221885);
       return null;
     }
     try
     {
       Camera.Parameters localParameters = this.c.getParameters();
-      AppMethodBeat.o(222318);
+      AppMethodBeat.o(221885);
       return localParameters;
     }
     catch (Exception localException)
     {
       TXCLog.e("TXCCameraCapturer", "getCameraParameters error ", localException);
-      AppMethodBeat.o(222318);
+      AppMethodBeat.o(221885);
     }
     return null;
   }
@@ -518,14 +518,14 @@ public class a
   
   public void a(a parama)
   {
-    AppMethodBeat.i(222321);
+    AppMethodBeat.i(221904);
     if (parama != a.a)
     {
       this.q = a.a(parama);
       this.r = a.b(parama);
     }
     TXCLog.i("TXCCameraCapturer", "set resolution ".concat(String.valueOf(parama)));
-    AppMethodBeat.o(222321);
+    AppMethodBeat.o(221904);
   }
   
   public void a(b paramb)
@@ -535,12 +535,12 @@ public class a
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(222325);
+    AppMethodBeat.i(221935);
     this.p = paramBoolean;
     this.q = paramInt1;
     this.r = paramInt2;
     TXCLog.i("TXCCameraCapturer", "setCaptureBuffer %b, width: %d, height: %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(222325);
+    AppMethodBeat.o(221935);
   }
   
   public boolean a(boolean paramBoolean)
@@ -601,10 +601,10 @@ public class a
   
   public void b(boolean paramBoolean)
   {
-    AppMethodBeat.i(222322);
+    AppMethodBeat.i(221909);
     this.t = paramBoolean;
     TXCLog.i("TXCCameraCapturer", "set performance mode to ".concat(String.valueOf(paramBoolean)));
-    AppMethodBeat.o(222322);
+    AppMethodBeat.o(221909);
   }
   
   public boolean b()
@@ -626,7 +626,7 @@ public class a
   public boolean b(int paramInt)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(222324);
+    AppMethodBeat.i(221932);
     boolean bool1 = bool2;
     Camera.Parameters localParameters;
     if (this.c != null)
@@ -653,7 +653,7 @@ public class a
         bool1 = bool2;
         continue;
       }
-      AppMethodBeat.o(222324);
+      AppMethodBeat.o(221932);
       return bool1;
       label99:
       TXCLog.e("TXCCameraCapturer", "invalid zoom value : " + paramInt + ", while max zoom is " + localException.getMaxZoom());
@@ -667,11 +667,11 @@ public class a
   
   public void c(int paramInt)
   {
-    AppMethodBeat.i(222326);
+    AppMethodBeat.i(221943);
     TXCLog.w("TXCCameraCapturer", "vsize setHomeOrientation ".concat(String.valueOf(paramInt)));
     this.g = paramInt;
     this.j = ((this.k - 90 + this.g * 90 + 360) % 360);
-    AppMethodBeat.o(222326);
+    AppMethodBeat.o(221943);
   }
   
   public void c(boolean paramBoolean)
@@ -681,7 +681,7 @@ public class a
   
   public boolean c()
   {
-    AppMethodBeat.i(222319);
+    AppMethodBeat.i(221890);
     if (this.c != null)
     {
       Object localObject = a();
@@ -690,22 +690,22 @@ public class a
         localObject = ((Camera.Parameters)localObject).getSupportedFlashModes();
         if ((localObject != null) && (((List)localObject).contains("torch")))
         {
-          AppMethodBeat.o(222319);
+          AppMethodBeat.o(221890);
           return true;
         }
-        AppMethodBeat.o(222319);
+        AppMethodBeat.o(221890);
         return false;
       }
-      AppMethodBeat.o(222319);
+      AppMethodBeat.o(221890);
       return false;
     }
-    AppMethodBeat.o(222319);
+    AppMethodBeat.o(221890);
     return false;
   }
   
   public int d(boolean paramBoolean)
   {
-    AppMethodBeat.i(222327);
+    AppMethodBeat.i(221971);
     for (;;)
     {
       int i4;
@@ -715,7 +715,7 @@ public class a
         localObject1 = this.l;
         if (localObject1 == null)
         {
-          AppMethodBeat.o(222327);
+          AppMethodBeat.o(221971);
           return -2;
         }
         if (this.c != null) {
@@ -760,7 +760,7 @@ public class a
         Object localObject1;
         Object localObject2;
         TXCLog.e("TXCCameraCapturer", "open camera failed." + localIOException.getMessage());
-        AppMethodBeat.o(222327);
+        AppMethodBeat.o(221971);
         return -1;
         if ((localObject2 == null) || (!((List)localObject2).contains("continuous-video"))) {
           continue;
@@ -772,7 +772,7 @@ public class a
       catch (Exception localException)
       {
         TXCLog.e("TXCCameraCapturer", "open camera failed." + localException.getMessage());
-        AppMethodBeat.o(222327);
+        AppMethodBeat.o(221971);
         return -1;
       }
       this.d = paramBoolean;
@@ -800,9 +800,9 @@ public class a
             this.c.setPreviewCallback(this);
           }
           localObject2 = b(this.t, this.q, this.r);
-          localObject2 = a((Camera.Parameters)localObject1, Math.max(((d)localObject2).a, ((d)localObject2).b), Math.min(((d)localObject2).a, ((d)localObject2).b));
-          this.h = ((d)localObject2).a;
-          this.i = ((d)localObject2).b;
+          localObject2 = a((Camera.Parameters)localObject1, Math.max(((e)localObject2).a, ((e)localObject2).b), Math.min(((e)localObject2).a, ((e)localObject2).b));
+          this.h = ((e)localObject2).a;
+          this.i = ((e)localObject2).b;
           ((Camera.Parameters)localObject1).setPreviewSize(this.h, this.i);
           localObject2 = e(this.f);
           if (localObject2 == null) {
@@ -820,7 +820,7 @@ public class a
           this.c.setParameters((Camera.Parameters)localObject1);
           this.c.setErrorCallback(this);
           this.c.startPreview();
-          AppMethodBeat.o(222327);
+          AppMethodBeat.o(221971);
           return 0;
         }
       }
@@ -862,25 +862,25 @@ public class a
   
   public boolean e()
   {
-    AppMethodBeat.i(222320);
+    AppMethodBeat.i(221896);
     if (this.c != null)
     {
       Camera.Parameters localParameters = a();
       if ((localParameters != null) && (localParameters.getMaxNumDetectedFaces() > 0))
       {
-        AppMethodBeat.o(222320);
+        AppMethodBeat.o(221896);
         return true;
       }
-      AppMethodBeat.o(222320);
+      AppMethodBeat.o(221896);
       return false;
     }
-    AppMethodBeat.o(222320);
+    AppMethodBeat.o(221896);
     return false;
   }
   
   public int f()
   {
-    AppMethodBeat.i(222323);
+    AppMethodBeat.i(221929);
     int i2 = 0;
     Camera.Parameters localParameters = a();
     int i1 = i2;
@@ -895,13 +895,13 @@ public class a
         }
       }
     }
-    AppMethodBeat.o(222323);
+    AppMethodBeat.o(221929);
     return i1;
   }
   
   public void g()
   {
-    AppMethodBeat.i(222329);
+    AppMethodBeat.i(221994);
     if (this.c != null) {
       try
       {
@@ -920,10 +920,10 @@ public class a
       {
         this.c = null;
         this.l = null;
-        AppMethodBeat.o(222329);
+        AppMethodBeat.o(221994);
       }
     }
-    AppMethodBeat.o(222329);
+    AppMethodBeat.o(221994);
   }
   
   public int h()
@@ -991,7 +991,7 @@ public class a
     
     static
     {
-      AppMethodBeat.i(222317);
+      AppMethodBeat.i(221854);
       a = new a("RESOLUTION_INVALID", 0, -1, -1);
       b = new a("RESOLUTION_180_320", 1, 180, 320);
       c = new a("RESOLUTION_270_480", 2, 270, 480);
@@ -1002,7 +1002,7 @@ public class a
       h = new a("RESOLUTION_1080_1920", 7, 1080, 1920);
       i = new a("RESOLUTION_HIGHEST", 8, 1080, 1920);
       j = new a[] { a, b, c, d, e, f, g, h, i };
-      AppMethodBeat.o(222317);
+      AppMethodBeat.o(221854);
     }
     
     private a(int paramInt1, int paramInt2)
@@ -1024,7 +1024,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.capturer.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,26 +7,26 @@ import com.tencent.thumbplayer.utils.g;
 public final class d
   extends b
 {
-  private int RYs;
-  private int[] RYt;
+  private int ZBc;
+  private int[] ZBd;
   
   public d(a parama)
   {
     super(parama);
-    AppMethodBeat.i(188990);
-    this.RYs = 0;
-    this.RYt = parama.RYt;
-    if ((this.RYt == null) || (this.RYt.length == 0)) {
-      this.RYt = new int[1];
+    AppMethodBeat.i(219673);
+    this.ZBc = 0;
+    this.ZBd = parama.ZBd;
+    if ((this.ZBd == null) || (this.ZBd.length == 0)) {
+      this.ZBd = new int[1];
     }
-    AppMethodBeat.o(188990);
+    AppMethodBeat.o(219673);
   }
   
   public final int a(com.tencent.thumbplayer.a.b paramb)
   {
-    AppMethodBeat.i(188991);
-    if (this.RYt.length > this.RYs) {}
-    for (int i = this.RYt[this.RYs];; i = 0)
+    AppMethodBeat.i(219676);
+    if (this.ZBd.length > this.ZBc) {}
+    for (int i = this.ZBd[this.ZBc];; i = 0)
     {
       int j;
       if (i != 2)
@@ -42,25 +42,25 @@ public final class d
         }
       }
       g.i("TPThumbPlayer[TPExtStrategy.java]", "strategyForOpen, playerType:".concat(String.valueOf(j)));
-      AppMethodBeat.o(188991);
+      AppMethodBeat.o(219676);
       return j;
     }
   }
   
   public final int a(com.tencent.thumbplayer.a.b paramb, com.tencent.thumbplayer.a.b.a.b paramb1)
   {
-    AppMethodBeat.i(188992);
-    if (paramb1.RYx == 0)
+    AppMethodBeat.i(219677);
+    if (paramb1.ZBh == 0)
     {
       i = a(paramb);
-      AppMethodBeat.o(188992);
+      AppMethodBeat.o(219677);
       return i;
     }
-    if (this.RYt.length - 1 > this.RYs)
+    if (this.ZBd.length - 1 > this.ZBc)
     {
-      paramb1 = this.RYt;
-      i = this.RYs + 1;
-      this.RYs = i;
+      paramb1 = this.ZBd;
+      i = this.ZBc + 1;
+      this.ZBc = i;
     }
     for (int i = paramb1[i];; i = 0)
     {
@@ -78,31 +78,31 @@ public final class d
         }
       }
       g.i("TPThumbPlayer[TPExtStrategy.java]", "strategyForRetry, playerType:".concat(String.valueOf(j)));
-      AppMethodBeat.o(188992);
+      AppMethodBeat.o(219677);
       return j;
     }
   }
   
-  public final int[] hnd()
+  public final int[] iqE()
   {
-    AppMethodBeat.i(188993);
+    AppMethodBeat.i(219678);
     int[] arrayOfInt = new int[1];
     arrayOfInt[0] = -1;
-    if (this.RYs >= this.RYt.length)
+    if (this.ZBc >= this.ZBd.length)
     {
       g.i("TPThumbPlayer[TPExtStrategy.java]", "strategyForDec error, decType:" + arrayOfInt[0]);
-      AppMethodBeat.o(188993);
+      AppMethodBeat.o(219678);
       return arrayOfInt;
     }
-    if ((this.RYt[this.RYs] == 1) || (this.RYt[this.RYs] == 2)) {
+    if ((this.ZBd[this.ZBc] == 1) || (this.ZBd[this.ZBc] == 2)) {
       arrayOfInt[0] = 102;
     }
     for (;;)
     {
       g.i("TPThumbPlayer[TPExtStrategy.java]", "strategyForDec, decType:" + arrayOfInt[0]);
-      AppMethodBeat.o(188993);
+      AppMethodBeat.o(219678);
       return arrayOfInt;
-      if (this.RYt[this.RYs] == 3) {
+      if (this.ZBd[this.ZBc] == 3) {
         arrayOfInt[0] = 101;
       }
     }

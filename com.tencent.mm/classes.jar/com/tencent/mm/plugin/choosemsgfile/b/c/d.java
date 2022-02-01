@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.choosemsgfile.b.c;
 
-import android.support.v7.widget.RecyclerView.v;
 import android.view.ViewGroup;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.choosemsgfile.b.b.l;
 import com.tencent.mm.plugin.choosemsgfile.b.b.n;
-import com.tencent.mm.plugin.choosemsgfile.ui.c;
+import com.tencent.mm.plugin.choosemsgfile.ui.e;
 import java.util.List;
 
 public final class d
   extends a
 {
-  public d(c paramc, List<com.tencent.mm.plugin.choosemsgfile.b.b.a> paramList)
+  public d(e parame, List<com.tencent.mm.plugin.choosemsgfile.b.b.a> paramList)
   {
-    super(paramc, paramList);
+    super(parame, paramList);
   }
   
-  public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
+  public final RecyclerView.v b(ViewGroup paramViewGroup, int paramInt)
   {
-    AppMethodBeat.i(123309);
+    AppMethodBeat.i(243480);
     switch (paramInt)
     {
     default: 
-      paramViewGroup = n.o(paramViewGroup);
-      AppMethodBeat.o(123309);
+      paramViewGroup = n.p(paramViewGroup);
+      AppMethodBeat.o(243480);
       return paramViewGroup;
     }
-    paramViewGroup = l.o(paramViewGroup);
-    AppMethodBeat.o(123309);
+    paramViewGroup = l.p(paramViewGroup);
+    AppMethodBeat.o(243480);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.c.d
  * JD-Core Version:    0.7.0.1
  */

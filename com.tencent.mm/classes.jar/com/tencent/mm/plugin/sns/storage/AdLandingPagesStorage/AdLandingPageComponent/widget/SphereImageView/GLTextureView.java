@@ -23,26 +23,26 @@ public class GLTextureView
   extends TextureView
   implements TextureView.SurfaceTextureListener, View.OnLayoutChangeListener
 {
-  private static final j Ejc;
+  private static final j Kwl;
   private static final String TAG;
-  public i Ejd;
-  private m Eje;
-  private e Ejf;
-  private f Ejg;
-  private g Ejh;
-  private k Eji;
-  private int Ejj;
-  private int Ejk;
-  private boolean Ejl;
-  List<TextureView.SurfaceTextureListener> Ejm;
+  public i Kwm;
+  private m Kwn;
+  private e Kwo;
+  private f Kwp;
+  private g Kwq;
+  private k Kwr;
+  private int Kws;
+  private int Kwt;
+  private boolean Kwu;
+  private List<TextureView.SurfaceTextureListener> Kwv;
   private boolean detached;
-  private final WeakReference<GLTextureView> gRZ;
+  private final WeakReference<GLTextureView> jCz;
   
   static
   {
     AppMethodBeat.i(97230);
     TAG = GLTextureView.class.getSimpleName();
-    Ejc = new j((byte)0);
+    Kwl = new j((byte)0);
     AppMethodBeat.o(97230);
   }
   
@@ -50,16 +50,16 @@ public class GLTextureView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(97210);
-    this.gRZ = new WeakReference(this);
-    this.Ejm = new ArrayList();
+    this.jCz = new WeakReference(this);
+    this.Kwv = new ArrayList();
     setSurfaceTextureListener(this);
     AppMethodBeat.o(97210);
   }
   
-  private void atX()
+  private void aAS()
   {
     AppMethodBeat.i(97229);
-    if (this.Ejd != null)
+    if (this.Kwm != null)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("setRenderer has already been called for this instance.");
       AppMethodBeat.o(97229);
@@ -68,26 +68,26 @@ public class GLTextureView
     AppMethodBeat.o(97229);
   }
   
-  private void iE(int paramInt1, int paramInt2)
+  private void jN(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(97220);
-    i locali = this.Ejd;
+    i locali = this.Kwm;
     for (;;)
     {
-      synchronized (Ejc)
+      synchronized (Kwl)
       {
         locali.width = paramInt1;
         locali.height = paramInt2;
-        locali.EjG = true;
-        locali.EjE = true;
-        locali.EjF = false;
-        Ejc.notifyAll();
-        if ((locali.Ejw) || (locali.tN) || (locali.EjF)) {
+        locali.KwP = true;
+        locali.KwN = true;
+        locali.KwO = false;
+        Kwl.notifyAll();
+        if ((locali.KwF) || (locali.lzZ) || (locali.KwO)) {
           break;
         }
-        if ((locali.EjB) && (locali.EjC))
+        if ((locali.KwK) && (locali.KwL))
         {
-          boolean bool = locali.aue();
+          boolean bool = locali.aAY();
           if (bool)
           {
             paramInt1 = 1;
@@ -96,7 +96,7 @@ public class GLTextureView
             }
             try
             {
-              Ejc.wait();
+              Kwl.wait();
             }
             catch (InterruptedException localInterruptedException)
             {
@@ -110,13 +110,39 @@ public class GLTextureView
     AppMethodBeat.o(97220);
   }
   
+  public final void a(TextureView.SurfaceTextureListener paramSurfaceTextureListener)
+  {
+    AppMethodBeat.i(243674);
+    this.Kwv.add(paramSurfaceTextureListener);
+    AppMethodBeat.o(243674);
+  }
+  
+  public final void aa(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(97221);
+    i locali = this.Kwm;
+    if (paramRunnable == null)
+    {
+      paramRunnable = new IllegalArgumentException("r must not be null");
+      AppMethodBeat.o(97221);
+      throw paramRunnable;
+    }
+    synchronized (Kwl)
+    {
+      locali.jSc.add(paramRunnable);
+      Kwl.notifyAll();
+      AppMethodBeat.o(97221);
+      return;
+    }
+  }
+  
   protected void finalize()
   {
     AppMethodBeat.i(97211);
     try
     {
-      if (this.Ejd != null) {
-        this.Ejd.feo();
+      if (this.Kwm != null) {
+        this.Kwm.fSi();
       }
       return;
     }
@@ -129,18 +155,18 @@ public class GLTextureView
   
   public int getDebugFlags()
   {
-    return this.Ejj;
+    return this.Kws;
   }
   
   public boolean getPreserveEGLContextOnPause()
   {
-    return this.Ejl;
+    return this.Kwu;
   }
   
   public int getRenderMode()
   {
     AppMethodBeat.i(97219);
-    int i = this.Ejd.getRenderMode();
+    int i = this.Kwm.getRenderMode();
     AppMethodBeat.o(97219);
     return i;
   }
@@ -149,19 +175,19 @@ public class GLTextureView
   {
     AppMethodBeat.i(97222);
     super.onAttachedToWindow();
-    if ((this.detached) && (this.Eje != null)) {
-      if (this.Ejd == null) {
+    if ((this.detached) && (this.Kwn != null)) {
+      if (this.Kwm == null) {
         break label84;
       }
     }
     label84:
-    for (int i = this.Ejd.getRenderMode();; i = 1)
+    for (int i = this.Kwm.getRenderMode();; i = 1)
     {
-      this.Ejd = new i(this.gRZ);
+      this.Kwm = new i(this.jCz);
       if (i != 1) {
-        this.Ejd.setRenderMode(i);
+        this.Kwm.setRenderMode(i);
       }
-      this.Ejd.start();
+      this.Kwm.start();
       this.detached = false;
       AppMethodBeat.o(97222);
       return;
@@ -171,8 +197,8 @@ public class GLTextureView
   protected void onDetachedFromWindow()
   {
     AppMethodBeat.i(97223);
-    if (this.Ejd != null) {
-      this.Ejd.feo();
+    if (this.Kwm != null) {
+      this.Kwm.fSi();
     }
     this.detached = true;
     super.onDetachedFromWindow();
@@ -183,27 +209,27 @@ public class GLTextureView
   {
     AppMethodBeat.i(97224);
     getSurfaceTexture();
-    iE(paramInt3 - paramInt1, paramInt4 - paramInt2);
+    jN(paramInt3 - paramInt1, paramInt4 - paramInt2);
     AppMethodBeat.o(97224);
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(97225);
-    i locali = this.Ejd;
-    synchronized (Ejc)
+    i locali = this.Kwm;
+    synchronized (Kwl)
     {
-      locali.Ejy = true;
-      Ejc.notifyAll();
+      locali.KwH = true;
+      Kwl.notifyAll();
       for (;;)
       {
-        if (locali.EjA)
+        if (locali.KwJ)
         {
-          boolean bool = locali.Ejw;
+          boolean bool = locali.KwF;
           if (!bool) {
             try
             {
-              Ejc.wait();
+              Kwl.wait();
             }
             catch (InterruptedException localInterruptedException)
             {
@@ -213,8 +239,8 @@ public class GLTextureView
         }
       }
     }
-    iE(paramInt1, paramInt2);
-    ??? = this.Ejm.iterator();
+    jN(paramInt1, paramInt2);
+    ??? = this.Kwv.iterator();
     while (((Iterator)???).hasNext()) {
       ((TextureView.SurfaceTextureListener)((Iterator)???).next()).onSurfaceTextureAvailable(paramSurfaceTexture, paramInt1, paramInt2);
     }
@@ -224,20 +250,20 @@ public class GLTextureView
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(97227);
-    i locali = this.Ejd;
-    synchronized (Ejc)
+    i locali = this.Kwm;
+    synchronized (Kwl)
     {
-      locali.Ejy = false;
-      Ejc.notifyAll();
+      locali.KwH = false;
+      Kwl.notifyAll();
       for (;;)
       {
-        if (!locali.EjA)
+        if (!locali.KwJ)
         {
-          boolean bool = locali.Ejw;
+          boolean bool = locali.KwF;
           if (!bool) {
             try
             {
-              Ejc.wait();
+              Kwl.wait();
             }
             catch (InterruptedException localInterruptedException)
             {
@@ -247,7 +273,7 @@ public class GLTextureView
         }
       }
     }
-    ??? = this.Ejm.iterator();
+    ??? = this.Kwv.iterator();
     while (((Iterator)???).hasNext()) {
       ((TextureView.SurfaceTextureListener)((Iterator)???).next()).onSurfaceTextureDestroyed(paramSurfaceTexture);
     }
@@ -258,8 +284,8 @@ public class GLTextureView
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(97226);
-    iE(paramInt1, paramInt2);
-    Iterator localIterator = this.Ejm.iterator();
+    jN(paramInt1, paramInt2);
+    Iterator localIterator = this.Kwv.iterator();
     while (localIterator.hasNext()) {
       ((TextureView.SurfaceTextureListener)localIterator.next()).onSurfaceTextureSizeChanged(paramSurfaceTexture, paramInt1, paramInt2);
     }
@@ -269,42 +295,23 @@ public class GLTextureView
   public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(97228);
-    Iterator localIterator = this.Ejm.iterator();
+    Iterator localIterator = this.Kwv.iterator();
     while (localIterator.hasNext()) {
       ((TextureView.SurfaceTextureListener)localIterator.next()).onSurfaceTextureUpdated(paramSurfaceTexture);
     }
     AppMethodBeat.o(97228);
   }
   
-  public final void queueEvent(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(97221);
-    i locali = this.Ejd;
-    if (paramRunnable == null)
-    {
-      paramRunnable = new IllegalArgumentException("r must not be null");
-      AppMethodBeat.o(97221);
-      throw paramRunnable;
-    }
-    synchronized (Ejc)
-    {
-      locali.hgk.add(paramRunnable);
-      Ejc.notifyAll();
-      AppMethodBeat.o(97221);
-      return;
-    }
-  }
-  
   public void setDebugFlags(int paramInt)
   {
-    this.Ejj = paramInt;
+    this.Kws = paramInt;
   }
   
   public void setEGLConfigChooser(e parame)
   {
     AppMethodBeat.i(97215);
-    atX();
-    this.Ejf = parame;
+    aAS();
+    this.Kwo = parame;
     AppMethodBeat.o(97215);
   }
   
@@ -318,74 +325,74 @@ public class GLTextureView
   public void setEGLContextClientVersion(int paramInt)
   {
     AppMethodBeat.i(97217);
-    atX();
-    this.Ejk = paramInt;
+    aAS();
+    this.Kwt = paramInt;
     AppMethodBeat.o(97217);
   }
   
   public void setEGLContextFactory(f paramf)
   {
     AppMethodBeat.i(97213);
-    atX();
-    this.Ejg = paramf;
+    aAS();
+    this.Kwp = paramf;
     AppMethodBeat.o(97213);
   }
   
   public void setEGLWindowSurfaceFactory(g paramg)
   {
     AppMethodBeat.i(97214);
-    atX();
-    this.Ejh = paramg;
+    aAS();
+    this.Kwq = paramg;
     AppMethodBeat.o(97214);
   }
   
   public void setGLWrapper(k paramk)
   {
-    this.Eji = paramk;
+    this.Kwr = paramk;
   }
   
   public void setPreserveEGLContextOnPause(boolean paramBoolean)
   {
-    this.Ejl = paramBoolean;
+    this.Kwu = paramBoolean;
   }
   
   public void setRenderMode(int paramInt)
   {
     AppMethodBeat.i(97218);
-    this.Ejd.setRenderMode(paramInt);
+    this.Kwm.setRenderMode(paramInt);
     AppMethodBeat.o(97218);
   }
   
   public void setRenderer(m paramm)
   {
     AppMethodBeat.i(97212);
-    atX();
-    if (this.Ejf == null) {
-      this.Ejf = new n(true);
+    aAS();
+    if (this.Kwo == null) {
+      this.Kwo = new n(true);
     }
-    if (this.Ejg == null) {
-      this.Ejg = new c((byte)0);
+    if (this.Kwp == null) {
+      this.Kwp = new c((byte)0);
     }
-    if (this.Ejh == null) {
-      this.Ejh = new d((byte)0);
+    if (this.Kwq == null) {
+      this.Kwq = new d((byte)0);
     }
-    this.Eje = paramm;
-    this.Ejd = new i(this.gRZ);
-    this.Ejd.start();
+    this.Kwn = paramm;
+    this.Kwm = new i(this.jCz);
+    this.Kwm.start();
     AppMethodBeat.o(97212);
   }
   
   abstract class a
     implements GLTextureView.e
   {
-    protected int[] gSk;
+    protected int[] jCL;
     
     public a(int[] paramArrayOfInt)
     {
       if (GLTextureView.a(GLTextureView.this) != 2) {}
       for (;;)
       {
-        this.gSk = paramArrayOfInt;
+        this.jCL = paramArrayOfInt;
         return;
         this$1 = new int[15];
         System.arraycopy(paramArrayOfInt, 0, GLTextureView.this, 0, 12);
@@ -401,7 +408,7 @@ public class GLTextureView
     public final EGLConfig chooseConfig(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
     {
       int[] arrayOfInt = new int[1];
-      if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.gSk, null, 0, arrayOfInt)) {
+      if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jCL, null, 0, arrayOfInt)) {
         throw new IllegalArgumentException("eglChooseConfig failed");
       }
       int i = arrayOfInt[0];
@@ -409,7 +416,7 @@ public class GLTextureView
         throw new IllegalArgumentException("No configs match configSpec");
       }
       EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
-      if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.gSk, arrayOfEGLConfig, i, arrayOfInt)) {
+      if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jCL, arrayOfEGLConfig, i, arrayOfInt)) {
         throw new IllegalArgumentException("eglChooseConfig#2 failed");
       }
       paramEGL10 = b(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
@@ -423,12 +430,12 @@ public class GLTextureView
   class b
     extends GLTextureView.a
   {
-    protected int Ejo;
-    protected int Ejp;
-    protected int Ejq;
-    protected int Ejr;
-    protected int Ejs;
-    protected int Ejt;
+    protected int KwA;
+    protected int KwB;
+    protected int KwC;
+    protected int Kwx;
+    protected int Kwy;
+    protected int Kwz;
     private int[] value;
     
     public b(int paramInt)
@@ -436,12 +443,12 @@ public class GLTextureView
       super(new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 0, 12325, paramInt, 12326, 0, 12344 });
       AppMethodBeat.i(97180);
       this.value = new int[1];
-      this.Ejo = 8;
-      this.Ejp = 8;
-      this.Ejq = 8;
-      this.Ejr = 0;
-      this.Ejs = paramInt;
-      this.Ejt = 0;
+      this.Kwx = 8;
+      this.Kwy = 8;
+      this.Kwz = 8;
+      this.KwA = 0;
+      this.KwB = paramInt;
+      this.KwC = 0;
       AppMethodBeat.o(97180);
     }
     
@@ -468,13 +475,13 @@ public class GLTextureView
         EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
         int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325);
         int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326);
-        if ((k >= this.Ejs) && (m >= this.Ejt))
+        if ((k >= this.KwB) && (m >= this.KwC))
         {
           k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12324);
           m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323);
           int n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322);
           int i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321);
-          if ((k == this.Ejo) && (m == this.Ejp) && (n == this.Ejq) && (i1 == this.Ejr))
+          if ((k == this.Kwx) && (m == this.Kwy) && (n == this.Kwz) && (i1 == this.KwA))
           {
             AppMethodBeat.o(97181);
             return localEGLConfig;
@@ -490,7 +497,7 @@ public class GLTextureView
   final class c
     implements GLTextureView.f
   {
-    private int EGL_CONTEXT_CLIENT_VERSION = 12440;
+    private int jCT = 12440;
     
     private c() {}
     
@@ -498,7 +505,7 @@ public class GLTextureView
     {
       AppMethodBeat.i(97183);
       int[] arrayOfInt = new int[3];
-      arrayOfInt[0] = this.EGL_CONTEXT_CLIENT_VERSION;
+      arrayOfInt[0] = this.jCT;
       arrayOfInt[1] = GLTextureView.a(GLTextureView.this);
       arrayOfInt[2] = 12344;
       EGLContext localEGLContext = EGL10.EGL_NO_CONTEXT;
@@ -518,7 +525,7 @@ public class GLTextureView
       if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
       {
         new StringBuilder("display:").append(paramEGLDisplay).append(" context: ").append(paramEGLContext);
-        GLTextureView.h.P("eglDestroyContex", paramEGL10.eglGetError());
+        GLTextureView.h.ag("eglDestroyContex", paramEGL10.eglGetError());
       }
       AppMethodBeat.o(97184);
     }
@@ -527,7 +534,7 @@ public class GLTextureView
   static final class d
     implements GLTextureView.g
   {
-    public final EGLSurface createWindowSurface(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject)
+    public final EGLSurface b(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject)
     {
       Object localObject = null;
       AppMethodBeat.i(97185);
@@ -546,7 +553,7 @@ public class GLTextureView
       }
     }
     
-    public final void destroySurface(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
+    public final void b(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
     {
       AppMethodBeat.i(97186);
       paramEGL10.eglDestroySurface(paramEGLDisplay, paramEGLSurface);
@@ -568,14 +575,14 @@ public class GLTextureView
   
   public static abstract interface g
   {
-    public abstract EGLSurface createWindowSurface(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject);
+    public abstract EGLSurface b(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject);
     
-    public abstract void destroySurface(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface);
+    public abstract void b(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface);
   }
   
   static final class h
   {
-    WeakReference<GLTextureView> Eju;
+    WeakReference<GLTextureView> KwD;
     EGL10 egl;
     EGLConfig eglConfig;
     EGLContext eglContext;
@@ -584,18 +591,18 @@ public class GLTextureView
     
     public h(WeakReference<GLTextureView> paramWeakReference)
     {
-      this.Eju = paramWeakReference;
+      this.KwD = paramWeakReference;
     }
     
-    public static void P(String paramString, int paramInt)
+    public static void ag(String paramString, int paramInt)
     {
       AppMethodBeat.i(97189);
-      paramString = new RuntimeException(Q(paramString, paramInt));
+      paramString = new RuntimeException(ah(paramString, paramInt));
       AppMethodBeat.o(97189);
       throw paramString;
     }
     
-    public static String Q(String paramString, int paramInt)
+    public static String ah(String paramString, int paramInt)
     {
       AppMethodBeat.i(97190);
       paramString = paramString + " failed: " + paramInt;
@@ -603,7 +610,7 @@ public class GLTextureView
       return paramString;
     }
     
-    final void atZ()
+    final void aAU()
     {
       AppMethodBeat.i(97187);
       if ((this.eglSurface != null) && (this.eglSurface != EGL10.EGL_NO_SURFACE))
@@ -612,9 +619,9 @@ public class GLTextureView
         EGLDisplay localEGLDisplay = this.eglDisplay;
         EGLSurface localEGLSurface = EGL10.EGL_NO_SURFACE;
         ((EGL10)localObject).eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, EGL10.EGL_NO_CONTEXT);
-        localObject = (GLTextureView)this.Eju.get();
+        localObject = (GLTextureView)this.KwD.get();
         if (localObject != null) {
-          GLTextureView.d((GLTextureView)localObject).destroySurface(this.egl, this.eglDisplay, this.eglSurface);
+          GLTextureView.d((GLTextureView)localObject).b(this.egl, this.eglDisplay, this.eglSurface);
         }
         this.eglSurface = null;
       }
@@ -626,7 +633,7 @@ public class GLTextureView
       AppMethodBeat.i(97188);
       if (this.eglContext != null)
       {
-        GLTextureView localGLTextureView = (GLTextureView)this.Eju.get();
+        GLTextureView localGLTextureView = (GLTextureView)this.KwD.get();
         if (localGLTextureView != null) {
           GLTextureView.c(localGLTextureView).destroyContext(this.egl, this.eglDisplay, this.eglContext);
         }
@@ -644,64 +651,64 @@ public class GLTextureView
   public static final class i
     extends Thread
   {
-    boolean EjA;
-    boolean EjB;
-    boolean EjC;
-    private boolean EjD;
-    boolean EjE;
-    boolean EjF;
-    boolean EjG;
-    private GLTextureView.h EjH;
-    private WeakReference<GLTextureView> Eju;
-    private boolean Ejv;
-    boolean Ejw;
-    private boolean Ejx;
-    boolean Ejy;
-    private boolean Ejz;
-    private int hEi;
+    private WeakReference<GLTextureView> KwD;
+    private boolean KwE;
+    boolean KwF;
+    private boolean KwG;
+    boolean KwH;
+    private boolean KwI;
+    boolean KwJ;
+    boolean KwK;
+    boolean KwL;
+    private boolean KwM;
+    boolean KwN;
+    boolean KwO;
+    boolean KwP;
+    private GLTextureView.h KwQ;
     int height;
-    ArrayList<Runnable> hgk;
-    boolean tN;
+    ArrayList<Runnable> jSc;
+    private int ksn;
+    boolean lzZ;
     int width;
     
     i(WeakReference<GLTextureView> paramWeakReference)
     {
       AppMethodBeat.i(97191);
-      this.hgk = new ArrayList();
-      this.EjG = true;
+      this.jSc = new ArrayList();
+      this.KwP = true;
       this.width = 0;
       this.height = 0;
-      this.EjE = true;
-      this.hEi = 1;
-      this.Eju = paramWeakReference;
+      this.KwN = true;
+      this.ksn = 1;
+      this.KwD = paramWeakReference;
       AppMethodBeat.o(97191);
     }
     
-    private void aua()
+    private void aAV()
     {
       AppMethodBeat.i(97193);
-      if (this.EjC)
+      if (this.KwL)
       {
-        this.EjC = false;
-        this.EjH.atZ();
+        this.KwL = false;
+        this.KwQ.aAU();
       }
       AppMethodBeat.o(97193);
     }
     
-    private void aub()
+    private void aAW()
     {
       AppMethodBeat.i(97194);
-      if (this.EjB)
+      if (this.KwK)
       {
-        this.EjH.finish();
-        this.EjB = false;
-        GLTextureView.fen().c(this);
+        this.KwQ.finish();
+        this.KwK = false;
+        GLTextureView.fSh().c(this);
       }
       AppMethodBeat.o(97194);
     }
     
     /* Error */
-    private void auc()
+    private void aAX()
     {
       // Byte code:
       //   0: ldc 103
@@ -710,15 +717,15 @@ public class GLTextureView
       //   6: new 79	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h
       //   9: dup
       //   10: aload_0
-      //   11: getfield 61	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:Eju	Ljava/lang/ref/WeakReference;
+      //   11: getfield 61	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwD	Ljava/lang/ref/WeakReference;
       //   14: invokespecial 105	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:<init>	(Ljava/lang/ref/WeakReference;)V
-      //   17: putfield 77	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjH	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h;
+      //   17: putfield 77	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwQ	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h;
       //   20: aload_0
       //   21: iconst_0
-      //   22: putfield 86	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjB	Z
+      //   22: putfield 86	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwK	Z
       //   25: aload_0
       //   26: iconst_0
-      //   27: putfield 75	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjC	Z
+      //   27: putfield 75	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwL	Z
       //   30: iconst_0
       //   31: istore 6
       //   33: iconst_0
@@ -741,7 +748,7 @@ public class GLTextureView
       //   57: istore_1
       //   58: iconst_0
       //   59: istore_3
-      //   60: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   60: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
       //   63: astore 21
       //   65: aload 21
       //   67: monitorenter
@@ -756,18 +763,18 @@ public class GLTextureView
       //   81: iload 4
       //   83: istore_2
       //   84: aload_0
-      //   85: getfield 107	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:Ejv	Z
+      //   85: getfield 107	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwE	Z
       //   88: ifeq +44 -> 132
       //   91: aload 21
       //   93: monitorexit
-      //   94: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   94: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
       //   97: astore 20
       //   99: aload 20
       //   101: monitorenter
       //   102: aload_0
-      //   103: invokespecial 109	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aua	()V
+      //   103: invokespecial 109	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aAV	()V
       //   106: aload_0
-      //   107: invokespecial 111	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aub	()V
+      //   107: invokespecial 111	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aAW	()V
       //   110: aload 20
       //   112: monitorexit
       //   113: ldc 103
@@ -781,11 +788,11 @@ public class GLTextureView
       //   129: aload 21
       //   131: athrow
       //   132: aload_0
-      //   133: getfield 49	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:hgk	Ljava/util/ArrayList;
+      //   133: getfield 49	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:jSc	Ljava/util/ArrayList;
       //   136: invokevirtual 115	java/util/ArrayList:isEmpty	()Z
       //   139: ifne +57 -> 196
       //   142: aload_0
-      //   143: getfield 49	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:hgk	Ljava/util/ArrayList;
+      //   143: getfield 49	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:jSc	Ljava/util/ArrayList;
       //   146: iconst_0
       //   147: invokevirtual 119	java/util/ArrayList:remove	(I)Ljava/lang/Object;
       //   150: checkcast 121	java/lang/Runnable
@@ -812,53 +819,53 @@ public class GLTextureView
       //   191: astore 20
       //   193: goto -133 -> 60
       //   196: aload_0
-      //   197: getfield 126	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:tN	Z
+      //   197: getfield 126	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:lzZ	Z
       //   200: aload_0
-      //   201: getfield 128	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:Ejx	Z
-      //   204: if_icmpeq +1618 -> 1822
+      //   201: getfield 128	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwG	Z
+      //   204: if_icmpeq +1654 -> 1858
       //   207: aload_0
-      //   208: getfield 128	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:Ejx	Z
+      //   208: getfield 128	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwG	Z
       //   211: istore 14
       //   213: aload_0
       //   214: aload_0
-      //   215: getfield 128	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:Ejx	Z
-      //   218: putfield 126	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:tN	Z
-      //   221: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   215: getfield 128	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwG	Z
+      //   218: putfield 126	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:lzZ	Z
+      //   221: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
       //   224: invokevirtual 133	java/lang/Object:notifyAll	()V
       //   227: aload_0
-      //   228: getfield 135	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjD	Z
-      //   231: ifeq +1588 -> 1819
+      //   228: getfield 135	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwM	Z
+      //   231: ifeq +1624 -> 1855
       //   234: aload_0
-      //   235: invokespecial 109	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aua	()V
+      //   235: invokespecial 109	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aAV	()V
       //   238: aload_0
-      //   239: invokespecial 111	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aub	()V
+      //   239: invokespecial 111	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aAW	()V
       //   242: aload_0
       //   243: iconst_0
-      //   244: putfield 135	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjD	Z
+      //   244: putfield 135	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwM	Z
       //   247: iconst_1
       //   248: istore 7
       //   250: iload 9
-      //   252: ifeq +1560 -> 1812
+      //   252: ifeq +1596 -> 1848
       //   255: aload_0
-      //   256: invokespecial 109	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aua	()V
+      //   256: invokespecial 109	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aAV	()V
       //   259: aload_0
-      //   260: invokespecial 111	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aub	()V
+      //   260: invokespecial 111	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aAW	()V
       //   263: iconst_0
       //   264: istore 4
       //   266: iload 14
       //   268: ifeq +14 -> 282
       //   271: aload_0
-      //   272: getfield 75	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjC	Z
+      //   272: getfield 75	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwL	Z
       //   275: ifeq +7 -> 282
       //   278: aload_0
-      //   279: invokespecial 109	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aua	()V
+      //   279: invokespecial 109	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aAV	()V
       //   282: iload 14
       //   284: ifeq +48 -> 332
       //   287: aload_0
-      //   288: getfield 86	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjB	Z
+      //   288: getfield 86	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwK	Z
       //   291: ifeq +41 -> 332
       //   294: aload_0
-      //   295: getfield 61	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:Eju	Ljava/lang/ref/WeakReference;
+      //   295: getfield 61	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwD	Ljava/lang/ref/WeakReference;
       //   298: invokevirtual 141	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   301: checkcast 6	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView
       //   304: astore 22
@@ -868,67 +875,67 @@ public class GLTextureView
       //   312: istore 15
       //   314: iload 15
       //   316: ifeq +12 -> 328
-      //   319: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
-      //   322: invokevirtual 144	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:fep	()Z
+      //   319: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   322: invokevirtual 144	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:fSj	()Z
       //   325: ifeq +7 -> 332
       //   328: aload_0
-      //   329: invokespecial 111	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aub	()V
+      //   329: invokespecial 111	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aAW	()V
       //   332: iload 14
       //   334: ifeq +19 -> 353
-      //   337: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
-      //   340: invokevirtual 147	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:feq	()Z
+      //   337: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   340: invokevirtual 147	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:fSk	()Z
       //   343: ifeq +10 -> 353
       //   346: aload_0
-      //   347: getfield 77	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjH	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h;
+      //   347: getfield 77	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwQ	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h;
       //   350: invokevirtual 89	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:finish	()V
       //   353: aload_0
-      //   354: getfield 149	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:Ejy	Z
+      //   354: getfield 149	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwH	Z
       //   357: ifne +37 -> 394
       //   360: aload_0
-      //   361: getfield 151	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjA	Z
+      //   361: getfield 151	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwJ	Z
       //   364: ifne +30 -> 394
       //   367: aload_0
-      //   368: getfield 75	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjC	Z
+      //   368: getfield 75	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwL	Z
       //   371: ifeq +7 -> 378
       //   374: aload_0
-      //   375: invokespecial 109	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aua	()V
+      //   375: invokespecial 109	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aAV	()V
       //   378: aload_0
       //   379: iconst_1
-      //   380: putfield 151	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjA	Z
+      //   380: putfield 151	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwJ	Z
       //   383: aload_0
       //   384: iconst_0
-      //   385: putfield 153	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:Ejz	Z
-      //   388: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   385: putfield 153	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwI	Z
+      //   388: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
       //   391: invokevirtual 133	java/lang/Object:notifyAll	()V
       //   394: aload_0
-      //   395: getfield 149	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:Ejy	Z
+      //   395: getfield 149	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwH	Z
       //   398: ifeq +21 -> 419
       //   401: aload_0
-      //   402: getfield 151	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjA	Z
+      //   402: getfield 151	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwJ	Z
       //   405: ifeq +14 -> 419
       //   408: aload_0
       //   409: iconst_0
-      //   410: putfield 151	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjA	Z
-      //   413: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   410: putfield 151	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwJ	Z
+      //   413: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
       //   416: invokevirtual 133	java/lang/Object:notifyAll	()V
       //   419: iload 5
-      //   421: ifeq +1384 -> 1805
+      //   421: ifeq +1420 -> 1841
       //   424: iconst_0
       //   425: istore 9
       //   427: aload_0
       //   428: iconst_1
-      //   429: putfield 155	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjF	Z
-      //   432: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   429: putfield 155	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwO	Z
+      //   432: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
       //   435: invokevirtual 133	java/lang/Object:notifyAll	()V
       //   438: iconst_0
       //   439: istore 5
       //   441: aload_0
-      //   442: invokevirtual 158	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aue	()Z
-      //   445: ifeq +1354 -> 1799
+      //   442: invokevirtual 158	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aAY	()Z
+      //   445: ifeq +1390 -> 1835
       //   448: iload_3
       //   449: istore 8
       //   451: aload_0
-      //   452: getfield 86	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjB	Z
+      //   452: getfield 86	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwK	Z
       //   455: ifne +488 -> 943
       //   458: iload 7
       //   460: ifeq +133 -> 593
@@ -939,14 +946,14 @@ public class GLTextureView
       //   469: iload 8
       //   471: istore_3
       //   472: aload_0
-      //   473: getfield 86	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjB	Z
-      //   476: ifeq +1317 -> 1793
+      //   473: getfield 86	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwK	Z
+      //   476: ifeq +1353 -> 1829
       //   479: aload_0
-      //   480: getfield 75	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjC	Z
-      //   483: ifne +1310 -> 1793
+      //   480: getfield 75	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwL	Z
+      //   483: ifne +1346 -> 1829
       //   486: aload_0
       //   487: iconst_1
-      //   488: putfield 75	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjC	Z
+      //   488: putfield 75	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwL	Z
       //   491: iconst_1
       //   492: istore 6
       //   494: iconst_1
@@ -954,11 +961,11 @@ public class GLTextureView
       //   497: iconst_1
       //   498: istore_2
       //   499: aload_0
-      //   500: getfield 75	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjC	Z
+      //   500: getfield 75	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwL	Z
       //   503: ifeq +508 -> 1011
       //   506: aload_0
-      //   507: getfield 51	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjG	Z
-      //   510: ifeq +1275 -> 1785
+      //   507: getfield 51	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwP	Z
+      //   510: ifeq +1311 -> 1821
       //   513: aload_0
       //   514: getfield 53	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:width	I
       //   517: istore 10
@@ -969,15 +976,15 @@ public class GLTextureView
       //   525: istore 6
       //   527: aload_0
       //   528: iconst_0
-      //   529: putfield 51	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjG	Z
+      //   529: putfield 51	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwP	Z
       //   532: iconst_1
       //   533: istore 9
       //   535: iconst_1
       //   536: istore_1
       //   537: aload_0
       //   538: iconst_0
-      //   539: putfield 57	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjE	Z
-      //   542: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   539: putfield 57	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwN	Z
+      //   542: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
       //   545: invokevirtual 133	java/lang/Object:notifyAll	()V
       //   548: iload_2
       //   549: istore 11
@@ -1004,18 +1011,18 @@ public class GLTextureView
       //   585: invokestatic 162	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:g	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView;)Z
       //   588: istore 15
       //   590: goto -276 -> 314
-      //   593: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   593: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
       //   596: astore 22
       //   598: aload 22
-      //   600: getfield 166	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:EjN	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i;
+      //   600: getfield 166	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:KwW	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i;
       //   603: aload_0
       //   604: if_acmpeq +11 -> 615
       //   607: aload 22
-      //   609: getfield 166	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:EjN	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i;
+      //   609: getfield 166	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:KwW	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i;
       //   612: ifnonnull +149 -> 761
       //   615: aload 22
       //   617: aload_0
-      //   618: putfield 166	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:EjN	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i;
+      //   618: putfield 166	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:KwW	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i;
       //   621: aload 22
       //   623: invokevirtual 133	java/lang/Object:notifyAll	()V
       //   626: iconst_1
@@ -1025,7 +1032,7 @@ public class GLTextureView
       //   632: iload 12
       //   634: ifeq +309 -> 943
       //   637: aload_0
-      //   638: getfield 77	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjH	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h;
+      //   638: getfield 77	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwQ	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h;
       //   641: astore 22
       //   643: aload 22
       //   645: invokestatic 172	javax/microedition/khronos/egl/EGLContext:getEGL	()Ljavax/microedition/khronos/egl/EGL;
@@ -1051,7 +1058,7 @@ public class GLTextureView
       //   699: aload 20
       //   701: athrow
       //   702: astore 20
-      //   704: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   704: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
       //   707: aload_0
       //   708: invokevirtual 99	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:c	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i;)V
       //   711: ldc 103
@@ -1066,14 +1073,14 @@ public class GLTextureView
       //   729: aload 20
       //   731: athrow
       //   732: astore 21
-      //   734: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   734: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
       //   737: astore 20
       //   739: aload 20
       //   741: monitorenter
       //   742: aload_0
-      //   743: invokespecial 109	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aua	()V
+      //   743: invokespecial 109	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aAV	()V
       //   746: aload_0
-      //   747: invokespecial 111	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aub	()V
+      //   747: invokespecial 111	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aAW	()V
       //   750: aload 20
       //   752: monitorexit
       //   753: ldc 103
@@ -1081,21 +1088,21 @@ public class GLTextureView
       //   758: aload 21
       //   760: athrow
       //   761: aload 22
-      //   763: invokevirtual 201	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:fer	()V
+      //   763: invokevirtual 201	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:fSl	()V
       //   766: aload 22
-      //   768: getfield 204	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:EjL	Z
+      //   768: getfield 204	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:KwU	Z
       //   771: ifeq +9 -> 780
       //   774: iconst_1
       //   775: istore 12
       //   777: goto -148 -> 629
       //   780: aload 22
-      //   782: getfield 166	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:EjN	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i;
+      //   782: getfield 166	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:KwW	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i;
       //   785: ifnull +18 -> 803
       //   788: aload 22
-      //   790: getfield 166	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:EjN	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i;
+      //   790: getfield 166	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:KwW	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i;
       //   793: iconst_1
-      //   794: putfield 135	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjD	Z
-      //   797: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   794: putfield 135	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwM	Z
+      //   797: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
       //   800: invokevirtual 133	java/lang/Object:notifyAll	()V
       //   803: iconst_0
       //   804: istore 12
@@ -1120,7 +1127,7 @@ public class GLTextureView
       //   850: aload 20
       //   852: athrow
       //   853: aload 22
-      //   855: getfield 211	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:Eju	Ljava/lang/ref/WeakReference;
+      //   855: getfield 211	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:KwD	Ljava/lang/ref/WeakReference;
       //   858: invokevirtual 141	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   861: checkcast 6	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView
       //   864: astore 23
@@ -1146,16 +1153,16 @@ public class GLTextureView
       //   910: aload 22
       //   912: getfield 178	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:egl	Ljavax/microedition/khronos/egl/EGL10;
       //   915: invokeinterface 228 1 0
-      //   920: invokestatic 232	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:P	(Ljava/lang/String;I)V
+      //   920: invokestatic 232	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:ag	(Ljava/lang/String;I)V
       //   923: aload 22
       //   925: aconst_null
       //   926: putfield 236	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:eglSurface	Ljavax/microedition/khronos/egl/EGLSurface;
       //   929: aload_0
       //   930: iconst_1
-      //   931: putfield 86	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjB	Z
+      //   931: putfield 86	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwK	Z
       //   934: iconst_1
       //   935: istore 8
-      //   937: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   937: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
       //   940: invokevirtual 133	java/lang/Object:notifyAll	()V
       //   943: iload 7
       //   945: istore_3
@@ -1189,7 +1196,7 @@ public class GLTextureView
       //   1016: istore 8
       //   1018: iload_3
       //   1019: istore 7
-      //   1021: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   1021: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
       //   1024: invokevirtual 257	java/lang/Object:wait	()V
       //   1027: iload 8
       //   1029: istore_3
@@ -1199,9 +1206,9 @@ public class GLTextureView
       //   1036: istore 9
       //   1038: goto -954 -> 84
       //   1041: iload 6
-      //   1043: ifeq +785 -> 1828
+      //   1043: ifeq +821 -> 1864
       //   1046: aload_0
-      //   1047: getfield 77	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjH	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h;
+      //   1047: getfield 77	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwQ	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h;
       //   1050: astore 20
       //   1052: aload 20
       //   1054: getfield 178	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:egl	Ljavax/microedition/khronos/egl/EGL10;
@@ -1240,9 +1247,9 @@ public class GLTextureView
       //   1133: aload 20
       //   1135: athrow
       //   1136: aload 20
-      //   1138: invokevirtual 82	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:atZ	()V
+      //   1138: invokevirtual 82	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:aAU	()V
       //   1141: aload 20
-      //   1143: getfield 211	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:Eju	Ljava/lang/ref/WeakReference;
+      //   1143: getfield 211	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:KwD	Ljava/lang/ref/WeakReference;
       //   1146: invokevirtual 141	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   1149: checkcast 6	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView
       //   1152: astore 21
@@ -1259,14 +1266,14 @@ public class GLTextureView
       //   1178: getfield 215	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:eglConfig	Ljavax/microedition/khronos/egl/EGLConfig;
       //   1181: aload 21
       //   1183: invokevirtual 271	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:getSurfaceTexture	()Landroid/graphics/SurfaceTexture;
-      //   1186: invokeinterface 277 5 0
+      //   1186: invokeinterface 276 5 0
       //   1191: putfield 236	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:eglSurface	Ljavax/microedition/khronos/egl/EGLSurface;
       //   1194: aload 20
       //   1196: getfield 236	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:eglSurface	Ljavax/microedition/khronos/egl/EGLSurface;
       //   1199: ifnull +14 -> 1213
       //   1202: aload 20
       //   1204: getfield 236	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:eglSurface	Ljavax/microedition/khronos/egl/EGLSurface;
-      //   1207: getstatic 280	javax/microedition/khronos/egl/EGL10:EGL_NO_SURFACE	Ljavax/microedition/khronos/egl/EGLSurface;
+      //   1207: getstatic 279	javax/microedition/khronos/egl/EGL10:EGL_NO_SURFACE	Ljavax/microedition/khronos/egl/EGLSurface;
       //   1210: if_acmpne +60 -> 1270
       //   1213: aload 20
       //   1215: getfield 178	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:egl	Ljavax/microedition/khronos/egl/EGL10;
@@ -1275,15 +1282,15 @@ public class GLTextureView
       //   1224: iconst_0
       //   1225: istore 9
       //   1227: iload 9
-      //   1229: ifne +602 -> 1831
-      //   1232: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   1229: ifne +644 -> 1873
+      //   1232: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
       //   1235: astore 20
       //   1237: aload 20
       //   1239: monitorenter
       //   1240: aload_0
       //   1241: iconst_1
-      //   1242: putfield 153	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:Ejz	Z
-      //   1245: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   1242: putfield 153	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwI	Z
+      //   1245: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
       //   1248: invokevirtual 133	java/lang/Object:notifyAll	()V
       //   1251: aload 20
       //   1253: monitorexit
@@ -1304,304 +1311,302 @@ public class GLTextureView
       //   1287: getfield 236	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:eglSurface	Ljavax/microedition/khronos/egl/EGLSurface;
       //   1290: aload 20
       //   1292: getfield 219	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:eglContext	Ljavax/microedition/khronos/egl/EGLContext;
-      //   1295: invokeinterface 284 5 0
-      //   1300: ifne +26 -> 1326
-      //   1303: ldc_w 285
+      //   1295: invokeinterface 283 5 0
+      //   1300: ifne +567 -> 1867
+      //   1303: ldc_w 284
       //   1306: aload 20
       //   1308: getfield 178	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:egl	Ljavax/microedition/khronos/egl/EGL10;
       //   1311: invokeinterface 228 1 0
-      //   1316: invokestatic 289	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:Q	(Ljava/lang/String;I)Ljava/lang/String;
+      //   1316: invokestatic 288	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:ah	(Ljava/lang/String;I)Ljava/lang/String;
       //   1319: pop
       //   1320: iconst_0
       //   1321: istore 9
       //   1323: goto -96 -> 1227
-      //   1326: iconst_1
-      //   1327: istore 9
-      //   1329: goto -102 -> 1227
-      //   1332: astore 21
-      //   1334: aload 20
-      //   1336: monitorexit
-      //   1337: ldc 103
-      //   1339: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   1342: aload 21
-      //   1344: athrow
-      //   1345: iload 8
-      //   1347: istore 9
-      //   1349: iload 8
-      //   1351: ifeq +139 -> 1490
-      //   1354: aload_0
-      //   1355: getfield 77	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjH	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h;
-      //   1358: astore 21
-      //   1360: aload 21
-      //   1362: getfield 219	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:eglContext	Ljavax/microedition/khronos/egl/EGLContext;
-      //   1365: invokevirtual 293	javax/microedition/khronos/egl/EGLContext:getGL	()Ljavax/microedition/khronos/opengles/GL;
-      //   1368: astore 20
-      //   1370: aload 21
-      //   1372: getfield 211	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:Eju	Ljava/lang/ref/WeakReference;
-      //   1375: invokevirtual 141	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-      //   1378: checkcast 6	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView
-      //   1381: astore 23
-      //   1383: aload 20
-      //   1385: astore 21
-      //   1387: aload 23
-      //   1389: ifnull +389 -> 1778
-      //   1392: aload 23
-      //   1394: invokestatic 297	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:e	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView;)Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$k;
-      //   1397: ifnull +15 -> 1412
-      //   1400: aload 23
-      //   1402: invokestatic 297	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:e	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView;)Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$k;
-      //   1405: invokeinterface 302 1 0
-      //   1410: astore 20
-      //   1412: aload 20
-      //   1414: astore 21
-      //   1416: aload 23
-      //   1418: invokestatic 306	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:f	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView;)I
-      //   1421: iconst_3
-      //   1422: iand
-      //   1423: ifeq +355 -> 1778
-      //   1426: iconst_0
-      //   1427: istore 8
-      //   1429: aload 23
-      //   1431: invokestatic 306	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:f	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView;)I
-      //   1434: iconst_1
-      //   1435: iand
-      //   1436: ifeq +6 -> 1442
-      //   1439: iconst_1
-      //   1440: istore 8
-      //   1442: aload 23
-      //   1444: invokestatic 306	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:f	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView;)I
-      //   1447: iconst_2
-      //   1448: iand
-      //   1449: ifeq +323 -> 1772
-      //   1452: new 308	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$l
-      //   1455: dup
-      //   1456: invokespecial 309	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$l:<init>	()V
-      //   1459: astore 21
-      //   1461: aload 20
-      //   1463: iload 8
-      //   1465: aload 21
-      //   1467: invokestatic 315	android/opengl/GLDebugHelper:wrap	(Ljavax/microedition/khronos/opengles/GL;ILjava/io/Writer;)Ljavax/microedition/khronos/opengles/GL;
-      //   1470: astore 20
-      //   1472: aload 20
-      //   1474: checkcast 317	javax/microedition/khronos/opengles/GL10
-      //   1477: astore 20
-      //   1479: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
-      //   1482: aload 20
-      //   1484: invokevirtual 320	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:b	(Ljavax/microedition/khronos/opengles/GL10;)V
-      //   1487: iconst_0
-      //   1488: istore 9
-      //   1490: iload_3
-      //   1491: istore 8
-      //   1493: iload_3
-      //   1494: ifeq +33 -> 1527
-      //   1497: aload_0
-      //   1498: getfield 61	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:Eju	Ljava/lang/ref/WeakReference;
-      //   1501: invokevirtual 141	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-      //   1504: checkcast 6	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView
-      //   1507: astore 20
-      //   1509: aload 20
-      //   1511: ifnull +326 -> 1837
-      //   1514: aload 20
-      //   1516: invokestatic 324	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:h	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView;)Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$m;
-      //   1519: invokeinterface 329 1 0
-      //   1524: goto +313 -> 1837
-      //   1527: iload 4
-      //   1529: istore_3
-      //   1530: iload 4
-      //   1532: ifeq +37 -> 1569
-      //   1535: aload_0
-      //   1536: getfield 61	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:Eju	Ljava/lang/ref/WeakReference;
-      //   1539: invokevirtual 141	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-      //   1542: checkcast 6	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView
-      //   1545: astore 20
-      //   1547: aload 20
-      //   1549: ifnull +294 -> 1843
-      //   1552: aload 20
-      //   1554: invokestatic 324	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:h	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView;)Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$m;
-      //   1557: iload 10
-      //   1559: iload 11
-      //   1561: invokeinterface 333 3 0
-      //   1566: goto +277 -> 1843
-      //   1569: aload_0
-      //   1570: getfield 61	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:Eju	Ljava/lang/ref/WeakReference;
-      //   1573: invokevirtual 141	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-      //   1576: checkcast 6	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView
-      //   1579: astore 20
-      //   1581: aload 20
-      //   1583: ifnull +13 -> 1596
-      //   1586: aload 20
-      //   1588: invokestatic 324	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:h	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView;)Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$m;
-      //   1591: invokeinterface 336 1 0
-      //   1596: invokestatic 342	java/lang/System:currentTimeMillis	()J
-      //   1599: lstore 16
-      //   1601: aload_0
-      //   1602: getfield 77	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:EjH	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h;
-      //   1605: astore 20
-      //   1607: aload 20
-      //   1609: getfield 178	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:egl	Ljavax/microedition/khronos/egl/EGL10;
-      //   1612: aload 20
-      //   1614: getfield 190	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:eglDisplay	Ljavax/microedition/khronos/egl/EGLDisplay;
-      //   1617: aload 20
-      //   1619: getfield 236	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:eglSurface	Ljavax/microedition/khronos/egl/EGLSurface;
-      //   1622: invokeinterface 346 3 0
-      //   1627: ifne +257 -> 1884
-      //   1630: aload 20
-      //   1632: getfield 178	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:egl	Ljavax/microedition/khronos/egl/EGL10;
-      //   1635: invokeinterface 228 1 0
-      //   1640: istore 12
-      //   1642: invokestatic 342	java/lang/System:currentTimeMillis	()J
-      //   1645: lstore 18
-      //   1647: new 348	java/lang/StringBuilder
-      //   1650: dup
-      //   1651: ldc_w 350
-      //   1654: invokespecial 351	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-      //   1657: lload 18
-      //   1659: lload 16
-      //   1661: lsub
-      //   1662: invokevirtual 355	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-      //   1665: ldc_w 357
-      //   1668: invokevirtual 360	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   1671: pop
-      //   1672: iload_1
-      //   1673: istore 4
-      //   1675: iload 12
-      //   1677: lookupswitch	default:+171->1848, 12288:+174->1851, 12302:+215->1892
-      //   1705: aconst_null
-      //   1706: lmul
-      //   1707: iload 12
-      //   1709: invokestatic 289	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:Q	(Ljava/lang/String;I)Ljava/lang/String;
-      //   1712: pop
-      //   1713: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
-      //   1716: astore 20
-      //   1718: aload 20
-      //   1720: monitorenter
-      //   1721: aload_0
-      //   1722: iconst_1
-      //   1723: putfield 153	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:Ejz	Z
-      //   1726: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
-      //   1729: invokevirtual 133	java/lang/Object:notifyAll	()V
-      //   1732: aload 20
-      //   1734: monitorexit
-      //   1735: iload_1
-      //   1736: istore 4
-      //   1738: goto +113 -> 1851
-      //   1741: astore 21
-      //   1743: aload 20
-      //   1745: monitorexit
-      //   1746: ldc 103
-      //   1748: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   1751: aload 21
-      //   1753: athrow
-      //   1754: astore 21
-      //   1756: aload 20
-      //   1758: monitorexit
-      //   1759: ldc 103
-      //   1761: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   1764: aload 21
-      //   1766: athrow
-      //   1767: iload_2
-      //   1768: istore_1
-      //   1769: goto +89 -> 1858
-      //   1772: aconst_null
-      //   1773: astore 21
-      //   1775: goto -314 -> 1461
-      //   1778: aload 21
-      //   1780: astore 20
-      //   1782: goto -310 -> 1472
-      //   1785: iload_2
-      //   1786: istore_1
-      //   1787: iload 11
-      //   1789: istore_2
-      //   1790: goto -1253 -> 537
-      //   1793: iload_1
-      //   1794: istore 8
-      //   1796: goto -1297 -> 499
-      //   1799: iload_3
-      //   1800: istore 8
-      //   1802: goto -781 -> 1021
-      //   1805: iload 12
-      //   1807: istore 9
-      //   1809: goto -1368 -> 441
-      //   1812: iload 9
-      //   1814: istore 4
-      //   1816: goto -1550 -> 266
-      //   1819: goto -1569 -> 250
-      //   1822: iconst_0
-      //   1823: istore 14
-      //   1825: goto -1598 -> 227
-      //   1828: goto -483 -> 1345
-      //   1831: iconst_0
-      //   1832: istore 6
-      //   1834: goto -489 -> 1345
-      //   1837: iconst_0
-      //   1838: istore 8
-      //   1840: goto -313 -> 1527
-      //   1843: iconst_0
-      //   1844: istore_3
-      //   1845: goto -276 -> 1569
-      //   1848: goto -144 -> 1704
-      //   1851: iload 5
-      //   1853: ifeq -86 -> 1767
-      //   1856: iconst_1
-      //   1857: istore_1
-      //   1858: iload_1
-      //   1859: istore_2
-      //   1860: iload 4
-      //   1862: istore_1
-      //   1863: iload 8
-      //   1865: istore 12
-      //   1867: iload_3
-      //   1868: istore 4
-      //   1870: iload 9
-      //   1872: istore 8
-      //   1874: iload 12
-      //   1876: istore_3
-      //   1877: aload 22
-      //   1879: astore 20
-      //   1881: goto -1821 -> 60
-      //   1884: sipush 12288
-      //   1887: istore 12
-      //   1889: goto -247 -> 1642
-      //   1892: iconst_1
-      //   1893: istore 4
-      //   1895: goto -44 -> 1851
+      //   1326: astore 21
+      //   1328: aload 20
+      //   1330: monitorexit
+      //   1331: ldc 103
+      //   1333: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   1336: aload 21
+      //   1338: athrow
+      //   1339: iload 8
+      //   1341: istore 9
+      //   1343: iload 8
+      //   1345: ifeq +139 -> 1484
+      //   1348: aload_0
+      //   1349: getfield 77	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwQ	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h;
+      //   1352: astore 21
+      //   1354: aload 21
+      //   1356: getfield 219	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:eglContext	Ljavax/microedition/khronos/egl/EGLContext;
+      //   1359: invokevirtual 292	javax/microedition/khronos/egl/EGLContext:getGL	()Ljavax/microedition/khronos/opengles/GL;
+      //   1362: astore 20
+      //   1364: aload 21
+      //   1366: getfield 211	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:KwD	Ljava/lang/ref/WeakReference;
+      //   1369: invokevirtual 141	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+      //   1372: checkcast 6	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView
+      //   1375: astore 23
+      //   1377: aload 20
+      //   1379: astore 21
+      //   1381: aload 23
+      //   1383: ifnull +431 -> 1814
+      //   1386: aload 23
+      //   1388: invokestatic 296	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:e	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView;)Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$k;
+      //   1391: ifnull +15 -> 1406
+      //   1394: aload 23
+      //   1396: invokestatic 296	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:e	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView;)Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$k;
+      //   1399: invokeinterface 301 1 0
+      //   1404: astore 20
+      //   1406: aload 20
+      //   1408: astore 21
+      //   1410: aload 23
+      //   1412: invokestatic 305	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:f	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView;)I
+      //   1415: iconst_3
+      //   1416: iand
+      //   1417: ifeq +397 -> 1814
+      //   1420: iconst_0
+      //   1421: istore 8
+      //   1423: aload 23
+      //   1425: invokestatic 305	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:f	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView;)I
+      //   1428: iconst_1
+      //   1429: iand
+      //   1430: ifeq +6 -> 1436
+      //   1433: iconst_1
+      //   1434: istore 8
+      //   1436: aload 23
+      //   1438: invokestatic 305	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:f	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView;)I
+      //   1441: iconst_2
+      //   1442: iand
+      //   1443: ifeq +365 -> 1808
+      //   1446: new 307	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$l
+      //   1449: dup
+      //   1450: invokespecial 308	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$l:<init>	()V
+      //   1453: astore 21
+      //   1455: aload 20
+      //   1457: iload 8
+      //   1459: aload 21
+      //   1461: invokestatic 314	android/opengl/GLDebugHelper:wrap	(Ljavax/microedition/khronos/opengles/GL;ILjava/io/Writer;)Ljavax/microedition/khronos/opengles/GL;
+      //   1464: astore 20
+      //   1466: aload 20
+      //   1468: checkcast 316	javax/microedition/khronos/opengles/GL10
+      //   1471: astore 20
+      //   1473: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   1476: aload 20
+      //   1478: invokevirtual 319	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:b	(Ljavax/microedition/khronos/opengles/GL10;)V
+      //   1481: iconst_0
+      //   1482: istore 9
+      //   1484: iload_3
+      //   1485: istore 8
+      //   1487: iload_3
+      //   1488: ifeq +33 -> 1521
+      //   1491: aload_0
+      //   1492: getfield 61	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwD	Ljava/lang/ref/WeakReference;
+      //   1495: invokevirtual 141	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+      //   1498: checkcast 6	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView
+      //   1501: astore 20
+      //   1503: aload 20
+      //   1505: ifnull +374 -> 1879
+      //   1508: aload 20
+      //   1510: invokestatic 323	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:h	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView;)Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$m;
+      //   1513: invokeinterface 328 1 0
+      //   1518: goto +361 -> 1879
+      //   1521: iload 4
+      //   1523: istore_3
+      //   1524: iload 4
+      //   1526: ifeq +37 -> 1563
+      //   1529: aload_0
+      //   1530: getfield 61	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwD	Ljava/lang/ref/WeakReference;
+      //   1533: invokevirtual 141	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+      //   1536: checkcast 6	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView
+      //   1539: astore 20
+      //   1541: aload 20
+      //   1543: ifnull +342 -> 1885
+      //   1546: aload 20
+      //   1548: invokestatic 323	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:h	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView;)Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$m;
+      //   1551: iload 10
+      //   1553: iload 11
+      //   1555: invokeinterface 332 3 0
+      //   1560: goto +325 -> 1885
+      //   1563: aload_0
+      //   1564: getfield 61	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwD	Ljava/lang/ref/WeakReference;
+      //   1567: invokevirtual 141	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+      //   1570: checkcast 6	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView
+      //   1573: astore 20
+      //   1575: aload 20
+      //   1577: ifnull +13 -> 1590
+      //   1580: aload 20
+      //   1582: invokestatic 323	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:h	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView;)Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$m;
+      //   1585: invokeinterface 335 1 0
+      //   1590: invokestatic 341	java/lang/System:currentTimeMillis	()J
+      //   1593: lstore 16
+      //   1595: aload_0
+      //   1596: getfield 77	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwQ	Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h;
+      //   1599: astore 20
+      //   1601: aload 20
+      //   1603: getfield 178	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:egl	Ljavax/microedition/khronos/egl/EGL10;
+      //   1606: aload 20
+      //   1608: getfield 190	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:eglDisplay	Ljavax/microedition/khronos/egl/EGLDisplay;
+      //   1611: aload 20
+      //   1613: getfield 236	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:eglSurface	Ljavax/microedition/khronos/egl/EGLSurface;
+      //   1616: invokeinterface 345 3 0
+      //   1621: ifne +142 -> 1763
+      //   1624: aload 20
+      //   1626: getfield 178	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:egl	Ljavax/microedition/khronos/egl/EGL10;
+      //   1629: invokeinterface 228 1 0
+      //   1634: istore 12
+      //   1636: invokestatic 341	java/lang/System:currentTimeMillis	()J
+      //   1639: lstore 18
+      //   1641: new 347	java/lang/StringBuilder
+      //   1644: dup
+      //   1645: ldc_w 349
+      //   1648: invokespecial 350	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   1651: lload 18
+      //   1653: lload 16
+      //   1655: lsub
+      //   1656: invokevirtual 354	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+      //   1659: ldc_w 356
+      //   1662: invokevirtual 359	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   1665: pop
+      //   1666: iload_1
+      //   1667: istore 4
+      //   1669: iload 12
+      //   1671: lookupswitch	default:+219->1890, 12288:+59->1730, 12302:+100->1771
+      //   1697: aconst_null
+      //   1698: imul
+      //   1699: iload 12
+      //   1701: invokestatic 288	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$h:ah	(Ljava/lang/String;I)Ljava/lang/String;
+      //   1704: pop
+      //   1705: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   1708: astore 20
+      //   1710: aload 20
+      //   1712: monitorenter
+      //   1713: aload_0
+      //   1714: iconst_1
+      //   1715: putfield 153	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:KwI	Z
+      //   1718: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   1721: invokevirtual 133	java/lang/Object:notifyAll	()V
+      //   1724: aload 20
+      //   1726: monitorexit
+      //   1727: iload_1
+      //   1728: istore 4
+      //   1730: iload 5
+      //   1732: ifeq +71 -> 1803
+      //   1735: iconst_1
+      //   1736: istore_1
+      //   1737: iload_1
+      //   1738: istore_2
+      //   1739: iload 4
+      //   1741: istore_1
+      //   1742: iload 8
+      //   1744: istore 12
+      //   1746: iload_3
+      //   1747: istore 4
+      //   1749: iload 9
+      //   1751: istore 8
+      //   1753: iload 12
+      //   1755: istore_3
+      //   1756: aload 22
+      //   1758: astore 20
+      //   1760: goto -1700 -> 60
+      //   1763: sipush 12288
+      //   1766: istore 12
+      //   1768: goto -132 -> 1636
+      //   1771: iconst_1
+      //   1772: istore 4
+      //   1774: goto -44 -> 1730
+      //   1777: astore 21
+      //   1779: aload 20
+      //   1781: monitorexit
+      //   1782: ldc 103
+      //   1784: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   1787: aload 21
+      //   1789: athrow
+      //   1790: astore 21
+      //   1792: aload 20
+      //   1794: monitorexit
+      //   1795: ldc 103
+      //   1797: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   1800: aload 21
+      //   1802: athrow
+      //   1803: iload_2
+      //   1804: istore_1
+      //   1805: goto -68 -> 1737
+      //   1808: aconst_null
+      //   1809: astore 21
+      //   1811: goto -356 -> 1455
+      //   1814: aload 21
+      //   1816: astore 20
+      //   1818: goto -352 -> 1466
+      //   1821: iload_2
+      //   1822: istore_1
+      //   1823: iload 11
+      //   1825: istore_2
+      //   1826: goto -1289 -> 537
+      //   1829: iload_1
+      //   1830: istore 8
+      //   1832: goto -1333 -> 499
+      //   1835: iload_3
+      //   1836: istore 8
+      //   1838: goto -817 -> 1021
+      //   1841: iload 12
+      //   1843: istore 9
+      //   1845: goto -1404 -> 441
+      //   1848: iload 9
+      //   1850: istore 4
+      //   1852: goto -1586 -> 266
+      //   1855: goto -1605 -> 250
+      //   1858: iconst_0
+      //   1859: istore 14
+      //   1861: goto -1634 -> 227
+      //   1864: goto -525 -> 1339
+      //   1867: iconst_1
+      //   1868: istore 9
+      //   1870: goto -643 -> 1227
+      //   1873: iconst_0
+      //   1874: istore 6
+      //   1876: goto -537 -> 1339
+      //   1879: iconst_0
+      //   1880: istore 8
+      //   1882: goto -361 -> 1521
+      //   1885: iconst_0
+      //   1886: istore_3
+      //   1887: goto -324 -> 1563
+      //   1890: goto -194 -> 1696
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	1898	0	this	i
-      //   57	1806	1	i	int
-      //   55	1805	2	j	int
-      //   59	1818	3	k	int
-      //   37	1857	4	m	int
-      //   40	1812	5	n	int
-      //   31	1802	6	i1	int
+      //   0	1893	0	this	i
+      //   57	1773	1	i	int
+      //   55	1771	2	j	int
+      //   59	1828	3	k	int
+      //   37	1814	4	m	int
+      //   40	1691	5	n	int
+      //   31	1844	6	i1	int
       //   43	977	7	i2	int
-      //   34	1839	8	i3	int
-      //   69	1802	9	i4	int
-      //   46	1512	10	i5	int
-      //   49	1739	11	i6	int
-      //   73	1815	12	i7	int
+      //   34	1847	8	i3	int
+      //   69	1800	9	i4	int
+      //   46	1506	10	i5	int
+      //   49	1775	11	i6	int
+      //   73	1769	12	i7	int
       //   157	16	13	i8	int
-      //   211	1613	14	bool1	boolean
+      //   211	1649	14	bool1	boolean
       //   312	277	15	bool2	boolean
-      //   1599	61	16	l1	long
-      //   1645	13	18	l2	long
+      //   1593	61	16	l1	long
+      //   1639	13	18	l2	long
       //   702	15	20	localRuntimeException	RuntimeException
       //   719	11	20	localObject2	Object
       //   63	29	21	localj	GLTextureView.j
       //   119	603	21	localObject4	Object
       //   732	27	21	localObject5	Object
       //   1152	30	21	localGLTextureView	GLTextureView
-      //   1332	11	21	localObject6	Object
-      //   1358	108	21	localObject7	Object
-      //   1741	11	21	localObject8	Object
-      //   1754	11	21	localObject9	Object
-      //   1773	6	21	localObject10	Object
-      //   153	1725	22	localObject11	Object
-      //   812	631	23	localObject12	Object
+      //   1326	11	21	localObject6	Object
+      //   1352	108	21	localObject7	Object
+      //   1777	11	21	localObject8	Object
+      //   1790	11	21	localObject9	Object
+      //   1809	6	21	localObject10	Object
+      //   153	1604	22	localObject11	Object
+      //   812	625	23	localObject12	Object
       // Exception table:
       //   from	to	target	type
       //   102	113	119	finally
-      //   121	124	119	finally
       //   637	702	702	java/lang/RuntimeException
       //   809	853	702	java/lang/RuntimeException
       //   853	866	702	java/lang/RuntimeException
@@ -1636,7 +1641,6 @@ public class GLTextureView
       //   615	626	719	finally
       //   637	702	719	finally
       //   704	719	719	finally
-      //   721	724	719	finally
       //   761	774	719	finally
       //   780	803	719	finally
       //   809	853	719	finally
@@ -1651,7 +1655,7 @@ public class GLTextureView
       //   1021	1027	719	finally
       //   60	68	732	finally
       //   183	190	732	finally
-      //   724	732	732	finally
+      //   721	732	732	finally
       //   1046	1080	732	finally
       //   1080	1108	732	finally
       //   1108	1136	732	finally
@@ -1662,51 +1666,48 @@ public class GLTextureView
       //   1232	1240	732	finally
       //   1261	1267	732	finally
       //   1270	1320	732	finally
-      //   1337	1345	732	finally
-      //   1354	1383	732	finally
-      //   1392	1412	732	finally
-      //   1416	1426	732	finally
-      //   1429	1439	732	finally
-      //   1442	1461	732	finally
-      //   1461	1472	732	finally
-      //   1472	1487	732	finally
-      //   1497	1509	732	finally
-      //   1514	1524	732	finally
-      //   1535	1547	732	finally
-      //   1552	1566	732	finally
-      //   1569	1581	732	finally
-      //   1586	1596	732	finally
-      //   1596	1642	732	finally
-      //   1642	1672	732	finally
-      //   1704	1721	732	finally
-      //   1746	1754	732	finally
-      //   1240	1254	1332	finally
-      //   1334	1337	1332	finally
-      //   1721	1735	1741	finally
-      //   1743	1746	1741	finally
-      //   742	753	1754	finally
-      //   1756	1759	1754	finally
+      //   1328	1339	732	finally
+      //   1348	1377	732	finally
+      //   1386	1406	732	finally
+      //   1410	1420	732	finally
+      //   1423	1433	732	finally
+      //   1436	1455	732	finally
+      //   1455	1466	732	finally
+      //   1466	1481	732	finally
+      //   1491	1503	732	finally
+      //   1508	1518	732	finally
+      //   1529	1541	732	finally
+      //   1546	1560	732	finally
+      //   1563	1575	732	finally
+      //   1580	1590	732	finally
+      //   1590	1636	732	finally
+      //   1636	1666	732	finally
+      //   1696	1713	732	finally
+      //   1779	1790	732	finally
+      //   1240	1254	1326	finally
+      //   1713	1727	1777	finally
+      //   742	753	1790	finally
     }
     
-    final boolean aue()
+    final boolean aAY()
     {
-      return (!this.tN) && (this.Ejy) && (!this.Ejz) && (this.width > 0) && (this.height > 0) && ((this.EjE) || (this.hEi == 1));
+      return (!this.lzZ) && (this.KwH) && (!this.KwI) && (this.width > 0) && (this.height > 0) && ((this.KwN) || (this.ksn == 1));
     }
     
-    public final void feo()
+    public final void fSi()
     {
       AppMethodBeat.i(97199);
-      synchronized (GLTextureView.fen())
+      synchronized (GLTextureView.fSh())
       {
-        this.Ejv = true;
-        GLTextureView.fen().notifyAll();
+        this.KwE = true;
+        GLTextureView.fSh().notifyAll();
         for (;;)
         {
-          boolean bool = this.Ejw;
+          boolean bool = this.KwF;
           if (!bool) {
             try
             {
-              GLTextureView.fen().wait();
+              GLTextureView.fSh().wait();
             }
             catch (InterruptedException localInterruptedException)
             {
@@ -1721,9 +1722,9 @@ public class GLTextureView
     public final int getRenderMode()
     {
       AppMethodBeat.i(97197);
-      synchronized (GLTextureView.fen())
+      synchronized (GLTextureView.fSh())
       {
-        int i = this.hEi;
+        int i = this.ksn;
         AppMethodBeat.o(97197);
         return i;
       }
@@ -1732,10 +1733,10 @@ public class GLTextureView
     public final void requestRender()
     {
       AppMethodBeat.i(97198);
-      synchronized (GLTextureView.fen())
+      synchronized (GLTextureView.fSh())
       {
-        this.EjE = true;
-        GLTextureView.fen().notifyAll();
+        this.KwN = true;
+        GLTextureView.fSh().notifyAll();
         AppMethodBeat.o(97198);
         return;
       }
@@ -1745,38 +1746,38 @@ public class GLTextureView
     public final void run()
     {
       // Byte code:
-      //   0: ldc_w 377
+      //   0: ldc_w 376
       //   3: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   6: aload_0
-      //   7: new 348	java/lang/StringBuilder
+      //   7: new 347	java/lang/StringBuilder
       //   10: dup
-      //   11: ldc_w 379
-      //   14: invokespecial 351	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   11: ldc_w 378
+      //   14: invokespecial 350	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
       //   17: aload_0
-      //   18: invokevirtual 382	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:getId	()J
-      //   21: invokevirtual 355	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-      //   24: invokevirtual 386	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   27: invokevirtual 389	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:setName	(Ljava/lang/String;)V
+      //   18: invokevirtual 381	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:getId	()J
+      //   21: invokevirtual 354	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+      //   24: invokevirtual 385	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   27: invokevirtual 388	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:setName	(Ljava/lang/String;)V
       //   30: aload_0
-      //   31: invokespecial 391	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:auc	()V
-      //   34: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   31: invokespecial 390	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i:aAX	()V
+      //   34: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
       //   37: aload_0
-      //   38: invokevirtual 393	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:b	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i;)V
-      //   41: ldc_w 377
+      //   38: invokevirtual 392	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:b	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i;)V
+      //   41: ldc_w 376
       //   44: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   47: return
       //   48: astore_1
-      //   49: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   49: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
       //   52: aload_0
-      //   53: invokevirtual 393	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:b	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i;)V
-      //   56: ldc_w 377
+      //   53: invokevirtual 392	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:b	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i;)V
+      //   56: ldc_w 376
       //   59: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   62: return
       //   63: astore_1
-      //   64: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fen	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
+      //   64: invokestatic 93	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView:fSh	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j;
       //   67: aload_0
-      //   68: invokevirtual 393	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:b	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i;)V
-      //   71: ldc_w 377
+      //   68: invokevirtual 392	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:b	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$i;)V
+      //   71: ldc_w 376
       //   74: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   77: aload_1
       //   78: athrow
@@ -1800,10 +1801,10 @@ public class GLTextureView
         AppMethodBeat.o(97196);
         throw ((Throwable)???);
       }
-      synchronized (GLTextureView.fen())
+      synchronized (GLTextureView.fSh())
       {
-        this.hEi = paramInt;
-        GLTextureView.fen().notifyAll();
+        this.ksn = paramInt;
+        GLTextureView.fSh().notifyAll();
         AppMethodBeat.o(97196);
         return;
       }
@@ -1813,12 +1814,12 @@ public class GLTextureView
   static final class j
   {
     private static String TAG = "GLThreadManager";
-    private boolean EjI;
-    private int EjJ;
-    private boolean EjK;
-    boolean EjL;
-    private boolean EjM;
-    GLTextureView.i EjN;
+    private boolean KwR;
+    private int KwS;
+    private boolean KwT;
+    boolean KwU;
+    private boolean KwV;
+    GLTextureView.i KwW;
     
     public final void b(GLTextureView.i parami)
     {
@@ -1826,8 +1827,8 @@ public class GLTextureView
       {
         AppMethodBeat.i(97200);
         GLTextureView.i.a(parami);
-        if (this.EjN == parami) {
-          this.EjN = null;
+        if (this.KwW == parami) {
+          this.KwW = null;
         }
         notifyAll();
         AppMethodBeat.o(97200);
@@ -1847,16 +1848,16 @@ public class GLTextureView
       //   4: ldc 55
       //   6: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   9: aload_0
-      //   10: getfield 57	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:EjK	Z
+      //   10: getfield 57	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:KwT	Z
       //   13: ifne +65 -> 78
       //   16: aload_0
-      //   17: invokevirtual 60	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:fer	()V
+      //   17: invokevirtual 60	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:fSl	()V
       //   20: aload_1
       //   21: sipush 7937
       //   24: invokeinterface 66 2 0
       //   29: astore_1
       //   30: aload_0
-      //   31: getfield 68	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:EjJ	I
+      //   31: getfield 68	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:KwS	I
       //   34: ldc 69
       //   36: if_icmpge +23 -> 59
       //   39: aload_1
@@ -1867,20 +1868,20 @@ public class GLTextureView
       //   49: istore_2
       //   50: aload_0
       //   51: iload_2
-      //   52: putfield 79	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:EjL	Z
+      //   52: putfield 79	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:KwU	Z
       //   55: aload_0
       //   56: invokevirtual 50	java/lang/Object:notifyAll	()V
       //   59: aload_0
-      //   60: getfield 79	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:EjL	Z
+      //   60: getfield 79	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:KwU	Z
       //   63: ifne +28 -> 91
       //   66: iload_3
       //   67: istore_2
       //   68: aload_0
       //   69: iload_2
-      //   70: putfield 81	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:EjM	Z
+      //   70: putfield 81	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:KwV	Z
       //   73: aload_0
       //   74: iconst_1
-      //   75: putfield 57	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:EjK	Z
+      //   75: putfield 57	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:KwT	Z
       //   78: ldc 55
       //   80: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   83: aload_0
@@ -1915,18 +1916,18 @@ public class GLTextureView
     public final void c(GLTextureView.i parami)
     {
       AppMethodBeat.i(97201);
-      if (this.EjN == parami) {
-        this.EjN = null;
+      if (this.KwW == parami) {
+        this.KwW = null;
       }
       notifyAll();
       AppMethodBeat.o(97201);
     }
     
-    public final boolean fep()
+    public final boolean fSj()
     {
       try
       {
-        boolean bool = this.EjM;
+        boolean bool = this.KwV;
         return bool;
       }
       finally
@@ -1937,7 +1938,7 @@ public class GLTextureView
     }
     
     /* Error */
-    public final boolean feq()
+    public final boolean fSk()
     {
       // Byte code:
       //   0: aload_0
@@ -1945,9 +1946,9 @@ public class GLTextureView
       //   2: ldc 87
       //   4: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: invokevirtual 60	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:fer	()V
+      //   8: invokevirtual 60	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:fSl	()V
       //   11: aload_0
-      //   12: getfield 79	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:EjL	Z
+      //   12: getfield 79	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/GLTextureView$j:KwU	Z
       //   15: ifne +14 -> 29
       //   18: iconst_1
       //   19: istore_1
@@ -1979,26 +1980,26 @@ public class GLTextureView
       //   31	36	39	finally
     }
     
-    final void fer()
+    final void fSl()
     {
-      if (!this.EjI) {
-        this.EjI = true;
+      if (!this.KwR) {
+        this.KwR = true;
       }
     }
   }
   
   public static abstract interface k
   {
-    public abstract GL auh();
+    public abstract GL aBa();
   }
   
   public static abstract interface m
   {
-    public abstract void fes();
+    public abstract void fSm();
     
-    public abstract void fet();
+    public abstract void fSn();
     
-    public abstract void iF(int paramInt1, int paramInt2);
+    public abstract void jO(int paramInt1, int paramInt2);
   }
   
   final class n
@@ -2009,7 +2010,7 @@ public class GLTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.widget.SphereImageView.GLTextureView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,102 +1,76 @@
 package com.tencent.mm.plugin.webview.luggage.c;
 
-import android.os.Bundle;
-import android.os.Looper;
-import android.webkit.URLUtil;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.ipcinvoker.k;
-import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
-import com.tencent.mm.plugin.webview.model.ao;
-import com.tencent.mm.plugin.webview.modeltools.g;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.sdk.platformtools.Util;
-import org.json.JSONObject;
 
 public final class b
 {
-  public static JSONObject Zc(String paramString)
+  public static int a(Window paramWindow, boolean paramBoolean)
   {
-    AppMethodBeat.i(78767);
-    if (Util.isNullOrNil(paramString))
+    AppMethodBeat.i(78762);
+    int i = paramWindow.getDecorView().getSystemUiVisibility();
+    int j;
+    if (paramBoolean)
     {
-      AppMethodBeat.o(78767);
-      return null;
+      j = i | 0x400 | 0x100;
+      i = j;
+      if (Build.VERSION.SDK_INT >= 20) {
+        i = j | 0x200 | 0x2;
+      }
+      j = i | 0x4;
+      i = j;
+      if (Build.VERSION.SDK_INT >= 19) {
+        i = j | 0x1000;
+      }
     }
-    try
+    for (;;)
     {
-      paramString = new JSONObject(paramString);
-      AppMethodBeat.o(78767);
-      return paramString;
+      AppMethodBeat.o(78762);
+      return i;
+      j = i & 0xFFFFFBFF & 0xFFFFFEFF;
+      i = j;
+      if (Build.VERSION.SDK_INT >= 20) {
+        i = j & 0xFFFFFDFF & 0xFFFFFFFD;
+      }
+      j = i & 0xFFFFFFFB;
+      i = j;
+      if (Build.VERSION.SDK_INT >= 19) {
+        i = j & 0xFFFFEFFF;
+      }
     }
-    catch (Exception paramString)
-    {
-      Log.e("MicroMsg.LuggageWebViewUtil", paramString.getMessage());
-      AppMethodBeat.o(78767);
-    }
-    return null;
   }
   
-  public static WebViewJSSDKFileItem aYC(String paramString)
+  public static void c(Window paramWindow, final boolean paramBoolean)
   {
-    AppMethodBeat.i(78768);
-    if (Util.isNullOrNil(paramString))
+    AppMethodBeat.i(78761);
+    if (paramBoolean)
     {
-      Log.e("MicroMsg.LuggageWebViewUtil", "get by local id error, local id is null or nil");
-      AppMethodBeat.o(78768);
-      return null;
-    }
-    if (MMApplicationContext.isMMProcess())
-    {
-      paramString = g.gdv().aYO(paramString);
-      AppMethodBeat.o(78768);
-      return paramString;
-    }
-    paramString = (WebViewJSSDKFileItem)h.a(MainProcessIPCService.dkO, new IPCString(paramString), b.class);
-    AppMethodBeat.o(78768);
-    return paramString;
-  }
-  
-  public static boolean afC(String paramString)
-  {
-    AppMethodBeat.i(78769);
-    if ((!Util.isNullOrNil(paramString)) && ((URLUtil.isHttpsUrl(paramString)) || (URLUtil.isHttpUrl(paramString))))
-    {
-      AppMethodBeat.o(78769);
-      return true;
-    }
-    AppMethodBeat.o(78769);
-    return false;
-  }
-  
-  public static void runOnUiThread(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(78766);
-    if (Thread.currentThread() != Looper.getMainLooper().getThread())
-    {
-      MMHandlerThread.postToMainThread(paramRunnable);
-      AppMethodBeat.o(78766);
+      i = a(paramWindow, paramBoolean);
+      paramWindow.getDecorView().setSystemUiVisibility(i);
+      paramWindow.setFlags(1024, 1024);
+      paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
+      {
+        public final void onSystemUiVisibilityChange(int paramAnonymousInt)
+        {
+          AppMethodBeat.i(78760);
+          if ((paramAnonymousInt & 0x4) == 0) {
+            this.ptw.getDecorView().setSystemUiVisibility(b.a(this.ptw, paramBoolean));
+          }
+          AppMethodBeat.o(78760);
+        }
+      });
+      AppMethodBeat.o(78761);
       return;
     }
-    paramRunnable.run();
-    AppMethodBeat.o(78766);
+    int i = a(paramWindow, paramBoolean);
+    paramWindow.getDecorView().setSystemUiVisibility(i);
+    paramWindow.clearFlags(1024);
+    paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(null);
+    AppMethodBeat.o(78761);
   }
-  
-  public static class a
-    implements k<Bundle, Bundle>
-  {}
-  
-  static class b
-    implements k<IPCString, WebViewJSSDKFileItem>
-  {}
-  
-  public static class c
-    implements k<Bundle, Bundle>
-  {}
 }
 
 

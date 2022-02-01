@@ -7,137 +7,137 @@ import java.util.List;
 
 public final class h
 {
-  public static final String KyL;
-  public static final String KyM;
-  public static final String TTr;
-  public static final String UfA;
-  public static final String UfB;
-  public static final String UfC;
-  public static final String UfD;
-  public static final String UfE;
-  public static final String UfF;
-  public static final String UfG;
-  public static final String UfH;
-  public static final String UfI;
-  public static final String UfJ;
-  public static final String UfK;
-  public static final String UfL;
-  public static final String UfM;
-  public static final String UfN;
-  public static final String UfO;
-  public static final String UfP;
-  public static final String UfQ;
-  public static final String UfR;
-  public static final String UfS;
-  public static final String UfT;
-  public static final String UfU;
-  public static final String UfV;
-  public static final String UfW;
-  public static final String UfX;
-  public static final String UfY;
-  public static final String UfZ;
-  public static final String Ufz;
-  public static final boolean UgA;
-  public static final boolean UgB;
-  public static final boolean UgC;
-  public static final boolean UgD;
-  public static final boolean UgE;
-  public static final boolean UgF;
-  public static final boolean UgG;
-  public static final boolean UgH;
-  public static final boolean UgI;
-  public static final boolean UgJ;
-  public static final boolean UgK;
-  public static final boolean UgL;
-  public static final boolean UgM;
-  public static final boolean UgN;
-  public static final String Uga;
-  public static final String Ugb;
-  public static final String Ugc;
-  public static final String Ugd;
-  public static final String Uge;
-  public static final String Ugf;
-  public static final String Ugg;
-  public static final String Ugh;
-  public static final String Ugi;
-  public static final String Ugj;
-  public static final String Ugk;
-  public static final String Ugl;
-  public static final float Ugm;
-  public static final int Ugn;
-  public static final boolean Ugo;
-  public static final boolean Ugp;
-  public static final boolean Ugq;
-  public static final boolean Ugr;
-  public static final boolean Ugs;
-  public static final boolean Ugt;
-  public static final boolean Ugu;
-  public static final boolean Ugv;
-  public static final boolean Ugw;
-  public static final boolean Ugx;
-  public static final boolean Ugy;
-  public static final boolean Ugz;
-  public static final String cnm;
+  public static final String RAA;
+  public static final String RAz;
+  public static final String abIN;
+  public static final String abIO;
+  public static final String abIP;
+  public static final String abIQ;
+  public static final String abIR;
+  public static final String abIS;
+  public static final String abIT;
+  public static final String abIU;
+  public static final String abIV;
+  public static final String abIW;
+  public static final String abIX;
+  public static final String abIY;
+  public static final String abIZ;
+  public static final String abJA;
+  public static final float abJB;
+  public static final int abJC;
+  public static final boolean abJD;
+  public static final boolean abJE;
+  public static final boolean abJF;
+  public static final boolean abJG;
+  public static final boolean abJH;
+  public static final boolean abJI;
+  public static final boolean abJJ;
+  public static final boolean abJK;
+  public static final boolean abJL;
+  public static final boolean abJM;
+  public static final boolean abJN;
+  public static final boolean abJO;
+  public static final boolean abJP;
+  public static final boolean abJQ;
+  public static final boolean abJR;
+  public static final boolean abJS;
+  public static final boolean abJT;
+  public static final boolean abJU;
+  public static final boolean abJV;
+  public static final boolean abJW;
+  public static final boolean abJX;
+  public static final boolean abJY;
+  public static final boolean abJZ;
+  public static final String abJa;
+  public static final String abJb;
+  public static final String abJc;
+  public static final String abJd;
+  public static final String abJe;
+  public static final String abJf;
+  public static final String abJg;
+  public static final String abJh;
+  public static final String abJi;
+  public static final String abJj;
+  public static final String abJk;
+  public static final String abJl;
+  public static final String abJm;
+  public static final String abJn;
+  public static final String abJo;
+  public static final String abJp;
+  public static final String abJq;
+  public static final String abJr;
+  public static final String abJs;
+  public static final String abJt;
+  public static final String abJu;
+  public static final String abJv;
+  public static final String abJw;
+  public static final String abJx;
+  public static final String abJy;
+  public static final String abJz;
+  public static final boolean abKa;
+  public static final boolean abKb;
+  public static final boolean abKc;
+  public static final String abvU;
   
   static
   {
     boolean bool2 = false;
     AppMethodBeat.i(40756);
-    Ufz = getSystemProperty("awt.toolkit");
-    UfA = getSystemProperty("file.encoding");
-    UfB = getSystemProperty("file.separator");
-    UfC = getSystemProperty("java.awt.fonts");
-    UfD = getSystemProperty("java.awt.graphicsenv");
-    UfE = getSystemProperty("java.awt.headless");
-    UfF = getSystemProperty("java.awt.printerjob");
-    UfG = getSystemProperty("java.class.path");
-    UfH = getSystemProperty("java.class.version");
-    UfI = getSystemProperty("java.compiler");
-    UfJ = getSystemProperty("java.endorsed.dirs");
-    UfK = getSystemProperty("java.ext.dirs");
-    UfL = getSystemProperty("java.home");
-    UfM = getSystemProperty("java.io.tmpdir");
-    UfN = getSystemProperty("java.library.path");
-    UfO = getSystemProperty("java.runtime.name");
-    UfP = getSystemProperty("java.runtime.version");
-    UfQ = getSystemProperty("java.specification.name");
-    UfR = getSystemProperty("java.specification.vendor");
-    UfS = getSystemProperty("java.specification.version");
-    UfT = getSystemProperty("java.util.prefs.PreferencesFactory");
-    UfU = getSystemProperty("java.vendor");
-    UfV = getSystemProperty("java.vendor.url");
-    UfW = getSystemProperty("java.version");
-    UfX = getSystemProperty("java.vm.info");
-    UfY = getSystemProperty("java.vm.name");
-    UfZ = getSystemProperty("java.vm.specification.name");
-    Uga = getSystemProperty("java.vm.specification.vendor");
-    Ugb = getSystemProperty("java.vm.specification.version");
-    Ugc = getSystemProperty("java.vm.vendor");
-    Ugd = getSystemProperty("java.vm.version");
-    TTr = getSystemProperty("line.separator");
-    Uge = getSystemProperty("os.arch");
-    KyL = getSystemProperty("os.name");
-    KyM = getSystemProperty("os.version");
-    Ugf = getSystemProperty("path.separator");
+    abIN = getSystemProperty("awt.toolkit");
+    abIO = getSystemProperty("file.encoding");
+    abIP = getSystemProperty("file.separator");
+    abIQ = getSystemProperty("java.awt.fonts");
+    abIR = getSystemProperty("java.awt.graphicsenv");
+    abIS = getSystemProperty("java.awt.headless");
+    abIT = getSystemProperty("java.awt.printerjob");
+    abIU = getSystemProperty("java.class.path");
+    abIV = getSystemProperty("java.class.version");
+    abIW = getSystemProperty("java.compiler");
+    abIX = getSystemProperty("java.endorsed.dirs");
+    abIY = getSystemProperty("java.ext.dirs");
+    abIZ = getSystemProperty("java.home");
+    abJa = getSystemProperty("java.io.tmpdir");
+    abJb = getSystemProperty("java.library.path");
+    abJc = getSystemProperty("java.runtime.name");
+    abJd = getSystemProperty("java.runtime.version");
+    abJe = getSystemProperty("java.specification.name");
+    abJf = getSystemProperty("java.specification.vendor");
+    abJg = getSystemProperty("java.specification.version");
+    abJh = getSystemProperty("java.util.prefs.PreferencesFactory");
+    abJi = getSystemProperty("java.vendor");
+    abJj = getSystemProperty("java.vendor.url");
+    abJk = getSystemProperty("java.version");
+    abJl = getSystemProperty("java.vm.info");
+    abJm = getSystemProperty("java.vm.name");
+    abJn = getSystemProperty("java.vm.specification.name");
+    abJo = getSystemProperty("java.vm.specification.vendor");
+    abJp = getSystemProperty("java.vm.specification.version");
+    abJq = getSystemProperty("java.vm.vendor");
+    abJr = getSystemProperty("java.vm.version");
+    abvU = getSystemProperty("line.separator");
+    abJs = getSystemProperty("os.arch");
+    RAz = getSystemProperty("os.name");
+    RAA = getSystemProperty("os.version");
+    abJt = getSystemProperty("path.separator");
     int i;
     if (getSystemProperty("user.country") == null)
     {
       localObject = getSystemProperty("user.region");
-      Ugg = (String)localObject;
-      Ugh = getSystemProperty("user.dir");
-      Ugi = getSystemProperty("user.home");
-      Ugj = getSystemProperty("user.language");
-      cnm = getSystemProperty("user.name");
-      Ugk = getSystemProperty("user.timezone");
-      if (UfW == null) {
+      abJu = (String)localObject;
+      abJv = getSystemProperty("user.dir");
+      abJw = getSystemProperty("user.home");
+      abJx = getSystemProperty("user.language");
+      abJy = getSystemProperty("user.name");
+      abJz = getSystemProperty("user.timezone");
+      if (abJk == null) {
         break label776;
       }
       i = 0;
       label366:
-      if (i >= UfW.length()) {
+      if (i >= abJk.length()) {
         break label776;
       }
-      j = UfW.charAt(i);
+      j = abJk.charAt(i);
       if ((j < 48) || (j > 57)) {
         break label769;
       }
@@ -145,56 +145,56 @@ public final class h
     boolean bool1;
     label769:
     label776:
-    for (Object localObject = UfW.substring(i);; localObject = null)
+    for (Object localObject = abJk.substring(i);; localObject = null)
     {
-      Ugl = (String)localObject;
-      Ugm = ab(bvl(UfW));
-      localObject = bvl(UfW);
+      abJA = (String)localObject;
+      abJB = aa(bIq(abJk));
+      localObject = bIq(abJk);
       if (localObject != null) {
         break label782;
       }
       j = 0;
-      Ugn = j;
-      Ugo = bvj("1.1");
-      Ugp = bvj("1.2");
-      Ugq = bvj("1.3");
-      Ugr = bvj("1.4");
-      Ugs = bvj("1.5");
-      Ugt = bvj("1.6");
-      Ugu = bvj("1.7");
-      Ugv = bvk("AIX");
-      Ugw = bvk("HP-UX");
-      Ugx = bvk("Irix");
-      if ((!bvk("Linux")) && (!bvk("LINUX"))) {
+      abJC = j;
+      abJD = bIo("1.1");
+      abJE = bIo("1.2");
+      abJF = bIo("1.3");
+      abJG = bIo("1.4");
+      abJH = bIo("1.5");
+      abJI = bIo("1.6");
+      abJJ = bIo("1.7");
+      abJK = bIp("AIX");
+      abJL = bIp("HP-UX");
+      abJM = bIp("Irix");
+      if ((!bIp("Linux")) && (!bIp("LINUX"))) {
         break label832;
       }
       bool1 = true;
       label551:
-      Ugy = bool1;
-      Ugz = bvk("Mac");
-      UgA = bvk("Mac OS X");
-      UgB = bvk("OS/2");
-      UgC = bvk("Solaris");
-      UgD = bvk("SunOS");
-      if ((!Ugv) && (!Ugw) && (!Ugx) && (!Ugy) && (!UgA) && (!UgC))
+      abJN = bool1;
+      abJO = bIp("Mac");
+      abJP = bIp("Mac OS X");
+      abJQ = bIp("OS/2");
+      abJR = bIp("Solaris");
+      abJS = bIp("SunOS");
+      if ((!abJK) && (!abJL) && (!abJM) && (!abJN) && (!abJP) && (!abJR))
       {
         bool1 = bool2;
-        if (!UgD) {}
+        if (!abJS) {}
       }
       else
       {
         bool1 = true;
       }
-      UgE = bool1;
-      UgF = bvk("Windows");
-      UgG = oJ("Windows", "5.0");
-      UgH = oJ("Windows 9", "4.0");
-      UgI = oJ("Windows 9", "4.1");
-      UgJ = oJ("Windows", "4.9");
-      UgK = bvk("Windows NT");
-      UgL = oJ("Windows", "5.1");
-      UgM = oJ("Windows", "6.0");
-      UgN = oJ("Windows", "6.1");
+      abJT = bool1;
+      abJU = bIp("Windows");
+      abJV = pF("Windows", "5.0");
+      abJW = pF("Windows 9", "4.0");
+      abJX = pF("Windows 9", "4.1");
+      abJY = pF("Windows", "4.9");
+      abJZ = bIp("Windows NT");
+      abKa = pF("Windows", "5.1");
+      abKb = pF("Windows", "6.0");
+      abKc = pF("Windows", "6.1");
       AppMethodBeat.o(40756);
       return;
       localObject = getSystemProperty("user.country");
@@ -223,7 +223,7 @@ public final class h
     }
   }
   
-  private static float ab(int[] paramArrayOfInt)
+  private static float aa(int[] paramArrayOfInt)
   {
     int i = 1;
     AppMethodBeat.i(40755);
@@ -260,10 +260,10 @@ public final class h
     return 0.0F;
   }
   
-  private static boolean bvj(String paramString)
+  private static boolean bIo(String paramString)
   {
     AppMethodBeat.i(40750);
-    String str = Ugl;
+    String str = abJA;
     if (str == null)
     {
       AppMethodBeat.o(40750);
@@ -274,10 +274,10 @@ public final class h
     return bool;
   }
   
-  private static boolean bvk(String paramString)
+  private static boolean bIp(String paramString)
   {
     AppMethodBeat.i(40752);
-    String str = KyL;
+    String str = RAz;
     if (str == null)
     {
       AppMethodBeat.o(40752);
@@ -288,12 +288,12 @@ public final class h
     return bool;
   }
   
-  private static int[] bvl(String paramString)
+  private static int[] bIq(String paramString)
   {
     AppMethodBeat.i(40754);
     if (paramString == null)
     {
-      paramString = a.bYn;
+      paramString = a.bZR;
       AppMethodBeat.o(40754);
       return paramString;
     }
@@ -456,11 +456,11 @@ public final class h
     return null;
   }
   
-  private static boolean oJ(String paramString1, String paramString2)
+  private static boolean pF(String paramString1, String paramString2)
   {
     AppMethodBeat.i(40751);
-    String str1 = KyL;
-    String str2 = KyM;
+    String str1 = RAz;
+    String str2 = RAA;
     if ((str1 == null) || (str2 == null))
     {
       AppMethodBeat.o(40751);
@@ -477,7 +477,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.apache.commons.b.h
  * JD-Core Version:    0.7.0.1
  */

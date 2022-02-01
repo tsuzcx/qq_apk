@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.radar.ui;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/radar/ui/RadarMemberView$Companion;", "", "()V", "ANIMATION_DISMISS_END", "", "ANIMATION_POPUP_END", "TAG", "", "showVKB", "", "ac", "Landroid/app/Activity;", "plugin-radar_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/radar/ui/RadarMemberView$Companion;", "", "()V", "ANIMATION_DISMISS_END", "", "ANIMATION_POPUP_END", "TAG", "", "showVKB", "", "ac", "Landroid/app/Activity;", "plugin-radar_release"})
 public final class RadarMemberView$a {}
 
 

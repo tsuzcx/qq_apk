@@ -9,9 +9,9 @@ public class JNIUtils
   
   public static Timeval getTimeval(long paramLong)
   {
-    AppMethodBeat.i(193632);
+    AppMethodBeat.i(231591);
     Timeval localTimeval = new Timeval(paramLong / 1000L, (int)(1000L * paramLong % 1000000L));
-    AppMethodBeat.o(193632);
+    AppMethodBeat.o(231591);
     return localTimeval;
   }
 }

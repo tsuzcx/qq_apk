@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.lite.debug;
 
 import android.os.Bundle;
+import com.tencent.mm.ipcinvoker.d;
 
 public class b
-  implements com.tencent.mm.ipcinvoker.b<Bundle, LiteAppDebugIPCCallbackData>
+  implements d<Bundle, LiteAppDebugIPCCallbackData>
 {}
 
 

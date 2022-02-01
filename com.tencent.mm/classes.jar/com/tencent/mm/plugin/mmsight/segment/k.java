@@ -14,27 +14,27 @@ import java.util.Locale;
 public final class k
   implements d
 {
-  private Canvas aTi;
+  private MediaMetadataRetriever FdX;
+  private Canvas aBC;
+  private Matrix aHZ;
   private int dstHeight;
   private int dstWidth;
-  private Matrix gT;
   private Paint paint;
   private Bitmap reuse;
-  private MediaMetadataRetriever zyD;
   
   public k()
   {
     AppMethodBeat.i(107680);
     this.reuse = null;
     this.paint = new Paint(1);
-    this.aTi = new Canvas();
+    this.aBC = new Canvas();
     AppMethodBeat.o(107680);
   }
   
   private int getDuration()
   {
     AppMethodBeat.i(107684);
-    String str = this.zyD.extractMetadata(9);
+    String str = this.FdX.extractMetadata(9);
     if (str == null)
     {
       AppMethodBeat.o(107684);
@@ -54,7 +54,7 @@ public final class k
     return 0;
   }
   
-  private static Bitmap hb(int paramInt1, int paramInt2)
+  private static Bitmap jdMethod_if(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(107686);
     try
@@ -67,7 +67,7 @@ public final class k
     {
       for (;;)
       {
-        Log.e("MediaCodecThumbFetcher", "%s OutOfMemory %s", new Object[] { f.apq(), localOutOfMemoryError.getMessage() });
+        Log.e("MediaCodecThumbFetcher", "%s OutOfMemory %s", new Object[] { f.avD(), localOutOfMemoryError.getMessage() });
         System.gc();
         try
         {
@@ -75,7 +75,7 @@ public final class k
         }
         catch (Exception localException)
         {
-          Log.e("MediaCodecThumbFetcher", "%s try again Exception %s", new Object[] { f.apq(), localException.getMessage() });
+          Log.e("MediaCodecThumbFetcher", "%s try again Exception %s", new Object[] { f.avD(), localException.getMessage() });
           Object localObject = null;
         }
       }
@@ -94,7 +94,7 @@ public final class k
   {
     AppMethodBeat.i(107682);
     long l = System.currentTimeMillis();
-    Bitmap localBitmap2 = this.zyD.getFrameAtTime(1000L * paramLong);
+    Bitmap localBitmap2 = this.FdX.getFrameAtTime(1000L * paramLong);
     if (localBitmap2 == null)
     {
       Log.w("MediaCodecThumbFetcher", "get frame fail at time:%s, rawBitmap is null", new Object[] { Long.valueOf(1000L * paramLong) });
@@ -111,7 +111,7 @@ public final class k
       AppMethodBeat.o(107682);
       return localBitmap1;
       Log.d("MediaCodecThumbFetcher", "scaleBitmap(60) largeBitmap(width : %d, height : %d)", new Object[] { Integer.valueOf(localBitmap2.getWidth()), Integer.valueOf(localBitmap2.getHeight()) });
-      localBitmap1 = hb(i, j);
+      localBitmap1 = jdMethod_if(i, j);
       if (localBitmap1 != null) {
         break;
       }
@@ -119,7 +119,7 @@ public final class k
     int k;
     int m;
     Matrix localMatrix;
-    if (this.gT == null)
+    if (this.aHZ == null)
     {
       k = localBitmap2.getWidth();
       m = localBitmap2.getHeight();
@@ -134,9 +134,9 @@ public final class k
     for (float f = i / k;; f = j / m)
     {
       localMatrix.postScale(f, f, i / 2.0F, j / 2.0F);
-      this.gT = localMatrix;
-      this.aTi.setBitmap(localBitmap1);
-      this.aTi.drawBitmap(localBitmap2, this.gT, this.paint);
+      this.aHZ = localMatrix;
+      this.aBC.setBitmap(localBitmap1);
+      this.aBC.drawBitmap(localBitmap2, this.aHZ, this.paint);
       break;
     }
   }
@@ -162,8 +162,8 @@ public final class k
     }
     try
     {
-      this.zyD = new com.tencent.mm.compatible.i.d();
-      this.zyD.setDataSource(paramString);
+      this.FdX = new com.tencent.mm.compatible.i.d();
+      this.FdX.setDataSource(paramString);
       this.dstWidth = paramInt2;
       this.dstHeight = paramInt3;
       AppMethodBeat.o(107681);
@@ -181,12 +181,12 @@ public final class k
   public final void release()
   {
     AppMethodBeat.i(107685);
-    if (this.zyD != null) {
-      this.zyD.release();
+    if (this.FdX != null) {
+      this.FdX.release();
     }
-    this.gT = null;
+    this.aHZ = null;
     this.paint = null;
-    this.aTi = null;
+    this.aBC = null;
     AppMethodBeat.o(107685);
   }
   
@@ -197,7 +197,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.k
  * JD-Core Version:    0.7.0.1
  */

@@ -12,32 +12,32 @@ import java.util.List;
 
 public final class d
 {
-  static a jDK;
+  static a mun;
   
-  public static x RP(String paramString)
+  public static x Zp(String paramString)
   {
-    AppMethodBeat.i(258487);
+    AppMethodBeat.i(292907);
     paramString = a(paramString, null);
-    AppMethodBeat.o(258487);
+    AppMethodBeat.o(292907);
     return paramString;
   }
   
-  public static z RQ(String paramString)
+  public static z Zq(String paramString)
   {
     AppMethodBeat.i(132664);
     b localb = new b(paramString);
-    paramString = new z(paramString, localb.jDL);
-    paramString.jFd = localb.ip;
-    if (1 == localb.jDL)
+    paramString = new z(paramString, localb.muo);
+    paramString.mvG = localb.ip;
+    if (1 == localb.muo)
     {
-      paramString.setRequestProperty("Host", localb.host);
-      paramString.setRequestProperty("X-Online-Host", localb.host);
+      paramString.bP("Host", localb.host);
+      paramString.bP("X-Online-Host", localb.host);
     }
     AppMethodBeat.o(132664);
     return paramString;
   }
   
-  public static aa RR(String paramString)
+  public static aa Zr(String paramString)
   {
     AppMethodBeat.i(132666);
     paramString = new aa(paramString);
@@ -70,12 +70,12 @@ public final class d
   public static int a(String paramString, boolean paramBoolean, List<String> paramList)
   {
     AppMethodBeat.i(132659);
-    if ((jDK == null) || (jDK.azD() == null))
+    if ((mun == null) || (mun.aHc() == null))
     {
       AppMethodBeat.o(132659);
       return -1;
     }
-    int i = jDK.azD().a(paramString, paramBoolean, paramList);
+    int i = mun.aHc().a(paramString, paramBoolean, paramList);
     AppMethodBeat.o(132659);
     return i;
   }
@@ -87,13 +87,13 @@ public final class d
     if (paramb == null) {
       localb = new b(paramString);
     }
-    Log.i("MicroMsg.GprsSetting", "hy: url redirect host: %s, url: %s, ip: %s, dns_type: %d", new Object[] { localb.host, localb.url, localb.ip, Integer.valueOf(localb.jDL) });
-    paramString = new x(localb.url, localb.jDL);
-    paramString.jEW = localb.ip;
-    if (1 == localb.jDL)
+    Log.i("MicroMsg.GprsSetting", "hy: url redirect host: %s, url: %s, ip: %s, dns_type: %d", new Object[] { localb.host, localb.url, localb.ip, Integer.valueOf(localb.muo) });
+    paramString = new x(localb.url, localb.muo);
+    paramString.mvz = localb.ip;
+    if (1 == localb.muo)
     {
-      paramString.setRequestProperty("Host", localb.host);
-      paramString.setRequestProperty("X-Online-Host", localb.host);
+      paramString.bP("Host", localb.host);
+      paramString.bP("X-Online-Host", localb.host);
     }
     AppMethodBeat.o(132663);
     return paramString;
@@ -103,21 +103,21 @@ public final class d
   {
     AppMethodBeat.i(132657);
     Log.i("MicroMsg.GprsSetting", "sethostimpl %b, [%s]", new Object[] { Boolean.FALSE, Util.getStack() });
-    jDK = parama;
+    mun = parama;
     AppMethodBeat.o(132657);
   }
   
   public static int b(boolean paramBoolean, List<String> paramList, String paramString)
   {
     AppMethodBeat.i(132658);
-    if (jDK == null)
+    if (mun == null)
     {
       AppMethodBeat.o(132658);
       return -1;
     }
     try
     {
-      int i = jDK.azD().a(paramString, paramBoolean, paramList);
+      int i = mun.aHc().a(paramString, paramBoolean, paramList);
       AppMethodBeat.o(132658);
       return i;
     }
@@ -132,19 +132,19 @@ public final class d
   public static void reportFailIp(String paramString)
   {
     AppMethodBeat.i(132660);
-    if ((jDK != null) && (jDK.azD() != null)) {
-      jDK.azD().reportFailIp(paramString);
+    if ((mun != null) && (mun.aHc() != null)) {
+      mun.aHc().reportFailIp(paramString);
     }
     AppMethodBeat.o(132660);
   }
   
-  public static InputStream w(String paramString, int paramInt1, int paramInt2)
+  public static InputStream x(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(132661);
     paramString = a(paramString, null);
-    paramString.setConnectTimeout(paramInt1);
-    paramString.setReadTimeout(paramInt2);
-    paramString.setRequestMethod("GET");
+    paramString.xz(paramInt1);
+    paramString.xA(paramInt2);
+    paramString.Zu("GET");
     if (a(paramString) != 0)
     {
       AppMethodBeat.o(132661);
@@ -157,18 +157,18 @@ public final class d
   
   public static abstract interface a
   {
-    public abstract g azD();
+    public abstract g aHc();
   }
   
   public static final class b
   {
     public String host;
     public String ip;
-    public int jDL;
-    private ArrayList<String> jDM;
-    public String jDN;
-    public boolean jDO;
-    private boolean jDP;
+    public int muo;
+    private ArrayList<String> mup;
+    public String muq;
+    public boolean mur;
+    private boolean mus;
     public URL url;
     
     public b(String paramString)
@@ -177,35 +177,35 @@ public final class d
       this.host = null;
       this.url = null;
       this.ip = "";
-      this.jDL = 0;
-      this.jDM = new ArrayList();
-      this.jDO = false;
-      this.jDP = false;
-      this.jDN = paramString;
+      this.muo = 0;
+      this.mup = new ArrayList();
+      this.mur = false;
+      this.mus = false;
+      this.muq = paramString;
       try
       {
         this.url = new URL(paramString);
         this.host = this.url.getHost();
         Object localObject = new ArrayList();
-        if ((d.jDK == null) || (d.jDK.azD() == null))
+        if ((d.mun == null) || (d.mun.aHc() == null))
         {
-          if (d.jDK == null) {}
-          for (paramString = "-1";; paramString = d.jDK.azD())
+          if (d.mun == null) {}
+          for (paramString = "-1";; paramString = d.mun.aHc())
           {
             Log.e("MicroMsg.GprsSetting", "UrlRedirct ERR:AUTOAUTH NULL:%s  [%s]", new Object[] { paramString, Util.getStack() });
             AppMethodBeat.o(132654);
             return;
           }
         }
-        this.jDL = d.jDK.azD().getHostByName(this.host, (List)localObject);
-        Log.d("MicroMsg.GprsSetting", "[Arth.302] dnsType:%d  host:%s url:%s", new Object[] { Integer.valueOf(this.jDL), this.host, paramString });
+        this.muo = d.mun.aHc().getHostByName(this.host, (List)localObject);
+        Log.d("MicroMsg.GprsSetting", "[Arth.302] dnsType:%d  host:%s url:%s", new Object[] { Integer.valueOf(this.muo), this.host, paramString });
         if (((ArrayList)localObject).size() <= 0)
         {
-          this.jDL = 0;
+          this.muo = 0;
           AppMethodBeat.o(132654);
           return;
         }
-        int i = this.jDL;
+        int i = this.muo;
         if (1 != i)
         {
           AppMethodBeat.o(132654);
@@ -214,7 +214,7 @@ public final class d
         String str = (String)((ArrayList)localObject).remove(0);
         this.ip = str;
         localObject = str;
-        if (RS(str)) {
+        if (Zs(str)) {
           localObject = "[" + str + "]";
         }
         this.url = new URL(paramString.replaceFirst(this.host, (String)localObject));
@@ -234,42 +234,42 @@ public final class d
       this.host = null;
       this.url = null;
       this.ip = "";
-      this.jDL = 0;
-      this.jDM = new ArrayList();
-      this.jDO = false;
-      this.jDP = false;
-      this.jDO = paramBoolean;
-      this.jDN = paramString;
+      this.muo = 0;
+      this.mup = new ArrayList();
+      this.mur = false;
+      this.mus = false;
+      this.mur = paramBoolean;
+      this.muq = paramString;
       try
       {
         this.url = new URL(paramString);
         this.host = this.url.getHost();
-        if ((d.jDK == null) || (d.jDK.azD() == null))
+        if ((d.mun == null) || (d.mun.aHc() == null))
         {
-          if (d.jDK == null) {}
-          for (paramString = "-1";; paramString = d.jDK.azD())
+          if (d.mun == null) {}
+          for (paramString = "-1";; paramString = d.mun.aHc())
           {
             Log.e("MicroMsg.GprsSetting", "UrlRedirct ERR:AUTOAUTH NULL:%s  [%s]", new Object[] { paramString, Util.getStack() });
             AppMethodBeat.o(132655);
             return;
           }
         }
-        this.jDL = d.jDK.azD().a(this.host, paramBoolean, this.jDM);
-        Log.d("MicroMsg.GprsSetting", "[Arth.302] dnsType:%d  host:%s url:%s ips:%s", new Object[] { Integer.valueOf(this.jDL), this.host, paramString, this.jDM });
-        if (this.jDM.size() <= 0)
+        this.muo = d.mun.aHc().a(this.host, paramBoolean, this.mup);
+        Log.d("MicroMsg.GprsSetting", "[Arth.302] dnsType:%d  host:%s url:%s ips:%s", new Object[] { Integer.valueOf(this.muo), this.host, paramString, this.mup });
+        if (this.mup.size() <= 0)
         {
-          this.jDL = 0;
+          this.muo = 0;
           AppMethodBeat.o(132655);
           return;
         }
-        int i = this.jDL;
+        int i = this.muo;
         if (1 != i)
         {
           AppMethodBeat.o(132655);
           return;
         }
-        this.ip = ((String)this.jDM.remove(0));
-        if (RS(this.ip)) {
+        this.ip = ((String)this.mup.remove(0));
+        if (Zs(this.ip)) {
           this.ip = ("[" + this.ip + "]");
         }
         this.url = new URL(paramString.replaceFirst(this.host, this.ip));
@@ -283,7 +283,7 @@ public final class d
       }
     }
     
-    private static boolean RS(String paramString)
+    private static boolean Zs(String paramString)
     {
       AppMethodBeat.i(132656);
       try
@@ -312,7 +312,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.network.d
  * JD-Core Version:    0.7.0.1
  */

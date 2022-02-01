@@ -24,13 +24,13 @@ public class PAGFont
   
   static
   {
-    AppMethodBeat.i(236880);
+    AppMethodBeat.i(195016);
     FallbackFontFileNames = new String[] { "/system/fonts/NotoSansCJK-Regular.ttc", "/system/fonts/NotoSansSC-Regular.otf", "/system/fonts/DroidSansFallback.ttf" };
     FILENAME_WHITESPACE_PATTERN = Pattern.compile("^[ \\n\\r\\t]+|[ \\n\\r\\t]+$");
     systemFontLoaded = false;
     b.loadLibrary("pag");
     nativeInit();
-    AppMethodBeat.o(236880);
+    AppMethodBeat.o(195016);
   }
   
   public PAGFont() {}
@@ -41,13 +41,13 @@ public class PAGFont
     this.fontStyle = paramString2;
   }
   
-  public static void RegisterFallbackFonts()
+  private static void RegisterFallbackFonts()
   {
     int j = 0;
-    AppMethodBeat.i(236879);
+    AppMethodBeat.i(195011);
     if (systemFontLoaded)
     {
-      AppMethodBeat.o(236879);
+      AppMethodBeat.o(195011);
       return;
     }
     systemFontLoaded = true;
@@ -117,22 +117,22 @@ public class PAGFont
       }
       SetFallbackFontPaths((String[])localObject1, (int[])localObject3);
     }
-    AppMethodBeat.o(236879);
+    AppMethodBeat.o(195011);
   }
   
   public static PAGFont RegisterFont(AssetManager paramAssetManager, String paramString)
   {
-    AppMethodBeat.i(236865);
+    AppMethodBeat.i(194948);
     paramAssetManager = RegisterFont(paramAssetManager, paramString, 0);
-    AppMethodBeat.o(236865);
+    AppMethodBeat.o(194948);
     return paramAssetManager;
   }
   
   public static PAGFont RegisterFont(AssetManager paramAssetManager, String paramString, int paramInt)
   {
-    AppMethodBeat.i(236866);
+    AppMethodBeat.i(194953);
     paramAssetManager = RegisterFont(paramAssetManager, paramString, paramInt, "", "");
-    AppMethodBeat.o(236866);
+    AppMethodBeat.o(194953);
     return paramAssetManager;
   }
   
@@ -140,17 +140,17 @@ public class PAGFont
   
   public static PAGFont RegisterFont(String paramString)
   {
-    AppMethodBeat.i(236864);
+    AppMethodBeat.i(194945);
     paramString = RegisterFont(paramString, 0);
-    AppMethodBeat.o(236864);
+    AppMethodBeat.o(194945);
     return paramString;
   }
   
   public static PAGFont RegisterFont(String paramString, int paramInt)
   {
-    AppMethodBeat.i(236867);
+    AppMethodBeat.i(194955);
     paramString = RegisterFont(paramString, paramInt, "", "");
-    AppMethodBeat.o(236867);
+    AppMethodBeat.o(194955);
     return paramString;
   }
   
@@ -158,9 +158,9 @@ public class PAGFont
   
   private static PAGFont RegisterFontBytes(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(236868);
+    AppMethodBeat.i(194956);
     paramArrayOfByte = RegisterFontBytes(paramArrayOfByte, paramInt1, paramInt2, "", "");
-    AppMethodBeat.o(236868);
+    AppMethodBeat.o(194956);
     return paramArrayOfByte;
   }
   
@@ -170,25 +170,25 @@ public class PAGFont
   
   private static void addFont(FontConfig paramFontConfig, ArrayList<String> paramArrayList, ArrayList<Integer> paramArrayList1)
   {
-    AppMethodBeat.i(236878);
+    AppMethodBeat.i(195000);
     if (paramArrayList.contains(paramFontConfig.fileName))
     {
-      AppMethodBeat.o(236878);
+      AppMethodBeat.o(195000);
       return;
     }
     if (!new File(paramFontConfig.fileName).exists())
     {
-      AppMethodBeat.o(236878);
+      AppMethodBeat.o(195000);
       return;
     }
     paramArrayList.add(paramFontConfig.fileName);
     paramArrayList1.add(Integer.valueOf(paramFontConfig.ttcIndex));
-    AppMethodBeat.o(236878);
+    AppMethodBeat.o(195000);
   }
   
   private static FontConfig getFontByLanguage(FontConfig[] paramArrayOfFontConfig, String paramString)
   {
-    AppMethodBeat.i(236877);
+    AppMethodBeat.i(194998);
     paramString = paramString.toLowerCase();
     int j = paramArrayOfFontConfig.length;
     int i = 0;
@@ -197,12 +197,12 @@ public class PAGFont
       FontConfig localFontConfig = paramArrayOfFontConfig[i];
       if (localFontConfig.language.toLowerCase().equals(paramString))
       {
-        AppMethodBeat.o(236877);
+        AppMethodBeat.o(194998);
         return localFontConfig;
       }
       i += 1;
     }
-    AppMethodBeat.o(236877);
+    AppMethodBeat.o(194998);
     return null;
   }
   
@@ -318,7 +318,7 @@ public class PAGFont
   
   private static FontConfig[] readFamilies(XmlPullParser paramXmlPullParser)
   {
-    AppMethodBeat.i(236870);
+    AppMethodBeat.i(194968);
     ArrayList localArrayList = new ArrayList();
     paramXmlPullParser.require(2, null, "familyset");
     while (paramXmlPullParser.next() != 3) {
@@ -332,13 +332,13 @@ public class PAGFont
     }
     paramXmlPullParser = new FontConfig[localArrayList.size()];
     localArrayList.toArray(paramXmlPullParser);
-    AppMethodBeat.o(236870);
+    AppMethodBeat.o(194968);
     return paramXmlPullParser;
   }
   
   private static FontConfig[] readFamiliesJellyBean(XmlPullParser paramXmlPullParser)
   {
-    AppMethodBeat.i(236875);
+    AppMethodBeat.i(194992);
     ArrayList localArrayList = new ArrayList();
     paramXmlPullParser.require(2, null, "familyset");
     while (paramXmlPullParser.next() != 3) {
@@ -360,13 +360,13 @@ public class PAGFont
     }
     paramXmlPullParser = new FontConfig[localArrayList.size()];
     localArrayList.toArray(paramXmlPullParser);
-    AppMethodBeat.o(236875);
+    AppMethodBeat.o(194992);
     return paramXmlPullParser;
   }
   
   private static void readFamily(XmlPullParser paramXmlPullParser, ArrayList<FontConfig> paramArrayList)
   {
-    AppMethodBeat.i(236871);
+    AppMethodBeat.i(194972);
     paramXmlPullParser.getAttributeValue(null, "name");
     String str = paramXmlPullParser.getAttributeValue(null, "lang");
     ArrayList localArrayList = new ArrayList();
@@ -381,7 +381,7 @@ public class PAGFont
     }
     if (localArrayList.isEmpty())
     {
-      AppMethodBeat.o(236871);
+      AppMethodBeat.o(194972);
       return;
     }
     Object localObject = localArrayList.iterator();
@@ -407,7 +407,7 @@ public class PAGFont
         ((FontConfig)localObject).language = paramXmlPullParser;
         paramArrayList.add(localObject);
       }
-      AppMethodBeat.o(236871);
+      AppMethodBeat.o(194972);
       return;
       paramXmlPullParser = null;
     }
@@ -415,7 +415,7 @@ public class PAGFont
   
   private static void readFileset(XmlPullParser paramXmlPullParser, ArrayList<FontConfig> paramArrayList)
   {
-    AppMethodBeat.i(236876);
+    AppMethodBeat.i(194996);
     ArrayList localArrayList = new ArrayList();
     while (paramXmlPullParser.next() != 3) {
       if (paramXmlPullParser.getEventType() == 2) {
@@ -428,7 +428,7 @@ public class PAGFont
     }
     if (localArrayList.isEmpty())
     {
-      AppMethodBeat.o(236876);
+      AppMethodBeat.o(194996);
       return;
     }
     Object localObject = localArrayList.iterator();
@@ -448,7 +448,7 @@ public class PAGFont
       if (!((FontConfig)localObject).fileName.isEmpty()) {
         paramArrayList.add(localObject);
       }
-      AppMethodBeat.o(236876);
+      AppMethodBeat.o(194996);
       return;
       paramXmlPullParser = null;
     }
@@ -456,7 +456,7 @@ public class PAGFont
   
   private static FontConfig readFont(XmlPullParser paramXmlPullParser)
   {
-    AppMethodBeat.i(236872);
+    AppMethodBeat.i(194978);
     FontConfig localFontConfig = new FontConfig(null);
     Object localObject = paramXmlPullParser.getAttributeValue(null, "index");
     if (localObject == null)
@@ -486,13 +486,13 @@ public class PAGFont
       break;
     }
     localFontConfig.fileName = ("/system/fonts/" + FILENAME_WHITESPACE_PATTERN.matcher((CharSequence)localObject).replaceAll(""));
-    AppMethodBeat.o(236872);
+    AppMethodBeat.o(194978);
     return localFontConfig;
   }
   
   private static void skip(XmlPullParser paramXmlPullParser)
   {
-    AppMethodBeat.i(236873);
+    AppMethodBeat.i(194983);
     int i = 1;
     while (i > 0) {
       switch (paramXmlPullParser.next())
@@ -506,7 +506,7 @@ public class PAGFont
         i -= 1;
       }
     }
-    AppMethodBeat.o(236873);
+    AppMethodBeat.o(194983);
   }
   
   static class FontConfig
@@ -519,7 +519,7 @@ public class PAGFont
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.libpag.PAGFont
  * JD-Core Version:    0.7.0.1
  */

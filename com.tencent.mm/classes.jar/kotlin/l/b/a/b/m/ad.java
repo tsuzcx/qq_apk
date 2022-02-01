@@ -8,9 +8,9 @@ public final class ad
   public static final boolean ap(ab paramab)
   {
     AppMethodBeat.i(60773);
-    p.h(paramab, "$this$isError");
-    paramab = paramab.hLF();
-    if (((paramab instanceof t)) || (((paramab instanceof v)) && ((((v)paramab).hDW() instanceof t))))
+    p.k(paramab, "$this$isError");
+    paramab = paramab.iPX();
+    if (((paramab instanceof t)) || (((paramab instanceof v)) && ((((v)paramab).iIq() instanceof t))))
     {
       AppMethodBeat.o(60773);
       return true;
@@ -21,7 +21,7 @@ public final class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.ad
  * JD-Core Version:    0.7.0.1
  */

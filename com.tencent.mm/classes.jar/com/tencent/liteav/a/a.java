@@ -8,14 +8,14 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.liteav.audio.e;
+import com.tencent.liteav.audio.g;
 import com.tencent.liteav.audio.impl.Record.b;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import com.tencent.liteav.muxer.c;
 import com.tencent.liteav.videoencoder.TXSVideoEncoderParam;
-import com.tencent.liteav.videoencoder.d;
+import com.tencent.liteav.videoencoder.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -23,7 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class a
-  implements e, d
+  implements g, e
 {
   private b a;
   private com.tencent.liteav.videoencoder.a b;
@@ -59,7 +59,7 @@ public class a
           AppMethodBeat.o(16670);
           return;
           TXCLog.d("TXCStreamRecord", "record complete. errcode = " + paramAnonymousMessage.arg1 + ", errmsg = " + (String)paramAnonymousMessage.obj + ", outputPath = " + a.b(a.this).f + ", coverImage = " + a.b(a.this).g);
-          if ((paramAnonymousMessage.arg1 == 0) && (a.b(a.this).g != null) && (!a.b(a.this).g.isEmpty()) && (!f.a(a.b(a.this).f, a.b(a.this).g))) {
+          if ((paramAnonymousMessage.arg1 == 0) && (a.b(a.this).g != null) && (!a.b(a.this).g.isEmpty()) && (!h.a(a.b(a.this).f, a.b(a.this).g))) {
             TXCLog.e("TXCStreamRecord", "saveVideoThumb error. sourcePath = " + a.b(a.this).f + ", coverImagePath = " + a.b(a.this).g);
           }
           if (paramAnonymousMessage.arg1 != 0) {}
@@ -89,7 +89,7 @@ public class a
   
   private String a(int paramInt)
   {
-    AppMethodBeat.i(221378);
+    AppMethodBeat.i(219782);
     String str;
     switch (paramInt)
     {
@@ -99,7 +99,7 @@ public class a
     for (;;)
     {
       this.i.sendMessage(Message.obtain(this.i, 2, 1, 0, str));
-      AppMethodBeat.o(221378);
+      AppMethodBeat.o(219782);
       return str;
       str = "Video encoding failed";
       continue;
@@ -210,7 +210,7 @@ public class a
     if ((parama.h > 0) && (parama.i > 0) && (parama.j > 0))
     {
       this.a.a(10, parama.i, parama.h, parama.j, new WeakReference(this));
-      parama = f.a(this.d.i, this.d.h, 2);
+      parama = h.a(this.d.i, this.d.h, 2);
       this.c.b(parama);
       this.h = true;
     }
@@ -327,7 +327,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.a.a
  * JD-Core Version:    0.7.0.1
  */

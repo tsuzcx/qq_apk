@@ -1,12 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.page.ac;
+import android.content.Intent;
+import com.tencent.luggage.k.f.c;
+import com.tencent.luggage.sdk.h.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.pluginsdk.wallet.e;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class bz
-  extends d<ac>
+  extends c<j>
 {
-  public static final int CTRL_INDEX = 0;
-  public static final String NAME = "openLink";
+  public static final int CTRL_INDEX = 403;
+  public static final String NAME = "openOfflinePayView";
+  final int owq;
+  
+  public bz()
+  {
+    AppMethodBeat.i(174758);
+    this.owq = a.aI(this);
+    AppMethodBeat.o(174758);
+  }
 }
 
 

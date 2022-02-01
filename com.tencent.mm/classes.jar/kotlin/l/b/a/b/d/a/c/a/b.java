@@ -11,9 +11,9 @@ import kotlin.l.b.a.b.f.f;
 
 public abstract interface b
 {
-  public abstract Set<f> hDK();
+  public abstract Set<f> iId();
   
-  public abstract Set<f> hDL();
+  public abstract Set<f> iIe();
   
   public abstract Collection<q> j(f paramf);
   
@@ -22,29 +22,29 @@ public abstract interface b
   public static final class a
     implements b
   {
-    public static final a TrL;
+    public static final a aaUF;
     
     static
     {
       AppMethodBeat.i(57780);
-      TrL = new a();
+      aaUF = new a();
       AppMethodBeat.o(57780);
     }
     
-    public final Set<f> hDK()
+    public final Set<f> iId()
     {
-      return (Set)x.SXt;
+      return (Set)x.aaAf;
     }
     
-    public final Set<f> hDL()
+    public final Set<f> iIe()
     {
-      return (Set)x.SXt;
+      return (Set)x.aaAf;
     }
     
     public final n k(f paramf)
     {
       AppMethodBeat.i(57779);
-      p.h(paramf, "name");
+      p.k(paramf, "name");
       AppMethodBeat.o(57779);
       return null;
     }
@@ -52,7 +52,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.c.a.b
  * JD-Core Version:    0.7.0.1
  */

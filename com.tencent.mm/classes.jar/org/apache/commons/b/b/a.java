@@ -12,11 +12,11 @@ import org.apache.commons.b.h;
 
 public final class a
 {
-  private static final Object Uhp = new Object();
-  private static String[] Uhq = { "getCause", "getNextException", "getTargetException", "getException", "getSourceException", "getRootCause", "getCausedByException", "getNested", "getLinkedException", "getNestedException", "getLinkedCause", "getThrowable" };
-  private static final Method Uhr;
-  private static final Method Uhs;
-  static Class Uht;
+  private static final Object abKE = new Object();
+  private static String[] abKF = { "getCause", "getNextException", "getTargetException", "getException", "getSourceException", "getRootCause", "getCausedByException", "getNested", "getLinkedException", "getNestedException", "getLinkedCause", "getThrowable" };
+  private static final Method abKG;
+  private static final Method abKH;
+  static Class abKI;
   
   static
   {
@@ -26,11 +26,11 @@ public final class a
     {
       try
       {
-        if (Uht != null) {
+        if (abKI != null) {
           continue;
         }
-        localObject1 = bvc("java.lang.Throwable");
-        Uht = (Class)localObject1;
+        localObject1 = bIg("java.lang.Throwable");
+        abKI = (Class)localObject1;
         localObject1 = ((Class)localObject1).getMethod("getCause", null);
       }
       catch (Exception localException1)
@@ -38,24 +38,24 @@ public final class a
         Object localObject1;
         localClass1 = null;
         continue;
-        localClass1 = Uht;
+        localClass1 = abKI;
         continue;
-        localClass2 = Uht;
+        localClass2 = abKI;
         continue;
       }
-      Uhr = (Method)localObject1;
+      abKG = (Method)localObject1;
       try
       {
-        if (Uht != null) {
+        if (abKI != null) {
           continue;
         }
-        localObject1 = bvc("java.lang.Throwable");
-        Uht = (Class)localObject1;
-        if (Uht != null) {
+        localObject1 = bIg("java.lang.Throwable");
+        abKI = (Class)localObject1;
+        if (abKI != null) {
           continue;
         }
-        localClass2 = bvc("java.lang.Throwable");
-        Uht = localClass2;
+        localClass2 = bIg("java.lang.Throwable");
+        abKI = localClass2;
         localObject1 = ((Class)localObject1).getMethod("initCause", new Class[] { localClass2 });
       }
       catch (Exception localException2)
@@ -65,25 +65,25 @@ public final class a
         Object localObject2 = localObject3;
         continue;
       }
-      Uhs = (Method)localObject1;
+      abKH = (Method)localObject1;
       AppMethodBeat.o(40719);
       return;
-      localObject1 = Uht;
+      localObject1 = abKI;
     }
   }
   
-  public static Throwable J(Throwable paramThrowable)
+  public static Throwable N(Throwable paramThrowable)
   {
     AppMethodBeat.i(40712);
-    synchronized (Uhp)
+    synchronized (abKE)
     {
-      paramThrowable = a(paramThrowable, Uhq);
+      paramThrowable = a(paramThrowable, abKF);
       AppMethodBeat.o(40712);
       return paramThrowable;
     }
   }
   
-  public static void J(List paramList1, List paramList2)
+  public static void P(List paramList1, List paramList2)
   {
     AppMethodBeat.i(40716);
     int i = paramList1.size();
@@ -116,13 +116,13 @@ public final class a
     {
       localObject2 = localObject1;
       if (localObject1 != null) {
-        break label162;
+        break;
       }
       localObject2 = ???;
       if (??? == null) {}
-      synchronized (Uhp)
+      synchronized (abKE)
       {
-        localObject2 = Uhq;
+        localObject2 = abKF;
         int i = 0;
         for (;;)
         {
@@ -148,16 +148,12 @@ public final class a
         }
       }
     }
-    Object localObject2 = ???;
-    if (??? == null) {
-      localObject2 = g(paramThrowable, "detail");
-    }
-    label162:
+    Object localObject2 = g(paramThrowable, "detail");
     AppMethodBeat.o(40713);
     return localObject2;
   }
   
-  private static Class bvc(String paramString)
+  private static Class bIg(String paramString)
   {
     AppMethodBeat.i(40718);
     try
@@ -174,10 +170,10 @@ public final class a
     }
   }
   
-  static String[] bvn(String paramString)
+  static String[] bIs(String paramString)
   {
     AppMethodBeat.i(40717);
-    paramString = new StringTokenizer(paramString, h.TTr);
+    paramString = new StringTokenizer(paramString, h.abvU);
     ArrayList localArrayList = new ArrayList();
     while (paramString.hasMoreTokens()) {
       localArrayList.add(paramString.nextToken());
@@ -194,10 +190,10 @@ public final class a
     {
       paramString = paramThrowable.getClass().getMethod(paramString, null);
       if (paramString != null) {
-        if (Uht == null)
+        if (abKI == null)
         {
-          localClass = bvc("java.lang.Throwable");
-          Uht = localClass;
+          localClass = bIg("java.lang.Throwable");
+          abKI = localClass;
           if (!localClass.isAssignableFrom(paramString.getReturnType())) {
             break label85;
           }
@@ -210,7 +206,7 @@ public final class a
       {
         try
         {
-          paramThrowable = (Throwable)paramString.invoke(paramThrowable, org.apache.commons.b.a.UeK);
+          paramThrowable = (Throwable)paramString.invoke(paramThrowable, org.apache.commons.b.a.abHY);
           AppMethodBeat.o(40714);
           return paramThrowable;
         }
@@ -238,7 +234,7 @@ public final class a
       {
         paramString = null;
         continue;
-        localClass = Uht;
+        localClass = abKI;
       }
     }
   }
@@ -250,10 +246,10 @@ public final class a
     {
       paramString = paramThrowable.getClass().getField(paramString);
       if (paramString != null) {
-        if (Uht == null)
+        if (abKI == null)
         {
-          localClass = bvc("java.lang.Throwable");
-          Uht = localClass;
+          localClass = bIg("java.lang.Throwable");
+          abKI = localClass;
           if (!localClass.isAssignableFrom(paramString.getType())) {
             break label81;
           }
@@ -290,19 +286,19 @@ public final class a
       {
         paramString = null;
         continue;
-        localClass = Uht;
+        localClass = abKI;
       }
     }
   }
   
-  public static boolean hPO()
+  public static boolean iUX()
   {
-    return Uhr != null;
+    return abKG != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.apache.commons.b.b.a
  * JD-Core Version:    0.7.0.1
  */

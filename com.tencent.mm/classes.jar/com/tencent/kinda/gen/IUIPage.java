@@ -11,7 +11,11 @@ public abstract class IUIPage
   
   public abstract boolean enableInteractivePop();
   
+  public abstract boolean forceShowInLightMode();
+  
   public abstract boolean fullPageMode();
+  
+  public abstract IUIPagePlatformFuncDelegate getPlatformFuncDelegate();
   
   public abstract String getReportUrl();
   
@@ -85,7 +89,11 @@ public abstract class IUIPage
     
     private native boolean native_enableInteractivePop(long paramLong);
     
+    private native boolean native_forceShowInLightMode(long paramLong);
+    
     private native boolean native_fullPageMode(long paramLong);
+    
+    private native IUIPagePlatformFuncDelegate native_getPlatformFuncDelegate(long paramLong);
     
     private native String native_getReportUrl(long paramLong);
     
@@ -166,6 +174,20 @@ public abstract class IUIPage
       AppMethodBeat.o(135751);
     }
     
+    public final boolean forceShowInLightMode()
+    {
+      AppMethodBeat.i(219619);
+      if ((!$assertionsDisabled) && (this.destroyed.get()))
+      {
+        AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
+        AppMethodBeat.o(219619);
+        throw localAssertionError;
+      }
+      boolean bool = native_forceShowInLightMode(this.nativeRef);
+      AppMethodBeat.o(219619);
+      return bool;
+    }
+    
     public final boolean fullPageMode()
     {
       AppMethodBeat.i(135765);
@@ -178,6 +200,20 @@ public abstract class IUIPage
       boolean bool = native_fullPageMode(this.nativeRef);
       AppMethodBeat.o(135765);
       return bool;
+    }
+    
+    public final IUIPagePlatformFuncDelegate getPlatformFuncDelegate()
+    {
+      AppMethodBeat.i(219588);
+      if ((!$assertionsDisabled) && (this.destroyed.get()))
+      {
+        localObject = new AssertionError("trying to use a destroyed object");
+        AppMethodBeat.o(219588);
+        throw ((Throwable)localObject);
+      }
+      Object localObject = native_getPlatformFuncDelegate(this.nativeRef);
+      AppMethodBeat.o(219588);
+      return localObject;
     }
     
     public final String getReportUrl()
@@ -380,15 +416,15 @@ public abstract class IUIPage
     
     public final boolean useSafeAreaToLayout()
     {
-      AppMethodBeat.i(207066);
+      AppMethodBeat.i(219607);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(207066);
+        AppMethodBeat.o(219607);
         throw localAssertionError;
       }
       boolean bool = native_useSafeAreaToLayout(this.nativeRef);
-      AppMethodBeat.o(207066);
+      AppMethodBeat.o(219607);
       return bool;
     }
     
@@ -408,7 +444,7 @@ public abstract class IUIPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.gen.IUIPage
  * JD-Core Version:    0.7.0.1
  */

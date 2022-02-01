@@ -6,13 +6,13 @@ import java.util.Iterator;
 
 public abstract class a<D extends com.tencent.mm.danmaku.b.a>
 {
-  private ArrayList<Object> gPT;
+  private ArrayList<Object> jAm;
   
-  private void atc()
+  private void azP()
   {
-    if (this.gPT != null)
+    if (this.jAm != null)
     {
-      Iterator localIterator = this.gPT.iterator();
+      Iterator localIterator = this.jAm.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
@@ -22,20 +22,20 @@ public abstract class a<D extends com.tencent.mm.danmaku.b.a>
   public final void a(Canvas paramCanvas, D paramD, float paramFloat1, float paramFloat2)
   {
     b(paramCanvas, paramD, paramFloat1, paramFloat2);
-    atc();
+    azP();
   }
   
   public abstract void b(Canvas paramCanvas, D paramD, float paramFloat1, float paramFloat2);
   
-  public abstract boolean f(com.tencent.mm.danmaku.b.a parama);
+  public abstract boolean e(com.tencent.mm.danmaku.b.a parama);
   
-  public abstract com.tencent.mm.danmaku.e.a g(D paramD);
+  public abstract com.tencent.mm.danmaku.e.a f(D paramD);
   
-  public void h(D paramD) {}
+  public void g(D paramD) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.danmaku.render.a
  * JD-Core Version:    0.7.0.1
  */

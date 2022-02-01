@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements Cloneable
 {
-  private String Uhk;
-  protected char[] aZS;
+  protected char[] aJp;
+  private String abKz;
   protected int size;
   
   public a()
@@ -21,41 +21,41 @@ public final class a
     if (paramInt <= 0) {
       i = 32;
     }
-    this.aZS = new char[i];
+    this.aJp = new char[i];
     AppMethodBeat.o(40757);
   }
   
-  private a awl(int paramInt)
+  private a aGg(int paramInt)
   {
     AppMethodBeat.i(40759);
-    if (paramInt > this.aZS.length)
+    if (paramInt > this.aJp.length)
     {
-      char[] arrayOfChar = this.aZS;
-      this.aZS = new char[paramInt * 2];
-      System.arraycopy(arrayOfChar, 0, this.aZS, 0, this.size);
+      char[] arrayOfChar = this.aJp;
+      this.aJp = new char[paramInt * 2];
+      System.arraycopy(arrayOfChar, 0, this.aJp, 0, this.size);
     }
     AppMethodBeat.o(40759);
     return this;
   }
   
-  private a hPQ()
+  private a iUZ()
   {
     AppMethodBeat.i(40760);
-    if (this.Uhk == null)
+    if (this.abKz == null)
     {
       AppMethodBeat.o(40760);
       return this;
     }
-    a locala = bvo(this.Uhk);
+    a locala = bIt(this.abKz);
     AppMethodBeat.o(40760);
     return locala;
   }
   
-  public final a J(char paramChar)
+  public final a V(char paramChar)
   {
     AppMethodBeat.i(40763);
-    awl(this.size + 1);
-    char[] arrayOfChar = this.aZS;
+    aGg(this.size + 1);
+    char[] arrayOfChar = this.aJp;
     int i = this.size;
     this.size = (i + 1);
     arrayOfChar[i] = paramChar;
@@ -63,12 +63,12 @@ public final class a
     return this;
   }
   
-  public final a bvo(String paramString)
+  public final a bIt(String paramString)
   {
     AppMethodBeat.i(40762);
     if (paramString == null)
     {
-      paramString = hPQ();
+      paramString = iUZ();
       AppMethodBeat.o(40762);
       return paramString;
     }
@@ -76,8 +76,8 @@ public final class a
     if (i > 0)
     {
       int j = this.size;
-      awl(j + i);
-      paramString.getChars(0, i, this.aZS, j);
+      aGg(j + i);
+      paramString.getChars(0, i, this.aJp, j);
       this.size = (i + this.size);
     }
     AppMethodBeat.o(40762);
@@ -88,8 +88,8 @@ public final class a
   {
     AppMethodBeat.i(40765);
     a locala = (a)super.clone();
-    locala.aZS = new char[this.aZS.length];
-    System.arraycopy(this.aZS, 0, locala.aZS, 0, this.aZS.length);
+    locala.aJp = new char[this.aJp.length];
+    System.arraycopy(this.aJp, 0, locala.aJp, 0, this.aJp.length);
     AppMethodBeat.o(40765);
     return locala;
   }
@@ -108,8 +108,8 @@ public final class a
     {
       return false;
     }
-    paramObject = this.aZS;
-    Object localObject = ((a)localObject).aZS;
+    paramObject = this.aJp;
+    Object localObject = ((a)localObject).aJp;
     int i = this.size - 1;
     for (;;)
     {
@@ -125,21 +125,34 @@ public final class a
     return true;
   }
   
-  public final a gF(Object paramObject)
+  public final a gX(Object paramObject)
   {
     AppMethodBeat.i(40761);
     if (paramObject == null)
     {
-      paramObject = hPQ();
+      paramObject = iUZ();
       AppMethodBeat.o(40761);
       return paramObject;
     }
-    paramObject = bvo(paramObject.toString());
+    paramObject = bIt(paramObject.toString());
     AppMethodBeat.o(40761);
     return paramObject;
   }
   
-  public final a hPP()
+  public final int hashCode()
+  {
+    char[] arrayOfChar = this.aJp;
+    int j = 0;
+    int i = this.size - 1;
+    while (i >= 0)
+    {
+      j = j * 31 + arrayOfChar[i];
+      i -= 1;
+    }
+    return j;
+  }
+  
+  public final a iUY()
   {
     AppMethodBeat.i(40758);
     if (this.size > 0) {
@@ -151,29 +164,16 @@ public final class a
       return this;
       if (this.size < 0)
       {
-        awl(0);
+        aGg(0);
         int i = this.size;
         this.size = 0;
         while (i < 0)
         {
-          this.aZS[i] = '\000';
+          this.aJp[i] = '\000';
           i += 1;
         }
       }
     }
-  }
-  
-  public final int hashCode()
-  {
-    char[] arrayOfChar = this.aZS;
-    int j = 0;
-    int i = this.size - 1;
-    while (i >= 0)
-    {
-      j = j * 31 + arrayOfChar[i];
-      i -= 1;
-    }
-    return j;
   }
   
   public final boolean isEmpty()
@@ -189,14 +189,14 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(40764);
-    String str = new String(this.aZS, 0, this.size);
+    String str = new String(this.aJp, 0, this.size);
     AppMethodBeat.o(40764);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.apache.commons.b.c.a
  * JD-Core Version:    0.7.0.1
  */

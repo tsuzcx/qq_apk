@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.flash.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.facedetect.model.p;
@@ -17,18 +17,18 @@ import org.json.JSONObject;
 
 public final class a
 {
-  private static final String wHI;
+  private static final String BAI;
   
   static
   {
-    AppMethodBeat.i(186611);
-    wHI = p.cTh() + '/' + "fdv_";
-    AppMethodBeat.o(186611);
+    AppMethodBeat.i(190546);
+    BAI = p.dim() + '/' + "fdv_";
+    AppMethodBeat.o(190546);
   }
   
   public static JSONObject a(YtSDKKitFramework.YtSDKKitFrameworkWorkMode paramYtSDKKitFrameworkWorkMode)
   {
-    AppMethodBeat.i(186610);
+    AppMethodBeat.i(190541);
     String str1 = "";
     String str3 = str1;
     try
@@ -48,24 +48,24 @@ public final class a
           str3 = str1;
           JSONObject localJSONObject = new JSONObject(str1);
           str3 = str1;
-          localJSONObject.put("resource_download_path", p.cTh() + "/");
+          localJSONObject.put("resource_download_path", p.dim() + "/");
           str3 = str1;
-          localJSONObject.put("video_path", wHI + Util.currentTicks() + ".mp4");
+          localJSONObject.put("video_path", BAI + Util.currentTicks() + ".mp4");
           str3 = str1;
           Log.i("MicroMsg.FaceFlashManagerConfig", "YtSDKKitConfigHelper getSDKConfig:%s", new Object[] { localJSONObject.toString() });
-          AppMethodBeat.o(186610);
+          AppMethodBeat.o(190541);
           return localJSONObject;
           str3 = str1;
-          str1 = ((b)g.af(b.class)).a(b.a.scz, "");
+          str1 = ((b)h.ae(b.class)).a(b.a.vKN, "");
           continue;
           str3 = str1;
-          str1 = ((b)g.af(b.class)).a(b.a.scA, "");
+          str1 = ((b)h.ae(b.class)).a(b.a.vKO, "");
           continue;
           str3 = str1;
-          str1 = ((b)g.af(b.class)).a(b.a.scB, "");
+          str1 = ((b)h.ae(b.class)).a(b.a.vKP, "");
           continue;
           str3 = str1;
-          str1 = ((b)g.af(b.class)).a(b.a.scC, "");
+          str1 = ((b)h.ae(b.class)).a(b.a.vKQ, "");
         }
       }
     }
@@ -78,46 +78,37 @@ public final class a
         try
         {
           paramYtSDKKitFrameworkWorkMode = YtSDKKitConfigHelper.getSDKConfig(paramYtSDKKitFrameworkWorkMode, new JSONObject(str2).getJSONObject("sdk_settings"));
-          paramYtSDKKitFrameworkWorkMode.put("resource_download_path", p.cTh() + "/");
-          paramYtSDKKitFrameworkWorkMode.put("video_path", wHI + Util.currentTicks() + ".mp4");
+          paramYtSDKKitFrameworkWorkMode.put("resource_download_path", p.dim() + "/");
+          paramYtSDKKitFrameworkWorkMode.put("video_path", BAI + Util.currentTicks() + ".mp4");
           Log.i("MicroMsg.FaceFlashManagerConfig", "YtSDKKitConfigHelper getSDKConfig:%s", new Object[] { paramYtSDKKitFrameworkWorkMode.toString() });
-          AppMethodBeat.o(186610);
+          AppMethodBeat.o(190541);
           return paramYtSDKKitFrameworkWorkMode;
         }
         catch (JSONException paramYtSDKKitFrameworkWorkMode)
         {
           Log.printErrStackTrace("MicroMsg.FaceFlashManagerConfig", paramYtSDKKitFrameworkWorkMode, "par config error. config:%s", new Object[] { str2 });
-          AppMethodBeat.o(186610);
+          AppMethodBeat.o(190541);
           return null;
         }
       }
     }
   }
   
-  public static int dKW()
+  public static int epA()
   {
-    AppMethodBeat.i(186607);
-    int i = ((b)g.af(b.class)).a(b.a.scD, 1500);
+    AppMethodBeat.i(190528);
+    int i = ((b)h.ae(b.class)).a(b.a.vKR, 1500);
     Log.i("MicroMsg.FaceFlashManagerConfig", "getFaceWaitingTimeMs %d", new Object[] { Integer.valueOf(i) });
-    AppMethodBeat.o(186607);
+    AppMethodBeat.o(190528);
     return i;
   }
   
-  public static int dKX()
+  public static int epB()
   {
-    AppMethodBeat.i(186608);
-    int i = ((b)g.af(b.class)).a(b.a.scE, 1000);
+    AppMethodBeat.i(190532);
+    int i = ((b)h.ae(b.class)).a(b.a.vKS, 1000);
     Log.i("MicroMsg.FaceFlashManagerConfig", "getFaceReadNumberTimeInterval %d", new Object[] { Integer.valueOf(i) });
-    AppMethodBeat.o(186608);
-    return i;
-  }
-  
-  public static int dKY()
-  {
-    AppMethodBeat.i(186609);
-    int i = ((b)g.af(b.class)).a(b.a.scF, 1000);
-    Log.i("MicroMsg.FaceFlashManagerConfig", "getFaceReadNumberTimeInterval %d", new Object[] { Integer.valueOf(i) });
-    AppMethodBeat.o(186609);
+    AppMethodBeat.o(190532);
     return i;
   }
 }

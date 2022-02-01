@@ -1,218 +1,108 @@
 package com.tencent.mm.plugin.webcanvas;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.f.a.acm;
+import com.tencent.mm.f.a.acm.a;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkg;
-import com.tencent.mm.plugin.appbrand.service.u;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
 import com.tencent.mm.plugin.appbrand.service.u.a;
 import com.tencent.mm.plugin.appbrand.service.u.b;
-import com.tencent.mm.protocal.protobuf.bhd;
-import com.tencent.mm.protocal.protobuf.deg;
-import com.tencent.mm.protocal.protobuf.tu;
+import com.tencent.mm.plugin.appbrand.service.v;
+import com.tencent.mm.protocal.protobuf.bom;
+import com.tencent.mm.protocal.protobuf.bon;
+import com.tencent.mm.protocal.protobuf.dnw;
+import com.tencent.mm.protocal.protobuf.tw;
+import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedList;
 import kotlin.Result;
-import kotlin.f;
-import kotlin.g.b.q;
-import kotlin.n.n;
+import kotlin.a.j;
+import kotlin.g;
 import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasStorageLogic;", "", "()V", "KEY_PREFETCHER_BIZ_APPIDS", "", "KEY_WEB_CANVAS_LAST_CLEAR_PKG_TIME", "KEY_WEB_CANVAS_LAST_DOWNLOAD_PKG_BY_GET_DATA_TIME", "KEY_WEB_CANVAS_PREVIEW_PKG_MD5", "TAG", "WEB_CANVAS_PKG_PATH", "getWEB_CANVAS_PKG_PATH", "()Ljava/lang/String;", "adPrefetchAppId", "bizPkgAppId", "lastTriggerPreDownloadTime", "", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "Lkotlin/Lazy;", "pkgDownloadOpen", "", "getPkgDownloadOpen", "()Z", "pkgDownloadOpen$delegate", "pkgUpdateEventListener", "com/tencent/mm/plugin/webcanvas/WebCanvasStorageLogic$pkgUpdateEventListener$1", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasStorageLogic$pkgUpdateEventListener$1;", "prefetchBasePkgAppId", "prefetchBizPkgAppIds", "Ljava/util/LinkedList;", "getPrefetchBizPkgAppIds", "()Ljava/util/LinkedList;", "prefetchBizPkgAppIds$delegate", "previewMode", "", "getPreviewMode", "()I", "previewMode$delegate", "triggerDownLoadPkgInterval", "getTriggerDownLoadPkgInterval", "()J", "triggerDownLoadPkgInterval$delegate", "triggerDownLoadPkgOnGetDataInterval", "getTriggerDownLoadPkgOnGetDataInterval", "triggerDownLoadPkgOnGetDataInterval$delegate", "triggerDownLoadPrefetchPkgInterval", "getTriggerDownLoadPrefetchPkgInterval", "triggerDownLoadPrefetchPkgInterval$delegate", "wxaPkgAppId", "minBasePkgVersion", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;", "getMinBasePkgVersion", "(Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;)I", "minClientVersion", "getMinClientVersion", "version", "getVersion", "checkPreviewVersion", "", "appId", "clearInvalidPkg", "force", "fetchBizPrefetchPkg", "manifest", "Lcom/tencent/mm/plugin/webprefetcher/PrefetchManifest;", "userName", "(Lcom/tencent/mm/plugin/webprefetcher/PrefetchManifest;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getBizAppIds", "getPkgInfo", "Lcom/tencent/mm/protocal/protobuf/CanvasPkgInfo;", "getPreviewPkgPath", "pkgType", "getReleasePkgPath", "getWebCanvasCachePath", "getWxaPkgVersion", "isPkgValid", "path", "wxaVersion", "isWxaPkgSupport", "bizPkg", "wxaPkg", "regPkgUpdateEventListener", "saveBizAppIds", "triggerPreDownload", "triggerPreDownloadBizPrefetchPkg", "triggerPreDownloadByGetData", "triggerPreDownloadPrefetchBasePkg", "triggerPreDownloadPrefetchPkg", "lastDownloadTime", "lastUsePathKey", "lastUseTimeKey", "pkgInfoKey", "readFile", "webview-sdk_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasStorageLogic;", "", "()V", "KEY_PREFETCHER_BIZ_APPIDS", "", "KEY_WEB_CANVAS_LAST_CLEAR_PKG_TIME", "KEY_WEB_CANVAS_LAST_DOWNLOAD_PKG_BY_GET_DATA_TIME", "KEY_WEB_CANVAS_PREVIEW_PKG_MD5", "TAG", "WEB_CANVAS_PKG_PATH", "getWEB_CANVAS_PKG_PATH", "()Ljava/lang/String;", "adPrefetchAppId", "bizPkgAppId", "lastTriggerPreDownloadTime", "", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "Lkotlin/Lazy;", "pkgDownloadOpen", "", "getPkgDownloadOpen", "()Z", "pkgDownloadOpen$delegate", "pkgUpdateEventListener", "com/tencent/mm/plugin/webcanvas/WebCanvasStorageLogic$pkgUpdateEventListener$1", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasStorageLogic$pkgUpdateEventListener$1;", "prefetchBasePkgAppId", "prefetchBizPkgAppIds", "Ljava/util/LinkedList;", "getPrefetchBizPkgAppIds", "()Ljava/util/LinkedList;", "prefetchBizPkgAppIds$delegate", "previewMode", "", "getPreviewMode", "()I", "previewMode$delegate", "triggerDownLoadPkgInterval", "getTriggerDownLoadPkgInterval", "()J", "triggerDownLoadPkgInterval$delegate", "triggerDownLoadPkgOnGetDataInterval", "getTriggerDownLoadPkgOnGetDataInterval", "triggerDownLoadPkgOnGetDataInterval$delegate", "triggerDownLoadPrefetchPkgInterval", "getTriggerDownLoadPrefetchPkgInterval", "triggerDownLoadPrefetchPkgInterval$delegate", "webPrefetchPkgInterval", "getWebPrefetchPkgInterval", "webPrefetchPkgInterval$delegate", "wxaPkgAppId", "minBasePkgVersion", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;", "getMinBasePkgVersion", "(Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;)I", "minClientVersion", "getMinClientVersion", "addPrefetchBizPkgAppId", "", "appId", "checkPreviewVersion", "clearInvalidPkg", "force", "fetchBizPrefetchPkg", "manifest", "Lcom/tencent/mm/plugin/webprefetcher/PrefetchManifest;", "userName", "(Lcom/tencent/mm/plugin/webprefetcher/PrefetchManifest;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getBizAppIds", "getPkgDirectory", "getPkgInfo", "Lcom/tencent/mm/protocal/protobuf/CanvasPkgInfo;", "getPreviewPkgPath", "pkgType", "getReleasePkgPath", "getWebCanvasCachePath", "getWxaPkgVersion", "isPkgValid", "path", "wxaVersion", "isWxaPkgSupport", "bizPkg", "wxaPkg", "regPkgUpdateEventListener", "saveBizAppIds", "saveWxaPkgInfo", "pkg", "triggerPreDownload", "triggerPreDownloadBizPrefetchPkg", "interval", "triggerPreDownloadByGetData", "triggerPreDownloadPrefetchBasePkg", "triggerPreDownloadPrefetchPkg", "lastDownloadTime", "lastUsePathKey", "lastUseTimeKey", "pkgInfoKey", "PkgDownloadReporter", "webview-sdk_release"})
 public final class m
 {
-  private static final f IAA;
-  private static final f IAB;
-  private static final f IAC;
-  private static final f IAD;
-  private static final f IAE;
-  private static final m.g IAF;
-  public static final m IAG;
-  private static final String IAy;
-  private static final f IAz;
-  private static final f iBW;
-  private static long pmU;
+  private static final String PuC;
+  private static final kotlin.f PuD;
+  private static final kotlin.f PuE;
+  private static final kotlin.f PuF;
+  private static final kotlin.f PuG;
+  private static final kotlin.f PuH;
+  private static final kotlin.f PuI;
+  private static final kotlin.f PuJ;
+  private static final h PuK;
+  public static final m PuL;
+  private static final kotlin.f lrB;
+  private static long svS;
   
   static
   {
-    AppMethodBeat.i(224755);
-    IAG = new m();
-    IAy = com.tencent.mm.loader.j.b.aKB() + "/WebCanvasPkg";
-    IAz = kotlin.g.ah((kotlin.g.a.a)m.h.IAL);
-    iBW = kotlin.g.ah((kotlin.g.a.a)m.e.IAJ);
-    IAA = kotlin.g.ah((kotlin.g.a.a)m.i.IAM);
-    IAB = kotlin.g.ah((kotlin.g.a.a)m.f.IAK);
-    IAC = kotlin.g.ah((kotlin.g.a.a)m.k.IAO);
-    IAD = kotlin.g.ah((kotlin.g.a.a)m.l.IAP);
-    IAE = kotlin.g.ah((kotlin.g.a.a)m.j.IAN);
-    IAF = new m.g();
-    AppMethodBeat.o(224755);
+    AppMethodBeat.i(206919);
+    PuL = new m();
+    PuC = com.tencent.mm.loader.j.b.aSD() + "/WebCanvasPkg";
+    PuD = g.ar((kotlin.g.a.a)i.PuT);
+    lrB = g.ar((kotlin.g.a.a)f.PuR);
+    PuE = g.ar((kotlin.g.a.a)j.PuU);
+    PuF = g.ar((kotlin.g.a.a)g.PuS);
+    PuG = g.ar((kotlin.g.a.a)l.PuW);
+    PuH = g.ar((kotlin.g.a.a)m.PuX);
+    PuI = g.ar((kotlin.g.a.a)k.PuV);
+    PuJ = g.ar((kotlin.g.a.a)p.PuY);
+    PuK = new h();
+    AppMethodBeat.o(206919);
   }
   
-  private static int a(com.tencent.mm.plugin.appbrand.appcache.p paramp)
+  public static void CF(boolean paramBoolean)
   {
-    AppMethodBeat.i(224738);
-    kotlin.g.b.p.h(paramp, "$this$version");
-    int i = new com.tencent.mm.ab.i(a(paramp, "/meta.json")).optInt("version");
-    AppMethodBeat.o(224738);
-    return i;
-  }
-  
-  public static Object a(final com.tencent.mm.plugin.ad.a parama, final String paramString1, final String paramString2, kotlin.d.d<? super Boolean> paramd)
-  {
-    AppMethodBeat.i(224745);
-    kotlin.d.h localh = new kotlin.d.h(kotlin.d.a.b.e(paramd));
-    Object localObject1 = (kotlin.d.d)localh;
-    Object localObject2 = new d((kotlin.d.d)localObject1, paramString1, parama, paramString2);
-    Object localObject3 = (CharSequence)paramString2;
-    int i;
-    if ((localObject3 == null) || (n.aL((CharSequence)localObject3)))
+    AppMethodBeat.i(206918);
+    long l2 = bcJ().decodeLong("webcanvas_last_clear_pkg_time", 0L);
+    long l1 = System.currentTimeMillis();
+    l2 = Math.abs(l1 - l2);
+    if ((!paramBoolean) && (l2 < 86400000L))
     {
-      i = 1;
-      if (i == 0)
-      {
-        if (!n.K(paramString2, "@app", true)) {
-          break label266;
-        }
-        label78:
-        ((u)com.tencent.mm.kernel.g.af(u.class)).r(paramString2, paramString1, 998);
-      }
-      IAG.aWL(paramString1);
-      if (!s.YS(IAG.aWH(paramString1))) {
-        break label290;
-      }
-      localObject2 = com.tencent.mm.plugin.report.service.h.CyF;
-      localObject3 = parama.ICs;
-      i = parama.hDa;
-      paramString2 = parama.ICt.LQV;
-      paramString1 = paramString2;
-      if (paramString2 == null) {
-        paramString1 = "";
-      }
-      ((com.tencent.mm.plugin.report.service.h)localObject2).a(21074, new Object[] { localObject3, Integer.valueOf(i), Integer.valueOf(1), "", paramString1, Integer.valueOf(1), Integer.valueOf(parama.hDa) });
-      parama = Boolean.TRUE;
-      paramString1 = Result.Companion;
-      ((kotlin.d.d)localObject1).resumeWith(Result.constructor-impl(parama));
+      Log.d("MicroMsg.WebCanvasStorageLogic", "clearInvalidPkg delta ".concat(String.valueOf(l2)));
+      AppMethodBeat.o(206918);
+      return;
     }
-    for (;;)
-    {
-      parama = localh.hxK();
-      if (parama == kotlin.d.a.a.SXO) {
-        kotlin.g.b.p.h(paramd, "frame");
-      }
-      AppMethodBeat.o(224745);
-      return parama;
-      i = 0;
-      break;
-      label266:
-      paramString2 = paramString2 + "@app";
-      break label78;
-      label290:
-      Log.i("MicroMsg.WebCanvasStorageLogic", "fetchBizPrefetchPkg pkg not exist, wait for download complete. appId=".concat(String.valueOf(paramString1)));
-      localObject1 = com.tencent.mm.plugin.report.service.h.CyF;
-      localObject3 = parama.ICs;
-      i = parama.hDa;
-      paramString2 = parama.ICt.LQV;
-      paramString1 = paramString2;
-      if (paramString2 == null) {
-        paramString1 = "";
-      }
-      ((com.tencent.mm.plugin.report.service.h)localObject1).a(21074, new Object[] { localObject3, Integer.valueOf(i), Integer.valueOf(1), "", paramString1, Integer.valueOf(3), Integer.valueOf(parama.hDa) });
-      ((d)localObject2).invoke();
-    }
+    bcJ().encode("webcanvas_last_clear_pkg_time", l1);
+    com.tencent.e.h.ZvG.o((Runnable)d.PuP, 10000L);
+    AppMethodBeat.o(206918);
   }
   
-  /* Error */
-  private static String a(com.tencent.mm.plugin.appbrand.appcache.p paramp, String paramString)
+  public static void a(String paramString, tw paramtw)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: ldc_w 407
-    //   5: invokestatic 134	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: aload_0
-    //   9: ldc_w 409
-    //   12: invokestatic 243	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   15: aload_1
-    //   16: ldc_w 410
-    //   19: invokestatic 243	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   22: aload_0
-    //   23: aload_1
-    //   24: invokeinterface 416 2 0
-    //   29: checkcast 418	java/io/Closeable
-    //   32: astore_3
-    //   33: aload_3
-    //   34: checkcast 420	java/io/InputStream
-    //   37: astore_0
-    //   38: aload_0
-    //   39: ldc_w 422
-    //   42: invokestatic 425	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   45: new 388	java/lang/String
-    //   48: dup
-    //   49: aload_0
-    //   50: invokestatic 431	kotlin/f/a:U	(Ljava/io/InputStream;)[B
-    //   53: getstatic 437	kotlin/n/d:UTF_8	Ljava/nio/charset/Charset;
-    //   56: invokespecial 440	java/lang/String:<init>	([BLjava/nio/charset/Charset;)V
-    //   59: astore_0
-    //   60: aload_3
-    //   61: aconst_null
-    //   62: invokestatic 445	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   65: ldc_w 407
-    //   68: invokestatic 230	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   71: aload_0
-    //   72: areturn
-    //   73: astore_1
-    //   74: ldc_w 407
-    //   77: invokestatic 230	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   80: aload_1
-    //   81: athrow
-    //   82: astore_0
-    //   83: aload_3
-    //   84: aload_1
-    //   85: invokestatic 445	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   88: ldc_w 407
-    //   91: invokestatic 230	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   94: aload_0
-    //   95: athrow
-    //   96: astore_0
-    //   97: aload_2
-    //   98: astore_1
-    //   99: goto -16 -> 83
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	102	0	paramp	com.tencent.mm.plugin.appbrand.appcache.p
-    //   0	102	1	paramString	String
-    //   1	97	2	localObject	Object
-    //   32	52	3	localCloseable	java.io.Closeable
-    // Exception table:
-    //   from	to	target	type
-    //   33	60	73	java/lang/Throwable
-    //   74	82	82	finally
-    //   33	60	96	finally
+    AppMethodBeat.i(206904);
+    kotlin.g.b.p.k(paramString, "appId");
+    kotlin.g.b.p.k(paramtw, "pkg");
+    bcJ().encode(bil(paramString), paramtw.toByteArray());
+    AppMethodBeat.o(206904);
   }
   
   public static boolean a(com.tencent.mm.plugin.appbrand.appcache.p paramp1, com.tencent.mm.plugin.appbrand.appcache.p paramp2)
   {
-    AppMethodBeat.i(224743);
-    kotlin.g.b.p.h(paramp1, "bizPkg");
-    kotlin.g.b.p.h(paramp2, "wxaPkg");
+    AppMethodBeat.i(206903);
+    kotlin.g.b.p.k(paramp1, "bizPkg");
+    kotlin.g.b.p.k(paramp2, "wxaPkg");
     try
     {
-      kotlin.g.b.p.h(paramp1, "$this$minBasePkgVersion");
-      int i = new com.tencent.mm.ab.i(a(paramp1, "/meta.json")).optInt("minAndroidBasePkgVersion");
-      int j = a(paramp2);
+      kotlin.g.b.p.k(paramp1, "$this$minBasePkgVersion");
+      int i = new com.tencent.mm.ad.i(com.tencent.mm.plugin.webview.l.a.a(paramp1, "/meta.json")).optInt("minAndroidBasePkgVersion");
+      int j = com.tencent.mm.plugin.webview.l.a.b(paramp2);
       Log.i("MicroMsg.WebCanvasStorageLogic", "isPkgValid minBasePkgVersion=" + i + ", wxaPkgVersionn=" + j);
       if (i <= j)
       {
-        AppMethodBeat.o(224743);
+        AppMethodBeat.o(206903);
         return true;
       }
       Log.w("MicroMsg.WebCanvasStorageLogic", "isWxaPkgSupport minBasePkgVersion check fail");
-      paramp1 = l.IAx;
-      l.LV(59L);
+      paramp1 = l.PuB;
+      l.Tt(59L);
     }
     catch (Exception paramp1)
     {
@@ -221,62 +111,232 @@ public final class m
         Log.e("MicroMsg.WebCanvasStorageLogic", "isWxaPkgSupport ex " + paramp1.getMessage());
       }
     }
-    AppMethodBeat.o(224743);
+    AppMethodBeat.o(206903);
     return false;
   }
   
-  private static MultiProcessMMKV aTI()
+  private static boolean as(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(224730);
-    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)iBW.getValue();
-    AppMethodBeat.o(224730);
+    AppMethodBeat.i(206899);
+    if (!com.tencent.mm.vfs.u.agG(paramString2))
+    {
+      Log.w("MicroMsg.WebCanvasStorageLogic", "isPkgValid file not exit ".concat(String.valueOf(paramString2)));
+      switch (paramString1.hashCode())
+      {
+      }
+      for (;;)
+      {
+        paramString2 = a.PuM;
+        a.t(paramString1, paramInt, 0, 3);
+        AppMethodBeat.o(206899);
+        return false;
+        if (paramString1.equals("wx97b7aebac2183fd2"))
+        {
+          paramString2 = l.PuB;
+          l.Tt(49L);
+          continue;
+          if (paramString1.equals("wxfedb0854e2b1820d"))
+          {
+            paramString2 = l.PuB;
+            l.Tt(42L);
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramString2 = new WxaPkg(paramString2);
+        paramString2.bGl();
+        com.tencent.mm.plugin.appbrand.appcache.p localp = (com.tencent.mm.plugin.appbrand.appcache.p)paramString2;
+        kotlin.g.b.p.k(localp, "$this$minClientVersion");
+        int i = new com.tencent.mm.ad.i(com.tencent.mm.plugin.webview.l.a.a(localp, "/meta.json")).optInt("minAndroidClientVersion");
+        int j = com.tencent.mm.plugin.webview.l.a.b((com.tencent.mm.plugin.appbrand.appcache.p)paramString2);
+        paramString2.close();
+        Log.i("MicroMsg.WebCanvasStorageLogic", "isPkgValid appId=" + paramString1 + ", minClientVersion=0x%x, localClientVersion=0x%x", new Object[] { Integer.valueOf(i), Integer.valueOf(com.tencent.mm.protocal.d.RAD) });
+        if (i <= com.tencent.mm.protocal.d.RAD)
+        {
+          paramString2 = a.PuM;
+          a.t(paramString1, paramInt, j, 0);
+          AppMethodBeat.o(206899);
+          return true;
+        }
+        paramString2 = a.PuM;
+        a.t(paramString1, paramInt, j, 1);
+        Log.w("MicroMsg.WebCanvasStorageLogic", "isPkgValid minClientVersion check fail");
+        paramInt = paramString1.hashCode();
+        switch (paramInt)
+        {
+        }
+      }
+      catch (Exception paramString1)
+      {
+        Log.e("MicroMsg.WebCanvasStorageLogic", "isPkgValid ex " + paramString1.getMessage());
+        continue;
+        if (!paramString1.equals("wxfedb0854e2b1820d")) {
+          continue;
+        }
+        paramString1 = l.PuB;
+        l.Tt(43L);
+        continue;
+      }
+      AppMethodBeat.o(206899);
+      return false;
+      if (paramString1.equals("wx97b7aebac2183fd2"))
+      {
+        paramString1 = l.PuB;
+        l.Tt(50L);
+      }
+    }
+  }
+  
+  private final void bC(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(206907);
+    biu(paramString);
+    if (gPr() == 1)
+    {
+      biw("wx97b7aebac2183fd2");
+      biw(paramString);
+      AppMethodBeat.o(206907);
+      return;
+    }
+    gPx();
+    bD(paramString, paramLong);
+    AppMethodBeat.o(206907);
+  }
+  
+  private static boolean bD(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(206910);
+    long l2 = bcJ().getLong(bio(paramString), 0L);
+    long l1 = System.currentTimeMillis();
+    l2 = Math.abs(l1 - l2);
+    if (((gPr() == 0) && (l2 < paramLong)) || ((gPr() != 0) && (l2 < 10000L)))
+    {
+      Log.d("MicroMsg.WebCanvasStorageLogic", "triggerPreDownloadPrefetchPkg return " + gPr());
+      AppMethodBeat.o(206910);
+      return false;
+    }
+    Log.d("MicroMsg.WebCanvasStorageLogic", "triggerPreDownloadPrefetchPkg ".concat(String.valueOf(paramString)));
+    bcJ().encode(bio(paramString), l1);
+    biv(paramString);
+    AppMethodBeat.o(206910);
+    return true;
+  }
+  
+  private static MultiProcessMMKV bcJ()
+  {
+    AppMethodBeat.i(206891);
+    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)lrB.getValue();
+    AppMethodBeat.o(206891);
     return localMultiProcessMMKV;
   }
   
-  public static String aWD(String paramString)
+  public static String bik(String paramString)
   {
-    AppMethodBeat.i(224726);
-    kotlin.g.b.p.h(paramString, "$this$pkgInfoKey");
+    AppMethodBeat.i(206879);
+    kotlin.g.b.p.k(paramString, "appId");
+    paramString = PuC + '/' + paramString;
+    AppMethodBeat.o(206879);
+    return paramString;
+  }
+  
+  public static String bil(String paramString)
+  {
+    AppMethodBeat.i(206883);
+    kotlin.g.b.p.k(paramString, "$this$pkgInfoKey");
     paramString = "webcanvas_pkg_info_".concat(String.valueOf(paramString));
-    AppMethodBeat.o(224726);
+    AppMethodBeat.o(206883);
     return paramString;
   }
   
-  public static String aWE(String paramString)
+  public static String bim(String paramString)
   {
-    AppMethodBeat.i(224727);
-    kotlin.g.b.p.h(paramString, "$this$lastUsePathKey");
+    AppMethodBeat.i(206885);
+    kotlin.g.b.p.k(paramString, "$this$lastUsePathKey");
     paramString = "webcanvas_last_use_pkg_path_".concat(String.valueOf(paramString));
-    AppMethodBeat.o(224727);
+    AppMethodBeat.o(206885);
     return paramString;
   }
   
-  public static String aWF(String paramString)
+  public static String bin(String paramString)
   {
-    AppMethodBeat.i(224728);
-    kotlin.g.b.p.h(paramString, "$this$lastUseTimeKey");
+    AppMethodBeat.i(206887);
+    kotlin.g.b.p.k(paramString, "$this$lastUseTimeKey");
     paramString = "webcanvas_last_use_pkg_time_".concat(String.valueOf(paramString));
-    AppMethodBeat.o(224728);
+    AppMethodBeat.o(206887);
     return paramString;
   }
   
-  private static String aWG(String paramString)
+  private static String bio(String paramString)
   {
-    AppMethodBeat.i(224729);
-    kotlin.g.b.p.h(paramString, "$this$lastDownloadTime");
+    AppMethodBeat.i(206889);
+    kotlin.g.b.p.k(paramString, "$this$lastDownloadTime");
     paramString = paramString + "-lastDownLoawnTime";
-    AppMethodBeat.o(224729);
+    AppMethodBeat.o(206889);
     return paramString;
   }
   
-  public static tu aWJ(String paramString)
+  private static String biq(String paramString)
+  {
+    AppMethodBeat.i(206897);
+    kotlin.g.b.p.k(paramString, "appId");
+    for (;;)
+    {
+      try
+      {
+        bh localbh = ((v)com.tencent.mm.kernel.h.ae(v.class)).H(paramString, 2, 0);
+        StringBuilder localStringBuilder = new StringBuilder("getPreviewPkgPath appId=").append(paramString).append(", pkgType=2, md5=");
+        if (localbh != null)
+        {
+          paramString = localbh.field_versionMd5;
+          localStringBuilder = localStringBuilder.append(paramString).append(" download version= ");
+          if (localbh == null) {
+            break label185;
+          }
+          paramString = Integer.valueOf(localbh.field_version);
+          localStringBuilder = localStringBuilder.append(paramString).append(" path=");
+          if (localbh == null) {
+            break label190;
+          }
+          paramString = localbh.field_pkgPath;
+          Log.i("MicroMsg.WebCanvasStorageLogic", paramString);
+          if (localbh != null)
+          {
+            paramString = localbh.field_pkgPath;
+            AppMethodBeat.o(206897);
+            return paramString;
+          }
+          AppMethodBeat.o(206897);
+          return null;
+        }
+      }
+      catch (Exception paramString)
+      {
+        Log.w("MicroMsg.WebCanvasStorageLogic", "getPreviewPkgPath ex " + paramString.getMessage());
+        AppMethodBeat.o(206897);
+        return null;
+      }
+      paramString = null;
+      continue;
+      label185:
+      paramString = null;
+      continue;
+      label190:
+      paramString = null;
+    }
+  }
+  
+  public static tw bis(String paramString)
   {
     int j = 1;
-    AppMethodBeat.i(224741);
-    kotlin.g.b.p.h(paramString, "appId");
-    Object localObject = aTI();
-    kotlin.g.b.p.g(localObject, "mmkv");
-    paramString = aWD(paramString);
+    AppMethodBeat.i(206901);
+    kotlin.g.b.p.k(paramString, "appId");
+    Object localObject = bcJ();
+    kotlin.g.b.p.j(localObject, "mmkv");
+    paramString = bil(paramString);
     int i;
     if (((MultiProcessMMKV)localObject).containsKey(paramString))
     {
@@ -300,11 +360,11 @@ public final class m
     {
       try
       {
-        localObject = tu.class.newInstance();
-        ((com.tencent.mm.bw.a)localObject).parseFrom(paramString);
-        paramString = (com.tencent.mm.bw.a)localObject;
-        paramString = (tu)paramString;
-        AppMethodBeat.o(224741);
+        localObject = tw.class.newInstance();
+        ((com.tencent.mm.cd.a)localObject).parseFrom(paramString);
+        paramString = (com.tencent.mm.cd.a)localObject;
+        paramString = (tw)paramString;
+        AppMethodBeat.o(206901);
         return paramString;
       }
       catch (Exception paramString)
@@ -321,220 +381,151 @@ public final class m
     }
   }
   
-  private void aWL(String paramString)
+  private static void biv(String paramString)
   {
-    AppMethodBeat.i(224746);
-    kotlin.g.b.p.h(paramString, "appId");
-    fWP();
-    if (!fWI().contains(paramString))
-    {
-      fWI().add(paramString);
-      fWR();
-    }
-    aWM(paramString);
-    if (fWJ() == 1)
-    {
-      aWO("wx97b7aebac2183fd2");
-      aWO(paramString);
-    }
-    AppMethodBeat.o(224746);
+    AppMethodBeat.i(206916);
+    kotlin.g.b.p.k(paramString, "appId");
+    ((com.tencent.mm.plugin.appbrand.service.u)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.appbrand.service.u.class)).a(paramString, 0, (u.b)new n(paramString), (u.a)new o(paramString));
+    AppMethodBeat.o(206916);
   }
   
-  private static boolean aWM(String paramString)
+  private static void biw(String paramString)
   {
-    AppMethodBeat.i(224748);
-    long l2 = aTI().getLong(aWG(paramString), 0L);
-    long l1 = System.currentTimeMillis();
-    l2 = Math.abs(l1 - l2);
-    if (((fWJ() == 0) && (l2 < fWL())) || ((fWJ() != 0) && (l2 < 10000L)))
+    AppMethodBeat.i(206917);
+    ((com.tencent.mm.plugin.appbrand.service.u)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.appbrand.service.u.class)).a(paramString, 2, (u.b)new b(paramString), (u.a)new c(paramString));
+    AppMethodBeat.o(206917);
+  }
+  
+  public static Object d(final com.tencent.mm.plugin.ax.a parama, final String paramString, kotlin.d.d<? super Boolean> paramd)
+  {
+    AppMethodBeat.i(206906);
+    kotlin.d.h localh = new kotlin.d.h(kotlin.d.a.b.k(paramd));
+    Object localObject1 = (kotlin.d.d)localh;
+    Object localObject2 = new e((kotlin.d.d)localObject1, paramString, parama);
+    PuL.bC(paramString, ((Number)PuJ.getValue()).longValue());
+    bom localbom;
+    int i;
+    String str;
+    if (com.tencent.mm.vfs.u.agG(PuL.bip(paramString)))
     {
-      Log.d("MicroMsg.WebCanvasStorageLogic", "triggerPreDownloadPrefetchPkg return " + fWJ());
-      AppMethodBeat.o(224748);
-      return false;
-    }
-    Log.d("MicroMsg.WebCanvasStorageLogic", "triggerPreDownloadPrefetchPkg ".concat(String.valueOf(paramString)));
-    aTI().encode(aWG(paramString), l1);
-    aWN(paramString);
-    AppMethodBeat.o(224748);
-    return true;
-  }
-  
-  private static void aWN(String paramString)
-  {
-    AppMethodBeat.i(224752);
-    kotlin.g.b.p.h(paramString, "appId");
-    ((u)com.tencent.mm.kernel.g.af(u.class)).a(paramString, 0, (u.b)new m.m(paramString), (u.a)new m.n(paramString));
-    AppMethodBeat.o(224752);
-  }
-  
-  private static void aWO(String paramString)
-  {
-    AppMethodBeat.i(224753);
-    ((u)com.tencent.mm.kernel.g.af(u.class)).a(paramString, 2, (u.b)new m.a(paramString), (u.a)new m.b(paramString));
-    AppMethodBeat.o(224753);
-  }
-  
-  private static boolean al(String paramString1, String paramString2, int paramInt)
-  {
-    AppMethodBeat.i(224739);
-    if (!s.YS(paramString2))
-    {
-      Log.w("MicroMsg.WebCanvasStorageLogic", "isPkgValid file not exit ".concat(String.valueOf(paramString2)));
-      switch (paramString1.hashCode())
-      {
+      localObject2 = com.tencent.mm.plugin.report.service.h.IzE;
+      localbom = parama.PwI;
+      i = parama.kqZ;
+      str = parama.PwJ.SZA;
+      paramString = str;
+      if (str == null) {
+        paramString = "";
       }
-      for (;;)
-      {
-        com.tencent.mm.plugin.report.service.h.CyF.a(20780, new Object[] { paramString1, Integer.valueOf(paramInt), Integer.valueOf(0), Integer.valueOf(3) });
-        AppMethodBeat.o(224739);
-        return false;
-        if (paramString1.equals("wx97b7aebac2183fd2"))
-        {
-          paramString2 = l.IAx;
-          l.LV(49L);
-          continue;
-          if (paramString1.equals("wxfedb0854e2b1820d"))
-          {
-            paramString2 = l.IAx;
-            l.LV(42L);
-          }
-        }
-      }
+      ((com.tencent.mm.plugin.report.service.h)localObject2).a(21074, new Object[] { localbom, Integer.valueOf(i), Integer.valueOf(1), "", paramString, Integer.valueOf(1), Integer.valueOf(parama.kqZ) });
+      parama = Boolean.TRUE;
+      paramString = Result.Companion;
+      ((kotlin.d.d)localObject1).resumeWith(Result.constructor-impl(parama));
     }
     for (;;)
     {
-      try
-      {
-        paramString2 = new WxaPkg(paramString2);
-        paramString2.bvf();
-        com.tencent.mm.plugin.appbrand.appcache.p localp = (com.tencent.mm.plugin.appbrand.appcache.p)paramString2;
-        kotlin.g.b.p.h(localp, "$this$minClientVersion");
-        int i = new com.tencent.mm.ab.i(a(localp, "/meta.json")).optInt("minAndroidClientVersion");
-        int j = a((com.tencent.mm.plugin.appbrand.appcache.p)paramString2);
-        paramString2.close();
-        Log.i("MicroMsg.WebCanvasStorageLogic", "isPkgValid appId=" + paramString1 + ", minClientVersion=0x%x, localClientVersion=0x%x", new Object[] { Integer.valueOf(i), Integer.valueOf(com.tencent.mm.protocal.d.KyO) });
-        if (i <= com.tencent.mm.protocal.d.KyO)
-        {
-          com.tencent.mm.plugin.report.service.h.CyF.a(20780, new Object[] { paramString1, Integer.valueOf(paramInt), Integer.valueOf(j), Integer.valueOf(0) });
-          AppMethodBeat.o(224739);
-          return true;
-        }
-        com.tencent.mm.plugin.report.service.h.CyF.a(20780, new Object[] { paramString1, Integer.valueOf(paramInt), Integer.valueOf(j), Integer.valueOf(1) });
-        Log.w("MicroMsg.WebCanvasStorageLogic", "isPkgValid minClientVersion check fail");
-        paramInt = paramString1.hashCode();
-        switch (paramInt)
-        {
-        }
+      parama = localh.iBS();
+      if (parama == kotlin.d.a.a.aaAA) {
+        kotlin.g.b.p.k(paramd, "frame");
       }
-      catch (Exception paramString1)
-      {
-        Log.e("MicroMsg.WebCanvasStorageLogic", "isPkgValid ex " + paramString1.getMessage());
-        continue;
-        if (!paramString1.equals("wxfedb0854e2b1820d")) {
-          continue;
-        }
-        paramString1 = l.IAx;
-        l.LV(43L);
-        continue;
+      AppMethodBeat.o(206906);
+      return parama;
+      Log.i("MicroMsg.WebCanvasStorageLogic", "fetchBizPrefetchPkg pkg not exist, wait for download complete. appId=".concat(String.valueOf(paramString)));
+      localObject1 = com.tencent.mm.plugin.report.service.h.IzE;
+      localbom = parama.PwI;
+      i = parama.kqZ;
+      str = parama.PwJ.SZA;
+      paramString = str;
+      if (str == null) {
+        paramString = "";
       }
-      AppMethodBeat.o(224739);
-      return false;
-      if (paramString1.equals("wx97b7aebac2183fd2"))
-      {
-        paramString1 = l.IAx;
-        l.LV(50L);
-      }
+      ((com.tencent.mm.plugin.report.service.h)localObject1).a(21074, new Object[] { localbom, Integer.valueOf(i), Integer.valueOf(1), "", paramString, Integer.valueOf(3), Integer.valueOf(parama.kqZ) });
+      ((e)localObject2).invoke();
     }
   }
   
-  public static String fWG()
+  public static String gPp()
   {
-    return IAy;
-  }
-  
-  public static String fWH()
-  {
-    AppMethodBeat.i(224724);
+    AppMethodBeat.i(206877);
     Object localObject = new StringBuilder();
-    e locale = com.tencent.mm.kernel.g.aAh();
-    kotlin.g.b.p.g(locale, "MMKernel.storage()");
-    localObject = locale.getAccPath() + "webcanvascache/";
-    if (!s.YS((String)localObject)) {
-      s.boN((String)localObject);
+    com.tencent.mm.kernel.f localf = com.tencent.mm.kernel.h.aHG();
+    kotlin.g.b.p.j(localf, "MMKernel.storage()");
+    localObject = localf.getAccPath() + "webcanvascache/";
+    if (!com.tencent.mm.vfs.u.agG((String)localObject)) {
+      com.tencent.mm.vfs.u.bBD((String)localObject);
     }
-    AppMethodBeat.o(224724);
+    AppMethodBeat.o(206877);
     return localObject;
   }
   
-  public static LinkedList<String> fWI()
+  public static LinkedList<String> gPq()
   {
-    AppMethodBeat.i(224725);
-    LinkedList localLinkedList = (LinkedList)IAz.getValue();
-    AppMethodBeat.o(224725);
+    AppMethodBeat.i(206881);
+    LinkedList localLinkedList = (LinkedList)PuD.getValue();
+    AppMethodBeat.o(206881);
     return localLinkedList;
   }
   
-  public static int fWJ()
+  public static int gPr()
   {
-    AppMethodBeat.i(224731);
-    int i = ((Number)IAA.getValue()).intValue();
-    AppMethodBeat.o(224731);
+    AppMethodBeat.i(206892);
+    int i = ((Number)PuE.getValue()).intValue();
+    AppMethodBeat.o(206892);
     return i;
   }
   
-  private static boolean fWK()
+  private static boolean gPs()
   {
-    AppMethodBeat.i(224732);
-    boolean bool = ((Boolean)IAB.getValue()).booleanValue();
-    AppMethodBeat.o(224732);
+    AppMethodBeat.i(206893);
+    boolean bool = ((Boolean)PuF.getValue()).booleanValue();
+    AppMethodBeat.o(206893);
     return bool;
   }
   
-  private static long fWL()
+  private static long gPt()
   {
-    AppMethodBeat.i(224733);
-    long l = ((Number)IAD.getValue()).longValue();
-    AppMethodBeat.o(224733);
+    AppMethodBeat.i(206894);
+    long l = ((Number)PuH.getValue()).longValue();
+    AppMethodBeat.o(206894);
     return l;
   }
   
-  private static long fWM()
+  private static long gPu()
   {
-    AppMethodBeat.i(224734);
-    long l = ((Number)IAE.getValue()).longValue();
-    AppMethodBeat.o(224734);
+    AppMethodBeat.i(206895);
+    long l = ((Number)PuI.getValue()).longValue();
+    AppMethodBeat.o(206895);
     return l;
   }
   
-  public static void fWN()
+  public static void gPv()
   {
-    AppMethodBeat.i(224740);
-    IAF.alive();
-    AppMethodBeat.o(224740);
+    AppMethodBeat.i(206900);
+    PuK.alive();
+    AppMethodBeat.o(206900);
   }
   
   /* Error */
-  private final LinkedList<String> fWQ()
+  private final LinkedList<String> gPy()
   {
     // Byte code:
     //   0: iconst_1
     //   1: istore_2
     //   2: aload_0
     //   3: monitorenter
-    //   4: ldc_w 781
-    //   7: invokestatic 134	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: invokestatic 569	com/tencent/mm/plugin/webcanvas/m:aTI	()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;
+    //   4: ldc_w 808
+    //   7: invokestatic 174	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   10: invokestatic 268	com/tencent/mm/plugin/webcanvas/m:bcJ	()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;
     //   13: astore_3
     //   14: aload_3
-    //   15: ldc_w 570
-    //   18: invokestatic 425	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   15: ldc_w 627
+    //   18: invokestatic 630	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
     //   21: aload_3
-    //   22: ldc_w 783
-    //   25: invokevirtual 575	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:containsKey	(Ljava/lang/String;)Z
+    //   22: ldc_w 810
+    //   25: invokevirtual 633	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:containsKey	(Ljava/lang/String;)Z
     //   28: ifeq +153 -> 181
     //   31: aload_3
-    //   32: ldc_w 783
-    //   35: invokevirtual 579	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:decodeBytes	(Ljava/lang/String;)[B
+    //   32: ldc_w 810
+    //   35: invokevirtual 637	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:decodeBytes	(Ljava/lang/String;)[B
     //   38: astore_3
     //   39: aload_3
     //   40: ifnull +141 -> 181
@@ -551,45 +542,45 @@ public final class m
     //   57: istore_1
     //   58: iload_1
     //   59: ifeq +122 -> 181
-    //   62: ldc_w 785
-    //   65: invokevirtual 586	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   62: ldc_w 812
+    //   65: invokevirtual 642	java/lang/Class:newInstance	()Ljava/lang/Object;
     //   68: astore 4
     //   70: aload 4
-    //   72: checkcast 588	com/tencent/mm/bw/a
+    //   72: checkcast 644	com/tencent/mm/cd/a
     //   75: aload_3
-    //   76: invokevirtual 592	com/tencent/mm/bw/a:parseFrom	([B)Lcom/tencent/mm/bw/a;
+    //   76: invokevirtual 648	com/tencent/mm/cd/a:parseFrom	([B)Lcom/tencent/mm/cd/a;
     //   79: pop
     //   80: aload 4
-    //   82: checkcast 588	com/tencent/mm/bw/a
+    //   82: checkcast 644	com/tencent/mm/cd/a
     //   85: astore_3
     //   86: aload_3
-    //   87: checkcast 785	com/tencent/mm/protocal/protobuf/deg
+    //   87: checkcast 812	com/tencent/mm/protocal/protobuf/dnw
     //   90: astore_3
     //   91: aload_3
     //   92: ifnull +17 -> 109
     //   95: aload_3
-    //   96: getfield 788	com/tencent/mm/protocal/protobuf/deg:MJp	Ljava/util/LinkedList;
+    //   96: getfield 815	com/tencent/mm/protocal/protobuf/dnw:TVe	Ljava/util/LinkedList;
     //   99: astore 4
     //   101: aload 4
     //   103: astore_3
     //   104: aload 4
     //   106: ifnonnull +11 -> 117
-    //   109: new 609	java/util/LinkedList
+    //   109: new 788	java/util/LinkedList
     //   112: dup
-    //   113: invokespecial 789	java/util/LinkedList:<init>	()V
+    //   113: invokespecial 816	java/util/LinkedList:<init>	()V
     //   116: astore_3
-    //   117: ldc_w 384
-    //   120: new 141	java/lang/StringBuilder
+    //   117: ldc_w 291
+    //   120: new 181	java/lang/StringBuilder
     //   123: dup
-    //   124: ldc_w 791
-    //   127: invokespecial 465	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   124: ldc_w 818
+    //   127: invokespecial 401	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   130: aload_3
-    //   131: invokevirtual 794	java/util/LinkedList:size	()I
-    //   134: invokevirtual 468	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   137: invokevirtual 156	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   140: invokestatic 658	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   143: ldc_w 781
-    //   146: invokestatic 230	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   131: invokevirtual 821	java/util/LinkedList:size	()I
+    //   134: invokevirtual 404	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   137: invokevirtual 196	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   140: invokestatic 309	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   143: ldc_w 808
+    //   146: invokestatic 260	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   149: aload_0
     //   150: monitorexit
     //   151: aload_3
@@ -601,13 +592,13 @@ public final class m
     //   159: istore_1
     //   160: goto -102 -> 58
     //   163: astore_3
-    //   164: ldc_w 594
+    //   164: ldc_w 650
     //   167: aload_3
-    //   168: checkcast 406	java/lang/Throwable
-    //   171: ldc_w 596
+    //   168: checkcast 652	java/lang/Throwable
+    //   171: ldc_w 654
     //   174: iconst_0
     //   175: anewarray 4	java/lang/Object
-    //   178: invokestatic 600	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   178: invokestatic 658	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   181: aconst_null
     //   182: astore_3
     //   183: goto -97 -> 86
@@ -639,25 +630,25 @@ public final class m
     //   164	181	186	finally
   }
   
-  private final void fWR()
+  private final void gPz()
   {
     try
     {
-      AppMethodBeat.i(224750);
+      AppMethodBeat.i(206914);
       try
       {
-        MultiProcessMMKV localMultiProcessMMKV = aTI();
-        deg localdeg = new deg();
-        localdeg.MJp = fWI();
-        localMultiProcessMMKV.encode("KPrefetcherBizAppIds", localdeg.toByteArray());
-        AppMethodBeat.o(224750);
+        MultiProcessMMKV localMultiProcessMMKV = bcJ();
+        dnw localdnw = new dnw();
+        localdnw.TVe = gPq();
+        localMultiProcessMMKV.encode("KPrefetcherBizAppIds", localdnw.toByteArray());
+        AppMethodBeat.o(206914);
       }
       catch (Exception localException)
       {
         for (;;)
         {
           Log.e("MicroMsg.WebCanvasStorageLogic", "saveBizAppIds ex " + localException.getMessage());
-          AppMethodBeat.o(224750);
+          AppMethodBeat.o(206914);
         }
       }
       return;
@@ -665,149 +656,598 @@ public final class m
     finally {}
   }
   
-  public static void yK(boolean paramBoolean)
+  public final String bip(String paramString)
   {
-    AppMethodBeat.i(224754);
-    long l2 = aTI().decodeLong("webcanvas_last_clear_pkg_time", 0L);
-    long l1 = System.currentTimeMillis();
-    l2 = Math.abs(l1 - l2);
-    if ((!paramBoolean) && (l2 < 86400000L))
-    {
-      Log.d("MicroMsg.WebCanvasStorageLogic", "clearInvalidPkg delta ".concat(String.valueOf(l2)));
-      AppMethodBeat.o(224754);
-      return;
-    }
-    aTI().encode("webcanvas_last_clear_pkg_time", l1);
-    com.tencent.f.h.RTc.o((Runnable)m.c.IAH, 10000L);
-    AppMethodBeat.o(224754);
-  }
-  
-  public final String aWH(String paramString)
-  {
-    AppMethodBeat.i(224735);
-    kotlin.g.b.p.h(paramString, "appId");
+    AppMethodBeat.i(206896);
+    kotlin.g.b.p.k(paramString, "appId");
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(224735);
+      AppMethodBeat.o(206896);
       return null;
     }
-    tu localtu = aWJ(paramString);
-    if (localtu == null)
+    tw localtw = bis(paramString);
+    if (localtw == null)
     {
       Log.i("MicroMsg.WebCanvasStorageLogic", "geReleasePkgPath pkgInfo is null");
-      AppMethodBeat.o(224735);
+      AppMethodBeat.o(206896);
       return null;
     }
-    if (!s.YS(localtu.path))
+    if (!com.tencent.mm.vfs.u.agG(localtw.path))
     {
-      Log.i("MicroMsg.WebCanvasStorageLogic", "geReleasePkgPath pkgInfo " + localtu.path + " not exist");
-      AppMethodBeat.o(224735);
+      Log.i("MicroMsg.WebCanvasStorageLogic", "geReleasePkgPath pkgInfo " + localtw.path + " not exist");
+      AppMethodBeat.o(206896);
       return null;
     }
-    Log.i("MicroMsg.WebCanvasStorageLogic", "geReleasePkgPath appId=" + paramString + ", md5=" + localtu.md5 + " download version= " + localtu.version + " path=" + localtu.path);
-    aTI().encode(aWE(paramString), new o(localtu.path).getAbsolutePath());
-    aTI().encode(aWF(paramString), System.currentTimeMillis());
-    paramString = localtu.path;
-    AppMethodBeat.o(224735);
+    Log.i("MicroMsg.WebCanvasStorageLogic", "geReleasePkgPath appId=" + paramString + ", md5=" + localtw.md5 + " download version= " + localtw.version + " path=" + localtw.path);
+    bcJ().encode(bim(paramString), new com.tencent.mm.vfs.q(localtw.path).bOF());
+    bcJ().encode(bin(paramString), System.currentTimeMillis());
+    paramString = localtw.path;
+    AppMethodBeat.o(206896);
     return paramString;
   }
   
-  public final int aWK(String paramString)
+  public final int bit(String paramString)
   {
-    AppMethodBeat.i(224742);
-    kotlin.g.b.p.h(paramString, "appId");
-    paramString = aWJ(paramString);
+    AppMethodBeat.i(206902);
+    kotlin.g.b.p.k(paramString, "appId");
+    paramString = bis(paramString);
     if (paramString != null)
     {
       int i = paramString.version;
-      AppMethodBeat.o(224742);
+      AppMethodBeat.o(206902);
       return i;
     }
-    AppMethodBeat.o(224742);
+    AppMethodBeat.o(206902);
     return 0;
   }
   
-  public final void fWO()
+  public final void biu(String paramString)
   {
-    AppMethodBeat.i(224744);
-    if (System.currentTimeMillis() - pmU < fWM())
+    AppMethodBeat.i(206912);
+    kotlin.g.b.p.k(paramString, "appId");
+    if (!gPq().contains(paramString))
     {
-      AppMethodBeat.o(224744);
-      return;
+      gPq().add(paramString);
+      gPz();
     }
-    pmU = System.currentTimeMillis();
-    if (!fWK())
-    {
-      AppMethodBeat.o(224744);
-      return;
-    }
-    l locall = l.IAx;
-    l.LV(40L);
-    aWN("wxfedb0854e2b1820d");
-    aWN("wxf337cbaa27790d8e");
-    aWL("wxa06c02b5c00ff39b");
-    if (fWJ() == 1)
-    {
-      aWO("wxfedb0854e2b1820d");
-      aWO("wxf337cbaa27790d8e");
-    }
-    AppMethodBeat.o(224744);
+    AppMethodBeat.o(206912);
   }
   
-  public final void fWP()
+  public final void gPA()
   {
-    AppMethodBeat.i(224747);
-    if (aWM("wx97b7aebac2183fd2"))
+    AppMethodBeat.i(206915);
+    if (!gPs())
     {
-      l locall = l.IAx;
-      l.LV(54L);
-    }
-    AppMethodBeat.o(224747);
-  }
-  
-  public final void fWS()
-  {
-    AppMethodBeat.i(224751);
-    if (!fWK())
-    {
-      AppMethodBeat.o(224751);
+      AppMethodBeat.o(206915);
       return;
     }
-    long l1 = aTI().getLong("webcanvas_last_download_pkg_by_get_data_time", 0L);
+    long l1 = bcJ().getLong("webcanvas_last_download_pkg_by_get_data_time", 0L);
     long l2 = System.currentTimeMillis();
-    if (Math.abs(l2 - l1) < ((Number)IAC.getValue()).longValue())
+    if (Math.abs(l2 - l1) < ((Number)PuG.getValue()).longValue())
     {
-      AppMethodBeat.o(224751);
+      AppMethodBeat.o(206915);
       return;
     }
-    l locall = l.IAx;
-    l.LV(45L);
-    aTI().encode("webcanvas_last_download_pkg_by_get_data_time", l2);
-    fWO();
-    AppMethodBeat.o(224751);
+    l locall = l.PuB;
+    l.Tt(45L);
+    bcJ().encode("webcanvas_last_download_pkg_by_get_data_time", l2);
+    gPw();
+    AppMethodBeat.o(206915);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"checkDownloadResult", "", "invoke", "com/tencent/mm/plugin/webcanvas/WebCanvasStorageLogic$fetchBizPrefetchPkg$2$1"})
+  public final void gPw()
+  {
+    AppMethodBeat.i(206905);
+    if (System.currentTimeMillis() - svS < gPu())
+    {
+      AppMethodBeat.o(206905);
+      return;
+    }
+    svS = System.currentTimeMillis();
+    if (!gPs())
+    {
+      AppMethodBeat.o(206905);
+      return;
+    }
+    l locall = l.PuB;
+    l.Tt(40L);
+    biv("wxfedb0854e2b1820d");
+    biv("wxf337cbaa27790d8e");
+    a(this, "wxa06c02b5c00ff39b");
+    if (gPr() == 1)
+    {
+      biw("wxfedb0854e2b1820d");
+      biw("wxf337cbaa27790d8e");
+    }
+    AppMethodBeat.o(206905);
+  }
+  
+  public final void gPx()
+  {
+    AppMethodBeat.i(206909);
+    if (b(this, "wx97b7aebac2183fd2"))
+    {
+      l locall = l.PuB;
+      l.Tt(54L);
+    }
+    AppMethodBeat.o(206909);
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasStorageLogic$PkgDownloadReporter;", "", "()V", "readPkgVersionAndReport", "", "appId", "", "pkgPath", "downloadType", "", "reportPkgDownload", "wxaVersion", "pkgVersion", "downloadStatus", "DownloadStatus", "DownloadType", "webview-sdk_release"})
+  public static final class a
+  {
+    public static final a PuM;
+    
+    static
+    {
+      AppMethodBeat.i(205312);
+      PuM = new a();
+      AppMethodBeat.o(205312);
+    }
+    
+    public static void au(final String paramString1, String paramString2, final int paramInt)
+    {
+      AppMethodBeat.i(205310);
+      kotlin.g.b.p.k(paramString1, "appId");
+      kotlin.g.b.p.k(paramString2, "pkgPath");
+      com.tencent.e.h.ZvG.be((Runnable)new a(paramString2, paramString1, paramInt));
+      AppMethodBeat.o(205310);
+    }
+    
+    public static void e(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      AppMethodBeat.i(205307);
+      kotlin.g.b.p.k(paramString, "appId");
+      com.tencent.mm.plugin.report.service.h.IzE.a(20780, new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+      AppMethodBeat.o(205307);
+    }
+    
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+    static final class a
+      implements Runnable
+    {
+      a(String paramString1, String paramString2, int paramInt) {}
+      
+      public final void run()
+      {
+        AppMethodBeat.i(205401);
+        try
+        {
+          if (com.tencent.mm.vfs.u.agG(this.PuN))
+          {
+            localObject = (com.tencent.mm.plugin.appbrand.appcache.p)new WxaPkg(this.PuN);
+            ((com.tencent.mm.plugin.appbrand.appcache.p)localObject).bGl();
+            m.a locala = m.a.PuM;
+            m.a.e(paramString1, 0, com.tencent.mm.plugin.webview.l.a.b((com.tencent.mm.plugin.appbrand.appcache.p)localObject), 0, paramInt);
+            AppMethodBeat.o(205401);
+            return;
+          }
+          Object localObject = m.a.PuM;
+          m.a.e(paramString1, 0, 0, 3, paramInt);
+          AppMethodBeat.o(205401);
+          return;
+        }
+        catch (Exception localException)
+        {
+          Log.printErrStackTrace("MicroMsg.WebCanvasStorageLogic", (Throwable)localException, "readPkgVersionAndReport exception", new Object[0]);
+          AppMethodBeat.o(205401);
+        }
+      }
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "record", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgManifestRecord;", "filePath", "", "invoke"})
+  static final class b
+    implements u.b
+  {
+    b(String paramString) {}
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "errCode", "", "errMsg", "", "invoke"})
+  static final class c
+    implements u.a
+  {
+    c(String paramString) {}
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class d
-    extends q
+    implements Runnable
+  {
+    public static final d PuP;
+    
+    static
+    {
+      AppMethodBeat.i(205842);
+      PuP = new d();
+      AppMethodBeat.o(205842);
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(205841);
+      long l1 = System.currentTimeMillis();
+      Object localObject1 = j.ag(new String[] { "wxf337cbaa27790d8e", "wxfedb0854e2b1820d", "wx97b7aebac2183fd2" });
+      Object localObject2 = m.PuL;
+      ((ArrayList)localObject1).addAll((Collection)m.gPq());
+      localObject1 = ((Iterable)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (String)((Iterator)localObject1).next();
+        Log.v("MicroMsg.WebCanvasStorageLogic", "clearInvalidPkg appId: ".concat(String.valueOf(localObject2)));
+        Object localObject3 = m.PuL;
+        Object localObject4 = new com.tencent.mm.vfs.q(m.bik((String)localObject2));
+        localObject3 = m.PuL;
+        localObject3 = m.gPB();
+        Object localObject5 = m.PuL;
+        localObject3 = ((MultiProcessMMKV)localObject3).decodeString(m.bim((String)localObject2), "");
+        localObject5 = m.PuL;
+        localObject5 = m.gPB();
+        Object localObject6 = m.PuL;
+        long l2 = ((MultiProcessMMKV)localObject5).decodeLong(m.bin((String)localObject2), 0L);
+        localObject5 = m.PuL.bip((String)localObject2);
+        if ((((com.tencent.mm.vfs.q)localObject4).ifE()) && (((com.tencent.mm.vfs.q)localObject4).isDirectory()))
+        {
+          localObject4 = ((com.tencent.mm.vfs.q)localObject4).ifJ();
+          if (localObject4 != null)
+          {
+            int j = localObject4.length;
+            int i = 0;
+            label219:
+            if (i < j)
+            {
+              localObject6 = localObject4[i];
+              kotlin.g.b.p.j(localObject6, "file");
+              Log.v("MicroMsg.WebCanvasStorageLogic", "clearInvalidPkg file: %s, newestPath: %s, lastUsePath: %s", new Object[] { ((com.tencent.mm.vfs.q)localObject6).bOF(), localObject5, localObject3 });
+              if ((Util.isEqual(((com.tencent.mm.vfs.q)localObject6).bOF(), (String)localObject3)) || (Util.isEqual(((com.tencent.mm.vfs.q)localObject6).bOF(), (String)localObject5))) {
+                break label351;
+              }
+              ((com.tencent.mm.vfs.q)localObject6).cFq();
+              Log.i("MicroMsg.WebCanvasStorageLogic", "clearInvalidPkg appId=" + (String)localObject2 + ", path=" + ((com.tencent.mm.vfs.q)localObject6).bOF());
+              localObject6 = l.PuB;
+              l.Tt(120L);
+            }
+            for (;;)
+            {
+              i += 1;
+              break label219;
+              break;
+              label351:
+              m localm = m.PuL;
+              if ((m.gPq().contains(localObject2)) && ((kotlin.g.b.p.h("wxa06c02b5c00ff39b", localObject2) ^ true)) && (l2 != 0L) && (l1 - l2 > 2592000000L))
+              {
+                ((com.tencent.mm.vfs.q)localObject6).cFq();
+                Log.i("MicroMsg.WebCanvasStorageLogic", "clearInvalidPkg on timeout appId=" + (String)localObject2 + ", path=" + ((com.tencent.mm.vfs.q)localObject6).bOF() + '}');
+                localObject6 = l.PuB;
+                l.Tt(121L);
+              }
+            }
+          }
+        }
+      }
+      AppMethodBeat.o(205841);
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"checkDownloadResult", "", "invoke", "com/tencent/mm/plugin/webcanvas/WebCanvasStorageLogic$fetchBizPrefetchPkg$2$1"})
+  static final class e
+    extends kotlin.g.b.q
     implements kotlin.g.a.a<x>
   {
-    d(kotlin.d.d paramd, String paramString1, com.tencent.mm.plugin.ad.a parama, String paramString2)
+    e(kotlin.d.d paramd, String paramString, com.tencent.mm.plugin.ax.a parama)
     {
       super();
     }
     
     public final void invoke()
     {
-      AppMethodBeat.i(224705);
-      ((u)com.tencent.mm.kernel.g.af(u.class)).a(paramString1, 0, (u.b)new u.b() {}, (u.a)new u.a() {});
-      AppMethodBeat.o(224705);
+      AppMethodBeat.i(206802);
+      ((com.tencent.mm.plugin.appbrand.service.u)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.appbrand.service.u.class)).a(paramString, 0, (u.b)new u.b() {}, (u.a)new u.a() {});
+      AppMethodBeat.o(206802);
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
+  static final class f
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<MultiProcessMMKV>
+  {
+    public static final f PuR;
+    
+    static
+    {
+      AppMethodBeat.i(209085);
+      PuR = new f();
+      AppMethodBeat.o(209085);
+    }
+    
+    f()
+    {
+      super();
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class g
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<Boolean>
+  {
+    public static final g PuS;
+    
+    static
+    {
+      AppMethodBeat.i(210146);
+      PuS = new g();
+      AppMethodBeat.o(210146);
+    }
+    
+    g()
+    {
+      super();
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/webcanvas/WebCanvasStorageLogic$pkgUpdateEventListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/WxaPkgDownloadCompleteNotifyEvent;", "callback", "", "event", "webview-sdk_release"})
+  public static final class h
+    extends IListener<acm>
+  {
+    private static boolean a(acm paramacm)
+    {
+      AppMethodBeat.i(207037);
+      kotlin.g.b.p.k(paramacm, "event");
+      Log.v("MicroMsg.WebCanvasStorageLogic", "pkgUpdateEventListener appId=%s", new Object[] { paramacm.gcM.appId });
+      if (paramacm.gcM.cBI != 0)
+      {
+        AppMethodBeat.o(207037);
+        return true;
+      }
+      str1 = paramacm.gcM.appId;
+      Object localObject;
+      if (((kotlin.g.b.p.h("wxf337cbaa27790d8e", str1) ^ true)) && ((kotlin.g.b.p.h("wxfedb0854e2b1820d", str1) ^ true)) && ((kotlin.g.b.p.h("wx97b7aebac2183fd2", str1) ^ true)))
+      {
+        localObject = m.PuL;
+        if (!m.gPq().contains(str1))
+        {
+          AppMethodBeat.o(207037);
+          return false;
+        }
+      }
+      Log.i("MicroMsg.WebCanvasStorageLogic", "pkgUpdateEventListener appId=%s, version=%d, md5=%s", new Object[] { str1, Integer.valueOf(paramacm.gcM.version), paramacm.gcM.md5 });
+      label165:
+      boolean bool;
+      if (str1 == null)
+      {
+        localObject = l.PuB;
+        l.Tt(62L);
+        if ((!kotlin.g.b.p.h("wxfedb0854e2b1820d", str1)) && (!kotlin.g.b.p.h("wx97b7aebac2183fd2", str1))) {
+          break label516;
+        }
+        localObject = m.PuL;
+        bool = m.at(str1, paramacm.gcM.filePath, paramacm.gcM.version);
+        label207:
+        if (bool)
+        {
+          localObject = m.PuL;
+          kotlin.g.b.p.j(str1, "tmpAppId");
+          localObject = m.bik(str1);
+          if (!com.tencent.mm.vfs.u.agG((String)localObject)) {
+            com.tencent.mm.vfs.u.bBD((String)localObject);
+          }
+          String str2 = (String)localObject + '/' + System.currentTimeMillis() + ".wcpkg";
+          com.tencent.mm.vfs.u.on(paramacm.gcM.filePath, str2);
+          localObject = new tw();
+          ((tw)localObject).appId = str1;
+          ((tw)localObject).path = new com.tencent.mm.vfs.q(str2).bOF();
+          ((tw)localObject).version = paramacm.gcM.version;
+          ((tw)localObject).cBI = paramacm.gcM.cBI;
+          ((tw)localObject).md5 = paramacm.gcM.md5;
+        }
+      }
+      for (;;)
+      {
+        try
+        {
+          paramacm = m.PuL;
+          m.a(str1, (tw)localObject);
+          int i = str1.hashCode();
+          switch (i)
+          {
+          }
+        }
+        catch (Exception paramacm)
+        {
+          label516:
+          Log.e("MicroMsg.WebCanvasStorageLogic", "save pkg info fail " + paramacm.getMessage());
+          continue;
+          if (!str1.equals("wxfedb0854e2b1820d")) {
+            continue;
+          }
+          paramacm = l.PuB;
+          l.Tt(44L);
+          continue;
+        }
+        AppMethodBeat.o(207037);
+        return false;
+        switch (str1.hashCode())
+        {
+        default: 
+          break;
+        case -1635202514: 
+          if (!str1.equals("wx97b7aebac2183fd2")) {
+            break;
+          }
+          localObject = l.PuB;
+          l.Tt(61L);
+          break;
+        case -215862887: 
+          if (!str1.equals("wxf337cbaa27790d8e")) {
+            break;
+          }
+          localObject = l.PuB;
+          l.Tt(51L);
+          break;
+        case -1154368401: 
+          if (!str1.equals("wxfedb0854e2b1820d")) {
+            break;
+          }
+          localObject = l.PuB;
+          l.Tt(41L);
+          break label165;
+          localObject = m.a.PuM;
+          kotlin.g.b.p.j(str1, "tmpAppId");
+          localObject = paramacm.gcM.filePath;
+          kotlin.g.b.p.j(localObject, "event.data.filePath");
+          m.a.lX(str1, (String)localObject);
+          bool = com.tencent.mm.vfs.u.agG(paramacm.gcM.filePath);
+          break label207;
+          if (str1.equals("wxf337cbaa27790d8e"))
+          {
+            paramacm = l.PuB;
+            l.Tt(53L);
+          }
+          break;
+        }
+      }
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Ljava/util/LinkedList;", "", "invoke"})
+  static final class i
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<LinkedList<String>>
+  {
+    public static final i PuT;
+    
+    static
+    {
+      AppMethodBeat.i(216547);
+      PuT = new i();
+      AppMethodBeat.o(216547);
+    }
+    
+    i()
+    {
+      super();
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class j
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<Integer>
+  {
+    public static final j PuU;
+    
+    static
+    {
+      AppMethodBeat.i(205406);
+      PuU = new j();
+      AppMethodBeat.o(205406);
+    }
+    
+    j()
+    {
+      super();
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class k
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<Long>
+  {
+    public static final k PuV;
+    
+    static
+    {
+      AppMethodBeat.i(205848);
+      PuV = new k();
+      AppMethodBeat.o(205848);
+    }
+    
+    k()
+    {
+      super();
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class l
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<Long>
+  {
+    public static final l PuW;
+    
+    static
+    {
+      AppMethodBeat.i(206635);
+      PuW = new l();
+      AppMethodBeat.o(206635);
+    }
+    
+    l()
+    {
+      super();
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class m
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<Long>
+  {
+    public static final m PuX;
+    
+    static
+    {
+      AppMethodBeat.i(208176);
+      PuX = new m();
+      AppMethodBeat.o(208176);
+    }
+    
+    m()
+    {
+      super();
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "record", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgManifestRecord;", "filePath", "", "invoke"})
+  static final class n
+    implements u.b
+  {
+    n(String paramString) {}
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "errCode", "", "errMsg", "", "invoke"})
+  static final class o
+    implements u.a
+  {
+    o(String paramString) {}
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class p
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<Long>
+  {
+    public static final p PuY;
+    
+    static
+    {
+      AppMethodBeat.i(205404);
+      PuY = new p();
+      AppMethodBeat.o(205404);
+    }
+    
+    p()
+    {
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webcanvas.m
  * JD-Core Version:    0.7.0.1
  */

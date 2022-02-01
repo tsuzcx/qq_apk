@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.welab.ui.widget;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.v4.graphics.drawable.b;
-import android.support.v4.graphics.drawable.d;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import androidx.core.graphics.drawable.b;
+import androidx.core.graphics.drawable.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class WelabRoundCornerImageView
   extends ImageView
 {
-  private float JGA;
+  private float QFR;
   
   public WelabRoundCornerImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,7 +39,7 @@ public class WelabRoundCornerImageView
   
   public void setCornerRadiusPercent(float paramFloat)
   {
-    this.JGA = paramFloat;
+    this.QFR = paramFloat;
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
@@ -51,21 +51,21 @@ public class WelabRoundCornerImageView
       AppMethodBeat.o(146296);
       return;
     }
-    if (this.JGA <= 0.0F)
+    if (this.QFR <= 0.0F)
     {
       super.setImageBitmap(paramBitmap);
       AppMethodBeat.o(146296);
       return;
     }
     b localb = d.a(getResources(), paramBitmap);
-    localb.setCornerRadius(Math.min(paramBitmap.getWidth() * this.JGA, paramBitmap.getHeight() * this.JGA));
+    localb.setCornerRadius(Math.min(paramBitmap.getWidth() * this.QFR, paramBitmap.getHeight() * this.QFR));
     super.setImageDrawable(localb);
     AppMethodBeat.o(146296);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.ui.widget.WelabRoundCornerImageView
  * JD-Core Version:    0.7.0.1
  */

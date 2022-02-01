@@ -2,7 +2,7 @@ package com.tencent.kinda.framework.module.impl;
 
 import com.tencent.kinda.gen.IKindaResult;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.aaa;
+import com.tencent.mm.f.a.abh;
 import com.tencent.mm.sdk.event.EventCenter;
 
 public class KindaResultImpl
@@ -11,12 +11,12 @@ public class KindaResultImpl
   public void apppayEnd(int paramInt, String paramString)
   {
     AppMethodBeat.i(18646);
-    aaa localaaa = new aaa();
+    abh localabh = new abh();
     if (paramInt == 0) {}
-    for (localaaa.egJ.result = -1;; localaaa.egJ.result = 0)
+    for (localabh.gaZ.result = -1;; localabh.gaZ.result = 0)
     {
-      localaaa.egJ.dDL = paramString;
-      EventCenter.instance.publish(localaaa);
+      localabh.gaZ.fwv = paramString;
+      EventCenter.instance.publish(localabh);
       AppMethodBeat.o(18646);
       return;
     }

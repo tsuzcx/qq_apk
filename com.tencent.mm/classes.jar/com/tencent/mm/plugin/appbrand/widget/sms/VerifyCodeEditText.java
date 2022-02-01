@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.widget.sms;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
+import androidx.appcompat.widget.AppCompatEditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.input.numberpad.a;
 
@@ -22,7 +22,7 @@ public class VerifyCodeEditText
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final InputConnection cbC()
+  public final InputConnection coM()
   {
     AppMethodBeat.i(169541);
     InputConnection localInputConnection = super.onCreateInputConnection(new EditorInfo());
@@ -37,7 +37,7 @@ public class VerifyCodeEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.sms.VerifyCodeEditText
  * JD-Core Version:    0.7.0.1
  */

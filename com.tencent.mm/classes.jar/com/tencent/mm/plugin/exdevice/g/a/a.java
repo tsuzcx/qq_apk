@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
+import com.tencent.mm.aj.k.b;
 import com.tencent.mm.plugin.exdevice.g.b.a.c;
 import com.tencent.mm.plugin.exdevice.g.b.a.d;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -22,10 +22,10 @@ public final class a
       AppMethodBeat.o(23497);
       return null;
     }
-    paramString3 = k.b.aD(paramString3, paramString4);
+    paramString3 = k.b.aG(paramString3, paramString4);
     if (paramString3 != null)
     {
-      paramString4 = paramString3.iwG;
+      paramString4 = paramString3.llV;
       ArrayList localArrayList = new ArrayList();
       boolean bool;
       int i;
@@ -159,10 +159,10 @@ public final class a
       AppMethodBeat.o(23498);
       return;
     }
-    paramString1 = k.b.aD(paramString1, paramString2);
+    paramString1 = k.b.aG(paramString1, paramString2);
     if (paramString1 != null)
     {
-      paramString2 = paramString1.iwG;
+      paramString2 = paramString1.llV;
       if ((paramString2 != null) && (!paramString2.isEmpty()))
       {
         int i = 0;
@@ -225,7 +225,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -13,15 +13,15 @@ import java.util.List;
 final class g
   extends h
 {
-  private static final int bpw;
-  private static final byte[] bpx;
-  private boolean bpy;
+  private static final int aYY;
+  private static final byte[] aYZ;
+  private boolean aZa;
   
   static
   {
     AppMethodBeat.i(92165);
-    bpw = x.bJ("Opus");
-    bpx = new byte[] { 79, 112, 117, 115, 72, 101, 97, 100 };
+    aYY = x.bU("Opus");
+    aYZ = new byte[] { 79, 112, 117, 115, 72, 101, 97, 100 };
     AppMethodBeat.o(92165);
   }
   
@@ -36,14 +36,14 @@ final class g
   public static boolean r(m paramm)
   {
     AppMethodBeat.i(92160);
-    if (paramm.xd() < bpx.length)
+    if (paramm.vg() < aYZ.length)
     {
       AppMethodBeat.o(92160);
       return false;
     }
-    byte[] arrayOfByte = new byte[bpx.length];
-    paramm.readBytes(arrayOfByte, 0, bpx.length);
-    boolean bool = Arrays.equals(arrayOfByte, bpx);
+    byte[] arrayOfByte = new byte[aYZ.length];
+    paramm.readBytes(arrayOfByte, 0, aYZ.length);
+    boolean bool = Arrays.equals(arrayOfByte, aYZ);
     AppMethodBeat.o(92160);
     return bool;
   }
@@ -51,7 +51,7 @@ final class g
   protected final boolean a(m paramm, long paramLong, h.a parama)
   {
     AppMethodBeat.i(92163);
-    if (!this.bpy)
+    if (!this.aZa)
     {
       paramm = Arrays.copyOf(paramm.data, paramm.limit);
       int i = paramm[9];
@@ -61,12 +61,12 @@ final class g
       localArrayList.add(paramm);
       b(localArrayList, (j & 0xFF) << 8 | k & 0xFF);
       b(localArrayList, 3840);
-      parama.bdF = Format.a(null, "audio/opus", -1, -1, i & 0xFF, 48000, localArrayList, null, null);
-      this.bpy = true;
+      parama.aNg = Format.a(null, "audio/opus", -1, -1, i & 0xFF, 48000, localArrayList, null, null);
+      this.aZa = true;
       AppMethodBeat.o(92163);
       return true;
     }
-    if (paramm.readInt() == bpw) {}
+    if (paramm.readInt() == aYY) {}
     for (boolean bool = true;; bool = false)
     {
       paramm.setPosition(0);
@@ -80,7 +80,7 @@ final class g
     AppMethodBeat.i(92161);
     super.reset(paramBoolean);
     if (paramBoolean) {
-      this.bpy = false;
+      this.aZa = false;
     }
     AppMethodBeat.o(92161);
   }
@@ -105,7 +105,7 @@ final class g
     }
     for (;;)
     {
-      long l = T(i * j);
+      long l = W(i * j);
       AppMethodBeat.o(92162);
       return l;
       j = 1;
@@ -124,7 +124,7 @@ final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.c.e.g
  * JD-Core Version:    0.7.0.1
  */

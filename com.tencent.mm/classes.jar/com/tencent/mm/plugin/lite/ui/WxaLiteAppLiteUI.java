@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.lite.ui;
 import android.app.Activity;
 import com.tencent.liteapp.ui.WxaLiteAppUI;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 
 public class WxaLiteAppLiteUI
   extends WxaLiteAppUI
 {
   public final boolean isDarkMode()
   {
-    AppMethodBeat.i(198949);
-    boolean bool = ao.isDarkMode();
-    AppMethodBeat.o(198949);
+    AppMethodBeat.i(234354);
+    boolean bool = ar.isDarkMode();
+    AppMethodBeat.o(234354);
     return bool;
   }
   
@@ -24,7 +24,7 @@ public class WxaLiteAppLiteUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.lite.ui.WxaLiteAppLiteUI
  * JD-Core Version:    0.7.0.1
  */

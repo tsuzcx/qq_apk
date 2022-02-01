@@ -7,29 +7,29 @@ import org.json.JSONObject;
 
 public final class d
 {
-  public String Rtr;
-  public String Rts;
-  public String Rtt;
-  public String dNA;
+  public String YUP;
+  public String YUQ;
+  public String YUR;
+  public String fGM;
   public String title;
   
   public d()
   {
     this.title = "";
-    this.Rtr = "";
-    this.Rts = "";
-    this.Rtt = "";
-    this.dNA = "";
+    this.YUP = "";
+    this.YUQ = "";
+    this.YUR = "";
+    this.fGM = "";
   }
   
   public d(String paramString)
   {
     AppMethodBeat.i(72741);
     this.title = "";
-    this.Rtr = "";
-    this.Rts = "";
-    this.Rtt = "";
-    this.dNA = "";
+    this.YUP = "";
+    this.YUQ = "";
+    this.YUR = "";
+    this.fGM = "";
     if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(72741);
@@ -39,9 +39,9 @@ public final class d
     {
       paramString = new JSONObject(paramString);
       this.title = paramString.optString("title");
-      this.Rtr = paramString.optString("body1");
-      this.Rts = paramString.optString("body2");
-      this.Rtt = paramString.optString("button");
+      this.YUP = paramString.optString("body1");
+      this.YUQ = paramString.optString("body2");
+      this.YUR = paramString.optString("button");
       AppMethodBeat.o(72741);
       return;
     }
@@ -54,7 +54,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.d
  * JD-Core Version:    0.7.0.1
  */

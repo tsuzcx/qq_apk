@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.websearch.webview.WebSearchWebView;
+import com.tencent.mm.plugin.webview.c.c;
 import com.tencent.mm.plugin.webview.core.j;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewKeyboardLinearLayout;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
@@ -31,86 +32,68 @@ import java.util.Set;
 public abstract class PreLoadWebViewUI
   extends WebViewUI
 {
-  private int IFb = -1;
-  boolean IRT;
-  private com.tencent.mm.plugin.webview.d.i JoG;
-  protected List<Runnable> JoH;
-  private boolean JoI = false;
-  protected String dVO;
+  boolean POj;
+  private int Pzt = -1;
+  private com.tencent.mm.plugin.webview.d.i Qma;
+  protected List<Runnable> Qmb;
+  private boolean Qmc = false;
+  protected String fPs;
   protected String sessionId;
   
-  private void aE(Runnable paramRunnable)
+  private void aK(Runnable paramRunnable)
   {
-    if ((getJsapi() != null) && (getJsapi().GBl) && (this.JoI))
+    if ((getJsapi() != null) && (getJsapi().NoX) && (this.Qmc))
     {
       paramRunnable.run();
       return;
     }
     Log.i("MicroMsg.WebSearch.PreLoadWebViewUI", "jsapi not ready, waiting");
-    if (this.JoH == null) {
-      this.JoH = new ArrayList();
+    if (this.Qmb == null) {
+      this.Qmb = new ArrayList();
     }
-    this.JoH.add(paramRunnable);
+    this.Qmb.add(paramRunnable);
   }
   
-  protected final void aD(final Runnable paramRunnable)
+  protected final void aJ(final Runnable paramRunnable)
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      aE(paramRunnable);
+      aK(paramRunnable);
       return;
     }
-    com.tencent.f.h.RTc.aV(new Runnable()
+    com.tencent.e.h.ZvG.bc(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(211291);
+        AppMethodBeat.i(222172);
         PreLoadWebViewUI.a(PreLoadWebViewUI.this, paramRunnable);
-        AppMethodBeat.o(211291);
+        AppMethodBeat.o(222172);
       }
     });
   }
   
-  public com.tencent.mm.plugin.webview.core.i cpO()
-  {
-    com.tencent.mm.plugin.webview.core.i locali = super.cpO();
-    if (locali != null) {
-      locali.a(new j()
-      {
-        public final void cpR()
-        {
-          AppMethodBeat.i(211290);
-          Log.i("MicroMsg.WebSearch.PreLoadWebViewUI", "onJsReady");
-          PreLoadWebViewUI.this.cpR();
-          AppMethodBeat.o(211290);
-        }
-      });
-    }
-    return locali;
-  }
-  
-  protected void cpR()
+  protected void bXI()
   {
     Log.i("MicroMsg.WebSearch.PreLoadWebViewUI", "onJsReady");
-    this.JoI = true;
-    Log.i("MicroMsg.WebSearch.PreLoadWebViewUI", "sendOnUIInit isPreload:%s", new Object[] { Boolean.valueOf(this.IRT) });
-    aD(new Runnable()
+    this.Qmc = true;
+    Log.i("MicroMsg.WebSearch.PreLoadWebViewUI", "sendOnUIInit isPreload:%s", new Object[] { Boolean.valueOf(this.POj) });
+    aJ(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(80728);
         if (PreLoadWebViewUI.a(PreLoadWebViewUI.this)) {
-          PreLoadWebViewUI.this.ggQ();
+          PreLoadWebViewUI.this.hag();
         }
-        PreLoadWebViewUI.this.IBw.b("onUiInit", PreLoadWebViewUI.this.ggZ(), null);
+        PreLoadWebViewUI.this.PvJ.b("onUiInit", PreLoadWebViewUI.this.has(), null);
         AppMethodBeat.o(80728);
       }
     });
-    if ((this.JoH != null) && (!this.JoH.isEmpty()))
+    if ((this.Qmb != null) && (!this.Qmb.isEmpty()))
     {
-      Object localObject = new ArrayList(this.JoH);
+      Object localObject = new ArrayList(this.Qmb);
       Log.i("MicroMsg.WebSearch.PreLoadWebViewUI", "jsapi ready callback, running jsapi count %d", new Object[] { Integer.valueOf(((List)localObject).size()) });
-      this.JoH.clear();
+      this.Qmb.clear();
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
@@ -122,28 +105,28 @@ public abstract class PreLoadWebViewUI
     }
   }
   
-  public final MMWebView cpy()
+  public final MMWebView cDU()
   {
     Intent localIntent = getIntent();
     WebSearchWebView localWebSearchWebView = null;
     Object localObject = null;
     if (localIntent != null)
     {
-      this.IFb = localIntent.getIntExtra("key_preload_biz", -1);
-      Log.i("MicroMsg.WebSearch.PreLoadWebViewUI", "getting preloaded  webview, biz %d", new Object[] { Integer.valueOf(this.IFb) });
-      localObject = b.JpB;
-      localObject = b.agX(this.IFb);
+      this.Pzt = localIntent.getIntExtra("key_preload_biz", -1);
+      Log.i("MicroMsg.WebSearch.PreLoadWebViewUI", "getting preloaded  webview, biz %d", new Object[] { Integer.valueOf(this.Pzt) });
+      localObject = b.QmW;
+      localObject = b.aoO(this.Pzt);
     }
     if (localObject != null)
     {
-      this.JoG = ((d)localObject).IFj;
-      localWebSearchWebView = ((d)localObject).Gqy;
+      this.Qma = ((d)localObject).PzB;
+      localWebSearchWebView = ((d)localObject).Ndj;
     }
     if (localWebSearchWebView == null)
     {
       Log.i("MicroMsg.WebSearch.PreLoadWebViewUI", "no available preloaded webview");
-      this.IRT = false;
-      localObject = coX();
+      this.POj = false;
+      localObject = cDu();
       int i;
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         if (Util.safeParseInt(Uri.parse((String)localObject).getQueryParameter("isOpenPreload")) == 1) {
@@ -153,7 +136,7 @@ public abstract class PreLoadWebViewUI
       for (;;)
       {
         if (i != 0) {
-          com.tencent.mm.plugin.report.service.h.CyF.a(15005, new Object[] { Integer.valueOf(this.IFb), Integer.valueOf(4), Integer.valueOf(0) });
+          com.tencent.mm.plugin.report.service.h.IzE.a(15005, new Object[] { Integer.valueOf(this.Pzt), Integer.valueOf(4), Integer.valueOf(0) });
         }
         localObject = new WebSearchWebView(this);
         ((WebSearchWebView)localObject).addJavascriptInterface(new a(this), "webSearchJSApi");
@@ -164,52 +147,70 @@ public abstract class PreLoadWebViewUI
       }
     }
     Log.i("MicroMsg.WebSearch.PreLoadWebViewUI", "use preloaded webview ,%s ", new Object[] { localWebSearchWebView.toString() });
-    this.IRT = true;
-    localWebSearchWebView.aG(this);
-    com.tencent.mm.plugin.report.service.h.CyF.a(15005, new Object[] { Integer.valueOf(this.IFb), Integer.valueOf(3), Integer.valueOf(0) });
+    this.POj = true;
+    localWebSearchWebView.aD(this);
+    com.tencent.mm.plugin.report.service.h.IzE.a(15005, new Object[] { Integer.valueOf(this.Pzt), Integer.valueOf(3), Integer.valueOf(0) });
     return localWebSearchWebView;
   }
   
-  public final void geA()
+  public com.tencent.mm.plugin.webview.core.i cDV()
+  {
+    com.tencent.mm.plugin.webview.core.i locali = super.cDV();
+    if (locali != null) {
+      locali.a(new j()
+      {
+        public final void bXI()
+        {
+          AppMethodBeat.i(237566);
+          Log.i("MicroMsg.WebSearch.PreLoadWebViewUI", "onJsReady");
+          PreLoadWebViewUI.this.bXI();
+          AppMethodBeat.o(237566);
+        }
+      });
+    }
+    return locali;
+  }
+  
+  public final void gXB()
   {
     int i = getIntent().getIntExtra("webview_bg_color_rsID", -1);
     if ((i != -1) && (getContentView() != null))
     {
       setBackGroundColorResource(i);
       getContentView().setBackgroundResource(i);
-      this.pGj.setBackgroundResource(17170445);
-      this.Jic.setBackgroundResource(17170445);
-      this.Jid.setBackgroundResource(17170445);
+      this.pHS.setBackgroundResource(17170445);
+      this.Qfa.setBackgroundResource(17170445);
+      this.Qfb.setBackgroundResource(17170445);
       return;
     }
-    this.pGj.setBackgroundColor(getResources().getColor(2131101402));
+    this.pHS.setBackgroundColor(getResources().getColor(c.c.websearch_bg));
+  }
+  
+  public final com.tencent.mm.plugin.webview.d.i gYS()
+  {
+    return this.Qma;
+  }
+  
+  public final boolean gYT()
+  {
+    return this.POj;
   }
   
   protected com.tencent.mm.plugin.webview.d.h getJsapi()
   {
-    return this.IBw;
+    return this.PvJ;
   }
   
-  public final com.tencent.mm.plugin.webview.d.i gfG()
-  {
-    return this.JoG;
-  }
+  protected void hag() {}
   
-  public final boolean gfH()
-  {
-    return this.IRT;
-  }
-  
-  protected void ggQ() {}
-  
-  protected Map<String, Object> ggW()
+  protected Map<String, Object> hao()
   {
     return null;
   }
   
-  public final Map<String, Object> ggZ()
+  public final Map<String, Object> has()
   {
-    Object localObject2 = coX();
+    Object localObject2 = cDu();
     Object localObject1;
     if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
@@ -224,7 +225,7 @@ public abstract class PreLoadWebViewUI
     }
     for (;;)
     {
-      localObject2 = ggW();
+      localObject2 = hao();
       if (localObject2 != null) {
         ((Map)localObject1).putAll((Map)localObject2);
       }
@@ -238,7 +239,7 @@ public abstract class PreLoadWebViewUI
   {
     super.onCreate(paramBundle);
     this.sessionId = getIntent().getStringExtra("sessionId");
-    this.dVO = Util.nullAs(getIntent().getStringExtra("subSessionId"), this.sessionId);
+    this.fPs = Util.nullAs(getIntent().getStringExtra("subSessionId"), this.sessionId);
   }
   
   public void onDestroy()

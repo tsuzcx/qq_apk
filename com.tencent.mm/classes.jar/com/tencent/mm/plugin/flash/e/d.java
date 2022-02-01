@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.flash.e;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 
 public final class d
@@ -11,7 +11,7 @@ public final class d
 {
   public final void a(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, float paramFloat, int paramInt2, i parami)
   {
-    AppMethodBeat.i(186703);
+    AppMethodBeat.i(193398);
     paramString3 = new Bundle();
     paramString3.putString("err_msg", "ok");
     paramString3.putString("key_pic_cdn_id", paramString1);
@@ -22,10 +22,10 @@ public final class d
     paramString1 = new a();
     paramString1.result = paramString3;
     parami.onSceneEnd(0, 0, "ok", paramString1);
-    AppMethodBeat.o(186703);
+    AppMethodBeat.o(193398);
   }
   
-  public final String getResultKey()
+  public final String epR()
   {
     return "faceverify_ticket";
   }

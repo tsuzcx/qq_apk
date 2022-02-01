@@ -4,30 +4,30 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.ui.k;
+import com.tencent.mm.plugin.wallet_core.ui.l;
 import java.util.ArrayList;
 
 public final class a
-  extends k
+  extends l
 {
   public a(Context paramContext, ArrayList<Bankcard> paramArrayList, int paramInt, Orders paramOrders)
   {
     super(paramContext, paramArrayList, paramInt, paramOrders);
   }
   
-  public final Bankcard aeu(int paramInt)
+  public final Bankcard amh(int paramInt)
   {
     AppMethodBeat.i(72100);
     Bankcard localBankcard;
-    if ((this.Hva != null) && (this.Hva.size() != 0))
+    if ((this.OmN != null) && (this.OmN.size() != 0))
     {
-      localBankcard = (Bankcard)this.Hva.get(paramInt);
+      localBankcard = (Bankcard)this.OmN.get(paramInt);
       AppMethodBeat.o(72100);
       return localBankcard;
     }
     if (paramInt != getCount() - 1)
     {
-      localBankcard = (Bankcard)this.Hva.get(paramInt);
+      localBankcard = (Bankcard)this.OmN.get(paramInt);
       AppMethodBeat.o(72100);
       return localBankcard;
     }
@@ -38,9 +38,9 @@ public final class a
   public final int getCount()
   {
     AppMethodBeat.i(72099);
-    if ((this.Hva != null) && (this.Hva.size() != 0))
+    if ((this.OmN != null) && (this.OmN.size() != 0))
     {
-      int i = this.Hva.size();
+      int i = this.OmN.size();
       AppMethodBeat.o(72099);
       return i;
     }

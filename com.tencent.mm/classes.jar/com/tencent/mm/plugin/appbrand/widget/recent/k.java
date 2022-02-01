@@ -1,28 +1,27 @@
 package com.tencent.mm.plugin.appbrand.widget.recent;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appusage.ag.a;
-import kotlin.l;
+import android.content.Context;
+import com.tencent.mm.kernel.b.e;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.plugin.appbrand.api.c;
+import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/widget/recent/CollectionQueryCacheConfig;", "Lcom/tencent/mm/plugin/appbrand/widget/recent/QueryCacheConfig;", "count", "", "order", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;", "(ILcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;)V", "getCount", "()I", "getOrder", "()Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;", "plugin-appbrand-integration_release"})
-public final class k
-  extends n
+@e(gf=c.class)
+public abstract interface k
+  extends a
 {
-  public final int count;
-  public final ag.a kWk;
+  public abstract AppBrandRecentView a(Context paramContext, k.b paramb, a parama);
   
-  public k(ag.a parama)
+  public abstract void cqi();
+  
+  public static abstract interface a
   {
-    super(new Object[] { Integer.valueOf(2147483647), parama });
-    AppMethodBeat.i(229682);
-    this.count = 2147483647;
-    this.kWk = parama;
-    AppMethodBeat.o(229682);
+    public abstract LocalUsageInfo ceL();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.recent.k
  * JD-Core Version:    0.7.0.1
  */

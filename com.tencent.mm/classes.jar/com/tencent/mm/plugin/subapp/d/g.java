@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.subapp.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hb;
+import com.tencent.mm.f.c.hi;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class g
-  extends hb
+  extends hi
 {
   protected static IAutoDBItem.MAutoDBInfo info;
-  int cSx = -1;
+  int cUP = -1;
   
   static
   {
@@ -92,7 +92,7 @@ public final class g
     AppMethodBeat.o(28963);
   }
   
-  public final boolean big()
+  public final boolean brE()
   {
     return ((this.field_status > 1) && (this.field_status <= 3)) || (this.field_status == 8);
   }
@@ -104,7 +104,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.d.g
  * JD-Core Version:    0.7.0.1
  */

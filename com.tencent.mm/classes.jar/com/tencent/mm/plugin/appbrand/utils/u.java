@@ -1,89 +1,276 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
+import android.annotation.SuppressLint;
+import android.text.TextUtils;
+import android.webkit.ValueCallback;
+import com.eclipsesource.mmv8.ScriptPartObject;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vending.e.a;
-import java.util.concurrent.atomic.AtomicBoolean;
-import kotlin.l;
+import com.tencent.mm.appbrand.v8.m.b;
+import com.tencent.mm.appbrand.v8.m.c;
+import com.tencent.mm.plugin.appbrand.m.i;
+import com.tencent.mm.plugin.appbrand.m.v;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Locale;
+import junit.framework.Assert;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/utils/LifeCycleWrappedRunnable;", "Ljava/lang/Runnable;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "mRegistry", "Lcom/tencent/mm/plugin/appbrand/utils/ILifeCycleRegistry;", "mRunnable", "mCreateStackTrace", "", "(Lcom/tencent/mm/plugin/appbrand/utils/ILifeCycleRegistry;Ljava/lang/Runnable;Ljava/lang/String;)V", "mDead", "Ljava/util/concurrent/atomic/AtomicBoolean;", "dead", "", "run", "Companion", "luggage-wxa-app_release"})
 public final class u
-  implements a, Runnable
 {
-  public static final a ohi;
-  private final Runnable mRunnable;
-  private final AtomicBoolean ohf;
-  private final p<? super a> ohg;
-  private final String ohh;
+  private static final LinkedList<String> riK;
   
   static
   {
-    AppMethodBeat.i(135611);
-    ohi = new a((byte)0);
-    AppMethodBeat.o(135611);
+    AppMethodBeat.i(135375);
+    riK = new LinkedList();
+    AppMethodBeat.o(135375);
   }
   
-  private u(p<? super a> paramp, Runnable paramRunnable, String paramString)
+  public static void a(i parami, String paramString, a parama)
   {
-    AppMethodBeat.i(160940);
-    this.ohg = paramp;
-    this.mRunnable = paramRunnable;
-    this.ohh = paramString;
-    this.ohf = new AtomicBoolean(false);
-    AppMethodBeat.o(160940);
+    AppMethodBeat.i(135372);
+    a(parami, null, paramString, parama);
+    AppMethodBeat.o(135372);
   }
   
-  public static final u a(p<? super a> paramp, Runnable paramRunnable)
+  @SuppressLint({"DefaultLocale"})
+  public static void a(i parami, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, final a parama)
   {
-    AppMethodBeat.i(160941);
-    kotlin.g.b.p.h(paramp, "registry");
-    if ((paramRunnable instanceof u))
+    AppMethodBeat.i(135373);
+    Log.i("MicroMsg.JsValidationInjector", "hy: injecting file %s", new Object[] { paramString1 });
+    final long l = System.currentTimeMillis();
+    if (Util.isNullOrNil(paramString4))
     {
-      paramp = (u)paramRunnable;
-      AppMethodBeat.o(160941);
-      return paramp;
+      Log.e("MicroMsg.JsValidationInjector", "hy: empty script!");
+      if (parama != null) {
+        parama.dL("isNullOrNil script");
+      }
+      AppMethodBeat.o(135373);
+      return;
     }
-    String str = android.util.Log.getStackTraceString(new Throwable());
-    kotlin.g.b.p.g(str, "android.util.Log.getStackTraceString(Throwable())");
-    paramp = new u(paramp, paramRunnable, str);
-    AppMethodBeat.o(160941);
-    return paramp;
-  }
-  
-  public final void dead()
-  {
-    AppMethodBeat.i(135609);
-    this.ohf.set(true);
-    AppMethodBeat.o(135609);
-  }
-  
-  public final void run()
-  {
-    AppMethodBeat.i(135608);
-    if (!this.ohf.get()) {
-      try
+    paramString4 = paramString4 + String.format("\n;(function(){return %d;})();", new Object[] { Integer.valueOf(11111) });
+    String str = paramString4 + Util.nullAsNil(paramString5);
+    paramString5 = null;
+    paramString4 = paramString5;
+    if (paramString1 != null) {
+      paramString4 = paramString5;
+    }
+    try
+    {
+      if (paramString1.length() > 0) {
+        paramString4 = new URL(paramString1);
+      }
+      paramString5 = (v)parami.Q(v.class);
+      if (paramString5 != null)
       {
-        Runnable localRunnable = this.mRunnable;
-        if (localRunnable != null) {
-          localRunnable.run();
-        }
+        paramString5.a(paramString4, paramString2, paramString3, paramInt, str, new m.b()
+        {
+          public final void a(String paramAnonymousString, m.c paramAnonymousc)
+          {
+            AppMethodBeat.i(135367);
+            u.a(this.val$filePath, parama, paramAnonymousString, l);
+            if ((parama instanceof u.b)) {
+              ((u.b)parama).a(paramAnonymousc);
+            }
+            AppMethodBeat.o(135367);
+          }
+        });
+        AppMethodBeat.o(135373);
         return;
       }
-      finally
-      {
-        this.ohg.a((a)this);
-        AppMethodBeat.o(135608);
-      }
     }
-    com.tencent.mm.sdk.platformtools.Log.w("Luggage.WXA.LifeCycleWrappedRunnable", "run() but dead, <init> stackTrace = " + this.ohh);
-    AppMethodBeat.o(135608);
+    catch (MalformedURLException parami)
+    {
+      Log.e("MicroMsg.JsValidationInjector", "hy: MalformedURLException");
+      parama.dL("MalformedURLException");
+      AppMethodBeat.o(135373);
+      return;
+    }
+    if ((Util.isNullOrNil(paramString2)) || (Util.isNullOrNil(paramString3)))
+    {
+      parami.a(paramString4, str, new ValueCallback() {});
+      AppMethodBeat.o(135373);
+      return;
+    }
+    parami.a(paramString4, paramString2, paramString3, paramInt, str, new ValueCallback() {});
+    AppMethodBeat.o(135373);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/utils/LifeCycleWrappedRunnable$Companion;", "", "()V", "obtain", "Lcom/tencent/mm/plugin/appbrand/utils/LifeCycleWrappedRunnable;", "registry", "Lcom/tencent/mm/plugin/appbrand/utils/ILifeCycleRegistry;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "runnable", "Ljava/lang/Runnable;", "luggage-wxa-app_release"})
-  public static final class a {}
+  public static void a(i parami, URL paramURL, String paramString, a parama)
+  {
+    AppMethodBeat.i(243138);
+    if (Util.isNullOrNil(paramString))
+    {
+      if (parama != null) {
+        parama.dL("isNullOrNil script");
+      }
+      AppMethodBeat.o(243138);
+      return;
+    }
+    for (;;)
+    {
+      synchronized (riK)
+      {
+        Iterator localIterator = riK.iterator();
+        if (!localIterator.hasNext()) {
+          break label164;
+        }
+        if (!paramString.startsWith((String)localIterator.next())) {
+          continue;
+        }
+        i = 0;
+        ??? = paramString;
+        if (i != 0) {
+          ??? = paramString + cmi();
+        }
+        paramString = new ValueCallback() {};
+        if (paramURL == null)
+        {
+          parami.evaluateJavascript((String)???, paramString);
+          AppMethodBeat.o(243138);
+          return;
+        }
+      }
+      parami.a(paramURL, (String)???, paramString);
+      AppMethodBeat.o(243138);
+      return;
+      label164:
+      int i = 1;
+    }
+  }
+  
+  public static void a(i parami, ArrayList<ScriptPartObject> paramArrayList, String paramString1, String paramString2, String paramString3, final a parama)
+  {
+    AppMethodBeat.i(176788);
+    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    {
+      Log.e("MicroMsg.JsValidationInjector", "empty script list, abort");
+      AppMethodBeat.o(176788);
+      return;
+    }
+    String str2 = null;
+    String str1 = null;
+    Object localObject = null;
+    Iterator localIterator = paramArrayList.iterator();
+    if (localIterator.hasNext())
+    {
+      ScriptPartObject localScriptPartObject = (ScriptPartObject)localIterator.next();
+      if (localScriptPartObject.type != 2) {
+        break label345;
+      }
+      str2 = localScriptPartObject.wxaPkgPath;
+      str1 = localScriptPartObject.wxaFileName;
+      localObject = localScriptPartObject.wxaPkgKeyFilePath;
+      Log.i("MicroMsg.JsValidationInjector", " contain wxa pkg: %s, file: %s", new Object[] { str2, str1 });
+    }
+    label345:
+    for (;;)
+    {
+      break;
+      final long l = System.currentTimeMillis();
+      if ((Util.isNullOrNil(str2)) || (Util.isNullOrNil(str1)) || (Util.isNullOrNil((String)localObject)))
+      {
+        Log.e("MicroMsg.JsValidationInjector", "empty wxa path or file path or key path!");
+        if (parama != null) {
+          parama.dL("isNullOrNil empty path");
+        }
+        AppMethodBeat.o(176788);
+        return;
+      }
+      str2 = null;
+      localObject = str2;
+      if (paramString1 != null) {
+        localObject = str2;
+      }
+      try
+      {
+        if (paramString1.length() > 0) {
+          localObject = new URL(paramString1);
+        }
+        paramString1 = new ScriptPartObject();
+        paramString1.type = 1;
+        paramString1.content = String.format(Locale.US, "\n;(function(){return %d;})();", new Object[] { Integer.valueOf(11111) });
+        paramArrayList.add(paramString1);
+        paramString1 = (v)parami.Q(v.class);
+        if (paramString1 == null)
+        {
+          Assert.fail("Only addonV8 supports wxa script");
+          AppMethodBeat.o(176788);
+          return;
+        }
+      }
+      catch (MalformedURLException parami)
+      {
+        Log.e("MicroMsg.JsValidationInjector", "MalformedURLException");
+        parama.dL("MalformedURLException");
+        AppMethodBeat.o(176788);
+        return;
+      }
+      if (parama == null) {}
+      for (parami = null;; parami = new m.b()
+          {
+            public final void a(String paramAnonymousString, m.c paramAnonymousc)
+            {
+              AppMethodBeat.i(176787);
+              u.a(this.riN, parama, paramAnonymousString, l);
+              if ((parama instanceof u.b)) {
+                ((u.b)parama).a(paramAnonymousc);
+              }
+              AppMethodBeat.o(176787);
+            }
+          })
+      {
+        paramString1.a(paramArrayList, (URL)localObject, paramString2, paramString3, parami);
+        AppMethodBeat.o(176788);
+        return;
+      }
+    }
+  }
+  
+  public static void anm(String paramString)
+  {
+    AppMethodBeat.i(135370);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(135370);
+      return;
+    }
+    synchronized (riK)
+    {
+      riK.add(paramString);
+      AppMethodBeat.o(135370);
+      return;
+    }
+  }
+  
+  public static String cmi()
+  {
+    AppMethodBeat.i(135371);
+    String str = String.format(Locale.ENGLISH, "\n;(function(){return %d;})();", new Object[] { Integer.valueOf(11111) });
+    AppMethodBeat.o(135371);
+    return str;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void dL(String paramString);
+    
+    public abstract void onSuccess(String paramString);
+  }
+  
+  public static abstract interface b
+    extends u.a
+  {
+    public abstract void a(m.c paramc);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.u
  * JD-Core Version:    0.7.0.1
  */

@@ -18,33 +18,33 @@ import com.tencent.mm.ui.MMActivity;
 public class GameLuggageEntrance
   extends MMActivity
 {
-  private static final String xvX;
+  private static final String CzR;
   
   static
   {
-    AppMethodBeat.i(186824);
-    xvX = "https://" + WeChatHosts.domainString(2131761707) + "/cgi-bin/h5/static/centerbox/index_v6.html?wechat_pkgid=index_v6&abt=21";
-    AppMethodBeat.o(186824);
+    AppMethodBeat.i(230876);
+    CzR = "https://" + WeChatHosts.domainString(j.f.host_game_weixin_qq_com) + "/cgi-bin/h5/static/centerbox/index_v6.html?wechat_pkgid=index_v6&abt=21";
+    AppMethodBeat.o(230876);
   }
   
   public int getLayoutId()
   {
-    return 2131495399;
+    return j.d.CAE;
   }
   
   public void onCreate(final Bundle paramBundle)
   {
     AppMethodBeat.i(82979);
     super.onCreate(paramBundle);
-    paramBundle = (EditText)findViewById(2131299847);
-    ((Button)findViewById(2131302925)).setOnClickListener(new View.OnClickListener()
+    paramBundle = (EditText)findViewById(j.c.CAx);
+    ((Button)findViewById(j.c.CAy)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(82976);
         Object localObject = new b();
-        ((b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/luggage/GameLuggageEntrance$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+        ((b)localObject).bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/luggage/GameLuggageEntrance$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
         localObject = paramBundle.getText().toString();
         if (!Util.isNullOrNil((String)localObject))
         {
@@ -52,31 +52,31 @@ public class GameLuggageEntrance
           paramAnonymousView = new Intent(GameLuggageEntrance.this, LuggageGameWebViewUI.class);
           paramAnonymousView.putExtra("rawUrl", (String)localObject);
           localObject = GameLuggageEntrance.this;
-          paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bl(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.axQ(), "com/tencent/mm/plugin/game/luggage/GameLuggageEntrance$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((GameLuggageEntrance)localObject).startActivity((Intent)paramAnonymousView.pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/game/luggage/GameLuggageEntrance$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b(localObject, paramAnonymousView.aFh(), "com/tencent/mm/plugin/game/luggage/GameLuggageEntrance$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((GameLuggageEntrance)localObject).startActivity((Intent)paramAnonymousView.sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/game/luggage/GameLuggageEntrance$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/luggage/GameLuggageEntrance$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(82976);
       }
     });
-    ((Button)findViewById(2131302932)).setOnClickListener(new View.OnClickListener()
+    ((Button)findViewById(j.c.CAz)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(82977);
         Object localObject = new b();
-        ((b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/luggage/GameLuggageEntrance$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
-        new Bundle().putString("rawUrl", GameLuggageEntrance.xvX);
+        ((b)localObject).bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/luggage/GameLuggageEntrance$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+        new Bundle().putString("rawUrl", GameLuggageEntrance.CzR);
         localObject = new Intent(GameLuggageEntrance.this, LuggageGameWebViewUI.class);
-        ((Intent)localObject).putExtra("rawUrl", GameLuggageEntrance.xvX);
+        ((Intent)localObject).putExtra("rawUrl", GameLuggageEntrance.CzR);
         paramAnonymousView = GameLuggageEntrance.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/game/luggage/GameLuggageEntrance$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/game/luggage/GameLuggageEntrance$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/game/luggage/GameLuggageEntrance$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/game/luggage/GameLuggageEntrance$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/luggage/GameLuggageEntrance$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(82977);
       }
@@ -102,7 +102,7 @@ public class GameLuggageEntrance
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.GameLuggageEntrance
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.l;
+import com.tencent.mm.ao.l;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.modelmulti.o;
 import com.tencent.mm.modelmulti.o.b;
@@ -26,34 +26,29 @@ class URISpanHandlerSet$BizMsgMenuUriSpanHandler
     super(paramURISpanHandlerSet);
   }
   
-  final int[] Xp()
-  {
-    return new int[] { 43 };
-  }
-  
   final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
   {
-    AppMethodBeat.i(231420);
+    AppMethodBeat.i(278698);
     if (43 == paramu.type)
     {
       if (Util.isNullOrNil(paramu.username))
       {
         Log.w("MicroMsg.URISpanHandlerSet", "BizMsgMenuUriSpanHandler Username is null.");
-        AppMethodBeat.o(231420);
+        AppMethodBeat.o(278698);
         return true;
       }
-      if ((paramu.fromScene == 1) && (paramu.dTX != null)) {
-        l.S(paramu.dTX);
+      if ((paramu.fromScene == 1) && (paramu.fNz != null)) {
+        l.Y(paramu.fNz);
       }
       Log.d("MicroMsg.URISpanHandlerSet", "BizMsgMenuUriSpanHandler, url:%s", new Object[] { paramu.url });
       parami = Uri.parse(paramu.url.trim());
       paramView = parami.getQueryParameter("msgmenuid");
       parami = parami.getQueryParameter("msgmenucontent");
-      h.CyF.a(14522, new Object[] { Util.nullAsNil(paramView), paramu.username });
+      h.IzE.a(14522, new Object[] { Util.nullAsNil(paramView), paramu.username });
       if ((Util.isNullOrNil(paramView)) || (Util.isNullOrNil(parami)))
       {
         Log.w("MicroMsg.URISpanHandlerSet", "BizMsgMenuUriSpanHandler id or msgContent is null.");
-        AppMethodBeat.o(231420);
+        AppMethodBeat.o(278698);
         return true;
       }
       try
@@ -61,15 +56,15 @@ class URISpanHandlerSet$BizMsgMenuUriSpanHandler
         String str = URLDecoder.decode(parami, "UTF-8");
         parami = new HashMap();
         parami.put("bizmsgmenuid", paramView);
-        paramView = o.Pl(paramu.username);
+        paramView = o.WI(paramu.username);
         paramView.toUser = paramu.username;
         paramView.content = str;
-        paramView = paramView.tD(ab.JG(paramu.username));
-        paramView.cSx = 1;
-        paramView.jdQ = parami;
-        paramView.jdR = 5;
-        paramView.bdQ().execute();
-        AppMethodBeat.o(231420);
+        paramView = paramView.wD(ab.QZ(paramu.username));
+        paramView.cUP = 1;
+        paramView.lUp = parami;
+        paramView.lUq = 5;
+        paramView.bnl().aEv();
+        AppMethodBeat.o(278698);
         return true;
       }
       catch (UnsupportedEncodingException paramView)
@@ -80,7 +75,7 @@ class URISpanHandlerSet$BizMsgMenuUriSpanHandler
         }
       }
     }
-    AppMethodBeat.o(231420);
+    AppMethodBeat.o(278698);
     return false;
   }
   
@@ -89,7 +84,12 @@ class URISpanHandlerSet$BizMsgMenuUriSpanHandler
     return false;
   }
   
-  final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
+  final int[] abR()
+  {
+    return new int[] { 43 };
+  }
+  
+  final com.tencent.mm.pluginsdk.ui.applet.u hi(String paramString)
   {
     AppMethodBeat.i(19684);
     if (paramString.trim().startsWith("weixin://bizmsgmenu"))
@@ -104,7 +104,7 @@ class URISpanHandlerSet$BizMsgMenuUriSpanHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.app.plugin.URISpanHandlerSet.BizMsgMenuUriSpanHandler
  * JD-Core Version:    0.7.0.1
  */

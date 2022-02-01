@@ -10,16 +10,16 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 
 public class TextProgressBar
   extends ProgressBar
 {
-  private int HH;
-  private int mAk;
+  private int IB;
   private Context mContext;
   private Paint mPaint;
   private String mText;
+  private int pyF;
   
   public TextProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,7 +30,7 @@ public class TextProgressBar
   private void setText(int paramInt)
   {
     AppMethodBeat.i(42628);
-    this.HH = paramInt;
+    this.IB = paramInt;
     this.mText = (String.valueOf(paramInt) + "%");
     AppMethodBeat.o(42628);
   }
@@ -45,19 +45,19 @@ public class TextProgressBar
       this.mPaint = new Paint();
       this.mPaint.setAntiAlias(true);
       this.mPaint.setColor(Color.rgb(69, 192, 26));
-      this.mPaint.setTextSize(this.mAk);
+      this.mPaint.setTextSize(this.pyF);
       Object localObject = new Rect();
       this.mPaint.getTextBounds(this.mText, 0, this.mText.length(), (Rect)localObject);
       float f1 = getWidth() / 2 - ((Rect)localObject).centerX();
       float f2 = getHeight() / 2 - ((Rect)localObject).centerY();
       paramCanvas.drawText(this.mText, f1, f2, this.mPaint);
-      float f3 = this.HH / 100.0F * getWidth();
+      float f3 = this.IB / 100.0F * getWidth();
       if (f3 > f1)
       {
         localObject = new Paint();
         ((Paint)localObject).setColor(-1);
         ((Paint)localObject).setAntiAlias(true);
-        ((Paint)localObject).setTextSize(this.mAk);
+        ((Paint)localObject).setTextSize(this.pyF);
         RectF localRectF = new RectF(0.0F, 0.0F, f3, getHeight());
         paramCanvas.save();
         paramCanvas.clipRect(localRectF);
@@ -81,13 +81,13 @@ public class TextProgressBar
   public void setTextSize(int paramInt)
   {
     AppMethodBeat.i(42627);
-    this.mAk = a.fromDPToPix(this.mContext, paramInt);
+    this.pyF = a.fromDPToPix(this.mContext, paramInt);
     AppMethodBeat.o(42627);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.TextProgressBar
  * JD-Core Version:    0.7.0.1
  */

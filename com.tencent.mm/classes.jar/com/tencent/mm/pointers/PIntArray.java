@@ -2,7 +2,6 @@ package com.tencent.mm.pointers;
 
 public class PIntArray
 {
-  private byte _hellAccFlag_;
   public int[] value = null;
 }
 

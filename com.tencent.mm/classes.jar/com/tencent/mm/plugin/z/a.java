@@ -1,14 +1,9 @@
 package com.tencent.mm.plugin.z;
 
-import com.danikula.videocache.HttpProxyCacheServer;
-
-public final class a
-{
-  public static HttpProxyCacheServer GwW;
-}
+public final class a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.z.a
  * JD-Core Version:    0.7.0.1
  */

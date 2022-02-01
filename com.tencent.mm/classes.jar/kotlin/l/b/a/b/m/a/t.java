@@ -9,28 +9,28 @@ import kotlin.l.b.a.b.m.d;
 
 public final class t
 {
-  public static final t TPw;
+  public static final t abrV;
   
   static
   {
     AppMethodBeat.i(61149);
-    TPw = new t();
+    abrV = new t();
     AppMethodBeat.o(61149);
   }
   
   public static boolean a(bg parambg1, bg parambg2)
   {
     AppMethodBeat.i(61148);
-    p.h(parambg1, "a");
-    p.h(parambg2, "b");
-    boolean bool = d.TNj.a((q)s.TPv, (h)parambg1, (h)parambg2);
+    p.k(parambg1, "a");
+    p.k(parambg2, "b");
+    boolean bool = d.abpL.a((q)s.abrU, (h)parambg1, (h)parambg2);
     AppMethodBeat.o(61148);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.a.t
  * JD-Core Version:    0.7.0.1
  */

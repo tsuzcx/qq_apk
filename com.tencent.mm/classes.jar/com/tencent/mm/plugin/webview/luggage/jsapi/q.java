@@ -4,12 +4,17 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.c.i;
+import com.tencent.mm.plugin.webview.luggage.c.c;
+import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
 import com.tencent.mm.plugin.webview.model.WebViewJSSDKImageItem;
 import com.tencent.mm.plugin.webview.model.an;
 import com.tencent.mm.plugin.webview.model.ao;
 import com.tencent.mm.plugin.webview.model.f.b;
+import com.tencent.mm.plugin.webview.modeltools.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.h;
@@ -17,14 +22,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class q
-  extends bs<com.tencent.mm.plugin.webview.luggage.g>
+  extends bs<g>
 {
-  private ProgressDialog gtM = null;
+  private ProgressDialog iXX = null;
   
   public final void a(Context paramContext, String paramString, final br.a parama)
   {
     AppMethodBeat.i(78551);
-    Object localObject = com.tencent.mm.plugin.webview.luggage.c.b.Zc(paramString);
+    Object localObject = c.agO(paramString);
     if (localObject == null)
     {
       Log.i("MicroMsg.JsApiDownLoadImage", "data is null");
@@ -53,7 +58,7 @@ public class q
         Log.i("MicroMsg.JsApiDownLoadImage", "doDownLoadImage, on cdn finish, is success : %b, local id : %s, media id is : %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), paramAnonymousString1, paramAnonymousString2 });
         if ((!Util.isNullOrNil(paramAnonymousString2)) && (paramAnonymousString2.equals(str)))
         {
-          com.tencent.mm.plugin.webview.modeltools.g.gdu().b(this);
+          f.gWs().b(this);
           if (q.a(q.this) != null)
           {
             q.a(q.this).dismiss();
@@ -65,9 +70,9 @@ public class q
             AppMethodBeat.o(78549);
             return;
           }
-          paramAnonymousString2 = com.tencent.mm.plugin.webview.modeltools.g.gdv().aYO(paramAnonymousString1);
-          if (((paramAnonymousString2 instanceof WebViewJSSDKImageItem)) && (Util.isNullOrNil(paramAnonymousString2.lPx))) {
-            ((WebViewJSSDKImageItem)paramAnonymousString2).hdZ();
+          paramAnonymousString2 = f.gWt().bkI(paramAnonymousString1);
+          if (((paramAnonymousString2 instanceof WebViewJSSDKImageItem)) && (Util.isNullOrNil(paramAnonymousString2.oLR))) {
+            ((WebViewJSSDKImageItem)paramAnonymousString2).gVO();
           }
           paramAnonymousString2 = new JSONObject();
         }
@@ -85,19 +90,19 @@ public class q
         }
       }
     };
-    com.tencent.mm.plugin.webview.modeltools.g.gdu().a(paramString, str, (f.b)localObject);
+    f.gWs().a(paramString, str, (f.b)localObject);
     Log.i("MicroMsg.JsApiDownLoadImage", "doDownLoadImage, add cdn download task result : %b", new Object[] { Boolean.TRUE });
     if (i != 0)
     {
-      paramContext.getString(2131755998);
-      this.gtM = h.a(paramContext, paramContext.getString(2131768774), true, new DialogInterface.OnCancelListener()
+      paramContext.getString(c.i.app_tip);
+      this.iXX = h.a(paramContext, paramContext.getString(c.i.wv_downloading), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(78550);
-          com.tencent.mm.plugin.webview.modeltools.g.gdu().b(this.IVQ);
-          com.tencent.mm.plugin.webview.modeltools.g.gdu();
-          an.aYI(str);
+          f.gWs().b(this.PSg);
+          f.gWs();
+          an.bkC(str);
           parama.i("downloadImage:fail", null);
           AppMethodBeat.o(78550);
         }
@@ -106,9 +111,9 @@ public class q
     AppMethodBeat.o(78551);
   }
   
-  public final void b(com.tencent.luggage.d.b<com.tencent.mm.plugin.webview.luggage.g>.a paramb) {}
+  public final void b(b<g>.a paramb) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 2;
   }

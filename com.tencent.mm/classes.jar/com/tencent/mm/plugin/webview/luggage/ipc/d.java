@@ -19,7 +19,7 @@ public class d
     if (str == null)
     {
       Log.e("MicroMsg.JsApiMMActivityTask", "jsapi is null");
-      parama.v(new Bundle());
+      parama.C(new Bundle());
       AppMethodBeat.o(78494);
       return;
     }
@@ -36,7 +36,7 @@ public class d
           for (paramAnonymousString = paramAnonymousJSONObject.toString();; paramAnonymousString = "")
           {
             localBundle.putString("data", paramAnonymousString);
-            parama.v(localBundle);
+            parama.C(localBundle);
             AppMethodBeat.o(78493);
             return;
           }
@@ -48,7 +48,7 @@ public class d
     catch (Exception paramContext)
     {
       Log.printErrStackTrace("MicroMsg.JsApiMMActivityTask", paramContext, "", new Object[0]);
-      parama.v(new Bundle());
+      parama.C(new Bundle());
       AppMethodBeat.o(78494);
     }
   }

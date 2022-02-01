@@ -4,22 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.story.c.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryPostElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "", "()V", "ONE_DAY_POST_COUNT_THRESHOLD", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "()Ljava/lang/Integer;", "loadConfig", "", "syncConfig", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryPostElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "", "()V", "ONE_DAY_POST_COUNT_THRESHOLD", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "()Ljava/lang/Integer;", "loadConfig", "", "syncConfig", "plugin-story_release"})
 public final class f
   extends b<Integer>
 {
-  private static final int Flp = 9;
-  public static final f Flq;
+  private static final int LFr = 9;
+  public static final f LFs;
   
   static
   {
     AppMethodBeat.i(118612);
-    Flq = new f();
-    Flp = 9;
+    LFs = new f();
+    LFr = 9;
     AppMethodBeat.o(118612);
   }
   
-  public final void aLS() {}
+  public final void aTZ() {}
 }
 
 

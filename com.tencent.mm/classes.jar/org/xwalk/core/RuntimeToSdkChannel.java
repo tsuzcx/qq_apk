@@ -130,11 +130,11 @@ public class RuntimeToSdkChannel
     }
     if (TextUtils.isEmpty(paramString[1]))
     {
-      paramString = a.brJ(paramString[0]);
+      paramString = a.bEI(paramString[0]);
       AppMethodBeat.o(154614);
       return paramString;
     }
-    paramString = a.nS(paramString[0], paramString[1]);
+    paramString = a.oO(paramString[0], paramString[1]);
     AppMethodBeat.o(154614);
     return paramString;
     if (!(paramObject instanceof String[]))
@@ -150,11 +150,11 @@ public class RuntimeToSdkChannel
     }
     if (TextUtils.isEmpty(paramString[1]))
     {
-      paramString = b.brJ(paramString[0]);
+      paramString = b.bEI(paramString[0]);
       AppMethodBeat.o(154614);
       return paramString;
     }
-    paramString = b.nS(paramString[0], paramString[1]);
+    paramString = b.oO(paramString[0], paramString[1]);
     AppMethodBeat.o(154614);
     return paramString;
     if (!(paramObject instanceof Object[]))
@@ -180,7 +180,7 @@ public class RuntimeToSdkChannel
     }
     paramString = paramObject[0];
     if ((paramObject[0] instanceof String)) {
-      paramString = g.bsF((String)paramObject[0]);
+      paramString = g.bFE((String)paramObject[0]);
     }
     for (;;)
     {
@@ -192,7 +192,7 @@ public class RuntimeToSdkChannel
       String str = (String)paramObject[1];
       if (2 == paramObject.length)
       {
-        paramString = g.f(paramString, str);
+        paramString = g.i(paramString, str);
         AppMethodBeat.o(154614);
         return paramString;
       }
@@ -200,13 +200,13 @@ public class RuntimeToSdkChannel
       {
         if (!(paramObject[2] instanceof Class[]))
         {
-          paramString = g.f(paramString, str);
+          paramString = g.i(paramString, str);
           AppMethodBeat.o(154614);
           return paramString;
         }
         if (!(paramObject[3] instanceof Object[]))
         {
-          paramString = g.f(paramString, str);
+          paramString = g.i(paramString, str);
           AppMethodBeat.o(154614);
           return paramString;
         }
@@ -214,7 +214,7 @@ public class RuntimeToSdkChannel
         AppMethodBeat.o(154614);
         return paramString;
       }
-      paramString = g.f(paramString, str);
+      paramString = g.i(paramString, str);
       AppMethodBeat.o(154614);
       return paramString;
       if (!(paramObject instanceof Object[]))
@@ -242,7 +242,7 @@ public class RuntimeToSdkChannel
       str = (String)paramString[1];
       if (2 == paramString.length)
       {
-        paramString = g.oj(paramObject, str);
+        paramString = g.pf(paramObject, str);
         AppMethodBeat.o(154614);
         return paramString;
       }
@@ -250,13 +250,13 @@ public class RuntimeToSdkChannel
       {
         if (!(paramString[2] instanceof Class[]))
         {
-          paramString = g.oj(paramObject, str);
+          paramString = g.pf(paramObject, str);
           AppMethodBeat.o(154614);
           return paramString;
         }
         if (!(paramString[3] instanceof Object[]))
         {
-          paramString = g.oj(paramObject, str);
+          paramString = g.pf(paramObject, str);
           AppMethodBeat.o(154614);
           return paramString;
         }
@@ -264,7 +264,7 @@ public class RuntimeToSdkChannel
         AppMethodBeat.o(154614);
         return paramString;
       }
-      paramString = g.f(paramObject, str);
+      paramString = g.i(paramObject, str);
       AppMethodBeat.o(154614);
       return paramString;
       if (!(paramObject instanceof Object[]))
@@ -287,8 +287,8 @@ public class RuntimeToSdkChannel
       Thread.getDefaultUncaughtExceptionHandler().uncaughtException(Thread.currentThread(), paramString);
       AppMethodBeat.o(154614);
       return null;
-      paramString = s.a.hvb();
-      if ((paramString.SHN == null) && ((paramObject instanceof Object[])))
+      paramString = s.a.iyU();
+      if ((paramString.aajF == null) && ((paramObject instanceof Object[])))
       {
         paramObject = (Object[])paramObject;
         if (((paramObject[0] instanceof String)) && (paramObject.length >= 2)) {
@@ -301,7 +301,7 @@ public class RuntimeToSdkChannel
         return null;
         label927:
         str = (String)paramObject[0];
-        if ((k)paramString.SHM.get(str) != null) {
+        if ((k)paramString.aajE.get(str) != null) {
           Arrays.copyOfRange(paramObject, 1, paramObject.length);
         }
       }
@@ -310,7 +310,7 @@ public class RuntimeToSdkChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.RuntimeToSdkChannel
  * JD-Core Version:    0.7.0.1
  */

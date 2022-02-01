@@ -23,106 +23,106 @@ public class TPOptionalParam
   
   public TPOptionalParam buildBoolean(@TPCommonEnum.TPOptionalId int paramInt, boolean paramBoolean1)
   {
-    AppMethodBeat.i(189011);
+    AppMethodBeat.i(219787);
     this.paramType = 1;
     this.key = paramInt;
     this.paramBoolean = new OptionalParamBoolean();
     this.paramBoolean.value = paramBoolean1;
-    AppMethodBeat.o(189011);
+    AppMethodBeat.o(219787);
     return this;
   }
   
   public TPOptionalParam buildFloat(@TPCommonEnum.TPOptionalId int paramInt, float paramFloat1)
   {
-    AppMethodBeat.i(189014);
+    AppMethodBeat.i(219792);
     this.paramType = 6;
     this.key = paramInt;
     this.paramFloat = new OptionalParamFloat();
     this.paramFloat.value = paramFloat1;
-    AppMethodBeat.o(189014);
+    AppMethodBeat.o(219792);
     return this;
   }
   
   public TPOptionalParam buildFloat(@TPCommonEnum.TPOptionalId int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    AppMethodBeat.i(189015);
+    AppMethodBeat.i(219793);
     this.paramType = 6;
     this.key = paramInt;
     this.paramFloat = new OptionalParamFloat();
     this.paramFloat.value = paramFloat1;
     this.paramFloat.param1 = paramFloat2;
     this.paramFloat.param2 = paramFloat3;
-    AppMethodBeat.o(189015);
+    AppMethodBeat.o(219793);
     return this;
   }
   
   public TPOptionalParam buildLong(@TPCommonEnum.TPOptionalId int paramInt, long paramLong1)
   {
-    AppMethodBeat.i(189012);
+    AppMethodBeat.i(219789);
     this.paramType = 2;
     this.key = paramInt;
     this.paramLong = new OptionalParamLong();
     this.paramLong.value = paramLong1;
-    AppMethodBeat.o(189012);
+    AppMethodBeat.o(219789);
     return this;
   }
   
   public TPOptionalParam buildLong(@TPCommonEnum.TPOptionalId int paramInt, long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(189013);
+    AppMethodBeat.i(219790);
     this.paramType = 2;
     this.key = paramInt;
     this.paramLong = new OptionalParamLong();
     this.paramLong.value = paramLong1;
     this.paramLong.param1 = paramLong2;
     this.paramLong.param2 = paramLong3;
-    AppMethodBeat.o(189013);
+    AppMethodBeat.o(219790);
     return this;
   }
   
   public TPOptionalParam buildQueueInt(@TPCommonEnum.TPOptionalId int paramInt, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(189016);
+    AppMethodBeat.i(219794);
     this.paramType = 4;
     this.key = paramInt;
     this.paramQueueInt = new OptionalParamQueueInt();
     this.paramQueueInt.queueValue = paramArrayOfInt;
-    AppMethodBeat.o(189016);
+    AppMethodBeat.o(219794);
     return this;
   }
   
   public TPOptionalParam buildQueueString(@TPCommonEnum.TPOptionalId int paramInt, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(189017);
+    AppMethodBeat.i(219795);
     this.paramType = 5;
     this.key = paramInt;
     this.paramQueueString = new OptionalParamQueueString();
     this.paramQueueString.queueValue = paramArrayOfString;
-    AppMethodBeat.o(189017);
+    AppMethodBeat.o(219795);
     return this;
   }
   
   public TPOptionalParam buildString(@TPCommonEnum.TPOptionalId int paramInt, String paramString1)
   {
-    AppMethodBeat.i(189018);
+    AppMethodBeat.i(219796);
     this.paramType = 3;
     this.key = paramInt;
     this.paramString = new OptionalParamString();
     this.paramString.value = paramString1;
-    AppMethodBeat.o(189018);
+    AppMethodBeat.o(219796);
     return this;
   }
   
   public TPOptionalParam buildString(@TPCommonEnum.TPOptionalId int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(189019);
+    AppMethodBeat.i(219797);
     this.paramType = 3;
     this.key = paramInt;
     this.paramString = new OptionalParamString();
     this.paramString.value = paramString1;
     this.paramString.param1 = paramString2;
     this.paramString.param2 = paramString3;
-    AppMethodBeat.o(189019);
+    AppMethodBeat.o(219797);
     return this;
   }
   
@@ -171,7 +171,7 @@ public class TPOptionalParam
   {
     int j = 0;
     int i = 0;
-    AppMethodBeat.i(189020);
+    AppMethodBeat.i(219812);
     Object localObject1 = new StringBuilder();
     switch (this.paramType)
     {
@@ -181,7 +181,7 @@ public class TPOptionalParam
     for (;;)
     {
       localObject1 = ((StringBuilder)localObject1).toString();
-      AppMethodBeat.o(189020);
+      AppMethodBeat.o(219812);
       return localObject1;
       ((StringBuilder)localObject1).append("type:long, key:" + this.key + ", value:" + this.paramBoolean.value);
       continue;

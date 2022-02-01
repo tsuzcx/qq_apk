@@ -1,7 +1,7 @@
 package com.tencent.mm.ui.conversation;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.l;
+import com.tencent.mm.f.a.l;
 import com.tencent.mm.sdk.event.IListener;
 
 final class NewBizConversationUI$11

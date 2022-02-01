@@ -13,12 +13,14 @@
         <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="@color/ag2" android:ellipsize="end" android:gravity="start|center|top" android:id="@id/aap" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="1.0" android:layout_alignParentTop="true" />
         <TextView android:textSize="14.0sp" android:textColor="@color/ag2" android:ellipsize="end" android:gravity="start|center|top" android:id="@id/aao" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxLines="1" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="1.0" android:layout_below="@id/aap" />
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/aaw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/aao">
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:src="@drawable/cg9" />
-            <TextView android:textSize="10.0sp" android:textColor="@color/ag2" android:ellipsize="end" android:gravity="center" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h3c" android:maxLines="1" />
+            <ImageView android:id="@id/k0y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" />
+            <TextView android:textSize="10.0sp" android:textColor="@color/ag2" android:ellipsize="end" android:gravity="center" android:id="@id/k7_" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h3c" android:maxLines="1" />
         </LinearLayout>
     </RelativeLayout>
     <com.tencent.mm.plugin.sns.ui.widget.SnsDrawGestureView android:layout_gravity="left" android:id="@id/hxo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <com.tencent.mm.plugin.sns.ui.widget.SnsAdCardVideoEndView android:id="@id/hxr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <com.tencent.mm.plugin.sns.ad.widget.twistad.TwistCoverView android:gravity="center" android:id="@id/i1d" android:background="#6f000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <ImageView android:layout_gravity="center" android:id="@id/dbl" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ViewStub android:layout_gravity="start|center|top" android:id="@id/cq9" android:layout="@layout/c8" android:layout_width="60.0dip" android:layout_height="20.0dip" android:layout_marginTop="8.0dip" android:layout_marginStart="8.0dip" />
+    <ViewStub android:id="@id/afg" android:layout="@layout/cbf" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>

@@ -4,25 +4,25 @@ import android.os.Build.VERSION;
 import android.webkit.WebResourceResponse;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.luggage.g.h;
-import com.tencent.mm.plugin.wepkg.e;
+import com.tencent.mm.plugin.wepkg.f;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
   implements com.tencent.luggage.webview.a.c
 {
-  private h xwd;
+  private h CzY;
   
   public c(h paramh)
   {
-    this.xwd = paramh;
+    this.CzY = paramh;
   }
   
-  public final String Pl()
+  public final String SK()
   {
     return "weixin://game.js";
   }
   
-  public final WebResourceResponse cX(String paramString)
+  public final WebResourceResponse dx(String paramString)
   {
     boolean bool = false;
     AppMethodBeat.i(82986);
@@ -32,10 +32,10 @@ public final class c
       AppMethodBeat.o(82986);
       return null;
     }
-    if (this.xwd.getWePkgPlugin() != null) {
-      bool = this.xwd.getWePkgPlugin().JLC;
+    if (this.CzY.getWePkgPlugin() != null) {
+      bool = this.CzY.getWePkgPlugin().QKV;
     }
-    paramString = a.pH(bool);
+    paramString = a.se(bool);
     AppMethodBeat.o(82986);
     return paramString;
   }

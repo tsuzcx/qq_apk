@@ -1,36 +1,49 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.cm;
+
 public final class h
-  extends q
+  extends r
 {
-  public a DYb;
+  public String Kls;
+  public long Klt;
+  public String fHO;
   
-  public h(a parama)
+  public final boolean isExpired()
   {
-    this.DYb = parama;
+    AppMethodBeat.i(96315);
+    try
+    {
+      long l = cm.bfF() * 1000;
+      if ((this.Klt > 0L) && (this.Klt < l))
+      {
+        AppMethodBeat.o(96315);
+        return true;
+      }
+      AppMethodBeat.o(96315);
+      return false;
+    }
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(96315);
+    }
+    return false;
   }
   
-  public static final class a
+  public final String toString()
   {
-    public int dRt;
-    public String dWi;
-    public double yFu = -85.0D;
-    public double yFv = -1000.0D;
-    public String yFx = "";
-    
-    public a(double paramDouble1, double paramDouble2, int paramInt, String paramString1, String paramString2)
-    {
-      this.yFu = paramDouble1;
-      this.yFv = paramDouble2;
-      this.dRt = paramInt;
-      this.yFx = paramString1;
-      this.dWi = paramString2;
-    }
+    AppMethodBeat.i(96314);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append("[disableWording:").append(this.Kls).append(", hbCoverId:").append(this.fHO).append(", disableTime:").append(this.Klt).append("]");
+    localObject = ((StringBuffer)localObject).toString();
+    AppMethodBeat.o(96314);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.h
  * JD-Core Version:    0.7.0.1
  */

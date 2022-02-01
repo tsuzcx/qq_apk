@@ -18,17 +18,20 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.b.k;
-import com.tencent.mm.g.a.yh;
-import com.tencent.mm.g.a.yh.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.a.zo;
+import com.tencent.mm.f.a.zo.a;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.memory.o;
+import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMStack;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,73 +41,68 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public abstract class b
 {
-  private static HashMap<String, WeakReference<Bitmap>> DmQ = new HashMap();
-  private static Map<String, Integer> DmU = new ConcurrentHashMap();
-  public WeakReference<View> DmA;
-  private Animation DmB;
-  private Animation DmC;
-  private volatile h DmD;
-  private volatile b DmE;
-  public volatile i DmF;
-  private volatile c DmG;
-  private k DmH;
-  private j DmI;
-  private d DmJ;
-  private b.f DmK = new b.f()
+  private static HashMap<String, WeakReference<Bitmap>> Jsv = new HashMap();
+  private static Map<String, Integer> Jsz = new ConcurrentHashMap();
+  private int JrT = 0;
+  private int JrU = 0;
+  private String JrV = "";
+  private int JrW = -1;
+  private Queue<Integer> JrX = new ConcurrentLinkedQueue();
+  protected int JrY = 41;
+  private Bitmap JrZ;
+  public double JsA = -1.0D;
+  private boolean JsB = false;
+  public boolean JsC = false;
+  private a JsD;
+  public volatile e JsE;
+  private volatile f JsF;
+  public volatile g JsG;
+  public Bitmap Jsa;
+  private Bitmap Jsb;
+  private WeakReference<View> Jsc;
+  private WeakReference<TextView> Jsd;
+  private long Jse;
+  public WeakReference<View> Jsf;
+  private Animation Jsg;
+  private Animation Jsh;
+  private volatile h Jsi;
+  private volatile b Jsj;
+  public volatile i Jsk;
+  private volatile c Jsl;
+  private k Jsm;
+  private j Jsn;
+  private d Jso;
+  private f Jsp = new f()
   {
     public final void b(b paramAnonymousb, long paramAnonymousLong) {}
   };
-  public boolean DmL = true;
-  public boolean DmM = true;
-  public boolean DmN = false;
-  public boolean DmO = false;
-  public boolean DmP = false;
-  public boolean DmR = false;
-  public double DmS = -1.0D;
-  boolean DmT = false;
-  public double DmV = -1.0D;
-  private boolean DmW = false;
-  public boolean DmX = false;
-  private a DmY;
-  public volatile e DmZ;
-  private int Dmo = 0;
-  private int Dmp = 0;
-  private String Dmq = "";
-  private int Dmr = -1;
-  private Queue<Integer> Dms = new ConcurrentLinkedQueue();
-  protected int Dmt = 41;
-  private Bitmap Dmu;
-  public Bitmap Dmv;
-  private Bitmap Dmw;
-  private WeakReference<View> Dmx;
-  private WeakReference<TextView> Dmy;
-  private long Dmz;
-  private volatile b.f Dna;
-  public volatile g Dnb;
-  public String cJp = "";
-  private MMHandler czp;
-  private boolean jiQ = false;
-  public boolean jqj = true;
+  public boolean Jsq = true;
+  public boolean Jsr = true;
+  public boolean Jss = false;
+  public boolean Jst = false;
+  public boolean Jsu = false;
+  public boolean Jsw = false;
+  public double Jsx = -1.0D;
+  boolean Jsy = false;
+  public String cJT = "";
+  private MMHandler cyl;
+  private boolean lYN = false;
   private Surface mSurface;
+  public boolean mfK = true;
   public int position;
   
   public b(int paramInt, View paramView)
   {
-    this.Dmp = paramInt;
-    this.czp = new MMHandler(Looper.getMainLooper());
-    this.DmA = new WeakReference(paramView);
+    this.JrU = paramInt;
+    this.cyl = new MMHandler(Looper.getMainLooper());
+    this.Jsf = new WeakReference(paramView);
     Log.i("MicroMsg.SightPlayController", "new SightPlayController, drawType %d", new Object[] { Integer.valueOf(paramInt) });
-  }
-  
-  private void XF(int paramInt)
-  {
-    com.tencent.mm.modelvideo.o.g(new b.3(this, paramInt), 0L);
   }
   
   public static Bitmap a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     String str = String.format("%s-%s-%s-%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-    Object localObject = (WeakReference)DmQ.get(str);
+    Object localObject = (WeakReference)Jsv.get(str);
     if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
       return (Bitmap)((WeakReference)localObject).get();
     }
@@ -129,23 +127,38 @@ public abstract class b
     paramContext.setBounds(0, 0, paramInt2, paramInt3);
     localObject = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
     paramContext.draw(new Canvas((Bitmap)localObject));
-    DmQ.put(str, new WeakReference(localObject));
+    Jsv.put(str, new WeakReference(localObject));
     Log.d("MicroMsg.SightPlayController", "create mask bmp use %dms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
     return localObject;
   }
   
-  public static boolean aNy(String paramString)
+  public static boolean aYi(String paramString)
   {
     if (Util.isNullOrNil(paramString)) {
       return false;
     }
-    paramString = (Integer)DmU.get(paramString);
+    paramString = (Integer)Jsz.get(paramString);
     return (paramString == null) || (2 != paramString.intValue());
   }
   
-  public static void aRR()
+  private void aeE(final int paramInt)
   {
-    com.tencent.mm.modelvideo.o.g(new b.2(), 0L);
+    s.g(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(116074);
+        long l = System.currentTimeMillis();
+        SightVideoJNI.freeObj(paramInt);
+        Log.d("MicroMsg.SightPlayController", "#0x%x tick: do clear video %d, use %d ms", new Object[] { Integer.valueOf(b.this.hashCode()), Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis() - l) });
+        AppMethodBeat.o(116074);
+      }
+    }, 0L);
+  }
+  
+  public static void baL()
+  {
+    s.g(new b.2(), 0L);
   }
   
   private void d(Queue<Integer> paramQueue)
@@ -156,60 +169,129 @@ public abstract class b
       if (localInteger == null) {
         break;
       }
-      XF(localInteger.intValue());
+      aeE(localInteger.intValue());
     }
   }
   
-  public final void as(Bitmap paramBitmap)
+  public final void ap(Bitmap paramBitmap)
   {
     boolean bool = true;
     if (paramBitmap == null) {}
     for (;;)
     {
       Log.v("MicroMsg.SightPlayController", "draw surface thumb, thumb is null ? %B", new Object[] { Boolean.valueOf(bool) });
-      com.tencent.mm.modelvideo.o.I(this.DmH);
-      if (this.DmH == null) {
-        this.DmH = new k((byte)0);
+      s.I(this.Jsm);
+      if (this.Jsm == null) {
+        this.Jsm = new k((byte)0);
       }
-      this.DmH.Dnm = new WeakReference(paramBitmap);
-      com.tencent.mm.modelvideo.o.g(this.DmH, 0L);
+      this.Jsm.JsR = new WeakReference(paramBitmap);
+      s.g(this.Jsm, 0L);
       return;
       bool = false;
     }
   }
   
-  public abstract void at(Bitmap paramBitmap);
+  public abstract void aq(Bitmap paramBitmap);
   
-  public final void cd(String paramString, boolean paramBoolean)
+  public final void bgP()
   {
-    Log.i("MicroMsg.SightPlayController", "#0x%x data: set video[%s], old path[%s], fling[%B], last video id %d, recording %B, canPlay %B", new Object[] { Integer.valueOf(hashCode()), paramString, this.cJp, Boolean.valueOf(paramBoolean), Integer.valueOf(this.Dmr), Boolean.valueOf(this.DmX), Boolean.valueOf(this.DmM) });
-    if (this.DmX)
+    Log.i("MicroMsg.SightPlayController", "#0x%x restart, canPlay %B, videoPath %s, videoId %d", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(this.Jsr), this.cJT, Integer.valueOf(this.JrW) });
+    if (!this.Jsr) {
+      clear();
+    }
+    do
     {
-      uD(false);
+      return;
+      if (fIB())
+      {
+        Log.w("MicroMsg.SightPlayController", "#0x%x is runing, do nothing when restart request asked, videoPath %s", new Object[] { Integer.valueOf(hashCode()), this.cJT });
+        return;
+      }
+      if (this.JrW < 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        yb(bool);
+        this.Jse = 0L;
+        if (!fIC()) {
+          break;
+        }
+        Log.e("MicroMsg.SightPlayController", "#0x%x is bad fps, do nothing when restart", new Object[] { Integer.valueOf(hashCode()) });
+        return;
+      }
+      if (this.JrW >= 0) {
+        break;
+      }
+      Log.w("MicroMsg.SightPlayController", "#0x%x restart match error video id, try reopen video, videoPath %s", new Object[] { Integer.valueOf(hashCode()), this.cJT });
+    } while (Util.isNullOrNil(this.cJT));
+    if (!aYi(this.cJT))
+    {
+      Log.w("MicroMsg.SightPlayController", "Check Sight Fail!!! return");
+      clear();
       return;
     }
-    if (eVz())
+    this.Jsi = new h((byte)0);
+    s.g(this.Jsi, 0L);
+    return;
+    if (1 == this.JrU)
+    {
+      this.Jsj = new b((byte)0);
+      this.Jsl = null;
+      s.g(this.Jsj, 0L);
+      return;
+    }
+    this.Jsj = new b((byte)0);
+    this.Jsl = new c();
+    this.Jsj.JsL = this.Jsl;
+    this.Jsl.JsO = this.Jsj;
+    s.g(this.Jsj, 0L);
+  }
+  
+  public final void clear()
+  {
+    Log.i("MicroMsg.SightPlayController", "#0x%x do clear, remove render job, video id %d, runing %B", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.JrW), Boolean.valueOf(fIB()) });
+    yb(true);
+    this.Jse = 0L;
+    d(this.JrX);
+    this.JrW = -1;
+    this.cJT = "";
+    this.JrV = "ERROR#PATH";
+    this.Jsb = null;
+    this.Jsx = 0.0D;
+    this.Jsy = false;
+    o.liV.E(this.JrZ);
+    this.JrZ = null;
+  }
+  
+  public final void cm(String paramString, boolean paramBoolean)
+  {
+    Log.i("MicroMsg.SightPlayController", "#0x%x data: set video[%s], old path[%s], fling[%B], last video id %d, recording %B, canPlay %B", new Object[] { Integer.valueOf(hashCode()), paramString, this.cJT, Boolean.valueOf(paramBoolean), Integer.valueOf(this.JrW), Boolean.valueOf(this.JsC), Boolean.valueOf(this.Jsr) });
+    if (this.JsC)
+    {
+      yb(false);
+      return;
+    }
+    if (fIC())
     {
       Log.e("MicroMsg.SightPlayController", "is bad fps, do nothing when set video path");
       clear();
       return;
     }
-    if (!this.DmM)
+    if (!this.Jsr)
     {
       clear();
       return;
     }
     if (paramBoolean)
     {
-      this.Dmq = paramString;
-      uD(false);
+      this.JrV = paramString;
+      yb(false);
       return;
     }
-    if (this.cJp.equals(paramString))
+    if (this.cJT.equals(paramString))
     {
-      this.Dmq = "ERROR#PATH";
-      uD(false);
-      restart();
+      this.JrV = "ERROR#PATH";
+      yb(false);
+      bgP();
       return;
     }
     clear();
@@ -217,73 +299,36 @@ public abstract class b
     if (paramString == null) {
       str = "";
     }
-    this.cJp = str;
-    if (Util.isNullOrNil(this.cJp))
+    this.cJT = str;
+    if (Util.isNullOrNil(this.cJT))
     {
       Log.w("MicroMsg.SightPlayController", "empty video path, do draw empty thumb and return");
-      as(null);
+      ap(null);
       return;
     }
-    if (!aNy(this.cJp))
+    if (!aYi(this.cJT))
     {
       Log.w("MicroMsg.SightPlayController", "Check Sight Fail!!! return");
       clear();
       return;
     }
-    this.DmD = new h((byte)0);
-    com.tencent.mm.modelvideo.o.g(this.DmD, 0L);
+    this.Jsi = new h((byte)0);
+    s.g(this.Jsi, 0L);
   }
   
-  public final void clear()
-  {
-    Log.i("MicroMsg.SightPlayController", "#0x%x do clear, remove render job, video id %d, runing %B", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.Dmr), Boolean.valueOf(eVy()) });
-    uD(true);
-    this.Dmz = 0L;
-    d(this.Dms);
-    this.Dmr = -1;
-    this.cJp = "";
-    this.Dmq = "ERROR#PATH";
-    this.Dmw = null;
-    this.DmS = 0.0D;
-    this.DmT = false;
-    com.tencent.mm.memory.o.itM.f(this.Dmu);
-    this.Dmu = null;
-  }
+  public abstract void eM(int paramInt1, int paramInt2);
   
-  protected final void eVA()
-  {
-    int i = Math.max(1, (int)SightVideoJNI.getVideoRate(this.Dmr));
-    this.Dmt = (1000 / i);
-    Log.d("MicroMsg.SightPlayController", "#0x%x update video rate to %d fps, delay %d ms", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(i), Integer.valueOf(this.Dmt) });
-  }
-  
-  public final IListener eVB()
-  {
-    if (this.DmY == null) {
-      this.DmY = new a(this);
-    }
-    return this.DmY;
-  }
-  
-  public final double eVC()
-  {
-    if (this.Dmr == -1) {
-      return 0.0D;
-    }
-    return SightVideoJNI.getVideoDuration(this.Dmr);
-  }
-  
-  protected int eVx()
+  protected int fIA()
   {
     return -1;
   }
   
-  public final boolean eVy()
+  public final boolean fIB()
   {
-    if (1 == this.Dmp) {
-      if ((this.DmE == null) || (this.DmE.stop)) {}
+    if (1 == this.JrU) {
+      if ((this.Jsj == null) || (this.Jsj.stop)) {}
     }
-    while ((this.DmG != null) && (!this.DmG.stop) && (this.DmE != null) && (!this.DmE.stop))
+    while ((this.Jsl != null) && (!this.Jsl.stop) && (this.Jsj != null) && (!this.Jsj.stop))
     {
       return true;
       return false;
@@ -291,9 +336,9 @@ public abstract class b
     return false;
   }
   
-  public final boolean eVz()
+  public final boolean fIC()
   {
-    if (this.DmR) {}
+    if (this.Jsw) {}
     do
     {
       do
@@ -302,115 +347,83 @@ public abstract class b
         if (Build.VERSION.SDK_INT < 11) {
           break;
         }
-      } while (this.Dmo < 3);
+      } while (this.JrT < 3);
       Log.v("MicroMsg.SightPlayController", "match not check bad fps, but now is bad fps");
-      this.Dmo = 0;
+      this.JrT = 0;
       return false;
-    } while (this.Dmo < 3);
+    } while (this.JrT < 3);
     return true;
   }
   
-  public abstract void eo(int paramInt1, int paramInt2);
+  protected final void fID()
+  {
+    int i = Math.max(1, (int)SightVideoJNI.getVideoRate(this.JrW));
+    this.JrY = (1000 / i);
+    Log.d("MicroMsg.SightPlayController", "#0x%x update video rate to %d fps, delay %d ms", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(i), Integer.valueOf(this.JrY) });
+  }
   
-  public final void j(Surface paramSurface)
+  public final IListener fIE()
+  {
+    if (this.JsD == null) {
+      this.JsD = new a(this);
+    }
+    return this.JsD;
+  }
+  
+  public final double fIF()
+  {
+    if (this.JrW == -1) {
+      return 0.0D;
+    }
+    return SightVideoJNI.getVideoDuration(this.JrW);
+  }
+  
+  public final void n(Surface paramSurface)
   {
     Log.v("MicroMsg.SightPlayController", "set play surface %s", new Object[] { paramSurface });
     this.mSurface = paramSurface;
-    com.tencent.mm.modelvideo.o.g(this.DmH, 0L);
+    s.g(this.Jsm, 0L);
   }
   
-  public final void restart()
-  {
-    Log.i("MicroMsg.SightPlayController", "#0x%x restart, canPlay %B, videoPath %s, videoId %d", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(this.DmM), this.cJp, Integer.valueOf(this.Dmr) });
-    if (!this.DmM) {
-      clear();
-    }
-    do
-    {
-      return;
-      if (eVy())
-      {
-        Log.w("MicroMsg.SightPlayController", "#0x%x is runing, do nothing when restart request asked, videoPath %s", new Object[] { Integer.valueOf(hashCode()), this.cJp });
-        return;
-      }
-      if (this.Dmr < 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        uD(bool);
-        this.Dmz = 0L;
-        if (!eVz()) {
-          break;
-        }
-        Log.e("MicroMsg.SightPlayController", "#0x%x is bad fps, do nothing when restart", new Object[] { Integer.valueOf(hashCode()) });
-        return;
-      }
-      if (this.Dmr >= 0) {
-        break;
-      }
-      Log.w("MicroMsg.SightPlayController", "#0x%x restart match error video id, try reopen video, videoPath %s", new Object[] { Integer.valueOf(hashCode()), this.cJp });
-    } while (Util.isNullOrNil(this.cJp));
-    if (!aNy(this.cJp))
-    {
-      Log.w("MicroMsg.SightPlayController", "Check Sight Fail!!! return");
-      clear();
-      return;
-    }
-    this.DmD = new h((byte)0);
-    com.tencent.mm.modelvideo.o.g(this.DmD, 0L);
-    return;
-    if (1 == this.Dmp)
-    {
-      this.DmE = new b((byte)0);
-      this.DmG = null;
-      com.tencent.mm.modelvideo.o.g(this.DmE, 0L);
-      return;
-    }
-    this.DmE = new b((byte)0);
-    this.DmG = new c();
-    this.DmE.Dng = this.DmG;
-    this.DmG.Dnj = this.DmE;
-    com.tencent.mm.modelvideo.o.g(this.DmE, 0L);
-  }
-  
-  public final void setOnDecodeDurationListener(b.f paramf)
+  public final void setOnDecodeDurationListener(f paramf)
   {
     if (paramf == null) {
-      this.Dna = this.DmK;
+      this.JsF = this.Jsp;
     }
-    this.Dna = paramf;
+    this.JsF = paramf;
   }
   
   public final void setSightInfoView(TextView paramTextView)
   {
-    this.Dmy = new WeakReference(paramTextView);
+    this.Jsd = new WeakReference(paramTextView);
   }
   
   public final void setThumbBgView(View paramView)
   {
-    this.Dmx = new WeakReference(paramView);
+    this.Jsc = new WeakReference(paramView);
   }
   
-  public final void uD(boolean paramBoolean)
+  public final void yb(boolean paramBoolean)
   {
-    if (this.DmD != null)
+    if (this.Jsi != null)
     {
-      com.tencent.mm.modelvideo.o.I(this.DmD);
-      this.DmD.stop = true;
+      s.I(this.Jsi);
+      this.Jsi.stop = true;
     }
-    if (this.DmG != null)
+    if (this.Jsl != null)
     {
-      this.czp.removeCallbacks(this.DmG);
-      this.DmG.stop = true;
+      this.cyl.removeCallbacks(this.Jsl);
+      this.Jsl.stop = true;
     }
-    if (this.DmE != null)
+    if (this.Jsj != null)
     {
-      com.tencent.mm.modelvideo.o.I(this.DmE);
-      this.DmE.stop = true;
+      s.I(this.Jsj);
+      this.Jsj.stop = true;
     }
     i locali;
-    if (this.DmF != null)
+    if (this.Jsk != null)
     {
-      locali = this.DmF;
+      locali = this.Jsk;
       if (!paramBoolean) {
         break label105;
       }
@@ -419,48 +432,48 @@ public abstract class b
     for (int i = 0;; i = 2)
     {
       locali.type = i;
-      com.tencent.mm.modelvideo.o.g(this.DmF, 0L);
+      s.g(this.Jsk, 0L);
       return;
     }
   }
   
   static final class a
-    extends IListener<yh>
+    extends IListener<zo>
   {
-    int Dne;
-    WeakReference<b> Dnf;
-    int tex;
-    int wqJ;
+    int BcO;
+    int JsJ;
+    WeakReference<b> JsK;
+    int wKJ;
     
     public a(b paramb)
     {
       super();
       AppMethodBeat.i(116075);
-      this.wqJ = 0;
-      this.Dne = 0;
-      this.tex = 0;
-      this.Dnf = new WeakReference(paramb);
-      this.__eventId = yh.class.getName().hashCode();
+      this.BcO = 0;
+      this.JsJ = 0;
+      this.wKJ = 0;
+      this.JsK = new WeakReference(paramb);
+      this.__eventId = zo.class.getName().hashCode();
       AppMethodBeat.o(116075);
     }
     
-    private void a(yh paramyh)
+    private void a(zo paramzo)
     {
-      this.wqJ = paramyh.eeC.eeF;
-      this.Dne = paramyh.eeC.eeD;
-      this.tex = paramyh.eeC.eeE;
+      this.BcO = paramzo.fYR.fYU;
+      this.JsJ = paramzo.fYR.fYS;
+      this.wKJ = paramzo.fYR.fYT;
     }
     
-    private boolean eVE()
+    private boolean fIH()
     {
       AppMethodBeat.i(116076);
-      if (this.Dnf.get() == null)
+      if (this.JsK.get() == null)
       {
         AppMethodBeat.o(116076);
         return false;
       }
-      int i = b.G((b)this.Dnf.get()) + this.wqJ;
-      if ((i < this.Dne) || (i > this.tex))
+      int i = b.G((b)this.JsK.get()) + this.BcO;
+      if ((i < this.JsJ) || (i > this.wKJ))
       {
         AppMethodBeat.o(116076);
         return false;
@@ -473,7 +486,7 @@ public abstract class b
   final class b
     implements Runnable
   {
-    b.c Dng;
+    b.c JsL;
     volatile boolean stop = false;
     
     private b() {}
@@ -481,13 +494,13 @@ public abstract class b
     public final void run()
     {
       AppMethodBeat.i(116083);
-      if ((b.s(b.this) != null) && (b.s(b.this).eVG() != null) && (b.s(b.this).eVG().getVisibility() == 0)) {
+      if ((b.s(b.this) != null) && (b.s(b.this).fIJ() != null) && (b.s(b.this).fIJ().getVisibility() == 0)) {
         b.h(b.this).post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(116078);
-            b.s(b.this).eVG().setVisibility(8);
+            b.s(b.this).fIJ().setVisibility(8);
             AppMethodBeat.o(116078);
           }
         });
@@ -517,7 +530,7 @@ public abstract class b
       int i = j;
       if (b.v(b.this) != -1.0D)
       {
-        if (b.this.DmN) {
+        if (b.this.Jss) {
           break label620;
         }
         i = j;
@@ -527,7 +540,7 @@ public abstract class b
             b.a(b.this, new b.i(b.this, (byte)0));
           }
           b.u(b.this).type = 4;
-          b.u(b.this).DmV = b.v(b.this);
+          b.u(b.this).JsA = b.v(b.this);
           b.u(b.this).run();
           i = 1;
         }
@@ -541,7 +554,7 @@ public abstract class b
       {
         f1 = 0.0F;
         f2 = f1;
-        if (b.this.DmN)
+        if (b.this.Jss)
         {
           f2 = f1;
           if (b.w(b.this))
@@ -550,7 +563,7 @@ public abstract class b
             f2 = f1;
             if (b.u(b.this) != null)
             {
-              d = b.u(b.this).eVI() / 1000.0D;
+              d = b.u(b.this).fIL() / 1000.0D;
               f2 = f1;
               if (SightVideoJNI.seekStream(d, b.e(b.this)) > 0)
               {
@@ -582,7 +595,7 @@ public abstract class b
         if (b.u(b.this) != null)
         {
           b.u(b.this).type = 4;
-          b.u(b.this).DmV = b.v(b.this);
+          b.u(b.this).JsA = b.v(b.this);
           b.u(b.this).run();
           b.h(b.this).postDelayed(new Runnable()
           {
@@ -604,11 +617,11 @@ public abstract class b
           b.a(b.this, new b.i(b.this, (byte)0));
         }
         b.u(b.this).type = 4;
-        b.u(b.this).DmV = b.v(b.this);
+        b.u(b.this).JsA = b.v(b.this);
         b.u(b.this).run();
         i = 1;
         break;
-        f1 = f3 / b.this.Dmt + 0.5F;
+        f1 = f3 / b.this.JrY + 0.5F;
         break label375;
         label813:
         b.b(b.this, Math.max(0, b.z(b.this) - 1));
@@ -622,17 +635,17 @@ public abstract class b
         {
           Log.e("MicroMsg.SightPlayController", "#0x%x-#0x%x draw surface match error, surface is not valid", new Object[] { Integer.valueOf(b.this.hashCode()), Integer.valueOf(hashCode()) });
           this.stop = true;
-          if (this.Dng == null) {
+          if (this.JsL == null) {
             break label2266;
           }
-          this.Dng.stop = true;
+          this.JsL.stop = true;
           i = 0;
         }
       }
       for (;;)
       {
         if (b.u(b.this) != null) {
-          Log.d("MicroMsg.SightPlayController", "voice time is" + b.u(b.this).eVI() / 1000.0D);
+          Log.d("MicroMsg.SightPlayController", "voice time is" + b.u(b.this).fIL() / 1000.0D);
         }
         for (;;)
         {
@@ -677,7 +690,7 @@ public abstract class b
                     d = SightVideoJNI.getVideoPlayTime(b.e(b.this));
                     k = (int)d;
                     i = j;
-                    if (k != (int)b.this.DmS)
+                    if (k != (int)b.this.Jsx)
                     {
                       i = j;
                       if (b.B(b.this) != null)
@@ -687,7 +700,7 @@ public abstract class b
                       }
                     }
                     i = j;
-                    b.this.DmS = d;
+                    b.this.Jsx = d;
                   }
                 }
                 if (j == 0)
@@ -744,13 +757,13 @@ public abstract class b
           i = j;
           this.stop = true;
           i = j;
-          if (this.Dng != null)
+          if (this.JsL != null)
           {
             i = j;
-            this.Dng.stop = true;
+            this.JsL.stop = true;
           }
           i = j;
-          b.this.as(null);
+          b.this.ap(null);
           i = j;
           if (b.b(b.this) != null)
           {
@@ -764,10 +777,10 @@ public abstract class b
           {
             d = SightVideoJNI.getVideoPlayTime(b.e(b.this));
             i = (int)d;
-            if (i != (int)b.this.DmS) {
+            if (i != (int)b.this.Jsx) {
               b.B(b.this).b(b.this, i);
             }
-            b.this.DmS = d;
+            b.this.Jsx = d;
             if (b.x(b.this)) {
               Log.i("MicroMsg.SightPlayController", "#0x%x-#0x%drawFrame ret: %d  time: %f", new Object[] { Integer.valueOf(b.this.hashCode()), Integer.valueOf(hashCode()), Integer.valueOf(m), Double.valueOf(d) });
             }
@@ -806,15 +819,15 @@ public abstract class b
             b.a(b.this, -1.0D);
             Log.e("MicroMsg.SightPlayController", "#0x%x-#0x%x draw bitmap match error:%d", new Object[] { Integer.valueOf(b.this.hashCode()), Integer.valueOf(hashCode()), Integer.valueOf(m) });
             this.stop = true;
-            if (this.Dng != null) {
-              this.Dng.stop = true;
+            if (this.JsL != null) {
+              this.JsL.stop = true;
             }
             b.h(b.this).post(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(116080);
-                b.this.at(null);
+                b.this.aq(null);
                 AppMethodBeat.o(116080);
               }
             });
@@ -828,29 +841,29 @@ public abstract class b
               continue;
               if (1 == b.d(b.this))
               {
-                l = b.this.Dmt - (System.currentTimeMillis() - b.t(b.this));
+                l = b.this.JrY - (System.currentTimeMillis() - b.t(b.this));
                 if (b.t(b.this) == 0L) {
-                  com.tencent.mm.modelvideo.o.g(this, b.this.Dmt * 5);
+                  s.g(this, b.this.JrY * 5);
                 }
               }
               for (;;)
               {
                 if (b.u(b.this) != null) {
-                  Log.d("MicroMsg.SightPlayController", "voice time is" + b.u(b.this).eVI() / 1000.0D);
+                  Log.d("MicroMsg.SightPlayController", "voice time is" + b.u(b.this).fIL() / 1000.0D);
                 }
                 AppMethodBeat.o(116083);
                 return;
                 if (l > 0L)
                 {
-                  com.tencent.mm.modelvideo.o.g(this, l);
+                  s.g(this, l);
                 }
                 else
                 {
-                  com.tencent.mm.modelvideo.o.g(this, 0L);
+                  s.g(this, 0L);
                   continue;
                   if ((i != 0) && (b.s(b.this) != null))
                   {
-                    i = b.s(b.this).eVF();
+                    i = b.s(b.this).fII();
                     b.h(b.this).post(new Runnable()
                     {
                       public final void run()
@@ -858,11 +871,11 @@ public abstract class b
                         AppMethodBeat.i(116082);
                         if (b.s(b.this) != null)
                         {
-                          View localView = b.s(b.this).eVG();
+                          View localView = b.s(b.this).fIJ();
                           if (localView != null)
                           {
-                            if ((b.F(b.this) == null) && (b.s(b.this).eVH() != -1) && (b.m(b.this).get() != null)) {
-                              b.a(b.this, AnimationUtils.loadAnimation(((View)b.m(b.this).get()).getContext(), b.s(b.this).eVH()));
+                            if ((b.F(b.this) == null) && (b.s(b.this).fIK() != -1) && (b.m(b.this).get() != null)) {
+                              b.a(b.this, AnimationUtils.loadAnimation(((View)b.m(b.this).get()).getContext(), b.s(b.this).fIK()));
                             }
                             if (b.F(b.this) != null) {
                               localView.startAnimation(b.F(b.this));
@@ -873,13 +886,13 @@ public abstract class b
                         AppMethodBeat.o(116082);
                       }
                     });
-                    this.Dng.Dni = j;
-                    b.h(b.this).postDelayed(this.Dng, i);
+                    this.JsL.JsN = j;
+                    b.h(b.this).postDelayed(this.JsL, i);
                   }
                   else
                   {
-                    this.Dng.Dni = j;
-                    b.h(b.this).post(this.Dng);
+                    this.JsL.JsN = j;
+                    b.h(b.this).post(this.JsL);
                   }
                 }
               }
@@ -895,8 +908,8 @@ public abstract class b
   final class c
     implements Runnable
   {
-    int Dni;
-    b.b Dnj;
+    int JsN;
+    b.b JsO;
     volatile boolean stop;
     
     public c()
@@ -916,21 +929,21 @@ public abstract class b
         AppMethodBeat.o(116085);
         return;
       }
-      b.this.at(b.E(b.this));
+      b.this.aq(b.E(b.this));
       if (b.t(b.this) == 0L)
       {
-        com.tencent.mm.modelvideo.o.g(this.Dnj, 0L);
+        s.g(this.JsO, 0L);
         AppMethodBeat.o(116085);
         return;
       }
-      long l = b.this.Dmt - (System.currentTimeMillis() - b.t(b.this));
+      long l = b.this.JrY - (System.currentTimeMillis() - b.t(b.this));
       if (l > 0L)
       {
-        com.tencent.mm.modelvideo.o.g(this.Dnj, l);
+        s.g(this.JsO, l);
         AppMethodBeat.o(116085);
         return;
       }
-      com.tencent.mm.modelvideo.o.g(this.Dnj, 0L);
+      s.g(this.JsO, 0L);
       AppMethodBeat.o(116085);
     }
   }
@@ -958,13 +971,18 @@ public abstract class b
     public abstract void c(b paramb, int paramInt);
   }
   
+  public static abstract interface f
+  {
+    public abstract void b(b paramb, long paramLong);
+  }
+  
   public static abstract interface g
   {
-    public abstract int eVF();
+    public abstract int fII();
     
-    public abstract View eVG();
+    public abstract View fIJ();
     
-    public abstract int eVH();
+    public abstract int fIK();
   }
   
   final class h
@@ -995,14 +1013,14 @@ public abstract class b
           break;
         }
         Log.w("MicroMsg.SightPlayController", "#0x%x-#0x%x error video id %d, path %s", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(b.this.hashCode()), Integer.valueOf(b.e(b.this)), b.a(b.this) });
-        b.this.as(null);
+        b.this.ap(null);
         if (b.b(b.this) != null) {
           b.b(b.this).c(b.this, -1);
         }
         AppMethodBeat.o(116087);
         return;
       }
-      if (((Boolean)g.aAh().azQ().get(344065, Boolean.FALSE)).booleanValue())
+      if (((Boolean)h.aHG().aHp().b(344065, Boolean.FALSE)).booleanValue())
       {
         if (b.g(b.this) == null) {
           b.a(b.this, new b.j(b.this, (byte)0));
@@ -1016,7 +1034,7 @@ public abstract class b
       {
         if (b.i(b.this))
         {
-          if ((i * j > 1152000) || (i <= 0) || (j <= 0))
+          if ((i * j > 2073600) || (i <= 0) || (j <= 0))
           {
             Log.e("MicroMsg.SightPlayController", "get error info for ad,  videoWidth %d height  %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
             AppMethodBeat.o(116087);
@@ -1030,12 +1048,12 @@ public abstract class b
         }
         b.a(b.this, i, j);
       }
-      b.this.eVA();
+      b.this.fID();
       if ((Float.compare(i / j, 5.0F) > 0) || (Float.compare(j / i, 5.0F) > 0))
       {
         Log.w("MicroMsg.SightPlayController", "ERROR Video size %d, %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
         if (!Util.isNullOrNil(b.a(b.this))) {
-          b.eVD().put(b.a(b.this), Integer.valueOf(2));
+          b.fIG().put(b.a(b.this), Integer.valueOf(2));
         }
         b.a(b.this, 0L);
         b.a(b.this, b.f(b.this));
@@ -1050,13 +1068,13 @@ public abstract class b
         AppMethodBeat.o(116087);
         return;
       }
-      b.this.eo(i, j);
+      b.this.eM(i, j);
       if (1 == b.d(b.this))
       {
         b.a(b.this, new b.b(b.this, (byte)0));
         b.a(b.this, null);
         if (!this.stop) {
-          com.tencent.mm.modelvideo.o.g(b.j(b.this), 0L);
+          s.g(b.j(b.this), 0L);
         }
       }
       for (;;)
@@ -1068,10 +1086,10 @@ public abstract class b
         return;
         b.a(b.this, new b.b(b.this, (byte)0));
         b.a(b.this, new b.c(b.this));
-        b.j(b.this).Dng = b.k(b.this);
-        b.k(b.this).Dnj = b.j(b.this);
+        b.j(b.this).JsL = b.k(b.this);
+        b.k(b.this).JsO = b.j(b.this);
         if (!this.stop) {
-          com.tencent.mm.modelvideo.o.g(b.j(b.this), 0L);
+          s.g(b.j(b.this), 0L);
         }
       }
     }
@@ -1080,23 +1098,23 @@ public abstract class b
   public final class i
     implements Runnable
   {
-    double DmV = -1.0D;
-    MediaPlayer Dnk;
+    double JsA = -1.0D;
+    MediaPlayer JsP;
     public int type;
     
     private i() {}
     
-    private void euh()
+    private void fer()
     {
       AppMethodBeat.i(116089);
       Log.i("MicroMsg.SightPlayController", "stopPlayer");
       try
       {
-        if (this.Dnk != null)
+        if (this.JsP != null)
         {
-          this.Dnk.stop();
-          this.Dnk.release();
-          this.Dnk = null;
+          this.JsP.stop();
+          this.JsP.release();
+          this.JsP = null;
         }
         AppMethodBeat.o(116089);
         return;
@@ -1104,20 +1122,20 @@ public abstract class b
       catch (Exception localException)
       {
         Log.printErrStackTrace("MicroMsg.SightPlayController", localException, "stop play sound error: %s", new Object[] { localException.getMessage() });
-        this.Dnk = null;
+        this.JsP = null;
         AppMethodBeat.o(116089);
       }
     }
     
-    public final double eVI()
+    public final double fIL()
     {
       AppMethodBeat.i(116090);
-      if (this.Dnk == null)
+      if (this.JsP == null)
       {
         AppMethodBeat.o(116090);
         return 0.0D;
       }
-      double d = this.Dnk.getCurrentPosition();
+      double d = this.JsP.getCurrentPosition();
       AppMethodBeat.o(116090);
       return d;
     }
@@ -1150,17 +1168,17 @@ public abstract class b
         break;
         str = "seek";
         break;
-        euh();
+        fer();
         if (!Util.isNullOrNil(b.a(b.this)))
         {
           try
           {
-            this.Dnk = new k();
-            this.Dnk.setDisplay(null);
-            this.Dnk.reset();
-            this.Dnk.setDataSource(s.k(b.a(b.this), false));
-            this.Dnk.setAudioStreamType(3);
-            this.Dnk.setOnErrorListener(new MediaPlayer.OnErrorListener()
+            this.JsP = new k();
+            this.JsP.setDisplay(null);
+            this.JsP.reset();
+            this.JsP.setDataSource(u.n(b.a(b.this), false));
+            this.JsP.setAudioStreamType(3);
+            this.JsP.setOnErrorListener(new MediaPlayer.OnErrorListener()
             {
               public final boolean onError(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
               {
@@ -1174,8 +1192,8 @@ public abstract class b
                 return true;
               }
             });
-            this.Dnk.prepare();
-            this.Dnk.start();
+            this.JsP.prepare();
+            this.JsP.start();
             AppMethodBeat.o(116091);
             return;
           }
@@ -1190,13 +1208,13 @@ public abstract class b
             AppMethodBeat.o(116091);
             return;
           }
-          euh();
+          fer();
           AppMethodBeat.o(116091);
           return;
           try
           {
-            if ((this.Dnk != null) && (this.Dnk.isPlaying())) {
-              this.Dnk.pause();
+            if ((this.JsP != null) && (this.JsP.isPlaying())) {
+              this.JsP.pause();
             }
             AppMethodBeat.o(116091);
             return;
@@ -1204,14 +1222,14 @@ public abstract class b
           catch (Exception localException2)
           {
             Log.printErrStackTrace("MicroMsg.SightPlayController", localException2, "pause sound error: %s", new Object[] { localException2.getMessage() });
-            euh();
+            fer();
             AppMethodBeat.o(116091);
             return;
           }
           try
           {
-            if (this.Dnk != null) {
-              this.Dnk.start();
+            if (this.JsP != null) {
+              this.JsP.start();
             }
             AppMethodBeat.o(116091);
             return;
@@ -1219,14 +1237,14 @@ public abstract class b
           catch (Exception localException3)
           {
             Log.printErrStackTrace("MicroMsg.SightPlayController", localException3, "pause sound error: %s", new Object[] { localException3.getMessage() });
-            euh();
+            fer();
             AppMethodBeat.o(116091);
             return;
           }
           try
           {
-            Log.i("MicroMsg.SightPlayController", "soundplayer seek %f", new Object[] { Double.valueOf(this.DmV) });
-            this.Dnk.seekTo((int)(this.DmV * 1000.0D));
+            Log.i("MicroMsg.SightPlayController", "soundplayer seek %f", new Object[] { Double.valueOf(this.JsA) });
+            this.JsP.seekTo((int)(this.JsA * 1000.0D));
             AppMethodBeat.o(116091);
             return;
           }
@@ -1261,12 +1279,12 @@ public abstract class b
   final class k
     implements Runnable
   {
-    WeakReference<Bitmap> Dnm;
+    WeakReference<Bitmap> JsR;
     
     private k()
     {
       AppMethodBeat.i(116096);
-      this.Dnm = new WeakReference(null);
+      this.JsR = new WeakReference(null);
       AppMethodBeat.o(116096);
     }
     
@@ -1297,7 +1315,7 @@ public abstract class b
             break label276;
           }
           bool2 = true;
-          if (this.Dnm.get() != null) {
+          if (this.JsR.get() != null) {
             break label282;
           }
           bool3 = true;
@@ -1309,7 +1327,7 @@ public abstract class b
           if (b.q(b.this) != null) {
             break label350;
           }
-          localBitmap = (Bitmap)this.Dnm.get();
+          localBitmap = (Bitmap)this.JsR.get();
           if (b.p(b.this) != null) {
             localView1 = (View)b.p(b.this).get();
           }
@@ -1380,13 +1398,13 @@ public abstract class b
       try
       {
         b.a(b.this, Bitmap.createBitmap(b.q(b.this).getWidth(), b.q(b.this).getHeight(), Bitmap.Config.ARGB_8888));
-        if ((b.r(b.this) == null) || (this.Dnm.get() == null) || (((Bitmap)this.Dnm.get()).isRecycled()))
+        if ((b.r(b.this) == null) || (this.JsR.get() == null) || (((Bitmap)this.JsR.get()).isRecycled()))
         {
           if (b.r(b.this) != null) {
             break label878;
           }
           bool1 = true;
-          if (this.Dnm.get() != null) {
+          if (this.JsR.get() != null) {
             break label883;
           }
           bool2 = bool6;
@@ -1403,7 +1421,7 @@ public abstract class b
           b.a(b.this, null);
         }
         long l = System.nanoTime();
-        SightVideoJNI.handleThumb((Bitmap)this.Dnm.get(), b.r(b.this), b.q(b.this));
+        SightVideoJNI.handleThumb((Bitmap)this.JsR.get(), b.r(b.this), b.q(b.this));
         Log.i("MicroMsg.SightPlayController", "handle thumb use %d us", new Object[] { Long.valueOf((System.nanoTime() - l) / 1000L) });
         localBitmap = b.r(b.this);
         if (b.p(b.this) != null) {}
@@ -1427,7 +1445,7 @@ public abstract class b
       label713:
       int i = b.this.hashCode();
       int j = hashCode();
-      if (this.Dnm.get() == null) {}
+      if (this.JsR.get() == null) {}
       for (boolean bool1 = true;; bool1 = false)
       {
         Log.d("MicroMsg.SightPlayController", "#0x%x-#0x%x draw thumb, thumb empty ? %B", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(bool1) });
@@ -1447,13 +1465,13 @@ public abstract class b
             });
           }
         }
-        if (this.Dnm.get() == null)
+        if (this.JsR.get() == null)
         {
           SightVideoJNI.drawSurfaceColor(b.o(b.this), 0);
           AppMethodBeat.o(116097);
           return;
         }
-        SightVideoJNI.drawSurfaceThumb(b.o(b.this), (Bitmap)this.Dnm.get(), b.q(b.this));
+        SightVideoJNI.drawSurfaceThumb(b.o(b.this), (Bitmap)this.JsR.get(), b.q(b.this));
         AppMethodBeat.o(116097);
         return;
         label878:
@@ -1468,7 +1486,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.decode.a.b
  * JD-Core Version:    0.7.0.1
  */

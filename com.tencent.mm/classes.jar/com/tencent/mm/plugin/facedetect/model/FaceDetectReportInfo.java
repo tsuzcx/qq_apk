@@ -11,28 +11,28 @@ public class FaceDetectReportInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<FaceDetectReportInfo> CREATOR;
-  protected int dyP;
-  protected int sPx;
-  protected int sRb;
-  protected int sRc;
-  protected int sRd;
-  protected int sRe;
-  protected int sRf;
-  protected int sRg;
-  protected int sRh;
-  protected int sRi;
-  protected int sRj;
-  protected int sRk;
-  protected int sRl;
-  protected int sRm;
-  protected int sRn;
-  protected int sRo;
-  protected int sRp;
-  protected int sRq;
-  protected HashMap<Integer, Long> sRr;
-  protected HashMap<Integer, Long> sRs;
+  protected int frE;
   protected long sessionId;
   protected int unstableCount;
+  protected int wvr;
+  protected int wwX;
+  protected int wwY;
+  protected int wwZ;
+  protected int wxa;
+  protected int wxb;
+  protected int wxc;
+  protected int wxd;
+  protected int wxe;
+  protected int wxf;
+  protected int wxg;
+  protected int wxh;
+  protected int wxi;
+  protected int wxj;
+  protected int wxk;
+  protected int wxl;
+  protected int wxm;
+  protected HashMap<Integer, Long> wxn;
+  protected HashMap<Integer, Long> wxo;
   
   static
   {
@@ -45,27 +45,27 @@ public class FaceDetectReportInfo
   {
     AppMethodBeat.i(103746);
     this.sessionId = 0L;
-    this.sRb = 0;
-    this.sRc = 0;
-    this.sRd = 0;
-    this.sRe = 0;
-    this.sRf = 0;
-    this.sRg = 0;
-    this.sRh = 0;
-    this.sRi = 0;
-    this.sRj = 0;
-    this.sRk = 0;
-    this.sRl = 0;
-    this.sRm = 0;
-    this.sRn = 0;
-    this.sRo = 0;
+    this.wwX = 0;
+    this.wwY = 0;
+    this.wwZ = 0;
+    this.wxa = 0;
+    this.wxb = 0;
+    this.wxc = 0;
+    this.wxd = 0;
+    this.wxe = 0;
+    this.wxf = 0;
+    this.wxg = 0;
+    this.wxh = 0;
+    this.wxi = 0;
+    this.wxj = 0;
+    this.wxk = 0;
     this.unstableCount = 0;
-    this.dyP = 0;
-    this.sPx = 0;
-    this.sRp = 0;
-    this.sRq = 0;
-    this.sRr = new HashMap();
-    this.sRs = new HashMap();
+    this.frE = 0;
+    this.wvr = 0;
+    this.wxl = 0;
+    this.wxm = 0;
+    this.wxn = new HashMap();
+    this.wxo = new HashMap();
     AppMethodBeat.o(103746);
   }
   
@@ -73,51 +73,51 @@ public class FaceDetectReportInfo
   {
     AppMethodBeat.i(103747);
     this.sessionId = 0L;
-    this.sRb = 0;
-    this.sRc = 0;
-    this.sRd = 0;
-    this.sRe = 0;
-    this.sRf = 0;
-    this.sRg = 0;
-    this.sRh = 0;
-    this.sRi = 0;
-    this.sRj = 0;
-    this.sRk = 0;
-    this.sRl = 0;
-    this.sRm = 0;
-    this.sRn = 0;
-    this.sRo = 0;
+    this.wwX = 0;
+    this.wwY = 0;
+    this.wwZ = 0;
+    this.wxa = 0;
+    this.wxb = 0;
+    this.wxc = 0;
+    this.wxd = 0;
+    this.wxe = 0;
+    this.wxf = 0;
+    this.wxg = 0;
+    this.wxh = 0;
+    this.wxi = 0;
+    this.wxj = 0;
+    this.wxk = 0;
     this.unstableCount = 0;
-    this.dyP = 0;
-    this.sPx = 0;
-    this.sRp = 0;
-    this.sRq = 0;
-    this.sRr = new HashMap();
-    this.sRs = new HashMap();
+    this.frE = 0;
+    this.wvr = 0;
+    this.wxl = 0;
+    this.wxm = 0;
+    this.wxn = new HashMap();
+    this.wxo = new HashMap();
     this.sessionId = paramParcel.readLong();
-    this.sRb = paramParcel.readInt();
-    this.sRc = paramParcel.readInt();
-    this.sRd = paramParcel.readInt();
-    this.sRe = paramParcel.readInt();
-    this.sRf = paramParcel.readInt();
-    this.sRg = paramParcel.readInt();
-    this.sRh = paramParcel.readInt();
-    this.sRi = paramParcel.readInt();
-    this.sRj = paramParcel.readInt();
-    this.sRk = paramParcel.readInt();
-    this.sRl = paramParcel.readInt();
-    this.sRm = paramParcel.readInt();
-    this.sRn = paramParcel.readInt();
-    this.sRo = paramParcel.readInt();
+    this.wwX = paramParcel.readInt();
+    this.wwY = paramParcel.readInt();
+    this.wwZ = paramParcel.readInt();
+    this.wxa = paramParcel.readInt();
+    this.wxb = paramParcel.readInt();
+    this.wxc = paramParcel.readInt();
+    this.wxd = paramParcel.readInt();
+    this.wxe = paramParcel.readInt();
+    this.wxf = paramParcel.readInt();
+    this.wxg = paramParcel.readInt();
+    this.wxh = paramParcel.readInt();
+    this.wxi = paramParcel.readInt();
+    this.wxj = paramParcel.readInt();
+    this.wxk = paramParcel.readInt();
     this.unstableCount = paramParcel.readInt();
-    this.dyP = paramParcel.readInt();
-    this.sPx = paramParcel.readInt();
-    this.sRp = paramParcel.readInt();
-    this.sRq = paramParcel.readInt();
+    this.frE = paramParcel.readInt();
+    this.wvr = paramParcel.readInt();
+    this.wxl = paramParcel.readInt();
+    this.wxm = paramParcel.readInt();
     try
     {
-      this.sRr = paramParcel.readHashMap(HashMap.class.getClassLoader());
-      this.sRs = paramParcel.readHashMap(HashMap.class.getClassLoader());
+      this.wxn = paramParcel.readHashMap(HashMap.class.getClassLoader());
+      this.wxo = paramParcel.readHashMap(HashMap.class.getClassLoader());
       AppMethodBeat.o(103747);
       return;
     }
@@ -128,76 +128,76 @@ public class FaceDetectReportInfo
     }
   }
   
-  public final void HJ(int paramInt)
+  public final void Lt(int paramInt)
   {
     if (paramInt > 0)
     {
       if (paramInt == 1)
       {
-        this.sRc += 1;
+        this.wwY += 1;
         return;
       }
       if (paramInt == 2)
       {
-        this.sRd += 1;
+        this.wwZ += 1;
         return;
       }
-      this.sRc += 1;
+      this.wwY += 1;
       return;
     }
     if (paramInt == 0)
     {
-      this.sRe += 1;
+      this.wxa += 1;
       return;
     }
     if (paramInt == -11)
     {
-      this.sRg += 1;
+      this.wxc += 1;
       return;
     }
     if (paramInt == -12)
     {
-      this.sRh += 1;
+      this.wxd += 1;
       return;
     }
     if (paramInt == -13)
     {
-      this.sRi += 1;
+      this.wxe += 1;
       return;
     }
     if (paramInt == -101)
     {
-      this.sRm += 1;
+      this.wxi += 1;
       return;
     }
     if (paramInt == -102)
     {
-      this.sRj += 1;
+      this.wxf += 1;
       return;
     }
     if (paramInt == -103)
     {
-      this.sRk += 1;
+      this.wxg += 1;
       return;
     }
     if (paramInt == -105)
     {
-      this.sRl += 1;
+      this.wxh += 1;
       return;
     }
     if (paramInt == -106)
     {
-      this.sRf += 1;
+      this.wxb += 1;
       return;
     }
     if (paramInt == -107)
     {
-      this.sRn += 1;
+      this.wxj += 1;
       return;
     }
     if (paramInt == -108)
     {
-      this.sRo += 1;
+      this.wxk += 1;
       return;
     }
     if (paramInt == -109)
@@ -205,7 +205,7 @@ public class FaceDetectReportInfo
       this.unstableCount += 1;
       return;
     }
-    this.sRb += 1;
+    this.wwX += 1;
   }
   
   public int describeContents()
@@ -217,32 +217,32 @@ public class FaceDetectReportInfo
   {
     AppMethodBeat.i(103749);
     this.sessionId = 0L;
-    this.sRc = 0;
-    this.sRd = 0;
-    this.sRe = 0;
-    this.sRb = 0;
-    this.sRf = 0;
-    this.sRg = 0;
-    this.sRh = 0;
-    this.sRi = 0;
-    this.sRj = 0;
-    this.sRk = 0;
-    this.sRl = 0;
-    this.sRm = 0;
-    this.sRn = 0;
-    this.dyP = 0;
-    this.sPx = 0;
-    this.sRp = 0;
-    this.sRq = 0;
-    this.sRr.clear();
-    this.sRs.clear();
+    this.wwY = 0;
+    this.wwZ = 0;
+    this.wxa = 0;
+    this.wwX = 0;
+    this.wxb = 0;
+    this.wxc = 0;
+    this.wxd = 0;
+    this.wxe = 0;
+    this.wxf = 0;
+    this.wxg = 0;
+    this.wxh = 0;
+    this.wxi = 0;
+    this.wxj = 0;
+    this.frE = 0;
+    this.wvr = 0;
+    this.wxl = 0;
+    this.wxm = 0;
+    this.wxn.clear();
+    this.wxo.clear();
     AppMethodBeat.o(103749);
   }
   
   public String toString()
   {
     AppMethodBeat.i(103750);
-    String str = "detectOk: " + this.sRc + ", motionOk: " + this.sRd + ", noFace: " + this.sRe + ", systemErr: " + this.sRb + ", noLiveFace: " + this.sRf + ", tooDark: " + this.sRg + ", tooLight: " + this.sRh + ", backLight: " + this.sRi + ", tooSmall: " + this.sRj + ", tooBig: " + this.sRk + ", tooActive: " + this.sRl + ", poseNotValid: " + this.sRm + ", timeOut: " + this.sRn + ", totalFrame: " + this.dyP + ", verifyTime: " + this.sPx + ", processTimePerFrame: " + this.sRq;
+    String str = "detectOk: " + this.wwY + ", motionOk: " + this.wwZ + ", noFace: " + this.wxa + ", systemErr: " + this.wwX + ", noLiveFace: " + this.wxb + ", tooDark: " + this.wxc + ", tooLight: " + this.wxd + ", backLight: " + this.wxe + ", tooSmall: " + this.wxf + ", tooBig: " + this.wxg + ", tooActive: " + this.wxh + ", poseNotValid: " + this.wxi + ", timeOut: " + this.wxj + ", totalFrame: " + this.frE + ", verifyTime: " + this.wvr + ", processTimePerFrame: " + this.wxm;
     AppMethodBeat.o(103750);
     return str;
   }
@@ -251,33 +251,33 @@ public class FaceDetectReportInfo
   {
     AppMethodBeat.i(103748);
     paramParcel.writeLong(this.sessionId);
-    paramParcel.writeInt(this.sRb);
-    paramParcel.writeInt(this.sRc);
-    paramParcel.writeInt(this.sRd);
-    paramParcel.writeInt(this.sRe);
-    paramParcel.writeInt(this.sRf);
-    paramParcel.writeInt(this.sRg);
-    paramParcel.writeInt(this.sRh);
-    paramParcel.writeInt(this.sRi);
-    paramParcel.writeInt(this.sRj);
-    paramParcel.writeInt(this.sRk);
-    paramParcel.writeInt(this.sRl);
-    paramParcel.writeInt(this.sRm);
-    paramParcel.writeInt(this.sRn);
-    paramParcel.writeInt(this.sRo);
+    paramParcel.writeInt(this.wwX);
+    paramParcel.writeInt(this.wwY);
+    paramParcel.writeInt(this.wwZ);
+    paramParcel.writeInt(this.wxa);
+    paramParcel.writeInt(this.wxb);
+    paramParcel.writeInt(this.wxc);
+    paramParcel.writeInt(this.wxd);
+    paramParcel.writeInt(this.wxe);
+    paramParcel.writeInt(this.wxf);
+    paramParcel.writeInt(this.wxg);
+    paramParcel.writeInt(this.wxh);
+    paramParcel.writeInt(this.wxi);
+    paramParcel.writeInt(this.wxj);
+    paramParcel.writeInt(this.wxk);
     paramParcel.writeInt(this.unstableCount);
-    paramParcel.writeInt(this.dyP);
-    paramParcel.writeInt(this.sPx);
-    paramParcel.writeInt(this.sRp);
-    paramParcel.writeInt(this.sRq);
-    paramParcel.writeMap(this.sRr);
-    paramParcel.writeMap(this.sRs);
+    paramParcel.writeInt(this.frE);
+    paramParcel.writeInt(this.wvr);
+    paramParcel.writeInt(this.wxl);
+    paramParcel.writeInt(this.wxm);
+    paramParcel.writeMap(this.wxn);
+    paramParcel.writeMap(this.wxo);
     AppMethodBeat.o(103748);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.model.FaceDetectReportInfo
  * JD-Core Version:    0.7.0.1
  */

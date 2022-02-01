@@ -13,9 +13,11 @@ import android.view.ViewOutlineProvider;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.f.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.multitalk.a.e;
+import com.tencent.mm.plugin.multitalk.a.g;
+import com.tencent.mm.plugin.voip.b.g;
 import com.tencent.mm.plugin.voip.ui.e;
 import com.tencent.mm.plugin.voip.video.OpenGlRender;
 import com.tencent.mm.plugin.voip.video.render.VoIPRenderTextureView;
@@ -26,46 +28,47 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkMiniVideoView;", "", "rootView", "Landroid/view/View;", "(Landroid/view/View;)V", "animationView", "Landroid/widget/ImageView;", "contentView", "context", "Landroid/content/Context;", "detailShadow", "detailTv", "Landroid/widget/TextView;", "drawPaint", "Landroid/graphics/Paint;", "fullIconLayout", "fullLayout", "fullTextTv", "isDoingAnimationChange", "", "lastRenderSwitchTick", "", "getLastRenderSwitchTick", "()Ljava/lang/Long;", "setLastRenderSwitchTick", "(Ljava/lang/Long;)V", "Ljava/lang/Long;", "value", "", "mCurrentRenderUser", "getMCurrentRenderUser", "()Ljava/lang/String;", "setMCurrentRenderUser", "(Ljava/lang/String;)V", "mCurrentRenderVideo", "getMCurrentRenderVideo", "()Z", "setMCurrentRenderVideo", "(Z)V", "mCurrentShowUser", "getMCurrentShowUser", "setMCurrentShowUser", "mLastVideoData", "mPrevBitmap", "Landroid/graphics/Bitmap;", "mPrevBitmapAngle", "", "mPrevBitmapMirror", "radius", "", "renderView", "Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderTextureView;", "getRootView", "()Landroid/view/View;", "setRootView", "visibility", "getVisibility", "()Ljava/lang/Integer;", "setVisibility", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "changeRenderAnimation", "userName", "bitmap", "angle", "mirror", "changeRenderUser", "", "name", "drawAvatar", "drawBitmap", "drawPrevBitmap", "drawVideo", "img", "getRenderSurface", "hideOther", "hideView", "onHangupHappened", "onResumeIconAndTipShow", "refreshLayoutCauseDockChanged", "isDockerLeft", "release", "setVoicePlayDevice", "device", "Companion", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkMiniVideoView;", "", "rootView", "Landroid/view/View;", "(Landroid/view/View;)V", "animationView", "Landroid/widget/ImageView;", "contentView", "context", "Landroid/content/Context;", "detailShadow", "detailTv", "Landroid/widget/TextView;", "drawPaint", "Landroid/graphics/Paint;", "fullIconLayout", "fullLayout", "fullTextTv", "isDoingAnimationChange", "", "lastRenderSwitchTick", "", "getLastRenderSwitchTick", "()Ljava/lang/Long;", "setLastRenderSwitchTick", "(Ljava/lang/Long;)V", "Ljava/lang/Long;", "value", "", "mCurrentRenderUser", "getMCurrentRenderUser", "()Ljava/lang/String;", "setMCurrentRenderUser", "(Ljava/lang/String;)V", "mCurrentRenderVideo", "getMCurrentRenderVideo", "()Z", "setMCurrentRenderVideo", "(Z)V", "mCurrentShowUser", "getMCurrentShowUser", "setMCurrentShowUser", "mLastVideoData", "mPrevBitmap", "Landroid/graphics/Bitmap;", "mPrevBitmapAngle", "", "mPrevBitmapMirror", "radius", "", "renderView", "Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderTextureView;", "getRootView", "()Landroid/view/View;", "setRootView", "visibility", "getVisibility", "()Ljava/lang/Integer;", "setVisibility", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "changeRenderAnimation", "userName", "bitmap", "angle", "mirror", "changeRenderUser", "", "name", "drawAvatar", "drawBitmap", "drawPrevBitmap", "drawVideo", "img", "getRenderSurface", "hideOther", "hideView", "onHangupHappened", "onResumeIconAndTipShow", "refreshLayoutCauseDockChanged", "isDockerLeft", "release", "setVoicePlayDevice", "device", "Companion", "plugin-multitalk_release"})
 public final class i
 {
-  public static final i.a zTo;
+  public static final i.a FyQ;
+  TextView FyA;
+  private VoIPRenderTextureView FyB;
+  ImageView FyC;
+  private View FyD;
+  View FyE;
+  ImageView FyF;
+  TextView FyG;
+  boolean FyH;
+  String FyI;
+  String FyJ;
+  Long FyK;
+  private Bitmap FyL;
+  private int FyM;
+  private int FyN;
+  private long FyO;
+  private boolean FyP;
   View contentView;
   Context context;
-  View lJI;
-  private Paint qvj;
+  View oFW;
   private final float radius;
-  TextView zSY;
-  private VoIPRenderTextureView zSZ;
-  ImageView zTa;
-  private View zTb;
-  View zTc;
-  ImageView zTd;
-  TextView zTe;
-  boolean zTf;
-  String zTg;
-  String zTh;
-  Long zTi;
-  private Bitmap zTj;
-  private int zTk;
-  private int zTl;
-  private long zTm;
-  private boolean zTn;
+  private Paint tUe;
   
   static
   {
-    AppMethodBeat.i(239800);
-    zTo = new i.a((byte)0);
-    AppMethodBeat.o(239800);
+    AppMethodBeat.i(196164);
+    FyQ = new i.a((byte)0);
+    AppMethodBeat.o(196164);
   }
   
   public i(View paramView)
   {
-    AppMethodBeat.i(239799);
-    this.lJI = paramView;
-    this.radius = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 12);
-    this.contentView = this.lJI.findViewById(2131305030);
+    AppMethodBeat.i(196162);
+    this.oFW = paramView;
+    this.radius = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 12);
+    this.contentView = this.oFW.findViewById(a.e.multitalk_content_view);
     paramView = this.contentView;
     if (paramView != null) {
       paramView.setClipToOutline(true);
@@ -74,151 +77,151 @@ public final class i
     if (paramView != null) {
       paramView.setOutlineProvider((ViewOutlineProvider)new e(this.radius));
     }
-    this.zSY = ((TextView)this.lJI.findViewById(2131305067));
-    this.zTb = this.lJI.findViewById(2131297145);
-    this.context = this.lJI.getContext();
-    this.zSZ = ((VoIPRenderTextureView)this.lJI.findViewById(2131305060));
-    paramView = this.zSZ;
+    this.FyA = ((TextView)this.oFW.findViewById(a.e.multitalk_username_tv));
+    this.FyD = this.oFW.findViewById(a.e.avatar_username_iv);
+    this.context = this.oFW.getContext();
+    this.FyB = ((VoIPRenderTextureView)this.oFW.findViewById(a.e.multitalk_small_video_view_content));
+    paramView = this.FyB;
     if (paramView != null) {
       paramView.setClipToOutline(true);
     }
-    paramView = this.zSZ;
+    paramView = this.FyB;
     if (paramView != null) {
       paramView.setOutlineProvider((ViewOutlineProvider)new e(this.radius));
     }
-    this.zTa = ((ImageView)this.lJI.findViewById(2131305059));
-    paramView = this.zTa;
+    this.FyC = ((ImageView)this.oFW.findViewById(a.e.multitalk_small_video_view_animation));
+    paramView = this.FyC;
     if (paramView != null) {
       paramView.setClipToOutline(true);
     }
-    paramView = this.zTa;
+    paramView = this.FyC;
     if (paramView != null) {
       paramView.setOutlineProvider((ViewOutlineProvider)new e(this.radius));
     }
-    this.qvj = new Paint();
-    paramView = this.qvj;
+    this.tUe = new Paint();
+    paramView = this.tUe;
     if (paramView != null) {
       paramView.setColor(-16777216);
     }
-    paramView = this.qvj;
+    paramView = this.tUe;
     if (paramView != null) {
       paramView.setFilterBitmap(false);
     }
-    paramView = this.qvj;
+    paramView = this.tUe;
     if (paramView != null) {
       paramView.setTextSize(40.0F);
     }
-    this.zTc = this.lJI.findViewById(2131310040);
-    paramView = this.zTc;
+    this.FyE = this.oFW.findViewById(a.e.voip_mini_windows_layout);
+    paramView = this.FyE;
     if (paramView != null) {
       paramView.setClipToOutline(true);
     }
-    paramView = this.zTc;
+    paramView = this.FyE;
     if (paramView != null) {
       paramView.setOutlineProvider((ViewOutlineProvider)new e(this.radius));
     }
-    this.zTd = ((ImageView)this.lJI.findViewById(2131305040));
-    this.zTe = ((TextView)this.lJI.findViewById(2131305041));
-    this.zTm = -1L;
-    AppMethodBeat.o(239799);
+    this.FyF = ((ImageView)this.oFW.findViewById(a.e.multitalk_mini_full_icon));
+    this.FyG = ((TextView)this.oFW.findViewById(a.e.multitalk_mini_full_tv));
+    this.FyO = -1L;
+    AppMethodBeat.o(196162);
   }
   
-  private final void aGu(final String paramString)
+  private final void aQI(final String paramString)
   {
-    AppMethodBeat.i(239793);
-    h.RTc.aV((Runnable)new c(this, paramString));
-    AppMethodBeat.o(239793);
+    AppMethodBeat.i(196123);
+    com.tencent.e.h.ZvG.bc((Runnable)new c(this, paramString));
+    AppMethodBeat.o(196123);
   }
   
   private final boolean c(final String paramString, final Bitmap paramBitmap, final int paramInt1, final int paramInt2)
   {
-    AppMethodBeat.i(239796);
-    if (((kotlin.g.b.p.j(this.zTh, paramString) ^ true)) && (this.zTj != null) && (this.zSZ != null))
+    AppMethodBeat.i(196136);
+    if (((kotlin.g.b.p.h(this.FyJ, paramString) ^ true)) && (this.FyL != null) && (this.FyB != null))
     {
-      h.RTc.aV((Runnable)new b(this, paramBitmap, paramInt1, paramInt2, paramString));
-      AppMethodBeat.o(239796);
+      com.tencent.e.h.ZvG.bc((Runnable)new b(this, paramBitmap, paramInt1, paramInt2, paramString));
+      AppMethodBeat.o(196136);
       return true;
     }
-    AppMethodBeat.o(239796);
+    AppMethodBeat.o(196136);
     return false;
   }
   
-  public final void H(int paramInt)
+  public final void XH(int paramInt)
   {
-    AppMethodBeat.i(239798);
-    View localView = this.zTb;
+    AppMethodBeat.i(196142);
+    View localView = this.FyD;
     if (localView != null)
     {
       localView.setVisibility(paramInt);
-      AppMethodBeat.o(239798);
+      AppMethodBeat.o(196142);
       return;
     }
-    AppMethodBeat.o(239798);
+    AppMethodBeat.o(196142);
   }
   
-  public final void aGs(String paramString)
+  public final void aQG(String paramString)
   {
     Long localLong = null;
-    AppMethodBeat.i(239791);
+    AppMethodBeat.i(196121);
     if (paramString == null)
     {
-      this.zTj = null;
-      this.zTl = -1;
-      this.zTk = -1;
+      this.FyL = null;
+      this.FyN = -1;
+      this.FyM = -1;
     }
     for (;;)
     {
-      this.zTi = localLong;
-      this.zTg = paramString;
-      AppMethodBeat.o(239791);
+      this.FyK = localLong;
+      this.FyI = paramString;
+      AppMethodBeat.o(196121);
       return;
       localLong = Long.valueOf(Util.currentTicks());
     }
   }
   
-  public final void aGt(String paramString)
+  public final void aQH(String paramString)
   {
-    AppMethodBeat.i(239792);
-    aGs(paramString);
-    this.zTh = paramString;
-    AppMethodBeat.o(239792);
+    AppMethodBeat.i(196122);
+    aQG(paramString);
+    this.FyJ = paramString;
+    AppMethodBeat.o(196122);
   }
   
-  public final boolean aGv(String paramString)
+  public final boolean aQJ(String paramString)
   {
     int j = 0;
     boolean bool = false;
     try
     {
-      AppMethodBeat.i(239797);
-      kotlin.g.b.p.h(paramString, "userName");
-      if (this.zSZ == null)
+      AppMethodBeat.i(196140);
+      kotlin.g.b.p.k(paramString, "userName");
+      if (this.FyB == null)
       {
         Log.e("MicroMsg.MultiTalkMiniVideoView", "drawAvatar view is null");
-        AppMethodBeat.o(239797);
+        AppMethodBeat.o(196140);
       }
       for (;;)
       {
         return bool;
-        if (!this.zTn) {
+        if (!this.FyP) {
           break;
         }
         Log.e("MicroMsg.MultiTalkMiniVideoView", "renderVideoBitmap img false cause isDoingAnimationChange");
-        AppMethodBeat.o(239797);
+        AppMethodBeat.o(196140);
       }
-      localObject1 = a.b.gov();
+      localObject1 = a.b.hjf();
     }
     finally {}
     Object localObject1;
-    Object localObject2 = this.zSZ;
+    Object localObject2 = this.FyB;
     if (localObject2 != null) {}
     for (int i = ((VoIPRenderTextureView)localObject2).getMeasuredWidth();; i = 0)
     {
-      localObject2 = this.zSZ;
+      localObject2 = this.FyB;
       if (localObject2 != null) {
         j = ((VoIPRenderTextureView)localObject2).getMeasuredHeight();
       }
-      localObject2 = ((j.a)localObject1).a(paramString, i, j, 1);
+      localObject2 = ((j.a)localObject1).b(paramString, i, j, 1);
       localObject1 = localObject2;
       if (localObject2 != null)
       {
@@ -232,23 +235,23 @@ public final class i
         if (!c(paramString, (Bitmap)localObject1, 0, 0))
         {
           f((Bitmap)localObject1, 0, 0);
-          aGu(paramString);
-          this.zTf = false;
+          aQI(paramString);
+          this.FyH = false;
         }
-        AppMethodBeat.o(239797);
+        AppMethodBeat.o(196140);
         bool = true;
         break;
       }
       localObject2 = MMApplicationContext.getContext();
-      kotlin.g.b.p.g(localObject2, "MMApplicationContext.getContext()");
-      localObject2 = com.tencent.mm.compatible.f.a.decodeResource(((Context)localObject2).getResources(), 2131690042);
+      kotlin.g.b.p.j(localObject2, "MMApplicationContext.getContext()");
+      localObject2 = com.tencent.mm.compatible.f.a.decodeResource(((Context)localObject2).getResources(), a.g.default_avatar);
       if (!c(paramString, (Bitmap)localObject1, 0, 0))
       {
         f((Bitmap)localObject2, 0, 0);
-        aGu(paramString);
-        this.zTf = false;
+        aQI(paramString);
+        this.FyH = false;
       }
-      AppMethodBeat.o(239797);
+      AppMethodBeat.o(196140);
       bool = true;
       break;
     }
@@ -261,41 +264,41 @@ public final class i
     {
       try
       {
-        AppMethodBeat.i(239795);
-        kotlin.g.b.p.h(paramString, "userName");
-        if (this.zSZ == null)
+        AppMethodBeat.i(196135);
+        kotlin.g.b.p.k(paramString, "userName");
+        if (this.FyB == null)
         {
           Log.e("MicroMsg.MultiTalkMiniVideoView", "drawVideo view is null");
-          AppMethodBeat.o(239795);
+          AppMethodBeat.o(196135);
           return bool;
         }
         if (paramBitmap == null)
         {
           Log.e("MicroMsg.MultiTalkMiniVideoView", "renderVideoBitmap img is null");
-          AppMethodBeat.o(239795);
+          AppMethodBeat.o(196135);
           continue;
         }
-        if (!this.zTn) {
+        if (!this.FyP) {
           break label97;
         }
       }
       finally {}
       Log.e("MicroMsg.MultiTalkMiniVideoView", "renderVideoBitmap img false cause isDoingAnimationChange");
-      AppMethodBeat.o(239795);
+      AppMethodBeat.o(196135);
       continue;
       label97:
       if (!c(paramString, paramBitmap, paramInt2, paramInt1))
       {
         f(paramBitmap, paramInt2, paramInt1);
-        this.zTm = Util.currentTicks();
-        aGu(paramString);
-        this.zTf = true;
-        AppMethodBeat.o(239795);
+        this.FyO = Util.currentTicks();
+        aQI(paramString);
+        this.FyH = true;
+        AppMethodBeat.o(196135);
         bool = true;
       }
       else
       {
-        AppMethodBeat.o(239795);
+        AppMethodBeat.o(196135);
         bool = true;
       }
     }
@@ -310,22 +313,22 @@ public final class i
       int j;
       try
       {
-        AppMethodBeat.i(239794);
+        AppMethodBeat.i(196131);
         if ((paramBitmap == null) || (paramBitmap.isRecycled()))
         {
           Log.e("MicroMsg.MultiTalkMiniVideoView", "DrawBitmap, bitmap is null or recycled");
-          com.tencent.mm.plugin.multitalk.model.p.emX();
-          AppMethodBeat.o(239794);
+          com.tencent.mm.plugin.multitalk.model.p.eWM();
+          AppMethodBeat.o(196131);
           return;
         }
         i = paramBitmap.getWidth();
         j = paramBitmap.getHeight();
-        if (this.zSZ == null)
+        if (this.FyB == null)
         {
-          AppMethodBeat.o(239794);
+          AppMethodBeat.o(196131);
           continue;
         }
-        localObject = this.zSZ;
+        localObject = this.FyB;
       }
       finally {}
       Object localObject;
@@ -335,7 +338,7 @@ public final class i
       if (localCanvas == null)
       {
         Log.e("MicroMsg.MultiTalkMiniVideoView", "getCanvasError");
-        AppMethodBeat.o(239794);
+        AppMethodBeat.o(196131);
       }
       else
       {
@@ -356,23 +359,23 @@ public final class i
         }
         try
         {
-          localCanvas.drawBitmap(paramBitmap, (Matrix)localObject, this.qvj);
-          this.zTk = paramInt1;
-          this.zTl = paramInt2;
-          this.zTj = paramBitmap;
+          localCanvas.drawBitmap(paramBitmap, (Matrix)localObject, this.tUe);
+          this.FyM = paramInt1;
+          this.FyN = paramInt2;
+          this.FyL = paramBitmap;
           try
           {
-            paramBitmap = this.zSZ;
+            paramBitmap = this.FyB;
             if (paramBitmap == null) {
               break label344;
             }
             paramBitmap.unlockCanvasAndPost(localCanvas);
-            AppMethodBeat.o(239794);
+            AppMethodBeat.o(196131);
           }
           catch (Exception paramBitmap)
           {
             Log.printErrStackTrace("MicroMsg.MultiTalkMiniVideoView", (Throwable)paramBitmap, "drawBitmap unlockCanvasAndPost crash", new Object[0]);
-            AppMethodBeat.o(239794);
+            AppMethodBeat.o(196131);
           }
           continue;
           if (paramInt1 != OpenGlRender.FLAG_Angle90) {
@@ -387,13 +390,13 @@ public final class i
             Log.e("MicroMsg.MultiTalkMiniVideoView", "draw bitmap error");
           }
           label344:
-          AppMethodBeat.o(239794);
+          AppMethodBeat.o(196131);
         }
       }
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -401,21 +404,21 @@ public final class i
     
     public final void run()
     {
-      AppMethodBeat.i(239789);
-      Object localObject = i.d(this.zTp);
+      AppMethodBeat.i(206791);
+      Object localObject = i.d(this.FyR);
       if (localObject != null) {
         ((ImageView)localObject).setAlpha(1.0F);
       }
-      i.e(this.zTp);
-      localObject = i.d(this.zTp);
+      i.e(this.FyR);
+      localObject = i.d(this.FyR);
       if (localObject != null) {
         ((ImageView)localObject).setVisibility(0);
       }
-      localObject = i.d(this.zTp);
+      localObject = i.d(this.FyR);
       if (localObject != null) {
         ((ImageView)localObject).clearAnimation();
       }
-      localObject = i.d(this.zTp);
+      localObject = i.d(this.FyR);
       if (localObject != null)
       {
         localObject = ((ImageView)localObject).animate();
@@ -433,72 +436,72 @@ public final class i
                 
                 public final void onAnimationEnd(Animator paramAnonymousAnimator)
                 {
-                  AppMethodBeat.i(239787);
-                  paramAnonymousAnimator = i.d(this.zTs.zTp);
+                  AppMethodBeat.i(203111);
+                  paramAnonymousAnimator = i.d(this.FyU.FyR);
                   if (paramAnonymousAnimator != null) {
                     paramAnonymousAnimator.setVisibility(8);
                   }
-                  paramAnonymousAnimator = i.b(this.zTs.zTp);
+                  paramAnonymousAnimator = i.b(this.FyU.FyR);
                   if (paramAnonymousAnimator != null) {
                     paramAnonymousAnimator.setVisibility(0);
                   }
-                  i.a(this.zTs.zTp, false);
-                  AppMethodBeat.o(239787);
+                  i.a(this.FyU.FyR, false);
+                  AppMethodBeat.o(203111);
                 }
                 
                 public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
                 
                 public final void onAnimationStart(Animator paramAnonymousAnimator)
                 {
-                  AppMethodBeat.i(239788);
-                  this.zTs.zTp.f(this.zTs.cKG, this.zTs.zTq, this.zTs.zTr);
-                  paramAnonymousAnimator = i.b(this.zTs.zTp);
+                  AppMethodBeat.i(203117);
+                  this.FyU.FyR.f(this.FyU.cLr, this.FyU.FyS, this.FyU.FyT);
+                  paramAnonymousAnimator = i.b(this.FyU.FyR);
                   if (paramAnonymousAnimator != null) {
                     paramAnonymousAnimator.setVisibility(8);
                   }
-                  paramAnonymousAnimator = i.b(this.zTs.zTp);
+                  paramAnonymousAnimator = i.b(this.FyU.FyR);
                   if (paramAnonymousAnimator != null) {
                     paramAnonymousAnimator.setTextSize(1, 10.0F);
                   }
-                  paramAnonymousAnimator = i.b(this.zTs.zTp);
+                  paramAnonymousAnimator = i.b(this.FyU.FyR);
                   if (paramAnonymousAnimator != null)
                   {
-                    localObject1 = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-                    kotlin.g.b.p.g(localObject1, "MMKernel.service(IMessengerStorage::class.java)");
-                    localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject1).aSN().Kn(this.zTs.jDi);
-                    kotlin.g.b.p.g(localObject1, "MMKernel.service(IMessen…ava).contactStg[userName]");
+                    localObject1 = com.tencent.mm.kernel.h.ae(n.class);
+                    kotlin.g.b.p.j(localObject1, "MMKernel.service(IMessengerStorage::class.java)");
+                    localObject1 = ((n)localObject1).bbL().RG(this.FyU.mtC);
+                    kotlin.g.b.p.j(localObject1, "MMKernel.service(IMessen…ava).contactStg[userName]");
                     paramAnonymousAnimator.setText((CharSequence)((as)localObject1).getNickname());
                   }
-                  Object localObject1 = this.zTs.zTp.lJI;
+                  Object localObject1 = this.FyU.FyR.oFW;
                   Object localObject2 = new StringBuilder();
-                  paramAnonymousAnimator = i.c(this.zTs.zTp);
+                  paramAnonymousAnimator = i.c(this.FyU.FyR);
                   if (paramAnonymousAnimator != null) {}
-                  for (paramAnonymousAnimator = paramAnonymousAnimator.getString(2131757549);; paramAnonymousAnimator = null)
+                  for (paramAnonymousAnimator = paramAnonymousAnimator.getString(b.g.chatting_voip_voice);; paramAnonymousAnimator = null)
                   {
                     paramAnonymousAnimator = ((StringBuilder)localObject2).append(String.valueOf(paramAnonymousAnimator)).append(",");
-                    localObject2 = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-                    kotlin.g.b.p.g(localObject2, "MMKernel.service(IMessengerStorage::class.java)");
-                    localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject2).aSN().Kn(this.zTs.jDi);
-                    kotlin.g.b.p.g(localObject2, "MMKernel.service(IMessen…ava).contactStg[userName]");
+                    localObject2 = com.tencent.mm.kernel.h.ae(n.class);
+                    kotlin.g.b.p.j(localObject2, "MMKernel.service(IMessengerStorage::class.java)");
+                    localObject2 = ((n)localObject2).bbL().RG(this.FyU.mtC);
+                    kotlin.g.b.p.j(localObject2, "MMKernel.service(IMessen…ava).contactStg[userName]");
                     ((View)localObject1).setContentDescription((CharSequence)((as)localObject2).getNickname());
-                    this.zTs.zTp.aGt(this.zTs.jDi);
-                    i.a(this.zTs.zTp, true);
-                    AppMethodBeat.o(239788);
+                    this.FyU.FyR.aQH(this.FyU.mtC);
+                    i.a(this.FyU.FyR, true);
+                    AppMethodBeat.o(203117);
                     return;
                   }
                 }
               });
-              AppMethodBeat.o(239789);
+              AppMethodBeat.o(206791);
               return;
             }
           }
         }
       }
-      AppMethodBeat.o(239789);
+      AppMethodBeat.o(206791);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -506,42 +509,42 @@ public final class i
     
     public final void run()
     {
-      AppMethodBeat.i(239790);
-      Object localObject1 = i.a(this.zTp);
+      AppMethodBeat.i(201970);
+      Object localObject1 = i.a(this.FyR);
       if (localObject1 != null) {
         ((View)localObject1).setVisibility(0);
       }
-      localObject1 = i.b(this.zTp);
+      localObject1 = i.b(this.FyR);
       if (localObject1 != null) {
         ((TextView)localObject1).setTextSize(1, 10.0F);
       }
-      localObject1 = i.b(this.zTp);
+      localObject1 = i.b(this.FyR);
       if (localObject1 != null)
       {
-        localObject2 = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-        kotlin.g.b.p.g(localObject2, "MMKernel.service(IMessengerStorage::class.java)");
-        localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject2).aSN().Kn(paramString);
-        kotlin.g.b.p.g(localObject2, "MMKernel.service(IMessen…ss.java).contactStg[name]");
+        localObject2 = com.tencent.mm.kernel.h.ae(n.class);
+        kotlin.g.b.p.j(localObject2, "MMKernel.service(IMessengerStorage::class.java)");
+        localObject2 = ((n)localObject2).bbL().RG(paramString);
+        kotlin.g.b.p.j(localObject2, "MMKernel.service(IMessen…ss.java).contactStg[name]");
         ((TextView)localObject1).setText((CharSequence)((as)localObject2).getNickname());
       }
-      Object localObject2 = this.zTp.lJI;
+      Object localObject2 = this.FyR.oFW;
       Object localObject3 = new StringBuilder();
-      localObject1 = i.c(this.zTp);
+      localObject1 = i.c(this.FyR);
       if (localObject1 != null) {}
-      for (localObject1 = ((Context)localObject1).getString(2131757549);; localObject1 = null)
+      for (localObject1 = ((Context)localObject1).getString(b.g.chatting_voip_voice);; localObject1 = null)
       {
         localObject1 = ((StringBuilder)localObject3).append(String.valueOf(localObject1)).append(",");
-        localObject3 = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-        kotlin.g.b.p.g(localObject3, "MMKernel.service(IMessengerStorage::class.java)");
-        localObject3 = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject3).aSN().Kn(paramString);
-        kotlin.g.b.p.g(localObject3, "MMKernel.service(IMessen…ss.java).contactStg[name]");
+        localObject3 = com.tencent.mm.kernel.h.ae(n.class);
+        kotlin.g.b.p.j(localObject3, "MMKernel.service(IMessengerStorage::class.java)");
+        localObject3 = ((n)localObject3).bbL().RG(paramString);
+        kotlin.g.b.p.j(localObject3, "MMKernel.service(IMessen…ss.java).contactStg[name]");
         ((View)localObject2).setContentDescription((CharSequence)((as)localObject3).getNickname());
-        if ((kotlin.g.b.p.j(this.zTp.zTh, paramString) ^ true))
+        if ((kotlin.g.b.p.h(this.FyR.FyJ, paramString) ^ true))
         {
-          this.zTp.aGt(paramString);
-          this.zTp.zTi = Long.valueOf(Util.currentTicks());
+          this.FyR.aQH(paramString);
+          this.FyR.FyK = Long.valueOf(Util.currentTicks());
         }
-        AppMethodBeat.o(239790);
+        AppMethodBeat.o(201970);
         return;
       }
     }
@@ -549,7 +552,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.i
  * JD-Core Version:    0.7.0.1
  */

@@ -110,7 +110,7 @@ public class a
   {
     AppMethodBeat.i(15011);
     super.e();
-    q();
+    r();
     AppMethodBeat.o(15011);
   }
   
@@ -140,9 +140,9 @@ public class a
     AppMethodBeat.o(15009);
   }
   
-  void q()
+  void r()
   {
-    AppMethodBeat.i(15010);
+    AppMethodBeat.i(232547);
     if (this.r != null)
     {
       this.r.e();
@@ -153,12 +153,12 @@ public class a
       this.s.e();
       this.s = null;
     }
-    AppMethodBeat.o(15010);
+    AppMethodBeat.o(232547);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -8,24 +8,24 @@ import kotlin.l.b.a.b.m.aj;
 public final class c
   implements d, g
 {
-  private final c TKo;
-  private final e TKp;
-  private final e ThF;
+  private final e aaKz;
+  private final c abmQ;
+  private final e abmR;
   
   public c(e parame)
   {
     AppMethodBeat.i(60257);
-    this.ThF = parame;
-    this.TKo = this;
-    this.TKp = this.ThF;
+    this.aaKz = parame;
+    this.abmQ = this;
+    this.abmR = this.aaKz;
     AppMethodBeat.o(60257);
   }
   
-  private aj hDN()
+  private aj iIg()
   {
     AppMethodBeat.i(60252);
-    aj localaj = this.ThF.hAG();
-    p.g(localaj, "classDescriptor.defaultType");
+    aj localaj = this.aaKz.iET();
+    p.j(localaj, "classDescriptor.defaultType");
     AppMethodBeat.o(60252);
     return localaj;
   }
@@ -34,7 +34,7 @@ public final class c
   {
     Object localObject = null;
     AppMethodBeat.i(60254);
-    e locale = this.ThF;
+    e locale = this.aaKz;
     if (!(paramObject instanceof c)) {
       paramObject = null;
     }
@@ -43,38 +43,38 @@ public final class c
       c localc = (c)paramObject;
       paramObject = localObject;
       if (localc != null) {
-        paramObject = localc.ThF;
+        paramObject = localc.aaKz;
       }
-      boolean bool = p.j(locale, paramObject);
+      boolean bool = p.h(locale, paramObject);
       AppMethodBeat.o(60254);
       return bool;
     }
   }
   
-  public final e hBx()
-  {
-    return this.ThF;
-  }
-  
   public final int hashCode()
   {
     AppMethodBeat.i(60255);
-    int i = this.ThF.hashCode();
+    int i = this.aaKz.hashCode();
     AppMethodBeat.o(60255);
     return i;
+  }
+  
+  public final e iFM()
+  {
+    return this.aaKz;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(60256);
-    String str = "Class{" + hDN() + '}';
+    String str = "Class{" + iIg() + '}';
     AppMethodBeat.o(60256);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.j.f.a.c
  * JD-Core Version:    0.7.0.1
  */

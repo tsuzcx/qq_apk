@@ -42,7 +42,7 @@ public class MMKImageView
   
   private void setIconColor(int paramInt, Drawable paramDrawable)
   {
-    AppMethodBeat.i(214538);
+    AppMethodBeat.i(264976);
     if (paramDrawable != null) {
       if (paramInt == 0) {
         break label65;
@@ -57,7 +57,7 @@ public class MMKImageView
       if (paramInt != 0) {
         paramDrawable.setAlpha(j);
       }
-      AppMethodBeat.o(214538);
+      AppMethodBeat.o(264976);
       return;
     }
   }
@@ -68,7 +68,7 @@ public class MMKImageView
     paramContext = new CdnImageView(paramContext);
     paramContext.setScaleType(ImageView.ScaleType.FIT_CENTER);
     paramContext.setAdjustViewBounds(true);
-    paramContext.setImgSavedPath(c.hgG());
+    paramContext.setImgSavedPath(c.iii());
     this.image.setNeedGetNetworkImageImmediately(false);
     this.defaultImage.setNeedGetNetworkImageImmediately(false);
     paramContext.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
@@ -78,9 +78,9 @@ public class MMKImageView
   
   public String getDarkModeUrl()
   {
-    AppMethodBeat.i(214537);
+    AppMethodBeat.i(264975);
     String str = this.image.getDarkUrl();
-    AppMethodBeat.o(214537);
+    AppMethodBeat.o(264975);
     return str;
   }
   
@@ -120,12 +120,24 @@ public class MMKImageView
     return str;
   }
   
+  public void setCornerRadius(float paramFloat)
+  {
+    AppMethodBeat.i(264977);
+    super.setCornerRadius(paramFloat);
+    if (((getView() instanceof CdnImageView)) && (getWidth() > 0.0F))
+    {
+      ((CdnImageView)getView()).setRoundCorner(true);
+      ((CdnImageView)getView()).setRoundCornerRate(paramFloat / getWidth());
+    }
+    AppMethodBeat.o(264977);
+  }
+  
   public void setDarkModeUrl(String paramString)
   {
-    AppMethodBeat.i(214536);
+    AppMethodBeat.i(264974);
     this.image.setDarkModeUrl(paramString);
     setImage(this.image);
-    AppMethodBeat.o(214536);
+    AppMethodBeat.o(264974);
   }
   
   public void setDefaultUrl(String paramString)
@@ -157,18 +169,38 @@ public class MMKImageView
     AppMethodBeat.i(19058);
     if ((paramKImage != null) && ((paramKImage instanceof MMKImage)))
     {
+      MMKImage localMMKImage = this.image;
       this.image = ((MMKImage)paramKImage);
       if (!this.image.isNetworkImage()) {
-        break label63;
+        break label126;
       }
-      ((CdnImageView)getView()).setUrl(this.image.getUrl());
+      int j = 1;
+      int i = j;
+      if (localMMKImage != null)
+      {
+        i = j;
+        if (localMMKImage.getUrl() != null)
+        {
+          i = j;
+          if (this.image.getUrl() != null)
+          {
+            i = j;
+            if (localMMKImage.getUrl().equals(this.image.getUrl())) {
+              i = 0;
+            }
+          }
+        }
+      }
+      if (i != 0) {
+        ((CdnImageView)getView()).setUrl(this.image.getUrl());
+      }
     }
     for (;;)
     {
       notifyChanged();
       AppMethodBeat.o(19058);
       return;
-      label63:
+      label126:
       if (this.image.getBitmap() != null)
       {
         paramKImage = new BitmapDrawable(MMApplicationContext.getContext().getResources(), this.image.getBitmap());
@@ -255,7 +287,7 @@ public class MMKImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,6 @@
     <FrameLayout android:id="@id/fp2" android:background="@drawable/akc" android:layout_width="fill_parent" android:layout_height="@dimen/c2" />
     <FrameLayout android:layout_gravity="center|top" android:id="@id/hcc" android:background="@drawable/a8l" android:layout_width="wrap_content" android:layout_height="@dimen/ci" android:layout_marginTop="22.0dip" />
     <FrameLayout android:layout_gravity="bottom|center" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb">
-        <android.support.v7.widget.RecyclerView android:id="@id/hch" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="@dimen/cl" android:layout_marginBottom="18.0dip" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/hch" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="@dimen/cl" android:layout_marginBottom="18.0dip" />
     </FrameLayout>
 </FrameLayout>

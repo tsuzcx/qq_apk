@@ -22,24 +22,24 @@ import java.util.concurrent.TimeUnit;
 
 public enum p
 {
-  public final Map<b, NsdManager.DiscoveryListener> njd;
+  public final Map<b, NsdManager.DiscoveryListener> qjO;
   
   static
   {
     AppMethodBeat.i(144459);
-    njc = new p("INSTANCE");
-    nje = new p[] { njc };
+    qjN = new p("INSTANCE");
+    qjP = new p[] { qjN };
     AppMethodBeat.o(144459);
   }
   
   private p()
   {
     AppMethodBeat.i(144455);
-    this.njd = new ConcurrentHashMap();
+    this.qjO = new ConcurrentHashMap();
     AppMethodBeat.o(144455);
   }
   
-  public static NsdManager bPK()
+  public static NsdManager ccb()
   {
     AppMethodBeat.i(144457);
     NsdManager localNsdManager = (NsdManager)MMApplicationContext.getContext().getSystemService("servicediscovery");
@@ -50,18 +50,18 @@ public enum p
   public final void a(b paramb)
   {
     AppMethodBeat.i(144456);
-    synchronized (this.njd)
+    synchronized (this.qjO)
     {
-      if (!this.njd.containsKey(paramb))
+      if (!this.qjO.containsKey(paramb))
       {
         AppMethodBeat.o(144456);
         return;
       }
-      NsdManager localNsdManager = bPK();
+      NsdManager localNsdManager = ccb();
       try
       {
-        localNsdManager.stopServiceDiscovery((NsdManager.DiscoveryListener)this.njd.get(paramb));
-        this.njd.remove(paramb);
+        localNsdManager.stopServiceDiscovery((NsdManager.DiscoveryListener)this.qjO.get(paramb));
+        this.qjO.remove(paramb);
         AppMethodBeat.o(144456);
         return;
       }
@@ -88,27 +88,27 @@ public enum p
     
     public abstract void b(p.c paramc);
     
-    public abstract void bHE();
+    public abstract void bTn();
     
-    public abstract void bHF();
+    public abstract void bTo();
     
-    public abstract void bHG();
+    public abstract void bTp();
     
-    public abstract void bHH();
+    public abstract void bTq();
   }
   
   public static final class c
   {
-    public String iBb;
     public String ip;
-    public Map<String, String> njl;
+    public String lqE;
     public int port;
+    public Map<String, String> qjW;
     public String serviceName;
     
     public c()
     {
       AppMethodBeat.i(144452);
-      this.njl = new HashMap();
+      this.qjW = new HashMap();
       AppMethodBeat.o(144452);
     }
     
@@ -116,14 +116,14 @@ public enum p
     c(NsdServiceInfo paramNsdServiceInfo)
     {
       AppMethodBeat.i(144451);
-      this.njl = new HashMap();
+      this.qjW = new HashMap();
       Object localObject = paramNsdServiceInfo.getHost();
       if (localObject != null) {
         this.ip = ((InetAddress)localObject).getHostAddress();
       }
       this.port = paramNsdServiceInfo.getPort();
       this.serviceName = paramNsdServiceInfo.getServiceName();
-      this.iBb = paramNsdServiceInfo.getServiceType();
+      this.lqE = paramNsdServiceInfo.getServiceType();
       if (Build.VERSION.SDK_INT >= 21) {}
       for (paramNsdServiceInfo = paramNsdServiceInfo.getAttributes();; paramNsdServiceInfo = null)
       {
@@ -135,7 +135,7 @@ public enum p
             String str = (String)((Iterator)localObject).next();
             byte[] arrayOfByte = (byte[])paramNsdServiceInfo.get(str);
             if (arrayOfByte != null) {
-              this.njl.put(str, new String(Base64.encode(arrayOfByte, 2)));
+              this.qjW.put(str, new String(Base64.encode(arrayOfByte, 2)));
             }
           }
         }
@@ -147,7 +147,7 @@ public enum p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.s.p
  * JD-Core Version:    0.7.0.1
  */

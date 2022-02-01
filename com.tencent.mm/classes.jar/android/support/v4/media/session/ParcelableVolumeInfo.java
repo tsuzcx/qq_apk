@@ -8,19 +8,19 @@ public class ParcelableVolumeInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ParcelableVolumeInfo> CREATOR = new Parcelable.Creator() {};
-  public int MY;
-  public int MZ;
-  public int Na;
-  public int Nb;
-  public int Nc;
+  public int dO;
+  public int dP;
+  public int dQ;
+  public int dR;
+  public int dS;
   
   public ParcelableVolumeInfo(Parcel paramParcel)
   {
-    this.MY = paramParcel.readInt();
-    this.Na = paramParcel.readInt();
-    this.Nb = paramParcel.readInt();
-    this.Nc = paramParcel.readInt();
-    this.MZ = paramParcel.readInt();
+    this.dO = paramParcel.readInt();
+    this.dQ = paramParcel.readInt();
+    this.dR = paramParcel.readInt();
+    this.dS = paramParcel.readInt();
+    this.dP = paramParcel.readInt();
   }
   
   public int describeContents()
@@ -30,16 +30,16 @@ public class ParcelableVolumeInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.MY);
-    paramParcel.writeInt(this.Na);
-    paramParcel.writeInt(this.Nb);
-    paramParcel.writeInt(this.Nc);
-    paramParcel.writeInt(this.MZ);
+    paramParcel.writeInt(this.dO);
+    paramParcel.writeInt(this.dQ);
+    paramParcel.writeInt(this.dR);
+    paramParcel.writeInt(this.dS);
+    paramParcel.writeInt(this.dP);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     android.support.v4.media.session.ParcelableVolumeInfo
  * JD-Core Version:    0.7.0.1
  */

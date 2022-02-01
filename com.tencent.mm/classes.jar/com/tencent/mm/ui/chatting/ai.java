@@ -1,52 +1,52 @@
 package com.tencent.mm.ui.chatting;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.nl;
+import com.tencent.mm.f.a.od;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class ai
 {
-  private static ai PjY;
-  int PjZ = 0;
-  private int Pka = 0;
+  private static ai WDG;
+  int WDH = 0;
+  private int WDI = 0;
   
-  public static ai gOk()
+  public static ai hNu()
   {
     AppMethodBeat.i(34840);
-    if (PjY == null) {
-      PjY = new ai();
+    if (WDG == null) {
+      WDG = new ai();
     }
-    ai localai = PjY;
+    ai localai = WDG;
     AppMethodBeat.o(34840);
     return localai;
   }
   
-  public final void amq(int paramInt)
+  public final void avq(int paramInt)
   {
     AppMethodBeat.i(34841);
-    if (this.PjZ > 0)
+    if (this.WDH > 0)
     {
-      this.PjZ -= 1;
+      this.WDH -= 1;
       AppMethodBeat.o(34841);
       return;
     }
-    if (paramInt != this.Pka)
+    if (paramInt != this.WDI)
     {
       Log.i("MicroMsg.OrzChattingLifecycle", "notifyChattingStatus [%d]", new Object[] { Integer.valueOf(paramInt) });
-      nl localnl = new nl();
-      localnl.dTC.dTD = paramInt;
-      EventCenter.instance.publish(localnl);
+      od localod = new od();
+      localod.fMX.fMY = paramInt;
+      EventCenter.instance.publish(localod);
     }
     if ((paramInt == 1) || (paramInt == 4)) {
-      this.Pka = paramInt;
+      this.WDI = paramInt;
     }
     AppMethodBeat.o(34841);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ai
  * JD-Core Version:    0.7.0.1
  */

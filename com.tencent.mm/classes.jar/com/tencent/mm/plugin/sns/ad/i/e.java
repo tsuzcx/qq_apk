@@ -1,79 +1,81 @@
 package com.tencent.mm.plugin.sns.ad.i;
 
+import android.graphics.Color;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
 {
-  public static String XS(int paramInt)
+  public static int aYL(String paramString)
   {
-    AppMethodBeat.i(202357);
-    if ((paramInt > 9) || (paramInt < 0))
+    AppMethodBeat.i(197462);
+    int j = -352965;
+    int i = j;
+    try
     {
-      AppMethodBeat.o(202357);
-      return String.valueOf(paramInt);
+      if (!TextUtils.isEmpty(paramString)) {
+        i = Color.parseColor(paramString);
+      }
+      AppMethodBeat.o(197462);
+      return i;
     }
-    String str = "0".concat(String.valueOf(paramInt));
-    AppMethodBeat.o(202357);
-    return str;
+    catch (Throwable paramString)
+    {
+      for (;;)
+      {
+        Log.w("SnsAd.ColorUtil", "parse color from string failed, return default value!");
+        i = j;
+      }
+    }
   }
   
-  public static a a(long paramLong, a parama)
+  private static String d(float paramFloat, String paramString)
   {
-    AppMethodBeat.i(202356);
-    a locala = parama;
-    if (parama == null) {
-      locala = new a();
+    AppMethodBeat.i(197466);
+    try
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      int i = (int)(255.0F * paramFloat);
+      localStringBuilder.append('#').append(Integer.toHexString(i));
+      if (paramString.startsWith("#")) {
+        localStringBuilder.append(paramString.substring(1));
+      }
+      for (;;)
+      {
+        paramString = localStringBuilder.toString();
+        AppMethodBeat.o(197466);
+        return paramString;
+        localStringBuilder.append(paramString);
+      }
+      return "";
     }
-    locala.grV = ((int)(paramLong / 86400000L));
-    locala.hour = ((int)((paramLong - locala.grV * 86400000L) / 3600000L));
-    locala.minute = ((int)((paramLong - locala.grV * 86400000L - locala.hour * 3600000L) / 60000L));
-    locala.second = ((int)((paramLong - locala.grV * 86400000L - locala.hour * 3600000L - locala.minute * 60000L) / 1000L));
-    AppMethodBeat.o(202356);
-    return locala;
+    catch (Throwable paramString)
+    {
+      AppMethodBeat.o(197466);
+    }
   }
   
-  public static boolean ap(long paramLong1, long paramLong2)
+  public static String kp(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(202358);
-    long l2 = cl.aWA();
-    long l1 = paramLong1;
-    if (paramLong1 == 0L) {
-      l1 = l2;
-    }
-    if ((l1 < 0L) || (l1 > l2) || (paramLong2 < l2))
+    AppMethodBeat.i(197463);
+    try
     {
-      AppMethodBeat.o(202358);
-      return false;
+      paramString1 = d(Float.parseFloat(paramString1), paramString2);
+      AppMethodBeat.o(197463);
+      return paramString1;
     }
-    if ((int)((paramLong2 - l2) / 86400000L) < 100)
+    catch (Throwable paramString1)
     {
-      AppMethodBeat.o(202358);
-      return true;
+      Log.w("SnsAd.ColorUtil", "parse color from string failed");
+      AppMethodBeat.o(197463);
     }
-    AppMethodBeat.o(202358);
-    return false;
-  }
-  
-  public static final class a
-  {
-    public int grV;
-    public int hour;
-    public int minute;
-    public int second;
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(202355);
-      String str = "DateTime{day=" + this.grV + ", hour=" + this.hour + ", minute=" + this.minute + ", second=" + this.second + '}' + '@' + hashCode();
-      AppMethodBeat.o(202355);
-      return str;
-    }
+    return paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.i.e
  * JD-Core Version:    0.7.0.1
  */

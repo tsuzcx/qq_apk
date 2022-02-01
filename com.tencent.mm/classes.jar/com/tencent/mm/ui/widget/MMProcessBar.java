@@ -5,38 +5,39 @@ import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
-import android.support.v4.graphics.drawable.a;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
+import androidx.core.graphics.drawable.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class MMProcessBar
   extends View
 {
-  private Animation FN;
-  private float QDe;
+  private Animation VT;
+  private float YbH;
   
   public MMProcessBar(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(205404);
-    this.QDe = 0.0F;
-    this.FN = new RotateAnimation(0.0F, 360.0F);
-    AppMethodBeat.o(205404);
+    AppMethodBeat.i(193753);
+    this.YbH = 0.0F;
+    this.VT = new RotateAnimation(0.0F, 360.0F);
+    AppMethodBeat.o(193753);
   }
   
   public MMProcessBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164211);
-    this.QDe = 0.0F;
-    this.FN = new RotateAnimation(0.0F, 360.0F);
+    this.YbH = 0.0F;
+    this.VT = new RotateAnimation(0.0F, 360.0F);
     AppMethodBeat.o(164211);
   }
   
@@ -44,27 +45,38 @@ public class MMProcessBar
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164212);
-    this.QDe = 0.0F;
-    this.FN = new RotateAnimation(0.0F, 360.0F);
+    this.YbH = 0.0F;
+    this.VT = new RotateAnimation(0.0F, 360.0F);
     AppMethodBeat.o(164212);
   }
   
-  public final void gYO()
+  public final void cQ(float paramFloat)
+  {
+    AppMethodBeat.i(164219);
+    if ((this.VT != null) && (!this.VT.hasEnded())) {
+      this.VT.cancel();
+    }
+    this.YbH += paramFloat;
+    setRotation(this.YbH * 360.0F);
+    AppMethodBeat.o(164219);
+  }
+  
+  public final void hZG()
   {
     AppMethodBeat.i(164217);
-    if (this.FN != null) {
-      this.FN.cancel();
+    if (this.VT != null) {
+      this.VT.cancel();
     }
     clearAnimation();
     AppMethodBeat.o(164217);
   }
   
-  public final void gYP()
+  public final void hZH()
   {
     AppMethodBeat.i(164218);
     if (getVisibility() == 0)
     {
-      startAnimation(this.FN);
+      startAnimation(this.VT);
       AppMethodBeat.o(164218);
       return;
     }
@@ -72,23 +84,43 @@ public class MMProcessBar
     AppMethodBeat.o(164218);
   }
   
-  public final boolean gYQ()
+  public final boolean hZI()
   {
-    AppMethodBeat.i(205406);
-    if ((this.FN != null) && (!this.FN.hasEnded()) && (this.FN.hasStarted()))
+    AppMethodBeat.i(193758);
+    if ((this.VT != null) && (!this.VT.hasEnded()) && (this.VT.hasStarted()))
     {
-      AppMethodBeat.o(205406);
+      AppMethodBeat.o(193758);
       return true;
     }
-    AppMethodBeat.o(205406);
+    AppMethodBeat.o(193758);
     return false;
+  }
+  
+  public final void mO(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(193756);
+    try
+    {
+      Drawable localDrawable = getResources().getDrawable(paramInt1);
+      localDrawable.setColorFilter(MMApplicationContext.getContext().getResources().getColor(a.d.BW_70), PorterDuff.Mode.SRC_ATOP);
+      if (paramInt2 != 0) {
+        a.a(localDrawable, ColorStateList.valueOf(paramInt2));
+      }
+      setBackground(localDrawable);
+      AppMethodBeat.o(193756);
+      return;
+    }
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(193756);
+    }
   }
   
   protected void onAttachedToWindow()
   {
     AppMethodBeat.i(164215);
     super.onAttachedToWindow();
-    gYP();
+    hZH();
     AppMethodBeat.o(164215);
   }
   
@@ -96,7 +128,7 @@ public class MMProcessBar
   {
     AppMethodBeat.i(164214);
     super.onDetachedFromWindow();
-    gYO();
+    hZG();
     AppMethodBeat.o(164214);
   }
   
@@ -108,61 +140,30 @@ public class MMProcessBar
     {
       float f1 = getWidth() / 2.0F;
       float f2 = getHeight() / 2.0F;
-      gYO();
-      this.FN = new RotateAnimation(0.0F, 72000.0F, f1, f2);
-      this.FN.setRepeatMode(-1);
-      this.FN.setRepeatCount(-1);
-      this.FN.setDuration(70000L);
-      this.FN.setInterpolator(new LinearInterpolator());
+      hZG();
+      this.VT = new RotateAnimation(0.0F, 72000.0F, f1, f2);
+      this.VT.setRepeatMode(-1);
+      this.VT.setRepeatCount(-1);
+      this.VT.setDuration(70000L);
+      this.VT.setInterpolator(new LinearInterpolator());
       if (getVisibility() == 0) {
-        gYP();
+        hZH();
       }
     }
     AppMethodBeat.o(164216);
   }
   
-  public final void rotate(float paramFloat)
-  {
-    AppMethodBeat.i(164219);
-    if ((this.FN != null) && (!this.FN.hasEnded())) {
-      this.FN.cancel();
-    }
-    this.QDe += paramFloat;
-    setRotation(this.QDe * 360.0F);
-    AppMethodBeat.o(164219);
-  }
-  
-  public final void setBackground$255f295(int paramInt)
-  {
-    AppMethodBeat.i(205405);
-    try
-    {
-      Drawable localDrawable = getResources().getDrawable(2131690268);
-      localDrawable.setColorFilter(MMApplicationContext.getContext().getResources().getColor(2131099685), PorterDuff.Mode.SRC_ATOP);
-      if (paramInt != 0) {
-        a.a(localDrawable, ColorStateList.valueOf(paramInt));
-      }
-      setBackground(localDrawable);
-      AppMethodBeat.o(205405);
-      return;
-    }
-    catch (Exception localException)
-    {
-      AppMethodBeat.o(205405);
-    }
-  }
-  
   public void setDuration(long paramLong)
   {
     AppMethodBeat.i(164220);
-    this.FN.setDuration(paramLong);
+    this.VT.setDuration(paramLong);
     AppMethodBeat.o(164220);
   }
   
   public void setInterpolator(Interpolator paramInterpolator)
   {
     AppMethodBeat.i(164221);
-    this.FN.setInterpolator(paramInterpolator);
+    this.VT.setInterpolator(paramInterpolator);
     AppMethodBeat.o(164221);
   }
   
@@ -172,17 +173,17 @@ public class MMProcessBar
     super.setVisibility(paramInt);
     if (paramInt == 0)
     {
-      gYP();
+      hZH();
       AppMethodBeat.o(164213);
       return;
     }
-    gYO();
+    hZG();
     AppMethodBeat.o(164213);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.MMProcessBar
  * JD-Core Version:    0.7.0.1
  */

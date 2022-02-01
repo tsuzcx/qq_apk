@@ -1,371 +1,106 @@
 package com.tencent.mm.plugin.appbrand.debugger;
 
-import android.util.Pair;
-import android.webkit.ValueCallback;
-import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
-import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s.a;
-import com.tencent.mm.protocal.protobuf.euy;
-import com.tencent.mm.protocal.protobuf.evg;
-import com.tencent.mm.protocal.protobuf.evn;
-import com.tencent.mm.protocal.protobuf.evs;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.LinkedList;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.b.p;
+import com.tencent.mm.modelappbrand.LaunchParamsOptional;
+import com.tencent.mm.plugin.appbrand.appcache.bm;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaPluginCodeInfo;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionModuleInfo;
+import com.tencent.mm.plugin.appbrand.config.ac;
+import com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI;
+import com.tencent.mm.plugin.appbrand.launching.ar;
+import com.tencent.mm.plugin.appbrand.launching.s;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.task.i;
+import com.tencent.mm.plugin.messenger.foundation.a.t;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public final class m
+  implements t
 {
-  com.tencent.luggage.sdk.b.a.c.d lhP;
-  final euy lhQ;
-  private String lhR;
-  private int lhS;
-  private int lhT;
-  evs lhU;
-  n lhV;
-  AtomicInteger lhW;
-  long lhX;
-  long lhY;
-  long lhZ;
-  long lia;
-  AtomicInteger lib;
-  private boolean lic;
-  private boolean lid;
-  private final HashMap<String, Method> lie;
-  private final HashMap<String, evn> lif;
-  LinkedList<Pair<String, ValueCallback<String>>> lig;
-  final LinkedList<p> lih;
-  final Map<String, l> lii;
-  final LinkedList<evg> lij;
-  final HashMap<Integer, c> lik;
-  int lil;
-  long lim;
-  final Object mLock;
-  private int mStatus;
-  
-  public m()
+  public final void onNewXmlReceived(String paramString, Map<String, String> paramMap, h.a parama)
   {
-    AppMethodBeat.i(147009);
-    this.lhS = 0;
-    this.lhT = 0;
-    this.mStatus = 0;
-    this.lhW = new AtomicInteger(0);
-    this.lhX = 0L;
-    this.lhY = 0L;
-    this.lia = System.currentTimeMillis();
-    this.lib = new AtomicInteger(0);
-    this.lie = new HashMap();
-    this.lif = new HashMap();
-    this.lig = new LinkedList();
-    this.lih = new LinkedList();
-    this.lii = new HashMap();
-    this.lij = new LinkedList();
-    this.lik = new HashMap();
-    this.mLock = new Object();
-    this.lil = 0;
-    this.lim = 0L;
-    this.lhQ = new euy();
-    this.lhQ.KFC = BuildInfo.CLIENT_VERSION_INT;
-    AppMethodBeat.o(147009);
-  }
-  
-  private int getStatus()
-  {
-    try
+    AppMethodBeat.i(44951);
+    if (paramMap != null)
     {
-      int i = this.mStatus;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void XS(String paramString)
-  {
-    try
-    {
-      this.lhR = paramString;
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public final void a(com.tencent.luggage.sdk.b.a.c.d paramd, String paramString)
-  {
-    boolean bool = true;
-    AppMethodBeat.i(147010);
-    this.lhP = paramd;
-    v.setUin(this.lhP.NP().ON().uin);
-    this.lhV = v.XZ(paramString);
-    paramString = this.lhP.NP().OM();
-    if (paramString != null)
-    {
-      paramString.cyF = this.lhV.cyF;
-      paramString.cyp = true;
-      paramd = (a)paramd.NP().av(a.class);
-      if (paramd != null) {
-        if (paramString.cyF) {
-          break label102;
+      paramString = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.AppID");
+      parama = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.UserName");
+      String str = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.Path");
+      Object localObject1 = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.URL");
+      Object localObject2 = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.MD5");
+      Object localObject3 = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.ExtInfo");
+      Log.i("MicroMsg.RemoteDebugCodeUpdateSysCmdMsgListener", "onNewXmlReceived appId %s, userName %s, path %s, url %s, md5 %s, extInfo %s", new Object[] { paramString, parama, str, localObject1, localObject2, localObject3 });
+      if ((Util.isNullOrNil(paramString)) || (Util.isNullOrNil(parama)) || (Util.isNullOrNil((String)localObject1)))
+      {
+        Log.i("MicroMsg.RemoteDebugCodeUpdateSysCmdMsgListener", "appId = %s, username = %s, codeURL = %s, invalid, return", new Object[] { paramString, parama, localObject1 });
+        AppMethodBeat.o(44951);
+        return;
+      }
+      if (com.tencent.mm.plugin.appbrand.app.m.bFP().a(paramString, 1, (String)localObject1, (String)localObject2, 0L, Util.nowSecond() + 7200L)) {
+        i.cjb().u(paramString, 1);
+      }
+      paramMap = new LaunchParamsOptional();
+      paramMap.lyv = ((String)localObject3);
+      ((s)com.tencent.mm.plugin.appbrand.app.m.W(s.class)).B(paramString, 1, (String)localObject3);
+      if (!Util.isNullOrNil((String)localObject3))
+      {
+        localObject2 = ac.afy((String)localObject3);
+        localObject1 = ((WxaAttributes.WxaVersionInfo)localObject2).obB;
+        localObject2 = ((WxaAttributes.WxaVersionInfo)localObject2).moduleList;
+        if ((localObject2 != null) && (((List)localObject2).size() > 0)) {
+          localObject1 = ((List)localObject2).iterator();
+        }
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (WxaAttributes.WxaVersionModuleInfo)((Iterator)localObject1).next();
+          if ((((WxaAttributes.WxaVersionModuleInfo)localObject2).obO != null) && (((WxaAttributes.WxaVersionModuleInfo)localObject2).obO.size() > 0))
+          {
+            localObject3 = ((WxaAttributes.WxaVersionModuleInfo)localObject2).obO.iterator();
+            boolean bool;
+            while (((Iterator)localObject3).hasNext())
+            {
+              WxaAttributes.WxaPluginCodeInfo localWxaPluginCodeInfo = (WxaAttributes.WxaPluginCodeInfo)((Iterator)localObject3).next();
+              if (!Util.isNullOrNil(localWxaPluginCodeInfo.nGm))
+              {
+                bool = ((ar)com.tencent.mm.plugin.appbrand.app.m.W(ar.class)).j(localWxaPluginCodeInfo.provider, localWxaPluginCodeInfo.nGm, localWxaPluginCodeInfo.obv);
+                Log.i("MicroMsg.RemoteDebugCodeUpdateSysCmdMsgListener", "start: module :%s dev plugin provider:%s,versionDesc:%s,devUin:%d saveRet:%b", new Object[] { ((WxaAttributes.WxaVersionModuleInfo)localObject2).name, localWxaPluginCodeInfo.provider, localWxaPluginCodeInfo.nGm, Integer.valueOf(new p(localWxaPluginCodeInfo.obv).intValue()), Boolean.valueOf(bool) });
+              }
+            }
+            continue;
+            if ((localObject1 != null) && (((List)localObject1).size() > 0))
+            {
+              localObject1 = ((List)localObject1).iterator();
+              while (((Iterator)localObject1).hasNext())
+              {
+                localObject2 = (WxaAttributes.WxaPluginCodeInfo)((Iterator)localObject1).next();
+                if (!Util.isNullOrNil(((WxaAttributes.WxaPluginCodeInfo)localObject2).nGm))
+                {
+                  bool = ((ar)com.tencent.mm.plugin.appbrand.app.m.W(ar.class)).j(((WxaAttributes.WxaPluginCodeInfo)localObject2).provider, ((WxaAttributes.WxaPluginCodeInfo)localObject2).nGm, ((WxaAttributes.WxaPluginCodeInfo)localObject2).obv);
+                  Log.i("MicroMsg.RemoteDebugCodeUpdateSysCmdMsgListener", "start: dev plugin provider:%s,versionDesc:%s,devUin:%d saveRet:%b", new Object[] { ((WxaAttributes.WxaPluginCodeInfo)localObject2).provider, ((WxaAttributes.WxaPluginCodeInfo)localObject2).nGm, Integer.valueOf(new p(((WxaAttributes.WxaPluginCodeInfo)localObject2).obv).intValue()), Boolean.valueOf(bool) });
+                }
+              }
+            }
+          }
         }
       }
+      localObject1 = new AppBrandStatObject();
+      ((AppBrandStatObject)localObject1).scene = 1101;
+      ((AppBrandStatObject)localObject1).fvd = (paramString + ":" + parama);
+      AppBrandLaunchProxyUI.a(MMApplicationContext.getContext(), parama, str, 1, -1, (AppBrandStatObject)localObject1, paramMap);
     }
-    for (;;)
-    {
-      paramd.nhD = bool;
-      AppMethodBeat.o(147010);
-      return;
-      label102:
-      bool = false;
-    }
-  }
-  
-  public final String bAF()
-  {
-    try
-    {
-      String str = this.lhR;
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final int bAG()
-  {
-    try
-    {
-      int i = this.lhS;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final int bAH()
-  {
-    try
-    {
-      int i = this.lhT;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final boolean bAI()
-  {
-    try
-    {
-      boolean bool = this.lid;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final boolean bAJ()
-  {
-    AppMethodBeat.i(147013);
-    if (getStatus() == 5)
-    {
-      AppMethodBeat.o(147013);
-      return true;
-    }
-    AppMethodBeat.o(147013);
-    return false;
-  }
-  
-  public final boolean bAK()
-  {
-    return this.lhV.liq == 3;
-  }
-  
-  public final void dS(int paramInt1, int paramInt2)
-  {
-    try
-    {
-      if ((this.lhT >= paramInt1) && (this.lhT <= paramInt2)) {
-        this.lhT = paramInt2;
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void gW(boolean paramBoolean)
-  {
-    try
-    {
-      this.lic = paramBoolean;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void gX(boolean paramBoolean)
-  {
-    try
-    {
-      this.lid = paramBoolean;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final boolean isBusy()
-  {
-    try
-    {
-      boolean bool = this.lic;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final boolean isQuit()
-  {
-    AppMethodBeat.i(147012);
-    if (getStatus() == 4)
-    {
-      AppMethodBeat.o(147012);
-      return true;
-    }
-    AppMethodBeat.o(147012);
-    return false;
-  }
-  
-  /* Error */
-  public final boolean isReady()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 221
-    //   4: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: invokespecial 205	com/tencent/mm/plugin/appbrand/debugger/m:getStatus	()I
-    //   11: iconst_3
-    //   12: if_icmpne +14 -> 26
-    //   15: iconst_1
-    //   16: istore_1
-    //   17: ldc 221
-    //   19: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   22: aload_0
-    //   23: monitorexit
-    //   24: iload_1
-    //   25: ireturn
-    //   26: iconst_0
-    //   27: istore_1
-    //   28: ldc 221
-    //   30: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   33: goto -11 -> 22
-    //   36: astore_2
-    //   37: aload_0
-    //   38: monitorexit
-    //   39: aload_2
-    //   40: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	41	0	this	m
-    //   16	12	1	bool	boolean
-    //   36	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	15	36	finally
-    //   17	22	36	finally
-    //   28	33	36	finally
-  }
-  
-  public final void setStatus(int paramInt)
-  {
-    try
-    {
-      this.mStatus = paramInt;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void wi(int paramInt)
-  {
-    try
-    {
-      this.lhS = paramInt;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void wj(int paramInt)
-  {
-    try
-    {
-      if (this.lhT < paramInt) {
-        this.lhT = paramInt;
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void wk(int paramInt)
-  {
-    this.lim += paramInt;
+    AppMethodBeat.o(44951);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.m
  * JD-Core Version:    0.7.0.1
  */

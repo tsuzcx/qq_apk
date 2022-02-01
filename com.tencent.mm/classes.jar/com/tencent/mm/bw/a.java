@@ -1,119 +1,92 @@
 package com.tencent.mm.bw;
 
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.c.a.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.a.a.b;
+import com.tencent.mm.by.c;
+import com.tencent.mm.f.a.ml;
+import com.tencent.mm.f.a.ml.b;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.n.f;
+import com.tencent.mm.plugin.findersdk.a.ag;
+import com.tencent.mm.plugin.findersdk.a.ak;
+import com.tencent.mm.plugin.messenger.foundation.a.a.g;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Util;
+import org.xwalk.core.Log;
 
-public class a
+public final class a
 {
-  protected static final int OPCODE_COMPUTESIZE = 1;
-  protected static final int OPCODE_PARSEFROM = 2;
-  protected static final int OPCODE_POPULATEBUILDERWITHFIELD = 3;
-  protected static final int OPCODE_WRITEFIELDS = 0;
-  protected static b unknownTagHandler;
-  private boolean includeUnKnownField = false;
-  private byte[] pbData;
-  
-  static
+  public static void aD(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(2349);
-    unknownTagHandler = new g.a.a.a.a.a();
-    AppMethodBeat.o(2349);
-  }
-  
-  public static int getNextFieldNumber(g.a.a.a.a parama)
-  {
-    AppMethodBeat.i(2351);
-    int i = parama.hPk();
-    AppMethodBeat.o(2351);
-    return i;
-  }
-  
-  public int computeSize()
-  {
-    AppMethodBeat.i(2354);
-    try
+    AppMethodBeat.i(231891);
+    if (hfs())
     {
-      int i = op(1, new Object[0]);
-      AppMethodBeat.o(2354);
-      return i;
+      Log.i("NearbyHelper", "gotoNearByUILiveFriends");
+      ((e)h.ag(e.class)).enterFinderLbsLiveFriendsUI(paramContext, paramIntent);
+      AppMethodBeat.o(231891);
+      return;
     }
-    catch (Exception localException)
+    Log.i("NearbyHelper", "gotoNearBy");
+    if (!hft())
     {
-      AppMethodBeat.o(2354);
-    }
-    return 0;
-  }
-  
-  public byte[] getData()
-  {
-    return this.pbData;
-  }
-  
-  public boolean isIncludeUnKnownField()
-  {
-    return this.includeUnKnownField;
-  }
-  
-  protected int op(int paramInt, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(2352);
-    paramVarArgs = new Error("Cannot use this method");
-    AppMethodBeat.o(2352);
-    throw paramVarArgs;
-  }
-  
-  public a parseFrom(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(2355);
-    this.pbData = paramArrayOfByte;
-    op(2, new Object[] { paramArrayOfByte });
-    AppMethodBeat.o(2355);
-    return this;
-  }
-  
-  public boolean populateBuilderWithField(g.a.a.a.a parama, a parama1, int paramInt)
-  {
-    boolean bool2 = false;
-    AppMethodBeat.i(2356);
-    if (op(3, new Object[] { parama, parama1, Integer.valueOf(paramInt) }) == 0) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if ((this.includeUnKnownField) || (!bool1)) {
-        bool2 = true;
+      h.aHE().aGH();
+      if (((n)h.ae(n.class)).eSb().cHo() > 0)
+      {
+        c.ad(paramContext, "nearby", ".ui.NearbyFriendShowSayHiUI");
+        AppMethodBeat.o(231891);
+        return;
       }
-      this.includeUnKnownField = bool2;
-      AppMethodBeat.o(2356);
-      return bool1;
     }
+    c.ad(paramContext, "nearby", ".ui.NearbyFriendsUI");
+    AppMethodBeat.o(231891);
   }
   
-  public byte[] toByteArray()
+  public static boolean abO()
   {
-    AppMethodBeat.i(2350);
-    validate();
-    byte[] arrayOfByte = new byte[computeSize()];
-    g.a.a.c.a locala = new g.a.a.c.a(arrayOfByte);
-    writeFields(locala);
-    locala.hPu();
-    AppMethodBeat.o(2350);
-    return arrayOfByte;
+    AppMethodBeat.i(231889);
+    ml localml = new ml();
+    localml.fKx.fCN = 7;
+    EventCenter.instance.publish(localml);
+    boolean bool = localml.fKy.fyl;
+    AppMethodBeat.o(231889);
+    return bool;
   }
   
-  protected a validate()
+  public static boolean hfs()
   {
-    return this;
+    AppMethodBeat.i(231887);
+    boolean bool = ((ak)h.ag(ak.class)).getFinderUtilApi().eeI();
+    AppMethodBeat.o(231887);
+    return bool;
   }
   
-  public void writeFields(g.a.a.c.a parama)
+  public static boolean hft()
   {
-    AppMethodBeat.i(2353);
-    op(0, new Object[] { parama });
-    AppMethodBeat.o(2353);
+    AppMethodBeat.i(89923);
+    String str2 = ((com.tencent.mm.plugin.zero.b.a)h.ae(com.tencent.mm.plugin.zero.b.a.class)).axc().getValue("EnableStrangerChat");
+    String str1 = str2;
+    if (Util.isNullOrNil(str2)) {
+      str1 = "0";
+    }
+    boolean bool = "1".equals(str1);
+    AppMethodBeat.o(89923);
+    return bool;
+  }
+  
+  public static void jk(Context paramContext)
+  {
+    AppMethodBeat.i(89924);
+    aD(paramContext, new Intent());
+    AppMethodBeat.o(89924);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.bw.a
  * JD-Core Version:    0.7.0.1
  */

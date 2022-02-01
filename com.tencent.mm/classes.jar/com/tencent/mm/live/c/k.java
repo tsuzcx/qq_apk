@@ -22,12 +22,16 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.i;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.live.b.x;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.live.b.e;
+import com.tencent.mm.live.b.h;
+import com.tencent.mm.live.b.u;
+import com.tencent.mm.live.d.e;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.protocal.protobuf.civ;
+import com.tencent.mm.protocal.protobuf.crq;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -35,8 +39,10 @@ import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.ax;
 import com.tencent.mm.ui.tools.b.c;
+import com.tencent.mm.ui.tools.g.a;
+import com.tencent.mm.ui.widget.a.f.a;
 import com.tencent.mm.ui.widget.a.f.c;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import com.tencent.trtc.TRTCCloudDef.TRTCParams;
@@ -44,110 +50,110 @@ import kotlin.g.b.p;
 import kotlin.n.n;
 import kotlin.t;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/plugin/LiveBeforePlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/widget/RelativeLayout;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/widget/RelativeLayout;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "TAG", "", "closeBtn", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "hostString", "liveEditTopGroup", "liveRoomIdEdit", "Landroid/widget/EditText;", "liveTitleEdit", "liveTitleEditCancel", "Landroid/widget/TextView;", "liveTitleEditGroup", "liveTitleEditOk", "Landroid/widget/Button;", "liveTitleEditTextNumHint", "liveTitleTv", "mTopicName", "providerTip", "rootLayout", "startLiveBtn", "switchBtn", "titleEditBackground", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "topGroup", "Landroid/view/ViewGroup;", "checkLiveName", "", "liveName", "createLive", "", "enableTestRoomId", "keyboardChange", "show", "height", "", "onBackPress", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/plugin/LiveBeforePlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/widget/RelativeLayout;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/widget/RelativeLayout;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "TAG", "", "closeBtn", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "hostString", "liveEditTopGroup", "liveRoomIdEdit", "Landroid/widget/EditText;", "liveTitleEdit", "liveTitleEditCancel", "Landroid/widget/TextView;", "liveTitleEditGroup", "liveTitleEditOk", "Landroid/widget/Button;", "liveTitleEditTextNumHint", "liveTitleTv", "mTopicName", "providerTip", "rootLayout", "startLiveBtn", "switchBtn", "titleEditBackground", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "topGroup", "Landroid/view/ViewGroup;", "checkLiveName", "", "liveName", "createLive", "", "enableTestRoomId", "keyboardChange", "show", "height", "", "onBackPress", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
 public final class k
   extends a
 {
   private final String TAG;
-  private final RelativeLayout hOX;
-  final Button hOY;
-  final TextView hOZ;
-  final b hOp;
-  final EditText hPa;
-  private final WeImageView hPb;
-  private final WeImageView hPc;
-  private final ViewGroup hPd;
-  final EditText hPe;
-  final TextView hPf;
-  private final TextView hPg;
-  final Button hPh;
-  final RelativeLayout hPi;
-  private final RelativeLayout hPj;
-  private final TextView hPk;
-  String hPl;
-  String hPm;
-  private Drawable hPn;
+  private final b kCL;
+  private final EditText kDA;
+  private final TextView kDB;
+  private final TextView kDC;
+  private final Button kDD;
+  private final RelativeLayout kDE;
+  private final RelativeLayout kDF;
+  private final TextView kDG;
+  private String kDH;
+  private String kDI;
+  private Drawable kDJ;
+  private final RelativeLayout kDt;
+  private final Button kDu;
+  private final TextView kDv;
+  private final EditText kDw;
+  private final WeImageView kDx;
+  private final WeImageView kDy;
+  private final ViewGroup kDz;
   
   public k(final RelativeLayout paramRelativeLayout, b paramb)
   {
     super((ViewGroup)paramRelativeLayout, paramb);
-    AppMethodBeat.i(207947);
-    this.hOp = paramb;
+    AppMethodBeat.i(198532);
+    this.kCL = paramb;
     this.TAG = "MicroMsg.LiveBeforePlugin";
-    paramb = paramRelativeLayout.findViewById(2131303355);
-    p.g(paramb, "root.findViewById(R.id.live_before_ui_root)");
-    this.hOX = ((RelativeLayout)paramb);
-    paramb = paramRelativeLayout.findViewById(2131303346);
-    p.g(paramb, "root.findViewById(R.id.l…before_content_start_btn)");
-    this.hOY = ((Button)paramb);
-    paramb = paramRelativeLayout.findViewById(2131303350);
-    p.g(paramb, "root.findViewById(R.id.live_before_provider_tip)");
-    this.hOZ = ((TextView)paramb);
-    paramb = paramRelativeLayout.findViewById(2131303347);
-    p.g(paramb, "root.findViewById(R.id.l…efore_content_title_edit)");
-    this.hPa = ((EditText)paramb);
-    paramb = paramRelativeLayout.findViewById(2131303352);
-    p.g(paramb, "root.findViewById(R.id.live_before_top_close)");
-    this.hPb = ((WeImageView)paramb);
-    paramb = paramRelativeLayout.findViewById(2131303354);
-    p.g(paramb, "root.findViewById(R.id.live_before_top_switch)");
-    this.hPc = ((WeImageView)paramb);
-    paramb = paramRelativeLayout.findViewById(2131303353);
-    p.g(paramb, "root.findViewById(R.id.live_before_top_group)");
-    this.hPd = ((ViewGroup)paramb);
-    paramb = paramRelativeLayout.findViewById(2131303345);
-    p.g(paramb, "root.findViewById(R.id.l…fore_content_roomid_edit)");
-    this.hPe = ((EditText)paramb);
-    paramb = paramRelativeLayout.findViewById(2131309218);
-    p.g(paramb, "root.findViewById(R.id.title_edit_text_num_hint)");
-    this.hPf = ((TextView)paramb);
-    paramb = paramRelativeLayout.findViewById(2131303589);
-    p.g(paramb, "root.findViewById(R.id.live_title_edit_cancel)");
-    this.hPg = ((TextView)paramb);
-    paramb = paramRelativeLayout.findViewById(2131303590);
-    p.g(paramb, "root.findViewById(R.id.live_title_edit_ok)");
-    this.hPh = ((Button)paramb);
-    paramb = paramRelativeLayout.findViewById(2131303348);
-    p.g(paramb, "root.findViewById(R.id.l…content_title_edit_group)");
-    this.hPi = ((RelativeLayout)paramb);
-    paramb = paramRelativeLayout.findViewById(2131303349);
-    p.g(paramb, "root.findViewById(R.id.live_before_edit_top_group)");
-    this.hPj = ((RelativeLayout)paramb);
-    paramb = paramRelativeLayout.findViewById(2131303351);
-    p.g(paramb, "root.findViewById(R.id.live_before_title)");
-    this.hPk = ((TextView)paramb);
-    this.hPl = "";
-    this.hPm = "";
-    this.hPn = this.hPa.getBackground();
-    this.hOX.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    paramb = paramRelativeLayout.findViewById(b.e.live_before_ui_root);
+    p.j(paramb, "root.findViewById(R.id.live_before_ui_root)");
+    this.kDt = ((RelativeLayout)paramb);
+    paramb = paramRelativeLayout.findViewById(b.e.live_before_content_start_btn);
+    p.j(paramb, "root.findViewById(R.id.l…before_content_start_btn)");
+    this.kDu = ((Button)paramb);
+    paramb = paramRelativeLayout.findViewById(b.e.live_before_provider_tip);
+    p.j(paramb, "root.findViewById(R.id.live_before_provider_tip)");
+    this.kDv = ((TextView)paramb);
+    paramb = paramRelativeLayout.findViewById(b.e.live_before_content_title_edit);
+    p.j(paramb, "root.findViewById(R.id.l…efore_content_title_edit)");
+    this.kDw = ((EditText)paramb);
+    paramb = paramRelativeLayout.findViewById(b.e.live_before_top_close);
+    p.j(paramb, "root.findViewById(R.id.live_before_top_close)");
+    this.kDx = ((WeImageView)paramb);
+    paramb = paramRelativeLayout.findViewById(b.e.live_before_top_switch);
+    p.j(paramb, "root.findViewById(R.id.live_before_top_switch)");
+    this.kDy = ((WeImageView)paramb);
+    paramb = paramRelativeLayout.findViewById(b.e.live_before_top_group);
+    p.j(paramb, "root.findViewById(R.id.live_before_top_group)");
+    this.kDz = ((ViewGroup)paramb);
+    paramb = paramRelativeLayout.findViewById(b.e.live_before_content_roomid_edit);
+    p.j(paramb, "root.findViewById(R.id.l…fore_content_roomid_edit)");
+    this.kDA = ((EditText)paramb);
+    paramb = paramRelativeLayout.findViewById(b.e.title_edit_text_num_hint);
+    p.j(paramb, "root.findViewById(R.id.title_edit_text_num_hint)");
+    this.kDB = ((TextView)paramb);
+    paramb = paramRelativeLayout.findViewById(b.e.live_title_edit_cancel);
+    p.j(paramb, "root.findViewById(R.id.live_title_edit_cancel)");
+    this.kDC = ((TextView)paramb);
+    paramb = paramRelativeLayout.findViewById(b.e.live_title_edit_ok);
+    p.j(paramb, "root.findViewById(R.id.live_title_edit_ok)");
+    this.kDD = ((Button)paramb);
+    paramb = paramRelativeLayout.findViewById(b.e.live_before_content_title_edit_group);
+    p.j(paramb, "root.findViewById(R.id.l…content_title_edit_group)");
+    this.kDE = ((RelativeLayout)paramb);
+    paramb = paramRelativeLayout.findViewById(b.e.live_before_edit_top_group);
+    p.j(paramb, "root.findViewById(R.id.live_before_edit_top_group)");
+    this.kDF = ((RelativeLayout)paramb);
+    paramb = paramRelativeLayout.findViewById(b.e.live_before_title);
+    p.j(paramb, "root.findViewById(R.id.live_before_title)");
+    this.kDG = ((TextView)paramb);
+    this.kDH = "";
+    this.kDI = "";
+    this.kDJ = this.kDw.getBackground();
+    this.kDt.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(207931);
+        AppMethodBeat.i(197155);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveBeforePlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        if (!Util.isNullOrNil(this.hPo.hPa.getText().toString()))
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/plugin/LiveBeforePlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        if (!Util.isNullOrNil(k.a(this.kDK).getText().toString()))
         {
           paramAnonymousView = paramRelativeLayout.getContext();
           if (paramAnonymousView == null)
           {
             paramAnonymousView = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-            AppMethodBeat.o(207931);
+            AppMethodBeat.o(197155);
             throw paramAnonymousView;
           }
           ((MMActivity)paramAnonymousView).hideVKB();
-          this.hPo.hPa.clearFocus();
+          k.a(this.kDK).clearFocus();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveBeforePlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(207931);
+        AppMethodBeat.o(197155);
       }
     });
-    paramb = z.aUL();
+    paramb = z.bdN();
     Object localObject;
     if (paramb != null)
     {
-      localObject = paramb.arJ();
+      localObject = paramb.ays();
       paramb = (b)localObject;
       if (localObject != null) {}
     }
@@ -155,16 +161,16 @@ public final class k
     {
       paramb = "";
     }
-    this.hPm = paramb;
-    this.hPa.setHint((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.b(paramRelativeLayout.getContext(), (CharSequence)paramRelativeLayout.getContext().getString(2131762261, new Object[] { this.hPm }), this.hPa.getTextSize()));
-    this.hPa.setOnEditorActionListener((TextView.OnEditorActionListener)new TextView.OnEditorActionListener()
+    this.kDI = paramb;
+    this.kDw.setHint((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.b(paramRelativeLayout.getContext(), (CharSequence)paramRelativeLayout.getContext().getString(b.h.live_before_title_edit, new Object[] { this.kDI }), this.kDw.getTextSize()));
+    this.kDw.setOnEditorActionListener((TextView.OnEditorActionListener)new TextView.OnEditorActionListener()
     {
       public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
-        AppMethodBeat.i(207933);
+        AppMethodBeat.i(190751);
         if (6 != paramAnonymousInt)
         {
-          p.g(paramAnonymousKeyEvent, "keyEvent");
+          p.j(paramAnonymousKeyEvent, "keyEvent");
           if (paramAnonymousKeyEvent.getAction() != 66) {}
         }
         else
@@ -173,299 +179,270 @@ public final class k
           if (paramAnonymousTextView == null)
           {
             paramAnonymousTextView = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-            AppMethodBeat.o(207933);
+            AppMethodBeat.o(190751);
             throw paramAnonymousTextView;
           }
           ((MMActivity)paramAnonymousTextView).hideVKB();
-          this.hPo.hPa.clearFocus();
+          k.a(this.kDK).clearFocus();
         }
-        AppMethodBeat.o(207933);
+        AppMethodBeat.o(190751);
         return false;
       }
     });
-    this.hPb.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.kDx.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(207934);
+        AppMethodBeat.i(191210);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveBeforePlugin$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        b.b.a(this.hPo.hOp, b.c.hLD);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/plugin/LiveBeforePlugin$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        b.b.a(k.b(this.kDK), b.c.kyW);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveBeforePlugin$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(207934);
+        AppMethodBeat.o(191210);
       }
     });
-    this.hPc.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.kDy.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(207935);
+        AppMethodBeat.i(196802);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveBeforePlugin$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        this.hPo.hOp.statusChange(b.c.hLE, new Bundle());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/plugin/LiveBeforePlugin$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        k.b(this.kDK).statusChange(b.c.kyX, new Bundle());
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveBeforePlugin$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(207935);
+        AppMethodBeat.o(196802);
       }
     });
-    this.hOY.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.kDu.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(207936);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveBeforePlugin$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-        localObject = this.hPo;
-        paramAnonymousView = (CharSequence)((k)localObject).hPa.getText();
-        if ((paramAnonymousView == null) || (n.aL(paramAnonymousView)))
-        {
-          i = 1;
-          if (i == 0) {
-            break label208;
-          }
-          paramAnonymousView = "";
-          label70:
-          if (!k.aHv()) {
-            break label222;
-          }
-        }
-        label208:
-        label222:
-        for (int i = Integer.parseInt(((k)localObject).hPe.getText().toString());; i = -1)
-        {
-          Bundle localBundle = new Bundle();
-          localBundle.putInt("PARAM_LIVE_TEST_ROOM_ID", i);
-          localBundle.putString("PARAM_START_LIVE_TITLE", paramAnonymousView);
-          paramAnonymousView = x.hJf;
-          x.aGr().MnO = com.tencent.mm.pluginsdk.ui.span.l.b(((a)localObject).hwr.getContext(), (CharSequence)((a)localObject).hwr.getContext().getString(2131762261, new Object[] { ((k)localObject).hPm }), ((k)localObject).hPa.getTextSize()).toString();
-          ((k)localObject).hOp.statusChange(b.c.hMx, localBundle);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveBeforePlugin$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(207936);
-          return;
-          i = 0;
-          break;
-          paramAnonymousView = ((k)localObject).hPa.getText().toString();
-          break label70;
-        }
+        AppMethodBeat.i(189036);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/plugin/LiveBeforePlugin$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        k.c(this.kDK);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveBeforePlugin$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(189036);
       }
     });
-    paramb = this.hPe;
-    if (aHv()) {}
+    paramb = this.kDA;
+    if (aPv()) {}
     for (int i = 0;; i = 8)
     {
       paramb.setVisibility(i);
-      paramb = this.hPe;
-      localObject = com.tencent.mm.live.core.core.b.f.hzy;
-      paramb.setText((CharSequence)String.valueOf(com.tencent.mm.live.core.core.b.f.aDq().roomId));
-      c.f(this.hPa).lv(0, 28).a(null);
-      this.hPa.addTextChangedListener((TextWatcher)new TextWatcher()
+      paramb = this.kDA;
+      localObject = com.tencent.mm.live.core.core.model.g.kmu;
+      paramb.setText((CharSequence)String.valueOf(com.tencent.mm.live.core.core.model.g.aLj().roomId));
+      c.i(this.kDw).mM(0, 28).a(null);
+      this.kDw.addTextChangedListener((TextWatcher)new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
-          AppMethodBeat.i(207937);
+          AppMethodBeat.i(196380);
           if (paramAnonymousEditable != null)
           {
-            Button localButton = this.hPo.hPh;
+            Button localButton = k.d(this.kDK);
             if (!Util.isNullOrNil((CharSequence)paramAnonymousEditable)) {}
             for (boolean bool = true;; bool = false)
             {
               localButton.setEnabled(bool);
-              int i = com.tencent.mm.ui.tools.f.a(paramAnonymousEditable.toString(), com.tencent.mm.ui.tools.f.a.Qui);
-              this.hPo.hPf.setText((CharSequence)String.valueOf(28 - i));
-              this.hPo.hPa.setSelection(this.hPo.hPa.getText().length());
-              paramAnonymousEditable = x.hJf;
-              x.aGr().LpF = this.hPo.hPa.getText().toString();
-              paramAnonymousEditable = x.hJf;
-              x.eH(true);
-              com.tencent.mm.live.d.a.aHW();
-              AppMethodBeat.o(207937);
+              int i = com.tencent.mm.ui.tools.g.a(paramAnonymousEditable.toString(), g.a.XSu);
+              k.e(this.kDK).setText((CharSequence)String.valueOf(28 - i));
+              k.a(this.kDK).setSelection(k.a(this.kDK).getText().length());
+              paramAnonymousEditable = u.kwz;
+              u.aOr().Srb = k.a(this.kDK).getText().toString();
+              paramAnonymousEditable = u.kwz;
+              u.fn(true);
+              com.tencent.mm.live.d.a.aPU();
+              AppMethodBeat.o(196380);
               return;
             }
           }
-          AppMethodBeat.o(207937);
+          AppMethodBeat.o(196380);
         }
         
         public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
         
         public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       });
-      this.hPa.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+      this.kDw.setOnClickListener((View.OnClickListener)new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(207938);
+          AppMethodBeat.i(193885);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveBeforePlugin$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          this.hPo.hPl = this.hPo.hPa.getText().toString();
-          if (Util.isNullOrNil(this.hPo.hPl)) {
-            this.hPo.hPh.setEnabled(false);
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/plugin/LiveBeforePlugin$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          k.a(this.kDK, k.a(this.kDK).getText().toString());
+          if (Util.isNullOrNil(k.f(this.kDK))) {
+            k.d(this.kDK).setEnabled(false);
           }
           for (;;)
           {
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveBeforePlugin$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(207938);
+            AppMethodBeat.o(193885);
             return;
-            this.hPo.hPh.setEnabled(true);
+            k.d(this.kDK).setEnabled(true);
           }
         }
       });
-      this.hPg.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+      this.kDC.setOnClickListener((View.OnClickListener)new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(207939);
+          AppMethodBeat.i(192993);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveBeforePlugin$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          if (n.aL((CharSequence)this.hPo.hPl))
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/plugin/LiveBeforePlugin$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          if (n.ba((CharSequence)k.f(this.kDK)))
           {
-            this.hPo.hPa.setHint((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.b(paramRelativeLayout.getContext(), (CharSequence)paramRelativeLayout.getContext().getString(2131762261, new Object[] { this.hPo.hPm }), this.hPo.hPa.getTextSize()).toString());
-            this.hPo.hPa.setText(null);
-            paramAnonymousView = x.hJf;
+            k.a(this.kDK).setHint((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.b(paramRelativeLayout.getContext(), (CharSequence)paramRelativeLayout.getContext().getString(b.h.live_before_title_edit, new Object[] { k.g(this.kDK) }), k.a(this.kDK).getTextSize()).toString());
+            k.a(this.kDK).setText(null);
+            paramAnonymousView = u.kwz;
           }
-          for (x.aGr().LpF = com.tencent.mm.pluginsdk.ui.span.l.b(paramRelativeLayout.getContext(), (CharSequence)paramRelativeLayout.getContext().getString(2131762261, new Object[] { this.hPo.hPm }), this.hPo.hPa.getTextSize()).toString();; x.aGr().LpF = this.hPo.hPa.getText().toString())
+          for (u.aOr().Srb = com.tencent.mm.pluginsdk.ui.span.l.b(paramRelativeLayout.getContext(), (CharSequence)paramRelativeLayout.getContext().getString(b.h.live_before_title_edit, new Object[] { k.g(this.kDK) }), k.a(this.kDK).getTextSize()).toString();; u.aOr().Srb = k.a(this.kDK).getText().toString())
           {
-            paramAnonymousView = x.hJf;
-            x.eH(false);
+            paramAnonymousView = u.kwz;
+            u.fn(false);
             paramAnonymousView = paramRelativeLayout.getContext();
             if (paramAnonymousView != null) {
               break;
             }
             paramAnonymousView = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-            AppMethodBeat.o(207939);
+            AppMethodBeat.o(192993);
             throw paramAnonymousView;
-            this.hPo.hPa.setText((CharSequence)this.hPo.hPl);
-            paramAnonymousView = x.hJf;
+            k.a(this.kDK).setText((CharSequence)k.f(this.kDK));
+            paramAnonymousView = u.kwz;
           }
           ((MMActivity)paramAnonymousView).hideVKB();
-          this.hPo.hPa.clearFocus();
+          k.a(this.kDK).clearFocus();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveBeforePlugin$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(207939);
+          AppMethodBeat.o(192993);
         }
       });
-      this.hPh.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+      this.kDD.setOnClickListener((View.OnClickListener)new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(207940);
+          AppMethodBeat.i(194774);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveBeforePlugin$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/plugin/LiveBeforePlugin$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           paramAnonymousView = paramRelativeLayout.getContext();
           if (paramAnonymousView == null)
           {
             paramAnonymousView = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-            AppMethodBeat.o(207940);
+            AppMethodBeat.o(194774);
             throw paramAnonymousView;
           }
           ((MMActivity)paramAnonymousView).hideVKB();
-          this.hPo.hPa.clearFocus();
+          k.a(this.kDK).clearFocus();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveBeforePlugin$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(207940);
+          AppMethodBeat.o(194774);
         }
       });
-      this.hPi.post((Runnable)new Runnable()
+      this.kDE.post((Runnable)new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(207932);
+          AppMethodBeat.i(197566);
           Object localObject;
-          if (this.hPo.isLandscape())
+          if (this.kDK.isLandscape())
           {
-            localObject = this.hPo.hPi.getLayoutParams();
+            localObject = k.h(this.kDK).getLayoutParams();
             if (localObject == null)
             {
               localObject = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-              AppMethodBeat.o(207932);
+              AppMethodBeat.o(197566);
               throw ((Throwable)localObject);
             }
           }
-          for (((RelativeLayout.LayoutParams)localObject).bottomMargin = (com.tencent.mm.cb.a.aG(paramRelativeLayout.getContext(), 2131165278) + com.tencent.mm.cb.a.aG(paramRelativeLayout.getContext(), 2131166577) + this.hPo.hOY.getHeight());; ((RelativeLayout.LayoutParams)localObject).bottomMargin = (com.tencent.mm.cb.a.aG(paramRelativeLayout.getContext(), 2131165278) + com.tencent.mm.cb.a.aG(paramRelativeLayout.getContext(), 2131165281) + this.hPo.hOY.getHeight() + au.aD(paramRelativeLayout.getContext())))
+          for (((RelativeLayout.LayoutParams)localObject).bottomMargin = (com.tencent.mm.ci.a.aY(paramRelativeLayout.getContext(), com.tencent.mm.live.b.c.Edge_10A) + com.tencent.mm.ci.a.aY(paramRelativeLayout.getContext(), com.tencent.mm.live.b.c.live_before_content_start_btn_margin_bottom) + k.i(this.kDK).getHeight());; ((RelativeLayout.LayoutParams)localObject).bottomMargin = (com.tencent.mm.ci.a.aY(paramRelativeLayout.getContext(), com.tencent.mm.live.b.c.Edge_10A) + com.tencent.mm.ci.a.aY(paramRelativeLayout.getContext(), com.tencent.mm.live.b.c.Edge_12A) + k.i(this.kDK).getHeight() + ax.aB(paramRelativeLayout.getContext())))
           {
-            this.hPo.hPi.requestLayout();
-            AppMethodBeat.o(207932);
+            k.h(this.kDK).requestLayout();
+            AppMethodBeat.o(197566);
             return;
-            localObject = this.hPo.hOZ.getLayoutParams();
+            localObject = k.j(this.kDK).getLayoutParams();
             if (localObject != null)
             {
               if (localObject == null)
               {
                 localObject = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-                AppMethodBeat.o(207932);
+                AppMethodBeat.o(197566);
                 throw ((Throwable)localObject);
               }
               localObject = (ViewGroup.MarginLayoutParams)localObject;
-              ((ViewGroup.MarginLayoutParams)localObject).bottomMargin += au.aD(paramRelativeLayout.getContext());
-              this.hPo.hOZ.requestLayout();
+              ((ViewGroup.MarginLayoutParams)localObject).bottomMargin += ax.aB(paramRelativeLayout.getContext());
+              k.j(this.kDK).requestLayout();
             }
-            localObject = this.hPo.hOY.getLayoutParams();
+            localObject = k.i(this.kDK).getLayoutParams();
             if (localObject != null)
             {
               if (localObject == null)
               {
                 localObject = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-                AppMethodBeat.o(207932);
+                AppMethodBeat.o(197566);
                 throw ((Throwable)localObject);
               }
               localObject = (ViewGroup.MarginLayoutParams)localObject;
-              ((ViewGroup.MarginLayoutParams)localObject).bottomMargin += au.aD(paramRelativeLayout.getContext());
-              this.hPo.hOY.requestLayout();
+              ((ViewGroup.MarginLayoutParams)localObject).bottomMargin += ax.aB(paramRelativeLayout.getContext());
+              k.i(this.kDK).requestLayout();
             }
-            localObject = this.hPo.hPi.getLayoutParams();
+            localObject = k.h(this.kDK).getLayoutParams();
             if (localObject == null)
             {
               localObject = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-              AppMethodBeat.o(207932);
+              AppMethodBeat.o(197566);
               throw ((Throwable)localObject);
             }
           }
         }
       });
-      if ((!isLandscape()) || (this.hPd.getLayoutParams() == null) || (this.hPj.getLayoutParams() == null)) {
-        break label813;
+      if ((!isLandscape()) || (this.kDz.getLayoutParams() == null) || (this.kDF.getLayoutParams() == null)) {
+        break label828;
       }
-      paramb = this.hPd.getLayoutParams();
+      paramb = this.kDz.getLayoutParams();
       if (paramb != null) {
         break;
       }
       paramRelativeLayout = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      AppMethodBeat.o(207947);
+      AppMethodBeat.o(198532);
       throw paramRelativeLayout;
     }
-    ((ViewGroup.MarginLayoutParams)paramb).setMarginEnd(au.aD(paramRelativeLayout.getContext()));
-    paramb = this.hPj.getLayoutParams();
+    ((ViewGroup.MarginLayoutParams)paramb).setMarginEnd(ax.aB(paramRelativeLayout.getContext()));
+    paramb = this.kDF.getLayoutParams();
     if (paramb == null)
     {
       paramRelativeLayout = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      AppMethodBeat.o(207947);
+      AppMethodBeat.o(198532);
       throw paramRelativeLayout;
     }
-    ((ViewGroup.MarginLayoutParams)paramb).setMarginEnd(au.aD(paramRelativeLayout.getContext()));
-    this.hPd.requestLayout();
-    this.hPj.requestLayout();
+    ((ViewGroup.MarginLayoutParams)paramb).setMarginEnd(ax.aB(paramRelativeLayout.getContext()));
+    this.kDz.requestLayout();
+    this.kDF.requestLayout();
     try
     {
-      label813:
+      label828:
       paramRelativeLayout = paramRelativeLayout.getContext();
-      p.g(paramRelativeLayout, "root.context");
-      paramRelativeLayout = paramRelativeLayout.getResources().getString(2131762357);
-      p.g(paramRelativeLayout, "root.context.resources.g…string.live_provider_tip)");
-      paramRelativeLayout = new i(((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.sns, "{\"simple_chinese\":\"" + paramRelativeLayout + "\",\"xg_traditional_chinese\":\"" + paramRelativeLayout + "\",\"tw_traditional_chinese\":\"" + paramRelativeLayout + "\",\"english\":\"" + paramRelativeLayout + "\"}"));
+      p.j(paramRelativeLayout, "root.context");
+      paramRelativeLayout = paramRelativeLayout.getResources().getString(b.h.live_provider_tip);
+      p.j(paramRelativeLayout, "root.context.resources.g…string.live_provider_tip)");
+      paramRelativeLayout = new i(((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vYE, "{\"simple_chinese\":\"" + paramRelativeLayout + "\",\"xg_traditional_chinese\":\"" + paramRelativeLayout + "\",\"tw_traditional_chinese\":\"" + paramRelativeLayout + "\",\"english\":\"" + paramRelativeLayout + "\"}"));
       paramb = LocaleUtil.getApplicationLanguage();
-      if (p.j("zh_CN", paramb)) {
+      if (p.h("zh_CN", paramb)) {
         paramRelativeLayout = paramRelativeLayout.getString("simple_chinese");
       }
       while (!Util.isNullOrNil(paramRelativeLayout))
       {
-        this.hOZ.setText((CharSequence)paramRelativeLayout);
-        AppMethodBeat.o(207947);
+        this.kDv.setText((CharSequence)paramRelativeLayout);
+        AppMethodBeat.o(198532);
         return;
-        if (p.j("zh_TW", paramb)) {
+        if (p.h("zh_TW", paramb)) {
           paramRelativeLayout = paramRelativeLayout.getString("xg_traditional_chinese");
-        } else if (p.j("zh_HK", paramb)) {
+        } else if (p.h("zh_HK", paramb)) {
           paramRelativeLayout = paramRelativeLayout.getString("tw_traditional_chinese");
         } else {
           paramRelativeLayout = paramRelativeLayout.getString("english");
@@ -476,49 +453,49 @@ public final class k
     catch (Exception paramRelativeLayout)
     {
       Log.w(this.TAG, "Exception: " + paramRelativeLayout.getMessage());
-      AppMethodBeat.o(207947);
+      AppMethodBeat.o(198532);
     }
   }
   
-  static boolean aHv()
+  private static boolean aPv()
   {
-    AppMethodBeat.i(207943);
-    com.tencent.mm.kernel.e locale = g.aAh();
-    p.g(locale, "MMKernel.storage()");
-    if (locale.azQ().getInt(ar.a.Onm, 0) == 1)
+    AppMethodBeat.i(198476);
+    f localf = h.aHG();
+    p.j(localf, "MMKernel.storage()");
+    if (localf.aHp().getInt(ar.a.VCy, 0) == 1)
     {
-      AppMethodBeat.o(207943);
+      AppMethodBeat.o(198476);
       return true;
     }
-    AppMethodBeat.o(207943);
+    AppMethodBeat.o(198476);
     return false;
   }
   
   public final void keyboardChange(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(207944);
+    AppMethodBeat.i(198488);
     if (paramBoolean)
     {
-      this.hPk.setVisibility(8);
-      this.hPd.setVisibility(8);
-      this.hOY.setVisibility(8);
+      this.kDG.setVisibility(8);
+      this.kDz.setVisibility(8);
+      this.kDu.setVisibility(8);
       if (isLandscape()) {}
-      for (paramInt = au.az(this.hwr.getContext()).y - paramInt - com.tencent.mm.cb.a.aG(this.hwr.getContext(), 2131165296);; paramInt = au.az(this.hwr.getContext()).y - paramInt - au.aD(this.hwr.getContext()) - com.tencent.mm.cb.a.aG(this.hwr.getContext(), 2131165296))
+      for (paramInt = ax.au(this.kiF.getContext()).y - paramInt - com.tencent.mm.ci.a.aY(this.kiF.getContext(), com.tencent.mm.live.b.c.Edge_2A);; paramInt = ax.au(this.kiF.getContext()).y - paramInt - ax.aB(this.kiF.getContext()) - com.tencent.mm.ci.a.aY(this.kiF.getContext(), com.tencent.mm.live.b.c.Edge_2A))
       {
         Object localObject1 = new int[2];
-        this.hPi.getLocationOnScreen((int[])localObject1);
+        this.kDE.getLocationOnScreen((int[])localObject1);
         int i = localObject1[1];
-        int j = this.hPi.getHeight();
-        this.hPi.animate().translationY(paramInt - (i + j)).start();
-        localObject1 = this.hPa;
-        Object localObject2 = this.hwr.getContext();
-        p.g(localObject2, "root.context");
-        ((EditText)localObject1).setBackground(((Context)localObject2).getResources().getDrawable(2131101287));
-        this.hPa.setPadding(0, 0, 0, 0);
-        this.hPa.setHint((CharSequence)" ");
-        this.hPa.setCursorVisible(true);
-        this.hPf.setVisibility(0);
-        localObject1 = this.hPa.getText();
+        int j = this.kDE.getHeight();
+        this.kDE.animate().translationY(paramInt - (i + j)).start();
+        localObject1 = this.kDw;
+        Object localObject2 = this.kiF.getContext();
+        p.j(localObject2, "root.context");
+        ((EditText)localObject1).setBackground(((Context)localObject2).getResources().getDrawable(com.tencent.mm.live.b.b.transparent));
+        this.kDw.setPadding(0, 0, 0, 0);
+        this.kDw.setHint((CharSequence)" ");
+        this.kDw.setCursorVisible(true);
+        this.kDB.setVisibility(0);
+        localObject1 = this.kDw.getText();
         if (localObject1 != null)
         {
           localObject2 = localObject1.toString();
@@ -529,137 +506,137 @@ public final class k
         {
           localObject1 = "";
         }
-        paramInt = com.tencent.mm.ui.tools.f.a((String)localObject1, com.tencent.mm.ui.tools.f.a.Qui);
-        this.hPf.setText((CharSequence)String.valueOf(28 - paramInt));
-        this.hPg.setVisibility(0);
-        this.hPh.setVisibility(0);
-        AppMethodBeat.o(207944);
+        paramInt = com.tencent.mm.ui.tools.g.a((String)localObject1, g.a.XSu);
+        this.kDB.setText((CharSequence)String.valueOf(28 - paramInt));
+        this.kDC.setVisibility(0);
+        this.kDD.setVisibility(0);
+        AppMethodBeat.o(198488);
         return;
       }
     }
-    this.hPk.setVisibility(0);
-    this.hPd.setVisibility(0);
-    this.hOY.setVisibility(0);
-    this.hPi.animate().translationY(0.0F).start();
-    this.hPa.setBackground(this.hPn);
-    com.tencent.mm.cb.a.aG(this.hwr.getContext(), 2131165303);
-    paramInt = com.tencent.mm.cb.a.aG(this.hwr.getContext(), 2131165314);
-    this.hPa.setPadding(0, 0, 0, paramInt);
-    this.hPa.setHint((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.b(this.hwr.getContext(), (CharSequence)this.hwr.getContext().getString(2131762261, new Object[] { this.hPm }), this.hPa.getTextSize()));
-    this.hPa.setCursorVisible(false);
-    this.hPf.setVisibility(8);
-    this.hPg.setVisibility(8);
-    this.hPh.setVisibility(8);
-    AppMethodBeat.o(207944);
+    this.kDG.setVisibility(0);
+    this.kDz.setVisibility(0);
+    this.kDu.setVisibility(0);
+    this.kDE.animate().translationY(0.0F).start();
+    this.kDw.setBackground(this.kDJ);
+    com.tencent.mm.ci.a.aY(this.kiF.getContext(), com.tencent.mm.live.b.c.Edge_4A);
+    paramInt = com.tencent.mm.ci.a.aY(this.kiF.getContext(), com.tencent.mm.live.b.c.Edge_A);
+    this.kDw.setPadding(0, 0, 0, paramInt);
+    this.kDw.setHint((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.b(this.kiF.getContext(), (CharSequence)this.kiF.getContext().getString(b.h.live_before_title_edit, new Object[] { this.kDI }), this.kDw.getTextSize()));
+    this.kDw.setCursorVisible(false);
+    this.kDB.setVisibility(8);
+    this.kDC.setVisibility(8);
+    this.kDD.setVisibility(8);
+    AppMethodBeat.o(198488);
   }
   
   public final boolean onBackPress()
   {
-    AppMethodBeat.i(207946);
-    if (this.hwr.getVisibility() == 0)
+    AppMethodBeat.i(198503);
+    if (this.kiF.getVisibility() == 0)
     {
-      b.b.a(this.hOp, b.c.hLD);
-      AppMethodBeat.o(207946);
+      b.b.a(this.kCL, b.c.kyW);
+      AppMethodBeat.o(198503);
       return true;
     }
-    AppMethodBeat.o(207946);
+    AppMethodBeat.o(198503);
     return false;
   }
   
   public final void statusChange(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(207945);
-    p.h(paramc, "status");
+    AppMethodBeat.i(198500);
+    p.k(paramc, "status");
     super.statusChange(paramc, paramBundle);
     switch (l.$EnumSwitchMapping$0[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(207945);
+      AppMethodBeat.o(198500);
       return;
-      rg(8);
-      AppMethodBeat.o(207945);
+      tU(8);
+      AppMethodBeat.o(198500);
       return;
       if (paramBundle != null)
       {
         paramc = Integer.valueOf(paramBundle.getInt("PARAM_FACE_VERIFY_ERROR", -1));
         if ((paramc != null) && (paramc.intValue() != -1)) {
-          new com.tencent.mm.ui.widget.a.f.a(this.hwr.getContext()).hbu().bow(this.hwr.getContext().getString(paramc.intValue())).boA(this.hwr.getContext().getString(2131755873)).b((f.c)a.hPp).show();
+          new f.a(this.kiF.getContext()).icD().bBl(this.kiF.getContext().getString(paramc.intValue())).bBp(this.kiF.getContext().getString(b.h.app_i_know)).b((f.c)a.kDL).show();
         }
-        paramc = x.hJf;
-        paramBundle = x.aGr();
-        paramc = (CharSequence)this.hPa.getText();
-        if ((paramc != null) && (!n.aL(paramc))) {
-          break label287;
+        paramc = u.kwz;
+        paramBundle = u.aOr();
+        paramc = (CharSequence)this.kDw.getText();
+        if ((paramc != null) && (!n.ba(paramc))) {
+          break label288;
         }
         i = 1;
         label206:
         if (i == 0) {
-          break label292;
+          break label293;
         }
       }
-      label287:
-      label292:
-      for (paramc = com.tencent.mm.pluginsdk.ui.span.l.b(this.hwr.getContext(), (CharSequence)this.hwr.getContext().getString(2131762261, new Object[] { this.hPm }), this.hPa.getTextSize()).toString();; paramc = this.hPa.getText().toString())
+      label288:
+      label293:
+      for (paramc = com.tencent.mm.pluginsdk.ui.span.l.b(this.kiF.getContext(), (CharSequence)this.kiF.getContext().getString(b.h.live_before_title_edit, new Object[] { this.kDI }), this.kDw.getTextSize()).toString();; paramc = this.kDw.getText().toString())
       {
-        paramBundle.LpF = paramc;
-        paramc = x.hJf;
-        x.eK(false);
-        rg(0);
-        AppMethodBeat.o(207945);
+        paramBundle.Srb = paramc;
+        paramc = u.kwz;
+        u.fq(false);
+        tU(0);
+        AppMethodBeat.o(198500);
         return;
         paramc = null;
         break;
         i = 0;
         break label206;
       }
-      paramc = x.hJf;
-      if (x.aGL()) {}
+      paramc = u.kwz;
+      if (u.aOL()) {}
       for (int i = 3;; i = 2)
       {
-        paramc = x.hJf;
-        paramc = x.aGm();
-        paramBundle = x.hJf;
-        boolean bool1 = x.aGI();
-        paramBundle = x.hJf;
-        boolean bool2 = x.aGJ();
-        paramBundle = x.hJf;
-        paramBundle = x.aGr().LpF;
-        Object localObject = x.hJf;
-        boolean bool3 = x.aGH();
-        localObject = this.hwr.getResources();
-        p.g(localObject, "root.resources");
-        com.tencent.mm.live.d.e.a(paramc, bool1, bool2, paramBundle, bool3, ((Resources)localObject).getConfiguration().orientation, i);
-        com.tencent.mm.live.d.a.aHV();
-        paramc = x.hJf;
-        x.eK(false);
-        AppMethodBeat.o(207945);
+        paramc = u.kwz;
+        paramc = u.aOm();
+        paramBundle = u.kwz;
+        boolean bool1 = u.aOI();
+        paramBundle = u.kwz;
+        boolean bool2 = u.aOJ();
+        paramBundle = u.kwz;
+        paramBundle = u.aOr().Srb;
+        Object localObject = u.kwz;
+        boolean bool3 = u.aOH();
+        localObject = this.kiF.getResources();
+        p.j(localObject, "root.resources");
+        e.a(paramc, bool1, bool2, paramBundle, bool3, ((Resources)localObject).getConfiguration().orientation, i);
+        com.tencent.mm.live.d.a.aPT();
+        paramc = u.kwz;
+        u.fq(false);
+        AppMethodBeat.o(198500);
         return;
       }
-      com.tencent.mm.live.d.a.aHU();
+      com.tencent.mm.live.d.a.aPS();
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
   static final class a
     implements f.c
   {
-    public static final a hPp;
+    public static final a kDL;
     
     static
     {
-      AppMethodBeat.i(207942);
-      hPp = new a();
-      AppMethodBeat.o(207942);
+      AppMethodBeat.i(197464);
+      kDL = new a();
+      AppMethodBeat.o(197464);
     }
     
-    public final void e(boolean paramBoolean, String paramString) {}
+    public final void g(boolean paramBoolean, String paramString) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.c.k
  * JD-Core Version:    0.7.0.1
  */

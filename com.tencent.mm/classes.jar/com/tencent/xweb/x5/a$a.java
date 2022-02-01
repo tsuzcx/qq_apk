@@ -5,25 +5,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a$a
   implements com.tencent.smtt.sdk.DownloadListener
 {
-  android.webkit.DownloadListener SES;
+  android.webkit.DownloadListener aagc;
   
   public a$a(android.webkit.DownloadListener paramDownloadListener)
   {
-    this.SES = paramDownloadListener;
+    this.aagc = paramDownloadListener;
   }
   
   public final void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
     AppMethodBeat.i(153812);
-    if (this.SES != null) {
-      this.SES.onDownloadStart(paramString1, paramString2, paramString3, paramString4, paramLong);
+    if (this.aagc != null) {
+      this.aagc.onDownloadStart(paramString1, paramString2, paramString3, paramString4, paramLong);
     }
     AppMethodBeat.o(153812);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.x5.a.a
  * JD-Core Version:    0.7.0.1
  */

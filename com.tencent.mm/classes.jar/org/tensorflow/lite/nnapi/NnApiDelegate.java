@@ -7,28 +7,28 @@ import org.tensorflow.lite.b;
 public class NnApiDelegate
   implements AutoCloseable, b
 {
-  public long Ujw;
+  public long abMR;
   
   public NnApiDelegate()
   {
     this(new a());
-    AppMethodBeat.i(238993);
-    AppMethodBeat.o(238993);
+    AppMethodBeat.i(240091);
+    AppMethodBeat.o(240091);
   }
   
   private NnApiDelegate(a parama)
   {
-    AppMethodBeat.i(238992);
+    AppMethodBeat.i(240088);
     TensorFlowLite.init();
-    int j = parama.Ujy;
-    String str1 = parama.Ujz;
+    int j = parama.abMT;
+    String str1 = parama.abMU;
     String str2 = parama.cacheDir;
-    String str3 = parama.UjA;
+    String str3 = parama.abMV;
     int i;
-    if (parama.UjB != null)
+    if (parama.abMW != null)
     {
-      i = parama.UjB.intValue();
-      if (parama.UjC == null) {
+      i = parama.abMW.intValue();
+      if (parama.abMX == null) {
         break label142;
       }
     }
@@ -36,18 +36,18 @@ public class NnApiDelegate
     for (boolean bool1 = true;; bool1 = false)
     {
       boolean bool2 = bool4;
-      if (parama.UjC != null)
+      if (parama.abMX != null)
       {
         bool2 = bool4;
-        if (parama.UjC.booleanValue()) {
+        if (parama.abMX.booleanValue()) {
           bool2 = false;
         }
       }
-      if (parama.UjD != null) {
-        bool3 = parama.UjD.booleanValue();
+      if (parama.abMY != null) {
+        bool3 = parama.abMY.booleanValue();
       }
-      this.Ujw = createDelegate(j, str1, str2, str3, i, bool1, bool2, bool3);
-      AppMethodBeat.o(238992);
+      this.abMR = createDelegate(j, str1, str2, str3, i, bool1, bool2, bool3);
+      AppMethodBeat.o(240088);
       return;
       i = -1;
       break;
@@ -62,34 +62,34 @@ public class NnApiDelegate
   
   public void close()
   {
-    AppMethodBeat.i(238994);
-    if (this.Ujw != 0L)
+    AppMethodBeat.i(240093);
+    if (this.abMR != 0L)
     {
-      deleteDelegate(this.Ujw);
-      this.Ujw = 0L;
+      deleteDelegate(this.abMR);
+      this.abMR = 0L;
     }
-    AppMethodBeat.o(238994);
+    AppMethodBeat.o(240093);
   }
   
   public final long getNativeHandle()
   {
-    return this.Ujw;
+    return this.abMR;
   }
   
   public static final class a
   {
-    String UjA = null;
-    Integer UjB = null;
-    Boolean UjC = null;
-    Boolean UjD = null;
-    int Ujy = -1;
-    String Ujz = null;
+    int abMT = -1;
+    String abMU = null;
+    String abMV = null;
+    Integer abMW = null;
+    Boolean abMX = null;
+    Boolean abMY = null;
     String cacheDir = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     org.tensorflow.lite.nnapi.NnApiDelegate
  * JD-Core Version:    0.7.0.1
  */

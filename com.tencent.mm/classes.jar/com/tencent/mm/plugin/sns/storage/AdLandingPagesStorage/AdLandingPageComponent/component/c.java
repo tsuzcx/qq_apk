@@ -10,6 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.sns.i.e;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.d;
 import com.tencent.mm.pluginsdk.ui.span.e;
@@ -23,22 +26,22 @@ import org.json.JSONObject;
 public final class c
   extends a
 {
-  private ImageView EbI;
-  private ImageView EbJ;
-  LinearLayout EbK;
+  private ImageView Kpd;
+  private ImageView Kpe;
+  LinearLayout Kpf;
   int clickCount;
-  private TextView jCB;
-  LinearLayout tmh;
+  private TextView msF;
+  LinearLayout wSF;
   
   public c(Context paramContext, d paramd, ViewGroup paramViewGroup)
   {
     super(paramContext, paramd, paramViewGroup);
   }
   
-  public final boolean bp(JSONObject paramJSONObject)
+  public final boolean by(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(96418);
-    if (!super.bp(paramJSONObject))
+    if (!super.by(paramJSONObject))
     {
       AppMethodBeat.o(96418);
       return false;
@@ -57,45 +60,45 @@ public final class c
     return false;
   }
   
-  protected final void eWT()
+  protected final void fKe()
   {
     AppMethodBeat.i(96416);
-    this.jCB.setText((CharSequence)((d)this.EcX).DXU.get(0));
-    if (((d)this.EcX).DZm)
+    this.msF.setText((CharSequence)((d)this.KqB).Kle.get(0));
+    if (((d)this.KqB).KmF)
     {
-      this.EbI.setImageDrawable(com.tencent.mm.cb.a.l(this.context, 2131235225));
-      this.EbJ.setImageDrawable(com.tencent.mm.cb.a.l(this.context, 2131234687));
-      this.jCB.setTextColor(-16777216);
-      this.EbK.setBackgroundResource(2131230920);
+      this.Kpd.setImageDrawable(com.tencent.mm.ci.a.m(this.context, i.e.tel_w));
+      this.Kpe.setImageDrawable(com.tencent.mm.ci.a.m(this.context, i.e.right_arrow_w));
+      this.msF.setTextColor(-16777216);
+      this.Kpf.setBackgroundResource(i.e.adlanding_comp_click_dark);
     }
     for (;;)
     {
-      this.EbK.setPadding((int)((d)this.EcX).paddingLeft, 0, (int)((d)this.EcX).paddingRight, 0);
-      this.tmh.setPadding(0, (int)((d)this.EcX).paddingTop, 0, (int)((d)this.EcX).paddingBottom);
-      a(this.EbK);
-      this.EbK.setOnClickListener(new View.OnClickListener()
+      this.Kpf.setPadding((int)((d)this.KqB).paddingLeft, 0, (int)((d)this.KqB).paddingRight, 0);
+      this.wSF.setPadding(0, (int)((d)this.KqB).paddingTop, 0, (int)((d)this.KqB).paddingBottom);
+      d(this.Kpf);
+      this.Kpf.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(96415);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingContactComp$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingContactComp$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           paramAnonymousView = c.this;
           paramAnonymousView.clickCount += 1;
-          if (e.a.KqE == null)
+          if (e.a.RrL == null)
           {
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingContactComp$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(96415);
             return;
           }
-          if (c.a(c.this).DXU.size() > 1) {
-            e.a.KqE.a(c.this.context, c.a(c.this).DXU, new e.b()
+          if (((d)c.this.KqB).Kle.size() > 1) {
+            e.a.RrL.a(c.this.context, ((d)c.this.KqB).Kle, new e.b()
             {
               public final void onDismiss()
               {
                 AppMethodBeat.i(96414);
-                ap.hb(c.this.context);
+                ao.ic(c.this.context);
                 AppMethodBeat.o(96414);
               }
             });
@@ -105,46 +108,46 @@ public final class c
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingContactComp$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(96415);
             return;
-            if (c.a(c.this).DXU.size() > 0) {
-              AdLandingPagesProxy.getInstance().confirmDialPhoneNum((Activity)c.this.context, (String)c.a(c.this).DXU.get(0));
+            if (((d)c.this.KqB).Kle.size() > 0) {
+              AdLandingPagesProxy.getInstance().confirmDialPhoneNum((Activity)c.this.context, (String)((d)c.this.KqB).Kle.get(0));
             }
           }
         }
       });
       AppMethodBeat.o(96416);
       return;
-      this.EbI.setImageDrawable(com.tencent.mm.cb.a.l(this.context, 2131235224));
-      this.EbJ.setImageDrawable(com.tencent.mm.cb.a.l(this.context, 2131234686));
-      this.jCB.setTextColor(-1);
-      this.EbK.setBackgroundResource(2131230921);
+      this.Kpd.setImageDrawable(com.tencent.mm.ci.a.m(this.context, i.e.tel));
+      this.Kpe.setImageDrawable(com.tencent.mm.ci.a.m(this.context, i.e.right_arrow));
+      this.msF.setTextColor(-1);
+      this.Kpf.setBackgroundResource(i.e.adlanding_comp_click_light);
     }
   }
   
-  public final void eXe()
+  public final void fKp()
   {
     AppMethodBeat.i(96417);
-    if (((d)this.EcX).DXU.isEmpty())
+    if (((d)this.KqB).Kle.isEmpty())
     {
       AppMethodBeat.o(96417);
       return;
     }
     View localView = this.contentView;
-    this.EbI = ((ImageView)localView.findViewById(2131303139));
-    this.EbJ = ((ImageView)localView.findViewById(2131307076));
-    this.jCB = ((TextView)localView.findViewById(2131299495));
-    this.tmh = ((LinearLayout)localView.findViewById(2131299174));
-    this.EbK = ((LinearLayout)localView.findViewById(2131302668));
+    this.Kpd = ((ImageView)localView.findViewById(i.f.left_icon));
+    this.Kpe = ((ImageView)localView.findViewById(i.f.right_arrow));
+    this.msF = ((TextView)localView.findViewById(i.f.desc));
+    this.wSF = ((LinearLayout)localView.findViewById(i.f.container));
+    this.Kpf = ((LinearLayout)localView.findViewById(i.f.innter_container));
     AppMethodBeat.o(96417);
   }
   
   protected final int getLayout()
   {
-    return 2131496388;
+    return i.g.sns_ad_native_landing_pages_item_lbs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.c
  * JD-Core Version:    0.7.0.1
  */

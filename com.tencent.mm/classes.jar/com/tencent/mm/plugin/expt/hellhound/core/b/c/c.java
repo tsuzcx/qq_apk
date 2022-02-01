@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.expt.hellhound.core.b.c;
 
 import android.view.View;
-import com.tencent.mm.protocal.protobuf.erd;
+import com.tencent.mm.protocal.protobuf.fbo;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/IViewOpListener;", "", "onEvent", "", "view", "Landroid/view/View;", "viewNode", "Lcom/tencent/mm/protocal/protobuf/ViewNode;", "plugin-expt_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/IViewOpListener;", "", "onEvent", "", "view", "Landroid/view/View;", "viewNode", "Lcom/tencent/mm/protocal/protobuf/ViewNode;", "plugin-expt_release"})
 public abstract interface c
 {
-  public abstract void a(View paramView, erd paramerd);
+  public abstract void a(View paramView, fbo paramfbo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.b.c.c
  * JD-Core Version:    0.7.0.1
  */

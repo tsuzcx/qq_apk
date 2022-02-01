@@ -26,14 +26,14 @@ public final class p
       if (paramString != null) {
         break label193;
       }
-      paramContext = paramT.Nv();
+      paramContext = paramT.Qq();
       label48:
       paramContext = paramContext + paramT.version();
       paramString = NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext());
       paramContext = paramContext + " NetType/" + paramString;
       paramContext = paramContext + " Language/" + LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
       paramString = new StringBuilder().append(paramContext).append(" ABI/");
-      if (!bZo()) {
+      if (!clW()) {
         break label220;
       }
     }
@@ -47,12 +47,12 @@ public final class p
       return paramContext;
       bool = false;
       break;
-      paramContext = paramString + paramT.Nv();
+      paramContext = paramString + paramT.Qq();
       break label48;
     }
   }
   
-  private static boolean bZo()
+  private static boolean clW()
   {
     AppMethodBeat.i(140850);
     if (Build.VERSION.SDK_INT < 21)
@@ -79,7 +79,7 @@ public final class p
   public static abstract interface a
     extends b
   {
-    public abstract String Nv();
+    public abstract String Qq();
     
     public abstract String version();
   }

@@ -13,7 +13,21 @@ class KatanaProxyLoginMethodHandler
   static
   {
     AppMethodBeat.i(7809);
-    CREATOR = new KatanaProxyLoginMethodHandler.1();
+    CREATOR = new Parcelable.Creator()
+    {
+      public final KatanaProxyLoginMethodHandler createFromParcel(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(7804);
+        paramAnonymousParcel = new KatanaProxyLoginMethodHandler(paramAnonymousParcel);
+        AppMethodBeat.o(7804);
+        return paramAnonymousParcel;
+      }
+      
+      public final KatanaProxyLoginMethodHandler[] newArray(int paramAnonymousInt)
+      {
+        return new KatanaProxyLoginMethodHandler[paramAnonymousInt];
+      }
+    };
     AppMethodBeat.o(7809);
   }
   
@@ -57,7 +71,7 @@ class KatanaProxyLoginMethodHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.login.KatanaProxyLoginMethodHandler
  * JD-Core Version:    0.7.0.1
  */

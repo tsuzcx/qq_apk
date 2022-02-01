@@ -1,94 +1,73 @@
 package com.tencent.mm.plugin.game.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
 
 public final class cu
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String jfi;
-  public int xMC;
-  public String xut;
+  public String CMD;
+  public int CNg;
+  public int CQK;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(256644);
+    AppMethodBeat.i(207140);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.jfi == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: AppId");
-        AppMethodBeat.o(256644);
-        throw paramVarArgs;
+      paramVarArgs.aY(1, this.CQK);
+      paramVarArgs.aY(2, this.CNg);
+      if (this.CMD != null) {
+        paramVarArgs.f(3, this.CMD);
       }
-      if (this.jfi != null) {
-        paramVarArgs.e(1, this.jfi);
-      }
-      if (this.xut != null) {
-        paramVarArgs.e(2, this.xut);
-      }
-      paramVarArgs.aM(3, this.xMC);
-      AppMethodBeat.o(256644);
+      AppMethodBeat.o(207140);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.jfi == null) {
-        break label366;
-      }
-    }
-    label366:
-    for (paramInt = g.a.a.b.b.a.f(1, this.jfi) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.xut != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.xut);
+      int i = g.a.a.b.b.a.bM(1, this.CQK) + 0 + g.a.a.b.b.a.bM(2, this.CNg);
+      paramInt = i;
+      if (this.CMD != null) {
+        paramInt = i + g.a.a.b.b.a.g(3, this.CMD);
       }
-      paramInt = g.a.a.b.b.a.bu(3, this.xMC);
-      AppMethodBeat.o(256644);
-      return i + paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
-          }
-        }
-        if (this.jfi == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: AppId");
-          AppMethodBeat.o(256644);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(256644);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-        cu localcu = (cu)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(256644);
-          return -1;
-        case 1: 
-          localcu.jfi = locala.UbS.readString();
-          AppMethodBeat.o(256644);
-          return 0;
-        case 2: 
-          localcu.xut = locala.UbS.readString();
-          AppMethodBeat.o(256644);
-          return 0;
-        }
-        localcu.xMC = locala.UbS.zi();
-        AppMethodBeat.o(256644);
-        return 0;
-      }
-      AppMethodBeat.o(256644);
-      return -1;
+      AppMethodBeat.o(207140);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.iUs();
+        }
+      }
+      AppMethodBeat.o(207140);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      cu localcu = (cu)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(207140);
+        return -1;
+      case 1: 
+        localcu.CQK = locala.abFh.AK();
+        AppMethodBeat.o(207140);
+        return 0;
+      case 2: 
+        localcu.CNg = locala.abFh.AK();
+        AppMethodBeat.o(207140);
+        return 0;
+      }
+      localcu.CMD = locala.abFh.readString();
+      AppMethodBeat.o(207140);
+      return 0;
+    }
+    AppMethodBeat.o(207140);
+    return -1;
   }
 }
 

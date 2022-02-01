@@ -1,0 +1,12 @@
+package com.tencent.mm.plugin.scanner.e;
+
+import kotlin.l;
+
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/image/AiScanSnsImageCDNStrategy$Companion;", "", "()V", "TAG", "", "plugin-scan_release"})
+public final class j$a {}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+ * Qualified Name:     com.tencent.mm.plugin.scanner.e.j.a
+ * JD-Core Version:    0.7.0.1
+ */

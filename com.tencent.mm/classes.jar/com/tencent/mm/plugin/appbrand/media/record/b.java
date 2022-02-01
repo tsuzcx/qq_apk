@@ -4,24 +4,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum b
 {
-  public int mFN;
+  public int pEW;
   
   static
   {
     AppMethodBeat.i(146318);
-    ndg = new b("AUTO", 0, 0);
-    ndh = new b("MIC", 1, 1);
-    ndi = new b("CAMCORDER", 2, 5);
-    ndj = new b("VOICE_RECOGNITION", 3, 6);
-    ndk = new b("VOICE_COMMUNICATION", 4, 7);
-    ndl = new b("UNPROCESSED", 5, 9);
-    ndm = new b[] { ndg, ndh, ndi, ndj, ndk, ndl };
+    qdv = new b("AUTO", 0, 0);
+    qdw = new b("MIC", 1, 1);
+    qdx = new b("CAMCORDER", 2, 5);
+    qdy = new b("VOICE_RECOGNITION", 3, 6);
+    qdz = new b("VOICE_COMMUNICATION", 4, 7);
+    qdA = new b("UNPROCESSED", 5, 9);
+    qdB = new b[] { qdv, qdw, qdx, qdy, qdz, qdA };
     AppMethodBeat.o(146318);
   }
   
   private b(int paramInt)
   {
-    this.mFN = paramInt;
+    this.pEW = paramInt;
   }
   
   public static b a(String paramString, b paramb)
@@ -55,7 +55,7 @@ public enum b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.b
  * JD-Core Version:    0.7.0.1
  */

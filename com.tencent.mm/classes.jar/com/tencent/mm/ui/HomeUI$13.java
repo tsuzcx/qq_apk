@@ -1,11 +1,11 @@
 package com.tencent.mm.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.q.f;
 
 final class HomeUI$13
-  implements o.f
+  implements q.f
 {
   HomeUI$13(HomeUI paramHomeUI)
   {
@@ -13,12 +13,12 @@ final class HomeUI$13
     AppMethodBeat.o(163255);
   }
   
-  public final void onCreateMMMenu(m paramm)
+  public final void onCreateMMMenu(o paramo)
   {
-    AppMethodBeat.i(232559);
-    paramm.d(1, "拍摄状态");
-    paramm.d(2, "属性配置");
-    AppMethodBeat.o(232559);
+    AppMethodBeat.i(291565);
+    paramo.d(1, "拍摄状态");
+    paramo.d(2, "属性配置");
+    AppMethodBeat.o(291565);
   }
 }
 

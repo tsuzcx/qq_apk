@@ -7,18 +7,18 @@ import java.util.NoSuchElementException;
 final class h$a<T>
   implements Iterator<T>
 {
-  private static final a TSb;
+  private static final a abuA;
   
   static
   {
     AppMethodBeat.i(61378);
-    TSb = new a();
+    abuA = new a();
     AppMethodBeat.o(61378);
   }
   
-  public static <T> a<T> hLW()
+  public static <T> a<T> iQn()
   {
-    return TSb;
+    return abuA;
   }
   
   public final boolean hasNext()
@@ -44,7 +44,7 @@ final class h$a<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlin.l.b.a.b.o.h.a
  * JD-Core Version:    0.7.0.1
  */

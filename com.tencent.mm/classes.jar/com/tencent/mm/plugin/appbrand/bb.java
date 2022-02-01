@@ -1,50 +1,84 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.f.i;
-import com.tencent.luggage.a.e;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.luggage.wxa.a.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.p;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.appstorage.z;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.jsapi.file.at;
-import com.tencent.mm.plugin.appbrand.jsapi.s;
-import com.tencent.mm.plugin.appbrand.jsapi.storage.JsApiClearStorageTask;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.plugin.appbrand.widget.d;
 
-public final class bb
+ enum bb
 {
-  static void Uv(String paramString)
+  private static final int nzy;
+  
+  static
   {
-    AppMethodBeat.i(180182);
-    ((com.tencent.luggage.sdk.customize.a)e.M(com.tencent.luggage.sdk.customize.a.class)).dD(paramString).Y(2, paramString);
-    AppMethodBeat.o(180182);
+    AppMethodBeat.i(244541);
+    nzr = new bb("AppBrandPageContainer", 0);
+    nzs = new bb("PipContainer", 1);
+    nzt = new bb("LegacyDialogContainer", 2);
+    nzu = new bb("GlobalNativeWidgetContainerView", 3);
+    nzv = new bb("RemoteDebugFloatView", 4);
+    nzw = new bb("AuthorizeDialogContainer", 5);
+    nzx = new bb("LoadingSplash", 6);
+    nzz = new bb[] { nzr, nzs, nzt, nzu, nzv, nzw, nzx };
+    nzy = a.d.app_brand_runtime_root_child_index_tag;
+    AppMethodBeat.o(244541);
   }
   
-  public static boolean r(q paramq)
+  private bb() {}
+  
+  private int H(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(180181);
-    if (paramq.bsC().launchMode == 1)
+    AppMethodBeat.i(244537);
+    paramAppBrandRuntime = paramAppBrandRuntime.ntC;
+    if (ordinal() >= paramAppBrandRuntime.getChildCount())
     {
-      AppMethodBeat.o(180181);
-      return true;
+      i = paramAppBrandRuntime.getChildCount() - 1;
+      while (i >= 0)
+      {
+        int j = ((Integer)paramAppBrandRuntime.getChildAt(i).getTag(nzy)).intValue();
+        if (ordinal() < j)
+        {
+          AppMethodBeat.o(244537);
+          return i;
+        }
+        i -= 1;
+      }
     }
-    AppMethodBeat.o(180181);
-    return false;
+    int i = Math.min(ordinal(), paramAppBrandRuntime.getChildCount());
+    AppMethodBeat.o(244537);
+    return i;
   }
   
-  public static final class a
-    extends s
+  final void a(AppBrandRuntime paramAppBrandRuntime, View paramView)
   {
-    public static final int CTRL_INDEX = -2;
-    public static final String NAME = "onBottomBannerButtonClicked";
+    AppMethodBeat.i(244539);
+    Object localObject = (Integer)paramView.getTag(nzy);
+    if ((localObject != null) && (ordinal() != ((Integer)localObject).intValue()))
+    {
+      paramAppBrandRuntime = new IllegalStateException("Child has already been added with index ".concat(String.valueOf(localObject)));
+      AppMethodBeat.o(244539);
+      throw paramAppBrandRuntime;
+    }
+    paramView.setTag(nzy, Integer.valueOf(ordinal()));
+    localObject = paramAppBrandRuntime.ntC;
+    int i = H(paramAppBrandRuntime);
+    if ((paramView.getParent() == localObject) && (i >= ((d)localObject).getChildCount() - 1))
+    {
+      ((d)localObject).bringChildToFront(paramView);
+      AppMethodBeat.o(244539);
+      return;
+    }
+    if (paramView.getParent() != null) {
+      ((ViewGroup)paramView.getParent()).removeView(paramView);
+    }
+    ((d)localObject).addView(paramView, i);
+    AppMethodBeat.o(244539);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.bb
  * JD-Core Version:    0.7.0.1
  */

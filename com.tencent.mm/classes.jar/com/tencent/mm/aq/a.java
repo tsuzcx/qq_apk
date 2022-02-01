@@ -1,560 +1,1613 @@
 package com.tencent.mm.aq;
 
+import com.tencent.mars.cdn.CdnLogic;
+import com.tencent.mars.cdn.CdnLogic.AppCallback;
+import com.tencent.mars.cdn.CdnLogic.C2CDownloadRequest;
+import com.tencent.mars.cdn.CdnLogic.C2CDownloadResult;
+import com.tencent.mars.cdn.CdnLogic.C2CUploadRequest;
+import com.tencent.mars.cdn.CdnLogic.C2CUploadResult;
+import com.tencent.mars.cdn.CdnLogic.CdnInfo;
+import com.tencent.mars.cdn.CdnLogic.CronetTaskResult;
+import com.tencent.mars.cdn.CdnLogic.DownloadCallback;
+import com.tencent.mars.cdn.CdnLogic.SessionCallback;
+import com.tencent.mars.cdn.CdnLogic.UploadCallback;
+import com.tencent.mars.cdn.CdnLogic.VideoStreamingCallback;
+import com.tencent.mars.cdn.CdnLogic.WebPageProfile;
+import com.tencent.mars.stn.StnLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.protocal.d;
+import com.tencent.mm.f.b.a.af;
+import com.tencent.mm.i.e;
+import com.tencent.mm.i.g;
+import com.tencent.mm.model.az.a;
+import com.tencent.mm.model.az.e;
+import com.tencent.mm.platformtools.ac;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.te;
+import com.tencent.mm.protocal.protobuf.tf;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import org.json.JSONObject;
+import com.tencent.mm.vfs.u;
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public final class a
+  implements CdnLogic.AppCallback, CdnLogic.DownloadCallback, CdnLogic.SessionCallback, CdnLogic.UploadCallback, CdnLogic.VideoStreamingCallback
 {
-  public static int iUo = 1;
-  private static String iUp = "";
+  private static int lHr = 7340033;
+  private static int lHs = 100;
+  private static int lHt = 101;
+  private static int lHu = 102;
+  private static int lHv = 103;
+  private int lHA;
+  private String lHB;
+  private MTimerHandler lHC;
+  private boolean lHD;
+  private com.tencent.mm.plugin.misc.a.a.a lHE;
+  a lHF;
+  public a lHG;
+  private te lHw;
+  private com.tencent.mm.i.b.a lHx;
+  com.tencent.mm.i.b.a lHy;
+  private int lHz;
+  
+  public a(String paramString, com.tencent.mm.i.b.a parama)
+  {
+    AppMethodBeat.i(150333);
+    this.lHw = null;
+    this.lHx = null;
+    this.lHy = null;
+    this.lHz = 0;
+    this.lHA = 0;
+    this.lHB = "";
+    this.lHC = null;
+    this.lHD = false;
+    this.lHE = new a.1(this);
+    if (MMApplicationContext.isMMProcess()) {
+      this.lHC = new MTimerHandler(com.tencent.mm.kernel.h.aHJ().getLooper(), new MTimerHandler.CallBack()
+      {
+        public final boolean onTimerExpired()
+        {
+          AppMethodBeat.i(200099);
+          if ((a.a(a.this) == 0) && (a.b(a.this) == 0))
+          {
+            AppMethodBeat.o(200099);
+            return false;
+          }
+          Log.i("MicroMsg.CdnTransportEngine", "CdnDataFlowStat id:%s send:%d recv:%d", new Object[] { a.c(a.this), Integer.valueOf(a.a(a.this)), Integer.valueOf(a.b(a.this)) });
+          if (az.a.lts == null)
+          {
+            Log.e("MicroMsg.CdnTransportEngine", "getNetStat null");
+            AppMethodBeat.o(200099);
+            return false;
+          }
+          az.a.lts.dH(a.b(a.this), a.a(a.this));
+          a.d(a.this);
+          a.e(a.this);
+          AppMethodBeat.o(200099);
+          return true;
+        }
+      }, true);
+    }
+    this.lHy = parama;
+    CdnLogic.Initialize(paramString, this, "1", "BFEDFFB5EA28509F9C89ED83FA7FDDA8881435D444E984D53A98AD8E9410F1145EDD537890E10456190B22E6E5006455EFC6C12E41FDA985F38FBBC7213ECB810E3053D4B8D74FFBC70B4600ABD728202322AFCE1406046631261BD5EE3D44721082FEAB74340D73645DC0D02A293B962B9D47E4A64100BD7524DE00D9D3B5C1", "010001", "cdnwx2013usrname");
+    Log.i("MicroMsg.CdnTransportEngine", "summersafecdn CdnTransportEngine init[%s] infoPath[%s], stack[%s]", new Object[] { Integer.valueOf(hashCode()), paramString, Util.getStack() });
+    AppMethodBeat.o(150333);
+  }
+  
+  public static int Vq(String paramString)
+  {
+    AppMethodBeat.i(150337);
+    CdnLogic.cancelTask(paramString);
+    AppMethodBeat.o(150337);
+    return 0;
+  }
+  
+  public static int Vr(String paramString)
+  {
+    AppMethodBeat.i(150339);
+    CdnLogic.cancelTask(paramString);
+    AppMethodBeat.o(150339);
+    return 0;
+  }
+  
+  public static String Vs(String paramString)
+  {
+    AppMethodBeat.i(150340);
+    paramString = CdnLogic.calcFileMD5(u.n(paramString, false));
+    AppMethodBeat.o(150340);
+    return paramString;
+  }
+  
+  public static int Vt(String paramString)
+  {
+    AppMethodBeat.i(150342);
+    int i = CdnLogic.calcFileCrc32(u.n(paramString, false));
+    AppMethodBeat.o(150342);
+    return i;
+  }
+  
+  public static String Vu(String paramString)
+  {
+    AppMethodBeat.i(150343);
+    paramString = CdnLogic.calcMP4IdentifyMD5(u.n(paramString, false));
+    AppMethodBeat.o(150343);
+    return paramString;
+  }
+  
+  public static int Vv(String paramString)
+  {
+    AppMethodBeat.i(150350);
+    Log.i("MicroMsg.CdnTransportEngine", "stopHttpsDownload: mediaid:".concat(String.valueOf(paramString)));
+    CdnLogic.cancelTask(paramString);
+    AppMethodBeat.o(150350);
+    return 0;
+  }
+  
+  public static int Vw(String paramString)
+  {
+    AppMethodBeat.i(150352);
+    Log.i("MicroMsg.CdnTransportEngine", "stopGamePackageDownload: mediaid:".concat(String.valueOf(paramString)));
+    CdnLogic.cancelTask(paramString);
+    AppMethodBeat.o(150352);
+    return 0;
+  }
   
   /* Error */
-  private static boolean Oi(String paramString)
+  private static int Vx(String paramString)
   {
     // Byte code:
-    //   0: ldc 24
-    //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 36	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
-    //   8: invokevirtual 42	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   11: astore_2
-    //   12: aload_2
-    //   13: ldc 44
-    //   15: invokevirtual 50	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   18: astore_2
-    //   19: aload_2
-    //   20: ifnonnull +35 -> 55
-    //   23: ldc 52
-    //   25: ldc 54
-    //   27: invokestatic 60	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   30: ldc 24
-    //   32: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   35: iconst_0
-    //   36: ireturn
-    //   37: astore_2
-    //   38: ldc 52
-    //   40: aload_2
-    //   41: ldc 14
-    //   43: iconst_0
-    //   44: anewarray 4	java/lang/Object
-    //   47: invokestatic 67	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   50: aconst_null
-    //   51: astore_2
-    //   52: goto -33 -> 19
-    //   55: new 69	com/tencent/mm/vfs/o
-    //   58: dup
-    //   59: aload_0
-    //   60: invokespecial 73	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
-    //   63: astore_0
-    //   64: aload_0
-    //   65: invokevirtual 77	com/tencent/mm/vfs/o:exists	()Z
-    //   68: ifeq +8 -> 76
-    //   71: aload_0
-    //   72: invokevirtual 80	com/tencent/mm/vfs/o:delete	()Z
-    //   75: pop
-    //   76: aload_0
-    //   77: invokevirtual 84	com/tencent/mm/vfs/o:heq	()Lcom/tencent/mm/vfs/o;
-    //   80: invokevirtual 87	com/tencent/mm/vfs/o:mkdirs	()Z
-    //   83: pop
-    //   84: aload_0
-    //   85: invokestatic 93	com/tencent/mm/vfs/s:ap	(Lcom/tencent/mm/vfs/o;)Ljava/io/OutputStream;
-    //   88: astore_0
-    //   89: aload_0
-    //   90: ifnull +107 -> 197
-    //   93: sipush 1024
-    //   96: newarray byte
-    //   98: astore_3
-    //   99: aload_2
-    //   100: aload_3
-    //   101: invokevirtual 99	java/io/InputStream:read	([B)I
-    //   104: istore_1
-    //   105: iload_1
-    //   106: iconst_m1
-    //   107: if_icmpeq +59 -> 166
-    //   110: aload_0
-    //   111: aload_3
+    //   0: ldc 215
+    //   2: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 133
+    //   7: ldc 217
+    //   9: iconst_1
+    //   10: anewarray 4	java/lang/Object
+    //   13: dup
+    //   14: iconst_0
+    //   15: aload_0
+    //   16: aastore
+    //   17: invokestatic 156	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   20: aload_0
+    //   21: ldc 219
+    //   23: invokevirtual 223	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   26: ifne +26 -> 52
+    //   29: aload_0
+    //   30: ldc 225
+    //   32: invokevirtual 223	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   35: ifne +17 -> 52
+    //   38: ldc 133
+    //   40: ldc 227
+    //   42: invokestatic 230	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   45: ldc 215
+    //   47: invokestatic 159	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   50: iconst_0
+    //   51: ireturn
+    //   52: aload_0
+    //   53: invokestatic 236	java/net/InetAddress:getByName	(Ljava/lang/String;)Ljava/net/InetAddress;
+    //   56: invokevirtual 240	java/net/InetAddress:getAddress	()[B
+    //   59: astore 5
+    //   61: aload 5
+    //   63: arraylength
+    //   64: istore 4
+    //   66: iconst_0
+    //   67: istore_3
+    //   68: iconst_0
+    //   69: istore_1
+    //   70: iload_1
+    //   71: istore_2
+    //   72: iload_3
+    //   73: iload 4
+    //   75: if_icmpge +28 -> 103
+    //   78: iload_1
+    //   79: bipush 8
+    //   81: ishl
+    //   82: aload 5
+    //   84: iload_3
+    //   85: baload
+    //   86: sipush 255
+    //   89: iand
+    //   90: ior
+    //   91: istore_1
+    //   92: iload_3
+    //   93: iconst_1
+    //   94: iadd
+    //   95: istore_3
+    //   96: goto -26 -> 70
+    //   99: astore 5
+    //   101: iconst_0
+    //   102: istore_2
+    //   103: ldc 133
+    //   105: ldc 242
+    //   107: iconst_2
+    //   108: anewarray 4	java/lang/Object
+    //   111: dup
     //   112: iconst_0
-    //   113: iload_1
-    //   114: invokevirtual 105	java/io/OutputStream:write	([BII)V
-    //   117: goto -18 -> 99
-    //   120: astore_3
-    //   121: ldc 52
-    //   123: aload_3
-    //   124: ldc 14
-    //   126: iconst_0
-    //   127: anewarray 4	java/lang/Object
-    //   130: invokestatic 67	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   133: aload_2
-    //   134: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   137: aload_0
-    //   138: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   141: ldc 24
-    //   143: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   146: iconst_0
-    //   147: ireturn
-    //   148: astore_0
-    //   149: ldc 52
-    //   151: aload_0
-    //   152: ldc 14
-    //   154: iconst_0
-    //   155: anewarray 4	java/lang/Object
-    //   158: invokestatic 67	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   161: aconst_null
-    //   162: astore_0
-    //   163: goto -74 -> 89
-    //   166: aload_2
-    //   167: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   170: aload_0
-    //   171: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   174: ldc 24
-    //   176: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   179: iconst_1
-    //   180: ireturn
-    //   181: astore_3
-    //   182: aload_2
-    //   183: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   186: aload_0
-    //   187: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   190: ldc 24
-    //   192: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   195: aload_3
-    //   196: athrow
-    //   197: aload_2
-    //   198: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   201: ldc 24
-    //   203: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   206: iconst_0
-    //   207: ireturn
+    //   113: aload_0
+    //   114: aastore
+    //   115: dup
+    //   116: iconst_1
+    //   117: iload_2
+    //   118: invokestatic 145	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   121: aastore
+    //   122: invokestatic 156	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   125: ldc 215
+    //   127: invokestatic 159	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   130: iload_2
+    //   131: ireturn
+    //   132: astore 5
+    //   134: iconst_0
+    //   135: istore_2
+    //   136: goto -33 -> 103
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	208	0	paramString	String
-    //   104	10	1	i	int
-    //   11	9	2	localObject1	Object
-    //   37	4	2	localIOException1	IOException
-    //   51	147	2	localCloseable	java.io.Closeable
-    //   98	14	3	arrayOfByte	byte[]
-    //   120	4	3	localIOException2	IOException
-    //   181	15	3	localObject2	Object
+    //   0	139	0	paramString	String
+    //   69	23	1	i	int
+    //   71	65	2	j	int
+    //   67	29	3	k	int
+    //   64	12	4	m	int
+    //   59	24	5	arrayOfByte	byte[]
+    //   99	1	5	localNullPointerException	java.lang.NullPointerException
+    //   132	1	5	localUnknownHostException	java.net.UnknownHostException
     // Exception table:
     //   from	to	target	type
-    //   12	19	37	java/io/IOException
-    //   93	99	120	java/io/IOException
-    //   99	105	120	java/io/IOException
-    //   110	117	120	java/io/IOException
-    //   84	89	148	java/io/FileNotFoundException
-    //   93	99	181	finally
-    //   99	105	181	finally
-    //   110	117	181	finally
-    //   121	133	181	finally
+    //   20	45	99	java/lang/NullPointerException
+    //   52	66	99	java/lang/NullPointerException
+    //   20	45	132	java/net/UnknownHostException
+    //   52	66	132	java/net/UnknownHostException
   }
   
-  private static String bbt()
+  public static int a(String paramString1, String paramString2, String paramString3, CdnLogic.DownloadCallback paramDownloadCallback)
   {
-    AppMethodBeat.i(104501);
-    if (Util.isNullOrNil(iUp)) {
-      iUp = b.aKC().replace("/data/user/0", "/data/data");
+    AppMethodBeat.i(194206);
+    CdnLogic.C2CDownloadRequest localC2CDownloadRequest = new CdnLogic.C2CDownloadRequest();
+    localC2CDownloadRequest.fileKey = paramString1;
+    localC2CDownloadRequest.url = paramString2;
+    localC2CDownloadRequest.setSavePath(paramString3);
+    localC2CDownloadRequest.fileType = 20303;
+    localC2CDownloadRequest.taskStartTime = System.currentTimeMillis();
+    localC2CDownloadRequest.maxHttpRedirectCount = 10;
+    int i = CdnLogic.startHttpsDownload(localC2CDownloadRequest, paramDownloadCallback);
+    AppMethodBeat.o(194206);
+    return i;
+  }
+  
+  public static int a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, CdnLogic.DownloadCallback paramDownloadCallback)
+  {
+    AppMethodBeat.i(194230);
+    Log.i("MicroMsg.CdnTransportEngine", "startLanDownload: mediaid:".concat(String.valueOf(paramString1)));
+    CdnLogic.C2CDownloadRequest localC2CDownloadRequest = new CdnLogic.C2CDownloadRequest();
+    localC2CDownloadRequest.fileKey = paramString1;
+    localC2CDownloadRequest.url = paramString2;
+    localC2CDownloadRequest.aeskey = paramString3;
+    localC2CDownloadRequest.setSavePath(paramString4);
+    localC2CDownloadRequest.queueTimeoutSeconds = paramInt;
+    localC2CDownloadRequest.transforTimeoutSeconds = 600;
+    localC2CDownloadRequest.needEchoAfterDownSucc = true;
+    paramInt = CdnLogic.startHttpMultiSocketDownloadTask(localC2CDownloadRequest, paramDownloadCallback);
+    AppMethodBeat.o(194230);
+    return paramInt;
+  }
+  
+  private static CdnLogic.C2CDownloadRequest a(g paramg)
+  {
+    boolean bool2 = true;
+    AppMethodBeat.i(150335);
+    CdnLogic.C2CDownloadRequest localC2CDownloadRequest = new CdnLogic.C2CDownloadRequest();
+    localC2CDownloadRequest.fileid = paramg.field_fileId;
+    localC2CDownloadRequest.aeskey = paramg.field_aesKey;
+    localC2CDownloadRequest.fileType = paramg.field_fileType;
+    localC2CDownloadRequest.fileKey = paramg.field_mediaId;
+    localC2CDownloadRequest.fileSize = paramg.field_totalLen;
+    localC2CDownloadRequest.setSavePath(paramg.field_fullpath);
+    localC2CDownloadRequest.isStorageMode = paramg.field_needStorage;
+    if (paramg.field_smallVideoFlag == 1)
+    {
+      bool1 = true;
+      localC2CDownloadRequest.isSmallVideo = bool1;
+      if (paramg.field_largesvideo <= 0) {
+        break label370;
+      }
     }
-    String str = iUp;
-    AppMethodBeat.o(104501);
+    label370:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localC2CDownloadRequest.isLargeSVideo = bool1;
+      localC2CDownloadRequest.limitRate = paramg.field_limitrate;
+      localC2CDownloadRequest.isAutoStart = paramg.field_autostart;
+      localC2CDownloadRequest.chatType = paramg.field_chattype;
+      localC2CDownloadRequest.isSilentTask = paramg.field_isSilentTask;
+      localC2CDownloadRequest.requestVideoFormat = paramg.field_requestVideoFormat;
+      localC2CDownloadRequest.isColdSnsData = paramg.isColdSnsData;
+      localC2CDownloadRequest.isHotSnsVideo = paramg.isHotSnsVideo;
+      localC2CDownloadRequest.signalQuality = paramg.field_signalQuality;
+      localC2CDownloadRequest.snsScene = paramg.field_snsScene;
+      localC2CDownloadRequest.requestVideoFormat = paramg.field_requestVideoFormat;
+      localC2CDownloadRequest.isHLSVideo = paramg.isHLSVideo;
+      localC2CDownloadRequest.hlsVideoFlag = paramg.hlsVideoFlag;
+      localC2CDownloadRequest.videofileid = paramg.field_videoFileId;
+      localC2CDownloadRequest.bigfileSignature = paramg.field_svr_signature;
+      if (Util.isNullOrNil(localC2CDownloadRequest.bigfileSignature)) {
+        localC2CDownloadRequest.bigfileSignature = "";
+      }
+      localC2CDownloadRequest.fakeBigfileSignature = paramg.field_fake_bigfile_signature;
+      if (Util.isNullOrNil(localC2CDownloadRequest.fakeBigfileSignature)) {
+        localC2CDownloadRequest.fakeBigfileSignature = "";
+      }
+      localC2CDownloadRequest.fakeBigfileSignatureAeskey = paramg.field_fake_bigfile_signature_aeskey;
+      if (Util.isNullOrNil(localC2CDownloadRequest.fakeBigfileSignatureAeskey)) {
+        localC2CDownloadRequest.fakeBigfileSignatureAeskey = "";
+      }
+      localC2CDownloadRequest.msgExtra = paramg.field_wxmsgparam;
+      if (Util.isNullOrNil(localC2CDownloadRequest.msgExtra)) {
+        localC2CDownloadRequest.msgExtra = "";
+      }
+      localC2CDownloadRequest.queueTimeoutSeconds = paramg.iUK;
+      localC2CDownloadRequest.transforTimeoutSeconds = paramg.iUL;
+      localC2CDownloadRequest.preloadRatio = paramg.field_preloadRatio;
+      localC2CDownloadRequest.certificateVerifyPolicy = paramg.certificateVerifyPolicy;
+      localC2CDownloadRequest.expectImageFormat = paramg.expectImageFormat;
+      localC2CDownloadRequest.marscdnBizType = paramg.hDp;
+      localC2CDownloadRequest.useMultithread = paramg.field_use_multithread;
+      AppMethodBeat.o(150335);
+      return localC2CDownloadRequest;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  private static CdnLogic.CdnInfo a(te paramte)
+  {
+    AppMethodBeat.i(150359);
+    CdnLogic.CdnInfo localCdnInfo = new CdnLogic.CdnInfo();
+    if (paramte == null)
+    {
+      AppMethodBeat.o(150359);
+      return localCdnInfo;
+    }
+    localCdnInfo.ver = paramte.Scu;
+    localCdnInfo.uin = paramte.vhf;
+    localCdnInfo.frontid = paramte.Scw;
+    localCdnInfo.zoneid = paramte.ScB;
+    localCdnInfo.nettype = c.cU(MMApplicationContext.getContext());
+    localCdnInfo.authkey = z.a(paramte.ScA);
+    if (paramte.Scx >= 2)
+    {
+      localCdnInfo.frontip1 = z.a((eaf)paramte.Scy.get(0));
+      localCdnInfo.frontip2 = z.a((eaf)paramte.Scy.get(1));
+      Log.i("MicroMsg.CdnTransportEngine", "frontip %s, %s", new Object[] { localCdnInfo.frontip1, localCdnInfo.frontip2 });
+    }
+    if (paramte.ScC >= 2)
+    {
+      localCdnInfo.zoneip1 = z.a((eaf)paramte.ScD.get(0));
+      localCdnInfo.zoneip2 = z.a((eaf)paramte.ScD.get(1));
+      Log.i("MicroMsg.CdnTransportEngine", "zoneip %s, %s", new Object[] { localCdnInfo.frontip1, localCdnInfo.frontip2 });
+    }
+    int j;
+    int i;
+    if (paramte.ScG > 0)
+    {
+      j = ((tf)paramte.ScE.get(0)).ScI;
+      localCdnInfo.frontports = new int[j];
+      i = 0;
+      while (i < j)
+      {
+        localCdnInfo.frontports[i] = ((Integer)((tf)paramte.ScE.get(0)).ScJ.get(i)).intValue();
+        i += 1;
+      }
+    }
+    if (paramte.ScH > 0)
+    {
+      j = ((tf)paramte.ScF.get(0)).ScI;
+      localCdnInfo.zoneports = new int[j];
+      i = 0;
+      while (i < j)
+      {
+        localCdnInfo.zoneports[i] = ((Integer)((tf)paramte.ScF.get(0)).ScJ.get(i)).intValue();
+        i += 1;
+      }
+    }
+    AppMethodBeat.o(150359);
+    return localCdnInfo;
+  }
+  
+  private static com.tencent.mm.i.d a(CdnLogic.C2CDownloadResult paramC2CDownloadResult, com.tencent.mm.i.d paramd)
+  {
+    AppMethodBeat.i(150362);
+    com.tencent.mm.i.d locald = paramd;
+    if (paramd == null) {
+      locald = new com.tencent.mm.i.d();
+    }
+    locald.field_retCode = paramC2CDownloadResult.errorCode;
+    locald.field_argInfo = paramC2CDownloadResult.argInfo;
+    locald.field_fileLength = paramC2CDownloadResult.fileSize;
+    locald.field_fileId = paramC2CDownloadResult.fileid;
+    locald.field_transInfo = paramC2CDownloadResult.transforMsg;
+    locald.traceMsg = paramC2CDownloadResult.traceMsg;
+    locald.field_convert2baseline = false;
+    locald.field_recvedBytes = paramC2CDownloadResult.recvedBytes;
+    locald.field_videoFormat = paramC2CDownloadResult.videoFormat;
+    locald.field_videoFlag = paramC2CDownloadResult.videoFlag;
+    locald.field_videoCdnMsg = paramC2CDownloadResult.videoCdnMsg;
+    locald.field_enQueueTime = paramC2CDownloadResult.enQueueTime;
+    locald.field_startTime = paramC2CDownloadResult.startTime;
+    locald.field_endTime = paramC2CDownloadResult.endTime;
+    locald.field_firstRequestCost = paramC2CDownloadResult.firstRequestCost;
+    locald.field_firstRequestSize = paramC2CDownloadResult.firstRequestSize;
+    locald.field_firstRequestDownloadSize = paramC2CDownloadResult.firstRequestDownloadSize;
+    locald.field_firstRequestCompleted = paramC2CDownloadResult.firstRequestCompleted;
+    locald.field_averageSpeed = paramC2CDownloadResult.averageSpeed;
+    locald.field_averageConnectCost = paramC2CDownloadResult.averageConnectCost;
+    locald.field_firstConnectCost = paramC2CDownloadResult.firstConnectCost;
+    locald.field_netConnectTimes = paramC2CDownloadResult.netConnectTimes;
+    locald.field_moovRequestTimes = paramC2CDownloadResult.moovRequestTimes;
+    locald.field_moovCost = paramC2CDownloadResult.moovCost;
+    locald.field_moovSize = paramC2CDownloadResult.moovSize;
+    locald.field_moovCompleted = paramC2CDownloadResult.moovCompleted;
+    locald.field_moovFailReason = paramC2CDownloadResult.moovFailReason;
+    locald.field_previousCompletedSize = paramC2CDownloadResult.previousCompletedSize;
+    locald.field_averageRequestSize = paramC2CDownloadResult.averageRequestSize;
+    locald.field_averageRequestCost = paramC2CDownloadResult.averageRequestCost;
+    locald.field_requestTotalCount = paramC2CDownloadResult.requestTotalCount;
+    locald.field_requestCompletedCount = paramC2CDownloadResult.requestCompletedCount;
+    locald.field_requestTimeoutCount = paramC2CDownloadResult.requestTimeoutCount;
+    locald.svrFallbackCount = paramC2CDownloadResult.svrFallbackCount;
+    locald.field_httpStatusCode = paramC2CDownloadResult.httpStatusCode;
+    locald.field_httpResponseHeader = paramC2CDownloadResult.httpResponseHeader;
+    locald.field_delayTime = paramC2CDownloadResult.delayTime;
+    locald.field_dnsCostTime = paramC2CDownloadResult.dnsCostTime;
+    locald.field_connectCostTime = paramC2CDownloadResult.connectCostTime;
+    locald.field_waitResponseCostTime = paramC2CDownloadResult.waitResponseCostTime;
+    locald.field_receiveCostTime = paramC2CDownloadResult.receiveCostTime;
+    locald.field_clientIP = paramC2CDownloadResult.clientIP;
+    locald.field_serverIP = paramC2CDownloadResult.serverIP;
+    locald.field_clientHostIP = Vx(paramC2CDownloadResult.clientIP);
+    locald.field_serverHostIP = Vx(paramC2CDownloadResult.serverIP);
+    locald.field_xErrorNo = paramC2CDownloadResult.xErrorNo;
+    locald.field_cSeqCheck = paramC2CDownloadResult.cSeqCheck;
+    locald.field_usePrivateProtocol = paramC2CDownloadResult.usePrivateProtocol;
+    locald.field_isCrossNet = paramC2CDownloadResult.crossNet;
+    locald.field_clientIP = paramC2CDownloadResult.clientIP;
+    locald.field_detailErrorType = paramC2CDownloadResult.detailErrorType;
+    locald.field_detailErrorCode = paramC2CDownloadResult.detailErrorCode;
+    if ((paramC2CDownloadResult.usedSvrIps != null) && (paramC2CDownloadResult.usedSvrIps.length > 0))
+    {
+      locald.field_usedSvrIps = ((String[])paramC2CDownloadResult.usedSvrIps.clone());
+      locald.iUu = paramC2CDownloadResult.usedSvrIps[(paramC2CDownloadResult.usedSvrIps.length - 1)];
+      locald.lastSvrPort = paramC2CDownloadResult.lastSvrPort;
+      locald.lastNetType = paramC2CDownloadResult.lastNetType;
+    }
+    locald.field_isResume = paramC2CDownloadResult.isResume;
+    locald.iUv = paramC2CDownloadResult.isSnsImageProtocolAvailable;
+    locald.index = paramC2CDownloadResult.picIndex;
+    locald.cachePath = paramC2CDownloadResult.picCachePath;
+    locald.fLp = paramC2CDownloadResult.batchPicFeedId;
+    locald.fileKey = paramC2CDownloadResult.batchImageFileKey;
+    locald.iUw = paramC2CDownloadResult.batchImageNeedRetry;
+    locald.transportProtocol = paramC2CDownloadResult.transportProtocol;
+    locald.transportProtocolError = paramC2CDownloadResult.transportProtocolError;
+    locald.traceId = paramC2CDownloadResult.traceId;
+    locald.profile = paramC2CDownloadResult.profile;
+    Log.d("MicroMsg.CdnTransportEngine", "trace_id " + locald.traceId + " flag " + locald.field_videoFlag + " msg " + locald.field_videoCdnMsg + " " + locald.svrFallbackCount);
+    AppMethodBeat.o(150362);
+    return locald;
+  }
+  
+  private static void a(com.tencent.mm.i.d paramd)
+  {
+    AppMethodBeat.i(150374);
+    if ((paramd != null) && (!Util.isNullOrNil(paramd.field_transInfo)))
+    {
+      int i = paramd.field_transInfo.indexOf("@,");
+      if (i > 0)
+      {
+        paramd.iUs = paramd.field_transInfo.substring(i + 2);
+        paramd.field_transInfo = paramd.field_transInfo.substring(0, i);
+      }
+      Log.v("MicroMsg.CdnTransportEngine", "transinfo:%s, report_part2:%s", new Object[] { paramd.field_transInfo, paramd.iUs });
+    }
+    AppMethodBeat.o(150374);
+  }
+  
+  public static String bjV()
+  {
+    AppMethodBeat.i(150341);
+    String str = CdnLogic.createAeskey();
+    AppMethodBeat.o(150341);
     return str;
   }
   
-  public static String bbu()
+  public static int c(String paramString, com.tencent.mm.i.d paramd)
   {
-    AppMethodBeat.i(104502);
-    Object localObject = new o(bbt(), "emoji/res");
-    if (!((o)localObject).exists()) {
-      ((o)localObject).mkdirs();
+    AppMethodBeat.i(150356);
+    Log.i("MicroMsg.CdnTransportEngine", "[stopVideoStreamingDownload] mediaId=%s %s", new Object[] { paramString, Util.getStack() });
+    CdnLogic.C2CDownloadResult localC2CDownloadResult = new CdnLogic.C2CDownloadResult();
+    int i = CdnLogic.cancelDownloadTaskWithResult(paramString, localC2CDownloadResult);
+    a(localC2CDownloadResult, paramd);
+    AppMethodBeat.o(150356);
+    return i;
+  }
+  
+  public static boolean isVideoDataAvailable(String paramString, long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(150358);
+    boolean bool = CdnLogic.isVideoDataAvailable(paramString, paramLong1, paramLong2);
+    AppMethodBeat.o(150358);
+    return bool;
+  }
+  
+  public static int keep_callFromJni(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(150334);
+    if (paramInt1 == lHs) {
+      c.outputJniLog(paramArrayOfByte, "MicroMsg.CdnEngine", paramInt2);
     }
-    localObject = aa.z(((o)localObject).her());
-    AppMethodBeat.o(104502);
-    return localObject;
+    AppMethodBeat.o(150334);
+    return 0;
   }
   
-  public static String bbv()
+  public static int requestVideoData(String paramString, long paramLong1, long paramLong2, int paramInt)
   {
-    AppMethodBeat.i(104503);
-    String str = bbt() + "emoji/newemoji/";
-    AppMethodBeat.o(104503);
-    return str;
+    AppMethodBeat.i(194234);
+    paramInt = CdnLogic.requestVideoData(paramString, paramLong1, paramLong2, paramInt);
+    AppMethodBeat.o(194234);
+    return paramInt;
   }
   
-  public static int bbw()
+  public final int a(e parame)
   {
-    AppMethodBeat.i(104504);
-    Object localObject3 = null;
-    Object localObject1 = null;
+    AppMethodBeat.i(194229);
+    if ((Util.isNullOrNil(parame.field_mediaId)) || (Util.isNullOrNil(parame.url)) || (Util.isNullOrNil(parame.iUy)))
+    {
+      Log.e("MicroMsg.CdnTransportEngine", "invalid param.");
+      AppMethodBeat.o(194229);
+      return -1;
+    }
+    CdnLogic.C2CDownloadRequest localC2CDownloadRequest = new CdnLogic.C2CDownloadRequest();
+    localC2CDownloadRequest.fileType = 20201;
+    localC2CDownloadRequest.fileKey = parame.field_mediaId;
+    localC2CDownloadRequest.url = parame.url;
+    localC2CDownloadRequest.referer = parame.referer;
+    localC2CDownloadRequest.setSavePath(parame.iUy);
+    localC2CDownloadRequest.fileSize = 0;
+    localC2CDownloadRequest.isColdSnsData = parame.isColdSnsData;
+    localC2CDownloadRequest.signalQuality = parame.signalQuality;
+    localC2CDownloadRequest.snsScene = parame.snsScene;
+    localC2CDownloadRequest.snsCipherKey = parame.snsCipherKey;
+    localC2CDownloadRequest.concurrentCount = 6;
+    localC2CDownloadRequest.marscdnBizType = parame.hDp;
+    localC2CDownloadRequest.marscdnAppType = parame.appType;
+    localC2CDownloadRequest.fileType = parame.fileType;
+    localC2CDownloadRequest.requestVideoFormat = parame.field_requestVideoFormat;
+    if ((ac.mGf) && (ac.mGk.length() > 0))
+    {
+      localC2CDownloadRequest.debugIP = ac.mGk;
+      Log.w("MicroMsg.CdnTransportEngine", "debugip " + localC2CDownloadRequest.debugIP);
+    }
+    int i = CdnLogic.startSNSDownload(localC2CDownloadRequest, this, this, 0);
+    AppMethodBeat.o(194229);
+    return i;
+  }
+  
+  public final int a(com.tencent.mm.i.f paramf)
+  {
+    AppMethodBeat.i(150348);
+    CdnLogic.C2CDownloadRequest localC2CDownloadRequest = new CdnLogic.C2CDownloadRequest();
+    localC2CDownloadRequest.fileType = 20201;
+    localC2CDownloadRequest.fileKey = paramf.field_mediaId;
+    localC2CDownloadRequest.url = paramf.url;
+    localC2CDownloadRequest.referer = paramf.referer;
+    localC2CDownloadRequest.isColdSnsData = paramf.isColdSnsData;
+    localC2CDownloadRequest.signalQuality = paramf.signalQuality;
+    localC2CDownloadRequest.snsScene = paramf.snsScene;
+    localC2CDownloadRequest.concurrentCount = 6;
+    localC2CDownloadRequest.marscdnBizType = paramf.hDp;
+    localC2CDownloadRequest.marscdnAppType = paramf.appType;
+    localC2CDownloadRequest.fileType = paramf.fileType;
+    localC2CDownloadRequest.msgType = 2;
+    localC2CDownloadRequest.feedId = paramf.fLp;
+    localC2CDownloadRequest.feedPicCount = paramf.iUD;
+    localC2CDownloadRequest.batchSnsReqImageDatas = paramf.iUw;
+    if ((ac.mGf) && (ac.mGk.length() > 0))
+    {
+      localC2CDownloadRequest.debugIP = ac.mGk;
+      Log.w("MicroMsg.CdnTransportEngine", "debugip " + localC2CDownloadRequest.debugIP);
+    }
+    int i = CdnLogic.startSNSDownload(localC2CDownloadRequest, this, this, 0);
+    AppMethodBeat.o(150348);
+    return i;
+  }
+  
+  public final int a(g paramg, int paramInt)
+  {
+    AppMethodBeat.i(150353);
+    paramg = a(paramg);
+    if ((ac.mGf) && (ac.mGk.length() > 0))
+    {
+      paramg.debugIP = ac.mGk;
+      Log.w("MicroMsg.CdnTransportEngine", "debugip " + paramg.debugIP);
+    }
+    paramInt = CdnLogic.startVideoStreamingDownload(paramg, this, this, paramInt);
+    AppMethodBeat.o(150353);
+    return paramInt;
+  }
+  
+  public final int a(com.tencent.mm.i.h paramh)
+  {
+    AppMethodBeat.i(194216);
+    CdnLogic.C2CDownloadRequest localC2CDownloadRequest = new CdnLogic.C2CDownloadRequest();
+    localC2CDownloadRequest.fileType = 20202;
+    localC2CDownloadRequest.fileKey = paramh.field_mediaId;
+    localC2CDownloadRequest.url = paramh.url;
+    localC2CDownloadRequest.referer = paramh.referer;
+    localC2CDownloadRequest.setSavePath(paramh.field_fullpath);
+    localC2CDownloadRequest.fileSize = 0;
+    localC2CDownloadRequest.isColdSnsData = paramh.isColdSnsData;
+    localC2CDownloadRequest.isHotSnsVideo = paramh.isHotSnsVideo;
+    localC2CDownloadRequest.isHLSVideo = paramh.isHLSVideo;
+    localC2CDownloadRequest.hlsVideoFlag = paramh.hlsVideoFlag;
+    localC2CDownloadRequest.signalQuality = paramh.signalQuality;
+    localC2CDownloadRequest.snsScene = paramh.snsScene;
+    localC2CDownloadRequest.preloadRatio = paramh.field_preloadRatio;
+    localC2CDownloadRequest.preloadMinSize = paramh.preloadMinSize;
+    localC2CDownloadRequest.requestVideoFormat = paramh.field_requestVideoFormat;
+    localC2CDownloadRequest.connectionCount = paramh.connectionCount;
+    localC2CDownloadRequest.concurrentCount = paramh.concurrentCount;
+    if ((ac.mGf) && (ac.mGk.length() > 0))
+    {
+      localC2CDownloadRequest.debugIP = ac.mGk;
+      Log.w("MicroMsg.CdnTransportEngine", "debugip " + localC2CDownloadRequest.debugIP);
+    }
+    int i = CdnLogic.startSNSDownload(localC2CDownloadRequest, this, this, paramh.iVd);
+    AppMethodBeat.o(194216);
+    return i;
+  }
+  
+  public final int a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String[] paramArrayOfString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    AppMethodBeat.i(194213);
+    if (paramArrayOfString == null) {}
+    CdnLogic.C2CDownloadRequest localC2CDownloadRequest;
+    for (int i = 0;; i = paramArrayOfString.length)
+    {
+      Log.i("MicroMsg.CdnTransportEngine", "startURLDownload: mediaid:%s, savepath:%s, filetype:%d, timeout:%d, %d, ip.size:%d, gzip:%b", new Object[] { paramString1, paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(i), Boolean.valueOf(paramBoolean1) });
+      localC2CDownloadRequest = new CdnLogic.C2CDownloadRequest();
+      localC2CDownloadRequest.fileKey = paramString1;
+      localC2CDownloadRequest.url = paramString2;
+      localC2CDownloadRequest.setSavePath(paramString3);
+      localC2CDownloadRequest.queueTimeoutSeconds = paramInt2;
+      localC2CDownloadRequest.transforTimeoutSeconds = paramInt3;
+      localC2CDownloadRequest.ocIpList = paramArrayOfString;
+      if (!paramBoolean1) {
+        localC2CDownloadRequest.customHeader = "Accept-Encoding:";
+      }
+      localC2CDownloadRequest.fileType = paramInt1;
+      localC2CDownloadRequest.taskStartTime = System.currentTimeMillis();
+      if (com.tencent.mm.i.a.iUi != localC2CDownloadRequest.fileType) {
+        break label261;
+      }
+      if (paramBoolean3) {
+        localC2CDownloadRequest.useNewdns = true;
+      }
+      if (!paramBoolean2) {
+        break;
+      }
+      Log.i("MicroMsg.CdnTransportEngine", "use cronet download pkg mediaId:%s, url:%s", new Object[] { paramString1, paramString2 });
+      paramInt1 = CdnLogic.startCronetFileDownload(localC2CDownloadRequest, this);
+      AppMethodBeat.o(194213);
+      return paramInt1;
+    }
+    Log.i("MicroMsg.CdnTransportEngine", "use normal download pkg mediaId:%s, url:%s", new Object[] { paramString1, paramString2 });
+    paramInt1 = CdnLogic.startHttpsDownload(localC2CDownloadRequest, this);
+    AppMethodBeat.o(194213);
+    return paramInt1;
+    label261:
+    if ((paramInt1 == com.tencent.mm.i.a.iUk) && (!this.lHD))
+    {
+      localC2CDownloadRequest.pcdnAppID = 30002;
+      localC2CDownloadRequest.maxPCDNConnections = 4;
+      Log.i("MicroMsg.CdnTransportEngine", "pcdn maxconn %d for patch", new Object[] { Integer.valueOf(localC2CDownloadRequest.maxPCDNConnections) });
+    }
+    paramInt1 = CdnLogic.startURLDownload(localC2CDownloadRequest, this);
+    AppMethodBeat.o(194213);
+    return paramInt1;
+  }
+  
+  public final int a(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(194204);
+    Log.i("MicroMsg.CdnTransportEngine", "startURLDownload: mediaid:%s, savepath:%s", new Object[] { paramString1, paramString3 });
+    CdnLogic.C2CDownloadRequest localC2CDownloadRequest = new CdnLogic.C2CDownloadRequest();
+    localC2CDownloadRequest.fileKey = paramString1;
+    localC2CDownloadRequest.url = paramString2;
+    localC2CDownloadRequest.setSavePath(paramString3);
+    localC2CDownloadRequest.aeskey = paramString4;
+    localC2CDownloadRequest.customHeader = ("authkey:" + paramString5 + "\r\n");
+    localC2CDownloadRequest.fileSize = paramInt2;
+    localC2CDownloadRequest.useCronet = paramBoolean;
+    localC2CDownloadRequest.fileType = paramInt1;
+    paramInt1 = CdnLogic.startSNSDownload(localC2CDownloadRequest, this, this, 0);
+    AppMethodBeat.o(194204);
+    return paramInt1;
+  }
+  
+  public final int a(String paramString1, String paramString2, String paramString3, String paramString4, Map<String, String> paramMap, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, boolean paramBoolean3, String[] paramArrayOfString)
+  {
+    AppMethodBeat.i(150351);
+    Log.i("MicroMsg.CdnTransportEngine", "startGamePackageDownload: mediaid:".concat(String.valueOf(paramString1)));
+    CdnLogic.C2CDownloadRequest localC2CDownloadRequest = new CdnLogic.C2CDownloadRequest();
+    localC2CDownloadRequest.fileKey = paramString1;
+    localC2CDownloadRequest.url = paramString3;
+    localC2CDownloadRequest.bakup_url = paramString4;
+    localC2CDownloadRequest.setSavePath(paramString2);
+    localC2CDownloadRequest.queueTimeoutSeconds = paramInt1;
+    localC2CDownloadRequest.transforTimeoutSeconds = paramInt2;
+    localC2CDownloadRequest.ocIpList = paramArrayOfString;
+    localC2CDownloadRequest.is_resume_task = paramBoolean2;
+    localC2CDownloadRequest.fileType = com.tencent.mm.i.a.iUj;
+    if (paramMap != null)
+    {
+      paramString1 = paramMap.entrySet().iterator();
+      while (paramString1.hasNext())
+      {
+        paramString2 = (Map.Entry)paramString1.next();
+        localC2CDownloadRequest.serialized_verify_headers += (String)paramString2.getKey();
+        localC2CDownloadRequest.serialized_verify_headers += ":";
+        localC2CDownloadRequest.serialized_verify_headers += (String)paramString2.getValue();
+        localC2CDownloadRequest.serialized_verify_headers += ";";
+      }
+    }
+    localC2CDownloadRequest.allow_mobile_net_download = paramBoolean1;
+    localC2CDownloadRequest.wifiAutoStart = paramBoolean3;
+    localC2CDownloadRequest.maxHttpRedirectCount = 18;
+    localC2CDownloadRequest.customHeader = String.format("X-Forwarded-Access-Type:%s\r\n", new Object[] { NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext()) });
+    if (!this.lHD)
+    {
+      localC2CDownloadRequest.pcdnAppID = 30003;
+      localC2CDownloadRequest.maxPCDNConnections = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vPr, 0);
+      Log.i("MicroMsg.CdnTransportEngine", "pcdn maxconn %d for game", new Object[] { Integer.valueOf(localC2CDownloadRequest.maxPCDNConnections) });
+    }
+    paramInt1 = CdnLogic.startHttpMultiSocketDownloadTask(localC2CDownloadRequest, this);
+    AppMethodBeat.o(150351);
+    return paramInt1;
+  }
+  
+  public final void a(a parama)
+  {
+    int i = 0;
+    AppMethodBeat.i(194192);
+    this.lHF = parama;
+    int j = hashCode();
+    if (parama != null) {
+      i = parama.hashCode();
+    }
+    Log.i("MicroMsg.CdnTransportEngine", "set tp player cdn callback hash[%d] onlineVideoCallback[%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+    AppMethodBeat.o(194192);
+  }
+  
+  public final void a(com.tencent.mm.i.b.a parama)
+  {
+    int i = 0;
+    AppMethodBeat.i(194195);
+    this.lHx = parama;
+    int j = hashCode();
+    if (parama != null) {
+      i = parama.hashCode();
+    }
+    Log.i("MicroMsg.CdnTransportEngine", "set tp player cdn callback hash[%d] cdnTransCallback[%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+    AppMethodBeat.o(194195);
+  }
+  
+  public final boolean a(te paramte1, te paramte2, te paramte3, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, te paramte4)
+  {
+    AppMethodBeat.i(150360);
+    Log.i("MicroMsg.CdnTransportEngine", "summersafecdn cdntra setCDNDnsInfo old [%s]  new [%s], safecdn [%s], stack[%s]", new Object[] { this.lHw, paramte1, paramte4, Util.getStack() });
+    if ((paramte1 == null) && (paramArrayOfByte1 == null))
+    {
+      AppMethodBeat.o(150360);
+      return false;
+    }
+    this.lHw = paramte1;
     try
     {
-      InputStream localInputStream = s.ao(new o(bbu(), "config.conf"));
-      localObject1 = localInputStream;
-      localObject3 = localInputStream;
-      BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(localInputStream));
-      String str2;
-      for (String str1 = "";; str1 = str1 + str2)
-      {
-        localObject1 = localInputStream;
-        localObject3 = localInputStream;
-        str2 = localBufferedReader.readLine();
-        if (str2 == null) {
-          break;
-        }
-        localObject1 = localInputStream;
-        localObject3 = localInputStream;
+      paramte1 = a(paramte1);
+      paramte2 = a(paramte2);
+      paramte3 = a(paramte3);
+      paramte4 = a(paramte4);
+      CdnLogic.setLegacyCdnInfo(paramte1, paramte2, paramte3, paramte4, paramArrayOfByte1, paramArrayOfByte2);
+      AppMethodBeat.o(150360);
+      return true;
+    }
+    catch (Exception paramte1)
+    {
+      Log.e("MicroMsg.CdnTransportEngine", "tocdninfo failed:" + paramte1.getLocalizedMessage());
+      AppMethodBeat.o(150360);
+    }
+    return false;
+  }
+  
+  public final int b(g paramg)
+  {
+    boolean bool2 = true;
+    AppMethodBeat.i(150336);
+    CdnLogic.C2CUploadRequest localC2CUploadRequest = new CdnLogic.C2CUploadRequest();
+    localC2CUploadRequest.fileKey = paramg.field_mediaId;
+    localC2CUploadRequest.setFilePath(paramg.field_fullpath);
+    localC2CUploadRequest.setThumbfilePath(paramg.field_thumbpath);
+    localC2CUploadRequest.fileSize = paramg.field_totalLen;
+    localC2CUploadRequest.fileType = paramg.field_fileType;
+    localC2CUploadRequest.forwardAeskey = paramg.field_aesKey;
+    localC2CUploadRequest.forwardFileid = paramg.field_fileId;
+    localC2CUploadRequest.midfileSize = paramg.field_midFileLength;
+    localC2CUploadRequest.queueTimeoutSeconds = paramg.iUK;
+    localC2CUploadRequest.transforTimeoutSeconds = paramg.iUL;
+    localC2CUploadRequest.toUser = paramg.field_talker;
+    localC2CUploadRequest.sendmsgFromCDN = paramg.field_sendmsg_viacdn;
+    localC2CUploadRequest.needCompressImage = paramg.field_needCompressImage;
+    localC2CUploadRequest.chatType = paramg.field_chattype;
+    localC2CUploadRequest.apptype = paramg.field_appType;
+    localC2CUploadRequest.bizscene = paramg.field_bzScene;
+    localC2CUploadRequest.marscdnBizType = paramg.hDp;
+    localC2CUploadRequest.checkExistOnly = paramg.field_onlycheckexist;
+    if (paramg.field_smallVideoFlag == 1)
+    {
+      bool1 = true;
+      localC2CUploadRequest.isSmallVideo = bool1;
+      localC2CUploadRequest.isLargeSVideo = paramg.field_largesvideo;
+      localC2CUploadRequest.videoSource = paramg.field_videosource;
+      if (paramg.field_advideoflag != 1) {
+        break label507;
       }
-      localObject1 = localInputStream;
-      localObject3 = localInputStream;
-      int i = new JSONObject(str1).getInt("version");
-      localObject1 = localInputStream;
-      localObject3 = localInputStream;
-      Log.d("MicroMsg.emoji.EmojiStoreExportLogic", "config file content:%s version:%d", new Object[] { str1, Integer.valueOf(i) });
+    }
+    label507:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localC2CUploadRequest.isSnsAdVideo = bool1;
+      localC2CUploadRequest.isStorageMode = paramg.field_needStorage;
+      localC2CUploadRequest.isStreamMedia = paramg.field_isStreamMedia;
+      localC2CUploadRequest.enableHitCheck = paramg.field_enable_hitcheck;
+      localC2CUploadRequest.forceNoSafeCdn = paramg.field_force_aeskeycdn;
+      localC2CUploadRequest.trySafeCdn = paramg.field_trysafecdn;
+      localC2CUploadRequest.setMidimgPath(paramg.field_midimgpath);
+      localC2CUploadRequest.bigfileSignature = paramg.field_svr_signature;
+      if (Util.isNullOrNil(localC2CUploadRequest.bigfileSignature)) {
+        localC2CUploadRequest.bigfileSignature = "";
+      }
+      localC2CUploadRequest.fakeBigfileSignature = paramg.field_fake_bigfile_signature;
+      if (Util.isNullOrNil(localC2CUploadRequest.fakeBigfileSignature)) {
+        localC2CUploadRequest.fakeBigfileSignature = "";
+      }
+      localC2CUploadRequest.fakeBigfileSignatureAeskey = paramg.field_fake_bigfile_signature_aeskey;
+      if (Util.isNullOrNil(localC2CUploadRequest.fakeBigfileSignatureAeskey)) {
+        localC2CUploadRequest.fakeBigfileSignatureAeskey = "";
+      }
+      localC2CUploadRequest.lastError = paramg.lastError;
+      localC2CUploadRequest.emojiExtinfo = paramg.emojiExtinfo;
+      localC2CUploadRequest.snsVersion = paramg.snsVersion;
+      localC2CUploadRequest.fileBuffer = paramg.fileBuffer;
+      localC2CUploadRequest.thumbnailBuffer = paramg.thumbnailBuffer;
+      localC2CUploadRequest.customHeader = paramg.customHeader;
+      localC2CUploadRequest.useMultithread = paramg.field_use_multithread;
+      if ((ac.mGf) && (ac.mGk.length() > 0))
+      {
+        localC2CUploadRequest.debugIP = ac.mGk;
+        Log.w("MicroMsg.CdnTransportEngine", "debugip " + localC2CUploadRequest.debugIP);
+      }
+      if (!localC2CUploadRequest.sendmsgFromCDN) {
+        break label512;
+      }
+      i = CdnLogic.startSSUpload(localC2CUploadRequest, this, this);
+      AppMethodBeat.o(150336);
+      return i;
+      bool1 = false;
+      break;
+    }
+    label512:
+    int i = CdnLogic.startC2CUpload(localC2CUploadRequest, this);
+    AppMethodBeat.o(150336);
+    return i;
+  }
+  
+  public final int b(com.tencent.mm.i.h paramh)
+  {
+    AppMethodBeat.i(194218);
+    CdnLogic.C2CDownloadRequest localC2CDownloadRequest = new CdnLogic.C2CDownloadRequest();
+    localC2CDownloadRequest.fileType = 20302;
+    localC2CDownloadRequest.fileKey = paramh.field_mediaId;
+    localC2CDownloadRequest.url = paramh.url;
+    localC2CDownloadRequest.referer = paramh.referer;
+    localC2CDownloadRequest.setSavePath(paramh.field_fullpath);
+    localC2CDownloadRequest.fileSize = 0;
+    localC2CDownloadRequest.isColdSnsData = paramh.isColdSnsData;
+    localC2CDownloadRequest.isHotSnsVideo = paramh.isHotSnsVideo;
+    localC2CDownloadRequest.isHLSVideo = paramh.isHLSVideo;
+    localC2CDownloadRequest.hlsVideoFlag = paramh.hlsVideoFlag;
+    localC2CDownloadRequest.signalQuality = paramh.signalQuality;
+    localC2CDownloadRequest.snsScene = paramh.snsScene;
+    localC2CDownloadRequest.preloadRatio = paramh.field_preloadRatio;
+    localC2CDownloadRequest.preloadMinSize = paramh.preloadMinSize;
+    localC2CDownloadRequest.requestVideoFormat = paramh.field_requestVideoFormat;
+    localC2CDownloadRequest.connectionCount = paramh.connectionCount;
+    localC2CDownloadRequest.marscdnAppType = 205;
+    if ((ac.mGf) && (ac.mGk.length() > 0))
+    {
+      localC2CDownloadRequest.debugIP = ac.mGk;
+      Log.w("MicroMsg.CdnTransportEngine", "debugip " + localC2CDownloadRequest.debugIP);
+    }
+    int i = CdnLogic.startSNSDownload(localC2CDownloadRequest, this, this, paramh.iVd);
+    AppMethodBeat.o(194218);
+    return i;
+  }
+  
+  public final boolean bjW()
+  {
+    return this.lHw == null;
+  }
+  
+  public final int c(g paramg)
+  {
+    AppMethodBeat.i(150338);
+    paramg = a(paramg);
+    if ((ac.mGf) && (ac.mGk.length() > 0))
+    {
+      paramg.debugIP = ac.mGk;
+      Log.w("MicroMsg.CdnTransportEngine", "debugip " + paramg.debugIP);
+    }
+    int i = CdnLogic.startC2CDownload(paramg, this);
+    AppMethodBeat.o(150338);
+    return i;
+  }
+  
+  public final int c(com.tencent.mm.i.h paramh)
+  {
+    AppMethodBeat.i(194222);
+    CdnLogic.C2CDownloadRequest localC2CDownloadRequest = new CdnLogic.C2CDownloadRequest();
+    localC2CDownloadRequest.fileType = 20302;
+    localC2CDownloadRequest.fileKey = paramh.field_mediaId;
+    localC2CDownloadRequest.url = paramh.url;
+    localC2CDownloadRequest.referer = paramh.referer;
+    localC2CDownloadRequest.setSavePath(paramh.field_fullpath);
+    localC2CDownloadRequest.fileSize = 0;
+    localC2CDownloadRequest.isColdSnsData = paramh.isColdSnsData;
+    localC2CDownloadRequest.isHotSnsVideo = paramh.isHotSnsVideo;
+    localC2CDownloadRequest.isHLSVideo = paramh.isHLSVideo;
+    localC2CDownloadRequest.hlsVideoFlag = paramh.hlsVideoFlag;
+    localC2CDownloadRequest.signalQuality = paramh.signalQuality;
+    localC2CDownloadRequest.snsScene = paramh.snsScene;
+    localC2CDownloadRequest.preloadRatio = paramh.field_preloadRatio;
+    localC2CDownloadRequest.preloadMinSize = paramh.preloadMinSize;
+    localC2CDownloadRequest.requestVideoFormat = paramh.field_requestVideoFormat;
+    localC2CDownloadRequest.connectionCount = paramh.connectionCount;
+    localC2CDownloadRequest.snsCipherKey = paramh.snsCipherKey;
+    localC2CDownloadRequest.marscdnAppType = 251;
+    localC2CDownloadRequest.videoflagPolicy = paramh.iVk;
+    localC2CDownloadRequest.concurrentCount = paramh.concurrentCount;
+    if ((paramh.videoFlag != null) && ((paramh.videoFlag.indexOf('x') >= 0) || (paramh.videoFlag.indexOf('X') >= 0))) {}
+    for (localC2CDownloadRequest.requestVideoFlag = paramh.videoFlag.substring(1);; localC2CDownloadRequest.requestVideoFlag = paramh.videoFlag)
+    {
+      if ((ac.mGf) && (ac.mGk.length() > 0))
+      {
+        localC2CDownloadRequest.debugIP = ac.mGk;
+        Log.w("MicroMsg.CdnTransportEngine", "debugip " + localC2CDownloadRequest.debugIP);
+      }
+      int i = CdnLogic.startSNSDownload(localC2CDownloadRequest, this, this, paramh.iVd);
+      AppMethodBeat.o(194222);
       return i;
     }
-    catch (Exception localException)
+  }
+  
+  public final int d(com.tencent.mm.i.h paramh)
+  {
+    AppMethodBeat.i(194233);
+    CdnLogic.C2CDownloadRequest localC2CDownloadRequest = new CdnLogic.C2CDownloadRequest();
+    localC2CDownloadRequest.fileKey = paramh.field_mediaId;
+    localC2CDownloadRequest.fileType = 90;
+    localC2CDownloadRequest.url = paramh.url;
+    localC2CDownloadRequest.referer = paramh.referer;
+    localC2CDownloadRequest.setSavePath(paramh.field_fullpath);
+    localC2CDownloadRequest.preloadRatio = paramh.field_preloadRatio;
+    localC2CDownloadRequest.preloadMinSize = paramh.preloadMinSize;
+    localC2CDownloadRequest.concurrentCount = paramh.concurrentCount;
+    localC2CDownloadRequest.maxHttpRedirectCount = 20;
+    if ((ac.mGf) && (ac.mGk.length() > 0))
     {
-      localObject3 = localObject1;
-      Log.printErrStackTrace("MicroMsg.emoji.EmojiStoreExportLogic", localException, localException.getMessage(), new Object[0]);
-      return 1;
+      localC2CDownloadRequest.debugIP = ac.mGk;
+      Log.w("MicroMsg.CdnTransportEngine", "debugip " + localC2CDownloadRequest.debugIP);
     }
-    finally
+    int i = CdnLogic.startHttpVideoStreamingDownload(localC2CDownloadRequest, this, this, paramh.iVd);
+    AppMethodBeat.o(194233);
+    return i;
+  }
+  
+  public final byte[] decodeSessionResponseBuf(String paramString, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(150384);
+    if (!MMApplicationContext.isMMProcess())
     {
-      Util.qualityClose(localObject3);
-      AppMethodBeat.o(104504);
+      AppMethodBeat.o(150384);
+      return null;
+    }
+    paramString = keep_cdnDecodePrepareResponse(paramString, paramArrayOfByte);
+    AppMethodBeat.o(150384);
+    return paramString;
+  }
+  
+  protected final void finalize() {}
+  
+  public final byte[] getSessionRequestBuf(String paramString, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(150383);
+    if (!MMApplicationContext.isMMProcess())
+    {
+      AppMethodBeat.o(150383);
+      return null;
+    }
+    paramArrayOfByte = new ByteArrayOutputStream();
+    keep_cdnGetSkeyBuf(paramString, paramArrayOfByte);
+    if (paramArrayOfByte.size() > 0)
+    {
+      paramString = paramArrayOfByte.toByteArray();
+      AppMethodBeat.o(150383);
+      return paramString;
+    }
+    AppMethodBeat.o(150383);
+    return null;
+  }
+  
+  public final void keep_OnRequestDoGetCdnDnsInfo(int paramInt)
+  {
+    AppMethodBeat.i(150376);
+    com.tencent.mm.kernel.h.aHE();
+    if (com.tencent.mm.kernel.b.aGL()) {
+      f.bkd().vS(paramInt);
+    }
+    AppMethodBeat.o(150376);
+  }
+  
+  public final byte[] keep_cdnDecodePrepareResponse(String paramString, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(150370);
+    if (this.lHy != null)
+    {
+      paramString = this.lHy.f(paramString, paramArrayOfByte);
+      AppMethodBeat.o(150370);
+      return paramString;
+    }
+    AppMethodBeat.o(150370);
+    return null;
+  }
+  
+  public final void keep_cdnGetSkeyBuf(String paramString, ByteArrayOutputStream paramByteArrayOutputStream)
+  {
+    AppMethodBeat.i(150369);
+    if (this.lHy != null) {
+      this.lHy.a(paramString, paramByteArrayOutputStream);
+    }
+    AppMethodBeat.o(150369);
+  }
+  
+  public final void keep_cdnSendAndRecvData(String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(150375);
+    if ((paramInt1 < 0) || (paramInt2 < 0))
+    {
+      AppMethodBeat.o(150375);
+      return;
+    }
+    this.lHz += paramInt1;
+    this.lHA += paramInt2;
+    if (!Util.isNullOrNil(paramString)) {
+      this.lHB = paramString;
+    }
+    if ((this.lHz + this.lHA > 51200) && (this.lHC != null)) {
+      this.lHC.startTimer(500L);
+    }
+    AppMethodBeat.o(150375);
+  }
+  
+  public final void keep_onDataAvailable(String paramString, long paramLong1, long paramLong2)
+  {
+    int i = 0;
+    AppMethodBeat.i(150372);
+    Log.i("MicroMsg.CdnTransportEngine", "keep_onDataAvailable %s, %d, %d", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    if (this.lHF != null) {
+      i = this.lHF.q(paramString, (int)paramLong1, (int)paramLong2);
+    }
+    if ((i == 0) && (this.lHG != null)) {
+      this.lHG.q(paramString, (int)paramLong1, (int)paramLong2);
+    }
+    AppMethodBeat.o(150372);
+  }
+  
+  public final int keep_onDownloadError(String paramString, com.tencent.mm.i.d paramd)
+  {
+    AppMethodBeat.i(150367);
+    if (this.lHF != null) {}
+    for (int j = this.lHF.a(paramString, null, paramd);; j = 0)
+    {
+      int i = j;
+      if (j == 0)
+      {
+        i = j;
+        if (this.lHG != null) {
+          i = this.lHG.a(paramString, null, paramd);
+        }
+      }
+      j = i;
+      if (i == 0)
+      {
+        j = i;
+        if (this.lHx != null) {
+          j = this.lHx.a(paramString, null, paramd);
+        }
+      }
+      if ((j == 0) && (this.lHy != null))
+      {
+        a(paramd);
+        this.lHy.a(paramString, null, paramd);
+      }
+      AppMethodBeat.o(150367);
+      return 0;
     }
   }
   
-  /* Error */
-  private static int bbx()
+  public final int keep_onDownloadProgress(String paramString, com.tencent.mm.i.c paramc)
   {
-    // Byte code:
-    //   0: ldc 217
-    //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 36	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
-    //   8: invokevirtual 42	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   11: astore_1
-    //   12: aload_1
-    //   13: ldc 219
-    //   15: invokevirtual 50	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   18: astore_2
-    //   19: new 182	java/io/InputStreamReader
-    //   22: dup
-    //   23: aload_2
-    //   24: invokespecial 185	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   27: astore 4
-    //   29: new 180	java/io/BufferedReader
-    //   32: dup
-    //   33: aload 4
-    //   35: invokespecial 188	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   38: astore_1
-    //   39: ldc 14
-    //   41: astore_3
-    //   42: aload_1
-    //   43: astore 7
-    //   45: aload 4
-    //   47: astore 6
-    //   49: aload_2
-    //   50: astore 5
-    //   52: aload_1
-    //   53: invokevirtual 191	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   56: astore 8
-    //   58: aload 8
-    //   60: ifnull +36 -> 96
-    //   63: aload_1
-    //   64: astore 7
-    //   66: aload 4
-    //   68: astore 6
-    //   70: aload_2
-    //   71: astore 5
-    //   73: new 154	java/lang/StringBuilder
-    //   76: dup
-    //   77: invokespecial 156	java/lang/StringBuilder:<init>	()V
-    //   80: aload_3
-    //   81: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   84: aload 8
-    //   86: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   92: astore_3
-    //   93: goto -51 -> 42
-    //   96: aload_1
-    //   97: astore 7
-    //   99: aload 4
-    //   101: astore 6
-    //   103: aload_2
-    //   104: astore 5
-    //   106: new 193	org/json/JSONObject
-    //   109: dup
-    //   110: aload_3
-    //   111: invokespecial 194	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   114: ldc 196
-    //   116: invokevirtual 200	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   119: istore_0
-    //   120: aload_1
-    //   121: astore 7
-    //   123: aload 4
-    //   125: astore 6
-    //   127: aload_2
-    //   128: astore 5
-    //   130: ldc 52
-    //   132: ldc 202
-    //   134: iconst_2
-    //   135: anewarray 4	java/lang/Object
-    //   138: dup
-    //   139: iconst_0
-    //   140: aload_3
-    //   141: aastore
-    //   142: dup
-    //   143: iconst_1
-    //   144: iload_0
-    //   145: invokestatic 208	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   148: aastore
-    //   149: invokestatic 212	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   152: aload_2
-    //   153: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   156: aload 4
-    //   158: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   161: aload_1
-    //   162: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   165: ldc 217
-    //   167: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   170: iload_0
-    //   171: ireturn
-    //   172: astore_3
-    //   173: aconst_null
-    //   174: astore_1
-    //   175: aconst_null
-    //   176: astore 4
-    //   178: aconst_null
-    //   179: astore_2
-    //   180: aload_1
-    //   181: astore 7
-    //   183: aload 4
-    //   185: astore 6
-    //   187: aload_2
-    //   188: astore 5
-    //   190: ldc 52
-    //   192: aload_3
-    //   193: aload_3
-    //   194: invokevirtual 215	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   197: iconst_0
-    //   198: anewarray 4	java/lang/Object
-    //   201: invokestatic 67	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   204: aload_2
-    //   205: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   208: aload 4
-    //   210: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   213: aload_1
-    //   214: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   217: ldc 217
-    //   219: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   222: iconst_1
-    //   223: ireturn
-    //   224: astore_1
-    //   225: aconst_null
-    //   226: astore_3
-    //   227: aconst_null
-    //   228: astore 4
-    //   230: aconst_null
-    //   231: astore_2
-    //   232: aload_2
-    //   233: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   236: aload 4
-    //   238: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   241: aload_3
-    //   242: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   245: ldc 217
-    //   247: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   250: aload_1
-    //   251: athrow
-    //   252: astore_1
-    //   253: aconst_null
-    //   254: astore_3
-    //   255: aconst_null
-    //   256: astore 4
-    //   258: goto -26 -> 232
-    //   261: astore_1
-    //   262: aconst_null
-    //   263: astore_3
-    //   264: goto -32 -> 232
-    //   267: astore_1
-    //   268: aload 7
-    //   270: astore_3
-    //   271: aload 6
-    //   273: astore 4
-    //   275: aload 5
-    //   277: astore_2
-    //   278: goto -46 -> 232
-    //   281: astore_3
-    //   282: aconst_null
-    //   283: astore_1
-    //   284: aconst_null
-    //   285: astore 4
-    //   287: goto -107 -> 180
-    //   290: astore_3
-    //   291: aconst_null
-    //   292: astore_1
-    //   293: goto -113 -> 180
-    //   296: astore_3
-    //   297: goto -117 -> 180
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   119	52	0	i	int
-    //   11	203	1	localObject1	Object
-    //   224	27	1	localObject2	Object
-    //   252	1	1	localObject3	Object
-    //   261	1	1	localObject4	Object
-    //   267	1	1	localObject5	Object
-    //   283	10	1	localObject6	Object
-    //   18	260	2	localObject7	Object
-    //   41	100	3	str1	String
-    //   172	22	3	localException1	Exception
-    //   226	45	3	localObject8	Object
-    //   281	1	3	localException2	Exception
-    //   290	1	3	localException3	Exception
-    //   296	1	3	localException4	Exception
-    //   27	259	4	localObject9	Object
-    //   50	226	5	localObject10	Object
-    //   47	225	6	localObject11	Object
-    //   43	226	7	localObject12	Object
-    //   56	29	8	str2	String
-    // Exception table:
-    //   from	to	target	type
-    //   12	19	172	java/lang/Exception
-    //   12	19	224	finally
-    //   19	29	252	finally
-    //   29	39	261	finally
-    //   52	58	267	finally
-    //   73	93	267	finally
-    //   106	120	267	finally
-    //   130	152	267	finally
-    //   190	204	267	finally
-    //   19	29	281	java/lang/Exception
-    //   29	39	290	java/lang/Exception
-    //   52	58	296	java/lang/Exception
-    //   73	93	296	java/lang/Exception
-    //   106	120	296	java/lang/Exception
-    //   130	152	296	java/lang/Exception
+    AppMethodBeat.i(150366);
+    paramc.field_isUploadTask = false;
+    if (this.lHF != null) {}
+    for (int j = this.lHF.a(paramString, paramc, null);; j = 0)
+    {
+      int i = j;
+      if (j == 0)
+      {
+        i = j;
+        if (this.lHG != null) {
+          i = this.lHG.a(paramString, paramc, null);
+        }
+      }
+      j = i;
+      if (i == 0)
+      {
+        j = i;
+        if (this.lHx != null) {
+          j = this.lHx.a(paramString, paramc, null);
+        }
+      }
+      if ((j == 0) && (this.lHy != null)) {
+        this.lHy.a(paramString, paramc, null);
+      }
+      AppMethodBeat.o(150366);
+      return 0;
+    }
   }
   
-  public static void fF(boolean paramBoolean)
+  public final int keep_onDownloadSuccessed(String paramString, com.tencent.mm.i.d paramd)
   {
-    AppMethodBeat.i(104507);
-    o localo = new o(bbu());
-    Log.i("MicroMsg.emoji.EmojiStoreExportLogic", "copy search template file to path: %s", new Object[] { localo.hes() });
-    if (d.KyR)
+    AppMethodBeat.i(150368);
+    if (this.lHF != null) {}
+    for (int j = this.lHF.a(paramString, null, paramd);; j = 0)
     {
-      Log.i("MicroMsg.emoji.EmojiStoreExportLogic", "need to init search template folder %b", new Object[] { Boolean.valueOf(paramBoolean) });
-      s.dy(aa.z(localo.mUri), true);
-      j(localo);
+      int i = j;
+      if (j == 0)
+      {
+        i = j;
+        if (this.lHG != null) {
+          i = this.lHG.a(paramString, null, paramd);
+        }
+      }
+      j = i;
+      if (i == 0)
+      {
+        j = i;
+        if (this.lHx != null) {
+          j = this.lHx.a(paramString, null, paramd);
+        }
+      }
+      if ((j == 0) && (this.lHy != null))
+      {
+        a(paramd);
+        this.lHy.a(paramString, null, paramd);
+      }
+      AppMethodBeat.o(150368);
+      return 0;
     }
+  }
+  
+  public final void keep_onDownloadToEnd(String paramString, long paramLong1, long paramLong2)
+  {
+    int i = 0;
+    AppMethodBeat.i(150373);
+    Log.i("MicroMsg.CdnTransportEngine", "keep_onDownloadToEnd %s, %d, %d", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    if (this.lHF != null) {
+      i = this.lHF.q(paramString, (int)paramLong1, (int)paramLong2);
+    }
+    if ((i == 0) && (this.lHG != null)) {
+      this.lHG.r(paramString, (int)paramLong1, (int)paramLong2);
+    }
+    AppMethodBeat.o(150373);
+  }
+  
+  public final void keep_onMoovReady(String paramString1, long paramLong1, long paramLong2, String paramString2)
+  {
+    AppMethodBeat.i(184253);
+    Log.i("MicroMsg.CdnTransportEngine", "keep_onMoovReady %s, %d, %d, %s, hash[%d]", new Object[] { paramString1, Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString2, Integer.valueOf(hashCode()) });
+    if (this.lHF != null) {}
+    for (int i = this.lHF.d(paramString1, (int)paramLong1, (int)paramLong2, paramString2);; i = 0)
+    {
+      int j = i;
+      if (i == 0)
+      {
+        j = i;
+        if (this.lHG != null) {
+          j = this.lHG.d(paramString1, (int)paramLong1, (int)paramLong2, paramString2);
+        }
+      }
+      if (j == 0)
+      {
+        Log.e("MicroMsg.CdnTransportEngine", "cdn call on moov ready but onlineVideoCallback is null.hash[%d]", new Object[] { Integer.valueOf(hashCode()) });
+        com.tencent.mm.plugin.report.service.h.IzE.el(354, 29);
+      }
+      AppMethodBeat.o(184253);
+      return;
+    }
+  }
+  
+  public final int keep_onUploadError(String paramString, com.tencent.mm.i.d paramd)
+  {
+    AppMethodBeat.i(150364);
+    if (this.lHy != null)
+    {
+      a(paramd);
+      this.lHy.a(paramString, null, paramd);
+    }
+    AppMethodBeat.o(150364);
+    return 0;
+  }
+  
+  public final int keep_onUploadProgress(String paramString, com.tencent.mm.i.c paramc)
+  {
+    AppMethodBeat.i(150363);
+    paramc.field_isUploadTask = true;
+    if (this.lHy != null)
+    {
+      Log.v("MicroMsg.CdnTransportEngine", "klem keep_onUploadProgress mediaId:%s, totalLen%d, offset%d", new Object[] { paramString, Long.valueOf(paramc.field_toltalLength), Long.valueOf(paramc.field_finishedLength) });
+      this.lHy.a(paramString, paramc, null);
+    }
+    AppMethodBeat.o(150363);
+    return 0;
+  }
+  
+  public final int keep_onUploadSuccessed(String paramString, com.tencent.mm.i.d paramd)
+  {
+    AppMethodBeat.i(150365);
+    if (this.lHy != null)
+    {
+      Log.v("MicroMsg.CdnTransportEngine", "klem keep_onUploadSuccessed mediaId:%s", new Object[] { paramString });
+      a(paramd);
+      this.lHy.a(paramString, null, paramd);
+    }
+    AppMethodBeat.o(150365);
+    return 0;
+  }
+  
+  public final void onBadNetworkProbed()
+  {
+    AppMethodBeat.i(150380);
+    Log.w("MicroMsg.CdnTransportEngine", "bad network probed by CDN, try analyze STN network.");
+    StnLogic.startNetworkAnalysis();
+    AppMethodBeat.o(150380);
+  }
+  
+  public final void onC2CDownloadCompleted(String paramString, CdnLogic.C2CDownloadResult paramC2CDownloadResult)
+  {
+    AppMethodBeat.i(150386);
+    Log.i("MicroMsg.CdnTransportEngine", "onC2CDownloadCompleted filekey %s error %d", new Object[] { paramString, Integer.valueOf(paramC2CDownloadResult.errorCode) });
+    com.tencent.mm.i.d locald = a(paramC2CDownloadResult, null);
+    Object localObject1;
+    Object localObject2;
+    label83:
+    long l;
+    if ((paramC2CDownloadResult.fromCronet) && (paramC2CDownloadResult.cronetTaskResult != null))
+    {
+      if (paramC2CDownloadResult.cronetTaskResult.useHttp2)
+      {
+        localObject1 = "true";
+        if (!paramC2CDownloadResult.cronetTaskResult.useQuic) {
+          break label536;
+        }
+        localObject2 = "true";
+        Log.i("MicroMsg.CdnTransportEngine", "cronet this task is from cronet ,use http2 %s, use quic %s, status code %d ", new Object[] { localObject1, localObject2, Integer.valueOf(paramC2CDownloadResult.cronetTaskResult.statusCode) });
+        Log.i("MicroMsg.CdnTransportEngine", "cronet webperformance ip:%s, protocol:%s", new Object[] { paramC2CDownloadResult.cronetTaskResult.performance.peerIP, paramC2CDownloadResult.cronetTaskResult.performance.protocol });
+        locald.fromCronet = true;
+        locald.cronetTaskResult = new CdnLogic.CronetTaskResult();
+        locald.cronetTaskResult.useQuic = paramC2CDownloadResult.cronetTaskResult.useQuic;
+        locald.cronetTaskResult.useHttp2 = paramC2CDownloadResult.cronetTaskResult.useHttp2;
+        locald.cronetTaskResult.statusCode = paramC2CDownloadResult.cronetTaskResult.statusCode;
+        locald.cronetTaskResult.statusText = paramC2CDownloadResult.cronetTaskResult.statusText;
+        locald.cronetTaskResult.performance = paramC2CDownloadResult.cronetTaskResult.performance;
+        locald.field_httpStatusCode = paramC2CDownloadResult.cronetTaskResult.statusCode;
+      }
+    }
+    else
+    {
+      l = System.currentTimeMillis() - paramC2CDownloadResult.taskStartTime;
+      if (com.tencent.mm.i.a.iUi == paramC2CDownloadResult.fileType)
+      {
+        if (!paramC2CDownloadResult.fromCronet) {
+          break label642;
+        }
+        Log.i("MicroMsg.CdnTransportEngine", "cronet task use cronet download time ".concat(String.valueOf(l)));
+        com.tencent.mm.plugin.report.service.h.IzE.p(1173L, 97L, 1L);
+        com.tencent.mm.plugin.report.service.h.IzE.p(1173L, 99L, l);
+        if (paramC2CDownloadResult.cronetTaskResult != null)
+        {
+          if (!paramC2CDownloadResult.cronetTaskResult.useQuic) {
+            break label544;
+          }
+          com.tencent.mm.plugin.report.service.h.IzE.p(1173L, 94L, 1L);
+          com.tencent.mm.plugin.report.service.h.IzE.p(1173L, 95L, l);
+          Log.i("MicroMsg.CdnTransportEngine", "cronet task use cronet quic download time ".concat(String.valueOf(l)));
+        }
+      }
+    }
+    label642:
     for (;;)
     {
-      s.dy(b.aKJ() + "emoji", true);
-      AppMethodBeat.o(104507);
-      return;
-      iUo = bbw();
-      if (paramBoolean)
-      {
-        int i = bbx();
-        Log.i("MicroMsg.emoji.EmojiStoreExportLogic", "need update assetVersion=%d currentVersion=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(iUo) });
-        if (iUo < i)
-        {
-          s.dy(aa.z(localo.mUri), true);
-          j(localo);
-        }
+      if (locald.field_retCode == 0) {
+        break label686;
       }
-      else if (iUo == 1)
+      localObject1 = new af();
+      localObject2 = ((af)localObject1).iV(paramString);
+      ((af)localObject2).gig = 1;
+      ((af)localObject2).gih = paramC2CDownloadResult.detailErrorType;
+      ((af)localObject2).gii = paramC2CDownloadResult.detailErrorCode;
+      ((af)localObject2).gij = paramC2CDownloadResult.errorCode;
+      ((af)localObject2).gil = paramC2CDownloadResult.fileType;
+      ((af)localObject2).gim = paramC2CDownloadResult.tryWritenBytes;
+      ((af)localObject2).gin = paramC2CDownloadResult.availableBytes;
+      ((af)localObject2).iW(paramC2CDownloadResult.systemErrorDescribe).gip = paramC2CDownloadResult.currentFileSize;
+      ((af)localObject1).bpa();
+      Log.i("MicroMsg.CdnTransportEngine", "reportstr %s", new Object[] { ((af)localObject1).agI() });
+      keep_onDownloadError(paramString, locald);
+      AppMethodBeat.o(150386);
+      return;
+      localObject1 = "false";
+      break;
+      label536:
+      localObject2 = "false";
+      break label83;
+      label544:
+      if (paramC2CDownloadResult.cronetTaskResult.useHttp2)
       {
-        Log.i("MicroMsg.emoji.EmojiStoreExportLogic", "no need update currentVersion=%d", new Object[] { Integer.valueOf(iUo) });
-        s.dy(aa.z(localo.mUri), true);
-        j(localo);
+        com.tencent.mm.plugin.report.service.h.IzE.p(1173L, 91L, 1L);
+        com.tencent.mm.plugin.report.service.h.IzE.p(1173L, 92L, l);
+        Log.i("MicroMsg.CdnTransportEngine", "cronet task use cronet http2 download time ".concat(String.valueOf(l)));
+      }
+      else
+      {
+        com.tencent.mm.plugin.report.service.h.IzE.p(1173L, 88L, 1L);
+        com.tencent.mm.plugin.report.service.h.IzE.p(1173L, 89L, l);
+        Log.i("MicroMsg.CdnTransportEngine", "cronet task use cronet http1.x download time ".concat(String.valueOf(l)));
+        continue;
+        Log.i("MicroMsg.CdnTransportEngine", "cronet task use normal download time ".concat(String.valueOf(l)));
+        com.tencent.mm.plugin.report.service.h.IzE.p(1173L, 100L, 1L);
+        com.tencent.mm.plugin.report.service.h.IzE.p(1173L, 98L, l);
       }
     }
+    label686:
+    keep_onDownloadSuccessed(paramString, locald);
+    AppMethodBeat.o(150386);
   }
   
-  private static void j(o paramo)
+  public final void onC2CUploadCompleted(String paramString, CdnLogic.C2CUploadResult paramC2CUploadResult)
   {
-    AppMethodBeat.i(104508);
-    if (!paramo.exists()) {
-      paramo.mkdirs();
-    }
-    o localo = new o(paramo, ".nomedia");
-    if (!localo.exists()) {}
-    try
+    AppMethodBeat.i(150382);
+    Log.i("MicroMsg.CdnTransportEngine", "onC2CUploadCompleted filekey %s error %d", new Object[] { paramString, Integer.valueOf(paramC2CUploadResult.errorCode) });
+    com.tencent.mm.i.d locald = new com.tencent.mm.i.d();
+    locald.field_retCode = paramC2CUploadResult.errorCode;
+    locald.field_toUser = paramC2CUploadResult.touser;
+    locald.field_UploadHitCacheType = paramC2CUploadResult.hitCache;
+    locald.field_fileId = paramC2CUploadResult.fileid;
+    locald.field_aesKey = paramC2CUploadResult.aeskey;
+    locald.field_filemd5 = paramC2CUploadResult.filemd5;
+    locald.field_thumbfilemd5 = paramC2CUploadResult.thumbfilemd5;
+    locald.field_mp4identifymd5 = paramC2CUploadResult.mp4identifymd5;
+    locald.field_transInfo = paramC2CUploadResult.transforMsg;
+    locald.field_fileLength = paramC2CUploadResult.fileSize;
+    locald.field_midimgLength = paramC2CUploadResult.midfileSize;
+    locald.field_thumbimgLength = paramC2CUploadResult.thumbfileSize;
+    if (!paramC2CUploadResult.sendmsgFromCDN) {}
+    for (boolean bool = true;; bool = false)
     {
-      localo.createNewFile();
-      paramo = new o(paramo, "emoji_template.zip");
-      if (Oi(aa.z(paramo.her())))
-      {
-        int i = s.fW(aa.z(paramo.her()), paramo.getParent());
-        if (i < 0)
-        {
-          Log.e("MicroMsg.emoji.EmojiStoreExportLogic", "unzip fail, ret = " + i + ", zipFilePath = " + aa.z(paramo.her()) + ", unzipPath = " + paramo.getParent());
-          AppMethodBeat.o(104508);
-          return;
-        }
+      locald.field_needSendMsgField = bool;
+      locald.field_exist_whencheck = paramC2CUploadResult.existOnSvr;
+      if (paramC2CUploadResult.skeyrespbuf != null) {
+        locald.field_sKeyrespbuf = ((byte[])paramC2CUploadResult.skeyrespbuf.clone());
       }
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        Log.printErrStackTrace("MicroMsg.emoji.EmojiStoreExportLogic", localIOException, "create nomedia file error", new Object[0]);
+      locald.field_videoFileId = paramC2CUploadResult.videofileid;
+      locald.field_filecrc = paramC2CUploadResult.fileCrc32;
+      locald.field_upload_by_safecdn = paramC2CUploadResult.uploadBySafecdn;
+      locald.field_isVideoReduced = paramC2CUploadResult.isVideoReduced;
+      if (paramC2CUploadResult.usedSvrIps != null) {
+        locald.field_usedSvrIps = ((String[])paramC2CUploadResult.usedSvrIps.clone());
       }
-      iUo = bbw();
-      Log.i("MicroMsg.emoji.EmojiStoreExportLogic", "Unzip Path%s version=%d", new Object[] { paramo.getParent(), Integer.valueOf(iUo) });
-      AppMethodBeat.o(104508);
+      locald.field_fileUrl = paramC2CUploadResult.fileUrl;
+      locald.field_thumbUrl = paramC2CUploadResult.thumbfileUrl;
+      locald.emojiMD5 = paramC2CUploadResult.emojiMD5;
+      locald.field_isResume = paramC2CUploadResult.isResume;
+      locald.field_delayTime = paramC2CUploadResult.delayTime;
+      locald.field_connectCostTime = paramC2CUploadResult.connectCostTime;
+      locald.field_waitResponseCostTime = paramC2CUploadResult.waitResponseCostTime;
+      locald.field_receiveCostTime = paramC2CUploadResult.receiveCostTime;
+      locald.field_clientIP = paramC2CUploadResult.clientIP;
+      locald.field_serverIP = paramC2CUploadResult.serverIP;
+      locald.field_clientHostIP = Vx(paramC2CUploadResult.clientIP);
+      locald.field_serverHostIP = Vx(paramC2CUploadResult.serverIP);
+      locald.transportProtocol = paramC2CUploadResult.transportProtocol;
+      locald.transportProtocolError = paramC2CUploadResult.transportProtocolError;
+      locald.field_detailErrorType = paramC2CUploadResult.detailErrorType;
+      locald.field_detailErrorCode = paramC2CUploadResult.detailErrorCode;
+      if (locald.field_retCode == 0) {
+        break;
+      }
+      af localaf1 = new af();
+      af localaf2 = localaf1.iV(paramString);
+      localaf2.gig = 0;
+      localaf2.gih = paramC2CUploadResult.detailErrorType;
+      localaf2.gii = paramC2CUploadResult.detailErrorCode;
+      localaf2.gij = paramC2CUploadResult.errorCode;
+      localaf2.gil = paramC2CUploadResult.filetype;
+      localaf2.gim = 0L;
+      localaf2.gin = 0L;
+      localaf2.iW(paramC2CUploadResult.systemErrorDescribe);
+      localaf1.bpa();
+      Log.i("MicroMsg.CdnTransportEngine", "reportstr %s", new Object[] { localaf1.agI() });
+      keep_onUploadError(paramString, locald);
+      AppMethodBeat.o(150382);
       return;
     }
-    Log.i("MicroMsg.emoji.EmojiStoreExportLogic", "copy template file from asset fail %s", new Object[] { aa.z(paramo.her()) });
-    AppMethodBeat.o(104508);
+    keep_onUploadSuccessed(paramString, locald);
+    AppMethodBeat.o(150382);
   }
   
-  public static void k(o paramo)
+  public final void onDataAvailable(String paramString, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(104509);
-    o localo1 = new o(bbu());
-    s.dy(aa.z(localo1.mUri), true);
-    localo1.mkdirs();
-    o localo2 = new o(localo1, ".nomedia");
-    if (!localo2.exists()) {}
-    try
-    {
-      localo2.createNewFile();
-      localo1 = new o(localo1, "emoji_template.zip");
-      s.nw(aa.z(paramo.mUri), aa.z(localo1.mUri));
-      int i = Util.UnZipFolder(aa.z(localo1.mUri), localo1.getParent());
-      if (i < 0)
-      {
-        Log.e("MicroMsg.emoji.EmojiStoreExportLogic", "unzip fail, ret = " + i + ", zipFilePath = " + aa.z(localo1.her()) + ", unzipPath = " + localo1.getParent());
-        AppMethodBeat.o(104509);
-        return;
-      }
+    AppMethodBeat.i(150388);
+    keep_onDataAvailable(paramString, paramLong1, paramLong2);
+    AppMethodBeat.o(150388);
+  }
+  
+  public final void onDownloadProgressChanged(String paramString, long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(150385);
+    com.tencent.mm.i.c localc = new com.tencent.mm.i.c();
+    localc.field_finishedLength = paramLong1;
+    localc.field_toltalLength = paramLong2;
+    localc.field_status = 0;
+    localc.field_mtlnotify = paramBoolean;
+    keep_onDownloadProgress(paramString, localc);
+    AppMethodBeat.o(150385);
+  }
+  
+  public final void onDownloadToEnd(String paramString, long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(150389);
+    keep_onDownloadToEnd(paramString, paramLong1, paramLong2);
+    AppMethodBeat.o(150389);
+  }
+  
+  public final void onM3U8Ready(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(194305);
+    Log.i("MicroMsg.CdnTransportEngine", "onM3U8Ready %s, %d, hash[%d]", new Object[] { paramString1, Integer.valueOf(paramString2.length()), Integer.valueOf(hashCode()) });
+    Log.e("MicroMsg.CdnTransportEngine", "cdn call on m3u8 ready but onlineVideoCallback is null.hash[%d]", new Object[] { Integer.valueOf(hashCode()) });
+    com.tencent.mm.plugin.report.service.h.IzE.el(354, 29);
+    AppMethodBeat.o(194305);
+  }
+  
+  public final void onMoovReadyWithFlag(String paramString1, long paramLong1, long paramLong2, String paramString2)
+  {
+    AppMethodBeat.i(184254);
+    keep_onMoovReady(paramString1, paramLong1, paramLong2, paramString2);
+    AppMethodBeat.o(184254);
+  }
+  
+  public final void onPreloadCompletedWithResult(String paramString, long paramLong1, long paramLong2, CdnLogic.C2CDownloadResult paramC2CDownloadResult)
+  {
+    AppMethodBeat.i(150390);
+    paramC2CDownloadResult.recvedBytes = ((int)paramLong1);
+    paramC2CDownloadResult = a(paramC2CDownloadResult, null);
+    int i = 0;
+    if (this.lHx != null) {
+      i = this.lHx.a(paramString, paramC2CDownloadResult);
     }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        Log.printErrStackTrace("MicroMsg.emoji.EmojiStoreExportLogic", localIOException, "create nomedia file error", new Object[0]);
-      }
-      iUo = bbw();
-      Log.i("MicroMsg.emoji.EmojiStoreExportLogic", "Unzip Path%s version=%d", new Object[] { localo1.getParent(), Integer.valueOf(iUo) });
-      AppMethodBeat.o(104509);
+    if ((i == 0) && (this.lHy != null)) {
+      this.lHy.a(paramString, paramC2CDownloadResult);
     }
+    AppMethodBeat.o(150390);
+  }
+  
+  public final void onUploadProgressChanged(String paramString, long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(150381);
+    com.tencent.mm.i.c localc = new com.tencent.mm.i.c();
+    localc.field_finishedLength = paramLong1;
+    localc.field_toltalLength = paramLong2;
+    localc.field_status = 0;
+    localc.field_mtlnotify = false;
+    keep_onUploadProgress(paramString, localc);
+    AppMethodBeat.o(150381);
+  }
+  
+  public final void reportFlow(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(150378);
+    if (!MMApplicationContext.isMMProcess())
+    {
+      AppMethodBeat.o(150378);
+      return;
+    }
+    Log.i("MicroMsg.CdnTransportEngine", "ReportFlow, wifi:s:%d, r:%d, mobile:s:%d, r:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt4), Integer.valueOf(paramInt3) });
+    keep_cdnSendAndRecvData("dummy clientmsgid", paramInt2 + paramInt4, paramInt1 + paramInt3);
+    AppMethodBeat.o(150378);
+  }
+  
+  public final void requestGetCDN(int paramInt)
+  {
+    AppMethodBeat.i(150377);
+    if (!MMApplicationContext.isMMProcess())
+    {
+      AppMethodBeat.o(150377);
+      return;
+    }
+    Log.i("MicroMsg.CdnTransportEngine", "requestgetcdn scene %d", new Object[] { Integer.valueOf(paramInt) });
+    keep_OnRequestDoGetCdnDnsInfo(paramInt);
+    AppMethodBeat.o(150377);
+  }
+  
+  public final String[] resolveHost(String paramString, boolean paramBoolean, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(150379);
+    if (!MMApplicationContext.isMMProcess())
+    {
+      AppMethodBeat.o(150379);
+      return null;
+    }
+    Log.i("MicroMsg.CdnTransportEngine", "try resolve host %s, isdc %b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+    ArrayList localArrayList = new ArrayList();
+    paramArrayOfInt[0] = com.tencent.mm.network.d.a(paramString, paramBoolean, localArrayList);
+    paramString = (String[])localArrayList.toArray(new String[0]);
+    Log.i("MicroMsg.CdnTransportEngine", "resolved dnstype %d iplist %s", new Object[] { Integer.valueOf(paramArrayOfInt[0]), Arrays.toString(paramString) });
+    AppMethodBeat.o(150379);
+    return paramString;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract int a(String paramString, com.tencent.mm.i.c paramc, com.tencent.mm.i.d paramd);
+    
+    public abstract int d(String paramString1, int paramInt1, int paramInt2, String paramString2);
+    
+    public abstract int q(String paramString, int paramInt1, int paramInt2);
+    
+    public abstract int r(String paramString, int paramInt1, int paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.aq.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,70 +1,37 @@
 package com.tencent.mm.plugin.welab;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelsns.m;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.f.c.eg;
+import java.util.Map;
 
 public final class d
+  implements com.tencent.mm.plugin.welab.a.a.d
 {
-  public static void a(a parama)
+  public final void a(com.tencent.mm.plugin.welab.a.a.b paramb)
   {
-    AppMethodBeat.i(146213);
-    m localm = new m();
-    localm.n("expid", parama.JFU + ",");
-    localm.n("appid", parama.dNI + ",");
-    localm.n("action", parama.action + ",");
-    localm.n("timestamp", parama.timeStamp + ",");
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (parama.JFV) {}
-    for (int i = 1;; i = 0)
-    {
-      localm.n("hasRedPoint", i + ",");
-      Log.i("WelabReporter", "report " + localm.abW());
-      h.CyF.a(14206, new Object[] { localm });
-      AppMethodBeat.o(146213);
-      return;
-    }
+    AppMethodBeat.i(146211);
+    b.hcS().QFf = paramb;
+    AppMethodBeat.o(146211);
   }
   
-  public static void f(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
+  public final void a(String paramString, com.tencent.mm.plugin.welab.a.a.b paramb)
   {
-    AppMethodBeat.i(146215);
-    a locala = new a();
-    locala.dNI = paramString1;
-    locala.action = paramInt;
-    locala.timeStamp = System.currentTimeMillis();
-    locala.JFU = paramString2;
-    locala.JFV = paramBoolean;
-    a(locala);
-    AppMethodBeat.o(146215);
+    AppMethodBeat.i(146210);
+    b.hcS().QFe.put(paramString, paramb);
+    AppMethodBeat.o(146210);
   }
   
-  public static void y(String paramString, int paramInt, boolean paramBoolean)
+  public final eg bnA(String paramString)
   {
-    AppMethodBeat.i(146214);
-    a locala = new a();
-    locala.dNI = paramString;
-    locala.action = paramInt;
-    locala.timeStamp = System.currentTimeMillis();
-    locala.JFU = a.gjg().bbz(paramString).field_expId;
-    locala.JFV = paramBoolean;
-    a(locala);
-    AppMethodBeat.o(146214);
-  }
-  
-  public static final class a
-  {
-    public String JFU;
-    public boolean JFV;
-    public int action;
-    public String dNI;
-    public long timeStamp;
+    AppMethodBeat.i(146212);
+    paramString = b.hcS().bnz(paramString);
+    AppMethodBeat.o(146212);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.d
  * JD-Core Version:    0.7.0.1
  */

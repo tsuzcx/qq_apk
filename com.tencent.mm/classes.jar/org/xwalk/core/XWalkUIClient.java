@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Message;
 import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.PermissionRequest;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient.FileChooserParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -104,8 +105,8 @@ public class XWalkUIClient
     this.onShowCustomViewViewintCustomViewCallbackInternalMethod = new LazyReflectMethod(null, "onShowCustomView", new Class[0]);
     this.onHideCustomViewMethod = new LazyReflectMethod(null, "onHideCustomView", new Class[0]);
     this.onGeolocationPermissionsShowPromptStringXWalkGeolocationPermissionsCallbackInternalMethod = new LazyReflectMethod(null, "onGeolocationPermissionsShowPrompt", new Class[0]);
-    this.getVideoLoadingProgressViewMethod = new LazyReflectMethod(null, "getVideoLoadingProgressView", new Class[0]);
     this.onGeolocationPermissionsHidePromptMethod = new LazyReflectMethod(null, "onGeolocationPermissionsHidePrompt", new Class[0]);
+    this.getVideoLoadingProgressViewMethod = new LazyReflectMethod(null, "getVideoLoadingProgressView", new Class[0]);
     this.onGetTranslateStringXWalkViewInternalMapCallbackMethod = new LazyReflectMethod(null, "onGetTranslateString", new Class[0]);
     this.OnGetSampleStringXWalkViewInternalMapCallbackMethod = new LazyReflectMethod(null, "OnGetSampleString", new Class[0]);
     this.constructorTypes = new ArrayList();
@@ -611,6 +612,15 @@ public class XWalkUIClient
     }
   }
   
+  public void onPermissionRequest(PermissionRequest paramPermissionRequest)
+  {
+    AppMethodBeat.i(206765);
+    paramPermissionRequest.deny();
+    AppMethodBeat.o(206765);
+  }
+  
+  public void onPermissionRequestCanceled(PermissionRequest paramPermissionRequest) {}
+  
   public void onReceivedIcon(XWalkView paramXWalkView, String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(154973);
@@ -791,11 +801,11 @@ public class XWalkUIClient
   
   public boolean onShowFileChooser(XWalkView paramXWalkView, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
   {
-    AppMethodBeat.i(207393);
+    AppMethodBeat.i(206755);
     try
     {
       boolean bool = ((Boolean)this.onShowFileChooserXWalkViewInternalValueCallbackStringStringMethod.invoke(new Object[] { paramXWalkView.getBridge(), paramValueCallback, paramFileChooserParams })).booleanValue();
-      AppMethodBeat.o(207393);
+      AppMethodBeat.o(206755);
       return bool;
     }
     catch (UnsupportedOperationException paramXWalkView)
@@ -803,11 +813,11 @@ public class XWalkUIClient
       if (this.coreWrapper == null)
       {
         paramXWalkView = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(207393);
+        AppMethodBeat.o(206755);
         throw paramXWalkView;
       }
       XWalkCoreWrapper.handleRuntimeError(paramXWalkView);
-      AppMethodBeat.o(207393);
+      AppMethodBeat.o(206755);
     }
     return false;
   }
@@ -1020,7 +1030,7 @@ public class XWalkUIClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.XWalkUIClient
  * JD-Core Version:    0.7.0.1
  */

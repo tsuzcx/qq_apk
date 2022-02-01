@@ -10,7 +10,7 @@ public final class c$a
   public static String a(int paramInt, TenpaySecureEditText paramTenpaySecureEditText)
   {
     AppMethodBeat.i(73139);
-    if (z.aUo())
+    if (z.bdq())
     {
       Log.v("MicroMsg.IEncryptDelegate", "hy: is payu. encrypt with payu");
       new c.b();
@@ -27,7 +27,7 @@ public final class c$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.formview.c.a
  * JD-Core Version:    0.7.0.1
  */

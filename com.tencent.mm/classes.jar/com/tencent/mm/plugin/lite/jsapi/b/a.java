@@ -11,25 +11,25 @@ import org.json.JSONObject;
 public class a
   extends b
 {
-  public final void a(String paramString, JSONObject paramJSONObject)
+  public final void a(String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(198847);
+    AppMethodBeat.i(234203);
     Log.i("LiteAppJsApiDoGoToRecVideoList", "doGoToRecVideoList");
     try
     {
-      paramString = h.br(paramJSONObject);
+      paramString = h.bA(paramJSONObject);
       ai.b(MMApplicationContext.getContext(), paramString);
-      AppMethodBeat.o(198847);
+      AppMethodBeat.o(234203);
       return;
     }
     catch (Exception paramString)
     {
       Log.printErrStackTrace("LiteAppJsApiDoGoToRecVideoList", paramString, "doGoToRecVideoList", new Object[0]);
-      AppMethodBeat.o(198847);
+      AppMethodBeat.o(234203);
     }
   }
   
-  public final int dTw()
+  public final int ewF()
   {
     return 1;
   }

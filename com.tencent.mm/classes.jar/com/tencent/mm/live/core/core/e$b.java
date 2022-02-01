@@ -3,23 +3,29 @@ package com.tencent.mm.live.core.core;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$EventKey;", "", "()V", "KEY_USERID", "", "getKEY_USERID", "()Ljava/lang/String;", "plugin-core_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$AudienceMode;", "", "()V", "CDN_MODE", "", "getCDN_MODE", "()I", "TRTC_MODE", "getTRTC_MODE", "plugin-core_release"})
 public final class e$b
 {
-  private static final String hxd = "KEY_USERID";
-  public static final b hxe;
+  private static final int kjx = 0;
+  private static final int kjy = 1;
+  public static final b kjz;
   
   static
   {
-    AppMethodBeat.i(196403);
-    hxe = new b();
-    hxd = "KEY_USERID";
-    AppMethodBeat.o(196403);
+    AppMethodBeat.i(198519);
+    kjz = new b();
+    kjy = 1;
+    AppMethodBeat.o(198519);
   }
   
-  public static String aCg()
+  public static int aJJ()
   {
-    return hxd;
+    return kjx;
+  }
+  
+  public static int aJK()
+  {
+    return kjy;
   }
 }
 

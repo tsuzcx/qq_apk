@@ -13,68 +13,70 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.magicbrush.ui.MagicBrushView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
+import com.tencent.mm.ae.d;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.ab.c.a;
-import com.tencent.mm.plugin.ab.f;
-import com.tencent.mm.plugin.ab.f.a;
-import com.tencent.mm.plugin.ab.o;
+import com.tencent.mm.plugin.av.c.a;
+import com.tencent.mm.plugin.av.f;
+import com.tencent.mm.plugin.av.f.a;
+import com.tencent.mm.plugin.av.o;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.base.r;
 import java.lang.ref.WeakReference;
+import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasPopupContext;", "Lcom/tencent/mm/plugin/webjsapi/WxPopupAPIContext;", "popupTarget", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasPopupTarget;", "logicJsEngine", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;", "renderJsEngine", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasRenderJsEngine;", "(Lcom/tencent/mm/plugin/webcanvas/WebCanvasPopupTarget;Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;Lcom/tencent/mm/plugin/webcanvas/WebCanvasRenderJsEngine;)V", "TAG", "", "popupWindow", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasPopupContext$CanvasPopup;", "close", "", "popupId", "popup", "width", "", "height", "left", "top", "mode", "color", "onDismissCallback", "onOuterClickCallback", "precreate", "CanvasPopup", "Companion", "webview-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasPopupContext;", "Lcom/tencent/mm/plugin/webjsapi/WxPopupAPIContext;", "popupTarget", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasPopupTarget;", "logicJsEngine", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;", "renderJsEngine", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasRenderJsEngine;", "(Lcom/tencent/mm/plugin/webcanvas/WebCanvasPopupTarget;Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;Lcom/tencent/mm/plugin/webcanvas/WebCanvasRenderJsEngine;)V", "TAG", "", "popupWindow", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasPopupContext$CanvasPopup;", "close", "", "popupId", "popup", "width", "", "height", "left", "top", "mode", "color", "onDismissCallback", "onOuterClickCallback", "precreate", "CanvasPopup", "Companion", "webview-sdk_release"})
 public final class i
   implements o
 {
-  private static final int IAa = 2;
-  public static final i.b IAb;
-  private static final int IzZ = 1;
-  private a IzV;
-  private final j IzW;
-  private final c IzX;
-  private final k IzY;
+  private static final int Puc = 1;
+  private static final int Pud = 2;
+  public static final b Pue;
+  private a PtY;
+  private final j PtZ;
+  private final c Pua;
+  private final k Pub;
   private final String TAG;
   
   static
   {
-    AppMethodBeat.i(224653);
-    IAb = new i.b((byte)0);
-    IzZ = 1;
-    IAa = 2;
-    AppMethodBeat.o(224653);
+    AppMethodBeat.i(205584);
+    Pue = new b((byte)0);
+    Puc = 1;
+    Pud = 2;
+    AppMethodBeat.o(205584);
   }
   
   public i(j paramj, c paramc, k paramk)
   {
-    AppMethodBeat.i(224652);
-    this.IzW = paramj;
-    this.IzX = paramc;
-    this.IzY = paramk;
+    AppMethodBeat.i(205583);
+    this.PtZ = paramj;
+    this.Pua = paramc;
+    this.Pub = paramk;
     this.TAG = "MicroMsg.WebCanvasPopupContext";
-    AppMethodBeat.o(224652);
+    AppMethodBeat.o(205583);
   }
   
   public final void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(224650);
-    kotlin.g.b.p.h(paramString1, "popupId");
-    kotlin.g.b.p.h(paramString2, "onDismissCallback");
-    kotlin.g.b.p.h(paramString3, "onOuterClickCallback");
-    Object localObject1 = this.IzW.getView();
+    AppMethodBeat.i(205581);
+    p.k(paramString1, "popupId");
+    p.k(paramString2, "onDismissCallback");
+    p.k(paramString3, "onOuterClickCallback");
+    Object localObject1 = this.PtZ.getView();
     if ((localObject1 == null) || (((View)localObject1).isAttachedToWindow() != true))
     {
       Log.w(this.TAG, "skip popup when canvasView detached:".concat(String.valueOf(paramString1)));
-      c.a.a(this.IzX, paramString2, null, null, 6);
-      AppMethodBeat.o(224650);
+      c.a.a(this.Pua, paramString2, null, null, 6);
+      AppMethodBeat.o(205581);
       return;
     }
-    localObject1 = this.IzV;
+    localObject1 = this.PtY;
     if (localObject1 != null) {
       ((a)localObject1).dismiss();
     }
     a locala = new a(paramString1, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramString2, paramString3, new WeakReference(this));
-    paramString2 = (i)locala.lAM.get();
+    paramString2 = (i)locala.context.get();
     label352:
     boolean bool;
     label367:
@@ -87,24 +89,24 @@ public final class i
     MagicBrushView localMagicBrushView;
     if (paramString2 != null)
     {
-      paramString2 = paramString2.IzW;
+      paramString2 = paramString2.PtZ;
       if (paramString2 != null)
       {
         paramString2 = paramString2.getView();
         if (paramString2 == null) {
-          kotlin.g.b.p.hyc();
+          p.iCn();
         }
-        paramString3 = d.cm(paramString2);
+        paramString3 = d.cF(paramString2);
         paramString3[0] += locala.left;
         paramString3[1] += locala.top;
         paramInt2 = paramString3[0];
         paramInt3 = paramString3[1];
-        Log.d(locala.TAG, "popup:" + locala.IzJ + " start locate:[" + locala.left + ", " + locala.top + "] offset:[" + paramInt2 + ", " + paramInt3 + "] size:[" + locala.IAc + ", " + locala.IAd + "] mode:" + locala.mode);
-        if ((locala.mode & IzZ) == 0) {
+        Log.d(locala.TAG, "popup:" + locala.PtM + " start locate:[" + locala.left + ", " + locala.top + "] offset:[" + paramInt2 + ", " + paramInt3 + "] size:[" + locala.Puf + ", " + locala.Pug + "] mode:" + locala.mode);
+        if ((locala.mode & Puc) == 0) {
           break label971;
         }
         paramInt1 = 1;
-        if ((locala.mode & IAa) == 0) {
+        if ((locala.mode & Pud) == 0) {
           break label976;
         }
         bool = true;
@@ -116,42 +118,42 @@ public final class i
         paramInt5 = ((Number)paramString3[1]).intValue();
         paramInt6 = ((Number)paramString3[2]).intValue();
         i = ((Number)paramString3[3]).intValue();
-        Log.i(locala.TAG, "popup:" + locala.IzJ + " compute locate:[" + paramInt4 + ", " + paramInt5 + "] size:[" + paramInt6 + ", " + i + ']');
-        paramString3 = (i)locala.lAM.get();
+        Log.i(locala.TAG, "popup:" + locala.PtM + " compute locate:[" + paramInt4 + ", " + paramInt5 + "] size:[" + paramInt6 + ", " + i + ']');
+        paramString3 = (i)locala.context.get();
         if (paramString3 == null) {
           break label1028;
         }
-        localObject2 = paramString3.IzY;
+        localObject2 = paramString3.Pub;
         if (localObject2 == null) {
-          kotlin.g.b.p.hyc();
+          p.iCn();
         }
-        paramString3 = (i)locala.lAM.get();
+        paramString3 = (i)locala.context.get();
         if (paramString3 == null) {
           break label1034;
         }
-        paramString3 = paramString3.IzX;
+        paramString3 = paramString3.Pua;
         if (paramString3 == null) {
-          kotlin.g.b.p.hyc();
+          p.iCn();
         }
         localObject1 = paramString2.getContext();
         if (!(localObject1 instanceof MutableContextWrapper)) {
           break label1040;
         }
         localObject1 = ((MutableContextWrapper)localObject1).getBaseContext();
-        kotlin.g.b.p.g(localObject1, "viewContext");
-        localObject2 = ((k)localObject2).a((Context)localObject1, locala.IzJ, false, false);
-        kotlin.g.b.p.h(localObject1, "context");
-        if (((a)localObject2).IyU == null)
+        p.j(localObject1, "viewContext");
+        localObject2 = ((k)localObject2).a((Context)localObject1, locala.PtM, false, false);
+        p.k(localObject1, "context");
+        if (((a)localObject2).PsX == null)
         {
-          ((a)localObject2).IyU = new n((a)localObject2, (Context)new MutableContextWrapper((Context)localObject1));
-          localObject3 = ((a)localObject2).IyU;
+          ((a)localObject2).PsX = new n((a)localObject2, (Context)new MutableContextWrapper((Context)localObject1));
+          localObject3 = ((a)localObject2).PsX;
           if (localObject3 != null) {
-            ((n)localObject3).cYb();
+            ((n)localObject3).dnQ();
           }
         }
-        localMagicBrushView = ((a)localObject2).MQ();
+        localMagicBrushView = ((a)localObject2).PI();
         if (localMagicBrushView == null) {
-          kotlin.g.b.p.hyc();
+          p.iCn();
         }
         Object localObject3 = localMagicBrushView.getParent();
         localObject2 = localObject3;
@@ -166,7 +168,7 @@ public final class i
           break label1043;
         }
         localObject1 = new RelativeLayout((Context)localObject1);
-        localObject2 = new RelativeLayout.LayoutParams(locala.IAc, locala.IAd);
+        localObject2 = new RelativeLayout.LayoutParams(locala.Puf, locala.Pug);
         ((RelativeLayout.LayoutParams)localObject2).setMargins(paramInt2, paramInt3 + 0, 0, 0);
         localMagicBrushView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
         ((RelativeLayout)localObject1).setOnClickListener((View.OnClickListener)new i.a.a(locala, localMagicBrushView, paramInt2, paramInt3, bool, paramString3));
@@ -190,9 +192,9 @@ public final class i
       locala.setClippingEnabled(false);
       paramString2.addOnAttachStateChangeListener((View.OnAttachStateChangeListener)locala);
       locala.showAtLocation(paramString2, 0, paramInt4, paramInt5);
-      this.IzV = locala;
-      this.IzX.aWw(paramString1);
-      AppMethodBeat.o(224650);
+      this.PtY = locala;
+      this.Pua.bid(paramString1);
+      AppMethodBeat.o(205581);
       return;
       paramString2 = null;
       break;
@@ -203,7 +205,7 @@ public final class i
       bool = false;
       break label367;
       label982:
-      paramString3 = new Integer[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(locala.IAc), Integer.valueOf(locala.IAd) };
+      paramString3 = new Integer[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(locala.Puf), Integer.valueOf(locala.Pug) };
       break label405;
       localObject2 = null;
       break label551;
@@ -213,48 +215,48 @@ public final class i
     }
   }
   
-  public final void aWy(String paramString)
+  public final void bif(String paramString)
   {
-    AppMethodBeat.i(224649);
-    kotlin.g.b.p.h(paramString, "popupId");
+    AppMethodBeat.i(205580);
+    p.k(paramString, "popupId");
     Log.i(this.TAG, "precreate:".concat(String.valueOf(paramString)));
-    k localk = this.IzY;
-    f.a locala = f.IBd;
+    k localk = this.Pub;
+    f.a locala = f.Pvm;
     localk.a(f.a.getAppContext(), paramString, false, false);
-    AppMethodBeat.o(224649);
+    AppMethodBeat.o(205580);
   }
   
   public final void close(String paramString)
   {
-    AppMethodBeat.i(224651);
-    kotlin.g.b.p.h(paramString, "popupId");
-    a locala = this.IzV;
+    AppMethodBeat.i(205582);
+    p.k(paramString, "popupId");
+    a locala = this.PtY;
     if (locala != null)
     {
-      if (kotlin.g.b.p.j(locala.IzJ, paramString)) {}
+      if (p.h(locala.PtM, paramString)) {}
       for (paramString = locala; paramString != null; paramString = null)
       {
         paramString.dismiss();
-        AppMethodBeat.o(224651);
+        AppMethodBeat.o(205582);
         return;
       }
     }
-    AppMethodBeat.o(224651);
+    AppMethodBeat.o(205582);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasPopupContext$CanvasPopup;", "Lcom/tencent/mm/ui/base/MMPopupWindow;", "Landroid/view/View$OnAttachStateChangeListener;", "popupId", "", "popupWidth", "", "popupHeight", "left", "top", "mode", "color", "onDismissCallback", "onOuterClickCallback", "context", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasPopupContext;", "(Ljava/lang/String;IIIIIILjava/lang/String;Ljava/lang/String;Ljava/lang/ref/WeakReference;)V", "TAG", "getPopupId", "()Ljava/lang/String;", "dismiss", "", "onViewAttachedToWindow", "v", "Landroid/view/View;", "onViewDetachedFromWindow", "show", "webview-sdk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasPopupContext$CanvasPopup;", "Lcom/tencent/mm/ui/base/MMPopupWindow;", "Landroid/view/View$OnAttachStateChangeListener;", "popupId", "", "popupWidth", "", "popupHeight", "left", "top", "mode", "color", "onDismissCallback", "onOuterClickCallback", "context", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasPopupContext;", "(Ljava/lang/String;IIIIIILjava/lang/String;Ljava/lang/String;Ljava/lang/ref/WeakReference;)V", "TAG", "getPopupId", "()Ljava/lang/String;", "dismiss", "", "onViewAttachedToWindow", "v", "Landroid/view/View;", "onViewDetachedFromWindow", "show", "webview-sdk_release"})
   static final class a
-    extends com.tencent.mm.ui.base.p
+    extends r
     implements View.OnAttachStateChangeListener
   {
-    final int IAc;
-    final int IAd;
-    private final String IAe;
-    private final String IAf;
-    final String IzJ;
+    final String PtM;
+    final int Puf;
+    final int Pug;
+    private final String Puh;
+    private final String Pui;
     final String TAG;
     final int color;
-    final WeakReference<i> lAM;
+    final WeakReference<i> context;
     final int left;
     final int mode;
     final int top;
@@ -263,33 +265,33 @@ public final class i
     
     public final void dismiss()
     {
-      AppMethodBeat.i(224647);
-      Log.i(this.TAG, "popup on dismiss:" + this.IzJ);
-      i locali = (i)this.lAM.get();
+      AppMethodBeat.i(207103);
+      Log.i(this.TAG, "popup on dismiss:" + this.PtM);
+      i locali = (i)this.context.get();
       if (locali != null)
       {
         View localView = i.a(locali).getView();
         if (localView != null) {
           localView.removeOnAttachStateChangeListener((View.OnAttachStateChangeListener)this);
         }
-        c.a.a(i.b(locali), this.IAe, null, null, 6);
-        i.b(locali).aWw("none");
+        c.a.a(i.b(locali), this.Puh, null, null, 6);
+        i.b(locali).bid("none");
         i.c(locali);
       }
       super.dismiss();
-      AppMethodBeat.o(224647);
+      AppMethodBeat.o(207103);
     }
     
     public final void onViewAttachedToWindow(View paramView) {}
     
     public final void onViewDetachedFromWindow(View paramView)
     {
-      AppMethodBeat.i(224646);
+      AppMethodBeat.i(207102);
       dismiss();
-      AppMethodBeat.o(224646);
+      AppMethodBeat.o(207102);
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/webcanvas/WebCanvasPopupContext$CanvasPopup$show$2$2"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/webcanvas/WebCanvasPopupContext$CanvasPopup$show$2$2"})
     static final class a
       implements View.OnClickListener
     {
@@ -297,27 +299,30 @@ public final class i
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(224645);
+        AppMethodBeat.i(207714);
         b localb = new b();
-        localb.bm(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webcanvas/WebCanvasPopupContext$CanvasPopup$show$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        if (this.IAk) {
-          c.a.a(this.IAl, i.a.a(this.IAg), null, null, 6);
+        localb.bn(paramView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webcanvas/WebCanvasPopupContext$CanvasPopup$show$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        if (this.Pun) {
+          c.a.a(this.Puo, i.a.a(this.Puj), null, null, 6);
         }
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webcanvas/WebCanvasPopupContext$CanvasPopup$show$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(224645);
+          AppMethodBeat.o(207714);
           return;
-          this.IAg.dismiss();
+          this.Puj.dismiss();
         }
       }
     }
   }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasPopupContext$Companion;", "", "()V", "MODE_MASK", "", "MODE_MASK_PERSIST", "webview-sdk_release"})
+  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webcanvas.i
  * JD-Core Version:    0.7.0.1
  */

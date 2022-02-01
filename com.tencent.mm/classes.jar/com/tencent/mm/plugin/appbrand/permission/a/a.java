@@ -6,21 +6,19 @@ import com.tencent.mm.plugin.appbrand.ac.m;
 import com.tencent.mm.plugin.appbrand.ac.m.a;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.plugin.appbrand.config.l;
-import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.h;
-import com.tencent.mm.plugin.appbrand.h.c;
-import com.tencent.mm.plugin.appbrand.jsapi.k;
-import com.tencent.mm.plugin.appbrand.widget.dialog.h.b;
-import com.tencent.mm.plugin.appbrand.widget.dialog.i.a;
-import com.tencent.mm.protocal.protobuf.cdz;
-import com.tencent.mm.protocal.protobuf.cen;
-import com.tencent.mm.protocal.protobuf.cep;
-import com.tencent.mm.protocal.protobuf.drb;
+import com.tencent.mm.plugin.appbrand.jsapi.j;
+import com.tencent.mm.plugin.appbrand.k;
+import com.tencent.mm.plugin.appbrand.k.c;
+import com.tencent.mm.plugin.appbrand.widget.dialog.g.b;
+import com.tencent.mm.plugin.appbrand.widget.dialog.h.a;
+import com.tencent.mm.protocal.protobuf.cmt;
+import com.tencent.mm.protocal.protobuf.cnh;
+import com.tencent.mm.protocal.protobuf.cnj;
+import com.tencent.mm.protocal.protobuf.eax;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.vending.g.d.a;
 import com.tencent.mm.vending.g.d.b;
-import com.tencent.mm.vending.g.g;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -31,194 +29,194 @@ import java.util.Set;
 
 public final class a
 {
-  private static final LinkedList<Runnable> nxZ;
-  private static final a nya;
-  private static boolean nyb;
-  private static final Set<String> nyc;
-  private final int dMe;
-  private final c nxX;
-  private final c nxY;
+  private static final LinkedList<Runnable> qAl;
+  private static final a qAm;
+  private static boolean qAn;
+  private static final Set<String> qAo;
+  private final int fES;
+  private final c qAj;
+  private final c qAk;
   
   static
   {
-    AppMethodBeat.i(230003);
-    nxZ = new LinkedList();
-    nya = new a((byte)0);
-    nyb = false;
-    nyc = new HashSet();
-    AppMethodBeat.o(230003);
+    AppMethodBeat.i(247281);
+    qAl = new LinkedList();
+    qAm = new a((byte)0);
+    qAn = false;
+    qAo = new HashSet();
+    AppMethodBeat.o(247281);
   }
   
   private a(c paramc, final c paramc1)
   {
-    AppMethodBeat.i(229995);
-    this.nxX = new b(paramc, paramc1)
+    AppMethodBeat.i(247266);
+    this.qAj = new b(paramc, paramc1)
     {
-      private String bTi()
+      private String cgl()
       {
-        AppMethodBeat.i(229972);
-        Object localObject = paramc1.nyB;
-        String str = paramc1.nyC;
-        localObject = String.format(Locale.ENGLISH, "component[%s %s], api[%s]", new Object[] { ((d)localObject).getAppId(), localObject.getClass().getSimpleName(), str });
-        AppMethodBeat.o(229972);
+        AppMethodBeat.i(237080);
+        Object localObject = paramc1.oDq;
+        String str = paramc1.qAN;
+        localObject = String.format(Locale.ENGLISH, "component[%s %s], api[%s]", new Object[] { ((com.tencent.mm.plugin.appbrand.g)localObject).getAppId(), localObject.getClass().getSimpleName(), str });
+        AppMethodBeat.o(237080);
         return localObject;
       }
       
-      public final void acx(String paramAnonymousString)
+      public final void akr(String paramAnonymousString)
       {
-        AppMethodBeat.i(229970);
-        super.acx(paramAnonymousString);
-        Log.i("MicroMsg.AppBrandJsApiUserAuth", "onDeny reason[%s] %s", new Object[] { paramAnonymousString, bTi() });
-        AppMethodBeat.o(229970);
+        AppMethodBeat.i(237076);
+        super.akr(paramAnonymousString);
+        Log.i("MicroMsg.AppBrandJsApiUserAuth", "onDeny reason[%s] %s", new Object[] { paramAnonymousString, cgl() });
+        AppMethodBeat.o(237076);
       }
       
-      public final void bOI()
+      public final void caY()
       {
-        AppMethodBeat.i(229969);
-        super.bOI();
-        Log.i("MicroMsg.AppBrandJsApiUserAuth", "onConfirm " + bTi());
-        AppMethodBeat.o(229969);
+        AppMethodBeat.i(237074);
+        super.caY();
+        Log.i("MicroMsg.AppBrandJsApiUserAuth", "onConfirm " + cgl());
+        AppMethodBeat.o(237074);
       }
       
       public final void onCancel()
       {
-        AppMethodBeat.i(229971);
+        AppMethodBeat.i(237079);
         super.onCancel();
-        Log.i("MicroMsg.AppBrandJsApiUserAuth", "onCancel " + bTi());
-        AppMethodBeat.o(229971);
+        Log.i("MicroMsg.AppBrandJsApiUserAuth", "onCancel " + cgl());
+        AppMethodBeat.o(237079);
       }
     };
-    this.nxY = paramc1;
-    this.dMe = paramc1.nyB.getRuntime().kAq.eix;
-    AppMethodBeat.o(229995);
+    this.qAk = paramc1;
+    this.fES = paramc1.oDq.getRuntime().ntz.cBI;
+    AppMethodBeat.o(247266);
   }
   
   public static void a(final c paramc, final c paramc1)
   {
-    AppMethodBeat.i(229998);
-    final String str = paramc.nyB.getAppId();
-    if ((Util.isNullOrNil(str)) || (Util.isNullOrNil(paramc.nyC)))
+    AppMethodBeat.i(247270);
+    final String str = paramc.oDq.getAppId();
+    if ((Util.isNullOrNil(str)) || (Util.isNullOrNil(paramc.qAN)))
     {
-      AppMethodBeat.o(229998);
+      AppMethodBeat.o(247270);
       return;
     }
-    synchronized (nyc)
+    synchronized (qAo)
     {
-      if (nyc.contains(str))
+      if (qAo.contains(str))
       {
         paramc1 = new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(229981);
-            a.b(this.nyd, new a.d(paramc1, (byte)0));
-            AppMethodBeat.o(229981);
+            AppMethodBeat.i(241059);
+            a.b(this.qAp, new a.d(paramc1, (byte)0));
+            AppMethodBeat.o(241059);
           }
         };
-        m.bZn().postToWorker(new Runnable()
+        m.clV().postToWorker(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(229982);
-            if (a.bTg())
+            AppMethodBeat.i(241383);
+            if (a.cgj())
             {
-              a.bTh().add(this.nyt);
-              Log.i("MicroMsg.AppBrandJsApiUserAuth", "requireUserAuth, another request already running, put this in queue, appId %s, api %s", new Object[] { str, paramc.nyC });
-              AppMethodBeat.o(229982);
+              a.cgk().add(this.qAF);
+              Log.i("MicroMsg.AppBrandJsApiUserAuth", "requireUserAuth, another request already running, put this in queue, appId %s, api %s", new Object[] { str, paramc.qAN });
+              AppMethodBeat.o(241383);
               return;
             }
-            a.ir(true);
-            this.nyt.run();
-            AppMethodBeat.o(229982);
+            a.jo(true);
+            this.qAF.run();
+            AppMethodBeat.o(241383);
           }
         });
-        AppMethodBeat.o(229998);
+        AppMethodBeat.o(247270);
         return;
       }
-      h.a(str, new h.c()
+      k.a(str, new k.c()
       {
         public final void onDestroy()
         {
-          AppMethodBeat.i(229980);
-          a.aer(this.val$appId);
-          a.bTf().remove(this.val$appId);
-          AppMethodBeat.o(229980);
+          AppMethodBeat.i(244325);
+          a.aml(this.val$appId);
+          a.cgi().remove(this.val$appId);
+          AppMethodBeat.o(244325);
         }
       });
     }
   }
   
-  public static boolean a(k paramk, String paramString)
+  public static boolean a(j paramj, String paramString)
   {
-    AppMethodBeat.i(229997);
+    AppMethodBeat.i(247268);
     if (paramString.equals("getWifiList"))
     {
-      paramk = paramk.getRuntime().OT();
-      if (!paramk.leB) {}
+      paramj = paramj.getRuntime().Sp();
+      if (!paramj.nYO) {}
       for (boolean bool = true;; bool = false)
       {
         Log.i("MicroMsg.AppBrandJsApiUserAuth", "getWifiList jump userauth:%b", new Object[] { Boolean.valueOf(bool) });
-        if (paramk.leB) {
+        if (paramj.nYO) {
           break;
         }
-        AppMethodBeat.o(229997);
+        AppMethodBeat.o(247268);
         return true;
       }
-      AppMethodBeat.o(229997);
+      AppMethodBeat.o(247268);
       return false;
     }
-    AppMethodBeat.o(229997);
+    AppMethodBeat.o(247268);
     return false;
   }
   
-  public static void aer(String paramString)
+  public static void aml(String paramString)
   {
-    AppMethodBeat.i(229999);
-    a locala = nya;
+    AppMethodBeat.i(247271);
+    a locala = qAm;
     if (!Util.isNullOrNil(paramString)) {
       try
       {
-        locala.nyu.remove(paramString);
+        locala.qAG.remove(paramString);
         return;
       }
       finally
       {
-        AppMethodBeat.o(229999);
+        AppMethodBeat.o(247271);
       }
     }
-    AppMethodBeat.o(229999);
+    AppMethodBeat.o(247271);
   }
   
-  public static boolean eG(String paramString1, String paramString2)
+  public static boolean eU(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(229996);
-    boolean bool = nya.eH(paramString1, paramString2);
-    AppMethodBeat.o(229996);
+    AppMethodBeat.i(247267);
+    boolean bool = qAm.eV(paramString1, paramString2);
+    AppMethodBeat.o(247267);
     return bool;
   }
   
   static final class a
   {
-    final HashMap<String, HashSet<String>> nyu;
+    final HashMap<String, HashSet<String>> qAG;
     
     private a()
     {
-      AppMethodBeat.i(229983);
-      this.nyu = new HashMap();
-      AppMethodBeat.o(229983);
+      AppMethodBeat.i(250791);
+      this.qAG = new HashMap();
+      AppMethodBeat.o(250791);
     }
     
-    final void Y(String paramString1, String paramString2)
+    final void ac(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(229986);
+      AppMethodBeat.i(250798);
       if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
       {
-        AppMethodBeat.o(229986);
+        AppMethodBeat.o(250798);
         return;
       }
       try
       {
-        paramString1 = (HashSet)this.nyu.get(paramString1);
+        paramString1 = (HashSet)this.qAG.get(paramString1);
         if (paramString1 != null) {
           paramString1.remove(paramString2);
         }
@@ -226,12 +224,12 @@ public final class a
       }
       finally
       {
-        AppMethodBeat.o(229986);
+        AppMethodBeat.o(250798);
       }
     }
     
     /* Error */
-    final boolean eH(String paramString1, String paramString2)
+    final boolean eV(String paramString1, String paramString2)
     {
       // Byte code:
       //   0: ldc 54
@@ -249,7 +247,7 @@ public final class a
       //   26: aload_0
       //   27: monitorenter
       //   28: aload_0
-      //   29: getfield 26	com/tencent/mm/plugin/appbrand/permission/a/a$a:nyu	Ljava/util/HashMap;
+      //   29: getfield 26	com/tencent/mm/plugin/appbrand/permission/a/a$a:qAG	Ljava/util/HashMap;
       //   32: aload_1
       //   33: invokevirtual 45	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
       //   36: checkcast 47	java/util/HashSet
@@ -289,32 +287,31 @@ public final class a
       //   28	40	68	finally
       //   44	52	68	finally
       //   54	56	68	finally
-      //   69	71	68	finally
     }
     
     final void put(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(229985);
+      AppMethodBeat.i(250796);
       if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
       {
-        AppMethodBeat.o(229985);
+        AppMethodBeat.o(250796);
         return;
       }
       try
       {
-        HashSet localHashSet2 = (HashSet)this.nyu.get(paramString1);
+        HashSet localHashSet2 = (HashSet)this.qAG.get(paramString1);
         HashSet localHashSet1 = localHashSet2;
         if (localHashSet2 == null)
         {
           localHashSet1 = new HashSet();
-          this.nyu.put(paramString1, localHashSet1);
+          this.qAG.put(paramString1, localHashSet1);
         }
         localHashSet1.add(paramString2);
         return;
       }
       finally
       {
-        AppMethodBeat.o(229985);
+        AppMethodBeat.o(250796);
       }
     }
   }
@@ -322,46 +319,46 @@ public final class a
   static class b
     implements a.c
   {
-    private final a.c nyv;
+    private final a.c qAH;
     
     private b(a.c paramc)
     {
-      this.nyv = paramc;
+      this.qAH = paramc;
     }
     
-    public void acx(String paramString)
+    public void akr(String paramString)
     {
-      AppMethodBeat.i(229988);
-      if (this.nyv != null) {
-        this.nyv.acx(paramString);
+      AppMethodBeat.i(236468);
+      if (this.qAH != null) {
+        this.qAH.akr(paramString);
       }
-      AppMethodBeat.o(229988);
+      AppMethodBeat.o(236468);
     }
     
-    public void bOI()
+    public void caY()
     {
-      AppMethodBeat.i(229987);
-      if (this.nyv != null) {
-        this.nyv.bOI();
+      AppMethodBeat.i(236466);
+      if (this.qAH != null) {
+        this.qAH.caY();
       }
-      AppMethodBeat.o(229987);
+      AppMethodBeat.o(236466);
     }
     
     public void onCancel()
     {
-      AppMethodBeat.i(229989);
-      if (this.nyv != null) {
-        this.nyv.onCancel();
+      AppMethodBeat.i(236470);
+      if (this.qAH != null) {
+        this.qAH.onCancel();
       }
-      AppMethodBeat.o(229989);
+      AppMethodBeat.o(236470);
     }
   }
   
   public static abstract interface c
   {
-    public abstract void acx(String paramString);
+    public abstract void akr(String paramString);
     
-    public abstract void bOI();
+    public abstract void caY();
     
     public abstract void onCancel();
   }
@@ -374,51 +371,51 @@ public final class a
       super((byte)0);
     }
     
-    private void bTj()
+    private void cgm()
     {
-      AppMethodBeat.i(229994);
-      m.bZn().postToWorker(new Runnable()
+      AppMethodBeat.i(249200);
+      m.clV().postToWorker(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(229990);
-          Runnable localRunnable = (Runnable)a.bTh().pollFirst();
+          AppMethodBeat.i(243785);
+          Runnable localRunnable = (Runnable)a.cgk().pollFirst();
           if (localRunnable != null)
           {
             localRunnable.run();
-            AppMethodBeat.o(229990);
+            AppMethodBeat.o(243785);
             return;
           }
           Log.i("MicroMsg.AppBrandJsApiUserAuth", "requireUserAuth, poll null from queue, all requests done");
-          a.ir(false);
-          AppMethodBeat.o(229990);
+          a.jo(false);
+          AppMethodBeat.o(243785);
         }
       });
-      AppMethodBeat.o(229994);
+      AppMethodBeat.o(249200);
     }
     
-    public final void acx(String paramString)
+    public final void akr(String paramString)
     {
-      AppMethodBeat.i(229992);
-      super.acx(paramString);
-      bTj();
-      AppMethodBeat.o(229992);
+      AppMethodBeat.i(249198);
+      super.akr(paramString);
+      cgm();
+      AppMethodBeat.o(249198);
     }
     
-    public final void bOI()
+    public final void caY()
     {
-      AppMethodBeat.i(229991);
-      super.bOI();
-      bTj();
-      AppMethodBeat.o(229991);
+      AppMethodBeat.i(249196);
+      super.caY();
+      cgm();
+      AppMethodBeat.o(249196);
     }
     
     public final void onCancel()
     {
-      AppMethodBeat.i(229993);
+      AppMethodBeat.i(249199);
       super.onCancel();
-      bTj();
-      AppMethodBeat.o(229993);
+      cgm();
+      AppMethodBeat.o(249199);
     }
   }
 }

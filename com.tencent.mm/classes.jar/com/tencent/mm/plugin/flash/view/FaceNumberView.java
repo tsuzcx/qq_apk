@@ -9,14 +9,16 @@ import android.view.animation.Animation;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.facedetect.a.e;
+import com.tencent.mm.plugin.facedetect.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class FaceNumberView
   extends RelativeLayout
 {
-  View wIS;
-  TextView wIT;
-  Animation wIU;
+  View BCk;
+  TextView BCl;
+  Animation BCm;
   
   public FaceNumberView(Context paramContext)
   {
@@ -36,38 +38,38 @@ public class FaceNumberView
   private FaceNumberView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, 0);
-    AppMethodBeat.i(186715);
-    this.wIU = new AlphaAnimation(0.0F, 1.0F);
-    LayoutInflater.from(getContext()).inflate(2131494070, this, true);
+    AppMethodBeat.i(189907);
+    this.BCm = new AlphaAnimation(0.0F, 1.0F);
+    LayoutInflater.from(getContext()).inflate(a.g.face_flash_number_view, this, true);
     setGravity(17);
-    this.wIS = findViewById(2131300345);
-    this.wIT = ((TextView)findViewById(2131300343));
-    AppMethodBeat.o(186715);
+    this.BCk = findViewById(a.e.face_flash_white_dot);
+    this.BCl = ((TextView)findViewById(a.e.face_flash_num_view));
+    AppMethodBeat.o(189907);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(186717);
+    AppMethodBeat.i(189911);
     post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(186714);
+        AppMethodBeat.i(194515);
         Log.i("MicroMsg.FaceFlashManagerNumberView", "release");
         FaceNumberView.a(FaceNumberView.this).cancel();
         FaceNumberView.b(FaceNumberView.this).clearAnimation();
-        AppMethodBeat.o(186714);
+        AppMethodBeat.o(194515);
       }
     });
-    AppMethodBeat.o(186717);
+    AppMethodBeat.o(189911);
   }
   
   public void setNumber(String paramString)
   {
-    AppMethodBeat.i(186716);
+    AppMethodBeat.i(189909);
     Log.i("MicroMsg.FaceFlashManagerNumberView", "setNumber :%s", new Object[] { paramString });
-    this.wIT.setText(paramString);
-    AppMethodBeat.o(186716);
+    this.BCl.setText(paramString);
+    AppMethodBeat.o(189909);
   }
 }
 

@@ -3,44 +3,49 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class crc
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String MbW;
-  public int Meg;
+  public String title;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123629);
+    AppMethodBeat.i(72512);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.MbW != null) {
-        paramVarArgs.e(1, this.MbW);
+      if (this.title != null) {
+        paramVarArgs.f(1, this.title);
       }
-      paramVarArgs.aM(2, this.Meg);
-      AppMethodBeat.o(123629);
+      if (this.url != null) {
+        paramVarArgs.f(2, this.url);
+      }
+      AppMethodBeat.o(72512);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.MbW == null) {
-        break label258;
+      if (this.title == null) {
+        break label274;
       }
     }
-    label258:
-    for (paramInt = g.a.a.b.b.a.f(1, this.MbW) + 0;; paramInt = 0)
+    label274:
+    for (paramInt = g.a.a.b.b.a.g(1, this.title) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bu(2, this.Meg);
-      AppMethodBeat.o(123629);
-      return paramInt + i;
+      int i = paramInt;
+      if (this.url != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.url);
+      }
+      AppMethodBeat.o(72512);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(123629);
+        AppMethodBeat.o(72512);
         return 0;
       }
       if (paramInt == 3)
@@ -50,18 +55,18 @@ public final class crc
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(123629);
+          AppMethodBeat.o(72512);
           return -1;
         case 1: 
-          localcrc.MbW = locala.UbS.readString();
-          AppMethodBeat.o(123629);
+          localcrc.title = locala.abFh.readString();
+          AppMethodBeat.o(72512);
           return 0;
         }
-        localcrc.Meg = locala.UbS.zi();
-        AppMethodBeat.o(123629);
+        localcrc.url = locala.abFh.readString();
+        AppMethodBeat.o(72512);
         return 0;
       }
-      AppMethodBeat.o(123629);
+      AppMethodBeat.o(72512);
       return -1;
     }
   }

@@ -6,30 +6,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.setting.b.f;
+import com.tencent.mm.plugin.setting.b.g;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class PluginEmptyTextPreference
   extends Preference
 {
   private Context context;
-  private TextView gyt;
+  private TextView jiw;
   private String text;
   
-  public PluginEmptyTextPreference(Context paramContext)
+  public PluginEmptyTextPreference(Context paramContext, int paramInt)
   {
     this(paramContext, null, 0);
-    AppMethodBeat.i(73906);
-    this.text = paramContext.getString(2131765537);
-    AppMethodBeat.o(73906);
+    AppMethodBeat.i(263852);
+    this.text = paramContext.getString(paramInt);
+    AppMethodBeat.o(263852);
   }
   
   public PluginEmptyTextPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(73907);
-    this.gyt = null;
+    this.jiw = null;
     this.context = paramContext;
-    setLayoutResource(2131495934);
+    setLayoutResource(b.g.plugin_text2_preference);
     AppMethodBeat.o(73907);
   }
   
@@ -37,8 +39,8 @@ public final class PluginEmptyTextPreference
   {
     AppMethodBeat.i(73909);
     super.onBindView(paramView);
-    this.gyt = ((TextView)paramView.findViewById(2131300110));
-    this.gyt.setText(this.text);
+    this.jiw = ((TextView)paramView.findViewById(b.f.empty_tv));
+    this.jiw.setText(this.text);
     AppMethodBeat.o(73909);
   }
   
@@ -46,7 +48,7 @@ public final class PluginEmptyTextPreference
   {
     AppMethodBeat.i(73908);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    View.inflate(this.context, 2131495934, null);
+    View.inflate(this.context, b.g.plugin_text2_preference, null);
     AppMethodBeat.o(73908);
     return paramViewGroup;
   }

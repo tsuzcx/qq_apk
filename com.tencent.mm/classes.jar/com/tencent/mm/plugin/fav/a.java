@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.fav;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.b;
-import com.tencent.mm.g.a.hb;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.b;
+import com.tencent.mm.f.a.hi;
 import com.tencent.mm.plugin.fav.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.p;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
 
 public final class a
-  implements p
+  implements s
 {
   public final h.b a(String paramString, Map<String, String> paramMap, h.a parama)
   {
@@ -41,24 +41,24 @@ public final class a
       }
       i = 1;
       break;
-      paramString = new hb();
-      paramString.dLm.type = 38;
-      paramString.dLm.dLv = ((String)paramMap.get(".sysmsg.favids"));
+      paramString = new hi();
+      paramString.fEb.type = 38;
+      paramString.fEb.fEk = ((String)paramMap.get(".sysmsg.favids"));
       EventCenter.instance.asyncPublish(paramString, Looper.getMainLooper());
-      h.HT(1);
+      h.LD(1);
       continue;
-      paramString = new hb();
-      paramString.dLm.type = 39;
-      paramString.dLm.dLv = ((String)paramMap.get(".sysmsg.favitem.favid"));
-      paramString.dLm.dLw = ((String)paramMap.get(".sysmsg.favitem.dataidlist"));
+      paramString = new hi();
+      paramString.fEb.type = 39;
+      paramString.fEb.fEk = ((String)paramMap.get(".sysmsg.favitem.favid"));
+      paramString.fEb.fEl = ((String)paramMap.get(".sysmsg.favitem.dataidlist"));
       EventCenter.instance.asyncPublish(paramString, Looper.getMainLooper());
-      h.HT(0);
+      h.LD(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a
  * JD-Core Version:    0.7.0.1
  */

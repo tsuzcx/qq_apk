@@ -4,22 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public boolean kvA;
-  public int kvB;
-  public String kvC;
-  public int kvD;
-  public int kvE;
-  public boolean kvF;
-  public int kvG;
-  public boolean kvH;
-  public String kvy;
-  public long kvz;
+  public String nnJ;
+  public long nnK;
+  public boolean nnL;
+  public int nnM;
+  public String nnN;
+  public int nnO;
+  public int nnP;
+  public boolean nnQ;
+  public int nnR;
+  public boolean nnS;
   
   public final String toString()
   {
-    AppMethodBeat.i(238856);
-    String str = "AiFinderAtOnceStruct{lastSessionId='" + this.kvy + '\'' + ", friendsTabRedDot=" + this.kvA + ", friendsTabRedUnread=" + this.kvB + ", finderRedDotTipsId='" + this.kvC + '\'' + ", finderRedDotCtrlType=" + this.kvD + ", finderRedDotShowType=" + this.kvE + ", snsRedDot=" + this.kvF + ", snsUnread=" + this.kvG + ", topStoryRedDot=" + this.kvH + '}';
-    AppMethodBeat.o(238856);
+    AppMethodBeat.i(240299);
+    String str = "AiFinderAtOnceStruct{lastSessionId='" + this.nnJ + '\'' + ", friendsTabRedDot=" + this.nnL + ", friendsTabRedUnread=" + this.nnM + ", finderRedDotTipsId='" + this.nnN + '\'' + ", finderRedDotCtrlType=" + this.nnO + ", finderRedDotShowType=" + this.nnP + ", snsRedDot=" + this.nnQ + ", snsUnread=" + this.nnR + ", topStoryRedDot=" + this.nnS + '}';
+    AppMethodBeat.o(240299);
     return str;
   }
 }

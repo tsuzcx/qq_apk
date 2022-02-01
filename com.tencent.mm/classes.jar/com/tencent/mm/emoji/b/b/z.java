@@ -2,10 +2,17 @@ package com.tencent.mm.emoji.b.b;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/model/panel/PanelDataListener;", "Lcom/tencent/mm/emoji/model/panel/GroupDataListener;", "Lcom/tencent/mm/emoji/model/panel/DataUpdateListener;", "Lcom/tencent/mm/emoji/model/panel/TabDataListener;", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/model/panel/ItemsDataListener;", "", "onGroupItemsChange", "", "start", "", "count", "onGroupItemsInsert", "onGroupItemsMoved", "from", "to", "onGroupItemsRemove", "plugin-emojisdk_release"})
 public abstract interface z
-  extends an, g, r
-{}
+{
+  public abstract void cX(int paramInt1, int paramInt2);
+  
+  public abstract void cY(int paramInt1, int paramInt2);
+  
+  public abstract void cZ(int paramInt1, int paramInt2);
+  
+  public abstract void da(int paramInt1, int paramInt2);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

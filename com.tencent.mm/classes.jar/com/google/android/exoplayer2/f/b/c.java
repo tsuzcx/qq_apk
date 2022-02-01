@@ -7,36 +7,36 @@ import java.util.List;
 final class c
   implements d
 {
-  private final List<a> bAF;
+  private final List<a> bkh;
   
   public c(List<a> paramList)
   {
-    this.bAF = paramList;
+    this.bkh = paramList;
   }
   
-  public final int ai(long paramLong)
+  public final int al(long paramLong)
   {
     return -1;
   }
   
-  public final List<a> aj(long paramLong)
+  public final List<a> am(long paramLong)
   {
-    return this.bAF;
+    return this.bkh;
   }
   
-  public final long eH(int paramInt)
+  public final long eX(int paramInt)
   {
     return 0L;
   }
   
-  public final int wa()
+  public final int ua()
   {
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.b.c
  * JD-Core Version:    0.7.0.1
  */

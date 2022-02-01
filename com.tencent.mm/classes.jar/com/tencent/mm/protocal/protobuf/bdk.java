@@ -1,82 +1,100 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class bdk
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int LNj;
-  public FinderContact contact;
+  public boolean SOt;
+  public String SOu;
+  public boolean SOv;
+  public boolean SOw;
+  public int SrY;
+  public String appid;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209698);
+    AppMethodBeat.i(230230);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.contact != null)
-      {
-        paramVarArgs.ni(1, this.contact.computeSize());
-        this.contact.writeFields(paramVarArgs);
+      if (this.appid != null) {
+        paramVarArgs.f(1, this.appid);
       }
-      paramVarArgs.aM(2, this.LNj);
-      AppMethodBeat.o(209698);
+      paramVarArgs.co(2, this.SOt);
+      if (this.SOu != null) {
+        paramVarArgs.f(3, this.SOu);
+      }
+      paramVarArgs.co(4, this.SOv);
+      paramVarArgs.co(5, this.SOw);
+      paramVarArgs.aY(6, this.SrY);
+      AppMethodBeat.o(230230);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.contact == null) {
-        break label354;
+      if (this.appid == null) {
+        break label450;
       }
     }
-    label354:
-    for (paramInt = g.a.a.a.nh(1, this.contact.computeSize()) + 0;; paramInt = 0)
+    label450:
+    for (paramInt = g.a.a.b.b.a.g(1, this.appid) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bu(2, this.LNj);
-      AppMethodBeat.o(209698);
-      return paramInt + i;
+      int i = paramInt + (g.a.a.b.b.a.gL(2) + 1);
+      paramInt = i;
+      if (this.SOu != null) {
+        paramInt = i + g.a.a.b.b.a.g(3, this.SOu);
+      }
+      i = g.a.a.b.b.a.gL(4);
+      int j = g.a.a.b.b.a.gL(5);
+      int k = g.a.a.b.b.a.bM(6, this.SrY);
+      AppMethodBeat.o(230230);
+      return paramInt + (i + 1) + (j + 1) + k;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(209698);
+        AppMethodBeat.o(230230);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         bdk localbdk = (bdk)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(209698);
+          AppMethodBeat.o(230230);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new FinderContact();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((FinderContact)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localbdk.contact = ((FinderContact)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(209698);
+          localbdk.appid = locala.abFh.readString();
+          AppMethodBeat.o(230230);
+          return 0;
+        case 2: 
+          localbdk.SOt = locala.abFh.AB();
+          AppMethodBeat.o(230230);
+          return 0;
+        case 3: 
+          localbdk.SOu = locala.abFh.readString();
+          AppMethodBeat.o(230230);
+          return 0;
+        case 4: 
+          localbdk.SOv = locala.abFh.AB();
+          AppMethodBeat.o(230230);
+          return 0;
+        case 5: 
+          localbdk.SOw = locala.abFh.AB();
+          AppMethodBeat.o(230230);
           return 0;
         }
-        localbdk.LNj = ((g.a.a.a.a)localObject1).UbS.zi();
-        AppMethodBeat.o(209698);
+        localbdk.SrY = locala.abFh.AK();
+        AppMethodBeat.o(230230);
         return 0;
       }
-      AppMethodBeat.o(209698);
+      AppMethodBeat.o(230230);
       return -1;
     }
   }

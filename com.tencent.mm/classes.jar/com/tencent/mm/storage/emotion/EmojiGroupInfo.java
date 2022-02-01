@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bi;
-import com.tencent.mm.protocal.protobuf.EmotionSummary;
+import com.tencent.mm.f.c.bi;
+import com.tencent.mm.protocal.protobuf.akh;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -15,15 +15,15 @@ public class EmojiGroupInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<EmojiGroupInfo> CREATOR;
-  public static int TYPE_CUSTOM;
-  public static int TYPE_SYSTEM;
-  public static int Uuj;
-  public static int Uuk;
-  public static int Uul;
-  public static int Uum;
-  public static int Uun;
-  public static int Uuo;
-  public static int Uup;
+  public static int YCp;
+  public static int YCq;
+  public static int YCr;
+  public static int YCs;
+  public static int YCt;
+  public static int YCu;
+  public static int YCv;
+  public static int YCw;
+  public static int YCx;
   protected static IAutoDBItem.MAutoDBInfo info;
   
   static
@@ -152,16 +152,16 @@ public class EmojiGroupInfo
     localMAutoDBInfo.columns[29] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
     info = localMAutoDBInfo;
-    TYPE_SYSTEM = 1;
-    Uuj = 2;
-    TYPE_CUSTOM = 3;
-    Uuk = 4;
-    Uul = 256;
-    Uum = 17;
-    Uun = 18;
-    Uuo = 81;
-    Uup = 65;
-    CREATOR = new EmojiGroupInfo.1();
+    YCp = 1;
+    YCq = 2;
+    YCr = 3;
+    YCs = 4;
+    YCt = 256;
+    YCu = 17;
+    YCv = 18;
+    YCw = 81;
+    YCx = 65;
+    CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(104983);
   }
   
@@ -203,14 +203,14 @@ public class EmojiGroupInfo
     AppMethodBeat.o(104982);
   }
   
-  public final String beq()
-  {
-    return this.field_packName;
-  }
-  
-  public final void bxl(String paramString)
+  public final void bIQ(String paramString)
   {
     this.field_packName = paramString;
+  }
+  
+  public final String bnP()
+  {
+    return this.field_packName;
   }
   
   public int describeContents()
@@ -223,35 +223,35 @@ public class EmojiGroupInfo
     return info;
   }
   
-  public final String hRu()
+  public final String hBl()
   {
     return this.field_productID;
   }
   
-  public final String hRv()
+  public final String hBm()
   {
     return this.field_packGrayIconUrl;
   }
   
-  public final EmotionSummary hRw()
+  public final akh hBn()
   {
     AppMethodBeat.i(104979);
-    EmotionSummary localEmotionSummary = new EmotionSummary();
-    localEmotionSummary.ProductID = this.field_productID;
-    localEmotionSummary.IconUrl = this.field_packIconUrl;
-    localEmotionSummary.PackName = this.field_packName;
-    localEmotionSummary.PackDesc = this.field_packDesc;
-    localEmotionSummary.PackAuthInfo = this.field_packAuthInfo;
-    localEmotionSummary.PackPrice = this.field_packPrice;
-    localEmotionSummary.PackType = this.field_packType;
-    localEmotionSummary.PackFlag = this.field_packFlag;
-    localEmotionSummary.CoverUrl = this.field_packCoverUrl;
-    localEmotionSummary.PackExpire = ((int)this.field_packExpire);
-    localEmotionSummary.PackCopyright = this.field_packCopyright;
-    localEmotionSummary.Timestamp = ((int)this.field_packTimeStamp);
-    localEmotionSummary.PriceNum = this.field_packPrice;
+    akh localakh = new akh();
+    localakh.ProductID = this.field_productID;
+    localakh.CNj = this.field_packGrayIconUrl;
+    localakh.Suv = this.field_packName;
+    localakh.Tev = this.field_packDesc;
+    localakh.Tew = this.field_packAuthInfo;
+    localakh.Tex = this.field_packPrice;
+    localakh.Tey = this.field_packType;
+    localakh.TOG = this.field_packFlag;
+    localakh.Ufx = this.field_packCoverUrl;
+    localakh.Vdr = ((int)this.field_packExpire);
+    localakh.VHB = this.field_packCopyright;
+    localakh.Svi = ((int)this.field_packTimeStamp);
+    localakh.VHC = this.field_packPrice;
     AppMethodBeat.o(104979);
-    return localEmotionSummary;
+    return localakh;
   }
   
   public final void setProductID(String paramString)
@@ -330,7 +330,7 @@ public class EmojiGroupInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.EmojiGroupInfo
  * JD-Core Version:    0.7.0.1
  */

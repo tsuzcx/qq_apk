@@ -1,128 +1,87 @@
 package com.tencent.mm.plugin.nearby.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.lo;
-import com.tencent.mm.g.a.ls;
-import com.tencent.mm.g.a.lt;
-import com.tencent.mm.g.a.lt.a;
-import com.tencent.mm.g.a.lu;
-import com.tencent.mm.g.a.my;
-import com.tencent.mm.g.a.ng;
-import com.tencent.mm.g.a.nh;
-import com.tencent.mm.g.a.ps;
-import com.tencent.mm.g.a.xi;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.bp.b;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.pluginsdk.c.c;
-import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.an.t;
+import com.tencent.mm.f.a.mf;
+import com.tencent.mm.f.a.ml;
+import com.tencent.mm.f.a.nq;
+import com.tencent.mm.f.a.ny;
+import com.tencent.mm.f.a.nz;
+import com.tencent.mm.f.a.qq;
+import com.tencent.mm.f.a.yp;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.messenger.foundation.a.a.g;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.pluginsdk.d.d;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.event.IListener;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.MStorage;
-import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
 import com.tencent.mm.storage.bv.a;
-import com.tencent.mm.storage.bx;
-import com.tencent.mm.storage.by;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class f
-  implements bd
+  implements be
 {
-  c<ng> AzA;
-  c<nh> AzB;
-  d AzC;
-  private bv.a AzD;
-  private IListener<ps> AzE;
-  private IListener<my> AzF;
-  private IListener Azy;
-  private IListener Azz;
-  private IListener grk;
+  private IListener GsB;
+  private IListener GsC;
+  com.tencent.mm.pluginsdk.d.c<ny> GsD;
+  com.tencent.mm.pluginsdk.d.c<nz> GsE;
+  d GsF;
+  private bv.a GsG;
+  private IListener<qq> GsH;
+  private IListener<nq> GsI;
+  private IListener iVt;
   
   public f()
   {
     AppMethodBeat.i(89793);
-    this.Azy = new IListener()
+    this.GsB = new f.1(this);
+    this.GsC = new IListener() {};
+    this.GsD = new com.tencent.mm.pluginsdk.d.c()
     {
-      private static boolean a(lt paramAnonymouslt)
+      public final int arZ()
       {
-        int i = 3;
-        AppMethodBeat.i(89776);
-        Object localObject = paramAnonymouslt.dRf.dRg;
-        paramAnonymouslt = paramAnonymouslt.dRf.dCM;
-        if ((((bp.b)localObject).iEw != null) && (((bp.b)localObject).scene == 1))
-        {
-          com.tencent.mm.kernel.g.aAh().azQ().set(73729, Integer.valueOf(1));
-          bx localbx = new bx();
-          localbx.field_content = paramAnonymouslt.field_content;
-          localbx.field_createtime = Util.nowSecond();
-          localbx.field_imgpath = "";
-          localbx.field_sayhicontent = MMApplicationContext.getContext().getString(2131763490);
-          localbx.field_sayhiuser = paramAnonymouslt.field_talker;
-          localbx.field_scene = 18;
-          if (paramAnonymouslt.field_status > 3) {
-            i = paramAnonymouslt.field_status;
-          }
-          localbx.field_status = i;
-          localbx.field_svrid = paramAnonymouslt.field_msgSvrId;
-          localbx.field_talker = paramAnonymouslt.field_talker;
-          localbx.field_type = 34;
-          localbx.field_isSend = 0;
-          localbx.field_sayhiencryptuser = paramAnonymouslt.field_talker;
-          localbx.field_ticket = ((bp.b)localObject).iEw;
-          com.tencent.mm.kernel.g.aAf().azk();
-          ((by)((l)com.tencent.mm.kernel.g.af(l.class)).eiv()).a(localbx);
-          localObject = new ls();
-          ((ls)localObject).dRd.dRe = paramAnonymouslt.field_talker;
-          EventCenter.instance.publish((IEvent)localObject);
-        }
-        AppMethodBeat.o(89776);
-        return false;
+        return 148;
       }
     };
-    this.Azz = new IListener() {};
-    this.AzA = new f.3(this);
-    this.AzB = new c()
+    this.GsE = new com.tencent.mm.pluginsdk.d.c()
     {
-      public final int alY()
+      public final int arZ()
       {
         return 377;
       }
     };
-    this.grk = new IListener() {};
-    this.AzC = new d()
+    this.iVt = new IListener() {};
+    this.GsF = new d()
     {
-      public final IEvent azl(String paramAnonymousString)
+      public final IEvent aIL(String paramAnonymousString)
       {
         AppMethodBeat.i(89786);
-        lo locallo = new lo();
-        locallo.dQS.event = paramAnonymousString;
+        mf localmf = new mf();
+        localmf.fKi.event = paramAnonymousString;
         AppMethodBeat.o(89786);
-        return locallo;
+        return localmf;
       }
       
-      public final MStorage dSG()
+      public final MStorage evj()
       {
         AppMethodBeat.i(89787);
-        com.tencent.mm.kernel.g.aAf().azk();
-        MStorage localMStorage = (MStorage)((l)com.tencent.mm.kernel.g.af(l.class)).eiv();
+        h.aHE().aGH();
+        MStorage localMStorage = (MStorage)((n)h.ae(n.class)).eSb();
         AppMethodBeat.o(89787);
         return localMStorage;
       }
     };
-    this.AzD = new bv.a()
+    this.GsG = new bv.a()
     {
-      public final as Kn(String paramAnonymousString)
+      public final as RG(String paramAnonymousString)
       {
         return null;
       }
@@ -130,10 +89,10 @@ public final class f
       public final void a(bv paramAnonymousbv, as paramAnonymousas)
       {
         AppMethodBeat.i(89788);
-        if ((paramAnonymousbv != null) && (paramAnonymousas != null) && (paramAnonymousas.ary()))
+        if ((paramAnonymousbv != null) && (paramAnonymousas != null) && (paramAnonymousas.ayc()))
         {
-          com.tencent.mm.kernel.g.aAf().azk();
-          ((l)com.tencent.mm.kernel.g.af(l.class)).eiv().aEq(paramAnonymousas.field_username);
+          h.aHE().aGH();
+          ((n)h.ae(n.class)).eSb().aOA(paramAnonymousas.field_username);
         }
         AppMethodBeat.o(89788);
       }
@@ -143,27 +102,18 @@ public final class f
         return 0;
       }
     };
-    this.AzE = new IListener()
-    {
-      private static boolean bet()
-      {
-        AppMethodBeat.i(89789);
-        f.ewU();
-        AppMethodBeat.o(89789);
-        return false;
-      }
-    };
-    this.AzF = new IListener()
-    {
-      private static boolean ewV()
-      {
-        AppMethodBeat.i(89791);
-        f.ewU();
-        AppMethodBeat.o(89791);
-        return false;
-      }
-    };
+    this.GsH = new IListener() {};
+    this.GsI = new IListener() {};
     AppMethodBeat.o(89793);
+  }
+  
+  public static void fix()
+  {
+    AppMethodBeat.i(232258);
+    h.aHE().aGH();
+    ((n)h.ae(n.class)).eSb().bJQ();
+    h.aGY().a(new c(2, 0.0F, 0.0F, 0, 0, "", ""), 0);
+    AppMethodBeat.o(232258);
   }
   
   public final void clearPluginData(int paramInt) {}
@@ -176,28 +126,28 @@ public final class f
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(89795);
-    ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().a(this.AzD);
-    this.AzF.alive();
-    this.AzE.alive();
-    EventCenter.instance.addListener(this.grk);
-    EventCenter.instance.addListener(this.Azz);
-    EventCenter.instance.addListener(this.AzA);
-    EventCenter.instance.addListener(this.AzB);
-    this.Azy.alive();
+    ((n)h.ae(n.class)).bbL().a(this.GsG);
+    this.GsI.alive();
+    this.GsH.alive();
+    EventCenter.instance.addListener(this.iVt);
+    EventCenter.instance.addListener(this.GsC);
+    EventCenter.instance.addListener(this.GsD);
+    EventCenter.instance.addListener(this.GsE);
+    this.GsB.alive();
     AppMethodBeat.o(89795);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(89794);
-    ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().b(this.AzD);
-    this.AzF.alive();
-    this.AzE.dead();
-    EventCenter.instance.removeListener(this.Azz);
-    EventCenter.instance.removeListener(this.grk);
-    EventCenter.instance.removeListener(this.AzA);
-    EventCenter.instance.removeListener(this.AzB);
-    this.Azy.dead();
+    ((n)h.ae(n.class)).bbL().b(this.GsG);
+    this.GsI.alive();
+    this.GsH.dead();
+    EventCenter.instance.removeListener(this.GsC);
+    EventCenter.instance.removeListener(this.iVt);
+    EventCenter.instance.removeListener(this.GsD);
+    EventCenter.instance.removeListener(this.GsE);
+    this.GsB.dead();
     AppMethodBeat.o(89794);
   }
   
@@ -205,7 +155,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.a.f
  * JD-Core Version:    0.7.0.1
  */

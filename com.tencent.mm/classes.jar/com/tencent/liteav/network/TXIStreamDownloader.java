@@ -2,7 +2,7 @@ package com.tencent.liteav.network;
 
 import android.content.Context;
 import android.os.Bundle;
-import com.tencent.liteav.basic.b.b;
+import com.tencent.liteav.basic.c.b;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
 import com.tencent.liteav.basic.structs.a;
 import java.util.HashMap;
@@ -211,7 +211,7 @@ public abstract class TXIStreamDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.network.TXIStreamDownloader
  * JD-Core Version:    0.7.0.1
  */

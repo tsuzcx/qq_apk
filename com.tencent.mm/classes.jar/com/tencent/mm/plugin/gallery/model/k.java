@@ -5,28 +5,32 @@ import android.content.Context;
 import android.database.Cursor;
 import android.provider.MediaStore.Images.Media;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.gallery.a.d;
+import com.tencent.mm.plugin.gallery.a.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 
 public final class k
   extends b
 {
-  protected ContentResolver bEK;
+  protected ContentResolver bon;
   
   public k()
   {
     AppMethodBeat.i(111331);
-    this.bEK = MMApplicationContext.getContext().getContentResolver();
+    this.bon = MMApplicationContext.getContext().getContentResolver();
     AppMethodBeat.o(111331);
   }
   
   public final LinkedList<GalleryItem.MediaItem> a(String paramString, int paramInt, i.c paramc, long paramLong)
   {
     AppMethodBeat.i(111337);
-    this.ifz = false;
+    this.kUn = false;
     LinkedList localLinkedList = new LinkedList();
     for (;;)
     {
@@ -34,7 +38,7 @@ public final class k
       {
         if (Util.isNullOrNil(paramString))
         {
-          localCursor1 = this.bEK.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, getProjection(), b(this.xhJ, false), null, pw(false));
+          localCursor1 = this.bon.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, esT(), b(this.BTW, false), null, rR(false));
           localObject1 = localCursor1;
         }
       }
@@ -52,7 +56,7 @@ public final class k
       }
       try
       {
-        localCursor2 = this.bEK.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, getProjection(), b(this.xhJ, true), null, pw(true));
+        localCursor2 = this.bon.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, esT(), b(this.BTW, true), null, rR(true));
         if (localCursor1 == null) {}
       }
       finally
@@ -98,14 +102,14 @@ public final class k
         if (localMediaItem == null) {
           continue;
         }
-        if (((GalleryItem.MediaItem)localObject1).xja > localMediaItem.xja)
+        if (((GalleryItem.MediaItem)localObject1).BVm > localMediaItem.BVm)
         {
           localLinkedList.add(localObject1);
           localCursor2.moveToNext();
           localObject2 = localMediaItem;
-          break label959;
+          break label955;
           localMediaItem = b(localCursor1, 1);
-          break label974;
+          break label970;
           localObject1 = b(localCursor2, 1);
           bool1 = bool2;
           if (a(paramc, localLinkedList, paramLong, bool2))
@@ -115,9 +119,9 @@ public final class k
               bool1 = false;
             }
           }
-          bool2 = this.ifz;
+          bool2 = this.kUn;
           if (!bool2) {
-            break label949;
+            break label945;
           }
           if (localCursor1 != null) {
             localCursor1.close();
@@ -127,11 +131,11 @@ public final class k
           }
           AppMethodBeat.o(111337);
           return localLinkedList;
-          localCursor1 = this.bEK.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, getProjection(), bF(paramString, false), null, pw(false));
+          localCursor1 = this.bon.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, esT(), bK(paramString, false), null, rR(false));
           localObject1 = localCursor1;
-          localCursor2 = this.bEK.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, getProjection(), bF(paramString, true), null, pw(true));
+          localCursor2 = this.bon.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, esT(), bK(paramString, true), null, rR(true));
         }
-        else if (((GalleryItem.MediaItem)localObject1).xja < localMediaItem.xja)
+        else if (((GalleryItem.MediaItem)localObject1).BVm < localMediaItem.BVm)
         {
           localLinkedList.add(localMediaItem);
           localCursor1.moveToNext();
@@ -165,7 +169,7 @@ public final class k
     localObject2 = localMediaItem;
     if (localObject4 != null)
     {
-      if ((localObject3 != null) && (localObject3.xja > ((GalleryItem.MediaItem)localObject4).xja))
+      if ((localObject3 != null) && (localObject3.BVm > ((GalleryItem.MediaItem)localObject4).BVm))
       {
         localLinkedList.add(localObject3);
         localLinkedList.add(localObject4);
@@ -183,7 +187,7 @@ public final class k
             bool2 = false;
           }
         }
-        bool1 = this.ifz;
+        bool1 = this.kUn;
         if (!bool1) {
           break;
         }
@@ -200,7 +204,7 @@ public final class k
     }
     if (localObject2 != null)
     {
-      if ((localObject1 != null) && (((GalleryItem.MediaItem)localObject1).xja > ((GalleryItem.MediaItem)localObject2).xja))
+      if ((localObject1 != null) && (((GalleryItem.MediaItem)localObject1).BVm > ((GalleryItem.MediaItem)localObject2).BVm))
       {
         localLinkedList.add(localObject1);
         localLinkedList.add(localObject2);
@@ -218,7 +222,7 @@ public final class k
             bool1 = false;
           }
         }
-        boolean bool3 = this.ifz;
+        boolean bool3 = this.kUn;
         bool2 = bool1;
         if (!bool3) {
           break;
@@ -237,9 +241,7 @@ public final class k
     if (localObject1 != null) {
       localLinkedList.add(localObject1);
     }
-    if (paramc != null) {
-      paramc.b(localLinkedList, paramLong, bool2);
-    }
+    paramc.b(localLinkedList, paramLong, bool2);
     Log.i("MicroMsg.ImageMediaQuery", "[queryMediaItemsInAlbum] albumName:%s type:%s result:%s ticket:%s", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(localLinkedList.size()), Long.valueOf(paramLong) });
     if (localCursor1 != null) {
       localCursor1.close();
@@ -251,6 +253,243 @@ public final class k
     return localLinkedList;
   }
   
+  /* Error */
+  public final int aIp(String paramString)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 9
+    //   3: aconst_null
+    //   4: astore 8
+    //   6: aconst_null
+    //   7: astore 7
+    //   9: aconst_null
+    //   10: astore 4
+    //   12: iconst_0
+    //   13: istore_3
+    //   14: ldc 158
+    //   16: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   19: aload_1
+    //   20: invokestatic 164	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   23: ifeq +16 -> 39
+    //   26: aload_0
+    //   27: aload_1
+    //   28: invokespecial 166	com/tencent/mm/plugin/gallery/model/b:aIp	(Ljava/lang/String;)I
+    //   31: istore_2
+    //   32: ldc 158
+    //   34: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   37: iload_2
+    //   38: ireturn
+    //   39: aload_0
+    //   40: getfield 31	com/tencent/mm/plugin/gallery/model/k:bon	Landroid/content/ContentResolver;
+    //   43: getstatic 57	android/provider/MediaStore$Images$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
+    //   46: aload_0
+    //   47: invokevirtual 61	com/tencent/mm/plugin/gallery/model/k:esT	()[Ljava/lang/String;
+    //   50: aload_0
+    //   51: aload_1
+    //   52: iconst_0
+    //   53: invokevirtual 134	com/tencent/mm/plugin/gallery/model/k:bK	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   56: aconst_null
+    //   57: aload_0
+    //   58: iconst_0
+    //   59: invokevirtual 73	com/tencent/mm/plugin/gallery/model/k:rR	(Z)Ljava/lang/String;
+    //   62: invokevirtual 79	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   65: astore 5
+    //   67: aload 5
+    //   69: ifnull +123 -> 192
+    //   72: aload 5
+    //   74: astore 6
+    //   76: aload 5
+    //   78: invokeinterface 91 1 0
+    //   83: istore_2
+    //   84: iload_2
+    //   85: iconst_0
+    //   86: iadd
+    //   87: istore_2
+    //   88: aload 5
+    //   90: ifnull +287 -> 377
+    //   93: aload 5
+    //   95: invokeinterface 130 1 0
+    //   100: aload 9
+    //   102: astore 5
+    //   104: aload 8
+    //   106: astore 4
+    //   108: aload 7
+    //   110: astore 6
+    //   112: aload_0
+    //   113: getfield 31	com/tencent/mm/plugin/gallery/model/k:bon	Landroid/content/ContentResolver;
+    //   116: getstatic 57	android/provider/MediaStore$Images$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
+    //   119: aload_0
+    //   120: invokevirtual 61	com/tencent/mm/plugin/gallery/model/k:esT	()[Ljava/lang/String;
+    //   123: aload_0
+    //   124: aload_1
+    //   125: iconst_1
+    //   126: invokevirtual 134	com/tencent/mm/plugin/gallery/model/k:bK	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   129: aconst_null
+    //   130: aload_0
+    //   131: iconst_1
+    //   132: invokevirtual 73	com/tencent/mm/plugin/gallery/model/k:rR	(Z)Ljava/lang/String;
+    //   135: invokevirtual 79	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   138: astore 7
+    //   140: aload 7
+    //   142: ifnull +124 -> 266
+    //   145: aload 7
+    //   147: astore 5
+    //   149: aload 7
+    //   151: astore 4
+    //   153: aload 7
+    //   155: astore 6
+    //   157: aload 7
+    //   159: invokeinterface 91 1 0
+    //   164: istore_3
+    //   165: iload_2
+    //   166: iload_3
+    //   167: iadd
+    //   168: istore_2
+    //   169: iload_2
+    //   170: istore_3
+    //   171: aload 7
+    //   173: ifnull +12 -> 185
+    //   176: aload 7
+    //   178: invokeinterface 130 1 0
+    //   183: iload_2
+    //   184: istore_3
+    //   185: ldc 158
+    //   187: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   190: iload_3
+    //   191: ireturn
+    //   192: aload 5
+    //   194: astore 6
+    //   196: aload_0
+    //   197: aload_1
+    //   198: invokespecial 166	com/tencent/mm/plugin/gallery/model/b:aIp	(Ljava/lang/String;)I
+    //   201: istore_2
+    //   202: goto -118 -> 84
+    //   205: astore 4
+    //   207: aconst_null
+    //   208: astore 5
+    //   210: aload 5
+    //   212: astore 6
+    //   214: ldc 81
+    //   216: aload 4
+    //   218: ldc 168
+    //   220: iconst_0
+    //   221: anewarray 85	java/lang/Object
+    //   224: invokestatic 172	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   227: iload_3
+    //   228: istore_2
+    //   229: aload 5
+    //   231: ifnull -131 -> 100
+    //   234: aload 5
+    //   236: invokeinterface 130 1 0
+    //   241: iload_3
+    //   242: istore_2
+    //   243: goto -143 -> 100
+    //   246: astore_1
+    //   247: aload 4
+    //   249: ifnull +10 -> 259
+    //   252: aload 4
+    //   254: invokeinterface 130 1 0
+    //   259: ldc 158
+    //   261: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   264: aload_1
+    //   265: athrow
+    //   266: aload 7
+    //   268: astore 5
+    //   270: aload 7
+    //   272: astore 4
+    //   274: aload 7
+    //   276: astore 6
+    //   278: aload_0
+    //   279: aload_1
+    //   280: invokespecial 166	com/tencent/mm/plugin/gallery/model/b:aIp	(Ljava/lang/String;)I
+    //   283: istore_3
+    //   284: goto -119 -> 165
+    //   287: astore_1
+    //   288: aload 5
+    //   290: astore 4
+    //   292: ldc 81
+    //   294: aload_1
+    //   295: ldc 168
+    //   297: iconst_0
+    //   298: anewarray 85	java/lang/Object
+    //   301: invokestatic 172	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   304: iload_2
+    //   305: istore_3
+    //   306: aload 5
+    //   308: ifnull -123 -> 185
+    //   311: aload 5
+    //   313: invokeinterface 130 1 0
+    //   318: iload_2
+    //   319: istore_3
+    //   320: goto -135 -> 185
+    //   323: astore_1
+    //   324: aload 4
+    //   326: ifnull +10 -> 336
+    //   329: aload 4
+    //   331: invokeinterface 130 1 0
+    //   336: ldc 158
+    //   338: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   341: aload_1
+    //   342: athrow
+    //   343: astore_1
+    //   344: aload 6
+    //   346: astore 5
+    //   348: goto -60 -> 288
+    //   351: astore_1
+    //   352: aload 6
+    //   354: astore 4
+    //   356: goto -109 -> 247
+    //   359: astore 4
+    //   361: goto -151 -> 210
+    //   364: astore 4
+    //   366: aconst_null
+    //   367: astore 5
+    //   369: goto -159 -> 210
+    //   372: astore 4
+    //   374: goto -164 -> 210
+    //   377: goto -277 -> 100
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	380	0	this	k
+    //   0	380	1	paramString	String
+    //   31	288	2	i	int
+    //   13	307	3	j	int
+    //   10	142	4	localObject1	Object
+    //   205	48	4	localNullPointerException1	java.lang.NullPointerException
+    //   272	83	4	localObject2	Object
+    //   359	1	4	localNullPointerException2	java.lang.NullPointerException
+    //   364	1	4	localSQLiteDiskIOException1	android.database.sqlite.SQLiteDiskIOException
+    //   372	1	4	localSQLiteDiskIOException2	android.database.sqlite.SQLiteDiskIOException
+    //   65	303	5	localObject3	Object
+    //   74	279	6	localObject4	Object
+    //   7	268	7	localCursor	Cursor
+    //   4	101	8	localObject5	Object
+    //   1	100	9	localObject6	Object
+    // Exception table:
+    //   from	to	target	type
+    //   39	67	205	java/lang/NullPointerException
+    //   39	67	246	finally
+    //   112	140	287	java/lang/NullPointerException
+    //   157	165	287	java/lang/NullPointerException
+    //   278	284	287	java/lang/NullPointerException
+    //   112	140	323	finally
+    //   157	165	323	finally
+    //   278	284	323	finally
+    //   292	304	323	finally
+    //   112	140	343	android/database/sqlite/SQLiteDiskIOException
+    //   157	165	343	android/database/sqlite/SQLiteDiskIOException
+    //   278	284	343	android/database/sqlite/SQLiteDiskIOException
+    //   76	84	351	finally
+    //   196	202	351	finally
+    //   214	227	351	finally
+    //   76	84	359	java/lang/NullPointerException
+    //   196	202	359	java/lang/NullPointerException
+    //   39	67	364	android/database/sqlite/SQLiteDiskIOException
+    //   76	84	372	android/database/sqlite/SQLiteDiskIOException
+    //   196	202	372	android/database/sqlite/SQLiteDiskIOException
+  }
+  
   public final String b(String[] paramArrayOfString, boolean paramBoolean)
   {
     AppMethodBeat.i(111333);
@@ -260,7 +499,7 @@ public final class k
     String str2;
     if (paramBoolean)
     {
-      str1 = "(" + b.xhK + ">2147483647 OR " + b.xhK + "<=0 ) AND (_size>10240";
+      str1 = "(" + b.BTX + ">2147483647 OR " + b.BTX + "<=0 ) AND (_size>10240";
       j = paramArrayOfString.length;
       i = 0;
       while (i < j)
@@ -275,7 +514,7 @@ public final class k
       Log.d("MicroMsg.ImageMediaQuery", "where %s", new Object[] { paramArrayOfString });
       AppMethodBeat.o(111333);
       return paramArrayOfString;
-      str1 = b.xhK + "<=2147483647 AND " + b.xhK + ">0 AND (_size>10240";
+      str1 = b.BTX + "<=2147483647 AND " + b.BTX + ">0 AND (_size>10240";
       j = paramArrayOfString.length;
       i = 0;
       while (i < j)
@@ -287,12 +526,12 @@ public final class k
     }
   }
   
-  public final String bF(String paramString, boolean paramBoolean)
+  public final String bK(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(111332);
     StringBuilder localStringBuilder = new StringBuilder("bucket_display_name='").append(paramString).append("' AND ");
     if (paramBoolean) {}
-    for (paramString = "(" + b.xhK + ">2147483647 OR " + b.xhK + "<=0 )";; paramString = b.xhK + "<=2147483647 AND " + b.xhK + ">0")
+    for (paramString = "(" + b.BTX + ">2147483647 OR " + b.BTX + "<=0 )";; paramString = b.BTX + "<=2147483647 AND " + b.BTX + ">0")
     {
       paramString = paramString;
       AppMethodBeat.o(111332);
@@ -300,204 +539,157 @@ public final class k
     }
   }
   
-  /* Error */
-  public final LinkedList<GalleryItem.AlbumItem> dQr()
+  public final LinkedList<GalleryItem.AlbumItem> esR()
   {
-    // Byte code:
-    //   0: ldc 207
-    //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 44	java/util/LinkedList
-    //   8: dup
-    //   9: invokespecial 45	java/util/LinkedList:<init>	()V
-    //   12: astore_3
-    //   13: aload_0
-    //   14: getfield 31	com/tencent/mm/plugin/gallery/model/k:bEK	Landroid/content/ContentResolver;
-    //   17: getstatic 57	android/provider/MediaStore$Images$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
-    //   20: aload_0
-    //   21: invokevirtual 210	com/tencent/mm/plugin/gallery/model/k:dQt	()[Ljava/lang/String;
-    //   24: aload_0
-    //   25: invokevirtual 213	com/tencent/mm/plugin/gallery/model/k:dQu	()Ljava/lang/String;
-    //   28: aconst_null
-    //   29: aload_0
-    //   30: invokevirtual 216	com/tencent/mm/plugin/gallery/model/k:dQv	()Ljava/lang/String;
-    //   33: invokevirtual 79	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   36: astore 4
-    //   38: aload 4
-    //   40: ifnull +71 -> 111
-    //   43: new 218	java/util/HashMap
-    //   46: dup
-    //   47: invokespecial 219	java/util/HashMap:<init>	()V
-    //   50: astore_1
-    //   51: aload 4
-    //   53: invokeinterface 106 1 0
-    //   58: ifeq +53 -> 111
-    //   61: aload 4
-    //   63: iconst_1
-    //   64: ldc 221
-    //   66: invokestatic 224	com/tencent/mm/plugin/gallery/model/k:a	(Landroid/database/Cursor;ILjava/lang/String;)Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;
-    //   69: astore_2
-    //   70: aload_2
-    //   71: ifnull +15 -> 86
-    //   74: aload_1
-    //   75: aload_2
-    //   76: getfield 229	com/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem:UpY	Ljava/lang/String;
-    //   79: aload_2
-    //   80: invokeinterface 235 3 0
-    //   85: pop
-    //   86: aload 4
-    //   88: invokeinterface 124 1 0
-    //   93: ifne -32 -> 61
-    //   96: aload_3
-    //   97: aload_1
-    //   98: invokeinterface 239 1 0
-    //   103: invokevirtual 243	java/util/LinkedList:addAll	(Ljava/util/Collection;)Z
-    //   106: pop
-    //   107: aload_3
-    //   108: invokestatic 247	com/tencent/mm/plugin/gallery/model/k:aK	(Ljava/util/LinkedList;)V
-    //   111: aload 4
-    //   113: ifnull +10 -> 123
-    //   116: aload 4
-    //   118: invokeinterface 130 1 0
-    //   123: ldc 207
-    //   125: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   128: aload_3
-    //   129: areturn
-    //   130: astore_2
-    //   131: ldc 207
-    //   133: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   136: aload_2
-    //   137: athrow
-    //   138: astore_1
-    //   139: aload 4
-    //   141: ifnull +14 -> 155
-    //   144: aload_2
-    //   145: ifnull +50 -> 195
-    //   148: aload 4
-    //   150: invokeinterface 130 1 0
-    //   155: ldc 207
-    //   157: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   160: aload_1
-    //   161: athrow
-    //   162: astore_1
-    //   163: ldc 81
-    //   165: ldc 249
-    //   167: iconst_1
-    //   168: anewarray 85	java/lang/Object
-    //   171: dup
-    //   172: iconst_0
-    //   173: aload_1
-    //   174: invokevirtual 252	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   177: aastore
-    //   178: invokestatic 255	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   181: goto -58 -> 123
-    //   184: astore 4
-    //   186: aload_2
-    //   187: aload 4
-    //   189: invokevirtual 259	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   192: goto -37 -> 155
-    //   195: aload 4
-    //   197: invokeinterface 130 1 0
-    //   202: goto -47 -> 155
-    //   205: astore_1
-    //   206: aconst_null
-    //   207: astore_2
-    //   208: goto -69 -> 139
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	211	0	this	k
-    //   50	48	1	localHashMap	java.util.HashMap
-    //   138	23	1	localObject1	Object
-    //   162	12	1	localException	java.lang.Exception
-    //   205	1	1	localObject2	Object
-    //   69	11	2	localAlbumItem	GalleryItem.AlbumItem
-    //   130	57	2	localThrowable1	java.lang.Throwable
-    //   207	1	2	localObject3	Object
-    //   12	117	3	localLinkedList	LinkedList
-    //   36	113	4	localCursor	Cursor
-    //   184	12	4	localThrowable2	java.lang.Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   43	61	130	java/lang/Throwable
-    //   61	70	130	java/lang/Throwable
-    //   74	86	130	java/lang/Throwable
-    //   86	111	130	java/lang/Throwable
-    //   131	138	138	finally
-    //   13	38	162	java/lang/Exception
-    //   116	123	162	java/lang/Exception
-    //   148	155	162	java/lang/Exception
-    //   155	162	162	java/lang/Exception
-    //   186	192	162	java/lang/Exception
-    //   195	202	162	java/lang/Exception
-    //   148	155	184	java/lang/Throwable
-    //   43	61	205	finally
-    //   61	70	205	finally
-    //   74	86	205	finally
-    //   86	111	205	finally
+    AppMethodBeat.i(111336);
+    LinkedList localLinkedList = new LinkedList();
+    ArrayList localArrayList = new ArrayList();
+    HashMap localHashMap = new HashMap();
+    try
+    {
+      Cursor localCursor1 = this.bon.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, esU(), esV(), null, esW());
+      if (localCursor1 == null)
+      {
+        Log.d("MicroMsg.ImageMediaQuery", "no image folder now");
+        if (!localHashMap.isEmpty())
+        {
+          localLinkedList.addAll(localHashMap.values());
+          Collections.sort(localLinkedList);
+        }
+        bd(localLinkedList);
+        AppMethodBeat.o(111336);
+        return localLinkedList;
+      }
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.ImageMediaQuery", "query image album list failed : [%s]", new Object[] { localException1.getMessage() });
+        Cursor localCursor2 = null;
+        continue;
+        try
+        {
+          if (localCursor2.moveToFirst())
+          {
+            label133:
+            localAlbumItem = a(localCursor2, 1, "bucket_display_name");
+            if (localAlbumItem != null)
+            {
+              if (localArrayList.contains(localAlbumItem.albumName)) {
+                break label213;
+              }
+              localHashMap.put(localAlbumItem.MtW, localAlbumItem);
+              localArrayList.add(localAlbumItem.albumName);
+            }
+          }
+          for (;;)
+          {
+            boolean bool = localCursor2.moveToNext();
+            if (bool) {
+              break label133;
+            }
+            if (localCursor2 == null) {
+              break;
+            }
+            localCursor2.close();
+            break;
+            label213:
+            if ((!localHashMap.containsKey(localAlbumItem.MtW)) || (localAlbumItem.BVd == null) || (((GalleryItem.AlbumItem)localHashMap.get(localAlbumItem.MtW)).BVd == null) || (localAlbumItem.BVd.d(((GalleryItem.AlbumItem)localHashMap.get(localAlbumItem.MtW)).BVd) <= 0)) {
+              break label331;
+            }
+            localHashMap.put(localAlbumItem.MtW, localAlbumItem);
+          }
+        }
+        catch (Exception localException2)
+        {
+          for (;;)
+          {
+            GalleryItem.AlbumItem localAlbumItem;
+            Log.e("MicroMsg.ImageMediaQuery", "query image album list failed : [%s]", new Object[] { localException2.getMessage() });
+            if (localCursor2 == null) {
+              break;
+            }
+            localCursor2.close();
+            break;
+            label331:
+            Log.w("MicroMsg.ImageMediaQuery", "queryAlbumListWalkAround, videoAlbumMap no containsKey = " + localAlbumItem.MtW + ", albumName= " + localAlbumItem.albumName);
+          }
+        }
+        finally
+        {
+          if (localCursor2 != null) {
+            localCursor2.close();
+          }
+          AppMethodBeat.o(111336);
+        }
+      }
+    }
   }
   
-  public final String[] dQt()
+  public final String[] esT()
+  {
+    return new String[] { "_id", "_data", b.BTY, b.BTX, "mime_type", "latitude", "longitude" };
+  }
+  
+  public final String[] esU()
   {
     AppMethodBeat.i(111335);
-    if (d.dSB())
+    if (e.evd())
     {
-      str1 = b.xhL;
-      str2 = b.xhK;
+      str1 = b.BTY;
+      str2 = b.BTX;
       AppMethodBeat.o(111335);
       return new String[] { "_id", "_data", "bucket_display_name", str1, str2, "mime_type", "bucket_id" };
     }
-    String str1 = b.xhL;
-    String str2 = b.xhK;
-    String str3 = "max(" + b.xhK + ") as max_time";
+    String str1 = b.BTY;
+    String str2 = b.BTX;
+    String str3 = "max(" + b.BTX + ") as max_time";
     AppMethodBeat.o(111335);
     return new String[] { "_id", "_data", "bucket_display_name", "count(*)", str1, str2, "mime_type", str3, "bucket_id" };
   }
   
-  public final String dQu()
+  public final String esV()
   {
-    AppMethodBeat.i(257728);
-    if (d.dSB())
+    AppMethodBeat.i(241763);
+    if (e.evd())
     {
-      AppMethodBeat.o(257728);
+      AppMethodBeat.o(241763);
       return null;
     }
-    AppMethodBeat.o(257728);
+    AppMethodBeat.o(241763);
     return "0==0) GROUP BY (bucket_display_name";
   }
   
-  public final String dQv()
+  public final String esW()
   {
-    AppMethodBeat.i(257729);
-    if (d.dSB())
+    AppMethodBeat.i(241767);
+    if (e.evd())
     {
-      AppMethodBeat.o(257729);
+      AppMethodBeat.o(241767);
       return "_id desc";
     }
-    AppMethodBeat.o(257729);
+    AppMethodBeat.o(241767);
     return "max_time desc, _id desc";
   }
   
-  public final String[] getProjection()
-  {
-    return new String[] { "_id", "_data", b.xhL, b.xhK, "mime_type", "latitude", "longitude" };
-  }
-  
-  public final String pw(boolean paramBoolean)
+  public final String rR(boolean paramBoolean)
   {
     AppMethodBeat.i(111334);
     if (paramBoolean)
     {
-      str = b.xhL + " desc, bucket_display_name desc, _id desc";
+      str = b.BTY + " desc, bucket_display_name desc, _id desc";
       AppMethodBeat.o(111334);
       return str;
     }
-    String str = b.xhK + " desc, bucket_display_name desc, _id desc";
+    String str = b.BTX + " desc, bucket_display_name desc, _id desc";
     AppMethodBeat.o(111334);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.k
  * JD-Core Version:    0.7.0.1
  */

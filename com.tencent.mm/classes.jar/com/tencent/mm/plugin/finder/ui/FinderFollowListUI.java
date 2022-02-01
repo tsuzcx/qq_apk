@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.finder.ui;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderFollowListUIC;
+import com.tencent.mm.plugin.finder.viewmodel.component.w;
 import com.tencent.mm.ui.component.UIComponent;
 import java.util.HashMap;
 import java.util.Set;
 import kotlin.a.ak;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderFollowListUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getCommentScene", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderFollowListUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getCommentScene", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "plugin-finder_release"})
 public final class FinderFollowListUI
   extends MMFinderUI
 {
@@ -27,16 +27,16 @@ public final class FinderFollowListUI
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(252370);
+    AppMethodBeat.i(280947);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(252370);
+    AppMethodBeat.o(280947);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(252369);
+    AppMethodBeat.i(280946);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -47,7 +47,7 @@ public final class FinderFollowListUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(252369);
+    AppMethodBeat.o(280946);
     return localView1;
   }
   
@@ -58,9 +58,9 @@ public final class FinderFollowListUI
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(252368);
-    Set localSet = ak.setOf(FinderFollowListUIC.class);
-    AppMethodBeat.o(252368);
+    AppMethodBeat.i(280945);
+    Set localSet = ak.setOf(w.class);
+    AppMethodBeat.o(280945);
     return localSet;
   }
   

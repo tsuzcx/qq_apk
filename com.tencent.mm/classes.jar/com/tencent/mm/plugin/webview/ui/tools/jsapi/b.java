@@ -13,30 +13,30 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.s;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiGetPasteboardContent;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiGetPasteboardContent;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class b
   extends a
 {
-  private static final int CDJ = 364;
-  public static final b JsA;
+  private static final int IIl = 364;
+  public static final b QpX;
   private static final String TAG = "MicroMsg.JsApiGetPasteboardContent";
-  private static final String edq = "getPasteboardContent";
+  private static final String fXz = "getPasteboardContent";
   
   static
   {
     AppMethodBeat.i(164014);
-    JsA = new b();
+    QpX = new b();
     TAG = "MicroMsg.JsApiGetPasteboardContent";
-    CDJ = 364;
-    edq = "getPasteboardContent";
+    IIl = 364;
+    fXz = "getPasteboardContent";
     AppMethodBeat.o(164014);
   }
   
   public final boolean a(f paramf, n paramn)
   {
-    AppMethodBeat.i(210547);
-    p.h(paramf, "env");
-    p.h(paramn, "msg");
+    AppMethodBeat.i(225947);
+    p.k(paramf, "env");
+    p.k(paramn, "msg");
     Object localObject = ClipboardHelper.getText(paramf.context);
     Log.i(TAG, "do get pasteboard content: " + (CharSequence)localObject);
     int i;
@@ -46,28 +46,28 @@ public final class b
       if (i == 0) {
         break label118;
       }
-      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail nocontent", ae.emptyMap());
+      paramf.PNo.h(paramn.POu, paramn.function + ":fail nocontent", ae.iBR());
     }
     for (;;)
     {
-      AppMethodBeat.o(210547);
+      AppMethodBeat.o(225947);
       return true;
       i = 0;
       break;
       label118:
-      localObject = ae.b(s.U("content", localObject));
-      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":ok", (Map)localObject);
+      localObject = ae.d(s.M("content", localObject));
+      paramf.PNo.h(paramn.POu, paramn.function + ":ok", (Map)localObject);
     }
   }
   
-  public final int ePA()
+  public final String fCm()
   {
-    return CDJ;
+    return fXz;
   }
   
-  public final String ePz()
+  public final int fCn()
   {
-    return edq;
+    return IIl;
   }
 }
 

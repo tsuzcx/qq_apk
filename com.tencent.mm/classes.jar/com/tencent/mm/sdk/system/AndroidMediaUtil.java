@@ -13,8 +13,8 @@ import android.os.Build.VERSION;
 import android.provider.MediaStore.Files;
 import android.provider.MediaStore.Images.Media;
 import android.provider.MediaStore.Video.Media;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.i.d;
 import com.tencent.mm.compatible.util.Exif;
@@ -22,8 +22,8 @@ import com.tencent.mm.loader.j.b;
 import com.tencent.mm.sdk.platformtools.FileProviderHelper;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.File;
 import java.util.Locale;
 
@@ -40,7 +40,7 @@ public class AndroidMediaUtil
       AppMethodBeat.o(175931);
       return 0;
     }
-    if (!s.YS(paramString))
+    if (!u.agG(paramString))
     {
       Log.d("Luggage.AndroidMediaUtil", "file not exist:[%s]", new Object[] { paramString });
       AppMethodBeat.o(175931);
@@ -61,22 +61,22 @@ public class AndroidMediaUtil
   
   public static String getFriendlySdcardPath(String paramString)
   {
-    AppMethodBeat.i(214367);
+    AppMethodBeat.i(209907);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(214367);
+      AppMethodBeat.o(209907);
       return "";
     }
     try
     {
       String str1 = new File(paramString).getCanonicalPath();
-      if (str1.startsWith(b.aKF()))
+      if (str1.startsWith(b.aSH()))
       {
-        i = b.aKF().length();
+        i = b.aSH().length();
         if (i >= 0) {
           break label86;
         }
-        AppMethodBeat.o(214367);
+        AppMethodBeat.o(209907);
         return paramString;
       }
     }
@@ -87,20 +87,20 @@ public class AndroidMediaUtil
         int i;
         String str2 = paramString;
         continue;
-        if (str2.startsWith(b.aKE()))
+        if (str2.startsWith(b.aSG()))
         {
-          i = b.aKE().length();
+          i = b.aSG().length();
           continue;
           label86:
           paramString = paramString.substring(i);
           if (paramString.startsWith("/"))
           {
             paramString = "/sdcard".concat(String.valueOf(paramString));
-            AppMethodBeat.o(214367);
+            AppMethodBeat.o(209907);
             return paramString;
           }
           paramString = "/sdcard/".concat(String.valueOf(paramString));
-          AppMethodBeat.o(214367);
+          AppMethodBeat.o(209907);
           return paramString;
         }
         else
@@ -115,45 +115,45 @@ public class AndroidMediaUtil
   private static BitmapFactory.Options getImageOptionsJustDecodeBounds(String paramString)
   {
     // Byte code:
-    //   0: ldc 159
-    //   2: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 157
+    //   2: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokestatic 163	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   6: invokestatic 161	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
     //   9: astore_0
-    //   10: new 165	android/graphics/BitmapFactory$Options
+    //   10: new 163	android/graphics/BitmapFactory$Options
     //   13: dup
-    //   14: invokespecial 166	android/graphics/BitmapFactory$Options:<init>	()V
+    //   14: invokespecial 164	android/graphics/BitmapFactory$Options:<init>	()V
     //   17: astore_1
     //   18: aload_1
     //   19: iconst_1
-    //   20: putfield 170	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   20: putfield 168	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   23: aload_0
     //   24: aconst_null
     //   25: aload_1
-    //   26: invokestatic 176	com/tencent/mm/graphics/MMBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   26: invokestatic 174	com/tencent/mm/graphics/MMBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   29: pop
     //   30: aload_0
-    //   31: invokestatic 180	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   34: ldc 159
-    //   36: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   31: invokestatic 178	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   34: ldc 157
+    //   36: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   39: aload_1
     //   40: areturn
     //   41: astore_0
     //   42: aconst_null
     //   43: astore_0
     //   44: aload_0
-    //   45: invokestatic 180	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   48: ldc 159
-    //   50: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: invokestatic 178	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   48: ldc 157
+    //   50: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   53: aconst_null
     //   54: areturn
     //   55: astore_1
     //   56: aconst_null
     //   57: astore_0
     //   58: aload_0
-    //   59: invokestatic 180	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   62: ldc 159
-    //   64: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   59: invokestatic 178	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   62: ldc 157
+    //   64: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   67: aload_1
     //   68: athrow
     //   69: astore_1
@@ -179,7 +179,7 @@ public class AndroidMediaUtil
   public static String getSysCameraDirPath()
   {
     AppMethodBeat.i(175928);
-    String str = b.aKV();
+    String str = b.aSX();
     AppMethodBeat.o(175928);
     return str;
   }
@@ -187,9 +187,9 @@ public class AndroidMediaUtil
   public static String getToastSysCameraPath()
   {
     AppMethodBeat.i(153462);
-    Object localObject = b.aKD();
-    if (((String)localObject).startsWith(b.aKF())) {}
-    for (localObject = new File((String)localObject).getParentFile().getParentFile().getParentFile().getAbsolutePath();; localObject = b.aKE())
+    Object localObject = b.aSF();
+    if (((String)localObject).startsWith(b.aSH())) {}
+    for (localObject = new File((String)localObject).getParentFile().getParentFile().getParentFile().getAbsolutePath();; localObject = b.aSG())
     {
       try
       {
@@ -203,7 +203,7 @@ public class AndroidMediaUtil
         int i;
         break label54;
       }
-      str = s.k(getSysCameraDirPath(), true);
+      str = u.n(getSysCameraDirPath(), true);
       i = str.indexOf((String)localObject);
       if (i < 0) {
         break label133;
@@ -226,24 +226,24 @@ public class AndroidMediaUtil
   
   public static void insertPathIntoMediaStore(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(214366);
+    AppMethodBeat.i(209905);
     updateMediaDatabase(paramContext, paramString);
-    AppMethodBeat.o(214366);
+    AppMethodBeat.o(209905);
   }
   
   public static void insertPathIntoMediaStoreAsync(Context paramContext, final String paramString)
   {
-    AppMethodBeat.i(214365);
-    h.RTc.aX(new Runnable()
+    AppMethodBeat.i(209904);
+    h.ZvG.be(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(214361);
+        AppMethodBeat.i(209987);
         AndroidMediaUtil.insertPathIntoMediaStore(this.val$context, paramString);
-        AppMethodBeat.o(214361);
+        AppMethodBeat.o(209987);
       }
     });
-    AppMethodBeat.o(214365);
+    AppMethodBeat.o(209904);
   }
   
   public static void refreshMediaScanner(String paramString, Context paramContext)
@@ -254,7 +254,7 @@ public class AndroidMediaUtil
       AppMethodBeat.o(153460);
       return;
     }
-    String str1 = s.k(paramString, false);
+    String str1 = u.n(paramString, false);
     if (str1 != null) {}
     try
     {
@@ -266,7 +266,7 @@ public class AndroidMediaUtil
       {
         for (;;)
         {
-          paramContext.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", FileProviderHelper.getUriForFile(paramContext, new o(str1))));
+          paramContext.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", FileProviderHelper.getUriForFile(paramContext, new q(str1))));
           Log.i("Luggage.AndroidMediaUtil", "refreshing media scanner on path=%s", new Object[] { paramString });
           if (Build.VERSION.SDK_INT <= 28) {
             break;
@@ -296,32 +296,24 @@ public class AndroidMediaUtil
         }
       }
     }
-    paramContext.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", FileProviderHelper.getUriForFile(paramContext, new o(paramString))).addFlags(1));
+    paramContext.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", FileProviderHelper.getUriForFile(paramContext, new q(paramString))).addFlags(1));
     Log.i("Luggage.AndroidMediaUtil", "refreshing media scanner on path=%s", new Object[] { paramString });
     AppMethodBeat.o(153460);
   }
   
-  public static void refreshMediaScannerAsync(String paramString, final Context paramContext)
+  public static void refreshMediaScannerAsync(String paramString, Context paramContext)
   {
-    AppMethodBeat.i(214362);
-    h.RTc.aX(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(214359);
-        AndroidMediaUtil.refreshMediaScanner(this.val$path, paramContext);
-        AppMethodBeat.o(214359);
-      }
-    });
-    AppMethodBeat.o(214362);
+    AppMethodBeat.i(209900);
+    h.ZvG.be(new AndroidMediaUtil.1(paramString, paramContext));
+    AppMethodBeat.o(209900);
   }
   
   public static void refreshMediaScannerWithoutVFSRemap(String paramString, Context paramContext)
   {
-    AppMethodBeat.i(214364);
+    AppMethodBeat.i(209903);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(214364);
+      AppMethodBeat.o(209903);
       return;
     }
     try
@@ -343,13 +335,13 @@ public class AndroidMediaUtil
           {
             String str = MimeTypeUtil.getMimeTypeByFilePath(paramString);
             MediaScannerConnection.scanFile(paramContext.getApplicationContext(), new String[] { paramString }, new String[] { str }, null);
-            AppMethodBeat.o(214364);
+            AppMethodBeat.o(209903);
             return;
           }
           catch (Throwable paramContext)
           {
             Log.e("Luggage.AndroidMediaUtil", "refresh by MediaScannerConnection, path = %s, thr = %s", new Object[] { paramString, paramContext });
-            AppMethodBeat.o(214364);
+            AppMethodBeat.o(209903);
             return;
           }
           localThrowable = localThrowable;
@@ -366,22 +358,22 @@ public class AndroidMediaUtil
     }
     paramContext.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", FileProviderHelper.getUriForFileWithoutVFSRemap(paramContext, new File(paramString))).addFlags(1));
     Log.i("Luggage.AndroidMediaUtil", "refreshing media scanner on path=%s", new Object[] { paramString });
-    AppMethodBeat.o(214364);
+    AppMethodBeat.o(209903);
   }
   
   public static void refreshMediaScannerWithoutVFSRemapAsync(String paramString, final Context paramContext)
   {
-    AppMethodBeat.i(214363);
-    h.RTc.aX(new Runnable()
+    AppMethodBeat.i(209902);
+    h.ZvG.be(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(214360);
+        AppMethodBeat.i(209949);
         AndroidMediaUtil.refreshMediaScannerWithoutVFSRemap(this.val$path, paramContext);
-        AppMethodBeat.o(214360);
+        AppMethodBeat.o(209949);
       }
     });
-    AppMethodBeat.o(214363);
+    AppMethodBeat.o(209902);
   }
   
   private static void updateMediaDatabase(Context paramContext, String paramString)
@@ -416,15 +408,15 @@ public class AndroidMediaUtil
       }
       for (;;)
       {
-        String str1 = s.k(paramString, false);
+        String str1 = u.n(paramString, false);
         localObject = str1;
         if (str1 == null) {
           localObject = paramString;
         }
         localContentValues.put("_data", (String)localObject);
-        localContentValues.put("_display_name", new o(paramString).getName());
-        localContentValues.put("title", s.bpb(paramString));
-        localContentValues.put("_size", Long.valueOf(s.boW(paramString)));
+        localContentValues.put("_display_name", new q(paramString).getName());
+        localContentValues.put("title", u.bBW(paramString));
+        localContentValues.put("_size", Long.valueOf(u.bBQ(paramString)));
         localContentValues.put("mime_type", str2);
         paramContext.getContentResolver().insert(localUri, localContentValues);
         AppMethodBeat.o(175930);
@@ -455,7 +447,7 @@ public class AndroidMediaUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.system.AndroidMediaUtil
  * JD-Core Version:    0.7.0.1
  */

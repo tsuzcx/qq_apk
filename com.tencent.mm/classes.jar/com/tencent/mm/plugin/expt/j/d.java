@@ -1,134 +1,102 @@
 package com.tencent.mm.plugin.expt.j;
 
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Build;
+import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.booter.c;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.vendor.Huawei;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.sdk.vendor.MIUI;
+import java.util.Map;
 
 public final class d
   implements b
 {
-  private final String TAG = "MicroMsg.TargetStartServiceSingleton";
-  
-  public final void axE()
+  private static void a(SharedPreferences paramSharedPreferences, boolean paramBoolean)
   {
-    AppMethodBeat.i(220649);
-    int i = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rYh, -1);
-    Object localObject1;
-    Object localObject2;
-    if (!Util.isEqual(i, 0)) {
-      if (Util.isEqual(i, 2))
+    AppMethodBeat.i(255405);
+    paramSharedPreferences = paramSharedPreferences.edit();
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      paramSharedPreferences.putInt("special_scene_enable", i).commit();
+      Log.i("MicroMsg.NotificationSpecialSingleton", "setSpecialSceneEnable() enable: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(255405);
+      return;
+    }
+  }
+  
+  public final void aEW()
+  {
+    boolean bool2 = false;
+    AppMethodBeat.i(255403);
+    SharedPreferences localSharedPreferences = com.tencent.mm.kernel.b.awd();
+    localSharedPreferences.edit().putBoolean("keepaliveserviceswitch", ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vxL, false)).commit();
+    int i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vxJ, -1);
+    Log.i("MicroMsg.NotificationSpecialSingleton", "iniNotificationSpecialSceneSwitchEnable() enable:%s", new Object[] { Integer.valueOf(i) });
+    Object localObject;
+    boolean bool1;
+    if (Util.isEqual(i, 1))
+    {
+      localObject = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vxK, "");
+      Log.i("MicroMsg.NotificationSpecialSingleton", "specialSceneDetail %s", new Object[] { localObject });
+      bool1 = bool2;
+      if (!Util.isNullOrNil((String)localObject))
       {
-        localObject1 = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rYl, "");
-        Log.i("MicroMsg.TargetStartServiceSingleton", "manufacturers:%s", new Object[] { Util.nullAs((String)localObject1, "null") });
-        if (Util.isNullOrNil((String)localObject1))
-        {
-          c.dg(true);
-          i = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rYn, 0);
-          if ((!com.tencent.mm.compatible.util.d.oD(26)) || (!Util.isEqual(i, 0)) || (!Huawei.ifHUAWEI())) {
-            break label459;
+        localObject = XmlParser.parseXml((String)localObject, "manufacturerlist", null);
+        bool1 = bool2;
+        if (localObject != null) {
+          if (!((Map)localObject).containsKey(".manufacturerlist.size")) {
+            break label504;
           }
-          localObject2 = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rYo, "");
-          localObject1 = Build.MODEL.toLowerCase();
-          Log.i("MicroMsg.TargetStartServiceSingleton", "model:%s startServiceHuaweiInfo:%s", new Object[] { localObject1, Util.nullAs((String)localObject2, "null") });
         }
       }
     }
-    for (;;)
+    label300:
+    label457:
+    label504:
+    for (i = Util.getInt((String)((Map)localObject).get(".manufacturerlist.size"), 0);; i = 0)
     {
-      try
+      int k = Build.VERSION.SDK_INT;
+      int j = 0;
+      for (;;)
       {
-        if (!Util.isNullOrNil((String)localObject2))
+        bool1 = bool2;
+        if (j < i)
         {
-          localObject2 = ((String)localObject2).split(",");
-          i = 0;
-          if (i >= localObject2.length) {
-            break label469;
+          if (j != 0) {
+            break label300;
           }
-          if (((String)localObject1).startsWith(localObject2[i].toLowerCase()))
-          {
-            c.nP(1);
-            i = 1;
-            if (i == 0) {
-              c.nP(0);
-            }
-            AppMethodBeat.o(220649);
-            return;
-            localObject1 = ((String)localObject1).split(",");
-            i = 0;
-            if (i >= localObject1.length) {
-              break label479;
-            }
-            if (String.valueOf(localObject1[i]).equalsIgnoreCase(Build.MANUFACTURER))
-            {
-              c.dg(false);
-              i = 1;
-              if (i != 0) {
-                break;
-              }
-              c.dg(true);
-              break;
-            }
-            i += 1;
-            continue;
-            if (!Util.isEqual(i, 1)) {
-              break;
-            }
-            localObject1 = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rYi, "");
-            Log.i("MicroMsg.TargetStartServiceSingleton", "manufacturers:%s", new Object[] { Util.nullAs((String)localObject1, "null") });
-            if (!Util.isNullOrNil((String)localObject1))
-            {
-              localObject1 = ((String)localObject1).split(",");
-              i = 0;
-              if (i >= localObject1.length) {
-                break label474;
-              }
-              if (String.valueOf(localObject1[i]).equalsIgnoreCase(Build.MANUFACTURER))
-              {
-                c.dg(true);
-                i = 1;
-                if (i != 0) {
-                  break;
-                }
-                c.dg(false);
-                break;
-              }
-              i += 1;
-              continue;
-            }
-            c.dg(false);
+          if (!String.valueOf(Util.nullAsNil((String)((Map)localObject).get(".manufacturerlist.manufacturer.name"))).equalsIgnoreCase(Build.MANUFACTURER)) {
+            break label457;
+          }
+        }
+        for (bool1 = MIUI.ifInMinAndMax(k, Util.nullAsNil((String)((Map)localObject).get(".manufacturerlist.manufacturer.sdkversionmin")), Util.nullAsNil((String)((Map)localObject).get(".manufacturerlist.manufacturer.sdkversionmax")), Util.nullAsNil((String)((Map)localObject).get(".manufacturerlist.manufacturer.versintime")));; bool1 = MIUI.ifInMinAndMax(k, Util.nullAsNil((String)((Map)localObject).get(".manufacturerlist.manufacturer" + j + ".sdkversionmin")), Util.nullAsNil((String)((Map)localObject).get(".manufacturerlist.manufacturer" + j + ".sdkversionmax")), Util.nullAsNil((String)((Map)localObject).get(".manufacturerlist.manufacturer" + j + ".versintime"))))
+        {
+          a(localSharedPreferences, bool1);
+          AppMethodBeat.o(255403);
+          return;
+          if (!String.valueOf(Util.nullAsNil((String)((Map)localObject).get(".manufacturerlist.manufacturer" + j + ".name"))).equalsIgnoreCase(Build.MANUFACTURER)) {
             break;
           }
-          i += 1;
-          continue;
         }
-        c.nP(0);
-        AppMethodBeat.o(220649);
-        return;
+        j += 1;
       }
-      catch (Exception localException)
+      if (Util.isEqual(i, 0))
       {
-        Log.i("MicroMsg.TargetStartServiceSingleton", "startServiceHuaweiInfo Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
-        c.nP(0);
-        AppMethodBeat.o(220649);
+        a(localSharedPreferences, false);
+        AppMethodBeat.o(255403);
         return;
       }
-      label459:
-      c.nP(1);
-      AppMethodBeat.o(220649);
+      if (Util.isEqual(i, 2)) {
+        a(localSharedPreferences, true);
+      }
+      AppMethodBeat.o(255403);
       return;
-      label469:
-      i = 0;
-      continue;
-      label474:
-      i = 0;
-      continue;
-      label479:
-      i = 0;
     }
   }
 }

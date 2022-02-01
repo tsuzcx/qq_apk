@@ -7,18 +7,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class e
   extends a<b.a, f, d>
 {
-  private static e cBk = null;
+  private static e cAs = null;
   
-  public static e Oy()
+  public static e Rx()
   {
     AppMethodBeat.i(146850);
-    if (cBk == null) {}
+    if (cAs == null) {}
     try
     {
-      if (cBk == null) {
-        cBk = new e();
+      if (cAs == null) {
+        cAs = new e();
       }
-      e locale = cBk;
+      e locale = cAs;
       AppMethodBeat.o(146850);
       return locale;
     }
@@ -30,7 +30,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.c.e
  * JD-Core Version:    0.7.0.1
  */

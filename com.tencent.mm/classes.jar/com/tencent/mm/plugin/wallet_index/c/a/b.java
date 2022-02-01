@@ -1,63 +1,63 @@
 package com.tencent.mm.plugin.wallet_index.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dai;
-import com.tencent.mm.protocal.protobuf.daj;
+import com.tencent.mm.protocal.protobuf.djw;
+import com.tencent.mm.protocal.protobuf.djx;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
   extends q
   implements m
 {
-  private daj Irc;
-  private dai Ird;
+  private djx PjL;
+  private djw PjM;
   private i callback;
   private final d rr;
   
   public b(int paramInt)
   {
-    AppMethodBeat.i(214272);
+    AppMethodBeat.i(275031);
     d.a locala = new d.a();
-    locala.iLN = new dai();
-    locala.iLO = new daj();
+    locala.lBU = new djw();
+    locala.lBV = new djx();
     locala.funcId = 2540;
     locala.uri = "/cgi-bin/mmpay-bin/payibgquickgetoverseawallet";
-    this.rr = locala.aXF();
-    this.Ird = ((dai)this.rr.iLK.iLR);
-    this.Ird.MFC = paramInt;
-    AppMethodBeat.o(214272);
+    this.rr = locala.bgN();
+    this.PjM = ((djw)d.b.b(this.rr.lBR));
+    this.PjM.TRo = paramInt;
+    AppMethodBeat.o(275031);
   }
   
   public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(214273);
+    AppMethodBeat.i(275033);
     this.callback = parami;
     int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(214273);
+    AppMethodBeat.o(275033);
     return i;
   }
   
-  public final daj fUq()
+  public final djx gMW()
   {
-    AppMethodBeat.i(214275);
-    if (this.Irc == null)
+    AppMethodBeat.i(275035);
+    if (this.PjL == null)
     {
-      localdaj = new daj();
-      AppMethodBeat.o(214275);
-      return localdaj;
+      localdjx = new djx();
+      AppMethodBeat.o(275035);
+      return localdjx;
     }
-    daj localdaj = this.Irc;
-    AppMethodBeat.o(214275);
-    return localdaj;
+    djx localdjx = this.PjL;
+    AppMethodBeat.o(275035);
+    return localdjx;
   }
   
   public final int getType()
@@ -67,15 +67,15 @@ public final class b
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(214274);
+    AppMethodBeat.i(275034);
     Log.i("MicroMsg.NetScenePayIBGQuickGetOverseaWallet", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.Irc = ((daj)((d)params).iLL.iLR);
+      this.PjL = ((djx)d.c.b(((d)params).lBS));
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(214274);
+    AppMethodBeat.o(275034);
   }
 }
 

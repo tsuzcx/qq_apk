@@ -2,17 +2,18 @@ package com.tencent.mm.plugin.topstory.a;
 
 import android.content.Context;
 import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.plugin.webview.d.n;
 
 public abstract interface g
   extends a
 {
-  public abstract void aW(String paramString1, String paramString2, String paramString3);
+  public abstract void a(Context paramContext, int paramInt, String paramString, n paramn);
   
-  public abstract void bF(Context paramContext, String paramString);
+  public abstract void aQ(String paramString1, String paramString2, String paramString3);
   
-  public abstract boolean fxP();
+  public abstract boolean gpK();
   
-  public abstract void hv(Context paramContext);
+  public abstract void iB(Context paramContext);
 }
 
 

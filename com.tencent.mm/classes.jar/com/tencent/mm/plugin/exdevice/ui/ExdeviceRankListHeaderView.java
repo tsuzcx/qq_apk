@@ -11,6 +11,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.a;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -19,20 +22,20 @@ import com.tencent.mm.sdk.platformtools.Util;
 public class ExdeviceRankListHeaderView
   extends RelativeLayout
 {
-  private View.OnClickListener hEZ;
+  private View.OnClickListener kte;
   private Context mContext;
   private Runnable mHideRunnable;
-  private TextView rKL;
-  private Animation rKM;
-  private Animation rKN;
-  private boolean rKO;
+  private TextView vqu;
+  private Animation vqv;
+  private Animation vqw;
+  private boolean vqx;
   
   public ExdeviceRankListHeaderView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(24281);
-    this.rKO = true;
-    bh(paramContext);
+    this.vqx = true;
+    bv(paramContext);
     AppMethodBeat.o(24281);
   }
   
@@ -45,26 +48,26 @@ public class ExdeviceRankListHeaderView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(24280);
-    this.rKO = true;
-    bh(paramContext);
+    this.vqx = true;
+    bv(paramContext);
     AppMethodBeat.o(24280);
   }
   
-  private void bh(Context paramContext)
+  private void bv(Context paramContext)
   {
     AppMethodBeat.i(24282);
     this.mContext = paramContext;
-    this.rKL = ((TextView)LayoutInflater.from(this.mContext).inflate(2131494043, this, true).findViewById(2131298276));
-    this.rKL.setVisibility(4);
-    cMc();
+    this.vqu = ((TextView)LayoutInflater.from(this.mContext).inflate(R.i.egM, this, true).findViewById(R.h.dvm));
+    this.vqu.setVisibility(4);
+    daP();
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(24274);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankListHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankListHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (ExdeviceRankListHeaderView.a(ExdeviceRankListHeaderView.this)) {
           ExdeviceRankListHeaderView.b(ExdeviceRankListHeaderView.this);
         }
@@ -78,11 +81,11 @@ public class ExdeviceRankListHeaderView
     AppMethodBeat.o(24282);
   }
   
-  private void cMc()
+  private void daP()
   {
     AppMethodBeat.i(24283);
-    this.rKM = AnimationUtils.loadAnimation(this.mContext, 2130771968);
-    this.rKN = AnimationUtils.loadAnimation(this.mContext, 2130771969);
+    this.vqv = AnimationUtils.loadAnimation(this.mContext, R.a.abc_fade_in);
+    this.vqw = AnimationUtils.loadAnimation(this.mContext, R.a.abc_fade_out);
     this.mHideRunnable = new Runnable()
     {
       public final void run()
@@ -92,7 +95,7 @@ public class ExdeviceRankListHeaderView
         AppMethodBeat.o(24275);
       }
     };
-    this.rKM.setAnimationListener(new Animation.AnimationListener()
+    this.vqv.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -111,7 +114,7 @@ public class ExdeviceRankListHeaderView
         AppMethodBeat.o(24276);
       }
     });
-    this.rKN.setAnimationListener(new Animation.AnimationListener()
+    this.vqw.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -129,36 +132,36 @@ public class ExdeviceRankListHeaderView
         AppMethodBeat.o(24278);
       }
     });
-    this.rKM.setFillAfter(true);
-    this.rKM.setFillEnabled(true);
-    this.rKN.setFillAfter(true);
-    this.rKN.setFillAfter(true);
+    this.vqv.setFillAfter(true);
+    this.vqv.setFillEnabled(true);
+    this.vqw.setFillAfter(true);
+    this.vqw.setFillAfter(true);
     AppMethodBeat.o(24283);
   }
   
   public String getMotto()
   {
     AppMethodBeat.i(24285);
-    String str = Util.nullAs(this.rKL.getText().toString(), "");
+    String str = Util.nullAs(this.vqu.getText().toString(), "");
     AppMethodBeat.o(24285);
     return str;
   }
   
   public void setIsShowTip(boolean paramBoolean)
   {
-    this.rKO = paramBoolean;
+    this.vqx = paramBoolean;
   }
   
   public void setMotto(String paramString)
   {
     AppMethodBeat.i(24284);
-    this.rKL.setText(paramString);
+    this.vqu.setText(paramString);
     AppMethodBeat.o(24284);
   }
   
   public void setOnViewClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.hEZ = paramOnClickListener;
+    this.kte = paramOnClickListener;
   }
 }
 

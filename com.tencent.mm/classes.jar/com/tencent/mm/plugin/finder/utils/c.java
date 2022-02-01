@@ -1,144 +1,66 @@
 package com.tencent.mm.plugin.finder.utils;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.b;
-import com.tencent.mm.ac.b.a;
-import com.tencent.mm.ac.f;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
-import kotlin.g.a.a;
+import java.lang.ref.WeakReference;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/utils/FinderAssertCat;", "Lcom/tencent/mm/kt/IAssert;", "()V", "assertEquals", "", "key", "", "expected", "", "actual", "isReport", "", "isThrow", "message", "Lkotlin/Function0;", "assertFalse", "condition", "assertNotNull", "assertNotSame", "assertNull", "assertSame", "assertTrue", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/ClickExtra;", "", "feedId", "", "topicType", "", "contextRef", "Ljava/lang/ref/WeakReference;", "Landroid/content/Context;", "(JILjava/lang/ref/WeakReference;)V", "getContextRef", "()Ljava/lang/ref/WeakReference;", "setContextRef", "(Ljava/lang/ref/WeakReference;)V", "getFeedId", "()J", "getTopicType", "()I", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder-base_release"})
 public final class c
-  implements f
 {
-  public static final c vVc;
+  public WeakReference<Context> aFX;
+  final long feedId;
+  final int wXA;
   
-  static
+  public c(long paramLong, int paramInt, WeakReference<Context> paramWeakReference)
   {
-    AppMethodBeat.i(253356);
-    vVc = new c();
-    AppMethodBeat.o(253356);
+    this.feedId = paramLong;
+    this.wXA = paramInt;
+    this.aFX = paramWeakReference;
   }
   
-  private c()
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(253355);
-    b.a locala = (b.a)new b.a()
+    AppMethodBeat.i(259669);
+    if (this != paramObject)
     {
-      public final int getId(String paramAnonymousString)
+      if ((paramObject instanceof c))
       {
-        AppMethodBeat.i(253354);
-        p.h(paramAnonymousString, "key");
-        switch (paramAnonymousString.hashCode())
-        {
-        }
-        while (BuildInfo.DEBUG)
-        {
-          paramAnonymousString = (Throwable)new RuntimeException("this key[" + paramAnonymousString + "] never define.");
-          AppMethodBeat.o(253354);
-          throw paramAnonymousString;
-          if (paramAnonymousString.equals("layoutIdError"))
-          {
-            AppMethodBeat.o(253354);
-            return 3;
-            if (paramAnonymousString.equals("liveInitContentViewError"))
-            {
-              AppMethodBeat.o(253354);
-              return 13;
-              if (paramAnonymousString.equals("opt_moov_fail"))
-              {
-                AppMethodBeat.o(253354);
-                return 1;
-                if (paramAnonymousString.equals("liveInvalidBadgeTag"))
-                {
-                  AppMethodBeat.o(253354);
-                  return 9;
-                  if (paramAnonymousString.equals("finderStreamReturnInvalidFeed"))
-                  {
-                    AppMethodBeat.o(253354);
-                    return 15;
-                    if (paramAnonymousString.equals("cgiReportNormal"))
-                    {
-                      AppMethodBeat.o(253354);
-                      return 12;
-                      if (paramAnonymousString.equals("NetSceneFinderFollow_fromCommentScene_0"))
-                      {
-                        AppMethodBeat.o(253354);
-                        return 2;
-                        if (paramAnonymousString.equals("liveVisitorUIParamsInvalid"))
-                        {
-                          AppMethodBeat.o(253354);
-                          return 6;
-                          if (paramAnonymousString.equals("cgiReportError"))
-                          {
-                            AppMethodBeat.o(253354);
-                            return 11;
-                            if (paramAnonymousString.equals("liveInvalidBadgeInfoColor"))
-                            {
-                              AppMethodBeat.o(253354);
-                              return 8;
-                              if (paramAnonymousString.equals("liveCheckCommentMsgErr"))
-                              {
-                                AppMethodBeat.o(253354);
-                                return 10;
-                                if (paramAnonymousString.equals("liveHeartBeatLocalErr"))
-                                {
-                                  AppMethodBeat.o(253354);
-                                  return 5;
-                                  if (paramAnonymousString.equals("liveHeartBeatSvrErr"))
-                                  {
-                                    AppMethodBeat.o(253354);
-                                    return 4;
-                                    if (paramAnonymousString.equals("iconPreferenceError"))
-                                    {
-                                      AppMethodBeat.o(253354);
-                                      return 15;
-                                      if (paramAnonymousString.equals("optimizeMP4VFS_fail"))
-                                      {
-                                        AppMethodBeat.o(253354);
-                                        return 7;
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        AppMethodBeat.o(253354);
-        return 0;
+        paramObject = (c)paramObject;
+        if ((this.feedId != paramObject.feedId) || (this.wXA != paramObject.wXA) || (!p.h(this.aFX, paramObject.aFX))) {}
       }
-    };
-    this.vVd = new b(new Long[] { Long.valueOf(1535L), Long.valueOf(1536L) }, "FinderAssertCat", locala);
-    AppMethodBeat.o(253355);
+    }
+    else
+    {
+      AppMethodBeat.o(259669);
+      return true;
+    }
+    AppMethodBeat.o(259669);
+    return false;
   }
   
-  public final void a(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, a<String> parama)
+  public final int hashCode()
   {
-    AppMethodBeat.i(253358);
-    p.h(paramString, "key");
-    p.h(parama, "message");
-    this.vVd.a(paramString, paramBoolean1, paramBoolean2, paramBoolean3, parama);
-    AppMethodBeat.o(253358);
+    AppMethodBeat.i(259668);
+    long l = this.feedId;
+    int j = (int)(l ^ l >>> 32);
+    int k = this.wXA;
+    WeakReference localWeakReference = this.aFX;
+    if (localWeakReference != null) {}
+    for (int i = localWeakReference.hashCode();; i = 0)
+    {
+      AppMethodBeat.o(259668);
+      return i + (j * 31 + k) * 31;
+    }
   }
   
-  public final void b(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, a<String> parama)
+  public final String toString()
   {
-    AppMethodBeat.i(253357);
-    p.h(paramString, "key");
-    p.h(parama, "message");
-    this.vVd.b(paramString, paramBoolean1, paramBoolean2, paramBoolean3, parama);
-    AppMethodBeat.o(253357);
+    AppMethodBeat.i(259666);
+    String str = "ClickExtra(feedId=" + this.feedId + ", topicType=" + this.wXA + ", contextRef=" + this.aFX + ")";
+    AppMethodBeat.o(259666);
+    return str;
   }
 }
 

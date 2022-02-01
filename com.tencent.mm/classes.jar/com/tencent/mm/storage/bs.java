@@ -3,42 +3,40 @@ package com.tencent.mm.storage;
 import android.content.ContentValues;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.api.i;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.protocal.protobuf.db;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.storagebase.h;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/storage/FunctionMsgStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/api/FunctionMsgItem;", "()V", "ALL_FUNCTION_MSG_ITEM_PROJECTION", "", "", "[Ljava/lang/String;", "TABLE_NAME", "TAG", "db", "Lcom/tencent/mm/storagebase/SqliteDB;", "getDb", "()Lcom/tencent/mm/storagebase/SqliteDB;", "deleteAllHandleFunctionMsg", "", "getAllNeedHandleFunctionMsg", "", "getByFunctionMsgId", "functionMsgId", "updateByFunctionMsgId", "newFunctionMsgItem", "plugin-functionmsg_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/storage/FunctionMsgStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/api/FunctionMsgItem;", "()V", "ALL_FUNCTION_MSG_ITEM_PROJECTION", "", "", "[Ljava/lang/String;", "TABLE_NAME", "TAG", "db", "Lcom/tencent/mm/storagebase/SqliteDB;", "getDb", "()Lcom/tencent/mm/storagebase/SqliteDB;", "deleteAllHandleFunctionMsg", "", "getAllNeedHandleFunctionMsg", "", "getByFunctionMsgId", "functionMsgId", "updateByFunctionMsgId", "newFunctionMsgItem", "plugin-functionmsg_release"})
 public final class bs
   extends MAutoStorage<i>
 {
-  public static final bs OqA;
-  private static final String[] Oqz;
-  private static final h iFy;
+  private static final String[] VGv;
+  public static final bs VGw;
+  private static final com.tencent.mm.storagebase.h lvy;
   
   static
   {
     AppMethodBeat.i(114155);
-    OqA = new bs();
-    Oqz = new String[] { "*", "rowid" };
-    Object localObject = g.aAh();
-    p.g(localObject, "MMKernel.storage()");
-    localObject = ((e)localObject).getDataDB();
+    VGw = new bs();
+    VGv = new String[] { "*", "rowid" };
+    Object localObject = com.tencent.mm.kernel.h.aHG();
+    p.j(localObject, "MMKernel.storage()");
+    localObject = ((f)localObject).getDataDB();
     if (localObject == null) {
-      p.hyc();
+      p.iCn();
     }
-    iFy = (h)localObject;
+    lvy = (com.tencent.mm.storagebase.h)localObject;
     AppMethodBeat.o(114155);
   }
   
   private bs()
   {
-    super((ISQLiteDatabase)locale.getDataDB(), i.info, "FunctionMsgItem", new String[] { "CREATE INDEX IF NOT EXISTS functionIdIndex ON FunctionMsgItem(functionmsgid)" });
+    super((ISQLiteDatabase)localf.getDataDB(), i.info, "FunctionMsgItem", new String[] { "CREATE INDEX IF NOT EXISTS functionIdIndex ON FunctionMsgItem(functionmsgid)" });
     AppMethodBeat.i(114154);
     AppMethodBeat.o(114154);
   }
@@ -46,18 +44,18 @@ public final class bs
   public static void a(String paramString, i parami)
   {
     AppMethodBeat.i(114151);
-    p.h(paramString, "functionMsgId");
-    p.h(parami, "newFunctionMsgItem");
+    p.k(paramString, "functionMsgId");
+    p.k(parami, "newFunctionMsgItem");
     Log.i("FunctionMsg.FunctionMsgStorage", "updateByFunctionMsgId, functionMsgId: %s", new Object[] { paramString });
-    Object localObject = bkw(paramString);
+    Object localObject = bwV(paramString);
     if (localObject != null) {
       try
       {
         boolean bool1;
-        if (parami.Vn() == null)
+        if (parami.ZG() == null)
         {
           bool1 = true;
-          if (((i)localObject).Vn() != null) {
+          if (((i)localObject).ZG() != null) {
             break label186;
           }
         }
@@ -66,15 +64,15 @@ public final class bs
         {
           Log.i("FunctionMsg.FunctionMsgStorage", "updateByFunctionMsgId, functionMsgId: %s, newFunctionMsgItem.msgContent==null: %s,oldFunctionMsgItem.msgContent==null: %s", new Object[] { paramString, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
           parami = parami.convertTo();
-          if ((parami.get("addMsg") == null) && (((i)localObject).Vn() != null))
+          if ((parami.get("addMsg") == null) && (((i)localObject).ZG() != null))
           {
-            localObject = ((i)localObject).Vn();
+            localObject = ((i)localObject).ZG();
             if (localObject == null) {
-              p.hyc();
+              p.iCn();
             }
-            parami.put("addMsg", ((de)localObject).toByteArray());
+            parami.put("addMsg", ((db)localObject).toByteArray());
           }
-          Log.i("FunctionMsg.FunctionMsgStorage", "updateByFunctionMsgId, ret: %s", new Object[] { Integer.valueOf(iFy.update("FunctionMsgItem", parami, "functionmsgid=?", new String[] { paramString })) });
+          Log.i("FunctionMsg.FunctionMsgStorage", "updateByFunctionMsgId, ret: %s", new Object[] { Integer.valueOf(lvy.update("FunctionMsgItem", parami, "functionmsgid=?", new String[] { paramString })) });
           AppMethodBeat.o(114151);
           return;
           bool1 = false;
@@ -90,7 +88,7 @@ public final class bs
   }
   
   /* Error */
-  public static i bkw(String paramString)
+  public static i bwV(String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -99,7 +97,7 @@ public final class bs
     //   4: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
     //   8: ldc 109
-    //   10: invokestatic 112	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   10: invokestatic 112	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
     //   13: aload_0
     //   14: invokestatic 195	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   17: ifeq +10 -> 27
@@ -116,9 +114,9 @@ public final class bs
     //   37: aload_0
     //   38: aastore
     //   39: invokestatic 124	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   42: getstatic 83	com/tencent/mm/storage/bs:iFy	Lcom/tencent/mm/storagebase/h;
+    //   42: getstatic 83	com/tencent/mm/storage/bs:lvy	Lcom/tencent/mm/storagebase/h;
     //   45: ldc 97
-    //   47: getstatic 58	com/tencent/mm/storage/bs:Oqz	[Ljava/lang/String;
+    //   47: getstatic 58	com/tencent/mm/storage/bs:VGv	[Ljava/lang/String;
     //   50: ldc 166
     //   52: iconst_1
     //   53: anewarray 52	java/lang/String
@@ -137,7 +135,7 @@ public final class bs
     //   72: astore_2
     //   73: aload_0
     //   74: ifnonnull +6 -> 80
-    //   77: invokestatic 81	kotlin/g/b/p:hyc	()V
+    //   77: invokestatic 81	kotlin/g/b/p:iCn	()V
     //   80: aload_0
     //   81: invokeinterface 209 1 0
     //   86: ifeq +28 -> 114
@@ -155,7 +153,7 @@ public final class bs
     //   109: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   112: aload_3
     //   113: areturn
-    //   114: getstatic 225	kotlin/x:SXb	Lkotlin/x;
+    //   114: getstatic 225	kotlin/x:aazN	Lkotlin/x;
     //   117: astore_0
     //   118: aload_2
     //   119: aconst_null
@@ -198,16 +196,16 @@ public final class bs
   }
   
   /* Error */
-  public static java.util.List<i> gDb()
+  public static java.util.List<i> hzo()
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore_1
     //   2: ldc 228
     //   4: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: getstatic 83	com/tencent/mm/storage/bs:iFy	Lcom/tencent/mm/storagebase/h;
+    //   7: getstatic 83	com/tencent/mm/storage/bs:lvy	Lcom/tencent/mm/storagebase/h;
     //   10: ldc 97
-    //   12: getstatic 58	com/tencent/mm/storage/bs:Oqz	[Ljava/lang/String;
+    //   12: getstatic 58	com/tencent/mm/storage/bs:VGv	[Ljava/lang/String;
     //   15: ldc 230
     //   17: iconst_1
     //   18: anewarray 52	java/lang/String
@@ -234,7 +232,7 @@ public final class bs
     //   56: pop
     //   57: aload_0
     //   58: ldc 237
-    //   60: invokestatic 72	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   60: invokestatic 72	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
     //   63: aload_0
     //   64: invokeinterface 240 1 0
     //   69: ifne +56 -> 125
@@ -300,18 +298,18 @@ public final class bs
     //   125	130	142	finally
   }
   
-  public static void gDc()
+  public static void hzp()
   {
     AppMethodBeat.i(114153);
-    int i = iFy.delete("FunctionMsgItem", "status=?", new String[] { "100" });
-    int j = iFy.delete("FunctionMsgItem", "status=?", new String[] { "3" });
+    int i = lvy.delete("FunctionMsgItem", "status=?", new String[] { "100" });
+    int j = lvy.delete("FunctionMsgItem", "status=?", new String[] { "3" });
     Log.i("FunctionMsg.FunctionMsgStorage", "[deleteAllHandleFunctionMsg] ret1:" + i + " ret2:" + j);
     AppMethodBeat.o(114153);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.storage.bs
  * JD-Core Version:    0.7.0.1
  */

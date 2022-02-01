@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:paddingTop="@dimen/ct" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ViewStub android:id="@id/j7x" android:layout="@layout/kl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" />
-    <ViewStub android:id="@id/j7y" android:layout="@layout/kp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" />
+    <LinearLayout android:id="@id/khv" android:background="@color/afz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" style="@style/hx" />
+    </LinearLayout>
+    <ViewStub android:id="@id/j7x" android:layout="@layout/kl" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/j7y" android:layout="@layout/kp" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/kvl" android:layout="@layout/amk" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

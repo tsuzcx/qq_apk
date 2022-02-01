@@ -1,54 +1,152 @@
 package com.tencent.mm.model;
 
+import android.content.SharedPreferences.Editor;
+import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 
 public final class cm
 {
-  public Set<a> iGc;
-  public boolean isRunning;
+  private static final Object lock;
+  private static volatile boolean lwb;
+  private static long lwc;
+  private static long lwd;
   
-  public cm()
+  static
   {
-    AppMethodBeat.i(132286);
-    this.isRunning = false;
-    this.iGc = new HashSet();
-    AppMethodBeat.o(132286);
+    AppMethodBeat.i(196262);
+    lwb = false;
+    lwc = -1L;
+    lwd = -1L;
+    lock = new Object();
+    AppMethodBeat.o(196262);
   }
   
-  public final boolean a(a parama)
+  public static void Gm(long paramLong)
   {
-    AppMethodBeat.i(132287);
-    if (this.isRunning)
+    AppMethodBeat.i(132282);
+    synchronized (lock)
     {
-      Log.e("MicroMsg.UninitForUEH", "add , is running , forbid add");
-      AppMethodBeat.o(132287);
-      return false;
+      if (!lwb)
+      {
+        lwc = paramLong;
+        lwd = SystemClock.elapsedRealtime();
+        lwb = true;
+        ??? = h.aHG().aHp();
+        ((ao)???).set(ar.a.VpT, Long.valueOf(lwc));
+        ((ao)???).set(ar.a.VpU, Long.valueOf(lwd));
+        MultiProcessMMKV.getMMKV("time").edit().putLong("client_server_time_long", lwc);
+        MultiProcessMMKV.getMMKV("time").edit().putLong("client_server_elapsed_time_long", lwd);
+        AppMethodBeat.o(132282);
+        return;
+      }
+      lwc = Math.max(paramLong, bfE());
     }
-    boolean bool = this.iGc.add(parama);
-    AppMethodBeat.o(132287);
-    return bool;
   }
   
-  public final boolean b(a parama)
+  public static long bfC()
   {
-    AppMethodBeat.i(132288);
-    if (this.isRunning)
+    AppMethodBeat.i(132281);
+    if ((MMApplicationContext.isMainProcess()) && (h.aHH().kdm))
     {
-      Log.e("MicroMsg.UninitForUEH", "remove , is running , forbid remove");
-      AppMethodBeat.o(132288);
-      return false;
+      h.aHH();
+      if (h.aHE().aGM()) {}
     }
-    boolean bool = this.iGc.remove(parama);
-    AppMethodBeat.o(132288);
-    return bool;
+    else
+    {
+      Log.i("MicroMsg.TimeHelper", "account error");
+      AppMethodBeat.o(132281);
+      return 0L;
+    }
+    try
+    {
+      long l = bfE();
+      AppMethodBeat.o(132281);
+      return l;
+    }
+    catch (Throwable localThrowable)
+    {
+      Log.e("MicroMsg.TimeHelper", localThrowable.getMessage());
+      AppMethodBeat.o(132281);
+    }
+    return 0L;
   }
   
-  public static abstract interface a
+  public static long bfD()
   {
-    public abstract boolean aWC();
+    AppMethodBeat.i(292854);
+    long l = bfE();
+    AppMethodBeat.o(292854);
+    return l;
+  }
+  
+  public static long bfE()
+  {
+    AppMethodBeat.i(162133);
+    if (lwb) {
+      synchronized (lock)
+      {
+        l1 = Math.max(0L, SystemClock.elapsedRealtime() - lwd);
+        long l2 = lwc;
+        AppMethodBeat.o(162133);
+        return l1 + l2;
+      }
+    }
+    long l1 = System.currentTimeMillis();
+    AppMethodBeat.o(162133);
+    return l1;
+  }
+  
+  public static int bfF()
+  {
+    AppMethodBeat.i(132284);
+    int i = (int)(bfE() / 1000L);
+    AppMethodBeat.o(132284);
+    return i;
+  }
+  
+  public static long bfG()
+  {
+    AppMethodBeat.i(196260);
+    long l1;
+    try
+    {
+      l1 = SystemClock.elapsedRealtime();
+      long l2 = MultiProcessMMKV.getMMKV("time").getLong("client_server_elapsed_time_long", l1);
+      long l3 = MultiProcessMMKV.getMMKV("time").getLong("client_server_time_long", 0L);
+      long l4 = Math.max(0L, l1 - l2);
+      Log.d("MicroMsg.TimeHelper", "[getSyncServerTimeMs] lastServerTime:" + l3 + " curElapsedRealTime: " + l1 + " SyncServerTime:" + l2 + " offset:" + l4);
+      if (0L < l3)
+      {
+        AppMethodBeat.o(196260);
+        return l3 + l4;
+      }
+      l1 = System.currentTimeMillis();
+      AppMethodBeat.o(196260);
+      return l1;
+    }
+    catch (Throwable localThrowable)
+    {
+      Log.e("MicroMsg.TimeHelper", "getCurrentServerTimeNoMMProcess %s", new Object[] { localThrowable.getMessage() });
+      l1 = System.currentTimeMillis();
+      AppMethodBeat.o(196260);
+    }
+    return l1;
+  }
+  
+  public static long secondsToNow(long paramLong)
+  {
+    AppMethodBeat.i(132285);
+    long l = bfE() / 1000L;
+    AppMethodBeat.o(132285);
+    return l - paramLong;
   }
 }
 

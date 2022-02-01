@@ -2,10 +2,10 @@ package com.tencent.mm.loader.h.a;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/loader/model/data/ILoaderData;", "", "isLegal", "", "uniqueValue", "", "libimageloader_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/loader/model/data/ILoaderData;", "", "isLegal", "", "uniqueValue", "", "libimageloader_release"})
 public abstract interface c
 {
-  public abstract String auA();
+  public abstract String aBv();
 }
 
 

@@ -8,12 +8,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.j;
 import com.tencent.mm.plugin.recordvideo.model.audio.AudioCacheInfo;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
-import com.tencent.mm.plugin.recordvideo.plugin.t;
-import com.tencent.mm.plugin.recordvideo.plugin.t.a;
+import com.tencent.mm.plugin.recordvideo.plugin.u;
+import com.tencent.mm.plugin.recordvideo.plugin.u.a;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.util.Collection;
@@ -21,160 +23,156 @@ import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/plugin/RecordAudioPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "Lcom/tencent/mm/plugin/finder/video/plugin/AudioPanelPlugin$AudioStateListener;", "layout", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "addMusicDuration", "Landroid/widget/TextView;", "addMusicGroup", "Landroid/view/View;", "addMusicIcon", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "addMusicIndicator", "addMusicText", "canAddMusic", "", "hasMusic", "getLayout", "()Landroid/view/ViewGroup;", "musicInfo", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "changeRecordDuration", "", "durationMs", "", "enableAddMusic", "enabled", "onAudioPause", "onAudioResume", "setMusic", "setVisibility", "visibility", "", "updateContent", "updateProgress", "timeMs", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/plugin/RecordAudioPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "Lcom/tencent/mm/plugin/finder/video/plugin/AudioPanelPlugin$AudioStateListener;", "layout", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "addMusicDuration", "Landroid/widget/TextView;", "addMusicGroup", "Landroid/view/View;", "addMusicIcon", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "addMusicIndicator", "addMusicText", "canAddMusic", "", "hasMusic", "getLayout", "()Landroid/view/ViewGroup;", "musicInfo", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "changeRecordDuration", "", "durationMs", "", "enableAddMusic", "enabled", "onAudioPause", "onAudioResume", "setMusic", "setVisibility", "visibility", "", "updateContent", "updateProgress", "timeMs", "Companion", "plugin-finder_release"})
 public final class g
-  implements t
+  implements u
 {
-  private static final long whm = 60000L;
-  public static final g.a whn;
-  final ViewGroup wgq;
-  final d wgr;
-  private final View whe;
-  private final WeImageView whf;
-  private final TextView whg;
-  private final View whh;
-  private final TextView whi;
-  public AudioCacheInfo whj;
-  public boolean whk;
-  private boolean whl;
+  private static final long ARc = 60000L;
+  public static final a ARd;
+  final ViewGroup APk;
+  final d APl;
+  private final View AQU;
+  private final WeImageView AQV;
+  private final TextView AQW;
+  private final View AQX;
+  private final TextView AQY;
+  public AudioCacheInfo AQZ;
+  public boolean ARa;
+  private boolean ARb;
   
   static
   {
-    AppMethodBeat.i(254501);
-    whn = new g.a((byte)0);
-    whm = 60000L;
-    AppMethodBeat.o(254501);
+    AppMethodBeat.i(277129);
+    ARd = new a((byte)0);
+    ARc = 60000L;
+    AppMethodBeat.o(277129);
   }
   
   public g(ViewGroup paramViewGroup, d paramd)
   {
-    AppMethodBeat.i(254500);
-    this.wgq = paramViewGroup;
-    this.wgr = paramd;
-    paramViewGroup = this.wgq.findViewById(2131306692);
-    p.g(paramViewGroup, "layout.findViewById(R.id.record_add_music)");
-    this.whe = paramViewGroup;
-    paramViewGroup = this.wgq.findViewById(2131306694);
-    p.g(paramViewGroup, "layout.findViewById(R.id.record_add_music_icon)");
-    this.whf = ((WeImageView)paramViewGroup);
-    paramViewGroup = this.wgq.findViewById(2131306696);
-    p.g(paramViewGroup, "layout.findViewById(R.id.record_add_music_text)");
-    this.whg = ((TextView)paramViewGroup);
-    paramViewGroup = this.wgq.findViewById(2131306695);
-    p.g(paramViewGroup, "layout.findViewById(R.id…cord_add_music_indicator)");
-    this.whh = paramViewGroup;
-    paramViewGroup = this.wgq.findViewById(2131306693);
-    p.g(paramViewGroup, "layout.findViewById(R.id…ecord_add_music_duration)");
-    this.whi = ((TextView)paramViewGroup);
-    this.whl = true;
-    this.whe.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    AppMethodBeat.i(277128);
+    this.APk = paramViewGroup;
+    this.APl = paramd;
+    paramViewGroup = this.APk.findViewById(b.f.record_add_music);
+    p.j(paramViewGroup, "layout.findViewById(R.id.record_add_music)");
+    this.AQU = paramViewGroup;
+    paramViewGroup = this.APk.findViewById(b.f.record_add_music_icon);
+    p.j(paramViewGroup, "layout.findViewById(R.id.record_add_music_icon)");
+    this.AQV = ((WeImageView)paramViewGroup);
+    paramViewGroup = this.APk.findViewById(b.f.record_add_music_text);
+    p.j(paramViewGroup, "layout.findViewById(R.id.record_add_music_text)");
+    this.AQW = ((TextView)paramViewGroup);
+    paramViewGroup = this.APk.findViewById(b.f.record_add_music_indicator);
+    p.j(paramViewGroup, "layout.findViewById(R.id…cord_add_music_indicator)");
+    this.AQX = paramViewGroup;
+    paramViewGroup = this.APk.findViewById(b.f.record_add_music_duration);
+    p.j(paramViewGroup, "layout.findViewById(R.id…ecord_add_music_duration)");
+    this.AQY = ((TextView)paramViewGroup);
+    this.ARb = true;
+    this.AQU.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(254495);
+        AppMethodBeat.i(279541);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/video/plugin/RecordAudioPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        if (g.a(this.who)) {
-          d.b.a(this.who.wgr, d.c.BWV);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/video/plugin/RecordAudioPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        if (g.a(this.ARe)) {
+          d.b.a(this.ARe.APl, d.c.HTH);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/video/plugin/RecordAudioPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(254495);
+        AppMethodBeat.o(279541);
       }
     });
-    this.whg.setSelected(true);
-    this.whe.post((Runnable)new Runnable()
+    this.AQW.setSelected(true);
+    this.AQU.post((Runnable)new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(254496);
-        int i = g.b(this.who).getWidth();
-        int j = g.c(this.who).getWidth();
-        int k = g.d(this.who).getWidth();
-        int m = com.tencent.mm.cb.a.fromDPToPix(this.who.wgq.getContext(), 54);
-        g.e(this.who).setMaxWidth(i - j - k - m);
-        AppMethodBeat.o(254496);
+        AppMethodBeat.i(290122);
+        int i = g.b(this.ARe).getWidth();
+        int j = g.c(this.ARe).getWidth();
+        int k = g.d(this.ARe).getWidth();
+        int m = com.tencent.mm.ci.a.fromDPToPix(this.ARe.APk.getContext(), 54);
+        g.e(this.ARe).setMaxWidth(i - j - k - m);
+        AppMethodBeat.o(290122);
       }
     });
-    if (this.whl)
-    {
-      this.whl = false;
-      this.whh.setVisibility(4);
-    }
-    AppMethodBeat.o(254500);
+    rk(false);
+    AppMethodBeat.o(277128);
   }
   
-  public final void Gt(long paramLong)
+  public final void Ns(long paramLong)
   {
-    AppMethodBeat.i(254499);
-    if (paramLong < whm)
+    AppMethodBeat.i(277127);
+    if (this.AQZ != null)
     {
-      this.whi.setVisibility(0);
-      this.whi.setText((CharSequence)this.wgq.getContext().getString(2131760508, new Object[] { Integer.valueOf(kotlin.h.a.cR((float)paramLong / 1000.0F)) }));
-      AppMethodBeat.o(254499);
+      this.AQY.setVisibility(0);
+      this.AQY.setText((CharSequence)this.APk.getContext().getString(b.j.finder_record_add_music_duration, new Object[] { Integer.valueOf(kotlin.h.a.dm((float)paramLong / 1000.0F)) }));
+      AppMethodBeat.o(277127);
       return;
     }
-    this.whi.setVisibility(8);
-    AppMethodBeat.o(254499);
+    this.AQY.setVisibility(8);
+    AppMethodBeat.o(277127);
   }
   
-  public final void aSs() {}
+  public final void bbp() {}
   
-  public final void dFW()
+  public final void ehN()
   {
     Object localObject2 = null;
-    AppMethodBeat.i(254498);
-    if (this.whj == null)
+    AppMethodBeat.i(277126);
+    if (this.AQZ == null)
     {
-      this.whg.setText(2131760509);
-      Gt(whm);
-      AppMethodBeat.o(254498);
+      this.AQW.setText((CharSequence)com.tencent.mm.ci.a.ba(this.APk.getContext(), b.j.finder_record_choose_music));
+      Ns(ARc);
+      AppMethodBeat.o(277126);
       return;
     }
-    TextView localTextView = this.whg;
-    Object localObject1 = this.whj;
+    TextView localTextView = this.AQW;
+    Object localObject1 = this.AQZ;
     int i;
     if (localObject1 != null)
     {
-      localObject1 = ((AudioCacheInfo)localObject1).BOZ;
+      localObject1 = ((AudioCacheInfo)localObject1).HLE;
       localObject1 = (Collection)localObject1;
       if ((localObject1 != null) && (!((Collection)localObject1).isEmpty())) {
-        break label116;
+        break label130;
       }
       i = 1;
-      label76:
+      label90:
       if (i == 0) {
-        break label126;
+        break label140;
       }
-      localObject1 = this.whj;
+      localObject1 = this.AQZ;
       if (localObject1 == null) {
-        break label121;
+        break label135;
       }
     }
-    label116:
-    label121:
-    for (localObject1 = ((AudioCacheInfo)localObject1).BPc;; localObject1 = null)
+    label130:
+    label135:
+    for (localObject1 = ((AudioCacheInfo)localObject1).HLH;; localObject1 = null)
     {
       localObject1 = (CharSequence)localObject1;
       localTextView.setText((CharSequence)localObject1);
-      AppMethodBeat.o(254498);
+      AppMethodBeat.o(277126);
       return;
       localObject1 = null;
       break;
       i = 0;
-      break label76;
+      break label90;
     }
-    label126:
-    localObject1 = this.whj;
+    label140:
+    localObject1 = this.AQZ;
     if (localObject1 != null) {}
-    for (localObject1 = ((AudioCacheInfo)localObject1).BOZ;; localObject1 = null)
+    for (localObject1 = ((AudioCacheInfo)localObject1).HLE;; localObject1 = null)
     {
       String str = Util.listToString((List)localObject1, ",");
       StringBuilder localStringBuilder = new StringBuilder();
-      AudioCacheInfo localAudioCacheInfo = this.whj;
+      AudioCacheInfo localAudioCacheInfo = this.AQZ;
       localObject1 = localObject2;
       if (localAudioCacheInfo != null) {
-        localObject1 = localAudioCacheInfo.BPc;
+        localObject1 = localAudioCacheInfo.HLH;
       }
       localObject1 = (CharSequence)((String)localObject1 + " - " + str);
       break;
@@ -183,7 +181,10 @@ public final class g
   
   public final String name()
   {
-    return null;
+    AppMethodBeat.i(277130);
+    String str = getClass().getName();
+    AppMethodBeat.o(277130);
+    return str;
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
@@ -199,11 +200,11 @@ public final class g
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(254502);
-    p.h(paramArrayOfString, "permissions");
-    p.h(paramArrayOfInt, "grantResults");
-    t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(254502);
+    AppMethodBeat.i(277131);
+    p.k(paramArrayOfString, "permissions");
+    p.k(paramArrayOfInt, "grantResults");
+    u.a.a(paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(277131);
   }
   
   public final void onResume() {}
@@ -212,19 +213,43 @@ public final class g
   
   public final void reset() {}
   
+  public final void rk(boolean paramBoolean)
+  {
+    AppMethodBeat.i(277124);
+    View localView;
+    if (this.ARb != paramBoolean)
+    {
+      this.ARb = paramBoolean;
+      localView = this.AQX;
+      if (!paramBoolean) {
+        break label42;
+      }
+    }
+    label42:
+    for (int i = 0;; i = 4)
+    {
+      localView.setVisibility(i);
+      AppMethodBeat.o(277124);
+      return;
+    }
+  }
+  
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(254497);
-    this.whe.setVisibility(paramInt);
+    AppMethodBeat.i(277125);
+    this.AQU.setVisibility(paramInt);
     if (paramInt == 0) {
-      dFW();
+      ehN();
     }
-    AppMethodBeat.o(254497);
+    AppMethodBeat.o(277125);
   }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/plugin/RecordAudioPlugin$Companion;", "", "()V", "DURATION_HINT_THRESHOLD", "", "getDURATION_HINT_THRESHOLD", "()J", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.plugin.g
  * JD-Core Version:    0.7.0.1
  */

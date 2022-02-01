@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:background="@drawable/xh" android:layout_width="fill_parent" android:layout_height="379.0dip"
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@drawable/xh" android:layout_width="fill_parent" android:layout_height="379.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView android:textSize="@dimen/cb" android:textStyle="bold" android:textColor="@color/FG_0" android:id="@id/j06" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cl" android:text="@string/dat" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
     <TextView android:textSize="@dimen/c5" android:textStyle="bold" android:textColor="@color/FG_2" android:id="@id/j04" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:text="@string/das" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toBottomOf="@id/j06" />
     <ImageView android:id="@id/j05" android:layout_width="@dimen/c1" android:layout_height="@dimen/c1" android:layout_marginTop="@dimen/ce" android:src="@drawable/ct7" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toBottomOf="@id/j04" />
     <TextView android:textSize="@dimen/cb" android:textColor="@color/c" android:gravity="center" android:id="@id/j03" android:background="@drawable/jm" android:layout_width="@dimen/c8" android:layout_height="@dimen/cl" android:layout_marginTop="@dimen/cn" android:text="@string/dar" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toBottomOf="@id/j05" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  public int IxY = 0;
-  a IxZ;
+  public int Psd = 0;
+  a Pse;
   public int id = 0;
   public String md5 = "";
   public String talker = "";
@@ -17,8 +17,8 @@ public final class f
     localf.id = this.id;
     localf.talker = this.talker;
     localf.md5 = this.md5;
-    localf.IxY = this.IxY;
-    localf.IxZ = this.IxZ;
+    localf.Psd = this.Psd;
+    localf.Pse = this.Pse;
     AppMethodBeat.o(30012);
     return localf;
   }
@@ -26,7 +26,7 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(30013);
-    String str = "WearNotification [talker=" + this.talker + ", id=" + this.id + ", md5=" + this.md5 + ", ignoreInWatch=" + this.IxY + ", status=" + this.IxZ + "]";
+    String str = "WearNotification [talker=" + this.talker + ", id=" + this.id + ", md5=" + this.md5 + ", ignoreInWatch=" + this.Psd + ", status=" + this.Pse + "]";
     AppMethodBeat.o(30013);
     return str;
   }
@@ -36,11 +36,11 @@ public final class f
     static
     {
       AppMethodBeat.i(30011);
-      Iya = new a("INIT", 0);
-      Iyb = new a("SHOWING", 1);
-      Iyc = new a("IGNORE", 2);
-      Iyd = new a("REPLY", 3);
-      Iye = new a[] { Iya, Iyb, Iyc, Iyd };
+      Psf = new a("INIT", 0);
+      Psg = new a("SHOWING", 1);
+      Psh = new a("IGNORE", 2);
+      Psi = new a("REPLY", 3);
+      Psj = new a[] { Psf, Psg, Psh, Psi };
       AppMethodBeat.o(30011);
     }
     
@@ -49,7 +49,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f
  * JD-Core Version:    0.7.0.1
  */

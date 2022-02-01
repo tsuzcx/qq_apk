@@ -16,16 +16,21 @@ import com.tencent.mm.svg.b.d;
 public final class c
   extends b
 {
-  private a OuH;
+  private a VKF;
   
   public c(Picture paramPicture, int paramInt) {}
+  
+  public final void aI(Bitmap paramBitmap)
+  {
+    this.VKF.VKH = paramBitmap;
+  }
   
   public final void draw(Canvas paramCanvas)
   {
     int i = 1;
     int j = 0;
     AppMethodBeat.i(148721);
-    long l1 = com.tencent.mm.svg.b.b.gFZ();
+    long l1 = com.tencent.mm.svg.b.b.hCr();
     label388:
     label522:
     label524:
@@ -38,24 +43,24 @@ public final class c
         if (!paramCanvas.isHardwareAccelerated()) {
           break label388;
         }
-        if (this.OuH.OuI == null)
+        if (this.VKF.VKG == null)
         {
-          com.tencent.mm.svg.b.c.e("MicroMsg.SVGPictureDrawable", "Must not go here! %s", new Object[] { Integer.valueOf(this.Ouy) });
-          if (this.OuH.OuJ == null) {
+          com.tencent.mm.svg.b.c.e("MicroMsg.SVGPictureDrawable", "Must not go here! %s", new Object[] { Integer.valueOf(this.VKw) });
+          if (this.VKF.VKH == null) {
             break label522;
           }
-          if (!this.OuH.OuJ.isRecycled()) {
+          if (!this.VKF.VKH.isRecycled()) {
             break label361;
           }
           break label522;
-          localObject4 = gFS();
+          localObject4 = hCj();
           Object localObject1 = localObject4;
           if (localObject4 == null)
           {
-            localObject1 = a.C(this);
-            gr((View)localObject1);
+            localObject1 = a.I(this);
+            hB((View)localObject1);
           }
-          a.b((View)localObject1, this.OuA);
+          a.b((View)localObject1, this.VKy);
           if (i != 0) {
             break label499;
           }
@@ -66,12 +71,12 @@ public final class c
           return;
         }
         l2 = System.nanoTime();
-        if ((this.OuH.OuJ != null) && (!this.OuH.OuJ.isRecycled())) {
+        if ((this.VKF.VKH != null) && (!this.VKF.VKH.isRecycled())) {
           continue;
         }
         if ((getIntrinsicWidth() > 2048) || (getIntrinsicHeight() > 2048))
         {
-          com.tencent.mm.svg.b.c.e("MicroMsg.SVGPictureDrawable", "This drawable is too big. %s", new Object[] { Integer.valueOf(this.Ouy) });
+          com.tencent.mm.svg.b.c.e("MicroMsg.SVGPictureDrawable", "This drawable is too big. %s", new Object[] { Integer.valueOf(this.VKw) });
           continue;
         }
         if (getIntrinsicWidth() <= 0) {
@@ -80,9 +85,9 @@ public final class c
       }
       finally
       {
-        this.mDuration = com.tencent.mm.svg.b.b.Nn(l1);
-        d.gGb();
-        y(paramCanvas);
+        this.mDuration = com.tencent.mm.svg.b.b.Vb(l1);
+        d.hCt();
+        B(paramCanvas);
         AppMethodBeat.o(148721);
       }
       if (getIntrinsicHeight() <= 0)
@@ -94,40 +99,40 @@ public final class c
       {
         Object localObject3 = Bitmap.createBitmap(getIntrinsicWidth(), getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         localObject4 = new Canvas((Bitmap)localObject3);
-        this.OuH.OuI.draw((Canvas)localObject4);
-        this.OuH.OuJ = ((Bitmap)localObject3);
-        com.tencent.mm.svg.b.b.Nn(l2);
-        d.gGa();
-        y((Canvas)localObject4);
+        this.VKF.VKG.draw((Canvas)localObject4);
+        this.VKF.VKH = ((Bitmap)localObject3);
+        com.tencent.mm.svg.b.b.Vb(l2);
+        d.hCs();
+        B((Canvas)localObject4);
         continue;
         label361:
-        gFQ();
-        paramCanvas.drawBitmap(this.OuH.OuJ, null, this.Ky, this.OuA);
+        hCh();
+        paramCanvas.drawBitmap(this.VKF.VKH, null, this.KV, this.VKy);
         break label524;
         i = j;
-        if (this.OuH.OuJ != null)
+        if (this.VKF.VKH != null)
         {
           i = j;
-          if (!this.OuH.OuJ.isRecycled())
+          if (!this.VKF.VKH.isRecycled())
           {
-            com.tencent.mm.svg.b.c.i("MicroMsg.SVGPictureDrawable", "recycle bitmap:%s", new Object[] { this.OuH.OuJ.toString() });
-            this.OuH.OuJ.recycle();
-            this.OuH.OuJ = null;
+            com.tencent.mm.svg.b.c.i("MicroMsg.SVGPictureDrawable", "recycle bitmap:%s", new Object[] { this.VKF.VKH.toString() });
+            this.VKF.VKH.recycle();
+            this.VKF.VKH = null;
             i = j;
             continue;
             label462:
-            localObject3 = this.OuH.OuI;
+            localObject3 = this.VKF.VKG;
             if (localObject3 != null)
             {
-              gFQ();
+              hCh();
               paramCanvas.save();
-              paramCanvas.drawPicture((Picture)localObject3, this.Ky);
+              paramCanvas.drawPicture((Picture)localObject3, this.KV);
               paramCanvas.restore();
             }
             label499:
-            this.mDuration = com.tencent.mm.svg.b.b.Nn(l1);
-            d.gGb();
-            y(paramCanvas);
+            this.mDuration = com.tencent.mm.svg.b.b.Vb(l1);
+            d.hCt();
+            B(paramCanvas);
             AppMethodBeat.o(148721);
             return;
             i = 0;
@@ -139,20 +144,25 @@ public final class c
   
   public final Drawable.ConstantState getConstantState()
   {
-    return this.OuH;
+    return this.VKF;
+  }
+  
+  public final Picture hCk()
+  {
+    return this.VKF.VKG;
   }
   
   public static final class a
     extends Drawable.ConstantState
   {
-    protected int GRb;
-    protected Picture OuI;
-    protected Bitmap OuJ;
+    protected int NHm;
+    protected Picture VKG;
+    protected Bitmap VKH;
     
     public a(Picture paramPicture, int paramInt)
     {
-      this.OuI = paramPicture;
-      this.GRb = paramInt;
+      this.VKG = paramPicture;
+      this.NHm = paramInt;
     }
     
     public final int getChangingConfigurations()
@@ -163,7 +173,7 @@ public final class c
     public final Drawable newDrawable()
     {
       AppMethodBeat.i(148717);
-      c localc = new c(this.OuI, this.GRb);
+      c localc = new c(this.VKG, this.NHm);
       AppMethodBeat.o(148717);
       return localc;
     }
@@ -187,7 +197,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.svg.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -3,14 +3,14 @@ package com.tencent.mm.n;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.zj;
-import com.tencent.mm.g.a.zj.b;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.f.a.aaq;
+import com.tencent.mm.f.a.aaq.b;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.model.ac;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
@@ -28,22 +28,22 @@ public final class g
 {
   private static String TAG = "MicroMsg.NotificationConfig";
   
-  public static void Ej(String paramString)
+  public static void Lc(String paramString)
   {
     AppMethodBeat.i(150004);
-    b.Ej(paramString);
+    b.Lc(paramString);
     Log.i(TAG, "[NOTIFICATION SETTINGS]double write : saveSoundTone: %s", new Object[] { paramString });
     AppMethodBeat.o(150004);
   }
   
-  public static boolean Em(String paramString)
+  public static boolean Lf(String paramString)
   {
     AppMethodBeat.i(150015);
-    zj localzj = new zj();
-    localzj.efx.dKy = 1;
-    localzj.efx.content = paramString;
-    EventCenter.instance.publish(localzj);
-    if ((localzj.efy.type == 2) || (paramString.equals(ca.OqC)))
+    aaq localaaq = new aaq();
+    localaaq.fZM.fDn = 1;
+    localaaq.fZM.content = paramString;
+    EventCenter.instance.publish(localaaq);
+    if ((localaaq.fZN.type == 2) || (paramString.equals(ca.VGy)))
     {
       AppMethodBeat.o(150015);
       return true;
@@ -52,14 +52,14 @@ public final class g
     return false;
   }
   
-  public static boolean En(String paramString)
+  public static boolean Lg(String paramString)
   {
     AppMethodBeat.i(150016);
-    zj localzj = new zj();
-    localzj.efx.dKy = 1;
-    localzj.efx.content = paramString;
-    EventCenter.instance.publish(localzj);
-    if ((localzj.efy.type == 3) || (paramString.equals(ca.OqB)))
+    aaq localaaq = new aaq();
+    localaaq.fZM.fDn = 1;
+    localaaq.fZM.content = paramString;
+    EventCenter.instance.publish(localaaq);
+    if ((localaaq.fZN.type == 3) || (paramString.equals(ca.VGx)))
     {
       AppMethodBeat.o(150016);
       return true;
@@ -68,34 +68,34 @@ public final class g
     return false;
   }
   
-  public static int Eo(String paramString)
+  public static int Lh(String paramString)
   {
     AppMethodBeat.i(150021);
-    int i = ac.aI(paramString, null);
+    int i = ac.aM(paramString, null);
     AppMethodBeat.o(150021);
     return i;
   }
   
-  public static boolean Ep(String paramString)
+  public static boolean Li(String paramString)
   {
     AppMethodBeat.i(150022);
-    boolean bool = as.IG(paramString);
+    boolean bool = as.PY(paramString);
     AppMethodBeat.o(150022);
     return bool;
   }
   
-  public static boolean Eq(String paramString)
+  public static boolean Lj(String paramString)
   {
     AppMethodBeat.i(150023);
-    boolean bool = ab.Iw(paramString);
+    boolean bool = ab.PO(paramString);
     AppMethodBeat.o(150023);
     return bool;
   }
   
-  public static boolean Er(String paramString)
+  public static boolean Lk(String paramString)
   {
     AppMethodBeat.i(150024);
-    if ((ab.JJ(paramString)) || ((ab.Eq(paramString)) && (!ab.JI(paramString))) || ((ab.Iy(paramString)) && (!ab.JI(paramString))))
+    if ((ab.Rc(paramString)) || ((ab.Lj(paramString)) && (!ab.Rb(paramString))) || ((ab.PQ(paramString)) && (!ab.Rb(paramString))))
     {
       AppMethodBeat.o(150024);
       return true;
@@ -104,205 +104,172 @@ public final class g
     return false;
   }
   
-  public static int Es(String paramString)
+  public static int Ll(String paramString)
   {
     AppMethodBeat.i(150025);
-    int i = ((l)com.tencent.mm.kernel.g.af(l.class)).aST().bkn(paramString);
+    int i = ((n)h.ae(n.class)).bbR().bwM(paramString);
     AppMethodBeat.o(150025);
     return i;
   }
   
-  public static boolean aqD()
+  public static boolean awW()
   {
     AppMethodBeat.i(150012);
-    boolean bool = a.qd(a.azm());
+    boolean bool = com.tencent.mm.kernel.b.sC(com.tencent.mm.kernel.b.aGJ());
     AppMethodBeat.o(150012);
     return bool;
   }
   
-  public static boolean aqE()
+  public static boolean awX()
   {
     AppMethodBeat.i(150014);
-    boolean bool = z.rP(apK().getInt("notification.status.webonline.push.open", 0));
+    boolean bool = z.uJ(awd().getInt("notification.status.webonline.push.open", 0));
     AppMethodBeat.o(150014);
     return bool;
   }
   
-  public static int aqF()
+  public static int awY()
   {
     AppMethodBeat.i(150017);
-    if (!com.tencent.mm.kernel.g.aAc())
+    if (!h.aHB())
     {
       Log.w(TAG, "getUnReadTalkerCount, but mmcore not ready");
       AppMethodBeat.o(150017);
       return 0;
     }
-    int i = ac.JR(ab.iCF).size();
+    int i = ac.Rj(ab.lsA).size();
     AppMethodBeat.o(150017);
     return i;
   }
   
-  public static int aqG()
+  public static int awZ()
   {
     AppMethodBeat.i(150019);
-    if (!com.tencent.mm.kernel.g.aAc())
+    if (!h.aHB())
     {
       Log.w(TAG, "getUnReadMsgCoun, but mmcore not ready");
       AppMethodBeat.o(150019);
       return 0;
     }
-    int i = ac.JP(ab.iCF);
+    int i = ac.uM(1);
     AppMethodBeat.o(150019);
     return i;
   }
   
-  public static boolean aqH()
+  public static boolean axa()
   {
     AppMethodBeat.i(150027);
-    boolean bool = ((Boolean)com.tencent.mm.kernel.g.aAh().azQ().get(73217, Boolean.TRUE)).booleanValue();
+    boolean bool = ((Boolean)h.aHG().aHp().b(73217, Boolean.TRUE)).booleanValue();
     AppMethodBeat.o(150027);
     return bool;
   }
   
-  public static boolean aqI()
+  public static boolean axb()
   {
     AppMethodBeat.i(150028);
-    boolean bool = ((Boolean)com.tencent.mm.kernel.g.aAh().azQ().get(73218, Boolean.TRUE)).booleanValue();
+    boolean bool = ((Boolean)h.aHG().aHp().b(73218, Boolean.TRUE)).booleanValue();
     AppMethodBeat.o(150028);
     return bool;
   }
   
-  public static void cu(int paramInt1, int paramInt2)
+  public static void cM(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(150010);
-    SharedPreferences localSharedPreferences = apK();
+    SharedPreferences localSharedPreferences = awd();
     localSharedPreferences.edit().putInt("settings_active_begin_time_hour", paramInt1).commit();
     localSharedPreferences.edit().putInt("settings_active_begin_time_min", paramInt2).commit();
     Log.i(TAG, "[NOTIFICATION SETTINGS]double write : saveActiveBegine: %d:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(150010);
   }
   
-  public static void cv(int paramInt1, int paramInt2)
+  public static void cN(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(150011);
-    SharedPreferences localSharedPreferences = apK();
+    SharedPreferences localSharedPreferences = awd();
     localSharedPreferences.edit().putInt("settings_active_end_time_hour", paramInt1).commit();
     localSharedPreferences.edit().putInt("settings_active_end_time_min", paramInt2).commit();
     Log.i(TAG, "[NOTIFICATION SETTINGS]double write : saveActiveEnd: %d:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(150011);
   }
   
-  public static void dA(boolean paramBoolean)
+  public static void ea(boolean paramBoolean)
   {
     AppMethodBeat.i(149999);
-    apK().edit().putBoolean("settings_new_msg_notification", paramBoolean).commit();
+    awd().edit().putBoolean("settings_new_msg_notification", paramBoolean).commit();
     Log.i(TAG, "[NOTIFICATION SETTINGS]double write : saveNewMsgNotification: %B", new Object[] { Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(149999);
   }
   
-  public static void dB(boolean paramBoolean)
+  public static void eb(boolean paramBoolean)
   {
     AppMethodBeat.i(150000);
-    apK().edit().putBoolean("settings_new_voip_msg_notification", paramBoolean).commit();
+    awd().edit().putBoolean("settings_new_voip_msg_notification", paramBoolean).commit();
     Log.i(TAG, "[NOTIFICATION SETTINGS]double write : saveNewVoIPMsgNotification: %B", new Object[] { Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(150000);
   }
   
-  public static void dC(boolean paramBoolean)
+  public static void ec(boolean paramBoolean)
   {
     AppMethodBeat.i(150001);
-    apK().edit().putBoolean("settings_show_detail", paramBoolean).commit();
+    awd().edit().putBoolean("settings_show_detail", paramBoolean).commit();
     Log.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsShowDetail: %B", new Object[] { Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(150001);
   }
   
-  public static void dD(boolean paramBoolean)
+  public static void ed(boolean paramBoolean)
   {
     AppMethodBeat.i(150002);
-    apK().edit().putBoolean("settings_sound", paramBoolean).commit();
+    awd().edit().putBoolean("settings_sound", paramBoolean).commit();
     Log.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsSound: %B", new Object[] { Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(150002);
   }
   
-  public static void dE(boolean paramBoolean)
+  public static void ee(boolean paramBoolean)
   {
     AppMethodBeat.i(150003);
-    apK().edit().putBoolean("settings_shake", paramBoolean).commit();
+    awd().edit().putBoolean("settings_shake", paramBoolean).commit();
     Log.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsShake: %B", new Object[] { Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(150003);
   }
   
-  public static void dF(boolean paramBoolean)
+  public static void ef(boolean paramBoolean)
   {
     AppMethodBeat.i(150005);
-    apK().edit().putBoolean("settings_special_scene_sound", paramBoolean).commit();
+    awd().edit().putBoolean("settings_special_scene_sound", paramBoolean).commit();
     Log.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsSoundInSpecialScene: %B", new Object[] { Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(150005);
   }
   
-  public static void dG(boolean paramBoolean)
+  public static void eg(boolean paramBoolean)
   {
     AppMethodBeat.i(150006);
-    apK().edit().putBoolean("settings_special_scene_shake", paramBoolean).commit();
+    awd().edit().putBoolean("settings_special_scene_shake", paramBoolean).commit();
     Log.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsShakeInSpecialScene: %B", new Object[] { Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(150006);
   }
   
-  public static void dH(boolean paramBoolean)
+  public static void eh(boolean paramBoolean)
   {
     AppMethodBeat.i(150007);
-    apK().edit().putBoolean("settings_voip_scene_sound", paramBoolean).commit();
+    awd().edit().putBoolean("settings_voip_scene_sound", paramBoolean).commit();
     Log.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsSoundInVoip: %B", new Object[] { Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(150007);
   }
   
-  public static void dI(boolean paramBoolean)
+  public static void ei(boolean paramBoolean)
   {
     AppMethodBeat.i(150008);
-    apK().edit().putBoolean("settings_voip_scene_shake", paramBoolean).commit();
+    awd().edit().putBoolean("settings_voip_scene_shake", paramBoolean).commit();
     Log.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsShakeInVoip: %B", new Object[] { Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(150008);
   }
   
-  public static void dJ(boolean paramBoolean)
+  public static void ej(boolean paramBoolean)
   {
     AppMethodBeat.i(150009);
-    apK().edit().putBoolean("settings_active_time_full", paramBoolean).commit();
+    awd().edit().putBoolean("settings_active_time_full", paramBoolean).commit();
     Log.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsActiveTime: %B", new Object[] { Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(150009);
-  }
-  
-  public static void oI(int paramInt)
-  {
-    AppMethodBeat.i(150013);
-    apK().edit().putInt("notification.status.webonline.push.open", paramInt).commit();
-    AppMethodBeat.o(150013);
-  }
-  
-  public static boolean oJ(int paramInt)
-  {
-    return (paramInt == 50) || (paramInt == 53);
-  }
-  
-  public static List<String> oK(int paramInt)
-  {
-    AppMethodBeat.i(223500);
-    ArrayList localArrayList = new ArrayList();
-    Map localMap = ac.JR(ab.iCF);
-    Iterator localIterator = localMap.keySet().iterator();
-    int i;
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      String str = (String)localIterator.next();
-      i = paramInt - 1;
-      localArrayList.add(((as)localMap.get(str)).arI());
-      paramInt = i;
-    } while (i != 0);
-    AppMethodBeat.o(223500);
-    return localArrayList;
   }
   
   public static boolean p(ca paramca)
@@ -313,14 +280,47 @@ public final class g
       AppMethodBeat.o(150026);
       return false;
     }
-    boolean bool = paramca.bkz(z.aTY());
+    boolean bool = paramca.bwY(z.bcZ());
     AppMethodBeat.o(150026);
     return bool;
+  }
+  
+  public static void rb(int paramInt)
+  {
+    AppMethodBeat.i(150013);
+    awd().edit().putInt("notification.status.webonline.push.open", paramInt).commit();
+    AppMethodBeat.o(150013);
+  }
+  
+  public static boolean rc(int paramInt)
+  {
+    return (paramInt == 50) || (paramInt == 53);
+  }
+  
+  public static List<String> rd(int paramInt)
+  {
+    AppMethodBeat.i(222143);
+    ArrayList localArrayList = new ArrayList();
+    Map localMap = ac.Rj(ab.lsA);
+    Iterator localIterator = localMap.keySet().iterator();
+    int i;
+    do
+    {
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      String str = (String)localIterator.next();
+      i = paramInt - 1;
+      localArrayList.add(((as)localMap.get(str)).ayr());
+      paramInt = i;
+    } while (i != 0);
+    AppMethodBeat.o(222143);
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.n.g
  * JD-Core Version:    0.7.0.1
  */

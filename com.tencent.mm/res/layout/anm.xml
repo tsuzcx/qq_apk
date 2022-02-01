@@ -2,10 +2,19 @@
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="horizontal" android:id="@id/e95" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip" android:weightSum="3.0">
-        <TextView android:textSize="@dimen/is" android:textColor="@color/g7" android:gravity="center" android:layout_gravity="center" android:id="@id/il2" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="{textview_1}" android:layout_weight="1.0" android:lineSpacingExtra="@dimen/jk" />
+        <RelativeLayout android:id="@id/jtp" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/is" android:textColor="@color/g7" android:id="@id/il2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{textview_1}" android:layout_centerInParent="true" android:lineSpacingExtra="@dimen/jk" />
+            <ImageView android:id="@id/k1x" android:visibility="gone" android:layout_width="@dimen/ct" android:layout_height="@dimen/ct" android:src="@drawable/b1a" android:layout_toRightOf="@id/il2" android:layout_alignTop="@id/il2" />
+        </RelativeLayout>
         <View android:layout_gravity="center" android:id="@id/bs_" android:background="@color/FG_4" android:visibility="gone" android:layout_width="1.0px" android:layout_height="fill_parent" />
-        <TextView android:textSize="@dimen/is" android:textColor="@color/g7" android:gravity="center" android:layout_gravity="center" android:id="@id/il3" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="{textview_2}" android:layout_weight="1.0" android:lineSpacingExtra="@dimen/jk" />
+        <RelativeLayout android:id="@id/jtq" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/is" android:textColor="@color/g7" android:id="@id/il3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{textview_1}" android:layout_centerInParent="true" android:lineSpacingExtra="@dimen/jk" />
+            <ImageView android:id="@id/k1y" android:visibility="gone" android:layout_width="@dimen/ct" android:layout_height="@dimen/ct" android:src="@drawable/b1a" android:layout_toRightOf="@id/il3" android:layout_alignTop="@id/il3" />
+        </RelativeLayout>
         <View android:layout_gravity="center" android:id="@id/bsa" android:background="@color/FG_4" android:visibility="gone" android:layout_width="1.0px" android:layout_height="fill_parent" />
-        <TextView android:textSize="@dimen/is" android:textColor="@color/g7" android:gravity="center" android:layout_gravity="center" android:id="@id/il4" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="{textview_3}" android:layout_weight="1.0" android:lineSpacingExtra="@dimen/jk" />
+        <RelativeLayout android:id="@id/jtr" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/is" android:textColor="@color/g7" android:id="@id/il4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{textview_3}" android:layout_centerInParent="true" android:lineSpacingExtra="@dimen/jk" />
+            <ImageView android:id="@id/k1z" android:visibility="gone" android:layout_width="@dimen/ct" android:layout_height="@dimen/ct" android:src="@drawable/b1a" android:layout_toRightOf="@id/il4" android:layout_alignTop="@id/il4" />
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

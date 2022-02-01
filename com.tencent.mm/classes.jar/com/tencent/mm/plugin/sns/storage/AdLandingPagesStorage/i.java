@@ -7,10 +7,10 @@ import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.ad.landingpage.component.b.b.a;
 import com.tencent.mm.plugin.sns.storage.ADInfo;
 import com.tencent.mm.plugin.sns.storage.ADXml;
 import com.tencent.mm.plugin.sns.storage.ADXml.b;
-import com.tencent.mm.plugin.sns.storage.ADXml.k;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ab;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac;
@@ -18,18 +18,18 @@ import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComp
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.af;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ag;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ak;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.al;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.am;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.an;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ao;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ao.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ap;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ap.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aq;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.h;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.h.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.j;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.j.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.k;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.l;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.o;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.p;
@@ -47,8 +47,8 @@ import com.tencent.mm.plugin.sns.storage.AdSnsInfo;
 import com.tencent.mm.plugin.sns.storage.SnsInfo;
 import com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesUI;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.adp;
-import com.tencent.mm.protocal.protobuf.cnb;
+import com.tencent.mm.protocal.protobuf.adw;
+import com.tencent.mm.protocal.protobuf.cvt;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -74,11 +74,11 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 public final class i
 {
-  public static int Eln = 750;
-  public static int Elo = 10;
-  private static Set<i.b> Elp = null;
+  public static int Kyu = 750;
+  public static int Kyv = 10;
+  private static Set<i.b> Kyw = null;
   
-  private static String K(String paramString, Map<String, String> paramMap)
+  private static String M(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(97356);
     if ((paramString == null) || (paramString.length() == 0))
@@ -93,7 +93,7 @@ public final class i
       AppMethodBeat.o(97356);
       return null;
     }
-    LinkedList localLinkedList = new a(paramString, "adxml").Elq;
+    LinkedList localLinkedList = new a(paramString, "adxml").Kyx;
     Iterator localIterator1 = paramMap.keySet().iterator();
     String str1 = paramString;
     String str3;
@@ -118,13 +118,13 @@ public final class i
     {
       if (localIterator2.hasNext())
       {
-        Iterator localIterator3 = ((g)localIterator2.next()).Eli.iterator();
+        Iterator localIterator3 = ((g)localIterator2.next()).Kyp.iterator();
         while (localIterator3.hasNext())
         {
-          z localz = (z)localIterator3.next();
-          if (((localz instanceof f)) && (!Util.isNullOrNil(((f)localz).cardTpId)) && (((f)localz).cardTpId.equals(str3)))
+          aa localaa = (aa)localIterator3.next();
+          if (((localaa instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.g)) && (!Util.isNullOrNil(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.g)localaa).toN)) && (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.g)localaa).toN.equals(str3)))
           {
-            paramString = ((f)localz).cardExt;
+            paramString = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.g)localaa).tpJ;
             label242:
             if (paramString == null) {
               break label335;
@@ -160,19 +160,7 @@ public final class i
     }
   }
   
-  private static e L(Map<String, String> paramMap, String paramString)
-  {
-    AppMethodBeat.i(203162);
-    e locale = new e();
-    locale.DXV = Util.nullAs((String)paramMap.get(paramString + ".webViewUrl"), "");
-    locale.DXX = Util.safeParseInt((String)paramMap.get(paramString + ".webViewHeight"));
-    locale.DXW = Util.safeParseInt((String)paramMap.get(paramString + ".webViewWidth"));
-    locale.DXY = Util.safeParseInt((String)paramMap.get(paramString + ".hideWebViewProgress"));
-    AppMethodBeat.o(203162);
-    return locale;
-  }
-  
-  public static String Q(SnsInfo paramSnsInfo)
+  public static String R(SnsInfo paramSnsInfo)
   {
     AppMethodBeat.i(97355);
     if (paramSnsInfo == null)
@@ -220,45 +208,21 @@ public final class i
       AppMethodBeat.o(97355);
       return null;
     }
-    paramSnsInfo = K(localAdSnsInfo.field_adxml, paramSnsInfo.mappedCanvasCardExt);
+    paramSnsInfo = M(localAdSnsInfo.field_adxml, paramSnsInfo.mappedCanvasCardExt);
     AppMethodBeat.o(97355);
     return paramSnsInfo;
   }
   
-  public static boolean Zi(int paramInt)
+  private static com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e Y(Map<String, String> paramMap, String paramString)
   {
-    return (paramInt == 101) || (paramInt == 103) || (paramInt == 104) || (paramInt == 105) || (paramInt == 139);
-  }
-  
-  public static boolean Zj(int paramInt)
-  {
-    return paramInt == 101;
-  }
-  
-  public static boolean Zk(int paramInt)
-  {
-    return paramInt == 103;
-  }
-  
-  public static boolean Zl(int paramInt)
-  {
-    return paramInt == 104;
-  }
-  
-  public static boolean Zm(int paramInt)
-  {
-    return paramInt == 105;
-  }
-  
-  public static boolean Zn(int paramInt)
-  {
-    return paramInt == 139;
-  }
-  
-  private static boolean Zo(int paramInt)
-  {
-    paramInt |= 0xFF000000;
-    return paramInt + 16777216 > -1 - paramInt;
+    AppMethodBeat.i(246767);
+    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e locale = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e();
+    locale.Klf = Util.nullAs((String)paramMap.get(paramString + ".webViewUrl"), "");
+    locale.Klh = Util.safeParseInt((String)paramMap.get(paramString + ".webViewHeight"));
+    locale.Klg = Util.safeParseInt((String)paramMap.get(paramString + ".webViewWidth"));
+    locale.Kli = Util.safeParseInt((String)paramMap.get(paramString + ".hideWebViewProgress"));
+    AppMethodBeat.o(246767);
+    return locale;
   }
   
   public static float a(double paramDouble, int paramInt1, int paramInt2, int paramInt3)
@@ -276,27 +240,27 @@ public final class i
       AppMethodBeat.o(97332);
       return f1;
     }
-    int[] arrayOfInt = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ap.ha(MMApplicationContext.getContext());
+    int[] arrayOfInt = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ao.ib(MMApplicationContext.getContext());
     paramInt1 = Math.min(arrayOfInt[0], arrayOfInt[1]);
     float f1 = (float)paramDouble;
     float f2 = paramInt3;
-    f1 = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ap.bU(paramInt1 * (f1 * f2) / paramInt2);
+    f1 = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ao.cc(paramInt1 * (f1 * f2) / paramInt2);
     AppMethodBeat.o(97332);
     return f1;
   }
   
-  private static z a(Map<String, String> paramMap, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
+  private static aa a(Map<String, String> paramMap, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
   {
     AppMethodBeat.i(97343);
     int i = Util.safeParseInt((String)paramMap.get(paramString + ".type"));
-    z localz = null;
-    if (!Zi(i)) {}
+    aa localaa = null;
+    if (!agz(i)) {}
     for (;;)
     {
       try
       {
-        localz = a(paramMap, paramString, paramInt1, paramInt2, paramInt3, paramInt4);
-        paramMap = localz;
+        localaa = a(paramMap, paramString, paramInt1, paramInt2, paramInt3, paramInt4);
+        paramMap = localaa;
       }
       catch (Exception localException)
       {
@@ -305,23 +269,23 @@ public final class i
       }
       AppMethodBeat.o(97343);
       return paramMap;
-      if (Zj(i))
+      if (agA(i))
       {
         paramMap = d(paramMap, paramString, paramInt1, paramInt2, paramInt3, paramInt4);
       }
-      else if (Zk(i))
+      else if (agB(i))
       {
         paramMap = e(paramMap, paramString, paramInt1, paramInt2, paramInt3, paramInt4);
       }
-      else if (Zl(i))
+      else if (agC(i))
       {
         paramMap = f(paramMap, paramString, paramInt1, paramInt2, paramInt3, paramInt4);
       }
-      else if (Zm(i))
+      else if (agD(i))
       {
         paramMap = g(paramMap, paramString, paramInt1, paramInt2, paramInt3, paramInt4);
       }
-      else if (Zn(i))
+      else if (agE(i))
       {
         paramMap = h(paramMap, paramString, paramInt1, paramInt2, paramInt3, paramInt4);
       }
@@ -333,7 +297,7 @@ public final class i
     }
   }
   
-  private static z a(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private static aa a(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(97333);
     int k = Util.safeParseInt((String)paramMap.get(paramString + ".type"));
@@ -345,91 +309,92 @@ public final class i
       AppMethodBeat.o(97333);
       return null;
     case 82: 
-      localObject1 = new an();
-      ((an)localObject1).url = Util.nullAs((String)paramMap.get(paramString + ".webviewUrl"), "");
-      ((an)localObject1).DYM = Util.nullAs((String)paramMap.get(paramString + ".qrExtInfo"), "");
+      localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ao();
+      ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ao)localObject1).url = Util.nullAs((String)paramMap.get(paramString + ".webviewUrl"), "");
+      ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ao)localObject1).Kmh = Util.nullAs((String)paramMap.get(paramString + ".qrExtInfo"), "");
     }
     for (;;)
     {
       if (localObject1 != null)
       {
-        ((z)localObject1).DZm = Zo(paramInt4);
-        ((z)localObject1).type = k;
-        ((z)localObject1).subType = m;
-        a((z)localObject1, paramMap, paramString, paramInt1, paramInt2, paramInt3);
+        ((aa)localObject1).KmF = agF(paramInt4);
+        ((aa)localObject1).type = k;
+        ((aa)localObject1).subType = m;
+        a((aa)localObject1, paramMap, paramString, paramInt1, paramInt2, paramInt3);
       }
       AppMethodBeat.o(97333);
       return localObject1;
       localObject1 = c(paramMap, paramString, paramInt1, paramInt2, paramInt3, paramInt4);
       continue;
-      localObject1 = new ag();
-      ((ag)localObject1).DZj = k;
-      ((ag)localObject1).subType = m;
-      ((ag)localObject1).DZP = Util.nullAs((String)paramMap.get(paramString + ".content"), "");
-      ((ag)localObject1).textAlignment = Util.safeParseInt((String)paramMap.get(paramString + ".textAlignment"));
-      ((ag)localObject1).zyf = Util.nullAs((String)paramMap.get(paramString + ".fontColor"), "");
-      ((ag)localObject1).textSize = a(Util.safeParseDouble((String)paramMap.get(paramString + ".fontSize")), paramInt1, paramInt2, paramInt3);
-      if ((Util.safeParseInt((String)paramMap.get(paramString + ".showType")) & ag.DZK) > 0)
+      localObject1 = new ah();
+      ((ah)localObject1).KmC = k;
+      ((ah)localObject1).subType = m;
+      ((ah)localObject1).Knk = Util.nullAs((String)paramMap.get(paramString + ".content"), "");
+      ((ah)localObject1).KlP = Util.safeParseInt((String)paramMap.get(paramString + ".textAlignment"));
+      ((ah)localObject1).FdA = Util.nullAs((String)paramMap.get(paramString + ".fontColor"), "");
+      ((ah)localObject1).textSize = a(Util.safeParseDouble((String)paramMap.get(paramString + ".fontSize")), paramInt1, paramInt2, paramInt3);
+      if ((Util.safeParseInt((String)paramMap.get(paramString + ".showType")) & ah.Knf) > 0)
       {
         bool = true;
-        label632:
-        ((ag)localObject1).DZQ = bool;
-        if ((Util.safeParseInt((String)paramMap.get(paramString + ".showType")) & ag.DZL) <= 0) {
-          break label857;
+        label656:
+        ((ah)localObject1).Knl = bool;
+        if ((Util.safeParseInt((String)paramMap.get(paramString + ".showType")) & ah.Kng) <= 0) {
+          break label881;
         }
         bool = true;
-        label681:
-        ((ag)localObject1).DZR = bool;
-        if ((Util.safeParseInt((String)paramMap.get(paramString + ".showType")) & ag.DZM) <= 0) {
-          break label863;
+        label705:
+        ((ah)localObject1).Knm = bool;
+        if ((Util.safeParseInt((String)paramMap.get(paramString + ".showType")) & ah.Knh) <= 0) {
+          break label887;
         }
       }
-      label857:
-      label863:
+      label881:
+      label887:
       for (boolean bool = true;; bool = false)
       {
-        ((ag)localObject1).DZS = bool;
-        ((ag)localObject1).maxLines = Util.safeParseInt((String)paramMap.get(paramString + ".maxLines"));
-        ((ag)localObject1).DYv = Util.safeParseInt((String)paramMap.get(paramString + ".fontType"));
-        ((ag)localObject1).DZT = Util.safeParseFloat((String)paramMap.get(paramString + ".lineSpace"));
+        ((ah)localObject1).Knn = bool;
+        ((ah)localObject1).maxLines = Util.safeParseInt((String)paramMap.get(paramString + ".maxLines"));
+        ((ah)localObject1).KlO = Util.safeParseInt((String)paramMap.get(paramString + ".fontType"));
+        ((ah)localObject1).Kno = Util.safeParseFloat((String)paramMap.get(paramString + ".lineSpace"));
         break;
         bool = false;
-        break label632;
+        break label656;
         bool = false;
-        break label681;
+        break label705;
       }
-      label991:
+      label1015:
       Object localObject2;
       if (m == 2)
       {
         localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b();
-        ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).dNI = ((String)paramMap.get(paramString + ".appid"));
-        ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).DXy = ((String)paramMap.get(paramString + ".wxAppid"));
+        ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).appid = ((String)paramMap.get(paramString + ".appid"));
+        ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).KkH = ((String)paramMap.get(paramString + ".wxAppid"));
         if (Util.safeParseInt((String)paramMap.get(paramString + ".useGameDownloadWidget")) == 1)
         {
           bool = true;
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).DXz = bool;
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).appPageUrl = ((String)paramMap.get(paramString + ".appPageUrlAndroid"));
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).KkI = bool;
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).JxO = ((String)paramMap.get(paramString + ".appPageUrlAndroid"));
           ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).channelId = ((String)paramMap.get(paramString + ".channelId"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).LG = ((String)paramMap.get(paramString + ".pkg"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).DXC = Util.safeParseInt((String)paramMap.get(paramString + ".platform"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).DXD = ((String)paramMap.get(paramString + ".warningAndroid"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).DXE = ((String)paramMap.get(paramString + ".btnBgColorTheme"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).DXG = ((String)paramMap.get(paramString + ".btnBgColorThemePressed"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).DXF = ((String)paramMap.get(paramString + ".btnBgColorThemeDisable"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).DXH = ((String)paramMap.get(paramString + ".btnBorderColorTheme"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).DXJ = ((String)paramMap.get(paramString + ".btnBorderColorThemePressed"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).DXI = ((String)paramMap.get(paramString + ".btnBorderColorThemeDisable"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).DXK = ((String)paramMap.get(paramString + ".fontColor"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).DXM = ((String)paramMap.get(paramString + ".fontColorPressed"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).DXL = ((String)paramMap.get(paramString + ".fontColorDisable"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).DXP = Util.safeParseInt((String)paramMap.get(paramString + ".showDownloadTip"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).DXQ = Util.safeParseInt((String)paramMap.get(paramString + ".marketFlag"));
-          if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).DXQ > 0)
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).abY = ((String)paramMap.get(paramString + ".pkg"));
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).KkL = Util.safeParseInt((String)paramMap.get(paramString + ".platform"));
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).KkM = ((String)paramMap.get(paramString + ".warningAndroid"));
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).KkN = ((String)paramMap.get(paramString + ".btnBgColorTheme"));
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).KkP = ((String)paramMap.get(paramString + ".btnBgColorThemePressed"));
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).KkO = ((String)paramMap.get(paramString + ".btnBgColorThemeDisable"));
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).KkQ = ((String)paramMap.get(paramString + ".btnBorderColorTheme"));
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).KkS = ((String)paramMap.get(paramString + ".btnBorderColorThemePressed"));
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).KkR = ((String)paramMap.get(paramString + ".btnBorderColorThemeDisable"));
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).KkT = ((String)paramMap.get(paramString + ".fontColor"));
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).KkV = ((String)paramMap.get(paramString + ".fontColorPressed"));
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).KkU = ((String)paramMap.get(paramString + ".fontColorDisable"));
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).KkY = Util.safeParseInt((String)paramMap.get(paramString + ".showDownloadTip"));
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).Klb = Util.nullAs((String)paramMap.get(paramString + ".toOpenAppText"), "");
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).KkZ = Util.safeParseInt((String)paramMap.get(paramString + ".marketFlag"));
+          if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).KkZ > 0)
           {
-            localObject2 = aR(paramMap);
+            localObject2 = aL(paramMap);
             if (localObject2 != null) {
-              ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).DXR = ((Intent)localObject2);
+              ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localObject1).Kla = ((Intent)localObject2);
             }
           }
         }
@@ -437,57 +402,58 @@ public final class i
       Object localObject3;
       for (;;)
       {
-        ((q)localObject1).DZj = k;
-        ((q)localObject1).subType = m;
-        ((q)localObject1).title = Util.nullAs((String)paramMap.get(paramString + ".btnTitle"), "");
-        ((q)localObject1).DYq = Util.safeParseInt((String)paramMap.get(paramString + ".btnType"));
-        ((q)localObject1).DYr = Util.nullAs((String)paramMap.get(paramString + ".btnJumpUrl"), "");
-        ((q)localObject1).DYs = Util.nullAs((String)paramMap.get(paramString + ".btnJumpApp"), "");
-        ((q)localObject1).DYt = Util.nullAs((String)paramMap.get(paramString + ".fontColor"), "");
-        ((q)localObject1).fontSize = a(Util.safeParseDouble((String)paramMap.get(paramString + ".fontSize")), paramInt1, paramInt2, paramInt3);
-        ((q)localObject1).DYv = Util.safeParseInt((String)paramMap.get(paramString + ".btnFontType"));
-        ((q)localObject1).textAlignment = Util.safeParseInt((String)paramMap.get(paramString + ".btnAlignment"));
-        ((q)localObject1).DYu = a(Util.safeParseDouble((String)paramMap.get(paramString + ".borderSize")), paramInt1, paramInt2, paramInt3);
-        ((q)localObject1).height = a(Util.safeParseDouble((String)paramMap.get(paramString + ".btnHeight")), paramInt1, paramInt2, paramInt3);
-        ((q)localObject1).DYw = Util.nullAs((String)paramMap.get(paramString + ".btnBgColorTheme"), "");
-        ((q)localObject1).DYx = Util.nullAs((String)paramMap.get(paramString + ".btnBorderColorTheme"), "");
-        ((q)localObject1).DYy = Util.nullAs((String)paramMap.get(paramString + ".btnBgImgUrl"), "");
-        ((q)localObject1).DYz = Util.safeParseInt((String)paramMap.get(paramString + ".bCanLongPress"));
-        ((q)localObject1).DYA = Util.safeParseInt((String)paramMap.get(paramString + ".bHideActionSheet"));
-        ((q)localObject1).DYB = Util.safeParseInt((String)paramMap.get(paramString + ".hideProductActionHeader"));
-        ((q)localObject1).DYC = Util.safeParseInt((String)paramMap.get(paramString + ".showProductActionCancelButton"));
-        ((q)localObject1).DYE = Util.nullAs((String)paramMap.get(paramString + ".productActionTitle"), "");
-        ((q)localObject1).DYD = Util.nullAs((String)paramMap.get(paramString + ".productActionBuffer"), "");
-        ((q)localObject1).DYF = Util.nullAs((String)paramMap.get(paramString + ".productActionIconUrl"), "");
-        ((q)localObject1).tt = a(Util.safeParseInt((String)paramMap.get(paramString + ".cornerRadius")), paramInt1, paramInt2, paramInt3);
-        ((q)localObject1).DYH = Util.nullAs((String)paramMap.get(paramString + ".btnIconUrl"), "");
+        ((r)localObject1).KmC = k;
+        ((r)localObject1).subType = m;
+        ((r)localObject1).title = Util.nullAs((String)paramMap.get(paramString + ".btnTitle"), "");
+        ((r)localObject1).KlJ = Util.safeParseInt((String)paramMap.get(paramString + ".btnType"));
+        ((r)localObject1).KlK = Util.nullAs((String)paramMap.get(paramString + ".btnJumpUrl"), "");
+        ((r)localObject1).KlL = Util.nullAs((String)paramMap.get(paramString + ".btnJumpApp"), "");
+        ((r)localObject1).KlM = Util.nullAs((String)paramMap.get(paramString + ".fontColor"), "");
+        ((r)localObject1).fontSize = a(Util.safeParseDouble((String)paramMap.get(paramString + ".fontSize")), paramInt1, paramInt2, paramInt3);
+        ((r)localObject1).KlO = Util.safeParseInt((String)paramMap.get(paramString + ".btnFontType"));
+        ((r)localObject1).KlP = Util.safeParseInt((String)paramMap.get(paramString + ".btnAlignment"));
+        ((r)localObject1).KlN = a(Util.safeParseDouble((String)paramMap.get(paramString + ".borderSize")), paramInt1, paramInt2, paramInt3);
+        ((r)localObject1).height = a(Util.safeParseDouble((String)paramMap.get(paramString + ".btnHeight")), paramInt1, paramInt2, paramInt3);
+        ((r)localObject1).KlQ = Util.nullAs((String)paramMap.get(paramString + ".btnBgColorTheme"), "");
+        ((r)localObject1).KlR = Util.nullAs((String)paramMap.get(paramString + ".btnBorderColorTheme"), "");
+        ((r)localObject1).KlS = Util.nullAs((String)paramMap.get(paramString + ".btnBgImgUrl"), "");
+        ((r)localObject1).KlT = Util.safeParseInt((String)paramMap.get(paramString + ".bCanLongPress"));
+        ((r)localObject1).KlU = Util.safeParseInt((String)paramMap.get(paramString + ".bHideActionSheet"));
+        ((r)localObject1).KlV = Util.safeParseInt((String)paramMap.get(paramString + ".hideProductActionHeader"));
+        ((r)localObject1).KlW = Util.safeParseInt((String)paramMap.get(paramString + ".showProductActionCancelButton"));
+        ((r)localObject1).KlY = Util.nullAs((String)paramMap.get(paramString + ".productActionTitle"), "");
+        ((r)localObject1).KlX = Util.nullAs((String)paramMap.get(paramString + ".productActionBuffer"), "");
+        ((r)localObject1).KlZ = Util.nullAs((String)paramMap.get(paramString + ".productActionIconUrl"), "");
+        ((r)localObject1).bDI = a(Util.safeParseInt((String)paramMap.get(paramString + ".cornerRadius")), paramInt1, paramInt2, paramInt3);
+        ((r)localObject1).Kmb = Util.nullAs((String)paramMap.get(paramString + ".btnIconUrl"), "");
+        ((r)localObject1).Kmc = a(Util.safeParseInt((String)paramMap.get(paramString + ".btnIconSize")), paramInt1, paramInt2, paramInt3);
         if (paramMap.containsKey(paramString + ".productActionItem.componentItem.type")) {
-          ((q)localObject1).DYG = a(paramMap, paramInt1, paramInt2, paramInt3, paramInt4, paramString + ".productActionItem.componentItem");
+          ((r)localObject1).Kma = a(paramMap, paramInt1, paramInt2, paramInt3, paramInt4, paramString + ".productActionItem.componentItem");
         }
         break;
         bool = false;
-        break label991;
+        break label1015;
         if (m == 4)
         {
-          localObject1 = new f();
-          ((f)localObject1).cardTpId = Util.nullAs((String)paramMap.get(paramString + ".cardTpId"), "");
-          ((f)localObject1).cardExt = Util.nullAs((String)paramMap.get(paramString + ".cardExt"), "");
+          localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.g();
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.g)localObject1).toN = Util.nullAs((String)paramMap.get(paramString + ".cardTpId"), "");
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.g)localObject1).tpJ = Util.nullAs((String)paramMap.get(paramString + ".cardExt"), "");
         }
         else if (m == 7)
         {
-          localObject1 = new l();
-          ((l)localObject1).DYd = Util.nullAs((String)paramMap.get(paramString + ".jumpCanvasId"), "");
-          ((l)localObject1).DYe = Util.nullAs((String)paramMap.get(paramString + ".jumpCanvasExt"), "");
-          ((l)localObject1).DYf = Util.safeParseInt((String)paramMap.get(paramString + ".jumpCanvasNoStore"));
-          ((l)localObject1).DYg = Util.safeParseInt((String)paramMap.get(paramString + ".btnCanvasEnterType"));
-          ((l)localObject1).DYh = Util.safeParseInt((String)paramMap.get(paramString + ".btnCanvasSource"));
+          localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.m();
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.m)localObject1).Klw = Util.nullAs((String)paramMap.get(paramString + ".jumpCanvasId"), "");
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.m)localObject1).Klx = Util.nullAs((String)paramMap.get(paramString + ".jumpCanvasExt"), "");
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.m)localObject1).Kly = Util.safeParseInt((String)paramMap.get(paramString + ".jumpCanvasNoStore"));
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.m)localObject1).Klz = Util.safeParseInt((String)paramMap.get(paramString + ".btnCanvasEnterType"));
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.m)localObject1).KlA = Util.safeParseInt((String)paramMap.get(paramString + ".btnCanvasSource"));
         }
         else if (m == 8)
         {
-          localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.k();
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.k)localObject1).username = ((String)paramMap.get(paramString + ".weappUserName"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.k)localObject1).ecK = ((String)paramMap.get(paramString + ".weappPath"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.k)localObject1).weAppType = Util.safeParseInt((String)paramMap.get(paramString + ".miniProgramType"));
+          localObject1 = new l();
+          ((l)localObject1).username = ((String)paramMap.get(paramString + ".weappUserName"));
+          ((l)localObject1).fWP = ((String)paramMap.get(paramString + ".weappPath"));
+          ((l)localObject1).Jxz = Util.safeParseInt((String)paramMap.get(paramString + ".miniProgramType"));
         }
         else if (m == 9)
         {
@@ -501,7 +467,7 @@ public final class i
             AppMethodBeat.o(97333);
             return null;
           }
-          localObject1 = new h(new h.a(d1, d2, i, (String)localObject1, (String)localObject2));
+          localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.i(new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.i.a(d1, d2, i, (String)localObject1, (String)localObject2));
         }
         else if (m == 10)
         {
@@ -512,16 +478,16 @@ public final class i
           for (localObject1 = (String)paramMap.get(localObject2);; localObject1 = (String)paramMap.get((String)localObject2 + i))
           {
             if (TextUtils.isEmpty((CharSequence)localObject1)) {
-              break label3301;
+              break label3409;
             }
             ((List)localObject3).add(localObject1);
             i += 1;
             break;
           }
-          label3301:
+          label3409:
           if (!((List)localObject3).isEmpty())
           {
-            localObject1 = new j((List)localObject3);
+            localObject1 = new k((List)localObject3);
           }
           else
           {
@@ -531,134 +497,143 @@ public final class i
         }
         else if (m == 12)
         {
-          localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n();
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n)localObject1).weappUserName = ((String)paramMap.get(paramString + ".weappUserName"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n)localObject1).DYj = ((String)paramMap.get(paramString + ".weAppID"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n)localObject1).businessId = ((String)paramMap.get(paramString + ".businessId"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n)localObject1).lRW = ((String)paramMap.get(paramString + ".sessionFrom"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n)localObject1).DYk = Util.safeParseInt((String)paramMap.get(paramString + ".showMessageCard"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n)localObject1).lSf = Util.nullAsNil((String)paramMap.get(paramString + ".sendMessageTitle"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n)localObject1).lSh = Util.nullAsNil((String)paramMap.get(paramString + ".sendMessageImg"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n)localObject1).lSg = Util.nullAsNil((String)paramMap.get(paramString + ".sendMessagePath"));
+          localObject1 = new o();
+          ((o)localObject1).uMJ = ((String)paramMap.get(paramString + ".weappUserName"));
+          ((o)localObject1).KlC = ((String)paramMap.get(paramString + ".weAppID"));
+          ((o)localObject1).businessId = ((String)paramMap.get(paramString + ".businessId"));
+          ((o)localObject1).oOB = ((String)paramMap.get(paramString + ".sessionFrom"));
+          ((o)localObject1).KlD = Util.safeParseInt((String)paramMap.get(paramString + ".showMessageCard"));
+          ((o)localObject1).oOK = Util.nullAsNil((String)paramMap.get(paramString + ".sendMessageTitle"));
+          ((o)localObject1).oOM = Util.nullAsNil((String)paramMap.get(paramString + ".sendMessageImg"));
+          ((o)localObject1).oOL = Util.nullAsNil((String)paramMap.get(paramString + ".sendMessagePath"));
         }
         else if (m == 13)
         {
-          localObject1 = new o();
-          ((o)localObject1).DYl = Util.safeParseInt((String)paramMap.get(paramString + ".sid"));
-          ((o)localObject1).DYm = Util.safeParseInt((String)paramMap.get(paramString + ".compid"));
+          localObject1 = new p();
+          ((p)localObject1).KlE = Util.safeParseInt((String)paramMap.get(paramString + ".sid"));
+          ((p)localObject1).KlF = Util.safeParseInt((String)paramMap.get(paramString + ".compid"));
         }
         else if (m == 14)
         {
-          localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.g();
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.g)localObject1).DXZ = Util.nullAsNil((String)paramMap.get(paramString + ".redEnvelopsSkinBtnDisableWording"));
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.g)localObject1).DYa = Util.safeParseLong(paramString + ".redEnvelopsSkinDisableTime");
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.g)localObject1).dOD = Util.nullAsNil((String)paramMap.get(paramString + ".redEnvelopesSkinId"));
+          localObject1 = new h();
+          ((h)localObject1).Kls = Util.nullAsNil((String)paramMap.get(paramString + ".redEnvelopsSkinBtnDisableWording"));
+          ((h)localObject1).Klt = Util.safeParseLong(paramString + ".redEnvelopsSkinDisableTime");
+          ((h)localObject1).fHO = Util.nullAsNil((String)paramMap.get(paramString + ".redEnvelopesSkinId"));
         }
         else if (m == 15)
         {
-          localObject1 = new ab();
-          ((ab)localObject1).DZy = Util.nullAs((String)paramMap.get(paramString + ".qrUrl"), "");
-          ((ab)localObject1).DYM = Util.nullAs((String)paramMap.get(paramString + ".qrExtInfo"), "");
-          ((ab)localObject1).DZz = Util.safeParseInt((String)paramMap.get(paramString + ".needUpdateQrUrl"));
+          localObject1 = new ac();
+          ((ac)localObject1).KmS = Util.nullAs((String)paramMap.get(paramString + ".qrUrl"), "");
+          ((ac)localObject1).Kmh = Util.nullAs((String)paramMap.get(paramString + ".qrExtInfo"), "");
+          ((ac)localObject1).KmT = Util.safeParseInt((String)paramMap.get(paramString + ".needUpdateQrUrl"));
+          ((ac)localObject1).KmU = Util.safeParseInt((String)paramMap.get(paramString + ".qrScanDirectJump"));
         }
         else if (m == 16)
         {
-          localObject1 = new ac();
-          ((ac)localObject1).DZA = ADXml.b.F(paramMap, ".adxml.adScanInfo");
+          localObject1 = new ad();
+          ((ad)localObject1).KmV = ADXml.b.Q(paramMap, ".adxml.adScanInfo");
         }
         else if (m == 17)
         {
-          localObject1 = new w();
-          ((w)localObject1).brandUsername = Util.nullAs((String)paramMap.get(paramString + ".brandUsername"), "");
-          ((w)localObject1).brandHead = Util.nullAs((String)paramMap.get(paramString + ".brandHead"), "");
-          ((w)localObject1).brandName = Util.nullAs((String)paramMap.get(paramString + ".brandName"), "");
-          ((w)localObject1).brandDesc = Util.nullAs((String)paramMap.get(paramString + ".brandDesc"), "");
-          ((w)localObject1).btnTitleAfterAddBrand = Util.nullAs((String)paramMap.get(paramString + ".btnTitleAfterAddBrand"), "");
+          localObject1 = new x();
+          ((x)localObject1).lFl = Util.nullAs((String)paramMap.get(paramString + ".brandUsername"), "");
+          ((x)localObject1).JxP = Util.nullAs((String)paramMap.get(paramString + ".brandHead"), "");
+          ((x)localObject1).fzM = Util.nullAs((String)paramMap.get(paramString + ".brandName"), "");
+          ((x)localObject1).JxQ = Util.nullAs((String)paramMap.get(paramString + ".brandDesc"), "");
+          ((x)localObject1).JxR = Util.nullAs((String)paramMap.get(paramString + ".btnTitleAfterAddBrand"), "");
+          ((x)localObject1).Kmv = Util.nullAs((String)paramMap.get(paramString + ".compatibleJumpUrl"), "");
         }
         else if (m == 18)
         {
-          localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.m();
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.m)localObject1).DYi = Util.nullAsNil((String)paramMap.get(paramString + ".wxGroupInfo"));
+          localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n();
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n)localObject1).KlB = Util.nullAsNil((String)paramMap.get(paramString + ".wxGroupInfo"));
         }
         else if (m == 19)
         {
           localObject1 = new com.tencent.mm.plugin.sns.ad.landingpage.component.b.a();
-          ((com.tencent.mm.plugin.sns.ad.landingpage.component.b.a)localObject1).couponAppId = Util.nullAs((String)paramMap.get(paramString + ".couponAppId"), "");
-          ((com.tencent.mm.plugin.sns.ad.landingpage.component.b.a)localObject1).couponStockId = Util.nullAs((String)paramMap.get(paramString + ".couponStockId"), "");
+          ((com.tencent.mm.plugin.sns.ad.landingpage.component.b.a)localObject1).JxS = Util.nullAs((String)paramMap.get(paramString + ".couponAppId"), "");
+          ((com.tencent.mm.plugin.sns.ad.landingpage.component.b.a)localObject1).JxT = Util.nullAs((String)paramMap.get(paramString + ".couponStockId"), "");
         }
         else if (m == 20)
         {
+          localObject1 = new com.tencent.mm.plugin.sns.ad.landingpage.component.b.d();
+          ((com.tencent.mm.plugin.sns.ad.landingpage.component.b.d)localObject1).finderUsername = Util.nullAsNil((String)paramMap.get(paramString + ".finderUsername"));
+          ((com.tencent.mm.plugin.sns.ad.landingpage.component.b.d)localObject1).JxY = Util.nullAsNil((String)paramMap.get(paramString + ".finderLiveNoticeId"));
+        }
+        else if (m == 21)
+        {
           localObject1 = new com.tencent.mm.plugin.sns.ad.landingpage.component.b.c();
           ((com.tencent.mm.plugin.sns.ad.landingpage.component.b.c)localObject1).finderUsername = Util.nullAsNil((String)paramMap.get(paramString + ".finderUsername"));
-          ((com.tencent.mm.plugin.sns.ad.landingpage.component.b.c)localObject1).finderLiveNoticeId = Util.nullAsNil((String)paramMap.get(paramString + ".finderLiveNoticeId"));
         }
         else
         {
-          localObject1 = new q();
+          localObject1 = new r();
         }
       }
-      localObject1 = new t();
-      ((t)localObject1).DZj = k;
-      ((t)localObject1).subType = m;
-      ((t)localObject1).DYK = Util.nullAs((String)paramMap.get(paramString + ".pureImageUrl"), "");
-      ((t)localObject1).DWN = Util.nullAs((String)paramMap.get(paramString + ".bgColor"), "");
-      if ((paramMap.containsKey(paramString + ".bgColorAlpha")) && (((t)localObject1).DWN.length() > 0)) {
-        ((t)localObject1).DWN = String.format("#%02x%s", new Object[] { Integer.valueOf((int)(Util.safeParseDouble((String)paramMap.get(paramString + ".bgColorAlpha")) * 255.0D)), ((t)localObject1).DWN.substring(1) });
+      localObject1 = new u();
+      ((u)localObject1).KmC = k;
+      ((u)localObject1).subType = m;
+      ((u)localObject1).Kmf = Util.nullAs((String)paramMap.get(paramString + ".pureImageUrl"), "");
+      ((u)localObject1).bgColor = Util.nullAs((String)paramMap.get(paramString + ".bgColor"), "");
+      if ((paramMap.containsKey(paramString + ".bgColorAlpha")) && (((u)localObject1).bgColor.length() > 0)) {
+        ((u)localObject1).bgColor = String.format("#%02x%s", new Object[] { Integer.valueOf((int)(Util.safeParseDouble((String)paramMap.get(paramString + ".bgColorAlpha")) * 255.0D)), ((u)localObject1).bgColor.substring(1) });
       }
-      ((t)localObject1).width = a(Util.safeParseDouble((String)paramMap.get(paramString + ".imageWidth")), paramInt1, paramInt2, paramInt3);
-      ((t)localObject1).height = a(Util.safeParseDouble((String)paramMap.get(paramString + ".imageHeight")), paramInt1, paramInt2, paramInt3);
-      ((t)localObject1).DYJ = false;
+      ((u)localObject1).width = a(Util.safeParseDouble((String)paramMap.get(paramString + ".imageWidth")), paramInt1, paramInt2, paramInt3);
+      ((u)localObject1).height = a(Util.safeParseDouble((String)paramMap.get(paramString + ".imageHeight")), paramInt1, paramInt2, paramInt3);
+      ((u)localObject1).Kme = false;
       if (Util.safeParseInt((String)paramMap.get(paramString + ".enableQRScan")) == 1)
       {
         bool = true;
-        label4831:
-        ((t)localObject1).DYL = bool;
-        ((t)localObject1).DYM = Util.nullAs((String)paramMap.get(paramString + ".qrExtInfo"), "");
+        label5071:
+        ((u)localObject1).Kmg = bool;
+        ((u)localObject1).Kmh = Util.nullAs((String)paramMap.get(paramString + ".qrExtInfo"), "");
         if (Util.safeParseInt((String)paramMap.get(paramString + ".needUpdateQrUrl")) != 1) {
-          break label4977;
+          break label5291;
         }
       }
-      label4977:
+      label5291:
       for (bool = true;; bool = false)
       {
-        ((t)localObject1).DYN = bool;
-        ((t)localObject1).tt = a(Util.safeParseInt((String)paramMap.get(paramString + ".cornerRadius")), paramInt1, paramInt2, paramInt3);
+        ((u)localObject1).Kmi = bool;
+        ((u)localObject1).bDI = a(Util.safeParseInt((String)paramMap.get(paramString + ".cornerRadius")), paramInt1, paramInt2, paramInt3);
+        ((u)localObject1).fileSize = Util.safeParseLong((String)paramMap.get(paramString + ".fileSize"));
+        ((u)localObject1).md5 = Util.nullAsNil((String)paramMap.get(paramString + ".imageMd5"));
         break;
         bool = false;
-        break label4831;
+        break label5071;
       }
-      localObject1 = new s();
-      ((s)localObject1).DZj = k;
-      ((s)localObject1).subType = m;
-      ((s)localObject1).DYK = Util.nullAs((String)paramMap.get(paramString + ".panoramaImageUrl"), "");
-      ((s)localObject1).width = a(Util.safeParseDouble((String)paramMap.get(paramString + ".imageWidth")), paramInt1, paramInt2, paramInt3);
-      ((s)localObject1).height = a(Util.safeParseDouble((String)paramMap.get(paramString + ".imageHeight")), paramInt1, paramInt2, paramInt3);
-      continue;
       localObject1 = new t();
-      ((t)localObject1).DZj = k;
+      ((t)localObject1).KmC = k;
       ((t)localObject1).subType = m;
-      ((t)localObject1).DYK = Util.nullAs((String)paramMap.get(paramString + ".fullScreenImageUrl"), "");
-      ((t)localObject1).DYJ = true;
+      ((t)localObject1).Kmf = Util.nullAs((String)paramMap.get(paramString + ".panoramaImageUrl"), "");
+      ((t)localObject1).width = a(Util.safeParseDouble((String)paramMap.get(paramString + ".imageWidth")), paramInt1, paramInt2, paramInt3);
+      ((t)localObject1).height = a(Util.safeParseDouble((String)paramMap.get(paramString + ".imageHeight")), paramInt1, paramInt2, paramInt3);
+      continue;
+      localObject1 = new u();
+      ((u)localObject1).KmC = k;
+      ((u)localObject1).subType = m;
+      ((u)localObject1).Kmf = Util.nullAs((String)paramMap.get(paramString + ".fullScreenImageUrl"), "");
+      ((u)localObject1).Kme = true;
       if (Util.safeParseInt((String)paramMap.get(paramString + ".enableQRScan")) == 1) {}
       for (bool = true;; bool = false)
       {
-        ((t)localObject1).DYL = bool;
-        ((t)localObject1).scaleType = Util.safeParseInt((String)paramMap.get(paramString + ".scaleType"));
+        ((u)localObject1).Kmg = bool;
+        ((u)localObject1).kYn = Util.safeParseInt((String)paramMap.get(paramString + ".scaleType"));
         break;
       }
-      localObject1 = new v();
-      ((v)localObject1).DZj = k;
-      ((v)localObject1).subType = m;
-      ((v)localObject1).DYQ = Util.nullAs((String)paramMap.get(paramString + ".sightVideoUrl"), "");
-      ((v)localObject1).DYR = Util.nullAs((String)paramMap.get(paramString + ".sightThumbUrl"), "");
-      ((v)localObject1).DYS = Util.nullAs((String)paramMap.get(paramString + ".streamVideoUrl"), "");
-      ((v)localObject1).DYT = Util.nullAs((String)paramMap.get(paramString + ".jumpText"), "");
-      ((v)localObject1).DYd = Util.nullAs((String)paramMap.get(paramString + ".jumpCanvasId"), "");
-      ((v)localObject1).DYe = Util.nullAs((String)paramMap.get(paramString + ".jumpCanvasExt"), "");
-      ((v)localObject1).DYf = Util.safeParseInt((String)paramMap.get(paramString + ".jumpCanvasNoStore"));
+      localObject1 = new w();
+      ((w)localObject1).KmC = k;
+      ((w)localObject1).subType = m;
+      ((w)localObject1).Kml = Util.nullAs((String)paramMap.get(paramString + ".sightVideoUrl"), "");
+      ((w)localObject1).Kmm = Util.nullAs((String)paramMap.get(paramString + ".sightThumbUrl"), "");
+      ((w)localObject1).JCf = Util.nullAs((String)paramMap.get(paramString + ".streamVideoUrl"), "");
+      ((w)localObject1).Kmn = Util.nullAs((String)paramMap.get(paramString + ".jumpText"), "");
+      ((w)localObject1).Klw = Util.nullAs((String)paramMap.get(paramString + ".jumpCanvasId"), "");
+      ((w)localObject1).Klx = Util.nullAs((String)paramMap.get(paramString + ".jumpCanvasExt"), "");
+      ((w)localObject1).Kly = Util.safeParseInt((String)paramMap.get(paramString + ".jumpCanvasNoStore"));
       try
       {
-        ((v)localObject1).DYU = Color.parseColor((String)paramMap.get(paramString + ".jumpTextColor"));
+        ((w)localObject1).Kmo = Color.parseColor((String)paramMap.get(paramString + ".jumpTextColor"));
       }
       catch (Exception localException1)
       {
@@ -666,110 +641,110 @@ public final class i
         {
           for (;;)
           {
-            ((v)localObject1).DYV = Color.parseColor((String)paramMap.get(paramString + ".separatorColor"));
-            ((v)localObject1).width = a(Util.safeParseDouble((String)paramMap.get(paramString + ".sightDisplayWidth")), paramInt1, paramInt2, paramInt3);
-            ((v)localObject1).height = a(Util.safeParseDouble((String)paramMap.get(paramString + ".sightDisplayHeight")), paramInt1, paramInt2, paramInt3);
-            ((v)localObject1).DYW = Util.safeParseInt((String)paramMap.get(paramString + ".sightDisplayType"));
+            ((w)localObject1).Kmp = Color.parseColor((String)paramMap.get(paramString + ".separatorColor"));
+            ((w)localObject1).width = a(Util.safeParseDouble((String)paramMap.get(paramString + ".sightDisplayWidth")), paramInt1, paramInt2, paramInt3);
+            ((w)localObject1).height = a(Util.safeParseDouble((String)paramMap.get(paramString + ".sightDisplayHeight")), paramInt1, paramInt2, paramInt3);
+            ((w)localObject1).Kmq = Util.safeParseInt((String)paramMap.get(paramString + ".sightDisplayType"));
             localObject2 = Util.nullAsNil((String)paramMap.get(paramString + ".floatComponentId"));
             i = Util.safeParseInt((String)paramMap.get(paramString + ".floatStartTime"));
             if ((!Util.isNullOrNil((String)localObject2)) && (i > 0))
             {
-              localObject3 = new ai();
-              ((ai)localObject3).dVe = ((String)localObject2);
-              ((ai)localObject3).Eab = i;
-              ((v)localObject1).DYX = ((ai)localObject3);
+              localObject3 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj();
+              ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj)localObject3).fOG = ((String)localObject2);
+              ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj)localObject3).Knx = i;
+              ((w)localObject1).Klq = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj)localObject3);
             }
             if (Util.safeParseInt((String)paramMap.get(".adxml.adCanvasInfo.heightRoundingType")) <= 0) {
-              break label6137;
+              break label6451;
             }
             bool = true;
-            ((v)localObject1).DYY = bool;
+            ((w)localObject1).Kmr = bool;
             if (Util.safeParseInt((String)paramMap.get(paramString + ".downloadVideoByCdn")) <= 0) {
-              break label6143;
+              break label6457;
             }
             bool = true;
-            ((v)localObject1).DYZ = bool;
+            ((w)localObject1).Kms = bool;
             if (Util.safeParseInt((String)paramMap.get(paramString + ".forbiddenControlView")) <= 0) {
-              break label6149;
+              break label6463;
             }
             bool = true;
-            ((v)localObject1).DZa = bool;
-            ((v)localObject1).DZc = j(paramMap, paramString + ".floatBarComponentItem", paramInt1, paramInt2, paramInt3, paramInt4);
-            ((v)localObject1).DZb = Util.safeParseLong((String)paramMap.get(paramString + ".fileSize"));
+            ((w)localObject1).Klm = bool;
+            ((w)localObject1).Kmu = j(paramMap, paramString + ".floatBarComponentItem", paramInt1, paramInt2, paramInt3, paramInt4);
+            ((w)localObject1).Kmt = Util.safeParseLong((String)paramMap.get(paramString + ".fileSize"));
             break;
             localException1 = localException1;
-            ((v)localObject1).DYU = Color.rgb(255, 255, 255);
+            ((w)localObject1).Kmo = Color.rgb(255, 255, 255);
           }
         }
         catch (Exception localException2)
         {
           for (;;)
           {
-            ((v)localObject1).DYV = Color.rgb(255, 255, 255);
+            ((w)localObject1).Kmp = Color.rgb(255, 255, 255);
             continue;
-            label6137:
+            label6451:
             bool = false;
             continue;
-            label6143:
+            label6457:
             bool = false;
             continue;
-            label6149:
+            label6463:
             bool = false;
           }
         }
       }
-      localObject1 = new am();
-      ((am)localObject1).DZj = k;
-      ((am)localObject1).subType = m;
-      ((am)localObject1).DYS = Util.nullAs((String)paramMap.get(paramString + ".streamVideoUrl"), "");
-      ((am)localObject1).Ead = Util.nullAs((String)paramMap.get(paramString + ".streamVideoThumb"), "");
-      ((am)localObject1).width = a(Util.safeParseDouble((String)paramMap.get(paramString + ".streamDisplayWidth")), paramInt1, paramInt2, paramInt3);
-      ((am)localObject1).height = a(Util.safeParseDouble((String)paramMap.get(paramString + ".streamDisplayHeight")), paramInt1, paramInt2, paramInt3);
-      ((am)localObject1).Eae = Util.safeParseInt((String)paramMap.get(paramString + ".streamDisplayType"));
+      localObject1 = new an();
+      ((an)localObject1).KmC = k;
+      ((an)localObject1).subType = m;
+      ((an)localObject1).JCf = Util.nullAs((String)paramMap.get(paramString + ".streamVideoUrl"), "");
+      ((an)localObject1).Knz = Util.nullAs((String)paramMap.get(paramString + ".streamVideoThumb"), "");
+      ((an)localObject1).width = a(Util.safeParseDouble((String)paramMap.get(paramString + ".streamDisplayWidth")), paramInt1, paramInt2, paramInt3);
+      ((an)localObject1).height = a(Util.safeParseDouble((String)paramMap.get(paramString + ".streamDisplayHeight")), paramInt1, paramInt2, paramInt3);
+      ((an)localObject1).KnA = Util.safeParseInt((String)paramMap.get(paramString + ".streamDisplayType"));
       String str1 = Util.nullAsNil((String)paramMap.get(paramString + ".floatComponentId"));
       int i = Util.safeParseInt((String)paramMap.get(paramString + ".floatStartTime"));
       if ((!Util.isNullOrNil(str1)) && (i > 0))
       {
-        localObject3 = new ai();
-        ((ai)localObject3).dVe = str1;
-        ((ai)localObject3).Eab = i;
-        ((am)localObject1).DYX = ((ai)localObject3);
+        localObject3 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj();
+        ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj)localObject3).fOG = str1;
+        ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj)localObject3).Knx = i;
+        ((an)localObject1).Klq = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj)localObject3);
       }
       if (Util.safeParseInt((String)paramMap.get(".adxml.adCanvasInfo.heightRoundingType")) > 0)
       {
         bool = true;
-        label6513:
-        ((am)localObject1).DYY = bool;
-        ((am)localObject1).DZc = j(paramMap, paramString + ".floatBarComponentItem", paramInt1, paramInt2, paramInt3, paramInt4);
+        label6827:
+        ((an)localObject1).Kmr = bool;
+        ((an)localObject1).Kmu = j(paramMap, paramString + ".floatBarComponentItem", paramInt1, paramInt2, paramInt3, paramInt4);
         if (Util.safeParseInt((String)paramMap.get(paramString + ".alwaysAutoPlay")) != 1) {
-          break label6656;
+          break label6970;
         }
         bool = true;
-        label6594:
-        ((am)localObject1).Eaf = bool;
+        label6908:
+        ((an)localObject1).KnB = bool;
         if (Util.safeParseInt((String)paramMap.get(paramString + ".forceLandscapeWhenTurnToFullScreen")) != 1) {
-          break label6662;
+          break label6976;
         }
       }
-      label6656:
-      label6662:
+      label6970:
+      label6976:
       for (bool = true;; bool = false)
       {
-        ((am)localObject1).Eag = bool;
+        ((an)localObject1).Klp = bool;
         break;
         bool = false;
-        break label6513;
+        break label6827;
         bool = false;
-        break label6594;
+        break label6908;
       }
-      localObject1 = new al();
-      ((al)localObject1).DZj = k;
-      ((al)localObject1).subType = m;
-      ((al)localObject1).h5Url = Util.nullAs((String)paramMap.get(paramString + ".webviewUrl"), "");
+      localObject1 = new am();
+      ((am)localObject1).KmC = k;
+      ((am)localObject1).subType = m;
+      ((am)localObject1).h5Url = Util.nullAs((String)paramMap.get(paramString + ".webviewUrl"), "");
       continue;
       double d1 = a(Util.safeParseDouble((String)paramMap.get(paramString + ".topLineSize")), paramInt1, paramInt2, paramInt3);
       double d2 = a(Util.safeParseDouble((String)paramMap.get(paramString + ".bottomLineSize")), paramInt1, paramInt2, paramInt3);
-      if (Zo(paramInt4)) {
+      if (agF(paramInt4)) {
         i = Color.argb(51, 0, 0, 0);
       }
       int j;
@@ -790,11 +765,15 @@ public final class i
           }
           else
           {
-            localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.i(d1, d2, new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.i.a(d3, d4, j, (String)localObject1, str1), i);
+            localObject1 = new j(d1, d2, new j.a(d3, d4, j, (String)localObject1, str1), i);
             break;
           }
         }
       }
+      label9892:
+      label10181:
+      label10187:
+      label10193:
       if (k == 122)
       {
         str1 = paramString + ".phoneNumList.phoneNum";
@@ -804,13 +783,13 @@ public final class i
         for (localObject1 = (String)paramMap.get(str1);; localObject1 = (String)paramMap.get(str1 + j))
         {
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label7204;
+            break label7518;
           }
           ((List)localObject3).add(localObject1);
           j += 1;
           break;
         }
-        label7204:
+        label7518:
         if (!((List)localObject3).isEmpty())
         {
           localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.d(d1, d2, i, (List)localObject3);
@@ -819,27 +798,27 @@ public final class i
         {
           AppMethodBeat.o(97333);
           return null;
-          localObject1 = new ae();
-          ((ae)localObject1).DZj = k;
-          ((ae)localObject1).subType = m;
-          ((ae)localObject1).label = Util.nullAs((String)paramMap.get(paramString + ".label"), "");
-          ((ae)localObject1).value = ((float)Util.safeParseDouble((String)paramMap.get(paramString + ".value")));
-          ((ae)localObject1).DZI = Util.nullAs((String)paramMap.get(paramString + ".foregroundImage"), "");
-          ((ae)localObject1).fontSize = a(Util.safeParseDouble((String)paramMap.get(paramString + ".fontSize")), paramInt1, paramInt2, paramInt3);
-          ((ae)localObject1).lco = Util.nullAs((String)paramMap.get(paramString + ".backgroundColor"), "");
+          localObject1 = new af();
+          ((af)localObject1).KmC = k;
+          ((af)localObject1).subType = m;
+          ((af)localObject1).label = Util.nullAs((String)paramMap.get(paramString + ".label"), "");
+          ((af)localObject1).value = ((float)Util.safeParseDouble((String)paramMap.get(paramString + ".value")));
+          ((af)localObject1).Knd = Util.nullAs((String)paramMap.get(paramString + ".foregroundImage"), "");
+          ((af)localObject1).fontSize = a(Util.safeParseDouble((String)paramMap.get(paramString + ".fontSize")), paramInt1, paramInt2, paramInt3);
+          ((af)localObject1).nWx = Util.nullAs((String)paramMap.get(paramString + ".backgroundColor"), "");
           continue;
           localObject1 = b(paramMap, paramString, paramInt1, paramInt2, paramInt3);
           continue;
-          localObject1 = new u();
-          ((u)localObject1).DWM = Util.nullAs((String)paramMap.get(paramString + ".sphereThumbUrl"), "");
-          ((u)localObject1).DWw = Util.safeParseInt((String)paramMap.get(paramString + ".displayType"));
-          ((u)localObject1).DWK = Util.safeParseInt((String)paramMap.get(paramString + ".gestureDelayTime"));
-          ((u)localObject1).DWL = Util.nullAs((String)paramMap.get(paramString + ".sphereImageUrl"), "");
+          localObject1 = new v();
+          ((v)localObject1).KjY = Util.nullAs((String)paramMap.get(paramString + ".sphereThumbUrl"), "");
+          ((v)localObject1).KjH = Util.safeParseInt((String)paramMap.get(paramString + ".displayType"));
+          ((v)localObject1).KjW = Util.safeParseInt((String)paramMap.get(paramString + ".gestureDelayTime"));
+          ((v)localObject1).KjX = Util.nullAs((String)paramMap.get(paramString + ".sphereImageUrl"), "");
           try
           {
-            ((u)localObject1).DWN = Util.nullAs((String)paramMap.get(paramString + ".bgColor"), "");
-            if ((paramMap.containsKey(paramString + ".bgColorAlpha")) && (((u)localObject1).DWN.length() > 0)) {
-              ((u)localObject1).DWN = String.format("#%02x%s", new Object[] { Integer.valueOf((int)(Util.safeParseDouble((String)paramMap.get(paramString + ".bgColorAlpha")) * 255.0D)), ((u)localObject1).DWN.substring(1) });
+            ((v)localObject1).bgColor = Util.nullAs((String)paramMap.get(paramString + ".bgColor"), "");
+            if ((paramMap.containsKey(paramString + ".bgColorAlpha")) && (((v)localObject1).bgColor.length() > 0)) {
+              ((v)localObject1).bgColor = String.format("#%02x%s", new Object[] { Integer.valueOf((int)(Util.safeParseDouble((String)paramMap.get(paramString + ".bgColorAlpha")) * 255.0D)), ((v)localObject1).bgColor.substring(1) });
             }
           }
           catch (Exception localException3)
@@ -848,10 +827,10 @@ public final class i
             {
               for (;;)
               {
-                ((u)localObject1).width = a(Util.safeParseDouble((String)paramMap.get(paramString + ".imageWidth")), paramInt1, paramInt2, paramInt3);
-                ((u)localObject1).height = a(Util.safeParseDouble((String)paramMap.get(paramString + ".imageHeight")), paramInt1, paramInt2, paramInt3);
-                ((u)localObject1).DYO = Util.nullAs((String)paramMap.get(".adxml.adSphereCardInfo.sphereImageUrl"), "");
-                ((u)localObject1).DYP = Util.nullAs((String)paramMap.get(".adxml.adSphereCardInfo.sphereThumbUrl"), "");
+                ((v)localObject1).width = a(Util.safeParseDouble((String)paramMap.get(paramString + ".imageWidth")), paramInt1, paramInt2, paramInt3);
+                ((v)localObject1).height = a(Util.safeParseDouble((String)paramMap.get(paramString + ".imageHeight")), paramInt1, paramInt2, paramInt3);
+                ((v)localObject1).Kmj = Util.nullAs((String)paramMap.get(".adxml.adSphereCardInfo.sphereImageUrl"), "");
+                ((v)localObject1).Kmk = Util.nullAs((String)paramMap.get(".adxml.adSphereCardInfo.sphereThumbUrl"), "");
                 break;
                 localException3 = localException3;
                 Log.e("AdLandingPagesParseHelper", "sphereImageView adlandinginfo parse color exp=" + localException3.toString());
@@ -861,33 +840,33 @@ public final class i
             {
               for (;;)
               {
-                ((u)localObject1).width = 0.0F;
-                ((u)localObject1).height = 0.0F;
+                ((v)localObject1).width = 0.0F;
+                ((v)localObject1).height = 0.0F;
                 Log.e("AdLandingPagesParseHelper", "sphereImageView adlandinginfo parse size exp=" + localException4.toString());
               }
             }
           }
-          localObject1 = new ad();
-          ((ad)localObject1).DZB = Util.nullAs((String)paramMap.get(paramString + ".backgroundImg"), "");
-          ((ad)localObject1).iconUrl = Util.nullAs((String)paramMap.get(paramString + ".iconUrl"), "");
-          ((ad)localObject1).title = Util.nullAs((String)paramMap.get(paramString + ".title"), "");
-          ((ad)localObject1).desc = Util.nullAs((String)paramMap.get(paramString + ".desc"), "");
-          ((ad)localObject1).DZG = Util.safeParseInt((String)paramMap.get(paramString + ".onlyShowInTimelineAd"));
+          localObject1 = new ae();
+          ((ae)localObject1).KmW = Util.nullAs((String)paramMap.get(paramString + ".backgroundImg"), "");
+          ((ae)localObject1).iconUrl = Util.nullAs((String)paramMap.get(paramString + ".iconUrl"), "");
+          ((ae)localObject1).title = Util.nullAs((String)paramMap.get(paramString + ".title"), "");
+          ((ae)localObject1).desc = Util.nullAs((String)paramMap.get(paramString + ".desc"), "");
+          ((ae)localObject1).Knb = Util.safeParseInt((String)paramMap.get(paramString + ".onlyShowInTimelineAd"));
           if (Util.safeParseInt((String)paramMap.get(paramString + ".isFullClickable")) == 1)
           {
             bool = true;
-            label8241:
-            ((ad)localObject1).DZD = bool;
-            ((ad)localObject1).DZE = ((int)a(Util.safeParseDouble((String)paramMap.get(paramString + ".appearPaddingTop")), paramInt1, paramInt2, paramInt3));
-            ((ad)localObject1).DZF = ((int)a(Util.safeParseDouble((String)paramMap.get(paramString + ".appearPaddingBottom")), paramInt1, paramInt2, paramInt3));
+            label8555:
+            ((ae)localObject1).KmY = bool;
+            ((ae)localObject1).KmZ = ((int)a(Util.safeParseDouble((String)paramMap.get(paramString + ".appearPaddingTop")), paramInt1, paramInt2, paramInt3));
+            ((ae)localObject1).Kna = ((int)a(Util.safeParseDouble((String)paramMap.get(paramString + ".appearPaddingBottom")), paramInt1, paramInt2, paramInt3));
           }
           try
           {
             str2 = paramString + ".backgroundColor";
             localObject3 = paramString + ".backgroundColorAlpha";
-            ((ad)localObject1).lco = Util.nullAs((String)paramMap.get(str2), "");
-            if ((paramMap.containsKey(localObject3)) && (((ad)localObject1).lco.length() > 0)) {
-              ((ad)localObject1).lco = String.format("#%02x%s", new Object[] { Integer.valueOf((int)(Util.safeParseDouble((String)paramMap.get(localObject3)) * 255.0D)), ((ad)localObject1).lco.substring(1) });
+            ((ae)localObject1).nWx = Util.nullAs((String)paramMap.get(str2), "");
+            if ((paramMap.containsKey(localObject3)) && (((ae)localObject1).nWx.length() > 0)) {
+              ((ae)localObject1).nWx = String.format("#%02x%s", new Object[] { Integer.valueOf((int)(Util.safeParseDouble((String)paramMap.get(localObject3)) * 255.0D)), ((ae)localObject1).nWx.substring(1) });
             }
           }
           catch (Exception localException6)
@@ -896,9 +875,9 @@ public final class i
             {
               str2 = paramString + ".titleColor";
               localObject3 = paramString + ".titleColorAlpha";
-              ((ad)localObject1).iyd = Util.nullAs((String)paramMap.get(str2), "");
-              if ((paramMap.containsKey(localObject3)) && (((ad)localObject1).iyd.length() > 0)) {
-                ((ad)localObject1).iyd = String.format("#%02x%s", new Object[] { Integer.valueOf((int)(Util.safeParseDouble((String)paramMap.get(localObject3)) * 255.0D)), ((ad)localObject1).iyd.substring(1) });
+              ((ae)localObject1).lnt = Util.nullAs((String)paramMap.get(str2), "");
+              if ((paramMap.containsKey(localObject3)) && (((ae)localObject1).lnt.length() > 0)) {
+                ((ae)localObject1).lnt = String.format("#%02x%s", new Object[] { Integer.valueOf((int)(Util.safeParseDouble((String)paramMap.get(localObject3)) * 255.0D)), ((ae)localObject1).lnt.substring(1) });
               }
             }
             catch (Exception localException6)
@@ -909,18 +888,18 @@ public final class i
                 {
                   String str2 = paramString + ".descColor";
                   localObject3 = paramString + ".descColorAlpha";
-                  ((ad)localObject1).DZC = Util.nullAs((String)paramMap.get(str2), "");
-                  if ((paramMap.containsKey(localObject3)) && (((ad)localObject1).DZC.length() > 0)) {
-                    ((ad)localObject1).DZC = String.format("#%02x%s", new Object[] { Integer.valueOf((int)(Util.safeParseDouble((String)paramMap.get(localObject3)) * 255.0D)), ((ad)localObject1).DZC.substring(1) });
+                  ((ae)localObject1).KmX = Util.nullAs((String)paramMap.get(str2), "");
+                  if ((paramMap.containsKey(localObject3)) && (((ae)localObject1).KmX.length() > 0)) {
+                    ((ae)localObject1).KmX = String.format("#%02x%s", new Object[] { Integer.valueOf((int)(Util.safeParseDouble((String)paramMap.get(localObject3)) * 255.0D)), ((ae)localObject1).KmX.substring(1) });
                   }
-                  ((ad)localObject1).DZH = a(paramMap, paramString + ".componentItem", paramInt1, paramInt2, paramInt3, paramInt4);
-                  if (!(((ad)localObject1).DZH instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)) {
-                    break label9154;
+                  ((ae)localObject1).Knc = a(paramMap, paramString + ".componentItem", paramInt1, paramInt2, paramInt3, paramInt4);
+                  if (!(((ae)localObject1).Knc instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)) {
+                    break label10209;
                   }
-                  ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)((ad)localObject1).DZH).DXO = true;
+                  ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)((ae)localObject1).Knc).KkX = true;
                   break;
                   bool = false;
-                  break label8241;
+                  break label8555;
                   localException5 = localException5;
                   Log.e("AdLandingPagesParseHelper", "AdLandingPageComponetFloatBarInfo parse backgroundColor exp=" + localException5.toString());
                   continue;
@@ -937,41 +916,96 @@ public final class i
               }
             }
           }
-          localObject1 = L(paramMap, paramString);
+          localObject1 = Y(paramMap, paramString);
           continue;
-          localObject1 = new p();
-          ((p)localObject1).DYo = Util.nullAs((String)paramMap.get(paramString + ".swipeText"), "");
-          ((p)localObject1).DYp = Util.safeParseInt((String)paramMap.get(paramString + ".swipeActionType"));
-          ((p)localObject1).jumpUrl = Util.nullAs((String)paramMap.get(paramString + ".jumpUrl"), "");
+          localObject1 = new q();
+          ((q)localObject1).KlH = Util.nullAs((String)paramMap.get(paramString + ".swipeText"), "");
+          ((q)localObject1).KlI = Util.safeParseInt((String)paramMap.get(paramString + ".swipeActionType"));
+          ((q)localObject1).jumpUrl = Util.nullAs((String)paramMap.get(paramString + ".jumpUrl"), "");
           continue;
           localObject1 = i(paramMap, paramString, paramInt1, paramInt2, paramInt3, paramInt4);
           continue;
-          localObject1 = new af();
-          ((af)localObject1).DZJ = Util.nullAsNil((String)paramMap.get(paramString + ".shareText"));
-          ((af)localObject1).DYt = Util.nullAsNil((String)paramMap.get(paramString + ".fontColor"));
+          localObject1 = new ag();
+          ((ag)localObject1).Kne = Util.nullAsNil((String)paramMap.get(paramString + ".shareText"));
+          ((ag)localObject1).KlM = Util.nullAsNil((String)paramMap.get(paramString + ".fontColor"));
+          continue;
+          localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f();
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f)localObject1).KmC = k;
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f)localObject1).subType = m;
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f)localObject1).videoUrl = Util.nullAs((String)paramMap.get(paramString + ".videoUrl"), "");
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f)localObject1).thumbUrl = Util.nullAs((String)paramMap.get(paramString + ".thumbUrl"), "");
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f)localObject1).Klj = Util.safeParseInt((String)paramMap.get(paramString + ".playerMode"));
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f)localObject1).KjH = Util.safeParseInt((String)paramMap.get(paramString + ".displayType"));
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f)localObject1).width = a(Util.safeParseDouble((String)paramMap.get(paramString + ".displayWidth")), paramInt1, paramInt2, paramInt3);
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f)localObject1).height = a(Util.safeParseDouble((String)paramMap.get(paramString + ".displayHeight")), paramInt1, paramInt2, paramInt3);
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f)localObject1).Klk = Util.nullAs((String)paramMap.get(paramString + ".videoMd5"), "");
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f)localObject1).Kll = Util.nullAs((String)paramMap.get(paramString + ".thumbMd5"), "");
+          if (Util.safeParseInt((String)paramMap.get(paramString + ".forbiddenControlView")) > 0)
+          {
+            bool = true;
+            label9847:
+            ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f)localObject1).Klm = bool;
+            if (Util.safeParseInt((String)paramMap.get(paramString + ".forbiddenAutoPlay")) <= 0) {
+              break label10181;
+            }
+            bool = true;
+            ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f)localObject1).Kln = bool;
+            if (Util.safeParseInt((String)paramMap.get(paramString + ".forbiddenPreload")) <= 0) {
+              break label10187;
+            }
+            bool = true;
+            ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f)localObject1).Klo = bool;
+            ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f)localObject1).preloadRatio = Util.safeParseInt((String)paramMap.get(paramString + ".preloadRatio"));
+            if (Util.safeParseInt((String)paramMap.get(paramString + ".forceLandscapeWhenTurnToFullScreen")) <= 0) {
+              break label10193;
+            }
+          }
+          for (bool = true;; bool = false)
+          {
+            ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f)localObject1).Klp = bool;
+            ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f)localObject1).Klr = j(paramMap, paramString + ".floatBarComponentItem", paramInt1, paramInt2, paramInt3, paramInt4);
+            String str3 = Util.nullAsNil((String)paramMap.get(paramString + ".floatComponentId"));
+            i = Util.safeParseInt((String)paramMap.get(paramString + ".floatStartTime"));
+            if ((!Util.isNullOrNil(str3)) && (i > 0))
+            {
+              localObject3 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj();
+              ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj)localObject3).fOG = str3;
+              ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj)localObject3).Knx = i;
+              ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f)localObject1).Klq = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj)localObject3);
+            }
+            break;
+            bool = false;
+            break label9847;
+            bool = false;
+            break label9892;
+            bool = false;
+            break label9937;
+          }
+          localObject1 = com.tencent.mm.plugin.sns.ad.landingpage.component.b.f.L(paramMap, paramString);
         }
       }
       else
       {
-        label9154:
+        label9937:
+        label10209:
         localObject1 = null;
       }
     }
   }
   
-  private static void a(z paramz, Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  private static void a(aa paramaa, Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     boolean bool2 = true;
     AppMethodBeat.i(97338);
-    paramz.DZj = Util.safeParseInt((String)paramMap.get(paramString + ".type"));
-    paramz.type = paramz.DZj;
-    paramz.DZi = Util.nullAs((String)paramMap.get(paramString + ".id"), "");
-    paramz.paddingTop = a(Util.safeParseDouble((String)paramMap.get(paramString + ".paddingTop")), paramInt1, paramInt2, paramInt3);
-    paramz.paddingBottom = a(Util.safeParseDouble((String)paramMap.get(paramString + ".paddingBottom")), paramInt1, paramInt2, paramInt3);
-    paramz.paddingLeft = a(Util.safeParseDouble((String)paramMap.get(paramString + ".paddingLeft")), paramInt1, paramInt2, paramInt3);
-    paramz.paddingRight = a(Util.safeParseDouble((String)paramMap.get(paramString + ".paddingRight")), paramInt1, paramInt2, paramInt3);
-    paramz.subType = Util.safeParseInt((String)paramMap.get(paramString + ".subType"));
-    paramz.DZn = Util.nullAs((String)paramMap.get(paramString + ".cellBackgroundColor"), "");
+    paramaa.KmC = Util.safeParseInt((String)paramMap.get(paramString + ".type"));
+    paramaa.type = paramaa.KmC;
+    paramaa.KmB = Util.nullAs((String)paramMap.get(paramString + ".id"), "");
+    paramaa.paddingTop = a(Util.safeParseDouble((String)paramMap.get(paramString + ".paddingTop")), paramInt1, paramInt2, paramInt3);
+    paramaa.paddingBottom = a(Util.safeParseDouble((String)paramMap.get(paramString + ".paddingBottom")), paramInt1, paramInt2, paramInt3);
+    paramaa.paddingLeft = a(Util.safeParseDouble((String)paramMap.get(paramString + ".paddingLeft")), paramInt1, paramInt2, paramInt3);
+    paramaa.paddingRight = a(Util.safeParseDouble((String)paramMap.get(paramString + ".paddingRight")), paramInt1, paramInt2, paramInt3);
+    paramaa.subType = Util.safeParseInt((String)paramMap.get(paramString + ".subType"));
+    paramaa.KmG = Util.nullAs((String)paramMap.get(paramString + ".cellBackgroundColor"), "");
     String str1 = paramString + ".if";
     label400:
     label453:
@@ -982,98 +1016,111 @@ public final class i
       if ("1".equals(paramMap.get(str1)))
       {
         bool1 = true;
-        paramz.DZq = bool1;
+        paramaa.KmJ = bool1;
         str1 = paramString + ".noReport";
         if (!paramMap.containsKey(str1)) {
-          break label867;
+          break label960;
         }
         if (!"1".equals(paramMap.get(str1))) {
-          break label861;
+          break label954;
         }
         bool1 = true;
-        paramz.DZr = bool1;
+        paramaa.KmK = bool1;
         str1 = Util.nullAs((String)paramMap.get(paramString + ".layoutWidth"), "");
         str2 = Util.nullAs((String)paramMap.get(paramString + ".layoutHeight"), "");
         if (TextUtils.isEmpty(str1)) {
-          break label892;
+          break label985;
         }
         d = Util.safeParseDouble(str1);
         if (d >= 0.0D) {
-          break label875;
+          break label968;
         }
-        paramz.DZk = ((float)d);
+        paramaa.KmD = ((float)d);
         label560:
         if (TextUtils.isEmpty(str2)) {
-          break label919;
+          break label1012;
         }
         d = Util.safeParseDouble(str2);
         if (d >= 0.0D) {
-          break label902;
+          break label995;
         }
-        paramz.DZl = ((float)d);
+        paramaa.KmE = ((float)d);
         label589:
         str1 = (String)paramMap.get(paramString + ".verticalAlignment");
         str2 = (String)paramMap.get(paramString + ".horizontalAlignment");
         if (!TextUtils.isEmpty(str1)) {
-          break label929;
+          break label1022;
         }
-        paramz.DZo = -1;
+        paramaa.KmH = -1;
         label664:
         if (!TextUtils.isEmpty(str2)) {
-          break label941;
+          break label1034;
         }
-        paramz.DZp = -1;
+        paramaa.KmI = -1;
         label677:
         if (Util.safeParseInt((String)paramMap.get(paramString + ".isTwistAnimView")) != 1) {
-          break label953;
+          break label1046;
         }
         bool1 = true;
         label716:
-        paramz.DZs = bool1;
+        paramaa.KmL = bool1;
         if (Util.safeParseInt((String)paramMap.get(paramString + ".isDefaultTwistCard")) != 1) {
-          break label959;
+          break label1052;
+        }
+        bool1 = true;
+        label761:
+        paramaa.KmM = bool1;
+        paramaa.KmN = Util.nullAsNil((String)paramMap.get(paramString + ".twistCardId"));
+        if (Util.safeParseInt((String)paramMap.get(paramString + ".isShakeAnimView")) != 1) {
+          break label1058;
         }
       }
     }
-    label902:
-    label919:
-    label929:
-    label941:
-    label953:
-    label959:
+    label1034:
+    label1046:
+    label1052:
+    label1058:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      paramz.DZt = bool1;
-      paramz.DZu = Util.nullAsNil((String)paramMap.get(paramString + ".twistCardId"));
-      paramz.DZv = Util.nullAsNil((String)paramMap.get(paramString + ".jumpExtInfo"));
+      paramaa.KmO = bool1;
+      paramaa.KmP = Util.nullAsNil((String)paramMap.get(paramString + ".jumpExtInfo"));
+      paramString = paramString + ".fileSize";
+      if (paramMap.containsKey(paramString)) {
+        paramaa.fileSize = Util.safeParseInt((String)paramMap.get(paramString));
+      }
       AppMethodBeat.o(97338);
       return;
       bool1 = false;
       break;
-      paramz.DZq = true;
+      paramaa.KmJ = true;
       break label400;
-      label861:
+      label954:
       bool1 = false;
       break label453;
-      label867:
-      paramz.DZr = false;
+      label960:
+      paramaa.KmK = false;
       break label459;
-      label875:
-      paramz.DZk = a(d, paramInt1, paramInt2, paramInt3);
+      label968:
+      paramaa.KmD = a(d, paramInt1, paramInt2, paramInt3);
       break label560;
-      label892:
-      paramz.DZk = 2.147484E+009F;
+      label985:
+      paramaa.KmD = 2.147484E+009F;
       break label560;
-      paramz.DZl = a(d, paramInt1, paramInt2, paramInt3);
+      label995:
+      paramaa.KmE = a(d, paramInt1, paramInt2, paramInt3);
       break label589;
-      paramz.DZl = 2.147484E+009F;
+      label1012:
+      paramaa.KmE = 2.147484E+009F;
       break label589;
-      paramz.DZo = Util.safeParseInt(str1);
+      label1022:
+      paramaa.KmH = Util.safeParseInt(str1);
       break label664;
-      paramz.DZp = Util.safeParseInt(str2);
+      paramaa.KmI = Util.safeParseInt(str2);
       break label677;
       bool1 = false;
       break label716;
+      bool1 = false;
+      break label761;
     }
   }
   
@@ -1082,23 +1129,23 @@ public final class i
     AppMethodBeat.i(97351);
     String str = paramTimeLineObject.canvasInfo;
     long l = new BigInteger(paramTimeLineObject.Id).longValue();
-    LinkedList localLinkedList = paramTimeLineObject.ContentObj.LoV;
+    LinkedList localLinkedList = paramTimeLineObject.ContentObj.Sqr;
     boolean bool;
     Object localObject;
     int i;
     int j;
     if (!TextUtils.isEmpty(str))
     {
-      if ((TextUtils.isEmpty(str)) || (!aQg(str))) {
-        break label448;
+      if ((TextUtils.isEmpty(str)) || (!bbf(str))) {
+        break label459;
       }
       paramTimeLineObject = "";
-      bool = aQf(str);
+      bool = bbe(str);
       if (!bool) {
-        break label468;
+        break label479;
       }
-      localObject = com.tencent.mm.model.c.d.aXv().getExpIdByKey("Sns_Canvas_GameShare_JumpWay");
-      if (com.tencent.mm.model.c.d.aXv().gO("Sns_Canvas_GameShare_JumpWay", 0) == 0)
+      localObject = com.tencent.mm.model.c.d.bgC().buU("Sns_Canvas_GameShare_JumpWay");
+      if (com.tencent.mm.model.c.d.bgC().buT("Sns_Canvas_GameShare_JumpWay") == 0)
       {
         i = 0;
         j = i;
@@ -1107,7 +1154,7 @@ public final class i
         {
           j = i;
           paramTimeLineObject = (TimeLineObject)localObject;
-          if (fex())
+          if (fSr())
           {
             j = 1;
             paramTimeLineObject = (TimeLineObject)localObject;
@@ -1119,7 +1166,7 @@ public final class i
     {
       if (j != 0)
       {
-        localObject = com.tencent.mm.plugin.sns.model.aj.faO().JJ(l);
+        localObject = com.tencent.mm.plugin.sns.model.aj.fOI().Rd(l);
         Intent localIntent = new Intent();
         if (localObject != null)
         {
@@ -1131,7 +1178,7 @@ public final class i
           localIntent.putExtra("sns_landing_pages_rec_src", ((SnsInfo)localObject).getAdRecSrc());
         }
         if ((localLinkedList != null) && (localLinkedList.size() > 0)) {
-          localIntent.putExtra("sns_landing_pages_share_thumb_url", ((cnb)localLinkedList.get(0)).Msz);
+          localIntent.putExtra("sns_landing_pages_share_thumb_url", ((cvt)localLinkedList.get(0)).TDF);
         }
         localIntent.putExtra("sns_landing_pages_expid", paramTimeLineObject);
         localIntent.putExtra("sns_landig_pages_from_source", 11);
@@ -1139,10 +1186,11 @@ public final class i
         localIntent.putExtra("sns_landing_pages_xml", str);
         localIntent.putExtra("sns_landing_pages_xml_prefix", "adxml");
         localIntent.putExtra("sns_landing_pages_need_enter_and_exit_animation", false);
-        paramTimeLineObject = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
-        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramTimeLineObject.axQ(), "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPagesParseHelper", "openCanvas", "(Ljava/lang/String;JLjava/util/List;Landroid/app/Activity;IZ)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramActivity.startActivity((Intent)paramTimeLineObject.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPagesParseHelper", "openCanvas", "(Ljava/lang/String;JLjava/util/List;Landroid/app/Activity;IZ)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localIntent.putExtra("sns_landing_page_start_time", System.currentTimeMillis());
+        paramTimeLineObject = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
+        com.tencent.mm.hellhoundlib.a.a.b(paramActivity, paramTimeLineObject.aFh(), "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPagesParseHelper", "openCanvas", "(Ljava/lang/String;JLjava/util/List;Landroid/app/Activity;IZ)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramActivity.startActivity((Intent)paramTimeLineObject.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramActivity, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPagesParseHelper", "openCanvas", "(Ljava/lang/String;JLjava/util/List;Landroid/app/Activity;IZ)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(97351);
         return true;
         i = 1;
@@ -1153,10 +1201,10 @@ public final class i
       {
         AppMethodBeat.o(97351);
         return false;
-        label448:
+        label459:
         Log.i("AdLandingPagesParseHelper", "invalid canvas xml %s", new Object[] { str });
       }
-      label468:
+      label479:
       j = 1;
     }
   }
@@ -1172,11 +1220,11 @@ public final class i
     }
     String str = paramString;
     if (paramBoolean) {
-      str = "exp=" + com.tencent.mm.model.c.d.aXv().getExpIdByKey("Sns_Canvas_GameShare_JumpWay") + "_" + paramInt;
+      str = "exp=" + com.tencent.mm.model.c.d.bgC().buU("Sns_Canvas_GameShare_JumpWay") + "_" + paramInt;
     }
     try
     {
-      str = n(paramString, new String[] { str });
+      str = m(paramString, new String[] { str });
       paramString = str;
     }
     catch (URISyntaxException localURISyntaxException)
@@ -1189,78 +1237,94 @@ public final class i
     paramString = new Intent();
     paramString.putExtra("rawUrl", str);
     paramString.putExtra("showShare", true);
-    com.tencent.mm.br.c.b(paramContext, "webview", ".ui.tools.WebViewUI", paramString);
+    com.tencent.mm.by.c.b(paramContext, "webview", ".ui.tools.WebViewUI", paramString);
     AppMethodBeat.o(97346);
     return true;
   }
   
-  private static boolean aQf(String paramString)
+  private static Intent aL(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(97345);
-    if (Util.safeParseInt(Util.nullAs((String)XmlParser.parseXml(paramString, "adCanvasInfo", null).get(".adCanvasInfo.bizId"), "")) == 1)
-    {
-      AppMethodBeat.o(97345);
-      return true;
-    }
-    AppMethodBeat.o(97345);
-    return false;
-  }
-  
-  public static boolean aQg(String paramString)
-  {
-    AppMethodBeat.i(258598);
-    boolean bool = kG(paramString, "adCanvasInfo");
-    AppMethodBeat.o(258598);
-    return bool;
-  }
-  
-  private static Intent aR(Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(203159);
-    paramMap = com.tencent.mm.plugin.sns.device.appstore.a.b(MMApplicationContext.getContext(), paramMap);
+    AppMethodBeat.i(246751);
+    paramMap = com.tencent.mm.plugin.sns.device.appstore.a.c(MMApplicationContext.getContext(), paramMap);
     if (paramMap != null)
     {
-      paramMap = paramMap.eZA();
-      AppMethodBeat.o(203159);
+      paramMap = paramMap.fNs();
+      AppMethodBeat.o(246751);
       return paramMap;
     }
-    AppMethodBeat.o(203159);
+    AppMethodBeat.o(246751);
     return null;
   }
   
-  private static ao b(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public static boolean agA(int paramInt)
+  {
+    return paramInt == 101;
+  }
+  
+  public static boolean agB(int paramInt)
+  {
+    return paramInt == 103;
+  }
+  
+  public static boolean agC(int paramInt)
+  {
+    return paramInt == 104;
+  }
+  
+  public static boolean agD(int paramInt)
+  {
+    return paramInt == 105;
+  }
+  
+  public static boolean agE(int paramInt)
+  {
+    return paramInt == 139;
+  }
+  
+  private static boolean agF(int paramInt)
+  {
+    paramInt |= 0xFF000000;
+    return paramInt + 16777216 > -1 - paramInt;
+  }
+  
+  public static boolean agz(int paramInt)
+  {
+    return (paramInt == 101) || (paramInt == 103) || (paramInt == 104) || (paramInt == 105) || (paramInt == 139);
+  }
+  
+  private static ap b(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(97334);
-    localao = new ao();
+    localap = new ap();
     try
     {
       paramString = paramString + ".radarChart";
-      localao.Eah = ((String)paramMap.get(paramString + ".borderImg"));
-      localao.Ean = ((String)paramMap.get(paramString + ".maskImg"));
-      localao.Eai = ((String)paramMap.get(paramString + ".coverColor"));
-      localao.Eaj = Color.parseColor((String)paramMap.get(paramString + ".labelFont.$color"));
-      localao.Eak = ((int)a(Util.safeParseDouble((String)paramMap.get(paramString + ".labelFont.$size")), paramInt1, paramInt2, paramInt3));
-      localao.Eal = Color.parseColor((String)paramMap.get(paramString + ".scoreFont.$color"));
-      localao.Eam = ((int)a(Util.safeParseDouble((String)paramMap.get(paramString + ".scoreFont.$size")), paramInt1, paramInt2, paramInt3));
-      localao.borderWidth = a(Util.safeParseDouble((String)paramMap.get(paramString + ".borderImgWidth")), paramInt1, paramInt2, paramInt3);
+      localap.KnC = ((String)paramMap.get(paramString + ".borderImg"));
+      localap.KnI = ((String)paramMap.get(paramString + ".maskImg"));
+      localap.KnD = ((String)paramMap.get(paramString + ".coverColor"));
+      localap.KnE = Color.parseColor((String)paramMap.get(paramString + ".labelFont.$color"));
+      localap.KnF = ((int)a(Util.safeParseDouble((String)paramMap.get(paramString + ".labelFont.$size")), paramInt1, paramInt2, paramInt3));
+      localap.KnG = Color.parseColor((String)paramMap.get(paramString + ".scoreFont.$color"));
+      localap.KnH = ((int)a(Util.safeParseDouble((String)paramMap.get(paramString + ".scoreFont.$size")), paramInt1, paramInt2, paramInt3));
+      localap.borderWidth = a(Util.safeParseDouble((String)paramMap.get(paramString + ".borderImgWidth")), paramInt1, paramInt2, paramInt3);
       String str = paramString + ".itemList.item";
       paramInt1 = 0;
       if (paramInt1 != 0) {}
       for (paramString = str + paramInt1;; paramString = str)
       {
-        ao.a locala = new ao.a();
+        ap.a locala = new ap.a();
         locala.label = ((String)paramMap.get(paramString + ".label"));
-        locala.Eao = ((String)paramMap.get(paramString + ".score"));
+        locala.KnJ = ((String)paramMap.get(paramString + ".score"));
         locala.value = ((float)Util.safeParseDouble((String)paramMap.get(paramString + ".value")));
-        if ((TextUtils.isEmpty(locala.label)) && (TextUtils.isEmpty(locala.Eao))) {
+        if ((TextUtils.isEmpty(locala.label)) && (TextUtils.isEmpty(locala.KnJ))) {
           break label567;
         }
-        localao.jzm.add(locala);
+        localap.moS.add(locala);
         paramInt1 += 1;
         break;
       }
       label567:
-      return localao;
+      return localap;
     }
     catch (Exception paramMap)
     {
@@ -1269,7 +1333,7 @@ public final class i
     }
   }
   
-  private static List<z> b(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private static List<aa> b(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(97335);
     ArrayList localArrayList = new ArrayList();
@@ -1283,7 +1347,7 @@ public final class i
       if (paramString == null) {
         break label147;
       }
-      if (!paramString.DZq) {
+      if (!paramString.KmJ) {
         break label113;
       }
       localArrayList.add(paramString);
@@ -1302,14 +1366,34 @@ public final class i
     return localArrayList;
   }
   
-  private static r c(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private static boolean bbe(String paramString)
+  {
+    AppMethodBeat.i(97345);
+    if (Util.safeParseInt(Util.nullAs((String)XmlParser.parseXml(paramString, "adCanvasInfo", null).get(".adCanvasInfo.bizId"), "")) == 1)
+    {
+      AppMethodBeat.o(97345);
+      return true;
+    }
+    AppMethodBeat.o(97345);
+    return false;
+  }
+  
+  public static boolean bbf(String paramString)
+  {
+    AppMethodBeat.i(293057);
+    boolean bool = lc(paramString, "adCanvasInfo");
+    AppMethodBeat.o(293057);
+    return bool;
+  }
+  
+  private static s c(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(97336);
-    r localr = new r();
+    s locals = new s();
     try
     {
       i = Color.parseColor((String)paramMap.get(paramString + ".bgColorTheme"));
-      localr.backgroundColor = ((int)(Util.getDouble((String)paramMap.get(paramString + ".bgColorAlpha"), 0.0D) * 255.0D) << 24 | i & 0xFFFFFF);
+      locals.backgroundColor = ((int)(Util.getDouble((String)paramMap.get(paramString + ".bgColorAlpha"), 0.0D) * 255.0D) << 24 | i & 0xFFFFFF);
       paramString = paramString + ".componentGroupList";
       String str = paramString + ".componentItem";
       i = 0;
@@ -1320,8 +1404,8 @@ public final class i
         if (paramString == null) {
           break label260;
         }
-        if (paramString.DZq) {
-          localr.DYI.add(paramString);
+        if (paramString.KmJ) {
+          locals.Kmd.add(paramString);
         }
         i += 1;
       }
@@ -1332,22 +1416,22 @@ public final class i
       {
         int i;
         Log.e("AdLandingPagesParseHelper", "%s", new Object[] { Util.stackTraceToString(localException) });
-        localr.backgroundColor = Color.argb(51, 0, 0, 0);
+        locals.backgroundColor = Color.argb(51, 0, 0, 0);
         continue;
         paramString = localException + i;
       }
       label260:
       AppMethodBeat.o(97336);
     }
-    return localr;
+    return locals;
   }
   
-  private static ak d(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private static al d(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(97337);
-    ak localak = new ak();
-    a(localak, paramMap, paramString, paramInt1, paramInt2, paramInt3);
-    localak.Eac = Util.safeParseInt((String)paramMap.get(paramString + ".pageCtrType"));
+    al localal = new al();
+    a(localal, paramMap, paramString, paramInt1, paramInt2, paramInt3);
+    localal.Kny = Util.safeParseInt((String)paramMap.get(paramString + ".pageCtrType"));
     boolean bool;
     label148:
     String str1;
@@ -1355,25 +1439,25 @@ public final class i
     if (Util.safeParseInt((String)paramMap.get(paramString + ".isFullScreen")) == 1)
     {
       bool = true;
-      localak.onr = bool;
+      localal.AJP = bool;
       if (Util.safeParseInt((String)paramMap.get(paramString + ".autoCarousel")) != 1) {
         break label278;
       }
       bool = true;
-      localak.autoCarousel = bool;
+      localal.autoCarousel = bool;
       str1 = paramString + ".componentGroupList.componentGroup";
       i = 0;
     }
     for (;;)
     {
       label188:
-      r localr;
+      s locals;
       String str2;
       int j;
       if (i == 0)
       {
         paramString = str1;
-        localr = new r();
+        locals = new s();
         str2 = paramString + ".componentItem";
         j = 0;
         label222:
@@ -1389,8 +1473,8 @@ public final class i
         if (paramString == null) {
           break label332;
         }
-        if (paramString.DZq) {
-          localr.DYI.add(paramString);
+        if (paramString.KmJ) {
+          locals.Kmd.add(paramString);
         }
         j += 1;
         break label222;
@@ -1402,24 +1486,24 @@ public final class i
         break label188;
       }
       label332:
-      if (localr.DYI.size() == 0) {
+      if (locals.Kmd.size() == 0) {
         break label363;
       }
-      localak.DYI.add(localr);
+      localal.Kmd.add(locals);
       i += 1;
     }
     label363:
     AppMethodBeat.o(97337);
-    return localak;
+    return localal;
   }
   
-  private static z e(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private static aa e(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(97339);
-    aa localaa = new aa();
-    localaa.DZx = Util.safeParseInt((String)paramMap.get(paramString + ".subType"));
-    localaa.DZh = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ap.a(paramMap, paramString, paramInt1, paramInt2, paramInt3);
-    a(localaa, paramMap, paramString, paramInt1, paramInt2, paramInt3);
+    ab localab = new ab();
+    localab.KmR = Util.safeParseInt((String)paramMap.get(paramString + ".subType"));
+    localab.KmA = aq.a(paramMap, paramString, paramInt1, paramInt2, paramInt3);
+    a(localab, paramMap, paramString, paramInt1, paramInt2, paramInt3);
     String str = paramString + ".layoutItems.componentItem";
     int i = 0;
     if (i == 0) {}
@@ -1429,37 +1513,37 @@ public final class i
       if (paramString == null) {
         break label176;
       }
-      if (paramString.DZq) {
-        localaa.DZw.add(paramString);
+      if (paramString.KmJ) {
+        localab.KmQ.add(paramString);
       }
       i += 1;
       break;
     }
     label176:
     AppMethodBeat.o(97339);
-    return localaa;
+    return localab;
   }
   
-  private static z f(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private static aa f(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(97340);
     List localList = b(paramMap, paramString, paramInt1, paramInt2, paramInt3, paramInt4);
-    y localy = new y();
-    localy.hH = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), Util.safeParseInt((String)paramMap.get(paramString + ".cornerRadius")));
-    localy.aQz = localList;
-    localy.DZh = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ap.a(paramMap, paramString, paramInt1, paramInt2, paramInt3);
-    a(localy, paramMap, paramString, paramInt1, paramInt2, paramInt3);
+    z localz = new z();
+    localz.cornerRadius = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), Util.safeParseInt((String)paramMap.get(paramString + ".cornerRadius")));
+    localz.ayS = localList;
+    localz.KmA = aq.a(paramMap, paramString, paramInt1, paramInt2, paramInt3);
+    a(localz, paramMap, paramString, paramInt1, paramInt2, paramInt3);
     AppMethodBeat.o(97340);
-    return localy;
+    return localz;
   }
   
-  private static boolean fex()
+  private static boolean fSr()
   {
     AppMethodBeat.i(97349);
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.d.aXu().Fu("100150");
+    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.d.bgB().Mu("100150");
     if (localc.isValid())
     {
-      int i = Util.getInt((String)localc.gzz().get("openCanvas"), 0);
+      int i = Util.getInt((String)localc.hvz().get("openCanvas"), 0);
       Log.i("AdLandingPagesParseHelper", "canOpenGameCanvas abtest=".concat(String.valueOf(i)));
       if (i == 1)
       {
@@ -1473,15 +1557,15 @@ public final class i
     return false;
   }
   
-  private static void fey()
+  private static void fSs()
   {
     AppMethodBeat.i(97354);
-    if (Elp != null)
+    if (Kyw != null)
     {
       AppMethodBeat.o(97354);
       return;
     }
-    Elp = new HashSet();
+    Kyw = new HashSet();
     Object localObject4 = null;
     Object localObject1 = null;
     Object localObject2 = null;
@@ -1590,19 +1674,19 @@ public final class i
           localObject2 = localInputStream;
           localObject4 = localInputStream;
           localObject1 = localInputStream;
-          ((i.b)localObject5).Elu = i;
+          ((i.b)localObject5).KyB = i;
           localObject2 = localInputStream;
           localObject4 = localInputStream;
           localObject1 = localInputStream;
-          ((i.b)localObject5).Elv = k;
+          ((i.b)localObject5).KyC = k;
           localObject2 = localInputStream;
           localObject4 = localInputStream;
           localObject1 = localInputStream;
-          ((i.b)localObject5).Elw = i1;
+          ((i.b)localObject5).KyD = i1;
           localObject2 = localInputStream;
           localObject4 = localInputStream;
           localObject1 = localInputStream;
-          Elp.add(localObject5);
+          Kyw.add(localObject5);
           localObject2 = localInputStream;
           localObject4 = localInputStream;
           localObject1 = localInputStream;
@@ -1693,18 +1777,18 @@ public final class i
     }
   }
   
-  private static z g(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private static aa g(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(97341);
     Object localObject = b(paramMap, paramString, paramInt1, paramInt2, paramInt3, paramInt4);
-    x localx = new x();
-    localx.hH = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), Util.safeParseInt((String)paramMap.get(paramString + ".cornerRadius")));
-    localx.DZd = Util.safeParseInt((String)paramMap.get(paramString + ".autoShow"));
-    localx.DZe = Util.safeParseInt((String)paramMap.get(paramString + ".noAnimation"));
-    localx.DZf = Util.safeParseInt((String)paramMap.get(paramString + ".forbiddenToClose"));
-    localx.DZg = Util.safeParseInt((String)paramMap.get(paramString + ".noBackground"));
-    localx.aQz = ((List)localObject);
-    a(localx, paramMap, paramString, paramInt1, paramInt2, paramInt3);
+    y localy = new y();
+    localy.cornerRadius = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), Util.safeParseInt((String)paramMap.get(paramString + ".cornerRadius")));
+    localy.Kmw = Util.safeParseInt((String)paramMap.get(paramString + ".autoShow"));
+    localy.Kmx = Util.safeParseInt((String)paramMap.get(paramString + ".noAnimation"));
+    localy.Kmy = Util.safeParseInt((String)paramMap.get(paramString + ".forbiddenToClose"));
+    localy.Kmz = Util.safeParseInt((String)paramMap.get(paramString + ".noBackground"));
+    localy.ayS = ((List)localObject);
+    a(localy, paramMap, paramString, paramInt1, paramInt2, paramInt3);
     localObject = paramString + ".layoutItems.componentItem";
     int i = 0;
     if (i == 0) {}
@@ -1714,18 +1798,42 @@ public final class i
       if (paramString == null) {
         break label338;
       }
-      if (paramString.DZq) {
-        localx.aQz.add(paramString);
+      if (paramString.KmJ) {
+        localy.ayS.add(paramString);
       }
       i += 1;
       break;
     }
     label338:
     AppMethodBeat.o(97341);
-    return localx;
+    return localy;
   }
   
-  public static void gU(List<com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m> paramList)
+  private static aa h(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(246762);
+    List localList = b(paramMap, paramString, paramInt1, paramInt2, paramInt3, paramInt4);
+    com.tencent.mm.plugin.sns.ad.landingpage.component.b.b localb = new com.tencent.mm.plugin.sns.ad.landingpage.component.b.b();
+    localb.ayS = localList;
+    localb.JBF = Util.nullAsNil((String)paramMap.get(paramString + ".transitionImg"));
+    try
+    {
+      localb.JBG = com.tencent.mm.plugin.sns.data.m.kp(Util.nullAsNil((String)paramMap.get(paramString + ".transitionColor")), Util.nullAsNil((String)paramMap.get(paramString + ".transitionColorAlpha")));
+      localb.JBH = b.a.K(paramMap, paramString);
+      a(localb, paramMap, paramString, paramInt1, paramInt2, paramInt3);
+      AppMethodBeat.o(246762);
+      return localb;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.e("AdLandingPagesParseHelper", "sphereImageView adlandinginfo parse color exp=" + localException.toString());
+      }
+    }
+  }
+  
+  public static void hD(List<com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m> paramList)
   {
     AppMethodBeat.i(97357);
     if ((paramList == null) || (paramList.isEmpty()))
@@ -1738,83 +1846,60 @@ public final class i
     while (localIterator.hasNext())
     {
       com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m localm = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m)localIterator.next();
-      if (Zi(localm.fdk().type)) {
-        localArrayList.addAll(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.a)localm).eWU());
+      if (agz(localm.KqB.type)) {
+        localArrayList.addAll(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.a)localm).fKf());
       }
     }
     if (!localArrayList.isEmpty())
     {
-      gU(localArrayList);
+      hD(localArrayList);
       paramList.addAll(localArrayList);
     }
     AppMethodBeat.o(97357);
   }
   
-  private static z h(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private static com.tencent.mm.plugin.sns.ad.landingpage.component.b.e i(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(203160);
-    List localList = b(paramMap, paramString, paramInt1, paramInt2, paramInt3, paramInt4);
-    com.tencent.mm.plugin.sns.ad.landingpage.component.b.b localb = new com.tencent.mm.plugin.sns.ad.landingpage.component.b.b();
-    localb.aQz = localList;
-    localb.DtQ = Util.nullAsNil((String)paramMap.get(paramString + ".transitionImg"));
-    try
-    {
-      localb.DtR = com.tencent.mm.plugin.sns.data.k.jV(Util.nullAsNil((String)paramMap.get(paramString + ".transitionColor")), Util.nullAsNil((String)paramMap.get(paramString + ".transitionColorAlpha")));
-      a(localb, paramMap, paramString, paramInt1, paramInt2, paramInt3);
-      AppMethodBeat.o(203160);
-      return localb;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Log.e("AdLandingPagesParseHelper", "sphereImageView adlandinginfo parse color exp=" + localException.toString());
-      }
-    }
-  }
-  
-  private static com.tencent.mm.plugin.sns.ad.landingpage.component.b.d i(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(203163);
-    com.tencent.mm.plugin.sns.ad.landingpage.component.b.d locald = new com.tencent.mm.plugin.sns.ad.landingpage.component.b.d();
-    locald.DtS = Util.nullAs((String)paramMap.get(paramString + ".title"), "");
-    locald.DtT = Util.safeParseInt((String)paramMap.get(paramString + ".autoJump"));
-    locald.DtU = Util.safeParseInt((String)paramMap.get(paramString + ".swipeJumpOffset"));
+    AppMethodBeat.i(246768);
+    com.tencent.mm.plugin.sns.ad.landingpage.component.b.e locale = new com.tencent.mm.plugin.sns.ad.landingpage.component.b.e();
+    locale.JBL = Util.nullAs((String)paramMap.get(paramString + ".title"), "");
+    locale.JBM = Util.safeParseInt((String)paramMap.get(paramString + ".autoJump"));
+    locale.JBN = Util.safeParseInt((String)paramMap.get(paramString + ".swipeJumpOffset"));
     paramMap = a(paramMap, paramString + ".componentItem", paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((paramMap instanceof q)) {
-      locald.DtV = ((q)paramMap);
+    if ((paramMap instanceof r)) {
+      locale.JBO = ((r)paramMap);
     }
-    AppMethodBeat.o(203163);
-    return locald;
+    AppMethodBeat.o(246768);
+    return locale;
   }
   
-  private static com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj j(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private static ak j(Map<String, String> paramMap, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(203164);
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj localaj = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj();
-    a(localaj, paramMap, paramString, paramInt1, paramInt2, paramInt3);
-    localaj.desc = Util.nullAs((String)paramMap.get(paramString + ".desc"), "");
+    AppMethodBeat.i(246769);
+    ak localak = new ak();
+    a(localak, paramMap, paramString, paramInt1, paramInt2, paramInt3);
+    localak.desc = Util.nullAs((String)paramMap.get(paramString + ".desc"), "");
     boolean bool;
     if (Util.safeParseInt((String)paramMap.get(paramString + ".isFullClickable")) == 1) {
       bool = true;
     }
     for (;;)
     {
-      localaj.DZD = bool;
+      localak.KmY = bool;
       try
       {
         String str1 = paramString + ".descColor";
         String str2 = paramString + ".descColorAlpha";
-        localaj.DZC = Util.nullAs((String)paramMap.get(str1), "");
-        if ((paramMap.containsKey(str2)) && (localaj.DZC.length() > 0)) {
-          localaj.DZC = String.format("#%02x%s", new Object[] { Integer.valueOf((int)(Util.safeParseDouble((String)paramMap.get(str2)) * 255.0D)), localaj.DZC.substring(1) });
+        localak.KmX = Util.nullAs((String)paramMap.get(str1), "");
+        if ((paramMap.containsKey(str2)) && (localak.KmX.length() > 0)) {
+          localak.KmX = String.format("#%02x%s", new Object[] { Integer.valueOf((int)(Util.safeParseDouble((String)paramMap.get(str2)) * 255.0D)), localak.KmX.substring(1) });
         }
-        localaj.DZH = a(paramMap, paramString + ".componentItem", paramInt1, paramInt2, paramInt3, paramInt4);
-        if ((localaj.DZH instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)) {
-          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localaj.DZH).DXO = true;
+        localak.Knc = a(paramMap, paramString + ".componentItem", paramInt1, paramInt2, paramInt3, paramInt4);
+        if ((localak.Knc instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)) {
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)localak.Knc).KkX = true;
         }
-        AppMethodBeat.o(203164);
-        return localaj;
+        AppMethodBeat.o(246769);
+        return localak;
         bool = false;
       }
       catch (Exception localException)
@@ -1827,7 +1912,7 @@ public final class i
     }
   }
   
-  public static String kE(String paramString1, String paramString2)
+  public static String la(String paramString1, String paramString2)
   {
     AppMethodBeat.i(97342);
     if (TextUtils.isEmpty(paramString1))
@@ -1840,7 +1925,7 @@ public final class i
     return paramString1;
   }
   
-  public static String kF(String paramString1, String paramString2)
+  public static String lb(String paramString1, String paramString2)
   {
     AppMethodBeat.i(97344);
     Object localObject2 = new String(paramString1);
@@ -1891,7 +1976,7 @@ public final class i
     }
   }
   
-  public static boolean kG(String paramString1, String paramString2)
+  public static boolean lc(String paramString1, String paramString2)
   {
     AppMethodBeat.i(97353);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
@@ -1899,10 +1984,10 @@ public final class i
       AppMethodBeat.o(97353);
       return false;
     }
-    if (Elp == null) {
-      fey();
+    if (Kyw == null) {
+      fSs();
     }
-    if ((Elp != null) && (!Elp.isEmpty()))
+    if ((Kyw != null) && (!Kyw.isEmpty()))
     {
       Map localMap = XmlParser.parseXml(paramString1, paramString2, null);
       if ((localMap == null) || (localMap.isEmpty()))
@@ -1912,10 +1997,10 @@ public final class i
         return false;
       }
       i.b localb = new i.b((byte)0);
-      localb.Elu = 0;
-      localb.Elv = Util.safeParseInt((String)localMap.get(".adCanvasInfo.type"));
-      localb.Elw = Util.safeParseInt((String)localMap.get(".adCanvasInfo.subtype"));
-      if (!Elp.contains(localb))
+      localb.KyB = 0;
+      localb.KyC = Util.safeParseInt((String)localMap.get(".adCanvasInfo.type"));
+      localb.KyD = Util.safeParseInt((String)localMap.get(".adCanvasInfo.subtype"));
+      if (!Kyw.contains(localb))
       {
         Log.i("AdLandingPagesParseHelper", "invalid canvas type ".concat(String.valueOf(localb)));
         AppMethodBeat.o(97353);
@@ -1924,16 +2009,16 @@ public final class i
       int i = 0;
       for (;;)
       {
-        localb.Elu = 1;
+        localb.KyB = 1;
         if (i == 0) {}
         for (paramString1 = ".adCanvasInfo.PageList.Page";; paramString1 = ".adCanvasInfo.PageList.Page" + i)
         {
           if (!localMap.containsKey(paramString1 + ".componentItemList.componentItem.type")) {
             break label592;
           }
-          localb.Elv = Util.safeParseInt((String)localMap.get(paramString1 + ".type"));
-          localb.Elw = Util.safeParseInt((String)localMap.get(paramString1 + ".subType"));
-          if (Elp.contains(localb)) {
+          localb.KyC = Util.safeParseInt((String)localMap.get(paramString1 + ".type"));
+          localb.KyD = Util.safeParseInt((String)localMap.get(paramString1 + ".subType"));
+          if (Kyw.contains(localb)) {
             break;
           }
           Log.i("AdLandingPagesParseHelper", "invalid page type ".concat(String.valueOf(localb)));
@@ -1941,7 +2026,7 @@ public final class i
           return false;
         }
         paramString2 = paramString1 + ".componentItemList.componentItem";
-        localb.Elu = 2;
+        localb.KyB = 2;
         int j = 0;
         for (;;)
         {
@@ -1951,9 +2036,9 @@ public final class i
             if (!localMap.containsKey(paramString1 + ".type")) {
               break label585;
             }
-            localb.Elv = Util.safeParseInt((String)localMap.get(paramString1 + ".type"));
-            localb.Elw = Util.safeParseInt((String)localMap.get(paramString1 + ".subType"));
-            if (Elp.contains(localb)) {
+            localb.KyC = Util.safeParseInt((String)localMap.get(paramString1 + ".type"));
+            localb.KyD = Util.safeParseInt((String)localMap.get(paramString1 + ".subType"));
+            if (Kyw.contains(localb)) {
               break;
             }
             Log.i("AdLandingPagesParseHelper", "invalid component type ".concat(String.valueOf(localb)));
@@ -1966,7 +2051,7 @@ public final class i
         i += 1;
       }
       label592:
-      localb.Elu = 2;
+      localb.KyB = 2;
       paramString1 = localMap.entrySet().iterator();
       while (paramString1.hasNext())
       {
@@ -1975,9 +2060,9 @@ public final class i
         {
           paramString2 = (String)((Map.Entry)localObject).getKey();
           localObject = ((String)((Map.Entry)localObject).getKey()).replace(".type", ".subType");
-          localb.Elv = Util.safeParseInt((String)localMap.get(paramString2));
-          localb.Elw = Util.safeParseInt((String)localMap.get(localObject));
-          if (!Elp.contains(localb))
+          localb.KyC = Util.safeParseInt((String)localMap.get(paramString2));
+          localb.KyD = Util.safeParseInt((String)localMap.get(localObject));
+          if (!Kyw.contains(localb))
           {
             Log.i("AdLandingPagesParseHelper", "invalid component type ".concat(String.valueOf(localb)));
             AppMethodBeat.o(97353);
@@ -1992,7 +2077,7 @@ public final class i
     return false;
   }
   
-  public static String n(String paramString, String... paramVarArgs)
+  public static String m(String paramString, String... paramVarArgs)
   {
     AppMethodBeat.i(97347);
     URI localURI = new URI(paramString);
@@ -2020,7 +2105,7 @@ public final class i
     return paramString;
   }
   
-  public static String o(String paramString, String... paramVarArgs)
+  public static String n(String paramString, String... paramVarArgs)
   {
     AppMethodBeat.i(97348);
     String str1 = paramString;
@@ -2054,7 +2139,7 @@ public final class i
     return paramString;
   }
   
-  public static boolean y(Intent paramIntent, Context paramContext)
+  public static boolean x(Intent paramIntent, Context paramContext)
   {
     AppMethodBeat.i(97350);
     String str2 = paramIntent.getStringExtra("sns_landing_pages_xml");
@@ -2062,17 +2147,17 @@ public final class i
     boolean bool2;
     boolean bool1;
     if (!TextUtils.isEmpty(str2)) {
-      if ((!TextUtils.isEmpty(str2)) && (kG(str2, "adCanvasInfo")))
+      if ((!TextUtils.isEmpty(str2)) && (lc(str2, "adCanvasInfo")))
       {
         str1 = "";
-        bool2 = aQf(str2);
+        bool2 = bbe(str2);
         if (!bool2) {
-          break label307;
+          break label325;
         }
-        str1 = com.tencent.mm.model.c.d.aXv().getExpIdByKey("Sns_Canvas_GameShare_JumpWay");
+        str1 = com.tencent.mm.model.c.d.bgC().buU("Sns_Canvas_GameShare_JumpWay");
         if (!TextUtils.isEmpty(str1))
         {
-          int i = com.tencent.mm.model.c.d.aXv().gO("Sns_Canvas_GameShare_JumpWay", 0);
+          int i = com.tencent.mm.model.c.d.bgC().buT("Sns_Canvas_GameShare_JumpWay");
           Log.i("AdLandingPagesParseHelper", "abtestvalue = ".concat(String.valueOf(i)));
           if (i == 0) {
             bool1 = false;
@@ -2087,18 +2172,19 @@ public final class i
         paramIntent = new Intent(paramIntent);
         paramIntent.setClass(paramContext, SnsAdNativeLandingPagesUI.class);
         paramIntent.putExtra("sns_landing_pages_expid", str1);
-        paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.axQ(), "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPagesParseHelper", "openCanvas", "(Landroid/content/Intent;Landroid/content/Context;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)paramIntent.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPagesParseHelper", "openCanvas", "(Landroid/content/Intent;Landroid/content/Context;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        if (((paramContext instanceof Activity)) && (ADXml.k.aPT(str2))) {
+        paramIntent.putExtra("sns_landing_page_start_time", System.currentTimeMillis());
+        paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
+        com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramIntent.aFh(), "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPagesParseHelper", "openCanvas", "(Landroid/content/Intent;Landroid/content/Context;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)paramIntent.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPagesParseHelper", "openCanvas", "(Landroid/content/Intent;Landroid/content/Context;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        if (((paramContext instanceof Activity)) && ((ADXml.isTwistAdCanvas(str2)) || (ADXml.isShakeAdCanvas(str2)))) {
           ((Activity)paramContext).overridePendingTransition(0, 0);
         }
         AppMethodBeat.o(97350);
         return true;
         bool1 = true;
         continue;
-        bool1 = fex();
+        bool1 = fSr();
       }
       else
       {
@@ -2108,7 +2194,7 @@ public final class i
         Log.i("AdLandingPagesParseHelper", "invalid canvas xml %s", new Object[] { str2 });
         AppMethodBeat.o(97350);
         return false;
-        label307:
+        label325:
         bool1 = true;
       }
     }
@@ -2116,25 +2202,25 @@ public final class i
   
   public static final class a
   {
-    public LinkedList<g> Elq;
-    public ad Elr;
-    public e Els;
-    public com.tencent.mm.plugin.sns.ad.landingpage.component.b.d Elt;
+    public com.tencent.mm.plugin.sns.ad.landingpage.component.b.e KyA;
+    public LinkedList<g> Kyx;
+    public ae Kyy;
+    public com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e Kyz;
     
     public a(String paramString1, String paramString2)
     {
       AppMethodBeat.i(97329);
-      this.Elq = new LinkedList();
-      this.Elr = null;
-      this.Els = null;
-      this.Elt = null;
+      this.Kyx = new LinkedList();
+      this.Kyy = null;
+      this.Kyz = null;
+      this.KyA = null;
       long l = System.currentTimeMillis();
-      kH(paramString1, paramString2);
+      ld(paramString1, paramString2);
       Log.i("AdLandingPagesParseHelper", "parse adlanding xml, timeCost=" + (System.currentTimeMillis() - l));
       AppMethodBeat.o(97329);
     }
     
-    private void kH(String paramString1, String paramString2)
+    private void ld(String paramString1, String paramString2)
     {
       AppMethodBeat.i(97330);
       if (TextUtils.isEmpty(paramString1))
@@ -2142,7 +2228,7 @@ public final class i
         AppMethodBeat.o(97330);
         return;
       }
-      paramString1 = i.kE(paramString1, "");
+      paramString1 = i.la(paramString1, "");
       Map localMap = XmlParser.parseXml(paramString1, paramString2, null);
       if (localMap == null)
       {
@@ -2158,7 +2244,7 @@ public final class i
       {
         i = j;
         if (i1 == 1) {
-          i = i.Elo;
+          i = i.Kyv;
         }
       }
       j = k;
@@ -2166,7 +2252,7 @@ public final class i
       {
         j = k;
         if (i1 == 1) {
-          j = i.Eln;
+          j = i.Kyu;
         }
       }
       if ((!Util.isNullOrNil(paramString2)) && (!".adCanvasInfo.PageList.Page".equals("adCanvasInfo"))) {}
@@ -2187,13 +2273,13 @@ public final class i
           {
             localObject1 = paramString1;
             localg = new g();
-            localg.Elg = Util.nullAs((String)localMap.get((String)localObject1 + ".backgroundCover"), "");
-            localg.lco = Util.nullAs((String)localMap.get((String)localObject1 + ".backgroundColor"), "");
+            localg.Kyn = Util.nullAs((String)localMap.get((String)localObject1 + ".backgroundCover"), "");
+            localg.nWx = Util.nullAs((String)localMap.get((String)localObject1 + ".backgroundColor"), "");
             if (Util.safeParseInt((String)localMap.get((String)localObject1 + ".backgroundCover.$isAddBlur")) <= 0) {
               break label629;
             }
             bool = true;
-            localg.Elh = bool;
+            localg.Kyo = bool;
             localg.id = k;
             localObject2 = (String)localObject1 + ".if";
             if (!localMap.containsKey(localObject2)) {
@@ -2203,8 +2289,8 @@ public final class i
               break label635;
             }
             bool = true;
-            localg.Elk = bool;
-            if (!localg.Elk) {
+            localg.Kyr = bool;
+            if (!localg.Kyr) {
               break label885;
             }
             str = (String)localObject1 + ".componentItemList.componentItem";
@@ -2219,26 +2305,26 @@ public final class i
           {
             try
             {
-              if (TextUtils.isEmpty(localg.lco)) {
+              if (TextUtils.isEmpty(localg.nWx)) {
                 continue;
               }
-              n = Color.parseColor(localg.lco);
-              localz1 = i.b(localMap, i1, j, i, n, (String)localObject2);
+              n = Color.parseColor(localg.nWx);
+              localaa1 = i.b(localMap, i1, j, i, n, (String)localObject2);
             }
             catch (Exception localException2)
             {
               int n;
-              z localz1;
+              aa localaa1;
               label629:
               label635:
               Log.e("AdLandingPagesParseHelper", Util.stackTraceToString(localException2));
               label641:
               label650:
-              z localz2 = i.b(localMap, i1, j, i, 0, (String)localObject2);
+              aa localaa2 = i.b(localMap, i1, j, i, 0, (String)localObject2);
               continue;
-              localg.Eli.add(localz2);
+              localg.Kyp.add(localaa2);
               continue;
-              Log.i("AdLandingPagesParseHelper", "comp " + localz2.toString() + " ifCondition is false");
+              Log.i("AdLandingPagesParseHelper", "comp " + localaa2.toString() + " ifCondition is false");
               continue;
               localObject2 = (String)localObject1 + ".forbiddenGlobalItems.id";
               m = 0;
@@ -2250,26 +2336,26 @@ public final class i
               if (TextUtils.isEmpty((CharSequence)localObject1)) {
                 continue;
               }
-              localg.Ell.add(localObject1);
+              localg.Kys.add(localObject1);
               m += 1;
               continue;
               localObject1 = (String)localObject2 + m;
               continue;
-              if (localg.Eli.size() == 0) {
+              if (localg.Kyp.size() == 0) {
                 break label894;
               }
             }
-            if (localz1 == null) {
+            if (localaa1 == null) {
               continue;
             }
-            if (!localz1.DZq) {
+            if (!localaa1.KmJ) {
               continue;
             }
-            i.b(localz1, localMap, (String)localObject2, i1, j, i);
-            if (!(localz1 instanceof x)) {
+            i.b(localaa1, localMap, (String)localObject2, i1, j, i);
+            if (!(localaa1 instanceof y)) {
               continue;
             }
-            localg.Elj.put(localz1.DZi, localz1);
+            localg.Kyq.put(localaa1.KmB, localaa1);
             m += 1;
             break label497;
             localObject1 = paramString1 + k;
@@ -2278,19 +2364,19 @@ public final class i
             break label389;
             bool = false;
             break label457;
-            localg.Elk = true;
+            localg.Kyr = true;
             break label464;
             localObject2 = str + m;
             continue;
             n = 0;
           }
-          this.Elq.add(localg);
+          this.Kyx.add(localg);
           label885:
           k += 1;
         }
         label894:
-        if ((this.Elq != null) && (this.Elq.size() > 0)) {
-          ((g)this.Elq.get(0)).xwi = true;
+        if ((this.Kyx != null) && (this.Kyx.size() > 0)) {
+          ((g)this.Kyx.get(0)).CAd = true;
         }
         Object localObject1 = "." + paramString2 + ".adCanvasInfo.globalComponentItems.componentItem";
         k = 0;
@@ -2315,44 +2401,44 @@ public final class i
                 Log.e("AdLandingPagesParseHelper", Util.stackTraceToString(localException1));
               }
               Log.d("AdLandingPagesParseHelper", "parse the item: the global item existed, globalItemsStr = ".concat(String.valueOf(paramString1)));
-              if (!(paramString2 instanceof ad)) {
+              if (!(paramString2 instanceof ae)) {
                 break label1187;
               }
-              this.Elr = ((ad)paramString2);
-              if (!(paramString2 instanceof e)) {
+              this.Kyy = ((ae)paramString2);
+              if (!(paramString2 instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e)) {
                 break label1202;
               }
-              this.Els = ((e)paramString2);
-              if (!(paramString2 instanceof com.tencent.mm.plugin.sns.ad.landingpage.component.b.d)) {
+              this.Kyz = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e)paramString2);
+              if (!(paramString2 instanceof com.tencent.mm.plugin.sns.ad.landingpage.component.b.e)) {
                 break label1217;
               }
-              this.Elt = ((com.tencent.mm.plugin.sns.ad.landingpage.component.b.d)paramString2);
+              this.KyA = ((com.tencent.mm.plugin.sns.ad.landingpage.component.b.e)paramString2);
               k += 1;
             }
             if (paramString2 != null) {
               break;
             }
             Log.d("AdLandingPagesParseHelper", "parse the item: the global item is null, globalItemsStr = ".concat(String.valueOf(paramString1)));
-            if (this.Elr == null) {
+            if (this.Kyy == null) {
               break label1226;
             }
-            paramString1 = this.Elq.iterator();
+            paramString1 = this.Kyx.iterator();
             for (;;)
             {
               if (!paramString1.hasNext()) {
                 break label1226;
               }
               paramString2 = (g)paramString1.next();
-              if (paramString2.Ell.size() > 0)
+              if (paramString2.Kys.size() > 0)
               {
-                localObject1 = paramString2.Ell.iterator();
+                localObject1 = paramString2.Kys.iterator();
                 if (((Iterator)localObject1).hasNext())
                 {
                   localObject2 = (String)((Iterator)localObject1).next();
-                  if ((TextUtils.isEmpty((CharSequence)localObject2)) || (TextUtils.isEmpty(this.Elr.DZi)) || (!((String)localObject2).equals(this.Elr.DZi))) {
+                  if ((TextUtils.isEmpty((CharSequence)localObject2)) || (TextUtils.isEmpty(this.Kyy.KmB)) || (!((String)localObject2).equals(this.Kyy.KmB))) {
                     break;
                   }
-                  paramString2.Elm = true;
+                  paramString2.Kyt = true;
                 }
               }
             }
@@ -2367,7 +2453,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i
  * JD-Core Version:    0.7.0.1
  */

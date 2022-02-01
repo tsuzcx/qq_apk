@@ -3,8 +3,8 @@ package com.tencent.mm.api;
 import android.net.Uri;
 import android.net.Uri.Builder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.t;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.ay.t;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.n.f;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.zero.b.a;
@@ -14,20 +14,28 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class b
 {
-  private static String[] dhp = null;
-  private static Boolean dhq = null;
+  private static String[] eYW = null;
+  private static Boolean eYX = null;
   
-  private static void Us()
+  public static String M(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(116344);
+    paramString = d(paramString, paramInt, true);
+    AppMethodBeat.o(116344);
+    return paramString;
+  }
+  
+  private static void YK()
   {
     AppMethodBeat.i(116347);
     try
     {
-      String str = ((a)g.af(a.class)).aqJ().getValue("BizEnableWxPicUrl");
+      String str = ((a)h.ae(a.class)).axc().getValue("BizEnableWxPicUrl");
       Log.i("MicroMsg.BizImageStrategy", "alvinluo initCdnUrlList, urlList: %s", new Object[] { str });
       if (!Util.isNullOrNil(str))
       {
-        dhp = str.split(";");
-        Log.d("MicroMsg.BizImageStrategy", "alvinluo initCdnUrlList, CDN_URL_LIST.length: %d", new Object[] { Integer.valueOf(dhp.length) });
+        eYW = str.split(";");
+        Log.d("MicroMsg.BizImageStrategy", "alvinluo initCdnUrlList, CDN_URL_LIST.length: %d", new Object[] { Integer.valueOf(eYW.length) });
       }
       AppMethodBeat.o(116347);
       return;
@@ -45,7 +53,7 @@ public final class b
     }
   }
   
-  public static boolean Ut()
+  public static boolean YL()
   {
     AppMethodBeat.i(116353);
     if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG))
@@ -53,22 +61,22 @@ public final class b
       AppMethodBeat.o(116353);
       return true;
     }
-    if (dhq == null) {
-      Uu();
+    if (eYX == null) {
+      YM();
     }
-    boolean bool = dhq.booleanValue();
+    boolean bool = eYX.booleanValue();
     AppMethodBeat.o(116353);
     return bool;
   }
   
-  public static void Uu()
+  public static void YM()
   {
     AppMethodBeat.i(116354);
-    dhq = Boolean.valueOf(Uv());
+    eYX = Boolean.valueOf(YN());
     AppMethodBeat.o(116354);
   }
   
-  private static boolean Uv()
+  private static boolean YN()
   {
     AppMethodBeat.i(116355);
     if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG))
@@ -76,7 +84,7 @@ public final class b
       AppMethodBeat.o(116355);
       return true;
     }
-    int i = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rTV, 0);
+    int i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vAA, 0);
     if (i == 1) {}
     for (boolean bool = true;; bool = false)
     {
@@ -86,24 +94,24 @@ public final class b
     }
   }
   
-  public static String a(String paramString, int paramInt, boolean paramBoolean)
+  public static String d(String paramString, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(116345);
-    if ((paramBoolean) && (iD(paramInt))) {}
+    if ((paramBoolean) && (jP(paramInt))) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
-      paramString = l(paramString, paramBoolean);
+      paramString = o(paramString, paramBoolean);
       AppMethodBeat.o(116345);
       return paramString;
     }
   }
   
-  private static boolean ff(String paramString)
+  private static boolean fV(String paramString)
   {
     AppMethodBeat.i(116348);
-    if ((dhp != null) && (dhp.length > 0) && (!Util.isNullOrNil(paramString)))
+    if ((eYW != null) && (eYW.length > 0) && (!Util.isNullOrNil(paramString)))
     {
-      String[] arrayOfString = dhp;
+      String[] arrayOfString = eYW;
       int j = arrayOfString.length;
       int i = 0;
       while (i < j)
@@ -120,15 +128,15 @@ public final class b
     return false;
   }
   
-  private static String fk(String paramString)
+  private static String fW(String paramString)
   {
     AppMethodBeat.i(116349);
-    if ((dhp == null) || (dhp.length == 0))
+    if ((eYW == null) || (eYW.length == 0))
     {
       Log.d("MicroMsg.BizImageStrategy", "addWebpURLIfNecessary, cdn url is null");
-      Us();
+      YK();
     }
-    if (!ff(paramString))
+    if (!fV(paramString))
     {
       Log.d("MicroMsg.BizImageStrategy", "addWebpURLIfNecessary, is not cdn url");
       AppMethodBeat.o(116349);
@@ -181,7 +189,7 @@ public final class b
     return paramString;
   }
   
-  public static boolean fm(String paramString)
+  public static boolean fX(String paramString)
   {
     AppMethodBeat.i(116350);
     try
@@ -192,7 +200,7 @@ public final class b
         AppMethodBeat.o(116350);
         return false;
       }
-      bool = ff(paramString);
+      bool = fV(paramString);
       if (!bool)
       {
         AppMethodBeat.o(116350);
@@ -218,15 +226,15 @@ public final class b
     return false;
   }
   
-  private static String fn(String paramString)
+  private static String fY(String paramString)
   {
     AppMethodBeat.i(116351);
-    if ((dhp == null) || (dhp.length == 0))
+    if ((eYW == null) || (eYW.length == 0))
     {
       Log.d("MicroMsg.BizImageStrategy", "addWXPicURLIfNecessary, cdn url is null");
-      Us();
+      YK();
     }
-    if (!ff(paramString))
+    if (!fV(paramString))
     {
       Log.d("MicroMsg.BizImageStrategy", "addWXPicURLIfNecessary, is not cdn url");
       AppMethodBeat.o(116351);
@@ -272,7 +280,7 @@ public final class b
     return paramString;
   }
   
-  public static boolean fo(String paramString)
+  public static boolean fZ(String paramString)
   {
     AppMethodBeat.i(116352);
     try
@@ -283,7 +291,7 @@ public final class b
         AppMethodBeat.o(116352);
         return false;
       }
-      bool = ff(paramString);
+      bool = fV(paramString);
       if (!bool)
       {
         AppMethodBeat.o(116352);
@@ -309,40 +317,32 @@ public final class b
     return false;
   }
   
-  private static boolean iD(int paramInt)
+  private static boolean jP(int paramInt)
   {
     return (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4);
   }
   
-  public static String l(String paramString, boolean paramBoolean)
+  public static String o(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(116346);
     String str;
-    if ((Ut()) && (paramBoolean)) {
-      str = fn(paramString);
+    if ((YL()) && (paramBoolean)) {
+      str = fY(paramString);
     }
     for (;;)
     {
       AppMethodBeat.o(116346);
       return str;
       str = paramString;
-      if (t.bcZ()) {
-        str = fk(paramString);
+      if (t.bmq()) {
+        str = fW(paramString);
       }
     }
-  }
-  
-  public static String u(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(116344);
-    paramString = a(paramString, paramInt, true);
-    AppMethodBeat.o(116344);
-    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.api.b
  * JD-Core Version:    0.7.0.1
  */

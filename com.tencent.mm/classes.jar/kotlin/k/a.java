@@ -3,55 +3,55 @@ package kotlin.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/ranges/ClosedDoubleRange;", "Lkotlin/ranges/ClosedFloatingPointRange;", "", "start", "endInclusive", "(DD)V", "_endInclusive", "_start", "getEndInclusive", "()Ljava/lang/Double;", "getStart", "contains", "", "value", "equals", "other", "", "hashCode", "", "isEmpty", "lessThanOrEquals", "a", "b", "toString", "", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/ranges/ClosedDoubleRange;", "Lkotlin/ranges/ClosedFloatingPointRange;", "", "start", "endInclusive", "(DD)V", "_endInclusive", "_start", "getEndInclusive", "()Ljava/lang/Double;", "getStart", "contains", "", "value", "equals", "other", "", "hashCode", "", "isEmpty", "lessThanOrEquals", "a", "b", "toString", "", "kotlin-stdlib"})
 final class a
   implements b<Double>
 {
-  private final double SYS;
-  private final double SYT;
+  private final double aaBO;
+  private final double aaBP;
   
   public a(double paramDouble)
   {
-    this.SYS = paramDouble;
-    this.SYT = 1.777777777777778D;
+    this.aaBO = paramDouble;
+    this.aaBP = 1.777777777777778D;
   }
   
   private boolean isEmpty()
   {
-    return this.SYS > this.SYT;
+    return this.aaBO > this.aaBP;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(206221);
-    if (((paramObject instanceof a)) && (((isEmpty()) && (((a)paramObject).isEmpty())) || ((this.SYS == ((a)paramObject).SYS) && (this.SYT == ((a)paramObject).SYT))))
+    AppMethodBeat.i(217166);
+    if (((paramObject instanceof a)) && (((isEmpty()) && (((a)paramObject).isEmpty())) || ((this.aaBO == ((a)paramObject).aaBO) && (this.aaBP == ((a)paramObject).aaBP))))
     {
-      AppMethodBeat.o(206221);
+      AppMethodBeat.o(217166);
       return true;
     }
-    AppMethodBeat.o(206221);
+    AppMethodBeat.o(217166);
     return false;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(206222);
+    AppMethodBeat.i(217167);
     if (isEmpty())
     {
-      AppMethodBeat.o(206222);
+      AppMethodBeat.o(217167);
       return -1;
     }
-    int i = Double.valueOf(this.SYS).hashCode();
-    int j = Double.valueOf(this.SYT).hashCode();
-    AppMethodBeat.o(206222);
+    int i = Double.valueOf(this.aaBO).hashCode();
+    int j = Double.valueOf(this.aaBP).hashCode();
+    AppMethodBeat.o(217167);
     return i * 31 + j;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(206223);
-    String str = this.SYS + ".." + this.SYT;
-    AppMethodBeat.o(206223);
+    AppMethodBeat.i(217168);
+    String str = this.aaBO + ".." + this.aaBP;
+    AppMethodBeat.o(217168);
     return str;
   }
 }

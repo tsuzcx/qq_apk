@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.recharge.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.beq;
-import com.tencent.mm.protocal.protobuf.ber;
+import com.tencent.mm.protocal.protobuf.blu;
+import com.tencent.mm.protocal.protobuf.blv;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
@@ -18,30 +18,30 @@ public final class c
   implements m
 {
   private i callback;
-  public String dSf;
-  public String rjt;
+  public String fLC;
   public d rr;
+  public String uMF;
   
   public c(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     AppMethodBeat.i(67101);
-    this.dSf = paramString2;
-    this.rjt = paramString3;
+    this.fLC = paramString2;
+    this.uMF = paramString3;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new beq();
-    ((d.a)localObject).iLO = new ber();
+    ((d.a)localObject).lBU = new blu();
+    ((d.a)localObject).lBV = new blv();
     ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/flowdatarechargepreinquery";
     ((d.a)localObject).funcId = 1555;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (beq)this.rr.iLK.iLR;
-    ((beq)localObject).LOs = paramString1;
-    ((beq)localObject).KPP = paramString2;
-    ((beq)localObject).APy = paramString3;
-    ((beq)localObject).LOt = paramString4;
-    ((beq)localObject).LOu = paramString5;
-    ((beq)localObject).Bri = com.tencent.mm.plugin.wallet_core.model.mall.c.fSg().aVu(paramString1);
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (blu)d.b.b(this.rr.lBR);
+    ((blu)localObject).SWQ = paramString1;
+    ((blu)localObject).RQN = paramString2;
+    ((blu)localObject).GIM = paramString3;
+    ((blu)localObject).SWR = paramString4;
+    ((blu)localObject).SWS = paramString5;
+    ((blu)localObject).HlB = com.tencent.mm.plugin.wallet_core.model.mall.c.gKL().bhd(paramString1);
     AppMethodBeat.o(67101);
   }
   
@@ -69,7 +69,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.model.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.finder.ui;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 import java.util.HashMap;
 import kotlin.l;
 import kotlin.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationSearchUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "getLayoutId", "", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationSearchUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "getLayoutId", "", "plugin-finder_release"})
 public final class FinderConversationSearchUI
   extends MMActivity
 {
@@ -17,16 +17,16 @@ public final class FinderConversationSearchUI
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(252213);
+    AppMethodBeat.i(290851);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(252213);
+    AppMethodBeat.o(290851);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(252212);
+    AppMethodBeat.i(290850);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -37,15 +37,15 @@ public final class FinderConversationSearchUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(252212);
+    AppMethodBeat.o(290850);
     return localView1;
   }
   
   public final int getLayoutId()
   {
-    AppMethodBeat.i(252211);
+    AppMethodBeat.i(290849);
     Throwable localThrowable = (Throwable)new n("An operation is not implemented: ".concat(String.valueOf("Not yet implemented")));
-    AppMethodBeat.o(252211);
+    AppMethodBeat.o(290849);
     throw localThrowable;
   }
   

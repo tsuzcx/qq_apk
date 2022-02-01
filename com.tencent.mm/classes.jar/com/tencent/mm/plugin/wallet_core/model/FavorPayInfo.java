@@ -12,12 +12,12 @@ public class FavorPayInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<FavorPayInfo> CREATOR;
-  public String HXI;
-  public int HXJ;
-  public String HXK;
-  public String HXL;
-  public String HXM;
-  public List<String> HXN;
+  public String OPI;
+  public int OPJ;
+  public String OPK;
+  public String OPL;
+  public String OPM;
+  public List<String> OPN;
   
   static
   {
@@ -29,20 +29,20 @@ public class FavorPayInfo
   public FavorPayInfo()
   {
     AppMethodBeat.i(70276);
-    this.HXN = new LinkedList();
+    this.OPN = new LinkedList();
     AppMethodBeat.o(70276);
   }
   
   public FavorPayInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(70277);
-    this.HXN = new LinkedList();
-    this.HXI = paramParcel.readString();
-    this.HXJ = paramParcel.readInt();
-    this.HXK = paramParcel.readString();
-    this.HXL = paramParcel.readString();
-    this.HXM = paramParcel.readString();
-    this.HXN = paramParcel.createStringArrayList();
+    this.OPN = new LinkedList();
+    this.OPI = paramParcel.readString();
+    this.OPJ = paramParcel.readInt();
+    this.OPK = paramParcel.readString();
+    this.OPL = paramParcel.readString();
+    this.OPM = paramParcel.readString();
+    this.OPN = paramParcel.createStringArrayList();
     AppMethodBeat.o(70277);
   }
   
@@ -54,11 +54,11 @@ public class FavorPayInfo
   public String toString()
   {
     AppMethodBeat.i(70279);
-    Object localObject = new StringBuffer(String.format("FavorPayInfo %s isNeedBankPay %s needBankType %s defaultFavorCompId %s changeBankcardTips %s", new Object[] { this.HXI, Integer.valueOf(this.HXJ), this.HXK, this.HXL, this.HXM }));
-    if (this.HXN != null)
+    Object localObject = new StringBuffer(String.format("FavorPayInfo %s isNeedBankPay %s needBankType %s defaultFavorCompId %s changeBankcardTips %s", new Object[] { this.OPI, Integer.valueOf(this.OPJ), this.OPK, this.OPL, this.OPM }));
+    if (this.OPN != null)
     {
       ((StringBuffer)localObject).append("bind_serial_list :");
-      Iterator localIterator = this.HXN.iterator();
+      Iterator localIterator = this.OPN.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
@@ -73,12 +73,12 @@ public class FavorPayInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70278);
-    paramParcel.writeString(this.HXI);
-    paramParcel.writeInt(this.HXJ);
-    paramParcel.writeString(this.HXK);
-    paramParcel.writeString(this.HXL);
-    paramParcel.writeString(this.HXM);
-    paramParcel.writeStringList(this.HXN);
+    paramParcel.writeString(this.OPI);
+    paramParcel.writeInt(this.OPJ);
+    paramParcel.writeString(this.OPK);
+    paramParcel.writeString(this.OPL);
+    paramParcel.writeString(this.OPM);
+    paramParcel.writeStringList(this.OPN);
     AppMethodBeat.o(70278);
   }
 }

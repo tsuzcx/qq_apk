@@ -12,32 +12,24 @@ import org.json.JSONObject;
 
 public final class d
 {
-  private static Set<String> lpg;
+  private static Set<String> ojQ;
   
   static
   {
     AppMethodBeat.i(121439);
-    lpg = new HashSet();
+    ojQ = new HashSet();
     if (!TextUtils.isEmpty("drawCanvas")) {
-      lpg.add("drawCanvas");
+      ojQ.add("drawCanvas");
     }
     AppMethodBeat.o(121439);
   }
   
-  public static String G(JSONObject paramJSONObject)
+  public static String J(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(121438);
     paramJSONObject = paramJSONObject.optString("__session_id");
     AppMethodBeat.o(121438);
     return paramJSONObject;
-  }
-  
-  public static boolean WP(String paramString)
-  {
-    AppMethodBeat.i(121436);
-    boolean bool = lpg.contains(paramString);
-    AppMethodBeat.o(121436);
-    return bool;
   }
   
   public static void a(String paramString1, String paramString2, JSONObject paramJSONObject)
@@ -47,9 +39,9 @@ public final class d
     {
       paramJSONObject.put("__session_id", paramString1);
       paramJSONObject.put("__invoke_jsapi_timestamp", System.nanoTime());
-      paramString1 = c.WJ(paramString1);
+      paramString1 = c.aev(paramString1);
       if (paramString1 != null) {
-        paramString1.dNV.putInt("__invoke_jsapi_data_size", paramString2.length());
+        paramString1.fHg.putInt("__invoke_jsapi_data_size", paramString2.length());
       }
       AppMethodBeat.o(121437);
       return;
@@ -60,10 +52,18 @@ public final class d
       AppMethodBeat.o(121437);
     }
   }
+  
+  public static boolean aeC(String paramString)
+  {
+    AppMethodBeat.i(121436);
+    boolean bool = ojQ.contains(paramString);
+    AppMethodBeat.o(121436);
+    return bool;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.h.d
  * JD-Core Version:    0.7.0.1
  */

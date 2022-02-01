@@ -27,24 +27,24 @@ public class v
   
   private v(Context paramContext)
   {
-    AppMethodBeat.i(193545);
+    AppMethodBeat.i(236601);
     this.a = null;
     this.b = null;
     this.a = paramContext;
     this.b = new HashMap(5);
-    AppMethodBeat.o(193545);
+    AppMethodBeat.o(236601);
   }
   
   public static v a(Context paramContext)
   {
     try
     {
-      AppMethodBeat.i(193546);
+      AppMethodBeat.i(236603);
       if (c == null) {
         c = new v(paramContext);
       }
       paramContext = c;
-      AppMethodBeat.o(193546);
+      AppMethodBeat.o(236603);
       return paramContext;
     }
     finally {}
@@ -54,7 +54,7 @@ public class v
   {
     try
     {
-      AppMethodBeat.i(193549);
+      AppMethodBeat.i(236609);
       try
       {
         File localFile1 = new File(x.b(this.a, t.n + File.separator + paramString + ".lock"));
@@ -78,7 +78,7 @@ public class v
           paramString = null;
         }
       }
-      AppMethodBeat.o(193549);
+      AppMethodBeat.o(236609);
       return paramString;
     }
     finally {}
@@ -93,17 +93,17 @@ public class v
       FileChannel localFileChannel1;
       try
       {
-        AppMethodBeat.i(193547);
+        AppMethodBeat.i(236604);
         if (paramString.trim().length() <= 0)
         {
-          AppMethodBeat.o(193547);
+          AppMethodBeat.o(236604);
           bool = false;
           return bool;
         }
         localFile = c(paramString);
         if (localFile == null)
         {
-          AppMethodBeat.o(193547);
+          AppMethodBeat.o(236604);
           bool = true;
           continue;
         }
@@ -128,7 +128,7 @@ public class v
           bool = paramString.isValid();
           if (bool)
           {
-            AppMethodBeat.o(193547);
+            AppMethodBeat.o(236604);
             bool = true;
           }
         }
@@ -137,7 +137,7 @@ public class v
       {
         continue;
       }
-      AppMethodBeat.o(193547);
+      AppMethodBeat.o(236604);
       boolean bool = false;
     }
   }
@@ -148,10 +148,10 @@ public class v
     {
       try
       {
-        AppMethodBeat.i(193548);
+        AppMethodBeat.i(236606);
         if (paramString.trim().length() <= 0)
         {
-          AppMethodBeat.o(193548);
+          AppMethodBeat.o(236606);
           return;
         }
       }
@@ -163,11 +163,11 @@ public class v
           if (paramString != null) {
             paramString.close();
           }
-          AppMethodBeat.o(193548);
+          AppMethodBeat.o(236606);
         }
         catch (Throwable paramString)
         {
-          AppMethodBeat.o(193548);
+          AppMethodBeat.o(236606);
         }
         paramString = finally;
       }
@@ -176,7 +176,7 @@ public class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.map.tools.internal.v
  * JD-Core Version:    0.7.0.1
  */

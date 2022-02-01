@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.music.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.zb;
-import com.tencent.mm.protocal.protobuf.zc;
+import com.tencent.mm.protocal.protobuf.zf;
+import com.tencent.mm.protocal.protobuf.zg;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
   extends q
   implements m
 {
-  public zb AkT;
+  public zf FRZ;
   private i callback;
-  private d iUB;
+  private d lKU;
   
   public a(int paramInt, com.tencent.mm.plugin.music.model.e.a parama)
   {
@@ -27,19 +27,20 @@ public final class a
     d.a locala = new d.a();
     locala.funcId = 940;
     locala.uri = "/cgi-bin/micromsg-bin/checkmusic";
-    locala.iLN = new zb();
-    locala.iLO = new zc();
-    this.iUB = locala.aXF();
-    this.AkT = ((zb)this.iUB.iLK.iLR);
-    this.AkT.Scene = paramInt;
-    this.AkT.jfi = parama.field_appId;
-    this.AkT.Lki = parama.field_songAlbumUrl;
-    this.AkT.Lkj = parama.field_songHAlbumUrl;
-    this.AkT.Lkl = parama.field_songWifiUrl;
-    this.AkT.Lkm = parama.field_songWapLinkUrl;
-    this.AkT.Lkk = parama.field_songWebUrl;
-    this.AkT.Title = parama.field_songName;
-    this.AkT.jeV = parama.field_musicId;
+    locala.lBU = new zf();
+    locala.lBV = new zg();
+    this.lKU = locala.bgN();
+    this.FRZ = ((zf)d.b.b(this.lKU.lBR));
+    this.FRZ.CPw = paramInt;
+    this.FRZ.lVG = parama.field_appId;
+    this.FRZ.Slp = parama.field_songAlbumUrl;
+    this.FRZ.Slq = parama.field_songHAlbumUrl;
+    this.FRZ.Sls = parama.field_songWifiUrl;
+    this.FRZ.Slt = parama.field_songWapLinkUrl;
+    this.FRZ.Slr = parama.field_songWebUrl;
+    this.FRZ.fwr = parama.field_songName;
+    this.FRZ.lVt = parama.field_musicId;
+    this.FRZ.Slw = parama.field_songSinger;
     AppMethodBeat.o(63093);
   }
   
@@ -47,7 +48,7 @@ public final class a
   {
     AppMethodBeat.i(63094);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
+    int i = dispatch(paramg, this.lKU, this);
     AppMethodBeat.o(63094);
     return i;
   }
@@ -67,7 +68,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.b.a
  * JD-Core Version:    0.7.0.1
  */

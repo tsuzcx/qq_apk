@@ -7,20 +7,20 @@ import java.lang.ref.WeakReference;
 public abstract class b
   implements a
 {
-  public WeakReference<Context> Kgr = null;
-  public boolean ifo = false;
+  public WeakReference<Context> Rhc = null;
   public boolean isFirst = false;
+  public boolean kUc = false;
   public View view = null;
   
   public b(Context paramContext)
   {
-    this.Kgr = new WeakReference(paramContext);
+    this.Rhc = new WeakReference(paramContext);
     if (getLayoutId() > 0) {
       this.view = View.inflate(paramContext, getLayoutId(), null);
     }
   }
   
-  public boolean bYa()
+  public boolean ckL()
   {
     return (this.view != null) && (this.view.getVisibility() == 0);
   }
@@ -50,7 +50,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.b.b
  * JD-Core Version:    0.7.0.1
  */

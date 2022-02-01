@@ -345,7 +345,7 @@ public class emoji_add_capture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.emoji_add_capture
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,59 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
 
 public final class ey
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String dNI;
-  public int status;
+  public String RJK;
+  public String RJL;
+  public String RJM;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(122485);
+    AppMethodBeat.i(125710);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.dNI == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: appid");
-        AppMethodBeat.o(122485);
-        throw paramVarArgs;
+      if (this.RJK != null) {
+        paramVarArgs.f(1, this.RJK);
       }
-      if (this.dNI != null) {
-        paramVarArgs.e(1, this.dNI);
+      if (this.RJL != null) {
+        paramVarArgs.f(2, this.RJL);
       }
-      paramVarArgs.aM(2, this.status);
-      AppMethodBeat.o(122485);
+      if (this.RJM != null) {
+        paramVarArgs.f(3, this.RJM);
+      }
+      AppMethodBeat.o(125710);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.dNI == null) {
-        break label306;
+      if (this.RJK == null) {
+        break label334;
       }
     }
-    label306:
-    for (paramInt = g.a.a.b.b.a.f(1, this.dNI) + 0;; paramInt = 0)
+    label334:
+    for (int i = g.a.a.b.b.a.g(1, this.RJK) + 0;; i = 0)
     {
-      int i = g.a.a.b.b.a.bu(2, this.status);
-      AppMethodBeat.o(122485);
-      return paramInt + i;
+      paramInt = i;
+      if (this.RJL != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.RJL);
+      }
+      i = paramInt;
+      if (this.RJM != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.RJM);
+      }
+      AppMethodBeat.o(125710);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.dNI == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: appid");
-          AppMethodBeat.o(122485);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(122485);
+        AppMethodBeat.o(125710);
         return 0;
       }
       if (paramInt == 3)
@@ -63,18 +63,22 @@ public final class ey
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(122485);
+          AppMethodBeat.o(125710);
           return -1;
         case 1: 
-          localey.dNI = locala.UbS.readString();
-          AppMethodBeat.o(122485);
+          localey.RJK = locala.abFh.readString();
+          AppMethodBeat.o(125710);
+          return 0;
+        case 2: 
+          localey.RJL = locala.abFh.readString();
+          AppMethodBeat.o(125710);
           return 0;
         }
-        localey.status = locala.UbS.zi();
-        AppMethodBeat.o(122485);
+        localey.RJM = locala.abFh.readString();
+        AppMethodBeat.o(125710);
         return 0;
       }
-      AppMethodBeat.o(122485);
+      AppMethodBeat.o(125710);
       return -1;
     }
   }

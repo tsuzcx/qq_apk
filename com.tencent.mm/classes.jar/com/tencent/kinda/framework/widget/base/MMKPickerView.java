@@ -12,67 +12,67 @@ public class MMKPickerView
 {
   public KindaPickerViewImpl createView(Context paramContext)
   {
-    AppMethodBeat.i(214540);
+    AppMethodBeat.i(264387);
     this.view = new KindaPickerViewImpl(paramContext);
     paramContext = (KindaPickerViewImpl)this.view;
-    AppMethodBeat.o(214540);
+    AppMethodBeat.o(264387);
     return paramContext;
   }
   
   public ArrayList<Integer> getCurrentSelectedRows()
   {
-    AppMethodBeat.i(214544);
+    AppMethodBeat.i(264395);
     ArrayList localArrayList = ((KindaPickerViewImpl)this.view).getCurrentItems();
-    AppMethodBeat.o(214544);
+    AppMethodBeat.o(264395);
     return localArrayList;
   }
   
   public void setCallbackImpl(final VoidListCallback paramVoidListCallback)
   {
-    AppMethodBeat.i(214543);
+    AppMethodBeat.i(264393);
     ((KindaPickerViewImpl)this.view).setOnSelectChangeListener(new KindaPickerViewImpl.OnSelectChangeListener()
     {
       public void onSelected(ArrayList<Integer> paramAnonymousArrayList)
       {
-        AppMethodBeat.i(214539);
+        AppMethodBeat.i(263935);
         if (paramVoidListCallback != null) {
           paramVoidListCallback.call(paramAnonymousArrayList);
         }
-        AppMethodBeat.o(214539);
+        AppMethodBeat.o(263935);
       }
     });
-    AppMethodBeat.o(214543);
+    AppMethodBeat.o(264393);
   }
   
   public void setNormalData(ArrayList<ArrayList<String>> paramArrayList)
   {
-    AppMethodBeat.i(214541);
+    AppMethodBeat.i(264389);
     if (paramArrayList == null)
     {
-      AppMethodBeat.o(214541);
+      AppMethodBeat.o(264389);
       return;
     }
     ((KindaPickerViewImpl)this.view).setIndividualPicker(paramArrayList);
-    AppMethodBeat.o(214541);
+    AppMethodBeat.o(264389);
   }
   
   public void setSelectedRows(ArrayList<Integer> paramArrayList)
   {
-    AppMethodBeat.i(214545);
+    AppMethodBeat.i(264397);
     ((KindaPickerViewImpl)this.view).setCurrentItems(paramArrayList);
-    AppMethodBeat.o(214545);
+    AppMethodBeat.o(264397);
   }
   
   public void setSyncData(ArrayList<String> paramArrayList, ArrayList<ArrayList<String>> paramArrayList1)
   {
-    AppMethodBeat.i(214542);
+    AppMethodBeat.i(264391);
     ((KindaPickerViewImpl)this.view).setLinkagePicker(paramArrayList, paramArrayList1);
-    AppMethodBeat.o(214542);
+    AppMethodBeat.o(264391);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKPickerView
  * JD-Core Version:    0.7.0.1
  */

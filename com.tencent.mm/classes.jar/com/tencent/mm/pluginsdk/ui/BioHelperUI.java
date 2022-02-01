@@ -12,9 +12,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.account.ui.r.e;
+import com.tencent.mm.plugin.account.ui.r.f;
+import com.tencent.mm.plugin.account.ui.r.g;
+import com.tencent.mm.plugin.account.ui.r.j;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -24,17 +28,17 @@ import com.tencent.mm.ui.MMActivity;
 public class BioHelperUI
   extends MMActivity
 {
-  private String Kbn;
-  private b Kbo;
-  private String gwF;
-  private String mRa;
+  private String RbS;
+  private b RbT;
+  private String jaS;
   private int mType;
   private String mWording;
-  private int rxv;
+  private String pRV;
+  private int vdb;
   
   public int getLayoutId()
   {
-    return 2131493234;
+    return r.g.bio_help;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -46,7 +50,7 @@ public class BioHelperUI
     for (;;)
     {
       Log.i("MicroMsg.BioHelperUI", "onActivityResult, requestCode:%d, resultCode:%d, data==null:%b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
-      this.Kbo.h(paramInt1, paramInt2, paramIntent);
+      this.RbT.h(paramInt1, paramInt2, paramIntent);
       AppMethodBeat.o(128843);
       return;
       bool = false;
@@ -60,18 +64,18 @@ public class BioHelperUI
     super.onCreate(paramBundle);
     this.mType = getIntent().getIntExtra("k_type", 1);
     Log.i("MicroMsg.BioHelperUI", "hy: starting to bio helper ui, type: %d", new Object[] { Integer.valueOf(this.mType) });
-    this.mRa = Util.nullAs(getIntent().getStringExtra("Kusername"), null);
-    this.gwF = Util.nullAs(getIntent().getStringExtra("Kvertify_key"), null);
-    this.Kbn = Util.nullAs(getIntent().getStringExtra("KVoiceHelpUrl"), null);
+    this.pRV = Util.nullAs(getIntent().getStringExtra("Kusername"), null);
+    this.jaS = Util.nullAs(getIntent().getStringExtra("Kvertify_key"), null);
+    this.RbS = Util.nullAs(getIntent().getStringExtra("KVoiceHelpUrl"), null);
     this.mWording = Util.nullAs(getIntent().getStringExtra("KVoiceHelpWording"), null);
-    this.rxv = getIntent().getIntExtra("KVoiceHelpCode", 0);
+    this.vdb = getIntent().getIntExtra("KVoiceHelpCode", 0);
     if (this.mType == 0) {
       paramBundle = new c((byte)0);
     }
     for (;;)
     {
-      this.Kbo = paramBundle;
-      if ((this.Kbo != null) && (!Util.isNullOrNil(this.mRa)) && (!Util.isNullOrNil(this.gwF))) {
+      this.RbT = paramBundle;
+      if ((this.RbT != null) && (!Util.isNullOrNil(this.pRV)) && (!Util.isNullOrNil(this.jaS))) {
         break;
       }
       Log.w("MicroMsg.BioHelperUI", "type or username or ticket is null and finish");
@@ -88,14 +92,14 @@ public class BioHelperUI
         paramBundle = localObject;
       }
     }
-    paramBundle = (TextView)findViewById(2131297430);
+    paramBundle = (TextView)findViewById(r.f.bio_help_tip);
     if (!Util.isNullOrNil(this.mWording)) {
       paramBundle.setText(this.mWording);
     }
     for (;;)
     {
-      setMMTitle(this.Kbo.goy());
-      ((ImageView)findViewById(2131297428)).setImageResource(this.Kbo.goz());
+      setMMTitle(this.RbT.hji());
+      ((ImageView)findViewById(r.f.bio_help_icon)).setImageResource(this.RbT.hjj());
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -106,38 +110,38 @@ public class BioHelperUI
           return true;
         }
       });
-      this.Kbo.bo(getIntent());
-      paramBundle = (Button)findViewById(2131297431);
-      paramBundle.setText(this.Kbo.goA());
+      this.RbT.bp(getIntent());
+      paramBundle = (Button)findViewById(r.f.bio_help_verify_btn);
+      paramBundle.setText(this.RbT.hjk());
       paramBundle.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(128829);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          a.b("com/tencent/mm/pluginsdk/ui/BioHelperUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          BioHelperUI.a(BioHelperUI.this).iy(BioHelperUI.this);
+          localb.bn(paramAnonymousView);
+          a.c("com/tencent/mm/pluginsdk/ui/BioHelperUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          BioHelperUI.a(BioHelperUI.this).jB(BioHelperUI.this);
           a.a(this, "com/tencent/mm/pluginsdk/ui/BioHelperUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(128829);
         }
       });
-      findViewById(2131297429).setOnClickListener(new View.OnClickListener()
+      findViewById(r.f.bio_help_other_verify_btn).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(128830);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          a.b("com/tencent/mm/pluginsdk/ui/BioHelperUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          a.c("com/tencent/mm/pluginsdk/ui/BioHelperUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           paramAnonymousView = new Intent();
           paramAnonymousView.putExtra("rawUrl", BioHelperUI.b(BioHelperUI.this));
           paramAnonymousView.putExtra("showShare", false);
           paramAnonymousView.putExtra("show_bottom", false);
           paramAnonymousView.putExtra("needRedirect", false);
           paramAnonymousView.putExtra("neverGetA8Key", true);
-          paramAnonymousView.putExtra("hardcode_jspermission", JsapiPermissionWrapper.Kzm);
-          paramAnonymousView.putExtra("hardcode_general_ctrl", GeneralControlWrapper.Kzg);
+          paramAnonymousView.putExtra("hardcode_jspermission", JsapiPermissionWrapper.RBc);
+          paramAnonymousView.putExtra("hardcode_general_ctrl", GeneralControlWrapper.RAX);
           c.b(BioHelperUI.this, "webview", ".ui.tools.WebViewUI", paramAnonymousView);
           BioHelperUI.this.finish();
           a.a(this, "com/tencent/mm/pluginsdk/ui/BioHelperUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -146,7 +150,7 @@ public class BioHelperUI
       });
       AppMethodBeat.o(128842);
       return;
-      paramBundle.setText(this.Kbo.goB());
+      paramBundle.setText(this.RbT.hjl());
     }
   }
   
@@ -161,36 +165,7 @@ public class BioHelperUI
   {
     private a() {}
     
-    public final void bo(Intent paramIntent) {}
-    
-    public final String goA()
-    {
-      AppMethodBeat.i(128832);
-      String str = BioHelperUI.this.getString(2131756690);
-      AppMethodBeat.o(128832);
-      return str;
-    }
-    
-    public final String goB()
-    {
-      AppMethodBeat.i(128833);
-      String str = BioHelperUI.this.getString(2131756687);
-      AppMethodBeat.o(128833);
-      return str;
-    }
-    
-    public final String goy()
-    {
-      AppMethodBeat.i(128831);
-      String str = BioHelperUI.this.getString(2131756689);
-      AppMethodBeat.o(128831);
-      return str;
-    }
-    
-    public final int goz()
-    {
-      return 2131232245;
-    }
+    public final void bp(Intent paramIntent) {}
     
     public final void h(int paramInt1, int paramInt2, Intent paramIntent)
     {
@@ -216,7 +191,36 @@ public class BioHelperUI
       }
     }
     
-    public final void iy(Context paramContext)
+    public final String hji()
+    {
+      AppMethodBeat.i(128831);
+      String str = BioHelperUI.this.getString(r.j.bio_face_title);
+      AppMethodBeat.o(128831);
+      return str;
+    }
+    
+    public final int hjj()
+    {
+      return r.e.face_icon;
+    }
+    
+    public final String hjk()
+    {
+      AppMethodBeat.i(128832);
+      String str = BioHelperUI.this.getString(r.j.bio_help_face_verify);
+      AppMethodBeat.o(128832);
+      return str;
+    }
+    
+    public final String hjl()
+    {
+      AppMethodBeat.i(128833);
+      String str = BioHelperUI.this.getString(r.j.bio_default_tips_face_wording);
+      AppMethodBeat.o(128833);
+      return str;
+    }
+    
+    public final void jB(Context paramContext)
     {
       AppMethodBeat.i(128834);
       paramContext = new Intent();
@@ -231,19 +235,19 @@ public class BioHelperUI
   
   static abstract interface b
   {
-    public abstract void bo(Intent paramIntent);
-    
-    public abstract String goA();
-    
-    public abstract String goB();
-    
-    public abstract String goy();
-    
-    public abstract int goz();
+    public abstract void bp(Intent paramIntent);
     
     public abstract void h(int paramInt1, int paramInt2, Intent paramIntent);
     
-    public abstract void iy(Context paramContext);
+    public abstract String hji();
+    
+    public abstract int hjj();
+    
+    public abstract String hjk();
+    
+    public abstract String hjl();
+    
+    public abstract void jB(Context paramContext);
   }
   
   final class c
@@ -253,7 +257,7 @@ public class BioHelperUI
     
     private c() {}
     
-    public final void bo(Intent paramIntent)
+    public final void bp(Intent paramIntent)
     {
       AppMethodBeat.i(128836);
       if (paramIntent == null)
@@ -263,35 +267,6 @@ public class BioHelperUI
       }
       this.mScene = paramIntent.getIntExtra("kscene_type", 73);
       AppMethodBeat.o(128836);
-    }
-    
-    public final String goA()
-    {
-      AppMethodBeat.i(128838);
-      String str = BioHelperUI.this.getString(2131756692);
-      AppMethodBeat.o(128838);
-      return str;
-    }
-    
-    public final String goB()
-    {
-      AppMethodBeat.i(128839);
-      String str = BioHelperUI.this.getString(2131756688);
-      AppMethodBeat.o(128839);
-      return str;
-    }
-    
-    public final String goy()
-    {
-      AppMethodBeat.i(128837);
-      String str = BioHelperUI.this.getString(2131756693);
-      AppMethodBeat.o(128837);
-      return str;
-    }
-    
-    public final int goz()
-    {
-      return 2131235445;
     }
     
     public final void h(int paramInt1, int paramInt2, Intent paramIntent)
@@ -323,7 +298,36 @@ public class BioHelperUI
       }
     }
     
-    public final void iy(Context paramContext)
+    public final String hji()
+    {
+      AppMethodBeat.i(128837);
+      String str = BioHelperUI.this.getString(r.j.bio_voice_title);
+      AppMethodBeat.o(128837);
+      return str;
+    }
+    
+    public final int hjj()
+    {
+      return r.e.voice_icon;
+    }
+    
+    public final String hjk()
+    {
+      AppMethodBeat.i(128838);
+      String str = BioHelperUI.this.getString(r.j.bio_help_voice_verify);
+      AppMethodBeat.o(128838);
+      return str;
+    }
+    
+    public final String hjl()
+    {
+      AppMethodBeat.i(128839);
+      String str = BioHelperUI.this.getString(r.j.bio_default_tips_voice_wording);
+      AppMethodBeat.o(128839);
+      return str;
+    }
+    
+    public final void jB(Context paramContext)
     {
       AppMethodBeat.i(128840);
       Intent localIntent = new Intent();
@@ -337,7 +341,7 @@ public class BioHelperUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.BioHelperUI
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.content.Context;
 import android.os.Environment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
@@ -18,16 +18,16 @@ import org.json.JSONObject;
 
 public final class a
 {
-  private static final HashMap<Long, Integer> qJA;
+  private static final HashMap<Long, Integer> uiF;
   
   static
   {
     AppMethodBeat.i(89084);
-    qJA = new HashMap();
+    uiF = new HashMap();
     AppMethodBeat.o(89084);
   }
   
-  private static String Fh(String paramString)
+  private static String Md(String paramString)
   {
     AppMethodBeat.i(89080);
     if (Util.isNullOrNil(paramString))
@@ -54,35 +54,35 @@ public final class a
   public static void a(int paramInt, b paramb)
   {
     AppMethodBeat.i(89076);
-    if (qJA.containsKey(Long.valueOf(paramb.dCa))) {
-      paramInt = ((Integer)qJA.remove(Long.valueOf(paramb.dCa))).intValue();
+    if (uiF.containsKey(Long.valueOf(paramb.fuD))) {
+      paramInt = ((Integer)uiF.remove(Long.valueOf(paramb.fuD))).intValue();
     }
-    Log.i("MicroMsg.FileDownloadReportUtil", "report_14567, appId = %s, scene = %d, opId = %d, startSize = %d, downloadedSize = %d, totalSize = %d, downloadUrl = %s, errCode = %d, downloaderType = %d, chanelId = %s, costTime = %d, startState = %d, downloadId = %d, extInfo = %s, reservedInWifi = %d, startScene = %d, uiarea = %d, noticeId = %d, ssid = %d, downloadType = %d", new Object[] { paramb.appId, Integer.valueOf(paramb.scene), Integer.valueOf(paramInt), Long.valueOf(paramb.qJD), Long.valueOf(paramb.qJe), Long.valueOf(paramb.oJj), paramb.downloadUrl, Integer.valueOf(paramb.errCode), Integer.valueOf(paramb.dNv), paramb.channelId, Long.valueOf(paramb.costTime), Integer.valueOf(paramb.qJE), Long.valueOf(paramb.dCa), paramb.extInfo, Integer.valueOf(paramb.qJF), Integer.valueOf(paramb.qJG), Integer.valueOf(paramb.qJH), Integer.valueOf(paramb.qJI), Integer.valueOf(paramb.qJJ), Integer.valueOf(paramb.eik) });
+    Log.i("MicroMsg.FileDownloadReportUtil", "report_14567, appId = %s, scene = %d, opId = %d, startSize = %d, downloadedSize = %d, totalSize = %d, downloadUrl = %s, errCode = %d, downloaderType = %d, chanelId = %s, costTime = %d, startState = %d, downloadId = %d, extInfo = %s, reservedInWifi = %d, startScene = %d, uiarea = %d, noticeId = %d, ssid = %d, downloadType = %d", new Object[] { paramb.appId, Integer.valueOf(paramb.scene), Integer.valueOf(paramInt), Long.valueOf(paramb.uiI), Long.valueOf(paramb.uih), Long.valueOf(paramb.rKZ), paramb.downloadUrl, Integer.valueOf(paramb.errCode), Integer.valueOf(paramb.fGH), paramb.channelId, Long.valueOf(paramb.costTime), Integer.valueOf(paramb.uiJ), Long.valueOf(paramb.fuD), paramb.extInfo, Integer.valueOf(paramb.uiK), Integer.valueOf(paramb.uiL), Integer.valueOf(paramb.uiM), Integer.valueOf(paramb.uiN), Integer.valueOf(paramb.uiO), Integer.valueOf(paramb.gcB) });
     Object localObject = paramb.appId;
     int i = paramb.scene;
-    long l1 = paramb.qJe;
-    long l2 = paramb.oJj;
-    String str1 = Fh(paramb.downloadUrl);
+    long l1 = paramb.uih;
+    long l2 = paramb.rKZ;
+    String str1 = Md(paramb.downloadUrl);
     int j = getNetworkType(MMApplicationContext.getContext());
     int k = paramb.errCode;
-    int m = paramb.dNv;
+    int m = paramb.fGH;
     String str2 = paramb.channelId;
     long l3 = paramb.costTime;
-    int n = paramb.qJE;
-    long l4 = paramb.dCa;
+    int n = paramb.uiJ;
+    long l4 = paramb.fuD;
     String str3 = paramb.extInfo;
     String str4 = getDeviceInfo();
-    long l5 = paramb.qJD;
-    int i1 = paramb.qJF;
-    int i2 = paramb.qJG;
-    int i3 = paramb.qJH;
-    int i4 = paramb.qJI;
-    int i5 = paramb.qJJ;
-    int i6 = paramb.eik;
+    long l5 = paramb.uiI;
+    int i1 = paramb.uiK;
+    int i2 = paramb.uiL;
+    int i3 = paramb.uiM;
+    int i4 = paramb.uiN;
+    int i5 = paramb.uiO;
+    int i6 = paramb.gcB;
     MMApplicationContext.getContext();
-    localObject = com.tencent.mm.game.report.api.b.e(14567, new Object[] { localObject, Integer.valueOf(i), Integer.valueOf(paramInt), Long.valueOf(l1), Long.valueOf(l2), str1, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), str2, Long.valueOf(l3), Integer.valueOf(n), Long.valueOf(l4), str3, str4, Long.valueOf(l5), Integer.valueOf(i1), "", Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(i4), Integer.valueOf(i5), Integer.valueOf(i6), Long.valueOf(com.tencent.matrix.g.a.TK() / 1024L), Long.valueOf(cBJ()), Long.valueOf(cBK()) });
-    com.tencent.mm.game.report.api.a.hhr.a((com.tencent.mm.game.report.api.b)localObject);
-    h.CyF.a(15015, new Object[] { paramb.appId, Integer.valueOf(paramb.scene), Integer.valueOf(paramInt), Long.valueOf(paramb.qJe), Long.valueOf(paramb.oJj), Fh(paramb.downloadUrl), Integer.valueOf(getNetworkType(MMApplicationContext.getContext())), Integer.valueOf(paramb.errCode), Integer.valueOf(paramb.dNv), paramb.channelId, Long.valueOf(paramb.costTime), Integer.valueOf(paramb.qJE), Long.valueOf(paramb.dCa), paramb.extInfo });
+    localObject = com.tencent.mm.game.report.api.b.d(14567, new Object[] { localObject, Integer.valueOf(i), Integer.valueOf(paramInt), Long.valueOf(l1), Long.valueOf(l2), str1, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), str2, Long.valueOf(l3), Integer.valueOf(n), Long.valueOf(l4), str3, str4, Long.valueOf(l5), Integer.valueOf(i1), "", Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(i4), Integer.valueOf(i5), Integer.valueOf(i6), Long.valueOf(com.tencent.matrix.e.a.Yo() / 1024L), Long.valueOf(cQn()), Long.valueOf(cQo()) });
+    com.tencent.mm.game.report.api.a.jTp.a((com.tencent.mm.game.report.api.b)localObject);
+    com.tencent.mm.plugin.report.service.h.IzE.a(15015, new Object[] { paramb.appId, Integer.valueOf(paramb.scene), Integer.valueOf(paramInt), Long.valueOf(paramb.uih), Long.valueOf(paramb.rKZ), Md(paramb.downloadUrl), Integer.valueOf(getNetworkType(MMApplicationContext.getContext())), Integer.valueOf(paramb.errCode), Integer.valueOf(paramb.fGH), paramb.channelId, Long.valueOf(paramb.costTime), Integer.valueOf(paramb.uiJ), Long.valueOf(paramb.fuD), paramb.extInfo });
     AppMethodBeat.o(89076);
   }
   
@@ -90,12 +90,12 @@ public final class a
   {
     AppMethodBeat.i(89075);
     long l = System.currentTimeMillis();
-    paramString1 = com.tencent.mm.game.report.api.b.e(10737, new Object[] { Long.valueOf(l), Long.valueOf(l), Integer.valueOf(1), paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(0), paramString2, "", paramString3, Integer.valueOf(getNetworkType(MMApplicationContext.getContext())), Integer.valueOf(0), Integer.valueOf(1), paramString4, paramString5 });
-    com.tencent.mm.game.report.api.a.hhr.a(paramString1);
+    paramString1 = com.tencent.mm.game.report.api.b.d(10737, new Object[] { Long.valueOf(l), Long.valueOf(l), Integer.valueOf(1), paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(0), paramString2, "", paramString3, Integer.valueOf(getNetworkType(MMApplicationContext.getContext())), Integer.valueOf(0), Integer.valueOf(1), paramString4, paramString5 });
+    com.tencent.mm.game.report.api.a.jTp.a(paramString1);
     AppMethodBeat.o(89075);
   }
   
-  public static void aa(String paramString, long paramLong)
+  public static void ab(String paramString, final long paramLong)
   {
     AppMethodBeat.i(89077);
     if (Util.isNullOrNil(paramString))
@@ -105,15 +105,26 @@ public final class a
     }
     if ("appid_is_empty".equals(paramString))
     {
-      h.CyF.idkeyStat(860L, paramLong, 1L, false);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(860L, paramLong, 1L, false);
       AppMethodBeat.o(89077);
       return;
     }
-    com.tencent.mm.ch.a.post(new a.1(paramString, paramLong));
+    com.tencent.mm.co.a.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(89073);
+        g localg = com.tencent.mm.pluginsdk.model.app.h.dl(this.val$appId, false);
+        if ((localg != null) && (localg.Qv())) {
+          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(860L, paramLong, this.uiH, false);
+        }
+        AppMethodBeat.o(89073);
+      }
+    });
     AppMethodBeat.o(89077);
   }
   
-  private static String cBI()
+  private static String cQm()
   {
     AppMethodBeat.i(89079);
     try
@@ -130,7 +141,7 @@ public final class a
     return "";
   }
   
-  private static long cBJ()
+  private static long cQn()
   {
     AppMethodBeat.i(89082);
     try
@@ -147,7 +158,7 @@ public final class a
     return 0L;
   }
   
-  private static long cBK()
+  private static long cQo()
   {
     AppMethodBeat.i(89083);
     try
@@ -167,14 +178,14 @@ public final class a
   private static String getDeviceInfo()
   {
     AppMethodBeat.i(89078);
-    String str1 = q.aoz();
-    String str2 = cBI();
+    String str1 = q.auE();
+    String str2 = cQm();
     Object localObject = new JSONObject();
     try
     {
       ((JSONObject)localObject).put("IMEI", str1);
       ((JSONObject)localObject).put("BLUETOOTH_ADDRESS", str2);
-      localObject = Fh(((JSONObject)localObject).toString());
+      localObject = Md(((JSONObject)localObject).toString());
       AppMethodBeat.o(89078);
       return localObject;
     }
@@ -223,16 +234,16 @@ public final class a
     return 3;
   }
   
-  public static void p(long paramLong, int paramInt)
+  public static void r(long paramLong, int paramInt)
   {
     AppMethodBeat.i(89074);
-    qJA.put(Long.valueOf(paramLong), Integer.valueOf(paramInt));
+    uiF.put(Long.valueOf(paramLong), Integer.valueOf(paramInt));
     AppMethodBeat.o(89074);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.f.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static int cH(Context paramContext)
+  public static int cD(Context paramContext)
   {
-    AppMethodBeat.i(197818);
+    AppMethodBeat.i(258883);
     try
     {
       paramContext = paramContext.getResources();
@@ -17,16 +17,16 @@ public final class b
       if (i != 0)
       {
         i = paramContext.getDimensionPixelSize(i);
-        AppMethodBeat.o(197818);
+        AppMethodBeat.o(258883);
         return i;
       }
-      AppMethodBeat.o(197818);
+      AppMethodBeat.o(258883);
       return 25;
     }
     catch (Resources.NotFoundException paramContext)
     {
       com.tencent.liteapp.b.b.e("MicroMsg.ResourceCompat", "get res of status_bar_height fail %s", new Object[] { paramContext.toString() });
-      AppMethodBeat.o(197818);
+      AppMethodBeat.o(258883);
     }
     return 25;
   }

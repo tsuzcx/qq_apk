@@ -3,9 +3,9 @@ package com.google.firebase.iid;
 final class aa
   implements l
 {
-  private final FirebaseInstanceId bMu;
-  private final String bMv;
-  private final String bMw;
+  private final FirebaseInstanceId bJZ;
+  private final String bKa;
+  private final String bKb;
   
   aa(FirebaseInstanceId arg1, String arg2, String arg3) {}
   
@@ -13,7 +13,7 @@ final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.aa
  * JD-Core Version:    0.7.0.1
  */

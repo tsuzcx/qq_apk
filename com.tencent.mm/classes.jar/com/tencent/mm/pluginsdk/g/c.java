@@ -1,146 +1,368 @@
 package com.tencent.mm.pluginsdk.g;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.an.f;
-import com.tencent.mm.model.z;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.xv;
-import com.tencent.mm.protocal.protobuf.xw;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.aq.f;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.XmlParser;
-import java.util.Map;
+import com.tencent.mm.vfs.u;
 
 public final class c
-  extends q
-  implements m
+  implements g
 {
-  private final a JXC;
-  private i callback;
-  private d rr;
+  String QSF;
+  String QSG;
+  public String QSJ;
+  public String QSK;
+  private a QSS;
+  d QST;
+  private int QSU;
+  String QSV;
+  public boolean QSW = false;
+  String lmq;
+  private float progress;
   
-  public c(k.b paramb, String paramString1, String paramString2, a parama)
+  private void apy(int paramInt)
   {
-    AppMethodBeat.i(223773);
-    Object localObject = new d.a();
-    ((d.a)localObject).iLN = new xv();
-    ((d.a)localObject).iLO = new xw();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/checkbigfileupload";
-    ((d.a)localObject).funcId = 727;
-    ((d.a)localObject).iLP = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (xv)this.rr.iLK.iLR;
-    if ((paramb != null) && (!Util.isNullOrNil(paramb.aesKey)) && (!Util.isNullOrNil(paramb.filemd5)))
+    AppMethodBeat.i(215645);
+    this.QST.endTime = Util.nowMilliSecond();
+    com.tencent.mm.plugin.report.service.h.IzE.a(20470, true, true, false, new Object[] { Integer.valueOf(this.QST.scene), Long.valueOf(this.QST.totalFileSize), Long.valueOf(this.QST.endTime - this.QST.startTime), Integer.valueOf(paramInt), Long.valueOf(this.QST.QTc) });
+    com.tencent.mm.plugin.report.service.h.IzE.el(1431, 2);
+    switch (this.QST.scene)
     {
-      ((xv)localObject).LbJ = paramb.aesKey;
-      ((xv)localObject).xuB = paramb.filemd5;
-      ((xv)localObject).xuz = paramb.title;
-      ((xv)localObject).KMh = paramb.iwJ;
     }
-    for (((xv)localObject).KMg = paramb.iwI;; ((xv)localObject).KMg = ((int)com.tencent.mm.vfs.s.boW(paramString1)))
+    for (;;)
     {
-      ((xv)localObject).KKA = com.tencent.mm.i.a.gpO;
-      ((xv)localObject).xNG = paramString2;
-      ((xv)localObject).xNH = z.aTY();
-      this.JXC = parama;
-      Log.i("MicroMsg.NetSceneCheckBigFileUpload", "summerbig NetSceneCheckBigFileUpload content[%s], aesKey[%s] md5[%s] FileName[%s] FileSize[%d] FileExt[%s] talker[%s], fromUserName[%s], stack[%s]", new Object[] { paramb, ((xv)localObject).LbJ, ((xv)localObject).xuB, ((xv)localObject).xuz, Long.valueOf(((xv)localObject).KMg), ((xv)localObject).KMh, ((xv)localObject).xNG, ((xv)localObject).xNH, Util.getStack() });
-      AppMethodBeat.o(223773);
+      AppMethodBeat.o(215645);
       return;
-      f.baR();
-      ((xv)localObject).LbJ = com.tencent.mm.an.a.baG();
-      f.baR();
-      ((xv)localObject).xuB = com.tencent.mm.an.a.NV(paramString1);
-      ((xv)localObject).xuz = com.tencent.mm.vfs.s.bpb(paramString1);
-      ((xv)localObject).KMh = com.tencent.mm.vfs.s.akC(paramString1);
+      com.tencent.mm.plugin.report.service.h.IzE.el(1431, 5);
+      AppMethodBeat.o(215645);
+      return;
+      com.tencent.mm.plugin.report.service.h.IzE.el(1431, 8);
+      AppMethodBeat.o(215645);
+      return;
+      com.tencent.mm.plugin.report.service.h.IzE.el(1431, 11);
+      if (this.QST.totalFileSize > 26214400L) {
+        com.tencent.mm.plugin.report.service.h.IzE.el(1431, 14);
+      }
     }
   }
   
-  public final int doScene(g paramg, i parami)
+  private void dc(int paramInt, String paramString)
   {
-    AppMethodBeat.i(223774);
-    this.callback = parami;
-    int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(223774);
-    return i;
+    AppMethodBeat.i(215644);
+    apy(paramInt);
+    if (this.QST.QSZ != null) {
+      this.QST.QSZ.O(paramInt, paramString);
+    }
+    AppMethodBeat.o(215644);
   }
   
-  public final int getType()
+  public final void a(a parama, float paramFloat, long paramLong)
   {
-    return 727;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(223775);
-    Log.d("MicroMsg.NetSceneCheckBigFileUpload", "summerbig onGYNetEnd [%d, %d, %s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if ((paramInt2 != 0) || (paramInt3 != 0))
+    AppMethodBeat.i(215647);
+    if (parama.fileType == this.QST.fileType)
     {
-      Log.e("MicroMsg.NetSceneCheckBigFileUpload", "summerbig onGYNetEnd errType = " + paramInt2 + ", errCode = " + paramInt3);
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      if (this.JXC != null)
+      this.progress = paramFloat;
+      if (this.QST.QSZ != null) {
+        this.QST.QSZ.a(this.progress, paramLong);
+      }
+    }
+    AppMethodBeat.o(215647);
+  }
+  
+  public final void a(a parama, g.a parama1)
+  {
+    AppMethodBeat.i(215643);
+    Log.i("MicroMsg.CGIParallelUploadMgr", "upload file success, type = %s, path = %s", new Object[] { Integer.valueOf(parama.fileType), parama.MFQ });
+    d locald = this.QST;
+    locald.QTc += parama1.mHi;
+    if (this.QST.fileType == parama.fileType)
+    {
+      parama1.smU = parama.QSL;
+      this.QST.endTime = Util.nowMilliSecond();
+      com.tencent.mm.plugin.report.service.h.IzE.a(20470, true, true, true, new Object[] { Integer.valueOf(this.QST.scene), Long.valueOf(this.QST.totalFileSize), Long.valueOf(this.QST.endTime - this.QST.startTime), Integer.valueOf(0), Long.valueOf(this.QST.QTc) });
+      com.tencent.mm.plugin.report.service.h.IzE.el(1431, 1);
+      switch (this.QST.scene)
       {
-        params = MMApplicationContext.getContext().getString(2131757553);
-        if (!Util.isNullOrNil(paramString))
+      }
+      for (;;)
+      {
+        if (this.QST.QSZ != null) {
+          this.QST.QSZ.a(parama1);
+        }
+        AppMethodBeat.o(215643);
+        return;
+        com.tencent.mm.plugin.report.service.h.IzE.el(1431, 4);
+        continue;
+        com.tencent.mm.plugin.report.service.h.IzE.el(1431, 7);
+        continue;
+        com.tencent.mm.plugin.report.service.h.IzE.el(1431, 10);
+        if (this.QST.totalFileSize > 26214400L) {
+          com.tencent.mm.plugin.report.service.h.IzE.el(1431, 13);
+        }
+      }
+    }
+    switch (parama.fileType)
+    {
+    }
+    for (;;)
+    {
+      apx(this.QST.fileType);
+      AppMethodBeat.o(215643);
+      return;
+      this.QSF = parama1.fileId;
+      this.lmq = parama1.aesKey;
+      if (this.QST.fileType == 1)
+      {
+        apx(2);
+        AppMethodBeat.o(215643);
+        return;
+      }
+      apx(this.QST.fileType);
+      AppMethodBeat.o(215643);
+      return;
+      this.QSG = parama1.fileId;
+      this.QSV = parama1.aesKey;
+    }
+  }
+  
+  public final void a(a parama, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(215646);
+    if ((parama.fileType == 2) && (paramInt == -100003) && (this.QSW))
+    {
+      this.QSW = false;
+      apx(2);
+      AppMethodBeat.o(215646);
+      return;
+    }
+    dc(paramInt, paramString);
+    AppMethodBeat.o(215646);
+  }
+  
+  public final boolean a(final d paramd)
+  {
+    AppMethodBeat.i(215639);
+    com.tencent.e.h.ZvG.d(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(201061);
+        com.tencent.mm.plugin.report.service.h.IzE.el(1431, 0);
+        switch (paramd.scene)
         {
-          paramString = XmlParser.parseXml(paramString, "e", null);
-          if (paramString != null) {
-            break label172;
+        }
+        for (;;)
+        {
+          c.this.QST = paramd;
+          c.this.QST.startTime = Util.nowMilliSecond();
+          c.this.apx(3);
+          AppMethodBeat.o(201061);
+          return;
+          com.tencent.mm.plugin.report.service.h.IzE.el(1431, 3);
+          continue;
+          com.tencent.mm.plugin.report.service.h.IzE.el(1431, 6);
+          continue;
+          com.tencent.mm.plugin.report.service.h.IzE.el(1431, 9);
+        }
+      }
+      
+      public final String toString()
+      {
+        AppMethodBeat.i(201064);
+        String str = super.toString() + "|addUploadTask";
+        AppMethodBeat.o(201064);
+        return str;
+      }
+    }, "MicroMsg.ParallelUpload.ThreadName");
+    AppMethodBeat.o(215639);
+    return true;
+  }
+  
+  final void apx(int paramInt)
+  {
+    AppMethodBeat.i(215642);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(215642);
+      return;
+      Log.i("MicroMsg.CGIParallelUploadMgr", "start upload middle image");
+      if ((Util.isNullOrNil(this.QST.lNI)) || (!u.agG(this.QST.lNI)))
+      {
+        Log.e("MicroMsg.CGIParallelUploadMgr", "why has not middle image, filePath:%s", new Object[] { this.QST.fullPath });
+        dc(-40002, "");
+        AppMethodBeat.o(215642);
+        return;
+      }
+      Object localObject2 = new a(this);
+      long l = u.bBQ(this.QST.lNI);
+      ((a)localObject2).bW(this.QST.lNI, l);
+      ((a)localObject2).fileType = 2;
+      ((a)localObject2).scene = this.QST.scene;
+      ((a)localObject2).QSF = this.QSF;
+      ((a)localObject2).lmq = this.lmq;
+      this.QSU = 0;
+      if (this.QSW)
+      {
+        localObject3 = this.QST.lNI;
+        localObject1 = this.QST.QTb;
+        if ((((com.tencent.mm.plugin.emoji.b.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.emoji.b.c.class)).cTt()) && (u.bBQ((String)localObject3) > 0L))
+        {
+          if (u.bBQ((String)localObject1) > 0L)
+          {
+            com.tencent.mm.plugin.report.service.h.IzE.el(944, 9);
+            u.deleteFile((String)localObject1);
+          }
+          if (!u.agG((String)localObject1)) {
+            u.bBV((String)localObject1);
+          }
+          if (((com.tencent.mm.plugin.emoji.b.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.emoji.b.c.class)).gb((String)localObject3, (String)localObject1) == 0)
+          {
+            paramInt = 1;
+            if (paramInt == 0) {
+              break label418;
+            }
+            label307:
+            if (Util.isNullOrNil((String)localObject1)) {
+              break label424;
+            }
+            l = u.bBQ(this.QST.lNI);
+            ((a)localObject2).bW((String)localObject1, l);
+            this.QSU = 1;
           }
         }
       }
-      label172:
-      for (params = MMApplicationContext.getContext().getString(2131757552);; params = (String)paramString.get(".e.Content"))
+      for (;;)
       {
-        this.JXC.a(params, "", "", "", "", "", 0L);
-        AppMethodBeat.o(223775);
+        localObject1 = this.QST;
+        ((d)localObject1).totalFileSize = (l + ((d)localObject1).totalFileSize);
+        if (this.QST.fileType == 2) {
+          ((a)localObject2).QSI = this.QSU;
+        }
+        this.QSS = ((a)localObject2);
+        this.QSS.exE();
+        AppMethodBeat.o(215642);
+        return;
+        Log.w("MicroMsg.CGIParallelUploadMgr", "file to hevc failed %s", new Object[] { localObject3 });
+        paramInt = 0;
+        break;
+        label418:
+        localObject1 = null;
+        break label307;
+        label424:
+        this.QSW = false;
+      }
+      Log.i("MicroMsg.CGIParallelUploadMgr", "start upload big image");
+      if ((Util.isNullOrNil(this.QST.fullPath)) || (!u.agG(this.QST.fullPath)))
+      {
+        Log.e("MicroMsg.CGIParallelUploadMgr", "why has not big image, filePath:%s", new Object[] { this.QST.fullPath });
+        dc(-40003, "");
+        AppMethodBeat.o(215642);
         return;
       }
-    }
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    paramArrayOfByte = (xv)((d)params).iLK.iLR;
-    params = (xw)((d)params).iLL.iLR;
-    Log.d("MicroMsg.NetSceneCheckBigFileUpload", "summersafecdn onGYNetEnd Signature[%s], fuin[%d], faeskey[%s], fSignature[%s]", new Object[] { params.keb, Integer.valueOf(params.LiR), params.LiS, params.LiT });
-    if (this.JXC != null)
-    {
-      paramString = "";
-      if (params.getBaseResponse().Ret != 0)
-      {
-        paramString = XmlParser.parseXml(params.getBaseResponse().ErrMsg.toString(), "e", null);
-        if (paramString != null) {
-          break label389;
-        }
-      }
-    }
-    label389:
-    for (paramString = MMApplicationContext.getContext().getString(2131757552);; paramString = (String)paramString.get(".e.Content"))
-    {
-      this.JXC.a(paramString, paramArrayOfByte.xuB, paramArrayOfByte.LbJ, params.keb, params.LiS, params.LiT, paramArrayOfByte.KMg);
-      AppMethodBeat.o(223775);
+      Object localObject1 = new a(this);
+      paramInt = (int)u.bBQ(this.QST.fullPath);
+      localObject2 = this.QST;
+      ((d)localObject2).totalFileSize += paramInt;
+      ((a)localObject1).bW(this.QST.fullPath, paramInt);
+      ((a)localObject1).fileType = 1;
+      ((a)localObject1).scene = this.QST.scene;
+      ((a)localObject1).QSF = this.QSF;
+      ((a)localObject1).lmq = this.lmq;
+      ((a)localObject1).QSG = this.QSG;
+      ((a)localObject1).QSH = this.QSV;
+      ((a)localObject1).QSI = this.QSU;
+      this.QSS = ((a)localObject1);
+      this.QSS.exE();
+      AppMethodBeat.o(215642);
       return;
+      Log.i("MicroMsg.CGIParallelUploadMgr", "start upload video");
+      if ((Util.isNullOrNil(this.QST.fullPath)) || (!u.agG(this.QST.fullPath)))
+      {
+        Log.e("MicroMsg.CGIParallelUploadMgr", "why has not big image, filePath:%s", new Object[] { this.QST.fullPath });
+        dc(-40004, "");
+        AppMethodBeat.o(215642);
+        return;
+      }
+      localObject1 = new a(this);
+      paramInt = (int)u.bBQ(this.QST.fullPath);
+      localObject2 = this.QST;
+      ((d)localObject2).totalFileSize += paramInt;
+      ((a)localObject1).bW(this.QST.fullPath, paramInt);
+      ((a)localObject1).fileType = 4;
+      ((a)localObject1).scene = this.QST.scene;
+      ((a)localObject1).QSF = this.QSF;
+      ((a)localObject1).lmq = this.lmq;
+      this.QSS = ((a)localObject1);
+      ((a)localObject1).exE();
+      AppMethodBeat.o(215642);
+      return;
+      Log.i("MicroMsg.CGIParallelUploadMgr", "start upload thumb image");
+      if ((Util.isNullOrNil(this.QST.thumbPath)) || (!u.agG(this.QST.thumbPath)))
+      {
+        if (this.QST.fileType != 5)
+        {
+          Log.e("MicroMsg.CGIParallelUploadMgr", "why has not thumb, filePath:%s", new Object[] { this.QST.fullPath });
+          dc(-40001, "");
+          AppMethodBeat.o(215642);
+          return;
+        }
+        paramInt = this.QST.fileType;
+        break;
+      }
+      localObject1 = new a(this);
+      ((a)localObject1).fileType = 3;
+      ((a)localObject1).scene = this.QST.scene;
+      l = u.bBQ(this.QST.thumbPath);
+      ((a)localObject1).bW(this.QST.thumbPath, l);
+      localObject2 = this.QST;
+      ((d)localObject2).totalFileSize = (l + ((d)localObject2).totalFileSize);
+      this.QSS = ((a)localObject1);
+      ((a)localObject1).exE();
+      AppMethodBeat.o(215642);
+      return;
+      Log.i("MicroMsg.CGIParallelUploadMgr", "start upload file");
+      if ((Util.isNullOrNil(this.QST.fullPath)) || (!u.agG(this.QST.fullPath)))
+      {
+        Log.e("MicroMsg.CGIParallelUploadMgr", "why has not big image, filePath:%s", new Object[] { this.QST.fullPath });
+        dc(-40005, "");
+        AppMethodBeat.o(215642);
+        return;
+      }
+      localObject1 = k.b.OQ(Util.processXml(((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().Oq(this.QST.lNP).field_content));
+      f.bkh();
+      this.QSK = com.tencent.mm.aq.a.bjV();
+      if ((localObject1 != null) && (!Util.isNullOrNil(((k.b)localObject1).aesKey))) {
+        this.QSK = ((k.b)localObject1).aesKey;
+      }
+      localObject1 = this.QST.fullPath;
+      l = (int)u.bBQ((String)localObject1);
+      localObject2 = this.QST;
+      ((d)localObject2).totalFileSize += l;
+      if (l > 26214400L) {
+        com.tencent.mm.plugin.report.service.h.IzE.el(1431, 12);
+      }
+      localObject2 = this.QSK;
+      Object localObject3 = new a(this);
+      ((a)localObject3).bW((String)localObject1, l);
+      ((a)localObject3).fileType = 5;
+      ((a)localObject3).scene = this.QST.scene;
+      ((a)localObject3).QSJ = this.QSJ;
+      ((a)localObject3).QSK = ((String)localObject2);
+      this.QSS = ((a)localObject3);
+      this.QSS.exE();
     }
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.g.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,18 +2,19 @@ package com.tencent.mm.plugin.multitask.d;
 
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.gg;
-import com.tencent.mm.g.b.a.gh;
-import com.tencent.mm.g.b.a.gi;
-import com.tencent.mm.g.b.a.gj;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.f.b.a.ib;
+import com.tencent.mm.f.b.a.ic;
+import com.tencent.mm.f.b.a.id;
+import com.tencent.mm.f.b.a.ie;
+import com.tencent.mm.f.b.a.if;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.model.cm;
 import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.crr;
-import com.tencent.mm.protocal.protobuf.crs;
-import com.tencent.mm.protocal.protobuf.crt;
-import com.tencent.mm.protocal.protobuf.ffq;
+import com.tencent.mm.protocal.protobuf.dam;
+import com.tencent.mm.protocal.protobuf.dan;
+import com.tencent.mm.protocal.protobuf.dao;
+import com.tencent.mm.protocal.protobuf.dap;
+import com.tencent.mm.protocal.protobuf.daq;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -22,23 +23,23 @@ import java.util.HashMap;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/report/MultiTaskReportLogic;", "", "()V", "IDKEY_ID", "", "IDKEY_TYPE_APPBRAND", "IDKEY_TYPE_FAV", "IDKEY_TYPE_FILES", "IDKEY_TYPE_FINDER_MEGA_VIDEO", "IDKEY_TYPE_LUGGAGE", "IDKEY_TYPE_TOPSTORY_VIDEO", "IDKEY_TYPE_UNKOWN", "IDKEY_TYPE_WEBPAGE", "TAG", "", "getTAG", "()Ljava/lang/String;", "reportInfoMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "getReportInfoMap", "()Ljava/util/HashMap;", "clear", "", "getItemType", "multiTaskType", "getLastExposeTime", "itemId", "(Ljava/lang/String;)Ljava/lang/Long;", "getMultiTaskContextId", "getScene", "index", "multiTaskItemActionReport", "multiTaskInfo", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "contextId", "position", "action", "itemSubId", "multiTaskItemAddReport", "addType", "status", "multiTaskItemPageActionReport", "reportInfo", "Lcom/tencent/mm/protocal/protobuf/MultiTaskReportData;", "multiTaskItemPageBrowse", "multiTaskPerformanceReport", "performanceData", "Lcom/tencent/mm/protocal/protobuf/MultiTaskPerformanceData;", "reportIDKey", "type", "time", "canConvertTranslucent", "", "setReportInfo", "exposeTime", "plugin-multitask_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/report/MultiTaskReportLogic;", "", "()V", "IDKEY_ID", "", "IDKEY_TYPE_APPBRAND", "IDKEY_TYPE_FAV", "IDKEY_TYPE_FILES", "IDKEY_TYPE_FINDER_MEGA_VIDEO", "IDKEY_TYPE_LUGGAGE", "IDKEY_TYPE_TOPSTORY_VIDEO", "IDKEY_TYPE_UNKOWN", "IDKEY_TYPE_WEBPAGE", "MAX_COST_TIME", "", "TAG", "", "getTAG", "()Ljava/lang/String;", "reportInfoMap", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "getReportInfoMap", "()Ljava/util/HashMap;", "clear", "", "getItemType", "multiTaskType", "getLastExposeTime", "itemId", "(Ljava/lang/String;)Ljava/lang/Long;", "getMultiTaskContextId", "getScene", "index", "multiTaskEduReport", "reportInfo", "Lcom/tencent/mm/protocal/protobuf/MultiTaskEduReportData;", "multiTaskItemActionReport", "multiTaskInfo", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "contextId", "position", "action", "itemSubId", "multiTaskItemAddReport", "addType", "status", "multiTaskItemPageActionReport", "Lcom/tencent/mm/protocal/protobuf/MultiTaskReportData;", "multiTaskItemPageBrowse", "multiTaskPerformanceReport", "performanceData", "Lcom/tencent/mm/protocal/protobuf/MultiTaskPerformanceData;", "reportIDKey", "type", "time", "canConvertTranslucent", "", "setReportInfo", "exposeTime", "plugin-multitask_release"})
 public final class a
 {
-  private static final HashMap<String, Long> AbY;
-  public static final a AbZ;
+  private static final HashMap<String, Long> FHN;
+  public static final a FHO;
   private static final String TAG = "MicroMsg.MultiTaskReportLogic";
   
   static
   {
-    AppMethodBeat.i(200637);
-    AbZ = new a();
+    AppMethodBeat.i(248868);
+    FHO = new a();
     TAG = "MicroMsg.MultiTaskReportLogic";
-    AbY = new HashMap();
-    AppMethodBeat.o(200637);
+    FHN = new HashMap();
+    AppMethodBeat.o(248868);
   }
   
-  private static long RM(int paramInt)
+  private static long Yd(int paramInt)
   {
     switch (paramInt)
     {
@@ -60,7 +61,7 @@ public final class a
     return 6L;
   }
   
-  public static long RN(int paramInt)
+  public static long Ye(int paramInt)
   {
     switch (paramInt)
     {
@@ -78,14 +79,20 @@ public final class a
   
   private static void a(int paramInt, long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(258586);
+    AppMethodBeat.i(248867);
     Log.v(TAG, "reportIDKey: type=%d time=%d translucent=%b", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) });
+    if ((paramLong <= 0L) || (paramLong > 30000L))
+    {
+      Log.v(TAG, "reportIDKey: error data");
+      AppMethodBeat.o(248867);
+      return;
+    }
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(258586);
+      AppMethodBeat.o(248867);
       return;
       IDKey localIDKey1 = new IDKey();
       localIDKey1.SetID(1627);
@@ -106,176 +113,194 @@ public final class a
         localIDKey1.SetValue(1L);
         localArrayList.add(localIDKey1);
       }
-      h.CyF.b(localArrayList, false);
+      com.tencent.mm.plugin.report.service.h.IzE.b(localArrayList, false);
     }
   }
   
-  public static void a(int paramInt, ffq paramffq)
+  public static void a(int paramInt, dap paramdap)
   {
-    AppMethodBeat.i(258585);
-    if (paramffq != null)
+    AppMethodBeat.i(248866);
+    if (paramdap != null)
     {
       switch (paramInt)
       {
       }
       for (;;)
       {
-        AppMethodBeat.o(258585);
+        AppMethodBeat.o(248866);
         return;
-        a(0, paramffq.UtZ, paramffq.Uua);
-        AppMethodBeat.o(258585);
+        a(0, paramdap.THU, paramdap.THV);
+        AppMethodBeat.o(248866);
         return;
-        a(5, paramffq.UtZ, paramffq.Uua);
-        AppMethodBeat.o(258585);
+        a(5, paramdap.THU, paramdap.THV);
+        AppMethodBeat.o(248866);
         return;
-        a(10, paramffq.UtZ, paramffq.Uua);
-        AppMethodBeat.o(258585);
+        a(10, paramdap.THU, paramdap.THV);
+        AppMethodBeat.o(248866);
         return;
-        a(15, paramffq.UtZ, paramffq.Uua);
-        AppMethodBeat.o(258585);
+        a(15, paramdap.THU, paramdap.THV);
+        AppMethodBeat.o(248866);
         return;
-        a(20, paramffq.UtZ, paramffq.Uua);
-        AppMethodBeat.o(258585);
+        a(20, paramdap.THU, paramdap.THV);
+        AppMethodBeat.o(248866);
         return;
-        a(25, paramffq.UtZ, paramffq.Uua);
-        AppMethodBeat.o(258585);
+        a(25, paramdap.THU, paramdap.THV);
+        AppMethodBeat.o(248866);
         return;
-        a(30, paramffq.UtZ, paramffq.Uua);
+        a(30, paramdap.THU, paramdap.THV);
       }
     }
-    AppMethodBeat.o(258585);
+    AppMethodBeat.o(248866);
   }
   
   public static void a(MultiTaskInfo paramMultiTaskInfo, long paramLong1, long paramLong2, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(200633);
+    AppMethodBeat.i(248861);
     if (paramMultiTaskInfo != null)
     {
-      gh localgh = new gh();
-      localgh.tP(paramMultiTaskInfo.field_id);
-      localgh.qc(RM(paramMultiTaskInfo.field_type));
-      localgh.qd(paramLong1);
-      localgh.qe(paramLong2);
-      localgh.tQ(paramString1);
-      localgh.tR(paramString2);
-      localgh.bfK();
-      AppMethodBeat.o(200633);
+      id localid = new id();
+      localid.xI(paramMultiTaskInfo.field_id);
+      localid.sx(Yd(paramMultiTaskInfo.field_type));
+      localid.sy(paramLong1);
+      localid.sz(paramLong2);
+      localid.xJ(paramString1);
+      localid.xK(paramString2);
+      localid.bpa();
+      AppMethodBeat.o(248861);
       return;
     }
-    AppMethodBeat.o(200633);
+    AppMethodBeat.o(248861);
   }
   
   public static void a(MultiTaskInfo paramMultiTaskInfo, String paramString1, long paramLong1, long paramLong2, String paramString2)
   {
-    AppMethodBeat.i(200634);
+    AppMethodBeat.i(248862);
     if (paramMultiTaskInfo != null)
     {
-      gg localgg = new gg();
-      localgg.tN(paramMultiTaskInfo.field_id);
-      localgg.pX(RM(paramMultiTaskInfo.field_type));
-      localgg.tM(paramString1);
-      localgg.pY(paramLong1);
-      localgg.pZ(cl.aWA());
-      localgg.qa(paramLong2);
-      localgg.tO(paramString2);
+      ic localic = new ic();
+      localic.xG(paramMultiTaskInfo.field_id);
+      localic.ss(Yd(paramMultiTaskInfo.field_type));
+      localic.xF(paramString1);
+      localic.st(paramLong1);
+      localic.su(cm.bfE());
+      localic.sv(paramLong2);
+      localic.xH(paramString2);
       paramMultiTaskInfo = paramMultiTaskInfo.field_id;
-      p.g(paramMultiTaskInfo, "it.field_id");
-      p.h(paramMultiTaskInfo, "itemId");
-      if (AbY.containsKey(paramMultiTaskInfo))
+      p.j(paramMultiTaskInfo, "it.field_id");
+      p.k(paramMultiTaskInfo, "itemId");
+      if (FHN.containsKey(paramMultiTaskInfo))
       {
-        paramMultiTaskInfo = (Long)AbY.get(paramMultiTaskInfo);
+        paramMultiTaskInfo = (Long)FHN.get(paramMultiTaskInfo);
         if (paramMultiTaskInfo == null) {
           break label158;
         }
       }
       label158:
-      for (paramLong1 = paramMultiTaskInfo.longValue();; paramLong1 = cl.aWA())
+      for (paramLong1 = paramMultiTaskInfo.longValue();; paramLong1 = cm.bfE())
       {
-        localgg.qb(paramLong1);
-        localgg.bfK();
-        AppMethodBeat.o(200634);
+        localic.sw(paramLong1);
+        localic.bpa();
+        AppMethodBeat.o(248862);
         return;
-        paramMultiTaskInfo = Long.valueOf(cl.aWA());
+        paramMultiTaskInfo = Long.valueOf(cm.bfE());
         break;
       }
     }
-    AppMethodBeat.o(200634);
+    AppMethodBeat.o(248862);
   }
   
-  public static void a(crt paramcrt)
+  public static void a(dan paramdan)
   {
-    AppMethodBeat.i(200635);
-    if (paramcrt != null)
+    AppMethodBeat.i(248865);
+    if (paramdan != null)
     {
-      crr localcrr = paramcrt.MwN;
-      if (localcrr != null)
+      ib localib = new ib();
+      localib.so(paramdan.THN);
+      localib.sp(paramdan.THO);
+      localib.sq(paramdan.duration);
+      localib.sr(paramdan.THP);
+      localib.bpa();
+      AppMethodBeat.o(248865);
+      return;
+    }
+    AppMethodBeat.o(248865);
+  }
+  
+  public static void a(daq paramdaq)
+  {
+    AppMethodBeat.i(248863);
+    if (paramdaq != null)
+    {
+      dam localdam = paramdaq.THX;
+      if (localdam != null)
       {
-        gi localgi = new gi();
-        localgi.tT(paramcrt.MwM);
-        localgi.qf(RM(paramcrt.dUm));
-        localgi.tS(paramcrt.sGQ);
-        localgi.tU(paramcrt.MwB);
-        localgi.qg(localcrr.duration);
-        localgi.bfK();
-        AppMethodBeat.o(200635);
+        ie localie = new ie();
+        localie.xM(paramdaq.THW);
+        localie.sA(Yd(paramdaq.fNO));
+        localie.xL(paramdaq.wmL);
+        localie.xN(paramdaq.THE);
+        localie.sB(localdam.duration);
+        localie.bpa();
+        AppMethodBeat.o(248863);
         return;
       }
     }
-    AppMethodBeat.o(200635);
+    AppMethodBeat.o(248863);
   }
   
-  public static void b(crt paramcrt)
+  public static void b(daq paramdaq)
   {
-    AppMethodBeat.i(200636);
-    if (paramcrt != null)
+    AppMethodBeat.i(248864);
+    if (paramdaq != null)
     {
-      crs localcrs = paramcrt.MwP;
-      if (localcrs != null)
+      dao localdao = paramdaq.THZ;
+      if (localdao != null)
       {
-        gj localgj = new gj();
-        localgj.tV(paramcrt.sGQ);
-        localgj.qh(localcrs.hlf);
-        localgj.qi(localcrs.igp);
-        localgj.qj(localcrs.MwJ);
-        localgj.qk(localcrs.MwK);
-        localgj.ql(localcrs.MwL);
-        localgj.qm(localcrs.duration);
-        localgj.bfK();
-        AppMethodBeat.o(200636);
+        if localif = new if();
+        localif.xO(paramdaq.wmL);
+        localif.sC(localdao.jWO);
+        localif.sD(localdao.kVd);
+        localif.sE(localdao.THQ);
+        localif.sF(localdao.THR);
+        localif.sG(localdao.THS);
+        localif.sH(localdao.duration);
+        localif.sI(localdao.THT);
+        localif.bpa();
+        AppMethodBeat.o(248864);
         return;
       }
     }
-    AppMethodBeat.o(200636);
+    AppMethodBeat.o(248864);
   }
   
-  public static void bb(String paramString, long paramLong)
+  public static void bc(String paramString, long paramLong)
   {
-    AppMethodBeat.i(200631);
-    p.h(paramString, "itemId");
-    AbY.put(paramString, Long.valueOf(paramLong));
-    AppMethodBeat.o(200631);
+    AppMethodBeat.i(248858);
+    p.k(paramString, "itemId");
+    FHN.put(paramString, Long.valueOf(paramLong));
+    AppMethodBeat.o(248858);
   }
   
   public static void clear()
   {
-    AppMethodBeat.i(200630);
-    AbY.clear();
-    AppMethodBeat.o(200630);
+    AppMethodBeat.i(248857);
+    FHN.clear();
+    AppMethodBeat.o(248857);
   }
   
-  public static String erj()
+  public static String fbf()
   {
-    AppMethodBeat.i(200632);
+    AppMethodBeat.i(248860);
     Object localObject = new StringBuilder();
-    p.g(g.aAf(), "MMKernel.account()");
-    localObject = MD5Util.getMD5String(Util.nullAsNil(String.valueOf(com.tencent.mm.kernel.a.getUin())) + System.currentTimeMillis()).toString();
-    AppMethodBeat.o(200632);
+    p.j(com.tencent.mm.kernel.h.aHE(), "MMKernel.account()");
+    localObject = MD5Util.getMD5String(Util.nullAsNil(String.valueOf(b.getUin())) + System.currentTimeMillis()).toString();
+    AppMethodBeat.o(248860);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.d.a
  * JD-Core Version:    0.7.0.1
  */

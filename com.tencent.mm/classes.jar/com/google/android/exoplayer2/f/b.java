@@ -1,5 +1,6 @@
 package com.google.android.exoplayer2.f;
 
+import com.google.android.exoplayer2.b.a;
 import com.google.android.exoplayer2.b.g;
 import java.nio.ByteBuffer;
 
@@ -13,27 +14,16 @@ public abstract class b
   {
     super(new h[2], new i[2]);
     this.name = paramString;
-    if (this.bhw == this.bhu.length) {}
-    for (boolean bool = true;; bool = false)
-    {
-      com.google.android.exoplayer2.i.a.checkState(bool);
-      paramString = this.bhu;
-      int j = paramString.length;
-      while (i < j)
-      {
-        paramString[i].dM(1024);
-        i += 1;
-      }
-    }
+    sb();
   }
   
   private f a(h paramh, i parami, boolean paramBoolean)
   {
     try
     {
-      Object localObject = paramh.aKP;
+      Object localObject = paramh.aQU;
       localObject = b(((ByteBuffer)localObject).array(), ((ByteBuffer)localObject).limit(), paramBoolean);
-      parami.a(paramh.timeUs, (d)localObject, paramh.bdC);
+      parami.a(paramh.timeUs, (d)localObject, paramh.aNc);
       parami.flags &= 0x7FFFFFFF;
       return null;
     }
@@ -46,13 +36,13 @@ public abstract class b
     super.a(parami);
   }
   
-  public final void ah(long paramLong) {}
+  public final void ak(long paramLong) {}
   
   protected abstract d b(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.b
  * JD-Core Version:    0.7.0.1
  */

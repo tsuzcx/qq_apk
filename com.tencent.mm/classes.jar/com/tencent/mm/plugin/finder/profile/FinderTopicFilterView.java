@@ -1,161 +1,138 @@
 package com.tencent.mm.plugin.finder.profile;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.s;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.FrameLayout;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.convert.ck;
+import com.tencent.mm.plugin.finder.convert.cr;
+import com.tencent.mm.plugin.finder.convert.g;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
 import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.g.c;
-import com.tencent.mm.view.recyclerview.h;
-import kotlin.g.b.p;
+import com.tencent.mm.view.recyclerview.h.c;
+import com.tencent.mm.view.recyclerview.i;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/profile/FinderTopicFilterView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "presenter", "Lcom/tencent/mm/plugin/finder/profile/FinderTopicFilterContract;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/profile/FinderTopicFilterContract;", "setPresenter", "(Lcom/tencent/mm/plugin/finder/profile/FinderTopicFilterContract;)V", "recyclerView", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "getRecyclerView", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "setRecyclerView", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerView;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemDecoration", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "initView", "", "refresh", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/FinderTopicFilterView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "presenter", "Lcom/tencent/mm/plugin/finder/profile/FinderTopicFilterContract;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/profile/FinderTopicFilterContract;", "setPresenter", "(Lcom/tencent/mm/plugin/finder/profile/FinderTopicFilterContract;)V", "recyclerView", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "getRecyclerView", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "setRecyclerView", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerView;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "initView", "", "refresh", "plugin-finder_release"})
 public final class FinderTopicFilterView
   extends FrameLayout
 {
   private final String TAG;
-  public b uZq;
-  public WxRecyclerView ufR;
+  WxRecyclerView xUj;
+  b zPK;
   
   public FinderTopicFilterView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(249998);
+    AppMethodBeat.i(262458);
     this.TAG = "Finder.FinderTopicFilterView";
-    AppMethodBeat.o(249998);
+    AppMethodBeat.o(262458);
   }
   
   public FinderTopicFilterView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(249999);
+    AppMethodBeat.i(262459);
     this.TAG = "Finder.FinderTopicFilterView";
-    AppMethodBeat.o(249999);
+    AppMethodBeat.o(262459);
   }
   
   public FinderTopicFilterView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(250000);
+    AppMethodBeat.i(262460);
     this.TAG = "Finder.FinderTopicFilterView";
-    AppMethodBeat.o(250000);
+    AppMethodBeat.o(262460);
   }
   
-  public final RecyclerView.h getItemDecoration()
+  public final void bfU()
   {
-    AppMethodBeat.i(249997);
-    RecyclerView.h localh = (RecyclerView.h)new b();
-    AppMethodBeat.o(249997);
-    return localh;
-  }
-  
-  public final b getPresenter()
-  {
-    return this.uZq;
-  }
-  
-  public final WxRecyclerView getRecyclerView()
-  {
-    return this.ufR;
-  }
-  
-  public final void refresh()
-  {
-    AppMethodBeat.i(249996);
+    AppMethodBeat.i(262456);
     Log.i(this.TAG, "refresh");
-    Object localObject = this.ufR;
+    Object localObject = this.xUj;
     if (localObject != null)
     {
       localObject = ((WxRecyclerView)localObject).getAdapter();
       if (localObject != null)
       {
         ((RecyclerView.a)localObject).notifyDataSetChanged();
-        AppMethodBeat.o(249996);
+        AppMethodBeat.o(262456);
         return;
       }
     }
-    AppMethodBeat.o(249996);
+    AppMethodBeat.o(262456);
+  }
+  
+  public final RecyclerView.h getItemDecoration()
+  {
+    AppMethodBeat.i(262457);
+    RecyclerView.h localh = (RecyclerView.h)new FinderTopicFilterView.b();
+    AppMethodBeat.o(262457);
+    return localh;
+  }
+  
+  public final b getPresenter()
+  {
+    return this.zPK;
+  }
+  
+  public final WxRecyclerView getRecyclerView()
+  {
+    return this.xUj;
   }
   
   public final void setPresenter(b paramb)
   {
-    this.uZq = paramb;
+    this.zPK = paramb;
   }
   
   public final void setRecyclerView(WxRecyclerView paramWxRecyclerView)
   {
-    this.ufR = paramWxRecyclerView;
+    this.xUj = paramWxRecyclerView;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/profile/FinderTopicFilterView$buildItemCoverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/profile/FinderTopicFilterView$buildItemCoverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
   public static final class a
     implements com.tencent.mm.view.recyclerview.f
   {
-    public final e<?> EC(int paramInt)
+    public final e<?> yx(int paramInt)
     {
-      AppMethodBeat.i(249993);
+      AppMethodBeat.i(277289);
       switch (paramInt)
       {
       default: 
         if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED))
         {
           localObject = (Throwable)new RuntimeException("type invalid");
-          AppMethodBeat.o(249993);
+          AppMethodBeat.o(277289);
           throw ((Throwable)localObject);
         }
         break;
       case 1: 
-        localObject = (e)new ck();
-        AppMethodBeat.o(249993);
+        localObject = (e)new cr();
+        AppMethodBeat.o(277289);
+        return localObject;
+      case 2: 
+        localObject = (e)new g();
+        AppMethodBeat.o(277289);
         return localObject;
       }
-      Log.printInfoStack(FinderTopicFilterView.a(this.uZr), "type invalid", new Object[0]);
+      Log.printInfoStack(FinderTopicFilterView.a(this.zPL), "type invalid", new Object[0]);
       Object localObject = (e)new com.tencent.mm.plugin.finder.convert.f();
-      AppMethodBeat.o(249993);
+      AppMethodBeat.o(277289);
       return localObject;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/profile/FinderTopicFilterView$getItemDecoration$1", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-finder_release"})
-  public static final class b
-    extends RecyclerView.h
-  {
-    public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
-    {
-      AppMethodBeat.i(249994);
-      p.h(paramRect, "outRect");
-      p.h(paramView, "view");
-      p.h(paramRecyclerView, "parent");
-      p.h(params, "state");
-      paramView = paramView.getContext();
-      p.g(paramView, "view.context");
-      int i = (int)paramView.getResources().getDimension(2131165277);
-      paramRect.left = i;
-      paramRect.right = i;
-      paramRect.bottom = i;
-      paramRect.top = i;
-      AppMethodBeat.o(249994);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/profile/FinderTopicFilterView$initView$1$1", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemClick", "", "adapter", "Landroid/support/v7/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/profile/FinderTopicFilterView$initView$1$1", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-finder_release"})
   public static final class c
-    implements g.c<h>
+    implements h.c<i>
   {
-    public c(WxRecyclerAdapter paramWxRecyclerAdapter, FinderTopicFilterView paramFinderTopicFilterView, b paramb) {}
+    c(WxRecyclerAdapter paramWxRecyclerAdapter, FinderTopicFilterView paramFinderTopicFilterView, b paramb) {}
   }
 }
 

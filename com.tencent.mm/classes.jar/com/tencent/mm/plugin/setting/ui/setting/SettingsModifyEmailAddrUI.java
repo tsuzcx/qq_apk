@@ -9,7 +9,6 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.view.KeyEvent;
@@ -19,20 +18,27 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.modelsimple.u;
+import com.tencent.mm.plugin.account.bind.a.i;
 import com.tencent.mm.plugin.account.friend.a.aa;
 import com.tencent.mm.plugin.account.friend.a.am;
+import com.tencent.mm.plugin.account.model.e;
 import com.tencent.mm.plugin.account.ui.RegByMobileSetPwdUI;
+import com.tencent.mm.plugin.setting.b.c;
+import com.tencent.mm.plugin.setting.b.f;
+import com.tencent.mm.plugin.setting.b.g;
+import com.tencent.mm.plugin.setting.b.i;
 import com.tencent.mm.plugin.setting.c;
 import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.protocal.protobuf.zv;
+import com.tencent.mm.protocal.protobuf.zz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo;
@@ -41,35 +47,34 @@ import com.tencent.mm.sdk.storage.MStorageEx;
 import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
 
 public class SettingsModifyEmailAddrUI
   extends MMActivity
   implements i, MStorageEx.IOnStorageChange
 {
-  private EditText DcJ;
-  private String DcK;
-  private String DcL;
-  private TextView DcM;
-  private TextView DcN;
-  private boolean DcO;
-  private boolean DcP;
-  private boolean DcQ;
-  private ProgressDialog gtM;
-  private String kaI = null;
-  private String kaJ = null;
+  private EditText Jik;
+  private String Jil;
+  private String Jim;
+  private TextView Jin;
+  private TextView Jio;
+  private boolean Jip;
+  private boolean Jiq;
+  private boolean Jir;
+  private ProgressDialog iXX;
+  private String mSb = null;
+  private String mTk = null;
   
-  private void eTh()
+  private void fGl()
   {
     AppMethodBeat.i(74234);
-    if (this.DcO)
+    if (this.Jip)
     {
-      this.DcM.setVisibility(0);
-      this.DcM.setText(getString(2131765660));
-      this.DcN.setText(getString(2131765468));
-      this.DcN.setTextColor(getResources().getColor(2131099890));
-      this.DcJ.setEnabled(false);
-      this.DcJ.setFilters(new InputFilter[] { new InputFilter()
+      this.Jin.setVisibility(0);
+      this.Jin.setText(getString(b.i.settings_unbind));
+      this.Jio.setText(getString(b.i.settings_modify_email_addr_warning));
+      this.Jio.setTextColor(getResources().getColor(b.c.account_info_email_warn_color));
+      this.Jik.setEnabled(false);
+      this.Jik.setFilters(new InputFilter[] { new InputFilter()
       {
         public final CharSequence filter(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, Spanned paramAnonymousSpanned, int paramAnonymousInt3, int paramAnonymousInt4)
         {
@@ -84,20 +89,20 @@ public class SettingsModifyEmailAddrUI
           return "";
         }
       } });
-      this.DcM.setOnClickListener(new View.OnClickListener()
+      this.Jin.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(74222);
           Object localObject = new b();
-          ((b)localObject).bm(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsModifyEmailAddrUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
-          paramAnonymousView = new aa(aa.kfk);
-          g.azz().a(paramAnonymousView, 0);
+          ((b)localObject).bn(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/setting/ui/setting/SettingsModifyEmailAddrUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+          paramAnonymousView = new aa(aa.mWJ);
+          com.tencent.mm.kernel.h.aGY().a(paramAnonymousView, 0);
           paramAnonymousView = SettingsModifyEmailAddrUI.this;
           localObject = SettingsModifyEmailAddrUI.this;
-          SettingsModifyEmailAddrUI.this.getString(2131755998);
-          SettingsModifyEmailAddrUI.a(paramAnonymousView, h.a((Context)localObject, SettingsModifyEmailAddrUI.this.getString(2131765666), true, new DialogInterface.OnCancelListener()
+          SettingsModifyEmailAddrUI.this.getString(b.i.app_tip);
+          SettingsModifyEmailAddrUI.a(paramAnonymousView, com.tencent.mm.ui.base.h.a((Context)localObject, SettingsModifyEmailAddrUI.this.getString(b.i.settings_unbinding), true, new DialogInterface.OnCancelListener()
           {
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface) {}
           }));
@@ -106,18 +111,18 @@ public class SettingsModifyEmailAddrUI
           AppMethodBeat.o(74222);
         }
       });
-      hideVKB(this.DcJ);
+      hideVKB(this.Jik);
       AppMethodBeat.o(74234);
       return;
     }
-    if (!Util.isNullOrNil(this.DcK))
+    if (!Util.isNullOrNil(this.Jil))
     {
-      this.DcM.setVisibility(0);
-      this.DcM.setText(getString(2131765284));
-      this.DcN.setText(getString(2131765268));
-      this.DcN.setTextColor(getResources().getColor(2131100994));
-      this.DcJ.setEnabled(false);
-      this.DcJ.setFilters(new InputFilter[] { new InputFilter()
+      this.Jin.setVisibility(0);
+      this.Jin.setText(getString(b.i.setting_resend_verifyemail));
+      this.Jio.setText(getString(b.i.setting_email_not_verify_tip));
+      this.Jio.setTextColor(getResources().getColor(b.c.red));
+      this.Jik.setEnabled(false);
+      this.Jik.setFilters(new InputFilter[] { new InputFilter()
       {
         public final CharSequence filter(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, Spanned paramAnonymousSpanned, int paramAnonymousInt3, int paramAnonymousInt4)
         {
@@ -132,25 +137,25 @@ public class SettingsModifyEmailAddrUI
           return "";
         }
       } });
-      this.DcM.setOnClickListener(new View.OnClickListener()
+      this.Jin.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(final View paramAnonymousView)
         {
           AppMethodBeat.i(74225);
           Object localObject = new b();
-          ((b)localObject).bm(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsModifyEmailAddrUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
-          paramAnonymousView = new am((String)g.aAh().azQ().get(2, null));
-          g.azz().a(paramAnonymousView, 0);
+          ((b)localObject).bn(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/setting/ui/setting/SettingsModifyEmailAddrUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+          paramAnonymousView = new am((String)com.tencent.mm.kernel.h.aHG().aHp().b(2, null));
+          com.tencent.mm.kernel.h.aGY().a(paramAnonymousView, 0);
           localObject = SettingsModifyEmailAddrUI.this;
           AppCompatActivity localAppCompatActivity = SettingsModifyEmailAddrUI.this.getContext();
-          SettingsModifyEmailAddrUI.this.getString(2131755998);
-          SettingsModifyEmailAddrUI.a((SettingsModifyEmailAddrUI)localObject, h.a(localAppCompatActivity, SettingsModifyEmailAddrUI.this.getString(2131765371), true, new DialogInterface.OnCancelListener()
+          SettingsModifyEmailAddrUI.this.getString(b.i.app_tip);
+          SettingsModifyEmailAddrUI.a((SettingsModifyEmailAddrUI)localObject, com.tencent.mm.ui.base.h.a(localAppCompatActivity, SettingsModifyEmailAddrUI.this.getString(b.i.settings_confirm_email_tip), true, new DialogInterface.OnCancelListener()
           {
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
               AppMethodBeat.i(74224);
-              g.azz().a(paramAnonymousView);
+              com.tencent.mm.kernel.h.aGY().a(paramAnonymousView);
               AppMethodBeat.o(74224);
             }
           }));
@@ -159,7 +164,7 @@ public class SettingsModifyEmailAddrUI
           AppMethodBeat.o(74225);
         }
       });
-      addTextOptionMenu(0, getString(2131755792), new MenuItem.OnMenuItemClickListener()
+      addTextOptionMenu(0, getString(b.i.app_edit), new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
@@ -169,30 +174,30 @@ public class SettingsModifyEmailAddrUI
           return true;
         }
       });
-      hideVKB(this.DcJ);
+      hideVKB(this.Jik);
       AppMethodBeat.o(74234);
       return;
     }
-    eTi();
+    fGm();
     AppMethodBeat.o(74234);
   }
   
-  private void eTi()
+  private void fGm()
   {
     AppMethodBeat.i(74235);
-    this.DcM.setVisibility(8);
-    this.DcM.setText(getString(2131765660));
-    this.DcN.setText(getString(2131765468));
-    this.DcN.setTextColor(getResources().getColor(2131099890));
-    this.DcJ.setEnabled(true);
-    this.DcJ.setFilters(new InputFilter[] { new InputFilter()
+    this.Jin.setVisibility(8);
+    this.Jin.setText(getString(b.i.settings_unbind));
+    this.Jio.setText(getString(b.i.settings_modify_email_addr_warning));
+    this.Jio.setTextColor(getResources().getColor(b.c.account_info_email_warn_color));
+    this.Jik.setEnabled(true);
+    this.Jik.setFilters(new InputFilter[] { new InputFilter()
     {
       public final CharSequence filter(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, Spanned paramAnonymousSpanned, int paramAnonymousInt3, int paramAnonymousInt4)
       {
         return null;
       }
     } });
-    addTextOptionMenu(0, getString(2131755970), new MenuItem.OnMenuItemClickListener()
+    addTextOptionMenu(0, getString(b.i.app_save), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(final MenuItem paramAnonymousMenuItem)
       {
@@ -200,29 +205,29 @@ public class SettingsModifyEmailAddrUI
         SettingsModifyEmailAddrUI.a(SettingsModifyEmailAddrUI.this, SettingsModifyEmailAddrUI.c(SettingsModifyEmailAddrUI.this).getText().toString().trim());
         if (!Util.isValidEmail(SettingsModifyEmailAddrUI.d(SettingsModifyEmailAddrUI.this)))
         {
-          h.n(SettingsModifyEmailAddrUI.this.getContext(), 2131767024, 2131755998);
+          com.tencent.mm.ui.base.h.p(SettingsModifyEmailAddrUI.this.getContext(), b.i.verify_email_err_tip, b.i.app_tip);
           AppMethodBeat.o(74228);
           return true;
         }
-        paramAnonymousMenuItem = (Integer)g.aAh().azQ().get(7, null);
+        paramAnonymousMenuItem = (Integer)com.tencent.mm.kernel.h.aHG().aHp().b(7, null);
         boolean bool;
         if ((paramAnonymousMenuItem != null) && ((paramAnonymousMenuItem.intValue() & 0x2) != 0))
         {
           bool = true;
           if ((SettingsModifyEmailAddrUI.d(SettingsModifyEmailAddrUI.this).equals(SettingsModifyEmailAddrUI.e(SettingsModifyEmailAddrUI.this))) && (Boolean.valueOf(bool).booleanValue())) {
-            break label221;
+            break label225;
           }
-          paramAnonymousMenuItem = new com.tencent.mm.plugin.account.model.e(com.tencent.mm.plugin.account.model.e.kir, SettingsModifyEmailAddrUI.d(SettingsModifyEmailAddrUI.this));
-          g.azz().a(paramAnonymousMenuItem, 0);
+          paramAnonymousMenuItem = new e(e.mZR, SettingsModifyEmailAddrUI.d(SettingsModifyEmailAddrUI.this));
+          com.tencent.mm.kernel.h.aGY().a(paramAnonymousMenuItem, 0);
           SettingsModifyEmailAddrUI localSettingsModifyEmailAddrUI1 = SettingsModifyEmailAddrUI.this;
           SettingsModifyEmailAddrUI localSettingsModifyEmailAddrUI2 = SettingsModifyEmailAddrUI.this;
-          SettingsModifyEmailAddrUI.this.getString(2131755998);
-          SettingsModifyEmailAddrUI.a(localSettingsModifyEmailAddrUI1, h.a(localSettingsModifyEmailAddrUI2, SettingsModifyEmailAddrUI.this.getString(2131765356), true, new DialogInterface.OnCancelListener()
+          SettingsModifyEmailAddrUI.this.getString(b.i.app_tip);
+          SettingsModifyEmailAddrUI.a(localSettingsModifyEmailAddrUI1, com.tencent.mm.ui.base.h.a(localSettingsModifyEmailAddrUI2, SettingsModifyEmailAddrUI.this.getString(b.i.settings_binding), true, new DialogInterface.OnCancelListener()
           {
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
               AppMethodBeat.i(74227);
-              g.azz().a(paramAnonymousMenuItem);
+              com.tencent.mm.kernel.h.aGY().a(paramAnonymousMenuItem);
               AppMethodBeat.o(74227);
             }
           }));
@@ -234,7 +239,7 @@ public class SettingsModifyEmailAddrUI
           return true;
           bool = false;
           break;
-          label221:
+          label225:
           SettingsModifyEmailAddrUI.this.finish();
         }
       }
@@ -247,7 +252,7 @@ public class SettingsModifyEmailAddrUI
     AppMethodBeat.i(74236);
     hideVKB();
     finish();
-    if (this.DcQ)
+    if (this.Jir)
     {
       setResult(-1);
       AppMethodBeat.o(74236);
@@ -259,23 +264,23 @@ public class SettingsModifyEmailAddrUI
   
   public int getLayoutId()
   {
-    return 2131496259;
+    return b.g.settings_modify_email_addr;
   }
   
   public void initView()
   {
     AppMethodBeat.i(74233);
-    setMMTitle(2131765467);
-    this.DcJ = ((EditText)findViewById(2131307713));
-    this.DcM = ((TextView)findViewById(2131309568));
-    this.DcN = ((TextView)findViewById(2131304837));
-    this.DcK = ((String)g.aAh().azQ().get(5, null));
-    this.DcJ.setText(this.DcK);
-    Integer localInteger = (Integer)g.aAh().azQ().get(7, null);
+    setMMTitle(b.i.settings_modify_email_addr);
+    this.Jik = ((EditText)findViewById(b.f.settings_modify_email_new_email_et));
+    this.Jin = ((TextView)findViewById(b.f.unbind_btn));
+    this.Jio = ((TextView)findViewById(b.f.modify_email_warning_tv));
+    this.Jil = ((String)com.tencent.mm.kernel.h.aHG().aHp().b(5, null));
+    this.Jik.setText(this.Jil);
+    Integer localInteger = (Integer)com.tencent.mm.kernel.h.aHG().aHp().b(7, null);
     if ((localInteger != null) && ((localInteger.intValue() & 0x2) != 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.DcO = bool;
+      this.Jip = bool;
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -286,8 +291,8 @@ public class SettingsModifyEmailAddrUI
           return true;
         }
       });
-      this.DcP = true;
-      eTh();
+      this.Jiq = true;
+      fGl();
       AppMethodBeat.o(74233);
       return;
     }
@@ -307,11 +312,11 @@ public class SettingsModifyEmailAddrUI
       return;
       if (paramInt2 == -1)
       {
-        Log.i("MiroMsg.SettingsModifyEmailAddrUI", "summerunbind REQUEST_CODE_SET_PSW ok and start NetSceneCheckUnBind again oldEmail: " + this.DcK + " newEmail: " + this.DcL);
-        paramIntent = new aa(aa.kfk);
-        g.azz().a(paramIntent, 0);
-        getString(2131755998);
-        this.gtM = h.a(this, getString(2131765431), true, new DialogInterface.OnCancelListener()
+        Log.i("MiroMsg.SettingsModifyEmailAddrUI", "summerunbind REQUEST_CODE_SET_PSW ok and start NetSceneCheckUnBind again oldEmail: " + this.Jil + " newEmail: " + this.Jim);
+        paramIntent = new aa(aa.mWJ);
+        com.tencent.mm.kernel.h.aGY().a(paramIntent, 0);
+        getString(b.i.app_tip);
+        this.iXX = com.tencent.mm.ui.base.h.a(this, getString(b.i.settings_loading), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
         });
@@ -324,24 +329,24 @@ public class SettingsModifyEmailAddrUI
     AppMethodBeat.i(74230);
     super.onCreate(paramBundle);
     initView();
-    g.azz().a(138, this);
-    g.azz().a(254, this);
-    g.azz().a(256, this);
-    g.azz().a(108, this);
-    g.azz().a(255, this);
-    g.aAh().azQ().add(this);
+    com.tencent.mm.kernel.h.aGY().a(138, this);
+    com.tencent.mm.kernel.h.aGY().a(254, this);
+    com.tencent.mm.kernel.h.aGY().a(256, this);
+    com.tencent.mm.kernel.h.aGY().a(108, this);
+    com.tencent.mm.kernel.h.aGY().a(255, this);
+    com.tencent.mm.kernel.h.aHG().aHp().add(this);
     AppMethodBeat.o(74230);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(74231);
-    g.azz().b(138, this);
-    g.azz().b(254, this);
-    g.azz().b(256, this);
-    g.azz().b(108, this);
-    g.azz().b(255, this);
-    g.aAh().azQ().remove(this);
+    com.tencent.mm.kernel.h.aGY().b(138, this);
+    com.tencent.mm.kernel.h.aGY().b(254, this);
+    com.tencent.mm.kernel.h.aGY().b(256, this);
+    com.tencent.mm.kernel.h.aGY().b(108, this);
+    com.tencent.mm.kernel.h.aGY().b(255, this);
+    com.tencent.mm.kernel.h.aHG().aHp().remove(this);
     super.onDestroy();
     AppMethodBeat.o(74231);
   }
@@ -365,21 +370,21 @@ public class SettingsModifyEmailAddrUI
     AppMethodBeat.i(74232);
     int i = Util.nullAsInt(paramObject, 0);
     Log.d("MiroMsg.SettingsModifyEmailAddrUI", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramMStorageEx });
-    if ((paramMStorageEx != g.aAh().azQ()) || (i <= 0))
+    if ((paramMStorageEx != com.tencent.mm.kernel.h.aHG().aHp()) || (i <= 0))
     {
       Log.e("MiroMsg.SettingsModifyEmailAddrUI", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramMStorageEx });
       AppMethodBeat.o(74232);
       return;
     }
-    paramMStorageEx = (Integer)g.aAh().azQ().get(7, null);
-    this.DcK = ((String)g.aAh().azQ().get(5, null));
+    paramMStorageEx = (Integer)com.tencent.mm.kernel.h.aHG().aHp().b(7, null);
+    this.Jil = ((String)com.tencent.mm.kernel.h.aHG().aHp().b(5, null));
     if ((paramMStorageEx != null) && ((paramMStorageEx.intValue() & 0x2) != 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.DcO = bool;
-      this.DcQ = this.DcO;
-      if (this.DcP) {
-        eTh();
+      this.Jip = bool;
+      this.Jir = this.Jip;
+      if (this.Jiq) {
+        fGl();
       }
       AppMethodBeat.o(74232);
       return;
@@ -390,12 +395,12 @@ public class SettingsModifyEmailAddrUI
   {
     AppMethodBeat.i(74238);
     Log.i("MiroMsg.SettingsModifyEmailAddrUI", "onSceneEnd: sceneType = " + paramq.getType() + " errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.gtM != null)
+    if (this.iXX != null)
     {
-      this.gtM.dismiss();
-      this.gtM = null;
+      this.iXX.dismiss();
+      this.iXX = null;
     }
-    if (c.jRu.a(getContext(), paramInt1, paramInt2, paramString))
+    if (c.mIH.a(getContext(), paramInt1, paramInt2, paramString))
     {
       AppMethodBeat.o(74238);
       return;
@@ -404,36 +409,36 @@ public class SettingsModifyEmailAddrUI
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        this.kaJ = ((aa)paramq).bol().Lle;
-        this.kaI = ((aa)paramq).bok();
-        if (!Util.isNullOrNil(this.kaJ))
+        this.mSb = ((aa)paramq).byu().Smn;
+        this.mTk = ((aa)paramq).byt();
+        if (!Util.isNullOrNil(this.mSb))
         {
-          paramString = new com.tencent.mm.plugin.account.model.e(com.tencent.mm.plugin.account.model.e.kis, this.DcJ.getText().toString().trim());
-          g.azz().a(paramString, 0);
+          paramString = new e(e.mZS, this.Jik.getText().toString().trim());
+          com.tencent.mm.kernel.h.aGY().a(paramString, 0);
           AppMethodBeat.o(74238);
           return;
         }
         paramString = new u(2);
-        g.azz().a(paramString, 0);
+        com.tencent.mm.kernel.h.aGY().a(paramString, 0);
         AppMethodBeat.o(74238);
         return;
       }
-      if (this.gtM != null)
+      if (this.iXX != null)
       {
-        this.gtM.dismiss();
-        this.gtM = null;
+        this.iXX.dismiss();
+        this.iXX = null;
       }
       if (paramInt2 == -3)
       {
         Log.d("MiroMsg.SettingsModifyEmailAddrUI", "summerunbind MMFunc_QueryHasPasswd err and set psw");
-        h.a(getContext(), getString(2131765664), null, getString(2131765665), getString(2131765663), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        com.tencent.mm.ui.base.h.a(getContext(), getString(b.i.settings_unbind_tips_set_user_password), null, getString(b.i.settings_unbind_tips_unbind_btn), getString(b.i.settings_unbind_tips_cancel_btn), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(74229);
             paramAnonymousDialogInterface = new Intent(SettingsModifyEmailAddrUI.this, RegByMobileSetPwdUI.class);
             if (WeChatBrands.AppInfo.current().isMainland()) {
-              paramAnonymousDialogInterface.putExtra("kintent_hint", SettingsModifyEmailAddrUI.this.getString(2131765661));
+              paramAnonymousDialogInterface.putExtra("kintent_hint", SettingsModifyEmailAddrUI.this.getString(a.i.settings_unbind_set_password_tip));
             }
             for (;;)
             {
@@ -441,7 +446,7 @@ public class SettingsModifyEmailAddrUI
               SettingsModifyEmailAddrUI.this.startActivityForResult(paramAnonymousDialogInterface, 1);
               AppMethodBeat.o(74229);
               return;
-              paramAnonymousDialogInterface.putExtra("kintent_hint", SettingsModifyEmailAddrUI.this.getString(2131765662));
+              paramAnonymousDialogInterface.putExtra("kintent_hint", SettingsModifyEmailAddrUI.this.getString(a.i.settings_unbind_set_password_tip_oversea));
             }
           }
         }, new DialogInterface.OnClickListener()
@@ -453,7 +458,7 @@ public class SettingsModifyEmailAddrUI
       }
       if (paramInt2 == -82)
       {
-        h.a(this, 2131765304, 2131755998, new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.a(this, b.i.setting_unbind_qq_err_one_left, b.i.app_tip, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
         });
@@ -462,7 +467,7 @@ public class SettingsModifyEmailAddrUI
       }
       if (paramInt2 == -83)
       {
-        h.a(this, 2131765301, 2131755998, new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.a(this, b.i.setting_unbind_qq_err_has_unbind, b.i.app_tip, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
         });
@@ -471,7 +476,7 @@ public class SettingsModifyEmailAddrUI
       }
       if (paramInt2 == -84)
       {
-        h.a(this, 2131765302, 2131755998, new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.a(this, b.i.setting_unbind_qq_err_hasbinded, b.i.app_tip, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
         });
@@ -480,7 +485,7 @@ public class SettingsModifyEmailAddrUI
       }
       if (paramInt2 == -85)
       {
-        h.a(this, 2131765295, 2131755998, new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.a(this, b.i.setting_unbind_email_err_bindedbyother, b.i.app_tip, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
         });
@@ -489,26 +494,26 @@ public class SettingsModifyEmailAddrUI
     }
     else if (paramq.getType() == 256)
     {
-      c.jRu.WZ();
-      if (((com.tencent.mm.plugin.account.model.e)paramq).Vj() == com.tencent.mm.plugin.account.model.e.kir)
+      c.mIH.abC();
+      if (((e)paramq).ZB() == e.mZR)
       {
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          h.a(getContext(), 2131765370, 2131755998, new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.h.a(getContext(), b.i.settings_confirm_email_success_tip, b.i.app_tip, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
           });
           AppMethodBeat.o(74238);
           return;
         }
-        if (this.gtM != null)
+        if (this.iXX != null)
         {
-          this.gtM.dismiss();
-          this.gtM = null;
+          this.iXX.dismiss();
+          this.iXX = null;
         }
         if (paramInt2 == -82)
         {
-          h.a(this, 2131765304, 2131755998, new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.h.a(this, b.i.setting_unbind_qq_err_one_left, b.i.app_tip, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
           });
@@ -517,7 +522,7 @@ public class SettingsModifyEmailAddrUI
         }
         if (paramInt2 == -83)
         {
-          h.a(this, 2131765301, 2131755998, new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.h.a(this, b.i.setting_unbind_qq_err_has_unbind, b.i.app_tip, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
           });
@@ -526,7 +531,7 @@ public class SettingsModifyEmailAddrUI
         }
         if (paramInt2 == -84)
         {
-          h.a(this, 2131765302, 2131755998, new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.h.a(this, b.i.setting_unbind_qq_err_hasbinded, b.i.app_tip, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
           });
@@ -535,7 +540,7 @@ public class SettingsModifyEmailAddrUI
         }
         if (paramInt2 == -85)
         {
-          h.a(this, 2131765295, 2131755998, new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.h.a(this, b.i.setting_unbind_email_err_bindedbyother, b.i.app_tip, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
           });
@@ -544,41 +549,41 @@ public class SettingsModifyEmailAddrUI
         }
         if (paramInt2 == -86)
         {
-          h.a(this, 2131765306, 2131755998, new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.h.a(this, b.i.setting_unbind_qq_err_qmail, b.i.app_tip, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
           });
           AppMethodBeat.o(74238);
           return;
         }
-        h.d(getContext(), getString(2131765369, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), getString(2131755998), new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.d(getContext(), getString(b.i.settings_confirm_email_fail_tip, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), getString(b.i.app_tip), new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
         });
         AppMethodBeat.o(74238);
         return;
       }
-      if (((com.tencent.mm.plugin.account.model.e)paramq).Vj() == com.tencent.mm.plugin.account.model.e.kis)
+      if (((e)paramq).ZB() == e.mZS)
       {
-        if (this.gtM != null)
+        if (this.iXX != null)
         {
-          this.gtM.dismiss();
-          this.gtM = null;
+          this.iXX.dismiss();
+          this.iXX = null;
         }
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          paramInt1 = ((Integer)g.aAh().azQ().get(7, null)).intValue();
-          g.aAh().azQ().set(7, Integer.valueOf(paramInt1 | 0x2));
-          if (!Util.isNullOrNil(this.kaJ))
+          paramInt1 = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().b(7, null)).intValue();
+          com.tencent.mm.kernel.h.aHG().aHp().i(7, Integer.valueOf(paramInt1 | 0x2));
+          if (!Util.isNullOrNil(this.mSb))
           {
-            h.a(getContext(), this.kaJ, "", getString(2131755874), new DialogInterface.OnClickListener()
+            com.tencent.mm.ui.base.h.a(getContext(), this.mSb, "", getString(b.i.app_i_known), new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
             });
             AppMethodBeat.o(74238);
             return;
           }
-          h.a(getContext(), 2131765297, 2131755998, new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.h.a(getContext(), b.i.setting_unbind_email_succ, b.i.app_tip, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
           });
@@ -590,21 +595,21 @@ public class SettingsModifyEmailAddrUI
     {
       if (paramq.getType() == 108)
       {
-        if (this.gtM != null)
+        if (this.iXX != null)
         {
-          this.gtM.dismiss();
-          this.gtM = null;
+          this.iXX.dismiss();
+          this.iXX = null;
         }
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          h.a(getContext(), 2131765370, 2131755998, new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.h.a(getContext(), b.i.settings_confirm_email_success_tip, b.i.app_tip, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
           });
           AppMethodBeat.o(74238);
           return;
         }
-        h.d(getContext(), getString(2131765369, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), getString(2131755998), new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.d(getContext(), getString(b.i.settings_confirm_email_fail_tip, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), getString(b.i.app_tip), new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
         });
@@ -615,24 +620,24 @@ public class SettingsModifyEmailAddrUI
       {
         if (paramInt2 == 0)
         {
-          paramString = new com.tencent.mm.plugin.account.model.e(com.tencent.mm.plugin.account.model.e.kis, this.DcJ.getText().toString().trim());
-          g.azz().a(paramString, 0);
+          paramString = new e(e.mZS, this.Jik.getText().toString().trim());
+          com.tencent.mm.kernel.h.aGY().a(paramString, 0);
           AppMethodBeat.o(74238);
           return;
         }
-        if (this.gtM != null)
+        if (this.iXX != null)
         {
-          this.gtM.dismiss();
-          this.gtM = null;
+          this.iXX.dismiss();
+          this.iXX = null;
         }
-        h.a(getContext(), getString(2131765664), null, getString(2131765665), getString(2131765663), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        com.tencent.mm.ui.base.h.a(getContext(), getString(b.i.settings_unbind_tips_set_user_password), null, getString(b.i.settings_unbind_tips_unbind_btn), getString(b.i.settings_unbind_tips_cancel_btn), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(74221);
             paramAnonymousDialogInterface = new Intent(SettingsModifyEmailAddrUI.this, RegByMobileSetPwdUI.class);
             if (WeChatBrands.AppInfo.current().isMainland()) {
-              paramAnonymousDialogInterface.putExtra("kintent_hint", SettingsModifyEmailAddrUI.this.getString(2131765661));
+              paramAnonymousDialogInterface.putExtra("kintent_hint", SettingsModifyEmailAddrUI.this.getString(a.i.settings_unbind_set_password_tip));
             }
             for (;;)
             {
@@ -640,7 +645,7 @@ public class SettingsModifyEmailAddrUI
               SettingsModifyEmailAddrUI.this.startActivityForResult(paramAnonymousDialogInterface, 1);
               AppMethodBeat.o(74221);
               return;
-              paramAnonymousDialogInterface.putExtra("kintent_hint", SettingsModifyEmailAddrUI.this.getString(2131765662));
+              paramAnonymousDialogInterface.putExtra("kintent_hint", SettingsModifyEmailAddrUI.this.getString(a.i.settings_unbind_set_password_tip_oversea));
             }
           }
         }, new DialogInterface.OnClickListener()
@@ -660,7 +665,7 @@ public class SettingsModifyEmailAddrUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsModifyEmailAddrUI
  * JD-Core Version:    0.7.0.1
  */

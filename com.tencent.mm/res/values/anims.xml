@@ -10,12 +10,10 @@
     <item type="anim" name="ag">false</item>
     <item type="anim" name="ah">false</item>
     <item type="anim" name="aj">false</item>
-    <item type="anim" name="an">false</item>
     <item type="anim" name="at">false</item>
     <item type="anim" name="au">false</item>
     <item type="anim" name="b5">false</item>
     <item type="anim" name="b6">false</item>
-    <item type="anim" name="b8">false</item>
     <item type="anim" name="bk">false</item>
     <item type="anim" name="bl">false</item>
     <item type="anim" name="c7">false</item>
@@ -31,17 +29,16 @@
     <item type="anim" name="cu">false</item>
     <item type="anim" name="d2">false</item>
     <item type="anim" name="e2">false</item>
+    <item type="anim" name="e3">false</item>
     <item type="anim" name="e4">false</item>
     <item type="anim" name="ec">false</item>
     <item type="anim" name="ee">false</item>
     <item type="anim" name="ef">false</item>
     <item type="anim" name="eg">false</item>
-    <item type="anim" name="ek">false</item>
     <item type="anim" name="ey">false</item>
     <item type="anim" name="ez">false</item>
     <item type="anim" name="f5">false</item>
     <item type="anim" name="f6">false</item>
     <item type="anim" name="f7">false</item>
     <item type="anim" name="fg">false</item>
-    <item type="anim" name="fl">false</item>
 </resources>

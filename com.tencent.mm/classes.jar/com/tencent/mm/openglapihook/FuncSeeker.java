@@ -6,28 +6,28 @@ public class FuncSeeker
 {
   static
   {
-    AppMethodBeat.i(187608);
+    AppMethodBeat.i(204052);
     System.loadLibrary("openglapihook");
-    AppMethodBeat.o(187608);
+    AppMethodBeat.o(204052);
   }
   
   public static int getFuncIndex(String paramString)
   {
-    AppMethodBeat.i(187607);
+    AppMethodBeat.i(204050);
     int i;
     if (paramString.equals("glGetError"))
     {
       i = getGlGetErrorIndex();
-      AppMethodBeat.o(187607);
+      AppMethodBeat.o(204050);
       return i;
     }
     if ((paramString.startsWith("glGen")) || (paramString.startsWith("glDelete")))
     {
       i = getTargetFuncIndex(paramString);
-      AppMethodBeat.o(187607);
+      AppMethodBeat.o(204050);
       return i;
     }
-    AppMethodBeat.o(187607);
+    AppMethodBeat.o(204050);
     return -100;
   }
   

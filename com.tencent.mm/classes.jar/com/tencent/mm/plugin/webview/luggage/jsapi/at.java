@@ -5,29 +5,31 @@ import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.service.j;
+import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public class at
-  extends bs<com.tencent.mm.plugin.webview.luggage.g>
+  extends bs<g>
 {
   public final void a(Context paramContext, String paramString, br.a parama) {}
   
-  public final void b(b<com.tencent.mm.plugin.webview.luggage.g>.a paramb)
+  public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(78599);
     Log.i("MicroMsg.JsApiPrivateOpenWeappFunctionalPage", "invokeInOwn");
-    Object localObject = paramb.ctb.csi;
+    Object localObject = paramb.crh.cqn;
     String str = ((JSONObject)localObject).optString("uuid");
     localObject = ((JSONObject)localObject).optString("req_data");
-    ((j)com.tencent.mm.kernel.g.af(j.class)).cr(str, (String)localObject);
-    paramb.c("", null);
-    ((com.tencent.mm.plugin.webview.luggage.g)paramb.cta).ITD = true;
+    ((j)h.ae(j.class)).cw(str, (String)localObject);
+    paramb.a("", null);
+    ((g)paramb.crg).PPV = true;
     AppMethodBeat.o(78599);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 1;
   }

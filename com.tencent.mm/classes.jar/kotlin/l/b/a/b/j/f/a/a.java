@@ -5,33 +5,33 @@ import kotlin.l.b.a.b.m.ab;
 public abstract class a
   implements e
 {
-  private final e TKm;
-  protected final ab Tqr;
+  protected final ab aaTl;
+  private final e abmO;
   
   public a(ab paramab, e parame)
   {
-    this.Tqr = paramab;
+    this.aaTl = paramab;
     if (parame != null) {}
     for (;;)
     {
-      this.TKm = parame;
+      this.abmO = parame;
       return;
       parame = this;
     }
   }
   
-  public final ab hBy()
+  public final ab iFN()
   {
-    ab localab = this.Tqr;
+    ab localab = this.aaTl;
     if (localab == null) {
-      atM(1);
+      aDG(1);
     }
     return localab;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.j.f.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,13 +7,13 @@ import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.protocal.protobuf.bfx;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.setting.b.i;
+import com.tencent.mm.plugin.setting.b.k;
+import com.tencent.mm.protocal.protobuf.bmy;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
@@ -21,8 +21,6 @@ import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.base.preference.h;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -31,25 +29,25 @@ import java.util.Set;
 public class SettingsAddMeUI
   extends MMPreference
 {
-  private int Dbj;
-  private HashMap<Integer, Integer> kbt;
-  private long qAb;
-  private f screen;
+  private int JgK;
+  private HashMap<Integer, Integer> mSR;
+  private com.tencent.mm.ui.base.preference.f screen;
   private int status;
+  private long tZb;
   
   public SettingsAddMeUI()
   {
     AppMethodBeat.i(74099);
-    this.kbt = new HashMap();
+    this.mSR = new HashMap();
     AppMethodBeat.o(74099);
   }
   
-  private boolean UM(int paramInt)
+  private boolean abt(int paramInt)
   {
     return (this.status & paramInt) != 0;
   }
   
-  private void i(boolean paramBoolean, int paramInt1, int paramInt2)
+  private void m(boolean paramBoolean, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(74104);
     Log.d("MicroMsg.SettingsAddMeUI", "switch change : open = " + paramBoolean + " item value = " + paramInt1 + " functionId = " + paramInt2);
@@ -63,7 +61,7 @@ public class SettingsAddMeUI
     label101:
     for (paramInt1 = 1;; paramInt1 = 2)
     {
-      this.kbt.put(Integer.valueOf(paramInt2), Integer.valueOf(paramInt1));
+      this.mSR.put(Integer.valueOf(paramInt2), Integer.valueOf(paramInt1));
       AppMethodBeat.o(74104);
       return;
       this.status &= (paramInt1 ^ 0xFFFFFFFF);
@@ -71,13 +69,13 @@ public class SettingsAddMeUI
     }
   }
   
-  private void k(boolean paramBoolean, int paramInt1, int paramInt2)
+  private void o(boolean paramBoolean, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(74105);
     Log.d("MicroMsg.SettingsAddMeUI", "switch ext change : open = " + paramBoolean + " item value = " + paramInt1 + " functionId = " + paramInt2);
     if (paramBoolean)
     {
-      this.qAb |= paramInt1;
+      this.tZb |= paramInt1;
       if (!paramBoolean) {
         break label103;
       }
@@ -85,15 +83,15 @@ public class SettingsAddMeUI
     label103:
     for (paramInt1 = 1;; paramInt1 = 2)
     {
-      this.kbt.put(Integer.valueOf(paramInt2), Integer.valueOf(paramInt1));
+      this.mSR.put(Integer.valueOf(paramInt2), Integer.valueOf(paramInt1));
       AppMethodBeat.o(74105);
       return;
-      this.qAb &= (paramInt1 ^ 0xFFFFFFFF);
+      this.tZb &= (paramInt1 ^ 0xFFFFFFFF);
       break;
     }
   }
   
-  public h createAdapter(SharedPreferences paramSharedPreferences)
+  public com.tencent.mm.ui.base.preference.h createAdapter(SharedPreferences paramSharedPreferences)
   {
     AppMethodBeat.i(74100);
     paramSharedPreferences = new com.tencent.mm.ui.base.preference.a(this, getListView(), paramSharedPreferences);
@@ -103,13 +101,13 @@ public class SettingsAddMeUI
   
   public int getResourceId()
   {
-    return 2132017262;
+    return b.k.settings_add_me;
   }
   
   public void initView()
   {
     AppMethodBeat.i(74106);
-    setMMTitle(2131765339);
+    setMMTitle(b.i.settings_add_me_way);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -121,69 +119,69 @@ public class SettingsAddMeUI
         return true;
       }
     });
-    Log.d("MicroMsg.SettingsAddMeUI", "plug:" + this.Dbj + ",status:" + this.status + ",extstatus:" + this.qAb);
+    Log.d("MicroMsg.SettingsAddMeUI", "plug:" + this.JgK + ",status:" + this.status + ",extstatus:" + this.tZb);
     this.screen.removeAll();
-    this.screen.addPreferencesFromResource(getResourceId());
-    Object localObject1 = (Integer)g.aAh().azQ().get(9, null);
-    Object localObject2 = (CheckBoxPreference)this.screen.bmg("settings_find_me_by_QQ");
-    ((Preference)localObject2).OZw = false;
+    this.screen.auC(getResourceId());
+    Object localObject1 = (Integer)com.tencent.mm.kernel.h.aHG().aHp().b(9, null);
+    Object localObject2 = (CheckBoxPreference)this.screen.byG("settings_find_me_by_QQ");
+    ((Preference)localObject2).WsF = false;
     boolean bool;
     if ((!WeChatBrands.Business.Entries.MeSetPrivacyAddByQQ.banned()) && (localObject1 != null) && (((Integer)localObject1).intValue() != 0)) {
-      if ((!UM(8)) || (!UM(16)))
+      if ((!abt(8)) || (!abt(16)))
       {
         bool = true;
         ((CheckBoxPreference)localObject2).setChecked(bool);
-        label174:
-        localObject1 = (String)g.aAh().azQ().get(6, null);
-        localObject2 = (CheckBoxPreference)this.screen.bmg("settings_find_me_by_mobile");
-        ((Preference)localObject2).OZw = false;
+        label175:
+        localObject1 = (String)com.tencent.mm.kernel.h.aHG().aHp().b(6, null);
+        localObject2 = (CheckBoxPreference)this.screen.byG("settings_find_me_by_mobile");
+        ((Preference)localObject2).WsF = false;
         if ((localObject1 == null) || (((String)localObject1).length() <= 0)) {
-          break label502;
+          break label503;
         }
-        if (UM(512)) {
-          break label497;
+        if (abt(512)) {
+          break label498;
         }
         bool = true;
-        label233:
+        label234:
         ((CheckBoxPreference)localObject2).setChecked(bool);
-        label238:
-        localObject1 = (CheckBoxPreference)this.screen.bmg("settings_find_me_by_weixin");
-        ((Preference)localObject1).OZw = false;
-        if ((this.Dbj & 0x200) == 0) {
-          break label516;
+        label239:
+        localObject1 = (CheckBoxPreference)this.screen.byG("settings_find_me_by_weixin");
+        ((Preference)localObject1).WsF = false;
+        if ((this.JgK & 0x200) == 0) {
+          break label517;
         }
         ((CheckBoxPreference)localObject1).setChecked(false);
-        label274:
-        localObject1 = (CheckBoxPreference)this.screen.bmg("settings_find_me_by_google");
-        if (UM(524288)) {
-          break label524;
+        label275:
+        localObject1 = (CheckBoxPreference)this.screen.byG("settings_find_me_by_google");
+        if (abt(524288)) {
+          break label525;
         }
         bool = true;
-        label300:
+        label301:
         ((CheckBoxPreference)localObject1).setChecked(bool);
-        ((Preference)localObject1).OZw = false;
-        localObject2 = (String)g.aAh().azQ().get(208903, null);
+        ((Preference)localObject1).WsF = false;
+        localObject2 = (String)com.tencent.mm.kernel.h.aHG().aHp().b(208903, null);
         if ((!Util.isOverseasUser(this)) || (TextUtils.isEmpty((CharSequence)localObject2))) {
-          this.screen.e((Preference)localObject1);
+          this.screen.d((Preference)localObject1);
         }
-        localObject1 = (CheckBoxPreference)this.screen.bmg("settings_add_me_by_chatroom");
-        ((Preference)localObject1).OZw = false;
-        if ((this.qAb & 1L) == 0L) {
-          break label529;
-        }
-        ((CheckBoxPreference)localObject1).setChecked(false);
-        label387:
-        localObject1 = (CheckBoxPreference)this.screen.bmg("settings_add_me_by_qrcode");
-        ((Preference)localObject1).OZw = false;
-        if ((this.qAb & 0x2) == 0L) {
-          break label537;
+        localObject1 = (CheckBoxPreference)this.screen.byG("settings_add_me_by_chatroom");
+        ((Preference)localObject1).WsF = false;
+        if ((this.tZb & 1L) == 0L) {
+          break label530;
         }
         ((CheckBoxPreference)localObject1).setChecked(false);
-        label425:
-        localObject1 = (CheckBoxPreference)this.screen.bmg("settings_add_me_by_namecard");
-        ((Preference)localObject1).OZw = false;
-        if ((this.qAb & 0x4) == 0L) {
-          break label545;
+        label388:
+        localObject1 = (CheckBoxPreference)this.screen.byG("settings_add_me_by_qrcode");
+        ((Preference)localObject1).WsF = false;
+        if ((this.tZb & 0x2) == 0L) {
+          break label538;
+        }
+        ((CheckBoxPreference)localObject1).setChecked(false);
+        label426:
+        localObject1 = (CheckBoxPreference)this.screen.byG("settings_add_me_by_namecard");
+        ((Preference)localObject1).WsF = false;
+        if ((this.tZb & 0x4) == 0L) {
+          break label546;
         }
         ((CheckBoxPreference)localObject1).setChecked(false);
       }
@@ -195,27 +193,27 @@ public class SettingsAddMeUI
       return;
       bool = false;
       break;
-      this.screen.e((Preference)localObject2);
-      break label174;
-      label497:
+      this.screen.d((Preference)localObject2);
+      break label175;
+      label498:
       bool = false;
-      break label233;
-      label502:
-      this.screen.e((Preference)localObject2);
-      break label238;
-      label516:
+      break label234;
+      label503:
+      this.screen.d((Preference)localObject2);
+      break label239;
+      label517:
       ((CheckBoxPreference)localObject1).setChecked(true);
-      break label274;
-      label524:
+      break label275;
+      label525:
       bool = false;
-      break label300;
-      label529:
+      break label301;
+      label530:
       ((CheckBoxPreference)localObject1).setChecked(true);
-      break label387;
-      label537:
+      break label388;
+      label538:
       ((CheckBoxPreference)localObject1).setChecked(true);
-      break label425;
-      label545:
+      break label426;
+      label546:
       ((CheckBoxPreference)localObject1).setChecked(true);
     }
   }
@@ -225,9 +223,9 @@ public class SettingsAddMeUI
     AppMethodBeat.i(74101);
     super.onCreate(paramBundle);
     this.screen = getPreferenceScreen();
-    this.Dbj = z.aUe();
-    this.status = z.aUc();
-    this.qAb = z.aUd();
+    this.JgK = z.bdf();
+    this.status = z.bdd();
+    this.tZb = z.bde();
     initView();
     AppMethodBeat.o(74101);
   }
@@ -236,27 +234,27 @@ public class SettingsAddMeUI
   {
     AppMethodBeat.i(74102);
     super.onPause();
-    Log.d("MicroMsg.SettingsAddMeUI", "plug:" + this.Dbj + ",status:" + this.status + ",extstatus:" + this.qAb);
-    g.aAh().azQ().set(7, Integer.valueOf(this.status));
-    g.aAh().azQ().set(40, Integer.valueOf(this.Dbj));
-    g.aAh().azQ().set(147457, Long.valueOf(this.qAb));
-    Iterator localIterator = this.kbt.entrySet().iterator();
+    Log.d("MicroMsg.SettingsAddMeUI", "plug:" + this.JgK + ",status:" + this.status + ",extstatus:" + this.tZb);
+    com.tencent.mm.kernel.h.aHG().aHp().i(7, Integer.valueOf(this.status));
+    com.tencent.mm.kernel.h.aHG().aHp().i(40, Integer.valueOf(this.JgK));
+    com.tencent.mm.kernel.h.aHG().aHp().i(147457, Long.valueOf(this.tZb));
+    Iterator localIterator = this.mSR.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
       int i = ((Integer)((Map.Entry)localObject).getKey()).intValue();
       int j = ((Integer)((Map.Entry)localObject).getValue()).intValue();
-      localObject = new bfx();
-      ((bfx)localObject).LPB = i;
-      ((bfx)localObject).BsD = j;
-      ((l)g.af(l.class)).aSM().d(new k.a(23, (com.tencent.mm.bw.a)localObject));
+      localObject = new bmy();
+      ((bmy)localObject).SXP = i;
+      ((bmy)localObject).HmX = j;
+      ((n)com.tencent.mm.kernel.h.ae(n.class)).bbK().d(new k.a(23, (com.tencent.mm.cd.a)localObject));
       Log.d("MicroMsg.SettingsAddMeUI", "switch  " + i + " " + j);
     }
-    this.kbt.clear();
+    this.mSR.clear();
     AppMethodBeat.o(74102);
   }
   
-  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
     boolean bool2 = false;
     boolean bool3 = false;
@@ -269,24 +267,24 @@ public class SettingsAddMeUI
     Log.i("MicroMsg.SettingsAddMeUI", paramPreference + " item has been clicked!");
     if (paramPreference.equals("settings_find_me_by_QQ"))
     {
-      if (!((CheckBoxPreference)paramf.bmg("settings_find_me_by_QQ")).isChecked()) {}
+      if (!((CheckBoxPreference)paramf.byG("settings_find_me_by_QQ")).isChecked()) {}
       for (bool1 = true;; bool1 = false)
       {
-        i(bool1, 8, 2);
-        i(bool1, 16, 3);
+        m(bool1, 8, 2);
+        m(bool1, 16, 3);
         AppMethodBeat.o(74103);
         return true;
       }
     }
     if (paramPreference.equals("settings_find_me_by_weixin"))
     {
-      if (!((CheckBoxPreference)paramf.bmg("settings_find_me_by_weixin")).isChecked()) {
+      if (!((CheckBoxPreference)paramf.byG("settings_find_me_by_weixin")).isChecked()) {
         bool1 = true;
       }
       Log.d("MicroMsg.SettingsAddMeUI", "switch plug change : open = " + bool1 + " item value = 512 functionId = 25");
       if (bool1)
       {
-        this.Dbj |= 0x200;
+        this.JgK |= 0x200;
         if (!bool1) {
           break label237;
         }
@@ -294,60 +292,60 @@ public class SettingsAddMeUI
       label237:
       for (int i = 1;; i = 2)
       {
-        this.kbt.put(Integer.valueOf(25), Integer.valueOf(i));
+        this.mSR.put(Integer.valueOf(25), Integer.valueOf(i));
         AppMethodBeat.o(74103);
         return true;
-        this.Dbj &= 0xFFFFFDFF;
+        this.JgK &= 0xFFFFFDFF;
         break;
       }
     }
     if (paramPreference.equals("settings_find_me_by_mobile"))
     {
       bool1 = bool2;
-      if (!((CheckBoxPreference)paramf.bmg("settings_find_me_by_mobile")).isChecked()) {
+      if (!((CheckBoxPreference)paramf.byG("settings_find_me_by_mobile")).isChecked()) {
         bool1 = true;
       }
-      i(bool1, 512, 8);
+      m(bool1, 512, 8);
       AppMethodBeat.o(74103);
       return true;
     }
     if (paramPreference.equals("settings_find_me_by_google"))
     {
       bool1 = bool3;
-      if (!((CheckBoxPreference)paramf.bmg("settings_find_me_by_google")).isChecked()) {
+      if (!((CheckBoxPreference)paramf.byG("settings_find_me_by_google")).isChecked()) {
         bool1 = true;
       }
-      i(bool1, 524288, 30);
+      m(bool1, 524288, 30);
       AppMethodBeat.o(74103);
       return true;
     }
     if (paramPreference.equals("settings_add_me_by_chatroom"))
     {
       bool1 = bool4;
-      if (!((CheckBoxPreference)paramf.bmg("settings_add_me_by_chatroom")).isChecked()) {
+      if (!((CheckBoxPreference)paramf.byG("settings_add_me_by_chatroom")).isChecked()) {
         bool1 = true;
       }
-      k(bool1, 1, 38);
+      o(bool1, 1, 38);
       AppMethodBeat.o(74103);
       return true;
     }
     if (paramPreference.equals("settings_add_me_by_qrcode"))
     {
       bool1 = bool5;
-      if (!((CheckBoxPreference)paramf.bmg("settings_add_me_by_qrcode")).isChecked()) {
+      if (!((CheckBoxPreference)paramf.byG("settings_add_me_by_qrcode")).isChecked()) {
         bool1 = true;
       }
-      k(bool1, 2, 39);
+      o(bool1, 2, 39);
       AppMethodBeat.o(74103);
       return true;
     }
     if (paramPreference.equals("settings_add_me_by_namecard"))
     {
       bool1 = bool6;
-      if (!((CheckBoxPreference)paramf.bmg("settings_add_me_by_namecard")).isChecked()) {
+      if (!((CheckBoxPreference)paramf.byG("settings_add_me_by_namecard")).isChecked()) {
         bool1 = true;
       }
-      k(bool1, 4, 40);
+      o(bool1, 4, 40);
       AppMethodBeat.o(74103);
       return true;
     }
@@ -363,7 +361,7 @@ public class SettingsAddMeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsAddMeUI
  * JD-Core Version:    0.7.0.1
  */

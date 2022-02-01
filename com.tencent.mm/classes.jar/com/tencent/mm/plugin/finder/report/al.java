@@ -1,113 +1,237 @@
 package com.tencent.mm.plugin.finder.report;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.conv.c;
-import com.tencent.mm.plugin.finder.conv.g;
+import com.tencent.mm.f.b.a.bx;
+import com.tencent.mm.model.cm;
+import com.tencent.mm.plugin.report.a;
+import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import kotlin.a.ak;
 import kotlin.g.b.p;
-import kotlin.k.j;
 import kotlin.l;
-import kotlin.t;
+import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/report/SystemMsgScrollListener;", "Lcom/tencent/mm/plugin/finder/report/ScrollStatisticListener;", "", "Lcom/tencent/mm/plugin/finder/conv/FinderConversation;", "()V", "adapter", "Lcom/tencent/mm/plugin/finder/conv/FinderConversationFirstFixAdapter;", "attachRecyclerView", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "isStatistic", "", "detachRecyclerView", "getData", "index", "", "getId", "isSystemMsgExpose", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/RecordFinderChatList;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "chatExposeMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "chatListRecord", "Lcom/tencent/mm/plugin/finder/report/FinderChatReporter$ChatListRecord;", "getChatListRecord", "()Lcom/tencent/mm/plugin/finder/report/FinderChatReporter$ChatListRecord;", "clickChatExposeMap", "clickChatExposeSet", "", "currentChatExposeSet", "delClickCountL", "", "dotClickCountL", "isOnProcess", "", "()Z", "setOnProcess", "(Z)V", "copySet", "", "src", "", "dst", "getExposePv", "type", "getExposeUV", "getMapContainer", "getSessionId", "getSetContainer", "incChatExpose", "key", "incDelClickCount", "incDotClickCount", "onEnterChatList", "accountType", "isGreetSession", "onExitChatList", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "recordChatClickExpose", "curRecordSet", "recordChatExpose", "exposeSet", "report20688", "resetChatListRecord", "structLog", "struct", "Lcom/tencent/mm/plugin/report/AbsReportStruct;", "plugin-finder_release"})
 public final class al
-  extends ak<String, c>
 {
-  private g viX;
+  private final String TAG;
+  public boolean zZF;
+  public final d.a zZG;
+  private final Set<String> zZH;
+  private final HashMap<String, Integer> zZI;
+  private final Set<String> zZJ;
+  private final HashMap<String, Integer> zZK;
+  public long zZL;
+  private long zZM;
   
   public al()
   {
-    AppMethodBeat.i(250890);
-    a locala = new a();
-    locala.vcN = ((ab)new a());
-    this.viV = locala;
-    AppMethodBeat.o(250890);
+    AppMethodBeat.i(266582);
+    this.TAG = "RecordFinderChatList";
+    this.zZG = new d.a();
+    this.zZH = ((Set)new HashSet());
+    this.zZI = new HashMap();
+    this.zZJ = ((Set)new HashSet());
+    this.zZK = new HashMap();
+    AppMethodBeat.o(266582);
   }
   
-  private c KH(int paramInt)
+  private final HashMap<String, Integer> PP(int paramInt)
   {
-    AppMethodBeat.i(250889);
-    Object localObject = this.viX;
-    if (localObject != null)
-    {
-      localObject = ((g)localObject).Ip(paramInt);
-      AppMethodBeat.o(250889);
-      return localObject;
+    if (paramInt == 1) {
+      return this.zZI;
     }
-    AppMethodBeat.o(250889);
-    return null;
+    return this.zZK;
   }
   
-  public final void b(RecyclerView paramRecyclerView, boolean paramBoolean)
+  private final long PQ(int paramInt)
   {
-    AppMethodBeat.i(250885);
-    p.h(paramRecyclerView, "recyclerView");
-    super.b(paramRecyclerView, paramBoolean);
-    if ((paramRecyclerView.getAdapter() instanceof g))
+    AppMethodBeat.i(266575);
+    long l = 0L;
+    Object localObject = PP(paramInt).values();
+    p.j(localObject, "getMapContainer(type).values");
+    localObject = ((Iterable)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      paramRecyclerView = paramRecyclerView.getAdapter();
-      if (paramRecyclerView == null)
-      {
-        paramRecyclerView = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.conv.FinderConversationFirstFixAdapter");
-        AppMethodBeat.o(250885);
-        throw paramRecyclerView;
-      }
-      this.viX = ((g)paramRecyclerView);
+      Integer localInteger = (Integer)((Iterator)localObject).next();
+      p.j(localInteger, "it");
+      l = localInteger.intValue() + l;
     }
-    AppMethodBeat.o(250885);
+    AppMethodBeat.o(266575);
+    return l;
   }
   
-  public final void doY()
+  private final long PR(int paramInt)
   {
-    AppMethodBeat.i(250887);
-    super.doY();
-    this.viX = null;
-    AppMethodBeat.o(250887);
+    AppMethodBeat.i(266577);
+    long l = PP(paramInt).size();
+    AppMethodBeat.o(266577);
+    return l;
   }
   
-  public final boolean doZ()
+  private static void a(a parama)
   {
-    AppMethodBeat.i(250886);
-    Object localObject = this.hak;
-    if (localObject != null)
+    AppMethodBeat.i(266580);
+    Object localObject = d.zUg;
+    localObject = d.getTAG();
+    StringBuilder localStringBuilder = new StringBuilder("report").append(parama.getId()).append(' ');
+    parama = parama.agI();
+    p.j(parama, "struct.toShowString()");
+    Log.i((String)localObject, n.l(parama, "\r\n", " ", false));
+    AppMethodBeat.o(266580);
+  }
+  
+  private final void b(Set<String> paramSet1, Set<String> paramSet2)
+  {
+    AppMethodBeat.i(266572);
+    if (!this.zZF)
     {
-      localObject = ((RecyclerView)localObject).getLayoutManager();
-      if ((localObject instanceof LinearLayoutManager))
-      {
-        this.tIy = j.mZ(0, ((LinearLayoutManager)localObject).ks());
-        this.tIA = j.mZ(0, ((LinearLayoutManager)localObject).ku());
-        int i = this.tIy;
-        int j = this.tIA;
-        if (i <= j) {
-          for (;;)
-          {
-            localObject = KH(i);
-            if ((localObject != null) && (p.j(((c)localObject).field_sessionId, "finder_system_message")))
-            {
-              AppMethodBeat.o(250886);
-              return true;
-            }
-            if (i == j) {
-              break;
-            }
-            i += 1;
-          }
-        }
+      AppMethodBeat.o(266572);
+      return;
+    }
+    paramSet1 = ak.a(paramSet2, (Iterable)paramSet1);
+    Log.i(this.TAG, "latestExposeRecords" + paramSet1 + "，size:" + paramSet1.size());
+    if (!((Collection)paramSet1).isEmpty()) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      paramSet1 = ((Iterable)paramSet1).iterator();
+      while (paramSet1.hasNext()) {
+        dW((String)paramSet1.next(), 1);
       }
     }
-    AppMethodBeat.o(250886);
-    return false;
+    c(paramSet2, this.zZH);
+    Log.i(this.TAG, "pvCount:" + PQ(1) + ": uvCount:" + PR(1));
+    AppMethodBeat.o(266572);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/report/SystemMsgScrollListener$1$condition$1", "Lcom/tencent/mm/plugin/finder/report/IStatisticCondition;", "", "filter", "", "id", "plugin-finder_release"})
-  public static final class a
-    implements ab<String>
-  {}
+  private static void c(Set<String> paramSet1, Set<String> paramSet2)
+  {
+    AppMethodBeat.i(266573);
+    paramSet2.clear();
+    paramSet1 = ((Iterable)paramSet1).iterator();
+    while (paramSet1.hasNext()) {
+      paramSet2.add((String)paramSet1.next());
+    }
+    AppMethodBeat.o(266573);
+  }
+  
+  private final void dQA()
+  {
+    AppMethodBeat.i(266581);
+    d.a locala = this.zZG;
+    locala.zUh = 0L;
+    locala.aDU("");
+    locala.wzm = 0L;
+    locala.zUj = 0L;
+    this.zZF = false;
+    this.zZL = 0L;
+    this.zZM = 0L;
+    this.zZH.clear();
+    this.zZJ.clear();
+    this.zZI.clear();
+    this.zZK.clear();
+    AppMethodBeat.o(266581);
+  }
+  
+  private final void dW(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(266578);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(266578);
+      return;
+    }
+    HashMap localHashMap = PP(paramInt);
+    if (((Map)localHashMap).containsKey(paramString))
+    {
+      Integer localInteger = (Integer)localHashMap.get(paramString);
+      if (localInteger != null)
+      {
+        localHashMap.put(paramString, Integer.valueOf(localInteger.intValue() + 1));
+        AppMethodBeat.o(266578);
+        return;
+      }
+      AppMethodBeat.o(266578);
+      return;
+    }
+    localHashMap.put(paramString, Integer.valueOf(1));
+    AppMethodBeat.o(266578);
+  }
+  
+  private final void i(bid parambid)
+  {
+    AppMethodBeat.i(266579);
+    bx localbx = new bx();
+    localbx.em(this.zZG.zUh);
+    localbx.en(this.zZG.zUj);
+    localbx.lq(this.zZG.zUi);
+    localbx.ep(PR(1));
+    localbx.eq(PQ(1));
+    localbx.er(PQ(2));
+    localbx.es(PR(2));
+    localbx.et(this.zZL);
+    localbx.ev(this.zZM);
+    localbx.eu(System.currentTimeMillis() - this.zZG.wzm);
+    if (parambid != null) {
+      localbx.eo(parambid.fGo);
+    }
+    localbx.bpa();
+    a((a)localbx);
+    AppMethodBeat.o(266579);
+  }
+  
+  public final void W(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(266567);
+    dQA();
+    d.a locala = this.zZG;
+    locala.zUh = paramLong1;
+    locala.zUj = paramLong2;
+    locala.wzm = cm.bfE();
+    locala.aDU(String.valueOf(locala.wzm));
+    this.zZF = true;
+    AppMethodBeat.o(266567);
+  }
+  
+  public final void aDT(String paramString)
+  {
+    AppMethodBeat.i(266571);
+    p.k(paramString, "key");
+    if (!this.zZF)
+    {
+      AppMethodBeat.o(266571);
+      return;
+    }
+    dW(paramString, 2);
+    AppMethodBeat.o(266571);
+  }
+  
+  public final void h(bid parambid)
+  {
+    AppMethodBeat.i(266569);
+    i(parambid);
+    this.zZF = false;
+    AppMethodBeat.o(266569);
+  }
+  
+  public final void n(Set<String> paramSet)
+  {
+    AppMethodBeat.i(266570);
+    p.k(paramSet, "curRecordSet");
+    b(this.zZH, paramSet);
+    AppMethodBeat.o(266570);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.al
  * JD-Core Version:    0.7.0.1
  */

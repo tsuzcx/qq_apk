@@ -1,16 +1,18 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ckq;
-import com.tencent.mm.protocal.protobuf.ckr;
+import com.tencent.mm.protocal.protobuf.ctj;
+import com.tencent.mm.protocal.protobuf.ctk;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
@@ -26,23 +28,23 @@ public final class ae
   {
     AppMethodBeat.i(151818);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new ckq();
-    ((d.a)localObject).iLO = new ckr();
+    ((d.a)localObject).lBU = new ctj();
+    ((d.a)localObject).lBV = new ctk();
     ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/getserviceapplist";
     ((d.a)localObject).funcId = 1060;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (ckq)this.rr.iLK.iLR;
-    ((ckq)localObject).offset = paramInt;
-    ((ckq)localObject).limit = 20;
-    ((ckq)localObject).lang = paramString;
-    com.tencent.mm.kernel.g.aAi();
-    ((ckq)localObject).Mqa = String.valueOf(((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.NXG, Integer.valueOf(0))).intValue());
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (ctj)d.b.b(this.rr.lBR);
+    ((ctj)localObject).offset = paramInt;
+    ((ctj)localObject).limit = 20;
+    ((ctj)localObject).lang = paramString;
+    h.aHH();
+    ((ctj)localObject).TBd = String.valueOf(((Integer)h.aHG().aHp().get(ar.a.VlG, Integer.valueOf(0))).intValue());
     AppMethodBeat.o(151818);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(151820);
     this.callback = parami;

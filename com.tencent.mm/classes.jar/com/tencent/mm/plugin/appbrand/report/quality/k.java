@@ -1,10 +1,9 @@
 package com.tencent.mm.plugin.appbrand.report.quality;
 
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.h.c;
-import com.tencent.mm.plugin.appbrand.h.d;
+import com.tencent.mm.plugin.appbrand.k.c;
+import com.tencent.mm.plugin.appbrand.k.d;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -15,190 +14,190 @@ import java.util.Map;
 
 public final class k
 {
-  private static Map<String, k> hno;
-  private static Boolean nKX;
-  private final int kCM;
-  private final String luj;
+  private static Map<String, k> jZc;
+  private static Boolean qNj;
   private final String mAppId;
   private final String mAppVersion;
-  private final String mRa;
-  private final List<a> nKV;
-  private final Map<Integer, Integer> nKW;
+  private final int nvW;
+  private final String opi;
+  private final String pRV;
+  private final List<a> qNh;
+  private final Map<Integer, Integer> qNi;
   
   static
   {
-    AppMethodBeat.i(227404);
-    hno = new HashMap();
-    AppMethodBeat.o(227404);
+    AppMethodBeat.i(265594);
+    jZc = new HashMap();
+    AppMethodBeat.o(265594);
   }
   
   private k(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
   {
-    AppMethodBeat.i(227397);
-    this.luj = paramString1;
+    AppMethodBeat.i(265587);
+    this.opi = paramString1;
     this.mAppId = paramString2;
-    this.mRa = paramString3;
+    this.pRV = paramString3;
     this.mAppVersion = paramString4;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      this.kCM = i;
-      this.nKW = new HashMap();
-      this.nKV = new ArrayList();
-      com.tencent.f.h.RTc.b(new Runnable()
+      this.nvW = i;
+      this.qNi = new HashMap();
+      this.qNh = new ArrayList();
+      com.tencent.e.h.ZvG.d(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(227393);
+          AppMethodBeat.i(282504);
           k.a(k.this);
-          AppMethodBeat.o(227393);
+          AppMethodBeat.o(282504);
         }
       }, "QualityKVReporter_19941");
-      AppMethodBeat.o(227397);
+      AppMethodBeat.o(265587);
       return;
     }
+  }
+  
+  public static void CK(int paramInt)
+  {
+    AppMethodBeat.i(265586);
+    Log.i("MicroMsg.QualitySampleHelper", "updateSampleInterval :%d", new Object[] { Integer.valueOf(paramInt) });
+    l.cip().qNo = paramInt;
+    AppMethodBeat.o(265586);
+  }
+  
+  private void CL(int paramInt)
+  {
+    AppMethodBeat.i(265589);
+    a locala = new a((byte)0);
+    locala.qNl = paramInt;
+    locala.qNm = l.cip().CN(paramInt);
+    this.qNh.add(locala);
+    AppMethodBeat.o(265589);
+  }
+  
+  private int CM(int paramInt)
+  {
+    AppMethodBeat.i(265590);
+    Integer localInteger = (Integer)this.qNi.get(Integer.valueOf(paramInt));
+    if (localInteger == null)
+    {
+      AppMethodBeat.o(265590);
+      return 0;
+    }
+    paramInt = localInteger.intValue();
+    AppMethodBeat.o(265590);
+    return paramInt;
   }
   
   public static void b(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
   {
-    AppMethodBeat.i(227394);
-    if (!bVc())
+    AppMethodBeat.i(265583);
+    if (!cin())
     {
-      AppMethodBeat.o(227394);
+      AppMethodBeat.o(265583);
       return;
     }
-    if (!l.bVe().mStarted)
+    if (!l.cip().mStarted)
     {
-      l locall = l.bVe();
+      l locall = l.cip();
       if (!locall.mStarted)
       {
         locall.mStarted = true;
-        locall.nLc = 60000;
-        locall.nLd = new l.b(locall, (byte)0);
-        com.tencent.f.h.RTc.b(locall.nLd, l.nLb);
+        locall.qNo = 60000;
+        locall.qNp = new l.b(locall, (byte)0);
+        com.tencent.e.h.ZvG.d(locall.qNp, l.qNn);
         Log.i("MicroMsg.QualitySampleHelper", "startSample interval:%d", new Object[] { Integer.valueOf(60000) });
       }
     }
-    if (!hno.containsKey(paramString2))
+    if (!jZc.containsKey(paramString2))
     {
-      hno.put(paramString2, new k(paramString1, paramString2, paramString3, paramString4, paramBoolean));
-      com.tencent.mm.plugin.appbrand.h.a(paramString2, new h.c()
+      jZc.put(paramString2, new k(paramString1, paramString2, paramString3, paramString4, paramBoolean));
+      com.tencent.mm.plugin.appbrand.k.a(paramString2, new k.c()
       {
-        public final void a(h.d paramAnonymousd)
+        public final void a(k.d paramAnonymousd)
         {
-          AppMethodBeat.i(227389);
-          k.cj(this.val$appId, 2);
-          AppMethodBeat.o(227389);
+          AppMethodBeat.i(281450);
+          k.cI(this.val$appId, 2);
+          AppMethodBeat.o(281450);
         }
         
         public final void onDestroy()
         {
-          AppMethodBeat.i(227391);
-          k.cj(this.val$appId, 5);
-          k.hno.remove(this.val$appId);
-          com.tencent.mm.plugin.appbrand.h.b(this.val$appId, this);
-          AppMethodBeat.o(227391);
+          AppMethodBeat.i(281453);
+          k.cI(this.val$appId, 5);
+          k.jZc.remove(this.val$appId);
+          com.tencent.mm.plugin.appbrand.k.b(this.val$appId, this);
+          AppMethodBeat.o(281453);
         }
         
         public final void onResume()
         {
-          AppMethodBeat.i(227390);
-          k.cj(this.val$appId, 3);
-          AppMethodBeat.o(227390);
+          AppMethodBeat.i(281452);
+          k.cI(this.val$appId, 3);
+          AppMethodBeat.o(281452);
         }
       });
     }
-    AppMethodBeat.o(227394);
+    AppMethodBeat.o(265583);
   }
   
-  private static boolean bVc()
+  public static void cI(String paramString, final int paramInt)
   {
-    AppMethodBeat.i(227398);
-    if (nKX != null)
+    AppMethodBeat.i(265585);
+    if (!cin())
     {
-      bool = nKX.booleanValue();
-      AppMethodBeat.o(227398);
-      return bool;
-    }
-    int i = ((b)g.af(b.class)).a(b.a.smb, 0);
-    Log.i("MicroMsg.QualitySampleHelper", "shouldReport:%d", new Object[] { Integer.valueOf(i) });
-    if (i == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Boolean localBoolean = Boolean.valueOf(bool);
-      nKX = localBoolean;
-      bool = localBoolean.booleanValue();
-      AppMethodBeat.o(227398);
-      return bool;
-    }
-  }
-  
-  public static void cj(String paramString, final int paramInt)
-  {
-    AppMethodBeat.i(227395);
-    if (!bVc())
-    {
-      AppMethodBeat.o(227395);
+      AppMethodBeat.o(265585);
       return;
     }
-    com.tencent.f.h.RTc.b(new Runnable()
+    com.tencent.e.h.ZvG.d(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(227392);
-        k localk = (k)k.hno.get(this.val$appId);
+        AppMethodBeat.i(276981);
+        k localk = (k)k.jZc.get(this.val$appId);
         if (localk != null)
         {
           k.a(localk, paramInt);
           k.b(localk, paramInt);
         }
-        AppMethodBeat.o(227392);
+        AppMethodBeat.o(276981);
       }
     }, "QualityKVReporter_19941");
-    AppMethodBeat.o(227395);
+    AppMethodBeat.o(265585);
   }
   
-  public static void zf(int paramInt)
+  private static boolean cin()
   {
-    AppMethodBeat.i(227396);
-    Log.i("MicroMsg.QualitySampleHelper", "updateSampleInterval :%d", new Object[] { Integer.valueOf(paramInt) });
-    l.bVe().nLc = paramInt;
-    AppMethodBeat.o(227396);
-  }
-  
-  private void zg(int paramInt)
-  {
-    AppMethodBeat.i(227399);
-    a locala = new a((byte)0);
-    locala.nKZ = paramInt;
-    locala.nLa = l.bVe().zi(paramInt);
-    this.nKV.add(locala);
-    AppMethodBeat.o(227399);
-  }
-  
-  private int zh(int paramInt)
-  {
-    AppMethodBeat.i(227400);
-    Integer localInteger = (Integer)this.nKW.get(Integer.valueOf(paramInt));
-    if (localInteger == null)
+    AppMethodBeat.i(265588);
+    if (qNj != null)
     {
-      AppMethodBeat.o(227400);
-      return 0;
+      bool = qNj.booleanValue();
+      AppMethodBeat.o(265588);
+      return bool;
     }
-    paramInt = localInteger.intValue();
-    AppMethodBeat.o(227400);
-    return paramInt;
+    int i = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vWQ, 0);
+    Log.i("MicroMsg.QualitySampleHelper", "shouldReport:%d", new Object[] { Integer.valueOf(i) });
+    if (i == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Boolean localBoolean = Boolean.valueOf(bool);
+      qNj = localBoolean;
+      bool = localBoolean.booleanValue();
+      AppMethodBeat.o(265588);
+      return bool;
+    }
   }
   
   static final class a
   {
-    int nKZ;
-    int nLa;
+    int qNl;
+    int qNm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.quality.k
  * JD-Core Version:    0.7.0.1
  */

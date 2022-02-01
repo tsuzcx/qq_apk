@@ -5,16 +5,17 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.pb.common.c.b;
 import com.tencent.pb.common.c.c;
 
 public final class g
 {
-  private WifiInfo RDc = null;
-  private NetworkInfo glA = null;
+  private WifiInfo ZeE = null;
+  private NetworkInfo iPI = null;
   private int lastNetType = 1;
   
-  public final boolean akC()
+  public final boolean aqy()
   {
     Object localObject1 = null;
     int i;
@@ -22,14 +23,14 @@ public final class g
     {
       try
       {
-        localObject3 = (ConnectivityManager)c.Hhs.getSystemService("connectivity");
+        localObject3 = (ConnectivityManager)c.NYh.getSystemService("connectivity");
         if (localObject3 != null) {
           continue;
         }
         b.w("NetworkChangeMgr", new Object[] { "can't get ConnectivityManager" });
         this.lastNetType = 1;
-        this.RDc = null;
-        this.glA = null;
+        this.ZeE = null;
+        this.iPI = null;
         bool = true;
       }
       catch (Exception localException)
@@ -38,33 +39,33 @@ public final class g
         label122:
         b.w("NetworkChangeMgr", new Object[] { localException });
         this.lastNetType = 1;
-        this.RDc = null;
-        this.glA = null;
+        this.ZeE = null;
+        this.iPI = null;
         bool = true;
         continue;
         if (((NetworkInfo)localObject3).getType() != 1) {
-          break label456;
+          break label471;
         }
-        localWifiInfo = ((WifiManager)c.Hhs.getSystemService("wifi")).getConnectionInfo();
+        localWifiInfo = (WifiInfo)a.a((WifiManager)c.NYh.getSystemService("wifi"), "com/tencent/pb/common/network/NetworkChangeMgr", "isNetWorkChange", "()Z", "android/net/wifi/WifiManager", "getConnectionInfo", "()Landroid/net/wifi/WifiInfo;");
         i = 2;
         continue;
         if (i != 2) {
           continue;
         }
-        if ((localWifiInfo == null) || (this.RDc == null) || (!this.RDc.getBSSID().equals(localWifiInfo.getBSSID())) || (!this.RDc.getSSID().equals(localWifiInfo.getSSID())) || (this.RDc.getNetworkId() != localWifiInfo.getNetworkId())) {
-          break label461;
+        if ((localWifiInfo == null) || (this.ZeE == null) || (!this.ZeE.getBSSID().equals(localWifiInfo.getBSSID())) || (!this.ZeE.getSSID().equals(localWifiInfo.getSSID())) || (this.ZeE.getNetworkId() != localWifiInfo.getNetworkId())) {
+          break label476;
         }
         bool = false;
         continue;
-        if ((this.glA == null) || (this.glA.getExtraInfo() == null) || (((NetworkInfo)localObject3).getExtraInfo() == null) || (!this.glA.getExtraInfo().equals(((NetworkInfo)localObject3).getExtraInfo())) || (this.glA.getSubtype() != ((NetworkInfo)localObject3).getSubtype()) || (this.glA.getType() != ((NetworkInfo)localObject3).getType())) {
+        if ((this.iPI == null) || (this.iPI.getExtraInfo() == null) || (((NetworkInfo)localObject3).getExtraInfo() == null) || (!this.iPI.getExtraInfo().equals(((NetworkInfo)localObject3).getExtraInfo())) || (this.iPI.getSubtype() != ((NetworkInfo)localObject3).getSubtype()) || (this.iPI.getType() != ((NetworkInfo)localObject3).getType())) {
           continue;
         }
         bool = false;
         continue;
-        if ((this.glA == null) || (this.glA.getExtraInfo() != null) || (((NetworkInfo)localObject3).getExtraInfo() != null) || (this.glA.getSubtype() != ((NetworkInfo)localObject3).getSubtype())) {
+        if ((this.iPI == null) || (this.iPI.getExtraInfo() != null) || (((NetworkInfo)localObject3).getExtraInfo() != null) || (this.iPI.getSubtype() != ((NetworkInfo)localObject3).getSubtype())) {
           continue;
         }
-        j = this.glA.getType();
+        j = this.iPI.getType();
         k = ((NetworkInfo)localObject3).getType();
         if (j != k) {
           continue;
@@ -80,8 +81,8 @@ public final class g
       if (localObject3 == null)
       {
         this.lastNetType = 1;
-        this.RDc = null;
-        this.glA = null;
+        this.ZeE = null;
+        this.iPI = null;
         bool = true;
       }
       else
@@ -99,13 +100,13 @@ public final class g
         }
       }
     }
-    label456:
-    label461:
+    label471:
+    label476:
     for (boolean bool = false;; bool = true)
     {
       this.lastNetType = i;
-      this.RDc = localObject1;
-      this.glA = ((NetworkInfo)localObject3);
+      this.ZeE = localObject1;
+      this.iPI = ((NetworkInfo)localObject3);
       break;
       WifiInfo localWifiInfo;
       int j;
@@ -117,7 +118,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.pb.common.b.g
  * JD-Core Version:    0.7.0.1
  */

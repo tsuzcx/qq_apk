@@ -20,9 +20,9 @@ public class MediaSessionCompat
     implements Parcelable
   {
     public static final Parcelable.Creator<Token> CREATOR = new Parcelable.Creator() {};
-    final Object MV;
-    b MW;
-    Bundle MX;
+    final Object dL;
+    b dM;
+    Bundle dN;
     
     Token(Object paramObject)
     {
@@ -36,20 +36,20 @@ public class MediaSessionCompat
     
     private Token(Object paramObject, b paramb, byte paramByte)
     {
-      this.MV = paramObject;
-      this.MW = paramb;
-      this.MX = null;
+      this.dL = paramObject;
+      this.dM = paramb;
+      this.dN = null;
     }
     
     public static Token a(Object paramObject, b paramb)
     {
       if ((paramObject != null) && (Build.VERSION.SDK_INT >= 21)) {
-        return new Token(d.A(paramObject), paramb);
+        return new Token(d.i(paramObject), paramb);
       }
       return null;
     }
     
-    public static Token z(Object paramObject)
+    public static Token h(Object paramObject)
     {
       return a(paramObject, null);
     }
@@ -69,39 +69,39 @@ public class MediaSessionCompat
           return false;
         }
         paramObject = (Token)paramObject;
-        if (this.MV != null) {
+        if (this.dL != null) {
           break;
         }
-      } while (paramObject.MV == null);
+      } while (paramObject.dL == null);
       return false;
-      if (paramObject.MV == null) {
+      if (paramObject.dL == null) {
         return false;
       }
-      return this.MV.equals(paramObject.MV);
+      return this.dL.equals(paramObject.dL);
     }
     
     public final int hashCode()
     {
-      if (this.MV == null) {
+      if (this.dL == null) {
         return 0;
       }
-      return this.MV.hashCode();
+      return this.dL.hashCode();
     }
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       if (Build.VERSION.SDK_INT >= 21)
       {
-        paramParcel.writeParcelable((Parcelable)this.MV, paramInt);
+        paramParcel.writeParcelable((Parcelable)this.dL, paramInt);
         return;
       }
-      paramParcel.writeStrongBinder((IBinder)this.MV);
+      paramParcel.writeStrongBinder((IBinder)this.dL);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.media.session.MediaSessionCompat
  * JD-Core Version:    0.7.0.1
  */

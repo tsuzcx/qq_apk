@@ -2,6 +2,6 @@
 <RelativeLayout android:id="@id/h8y" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/j6n" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <ImageView android:id="@id/j5c" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <TextView android:textSize="@dimen/kc" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/j4n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:layout_marginBottom="@dimen/bt" android:text="02:24" android:layout_alignParentBottom="true" />
+    <CheckBox android:gravity="center" android:id="@id/kpe" android:background="@drawable/ahx" android:focusable="false" android:clickable="false" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/ct" android:layout_marginEnd="@dimen/ct" android:layout_alignParentEnd="true" />
 </RelativeLayout>

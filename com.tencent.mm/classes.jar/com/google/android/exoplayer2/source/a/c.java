@@ -9,7 +9,7 @@ import java.util.Arrays;
 public abstract class c
   extends a
 {
-  private volatile boolean bwg;
+  private volatile boolean bfI;
   public byte[] data;
   private int limit;
   
@@ -21,32 +21,22 @@ public abstract class c
   
   protected abstract void f(byte[] paramArrayOfByte, int paramInt);
   
-  public final void vA()
-  {
-    this.bwg = true;
-  }
-  
-  public final boolean vB()
-  {
-    return this.bwg;
-  }
-  
-  public final void vC()
+  public final void tA()
   {
     int i = 0;
     for (;;)
     {
       try
       {
-        this.bhK.a(this.bxj);
+        this.aRo.a(this.bgL);
         this.limit = 0;
-        if ((i == -1) || (this.bwg)) {
+        if ((i == -1) || (this.bfI)) {
           break;
         }
         if (this.data == null)
         {
           this.data = new byte[16384];
-          int j = this.bhK.read(this.data, this.limit, 16384);
+          int j = this.aRo.read(this.data, this.limit, 16384);
           i = j;
           if (j == -1) {
             continue;
@@ -61,24 +51,34 @@ public abstract class c
       }
       finally
       {
-        x.a(this.bhK);
+        x.a(this.aRo);
       }
       this.data = Arrays.copyOf(this.data, this.data.length + 16384);
     }
-    if (!this.bwg) {
+    if (!this.bfI) {
       f(this.data, this.limit);
     }
-    x.a(this.bhK);
+    x.a(this.aRo);
   }
   
-  public final long vN()
+  public final long tL()
   {
     return this.limit;
+  }
+  
+  public final void ty()
+  {
+    this.bfI = true;
+  }
+  
+  public final boolean tz()
+  {
+    return this.bfI;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.source.a.c
  * JD-Core Version:    0.7.0.1
  */

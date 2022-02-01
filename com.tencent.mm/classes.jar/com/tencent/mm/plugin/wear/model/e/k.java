@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.wear.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.wear.model.g;
-import com.tencent.mm.protocal.protobuf.eze;
+import com.tencent.mm.protocal.protobuf.fjv;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
 import java.io.IOException;
@@ -17,7 +17,7 @@ import java.util.List;
 public final class k
   extends a
 {
-  public final List<Integer> fWe()
+  public final List<Integer> gON()
   {
     AppMethodBeat.i(30089);
     ArrayList localArrayList = new ArrayList();
@@ -27,7 +27,7 @@ public final class k
     return localArrayList;
   }
   
-  protected final byte[] s(int paramInt, byte[] paramArrayOfByte)
+  protected final byte[] t(int paramInt, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(30090);
     switch (paramInt)
@@ -37,29 +37,29 @@ public final class k
     {
       AppMethodBeat.o(30090);
       return null;
-      Object localObject = new eze();
+      Object localObject = new fjv();
       try
       {
-        ((eze)localObject).parseFrom(paramArrayOfByte);
+        ((fjv)localObject).parseFrom(paramArrayOfByte);
         label50:
-        com.tencent.mm.plugin.wear.model.a.fVK().gc(((eze)localObject).MRZ, ((eze)localObject).MWA);
+        com.tencent.mm.plugin.wear.model.a.gOr().gL(((fjv)localObject).Ueg, ((fjv)localObject).UiV);
         AppMethodBeat.o(30090);
         return null;
         try
         {
           paramArrayOfByte = new String(paramArrayOfByte, "utf8");
-          bg.aVF();
-          localObject = c.aSN().Kn(paramArrayOfByte);
-          if (ab.Eq(paramArrayOfByte))
+          bh.beI();
+          localObject = c.bbL().RG(paramArrayOfByte);
+          if (ab.Lj(paramArrayOfByte))
           {
-            bg.aVF();
-            localObject = c.aSN().Kn(paramArrayOfByte);
-            ((as)localObject).nm(0);
-            bg.aVF();
-            c.aSN().c(paramArrayOfByte, (as)localObject);
-            bg.aVF();
-            c.aSM().d(new com.tencent.mm.chatroom.f.a(paramArrayOfByte, 0));
-            com.tencent.mm.plugin.wear.model.c.a.jZ(4, 0);
+            bh.beI();
+            localObject = c.bbL().RG(paramArrayOfByte);
+            ((as)localObject).pA(0);
+            bh.beI();
+            c.bbL().c(paramArrayOfByte, (as)localObject);
+            bh.beI();
+            c.bbK().d(new com.tencent.mm.chatroom.f.a(paramArrayOfByte, 0));
+            com.tencent.mm.plugin.wear.model.c.a.lp(4, 0);
           }
         }
         catch (UnsupportedEncodingException paramArrayOfByte)
@@ -68,7 +68,7 @@ public final class k
           {
             paramArrayOfByte = "";
             continue;
-            ab.z((as)localObject);
+            ab.F((as)localObject);
           }
         }
       }
@@ -81,7 +81,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e.k
  * JD-Core Version:    0.7.0.1
  */

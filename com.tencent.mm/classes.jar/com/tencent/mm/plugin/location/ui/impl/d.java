@@ -5,32 +5,34 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.k.a;
 import com.tencent.mm.plugin.location_soso.SoSoProxyUI;
 import com.tencent.mm.plugin.location_soso.api.SoSoMapView;
+import com.tencent.mm.plugin.map.a.e;
+import com.tencent.mm.plugin.q.a;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
-  implements com.tencent.mm.plugin.k.c
+  implements com.tencent.mm.plugin.q.c
 {
-  public static Intent ar(Activity paramActivity)
+  public static Intent ax(Activity paramActivity)
   {
     AppMethodBeat.i(56077);
     paramActivity = new Intent(paramActivity, SoSoProxyUI.class);
+    paramActivity.addFlags(67108864);
     AppMethodBeat.o(56077);
     return paramActivity;
   }
   
-  public static View gs(Context paramContext)
+  public static View hq(Context paramContext)
   {
     AppMethodBeat.i(56078);
     paramContext = new SoSoMapView(paramContext);
-    paramContext.setId(2131301852);
+    paramContext.setId(a.e.g_mapView);
     AppMethodBeat.o(56078);
     return paramContext;
   }
   
-  public final a h(Activity paramActivity, int paramInt)
+  public final a i(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(56079);
     switch (paramInt)
@@ -57,7 +59,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.d
  * JD-Core Version:    0.7.0.1
  */

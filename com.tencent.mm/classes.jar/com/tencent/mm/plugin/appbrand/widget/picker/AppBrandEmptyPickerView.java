@@ -2,14 +2,15 @@ package com.tencent.mm.plugin.appbrand.widget.picker;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.annotation.Keep;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import androidx.annotation.Keep;
+import com.tencent.luggage.b.a.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class AppBrandEmptyPickerView
   extends View
-  implements com.tencent.mm.plugin.appbrand.jsapi.r.c<Object>
+  implements com.tencent.mm.plugin.appbrand.jsapi.s.c<Object>
 {
   @Keep
   AppBrandEmptyPickerView(Context paramContext)
@@ -36,7 +37,7 @@ public class AppBrandEmptyPickerView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(137991);
-    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(getResources().getDimensionPixelSize(2131166802), 1073741824));
+    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(getResources().getDimensionPixelSize(a.c.picker_max_height), 1073741824));
     AppMethodBeat.o(137991);
   }
   
@@ -44,7 +45,7 @@ public class AppBrandEmptyPickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.AppBrandEmptyPickerView
  * JD-Core Version:    0.7.0.1
  */

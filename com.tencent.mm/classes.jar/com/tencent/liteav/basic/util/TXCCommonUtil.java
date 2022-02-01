@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.DhcpInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
+import android.os.Build.VERSION;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
@@ -27,19 +29,19 @@ public class TXCCommonUtil
     pituLicencePath = "YTFaceSDK.licence";
     sApplicationContext = null;
     mUserId = "";
-    f.f();
+    h.f();
     AppMethodBeat.o(14697);
   }
   
   public static boolean equals(Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(222086);
+    AppMethodBeat.i(240736);
     if ((paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2))))
     {
-      AppMethodBeat.o(222086);
+      AppMethodBeat.o(240736);
       return true;
     }
-    AppMethodBeat.o(222086);
+    AppMethodBeat.o(240736);
     return false;
   }
   
@@ -50,7 +52,7 @@ public class TXCCommonUtil
   
   public static String getAppFilePath()
   {
-    AppMethodBeat.i(222087);
+    AppMethodBeat.i(240740);
     String str = "/sdcard/liteav";
     if (sApplicationContext != null) {
       str = sApplicationContext.getFilesDir().getAbsolutePath();
@@ -59,7 +61,7 @@ public class TXCCommonUtil
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
-    AppMethodBeat.o(222087);
+    AppMethodBeat.o(240740);
     return str;
   }
   
@@ -113,7 +115,7 @@ public class TXCCommonUtil
   public static String getAppPackageName()
   {
     AppMethodBeat.i(14696);
-    String str = f.c(sApplicationContext);
+    String str = h.c(sApplicationContext);
     AppMethodBeat.o(14696);
     return str;
   }
@@ -129,6 +131,22 @@ public class TXCCommonUtil
     String str = nativeGetConfigCenterKey();
     AppMethodBeat.o(182420);
     return str;
+  }
+  
+  public static final String getDeviceInfo()
+  {
+    AppMethodBeat.i(240746);
+    try
+    {
+      String str = Build.BRAND + "_" + Build.MODEL + "_" + Build.VERSION.RELEASE;
+      AppMethodBeat.o(240746);
+      return str;
+    }
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(240746);
+    }
+    return "unknown_device";
   }
   
   public static String getFileExtension(String paramString)
@@ -158,16 +176,16 @@ public class TXCCommonUtil
   
   public static int getGateway()
   {
-    AppMethodBeat.i(222085);
+    AppMethodBeat.i(240735);
     if (sApplicationContext == null)
     {
-      AppMethodBeat.o(222085);
+      AppMethodBeat.o(240735);
       return 0;
     }
     try
     {
       i = ((WifiManager)sApplicationContext.getSystemService("wifi")).getDhcpInfo().gateway;
-      AppMethodBeat.o(222085);
+      AppMethodBeat.o(240735);
       return i;
     }
     catch (Exception localException)
@@ -194,7 +212,7 @@ public class TXCCommonUtil
       AppMethodBeat.o(14695);
       return "";
     }
-    localObject = ((File)localObject).getAbsolutePath() + "/log/tencent/liteav";
+    localObject = ((File)localObject).getAbsolutePath() + "/log/liteav";
     AppMethodBeat.o(14695);
     return localObject;
   }
@@ -449,14 +467,14 @@ public class TXCCommonUtil
   
   public static void setAppContext(Context paramContext)
   {
-    AppMethodBeat.i(222084);
+    AppMethodBeat.i(240727);
     if (paramContext == null)
     {
-      AppMethodBeat.o(222084);
+      AppMethodBeat.o(240727);
       return;
     }
     sApplicationContext = paramContext.getApplicationContext();
-    AppMethodBeat.o(222084);
+    AppMethodBeat.o(240727);
   }
   
   public static void setAppID(String paramString)
@@ -508,63 +526,63 @@ public class TXCCommonUtil
     //   13: aload_1
     //   14: invokespecial 76	java/io/File:<init>	(Ljava/lang/String;)V
     //   17: astore_1
-    //   18: new 305	java/util/zip/ZipOutputStream
+    //   18: new 324	java/util/zip/ZipOutputStream
     //   21: dup
-    //   22: new 307	java/io/FileOutputStream
+    //   22: new 326	java/io/FileOutputStream
     //   25: dup
     //   26: aload_1
-    //   27: invokespecial 310	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   30: invokespecial 313	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   27: invokespecial 329	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   30: invokespecial 332	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   33: astore 6
     //   35: aload 6
-    //   37: ldc_w 315
-    //   40: invokevirtual 318	java/util/zip/ZipOutputStream:setComment	(Ljava/lang/String;)V
+    //   37: ldc_w 334
+    //   40: invokevirtual 337	java/util/zip/ZipOutputStream:setComment	(Ljava/lang/String;)V
     //   43: aload_0
-    //   44: invokevirtual 324	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   44: invokevirtual 343	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   47: astore 7
     //   49: aconst_null
     //   50: astore_0
     //   51: aload 7
-    //   53: invokeinterface 329 1 0
+    //   53: invokeinterface 348 1 0
     //   58: ifeq +206 -> 264
     //   61: new 70	java/io/File
     //   64: dup
     //   65: aload 7
-    //   67: invokeinterface 333 1 0
+    //   67: invokeinterface 352 1 0
     //   72: checkcast 87	java/lang/String
     //   75: invokespecial 76	java/io/File:<init>	(Ljava/lang/String;)V
     //   78: astore 8
     //   80: aload 8
-    //   82: invokevirtual 336	java/io/File:length	()J
+    //   82: invokevirtual 355	java/io/File:length	()J
     //   85: lconst_0
     //   86: lcmp
     //   87: ifeq +17 -> 104
     //   90: aload 8
-    //   92: invokevirtual 336	java/io/File:length	()J
+    //   92: invokevirtual 355	java/io/File:length	()J
     //   95: lstore_3
     //   96: lload_3
-    //   97: ldc2_w 337
+    //   97: ldc2_w 356
     //   100: lcmp
     //   101: ifle +14 -> 115
     //   104: aload_0
-    //   105: invokevirtual 343	java/io/InputStream:close	()V
+    //   105: invokevirtual 362	java/io/InputStream:close	()V
     //   108: goto -57 -> 51
     //   111: astore_1
     //   112: goto -61 -> 51
-    //   115: new 345	java/io/FileInputStream
+    //   115: new 364	java/io/FileInputStream
     //   118: dup
     //   119: aload 8
-    //   121: invokespecial 346	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   121: invokespecial 365	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   124: astore_1
     //   125: aload_1
     //   126: astore 5
     //   128: aload 6
-    //   130: new 348	java/util/zip/ZipEntry
+    //   130: new 367	java/util/zip/ZipEntry
     //   133: dup
     //   134: aload 8
-    //   136: invokevirtual 351	java/io/File:getName	()Ljava/lang/String;
-    //   139: invokespecial 352	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   142: invokevirtual 356	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
+    //   136: invokevirtual 370	java/io/File:getName	()Ljava/lang/String;
+    //   139: invokespecial 371	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   142: invokevirtual 375	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
     //   145: aload_1
     //   146: astore 5
     //   148: sipush 8192
@@ -574,7 +592,7 @@ public class TXCCommonUtil
     //   155: astore 5
     //   157: aload_1
     //   158: aload_0
-    //   159: invokevirtual 360	java/io/InputStream:read	([B)I
+    //   159: invokevirtual 379	java/io/InputStream:read	([B)I
     //   162: istore_2
     //   163: iload_2
     //   164: iconst_m1
@@ -585,7 +603,7 @@ public class TXCCommonUtil
     //   173: aload_0
     //   174: iconst_0
     //   175: iload_2
-    //   176: invokevirtual 364	java/util/zip/ZipOutputStream:write	([BII)V
+    //   176: invokevirtual 383	java/util/zip/ZipOutputStream:write	([BII)V
     //   179: goto -25 -> 154
     //   182: astore 5
     //   184: aload_1
@@ -595,14 +613,14 @@ public class TXCCommonUtil
     //   189: aload_0
     //   190: astore 5
     //   192: ldc 8
-    //   194: ldc_w 366
+    //   194: ldc_w 385
     //   197: aload_1
-    //   198: invokestatic 154	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   198: invokestatic 183	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   201: aload_0
-    //   202: invokevirtual 343	java/io/InputStream:close	()V
+    //   202: invokevirtual 362	java/io/InputStream:close	()V
     //   205: goto -154 -> 51
     //   208: aload_1
-    //   209: invokevirtual 343	java/io/InputStream:close	()V
+    //   209: invokevirtual 362	java/io/InputStream:close	()V
     //   212: aload_1
     //   213: astore_0
     //   214: goto -163 -> 51
@@ -614,7 +632,7 @@ public class TXCCommonUtil
     //   224: goto -173 -> 51
     //   227: astore_0
     //   228: aload 5
-    //   230: invokevirtual 343	java/io/InputStream:close	()V
+    //   230: invokevirtual 362	java/io/InputStream:close	()V
     //   233: sipush 14694
     //   236: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   239: aload_0
@@ -623,15 +641,15 @@ public class TXCCommonUtil
     //   242: aload 6
     //   244: astore_0
     //   245: ldc 8
-    //   247: ldc_w 368
-    //   250: invokestatic 371	com/tencent/liteav/basic/log/TXCLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   247: ldc_w 387
+    //   250: invokestatic 390	com/tencent/liteav/basic/log/TXCLog:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   253: aload_0
-    //   254: invokevirtual 372	java/util/zip/ZipOutputStream:close	()V
+    //   254: invokevirtual 391	java/util/zip/ZipOutputStream:close	()V
     //   257: sipush 14694
     //   260: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   263: return
     //   264: aload 6
-    //   266: invokevirtual 372	java/util/zip/ZipOutputStream:close	()V
+    //   266: invokevirtual 391	java/util/zip/ZipOutputStream:close	()V
     //   269: sipush 14694
     //   272: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   275: return
@@ -647,7 +665,7 @@ public class TXCCommonUtil
     //   293: aconst_null
     //   294: astore_1
     //   295: aload_1
-    //   296: invokevirtual 372	java/util/zip/ZipOutputStream:close	()V
+    //   296: invokevirtual 391	java/util/zip/ZipOutputStream:close	()V
     //   299: sipush 14694
     //   302: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   305: aload_0
@@ -735,7 +753,7 @@ public class TXCCommonUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.util.TXCCommonUtil
  * JD-Core Version:    0.7.0.1
  */

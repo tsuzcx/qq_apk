@@ -40,10 +40,10 @@ class b
         paramString2.putExtra("key_reader_sdk_type", 1);
         paramString2.setData(Uri.parse(paramString1));
         paramString1 = this.b.getContext();
-        paramString2 = new com.tencent.mm.hellhoundlib.b.a().bl(paramString2);
-        com.tencent.mm.hellhoundlib.a.a.a(paramString1, paramString2.axQ(), "com/tencent/smtt/sdk/b", "onDownloadStart", "(Ljava/lang/String;Ljava/lang/String;[BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramString1.startActivity((Intent)paramString2.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramString1, "com/tencent/smtt/sdk/b", "onDownloadStart", "(Ljava/lang/String;Ljava/lang/String;[BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramString2 = new com.tencent.mm.hellhoundlib.b.a().bm(paramString2);
+        com.tencent.mm.hellhoundlib.a.a.b(paramString1, paramString2.aFh(), "com/tencent/smtt/sdk/b", "onDownloadStart", "(Ljava/lang/String;Ljava/lang/String;[BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramString1.startActivity((Intent)paramString2.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramString1, "com/tencent/smtt/sdk/b", "onDownloadStart", "(Ljava/lang/String;Ljava/lang/String;[BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(55133);
         return;
       }
@@ -62,7 +62,7 @@ class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sdk.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 public final class a
 {
-  public static JSONObject ac(String paramString1, String paramString2, String paramString3)
+  public static JSONObject Z(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(122089);
     JSONObject localJSONObject = new JSONObject();

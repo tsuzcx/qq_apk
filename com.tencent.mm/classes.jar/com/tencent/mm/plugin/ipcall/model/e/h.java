@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dfj;
-import com.tencent.mm.protocal.protobuf.dfk;
+import com.tencent.mm.protocal.protobuf.dpd;
+import com.tencent.mm.protocal.protobuf.dpe;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class h
   extends q
   implements m
 {
+  public dpd DRE;
+  private dpe DRF;
   private i callback;
   private d rr;
-  public dfj yrC;
-  private dfk yrD;
   
   public h(int paramInt, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(25472);
     this.rr = null;
-    this.yrC = null;
-    this.yrD = null;
+    this.DRE = null;
+    this.DRF = null;
     this.callback = null;
     d.a locala = new d.a();
-    locala.iLN = new dfj();
-    locala.iLO = new dfk();
+    locala.lBU = new dpd();
+    locala.lBV = new dpe();
     locala.funcId = 824;
     locala.uri = "/cgi-bin/micromsg-bin/pstnheartbeat";
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
+    this.rr = locala.bgN();
     long l = System.currentTimeMillis();
-    this.yrC = ((dfj)this.rr.iLK.iLR);
-    this.yrC.LsZ = paramInt;
-    this.yrC.Lta = paramLong1;
-    this.yrC.MKi = paramLong2;
-    this.yrC.MKf = l;
+    this.DRE = ((dpd)d.b.b(this.rr.lBR));
+    this.DRE.Svu = paramInt;
+    this.DRE.Svv = paramLong1;
+    this.DRE.TWc = paramLong2;
+    this.DRE.TVZ = l;
     Log.d("MicroMsg.NetSceneIPCallHeartBeat", "heartbeat, roomId: %d, roomKey: %d, callSeq: %d, timestamp: %d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(l) });
     AppMethodBeat.o(25472);
   }
@@ -66,7 +66,7 @@ public final class h
   {
     AppMethodBeat.i(25474);
     Log.i("MicroMsg.NetSceneIPCallHeartBeat", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.yrD = ((dfk)((d)params).iLL.iLR);
+    this.DRF = ((dpe)d.c.b(((d)params).lBS));
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

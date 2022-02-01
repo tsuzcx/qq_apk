@@ -1,13 +1,13 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fc;
+import com.tencent.mm.f.c.fi;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class cg
-  extends fc
+  extends fi
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   
@@ -55,7 +55,7 @@ public final class cg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.storage.cg
  * JD-Core Version:    0.7.0.1
  */

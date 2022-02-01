@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.view.HardTouchableLayout android:id="@id/ifu" android:paddingBottom="@dimen/ct" android:layout_width="fill_parent" android:layout_height="@dimen/cl" android:layout_toStartOf="@id/xs" android:layout_toEndOf="@id/xq">
-        <android.support.design.widget.TabLayout android:id="@id/ift" android:layout_width="wrap_content" android:layout_height="fill_parent" app:tabBackground="@color/ac_" app:tabGravity="aq3" app:tabIndicator="@drawable/a2l" app:tabIndicatorColor="@color/a2x" app:tabIndicatorHeight="2.0dip" app:tabMode="d5n" app:tabPaddingEnd="0.0dip" app:tabPaddingStart="0.0dip" app:tabRippleColor="@color/ac_" app:tabSelectedTextColor="@color/a2x" app:tabTextColor="@color/l4" />
-    </com.tencent.mm.view.HardTouchableLayout>
-    <com.tencent.mm.plugin.finder.view.FinderViewPager android:id="@id/j7c" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>

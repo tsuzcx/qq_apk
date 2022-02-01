@@ -20,39 +20,39 @@ public class APMidasPluginDownInfo
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(193244);
+    AppMethodBeat.i(252996);
     if (paramObject == null)
     {
-      AppMethodBeat.o(193244);
+      AppMethodBeat.o(252996);
       return false;
     }
     if (!(paramObject instanceof APMidasPluginDownInfo))
     {
-      AppMethodBeat.o(193244);
+      AppMethodBeat.o(252996);
       return false;
     }
     paramObject = (APMidasPluginDownInfo)paramObject;
     boolean bool = this.name.equals(paramObject.name);
-    AppMethodBeat.o(193244);
+    AppMethodBeat.o(252996);
     return bool;
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(193245);
+    AppMethodBeat.i(252998);
     if (this.name == null)
     {
-      AppMethodBeat.o(193245);
+      AppMethodBeat.o(252998);
       return 0;
     }
     int i = this.name.hashCode();
-    AppMethodBeat.o(193245);
+    AppMethodBeat.o(252998);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.download.APMidasPluginDownInfo
  * JD-Core Version:    0.7.0.1
  */

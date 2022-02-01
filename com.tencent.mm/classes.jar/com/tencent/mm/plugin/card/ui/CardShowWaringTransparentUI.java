@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.card.a.e;
+import com.tencent.mm.plugin.card.a.g;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.base.h;
@@ -17,14 +19,15 @@ public class CardShowWaringTransparentUI
 {
   public int getLayoutId()
   {
-    return 2131493443;
+    return a.e.tjm;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(113579);
     super.onCreate(paramBundle);
-    h.a(this, getString(2131757183, new Object[] { getIntent().getStringExtra("KEY_BRAND_NAME") }), getString(2131757184), getString(2131757064), new DialogInterface.OnClickListener()
+    paramBundle = getIntent().getStringExtra("KEY_BRAND_NAME");
+    h.a(this, getString(a.g.tmb, new Object[] { paramBundle }), getString(a.g.tmc), getString(a.g.tkB), new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -56,7 +59,7 @@ public class CardShowWaringTransparentUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardShowWaringTransparentUI
  * JD-Core Version:    0.7.0.1
  */

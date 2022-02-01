@@ -23,27 +23,40 @@ import java.util.Queue;
 @SuppressLint({"LongLogTag"})
 final class g
 {
-  h cNb;
-  private HashMap<String, k> cNc;
-  a cNd;
-  private FloatBuffer cNe;
-  private List<k> cNf;
-  private j cNg;
-  private StringBuilder cNh;
+  h cNP;
+  private HashMap<String, k> cNQ;
+  a cNR;
+  private FloatBuffer cNS;
+  private List<k> cNT;
+  private j cNU;
+  private StringBuilder cNV;
   
   g(e parame, c paramc)
   {
-    AppMethodBeat.i(206812);
-    this.cNh = new StringBuilder();
-    this.cNb = new h(parame, this);
-    this.cNb.cNo = paramc;
-    this.cNc = new HashMap();
-    this.cNd = new a();
-    this.cNf = new ArrayList();
-    AppMethodBeat.o(206812);
+    AppMethodBeat.i(203734);
+    this.cNV = new StringBuilder();
+    this.cNP = new h(parame, this);
+    this.cNP.cOc = paramc;
+    this.cNQ = new HashMap();
+    this.cNR = new a();
+    this.cNT = new ArrayList();
+    AppMethodBeat.o(203734);
   }
   
-  private List<k> ec(String paramString)
+  private static int C(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(140026);
+    if (a.Vd() == null)
+    {
+      AppMethodBeat.o(140026);
+      return 0;
+    }
+    paramInt = a.Vd().A(paramString, paramInt);
+    AppMethodBeat.o(140026);
+    return paramInt;
+  }
+  
+  private List<k> eD(String paramString)
   {
     AppMethodBeat.i(140023);
     if ((paramString == null) || (paramString.length() == 0))
@@ -51,75 +64,75 @@ final class g
       AppMethodBeat.o(140023);
       return null;
     }
-    this.cNf.clear();
+    this.cNT.clear();
     int i = 0;
     while (i < paramString.length())
     {
-      int j = s(paramString, i);
+      int j = C(paramString, i);
       k localk;
       if (j > 0)
       {
-        localk = i(paramString, i, j);
+        localk = j(paramString, i, j);
         i += j;
       }
       while (localk == null)
       {
-        this.cNf.clear();
+        this.cNT.clear();
         AppMethodBeat.o(140023);
         return null;
-        localk = s(paramString.charAt(i));
+        localk = x(paramString.charAt(i));
         i += 1;
       }
-      this.cNf.add(localk);
+      this.cNT.add(localk);
     }
-    paramString = this.cNf;
+    paramString = this.cNT;
     AppMethodBeat.o(140023);
     return paramString;
   }
   
-  private k i(String paramString, int paramInt1, int paramInt2)
+  private k j(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(140025);
-    String str = j(paramString, paramInt1, paramInt2);
-    k localk = (k)this.cNc.get(str);
+    String str = k(paramString, paramInt1, paramInt2);
+    k localk = (k)this.cNQ.get(str);
     if (localk != null)
     {
       AppMethodBeat.o(140025);
       return localk;
     }
-    if (a.Rt() == null)
+    if (a.Vd() == null)
     {
       paramString = new IllegalStateException("FontDrawableProvider must support");
       AppMethodBeat.o(140025);
       throw paramString;
     }
-    paramString = a.Rt().r(paramString, paramInt1);
+    paramString = a.Vd().B(paramString, paramInt1);
     if (paramString == null)
     {
       AppMethodBeat.o(140025);
       return null;
     }
-    paramInt1 = (int)this.cNg.fontSize;
-    int i = (int)this.cNg.fontSize;
+    paramInt1 = (int)this.cNU.fontSize;
+    int i = (int)this.cNU.fontSize;
     if ((paramInt1 <= 0) || (i <= 0))
     {
       AppMethodBeat.o(140025);
       return null;
     }
-    paramString = this.cNb.a(paramString, paramInt1, i);
+    paramString = this.cNP.a(paramString, paramInt1, i);
     if (paramString == null)
     {
       c.c.d("MagicBrush.MBFontGlyphManager", "Load font drawable glyph failed.", new Object[0]);
       AppMethodBeat.o(140025);
       return null;
     }
-    paramString.cNN = paramInt2;
-    this.cNc.put(str, paramString);
+    paramString.cOB = paramInt2;
+    this.cNQ.put(str, paramString);
     AppMethodBeat.o(140025);
     return paramString;
   }
   
-  private String j(String paramString, int paramInt1, int paramInt2)
+  private String k(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(140027);
     if (paramInt2 <= 0)
@@ -128,78 +141,65 @@ final class g
       AppMethodBeat.o(140027);
       throw paramString;
     }
-    this.cNh.setLength(0);
+    this.cNV.setLength(0);
     while (paramInt2 > 0)
     {
-      this.cNh.append(paramString.charAt(paramInt1));
+      this.cNV.append(paramString.charAt(paramInt1));
       paramInt1 += 1;
       paramInt2 -= 1;
     }
-    this.cNh.append("|").append(this.cNg.fontSize);
-    paramString = this.cNh.toString();
+    this.cNV.append("|").append(this.cNU.fontSize);
+    paramString = this.cNV.toString();
     AppMethodBeat.o(140027);
     return paramString;
   }
   
-  private static int s(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(140026);
-    if (a.Rt() == null)
-    {
-      AppMethodBeat.o(140026);
-      return 0;
-    }
-    paramInt = a.Rt().q(paramString, paramInt);
-    AppMethodBeat.o(140026);
-    return paramInt;
-  }
-  
-  private k s(char paramChar)
+  private k x(char paramChar)
   {
     AppMethodBeat.i(140024);
-    if (this.cNg == null)
+    if (this.cNU == null)
     {
       AppMethodBeat.o(140024);
       return null;
     }
-    String str = t(paramChar);
-    k localk = (k)this.cNc.get(str);
+    String str = y(paramChar);
+    k localk = (k)this.cNQ.get(str);
     if (localk != null)
     {
       AppMethodBeat.o(140024);
       return localk;
     }
-    localk = this.cNb.u(paramChar);
+    localk = this.cNP.z(paramChar);
     if (localk == null)
     {
       c.c.d("MagicBrush.MBFontGlyphManager", "Load glyph failed. glyph == null [" + paramChar + "]", new Object[0]);
       AppMethodBeat.o(140024);
       return null;
     }
-    this.cNc.put(str, localk);
+    this.cNQ.put(str, localk);
     AppMethodBeat.o(140024);
     return localk;
   }
   
-  private String t(char paramChar)
+  private String y(char paramChar)
   {
     AppMethodBeat.i(140028);
-    if (this.cNg == null)
+    if (this.cNU == null)
     {
       AppMethodBeat.o(140028);
       return null;
     }
-    this.cNh.setLength(0);
-    StringBuilder localStringBuilder = this.cNh.append(paramChar).append("|").append(this.cNg.fontSize).append("|");
-    if (this.cNg.sB == null) {}
-    for (Object localObject = "null";; localObject = Integer.valueOf(this.cNg.sB.hashCode()))
+    this.cNV.setLength(0);
+    StringBuilder localStringBuilder = this.cNV.append(paramChar).append("|").append(this.cNU.fontSize).append("|");
+    if (this.cNU.bGp == null) {}
+    for (Object localObject = "null";; localObject = Integer.valueOf(this.cNU.bGp.hashCode()))
     {
       localObject = localStringBuilder.append(localObject);
-      if (this.cNg.cNx) {
-        ((StringBuilder)localObject).append("|").append(this.cNg.strokeWidth);
+      if (this.cNU.cOl) {
+        ((StringBuilder)localObject).append("|").append(this.cNU.strokeWidth);
       }
-      if (this.cNg.cNy != null) {
-        ((StringBuilder)localObject).append("|").append(this.cNg.cNy.cND);
+      if (this.cNU.cOm != null) {
+        ((StringBuilder)localObject).append("|").append(this.cNU.cOm.cOr);
       }
       localObject = ((StringBuilder)localObject).toString();
       AppMethodBeat.o(140028);
@@ -210,67 +210,67 @@ final class g
   final void a(j paramj)
   {
     AppMethodBeat.i(140029);
-    this.cNg = paramj;
-    h localh = this.cNb;
-    localh.cNm = paramj;
-    localh.cNn.setTypeface(paramj.sB);
-    localh.cNn.setTextSize(paramj.fontSize);
-    if (paramj.cNx)
+    this.cNU = paramj;
+    h localh = this.cNP;
+    localh.cOa = paramj;
+    localh.cOb.setTypeface(paramj.bGp);
+    localh.cOb.setTextSize(paramj.fontSize);
+    if (paramj.cOl)
     {
-      localh.cNn.setStyle(Paint.Style.STROKE);
-      localh.cNn.setStrokeWidth(paramj.strokeWidth);
+      localh.cOb.setStyle(Paint.Style.STROKE);
+      localh.cOb.setStrokeWidth(paramj.strokeWidth);
     }
     for (;;)
     {
-      localh.cNn.setTextSkewX(0.0F);
-      localh.cNn.setFakeBoldText(false);
-      if (paramj.cNy != null)
+      localh.cOb.setTextSkewX(0.0F);
+      localh.cOb.setFakeBoldText(false);
+      if (paramj.cOm != null)
       {
-        if ((paramj.sB == null) || (paramj.sB.getStyle() != paramj.cNy.cND))
+        if ((paramj.bGp == null) || (paramj.bGp.getStyle() != paramj.cOm.cOr))
         {
-          if ((paramj.cNy == j.a.cNB) || (paramj.cNy == j.a.cNC)) {
-            localh.cNn.setTextSkewX(-0.25F);
+          if ((paramj.cOm == j.a.cOp) || (paramj.cOm == j.a.cOq)) {
+            localh.cOb.setTextSkewX(-0.25F);
           }
-          if ((paramj.cNy == j.a.cNA) || (paramj.cNy == j.a.cNC)) {
-            localh.cNn.setFakeBoldText(true);
+          if ((paramj.cOm == j.a.cOo) || (paramj.cOm == j.a.cOq)) {
+            localh.cOb.setFakeBoldText(true);
           }
         }
-        if (paramj.cNy.isBold()) {
-          localh.cNn.setFakeBoldText(true);
+        if (paramj.cOm.Vl()) {
+          localh.cOb.setFakeBoldText(true);
         }
       }
-      if (localh.cNo != null) {
-        localh.cNo.a(localh.cNn, paramj.cNw, paramj.fontSize);
+      if (localh.cOc != null) {
+        localh.cOc.a(localh.cOb, paramj.cOk, paramj.fontSize);
       }
-      localh.cNn.getFontMetrics(localh.cNr);
+      localh.cOb.getFontMetrics(localh.cOf);
       AppMethodBeat.o(140029);
       return;
-      localh.cNn.setStyle(Paint.Style.FILL);
+      localh.cOb.setStyle(Paint.Style.FILL);
     }
   }
   
   final void clear()
   {
     AppMethodBeat.i(140031);
-    if (this.cNc != null)
+    if (this.cNQ != null)
     {
-      Iterator localIterator = this.cNc.values().iterator();
+      Iterator localIterator = this.cNQ.values().iterator();
       while (localIterator.hasNext())
       {
         k localk = (k)localIterator.next();
-        a locala = this.cNd;
+        a locala = this.cNR;
         if (localk != null)
         {
-          localk.setEmpty();
-          locala.cNi.offer(localk);
+          localk.Vn();
+          locala.cNW.offer(localk);
         }
       }
-      this.cNc.clear();
+      this.cNQ.clear();
     }
     AppMethodBeat.o(140031);
   }
   
-  final FloatBuffer eb(String paramString)
+  final FloatBuffer eC(String paramString)
   {
     AppMethodBeat.i(140022);
     if ((paramString == null) || (paramString.length() == 0))
@@ -278,29 +278,29 @@ final class g
       AppMethodBeat.o(140022);
       return null;
     }
-    List localList = ec(paramString);
+    List localList = eD(paramString);
     if ((localList == null) || (localList.size() == 0))
     {
       AppMethodBeat.o(140022);
       return null;
     }
     int i = Math.max(paramString.length(), 10) * 40 + 16;
-    if ((this.cNe == null) || (this.cNe.capacity() * 4 < i)) {
-      this.cNe = ByteBuffer.allocateDirect(i).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    if ((this.cNS == null) || (this.cNS.capacity() * 4 < i)) {
+      this.cNS = ByteBuffer.allocateDirect(i).order(ByteOrder.nativeOrder()).asFloatBuffer();
     }
-    this.cNe.clear();
-    paramString = this.cNe;
-    float f = h.I(localList);
-    Paint.FontMetrics localFontMetrics = this.cNb.cNr;
+    this.cNS.clear();
+    paramString = this.cNS;
+    float f = h.F(localList);
+    Paint.FontMetrics localFontMetrics = this.cNP.cOf;
     paramString.put(f).put(localFontMetrics.ascent).put(localFontMetrics.bottom).put(localFontMetrics.bottom - localFontMetrics.ascent);
     k.a(paramString, localList);
     paramString.flip();
-    this.cNf.clear();
+    this.cNT.clear();
     AppMethodBeat.o(140022);
     return paramString;
   }
   
-  final float ed(String paramString)
+  final float eE(String paramString)
   {
     AppMethodBeat.i(140030);
     if ((paramString == null) || (paramString.length() == 0))
@@ -308,32 +308,32 @@ final class g
       AppMethodBeat.o(140030);
       return 0.0F;
     }
-    paramString = ec(paramString);
+    paramString = eD(paramString);
     if ((paramString == null) || (paramString.size() == 0))
     {
       AppMethodBeat.o(140030);
       return -1.0F;
     }
-    float f = h.I(paramString);
+    float f = h.F(paramString);
     AppMethodBeat.o(140030);
     return f;
   }
   
   static final class a
   {
-    Queue<k> cNi;
+    Queue<k> cNW;
     
     a()
     {
       AppMethodBeat.i(140019);
-      this.cNi = new LinkedList();
+      this.cNW = new LinkedList();
       AppMethodBeat.o(140019);
     }
     
-    final k Rz()
+    final k Vj()
     {
       AppMethodBeat.i(140020);
-      k localk = (k)this.cNi.poll();
+      k localk = (k)this.cNW.poll();
       if (localk == null)
       {
         localk = new k();
@@ -347,7 +347,7 @@ final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.magicbrush.handler.glfont.g
  * JD-Core Version:    0.7.0.1
  */

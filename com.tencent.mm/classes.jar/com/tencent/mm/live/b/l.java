@@ -1,279 +1,229 @@
 package com.tencent.mm.live.b;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.live.b.a.o;
-import com.tencent.mm.live.core.core.b.e;
-import com.tencent.mm.live.core.core.b.f;
-import com.tencent.mm.live.core.core.e.a;
-import com.tencent.mm.live.core.debug.a;
-import com.tencent.mm.protocal.protobuf.aei;
-import com.tencent.mm.protocal.protobuf.cfd;
-import com.tencent.mm.protocal.protobuf.civ;
-import com.tencent.mm.protocal.protobuf.cjb;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
-import com.tencent.trtc.TRTCCloudDef.TRTCParams;
-import kotlin.g.a.s;
-import kotlin.g.b.p;
-import kotlin.k.j;
+import com.tencent.mm.live.b.h;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import com.tencent.mm.ui.aw;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/model/LaunchLiveRoom;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "name", "", "roomId", "context", "Landroid/content/Context;", "(Ljava/lang/String;Ljava/lang/String;Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "createCallback", "Lkotlin/Function5;", "", "Lkotlin/ParameterName;", "success", "needFaceVerify", "verifyUrl", "", "errCode", "errMsg", "", "joinCallback", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "liveRoomInfo", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "trtcParams", "getName", "()Ljava/lang/String;", "getRoomId", "createLive", "callback", "joinLive", "launch", "Lkotlin/Function6;", "onSceneEnd", "errType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "processCreateLiveResponse", "response", "Lcom/tencent/mm/protocal/protobuf/CreateLiveResponse;", "processJoinLiveResponse", "Lcom/tencent/mm/protocal/protobuf/JoinLiveResponse;", "Companion", "plugin-logic_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/model/LiveConstants;", "", "()V", "AnchorErrStastus", "ChatRoomLiveFlag", "Companion", "Confetti", "FinderLiveMsgTypeExtraKey", "LiveConfigBitSet", "LiveMsgType", "LiveStatus", "Log", "MMKV", "MenuItem", "RequestCode", "TestMMKV", "ThresHold", "TimeOut", "TrtcRole", "UIRouter", "emMMFinderLiveScene", "plugin-logic_release"})
 public final class l
-  implements i
 {
-  public static final a hGa;
-  private final Context context;
-  public s<? super Boolean, ? super Boolean, ? super String, ? super Integer, ? super String, kotlin.x> hFY;
-  public s<? super Boolean, ? super Integer, ? super String, ? super e, ? super TRTCCloudDef.TRTCParams, kotlin.x> hFZ;
-  public final String name;
-  public final String roomId;
+  private static final String kug;
+  private static final String kuh;
+  private static final int kui = 5;
+  public static final a kuj;
   
   static
   {
-    AppMethodBeat.i(207579);
-    hGa = new a((byte)0);
-    AppMethodBeat.o(207579);
+    AppMethodBeat.i(189236);
+    kuj = new a((byte)0);
+    kug = "https://" + WeChatHosts.domainString(b.h.host_weixin110_qq_com) + "/security/readtemplate?t=weixin_report/w_type&scene=%d&liveid=%s&liveidentityid=%s&liveroomid=%s";
+    kuh = "https://" + WeChatHosts.domainString(b.h.host_support_weixin_qq_com) + "/cgi-bin/mmsupport-bin/newreadtemplate?t=live_forensic/index";
+    kui = 5;
+    AppMethodBeat.o(189236);
   }
   
-  public l(String paramString1, String paramString2, Context paramContext)
-  {
-    AppMethodBeat.i(207578);
-    this.name = paramString1;
-    this.roomId = paramString2;
-    this.context = paramContext;
-    AppMethodBeat.o(207578);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
-  {
-    AppMethodBeat.i(207577);
-    Object localObject1;
-    if ((paramq instanceof com.tencent.mm.live.b.a.l))
-    {
-      localObject1 = a.hCA;
-      a.GA("anchor create live error:" + paramInt1 + " code:" + paramInt2 + " msg:" + paramString);
-      if ((paramInt1 != 0) || (paramInt2 != 0))
-      {
-        Log.i("MicroMsg.LaunchLiveRoom", "launch live room failed");
-        paramq = this.hFY;
-        if (paramq != null)
-        {
-          localObject1 = Boolean.FALSE;
-          if (paramString != null) {
-            break label948;
-          }
-          paramString = "";
-        }
-      }
-    }
-    label933:
-    label942:
-    label948:
-    for (;;)
-    {
-      paramq.a(localObject1, localObject1, "", Integer.valueOf(paramInt2), paramString);
-      Object localObject3;
-      label195:
-      do
-      {
-        paramString = g.aAg();
-        p.g(paramString, "MMKernel.network()");
-        paramString.azz().b(3501, (i)this);
-        AppMethodBeat.o(207577);
-        return;
-        localObject3 = ((com.tencent.mm.live.b.a.l)paramq).hKf;
-        if (localObject3 == null) {
-          break label440;
-        }
-        if (!WeChatEnvironment.hasDebugger()) {
-          break;
-        }
-        paramq = o.f.hGW;
-        paramq = MultiProcessMMKV.getSingleMMKV(o.f.aFC());
-        localObject1 = o.h.hHd;
-        if (!paramq.getBoolean(o.h.aFH(), false)) {
-          break;
-        }
-        paramInt1 = 1;
-        if ((paramInt1 != 0) || (!((aei)localObject3).KKE)) {
-          break label319;
-        }
-        paramq = ((aei)localObject3).LpG;
-        if (paramq != null)
-        {
-          localObject1 = x.hJf;
-          x.a(paramq);
-          paramq = new StringBuilder("processCreateLiveResponse live_id:");
-          localObject1 = x.hJf;
-          Log.i("MicroMsg.LaunchLiveRoom", x.aGr().hyH);
-        }
-        paramq = this.hFY;
-      } while (paramq == null);
-      localObject1 = Boolean.TRUE;
-      Object localObject2 = Boolean.FALSE;
-      if (paramString == null) {
-        paramString = "";
-      }
-      for (;;)
-      {
-        paramq.a(localObject1, localObject2, "", Integer.valueOf(paramInt2), paramString);
-        break;
-        paramInt1 = 0;
-        break label195;
-        label319:
-        if (Util.isNullOrNil(((aei)localObject3).KKF))
-        {
-          paramq = this.hFY;
-          if (paramq == null) {
-            break;
-          }
-          localObject1 = Boolean.FALSE;
-          if (paramString != null) {
-            break label942;
-          }
-          paramString = "";
-        }
-        for (;;)
-        {
-          paramq.a(localObject1, localObject1, "", Integer.valueOf(paramInt2), paramString);
-          break;
-          paramq = this.hFY;
-          if (paramq == null) {
-            break;
-          }
-          localObject1 = Boolean.FALSE;
-          localObject2 = Boolean.TRUE;
-          localObject3 = ((aei)localObject3).KKF;
-          p.g(localObject3, "response.verify_url");
-          if (paramString == null) {
-            paramString = "";
-          }
-          for (;;)
-          {
-            paramq.a(localObject1, localObject2, localObject3, Integer.valueOf(paramInt2), paramString);
-            break;
-            label440:
-            paramq = this.hFY;
-            if (paramq == null) {
-              break;
-            }
-            localObject1 = Boolean.FALSE;
-            if (paramString == null) {
-              paramString = "";
-            }
-            for (;;)
-            {
-              paramq.a(localObject1, localObject1, "", Integer.valueOf(paramInt2), paramString);
-              break;
-              if ((paramq instanceof o))
-              {
-                localObject1 = a.hCA;
-                a.GA("visitor join live error:" + paramInt1 + " code:" + paramInt2 + " msg:" + paramString);
-                if ((paramInt1 == 0) && (paramInt2 == 0)) {
-                  break label639;
-                }
-                Log.i("MicroMsg.LaunchLiveRoom", "launch live room failed");
-                paramq = this.hFZ;
-                if (paramq != null)
-                {
-                  localObject1 = Boolean.FALSE;
-                  if (paramString != null) {
-                    break label933;
-                  }
-                  paramString = "";
-                }
-              }
-              for (;;)
-              {
-                localObject2 = f.hzy;
-                localObject2 = f.aDr();
-                localObject3 = f.hzy;
-                paramq.a(localObject1, Integer.valueOf(paramInt2), paramString, localObject2, f.aDq());
-                label639:
-                do
-                {
-                  do
-                  {
-                    paramString = g.aAg();
-                    p.g(paramString, "MMKernel.network()");
-                    paramString.azz().b(3797, (i)this);
-                    AppMethodBeat.o(207577);
-                    return;
-                    paramq = ((o)paramq).hKo;
-                    if (paramq == null) {
-                      break;
-                    }
-                    paramString = paramq.LFH;
-                  } while (paramString == null);
-                  paramq = x.hJf;
-                  x.a(paramString);
-                  localObject1 = new TRTCCloudDef.TRTCParams();
-                  paramString = this.name;
-                  paramq = x.hJf;
-                  localObject2 = new e(paramString, x.aGr().hyH, 0, null, 0L, 0L, 0, null, null, 0L, 4092);
-                  paramString = n.hGh;
-                  localObject3 = this.name;
-                  paramString = x.hJf;
-                  civ localciv = x.aGr();
-                  paramString = x.hJf;
-                  paramq = x.aGs();
-                  paramString = paramq;
-                  if (paramq == null) {
-                    paramString = new cjb();
-                  }
-                  n.a((String)localObject3, paramString, localciv, (TRTCCloudDef.TRTCParams)localObject1, (e)localObject2);
-                  paramString = e.a.hxc;
-                  ((e)localObject2).hzl = e.a.aCe();
-                  paramString = x.hJf;
-                  paramString = x.aGs();
-                  if (paramString != null) {}
-                  for (long l = paramString.Mor;; l = 0L)
-                  {
-                    l = j.aM((l - 60L) * 1000L, 60000L);
-                    r.hIg.zz(l);
-                    paramString = this.hFZ;
-                    if (paramString == null) {
-                      break;
-                    }
-                    paramString.a(Boolean.TRUE, Integer.valueOf(0), "", localObject2, localObject1);
-                    break;
-                  }
-                  paramq = this.hFZ;
-                } while (paramq == null);
-                localObject1 = Boolean.FALSE;
-                if (paramString == null) {
-                  paramString = "";
-                }
-                for (;;)
-                {
-                  localObject2 = f.hzy;
-                  localObject2 = f.aDr();
-                  localObject3 = f.hzy;
-                  paramq.a(localObject1, Integer.valueOf(paramInt2), paramString, localObject2, f.aDq());
-                  break;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/model/LaunchLiveRoom$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/model/LiveConstants$Companion;", "", "()V", "ExposeH5Url", "", "getExposeH5Url", "()Ljava/lang/String;", "SHARE_RETRY_MAX_COUNT", "", "getSHARE_RETRY_MAX_COUNT", "()I", "VISITOR_GUIDE_URL", "getVISITOR_GUIDE_URL", "plugin-logic_release"})
   public static final class a {}
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/model/LiveConstants$Confetti;", "", "()V", "CONFETTI_SIZE", "", "getCONFETTI_SIZE", "()I", "HIGH_LIGHT_CONFETTI_SIZE", "getHIGH_LIGHT_CONFETTI_SIZE", "plugin-logic_release"})
+  public static final class b
+  {
+    private static final int kuk;
+    private static final int kul;
+    public static final b kum;
+    
+    static
+    {
+      AppMethodBeat.i(196557);
+      kum = new b();
+      kuk = aw.fromDPToPix(MMApplicationContext.getContext(), 40);
+      kul = aw.fromDPToPix(MMApplicationContext.getContext(), 48);
+      AppMethodBeat.o(196557);
+    }
+    
+    public static int aNC()
+    {
+      return kuk;
+    }
+    
+    public static int aND()
+    {
+      return kul;
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/model/LiveConstants$MMKV;", "", "()V", "ANCHOR_VERIFY", "", "getANCHOR_VERIFY", "()Ljava/lang/String;", "KEY_ANCHOR_LIVE_ID", "getKEY_ANCHOR_LIVE_ID", "KEY_VISITOR_MIC_DIALOG", "getKEY_VISITOR_MIC_DIALOG", "TAG_LIVE_CORE", "getTAG_LIVE_CORE", "plugin-logic_release"})
+  public static final class e
+  {
+    private static final String kuA = "key_visitor_mic_dialog";
+    public static final e kuB;
+    private static final String kux = "tag_live_core";
+    private static final String kuy = "key_anchor_live_id";
+    private static final String kuz = "anchor_verify";
+    
+    static
+    {
+      AppMethodBeat.i(200984);
+      kuB = new e();
+      kux = "tag_live_core";
+      kuy = "key_anchor_live_id";
+      kuz = "anchor_verify";
+      kuA = "key_visitor_mic_dialog";
+      AppMethodBeat.o(200984);
+    }
+    
+    public static String aNJ()
+    {
+      return kux;
+    }
+    
+    public static String aNK()
+    {
+      return kuz;
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/model/LiveConstants$MenuItem;", "", "()V", "MENU_BAN_COMMENT", "", "getMENU_BAN_COMMENT", "()I", "MENU_QUIT_LIVE", "getMENU_QUIT_LIVE", "MENU_QUIT_LIVE_BUT_NOT_CLOSE", "getMENU_QUIT_LIVE_BUT_NOT_CLOSE", "plugin-logic_release"})
+  public static final class f
+  {
+    private static final int kuC = 0;
+    private static final int kuD = 1;
+    private static final int kuE = 2;
+    public static final f kuF;
+    
+    static
+    {
+      AppMethodBeat.i(191554);
+      kuF = new f();
+      kuD = 1;
+      kuE = 2;
+      AppMethodBeat.o(191554);
+    }
+    
+    public static int aNL()
+    {
+      return kuC;
+    }
+    
+    public static int aNM()
+    {
+      return kuD;
+    }
+    
+    public static int aNN()
+    {
+      return kuE;
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/model/LiveConstants$TestMMKV;", "", "()V", "TEST_MMKV_LIVE_FACE_VERIFY", "", "getTEST_MMKV_LIVE_FACE_VERIFY", "()Ljava/lang/String;", "TEST_MMKV_LIVE_SKIP_MOBILE_VERIFY", "getTEST_MMKV_LIVE_SKIP_MOBILE_VERIFY", "plugin-logic_release"})
+  public static final class g
+  {
+    private static final String kuG = "test_mmkv_live_face_verify";
+    private static final String kuH = "test_mmkv_live_skip_mobile_verify";
+    public static final g kuI;
+    
+    static
+    {
+      AppMethodBeat.i(200268);
+      kuI = new g();
+      kuG = "test_mmkv_live_face_verify";
+      kuH = "test_mmkv_live_skip_mobile_verify";
+      AppMethodBeat.o(200268);
+    }
+    
+    public static String aNO()
+    {
+      return kuG;
+    }
+    
+    public static String aNP()
+    {
+      return kuH;
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/model/LiveConstants$TimeOut;", "", "()V", "GET_MESSAGE_TIMEOUT", "", "getGET_MESSAGE_TIMEOUT", "()J", "REPLAY_TIMEOUT", "getREPLAY_TIMEOUT", "plugin-logic_release"})
+  public static final class h
+  {
+    private static final long kuJ = 604800000L;
+    private static final long kuK = 5000L;
+    public static final h kuL;
+    
+    static
+    {
+      AppMethodBeat.i(188772);
+      kuL = new h();
+      kuJ = 604800000L;
+      kuK = 5000L;
+      AppMethodBeat.o(188772);
+    }
+    
+    public static long aNQ()
+    {
+      return kuK;
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/model/LiveConstants$TrtcRole;", "", "()V", "TRTC_ROLE_ANCHOR", "", "getTRTC_ROLE_ANCHOR", "()I", "TRTC_ROLE_AUDIENCE", "getTRTC_ROLE_AUDIENCE", "plugin-logic_release"})
+  public static final class i
+  {
+    private static final int kuM = 0;
+    private static final int kuN = 1;
+    public static final i kuO;
+    
+    static
+    {
+      AppMethodBeat.i(189019);
+      kuO = new i();
+      kuN = 1;
+      AppMethodBeat.o(189019);
+    }
+    
+    public static int aNR()
+    {
+      return kuM;
+    }
+    
+    public static int aNS()
+    {
+      return kuN;
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/model/LiveConstants$UIRouter;", "", "()V", "ROUTER_TO_ANCHOR_LIVE", "", "getROUTER_TO_ANCHOR_LIVE", "()I", "ROUTER_TO_REPLAY_LIVE", "getROUTER_TO_REPLAY_LIVE", "ROUTER_TO_VISITOR_LIVE", "getROUTER_TO_VISITOR_LIVE", "plugin-logic_release"})
+  public static final class j
+  {
+    private static final int kuP = 0;
+    private static final int kuQ = 1;
+    private static final int kuR = 2;
+    public static final j kuS;
+    
+    static
+    {
+      AppMethodBeat.i(190373);
+      kuS = new j();
+      kuQ = 1;
+      kuR = 2;
+      AppMethodBeat.o(190373);
+    }
+    
+    public static int aNT()
+    {
+      return kuP;
+    }
+    
+    public static int aNU()
+    {
+      return kuQ;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.b.l
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,60 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
 import android.app.Activity;
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.feed.af.a;
-import com.tencent.mm.plugin.finder.feed.af.b;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.feed.am.a;
+import com.tencent.mm.plugin.finder.feed.am.b;
 import com.tencent.mm.plugin.finder.feed.c.a;
 import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.FinderProfileFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
-import com.tencent.mm.plugin.finder.feed.model.internal.e;
-import com.tencent.mm.plugin.finder.model.bo;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
+import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.plugin.finder.report.u;
+import com.tencent.mm.plugin.finder.viewmodel.component.aj;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.component.g.a;
 import java.util.HashMap;
 import kotlin.g.b.p;
+import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderSnsGridFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderBaseGridFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/FinderSnsPostUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderSnsPostUIContract$Presenter;", "()V", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "needFinishWhenResume", "", "getNeedFinishWhenResume", "()Z", "setNeedFinishWhenResume", "(Z)V", "presenter", "viewCallback", "getLayoutId", "", "getLoader", "getPresenter", "getViewCallback", "initOnCreate", "", "onBackPressed", "isClickEmptyButton", "onResume", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderSnsGridFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderBaseGridFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/FinderSnsPostUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderSnsPostUIContract$Presenter;", "()V", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "needFinishWhenResume", "", "getNeedFinishWhenResume", "()Z", "setNeedFinishWhenResume", "(Z)V", "presenter", "viewCallback", "getLayoutId", "", "getLoader", "getPresenter", "getViewCallback", "initOnCreate", "", "onBackPressed", "isClickEmptyButton", "onResume", "plugin-finder_release"})
 public final class FinderSnsGridFeedUI
-  extends FinderBaseGridFeedUI<af.b, af.a>
+  extends FinderBaseGridFeedUI<am.b, am.a>
 {
   private HashMap _$_findViewCache;
-  private BaseFinderFeedLoader tFM;
-  private af.a ucU;
-  private af.b ucV;
-  public boolean ucW;
+  public boolean xSA;
+  private am.a xSy;
+  private am.b xSz;
+  private BaseFinderFeedLoader xnX;
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(245549);
+    AppMethodBeat.i(270200);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(245549);
+    AppMethodBeat.o(270200);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(245548);
+    AppMethodBeat.i(270199);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -59,80 +65,80 @@ public final class FinderSnsGridFeedUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(245548);
+    AppMethodBeat.o(270199);
     return localView1;
   }
   
   public final int getLayoutId()
   {
-    return 2131494636;
+    return b.g.finder_sns_post_list_layout;
   }
   
   public final void initOnCreate()
   {
-    AppMethodBeat.i(245541);
+    AppMethodBeat.i(270185);
     Object localObject1 = getContext();
-    p.g(localObject1, "context");
-    setActionbarColor(((AppCompatActivity)localObject1).getResources().getColor(2131099740));
+    p.j(localObject1, "context");
+    setActionbarColor(((AppCompatActivity)localObject1).getResources().getColor(b.c.Dark_0));
     hideTitleView();
-    findViewById(2131296365).setOnClickListener((View.OnClickListener)new c(this));
-    localObject1 = e.tYq;
-    Object localObject2 = z.aUg();
-    p.g(localObject2, "ConfigStorageLogic.getMyFinderUsername()");
-    com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.PRN;
-    localObject1 = new FinderProfileFeedLoader((e)localObject1, (String)localObject2, ((FinderReporterUIC)com.tencent.mm.ui.component.a.b((AppCompatActivity)this).get(FinderReporterUIC.class)).dIx());
+    findViewById(b.f.action_bar_back_button).setOnClickListener((View.OnClickListener)new c(this));
+    localObject1 = com.tencent.mm.plugin.finder.feed.model.internal.g.xKu;
+    Object localObject2 = z.bdh();
+    p.j(localObject2, "ConfigStorageLogic.getMyFinderUsername()");
+    com.tencent.mm.ui.component.g localg = com.tencent.mm.ui.component.g.Xox;
+    localObject1 = new FinderProfileFeedLoader((com.tencent.mm.plugin.finder.feed.model.internal.g)localObject1, (String)localObject2, ((aj)com.tencent.mm.ui.component.g.b((AppCompatActivity)this).i(aj.class)).ekY());
     ((FinderProfileFeedLoader)localObject1).setNeedToFilterLiveData(true);
     ((FinderProfileFeedLoader)localObject1).setFetchEndCallback((kotlin.g.a.b)new a((FinderProfileFeedLoader)localObject1, this));
-    this.tFM = ((BaseFinderFeedLoader)localObject1);
+    this.xnX = ((BaseFinderFeedLoader)localObject1);
     localObject1 = (MMActivity)this;
-    localObject2 = this.tFM;
+    localObject2 = this.xnX;
     if (localObject2 == null) {
-      p.btv("feedLoader");
+      p.bGy("feedLoader");
     }
-    this.ucU = new af.a((MMActivity)localObject1, (BaseFinderFeedLoader)localObject2);
-    this.ucV = new af.b((MMActivity)this);
-    localObject1 = this.ucV;
+    this.xSy = new am.a((MMActivity)localObject1, (BaseFinderFeedLoader)localObject2);
+    this.xSz = new am.b((MMActivity)this);
+    localObject1 = this.xSz;
     if (localObject1 == null) {
-      p.btv("viewCallback");
+      p.bGy("viewCallback");
     }
-    localObject2 = this.ucU;
+    localObject2 = this.xSy;
     if (localObject2 == null) {
-      p.btv("presenter");
+      p.bGy("presenter");
     }
-    ((af.b)localObject1).a((c.a)localObject2);
-    if (Util.isNullOrNil(z.aUg()))
+    ((am.b)localObject1).a((c.a)localObject2);
+    if (Util.isNullOrNil(z.bdh()))
     {
-      localObject1 = this.ucV;
+      localObject1 = this.xSz;
       if (localObject1 == null) {
-        p.btv("viewCallback");
+        p.bGy("viewCallback");
       }
-      localObject1 = ((af.b)localObject1).getEmptyView();
+      localObject1 = ((am.b)localObject1).getEmptyView();
       if (localObject1 != null)
       {
-        localObject2 = ((View)localObject1).findViewById(2131300093);
-        p.g(localObject2, "findViewById<View>(R.id.empty_layout)");
+        localObject2 = ((View)localObject1).findViewById(b.f.empty_layout);
+        p.j(localObject2, "findViewById<View>(R.id.empty_layout)");
         ((View)localObject2).setVisibility(0);
-        localObject2 = ((View)localObject1).findViewById(2131300106);
-        p.g(localObject2, "findViewById<TextView>(R.id.empty_tips1)");
-        ((TextView)localObject2).setText((CharSequence)((View)localObject1).getContext().getString(2131760593));
-        localObject2 = ((View)localObject1).findViewById(2131300107);
-        p.g(localObject2, "findViewById<TextView>(R.id.empty_tips2)");
-        ((TextView)localObject2).setText((CharSequence)((View)localObject1).getContext().getString(2131760594));
-        ((View)localObject1).findViewById(2131300082).setOnClickListener((View.OnClickListener)new b(this));
-        localObject1 = findViewById(2131296368);
-        p.g(localObject1, "this@FinderSnsGridFeedUI….action_bar_middle_title)");
+        localObject2 = ((View)localObject1).findViewById(b.f.empty_tips1);
+        p.j(localObject2, "findViewById<TextView>(R.id.empty_tips1)");
+        ((TextView)localObject2).setText((CharSequence)((View)localObject1).getContext().getString(b.j.finder_sns_post_ui_empty_no_account_tips1));
+        localObject2 = ((View)localObject1).findViewById(b.f.empty_tips2);
+        p.j(localObject2, "findViewById<TextView>(R.id.empty_tips2)");
+        ((TextView)localObject2).setText((CharSequence)((View)localObject1).getContext().getString(b.j.finder_sns_post_ui_empty_no_account_tips2));
+        ((View)localObject1).findViewById(b.f.empty_button).setOnClickListener((View.OnClickListener)new b(this));
+        localObject1 = findViewById(b.f.action_bar_middle_title);
+        p.j(localObject1, "this@FinderSnsGridFeedUI….action_bar_middle_title)");
         ((View)localObject1).setVisibility(8);
-        AppMethodBeat.o(245541);
+        AppMethodBeat.o(270185);
         return;
       }
     }
-    AppMethodBeat.o(245541);
+    AppMethodBeat.o(270185);
   }
   
-  public final void nd(boolean paramBoolean)
+  public final void oC(boolean paramBoolean)
   {
-    AppMethodBeat.i(245545);
-    boolean bool = Util.isNullOrNil(z.aUg());
+    AppMethodBeat.i(270193);
+    boolean bool = Util.isNullOrNil(z.bdh());
     int i;
     int j;
     label34:
@@ -140,7 +146,7 @@ public final class FinderSnsGridFeedUI
     String str;
     if (bool)
     {
-      i = 2131760594;
+      i = b.j.finder_sns_post_ui_empty_no_account_tips2;
       if (!paramBoolean) {
         break label134;
       }
@@ -148,77 +154,77 @@ public final class FinderSnsGridFeedUI
         break label128;
       }
       j = 5;
-      localObject = com.tencent.mm.plugin.finder.report.q.vgE;
-      localObject = com.tencent.mm.ui.component.a.PRN;
-      str = ((FinderReporterUIC)com.tencent.mm.ui.component.a.b((AppCompatActivity)this).get(FinderReporterUIC.class)).sessionId;
+      localObject = u.zXM;
+      localObject = com.tencent.mm.ui.component.g.Xox;
+      str = ((aj)com.tencent.mm.ui.component.g.b((AppCompatActivity)this).i(aj.class)).sessionId;
       localObject = str;
       if (str == null) {
         localObject = "";
       }
       str = getContext().getString(i);
-      p.g(str, "context.getString(strId)");
-      com.tencent.mm.plugin.finder.report.q.a((String)localObject, j, str, bool, false, 0L, 32);
+      p.j(str, "context.getString(strId)");
+      u.a((String)localObject, j, str, bool, false, 0L, 32);
     }
     for (;;)
     {
       finish();
-      AppMethodBeat.o(245545);
+      AppMethodBeat.o(270193);
       return;
-      i = 2131760596;
+      i = b.j.finder_sns_post_ui_empty_no_content_tips2;
       break;
       label128:
       j = 7;
       break label34;
       label134:
-      localObject = this.ucV;
+      localObject = this.xSz;
       if (localObject == null) {
-        p.btv("viewCallback");
+        p.bGy("viewCallback");
       }
-      localObject = ((af.b)localObject).getEmptyView();
+      localObject = ((am.b)localObject).getEmptyView();
       if ((localObject != null) && (((View)localObject).getVisibility() == 0))
       {
         if (bool) {}
         for (j = 6;; j = 8)
         {
-          localObject = com.tencent.mm.plugin.finder.report.q.vgE;
-          localObject = com.tencent.mm.ui.component.a.PRN;
-          str = ((FinderReporterUIC)com.tencent.mm.ui.component.a.b((AppCompatActivity)this).get(FinderReporterUIC.class)).sessionId;
+          localObject = u.zXM;
+          localObject = com.tencent.mm.ui.component.g.Xox;
+          str = ((aj)com.tencent.mm.ui.component.g.b((AppCompatActivity)this).i(aj.class)).sessionId;
           localObject = str;
           if (str == null) {
             localObject = "";
           }
           str = getContext().getString(i);
-          p.g(str, "context.getString(strId)");
-          com.tencent.mm.plugin.finder.report.q.a((String)localObject, j, str, bool, false, 0L, 32);
+          p.j(str, "context.getString(strId)");
+          u.a((String)localObject, j, str, bool, false, 0L, 32);
           break;
         }
       }
-      localObject = com.tencent.mm.plugin.finder.report.q.vgE;
-      localObject = com.tencent.mm.ui.component.a.PRN;
-      str = ((FinderReporterUIC)com.tencent.mm.ui.component.a.b((AppCompatActivity)this).get(FinderReporterUIC.class)).sessionId;
+      localObject = u.zXM;
+      localObject = com.tencent.mm.ui.component.g.Xox;
+      str = ((aj)com.tencent.mm.ui.component.g.b((AppCompatActivity)this).i(aj.class)).sessionId;
       localObject = str;
       if (str == null) {
         localObject = "";
       }
-      com.tencent.mm.plugin.finder.report.q.a((String)localObject, 4, null, false, false, 0L, 60);
+      u.a((String)localObject, 4, null, false, false, 0L, 60);
     }
   }
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(245546);
-    nd(false);
-    AppMethodBeat.o(245546);
+    AppMethodBeat.i(270195);
+    oC(false);
+    AppMethodBeat.o(270195);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(245542);
+    AppMethodBeat.i(270187);
     super.onResume();
-    if (this.ucW) {
+    if (this.xSA) {
       finish();
     }
-    AppMethodBeat.o(245542);
+    AppMethodBeat.o(270187);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -227,10 +233,10 @@ public final class FinderSnsGridFeedUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderSnsGridFeedUI$initOnCreate$2$1"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderSnsGridFeedUI$initOnCreate$2$1"})
   static final class a
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<IResponse<bo>, x>
+    extends q
+    implements kotlin.g.a.b<IResponse<bu>, x>
   {
     a(FinderProfileFeedLoader paramFinderProfileFeedLoader, FinderSnsGridFeedUI paramFinderSnsGridFeedUI)
     {
@@ -238,7 +244,7 @@ public final class FinderSnsGridFeedUI
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/feed/ui/FinderSnsGridFeedUI$initOnCreate$3$1"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/feed/ui/FinderSnsGridFeedUI$initOnCreate$3$1"})
   static final class b
     implements View.OnClickListener
   {
@@ -246,17 +252,17 @@ public final class FinderSnsGridFeedUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(245539);
+      AppMethodBeat.i(277966);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderSnsGridFeedUI$initOnCreate$$inlined$apply$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      this.ucY.nd(true);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderSnsGridFeedUI$initOnCreate$$inlined$apply$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(245539);
+      localb.bn(paramView);
+      a.c("com/tencent/mm/plugin/finder/feed/ui/FinderSnsGridFeedUI$initOnCreate$$inlined$apply$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      this.xSC.oC(true);
+      a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderSnsGridFeedUI$initOnCreate$$inlined$apply$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(277966);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
@@ -264,13 +270,13 @@ public final class FinderSnsGridFeedUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(245540);
+      AppMethodBeat.i(230620);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderSnsGridFeedUI$initOnCreate$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      this.ucY.nd(false);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderSnsGridFeedUI$initOnCreate$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(245540);
+      localb.bn(paramView);
+      a.c("com/tencent/mm/plugin/finder/feed/ui/FinderSnsGridFeedUI$initOnCreate$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      this.xSC.oC(false);
+      a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderSnsGridFeedUI$initOnCreate$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(230620);
     }
   }
 }

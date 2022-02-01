@@ -11,18 +11,18 @@ public abstract interface IWWAPI
   
   public abstract String b(WWAppType paramWWAppType);
   
-  public abstract boolean hrE();
+  public abstract boolean ivm();
   
   public static enum WWAppType
   {
     static
     {
-      AppMethodBeat.i(198981);
-      Sxb = new WWAppType("WwAppTypeDefault", 0);
-      Sxc = new WWAppType("WwAppTypeWxwork", 1);
-      Sxd = new WWAppType("WwAppTypeLocal", 2);
-      Sxe = new WWAppType[] { Sxb, Sxc, Sxd };
-      AppMethodBeat.o(198981);
+      AppMethodBeat.i(233270);
+      ZYb = new WWAppType("WwAppTypeDefault", 0);
+      ZYc = new WWAppType("WwAppTypeWxwork", 1);
+      ZYd = new WWAppType("WwAppTypeLocal", 2);
+      ZYe = new WWAppType[] { ZYb, ZYc, ZYd };
+      AppMethodBeat.o(233270);
     }
     
     private WWAppType() {}

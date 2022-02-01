@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.recordvideo.model.audio;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.clo;
+import com.tencent.mm.protocal.protobuf.cul;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"dump", "", "Lcom/tencent/mm/protocal/protobuf/MMSPRRecommendedMusicFeedback;", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"dump", "", "Lcom/tencent/mm/protocal/protobuf/MMSPRRecommendedMusicFeedback;", "plugin-recordvideo_release"})
 public final class d
 {
-  public static final String a(clo paramclo)
+  public static final String a(cul paramcul)
   {
     AppMethodBeat.i(169931);
-    p.h(paramclo, "$this$dump");
-    paramclo = paramclo.MqO + ' ' + paramclo.MqP + ' ' + paramclo.MqQ + ' ' + paramclo.MqR;
+    p.k(paramcul, "$this$dump");
+    paramcul = paramcul.TCc + ' ' + paramcul.TCd + ' ' + paramcul.TCe + ' ' + paramcul.TCf;
     AppMethodBeat.o(169931);
-    return paramclo;
+    return paramcul;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.model.audio.d
  * JD-Core Version:    0.7.0.1
  */

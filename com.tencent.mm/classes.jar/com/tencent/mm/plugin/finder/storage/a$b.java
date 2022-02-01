@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderActionStorage$FeedAndNonceId;", "", "feedId", "", "objectNonceId", "", "(JLjava/lang/String;)V", "getFeedId", "()J", "getObjectNonceId", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderActionStorage$FeedAndNonceId;", "", "feedId", "", "objectNonceId", "", "(JLjava/lang/String;)V", "getFeedId", "()J", "getObjectNonceId", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-finder_release"})
 public final class a$b
 {
   public final long feedId;
@@ -26,7 +26,7 @@ public final class a$b
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((this.feedId != paramObject.feedId) || (!p.j(this.objectNonceId, paramObject.objectNonceId))) {}
+        if ((this.feedId != paramObject.feedId) || (!p.h(this.objectNonceId, paramObject.objectNonceId))) {}
       }
     }
     else

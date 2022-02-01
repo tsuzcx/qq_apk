@@ -12,7 +12,7 @@
             <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/g4q" android:background="@drawable/b9w" android:paddingRight="36.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxEms="4" android:singleLine="true" android:layout_toLeftOf="@id/bdn" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
             <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="10.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/g4q">
                 <com.tencent.mm.ui.chatting.view.AvatarImageView android:id="@id/hg" android:layout_marginRight="10.0dip" android:importantForAccessibility="no" style="@style/gn" />
-                <com.tencent.mm.ui.base.NoMeasuredTextView android:id="@id/ft6" android:background="@drawable/b9w" android:paddingRight="@dimen/e" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <com.tencent.mm.ui.base.NoMeasuredTextView android:id="@id/ft6" android:background="@drawable/b9w" android:paddingRight="@dimen/e" android:layout_width="fill_parent" android:layout_height="fill_parent" android:importantForAccessibility="yes" />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>

@@ -1,7 +1,7 @@
 package com.tencent.map.lib.callbacks;
 
 import android.graphics.Bitmap;
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 
 @Keep
 public abstract interface TileOverlayCallback

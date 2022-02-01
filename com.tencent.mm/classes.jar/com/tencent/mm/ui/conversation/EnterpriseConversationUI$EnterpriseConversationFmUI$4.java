@@ -13,19 +13,19 @@ final class EnterpriseConversationUI$EnterpriseConversationFmUI$4
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(234160);
+    AppMethodBeat.i(288877);
     if (paramMotionEvent.getAction() == 0)
     {
-      this.Qfk.x = ((int)paramMotionEvent.getRawX());
-      this.Qfk.y = ((int)paramMotionEvent.getRawY());
+      this.XCp.x = ((int)paramMotionEvent.getRawX());
+      this.XCp.y = ((int)paramMotionEvent.getRawY());
     }
-    AppMethodBeat.o(234160);
+    AppMethodBeat.o(288877);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.EnterpriseConversationUI.EnterpriseConversationFmUI.4
  * JD-Core Version:    0.7.0.1
  */

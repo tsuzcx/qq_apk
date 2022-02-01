@@ -3,38 +3,38 @@ package com.tencent.mm.plugin.qqmail.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class az
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public long Bto;
+  public long HnI;
   public long uin;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(198644);
+    AppMethodBeat.i(249910);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bb(1, this.uin);
-      paramVarArgs.bb(2, this.Bto);
-      AppMethodBeat.o(198644);
+      paramVarArgs.bm(1, this.uin);
+      paramVarArgs.bm(2, this.HnI);
+      AppMethodBeat.o(249910);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.r(1, this.uin);
-      int i = g.a.a.b.b.a.r(2, this.Bto);
-      AppMethodBeat.o(198644);
+      paramInt = g.a.a.b.b.a.p(1, this.uin);
+      int i = g.a.a.b.b.a.p(2, this.HnI);
+      AppMethodBeat.o(249910);
       return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(198644);
+      AppMethodBeat.o(249910);
       return 0;
     }
     if (paramInt == 3)
@@ -44,24 +44,24 @@ public final class az
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(198644);
+        AppMethodBeat.o(249910);
         return -1;
       case 1: 
-        localaz.uin = locala.UbS.zl();
-        AppMethodBeat.o(198644);
+        localaz.uin = locala.abFh.AN();
+        AppMethodBeat.o(249910);
         return 0;
       }
-      localaz.Bto = locala.UbS.zl();
-      AppMethodBeat.o(198644);
+      localaz.HnI = locala.abFh.AN();
+      AppMethodBeat.o(249910);
       return 0;
     }
-    AppMethodBeat.o(198644);
+    AppMethodBeat.o(249910);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.d.az
  * JD-Core Version:    0.7.0.1
  */

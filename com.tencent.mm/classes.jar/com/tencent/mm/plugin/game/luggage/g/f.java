@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.game.luggage.g;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v7.app.e;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
+import androidx.appcompat.app.e;
+import com.tencent.e.h;
 import com.tencent.luggage.d.j;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.plugin.game.luggage.j.g;
 import com.tencent.mm.plugin.webview.luggage.m;
-import com.tencent.mm.plugin.webview.ui.tools.widget.WebViewSearchContentInputFooter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -26,167 +26,162 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class f
   extends i
 {
-  public MMActivity pQZ;
-  public Map<String, i> xxQ;
-  Map<String, Integer> xxR;
-  public a xxS;
-  public FrameLayout xxT;
-  public View xxU;
-  public i xxV;
-  private String xxW;
-  private Dialog xxX;
+  public Map<String, i> CCa;
+  Map<String, Integer> CCb;
+  public a CCc;
+  public FrameLayout CCd;
+  public View CCe;
+  public i CCf;
+  private String CCg;
+  private Dialog CCh;
+  public MMActivity tmY;
   
   public f(j paramj, Bundle paramBundle)
   {
     super(paramj, null, paramBundle);
-    AppMethodBeat.i(186939);
-    this.xxQ = new ConcurrentHashMap();
-    this.xxR = new ConcurrentHashMap();
-    if ((this.mContext instanceof MMActivity)) {
-      this.pQZ = ((MMActivity)this.mContext);
+    AppMethodBeat.i(232291);
+    this.CCa = new ConcurrentHashMap();
+    this.CCb = new ConcurrentHashMap();
+    if ((getContext() instanceof MMActivity)) {
+      this.tmY = ((MMActivity)getContext());
     }
     paramj = paramBundle.getString("game_tab_key");
     if (!Util.isNullOrNil(paramj)) {
-      this.xxQ.put(paramj, this);
+      this.CCa.put(paramj, this);
     }
-    this.xxV = this;
-    this.xyT = this;
+    this.CCf = this;
+    this.CDb = this;
     a(this, paramj);
-    if (gbC() != null) {
-      gbC().gbW();
+    if (gUx() != null) {
+      gUx().gUS();
     }
-    this.xxW = paramBundle.getString("game_pre_inject_data");
+    this.CCg = paramBundle.getString("game_pre_inject_data");
     this.mParams.remove("game_pre_inject_data");
-    if (this.xxX == null)
+    if (this.CCh == null)
     {
-      this.xxX = new e(this.mContext, 2131820980);
-      this.xxX.setCanceledOnTouchOutside(true);
+      this.CCh = new e(getContext(), j.g.CAF);
+      this.CCh.setCanceledOnTouchOutside(true);
     }
-    AppMethodBeat.o(186939);
+    AppMethodBeat.o(232291);
   }
   
   private static void a(i parami)
   {
-    AppMethodBeat.i(186946);
-    if (parami.ITi.isShown()) {
-      parami.zc(false);
+    AppMethodBeat.i(232304);
+    if (parami.gUv()) {
+      parami.CX(false);
     }
-    AppMethodBeat.o(186946);
+    AppMethodBeat.o(232304);
   }
   
-  private void azI(String paramString)
+  private void aJu(String paramString)
   {
-    AppMethodBeat.i(186950);
-    if ((Util.isNullOrNil(paramString)) || (!this.xxR.containsKey(paramString)) || (!this.xxQ.containsKey(paramString)))
+    AppMethodBeat.i(232314);
+    if ((Util.isNullOrNil(paramString)) || (!this.CCb.containsKey(paramString)) || (!this.CCa.containsKey(paramString)))
     {
-      AppMethodBeat.o(186950);
+      AppMethodBeat.o(232314);
       return;
     }
-    if (((Integer)this.xxR.get(paramString)).intValue() == 3)
+    if (((Integer)this.CCb.get(paramString)).intValue() == 3)
     {
-      this.xxR.put(paramString, Integer.valueOf(4));
-      ((i)this.xxQ.get(paramString)).cT("javascript:(function(){ window.__gameTabFirstShow__= 1; })()");
+      this.CCb.put(paramString, Integer.valueOf(4));
+      ((i)this.CCa.get(paramString)).dt("javascript:(function(){ window.__gameTabFirstShow__= 1; })()");
       Log.i("MicroMsg.GameTabWebPage", "injectTabFirstShow, tabKey:%s", new Object[] { paramString });
     }
-    AppMethodBeat.o(186950);
+    AppMethodBeat.o(232314);
   }
   
-  public final View Lf()
+  public final View NW()
   {
-    AppMethodBeat.i(186941);
-    Object localObject = super.Lf();
-    this.xxU = ((View)localObject);
-    this.xxT = new FrameLayout(this.mContext);
-    this.xxT.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
-    localObject = this.xxT;
-    AppMethodBeat.o(186941);
+    AppMethodBeat.i(232294);
+    Object localObject = super.NW();
+    this.CCe = ((View)localObject);
+    this.CCd = new FrameLayout(getContext());
+    this.CCd.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
+    localObject = this.CCd;
+    AppMethodBeat.o(232294);
     return localObject;
   }
   
   public final void a(final i parami, final String paramString)
   {
-    AppMethodBeat.i(186948);
+    AppMethodBeat.i(232310);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(186948);
+      AppMethodBeat.o(232310);
       return;
     }
-    parami.xza = new i.a()
+    parami.a(new i.a()
     {
-      public final void dTD()
+      public final void ewM()
       {
-        AppMethodBeat.i(186938);
+        AppMethodBeat.i(231430);
         f.b(f.this).postUI(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(186937);
+            AppMethodBeat.i(232285);
             Object localObject = f.this;
             int i;
-            if (((f)localObject).xxS != null)
+            if (((f)localObject).CCc != null)
             {
-              i = ((f)localObject).xxS.dTE();
+              i = ((f)localObject).CCc.ewN();
               localObject = String.format("javascript:(function(){ window.wgclient = window.wgclient || {}; window.wgclient.__gameTabHeight__= %d; })()", new Object[] { Integer.valueOf(i) });
-              Log.i("MicroMsg.GameTabWebPage", "tabKey:%s, jsStr_1:%s", new Object[] { f.2.this.xxZ, localObject });
-              f.2.this.xya.cT((String)localObject);
+              Log.i("MicroMsg.GameTabWebPage", "tabKey:%s, jsStr_1:%s", new Object[] { f.2.this.CCj, localObject });
+              f.2.this.CCk.dt((String)localObject);
               localObject = f.this;
-              if (((f)localObject).xxS == null) {
+              if (((f)localObject).CCc == null) {
                 break label186;
               }
             }
             label186:
-            for (localObject = ((f)localObject).xxS.dTF();; localObject = "")
+            for (localObject = ((f)localObject).CCc.ewO();; localObject = "")
             {
               localObject = String.format("javascript:(function(){ window.wgclient = window.wgclient || {}; window.wgclient.__gameTabInfo__= %s; })()", new Object[] { localObject });
-              Log.i("MicroMsg.GameTabWebPage", "tabKey:%s, jsStr_2:%s", new Object[] { f.2.this.xxZ, localObject });
-              f.2.this.xya.cT((String)localObject);
-              f.a(f.this, f.2.this.xxZ);
-              AppMethodBeat.o(186937);
+              Log.i("MicroMsg.GameTabWebPage", "tabKey:%s, jsStr_2:%s", new Object[] { f.2.this.CCj, localObject });
+              f.2.this.CCk.dt((String)localObject);
+              f.a(f.this, f.2.this.CCj);
+              AppMethodBeat.o(232285);
               return;
               i = 0;
               break;
             }
           }
         });
-        AppMethodBeat.o(186938);
+        AppMethodBeat.o(231430);
       }
-    };
-    AppMethodBeat.o(186948);
+    });
+    AppMethodBeat.o(232310);
   }
   
   final String b(i parami)
   {
-    AppMethodBeat.i(186947);
+    AppMethodBeat.i(232308);
     if (parami == null)
     {
-      AppMethodBeat.o(186947);
+      AppMethodBeat.o(232308);
       return "";
     }
-    Iterator localIterator = this.xxQ.entrySet().iterator();
+    Iterator localIterator = this.CCa.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       if (parami == localEntry.getValue())
       {
         parami = (String)localEntry.getKey();
-        AppMethodBeat.o(186947);
+        AppMethodBeat.o(232308);
         return parami;
       }
     }
-    AppMethodBeat.o(186947);
+    AppMethodBeat.o(232308);
     return "";
-  }
-  
-  protected final String dTC()
-  {
-    return this.xxW;
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(186944);
+    AppMethodBeat.i(232299);
     super.destroy();
-    Iterator localIterator = this.xxQ.values().iterator();
+    Iterator localIterator = this.CCa.values().iterator();
     while (localIterator.hasNext())
     {
       i locali = (i)localIterator.next();
@@ -194,118 +189,123 @@ public final class f
         locali.destroy();
       }
     }
-    this.xxQ.clear();
-    AppMethodBeat.o(186944);
+    this.CCa.clear();
+    AppMethodBeat.o(232299);
   }
   
-  final void ed(String paramString, int paramInt)
+  final void eB(String paramString, int paramInt)
   {
-    AppMethodBeat.i(186949);
-    Integer localInteger = (Integer)this.xxR.get(paramString);
+    AppMethodBeat.i(232313);
+    Integer localInteger = (Integer)this.CCb.get(paramString);
     if (localInteger == null) {
-      this.xxR.put(paramString, Integer.valueOf(paramInt));
+      this.CCb.put(paramString, Integer.valueOf(paramInt));
     }
     for (;;)
     {
-      azI(paramString);
-      AppMethodBeat.o(186949);
+      aJu(paramString);
+      AppMethodBeat.o(232313);
       return;
-      this.xxR.put(paramString, Integer.valueOf(localInteger.intValue() | paramInt));
+      this.CCb.put(paramString, Integer.valueOf(localInteger.intValue() | paramInt));
     }
+  }
+  
+  protected final String ewL()
+  {
+    return this.CCg;
   }
   
   public final void onBackground()
   {
-    AppMethodBeat.i(186943);
-    if (this.xxV == null)
+    AppMethodBeat.i(232297);
+    if (this.CCf == null)
     {
-      AppMethodBeat.o(186943);
+      AppMethodBeat.o(232297);
       return;
     }
-    if ((this.xxV instanceof f))
+    if ((this.CCf instanceof f))
     {
-      Log.i("MicroMsg.GameTabWebPage", "GameTabWebPage onBackground, url:%s", new Object[] { this.xxV.coX() });
+      Log.i("MicroMsg.GameTabWebPage", "GameTabWebPage onBackground, url:%s", new Object[] { this.CCf.cDu() });
       super.onBackground();
       a(this);
-      AppMethodBeat.o(186943);
+      AppMethodBeat.o(232297);
       return;
     }
-    Log.i("MicroMsg.GameTabWebPage", "onBackground, url:%s", new Object[] { this.xxV.coX() });
-    this.xxV.Lj();
-    a(this.xxV);
-    AppMethodBeat.o(186943);
+    Log.i("MicroMsg.GameTabWebPage", "onBackground, url:%s", new Object[] { this.CCf.cDu() });
+    this.CCf.NZ();
+    a(this.CCf);
+    AppMethodBeat.o(232297);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(186945);
+    AppMethodBeat.i(232301);
     Log.i("MicroMsg.GameTabWebPage", "onDestroy");
-    if (this.xxX != null)
+    if (this.CCh != null)
     {
-      this.xxX.dismiss();
-      this.xxX = null;
+      this.CCh.dismiss();
+      this.CCh = null;
     }
     super.onDestroy();
-    AppMethodBeat.o(186945);
+    AppMethodBeat.o(232301);
   }
   
   public final void onForeground()
   {
-    AppMethodBeat.i(186942);
-    if (this.xxV == null)
+    AppMethodBeat.i(232295);
+    if (this.CCf == null)
     {
-      AppMethodBeat.o(186942);
+      AppMethodBeat.o(232295);
       return;
     }
-    ed(b(this.xxV), 1);
-    if ((this.xxV instanceof f))
+    eB(b(this.CCf), 1);
+    if ((this.CCf instanceof f))
     {
-      Log.i("MicroMsg.GameTabWebPage", "GameTabWebPage onForeground, url:%s", new Object[] { this.xxV.coX() });
+      Log.i("MicroMsg.GameTabWebPage", "GameTabWebPage onForeground, url:%s", new Object[] { this.CCf.cDu() });
       super.onForeground();
     }
     for (;;)
     {
-      if (this.xxX != null) {
-        this.xxX.show();
+      if (this.CCh != null) {
+        this.CCh.show();
       }
-      com.tencent.f.h.RTc.n(new Runnable()
+      h.ZvG.n(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(186936);
+          AppMethodBeat.i(231692);
           if (f.a(f.this) != null) {
             f.a(f.this).dismiss();
           }
-          AppMethodBeat.o(186936);
+          AppMethodBeat.o(231692);
         }
       }, 50L);
-      AppMethodBeat.o(186942);
+      AppMethodBeat.o(232295);
       return;
-      Log.i("MicroMsg.GameTabWebPage", "onForeground, url:%s", new Object[] { this.xxV.coX() });
-      this.xxV.Li();
+      Log.i("MicroMsg.GameTabWebPage", "onForeground, url:%s", new Object[] { this.CCf.cDu() });
+      this.CCf.NY();
     }
   }
   
   public final void setPageChanging(boolean paramBoolean)
   {
-    AppMethodBeat.i(186940);
-    if (this.xxS != null) {
-      this.xxS.setPageChanging(paramBoolean);
+    AppMethodBeat.i(232293);
+    if (this.CCc != null) {
+      this.CCc.setPageChanging(paramBoolean);
     }
-    AppMethodBeat.o(186940);
+    AppMethodBeat.o(232293);
   }
   
   public static abstract interface a
   {
-    public abstract boolean Lw();
+    public abstract boolean Om();
     
-    public abstract void Oa(int paramInt);
+    public abstract void Tt(int paramInt);
     
-    public abstract void Ob(int paramInt);
+    public abstract void Tu(int paramInt);
     
-    public abstract int dTE();
+    public abstract int ewN();
     
-    public abstract String dTF();
+    public abstract String ewO();
     
     public abstract void setPageChanging(boolean paramBoolean);
   }

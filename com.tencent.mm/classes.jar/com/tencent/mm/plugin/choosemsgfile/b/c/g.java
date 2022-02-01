@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.choosemsgfile.b.c;
 
-import android.support.v7.widget.RecyclerView.v;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.mm.plugin.choosemsgfile.b.b.a;
-import com.tencent.mm.plugin.choosemsgfile.ui.c;
+import com.tencent.mm.plugin.choosemsgfile.ui.e;
 
 public abstract interface g
 {
-  public abstract a EM(int paramInt);
+  public abstract a It(int paramInt);
   
   public abstract void a(boolean paramBoolean, a parama, RecyclerView.v paramv);
   
-  public abstract c cyC();
+  public abstract e cMX();
   
-  public abstract boolean cyD();
+  public abstract boolean cMY();
   
   public abstract int getItemCount();
   
@@ -25,7 +25,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.c.g
  * JD-Core Version:    0.7.0.1
  */

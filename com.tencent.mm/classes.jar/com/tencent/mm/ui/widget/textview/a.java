@@ -28,8 +28,8 @@ import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.as;
-import com.tencent.mm.ui.at;
+import com.tencent.mm.ui.av;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.base.c;
 import com.tencent.neattextview.textview.view.NeatTextView;
 import java.util.ArrayList;
@@ -37,267 +37,275 @@ import java.util.Iterator;
 
 public final class a
 {
-  private ViewTreeObserver.OnPreDrawListener Bl;
-  private int DfR;
-  View.OnTouchListener HeV;
-  int[] PhV;
-  private Spannable QGC;
-  private ViewTreeObserver.OnScrollChangedListener QPc;
-  private int QPi;
-  int QPj;
-  int QPk;
-  boolean QPl;
-  int QPm;
-  int QPp;
-  int QPq;
-  final Runnable QPv;
-  b QXL;
-  private b QXM;
-  g QXN;
-  public a.d QXO;
-  View QXP;
-  public a.f QXQ;
-  View.OnTouchListener QXR;
-  private com.tencent.mm.ui.widget.b.a QXS;
-  private c QXT;
-  public int QXU;
-  boolean QXV;
-  public boolean QXW;
-  public boolean QXX;
-  boolean QXY;
-  boolean QXZ;
-  boolean QYa;
-  final Runnable QYb;
-  public e QYc;
-  ArrayList<c> QYd;
-  private boolean aMn;
-  private View.OnAttachStateChangeListener afw;
-  private ViewTreeObserver.OnGlobalLayoutListener ajG;
-  View.OnClickListener hEZ;
+  int[] BdE;
+  private int Cxs;
+  int[] Dvf;
+  private Spannable Yfs;
+  private ViewTreeObserver.OnScrollChangedListener YnQ;
+  private int YnW;
+  int YnX;
+  int YnY;
+  boolean YnZ;
+  int Yoa;
+  int Yod;
+  int Yoe;
+  final Runnable Yoj;
+  private com.tencent.mm.ui.widget.b.a YwA;
+  private c YwB;
+  public int YwC;
+  boolean YwD;
+  public boolean YwE;
+  public boolean YwF;
+  boolean YwG;
+  boolean YwH;
+  boolean YwI;
+  final Runnable YwJ;
+  public e YwK;
+  ArrayList<c> YwL;
+  b Ywt;
+  private b Ywu;
+  g Ywv;
+  public d Yww;
+  View Ywx;
+  public a.f Ywy;
+  View.OnTouchListener Ywz;
+  private boolean aJQ;
+  private ViewTreeObserver.OnPreDrawListener aqE;
+  View.OnClickListener kte;
+  private View.OnAttachStateChangeListener lF;
   Context mContext;
-  int[] wrA;
+  View.OnTouchListener nan;
+  private ViewTreeObserver.OnGlobalLayoutListener qc;
   
-  public a(a.a parama)
+  public a(a parama)
   {
     AppMethodBeat.i(159878);
-    this.QXN = new g();
-    this.DfR = 0;
-    this.QXV = false;
-    this.aMn = true;
-    this.QPl = false;
-    this.QXW = true;
-    this.QXX = true;
-    this.QXY = true;
-    this.QXZ = false;
-    this.QYa = false;
-    this.wrA = new int[2];
-    this.QPv = new Runnable()
+    this.Ywv = new g();
+    this.Cxs = 0;
+    this.YwD = false;
+    this.aJQ = true;
+    this.YnZ = false;
+    this.YwE = true;
+    this.YwF = true;
+    this.YwG = true;
+    this.YwH = false;
+    this.YwI = false;
+    this.BdE = new int[2];
+    this.Yoj = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(159850);
-        if (a.this.QXV)
+        if (a.this.YwD)
         {
-          as.d("SelectableTextHelper", "isReInit, return.", new Object[0]);
+          av.d("SelectableTextHelper", "isReInit, return.", new Object[0]);
           AppMethodBeat.o(159850);
           return;
         }
-        as.d("SelectableTextHelper", "in mShowSelectViewRunnable. opener: %s, inScrolling: %s.", new Object[] { Boolean.valueOf(a.this.QXY), Boolean.valueOf(a.this.QXZ) });
-        if (a.this.QXQ != null)
+        av.d("SelectableTextHelper", "in mShowSelectViewRunnable. opener: %s, inScrolling: %s.", new Object[] { Boolean.valueOf(a.this.YwG), Boolean.valueOf(a.this.YwH) });
+        if (a.this.Ywy != null)
         {
-          if (!a.this.QXY)
+          if (!a.this.YwG)
           {
-            a.this.QXY = true;
-            if (a.this.QXZ)
+            a.this.YwG = true;
+            if (a.this.YwH)
             {
-              as.d("SelectableTextHelper", "menu is hide: %s, cursor is hide: %s.", new Object[] { Boolean.valueOf(a.this.QXW), Boolean.valueOf(a.this.QXX) });
-              if (!a.this.QXW) {
-                a.this.hcV();
+              av.d("SelectableTextHelper", "menu is hide: %s, cursor is hide: %s.", new Object[] { Boolean.valueOf(a.this.YwE), Boolean.valueOf(a.this.YwF) });
+              if (!a.this.YwE) {
+                a.this.iek();
               }
-              if (!a.this.QXX)
+              if (!a.this.YwF)
               {
-                a.this.hcQ();
-                a.this.lE(a.this.QXN.avh, a.this.QXN.Pc);
+                a.this.ief();
+                a.this.fj(a.this.Ywv.tH, a.this.Ywv.tI);
               }
-              if ((a.this.QXQ != null) && (a.this.QXW) && (!a.this.QXX)) {
-                a.this.QXQ.gL(a.this.QXP);
+              if ((a.this.Ywy != null) && (a.this.YwE) && (!a.this.YwF)) {
+                a.this.Ywy.hW(a.this.Ywx);
               }
             }
-            a.this.QXZ = false;
+            a.this.YwH = false;
             AppMethodBeat.o(159850);
             return;
           }
-          if (a.this.QYa)
+          if (a.this.YwI)
           {
-            a.this.QYa = false;
-            as.d("SelectableTextHelper", "judge result(delay), click outside.", new Object[0]);
-            if (a.this.QYc != null)
+            a.this.YwI = false;
+            av.d("SelectableTextHelper", "judge result(delay), click outside.", new Object[0]);
+            if (a.this.YwK != null)
             {
-              a.this.QYc.gUe();
+              a.this.YwK.hTP();
               AppMethodBeat.o(159850);
             }
           }
           else
           {
-            as.d("SelectableTextHelper", "Oh, bypass the judge logic! Don't worry, that's reasonable.", new Object[0]);
+            av.d("SelectableTextHelper", "Oh, bypass the judge logic! Don't worry, that's reasonable.", new Object[0]);
             AppMethodBeat.o(159850);
           }
         }
         else
         {
-          if (!a.this.QXW) {
-            a.this.hcV();
+          if (!a.this.YwE) {
+            a.this.iek();
           }
-          if (!a.this.QXX) {
-            a.this.hcQ();
+          if (!a.this.YwF) {
+            a.this.ief();
           }
         }
         AppMethodBeat.o(159850);
       }
     };
-    this.QYb = new Runnable()
+    this.YwJ = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(159854);
-        as.d("SelectableTextHelper", "dismiss all runnable.", new Object[0]);
-        if (a.this.QYc != null) {
-          a.this.QYc.gUe();
+        av.d("SelectableTextHelper", "dismiss all runnable.", new Object[0]);
+        if (a.this.YwK != null) {
+          a.this.YwK.hTP();
         }
         AppMethodBeat.o(159854);
       }
     };
-    this.PhV = new int[2];
-    this.QXP = parama.QXP;
-    this.QXQ = parama.QXQ;
-    this.hEZ = parama.hEZ;
-    this.QXR = parama.QXR;
-    this.QXS = parama.QYf;
-    this.DfR = parama.QYh;
-    this.mContext = this.QXP.getContext();
-    this.QPi = parama.QPi;
-    this.QPj = parama.QPj;
-    this.QPm = b.hD(this.QXP);
+    this.Dvf = new int[2];
+    this.Ywx = parama.Ywx;
+    this.Ywy = parama.Ywy;
+    this.kte = parama.kte;
+    this.Ywz = parama.Ywz;
+    this.YwA = parama.YwN;
+    this.Cxs = parama.YwP;
+    this.mContext = this.Ywx.getContext();
+    this.YnW = parama.YnW;
+    this.YnX = parama.YnX;
+    this.Yoa = b.iZ(this.Ywx);
     float f;
-    if (this.QPk == 0)
+    if (this.YnY == 0)
     {
-      parama = this.QXP;
+      parama = this.Ywx;
       if ((parama instanceof NeatTextView)) {
         f = ((NeatTextView)parama).getTextSize();
       }
     }
-    for (this.QPk = ((int)f);; this.QPk = at.fromDPToPix(this.mContext, parama.QYg))
+    for (this.YnY = ((int)f);; this.YnY = aw.fromDPToPix(this.mContext, parama.YwO))
     {
-      this.afw = new View.OnAttachStateChangeListener()
+      this.lF = new View.OnAttachStateChangeListener()
       {
         public final void onViewAttachedToWindow(View paramAnonymousView)
         {
           AppMethodBeat.i(159855);
-          as.d("SelectableTextHelper", "onViewAttachedToWindow", new Object[0]);
+          av.d("SelectableTextHelper", "onViewAttachedToWindow", new Object[0]);
           AppMethodBeat.o(159855);
         }
         
         public final void onViewDetachedFromWindow(View paramAnonymousView)
         {
           AppMethodBeat.i(159856);
-          as.d("SelectableTextHelper", "onViewDetachedFromWindow", new Object[0]);
+          av.d("SelectableTextHelper", "onViewDetachedFromWindow", new Object[0]);
           a.this.destroy();
           AppMethodBeat.o(159856);
         }
       };
-      this.Bl = new ViewTreeObserver.OnPreDrawListener()
+      this.aqE = new ViewTreeObserver.OnPreDrawListener()
       {
         public final boolean onPreDraw()
         {
           AppMethodBeat.i(159857);
-          if (a.this.QPl)
+          if (a.this.YnZ)
           {
-            a.this.QPl = false;
+            a.this.YnZ = false;
             a locala = a.this;
-            locala.QXP.removeCallbacks(locala.QPv);
-            locala.QXP.postDelayed(locala.QPv, 100L);
+            locala.Ywx.removeCallbacks(locala.Yoj);
+            locala.Ywx.postDelayed(locala.Yoj, 100L);
           }
           AppMethodBeat.o(159857);
           return true;
         }
       };
-      this.QPc = new ViewTreeObserver.OnScrollChangedListener()
+      this.YnQ = new ViewTreeObserver.OnScrollChangedListener()
       {
         public final void onScrollChanged()
         {
           AppMethodBeat.i(159858);
-          if (a.this.QXQ != null)
+          if (a.this.Ywy != null)
           {
-            a.this.QXP.removeCallbacks(a.this.QYb);
-            a.this.QXP.getLocationInWindow(a.this.PhV);
-            as.d("SelectableTextHelper", "onScrollChanged, old-y: %d, y: %d.", new Object[] { Integer.valueOf(a.this.wrA[1]), Integer.valueOf(a.this.PhV[1]) });
-            if (a.this.QXY)
+            a.this.Ywx.removeCallbacks(a.this.YwJ);
+            a.this.Ywx.getLocationInWindow(a.this.Dvf);
+            av.d("SelectableTextHelper", "onScrollChanged, old-y: %d, y: %d.", new Object[] { Integer.valueOf(a.this.BdE[1]), Integer.valueOf(a.this.Dvf[1]) });
+            if (a.this.YwG)
             {
-              if ((a.this.QXZ) || (a.this.QYa)) {
+              if ((a.this.YwH) || (a.this.YwI)) {
                 break label260;
               }
-              if (a.this.wrA[1] == a.this.PhV[1]) {
+              if (a.this.BdE[1] == a.this.Dvf[1]) {
                 break label238;
               }
-              a.this.QXZ = true;
-              a.this.QXY = false;
-              as.d("SelectableTextHelper", "judge result, inScrolling.", new Object[0]);
+              a.this.YwH = true;
+              a.this.YwG = false;
+              av.d("SelectableTextHelper", "judge result, inScrolling.", new Object[0]);
             }
           }
           for (;;)
           {
-            a.this.wrA[1] = a.this.PhV[1];
-            if ((!a.this.QPl) && ((!a.this.QXW) || (!a.this.QXX)))
+            a.this.BdE[1] = a.this.Dvf[1];
+            if ((!a.this.YnZ) && ((!a.this.YwE) || (!a.this.YwF)))
             {
-              a.this.QPl = true;
-              a.this.hbz();
+              a.this.YnZ = true;
+              a.this.cpq();
             }
             AppMethodBeat.o(159858);
             return;
             label238:
-            a.this.QYa = true;
-            as.d("SelectableTextHelper", "need delay judge.", new Object[0]);
+            a.this.YwI = true;
+            av.d("SelectableTextHelper", "need delay judge.", new Object[0]);
             continue;
             label260:
-            if (a.this.QYa)
+            if (a.this.YwI)
             {
-              a.this.QYa = false;
-              a.this.QXY = false;
-              if (a.this.wrA[1] != a.this.PhV[1])
+              a.this.YwI = false;
+              a.this.YwG = false;
+              if (a.this.BdE[1] != a.this.Dvf[1])
               {
-                a.this.QXZ = true;
-                as.d("SelectableTextHelper", "judge result(delay), inScrolling.", new Object[0]);
+                a.this.YwH = true;
+                av.d("SelectableTextHelper", "judge result(delay), inScrolling.", new Object[0]);
               }
               else
               {
-                a.this.QXZ = false;
-                as.d("SelectableTextHelper", "judge result, click outside.", new Object[0]);
+                a.this.YwH = false;
+                av.d("SelectableTextHelper", "judge result, click outside.", new Object[0]);
               }
             }
           }
         }
       };
-      this.ajG = new a.9(this);
-      this.HeV = new View.OnTouchListener()
+      this.qc = new ViewTreeObserver.OnGlobalLayoutListener()
+      {
+        public final void onGlobalLayout()
+        {
+          AppMethodBeat.i(159859);
+          av.d("SelectableTextHelper", "onGlobalLayout", new Object[0]);
+          AppMethodBeat.o(159859);
+        }
+      };
+      this.nan = new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(159860);
-          as.d("SelectableTextHelper", "event pointer count: %d.", new Object[] { Integer.valueOf(paramAnonymousMotionEvent.getPointerCount()) });
-          if (a.this.QXR != null) {
-            a.this.QXR.onTouch(paramAnonymousView, paramAnonymousMotionEvent);
+          av.d("SelectableTextHelper", "event pointer count: %d.", new Object[] { Integer.valueOf(paramAnonymousMotionEvent.getPointerCount()) });
+          if (a.this.Ywz != null) {
+            a.this.Ywz.onTouch(paramAnonymousView, paramAnonymousMotionEvent);
           }
-          a.this.QPp = ((int)paramAnonymousMotionEvent.getX());
-          a.this.QPq = ((int)paramAnonymousMotionEvent.getY());
+          a.this.Yod = ((int)paramAnonymousMotionEvent.getX());
+          a.this.Yoe = ((int)paramAnonymousMotionEvent.getY());
           AppMethodBeat.o(159860);
           return false;
         }
       };
-      if (this.aMn) {
+      if (this.aJQ) {
         break label363;
       }
-      as.d("SelectableTextHelper", "not destroy, isReInit: %s.", new Object[] { Boolean.valueOf(this.QXV) });
-      this.QXV = true;
+      av.d("SelectableTextHelper", "not destroy, isReInit: %s.", new Object[] { Boolean.valueOf(this.YwD) });
+      this.YwD = true;
       AppMethodBeat.o(159878);
       return;
       if ((parama instanceof TextView))
@@ -309,16 +317,16 @@ public final class a
       break;
     }
     label363:
-    as.d("SelectableTextHelper", "not init yet, need to init.", new Object[0]);
-    this.QXV = false;
-    this.aMn = false;
-    this.QPl = false;
+    av.d("SelectableTextHelper", "not init yet, need to init.", new Object[0]);
+    this.YwD = false;
+    this.aJQ = false;
+    this.YnZ = false;
     Object localObject;
     TextView.BufferType localBufferType;
-    if (this.QXQ == null)
+    if (this.Ywy == null)
     {
-      parama = this.QXP;
-      localObject = b.hB(this.QXP);
+      parama = this.Ywx;
+      localObject = b.iX(this.Ywx);
       localBufferType = TextView.BufferType.SPANNABLE;
       if (!(parama instanceof NeatTextView)) {
         break label637;
@@ -327,30 +335,30 @@ public final class a
     }
     for (;;)
     {
-      this.QXL = new b(true);
-      if (this.QXQ != null)
+      this.Ywt = new b(true);
+      if (this.Ywy != null)
       {
-        this.QXL.mPopupWindow.setOutsideTouchable(true);
-        parama = this.QXL;
+        this.Ywt.mPopupWindow.setOutsideTouchable(true);
+        parama = this.Ywt;
         localObject = new View.OnTouchListener()
         {
           public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
           {
             AppMethodBeat.i(159861);
-            as.d("SelectableTextHelper", "interceptor onTouch.", new Object[0]);
+            av.d("SelectableTextHelper", "interceptor onTouch.", new Object[0]);
             int i = (int)paramAnonymousMotionEvent.getX();
             int j = (int)paramAnonymousMotionEvent.getY();
-            if ((paramAnonymousMotionEvent.getAction() == 0) && ((i < 0) || (i >= a.this.QXL.getWidth()) || (j < 0) || (j >= a.this.QXL.getHeight())))
+            if ((paramAnonymousMotionEvent.getAction() == 0) && ((i < 0) || (i >= a.this.Ywt.getWidth()) || (j < 0) || (j >= a.this.Ywt.getHeight())))
             {
-              as.d("SelectableTextHelper", "interceptor onTouch, down, outside.", new Object[0]);
-              a.this.QXP.postDelayed(a.this.QYb, 100L);
+              av.d("SelectableTextHelper", "interceptor onTouch, down, outside.", new Object[0]);
+              a.this.Ywx.postDelayed(a.this.YwJ, 100L);
               AppMethodBeat.o(159861);
               return true;
             }
             if (paramAnonymousMotionEvent.getAction() == 4)
             {
-              as.d("SelectableTextHelper", "interceptor onTouch, outside.", new Object[0]);
-              a.this.QXP.postDelayed(a.this.QYb, 100L);
+              av.d("SelectableTextHelper", "interceptor onTouch, outside.", new Object[0]);
+              a.this.Ywx.postDelayed(a.this.YwJ, 100L);
               AppMethodBeat.o(159861);
               return true;
             }
@@ -359,41 +367,41 @@ public final class a
           }
         };
         parama.mPopupWindow.setTouchInterceptor((View.OnTouchListener)localObject);
-        parama = this.QXL;
+        parama = this.Ywt;
         localObject = new PopupWindow.OnDismissListener()
         {
           public final void onDismiss()
           {
             AppMethodBeat.i(159862);
-            a.this.QXP.setOnTouchListener(a.this.HeV);
+            a.this.Ywx.setOnTouchListener(a.this.nan);
             AppMethodBeat.o(159862);
           }
         };
         parama.mPopupWindow.setOnDismissListener((PopupWindow.OnDismissListener)localObject);
       }
-      this.QXM = new b(false);
-      this.QXP.setOnLongClickListener(new View.OnLongClickListener()
+      this.Ywu = new b(false);
+      this.Ywx.setOnLongClickListener(new View.OnLongClickListener()
       {
         public final boolean onLongClick(View paramAnonymousView)
         {
           AppMethodBeat.i(159851);
           Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject1).bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/textview/SelectableTextHelper$10", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).axR());
-          as.d("SelectableTextHelper", "onLongClick.", new Object[0]);
-          a.this.QXV = false;
+          ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/textview/SelectableTextHelper$10", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aFi());
+          av.d("SelectableTextHelper", "onLongClick.", new Object[0]);
+          a.this.YwD = false;
           int j;
-          if (a.this.QXQ != null)
+          if (a.this.Ywy != null)
           {
-            a.this.QXY = true;
-            a.this.QXZ = false;
-            a.this.QYa = false;
-            Object localObject2 = b.hB(a.this.QXP);
+            a.this.YwG = true;
+            a.this.YwH = false;
+            a.this.YwI = false;
+            Object localObject2 = b.iX(a.this.Ywx);
             if ((localObject2 instanceof SpannableString))
             {
               localObject1 = a.this;
               localObject2 = (SpannableString)localObject2;
-              ((a)localObject1).QYd = new ArrayList();
+              ((a)localObject1).YwL = new ArrayList();
               i = 0;
               if (i < ((SpannableString)localObject2).length())
               {
@@ -404,60 +412,60 @@ public final class a
                   localObject3 = new a.c((a)localObject1);
                   ((a.c)localObject3).start = i;
                   ((a.c)localObject3).end = j;
-                  ((a)localObject1).QYd.add(localObject3);
+                  ((a)localObject1).YwL.add(localObject3);
                 }
                 for (;;)
                 {
-                  as.d("SelectableTextHelper", "spans from %d to %d.", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+                  av.d("SelectableTextHelper", "spans from %d to %d.", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
                   i = j;
                   break;
-                  as.e("SelectableTextHelper", "other situation occur! length: %d.", new Object[] { Integer.valueOf(localObject3.length) });
+                  av.e("SelectableTextHelper", "other situation occur! length: %d.", new Object[] { Integer.valueOf(localObject3.length) });
                 }
               }
-              as.d("SelectableTextHelper", ((a)localObject1).QYd.toString(), new Object[0]);
+              av.d("SelectableTextHelper", ((a)localObject1).YwL.toString(), new Object[0]);
             }
-            a.this.hbz();
-            if ((a.this.QXU > 0) && (a.this.QXU < b.hB(a.this.QXP).length()))
+            a.this.cpq();
+            if ((a.this.YwC > 0) && (a.this.YwC < b.iX(a.this.Ywx).length()))
             {
-              a.a(a.this, a.this.QXU);
-              a.this.QXW = false;
-              a.this.QXX = false;
-              a.this.hcV();
-              a.this.hcQ();
+              a.a(a.this, a.this.YwC);
+              a.this.YwE = false;
+              a.this.YwF = false;
+              a.this.iek();
+              a.this.ief();
             }
             for (;;)
             {
               com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/widget/textview/SelectableTextHelper$10", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
               AppMethodBeat.o(159851);
               return true;
-              a.a(a.this, b.hB(a.this.QXP).length());
-              a.this.QXW = true;
-              a.this.QXX = false;
-              a.this.hcQ();
-              a.this.QXQ.ea(paramAnonymousView);
+              a.a(a.this, b.iX(a.this.Ywx).length());
+              a.this.YwE = true;
+              a.this.YwF = false;
+              a.this.ief();
+              a.this.Ywy.eD(paramAnonymousView);
             }
           }
-          a.this.QXY = false;
+          a.this.YwG = false;
           paramAnonymousView = a.this;
-          int k = a.this.QPp;
-          int i = a.this.QPq;
-          localObject1 = paramAnonymousView.QXP;
+          int k = a.this.Yod;
+          int i = a.this.Yoe;
+          localObject1 = paramAnonymousView.Ywx;
           if ((localObject1 instanceof NeatTextView))
           {
             localObject1 = ((NeatTextView)localObject1).getLayout();
             if (localObject1 == null) {
               break label635;
             }
-            i = ((com.tencent.neattextview.textview.layout.a)localObject1).mn(k, i);
+            i = ((com.tencent.neattextview.textview.layout.a)localObject1).nE(k, i);
           }
           for (;;)
           {
-            paramAnonymousView.lP(i, i + 1);
-            a.this.hbz();
-            a.this.QXW = false;
-            a.this.QXX = false;
-            a.this.hcV();
-            a.this.hcQ();
+            paramAnonymousView.ng(i, i + 1);
+            a.this.cpq();
+            a.this.YwE = false;
+            a.this.YwF = false;
+            a.this.iek();
+            a.this.ief();
             break;
             if ((localObject1 instanceof TextView))
             {
@@ -483,22 +491,44 @@ public final class a
           }
         }
       });
-      this.QXP.setOnTouchListener(this.HeV);
-      this.QXP.setOnClickListener(new a.3(this));
-      this.QXP.addOnAttachStateChangeListener(this.afw);
-      this.QXP.getViewTreeObserver().addOnPreDrawListener(this.Bl);
-      this.QXP.getViewTreeObserver().addOnScrollChangedListener(this.QPc);
-      this.QXP.getViewTreeObserver().addOnGlobalLayoutListener(this.ajG);
-      this.QXP.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+      this.Ywx.setOnTouchListener(this.nan);
+      this.Ywx.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(159852);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/textview/SelectableTextHelper$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          av.d("SelectableTextHelper", "onClick", new Object[0]);
+          if (a.this.kte != null) {
+            a.this.kte.onClick(paramAnonymousView);
+          }
+          a.this.YwE = true;
+          a.this.YwF = true;
+          a.this.cpq();
+          a.this.cpn();
+          if (a.this.Ywy != null) {
+            a.this.Ywy.dismiss();
+          }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/textview/SelectableTextHelper$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(159852);
+        }
+      });
+      this.Ywx.addOnAttachStateChangeListener(this.lF);
+      this.Ywx.getViewTreeObserver().addOnPreDrawListener(this.aqE);
+      this.Ywx.getViewTreeObserver().addOnScrollChangedListener(this.YnQ);
+      this.Ywx.getViewTreeObserver().addOnGlobalLayoutListener(this.qc);
+      this.Ywx.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
       {
         public final void onGlobalLayout()
         {
           AppMethodBeat.i(159853);
-          a.this.QXP.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-          if (a.this.QXQ != null)
+          a.this.Ywx.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+          if (a.this.Ywy != null)
           {
-            a.this.QXP.getLocationInWindow(a.this.wrA);
-            as.d("SelectableTextHelper", "init: loc-x: %d, loc-y: %d.", new Object[] { Integer.valueOf(a.this.wrA[0]), Integer.valueOf(a.this.wrA[1]) });
+            a.this.Ywx.getLocationInWindow(a.this.BdE);
+            av.d("SelectableTextHelper", "init: loc-x: %d, loc-y: %d.", new Object[] { Integer.valueOf(a.this.BdE[0]), Integer.valueOf(a.this.BdE[1]) });
           }
           AppMethodBeat.o(159853);
         }
@@ -521,41 +551,41 @@ public final class a
       return;
     }
     if (b.b(paramb)) {}
-    for (int i = this.QXN.avh; (i < 0) || (i > b.hB(this.QXP).length()); i = this.QXN.Pc)
+    for (int i = this.Ywv.tH; (i < 0) || (i > b.iX(this.Ywx).length()); i = this.Ywv.tI)
     {
       AppMethodBeat.o(159884);
       return;
     }
-    Object localObject = b.hC(this.QXP);
+    Object localObject = b.iY(this.Ywx);
     int j;
     if (localObject != null)
     {
-      j = (int)((TextPaint)localObject).getFontMetrics().descent + b.aP(this.QXP, b.aQ(this.QXP, i));
-      i = (int)b.aR(this.QXP, i);
+      j = (int)((TextPaint)localObject).getFontMetrics().descent + b.aY(this.Ywx, b.aZ(this.Ywx, i));
+      i = (int)b.ba(this.Ywx, i);
     }
     for (;;)
     {
-      paramb.QYe.QXP.getLocationInWindow(paramb.QLE);
-      if (paramb.QPA) {}
+      paramb.YwM.Ywx.getLocationInWindow(paramb.Ykw);
+      if (paramb.Yon) {}
       for (int k = paramb.mWidth;; k = 0)
       {
         int n = i;
         int m = j;
-        if (!paramb.QPA)
+        if (!paramb.Yon)
         {
-          localObject = paramb.lQ(i, j);
+          localObject = paramb.nh(i, j);
           n = localObject[0];
           m = localObject[1];
         }
         try
         {
-          paramb.mPopupWindow.showAtLocation(paramb.QYe.QXP, 0, n - k + paramb.hbD(), m + paramb.hbE());
+          paramb.mPopupWindow.showAtLocation(paramb.YwM.Ywx, 0, n - k + paramb.getExtraX(), m + paramb.getExtraY());
           AppMethodBeat.o(159884);
           return;
         }
         catch (Exception paramb)
         {
-          as.e("SelectableTextHelper", "error! message: %s.", new Object[] { paramb.getMessage() });
+          av.e("SelectableTextHelper", "error! message: %s.", new Object[] { paramb.getMessage() });
           AppMethodBeat.o(159884);
           return;
         }
@@ -565,16 +595,16 @@ public final class a
     }
   }
   
-  private int bU(int paramInt, boolean paramBoolean)
+  private int ch(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(159893);
-    if (this.QYd != null)
+    if (this.YwL != null)
     {
-      Iterator localIterator = this.QYd.iterator();
+      Iterator localIterator = this.YwL.iterator();
       while (localIterator.hasNext())
       {
         c localc = (c)localIterator.next();
-        if (localc.Nm(paramInt))
+        if (localc.SA(paramInt))
         {
           if (paramBoolean)
           {
@@ -592,7 +622,7 @@ public final class a
     return paramInt;
   }
   
-  private boolean hcP()
+  private boolean hJe()
   {
     AppMethodBeat.i(159885);
     AccessibilityManager localAccessibilityManager = (AccessibilityManager)this.mContext.getSystemService("accessibility");
@@ -605,128 +635,176 @@ public final class a
     return false;
   }
   
-  public final void destroy()
-  {
-    AppMethodBeat.i(159880);
-    this.QXV = false;
-    this.aMn = true;
-    this.QPl = false;
-    this.QXP.removeCallbacks(this.QPv);
-    this.QXP.getViewTreeObserver().removeOnScrollChangedListener(this.QPc);
-    this.QXP.getViewTreeObserver().removeOnPreDrawListener(this.Bl);
-    this.QXP.getViewTreeObserver().removeOnGlobalLayoutListener(this.ajG);
-    this.QXP.removeOnAttachStateChangeListener(this.afw);
-    this.QXW = true;
-    this.QXX = true;
-    hbz();
-    hbA();
-    this.QXL = null;
-    this.QXM = null;
-    if (this.QXQ != null) {
-      this.QXQ.dismiss();
-    }
-    AppMethodBeat.o(159880);
-  }
-  
-  public final void hbA()
+  public final void cpn()
   {
     AppMethodBeat.i(159882);
-    this.QXN.QPK = null;
-    if ((this.QGC != null) && (this.QXT != null))
+    this.Ywv.Yov = null;
+    if ((this.Yfs != null) && (this.YwB != null))
     {
-      this.QGC.removeSpan(this.QXT);
-      this.QXT = null;
+      this.Yfs.removeSpan(this.YwB);
+      this.YwB = null;
     }
     AppMethodBeat.o(159882);
   }
   
-  public final void hbz()
+  public final void cpq()
   {
     AppMethodBeat.i(159881);
-    hcR();
-    hcS();
-    if (this.QXQ != null) {
-      this.QXQ.dismiss();
+    ieg();
+    ieh();
+    if (this.Ywy != null) {
+      this.Ywy.dismiss();
     }
     AppMethodBeat.o(159881);
   }
   
-  public final void hcQ()
+  public final void destroy()
+  {
+    AppMethodBeat.i(159880);
+    this.YwD = false;
+    this.aJQ = true;
+    this.YnZ = false;
+    this.Ywx.removeCallbacks(this.Yoj);
+    this.Ywx.getViewTreeObserver().removeOnScrollChangedListener(this.YnQ);
+    this.Ywx.getViewTreeObserver().removeOnPreDrawListener(this.aqE);
+    this.Ywx.getViewTreeObserver().removeOnGlobalLayoutListener(this.qc);
+    this.Ywx.removeOnAttachStateChangeListener(this.lF);
+    this.YwE = true;
+    this.YwF = true;
+    cpq();
+    cpn();
+    this.Ywt = null;
+    this.Ywu = null;
+    if (this.Ywy != null) {
+      this.Ywy.dismiss();
+    }
+    AppMethodBeat.o(159880);
+  }
+  
+  public final void fj(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(159892);
+    if (paramInt1 != -1) {
+      this.Ywv.tH = ch(paramInt1, true);
+    }
+    if (paramInt2 != -1) {
+      this.Ywv.tI = ch(paramInt2, false);
+    }
+    if ((this.Ywv.tH < 0) || (this.Ywv.tH > b.iX(this.Ywx).length()))
+    {
+      AppMethodBeat.o(159892);
+      return;
+    }
+    if ((this.Ywv.tI < 0) || (this.Ywv.tI > b.iX(this.Ywx).length()))
+    {
+      AppMethodBeat.o(159892);
+      return;
+    }
+    if (this.Ywv.tH > this.Ywv.tI)
+    {
+      paramInt1 = this.Ywv.tH;
+      this.Ywv.tH = this.Ywv.tI;
+      this.Ywv.tI = paramInt1;
+    }
+    if (this.Yfs != null)
+    {
+      this.Ywv.Yov = this.Yfs.subSequence(this.Ywv.tH, this.Ywv.tI).toString();
+      if (this.YwB == null) {
+        break label314;
+      }
+      this.YwB.setPosition(this.Ywv.tH, this.Ywv.tI);
+    }
+    for (;;)
+    {
+      paramInt1 = b.aZ(this.Ywx, this.Ywv.tH);
+      paramInt1 = b.be(this.Ywx, paramInt1);
+      this.Yfs.setSpan(this.YwB, paramInt1, this.Ywv.tI, 17);
+      if (this.Yww != null) {
+        this.Yww.aH(this.Ywv.Yov);
+      }
+      AppMethodBeat.o(159892);
+      return;
+      label314:
+      this.YwB = new c(this.Ywx, this.mContext.getResources().getColor(this.YnW), this.Ywv.tH, this.Ywv.tI);
+    }
+  }
+  
+  public final void ief()
   {
     AppMethodBeat.i(159886);
-    if (!hcP())
+    if (!hJe())
     {
-      a(this.QXL);
-      a(this.QXM);
+      a(this.Ywt);
+      a(this.Ywu);
     }
     AppMethodBeat.o(159886);
   }
   
-  public final void hcR()
+  public final void ieg()
   {
     AppMethodBeat.i(159887);
-    if (this.QXL != null) {
-      this.QXL.mPopupWindow.dismiss();
+    if (this.Ywt != null) {
+      this.Ywt.mPopupWindow.dismiss();
     }
-    if (this.QXM != null) {
-      this.QXM.mPopupWindow.dismiss();
+    if (this.Ywu != null) {
+      this.Ywu.mPopupWindow.dismiss();
     }
     AppMethodBeat.o(159887);
   }
   
-  public final void hcS()
+  public final void ieh()
   {
     AppMethodBeat.i(159888);
-    if (this.QXS != null) {
-      this.QXS.gNq();
+    if (this.YwA != null) {
+      this.YwA.cFD();
     }
     AppMethodBeat.o(159888);
   }
   
-  public final void hcT()
+  public final void iei()
   {
     AppMethodBeat.i(159889);
-    if (this.QXQ != null) {
-      this.QXQ.gL(this.QXP);
+    if (this.Ywy != null) {
+      this.Ywy.hW(this.Ywx);
     }
     AppMethodBeat.o(159889);
   }
   
-  public final void hcU()
+  public final void iej()
   {
     AppMethodBeat.i(159890);
-    if (this.QXQ != null) {
-      this.QXQ.dismiss();
+    if (this.Ywy != null) {
+      this.Ywy.dismiss();
     }
     AppMethodBeat.o(159890);
   }
   
-  public final void hcV()
+  public final void iek()
   {
     AppMethodBeat.i(159891);
     int i;
     int j;
-    if (this.QXS != null)
+    if (this.YwA != null)
     {
       int[] arrayOfInt = new int[2];
-      this.QXP.getLocationInWindow(arrayOfInt);
-      float f3 = b.aR(this.QXP, this.QXN.avh);
-      float f2 = b.aR(this.QXP, this.QXN.Pc);
-      i = b.aQ(this.QXP, this.QXN.avh);
+      this.Ywx.getLocationInWindow(arrayOfInt);
+      float f3 = b.ba(this.Ywx, this.Ywv.tH);
+      float f2 = b.ba(this.Ywx, this.Ywv.tI);
+      i = b.aZ(this.Ywx, this.Ywv.tH);
       float f1;
-      if (b.aQ(this.QXP, this.QXN.Pc) <= i)
+      if (b.aZ(this.Ywx, this.Ywv.tI) <= i)
       {
         f1 = f2;
         if (f2 > f3) {}
       }
       else
       {
-        f1 = b.aU(this.QXP, b.aQ(this.QXP, this.QXN.avh));
+        f1 = b.bd(this.Ywx, b.aZ(this.Ywx, this.Ywv.tH));
       }
       i = (int)((f1 + f3) / 2.0F);
-      j = this.DfR + i;
-      int k = b.aS(this.QXP, b.aQ(this.QXP, this.QXN.avh)) + arrayOfInt[1] + this.mContext.getResources().getDimensionPixelSize(2131166207);
-      as.d("SelectableTextHelper", "dancy test posX:%s, startline:%s, endline:%s, leftpadding:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(b.aQ(this.QXP, this.QXN.avh)), Integer.valueOf(b.aQ(this.QXP, this.QXN.Pc)), Integer.valueOf(this.DfR) });
+      j = this.Cxs + i;
+      int k = b.bb(this.Ywx, b.aZ(this.Ywx, this.Ywv.tH)) + arrayOfInt[1] + this.mContext.getResources().getDimensionPixelSize(com.tencent.mm.cr.a.d.edgePadding);
+      av.d("SelectableTextHelper", "dancy test posX:%s, startline:%s, endline:%s, leftpadding:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(b.aZ(this.Ywx, this.Ywv.tH)), Integer.valueOf(b.aZ(this.Ywx, this.Ywv.tI)), Integer.valueOf(this.Cxs) });
       i = j;
       if (j <= 0) {
         i = 16;
@@ -743,237 +821,224 @@ public final class a
     label334:
     for (;;)
     {
-      this.QXS.ez(i, j);
-      if (this.QXQ != null) {
-        this.QXQ.gUa();
+      this.YwA.eY(i, j);
+      if (this.Ywy != null) {
+        this.Ywy.hTL();
       }
       AppMethodBeat.o(159891);
       return;
     }
   }
   
-  public final void lE(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(159892);
-    if (paramInt1 != -1) {
-      this.QXN.avh = bU(paramInt1, true);
-    }
-    if (paramInt2 != -1) {
-      this.QXN.Pc = bU(paramInt2, false);
-    }
-    if ((this.QXN.avh < 0) || (this.QXN.avh > b.hB(this.QXP).length()))
-    {
-      AppMethodBeat.o(159892);
-      return;
-    }
-    if ((this.QXN.Pc < 0) || (this.QXN.Pc > b.hB(this.QXP).length()))
-    {
-      AppMethodBeat.o(159892);
-      return;
-    }
-    if (this.QXN.avh > this.QXN.Pc)
-    {
-      paramInt1 = this.QXN.avh;
-      this.QXN.avh = this.QXN.Pc;
-      this.QXN.Pc = paramInt1;
-    }
-    if (this.QGC != null)
-    {
-      this.QXN.QPK = this.QGC.subSequence(this.QXN.avh, this.QXN.Pc).toString();
-      if (this.QXT == null) {
-        break label314;
-      }
-      this.QXT.setPosition(this.QXN.avh, this.QXN.Pc);
-    }
-    for (;;)
-    {
-      paramInt1 = b.aQ(this.QXP, this.QXN.avh);
-      paramInt1 = b.aV(this.QXP, paramInt1);
-      this.QGC.setSpan(this.QXT, paramInt1, this.QXN.Pc, 17);
-      if (this.QXO != null) {
-        this.QXO.as(this.QXN.QPK);
-      }
-      AppMethodBeat.o(159892);
-      return;
-      label314:
-      this.QXT = new c(this.QXP, this.mContext.getResources().getColor(this.QPi), this.QXN.avh, this.QXN.Pc);
-    }
-  }
-  
-  final void lP(int paramInt1, int paramInt2)
+  final void ng(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159883);
-    hbA();
-    if ((b.hB(this.QXP) instanceof Spannable)) {
-      this.QGC = ((Spannable)b.hB(this.QXP));
+    cpn();
+    if ((b.iX(this.Ywx) instanceof Spannable)) {
+      this.Yfs = ((Spannable)b.iX(this.Ywx));
     }
-    if ((this.QGC == null) || (paramInt1 >= b.hB(this.QXP).length()))
+    if ((this.Yfs == null) || (paramInt1 >= b.iX(this.Ywx).length()))
     {
-      this.QXN.avh = 0;
-      this.QXN.Pc = 0;
+      this.Ywv.tH = 0;
+      this.Ywv.tI = 0;
       AppMethodBeat.o(159883);
       return;
     }
-    lE(paramInt1, paramInt2);
+    fj(paramInt1, paramInt2);
     AppMethodBeat.o(159883);
+  }
+  
+  public static final class a
+  {
+    public int YnW = com.tencent.mm.cr.a.c.selected_blue;
+    public int YnX = com.tencent.mm.cr.a.c.cursor_handle_color;
+    com.tencent.mm.ui.widget.b.a YwN;
+    public int YwO = 0;
+    public int YwP = 0;
+    View Ywx;
+    a.f Ywy;
+    View.OnTouchListener Ywz;
+    View.OnClickListener kte;
+    
+    private a(View paramView, com.tencent.mm.ui.widget.b.a parama)
+    {
+      this.Ywx = paramView;
+      this.YwN = parama;
+    }
+    
+    public a(View paramView, com.tencent.mm.ui.widget.b.a parama, a.f paramf, View.OnClickListener paramOnClickListener, View.OnTouchListener paramOnTouchListener)
+    {
+      this(paramView, parama);
+      this.Ywy = paramf;
+      this.kte = paramOnClickListener;
+      this.Ywz = paramOnTouchListener;
+    }
+    
+    public final a iel()
+    {
+      AppMethodBeat.i(159863);
+      a locala = new a(this);
+      AppMethodBeat.o(159863);
+      return locala;
+    }
   }
   
   final class b
     extends View
   {
-    private int[] PhV;
-    int[] QLE;
-    boolean QPA;
-    private int QPB;
-    private int QPC;
-    private int QPD;
-    private int QPE;
-    private boolean QYi;
+    private int Dvd;
+    private int Dve;
+    private int[] Dvf;
+    int[] Ykw;
+    boolean Yon;
+    private int Yoo;
+    private int Yop;
+    private boolean YwQ;
+    private Rect byG;
+    private int clC;
     private int mHeight;
-    private int mPadding;
     private Paint mPaint;
     PopupWindow mPopupWindow;
     int mWidth;
-    private Point nDV;
-    private int qRY;
-    private Rect rect;
+    private Point qGg;
+    private int uue;
     
     b(boolean paramBoolean)
     {
       super();
       AppMethodBeat.i(159864);
-      this.qRY = (a.this.QPk / 2);
-      this.mWidth = (this.qRY * 2);
-      this.mHeight = (this.qRY * 2);
-      this.mPadding = 25;
-      this.QLE = new int[2];
-      this.rect = new Rect();
-      this.nDV = new Point();
-      this.QYi = false;
-      this.PhV = new int[2];
-      this.QPA = paramBoolean;
+      this.uue = (a.this.YnY / 2);
+      this.mWidth = (this.uue * 2);
+      this.mHeight = (this.uue * 2);
+      this.clC = 25;
+      this.Ykw = new int[2];
+      this.byG = new Rect();
+      this.qGg = new Point();
+      this.YwQ = false;
+      this.Dvf = new int[2];
+      this.Yon = paramBoolean;
       this.mPaint = new Paint(1);
-      this.mPaint.setColor(a.this.mContext.getResources().getColor(a.this.QPj));
+      this.mPaint.setColor(a.this.mContext.getResources().getColor(a.this.YnX));
       this.mPopupWindow = new PopupWindow(this);
       this.mPopupWindow.setClippingEnabled(false);
-      this.mPopupWindow.setWidth(this.mWidth + this.mPadding * 2);
-      this.mPopupWindow.setHeight(this.mHeight + this.mPadding / 2);
+      this.mPopupWindow.setWidth(this.mWidth + this.clC * 2);
+      this.mPopupWindow.setHeight(this.mHeight + this.clC / 2);
       AppMethodBeat.o(159864);
     }
     
-    private void hbB()
+    private void icK()
     {
       AppMethodBeat.i(159867);
-      if (!this.QPA) {}
+      if (!this.Yon) {}
       for (boolean bool = true;; bool = false)
       {
-        this.QPA = bool;
+        this.Yon = bool;
         invalidate();
         AppMethodBeat.o(159867);
         return;
       }
     }
     
-    private void hbC()
+    private void icL()
     {
       AppMethodBeat.i(159869);
-      a.this.QXP.getLocationInWindow(this.QLE);
-      Object localObject = b.hC(a.this.QXP);
+      a.this.Ywx.getLocationInWindow(this.Ykw);
+      Object localObject = b.iY(a.this.Ywx);
       if (localObject != null)
       {
         int i = (int)((TextPaint)localObject).getFontMetrics().descent;
-        if (this.QPA)
+        if (this.Yon)
         {
-          this.mPopupWindow.update((int)b.aR(a.this.QXP, a.this.QXN.avh) - this.mWidth + hbD(), i + b.aP(a.this.QXP, b.aQ(a.this.QXP, a.this.QXN.avh)) + hbE(), -1, -1);
+          this.mPopupWindow.update((int)b.ba(a.this.Ywx, a.this.Ywv.tH) - this.mWidth + getExtraX(), i + b.aY(a.this.Ywx, b.aZ(a.this.Ywx, a.this.Ywv.tH)) + getExtraY(), -1, -1);
           AppMethodBeat.o(159869);
           return;
         }
-        localObject = lQ((int)b.aR(a.this.QXP, a.this.QXN.Pc), i + b.aP(a.this.QXP, b.aQ(a.this.QXP, a.this.QXN.Pc)));
+        localObject = nh((int)b.ba(a.this.Ywx, a.this.Ywv.tI), i + b.aY(a.this.Ywx, b.aZ(a.this.Ywx, a.this.Ywv.tI)));
         i = localObject[0];
         int j = localObject[1];
-        this.mPopupWindow.update(i + hbD(), j + hbE(), -1, -1);
+        this.mPopupWindow.update(i + getExtraX(), j + getExtraY(), -1, -1);
       }
       AppMethodBeat.o(159869);
     }
     
-    private void update(int paramInt1, int paramInt2)
+    private void kC(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(159868);
-      a.this.QXP.getLocationInWindow(this.QLE);
+      a.this.Ywx.getLocationInWindow(this.Ykw);
       int i;
       b localb;
-      if (this.QPA)
+      if (this.Yon)
       {
-        i = a.this.QXN.avh;
-        int j = this.QLE[1];
-        paramInt1 = b.f(a.this.QXP, paramInt1, paramInt2 - j, i);
+        i = a.this.Ywv.tH;
+        int j = this.Ykw[1];
+        paramInt1 = b.i(a.this.Ywx, paramInt1, paramInt2 - j, i);
         if (paramInt1 == i) {
           break label225;
         }
-        a.this.hbA();
-        if (!this.QPA) {
+        a.this.cpn();
+        if (!this.Yon) {
           break label169;
         }
-        if (paramInt1 <= this.QPE) {
+        if (paramInt1 <= this.Yop) {
           break label157;
         }
         localb = a.a(a.this, false);
-        hbB();
-        localb.hbB();
-        this.QPD = this.QPE;
-        a.this.lE(this.QPE, paramInt1);
-        localb.hbC();
+        icK();
+        localb.icK();
+        this.Yoo = this.Yop;
+        a.this.fj(this.Yop, paramInt1);
+        localb.icL();
       }
       for (;;)
       {
-        hbC();
+        icL();
         AppMethodBeat.o(159868);
         return;
-        i = a.this.QXN.Pc;
+        i = a.this.Ywv.tI;
         break;
         label157:
-        a.this.lE(paramInt1, -1);
+        a.this.fj(paramInt1, -1);
       }
       label169:
-      if (paramInt1 < this.QPD)
+      if (paramInt1 < this.Yoo)
       {
         localb = a.a(a.this, true);
-        localb.hbB();
-        hbB();
-        this.QPE = this.QPD;
-        a.this.lE(paramInt1, this.QPD);
-        localb.hbC();
+        localb.icK();
+        icK();
+        this.Yop = this.Yoo;
+        a.this.fj(paramInt1, this.Yoo);
+        localb.icL();
       }
       for (;;)
       {
-        hbC();
+        icL();
         label225:
         AppMethodBeat.o(159868);
         return;
-        a.this.lE(this.QPD, paramInt1);
+        a.this.fj(this.Yoo, paramInt1);
       }
     }
     
-    public final int hbD()
+    public final int getExtraX()
     {
       AppMethodBeat.i(159870);
-      int i = this.QLE[0];
-      int j = this.mPadding;
-      int k = a.this.QXP.getPaddingLeft();
+      int i = this.Ykw[0];
+      int j = this.clC;
+      int k = a.this.Ywx.getPaddingLeft();
       AppMethodBeat.o(159870);
       return i - j + k;
     }
     
-    public final int hbE()
+    public final int getExtraY()
     {
       AppMethodBeat.i(159871);
-      int i = this.QLE[1];
-      int j = a.this.QXP.getPaddingTop();
+      int i = this.Ykw[1];
+      int j = a.this.Ywx.getPaddingTop();
       AppMethodBeat.o(159871);
       return i + j;
     }
     
-    final int[] lQ(int paramInt1, int paramInt2)
+    final int[] nh(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(159872);
       int j = paramInt1;
@@ -982,18 +1047,18 @@ public final class a
       {
         j = paramInt1;
         i = paramInt2;
-        if (a.this.QXN.Pc > 1)
+        if (a.this.Ywv.tI > 1)
         {
-          a.this.QXP.getLocationInWindow(this.QLE);
-          TextPaint localTextPaint = b.hC(a.this.QXP);
+          a.this.Ywx.getLocationInWindow(this.Ykw);
+          TextPaint localTextPaint = b.iY(a.this.Ywx);
           j = paramInt1;
           i = paramInt2;
           if (localTextPaint != null)
           {
             paramInt1 = (int)localTextPaint.getFontMetrics().descent;
-            paramInt2 = b.aQ(a.this.QXP, a.this.QXN.Pc - 1);
-            j = (int)b.aU(a.this.QXP, paramInt2);
-            i = b.aP(a.this.QXP, b.aQ(a.this.QXP, a.this.QXN.Pc - 1)) + paramInt1;
+            paramInt2 = b.aZ(a.this.Ywx, a.this.Ywv.tI - 1);
+            j = (int)b.bd(a.this.Ywx, paramInt2);
+            i = b.aY(a.this.Ywx, b.aZ(a.this.Ywx, a.this.Ywv.tI - 1)) + paramInt1;
           }
         }
       }
@@ -1007,76 +1072,76 @@ public final class a
       int i;
       int j;
       int k;
-      if (a.this.QXQ != null) {
-        if (this.QPA)
+      if (a.this.Ywy != null) {
+        if (this.Yon)
         {
-          i = a.this.QXN.avh;
-          TextPaint localTextPaint = b.hC(a.this.QXP);
+          i = a.this.Ywv.tH;
+          TextPaint localTextPaint = b.iY(a.this.Ywx);
           if (localTextPaint == null) {
             break label485;
           }
-          j = b.aP(a.this.QXP, b.aQ(a.this.QXP, i));
+          j = b.aY(a.this.Ywx, b.aZ(a.this.Ywx, i));
           j = (int)localTextPaint.getFontMetrics().descent + j;
-          k = (int)b.aR(a.this.QXP, i);
+          k = (int)b.ba(a.this.Ywx, i);
           i = j;
           j = k;
         }
       }
       for (;;)
       {
-        a.this.QXP.getLocationInWindow(this.QLE);
+        a.this.Ywx.getLocationInWindow(this.Ykw);
         k = i;
-        if (!this.QPA) {
-          k = lQ(j, i)[1];
+        if (!this.Yon) {
+          k = nh(j, i)[1];
         }
-        i = hbE() + k;
-        if (a.this.QXP.getGlobalVisibleRect(this.rect, this.nDV))
+        i = getExtraY() + k;
+        if (a.this.Ywx.getGlobalVisibleRect(this.byG, this.qGg))
         {
-          if (i >= this.rect.bottom)
+          if (i >= this.byG.bottom)
           {
-            if (this.QPA)
+            if (this.Yon)
             {
-              as.d("SelectableTextHelper", "start below bottom, dismiss all.", new Object[0]);
-              a.this.hbA();
-              a.this.QXW = true;
-              a.this.QXX = true;
-              a.this.hbz();
-              a.this.QXQ.dismiss();
+              av.d("SelectableTextHelper", "start below bottom, dismiss all.", new Object[0]);
+              a.this.cpn();
+              a.this.YwE = true;
+              a.this.YwF = true;
+              a.this.cpq();
+              a.this.Ywy.dismiss();
             }
-            as.d("SelectableTextHelper", "cursor invisible.", new Object[0]);
+            av.d("SelectableTextHelper", "cursor invisible.", new Object[0]);
             AppMethodBeat.o(159865);
             return;
-            i = a.this.QXN.Pc;
+            i = a.this.Ywv.tI;
             break;
           }
-          if (i > this.rect.top) {
+          if (i > this.byG.top) {
             break label373;
           }
-          if (!this.QPA)
+          if (!this.Yon)
           {
-            as.d("SelectableTextHelper", "end above top, dismiss all.", new Object[0]);
-            a.this.hbA();
-            a.this.QXW = true;
-            a.this.QXX = true;
-            a.this.hbz();
-            a.this.QXQ.dismiss();
+            av.d("SelectableTextHelper", "end above top, dismiss all.", new Object[0]);
+            a.this.cpn();
+            a.this.YwE = true;
+            a.this.YwF = true;
+            a.this.cpq();
+            a.this.Ywy.dismiss();
           }
-          as.d("SelectableTextHelper", "cursor invisible.", new Object[0]);
+          av.d("SelectableTextHelper", "cursor invisible.", new Object[0]);
           AppMethodBeat.o(159865);
           return;
         }
-        as.d("SelectableTextHelper", "view invisible.", new Object[0]);
+        av.d("SelectableTextHelper", "view invisible.", new Object[0]);
         AppMethodBeat.o(159865);
         return;
         label373:
-        paramCanvas.drawCircle(this.qRY + this.mPadding, this.qRY, this.qRY, this.mPaint);
-        if (this.QPA)
+        paramCanvas.drawCircle(this.uue + this.clC, this.uue, this.uue, this.mPaint);
+        if (this.Yon)
         {
-          paramCanvas.drawRect(this.qRY + this.mPadding, 0.0F, this.qRY * 2 + this.mPadding, this.qRY, this.mPaint);
+          paramCanvas.drawRect(this.uue + this.clC, 0.0F, this.uue * 2 + this.clC, this.uue, this.mPaint);
           AppMethodBeat.o(159865);
           return;
         }
-        paramCanvas.drawRect(this.mPadding, 0.0F, this.qRY + this.mPadding, this.qRY, this.mPaint);
+        paramCanvas.drawRect(this.clC, 0.0F, this.uue + this.clC, this.uue, this.mPaint);
         AppMethodBeat.o(159865);
         return;
         label485:
@@ -1096,55 +1161,55 @@ public final class a
       {
         AppMethodBeat.o(159866);
         return true;
-        this.QPD = a.this.QXN.avh;
-        this.QPE = a.this.QXN.Pc;
-        this.QPB = ((int)paramMotionEvent.getX());
-        this.QPC = ((int)paramMotionEvent.getY());
-        this.QYi = false;
-        a.this.QXP.getLocationOnScreen(this.PhV);
+        this.Yoo = a.this.Ywv.tH;
+        this.Yop = a.this.Ywv.tI;
+        this.Dvd = ((int)paramMotionEvent.getX());
+        this.Dve = ((int)paramMotionEvent.getY());
+        this.YwQ = false;
+        a.this.Ywx.getLocationOnScreen(this.Dvf);
         continue;
-        if ((a.this.QXQ != null) && (!this.QYi))
+        if ((a.this.Ywy != null) && (!this.YwQ))
         {
-          this.QYi = true;
-          a.this.QXQ.gTY();
-          if (a.this.QXN.Pc - a.this.QXN.avh == b.hB(a.this.QXP).length())
+          this.YwQ = true;
+          a.this.Ywy.hTJ();
+          if (a.this.Ywv.tI - a.this.Ywv.tH == b.iX(a.this.Ywx).length())
           {
-            a.this.QXQ.gL(a.this.QXP);
-            a.this.QXW = true;
-            a.this.hcS();
+            a.this.Ywy.hW(a.this.Ywx);
+            a.this.YwE = true;
+            a.this.ieh();
           }
           for (;;)
           {
-            a.this.QXQ.gTZ();
+            a.this.Ywy.hTK();
             break;
-            a.this.QXQ.dismiss();
-            a.this.QXW = false;
-            a.this.hcV();
+            a.this.Ywy.dismiss();
+            a.this.YwE = false;
+            a.this.iek();
           }
         }
-        if (!a.this.QXW)
+        if (!a.this.YwE)
         {
-          a.this.hcV();
+          a.this.iek();
           continue;
-          if (a.this.QXQ != null)
+          if (a.this.Ywy != null)
           {
-            a.this.QXQ.gTY();
-            a.this.QXQ.dismiss();
+            a.this.Ywy.hTJ();
+            a.this.Ywy.dismiss();
           }
-          a.this.hcS();
+          a.this.ieh();
           int i = (int)paramMotionEvent.getRawX();
           int j = (int)paramMotionEvent.getRawY();
-          if (a.this.QXQ == null) {
-            update(i - this.PhV[0], j + this.QPC - this.mHeight - a.this.QPm);
+          if (a.this.Ywy == null) {
+            kC(i - this.Dvf[0], j + this.Dve - this.mHeight - a.this.Yoa);
           }
           for (;;)
           {
-            if (a.this.QXQ == null) {
+            if (a.this.Ywy == null) {
               break label430;
             }
-            a.this.QXQ.gTZ();
+            a.this.Ywy.hTK();
             break;
-            update(i - this.PhV[0] + this.qRY, j + this.QPC - this.mHeight - a.this.QPm);
+            kC(i - this.Dvf[0] + this.uue, j + this.Dve - this.mHeight - a.this.Yoa);
           }
         }
       }
@@ -1158,7 +1223,7 @@ public final class a
     
     c() {}
     
-    final boolean Nm(int paramInt)
+    final boolean SA(int paramInt)
     {
       return (paramInt >= this.start) && (paramInt < this.end);
     }
@@ -1172,16 +1237,21 @@ public final class a
     }
   }
   
+  public static abstract interface d
+  {
+    public abstract void aH(CharSequence paramCharSequence);
+  }
+  
   public static abstract interface e
   {
-    public abstract void gUe();
+    public abstract void hTP();
   }
   
   final class g
   {
-    int Pc;
-    String QPK;
-    int avh;
+    String Yov;
+    int tH;
+    int tI;
     
     g() {}
   }

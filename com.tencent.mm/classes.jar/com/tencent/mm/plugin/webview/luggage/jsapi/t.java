@@ -7,7 +7,7 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ch.a;
+import com.tencent.mm.co.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
@@ -30,8 +30,8 @@ public class t
       {
         int i = 0;
         AppMethodBeat.i(78554);
-        Object localObject1 = paramb.ctb.csi;
-        Object localObject3 = ((s)paramb.cta).mContext;
+        Object localObject1 = paramb.crh.cqn;
+        Object localObject3 = ((s)paramb.crg).mContext;
         JSONArray localJSONArray = ((JSONObject)localObject1).optJSONArray("packageName");
         Object localObject4;
         JSONObject localJSONObject;
@@ -92,10 +92,10 @@ public class t
             if (k == 0) {
               continue;
             }
-            paramb.e("get_install_state:yes", (Map)localObject2);
+            paramb.d("get_install_state:yes", (Map)localObject2);
             AppMethodBeat.o(78554);
             return;
-            paramb.c("get_install_state:no", null);
+            paramb.a("get_install_state:no", null);
             AppMethodBeat.o(78554);
             return;
           }
@@ -106,7 +106,7 @@ public class t
           if (Util.isNullOrNil((String)localObject4))
           {
             Log.i("MicroMsg.JsApiGetInstallState", "packageName is null or nil");
-            paramb.c("get_install_state:no_null_packageName", null);
+            paramb.a("get_install_state:no_null_packageName", null);
             AppMethodBeat.o(78554);
             return;
           }
@@ -123,7 +123,7 @@ public class t
             if (localObject3 != null) {
               break label456;
             }
-            paramb.c("get_install_state:no", null);
+            paramb.a("get_install_state:no", null);
             AppMethodBeat.o(78554);
             return;
             i = ((PackageInfo)localObject3).versionCode;
@@ -132,7 +132,7 @@ public class t
           label456:
           localObject3 = new HashMap();
           ((Map)localObject3).put("versionName", localObject2);
-          paramb.e("get_install_state:yes_".concat(String.valueOf(i)), (Map)localObject3);
+          paramb.d("get_install_state:yes_".concat(String.valueOf(i)), (Map)localObject3);
           AppMethodBeat.o(78554);
           return;
           label501:
@@ -145,7 +145,7 @@ public class t
     AppMethodBeat.o(78555);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

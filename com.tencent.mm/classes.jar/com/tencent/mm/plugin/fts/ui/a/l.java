@@ -15,41 +15,44 @@ import com.tencent.mm.plugin.fts.a.d.a.a.b;
 import com.tencent.mm.plugin.fts.a.f;
 import com.tencent.mm.plugin.fts.ui.b.c;
 import com.tencent.mm.plugin.fts.ui.n;
+import com.tencent.mm.plugin.fts.ui.o.d;
+import com.tencent.mm.plugin.fts.ui.o.e;
+import com.tencent.mm.plugin.fts.ui.o.g;
 
 public final class l
   extends a
 {
-  CharSequence xds;
-  private a.b xdt;
-  a.a xdu;
+  CharSequence BPq;
+  private a.b BPr;
+  a.a BPs;
   
   public l(int paramInt)
   {
     super(11, paramInt);
     AppMethodBeat.i(112095);
-    this.xdt = new b();
-    this.xdu = new a();
+    this.BPr = new b();
+    this.BPs = new a();
     AppMethodBeat.o(112095);
   }
   
   public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
     AppMethodBeat.i(112096);
-    parama = TextUtils.ellipsize(this.wWd.wWB, b.c.wZY, 400.0F, TextUtils.TruncateAt.MIDDLE).toString();
-    this.xds = f.a(paramContext.getString(2131765056), paramContext.getString(2131765055), parama);
+    parama = TextUtils.ellipsize(this.BHY.BIw, b.c.BLX, 400.0F, TextUtils.TruncateAt.MIDDLE).toString();
+    this.BPq = f.a(paramContext.getString(o.g.search_contact_no_result_pre), paramContext.getString(o.g.search_contact_no_result_post), parama);
     AppMethodBeat.o(112096);
   }
   
-  public final a.b axc()
+  public final a.b aEw()
   {
-    return this.xdt;
+    return this.BPr;
   }
   
   public final class a
     extends a.a
   {
-    public View xcK;
-    public TextView xcX;
+    public View BOI;
+    public TextView BOV;
     
     public a()
     {
@@ -68,10 +71,10 @@ public final class l
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(112093);
-      paramContext = LayoutInflater.from(paramContext).inflate(2131494757, paramViewGroup, false);
-      paramViewGroup = (l.a)l.this.xdu;
-      paramViewGroup.xcX = ((TextView)paramContext.findViewById(2131302657));
-      paramViewGroup.xcK = paramContext.findViewById(2131305768);
+      paramContext = LayoutInflater.from(paramContext).inflate(o.e.fts_info_item, paramViewGroup, false);
+      paramViewGroup = (l.a)l.this.BPs;
+      paramViewGroup.BOV = ((TextView)paramContext.findViewById(o.d.info_tv));
+      paramViewGroup.BOI = paramContext.findViewById(o.d.padding_view);
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(112093);
       return paramContext;
@@ -81,14 +84,14 @@ public final class l
     {
       AppMethodBeat.i(112094);
       paramContext = (l.a)parama;
-      n.a(l.this.xds, paramContext.xcX);
+      n.a(l.this.BPq, paramContext.BOV);
       if (l.this.position == 0)
       {
-        paramContext.xcK.setVisibility(8);
+        paramContext.BOI.setVisibility(8);
         AppMethodBeat.o(112094);
         return;
       }
-      paramContext.xcK.setVisibility(0);
+      paramContext.BOI.setVisibility(0);
       AppMethodBeat.o(112094);
     }
     
@@ -100,7 +103,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.l
  * JD-Core Version:    0.7.0.1
  */

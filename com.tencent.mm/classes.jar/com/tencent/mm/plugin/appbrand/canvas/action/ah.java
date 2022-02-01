@@ -18,8 +18,8 @@ public final class ah
     Log.i("MicroMsg.SetTextBaselineAction", "SetTextBaselineAction, align:%s", new Object[] { paramString });
     if ("top".equalsIgnoreCase(paramString))
     {
-      paramd.kZl.laj = a.a.laq;
-      paramd.kZm.laj = a.a.laq;
+      paramd.nTw.nUt = a.a.nUA;
+      paramd.nTx.nUt = a.a.nUA;
     }
     for (;;)
     {
@@ -27,18 +27,18 @@ public final class ah
       return true;
       if ("middle".equalsIgnoreCase(paramString))
       {
-        paramd.kZl.laj = a.a.las;
-        paramd.kZm.laj = a.a.las;
+        paramd.nTw.nUt = a.a.nUC;
+        paramd.nTx.nUt = a.a.nUC;
       }
       else if ("bottom".equalsIgnoreCase(paramString))
       {
-        paramd.kZl.laj = a.a.lar;
-        paramd.kZm.laj = a.a.lar;
+        paramd.nTw.nUt = a.a.nUB;
+        paramd.nTx.nUt = a.a.nUB;
       }
       else if ("normal".equalsIgnoreCase(paramString))
       {
-        paramd.kZl.laj = a.a.lap;
-        paramd.kZm.laj = a.a.lap;
+        paramd.nTw.nUt = a.a.nUz;
+        paramd.nTx.nUt = a.a.nUz;
       }
     }
   }
@@ -52,7 +52,7 @@ public final class ah
       AppMethodBeat.o(144980);
       return false;
     }
-    boolean bool = b(paramd, paramCanvas.kZR);
+    boolean bool = b(paramd, paramCanvas.nUc);
     AppMethodBeat.o(144980);
     return bool;
   }
@@ -70,7 +70,7 @@ public final class ah
     return bool;
   }
   
-  public final BaseDrawActionArg bzj()
+  public final BaseDrawActionArg bKy()
   {
     AppMethodBeat.i(144977);
     SetTextBaseLineActionArg localSetTextBaseLineActionArg = new SetTextBaseLineActionArg();
@@ -85,7 +85,7 @@ public final class ah
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.ah
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ import com.tencent.mm.hardcoder.h.a;
 import com.tencent.mm.hardcoder.i;
 import com.tencent.mm.hardcoder.j;
 import com.tencent.mm.hardcoder.k;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -22,45 +22,45 @@ import java.util.ArrayList;
 public final class a
   implements e.a, h.a
 {
-  private static String yiZ = null;
-  private static Long yja = null;
-  public static boolean yjb = false;
-  private static a yjc;
-  private IListener wUc;
-  private ArrayList<Pair<Integer, Object[]>> yjd;
-  private ArrayList<Object[]> yje;
+  private static String Dtb = null;
+  private static Long Dtc = null;
+  public static boolean Dtd = false;
+  private static a Dte;
+  private ArrayList<Pair<Integer, Object[]>> Dtf;
+  private ArrayList<Object[]> Dtg;
+  private IListener tLX;
   
   public a()
   {
     AppMethodBeat.i(130756);
-    this.yjd = new ArrayList();
-    this.yje = new ArrayList();
-    this.wUc = new a.1(this);
+    this.Dtf = new ArrayList();
+    this.Dtg = new ArrayList();
+    this.tLX = new a.1(this);
     AppMethodBeat.o(130756);
   }
   
   private void a(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(130760);
-    if ((MMApplicationContext.isMMProcess()) && (!g.aAf().hpY))
+    if ((MMApplicationContext.isMMProcess()) && (!com.tencent.mm.kernel.h.aHE().kbT))
     {
       Log.w("MicroMsg.HardCoderReporterImpl", "kvStat accountNotInitialReady!");
-      this.wUc.alive();
-      this.yjd.add(new Pair(Integer.valueOf(paramInt), paramVarArgs));
+      this.tLX.alive();
+      this.Dtf.add(new Pair(Integer.valueOf(paramInt), paramVarArgs));
       AppMethodBeat.o(130760);
       return;
     }
-    com.tencent.mm.plugin.report.service.h.CyF.a(paramInt, paramVarArgs);
+    com.tencent.mm.plugin.report.service.h.IzE.a(paramInt, paramVarArgs);
     AppMethodBeat.o(130760);
   }
   
-  public static a dYI()
+  public static a eCg()
   {
     AppMethodBeat.i(130757);
-    if (yjc == null) {
-      yjc = new a();
+    if (Dte == null) {
+      Dte = new a();
     }
-    a locala = yjc;
+    a locala = Dte;
     AppMethodBeat.o(130757);
     return locala;
   }
@@ -83,29 +83,29 @@ public final class a
     //   27: ifeq +145 -> 172
     //   30: iconst_1
     //   31: istore 16
-    //   33: getstatic 29	com/tencent/mm/plugin/hardcoder/a:yja	Ljava/lang/Long;
+    //   33: getstatic 29	com/tencent/mm/plugin/hardcoder/a:Dtc	Ljava/lang/Long;
     //   36: ifnonnull +35 -> 71
     //   39: invokestatic 69	com/tencent/mm/sdk/platformtools/MMApplicationContext:isMMProcess	()Z
     //   42: ifeq +136 -> 178
-    //   45: invokestatic 146	com/tencent/mm/kernel/g:aAi	()Lcom/tencent/mm/kernel/g;
+    //   45: invokestatic 146	com/tencent/mm/kernel/h:aHH	()Lcom/tencent/mm/kernel/h;
     //   48: pop
-    //   49: invokestatic 150	com/tencent/mm/kernel/g:aAh	()Lcom/tencent/mm/kernel/e;
-    //   52: invokevirtual 156	com/tencent/mm/kernel/e:azQ	()Lcom/tencent/mm/storage/ao;
-    //   55: getstatic 162	com/tencent/mm/storage/ar$a:Oaw	Lcom/tencent/mm/storage/ar$a;
+    //   49: invokestatic 150	com/tencent/mm/kernel/h:aHG	()Lcom/tencent/mm/kernel/f;
+    //   52: invokevirtual 156	com/tencent/mm/kernel/f:aHp	()Lcom/tencent/mm/storage/ao;
+    //   55: getstatic 162	com/tencent/mm/storage/ar$a:Voy	Lcom/tencent/mm/storage/ar$a;
     //   58: lconst_0
     //   59: invokestatic 167	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   62: invokevirtual 173	com/tencent/mm/storage/ao:get	(Lcom/tencent/mm/storage/ar$a;Ljava/lang/Object;)Ljava/lang/Object;
     //   65: checkcast 164	java/lang/Long
-    //   68: putstatic 29	com/tencent/mm/plugin/hardcoder/a:yja	Ljava/lang/Long;
-    //   71: getstatic 27	com/tencent/mm/plugin/hardcoder/a:yiZ	Ljava/lang/String;
+    //   68: putstatic 29	com/tencent/mm/plugin/hardcoder/a:Dtc	Ljava/lang/Long;
+    //   71: getstatic 27	com/tencent/mm/plugin/hardcoder/a:Dtb	Ljava/lang/String;
     //   74: invokestatic 179	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   77: ifeq +10 -> 87
     //   80: iconst_0
-    //   81: invokestatic 185	com/tencent/mm/compatible/deviceinfo/q:dr	(Z)Ljava/lang/String;
-    //   84: putstatic 27	com/tencent/mm/plugin/hardcoder/a:yiZ	Ljava/lang/String;
-    //   87: getstatic 27	com/tencent/mm/plugin/hardcoder/a:yiZ	Ljava/lang/String;
+    //   81: invokestatic 185	com/tencent/mm/compatible/deviceinfo/q:dR	(Z)Ljava/lang/String;
+    //   84: putstatic 27	com/tencent/mm/plugin/hardcoder/a:Dtb	Ljava/lang/String;
+    //   87: getstatic 27	com/tencent/mm/plugin/hardcoder/a:Dtb	Ljava/lang/String;
     //   90: astore 22
-    //   92: getstatic 29	com/tencent/mm/plugin/hardcoder/a:yja	Ljava/lang/Long;
+    //   92: getstatic 29	com/tencent/mm/plugin/hardcoder/a:Dtc	Ljava/lang/Long;
     //   95: invokevirtual 189	java/lang/Long:longValue	()J
     //   98: l2i
     //   99: istore 20
@@ -148,7 +148,7 @@ public final class a
     //   175: goto -142 -> 33
     //   178: lconst_0
     //   179: invokestatic 167	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   182: putstatic 29	com/tencent/mm/plugin/hardcoder/a:yja	Ljava/lang/Long;
+    //   182: putstatic 29	com/tencent/mm/plugin/hardcoder/a:Dtc	Ljava/lang/Long;
     //   185: goto -114 -> 71
     //   188: new 191	java/lang/StringBuilder
     //   191: dup
@@ -533,17 +533,17 @@ public final class a
     //   873: invokestatic 104	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   876: aastore
     //   877: invokespecial 233	com/tencent/mm/plugin/hardcoder/a:a	(I[Ljava/lang/Object;)V
-    //   880: getstatic 31	com/tencent/mm/plugin/hardcoder/a:yjb	Z
+    //   880: getstatic 31	com/tencent/mm/plugin/hardcoder/a:Dtd	Z
     //   883: ifeq +338 -> 1221
     //   886: new 191	java/lang/StringBuilder
     //   889: dup
     //   890: invokespecial 192	java/lang/StringBuilder:<init>	()V
     //   893: astore_1
-    //   894: invokestatic 146	com/tencent/mm/kernel/g:aAi	()Lcom/tencent/mm/kernel/g;
+    //   894: invokestatic 146	com/tencent/mm/kernel/h:aHH	()Lcom/tencent/mm/kernel/h;
     //   897: pop
     //   898: aload_1
-    //   899: invokestatic 150	com/tencent/mm/kernel/g:aAh	()Lcom/tencent/mm/kernel/e;
-    //   902: getfield 236	com/tencent/mm/kernel/e:hqF	Ljava/lang/String;
+    //   899: invokestatic 150	com/tencent/mm/kernel/h:aHG	()Lcom/tencent/mm/kernel/f;
+    //   902: getfield 236	com/tencent/mm/kernel/f:kcA	Ljava/lang/String;
     //   905: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   908: ldc 238
     //   910: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -555,18 +555,18 @@ public final class a
     //   922: iconst_0
     //   923: aload_1
     //   924: aastore
-    //   925: invokestatic 244	com/tencent/mm/b/e:f	([Ljava/lang/String;)V
-    //   928: new 246	com/tencent/mm/vfs/o
+    //   925: invokestatic 244	com/tencent/mm/b/e:d	([Ljava/lang/String;)V
+    //   928: new 246	com/tencent/mm/vfs/q
     //   931: dup
     //   932: aload_1
     //   933: ldc 248
-    //   935: invokespecial 250	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   935: invokespecial 250	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   938: astore 14
     //   940: aload 14
-    //   942: invokevirtual 253	com/tencent/mm/vfs/o:exists	()Z
+    //   942: invokevirtual 253	com/tencent/mm/vfs/q:ifE	()Z
     //   945: ifne +9 -> 954
     //   948: aload 14
-    //   950: invokevirtual 256	com/tencent/mm/vfs/o:createNewFile	()Z
+    //   950: invokevirtual 256	com/tencent/mm/vfs/q:ifM	()Z
     //   953: pop
     //   954: aconst_null
     //   955: astore 10
@@ -574,7 +574,7 @@ public final class a
     //   958: astore_1
     //   959: aload 14
     //   961: iconst_1
-    //   962: invokestatic 262	com/tencent/mm/vfs/s:d	(Lcom/tencent/mm/vfs/o;Z)Ljava/io/OutputStream;
+    //   962: invokestatic 262	com/tencent/mm/vfs/u:e	(Lcom/tencent/mm/vfs/q;Z)Ljava/io/OutputStream;
     //   965: astore 14
     //   967: aload 14
     //   969: astore_1
@@ -737,8 +737,8 @@ public final class a
     if ((paramh instanceof j))
     {
       paramh = (j)paramh;
-      Log.i("MicroMsg.HardCoderReporterImpl", "reportIDKey feature[%b] key[%d], value[%d]", new Object[] { Boolean.valueOf(paramh.hlC), Integer.valueOf(paramh.key), Integer.valueOf(paramh.value), Boolean.valueOf(paramh.ebV) });
-      if (paramh.hlC) {}
+      Log.i("MicroMsg.HardCoderReporterImpl", "reportIDKey feature[%b] key[%d], value[%d]", new Object[] { Boolean.valueOf(paramh.jXl), Integer.valueOf(paramh.key), Integer.valueOf(paramh.value), Boolean.valueOf(paramh.fVX) });
+      if (paramh.jXl) {}
       long l2;
       long l3;
       boolean bool;
@@ -746,33 +746,33 @@ public final class a
       {
         l2 = paramh.key;
         l3 = paramh.value;
-        bool = paramh.ebV;
-        if ((!MMApplicationContext.isMMProcess()) || (g.aAf().hpY)) {
+        bool = paramh.fVX;
+        if ((!MMApplicationContext.isMMProcess()) || (com.tencent.mm.kernel.h.aHE().kbT)) {
           break;
         }
         Log.w("MicroMsg.HardCoderReporterImpl", "idkeyStat accountNotInitialReady!");
-        this.wUc.alive();
-        this.yje.add(new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Boolean.valueOf(bool) });
+        this.tLX.alive();
+        this.Dtg.add(new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Boolean.valueOf(bool) });
         AppMethodBeat.o(130759);
         return;
       }
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(l1, l2, l3, bool);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(l1, l2, l3, bool);
       AppMethodBeat.o(130759);
       return;
     }
     if ((paramh instanceof i))
     {
       paramh = (i)paramh;
-      if (yja == null)
+      if (Dtc == null)
       {
-        g.aAi();
-        yja = (Long)g.aAh().azQ().get(ar.a.Oaw, Long.valueOf(0L));
+        com.tencent.mm.kernel.h.aHH();
+        Dtc = (Long)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Voy, Long.valueOf(0L));
       }
-      if (TextUtils.isEmpty(yiZ)) {
-        yiZ = q.dr(false);
+      if (TextUtils.isEmpty(Dtb)) {
+        Dtb = q.dR(false);
       }
-      String str = yiZ;
-      int k = (int)yja.longValue();
+      String str = Dtb;
+      int k = (int)Dtc.longValue();
       int i;
       int m;
       if (WXHardCoderJNI.isHCEnable())
@@ -788,9 +788,9 @@ public final class a
       {
         if (paramh.type == 1)
         {
-          l1 = paramh.hlB * 100L / paramh.interval;
-          a(15187, new Object[] { str, Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(m), Integer.valueOf(paramh.scene), Long.valueOf(paramh.hlf), Integer.valueOf(paramh.type), Long.valueOf(paramh.hlB), Long.valueOf(paramh.interval), Long.valueOf(l1), Integer.valueOf(j) });
-          Log.i("MicroMsg.HardCoderReporterImpl", String.format("fpsReport imei:%s enable:%s, heavy:%s speedUp:%s, engineStatus:%s, scene:%s, action:%s, type:%s, totalDroppedFrames:%s, interval:%s, average:%s", new Object[] { str, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(m), Integer.valueOf(paramh.scene), Long.valueOf(paramh.hlf), Integer.valueOf(paramh.type), Long.valueOf(paramh.hlB), Long.valueOf(paramh.interval), Long.valueOf(l1) }));
+          l1 = paramh.jXk * 100L / paramh.interval;
+          a(15187, new Object[] { str, Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(m), Integer.valueOf(paramh.scene), Long.valueOf(paramh.jWO), Integer.valueOf(paramh.type), Long.valueOf(paramh.jXk), Long.valueOf(paramh.interval), Long.valueOf(l1), Integer.valueOf(j) });
+          Log.i("MicroMsg.HardCoderReporterImpl", String.format("fpsReport imei:%s enable:%s, heavy:%s speedUp:%s, engineStatus:%s, scene:%s, action:%s, type:%s, totalDroppedFrames:%s, interval:%s, average:%s", new Object[] { str, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(m), Integer.valueOf(paramh.scene), Long.valueOf(paramh.jWO), Integer.valueOf(paramh.type), Long.valueOf(paramh.jXk), Long.valueOf(paramh.interval), Long.valueOf(l1) }));
         }
         AppMethodBeat.o(130759);
         return;

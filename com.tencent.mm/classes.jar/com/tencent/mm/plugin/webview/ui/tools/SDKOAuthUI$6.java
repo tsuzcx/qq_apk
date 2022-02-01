@@ -12,13 +12,13 @@ final class SDKOAuthUI$6
   public final boolean onTimerExpired()
   {
     AppMethodBeat.i(79737);
-    if (this.Jfk.isFinishing())
+    if (this.Qcn.isFinishing())
     {
       Log.i("MicroMsg.SdkOAuthUI", "onTimerExpired isFinishing");
       AppMethodBeat.o(79737);
       return false;
     }
-    SDKOAuthUI.q(this.Jfk);
+    SDKOAuthUI.q(this.Qcn);
     AppMethodBeat.o(79737);
     return false;
   }

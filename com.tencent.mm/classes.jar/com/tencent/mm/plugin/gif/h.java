@@ -11,55 +11,56 @@ import android.os.Process;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
+import com.tencent.mm.plugin.m.a.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 
 public final class h
   extends b
 {
-  private final Rect Ky;
-  private MMHandler czp;
-  private int gsi;
+  private boolean DmX;
+  private final Runnable DnB;
+  private volatile long DnQ;
+  private final Object DnR;
+  private int[] DnS;
+  private Bitmap[] DnT;
+  private int DnU;
+  private int DnV;
+  private boolean DnW;
+  private Runnable DnX;
+  private int DnY;
+  private int[] Dna;
+  private float Dnb;
+  private float Dnc;
+  private boolean Dnd;
+  private Bitmap Dnf;
+  private int Dnh;
+  private int Dni;
+  private long Dnj;
+  private long Dnk;
+  private long Dnl;
+  private long Dnm;
+  private long Dnn;
+  private long Dno;
+  private boolean Dnu;
+  private final Runnable Dnx;
+  private final Runnable Dny;
+  private final Runnable Dnz;
+  private final Rect KV;
+  private MMHandler cyl;
+  private int iWt;
   private int loopCount;
   private float mDensity;
   private int mHeight;
   private boolean mIsRunning;
   private final Paint mPaint;
   private int mWidth;
-  private boolean ydQ;
-  private int[] ydT;
-  private float ydU;
-  private float ydV;
-  private boolean ydW;
-  private Bitmap ydY;
-  private volatile long yeJ;
-  private final Object yeK;
-  private int[] yeL;
-  private Bitmap[] yeM;
-  private int yeN;
-  private int yeO;
-  private boolean yeP;
-  private Runnable yeQ;
-  private int yeR;
-  private int yea;
-  private int yeb;
-  private long yec;
-  private long yed;
-  private long yee;
-  private long yef;
-  private long yeg;
-  private long yeh;
-  private boolean yen;
-  private final Runnable yeq;
-  private final Runnable yer;
-  private final Runnable yes;
-  private final Runnable yeu;
   
   public h(String paramString)
   {
-    this(s.aW(paramString, 0, (int)s.boW(paramString)));
+    this(u.aY(paramString, 0, (int)u.bBQ(paramString)));
     AppMethodBeat.i(104664);
     AppMethodBeat.o(104664);
   }
@@ -68,28 +69,28 @@ public final class h
   {
     AppMethodBeat.i(104666);
     this.mIsRunning = false;
-    this.ydQ = false;
-    this.yeK = new Object();
-    this.ydT = new int[4];
-    this.yeL = new int[4];
-    this.ydU = 1.0F;
-    this.ydV = 1.0F;
-    this.Ky = new Rect();
+    this.DmX = false;
+    this.DnR = new Object();
+    this.Dna = new int[4];
+    this.DnS = new int[4];
+    this.Dnb = 1.0F;
+    this.Dnc = 1.0F;
+    this.KV = new Rect();
     this.mPaint = new Paint(6);
-    this.yeM = new Bitmap[2];
-    this.yeN = 0;
-    this.yea = 0;
-    this.yeO = 0;
-    this.yeb = -1;
-    this.yec = 0L;
-    this.yed = 0L;
-    this.yee = 0L;
-    this.yef = 0L;
-    this.yeh = 0L;
-    this.yeP = false;
-    this.czp = new MMHandler(Looper.getMainLooper());
-    this.yen = true;
-    this.yeq = new Runnable()
+    this.DnT = new Bitmap[2];
+    this.DnU = 0;
+    this.Dnh = 0;
+    this.DnV = 0;
+    this.Dni = -1;
+    this.Dnj = 0L;
+    this.Dnk = 0L;
+    this.Dnl = 0L;
+    this.Dnm = 0L;
+    this.Dno = 0L;
+    this.DnW = false;
+    this.cyl = new MMHandler(Looper.getMainLooper());
+    this.Dnu = true;
+    this.Dnx = new Runnable()
     {
       public final void run()
       {
@@ -103,7 +104,7 @@ public final class h
         AppMethodBeat.o(104659);
       }
     };
-    this.yer = new Runnable()
+    this.Dny = new Runnable()
     {
       public final void run()
       {
@@ -112,7 +113,7 @@ public final class h
         AppMethodBeat.o(104660);
       }
     };
-    this.yes = new Runnable()
+    this.Dnz = new Runnable()
     {
       public final void run()
       {
@@ -127,9 +128,9 @@ public final class h
         }
       }
     };
-    this.yeR = -1;
+    this.DnY = -1;
     this.loopCount = 0;
-    this.yeu = new Runnable()
+    this.DnB = new Runnable()
     {
       public final void run()
       {
@@ -153,7 +154,7 @@ public final class h
             if (h.h(h.this) == 0L)
             {
               Log.i("MicroMsg.GIF.MMWXGFDrawable", "Cpan This WXGF JNIHandle is null.");
-              com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(401L, 18L, 1L, false);
+              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(401L, 18L, 1L, false);
               AppMethodBeat.o(104662);
               return;
             }
@@ -171,14 +172,14 @@ public final class h
             if (i == -904)
             {
               Log.i("MicroMsg.GIF.MMWXGFDrawable", "nativeDecodeBufferFrame failed. func is null.");
-              com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(401L, 8L, 1L, false);
+              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(401L, 8L, 1L, false);
               AppMethodBeat.o(104662);
               return;
             }
             if (i == -909)
             {
               Log.i("MicroMsg.GIF.MMWXGFDrawable", "nativeDecodeBufferFrame failed. frame is null.");
-              com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(401L, 11L, 1L, false);
+              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(401L, 11L, 1L, false);
               h.a(h.this, h.b(h.this) + 1);
               if ((h.b(h.this) >= h.o(h.this) - 1) || (i == 1))
               {
@@ -187,7 +188,7 @@ public final class h
                 if (i != 0)
                 {
                   if (i == -905) {
-                    com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(711L, 9L, 1L, false);
+                    com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(711L, 9L, 1L, false);
                   }
                   Log.w("MicroMsg.GIF.MMWXGFDrawable", "Cpan Rewind buffer failed.");
                   AppMethodBeat.o(104662);
@@ -212,8 +213,8 @@ public final class h
                 Log.d("MicroMsg.GIF.MMWXGFDrawable", "%s Render time:%d InvalidateUseTime:%d NextRealInvalidateTime:%d mNextFrameDuration:%d mCurrentFrameIndex:%d", new Object[] { this, Long.valueOf(h.q(h.this)), Long.valueOf(h.r(h.this)), Long.valueOf(h.f(h.this)), Long.valueOf(h.p(h.this)), Integer.valueOf(h.b(h.this)) });
                 if (h.f(h.this) < -100L)
                 {
-                  com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(401L, 16L, 1L, false);
-                  com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(401L, 17L, Math.abs(h.f(h.this)), false);
+                  com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(401L, 16L, 1L, false);
+                  com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(401L, 17L, Math.abs(h.f(h.this)), false);
                   if ((!WXHardCoderJNI.hcGifEnable) && (!WXHardCoderJNI.hcGifFrameEnable)) {
                     break label805;
                   }
@@ -275,60 +276,60 @@ public final class h
     if (WXHardCoderJNI.hcGifThr) {}
     for (int i = Process.myTid();; i = 0)
     {
-      this.gsi = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, "MicroMsg.GIF.MMWXGFDrawable");
-      this.yeJ = MMWXGFJNI.nativeInitWxAMDecoder();
-      if ((this.yeJ != 0L) && (this.yeJ != -901L)) {
+      this.iWt = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, "MicroMsg.GIF.MMWXGFDrawable");
+      this.DnQ = MMWXGFJNI.nativeInitWxAMDecoder();
+      if ((this.DnQ != 0L) && (this.DnQ != -901L)) {
         break;
       }
-      Log.w("MicroMsg.GIF.MMWXGFDrawable", "Cpan init wxam decoder failed. mWXGFJNIHandle:%d", new Object[] { Long.valueOf(this.yeJ) });
-      if (this.yeJ == -901L) {
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(711L, 5L, 1L, false);
+      Log.w("MicroMsg.GIF.MMWXGFDrawable", "Cpan init wxam decoder failed. mWXGFJNIHandle:%d", new Object[] { Long.valueOf(this.DnQ) });
+      if (this.DnQ == -901L) {
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(711L, 5L, 1L, false);
       }
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(711L, 4L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(711L, 4L, 1L, false);
       paramArrayOfByte = new MMGIFException(201);
       AppMethodBeat.o(104666);
       throw paramArrayOfByte;
     }
-    i = MMWXGFJNI.nativeDecodeBufferHeader(this.yeJ, paramArrayOfByte, paramArrayOfByte.length);
+    i = MMWXGFJNI.nativeDecodeBufferHeader(this.DnQ, paramArrayOfByte, paramArrayOfByte.length);
     if (i != 0)
     {
       Log.w("MicroMsg.GIF.MMWXGFDrawable", "Cpan WXGF decode buffer header failed. result:%d", new Object[] { Integer.valueOf(i) });
       if (i == -904) {
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(711L, 8L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(711L, 8L, 1L, false);
       }
       for (;;)
       {
         paramArrayOfByte = new MMGIFException(i);
         AppMethodBeat.o(104666);
         throw paramArrayOfByte;
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(711L, 3L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(711L, 3L, 1L, false);
       }
     }
-    i = MMWXGFJNI.nativeGetOption(this.yeJ, paramArrayOfByte, paramArrayOfByte.length, this.ydT);
+    i = MMWXGFJNI.nativeGetOption(this.DnQ, paramArrayOfByte, paramArrayOfByte.length, this.Dna);
     if (i != 0)
     {
       Log.w("MicroMsg.GIF.MMWXGFDrawable", "Cpan WXGF get option failed. result:%d", new Object[] { Integer.valueOf(i) });
       if (i == -903) {
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(711L, 7L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(711L, 7L, 1L, false);
       }
       for (;;)
       {
         paramArrayOfByte = new MMGIFException(i);
         AppMethodBeat.o(104666);
         throw paramArrayOfByte;
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(711L, 3L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(711L, 3L, 1L, false);
       }
     }
-    this.yea = this.ydT[0];
-    this.mWidth = this.ydT[1];
-    this.mHeight = this.ydT[2];
-    this.yeO = this.ydT[3];
-    if (this.yeO <= 0) {
-      this.yeO = 1;
+    this.Dnh = this.Dna[0];
+    this.mWidth = this.Dna[1];
+    this.mHeight = this.Dna[2];
+    this.DnV = this.Dna[3];
+    if (this.DnV <= 0) {
+      this.DnV = 1;
     }
     if ((this.mWidth == 0) || (this.mHeight == 0))
     {
-      i = com.tencent.mm.cb.a.aG(MMApplicationContext.getContext(), 2131166307);
+      i = com.tencent.mm.ci.a.aY(MMApplicationContext.getContext(), a.e.emoji_view_image_size);
       this.mHeight = i;
       this.mWidth = i;
     }
@@ -339,113 +340,98 @@ public final class h
   {
     this(paramArrayOfByte);
     AppMethodBeat.i(104665);
-    paramArrayOfByte = com.tencent.mm.emoji.loader.a.b.gVU;
-    if (com.tencent.mm.emoji.loader.a.b.EP(paramString) != null)
+    paramArrayOfByte = com.tencent.mm.emoji.loader.a.b.jGQ;
+    if (com.tencent.mm.emoji.loader.a.b.LI(paramString) != null)
     {
-      paramArrayOfByte = com.tencent.mm.emoji.loader.a.b.gVU;
-      this.ydY = com.tencent.mm.emoji.loader.a.b.EP(paramString);
+      paramArrayOfByte = com.tencent.mm.emoji.loader.a.b.jGQ;
+      this.Dnf = com.tencent.mm.emoji.loader.a.b.LI(paramString);
     }
     AppMethodBeat.o(104665);
   }
   
-  private void l(Runnable paramRunnable, long paramLong)
+  private void k(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(104663);
-    this.yeh = (SystemClock.uptimeMillis() + paramLong);
-    if (this.czp != null) {
-      this.czp.postAtTime(paramRunnable, this.yeh);
+    this.Dno = (SystemClock.uptimeMillis() + paramLong);
+    if (this.cyl != null) {
+      this.cyl.postAtTime(paramRunnable, this.Dno);
     }
     AppMethodBeat.o(104663);
   }
   
-  public final void OH(int paramInt)
+  public final void Uh(int paramInt)
   {
-    this.yeR = paramInt;
+    this.DnY = paramInt;
   }
   
-  public final void au(Runnable paramRunnable)
+  public final void az(Runnable paramRunnable)
   {
-    this.yeQ = paramRunnable;
-  }
-  
-  public final int dXA()
-  {
-    return this.yeO;
-  }
-  
-  public final int dXy()
-  {
-    return this.ydT[1];
-  }
-  
-  public final int dXz()
-  {
-    return this.ydT[2];
+    this.DnX = paramRunnable;
   }
   
   public final void draw(Canvas paramCanvas)
   {
     int j = 1;
     AppMethodBeat.i(104671);
-    if (this.ydW)
+    if (this.Dnd)
     {
-      this.Ky.set(getBounds());
-      this.ydU = (this.Ky.width() / this.mWidth);
-      this.ydV = (this.Ky.height() / this.mHeight);
-      this.ydW = false;
+      this.KV.set(getBounds());
+      this.Dnb = (this.KV.width() / this.mWidth);
+      this.Dnc = (this.KV.height() / this.mHeight);
+      this.Dnd = false;
     }
     if (this.mPaint.getShader() == null)
     {
-      if (this.yef == 0L) {
-        this.yef = System.currentTimeMillis();
+      if (this.Dnm == 0L) {
+        this.Dnm = System.currentTimeMillis();
       }
-      if (this.yen) {
-        this.yeN = ((this.yeN + 1) % this.yeM.length);
+      if (this.Dnu) {
+        this.DnU = ((this.DnU + 1) % this.DnT.length);
       }
-      Bitmap localBitmap2 = this.yeM[this.yeN];
+      Bitmap localBitmap2 = this.DnT[this.DnU];
       Bitmap localBitmap1 = localBitmap2;
       if (localBitmap2 == null)
       {
-        localBitmap1 = this.yeM[((this.yeN + 1) % this.yeM.length)];
+        localBitmap1 = this.DnT[((this.DnU + 1) % this.DnT.length)];
         Log.i("MicroMsg.GIF.MMWXGFDrawable", "use last decode bitmap %s  hash:[%s]", new Object[] { localBitmap1, Integer.valueOf(hashCode()) });
       }
-      if ((localBitmap1 != null) && (!localBitmap1.isRecycled()) && (!this.ydQ))
+      if ((localBitmap1 != null) && (!localBitmap1.isRecycled()) && (!this.DmX))
       {
-        paramCanvas.scale(this.ydU, this.ydV);
+        paramCanvas.scale(this.Dnb, this.Dnc);
         paramCanvas.drawBitmap(localBitmap1, 0.0F, 0.0F, this.mPaint);
       }
       for (;;)
       {
-        this.yeg = (System.currentTimeMillis() - this.yef);
-        if (this.yen)
+        this.Dnn = (System.currentTimeMillis() - this.Dnm);
+        if (this.Dnu)
         {
           int i = j;
-          if (this.yeR > 0)
+          if (this.DnY > 0)
           {
             i = j;
-            if (this.yeb == -1)
+            if (this.Dni == -1)
             {
               this.loopCount += 1;
               i = j;
-              if (this.loopCount >= this.yeR)
+              if (this.loopCount >= this.DnY)
               {
                 this.mIsRunning = false;
-                l(this.yeQ, this.yed);
+                k(this.DnX, this.Dnk);
                 i = 0;
               }
             }
           }
           if (i != 0) {
-            com.tencent.mm.au.a.f(this.yeu, 0L);
+            com.tencent.mm.ax.a.f(this.DnB, 0L);
           }
-          this.yen = false;
+          this.Dnu = false;
         }
         AppMethodBeat.o(104671);
         return;
-        if (this.ydY != null)
+        if (this.Dnf != null)
         {
-          paramCanvas.scale(this.Ky.width() / this.ydY.getWidth(), this.Ky.height() / this.ydY.getHeight());
-          paramCanvas.drawBitmap(this.ydY, 0.0F, 0.0F, this.mPaint);
+          paramCanvas.scale(this.KV.width() / this.Dnf.getWidth(), this.KV.height() / this.Dnf.getHeight());
+          paramCanvas.drawBitmap(this.Dnf, 0.0F, 0.0F, this.mPaint);
         }
         else
         {
@@ -453,8 +439,23 @@ public final class h
         }
       }
     }
-    paramCanvas.drawRect(this.Ky, this.mPaint);
+    paramCanvas.drawRect(this.KV, this.mPaint);
     AppMethodBeat.o(104671);
+  }
+  
+  public final int eAW()
+  {
+    return this.Dna[1];
+  }
+  
+  public final int eAX()
+  {
+    return this.Dna[2];
+  }
+  
+  public final int eAY()
+  {
+    return this.DnV;
   }
   
   protected final void finalize()
@@ -479,7 +480,7 @@ public final class h
     AppMethodBeat.i(104667);
     if (this.mDensity == 0.0F)
     {
-      this.mDensity = (com.tencent.mm.cb.a.getDensity(MMApplicationContext.getContext()) / 2.0F);
+      this.mDensity = (com.tencent.mm.ci.a.getDensity(MMApplicationContext.getContext()) / 2.0F);
       if (this.mDensity >= 1.0F) {
         break label54;
       }
@@ -527,20 +528,20 @@ public final class h
   {
     AppMethodBeat.i(104670);
     super.onBoundsChange(paramRect);
-    this.ydW = true;
+    this.Dnd = true;
     AppMethodBeat.o(104670);
+  }
+  
+  public final void pI()
+  {
+    AppMethodBeat.i(223856);
+    com.tencent.mm.ax.a.f(this.DnB, 0L);
+    AppMethodBeat.o(223856);
   }
   
   public final void pause()
   {
     this.mIsRunning = false;
-  }
-  
-  public final void rU()
-  {
-    AppMethodBeat.i(199789);
-    com.tencent.mm.au.a.f(this.yeu, 0L);
-    AppMethodBeat.o(199789);
   }
   
   /* Error */
@@ -549,55 +550,55 @@ public final class h
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 475
+    //   2: ldc_w 478
     //   5: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: ldc 213
-    //   10: ldc_w 477
+    //   10: ldc_w 480
     //   13: iconst_1
     //   14: anewarray 97	java/lang/Object
     //   17: dup
     //   18: iconst_0
     //   19: aload_0
-    //   20: getfield 227	com/tencent/mm/plugin/gif/h:yeJ	J
+    //   20: getfield 227	com/tencent/mm/plugin/gif/h:DnQ	J
     //   23: invokestatic 237	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   26: aastore
-    //   27: invokestatic 480	com/tencent/mm/sdk/platformtools/Log:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   27: invokestatic 483	com/tencent/mm/sdk/platformtools/Log:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   30: aload_0
-    //   31: getfield 100	com/tencent/mm/plugin/gif/h:yeK	Ljava/lang/Object;
+    //   31: getfield 100	com/tencent/mm/plugin/gif/h:DnR	Ljava/lang/Object;
     //   34: astore 4
     //   36: aload 4
     //   38: monitorenter
     //   39: aload_0
     //   40: iconst_1
-    //   41: putfield 95	com/tencent/mm/plugin/gif/h:ydQ	Z
+    //   41: putfield 95	com/tencent/mm/plugin/gif/h:DmX	Z
     //   44: aload_0
     //   45: iconst_0
     //   46: putfield 93	com/tencent/mm/plugin/gif/h:mIsRunning	Z
     //   49: aload_0
-    //   50: getfield 227	com/tencent/mm/plugin/gif/h:yeJ	J
+    //   50: getfield 227	com/tencent/mm/plugin/gif/h:DnQ	J
     //   53: lstore_2
     //   54: aload_0
     //   55: lconst_0
-    //   56: putfield 227	com/tencent/mm/plugin/gif/h:yeJ	J
+    //   56: putfield 227	com/tencent/mm/plugin/gif/h:DnQ	J
     //   59: aload_0
-    //   60: getfield 156	com/tencent/mm/plugin/gif/h:czp	Lcom/tencent/mm/sdk/platformtools/MMHandler;
+    //   60: getfield 156	com/tencent/mm/plugin/gif/h:cyl	Lcom/tencent/mm/sdk/platformtools/MMHandler;
     //   63: aload_0
-    //   64: getfield 163	com/tencent/mm/plugin/gif/h:yeq	Ljava/lang/Runnable;
-    //   67: invokevirtual 483	com/tencent/mm/sdk/platformtools/MMHandler:removeCallbacks	(Ljava/lang/Runnable;)V
+    //   64: getfield 163	com/tencent/mm/plugin/gif/h:Dnx	Ljava/lang/Runnable;
+    //   67: invokevirtual 486	com/tencent/mm/sdk/platformtools/MMHandler:removeCallbacks	(Ljava/lang/Runnable;)V
     //   70: lload_2
-    //   71: invokestatic 487	com/tencent/mm/plugin/gif/MMWXGFJNI:nativeUninit	(J)I
+    //   71: invokestatic 490	com/tencent/mm/plugin/gif/MMWXGFJNI:nativeUninit	(J)I
     //   74: istore_1
     //   75: iload_1
     //   76: sipush -906
     //   79: if_icmpne +17 -> 96
-    //   82: getstatic 249	com/tencent/mm/plugin/report/service/h:CyF	Lcom/tencent/mm/plugin/report/service/h;
-    //   85: ldc2_w 488
-    //   88: ldc2_w 490
+    //   82: getstatic 249	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   85: ldc2_w 491
+    //   88: ldc2_w 493
     //   91: lconst_1
     //   92: iconst_0
     //   93: invokevirtual 257	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   96: ldc 213
-    //   98: ldc_w 493
+    //   98: ldc_w 496
     //   101: iconst_3
     //   102: anewarray 97	java/lang/Object
     //   105: dup
@@ -613,19 +614,19 @@ public final class h
     //   119: dup
     //   120: iconst_2
     //   121: aload_0
-    //   122: getfield 143	com/tencent/mm/plugin/gif/h:yeP	Z
-    //   125: invokestatic 498	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   122: getfield 143	com/tencent/mm/plugin/gif/h:DnW	Z
+    //   125: invokestatic 501	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   128: aastore
-    //   129: invokestatic 500	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   129: invokestatic 503	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   132: aload_0
     //   133: aconst_null
-    //   134: putfield 123	com/tencent/mm/plugin/gif/h:yeM	[Landroid/graphics/Bitmap;
+    //   134: putfield 123	com/tencent/mm/plugin/gif/h:DnT	[Landroid/graphics/Bitmap;
     //   137: aload_0
     //   138: aconst_null
-    //   139: putfield 365	com/tencent/mm/plugin/gif/h:yeQ	Ljava/lang/Runnable;
+    //   139: putfield 368	com/tencent/mm/plugin/gif/h:DnX	Ljava/lang/Runnable;
     //   142: aload 4
     //   144: monitorexit
-    //   145: ldc_w 475
+    //   145: ldc_w 478
     //   148: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   151: aload_0
     //   152: monitorexit
@@ -633,7 +634,7 @@ public final class h
     //   154: astore 5
     //   156: aload 4
     //   158: monitorexit
-    //   159: ldc_w 475
+    //   159: ldc_w 478
     //   162: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   165: aload 5
     //   167: athrow
@@ -654,27 +655,26 @@ public final class h
     //   39	75	154	finally
     //   82	96	154	finally
     //   96	145	154	finally
-    //   156	159	154	finally
     //   2	39	168	finally
     //   145	151	168	finally
-    //   159	168	168	finally
+    //   156	168	168	finally
   }
   
   public final void reset()
   {
     AppMethodBeat.i(104678);
     this.mIsRunning = true;
-    com.tencent.mm.au.a.f(this.yes, 0L);
+    com.tencent.mm.ax.a.f(this.Dnz, 0L);
     AppMethodBeat.o(104678);
   }
   
   public final void resume()
   {
     AppMethodBeat.i(104677);
-    if (!this.ydQ)
+    if (!this.DmX)
     {
       this.mIsRunning = true;
-      l(this.yeq, 0L);
+      k(this.Dnx, 0L);
     }
     AppMethodBeat.o(104677);
   }
@@ -697,7 +697,7 @@ public final class h
   {
     AppMethodBeat.i(104674);
     this.mIsRunning = true;
-    com.tencent.mm.au.a.f(this.yer, 0L);
+    com.tencent.mm.ax.a.f(this.Dny, 0L);
     AppMethodBeat.o(104674);
   }
   
@@ -706,9 +706,9 @@ public final class h
     boolean bool2 = true;
     AppMethodBeat.i(104675);
     this.mIsRunning = false;
-    if (this.gsi != 0)
+    if (this.iWt != 0)
     {
-      Log.i("MicroMsg.GIF.MMWXGFDrawable", "summerhardcoder stopPerformance startPerformance:%x ", new Object[] { Integer.valueOf(this.gsi) });
+      Log.i("MicroMsg.GIF.MMWXGFDrawable", "summerhardcoder stopPerformance startPerformance:%x ", new Object[] { Integer.valueOf(this.iWt) });
       bool1 = bool2;
       if (!WXHardCoderJNI.hcGifEnable) {
         if (!WXHardCoderJNI.hcGifFrameEnable) {
@@ -719,8 +719,8 @@ public final class h
     label79:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      WXHardCoderJNI.stopPerformance(bool1, this.gsi);
-      this.gsi = 0;
+      WXHardCoderJNI.stopPerformance(bool1, this.iWt);
+      this.iWt = 0;
       AppMethodBeat.o(104675);
       return;
     }
@@ -728,7 +728,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gif.h
  * JD-Core Version:    0.7.0.1
  */

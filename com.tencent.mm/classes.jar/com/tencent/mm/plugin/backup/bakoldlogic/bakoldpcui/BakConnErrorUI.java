@@ -7,6 +7,8 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMWizardActivity;
@@ -14,17 +16,17 @@ import com.tencent.mm.ui.MMWizardActivity;
 public class BakConnErrorUI
   extends MMWizardActivity
 {
-  private int oSz;
+  private int rUy;
   
   public int getLayoutId()
   {
-    return 2131493184;
+    return R.i.ebV;
   }
   
   public void initView()
   {
     AppMethodBeat.i(21973);
-    setMMTitle(2131756443);
+    setMMTitle(R.l.esv);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -47,10 +49,10 @@ public class BakConnErrorUI
       AppMethodBeat.o(21972);
       return;
     }
-    this.oSz = getIntent().getIntExtra("cmd", -1);
-    Log.i("MicroMsg.BakFinishUI", "BakConnErrorUI onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.oSz) });
+    this.rUy = getIntent().getIntExtra("cmd", -1);
+    Log.i("MicroMsg.BakFinishUI", "BakConnErrorUI onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.rUy) });
     initView();
-    a.cgZ().cha().oRS = -1;
+    a.cuk().cul().rTR = -1;
     AppMethodBeat.o(21972);
   }
   
@@ -58,8 +60,8 @@ public class BakConnErrorUI
   {
     AppMethodBeat.i(21974);
     super.onDestroy();
-    a.cgZ().cha().oRK = null;
-    Log.i("MicroMsg.BakFinishUI", "BakConnErrorUI onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.oSz) });
+    a.cuk().cul().rTJ = null;
+    Log.i("MicroMsg.BakFinishUI", "BakConnErrorUI onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.rUy) });
     AppMethodBeat.o(21974);
   }
   
@@ -68,7 +70,7 @@ public class BakConnErrorUI
     AppMethodBeat.i(21975);
     if (paramInt == 4)
     {
-      ala(1);
+      atX(1);
       AppMethodBeat.o(21975);
       return true;
     }
@@ -85,7 +87,7 @@ public class BakConnErrorUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui.BakConnErrorUI
  * JD-Core Version:    0.7.0.1
  */

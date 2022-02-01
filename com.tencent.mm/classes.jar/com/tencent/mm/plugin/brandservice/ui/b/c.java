@@ -4,28 +4,26 @@ import android.os.Looper;
 import android.os.MessageQueue;
 import android.os.MessageQueue.IdleHandler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.aa.a;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.al.ag;
+import com.tencent.mm.aj.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.ao.af;
+import com.tencent.mm.bb.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.brandservice.b;
 import com.tencent.mm.plugin.brandservice.ui.timeline.item.j;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.efz;
-import com.tencent.mm.protocal.protobuf.ega;
-import com.tencent.mm.protocal.protobuf.egb;
-import com.tencent.mm.protocal.protobuf.egc;
-import com.tencent.mm.protocal.protobuf.egd;
-import com.tencent.mm.protocal.protobuf.ege;
-import com.tencent.mm.protocal.protobuf.po;
-import com.tencent.mm.protocal.protobuf.pp;
+import com.tencent.mm.protocal.protobuf.eqb;
+import com.tencent.mm.protocal.protobuf.eqc;
+import com.tencent.mm.protocal.protobuf.eqe;
+import com.tencent.mm.protocal.protobuf.eqf;
+import com.tencent.mm.protocal.protobuf.eqg;
+import com.tencent.mm.protocal.protobuf.pk;
+import com.tencent.mm.protocal.protobuf.pl;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.aa.6;
-import com.tencent.mm.storage.aa.7;
 import com.tencent.mm.storage.r;
 import com.tencent.mm.storage.z;
 import java.io.IOException;
@@ -38,21 +36,21 @@ import java.util.Map;
 
 public final class c
 {
-  private static Map<Long, Integer> pMr;
-  private static LinkedList<Long> pMs;
+  private static Map<Long, Integer> sTp;
+  private static LinkedList<Long> sTq;
   
   static
   {
     AppMethodBeat.i(6257);
-    pMr = new HashMap();
-    pMs = new LinkedList();
+    sTp = new HashMap();
+    sTq = new LinkedList();
     AppMethodBeat.o(6257);
   }
   
-  public static boolean DW(int paramInt)
+  public static boolean Hw(int paramInt)
   {
     AppMethodBeat.i(6245);
-    if (System.currentTimeMillis() / 1000L - paramInt > a.pMl)
+    if (System.currentTimeMillis() / 1000L - paramInt > a.sTj)
     {
       AppMethodBeat.o(6245);
       return true;
@@ -61,7 +59,7 @@ public final class c
     return false;
   }
   
-  private static void M(LinkedList<egc> paramLinkedList)
+  private static void L(LinkedList<eqe> paramLinkedList)
   {
     AppMethodBeat.i(6254);
     if (Util.isNullOrNil(paramLinkedList))
@@ -70,18 +68,18 @@ public final class c
       return;
     }
     LinkedList localLinkedList = new LinkedList();
-    synchronized (pMs)
+    synchronized (sTq)
     {
-      if (Util.isNullOrNil(pMs)) {
+      if (Util.isNullOrNil(sTq)) {
         break label160;
       }
       localObject2 = new LinkedList();
       Iterator localIterator = paramLinkedList.iterator();
       while (localIterator.hasNext())
       {
-        egc localegc = (egc)localIterator.next();
-        if (pMs.contains(Long.valueOf(localegc.KWz))) {
-          ((LinkedList)localObject2).add(localegc);
+        eqe localeqe = (eqe)localIterator.next();
+        if (sTq.contains(Long.valueOf(localeqe.RXN))) {
+          ((LinkedList)localObject2).add(localeqe);
         }
       }
     }
@@ -95,134 +93,49 @@ public final class c
     label160:
     Object localObject2 = paramLinkedList.iterator();
     while (((Iterator)localObject2).hasNext()) {
-      localLinkedList.add(Long.valueOf(((egc)((Iterator)localObject2).next()).KWz));
+      localLinkedList.add(Long.valueOf(((eqe)((Iterator)localObject2).next()).RXN));
     }
-    pMs.addAll(localLinkedList);
+    sTq.addAll(localLinkedList);
     ??? = new d.a();
-    ((d.a)???).iLN = new po();
-    ((d.a)???).iLO = new pp();
+    ((d.a)???).lBU = new pk();
+    ((d.a)???).lBV = new pl();
     ((d.a)???).uri = "/cgi-bin/mmbiz-bin/timeline/bizrecommendcard";
     ((d.a)???).funcId = 2787;
-    ??? = ((d.a)???).aXF();
-    localObject2 = (po)((d)???).iLK.iLR;
-    ((po)localObject2).KWD = paramLinkedList;
-    com.tencent.mm.ak.aa.a((d)???, new aa.a()
-    {
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String arg3, d paramAnonymousd, com.tencent.mm.ak.q paramAnonymousq)
-      {
-        AppMethodBeat.i(6242);
-        Log.i("MicroMsg.ConversationAdapter", "[TRACE_BIZRECCARD] doUpdateRecommendCard check result errType:%d errCode:%d msg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), ??? });
-        synchronized (c.cri())
-        {
-          c.cri().removeAll(this.pMu);
-          if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
-          {
-            AppMethodBeat.o(6242);
-            return 0;
-          }
-        }
-        paramAnonymousd = (pp)paramAnonymousd.iLL.iLR;
-        if (paramAnonymousd == null)
-        {
-          AppMethodBeat.o(6242);
-          return 0;
-        }
-        MultiProcessMMKV.getSingleMMKV("brandService").encode("BizRecommendCardRefreshIntervalSec", Math.min(300, paramAnonymousd.KSO));
-        if (paramAnonymousd.KWD == null)
-        {
-          Log.i("MicroMsg.ConversationAdapter", "response.RecCard is null");
-          AppMethodBeat.o(6242);
-          return 0;
-        }
-        ??? = new LinkedList();
-        paramAnonymousq = paramAnonymousd.KWD.iterator();
-        while (paramAnonymousq.hasNext())
-        {
-          efz localefz = (efz)paramAnonymousq.next();
-          Iterator localIterator = this.pMv.KWD.iterator();
-          while (localIterator.hasNext())
-          {
-            egc localegc = (egc)localIterator.next();
-            if (Util.isEqual(localegc.KWz, localefz.KWz)) {
-              if (localefz.NfT == null)
-              {
-                Log.i("MicroMsg.ConversationAdapter", "doUpdateRecommendCard BizInfo is null");
-              }
-              else if ((localefz.NfT.KHa & 0x1) != 0)
-              {
-                ag.ban().MX(localefz.KWz);
-                h.CyF.idkeyStat(1149L, 5L, 1L, false);
-                Log.w("MicroMsg.ConversationAdapter", "doUpdateRecommendCard delete card by flag %d, msgId %d", new Object[] { Integer.valueOf(localefz.NfT.KHa), Long.valueOf(localefz.KWz) });
-              }
-              else if (Util.isNullOrNil(localefz.NfT.UserName))
-              {
-                Log.i("MicroMsg.ConversationAdapter", "doUpdateRecommendCard UserName is null");
-              }
-              else if ((Util.isNullOrNil(localefz.KWy)) || (localefz.KWy.get(0) == null) || (Util.isNullOrNil(((ega)localefz.KWy.get(0)).KSj)))
-              {
-                Log.i("MicroMsg.ConversationAdapter", "doUpdateRecommendCard ContentUrl is null");
-              }
-              else if (!Util.isEqual(localefz.Luh, localegc.Luh))
-              {
-                ???.add(localefz);
-              }
-              else
-              {
-                Log.i("MicroMsg.ConversationAdapter", "doUpdateRecommendCard VersionInfo isEqual");
-                if ((localefz.NfU != null) && (!Util.isEqual(localefz.NfU.Luh, localegc.NfW)))
-                {
-                  ???.add(localefz);
-                  Log.i("MicroMsg.ConversationAdapter", "doUpdateRecommendCard UserVersionInfo update");
-                }
-              }
-            }
-          }
-        }
-        Log.i("MicroMsg.ConversationAdapter", "doUpdateRecommendCard updateList size %d, RecCard.size %d", new Object[] { Integer.valueOf(???.size()), Integer.valueOf(paramAnonymousd.KWD.size()) });
-        if (!Util.isNullOrNil(???))
-        {
-          paramAnonymousd = ag.ban();
-          if (!Util.isNullOrNil(???))
-          {
-            paramAnonymousq = new LinkedList();
-            com.tencent.mm.co.g.hio().h(new aa.7(paramAnonymousd, ???, paramAnonymousq)).b(new aa.6(paramAnonymousd, paramAnonymousq));
-          }
-        }
-        AppMethodBeat.o(6242);
-        return 0;
-      }
-    });
+    ??? = ((d.a)???).bgN();
+    localObject2 = (pk)d.b.b(((d)???).lBR);
+    ((pk)localObject2).RXR = paramLinkedList;
+    com.tencent.mm.an.aa.a((d)???, new c.4(localLinkedList, (pk)localObject2));
     AppMethodBeat.o(6254);
   }
   
-  private static egc a(ege paramege, z paramz)
+  private static eqe a(eqg parameqg, z paramz)
   {
     AppMethodBeat.i(6255);
-    if ((paramege == null) || (paramege.NfY == null) || (paramz == null))
+    if ((parameqg == null) || (parameqg.UsD == null) || (paramz == null))
     {
       Log.i("MicroMsg.ConversationAdapter", "getTLRecCardLite invalid data");
       AppMethodBeat.o(6255);
       return null;
     }
-    egc localegc = new egc();
-    if (!Util.isNullOrNil(paramege.NfY.KWy))
+    eqe localeqe = new eqe();
+    if (!Util.isNullOrNil(parameqg.UsD.RXM))
     {
-      Iterator localIterator = paramege.NfY.KWy.iterator();
+      Iterator localIterator = parameqg.UsD.RXM.iterator();
       while (localIterator.hasNext())
       {
-        ega localega = (ega)localIterator.next();
-        localegc.KUB.add(localega.KSj);
+        eqc localeqc = (eqc)localIterator.next();
+        localeqe.RVG.add(localeqc.RTk);
       }
     }
-    localegc.KSV = paramz.field_talker;
-    localegc.KWz = paramz.field_msgId;
-    localegc.Luh = paramege.NfY.Luh;
-    localegc.KUh = paramege.style;
-    if (paramege.NfY.NfU != null) {
-      localegc.NfW = paramege.NfY.NfU.Luh;
+    localeqe.RTS = paramz.field_talker;
+    localeqe.RXN = paramz.field_msgId;
+    localeqe.SwF = parameqg.UsD.SwF;
+    localeqe.RVf = parameqg.style;
+    if (parameqg.UsD.Usz != null) {
+      localeqe.UsB = parameqg.UsD.Usz.SwF;
     }
     AppMethodBeat.o(6255);
-    return localegc;
+    return localeqe;
   }
   
   public static void a(List<z> paramList, final Runnable paramRunnable)
@@ -232,35 +145,35 @@ public final class c
     {
       public final boolean queueIdle()
       {
-        AppMethodBeat.i(195062);
+        AppMethodBeat.i(261686);
         Looper.myQueue().removeIdleHandler(this);
-        com.tencent.mm.plugin.brandservice.b.a("BrandServiceWorkerThread", new Runnable()
+        b.am(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(195061);
-            Iterator localIterator = c.2.this.hjk.iterator();
+            AppMethodBeat.i(264469);
+            Iterator localIterator = c.2.this.pzd.iterator();
             while (localIterator.hasNext())
             {
               z localz = (z)localIterator.next();
-              if (localz.gAt()) {
-                ((com.tencent.mm.plugin.biz.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.biz.a.a.class)).a(localz.field_msgId, localz.field_content);
+              if (localz.hwA()) {
+                ((com.tencent.mm.plugin.biz.a.a)h.ae(com.tencent.mm.plugin.biz.a.a.class)).b(localz.field_msgId, localz.field_content);
               }
             }
-            c.cN(c.2.this.hjk);
-            c.cO(c.2.this.hjk);
+            c.cK(c.2.this.pzd);
+            c.cL(c.2.this.pzd);
             MMHandlerThread.postToMainThread(c.2.this.val$callback);
-            AppMethodBeat.o(195061);
+            AppMethodBeat.o(264469);
           }
-        }, 0L);
-        AppMethodBeat.o(195062);
+        });
+        AppMethodBeat.o(261686);
         return false;
       }
     });
     AppMethodBeat.o(6248);
   }
   
-  public static String aiW(String paramString)
+  public static String aqF(String paramString)
   {
     AppMethodBeat.i(6250);
     if (paramString != null)
@@ -273,7 +186,7 @@ public final class c
     return null;
   }
   
-  public static boolean b(com.tencent.mm.bw.a parama1, com.tencent.mm.bw.a parama2)
+  public static boolean b(com.tencent.mm.cd.a parama1, com.tencent.mm.cd.a parama2)
   {
     AppMethodBeat.i(6249);
     if ((parama1 == null) && (parama2 == null))
@@ -300,7 +213,32 @@ public final class c
     return false;
   }
   
-  public static void cL(List<z> paramList)
+  public static String cEq()
+  {
+    AppMethodBeat.i(6244);
+    Object localObject2 = null;
+    f localf = com.tencent.mm.bb.a.bnA();
+    Object localObject1 = localObject2;
+    if (localf != null)
+    {
+      localObject1 = localObject2;
+      if (localf.lVt != null)
+      {
+        localObject1 = localObject2;
+        if (localf.lVr == 0)
+        {
+          localObject1 = localObject2;
+          if (com.tencent.mm.bb.a.bnx()) {
+            localObject1 = localf.lVt;
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(6244);
+    return localObject1;
+  }
+  
+  public static void cI(List<z> paramList)
   {
     AppMethodBeat.i(6247);
     if (Util.isNullOrNil(paramList))
@@ -314,44 +252,44 @@ public final class c
     while (paramList.hasNext())
     {
       z localz = (z)paramList.next();
-      if ((!pMr.containsKey(Long.valueOf(localz.field_msgId))) || (DW(((Integer)pMr.get(Long.valueOf(localz.field_msgId))).intValue()))) {
-        if (localz.gAt())
+      if ((!sTp.containsKey(Long.valueOf(localz.field_msgId))) || (Hw(((Integer)sTp.get(Long.valueOf(localz.field_msgId))).intValue()))) {
+        if (localz.hwA())
         {
-          com.tencent.mm.ag.q localq = new com.tencent.mm.ag.q();
+          q localq = new q();
           localq.msgId = localz.field_msgId;
-          localq.iAc = localz.field_content;
+          localq.lpy = localz.field_content;
           localLinkedList1.add(localq);
-          pMr.put(Long.valueOf(localz.field_msgId), Integer.valueOf((int)(System.currentTimeMillis() / 1000L)));
+          sTp.put(Long.valueOf(localz.field_msgId), Integer.valueOf((int)(System.currentTimeMillis() / 1000L)));
         }
         else
         {
-          pMr.put(Long.valueOf(localz.field_msgId), Integer.valueOf((int)(System.currentTimeMillis() / 1000L)));
+          sTp.put(Long.valueOf(localz.field_msgId), Integer.valueOf((int)(System.currentTimeMillis() / 1000L)));
           localLinkedList2.add(localz);
         }
       }
     }
     if (localLinkedList1.size() > 0) {
-      ((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.brandservice.a.b.class)).l(localLinkedList1, 90);
+      ((com.tencent.mm.plugin.brandservice.a.c)h.ae(com.tencent.mm.plugin.brandservice.a.c.class)).l(localLinkedList1, 90);
     }
     AppMethodBeat.o(6247);
   }
   
-  public static void cM(List<z> paramList)
+  public static void cJ(List<z> paramList)
   {
     AppMethodBeat.i(6251);
-    com.tencent.mm.plugin.brandservice.b.a("BrandServiceWorkerThread", new Runnable()
+    b.am(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(6241);
-        c.cN(this.hjk);
+        c.cK(this.pzd);
         AppMethodBeat.o(6241);
       }
-    }, 0L);
+    });
     AppMethodBeat.o(6251);
   }
   
-  public static void cN(List<z> paramList)
+  public static void cK(List<z> paramList)
   {
     AppMethodBeat.i(6252);
     int i = MultiProcessMMKV.getSingleMMKV("brandService").decodeInt("BizRecommendCardRefreshIntervalSec", 300);
@@ -361,12 +299,12 @@ public final class c
     while (paramList.hasNext())
     {
       Object localObject = (z)paramList.next();
-      if ((((z)localObject).gAu()) && (!j.k((z)localObject)))
+      if ((((z)localObject).hwB()) && (!j.k((z)localObject)))
       {
-        ege localege = ((z)localObject).gAD();
-        if ((localege != null) && (localege.NfY != null) && (Math.abs(l - localege.lastUpdateTime) / 1000L > i))
+        eqg localeqg = ((z)localObject).hwL();
+        if ((localeqg != null) && (localeqg.UsD != null) && (Math.abs(l - localeqg.lastUpdateTime) / 1000L > i))
         {
-          localObject = a(localege, (z)localObject);
+          localObject = a(localeqg, (z)localObject);
           if (localObject != null) {
             localLinkedList.add(localObject);
           }
@@ -374,130 +312,105 @@ public final class c
       }
     }
     if (!Util.isNullOrNil(localLinkedList)) {
-      M(localLinkedList);
+      L(localLinkedList);
     }
     AppMethodBeat.o(6252);
   }
   
-  public static void cO(List<z> paramList)
+  public static void cL(List<z> paramList)
   {
-    AppMethodBeat.i(195064);
+    AppMethodBeat.i(264434);
     LinkedList localLinkedList = new LinkedList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       z localz = (z)paramList.next();
-      r localr = r.NPl;
-      if ((r.gzL()) && (localz.gAv()))
+      r localr = r.VcW;
+      if ((r.hvM()) && (localz.hwC()))
       {
         localLinkedList.add(localz);
-        r.NPl.z(localz);
+        r.VcW.B(localz);
       }
       else
       {
-        localr = r.NPl;
-        if ((r.gzM()) && (localz.gAu())) {
-          r.NPl.z(localz);
+        localr = r.VcW;
+        if ((r.hvP()) && (localz.hwB())) {
+          r.VcW.B(localz);
         }
       }
     }
-    AppMethodBeat.o(195064);
+    AppMethodBeat.o(264434);
   }
   
-  public static void cP(List<z> paramList)
+  public static void cM(List<z> paramList)
   {
-    AppMethodBeat.i(195065);
+    AppMethodBeat.i(264435);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       Object localObject = (z)paramList.next();
-      r localr = r.NPl;
-      if ((r.gzL()) && (((z)localObject).gAv()))
+      r localr = r.VcW;
+      if ((r.hvM()) && (((z)localObject).hwC()))
       {
-        ((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.brandservice.a.b.class)).clj();
-        AppMethodBeat.o(195065);
+        ((com.tencent.mm.plugin.brandservice.a.c)h.ae(com.tencent.mm.plugin.brandservice.a.c.class)).cyJ();
+        AppMethodBeat.o(264435);
         return;
       }
-      localr = r.NPl;
-      if ((r.gzM()) && (((z)localObject).gAu()))
+      localr = r.VcW;
+      if ((r.hvP()) && (((z)localObject).hwB()))
       {
-        localObject = ((z)localObject).gAD();
-        if ((localObject != null) && (((ege)localObject).style == 1001))
+        localObject = ((z)localObject).hwL();
+        if ((localObject != null) && (((eqg)localObject).style == 1001))
         {
-          ((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.brandservice.a.b.class)).clj();
-          AppMethodBeat.o(195065);
+          ((com.tencent.mm.plugin.brandservice.a.c)h.ae(com.tencent.mm.plugin.brandservice.a.c.class)).cyJ();
+          AppMethodBeat.o(264435);
           return;
         }
       }
     }
-    AppMethodBeat.o(195065);
-  }
-  
-  public static String crh()
-  {
-    AppMethodBeat.i(6244);
-    Object localObject2 = null;
-    com.tencent.mm.ay.f localf = com.tencent.mm.ay.a.bef();
-    Object localObject1 = localObject2;
-    if (localf != null)
-    {
-      localObject1 = localObject2;
-      if (localf.jeV != null)
-      {
-        localObject1 = localObject2;
-        if (localf.jeT == 0)
-        {
-          localObject1 = localObject2;
-          if (com.tencent.mm.ay.a.bec()) {
-            localObject1 = localf.jeV;
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(6244);
-    return localObject1;
+    AppMethodBeat.o(264435);
   }
   
   public static void w(z paramz)
   {
     AppMethodBeat.i(6246);
-    if ((paramz == null) || (!paramz.gAt()))
+    if ((paramz == null) || (!paramz.hwA()))
     {
       AppMethodBeat.o(6246);
       return;
     }
-    com.tencent.mm.plugin.brandservice.b.a("BrandServiceWorkerThread", new Runnable()
+    b.am(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(6239);
-        if ((c.pMr.containsKey(Long.valueOf(this.peS.field_msgId))) && (!c.DW(((Integer)c.pMr.get(Long.valueOf(this.peS.field_msgId))).intValue())))
+        if ((c.sTp.containsKey(Long.valueOf(this.sgW.field_msgId))) && (!c.Hw(((Integer)c.sTp.get(Long.valueOf(this.sgW.field_msgId))).intValue())))
         {
           AppMethodBeat.o(6239);
           return;
         }
-        List localList1 = ag.ban().aU(5, this.peS.field_orderFlag);
-        List localList2 = ag.ban().MN(this.peS.field_orderFlag);
+        List localList1 = af.bjB().bg(5, this.sgW.field_orderFlag);
+        List localList2 = af.bjB().Ux(this.sgW.field_orderFlag);
         LinkedList localLinkedList = new LinkedList();
         localLinkedList.addAll(localList1);
-        localLinkedList.add(this.peS);
+        localLinkedList.add(this.sgW);
         localLinkedList.addAll(localList2);
-        c.cL(localLinkedList);
+        c.cI(localLinkedList);
         AppMethodBeat.o(6239);
       }
-    }, 0L);
+    });
     AppMethodBeat.o(6246);
   }
   
   public static void x(z paramz)
   {
     AppMethodBeat.i(6253);
-    if ((paramz == null) || (!paramz.gAu()))
+    if ((paramz == null) || (!paramz.hwB()))
     {
       AppMethodBeat.o(6253);
       return;
     }
-    ege localege = paramz.gAD();
+    eqg localeqg = paramz.hwL();
     if (j.k(paramz))
     {
       AppMethodBeat.o(6253);
@@ -506,46 +419,46 @@ public final class c
     int i = MultiProcessMMKV.getSingleMMKV("brandService").decodeInt("BizRecommendCardRefreshIntervalSec", 300);
     LinkedList localLinkedList = new LinkedList();
     long l = System.currentTimeMillis();
-    if ((localege != null) && (localege.NfY != null) && (Math.abs(l - localege.lastUpdateTime) / 1000L > i))
+    if ((localeqg != null) && (localeqg.UsD != null) && (Math.abs(l - localeqg.lastUpdateTime) / 1000L > i))
     {
-      paramz = a(localege, paramz);
+      paramz = a(localeqg, paramz);
       if (paramz != null) {
         localLinkedList.add(paramz);
       }
     }
     if (!Util.isNullOrNil(localLinkedList)) {
-      M(localLinkedList);
+      L(localLinkedList);
     }
     AppMethodBeat.o(6253);
   }
   
   public static void y(z paramz)
   {
-    AppMethodBeat.i(195066);
-    if ((paramz == null) || (!paramz.gAu()))
+    AppMethodBeat.i(264438);
+    if ((paramz == null) || (!paramz.hwB()))
     {
-      AppMethodBeat.o(195066);
+      AppMethodBeat.o(264438);
       return;
     }
-    com.tencent.mm.plugin.brandservice.b.a("BrandServiceWorkerThread", new Runnable()
+    b.am(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(195063);
-        if ((c.pMr.containsKey(Long.valueOf(this.peS.field_msgId))) && (!c.DW(((Integer)c.pMr.get(Long.valueOf(this.peS.field_msgId))).intValue())))
+        AppMethodBeat.i(263675);
+        if ((c.sTp.containsKey(Long.valueOf(this.sgW.field_msgId))) && (!c.Hw(((Integer)c.sTp.get(Long.valueOf(this.sgW.field_msgId))).intValue())))
         {
-          AppMethodBeat.o(195063);
+          AppMethodBeat.o(263675);
           return;
         }
-        Object localObject1 = ag.ban().aU(5, this.peS.field_orderFlag);
-        Object localObject3 = ag.ban().MN(this.peS.field_orderFlag);
+        Object localObject1 = af.bjB().bg(5, this.sgW.field_orderFlag);
+        Object localObject3 = af.bjB().Ux(this.sgW.field_orderFlag);
         Object localObject2 = new LinkedList();
         ((List)localObject2).addAll((Collection)localObject1);
-        ((List)localObject2).add(this.peS);
+        ((List)localObject2).add(this.sgW);
         ((List)localObject2).addAll((Collection)localObject3);
         if (Util.isNullOrNil((List)localObject2))
         {
-          AppMethodBeat.o(195063);
+          AppMethodBeat.o(263675);
           return;
         }
         localObject1 = new LinkedList();
@@ -553,34 +466,34 @@ public final class c
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (z)((Iterator)localObject2).next();
-          if (((!c.pMr.containsKey(Long.valueOf(((z)localObject3).field_msgId))) || (c.DW(((Integer)c.pMr.get(Long.valueOf(((z)localObject3).field_msgId))).intValue()))) && (((z)localObject3).NQn != null) && (((z)localObject3).NQn.NfY != null) && (!Util.isNullOrNil(((z)localObject3).NQn.NfY.KWy)) && (((z)localObject3).gAu()) && ((((z)localObject3).NQn.style == 3) || (((z)localObject3).NQn.style == 5)))
+          if (((!c.sTp.containsKey(Long.valueOf(((z)localObject3).field_msgId))) || (c.Hw(((Integer)c.sTp.get(Long.valueOf(((z)localObject3).field_msgId))).intValue()))) && (((z)localObject3).Vei != null) && (((z)localObject3).Vei.UsD != null) && (!Util.isNullOrNil(((z)localObject3).Vei.UsD.RXM)) && (((z)localObject3).hwB()) && ((((z)localObject3).Vei.style == 3) || (((z)localObject3).Vei.style == 5)))
           {
             int i = 0;
-            while (i < ((z)localObject3).NQn.NfY.KWy.size())
+            while (i < ((z)localObject3).Vei.UsD.RXM.size())
             {
-              ega localega = (ega)((z)localObject3).NQn.NfY.KWy.get(i);
-              com.tencent.mm.ag.q localq = new com.tencent.mm.ag.q();
-              localq.Url = localega.KSj;
-              localq.iAb = localega.iAb;
-              localq.ReqType = 1;
+              eqc localeqc = (eqc)((z)localObject3).Vei.UsD.RXM.get(i);
+              q localq = new q();
+              localq.Url = localeqc.RTk;
+              localq.lpx = localeqc.lpx;
+              localq.lpw = 1;
               ((List)localObject1).add(localq);
               i += 1;
             }
-            c.pMr.put(Long.valueOf(((z)localObject3).field_msgId), Integer.valueOf((int)(System.currentTimeMillis() / 1000L)));
+            c.sTp.put(Long.valueOf(((z)localObject3).field_msgId), Integer.valueOf((int)(System.currentTimeMillis() / 1000L)));
           }
         }
         if (((List)localObject1).size() > 0) {
-          ((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.brandservice.a.b.class)).ct((List)localObject1);
+          ((com.tencent.mm.plugin.brandservice.a.c)h.ae(com.tencent.mm.plugin.brandservice.a.c.class)).cp((List)localObject1);
         }
-        AppMethodBeat.o(195063);
+        AppMethodBeat.o(263675);
       }
-    }, 0L);
-    AppMethodBeat.o(195066);
+    });
+    AppMethodBeat.o(264438);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -7,39 +7,39 @@ import android.hardware.Camera.PreviewCallback;
 
 public abstract interface f
 {
-  public abstract void a(Camera.PreviewCallback paramPreviewCallback);
+  public abstract void TL();
   
-  public abstract void aqD(int paramInt);
+  public abstract void a(Camera.AutoFocusCallback paramAutoFocusCallback);
   
-  public abstract void autoFocus(Camera.AutoFocusCallback paramAutoFocusCallback);
+  public abstract void aAq(int paramInt);
+  
+  public abstract void bCY(String paramString);
+  
+  public abstract void c(Camera.PreviewCallback paramPreviewCallback);
   
   public abstract void close();
   
-  public abstract boolean dEO();
+  public abstract boolean egx();
   
   public abstract int getCameraRotation();
   
-  public abstract String getFocusMode();
+  public abstract Point ios();
   
-  public abstract Point hkU();
+  public abstract Point iot();
   
-  public abstract Point hkV();
+  public abstract float iou();
   
-  public abstract float hkW();
+  public abstract String iow();
   
   public abstract boolean isOpen();
   
-  public abstract void p(Point paramPoint);
+  public abstract void o(Point paramPoint);
   
-  public abstract void r(SurfaceTexture paramSurfaceTexture);
-  
-  public abstract void setFocusMode(String paramString);
-  
-  public abstract void stopPreview();
+  public abstract void u(SurfaceTexture paramSurfaceTexture);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.scanlib.a.f
  * JD-Core Version:    0.7.0.1
  */

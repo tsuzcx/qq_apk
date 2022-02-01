@@ -1,6 +1,6 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.a.a.e;
+import com.google.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.b.a.a.a.ad;
 import com.tencent.pb.common.b.a.a.a.f;
@@ -19,11 +19,11 @@ public final class f
     try
     {
       localf.groupId = paramString;
-      localf.GXO = paramInt1;
-      localf.GXP = paramLong;
-      localf.bDZ = paramInt2;
-      this.mNetType = 2;
-      this.RCJ = c.hqY().brj(paramString);
+      localf.NOc = paramInt1;
+      localf.NOd = paramLong;
+      localf.bnA = paramInt2;
+      aAc(2);
+      aAd(c.iuI().bEi(paramString));
       c(143, localf);
       AppMethodBeat.o(62536);
       return;
@@ -37,7 +37,7 @@ public final class f
     }
   }
   
-  public final Object cO(byte[] paramArrayOfByte)
+  public final Object dn(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62537);
     if (paramArrayOfByte != null) {}
@@ -64,7 +64,7 @@ public final class f
     return 203;
   }
   
-  public final String hiV()
+  public final String ikF()
   {
     return "CsCmd.Cmd_V_CSExitVoiceRoomReq";
   }

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.collect.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.l;
+import com.tencent.mm.f.a.l;
 import com.tencent.mm.sdk.event.IListener;
 
 final class a$3

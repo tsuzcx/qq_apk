@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:orientation="vertical" android:id="@id/h93" android:background="@color/a_2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:id="@id/h93" android:background="@color/a_2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.constraint.Guideline android:orientation="vertical" android:id="@id/i4k" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintGuide_percent="0.125" />
-    <android.support.constraint.Guideline android:orientation="vertical" android:id="@id/c3q" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintGuide_percent="0.875" />
+    <androidx.constraintlayout.widget.Guideline android:orientation="vertical" android:id="@id/i4k" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintGuide_percent="0.125" />
+    <androidx.constraintlayout.widget.Guideline android:orientation="vertical" android:id="@id/c3q" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintGuide_percent="0.875" />
     <ImageView android:id="@id/byf" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintDimensionRatio="750:224" app:layout_constraintTop_toTopOf="g8m" />
     <ImageView android:id="@id/bye" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintDimensionRatio="750:464" />
     <com.tencent.mm.plugin.gif.MMAnimateView android:id="@id/exw" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/exv" app:layout_constraintEnd_toEndOf="@id/exv" app:layout_constraintStart_toStartOf="@id/exv" app:layout_constraintTop_toTopOf="@id/exv" />
     <com.tencent.mm.plugin.gif.MMAnimateView android:id="@id/exv" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginBottom="72.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="@id/c3q" app:layout_constraintStart_toStartOf="@id/i4k" app:layout_constraintTop_toBottomOf="@id/byf" app:layout_constraintTop_toTopOf="g8m" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

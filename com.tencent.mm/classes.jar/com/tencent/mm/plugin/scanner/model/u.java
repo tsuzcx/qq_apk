@@ -1,188 +1,177 @@
 package com.tencent.mm.plugin.scanner.model;
 
-import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ax;
-import com.tencent.mm.g.a.ax.a;
-import com.tencent.mm.g.a.qx;
-import com.tencent.mm.g.a.qx.a;
-import com.tencent.mm.g.a.qy;
-import com.tencent.mm.g.a.qz;
-import com.tencent.mm.g.a.qz.a;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
-import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.q;
+import com.tencent.mm.protocal.protobuf.ctz;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.qbar.QbarNative.QBarPoint;
-import com.tencent.qbar.WxQbarNative.QBarReportMsg;
-import com.tencent.qbar.a.a;
-import com.tencent.qbar.c;
-import com.tencent.qbar.e;
-import com.tencent.qbar.e.b;
-import com.tencent.qbar.e.c;
-import com.tencent.scanlib.b.b;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/model/ScanConfigManager;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "SCAN_CONFIG_SYNC_THREAD_TAG", "", "TAG", "callbackMap", "Ljava/util/HashMap;", "", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/scanner/model/ScanConfigManager$ScanConfigSyncCallback;", "Lkotlin/collections/ArrayList;", "Lkotlin/collections/HashMap;", "netSceneMap", "Lcom/tencent/mm/plugin/scanner/model/NetSceneScanConfigSync;", "cancel", "", "type", "onFailed", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSceneEnd", "onSuccess", "resp", "Lcom/tencent/mm/protocal/protobuf/MMBizScanConfSyncResp;", "removeConfigType", "configType", "runTask", "task", "Ljava/lang/Runnable;", "scanGoodsShowPreviewImage", "", "syncScanConfig", "callback", "ScanConfigSyncCallback", "plugin-scan_release"})
 public final class u
+  implements com.tencent.mm.an.i
 {
-  public IListener CFM;
-  public IListener CFN;
-  Map<Long, String> CFO;
-  e.b CFP;
+  private static HashMap<Integer, m> ILj;
+  public static final u ILk;
+  private static HashMap<Integer, ArrayList<a>> jPb;
   
-  public u()
+  static
   {
-    AppMethodBeat.i(51645);
-    this.CFM = new IListener() {};
-    this.CFN = new IListener() {};
-    this.CFO = new HashMap();
-    this.CFP = new e.b()
-    {
-      public final void a(final long paramAnonymousLong, com.tencent.qbar.e.d paramAnonymousd)
-      {
-        final List localList3 = null;
-        AppMethodBeat.i(240716);
-        final List localList1;
-        if (paramAnonymousd != null)
-        {
-          localList1 = paramAnonymousd.CGY;
-          if (paramAnonymousd == null) {
-            break label69;
-          }
-        }
-        label69:
-        for (final List localList2 = paramAnonymousd.RKj;; localList2 = null)
-        {
-          if (paramAnonymousd != null) {
-            localList3 = paramAnonymousd.RKk;
-          }
-          MMHandlerThread.postToMainThread(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(51643);
-              Object localObject;
-              if ((localList1 == null) || (localList1.isEmpty()))
-              {
-                Log.i("MicroMsg.RecogQBarOfImageFileListener", "%d scan file no result", new Object[] { Long.valueOf(paramAnonymousLong) });
-                if (u.this.CFO.containsKey(Long.valueOf(paramAnonymousLong)))
-                {
-                  localObject = new qy();
-                  ((qy)localObject).dXy.filePath = ((String)u.this.CFO.get(Long.valueOf(paramAnonymousLong)));
-                  EventCenter.instance.publish((IEvent)localObject);
-                  u.this.CFO.remove(Long.valueOf(paramAnonymousLong));
-                  AppMethodBeat.o(51643);
-                }
-              }
-              else
-              {
-                Log.i("MicroMsg.RecogQBarOfImageFileListener", "%d scan file get %d results ", new Object[] { Long.valueOf(paramAnonymousLong), Integer.valueOf(localList1.size()) });
-                localObject = new qz();
-                if (u.this.CFO.containsKey(Long.valueOf(paramAnonymousLong)))
-                {
-                  ((qz)localObject).dXz.filePath = ((String)u.this.CFO.get(Long.valueOf(paramAnonymousLong)));
-                  ((qz)localObject).dXz.result = ((a.a)localList1.get(0)).data;
-                  ((qz)localObject).dXz.dWl = ((a.a)localList1.get(0)).typeName;
-                  ((qz)localObject).dXz.dFL = com.tencent.mm.pluginsdk.e.d.bcV(((a.a)localList1.get(0)).typeName);
-                  ((qz)localObject).dXz.dXx = localList2.dXx;
-                  if ((localList3 != null) && (localList3.size() > 0))
-                  {
-                    QbarNative.QBarPoint localQBarPoint = (QbarNative.QBarPoint)localList3.get(0);
-                    if (localQBarPoint != null)
-                    {
-                      ((qz)localObject).dXz.dXC = ((localQBarPoint.x0 + localQBarPoint.x1 + localQBarPoint.x2 + localQBarPoint.x3) / 4.0F);
-                      qz.a locala = ((qz)localObject).dXz;
-                      float f1 = localQBarPoint.y0;
-                      float f2 = localQBarPoint.y1;
-                      float f3 = localQBarPoint.y2;
-                      locala.dXD = ((localQBarPoint.y3 + (f1 + f2 + f3)) / 4.0F);
-                      ((qz)localObject).dXz.dXC = Math.max(0.0F, ((qz)localObject).dXz.dXC);
-                      ((qz)localObject).dXz.dXD = Math.max(0.0F, ((qz)localObject).dXz.dXD);
-                    }
-                  }
-                  if (localList2.RKl != null)
-                  {
-                    ((qz)localObject).dXz.dXA = localList2.RKl.x;
-                    ((qz)localObject).dXz.dXB = localList2.RKl.y;
-                  }
-                  if ((this.CFU != null) && (!this.CFU.isEmpty())) {
-                    ((qz)localObject).dXz.dFM = ((WxQbarNative.QBarReportMsg)this.CFU.get(0)).qrcodeVersion;
-                  }
-                  EventCenter.instance.publish((IEvent)localObject);
-                  u.this.CFO.remove(Long.valueOf(paramAnonymousLong));
-                }
-              }
-              AppMethodBeat.o(51643);
-            }
-          });
-          AppMethodBeat.o(240716);
-          return;
-          localList1 = null;
-          break;
-        }
-      }
-    };
-    AppMethodBeat.o(51645);
+    AppMethodBeat.i(223527);
+    ILk = new u();
+    jPb = new HashMap();
+    ILj = new HashMap();
+    AppMethodBeat.o(223527);
   }
   
-  public final boolean h(IEvent arg1)
+  public static final void a(int paramInt, final a parama)
   {
-    AppMethodBeat.i(51646);
-    if (??? == null)
+    AppMethodBeat.i(223514);
+    u((Runnable)new c(paramInt, parama));
+    AppMethodBeat.o(223514);
+  }
+  
+  private static void adq(int paramInt)
+  {
+    AppMethodBeat.i(223522);
+    Log.v("MicroMsg.ScanConfigSyncManager", "alvinluo removeConfigType: %d", new Object[] { Integer.valueOf(paramInt) });
+    jPb.remove(Integer.valueOf(paramInt));
+    ILj.remove(Integer.valueOf(paramInt));
+    AppMethodBeat.o(223522);
+  }
+  
+  public static final boolean fCO()
+  {
+    return true;
+  }
+  
+  private static void u(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(223525);
+    com.tencent.e.h.ZvG.d(paramRunnable, "ScanConfigSync");
+    AppMethodBeat.o(223525);
+  }
+  
+  public final void onSceneEnd(final int paramInt1, final int paramInt2, final String paramString, q paramq)
+  {
+    AppMethodBeat.i(223518);
+    Log.i("MicroMsg.ScanConfigSyncManager", "alvinluo onSceneEnd errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    u((Runnable)new b(paramq, paramInt1, paramInt2, paramString));
+    AppMethodBeat.o(223518);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/model/ScanConfigManager$ScanConfigSyncCallback;", "", "onFailed", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "resp", "Lcom/tencent/mm/protocal/protobuf/MMBizScanConfSyncResp;", "plugin-scan_release"})
+  public static abstract interface a
+  {
+    public abstract void a(ctz paramctz);
+    
+    public abstract void p(int paramInt1, int paramInt2, String paramString);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  static final class b
+    implements Runnable
+  {
+    b(q paramq, int paramInt1, int paramInt2, String paramString) {}
+    
+    public final void run()
     {
-      AppMethodBeat.o(51646);
-      return false;
-    }
-    Object localObject1;
-    if ((??? instanceof qx))
-    {
-      c.RJF.reset();
-      c.RJF.aqw(c.RJA);
-      ??? = (qx)???;
-      this.CFO.put(Long.valueOf(???.dXu.dDZ), ???.dXu.filePath);
-      localObject1 = new e.c();
-      ((e.c)localObject1).dXw = ???.dXu.dXw;
-      ((e.c)localObject1).dXx = ???.dXu.dXx;
-      e.hki().a(MMApplicationContext.getContext(), ???.dXu.dDZ, ???.dXu.filePath, ???.dXu.bitmap, this.CFP, new int[] { 0 }, (e.c)localObject1);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(51646);
-      return false;
-      if (!(??? instanceof ax)) {
-        continue;
-      }
-      c.RJF.bUV();
-      localObject1 = (ax)???;
-      b localb = b.hlc();
-      long l = ((ax)localObject1).dDY.dDZ;
-      synchronized (localb.CCt)
+      AppMethodBeat.i(217673);
+      Object localObject = this.khQ;
+      if (localObject != null)
       {
-        if (localb.RKc.containsKey(Long.valueOf(l)))
-        {
-          String str = (String)localb.RKc.get(Long.valueOf(l));
-          if (localb.RKe.containsKey(str))
-          {
-            ((List)localb.RKe.get(str)).remove(Long.valueOf(l));
-            if (((List)localb.RKe.get(str)).isEmpty()) {
-              localb.RKe.remove(str);
-            }
-          }
-          localb.RKc.remove(Long.valueOf(l));
-          localb.RKd.remove(Long.valueOf(l));
+        if (((q)localObject).getType() != 1812) {
+          break label188;
         }
-        this.CFO.remove(Long.valueOf(((ax)localObject1).dDY.dDZ));
+        if (this.khQ.isCanceled())
+        {
+          Log.w("MicroMsg.ScanConfigSyncManager", "alvinluo onSceneEnd updateScanConfig is cancelled and ignore");
+          AppMethodBeat.o(217673);
+        }
       }
+      else
+      {
+        AppMethodBeat.o(217673);
+        return;
+      }
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        localObject = this.khQ;
+        if (localObject == null)
+        {
+          localObject = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.scanner.model.NetSceneScanConfigSync");
+          AppMethodBeat.o(217673);
+          throw ((Throwable)localObject);
+        }
+        localObject = (m)localObject;
+        if (((m)localObject).rr.bhY() != null)
+        {
+          localObject = ((m)localObject).rr.bhY();
+          if (localObject == null)
+          {
+            localObject = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.MMBizScanConfSyncResp");
+            AppMethodBeat.o(217673);
+            throw ((Throwable)localObject);
+          }
+        }
+        for (localObject = (ctz)localObject;; localObject = null)
+        {
+          u localu = u.ILk;
+          u.a(this.khQ, (ctz)localObject);
+          AppMethodBeat.o(217673);
+          return;
+        }
+      }
+      localObject = u.ILk;
+      u.i(paramInt1, paramInt2, paramString, this.khQ);
+      label188:
+      AppMethodBeat.o(217673);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  static final class c
+    implements Runnable
+  {
+    c(int paramInt, u.a parama) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(218431);
+      Object localObject1 = u.ILk;
+      Object localObject2 = (ArrayList)u.fCP().get(Integer.valueOf(this.cPi));
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject1 = new ArrayList();
+        localObject2 = u.ILk;
+        ((Map)u.fCP()).put(Integer.valueOf(this.cPi), localObject1);
+      }
+      if (parama != null) {
+        ((ArrayList)localObject1).add(parama);
+      }
+      localObject1 = u.ILk;
+      if (u.fCQ().containsKey(Integer.valueOf(this.cPi)))
+      {
+        Log.w("MicroMsg.ScanConfigSyncManager", "alvinluo syncScanConfig netScene is running and ignore");
+        AppMethodBeat.o(218431);
+        return;
+      }
+      com.tencent.mm.kernel.h.aGY().a(1812, (com.tencent.mm.an.i)u.ILk);
+      localObject1 = new m(this.cPi);
+      com.tencent.mm.kernel.h.aGY().b((q)localObject1);
+      localObject2 = u.ILk;
+      ((Map)u.fCQ()).put(Integer.valueOf(this.cPi), localObject1);
+      AppMethodBeat.o(218431);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.u
  * JD-Core Version:    0.7.0.1
  */

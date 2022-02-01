@@ -9,7 +9,7 @@ import com.tencent.mm.storage.emotion.EmojiInfo;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/loader/request/ProcessRequest;", "Lcom/tencent/mm/emoji/loader/request/Request;", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "onLoad", "success", "", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/loader/request/ProcessRequest;", "Lcom/tencent/mm/emoji/loader/request/Request;", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "onLoad", "success", "", "plugin-emojisdk_release"})
 public final class h
   extends i<x>
 {
@@ -20,13 +20,13 @@ public final class h
     AppMethodBeat.o(105472);
   }
   
-  public final void dR(boolean paramBoolean)
+  public final void eq(boolean paramBoolean)
   {
     AppMethodBeat.i(105471);
     Intent localIntent = new Intent();
     localIntent.setAction(EmojiUpdateReceiver.ACTION);
-    localIntent.putExtra(EmojiUpdateReceiver.KEY_TYPE, EmojiUpdateReceiver.hds);
-    localIntent.putExtra("md5", this.gWm.getMd5());
+    localIntent.putExtra(EmojiUpdateReceiver.KEY_TYPE, EmojiUpdateReceiver.jOY);
+    localIntent.putExtra("md5", this.jHh.getMd5());
     localIntent.putExtra("result", paramBoolean);
     MMApplicationContext.getContext().sendBroadcast(localIntent);
     AppMethodBeat.o(105471);
@@ -34,7 +34,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.d.h
  * JD-Core Version:    0.7.0.1
  */

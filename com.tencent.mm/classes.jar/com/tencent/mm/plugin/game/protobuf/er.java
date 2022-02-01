@@ -1,94 +1,99 @@
 package com.tencent.mm.plugin.game.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
 
 public final class er
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String xJL;
-  public String xNS;
-  public String xNT;
-  public String xNU;
-  public String xNV;
-  public int xNW;
-  public String xNX;
-  public String xNY;
+  public String CNA;
+  public String CNj;
+  public String CQz;
+  public int CSb;
+  public String CqK;
+  public String UserName;
+  public String lVG;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41848);
+    AppMethodBeat.i(41847);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.xJL != null) {
-        paramVarArgs.e(1, this.xJL);
+      if (this.lVG == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: AppId");
+        AppMethodBeat.o(41847);
+        throw paramVarArgs;
       }
-      if (this.xNS != null) {
-        paramVarArgs.e(2, this.xNS);
+      if (this.lVG != null) {
+        paramVarArgs.f(1, this.lVG);
       }
-      if (this.xNT != null) {
-        paramVarArgs.e(3, this.xNT);
+      if (this.CQz != null) {
+        paramVarArgs.f(2, this.CQz);
       }
-      if (this.xNU != null) {
-        paramVarArgs.e(4, this.xNU);
+      if (this.CNj != null) {
+        paramVarArgs.f(3, this.CNj);
       }
-      if (this.xNV != null) {
-        paramVarArgs.e(5, this.xNV);
+      if (this.UserName != null) {
+        paramVarArgs.f(4, this.UserName);
       }
-      paramVarArgs.aM(6, this.xNW);
-      if (this.xNX != null) {
-        paramVarArgs.e(7, this.xNX);
+      if (this.CqK != null) {
+        paramVarArgs.f(5, this.CqK);
       }
-      if (this.xNY != null) {
-        paramVarArgs.e(8, this.xNY);
+      paramVarArgs.aY(6, this.CSb);
+      if (this.CNA != null) {
+        paramVarArgs.f(7, this.CNA);
       }
-      AppMethodBeat.o(41848);
+      AppMethodBeat.o(41847);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.xJL == null) {
-        break label626;
+      if (this.lVG == null) {
+        break label610;
       }
     }
-    label626:
-    for (int i = g.a.a.b.b.a.f(1, this.xJL) + 0;; i = 0)
+    label610:
+    for (int i = g.a.a.b.b.a.g(1, this.lVG) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.xNS != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.xNS);
+      if (this.CQz != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.CQz);
       }
       i = paramInt;
-      if (this.xNT != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.xNT);
+      if (this.CNj != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.CNj);
       }
       paramInt = i;
-      if (this.xNU != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.xNU);
+      if (this.UserName != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.UserName);
       }
       i = paramInt;
-      if (this.xNV != null) {
-        i = paramInt + g.a.a.b.b.a.f(5, this.xNV);
+      if (this.CqK != null) {
+        i = paramInt + g.a.a.b.b.a.g(5, this.CqK);
       }
-      i += g.a.a.b.b.a.bu(6, this.xNW);
+      i += g.a.a.b.b.a.bM(6, this.CSb);
       paramInt = i;
-      if (this.xNX != null) {
-        paramInt = i + g.a.a.b.b.a.f(7, this.xNX);
+      if (this.CNA != null) {
+        paramInt = i + g.a.a.b.b.a.g(7, this.CNA);
       }
-      i = paramInt;
-      if (this.xNY != null) {
-        i = paramInt + g.a.a.b.b.a.f(8, this.xNY);
-      }
-      AppMethodBeat.o(41848);
-      return i;
+      AppMethodBeat.o(41847);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(41848);
+        if (this.lVG == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: AppId");
+          AppMethodBeat.o(41847);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(41847);
         return 0;
       }
       if (paramInt == 3)
@@ -98,49 +103,45 @@ public final class er
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(41848);
+          AppMethodBeat.o(41847);
           return -1;
         case 1: 
-          localer.xJL = locala.UbS.readString();
-          AppMethodBeat.o(41848);
+          localer.lVG = locala.abFh.readString();
+          AppMethodBeat.o(41847);
           return 0;
         case 2: 
-          localer.xNS = locala.UbS.readString();
-          AppMethodBeat.o(41848);
+          localer.CQz = locala.abFh.readString();
+          AppMethodBeat.o(41847);
           return 0;
         case 3: 
-          localer.xNT = locala.UbS.readString();
-          AppMethodBeat.o(41848);
+          localer.CNj = locala.abFh.readString();
+          AppMethodBeat.o(41847);
           return 0;
         case 4: 
-          localer.xNU = locala.UbS.readString();
-          AppMethodBeat.o(41848);
+          localer.UserName = locala.abFh.readString();
+          AppMethodBeat.o(41847);
           return 0;
         case 5: 
-          localer.xNV = locala.UbS.readString();
-          AppMethodBeat.o(41848);
+          localer.CqK = locala.abFh.readString();
+          AppMethodBeat.o(41847);
           return 0;
         case 6: 
-          localer.xNW = locala.UbS.zi();
-          AppMethodBeat.o(41848);
-          return 0;
-        case 7: 
-          localer.xNX = locala.UbS.readString();
-          AppMethodBeat.o(41848);
+          localer.CSb = locala.abFh.AK();
+          AppMethodBeat.o(41847);
           return 0;
         }
-        localer.xNY = locala.UbS.readString();
-        AppMethodBeat.o(41848);
+        localer.CNA = locala.abFh.readString();
+        AppMethodBeat.o(41847);
         return 0;
       }
-      AppMethodBeat.o(41848);
+      AppMethodBeat.o(41847);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.er
  * JD-Core Version:    0.7.0.1
  */

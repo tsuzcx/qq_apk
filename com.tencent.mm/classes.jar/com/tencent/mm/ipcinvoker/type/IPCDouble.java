@@ -9,7 +9,7 @@ public class IPCDouble
   implements Parcelable
 {
   public static final Parcelable.Creator<IPCDouble> CREATOR;
-  public double value;
+  public double jZt;
   
   static
   {
@@ -34,7 +34,7 @@ public class IPCDouble
     if ((paramObject instanceof IPCDouble))
     {
       paramObject = (IPCDouble)paramObject;
-      if (this.value == paramObject.value)
+      if (this.jZt == paramObject.jZt)
       {
         AppMethodBeat.o(158854);
         return true;
@@ -44,7 +44,7 @@ public class IPCDouble
     }
     if ((paramObject instanceof Double))
     {
-      boolean bool = paramObject.equals(Double.valueOf(this.value));
+      boolean bool = paramObject.equals(Double.valueOf(this.jZt));
       AppMethodBeat.o(158854);
       return bool;
     }
@@ -55,7 +55,7 @@ public class IPCDouble
   public String toString()
   {
     AppMethodBeat.i(158853);
-    String str = Double.toString(this.value);
+    String str = Double.toString(this.jZt);
     AppMethodBeat.o(158853);
     return str;
   }
@@ -63,13 +63,13 @@ public class IPCDouble
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(158852);
-    paramParcel.writeDouble(this.value);
+    paramParcel.writeDouble(this.jZt);
     AppMethodBeat.o(158852);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.type.IPCDouble
  * JD-Core Version:    0.7.0.1
  */

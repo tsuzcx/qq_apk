@@ -9,55 +9,55 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends b
 {
-  private final d bDT;
-  private final int bDU;
-  private final long bDV;
-  private final long bDW;
-  private final long bDX;
-  private final float bDY;
-  private int bDZ;
-  private int bxP;
+  private int bhr;
+  private int bnA;
+  private final d bnu;
+  private final int bnv;
+  private final long bnw;
+  private final long bnx;
+  private final long bny;
+  private final float bnz;
   
   public a(q paramq, int[] paramArrayOfInt, d paramd, int paramInt, long paramLong1, long paramLong2, long paramLong3, float paramFloat)
   {
     super(paramq, paramArrayOfInt);
     AppMethodBeat.i(92926);
-    this.bDT = paramd;
-    this.bDU = paramInt;
-    this.bDV = (1000L * paramLong1);
-    this.bDW = (1000L * paramLong2);
-    this.bDX = (1000L * paramLong3);
-    this.bDY = paramFloat;
-    this.bxP = ak(-9223372036854775808L);
-    this.bDZ = 1;
+    this.bnu = paramd;
+    this.bnv = paramInt;
+    this.bnw = (1000L * paramLong1);
+    this.bnx = (1000L * paramLong2);
+    this.bny = (1000L * paramLong3);
+    this.bnz = paramFloat;
+    this.bhr = an(-9223372036854775808L);
+    this.bnA = 1;
     AppMethodBeat.o(92926);
   }
   
-  private int ak(long paramLong)
+  private int an(long paramLong)
   {
     AppMethodBeat.i(92928);
-    long l = this.bDT.wE();
+    long l = this.bnu.uF();
     if (l == -1L) {}
     int i;
-    for (l = this.bDU;; l = ((float)l * this.bDY))
+    for (l = this.bnv;; l = ((float)l * this.bnz))
     {
       i = 0;
       j = 0;
       if (i >= this.length) {
-        break label109;
+        break label108;
       }
       if ((paramLong != -9223372036854775808L) && (l(i, paramLong))) {
-        break label117;
+        break label116;
       }
-      if (this.bwD[i].bitrate > l) {
+      if (fm(i).bitrate > l) {
         break;
       }
       AppMethodBeat.o(92928);
       return i;
     }
     int j = i;
-    label109:
-    label117:
+    label108:
+    label116:
     for (;;)
     {
       i += 1;
@@ -67,13 +67,13 @@ public final class a
     }
   }
   
-  public final void af(long paramLong)
+  public final void ai(long paramLong)
   {
     AppMethodBeat.i(92927);
     long l = SystemClock.elapsedRealtime();
-    int i = this.bxP;
-    this.bxP = ak(l);
-    if (this.bxP == i)
+    int i = this.bhr;
+    this.bhr = an(l);
+    if (this.bhr == i)
     {
       AppMethodBeat.o(92927);
       return;
@@ -82,37 +82,36 @@ public final class a
     Format localFormat2;
     if (!l(i, l))
     {
-      localFormat1 = this.bwD[i];
-      int j = this.bxP;
-      localFormat2 = this.bwD[j];
-      if ((localFormat2.bitrate <= localFormat1.bitrate) || (paramLong >= this.bDV)) {
-        break label118;
+      localFormat1 = fm(i);
+      localFormat2 = fm(this.bhr);
+      if ((localFormat2.bitrate <= localFormat1.bitrate) || (paramLong >= this.bnw)) {
+        break label112;
       }
     }
-    for (this.bxP = i;; this.bxP = i) {
-      label118:
+    for (this.bhr = i;; this.bhr = i) {
+      label112:
       do
       {
-        if (this.bxP != i) {
-          this.bDZ = 3;
+        if (this.bhr != i) {
+          this.bnA = 3;
         }
         AppMethodBeat.o(92927);
         return;
-      } while ((localFormat2.bitrate >= localFormat1.bitrate) || (paramLong < this.bDW));
+      } while ((localFormat2.bitrate >= localFormat1.bitrate) || (paramLong < this.bnx));
     }
   }
   
   public final int getSelectedIndex()
   {
-    return this.bxP;
+    return this.bhr;
   }
   
-  public final int vP()
+  public final int tN()
   {
-    return this.bDZ;
+    return this.bnA;
   }
   
-  public final Object vQ()
+  public final Object tO()
   {
     return null;
   }
@@ -120,12 +119,12 @@ public final class a
   public static final class a
     implements f.a
   {
-    private final d bDT;
-    private final int bDU;
-    private final float bDY;
-    private final int bEa;
-    private final int bEb;
-    private final int bEc;
+    private final int bnB;
+    private final int bnC;
+    private final int bnD;
+    private final d bnu;
+    private final int bnv;
+    private final float bnz;
     
     public a(d paramd)
     {
@@ -134,18 +133,18 @@ public final class a
     
     private a(d paramd, byte paramByte)
     {
-      this.bDT = paramd;
-      this.bDU = 800000;
-      this.bEa = 10000;
-      this.bEb = 25000;
-      this.bEc = 25000;
-      this.bDY = 0.75F;
+      this.bnu = paramd;
+      this.bnv = 800000;
+      this.bnB = 10000;
+      this.bnC = 25000;
+      this.bnD = 25000;
+      this.bnz = 0.75F;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.g.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,61 +6,61 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public enum q
 {
   public String mStartTag;
-  public String qTt;
-  public boolean qTu;
-  public String qTv;
-  public String qTw;
-  public boolean qTx;
-  public boolean qTy = false;
+  public boolean uvA;
+  public String uvB;
+  public String uvC;
+  public boolean uvD;
+  public boolean uvE = false;
+  public String uvz;
   
   static
   {
     AppMethodBeat.i(30662);
-    JIZ = new q("NONE", 0, "", "", "", "", false);
-    JJa = new q("NOTEUL", 1, "<wx-ul>", "</wx-ul>", "<wx-li>", "</wx-li>", true);
-    JJb = new q("NOTEOL", 2, "<wx-ol>", "</wx-ol>", "<wx-li>", "</wx-li>", true);
-    JJc = new q("NOTETODO", 3, "", "", "<wn-todo checked=\"1\" >", "</wn-todo>", true);
-    JJd = new q[] { JIZ, JJa, JJb, JJc };
+    QIr = new q("NONE", 0, "", "", "", "", false);
+    QIs = new q("NOTEUL", 1, "<wx-ul>", "</wx-ul>", "<wx-li>", "</wx-li>", true);
+    QIt = new q("NOTEOL", 2, "<wx-ol>", "</wx-ol>", "<wx-li>", "</wx-li>", true);
+    QIu = new q("NOTETODO", 3, "", "", "<wn-todo checked=\"1\" >", "</wn-todo>", true);
+    QIv = new q[] { QIr, QIs, QIt, QIu };
     AppMethodBeat.o(30662);
   }
   
-  private q(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2)
+  private q(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
   {
     this.mStartTag = paramString1;
-    this.qTt = paramString2;
-    this.qTv = paramString3;
-    this.qTw = paramString4;
-    this.qTu = false;
-    this.qTx = paramBoolean1;
+    this.uvz = paramString2;
+    this.uvB = paramString3;
+    this.uvC = paramString4;
+    this.uvA = false;
+    this.uvD = paramBoolean;
   }
   
   public static q b(ParagraphStyle paramParagraphStyle)
   {
     if ((paramParagraphStyle instanceof d)) {
-      return JJa;
+      return QIs;
     }
     if ((paramParagraphStyle instanceof m)) {
-      return JJb;
+      return QIt;
     }
     if ((paramParagraphStyle instanceof k)) {
-      return JJc;
+      return QIu;
     }
     return null;
   }
   
-  public final boolean cEw()
+  public final boolean cTc()
   {
-    return this == JJa;
+    return this == QIs;
   }
   
-  public final boolean cEx()
+  public final boolean cTd()
   {
-    return this == JJb;
+    return this == QIt;
   }
   
-  public final boolean cEy()
+  public final boolean cTe()
   {
-    return this == JJc;
+    return this == QIu;
   }
 }
 

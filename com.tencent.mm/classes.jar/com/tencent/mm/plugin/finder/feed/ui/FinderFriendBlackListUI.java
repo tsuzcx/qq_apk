@@ -6,7 +6,6 @@ import android.content.DialogInterface.OnCancelListener;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
@@ -17,170 +16,178 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.g.a.hh;
-import com.tencent.mm.g.b.a.dr;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.t;
+import com.tencent.mm.f.a.ho;
+import com.tencent.mm.f.b.a.ek;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.report.n;
 import com.tencent.mm.plugin.finder.storage.data.d.a;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import com.tencent.mm.protocal.protobuf.bbn;
-import com.tencent.mm.protocal.protobuf.cpm;
+import com.tencent.mm.plugin.topstory.ui.c.g;
+import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.protocal.protobuf.cyc;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.o.g;
-import com.tencent.mm.ui.base.u;
+import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.w;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.a.j;
+import kotlin.g;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderFriendBlackListUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "MENU_ID_REMOVE_BLACK_LIST", "", "getMENU_ID_REMOVE_BLACK_LIST", "()I", "clickTabContextId", "", "getClickTabContextId", "()Ljava/lang/String;", "clickTabContextId$delegate", "Lkotlin/Lazy;", "contactList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "contextId", "getContextId", "contextId$delegate", "emptyTip", "Landroid/widget/TextView;", "enterCount", "getEnterCount", "setEnterCount", "(I)V", "feedId", "", "getFeedId", "()J", "feedId$delegate", "fromCommentScene", "getFromCommentScene", "fromCommentScene$delegate", "lastDelList", "listAdapter", "Lcom/tencent/mm/plugin/finder/ui/FinderFriendBlackListAdapter;", "listView", "Landroid/widget/ListView;", "md5", "getMd5", "setMd5", "(Ljava/lang/String;)V", "popupMenu", "Lcom/tencent/mm/ui/widget/menu/MMPopupMenu;", "sessionId", "getSessionId", "sessionId$delegate", "tipDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getTipDialog", "()Lcom/tencent/mm/ui/base/MMProgressDialog;", "setTipDialog", "(Lcom/tencent/mm/ui/base/MMProgressDialog;)V", "checkNetworkAvailable", "", "checkNetworkAvailableMM", "doConfirm", "", "deleteName", "doConfirmScene", "opList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/ModContactTypeInfo;", "finish", "genMd5", "getLayoutId", "initData", "data", "initView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "publishEvent", "userName", "unlike", "refresh", "addList", "showEmptyView", "showListView", "showPopupMenu", "blackInfo", "anchor", "Landroid/view/View;", "isMale", "updateTitle", "count", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderFriendBlackListUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "MENU_ID_REMOVE_BLACK_LIST", "", "getMENU_ID_REMOVE_BLACK_LIST", "()I", "clickTabContextId", "", "getClickTabContextId", "()Ljava/lang/String;", "clickTabContextId$delegate", "Lkotlin/Lazy;", "contactList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "contextId", "getContextId", "contextId$delegate", "emptyTip", "Landroid/widget/TextView;", "enterCount", "getEnterCount", "setEnterCount", "(I)V", "feedId", "", "getFeedId", "()J", "feedId$delegate", "fromCommentScene", "getFromCommentScene", "fromCommentScene$delegate", "lastDelList", "listAdapter", "Lcom/tencent/mm/plugin/finder/ui/FinderFriendBlackListAdapter;", "listView", "Landroid/widget/ListView;", "md5", "getMd5", "setMd5", "(Ljava/lang/String;)V", "popupMenu", "Lcom/tencent/mm/ui/widget/menu/MMPopupMenu;", "sessionId", "getSessionId", "sessionId$delegate", "tipDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getTipDialog", "()Lcom/tencent/mm/ui/base/MMProgressDialog;", "setTipDialog", "(Lcom/tencent/mm/ui/base/MMProgressDialog;)V", "checkNetworkAvailable", "", "checkNetworkAvailableMM", "doConfirm", "", "deleteName", "doConfirmScene", "opList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/ModContactTypeInfo;", "finish", "genMd5", "getLayoutId", "initData", "data", "initView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "publishEvent", "userName", "unlike", "refresh", "addList", "showEmptyView", "showListView", "showPopupMenu", "blackInfo", "anchor", "Landroid/view/View;", "isMale", "updateTitle", "count", "Companion", "plugin-finder_release"})
 public final class FinderFriendBlackListUI
   extends MMFinderUI
   implements i
 {
   static final String TAG = "Finder.FinderFriendBlackListUI";
-  public static final a uao;
+  public static final a xMQ;
   private HashMap _$_findViewCache;
-  private TextView hRM;
-  private ListView krb;
+  private TextView kGj;
   private String md5;
-  private com.tencent.mm.ui.widget.b.a pqr;
-  com.tencent.mm.ui.base.q tipDialog;
-  private final ArrayList<String> uae;
-  private final ArrayList<String> uaf;
-  final int uag;
-  private final com.tencent.mm.plugin.finder.ui.c uah;
-  private final kotlin.f uai;
-  private final kotlin.f uaj;
-  private final kotlin.f uak;
-  private final kotlin.f ual;
-  private final kotlin.f uam;
-  private int uan;
+  private ListView niO;
+  private com.tencent.mm.ui.widget.b.a szq;
+  s tipDialog;
+  private final ArrayList<String> xMG;
+  private final ArrayList<String> xMH;
+  final int xMI;
+  private final com.tencent.mm.plugin.finder.ui.c xMJ;
+  private final kotlin.f xMK;
+  private final kotlin.f xML;
+  private final kotlin.f xMM;
+  private final kotlin.f xMN;
+  private final kotlin.f xMO;
+  private int xMP;
   
   static
   {
-    AppMethodBeat.i(245213);
-    uao = new a((byte)0);
+    AppMethodBeat.i(280989);
+    xMQ = new a((byte)0);
     TAG = "Finder.FinderFriendBlackListUI";
-    AppMethodBeat.o(245213);
+    AppMethodBeat.o(280989);
   }
   
   public FinderFriendBlackListUI()
   {
-    AppMethodBeat.i(245212);
-    this.uae = new ArrayList();
-    this.uaf = new ArrayList();
+    AppMethodBeat.i(280988);
+    this.xMG = new ArrayList();
+    this.xMH = new ArrayList();
     this.md5 = "";
-    this.uag = 1001;
-    this.uah = new com.tencent.mm.plugin.finder.ui.c((Activity)this);
-    this.uai = kotlin.g.ah((kotlin.g.a.a)i.uar);
-    this.uaj = kotlin.g.ah((kotlin.g.a.a)new c(this));
-    this.uak = kotlin.g.ah((kotlin.g.a.a)new b(this));
-    this.ual = kotlin.g.ah((kotlin.g.a.a)new f(this));
-    this.uam = kotlin.g.ah((kotlin.g.a.a)new e(this));
-    AppMethodBeat.o(245212);
+    this.xMI = 1001;
+    this.xMJ = new com.tencent.mm.plugin.finder.ui.c((Activity)this);
+    this.xMK = g.ar((kotlin.g.a.a)i.xMT);
+    this.xML = g.ar((kotlin.g.a.a)new c(this));
+    this.xMM = g.ar((kotlin.g.a.a)new b(this));
+    this.xMN = g.ar((kotlin.g.a.a)new f(this));
+    this.xMO = g.ar((kotlin.g.a.a)new e(this));
+    AppMethodBeat.o(280988);
   }
   
-  private void IQ(int paramInt)
+  private void MI(int paramInt)
   {
-    AppMethodBeat.i(245206);
+    AppMethodBeat.i(280981);
     if (paramInt <= 0)
     {
-      setMMTitle(getString(2131759850));
-      AppMethodBeat.o(245206);
+      setMMTitle(getString(b.j.finder_liked_nolonger_see_title));
+      AppMethodBeat.o(280981);
       return;
     }
-    setMMTitle(getString(2131759848, new Object[] { Integer.valueOf(paramInt) }));
-    AppMethodBeat.o(245206);
+    setMMTitle(getString(b.j.finder_liked_nolonger_see_count, new Object[] { Integer.valueOf(paramInt) }));
+    AppMethodBeat.o(280981);
   }
   
-  private final String acj()
+  static void ag(LinkedList<cyc> paramLinkedList)
   {
-    AppMethodBeat.i(245201);
-    String str = (String)this.uaj.getValue();
-    AppMethodBeat.o(245201);
-    return str;
-  }
-  
-  private final String ack()
-  {
-    AppMethodBeat.i(245202);
-    String str = (String)this.uak.getValue();
-    AppMethodBeat.o(245202);
-    return str;
-  }
-  
-  static void ah(LinkedList<cpm> paramLinkedList)
-  {
-    AppMethodBeat.i(245208);
-    p.h(paramLinkedList, "opList");
+    AppMethodBeat.i(280983);
+    p.k(paramLinkedList, "opList");
     Object localObject = (Iterable)paramLinkedList;
-    paramLinkedList = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
+    paramLinkedList = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject, 10));
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      paramLinkedList.add(((cpm)((Iterator)localObject).next()).UserName);
+      paramLinkedList.add(((cyc)((Iterator)localObject).next()).UserName);
     }
-    paramLinkedList = new com.tencent.mm.modelmulti.c((List)paramLinkedList, 33554432, 2, com.tencent.mm.n.h.aqJ().getInt("MMBatchModContactTypeMaxNumForServer", 30));
-    com.tencent.mm.kernel.g.azz().b((com.tencent.mm.ak.q)paramLinkedList);
-    AppMethodBeat.o(245208);
+    paramLinkedList = new com.tencent.mm.modelmulti.c((List)paramLinkedList, 33554432, 2, com.tencent.mm.n.h.axc().getInt("MMBatchModContactTypeMaxNumForServer", 30));
+    com.tencent.mm.kernel.h.aGY().b((com.tencent.mm.an.q)paramLinkedList);
+    AppMethodBeat.o(280983);
   }
   
-  private void bIo()
+  private final String agX()
   {
-    AppMethodBeat.i(245207);
-    Object localObject = this.hRM;
+    AppMethodBeat.i(280976);
+    String str = (String)this.xML.getValue();
+    AppMethodBeat.o(280976);
+    return str;
+  }
+  
+  private final String agY()
+  {
+    AppMethodBeat.i(280977);
+    String str = (String)this.xMM.getValue();
+    AppMethodBeat.o(280977);
+    return str;
+  }
+  
+  private void bTY()
+  {
+    AppMethodBeat.i(280982);
+    Object localObject = this.kGj;
     if (localObject == null) {
-      p.btv("emptyTip");
+      p.bGy("emptyTip");
     }
     ((TextView)localObject).setVisibility(0);
-    localObject = this.krb;
+    localObject = this.niO;
     if (localObject == null) {
-      p.btv("listView");
+      p.bGy("listView");
     }
     ((ListView)localObject).setVisibility(8);
-    AppMethodBeat.o(245207);
+    AppMethodBeat.o(280982);
   }
   
-  private final int ddV()
+  private final int dvc()
   {
-    AppMethodBeat.i(245203);
-    int i = ((Number)this.ual.getValue()).intValue();
-    AppMethodBeat.o(245203);
+    AppMethodBeat.i(280978);
+    int i = ((Number)this.xMN.getValue()).intValue();
+    AppMethodBeat.o(280978);
     return i;
   }
   
   private final String getSessionId()
   {
-    AppMethodBeat.i(245200);
-    String str = (String)this.uai.getValue();
-    AppMethodBeat.o(245200);
+    AppMethodBeat.i(280975);
+    String str = (String)this.xMK.getValue();
+    AppMethodBeat.o(280975);
     return str;
   }
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(245216);
+    AppMethodBeat.i(280994);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(245216);
+    AppMethodBeat.o(280994);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(245215);
+    AppMethodBeat.i(280992);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -191,148 +198,148 @@ public final class FinderFriendBlackListUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(245215);
+    AppMethodBeat.o(280992);
     return localView1;
   }
   
   public final void finish()
   {
-    AppMethodBeat.i(245210);
-    if (!this.uaf.isEmpty())
+    AppMethodBeat.i(280986);
+    if (!this.xMH.isEmpty())
     {
-      p.h("", "userName");
-      hh localhh = new hh();
-      localhh.dLL.dLN = "";
-      localhh.dLL.dLM = 0;
-      EventCenter.instance.publish((IEvent)localhh);
+      p.k("", "userName");
+      ho localho = new ho();
+      localho.fEA.fEC = "";
+      localho.fEA.fEB = 0;
+      EventCenter.instance.publish((IEvent)localho);
       Log.i(TAG, "publishEvent");
     }
     super.finish();
-    AppMethodBeat.o(245210);
+    AppMethodBeat.o(280986);
   }
   
   public final int getLayoutId()
   {
-    return 2131494325;
+    return b.g.finder_friend_black_list_layout;
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(245205);
-    Object localObject = findViewById(2131300862);
-    p.g(localObject, "findViewById(R.id.finder_liked_list)");
-    this.krb = ((ListView)localObject);
-    localObject = findViewById(2131300101);
-    p.g(localObject, "findViewById(R.id.empty_tip)");
-    this.hRM = ((TextView)localObject);
-    this.pqr = new com.tencent.mm.ui.widget.b.a((Context)this);
-    localObject = this.krb;
+    AppMethodBeat.i(280980);
+    Object localObject = findViewById(b.f.finder_liked_list);
+    p.j(localObject, "findViewById(R.id.finder_liked_list)");
+    this.niO = ((ListView)localObject);
+    localObject = findViewById(b.f.empty_tip);
+    p.j(localObject, "findViewById(R.id.empty_tip)");
+    this.kGj = ((TextView)localObject);
+    this.szq = new com.tencent.mm.ui.widget.b.a((Context)this);
+    localObject = this.niO;
     if (localObject == null) {
-      p.btv("listView");
+      p.bGy("listView");
     }
-    ((ListView)localObject).setAdapter((ListAdapter)this.uah);
-    localObject = this.krb;
+    ((ListView)localObject).setAdapter((ListAdapter)this.xMJ);
+    localObject = this.niO;
     if (localObject == null) {
-      p.btv("listView");
+      p.bGy("listView");
     }
     ((ListView)localObject).setSelector((Drawable)new ColorDrawable(0));
-    this.uah.vKe = ((kotlin.g.a.q)new g(this));
+    this.xMJ.AqW = ((kotlin.g.a.q)new g(this));
     setBackBtn((MenuItem.OnMenuItemClickListener)new h(this));
-    AppMethodBeat.o(245205);
+    AppMethodBeat.o(280980);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(245204);
+    AppMethodBeat.i(280979);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.g.azz().a(3528, (i)this);
-    com.tencent.mm.kernel.g.azz().a(3990, (i)this);
-    paramBundle = com.tencent.mm.plugin.finder.storage.data.d.vFS;
-    d.a.dyw().onAlive();
+    com.tencent.mm.kernel.h.aGY().a(3528, (i)this);
+    com.tencent.mm.kernel.h.aGY().a(3990, (i)this);
+    paramBundle = com.tencent.mm.plugin.finder.storage.data.d.AmR;
+    d.a.dZo().onAlive();
     initView();
-    paramBundle = com.tencent.mm.plugin.finder.storage.data.d.vFS;
-    paramBundle = d.a.dyw().dyv();
-    p.h(paramBundle, "data");
+    paramBundle = com.tencent.mm.plugin.finder.storage.data.d.AmR;
+    paramBundle = d.a.dZo().dZn();
+    p.k(paramBundle, "data");
     if (paramBundle.isEmpty())
     {
-      IQ(0);
-      Log.i(TAG, "onCreate sessionId:" + getSessionId() + " contextId:" + acj() + " clickTabContextId:" + ack() + " fromCommentScene:" + ddV());
-      AppMethodBeat.o(245204);
+      MI(0);
+      Log.i(TAG, "onCreate sessionId:" + getSessionId() + " contextId:" + agX() + " clickTabContextId:" + agY() + " fromCommentScene:" + dvc());
+      AppMethodBeat.o(280979);
       return;
     }
-    this.uae.clear();
-    this.uae.addAll((Collection)paramBundle);
-    paramBundle = Util.listToString((List)this.uae, ",");
-    p.g(paramBundle, "Util.listToString(contactList, \",\")");
+    this.xMG.clear();
+    this.xMG.addAll((Collection)paramBundle);
+    paramBundle = Util.listToString((List)this.xMG, ",");
+    p.j(paramBundle, "Util.listToString(contactList, \",\")");
     this.md5 = paramBundle;
-    paramBundle = this.uae;
-    p.h(paramBundle, "addList");
+    paramBundle = this.xMG;
+    p.k(paramBundle, "addList");
     Log.i(TAG, "friend list: " + paramBundle.size());
     if (paramBundle.isEmpty()) {
-      bIo();
+      bTY();
     }
     for (;;)
     {
-      this.uan = paramBundle.size();
-      IQ(paramBundle.size());
+      this.xMP = paramBundle.size();
+      MI(paramBundle.size());
       break;
-      Object localObject = this.hRM;
+      Object localObject = this.kGj;
       if (localObject == null) {
-        p.btv("emptyTip");
+        p.bGy("emptyTip");
       }
       ((TextView)localObject).setVisibility(8);
-      localObject = this.krb;
+      localObject = this.niO;
       if (localObject == null) {
-        p.btv("listView");
+        p.bGy("listView");
       }
       ((ListView)localObject).setVisibility(0);
-      this.uah.ew((List)paramBundle);
-      this.uah.notifyDataSetChanged();
+      this.xMJ.eR((List)paramBundle);
+      this.xMJ.notifyDataSetChanged();
     }
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(245211);
-    Object localObject1 = Util.listToString((List)this.uaf, ";");
-    bbn localbbn = new bbn();
-    localbbn.sessionId = getSessionId();
-    localbbn.sGQ = acj();
-    localbbn.sGE = ack();
-    localbbn.tCE = ddV();
-    Object localObject2 = com.tencent.mm.plugin.finder.report.k.vfA;
-    long l = ((Number)this.uam.getValue()).longValue();
-    p.g(localObject1, "delUsernames");
-    int i = this.uan;
-    p.h(localbbn, "contextObj");
-    p.h("", "addUsernames");
-    p.h(localObject1, "delUsernames");
-    localObject2 = new dr();
-    ((dr)localObject2).pA(localbbn.sessionId);
-    ((dr)localObject2).pB(localbbn.sGQ);
-    ((dr)localObject2).pC(localbbn.sGE);
-    ((dr)localObject2).ku(localbbn.tCE);
-    ((dr)localObject2).pF(com.tencent.mm.ac.d.zs(l));
-    ((dr)localObject2).pD("");
-    ((dr)localObject2).pE((String)localObject1);
-    ((dr)localObject2).kv(i);
-    ((dr)localObject2).bfK();
-    com.tencent.mm.plugin.finder.report.k.a((com.tencent.mm.plugin.report.a)localObject2);
-    com.tencent.mm.kernel.g.azz().b(3528, (i)this);
-    com.tencent.mm.kernel.g.azz().b(3990, (i)this);
-    localObject1 = com.tencent.mm.plugin.finder.storage.data.d.vFS;
-    d.a.dyw().onDetach();
+    AppMethodBeat.i(280987);
+    Object localObject1 = Util.listToString((List)this.xMH, ";");
+    bid localbid = new bid();
+    localbid.sessionId = getSessionId();
+    localbid.wmL = agX();
+    localbid.wmz = agY();
+    localbid.xkX = dvc();
+    Object localObject2 = n.zWF;
+    long l = ((Number)this.xMO.getValue()).longValue();
+    p.j(localObject1, "delUsernames");
+    int i = this.xMP;
+    p.k(localbid, "contextObj");
+    p.k("", "addUsernames");
+    p.k(localObject1, "delUsernames");
+    localObject2 = new ek();
+    ((ek)localObject2).sl(localbid.sessionId);
+    ((ek)localObject2).sm(localbid.wmL);
+    ((ek)localObject2).sn(localbid.wmz);
+    ((ek)localObject2).lw(localbid.xkX);
+    ((ek)localObject2).sq(com.tencent.mm.ae.d.Fw(l));
+    ((ek)localObject2).so("");
+    ((ek)localObject2).sp((String)localObject1);
+    ((ek)localObject2).lx(i);
+    ((ek)localObject2).bpa();
+    n.a((com.tencent.mm.plugin.report.a)localObject2);
+    com.tencent.mm.kernel.h.aGY().b(3528, (i)this);
+    com.tencent.mm.kernel.h.aGY().b(3990, (i)this);
+    localObject1 = com.tencent.mm.plugin.finder.storage.data.d.AmR;
+    d.a.dZo().onDetach();
     localObject1 = this.tipDialog;
     if (localObject1 != null) {
-      ((com.tencent.mm.ui.base.q)localObject1).dismiss();
+      ((s)localObject1).dismiss();
     }
     super.onDestroy();
-    AppMethodBeat.o(245211);
+    AppMethodBeat.o(280987);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
   {
-    AppMethodBeat.i(245209);
+    AppMethodBeat.i(280985);
     if ((paramq instanceof com.tencent.mm.modelmulti.c))
     {
       Log.i(TAG, "NetSceneBatchSetBlackList errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
@@ -342,21 +349,21 @@ public final class FinderFriendBlackListUI
         if (paramString != null) {
           paramString.dismiss();
         }
-        paramString = ((com.tencent.mm.modelmulti.c)paramq).bdH();
-        p.g(paramString, "scene.names");
-        paramString = (String)j.kt(paramString);
+        paramString = ((com.tencent.mm.modelmulti.c)paramq).bnb();
+        p.j(paramString, "scene.names");
+        paramString = (String)kotlin.a.j.lp(paramString);
         if (paramString != null)
         {
-          this.uaf.add(paramString);
-          this.uah.avP(paramString);
-          IQ(this.uah.getCount());
-          if (this.uah.getCount() <= 0) {
-            bIo();
+          this.xMH.add(paramString);
+          this.xMJ.aFg(paramString);
+          MI(this.xMJ.getCount());
+          if (this.xMJ.getCount() <= 0) {
+            bTY();
           }
-          AppMethodBeat.o(245209);
+          AppMethodBeat.o(280985);
           return;
         }
-        AppMethodBeat.o(245209);
+        AppMethodBeat.o(280985);
         return;
       }
       if (paramInt2 == -3500)
@@ -365,17 +372,17 @@ public final class FinderFriendBlackListUI
         if (paramString != null) {
           paramString.dismiss();
         }
-        u.makeText((Context)this, 2131759551, 0).show();
-        AppMethodBeat.o(245209);
+        w.makeText((Context)this, b.j.finder_black_list_limit_tips, 0).show();
+        AppMethodBeat.o(280985);
         return;
       }
       paramString = this.tipDialog;
       if (paramString != null) {
         paramString.dismiss();
       }
-      u.makeText((Context)this, 2131759852, 0).show();
+      w.makeText((Context)this, b.j.finder_liked_see_failed, 0).show();
     }
-    AppMethodBeat.o(245209);
+    AppMethodBeat.o(280985);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -384,10 +391,10 @@ public final class FinderFriendBlackListUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderFriendBlackListUI$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderFriendBlackListUI$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class b
     extends kotlin.g.b.q
     implements kotlin.g.a.a<String>
@@ -398,7 +405,7 @@ public final class FinderFriendBlackListUI
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class c
     extends kotlin.g.b.q
     implements kotlin.g.a.a<String>
@@ -409,7 +416,7 @@ public final class FinderFriendBlackListUI
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class e
     extends kotlin.g.b.q
     implements kotlin.g.a.a<Long>
@@ -420,7 +427,7 @@ public final class FinderFriendBlackListUI
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class f
     extends kotlin.g.b.q
     implements kotlin.g.a.a<Integer>
@@ -431,7 +438,7 @@ public final class FinderFriendBlackListUI
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "view", "Landroid/view/View;", "blackInfo", "", "isMale", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "view", "Landroid/view/View;", "blackInfo", "", "isMale", "", "invoke"})
   static final class g
     extends kotlin.g.b.q
     implements kotlin.g.a.q<View, String, Boolean, x>
@@ -442,7 +449,7 @@ public final class FinderFriendBlackListUI
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class h
     implements MenuItem.OnMenuItemClickListener
   {
@@ -450,25 +457,25 @@ public final class FinderFriendBlackListUI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(245195);
-      this.uap.finish();
-      AppMethodBeat.o(245195);
+      AppMethodBeat.i(289729);
+      this.xMR.finish();
+      AppMethodBeat.o(289729);
       return true;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class i
     extends kotlin.g.b.q
     implements kotlin.g.a.a<String>
   {
-    public static final i uar;
+    public static final i xMT;
     
     static
     {
-      AppMethodBeat.i(245197);
-      uar = new i();
-      AppMethodBeat.o(245197);
+      AppMethodBeat.i(272564);
+      xMT = new i();
+      AppMethodBeat.o(272564);
     }
     
     i()
@@ -477,7 +484,7 @@ public final class FinderFriendBlackListUI
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menu", "Landroid/view/ContextMenu;", "kotlin.jvm.PlatformType", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "onCreateContextMenu"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menu", "Landroid/view/ContextMenu;", "kotlin.jvm.PlatformType", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "onCreateContextMenu"})
   static final class j
     implements View.OnCreateContextMenuListener
   {
@@ -485,50 +492,50 @@ public final class FinderFriendBlackListUI
     
     public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
     {
-      AppMethodBeat.i(245198);
-      int i = this.uap.uag;
-      if (this.uas) {}
-      for (paramView = this.uap.getString(2131759854);; paramView = this.uap.getString(2131759853))
+      AppMethodBeat.i(288112);
+      int i = this.xMR.xMI;
+      if (this.xMU) {}
+      for (paramView = this.xMR.getString(b.j.finder_liked_see_him);; paramView = this.xMR.getString(b.j.finder_liked_see_her))
       {
         paramContextMenu.add(0, i, 0, (CharSequence)paramView);
-        AppMethodBeat.o(245198);
+        AppMethodBeat.o(288112);
         return;
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
   static final class k
-    implements o.g
+    implements q.g
   {
     k(FinderFriendBlackListUI paramFinderFriendBlackListUI, String paramString) {}
     
     public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
     {
-      AppMethodBeat.i(245199);
-      p.g(paramMenuItem, "menuItem");
-      if (paramMenuItem.getItemId() == this.uap.uag)
+      AppMethodBeat.i(290590);
+      p.j(paramMenuItem, "menuItem");
+      if (paramMenuItem.getItemId() == this.xMR.xMI)
       {
-        Object localObject1 = this.uap;
-        paramMenuItem = this.uat;
-        p.h(paramMenuItem, "deleteName");
+        Object localObject1 = this.xMR;
+        paramMenuItem = this.xMV;
+        p.k(paramMenuItem, "deleteName");
         if (!Util.isNullOrNil(paramMenuItem))
         {
-          Object localObject2 = com.tencent.mm.kernel.g.aAe().azG();
-          p.g(localObject2, "MMKernel.process().current()");
-          if (((com.tencent.mm.kernel.b.h)localObject2).aBb())
+          Object localObject2 = com.tencent.mm.kernel.h.aHD().aHf();
+          p.j(localObject2, "MMKernel.process().current()");
+          if (((com.tencent.mm.kernel.b.h)localObject2).aIE())
           {
-            localObject2 = com.tencent.mm.kernel.g.azz();
-            p.g(localObject2, "MMKernel.getNetSceneQueue()");
-            paramInt = ((t)localObject2).aYS();
+            localObject2 = com.tencent.mm.kernel.h.aGY();
+            p.j(localObject2, "MMKernel.getNetSceneQueue()");
+            paramInt = ((t)localObject2).bih();
             if ((paramInt == 4) || (paramInt == 6)) {
               paramInt = 1;
             }
           }
           while (paramInt == 0)
           {
-            u.makeText((Context)localObject1, 2131759552, 0).show();
-            AppMethodBeat.o(245199);
+            w.makeText((Context)localObject1, b.j.finder_black_list_loading_fail, 0).show();
+            AppMethodBeat.o(290590);
             return;
             paramInt = 0;
             continue;
@@ -536,28 +543,28 @@ public final class FinderFriendBlackListUI
             for (paramInt = 6;; paramInt = 0)
             {
               if (paramInt != 6) {
-                break label163;
+                break label164;
               }
               paramInt = 1;
               break;
             }
-            label163:
+            label164:
             paramInt = 0;
           }
           localObject2 = (Context)localObject1;
-          ((FinderFriendBlackListUI)localObject1).getString(2131755998);
-          ((FinderFriendBlackListUI)localObject1).tipDialog = com.tencent.mm.ui.base.h.a((Context)localObject2, ((FinderFriendBlackListUI)localObject1).getString(2131759556), true, (DialogInterface.OnCancelListener)FinderFriendBlackListUI.d.uaq);
+          ((FinderFriendBlackListUI)localObject1).getString(c.g.app_tip);
+          ((FinderFriendBlackListUI)localObject1).tipDialog = com.tencent.mm.ui.base.h.a((Context)localObject2, ((FinderFriendBlackListUI)localObject1).getString(b.j.finder_black_list_setting_loading), true, (DialogInterface.OnCancelListener)FinderFriendBlackListUI.d.xMS);
           localObject1 = new LinkedList();
           Log.d(FinderFriendBlackListUI.TAG, "deleted user:".concat(String.valueOf(paramMenuItem)));
-          localObject2 = new cpm();
-          ((cpm)localObject2).UserName = paramMenuItem;
-          ((cpm)localObject2).MvC = com.tencent.mm.plugin.i.a.k.wEb;
-          ((cpm)localObject2).MvD = 2;
+          localObject2 = new cyc();
+          ((cyc)localObject2).UserName = paramMenuItem;
+          ((cyc)localObject2).TGA = com.tencent.mm.plugin.findersdk.a.j.Bvg;
+          ((cyc)localObject2).TGB = 2;
           ((LinkedList)localObject1).add(localObject2);
-          FinderFriendBlackListUI.ah((LinkedList)localObject1);
+          FinderFriendBlackListUI.ag((LinkedList)localObject1);
         }
       }
-      AppMethodBeat.o(245199);
+      AppMethodBeat.o(290590);
     }
   }
 }

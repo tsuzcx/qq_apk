@@ -18,31 +18,31 @@ public final class n
   private void a(Pattern paramPattern)
   {
     AppMethodBeat.i(131714);
-    this.wXj = paramPattern.split(this.content);
-    this.wXk = new int[this.wXj.length];
+    this.BJe = paramPattern.split(this.content);
+    this.BJf = new int[this.BJe.length];
     int j = 0;
     int k;
-    for (int i = 0; j < this.wXk.length; i = k + 1 + i)
+    for (int i = 0; j < this.BJf.length; i = k + 1 + i)
     {
-      this.wXk[j] = i;
-      k = this.wXj[j].length();
+      this.BJf[j] = i;
+      k = this.BJe[j].length();
       j += 1;
     }
     AppMethodBeat.o(131714);
   }
   
-  private void dOD()
+  private void eqU()
   {
     AppMethodBeat.i(131716);
-    switch (this.wVW)
+    switch (this.BHR)
     {
     default: 
       AppMethodBeat.o(131716);
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    a(c.a.wVa);
-    String[] arrayOfString = c.a.wUZ.split(this.wXg);
+    a(c.a.BGW);
+    String[] arrayOfString = c.a.BGV.split(this.BJb);
     byte[] arrayOfByte = this.content.getBytes();
     int i = 0;
     label73:
@@ -50,31 +50,31 @@ public final class n
     int j;
     Object localObject;
     String str;
-    if (i < arrayOfString.length)
+    if (i < arrayOfString.length - 1)
     {
       n = Integer.valueOf(arrayOfString[i]).intValue();
       int m = new String(arrayOfByte, 0, Integer.valueOf(arrayOfString[(i + 1)]).intValue()).length();
-      k = Arrays.binarySearch(this.wXk, m);
+      k = Arrays.binarySearch(this.BJf, m);
       j = k;
       if (k < 0) {
         j = -k - 2;
       }
-      localObject = this.wXj[j];
+      localObject = this.BJe[j];
       str = null;
-      localObject = c.a.wVb.split((CharSequence)localObject);
-      m -= this.wXk[j];
+      localObject = c.a.BGX.split((CharSequence)localObject);
+      m -= this.BJf[j];
       k = 0;
-      label174:
+      label176:
       if (k >= localObject.length) {
-        break label268;
+        break label270;
       }
       m = m - localObject[k].length() - 1;
       if (m < 0) {
         str = localObject[k];
       }
     }
-    label268:
-    for (int k = com.tencent.mm.plugin.fts.a.c.wUS[k];; k = -1)
+    label270:
+    for (int k = com.tencent.mm.plugin.fts.a.c.BGO[k];; k = -1)
     {
       if (k > 0) {
         localArrayList.add(new g(j, n, k, str, localObject[(localObject.length - 1)]));
@@ -82,55 +82,55 @@ public final class n
       i += 2;
       break label73;
       k += 1;
-      break label174;
-      this.wXl = localArrayList;
+      break label176;
+      this.BJg = localArrayList;
       break;
     }
   }
   
-  private void dOE()
+  private void eqV()
   {
     AppMethodBeat.i(131717);
-    switch (this.wVW)
+    switch (this.BHR)
     {
     }
     try
     {
-      i = Integer.valueOf(c.a.wUZ.split(this.wXg)[1]).intValue();
-      this.wXh = new String(this.content.getBytes(), 0, i).length();
-      this.wXi = this.content;
+      i = Integer.valueOf(c.a.BGV.split(this.BJb)[1]).intValue();
+      this.BJc = new String(this.content.getBytes(), 0, i).length();
+      this.BJd = this.content;
       AppMethodBeat.o(131717);
       return;
     }
     catch (Exception localException2)
     {
       int i;
-      this.wXh = 2147483647;
-      this.wXi = "";
+      this.BJc = 2147483647;
+      this.BJd = "";
       AppMethodBeat.o(131717);
     }
-    this.wXh = 2147483647;
-    this.wXi = "";
+    this.BJc = 2147483647;
+    this.BJd = "";
     AppMethodBeat.o(131717);
     return;
     try
     {
-      String[] arrayOfString = c.a.wUZ.split(this.wXg);
-      a(c.a.wVd);
+      String[] arrayOfString = c.a.BGV.split(this.BJb);
+      a(c.a.BGZ);
       i = Integer.valueOf(arrayOfString[1]).intValue();
       i = new String(this.content.getBytes(), 0, i).length();
-      this.wXh = Arrays.binarySearch(this.wXk, i);
-      if (this.wXh < 0) {
-        this.wXh = (-this.wXh - 2);
+      this.BJc = Arrays.binarySearch(this.BJf, i);
+      if (this.BJc < 0) {
+        this.BJc = (-this.BJc - 2);
       }
-      this.wXi = this.wXj[this.wXh];
+      this.BJd = this.BJe[this.BJc];
       AppMethodBeat.o(131717);
       return;
     }
     catch (Exception localException1)
     {
-      this.wXh = 2147483647;
-      this.wXi = "";
+      this.BJc = 2147483647;
+      this.BJd = "";
       AppMethodBeat.o(131717);
       return;
     }
@@ -139,57 +139,57 @@ public final class n
   public final void a(h paramh)
   {
     AppMethodBeat.i(131718);
-    if (paramh.wWD.length > 1) {
-      this.wXn = 1;
+    if (paramh.BIy.length > 1) {
+      this.BJj = 1;
     }
     while (this.type == 131075)
     {
       if (System.currentTimeMillis() - this.timestamp >= 1209600000L) {
         break label387;
       }
-      this.wWz += 50;
-      String str = z.aTY();
-      if (this.wVW == 38)
+      this.BIu += 50;
+      String str = z.bcZ();
+      if (this.BHR == 38)
       {
         HashSet localHashSet = new HashSet();
-        if (this.wXl != null)
+        if (this.BJg != null)
         {
-          Iterator localIterator = this.wXl.iterator();
+          Iterator localIterator = this.BJg.iterator();
           for (;;)
           {
             if (localIterator.hasNext())
             {
               g localg = (g)localIterator.next();
-              if (!str.equals(localg.fMb))
+              if (!str.equals(localg.idS))
               {
-                localHashSet.add(Integer.valueOf(localg.wWv));
+                localHashSet.add(Integer.valueOf(localg.BIq));
                 continue;
-                this.wXn = 0;
+                this.BJj = 0;
                 break;
               }
             }
           }
         }
-        if (localHashSet.size() >= this.wXe - 1L)
+        if (localHashSet.size() >= this.BIZ - 1L)
         {
-          this.wWz += 20;
-          this.wXo = true;
+          this.BIu += 20;
+          this.BJk = true;
         }
-        if ((paramh.wWD.length > 1) && (this.content.contains(paramh.wWB)))
+        if ((paramh.BIy.length > 1) && (this.content.contains(paramh.BIw)))
         {
-          this.wXn = 2;
-          this.wWz += 5;
+          this.BJj = 2;
+          this.BIu += 5;
         }
-        if (this.wXe <= 15L) {
-          this.wXq = 1;
+        if (this.BIZ <= 15L) {
+          this.BJm = 1;
         }
       }
-      if (((this.wVW == 5) || (this.wVW == 1)) && (this.content.contains(paramh.wWB)))
+      if (((this.BHR == 5) || (this.BHR == 1)) && (this.content.contains(paramh.BIw)))
       {
-        if (paramh.wWD.length > 1) {
-          this.wXn = 2;
+        if (paramh.BIy.length > 1) {
+          this.BJj = 2;
         }
-        this.wWz += 10;
+        this.BIu += 10;
       }
       AppMethodBeat.o(131718);
       return;
@@ -197,24 +197,24 @@ public final class n
     if (this.type == 131072)
     {
       if (System.currentTimeMillis() - this.timestamp < 1105032704L) {
-        this.wWz += 50;
+        this.BIu += 50;
       }
-      if (((this.wVW == 5) || (this.wVW == 1)) && (this.content.contains(paramh.wWB)))
+      if (((this.BHR == 5) || (this.BHR == 1)) && (this.content.contains(paramh.BIw)))
       {
-        if (paramh.wWD.length > 1) {
-          this.wXn = 2;
+        if (paramh.BIy.length > 1) {
+          this.BJj = 2;
         }
-        this.wWz += 10;
+        this.BIu += 10;
       }
     }
     label387:
     AppMethodBeat.o(131718);
   }
   
-  public final void dOC()
+  public final void eqT()
   {
     AppMethodBeat.i(131715);
-    if (Util.isNullOrNil(this.wXg))
+    if (Util.isNullOrNil(this.BJb))
     {
       AppMethodBeat.o(131715);
       return;
@@ -226,57 +226,57 @@ public final class n
     {
       AppMethodBeat.o(131715);
       return;
-      dOE();
+      eqV();
       AppMethodBeat.o(131715);
       return;
-      dOD();
+      eqU();
     }
   }
   
-  public final n g(Cursor paramCursor)
+  public final n i(Cursor paramCursor)
   {
     AppMethodBeat.i(131711);
-    this.wXc = paramCursor.getLong(0);
+    this.BIX = paramCursor.getLong(0);
     this.type = paramCursor.getInt(1);
-    this.wVW = paramCursor.getInt(2);
-    this.wXe = paramCursor.getLong(3);
-    this.wVX = paramCursor.getString(4);
+    this.BHR = paramCursor.getInt(2);
+    this.BIZ = paramCursor.getLong(3);
+    this.BHS = paramCursor.getString(4);
     this.timestamp = paramCursor.getLong(5);
     this.talker = paramCursor.getString(6);
     AppMethodBeat.o(131711);
     return this;
   }
   
-  public final n h(Cursor paramCursor)
+  public final n j(Cursor paramCursor)
   {
     AppMethodBeat.i(131712);
-    this.wXc = paramCursor.getLong(0);
+    this.BIX = paramCursor.getLong(0);
     this.type = paramCursor.getInt(1);
-    this.wVW = paramCursor.getInt(2);
-    this.wXe = paramCursor.getLong(3);
-    this.wVX = paramCursor.getString(4);
+    this.BHR = paramCursor.getInt(2);
+    this.BIZ = paramCursor.getLong(3);
+    this.BHS = paramCursor.getString(4);
     this.timestamp = paramCursor.getLong(5);
     this.content = paramCursor.getString(6);
-    this.wXg = paramCursor.getString(7);
-    this.wXm = paramCursor.getLong(8);
+    this.BJb = paramCursor.getString(7);
+    this.BJi = paramCursor.getLong(8);
     AppMethodBeat.o(131712);
     return this;
   }
   
-  public final n i(Cursor paramCursor)
+  public final n k(Cursor paramCursor)
   {
     AppMethodBeat.i(131713);
-    this.wXc = paramCursor.getLong(0);
+    this.BIX = paramCursor.getLong(0);
     this.type = paramCursor.getInt(1);
-    this.wVW = paramCursor.getInt(2);
-    this.wXe = paramCursor.getLong(3);
-    this.wVX = paramCursor.getString(4);
+    this.BHR = paramCursor.getInt(2);
+    this.BIZ = paramCursor.getLong(3);
+    this.BHS = paramCursor.getString(4);
     this.timestamp = paramCursor.getLong(5);
     if (paramCursor.getColumnCount() >= 7) {
       this.content = paramCursor.getString(6);
     }
     if (paramCursor.getColumnCount() >= 8) {
-      this.wXg = paramCursor.getString(7);
+      this.BJb = paramCursor.getString(7);
     }
     AppMethodBeat.o(131713);
     return this;
@@ -284,7 +284,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.n
  * JD-Core Version:    0.7.0.1
  */

@@ -4,19 +4,19 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.e;
-import com.tencent.mm.aj.i;
-import com.tencent.mm.aj.j;
-import com.tencent.mm.aj.p;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.am.f;
+import com.tencent.mm.am.j;
+import com.tencent.mm.am.k;
+import com.tencent.mm.am.q;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.jni.utils.UtilsJni;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 
 public final class a
   implements com.tencent.mm.pluginsdk.cmd.a
@@ -38,17 +38,17 @@ public final class a
         return false;
       }
       paramContext = paramArrayOfString[2];
-      paramString = ((l)g.af(l.class)).aSN().bjH(paramContext).field_username;
-      paramArrayOfString = b.aKJ() + "/tencent/MicroMsg/avatar/";
-      s.boN(paramArrayOfString);
-      p.aYn();
-      String str1 = e.M(paramString, false);
-      String str2 = s.akC(str1);
-      s.nw(str1, paramArrayOfString + paramContext + "-s." + str2);
-      p.aYn();
-      paramString = e.M(paramString, true);
-      str1 = s.akC(paramString);
-      s.nw(paramString, paramArrayOfString + paramContext + "-b." + str1);
+      paramString = ((n)h.ae(n.class)).bbL().bwe(paramContext).field_username;
+      paramArrayOfString = b.aSL() + "/tencent/MicroMsg/avatar/";
+      u.bBD(paramArrayOfString);
+      q.bhz();
+      String str1 = f.O(paramString, false);
+      String str2 = u.asq(str1);
+      u.on(str1, paramArrayOfString + paramContext + "-s." + str2);
+      q.bhz();
+      paramString = f.O(paramString, true);
+      str1 = u.asq(paramString);
+      u.on(paramString, paramArrayOfString + paramContext + "-b." + str1);
       Toast.makeText(MMApplicationContext.getContext(), "pull to ".concat(String.valueOf(paramArrayOfString)), 0).show();
       AppMethodBeat.o(151425);
       return true;
@@ -61,9 +61,9 @@ public final class a
         return false;
       }
       paramContext = paramArrayOfString[2];
-      paramContext = ((l)g.af(l.class)).aSN().bjH(paramContext).field_username;
-      paramContext = p.aYB().Mx(paramContext);
-      Log.i("MicroMsg.AvatarCommand", "dump: %s, %s, %s, %s", new Object[] { paramContext.aYt(), paramContext.aYu(), Integer.valueOf(paramContext.iKV), Integer.valueOf(paramContext.fuz) });
+      paramContext = ((n)h.ae(n.class)).bbL().bwe(paramContext).field_username;
+      paramContext = q.bhP().TS(paramContext);
+      Log.i("MicroMsg.AvatarCommand", "dump: %s, %s, %s, %s", new Object[] { paramContext.bhH(), paramContext.bhI(), Integer.valueOf(paramContext.lBc), Integer.valueOf(paramContext.hDc) });
       AppMethodBeat.o(151425);
       return true;
     }
@@ -75,17 +75,17 @@ public final class a
         return false;
       }
       paramContext = paramArrayOfString[2];
-      paramContext = ((l)g.af(l.class)).aSN().bjH(paramContext).field_username;
-      p.aYn();
-      e.N(paramContext, false);
-      p.aYn();
-      e.N(paramContext, true);
+      paramContext = ((n)h.ae(n.class)).bbL().bwe(paramContext).field_username;
+      q.bhz();
+      f.P(paramContext, false);
+      q.bhz();
+      f.P(paramContext, true);
       AppMethodBeat.o(151425);
       return true;
     }
     if (paramArrayOfString[1].equals("cleanAll"))
     {
-      s.dy("wcf://avatar/", true);
+      u.deleteDir("wcf://avatar/");
       AppMethodBeat.o(151425);
       return true;
     }
@@ -97,7 +97,7 @@ public final class a
         return false;
       }
       paramContext = paramArrayOfString[2];
-      paramArrayOfString = UtilsJni.DecryptAvatar(s.aW(paramContext, 0, -1));
+      paramArrayOfString = UtilsJni.DecryptAvatar(u.aY(paramContext, 0, -1));
       if (paramArrayOfString == null) {
         Toast.makeText(MMApplicationContext.getContext(), "error", 0).show();
       }
@@ -105,7 +105,7 @@ public final class a
       {
         AppMethodBeat.o(151425);
         return true;
-        s.f(paramContext + ".d", paramArrayOfString, paramArrayOfString.length);
+        u.H(paramContext + ".d", paramArrayOfString);
       }
     }
     AppMethodBeat.o(151425);
@@ -114,7 +114,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.avatar.a
  * JD-Core Version:    0.7.0.1
  */

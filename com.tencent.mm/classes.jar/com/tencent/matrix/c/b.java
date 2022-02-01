@@ -1,107 +1,204 @@
 package com.tencent.matrix.c;
 
-import android.database.Cursor;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.e.h;
+import com.tencent.e.i;
+import com.tencent.matrix.a.a.a.j.a.a;
+import com.tencent.matrix.a.b.c;
+import com.tencent.matrix.a.b.k.a;
+import com.tencent.matrix.report.d.a;
+import com.tencent.mm.app.AppForegroundDelegate;
+import com.tencent.mm.app.o;
+import com.tencent.mm.app.z;
+import com.tencent.mm.app.z.b;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.sqlitelint.ISQLiteExecutionDelegate;
-import com.tencent.sqlitelint.SQLiteLint.InstallEnv;
-import com.tencent.sqlitelint.SQLiteLint.Options.Builder;
-import com.tencent.sqlitelint.SQLiteLintPlugin;
-import com.tencent.sqlitelint.config.SQLiteLintConfig.ConcernDb;
-import com.tencent.wcdb.database.SQLiteDatabase;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class b
 {
-  private static Map<String, Boolean> cVe = new HashMap();
-  private static SQLiteLintPlugin cVf;
+  private static final List<b> cZl = new LinkedList();
+  private static final Runnable cZm = new a(true, (byte)0);
+  private static final Runnable cZn = new a(false, (byte)0);
+  private static boolean cZo = false;
+  private static final Handler mHandler = new Handler(Looper.getMainLooper());
   
-  public static void a(SQLiteDatabase paramSQLiteDatabase, String paramString, long paramLong)
+  public static boolean Xm()
   {
-    if (!com.tencent.matrix.b.isInstalled()) {}
+    return cZo;
+  }
+  
+  public static void Xn()
+  {
+    if (a.Xi()) {
+      AppForegroundDelegate.fby.a(new o()
+      {
+        public final void onAppBackground(String paramAnonymousString)
+        {
+          if (a.Xi()) {
+            b.d(false, paramAnonymousString);
+          }
+        }
+        
+        public final void onAppForeground(String paramAnonymousString)
+        {
+          if (a.Xi()) {
+            b.d(true, paramAnonymousString);
+          }
+        }
+      });
+    }
+    if (a.Xj())
+    {
+      z localz = z.abb();
+      z.b local2 = new z.b()
+      {
+        public final void fm(String paramAnonymousString)
+        {
+          if (a.Xj()) {
+            b.d(true, paramAnonymousString);
+          }
+        }
+        
+        public final void fn(String paramAnonymousString)
+        {
+          if (a.Xj()) {
+            b.d(false, paramAnonymousString);
+          }
+        }
+      };
+      if (!localz.cSF.contains(local2)) {
+        localz.cSF.add(local2);
+      }
+    }
+    com.tencent.matrix.a.b.VJ().a(new b.c()
+    {
+      public final boolean a(com.tencent.matrix.a.b.b paramAnonymousb, long paramAnonymousLong)
+      {
+        Log.i("Matrix.battery.LifeCycle", "#onAppLowEnergy");
+        h.ZvG.be(new b.3.2(this, paramAnonymousb, paramAnonymousLong));
+        return false;
+      }
+      
+      public final boolean eM(String paramAnonymousString)
+      {
+        Log.i("Matrix.battery.LifeCycle", "#onStateChanged");
+        h.ZvG.be(new b.3.1(this, paramAnonymousString));
+        return false;
+      }
+    });
+  }
+  
+  public static void a(b paramb)
+  {
+    synchronized (cZl)
+    {
+      cZl.add(paramb);
+      return;
+    }
+  }
+  
+  private static void cS(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      if (!cZo)
+      {
+        mHandler.removeCallbacks(cZn);
+        mHandler.postDelayed(cZm, 5000L);
+      }
+    }
+    while (!cZo) {
+      return;
+    }
+    mHandler.removeCallbacks(cZm);
+    mHandler.postDelayed(cZn, 5000L);
+  }
+  
+  private static void fk(String paramString)
+  {
+    if (!com.tencent.matrix.b.Vt()) {}
+    Object localObject;
     do
     {
       do
       {
         return;
-        if (cVf != null) {
-          break;
-        }
-        localObject1 = (SQLiteLintPlugin)com.tencent.matrix.b.RG().Y(SQLiteLintPlugin.class);
-        cVf = (SQLiteLintPlugin)localObject1;
-      } while (localObject1 == null);
-    } while (!cVf.isPluginStarted());
-    Log.v("Matrix.MatrixSQLiteLintManager", "onSQLExecuted  String sql:%s,  timeCost:%d", new Object[] { paramString, Long.valueOf(paramLong) });
-    Object localObject1 = paramSQLiteDatabase.getPath();
-    Object localObject2;
-    if (!cVe.containsKey(localObject1))
+        localObject = (com.tencent.matrix.a.c)com.tencent.matrix.b.Vu().Y(com.tencent.matrix.a.c.class);
+      } while ((localObject == null) || (((com.tencent.matrix.a.c)localObject).isPluginStopped()));
+      localObject = (com.tencent.matrix.a.a.a.d)((com.tencent.matrix.a.c)localObject).cSM.Z(com.tencent.matrix.a.a.a.d.class);
+    } while (localObject == null);
+    try
     {
-      paramSQLiteDatabase = new SQLiteLint.InstallEnv((String)localObject1, new a(paramSQLiteDatabase));
-      localObject2 = new SQLiteLint.Options.Builder();
-      ((SQLiteLint.Options.Builder)localObject2).setReportBehaviour(true);
-      ((SQLiteLint.Options.Builder)localObject2).setAlertBehaviour(false);
-      paramSQLiteDatabase = new SQLiteLintConfig.ConcernDb(paramSQLiteDatabase, ((SQLiteLint.Options.Builder)localObject2).build());
-      paramSQLiteDatabase.enableAvoidAutoIncrementChecker();
-      paramSQLiteDatabase.enableAvoidSelectAllChecker();
-      paramSQLiteDatabase.enableExplainQueryPlanChecker();
-      paramSQLiteDatabase.enableRedundantIndexChecker();
-      paramSQLiteDatabase.enableWithoutRowIdBetterChecker();
-      paramSQLiteDatabase.enablePreparedStatementBetterChecker();
-      localObject2 = paramSQLiteDatabase.getInstallEnv().getConcernedDbPath();
-      if (!((String)localObject2).endsWith("EnMicroMsg.db")) {
-        break label230;
+      if (((com.tencent.matrix.a.a.a.d)localObject).cVf != Collections.EMPTY_LIST)
+      {
+        ((com.tencent.matrix.a.a.a.d)localObject).cVf.add(0, new k.a(paramString));
+        ((com.tencent.matrix.a.a.a.d)localObject).We();
       }
-      paramSQLiteDatabase.setWhiteListXml(2132017207);
-    }
-    for (;;)
-    {
-      cVf.addConcernedDB(paramSQLiteDatabase);
-      cVe.put(localObject1, Boolean.TRUE);
-      cVf.notifySqlExecution((String)localObject1, paramString, (int)paramLong);
+      com.tencent.matrix.e.c.i("Matrix.battery.AppStatMonitorFeature", "updateAppImportance when launch: ".concat(String.valueOf(paramString)), new Object[0]);
+      ((com.tencent.matrix.a.a.a.d)localObject).Wj();
       return;
-      label230:
-      if (((String)localObject2).endsWith("AppBrandComm.db")) {
-        paramSQLiteDatabase.setWhiteListXml(2132017162);
-      } else if (((String)localObject2).endsWith("SnsMicroMsg.db")) {
-        paramSQLiteDatabase.setWhiteListXml(2132017290);
+    }
+    finally {}
+  }
+  
+  static final class a
+    implements Runnable
+  {
+    final boolean cZp;
+    
+    private a(boolean paramBoolean)
+    {
+      this.cZp = paramBoolean;
+    }
+    
+    public final void run()
+    {
+      synchronized ()
+      {
+        if (!this.cZp) {
+          break label79;
+        }
+        if (b.cZo) {
+          break label76;
+        }
+        Log.i("Matrix.battery.LifeCycle", "#onAppLowEnergy, AppDoze ON");
+        d.a.cZ(true);
+        Iterator localIterator1 = b.Xp().iterator();
+        if (localIterator1.hasNext()) {
+          ((b.b)localIterator1.next()).cT(true);
+        }
+      }
+      b.access$202(true);
+      for (;;)
+      {
+        label76:
+        return;
+        label79:
+        if (b.cZo)
+        {
+          Log.i("Matrix.battery.LifeCycle", "#onAppLowEnergy, AppDoze OFF");
+          d.a.cZ(false);
+          Iterator localIterator2 = b.Xp().iterator();
+          while (localIterator2.hasNext()) {
+            ((b.b)localIterator2.next()).cT(false);
+          }
+          b.access$202(false);
+        }
       }
     }
   }
   
-  static final class a
-    implements ISQLiteExecutionDelegate
+  public static abstract interface b
   {
-    private final SQLiteDatabase mDb;
-    
-    a(SQLiteDatabase paramSQLiteDatabase)
-    {
-      this.mDb = paramSQLiteDatabase;
-    }
-    
-    public final void execSQL(String paramString)
-    {
-      if (!this.mDb.isOpen())
-      {
-        Log.w("Matrix.MatrixSQLiteLintManager", "rawQuery db close", new Object[0]);
-        return;
-      }
-      this.mDb.execSQL(paramString);
-    }
-    
-    public final Cursor rawQuery(String paramString, String... paramVarArgs)
-    {
-      if (!this.mDb.isOpen())
-      {
-        Log.w("Matrix.MatrixSQLiteLintManager", "rawQuery db close", new Object[0]);
-        return null;
-      }
-      return this.mDb.rawQuery(paramString, paramVarArgs);
-    }
+    public abstract void cT(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.c.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,34 +2,35 @@ package com.tencent.mm.plugin.profile.ui.newbizinfo;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class NewBizInfoMessagePreference
   extends Preference
 {
-  private NewBizInfoMessagePreference.a BjG;
-  private MMActivity gte;
-  private View hSw;
-  private RecyclerView hak;
-  private boolean rFe;
+  private NewBizInfoMessagePreference.a Hec;
+  private MMActivity iXq;
+  private RecyclerView jLl;
+  private View kGT;
   private int state;
+  private boolean vkO;
   
   public NewBizInfoMessagePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27542);
     this.state = 1;
-    this.rFe = false;
-    this.gte = ((MMActivity)paramContext);
-    this.rFe = false;
+    this.vkO = false;
+    this.iXq = ((MMActivity)paramContext);
+    this.vkO = false;
     AppMethodBeat.o(27542);
   }
   
@@ -38,9 +39,9 @@ public class NewBizInfoMessagePreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27543);
     this.state = 1;
-    this.rFe = false;
-    this.gte = ((MMActivity)paramContext);
-    this.rFe = false;
+    this.vkO = false;
+    this.iXq = ((MMActivity)paramContext);
+    this.vkO = false;
     AppMethodBeat.o(27543);
   }
   
@@ -48,42 +49,42 @@ public class NewBizInfoMessagePreference
   {
     AppMethodBeat.i(27544);
     DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
-    this.hak = ((RecyclerView)paramView.findViewById(2131305301));
-    this.hak.setLayoutParams(new FrameLayout.LayoutParams(-1, localDisplayMetrics.heightPixels));
-    this.hak.setLayoutManager(new LinearLayoutManager());
-    this.hak.setHasFixedSize(true);
-    this.hSw = paramView.findViewById(2131305289);
-    this.rFe = true;
-    if (this.rFe)
+    this.jLl = ((RecyclerView)paramView.findViewById(R.h.dNE));
+    this.jLl.setLayoutParams(new FrameLayout.LayoutParams(-1, localDisplayMetrics.heightPixels));
+    this.jLl.setLayoutManager(new LinearLayoutManager());
+    this.jLl.setHasFixedSize(true);
+    this.kGT = paramView.findViewById(R.h.dNt);
+    this.vkO = true;
+    if (this.vkO)
     {
       if (this.state != 1) {
-        break label125;
+        break label127;
       }
-      this.hSw.setVisibility(0);
+      this.kGT.setVisibility(0);
     }
-    label125:
+    label127:
     do
     {
-      this.hak.setVisibility(8);
+      this.jLl.setVisibility(8);
       AppMethodBeat.o(27544);
       return;
       if (this.state == 2)
       {
-        this.hak.setVisibility(8);
-        this.hSw.setVisibility(0);
+        this.jLl.setVisibility(8);
+        this.kGT.setVisibility(0);
         AppMethodBeat.o(27544);
         return;
       }
     } while (this.state != 3);
-    this.hSw.setVisibility(8);
-    this.hak.setVisibility(0);
-    this.hak.setAdapter(this.BjG);
+    this.kGT.setVisibility(8);
+    this.jLl.setVisibility(0);
+    this.jLl.setAdapter(this.Hec);
     AppMethodBeat.o(27544);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.NewBizInfoMessagePreference
  * JD-Core Version:    0.7.0.1
  */

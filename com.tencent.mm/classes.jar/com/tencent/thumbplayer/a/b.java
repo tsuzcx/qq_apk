@@ -9,18 +9,18 @@ import java.util.Map;
 public final class b
 {
   private static String TAG = "TPPlaybackInfo";
-  public String RVh;
-  String RVi;
-  public int RVj;
-  public int RVk;
-  public long RVl;
-  String RVm;
-  int RVn;
-  long RVo;
-  public int RVp;
-  long RVq;
-  public long RVr;
-  int RVs;
+  public String ZxR;
+  String ZxS;
+  public int ZxT;
+  public int ZxU;
+  public long ZxV;
+  String ZxW;
+  int ZxX;
+  long ZxY;
+  public int ZxZ;
+  long Zya;
+  public long Zyb;
+  int Zyc;
   int channels;
   String definition;
   public long durationMs;
@@ -28,13 +28,13 @@ public final class b
   long sampleRate;
   public long width;
   
-  public static b bqw(String paramString)
+  public static b bDq(String paramString)
   {
-    AppMethodBeat.i(188602);
+    AppMethodBeat.i(218628);
     if (TextUtils.isEmpty(paramString))
     {
       paramString = new b();
-      AppMethodBeat.o(188602);
+      AppMethodBeat.o(218628);
       return paramString;
     }
     String[] arrayOfString = paramString.split("\n");
@@ -65,13 +65,13 @@ public final class b
     }
     paramString = new b();
     if (localHashMap.containsKey("ContainerFormat")) {
-      paramString.RVh = ((String)localHashMap.get("ContainerFormat"));
+      paramString.ZxR = ((String)localHashMap.get("ContainerFormat"));
     }
     if (localHashMap.containsKey("VideoCodec")) {
-      paramString.RVi = ((String)localHashMap.get("VideoCodec"));
+      paramString.ZxS = ((String)localHashMap.get("VideoCodec"));
     }
     if (localHashMap.containsKey("AudioCodec")) {
-      paramString.RVm = ((String)localHashMap.get("AudioCodec"));
+      paramString.ZxW = ((String)localHashMap.get("AudioCodec"));
     }
     if (localHashMap.containsKey("Width")) {
       paramString.width = Long.valueOf((String)localHashMap.get("Width")).longValue();
@@ -80,10 +80,10 @@ public final class b
       paramString.height = Long.valueOf((String)localHashMap.get("Height")).longValue();
     }
     if (localHashMap.containsKey("VideoBitRate")) {
-      paramString.RVl = Long.valueOf((String)localHashMap.get("VideoBitRate")).longValue();
+      paramString.ZxV = Long.valueOf((String)localHashMap.get("VideoBitRate")).longValue();
     }
     if (localHashMap.containsKey("AudioBitRate")) {
-      paramString.RVo = Long.valueOf((String)localHashMap.get("AudioBitRate")).longValue();
+      paramString.ZxY = Long.valueOf((String)localHashMap.get("AudioBitRate")).longValue();
     }
     if (localHashMap.containsKey("SampleRate")) {
       paramString.sampleRate = Long.valueOf((String)localHashMap.get("SampleRate")).longValue();
@@ -94,7 +94,7 @@ public final class b
     if (localHashMap.containsKey("Definition")) {
       paramString.definition = ((String)localHashMap.get("Definition"));
     }
-    AppMethodBeat.o(188602);
+    AppMethodBeat.o(218628);
     return paramString;
   }
 }

@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.backup.bakoldlogic.d;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ay.a;
-import com.tencent.mm.model.ay.b;
+import com.tencent.mm.model.az.a;
+import com.tencent.mm.model.az.b;
 import com.tencent.mm.pluginsdk.model.app.ao;
 import com.tencent.mm.pluginsdk.model.app.i;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -14,17 +14,17 @@ import java.util.LinkedList;
 public final class a
 {
   MMHandler handler;
-  public LinkedList<a> oQt;
+  public LinkedList<a> rSq;
   
   public a()
   {
     AppMethodBeat.i(22056);
-    this.oQt = new LinkedList();
+    this.rSq = new LinkedList();
     this.handler = new MMHandler(Looper.getMainLooper());
     AppMethodBeat.o(22056);
   }
   
-  public final boolean j(final int paramInt, final Object paramObject)
+  public final boolean m(final int paramInt, final Object paramObject)
   {
     AppMethodBeat.i(22057);
     this.handler.post(new Runnable()
@@ -32,7 +32,7 @@ public final class a
       public final void run()
       {
         AppMethodBeat.i(22054);
-        a.this.oQt.add(new a.a(a.this, paramInt, paramObject));
+        a.this.rSq.add(new a.a(a.this, paramInt, paramObject));
         AppMethodBeat.o(22054);
       }
     });

@@ -8,19 +8,21 @@ public abstract interface a
 {
   public abstract void a(Context paramContext, Bundle paramBundle, boolean paramBoolean, a parama);
   
-  public abstract boolean aCR(String paramString);
+  public abstract boolean aMY(String paramString);
   
-  public abstract boolean ecx();
+  public abstract boolean aMZ(String paramString);
   
-  public abstract void gr(Context paramContext);
+  public abstract boolean eLA();
   
-  public abstract void iw(String paramString1, String paramString2);
+  public abstract void hp(Context paramContext);
+  
+  public abstract void iI(String paramString1, String paramString2);
   
   public static abstract interface a
   {
-    public abstract void dTt();
+    public abstract void ewC();
     
-    public abstract void dTu();
+    public abstract void ewD();
   }
 }
 

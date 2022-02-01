@@ -1,0 +1,114 @@
+package com.tencent.mm.plugin.scanner.ui;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.platformtools.s;
+import com.tencent.mm.platformtools.s.a;
+import com.tencent.mm.platformtools.s.b;
+import com.tencent.mm.plugin.scanner.l.e;
+import com.tencent.mm.plugin.scanner.o;
+import com.tencent.mm.plugin.scanner.util.o.a;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.io.IOException;
+
+public final class ProductUI$a
+  implements s
+{
+  private o.a IQK;
+  
+  public ProductUI$a(o.a parama)
+  {
+    this.IQK = parama;
+  }
+  
+  public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
+  {
+    AppMethodBeat.i(51872);
+    if (s.a.mEp == parama) {}
+    try
+    {
+      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, bvq(), false);
+      AppMethodBeat.o(51872);
+      return paramBitmap;
+    }
+    catch (IOException parama)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.scanner.ProductUI", parama, "", new Object[0]);
+      }
+    }
+  }
+  
+  public final void a(s.a parama) {}
+  
+  public final s.b bvp()
+  {
+    return null;
+  }
+  
+  public final String bvq()
+  {
+    AppMethodBeat.i(51871);
+    String str = o.fBS().kh(this.IQK.field_thumburl, "@S");
+    AppMethodBeat.o(51871);
+    return str;
+  }
+  
+  public final String bvr()
+  {
+    if (this.IQK == null) {
+      return "";
+    }
+    return this.IQK.field_thumburl;
+  }
+  
+  public final String bvs()
+  {
+    if (this.IQK == null) {
+      return "";
+    }
+    return this.IQK.field_thumburl;
+  }
+  
+  public final boolean bvt()
+  {
+    return false;
+  }
+  
+  public final Bitmap bvu()
+  {
+    AppMethodBeat.i(51873);
+    if (MMApplicationContext.getContext() == null)
+    {
+      AppMethodBeat.o(51873);
+      return null;
+    }
+    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), l.e.nosdcard_chatting_bg);
+    AppMethodBeat.o(51873);
+    return localBitmap;
+  }
+  
+  public final void bvv() {}
+  
+  public final void bvw() {}
+  
+  public final String getCacheKey()
+  {
+    if (this.IQK == null) {
+      return "";
+    }
+    return this.IQK.field_thumburl;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+ * Qualified Name:     com.tencent.mm.plugin.scanner.ui.ProductUI.a
+ * JD-Core Version:    0.7.0.1
+ */

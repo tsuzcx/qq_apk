@@ -5,26 +5,26 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public final class a
 {
-  private static volatile MMHandler dgG;
-  private static final Object ogA;
+  private static volatile MMHandler eYn;
+  private static final Object rim;
   
   static
   {
     AppMethodBeat.i(120817);
-    ogA = new Object();
+    rim = new Object();
     AppMethodBeat.o(120817);
   }
   
-  public static MMHandler cyh()
+  public static MMHandler cMC()
   {
     AppMethodBeat.i(184035);
-    if (dgG == null) {}
-    synchronized (ogA)
+    if (eYn == null) {}
+    synchronized (rim)
     {
-      if (dgG == null) {
-        dgG = new MMHandler("CDNDownloader#WorkThread");
+      if (eYn == null) {
+        eYn = new MMHandler("CDNDownloader#WorkThread");
       }
-      ??? = dgG;
+      ??? = eYn;
       AppMethodBeat.o(184035);
       return ???;
     }
@@ -32,7 +32,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.g.a
  * JD-Core Version:    0.7.0.1
  */

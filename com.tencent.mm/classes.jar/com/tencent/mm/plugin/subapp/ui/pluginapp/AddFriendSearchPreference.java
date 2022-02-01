@@ -8,18 +8,20 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class AddFriendSearchPreference
   extends Preference
 {
-  private String FMN;
-  String FMO;
-  private View.OnClickListener FMP;
-  View.OnClickListener FMQ;
-  private View FMR;
+  private String MgP;
+  String MgQ;
+  private View.OnClickListener MgR;
+  View.OnClickListener MgS;
+  private View MgT;
   private Context context;
-  private TextView knK;
+  private TextView nfC;
   
   public AddFriendSearchPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,14 +32,14 @@ public class AddFriendSearchPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29186);
-    this.FMN = "";
-    this.FMO = "";
-    this.FMP = null;
-    this.FMQ = null;
-    this.knK = null;
-    this.FMR = null;
+    this.MgP = "";
+    this.MgQ = "";
+    this.MgR = null;
+    this.MgS = null;
+    this.nfC = null;
+    this.MgT = null;
     this.context = paramContext;
-    setLayoutResource(2131495554);
+    setLayoutResource(R.i.eiN);
     AppMethodBeat.o(29186);
   }
   
@@ -52,11 +54,11 @@ public class AddFriendSearchPreference
         return true;
       }
     });
-    this.knK = ((TextView)paramView.findViewById(2131307643));
-    this.knK.setText(this.FMO);
-    this.FMR = paramView.findViewById(2131307404);
-    if (this.FMQ != null) {
-      this.FMR.setOnTouchListener(new View.OnTouchListener()
+    this.nfC = ((TextView)paramView.findViewById(R.h.dTN));
+    this.nfC.setText(this.MgQ);
+    this.MgT = paramView.findViewById(R.h.search_ll);
+    if (this.MgS != null) {
+      this.MgT.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
@@ -69,13 +71,13 @@ public class AddFriendSearchPreference
         }
       });
     }
-    alO(8);
+    auO(8);
     AppMethodBeat.o(29187);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendSearchPreference
  * JD-Core Version:    0.7.0.1
  */

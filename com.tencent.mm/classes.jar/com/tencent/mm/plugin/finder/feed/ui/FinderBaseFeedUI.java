@@ -7,11 +7,6 @@ import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout.d;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
@@ -23,33 +18,46 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.appcompat.app.ActionBar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout.d;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
 import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
 import com.tencent.mm.plugin.finder.feed.b.a;
 import com.tencent.mm.plugin.finder.feed.b.b;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import com.tencent.mm.plugin.finder.utils.y;
+import com.tencent.mm.plugin.finder.utils.aj;
 import com.tencent.mm.plugin.finder.video.FinderVideoLayout;
-import com.tencent.mm.plugin.finder.view.e;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderHorizontalVideoPreviewUIC;
+import com.tencent.mm.plugin.finder.view.f;
+import com.tencent.mm.plugin.finder.viewmodel.component.ab;
+import com.tencent.mm.plugin.finder.viewmodel.component.al;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.aa;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.c;
 import com.tencent.mm.ui.component.UIComponent;
+import com.tencent.mm.ui.w;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
-import com.tencent.mm.view.recyclerview.h;
+import com.tencent.mm.view.recyclerview.i;
 import java.util.HashMap;
 import java.util.Set;
 import kotlin.a.ak;
 import kotlin.g.b.p;
 import kotlin.l;
+import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderBaseFeedUI;", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "fixActionBarStatus", "", "getPresenter", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "initAfterAttach", "initOnCreate", "isHideStatusBar", "", "isOtherEnableFullScreenEnjoy", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "overlayStatusBar", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderBaseFeedUI;", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "audioHelperTool", "Lcom/tencent/mm/model/AudioHelperTool;", "kotlin.jvm.PlatformType", "fixActionBarStatus", "", "getPresenter", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "initAfterAttach", "initOnCreate", "isHideStatusBar", "", "isOtherEnableFullScreenEnjoy", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "overlayStatusBar", "plugin-finder_release"})
 public abstract class FinderBaseFeedUI<V extends b.b, P extends b.a>
   extends MMFinderUI
 {
   private HashMap _$_findViewCache;
+  private final com.tencent.mm.model.d kKI = com.tencent.mm.model.d.bcs();
   
   public void _$_clearFindViewByIdCache()
   {
@@ -73,17 +81,17 @@ public abstract class FinderBaseFeedUI<V extends b.b, P extends b.a>
     return localView1;
   }
   
-  public void ddP() {}
+  public void duT() {}
   
-  public abstract P ddQ();
+  public abstract P duU();
   
-  public abstract V ddR();
+  public abstract V duV();
   
   public Set<Class<? extends UIComponent>> importUIComponents()
   {
-    y localy = y.vXH;
-    if (y.isOtherEnableFullScreenEnjoy()) {
-      return ak.setOf(FinderHorizontalVideoPreviewUIC.class);
+    aj localaj = aj.AGc;
+    if (aj.isOtherEnableFullScreenEnjoy()) {
+      return ak.setOf(new Class[] { ab.class, al.class });
     }
     return null;
   }
@@ -92,51 +100,51 @@ public abstract class FinderBaseFeedUI<V extends b.b, P extends b.a>
   
   public boolean isHideStatusBar()
   {
-    y localy = y.vXH;
-    return y.isOtherEnableFullScreenEnjoy();
+    aj localaj = aj.AGc;
+    return aj.isOtherEnableFullScreenEnjoy();
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ddQ().dcg().d(paramInt1, paramIntent);
-    Object localObject1 = y.vXH;
+    duU().dsw().d(paramInt1, paramIntent);
+    Object localObject1 = aj.AGc;
     long l1;
-    if ((y.isOtherEnableFullScreenEnjoy()) && (-1 == paramInt2) && (paramInt1 == 101))
+    if ((aj.isOtherEnableFullScreenEnjoy()) && (-1 == paramInt2) && (paramInt1 == 101))
     {
-      localObject1 = ddR().tLS.getRecyclerView();
+      localObject1 = duV().xvJ.getRecyclerView();
       Object localObject2 = ((RecyclerView)localObject1).getLayoutManager();
       if ((localObject2 instanceof LinearLayoutManager))
       {
-        localObject2 = ((RecyclerView)localObject1).ch(((LinearLayoutManager)localObject2).ks());
+        localObject2 = ((RecyclerView)localObject1).cK(((LinearLayoutManager)localObject2).kJ());
         localObject1 = localObject2;
-        if (!(localObject2 instanceof h)) {
+        if (!(localObject2 instanceof i)) {
           localObject1 = null;
         }
-        localObject1 = (h)localObject1;
+        localObject1 = (i)localObject1;
         if (localObject1 != null)
         {
-          localObject1 = (FinderVideoLayout)((h)localObject1).Mn(2131300776);
+          localObject1 = (FinderVideoLayout)((i)localObject1).RD(b.f.finder_banner_video_layout);
           if (localObject1 != null)
           {
             if (paramIntent == null) {
-              break label209;
+              break label214;
             }
             l1 = paramIntent.getLongExtra("KEY_CACHE_OBJECT_ID", -1L);
             if (paramIntent == null) {
-              break label217;
+              break label222;
             }
           }
         }
       }
     }
-    label209:
-    label217:
+    label214:
+    label222:
     for (long l2 = paramIntent.getLongExtra("KEY_VIDEO_START_PLAY_TIME_MS", -1L);; l2 = -1L)
     {
-      Log.i("FinderBaseFeedUI", "[onActivityResult] feedId=" + d.zs(l1) + " seekTime=" + l2);
+      Log.i("FinderBaseFeedUI", "[onActivityResult] feedId=" + com.tencent.mm.ae.d.Fw(l1) + " seekTime=" + l2);
       if (l2 != -1L) {
-        ((FinderVideoLayout)localObject1).setStartPlayTime(l2);
+        FinderVideoLayout.a((FinderVideoLayout)localObject1, l2, 0, 0.0F, 6);
       }
       return;
       l1 = -1L;
@@ -146,111 +154,114 @@ public abstract class FinderBaseFeedUI<V extends b.b, P extends b.a>
   
   public void onBackPressed()
   {
-    ddQ().onBackPressed();
+    duU().onBackPressed();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = y.vXH;
+    paramBundle = aj.AGc;
     int i;
-    if (y.isOtherEnableFullScreenEnjoy())
+    if (aj.isOtherEnableFullScreenEnjoy())
     {
       paramBundle = getWindow();
-      p.g(paramBundle, "window");
+      p.j(paramBundle, "window");
       paramBundle = paramBundle.getDecorView();
-      p.g(paramBundle, "window.decorView");
+      p.j(paramBundle, "window.decorView");
       paramBundle.setSystemUiVisibility(paramBundle.getSystemUiVisibility() | 0x400 | 0x100);
       paramBundle = getWindow();
-      p.g(paramBundle, "window");
+      p.j(paramBundle, "window");
       paramBundle.setStatusBarColor(0);
-      getController().p((Activity)this, getResources().getColor(2131101287));
-      com.tencent.mm.ui.b.e((Activity)this, false);
+      getController().q((Activity)this, getResources().getColor(b.c.transparent));
+      c.f((Activity)this, false);
       paramBundle = getSupportActionBar();
       if (paramBundle != null)
       {
         paramBundle.setBackgroundDrawable((Drawable)new ColorDrawable(0));
         paramBundle.hide();
       }
-      paramBundle = aa.jQ((Context)getContext());
+      paramBundle = ad.kS((Context)getContext());
+      i = b.g.finder_full_action_bar_layout;
       Object localObject = getBodyView();
       if (localObject == null) {
-        throw new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
+        throw new t("null cannot be cast to non-null type android.view.ViewGroup");
       }
-      paramBundle.inflate(2131494330, (ViewGroup)localObject, true);
-      i = au.getStatusBarHeight((Context)this);
-      paramBundle = (FrameLayout)_$_findCachedViewById(2131301815);
-      p.g(paramBundle, "full_actionbar");
+      paramBundle.inflate(i, (ViewGroup)localObject, true);
+      i = ax.getStatusBarHeight((Context)this);
+      paramBundle = (FrameLayout)_$_findCachedViewById(b.f.full_actionbar);
+      p.j(paramBundle, "full_actionbar");
       paramBundle = paramBundle.getLayoutParams();
       paramBundle.height += i;
-      localObject = (FrameLayout)_$_findCachedViewById(2131301815);
-      p.g(localObject, "full_actionbar");
+      localObject = (FrameLayout)_$_findCachedViewById(b.f.full_actionbar);
+      p.j(localObject, "full_actionbar");
       ((FrameLayout)localObject).setLayoutParams(paramBundle);
-      ((FrameLayout)_$_findCachedViewById(2131301815)).setPadding(0, i, 0, 0);
-      ((LinearLayout)_$_findCachedViewById(2131297164)).setOnClickListener((View.OnClickListener)new a(this));
+      ((FrameLayout)_$_findCachedViewById(b.f.full_actionbar)).setPadding(0, i, 0, 0);
+      ((LinearLayout)_$_findCachedViewById(b.f.back_button)).setOnClickListener((View.OnClickListener)new a(this));
       paramBundle = getMMTitle();
       if ((paramBundle == null) || (paramBundle.length() == 0))
       {
         i = 1;
         if (i == 0) {
-          break label440;
+          break label443;
         }
-        paramBundle = (TextView)_$_findCachedViewById(2131301814);
-        p.g(paramBundle, "full_action_bar_title");
+        paramBundle = (TextView)_$_findCachedViewById(b.f.full_action_bar_title);
+        p.j(paramBundle, "full_action_bar_title");
         paramBundle.setVisibility(8);
-        label323:
-        paramBundle = y.vXH;
+        label326:
+        paramBundle = aj.AGc;
         paramBundle = getWindow();
-        p.g(paramBundle, "window");
-        y.b(paramBundle, false);
-        setNavigationbarColor(getResources().getColor(2131100042));
-        paramBundle = (FrameLayout)_$_findCachedViewById(2131301815);
-        p.g(paramBundle, "full_actionbar");
+        p.j(paramBundle, "window");
+        aj.b(paramBundle, false);
+        setNavigationbarColor(getResources().getColor(b.c.black));
+        paramBundle = (FrameLayout)_$_findCachedViewById(b.f.full_actionbar);
+        p.j(paramBundle, "full_actionbar");
         paramBundle.setVisibility(0);
-        paramBundle = findViewById(2131307118);
+        paramBundle = findViewById(b.f.rl_layout);
         if (paramBundle != null)
         {
           paramBundle.setLayoutParams((ViewGroup.LayoutParams)new CoordinatorLayout.d(-1, -1));
-          paramBundle.setBackgroundResource(2131100495);
+          paramBundle.setBackgroundResource(b.c.full_black);
         }
       }
     }
     for (;;)
     {
       initOnCreate();
-      ddQ().a(ddR());
-      ddP();
+      duU().a(duV());
+      duT();
       return;
       i = 0;
       break;
-      label440:
-      paramBundle = (TextView)_$_findCachedViewById(2131301814);
-      p.g(paramBundle, "full_action_bar_title");
+      label443:
+      paramBundle = (TextView)_$_findCachedViewById(b.f.full_action_bar_title);
+      p.j(paramBundle, "full_action_bar_title");
       paramBundle.setVisibility(0);
-      paramBundle = (TextView)_$_findCachedViewById(2131301814);
-      p.g(paramBundle, "full_action_bar_title");
+      paramBundle = (TextView)_$_findCachedViewById(b.f.full_action_bar_title);
+      p.j(paramBundle, "full_action_bar_title");
       paramBundle.setText(getMMTitle());
-      break label323;
-      setBackBtn((MenuItem.OnMenuItemClickListener)new c(this));
+      break label326;
+      setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
     }
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    ddQ().onDetach();
+    duU().onDetach();
   }
   
   public void onPause()
   {
     super.onPause();
-    ddQ().onUIPause();
+    duU().onUIPause();
+    this.kKI.avz();
   }
   
   public void onResume()
   {
     super.onResume();
-    ddQ().onUIResume();
+    duU().onUIResume();
+    com.tencent.mm.model.d.a(this.kKI, "FinderBaseFeedUI");
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -259,7 +270,7 @@ public abstract class FinderBaseFeedUI<V extends b.b, P extends b.a>
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class a
     implements View.OnClickListener
   {
@@ -267,26 +278,26 @@ public abstract class FinderBaseFeedUI<V extends b.b, P extends b.a>
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(245116);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      a.b("com/tencent/mm/plugin/finder/feed/ui/FinderBaseFeedUI$fixActionBarStatus$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      this.tZs.onBackPressed();
+      AppMethodBeat.i(277756);
+      b localb = new b();
+      localb.bn(paramView);
+      a.c("com/tencent/mm/plugin/finder/feed/ui/FinderBaseFeedUI$fixActionBarStatus$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      this.xLI.onBackPressed();
       a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderBaseFeedUI$fixActionBarStatus$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(245116);
+      AppMethodBeat.o(277756);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class c
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  static final class b
     implements MenuItem.OnMenuItemClickListener
   {
-    c(FinderBaseFeedUI paramFinderBaseFeedUI) {}
+    b(FinderBaseFeedUI paramFinderBaseFeedUI) {}
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(166127);
-      this.tZs.onBackPressed();
+      this.xLI.onBackPressed();
       AppMethodBeat.o(166127);
       return true;
     }

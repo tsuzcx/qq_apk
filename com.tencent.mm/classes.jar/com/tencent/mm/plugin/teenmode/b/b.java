@@ -2,17 +2,19 @@ package com.tencent.mm.plugin.teenmode.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.n.f;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.teenmode.a.f;
+import com.tencent.mm.plugin.teenmode.a.g;
 import com.tencent.mm.plugin.teenmode.a.c;
 import com.tencent.mm.plugin.zero.b.a;
+import com.tencent.mm.protocal.protobuf.bmy;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.ui.base.u;
+import com.tencent.mm.ui.base.w;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
@@ -20,143 +22,164 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public final class b
   implements com.tencent.mm.plugin.teenmode.a.b
 {
-  private Set<c> FWj;
+  private int Mtu;
+  private Set<c> Mtv;
   
   private b()
   {
-    AppMethodBeat.i(187371);
-    this.FWj = new CopyOnWriteArraySet();
-    AppMethodBeat.o(187371);
+    AppMethodBeat.i(259393);
+    this.Mtu = 0;
+    this.Mtv = new CopyOnWriteArraySet();
+    AppMethodBeat.o(259393);
   }
   
-  public static b fvs()
+  public static b gkv()
   {
-    return a.FWk;
+    return a.Mtw;
   }
   
-  public final boolean Vt()
+  public final boolean ZM()
   {
-    AppMethodBeat.i(187361);
-    boolean bool = Util.nullAsFalse(Boolean.valueOf(g.aAh().azQ().getBoolean(ar.a.OaV, false)));
+    AppMethodBeat.i(259362);
+    boolean bool = Util.nullAsFalse(Boolean.valueOf(com.tencent.mm.kernel.h.aHG().aHp().getBoolean(ar.a.VoX, false)));
     Log.d("MicroMsg.TeenModeService", "isTeenMode:%s", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(187361);
+    AppMethodBeat.o(259362);
     return bool;
   }
   
   public final void a(c paramc)
   {
-    AppMethodBeat.i(187368);
+    AppMethodBeat.i(259382);
     if (paramc != null) {
-      this.FWj.add(paramc);
+      this.Mtv.add(paramc);
     }
-    AppMethodBeat.o(187368);
+    AppMethodBeat.o(259382);
   }
   
   public final void b(c paramc)
   {
-    AppMethodBeat.i(187369);
+    AppMethodBeat.i(259385);
     if (paramc != null) {
-      this.FWj.remove(paramc);
+      this.Mtv.remove(paramc);
     }
-    AppMethodBeat.o(187369);
+    AppMethodBeat.o(259385);
   }
   
-  public final int dxW()
+  public final int dYS()
   {
-    AppMethodBeat.i(187362);
-    int i = g.aAh().azQ().getInt(ar.a.OaW, 0);
+    AppMethodBeat.i(259368);
+    int i = com.tencent.mm.kernel.h.aHG().aHp().getInt(ar.a.VoY, 0);
     Log.d("MicroMsg.TeenModeService", "getFinderOption, option:%s", new Object[] { Integer.valueOf(i) });
-    AppMethodBeat.o(187362);
+    AppMethodBeat.o(259368);
     return i;
   }
   
-  public final int fvo()
+  public final void gkq()
   {
-    AppMethodBeat.i(187363);
-    int i = g.aAh().azQ().getInt(ar.a.OaX, 0);
+    AppMethodBeat.i(259365);
+    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VoX, Boolean.FALSE);
+    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VoW, Boolean.TRUE);
+    ((com.tencent.mm.plugin.teenmode.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).gkt();
+    ((com.tencent.mm.plugin.teenmode.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).rE(4);
+    bmy localbmy = new bmy();
+    localbmy.SXP = 59;
+    localbmy.HmX = 2;
+    ((n)com.tencent.mm.kernel.h.ae(n.class)).bbK().d(new k.a(23, localbmy));
+    AppMethodBeat.o(259365);
+  }
+  
+  public final int gkr()
+  {
+    AppMethodBeat.i(259370);
+    int i = com.tencent.mm.kernel.h.aHG().aHp().getInt(ar.a.VoZ, 0);
     Log.d("MicroMsg.TeenModeService", "getBizAcctOption, option:%s", new Object[] { Integer.valueOf(i) });
-    AppMethodBeat.o(187363);
+    AppMethodBeat.o(259370);
     return i;
   }
   
-  public final int fvp()
+  public final int gks()
   {
-    AppMethodBeat.i(187364);
-    int i = g.aAh().azQ().getInt(ar.a.OaY, 0);
+    AppMethodBeat.i(259372);
+    int i = com.tencent.mm.kernel.h.aHG().aHp().getInt(ar.a.Vpa, 0);
     Log.d("MicroMsg.TeenModeService", "getMiniProgramOption, option:%s", new Object[] { Integer.valueOf(i) });
-    AppMethodBeat.o(187364);
+    AppMethodBeat.o(259372);
     return i;
   }
   
-  public final void fvq()
+  public final void gkt()
   {
-    AppMethodBeat.i(187370);
-    Log.d("MicroMsg.TeenModeService", "notifyTeenModeDataChanged %d", new Object[] { Integer.valueOf(this.FWj.size()) });
-    Iterator localIterator = this.FWj.iterator();
+    AppMethodBeat.i(259388);
+    Log.d("MicroMsg.TeenModeService", "notifyTeenModeDataChanged %d", new Object[] { Integer.valueOf(this.Mtv.size()) });
+    Iterator localIterator = this.Mtv.iterator();
     while (localIterator.hasNext()) {
       ((c)localIterator.next()).onDataChanged();
     }
-    AppMethodBeat.o(187370);
+    AppMethodBeat.o(259388);
   }
   
-  public final boolean fvr()
+  public final boolean gku()
   {
-    AppMethodBeat.i(187367);
-    String str = (String)g.aAh().azQ().get(274436, null);
+    AppMethodBeat.i(259379);
+    String str = (String)com.tencent.mm.kernel.h.aHG().aHp().b(274436, null);
     if ((!Util.isNullOrNil(str)) && (str.toUpperCase().equals("CN"))) {}
     for (int i = 1; i == 0; i = 0)
     {
       Log.i("MicroMsg.TeenModeService", "isHideTeenModeEntrance, not in china, hide entrance.");
-      AppMethodBeat.o(187367);
+      AppMethodBeat.o(259379);
       return true;
     }
-    str = ((a)g.af(a.class)).aqJ().getValue("ShowTeenagerMode");
+    str = ((a)com.tencent.mm.kernel.h.ae(a.class)).axc().getValue("ShowTeenagerMode");
     if (Util.isNullOrNil(str))
     {
       Log.i("MicroMsg.TeenModeService", "isHideTeenModeEntrance, ShowTeenagerMode is null");
-      AppMethodBeat.o(187367);
+      AppMethodBeat.o(259379);
       return false;
     }
     i = Integer.parseInt(str);
     Log.i("MicroMsg.TeenModeService", "isHideTeenModeEntrance, val is %s", new Object[] { Integer.valueOf(i) });
     if ((str != null) && (1 == i))
     {
-      AppMethodBeat.o(187367);
+      AppMethodBeat.o(259379);
       return true;
     }
-    AppMethodBeat.o(187367);
+    AppMethodBeat.o(259379);
     return false;
   }
   
-  public final void hr(Context paramContext)
+  public final void ir(Context paramContext)
   {
-    AppMethodBeat.i(187365);
-    u.u(paramContext, paramContext.getString(2131766685), 2131691605);
-    AppMethodBeat.o(187365);
+    AppMethodBeat.i(259373);
+    w.w(paramContext, paramContext.getString(a.g.Mtt), a.f.teen_mode);
+    AppMethodBeat.o(259373);
   }
   
-  public final void pl(int paramInt)
+  public final void rE(int paramInt)
   {
-    AppMethodBeat.i(187366);
-    h.CyF.a(20917, new Object[] { Integer.valueOf(paramInt) });
-    AppMethodBeat.o(187366);
+    AppMethodBeat.i(259374);
+    com.tencent.mm.plugin.report.service.h.IzE.a(20917, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.Mtu) });
+    AppMethodBeat.o(259374);
+  }
+  
+  public final void setScene(int paramInt)
+  {
+    this.Mtu = paramInt;
   }
   
   static final class a
   {
-    public static b FWk;
+    public static b Mtw;
     
     static
     {
-      AppMethodBeat.i(187360);
-      FWk = new b((byte)0);
-      AppMethodBeat.o(187360);
+      AppMethodBeat.i(259604);
+      Mtw = new b((byte)0);
+      AppMethodBeat.o(259604);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.teenmode.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.editor;
 
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.kernel.f.c;
 
 public class PluginEditor
   extends f
@@ -10,7 +10,7 @@ public class PluginEditor
 {
   public void execute(g paramg) {}
   
-  public void onAccountInitialized(e.c paramc) {}
+  public void onAccountInitialized(f.c paramc) {}
   
   public void onAccountRelease() {}
 }

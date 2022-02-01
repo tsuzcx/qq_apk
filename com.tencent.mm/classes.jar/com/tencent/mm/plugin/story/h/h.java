@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.story.h;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.jd;
-import com.tencent.mm.g.b.a.je;
-import com.tencent.mm.g.b.a.jg;
-import com.tencent.mm.g.b.a.jh;
-import com.tencent.mm.g.b.a.ji;
-import com.tencent.mm.g.b.a.jj;
-import com.tencent.mm.g.b.a.jk;
-import com.tencent.mm.g.b.a.jl;
-import com.tencent.mm.g.b.a.jm;
-import com.tencent.mm.g.b.a.jn;
-import com.tencent.mm.g.b.a.jo;
-import com.tencent.mm.g.b.a.jp;
-import com.tencent.mm.g.b.a.jr;
-import com.tencent.mm.g.b.a.ju;
-import com.tencent.mm.g.b.a.jv;
+import com.tencent.mm.f.b.a.lm;
+import com.tencent.mm.f.b.a.ln;
+import com.tencent.mm.f.b.a.lp;
+import com.tencent.mm.f.b.a.lq;
+import com.tencent.mm.f.b.a.lr;
+import com.tencent.mm.f.b.a.ls;
+import com.tencent.mm.f.b.a.lt;
+import com.tencent.mm.f.b.a.lu;
+import com.tencent.mm.f.b.a.lv;
+import com.tencent.mm.f.b.a.lw;
+import com.tencent.mm.f.b.a.lx;
+import com.tencent.mm.f.b.a.ly;
+import com.tencent.mm.f.b.a.ma;
+import com.tencent.mm.f.b.a.md;
+import com.tencent.mm.f.b.a.me;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Collections;
 import java.util.HashMap;
@@ -28,190 +28,128 @@ import kotlin.l;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/report/StoryReporter;", "", "()V", "cameraDot", "", "getCameraDot", "()J", "setCameraDot", "(J)V", "currentEntranceExposeTime", "", "getCurrentEntranceExposeTime", "()I", "setCurrentEntranceExposeTime", "(I)V", "currentProfileTabVideoObjectId", "getCurrentProfileTabVideoObjectId", "setCurrentProfileTabVideoObjectId", "lastTrace", "getLastTrace", "setLastTrace", "moreTabDot", "getMoreTabDot", "setMoreTabDot", "nameSet", "", "", "kotlin.jvm.PlatformType", "", "needCommentRpt", "", "getNeedCommentRpt", "()Z", "setNeedCommentRpt", "(Z)V", "needVisitorRpt", "getNeedVisitorRpt", "setNeedVisitorRpt", "storyChatTopBarEntranceExpose", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryChatTopBarEntranceExposeStruct;", "storyCommentDot", "getStoryCommentDot", "setStoryCommentDot", "storyDoubleTapHeadView", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryDoubleTapHeadViewStruct;", "storyDownloadReport", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryDownloadReportStruct;", "storyEntranceExposeReportStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryEntranceExposeReportStruct;", "storyImageVideoRemux", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryImageVideoRemuxStruct;", "storyImageVideoZip", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryImageVideoZipStruct;", "storyPageExposeStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryPageExposeStruct;", "storyPreviewReportStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryPreviewReportStruct;", "storyPreviewTraceStruct", "Lcom/tencent/mm/plugin/story/report/StoryBehaviorTraceData;", "storyProfileTabExposeReport", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryProfileTabExposeStruct;", "storySinglePreviewReport", "Lcom/tencent/mm/autogen/mmdata/rpt/StorySinglePreviewReportStruct;", "storyStatusChangeStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryStatusChangeStruct;", "getStoryStatusChangeStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/StoryStatusChangeStruct;", "setStoryStatusChangeStruct", "(Lcom/tencent/mm/autogen/mmdata/rpt/StoryStatusChangeStruct;)V", "storyUploadMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryUploadReportStruct;", "storyVideoPublish", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryComposeReportStruct;", "tag", "videoIdSet", "addPreviewTrace", "", "aid", "checkRepeatUser", "name", "checkRepeatVideo", "doCommentPageExposeReport", "storyId", "doEntranceClearReport", "delete", "doStoryChatTopBarEntranceExposeReport", "doStoryDoubleTapHeadViewReport", "doStoryDownloadReport", "doStoryEntranceReport", "doStoryImageVideoRemuxReport", "doStoryImageVideoZipReport", "doStoryPageReport", "doStoryPreviewReport", "doStoryProfileTabExposeReport", "doStorySinglePreviewReport", "doStoryStatusChangeReport", "doStoryUploadReport", "storyLocalId", "doStoryVideoPublishReport", "doVisiteReport", "visitorCount", "commentCount", "doVisitorPageExposeReport", "getLastStoryUploadReporter", "getStoryChatTopBarEntranceExposeReporter", "getStoryDoubleTapHeadViewReporter", "getStoryDownloadReporter", "getStoryEntranceReport", "getStoryImageVideoRemuxReporter", "getStoryImageVideoZipReporter", "getStoryPageExposeReporter", "getStoryPreviewReporter", "getStoryProfileTabExposeReport", "getStorySinglePreviewReporter", "getStoryVideoPublishReporter", "reportStoryStatusChange", "status", "previewEnterScene", "profileSource", "isAlbumStarButton", "resetStoryPreviewReporter", "resetStoryPreviewTraceData", "resetStoryProfileTabExposeReport", "storyUploadReportCPMediaInfo", "path", "storyUploadReportOriMediaInfo", "isCaptureVideo", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/report/StoryReporter;", "", "()V", "cameraDot", "", "getCameraDot", "()J", "setCameraDot", "(J)V", "currentEntranceExposeTime", "", "getCurrentEntranceExposeTime", "()I", "setCurrentEntranceExposeTime", "(I)V", "currentProfileTabVideoObjectId", "getCurrentProfileTabVideoObjectId", "setCurrentProfileTabVideoObjectId", "lastTrace", "getLastTrace", "setLastTrace", "moreTabDot", "getMoreTabDot", "setMoreTabDot", "nameSet", "", "", "kotlin.jvm.PlatformType", "", "needCommentRpt", "", "getNeedCommentRpt", "()Z", "setNeedCommentRpt", "(Z)V", "needVisitorRpt", "getNeedVisitorRpt", "setNeedVisitorRpt", "storyChatTopBarEntranceExpose", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryChatTopBarEntranceExposeStruct;", "storyCommentDot", "getStoryCommentDot", "setStoryCommentDot", "storyDoubleTapHeadView", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryDoubleTapHeadViewStruct;", "storyDownloadReport", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryDownloadReportStruct;", "storyEntranceExposeReportStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryEntranceExposeReportStruct;", "storyImageVideoRemux", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryImageVideoRemuxStruct;", "storyImageVideoZip", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryImageVideoZipStruct;", "storyPageExposeStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryPageExposeStruct;", "storyPreviewReportStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryPreviewReportStruct;", "storyPreviewTraceStruct", "Lcom/tencent/mm/plugin/story/report/StoryBehaviorTraceData;", "storyProfileTabExposeReport", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryProfileTabExposeStruct;", "storySinglePreviewReport", "Lcom/tencent/mm/autogen/mmdata/rpt/StorySinglePreviewReportStruct;", "storyStatusChangeStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryStatusChangeStruct;", "getStoryStatusChangeStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/StoryStatusChangeStruct;", "setStoryStatusChangeStruct", "(Lcom/tencent/mm/autogen/mmdata/rpt/StoryStatusChangeStruct;)V", "storyUploadMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryUploadReportStruct;", "storyVideoPublish", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryComposeReportStruct;", "tag", "videoIdSet", "addPreviewTrace", "", "aid", "checkRepeatUser", "name", "checkRepeatVideo", "doCommentPageExposeReport", "storyId", "doEntranceClearReport", "delete", "doStoryChatTopBarEntranceExposeReport", "doStoryDoubleTapHeadViewReport", "doStoryDownloadReport", "doStoryEntranceReport", "doStoryImageVideoRemuxReport", "doStoryImageVideoZipReport", "doStoryPageReport", "doStoryPreviewReport", "doStoryProfileTabExposeReport", "doStorySinglePreviewReport", "doStoryStatusChangeReport", "doStoryUploadReport", "storyLocalId", "doStoryVideoPublishReport", "doVisiteReport", "visitorCount", "commentCount", "doVisitorPageExposeReport", "getLastStoryUploadReporter", "getStoryChatTopBarEntranceExposeReporter", "getStoryDoubleTapHeadViewReporter", "getStoryDownloadReporter", "getStoryEntranceReport", "getStoryImageVideoRemuxReporter", "getStoryImageVideoZipReporter", "getStoryPageExposeReporter", "getStoryPreviewReporter", "getStoryProfileTabExposeReport", "getStorySinglePreviewReporter", "getStoryVideoPublishReporter", "reportStoryStatusChange", "status", "previewEnterScene", "profileSource", "isAlbumStarButton", "resetStoryPreviewReporter", "resetStoryPreviewTraceData", "resetStoryProfileTabExposeReport", "storyUploadReportCPMediaInfo", "path", "storyUploadReportOriMediaInfo", "isCaptureVideo", "plugin-story_release"})
 public final class h
 {
-  private static int BXD;
-  private static long FuA;
-  private static long FuB;
-  private static long FuC;
-  private static long FuD;
-  private static int FuE;
-  private static jj FuF;
-  private static ju FuG;
-  public static final h FuH;
-  private static jn Fuk;
-  private static jo Ful;
-  private static a Fum;
-  private static Set<String> Fun;
-  private static Set<String> Fuo;
-  private static boolean Fup;
-  private static boolean Fuq;
-  private static jd Fur;
-  private static jg Fus;
-  private static je Fut;
-  private static jl Fuu;
-  private static jm Fuv;
-  private static jh Fuw;
-  private static final HashMap<Integer, jv> Fux;
-  private static jr Fuy;
-  private static jp Fuz;
+  private static int HUr;
+  private static ly LOA;
+  private static long LOB;
+  private static long LOC;
+  private static long LOD;
+  private static long LOE;
+  private static int LOF;
+  private static ls LOH;
+  private static md LOI;
+  public static final h LOJ;
+  private static lw LOl;
+  private static lx LOm;
+  private static a LOn;
+  private static Set<String> LOo;
+  private static Set<String> LOp;
+  private static boolean LOq;
+  private static boolean LOr;
+  private static lm LOs;
+  private static lp LOt;
+  private static ln LOu;
+  private static lu LOv;
+  private static lv LOw;
+  private static lq LOx;
+  private static final HashMap<Integer, me> LOy;
+  private static ma LOz;
   
   static
   {
     AppMethodBeat.i(119464);
-    FuH = new h();
-    Fuk = new jn();
-    BXD = -1;
-    Ful = new jo();
-    Fum = new a();
-    Fun = Collections.synchronizedSet((Set)new HashSet());
-    Fuo = Collections.synchronizedSet((Set)new HashSet());
-    Fup = true;
-    Fuq = true;
-    Fur = new jd();
-    Fus = new jg();
-    Fut = new je();
-    Fuu = new jl();
-    Fuv = new jm();
-    Fuw = new jh();
-    Fux = new HashMap();
-    Fuy = new jr();
-    Fuz = new jp();
-    FuF = new jj();
-    FuG = new ju();
+    LOJ = new h();
+    LOl = new lw();
+    HUr = -1;
+    LOm = new lx();
+    LOn = new a();
+    LOo = Collections.synchronizedSet((Set)new HashSet());
+    LOp = Collections.synchronizedSet((Set)new HashSet());
+    LOq = true;
+    LOr = true;
+    LOs = new lm();
+    LOt = new lp();
+    LOu = new ln();
+    LOv = new lu();
+    LOw = new lv();
+    LOx = new lq();
+    LOy = new HashMap();
+    LOz = new ma();
+    LOA = new ly();
+    LOH = new ls();
+    LOI = new md();
     AppMethodBeat.o(119464);
   }
   
-  public static void Ks(long paramLong)
+  public static void RM(long paramLong)
   {
-    FuA = paramLong;
+    LOB = paramLong;
   }
   
-  public static void Kt(long paramLong)
+  public static void RN(long paramLong)
   {
-    FuB = paramLong;
+    LOC = paramLong;
   }
   
-  public static void Ku(long paramLong)
+  public static void RO(long paramLong)
   {
-    FuC = paramLong;
+    LOD = paramLong;
   }
   
-  public static void Kv(long paramLong)
+  public static void RP(long paramLong)
   {
-    FuD = paramLong;
+    LOE = paramLong;
   }
   
   public static void a(long paramLong1, String paramString, long paramLong2, long paramLong3, long paramLong4)
   {
     AppMethodBeat.i(119460);
-    p.h(paramString, "storyId");
-    FuG.xf(paramString);
-    FuG.sS(paramLong1);
-    FuG.sV(paramLong4);
-    FuG.sT(paramLong2);
-    FuG.sU(paramLong3);
-    FuG.bfK();
-    FuG = new ju();
+    p.k(paramString, "storyId");
+    LOI.CG(paramString);
+    LOI.wT(paramLong1);
+    LOI.wW(paramLong4);
+    LOI.wU(paramLong2);
+    LOI.wV(paramLong3);
+    LOI.bpa();
+    LOI = new md();
     AppMethodBeat.o(119460);
   }
   
-  public static void aC(String paramString, int paramInt1, int paramInt2)
+  public static void aF(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(119462);
-    p.h(paramString, "storyId");
-    jk localjk = new jk();
-    localjk.wQ(paramString);
-    localjk.se(paramInt1);
-    localjk.sf(paramInt2);
-    localjk.bfK();
+    p.k(paramString, "storyId");
+    lt locallt = new lt();
+    locallt.Cr(paramString);
+    locallt.wg(paramInt1);
+    locallt.wh(paramInt2);
+    locallt.bpa();
     AppMethodBeat.o(119462);
   }
   
-  public static boolean aSm(String paramString)
-  {
-    AppMethodBeat.i(119441);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(119441);
-      return true;
-    }
-    if (Fun.contains(paramString))
-    {
-      AppMethodBeat.o(119441);
-      return true;
-    }
-    Fun.add(paramString);
-    AppMethodBeat.o(119441);
-    return false;
-  }
-  
-  public static boolean aSn(String paramString)
-  {
-    AppMethodBeat.i(119442);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(119442);
-      return true;
-    }
-    if (Fuo.contains(paramString))
-    {
-      AppMethodBeat.o(119442);
-      return true;
-    }
-    Fuo.add(paramString);
-    AppMethodBeat.o(119442);
-    return false;
-  }
-  
-  public static void aSo(String paramString)
-  {
-    AppMethodBeat.i(119448);
-    p.h(paramString, "storyId");
-    if (Fup)
-    {
-      Fuk.sj(8L);
-      Fuk.wR(paramString);
-      fqn();
-    }
-    AppMethodBeat.o(119448);
-  }
-  
-  public static void aSp(String paramString)
-  {
-    AppMethodBeat.i(119449);
-    p.h(paramString, "storyId");
-    if (Fuq)
-    {
-      Fuk.sj(5L);
-      Fuk.wR(paramString);
-      fqn();
-    }
-    AppMethodBeat.o(119449);
-  }
-  
-  public static void aaT(int paramInt)
+  public static void aio(int paramInt)
   {
     AppMethodBeat.i(119443);
-    if ((BXD == -1) && (paramInt == 4))
+    if ((HUr == -1) && (paramInt == 4))
     {
-      BXD = paramInt;
+      HUr = paramInt;
       AppMethodBeat.o(119443);
       return;
     }
-    if ((BXD == 10) && (paramInt == 11))
+    if ((HUr == 10) && (paramInt == 11))
     {
-      BXD = paramInt;
+      HUr = paramInt;
       AppMethodBeat.o(119443);
       return;
     }
-    BXD = paramInt;
-    a locala = Fum;
+    HUr = paramInt;
+    a locala = LOn;
     JSONObject localJSONObject = new JSONObject();
     localJSONObject.put("aid", paramInt);
-    localJSONObject.put("td", locala.BXw.length() + 1);
-    if (locala.BXw.toString().length() + localJSONObject.toString().length() > 1000) {
+    localJSONObject.put("td", locala.HUk.length() + 1);
+    if (locala.HUk.toString().length() + localJSONObject.toString().length() > 1000) {
       paramInt = 0;
     }
     for (;;)
@@ -219,7 +157,7 @@ public final class h
       if (paramInt != 0) {}
       synchronized (locala.lock)
       {
-        locala.BXw.put(localJSONObject);
+        locala.HUk.put(localJSONObject);
         AppMethodBeat.o(119443);
         return;
         paramInt = 1;
@@ -227,269 +165,331 @@ public final class h
     }
   }
   
-  public static jv aaU(int paramInt)
+  public static me aip(int paramInt)
   {
     AppMethodBeat.i(119455);
-    jv localjv2 = (jv)Fux.get(Integer.valueOf(paramInt));
-    jv localjv1 = localjv2;
-    if (localjv2 == null)
+    me localme2 = (me)LOy.get(Integer.valueOf(paramInt));
+    me localme1 = localme2;
+    if (localme2 == null)
     {
-      localjv1 = new jv();
-      ((Map)Fux).put(Integer.valueOf(paramInt), localjv1);
+      localme1 = new me();
+      ((Map)LOy).put(Integer.valueOf(paramInt), localme1);
     }
     AppMethodBeat.o(119455);
-    return localjv1;
+    return localme1;
   }
   
-  public static void aaV(int paramInt)
+  public static void aiq(int paramInt)
   {
     AppMethodBeat.i(119456);
-    jv localjv = (jv)Fux.get(Integer.valueOf(paramInt));
-    if (localjv != null)
+    me localme = (me)LOy.get(Integer.valueOf(paramInt));
+    if (localme != null)
     {
-      Log.d("MicroMsg.StoryReporter", "basic:\n" + localjv.aim() + ' ' + localjv.ahW() + ' ' + localjv.ahX() + ' ' + localjv.aik() + ' ' + localjv.ahV() + ' ' + localjv.ahT() + ' ' + localjv.ahU());
-      Log.d("MicroMsg.StoryReporter", "origin:\n" + localjv.aia() + ' ' + localjv.ahY() + ' ' + localjv.ail() + ' ' + localjv.aid() + ' ' + localjv.aic() + ' ' + localjv.aib() + ' ' + localjv.ahZ());
-      Log.d("MicroMsg.StoryReporter", "cp:\n" + localjv.aig() + ' ' + localjv.aie() + ' ' + localjv.aij() + ' ' + localjv.aii() + ' ' + localjv.aih() + ' ' + localjv.aif());
-      localjv.bfK();
-      Fux.remove(Integer.valueOf(paramInt));
+      Log.d("MicroMsg.StoryReporter", "basic:\n" + localme.anK() + ' ' + localme.anu() + ' ' + localme.anv() + ' ' + localme.anI() + ' ' + localme.ant() + ' ' + localme.anq() + ' ' + localme.ans());
+      Log.d("MicroMsg.StoryReporter", "origin:\n" + localme.any() + ' ' + localme.anw() + ' ' + localme.anJ() + ' ' + localme.anB() + ' ' + localme.anA() + ' ' + localme.anz() + ' ' + localme.anx());
+      Log.d("MicroMsg.StoryReporter", "cp:\n" + localme.anE() + ' ' + localme.anC() + ' ' + localme.anH() + ' ' + localme.anG() + ' ' + localme.anF() + ' ' + localme.anD());
+      localme.bpa();
+      LOy.remove(Integer.valueOf(paramInt));
     }
     AppMethodBeat.o(119456);
   }
   
-  public static void aaW(int paramInt)
+  public static void air(int paramInt)
   {
-    FuE = paramInt;
+    LOF = paramInt;
   }
   
-  public static long fqA()
+  public static boolean bdq(String paramString)
   {
-    return FuD;
-  }
-  
-  public static jp fqB()
-  {
-    return Fuz;
-  }
-  
-  public static void fqC()
-  {
-    AppMethodBeat.i(119458);
-    if (Fuz.ahK() != 0L)
+    AppMethodBeat.i(119441);
+    if (paramString == null)
     {
-      Fuz.bfK();
-      Fuz.ahJ();
-      Fuz.ahH();
-      Fuz.ahG();
-      Fuz.ahI();
-      Fuz.sy(FuA);
-      Fuz.sz(FuB);
-      Fuz.sA(FuC);
+      AppMethodBeat.o(119441);
+      return true;
     }
-    AppMethodBeat.o(119458);
+    if (LOo.contains(paramString))
+    {
+      AppMethodBeat.o(119441);
+      return true;
+    }
+    LOo.add(paramString);
+    AppMethodBeat.o(119441);
+    return false;
   }
   
-  public static int fqD()
+  public static boolean bdr(String paramString)
   {
-    return FuE;
+    AppMethodBeat.i(119442);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(119442);
+      return true;
+    }
+    if (LOp.contains(paramString))
+    {
+      AppMethodBeat.o(119442);
+      return true;
+    }
+    LOp.add(paramString);
+    AppMethodBeat.o(119442);
+    return false;
   }
   
-  public static jj fqE()
+  public static void bds(String paramString)
   {
-    return FuF;
+    AppMethodBeat.i(119448);
+    p.k(paramString, "storyId");
+    if (LOq)
+    {
+      LOl.wl(8L);
+      LOl.Cs(paramString);
+      geJ();
+    }
+    AppMethodBeat.o(119448);
   }
   
-  public static void fqF()
+  public static void bdt(String paramString)
   {
-    AppMethodBeat.i(119459);
-    FuF.bfK();
-    FuF = new jj();
-    AppMethodBeat.o(119459);
+    AppMethodBeat.i(119449);
+    p.k(paramString, "storyId");
+    if (LOr)
+    {
+      LOl.wl(5L);
+      LOl.Cs(paramString);
+      geJ();
+    }
+    AppMethodBeat.o(119449);
   }
   
-  public static void fqh()
+  public static void geD()
   {
-    BXD = 1;
+    HUr = 1;
   }
   
-  public static jo fqi()
+  public static lx geE()
   {
-    return Ful;
+    return LOm;
   }
   
-  public static void fqj()
+  public static void geF()
   {
     AppMethodBeat.i(119444);
-    if (0L == Ful.ahB())
+    if (0L == LOm.amX())
     {
-      fql();
+      geH();
       AppMethodBeat.o(119444);
       return;
     }
-    Ful.wT(Fum.eKV());
-    jo localjo = Ful;
-    localjo.sv(localjo.ahF() + Ful.ahD());
-    Ful.bfK();
-    Ful.sp(0L);
-    Ful.st(0L);
-    Ful.ss(0L);
-    Ful.sq(0L);
-    Ful.su(0L);
-    Ful.sm(0L);
-    Ful.sv(0L);
-    Ful.sx(0L);
-    Ful.wU("");
-    fql();
+    LOm.Cu(LOn.fxo());
+    lx locallx = LOm;
+    locallx.wx(locallx.anb() + LOm.amZ());
+    LOm.bpa();
+    LOm.wr(0L);
+    LOm.wv(0L);
+    LOm.wu(0L);
+    LOm.ws(0L);
+    LOm.ww(0L);
+    LOm.wo(0L);
+    LOm.wx(0L);
+    LOm.wz(0L);
+    LOm.Cv("");
+    geH();
     AppMethodBeat.o(119444);
   }
   
-  public static void fqk()
+  public static void geG()
   {
     AppMethodBeat.i(119445);
-    Ful = new jo();
-    fql();
+    LOm = new lx();
+    geH();
     AppMethodBeat.o(119445);
   }
   
-  public static void fql()
+  public static void geH()
   {
     AppMethodBeat.i(119446);
-    Fum = new a();
-    BXD = -1;
-    Fun.clear();
-    Fuo.clear();
+    LOn = new a();
+    HUr = -1;
+    LOo.clear();
+    LOp.clear();
     AppMethodBeat.o(119446);
   }
   
-  public static jn fqm()
+  public static lw geI()
   {
-    return Fuk;
+    return LOl;
   }
   
-  public static void fqn()
+  public static void geJ()
   {
     AppMethodBeat.i(119447);
-    Fuk.bfK();
-    Fuk = new jn();
+    LOl.bpa();
+    LOl = new lw();
     AppMethodBeat.o(119447);
   }
   
-  public static jd fqo()
+  public static lm geK()
   {
-    return Fur;
+    return LOs;
   }
   
-  public static void fqp()
+  public static void geL()
   {
     AppMethodBeat.i(119450);
-    if (TextUtils.isEmpty((CharSequence)Fur.getUserName()))
+    if (TextUtils.isEmpty((CharSequence)LOs.getUserName()))
     {
       AppMethodBeat.o(119450);
       return;
     }
-    Fur.bfK();
+    LOs.bpa();
     AppMethodBeat.o(119450);
   }
   
-  public static jg fqq()
+  public static lp geM()
   {
-    return Fus;
+    return LOt;
   }
   
-  public static void fqr()
+  public static void geN()
   {
     AppMethodBeat.i(119451);
-    Fus.bfK();
+    LOt.bpa();
     AppMethodBeat.o(119451);
   }
   
-  public static je fqs()
+  public static ln geO()
   {
-    return Fut;
+    return LOu;
   }
   
-  public static void fqt()
+  public static void geP()
   {
     AppMethodBeat.i(119452);
-    Fut.bfK();
-    Fut = new je();
+    LOu.bpa();
+    LOu = new ln();
     AppMethodBeat.o(119452);
   }
   
-  public static jm fqu()
+  public static lv geQ()
   {
-    return Fuv;
+    return LOw;
   }
   
-  public static void fqv()
+  public static void geR()
   {
     AppMethodBeat.i(119453);
-    Fuv.bfK();
-    Fuv = new jm();
+    LOw.bpa();
+    LOw = new lv();
     AppMethodBeat.o(119453);
   }
   
-  public static jh fqw()
+  public static lq geS()
   {
-    return Fuw;
+    return LOx;
   }
   
-  public static void fqx()
+  public static void geT()
   {
     AppMethodBeat.i(119454);
-    Fuw.bfK();
-    Fuw = new jh();
+    LOx.bpa();
+    LOx = new lq();
     AppMethodBeat.o(119454);
   }
   
-  public static jr fqy()
+  public static ma geU()
   {
-    return Fuy;
+    return LOz;
   }
   
-  public static void fqz()
+  public static void geV()
   {
     AppMethodBeat.i(119457);
-    if (Fuy.ahy() == 0L)
+    if (LOz.amU() == 0L)
     {
-      Fuy = new jr();
+      LOz = new ma();
       AppMethodBeat.o(119457);
       return;
     }
-    Fuy.bfK();
-    Fuy = new jr();
+    LOz.bpa();
+    LOz = new ma();
     AppMethodBeat.o(119457);
   }
   
-  public static void vU(boolean paramBoolean)
+  public static long geW()
   {
-    Fup = paramBoolean;
+    return LOE;
   }
   
-  public static void vV(boolean paramBoolean)
+  public static ly geX()
   {
-    Fuq = paramBoolean;
+    return LOA;
   }
   
-  public static void vW(boolean paramBoolean)
+  public static void geY()
+  {
+    AppMethodBeat.i(119458);
+    if (LOA.ang() != 0L)
+    {
+      LOA.bpa();
+      LOA.anf();
+      LOA.and();
+      LOA.anc();
+      LOA.ane();
+      LOA.wA(LOB);
+      LOA.wB(LOC);
+      LOA.wC(LOD);
+    }
+    AppMethodBeat.o(119458);
+  }
+  
+  public static int geZ()
+  {
+    return LOF;
+  }
+  
+  public static ls gfa()
+  {
+    return LOH;
+  }
+  
+  public static void gfb()
+  {
+    AppMethodBeat.i(119459);
+    LOH.bpa();
+    LOH = new ls();
+    AppMethodBeat.o(119459);
+  }
+  
+  public static void zA(boolean paramBoolean)
   {
     long l = 1L;
     AppMethodBeat.i(119463);
-    ji localji = new ji();
-    localji.sa(1L);
+    lr locallr = new lr();
+    locallr.wc(1L);
     if (paramBoolean) {}
     for (;;)
     {
-      localji.sc(l);
-      localji.bfK();
+      locallr.we(l);
+      locallr.bpa();
       AppMethodBeat.o(119463);
       return;
       l = 0L;
     }
   }
+  
+  public static void zy(boolean paramBoolean)
+  {
+    LOq = paramBoolean;
+  }
+  
+  public static void zz(boolean paramBoolean)
+  {
+    LOr = paramBoolean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.h.h
  * JD-Core Version:    0.7.0.1
  */

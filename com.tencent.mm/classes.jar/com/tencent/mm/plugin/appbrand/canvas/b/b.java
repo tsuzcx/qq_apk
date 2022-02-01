@@ -90,7 +90,7 @@ public final class b
       return false;
     }
     paramBasePathActionArg = (PathArcActionArg)paramBasePathActionArg;
-    boolean bool = a(paramPath, paramBasePathActionArg.x, paramBasePathActionArg.y, paramBasePathActionArg.radius, paramBasePathActionArg.mj, paramBasePathActionArg.kZU, paramBasePathActionArg.kZV);
+    boolean bool = a(paramPath, paramBasePathActionArg.x, paramBasePathActionArg.y, paramBasePathActionArg.radius, paramBasePathActionArg.bEl, paramBasePathActionArg.nUf, paramBasePathActionArg.nUg);
     AppMethodBeat.o(145348);
     return bool;
   }
@@ -108,7 +108,7 @@ public final class b
     return bool;
   }
   
-  public final BasePathActionArg bzv()
+  public final BasePathActionArg bKK()
   {
     AppMethodBeat.i(145349);
     PathArcActionArg localPathArcActionArg = new PathArcActionArg();
@@ -123,7 +123,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.b.b
  * JD-Core Version:    0.7.0.1
  */

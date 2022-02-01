@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:id="@id/kw8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="@dimen/cj" android:layout_height="@dimen/cj">
+        <com.tencent.mm.plugin.finder.feed.RoundLinearLayout android:layout_gravity="center" android:id="@id/kzt" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/gf4" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" />
+        </com.tencent.mm.plugin.finder.feed.RoundLinearLayout>
+    </FrameLayout>
+    <TextView android:textSize="15.0dip" android:textColor="@color/am" android:ellipsize="end" android:id="@id/kzs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_marginStart="@dimen/ct" />
+</LinearLayout>

@@ -11,8 +11,8 @@ public class DetectCode
   implements Parcelable
 {
   public static final Parcelable.Creator<DetectCode> CREATOR;
-  public int ROK;
-  public float ROL;
+  public int Zrq;
+  public float Zrr;
   public List<Point> points;
   
   static
@@ -24,9 +24,9 @@ public class DetectCode
   
   public DetectCode(int paramInt, List<Point> paramList, float paramFloat)
   {
-    this.ROK = paramInt;
+    this.Zrq = paramInt;
     this.points = paramList;
-    this.ROL = paramFloat;
+    this.Zrr = paramFloat;
   }
   
   public int describeContents()
@@ -37,15 +37,15 @@ public class DetectCode
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(3565);
-    paramParcel.writeInt(this.ROK);
+    paramParcel.writeInt(this.Zrq);
     paramParcel.writeTypedList(this.points);
-    paramParcel.writeFloat(this.ROL);
+    paramParcel.writeFloat(this.Zrr);
     AppMethodBeat.o(3565);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.scanlib.model.DetectCode
  * JD-Core Version:    0.7.0.1
  */

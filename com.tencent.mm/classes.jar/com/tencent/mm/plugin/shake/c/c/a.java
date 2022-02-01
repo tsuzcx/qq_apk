@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
@@ -16,22 +16,22 @@ import java.util.Random;
 
 public final class a
 {
-  private static SimpleDateFormat qkZ = null;
+  private static SimpleDateFormat tGV = null;
   
-  public static String AF(long paramLong)
+  public static String GN(long paramLong)
   {
     AppMethodBeat.i(28254);
     paramLong = 1000L * paramLong;
     new GregorianCalendar().setTimeInMillis(paramLong);
-    if (qkZ == null) {
-      qkZ = new SimpleDateFormat("yyyy.MM.dd");
+    if (tGV == null) {
+      tGV = new SimpleDateFormat("yyyy.MM.dd");
     }
-    String str = qkZ.format(new Date(paramLong));
+    String str = tGV.format(new Date(paramLong));
     AppMethodBeat.o(28254);
     return str;
   }
   
-  public static void H(Context paramContext, String paramString1, String paramString2)
+  public static void N(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(28255);
     Log.i("MicroMsg.ShakeCardUtil", "ShakeCardUtil doCardDetailUI()");
@@ -39,16 +39,16 @@ public final class a
     localIntent.putExtra("key_card_id", paramString1);
     localIntent.putExtra("key_card_ext", paramString2);
     localIntent.putExtra("key_from_scene", 15);
-    com.tencent.mm.br.c.b(paramContext, "card", ".ui.CardDetailUI", localIntent);
+    com.tencent.mm.by.c.b(paramContext, "card", ".ui.CardDetailUI", localIntent);
     AppMethodBeat.o(28255);
   }
   
-  public static boolean Xx(int paramInt)
+  public static boolean aew(int paramInt)
   {
     return (paramInt >= 0) && (paramInt <= 5);
   }
   
-  public static int Xy(int paramInt)
+  public static int aex(int paramInt)
   {
     switch (paramInt)
     {
@@ -67,7 +67,7 @@ public final class a
     return 240;
   }
   
-  public static int Xz(int paramInt)
+  public static int aey(int paramInt)
   {
     switch (paramInt)
     {
@@ -94,7 +94,7 @@ public final class a
     return 300;
   }
   
-  public static int ake(String paramString)
+  public static int arR(String paramString)
   {
     AppMethodBeat.i(28253);
     int i = Color.rgb(66, 66, 66);
@@ -119,11 +119,11 @@ public final class a
     return i;
   }
   
-  private static boolean eUA()
+  private static boolean fHC()
   {
     AppMethodBeat.i(28242);
-    int i = eUB();
-    int j = eUC();
+    int i = fHD();
+    int j = fHE();
     Log.i("MicroMsg.ShakeCardUtil", "ShakeCardUtil begin time : " + i + " end time : " + j);
     if (i <= 0)
     {
@@ -156,91 +156,82 @@ public final class a
     return false;
   }
   
-  private static int eUB()
+  private static int fHD()
   {
     AppMethodBeat.i(28243);
-    bg.aVF();
-    int i = ((Integer)com.tencent.mm.model.c.azQ().get(ar.a.NSq, Integer.valueOf(0))).intValue();
+    bh.beI();
+    int i = ((Integer)com.tencent.mm.model.c.aHp().get(ar.a.Vgo, Integer.valueOf(0))).intValue();
     AppMethodBeat.o(28243);
     return i;
   }
   
-  private static int eUC()
+  private static int fHE()
   {
     AppMethodBeat.i(28244);
-    bg.aVF();
-    int i = ((Integer)com.tencent.mm.model.c.azQ().get(ar.a.NSr, Integer.valueOf(0))).intValue();
+    bh.beI();
+    int i = ((Integer)com.tencent.mm.model.c.aHp().get(ar.a.Vgp, Integer.valueOf(0))).intValue();
     AppMethodBeat.o(28244);
     return i;
   }
   
-  public static int eUD()
+  public static int fHF()
   {
     AppMethodBeat.i(28245);
-    bg.aVF();
-    int i = ((Integer)com.tencent.mm.model.c.azQ().get(ar.a.NSw, Integer.valueOf(0))).intValue();
+    bh.beI();
+    int i = ((Integer)com.tencent.mm.model.c.aHp().get(ar.a.Vgu, Integer.valueOf(0))).intValue();
     AppMethodBeat.o(28245);
     return i;
   }
   
-  public static String eUE()
+  public static String fHG()
   {
     AppMethodBeat.i(28246);
-    bg.aVF();
-    String str = (String)com.tencent.mm.model.c.azQ().get(ar.a.NSv, "");
+    bh.beI();
+    String str = (String)com.tencent.mm.model.c.aHp().get(ar.a.Vgt, "");
     AppMethodBeat.o(28246);
     return str;
   }
   
-  public static String eUF()
+  public static String fHH()
   {
     AppMethodBeat.i(28247);
-    bg.aVF();
-    String str = (String)com.tencent.mm.model.c.azQ().get(ar.a.NSs, "");
+    bh.beI();
+    String str = (String)com.tencent.mm.model.c.aHp().get(ar.a.Vgq, "");
     AppMethodBeat.o(28247);
     return str;
   }
   
-  public static String eUG()
+  public static String fHI()
   {
     AppMethodBeat.i(28248);
-    bg.aVF();
-    String str = (String)com.tencent.mm.model.c.azQ().get(ar.a.NSy, "");
+    bh.beI();
+    String str = (String)com.tencent.mm.model.c.aHp().get(ar.a.Vgw, "");
     AppMethodBeat.o(28248);
     return str;
   }
   
-  public static String eUH()
+  public static String fHJ()
   {
     AppMethodBeat.i(28249);
-    bg.aVF();
-    String str = (String)com.tencent.mm.model.c.azQ().get(ar.a.NSx, "");
+    bh.beI();
+    String str = (String)com.tencent.mm.model.c.aHp().get(ar.a.Vgv, "");
     AppMethodBeat.o(28249);
     return str;
   }
   
-  public static String eUI()
+  public static String fHK()
   {
     AppMethodBeat.i(28250);
-    bg.aVF();
-    String str = (String)com.tencent.mm.model.c.azQ().get(ar.a.NSB, "");
+    bh.beI();
+    String str = (String)com.tencent.mm.model.c.aHp().get(ar.a.Vgz, "");
     AppMethodBeat.o(28250);
     return str;
   }
   
-  public static String eUJ()
-  {
-    AppMethodBeat.i(28251);
-    bg.aVF();
-    String str = (String)com.tencent.mm.model.c.azQ().get(ar.a.NSA, "");
-    AppMethodBeat.o(28251);
-    return str;
-  }
-  
-  public static int eUK()
+  public static int fHL()
   {
     AppMethodBeat.i(28252);
-    bg.aVF();
+    bh.beI();
     int i = com.tencent.mm.model.c.getUin();
     int j = (int)(System.currentTimeMillis() % 10L);
     i = (new Random(i).nextInt(10) + j) % 10;
@@ -249,10 +240,10 @@ public final class a
     return i;
   }
   
-  public static boolean eUL()
+  public static boolean fHM()
   {
     AppMethodBeat.i(28256);
-    if ((eUh()) && (LocaleUtil.isChineseAppLang()))
+    if ((fHj()) && (LocaleUtil.isChineseAppLang()))
     {
       AppMethodBeat.o(28256);
       return true;
@@ -261,17 +252,17 @@ public final class a
     return false;
   }
   
-  public static void eUg()
+  public static void fHi()
   {
     AppMethodBeat.i(28240);
     Log.i("MicroMsg.ShakeCardUtil", "checkShakeCardEntrance()");
-    if (!eUh())
+    if (!fHj())
     {
       Log.i("MicroMsg.ShakeCardUtil", "checkShakeCardEntrance() entrance is not open");
-      if (eUA())
+      if (fHC())
       {
-        bg.aVF();
-        com.tencent.mm.model.c.azQ().set(ar.a.NSp, Boolean.TRUE);
+        bh.beI();
+        com.tencent.mm.model.c.aHp().set(ar.a.Vgn, Boolean.TRUE);
         Log.i("MicroMsg.ShakeCardUtil", "checkShakeCardEntrance() open shake card entrance");
         AppMethodBeat.o(28240);
         return;
@@ -281,26 +272,26 @@ public final class a
       return;
     }
     Log.i("MicroMsg.ShakeCardUtil", "checkShakeCardEntrance() entrance is open");
-    if (!eUA())
+    if (!fHC())
     {
       Log.i("MicroMsg.ShakeCardUtil", "checkShakeCardEntrance() card entrance is not in open time, close card entrance");
-      bg.aVF();
-      com.tencent.mm.model.c.azQ().set(ar.a.NSp, Boolean.FALSE);
+      bh.beI();
+      com.tencent.mm.model.c.aHp().set(ar.a.Vgn, Boolean.FALSE);
     }
     AppMethodBeat.o(28240);
   }
   
-  public static boolean eUh()
+  public static boolean fHj()
   {
     AppMethodBeat.i(28241);
-    if (!bg.aAc())
+    if (!bh.aHB())
     {
       Log.e("MicroMsg.ShakeCardUtil", "acc is not ready");
       AppMethodBeat.o(28241);
       return false;
     }
-    bg.aVF();
-    Object localObject = com.tencent.mm.model.c.azQ().get(ar.a.NSp, Boolean.FALSE);
+    bh.beI();
+    Object localObject = com.tencent.mm.model.c.aHp().get(ar.a.Vgn, Boolean.FALSE);
     if (localObject != null) {}
     for (boolean bool = ((Boolean)localObject).booleanValue();; bool = false)
     {
@@ -309,66 +300,66 @@ public final class a
     }
   }
   
-  public static void eUi()
+  public static void fHk()
   {
     AppMethodBeat.i(28257);
     Log.i("MicroMsg.ShakeCardUtil", "ShakeCardUtil setShakeCardEntranceData()");
     int i = (int)(System.currentTimeMillis() / 1000L);
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSq, Integer.valueOf(i));
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSr, Integer.valueOf(86400 + i));
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSs, "");
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSw, Integer.valueOf(0));
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSt, Integer.valueOf(1));
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSu, Integer.valueOf(6));
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSv, "");
-    com.tencent.mm.y.c.axV().B(262154, true);
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSx, String.valueOf(i));
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSy, "hello");
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSz, "shake card");
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgo, Integer.valueOf(i));
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgp, Integer.valueOf(86400 + i));
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgq, "");
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgu, Integer.valueOf(0));
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgr, Integer.valueOf(1));
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgs, Integer.valueOf(6));
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgt, "");
+    com.tencent.mm.aa.c.aFn().D(262154, true);
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgv, String.valueOf(i));
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgw, "hello");
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgx, "shake card");
     AppMethodBeat.o(28257);
   }
   
-  public static void eUj()
+  public static void fHl()
   {
     AppMethodBeat.i(28258);
     Log.i("MicroMsg.ShakeCardUtil", "ShakeCardUtil clearShakeCardEntranceData()");
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSq, Integer.valueOf(0));
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSr, Integer.valueOf(0));
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSs, "");
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSw, Integer.valueOf(0));
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSt, Integer.valueOf(0));
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSu, Integer.valueOf(0));
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSv, "");
-    com.tencent.mm.y.c.axV().B(262154, false);
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSx, "");
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSy, "");
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(ar.a.NSz, "");
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgo, Integer.valueOf(0));
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgp, Integer.valueOf(0));
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgq, "");
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgu, Integer.valueOf(0));
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgr, Integer.valueOf(0));
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgs, Integer.valueOf(0));
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgt, "");
+    com.tencent.mm.aa.c.aFn().D(262154, false);
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgv, "");
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgw, "");
+    bh.beI();
+    com.tencent.mm.model.c.aHp().set(ar.a.Vgx, "");
     AppMethodBeat.o(28258);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.c.c.a
  * JD-Core Version:    0.7.0.1
  */

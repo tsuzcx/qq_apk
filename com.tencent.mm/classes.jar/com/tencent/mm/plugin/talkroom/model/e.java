@@ -3,53 +3,53 @@ package com.tencent.mm.plugin.talkroom.model;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.z;
-import com.tencent.mm.protocal.protobuf.egs;
+import com.tencent.mm.protocal.protobuf.equ;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class e
-  implements com.tencent.mm.bh.b
+  implements com.tencent.mm.bj.b
 {
-  private com.tencent.mm.plugin.talkroom.a.b FPK;
+  private com.tencent.mm.plugin.talkroom.a.b MjL;
   private MMHandler handler;
-  private HashSet<com.tencent.mm.bh.a> listeners;
+  private HashSet<com.tencent.mm.bj.a> listeners;
   private final String path;
   
   public e()
   {
     AppMethodBeat.i(29461);
     this.listeners = new HashSet();
-    Object localObject = new o(b.ftP());
-    if (!((o)localObject).exists()) {
-      ((o)localObject).mkdirs();
+    Object localObject = new q(b.gip());
+    if (!((q)localObject).ifE()) {
+      ((q)localObject).ifL();
     }
-    this.path = (b.ftP() + "talkroomMemberList.info");
+    this.path = (b.gip() + "talkroomMemberList.info");
     this.handler = new MMHandler(Looper.getMainLooper());
-    if (this.FPK == null)
+    if (this.MjL == null)
     {
-      if (!s.YS(this.path))
+      if (!u.agG(this.path))
       {
-        this.FPK = new com.tencent.mm.plugin.talkroom.a.b();
+        this.MjL = new com.tencent.mm.plugin.talkroom.a.b();
         AppMethodBeat.o(29461);
         return;
       }
       try
       {
-        localObject = s.aW(this.path, 0, -1);
-        this.FPK = ((com.tencent.mm.plugin.talkroom.a.b)new com.tencent.mm.plugin.talkroom.a.b().parseFrom((byte[])localObject));
+        localObject = u.aY(this.path, 0, -1);
+        this.MjL = ((com.tencent.mm.plugin.talkroom.a.b)new com.tencent.mm.plugin.talkroom.a.b().parseFrom((byte[])localObject));
         AppMethodBeat.o(29461);
         return;
       }
       catch (Exception localException)
       {
         Log.printErrStackTrace("MicroMsg.TalkRoomInfoListMgr", localException, "", new Object[0]);
-        this.FPK = new com.tencent.mm.plugin.talkroom.a.b();
+        this.MjL = new com.tencent.mm.plugin.talkroom.a.b();
       }
     }
     AppMethodBeat.o(29461);
@@ -58,16 +58,16 @@ public final class e
   private boolean a(com.tencent.mm.plugin.talkroom.a.b paramb)
   {
     AppMethodBeat.i(179741);
-    if (paramb.FPy.isEmpty())
+    if (paramb.Mjz.isEmpty())
     {
-      s.deleteFile(this.path);
+      u.deleteFile(this.path);
       AppMethodBeat.o(179741);
       return true;
     }
     try
     {
       paramb = paramb.toByteArray();
-      s.f(this.path, paramb, paramb.length);
+      u.f(this.path, paramb, paramb.length);
       AppMethodBeat.o(179741);
       return true;
     }
@@ -79,13 +79,13 @@ public final class e
     return false;
   }
   
-  private void ax(final String paramString1, final String paramString2, final String paramString3)
+  private void ar(final String paramString1, final String paramString2, final String paramString3)
   {
     AppMethodBeat.i(29468);
     Iterator localIterator = this.listeners.iterator();
     while (localIterator.hasNext())
     {
-      final com.tencent.mm.bh.a locala = (com.tencent.mm.bh.a)localIterator.next();
+      final com.tencent.mm.bj.a locala = (com.tencent.mm.bj.a)localIterator.next();
       this.handler.post(new Runnable()
       {
         public final void run()
@@ -100,7 +100,7 @@ public final class e
   }
   
   /* Error */
-  public final boolean PW(String paramString)
+  public final boolean Xt(String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -108,8 +108,8 @@ public final class e
     //   2: sipush 29464
     //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 81	com/tencent/mm/plugin/talkroom/model/e:FPK	Lcom/tencent/mm/plugin/talkroom/a/b;
-    //   12: getfield 119	com/tencent/mm/plugin/talkroom/a/b:FPy	Ljava/util/LinkedList;
+    //   9: getfield 81	com/tencent/mm/plugin/talkroom/model/e:MjL	Lcom/tencent/mm/plugin/talkroom/a/b;
+    //   12: getfield 119	com/tencent/mm/plugin/talkroom/a/b:Mjz	Ljava/util/LinkedList;
     //   15: invokevirtual 161	java/util/LinkedList:iterator	()Ljava/util/Iterator;
     //   18: astore_3
     //   19: aload_3
@@ -160,7 +160,7 @@ public final class e
     //   73	79	82	finally
   }
   
-  public final void a(com.tencent.mm.bh.a parama)
+  public final void a(com.tencent.mm.bj.a parama)
   {
     try
     {
@@ -176,7 +176,7 @@ public final class e
     }
   }
   
-  public final void a(String paramString1, LinkedList<egs> paramLinkedList, String paramString2, String paramString3, int paramInt)
+  public final void a(String paramString1, LinkedList<equ> paramLinkedList, String paramString2, String paramString3, int paramInt)
   {
     for (;;)
     {
@@ -190,7 +190,7 @@ public final class e
         Log.i("MicroMsg.TalkRoomInfoListMgr", "updateList talk: %s,  size: %d", new Object[] { paramString1, Integer.valueOf(((LinkedList)localObject).size()) });
         paramLinkedList = (LinkedList)((LinkedList)localObject).clone();
         boolean bool = paramLinkedList.isEmpty();
-        localObject = this.FPK.FPy.iterator();
+        localObject = this.MjL.Mjz.iterator();
         if (((Iterator)localObject).hasNext())
         {
           com.tencent.mm.plugin.talkroom.a.a locala = (com.tencent.mm.plugin.talkroom.a.a)((Iterator)localObject).next();
@@ -199,13 +199,13 @@ public final class e
           }
           if (bool)
           {
-            this.FPK.FPy.remove(locala);
-            a(this.FPK);
-            ax(paramString1, paramString2, paramString3);
+            this.MjL.Mjz.remove(locala);
+            a(this.MjL);
+            ar(paramString1, paramString2, paramString3);
             AppMethodBeat.o(29467);
             return;
           }
-          locala.dTe = paramLinkedList;
+          locala.fMA = paramLinkedList;
           locala.sceneType = paramInt;
           continue;
         }
@@ -216,18 +216,34 @@ public final class e
       finally {}
       Object localObject = new com.tencent.mm.plugin.talkroom.a.a();
       ((com.tencent.mm.plugin.talkroom.a.a)localObject).username = paramString1;
-      ((com.tencent.mm.plugin.talkroom.a.a)localObject).dTe = paramLinkedList;
+      ((com.tencent.mm.plugin.talkroom.a.a)localObject).fMA = paramLinkedList;
       ((com.tencent.mm.plugin.talkroom.a.a)localObject).sceneType = paramInt;
-      this.FPK.FPy.add(localObject);
+      this.MjL.Mjz.add(localObject);
       label222:
-      a(this.FPK);
-      ax(paramString1, paramString2, paramString3);
+      a(this.MjL);
+      ar(paramString1, paramString2, paramString3);
       AppMethodBeat.o(29467);
     }
   }
   
+  public final void b(com.tencent.mm.bj.a parama)
+  {
+    try
+    {
+      AppMethodBeat.i(29463);
+      this.listeners.remove(parama);
+      AppMethodBeat.o(29463);
+      return;
+    }
+    finally
+    {
+      parama = finally;
+      throw parama;
+    }
+  }
+  
   /* Error */
-  public final LinkedList<egs> aSV(String paramString)
+  public final LinkedList<equ> bdZ(String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -235,8 +251,8 @@ public final class e
     //   2: sipush 29466
     //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 81	com/tencent/mm/plugin/talkroom/model/e:FPK	Lcom/tencent/mm/plugin/talkroom/a/b;
-    //   12: getfield 119	com/tencent/mm/plugin/talkroom/a/b:FPy	Ljava/util/LinkedList;
+    //   9: getfield 81	com/tencent/mm/plugin/talkroom/model/e:MjL	Lcom/tencent/mm/plugin/talkroom/a/b;
+    //   12: getfield 119	com/tencent/mm/plugin/talkroom/a/b:Mjz	Ljava/util/LinkedList;
     //   15: invokevirtual 161	java/util/LinkedList:iterator	()Ljava/util/Iterator;
     //   18: astore_2
     //   19: aload_2
@@ -252,7 +268,7 @@ public final class e
     //   43: invokevirtual 172	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   46: ifeq -27 -> 19
     //   49: aload_3
-    //   50: getfield 210	com/tencent/mm/plugin/talkroom/a/a:dTe	Ljava/util/LinkedList;
+    //   50: getfield 210	com/tencent/mm/plugin/talkroom/a/a:fMA	Ljava/util/LinkedList;
     //   53: invokevirtual 200	java/util/LinkedList:clone	()Ljava/lang/Object;
     //   56: checkcast 121	java/util/LinkedList
     //   59: astore_1
@@ -287,24 +303,8 @@ public final class e
     //   70	84	87	finally
   }
   
-  public final void b(com.tencent.mm.bh.a parama)
-  {
-    try
-    {
-      AppMethodBeat.i(29463);
-      this.listeners.remove(parama);
-      AppMethodBeat.o(29463);
-      return;
-    }
-    finally
-    {
-      parama = finally;
-      throw parama;
-    }
-  }
-  
   /* Error */
-  public final boolean bgr()
+  public final boolean bpH()
   {
     // Byte code:
     //   0: aload_0
@@ -312,8 +312,8 @@ public final class e
     //   2: sipush 29465
     //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 81	com/tencent/mm/plugin/talkroom/model/e:FPK	Lcom/tencent/mm/plugin/talkroom/a/b;
-    //   12: getfield 119	com/tencent/mm/plugin/talkroom/a/b:FPy	Ljava/util/LinkedList;
+    //   9: getfield 81	com/tencent/mm/plugin/talkroom/model/e:MjL	Lcom/tencent/mm/plugin/talkroom/a/b;
+    //   12: getfield 119	com/tencent/mm/plugin/talkroom/a/b:Mjz	Ljava/util/LinkedList;
     //   15: invokevirtual 161	java/util/LinkedList:iterator	()Ljava/util/Iterator;
     //   18: astore_2
     //   19: aload_2
@@ -327,7 +327,7 @@ public final class e
     //   39: getfield 176	com/tencent/mm/plugin/talkroom/a/a:sceneType	I
     //   42: ifne -23 -> 19
     //   45: aload_3
-    //   46: getfield 210	com/tencent/mm/plugin/talkroom/a/a:dTe	Ljava/util/LinkedList;
+    //   46: getfield 210	com/tencent/mm/plugin/talkroom/a/a:fMA	Ljava/util/LinkedList;
     //   49: invokevirtual 161	java/util/LinkedList:iterator	()Ljava/util/Iterator;
     //   52: astore_3
     //   53: aload_3
@@ -335,11 +335,11 @@ public final class e
     //   59: ifeq -40 -> 19
     //   62: aload_3
     //   63: invokeinterface 150 1 0
-    //   68: checkcast 222	com/tencent/mm/protocal/protobuf/egs
+    //   68: checkcast 222	com/tencent/mm/protocal/protobuf/equ
     //   71: astore 4
-    //   73: invokestatic 227	com/tencent/mm/model/z:aTY	()Ljava/lang/String;
+    //   73: invokestatic 227	com/tencent/mm/model/z:bcZ	()Ljava/lang/String;
     //   76: aload 4
-    //   78: getfield 230	com/tencent/mm/protocal/protobuf/egs:UserName	Ljava/lang/String;
+    //   78: getfield 230	com/tencent/mm/protocal/protobuf/equ:UserName	Ljava/lang/String;
     //   81: invokevirtual 172	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   84: ifeq -31 -> 53
     //   87: iconst_1
@@ -367,7 +367,7 @@ public final class e
     //   18	11	2	localIterator	Iterator
     //   110	4	2	localObject1	Object
     //   37	26	3	localObject2	Object
-    //   71	6	4	localegs	egs
+    //   71	6	4	localequ	equ
     // Exception table:
     //   from	to	target	type
     //   2	19	110	finally
@@ -377,7 +377,7 @@ public final class e
     //   101	107	110	finally
   }
   
-  public final void bgs()
+  public final void bpI()
   {
     for (;;)
     {
@@ -386,24 +386,24 @@ public final class e
       {
         AppMethodBeat.i(179740);
         LinkedList localLinkedList = new LinkedList();
-        if ((this.FPK.FPy != null) && (!this.FPK.FPy.isEmpty()))
+        if ((this.MjL.Mjz != null) && (!this.MjL.Mjz.isEmpty()))
         {
-          localObject2 = (com.tencent.mm.plugin.talkroom.a.a[])this.FPK.FPy.toArray(new com.tencent.mm.plugin.talkroom.a.a[0]);
+          localObject2 = (com.tencent.mm.plugin.talkroom.a.a[])this.MjL.Mjz.toArray(new com.tencent.mm.plugin.talkroom.a.a[0]);
           int k = localObject2.length;
           j = 0;
           if (j < k)
           {
             Object localObject3 = localObject2[j];
-            if (Util.isNullOrNil(localObject3.dTe)) {
+            if (Util.isNullOrNil(localObject3.fMA)) {
               break label218;
             }
             int i = 1;
-            Iterator localIterator = localObject3.dTe.iterator();
+            Iterator localIterator = localObject3.fMA.iterator();
             if (localIterator.hasNext())
             {
-              egs localegs = (egs)localIterator.next();
-              Log.d("MicroMsg.TalkRoomInfoListMgr", "member :".concat(String.valueOf(localegs)));
-              if (!localegs.UserName.equals(z.aTY())) {
+              equ localequ = (equ)localIterator.next();
+              Log.d("MicroMsg.TalkRoomInfoListMgr", "member :".concat(String.valueOf(localequ)));
+              if (!localequ.UserName.equals(z.bcZ())) {
                 break label215;
               }
               Log.i("MicroMsg.TalkRoomInfoListMgr", "reset list info and remove self location info");
@@ -418,7 +418,7 @@ public final class e
           }
         }
         Object localObject2 = new com.tencent.mm.plugin.talkroom.a.b();
-        ((com.tencent.mm.plugin.talkroom.a.b)localObject2).FPy = localLinkedList;
+        ((com.tencent.mm.plugin.talkroom.a.b)localObject2).Mjz = localLinkedList;
         a((com.tencent.mm.plugin.talkroom.a.b)localObject2);
         AppMethodBeat.o(179740);
         return;
@@ -433,7 +433,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.model.e
  * JD-Core Version:    0.7.0.1
  */

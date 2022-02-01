@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.expt.hellhound.a.a.a;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.reflect.Field;
@@ -9,39 +9,39 @@ import java.lang.reflect.Field;
 public final class c
   implements b
 {
-  private Class<?> sBP;
-  private Field sBQ;
-  private Field sBR;
-  private Field sCk;
-  private Field sCl;
-  private Field sCm;
-  private Field sCn;
-  private Field sCo;
-  private Field sCp;
+  private Class<?> whK;
+  private Field whL;
+  private Field whM;
+  private Field wif;
+  private Field wig;
+  private Field wih;
+  private Field wii;
+  private Field wij;
+  private Field wik;
   
   public c()
   {
     AppMethodBeat.i(169314);
     try
     {
-      this.sBP = Class.forName("com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem$BaseViewHolder");
-      this.sBQ = this.sBP.getDeclaredField("timeLineObject");
-      this.sBQ.setAccessible(true);
-      this.sCk = this.sBP.getDeclaredField("isAd");
-      this.sCk.setAccessible(true);
-      this.sBR = Class.forName("com.tencent.mm.protocal.protobuf.TimeLineObject").getDeclaredField("Id");
-      this.sBR.setAccessible(true);
-      this.sCl = this.sBP.getDeclaredField("snsobj");
-      this.sCl.setAccessible(true);
+      this.whK = Class.forName("com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem$BaseViewHolder");
+      this.whL = this.whK.getDeclaredField("timeLineObject");
+      this.whL.setAccessible(true);
+      this.wif = this.whK.getDeclaredField("isAd");
+      this.wif.setAccessible(true);
+      this.whM = Class.forName("com.tencent.mm.protocal.protobuf.TimeLineObject").getDeclaredField("Id");
+      this.whM.setAccessible(true);
+      this.wig = this.whK.getDeclaredField("snsobj");
+      this.wig.setAccessible(true);
       Class localClass = Class.forName("com.tencent.mm.protocal.protobuf.SnsObject");
-      this.sCn = localClass.getDeclaredField("CommentUserList");
-      this.sCn.setAccessible(true);
-      this.sCm = localClass.getDeclaredField("LikeCount");
-      this.sCm.setAccessible(true);
-      this.sCo = localClass.getDeclaredField("Username");
-      this.sCo.setAccessible(true);
-      this.sCp = localClass.getDeclaredField("Nickname");
-      this.sCp.setAccessible(true);
+      this.wii = localClass.getDeclaredField("CommentUserList");
+      this.wii.setAccessible(true);
+      this.wih = localClass.getDeclaredField("LikeCount");
+      this.wih.setAccessible(true);
+      this.wij = localClass.getDeclaredField("Username");
+      this.wij.setAccessible(true);
+      this.wik = localClass.getDeclaredField("Nickname");
+      this.wik.setAccessible(true);
       AppMethodBeat.o(169314);
       return;
     }
@@ -51,7 +51,7 @@ public final class c
     }
   }
   
-  public final String GY(int paramInt)
+  public final String KI(int paramInt)
   {
     return null;
   }
@@ -77,7 +77,7 @@ public final class c
     //   26: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   29: return
     //   30: aload_0
-    //   31: getfield 69	com/tencent/mm/plugin/expt/hellhound/a/a/a/c:sCl	Ljava/lang/reflect/Field;
+    //   31: getfield 69	com/tencent/mm/plugin/expt/hellhound/a/a/a/c:wig	Ljava/lang/reflect/Field;
     //   34: astore 7
     //   36: aload 7
     //   38: ifnonnull +9 -> 47
@@ -85,21 +85,21 @@ public final class c
     //   43: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   46: return
     //   47: aload_0
-    //   48: getfield 69	com/tencent/mm/plugin/expt/hellhound/a/a/a/c:sCl	Ljava/lang/reflect/Field;
+    //   48: getfield 69	com/tencent/mm/plugin/expt/hellhound/a/a/a/c:wig	Ljava/lang/reflect/Field;
     //   51: aload_1
     //   52: invokevirtual 112	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   55: astore_1
     //   56: aload_1
     //   57: ifnull +101 -> 158
     //   60: aload_0
-    //   61: getfield 79	com/tencent/mm/plugin/expt/hellhound/a/a/a/c:sCm	Ljava/lang/reflect/Field;
+    //   61: getfield 79	com/tencent/mm/plugin/expt/hellhound/a/a/a/c:wih	Ljava/lang/reflect/Field;
     //   64: aload_1
     //   65: invokevirtual 112	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   68: checkcast 114	java/lang/Integer
     //   71: invokevirtual 118	java/lang/Integer:intValue	()I
     //   74: istore 4
     //   76: aload_0
-    //   77: getfield 75	com/tencent/mm/plugin/expt/hellhound/a/a/a/c:sCn	Ljava/lang/reflect/Field;
+    //   77: getfield 75	com/tencent/mm/plugin/expt/hellhound/a/a/a/c:wii	Ljava/lang/reflect/Field;
     //   80: aload_1
     //   81: invokevirtual 112	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   84: checkcast 120	java/util/LinkedList
@@ -164,7 +164,7 @@ public final class c
     //   96	102	154	java/lang/Exception
   }
   
-  public final String ac(View paramView, int paramInt)
+  public final String ae(View paramView, int paramInt)
   {
     AppMethodBeat.i(169315);
     paramView = paramView.getTag();
@@ -175,13 +175,13 @@ public final class c
     }
     try
     {
-      boolean bool = this.sBP.isInstance(paramView);
+      boolean bool = this.whK.isInstance(paramView);
       if (!bool)
       {
         AppMethodBeat.o(169315);
         return null;
       }
-      paramView = this.sBQ.get(paramView);
+      paramView = this.whL.get(paramView);
       if (paramView == null)
       {
         AppMethodBeat.o(169315);
@@ -195,7 +195,7 @@ public final class c
     }
     try
     {
-      paramView = (String)this.sBR.get(paramView);
+      paramView = (String)this.whM.get(paramView);
       AppMethodBeat.o(169315);
       return paramView;
     }
@@ -209,7 +209,7 @@ public final class c
     }
   }
   
-  public final String ad(View paramView, int paramInt)
+  public final String af(View paramView, int paramInt)
   {
     AppMethodBeat.i(169317);
     paramView = paramView.getTag();
@@ -220,17 +220,17 @@ public final class c
     }
     try
     {
-      Field localField = this.sCl;
+      Field localField = this.wig;
       if (localField == null)
       {
         AppMethodBeat.o(169317);
         return null;
       }
-      paramView = this.sCl.get(paramView);
+      paramView = this.wig.get(paramView);
       if (paramView == null) {
         break label82;
       }
-      paramView = (String)this.sCo.get(paramView);
+      paramView = (String)this.wij.get(paramView);
     }
     catch (Exception paramView)
     {
@@ -244,7 +244,7 @@ public final class c
     return paramView;
   }
   
-  public final String ae(View paramView, int paramInt)
+  public final String ag(View paramView, int paramInt)
   {
     AppMethodBeat.i(185579);
     paramView = paramView.getTag();
@@ -255,17 +255,17 @@ public final class c
     }
     try
     {
-      Field localField = this.sCl;
+      Field localField = this.wig;
       if (localField == null)
       {
         AppMethodBeat.o(185579);
         return null;
       }
-      paramView = this.sCl.get(paramView);
+      paramView = this.wig.get(paramView);
       if (paramView == null) {
         break label82;
       }
-      paramView = (String)this.sCp.get(paramView);
+      paramView = (String)this.wik.get(paramView);
     }
     catch (Exception paramView)
     {
@@ -279,7 +279,7 @@ public final class c
     return paramView;
   }
   
-  public final boolean dP(View paramView)
+  public final boolean en(View paramView)
   {
     AppMethodBeat.i(184357);
     paramView = paramView.getTag();
@@ -290,13 +290,13 @@ public final class c
     }
     try
     {
-      bool = this.sBP.isInstance(paramView);
+      bool = this.whK.isInstance(paramView);
       if (!bool)
       {
         AppMethodBeat.o(184357);
         return false;
       }
-      bool = ((Boolean)this.sCk.get(paramView)).booleanValue();
+      bool = ((Boolean)this.wif.get(paramView)).booleanValue();
     }
     catch (Exception paramView)
     {
@@ -313,7 +313,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.a.a.c
  * JD-Core Version:    0.7.0.1
  */

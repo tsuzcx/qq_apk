@@ -15,20 +15,20 @@ import java.util.List;
 public class TextViewMultilineEllipse
   extends View
 {
-  private a EQO;
-  private a EQP;
-  private int Evc;
-  private String Evd;
-  private String Eve;
-  private boolean Evf;
-  private int Evg;
-  private boolean Evh;
-  private TextPaint ayn;
+  private int KIT;
+  private String KIU;
+  private String KIV;
+  private boolean KIW;
+  private int KIX;
+  private boolean KIY;
+  private a LeN;
+  private a LeO;
   private Context context;
   private String mText;
-  private boolean pMC;
-  private int pME;
+  private boolean sTA;
+  private int sTC;
   private int textSize;
+  private TextPaint wi;
   
   public TextViewMultilineEllipse(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,37 +36,37 @@ public class TextViewMultilineEllipse
     AppMethodBeat.i(99707);
     this.textSize = -1;
     this.context = paramContext;
-    this.pMC = false;
-    this.Evf = true;
-    this.Evh = false;
-    this.pME = -1;
-    this.Evd = "...";
-    this.Eve = "";
-    this.Evg = -16776961;
-    this.EQO = new a();
-    this.EQP = new a();
-    this.ayn = new TextPaint();
-    this.ayn.setAntiAlias(true);
+    this.sTA = false;
+    this.KIW = true;
+    this.KIY = false;
+    this.sTC = -1;
+    this.KIU = "...";
+    this.KIV = "";
+    this.KIX = -16776961;
+    this.LeN = new a();
+    this.LeO = new a();
+    this.wi = new TextPaint();
+    this.wi.setAntiAlias(true);
     if (this.textSize == -1)
     {
       this.textSize = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, 12.0F);
-      this.ayn.setTextSize(this.textSize);
+      this.wi.setTextSize(this.textSize);
     }
     for (;;)
     {
-      this.ayn.setColor(-16777216);
-      this.ayn.setTextAlign(Paint.Align.LEFT);
+      this.wi.setColor(-16777216);
+      this.wi.setTextAlign(Paint.Align.LEFT);
       AppMethodBeat.o(99707);
       return;
-      this.ayn.setTextSize(13.0F);
+      this.wi.setTextSize(13.0F);
     }
   }
   
-  private int ZE(int paramInt)
+  private int agX(int paramInt)
   {
     AppMethodBeat.i(99713);
-    if (this.pMC) {}
-    for (paramInt = this.EQO.a(this.mText, paramInt - getPaddingLeft() - getPaddingRight(), this.ayn);; paramInt = this.EQP.a(this.mText, this.Evd, this.Eve, this.pME, paramInt - getPaddingLeft() - getPaddingRight(), this.ayn))
+    if (this.sTA) {}
+    for (paramInt = this.LeN.a(this.mText, paramInt - getPaddingLeft() - getPaddingRight(), this.wi);; paramInt = this.LeO.a(this.mText, this.KIU, this.KIV, this.sTC, paramInt - getPaddingLeft() - getPaddingRight(), this.wi))
     {
       int i = getPaddingLeft();
       int j = getPaddingRight();
@@ -77,7 +77,7 @@ public class TextViewMultilineEllipse
   
   public boolean getIsExpanded()
   {
-    return this.pMC;
+    return this.sTA;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -91,46 +91,46 @@ public class TextViewMultilineEllipse
     int i;
     label53:
     int j;
-    if (this.pMC)
+    if (this.sTA)
     {
-      locala = this.EQO;
-      localArrayList = this.EQO.Evn;
+      locala = this.LeN;
+      localArrayList = this.LeN.KJe;
       f2 = getPaddingLeft();
-      f1 = getPaddingTop() + -this.Evc;
+      f1 = getPaddingTop() + -this.KIT;
       i = 0;
       if (i >= localArrayList.size()) {
         break label307;
       }
       int[] arrayOfInt = (int[])localArrayList.get(i);
-      paramCanvas.drawText(this.mText, arrayOfInt[0], arrayOfInt[1] + 1, f2, f1, this.ayn);
-      if ((i == localArrayList.size() - 1) && (locala.Evm))
+      paramCanvas.drawText(this.mText, arrayOfInt[0], arrayOfInt[1] + 1, f2, f1, this.wi);
+      if ((i == localArrayList.size() - 1) && (locala.KJd))
       {
-        paramCanvas.drawText(this.Evd, locala.Evo + f2, f1, this.ayn);
-        if (this.Evf)
+        paramCanvas.drawText(this.KIU, locala.KJf + f2, f1, this.wi);
+        if (this.KIW)
         {
-          j = this.ayn.getColor();
-          this.ayn.setColor(this.Evg);
-          if (!this.Evh) {
+          j = this.wi.getColor();
+          this.wi.setColor(this.KIX);
+          if (!this.KIY) {
             break label278;
           }
-          paramCanvas.drawText(this.Eve, paramCanvas.getWidth() - (locala.Evq + getPaddingRight() + getPaddingLeft()), f1, this.ayn);
+          paramCanvas.drawText(this.KIV, paramCanvas.getWidth() - (locala.KJh + getPaddingRight() + getPaddingLeft()), f1, this.wi);
         }
       }
     }
     for (;;)
     {
-      this.ayn.setColor(j);
-      f1 += -this.Evc + this.ayn.descent();
+      this.wi.setColor(j);
+      f1 += -this.KIT + this.wi.descent();
       if (f1 > paramCanvas.getHeight()) {
         break label307;
       }
       i += 1;
       break label53;
-      locala = this.EQP;
-      localArrayList = this.EQP.Evn;
+      locala = this.LeO;
+      localArrayList = this.LeO.KJe;
       break;
       label278:
-      paramCanvas.drawText(this.Eve, locala.Evo + locala.Evp + f2, f1, this.ayn);
+      paramCanvas.drawText(this.KIV, locala.KJf + locala.KJg + f2, f1, this.wi);
     }
     label307:
     AppMethodBeat.o(99712);
@@ -142,14 +142,14 @@ public class TextViewMultilineEllipse
     int i = View.MeasureSpec.getMode(paramInt1);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
     if (i == 1073741824) {
-      ZE(paramInt1);
+      agX(paramInt1);
     }
     int k;
     for (;;)
     {
       k = View.MeasureSpec.getMode(paramInt2);
       i = View.MeasureSpec.getSize(paramInt2);
-      this.Evc = ((int)this.ayn.ascent());
+      this.KIT = ((int)this.wi.ascent());
       if (k != 1073741824) {
         break;
       }
@@ -159,18 +159,18 @@ public class TextViewMultilineEllipse
       return;
       if (i == -2147483648)
       {
-        paramInt1 = Math.min(ZE(paramInt1), paramInt1);
+        paramInt1 = Math.min(agX(paramInt1), paramInt1);
       }
       else
       {
-        ZE(paramInt1);
+        agX(paramInt1);
         paramInt1 = 0;
       }
     }
-    if (this.pMC) {}
-    for (paramInt2 = this.EQO.Evn.size();; paramInt2 = this.EQP.Evn.size())
+    if (this.sTA) {}
+    for (paramInt2 = this.LeN.KJe.size();; paramInt2 = this.LeO.KJe.size())
     {
-      int j = paramInt2 * (int)(-this.Evc + this.ayn.descent()) + getPaddingTop() + getPaddingBottom();
+      int j = paramInt2 * (int)(-this.KIT + this.wi.descent()) + getPaddingTop() + getPaddingBottom();
       paramInt2 = j;
       if (k != -2147483648) {
         break;
@@ -182,32 +182,32 @@ public class TextViewMultilineEllipse
   
   public void setColorEllpsizeMore(int paramInt)
   {
-    this.Evg = paramInt;
+    this.KIX = paramInt;
   }
   
   public void setDrawEllipsizeMoreString(boolean paramBoolean)
   {
-    this.Evf = paramBoolean;
+    this.KIW = paramBoolean;
   }
   
   public void setEllipsis(String paramString)
   {
-    this.Evd = paramString;
+    this.KIU = paramString;
   }
   
   public void setEllipsisMore(String paramString)
   {
-    this.Eve = paramString;
+    this.KIV = paramString;
   }
   
   public void setMaxLines(int paramInt)
   {
-    this.pME = paramInt;
+    this.sTC = paramInt;
   }
   
   public void setRightAlignEllipsizeMoreString(boolean paramBoolean)
   {
-    this.Evh = paramBoolean;
+    this.KIY = paramBoolean;
   }
   
   public void setText(String paramString)
@@ -222,7 +222,7 @@ public class TextViewMultilineEllipse
   public void setTextColor(int paramInt)
   {
     AppMethodBeat.i(99710);
-    this.ayn.setColor(paramInt);
+    this.wi.setColor(paramInt);
     invalidate();
     AppMethodBeat.o(99710);
   }
@@ -230,7 +230,7 @@ public class TextViewMultilineEllipse
   public void setTextSize(int paramInt)
   {
     AppMethodBeat.i(99709);
-    this.ayn.setTextSize(paramInt);
+    this.wi.setTextSize(paramInt);
     requestLayout();
     invalidate();
     AppMethodBeat.o(99709);
@@ -238,17 +238,17 @@ public class TextViewMultilineEllipse
   
   static final class a
   {
-    boolean Evm;
-    ArrayList<int[]> Evn;
-    float Evo;
-    float Evp;
-    float Evq;
+    boolean KJd;
+    ArrayList<int[]> KJe;
+    float KJf;
+    float KJg;
+    float KJh;
     
     public a()
     {
       AppMethodBeat.i(99704);
-      this.Evm = false;
-      this.Evn = new ArrayList();
+      this.KJd = false;
+      this.KJe = new ArrayList();
       AppMethodBeat.o(99704);
     }
     
@@ -263,23 +263,23 @@ public class TextViewMultilineEllipse
     public final int a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, TextPaint paramTextPaint)
     {
       AppMethodBeat.i(99706);
-      this.Evn.clear();
-      this.Evm = false;
-      this.Evo = 0.0F;
-      this.Evp = 0.0F;
-      this.Evq = 0.0F;
+      this.KJe.clear();
+      this.KJd = false;
+      this.KJf = 0.0F;
+      this.KJg = 0.0F;
+      this.KJh = 0.0F;
       if (paramInt2 == -1)
       {
-        this.Evn.add(new int[] { 0, paramString1.length() });
+        this.KJe.add(new int[] { 0, paramString1.length() });
         paramInt1 = (int)(paramTextPaint.measureText(paramString1) + 0.5F);
         AppMethodBeat.o(99706);
         return paramInt1;
       }
       if (paramString2 != null) {
-        this.Evp = paramTextPaint.measureText(paramString2);
+        this.KJg = paramTextPaint.measureText(paramString2);
       }
       if (paramString3 != null) {
-        this.Evq = paramTextPaint.measureText(paramString3);
+        this.KJh = paramTextPaint.measureText(paramString3);
       }
       int k = -1;
       float f1 = 0.0F;
@@ -293,18 +293,18 @@ public class TextViewMultilineEllipse
         if (k == -1) {
           i = paramInt2;
         }
-        if (this.Evn.size() == paramInt1) {
-          this.Evm = true;
+        if (this.KJe.size() == paramInt1) {
+          this.KJd = true;
         }
       }
       else
       {
-        if (this.Evm)
+        if (this.KJd)
         {
-          paramString2 = (int[])this.Evn.get(this.Evn.size() - 1);
-          this.Evo = paramTextPaint.measureText(paramString1.substring(paramString2[0], paramString2[1] + 1));
+          paramString2 = (int[])this.KJe.get(this.KJe.size() - 1);
+          this.KJf = paramTextPaint.measureText(paramString1.substring(paramString2[0], paramString2[1] + 1));
         }
-        if (this.Evn.size() != 0) {
+        if (this.KJe.size() != 0) {
           break label575;
         }
         AppMethodBeat.o(99706);
@@ -319,7 +319,7 @@ public class TextViewMultilineEllipse
       if (paramString1.charAt(paramInt2) == '\n')
       {
         k = 1;
-        this.Evn.add(new int[] { i, paramInt2 - 1 });
+        this.KJe.add(new int[] { i, paramInt2 - 1 });
         j = paramInt2;
         if (k == 0) {
           break label501;
@@ -330,9 +330,9 @@ public class TextViewMultilineEllipse
         f1 = f2;
         k = paramInt2;
         i1 = m;
-        if (this.Evn.size() == paramInt1 - 1)
+        if (this.KJe.size() == paramInt1 - 1)
         {
-          i1 = (int)(m - (this.Evp + this.Evq));
+          i1 = (int)(m - (this.KJg + this.KJh));
           i2 = 0;
           k = paramInt2;
           f1 = f2;
@@ -357,13 +357,13 @@ public class TextViewMultilineEllipse
         else
         {
           j = paramInt2 - 1;
-          this.Evn.add(new int[] { i, j });
+          this.KJe.add(new int[] { i, j });
           break label303;
         }
         while (paramString1.charAt(j) != ' ') {
           j -= 1;
         }
-        this.Evn.add(new int[] { i, j });
+        this.KJe.add(new int[] { i, j });
         break label303;
         label501:
         f2 = f1 + f2;
@@ -373,7 +373,7 @@ public class TextViewMultilineEllipse
         i1 = m;
         if (j == paramString1.length() - 1)
         {
-          this.Evn.add(new int[] { i, j });
+          this.KJe.add(new int[] { i, j });
           i2 = n;
           f1 = f2;
           k = i;
@@ -381,7 +381,7 @@ public class TextViewMultilineEllipse
         }
       }
       label575:
-      if (this.Evn.size() == 1)
+      if (this.KJe.size() == 1)
       {
         paramInt1 = (int)(paramTextPaint.measureText(paramString1) + 0.5F);
         AppMethodBeat.o(99706);
@@ -394,7 +394,7 @@ public class TextViewMultilineEllipse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.TextViewMultilineEllipse
  * JD-Core Version:    0.7.0.1
  */

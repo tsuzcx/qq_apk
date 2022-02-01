@@ -20,9 +20,9 @@ public abstract interface q
       attachInterface(this, "com.tencent.mm.plugin.exdevice.service.IIBeaconCallback_AIDL");
     }
     
-    public static q cLt()
+    public static q dag()
     {
-      return a.rDP;
+      return a.vjz;
     }
     
     public IBinder asBinder()
@@ -49,7 +49,7 @@ public abstract interface q
     static final class a
       implements q
     {
-      public static q rDP;
+      public static q vjz;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -72,9 +72,9 @@ public abstract interface q
           localParcel1.writeDouble(paramDouble2);
           localParcel1.writeInt(paramInt3);
           localParcel1.writeString(paramString);
-          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (q.a.cLt() != null))
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (q.a.dag() != null))
           {
-            q.a.cLt().a(paramDouble1, paramInt1, paramInt2, paramArrayOfByte, paramDouble2, paramInt3, paramString);
+            q.a.dag().a(paramDouble1, paramInt1, paramInt2, paramArrayOfByte, paramDouble2, paramInt3, paramString);
             return;
           }
           localParcel2.readException();
@@ -97,7 +97,7 @@ public abstract interface q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.q
  * JD-Core Version:    0.7.0.1
  */

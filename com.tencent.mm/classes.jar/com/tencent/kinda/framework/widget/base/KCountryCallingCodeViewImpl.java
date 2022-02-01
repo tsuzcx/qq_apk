@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.view.View;
 import android.widget.EditText;
+import com.tencent.kinda.framework.R.color;
+import com.tencent.kinda.framework.R.string;
 import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.gen.KCountryCallingCodeView;
 import com.tencent.kinda.gen.KCountryCallingCodeViewOnSelectCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.b;
-import com.tencent.mm.aw.b.a;
+import com.tencent.mm.az.b;
+import com.tencent.mm.az.b.a;
 import com.tencent.mm.framework.app.UIPageFragmentActivity;
 import com.tencent.mm.framework.app.UIPageFragmentActivity.a;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -41,7 +43,7 @@ public class KCountryCallingCodeViewImpl
   private void initData(Activity paramActivity)
   {
     AppMethodBeat.i(18799);
-    paramActivity = b.Pf(paramActivity.getString(2131758198));
+    paramActivity = b.WC(paramActivity.getString(R.string.country_code));
     this.mCountryCodeMap = new HashMap();
     this.mISOCountryCodeMap = new HashMap();
     paramActivity = paramActivity.iterator();
@@ -50,8 +52,8 @@ public class KCountryCallingCodeViewImpl
       b.a locala = (b.a)paramActivity.next();
       if (locala != null)
       {
-        this.mCountryCodeMap.put(locala.jbY, locala);
-        this.mISOCountryCodeMap.put(locala.jbX, locala);
+        this.mCountryCodeMap.put(locala.lSy, locala);
+        this.mISOCountryCodeMap.put(locala.lSx, locala);
       }
     }
     AppMethodBeat.o(18799);
@@ -63,7 +65,7 @@ public class KCountryCallingCodeViewImpl
     if ((this.mCountryName != null) && (this.mCountryName.length() > 0))
     {
       this.mEditText.setText(this.mCountryName);
-      this.mEditText.setTextColor(this.mUIPageFragmentActivity.getResources().getColor(2131100904));
+      this.mEditText.setTextColor(this.mUIPageFragmentActivity.getResources().getColor(R.color.normal_text_color));
       AppMethodBeat.o(18803);
       return;
     }
@@ -73,8 +75,8 @@ public class KCountryCallingCodeViewImpl
     }
     if ((str == null) || (str.length() == 0))
     {
-      this.mEditText.setText(2131768189);
-      this.mEditText.setTextColor(this.mUIPageFragmentActivity.getResources().getColor(2131100996));
+      this.mEditText.setText(R.string.wallet_phone_invalid_country_code);
+      this.mEditText.setTextColor(this.mUIPageFragmentActivity.getResources().getColor(R.color.red_text_color));
     }
     AppMethodBeat.o(18803);
   }
@@ -151,8 +153,8 @@ public class KCountryCallingCodeViewImpl
         paramString = (b.a)this.mCountryCodeMap.get(str);
         Log.i("KCountryCallingCodeView", "country code is %s, find target data, country name is %s", new Object[] { str, this.mCountryName });
         this.mCountryCode = str;
-        this.mCountryName = paramString.jbZ;
-        this.mCountryIsoCode = paramString.jbX;
+        this.mCountryName = paramString.lSz;
+        this.mCountryIsoCode = paramString.lSx;
       }
     }
     for (;;)
@@ -207,11 +209,11 @@ public class KCountryCallingCodeViewImpl
       while (localIterator.hasNext())
       {
         b.a locala = (b.a)localIterator.next();
-        if (locala.jbX.equals(paramString))
+        if (locala.lSx.equals(paramString))
         {
-          this.mCountryCode = locala.jbY;
-          this.mCountryName = locala.jbZ;
-          this.mCountryIsoCode = locala.jbX;
+          this.mCountryCode = locala.lSy;
+          this.mCountryName = locala.lSz;
+          this.mCountryIsoCode = locala.lSx;
         }
       }
     }
@@ -221,11 +223,11 @@ public class KCountryCallingCodeViewImpl
   
   public void setNationalityExcludeArray(ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(214460);
+    AppMethodBeat.i(263954);
     if (paramArrayList != null) {
       this.mBannedCountryIsoCodes = Util.listToStrings(paramArrayList);
     }
-    AppMethodBeat.o(214460);
+    AppMethodBeat.o(263954);
   }
   
   public void setOnSelectCallback(KCountryCallingCodeViewOnSelectCallback paramKCountryCallingCodeViewOnSelectCallback)
@@ -270,7 +272,7 @@ public class KCountryCallingCodeViewImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KCountryCallingCodeViewImpl
  * JD-Core Version:    0.7.0.1
  */

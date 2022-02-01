@@ -2,6 +2,7 @@ package com.tencent.liteav.videodecoder;
 
 import android.view.Surface;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
+import com.tencent.liteav.basic.util.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
@@ -11,7 +12,7 @@ public class TXCVideoFfmpegDecoder
   implements b
 {
   private boolean mFirstDec;
-  private f mListener;
+  private g mListener;
   private long mNativeDecoder;
   private long mNativeNotify;
   private ByteBuffer mPps;
@@ -23,7 +24,7 @@ public class TXCVideoFfmpegDecoder
   static
   {
     AppMethodBeat.i(16646);
-    com.tencent.liteav.basic.util.f.f();
+    h.f();
     nativeClassInit();
     AppMethodBeat.o(16646);
   }
@@ -64,17 +65,21 @@ public class TXCVideoFfmpegDecoder
         byte[] arrayOfByte3 = new byte[arrayOfByte1.length + arrayOfByte2.length];
         System.arraycopy(arrayOfByte1, 0, arrayOfByte3, 0, arrayOfByte1.length);
         System.arraycopy(arrayOfByte2, 0, arrayOfByte3, arrayOfByte1.length, arrayOfByte2.length);
-        nativeDecode(arrayOfByte3, paramTXSNALPacket.pts - 1L, paramTXSNALPacket.dts - 1L, paramTXSNALPacket.rotation);
+        if ((!nativeDecode(arrayOfByte3, paramTXSNALPacket.pts - 1L, paramTXSNALPacket.dts - 1L, paramTXSNALPacket.rotation)) && (this.mListener != null)) {
+          this.mListener.onDecodeFailed(-2);
+        }
       }
       this.mFirstDec = false;
     }
-    nativeDecode(paramTXSNALPacket.nalData, paramTXSNALPacket.pts, paramTXSNALPacket.dts, paramTXSNALPacket.rotation);
+    if ((!nativeDecode(paramTXSNALPacket.nalData, paramTXSNALPacket.pts, paramTXSNALPacket.dts, paramTXSNALPacket.rotation)) && (this.mListener != null)) {
+      this.mListener.onDecodeFailed(-2);
+    }
     AppMethodBeat.o(16642);
   }
   
   public void enableLimitDecCache(boolean paramBoolean) {}
   
-  public boolean isHevc()
+  public boolean isH265()
   {
     return false;
   }
@@ -86,12 +91,12 @@ public class TXCVideoFfmpegDecoder
     AppMethodBeat.o(16645);
   }
   
-  public void setListener(f paramf)
+  public void setListener(g paramg)
   {
-    this.mListener = paramf;
+    this.mListener = paramg;
   }
   
-  public void setNotifyListener(WeakReference<com.tencent.liteav.basic.b.b> paramWeakReference) {}
+  public void setNotifyListener(WeakReference<com.tencent.liteav.basic.c.b> paramWeakReference) {}
   
   public int start(ByteBuffer paramByteBuffer1, ByteBuffer paramByteBuffer2, boolean paramBoolean1, boolean paramBoolean2)
   {
@@ -115,7 +120,7 @@ public class TXCVideoFfmpegDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.videodecoder.TXCVideoFfmpegDecoder
  * JD-Core Version:    0.7.0.1
  */

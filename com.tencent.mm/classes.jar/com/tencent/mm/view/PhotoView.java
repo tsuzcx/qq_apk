@@ -8,7 +8,6 @@ import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.GestureDetector;
@@ -22,10 +21,12 @@ import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.ImageView.ScaleType;
 import android.widget.OverScroller;
 import android.widget.Scroller;
+import androidx.appcompat.widget.AppCompatImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -33,89 +34,89 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class PhotoView
   extends AppCompatImageView
 {
-  private Matrix OUN;
-  private GestureDetector PO;
-  private boolean QEq;
-  private boolean RkA;
-  private boolean RkB;
-  private float RkC;
-  private float RkD;
-  private int RkE;
-  private int RkF;
-  private float RkG;
-  private float RkH;
-  private RectF RkI;
-  private RectF RkJ;
-  private RectF RkK;
-  private PointF RkL;
-  private PointF RkM;
-  private PointF RkN;
-  private h RkO;
-  private RectF RkP;
-  private PhotoView.Info RkQ;
-  private long RkR;
-  private Runnable RkS;
-  private View.OnLongClickListener RkT;
-  private i RkU;
-  private e RkV;
-  private ScaleGestureDetector.OnScaleGestureListener RkW;
-  private Runnable RkX;
-  private GestureDetector.OnGestureListener RkY;
-  private Rect RkZ;
-  private int Rkh;
-  private int Rki;
-  private float Rkj;
-  private int Rkk;
-  private int Rkl;
-  private int Rkm;
-  private int Rkn;
-  private Matrix Rko;
-  private Matrix Rkp;
-  private f Rkq;
-  private ScaleGestureDetector Rkr;
-  private ImageView.ScaleType Rks;
-  private boolean Rkt;
-  private boolean Rku;
-  private boolean Rkv;
-  private boolean Rkw;
-  private boolean Rkx;
-  private boolean Rky;
-  private boolean Rkz;
-  private boolean ded;
-  private RectF dgT;
-  private float dhh;
-  private View.OnClickListener hEZ;
+  private RectF Cfp;
+  private GestureDetector Nf;
+  private Matrix Woa;
+  private int YLM;
+  private int YLN;
+  private float YLO;
+  private int YLP;
+  private int YLQ;
+  private int YLR;
+  private int YLS;
+  private Matrix YLT;
+  private Matrix YLU;
+  private f YLV;
+  private ScaleGestureDetector YLW;
+  private ImageView.ScaleType YLX;
+  private boolean YLY;
+  private boolean YLZ;
+  private e YMA;
+  private ScaleGestureDetector.OnScaleGestureListener YMB;
+  private Runnable YMC;
+  private GestureDetector.OnGestureListener YMD;
+  private Rect YME;
+  private boolean YMa;
+  private boolean YMb;
+  private boolean YMc;
+  private boolean YMd;
+  private boolean YMe;
+  private boolean YMf;
+  private boolean YMg;
+  private float YMh;
+  private float YMi;
+  private int YMj;
+  private int YMk;
+  private float YMl;
+  private float YMm;
+  private RectF YMn;
+  private RectF YMo;
+  private RectF YMp;
+  private PointF YMq;
+  private PointF YMr;
+  private PointF YMs;
+  private h YMt;
+  private RectF YMu;
+  private PhotoView.Info YMv;
+  private long YMw;
+  private Runnable YMx;
+  private View.OnLongClickListener YMy;
+  private i YMz;
+  private boolean YcR;
+  private Matrix auf;
+  private boolean dih;
+  private RectF eYA;
+  private float eYO;
   private boolean isInit;
-  private RectF xsQ;
-  private Matrix xt;
+  private View.OnClickListener kte;
   
   public PhotoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164283);
-    this.Rkk = 0;
-    this.Rkl = 0;
-    this.Rkm = 0;
-    this.Rkn = 500;
-    this.OUN = new Matrix();
-    this.Rko = new Matrix();
-    this.Rkp = new Matrix();
-    this.xt = new Matrix();
-    this.ded = false;
-    this.Rkx = false;
-    this.dhh = 1.0F;
-    this.xsQ = new RectF();
-    this.RkI = new RectF();
-    this.RkJ = new RectF();
-    this.dgT = new RectF();
-    this.RkK = new RectF();
-    this.RkL = new PointF();
-    this.RkM = new PointF();
-    this.RkN = new PointF();
-    this.RkO = new h();
-    this.RkV = new e()
+    this.YLP = 0;
+    this.YLQ = 0;
+    this.YLR = 0;
+    this.YLS = 500;
+    this.Woa = new Matrix();
+    this.YLT = new Matrix();
+    this.YLU = new Matrix();
+    this.auf = new Matrix();
+    this.dih = false;
+    this.YMc = false;
+    this.eYO = 1.0F;
+    this.Cfp = new RectF();
+    this.YMn = new RectF();
+    this.YMo = new RectF();
+    this.eYA = new RectF();
+    this.YMp = new RectF();
+    this.YMq = new PointF();
+    this.YMr = new PointF();
+    this.YMs = new PointF();
+    this.YMt = new h();
+    this.YMA = new e()
     {
-      public final void v(float paramAnonymousFloat1, float paramAnonymousFloat2, float paramAnonymousFloat3)
+      public final void w(float paramAnonymousFloat1, float paramAnonymousFloat2, float paramAnonymousFloat3)
       {
         AppMethodBeat.i(164250);
         PhotoView.a(PhotoView.this, PhotoView.a(PhotoView.this) + paramAnonymousFloat1);
@@ -134,19 +135,53 @@ public class PhotoView
         AppMethodBeat.o(164250);
       }
     };
-    this.RkW = new PhotoView.2(this);
-    this.RkX = new PhotoView.3(this);
-    this.RkY = new GestureDetector.SimpleOnGestureListener()
+    this.YMB = new ScaleGestureDetector.OnScaleGestureListener()
+    {
+      public final boolean onScale(ScaleGestureDetector paramAnonymousScaleGestureDetector)
+      {
+        AppMethodBeat.i(164251);
+        float f = paramAnonymousScaleGestureDetector.getScaleFactor();
+        if ((Float.isNaN(f)) || (Float.isInfinite(f)))
+        {
+          AppMethodBeat.o(164251);
+          return false;
+        }
+        PhotoView.c(PhotoView.this, PhotoView.f(PhotoView.this) * f);
+        PhotoView.d(PhotoView.this).postScale(f, f, paramAnonymousScaleGestureDetector.getFocusX(), paramAnonymousScaleGestureDetector.getFocusY());
+        PhotoView.g(PhotoView.this);
+        AppMethodBeat.o(164251);
+        return true;
+      }
+      
+      public final boolean onScaleBegin(ScaleGestureDetector paramAnonymousScaleGestureDetector)
+      {
+        return true;
+      }
+      
+      public final void onScaleEnd(ScaleGestureDetector paramAnonymousScaleGestureDetector) {}
+    };
+    this.YMC = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(164252);
+        if (PhotoView.h(PhotoView.this) != null) {
+          PhotoView.h(PhotoView.this).onClick(PhotoView.this);
+        }
+        AppMethodBeat.o(164252);
+      }
+    };
+    this.YMD = new GestureDetector.SimpleOnGestureListener()
     {
       public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(206183);
+        AppMethodBeat.i(213586);
         b localb = new b();
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+        localb.bn(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
         boolean bool = super.onContextClick(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(206183);
+        AppMethodBeat.o(213586);
         return bool;
       }
       
@@ -154,8 +189,8 @@ public class PhotoView
       {
         AppMethodBeat.i(164258);
         b localb = new b();
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+        localb.bn(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
         PhotoView.o(PhotoView.this).stop();
         float f1 = PhotoView.p(PhotoView.this).left + PhotoView.p(PhotoView.this).width() / 2.0F;
         float f2 = PhotoView.p(PhotoView.this).top + PhotoView.p(PhotoView.this).height() / 2.0F;
@@ -185,7 +220,7 @@ public class PhotoView
         for (boolean bool = true;; bool = false)
         {
           PhotoView.c(paramAnonymousMotionEvent, bool);
-          PhotoView.o(PhotoView.this).aD(f2, f1);
+          PhotoView.o(PhotoView.this).aL(f2, f1);
           PhotoView.o(PhotoView.this).start();
           com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(164258);
@@ -263,7 +298,7 @@ public class PhotoView
               if (f5 > 45.0F)
               {
                 f1 = f4 + 90.0F;
-                PhotoView.o(PhotoView.this).mb((int)PhotoView.c(PhotoView.this), (int)f1);
+                PhotoView.o(PhotoView.this).ns((int)PhotoView.c(PhotoView.this), (int)f1);
                 PhotoView.b(PhotoView.this, f1);
               }
             }
@@ -275,11 +310,11 @@ public class PhotoView
                 break label686;
               }
               i = 2147483647;
-              localh.auo = i;
+              localh.amg = i;
               if (f2 <= 0.0F) {
                 break label692;
               }
-              f1 = Math.abs(PhotoView.p(localh.Rla).left);
+              f1 = Math.abs(PhotoView.p(localh.YMF).left);
               j = (int)f1;
               i = j;
               if (f2 < 0.0F) {
@@ -301,11 +336,11 @@ public class PhotoView
                 break label740;
               }
               i = 2147483647;
-              localh.aup = i;
+              localh.amh = i;
               if (f3 <= 0.0F) {
                 break label746;
               }
-              f1 = Math.abs(PhotoView.p(localh.Rla).top);
+              f1 = Math.abs(PhotoView.p(localh.YMF).top);
               m = (int)f1;
               i = m;
               if (f3 < 0.0F) {
@@ -333,17 +368,17 @@ public class PhotoView
                 n = 0;
                 m = 0;
               }
-              localOverScroller = localh.xsO;
-              i2 = localh.auo;
-              i3 = localh.aup;
+              localOverScroller = localh.Cfn;
+              i2 = localh.amg;
+              i3 = localh.amh;
               i4 = (int)f2;
               i5 = (int)f3;
-              if (Math.abs(i1) >= PhotoView.G(localh.Rla) * 2) {
+              if (Math.abs(i1) >= PhotoView.G(localh.YMF) * 2) {
                 break label790;
               }
               i1 = 0;
               label588:
-              if (Math.abs(i) >= PhotoView.G(localh.Rla) * 2) {
+              if (Math.abs(i) >= PhotoView.G(localh.YMF) * 2) {
                 break label803;
               }
             }
@@ -352,7 +387,7 @@ public class PhotoView
             label787:
             label790:
             label803:
-            for (int i = 0;; i = PhotoView.G(localh.Rla))
+            for (int i = 0;; i = PhotoView.G(localh.YMF))
             {
               localOverScroller.fling(i2, i3, i4, i5, j, k, m, n, i1, i);
               PhotoView.o(PhotoView.this).start();
@@ -369,7 +404,7 @@ public class PhotoView
               i = 0;
               break label321;
               label692:
-              f1 = PhotoView.p(localh.Rla).right - PhotoView.q(localh.Rla).right;
+              f1 = PhotoView.p(localh.YMF).right - PhotoView.q(localh.YMF).right;
               break label351;
               label720:
               j = 0;
@@ -384,14 +419,14 @@ public class PhotoView
               i = 0;
               break label421;
               label746:
-              f1 = PhotoView.p(localh.Rla).bottom - PhotoView.q(localh.Rla).bottom;
+              f1 = PhotoView.p(localh.YMF).bottom - PhotoView.q(localh.YMF).bottom;
               break label451;
               m = 0;
               break label485;
               n = i;
               break label496;
               break label510;
-              i1 = PhotoView.G(localh.Rla);
+              i1 = PhotoView.G(localh.YMF);
               break label588;
             }
           }
@@ -402,8 +437,8 @@ public class PhotoView
       {
         AppMethodBeat.i(164253);
         b localb = new b();
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.axR());
+        localb.bn(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
         if (PhotoView.i(PhotoView.this) != null) {
           PhotoView.i(PhotoView.this).onLongClick(PhotoView.this);
         }
@@ -417,7 +452,7 @@ public class PhotoView
         if (PhotoView.o(PhotoView.this).isRunning) {
           PhotoView.o(PhotoView.this).stop();
         }
-        if (PhotoView.this.cK(paramAnonymousFloat1))
+        if (PhotoView.this.df(paramAnonymousFloat1))
         {
           if ((paramAnonymousFloat1 >= 0.0F) || (PhotoView.p(PhotoView.this).left - paramAnonymousFloat1 <= PhotoView.q(PhotoView.this).left)) {
             break label831;
@@ -438,7 +473,7 @@ public class PhotoView
           }
           PhotoView.d(PhotoView.this).postTranslate(-f1, 0.0F);
           PhotoView.a(PhotoView.this, (int)(PhotoView.r(PhotoView.this) - f1));
-          if (PhotoView.this.cL(paramAnonymousFloat2)) {
+          if (PhotoView.this.dg(paramAnonymousFloat2)) {
             if ((paramAnonymousFloat2 >= 0.0F) || (PhotoView.p(PhotoView.this).top - paramAnonymousFloat2 <= PhotoView.q(PhotoView.this).top)) {
               break label825;
             }
@@ -524,15 +559,15 @@ public class PhotoView
       {
         AppMethodBeat.i(164257);
         b localb = new b();
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+        localb.bn(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
         PhotoView.this.postDelayed(PhotoView.k(PhotoView.this), 250L);
         com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(164257);
         return false;
       }
     };
-    this.RkZ = new Rect();
+    this.YME = new Rect();
     init();
     AppMethodBeat.o(164283);
   }
@@ -541,29 +576,29 @@ public class PhotoView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164284);
-    this.Rkk = 0;
-    this.Rkl = 0;
-    this.Rkm = 0;
-    this.Rkn = 500;
-    this.OUN = new Matrix();
-    this.Rko = new Matrix();
-    this.Rkp = new Matrix();
-    this.xt = new Matrix();
-    this.ded = false;
-    this.Rkx = false;
-    this.dhh = 1.0F;
-    this.xsQ = new RectF();
-    this.RkI = new RectF();
-    this.RkJ = new RectF();
-    this.dgT = new RectF();
-    this.RkK = new RectF();
-    this.RkL = new PointF();
-    this.RkM = new PointF();
-    this.RkN = new PointF();
-    this.RkO = new h();
-    this.RkV = new e()
+    this.YLP = 0;
+    this.YLQ = 0;
+    this.YLR = 0;
+    this.YLS = 500;
+    this.Woa = new Matrix();
+    this.YLT = new Matrix();
+    this.YLU = new Matrix();
+    this.auf = new Matrix();
+    this.dih = false;
+    this.YMc = false;
+    this.eYO = 1.0F;
+    this.Cfp = new RectF();
+    this.YMn = new RectF();
+    this.YMo = new RectF();
+    this.eYA = new RectF();
+    this.YMp = new RectF();
+    this.YMq = new PointF();
+    this.YMr = new PointF();
+    this.YMs = new PointF();
+    this.YMt = new h();
+    this.YMA = new e()
     {
-      public final void v(float paramAnonymousFloat1, float paramAnonymousFloat2, float paramAnonymousFloat3)
+      public final void w(float paramAnonymousFloat1, float paramAnonymousFloat2, float paramAnonymousFloat3)
       {
         AppMethodBeat.i(164250);
         PhotoView.a(PhotoView.this, PhotoView.a(PhotoView.this) + paramAnonymousFloat1);
@@ -582,19 +617,53 @@ public class PhotoView
         AppMethodBeat.o(164250);
       }
     };
-    this.RkW = new PhotoView.2(this);
-    this.RkX = new PhotoView.3(this);
-    this.RkY = new GestureDetector.SimpleOnGestureListener()
+    this.YMB = new ScaleGestureDetector.OnScaleGestureListener()
+    {
+      public final boolean onScale(ScaleGestureDetector paramAnonymousScaleGestureDetector)
+      {
+        AppMethodBeat.i(164251);
+        float f = paramAnonymousScaleGestureDetector.getScaleFactor();
+        if ((Float.isNaN(f)) || (Float.isInfinite(f)))
+        {
+          AppMethodBeat.o(164251);
+          return false;
+        }
+        PhotoView.c(PhotoView.this, PhotoView.f(PhotoView.this) * f);
+        PhotoView.d(PhotoView.this).postScale(f, f, paramAnonymousScaleGestureDetector.getFocusX(), paramAnonymousScaleGestureDetector.getFocusY());
+        PhotoView.g(PhotoView.this);
+        AppMethodBeat.o(164251);
+        return true;
+      }
+      
+      public final boolean onScaleBegin(ScaleGestureDetector paramAnonymousScaleGestureDetector)
+      {
+        return true;
+      }
+      
+      public final void onScaleEnd(ScaleGestureDetector paramAnonymousScaleGestureDetector) {}
+    };
+    this.YMC = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(164252);
+        if (PhotoView.h(PhotoView.this) != null) {
+          PhotoView.h(PhotoView.this).onClick(PhotoView.this);
+        }
+        AppMethodBeat.o(164252);
+      }
+    };
+    this.YMD = new GestureDetector.SimpleOnGestureListener()
     {
       public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(206183);
+        AppMethodBeat.i(213586);
         b localb = new b();
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+        localb.bn(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
         boolean bool = super.onContextClick(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(206183);
+        AppMethodBeat.o(213586);
         return bool;
       }
       
@@ -602,8 +671,8 @@ public class PhotoView
       {
         AppMethodBeat.i(164258);
         b localb = new b();
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+        localb.bn(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
         PhotoView.o(PhotoView.this).stop();
         float f1 = PhotoView.p(PhotoView.this).left + PhotoView.p(PhotoView.this).width() / 2.0F;
         float f2 = PhotoView.p(PhotoView.this).top + PhotoView.p(PhotoView.this).height() / 2.0F;
@@ -633,7 +702,7 @@ public class PhotoView
         for (boolean bool = true;; bool = false)
         {
           PhotoView.c(paramAnonymousMotionEvent, bool);
-          PhotoView.o(PhotoView.this).aD(f2, f1);
+          PhotoView.o(PhotoView.this).aL(f2, f1);
           PhotoView.o(PhotoView.this).start();
           com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(164258);
@@ -711,7 +780,7 @@ public class PhotoView
               if (f5 > 45.0F)
               {
                 f1 = f4 + 90.0F;
-                PhotoView.o(PhotoView.this).mb((int)PhotoView.c(PhotoView.this), (int)f1);
+                PhotoView.o(PhotoView.this).ns((int)PhotoView.c(PhotoView.this), (int)f1);
                 PhotoView.b(PhotoView.this, f1);
               }
             }
@@ -723,11 +792,11 @@ public class PhotoView
                 break label686;
               }
               i = 2147483647;
-              localh.auo = i;
+              localh.amg = i;
               if (f2 <= 0.0F) {
                 break label692;
               }
-              f1 = Math.abs(PhotoView.p(localh.Rla).left);
+              f1 = Math.abs(PhotoView.p(localh.YMF).left);
               j = (int)f1;
               i = j;
               if (f2 < 0.0F) {
@@ -749,11 +818,11 @@ public class PhotoView
                 break label740;
               }
               i = 2147483647;
-              localh.aup = i;
+              localh.amh = i;
               if (f3 <= 0.0F) {
                 break label746;
               }
-              f1 = Math.abs(PhotoView.p(localh.Rla).top);
+              f1 = Math.abs(PhotoView.p(localh.YMF).top);
               m = (int)f1;
               i = m;
               if (f3 < 0.0F) {
@@ -781,17 +850,17 @@ public class PhotoView
                 n = 0;
                 m = 0;
               }
-              localOverScroller = localh.xsO;
-              i2 = localh.auo;
-              i3 = localh.aup;
+              localOverScroller = localh.Cfn;
+              i2 = localh.amg;
+              i3 = localh.amh;
               i4 = (int)f2;
               i5 = (int)f3;
-              if (Math.abs(i1) >= PhotoView.G(localh.Rla) * 2) {
+              if (Math.abs(i1) >= PhotoView.G(localh.YMF) * 2) {
                 break label790;
               }
               i1 = 0;
               label588:
-              if (Math.abs(i) >= PhotoView.G(localh.Rla) * 2) {
+              if (Math.abs(i) >= PhotoView.G(localh.YMF) * 2) {
                 break label803;
               }
             }
@@ -800,7 +869,7 @@ public class PhotoView
             label787:
             label790:
             label803:
-            for (int i = 0;; i = PhotoView.G(localh.Rla))
+            for (int i = 0;; i = PhotoView.G(localh.YMF))
             {
               localOverScroller.fling(i2, i3, i4, i5, j, k, m, n, i1, i);
               PhotoView.o(PhotoView.this).start();
@@ -817,7 +886,7 @@ public class PhotoView
               i = 0;
               break label321;
               label692:
-              f1 = PhotoView.p(localh.Rla).right - PhotoView.q(localh.Rla).right;
+              f1 = PhotoView.p(localh.YMF).right - PhotoView.q(localh.YMF).right;
               break label351;
               label720:
               j = 0;
@@ -832,14 +901,14 @@ public class PhotoView
               i = 0;
               break label421;
               label746:
-              f1 = PhotoView.p(localh.Rla).bottom - PhotoView.q(localh.Rla).bottom;
+              f1 = PhotoView.p(localh.YMF).bottom - PhotoView.q(localh.YMF).bottom;
               break label451;
               m = 0;
               break label485;
               n = i;
               break label496;
               break label510;
-              i1 = PhotoView.G(localh.Rla);
+              i1 = PhotoView.G(localh.YMF);
               break label588;
             }
           }
@@ -850,8 +919,8 @@ public class PhotoView
       {
         AppMethodBeat.i(164253);
         b localb = new b();
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.axR());
+        localb.bn(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
         if (PhotoView.i(PhotoView.this) != null) {
           PhotoView.i(PhotoView.this).onLongClick(PhotoView.this);
         }
@@ -865,7 +934,7 @@ public class PhotoView
         if (PhotoView.o(PhotoView.this).isRunning) {
           PhotoView.o(PhotoView.this).stop();
         }
-        if (PhotoView.this.cK(paramAnonymousFloat1))
+        if (PhotoView.this.df(paramAnonymousFloat1))
         {
           if ((paramAnonymousFloat1 >= 0.0F) || (PhotoView.p(PhotoView.this).left - paramAnonymousFloat1 <= PhotoView.q(PhotoView.this).left)) {
             break label831;
@@ -886,7 +955,7 @@ public class PhotoView
           }
           PhotoView.d(PhotoView.this).postTranslate(-f1, 0.0F);
           PhotoView.a(PhotoView.this, (int)(PhotoView.r(PhotoView.this) - f1));
-          if (PhotoView.this.cL(paramAnonymousFloat2)) {
+          if (PhotoView.this.dg(paramAnonymousFloat2)) {
             if ((paramAnonymousFloat2 >= 0.0F) || (PhotoView.p(PhotoView.this).top - paramAnonymousFloat2 <= PhotoView.q(PhotoView.this).top)) {
               break label825;
             }
@@ -972,20 +1041,20 @@ public class PhotoView
       {
         AppMethodBeat.i(164257);
         b localb = new b();
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+        localb.bn(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
         PhotoView.this.postDelayed(PhotoView.k(PhotoView.this), 250L);
         com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/view/PhotoView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(164257);
         return false;
       }
     };
-    this.RkZ = new Rect();
+    this.YME = new Rect();
     init();
     AppMethodBeat.o(164284);
   }
   
-  private static int H(Drawable paramDrawable)
+  private static int N(Drawable paramDrawable)
   {
     AppMethodBeat.i(164290);
     int j = paramDrawable.getIntrinsicWidth();
@@ -1001,7 +1070,7 @@ public class PhotoView
     return j;
   }
   
-  private static int I(Drawable paramDrawable)
+  private static int O(Drawable paramDrawable)
   {
     AppMethodBeat.i(164291);
     int j = paramDrawable.getIntrinsicHeight();
@@ -1023,31 +1092,31 @@ public class PhotoView
     if (this.isInit)
     {
       reset();
-      this.RkZ.set(paramInfo.RkZ);
+      this.YME.set(paramInfo.YME);
       PhotoView.Info localInfo = getInfo();
-      float f1 = paramInfo.RkJ.width() / localInfo.RkJ.width();
-      float f2 = paramInfo.RkJ.height() / localInfo.RkJ.height();
+      float f1 = paramInfo.YMo.width() / localInfo.YMo.width();
+      float f2 = paramInfo.YMo.height() / localInfo.YMo.height();
       if (f1 < f2)
       {
-        f2 = paramInfo.nYV.left + paramInfo.nYV.width() / 2.0F;
-        float f3 = paramInfo.nYV.top + paramInfo.nYV.height() / 2.0F;
-        float f4 = localInfo.nYV.left + localInfo.nYV.width() / 2.0F;
-        float f5 = localInfo.nYV.top;
-        f5 = localInfo.nYV.height() / 2.0F + f5;
-        this.Rko.reset();
-        this.Rko.postTranslate(f2 - f4, f3 - f5);
-        this.Rko.postScale(f1, f1, f2, f3);
-        this.Rko.postRotate(paramInfo.RkD, f2, f3);
-        hfO();
-        this.RkM.set(f2, f3);
-        this.RkN.set(f2, f3);
-        this.RkO.ma((int)-(f2 - f4), (int)-(f3 - f5));
-        this.RkO.aD(f1, 1.0F);
-        this.RkO.mb((int)paramInfo.RkD, 0);
-        if ((paramInfo.xsQ.width() < paramInfo.RkJ.width()) || (paramInfo.xsQ.height() < paramInfo.RkJ.height()))
+        f2 = paramInfo.raG.left + paramInfo.raG.width() / 2.0F;
+        float f3 = paramInfo.raG.top + paramInfo.raG.height() / 2.0F;
+        float f4 = localInfo.raG.left + localInfo.raG.width() / 2.0F;
+        float f5 = localInfo.raG.top;
+        f5 = localInfo.raG.height() / 2.0F + f5;
+        this.YLT.reset();
+        this.YLT.postTranslate(f2 - f4, f3 - f5);
+        this.YLT.postScale(f1, f1, f2, f3);
+        this.YLT.postRotate(paramInfo.YMi, f2, f3);
+        ihm();
+        this.YMr.set(f2, f3);
+        this.YMs.set(f2, f3);
+        this.YMt.nr((int)-(f2 - f4), (int)-(f3 - f5));
+        this.YMt.aL(f1, 1.0F);
+        this.YMt.ns((int)paramInfo.YMi, 0);
+        if ((paramInfo.Cfp.width() < paramInfo.YMo.width()) || (paramInfo.Cfp.height() < paramInfo.YMo.height()))
         {
-          f2 = paramInfo.xsQ.width() / paramInfo.RkJ.width();
-          f3 = paramInfo.xsQ.height() / paramInfo.RkJ.height();
+          f2 = paramInfo.Cfp.width() / paramInfo.YMo.width();
+          f3 = paramInfo.Cfp.height() / paramInfo.YMo.height();
           f1 = f2;
           if (f2 > 1.0F) {
             f1 = 1.0F;
@@ -1056,7 +1125,7 @@ public class PhotoView
           if (f3 > 1.0F) {
             f2 = 1.0F;
           }
-          if (paramInfo.Rks != ImageView.ScaleType.FIT_START) {
+          if (paramInfo.YLX != ImageView.ScaleType.FIT_START) {
             break label488;
           }
           paramInfo = new g();
@@ -1064,81 +1133,56 @@ public class PhotoView
       }
       for (;;)
       {
-        this.RkO.a(f1, f2, 1.0F - f1, 1.0F - f2, this.Rki / 3, paramInfo);
-        this.xt.setScale(f1, f2, (this.RkJ.left + this.RkJ.right) / 2.0F, paramInfo.hfP());
-        this.xt.mapRect(this.RkO.Rlm, this.RkJ);
-        this.RkP = this.RkO.Rlm;
-        this.RkO.start();
+        this.YMt.a(f1, f2, 1.0F - f1, 1.0F - f2, this.YLN / 3, paramInfo);
+        this.auf.setScale(f1, f2, (this.YMo.left + this.YMo.right) / 2.0F, paramInfo.ihn());
+        this.auf.mapRect(this.YMt.YMR, this.YMo);
+        this.YMu = this.YMt.YMR;
+        this.YMt.start();
         AppMethodBeat.o(164318);
         return;
         f1 = f2;
         break;
         label488:
-        if (paramInfo.Rks == ImageView.ScaleType.FIT_END) {
+        if (paramInfo.YLX == ImageView.ScaleType.FIT_END) {
           paramInfo = new b();
         } else {
           paramInfo = new d();
         }
       }
     }
-    this.RkQ = paramInfo;
-    this.RkR = System.currentTimeMillis();
+    this.YMv = paramInfo;
+    this.YMw = System.currentTimeMillis();
     AppMethodBeat.o(164318);
   }
   
-  private void a(i parami)
-  {
-    AppMethodBeat.i(164302);
-    this.Rkp = parami.Rlq;
-    this.Rko = parami.Rlp;
-    this.OUN = parami.Rlr;
-    this.xt = parami.rM;
-    this.RkG = (parami.Rls.width() / 2.0F);
-    this.RkH = (parami.Rls.height() / 2.0F);
-    if (!this.xsQ.isEmpty())
-    {
-      parami.BZm.set(this.xsQ);
-      parami.Rlw = this.RkL;
-    }
-    this.xsQ = parami.BZm;
-    this.RkI = parami.Rls;
-    this.RkJ = parami.Rlt;
-    this.dgT = parami.Rlu;
-    this.RkK = parami.Rlv;
-    this.RkL = parami.Rlw;
-    this.RkM = parami.Rlx;
-    this.RkN = parami.Rly;
-    AppMethodBeat.o(164302);
-  }
-  
-  private void hfF()
+  private void ihd()
   {
     float f2 = 1.0F;
     AppMethodBeat.i(164292);
-    if (!this.Rku)
+    if (!this.YLZ)
     {
       AppMethodBeat.o(164292);
       return;
     }
-    if (!this.Rkv)
+    if (!this.YMa)
     {
       AppMethodBeat.o(164292);
       return;
     }
-    if (this.RkP != null) {
-      this.RkP.setEmpty();
+    if (this.YMu != null) {
+      this.YMu.setEmpty();
     }
-    this.OUN.reset();
-    this.Rko.reset();
-    this.Rkp.reset();
-    this.xt.reset();
-    this.Rky = false;
+    this.Woa.reset();
+    this.YLT.reset();
+    this.YLU.reset();
+    this.auf.reset();
+    this.YMd = false;
     Drawable localDrawable = getDrawable();
     int i = getWidth();
     int j = getHeight();
-    int k = H(localDrawable);
-    int m = I(localDrawable);
-    this.RkI.set(0.0F, 0.0F, k, m);
+    int k = N(localDrawable);
+    int m = O(localDrawable);
+    this.YMn.set(0.0F, 0.0F, k, m);
     int n = (i - k) / 2;
     int i1 = (j - m) / 2;
     if (k > i) {}
@@ -1149,85 +1193,84 @@ public class PhotoView
       }
       if (f1 < f2)
       {
-        this.OUN.reset();
-        this.OUN.postTranslate(n, i1);
-        this.OUN.postScale(f1, f1, this.RkL.x, this.RkL.y);
-        this.OUN.mapRect(this.RkI);
-        this.RkG = (this.RkI.width() / 2.0F);
-        this.RkH = (this.RkI.height() / 2.0F);
-        this.RkM.set(this.RkL);
-        this.RkN.set(this.RkM);
-        hfO();
-        switch (PhotoView.5.Av[this.Rks.ordinal()])
+        this.Woa.reset();
+        this.Woa.postTranslate(n, i1);
+        this.Woa.postScale(f1, f1, this.YMq.x, this.YMq.y);
+        this.Woa.mapRect(this.YMn);
+        this.YMl = (this.YMn.width() / 2.0F);
+        this.YMm = (this.YMn.height() / 2.0F);
+        this.YMr.set(this.YMq);
+        this.YMs.set(this.YMr);
+        ihm();
+        switch (PhotoView.5.apX[this.YLX.ordinal()])
         {
         }
       }
       for (;;)
       {
         this.isInit = true;
-        if ((this.RkQ != null) && (System.currentTimeMillis() - this.RkR < this.Rkn)) {
-          a(this.RkQ);
+        if ((this.YMv != null) && (System.currentTimeMillis() - this.YMw < this.YLS)) {
+          a(this.YMv);
         }
-        this.RkQ = null;
-        if (this.RkU != null)
+        this.YMv = null;
+        if (this.YMz != null)
         {
-          a(this.RkU);
-          setImageMatrix(this.Rkp);
-          this.RkU = null;
+          setImageMatrix(this.YLU);
+          this.YMz = null;
         }
         AppMethodBeat.o(164292);
         return;
         f1 = f2;
         break;
-        hfG();
+        ihe();
         continue;
-        hfH();
+        ihf();
         continue;
-        hfI();
+        ihg();
         continue;
-        hfJ();
+        ihh();
         continue;
-        hfK();
+        ihi();
         continue;
-        hfL();
+        ihj();
         continue;
-        hfM();
+        ihk();
       }
     }
   }
   
-  private void hfG()
+  private void ihe()
   {
     AppMethodBeat.i(164293);
-    if (!this.Rku)
+    if (!this.YLZ)
     {
       AppMethodBeat.o(164293);
       return;
     }
-    if (!this.Rkv)
+    if (!this.YMa)
     {
       AppMethodBeat.o(164293);
       return;
     }
     Drawable localDrawable = getDrawable();
-    int i = H(localDrawable);
-    int j = I(localDrawable);
+    int i = N(localDrawable);
+    int j = O(localDrawable);
     float f1;
     float f2;
-    if ((i > this.xsQ.width()) || (j > this.xsQ.height()))
+    if ((i > this.Cfp.width()) || (j > this.Cfp.height()))
     {
-      f1 = i / this.RkJ.width();
-      f2 = j / this.RkJ.height();
+      f1 = i / this.YMo.width();
+      f2 = j / this.YMo.height();
       if (f1 <= f2) {
         break label159;
       }
     }
     for (;;)
     {
-      this.dhh = f1;
-      this.Rko.postScale(this.dhh, this.dhh, this.RkL.x, this.RkL.y);
-      hfO();
-      hfN();
+      this.eYO = f1;
+      this.YLT.postScale(this.eYO, this.eYO, this.YMq.x, this.YMq.y);
+      ihm();
+      ihl();
       AppMethodBeat.o(164293);
       return;
       label159:
@@ -1235,25 +1278,25 @@ public class PhotoView
     }
   }
   
-  private void hfH()
+  private void ihf()
   {
     AppMethodBeat.i(164294);
     float f1;
     float f2;
-    if ((this.RkJ.width() < this.xsQ.width()) || (this.RkJ.height() < this.xsQ.height()))
+    if ((this.YMo.width() < this.Cfp.width()) || (this.YMo.height() < this.Cfp.height()))
     {
-      f1 = this.xsQ.width() / this.RkJ.width();
-      f2 = this.xsQ.height() / this.RkJ.height();
+      f1 = this.Cfp.width() / this.YMo.width();
+      f2 = this.Cfp.height() / this.YMo.height();
       if (f1 <= f2) {
         break label130;
       }
     }
     for (;;)
     {
-      this.dhh = f1;
-      this.Rko.postScale(this.dhh, this.dhh, this.RkL.x, this.RkL.y);
-      hfO();
-      hfN();
+      this.eYO = f1;
+      this.YLT.postScale(this.eYO, this.eYO, this.YMq.x, this.YMq.y);
+      ihm();
+      ihl();
       AppMethodBeat.o(164294);
       return;
       label130:
@@ -1261,25 +1304,25 @@ public class PhotoView
     }
   }
   
-  private void hfI()
+  private void ihg()
   {
     AppMethodBeat.i(164295);
     float f1;
     float f2;
-    if ((this.RkJ.width() > this.xsQ.width()) || (this.RkJ.height() > this.xsQ.height()))
+    if ((this.YMo.width() > this.Cfp.width()) || (this.YMo.height() > this.Cfp.height()))
     {
-      f1 = this.xsQ.width() / this.RkJ.width();
-      f2 = this.xsQ.height() / this.RkJ.height();
+      f1 = this.Cfp.width() / this.YMo.width();
+      f2 = this.Cfp.height() / this.YMo.height();
       if (f1 >= f2) {
         break label130;
       }
     }
     for (;;)
     {
-      this.dhh = f1;
-      this.Rko.postScale(this.dhh, this.dhh, this.RkL.x, this.RkL.y);
-      hfO();
-      hfN();
+      this.eYO = f1;
+      this.YLT.postScale(this.eYO, this.eYO, this.YMq.x, this.YMq.y);
+      ihm();
+      ihl();
       AppMethodBeat.o(164295);
       return;
       label130:
@@ -1287,92 +1330,92 @@ public class PhotoView
     }
   }
   
-  private void hfJ()
+  private void ihh()
   {
     AppMethodBeat.i(164296);
-    if (this.RkJ.width() < this.xsQ.width())
+    if (this.YMo.width() < this.Cfp.width())
     {
-      this.dhh = (this.xsQ.width() / this.RkJ.width());
-      this.Rko.postScale(this.dhh, this.dhh, this.RkL.x, this.RkL.y);
-      hfO();
-      hfN();
+      this.eYO = (this.Cfp.width() / this.YMo.width());
+      this.YLT.postScale(this.eYO, this.eYO, this.YMq.x, this.YMq.y);
+      ihm();
+      ihl();
     }
     AppMethodBeat.o(164296);
   }
   
-  private void hfK()
+  private void ihi()
   {
     AppMethodBeat.i(164297);
-    hfJ();
-    float f = -this.RkJ.top;
-    this.Rko.postTranslate(0.0F, f);
-    hfO();
-    hfN();
-    this.RkF = ((int)(f + this.RkF));
+    ihh();
+    float f = -this.YMo.top;
+    this.YLT.postTranslate(0.0F, f);
+    ihm();
+    ihl();
+    this.YMk = ((int)(f + this.YMk));
     AppMethodBeat.o(164297);
   }
   
-  private void hfL()
+  private void ihj()
   {
     AppMethodBeat.i(164298);
-    hfJ();
-    float f = this.xsQ.bottom - this.RkJ.bottom;
-    this.RkF = ((int)(this.RkF + f));
-    this.Rko.postTranslate(0.0F, f);
-    hfO();
-    hfN();
+    ihh();
+    float f = this.Cfp.bottom - this.YMo.bottom;
+    this.YMk = ((int)(this.YMk + f));
+    this.YLT.postTranslate(0.0F, f);
+    ihm();
+    ihl();
     AppMethodBeat.o(164298);
   }
   
-  private void hfM()
+  private void ihk()
   {
     AppMethodBeat.i(164299);
-    float f1 = this.xsQ.width() / this.RkJ.width();
-    float f2 = this.xsQ.height() / this.RkJ.height();
-    this.Rko.postScale(f1, f2, this.RkL.x, this.RkL.y);
-    hfO();
-    hfN();
+    float f1 = this.Cfp.width() / this.YMo.width();
+    float f2 = this.Cfp.height() / this.YMo.height();
+    this.YLT.postScale(f1, f2, this.YMq.x, this.YMq.y);
+    ihm();
+    ihl();
     AppMethodBeat.o(164299);
   }
   
-  private void hfN()
+  private void ihl()
   {
     AppMethodBeat.i(164300);
     Drawable localDrawable = getDrawable();
-    int i = H(localDrawable);
-    int j = I(localDrawable);
-    this.RkI.set(0.0F, 0.0F, i, j);
-    this.OUN.set(this.Rkp);
-    this.OUN.mapRect(this.RkI);
-    this.RkG = (this.RkI.width() / 2.0F);
-    this.RkH = (this.RkI.height() / 2.0F);
-    this.dhh = 1.0F;
-    this.RkE = 0;
-    this.RkF = 0;
-    this.Rko.reset();
+    int i = N(localDrawable);
+    int j = O(localDrawable);
+    this.YMn.set(0.0F, 0.0F, i, j);
+    this.Woa.set(this.YLU);
+    this.Woa.mapRect(this.YMn);
+    this.YMl = (this.YMn.width() / 2.0F);
+    this.YMm = (this.YMn.height() / 2.0F);
+    this.eYO = 1.0F;
+    this.YMj = 0;
+    this.YMk = 0;
+    this.YLT.reset();
     AppMethodBeat.o(164300);
   }
   
-  private void hfO()
+  private void ihm()
   {
     boolean bool2 = true;
     AppMethodBeat.i(164301);
-    this.Rkp.set(this.OUN);
-    this.Rkp.postConcat(this.Rko);
-    setImageMatrix(this.Rkp);
-    this.Rko.mapRect(this.RkJ, this.RkI);
-    if (this.RkJ.width() > this.xsQ.width())
+    this.YLU.set(this.Woa);
+    this.YLU.postConcat(this.YLT);
+    setImageMatrix(this.YLU);
+    this.YLT.mapRect(this.YMo, this.YMn);
+    if (this.YMo.width() > this.Cfp.width())
     {
       bool1 = true;
-      this.RkA = bool1;
-      if (this.RkJ.height() <= this.xsQ.height()) {
+      this.YMf = bool1;
+      if (this.YMo.height() <= this.Cfp.height()) {
         break label117;
       }
     }
     label117:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.RkB = bool1;
+      this.YMg = bool1;
       AppMethodBeat.o(164301);
       return;
       bool1 = false;
@@ -1384,19 +1427,19 @@ public class PhotoView
   {
     AppMethodBeat.i(164285);
     super.setScaleType(ImageView.ScaleType.MATRIX);
-    if (this.Rks == null) {
-      this.Rks = ImageView.ScaleType.CENTER_INSIDE;
+    if (this.YLX == null) {
+      this.YLX = ImageView.ScaleType.CENTER_INSIDE;
     }
-    this.Rkq = new f(this.RkV);
-    this.PO = new GestureDetector(getContext(), this.RkY);
-    this.Rkr = new ScaleGestureDetector(getContext(), this.RkW);
+    this.YLV = new f(this.YMA);
+    this.Nf = new GestureDetector(getContext(), this.YMD);
+    this.YLW = new ScaleGestureDetector(getContext(), this.YMB);
     float f = getResources().getDisplayMetrics().density;
-    this.Rkk = ((int)(f * 30.0F));
-    this.Rkl = ((int)(f * 30.0F));
-    this.Rkm = ((int)(f * 140.0F));
-    this.Rkh = 35;
-    this.Rki = 200;
-    this.Rkj = 3.0F;
+    this.YLP = ((int)(f * 30.0F));
+    this.YLQ = ((int)(f * 30.0F));
+    this.YLR = ((int)(f * 140.0F));
+    this.YLM = 35;
+    this.YLN = 200;
+    this.YLO = 3.0F;
     AppMethodBeat.o(164285);
   }
   
@@ -1405,45 +1448,45 @@ public class PhotoView
     int j = 0;
     AppMethodBeat.i(164308);
     int i;
-    if (paramRectF.width() <= this.xsQ.width())
+    if (paramRectF.width() <= this.Cfp.width())
     {
       if (p(paramRectF)) {
         break label275;
       }
-      i = -(int)((this.xsQ.width() - paramRectF.width()) / 2.0F - paramRectF.left);
+      i = -(int)((this.Cfp.width() - paramRectF.width()) / 2.0F - paramRectF.left);
     }
     for (;;)
     {
-      if (paramRectF.height() <= this.xsQ.height()) {
+      if (paramRectF.height() <= this.Cfp.height()) {
         if (!o(paramRectF)) {
-          j = -(int)((this.xsQ.height() - paramRectF.height()) / 2.0F - paramRectF.top);
+          j = -(int)((this.Cfp.height() - paramRectF.height()) / 2.0F - paramRectF.top);
         }
       }
       for (;;)
       {
         if ((i != 0) || (j != 0))
         {
-          if (!this.RkO.xsO.isFinished()) {
-            this.RkO.xsO.abortAnimation();
+          if (!this.YMt.Cfn.isFinished()) {
+            this.YMt.Cfn.abortAnimation();
           }
-          this.RkO.ma(-i, -j);
+          this.YMt.nr(-i, -j);
         }
         AppMethodBeat.o(164308);
         return;
-        if (paramRectF.left > this.xsQ.left)
+        if (paramRectF.left > this.Cfp.left)
         {
-          i = (int)(paramRectF.left - this.xsQ.left);
+          i = (int)(paramRectF.left - this.Cfp.left);
           break;
         }
-        if (paramRectF.right >= this.xsQ.right) {
+        if (paramRectF.right >= this.Cfp.right) {
           break label275;
         }
-        i = (int)(paramRectF.right - this.xsQ.right);
+        i = (int)(paramRectF.right - this.Cfp.right);
         break;
-        if (paramRectF.top > this.xsQ.top) {
-          j = (int)(paramRectF.top - this.xsQ.top);
-        } else if (paramRectF.bottom < this.xsQ.bottom) {
-          j = (int)(paramRectF.bottom - this.xsQ.bottom);
+        if (paramRectF.top > this.Cfp.top) {
+          j = (int)(paramRectF.top - this.Cfp.top);
+        } else if (paramRectF.bottom < this.Cfp.bottom) {
+          j = (int)(paramRectF.bottom - this.Cfp.bottom);
         }
       }
       label275:
@@ -1454,7 +1497,7 @@ public class PhotoView
   private boolean o(RectF paramRectF)
   {
     AppMethodBeat.i(164309);
-    if (Math.abs(Math.round(paramRectF.top) - (this.xsQ.height() - paramRectF.height()) / 2.0F) < 1.0F)
+    if (Math.abs(Math.round(paramRectF.top) - (this.Cfp.height() - paramRectF.height()) / 2.0F) < 1.0F)
     {
       AppMethodBeat.o(164309);
       return true;
@@ -1466,7 +1509,7 @@ public class PhotoView
   private boolean p(RectF paramRectF)
   {
     AppMethodBeat.i(164310);
-    if (Math.abs(Math.round(paramRectF.left) - (this.xsQ.width() - paramRectF.width()) / 2.0F) < 1.0F)
+    if (Math.abs(Math.round(paramRectF.left) - (this.Cfp.width() - paramRectF.width()) / 2.0F) < 1.0F)
     {
       AppMethodBeat.o(164310);
       return true;
@@ -1478,28 +1521,54 @@ public class PhotoView
   private void reset()
   {
     AppMethodBeat.i(164317);
-    this.Rko.reset();
-    hfO();
-    this.dhh = 1.0F;
-    this.RkE = 0;
-    this.RkF = 0;
+    this.YLT.reset();
+    ihm();
+    this.eYO = 1.0F;
+    this.YMj = 0;
+    this.YMk = 0;
     AppMethodBeat.o(164317);
   }
   
-  public final boolean cK(float paramFloat)
+  public boolean canScrollHorizontally(int paramInt)
+  {
+    AppMethodBeat.i(164313);
+    if (this.YLY)
+    {
+      AppMethodBeat.o(164313);
+      return true;
+    }
+    boolean bool = df(paramInt);
+    AppMethodBeat.o(164313);
+    return bool;
+  }
+  
+  public boolean canScrollVertically(int paramInt)
+  {
+    AppMethodBeat.i(164314);
+    if (this.YLY)
+    {
+      AppMethodBeat.o(164314);
+      return true;
+    }
+    boolean bool = dg(paramInt);
+    AppMethodBeat.o(164314);
+    return bool;
+  }
+  
+  public final boolean df(float paramFloat)
   {
     AppMethodBeat.i(164311);
-    if (this.RkJ.width() <= this.xsQ.width())
+    if (this.YMo.width() <= this.Cfp.width())
     {
       AppMethodBeat.o(164311);
       return false;
     }
-    if ((paramFloat < 0.0F) && (Math.round(this.RkJ.left) - paramFloat >= this.xsQ.left))
+    if ((paramFloat < 0.0F) && (Math.round(this.YMo.left) - paramFloat >= this.Cfp.left))
     {
       AppMethodBeat.o(164311);
       return false;
     }
-    if ((paramFloat > 0.0F) && (Math.round(this.RkJ.right) - paramFloat <= this.xsQ.right))
+    if ((paramFloat > 0.0F) && (Math.round(this.YMo.right) - paramFloat <= this.Cfp.right))
     {
       AppMethodBeat.o(164311);
       return false;
@@ -1508,20 +1577,20 @@ public class PhotoView
     return true;
   }
   
-  public final boolean cL(float paramFloat)
+  public final boolean dg(float paramFloat)
   {
     AppMethodBeat.i(164312);
-    if (this.RkJ.height() <= this.xsQ.height())
+    if (this.YMo.height() <= this.Cfp.height())
     {
       AppMethodBeat.o(164312);
       return false;
     }
-    if ((paramFloat < 0.0F) && (Math.round(this.RkJ.top) - paramFloat >= this.xsQ.top))
+    if ((paramFloat < 0.0F) && (Math.round(this.YMo.top) - paramFloat >= this.Cfp.top))
     {
       AppMethodBeat.o(164312);
       return false;
     }
-    if ((paramFloat > 0.0F) && (Math.round(this.RkJ.bottom) - paramFloat <= this.xsQ.bottom))
+    if ((paramFloat > 0.0F) && (Math.round(this.YMo.bottom) - paramFloat <= this.Cfp.bottom))
     {
       AppMethodBeat.o(164312);
       return false;
@@ -1530,38 +1599,12 @@ public class PhotoView
     return true;
   }
   
-  public boolean canScrollHorizontally(int paramInt)
-  {
-    AppMethodBeat.i(164313);
-    if (this.Rkt)
-    {
-      AppMethodBeat.o(164313);
-      return true;
-    }
-    boolean bool = cK(paramInt);
-    AppMethodBeat.o(164313);
-    return bool;
-  }
-  
-  public boolean canScrollVertically(int paramInt)
-  {
-    AppMethodBeat.i(164314);
-    if (this.Rkt)
-    {
-      AppMethodBeat.o(164314);
-      return true;
-    }
-    boolean bool = cL(paramInt);
-    AppMethodBeat.o(164314);
-    return bool;
-  }
-  
   public void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(164306);
     paramCanvas.save();
-    if (this.RkP != null) {
-      paramCanvas.clipRect(this.RkP);
+    if (this.YMu != null) {
+      paramCanvas.clipRect(this.YMu);
     }
     super.draw(paramCanvas);
     paramCanvas.restore();
@@ -1570,7 +1613,7 @@ public class PhotoView
   
   public int getAnimaDuring()
   {
-    return this.Rki;
+    return this.YLN;
   }
   
   public long getDefaultAnimDuring()
@@ -1583,7 +1626,7 @@ public class PhotoView
     AppMethodBeat.i(164315);
     Object localObject = new Rect();
     int[] arrayOfInt = new int[2];
-    Rect localRect1 = this.RkZ;
+    Rect localRect1 = this.YME;
     Rect localRect2 = new Rect();
     getGlobalVisibleRect(localRect2);
     if ((!localRect1.isEmpty()) && (localRect2.bottom - getHeight() < localRect1.top)) {
@@ -1593,29 +1636,29 @@ public class PhotoView
     arrayOfInt[1] = localRect2.top;
     arrayOfInt[0] = ((int)(arrayOfInt[0] + 0.5F));
     arrayOfInt[1] = ((int)(arrayOfInt[1] + 0.5F));
-    ((Rect)localObject).set(arrayOfInt[0] + (int)this.RkJ.left, arrayOfInt[1] + (int)this.RkJ.top, arrayOfInt[0] + (int)this.RkJ.right, arrayOfInt[1] + (int)this.RkJ.bottom);
-    localObject = new PhotoView.Info((Rect)localObject, this.RkJ, this.xsQ, this.RkI, this.RkL, this.dhh, this.RkD, this.Rks, this.RkZ);
+    ((Rect)localObject).set(arrayOfInt[0] + (int)this.YMo.left, arrayOfInt[1] + (int)this.YMo.top, arrayOfInt[0] + (int)this.YMo.right, arrayOfInt[1] + (int)this.YMo.bottom);
+    localObject = new PhotoView.Info((Rect)localObject, this.YMo, this.Cfp, this.YMn, this.YMq, this.eYO, this.YMi, this.YLX, this.YME);
     AppMethodBeat.o(164315);
     return localObject;
   }
   
   public float getMaxScale()
   {
-    return this.Rkj;
+    return this.YLO;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(164303);
-    if (!this.Rku)
+    if (!this.YLZ)
     {
       super.onMeasure(paramInt1, paramInt2);
       AppMethodBeat.o(164303);
       return;
     }
     Object localObject = getDrawable();
-    int j = H((Drawable)localObject);
-    int i = I((Drawable)localObject);
+    int j = N((Drawable)localObject);
+    int i = O((Drawable)localObject);
     int m = View.MeasureSpec.getSize(paramInt1);
     int k = View.MeasureSpec.getSize(paramInt2);
     int i1 = View.MeasureSpec.getMode(paramInt1);
@@ -1643,7 +1686,7 @@ public class PhotoView
       paramInt2 = k;
       k = paramInt1;
       m = paramInt2;
-      if (this.QEq)
+      if (this.YcR)
       {
         k = paramInt1;
         m = paramInt2;
@@ -1720,12 +1763,12 @@ public class PhotoView
     AppMethodBeat.i(164305);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     Log.i("PhotoView", "[onSizeChanged] w:%s, h:%s, oldw:%s, oldh:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-    this.xsQ.set(0.0F, 0.0F, paramInt1, paramInt2);
-    this.RkL.set(paramInt1 / 2, paramInt2 / 2);
-    if (!this.Rkv)
+    this.Cfp.set(0.0F, 0.0F, paramInt1, paramInt2);
+    this.YMq.set(paramInt1 / 2, paramInt2 / 2);
+    if (!this.YMa)
     {
-      this.Rkv = true;
-      hfF();
+      this.YMa = true;
+      ihd();
     }
     AppMethodBeat.o(164305);
   }
@@ -1733,19 +1776,19 @@ public class PhotoView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(164307);
-    if (this.ded)
+    if (this.dih)
     {
-      this.RkP = null;
+      this.YMu = null;
       int i = paramMotionEvent.getActionMasked();
       if (paramMotionEvent.getPointerCount() >= 2) {
-        this.Rkt = true;
+        this.YLY = true;
       }
-      Object localObject = this.PO;
-      com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bl(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.axQ(), "com/tencent/mm/view/PhotoView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-      com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)locala.pG(0)), "com/tencent/mm/view/PhotoView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-      if (this.Rkx) {
-        localObject = this.Rkq;
+      Object localObject = this.Nf;
+      com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bm(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aFh(), "com/tencent/mm/view/PhotoView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)locala.sf(0)), "com/tencent/mm/view/PhotoView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      if (this.YMc) {
+        localObject = this.YLV;
       }
       float f2;
       float f3;
@@ -1755,62 +1798,62 @@ public class PhotoView
       case 3: 
       case 4: 
       default: 
-        this.Rkr.onTouchEvent(paramMotionEvent);
-        if (((i == 1) || (i == 3)) && (!this.RkO.isRunning))
+        this.YLW.onTouchEvent(paramMotionEvent);
+        if (((i == 1) || (i == 3)) && (!this.YMt.isRunning))
         {
-          if ((this.Rkz) || (this.RkD % 90.0F != 0.0F))
+          if ((this.YMe) || (this.YMi % 90.0F != 0.0F))
           {
-            f2 = (int)(this.RkD / 90.0F) * 90;
-            f3 = this.RkD % 90.0F;
+            f2 = (int)(this.YMi / 90.0F) * 90;
+            f3 = this.YMi % 90.0F;
             if (f3 <= 45.0F) {
               break label639;
             }
             f1 = f2 + 90.0F;
             label265:
-            this.RkO.mb((int)this.RkD, (int)f1);
-            this.RkD = f1;
+            this.YMt.ns((int)this.YMi, (int)f1);
+            this.YMi = f1;
           }
-          f1 = this.dhh;
-          if (this.dhh >= 1.0F) {
+          f1 = this.eYO;
+          if (this.eYO >= 1.0F) {
             break label663;
           }
           f1 = 1.0F;
-          this.RkO.aD(this.dhh, 1.0F);
+          this.YMt.aL(this.eYO, 1.0F);
         }
         break;
       }
       for (;;)
       {
-        f2 = this.RkJ.left + this.RkJ.width() / 2.0F;
-        f3 = this.RkJ.top + this.RkJ.height() / 2.0F;
-        this.RkM.set(f2, f3);
-        this.RkN.set(f2, f3);
-        this.RkE = 0;
-        this.RkF = 0;
-        this.xt.reset();
-        this.xt.postTranslate(-this.RkI.left, -this.RkI.top);
-        this.xt.postTranslate(f2 - this.RkG, f3 - this.RkH);
-        this.xt.postScale(f1, f1, f2, f3);
-        this.xt.postRotate(this.RkD, f2, f3);
-        this.xt.mapRect(this.dgT, this.RkI);
-        n(this.dgT);
-        this.RkO.start();
+        f2 = this.YMo.left + this.YMo.width() / 2.0F;
+        f3 = this.YMo.top + this.YMo.height() / 2.0F;
+        this.YMr.set(f2, f3);
+        this.YMs.set(f2, f3);
+        this.YMj = 0;
+        this.YMk = 0;
+        this.auf.reset();
+        this.auf.postTranslate(-this.YMn.left, -this.YMn.top);
+        this.auf.postTranslate(f2 - this.YMl, f3 - this.YMm);
+        this.auf.postScale(f1, f1, f2, f3);
+        this.auf.postRotate(this.YMi, f2, f3);
+        this.auf.mapRect(this.eYA, this.YMn);
+        n(this.eYA);
+        this.YMt.start();
         AppMethodBeat.o(164307);
         return true;
         if (paramMotionEvent.getPointerCount() != 2) {
           break;
         }
-        ((f)localObject).Rld = ((f)localObject).az(paramMotionEvent);
+        ((f)localObject).YMI = ((f)localObject).aH(paramMotionEvent);
         break;
         if (paramMotionEvent.getPointerCount() <= 1) {
           break;
         }
-        ((f)localObject).Rle = ((f)localObject).az(paramMotionEvent);
-        double d = Math.toDegrees(Math.atan(((f)localObject).Rle)) - Math.toDegrees(Math.atan(((f)localObject).Rld));
+        ((f)localObject).YMJ = ((f)localObject).aH(paramMotionEvent);
+        double d = Math.toDegrees(Math.atan(((f)localObject).YMJ)) - Math.toDegrees(Math.atan(((f)localObject).YMI));
         if (Math.abs(d) <= 120.0D) {
-          ((f)localObject).Rlc.v((float)d, (((f)localObject).x2 + ((f)localObject).x1) / 2.0F, (((f)localObject).y2 + ((f)localObject).y1) / 2.0F);
+          ((f)localObject).YMH.w((float)d, (((f)localObject).x2 + ((f)localObject).x1) / 2.0F, (((f)localObject).y2 + ((f)localObject).y1) / 2.0F);
         }
-        ((f)localObject).Rld = ((f)localObject).Rle;
+        ((f)localObject).YMI = ((f)localObject).YMJ;
         break;
         label639:
         f1 = f2;
@@ -1820,10 +1863,10 @@ public class PhotoView
         f1 = f2 - 90.0F;
         break label265;
         label663:
-        if (this.dhh > this.Rkj)
+        if (this.eYO > this.YLO)
         {
-          f1 = this.Rkj;
-          this.RkO.aD(this.dhh, this.Rkj);
+          f1 = this.YLO;
+          this.YMt.aL(this.eYO, this.YLO);
         }
       }
     }
@@ -1836,19 +1879,19 @@ public class PhotoView
   {
     AppMethodBeat.i(164304);
     super.setAdjustViewBounds(paramBoolean);
-    this.QEq = paramBoolean;
+    this.YcR = paramBoolean;
     AppMethodBeat.o(164304);
   }
   
   public void setAnimaDuring(int paramInt)
   {
-    this.Rki = paramInt;
+    this.YLN = paramInt;
   }
   
   public void setGlobalVisibleView(View paramView)
   {
     AppMethodBeat.i(164316);
-    paramView.getGlobalVisibleRect(this.RkZ);
+    paramView.getGlobalVisibleRect(this.YME);
     AppMethodBeat.o(164316);
   }
   
@@ -1859,7 +1902,7 @@ public class PhotoView
     super.setImageDrawable(paramDrawable);
     if (paramDrawable == null)
     {
-      this.Rku = false;
+      this.YLZ = false;
       AppMethodBeat.o(164289);
       return;
     }
@@ -1878,10 +1921,10 @@ public class PhotoView
       AppMethodBeat.o(164289);
       return;
     }
-    if (!this.Rku) {
-      this.Rku = true;
+    if (!this.YLZ) {
+      this.YLZ = true;
     }
-    hfF();
+    ihd();
     AppMethodBeat.o(164289);
   }
   
@@ -1905,30 +1948,30 @@ public class PhotoView
   
   public void setInterpolator(Interpolator paramInterpolator)
   {
-    this.RkO.Rln.Rlb = paramInterpolator;
+    this.YMt.YMS.YMG = paramInterpolator;
   }
   
   public void setMaxAnimFromWaiteTime(int paramInt)
   {
-    this.Rkn = paramInt;
+    this.YLS = paramInt;
   }
   
   public void setMaxScale(float paramFloat)
   {
-    this.Rkj = paramFloat;
+    this.YLO = paramFloat;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(164286);
     super.setOnClickListener(paramOnClickListener);
-    this.hEZ = paramOnClickListener;
+    this.kte = paramOnClickListener;
     AppMethodBeat.o(164286);
   }
   
   public void setOnLongClickListener(View.OnLongClickListener paramOnLongClickListener)
   {
-    this.RkT = paramOnLongClickListener;
+    this.YMy = paramOnLongClickListener;
   }
   
   public void setScaleType(ImageView.ScaleType paramScaleType)
@@ -1939,11 +1982,11 @@ public class PhotoView
       AppMethodBeat.o(164287);
       return;
     }
-    if (paramScaleType != this.Rks)
+    if (paramScaleType != this.YLX)
     {
-      this.Rks = paramScaleType;
+      this.YLX = paramScaleType;
       if (this.isInit) {
-        hfF();
+        ihd();
       }
     }
     AppMethodBeat.o(164287);
@@ -1951,7 +1994,7 @@ public class PhotoView
   
   public static abstract interface a
   {
-    public abstract float hfP();
+    public abstract float ihn();
   }
   
   public final class b
@@ -1959,7 +2002,7 @@ public class PhotoView
   {
     public b() {}
     
-    public final float hfP()
+    public final float ihn()
     {
       AppMethodBeat.i(164260);
       float f = PhotoView.p(PhotoView.this).bottom;
@@ -1968,12 +2011,38 @@ public class PhotoView
     }
   }
   
+  final class c
+    implements Interpolator
+  {
+    Interpolator YMG;
+    
+    private c()
+    {
+      AppMethodBeat.i(164267);
+      this.YMG = new DecelerateInterpolator();
+      AppMethodBeat.o(164267);
+    }
+    
+    public final float getInterpolation(float paramFloat)
+    {
+      AppMethodBeat.i(164268);
+      if (this.YMG != null)
+      {
+        paramFloat = this.YMG.getInterpolation(paramFloat);
+        AppMethodBeat.o(164268);
+        return paramFloat;
+      }
+      AppMethodBeat.o(164268);
+      return paramFloat;
+    }
+  }
+  
   public final class d
     implements PhotoView.a
   {
     public d() {}
     
-    public final float hfP()
+    public final float ihn()
     {
       AppMethodBeat.i(164269);
       float f = (PhotoView.p(PhotoView.this).top + PhotoView.p(PhotoView.this).bottom) / 2.0F;
@@ -1984,14 +2053,14 @@ public class PhotoView
   
   static abstract interface e
   {
-    public abstract void v(float paramFloat1, float paramFloat2, float paramFloat3);
+    public abstract void w(float paramFloat1, float paramFloat2, float paramFloat3);
   }
   
   public final class f
   {
-    PhotoView.e Rlc;
-    float Rld;
-    float Rle;
+    PhotoView.e YMH;
+    float YMI;
+    float YMJ;
     float x1;
     float x2;
     float y1;
@@ -1999,10 +2068,10 @@ public class PhotoView
     
     public f(PhotoView.e parame)
     {
-      this.Rlc = parame;
+      this.YMH = parame;
     }
     
-    final float az(MotionEvent paramMotionEvent)
+    final float aH(MotionEvent paramMotionEvent)
     {
       AppMethodBeat.i(164270);
       this.x1 = paramMotionEvent.getX(0);
@@ -2020,7 +2089,7 @@ public class PhotoView
   {
     public g() {}
     
-    public final float hfP()
+    public final float ihn()
     {
       AppMethodBeat.i(164271);
       float f = PhotoView.p(PhotoView.this).top;
@@ -2032,35 +2101,35 @@ public class PhotoView
   final class h
     implements Runnable
   {
-    OverScroller Rlf;
-    Scroller Rlg;
-    Scroller Rlh;
-    Scroller Rli;
-    PhotoView.a Rlj;
-    int Rlk;
-    int Rll;
-    RectF Rlm;
-    PhotoView.c Rln;
-    int auo;
-    int aup;
+    OverScroller Cfn;
+    OverScroller YMK;
+    Scroller YML;
+    Scroller YMM;
+    Scroller YMN;
+    PhotoView.a YMO;
+    int YMP;
+    int YMQ;
+    RectF YMR;
+    PhotoView.c YMS;
+    int amg;
+    int amh;
     boolean isRunning;
-    OverScroller xsO;
     
     h()
     {
       AppMethodBeat.i(164273);
-      this.Rlm = new RectF();
-      this.Rln = new PhotoView.c(PhotoView.this, (byte)0);
+      this.YMR = new RectF();
+      this.YMS = new PhotoView.c(PhotoView.this, (byte)0);
       this$1 = PhotoView.this.getContext();
-      this.Rlf = new OverScroller(PhotoView.this, this.Rln);
-      this.Rlg = new Scroller(PhotoView.this, this.Rln);
-      this.xsO = new OverScroller(PhotoView.this, this.Rln);
-      this.Rlh = new Scroller(PhotoView.this, this.Rln);
-      this.Rli = new Scroller(PhotoView.this, this.Rln);
+      this.YMK = new OverScroller(PhotoView.this, this.YMS);
+      this.YML = new Scroller(PhotoView.this, this.YMS);
+      this.Cfn = new OverScroller(PhotoView.this, this.YMS);
+      this.YMM = new Scroller(PhotoView.this, this.YMS);
+      this.YMN = new Scroller(PhotoView.this, this.YMS);
       AppMethodBeat.o(164273);
     }
     
-    private void hfQ()
+    private void iho()
     {
       AppMethodBeat.i(164281);
       PhotoView.d(PhotoView.this).reset();
@@ -2074,7 +2143,7 @@ public class PhotoView
       AppMethodBeat.o(164281);
     }
     
-    private void hfR()
+    private void ihp()
     {
       AppMethodBeat.i(164282);
       if (this.isRunning) {
@@ -2086,31 +2155,31 @@ public class PhotoView
     final void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt, PhotoView.a parama)
     {
       AppMethodBeat.i(164276);
-      this.Rlh.startScroll((int)(paramFloat1 * 10000.0F), (int)(paramFloat2 * 10000.0F), (int)(paramFloat3 * 10000.0F), (int)(10000.0F * paramFloat4), paramInt);
-      this.Rlj = parama;
+      this.YMM.startScroll((int)(paramFloat1 * 10000.0F), (int)(paramFloat2 * 10000.0F), (int)(paramFloat3 * 10000.0F), (int)(10000.0F * paramFloat4), paramInt);
+      this.YMO = parama;
       AppMethodBeat.o(164276);
     }
     
-    final void aD(float paramFloat1, float paramFloat2)
+    final void aL(float paramFloat1, float paramFloat2)
     {
       AppMethodBeat.i(164275);
-      this.Rlg.startScroll((int)(paramFloat1 * 10000.0F), 0, (int)((paramFloat2 - paramFloat1) * 10000.0F), 0, PhotoView.F(PhotoView.this));
+      this.YML.startScroll((int)(paramFloat1 * 10000.0F), 0, (int)((paramFloat2 - paramFloat1) * 10000.0F), 0, PhotoView.F(PhotoView.this));
       AppMethodBeat.o(164275);
     }
     
-    final void ma(int paramInt1, int paramInt2)
+    final void nr(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(164274);
-      this.Rlk = 0;
-      this.Rll = 0;
-      this.Rlf.startScroll(0, 0, paramInt1, paramInt2, PhotoView.F(PhotoView.this));
+      this.YMP = 0;
+      this.YMQ = 0;
+      this.YMK.startScroll(0, 0, paramInt1, paramInt2, PhotoView.F(PhotoView.this));
       AppMethodBeat.o(164274);
     }
     
-    final void mb(int paramInt1, int paramInt2)
+    final void ns(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(164277);
-      this.Rli.startScroll(paramInt1, 0, paramInt2 - paramInt1, 0, PhotoView.F(PhotoView.this));
+      this.YMN.startScroll(paramInt1, 0, paramInt2 - paramInt1, 0, PhotoView.F(PhotoView.this));
       AppMethodBeat.o(164277);
     }
     
@@ -2119,65 +2188,65 @@ public class PhotoView
       int j = 1;
       int k = 0;
       AppMethodBeat.i(164280);
-      if (this.Rlg.computeScrollOffset()) {
-        PhotoView.c(PhotoView.this, this.Rlg.getCurrX() / 10000.0F);
+      if (this.YML.computeScrollOffset()) {
+        PhotoView.c(PhotoView.this, this.YML.getCurrX() / 10000.0F);
       }
       for (int i = 0;; i = 1)
       {
         int m;
         int n;
         int i1;
-        if (this.Rlf.computeScrollOffset())
+        if (this.YMK.computeScrollOffset())
         {
-          i = this.Rlf.getCurrX();
-          m = this.Rlk;
-          n = this.Rlf.getCurrY();
-          i1 = this.Rll;
+          i = this.YMK.getCurrX();
+          m = this.YMP;
+          n = this.YMK.getCurrY();
+          i1 = this.YMQ;
           PhotoView.a(PhotoView.this, i - m + PhotoView.r(PhotoView.this));
           PhotoView.b(PhotoView.this, n - i1 + PhotoView.v(PhotoView.this));
-          this.Rlk = this.Rlf.getCurrX();
-          this.Rll = this.Rlf.getCurrY();
+          this.YMP = this.YMK.getCurrX();
+          this.YMQ = this.YMK.getCurrY();
           i = 0;
         }
-        if (this.xsO.computeScrollOffset())
+        if (this.Cfn.computeScrollOffset())
         {
-          i = this.xsO.getCurrX();
-          m = this.auo;
-          n = this.xsO.getCurrY();
-          i1 = this.aup;
-          this.auo = this.xsO.getCurrX();
-          this.aup = this.xsO.getCurrY();
+          i = this.Cfn.getCurrX();
+          m = this.amg;
+          n = this.Cfn.getCurrY();
+          i1 = this.amh;
+          this.amg = this.Cfn.getCurrX();
+          this.amh = this.Cfn.getCurrY();
           PhotoView.a(PhotoView.this, i - m + PhotoView.r(PhotoView.this));
           PhotoView.b(PhotoView.this, n - i1 + PhotoView.v(PhotoView.this));
           i = 0;
         }
-        if (this.Rli.computeScrollOffset())
+        if (this.YMN.computeScrollOffset())
         {
-          PhotoView.b(PhotoView.this, this.Rli.getCurrX());
+          PhotoView.b(PhotoView.this, this.YMN.getCurrX());
           i = 0;
         }
-        if ((this.Rlh.computeScrollOffset()) || (PhotoView.H(PhotoView.this) != null))
+        if ((this.YMM.computeScrollOffset()) || (PhotoView.H(PhotoView.this) != null))
         {
-          float f1 = this.Rlh.getCurrX() / 10000.0F;
-          float f2 = this.Rlh.getCurrY() / 10000.0F;
-          PhotoView.A(PhotoView.this).setScale(f1, f2, (PhotoView.p(PhotoView.this).left + PhotoView.p(PhotoView.this).right) / 2.0F, this.Rlj.hfP());
-          PhotoView.A(PhotoView.this).mapRect(this.Rlm, PhotoView.p(PhotoView.this));
+          float f1 = this.YMM.getCurrX() / 10000.0F;
+          float f2 = this.YMM.getCurrY() / 10000.0F;
+          PhotoView.A(PhotoView.this).setScale(f1, f2, (PhotoView.p(PhotoView.this).left + PhotoView.p(PhotoView.this).right) / 2.0F, this.YMO.ihn());
+          PhotoView.A(PhotoView.this).mapRect(this.YMR, PhotoView.p(PhotoView.this));
           if (f1 == 1.0F)
           {
-            this.Rlm.left = PhotoView.q(PhotoView.this).left;
-            this.Rlm.right = PhotoView.q(PhotoView.this).right;
+            this.YMR.left = PhotoView.q(PhotoView.this).left;
+            this.YMR.right = PhotoView.q(PhotoView.this).right;
           }
           if (f2 == 1.0F)
           {
-            this.Rlm.top = PhotoView.q(PhotoView.this).top;
-            this.Rlm.bottom = PhotoView.q(PhotoView.this).bottom;
+            this.YMR.top = PhotoView.q(PhotoView.this).top;
+            this.YMR.bottom = PhotoView.q(PhotoView.this).bottom;
           }
-          PhotoView.b(PhotoView.this, this.Rlm);
+          PhotoView.b(PhotoView.this, this.YMR);
         }
         if (i == 0)
         {
-          hfQ();
-          hfR();
+          iho();
+          ihp();
           AppMethodBeat.o(164280);
           return;
         }
@@ -2206,7 +2275,7 @@ public class PhotoView
         for (;;)
         {
           if (i != 0) {
-            hfQ();
+            iho();
           }
           PhotoView.this.invalidate();
           if (PhotoView.I(PhotoView.this) != null) {
@@ -2244,7 +2313,7 @@ public class PhotoView
     {
       AppMethodBeat.i(164278);
       this.isRunning = true;
-      hfR();
+      ihp();
       AppMethodBeat.o(164278);
     }
     
@@ -2252,30 +2321,16 @@ public class PhotoView
     {
       AppMethodBeat.i(164279);
       PhotoView.this.removeCallbacks(this);
-      this.Rlf.abortAnimation();
-      this.Rlg.abortAnimation();
-      this.xsO.abortAnimation();
-      this.Rli.abortAnimation();
+      this.YMK.abortAnimation();
+      this.YML.abortAnimation();
+      this.Cfn.abortAnimation();
+      this.YMN.abortAnimation();
       this.isRunning = false;
       AppMethodBeat.o(164279);
     }
   }
   
-  public static final class i
-  {
-    public RectF BZm;
-    Matrix Rlp;
-    public Matrix Rlq;
-    Matrix Rlr;
-    RectF Rls;
-    public RectF Rlt;
-    RectF Rlu;
-    RectF Rlv;
-    PointF Rlw;
-    PointF Rlx;
-    PointF Rly;
-    Matrix rM;
-  }
+  public static final class i {}
 }
 
 

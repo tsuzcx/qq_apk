@@ -3,22 +3,15 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@android:id/background">
         <shape>
-            <corners android:radius="5.0dip" />
-            <solid android:color="@color/BW_100_Alpha_0_5" />
+            <corners android:radius="20.0dip" />
+            <solid android:color="@color/BW_100_Alpha_0_3" />
         </shape>
     </item>
     <item android:id="@android:id/progress">
         <clip>
             <shape>
+                <corners android:radius="20.0px" />
                 <solid android:color="@color/BW_100_Alpha_0_8" />
-            </shape>
-        </clip>
-    </item>
-    <item android:id="@android:id/secondaryProgress">
-        <clip>
-            <shape>
-                <corners android:radius="5.0dip" />
-                <solid android:color="@color/BW_100_Alpha_0_3" />
             </shape>
         </clip>
     </item>

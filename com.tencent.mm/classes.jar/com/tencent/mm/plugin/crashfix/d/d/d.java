@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 public final class d
   implements b
 {
-  private static Object cAP()
+  private static Object cPt()
   {
     Object localObject1 = null;
     AppMethodBeat.i(145635);
@@ -58,18 +58,18 @@ public final class d
     return localObject1;
   }
   
-  public final boolean Fh(int paramInt)
+  public final boolean IP(int paramInt)
   {
     return paramInt < 26;
   }
   
-  public final boolean cAO()
+  public final boolean cPs()
   {
     AppMethodBeat.i(145634);
-    Object localObject = cAP();
+    Object localObject = cPt();
     if (localObject != null)
     {
-      localObject = c.dc(localObject);
+      localObject = c.cZ(localObject);
       if (localObject == null)
       {
         Log.e("MicroMsg.ToastBadTokenFix", "INotificationManagerInvocationHandler.getProxy null");
@@ -82,7 +82,7 @@ public final class d
     {
       Field localField = Toast.class.getDeclaredField("sService");
       localField.setAccessible(true);
-      a.c(localField);
+      a.e(localField);
       localField.set(null, localObject);
       Log.i("MicroMsg.ToastBadTokenFix", "replace succ");
       AppMethodBeat.o(145634);
@@ -105,7 +105,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.crashfix.d.d.d
  * JD-Core Version:    0.7.0.1
  */

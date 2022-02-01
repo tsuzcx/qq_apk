@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/bu4" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <com.tencent.mm.ui.MMImageView android:id="@id/buq" android:layout_width="@dimen/h" android:layout_height="@dimen/h" android:layout_marginTop="@dimen/bu" />
+        <TextView android:ellipsize="end" android:gravity="center" android:id="@id/bu0" android:background="@drawable/wx" android:layout_marginLeft="@dimen/ce" android:layout_marginTop="@dimen/ci" android:layout_marginRight="@dimen/ce" android:text="{name}" android:maxLines="2" style="@style/l4" />
+        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:ellipsize="end" android:gravity="center" android:id="@id/bu1" android:visibility="gone" android:layout_marginLeft="@dimen/ce" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/ce" android:text="{name}" android:maxLines="2" style="@style/l4" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/k6" android:textColor="@color/l4" android:id="@id/kht" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jv" android:layout_marginRight="@dimen/jv" android:layout_marginBottom="@dimen/cb" android:text="@string/jqb" />
+    <ProgressBar android:id="@id/khu" android:visibility="gone" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" style="@style/a85" />
+    <com.tencent.mm.ui.widget.progress.RoundProgressBtn android:layout_gravity="bottom|center" android:id="@id/h9i" android:visibility="gone" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:layout_marginBottom="@dimen/bx" app:progress="0" />
+    <TextView android:textSize="@dimen/k6" android:textColor="@color/g7" android:id="@id/juy" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jv" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/jv" android:layout_marginBottom="@dimen/cq" android:text="@string/jq7" />
+    <Button android:layout_gravity="bottom|center" android:id="@id/bto" android:visibility="gone" android:text="@string/jpw" style="@style/ov" />
+    <Button android:layout_gravity="bottom|center" android:id="@id/bts" android:visibility="gone" android:text="@string/bnl" style="@style/ov" />
+    <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/btt" android:visibility="gone" android:layout_width="wrap_content" android:layout_marginLeft="@dimen/jv" android:layout_marginTop="@dimen/hs" android:layout_marginRight="@dimen/jv" android:layout_marginBottom="@dimen/bx" android:text="@string/cdh" style="@style/m0" />
+    <Button android:layout_gravity="bottom|center" android:id="@id/bu_" android:visibility="gone" android:layout_marginBottom="@dimen/cb" android:text="@string/bo0" style="@style/ov" />
+    <LinearLayout android:gravity="center" android:layout_gravity="bottom|center" android:orientation="horizontal" android:id="@id/bu6" android:background="@drawable/kd" android:paddingLeft="@dimen/ho" android:paddingRight="@dimen/ho" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cl" android:minWidth="@dimen/ia" android:minHeight="@dimen/i9">
+        <ImageView android:id="@id/bu5" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginRight="@dimen/bt" />
+        <TextView android:textSize="@dimen/i_" android:textColor="@color/ag0" android:id="@id/bu7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/o4" android:textAllCaps="false" />
+    </LinearLayout>
+</LinearLayout>

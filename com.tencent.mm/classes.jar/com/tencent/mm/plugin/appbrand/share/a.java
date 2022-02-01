@@ -9,7 +9,7 @@ public final class a
 {
   private int mHeight;
   private int mWidth;
-  public k.a nMZ = k.a.iIq;
+  public k.a qPu = k.a.lys;
   
   public a(int paramInt1, int paramInt2)
   {
@@ -17,7 +17,7 @@ public final class a
     this.mHeight = paramInt2;
   }
   
-  public final String Lb()
+  public final String key()
   {
     AppMethodBeat.i(48316);
     String str = String.format("Decoder_w%s_h%s", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) });
@@ -26,7 +26,7 @@ public final class a
   }
   
   /* Error */
-  public final android.graphics.Bitmap w(java.io.InputStream paramInputStream)
+  public final android.graphics.Bitmap u(java.io.InputStream paramInputStream)
   {
     // Byte code:
     //   0: ldc 63
@@ -38,7 +38,7 @@ public final class a
     //   13: dup
     //   14: iconst_0
     //   15: aload_0
-    //   16: getfield 25	com/tencent/mm/plugin/appbrand/share/a:nMZ	Lcom/tencent/mm/modelappbrand/k$a;
+    //   16: getfield 25	com/tencent/mm/plugin/appbrand/share/a:qPu	Lcom/tencent/mm/modelappbrand/k$a;
     //   19: invokevirtual 71	com/tencent/mm/modelappbrand/k$a:ordinal	()I
     //   22: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   25: aastore
@@ -314,9 +314,9 @@ public final class a
     //   549: astore 8
     //   551: aload 6
     //   553: astore 7
-    //   555: getstatic 151	com/tencent/mm/plugin/appbrand/share/a$1:nNa	[I
+    //   555: getstatic 151	com/tencent/mm/plugin/appbrand/share/a$1:qPv	[I
     //   558: aload_0
-    //   559: getfield 25	com/tencent/mm/plugin/appbrand/share/a:nMZ	Lcom/tencent/mm/modelappbrand/k$a;
+    //   559: getfield 25	com/tencent/mm/plugin/appbrand/share/a:qPu	Lcom/tencent/mm/modelappbrand/k$a;
     //   562: invokevirtual 71	com/tencent/mm/modelappbrand/k$a:ordinal	()I
     //   565: iaload
     //   566: istore 4
@@ -594,7 +594,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.share.a
  * JD-Core Version:    0.7.0.1
  */

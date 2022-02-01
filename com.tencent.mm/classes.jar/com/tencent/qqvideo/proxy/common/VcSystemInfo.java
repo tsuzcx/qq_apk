@@ -19,6 +19,7 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 import java.io.File;
 
 public class VcSystemInfo
@@ -426,7 +427,7 @@ public class VcSystemInfo
       paramContext = (WifiManager)paramContext.getSystemService("wifi");
       if (paramContext != null)
       {
-        paramContext = paramContext.getConnectionInfo();
+        paramContext = (WifiInfo)a.a(paramContext, "com/tencent/qqvideo/proxy/common/VcSystemInfo", "getDeviceMacAddr", "(Landroid/content/Context;)Ljava/lang/String;", "android/net/wifi/WifiManager", "getConnectionInfo", "()Landroid/net/wifi/WifiInfo;");
         if (paramContext != null)
         {
           paramContext = paramContext.getMacAddress();
@@ -517,30 +518,30 @@ public class VcSystemInfo
     // Byte code:
     //   0: iconst_m1
     //   1: istore_2
-    //   2: ldc_w 347
+    //   2: ldc_w 357
     //   5: invokestatic 150	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: ifnonnull +11 -> 20
-    //   12: ldc_w 347
+    //   12: ldc_w 357
     //   15: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   18: iconst_m1
     //   19: ireturn
     //   20: aload_0
-    //   21: invokevirtual 351	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   24: invokevirtual 355	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   27: ldc_w 357
-    //   30: invokevirtual 363	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   21: invokevirtual 361	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   24: invokevirtual 365	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   27: ldc_w 367
+    //   30: invokevirtual 373	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   33: astore_0
-    //   34: new 365	java/io/BufferedReader
+    //   34: new 375	java/io/BufferedReader
     //   37: dup
-    //   38: new 367	java/io/InputStreamReader
+    //   38: new 377	java/io/InputStreamReader
     //   41: dup
     //   42: aload_0
-    //   43: invokespecial 370	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   46: invokespecial 373	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   43: invokespecial 380	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   46: invokespecial 383	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   49: astore 4
     //   51: aload 4
-    //   53: invokevirtual 376	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   53: invokevirtual 386	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   56: astore_3
     //   57: iload_2
     //   58: istore_1
@@ -550,16 +551,16 @@ public class VcSystemInfo
     //   66: iload_2
     //   67: istore_1
     //   68: aload_3
-    //   69: ldc_w 378
-    //   72: invokevirtual 381	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   69: ldc_w 388
+    //   72: invokevirtual 391	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   75: ifeq +34 -> 109
     //   78: aload_3
     //   79: aload_3
-    //   80: ldc_w 383
-    //   83: invokevirtual 387	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   80: ldc_w 393
+    //   83: invokevirtual 397	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   86: iconst_1
     //   87: iadd
-    //   88: invokevirtual 391	java/lang/String:substring	(I)Ljava/lang/String;
+    //   88: invokevirtual 401	java/lang/String:substring	(I)Ljava/lang/String;
     //   91: astore_3
     //   92: iload_2
     //   93: istore_1
@@ -567,16 +568,16 @@ public class VcSystemInfo
     //   95: invokestatic 273	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   98: ifne +11 -> 109
     //   101: aload_3
-    //   102: invokevirtual 394	java/lang/String:trim	()Ljava/lang/String;
-    //   105: invokestatic 399	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   102: invokevirtual 404	java/lang/String:trim	()Ljava/lang/String;
+    //   105: invokestatic 409	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   108: istore_1
     //   109: aload_0
     //   110: ifnull +7 -> 117
     //   113: aload_0
-    //   114: invokevirtual 402	java/io/InputStream:close	()V
+    //   114: invokevirtual 412	java/io/InputStream:close	()V
     //   117: aload 4
-    //   119: invokevirtual 403	java/io/BufferedReader:close	()V
-    //   122: ldc_w 347
+    //   119: invokevirtual 413	java/io/BufferedReader:close	()V
+    //   122: ldc_w 357
     //   125: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   128: iload_1
     //   129: ireturn
@@ -588,13 +589,13 @@ public class VcSystemInfo
     //   135: aload_0
     //   136: ifnull +7 -> 143
     //   139: aload_0
-    //   140: invokevirtual 402	java/io/InputStream:close	()V
+    //   140: invokevirtual 412	java/io/InputStream:close	()V
     //   143: iload_2
     //   144: istore_1
     //   145: aload_3
     //   146: ifnull -24 -> 122
     //   149: aload_3
-    //   150: invokevirtual 403	java/io/BufferedReader:close	()V
+    //   150: invokevirtual 413	java/io/BufferedReader:close	()V
     //   153: iload_2
     //   154: istore_1
     //   155: goto -33 -> 122
@@ -610,12 +611,12 @@ public class VcSystemInfo
     //   170: aload_0
     //   171: ifnull +7 -> 178
     //   174: aload_0
-    //   175: invokevirtual 402	java/io/InputStream:close	()V
+    //   175: invokevirtual 412	java/io/InputStream:close	()V
     //   178: aload 4
     //   180: ifnull +8 -> 188
     //   183: aload 4
-    //   185: invokevirtual 403	java/io/BufferedReader:close	()V
-    //   188: ldc_w 347
+    //   185: invokevirtual 413	java/io/BufferedReader:close	()V
+    //   188: ldc_w 357
     //   191: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   194: aload_3
     //   195: athrow
@@ -1075,7 +1076,7 @@ public class VcSystemInfo
     AppMethodBeat.i(89729);
     try
     {
-      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getMacAddress();
+      paramContext = ((WifiInfo)a.a((WifiManager)paramContext.getSystemService("wifi"), "com/tencent/qqvideo/proxy/common/VcSystemInfo", "getWiFiMacAddress", "(Landroid/content/Context;)Ljava/lang/String;", "android/net/wifi/WifiManager", "getConnectionInfo", "()Landroid/net/wifi/WifiInfo;")).getMacAddress();
       AppMethodBeat.o(89729);
       return paramContext;
     }
@@ -1098,7 +1099,7 @@ public class VcSystemInfo
     }
     try
     {
-      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+      paramContext = (WifiInfo)a.a((WifiManager)paramContext.getSystemService("wifi"), "com/tencent/qqvideo/proxy/common/VcSystemInfo", "getWifiNetStrength", "(Landroid/content/Context;)I", "android/net/wifi/WifiManager", "getConnectionInfo", "()Landroid/net/wifi/WifiInfo;");
       if (paramContext == null)
       {
         AppMethodBeat.o(89714);
@@ -1196,20 +1197,20 @@ public class VcSystemInfo
     // Byte code:
     //   0: aconst_null
     //   1: astore_2
-    //   2: ldc_w 551
+    //   2: ldc_w 564
     //   5: invokestatic 150	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: new 553	java/io/RandomAccessFile
+    //   8: new 566	java/io/RandomAccessFile
     //   11: dup
-    //   12: ldc_w 555
-    //   15: ldc_w 557
-    //   18: invokespecial 560	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   12: ldc_w 568
+    //   15: ldc_w 570
+    //   18: invokespecial 573	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   21: astore_0
     //   22: aload_0
-    //   23: invokevirtual 561	java/io/RandomAccessFile:readLine	()Ljava/lang/String;
+    //   23: invokevirtual 574	java/io/RandomAccessFile:readLine	()Ljava/lang/String;
     //   26: astore_1
     //   27: aload_0
-    //   28: invokevirtual 562	java/io/RandomAccessFile:close	()V
-    //   31: ldc_w 551
+    //   28: invokevirtual 575	java/io/RandomAccessFile:close	()V
+    //   31: ldc_w 564
     //   34: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   37: aload_1
     //   38: areturn
@@ -1221,7 +1222,7 @@ public class VcSystemInfo
     //   44: aload_0
     //   45: ifnull -14 -> 31
     //   48: aload_0
-    //   49: invokevirtual 562	java/io/RandomAccessFile:close	()V
+    //   49: invokevirtual 575	java/io/RandomAccessFile:close	()V
     //   52: aload_2
     //   53: astore_1
     //   54: goto -23 -> 31
@@ -1235,8 +1236,8 @@ public class VcSystemInfo
     //   66: aload_1
     //   67: ifnull +7 -> 74
     //   70: aload_1
-    //   71: invokevirtual 562	java/io/RandomAccessFile:close	()V
-    //   74: ldc_w 551
+    //   71: invokevirtual 575	java/io/RandomAccessFile:close	()V
+    //   74: ldc_w 564
     //   77: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   80: aload_0
     //   81: athrow
@@ -1282,7 +1283,7 @@ public class VcSystemInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqvideo.proxy.common.VcSystemInfo
  * JD-Core Version:    0.7.0.1
  */

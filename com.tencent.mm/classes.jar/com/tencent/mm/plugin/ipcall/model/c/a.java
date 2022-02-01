@@ -9,42 +9,42 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
+  public final Object DQn;
+  public int DQo;
+  public boolean DQp;
+  public com.tencent.mm.plugin.ipcall.model.a.a DQq;
   public boolean isStart;
-  public c qrz;
-  public final Object yql;
-  public int yqm;
-  public boolean yqn;
-  public com.tencent.mm.plugin.ipcall.model.a.a yqo;
+  public c tQh;
   
   public a(com.tencent.mm.plugin.ipcall.model.a.a parama)
   {
-    AppMethodBeat.i(231722);
-    this.qrz = null;
-    this.yql = new Object();
+    AppMethodBeat.i(285682);
+    this.tQh = null;
+    this.DQn = new Object();
     this.isStart = false;
-    this.yqm = 0;
-    this.yqn = false;
-    this.yqo = parama;
-    AppMethodBeat.o(231722);
+    this.DQo = 0;
+    this.DQp = false;
+    this.DQq = parama;
+    AppMethodBeat.o(285682);
   }
   
-  public final void qw(boolean paramBoolean)
+  public final void ty(boolean paramBoolean)
   {
     AppMethodBeat.i(25417);
-    Log.i("MicroMsg.IPCallAudioPlayer", "setSpeakerPhoneOn, old isSpeakerPhoneOn: %b, new isSpeakerPhoneOn: %b", new Object[] { Boolean.valueOf(this.yqn), Boolean.valueOf(paramBoolean) });
-    this.yqo.jp(paramBoolean);
-    com.tencent.mm.plugin.ipcall.model.d.a locala = i.eat();
+    Log.i("MicroMsg.IPCallAudioPlayer", "setSpeakerPhoneOn, old isSpeakerPhoneOn: %b, new isSpeakerPhoneOn: %b", new Object[] { Boolean.valueOf(this.DQp), Boolean.valueOf(paramBoolean) });
+    this.DQq.kA(paramBoolean);
+    com.tencent.mm.plugin.ipcall.model.d.a locala = i.eJr();
     if (paramBoolean) {}
-    for (int i = locala.yqF.setAppCmd(401);; i = locala.yqF.setAppCmd(402))
+    for (int i = locala.DQH.setAppCmd(401);; i = locala.DQH.setAppCmd(402))
     {
       if (i < 0) {
         Log.e("MicroMsg.IPCallEngineManager", "setSpeakerPhoneOn, failed, ret: %d", new Object[] { Integer.valueOf(i) });
       }
-      if (paramBoolean != this.yqn)
+      if (paramBoolean != this.DQp)
       {
-        this.yqn = paramBoolean;
-        if ((this.qrz != null) && (this.qrz.GSW)) {
-          this.qrz.wS(paramBoolean);
+        this.DQp = paramBoolean;
+        if ((this.tQh != null) && (this.tQh.NJh)) {
+          this.tQh.AK(paramBoolean);
         }
       }
       AppMethodBeat.o(25417);
@@ -55,31 +55,31 @@ public final class a
   public final class a
     implements Runnable
   {
-    private c yqq = null;
+    private c DQs = null;
     
     public a(c paramc)
     {
-      this.yqq = paramc;
+      this.DQs = paramc;
     }
     
     public final void run()
     {
       AppMethodBeat.i(25414);
-      if (this.yqq != null)
+      if (this.DQs != null)
       {
-        this.yqq.fFr();
-        this.yqq.fFo();
-        this.yqq = null;
-        a.this.yqn = false;
+        this.DQs.gxD();
+        this.DQs.gxA();
+        this.DQs = null;
+        a.this.DQp = false;
       }
-      a.this.yqo.cdV();
+      a.this.DQq.crg();
       AppMethodBeat.o(25414);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.c.a
  * JD-Core Version:    0.7.0.1
  */

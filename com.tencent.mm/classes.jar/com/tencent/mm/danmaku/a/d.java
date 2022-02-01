@@ -34,94 +34,94 @@ import java.util.concurrent.LinkedBlockingQueue;
 public final class d
   implements View.OnTouchListener, com.tencent.mm.danmaku.render.d.a
 {
-  private static final DecimalFormat gNV;
-  private static final DecimalFormat gNW;
-  volatile boolean gNB;
-  private volatile boolean gNC;
-  private volatile boolean gND;
-  private final com.tencent.mm.danmaku.render.d gNE;
-  final e gNF;
-  final f gNG;
-  final h gNH;
-  private long gNI;
-  long gNJ;
-  boolean gNK;
-  private volatile boolean gNL;
-  private long gNM;
-  private long gNN;
-  private long gNO;
-  int gNP;
-  int gNQ;
-  int gNR;
-  private String gNS;
-  private long gNT;
-  private long gNU;
-  final Queue<com.tencent.mm.danmaku.d.h> gNX;
-  private final List<com.tencent.mm.danmaku.b.a> gNY;
-  final a gNZ;
-  com.tencent.mm.danmaku.c.a gNt;
-  final b gNu;
-  final com.tencent.mm.danmaku.d.f gNv;
-  final com.tencent.mm.danmaku.d.c gNw;
-  g.b gOa;
-  private d.b gOb;
-  i gOc;
-  private Object gOd;
-  private boolean gOe;
-  private int gOf;
-  private a gOg;
+  private static final DecimalFormat jyq;
+  private static final DecimalFormat jyr;
+  com.tencent.mm.danmaku.c.a jxO;
+  final b jxP;
+  private final com.tencent.mm.danmaku.d.f jxQ;
+  final com.tencent.mm.danmaku.d.c jxR;
+  volatile boolean jxW;
+  private volatile boolean jxX;
+  private volatile boolean jxY;
+  private final com.tencent.mm.danmaku.render.d jxZ;
+  private int jyA;
+  private a jyB;
+  final e jya;
+  final f jyb;
+  final h jyc;
+  private long jyd;
+  long jye;
+  boolean jyf;
+  private volatile boolean jyg;
+  private long jyh;
+  private long jyi;
+  private long jyj;
+  int jyk;
+  int jyl;
+  int jym;
+  private String jyn;
+  private long jyo;
+  private long jyp;
+  final Queue<com.tencent.mm.danmaku.d.h> jys;
+  private final List<com.tencent.mm.danmaku.b.a> jyt;
+  final a jyu;
+  g.b jyv;
+  private d.b jyw;
+  i jyx;
+  private Object jyy;
+  private boolean jyz;
   
   static
   {
-    AppMethodBeat.i(241635);
-    gNV = new DecimalFormat("00.00");
-    gNW = new DecimalFormat("00");
-    AppMethodBeat.o(241635);
+    AppMethodBeat.i(247698);
+    jyq = new DecimalFormat("00.00");
+    jyr = new DecimalFormat("00");
+    AppMethodBeat.o(247698);
   }
   
   protected d(View paramView, com.tencent.mm.danmaku.c.a parama)
   {
-    AppMethodBeat.i(241606);
-    this.gNL = true;
-    this.gNX = new LinkedBlockingDeque();
-    this.gNY = new LinkedList();
-    this.gOd = new Object();
-    this.gOe = true;
-    this.gOf = 0;
-    this.gNt = parama;
+    AppMethodBeat.i(247633);
+    this.jyg = true;
+    this.jys = new LinkedBlockingDeque();
+    this.jyt = new LinkedList();
+    this.jyy = new Object();
+    this.jyz = true;
+    this.jyA = 0;
+    this.jxO = parama;
     if ((paramView instanceof SurfaceView))
     {
       paramView = new com.tencent.mm.danmaku.render.f((SurfaceView)paramView);
-      this.gNE = paramView;
-      if (this.gNE == null) {
+      this.jxZ = paramView;
+      if (this.jxZ == null) {
         break label343;
       }
-      this.gNE.a(this);
-      this.gNE.setOnTouchListener(this);
-      this.gNv = new com.tencent.mm.danmaku.d.f();
-      this.gNw = new com.tencent.mm.danmaku.d.c();
-      this.gNu = new b();
-      this.gNH = new h(parama);
+      this.jxZ.a(this);
+      this.jxZ.setOnTouchListener(this);
+      this.jxQ = new com.tencent.mm.danmaku.d.f();
+      this.jxR = new com.tencent.mm.danmaku.d.c();
+      this.jxP = new b();
+      this.jyc = new h(parama);
       paramView = new g.a();
-      this.gNF = new e(this.gNv, paramView);
-      this.gNZ = a.a(parama, this.gNu, paramView, this.gNv, this.gNw);
-      this.gNG = new f(parama);
-      this.gOc = new i(this);
-      if ((this.gNE instanceof NativeDanmakuView)) {
-        this.gOc.gOC = 1;
+      this.jya = new e(this.jxQ, paramView);
+      this.jyu = a.a(parama, this.jxP, paramView, this.jxQ, this.jxR);
+      this.jyb = new f(parama);
+      this.jyx = new i(this);
+      if ((this.jxZ instanceof NativeDanmakuView)) {
+        this.jyx.jyW = 1;
       }
-      if ((Build.VERSION.SDK_INT < 16) || (!(this.gNE instanceof NativeDanmakuView))) {
+      if ((Build.VERSION.SDK_INT < 16) || (!(this.jxZ instanceof NativeDanmakuView))) {
         break label360;
       }
     }
     label343:
     label360:
-    for (this.gOf = 0;; this.gOf = 1)
+    for (this.jyA = 0;; this.jyA = 1)
     {
-      if (this.gOf == 0) {
-        this.gOg = new a((byte)0);
+      if (this.jyA == 0) {
+        this.jyB = new a((byte)0);
       }
-      AppMethodBeat.o(241606);
+      AppMethodBeat.o(247633);
       return;
       if ((paramView instanceof TextureView))
       {
@@ -136,53 +136,74 @@ public final class d
       paramView = null;
       break;
       paramView = new RuntimeException("root view not a IDanmakuView");
-      AppMethodBeat.o(241606);
+      AppMethodBeat.o(247633);
       throw paramView;
     }
   }
   
-  private boolean arV()
+  private void Fb(long paramLong)
   {
-    AppMethodBeat.i(241612);
-    Object localObject1 = this.gNv;
+    AppMethodBeat.i(247661);
+    if (ayJ())
+    {
+      AppMethodBeat.o(247661);
+      return;
+    }
+    ayQ();
+    if (ayN())
+    {
+      i locali = this.jyx;
+      if (locali.azf())
+      {
+        locali.jyT.removeMessages(4);
+        locali.jyT.sendEmptyMessageDelayed(4, paramLong);
+      }
+    }
+    AppMethodBeat.o(247661);
+  }
+  
+  private boolean ayI()
+  {
+    AppMethodBeat.i(247659);
+    Object localObject1 = this.jxQ;
     long l1;
-    if (this.gNt.isLive()) {
-      l1 = SystemClock.uptimeMillis() - this.gNI;
+    if (this.jxO.isLive()) {
+      l1 = SystemClock.uptimeMillis() - this.jyd;
     }
     Object localObject2;
     int i;
-    label565:
+    label566:
     boolean bool1;
     for (;;)
     {
-      ((com.tencent.mm.danmaku.d.f)localObject1).gQA = l1;
-      localObject1 = this.gNw;
-      ((com.tencent.mm.danmaku.d.c)localObject1).gQw = (SystemClock.uptimeMillis() - ((com.tencent.mm.danmaku.d.c)localObject1).gNI);
-      ((com.tencent.mm.danmaku.d.c)localObject1).gQv += ((com.tencent.mm.danmaku.d.c)localObject1).gQw;
-      ((com.tencent.mm.danmaku.d.c)localObject1).gNI = SystemClock.uptimeMillis();
-      if (com.tencent.mm.danmaku.e.e.gQV >= 5) {
-        com.tencent.mm.danmaku.e.e.v("DanmakuManager", new Object[] { "updateFrame:currentTime:", Long.valueOf(this.gNw.gQv), ",lastInterval:", Long.valueOf(this.gNw.gQw) });
+      ((com.tencent.mm.danmaku.d.f)localObject1).jAT = l1;
+      localObject1 = this.jxR;
+      ((com.tencent.mm.danmaku.d.c)localObject1).jAP = (SystemClock.uptimeMillis() - ((com.tencent.mm.danmaku.d.c)localObject1).jyd);
+      ((com.tencent.mm.danmaku.d.c)localObject1).jAO += ((com.tencent.mm.danmaku.d.c)localObject1).jAP;
+      ((com.tencent.mm.danmaku.d.c)localObject1).jyd = SystemClock.uptimeMillis();
+      if (com.tencent.mm.danmaku.e.e.jBo >= 5) {
+        com.tencent.mm.danmaku.e.e.v("DanmakuManager", new Object[] { "updateFrame:currentTime:", Long.valueOf(this.jxR.jAO), ",lastInterval:", Long.valueOf(this.jxR.jAP) });
       }
-      if (this.gNK)
+      if (this.jyf)
       {
-        this.gNZ.arQ();
-        this.gNK = false;
+        this.jyu.ayB();
+        this.jyf = false;
       }
       try
       {
-        if (com.tencent.mm.danmaku.e.e.gQV >= 4) {
-          this.gNM = SystemClock.uptimeMillis();
+        if (com.tencent.mm.danmaku.e.e.jBo >= 4) {
+          this.jyh = SystemClock.uptimeMillis();
         }
-        localObject2 = this.gNF;
-        ((e)localObject2).asm();
-        com.tencent.mm.danmaku.d.g localg = ((e)localObject2).gOl;
-        l1 = ((e)localObject2).gNv.gQA;
-        Object localObject3 = ((e)localObject2).gOk;
-        localObject1 = localg.gQB.gQD;
+        localObject2 = this.jya;
+        ((e)localObject2).ayZ();
+        com.tencent.mm.danmaku.d.g localg = ((e)localObject2).jyG;
+        l1 = ((e)localObject2).jxQ.jAT;
+        Object localObject3 = ((e)localObject2).jyF;
+        localObject1 = localg.jAU.jAW;
         i = 0;
         for (;;)
         {
-          if ((i < 3) && (localObject1 != localg.gQB) && (localg.gQC.m(((com.tencent.mm.danmaku.d.g.a)localObject1).mData, l1) <= 0))
+          if ((i < 3) && (localObject1 != localg.jAU) && (localg.jAV.j(((com.tencent.mm.danmaku.d.g.a)localObject1).mData, l1) <= 0))
           {
             int j = i;
             if (localObject3 != null)
@@ -191,25 +212,25 @@ public final class d
               j = i + 1;
             }
             localg.mSize -= 1;
-            localObject1 = ((com.tencent.mm.danmaku.d.g.a)localObject1).gQD;
+            localObject1 = ((com.tencent.mm.danmaku.d.g.a)localObject1).jAW;
             i = j;
             continue;
             l1 = SystemClock.uptimeMillis();
-            if (l1 - this.gNT >= 200L)
+            if (l1 - this.jyo >= 200L)
             {
-              this.gNT = l1;
-              l1 = this.gNt.asQ();
-              this.gNU = l1;
+              this.jyo = l1;
+              l1 = this.jxO.azE();
+              this.jyp = l1;
               break;
             }
-            l1 = l1 + this.gNU - this.gNT;
+            l1 = l1 + this.jyp - this.jyo;
             break;
           }
         }
-        if ((c.gNA) && (com.tencent.mm.danmaku.f.d.isEmpty((Collection)localObject3)))
+        if ((c.jxV) && (com.tencent.mm.danmaku.f.d.isEmpty((Collection)localObject3)))
         {
-          if (localg.gQB.gQD != localg.gQB) {
-            break label705;
+          if (localg.jAU.jAW != localg.jAU) {
+            break label707;
           }
           i = 1;
           if ((i == 0) && ((((com.tencent.mm.danmaku.d.g.a)localObject1).mData instanceof com.tencent.mm.danmaku.b.a)))
@@ -221,12 +242,12 @@ public final class d
             }
           }
         }
-        localg.gQB.gQD = ((com.tencent.mm.danmaku.d.g.a)localObject1);
-        ((com.tencent.mm.danmaku.d.g.a)localObject1).gQE = localg.gQB;
-        ((e)localObject2).aa(((e)localObject2).gOk);
-        ((e)localObject2).asn();
-        localObject1 = ((e)localObject2).gOk;
-        if (com.tencent.mm.danmaku.e.e.gQV >= 4)
+        localg.jAU.jAW = ((com.tencent.mm.danmaku.d.g.a)localObject1);
+        ((com.tencent.mm.danmaku.d.g.a)localObject1).jAX = localg.jAU;
+        ((e)localObject2).X(((e)localObject2).jyF);
+        ((e)localObject2).aza();
+        localObject1 = ((e)localObject2).jyF;
+        if (com.tencent.mm.danmaku.e.e.jBo >= 4)
         {
           i = ((List)localObject1).size();
           if (i > 0) {
@@ -241,12 +262,12 @@ public final class d
             localObject2 = (com.tencent.mm.danmaku.b.a)((Iterator)localObject1).next();
             ((Iterator)localObject1).remove();
             com.tencent.mm.danmaku.e.e.i("DanmakuManager", "upload, danmaku = ".concat(String.valueOf(localObject2)));
-            if (((com.tencent.mm.danmaku.b.a)localObject2).yY(this.gNv.gQA))
+            if (((com.tencent.mm.danmaku.b.a)localObject2).Fc(this.jxQ.jAT))
             {
-              if (com.tencent.mm.danmaku.e.e.gQV >= 4) {
+              if (com.tencent.mm.danmaku.e.e.jBo >= 4) {
                 com.tencent.mm.danmaku.e.e.d("DanmakuManager", new Object[] { "before measure ", localObject2, " is out side" });
               }
-              this.gNY.add(localObject2);
+              this.jyt.add(localObject2);
               continue;
               com.tencent.mm.danmaku.e.e.e("DanmakuManager", localThrowable1.toString(), localThrowable1);
             }
@@ -263,30 +284,30 @@ public final class d
       boolean bool2 = bool1;
       for (;;)
       {
-        AppMethodBeat.o(241612);
+        AppMethodBeat.o(247659);
         return bool2;
-        label705:
+        label707:
         i = 0;
         break;
-        if ((com.tencent.mm.danmaku.e.e.gQV >= 4) && (((com.tencent.mm.danmaku.b.a)localObject2).asM())) {
+        if ((com.tencent.mm.danmaku.e.e.jBo >= 4) && (((com.tencent.mm.danmaku.b.a)localObject2).azA())) {
           com.tencent.mm.danmaku.e.e.d("MustShowDMComment", "不可淘汰弹幕从数据源的绘制列表中取出加入到Window中:".concat(String.valueOf(localObject2)));
         }
-        ((com.tencent.mm.danmaku.b.a)localObject2).ze(this.gNw.gQv);
-        this.gNZ.a((com.tencent.mm.danmaku.b.a)localObject2);
-        break label565;
-        if (com.tencent.mm.danmaku.e.e.gQV >= 4) {
-          this.gNN = SystemClock.uptimeMillis();
+        ((com.tencent.mm.danmaku.b.a)localObject2).Fi(this.jxR.jAO);
+        this.jyu.a((com.tencent.mm.danmaku.b.a)localObject2);
+        break label566;
+        if (com.tencent.mm.danmaku.e.e.jBo >= 4) {
+          this.jyi = SystemClock.uptimeMillis();
         }
-        this.gNZ.layout();
-        if (com.tencent.mm.danmaku.e.e.gQV >= 4) {
-          this.gNO = SystemClock.uptimeMillis();
+        this.jyu.fP();
+        if (com.tencent.mm.danmaku.e.e.jBo >= 4) {
+          this.jyj = SystemClock.uptimeMillis();
         }
-        bool1 = arX();
+        bool1 = ayK();
         bool2 = bool1;
         if (bool1) {
           try
           {
-            arZ();
+            ayM();
             bool2 = bool1;
           }
           catch (Throwable localThrowable2) {}
@@ -295,21 +316,21 @@ public final class d
     }
   }
   
-  private boolean arW()
+  private boolean ayJ()
   {
-    return (this.gOf == 0) && (this.gOg != null);
+    return (this.jyA == 0) && (this.jyB != null);
   }
   
-  private boolean arX()
+  private boolean ayK()
   {
-    AppMethodBeat.i(241614);
+    AppMethodBeat.i(247662);
     try
     {
-      Canvas localCanvas = this.gNE.lockCanvas();
+      Canvas localCanvas = this.jxZ.azQ();
       if (localCanvas != null)
       {
         draw(localCanvas);
-        AppMethodBeat.o(241614);
+        AppMethodBeat.o(247662);
         return true;
       }
     }
@@ -320,53 +341,53 @@ public final class d
         com.tencent.mm.danmaku.e.e.e("surface_lock", "draw exception " + "null", localThrowable);
         Object localObject = null;
       }
-      arY();
-      AppMethodBeat.o(241614);
+      ayL();
+      AppMethodBeat.o(247662);
     }
     return false;
   }
   
-  private void arY()
+  private void ayL()
   {
-    AppMethodBeat.i(241617);
-    asd();
-    if (this.gOb == null) {
-      this.gOb = new d.b()
+    AppMethodBeat.i(247668);
+    ayQ();
+    if (this.jyw == null) {
+      this.jyw = new d.b()
       {
-        public final void l(Canvas arg1)
+        public final void m(Canvas arg1)
         {
-          AppMethodBeat.i(241601);
+          AppMethodBeat.i(289992);
           d.a(d.this, ???);
           synchronized (d.b(d.this))
           {
             d.c(d.this);
             d.b(d.this).notifyAll();
             d.a(d.this).sendMessage(12);
-            AppMethodBeat.o(241601);
+            AppMethodBeat.o(289992);
             return;
           }
         }
       };
     }
-    this.gNE.a(this.gOb);
-    synchronized (this.gOd)
+    this.jxZ.a(this.jyw);
+    synchronized (this.jyy)
     {
       for (;;)
       {
-        if (this.gOe) {
+        if (this.jyz) {
           break label106;
         }
-        boolean bool = asa();
+        boolean bool = ayN();
         if (!bool) {
           break label106;
         }
         try
         {
-          this.gOd.wait(200L);
+          this.jyy.wait(200L);
         }
         catch (InterruptedException localInterruptedException)
         {
-          if (!asa()) {
+          if (!ayN()) {
             break label106;
           }
         }
@@ -374,87 +395,87 @@ public final class d
       Thread.currentThread().interrupt();
     }
     label106:
-    this.gOe = false;
-    AppMethodBeat.o(241617);
+    this.jyz = false;
+    AppMethodBeat.o(247668);
   }
   
-  private void arZ()
+  private void ayM()
   {
-    AppMethodBeat.i(241618);
-    this.gNY.addAll(this.gNZ.arS());
-    this.gNZ.arT();
-    Object localObject1 = this.gNY.iterator();
+    AppMethodBeat.i(247669);
+    this.jyt.addAll(this.jyu.ayD());
+    this.jyu.ayE();
+    Object localObject1 = this.jyt.iterator();
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (com.tencent.mm.danmaku.b.a)((Iterator)localObject1).next();
-      localObject3 = ((com.tencent.mm.danmaku.b.a)localObject2).asJ();
+      localObject3 = ((com.tencent.mm.danmaku.b.a)localObject2).azx();
       if (localObject3 != null)
       {
-        ((com.tencent.mm.danmaku.b.a)localObject2).w(null);
-        ((com.tencent.mm.danmaku.b.a)localObject2).asL();
-        this.gNu.gNx.x((Bitmap)localObject3);
+        ((com.tencent.mm.danmaku.b.a)localObject2).r(null);
+        ((com.tencent.mm.danmaku.b.a)localObject2).azz();
+        this.jxP.jxS.s((Bitmap)localObject3);
       }
     }
-    Object localObject3 = this.gNY.iterator();
+    Object localObject3 = this.jyt.iterator();
     while (((Iterator)localObject3).hasNext())
     {
       com.tencent.mm.danmaku.b.a locala = (com.tencent.mm.danmaku.b.a)((Iterator)localObject3).next();
-      this.gNt.e(locala).h(locala);
-      f localf = this.gNG;
+      this.jxO.d(locala).g(locala);
+      f localf = this.jyb;
       int i = locala.getType();
-      localObject2 = (BlockingQueue)localf.gOp.get(i);
+      localObject2 = (BlockingQueue)localf.jyK.get(i);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new LinkedBlockingQueue();
-        localf.gOp.put(i, localObject1);
+        localf.jyK.put(i, localObject1);
       }
       if (300 > ((BlockingQueue)localObject1).size()) {
         ((BlockingQueue)localObject1).add(locala);
       }
     }
-    this.gNY.clear();
-    AppMethodBeat.o(241618);
+    this.jyt.clear();
+    AppMethodBeat.o(247669);
   }
   
-  private void asc()
+  private void ayP()
   {
-    AppMethodBeat.i(241623);
+    AppMethodBeat.i(247677);
     com.tencent.mm.danmaku.e.e.v("DanmakuManager", "resumeUpdateMessage()");
     if (isPlaying()) {
-      this.gOc.asq();
+      this.jyx.aze();
     }
-    AppMethodBeat.o(241623);
+    AppMethodBeat.o(247677);
   }
   
-  private void asd()
+  private void ayQ()
   {
-    AppMethodBeat.i(241624);
+    AppMethodBeat.i(247678);
     com.tencent.mm.danmaku.e.e.v("DanmakuManager", "removeUpdateMessage()");
-    this.gOc.asp();
-    AppMethodBeat.o(241624);
+    this.jyx.azd();
+    AppMethodBeat.o(247678);
   }
   
   private void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(241615);
+    AppMethodBeat.i(247665);
     if (paramCanvas != null) {}
     try
     {
-      com.tencent.mm.danmaku.e.d.n(paramCanvas);
-      this.gNZ.h(paramCanvas);
-      k(paramCanvas);
+      com.tencent.mm.danmaku.e.d.p(paramCanvas);
+      this.jyu.i(paramCanvas);
+      l(paramCanvas);
       try
       {
-        j(paramCanvas);
-        AppMethodBeat.o(241615);
+        k(paramCanvas);
+        AppMethodBeat.o(247665);
         return;
       }
       catch (Throwable localThrowable1)
       {
         com.tencent.mm.danmaku.e.e.e("surface_lock", "unlockCanvas exception " + paramCanvas.hashCode(), localThrowable1);
-        AppMethodBeat.o(241615);
+        AppMethodBeat.o(247665);
         return;
       }
       try
@@ -462,8 +483,8 @@ public final class d
         StringBuilder localStringBuilder;
         Object localObject1;
         int i;
-        j(paramCanvas);
-        AppMethodBeat.o(241615);
+        k(paramCanvas);
+        AppMethodBeat.o(247665);
         throw localObject2;
       }
       catch (Throwable localThrowable4)
@@ -484,14 +505,14 @@ public final class d
         com.tencent.mm.danmaku.e.e.e("surface_lock", localObject1, localThrowable3);
         try
         {
-          j(paramCanvas);
-          AppMethodBeat.o(241615);
+          k(paramCanvas);
+          AppMethodBeat.o(247665);
           return;
         }
         catch (Throwable localThrowable2)
         {
           com.tencent.mm.danmaku.e.e.e("surface_lock", "unlockCanvas exception " + paramCanvas.hashCode(), localThrowable2);
-          AppMethodBeat.o(241615);
+          AppMethodBeat.o(247665);
           return;
         }
         i = paramCanvas.hashCode();
@@ -500,49 +521,49 @@ public final class d
     finally {}
   }
   
-  private void j(Canvas paramCanvas)
-  {
-    AppMethodBeat.i(241616);
-    if (paramCanvas != null)
-    {
-      if (this.gND)
-      {
-        this.gNE.unlockCanvasAndPost(paramCanvas);
-        AppMethodBeat.o(241616);
-        return;
-      }
-      this.gNE.unlock();
-    }
-    AppMethodBeat.o(241616);
-  }
-  
   private void k(Canvas paramCanvas)
   {
-    AppMethodBeat.i(241619);
+    AppMethodBeat.i(247666);
+    if (paramCanvas != null)
+    {
+      if (this.jxY)
+      {
+        this.jxZ.o(paramCanvas);
+        AppMethodBeat.o(247666);
+        return;
+      }
+      this.jxZ.unlock();
+    }
+    AppMethodBeat.o(247666);
+  }
+  
+  private void l(Canvas paramCanvas)
+  {
+    AppMethodBeat.i(247671);
     StringBuilder localStringBuilder;
     long l1;
-    if (com.tencent.mm.danmaku.e.e.gQV >= 4)
+    if (com.tencent.mm.danmaku.e.e.jBo >= 4)
     {
       long l2 = SystemClock.uptimeMillis();
-      long l3 = l2 - this.gNM;
-      this.gNP += 1;
-      this.gNR = ((int)(this.gNR + l3));
-      if (l3 > m.gPS + 1)
+      long l3 = l2 - this.jyh;
+      this.jyk += 1;
+      this.jym = ((int)(this.jym + l3));
+      if (l3 > m.jAl + 1)
       {
-        this.gNQ += 1;
-        if (com.tencent.mm.danmaku.e.e.gQV >= 5) {
+        this.jyl += 1;
+        if (com.tencent.mm.danmaku.e.e.jBo >= 5) {
           com.tencent.mm.danmaku.e.e.w("DanmakuManager", "a draw block:".concat(String.valueOf(l3)));
         }
       }
-      localObject = this.gNF.asl();
-      if (this.gNP % 60 == 1)
+      localObject = this.jya.ayY();
+      if (this.jyk % 60 == 1)
       {
-        localStringBuilder = new StringBuilder().append(com.tencent.mm.danmaku.e.e.gQV).append(",t:").append(com.tencent.mm.danmaku.e.c.zg(SystemClock.uptimeMillis())).append(",f:");
-        if (this.gNw.gQw != 0L) {
+        localStringBuilder = new StringBuilder().append(com.tencent.mm.danmaku.e.e.jBo).append(",t:").append(com.tencent.mm.danmaku.e.c.Fk(SystemClock.uptimeMillis())).append(",f:");
+        if (this.jxR.jAP != 0L) {
           break label488;
         }
         l1 = 1L;
-        localStringBuilder = localStringBuilder.append(1000L / l1).append(",ds:").append(this.gNZ.arR()).append(",ts:").append(this.gNF.gOl.mSize).append(",mt:").append(gNW.format(this.gNN - this.gNM)).append(",lt:").append(gNW.format(this.gNO - this.gNN)).append(",dt:").append(gNW.format(l2 - this.gNO)).append(",tt:").append(gNW.format(l3)).append(",jp:").append(gNV.format(this.gNQ * 100.0F / this.gNP)).append("%,at:").append(gNV.format(this.gNR / this.gNP)).append(",fd:");
+        localStringBuilder = localStringBuilder.append(1000L / l1).append(",ds:").append(this.jyu.ayC()).append(",ts:").append(this.jya.jyG.mSize).append(",mt:").append(jyr.format(this.jyi - this.jyh)).append(",lt:").append(jyr.format(this.jyj - this.jyi)).append(",dt:").append(jyr.format(l2 - this.jyj)).append(",tt:").append(jyr.format(l3)).append(",jp:").append(jyq.format(this.jyl * 100.0F / this.jyk)).append("%,at:").append(jyq.format(this.jym / this.jyk)).append(",fd:");
         if (localObject != null) {
           break label499;
         }
@@ -550,156 +571,152 @@ public final class d
     }
     label488:
     label499:
-    for (Object localObject = "null";; localObject = com.tencent.mm.danmaku.e.c.zg(((com.tencent.mm.danmaku.b.a)localObject).getTime()))
+    for (Object localObject = "null";; localObject = com.tencent.mm.danmaku.e.c.Fk(((com.tencent.mm.danmaku.b.a)localObject).getTime()))
     {
-      this.gNS = ((String)localObject + ",cs:" + gNV.format(this.gNu.gNx.gQp / 1024.0F / 1024.0F) + ",uc:" + gNV.format(this.gNu.gNx.gQr * 100.0F / this.gNu.gNx.gQq));
-      if (this.gNS != null) {
-        com.tencent.mm.danmaku.e.d.a(paramCanvas, this.gNS);
+      this.jyn = ((String)localObject + ",cs:" + jyq.format(this.jxP.jxS.jAI / 1024.0F / 1024.0F) + ",uc:" + jyq.format(this.jxP.jxS.jAK * 100.0F / this.jxP.jxS.jAJ));
+      if (this.jyn != null) {
+        com.tencent.mm.danmaku.e.d.a(paramCanvas, this.jyn);
       }
-      AppMethodBeat.o(241619);
+      AppMethodBeat.o(247671);
       return;
-      l1 = this.gNw.gQw;
+      l1 = this.jxR.jAP;
       break;
     }
   }
   
-  private void yX(long paramLong)
+  protected final void ayG()
   {
-    AppMethodBeat.i(241613);
-    if (arW())
-    {
-      AppMethodBeat.o(241613);
-      return;
-    }
-    asd();
-    if (asa())
-    {
-      i locali = this.gOc;
-      if (locali.asr())
-      {
-        locali.gOz.removeMessages(4);
-        locali.gOz.sendEmptyMessageDelayed(4, paramLong);
-      }
-    }
-    AppMethodBeat.o(241613);
+    AppMethodBeat.i(247642);
+    com.tencent.mm.danmaku.e.e.i("DanmakuManager", "clearDrawingCache()");
+    this.jyx.sendMessage(11);
+    AppMethodBeat.o(247642);
   }
   
-  protected final boolean asa()
+  protected final void ayH()
   {
-    AppMethodBeat.i(241620);
-    if ((this.gND) && (!this.gNB) && (this.gNC)) {}
+    AppMethodBeat.i(247656);
+    com.tencent.mm.danmaku.e.e.v("DanmakuManager", "notifyConfigChanged()");
+    this.jyx.rq(this.jxO.jzW);
+    this.jyx.sendMessage(7);
+    AppMethodBeat.o(247656);
+  }
+  
+  protected final boolean ayN()
+  {
+    AppMethodBeat.i(247672);
+    if ((this.jxY) && (!this.jxW) && (this.jxX)) {}
     for (boolean bool = true;; bool = false)
     {
-      com.tencent.mm.danmaku.e.e.v("DanmakuManager", "isPrepared() = " + bool + ", mIsSurfaceCreated = " + this.gND + ", mIsQuited = " + this.gNB + ", mIsPlaying = " + this.gNC);
-      AppMethodBeat.o(241620);
+      com.tencent.mm.danmaku.e.e.v("DanmakuManager", "isPrepared() = " + bool + ", mIsSurfaceCreated = " + this.jxY + ", mIsQuited = " + this.jxW + ", mIsPlaying = " + this.jxX);
+      AppMethodBeat.o(247672);
       return bool;
     }
   }
   
-  protected final void asb()
+  protected final void ayO()
   {
-    AppMethodBeat.i(241622);
+    AppMethodBeat.i(247675);
     com.tencent.mm.danmaku.e.e.i("DanmakuManager", "handleResume()");
-    if (!this.gNC)
+    if (!this.jxX)
     {
       long l = SystemClock.uptimeMillis();
-      this.gNI = (l - this.gNJ);
-      if (com.tencent.mm.danmaku.e.e.gQV >= 5) {
-        com.tencent.mm.danmaku.e.e.d("DanmakuManager", "handleResume, mBaseTime = " + this.gNI + ", currentTime = " + l + ", mPauseTime = " + this.gNJ);
+      this.jyd = (l - this.jye);
+      if (com.tencent.mm.danmaku.e.e.jBo >= 5) {
+        com.tencent.mm.danmaku.e.e.d("DanmakuManager", "handleResume, mBaseTime = " + this.jyd + ", currentTime = " + l + ", mPauseTime = " + this.jye);
       }
-      this.gNw.gNI = SystemClock.uptimeMillis();
+      this.jxR.jyd = SystemClock.uptimeMillis();
     }
-    this.gNC = true;
-    this.gNS = null;
-    asc();
-    if (com.tencent.mm.danmaku.e.e.gQV >= 5) {
-      com.tencent.mm.danmaku.e.e.d("DanmakuManager", new Object[] { "message resume:mPausedTime:", Long.valueOf(this.gNJ), ",mBaseTime:", Long.valueOf(this.gNI) });
+    this.jxX = true;
+    this.jyn = null;
+    ayP();
+    if (com.tencent.mm.danmaku.e.e.jBo >= 5) {
+      com.tencent.mm.danmaku.e.e.d("DanmakuManager", new Object[] { "message resume:mPausedTime:", Long.valueOf(this.jye), ",mBaseTime:", Long.valueOf(this.jyd) });
     }
-    AppMethodBeat.o(241622);
+    AppMethodBeat.o(247675);
   }
   
   @SuppressLint({"NewApi"})
-  protected final void ase()
+  protected final void ayR()
   {
-    AppMethodBeat.i(241625);
+    AppMethodBeat.i(247680);
     com.tencent.mm.danmaku.e.e.v("DanmakuManager", "handleUpdate()");
-    asd();
-    if (asa())
+    ayQ();
+    if (ayN())
     {
-      if (arW()) {
-        Choreographer.getInstance().postFrameCallback(this.gOg);
+      if (ayJ()) {
+        Choreographer.getInstance().postFrameCallback(this.jyB);
       }
       long l = SystemClock.uptimeMillis();
-      if (arV()) {
-        yX(l + m.gPS - SystemClock.uptimeMillis());
+      if (ayI()) {
+        Fb(l + m.jAl - SystemClock.uptimeMillis());
       }
     }
-    AppMethodBeat.o(241625);
+    AppMethodBeat.o(247680);
   }
   
-  protected final void asf()
+  protected final void ayS()
   {
-    AppMethodBeat.i(241626);
+    AppMethodBeat.i(247682);
     com.tencent.mm.danmaku.e.e.i("DanmakuManager", "handlePause()");
-    asd();
-    this.gNC = false;
-    if (this.gNt.isLive()) {}
-    for (long l = this.gNv.gQA;; l = this.gNw.gQv)
+    ayQ();
+    this.jxX = false;
+    if (this.jxO.isLive()) {}
+    for (long l = this.jxQ.jAT;; l = this.jxR.jAO)
     {
-      this.gNJ = l;
-      if (com.tencent.mm.danmaku.e.e.gQV >= 5) {
-        com.tencent.mm.danmaku.e.e.v("DanmakuManager", new Object[] { "message pause:mPausedTime:", Long.valueOf(this.gNJ) });
+      this.jye = l;
+      if (com.tencent.mm.danmaku.e.e.jBo >= 5) {
+        com.tencent.mm.danmaku.e.e.v("DanmakuManager", new Object[] { "message pause:mPausedTime:", Long.valueOf(this.jye) });
       }
-      AppMethodBeat.o(241626);
+      AppMethodBeat.o(247682);
       return;
     }
   }
   
-  public final void asg()
+  public final void ayT()
   {
-    AppMethodBeat.i(241628);
+    AppMethodBeat.i(247686);
     com.tencent.mm.danmaku.e.e.i("surface_lock", "surfaceCreated");
-    AppMethodBeat.o(241628);
+    AppMethodBeat.o(247686);
   }
   
-  public final void ash()
+  public final void ayU()
   {
-    AppMethodBeat.i(241629);
+    AppMethodBeat.i(247687);
     com.tencent.mm.danmaku.e.e.i("surface_lock", "surfaceChanged");
-    this.gND = true;
-    asc();
-    AppMethodBeat.o(241629);
+    this.jxY = true;
+    ayP();
+    AppMethodBeat.o(247687);
   }
   
-  public final void asi()
+  public final void ayV()
   {
-    AppMethodBeat.i(241630);
-    this.gND = false;
-    asd();
+    AppMethodBeat.i(247688);
+    this.jxY = false;
+    ayQ();
     com.tencent.mm.danmaku.e.e.i("surface_lock", "surfaceDestroyed");
-    AppMethodBeat.o(241630);
+    AppMethodBeat.o(247688);
   }
   
-  protected final void asj()
+  protected final void ayW()
   {
-    AppMethodBeat.i(241632);
-    arZ();
-    yX(4L);
-    AppMethodBeat.o(241632);
+    AppMethodBeat.i(247691);
+    ayM();
+    Fb(4L);
+    AppMethodBeat.o(247691);
   }
   
-  protected final void ask()
+  protected final void ayX()
   {
-    AppMethodBeat.i(241633);
+    AppMethodBeat.i(247693);
     com.tencent.mm.danmaku.e.e.i("surface_lock", "handleClearDrawingCache");
-    asd();
-    if (this.gND)
+    ayQ();
+    if (this.jxY)
     {
       Object localObject3 = null;
       Object localObject1 = null;
       try
       {
-        Canvas localCanvas = this.gNE.lockCanvas();
+        Canvas localCanvas = this.jxZ.azQ();
         localObject1 = localCanvas;
         localObject3 = localCanvas;
         StringBuilder localStringBuilder = new StringBuilder("clearDrawing lockCanvas ");
@@ -713,21 +730,21 @@ public final class d
           {
             localObject1 = localCanvas;
             localObject3 = localCanvas;
-            com.tencent.mm.danmaku.e.d.n(localCanvas);
+            com.tencent.mm.danmaku.e.d.p(localCanvas);
           }
           if (localCanvas != null) {}
           try
           {
-            this.gNE.unlockCanvasAndPost(localCanvas);
+            this.jxZ.o(localCanvas);
             com.tencent.mm.danmaku.e.e.i("surface_lock", "clearDrawing unlockCanvas " + localCanvas.hashCode());
-            AppMethodBeat.o(241633);
+            AppMethodBeat.o(247693);
             return;
           }
           catch (Throwable localThrowable1)
           {
             int i;
             com.tencent.mm.danmaku.e.e.e("surface_lock", "clearDrawing unlockCanvasAndPost exception: " + localCanvas.hashCode(), localThrowable1);
-            AppMethodBeat.o(241633);
+            AppMethodBeat.o(247693);
             return;
           }
           localObject1 = localCanvas;
@@ -736,9 +753,9 @@ public final class d
         }
         try
         {
-          this.gNE.unlockCanvasAndPost(localThrowable2);
+          this.jxZ.o(localThrowable2);
           com.tencent.mm.danmaku.e.e.i("surface_lock", "clearDrawing unlockCanvas " + localThrowable2.hashCode());
-          AppMethodBeat.o(241633);
+          AppMethodBeat.o(247693);
           throw localObject2;
         }
         catch (Throwable localThrowable4)
@@ -756,15 +773,15 @@ public final class d
         if (localThrowable1 != null) {}
         try
         {
-          this.gNE.unlockCanvasAndPost(localThrowable1);
+          this.jxZ.o(localThrowable1);
           com.tencent.mm.danmaku.e.e.i("surface_lock", "clearDrawing unlockCanvas " + localThrowable1.hashCode());
-          AppMethodBeat.o(241633);
+          AppMethodBeat.o(247693);
           return;
         }
         catch (Throwable localThrowable2)
         {
           com.tencent.mm.danmaku.e.e.e("surface_lock", "clearDrawing unlockCanvasAndPost exception: " + localThrowable1.hashCode(), localThrowable2);
-          AppMethodBeat.o(241633);
+          AppMethodBeat.o(247693);
           return;
         }
       }
@@ -773,36 +790,36 @@ public final class d
         if (localThrowable2 == null) {}
       }
     }
-    AppMethodBeat.o(241633);
+    AppMethodBeat.o(247693);
   }
   
   protected final void c(Point paramPoint)
   {
-    AppMethodBeat.i(241607);
-    paramPoint.y = ((int)(paramPoint.y - this.gNE.atd()));
-    paramPoint = new com.tencent.mm.danmaku.d.h(this.gNw.gQv, paramPoint, 0);
-    if (com.tencent.mm.danmaku.e.e.gQV >= 4) {
+    AppMethodBeat.i(247635);
+    paramPoint.y = ((int)(paramPoint.y - this.jxZ.azR()));
+    paramPoint = new com.tencent.mm.danmaku.d.h(this.jxR.jAO, paramPoint, 0);
+    if (com.tencent.mm.danmaku.e.e.jBo >= 4) {
       com.tencent.mm.danmaku.e.e.v("DanmakuManager", new Object[] { "addClickPoint:", paramPoint });
     }
-    this.gNX.add(paramPoint);
-    this.gOc.sendMessage(10);
-    AppMethodBeat.o(241607);
+    this.jys.add(paramPoint);
+    this.jyx.sendMessage(10);
+    AppMethodBeat.o(247635);
   }
   
   protected final void clear()
   {
-    AppMethodBeat.i(241610);
+    AppMethodBeat.i(247644);
     com.tencent.mm.danmaku.e.e.v("DanmakuManager", "clear");
-    this.gOc.sendMessage(9);
-    if (this.gNF != null) {
-      this.gNF.clear();
+    this.jyx.sendMessage(9);
+    if (this.jya != null) {
+      this.jya.clear();
     }
-    AppMethodBeat.o(241610);
+    AppMethodBeat.o(247644);
   }
   
   protected final void i(Message paramMessage)
   {
-    AppMethodBeat.i(241627);
+    AppMethodBeat.i(247684);
     StringBuilder localStringBuilder = new StringBuilder("handleSeek() msg.obj is null = ");
     if (paramMessage.obj == null) {}
     for (boolean bool = true;; bool = false)
@@ -810,79 +827,103 @@ public final class d
       com.tencent.mm.danmaku.e.e.i("DanmakuManager", bool);
       if (paramMessage.obj != null)
       {
-        this.gNJ = ((Long)paramMessage.obj).longValue();
-        this.gNK = true;
-        asb();
+        this.jye = ((Long)paramMessage.obj).longValue();
+        this.jyf = true;
+        ayO();
       }
-      if (com.tencent.mm.danmaku.e.e.gQV >= 5) {
-        com.tencent.mm.danmaku.e.e.v("DanmakuManager", new Object[] { "message seek:startTime:", Long.valueOf(this.gNJ) });
+      if (com.tencent.mm.danmaku.e.e.jBo >= 5) {
+        com.tencent.mm.danmaku.e.e.v("DanmakuManager", new Object[] { "message seek:startTime:", Long.valueOf(this.jye) });
       }
-      AppMethodBeat.o(241627);
+      AppMethodBeat.o(247684);
       return;
     }
   }
   
   protected final boolean isPlaying()
   {
-    AppMethodBeat.i(241621);
-    if ((!this.gNB) && (this.gNC)) {}
+    AppMethodBeat.i(247673);
+    if ((!this.jxW) && (this.jxX)) {}
     for (boolean bool = true;; bool = false)
     {
-      com.tencent.mm.danmaku.e.e.d("DanmakuManager", "isPlaying() = " + bool + " : mIsQuited = " + this.gNB + ", mIsPlaying = " + this.gNC);
-      AppMethodBeat.o(241621);
+      com.tencent.mm.danmaku.e.e.d("DanmakuManager", "isPlaying() = " + bool + " : mIsQuited = " + this.jxW + ", mIsPlaying = " + this.jxX);
+      AppMethodBeat.o(247673);
       return bool;
     }
   }
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(241631);
-    if (this.gNL)
+    AppMethodBeat.i(247689);
+    if (this.jyg)
     {
-      if (com.tencent.mm.danmaku.e.e.gQV >= 4) {
+      if (com.tencent.mm.danmaku.e.e.jBo >= 4) {
         com.tencent.mm.danmaku.e.e.v("DanmakuManager", new Object[] { "onClick:", paramMotionEvent });
       }
       if ((paramMotionEvent.getAction() & 0xFF) == 0) {
         c(new Point((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()));
       }
     }
-    AppMethodBeat.o(241631);
+    AppMethodBeat.o(247689);
     return false;
   }
   
   protected final void pause()
   {
-    AppMethodBeat.i(241609);
+    AppMethodBeat.i(247641);
     com.tencent.mm.danmaku.e.e.i("DanmakuManager", "pause()");
-    this.gOc.sendMessage(3);
-    AppMethodBeat.o(241609);
+    this.jyx.sendMessage(3);
+    AppMethodBeat.o(247641);
+  }
+  
+  @SuppressLint({"NewApi"})
+  protected final void quit()
+  {
+    AppMethodBeat.i(247652);
+    com.tencent.mm.danmaku.e.e.v("DanmakuManager", "quit(); mIsQuited = true");
+    this.jxW = true;
+    this.jyx.sendMessage(6);
+    if (ayJ()) {
+      Choreographer.getInstance().removeFrameCallback(this.jyB);
+    }
+    ayQ();
+    AppMethodBeat.o(247652);
   }
   
   protected final void release()
   {
-    AppMethodBeat.i(241611);
-    com.tencent.mm.danmaku.e.e.v("DanmakuManager", "release() mIsQuited = " + this.gNB);
-    if (!this.gNB)
-    {
-      com.tencent.mm.danmaku.e.e.v("DanmakuManager", "quit(); mIsQuited = true");
-      this.gNB = true;
-      this.gOc.sendMessage(6);
-      if (arW()) {
-        Choreographer.getInstance().removeFrameCallback(this.gOg);
-      }
-      asd();
+    AppMethodBeat.i(247654);
+    com.tencent.mm.danmaku.e.e.v("DanmakuManager", "release() mIsQuited = " + this.jxW);
+    if (!this.jxW) {
+      quit();
     }
-    this.gOc.sendMessage(8);
-    this.gOa = null;
-    AppMethodBeat.o(241611);
+    this.jyx.sendMessage(8);
+    this.jyv = null;
+    AppMethodBeat.o(247654);
   }
   
   protected final void resume()
   {
-    AppMethodBeat.i(241608);
+    AppMethodBeat.i(247639);
     com.tencent.mm.danmaku.e.e.v("DanmakuManager", "resume()");
-    this.gOc.sendMessage(2);
-    AppMethodBeat.o(241608);
+    this.jyx.sendMessage(2);
+    AppMethodBeat.o(247639);
+  }
+  
+  protected final void seek(long paramLong)
+  {
+    AppMethodBeat.i(247643);
+    com.tencent.mm.danmaku.e.e.v("DanmakuManager", "seek(): postime = ".concat(String.valueOf(paramLong)));
+    this.jyx.sendMessage(5, Long.valueOf(paramLong));
+    AppMethodBeat.o(247643);
+  }
+  
+  protected final void start(long paramLong)
+  {
+    AppMethodBeat.i(247637);
+    com.tencent.mm.danmaku.e.e.v("DanmakuManager", "start() time = ".concat("0"));
+    this.jyx.rq(this.jxO.jzW);
+    this.jyx.sendMessage(1, Long.valueOf(0L));
+    AppMethodBeat.o(247637);
   }
   
   @SuppressLint({"NewApi"})
@@ -893,11 +934,11 @@ public final class d
     
     public final void doFrame(long paramLong)
     {
-      AppMethodBeat.i(241605);
-      if (d.this.asa()) {
-        d.a(d.this).asq();
+      AppMethodBeat.i(263647);
+      if (d.this.ayN()) {
+        d.a(d.this).aze();
       }
-      AppMethodBeat.o(241605);
+      AppMethodBeat.o(263647);
     }
   }
 }

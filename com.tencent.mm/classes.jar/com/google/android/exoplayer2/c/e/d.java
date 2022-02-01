@@ -8,36 +8,36 @@ import java.util.Arrays;
 
 final class d
 {
-  final e boR;
-  final m bpj;
-  int bpk;
-  private int bpl;
-  boolean bpm;
+  final m aYL;
+  int aYM;
+  private int aYN;
+  boolean aYO;
+  final e aYt;
   
   d()
   {
     AppMethodBeat.i(92155);
-    this.boR = new e();
-    this.bpj = new m(new byte[65025], 0);
-    this.bpk = -1;
+    this.aYt = new e();
+    this.aYL = new m(new byte[65025], 0);
+    this.aYM = -1;
     AppMethodBeat.o(92155);
   }
   
-  private int el(int paramInt)
+  private int ez(int paramInt)
   {
     int i = 0;
-    this.bpl = 0;
+    this.aYN = 0;
     int j;
     int k;
     do
     {
       j = i;
-      if (this.bpl + paramInt >= this.boR.bpt) {
+      if (this.aYN + paramInt >= this.aYt.aYV) {
         break;
       }
-      int[] arrayOfInt = this.boR.bpv;
-      j = this.bpl;
-      this.bpl = (j + 1);
+      int[] arrayOfInt = this.aYt.aYX;
+      j = this.aYN;
+      this.aYN = (j + 1);
       k = arrayOfInt[(j + paramInt)];
       j = i + k;
       i = j;
@@ -52,51 +52,51 @@ final class d
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      if (this.bpm)
+      if (this.aYO)
       {
-        this.bpm = false;
-        this.bpj.reset();
+        this.aYO = false;
+        this.aYL.reset();
       }
-      if (this.bpm) {
+      if (this.aYO) {
         break label294;
       }
-      if (this.bpk >= 0) {
+      if (this.aYM >= 0) {
         break label133;
       }
-      if (this.boR.c(paramf, true)) {
+      if (this.aYt.c(paramf, true)) {
         break;
       }
       AppMethodBeat.o(92156);
       return false;
     }
-    int i = this.boR.bkI;
-    if (((this.boR.type & 0x1) == 1) && (this.bpj.limit == 0)) {
-      i += el(0);
+    int i = this.aYt.aUk;
+    if (((this.aYt.type & 0x1) == 1) && (this.aYL.limit == 0)) {
+      i += ez(0);
     }
-    for (int j = this.bpl + 0;; j = 0)
+    for (int j = this.aYN + 0;; j = 0)
     {
-      paramf.dP(i);
-      this.bpk = j;
+      paramf.ed(i);
+      this.aYM = j;
       label133:
-      j = el(this.bpk);
-      i = this.bpk + this.bpl;
+      j = ez(this.aYM);
+      i = this.aYM + this.aYN;
       if (j > 0)
       {
-        if (this.bpj.capacity() < this.bpj.limit + j) {
-          this.bpj.data = Arrays.copyOf(this.bpj.data, this.bpj.limit + j);
+        if (this.aYL.vh() < this.aYL.limit + j) {
+          this.aYL.data = Arrays.copyOf(this.aYL.data, this.aYL.limit + j);
         }
-        paramf.readFully(this.bpj.data, this.bpj.limit, j);
-        this.bpj.eY(j + this.bpj.limit);
-        if (this.boR.bpv[(i - 1)] != 255)
+        paramf.readFully(this.aYL.data, this.aYL.limit, j);
+        this.aYL.ft(j + this.aYL.limit);
+        if (this.aYt.aYX[(i - 1)] != 255)
         {
           bool = true;
           label258:
-          this.bpm = bool;
+          this.aYO = bool;
         }
       }
       else
       {
-        if (i != this.boR.bpt) {
+        if (i != this.aYt.aYV) {
           break label291;
         }
         i = -1;
@@ -104,7 +104,7 @@ final class d
       label291:
       for (;;)
       {
-        this.bpk = i;
+        this.aYM = i;
         break;
         bool = false;
         break label258;
@@ -117,7 +117,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.c.e.d
  * JD-Core Version:    0.7.0.1
  */

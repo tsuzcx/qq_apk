@@ -1,12 +1,15 @@
 package com.tencent.mm.plugin.finder.nearby.base;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mm.plugin.finder.nearby.report.d;
+import com.tencent.mm.model.cm;
+import com.tencent.mm.plugin.finder.nearby.report.e;
+import com.tencent.mm.plugin.finder.ui.fragment.MMFinderFragment;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.aa;
+import com.tencent.mm.ui.ad;
 import com.tencent.mm.ui.component.UIComponent;
 import com.tencent.mm.ui.component.UIComponentFragment;
 import java.util.HashMap;
@@ -14,26 +17,28 @@ import java.util.Iterator;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;", "Lcom/tencent/mm/ui/component/UIComponentFragment;", "()V", "tabType", "", "(I)V", "titleId", "(II)V", "title", "", "(Ljava/lang/String;I)V", "args", "Landroid/os/Bundle;", "getArgs", "()Landroid/os/Bundle;", "setArgs", "(Landroid/os/Bundle;)V", "getTabType", "()I", "setTabType", "getTitle", "()Ljava/lang/String;", "setTitle", "(Ljava/lang/String;)V", "getTitleId", "setTitleId", "getClickTabContextId", "getCommentScene", "getPageName", "getReportType", "onActionbarClick", "", "onActionbarDoubleClick", "onBackPressed", "", "onCreateView", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "savedInstanceState", "onMenuClick", "onResume", "onUserVisibleUnFocused", "onViewCreated", "view", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/MMFinderFragment;", "()V", "tabType", "", "(I)V", "titleId", "(II)V", "title", "", "(Ljava/lang/String;I)V", "args", "Landroid/os/Bundle;", "getArgs", "()Landroid/os/Bundle;", "setArgs", "(Landroid/os/Bundle;)V", "clickSubTabContextId", "clickTabId", "getTabType", "()I", "setTabType", "getTitle", "()Ljava/lang/String;", "setTitle", "(Ljava/lang/String;)V", "getTitleId", "setTitleId", "getClickSubTabContextId", "getClickSubTabId", "getClickTabId", "getCommentScene", "getPageName", "getReportType", "onActionbarClick", "", "onActionbarDoubleClick", "onBackPressed", "", "onCreateView", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "savedInstanceState", "onMenuClick", "onResume", "onUserVisibleUnFocused", "onViewCreated", "view", "setClickSubTabContextId", "setClickTabId", "plugin-finder-nearby_release"})
 public abstract class AbsNearByFragment
-  extends UIComponentFragment
+  extends MMFinderFragment
 {
-  public Bundle Ew;
   private HashMap _$_findViewCache;
-  public int dLS;
+  public int fEH;
   public String title = "";
-  public int uQk;
+  public String yAU = "";
+  public int zDq;
+  public Bundle zDr;
+  private String zDs = "";
   
   public AbsNearByFragment()
   {
     this.title = "";
-    this.dLS = -1;
+    this.fEH = -1;
   }
   
   public AbsNearByFragment(int paramInt1, int paramInt2)
   {
-    this.uQk = paramInt1;
-    this.dLS = paramInt2;
+    this.zDq = paramInt1;
+    this.fEH = paramInt2;
   }
   
   public void _$_clearFindViewByIdCache()
@@ -43,68 +48,87 @@ public abstract class AbsNearByFragment
     }
   }
   
-  public String ack()
+  public final void aDy(String paramString)
+  {
+    p.k(paramString, "clickTabId");
+    this.zDs = paramString;
+  }
+  
+  public final String aiS()
+  {
+    if ((TextUtils.isEmpty((CharSequence)this.yAU)) && (!TextUtils.isEmpty((CharSequence)dLw()))) {
+      this.yAU = (dLw() + "-" + cm.bfE());
+    }
+    return this.yAU;
+  }
+  
+  public String akA()
   {
     return "1001";
   }
   
-  public String afB()
+  public void dLs() {}
+  
+  public void dLt() {}
+  
+  public void dLu() {}
+  
+  public String dLv()
   {
-    return "1001";
+    return this.zDs;
   }
   
-  public int ddN()
+  public String dLw()
+  {
+    return "";
+  }
+  
+  public int duR()
   {
     return 3;
   }
   
-  public void dlk() {}
-  
-  public void dll() {}
-  
-  public void dlm() {}
-  
   public int getCommentScene()
   {
-    return 76;
+    return 0;
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    p.h(paramLayoutInflater, "inflater");
-    if (this.lJI == null)
+    p.k(paramLayoutInflater, "inflater");
+    if (getRootView() == null)
     {
-      paramLayoutInflater = aa.jQ(getContext()).inflate(getLayoutId(), paramViewGroup, false);
+      paramLayoutInflater = ad.kS(getContext()).inflate(getLayoutId(), paramViewGroup, false);
       Log.i("MicroMsg.UIComponentFragment", "[onCreateView] " + getClass().getSimpleName() + '@' + hashCode() + " uiComponents=" + this.uiComponents);
       paramViewGroup = ((Iterable)this.uiComponents).iterator();
       while (paramViewGroup.hasNext())
       {
         paramBundle = (UIComponent)paramViewGroup.next();
-        p.g(paramLayoutInflater, "view");
+        p.j(paramLayoutInflater, "view");
         paramBundle.setRootView(paramLayoutInflater);
       }
-      this.lJI = paramLayoutInflater;
-      this.PRX = true;
+      setRootView(paramLayoutInflater);
+      hUd();
     }
-    return this.lJI;
+    return getRootView();
   }
   
   public void onResume()
   {
-    d locald = d.uTq;
-    d.b(this);
+    e locale = e.zJs;
+    e.d(this);
     super.onResume();
   }
   
   public void onUserVisibleUnFocused()
   {
     super.onUserVisibleUnFocused();
-    this.Ew = null;
+    this.zDr = null;
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    p.h(paramView, "view");
+    p.k(paramView, "view");
     super.onViewCreated(paramView, paramBundle);
     paramView = ((Iterable)this.uiComponents).iterator();
     while (paramView.hasNext()) {
@@ -114,7 +138,7 @@ public abstract class AbsNearByFragment
   
   public final void setTitle(String paramString)
   {
-    p.h(paramString, "<set-?>");
+    p.k(paramString, "<set-?>");
     this.title = paramString;
   }
 }

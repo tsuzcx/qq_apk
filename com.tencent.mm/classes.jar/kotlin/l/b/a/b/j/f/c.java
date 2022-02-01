@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class c
 {
-  public abstract int hKN();
+  public abstract int iPd();
   
   public String toString()
   {
@@ -14,41 +14,41 @@ public abstract class c
   public static final class a
     extends c
   {
-    private static final int TJo;
-    public static final a TJp;
+    private static final int ablQ;
+    public static final a ablR;
     
     static
     {
       AppMethodBeat.i(60194);
-      TJp = new a();
-      d.a locala = d.TJQ;
-      int i = d.hKV();
-      locala = d.TJQ;
-      int j = d.hKT();
-      locala = d.TJQ;
-      TJo = i & ((j | d.hKU()) ^ 0xFFFFFFFF);
+      ablR = new a();
+      d.a locala = d.abms;
+      int i = d.iPl();
+      locala = d.abms;
+      int j = d.iPj();
+      locala = d.abms;
+      ablQ = i & ((j | d.iPk()) ^ 0xFFFFFFFF);
       AppMethodBeat.o(60194);
     }
     
-    public final int hKN()
+    public final int iPd()
     {
-      return TJo;
+      return ablQ;
     }
   }
   
   public static final class b
     extends c
   {
-    public static final b TJq;
+    public static final b ablS;
     
     static
     {
       AppMethodBeat.i(60195);
-      TJq = new b();
+      ablS = new b();
       AppMethodBeat.o(60195);
     }
     
-    public final int hKN()
+    public final int iPd()
     {
       return 0;
     }
@@ -56,7 +56,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.j.f.c
  * JD-Core Version:    0.7.0.1
  */

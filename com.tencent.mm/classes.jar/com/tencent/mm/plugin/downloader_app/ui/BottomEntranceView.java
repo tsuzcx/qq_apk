@@ -13,20 +13,22 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.downloader.c.a.a.f;
 import com.tencent.mm.plugin.downloader_app.api.c;
+import com.tencent.mm.plugin.downloader_app.e.c;
+import com.tencent.mm.plugin.downloader_app.e.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.ax;
 
 public class BottomEntranceView
   extends RelativeLayout
 {
-  private f qLT;
-  private TextView qLU;
-  private int qLV;
-  private int qLW;
+  private f unf;
+  private TextView ung;
+  private int unh;
+  private int uni;
   
   public BottomEntranceView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,7 +38,7 @@ public class BottomEntranceView
   private int getDisplayHeight()
   {
     AppMethodBeat.i(8975);
-    int i = au.az(getContext()).y;
+    int i = ax.au(getContext()).y;
     AppMethodBeat.o(8975);
     return i;
   }
@@ -45,10 +47,10 @@ public class BottomEntranceView
   {
     AppMethodBeat.i(8973);
     super.onFinishInflate();
-    this.qLU = ((TextView)findViewById(2131300147));
-    this.qLW = (getDisplayHeight() - au.eu(getContext()) - au.getStatusBarHeight(getContext()) - au.aD(getContext()));
-    this.qLV = getResources().getDimensionPixelSize(2131165949);
-    Log.d("MicroMsg.BottomEntranceView", "mContentH = %d", new Object[] { Integer.valueOf(this.qLW) });
+    this.ung = ((TextView)findViewById(e.e.uke));
+    this.uni = (getDisplayHeight() - ax.ew(getContext()) - ax.getStatusBarHeight(getContext()) - ax.aB(getContext()));
+    this.unh = getResources().getDimensionPixelSize(e.c.ujG);
+    Log.d("MicroMsg.BottomEntranceView", "mContentH = %d", new Object[] { Integer.valueOf(this.uni) });
     getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
@@ -64,13 +66,13 @@ public class BottomEntranceView
       {
         AppMethodBeat.i(8972);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/downloader_app/ui/BottomEntranceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        if ((BottomEntranceView.b(BottomEntranceView.this) != null) && (!Util.isNullOrNil(BottomEntranceView.b(BottomEntranceView.this).pTL)))
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/downloader_app/ui/BottomEntranceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        if ((BottomEntranceView.b(BottomEntranceView.this) != null) && (!Util.isNullOrNil(BottomEntranceView.b(BottomEntranceView.this).jump_url)))
         {
           paramAnonymousView = new Bundle();
-          paramAnonymousView.putString("rawUrl", BottomEntranceView.b(BottomEntranceView.this).pTL);
-          ((c)g.af(c.class)).e(BottomEntranceView.this.getContext(), paramAnonymousView);
+          paramAnonymousView.putString("rawUrl", BottomEntranceView.b(BottomEntranceView.this).jump_url);
+          ((c)h.ae(c.class)).f(BottomEntranceView.this.getContext(), paramAnonymousView);
           com.tencent.mm.plugin.downloader_app.b.a.a(10, 1005, 1, 40, "", "", "");
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/downloader_app/ui/BottomEntranceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -83,21 +85,21 @@ public class BottomEntranceView
   public void setData(f paramf)
   {
     AppMethodBeat.i(8974);
-    if ((paramf == null) || (Util.isNullOrNil(paramf.desc)) || (Util.isNullOrNil(paramf.pTL)))
+    if ((paramf == null) || (Util.isNullOrNil(paramf.desc)) || (Util.isNullOrNil(paramf.jump_url)))
     {
       setVisibility(8);
       AppMethodBeat.o(8974);
       return;
     }
-    this.qLT = paramf;
+    this.unf = paramf;
     setVisibility(0);
-    this.qLU.setText(this.qLT.desc);
+    this.ung.setText(this.unf.desc);
     AppMethodBeat.o(8974);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.ui.BottomEntranceView
  * JD-Core Version:    0.7.0.1
  */

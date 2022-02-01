@@ -5,7 +5,7 @@ import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
-import com.tencent.mm.pluginsdk.ui.tools.j.a;
+import com.tencent.mm.pluginsdk.ui.tools.k.a;
 
 public class GameFakeVideoView
   extends VideoPlayerTextureView
@@ -25,12 +25,12 @@ public class GameFakeVideoView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void l(SurfaceTexture paramSurfaceTexture)
+  public final void o(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(41208);
-    super.l(paramSurfaceTexture);
-    if (this.rso != null) {
-      this.rso.fh(getCurrentPosition(), getDuration());
+    super.o(paramSurfaceTexture);
+    if (this.uXU != null) {
+      this.uXU.fE(getCurrentPosition(), getDuration());
     }
     AppMethodBeat.o(41208);
   }

@@ -102,18 +102,18 @@ public final class ShareDialog
     AppMethodBeat.o(8744);
   }
   
-  public ShareDialog(android.support.v4.app.Fragment paramFragment)
+  public ShareDialog(androidx.fragment.app.Fragment paramFragment)
   {
     this(new FragmentWrapper(paramFragment));
-    AppMethodBeat.i(8739);
-    AppMethodBeat.o(8739);
+    AppMethodBeat.i(226479);
+    AppMethodBeat.o(226479);
   }
   
-  ShareDialog(android.support.v4.app.Fragment paramFragment, int paramInt)
+  ShareDialog(androidx.fragment.app.Fragment paramFragment, int paramInt)
   {
     this(new FragmentWrapper(paramFragment), paramInt);
-    AppMethodBeat.i(8743);
-    AppMethodBeat.o(8743);
+    AppMethodBeat.i(226481);
+    AppMethodBeat.o(226481);
   }
   
   private ShareDialog(FragmentWrapper paramFragmentWrapper)
@@ -304,11 +304,11 @@ public final class ShareDialog
     AppMethodBeat.o(8732);
   }
   
-  public static void show(android.support.v4.app.Fragment paramFragment, ShareContent paramShareContent)
+  public static void show(androidx.fragment.app.Fragment paramFragment, ShareContent paramShareContent)
   {
-    AppMethodBeat.i(8731);
+    AppMethodBeat.i(226468);
     show(new FragmentWrapper(paramFragment), paramShareContent);
-    AppMethodBeat.o(8731);
+    AppMethodBeat.o(226468);
   }
   
   private static void show(FragmentWrapper paramFragmentWrapper, ShareContent paramShareContent)
@@ -709,7 +709,7 @@ public final class ShareDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.share.widget.ShareDialog
  * JD-Core Version:    0.7.0.1
  */

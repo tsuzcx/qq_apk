@@ -20,7 +20,7 @@ public class TRTCTranscodingConfigInner
   
   public TRTCTranscodingConfigInner(TRTCCloudDef.TRTCTranscodingConfig paramTRTCTranscodingConfig)
   {
-    AppMethodBeat.i(222390);
+    AppMethodBeat.i(223272);
     this.appId = paramTRTCTranscodingConfig.appId;
     this.bizId = paramTRTCTranscodingConfig.bizId;
     this.mode = paramTRTCTranscodingConfig.mode;
@@ -49,14 +49,14 @@ public class TRTCTranscodingConfigInner
         }
       }
     }
-    AppMethodBeat.o(222390);
+    AppMethodBeat.o(223272);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(222391);
+    AppMethodBeat.i(223274);
     String str = "backgroundURL=" + this.backgroundURL + ", mixExtraInfo=" + this.mixExtraInfo + ", " + super.toString();
-    AppMethodBeat.o(222391);
+    AppMethodBeat.o(223274);
     return str;
   }
   
@@ -79,16 +79,16 @@ public class TRTCTranscodingConfigInner
     
     public String toString()
     {
-      AppMethodBeat.i(222397);
+      AppMethodBeat.i(226495);
       String str = super.toString() + ", streamId=" + this.streamId;
-      AppMethodBeat.o(222397);
+      AppMethodBeat.o(226495);
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCTranscodingConfigInner
  * JD-Core Version:    0.7.0.1
  */

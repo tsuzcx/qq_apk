@@ -1,6 +1,6 @@
 package com.tencent.magicbrush.handler;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.magicbrush.a.c.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.UnsupportedEncodingException;
@@ -63,7 +63,7 @@ public class MBCharsetHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.magicbrush.handler.MBCharsetHandler
  * JD-Core Version:    0.7.0.1
  */

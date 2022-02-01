@@ -16,17 +16,17 @@ final class WcPayCashierDialog$4
   {
     AppMethodBeat.i(71341);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
     Log.d("MicroMsg.WcPayCashierDialog", "click bankcard item");
-    WcPayCashierDialog.s(this.IlZ);
+    WcPayCashierDialog.s(this.Per);
     a.a(this, "com/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(71341);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.cashier.WcPayCashierDialog.4
  * JD-Core Version:    0.7.0.1
  */

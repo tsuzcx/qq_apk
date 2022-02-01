@@ -2,11 +2,10 @@ package com.tencent.mm.plugin.card.b;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.card.model.ac;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
@@ -19,63 +18,46 @@ import java.util.List;
 public final class c
   implements i
 {
-  List<WeakReference<a>> pQG;
-  String pQH;
-  public LinkedList<String> pQI;
-  public int pQJ;
-  private int pQK;
-  private int pQL;
-  private int pQM;
-  private int pQN;
-  private boolean pQO;
-  private MTimerHandler pQP;
-  private MTimerHandler pQQ;
+  private List<WeakReference<a>> cSF;
+  private String tmG;
+  public LinkedList<String> tmH;
+  public int tmI;
+  private int tmJ;
+  private int tmK;
+  private int tmL;
+  private int tmM;
+  private boolean tmN;
+  private MTimerHandler tmO;
+  private MTimerHandler tmP;
   
   public c()
   {
     AppMethodBeat.i(112583);
-    this.pQG = new ArrayList();
-    this.pQH = "";
-    this.pQI = new LinkedList();
-    this.pQN = 60;
-    this.pQO = false;
-    this.pQP = new MTimerHandler(new MTimerHandler.CallBack()
+    this.cSF = new ArrayList();
+    this.tmG = "";
+    this.tmH = new LinkedList();
+    this.tmM = 60;
+    this.tmN = false;
+    this.tmO = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(112581);
         Log.i("MicroMsg.CardCodeMgr", "onTimerExpired, do request code");
-        c.this.aja(c.this.pQH);
-        c.this.ctg();
+        c.this.aqN(c.a(c.this));
+        c.this.cGI();
         AppMethodBeat.o(112581);
         return true;
       }
     }, false);
-    this.pQQ = new MTimerHandler(new MTimerHandler.CallBack()
+    this.tmP = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(112582);
         Log.i("MicroMsg.CardCodeMgr", "onTimerExpired, do refresh code one minute");
-        c localc = c.this;
-        Log.i("MicroMsg.CardCodeMgr", "onCodeChange()");
-        if (localc.pQG != null)
-        {
-          int i = 0;
-          while (i < localc.pQG.size())
-          {
-            Object localObject = (WeakReference)localc.pQG.get(i);
-            if (localObject != null)
-            {
-              localObject = (c.a)((WeakReference)localObject).get();
-              if (localObject != null) {
-                ((c.a)localObject).ctk();
-              }
-            }
-            i += 1;
-          }
-        }
-        c.this.cti();
+        c.b(c.this);
+        c.this.cGK();
         AppMethodBeat.o(112582);
         return true;
       }
@@ -83,24 +65,24 @@ public final class c
     AppMethodBeat.o(112583);
   }
   
-  private void aiZ(String paramString)
+  private void aqM(String paramString)
   {
     AppMethodBeat.i(112588);
     Log.i("MicroMsg.CardCodeMgr", "onFail()");
-    if (this.pQG == null)
+    if (this.cSF == null)
     {
       AppMethodBeat.o(112588);
       return;
     }
     int i = 0;
-    while (i < this.pQG.size())
+    while (i < this.cSF.size())
     {
-      Object localObject = (WeakReference)this.pQG.get(i);
+      Object localObject = (WeakReference)this.cSF.get(i);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();
         if (localObject != null) {
-          ((a)localObject).aiZ(paramString);
+          ((a)localObject).aqM(paramString);
         }
       }
       i += 1;
@@ -108,20 +90,20 @@ public final class c
     AppMethodBeat.o(112588);
   }
   
-  private void ctf()
+  private void cGH()
   {
     AppMethodBeat.i(112592);
-    ac localac = new ac(this.pQH);
-    g.aAg().hqi.a(localac, 0);
+    ac localac = new ac(this.tmG);
+    h.aHF().kcd.a(localac, 0);
     AppMethodBeat.o(112592);
   }
   
-  private void cth()
+  private void cGJ()
   {
     AppMethodBeat.i(112595);
     Log.i("MicroMsg.CardCodeMgr", "stopRequestCodeTimer!");
-    if (!this.pQP.stopped()) {
-      this.pQP.stopTimer();
+    if (!this.tmO.stopped()) {
+      this.tmO.stopTimer();
     }
     AppMethodBeat.o(112595);
   }
@@ -130,15 +112,15 @@ public final class c
   {
     AppMethodBeat.i(112587);
     Log.i("MicroMsg.CardCodeMgr", "onSuccess()");
-    if (this.pQG == null)
+    if (this.cSF == null)
     {
       AppMethodBeat.o(112587);
       return;
     }
     int i = 0;
-    while (i < this.pQG.size())
+    while (i < this.cSF.size())
     {
-      Object localObject = (WeakReference)this.pQG.get(i);
+      Object localObject = (WeakReference)this.cSF.get(i);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();
@@ -154,17 +136,17 @@ public final class c
   public final void a(a parama)
   {
     AppMethodBeat.i(112585);
-    if (this.pQG == null) {
-      this.pQG = new ArrayList();
+    if (this.cSF == null) {
+      this.cSF = new ArrayList();
     }
-    this.pQG.add(new WeakReference(parama));
+    this.cSF.add(new WeakReference(parama));
     AppMethodBeat.o(112585);
   }
   
-  public final void aja(String paramString)
+  public final void aqN(String paramString)
   {
     AppMethodBeat.i(112591);
-    if (this.pQO)
+    if (this.tmN)
     {
       Log.e("MicroMsg.CardCodeMgr", "doGetCardCodes(), is doing get codes");
       AppMethodBeat.o(112591);
@@ -177,30 +159,30 @@ public final class c
       return;
     }
     Log.i("MicroMsg.CardCodeMgr", "doGetCardCodes() do get codes, card id ".concat(String.valueOf(paramString)));
-    this.pQO = true;
-    this.pQH = paramString;
-    ctf();
+    this.tmN = true;
+    this.tmG = paramString;
+    cGH();
     AppMethodBeat.o(112591);
   }
   
   public final void b(a parama)
   {
     AppMethodBeat.i(112586);
-    if (this.pQG == null)
+    if (this.cSF == null)
     {
       AppMethodBeat.o(112586);
       return;
     }
     int i = 0;
-    while (i < this.pQG.size())
+    while (i < this.cSF.size())
     {
-      WeakReference localWeakReference = (WeakReference)this.pQG.get(i);
+      WeakReference localWeakReference = (WeakReference)this.cSF.get(i);
       if (localWeakReference != null)
       {
         a locala = (a)localWeakReference.get();
         if ((locala != null) && (locala.equals(parama)))
         {
-          this.pQG.remove(localWeakReference);
+          this.cSF.remove(localWeakReference);
           AppMethodBeat.o(112586);
           return;
         }
@@ -210,14 +192,14 @@ public final class c
     AppMethodBeat.o(112586);
   }
   
-  public final void ctg()
+  public final void cGI()
   {
     AppMethodBeat.i(112594);
-    cth();
-    Log.i("MicroMsg.CardCodeMgr", "startRequestCodeTimer() request_time:" + this.pQK);
-    if ((this.pQK > 0) && (!TextUtils.isEmpty(this.pQH)))
+    cGJ();
+    Log.i("MicroMsg.CardCodeMgr", "startRequestCodeTimer() request_time:" + this.tmJ);
+    if ((this.tmJ > 0) && (!TextUtils.isEmpty(this.tmG)))
     {
-      this.pQP.startTimer(this.pQK * 1000);
+      this.tmO.startTimer(this.tmJ * 1000);
       Log.i("MicroMsg.CardCodeMgr", "start request code timer!");
       AppMethodBeat.o(112594);
       return;
@@ -226,29 +208,29 @@ public final class c
     AppMethodBeat.o(112594);
   }
   
-  public final void cti()
+  public final void cGK()
   {
     AppMethodBeat.i(112596);
-    ctj();
-    Log.i("MicroMsg.CardCodeMgr", "startRefreshCodeTimer() refresh_interval:" + this.pQM);
-    if (this.pQM > 0)
+    cGL();
+    Log.i("MicroMsg.CardCodeMgr", "startRefreshCodeTimer() refresh_interval:" + this.tmL);
+    if (this.tmL > 0)
     {
-      this.pQQ.startTimer(this.pQM * 1000);
+      this.tmP.startTimer(this.tmL * 1000);
       Log.i("MicroMsg.CardCodeMgr", "start refresh code timer!");
       AppMethodBeat.o(112596);
       return;
     }
-    this.pQQ.startTimer(this.pQN * 1000);
+    this.tmP.startTimer(this.tmM * 1000);
     Log.e("MicroMsg.CardCodeMgr", "not to start refresh code timer!");
     AppMethodBeat.o(112596);
   }
   
-  public final void ctj()
+  public final void cGL()
   {
     AppMethodBeat.i(112597);
     Log.i("MicroMsg.CardCodeMgr", "stopRefreshCodeTimer()!");
-    if (!this.pQQ.stopped()) {
-      this.pQQ.stopTimer();
+    if (!this.tmP.stopped()) {
+      this.tmP.stopTimer();
     }
     AppMethodBeat.o(112597);
   }
@@ -256,28 +238,28 @@ public final class c
   public final String getCode()
   {
     AppMethodBeat.i(112589);
-    if ((this.pQI == null) || (this.pQI.size() == 0))
+    if ((this.tmH == null) || (this.tmH.size() == 0))
     {
       Log.e("MicroMsg.CardCodeMgr", "getCode, codes is empty");
       AppMethodBeat.o(112589);
       return "";
     }
-    if (this.pQJ >= this.pQI.size())
+    if (this.tmI >= this.tmH.size())
     {
       Log.e("MicroMsg.CardCodeMgr", "getCode, all codes has show! ");
-      aja(this.pQH);
+      aqN(this.tmG);
       AppMethodBeat.o(112589);
       return "";
     }
-    if (this.pQL >= this.pQI.size() - this.pQJ)
+    if (this.tmK >= this.tmH.size() - this.tmI)
     {
       Log.i("MicroMsg.CardCodeMgr", "do request code, because the request_count >= than (codes.size() - show_count)");
-      aja(this.pQH);
+      aqN(this.tmG);
     }
-    Log.i("MicroMsg.CardCodeMgr", "getCode, show_count:" + this.pQJ + " request_count:" + this.pQL + " codes size:" + this.pQI.size());
-    Object localObject = this.pQI;
-    int i = this.pQJ;
-    this.pQJ = (i + 1);
+    Log.i("MicroMsg.CardCodeMgr", "getCode, show_count:" + this.tmI + " request_count:" + this.tmK + " codes size:" + this.tmH.size());
+    Object localObject = this.tmH;
+    int i = this.tmI;
+    this.tmI = (i + 1);
     localObject = (String)((LinkedList)localObject).get(i);
     AppMethodBeat.o(112589);
     return localObject;
@@ -286,13 +268,13 @@ public final class c
   public final boolean isEmpty()
   {
     AppMethodBeat.i(112590);
-    if ((this.pQI == null) || (this.pQI.size() == 0))
+    if ((this.tmH == null) || (this.tmH.size() == 0))
     {
       Log.e("MicroMsg.CardCodeMgr", "getCode, codes is empty");
       AppMethodBeat.o(112590);
       return true;
     }
-    if (this.pQJ >= this.pQI.size())
+    if (this.tmI >= this.tmH.size())
     {
       Log.e("MicroMsg.CardCodeMgr", "getCode, all codes has show! ");
       AppMethodBeat.o(112590);
@@ -310,31 +292,31 @@ public final class c
     {
       if ((paramq instanceof ac))
       {
-        this.pQO = false;
-        Log.e("MicroMsg.CardCodeMgr", "get codes success for card id " + this.pQH);
+        this.tmN = false;
+        Log.e("MicroMsg.CardCodeMgr", "get codes success for card id " + this.tmG);
         paramString = (ac)paramq;
-        this.pQK = paramString.pQK;
-        this.pQL = paramString.pQL;
-        this.pQM = paramString.pQM;
-        if (paramString.pQI != null)
+        this.tmJ = paramString.tmJ;
+        this.tmK = paramString.tmK;
+        this.tmL = paramString.tmL;
+        if (paramString.tmH != null)
         {
-          this.pQI.clear();
-          this.pQI.addAll(paramString.pQI);
-          this.pQJ = 0;
+          this.tmH.clear();
+          this.tmH.addAll(paramString.tmH);
+          this.tmI = 0;
         }
         onSuccess();
-        ctg();
-        if (this.pQM != 0) {
-          cti();
+        cGI();
+        if (this.tmL != 0) {
+          cGK();
         }
         AppMethodBeat.o(112593);
       }
     }
     else if ((paramq instanceof ac))
     {
-      this.pQO = false;
-      Log.e("MicroMsg.CardCodeMgr", "get codes failed  for card id " + this.pQH);
-      aiZ(paramString);
+      this.tmN = false;
+      Log.e("MicroMsg.CardCodeMgr", "get codes failed  for card id " + this.tmG);
+      aqM(paramString);
     }
     AppMethodBeat.o(112593);
   }
@@ -342,24 +324,24 @@ public final class c
   public final void release()
   {
     AppMethodBeat.i(112584);
-    g.aAg().hqi.b(577, this);
-    this.pQI.clear();
-    this.pQO = false;
-    this.pQH = "";
-    this.pQJ = 0;
-    this.pQK = 0;
-    this.pQL = 0;
-    this.pQM = 0;
-    cth();
-    ctj();
+    h.aHF().kcd.b(577, this);
+    this.tmH.clear();
+    this.tmN = false;
+    this.tmG = "";
+    this.tmI = 0;
+    this.tmJ = 0;
+    this.tmK = 0;
+    this.tmL = 0;
+    cGJ();
+    cGL();
     AppMethodBeat.o(112584);
   }
   
   public static abstract interface a
   {
-    public abstract void aiZ(String paramString);
+    public abstract void aqM(String paramString);
     
-    public abstract void ctk();
+    public abstract void cGM();
     
     public abstract void onSuccess();
   }

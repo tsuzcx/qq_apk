@@ -5,30 +5,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class h
   extends Preference
 {
-  boolean AQN;
-  boolean AQO;
+  boolean GJY;
+  boolean GJZ;
   private View mView;
-  boolean oAJ;
+  boolean rDs;
   
   public h(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(66824);
     this.mView = null;
-    this.AQN = false;
-    this.AQO = false;
-    this.oAJ = true;
-    setLayoutResource(2131495441);
+    this.GJY = false;
+    this.GJZ = false;
+    this.rDs = true;
+    setLayoutResource(a.g.mall_order_divider_pref);
     AppMethodBeat.o(66824);
   }
   
-  public final View getView(View paramView, ViewGroup paramViewGroup)
+  public final View c(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(66825);
     if (this.mView == null) {
@@ -44,18 +46,18 @@ public final class h
   {
     AppMethodBeat.i(66826);
     super.onBindView(paramView);
-    paramView = paramView.findViewById(2131304381);
+    paramView = paramView.findViewById(a.f.mall_order_divider_pref_line);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
     int i = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 10.0F);
-    if (this.AQN) {}
+    if (this.GJY) {}
     for (int j = i;; j = 0)
     {
-      if (this.AQO) {}
+      if (this.GJZ) {}
       for (;;)
       {
         localLayoutParams.setMargins(0, j, 0, i);
         paramView.setLayoutParams(localLayoutParams);
-        if (!this.oAJ)
+        if (!this.rDs)
         {
           paramView.setVisibility(4);
           AppMethodBeat.o(66826);
@@ -71,7 +73,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.h
  * JD-Core Version:    0.7.0.1
  */

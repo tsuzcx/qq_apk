@@ -7,9 +7,9 @@ public enum y$a
   static
   {
     AppMethodBeat.i(44634);
-    kVE = new a("DAILY", 0);
-    kVF = new a("SEARCH", 1);
-    kVG = new a[] { kVE, kVF };
+    nPR = new a("DAILY", 0);
+    nPS = new a("SEARCH", 1);
+    nPT = new a[] { nPR, nPS };
     AppMethodBeat.o(44634);
   }
   

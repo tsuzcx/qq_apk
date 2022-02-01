@@ -7,21 +7,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "videoFilePath", "", "videoThumbPath", "enablePicture", "", "forceForegroundMix", "(Ljava/lang/String;Ljava/lang/String;ZZ)V", "getEnablePicture", "()Z", "setEnablePicture", "(Z)V", "getForceForegroundMix", "setForceForegroundMix", "getVideoFilePath", "()Ljava/lang/String;", "setVideoFilePath", "(Ljava/lang/String;)V", "getVideoThumbPath", "setVideoThumbPath", "component1", "component2", "component3", "component4", "copy", "describeContents", "", "equals", "other", "", "hashCode", "toString", "writeToParcel", "", "dest", "flags", "Companion", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "videoFilePath", "", "videoThumbPath", "enablePicture", "", "forceForegroundMix", "(Ljava/lang/String;Ljava/lang/String;ZZ)V", "getEnablePicture", "()Z", "setEnablePicture", "(Z)V", "getForceForegroundMix", "setForceForegroundMix", "getVideoFilePath", "()Ljava/lang/String;", "setVideoFilePath", "(Ljava/lang/String;)V", "getVideoThumbPath", "setVideoThumbPath", "component1", "component2", "component3", "component4", "copy", "describeContents", "", "equals", "other", "", "hashCode", "toString", "writeToParcel", "", "dest", "flags", "Companion", "plugin-story_release"})
 public final class VideoCaptureSettingModel
   implements Parcelable
 {
   public static final Parcelable.Creator<VideoCaptureSettingModel> CREATOR;
-  public static final a FzL;
-  private boolean BRu;
-  private boolean FzK;
-  private String lPw;
-  private String mss;
+  public static final a LTO;
+  private boolean HOi;
+  private boolean LTN;
+  private String oLQ;
+  private String pqA;
   
   static
   {
     AppMethodBeat.i(119911);
-    FzL = new a((byte)0);
+    LTO = new a((byte)0);
     CREATOR = (Parcelable.Creator)new b();
     AppMethodBeat.o(119911);
   }
@@ -31,10 +31,10 @@ public final class VideoCaptureSettingModel
   private VideoCaptureSettingModel(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(119909);
-    this.lPw = paramString1;
-    this.mss = paramString2;
-    this.BRu = paramBoolean1;
-    this.FzK = paramBoolean2;
+    this.oLQ = paramString1;
+    this.pqA = paramString2;
+    this.HOi = paramBoolean1;
+    this.LTN = paramBoolean2;
     AppMethodBeat.o(119909);
   }
   
@@ -51,7 +51,7 @@ public final class VideoCaptureSettingModel
       if ((paramObject instanceof VideoCaptureSettingModel))
       {
         paramObject = (VideoCaptureSettingModel)paramObject;
-        if ((!p.j(this.lPw, paramObject.lPw)) || (!p.j(this.mss, paramObject.mss)) || (this.BRu != paramObject.BRu) || (this.FzK != paramObject.FzK)) {}
+        if ((!p.h(this.oLQ, paramObject.oLQ)) || (!p.h(this.pqA, paramObject.pqA)) || (this.HOi != paramObject.HOi) || (this.LTN != paramObject.LTN)) {}
       }
     }
     else
@@ -71,7 +71,7 @@ public final class VideoCaptureSettingModel
   public final String toString()
   {
     AppMethodBeat.i(119912);
-    String str = "VideoCaptureSettingModel(videoFilePath=" + this.lPw + ", videoThumbPath=" + this.mss + ", enablePicture=" + this.BRu + ", forceForegroundMix=" + this.FzK + ")";
+    String str = "VideoCaptureSettingModel(videoFilePath=" + this.oLQ + ", videoThumbPath=" + this.pqA + ", enablePicture=" + this.HOi + ", forceForegroundMix=" + this.LTN + ")";
     AppMethodBeat.o(119912);
     return str;
   }
@@ -80,14 +80,14 @@ public final class VideoCaptureSettingModel
   {
     int i = 1;
     AppMethodBeat.i(119908);
-    p.h(paramParcel, "dest");
-    paramParcel.writeString(this.lPw);
-    paramParcel.writeString(this.mss);
-    if (this.BRu)
+    p.k(paramParcel, "dest");
+    paramParcel.writeString(this.oLQ);
+    paramParcel.writeString(this.pqA);
+    if (this.HOi)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.FzK) {
+      if (!this.LTN) {
         break label68;
       }
     }
@@ -102,10 +102,10 @@ public final class VideoCaptureSettingModel
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel;", "generateNormalModel", "plugin-story_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel;", "generateNormalModel", "plugin-story_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel;", "plugin-story_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel;", "plugin-story_release"})
   public static final class b
     implements Parcelable.Creator<VideoCaptureSettingModel>
   {}

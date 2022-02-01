@@ -4,27 +4,27 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.tools.f;
+import com.tencent.mm.ui.tools.g;
 
 final class ContactRemarkInfoModUI$b
   implements TextWatcher
 {
-  private int CYV = 800;
-  private String PVm = "";
+  private int JeB = 800;
+  private String Xsa = "";
   
   private ContactRemarkInfoModUI$b(ContactRemarkInfoModUI paramContactRemarkInfoModUI) {}
   
   public final void afterTextChanged(Editable paramEditable)
   {
     AppMethodBeat.i(37768);
-    this.CYV = f.dp(800, paramEditable.toString());
-    if (this.CYV < 0) {
-      this.CYV = 0;
+    this.JeB = g.dq(800, paramEditable.toString());
+    if (this.JeB < 0) {
+      this.JeB = 0;
     }
-    if (ContactRemarkInfoModUI.b(this.PVk) != null) {
-      ContactRemarkInfoModUI.b(this.PVk).setText(this.CYV);
+    if (ContactRemarkInfoModUI.b(this.XrY) != null) {
+      ContactRemarkInfoModUI.b(this.XrY).setText(this.JeB);
     }
-    ContactRemarkInfoModUI.a(this.PVk);
+    ContactRemarkInfoModUI.a(this.XrY);
     AppMethodBeat.o(37768);
   }
   
@@ -34,7 +34,7 @@ final class ContactRemarkInfoModUI$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ContactRemarkInfoModUI.b
  * JD-Core Version:    0.7.0.1
  */

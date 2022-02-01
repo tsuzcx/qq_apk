@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.story.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;", "", "s", "", "(Ljava/lang/String;II)V", "getS", "()I", "SHOW", "PLAY", "WAIT", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;", "", "s", "", "(Ljava/lang/String;II)V", "getS", "()I", "SHOW", "PLAY", "WAIT", "plugin-story_release"})
 public enum b$b
 {
   private final int s;
@@ -12,12 +12,12 @@ public enum b$b
   {
     AppMethodBeat.i(119387);
     b localb1 = new b("SHOW", 0, 1);
-    FtS = localb1;
+    LNT = localb1;
     b localb2 = new b("PLAY", 1, 2);
-    FtT = localb2;
+    LNU = localb2;
     b localb3 = new b("WAIT", 2, 3);
-    FtU = localb3;
-    FtV = new b[] { localb1, localb2, localb3 };
+    LNV = localb3;
+    LNW = new b[] { localb1, localb2, localb3 };
     AppMethodBeat.o(119387);
   }
   

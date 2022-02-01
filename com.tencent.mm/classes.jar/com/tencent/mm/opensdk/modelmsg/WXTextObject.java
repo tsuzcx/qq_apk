@@ -18,9 +18,9 @@ public class WXTextObject
   
   public WXTextObject(String paramString)
   {
-    AppMethodBeat.i(190425);
+    AppMethodBeat.i(255211);
     this.text = paramString;
-    AppMethodBeat.o(190425);
+    AppMethodBeat.o(255211);
   }
   
   public boolean checkArgs()
@@ -58,7 +58,7 @@ public class WXTextObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXTextObject
  * JD-Core Version:    0.7.0.1
  */

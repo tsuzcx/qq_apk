@@ -1,7 +1,7 @@
 package com.tencent.mm.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bn;
+import com.tencent.mm.f.a.bs;
 import com.tencent.mm.sdk.event.EventCenter;
 
 final class HomeUI$17
@@ -11,14 +11,14 @@ final class HomeUI$17
   
   public final void run()
   {
-    AppMethodBeat.i(232569);
-    EventCenter.instance.publish(new bn());
-    AppMethodBeat.o(232569);
+    AppMethodBeat.i(202657);
+    EventCenter.instance.publish(new bs());
+    AppMethodBeat.o(202657);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.HomeUI.17
  * JD-Core Version:    0.7.0.1
  */

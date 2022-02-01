@@ -18,8 +18,8 @@ import junit.framework.Assert;
 public class MaskLinearLayout
   extends LinearLayout
 {
-  private MMHandler Eok;
-  private Runnable Eol;
+  private MMHandler KBt;
+  private Runnable KBu;
   private boolean enable;
   private List<MaskImageView> list;
   
@@ -29,8 +29,8 @@ public class MaskLinearLayout
     AppMethodBeat.i(97968);
     this.enable = false;
     this.list = new LinkedList();
-    this.Eok = new MMHandler();
-    this.Eol = new Runnable()
+    this.KBt = new MMHandler();
+    this.KBu = new Runnable()
     {
       public final void run()
       {
@@ -61,7 +61,7 @@ public class MaskLinearLayout
           while (paramAnonymousView.hasNext())
           {
             MaskImageView localMaskImageView = (MaskImageView)paramAnonymousView.next();
-            localMaskImageView.f(localMaskImageView, paramAnonymousMotionEvent);
+            localMaskImageView.g(localMaskImageView, paramAnonymousMotionEvent);
           }
           paramAnonymousView.setPressed(true);
           MaskLinearLayout.a(MaskLinearLayout.this);
@@ -106,7 +106,7 @@ public class MaskLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.MaskLinearLayout
  * JD-Core Version:    0.7.0.1
  */

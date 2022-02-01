@@ -11,7 +11,7 @@ public abstract class a
     g.i("AbsTPAssetResourceLoader", "onStartReadData, Not yet implemented");
   }
   
-  public final void hnB()
+  public final void irc()
   {
     g.i("AbsTPAssetResourceLoader", "fillInContentInformation, Not yet implemented");
   }
@@ -28,7 +28,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     h.a.a.a.a.a.a.a.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

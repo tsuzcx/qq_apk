@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.t;
 
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.logic.c;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.logic.c.a.a;
 
@@ -11,25 +11,25 @@ public enum b
 {
   static
   {
-    AppMethodBeat.i(240916);
-    njP = new b("INSTANCE");
-    njQ = new b[] { njP };
-    AppMethodBeat.o(240916);
+    AppMethodBeat.i(209175);
+    qln = new b("INSTANCE");
+    qlo = new b[] { qln };
+    AppMethodBeat.o(209175);
   }
   
   private b() {}
   
-  public final c a(String paramString, Activity paramActivity, f paramf)
+  public final c a(String paramString, Activity paramActivity, e parame)
   {
-    AppMethodBeat.i(240915);
-    paramString = new a(paramString, paramActivity, paramf);
-    AppMethodBeat.o(240915);
+    AppMethodBeat.i(209172);
+    paramString = new a(paramString, paramActivity, parame);
+    AppMethodBeat.o(209172);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.t.b
  * JD-Core Version:    0.7.0.1
  */

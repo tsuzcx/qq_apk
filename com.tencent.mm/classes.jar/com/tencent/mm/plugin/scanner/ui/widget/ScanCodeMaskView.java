@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.scanner.ui.widget;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
@@ -14,6 +15,7 @@ import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.YuvImage;
+import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,72 +31,81 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.scanner.api.BaseScanRequest;
-import com.tencent.mm.plugin.scanner.model.ag;
-import com.tencent.mm.plugin.scanner.util.m;
+import com.tencent.mm.plugin.scanner.k;
+import com.tencent.mm.plugin.scanner.l.d;
+import com.tencent.mm.plugin.scanner.l.f;
+import com.tencent.mm.plugin.scanner.l.g;
+import com.tencent.mm.plugin.scanner.l.h;
+import com.tencent.mm.plugin.scanner.l.i;
+import com.tencent.mm.plugin.scanner.model.ae;
+import com.tencent.mm.plugin.scanner.util.n;
 import com.tencent.mm.plugin.scanner.view.BaseScanMaskView;
 import com.tencent.mm.plugin.scanner.view.d;
+import com.tencent.mm.pluginsdk.e.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.qbar.ScanDecodeFrameData;
 import com.tencent.qbar.WxQBarPoint;
 import com.tencent.qbar.WxQBarResult;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 import kotlin.a.j;
+import kotlin.g.b.aa.a;
+import kotlin.g.b.aa.f;
 import kotlin.g.b.p;
-import kotlin.g.b.z.a;
-import kotlin.g.b.z.f;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView;", "Lcom/tencent/mm/plugin/scanner/view/BaseScanMaskView;", "Lcom/tencent/mm/plugin/scanner/api/BaseScanRequest;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "accelerateInterpolator", "Landroid/view/animation/AccelerateInterpolator;", "alphaAnimationDistanceFactor", "", "canUpdateMultiCodeTipsDefaultPos", "", "decelerateInterpolator", "Landroid/view/animation/DecelerateInterpolator;", "frameBitmap", "Landroid/graphics/Bitmap;", "frameImage", "Landroid/widget/ImageView;", "isMultiCode", "isShowingSuccessView", "mRect", "Landroid/graphics/Rect;", "multiCodeBgMask", "Landroid/view/View;", "multiCodeTips", "Landroid/widget/TextView;", "multiCodeTipsCurrentBottomMargin", "multiCodeTipsDefaultPosition", "Landroid/graphics/PointF;", "myQrCodeButton", "needRotate", "pointCount", "scaleAnimationTimer", "Ljava/util/Timer;", "scaleAnimator", "Landroid/animation/ValueAnimator;", "scaleTimerTask", "Ljava/util/TimerTask;", "scanLineAnimator", "scanLineImageView", "successAnimationListener", "Lcom/tencent/mm/plugin/scanner/view/ScanResultAnimationListener;", "successAnimator", "successMarkClickIndex", "successMarkClickListener", "Lcom/tencent/mm/plugin/scanner/model/ScanSuccessMarkClickListener;", "successMarkViewCheckSize", "successMarkViewList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "successMarkViewSize", "viewWidth", "addSuccessView", "cancelScaleAnimator", "", "cancelScaleTimer", "cancelSuccessAnimator", "checkMultiCodeTipsPositionValid", "x", "y", "computeCenterPosition", "scanCodeResultPoint", "Lcom/tencent/qbar/WxQBarPoint;", "computeRealPosition", "pos", "dismissMultiCodeView", "fixMultiCodeTipsPosition", "valid", "getFrameBitmap", "frameData", "Lcom/tencent/qbar/ScanDecodeFrameData;", "getTargetSuccessMarkView", "init", "initDefaultRect", "initScaleAnimation", "initScanLineAnimator", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "onPause", "onPreviewReady", "isSwitchTab", "onResume", "onScanSuccess", "data", "", "scanResultAnimationListener", "onShowInfoView", "show", "onShowNetworkLoading", "onViewDestroy", "animatorListener", "Landroid/animation/Animator$AnimatorListener;", "onViewReady", "recycleFrameBitmap", "release", "rotateAndScaleBitmap", "bitmap", "rotation", "targetWidth", "targetHeight", "runScaleAnimation", "runZoomAnimation", "fromScale", "toScale", "animationInterpolator", "Landroid/view/animation/Interpolator;", "animationCount", "runZoomInAnimation", "runZoomOutAnimation", "setAnimationRect", "rect", "setBottomExtraHeight", "bottomHeight", "setDecodeSuccessFrameData", "setMyQrCodeButtonVisible", "visible", "setNeedRotate", "setSuccessMarkClickListener", "showSuccessView", "pointList", "startScanLineAnimation", "stopScanLineAnimation", "updateMultiCodeTipsBottomMargin", "margin", "Companion", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView;", "Lcom/tencent/mm/plugin/scanner/view/BaseScanMaskView;", "Lcom/tencent/mm/plugin/scanner/api/BaseScanRequest;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "accelerateInterpolator", "Landroid/view/animation/AccelerateInterpolator;", "alphaAnimationDistanceFactor", "", "canUpdateMultiCodeTipsDefaultPos", "", "decelerateInterpolator", "Landroid/view/animation/DecelerateInterpolator;", "frameBitmap", "Landroid/graphics/Bitmap;", "frameImage", "Landroid/widget/ImageView;", "isMultiCode", "isShowingSuccessView", "mRect", "Landroid/graphics/Rect;", "multiCodeBgMask", "Landroid/view/View;", "multiCodeTips", "Landroid/widget/TextView;", "multiCodeTipsCurrentBottomMargin", "multiCodeTipsDefaultPosition", "Landroid/graphics/PointF;", "myQrCodeButton", "needRotate", "pointCount", "scaleAnimationHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "scaleAnimator", "Landroid/animation/ValueAnimator;", "scaleTimerTask", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler$CallBack;", "scanLineAnimator", "scanLineImageView", "successAnimationListener", "Lcom/tencent/mm/plugin/scanner/view/ScanResultAnimationListener;", "successAnimator", "successMarkClickIndex", "successMarkClickListener", "Lcom/tencent/mm/plugin/scanner/model/ScanSuccessMarkClickListener;", "successMarkViewCheckSize", "successMarkViewList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "successMarkViewSize", "viewWidth", "addSuccessView", "cancelScaleAnimator", "", "cancelScaleTimer", "cancelSuccessAnimator", "checkMultiCodeTipsPositionValid", "x", "y", "computeCenterPosition", "scanCodeResultPoint", "Lcom/tencent/qbar/WxQBarPoint;", "computeRealPosition", "pos", "dismissMultiCodeView", "fixMultiCodeTipsPosition", "valid", "getFrameBitmap", "frameData", "Lcom/tencent/qbar/ScanDecodeFrameData;", "getTargetSuccessMarkView", "getTipsViewText", "", "pointInfoList", "Lcom/tencent/qbar/WxQBarResult;", "init", "initDefaultRect", "initScaleAnimation", "initScanLineAnimator", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "onPause", "onPreviewReady", "isSwitchTab", "onResume", "onScanSuccess", "data", "", "scanResultAnimationListener", "onShowInfoView", "show", "onShowNetworkLoading", "onViewDestroy", "animatorListener", "Landroid/animation/Animator$AnimatorListener;", "onViewReady", "recycleFrameBitmap", "release", "rotateAndScaleBitmap", "bitmap", "rotation", "targetWidth", "targetHeight", "runScaleAnimation", "runZoomAnimation", "fromScale", "toScale", "animationInterpolator", "Landroid/view/animation/Interpolator;", "animationCount", "runZoomInAnimation", "runZoomOutAnimation", "setAnimationRect", "rect", "setBottomExtraHeight", "bottomHeight", "setDecodeSuccessFrameData", "setMyQrCodeButtonVisible", "visible", "setNeedRotate", "setSuccessMarkClickListener", "showSuccessView", "pointList", "tips", "startScanLineAnimation", "stopScanLineAnimation", "updateMultiCodeTipsBottomMargin", "margin", "Companion", "plugin-scan_release"})
 public final class ScanCodeMaskView
   extends BaseScanMaskView<BaseScanRequest>
 {
-  public static final ScanCodeMaskView.a CRC;
-  private int CQe;
-  private d CQk;
-  private PointF CRA;
-  private boolean CRB;
-  private ImageView CRh;
-  private View CRi;
-  private View CRj;
-  private TextView CRk;
-  private ImageView CRl;
-  private Bitmap CRm;
-  private ArrayList<View> CRn;
-  private int CRo;
-  private ValueAnimator CRp;
-  private float CRq;
-  private boolean CRr;
-  private boolean CRs;
-  private ag CRt;
-  private int CRu;
-  private Timer CRv;
-  private TimerTask CRw;
-  private AccelerateInterpolator CRx;
-  private DecelerateInterpolator CRy;
-  private int CRz;
-  private int gRD;
+  public static final a IXa;
+  private boolean FaP;
+  private MTimerHandler IAU;
+  private AccelerateInterpolator IAV;
+  private DecelerateInterpolator IAW;
+  private int IVG;
+  private d IVL;
+  private ImageView IWI;
+  private View IWJ;
+  private View IWK;
+  private TextView IWL;
+  private ImageView IWM;
+  private Bitmap IWN;
+  private ArrayList<View> IWO;
+  private int IWP;
+  private ValueAnimator IWQ;
+  private float IWR;
+  private boolean IWS;
+  private boolean IWT;
+  private ae IWU;
+  private int IWV;
+  private final MTimerHandler.CallBack IWW;
+  private int IWX;
+  private PointF IWY;
+  private boolean IWZ;
+  private int jBZ;
   private Rect mRect;
   private int pointCount;
-  private ValueAnimator rnC;
-  private ValueAnimator tgS;
-  private boolean zvq;
+  private ValueAnimator uQS;
+  private ValueAnimator wNi;
   
   static
   {
     AppMethodBeat.i(52406);
-    CRC = new ScanCodeMaskView.a((byte)0);
+    IXa = new a((byte)0);
     AppMethodBeat.o(52406);
   }
   
@@ -116,85 +127,56 @@ public final class ScanCodeMaskView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(52405);
-    this.CRn = new ArrayList();
-    this.CQe = getResources().getDimensionPixelSize(2131166895);
-    this.CRo = (this.CQe - getResources().getDimensionPixelSize(2131165534) * 2 + getResources().getDimensionPixelSize(2131165593) * 2);
-    this.CRp = new ValueAnimator();
-    this.tgS = new ValueAnimator();
+    this.IWO = new ArrayList();
+    this.IVG = getResources().getDimensionPixelSize(l.d.ICi);
+    this.IWP = (this.IVG - getResources().getDimensionPixelSize(l.d.NormalPadding) * 2 + getResources().getDimensionPixelSize(l.d.SmallestPadding) * 2);
+    this.IWQ = new ValueAnimator();
+    this.wNi = new ValueAnimator();
     this.mRect = new Rect(0, 0, 0, 0);
-    this.CRu = -1;
-    this.CRx = new AccelerateInterpolator(1.5F);
-    this.CRy = new DecelerateInterpolator(1.5F);
-    this.CRz = 120;
-    this.CRA = new PointF();
-    this.CRB = true;
-    paramAttributeSet = LayoutInflater.from(paramContext).inflate(2131495183, (ViewGroup)this, true);
-    View localView = paramAttributeSet.findViewById(2131307243);
-    p.g(localView, "view.findViewById(R.id.scan_line)");
-    this.CRh = ((ImageView)localView);
-    localView = paramAttributeSet.findViewById(2131305204);
-    p.g(localView, "view.findViewById(R.id.my_qr_code)");
-    this.CRi = localView;
-    localView = paramAttributeSet.findViewById(2131304992);
-    p.g(localView, "view.findViewById(R.id.multi_code_mask)");
-    this.CRj = localView;
-    localView = paramAttributeSet.findViewById(2131304993);
-    p.g(localView, "view.findViewById(R.id.multi_code_tips)");
-    this.CRk = ((TextView)localView);
-    localView = paramAttributeSet.findViewById(2131301716);
-    p.g(localView, "view.findViewById(R.id.frame_image)");
-    this.CRl = ((ImageView)localView);
-    paramAttributeSet = paramAttributeSet.findViewById(2131307262);
+    this.IWV = -1;
+    this.IWW = ((MTimerHandler.CallBack)new i(this));
+    this.IAU = new MTimerHandler(Looper.getMainLooper(), this.IWW, true);
+    this.IAV = new AccelerateInterpolator(1.5F);
+    this.IAW = new DecelerateInterpolator(1.5F);
+    this.IWX = 120;
+    this.IWY = new PointF();
+    this.IWZ = true;
+    paramAttributeSet = LayoutInflater.from(paramContext).inflate(l.g.IDT, (ViewGroup)this, true);
+    View localView = paramAttributeSet.findViewById(l.f.scan_line);
+    p.j(localView, "view.findViewById(R.id.scan_line)");
+    this.IWI = ((ImageView)localView);
+    localView = paramAttributeSet.findViewById(l.f.my_qr_code);
+    p.j(localView, "view.findViewById(R.id.my_qr_code)");
+    this.IWJ = localView;
+    localView = paramAttributeSet.findViewById(l.f.ICM);
+    p.j(localView, "view.findViewById(R.id.multi_code_mask)");
+    this.IWK = localView;
+    localView = paramAttributeSet.findViewById(l.f.ICN);
+    p.j(localView, "view.findViewById(R.id.multi_code_tips)");
+    this.IWL = ((TextView)localView);
+    localView = paramAttributeSet.findViewById(l.f.ICG);
+    p.j(localView, "view.findViewById(R.id.frame_image)");
+    this.IWM = ((ImageView)localView);
+    paramAttributeSet = paramAttributeSet.findViewById(l.f.scan_success_dot_view);
     if (paramAttributeSet != null)
     {
-      this.CRn.clear();
-      this.CRn.add(paramAttributeSet);
+      this.IWO.clear();
+      this.IWO.add(paramAttributeSet);
     }
-    paramAttributeSet = this.CRi;
+    paramAttributeSet = this.IWJ;
     if (paramAttributeSet == null) {
-      p.btv("myQrCodeButton");
+      p.bGy("myQrCodeButton");
     }
     paramAttributeSet.setOnClickListener((View.OnClickListener)new ScanCodeMaskView.b(paramContext));
-    eRw();
-    this.CRq = 0.16F;
-    this.tgS.setInterpolator((TimeInterpolator)new LinearInterpolator());
-    this.tgS.setDuration(2500L);
-    this.tgS.addListener((Animator.AnimatorListener)new ScanCodeMaskView.d(this));
-    this.tgS.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new ScanCodeMaskView.e(this));
-    this.tgS.setRepeatMode(1);
-    this.tgS.setRepeatCount(-1);
+    fEx();
+    this.IWR = 0.16F;
+    this.wNi.setInterpolator((TimeInterpolator)new LinearInterpolator());
+    this.wNi.setDuration(2500L);
+    this.wNi.addListener((Animator.AnimatorListener)new c(this));
+    this.wNi.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new d(this));
+    this.wNi.setRepeatMode(1);
+    this.wNi.setRepeatCount(-1);
     AppMethodBeat.o(52405);
-  }
-  
-  private final void WV(int paramInt)
-  {
-    AppMethodBeat.i(240636);
-    Log.d("MicroMsg.ScanCodeMaskView", "alvinluo updateMultiCodeTipsBottomMargin: %d", new Object[] { Integer.valueOf(paramInt) });
-    TextView localTextView = this.CRk;
-    if (localTextView == null) {
-      p.btv("multiCodeTips");
-    }
-    Object localObject = this.CRk;
-    if (localObject == null) {
-      p.btv("multiCodeTips");
-    }
-    localObject = ((TextView)localObject).getLayoutParams();
-    if ((localObject instanceof ViewGroup.MarginLayoutParams))
-    {
-      this.CRz = paramInt;
-      ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = (com.tencent.mm.cb.a.fromDPToPix(getContext(), paramInt) + getMBottomExtraHeight());
-    }
-    localTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    AppMethodBeat.o(240636);
-  }
-  
-  private final void WW(final int paramInt)
-  {
-    AppMethodBeat.i(170057);
-    Log.d("MicroMsg.ScanCodeMaskView", "alvinluo runZoomAnimation %d", new Object[] { Integer.valueOf(paramInt) });
-    Animator.AnimatorListener localAnimatorListener = (Animator.AnimatorListener)new h(this, new i(this, paramInt));
-    a(1.0F, 0.8F, (Interpolator)this.CRx, localAnimatorListener);
-    AppMethodBeat.o(170057);
   }
   
   private final Bitmap a(ScanDecodeFrameData paramScanDecodeFrameData)
@@ -206,30 +188,30 @@ public final class ScanCodeMaskView
       {
         Object localObject1 = getScanCamera();
         if (localObject1 == null) {
-          p.hyc();
+          p.iCn();
         }
-        int i = ((com.tencent.mm.plugin.scanner.a.a)localObject1).getPreviewFormat();
+        int i = ((com.tencent.mm.plugin.scanner.a.a)localObject1).fCt();
         localObject1 = getScanCamera();
         if (localObject1 == null) {
-          p.hyc();
+          p.iCn();
         }
-        localObject1 = ((com.tencent.mm.plugin.scanner.a.a)localObject1).hkU();
+        localObject1 = ((com.tencent.mm.plugin.scanner.a.a)localObject1).ios();
         if (paramScanDecodeFrameData != null)
         {
-          Object localObject2 = paramScanDecodeFrameData.CDY;
+          Object localObject2 = paramScanDecodeFrameData.IIA;
           if (localObject2 != null)
           {
-            Log.i("MicroMsg.ScanCodeMaskView", "alvinluo getFrameBitmap data length: %d, size: %d, %d, rotation: %d, previewFormat: %d", new Object[] { Integer.valueOf(localObject2.length), Integer.valueOf(paramScanDecodeFrameData.width), Integer.valueOf(paramScanDecodeFrameData.height), Integer.valueOf(paramScanDecodeFrameData.sRI), Integer.valueOf(i) });
-            localObject2 = new YuvImage(paramScanDecodeFrameData.CDY, i, ((Point)localObject1).x, ((Point)localObject1).y, null);
+            Log.i("MicroMsg.ScanCodeMaskView", "alvinluo getFrameBitmap data length: %d, size: %d, %d, rotation: %d, previewFormat: %d", new Object[] { Integer.valueOf(localObject2.length), Integer.valueOf(paramScanDecodeFrameData.width), Integer.valueOf(paramScanDecodeFrameData.height), Integer.valueOf(paramScanDecodeFrameData.wxE), Integer.valueOf(i) });
+            localObject2 = new YuvImage(paramScanDecodeFrameData.IIA, i, ((Point)localObject1).x, ((Point)localObject1).y, null);
             ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
             ((YuvImage)localObject2).compressToJpeg(new Rect(0, 0, ((Point)localObject1).x, ((Point)localObject1).y), 100, (OutputStream)localByteArrayOutputStream);
             localObject1 = BitmapFactory.decodeByteArray(localByteArrayOutputStream.toByteArray(), 0, localByteArrayOutputStream.size());
             if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
             {
               Log.i("MicroMsg.ScanCodeMaskView", "alvinluo getFrameBitmap bitmap width: %d, height: %d", new Object[] { Integer.valueOf(((Bitmap)localObject1).getWidth()), Integer.valueOf(((Bitmap)localObject1).getHeight()) });
-              if (paramScanDecodeFrameData.sRI != 0)
+              if (paramScanDecodeFrameData.wxE != 0)
               {
-                i = paramScanDecodeFrameData.sRI;
+                i = paramScanDecodeFrameData.wxE;
                 int i3 = getMeasuredWidth();
                 int i4 = getMeasuredHeight();
                 if (localObject1 == null)
@@ -277,7 +259,7 @@ public final class ScanCodeMaskView
                       continue;
                     }
                     paramScanDecodeFrameData = Bitmap.createBitmap((Bitmap)localObject1, j, i, k, m, paramScanDecodeFrameData, true);
-                    if (((p.j(paramScanDecodeFrameData, localObject1) ^ true)) && (!((Bitmap)localObject1).isRecycled())) {
+                    if (((p.h(paramScanDecodeFrameData, localObject1) ^ true)) && (!((Bitmap)localObject1).isRecycled())) {
                       ((Bitmap)localObject1).recycle();
                     }
                     AppMethodBeat.o(170064);
@@ -314,19 +296,19 @@ public final class ScanCodeMaskView
     }
   }
   
-  private final void a(float paramFloat1, float paramFloat2, Interpolator paramInterpolator, Animator.AnimatorListener paramAnimatorListener)
+  private final void a(final float paramFloat1, final float paramFloat2, final Interpolator paramInterpolator, final Animator.AnimatorListener paramAnimatorListener)
   {
     AppMethodBeat.i(170058);
     Log.d("MicroMsg.ScanCodeMaskView", "alvinluo runZoomAnimation from: %f, to: %f", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
-    eRy();
-    this.rnC = new ValueAnimator();
-    ValueAnimator localValueAnimator = this.rnC;
+    fBI();
+    this.uQS = new ValueAnimator();
+    ValueAnimator localValueAnimator = this.uQS;
     if (localValueAnimator != null)
     {
       localValueAnimator.setFloatValues(new float[] { paramFloat1, paramFloat2 });
       localValueAnimator.setInterpolator((TimeInterpolator)paramInterpolator);
       localValueAnimator.setDuration(300L);
-      localValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new ScanCodeMaskView.g(this, paramFloat1, paramFloat2, paramInterpolator, paramAnimatorListener));
+      localValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new f(this, paramFloat1, paramFloat2, paramInterpolator, paramAnimatorListener));
       localValueAnimator.addListener(paramAnimatorListener);
       localValueAnimator.start();
       AppMethodBeat.o(170058);
@@ -335,95 +317,219 @@ public final class ScanCodeMaskView
     AppMethodBeat.o(170058);
   }
   
-  private final void aN(ArrayList<PointF> paramArrayList)
+  private final String aY(ArrayList<WxQBarResult> paramArrayList)
   {
-    AppMethodBeat.i(170056);
+    AppMethodBeat.i(217384);
+    String str = "";
+    HashSet localHashSet = new HashSet();
+    Iterator localIterator = ((Iterable)paramArrayList).iterator();
+    paramArrayList = str;
+    while (localIterator.hasNext())
+    {
+      paramArrayList = (WxQBarResult)localIterator.next();
+      int i = e.d.boV(paramArrayList.typeName);
+      if (k.bY(i, paramArrayList.data))
+      {
+        paramArrayList = getContext().getString(l.i.IEY);
+        p.j(paramArrayList, "context.getString(R.stri…_mask_view_appbrand_tips)");
+        localHashSet.add(Integer.valueOf(i));
+      }
+      else if (!e.d.apt(i))
+      {
+        paramArrayList = getContext().getString(l.i.IFa);
+        p.j(paramArrayList, "context.getString(R.stri…code_mask_view_tiao_tips)");
+        localHashSet.add(Integer.valueOf(i));
+      }
+      else
+      {
+        paramArrayList = getContext().getString(l.i.IFb);
+        p.j(paramArrayList, "context.getString(R.stri…_view_two_dimension_tips)");
+        localHashSet.add(Integer.valueOf(i));
+      }
+    }
+    if (localHashSet.size() > 1)
+    {
+      paramArrayList = getContext().getString(l.i.IEZ);
+      p.j(paramArrayList, "context.getString(R.stri…ode_mask_view_multi_tips)");
+    }
+    AppMethodBeat.o(217384);
+    return paramArrayList;
+  }
+  
+  private final void adU(int paramInt)
+  {
+    AppMethodBeat.i(217386);
+    Log.d("MicroMsg.ScanCodeMaskView", "alvinluo updateMultiCodeTipsBottomMargin: %d", new Object[] { Integer.valueOf(paramInt) });
+    TextView localTextView = this.IWL;
+    if (localTextView == null) {
+      p.bGy("multiCodeTips");
+    }
+    Object localObject = this.IWL;
+    if (localObject == null) {
+      p.bGy("multiCodeTips");
+    }
+    localObject = ((TextView)localObject).getLayoutParams();
+    if ((localObject instanceof ViewGroup.MarginLayoutParams))
+    {
+      this.IWX = paramInt;
+      ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = (com.tencent.mm.ci.a.fromDPToPix(getContext(), paramInt) + getMBottomExtraHeight());
+    }
+    localTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    AppMethodBeat.o(217386);
+  }
+  
+  private final void adf(final int paramInt)
+  {
+    AppMethodBeat.i(170057);
+    Log.d("MicroMsg.ScanCodeMaskView", "alvinluo runZoomAnimation %d", new Object[] { Integer.valueOf(paramInt) });
+    Animator.AnimatorListener localAnimatorListener = (Animator.AnimatorListener)new g(this, new h(this, paramInt));
+    a(1.0F, 0.8F, (Interpolator)this.IAV, localAnimatorListener);
+    AppMethodBeat.o(170057);
+  }
+  
+  private final void fBI()
+  {
+    AppMethodBeat.i(170061);
+    ValueAnimator localValueAnimator = this.uQS;
+    if (localValueAnimator != null) {
+      localValueAnimator.removeAllListeners();
+    }
+    localValueAnimator = this.uQS;
+    if (localValueAnimator != null) {
+      localValueAnimator.removeAllUpdateListeners();
+    }
+    localValueAnimator = this.uQS;
+    if (localValueAnimator != null) {
+      localValueAnimator.cancel();
+    }
+    this.uQS = null;
+    AppMethodBeat.o(170061);
+  }
+  
+  private final void fEx()
+  {
+    AppMethodBeat.i(52388);
+    int i = getMeasuredWidth();
+    int j = getMeasuredHeight();
+    setAnimationRect(new Rect(0, (int)(0.15F * j), i, (int)(j * 0.6F)));
+    AppMethodBeat.o(52388);
+  }
+  
+  private final void fEz()
+  {
+    AppMethodBeat.i(217395);
+    if (this.IWS)
+    {
+      Object localObject = this.IWK;
+      if (localObject == null) {
+        p.bGy("multiCodeBgMask");
+      }
+      ((View)localObject).setVisibility(8);
+      this.IWT = false;
+      localObject = ((Iterable)this.IWO).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((View)((Iterator)localObject).next()).setAlpha(0.0F);
+      }
+      this.IAU.stopTimer();
+      fBI();
+      localObject = this.IWL;
+      if (localObject == null) {
+        p.bGy("multiCodeTips");
+      }
+      n.a((View)localObject, 1.0F, 0.0F, 200L, null);
+    }
+    AppMethodBeat.o(217395);
+  }
+  
+  private final void g(ArrayList<PointF> paramArrayList, String paramString)
+  {
+    AppMethodBeat.i(217382);
     Log.i("MicroMsg.ScanCodeMaskView", "alvinluo showSuccessView pointList %d", new Object[] { Integer.valueOf(paramArrayList.size()) });
     this.pointCount = 0;
-    this.CRs = true;
-    z.a locala = new z.a();
-    locala.SYB = true;
+    this.IWT = true;
+    final aa.a locala = new aa.a();
+    locala.aaBx = true;
     paramArrayList = ((Iterable)paramArrayList).iterator();
     while (paramArrayList.hasNext())
     {
-      PointF localPointF = (PointF)paramArrayList.next();
+      final PointF localPointF = (PointF)paramArrayList.next();
       if (localPointF != null)
       {
-        z.f localf = new z.f();
-        localf.SYG = ((View)j.L((List)this.CRn, this.pointCount));
-        if ((View)localf.SYG == null)
+        final aa.f localf = new aa.f();
+        localf.aaBC = ((View)j.M((List)this.IWO, this.pointCount));
+        if ((View)localf.aaBC == null)
         {
-          localView = LayoutInflater.from(getContext()).inflate(2131495184, null);
-          addView(localView, (ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(this.CQe, this.CQe));
-          p.g(localView, "view");
-          localf.SYG = localView;
-          this.CRn.add((View)localf.SYG);
+          localView = LayoutInflater.from(getContext()).inflate(l.g.layout_scan_code_success_mark_view, null);
+          addView(localView, (ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(this.IVG, this.IVG));
+          p.j(localView, "view");
+          localf.aaBC = localView;
+          this.IWO.add((View)localf.aaBC);
         }
-        View localView = (View)localf.SYG;
-        Object localObject = (ImageView)localView.findViewById(2131307262);
+        View localView = (View)localf.aaBC;
+        Object localObject = (ImageView)localView.findViewById(l.f.scan_success_dot_view);
         if (localObject != null) {
-          ((ImageView)localObject).setImageResource(2131691431);
+          ((ImageView)localObject).setImageResource(l.h.scan_success_mark_dot_with_arrow);
         }
         localView.setVisibility(0);
-        localView.setPivotX(this.CQe / 2.0F);
-        localView.setPivotY(this.CQe / 2.0F);
-        localView.setTranslationX(localPointF.x - this.CQe / 2);
-        localView.setTranslationY(localPointF.y - this.CQe / 2);
+        localView.setPivotX(this.IVG / 2.0F);
+        localView.setPivotY(this.IVG / 2.0F);
+        localView.setTranslationX(localPointF.x - this.IVG / 2);
+        localView.setTranslationY(localPointF.y - this.IVG / 2);
         localView.setAlpha(0.0F);
         localView.setScaleX(0.0F);
         localView.setScaleY(0.0F);
         float f2 = localPointF.x;
         float f1 = localPointF.y;
-        float f3 = this.CRA.x;
-        float f4 = this.CRA.y;
-        localObject = this.CRk;
+        float f3 = this.IWY.x;
+        float f4 = this.IWY.y;
+        localObject = this.IWL;
         if (localObject == null) {
-          p.btv("multiCodeTips");
+          p.bGy("multiCodeTips");
         }
         i = ((TextView)localObject).getMeasuredWidth();
-        localObject = this.CRk;
+        localObject = this.IWL;
         if (localObject == null) {
-          p.btv("multiCodeTips");
+          p.bGy("multiCodeTips");
         }
         Log.i("MicroMsg.ScanCodeMaskView", "alvinluo checkMultiCodeTipsPositionValid [%s, %s], multiCodeTips: [%s, %s], [%s, %s]", new Object[] { Float.valueOf(f2), Float.valueOf(f1), Float.valueOf(f3), Float.valueOf(f4), Integer.valueOf(i), Integer.valueOf(((TextView)localObject).getMeasuredHeight()) });
-        if (this.CRo / 2 + f2 >= this.CRA.x)
+        if (this.IWP / 2 + f2 >= this.IWY.x)
         {
-          f3 = this.CRo / 2;
-          f4 = this.CRA.x;
-          localObject = this.CRk;
+          f3 = this.IWP / 2;
+          f4 = this.IWY.x;
+          localObject = this.IWL;
           if (localObject == null) {
-            p.btv("multiCodeTips");
+            p.bGy("multiCodeTips");
           }
-          if ((f2 - f3 <= f4 + ((TextView)localObject).getMeasuredWidth()) && (this.CRo / 2 + f1 >= this.CRA.y))
+          if ((f2 - f3 <= f4 + ((TextView)localObject).getMeasuredWidth()) && (this.IWP / 2 + f1 >= this.IWY.y))
           {
-            f2 = this.CRo / 2;
-            f3 = this.CRA.y;
-            localObject = this.CRk;
+            f2 = this.IWP / 2;
+            f3 = this.IWY.y;
+            localObject = this.IWL;
             if (localObject == null) {
-              p.btv("multiCodeTips");
+              p.bGy("multiCodeTips");
             }
             if (f1 - f2 <= f3 + ((TextView)localObject).getMeasuredHeight()) {
-              break label651;
+              break label657;
             }
           }
         }
-        label651:
+        label657:
         for (i = 1;; i = 0)
         {
           if (i == 0) {
-            locala.SYB = false;
+            locala.aaBx = false;
           }
-          localView.setOnClickListener((View.OnClickListener)new ScanCodeMaskView.m(this.pointCount, localPointF, localf, this, locala));
+          localView.setOnClickListener((View.OnClickListener)new m(this.pointCount, localPointF, localf, this, locala));
           this.pointCount += 1;
           break;
         }
       }
     }
     int i = this.pointCount;
-    int j = this.CRn.size();
+    int j = this.IWO.size();
     while (i < j)
     {
-      paramArrayList = (View)j.L((List)this.CRn, i);
+      paramArrayList = (View)j.M((List)this.IWO, i);
       if (paramArrayList != null) {
         paramArrayList.setVisibility(8);
       }
@@ -433,223 +539,160 @@ public final class ScanCodeMaskView
     if (this.pointCount > 1)
     {
       bool = true;
-      this.CRr = bool;
-      if (this.CRr) {
-        break label1069;
+      this.IWS = bool;
+      if (this.IWS) {
+        break label1075;
       }
-      paramArrayList = (View)j.kt((List)this.CRn);
+      paramArrayList = (View)j.lp((List)this.IWO);
       if (paramArrayList != null)
       {
-        paramArrayList = (ImageView)paramArrayList.findViewById(2131307262);
+        paramArrayList = (ImageView)paramArrayList.findViewById(l.f.scan_success_dot_view);
         if (paramArrayList != null) {
-          paramArrayList.setImageResource(2131691430);
+          paramArrayList.setImageResource(l.h.scan_success_mark_dot);
         }
       }
-      paramArrayList = this.CRj;
+      paramArrayList = this.IWK;
       if (paramArrayList == null) {
-        p.btv("multiCodeBgMask");
+        p.bGy("multiCodeBgMask");
       }
       paramArrayList.setVisibility(8);
-      paramArrayList = this.CRk;
+      paramArrayList = this.IWL;
       if (paramArrayList == null) {
-        p.btv("multiCodeTips");
+        p.bGy("multiCodeTips");
       }
       paramArrayList.setVisibility(4);
     }
     for (;;)
     {
-      Log.i("MicroMsg.ScanCodeMaskView", "alvinluo showSuccessView isMultiCode: %b, pointCount: %d, successMarkViewList: %d, tipsPositionValid: %b", new Object[] { Boolean.valueOf(this.CRr), Integer.valueOf(this.pointCount), Integer.valueOf(this.CRn.size()), Boolean.valueOf(locala.SYB) });
-      paramArrayList = this.CRp;
+      Log.i("MicroMsg.ScanCodeMaskView", "alvinluo showSuccessView isMultiCode: %b, pointCount: %d, successMarkViewList: %d, tipsPositionValid: %b", new Object[] { Boolean.valueOf(this.IWS), Integer.valueOf(this.pointCount), Integer.valueOf(this.IWO.size()), Boolean.valueOf(locala.aaBx) });
+      paramArrayList = this.IWQ;
       paramArrayList.removeAllUpdateListeners();
       paramArrayList.removeAllListeners();
       paramArrayList.setFloatValues(new float[] { 0.0F, 1.0F });
       paramArrayList.setInterpolator((TimeInterpolator)new LinearInterpolator());
       paramArrayList.setDuration(300L);
       paramArrayList.addListener((Animator.AnimatorListener)new k(this));
-      paramArrayList.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new ScanCodeMaskView.l(this));
+      paramArrayList.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new l(this));
       paramArrayList.start();
-      if (!this.CRr) {
-        break label1238;
+      if (!this.IWS) {
+        break label1267;
       }
-      paramArrayList = this.CRj;
+      paramArrayList = this.IWK;
       if (paramArrayList == null) {
-        p.btv("multiCodeBgMask");
+        p.bGy("multiCodeBgMask");
       }
       paramArrayList = paramArrayList.animate();
       if (paramArrayList == null) {
-        break label1238;
+        break label1267;
       }
       paramArrayList = paramArrayList.alpha(1.0F);
       if (paramArrayList == null) {
-        break label1238;
+        break label1267;
       }
       paramArrayList = paramArrayList.setInterpolator((TimeInterpolator)new LinearInterpolator());
       if (paramArrayList == null) {
-        break label1238;
+        break label1267;
       }
       paramArrayList = paramArrayList.setDuration(600L);
       if (paramArrayList == null) {
-        break label1238;
+        break label1267;
       }
-      paramArrayList = paramArrayList.setListener((Animator.AnimatorListener)new ScanCodeMaskView.n(this));
+      paramArrayList = paramArrayList.setListener((Animator.AnimatorListener)new n(this));
       if (paramArrayList == null) {
-        break label1238;
+        break label1267;
       }
       paramArrayList.start();
-      AppMethodBeat.o(170056);
+      AppMethodBeat.o(217382);
       return;
       bool = false;
       break;
-      label1069:
-      paramArrayList = this.CRj;
+      label1075:
+      paramArrayList = this.IWK;
       if (paramArrayList == null) {
-        p.btv("multiCodeBgMask");
+        p.bGy("multiCodeBgMask");
       }
       paramArrayList.setVisibility(0);
-      paramArrayList = this.CRj;
+      paramArrayList = this.IWK;
       if (paramArrayList == null) {
-        p.btv("multiCodeBgMask");
+        p.bGy("multiCodeBgMask");
       }
       paramArrayList.setAlpha(0.0F);
-      paramArrayList = this.CRk;
+      paramArrayList = this.IWL;
       if (paramArrayList == null) {
-        p.btv("multiCodeTips");
+        p.bGy("multiCodeTips");
+      }
+      paramArrayList.setText((CharSequence)paramString);
+      paramArrayList = this.IWL;
+      if (paramArrayList == null) {
+        p.bGy("multiCodeTips");
       }
       paramArrayList.setVisibility(0);
-      paramArrayList = this.CRk;
+      paramArrayList = this.IWL;
       if (paramArrayList == null) {
-        p.btv("multiCodeTips");
+        p.bGy("multiCodeTips");
       }
       paramArrayList.setAlpha(0.0F);
-      bool = locala.SYB;
-      Log.d("MicroMsg.ScanCodeMaskView", "alvinluo fixMultiCodeTipsPosition valid: %b, current: %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.CRz) });
-      this.CRB = false;
-      if ((!bool) && (this.CRz != 32)) {
-        WV(32);
-      } else if ((bool) && (this.CRz != 120)) {
-        WV(120);
+      bool = locala.aaBx;
+      Log.d("MicroMsg.ScanCodeMaskView", "alvinluo fixMultiCodeTipsPosition valid: %b, current: %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.IWX) });
+      this.IWZ = false;
+      if ((!bool) && (this.IWX != 32)) {
+        adU(32);
+      } else if ((bool) && (this.IWX != 120)) {
+        adU(120);
       }
     }
-    label1238:
-    AppMethodBeat.o(170056);
+    label1267:
+    AppMethodBeat.o(217382);
   }
   
-  private final void eRA()
-  {
-    AppMethodBeat.i(240638);
-    if (this.CRr)
-    {
-      Object localObject = this.CRj;
-      if (localObject == null) {
-        p.btv("multiCodeBgMask");
-      }
-      ((View)localObject).setVisibility(8);
-      this.CRs = false;
-      localObject = ((Iterable)this.CRn).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((View)((Iterator)localObject).next()).setAlpha(0.0F);
-      }
-      eRx();
-      eRy();
-      localObject = this.CRk;
-      if (localObject == null) {
-        p.btv("multiCodeTips");
-      }
-      m.a((View)localObject, 1.0F, 0.0F, 200L, null);
-    }
-    AppMethodBeat.o(240638);
-  }
-  
-  private final void eRw()
-  {
-    AppMethodBeat.i(52388);
-    int i = getMeasuredWidth();
-    int j = getMeasuredHeight();
-    setAnimationRect(new Rect(0, (int)(0.15F * j), i, (int)(j * 0.6F)));
-    AppMethodBeat.o(52388);
-  }
-  
-  private final void eRx()
-  {
-    AppMethodBeat.i(170060);
-    Object localObject = this.CRv;
-    if (localObject != null) {
-      ((Timer)localObject).cancel();
-    }
-    localObject = this.CRw;
-    if (localObject != null) {
-      ((TimerTask)localObject).cancel();
-    }
-    this.CRv = null;
-    this.CRw = null;
-    AppMethodBeat.o(170060);
-  }
-  
-  private final void eRy()
-  {
-    AppMethodBeat.i(170061);
-    ValueAnimator localValueAnimator = this.rnC;
-    if (localValueAnimator != null) {
-      localValueAnimator.removeAllListeners();
-    }
-    localValueAnimator = this.rnC;
-    if (localValueAnimator != null) {
-      localValueAnimator.removeAllUpdateListeners();
-    }
-    localValueAnimator = this.rnC;
-    if (localValueAnimator != null) {
-      localValueAnimator.cancel();
-    }
-    this.rnC = null;
-    AppMethodBeat.o(170061);
-  }
-  
-  public final void a(Animator.AnimatorListener paramAnimatorListener)
+  public final void a(final Animator.AnimatorListener paramAnimatorListener)
   {
     AppMethodBeat.i(52399);
     super.a(paramAnimatorListener);
-    this.tgS.cancel();
-    if (this.CRm != null)
+    this.wNi.cancel();
+    if (this.IWN != null)
     {
-      Bitmap localBitmap = this.CRm;
+      Bitmap localBitmap = this.IWN;
       if (localBitmap == null) {
-        p.hyc();
+        p.iCn();
       }
       if (!localBitmap.isRecycled())
       {
-        localBitmap = this.CRm;
+        localBitmap = this.IWN;
         if (localBitmap == null) {
-          p.hyc();
+          p.iCn();
         }
         localBitmap.recycle();
       }
     }
-    m.a((View)this, 1.0F, 0.0F, 200L, (Animator.AnimatorListener)new ScanCodeMaskView.f(this, paramAnimatorListener));
+    n.a((View)this, 1.0F, 0.0F, 200L, (Animator.AnimatorListener)new e(this, paramAnimatorListener));
     AppMethodBeat.o(52399);
   }
   
   public final void b(Object paramObject, d paramd)
   {
     AppMethodBeat.i(52400);
-    p.h(paramObject, "data");
-    this.CQk = paramd;
-    if (((paramObject instanceof ArrayList)) && ((j.kt((List)paramObject) instanceof WxQBarResult)))
+    p.k(paramObject, "data");
+    this.IVL = paramd;
+    paramd = new ArrayList();
+    HashSet localHashSet = new HashSet();
+    if (((paramObject instanceof ArrayList)) && ((j.lp((List)paramObject) instanceof WxQBarResult)))
     {
-      paramd = new ArrayList();
+      ArrayList localArrayList = new ArrayList();
       Iterator localIterator = ((Iterable)paramObject).iterator();
       while (localIterator.hasNext())
       {
-        paramObject = localIterator.next();
-        if (paramObject == null)
+        Object localObject1 = localIterator.next();
+        if (localObject1 == null)
         {
           paramObject = new t("null cannot be cast to non-null type com.tencent.qbar.WxQBarResult");
           AppMethodBeat.o(52400);
           throw paramObject;
         }
-        paramObject = ((WxQBarResult)paramObject).RKp;
+        paramObject = ((WxQBarResult)localObject1).ZmX;
         if (paramObject != null)
         {
-          Object localObject;
+          Object localObject2;
           float f1;
           float f2;
           float f3;
@@ -657,125 +700,133 @@ public final class ScanCodeMaskView
           float f5;
           if ((paramObject.point_cnt == 4) && (getMPreviewRect() != null) && (getScanCamera() != null))
           {
-            localObject = getScanCamera();
-            if (localObject == null) {
-              p.hyc();
+            localObject2 = getScanCamera();
+            if (localObject2 == null) {
+              p.iCn();
             }
-            if ((((com.tencent.mm.plugin.scanner.a.a)localObject).hkT()) && (this.zvq))
+            if ((((com.tencent.mm.plugin.scanner.a.a)localObject2).ior()) && (this.FaP))
             {
               f1 = paramObject.x0;
               f2 = paramObject.x1;
               f3 = paramObject.x2;
               f4 = paramObject.x3;
-              localObject = getMPreviewRect();
-              if (localObject == null) {
-                p.hyc();
+              localObject2 = getMPreviewRect();
+              if (localObject2 == null) {
+                p.iCn();
               }
-              f1 = (f1 + f2 + f3 + f4) / (((Rect)localObject).height() * 4);
+              f1 = (f1 + f2 + f3 + f4) / (((Rect)localObject2).height() * 4);
               f2 = paramObject.y0;
               f3 = paramObject.y1;
               f4 = paramObject.y2;
               f5 = paramObject.y3;
               paramObject = getMPreviewRect();
               if (paramObject == null) {
-                p.hyc();
+                p.iCn();
               }
               paramObject = new PointF(f1, (f5 + (f2 + f3 + f4)) / (paramObject.width() * 4));
-              label282:
+              label303:
               if ((paramObject == null) || (getMScanRect() == null)) {
-                break label543;
+                break label586;
               }
               f1 = paramObject.x;
-              localObject = getMScanRect();
-              if (localObject == null) {
-                p.hyc();
+              localObject2 = getMScanRect();
+              if (localObject2 == null) {
+                p.iCn();
               }
-              f2 = ((Rect)localObject).width();
-              localObject = getMScanRect();
-              if (localObject == null) {
-                p.hyc();
+              f2 = ((Rect)localObject2).width();
+              localObject2 = getMScanRect();
+              if (localObject2 == null) {
+                p.iCn();
               }
-              f3 = ((Rect)localObject).left;
+              f3 = ((Rect)localObject2).left;
               f4 = paramObject.y;
               paramObject = getMScanRect();
               if (paramObject == null) {
-                p.hyc();
+                p.iCn();
               }
               f5 = paramObject.height();
               paramObject = getMScanRect();
               if (paramObject == null) {
-                p.hyc();
+                p.iCn();
               }
             }
           }
-          label543:
+          label586:
           for (paramObject = new PointF(f1 * f2 + f3, f4 * f5 + paramObject.top);; paramObject = null)
           {
-            paramd.add(paramObject);
+            localArrayList.add(paramObject);
+            localHashSet.add(((WxQBarResult)localObject1).data);
+            paramd.add(localObject1);
             break;
             f1 = paramObject.x0;
             f2 = paramObject.x1;
             f3 = paramObject.x2;
             f4 = paramObject.x3;
-            localObject = getMPreviewRect();
-            if (localObject == null) {
-              p.hyc();
+            localObject2 = getMPreviewRect();
+            if (localObject2 == null) {
+              p.iCn();
             }
-            f1 = (f1 + f2 + f3 + f4) / (((Rect)localObject).width() * 4);
+            f1 = (f1 + f2 + f3 + f4) / (((Rect)localObject2).width() * 4);
             f2 = paramObject.y0;
             f3 = paramObject.y1;
             f4 = paramObject.y2;
             f5 = paramObject.y3;
             paramObject = getMPreviewRect();
             if (paramObject == null) {
-              p.hyc();
+              p.iCn();
             }
             paramObject = new PointF(f1, (f5 + (f2 + f3 + f4)) / (paramObject.height() * 4));
-            break label282;
+            break label303;
             paramObject = null;
-            break label282;
+            break label303;
           }
         }
       }
-      aN(paramd);
+      if ((localArrayList.size() > 1) && (localHashSet.size() == 1))
+      {
+        paramObject = (PointF)localArrayList.get(0);
+        localArrayList.clear();
+        localArrayList.add(paramObject);
+      }
+      g(localArrayList, aY(paramd));
     }
     AppMethodBeat.o(52400);
   }
   
-  public final void cWj()
+  public final void dlq()
   {
     AppMethodBeat.i(52391);
     Log.d("MicroMsg.ScanCodeMaskView", "alvinluo stopScanLineAnimation");
-    this.tgS.cancel();
+    this.wNi.cancel();
     AppMethodBeat.o(52391);
   }
   
-  public final void eRq()
+  public final void fEr()
   {
     AppMethodBeat.i(52398);
-    super.eRq();
+    super.fEr();
     Log.v("MicroMsg.ScanCodeMaskView", "alvinluo onViewReady hashCode: %d", new Object[] { Integer.valueOf(hashCode()) });
     AppMethodBeat.o(52398);
   }
   
-  public final void eRz()
+  public final void fEy()
   {
-    AppMethodBeat.i(240637);
+    AppMethodBeat.i(217394);
     Log.d("MicroMsg.ScanCodeMaskView", "alvinluo onShowResultInfoView show: %b", new Object[] { Boolean.TRUE });
-    eRA();
-    AppMethodBeat.o(240637);
+    fEz();
+    AppMethodBeat.o(217394);
   }
   
   public final View getTargetSuccessMarkView()
   {
     AppMethodBeat.i(170065);
-    if (this.CRr)
+    if (this.IWS)
     {
-      localView = (View)j.L((List)this.CRn, this.CRu);
+      localView = (View)j.M((List)this.IWO, this.IWV);
       AppMethodBeat.o(170065);
       return localView;
     }
-    View localView = (View)j.L((List)this.CRn, 0);
+    View localView = (View)j.M((List)this.IWO, 0);
     AppMethodBeat.o(170065);
     return localView;
   }
@@ -784,23 +835,23 @@ public final class ScanCodeMaskView
   {
     AppMethodBeat.i(52389);
     super.onMeasure(paramInt1, paramInt2);
-    if ((getMeasuredWidth() != 0) && (getMeasuredWidth() != this.gRD))
+    if ((getMeasuredWidth() != 0) && (getMeasuredWidth() != this.jBZ))
     {
-      this.gRD = getMeasuredWidth();
-      eRw();
+      this.jBZ = getMeasuredWidth();
+      fEx();
     }
-    if (this.CRB)
+    if (this.IWZ)
     {
-      PointF localPointF = this.CRA;
-      TextView localTextView = this.CRk;
+      PointF localPointF = this.IWY;
+      TextView localTextView = this.IWL;
       if (localTextView == null) {
-        p.btv("multiCodeTips");
+        p.bGy("multiCodeTips");
       }
       localPointF.x = localTextView.getX();
-      localPointF = this.CRA;
-      localTextView = this.CRk;
+      localPointF = this.IWY;
+      localTextView = this.IWL;
       if (localTextView == null) {
-        p.btv("multiCodeTips");
+        p.bGy("multiCodeTips");
       }
       localPointF.y = localTextView.getY();
     }
@@ -811,7 +862,7 @@ public final class ScanCodeMaskView
   {
     AppMethodBeat.i(52397);
     super.onPause();
-    cWj();
+    dlq();
     AppMethodBeat.o(52397);
   }
   
@@ -820,13 +871,13 @@ public final class ScanCodeMaskView
     AppMethodBeat.i(52396);
     super.onResume();
     Log.d("MicroMsg.ScanCodeMaskView", "alvinluo startScanLineAnimation");
-    this.tgS.cancel();
-    ImageView localImageView = this.CRh;
+    this.wNi.cancel();
+    ImageView localImageView = this.IWI;
     if (localImageView == null) {
-      p.btv("scanLineImageView");
+      p.bGy("scanLineImageView");
     }
     localImageView.setVisibility(0);
-    this.tgS.start();
+    this.wNi.start();
     AppMethodBeat.o(52396);
   }
   
@@ -834,24 +885,24 @@ public final class ScanCodeMaskView
   {
     AppMethodBeat.i(52402);
     super.release();
-    eRx();
-    eRy();
+    this.IAU.stopTimer();
+    fBI();
     AppMethodBeat.o(52402);
   }
   
   public final void setAnimationRect(Rect paramRect)
   {
     AppMethodBeat.i(52390);
-    p.h(paramRect, "rect");
+    p.k(paramRect, "rect");
     this.mRect.set(paramRect);
     Log.d("MicroMsg.ScanCodeMaskView", "alvinluo setAnimationRect %s", new Object[] { paramRect });
-    ImageView localImageView = this.CRh;
+    ImageView localImageView = this.IWI;
     if (localImageView == null) {
-      p.btv("scanLineImageView");
+      p.bGy("scanLineImageView");
     }
-    paramRect = this.CRh;
+    paramRect = this.IWI;
     if (paramRect == null) {
-      p.btv("scanLineImageView");
+      p.bGy("scanLineImageView");
     }
     paramRect = paramRect.getLayoutParams();
     if (paramRect != null) {
@@ -862,7 +913,7 @@ public final class ScanCodeMaskView
     for (;;)
     {
       localImageView.setLayoutParams(paramRect);
-      this.tgS.setFloatValues(new float[] { this.mRect.top, this.mRect.bottom });
+      this.wNi.setFloatValues(new float[] { this.mRect.top, this.mRect.bottom });
       AppMethodBeat.o(52390);
       return;
       paramRect = null;
@@ -873,90 +924,100 @@ public final class ScanCodeMaskView
   {
     AppMethodBeat.i(52395);
     super.setBottomExtraHeight(paramInt);
-    View localView = this.CRi;
+    View localView = this.IWJ;
     if (localView == null) {
-      p.btv("myQrCodeButton");
+      p.bGy("myQrCodeButton");
     }
-    Object localObject = this.CRi;
+    Object localObject = this.IWJ;
     if (localObject == null) {
-      p.btv("myQrCodeButton");
+      p.bGy("myQrCodeButton");
     }
     localObject = ((View)localObject).getLayoutParams();
     if ((localObject instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = (com.tencent.mm.cb.a.fromDPToPix(getContext(), 32) + getMBottomExtraHeight());
+      ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = (com.tencent.mm.ci.a.fromDPToPix(getContext(), 32) + getMBottomExtraHeight());
     }
     localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    WV(120);
+    adU(120);
     AppMethodBeat.o(52395);
   }
   
-  public final void setDecodeSuccessFrameData(ScanDecodeFrameData paramScanDecodeFrameData)
+  public final void setDecodeSuccessFrameData(final ScanDecodeFrameData paramScanDecodeFrameData)
   {
     AppMethodBeat.i(170063);
     super.setDecodeSuccessFrameData(paramScanDecodeFrameData);
-    h.RTc.aX((Runnable)new ScanCodeMaskView.j(this, paramScanDecodeFrameData));
+    h.ZvG.be((Runnable)new j(this, paramScanDecodeFrameData));
     AppMethodBeat.o(170063);
   }
   
   public final void setMyQrCodeButtonVisible(boolean paramBoolean)
   {
-    AppMethodBeat.i(240635);
-    View localView = this.CRi;
+    AppMethodBeat.i(217369);
+    View localView = this.IWJ;
     if (localView == null) {
-      p.btv("myQrCodeButton");
+      p.bGy("myQrCodeButton");
     }
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
       localView.setVisibility(i);
-      AppMethodBeat.o(240635);
+      AppMethodBeat.o(217369);
       return;
     }
   }
   
   public final void setNeedRotate(boolean paramBoolean)
   {
-    this.zvq = paramBoolean;
+    this.FaP = paramBoolean;
   }
   
-  public final void setSuccessMarkClickListener(ag paramag)
+  public final void setSuccessMarkClickListener(ae paramae)
   {
     AppMethodBeat.i(170062);
-    p.h(paramag, "successMarkClickListener");
-    this.CRt = paramag;
+    p.k(paramae, "successMarkClickListener");
+    this.IWU = paramae;
     AppMethodBeat.o(170062);
   }
   
-  public final void tY(boolean paramBoolean)
+  public final void xA(boolean paramBoolean)
+  {
+    AppMethodBeat.i(170066);
+    Log.d("MicroMsg.ScanCodeMaskView", "alvinluo onShowNetworkLoading show: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (paramBoolean) {
+      fEz();
+    }
+    AppMethodBeat.o(170066);
+  }
+  
+  public final void xw(boolean paramBoolean)
   {
     AppMethodBeat.i(52401);
-    super.tY(paramBoolean);
-    Object localObject = this.CRi;
+    super.xw(paramBoolean);
+    Object localObject = this.IWJ;
     if (localObject == null) {
-      p.btv("myQrCodeButton");
+      p.bGy("myQrCodeButton");
     }
     ((View)localObject).setAlpha(1.0F);
-    localObject = ((Iterable)this.CRn).iterator();
+    localObject = ((Iterable)this.IWO).iterator();
     while (((Iterator)localObject).hasNext()) {
       ((View)((Iterator)localObject).next()).setVisibility(8);
     }
-    localObject = this.CRk;
+    localObject = this.IWL;
     if (localObject == null) {
-      p.btv("multiCodeTips");
+      p.bGy("multiCodeTips");
     }
     ((TextView)localObject).setVisibility(8);
-    localObject = this.CRj;
+    localObject = this.IWK;
     if (localObject == null) {
-      p.btv("multiCodeBgMask");
+      p.bGy("multiCodeBgMask");
     }
     ((View)localObject).setVisibility(8);
-    localObject = this.CRl;
+    localObject = this.IWM;
     if (localObject == null) {
-      p.btv("frameImage");
+      p.bGy("frameImage");
     }
     ((ImageView)localObject).setVisibility(8);
-    this.CRs = false;
-    this.CRr = false;
+    this.IWT = false;
+    this.IWS = false;
     if (!paramBoolean)
     {
       localObject = getScanTips();
@@ -968,56 +1029,178 @@ public final class ScanCodeMaskView
         ((TextView)localObject).setAlpha(1.0F);
       }
     }
-    m.a((View)this, 0.0F, 1.0F, 200L, null);
-    eRx();
-    eRy();
-    this.CRp.removeAllListeners();
-    this.CRp.removeAllUpdateListeners();
-    this.CRp.cancel();
+    n.a((View)this, 0.0F, 1.0F, 200L, null);
+    this.IAU.stopTimer();
+    fBI();
+    this.IWQ.removeAllListeners();
+    this.IWQ.removeAllUpdateListeners();
+    this.IWQ.cancel();
     AppMethodBeat.o(52401);
   }
   
-  public final void uc(boolean paramBoolean)
-  {
-    AppMethodBeat.i(170066);
-    Log.d("MicroMsg.ScanCodeMaskView", "alvinluo onShowNetworkLoading show: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (paramBoolean) {
-      eRA();
-    }
-    AppMethodBeat.o(170066);
-  }
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$Companion;", "", "()V", "MULTI_CODE_TIPS_DEFAULT_BOTTOM_MARGIN_DP", "", "MULTI_CODE_TIPS_MIN_BOTTOM_MARGIN_DP", "SCALE_ANIMATION_DELAY", "", "SCALE_ANIMATION_DURATION", "SCALE_ANIMATION_MAX_SCALE", "", "SCALE_ANIMATION_MIN_SCALE", "SCALE_ANIMATION_PERIOD", "SCAN_LINE_ANIMATION_DURATION", "TAG", "", "plugin-scan_release"})
+  public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$initScaleAnimation$1", "Ljava/util/TimerTask;", "run", "", "plugin-scan_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$initScanLineAnimator$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "onAnimationStart", "plugin-scan_release"})
   public static final class c
-    extends TimerTask
+    extends AnimatorListenerAdapter
   {
-    public final void run()
+    public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(170046);
-      MMHandlerThread.postToMainThread((Runnable)new a(this));
-      AppMethodBeat.o(170046);
+      AppMethodBeat.i(52379);
+      ScanCodeMaskView.a(this.IXb).setVisibility(8);
+      AppMethodBeat.o(52379);
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-    static final class a
-      implements Runnable
+    public final void onAnimationStart(Animator paramAnimator) {}
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+  static final class d
+    implements ValueAnimator.AnimatorUpdateListener
+  {
+    d(ScanCodeMaskView paramScanCodeMaskView) {}
+    
+    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      a(ScanCodeMaskView.c paramc) {}
-      
-      public final void run()
+      AppMethodBeat.i(52380);
+      p.j(paramValueAnimator, "animation");
+      paramValueAnimator = paramValueAnimator.getAnimatedValue();
+      if (paramValueAnimator == null)
       {
-        AppMethodBeat.i(170045);
-        ScanCodeMaskView.m(this.CRE.CRD);
-        AppMethodBeat.o(170045);
+        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
+        AppMethodBeat.o(52380);
+        throw paramValueAnimator;
       }
+      float f2 = ((Float)paramValueAnimator).floatValue();
+      ScanCodeMaskView.a(this.IXb).setTranslationY(f2);
+      float f1 = ScanCodeMaskView.b(this.IXb).height() * ScanCodeMaskView.c(this.IXb);
+      f2 -= ScanCodeMaskView.b(this.IXb).top;
+      if (f2 <= f1)
+      {
+        f1 = (f1 - f2) / f1;
+        ScanCodeMaskView.a(this.IXb).setAlpha(1.0F - f1);
+        AppMethodBeat.o(52380);
+        return;
+      }
+      if (f2 >= ScanCodeMaskView.b(this.IXb).height() * (1.0F - ScanCodeMaskView.c(this.IXb)))
+      {
+        f1 = (f2 - ScanCodeMaskView.b(this.IXb).height() * (1.0F - ScanCodeMaskView.c(this.IXb))) / f1;
+        ScanCodeMaskView.a(this.IXb).setAlpha(1.0F - f1);
+        AppMethodBeat.o(52380);
+        return;
+      }
+      ScanCodeMaskView.a(this.IXb).setAlpha(1.0F);
+      AppMethodBeat.o(52380);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$runZoomAnimation$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
-  public static final class h
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$onViewDestroy$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
+  public static final class e
     implements Animator.AnimatorListener
   {
-    h(ScanCodeMaskView.i parami) {}
+    e(Animator.AnimatorListener paramAnimatorListener) {}
+    
+    public final void onAnimationCancel(Animator paramAnimator)
+    {
+      AppMethodBeat.i(52383);
+      this.IXb.dlq();
+      Animator.AnimatorListener localAnimatorListener = paramAnimatorListener;
+      if (localAnimatorListener != null)
+      {
+        localAnimatorListener.onAnimationCancel(paramAnimator);
+        AppMethodBeat.o(52383);
+        return;
+      }
+      AppMethodBeat.o(52383);
+    }
+    
+    public final void onAnimationEnd(Animator paramAnimator)
+    {
+      AppMethodBeat.i(52382);
+      Log.i("MicroMsg.ScanCodeMaskView", "alvinluo onViewDestroy onAnimationEnd");
+      this.IXb.dlq();
+      Animator.AnimatorListener localAnimatorListener = paramAnimatorListener;
+      if (localAnimatorListener != null)
+      {
+        localAnimatorListener.onAnimationEnd(paramAnimator);
+        AppMethodBeat.o(52382);
+        return;
+      }
+      AppMethodBeat.o(52382);
+    }
+    
+    public final void onAnimationRepeat(Animator paramAnimator)
+    {
+      AppMethodBeat.i(52381);
+      Animator.AnimatorListener localAnimatorListener = paramAnimatorListener;
+      if (localAnimatorListener != null)
+      {
+        localAnimatorListener.onAnimationRepeat(paramAnimator);
+        AppMethodBeat.o(52381);
+        return;
+      }
+      AppMethodBeat.o(52381);
+    }
+    
+    public final void onAnimationStart(Animator paramAnimator)
+    {
+      AppMethodBeat.i(52384);
+      Animator.AnimatorListener localAnimatorListener = paramAnimatorListener;
+      if (localAnimatorListener != null)
+      {
+        localAnimatorListener.onAnimationStart(paramAnimator);
+        AppMethodBeat.o(52384);
+        return;
+      }
+      AppMethodBeat.o(52384);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$runZoomAnimation$2$1"})
+  static final class f
+    implements ValueAnimator.AnimatorUpdateListener
+  {
+    f(ScanCodeMaskView paramScanCodeMaskView, float paramFloat1, float paramFloat2, Interpolator paramInterpolator, Animator.AnimatorListener paramAnimatorListener) {}
+    
+    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+    {
+      AppMethodBeat.i(170047);
+      p.j(paramValueAnimator, "animation");
+      paramValueAnimator = paramValueAnimator.getAnimatedValue();
+      if (paramValueAnimator == null)
+      {
+        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
+        AppMethodBeat.o(170047);
+        throw paramValueAnimator;
+      }
+      float f = ((Float)paramValueAnimator).floatValue();
+      paramValueAnimator = (Iterable)ScanCodeMaskView.e(this.IXb);
+      int i = 0;
+      paramValueAnimator = paramValueAnimator.iterator();
+      while (paramValueAnimator.hasNext())
+      {
+        Object localObject = paramValueAnimator.next();
+        if (i < 0) {
+          j.iBO();
+        }
+        localObject = (View)localObject;
+        if (i < ScanCodeMaskView.j(this.IXb))
+        {
+          ((View)localObject).setScaleX(f);
+          ((View)localObject).setScaleY(f);
+        }
+        i += 1;
+      }
+      AppMethodBeat.o(170047);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$runZoomAnimation$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
+  public static final class g
+    implements Animator.AnimatorListener
+  {
+    g(ScanCodeMaskView.h paramh) {}
     
     public final void onAnimationCancel(Animator paramAnimator) {}
     
@@ -1032,26 +1215,26 @@ public final class ScanCodeMaskView
     
     public final void onAnimationStart(Animator paramAnimator) {}
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
-      a(ScanCodeMaskView.h paramh) {}
+      a(ScanCodeMaskView.g paramg) {}
       
       public final void run()
       {
         AppMethodBeat.i(170048);
-        ScanCodeMaskView.a(this.CRK.CRD, (Animator.AnimatorListener)this.CRK.CRJ);
+        ScanCodeMaskView.a(this.IXd.IXb, (Animator.AnimatorListener)this.IXd.IXc);
         AppMethodBeat.o(170048);
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$runZoomAnimation$animatorListener$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
-  public static final class i
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$runZoomAnimation$animatorListener$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
+  public static final class h
     implements Animator.AnimatorListener
   {
-    i(int paramInt) {}
+    h(int paramInt) {}
     
     public final void onAnimationCancel(Animator paramAnimator) {}
     
@@ -1066,24 +1249,95 @@ public final class ScanCodeMaskView
     
     public final void onAnimationStart(Animator paramAnimator) {}
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
-      a(ScanCodeMaskView.i parami) {}
+      a(ScanCodeMaskView.h paramh) {}
       
       public final void run()
       {
         AppMethodBeat.i(170050);
-        if (this.CRM.CRL < 2) {
-          ScanCodeMaskView.b(this.CRM.CRD, this.CRM.CRL + 1);
+        if (this.IXe.IBi < 2) {
+          ScanCodeMaskView.b(this.IXe.IXb, this.IXe.IBi + 1);
         }
         AppMethodBeat.o(170050);
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$showSuccessView$2$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onTimerExpired"})
+  static final class i
+    implements MTimerHandler.CallBack
+  {
+    i(ScanCodeMaskView paramScanCodeMaskView) {}
+    
+    public final boolean onTimerExpired()
+    {
+      AppMethodBeat.i(219577);
+      ScanCodeMaskView.p(this.IXb);
+      AppMethodBeat.o(219577);
+      return true;
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  static final class j
+    implements Runnable
+  {
+    j(ScanCodeMaskView paramScanCodeMaskView, ScanDecodeFrameData paramScanDecodeFrameData) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(170053);
+      long l = System.currentTimeMillis();
+      ScanCodeMaskView.a(this.IXb, ScanCodeMaskView.a(this.IXb, paramScanDecodeFrameData));
+      Log.i("MicroMsg.ScanCodeMaskView", "alvinluo getFrameBitmap cost: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      MMHandlerThread.postToMainThread((Runnable)new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(170052);
+          if ((!ScanCodeMaskView.n(this.IXg.IXb)) && (ScanCodeMaskView.m(this.IXg.IXb) != null))
+          {
+            Object localObject = ScanCodeMaskView.m(this.IXg.IXb);
+            if (localObject == null) {
+              p.iCn();
+            }
+            if (!((Bitmap)localObject).isRecycled())
+            {
+              ScanCodeMaskView.o(this.IXg.IXb).setImageBitmap(ScanCodeMaskView.m(this.IXg.IXb));
+              ScanCodeMaskView.o(this.IXg.IXb).setVisibility(0);
+              ScanCodeMaskView.o(this.IXg.IXb).setAlpha(0.0F);
+              localObject = ScanCodeMaskView.o(this.IXg.IXb).animate();
+              if (localObject != null) {
+                ((ViewPropertyAnimator)localObject).cancel();
+              }
+              localObject = ScanCodeMaskView.o(this.IXg.IXb).animate();
+              if (localObject != null)
+              {
+                localObject = ((ViewPropertyAnimator)localObject).alpha(1.0F);
+                if (localObject != null)
+                {
+                  localObject = ((ViewPropertyAnimator)localObject).setDuration(200L);
+                  if (localObject != null)
+                  {
+                    ((ViewPropertyAnimator)localObject).start();
+                    AppMethodBeat.o(170052);
+                    return;
+                  }
+                }
+              }
+            }
+          }
+          AppMethodBeat.o(170052);
+        }
+      });
+      AppMethodBeat.o(170053);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$showSuccessView$2$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
   public static final class k
     implements Animator.AnimatorListener
   {
@@ -1095,12 +1349,16 @@ public final class ScanCodeMaskView
     {
       AppMethodBeat.i(52385);
       Log.v("MicroMsg.ScanCodeMaskView", "alvinluo showSuccessView onAnimationEnd");
-      paramAnimator = ScanCodeMaskView.f(this.CRD);
+      paramAnimator = ScanCodeMaskView.f(this.IXb);
       if (paramAnimator != null)
       {
-        paramAnimator.eQG();
-        AppMethodBeat.o(52385);
-        return;
+        if (!ScanCodeMaskView.g(this.IXb)) {}
+        for (boolean bool = true;; bool = false)
+        {
+          paramAnimator.xs(bool);
+          AppMethodBeat.o(52385);
+          return;
+        }
       }
       AppMethodBeat.o(52385);
     }
@@ -1110,14 +1368,106 @@ public final class ScanCodeMaskView
     public final void onAnimationStart(Animator paramAnimator)
     {
       AppMethodBeat.i(52386);
-      ScanCodeMaskView.f(this.CRD);
+      ScanCodeMaskView.f(this.IXb);
       AppMethodBeat.o(52386);
     }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$showSuccessView$2$2"})
+  static final class l
+    implements ValueAnimator.AnimatorUpdateListener
+  {
+    l(ScanCodeMaskView paramScanCodeMaskView) {}
+    
+    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+    {
+      AppMethodBeat.i(52387);
+      p.j(paramValueAnimator, "animation");
+      paramValueAnimator = paramValueAnimator.getAnimatedValue();
+      if (paramValueAnimator == null)
+      {
+        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
+        AppMethodBeat.o(52387);
+        throw paramValueAnimator;
+      }
+      float f = ((Float)paramValueAnimator).floatValue();
+      ScanCodeMaskView.h(this.IXb).setAlpha(1.0F - f);
+      paramValueAnimator = ScanCodeMaskView.i(this.IXb);
+      if (paramValueAnimator != null) {
+        paramValueAnimator.setAlpha(1.0F - f);
+      }
+      paramValueAnimator = (Iterable)ScanCodeMaskView.e(this.IXb);
+      int i = 0;
+      paramValueAnimator = paramValueAnimator.iterator();
+      while (paramValueAnimator.hasNext())
+      {
+        Object localObject = paramValueAnimator.next();
+        if (i < 0) {
+          j.iBO();
+        }
+        localObject = (View)localObject;
+        if (i < ScanCodeMaskView.j(this.IXb))
+        {
+          ((View)localObject).setAlpha(f);
+          ((View)localObject).setScaleX(f);
+          ((View)localObject).setScaleY(f);
+        }
+        i += 1;
+      }
+      if (ScanCodeMaskView.g(this.IXb)) {
+        ScanCodeMaskView.k(this.IXb).setAlpha(f);
+      }
+      AppMethodBeat.o(52387);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$showSuccessView$1$1$1", "com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$$special$$inlined$apply$lambda$1"})
+  static final class m
+    implements View.OnClickListener
+  {
+    m(int paramInt, PointF paramPointF, aa.f paramf, ScanCodeMaskView paramScanCodeMaskView, aa.a parama) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(170054);
+      b localb = new b();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$showSuccessView$$inlined$forEach$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      ScanCodeMaskView.a(jdField_this, this.nmX);
+      paramView = ScanCodeMaskView.d(jdField_this);
+      if (paramView != null) {
+        paramView.adG(this.nmX);
+      }
+      paramView = ((Iterable)ScanCodeMaskView.e(jdField_this)).iterator();
+      while (paramView.hasNext()) {
+        ((View)paramView.next()).setOnClickListener(null);
+      }
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$showSuccessView$$inlined$forEach$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(170054);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$showSuccessView$3", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
+  public static final class n
+    implements Animator.AnimatorListener
+  {
+    public final void onAnimationCancel(Animator paramAnimator) {}
+    
+    public final void onAnimationEnd(Animator paramAnimator)
+    {
+      AppMethodBeat.i(170055);
+      ScanCodeMaskView.l(this.IXb);
+      AppMethodBeat.o(170055);
+    }
+    
+    public final void onAnimationRepeat(Animator paramAnimator) {}
+    
+    public final void onAnimationStart(Animator paramAnimator) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.widget.ScanCodeMaskView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,62 +1,111 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class dbh
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String MGp;
+  public dbk TIF;
+  public dbi TIG;
+  public int type;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(224205);
+    AppMethodBeat.i(234576);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.MGp != null) {
-        paramVarArgs.e(1, this.MGp);
+      paramVarArgs.aY(1, this.type);
+      if (this.TIF != null)
+      {
+        paramVarArgs.oE(2, this.TIF.computeSize());
+        this.TIF.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(224205);
+      if (this.TIG != null)
+      {
+        paramVarArgs.oE(101, this.TIG.computeSize());
+        this.TIG.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(234576);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.MGp == null) {
-        break label213;
-      }
-    }
-    label213:
-    for (paramInt = g.a.a.b.b.a.f(1, this.MGp) + 0;; paramInt = 0)
+    int i;
+    if (paramInt == 1)
     {
-      AppMethodBeat.o(224205);
-      return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
-          }
-        }
-        AppMethodBeat.o(224205);
-        return 0;
+      i = g.a.a.b.b.a.bM(1, this.type) + 0;
+      paramInt = i;
+      if (this.TIF != null) {
+        paramInt = i + g.a.a.a.oD(2, this.TIF.computeSize());
       }
-      if (paramInt == 3)
-      {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-        dbh localdbh = (dbh)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(224205);
-          return -1;
-        }
-        localdbh.MGp = locala.UbS.readString();
-        AppMethodBeat.o(224205);
-        return 0;
+      i = paramInt;
+      if (this.TIG != null) {
+        i = paramInt + g.a.a.a.oD(101, this.TIG.computeSize());
       }
-      AppMethodBeat.o(224205);
-      return -1;
+      AppMethodBeat.o(234576);
+      return i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.iUs();
+        }
+      }
+      AppMethodBeat.o(234576);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+      dbh localdbh = (dbh)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      Object localObject2;
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(234576);
+        return -1;
+      case 1: 
+        localdbh.type = ((g.a.a.a.a)localObject1).abFh.AK();
+        AppMethodBeat.o(234576);
+        return 0;
+      case 2: 
+        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new dbk();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((dbk)localObject2).parseFrom((byte[])localObject1);
+          }
+          localdbh.TIF = ((dbk)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(234576);
+        return 0;
+      }
+      paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject1 = (byte[])paramVarArgs.get(paramInt);
+        localObject2 = new dbi();
+        if ((localObject1 != null) && (localObject1.length > 0)) {
+          ((dbi)localObject2).parseFrom((byte[])localObject1);
+        }
+        localdbh.TIG = ((dbi)localObject2);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(234576);
+      return 0;
+    }
+    AppMethodBeat.o(234576);
+    return -1;
   }
 }
 

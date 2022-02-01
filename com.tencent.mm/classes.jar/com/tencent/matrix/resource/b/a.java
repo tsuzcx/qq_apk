@@ -1,37 +1,46 @@
 package com.tencent.matrix.resource.b;
 
-import android.content.Intent;
 import java.util.concurrent.TimeUnit;
 
 public final class a
 {
-  private static final long cYA = TimeUnit.MINUTES.toMillis(1L);
-  public static final long cYB = TimeUnit.MINUTES.toMillis(20L);
-  private static final b cYC = b.cYJ;
-  public final com.tencent.c.a.a cQF;
-  public final b cYD;
-  public final boolean cYE;
-  public final Intent cYF;
+  private static final long dcA = TimeUnit.MINUTES.toMillis(1L);
+  private static final long dcB = TimeUnit.MINUTES.toMillis(20L);
+  private static final b dcC = b.dcK;
+  private final com.tencent.b.a.a cYC;
+  public final b dcD;
+  public final boolean dcE;
+  public final String dcF;
   
-  private a(com.tencent.c.a.a parama, b paramb, boolean paramBoolean, Intent paramIntent)
+  private a(com.tencent.b.a.a parama, b paramb, boolean paramBoolean, String paramString)
   {
-    this.cQF = parama;
-    this.cYD = paramb;
-    this.cYE = paramBoolean;
-    this.cYF = paramIntent;
+    this.cYC = parama;
+    this.dcD = paramb;
+    this.dcE = paramBoolean;
+    this.dcF = paramString;
   }
   
-  public final long Tb()
+  public final long XE()
   {
-    return this.cQF.get(com.tencent.c.a.a.a.RAs.name(), cYA);
+    return this.cYC.m(com.tencent.b.a.a.a.ZbY.name(), dcA);
+  }
+  
+  public final long XF()
+  {
+    return this.cYC.m(com.tencent.b.a.a.a.ZbZ.name(), dcB);
+  }
+  
+  public final int XG()
+  {
+    return this.cYC.D(com.tencent.b.a.a.a.Zca.name(), 10);
   }
   
   public static final class a
   {
-    public com.tencent.c.a.a cVx;
-    public boolean cYE = false;
-    public Intent cYF;
-    public a.b cYG = a.Tc();
+    public boolean dcE = false;
+    public String dcF;
+    public a.b dcG = a.XH();
+    public com.tencent.b.a.a dcH;
   }
   
   public static enum b
@@ -41,7 +50,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.resource.b.a
  * JD-Core Version:    0.7.0.1
  */

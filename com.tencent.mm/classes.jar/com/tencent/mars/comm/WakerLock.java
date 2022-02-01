@@ -3,7 +3,6 @@ package com.tencent.mars.comm;
 import android.content.Context;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
-import com.tencent.mm.jni.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 
@@ -12,7 +11,8 @@ public class WakerLock
   private static final String TAG = "MicroMsg.WakerLock";
   private static long lastChecktime = 0L;
   private static Boolean shouldLock = null;
-  private IAutoUnlockCallback autoUnlockCallback = null;
+  private byte _hellAccFlag_;
+  private WakerLock.IAutoUnlockCallback autoUnlockCallback = null;
   private Context context;
   private String mCreatePosStackLine = null;
   private MMHandler mHandler = null;
@@ -41,7 +41,7 @@ public class WakerLock
     Log.i("MicroMsg.WakerLock", "init [%d,%d] @[%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.wakeLock.hashCode()), this.mCreatePosStackLine });
   }
   
-  public WakerLock(Context paramContext, String paramString, IAutoUnlockCallback paramIAutoUnlockCallback)
+  public WakerLock(Context paramContext, String paramString, WakerLock.IAutoUnlockCallback paramIAutoUnlockCallback)
   {
     this(paramContext, paramString);
     this.autoUnlockCallback = paramIAutoUnlockCallback;
@@ -112,9 +112,12 @@ public class WakerLock
       if (this.wakeLock.isHeld()) {
         unLock();
       }
-      a.a(this, paramString);
+      com.tencent.mm.jni.a.a.a(this, paramString);
       Log.i("MicroMsg.WakerLock", "lock [%d,%d] traceMsg:[%s] @[%s] limit time:%d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.wakeLock.hashCode()), paramString, getCreatePosStackLine(), Long.valueOf(paramLong) });
-      this.wakeLock.acquire();
+      paramString = this.wakeLock;
+      com.tencent.mm.hellhoundlib.a.a.b(paramString, "com/tencent/mars/comm/WakerLock", "lock", "(JLjava/lang/String;)V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "()V");
+      paramString.acquire();
+      com.tencent.mm.hellhoundlib.a.a.c(paramString, "com/tencent/mars/comm/WakerLock", "lock", "(JLjava/lang/String;)V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "()V");
       if (paramLong == -1L)
       {
         this.mHandler.removeCallbacks(this.mReleaser);
@@ -139,12 +142,15 @@ public class WakerLock
     if (this.wakeLock.isHeld())
     {
       this.mHandler.removeCallbacks(this.mReleaser);
-      a.c(this);
+      com.tencent.mm.jni.a.a.c(this);
       Log.i("MicroMsg.WakerLock", "unlock [%d,%d] caller:[%s] @[%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.wakeLock.hashCode()), getCallerStack(), getCreatePosStackLine() });
     }
     try
     {
-      this.wakeLock.release();
+      PowerManager.WakeLock localWakeLock = this.wakeLock;
+      com.tencent.mm.hellhoundlib.a.a.b(localWakeLock, "com/tencent/mars/comm/WakerLock", "unLock", "()V", "android/os/PowerManager$WakeLock_EXEC_", "release", "()V");
+      localWakeLock.release();
+      com.tencent.mm.hellhoundlib.a.a.c(localWakeLock, "com/tencent/mars/comm/WakerLock", "unLock", "()V", "android/os/PowerManager$WakeLock_EXEC_", "release", "()V");
       return;
     }
     catch (Exception localException)
@@ -152,15 +158,10 @@ public class WakerLock
       Log.printErrStackTrace("MicroMsg.WakerLock", localException, "", new Object[] { "" });
     }
   }
-  
-  public static abstract interface IAutoUnlockCallback
-  {
-    public abstract void autoUnlockCallback();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mars.comm.WakerLock
  * JD-Core Version:    0.7.0.1
  */

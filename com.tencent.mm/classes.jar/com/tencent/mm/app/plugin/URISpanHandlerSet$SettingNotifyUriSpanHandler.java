@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.pluginsdk.ui.span.i;
 import com.tencent.mm.ui.HomeUI;
 import com.tencent.mm.ui.LauncherUI;
@@ -20,14 +20,9 @@ class URISpanHandlerSet$SettingNotifyUriSpanHandler
     super(paramURISpanHandlerSet);
   }
   
-  final int[] Xp()
-  {
-    return new int[] { 9 };
-  }
-  
   final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
   {
-    AppMethodBeat.i(231449);
+    AppMethodBeat.i(271916);
     if (paramu.type == 9)
     {
       if (parami != null) {
@@ -35,16 +30,16 @@ class URISpanHandlerSet$SettingNotifyUriSpanHandler
       }
       paramView = LauncherUI.getInstance();
       if (paramView != null) {
-        paramView.ODR.getMainTabUI().blU("tab_settings");
+        paramView.VXk.getMainTabUI().byt("tab_settings");
       }
-      c.V(URISpanHandlerSet.a(this.dnW), "setting", ".ui.setting.SettingsNotificationUI");
+      c.ad(URISpanHandlerSet.a(this.fgB), "setting", ".ui.setting.SettingsNotificationUI");
       if (parami != null) {
         parami.b(paramu);
       }
-      AppMethodBeat.o(231449);
+      AppMethodBeat.o(271916);
       return true;
     }
-    AppMethodBeat.o(231449);
+    AppMethodBeat.o(271916);
     return false;
   }
   
@@ -55,14 +50,14 @@ class URISpanHandlerSet$SettingNotifyUriSpanHandler
     {
       paramString = LauncherUI.getInstance();
       if (paramString != null) {
-        paramString.ODR.getMainTabUI().blU("tab_settings");
+        paramString.VXk.getMainTabUI().byt("tab_settings");
       }
       paramString = new Intent();
       paramString.addFlags(67108864);
-      if ((URISpanHandlerSet.a(this.dnW) instanceof Service)) {
+      if ((URISpanHandlerSet.a(this.fgB) instanceof Service)) {
         paramString.addFlags(268435456);
       }
-      c.b(URISpanHandlerSet.a(this.dnW), "setting", ".ui.setting.SettingsNotificationUI", paramString);
+      c.b(URISpanHandlerSet.a(this.fgB), "setting", ".ui.setting.SettingsNotificationUI", paramString);
       AppMethodBeat.o(19747);
       return true;
     }
@@ -70,7 +65,12 @@ class URISpanHandlerSet$SettingNotifyUriSpanHandler
     return false;
   }
   
-  final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
+  final int[] abR()
+  {
+    return new int[] { 9 };
+  }
+  
+  final com.tencent.mm.pluginsdk.ui.applet.u hi(String paramString)
   {
     AppMethodBeat.i(19745);
     if (paramString.trim().startsWith("weixin://setting/notify"))

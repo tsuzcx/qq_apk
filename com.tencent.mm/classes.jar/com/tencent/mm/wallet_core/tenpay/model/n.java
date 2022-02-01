@@ -18,45 +18,45 @@ public abstract class n
   extends p
   implements j
 {
-  private static int RuP = 0;
-  public RealnameGuideHelper AJr;
-  private String AJs;
-  private String AJt;
-  private String AJu;
-  private String AJv;
-  private String AJw;
-  public String HIu;
-  public int HZm = 0;
-  protected Map<String, String> RuN = new HashMap();
-  public int RuO = 0;
-  private boolean RuQ = false;
-  public int RuR = 0;
-  public int RuS = 0;
-  public String RuT = null;
-  public JSONObject RuU = null;
-  private boolean RuV = false;
-  public int RuW = -1;
-  protected int efQ;
+  private static int YWn = 0;
+  private String GCA;
+  private String GCB;
+  private String GCC;
+  private String GCD;
+  public RealnameGuideHelper GCy;
+  private String GCz;
+  public String OAm;
+  public int ORm = 0;
+  protected Map<String, String> YWl = new HashMap();
+  public int YWm = 0;
+  private boolean YWo = false;
+  public int YWp = 0;
+  public int YWq = 0;
+  public String YWr = null;
+  public JSONObject YWs = null;
+  private boolean YWt = false;
+  public int YWu = -1;
+  protected int gag;
   
   protected final void a(Orders paramOrders, Authen paramAuthen)
   {
-    List localList = paramOrders.HZd;
+    List localList = paramOrders.ORd;
     String str = null;
     if (localList.size() > 0) {
-      str = ((Orders.Commodity)localList.get(0)).dDM;
+      str = ((Orders.Commodity)localList.get(0)).fww;
     }
-    b(paramOrders.dDL, str, paramAuthen.BDB.dVv, paramAuthen.BDB.channel, paramAuthen.dDj, paramAuthen.ANo);
+    b(paramOrders.fwv, str, paramAuthen.HzF.fOY, paramAuthen.HzF.channel, paramAuthen.fvP, paramAuthen.GGC);
   }
   
   protected final void b(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4)
   {
-    RuP += 1;
-    this.RuN.put("req_key", paramString1);
-    this.RuN.put("transaction_id", paramString2);
-    this.RuN.put("pay_scene", String.valueOf(paramInt1));
-    this.RuN.put("bank_type", paramString3);
-    this.RuN.put("channel", String.valueOf(paramInt2));
-    this.RuN.put("bind_serial", paramString4);
+    YWn += 1;
+    this.YWl.put("req_key", paramString1);
+    this.YWl.put("transaction_id", paramString2);
+    this.YWl.put("pay_scene", String.valueOf(paramInt1));
+    this.YWl.put("bank_type", paramString3);
+    this.YWl.put("channel", String.valueOf(paramInt2));
+    this.YWl.put("bind_serial", paramString4);
   }
   
   public boolean canRetry()
@@ -64,42 +64,42 @@ public abstract class n
     return false;
   }
   
-  public boolean fOn()
+  public boolean gGS()
   {
     return false;
   }
   
-  public final Map<String, String> hhM()
+  public final Map<String, String> ijn()
   {
-    return this.RuN;
+    return this.YWl;
   }
   
-  public final boolean hhN()
+  public final boolean ijo()
   {
-    return this.RuO == 1;
+    return this.YWm == 1;
   }
   
   public void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    if (!this.RuQ)
+    if (!this.YWo)
     {
-      this.RuS = paramInt;
-      this.RuT = paramString;
-      this.RuU = paramJSONObject;
-      this.RuQ = true;
+      this.YWq = paramInt;
+      this.YWr = paramString;
+      this.YWs = paramJSONObject;
+      this.YWo = true;
       if (paramJSONObject != null) {
-        this.RuO = paramJSONObject.optInt("query_order_flag", 0);
+        this.YWm = paramJSONObject.optInt("query_order_flag", 0);
       }
     }
     Object localObject;
     if ((paramJSONObject != null) && (paramJSONObject.has("real_name_info")))
     {
       localObject = paramJSONObject.optJSONObject("real_name_info");
-      this.AJs = ((JSONObject)localObject).optString("guide_flag");
-      this.AJt = ((JSONObject)localObject).optString("guide_wording");
-      this.AJu = ((JSONObject)localObject).optString("left_button_wording");
-      this.AJv = ((JSONObject)localObject).optString("right_button_wording");
-      this.AJw = ((JSONObject)localObject).optString("upload_credit_url");
+      this.GCz = ((JSONObject)localObject).optString("guide_flag");
+      this.GCA = ((JSONObject)localObject).optString("guide_wording");
+      this.GCB = ((JSONObject)localObject).optString("left_button_wording");
+      this.GCC = ((JSONObject)localObject).optString("right_button_wording");
+      this.GCD = ((JSONObject)localObject).optString("upload_credit_url");
     }
     for (int i = 1;; i = 0)
     {
@@ -114,22 +114,22 @@ public abstract class n
         {
           localJSONObject = paramJSONObject.optJSONObject("set_pwd_info");
           localObject = new SetPwdInfo();
-          ((SetPwdInfo)localObject).yXJ = localJSONObject.optString("guide_wording");
-          ((SetPwdInfo)localObject).lHA = localJSONObject.optString("left_button_wording");
-          ((SetPwdInfo)localObject).lHB = localJSONObject.optString("right_button_wording");
-          ((SetPwdInfo)localObject).HUM = localJSONObject.optInt("send_pwd_msg");
+          ((SetPwdInfo)localObject).EBN = localJSONObject.optString("guide_wording");
+          ((SetPwdInfo)localObject).oDJ = localJSONObject.optString("left_button_wording");
+          ((SetPwdInfo)localObject).oDK = localJSONObject.optString("right_button_wording");
+          ((SetPwdInfo)localObject).OMN = localJSONObject.optInt("send_pwd_msg");
           j = 1;
         }
       }
-      if ((j != 0) && (("1".equals(this.AJs)) || ("2".equals(this.AJs)) || (localObject != null)))
+      if ((j != 0) && (("1".equals(this.GCz)) || ("2".equals(this.GCz)) || (localObject != null)))
       {
-        this.AJr = new RealnameGuideHelper();
-        this.AJr.a(this.AJs, (SetPwdInfo)localObject, this.AJt, this.AJu, this.AJv, this.AJw, this.efQ);
+        this.GCy = new RealnameGuideHelper();
+        this.GCy.a(this.GCz, (SetPwdInfo)localObject, this.GCA, this.GCB, this.GCC, this.GCD, this.gag);
       }
-      this.HIu = paramJSONObject.optString("forget_pwd_url", "");
-      this.RuW = paramJSONObject.optInt("is_clear_failure", -1);
-      Log.i("MicroMsg.NetSceneTenpayDelayQueryBase", "forget_pwd_url %s", new Object[] { this.HIu });
-      this.RuV = true;
+      this.OAm = paramJSONObject.optString("forget_pwd_url", "");
+      this.YWu = paramJSONObject.optInt("is_clear_failure", -1);
+      Log.i("MicroMsg.NetSceneTenpayDelayQueryBase", "forget_pwd_url %s", new Object[] { this.OAm });
+      this.YWt = true;
       super.onGYNetEnd(paramInt, paramString, paramJSONObject);
       return;
     }
@@ -139,17 +139,17 @@ public abstract class n
   {
     Log.i("MicroMsg.NetSceneTenpayDelayQueryBase", "always callback: %s,%s", new Object[] { Integer.valueOf(parame.errCode), parame.errMsg });
     super.onGYNetEnd2(parame, paramJSONObject);
-    if ((!this.RuV) && (!this.RuQ))
+    if ((!this.YWt) && (!this.YWo))
     {
-      this.RuR = parame.errType;
-      this.RuS = parame.errCode;
-      this.RuT = parame.errMsg;
+      this.YWp = parame.errType;
+      this.YWq = parame.errCode;
+      this.YWr = parame.errMsg;
       if (paramJSONObject != null)
       {
-        this.RuO = paramJSONObject.optInt("query_order_flag", 0);
-        this.RuU = paramJSONObject;
+        this.YWm = paramJSONObject.optInt("query_order_flag", 0);
+        this.YWs = paramJSONObject;
       }
-      this.RuQ = true;
+      this.YWo = true;
     }
   }
 }

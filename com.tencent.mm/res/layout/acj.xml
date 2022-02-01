@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.tencent.mm.plugin.finder.feed.RCLinearLayout android:layout_width="@dimen/c1" android:layout_height="@dimen/c6" android:layout_marginLeft="@dimen/bt"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
         <ImageView android:id="@id/hg4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" android:layout_marginBottom="@dimen/c5" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m">
             <ImageView android:id="@id/hfw" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" />
             <TextView android:textSize="@dimen/k6" android:textColor="@color/am" android:ellipsize="end" android:id="@id/hg3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:maxWidth="110.0px" android:text="{nickname}" android:maxLines="1" />
             <ImageView android:id="@id/hfv" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginLeft="@dimen/bt" />
         </LinearLayout>
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </com.tencent.mm.plugin.finder.feed.RCLinearLayout>

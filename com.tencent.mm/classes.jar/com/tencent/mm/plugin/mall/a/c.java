@@ -1,61 +1,61 @@
 package com.tencent.mm.plugin.mall.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.fingerprint.d.a;
 import com.tencent.mm.plugin.wallet_core.model.k;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.bf;
-import com.tencent.mm.protocal.protobuf.dik;
-import com.tencent.mm.protocal.protobuf.dil;
-import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.protocal.protobuf.bd;
+import com.tencent.mm.protocal.protobuf.dsc;
+import com.tencent.mm.protocal.protobuf.dsd;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.jh;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c
-  extends com.tencent.mm.ak.c<dil>
+  extends com.tencent.mm.an.c<dsd>
 {
-  public c(long paramLong, dil paramdil)
+  public c(long paramLong, dsd paramdsd)
   {
     AppMethodBeat.i(65989);
-    dik localdik = new dik();
-    localdik.MMR = ((int)paramLong);
-    localdik.MMS = b.bfZ("all_type");
-    Object localObject = k.fQy();
+    dsc localdsc = new dsc();
+    localdsc.TYL = ((int)paramLong);
+    localdsc.TYM = b.bss("all_type");
+    Object localObject = k.gJe();
     if (localObject != null)
     {
-      if (!Util.isNullOrNil(((bf)localObject).fuJ)) {
-        localdik.MMT = b.bfZ(((bf)localObject).fuJ);
+      if (!Util.isNullOrNil(((bd)localObject).province)) {
+        localdsc.TYN = b.bss(((bd)localObject).province);
       }
-      if (!Util.isNullOrNil(((bf)localObject).fuK)) {
-        localdik.MMU = b.bfZ(((bf)localObject).fuK);
+      if (!Util.isNullOrNil(((bd)localObject).city)) {
+        localdsc.TYO = b.bss(((bd)localObject).city);
       }
     }
-    localObject = (a)g.af(a.class);
-    localdik.Llf = 0;
+    localObject = (a)h.ae(a.class);
+    localdsc.Smo = 0;
     if (localObject != null) {}
-    for (localdik.Llg = 1;; localdik.Llg = 0)
+    for (localdsc.Smp = 1;; localdsc.Smp = 0)
     {
-      localdik.MMV = 1;
-      localdik.timestamp = System.currentTimeMillis();
-      if (paramdil.BaseResponse == null)
+      localdsc.TYP = 1;
+      localdsc.timestamp = System.currentTimeMillis();
+      if (paramdsd.BaseResponse == null)
       {
-        paramdil.BaseResponse = new BaseResponse();
-        paramdil.BaseResponse.ErrMsg = new dqi().bhy("");
-        paramdil.BaseResponse.Ret = 0;
+        paramdsd.BaseResponse = new jh();
+        paramdsd.BaseResponse.Tef = new eaf().btQ("");
+        paramdsd.BaseResponse.CqV = 0;
       }
-      localdik.MMW = paramdil;
-      paramdil = new d.a();
-      paramdil.iLN = localdik;
-      paramdil.iLO = new dil();
-      paramdil.funcId = 2672;
-      paramdil.uri = "/cgi-bin/mmpay-bin/tenpay/querywechatwallet";
-      paramdil.iLP = 0;
-      paramdil.respCmdId = 0;
-      c(paramdil.aXF());
-      Log.i("MicroMsg.CgiQueryWeChatWallet", "balanceVersion: %s, isRoot: %s, openTouch: %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(localdik.Llf), Integer.valueOf(localdik.Llg) });
+      localdsc.TYQ = paramdsd;
+      paramdsd = new d.a();
+      paramdsd.lBU = localdsc;
+      paramdsd.lBV = new dsd();
+      paramdsd.funcId = 2672;
+      paramdsd.uri = "/cgi-bin/mmpay-bin/tenpay/querywechatwallet";
+      paramdsd.lBW = 0;
+      paramdsd.respCmdId = 0;
+      c(paramdsd.bgN());
+      Log.i("MicroMsg.CgiQueryWeChatWallet", "balanceVersion: %s, isRoot: %s, openTouch: %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(localdsc.Smo), Integer.valueOf(localdsc.Smp) });
       AppMethodBeat.o(65989);
       return;
     }
@@ -63,7 +63,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.FoursquareRelativeLayout android:id="@id/h9a" android:background="@color/a3k" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mm.ui.widget.FoursquareRelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/fc1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <ImageView android:id="@id/fbr" android:background="@color/vt" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <TextView android:textSize="@dimen/eo" android:textColor="@color/ag2" android:id="@id/izl" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bt" android:text="--:--" android:maxLines="1" android:layout_alignParentBottom="true" android:layout_marginStart="@dimen/bt" />
+    <CheckBox android:gravity="center" android:id="@id/fbe" android:background="@drawable/d0n" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/ct" android:layout_marginEnd="@dimen/ct" android:layout_alignParentEnd="true" />
 </com.tencent.mm.ui.widget.FoursquareRelativeLayout>

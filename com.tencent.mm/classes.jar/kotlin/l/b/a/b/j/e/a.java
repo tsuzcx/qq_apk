@@ -15,13 +15,13 @@ public final class a
   private static boolean af(ab paramab)
   {
     AppMethodBeat.i(60160);
-    p.h(paramab, "$this$isInlineClassThatRequiresMangling");
-    paramab = paramab.hKE().hzS();
+    p.k(paramab, "$this$isInlineClassThatRequiresMangling");
+    paramab = paramab.iOU().iEf();
     if (paramab != null)
     {
       paramab = (l)paramab;
-      p.h(paramab, "$this$isInlineClassThatRequiresMangling");
-      if ((e.D(paramab)) && (!p.j(kotlin.l.b.a.b.j.d.a.o((l)paramab), c.THA))) {}
+      p.k(paramab, "$this$isInlineClassThatRequiresMangling");
+      if ((e.D(paramab)) && (!p.h(kotlin.l.b.a.b.j.d.a.o((l)paramab), c.abke))) {}
       for (int i = 1; i == 1; i = 0)
       {
         AppMethodBeat.o(60160);
@@ -47,7 +47,7 @@ public final class a
   private static final boolean ah(ab paramab)
   {
     AppMethodBeat.i(60162);
-    h localh = paramab.hKE().hzS();
+    h localh = paramab.iOU().iEf();
     paramab = localh;
     if (!(localh instanceof as)) {
       paramab = null;
@@ -65,7 +65,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.j.e.a
  * JD-Core Version:    0.7.0.1
  */

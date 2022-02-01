@@ -3,91 +3,94 @@ package com.tencent.mm.plugin.recordvideo.res;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "Lcom/tencent/mm/plugin/recordvideo/res/IVideoResReport;", "startKey", "", "(I)V", "checkRes", "", "editExist", "editNotExist", "finishDownload", "initExist", "initNotExist", "report", "key", "unzipFail", "unzipSuccess", "Companion", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "Lcom/tencent/mm/plugin/recordvideo/res/IVideoResReport;", "startKey", "", "(I)V", "checkRes", "", "editExist", "editNotExist", "finishDownload", "initExist", "initNotExist", "report", "key", "unzipFail", "unzipSuccess", "Companion", "plugin-recordvideo_release"})
 public final class h
   implements b
 {
-  public static final h.a BYq;
-  private final int BYi;
+  public static final a HVe;
+  private final int HUW;
   
   static
   {
-    AppMethodBeat.i(237509);
-    BYq = new h.a((byte)0);
-    AppMethodBeat.o(237509);
+    AppMethodBeat.i(227888);
+    HVe = new a((byte)0);
+    AppMethodBeat.o(227888);
   }
   
   public h(int paramInt)
   {
-    this.BYi = paramInt;
+    this.HUW = paramInt;
   }
   
-  private static void pl(int paramInt)
+  private static void rE(int paramInt)
   {
-    AppMethodBeat.i(237508);
-    com.tencent.mm.plugin.report.service.h.CyF.dN(1388, paramInt);
-    AppMethodBeat.o(237508);
+    AppMethodBeat.i(227885);
+    com.tencent.mm.plugin.report.service.h.IzE.el(1388, paramInt);
+    AppMethodBeat.o(227885);
   }
   
-  public final void bbA()
+  public final void bkQ()
   {
-    AppMethodBeat.i(237504);
-    pl(this.BYi + 4);
-    AppMethodBeat.o(237504);
+    AppMethodBeat.i(227878);
+    rE(this.HUW + 4);
+    AppMethodBeat.o(227878);
   }
   
-  public final void eLp()
+  public final void fxI()
   {
-    AppMethodBeat.i(237500);
-    pl(this.BYi);
-    AppMethodBeat.o(237500);
+    AppMethodBeat.i(227866);
+    rE(this.HUW);
+    AppMethodBeat.o(227866);
   }
   
-  public final void eLq()
+  public final void fxJ()
   {
-    AppMethodBeat.i(237501);
-    pl(this.BYi + 1);
-    AppMethodBeat.o(237501);
+    AppMethodBeat.i(227868);
+    rE(this.HUW + 1);
+    AppMethodBeat.o(227868);
   }
   
-  public final void eLr()
+  public final void fxK()
   {
-    AppMethodBeat.i(237502);
-    pl(this.BYi + 2);
-    AppMethodBeat.o(237502);
+    AppMethodBeat.i(227872);
+    rE(this.HUW + 2);
+    AppMethodBeat.o(227872);
   }
   
-  public final void eLs()
+  public final void fxL()
   {
-    AppMethodBeat.i(237503);
-    pl(this.BYi + 3);
-    AppMethodBeat.o(237503);
+    AppMethodBeat.i(227876);
+    rE(this.HUW + 3);
+    AppMethodBeat.o(227876);
   }
   
-  public final void eLt()
+  public final void fxM()
   {
-    AppMethodBeat.i(237505);
-    pl(this.BYi + 5);
-    AppMethodBeat.o(237505);
+    AppMethodBeat.i(227879);
+    rE(this.HUW + 5);
+    AppMethodBeat.o(227879);
   }
   
-  public final void eLu()
+  public final void fxN()
   {
-    AppMethodBeat.i(237506);
-    pl(this.BYi + 6);
-    AppMethodBeat.o(237506);
+    AppMethodBeat.i(227880);
+    rE(this.HUW + 6);
+    AppMethodBeat.o(227880);
   }
   
-  public final void eLv()
+  public final void fxO()
   {
-    AppMethodBeat.i(237507);
-    pl(this.BYi + 7);
-    AppMethodBeat.o(237507);
+    AppMethodBeat.i(227881);
+    rE(this.HUW + 7);
+    AppMethodBeat.o(227881);
   }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport$Companion;", "", "()V", "ID", "", "plugin-recordvideo_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.res.h
  * JD-Core Version:    0.7.0.1
  */

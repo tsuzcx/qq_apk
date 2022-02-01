@@ -1,7 +1,9 @@
 package com.tencent.matrix.resource;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
+import android.util.Pair;
 import android.view.View;
 import android.view.View.OnAttachStateChangeListener;
 import android.view.ViewGroup;
@@ -12,12 +14,43 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.tencent.matrix.e.c;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public final class a
 {
-  static void ch(View paramView)
+  private static Pair<ViewGroup, ArrayList<View>> daw;
+  
+  public static void bu(Context paramContext)
+  {
+    if (Build.VERSION.SDK_INT != 28) {
+      return;
+    }
+    try
+    {
+      paramContext = paramContext.getApplicationContext();
+      if (daw == null)
+      {
+        FrameLayout localFrameLayout = new FrameLayout(paramContext);
+        int i = 0;
+        while (i < 32)
+        {
+          localFrameLayout.addView(new View(paramContext));
+          i += 1;
+        }
+        daw = new Pair(localFrameLayout, new ArrayList());
+      }
+      ((ViewGroup)daw.first).addChildrenForAccessibility((ArrayList)daw.second);
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      c.printErrStackTrace("Matrix.ActivityLeakFixer", paramContext, "fixViewLocationHolderLeakApi28 err", new Object[0]);
+    }
+  }
+  
+  static void cA(View paramView)
   {
     if (paramView == null) {}
     for (;;)
@@ -244,7 +277,7 @@ public final class a
                                     i = 0;
                                     while (i < j)
                                     {
-                                      ch(paramView.getChildAt(i));
+                                      cA(paramView.getChildAt(i));
                                       i += 1;
                                     }
                                     try
@@ -309,7 +342,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.resource.a
  * JD-Core Version:    0.7.0.1
  */

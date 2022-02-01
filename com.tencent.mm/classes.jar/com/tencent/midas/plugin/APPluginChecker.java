@@ -13,11 +13,11 @@ public class APPluginChecker
   
   private static boolean isAllPluginValid(File paramFile)
   {
-    AppMethodBeat.i(193122);
+    AppMethodBeat.i(252648);
     if (paramFile == null)
     {
       APLog.e("APPluginChecker", "Cannot check all plugin valid, pluginPath is null!");
-      AppMethodBeat.o(193122);
+      AppMethodBeat.o(252648);
       return false;
     }
     APLog.d("APPluginChecker", "Check all plugin valid, parameter ok!");
@@ -32,7 +32,7 @@ public class APPluginChecker
         if (!localFile.exists())
         {
           APLog.e("APPluginChecker", "Check all plugin valid, sign file is not found");
-          AppMethodBeat.o(193122);
+          AppMethodBeat.o(252648);
           return false;
         }
         APLog.d("APPluginChecker", "Check all plugin valid, sign file exist!");
@@ -70,17 +70,17 @@ public class APPluginChecker
       }
       catch (Exception paramFile)
       {
-        AppMethodBeat.o(193122);
+        AppMethodBeat.o(252648);
         return false;
       }
       if ((i != localHashMap.size()) || (i < 2))
       {
         APLog.e("APPluginChecker", "Check all plugin valid, all valid file num = " + i + ", but sign file size = " + localHashMap.size() + ", check fail!");
-        AppMethodBeat.o(193122);
+        AppMethodBeat.o(252648);
         return false;
       }
       APLog.d("APPluginChecker", "Check all plugin valid, all valid file num = " + i + ", sign file size = " + localHashMap.size() + ", check success!");
-      AppMethodBeat.o(193122);
+      AppMethodBeat.o(252648);
       return true;
       j += 1;
     }
@@ -88,16 +88,16 @@ public class APPluginChecker
   
   public static boolean isPluginValid(Context paramContext)
   {
-    AppMethodBeat.i(193121);
+    AppMethodBeat.i(252647);
     APLog.d("APPluginChecker", "Calling into isPluginValid " + java.lang.Thread.currentThread().getStackTrace()[3].toString());
     boolean bool = isAllPluginValid(APPluginConfig.getPluginPath(paramContext));
-    AppMethodBeat.o(193121);
+    AppMethodBeat.o(252647);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.plugin.APPluginChecker
  * JD-Core Version:    0.7.0.1
  */

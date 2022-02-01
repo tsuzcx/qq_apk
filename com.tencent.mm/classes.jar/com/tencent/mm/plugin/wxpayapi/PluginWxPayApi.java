@@ -2,26 +2,28 @@ package com.tencent.mm.plugin.wxpayapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.pluginsdk.wallet.b;
 
 public class PluginWxPayApi
   extends f
   implements com.tencent.mm.plugin.wxpayapi.a.a
 {
-  public void configure(com.tencent.mm.kernel.b.g paramg)
+  public void configure(g paramg)
   {
     AppMethodBeat.i(106597);
-    paramg.aBb();
+    paramg.aIE();
     AppMethodBeat.o(106597);
   }
   
   public void dependency() {}
   
-  public void execute(com.tencent.mm.kernel.b.g paramg)
+  public void execute(g paramg)
   {
     AppMethodBeat.i(106598);
-    if (paramg.aBb()) {
-      com.tencent.mm.kernel.g.b(b.class, new com.tencent.mm.plugin.o.a());
+    if (paramg.aIE()) {
+      h.b(b.class, new com.tencent.mm.plugin.x.a());
     }
     AppMethodBeat.o(106598);
   }

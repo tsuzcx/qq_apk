@@ -142,8 +142,8 @@ public class XWalkDialogManager
               {
                 AppMethodBeat.i(154693);
                 b localb = new b();
-                localb.bm(paramAnonymous2View);
-                a.b("org/xwalk/core/XWalkDialogManager$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+                localb.bn(paramAnonymous2View);
+                a.c("org/xwalk/core/XWalkDialogManager$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
                 XWalkDialogManager.this.dismissDialog();
                 this.val$command.run();
                 a.a(this, "org/xwalk/core/XWalkDialogManager$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -176,10 +176,10 @@ public class XWalkDialogManager
       if (this.mNotFoundDialog == null)
       {
         this.mNotFoundDialog = buildAlertDialog();
-        setTitle(this.mNotFoundDialog, 2131766388);
-        setMessage(this.mNotFoundDialog, 2131766387);
-        setPositiveButton(this.mNotFoundDialog, 2131768876);
-        setNegativeButton(this.mNotFoundDialog, 2131768874);
+        setTitle(this.mNotFoundDialog, R.string.startup_not_found_title);
+        setMessage(this.mNotFoundDialog, R.string.startup_not_found_message);
+        setPositiveButton(this.mNotFoundDialog, R.string.xwalk_get_crosswalk);
+        setNegativeButton(this.mNotFoundDialog, R.string.xwalk_close);
       }
       localObject = this.mNotFoundDialog;
       AppMethodBeat.o(154697);
@@ -190,10 +190,10 @@ public class XWalkDialogManager
       if (this.mOlderVersionDialog == null)
       {
         this.mOlderVersionDialog = buildAlertDialog();
-        setTitle(this.mOlderVersionDialog, 2131766390);
-        setMessage(this.mOlderVersionDialog, 2131766389);
-        setPositiveButton(this.mOlderVersionDialog, 2131768876);
-        setNegativeButton(this.mOlderVersionDialog, 2131768874);
+        setTitle(this.mOlderVersionDialog, R.string.startup_older_version_title);
+        setMessage(this.mOlderVersionDialog, R.string.startup_older_version_message);
+        setPositiveButton(this.mOlderVersionDialog, R.string.xwalk_get_crosswalk);
+        setNegativeButton(this.mOlderVersionDialog, R.string.xwalk_close);
       }
       localObject = this.mOlderVersionDialog;
       AppMethodBeat.o(154697);
@@ -204,9 +204,9 @@ public class XWalkDialogManager
       if (this.mNewerVersionDialog == null)
       {
         this.mNewerVersionDialog = buildAlertDialog();
-        setTitle(this.mNewerVersionDialog, 2131766386);
-        setMessage(this.mNewerVersionDialog, 2131766385);
-        setNegativeButton(this.mNewerVersionDialog, 2131768874);
+        setTitle(this.mNewerVersionDialog, R.string.startup_newer_version_title);
+        setMessage(this.mNewerVersionDialog, R.string.startup_newer_version_message);
+        setNegativeButton(this.mNewerVersionDialog, R.string.xwalk_close);
       }
       localObject = this.mNewerVersionDialog;
       AppMethodBeat.o(154697);
@@ -217,10 +217,10 @@ public class XWalkDialogManager
       if (this.mArchitectureMismatchDialog == null)
       {
         this.mArchitectureMismatchDialog = buildAlertDialog();
-        setTitle(this.mArchitectureMismatchDialog, 2131766383);
-        setMessage(this.mArchitectureMismatchDialog, 2131766382);
-        setPositiveButton(this.mArchitectureMismatchDialog, 2131768876);
-        setNegativeButton(this.mArchitectureMismatchDialog, 2131768874);
+        setTitle(this.mArchitectureMismatchDialog, R.string.startup_architecture_mismatch_title);
+        setMessage(this.mArchitectureMismatchDialog, R.string.startup_architecture_mismatch_message);
+        setPositiveButton(this.mArchitectureMismatchDialog, R.string.xwalk_get_crosswalk);
+        setNegativeButton(this.mArchitectureMismatchDialog, R.string.xwalk_close);
       }
       localObject = this.mArchitectureMismatchDialog;
       AppMethodBeat.o(154697);
@@ -231,9 +231,9 @@ public class XWalkDialogManager
       if (this.mSignatureCheckErrorDialog == null)
       {
         this.mSignatureCheckErrorDialog = buildAlertDialog();
-        setTitle(this.mSignatureCheckErrorDialog, 2131766393);
-        setMessage(this.mSignatureCheckErrorDialog, 2131766392);
-        setNegativeButton(this.mSignatureCheckErrorDialog, 2131768874);
+        setTitle(this.mSignatureCheckErrorDialog, R.string.startup_signature_check_error_title);
+        setMessage(this.mSignatureCheckErrorDialog, R.string.startup_signature_check_error_message);
+        setNegativeButton(this.mSignatureCheckErrorDialog, R.string.xwalk_close);
       }
       localObject = this.mSignatureCheckErrorDialog;
       AppMethodBeat.o(154697);
@@ -244,10 +244,10 @@ public class XWalkDialogManager
       if (this.mDownloadErrorDialog == null)
       {
         this.mDownloadErrorDialog = buildAlertDialog();
-        setTitle(this.mDownloadErrorDialog, 2131758230);
-        setMessage(this.mDownloadErrorDialog, 2131758371);
-        setPositiveButton(this.mDownloadErrorDialog, 2131768877);
-        setNegativeButton(this.mDownloadErrorDialog, 2131768873);
+        setTitle(this.mDownloadErrorDialog, R.string.crosswalk_install_title);
+        setMessage(this.mDownloadErrorDialog, R.string.download_failed_message);
+        setPositiveButton(this.mDownloadErrorDialog, R.string.xwalk_retry);
+        setNegativeButton(this.mDownloadErrorDialog, R.string.xwalk_cancel);
       }
       localObject = this.mDownloadErrorDialog;
       AppMethodBeat.o(154697);
@@ -258,8 +258,8 @@ public class XWalkDialogManager
       if (this.mSelectStoreDialog == null)
       {
         this.mSelectStoreDialog = buildAlertDialog();
-        setTitle(this.mSelectStoreDialog, 2131758230);
-        setPositiveButton(this.mSelectStoreDialog, 2131768875);
+        setTitle(this.mSelectStoreDialog, R.string.crosswalk_install_title);
+        setPositiveButton(this.mSelectStoreDialog, R.string.xwalk_continue);
       }
       localObject = this.mSelectStoreDialog;
       AppMethodBeat.o(154697);
@@ -270,9 +270,9 @@ public class XWalkDialogManager
       if (this.mUnsupportedStoreDialog == null)
       {
         this.mUnsupportedStoreDialog = buildAlertDialog();
-        setTitle(this.mUnsupportedStoreDialog, 2131758230);
-        setMessage(this.mUnsupportedStoreDialog, 2131766914);
-        setNegativeButton(this.mUnsupportedStoreDialog, 2131768874);
+        setTitle(this.mUnsupportedStoreDialog, R.string.crosswalk_install_title);
+        setMessage(this.mUnsupportedStoreDialog, R.string.unsupported_store_message);
+        setNegativeButton(this.mUnsupportedStoreDialog, R.string.xwalk_close);
       }
       localObject = this.mUnsupportedStoreDialog;
       AppMethodBeat.o(154697);
@@ -291,9 +291,9 @@ public class XWalkDialogManager
       if (this.mDecompressingDialog == null)
       {
         this.mDecompressingDialog = buildProgressDialog();
-        setTitle(this.mDecompressingDialog, 2131758230);
-        setMessage(this.mDecompressingDialog, 2131758269);
-        setNegativeButton(this.mDecompressingDialog, 2131768873);
+        setTitle(this.mDecompressingDialog, R.string.crosswalk_install_title);
+        setMessage(this.mDecompressingDialog, R.string.decompression_progress_message);
+        setNegativeButton(this.mDecompressingDialog, R.string.xwalk_cancel);
         this.mDecompressingDialog.setProgressStyle(0);
       }
       localObject = this.mDecompressingDialog;
@@ -305,9 +305,9 @@ public class XWalkDialogManager
       if (this.mDownloadingDialog == null)
       {
         this.mDownloadingDialog = buildProgressDialog();
-        setTitle(this.mDownloadingDialog, 2131758230);
-        setMessage(this.mDownloadingDialog, 2131758385);
-        setNegativeButton(this.mDownloadingDialog, 2131768873);
+        setTitle(this.mDownloadingDialog, R.string.crosswalk_install_title);
+        setMessage(this.mDownloadingDialog, R.string.download_progress_message);
+        setNegativeButton(this.mDownloadingDialog, R.string.xwalk_cancel);
         this.mDownloadingDialog.setProgressStyle(1);
       }
       localObject = this.mDownloadingDialog;
@@ -510,7 +510,7 @@ public class XWalkDialogManager
   {
     AppMethodBeat.i(154701);
     AlertDialog localAlertDialog = getAlertDialog(7);
-    setMessage(localAlertDialog, this.mContext.getString(2131765168).replace("STORE_NAME", paramString));
+    setMessage(localAlertDialog, this.mContext.getString(R.string.select_store_message).replace("STORE_NAME", paramString));
     paramString = new ArrayList();
     paramString.add(new ButtonAction(-1, paramRunnable, true));
     showDialog(localAlertDialog, paramString);
@@ -543,7 +543,7 @@ public class XWalkDialogManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkDialogManager
  * JD-Core Version:    0.7.0.1
  */

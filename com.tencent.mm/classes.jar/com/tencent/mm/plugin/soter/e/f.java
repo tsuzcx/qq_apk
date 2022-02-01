@@ -19,7 +19,7 @@ public final class f
   }
   
   @SuppressLint({"DefaultLocale"})
-  public final void f(String paramString, int[] paramArrayOfInt)
+  public final void e(String paramString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(130887);
     Log.v("MicroMsg.SoterTaskInitForWX", "alvinluo generateAuthKeyNames");
@@ -28,9 +28,9 @@ public final class f
     while (i < j)
     {
       int k = paramArrayOfInt[i];
-      paramString = m.aay(k);
+      paramString = m.ahS(k);
       Log.i("MicroMsg.SoterTaskInitForWX", "alvinluo scene: %d, authKeyName: %s", new Object[] { Integer.valueOf(k), paramString });
-      b.hlG().hlI().put(k, paramString);
+      b.ipf().iph().put(k, paramString);
       i += 1;
     }
     AppMethodBeat.o(130887);
@@ -38,7 +38,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.e.f
  * JD-Core Version:    0.7.0.1
  */

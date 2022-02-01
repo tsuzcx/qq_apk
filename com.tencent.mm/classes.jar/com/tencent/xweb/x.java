@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.view.View;
 import android.webkit.ConsoleMessage;
 import android.webkit.GeolocationPermissions.Callback;
+import android.webkit.PermissionRequest;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient.CustomViewCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -12,13 +13,13 @@ import com.tencent.xweb.internal.e;
 
 public class x
 {
-  e SzO;
+  e aaaF;
   
   public void a(WebView paramWebView, int paramInt) {}
   
   public boolean a(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    if (this.SzO != null) {}
+    if (this.aaaF != null) {}
     return false;
   }
   
@@ -30,9 +31,9 @@ public class x
   public boolean a(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
     AppMethodBeat.i(156776);
-    if (this.SzO != null)
+    if (this.aaaF != null)
     {
-      boolean bool = this.SzO.a(paramString1, paramString2, paramJsResult);
+      boolean bool = this.aaaF.a(paramString1, paramString2, paramJsResult);
       AppMethodBeat.o(156776);
       return bool;
     }
@@ -43,9 +44,9 @@ public class x
   public boolean a(WebView paramWebView, String paramString1, String paramString2, String paramString3, o paramo)
   {
     AppMethodBeat.i(156778);
-    if (this.SzO != null)
+    if (this.aaaF != null)
     {
-      boolean bool = this.SzO.a(paramString1, paramString2, paramString3, paramo);
+      boolean bool = this.aaaF.a(paramString1, paramString2, paramString3, paramo);
       AppMethodBeat.o(156778);
       return bool;
     }
@@ -63,9 +64,9 @@ public class x
   public boolean b(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
     AppMethodBeat.i(156777);
-    if (this.SzO != null)
+    if (this.aaaF != null)
     {
-      boolean bool = this.SzO.b(paramString1, paramString2, paramJsResult);
+      boolean bool = this.aaaF.b(paramString1, paramString2, paramJsResult);
       AppMethodBeat.o(156777);
       return bool;
     }
@@ -73,9 +74,9 @@ public class x
     return false;
   }
   
-  public boolean bLA()
+  public boolean bXA()
   {
-    if (this.SzO != null) {}
+    if (this.aaaF != null) {}
     return false;
   }
   
@@ -110,17 +111,26 @@ public class x
   public void onHideCustomView()
   {
     AppMethodBeat.i(156775);
-    if (this.SzO != null) {
-      this.SzO.onHideCustomView();
+    if (this.aaaF != null) {
+      this.aaaF.onHideCustomView();
     }
     AppMethodBeat.o(156775);
   }
   
+  public void onPermissionRequest(PermissionRequest paramPermissionRequest)
+  {
+    AppMethodBeat.i(197867);
+    paramPermissionRequest.deny();
+    AppMethodBeat.o(197867);
+  }
+  
+  public void onPermissionRequestCanceled(PermissionRequest paramPermissionRequest) {}
+  
   public void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
     AppMethodBeat.i(156780);
-    if (this.SzO != null) {
-      this.SzO.onShowCustomView(paramView, paramCustomViewCallback);
+    if (this.aaaF != null) {
+      this.aaaF.onShowCustomView(paramView, paramCustomViewCallback);
     }
     AppMethodBeat.o(156780);
   }

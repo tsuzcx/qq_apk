@@ -1,7 +1,7 @@
 package com.tencent.mm.platformtools;
 
 import android.app.Activity;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.i;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,48 +9,48 @@ public abstract class c
   implements i
 {
   public Activity activity;
-  Set<Integer> jMC = new HashSet();
+  Set<Integer> mDK = new HashSet();
   
   public c(Activity paramActivity)
   {
     this.activity = paramActivity;
   }
   
-  public final boolean a(ae paramae)
+  public final boolean a(ad paramad)
   {
-    if (paramae.action == 0) {
+    if (paramad.action == 0) {
       return false;
     }
-    switch (paramae.action)
+    switch (paramad.action)
     {
     case 3: 
     default: 
       return false;
     case 1: 
-      return b(paramae);
+      return b(paramad);
     case 2: 
-      return c(paramae);
+      return c(paramad);
     case 4: 
-      return d(paramae);
+      return d(paramad);
     case 5: 
-      return e(paramae);
+      return e(paramad);
     }
-    return f(paramae);
+    return f(paramad);
   }
   
-  public abstract boolean b(ae paramae);
+  public abstract boolean b(ad paramad);
   
-  public abstract boolean c(ae paramae);
+  public abstract boolean c(ad paramad);
   
-  public abstract boolean d(ae paramae);
+  public abstract boolean d(ad paramad);
   
-  public abstract boolean e(ae paramae);
+  public abstract boolean e(ad paramad);
   
-  public abstract boolean f(ae paramae);
+  public abstract boolean f(ad paramad);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.platformtools.c
  * JD-Core Version:    0.7.0.1
  */

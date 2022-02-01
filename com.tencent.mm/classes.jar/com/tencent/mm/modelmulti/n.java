@@ -1,32 +1,52 @@
 package com.tencent.mm.modelmulti;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.co.a;
-import com.tencent.mm.co.a.a;
-import com.tencent.mm.plugin.messenger.foundation.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.w;
-import com.tencent.mm.protocal.protobuf.cot;
+import com.tencent.mm.cw.a;
+import com.tencent.mm.cw.a.a;
+import com.tencent.mm.plugin.messenger.foundation.a.aa;
+import com.tencent.mm.plugin.messenger.foundation.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.q;
+import com.tencent.mm.protocal.protobuf.cxi;
 import com.tencent.mm.storage.ca;
 
 public final class n
-  implements w
+  implements aa
 {
-  private final a jdD;
-  private h jdE;
+  private final a lUc;
+  private j lUd;
   
   public n()
   {
     AppMethodBeat.i(116833);
-    this.jdD = new a((byte)0);
+    this.lUc = new a((byte)0);
     AppMethodBeat.o(116833);
   }
   
-  public final String Z(ca paramca)
+  public final void a(o.c paramc)
+  {
+    AppMethodBeat.i(188346);
+    o.a(paramc);
+    AppMethodBeat.o(188346);
+  }
+  
+  public final void a(j paramj)
+  {
+    this.lUd = paramj;
+  }
+  
+  public final void a(q paramq)
+  {
+    AppMethodBeat.i(116835);
+    this.lUc.add(paramq);
+    AppMethodBeat.o(116835);
+  }
+  
+  public final String af(ca paramca)
   {
     AppMethodBeat.i(116834);
-    if (this.jdE != null)
+    if (this.lUd != null)
     {
-      paramca = this.jdE.Z(paramca);
+      paramca = this.lUd.af(paramca);
       AppMethodBeat.o(116834);
       return paramca;
     }
@@ -34,35 +54,16 @@ public final class n
     return null;
   }
   
-  public final void a(o.c paramc)
+  public final q bnj()
   {
-    AppMethodBeat.i(187477);
-    o.a(paramc);
-    AppMethodBeat.o(187477);
-  }
-  
-  public final void a(h paramh)
-  {
-    this.jdE = paramh;
-  }
-  
-  public final void a(com.tencent.mm.plugin.messenger.foundation.a.o paramo)
-  {
-    AppMethodBeat.i(116835);
-    this.jdD.add(paramo);
-    AppMethodBeat.o(116835);
-  }
-  
-  public final com.tencent.mm.plugin.messenger.foundation.a.o bdO()
-  {
-    return this.jdD;
+    return this.lUc;
   }
   
   static final class a
-    extends a<com.tencent.mm.plugin.messenger.foundation.a.o>
-    implements com.tencent.mm.plugin.messenger.foundation.a.o
+    extends a<q>
+    implements q
   {
-    public final void a(final cot paramcot, final ca paramca)
+    public final void a(final cxi paramcxi, final ca paramca)
     {
       AppMethodBeat.i(116832);
       a(new a.a() {});
@@ -72,7 +73,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelmulti.n
  * JD-Core Version:    0.7.0.1
  */

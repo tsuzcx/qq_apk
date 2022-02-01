@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.emojicapture.c;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/contract/CaptureContract;", "", "IPresenter", "IView", "plugin-emojicapture_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/contract/CaptureContract;", "", "IPresenter", "IView", "plugin-emojicapture_release"})
 public abstract interface a {}
 
 

@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gb;
+import com.tencent.mm.f.a.gi;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -16,13 +16,13 @@ import com.tencent.mm.sdk.platformtools.WeChatAuthorities;
 public class ExtControlProviderAccountSync
   extends ExtContentProviderBase
 {
-  private static final UriMatcher sNf;
+  private static final UriMatcher wta;
   
   static
   {
     AppMethodBeat.i(24421);
     UriMatcher localUriMatcher = new UriMatcher(-1);
-    sNf = localUriMatcher;
+    wta = localUriMatcher;
     localUriMatcher.addURI(WeChatAuthorities.AUTHORITIES_PLUGIN_EXT_ACCOUNTSYNC(), "accountSync", 1);
     AppMethodBeat.o(24421);
   }
@@ -51,51 +51,51 @@ public class ExtControlProviderAccountSync
   {
     AppMethodBeat.i(24420);
     Log.d("MicroMsg.ExtControlAccountSyncProvider", "query()");
-    a(paramUri, getContext(), sNf);
+    a(paramUri, getContext(), wta);
     if (paramUri == null)
     {
-      HF(3);
+      Lp(3);
       AppMethodBeat.o(24420);
       return null;
     }
-    if ((Util.isNullOrNil(this.sMZ)) || (Util.isNullOrNil(cSt())))
+    if ((Util.isNullOrNil(this.wsU)) || (Util.isNullOrNil(dht())))
     {
-      HF(3);
+      Lp(3);
       AppMethodBeat.o(24420);
       return null;
     }
-    if (!ckf())
+    if (!cxw())
     {
-      HF(1);
-      paramUri = this.pem;
+      Lp(1);
+      paramUri = this.sgp;
       AppMethodBeat.o(24420);
       return paramUri;
     }
-    if (!fe(getContext()))
+    if (!fj(getContext()))
     {
       Log.w("MicroMsg.ExtControlAccountSyncProvider", "invalid appid ! return null");
-      HF(2);
+      Lp(2);
       AppMethodBeat.o(24420);
       return null;
     }
-    switch (sNf.match(paramUri))
+    switch (wta.match(paramUri))
     {
     default: 
-      HF(3);
+      Lp(3);
       AppMethodBeat.o(24420);
       return null;
     }
     Log.i("MicroMsg.ExtControlAccountSyncProvider", "startContactSync()");
-    paramUri = new gb();
+    paramUri = new gi();
     if (EventCenter.instance.publish(paramUri)) {
-      HF(0);
+      Lp(0);
     }
     for (;;)
     {
       AppMethodBeat.o(24420);
       return null;
       Log.e("MicroMsg.ExtControlAccountSyncProvider", "AccountHelper == null");
-      HF(4);
+      Lp(4);
     }
   }
   

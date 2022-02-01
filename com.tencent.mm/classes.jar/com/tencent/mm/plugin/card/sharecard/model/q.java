@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.card.sharecard.model;
 
-import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.protocal.protobuf.vb;
 
 public final class q
 {
-  public String eaP = "";
-  public uz pTh = null;
+  public String fUM = "";
+  public vb tpi = null;
 }
 
 

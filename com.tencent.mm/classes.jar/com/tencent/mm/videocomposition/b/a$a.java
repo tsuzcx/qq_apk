@@ -2,7 +2,7 @@ package com.tencent.mm.videocomposition.b;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/mm/videocomposition/render/BaseMultiVideoCompositionEffect$Companion;", "", "()V", "TAG", "", "video_composition_release"})
+@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/videocomposition/render/BaseMultiVideoCompositionEffect$Companion;", "", "()V", "TAG", "", "video_composition_release"})
 public final class a$a {}
 
 

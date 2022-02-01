@@ -8,7 +8,7 @@ public abstract interface h
 {
   public abstract void a(MMActivity paramMMActivity, com.tencent.mm.plugin.fingerprint.faceid.auth.a parama, Bundle paramBundle);
   
-  public abstract boolean i(MMActivity paramMMActivity);
+  public abstract boolean j(MMActivity paramMMActivity);
 }
 
 

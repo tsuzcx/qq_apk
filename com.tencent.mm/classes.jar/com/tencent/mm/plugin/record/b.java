@@ -1,19 +1,23 @@
 package com.tencent.mm.plugin.record;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 public final class b
+  implements n
 {
-  public static String aTb()
+  public static m mIG;
+  public static l mIH;
+  
+  public final void a(l paraml)
   {
-    AppMethodBeat.i(94807);
-    Object localObject = new StringBuilder();
-    g.aAi();
-    localObject = g.aAh().hqG + "recbiz/";
-    AppMethodBeat.o(94807);
-    return localObject;
+    mIH = paraml;
+  }
+  
+  public final void a(m paramm)
+  {
+    mIG = paramm;
   }
 }
 

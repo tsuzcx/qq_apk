@@ -3,31 +3,31 @@ package com.tencent.mm.plugin.appbrand.ui.c.a;
 import android.content.ContentValues;
 import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.m;
+import com.tencent.mm.f.c.m;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfo;", "Lcom/tencent/mm/autogen/table/BaseAppBrandFakeNativeSplashScreenshot;", "()V", "convertTo", "Landroid/content/ContentValues;", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfo;", "Lcom/tencent/mm/autogen/table/BaseAppBrandFakeNativeSplashScreenshot;", "()V", "convertTo", "Landroid/content/ContentValues;", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-appbrand-integration_release"})
 public final class a
   extends m
 {
-  public static final IAutoDBItem.MAutoDBInfo iBg;
-  public static final com.tencent.mm.ipcinvoker.extension.a oga;
-  public static final a ogb;
+  public static final IAutoDBItem.MAutoDBInfo lqK;
+  public static final com.tencent.mm.ipcinvoker.extension.a rhL;
+  public static final a rhM;
   
   static
   {
-    AppMethodBeat.i(229576);
-    ogb = new a((byte)0);
-    iBg = m.ajs();
-    oga = (com.tencent.mm.ipcinvoker.extension.a)new b();
-    AppMethodBeat.o(229576);
+    AppMethodBeat.i(260011);
+    rhM = new a((byte)0);
+    lqK = m.aoY();
+    rhL = (com.tencent.mm.ipcinvoker.extension.a)new b();
+    AppMethodBeat.o(260011);
   }
   
   public final ContentValues convertTo()
   {
-    AppMethodBeat.i(229575);
+    AppMethodBeat.i(260008);
     ContentValues localContentValues = super.convertTo();
     if (localContentValues.containsKey("isDarkMode")) {
       if (!this.field_isDarkMode) {
@@ -38,32 +38,32 @@ public final class a
     for (int i = 1;; i = 0)
     {
       localContentValues.put("isDarkMode", Integer.valueOf(i));
-      p.g(localContentValues, "super.convertTo().also {…)\n            }\n        }");
-      AppMethodBeat.o(229575);
+      p.j(localContentValues, "super.convertTo().also {…)\n            }\n        }");
+      AppMethodBeat.o(260008);
       return localContentValues;
     }
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return iBg;
+    return lqK;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfo$Companion;", "", "()V", "INFO", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "PARCELIZER", "Lcom/tencent/mm/ipcinvoker/extension/BaseTypeTransfer;", "PARCELIZER$annotations", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfo$Companion;", "", "()V", "INFO", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "PARCELIZER", "Lcom/tencent/mm/ipcinvoker/extension/BaseTypeTransfer;", "PARCELIZER$annotations", "plugin-appbrand-integration_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfo$Companion$PARCELIZER$1", "Lcom/tencent/mm/ipcinvoker/extension/BaseTypeTransfer;", "canTransfer", "", "o", "", "readFromParcel", "Lcom/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfo;", "p", "Landroid/os/Parcel;", "writeToParcel", "", "dest", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfo$Companion$PARCELIZER$1", "Lcom/tencent/mm/ipcinvoker/extension/BaseTypeTransfer;", "canTransfer", "", "o", "", "readFromParcel", "Lcom/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfo;", "p", "Landroid/os/Parcel;", "writeToParcel", "", "dest", "plugin-appbrand-integration_release"})
   public static final class b
     implements com.tencent.mm.ipcinvoker.extension.a
   {
     public final void a(Object paramObject, Parcel paramParcel)
     {
-      AppMethodBeat.i(229573);
-      p.h(paramObject, "o");
+      AppMethodBeat.i(278118);
+      p.k(paramObject, "o");
       paramObject = (a)paramObject;
       if (paramParcel == null)
       {
-        AppMethodBeat.o(229573);
+        AppMethodBeat.o(278118);
         return;
       }
       paramParcel.writeString(paramObject.field_appId);
@@ -74,7 +74,7 @@ public final class a
       {
         paramParcel.writeByte(b);
         paramParcel.writeString(paramObject.field_screenshotFilePath);
-        AppMethodBeat.o(229573);
+        AppMethodBeat.o(278118);
         return;
       }
     }
@@ -87,7 +87,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.c.a.a
  * JD-Core Version:    0.7.0.1
  */

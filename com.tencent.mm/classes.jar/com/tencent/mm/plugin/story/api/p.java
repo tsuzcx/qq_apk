@@ -1,48 +1,50 @@
 package com.tencent.mm.plugin.story.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public abstract class p
 {
-  public static p.b FkJ;
-  public int FkI;
+  public static b LEL;
+  public int LEK;
   public long key;
   
   public p(long paramLong, int paramInt)
   {
     this.key = paramLong;
-    this.FkI = paramInt;
+    this.LEK = paramInt;
   }
   
   public static final class a
   {
-    private static a FkK;
-    private Map<Long, p> FkL;
+    private static a LEM;
+    private Map<Long, p> LEN;
     
     public a()
     {
       AppMethodBeat.i(118428);
-      this.FkL = new HashMap();
+      this.LEN = new HashMap();
       AppMethodBeat.o(118428);
     }
     
-    public static a fns()
+    public static a gbL()
     {
       AppMethodBeat.i(118429);
-      if (FkK == null) {
-        FkK = new a();
+      if (LEM == null) {
+        LEM = new a();
       }
-      a locala = FkK;
+      a locala = LEM;
       AppMethodBeat.o(118429);
       return locala;
     }
     
-    public final p Kg(long paramLong)
+    public final p RA(long paramLong)
     {
       AppMethodBeat.i(118431);
-      p localp = (p)this.FkL.remove(Long.valueOf(paramLong));
+      p localp = (p)this.LEN.remove(Long.valueOf(paramLong));
       AppMethodBeat.o(118431);
       return localp;
     }
@@ -50,14 +52,25 @@ public abstract class p
     public final void a(long paramLong, p paramp)
     {
       AppMethodBeat.i(118430);
-      this.FkL.put(Long.valueOf(paramLong), paramp);
+      this.LEN.put(Long.valueOf(paramLong), paramp);
       AppMethodBeat.o(118430);
     }
+  }
+  
+  public static abstract interface b
+  {
+    public abstract long C(List<String> paramList, int paramInt);
+    
+    public abstract long a(List<String> paramList, String paramString, int paramInt);
+    
+    public abstract long a(List<String> paramList, String paramString, Map<String, ArrayList<Long>> paramMap, ArrayList<Long> paramArrayList, int paramInt);
+    
+    public abstract long a(List<String> paramList, Map<String, ArrayList<Long>> paramMap, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.p
  * JD-Core Version:    0.7.0.1
  */

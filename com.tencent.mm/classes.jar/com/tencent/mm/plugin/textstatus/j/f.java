@@ -1,154 +1,179 @@
 package com.tencent.mm.plugin.textstatus.j;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.graphics.Bitmap;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewOutlineProvider;
-import android.widget.TextView;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.d;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.auth.a.a;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.ay.a.a;
+import com.tencent.mm.ay.q;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.api.g;
+import com.tencent.mm.plugin.appbrand.service.r;
+import com.tencent.mm.plugin.textstatus.a.i;
+import com.tencent.mm.plugin.textstatus.a.m;
+import com.tencent.mm.plugin.textstatus.proto.TextStatusJumpInfo;
+import com.tencent.mm.plugin.textstatus.proto.d;
+import com.tencent.mm.ui.widget.b;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.List;
+import kotlin.g.b.p;
 import kotlin.l;
+import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/textstatus/util/UIHelper;", "", "()V", "TAG", "", "blurBitmap", "Landroid/graphics/Bitmap;", "bitmap", "context", "Landroid/content/Context;", "blurRadius", "", "getAvatarBitmap", "username", "recurSetTextColor", "", "v", "Landroid/view/View;", "textColor", "", "oriMap", "", "Landroid/widget/TextView;", "Landroid/content/res/ColorStateList;", "resetOriTextColor", "map", "", "roundCorner", "view", "cornerRadius", "plugin-textstatus_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/third/WeAppStatusService;", "Lcom/tencent/mm/plugin/textstatus/api/IStatusThirdShareService;", "()V", "createCustomParts", "Lcom/tencent/mm/plugin/textstatus/api/IStatusCustomParts;", "createPullDownView", "Lcom/tencent/mm/ui/widget/IPullDownView;", "sourceId", "", "container", "Landroid/widget/FrameLayout;", "jumpInfo", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusJumpInfo;", "pullDownParam", "Lcom/tencent/mm/plugin/textstatus/proto/PullDownParam;", "release", "", "Companion", "plugin-textstatus_release"})
 public final class f
+  implements m
 {
-  public static final f Ggk;
+  public static final a MIX;
   
   static
   {
-    AppMethodBeat.i(216708);
-    Ggk = new f();
-    AppMethodBeat.o(216708);
+    AppMethodBeat.i(236979);
+    MIX = new a((byte)0);
+    AppMethodBeat.o(236979);
   }
   
-  public static void B(View paramView, float paramFloat)
+  public final b a(String paramString, FrameLayout paramFrameLayout, TextStatusJumpInfo paramTextStatusJumpInfo, d paramd)
   {
-    AppMethodBeat.i(216702);
-    if (paramView != null) {
-      paramView.setOutlineProvider((ViewOutlineProvider)new f.a(paramFloat));
-    }
-    if (paramView != null)
-    {
-      paramView.setClipToOutline(true);
-      AppMethodBeat.o(216702);
-      return;
-    }
-    AppMethodBeat.o(216702);
+    AppMethodBeat.i(236973);
+    p.k(paramFrameLayout, "container");
+    p.k(paramd, "pullDownParam");
+    AppMethodBeat.o(236973);
+    return null;
   }
   
-  public static Bitmap a(Bitmap paramBitmap, Context paramContext, float paramFloat)
+  public final i dDF()
   {
-    AppMethodBeat.i(216703);
-    kotlin.g.b.p.h(paramContext, "context");
-    try
+    AppMethodBeat.i(236976);
+    i locali = (i)new b();
+    AppMethodBeat.o(236976);
+    return locali;
+  }
+  
+  public final void release() {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/third/WeAppStatusService$Companion;", "", "()V", "TAG", "", "plugin-textstatus_release"})
+  public static final class a {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/textstatus/third/WeAppStatusService$createCustomParts$1", "Lcom/tencent/mm/plugin/textstatus/api/IStatusCustomParts;", "jumpInfos", "", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusJumpInfo;", "getJumpInfos", "()Ljava/util/List;", "setJumpInfos", "(Ljava/util/List;)V", "jumpInfosJo", "Lorg/json/JSONObject;", "getJumpInfosJo", "()Lorg/json/JSONObject;", "setJumpInfosJo", "(Lorg/json/JSONObject;)V", "doJumpSource", "", "context", "Landroid/content/Context;", "isHasCustomPullDown", "onAttach", "", "textStatusID", "", "", "onDetach", "setCustomSourceView", "container", "Landroid/widget/FrameLayout;", "plugin-textstatus_release"})
+  public static final class b
+    extends i
+  {
+    private JSONObject MIY;
+    private List<? extends TextStatusJumpInfo> yNX;
+    
+    public final boolean dDH()
     {
-      paramContext = new com.tencent.mm.ui.blur.f(paramContext);
-      if (paramBitmap != null)
-      {
-        localBitmap = paramBitmap.copy(paramBitmap.getConfig(), true);
-        if (localBitmap != null) {}
+      return false;
+    }
+    
+    public final boolean e(FrameLayout paramFrameLayout)
+    {
+      AppMethodBeat.i(232274);
+      p.k(paramFrameLayout, "container");
+      ImageView localImageView = (ImageView)paramFrameLayout.findViewWithTag("WeAppStatusService");
+      if (localImageView == null) {
+        localImageView = new ImageView(paramFrameLayout.getContext());
       }
-      else
+      for (;;)
       {
-        AppMethodBeat.o(216703);
-        return null;
-      }
-      Bitmap localBitmap = paramContext.b(localBitmap, paramFloat);
-      paramContext.destroy();
-      AppMethodBeat.o(216703);
-      return localBitmap;
-    }
-    catch (Throwable paramContext)
-    {
-      AppMethodBeat.o(216703);
-    }
-    return paramBitmap;
-  }
-  
-  public static void aT(Map<TextView, ? extends ColorStateList> paramMap)
-  {
-    AppMethodBeat.i(216706);
-    if (paramMap == null)
-    {
-      AppMethodBeat.o(216706);
-      return;
-    }
-    paramMap = paramMap.entrySet().iterator();
-    while (paramMap.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)paramMap.next();
-      ((TextView)localEntry.getKey()).setTextColor((ColorStateList)localEntry.getValue());
-    }
-    AppMethodBeat.o(216706);
-  }
-  
-  public static Bitmap aTs(String paramString)
-  {
-    AppMethodBeat.i(216705);
-    Bitmap localBitmap2 = com.tencent.mm.aj.p.aYD().K(paramString, false);
-    Bitmap localBitmap1 = localBitmap2;
-    if (localBitmap2 == null)
-    {
-      localBitmap1 = localBitmap2;
-      if (kotlin.g.b.p.j(a.ceA(), paramString))
-      {
-        paramString = g.aAh();
-        kotlin.g.b.p.g(paramString, "MMKernel.storage()");
-        paramString = (String)paramString.azQ().i(ar.a.Ogr);
-        a.ceA();
-        localBitmap1 = com.tencent.mm.aj.e.Mq(paramString);
+        localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        paramFrameLayout.removeAllViews();
+        paramFrameLayout.addView((View)localImageView);
+        paramFrameLayout = com.tencent.mm.plugin.textstatus.k.n.MOY;
+        com.tencent.mm.plugin.textstatus.k.n.hb((View)localImageView);
+        paramFrameLayout = this.MIY;
+        if (paramFrameLayout != null)
+        {
+          paramFrameLayout = paramFrameLayout.optString("headImageURL");
+          CharSequence localCharSequence = (CharSequence)paramFrameLayout;
+          if ((localCharSequence != null) && (!kotlin.n.n.ba(localCharSequence))) {
+            break label128;
+          }
+        }
+        label128:
+        for (int i = 1;; i = 0)
+        {
+          if (i == 0) {
+            q.bml().loadImage(paramFrameLayout, localImageView);
+          }
+          AppMethodBeat.o(232274);
+          return true;
+          paramFrameLayout = null;
+          break;
+        }
       }
     }
-    if (localBitmap1 == null) {
-      Log.e("MicroMsg.TxtStatus.UIHelper", "[getAvatarFromFile] bitmap=null");
-    }
-    AppMethodBeat.o(216705);
-    return localBitmap1;
-  }
-  
-  public final void a(View paramView, int paramInt, Map<TextView, ColorStateList> paramMap)
-  {
-    AppMethodBeat.i(216707);
-    kotlin.g.b.p.h(paramMap, "oriMap");
-    if (paramView == null)
+    
+    public final boolean fz(Context paramContext)
     {
-      AppMethodBeat.o(216707);
-      return;
-    }
-    if ((paramView instanceof ViewGroup))
-    {
-      int i = 0;
-      int j = ((ViewGroup)paramView).getChildCount();
-      while (i < j)
+      AppMethodBeat.i(232272);
+      Object localObject1 = this.yNX;
+      if (localObject1 != null)
       {
-        a(((ViewGroup)paramView).getChildAt(i), paramInt, paramMap);
-        i += 1;
+        localObject1 = ((Iterable)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          Object localObject2 = (TextStatusJumpInfo)((Iterator)localObject1).next();
+          if (p.h(((TextStatusJumpInfo)localObject2).jumpType, "7"))
+          {
+            Object localObject3 = new JSONObject(((TextStatusJumpInfo)localObject2).busiBuf);
+            localObject1 = ((JSONObject)localObject3).optString("username");
+            localObject2 = ((JSONObject)localObject3).optString("path");
+            int i = ((JSONObject)localObject3).optInt("version");
+            int j = ((JSONObject)localObject3).optInt("versionType", 0);
+            localObject3 = (r)h.ae(r.class);
+            if (localObject3 != null)
+            {
+              g localg = new g();
+              localg.username = ((String)localObject1);
+              localg.nBq = ((String)localObject2);
+              localg.version = i;
+              localg.cBU = j;
+              localg.scene = 1196;
+              localg.fvd = ((String)localObject1);
+              ((r)localObject3).a(paramContext, localg);
+            }
+            AppMethodBeat.o(232272);
+            return true;
+          }
+        }
       }
+      AppMethodBeat.o(232272);
+      return false;
     }
-    if ((paramView instanceof TextView))
+    
+    public final void onDetach() {}
+    
+    public final void s(String paramString, List<TextStatusJumpInfo> paramList)
     {
-      ColorStateList localColorStateList = ((TextView)paramView).getTextColors();
-      kotlin.g.b.p.g(localColorStateList, "v.textColors");
-      paramMap.put(paramView, localColorStateList);
-      ((TextView)paramView).setTextColor(paramInt);
+      AppMethodBeat.i(232270);
+      this.yNX = paramList;
+      if (paramList != null)
+      {
+        paramString = ((Iterable)paramList).iterator();
+        while (paramString.hasNext())
+        {
+          paramList = (TextStatusJumpInfo)paramString.next();
+          if (p.h(paramList.jumpType, "7"))
+          {
+            this.MIY = new JSONObject(paramList.busiBuf);
+            AppMethodBeat.o(232270);
+            return;
+          }
+        }
+        AppMethodBeat.o(232270);
+        return;
+      }
+      AppMethodBeat.o(232270);
     }
-    AppMethodBeat.o(216707);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.j.f
  * JD-Core Version:    0.7.0.1
  */

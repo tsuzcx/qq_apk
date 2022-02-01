@@ -6,10 +6,10 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.os.Looper;
-import android.support.constraint.ConstraintLayout.LayoutParams;
 import android.text.SpannableString;
 import android.text.TextPaint;
 import android.util.DisplayMetrics;
@@ -24,35 +24,47 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.constraintlayout.widget.ConstraintLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.api.c;
-import com.tencent.mm.plugin.finder.api.c.a;
-import com.tencent.mm.plugin.finder.cgi.cn;
-import com.tencent.mm.plugin.finder.loader.m.a;
-import com.tencent.mm.plugin.finder.profile.uic.FinderProfileHeaderUIC.b;
-import com.tencent.mm.plugin.finder.report.live.k;
-import com.tencent.mm.plugin.finder.report.live.s.af;
-import com.tencent.mm.plugin.finder.utils.y;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.plugin.finder.api.d.a;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.b.d;
+import com.tencent.mm.plugin.finder.b.e;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.cgi.cr;
+import com.tencent.mm.plugin.finder.live.report.k;
+import com.tencent.mm.plugin.finder.live.report.s.aq;
+import com.tencent.mm.plugin.finder.loader.t.a;
+import com.tencent.mm.plugin.finder.profile.uic.j.b;
+import com.tencent.mm.plugin.finder.utils.aj;
 import com.tencent.mm.protocal.protobuf.FinderAuthInfo;
 import com.tencent.mm.protocal.protobuf.FinderContact;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.at;
-import com.tencent.mm.ui.base.o.f;
-import com.tencent.mm.ui.base.u;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.w;
 import com.tencent.mm.ui.widget.RoundedCornerFrameLayout;
-import com.tencent.mm.ui.widget.a.e;
 import com.tencent.mm.ui.widget.a.e.b;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
+import kotlin.g.a.b;
+import kotlin.g.b.af;
 import kotlin.g.b.p;
 import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderBottomCustomDialogHelper;", "", "()V", "Companion", "UserInfoHelper", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderBottomCustomDialogHelper;", "", "()V", "Companion", "UserInfoHelper", "plugin-finder_release"})
 public final class FinderBottomCustomDialogHelper
 {
   public static final Companion Companion;
@@ -60,354 +72,579 @@ public final class FinderBottomCustomDialogHelper
   
   static
   {
-    AppMethodBeat.i(254662);
+    AppMethodBeat.i(223198);
     Companion = new Companion(null);
-    AppMethodBeat.o(254662);
+    AppMethodBeat.o(223198);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderBottomCustomDialogHelper$Companion;", "", "()V", "TAG", "", "showConfirmDialog", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "context", "Landroid/content/Context;", "iconDrawable", "Landroid/graphics/drawable/Drawable;", "iconColor", "", "title", "content", "Landroid/view/View;", "ok", "cancel", "lok", "Landroid/content/DialogInterface$OnClickListener;", "lcancel", "ldismiss", "Landroid/content/DialogInterface$OnDismissListener;", "showConfirmMsgDialog", "msg", "showCreateFinderUserDialog", "", "scene", "showRealNameCertificationDialog", "Landroid/app/Activity;", "showUserInfoConfirmDialog", "finderUserName", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderBottomCustomDialogHelper$Companion;", "", "()V", "TAG", "", "showConfirmDialog", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "context", "Landroid/content/Context;", "iconDrawable", "Landroid/graphics/drawable/Drawable;", "iconColor", "", "title", "content", "Landroid/view/View;", "ok", "cancel", "btnStyle", "lok", "Landroid/content/DialogInterface$OnClickListener;", "lcancel", "ldismiss", "Landroid/content/DialogInterface$OnDismissListener;", "(Landroid/content/Context;Landroid/graphics/drawable/Drawable;ILjava/lang/String;Landroid/view/View;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnDismissListener;)Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "showConfirmMsgDialog", "msg", "(Landroid/content/Context;Landroid/graphics/drawable/Drawable;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnDismissListener;)Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "showConfirmTextDialog", "showFinderIcon", "", "(Landroid/content/Context;Landroid/graphics/drawable/Drawable;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Landroid/content/DialogInterface$OnClickListener;Ljava/lang/Boolean;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnDismissListener;)Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "showCreateFinderUserDialog", "", "scene", "intent", "Landroid/content/Intent;", "showCreateFinderUserDialogOnLiveWithCallback", "Landroid/app/Activity;", "requestCode", "showOverSeaAgreeConfirmDiaglog", "showRealNameCertificationDialog", "showRealNameCertificationDialogWithCallback", "showUserInfoConfirmDialog", "finderUserName", "dismiss", "showUserInfoConfirmDialogOnLiveRedPacket", "plugin-finder_release"})
   public static final class Companion
   {
-    public final e showConfirmDialog(Context paramContext, Drawable paramDrawable, int paramInt, String paramString1, View paramView, String paramString2, String paramString3, final DialogInterface.OnClickListener paramOnClickListener1, final DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnDismissListener paramOnDismissListener)
+    public final com.tencent.mm.ui.widget.a.e showConfirmDialog(Context paramContext, Drawable paramDrawable, int paramInt, String paramString1, View paramView, String paramString2, String paramString3, Integer paramInteger, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnDismissListener paramOnDismissListener)
     {
-      AppMethodBeat.i(254641);
-      p.h(paramContext, "context");
-      p.h(paramView, "content");
-      e locale = new e(paramContext, 1, false);
-      Object localObject = View.inflate(paramContext, 2131494213, null);
+      AppMethodBeat.i(233852);
+      p.k(paramContext, "context");
+      p.k(paramView, "content");
+      com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e(paramContext, 1, false);
+      Object localObject = View.inflate(paramContext, b.g.finder_bottom_custom_confirm, null);
       if (localObject == null)
       {
         paramContext = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.ui.widget.RoundedCornerFrameLayout");
-        AppMethodBeat.o(254641);
+        AppMethodBeat.o(233852);
         throw paramContext;
       }
       localObject = (RoundedCornerFrameLayout)localObject;
-      ((FrameLayout)((RoundedCornerFrameLayout)localObject).findViewById(2131300797)).addView(paramView);
-      paramView = (WeImageView)((RoundedCornerFrameLayout)localObject).findViewById(2131300851);
+      ((FrameLayout)((RoundedCornerFrameLayout)localObject).findViewById(b.f.finder_content)).addView(paramView);
+      paramView = (WeImageView)((RoundedCornerFrameLayout)localObject).findViewById(b.f.finder_icon);
       if (paramDrawable != null)
       {
         paramView.setImageDrawable(paramDrawable);
         if (paramInt == -1) {
-          break label348;
+          break label360;
         }
         paramView.setIconColor(paramInt);
+        label119:
+        paramDrawable = (TextView)((RoundedCornerFrameLayout)localObject).findViewById(b.f.finder_title);
+        if (!Util.isNullOrNil(paramString1))
+        {
+          p.j(paramDrawable, "titleTv");
+          paramDrawable.setText((CharSequence)paramString1);
+        }
+        paramDrawable = (Button)((RoundedCornerFrameLayout)localObject).findViewById(b.f.ok_btn);
+        if (!Util.isNullOrNil(paramString2))
+        {
+          p.j(paramDrawable, "okBtn");
+          paramDrawable.setText((CharSequence)paramString2);
+        }
+        paramString1 = (Button)((RoundedCornerFrameLayout)localObject).findViewById(b.f.cancel_btn);
+        if (!Util.isNullOrNil(paramString3))
+        {
+          p.j(paramString1, "cancelBtn");
+          paramString1.setText((CharSequence)paramString3);
+        }
+        ((RoundedCornerFrameLayout)localObject).v(aw.fromDPToPix(paramContext, 12), aw.fromDPToPix(paramContext, 12), 0.0F, 0.0F);
+        paramDrawable.setOnClickListener((View.OnClickListener)new FinderBottomCustomDialogHelper.Companion.showConfirmDialog.1(locale, paramOnClickListener1));
+        paramString1.setOnClickListener((View.OnClickListener)new FinderBottomCustomDialogHelper.Companion.showConfirmDialog.2(locale, paramOnClickListener2));
+        locale.b((e.b)new FinderBottomCustomDialogHelper.Companion.showConfirmDialog.3(paramOnDismissListener));
+        locale.a((q.f)new FinderBottomCustomDialogHelper.Companion.showConfirmDialog.4(locale, (RoundedCornerFrameLayout)localObject));
+        if (paramInteger != null) {
+          break label375;
+        }
       }
       for (;;)
       {
-        paramDrawable = (TextView)((RoundedCornerFrameLayout)localObject).findViewById(2131301498);
-        if (!Util.isNullOrNil(paramString1))
-        {
-          p.g(paramDrawable, "titleTv");
-          paramDrawable.setText((CharSequence)paramString1);
-        }
-        paramDrawable = (Button)((RoundedCornerFrameLayout)localObject).findViewById(2131305592);
-        if (!Util.isNullOrNil(paramString2))
-        {
-          p.g(paramDrawable, "okBtn");
-          paramDrawable.setText((CharSequence)paramString2);
-        }
-        paramString1 = (Button)((RoundedCornerFrameLayout)localObject).findViewById(2131297963);
-        if (!Util.isNullOrNil(paramString3))
-        {
-          p.g(paramString1, "cancelBtn");
-          paramString1.setText((CharSequence)paramString3);
-        }
-        ((RoundedCornerFrameLayout)localObject).s(at.fromDPToPix(paramContext, 12), at.fromDPToPix(paramContext, 12), 0.0F, 0.0F);
-        paramDrawable.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-        {
-          private byte _hellAccFlag_;
-          
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(254622);
-            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bm(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderBottomCustomDialogHelper$Companion$showConfirmDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-            this.$dialog.bMo();
-            paramAnonymousView = paramOnClickListener1;
-            if (paramAnonymousView != null) {
-              paramAnonymousView.onClick(null, -1);
-            }
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderBottomCustomDialogHelper$Companion$showConfirmDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(254622);
-          }
-        });
-        paramString1.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-        {
-          private byte _hellAccFlag_;
-          
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(254623);
-            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bm(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderBottomCustomDialogHelper$Companion$showConfirmDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-            this.$dialog.bMo();
-            paramAnonymousView = paramOnClickListener2;
-            if (paramAnonymousView != null) {
-              paramAnonymousView.onClick(null, -2);
-            }
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderBottomCustomDialogHelper$Companion$showConfirmDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(254623);
-          }
-        });
-        locale.b((e.b)new e.b()
-        {
-          public final void onDismiss()
-          {
-            AppMethodBeat.i(254624);
-            DialogInterface.OnDismissListener localOnDismissListener = this.$ldismiss;
-            if (localOnDismissListener != null)
-            {
-              localOnDismissListener.onDismiss(null);
-              AppMethodBeat.o(254624);
-              return;
-            }
-            AppMethodBeat.o(254624);
-          }
-        });
-        locale.a((o.f)new o.f()
-        {
-          public final void onCreateMMMenu(com.tencent.mm.ui.base.m paramAnonymousm)
-          {
-            AppMethodBeat.i(254625);
-            paramAnonymousm.clear();
-            this.$dialog.setFooterView(null);
-            this.$dialog.setFooterView((View)this.$rootViewContainer);
-            AppMethodBeat.o(254625);
-          }
-        });
-        locale.Dm(true);
-        locale.dGm();
-        AppMethodBeat.o(254641);
+        locale.rn(true);
+        locale.eik();
+        AppMethodBeat.o(233852);
         return locale;
-        paramView.setImageDrawable(com.tencent.mm.cb.a.l(paramContext, 2131690801));
+        paramView.setImageDrawable(com.tencent.mm.ci.a.m(paramContext, com.tencent.mm.plugin.finder.b.i.icons_outlined_finder_icon));
         break;
-        label348:
-        paramView.setIconColor(com.tencent.mm.cb.a.n(paramContext, 2131099792));
+        label360:
+        paramView.setIconColor(com.tencent.mm.ci.a.w(paramContext, b.c.Orange));
+        break label119;
+        label375:
+        if (paramInteger.intValue() == 1)
+        {
+          paramDrawable.setTextColor(paramContext.getResources().getColor(b.c.white_text_color_selector));
+          p.j(paramDrawable, "okBtn");
+          paramDrawable.setBackground(paramContext.getResources().getDrawable(b.e.finder_live_post_btn_red));
+          paramString1.setTextColor(paramContext.getResources().getColor(b.c.room_live_logo_color));
+        }
       }
     }
     
-    public final e showConfirmMsgDialog(Context paramContext, Drawable paramDrawable, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnDismissListener paramOnDismissListener)
+    public final com.tencent.mm.ui.widget.a.e showConfirmMsgDialog(Context paramContext, Drawable paramDrawable, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, Integer paramInteger, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnDismissListener paramOnDismissListener)
     {
-      AppMethodBeat.i(254639);
-      p.h(paramContext, "context");
-      p.h(paramString2, "msg");
-      View localView = View.inflate(paramContext, 2131494211, null);
-      TextView localTextView = (TextView)localView.findViewById(2131301364);
-      p.g(localTextView, "msgView");
+      AppMethodBeat.i(233846);
+      p.k(paramContext, "context");
+      p.k(paramString2, "msg");
+      View localView = View.inflate(paramContext, b.g.finder_bottom_content_msg, null);
+      TextView localTextView = (TextView)localView.findViewById(b.f.finder_msg);
+      p.j(localTextView, "msgView");
       localTextView.setText((CharSequence)Util.nullAsNil(paramString2));
       paramString2 = (Companion)this;
-      p.g(localView, "msgContainer");
-      paramContext = paramString2.showConfirmDialog(paramContext, paramDrawable, paramInt, paramString1, localView, paramString3, paramString4, paramOnClickListener1, paramOnClickListener2, paramOnDismissListener);
-      AppMethodBeat.o(254639);
+      p.j(localView, "msgContainer");
+      paramContext = paramString2.showConfirmDialog(paramContext, paramDrawable, paramInt, paramString1, localView, paramString3, paramString4, paramInteger, paramOnClickListener1, paramOnClickListener2, paramOnDismissListener);
+      AppMethodBeat.o(233846);
       return paramContext;
     }
     
-    public final void showCreateFinderUserDialog(final Context paramContext, int paramInt)
+    public final com.tencent.mm.ui.widget.a.e showConfirmTextDialog(Context paramContext, Drawable paramDrawable, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, Integer paramInteger, DialogInterface.OnClickListener paramOnClickListener1, Boolean paramBoolean, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnDismissListener paramOnDismissListener)
     {
-      AppMethodBeat.i(254637);
-      p.h(paramContext, "context");
-      String str1 = paramContext.getString(2131759640);
-      p.g(str1, "context.getString(R.stri…nder_create_finder_title)");
-      String str2 = paramContext.getString(2131759637);
-      p.g(str2, "context.getString(R.stri…finder_create_finder_msg)");
-      String str3 = paramContext.getString(2131759639);
-      p.g(str3, "context.getString(R.stri…_create_finder_ok_button)");
-      String str4 = paramContext.getString(2131759636);
-      p.g(str4, "context.getString(R.stri…ate_finder_cancel_button)");
-      showConfirmMsgDialog$default((Companion)this, paramContext, null, 0, str1, str2, str3, str4, (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
+      AppMethodBeat.i(233858);
+      p.k(paramContext, "context");
+      p.k(paramString2, "content");
+      com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e(paramContext, 1, false);
+      Object localObject = View.inflate(paramContext, b.g.finder_bottom_custom_text_confirm, null);
+      if (localObject == null)
+      {
+        paramContext = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.ui.widget.RoundedCornerFrameLayout");
+        AppMethodBeat.o(233858);
+        throw paramContext;
+      }
+      localObject = (RoundedCornerFrameLayout)localObject;
+      TextView localTextView = (TextView)((RoundedCornerFrameLayout)localObject).findViewById(b.f.finder_content);
+      p.j(localTextView, "contentViewContainer");
+      localTextView.setText((CharSequence)paramString2);
+      paramString2 = (WeImageView)((RoundedCornerFrameLayout)localObject).findViewById(b.f.finder_icon);
+      if (paramDrawable != null)
+      {
+        paramString2.setImageDrawable(paramDrawable);
+        if (paramInt == -1) {
+          break label403;
+        }
+        paramString2.setIconColor(paramInt);
+        label136:
+        if (!p.h(paramBoolean, Boolean.TRUE)) {
+          break label418;
+        }
+        p.j(paramString2, "titleIconIv");
+        paramString2.setVisibility(0);
+        label161:
+        paramDrawable = (TextView)((RoundedCornerFrameLayout)localObject).findViewById(b.f.finder_title);
+        if (!Util.isNullOrNil(paramString1))
+        {
+          p.j(paramDrawable, "titleTv");
+          paramDrawable.setText((CharSequence)paramString1);
+        }
+        paramDrawable = (Button)((RoundedCornerFrameLayout)localObject).findViewById(b.f.ok_btn);
+        if (!Util.isNullOrNil(paramString3))
+        {
+          p.j(paramDrawable, "okBtn");
+          paramDrawable.setText((CharSequence)paramString3);
+        }
+        paramString1 = (Button)((RoundedCornerFrameLayout)localObject).findViewById(b.f.cancel_btn);
+        if (!Util.isNullOrNil(paramString4))
+        {
+          p.j(paramString1, "cancelBtn");
+          paramString1.setText((CharSequence)paramString4);
+        }
+        ((RoundedCornerFrameLayout)localObject).v(aw.fromDPToPix(paramContext, 12), aw.fromDPToPix(paramContext, 12), 0.0F, 0.0F);
+        paramDrawable.setOnClickListener((View.OnClickListener)new FinderBottomCustomDialogHelper.Companion.showConfirmTextDialog.1(locale, paramOnClickListener1));
+        paramString1.setOnClickListener((View.OnClickListener)new FinderBottomCustomDialogHelper.Companion.showConfirmTextDialog.2(locale, paramOnClickListener2));
+        locale.b((e.b)new FinderBottomCustomDialogHelper.Companion.showConfirmTextDialog.3(paramOnDismissListener));
+        locale.a((q.f)new FinderBottomCustomDialogHelper.Companion.showConfirmTextDialog.4(locale, (RoundedCornerFrameLayout)localObject));
+        if (paramInteger != null) {
+          break label436;
+        }
+      }
+      for (;;)
+      {
+        locale.rn(true);
+        locale.eik();
+        AppMethodBeat.o(233858);
+        return locale;
+        paramString2.setImageDrawable(com.tencent.mm.ci.a.m(paramContext, com.tencent.mm.plugin.finder.b.i.icons_outlined_finder_icon));
+        break;
+        label403:
+        paramString2.setIconColor(com.tencent.mm.ci.a.w(paramContext, b.c.Orange));
+        break label136;
+        label418:
+        p.j(paramString2, "titleIconIv");
+        paramString2.setVisibility(8);
+        break label161;
+        label436:
+        if (paramInteger.intValue() == 1)
+        {
+          paramDrawable.setTextColor(paramContext.getResources().getColor(b.c.white_text_color_selector));
+          p.j(paramDrawable, "okBtn");
+          paramDrawable.setBackground(paramContext.getResources().getDrawable(b.e.finder_live_post_btn_red));
+          paramString1.setTextColor(paramContext.getResources().getColor(b.c.room_live_logo_color));
+        }
+      }
+    }
+    
+    public final void showCreateFinderUserDialog(final Context paramContext, final int paramInt, Intent paramIntent)
+    {
+      AppMethodBeat.i(233831);
+      p.k(paramContext, "context");
+      String str1 = paramContext.getString(b.j.finder_create_finder_title);
+      p.j(str1, "context.getString(R.stri…nder_create_finder_title)");
+      String str2 = paramContext.getString(b.j.finder_create_finder_msg);
+      p.j(str2, "context.getString(R.stri…finder_create_finder_msg)");
+      String str3 = paramContext.getString(b.j.finder_create_finder_ok_button);
+      p.j(str3, "context.getString(R.stri…_create_finder_ok_button)");
+      String str4 = paramContext.getString(b.j.finder_create_finder_cancel_button);
+      p.j(str4, "context.getString(R.stri…ate_finder_cancel_button)");
+      showConfirmMsgDialog$default((Companion)this, paramContext, null, 0, str1, str2, str3, str4, null, (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(254626);
-          paramAnonymousDialogInterface = new Intent();
-          paramAnonymousDialogInterface.putExtra("scene", this.$scene);
-          paramAnonymousDialogInterface.putExtra("key_create_scene", this.$scene);
-          com.tencent.mm.plugin.finder.utils.a locala = com.tencent.mm.plugin.finder.utils.a.vUU;
+          AppMethodBeat.i(291908);
+          Object localObject = this.$intent;
+          paramAnonymousDialogInterface = (DialogInterface)localObject;
+          if (localObject == null) {
+            paramAnonymousDialogInterface = new Intent();
+          }
+          paramAnonymousDialogInterface.putExtra("key_create_scene", paramInt);
+          localObject = com.tencent.mm.plugin.finder.utils.a.ACH;
           com.tencent.mm.plugin.finder.utils.a.w(paramContext, paramAnonymousDialogInterface);
-          paramAnonymousDialogInterface = k.vkd;
-          k.a(s.af.vqp);
-          AppMethodBeat.o(254626);
+          paramAnonymousDialogInterface = k.yBj;
+          k.a(s.aq.yJE);
+          AppMethodBeat.o(291908);
         }
-      }, null, (DialogInterface.OnDismissListener)showCreateFinderUserDialog.2.INSTANCE, 262, null);
-      AppMethodBeat.o(254637);
+      }, null, (DialogInterface.OnDismissListener)showCreateFinderUserDialog.2.INSTANCE, 646, null);
+      AppMethodBeat.o(233831);
+    }
+    
+    public final void showCreateFinderUserDialogOnLiveWithCallback(final Activity paramActivity, final int paramInt1, Intent paramIntent, final int paramInt2, final DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnDismissListener paramOnDismissListener)
+    {
+      AppMethodBeat.i(233817);
+      p.k(paramActivity, "context");
+      String str1 = paramActivity.getString(b.j.finder_create_title);
+      p.j(str1, "context.getString(R.string.finder_create_title)");
+      String str2 = paramActivity.getString(b.j.finder_create_contact_tips);
+      p.j(str2, "context.getString(R.stri…nder_create_contact_tips)");
+      String str3 = paramActivity.getString(b.j.finder_go_to_create_finder_account);
+      p.j(str3, "context.getString(R.stri…to_create_finder_account)");
+      String str4 = paramActivity.getString(b.j.finder_create_finder_cancel_button);
+      p.j(str4, "context.getString(R.stri…ate_finder_cancel_button)");
+      showConfirmMsgDialog$default((Companion)this, (Context)paramActivity, null, 0, str1, str2, str3, str4, Integer.valueOf(1), (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(258065);
+          Object localObject2 = this.$intent;
+          Object localObject1 = localObject2;
+          if (localObject2 == null) {
+            localObject1 = new Intent();
+          }
+          ((Intent)localObject1).putExtra("key_create_scene", paramInt1);
+          localObject2 = com.tencent.mm.plugin.finder.utils.a.ACH;
+          com.tencent.mm.plugin.finder.utils.a.b(paramActivity, (Intent)localObject1, paramInt2);
+          localObject1 = paramOnClickListener1;
+          if (localObject1 != null)
+          {
+            ((DialogInterface.OnClickListener)localObject1).onClick(paramAnonymousDialogInterface, paramAnonymousInt);
+            AppMethodBeat.o(258065);
+            return;
+          }
+          AppMethodBeat.o(258065);
+        }
+      }, paramOnClickListener2, paramOnDismissListener, 6, null);
+      AppMethodBeat.o(233817);
+    }
+    
+    public final void showOverSeaAgreeConfirmDiaglog(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
+    {
+      AppMethodBeat.i(233842);
+      p.k(paramContext, "context");
+      p.k(paramString1, "title");
+      p.k(paramString2, "content");
+      com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e(paramContext, 1, false);
+      Object localObject = View.inflate(paramContext, b.g.finder_bottom_oversea_confirm, null);
+      if (localObject == null)
+      {
+        paramContext = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.ui.widget.RoundedCornerFrameLayout");
+        AppMethodBeat.o(233842);
+        throw paramContext;
+      }
+      localObject = (RoundedCornerFrameLayout)localObject;
+      ((RoundedCornerFrameLayout)localObject).v(aw.fromDPToPix(paramContext, 12), aw.fromDPToPix(paramContext, 12), 0.0F, 0.0F);
+      TextView localTextView1 = (TextView)((RoundedCornerFrameLayout)localObject).findViewById(b.f.finder_title);
+      p.j(localTextView1, "titleText");
+      localTextView1.setText((CharSequence)paramString1);
+      paramString1 = (TextView)((RoundedCornerFrameLayout)localObject).findViewById(b.f.finder_content);
+      p.j(paramString1, "contentText");
+      paramString1.setText((CharSequence)paramString2);
+      localTextView1 = (TextView)((RoundedCornerFrameLayout)localObject).findViewById(b.f.wx_service);
+      TextView localTextView2 = (TextView)((RoundedCornerFrameLayout)localObject).findViewById(b.f.wx_private);
+      paramString1 = com.tencent.mm.kernel.h.aHG();
+      p.j(paramString1, "MMKernel.storage()");
+      paramString2 = paramString1.aHp().b(274436, "").toString();
+      paramString1 = paramString2;
+      if (Util.isNullOrNil(paramString2)) {
+        paramString1 = LocaleUtil.getCurrentCountryCode();
+      }
+      paramString2 = paramString1;
+      if (!Util.isNullOrNil(paramString1))
+      {
+        paramString2 = paramString1;
+        if (!Util.isAllAlpha(paramString1)) {
+          paramString2 = "";
+        }
+      }
+      paramString1 = paramContext.getResources().getString(com.tencent.mm.plugin.setting.b.i.license_read_url, new Object[] { LocaleUtil.getApplicationLanguage(), paramString2, "setting", Integer.valueOf(0), Integer.valueOf(0) });
+      p.j(paramString1, "context.resources.getStr…tryCode, \"setting\", 0, 0)");
+      paramString2 = paramContext.getResources().getString(com.tencent.mm.plugin.setting.b.i.url_agreement, new Object[] { LocaleUtil.getApplicationLanguage(), paramString2 });
+      p.j(paramString2, "context.resources.getStr…nLanguage(), countryCode)");
+      af localaf = af.aaBG;
+      paramString2 = String.format("<a href='%s'>%s</a>", Arrays.copyOf(new Object[] { paramString2, paramContext.getResources().getString(com.tencent.mm.plugin.setting.b.i.license_detail) }, 2));
+      p.j(paramString2, "java.lang.String.format(format, *args)");
+      localTextView1.setText((CharSequence)paramString2);
+      paramString2 = af.aaBG;
+      paramContext = String.format("<a href='%s'>%s</a>", Arrays.copyOf(new Object[] { paramString1, paramContext.getResources().getString(com.tencent.mm.plugin.setting.b.i.privacy_detail) }, 2));
+      p.j(paramContext, "java.lang.String.format(format, *args)");
+      localTextView2.setText((CharSequence)paramContext);
+      com.tencent.mm.pluginsdk.ui.span.l.q(localTextView1, 1);
+      com.tencent.mm.pluginsdk.ui.span.l.q(localTextView2, 1);
+      paramContext = (Button)((RoundedCornerFrameLayout)localObject).findViewById(b.f.ok_btn);
+      paramString1 = (Button)((RoundedCornerFrameLayout)localObject).findViewById(b.f.cancel_btn);
+      paramContext.setOnClickListener((View.OnClickListener)new FinderBottomCustomDialogHelper.Companion.showOverSeaAgreeConfirmDiaglog.1(locale, paramOnClickListener));
+      paramString1.setOnClickListener((View.OnClickListener)new FinderBottomCustomDialogHelper.Companion.showOverSeaAgreeConfirmDiaglog.2(locale));
+      locale.a((q.f)new FinderBottomCustomDialogHelper.Companion.showOverSeaAgreeConfirmDiaglog.3(locale, (RoundedCornerFrameLayout)localObject));
+      locale.rn(true);
+      locale.eik();
+      AppMethodBeat.o(233842);
     }
     
     public final void showRealNameCertificationDialog(Activity paramActivity)
     {
-      AppMethodBeat.i(254638);
-      p.h(paramActivity, "context");
-      Drawable localDrawable = com.tencent.mm.cb.a.l((Context)paramActivity, 2131690936);
-      int i = com.tencent.mm.cb.a.n((Context)paramActivity, 2131101287);
-      String str1 = paramActivity.getString(2131760500);
-      p.g(str1, "context.getString(R.string.finder_real_name_title)");
-      String str2 = paramActivity.getString(2131760491);
-      p.g(str2, "context.getString(R.string.finder_real_name_msg)");
-      String str3 = paramActivity.getString(2131760492);
-      p.g(str3, "context.getString(R.stri…nder_real_name_ok_button)");
-      String str4 = paramActivity.getString(2131760490);
-      p.g(str4, "context.getString(R.stri…_real_name_cancel_button)");
-      showConfirmMsgDialog$default((Companion)this, (Context)paramActivity, localDrawable, i, str1, str2, str3, str4, (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
+      AppMethodBeat.i(233838);
+      p.k(paramActivity, "context");
+      Drawable localDrawable = com.tencent.mm.ci.a.m((Context)paramActivity, com.tencent.mm.plugin.finder.b.i.icons_outlined_wechat);
+      int i = com.tencent.mm.ci.a.w((Context)paramActivity, b.c.transparent);
+      String str1 = paramActivity.getString(b.j.finder_real_name_title);
+      p.j(str1, "context.getString(R.string.finder_real_name_title)");
+      String str2 = paramActivity.getString(b.j.finder_real_name_msg);
+      p.j(str2, "context.getString(R.string.finder_real_name_msg)");
+      String str3 = paramActivity.getString(b.j.finder_real_name_ok_button);
+      p.j(str3, "context.getString(R.stri…nder_real_name_ok_button)");
+      String str4 = paramActivity.getString(b.j.finder_real_name_cancel_button);
+      p.j(str4, "context.getString(R.stri…_real_name_cancel_button)");
+      showConfirmMsgDialog$default((Companion)this, (Context)paramActivity, localDrawable, i, str1, str2, str3, str4, null, (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(254629);
-          paramAnonymousDialogInterface = com.tencent.mm.plugin.finder.utils.a.vUU;
-          com.tencent.mm.plugin.finder.utils.a.am(this.$context);
-          paramAnonymousDialogInterface = k.vkd;
-          k.a(s.af.vqp);
-          AppMethodBeat.o(254629);
+          AppMethodBeat.i(270807);
+          paramAnonymousDialogInterface = com.tencent.mm.plugin.finder.utils.a.ACH;
+          com.tencent.mm.plugin.finder.utils.a.as(this.$context);
+          paramAnonymousDialogInterface = k.yBj;
+          k.a(s.aq.yJE);
+          AppMethodBeat.o(270807);
         }
-      }, null, (DialogInterface.OnDismissListener)showRealNameCertificationDialog.2.INSTANCE, 256, null);
-      AppMethodBeat.o(254638);
+      }, null, (DialogInterface.OnDismissListener)showRealNameCertificationDialog.2.INSTANCE, 640, null);
+      AppMethodBeat.o(233838);
     }
     
-    public final void showUserInfoConfirmDialog(Context paramContext, final String paramString, final DialogInterface.OnClickListener paramOnClickListener1, final DialogInterface.OnClickListener paramOnClickListener2)
+    public final void showRealNameCertificationDialogWithCallback(Activity paramActivity, final DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnDismissListener paramOnDismissListener)
     {
-      AppMethodBeat.i(254636);
-      p.h(paramContext, "context");
-      p.h(paramString, "finderUserName");
-      final String str1 = paramContext.getString(2131760668);
-      p.g(str1, "context.getString(R.stri…_user_info_confirm_title)");
-      final String str2 = paramContext.getString(2131760669);
-      p.g(str2, "context.getString(R.stri…nder_user_info_ok_button)");
-      final String str3 = paramContext.getString(2131760667);
-      p.g(str3, "context.getString(R.stri…_user_info_cancel_button)");
-      final View localView = View.inflate(paramContext, 2131494212, null);
+      AppMethodBeat.i(233825);
+      p.k(paramActivity, "context");
+      Drawable localDrawable = com.tencent.mm.ci.a.m((Context)paramActivity, com.tencent.mm.plugin.finder.b.i.icons_outlined_finder_icon);
+      int i = com.tencent.mm.ci.a.w((Context)paramActivity, b.c.Orange);
+      String str1 = paramActivity.getString(b.j.finder_create_title);
+      p.j(str1, "context.getString(R.string.finder_create_title)");
+      String str2 = paramActivity.getString(b.j.finder_create_accout_need_real_name_title);
+      p.j(str2, "context.getString(R.stri…out_need_real_name_title)");
+      String str3 = paramActivity.getString(b.j.finder_real_name_ok_button);
+      p.j(str3, "context.getString(R.stri…nder_real_name_ok_button)");
+      String str4 = paramActivity.getString(b.j.finder_real_name_cancel_button);
+      p.j(str4, "context.getString(R.stri…_real_name_cancel_button)");
+      ((Companion)this).showConfirmMsgDialog((Context)paramActivity, localDrawable, i, str1, str2, str3, str4, Integer.valueOf(1), (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(250282);
+          Object localObject = com.tencent.mm.plugin.finder.utils.a.ACH;
+          com.tencent.mm.plugin.finder.utils.a.as(this.$context);
+          localObject = paramOnClickListener1;
+          if (localObject != null)
+          {
+            ((DialogInterface.OnClickListener)localObject).onClick(paramAnonymousDialogInterface, paramAnonymousInt);
+            AppMethodBeat.o(250282);
+            return;
+          }
+          AppMethodBeat.o(250282);
+        }
+      }, paramOnClickListener2, paramOnDismissListener);
+      AppMethodBeat.o(233825);
+    }
+    
+    public final void showUserInfoConfirmDialog(Context paramContext, final String paramString, final DialogInterface.OnClickListener paramOnClickListener1, final DialogInterface.OnClickListener paramOnClickListener2, final DialogInterface.OnDismissListener paramOnDismissListener)
+    {
+      AppMethodBeat.i(233809);
+      p.k(paramContext, "context");
+      p.k(paramString, "finderUserName");
+      final String str1 = paramContext.getString(b.j.finder_user_info_confirm_title);
+      p.j(str1, "context.getString(R.stri…_user_info_confirm_title)");
+      final String str2 = paramContext.getString(b.j.finder_user_info_ok_button);
+      p.j(str2, "context.getString(R.stri…nder_user_info_ok_button)");
+      final String str3 = paramContext.getString(b.j.finder_user_info_cancel_button);
+      p.j(str3, "context.getString(R.stri…_user_info_cancel_button)");
+      final View localView = View.inflate(paramContext, b.g.finder_bottom_content_user_info, null);
       if (localView == null)
       {
         paramContext = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(254636);
+        AppMethodBeat.o(233809);
         throw paramContext;
       }
-      new FinderBottomCustomDialogHelper.UserInfoHelper(paramContext, paramString, (ViewGroup)localView).load((kotlin.g.a.b)new kotlin.g.b.q(paramContext)
+      new FinderBottomCustomDialogHelper.UserInfoHelper(paramContext, paramString, (ViewGroup)localView).load((b)new kotlin.g.b.q(paramContext)
       {
         public final void invoke(boolean paramAnonymousBoolean)
         {
-          AppMethodBeat.i(254633);
+          AppMethodBeat.i(285230);
           if (paramAnonymousBoolean)
           {
-            FinderBottomCustomDialogHelper.Companion.showConfirmDialog$default(FinderBottomCustomDialogHelper.Companion, this.$context$inlined, null, 0, str1, localView, str2, str3, paramOnClickListener1, paramOnClickListener2, (DialogInterface.OnDismissListener)FinderBottomCustomDialogHelper.Companion.showUserInfoConfirmDialog.1.1.1.INSTANCE, 6, null);
-            AppMethodBeat.o(254633);
+            FinderBottomCustomDialogHelper.Companion.showConfirmDialog$default(FinderBottomCustomDialogHelper.Companion, this.$context$inlined, null, 0, str1, localView, str2, str3, Integer.valueOf(1), paramOnClickListener1, paramOnClickListener2, (DialogInterface.OnDismissListener)new DialogInterface.OnDismissListener()
+            {
+              public final void onDismiss(DialogInterface paramAnonymous2DialogInterface)
+              {
+                AppMethodBeat.i(280290);
+                DialogInterface.OnDismissListener localOnDismissListener = this.this$0.$dismiss$inlined;
+                if (localOnDismissListener != null) {
+                  localOnDismissListener.onDismiss(paramAnonymous2DialogInterface);
+                }
+                paramAnonymous2DialogInterface = k.yBj;
+                k.a(s.aq.yJD);
+                AppMethodBeat.o(280290);
+              }
+            }, 6, null);
+            AppMethodBeat.o(285230);
             return;
           }
-          u.u(this.$context$inlined, this.$context$inlined.getString(2131766184), 2131690547);
-          AppMethodBeat.o(254633);
+          w.w(this.$context$inlined, this.$context$inlined.getString(b.j.sns_request_timeout), com.tencent.mm.plugin.finder.b.i.icons_filled_error);
+          AppMethodBeat.o(285230);
         }
       });
-      AppMethodBeat.o(254636);
+      AppMethodBeat.o(233809);
+    }
+    
+    public final void showUserInfoConfirmDialogOnLiveRedPacket(Context paramContext, final String paramString, final DialogInterface.OnClickListener paramOnClickListener1, final DialogInterface.OnClickListener paramOnClickListener2)
+    {
+      AppMethodBeat.i(233814);
+      p.k(paramContext, "context");
+      p.k(paramString, "finderUserName");
+      final String str1 = paramContext.getString(b.j.finder_user_info_confirm_title);
+      p.j(str1, "context.getString(R.stri…_user_info_confirm_title)");
+      final String str2 = paramContext.getString(b.j.finder_user_info_ok_button);
+      p.j(str2, "context.getString(R.stri…nder_user_info_ok_button)");
+      final String str3 = paramContext.getString(b.j.finder_user_info_cancel_button);
+      p.j(str3, "context.getString(R.stri…_user_info_cancel_button)");
+      final View localView = View.inflate(paramContext, b.g.finder_bottom_content_user_info, null);
+      if (localView == null)
+      {
+        paramContext = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
+        AppMethodBeat.o(233814);
+        throw paramContext;
+      }
+      new FinderBottomCustomDialogHelper.UserInfoHelper(paramContext, paramString, (ViewGroup)localView).load((b)new kotlin.g.b.q(paramContext)
+      {
+        public final void invoke(boolean paramAnonymousBoolean)
+        {
+          AppMethodBeat.i(269483);
+          if (paramAnonymousBoolean)
+          {
+            FinderBottomCustomDialogHelper.Companion.showConfirmDialog$default(FinderBottomCustomDialogHelper.Companion, this.$context$inlined, null, 0, str1, localView, str2, str3, Integer.valueOf(1), paramOnClickListener1, paramOnClickListener2, (DialogInterface.OnDismissListener)FinderBottomCustomDialogHelper.Companion.showUserInfoConfirmDialogOnLiveRedPacket.1.1.1.INSTANCE, 6, null);
+            AppMethodBeat.o(269483);
+            return;
+          }
+          w.w(this.$context$inlined, this.$context$inlined.getString(b.j.sns_request_timeout), com.tencent.mm.plugin.finder.b.i.icons_filled_error);
+          AppMethodBeat.o(269483);
+        }
+      });
+      AppMethodBeat.o(233814);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderBottomCustomDialogHelper$UserInfoHelper;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/content/Context;", "username", "", "userInfoContainer", "Landroid/view/ViewGroup;", "(Landroid/content/Context;Ljava/lang/String;Landroid/view/ViewGroup;)V", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "result", "", "getContext", "()Landroid/content/Context;", "dialogRunnable", "Lcom/tencent/threadpool/runnable/FutureEx;", "loadingDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getUsername", "()Ljava/lang/String;", "doSceneForUserInfo", "getChangeLeftRegionWidth", "", "text", "getLocationTextWidth", "locationText", "getTotalAvailableWidth", "", "getUserTagText", "userExtInfo", "Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileHeaderUIC$UserExtInfo;", "handleAuth", "finderContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "handleNickname", "load", "loadInternal", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "setProfileTextWidth", "availableWidth", "nameExtWidth", "Companion", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderBottomCustomDialogHelper$UserInfoHelper;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/content/Context;", "username", "", "userInfoContainer", "Landroid/view/ViewGroup;", "(Landroid/content/Context;Ljava/lang/String;Landroid/view/ViewGroup;)V", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "result", "", "getContext", "()Landroid/content/Context;", "dialogRunnable", "Lcom/tencent/threadpool/runnable/FutureEx;", "loadingDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getUsername", "()Ljava/lang/String;", "doSceneForUserInfo", "getChangeLeftRegionWidth", "", "text", "getLocationTextWidth", "locationText", "getTotalAvailableWidth", "", "getUserTagText", "userExtInfo", "Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileHeaderUIC$UserExtInfo;", "handleAuth", "finderContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "handleNickname", "load", "loadInternal", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "setProfileTextWidth", "availableWidth", "nameExtWidth", "Companion", "plugin-finder_release"})
   public static final class UserInfoHelper
-    implements com.tencent.mm.ak.i
+    implements com.tencent.mm.an.i
   {
     public static final Companion Companion;
     public static final String TAG = "ProfileHeaderHelper";
-    private static final com.tencent.mm.b.h<String, FinderProfileHeaderUIC.b> userExtInfoCache;
-    private kotlin.g.a.b<? super Boolean, x> callback;
+    private static final com.tencent.mm.b.h<String, j.b> userExtInfoCache;
+    private b<? super Boolean, x> callback;
     private final Context context;
-    private com.tencent.f.i.d<?> dialogRunnable;
-    private com.tencent.mm.ui.base.q loadingDialog;
+    private com.tencent.e.i.d<?> dialogRunnable;
+    private s loadingDialog;
     private final ViewGroup userInfoContainer;
     private final String username;
     
     static
     {
-      AppMethodBeat.i(254660);
+      AppMethodBeat.i(276235);
       Companion = new Companion(null);
       userExtInfoCache = new com.tencent.mm.b.h(100);
-      AppMethodBeat.o(254660);
+      AppMethodBeat.o(276235);
     }
     
     public UserInfoHelper(Context paramContext, String paramString, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(254659);
+      AppMethodBeat.i(276234);
       this.context = paramContext;
       this.username = paramString;
       this.userInfoContainer = paramViewGroup;
-      this.callback = ((kotlin.g.a.b)FinderBottomCustomDialogHelper.UserInfoHelper.callback.1.INSTANCE);
-      AppMethodBeat.o(254659);
+      this.callback = ((b)FinderBottomCustomDialogHelper.UserInfoHelper.callback.1.INSTANCE);
+      AppMethodBeat.o(276234);
     }
     
     private final void doSceneForUserInfo(String paramString)
     {
-      AppMethodBeat.i(254648);
+      AppMethodBeat.i(276210);
       Log.i("ProfileHeaderHelper", "doSceneForUserInfo, username:".concat(String.valueOf(paramString)));
       Object localObject = this.dialogRunnable;
       if (localObject != null) {
-        ((com.tencent.f.i.d)localObject).cancel(false);
+        ((com.tencent.e.i.d)localObject).cancel(false);
       }
-      this.dialogRunnable = com.tencent.f.h.RTc.n((Runnable)new Runnable()
+      this.dialogRunnable = com.tencent.e.h.ZvG.n((Runnable)new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(254646);
-          FinderBottomCustomDialogHelper.UserInfoHelper.access$setLoadingDialog$p(this.this$0, com.tencent.mm.ui.base.q.a(this.this$0.getContext(), (CharSequence)this.this$0.getContext().getString(2131762447), true, 3, null));
-          AppMethodBeat.o(254646);
+          AppMethodBeat.i(272270);
+          FinderBottomCustomDialogHelper.UserInfoHelper.access$setLoadingDialog$p(this.this$0, s.a(this.this$0.getContext(), (CharSequence)this.this$0.getContext().getString(b.j.loading_tips_1), true, 3, null));
+          AppMethodBeat.o(272270);
         }
       }, 1500L);
-      com.tencent.mm.kernel.g.azz().a(3736, (com.tencent.mm.ak.i)this);
-      localObject = com.tencent.mm.kernel.g.azz();
-      paramString = new cn(paramString, 0L, null, 0, null, 0, 0L, 110);
-      paramString.twC = true;
-      ((com.tencent.mm.ak.t)localObject).b((com.tencent.mm.ak.q)paramString);
-      AppMethodBeat.o(254648);
+      com.tencent.mm.kernel.h.aGY().a(3736, (com.tencent.mm.an.i)this);
+      localObject = com.tencent.mm.kernel.h.aGY();
+      paramString = new cr(paramString, 0L, null, 0, null, 0, 0L, 110);
+      paramString.xer = true;
+      ((com.tencent.mm.an.t)localObject).b((com.tencent.mm.an.q)paramString);
+      AppMethodBeat.o(276210);
     }
     
     private final float getChangeLeftRegionWidth(String paramString)
     {
-      AppMethodBeat.i(254656);
-      paramString = (ImageView)((View)this.userInfoContainer).findViewById(2131301415);
-      p.g(paramString, "userInfoContainer.finder_profile_auth_icon");
+      AppMethodBeat.i(276230);
+      paramString = (ImageView)((View)this.userInfoContainer).findViewById(b.f.finder_profile_auth_icon);
+      p.j(paramString, "userInfoContainer.finder_profile_auth_icon");
       if (paramString.getVisibility() == 0) {}
-      for (float f = com.tencent.mm.cb.a.aH(this.userInfoContainer.getContext(), 2131165297) + 0.0F;; f = 0.0F)
+      for (float f = com.tencent.mm.ci.a.aZ(this.userInfoContainer.getContext(), b.d.Edge_2_5_A) + 0.0F;; f = 0.0F)
       {
-        AppMethodBeat.o(254656);
+        AppMethodBeat.o(276230);
         return f;
       }
     }
     
     private final float getLocationTextWidth(String paramString)
     {
-      AppMethodBeat.i(254654);
+      AppMethodBeat.i(276226);
       float f = 0.0F;
       if (!Util.isNullOrNil(paramString))
       {
-        TextView localTextView = (TextView)((View)this.userInfoContainer).findViewById(2131309648);
-        p.g(localTextView, "userInfoContainer.user_tag_layout");
+        TextView localTextView = (TextView)((View)this.userInfoContainer).findViewById(b.f.user_tag_layout);
+        p.j(localTextView, "userInfoContainer.user_tag_layout");
         f = localTextView.getPaint().measureText(paramString);
       }
-      AppMethodBeat.o(254654);
+      AppMethodBeat.o(276226);
       return f;
     }
     
     private final int getTotalAvailableWidth()
     {
-      AppMethodBeat.i(254657);
+      AppMethodBeat.i(276232);
       Object localObject1 = new DisplayMetrics();
       Object localObject2 = this.userInfoContainer.getContext();
       if (localObject2 == null)
       {
         localObject1 = new kotlin.t("null cannot be cast to non-null type android.app.Activity");
-        AppMethodBeat.o(254657);
+        AppMethodBeat.o(276232);
         throw ((Throwable)localObject1);
       }
       localObject2 = ((Activity)localObject2).getWindowManager();
-      p.g(localObject2, "(userInfoContainer.conte…s Activity).windowManager");
+      p.j(localObject2, "(userInfoContainer.conte…s Activity).windowManager");
       ((WindowManager)localObject2).getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
       Log.i("ProfileHeaderHelper", "screen width :" + ((DisplayMetrics)localObject1).widthPixels);
       int i = ((DisplayMetrics)localObject1).widthPixels;
-      int j = com.tencent.mm.cb.a.aH(this.userInfoContainer.getContext(), 2131166350);
-      AppMethodBeat.o(254657);
+      int j = com.tencent.mm.ci.a.aZ(this.userInfoContainer.getContext(), b.d.finder_12_A);
+      AppMethodBeat.o(276232);
       return i - j;
     }
     
-    private final String getUserTagText(FinderProfileHeaderUIC.b paramb)
+    private final String getUserTagText(j.b paramb)
     {
-      AppMethodBeat.i(254658);
+      AppMethodBeat.i(276233);
       Object localObject = paramb.userTags;
       if (!((LinkedList)localObject).isEmpty())
       {
@@ -420,130 +657,130 @@ public final class FinderBottomCustomDialogHelper
         if (paramb != null)
         {
           paramb = paramb.toString();
-          p.g(paramb, "this.toString()");
+          p.j(paramb, "this.toString()");
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(254658);
+        AppMethodBeat.o(276233);
         return paramb;
         paramb = "";
       }
     }
     
-    private final void handleAuth(com.tencent.mm.plugin.finder.api.g paramg)
+    private final void handleAuth(com.tencent.mm.plugin.finder.api.i parami)
     {
-      AppMethodBeat.i(254653);
+      AppMethodBeat.i(276224);
       Object localObject;
-      if (paramg != null)
+      if (parami != null)
       {
-        localObject = paramg.field_authInfo;
+        localObject = parami.field_authInfo;
         if (localObject != null) {}
       }
       else
       {
         localObject = new StringBuilder("[handleAuthGenerator] profileContact=");
-        if (paramg != null) {}
+        if (parami != null) {}
         for (boolean bool = true;; bool = false)
         {
           Log.w("Finder.FinderProfileHeaderUIC", bool);
-          AppMethodBeat.o(254653);
+          AppMethodBeat.o(276224);
           return;
         }
       }
       if (((FinderAuthInfo)localObject).authIconType <= 0)
       {
         Log.w("Finder.FinderProfileHeaderUIC", "[handleAuthGenerator] authIconType<=0");
-        AppMethodBeat.o(254653);
+        AppMethodBeat.o(276224);
         return;
       }
-      paramg = y.vXH;
-      paramg = (ImageView)((View)this.userInfoContainer).findViewById(2131301415);
-      p.g(paramg, "userInfoContainer.finder_profile_auth_icon");
-      y.a(paramg, (FinderAuthInfo)localObject);
-      AppMethodBeat.o(254653);
+      parami = aj.AGc;
+      parami = (ImageView)((View)this.userInfoContainer).findViewById(b.f.finder_profile_auth_icon);
+      p.j(parami, "userInfoContainer.finder_profile_auth_icon");
+      aj.a(parami, (FinderAuthInfo)localObject);
+      AppMethodBeat.o(276224);
     }
     
-    private final void handleNickname(com.tencent.mm.plugin.finder.api.g paramg, ViewGroup paramViewGroup)
+    private final void handleNickname(com.tencent.mm.plugin.finder.api.i parami, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(254652);
-      if (paramg == null)
+      AppMethodBeat.i(276222);
+      if (parami == null)
       {
-        AppMethodBeat.o(254652);
+        AppMethodBeat.o(276222);
         return;
       }
-      Object localObject1 = (LinearLayout)((View)paramViewGroup).findViewById(2131301453);
-      p.g(localObject1, "userInfoContainer.finder_profile_name_container");
+      Object localObject1 = (LinearLayout)((View)paramViewGroup).findViewById(b.f.finder_profile_name_container);
+      p.j(localObject1, "userInfoContainer.finder_profile_name_container");
       localObject1 = ((LinearLayout)localObject1).getLayoutParams();
       if (localObject1 == null)
       {
-        paramg = new kotlin.t("null cannot be cast to non-null type android.support.constraint.ConstraintLayout.LayoutParams");
-        AppMethodBeat.o(254652);
-        throw paramg;
+        parami = new kotlin.t("null cannot be cast to non-null type androidx.constraintlayout.widget.ConstraintLayout.LayoutParams");
+        AppMethodBeat.o(276222);
+        throw parami;
       }
       Object localObject2 = (ConstraintLayout.LayoutParams)localObject1;
-      TextView localTextView2 = (TextView)paramViewGroup.findViewById(2131309648);
-      TextView localTextView1 = (TextView)paramViewGroup.findViewById(2131301454);
-      localObject1 = (ImageView)paramViewGroup.findViewById(2131301417);
-      p.g(localTextView2, "userTagLayout");
+      TextView localTextView2 = (TextView)paramViewGroup.findViewById(b.f.user_tag_layout);
+      TextView localTextView1 = (TextView)paramViewGroup.findViewById(b.f.finder_profile_name_tv);
+      localObject1 = (ImageView)paramViewGroup.findViewById(b.f.finder_profile_avatar_btn);
+      p.j(localTextView2, "userTagLayout");
       if (localTextView2.getVisibility() == 4)
       {
-        ((ConstraintLayout.LayoutParams)localObject2).bottomToTop = -1;
-        ((ConstraintLayout.LayoutParams)localObject2).topToTop = 2131301418;
+        ((ConstraintLayout.LayoutParams)localObject2).Ff = -1;
+        ((ConstraintLayout.LayoutParams)localObject2).Fd = b.f.finder_profile_avatar_container;
       }
-      for (((ConstraintLayout.LayoutParams)localObject2).bottomToBottom = 2131301418;; ((ConstraintLayout.LayoutParams)localObject2).bottomToBottom = -1)
+      for (((ConstraintLayout.LayoutParams)localObject2).Fg = b.f.finder_profile_avatar_container;; ((ConstraintLayout.LayoutParams)localObject2).Fg = -1)
       {
-        paramViewGroup = (LinearLayout)((View)paramViewGroup).findViewById(2131301453);
-        p.g(paramViewGroup, "userInfoContainer.finder_profile_name_container");
+        paramViewGroup = (LinearLayout)((View)paramViewGroup).findViewById(b.f.finder_profile_name_container);
+        p.j(paramViewGroup, "userInfoContainer.finder_profile_name_container");
         paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        p.g(localTextView1, "userNameTv");
-        ao.a((Paint)localTextView1.getPaint(), 0.8F);
-        paramViewGroup = com.tencent.mm.plugin.finder.loader.m.uJa;
-        paramViewGroup = com.tencent.mm.plugin.finder.loader.m.dka();
-        paramg = new com.tencent.mm.plugin.finder.loader.a(paramg.field_avatarUrl);
-        p.g(localObject1, "userAvatarIv");
-        localObject2 = com.tencent.mm.plugin.finder.loader.m.uJa;
-        paramViewGroup.a(paramg, (ImageView)localObject1, com.tencent.mm.plugin.finder.loader.m.a(m.a.uJe));
-        AppMethodBeat.o(254652);
+        p.j(localTextView1, "userNameTv");
+        ar.a((Paint)localTextView1.getPaint(), 0.8F);
+        paramViewGroup = com.tencent.mm.plugin.finder.loader.t.ztT;
+        paramViewGroup = com.tencent.mm.plugin.finder.loader.t.dJh();
+        parami = new com.tencent.mm.plugin.finder.loader.e(parami.field_avatarUrl);
+        p.j(localObject1, "userAvatarIv");
+        localObject2 = com.tencent.mm.plugin.finder.loader.t.ztT;
+        paramViewGroup.a(parami, (ImageView)localObject1, com.tencent.mm.plugin.finder.loader.t.a(t.a.ztX));
+        AppMethodBeat.o(276222);
         return;
-        ((ConstraintLayout.LayoutParams)localObject2).bottomToTop = 2131301419;
-        ((ConstraintLayout.LayoutParams)localObject2).topToTop = -1;
+        ((ConstraintLayout.LayoutParams)localObject2).Ff = b.f.finder_profile_avatar_guideline;
+        ((ConstraintLayout.LayoutParams)localObject2).Fd = -1;
       }
     }
     
     private final void loadInternal()
     {
-      AppMethodBeat.i(254651);
+      AppMethodBeat.i(276219);
       Object localObject1 = userExtInfoCache.get(this.username);
-      p.g(localObject1, "userExtInfoCache[username]");
-      String str = getUserTagText((FinderProfileHeaderUIC.b)localObject1);
-      localObject1 = c.tsp;
-      com.tencent.mm.plugin.finder.api.g localg = c.a.asG(this.username);
+      p.j(localObject1, "userExtInfoCache[username]");
+      String str = getUserTagText((j.b)localObject1);
+      localObject1 = com.tencent.mm.plugin.finder.api.d.wZQ;
+      com.tencent.mm.plugin.finder.api.i locali = d.a.aAK(this.username);
       Object localObject2 = this.context;
       int i;
       float f1;
-      if (localg != null)
+      if (locali != null)
       {
-        localObject1 = localg.getNickname();
+        localObject1 = locali.getNickname();
         localObject1 = com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject2, (CharSequence)localObject1).toString();
-        p.g(localObject1, "MMSpanManager.spanForSmi…act?.nickname).toString()");
+        p.j(localObject1, "MMSpanManager.spanForSmi…act?.nickname).toString()");
         i = getTotalAvailableWidth();
         f1 = getChangeLeftRegionWidth((String)localObject1);
-        localObject2 = (TextView)((View)this.userInfoContainer).findViewById(2131301454);
-        p.g(localObject2, "userInfoContainer.finder_profile_name_tv");
+        localObject2 = (TextView)((View)this.userInfoContainer).findViewById(b.f.finder_profile_name_tv);
+        p.j(localObject2, "userInfoContainer.finder_profile_name_tv");
         float f2 = ((TextView)localObject2).getPaint().measureText((String)localObject1);
         float f3 = getLocationTextWidth(str);
         if ((f2 + f1 <= i) && (f3 <= i)) {
           break label235;
         }
-        setProfileTextWidth((String)localObject1, str, i - com.tencent.mm.cb.a.aH(this.userInfoContainer.getContext(), 2131165296), (int)f1);
+        setProfileTextWidth((String)localObject1, str, i - com.tencent.mm.ci.a.aZ(this.userInfoContainer.getContext(), b.d.Edge_2A), (int)f1);
       }
       for (;;)
       {
-        handleNickname(localg, this.userInfoContainer);
-        handleAuth(localg);
+        handleNickname(locali, this.userInfoContainer);
+        handleAuth(locali);
         this.callback.invoke(Boolean.TRUE);
-        AppMethodBeat.o(254651);
+        AppMethodBeat.o(276219);
         return;
         localObject1 = null;
         break;
@@ -554,20 +791,20 @@ public final class FinderBottomCustomDialogHelper
     
     private final void setProfileTextWidth(String paramString1, String paramString2, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(254655);
-      TextView localTextView = (TextView)((View)this.userInfoContainer).findViewById(2131301454);
-      p.g(localTextView, "userInfoContainer.finder_profile_name_tv");
+      AppMethodBeat.i(276228);
+      TextView localTextView = (TextView)((View)this.userInfoContainer).findViewById(b.f.finder_profile_name_tv);
+      p.j(localTextView, "userInfoContainer.finder_profile_name_tv");
       localTextView.setMaxWidth(paramInt1 - paramInt2);
-      localTextView = (TextView)((View)this.userInfoContainer).findViewById(2131301454);
-      p.g(localTextView, "userInfoContainer.finder_profile_name_tv");
+      localTextView = (TextView)((View)this.userInfoContainer).findViewById(b.f.finder_profile_name_tv);
+      p.j(localTextView, "userInfoContainer.finder_profile_name_tv");
       localTextView.setText((CharSequence)paramString1);
-      paramString1 = (TextView)((View)this.userInfoContainer).findViewById(2131309648);
-      p.g(paramString1, "userInfoContainer.user_tag_layout");
+      paramString1 = (TextView)((View)this.userInfoContainer).findViewById(b.f.user_tag_layout);
+      p.j(paramString1, "userInfoContainer.user_tag_layout");
       paramString1.setMaxWidth(paramInt1);
-      paramString1 = (TextView)((View)this.userInfoContainer).findViewById(2131309648);
-      p.g(paramString1, "userInfoContainer.user_tag_layout");
+      paramString1 = (TextView)((View)this.userInfoContainer).findViewById(b.f.user_tag_layout);
+      p.j(paramString1, "userInfoContainer.user_tag_layout");
       paramString1.setText((CharSequence)paramString2);
-      AppMethodBeat.o(254655);
+      AppMethodBeat.o(276228);
     }
     
     public final Context getContext()
@@ -580,24 +817,24 @@ public final class FinderBottomCustomDialogHelper
       return this.username;
     }
     
-    public final void load(kotlin.g.a.b<? super Boolean, x> paramb)
+    public final void load(b<? super Boolean, x> paramb)
     {
-      AppMethodBeat.i(254650);
-      p.h(paramb, "callback");
+      AppMethodBeat.i(276215);
+      p.k(paramb, "callback");
       this.callback = paramb;
       if (!userExtInfoCache.check(this.username))
       {
         doSceneForUserInfo(this.username);
-        AppMethodBeat.o(254650);
+        AppMethodBeat.o(276215);
         return;
       }
       loadInternal();
-      AppMethodBeat.o(254650);
+      AppMethodBeat.o(276215);
     }
     
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
     {
-      AppMethodBeat.i(254649);
+      AppMethodBeat.i(276213);
       paramString = this.loadingDialog;
       if (paramString != null) {
         paramString.dismiss();
@@ -607,43 +844,43 @@ public final class FinderBottomCustomDialogHelper
         paramString.cancel(false);
       }
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        if ((paramq instanceof cn))
+        if ((paramq instanceof cr))
         {
           StringBuilder localStringBuilder = new StringBuilder("username=").append(this.username).append(", scene username=");
-          paramString = ((cn)paramq).cZk();
+          paramString = ((cr)paramq).dpc();
           if (paramString == null) {
             break label249;
           }
           paramString = paramString.username;
           Log.i("ProfileHeaderHelper", paramString);
-          paramString = (FinderProfileHeaderUIC.b)userExtInfoCache.get(this.username);
+          paramString = (j.b)userExtInfoCache.get(this.username);
           if (paramString != null) {
             break label270;
           }
-          paramString = new FinderProfileHeaderUIC.b();
+          paramString = new j.b();
         }
       }
       label270:
       for (;;)
       {
-        paramString.fansCount = ((cn)paramq).fansCount;
-        paramString.friendFollowCount = ((cn)paramq).friendFollowCount;
-        paramString.at(new LinkedList((Collection)((cn)paramq).userTags));
-        paramString.vcb = ((cn)paramq).cZl();
+        paramString.fansCount = ((cr)paramq).fansCount;
+        paramString.friendFollowCount = ((cr)paramq).friendFollowCount;
+        paramString.aL(new LinkedList((Collection)((cr)paramq).userTags));
+        paramString.zSA = ((cr)paramq).dpd();
         userExtInfoCache.put(this.username, paramString);
         new MMHandler(Looper.getMainLooper()).postUI((Runnable)new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(254647);
+            AppMethodBeat.i(277999);
             FinderBottomCustomDialogHelper.UserInfoHelper.access$loadInternal(this.this$0);
-            AppMethodBeat.o(254647);
+            AppMethodBeat.o(277999);
           }
         });
         for (;;)
         {
-          com.tencent.mm.kernel.g.azz().b(3736, (com.tencent.mm.ak.i)this);
-          AppMethodBeat.o(254649);
+          com.tencent.mm.kernel.h.aGY().b(3736, (com.tencent.mm.an.i)this);
+          AppMethodBeat.o(276213);
           return;
           label249:
           paramString = null;
@@ -653,14 +890,14 @@ public final class FinderBottomCustomDialogHelper
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderBottomCustomDialogHelper$UserInfoHelper$Companion;", "", "()V", "TAG", "", "userExtInfoCache", "Lcom/tencent/mm/algorithm/MMLRUMap;", "Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileHeaderUIC$UserExtInfo;", "getUserExtInfoCache", "()Lcom/tencent/mm/algorithm/MMLRUMap;", "plugin-finder_release"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderBottomCustomDialogHelper$UserInfoHelper$Companion;", "", "()V", "TAG", "", "userExtInfoCache", "Lcom/tencent/mm/algorithm/MMLRUMap;", "Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileHeaderUIC$UserExtInfo;", "getUserExtInfoCache", "()Lcom/tencent/mm/algorithm/MMLRUMap;", "plugin-finder_release"})
     public static final class Companion
     {
-      public final com.tencent.mm.b.h<String, FinderProfileHeaderUIC.b> getUserExtInfoCache()
+      public final com.tencent.mm.b.h<String, j.b> getUserExtInfoCache()
       {
-        AppMethodBeat.i(254643);
+        AppMethodBeat.i(258257);
         com.tencent.mm.b.h localh = FinderBottomCustomDialogHelper.UserInfoHelper.access$getUserExtInfoCache$cp();
-        AppMethodBeat.o(254643);
+        AppMethodBeat.o(258257);
         return localh;
       }
     }

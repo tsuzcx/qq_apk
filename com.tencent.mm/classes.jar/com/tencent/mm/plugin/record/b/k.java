@@ -2,12 +2,13 @@ package com.tencent.mm.plugin.record.b;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.record.a.d;
 import com.tencent.mm.plugin.record.a.e;
 import com.tencent.mm.plugin.record.a.j;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.Iterator;
@@ -19,22 +20,30 @@ public final class k
   extends MAutoStorage<j>
   implements e
 {
-  private Vector<d> BGU;
+  private Vector<d> HDa;
   private ISQLiteDatabase db;
   
   public k(ISQLiteDatabase paramISQLiteDatabase)
   {
     super(paramISQLiteDatabase, j.info, "RecordCDNInfo", null);
     AppMethodBeat.i(9500);
-    this.BGU = new Vector();
+    this.HDa = new Vector();
     this.db = paramISQLiteDatabase;
     AppMethodBeat.o(9500);
+  }
+  
+  public k(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
+  {
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
+    AppMethodBeat.i(209948);
+    this.HDa = new Vector();
+    AppMethodBeat.o(209948);
   }
   
   private void b(final int paramInt, final j paramj)
   {
     AppMethodBeat.i(9503);
-    g.aAk().postToWorker(new Runnable()
+    h.aHJ().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -49,31 +58,10 @@ public final class k
     AppMethodBeat.o(9503);
   }
   
-  public final List<j> Vt(int paramInt)
-  {
-    AppMethodBeat.i(9505);
-    LinkedList localLinkedList = new LinkedList();
-    Object localObject = "SELECT * FROM RecordCDNInfo WHERE recordLocalId = ".concat(String.valueOf(paramInt));
-    localObject = this.db.rawQuery((String)localObject, null, 2);
-    if (localObject != null)
-    {
-      while (((Cursor)localObject).moveToNext())
-      {
-        j localj = new j();
-        localj.convertFrom((Cursor)localObject);
-        localLinkedList.add(localj);
-      }
-      ((Cursor)localObject).close();
-    }
-    Log.d("MicroMsg.RecordMsgCDNStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
-    AppMethodBeat.o(9505);
-    return localLinkedList;
-  }
-  
   public final void a(final d paramd)
   {
     AppMethodBeat.i(9501);
-    g.aAk().postToWorker(new Runnable()
+    h.aHJ().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -113,7 +101,7 @@ public final class k
     return false;
   }
   
-  public final j aKX(String paramString)
+  public final j aVy(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(9506);
@@ -136,10 +124,31 @@ public final class k
     return paramString;
   }
   
+  public final List<j> acb(int paramInt)
+  {
+    AppMethodBeat.i(9505);
+    LinkedList localLinkedList = new LinkedList();
+    Object localObject = "SELECT * FROM RecordCDNInfo WHERE recordLocalId = ".concat(String.valueOf(paramInt));
+    localObject = this.db.rawQuery((String)localObject, null, 2);
+    if (localObject != null)
+    {
+      while (((Cursor)localObject).moveToNext())
+      {
+        j localj = new j();
+        localj.convertFrom((Cursor)localObject);
+        localLinkedList.add(localj);
+      }
+      ((Cursor)localObject).close();
+    }
+    Log.d("MicroMsg.RecordMsgCDNStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
+    AppMethodBeat.o(9505);
+    return localLinkedList;
+  }
+  
   public final void b(final d paramd)
   {
     AppMethodBeat.i(9502);
-    g.aAk().postToWorker(new Runnable()
+    h.aHJ().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -187,7 +196,7 @@ public final class k
     return false;
   }
   
-  public final List<j> eIk()
+  public final List<j> fup()
   {
     AppMethodBeat.i(9504);
     LinkedList localLinkedList = new LinkedList();
@@ -209,7 +218,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.record.b.k
  * JD-Core Version:    0.7.0.1
  */

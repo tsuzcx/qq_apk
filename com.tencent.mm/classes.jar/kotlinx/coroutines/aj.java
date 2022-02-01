@@ -1,53 +1,65 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.d.f;
+import kotlin.d.a;
 import kotlin.d.f.c;
 import kotlin.l;
-import kotlinx.coroutines.internal.e;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"isActive", "", "Lkotlinx/coroutines/CoroutineScope;", "isActive$annotations", "(Lkotlinx/coroutines/CoroutineScope;)V", "(Lkotlinx/coroutines/CoroutineScope;)Z", "CoroutineScope", "context", "Lkotlin/coroutines/CoroutineContext;", "MainScope", "coroutineScope", "R", "block", "Lkotlin/Function2;", "Lkotlin/coroutines/Continuation;", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "cancel", "", "message", "", "cause", "", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "ensureActive", "plus", "kotlinx-coroutines-core"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/CoroutineName;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "name", "", "(Ljava/lang/String;)V", "getName", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "", "hashCode", "", "toString", "Key", "kotlinx-coroutines-core"})
 public final class aj
+  extends a
 {
-  public static final boolean a(ai paramai)
+  public static final a abwz;
+  
+  static
   {
-    AppMethodBeat.i(192512);
-    paramai = (bu)paramai.hMk().get((f.c)bu.TUO);
-    if (paramai != null)
-    {
-      boolean bool = paramai.isActive();
-      AppMethodBeat.o(192512);
-      return bool;
-    }
-    AppMethodBeat.o(192512);
-    return true;
+    AppMethodBeat.i(118179);
+    abwz = new a((byte)0);
+    AppMethodBeat.o(118179);
   }
   
-  public static final void b(ai paramai)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(192513);
-    bu localbu = (bu)paramai.hMk().get((f.c)bu.TUO);
-    if (localbu == null)
+    AppMethodBeat.i(118181);
+    if (this != paramObject)
     {
-      paramai = (Throwable)new IllegalStateException("Scope cannot be cancelled because it does not have a job: ".concat(String.valueOf(paramai)).toString());
-      AppMethodBeat.o(192513);
-      throw paramai;
+      if ((paramObject instanceof aj))
+      {
+        AppMethodBeat.o(118181);
+        throw null;
+      }
     }
-    localbu.a(null);
-    AppMethodBeat.o(192513);
+    else
+    {
+      AppMethodBeat.o(118181);
+      return true;
+    }
+    AppMethodBeat.o(118181);
+    return false;
   }
   
-  public static final ai hMI()
+  public final int hashCode()
   {
-    AppMethodBeat.i(192511);
-    ai localai = (ai)new e(cn.hNy().plus((f)ba.hMV()));
-    AppMethodBeat.o(192511);
-    return localai;
+    AppMethodBeat.i(118180);
+    AppMethodBeat.o(118180);
+    throw null;
   }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(118178);
+    AppMethodBeat.o(118178);
+    throw null;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/CoroutineName$Key;", "Lkotlin/coroutines/CoroutineContext$Key;", "Lkotlinx/coroutines/CoroutineName;", "()V", "kotlinx-coroutines-core"})
+  public static final class a
+    implements f.c<aj>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlinx.coroutines.aj
  * JD-Core Version:    0.7.0.1
  */

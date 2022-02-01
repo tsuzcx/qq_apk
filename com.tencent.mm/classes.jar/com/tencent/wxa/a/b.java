@@ -4,15 +4,15 @@ import io.flutter.plugin.a.k.d;
 
 final class b
 {
-  Object SxX;
-  k.d SxY;
+  Object ZZe;
+  k.d ZZf;
   String method;
   
   b(String paramString, Object paramObject, k.d paramd)
   {
     this.method = paramString;
-    this.SxX = paramObject;
-    this.SxY = paramd;
+    this.ZZe = paramObject;
+    this.ZZf = paramd;
   }
 }
 

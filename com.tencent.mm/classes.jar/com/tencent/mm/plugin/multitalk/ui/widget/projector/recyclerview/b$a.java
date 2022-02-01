@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.multitalk.ui.widget.projector.recyclerview;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/recyclerview/ScreenProjectThumbLayoutAdapter$Companion;", "", "()V", "MAX_HEIGHT", "", "MAX_WIDTH", "MIN_WIDTH", "radius", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/recyclerview/ScreenProjectThumbLayoutAdapter$Companion;", "", "()V", "MAX_HEIGHT", "", "MAX_WIDTH", "MIN_WIDTH", "radius", "plugin-multitalk_release"})
 public final class b$a {}
 
 

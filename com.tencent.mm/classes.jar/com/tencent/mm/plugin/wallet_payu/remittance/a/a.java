@@ -9,30 +9,30 @@ import org.json.JSONObject;
 public final class a
   extends com.tencent.mm.wallet_core.e.a.a
 {
-  public int Isv;
-  public double Iut;
-  public String Iuu;
-  public String dDL;
-  public double dDO;
-  public String dFv;
-  public String dQm;
-  public String dkV;
-  public int oLM;
-  public String pin;
+  public String Pla;
+  public int Plf;
+  public double Pnd;
+  public String Pne;
+  public String fJD;
+  public String fcD;
+  public String fwv;
+  public double fwy;
+  public String fyc;
+  public int rNB;
   
   public a(String paramString1, String paramString2, double paramDouble, String paramString3, int paramInt, String paramString4, String paramString5, String paramString6)
   {
     AppMethodBeat.i(72166);
-    this.dDL = paramString1;
-    this.pin = paramString2;
-    this.dDO = paramDouble;
-    this.dFv = paramString3;
+    this.fwv = paramString1;
+    this.Pla = paramString2;
+    this.fwy = paramDouble;
+    this.fyc = paramString3;
     if (paramInt == 2) {}
     for (int i = 0;; i = paramInt)
     {
-      this.oLM = i;
-      this.dkV = paramString4;
-      this.dQm = paramString5;
+      this.rNB = i;
+      this.fcD = paramString4;
+      this.fJD = paramString5;
       HashMap localHashMap = new HashMap();
       localHashMap.put("pin", paramString2);
       localHashMap.put("req_key", paramString1);
@@ -48,7 +48,7 @@ public final class a
     }
   }
   
-  public final int fPU()
+  public final int gIA()
   {
     return 14;
   }
@@ -56,9 +56,9 @@ public final class a
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72167);
-    this.Isv = paramJSONObject.optInt("response_result");
-    this.Iut = Util.getDouble(paramJSONObject.optString("total_fee"), 0.0D);
-    this.Iuu = paramJSONObject.optString("fee_type");
+    this.Plf = paramJSONObject.optInt("response_result");
+    this.Pnd = Util.getDouble(paramJSONObject.optString("total_fee"), 0.0D);
+    this.Pne = paramJSONObject.optString("fee_type");
     AppMethodBeat.o(72167);
   }
 }

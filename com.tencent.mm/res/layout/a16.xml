@@ -20,7 +20,7 @@
     <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
         <RelativeLayout android:id="@id/aiz" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <LinearLayout android:orientation="vertical" android:id="@id/aiu" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <android.support.v7.widget.RecyclerView android:id="@id/ait" android:fadingEdge="vertical" android:fadingEdgeLength="@dimen/ce" android:layout_width="fill_parent" android:layout_height="@dimen/cd" android:layout_marginTop="@dimen/ct" android:layout_marginBottom="@dimen/ce" />
+                <androidx.recyclerview.widget.RecyclerView android:id="@id/ait" android:fadingEdge="vertical" android:fadingEdgeLength="@dimen/ce" android:layout_width="fill_parent" android:layout_height="@dimen/cd" android:layout_marginTop="@dimen/ct" android:layout_marginBottom="@dimen/ce" />
                 <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b3h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c5">
                     <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_filled_delete" android:layout_marginStart="@dimen/ce" app:iconColor="@color/am" />
                     <TextView android:textSize="@dimen/l" android:textColor="@color/am" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hw0" android:layout_marginStart="@dimen/bt" />
@@ -34,7 +34,7 @@
         </RelativeLayout>
         <RelativeLayout android:id="@id/gwm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <LinearLayout android:orientation="vertical" android:id="@id/gwk" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <android.support.v7.widget.RecyclerView android:id="@id/gwj" android:fadingEdge="vertical" android:fadingEdgeLength="@dimen/ce" android:layout_width="fill_parent" android:layout_height="@dimen/cd" android:layout_marginTop="@dimen/ct" android:layout_marginBottom="@dimen/ce" />
+                <androidx.recyclerview.widget.RecyclerView android:id="@id/gwj" android:fadingEdge="vertical" android:fadingEdgeLength="@dimen/ce" android:layout_width="fill_parent" android:layout_height="@dimen/cd" android:layout_marginTop="@dimen/ct" android:layout_marginBottom="@dimen/ce" />
                 <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b3j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c5">
                     <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_filled_delete" android:layout_marginStart="@dimen/ce" app:iconColor="@color/am" />
                     <TextView android:textSize="@dimen/l" android:textColor="@color/am" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hw0" android:layout_marginStart="@dimen/bt" />

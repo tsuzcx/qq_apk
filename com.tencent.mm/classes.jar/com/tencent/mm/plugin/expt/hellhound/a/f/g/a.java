@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.g;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cyl;
+import com.tencent.mm.hellhoundlib.a.d;
+import com.tencent.mm.protocal.protobuf.dhx;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,48 +13,48 @@ import java.util.Map;
 
 public final class a
 {
-  private static final com.tencent.mm.hellhoundlib.a.c sIS;
-  private static volatile boolean sIT;
+  private static final d woP;
+  private static volatile boolean woQ;
   
   static
   {
     AppMethodBeat.i(169369);
-    sIS = new com.tencent.mm.hellhoundlib.a.c()
+    woP = new d()
     {
       public final void a(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, Object paramAnonymousObject1, Object paramAnonymousObject2) {}
       
-      public final void a(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, Object paramAnonymousObject, Object[] paramAnonymousArrayOfObject)
+      public final void b(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, Object paramAnonymousObject, Object[] paramAnonymousArrayOfObject)
       {
         AppMethodBeat.i(184386);
-        com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().m(220, Long.valueOf(System.currentTimeMillis()));
+        com.tencent.mm.plugin.expt.hellhound.core.a.a.c.dcB().p(220, Long.valueOf(System.currentTimeMillis()));
         AppMethodBeat.o(184386);
       }
     };
-    sIT = false;
+    woQ = false;
     AppMethodBeat.o(169369);
   }
   
-  public static void Dx(long paramLong)
+  public static void JL(long paramLong)
   {
     AppMethodBeat.i(184387);
-    cyl localcyl = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
-    if (localcyl == null)
+    dhx localdhx = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.dfi();
+    if (localdhx == null)
     {
       Log.e("HABBYGE-MALI.ScanSessionHandler", "baseScanUIGoBack, session End !!");
       AppMethodBeat.o(184387);
       return;
     }
-    Log.i("HABBYGE-MALI.ScanSessionHandler", "ScanSessionHandler, baseScanUIGoBack: %s", new Object[] { localcyl.sessionId });
-    if (arb(localcyl.sessionId)) {
-      com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO().a(localcyl, paramLong);
+    Log.i("HABBYGE-MALI.ScanSessionHandler", "ScanSessionHandler, baseScanUIGoBack: %s", new Object[] { localdhx.sessionId });
+    if (azc(localdhx.sessionId)) {
+      com.tencent.mm.plugin.expt.hellhound.a.f.b.deI().a(localdhx, paramLong);
     }
     AppMethodBeat.o(184387);
   }
   
-  public static boolean arb(String paramString)
+  public static boolean azc(String paramString)
   {
     AppMethodBeat.i(122266);
-    paramString = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqn(paramString);
+    paramString = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.ayn(paramString);
     if (("124".equals(paramString)) || ("109".equals(paramString)))
     {
       AppMethodBeat.o(122266);
@@ -63,10 +64,10 @@ public final class a
     return false;
   }
   
-  public static void arc(String paramString)
+  public static void azd(String paramString)
   {
     AppMethodBeat.i(169363);
-    if (!com.tencent.mm.plugin.expt.hellhound.core.b.aoR(paramString))
+    if (!com.tencent.mm.plugin.expt.hellhound.core.b.awQ(paramString))
     {
       AppMethodBeat.o(169363);
       return;
@@ -76,84 +77,84 @@ public final class a
     paramString.add(Pair.create("goBack", "()V"));
     HashMap localHashMap = new HashMap();
     localHashMap.put("com/tencent/mm/plugin/scanner/ui/BaseScanUI", paramString);
-    com.tencent.mm.hellhoundlib.a.axP();
-    com.tencent.mm.hellhoundlib.a.a(localHashMap, sIS);
+    com.tencent.mm.hellhoundlib.a.aFg();
+    com.tencent.mm.hellhoundlib.a.a(localHashMap, woP);
     AppMethodBeat.o(169363);
   }
   
-  public static void ard(String paramString)
+  public static void aze(String paramString)
   {
     AppMethodBeat.i(169364);
-    if (!com.tencent.mm.plugin.expt.hellhound.core.b.aoR(paramString))
+    if (!com.tencent.mm.plugin.expt.hellhound.core.b.awQ(paramString))
     {
       AppMethodBeat.o(169364);
       return;
     }
-    com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().GP(221);
+    com.tencent.mm.plugin.expt.hellhound.core.a.a.c.dcB().Kz(221);
     AppMethodBeat.o(169364);
   }
   
-  private static void c(cyl paramcyl, String paramString, int paramInt, long paramLong)
+  private static void c(dhx paramdhx, String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(220595);
-    if ((paramcyl == null) || (TextUtils.isEmpty(paramString)))
+    AppMethodBeat.i(253635);
+    if ((paramdhx == null) || (TextUtils.isEmpty(paramString)))
     {
-      AppMethodBeat.o(220595);
+      AppMethodBeat.o(253635);
       return;
     }
-    if (arb(paramcyl.sessionId)) {
-      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.b(paramcyl, paramString, paramInt, paramLong);
+    if (azc(paramdhx.sessionId)) {
+      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.b(paramdhx, paramString, paramInt, paramLong);
     }
-    AppMethodBeat.o(220595);
+    AppMethodBeat.o(253635);
   }
   
-  public static void cQK()
+  public static void dfE()
   {
     AppMethodBeat.i(169365);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Pair.create("goBack", "()V"));
     HashMap localHashMap = new HashMap();
     localHashMap.put("com/tencent/mm/plugin/scanner/ui/BaseScanUI", localArrayList);
-    com.tencent.mm.hellhoundlib.a.axP();
-    com.tencent.mm.hellhoundlib.a.b(localHashMap, sIS);
+    com.tencent.mm.hellhoundlib.a.aFg();
+    com.tencent.mm.hellhoundlib.a.b(localHashMap, woP);
     AppMethodBeat.o(169365);
   }
   
-  public static void y(String paramString, int paramInt, long paramLong)
+  public static void z(String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(220594);
-    cyl localcyl = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
-    if (localcyl == null)
+    AppMethodBeat.i(253632);
+    dhx localdhx = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.dfi();
+    if (localdhx == null)
     {
-      AppMethodBeat.o(220594);
+      AppMethodBeat.o(253632);
       return;
     }
-    Log.i("HABBYGE-MALI.ScanSessionHandler", "ScanSessionHandler, curSession: %s, %s", new Object[] { localcyl.sessionId, paramString });
-    if (arb(localcyl.sessionId))
+    Log.i("HABBYGE-MALI.ScanSessionHandler", "ScanSessionHandler, curSession: %s, %s", new Object[] { localdhx.sessionId, paramString });
+    if (azc(localdhx.sessionId))
     {
-      String str = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(paramString);
-      if (com.tencent.mm.plugin.expt.hellhound.core.b.aoz(paramString))
+      String str = com.tencent.mm.plugin.expt.hellhound.core.b.awD(paramString);
+      if (com.tencent.mm.plugin.expt.hellhound.core.b.awy(paramString))
       {
-        if (!sIT)
+        if (!woQ)
         {
-          sIT = true;
-          c(localcyl, str, paramInt, paramLong);
-          AppMethodBeat.o(220594);
+          woQ = true;
+          c(localdhx, str, paramInt, paramLong);
+          AppMethodBeat.o(253632);
           return;
         }
-        sIT = false;
-        com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO().a(localcyl, paramLong);
-        AppMethodBeat.o(220594);
+        woQ = false;
+        com.tencent.mm.plugin.expt.hellhound.a.f.b.deI().a(localdhx, paramLong);
+        AppMethodBeat.o(253632);
         return;
       }
-      c(localcyl, str, paramInt, paramLong);
+      c(localdhx, str, paramInt, paramLong);
     }
-    AppMethodBeat.o(220594);
+    AppMethodBeat.o(253632);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.g.a
  * JD-Core Version:    0.7.0.1
  */

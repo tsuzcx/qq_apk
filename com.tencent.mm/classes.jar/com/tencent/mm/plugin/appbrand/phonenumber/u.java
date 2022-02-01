@@ -4,36 +4,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberCore;", "", "()V", "sPhoneNumberLogic", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberLogic;", "getSPhoneNumberLogic", "()Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberLogic;", "setSPhoneNumberLogic", "(Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberLogic;)V", "logic", "luggage-wechat-full-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberCore;", "", "()V", "sPhoneNumberLogic", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberLogic;", "getSPhoneNumberLogic", "()Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberLogic;", "setSPhoneNumberLogic", "(Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberLogic;)V", "logic", "luggage-wechat-full-sdk_release"})
 public final class u
 {
-  private static n nAd;
-  public static final u nAe;
+  private static n qCo;
+  public static final u qCp;
   
   static
   {
     AppMethodBeat.i(148122);
-    nAe = new u();
+    qCp = new u();
     AppMethodBeat.o(148122);
   }
   
   public static void a(n paramn)
   {
-    nAd = paramn;
+    qCo = paramn;
   }
   
-  public static n bTz()
+  public static n cgE()
   {
     AppMethodBeat.i(148121);
-    if (nAd == null)
+    if (qCo == null)
     {
       localn = (n)new i();
       AppMethodBeat.o(148121);
       return localn;
     }
-    n localn = nAd;
+    n localn = qCo;
     if (localn == null) {
-      p.hyc();
+      p.iCn();
     }
     AppMethodBeat.o(148121);
     return localn;
@@ -41,7 +41,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.u
  * JD-Core Version:    0.7.0.1
  */

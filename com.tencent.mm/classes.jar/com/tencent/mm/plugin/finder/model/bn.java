@@ -1,38 +1,31 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.i;
-import com.tencent.mm.view.recyclerview.g.b;
-import kotlin.g.b.p;
+import com.tencent.mm.view.recyclerview.h.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/MegaVideoLoadingData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "()V", "compare", "", "obj", "getItemId", "", "getItemType", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderSearchData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "searchHint", "", "(I)V", "getSearchHint", "()I", "getItemId", "", "getItemType", "plugin-finder_release"})
 public final class bn
-  extends g.b
-  implements i
+  extends h.b
 {
-  public final int a(i parami)
+  public final int zBm;
+  
+  public bn(int paramInt)
   {
-    AppMethodBeat.i(248868);
-    p.h(parami, "obj");
-    AppMethodBeat.o(248868);
-    return 0;
+    this.zBm = paramInt;
   }
   
-  public final int cxn()
+  public final int bAQ()
   {
-    AppMethodBeat.i(248867);
-    int i = bn.class.hashCode();
-    AppMethodBeat.o(248867);
+    AppMethodBeat.i(267603);
+    int i = bn.class.getName().hashCode();
+    AppMethodBeat.o(267603);
     return i;
   }
   
-  public final long lT()
+  public final long mf()
   {
-    AppMethodBeat.i(248866);
-    long l = hashCode();
-    AppMethodBeat.o(248866);
-    return l;
+    return 100L;
   }
 }
 

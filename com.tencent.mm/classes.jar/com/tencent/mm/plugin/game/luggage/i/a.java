@@ -20,56 +20,56 @@ import org.json.JSONObject;
 public final class a
   extends o
 {
-  private static LinkedList<a> xzm;
-  public MTimerHandler cve;
-  public f xzn;
-  public com.tencent.luggage.d.f xzo;
-  public a xzp;
+  private static LinkedList<a> CDr;
+  public f CDs;
+  public com.tencent.luggage.d.f CDt;
+  public a CDu;
+  public MTimerHandler cts;
   
   static
   {
-    AppMethodBeat.i(187006);
-    xzm = new LinkedList();
-    AppMethodBeat.o(187006);
+    AppMethodBeat.i(231588);
+    CDr = new LinkedList();
+    AppMethodBeat.o(231588);
   }
   
   private a()
   {
     super(MMApplicationContext.getContext(), e.class);
-    AppMethodBeat.i(186999);
-    this.xzp = a.xzw;
-    this.xzo = ((com.tencent.luggage.d.f)this.ctG);
-    this.xzn = new f(this.xzo);
-    this.xzo.a(b.dTr(), this);
+    AppMethodBeat.i(231561);
+    this.CDu = a.CDB;
+    this.CDt = ((com.tencent.luggage.d.f)NS());
+    this.CDs = new f(this.CDt);
+    this.CDt.a(b.ewB(), this);
     com.tencent.mm.plugin.wepkg.b.a(new b.a()
     {
-      public final void azT(String paramAnonymousString)
+      public final void aqk(String paramAnonymousString)
       {
-        AppMethodBeat.i(186987);
+        AppMethodBeat.i(230929);
         com.tencent.mm.plugin.wepkg.b.destroy();
         String str = paramAnonymousString;
         if (Util.isNullOrNil(paramAnonymousString)) {
-          str = com.tencent.mm.plugin.appbrand.ac.d.afA("gamecenter_jscore.js");
+          str = com.tencent.mm.plugin.appbrand.ac.d.anc("gamecenter_jscore.js");
         }
         a.b(a.this).evaluateJavascript(str, new ValueCallback() {});
-        AppMethodBeat.o(186987);
+        AppMethodBeat.o(230929);
       }
     });
-    azR("initing");
+    aJD("initing");
     Log.i("MicroMsg.GameJsCore", "JS CORE CREATE");
-    AppMethodBeat.o(186999);
+    AppMethodBeat.o(231561);
   }
   
-  private void azR(String paramString)
+  private void aJD(String paramString)
   {
-    AppMethodBeat.i(187000);
-    Iterator localIterator = j.gbV().iterator();
+    AppMethodBeat.i(231564);
+    Iterator localIterator = j.gUQ().iterator();
     while (localIterator.hasNext())
     {
       s locals = (s)localIterator.next();
-      locals.ctS.a(new com.tencent.luggage.d.d()
+      locals.crX.a(new com.tencent.luggage.d.d()
       {
-        public final JSONObject Ld()
+        public final JSONObject NU()
         {
           return null;
         }
@@ -79,9 +79,9 @@ public final class a
           return "onJsCoreReady";
         }
       });
-      locals.ctS.cT(String.format("window.__jscore_state__='%s';", new Object[] { paramString }));
+      locals.crX.dt(String.format("window.__jscore_state__='%s';", new Object[] { paramString }));
     }
-    AppMethodBeat.o(187000);
+    AppMethodBeat.o(231564);
   }
   
   /* Error */
@@ -92,20 +92,20 @@ public final class a
     //   2: monitorenter
     //   3: ldc 175
     //   5: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 52	com/tencent/mm/plugin/game/luggage/i/a:xzm	Ljava/util/LinkedList;
+    //   8: getstatic 52	com/tencent/mm/plugin/game/luggage/i/a:CDr	Ljava/util/LinkedList;
     //   11: invokevirtual 178	java/util/LinkedList:peek	()Ljava/lang/Object;
     //   14: checkcast 2	com/tencent/mm/plugin/game/luggage/i/a
     //   17: astore_0
     //   18: aload_0
     //   19: ifnull +13 -> 32
     //   22: aload_0
-    //   23: getfield 73	com/tencent/mm/plugin/game/luggage/i/a:xzp	Lcom/tencent/mm/plugin/game/luggage/i/a$a;
-    //   26: getstatic 181	com/tencent/mm/plugin/game/luggage/i/a$a:xzB	Lcom/tencent/mm/plugin/game/luggage/i/a$a;
+    //   23: getfield 73	com/tencent/mm/plugin/game/luggage/i/a:CDu	Lcom/tencent/mm/plugin/game/luggage/i/a$a;
+    //   26: getstatic 181	com/tencent/mm/plugin/game/luggage/i/a$a:CDG	Lcom/tencent/mm/plugin/game/luggage/i/a$a;
     //   29: if_acmpne +32 -> 61
     //   32: ldc 113
     //   34: ldc 183
     //   36: invokestatic 120	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   39: getstatic 52	com/tencent/mm/plugin/game/luggage/i/a:xzm	Ljava/util/LinkedList;
+    //   39: getstatic 52	com/tencent/mm/plugin/game/luggage/i/a:CDr	Ljava/util/LinkedList;
     //   42: new 2	com/tencent/mm/plugin/game/luggage/i/a
     //   45: dup
     //   46: invokespecial 184	com/tencent/mm/plugin/game/luggage/i/a:<init>	()V
@@ -116,15 +116,15 @@ public final class a
     //   59: monitorexit
     //   60: return
     //   61: aload_0
-    //   62: getfield 73	com/tencent/mm/plugin/game/luggage/i/a:xzp	Lcom/tencent/mm/plugin/game/luggage/i/a$a;
-    //   65: getstatic 191	com/tencent/mm/plugin/game/luggage/i/a$a:xzA	Lcom/tencent/mm/plugin/game/luggage/i/a$a;
+    //   62: getfield 73	com/tencent/mm/plugin/game/luggage/i/a:CDu	Lcom/tencent/mm/plugin/game/luggage/i/a$a;
+    //   65: getstatic 191	com/tencent/mm/plugin/game/luggage/i/a$a:CDF	Lcom/tencent/mm/plugin/game/luggage/i/a$a;
     //   68: if_acmpne +16 -> 84
     //   71: aload_0
-    //   72: getstatic 194	com/tencent/mm/plugin/game/luggage/i/a$a:xzy	Lcom/tencent/mm/plugin/game/luggage/i/a$a;
-    //   75: putfield 73	com/tencent/mm/plugin/game/luggage/i/a:xzp	Lcom/tencent/mm/plugin/game/luggage/i/a$a;
+    //   72: getstatic 194	com/tencent/mm/plugin/game/luggage/i/a$a:CDD	Lcom/tencent/mm/plugin/game/luggage/i/a$a;
+    //   75: putfield 73	com/tencent/mm/plugin/game/luggage/i/a:CDu	Lcom/tencent/mm/plugin/game/luggage/i/a$a;
     //   78: aload_0
     //   79: ldc 196
-    //   81: invokevirtual 199	com/tencent/mm/plugin/game/luggage/i/a:azS	(Ljava/lang/String;)V
+    //   81: invokevirtual 199	com/tencent/mm/plugin/game/luggage/i/a:aJE	(Ljava/lang/String;)V
     //   84: ldc 175
     //   86: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   89: goto -32 -> 57
@@ -146,63 +146,28 @@ public final class a
     //   84	89	92	finally
   }
   
-  public static a dTW()
+  public static a exd()
   {
-    AppMethodBeat.i(186997);
-    a locala = (a)xzm.peek();
-    AppMethodBeat.o(186997);
+    AppMethodBeat.i(231556);
+    a locala = (a)CDr.peek();
+    AppMethodBeat.o(231556);
     return locala;
   }
   
-  public final void ar(final String paramString1, final String paramString2, final String paramString3)
+  public final void aJE(final String paramString)
   {
-    AppMethodBeat.i(187003);
-    Log.i("MicroMsg.GameJsCore", "onPageLifeChanged, state:[%s], pageId:[%s], url:[%s]", new Object[] { paramString1, paramString2, paramString3 });
-    this.xzn.b(new com.tencent.luggage.d.d()
+    AppMethodBeat.i(231572);
+    this.CDs.b(new com.tencent.luggage.d.d()
     {
-      public final JSONObject Ld()
+      public final JSONObject NU()
       {
-        AppMethodBeat.i(186991);
-        JSONObject localJSONObject = new JSONObject();
-        try
-        {
-          localJSONObject.put("state", paramString1);
-          if (paramString3 != null) {
-            localJSONObject.put("url", paramString3);
-          }
-          localJSONObject.put("pageId", paramString2);
-          AppMethodBeat.o(186991);
-          return localJSONObject;
-        }
-        catch (JSONException localJSONException)
-        {
-          AppMethodBeat.o(186991);
-        }
-        return null;
-      }
-      
-      public final String name()
-      {
-        return "onPageLifeChange";
-      }
-    });
-    AppMethodBeat.o(187003);
-  }
-  
-  public final void azS(final String paramString)
-  {
-    AppMethodBeat.i(187002);
-    this.xzn.b(new com.tencent.luggage.d.d()
-    {
-      public final JSONObject Ld()
-      {
-        AppMethodBeat.i(186990);
+        AppMethodBeat.i(231857);
         JSONObject localJSONObject = new JSONObject();
         try
         {
           localJSONObject.put("state", paramString);
           label24:
-          AppMethodBeat.o(186990);
+          AppMethodBeat.o(231857);
           return localJSONObject;
         }
         catch (JSONException localJSONException)
@@ -216,11 +181,46 @@ public final class a
         return "onJsCoreLifeChange";
       }
     });
-    AppMethodBeat.o(187002);
+    AppMethodBeat.o(231572);
+  }
+  
+  public final void al(final String paramString1, final String paramString2, final String paramString3)
+  {
+    AppMethodBeat.i(231574);
+    Log.i("MicroMsg.GameJsCore", "onPageLifeChanged, state:[%s], pageId:[%s], url:[%s]", new Object[] { paramString1, paramString2, paramString3 });
+    this.CDs.b(new com.tencent.luggage.d.d()
+    {
+      public final JSONObject NU()
+      {
+        AppMethodBeat.i(231224);
+        JSONObject localJSONObject = new JSONObject();
+        try
+        {
+          localJSONObject.put("state", paramString1);
+          if (paramString3 != null) {
+            localJSONObject.put("url", paramString3);
+          }
+          localJSONObject.put("pageId", paramString2);
+          AppMethodBeat.o(231224);
+          return localJSONObject;
+        }
+        catch (JSONException localJSONException)
+        {
+          AppMethodBeat.o(231224);
+        }
+        return null;
+      }
+      
+      public final String name()
+      {
+        return "onPageLifeChange";
+      }
+    });
+    AppMethodBeat.o(231574);
   }
   
   /* Error */
-  public final void dTX()
+  public final void exe()
   {
     // Byte code:
     //   0: aload_0
@@ -231,8 +231,8 @@ public final class a
     //   9: ldc 242
     //   11: invokestatic 120	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   14: aload_0
-    //   15: getfield 73	com/tencent/mm/plugin/game/luggage/i/a:xzp	Lcom/tencent/mm/plugin/game/luggage/i/a$a;
-    //   18: getstatic 181	com/tencent/mm/plugin/game/luggage/i/a$a:xzB	Lcom/tencent/mm/plugin/game/luggage/i/a$a;
+    //   15: getfield 73	com/tencent/mm/plugin/game/luggage/i/a:CDu	Lcom/tencent/mm/plugin/game/luggage/i/a$a;
+    //   18: getstatic 181	com/tencent/mm/plugin/game/luggage/i/a$a:CDG	Lcom/tencent/mm/plugin/game/luggage/i/a$a;
     //   21: if_acmpeq +11 -> 32
     //   24: ldc 240
     //   26: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -240,31 +240,31 @@ public final class a
     //   30: monitorexit
     //   31: return
     //   32: aload_0
-    //   33: getfield 213	com/tencent/mm/plugin/game/luggage/i/a:cve	Lcom/tencent/mm/sdk/platformtools/MTimerHandler;
+    //   33: getfield 213	com/tencent/mm/plugin/game/luggage/i/a:cts	Lcom/tencent/mm/sdk/platformtools/MTimerHandler;
     //   36: ifnull +20 -> 56
     //   39: aload_0
-    //   40: getfield 213	com/tencent/mm/plugin/game/luggage/i/a:cve	Lcom/tencent/mm/sdk/platformtools/MTimerHandler;
+    //   40: getfield 213	com/tencent/mm/plugin/game/luggage/i/a:cts	Lcom/tencent/mm/sdk/platformtools/MTimerHandler;
     //   43: invokevirtual 245	com/tencent/mm/sdk/platformtools/MTimerHandler:stopped	()Z
     //   46: ifne +10 -> 56
     //   49: aload_0
-    //   50: getfield 213	com/tencent/mm/plugin/game/luggage/i/a:cve	Lcom/tencent/mm/sdk/platformtools/MTimerHandler;
+    //   50: getfield 213	com/tencent/mm/plugin/game/luggage/i/a:cts	Lcom/tencent/mm/sdk/platformtools/MTimerHandler;
     //   53: invokevirtual 248	com/tencent/mm/sdk/platformtools/MTimerHandler:stopTimer	()V
     //   56: aload_0
-    //   57: getfield 88	com/tencent/mm/plugin/game/luggage/i/a:xzn	Lcom/tencent/mm/plugin/game/luggage/i/f;
+    //   57: getfield 88	com/tencent/mm/plugin/game/luggage/i/a:CDs	Lcom/tencent/mm/plugin/game/luggage/i/f;
     //   60: astore_1
     //   61: aload_1
     //   62: iconst_1
-    //   63: putfield 252	com/tencent/mm/plugin/game/luggage/i/f:xzH	Z
+    //   63: putfield 252	com/tencent/mm/plugin/game/luggage/i/f:CDM	Z
     //   66: aload_1
-    //   67: getfield 255	com/tencent/mm/plugin/game/luggage/i/f:xzI	Ljava/util/LinkedList;
+    //   67: getfield 255	com/tencent/mm/plugin/game/luggage/i/f:CDN	Ljava/util/LinkedList;
     //   70: invokevirtual 258	java/util/LinkedList:clear	()V
     //   73: aload_1
-    //   74: getfield 261	com/tencent/mm/plugin/game/luggage/i/f:xzJ	Ljava/util/LinkedList;
+    //   74: getfield 261	com/tencent/mm/plugin/game/luggage/i/f:CDO	Ljava/util/LinkedList;
     //   77: invokevirtual 258	java/util/LinkedList:clear	()V
     //   80: aload_0
-    //   81: getfield 81	com/tencent/mm/plugin/game/luggage/i/a:xzo	Lcom/tencent/luggage/d/f;
+    //   81: getfield 81	com/tencent/mm/plugin/game/luggage/i/a:CDt	Lcom/tencent/luggage/d/f;
     //   84: invokevirtual 263	com/tencent/luggage/d/f:destroy	()V
-    //   87: getstatic 52	com/tencent/mm/plugin/game/luggage/i/a:xzm	Ljava/util/LinkedList;
+    //   87: getstatic 52	com/tencent/mm/plugin/game/luggage/i/a:CDr	Ljava/util/LinkedList;
     //   90: aload_0
     //   91: invokevirtual 267	java/util/LinkedList:remove	(Ljava/lang/Object;)Z
     //   94: pop
@@ -290,22 +290,22 @@ public final class a
   
   public final void init()
   {
-    this.xzp = a.xzx;
+    this.CDu = a.CDC;
   }
   
   public static enum a
   {
     static
     {
-      AppMethodBeat.i(186996);
-      xzw = new a("none", 0);
-      xzx = new a("initing", 1);
-      xzy = new a("inited", 2);
-      xzz = new a("failed", 3);
-      xzA = new a("stopped", 4);
-      xzB = new a("destroyed", 5);
-      xzC = new a[] { xzw, xzx, xzy, xzz, xzA, xzB };
-      AppMethodBeat.o(186996);
+      AppMethodBeat.i(231174);
+      CDB = new a("none", 0);
+      CDC = new a("initing", 1);
+      CDD = new a("inited", 2);
+      CDE = new a("failed", 3);
+      CDF = new a("stopped", 4);
+      CDG = new a("destroyed", 5);
+      CDH = new a[] { CDB, CDC, CDD, CDE, CDF, CDG };
+      AppMethodBeat.o(231174);
     }
     
     private a() {}

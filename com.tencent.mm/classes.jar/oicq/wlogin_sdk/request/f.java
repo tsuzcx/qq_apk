@@ -5,14 +5,14 @@ public final class f
 {
   public f(i parami)
   {
-    this.Ucx = 2064;
-    this.Ucy = 10;
-    this.UcA = parami;
+    this.abFM = 2064;
+    this.abFN = 10;
+    this.abFP = parami;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     oicq.wlogin_sdk.request.f
  * JD-Core Version:    0.7.0.1
  */

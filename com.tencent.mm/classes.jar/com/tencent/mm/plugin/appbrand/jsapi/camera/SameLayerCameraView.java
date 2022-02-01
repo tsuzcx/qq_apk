@@ -5,7 +5,7 @@ import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ag.a.a.a;
+import com.tencent.mm.plugin.appbrand.jsapi.ai.a.a.a;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.e;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -32,12 +32,12 @@ public class SameLayerCameraView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public static void bFJ()
+  public static void bRs()
   {
     AppMethodBeat.i(46224);
-    com.tencent.mm.plugin.appbrand.jsapi.ag.a.a.mIW = new a.a()
+    com.tencent.mm.plugin.appbrand.jsapi.ai.a.a.pJO = new a.a()
     {
-      public final f dN(Context paramAnonymousContext)
+      public final f dM(Context paramAnonymousContext)
       {
         AppMethodBeat.i(46222);
         paramAnonymousContext = new SameLayerCameraView(paramAnonymousContext);
@@ -48,16 +48,16 @@ public class SameLayerCameraView
     AppMethodBeat.o(46224);
   }
   
-  protected final AppBrandCameraView.a ZI(String paramString)
+  protected final AppBrandCameraView.a ahw(String paramString)
   {
     AppMethodBeat.i(46228);
     if ((!Util.isNullOrNil(paramString)) && (paramString.equals("scanCode")))
     {
-      paramString = new SameLayerCameraView.a(this);
+      paramString = new a();
       AppMethodBeat.o(46228);
       return paramString;
     }
-    paramString = super.ZI(paramString);
+    paramString = super.ahw(paramString);
     AppMethodBeat.o(46228);
     return paramString;
   }
@@ -78,7 +78,7 @@ public class SameLayerCameraView
       AppMethodBeat.o(46227);
       return;
     }
-    getRecordView().zsX.o(paramMotionEvent);
+    getRecordView().EYy.o(paramMotionEvent);
     AppMethodBeat.o(46227);
   }
   
@@ -89,10 +89,27 @@ public class SameLayerCameraView
     this.mSurfaceTexture = paramSurfaceTexture;
     AppMethodBeat.o(46225);
   }
+  
+  protected final class a
+    extends AppBrandCameraView.c
+  {
+    protected a()
+    {
+      super();
+    }
+    
+    public final void init()
+    {
+      AppMethodBeat.i(46223);
+      bRJ();
+      super.init();
+      AppMethodBeat.o(46223);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.SameLayerCameraView
  * JD-Core Version:    0.7.0.1
  */

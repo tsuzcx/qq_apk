@@ -2,24 +2,30 @@ package com.tencent.mm.plugin.mv.ui.view;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.j;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.h;
+import androidx.recyclerview.widget.RecyclerView.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.gallery.ui.c.a;
+import com.tencent.mm.plugin.mv.b.b;
+import com.tencent.mm.plugin.mv.b.c;
+import com.tencent.mm.plugin.mv.b.e;
+import com.tencent.mm.plugin.mv.b.f;
+import com.tencent.mm.plugin.mv.model.m;
 import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
@@ -29,198 +35,253 @@ import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
 import com.tencent.mm.view.recyclerview.e;
 import com.tencent.mm.view.recyclerview.f;
-import com.tencent.mm.view.recyclerview.g;
-import com.tencent.mm.view.recyclerview.g.c;
 import com.tencent.mm.view.recyclerview.h;
+import com.tencent.mm.view.recyclerview.h.c;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import kotlin.a.j;
 import kotlin.g.b.p;
 import kotlin.l;
+import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsConvertData;", "getAdapter", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "setAdapter", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;)V", "dataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getDataList", "()Ljava/util/ArrayList;", "emptyLL", "getEmptyLL", "()Landroid/widget/LinearLayout;", "setEmptyLL", "(Landroid/widget/LinearLayout;)V", "feedIdMap", "", "getFeedIdMap", "hasMore", "", "getHasMore", "()Z", "setHasMore", "(Z)V", "keyword", "", "getKeyword", "()Ljava/lang/String;", "setKeyword", "(Ljava/lang/String;)V", "listener", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$FragmentItemClickedListener;", "getListener", "()Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$FragmentItemClickedListener;", "setListener", "(Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$FragmentItemClickedListener;)V", "loadingTv", "Landroid/widget/TextView;", "getLoadingTv", "()Landroid/widget/TextView;", "setLoadingTv", "(Landroid/widget/TextView;)V", "music", "Lcom/tencent/mm/plugin/music/model/storage/Music;", "getMusic", "()Lcom/tencent/mm/plugin/music/model/storage/Music;", "setMusic", "(Lcom/tencent/mm/plugin/music/model/storage/Music;)V", "resultListener", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$FragmentResultListener;", "getResultListener", "()Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$FragmentResultListener;", "setResultListener", "(Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$FragmentResultListener;)V", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "getRlLayout", "()Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "setRlLayout", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout;)V", "screenWidth", "getScreenWidth", "()I", "setScreenWidth", "(I)V", "videoMaxDurationMs", "videoMinDurationMs", "addItemClickedListener", "", "itemClickedListener", "addResultCountListener", "clear", "getFeedFrom", "initContentView", "onDestroy", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "setOnFlingListener", "Landroid/support/v7/widget/RecyclerView$OnFlingListener;", "setResultView", "visibility", "setVideoDuration", "videoMinDuration", "syncGetFeeds", "Companion", "FragmentItemClickedListener", "FragmentResultListener", "MusicFeedsConvertData", "MusicFeedsConverter", "MusicFeedsItemData", "plugin-mv_release"})
-public class MusicMvTabFragment
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsConvertData;", "getAdapter", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "setAdapter", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;)V", "dataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getDataList", "()Ljava/util/ArrayList;", "emptyLL", "getEmptyLL", "()Landroid/widget/LinearLayout;", "setEmptyLL", "(Landroid/widget/LinearLayout;)V", "feedIdMap", "", "getFeedIdMap", "hasMore", "", "getHasMore", "()Z", "setHasMore", "(Z)V", "keyword", "", "getKeyword", "()Ljava/lang/String;", "setKeyword", "(Ljava/lang/String;)V", "listener", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$FragmentItemClickedListener;", "getListener", "()Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$FragmentItemClickedListener;", "setListener", "(Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$FragmentItemClickedListener;)V", "loadingTv", "Landroid/widget/TextView;", "getLoadingTv", "()Landroid/widget/TextView;", "setLoadingTv", "(Landroid/widget/TextView;)V", "music", "Lcom/tencent/mm/plugin/music/model/storage/Music;", "getMusic", "()Lcom/tencent/mm/plugin/music/model/storage/Music;", "setMusic", "(Lcom/tencent/mm/plugin/music/model/storage/Music;)V", "onSceneEndListener", "Lkotlin/Function0;", "", "getOnSceneEndListener", "()Lkotlin/jvm/functions/Function0;", "setOnSceneEndListener", "(Lkotlin/jvm/functions/Function0;)V", "resultListener", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$FragmentResultListener;", "getResultListener", "()Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$FragmentResultListener;", "setResultListener", "(Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$FragmentResultListener;)V", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "getRlLayout", "()Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "setRlLayout", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout;)V", "screenWidth", "getScreenWidth", "()I", "setScreenWidth", "(I)V", "videoMaxDurationMs", "videoMinDurationMs", "addItemClickedListener", "itemClickedListener", "addResultCountListener", "clear", "getAllDataList", "getFeedFrom", "getType", "initContentView", "onDestroy", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSwitchFixMode", "onSwitchFlexMode", "onlyUpdateUI", "setOnFlingListener", "Landroidx/recyclerview/widget/RecyclerView$OnFlingListener;", "setResultView", "visibility", "setVideoDuration", "videoMinDuration", "syncCheckedStatus", "feedIdList", "syncGetFeeds", "unCheckedItem", "feedId", "Companion", "FragmentItemClickedListener", "FragmentResultListener", "MusicFeedsConvertData", "MusicFeedsConverter", "MusicFeedsItemData", "plugin-mv_release"})
+public abstract class MusicMvTabFragment
   extends LinearLayout
-  implements i
+  implements com.tencent.mm.an.i
 {
-  public static final a Azh;
-  private com.tencent.mm.plugin.music.model.e.a AkC;
-  private int ArJ;
-  private int ArK;
-  private final ArrayList<Long> Azd;
-  private b Aze;
-  public c Azf;
-  private LinearLayout Azg;
-  private TextView Urr;
+  public static final MusicMvTabFragment.a GpL = new MusicMvTabFragment.a((byte)0);
+  private com.tencent.mm.plugin.music.model.e.a FRG;
+  private int Gfq = 10001;
+  private int Gfr = 2147483647;
+  private final ArrayList<Long> GpF = new ArrayList();
+  private b GpG;
+  public c GpH;
+  private LinearLayout GpI;
+  private TextView GpJ;
+  private kotlin.g.a.a<x> GpK;
   private HashMap _$_findViewCache;
-  private String dDv;
+  private String fwe;
   private boolean hasMore;
-  private final ArrayList<d> kgc;
-  private int mEX;
-  protected WxRecyclerAdapter<d> tFp;
-  protected RefreshLoadMoreLayout tLS;
-  
-  static
-  {
-    AppMethodBeat.i(257682);
-    Azh = new a((byte)0);
-    AppMethodBeat.o(257682);
-  }
+  private final ArrayList<d> mXB = new ArrayList();
+  private int pEj;
+  protected WxRecyclerAdapter<d> xnR;
+  protected RefreshLoadMoreLayout xvJ;
   
   public MusicMvTabFragment(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(257679);
-    this.kgc = new ArrayList();
-    this.Azd = new ArrayList();
-    this.ArK = 2147483647;
-    this.ArJ = 10001;
-    LayoutInflater.from(getContext()).inflate(2131495797, (ViewGroup)this, true);
+    LayoutInflater.from(getContext()).inflate(b.f.FZL, (ViewGroup)this, true);
     initContentView();
-    AppMethodBeat.o(257679);
   }
   
   public MusicMvTabFragment(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(257680);
-    this.kgc = new ArrayList();
-    this.Azd = new ArrayList();
-    this.ArK = 2147483647;
-    this.ArJ = 10001;
-    LayoutInflater.from(getContext()).inflate(2131495797, (ViewGroup)this, true);
+    LayoutInflater.from(getContext()).inflate(b.f.FZL, (ViewGroup)this, true);
     initContentView();
-    AppMethodBeat.o(257680);
   }
   
   public MusicMvTabFragment(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, 0);
-    AppMethodBeat.i(257681);
-    this.kgc = new ArrayList();
-    this.Azd = new ArrayList();
-    this.ArK = 2147483647;
-    this.ArJ = 10001;
-    LayoutInflater.from(getContext()).inflate(2131495797, (ViewGroup)this, true);
+    LayoutInflater.from(getContext()).inflate(b.f.FZL, (ViewGroup)this, true);
     initContentView();
     paramContext = paramContext.getResources();
-    p.g(paramContext, "context.resources");
-    this.mEX = paramContext.getDisplayMetrics().widthPixels;
-    AppMethodBeat.o(257681);
+    p.j(paramContext, "context.resources");
+    this.pEj = paramContext.getDisplayMetrics().widthPixels;
   }
   
   private final void initContentView()
   {
-    AppMethodBeat.i(257677);
-    this.Azg = ((LinearLayout)findViewById(2131300103));
-    this.Urr = ((TextView)findViewById(2131303717));
-    Object localObject1 = findViewById(2131308842);
-    p.g(localObject1, "findViewById(R.id.tab_rl_layout)");
-    this.tLS = ((RefreshLoadMoreLayout)localObject1);
-    localObject1 = this.tLS;
+    this.GpI = ((LinearLayout)findViewById(b.e.empty_tip_ll));
+    this.GpJ = ((TextView)findViewById(b.e.loading_tv));
+    Object localObject1 = findViewById(b.e.FZf);
+    p.j(localObject1, "findViewById(R.id.tab_rl_layout)");
+    this.xvJ = ((RefreshLoadMoreLayout)localObject1);
+    localObject1 = this.xvJ;
     if (localObject1 == null) {
-      p.btv("rlLayout");
+      p.bGy("rlLayout");
     }
     ((RefreshLoadMoreLayout)localObject1).setEnablePullDownHeader(false);
-    localObject1 = this.tLS;
+    localObject1 = this.xvJ;
     if (localObject1 == null) {
-      p.btv("rlLayout");
+      p.bGy("rlLayout");
     }
     ((RefreshLoadMoreLayout)localObject1).setEnableRefresh(false);
-    localObject1 = this.tLS;
+    localObject1 = this.xvJ;
     if (localObject1 == null) {
-      p.btv("rlLayout");
+      p.bGy("rlLayout");
     }
     ((RefreshLoadMoreLayout)localObject1).setActionCallback((RefreshLoadMoreLayout.a)new g(this));
-    this.tFp = new WxRecyclerAdapter((f)new h(this), this.kgc, true);
-    localObject1 = (WxRecyclerView)ewN();
+    this.xnR = new WxRecyclerAdapter((f)new h(this), this.mXB, true);
+    localObject1 = (WxRecyclerView)_$_findCachedViewById(b.e.FXF);
     if (localObject1 != null)
     {
-      localObject2 = this.tFp;
+      localObject2 = this.xnR;
       if (localObject2 == null) {
-        p.btv("adapter");
+        p.bGy("adapter");
       }
       ((WxRecyclerView)localObject1).setAdapter((RecyclerView.a)localObject2);
     }
     localObject1 = new FirstRowLayoutManager(getContext(), 3);
-    Object localObject2 = (WxRecyclerView)ewN();
+    Object localObject2 = (WxRecyclerView)_$_findCachedViewById(b.e.FXF);
     if (localObject2 != null) {
       ((WxRecyclerView)localObject2).setLayoutManager((RecyclerView.LayoutManager)localObject1);
     }
-    localObject1 = new c.a(getContext()).NP(2131166771).NO(2131166771).dSd().dSe().dSf();
-    localObject2 = (WxRecyclerView)ewN();
+    localObject1 = new c.a(getContext()).Te(b.c.music_gallery_item_padding).Td(b.c.music_gallery_item_padding).Tc(b.b.gallery_dark_mode_color).euF().euG();
+    localObject2 = (WxRecyclerView)_$_findCachedViewById(b.e.FXF);
     if (localObject2 != null) {
       ((WxRecyclerView)localObject2).b((RecyclerView.h)localObject1);
     }
-    localObject1 = this.tFp;
+    localObject1 = this.xnR;
     if (localObject1 == null) {
-      p.btv("adapter");
+      p.bGy("adapter");
     }
-    ((g)localObject1).RqP = ((g.c)new i(this));
-    AppMethodBeat.o(257677);
+    ((h)localObject1).YSn = ((h.c)new i(this));
+  }
+  
+  public final void OK(long paramLong)
+  {
+    Iterator localIterator = ((Iterable)this.mXB).iterator();
+    int i = 0;
+    while (localIterator.hasNext())
+    {
+      Object localObject = localIterator.next();
+      if (i < 0) {
+        j.iBO();
+      }
+      localObject = (d)localObject;
+      if (((d)localObject).GpM.feedId == paramLong)
+      {
+        ((d)localObject).GpM.qBK = false;
+        localObject = this.xnR;
+        if (localObject == null) {
+          p.bGy("adapter");
+        }
+        ((WxRecyclerAdapter)localObject).cL(i);
+      }
+      i += 1;
+    }
+  }
+  
+  public View _$_findCachedViewById(int paramInt)
+  {
+    if (this._$_findViewCache == null) {
+      this._$_findViewCache = new HashMap();
+    }
+    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = findViewById(paramInt);
+      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+    }
+    return localView1;
   }
   
   public void a(com.tencent.mm.plugin.music.model.e.a parama, String paramString)
   {
-    this.AkC = parama;
-    this.dDv = paramString;
+    this.FRG = parama;
+    this.fwe = paramString;
   }
   
   public final void a(b paramb)
   {
-    AppMethodBeat.i(257673);
-    p.h(paramb, "itemClickedListener");
-    this.Aze = paramb;
-    AppMethodBeat.o(257673);
+    p.k(paramb, "itemClickedListener");
+    this.GpG = paramb;
+  }
+  
+  public final void aM(ArrayList<Long> paramArrayList)
+  {
+    p.k(paramArrayList, "feedIdList");
+    Iterator localIterator = ((Iterable)this.mXB).iterator();
+    int i = 0;
+    while (localIterator.hasNext())
+    {
+      Object localObject = localIterator.next();
+      int j = i + 1;
+      if (i < 0) {
+        j.iBO();
+      }
+      localObject = (d)localObject;
+      boolean bool = ((d)localObject).GpM.qBK;
+      if (paramArrayList.contains(Long.valueOf(((d)localObject).GpM.feedId)))
+      {
+        if (!bool)
+        {
+          ((d)localObject).GpM.qBK = true;
+          localObject = this.xnR;
+          if (localObject == null) {
+            p.bGy("adapter");
+          }
+          ((WxRecyclerAdapter)localObject).cL(i);
+          i = j;
+        }
+      }
+      else if (bool)
+      {
+        ((d)localObject).GpM.qBK = false;
+        localObject = this.xnR;
+        if (localObject == null) {
+          p.bGy("adapter");
+        }
+        ((WxRecyclerAdapter)localObject).cL(i);
+      }
+      i = j;
+    }
   }
   
   public final void clear()
   {
-    AppMethodBeat.i(257675);
-    this.kgc.clear();
-    WxRecyclerAdapter localWxRecyclerAdapter = this.tFp;
+    this.mXB.clear();
+    WxRecyclerAdapter localWxRecyclerAdapter = this.xnR;
     if (localWxRecyclerAdapter == null) {
-      p.btv("adapter");
+      p.bGy("adapter");
     }
     localWxRecyclerAdapter.notifyDataSetChanged();
-    AppMethodBeat.o(257675);
   }
   
-  public View ewN()
+  public final void fid()
   {
-    AppMethodBeat.i(257683);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
+    WxRecyclerAdapter localWxRecyclerAdapter = this.xnR;
+    if (localWxRecyclerAdapter == null) {
+      p.bGy("adapter");
     }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(2131305082));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(2131305082);
-      this._$_findViewCache.put(Integer.valueOf(2131305082), localView1);
+    localWxRecyclerAdapter.notifyDataSetChanged();
+  }
+  
+  public final void fie()
+  {
+    WxRecyclerAdapter localWxRecyclerAdapter = this.xnR;
+    if (localWxRecyclerAdapter == null) {
+      p.bGy("adapter");
     }
-    AppMethodBeat.o(257683);
-    return localView1;
+    localWxRecyclerAdapter.notifyDataSetChanged();
   }
   
   protected final WxRecyclerAdapter<d> getAdapter()
   {
-    AppMethodBeat.i(257669);
-    WxRecyclerAdapter localWxRecyclerAdapter = this.tFp;
+    WxRecyclerAdapter localWxRecyclerAdapter = this.xnR;
     if (localWxRecyclerAdapter == null) {
-      p.btv("adapter");
+      p.bGy("adapter");
     }
-    AppMethodBeat.o(257669);
     return localWxRecyclerAdapter;
+  }
+  
+  public final ArrayList<d> getAllDataList()
+  {
+    return this.mXB;
   }
   
   protected final ArrayList<d> getDataList()
   {
-    return this.kgc;
+    return this.mXB;
   }
   
   protected final LinearLayout getEmptyLL()
   {
-    return this.Azg;
+    return this.GpI;
   }
   
   public int getFeedFrom()
@@ -230,7 +291,7 @@ public class MusicMvTabFragment
   
   protected final ArrayList<Long> getFeedIdMap()
   {
-    return this.Azd;
+    return this.GpF;
   }
   
   protected final boolean getHasMore()
@@ -240,44 +301,49 @@ public class MusicMvTabFragment
   
   protected final String getKeyword()
   {
-    return this.dDv;
+    return this.fwe;
   }
   
   protected final b getListener()
   {
-    return this.Aze;
+    return this.GpG;
   }
   
   protected final TextView getLoadingTv()
   {
-    return this.Urr;
+    return this.GpJ;
   }
   
   protected final com.tencent.mm.plugin.music.model.e.a getMusic()
   {
-    return this.AkC;
+    return this.FRG;
+  }
+  
+  public final kotlin.g.a.a<x> getOnSceneEndListener()
+  {
+    return this.GpK;
   }
   
   protected final c getResultListener()
   {
-    return this.Azf;
+    return this.GpH;
   }
   
   protected final RefreshLoadMoreLayout getRlLayout()
   {
-    AppMethodBeat.i(257671);
-    RefreshLoadMoreLayout localRefreshLoadMoreLayout = this.tLS;
+    RefreshLoadMoreLayout localRefreshLoadMoreLayout = this.xvJ;
     if (localRefreshLoadMoreLayout == null) {
-      p.btv("rlLayout");
+      p.bGy("rlLayout");
     }
-    AppMethodBeat.o(257671);
     return localRefreshLoadMoreLayout;
   }
   
   protected final int getScreenWidth()
   {
-    return this.mEX;
+    return this.pEj;
   }
+  
+  public abstract int getType();
   
   public void onDestroy() {}
   
@@ -285,15 +351,13 @@ public class MusicMvTabFragment
   
   protected final void setAdapter(WxRecyclerAdapter<d> paramWxRecyclerAdapter)
   {
-    AppMethodBeat.i(257670);
-    p.h(paramWxRecyclerAdapter, "<set-?>");
-    this.tFp = paramWxRecyclerAdapter;
-    AppMethodBeat.o(257670);
+    p.k(paramWxRecyclerAdapter, "<set-?>");
+    this.xnR = paramWxRecyclerAdapter;
   }
   
   protected final void setEmptyLL(LinearLayout paramLinearLayout)
   {
-    this.Azg = paramLinearLayout;
+    this.GpI = paramLinearLayout;
   }
   
   protected final void setHasMore(boolean paramBoolean)
@@ -303,139 +367,146 @@ public class MusicMvTabFragment
   
   protected final void setKeyword(String paramString)
   {
-    this.dDv = paramString;
+    this.fwe = paramString;
   }
   
   protected final void setListener(b paramb)
   {
-    this.Aze = paramb;
+    this.GpG = paramb;
   }
   
   protected final void setLoadingTv(TextView paramTextView)
   {
-    this.Urr = paramTextView;
+    this.GpJ = paramTextView;
   }
   
   protected final void setMusic(com.tencent.mm.plugin.music.model.e.a parama)
   {
-    this.AkC = parama;
+    this.FRG = parama;
   }
   
   public final void setOnFlingListener(RecyclerView.j paramj)
   {
-    AppMethodBeat.i(257678);
-    RefreshLoadMoreLayout localRefreshLoadMoreLayout = this.tLS;
+    RefreshLoadMoreLayout localRefreshLoadMoreLayout = this.xvJ;
     if (localRefreshLoadMoreLayout == null) {
-      p.btv("rlLayout");
+      p.bGy("rlLayout");
     }
     localRefreshLoadMoreLayout.getRecyclerView().setOnFlingListener(paramj);
-    AppMethodBeat.o(257678);
+  }
+  
+  public final void setOnSceneEndListener(kotlin.g.a.a<x> parama)
+  {
+    this.GpK = parama;
   }
   
   protected final void setResultListener(c paramc)
   {
-    this.Azf = paramc;
+    this.GpH = paramc;
   }
   
   public final void setResultView(int paramInt)
   {
-    AppMethodBeat.i(257676);
-    WxRecyclerView localWxRecyclerView = (WxRecyclerView)ewN();
-    if (localWxRecyclerView != null)
-    {
+    WxRecyclerView localWxRecyclerView = (WxRecyclerView)_$_findCachedViewById(b.e.FXF);
+    if (localWxRecyclerView != null) {
       localWxRecyclerView.setVisibility(paramInt);
-      AppMethodBeat.o(257676);
-      return;
     }
-    AppMethodBeat.o(257676);
   }
   
   protected final void setRlLayout(RefreshLoadMoreLayout paramRefreshLoadMoreLayout)
   {
-    AppMethodBeat.i(257672);
-    p.h(paramRefreshLoadMoreLayout, "<set-?>");
-    this.tLS = paramRefreshLoadMoreLayout;
-    AppMethodBeat.o(257672);
+    p.k(paramRefreshLoadMoreLayout, "<set-?>");
+    this.xvJ = paramRefreshLoadMoreLayout;
   }
   
   protected final void setScreenWidth(int paramInt)
   {
-    this.mEX = paramInt;
+    this.pEj = paramInt;
   }
   
   public final void setVideoDuration(int paramInt)
   {
-    AppMethodBeat.i(257674);
-    this.ArJ = paramInt;
-    WxRecyclerAdapter localWxRecyclerAdapter = this.tFp;
-    if (localWxRecyclerAdapter == null) {
-      p.btv("adapter");
+    this.Gfq = paramInt;
+    Object localObject = this.xnR;
+    if (localObject == null) {
+      p.bGy("adapter");
     }
-    localWxRecyclerAdapter.notifyDataSetChanged();
-    AppMethodBeat.o(257674);
+    localObject = ((Iterable)((WxRecyclerAdapter)localObject).data).iterator();
+    paramInt = 0;
+    while (((Iterator)localObject).hasNext())
+    {
+      ((Iterator)localObject).next();
+      if (paramInt < 0) {
+        j.iBO();
+      }
+      WxRecyclerAdapter localWxRecyclerAdapter = this.xnR;
+      if (localWxRecyclerAdapter == null) {
+        p.bGy("adapter");
+      }
+      localWxRecyclerAdapter.d(paramInt, Integer.valueOf(1));
+      paramInt += 1;
+    }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$Companion;", "", "()V", "SPAN_COUNT", "", "TAG", "", "plugin-mv_release"})
-  public static final class a {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$FragmentItemClickedListener;", "", "onItemClicked", "", "errType", "", "data", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsItemData;", "position", "itemView", "Landroid/view/View;", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-mv_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$FragmentItemClickedListener;", "", "onItemChecked", "", "isCheck", "data", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsItemData;", "fragmentType", "", "onItemClicked", "", "errType", "position", "itemView", "Landroid/view/View;", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-mv_release"})
   public static abstract interface b
   {
-    public abstract void a(MusicMvTabFragment.f paramf, View paramView, RecyclerView paramRecyclerView);
+    public abstract void a(MusicMvTabFragment.f paramf, View paramView, RecyclerView paramRecyclerView, int paramInt);
+    
+    public abstract boolean b(boolean paramBoolean, MusicMvTabFragment.f paramf, int paramInt);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$FragmentResultListener;", "", "onCountResult", "", "type", "", "cnt", "plugin-mv_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$FragmentResultListener;", "", "onCountResult", "", "type", "", "cnt", "plugin-mv_release"})
   public static abstract interface c
   {
-    public abstract void hx(int paramInt1, int paramInt2);
+    public abstract void iC(int paramInt1, int paramInt2);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsConvertData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "itemData", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsItemData;", "(Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsItemData;)V", "getItemData", "()Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsItemData;", "getItemId", "", "getItemType", "", "plugin-mv_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsConvertData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "itemData", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsItemData;", "(Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsItemData;)V", "getItemData", "()Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsItemData;", "getItemId", "", "getItemType", "", "plugin-mv_release"})
   public static final class d
     implements com.tencent.mm.view.recyclerview.a
   {
-    final MusicMvTabFragment.f Azi;
+    final MusicMvTabFragment.f GpM;
     
     public d(MusicMvTabFragment.f paramf)
     {
-      AppMethodBeat.i(257660);
-      this.Azi = paramf;
-      AppMethodBeat.o(257660);
+      AppMethodBeat.i(225183);
+      this.GpM = paramf;
+      AppMethodBeat.o(225183);
     }
     
-    public final int cxn()
+    public final int bAQ()
     {
       return 3;
     }
     
-    public final long lT()
+    public final long mf()
     {
-      AppMethodBeat.i(257659);
-      long l = this.Azi.hashCode();
-      AppMethodBeat.o(257659);
+      AppMethodBeat.i(225179);
+      long l = this.GpM.hashCode();
+      AppMethodBeat.o(225179);
       return l;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsConverter;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsConvertData;", "(Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment;)V", "MEDIA_MAX_HEIGHT_RATIO", "", "MEDIA_MIN_HEIGHT_RATIO", "calculateStaggeredLayoutParams", "", "mediaObj", "Lcom/tencent/mm/protocal/protobuf/FinderMedia;", "originWidth", "formatVideoPlayTime", "", "time", "getLayoutId", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-mv_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsConverter;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsConvertData;", "(Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment;)V", "MEDIA_MAX_HEIGHT_RATIO", "", "MEDIA_MIN_HEIGHT_RATIO", "calculateStaggeredLayoutParams", "", "mediaObj", "Lcom/tencent/mm/protocal/protobuf/FinderMedia;", "originWidth", "formatVideoPlayTime", "", "time", "getLayoutId", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-mv_release"})
   public final class e
     extends e<MusicMvTabFragment.d>
   {
-    private final float Azj = 1.316667F;
-    private final float Azk = 0.95F;
+    private final float GpN = 1.316667F;
+    private final float GpO = 0.95F;
     
-    public final void a(RecyclerView paramRecyclerView, h paramh, int paramInt)
+    public final void a(RecyclerView paramRecyclerView, com.tencent.mm.view.recyclerview.i parami, int paramInt)
     {
-      AppMethodBeat.i(257661);
-      p.h(paramRecyclerView, "recyclerView");
-      p.h(paramh, "holder");
-      paramInt = (this.Azl.getScreenWidth() - com.tencent.mm.cb.a.fromDPToPix(this.Azl.getContext(), 4)) / 3;
-      paramRecyclerView = (RelativeLayout)paramh.Mn(2131307160);
+      AppMethodBeat.i(225503);
+      p.k(paramRecyclerView, "recyclerView");
+      p.k(parami, "holder");
+      paramInt = (this.GpP.getScreenWidth() - com.tencent.mm.ci.a.fromDPToPix(this.GpP.getContext(), 4)) / 3;
+      paramRecyclerView = (RelativeLayout)parami.RD(b.e.root_container);
       if (paramRecyclerView != null)
       {
-        paramh = paramRecyclerView.getLayoutParams();
-        if (paramh != null) {
-          paramh.width = paramInt;
+        parami = paramRecyclerView.getLayoutParams();
+        if (parami != null) {
+          parami.width = paramInt;
         }
       }
       if (paramRecyclerView != null)
@@ -444,116 +515,161 @@ public class MusicMvTabFragment
         if (paramRecyclerView != null)
         {
           paramRecyclerView.height = paramInt;
-          AppMethodBeat.o(257661);
+          AppMethodBeat.o(225503);
           return;
         }
       }
-      AppMethodBeat.o(257661);
+      AppMethodBeat.o(225503);
     }
     
     public final int getLayoutId()
     {
-      return 2131495784;
+      return b.f.FZv;
+    }
+    
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsConverter$onBindViewHolder$3$1"})
+    static final class a
+      implements View.OnClickListener
+    {
+      a(CheckBox paramCheckBox, MusicMvTabFragment.e parame, com.tencent.mm.view.recyclerview.i parami, MusicMvTabFragment.d paramd, int paramInt) {}
+      
+      public final void onClick(View paramView)
+      {
+        AppMethodBeat.i(225467);
+        b localb = new b();
+        localb.bn(paramView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsConverter$onBindViewHolder$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        boolean bool;
+        if (!this.GpS.GpM.qBK)
+        {
+          bool = true;
+          this.GpS.GpM.qBK = bool;
+          paramView = m.GcA;
+          m.ZE(this.rgL);
+          paramView = m.GcA;
+          m.ZF(this.GpR.GpP.getFeedFrom());
+          paramView = this.GpR.GpP.getListener();
+          if (paramView == null) {
+            break label219;
+          }
+        }
+        label219:
+        for (paramView = Boolean.valueOf(paramView.b(this.GpS.GpM.qBK, this.GpS.GpM, this.GpR.GpP.getType()));; paramView = null)
+        {
+          if ((paramView != null) && (!paramView.booleanValue())) {
+            this.GpS.GpM.qBK = false;
+          }
+          this.GpQ.setChecked(this.GpS.GpM.qBK);
+          this.GpR.GpP.getAdapter().cL(this.rgL);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsConverter$onBindViewHolder$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(225467);
+          return;
+          bool = false;
+          break;
+        }
+      }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsItemData;", "", "feedId", "", "nonceId", "", "feedObject", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "(JLjava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderObject;)V", "getFeedId", "()J", "setFeedId", "(J)V", "getFeedObject", "()Lcom/tencent/mm/protocal/protobuf/FinderObject;", "setFeedObject", "(Lcom/tencent/mm/protocal/protobuf/FinderObject;)V", "getNonceId", "()Ljava/lang/String;", "setNonceId", "(Ljava/lang/String;)V", "plugin-mv_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsItemData;", "", "feedId", "", "nonceId", "", "feedObject", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "isCheck", "", "(JLjava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderObject;Z)V", "getFeedId", "()J", "setFeedId", "(J)V", "getFeedObject", "()Lcom/tencent/mm/protocal/protobuf/FinderObject;", "setFeedObject", "(Lcom/tencent/mm/protocal/protobuf/FinderObject;)V", "()Z", "setCheck", "(Z)V", "getNonceId", "()Ljava/lang/String;", "setNonceId", "(Ljava/lang/String;)V", "plugin-mv_release"})
   public static final class f
   {
-    long feedId;
+    public long feedId;
     public FinderObject feedObject;
-    private String hwg;
+    private String nonceId;
+    boolean qBK;
     
-    public f(long paramLong, String paramString, FinderObject paramFinderObject)
+    private f(long paramLong, String paramString, FinderObject paramFinderObject)
     {
       this.feedId = paramLong;
-      this.hwg = paramString;
+      this.nonceId = paramString;
       this.feedObject = paramFinderObject;
+      this.qBK = false;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$initContentView$1", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback;", "onItemChange", "", "changeItemCount", "", "onLoadMoreBegin", "onLoadMoreEnd", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "plugin-mv_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$initContentView$1", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback;", "onItemChange", "", "changeItemCount", "", "onLoadMoreBegin", "onLoadMoreEnd", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "plugin-mv_release"})
   public static final class g
     extends RefreshLoadMoreLayout.a
   {
-    public final void ED(int paramInt)
+    public final void Ie(int paramInt)
     {
-      AppMethodBeat.i(257665);
+      AppMethodBeat.i(226029);
       b localb = new b();
-      localb.pH(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$initContentView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V", this, localb.axR());
-      super.ED(paramInt);
+      localb.sg(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$initContentView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V", this, localb.aFi());
+      super.Ie(paramInt);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$initContentView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V");
-      AppMethodBeat.o(257665);
+      AppMethodBeat.o(226029);
     }
     
-    public final void IF(int paramInt) {}
+    public final void Mw(int paramInt) {}
     
     public final void a(RefreshLoadMoreLayout.c<Object> paramc)
     {
-      AppMethodBeat.i(257664);
+      AppMethodBeat.i(226027);
       b localb = new b();
-      localb.bm(paramc);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$initContentView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.axR());
-      p.h(paramc, "reason");
-      if (!this.Azl.getHasMore()) {
-        RefreshLoadMoreLayout.e(this.Azl.getRlLayout());
+      localb.bn(paramc);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$initContentView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.aFi());
+      p.k(paramc, "reason");
+      if (!this.GpP.getHasMore()) {
+        RefreshLoadMoreLayout.e(this.GpP.getRlLayout());
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$initContentView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(257664);
+      AppMethodBeat.o(226027);
     }
     
-    public final void cxo()
+    public final void cKQ()
     {
-      AppMethodBeat.i(257663);
+      AppMethodBeat.i(226025);
       com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$initContentView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V", this);
       Log.i("Music.MusicMvTabFragment", "onLoadMoreBegin");
-      if (this.Azl.getHasMore()) {
-        this.Azl.a(this.Azl.getMusic(), this.Azl.getKeyword());
+      if (this.GpP.getHasMore()) {
+        this.GpP.a(this.GpP.getMusic(), this.GpP.getKeyword());
       }
       for (;;)
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$initContentView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V");
-        AppMethodBeat.o(257663);
+        AppMethodBeat.o(226025);
         return;
-        this.Azl.getRlLayout().apT(0);
+        this.GpP.getRlLayout().azs(0);
       }
     }
     
     public final void onRefreshEnd(RefreshLoadMoreLayout.c paramc)
     {
-      AppMethodBeat.i(257666);
+      AppMethodBeat.i(226030);
       b localb = new b();
-      localb.bm(paramc);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$initContentView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.axR());
+      localb.bn(paramc);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$initContentView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.aFi());
       super.onRefreshEnd(paramc);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$initContentView$1", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(257666);
+      AppMethodBeat.o(226030);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$initContentView$2", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-mv_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$initContentView$2", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-mv_release"})
   public static final class h
     implements f
   {
-    public final e<?> EC(int paramInt)
+    public final e<?> yx(int paramInt)
     {
-      AppMethodBeat.i(257667);
+      AppMethodBeat.i(226522);
       Log.i("Music.MusicMvTabFragment", "getItemConvert, type:".concat(String.valueOf(paramInt)));
-      e locale = (e)new MusicMvTabFragment.e(this.Azl);
-      AppMethodBeat.o(257667);
+      e locale = (e)new MusicMvTabFragment.e(this.GpP);
+      AppMethodBeat.o(226522);
       return locale;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$initContentView$3", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemClick", "", "adapter", "Landroid/support/v7/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-mv_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$initContentView$3", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-mv_release"})
   public static final class i
-    implements g.c<h>
+    implements h.c<com.tencent.mm.view.recyclerview.i>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.view.MusicMvTabFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ import org.apache.http.NameValuePair;
 
 public final class m
 {
-  public static String aY(List<NameValuePair> paramList)
+  public static String aW(List<NameValuePair> paramList)
   {
     AppMethodBeat.i(131044);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -42,7 +42,7 @@ public final class m
     return paramList;
   }
   
-  public static String boj()
+  public static String bys()
   {
     AppMethodBeat.i(131043);
     Log.i("MicroMsg.GoogleContactLogic", "getRequestCodeUrl:%s", new Object[] { "https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com/auth/userinfo.email https://www.google.com/m8/feeds&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&client_id=369820936870.apps.googleusercontent.com" });
@@ -50,7 +50,7 @@ public final class m
     return "https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com/auth/userinfo.email https://www.google.com/m8/feeds&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&client_id=369820936870.apps.googleusercontent.com";
   }
   
-  public static boolean dB(Context paramContext)
+  public static boolean dz(Context paramContext)
   {
     AppMethodBeat.i(131045);
     Intent localIntent1 = new Intent("com.google.android.gms.common.account.CHOOSE_ACCOUNT");

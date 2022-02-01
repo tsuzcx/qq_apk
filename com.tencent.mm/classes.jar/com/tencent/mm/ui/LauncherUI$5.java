@@ -5,9 +5,9 @@ import android.os.Process;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.modelstat.d;
 import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -17,7 +17,7 @@ import com.tencent.mm.sdk.thread.ThreadPool;
 final class LauncherUI$5
   implements Runnable
 {
-  long gY = 2000L;
+  long delay = 2000L;
   
   LauncherUI$5(LauncherUI paramLauncherUI) {}
   
@@ -27,21 +27,21 @@ final class LauncherUI$5
     AppMethodBeat.i(33293);
     Log.i("MicroMsg.LauncherUI", "resumeLogoutJump logoutExitCheck tid[%d]", new Object[] { Long.valueOf(Thread.currentThread().getId()) });
     MMHandlerThread.removeRunnable(this);
-    if (bg.aVG())
+    if (bh.beJ())
     {
-      g.aAf();
-      Log.i("MicroMsg.LauncherUI", "resumeLogoutJump logoutExitCheck done uin[%d]", new Object[] { Integer.valueOf(a.getUin()) });
+      h.aHE();
+      Log.i("MicroMsg.LauncherUI", "resumeLogoutJump logoutExitCheck done uin[%d]", new Object[] { Integer.valueOf(b.getUin()) });
       AppMethodBeat.o(33293);
       return;
     }
-    if ((d.bgc()) || (CrashReportFactory.foreground))
+    if ((d.bps()) || (CrashReportFactory.foreground))
     {
-      this.gY += 2000L;
-      if (this.gY > 10000L) {
-        this.gY = 2000L;
+      this.delay += 2000L;
+      if (this.delay > 10000L) {
+        this.delay = 2000L;
       }
-      Log.i("MicroMsg.LauncherUI", "resumeLogoutJump logoutExitCheck isAppOnForeground[%b] foreground[%b] trigger next [%d]", new Object[] { Boolean.valueOf(d.bgc()), Boolean.valueOf(CrashReportFactory.foreground), Long.valueOf(this.gY) });
-      MMHandlerThread.postToMainThreadDelayed(this, this.gY);
+      Log.i("MicroMsg.LauncherUI", "resumeLogoutJump logoutExitCheck isAppOnForeground[%b] foreground[%b] trigger next [%d]", new Object[] { Boolean.valueOf(d.bps()), Boolean.valueOf(CrashReportFactory.foreground), Long.valueOf(this.delay) });
+      MMHandlerThread.postToMainThreadDelayed(this, this.delay);
       AppMethodBeat.o(33293);
       return;
     }
@@ -64,7 +64,7 @@ final class LauncherUI$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.LauncherUI.5
  * JD-Core Version:    0.7.0.1
  */

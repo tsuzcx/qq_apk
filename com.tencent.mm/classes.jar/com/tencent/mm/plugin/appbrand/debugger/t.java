@@ -1,38 +1,109 @@
 package com.tencent.mm.plugin.appbrand.debugger;
 
-import com.tencent.luggage.sdk.b.a.c.d;
-import com.tencent.luggage.sdk.b.a.c.j;
+import android.content.Context;
+import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.service.c;
-import java.util.Map;
-import kotlin.l;
+import com.tencent.mm.plugin.appbrand.w.b;
+import com.tencent.mm.protocal.protobuf.ffr;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.LinkedList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/debugger/RemoteDebugServiceLogicWC;", "Lcom/tencent/luggage/sdk/jsapi/component/service/MPRemoteDebugServiceLogic;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "service", "(Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;)V", "getService", "()Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "onCreateJsApiPool", "", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "plugin-appbrand-integration_release"})
 public final class t
-  extends j<c>
 {
-  private final c liR;
+  private static int odz = -1;
   
-  public t(c paramc)
+  public static void a(c paramc, int paramInt)
   {
-    super((d)paramc);
-    AppMethodBeat.i(50353);
-    this.liR = paramc;
-    AppMethodBeat.o(50353);
+    AppMethodBeat.i(147079);
+    int i = (int)(System.currentTimeMillis() - paramc.oco);
+    ((b)e.L(b.class)).a(15190, new Object[] { Integer.valueOf(i), Integer.valueOf(paramc.size), Integer.valueOf(paramInt), Integer.valueOf(1), "", Util.nullAsNil(paramc.event), Integer.valueOf(bMr()), Integer.valueOf(bMs()) });
+    AppMethodBeat.o(147079);
   }
   
-  public final Map<String, com.tencent.mm.plugin.appbrand.jsapi.p> Nf()
+  public static void a(ffr paramffr, n paramn)
   {
-    AppMethodBeat.i(50352);
-    Map localMap = com.tencent.mm.plugin.appbrand.jsapi.t.bEk();
-    kotlin.g.b.p.g(localMap, "AppBrandJsApiPool.getServiceApiPool()");
-    AppMethodBeat.o(50352);
-    return localMap;
+    AppMethodBeat.i(147078);
+    if (paramn != null)
+    {
+      int i = (int)(System.currentTimeMillis() - paramn.oco);
+      ((b)e.L(b.class)).a(15190, new Object[] { Integer.valueOf(i), Integer.valueOf(paramn.size), Integer.valueOf(paramffr.computeSize()), Integer.valueOf(0), "", "", Integer.valueOf(bMr()), Integer.valueOf(bMs()) });
+    }
+    AppMethodBeat.o(147078);
+  }
+  
+  public static void a(String paramString, LinkedList<String> paramLinkedList, long paramLong, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(147080);
+    if (((paramString.equals("invokeHandler")) || (paramString.equals("publishHandler"))) && (paramLinkedList.size() > 0)) {}
+    for (paramLinkedList = (String)paramLinkedList.get(0);; paramLinkedList = "")
+    {
+      int i = (int)(System.currentTimeMillis() - paramLong);
+      ((b)e.L(b.class)).a(15190, new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(2), paramString, paramLinkedList, Integer.valueOf(bMr()), Integer.valueOf(bMs()) });
+      AppMethodBeat.o(147080);
+      return;
+    }
+  }
+  
+  public static String afJ(String paramString)
+  {
+    AppMethodBeat.i(147081);
+    paramString = Pattern.compile("subscribeHandler\\(\"(.*)\" , ").matcher(paramString);
+    if (paramString.find())
+    {
+      paramString = paramString.group(1);
+      AppMethodBeat.o(147081);
+      return paramString;
+    }
+    AppMethodBeat.o(147081);
+    return "";
+  }
+  
+  private static int bMr()
+  {
+    AppMethodBeat.i(147082);
+    if (odz >= 0)
+    {
+      i = odz;
+      AppMethodBeat.o(147082);
+      return i;
+    }
+    int i = NetStatusUtil.getISPCode(MMApplicationContext.getContext());
+    odz = i;
+    AppMethodBeat.o(147082);
+    return i;
+  }
+  
+  public static int bMs()
+  {
+    AppMethodBeat.i(147083);
+    Context localContext = MMApplicationContext.getContext();
+    int i = 5;
+    if (!NetStatusUtil.isConnected(localContext)) {
+      i = 0;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(147083);
+      return i;
+      if (NetStatusUtil.is2G(localContext)) {
+        i = 1;
+      } else if (NetStatusUtil.is3G(localContext)) {
+        i = 2;
+      } else if (NetStatusUtil.is4G(localContext)) {
+        i = 3;
+      } else if (NetStatusUtil.isWifi(localContext)) {
+        i = 4;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.t
  * JD-Core Version:    0.7.0.1
  */

@@ -22,11 +22,11 @@ public class bj
     int j = 1;
     AppMethodBeat.i(78628);
     Log.i("MicroMsg.JsApiSetScreenOrientation", "invoke");
-    Object localObject = paramb.ctb.csi.optString("orientation");
+    Object localObject = paramb.crh.cqn.optString("orientation");
     if (Util.isNullOrNil((String)localObject))
     {
       Log.e("MicroMsg.JsApiSetScreenOrientation", "data is null");
-      paramb.c("invalid_data", null);
+      paramb.a("invalid_data", null);
       AppMethodBeat.o(78628);
       return;
     }
@@ -36,10 +36,10 @@ public class bj
     }
     for (;;)
     {
-      localObject = (g)paramb.cta;
+      localObject = (g)paramb.crg;
       ((s)localObject).mParams.putInt("screen_orientation", i);
-      ((g)localObject).gbz();
-      paramb.c("", null);
+      ((g)localObject).gUt();
+      paramb.a("", null);
       AppMethodBeat.o(78628);
       return;
       i = j;
@@ -63,7 +63,7 @@ public class bj
     }
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

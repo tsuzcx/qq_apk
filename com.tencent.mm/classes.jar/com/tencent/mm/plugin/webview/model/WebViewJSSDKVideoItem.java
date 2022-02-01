@@ -34,10 +34,10 @@ public class WebViewJSSDKVideoItem
     AppMethodBeat.o(79022);
   }
   
-  public final void cb(JSONObject paramJSONObject)
+  public final void cm(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(182697);
-    super.cb(paramJSONObject);
+    super.cm(paramJSONObject);
     if (paramJSONObject != null) {
       this.duration = paramJSONObject.optInt("duration");
     }
@@ -49,10 +49,10 @@ public class WebViewJSSDKVideoItem
     return 0;
   }
   
-  public final JSONObject gWR()
+  public final JSONObject gVK()
   {
     AppMethodBeat.i(182698);
-    JSONObject localJSONObject = super.gWR();
+    JSONObject localJSONObject = super.gVK();
     try
     {
       localJSONObject.put("duration", this.duration);
@@ -66,22 +66,22 @@ public class WebViewJSSDKVideoItem
     }
   }
   
-  public final WebViewJSSDKFileItem gWS()
+  public final WebViewJSSDKFileItem gVL()
   {
     AppMethodBeat.i(79021);
-    this.dJX = ay.aYY(this.laR);
+    this.fCM = az.bkS(this.nVa);
     AppMethodBeat.o(79021);
     return this;
+  }
+  
+  public final String gVM()
+  {
+    return "mp4";
   }
   
   public final String getFileType()
   {
     return "video";
-  }
-  
-  public final String hdY()
-  {
-    return "mp4";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -94,7 +94,7 @@ public class WebViewJSSDKVideoItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.WebViewJSSDKVideoItem
  * JD-Core Version:    0.7.0.1
  */

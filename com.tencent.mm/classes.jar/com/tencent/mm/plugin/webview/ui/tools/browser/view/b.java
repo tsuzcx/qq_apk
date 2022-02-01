@@ -8,20 +8,20 @@ import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BrowserChooseDialog;", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BaseBrowseDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "mBrowserList", "", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserItemInfo;", "mDialogClickListener", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/listener/BrowserChooseDialogClickListener;", "mDialogView", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BrowserChooseDialogView;", "onCreateDialogView", "Landroid/view/View;", "release", "", "setBrowserClickListener", "listener", "setBrowserList", "list", "Companion", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BrowserChooseDialog;", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BaseBrowseDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "mBrowserList", "", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserItemInfo;", "mDialogClickListener", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/listener/BrowserChooseDialogClickListener;", "mDialogView", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BrowserChooseDialogView;", "onCreateDialogView", "Landroid/view/View;", "release", "", "setBrowserClickListener", "listener", "setBrowserList", "list", "Companion", "plugin-webview_release"})
 public final class b
   extends a
 {
-  public static final b.a JlT;
-  private BrowserChooseDialogView JlR;
-  public com.tencent.mm.plugin.webview.ui.tools.browser.listener.a JlS;
-  public List<f> Jli;
+  public static final a Qjl;
+  public List<f> QiA;
+  private BrowserChooseDialogView Qjj;
+  public com.tencent.mm.plugin.webview.ui.tools.browser.listener.a Qjk;
   
   static
   {
-    AppMethodBeat.i(210447);
-    JlT = new b.a((byte)0);
-    AppMethodBeat.o(210447);
+    AppMethodBeat.i(249188);
+    Qjl = new a((byte)0);
+    AppMethodBeat.o(249188);
   }
   
   public b(Context paramContext)
@@ -29,39 +29,42 @@ public final class b
     super(paramContext);
   }
   
-  public final View onCreateDialogView()
+  public final View gZK()
   {
-    AppMethodBeat.i(210446);
+    AppMethodBeat.i(249184);
     Object localObject = getContext();
-    p.g(localObject, "context");
-    this.JlR = new BrowserChooseDialogView((Context)localObject);
-    localObject = this.JlR;
+    p.j(localObject, "context");
+    this.Qjj = new BrowserChooseDialogView((Context)localObject);
+    localObject = this.Qjj;
     if (localObject != null)
     {
       a locala = (a)this;
-      p.h(locala, "dialog");
-      ((BrowserChooseDialogView)localObject).JlX = locala;
+      p.k(locala, "dialog");
+      ((BrowserChooseDialogView)localObject).Qjp = locala;
     }
-    localObject = this.JlR;
+    localObject = this.Qjj;
     if (localObject != null) {
-      ((BrowserChooseDialogView)localObject).setBrowserClickListener(this.JlS);
+      ((BrowserChooseDialogView)localObject).setBrowserClickListener(this.Qjk);
     }
-    localObject = this.JlR;
+    localObject = this.Qjj;
     if (localObject != null) {
-      ((BrowserChooseDialogView)localObject).setBrowserList(this.Jli);
+      ((BrowserChooseDialogView)localObject).setBrowserList(this.QiA);
     }
-    localObject = this.JlR;
+    localObject = this.Qjj;
     if (localObject == null) {
-      p.hyc();
+      p.iCn();
     }
     localObject = (View)localObject;
-    AppMethodBeat.o(210446);
+    AppMethodBeat.o(249184);
     return localObject;
   }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BrowserChooseDialog$Companion;", "", "()V", "TAG", "", "plugin-webview_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.browser.view.b
  * JD-Core Version:    0.7.0.1
  */

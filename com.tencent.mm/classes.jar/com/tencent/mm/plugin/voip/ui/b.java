@@ -8,50 +8,56 @@ import com.tencent.mm.plugin.voip.video.camera.prev.CaptureView;
 
 public abstract interface b
 {
+  public abstract void Ba(boolean paramBoolean);
+  
+  public abstract void XB(int paramInt);
+  
   @Deprecated
   public abstract void a(SurfaceTexture paramSurfaceTexture, d paramd);
   
   @Deprecated
   public abstract void a(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
   
-  public abstract void aUB(String paramString);
+  public abstract void akB(int paramInt);
   
   @Deprecated
-  public abstract a adw(int paramInt);
+  public abstract a alh(int paramInt);
   
-  public abstract void adx(int paramInt);
+  public abstract void ali(int paramInt);
   
-  public abstract void ady(int paramInt);
+  public abstract void alj(int paramInt);
   
-  public abstract void adz(int paramInt);
+  public abstract void alk(int paramInt);
   
-  public abstract void cF(int paramInt, String paramString);
+  public abstract void bgj(String paramString);
   
-  public abstract void ebH();
+  public abstract void cG(int paramInt, String paramString);
   
-  public abstract void enR();
+  public abstract void eIO();
+  
+  public abstract void eKF();
+  
+  public abstract void eXH();
   
   @Deprecated
   public abstract void f(int paramInt1, int paramInt2, byte[] paramArrayOfByte);
   
-  public abstract void fFL();
+  @Deprecated
+  public abstract void gBG();
   
   @Deprecated
-  public abstract void fJj();
+  public abstract com.tencent.mm.plugin.voip.video.d.b gBH();
+  
+  public abstract Context gBI();
+  
+  public abstract void gBJ();
+  
+  public abstract void gBK();
   
   @Deprecated
-  public abstract com.tencent.mm.plugin.voip.video.d.b fJk();
+  public abstract void kN(int paramInt1, int paramInt2);
   
-  public abstract Context fJl();
-  
-  public abstract void fJm();
-  
-  public abstract void fJn();
-  
-  @Deprecated
-  public abstract void jA(int paramInt1, int paramInt2);
-  
-  public abstract void jD(int paramInt1, int paramInt2);
+  public abstract void kR(int paramInt1, int paramInt2);
   
   @Deprecated
   public abstract void releaseSurfaceTexture();
@@ -80,12 +86,10 @@ public abstract interface b
   public abstract void setVoipBeauty(int paramInt);
   
   public abstract void uninit();
-  
-  public abstract void xi(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.b
  * JD-Core Version:    0.7.0.1
  */

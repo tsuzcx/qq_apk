@@ -3,6 +3,7 @@ package com.tencent.tav.decoder;
 import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
+import com.tencent.tav.report.AverageTimeReporter;
 import java.nio.ByteBuffer;
 
 public abstract interface IDecoder
@@ -12,6 +13,8 @@ public abstract interface IDecoder
   public static final long SAMPLE_STATE_FINISH = -1L;
   public static final long SAMPLE_STATE_TIMEOUT = -4L;
   public static final long SAMPLE_STATE_UN_START = -100L;
+  
+  public abstract AverageTimeReporter getDecodePerformance();
   
   public abstract String getSourcePath();
   
@@ -33,7 +36,7 @@ public abstract interface IDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.decoder.IDecoder
  * JD-Core Version:    0.7.0.1
  */

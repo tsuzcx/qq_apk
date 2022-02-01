@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.websearch.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.l;
@@ -20,28 +20,28 @@ import java.util.concurrent.TimeUnit;
 public final class b
   implements c
 {
-  Map<a, CountDownLatch> IGx;
-  private l IGy;
-  private l IGz;
-  Map<a, c.a> oPn;
+  Map<a, CountDownLatch> PAO;
+  private l PAP;
+  private l PAQ;
+  Map<a, c.a> rRk;
   
   public b()
   {
     AppMethodBeat.i(116556);
-    this.IGx = new ConcurrentHashMap();
-    this.oPn = new HashMap();
-    this.IGy = new l()
+    this.PAO = new ConcurrentHashMap();
+    this.rRk = new HashMap();
+    this.PAP = new l()
     {
       public final void b(k paramAnonymousk)
       {
         AppMethodBeat.i(116554);
-        a locala = (a)paramAnonymousk.wXa.wVS;
+        a locala = (a)paramAnonymousk.BIV.BHN;
         if (locala == null)
         {
           AppMethodBeat.o(116554);
           return;
         }
-        CountDownLatch localCountDownLatch = (CountDownLatch)b.this.IGx.remove(locala);
+        CountDownLatch localCountDownLatch = (CountDownLatch)b.this.PAO.remove(locala);
         switch (paramAnonymousk.resultCode)
         {
         }
@@ -50,32 +50,32 @@ public final class b
           localCountDownLatch.countDown();
           AppMethodBeat.o(116554);
           return;
-          if ((paramAnonymousk.wXb == null) || (paramAnonymousk.wXb.size() == 0))
+          if ((paramAnonymousk.BIW == null) || (paramAnonymousk.BIW.size() == 0))
           {
             Log.i("FTSMatchContact", "local contact search size 0");
-            locala.ih(Collections.emptyList());
+            locala.iX(Collections.emptyList());
             localCountDownLatch.countDown();
             AppMethodBeat.o(116554);
             return;
           }
-          locala.ih(paramAnonymousk.wXb);
+          locala.iX(paramAnonymousk.BIW);
           continue;
-          locala.ih(Collections.emptyList());
+          locala.iX(Collections.emptyList());
         }
       }
     };
-    this.IGz = new l()
+    this.PAQ = new l()
     {
       public final void b(k paramAnonymousk)
       {
         AppMethodBeat.i(116555);
-        a locala = (a)paramAnonymousk.wXa.wVS;
+        a locala = (a)paramAnonymousk.BIV.BHN;
         if (locala == null)
         {
           AppMethodBeat.o(116555);
           return;
         }
-        c.a locala1 = (c.a)b.this.oPn.remove(locala);
+        c.a locala1 = (c.a)b.this.rRk.remove(locala);
         if (locala1 == null)
         {
           AppMethodBeat.o(116555);
@@ -86,19 +86,19 @@ public final class b
         }
         for (;;)
         {
-          locala1.fYI();
+          locala1.gRt();
           AppMethodBeat.o(116555);
           return;
-          if ((paramAnonymousk.wXb == null) || (paramAnonymousk.wXb.size() == 0))
+          if ((paramAnonymousk.BIW == null) || (paramAnonymousk.BIW.size() == 0))
           {
             Log.i("FTSMatchContact", "local contact search size 0");
-            locala1.fYI();
+            locala1.gRt();
             AppMethodBeat.o(116555);
             return;
           }
-          locala.ih(paramAnonymousk.wXb);
+          locala.iX(paramAnonymousk.BIW);
           continue;
-          locala.ih(Collections.emptyList());
+          locala.iX(Collections.emptyList());
         }
       }
     };
@@ -115,14 +115,14 @@ public final class b
     }
     j localj = new j();
     localj.query = parama.query;
-    localj.wWU = new int[] { 131072 };
-    localj.wWV = new int[] { 1, 5 };
-    localj.wWW = parama.IGw;
-    localj.wWY = com.tencent.mm.plugin.fts.a.c.b.wXy;
-    localj.wWX = new HashSet();
-    localj.wWZ = paraml;
+    localj.BIP = new int[] { 131072 };
+    localj.BIQ = new int[] { 1, 5 };
+    localj.BIR = parama.PAN;
+    localj.BIT = com.tencent.mm.plugin.fts.a.c.b.BJu;
+    localj.BIS = new HashSet();
+    localj.BIU = paraml;
     localj.scene = 1;
-    ((n)g.ah(n.class)).search(2, localj).wVS = parama;
+    ((n)h.ag(n.class)).search(2, localj).BHN = parama;
     AppMethodBeat.o(116559);
     return true;
   }
@@ -130,22 +130,22 @@ public final class b
   public final void a(a parama, c.a parama1)
   {
     AppMethodBeat.i(116558);
-    this.oPn.put(parama, parama1);
-    a(parama, this.IGz);
+    this.rRk.put(parama, parama1);
+    a(parama, this.PAQ);
     AppMethodBeat.o(116558);
   }
   
-  public final a aXo(String paramString)
+  public final a biZ(String paramString)
   {
     AppMethodBeat.i(116557);
     e locale = new e(paramString);
-    CountDownLatch localCountDownLatch = (CountDownLatch)this.IGx.get(locale);
+    CountDownLatch localCountDownLatch = (CountDownLatch)this.PAO.get(locale);
     if (localCountDownLatch == null) {
-      if (a(locale, this.IGy))
+      if (a(locale, this.PAP))
       {
         Log.i("FTSMatchContact", "not have a running task ,start new task, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
         paramString = new CountDownLatch(1);
-        this.IGx.put(locale, paramString);
+        this.PAO.put(locale, paramString);
       }
     }
     for (;;)
@@ -154,7 +154,7 @@ public final class b
       try
       {
         paramString.await(2000L, TimeUnit.MILLISECONDS);
-        this.IGx.remove(locale);
+        this.PAO.remove(locale);
         AppMethodBeat.o(116557);
         return locale;
         Log.i("FTSMatchContact", "start new task fail, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
@@ -175,7 +175,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.b.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ public final class p
     this.uin = ((int)(0xFFFFFFFF & paramLong));
   }
   
-  public static int fd(String paramString)
+  public static int fT(String paramString)
   {
     try
     {
@@ -58,7 +58,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.b.p
  * JD-Core Version:    0.7.0.1
  */

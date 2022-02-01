@@ -5,6 +5,7 @@ import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.qbar.a.a;
+import com.tencent.scanlib.b;
 import java.util.Iterator;
 import java.util.List;
 
@@ -14,9 +15,9 @@ public final class a
   {
     AppMethodBeat.i(91184);
     com.tencent.scanlib.b.a locala = new com.tencent.scanlib.b.a("MicroMsg.ScanImageUtil");
-    locala.a(1, com.tencent.scanlib.a.lb(MMApplicationContext.getContext()));
+    locala.a(1, b.lZ(MMApplicationContext.getContext()));
     if (locala.hasInited()) {
-      locala.T(paramArrayOfInt);
+      locala.S(paramArrayOfInt);
     }
     paramArrayOfInt = null;
     if (paramBitmap != null)

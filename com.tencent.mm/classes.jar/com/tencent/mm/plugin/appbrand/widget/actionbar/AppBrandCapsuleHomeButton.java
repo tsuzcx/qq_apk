@@ -2,8 +2,10 @@ package com.tencent.mm.plugin.appbrand.widget.actionbar;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.b;
 import android.util.AttributeSet;
+import androidx.core.content.a;
+import com.tencent.luggage.wxa.a.c;
+import com.tencent.luggage.wxa.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class AppBrandCapsuleHomeButton
@@ -21,23 +23,23 @@ public final class AppBrandCapsuleHomeButton
   
   protected final String getDefaultAccessibilityLabel()
   {
-    AppMethodBeat.i(219626);
-    String str = getContext().getString(2131755322);
-    AppMethodBeat.o(219626);
+    AppMethodBeat.i(245350);
+    String str = getContext().getString(a.g.app_brand_accessibility_close_button);
+    AppMethodBeat.o(245350);
     return str;
   }
   
   protected final Drawable getDefaultImageDrawable()
   {
     AppMethodBeat.i(135459);
-    Drawable localDrawable = b.l(getContext(), 2131230969);
+    Drawable localDrawable = a.m(getContext(), a.c.app_brand_actionbar_capsule_home_dark);
     AppMethodBeat.o(135459);
     return localDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandCapsuleHomeButton
  * JD-Core Version:    0.7.0.1
  */

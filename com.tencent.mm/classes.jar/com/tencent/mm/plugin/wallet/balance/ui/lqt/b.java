@@ -30,12 +30,12 @@ public class b
     AppMethodBeat.o(68739);
   }
   
-  public final String dKC()
+  public final String epb()
   {
     return "BalanceFetchCardProcess";
   }
   
-  public final void g(Activity paramActivity, int paramInt)
+  public final void h(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(68738);
     if (paramActivity != null) {

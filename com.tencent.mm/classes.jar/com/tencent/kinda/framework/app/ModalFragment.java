@@ -4,12 +4,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import androidx.appcompat.app.ActionBar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import com.tencent.kinda.framework.R.color;
+import com.tencent.kinda.framework.R.id;
 import com.tencent.kinda.framework.widget.PlatformWrapLayout;
 import com.tencent.kinda.framework.widget.base.BaseFragment;
 import com.tencent.kinda.framework.widget.tools.ColorUtil;
@@ -17,9 +21,11 @@ import com.tencent.kinda.gen.DynamicColor;
 import com.tencent.kinda.gen.IUIModal;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.t;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.w;
+import com.tencent.mm.ui.widget.pulldown.c;
 
+@c(0)
 public class ModalFragment
   extends BaseFragment
 {
@@ -31,13 +37,15 @@ public class ModalFragment
   private int getBlackMaskColorRes()
   {
     AppMethodBeat.i(178766);
-    if (ao.isDarkMode())
+    if (ar.isDarkMode())
     {
+      i = R.color.wallet_action_bar_black_mask_dark;
       AppMethodBeat.o(178766);
-      return 2131101339;
+      return i;
     }
+    int i = R.color.wallet_action_bar_black_mask_normal;
     AppMethodBeat.o(178766);
-    return 2131101340;
+    return i;
   }
   
   private void initCenterPaddingView(View paramView)
@@ -45,8 +53,8 @@ public class ModalFragment
     AppMethodBeat.i(18559);
     if (paramView != null)
     {
-      this.mViewCenterPadding = paramView.findViewById(2131309859);
-      int i = ao.getStatusBarHeight(getContext());
+      this.mViewCenterPadding = paramView.findViewById(R.id.view_center_padding);
+      int i = ar.getStatusBarHeight(getContext());
       this.mViewCenterPadding.setVisibility(0);
       paramView = this.mViewCenterPadding.getLayoutParams();
       paramView.height = i;
@@ -61,7 +69,19 @@ public class ModalFragment
     if (this.page != null)
     {
       this.page.setPlatformDelegate(this.pagePlatformDelegate);
+      this.page.setFuncDelegate(this.uiModalFuncDelegate);
       covertPlatformData(getActivity().getIntent().getBundleExtra("key_platform_data"));
+      if (useKeyboardCoverMode())
+      {
+        Object localObject = (ViewGroup)findViewById(R.id.kinda_main_container);
+        ViewGroup localViewGroup = (ViewGroup)findViewById(R.id.container_layout);
+        View localView = findViewById(R.id.tenpay_keyboard_layout);
+        localView.setVisibility(8);
+        ((ViewGroup)localObject).removeView(localView);
+        localObject = new FrameLayout.LayoutParams(-1, -2);
+        ((FrameLayout.LayoutParams)localObject).gravity = 80;
+        localViewGroup.addView(localView, (ViewGroup.LayoutParams)localObject);
+      }
       Log.i("MicroMsg.ModalFragment", "finish init page");
     }
     AppMethodBeat.o(18545);
@@ -79,6 +99,13 @@ public class ModalFragment
   private void setupActionAndStatusBarColor()
   {
     AppMethodBeat.i(178764);
+    if ((this.page != null) && (this.page.statusbarColor() != null) && (this.page.statusbarColor().mNormalColor > 0L))
+    {
+      setActionBarColor((int)ColorUtil.getColorByModeNoCompat(this.page.statusbarColor()));
+      AppMethodBeat.o(178764);
+      return;
+    }
+    Log.w("MicroMsg.ModalFragment", "uimodal should override statusbarColor");
     this.mPreFragment = getPrevFragment();
     int i;
     if (this.mPreFragment == null)
@@ -91,21 +118,15 @@ public class ModalFragment
     }
     if ((this.mPreFragment instanceof ModalFragment))
     {
-      i = ((ModalFragment)this.mPreFragment).getController().gIN();
-      setCenterPaddingColor(getContext().getResources().getColor(2131101287));
-      setActionBarColor(i);
+      ((ModalFragment)this.mPreFragment).getController().hHI();
+      setCenterPaddingColor(getContext().getResources().getColor(R.color.transparent));
+      setActionBarColor(0);
       AppMethodBeat.o(178764);
       return;
     }
     if ((this.mPreFragment instanceof MainFragment))
     {
-      if ((this.page != null) && (this.page.statusbarColor() != null) && (this.page.statusbarColor().mNormalColor > 0L))
-      {
-        setActionBarColor((int)ColorUtil.getColorByModeNoCompat(this.page.statusbarColor()));
-        AppMethodBeat.o(178764);
-        return;
-      }
-      i = ((MainFragment)this.mPreFragment).getController().gIN();
+      i = ((MainFragment)this.mPreFragment).getController().hHI();
       int j = getContext().getResources().getColor(getBlackMaskColorRes());
       setActionBarColor((int)ColorUtil.MergeColors(i, j));
       setCenterPaddingColor(j);
@@ -179,12 +200,8 @@ public class ModalFragment
   {
     AppMethodBeat.i(18552);
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    if (getContext() != null)
-    {
-      if (this.page.IsShowAndroidCenterPadding()) {
-        initCenterPaddingView(paramLayoutInflater);
-      }
-      setupActionAndStatusBarColor();
+    if ((getContext() != null) && (this.page.IsShowAndroidCenterPadding())) {
+      initCenterPaddingView(paramLayoutInflater);
     }
     AppMethodBeat.o(18552);
     return paramLayoutInflater;
@@ -198,6 +215,15 @@ public class ModalFragment
     AppMethodBeat.o(18549);
   }
   
+  public void onFirstRenderFinish()
+  {
+    AppMethodBeat.i(263989);
+    if (this.page != null) {
+      this.page.onFirstRenderFinish();
+    }
+    AppMethodBeat.o(263989);
+  }
+  
   public void onFragmentOnResume()
   {
     AppMethodBeat.i(178765);
@@ -208,11 +234,11 @@ public class ModalFragment
   
   public void onKeyboardShow(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(214430);
+    AppMethodBeat.i(263994);
     if (this.pagePlatformFuncDelegate != null) {
       this.pagePlatformFuncDelegate.onKeyboardShow(paramBoolean, paramInt);
     }
-    AppMethodBeat.o(214430);
+    AppMethodBeat.o(263994);
   }
   
   public void onStart()
@@ -239,20 +265,17 @@ public class ModalFragment
     AppMethodBeat.o(18551);
   }
   
+  public void onViewCreated(View paramView, Bundle paramBundle)
+  {
+    AppMethodBeat.i(263979);
+    super.onViewCreated(paramView, paramBundle);
+    setupActionAndStatusBarColor();
+    AppMethodBeat.o(263979);
+  }
+  
   public void restoreActionBarColor()
   {
     AppMethodBeat.i(18557);
-    if ((this.mPreFragment == null) && (isFinishing()))
-    {
-      if (getContext() != null)
-      {
-        setActionBarColor(16777216);
-        AppMethodBeat.o(18557);
-      }
-    }
-    else {
-      super.restoreActionBarColor();
-    }
     AppMethodBeat.o(18557);
   }
   
@@ -268,6 +291,32 @@ public class ModalFragment
     AppMethodBeat.i(18561);
     this.pagePlatformFuncDelegate.setTopRightBtnTitle(paramString1, paramString2);
     AppMethodBeat.o(18561);
+  }
+  
+  public boolean useKeyboardCoverMode()
+  {
+    AppMethodBeat.i(263990);
+    if (this.page != null)
+    {
+      boolean bool = this.page.useKeyboardCoverMode();
+      AppMethodBeat.o(263990);
+      return bool;
+    }
+    AppMethodBeat.o(263990);
+    return false;
+  }
+  
+  public boolean usePanelModalMode()
+  {
+    AppMethodBeat.i(263987);
+    if (this.page != null)
+    {
+      boolean bool = this.page.usePanelModalMode();
+      AppMethodBeat.o(263987);
+      return bool;
+    }
+    AppMethodBeat.o(263987);
+    return false;
   }
   
   public void willActive()
@@ -286,7 +335,7 @@ public class ModalFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.app.ModalFragment
  * JD-Core Version:    0.7.0.1
  */

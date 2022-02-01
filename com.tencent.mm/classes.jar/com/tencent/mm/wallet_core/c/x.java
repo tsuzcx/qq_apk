@@ -1,19 +1,19 @@
 package com.tencent.mm.wallet_core.c;
 
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.eae;
 
-public final class x
+public class x
 {
-  public SKBuiltinBuffer_t MhT;
-  public int MhU;
-  public String MhV;
-  public int MhW;
-  public int Ruc;
-  public String rBM;
+  public eae TrG;
+  public int TrH;
+  public String TrI;
+  public int TrJ;
+  public int YVB;
+  public String vhu;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.x
  * JD-Core Version:    0.7.0.1
  */

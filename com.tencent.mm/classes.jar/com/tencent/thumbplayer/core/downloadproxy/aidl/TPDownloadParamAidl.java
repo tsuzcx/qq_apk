@@ -19,14 +19,14 @@ public class TPDownloadParamAidl
   
   static
   {
-    AppMethodBeat.i(209876);
+    AppMethodBeat.i(255434);
     CREATOR = new Parcelable.Creator()
     {
       public final TPDownloadParamAidl createFromParcel(Parcel paramAnonymousParcel)
       {
-        AppMethodBeat.i(209871);
+        AppMethodBeat.i(255407);
         paramAnonymousParcel = new TPDownloadParamAidl(paramAnonymousParcel);
-        AppMethodBeat.o(209871);
+        AppMethodBeat.o(255407);
         return paramAnonymousParcel;
       }
       
@@ -35,18 +35,18 @@ public class TPDownloadParamAidl
         return new TPDownloadParamAidl[paramAnonymousInt];
       }
     };
-    AppMethodBeat.o(209876);
+    AppMethodBeat.o(255434);
   }
   
   protected TPDownloadParamAidl(Parcel paramParcel)
   {
-    AppMethodBeat.i(209874);
+    AppMethodBeat.i(255423);
     try
     {
       this.urlList = paramParcel.createStringArrayList();
       this.dlType = paramParcel.readInt();
       this.extInfoMap = paramParcel.readHashMap(TPDownloadParamAidl.class.getClassLoader());
-      AppMethodBeat.o(209874);
+      AppMethodBeat.o(255423);
       return;
     }
     catch (Throwable paramParcel)
@@ -55,7 +55,7 @@ public class TPDownloadParamAidl
       this.urlList = new ArrayList();
       this.dlType = 0;
       this.extInfoMap = new HashMap();
-      AppMethodBeat.o(209874);
+      AppMethodBeat.o(255423);
     }
   }
   
@@ -103,16 +103,16 @@ public class TPDownloadParamAidl
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(209875);
+    AppMethodBeat.i(255425);
     paramParcel.writeStringList(this.urlList);
     paramParcel.writeInt(this.dlType);
     paramParcel.writeMap(this.extInfoMap);
-    AppMethodBeat.o(209875);
+    AppMethodBeat.o(255425);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.TPDownloadParamAidl
  * JD-Core Version:    0.7.0.1
  */

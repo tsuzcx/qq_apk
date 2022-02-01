@@ -2,6 +2,7 @@ package com.tencent.mm.flutter.plugins.a;
 
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import io.flutter.embedding.engine.plugins.a;
 import io.flutter.embedding.engine.plugins.a.a;
 import io.flutter.embedding.engine.plugins.a.b;
 import io.flutter.plugin.a.d.c;
@@ -16,36 +17,38 @@ import java.util.Iterator;
 import java.util.Map;
 
 public final class d
-  implements io.flutter.embedding.engine.plugins.a, k.c
+  implements a, k.c
 {
-  private k bbv;
-  private a.b hgm;
-  private final Map<Long, a> hgn;
+  private k aKT;
+  private a.b jSe;
+  private Class<? extends b> jSf;
+  private final Map<Long, a> jSg;
   
   public d()
   {
-    AppMethodBeat.i(199143);
-    this.hgn = new HashMap();
-    AppMethodBeat.o(199143);
+    AppMethodBeat.i(207356);
+    this.jSg = new HashMap();
+    AppMethodBeat.o(207356);
   }
   
   public final void a(a.b paramb)
   {
-    AppMethodBeat.i(199141);
-    this.bbv = new k(paramb.SOH, "com.tencent.mm.flutter/videoPlayer");
-    this.bbv.a(this);
-    AppMethodBeat.o(199141);
+    AppMethodBeat.i(207353);
+    this.aKT = new k(paramb.aaqF, "com.tencent.mm.flutter/videoPlayer");
+    this.aKT.a(this);
+    this.jSe = paramb;
+    AppMethodBeat.o(207353);
   }
   
   public final void a(j paramj, k.d paramd)
   {
     int j = 0;
-    AppMethodBeat.i(199144);
-    Object localObject1 = this.hgm.StA;
+    AppMethodBeat.i(207363);
+    Object localObject1 = this.jSe.aarP;
     if (localObject1 == null)
     {
       paramd.b("no_activity", "video_player plugin requires a foreground activity", null);
-      AppMethodBeat.o(199144);
+      AppMethodBeat.o(207363);
       return;
     }
     new StringBuilder("onMethodCall:").append(paramj.method);
@@ -63,13 +66,13 @@ public final class d
       switch (i)
       {
       default: 
-        l = ((Number)paramj.btq("textureId")).longValue();
-        localObject1 = (a)this.hgn.get(Long.valueOf(l));
+        l = ((Number)paramj.bGt("textureId")).longValue();
+        localObject1 = (a)this.jSg.get(Long.valueOf(l));
         if (localObject1 != null) {
-          break label496;
+          break label491;
         }
         paramd.b("Unknown textureId", "No video player associated with texture id ".concat(String.valueOf(l)), null);
-        AppMethodBeat.o(199144);
+        AppMethodBeat.o(207363);
         return;
         if (!((String)localObject2).equals("init")) {
           break label92;
@@ -82,39 +85,38 @@ public final class d
         i = 1;
       }
     }
-    paramj = this.hgn.values().iterator();
+    paramj = this.jSg.values().iterator();
     while (paramj.hasNext()) {
       ((a)paramj.next()).dispose();
     }
-    this.hgn.clear();
-    AppMethodBeat.o(199144);
+    this.jSg.clear();
+    AppMethodBeat.o(207363);
     return;
-    localObject1 = ((io.flutter.view.c)localObject1).hwY();
-    localObject2 = new io.flutter.plugin.a.d(this.hgm.SOH, "com.tencent.mm.flutter/videoPlayer/videoEvents" + ((c.a)localObject1).hxb());
-    String str = (String)paramj.btq("clazz");
-    if (paramj.btq("asset") != null)
+    localObject1 = ((io.flutter.view.c)localObject1).iBa();
+    localObject2 = new io.flutter.plugin.a.d(this.jSe.aaqF, "com.tencent.mm.flutter/videoPlayer/videoEvents" + ((c.a)localObject1).dux());
+    if (paramj.bGt("asset") != null)
     {
-      if (paramj.btq("package") != null) {}
-      for (paramj = this.hgm.SPB.op((String)paramj.btq("asset"), (String)paramj.btq("package"));; paramj = this.hgm.SPB.btc((String)paramj.btq("asset")))
+      if (paramj.bGt("package") != null) {}
+      for (paramj = this.jSe.aarR.pl((String)paramj.bGt("asset"), (String)paramj.bGt("package"));; paramj = this.jSe.aarR.bGe((String)paramj.bGt("asset")))
       {
         "asset:///".concat(String.valueOf(paramj));
-        paramj = new a((io.flutter.plugin.a.d)localObject2, (c.a)localObject1, paramd, str);
-        this.hgn.put(Long.valueOf(((c.a)localObject1).hxb()), paramj);
-        AppMethodBeat.o(199144);
+        paramj = new a((io.flutter.plugin.a.d)localObject2, (c.a)localObject1, paramd, this.jSf);
+        this.jSg.put(Long.valueOf(((c.a)localObject1).dux()), paramj);
+        AppMethodBeat.o(207363);
         return;
       }
     }
-    paramj.btq("uri");
-    paramj = new a((io.flutter.plugin.a.d)localObject2, (c.a)localObject1, paramd, str);
-    this.hgn.put(Long.valueOf(((c.a)localObject1).hxb()), paramj);
-    AppMethodBeat.o(199144);
+    paramj.bGt("uri");
+    paramj = new a((io.flutter.plugin.a.d)localObject2, (c.a)localObject1, paramd, this.jSf);
+    this.jSg.put(Long.valueOf(((c.a)localObject1).dux()), paramj);
+    AppMethodBeat.o(207363);
     return;
-    label496:
+    label491:
     localObject2 = paramj.method;
     switch (((String)localObject2).hashCode())
     {
     default: 
-      label572:
+      label568:
       i = -1;
     }
     for (;;)
@@ -122,154 +124,165 @@ public final class d
       switch (i)
       {
       default: 
-        paramd.dLv();
-        AppMethodBeat.o(199144);
+        paramd.epZ();
+        AppMethodBeat.o(207363);
         return;
         if (!((String)localObject2).equals("setLooping")) {
-          break label572;
+          break label568;
         }
         i = j;
         continue;
         if (!((String)localObject2).equals("setVolume")) {
-          break label572;
+          break label568;
         }
         i = 1;
         continue;
         if (!((String)localObject2).equals("play")) {
-          break label572;
+          break label568;
         }
         i = 2;
         continue;
         if (!((String)localObject2).equals("pause")) {
-          break label572;
+          break label568;
         }
         i = 3;
         continue;
         if (!((String)localObject2).equals("seekTo")) {
-          break label572;
+          break label568;
         }
         i = 4;
         continue;
         if (!((String)localObject2).equals("position")) {
-          break label572;
+          break label568;
         }
         i = 5;
         continue;
         if (!((String)localObject2).equals("dispose")) {
-          break label572;
+          break label568;
         }
         i = 6;
       }
     }
-    ((Boolean)paramj.btq("looping")).booleanValue();
-    paramd.ba(null);
-    AppMethodBeat.o(199144);
+    ((Boolean)paramj.bGt("looping")).booleanValue();
+    paramd.bb(null);
+    AppMethodBeat.o(207363);
     return;
-    Math.max(0.0D, Math.min(1.0D, ((Double)paramj.btq("volume")).doubleValue()));
-    paramd.ba(null);
-    AppMethodBeat.o(199144);
+    Math.max(0.0D, Math.min(1.0D, ((Double)paramj.bGt("volume")).doubleValue()));
+    paramd.bb(null);
+    AppMethodBeat.o(207363);
     return;
-    paramd.ba(null);
-    AppMethodBeat.o(199144);
+    paramd.bb(null);
+    AppMethodBeat.o(207363);
     return;
-    paramd.ba(null);
-    AppMethodBeat.o(199144);
+    paramd.bb(null);
+    AppMethodBeat.o(207363);
     return;
-    ((Number)paramj.btq("location")).intValue();
-    paramd.ba(null);
-    AppMethodBeat.o(199144);
+    ((Number)paramj.bGt("location")).intValue();
+    paramd.bb(null);
+    AppMethodBeat.o(207363);
     return;
-    paramd.ba(Long.valueOf(((a)localObject1).hgo.getCurrentPosition()));
-    AppMethodBeat.o(199144);
+    paramd.bb(Long.valueOf(((a)localObject1).jSh.getCurrentPosition()));
+    AppMethodBeat.o(207363);
     return;
     ((a)localObject1).dispose();
-    this.hgn.remove(Long.valueOf(l));
-    paramd.ba(null);
-    AppMethodBeat.o(199144);
+    this.jSg.remove(Long.valueOf(l));
+    paramd.bb(null);
+    AppMethodBeat.o(207363);
   }
   
   public final void b(a.b paramb)
   {
-    AppMethodBeat.i(199142);
-    this.bbv.a(null);
-    this.bbv = null;
-    paramb = this.hgn.values().iterator();
+    AppMethodBeat.i(207354);
+    if (this.aKT == null)
+    {
+      AppMethodBeat.o(207354);
+      return;
+    }
+    this.aKT.a(null);
+    this.aKT = null;
+    paramb = this.jSg.values().iterator();
     while (paramb.hasNext()) {
       ((a)paramb.next()).dispose();
     }
-    this.hgn.clear();
-    AppMethodBeat.o(199142);
+    this.jSg.clear();
+    AppMethodBeat.o(207354);
   }
   
-  static final class a
+  final class a
   {
-    private final io.flutter.plugin.a.d bbw;
-    b hgo;
-    private final c.a hgp;
-    c hgq;
+    private final io.flutter.plugin.a.d aKU;
     private boolean isInitialized;
+    b jSh;
+    private final c.a jSi;
+    c jSj;
     private Surface surface;
     
-    a(io.flutter.plugin.a.d paramd, c.a parama, k.d paramd1, String paramString)
+    a(c.a parama, k.d paramd, Class<? extends b> paramClass)
     {
-      AppMethodBeat.i(199139);
-      this.hgq = new c();
+      AppMethodBeat.i(207334);
+      this.jSj = new c();
       this.isInitialized = false;
-      this.bbw = paramd;
-      this.hgp = parama;
+      this.aKU = parama;
+      this.jSi = paramd;
       try
       {
-        this.hgo = ((b)Class.forName(paramString).newInstance());
-        label50:
-        paramd.a(new d.c()
+        Object localObject;
+        this.jSh = ((b)localObject.newInstance());
+        parama.a(new d.c()
         {
-          public final void a(Object paramAnonymousObject, io.flutter.plugin.a.d.a paramAnonymousa)
+          public final void a(io.flutter.plugin.a.d.a paramAnonymousa)
           {
-            AppMethodBeat.i(199137);
-            d.a.this.hgq.a(paramAnonymousa);
-            AppMethodBeat.o(199137);
+            AppMethodBeat.i(207309);
+            d.a.this.jSj.b(paramAnonymousa);
+            AppMethodBeat.o(207309);
           }
           
-          public final void sT()
+          public final void qH()
           {
-            AppMethodBeat.i(199138);
-            d.a.this.hgq.a(null);
-            AppMethodBeat.o(199138);
+            AppMethodBeat.i(207312);
+            d.a.this.jSj.b(null);
+            AppMethodBeat.o(207312);
           }
         });
-        this.surface = new Surface(parama.surfaceTexture());
-        new a() {};
-        paramd = new HashMap();
-        paramd.put("textureId", Long.valueOf(parama.hxb()));
-        paramd1.ba(paramd);
-        AppMethodBeat.o(199139);
+        this.surface = new Surface(paramd.surfaceTexture());
+        new d.a.2(this);
+        this$1 = new HashMap();
+        d.this.put("textureId", Long.valueOf(paramd.dux()));
+        paramClass.bb(d.this);
+        AppMethodBeat.o(207334);
         return;
       }
-      catch (Exception paramString)
+      catch (IllegalAccessException this$1)
       {
-        break label50;
+        new StringBuilder("clazz init fail:").append(d.this.toString());
+        this$1 = new RuntimeException("video class is empty. please add VideoPlayerPlugin with clazz in WxaLiteApp.Config.");
+        AppMethodBeat.o(207334);
+        throw d.this;
       }
-      catch (ClassNotFoundException paramString)
+      catch (InstantiationException this$1)
       {
-        break label50;
+        new StringBuilder("clazz init fail:").append(d.this.toString());
+        this$1 = new RuntimeException("video class is empty. please add VideoPlayerPlugin with clazz in WxaLiteApp.Config.");
+        AppMethodBeat.o(207334);
+        throw d.this;
       }
     }
     
     final void dispose()
     {
-      AppMethodBeat.i(199140);
-      this.hgp.release();
-      this.bbw.a(null);
+      AppMethodBeat.i(207335);
+      this.jSi.release();
+      this.aKU.a(null);
       if (this.surface != null) {
         this.surface.release();
       }
-      AppMethodBeat.o(199140);
+      AppMethodBeat.o(207335);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.flutter.plugins.a.d
  * JD-Core Version:    0.7.0.1
  */

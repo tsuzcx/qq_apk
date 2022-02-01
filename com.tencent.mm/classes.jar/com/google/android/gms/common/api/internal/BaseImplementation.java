@@ -6,7 +6,7 @@ import com.google.android.gms.common.annotation.KeepForSdk;
 public class BaseImplementation {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.BaseImplementation
  * JD-Core Version:    0.7.0.1
  */

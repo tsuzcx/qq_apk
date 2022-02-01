@@ -7,35 +7,35 @@ import com.tencent.soter.core.c.f;
 
 public final class b
 {
-  int RQB = 0;
-  String RQC = "";
-  boolean RQD = false;
-  boolean RQE = false;
-  private a RQF = null;
-  private boolean RQG = false;
+  int Ztf = 0;
+  String Ztg = "";
+  boolean Zth = false;
+  boolean Zti = false;
+  private a Ztj = null;
+  private boolean Ztk = false;
   
   private b(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, a parama)
   {
-    this.RQB = paramInt;
-    this.RQC = paramString;
-    this.RQD = paramBoolean1;
-    this.RQE = paramBoolean2;
-    this.RQF = parama;
+    this.Ztf = paramInt;
+    this.Ztg = paramString;
+    this.Zth = paramBoolean1;
+    this.Zti = paramBoolean2;
+    this.Ztj = parama;
   }
   
-  public final void hi()
+  public final void jU()
   {
     AppMethodBeat.i(26);
-    com.tencent.soter.a.g.g.hlR().aj(new Runnable()
+    com.tencent.soter.a.g.g.ipq().am(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(24);
         Object localObject = b.this;
-        if ((((b)localObject).RQB & 0x1) != 1) {
-          if ((((b)localObject).RQB & 0x2) == 2)
+        if ((((b)localObject).Ztf & 0x1) != 1) {
+          if ((((b)localObject).Ztf & 0x2) == 2)
           {
-            if (!com.tencent.soter.core.c.g.isNullOrNil(((b)localObject).RQC)) {
+            if (!com.tencent.soter.core.c.g.isNullOrNil(((b)localObject).Ztg)) {
               break label110;
             }
             d.e("Soter.SoterKeyGenerateEngine", "soter: not pass auth key name", new Object[0]);
@@ -53,20 +53,20 @@ public final class b
           label110:
           localObject = new c(0);
         }
-        if (!com.tencent.soter.core.a.hlj())
+        if (!com.tencent.soter.core.a.ioI())
         {
           d.w("Soter.SoterKeyGenerateEngine", "soter: native not support soter", new Object[0]);
           b.a(b.this, new c(2));
           AppMethodBeat.o(24);
           return;
         }
-        if ((b.this.RQB & 0x1) == 1)
+        if ((b.this.Ztf & 0x1) == 1)
         {
           d.d("Soter.SoterKeyGenerateEngine", "soter: require generate ask. start gen", new Object[0]);
-          if ((b.this.RQD) && (com.tencent.soter.core.a.hlm()))
+          if ((b.this.Zth) && (com.tencent.soter.core.a.ioL()))
           {
             d.d("Soter.SoterKeyGenerateEngine", "soter: request regen ask. remove former one", new Object[0]);
-            localObject = com.tencent.soter.core.a.hll();
+            localObject = com.tencent.soter.core.a.ioK();
             if (!((f)localObject).isSuccess())
             {
               d.w("Soter.SoterKeyGenerateEngine", "soter: remove ask failed: %s", new Object[] { ((f)localObject).errMsg });
@@ -75,11 +75,11 @@ public final class b
               return;
             }
           }
-          localObject = com.tencent.soter.core.a.hlk();
+          localObject = com.tencent.soter.core.a.ioJ();
           if (!((f)localObject).isSuccess())
           {
             d.w("Soter.SoterKeyGenerateEngine", "soter: generate ask failed: %s", new Object[] { ((f)localObject).errMsg });
-            com.tencent.soter.core.a.hll();
+            com.tencent.soter.core.a.ioK();
             b.a(b.this, (f)localObject);
             AppMethodBeat.o(24);
             return;
@@ -87,33 +87,33 @@ public final class b
           d.i("Soter.SoterKeyGenerateEngine", "soter: generate ask success!", new Object[0]);
           b.a(b.this, (f)localObject);
         }
-        if ((b.this.RQB & 0x2) == 2)
+        if ((b.this.Ztf & 0x2) == 2)
         {
-          d.d("Soter.SoterKeyGenerateEngine", "soter: require generate auth key. start gen: %s", new Object[] { b.this.RQC });
-          if (!com.tencent.soter.core.a.hln())
+          d.d("Soter.SoterKeyGenerateEngine", "soter: require generate auth key. start gen: %s", new Object[] { b.this.Ztg });
+          if (!com.tencent.soter.core.a.ioM())
           {
             d.w("Soter.SoterKeyGenerateEngine", "soter: no ask.", new Object[0]);
             b.a(b.this, new c(3, "ASK not exists when generate auth key"));
             AppMethodBeat.o(24);
             return;
           }
-          if ((b.this.RQE) && (com.tencent.soter.core.a.bqh(b.this.RQC)))
+          if ((b.this.Zti) && (com.tencent.soter.core.a.bDa(b.this.Ztg)))
           {
             d.d("Soter.SoterKeyGenerateEngine", "soter: request regen auth key. remove former one", new Object[0]);
-            localObject = com.tencent.soter.core.a.dE(b.this.RQC, false);
+            localObject = com.tencent.soter.core.a.dQ(b.this.Ztg, false);
             if (!((f)localObject).isSuccess())
             {
-              d.w("Soter.SoterKeyGenerateEngine", "soter: remove auth key %s, failed: %s", new Object[] { b.this.RQC, ((f)localObject).errMsg });
+              d.w("Soter.SoterKeyGenerateEngine", "soter: remove auth key %s, failed: %s", new Object[] { b.this.Ztg, ((f)localObject).errMsg });
               b.a(b.this, (f)localObject);
               AppMethodBeat.o(24);
               return;
             }
           }
-          localObject = com.tencent.soter.core.a.bqg(b.this.RQC);
+          localObject = com.tencent.soter.core.a.bCZ(b.this.Ztg);
           if (!((f)localObject).isSuccess())
           {
-            d.w("Soter.SoterKeyGenerateEngine", "soter: generate auth key %s failed: %s", new Object[] { b.this.RQC, ((f)localObject).errMsg });
-            com.tencent.soter.core.a.dE(b.this.RQC, true);
+            d.w("Soter.SoterKeyGenerateEngine", "soter: generate auth key %s failed: %s", new Object[] { b.this.Ztg, ((f)localObject).errMsg });
+            com.tencent.soter.core.a.dQ(b.this.Ztg, true);
             b.a(b.this, (f)localObject);
             AppMethodBeat.o(24);
             return;
@@ -129,24 +129,24 @@ public final class b
   
   public static final class a
   {
-    public int RQB = 0;
-    private String RQC = "";
-    public boolean RQD = false;
-    private boolean RQE = false;
-    public a RQF = null;
+    public int Ztf = 0;
+    private String Ztg = "";
+    public boolean Zth = false;
+    private boolean Zti = false;
+    public a Ztj = null;
     
-    public final a dF(String paramString, boolean paramBoolean)
+    public final a dR(String paramString, boolean paramBoolean)
     {
-      this.RQC = paramString;
-      this.RQE = paramBoolean;
-      this.RQB |= 0x2;
+      this.Ztg = paramString;
+      this.Zti = paramBoolean;
+      this.Ztf |= 0x2;
       return this;
     }
     
-    public final b hlK()
+    public final b ipj()
     {
       AppMethodBeat.i(25);
-      b localb = new b(this.RQB, this.RQC, this.RQD, this.RQE, this.RQF, (byte)0);
+      b localb = new b(this.Ztf, this.Ztg, this.Zth, this.Zti, this.Ztj, (byte)0);
       AppMethodBeat.o(25);
       return localb;
     }
@@ -154,7 +154,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.soter.a.e.b
  * JD-Core Version:    0.7.0.1
  */

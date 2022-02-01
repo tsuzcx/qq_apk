@@ -17,24 +17,24 @@ final class MailAddrListUI$7
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(123043);
-    paramMenuItem = MailAddrListUI.e(this.BvT);
+    paramMenuItem = MailAddrListUI.e(this.Hqo);
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramMenuItem.BvU.keySet().iterator();
+    Iterator localIterator = paramMenuItem.Hqp.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      localArrayList.add(paramMenuItem.BvU.get(str));
+      localArrayList.add(paramMenuItem.Hqp.get(str));
     }
-    ComposeUI.fW(localArrayList);
-    this.BvT.setResult(-1);
-    this.BvT.finish();
+    ComposeUI.gA(localArrayList);
+    this.Hqo.setResult(-1);
+    this.Hqo.finish();
     AppMethodBeat.o(123043);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.MailAddrListUI.7
  * JD-Core Version:    0.7.0.1
  */

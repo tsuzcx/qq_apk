@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.wallet.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class o
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String Coh;
+  public String Ila;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -13,28 +13,28 @@ public final class o
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Coh != null) {
-        paramVarArgs.e(1, this.Coh);
+      if (this.Ila != null) {
+        paramVarArgs.f(1, this.Ila);
       }
       AppMethodBeat.o(91301);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Coh == null) {
+      if (this.Ila == null) {
         break label213;
       }
     }
     label213:
-    for (paramInt = g.a.a.b.b.a.f(1, this.Coh) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.Ila) + 0;; paramInt = 0)
     {
       AppMethodBeat.o(91301);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         AppMethodBeat.o(91301);
@@ -50,7 +50,7 @@ public final class o
           AppMethodBeat.o(91301);
           return -1;
         }
-        localo.Coh = locala.UbS.readString();
+        localo.Ila = locala.abFh.readString();
         AppMethodBeat.o(91301);
         return 0;
       }
@@ -61,7 +61,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.a.o
  * JD-Core Version:    0.7.0.1
  */

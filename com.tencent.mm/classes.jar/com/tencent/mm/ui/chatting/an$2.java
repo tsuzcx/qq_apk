@@ -4,14 +4,16 @@ import android.content.Context;
 import android.view.MenuItem;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.c;
 import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.base.o.c;
+import com.tencent.mm.ui.base.q.c;
 
 final class an$2
-  implements o.c
+  implements q.c
 {
   an$2(Context paramContext) {}
   
@@ -20,15 +22,15 @@ final class an$2
     AppMethodBeat.i(34897);
     if (paramTextView != null)
     {
-      bg.aVF();
-      as localas = com.tencent.mm.model.c.aSN().Kn(paramMenuItem.getTitle());
-      if ((localas == null) || ((int)localas.gMZ <= 0))
+      bh.beI();
+      as localas = c.bbL().RG(paramMenuItem.getTitle());
+      if ((localas == null) || ((int)localas.jxt <= 0))
       {
         paramTextView.setText(paramMenuItem.getTitle());
         AppMethodBeat.o(34897);
         return;
       }
-      paramTextView.setText(l.b(this.val$context, localas.arI(), paramTextView.getTextSize()));
+      paramTextView.setText(l.b(this.val$context, localas.ayr(), paramTextView.getTextSize()));
     }
     AppMethodBeat.o(34897);
   }

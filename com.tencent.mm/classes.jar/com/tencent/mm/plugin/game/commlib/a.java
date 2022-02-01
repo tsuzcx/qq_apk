@@ -1,19 +1,20 @@
 package com.tencent.mm.plugin.game.commlib;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.commlib.util.b;
+import com.tencent.mm.plugin.game.commlib.e.c;
 import com.tencent.mm.plugin.game.protobuf.GetGameCenterGlobalSettingResponse;
-import com.tencent.mm.plugin.game.protobuf.aj;
-import com.tencent.mm.plugin.game.protobuf.an;
-import com.tencent.mm.plugin.game.protobuf.bb;
-import com.tencent.mm.plugin.game.protobuf.bh;
+import com.tencent.mm.plugin.game.protobuf.aa;
+import com.tencent.mm.plugin.game.protobuf.ak;
+import com.tencent.mm.plugin.game.protobuf.ao;
+import com.tencent.mm.plugin.game.protobuf.bc;
+import com.tencent.mm.plugin.game.protobuf.bi;
 import com.tencent.mm.plugin.game.protobuf.d;
-import com.tencent.mm.plugin.game.protobuf.dj;
-import com.tencent.mm.plugin.game.protobuf.dv;
-import com.tencent.mm.plugin.game.protobuf.em;
+import com.tencent.mm.plugin.game.protobuf.dk;
+import com.tencent.mm.plugin.game.protobuf.dw;
 import com.tencent.mm.plugin.game.protobuf.en;
+import com.tencent.mm.plugin.game.protobuf.eo;
 import com.tencent.mm.plugin.game.protobuf.k;
-import com.tencent.mm.plugin.game.protobuf.z;
+import com.tencent.mm.plugin.game.protobuf.q;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
@@ -26,25 +27,25 @@ import org.json.JSONObject;
 
 public final class a
 {
-  public static GetGameCenterGlobalSettingResponse xvl;
+  public static GetGameCenterGlobalSettingResponse Czb;
   
-  public static String dSR()
+  public static String evZ()
   {
-    AppMethodBeat.i(256607);
-    String str = b.dTg() + "globalconfig";
-    AppMethodBeat.o(256607);
+    AppMethodBeat.i(207084);
+    String str = c.ewp() + "globalconfig";
+    AppMethodBeat.o(207084);
     return str;
   }
   
   /* Error */
-  public static void dSS()
+  public static void ewa()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
     //   3: ldc 45
     //   5: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 47	com/tencent/mm/plugin/game/commlib/a:xvl	Lcom/tencent/mm/plugin/game/protobuf/GetGameCenterGlobalSettingResponse;
+    //   8: getstatic 47	com/tencent/mm/plugin/game/commlib/a:Czb	Lcom/tencent/mm/plugin/game/protobuf/GetGameCenterGlobalSettingResponse;
     //   11: ifnull +12 -> 23
     //   14: ldc 45
     //   16: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -53,39 +54,39 @@ public final class a
     //   22: return
     //   23: invokestatic 53	java/lang/System:currentTimeMillis	()J
     //   26: lstore_0
-    //   27: new 55	com/tencent/mm/vfs/o
+    //   27: new 55	com/tencent/mm/vfs/q
     //   30: dup
-    //   31: invokestatic 57	com/tencent/mm/plugin/game/commlib/a:dSR	()Ljava/lang/String;
-    //   34: invokespecial 60	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   31: invokestatic 57	com/tencent/mm/plugin/game/commlib/a:evZ	()Ljava/lang/String;
+    //   34: invokespecial 60	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   37: astore_3
-    //   38: new 62	com/tencent/mm/vfs/r
+    //   38: new 62	com/tencent/mm/vfs/t
     //   41: dup
     //   42: aload_3
-    //   43: invokespecial 65	com/tencent/mm/vfs/r:<init>	(Lcom/tencent/mm/vfs/o;)V
+    //   43: invokespecial 65	com/tencent/mm/vfs/t:<init>	(Lcom/tencent/mm/vfs/q;)V
     //   46: astore_2
     //   47: aload_3
-    //   48: invokevirtual 68	com/tencent/mm/vfs/o:length	()J
+    //   48: invokevirtual 68	com/tencent/mm/vfs/q:length	()J
     //   51: l2i
     //   52: newarray byte
     //   54: astore_3
     //   55: aload_2
     //   56: aload_3
-    //   57: invokevirtual 72	com/tencent/mm/vfs/r:read	([B)I
+    //   57: invokevirtual 72	com/tencent/mm/vfs/t:read	([B)I
     //   60: pop
     //   61: new 74	com/tencent/mm/plugin/game/protobuf/GetGameCenterGlobalSettingResponse
     //   64: dup
     //   65: invokespecial 75	com/tencent/mm/plugin/game/protobuf/GetGameCenterGlobalSettingResponse:<init>	()V
     //   68: astore 4
     //   70: aload 4
-    //   72: putstatic 47	com/tencent/mm/plugin/game/commlib/a:xvl	Lcom/tencent/mm/plugin/game/protobuf/GetGameCenterGlobalSettingResponse;
+    //   72: putstatic 47	com/tencent/mm/plugin/game/commlib/a:Czb	Lcom/tencent/mm/plugin/game/protobuf/GetGameCenterGlobalSettingResponse;
     //   75: aload 4
     //   77: aload_3
-    //   78: invokevirtual 79	com/tencent/mm/plugin/game/protobuf/GetGameCenterGlobalSettingResponse:parseFrom	([B)Lcom/tencent/mm/bw/a;
+    //   78: invokevirtual 79	com/tencent/mm/plugin/game/protobuf/GetGameCenterGlobalSettingResponse:parseFrom	([B)Lcom/tencent/mm/cd/a;
     //   81: pop
     //   82: aload_2
     //   83: ifnull +7 -> 90
     //   86: aload_2
-    //   87: invokevirtual 82	com/tencent/mm/vfs/r:close	()V
+    //   87: invokevirtual 82	com/tencent/mm/vfs/t:close	()V
     //   90: ldc 84
     //   92: new 17	java/lang/StringBuilder
     //   95: dup
@@ -126,7 +127,7 @@ public final class a
     // Local variable table:
     //   start	length	slot	name	signature
     //   26	79	0	l	long
-    //   46	41	2	localr	com.tencent.mm.vfs.r
+    //   46	41	2	localt	com.tencent.mm.vfs.t
     //   123	5	2	localObject1	Object
     //   131	1	2	localObject2	Object
     //   159	1	2	localIOException	java.io.IOException
@@ -148,81 +149,81 @@ public final class a
     //   47	82	163	java/lang/Exception
   }
   
-  public static an dST()
+  public static ao ewb()
   {
     AppMethodBeat.i(149392);
     Object localObject = null;
-    if (xvl != null)
+    if (Czb != null)
     {
-      an localan = xvl.GameDetailSetting;
-      localObject = localan;
-      if (localan != null)
+      ao localao = Czb.GameDetailSetting;
+      localObject = localao;
+      if (localao != null)
       {
-        Log.i("MicroMsg.GameConfigManager", "getGameDetailSettingControl jumpType:%d, jumpUrl:%s", new Object[] { Integer.valueOf(localan.xJa), localan.xIy });
-        localObject = localan;
+        Log.i("MicroMsg.GameConfigManager", "getGameDetailSettingControl jumpType:%d, jumpUrl:%s", new Object[] { Integer.valueOf(localao.CNg), localao.CMD });
+        localObject = localao;
       }
     }
     for (;;)
     {
       AppMethodBeat.o(149392);
       return localObject;
-      dSS();
+      ewa();
     }
   }
   
-  public static dv dSU()
+  public static dw ewc()
   {
     AppMethodBeat.i(149393);
-    if (xvl != null)
+    if (Czb != null)
     {
-      if (xvl.StatusBarStyle != null) {
-        Log.i("MicroMsg.GameConfigManager", "getStatusBarStyle color:%s, darkModeColor:%s, style:%s", new Object[] { xvl.StatusBarStyle.ixw, xvl.StatusBarStyle.xNo, xvl.StatusBarStyle.xHA });
+      if (Czb.StatusBarStyle != null) {
+        Log.i("MicroMsg.GameConfigManager", "getStatusBarStyle color:%s, darkModeColor:%s, style:%s", new Object[] { Czb.StatusBarStyle.lmL, Czb.StatusBarStyle.CRy, Czb.StatusBarStyle.CLD });
       }
-      dv localdv = xvl.StatusBarStyle;
+      dw localdw = Czb.StatusBarStyle;
       AppMethodBeat.o(149393);
-      return localdv;
+      return localdw;
     }
-    dSS();
+    ewa();
     AppMethodBeat.o(149393);
     return null;
   }
   
-  public static boolean dSV()
+  public static boolean ewd()
   {
     AppMethodBeat.i(149394);
-    if (xvl != null)
+    if (Czb != null)
     {
-      if (xvl.WepkgControl != null)
+      if (Czb.WepkgControl != null)
       {
-        boolean bool = xvl.WepkgControl.xNL;
+        boolean bool = Czb.WepkgControl.CRV;
         AppMethodBeat.o(149394);
         return bool;
       }
     }
     else {
-      dSS();
+      ewa();
     }
     AppMethodBeat.o(149394);
     return false;
   }
   
-  public static List<String> dSW()
+  public static List<String> ewe()
   {
     AppMethodBeat.i(149397);
-    if (xvl != null)
+    if (Czb != null)
     {
-      if (xvl.WepkgControl != null)
+      if (Czb.WepkgControl != null)
       {
-        Object localObject = xvl.WepkgControl.xNN;
+        Object localObject = Czb.WepkgControl.CRX;
         if (!Util.isNullOrNil((List)localObject))
         {
           ArrayList localArrayList = new ArrayList();
           localObject = ((List)localObject).iterator();
           while (((Iterator)localObject).hasNext())
           {
-            dj localdj = (dj)((Iterator)localObject).next();
-            if ((localdj != null) && (!Util.isNullOrNil(localdj.xJD))) {
-              localArrayList.add(localdj.xJD);
+            dk localdk = (dk)((Iterator)localObject).next();
+            if ((localdk != null) && (!Util.isNullOrNil(localdk.CNL))) {
+              localArrayList.add(localdk.CNL);
             }
           }
           AppMethodBeat.o(149397);
@@ -231,118 +232,137 @@ public final class a
       }
     }
     else {
-      dSS();
+      ewa();
     }
     AppMethodBeat.o(149397);
     return null;
   }
   
-  public static int dSX()
+  public static int ewf()
   {
     AppMethodBeat.i(149398);
-    if (xvl != null)
+    if (Czb != null)
     {
-      if (xvl.WebViewControl != null)
+      if (Czb.WebViewControl != null)
       {
-        int i = xvl.WebViewControl.xNK;
+        int i = Czb.WebViewControl.CRU;
         AppMethodBeat.o(149398);
         return i;
       }
       AppMethodBeat.o(149398);
       return 3600;
     }
-    dSS();
+    ewa();
     AppMethodBeat.o(149398);
     return 3600;
   }
   
-  public static bb dSY()
+  public static bc ewg()
   {
-    AppMethodBeat.i(256608);
-    if (xvl != null)
+    AppMethodBeat.i(207091);
+    if (Czb != null)
     {
-      if (xvl.GameLifeSetting != null)
+      if (Czb.GameLifeSetting != null)
       {
-        bb localbb = xvl.GameLifeSetting;
-        AppMethodBeat.o(256608);
-        return localbb;
+        bc localbc = Czb.GameLifeSetting;
+        AppMethodBeat.o(207091);
+        return localbc;
       }
     }
     else {
-      dSS();
+      ewa();
     }
-    AppMethodBeat.o(256608);
+    AppMethodBeat.o(207091);
     return null;
   }
   
-  public static k dSZ()
+  public static k ewh()
   {
-    AppMethodBeat.i(256609);
-    if (xvl != null)
+    AppMethodBeat.i(207092);
+    if (Czb != null)
     {
-      if (xvl.GameLifeSetting != null)
+      if (Czb.GameLifeSetting != null)
       {
-        k localk = xvl.GameLifeSetting.xLc;
-        AppMethodBeat.o(256609);
+        k localk = Czb.GameLifeSetting.CPj;
+        AppMethodBeat.o(207092);
         return localk;
       }
     }
     else {
-      dSS();
+      ewa();
     }
-    AppMethodBeat.o(256609);
+    AppMethodBeat.o(207092);
     return null;
   }
   
-  public static z dTa()
+  public static aa ewi()
   {
-    AppMethodBeat.i(256610);
-    if (xvl != null)
+    AppMethodBeat.i(207093);
+    if (Czb != null)
     {
-      if (xvl.GameLifeSetting != null)
+      if (Czb.GameLifeSetting != null)
       {
-        z localz = xvl.GameLifeSetting.xLd;
-        AppMethodBeat.o(256610);
-        return localz;
+        aa localaa = Czb.GameLifeSetting.CPk;
+        AppMethodBeat.o(207093);
+        return localaa;
       }
     }
     else {
-      dSS();
+      ewa();
     }
-    AppMethodBeat.o(256610);
+    AppMethodBeat.o(207093);
     return null;
   }
   
-  public static bh dTb()
+  public static q ewj()
   {
-    AppMethodBeat.i(256611);
-    if (xvl != null)
+    AppMethodBeat.i(207095);
+    if (Czb != null)
     {
-      bh localbh = xvl.GeneralJumpInfo;
-      AppMethodBeat.o(256611);
-      return localbh;
+      if (Czb.GameLifeSetting != null)
+      {
+        q localq = Czb.GameLifeSetting.CPl;
+        AppMethodBeat.o(207095);
+        return localq;
+      }
     }
-    dSS();
-    AppMethodBeat.o(256611);
+    else {
+      ewa();
+    }
+    AppMethodBeat.o(207095);
     return null;
   }
   
-  public static JSONArray dTc()
+  public static bi ewk()
   {
-    AppMethodBeat.i(256612);
+    AppMethodBeat.i(207096);
+    if (Czb != null)
+    {
+      bi localbi = Czb.GeneralJumpInfo;
+      AppMethodBeat.o(207096);
+      return localbi;
+    }
+    ewa();
+    AppMethodBeat.o(207096);
+    return null;
+  }
+  
+  public static JSONArray ewl()
+  {
+    AppMethodBeat.i(207098);
     JSONArray localJSONArray = new JSONArray();
     Object localObject;
-    if (xvl != null) {
-      localObject = xvl.GameCommunityInfo;
+    if (Czb != null) {
+      localObject = Czb.GameCommunityInfo;
     }
     for (;;)
     {
       label46:
       d locald;
       JSONObject localJSONObject;
-      if ((localObject != null) && (((aj)localObject).xKi != null))
+      if ((localObject != null) && (((ak)localObject).COp != null))
       {
-        localObject = ((aj)localObject).xKi.iterator();
+        localObject = ((ak)localObject).COp.iterator();
         if (((Iterator)localObject).hasNext())
         {
           locald = (d)((Iterator)localObject).next();
@@ -351,17 +371,17 @@ public final class a
       }
       try
       {
-        localJSONObject.put("appId", locald.jfi);
-        localJSONObject.put("gameName", locald.xIC);
-        localJSONObject.put("albumName", locald.xID);
-        localJSONObject.put("defaultTitle", locald.xIE);
+        localJSONObject.put("appId", locald.lVG);
+        localJSONObject.put("gameName", locald.CMH);
+        localJSONObject.put("albumName", locald.CMI);
+        localJSONObject.put("defaultTitle", locald.CMJ);
         label121:
         localJSONArray.put(localJSONObject);
         break label46;
-        dSS();
+        ewa();
         localObject = null;
         continue;
-        AppMethodBeat.o(256612);
+        AppMethodBeat.o(207098);
         return localJSONArray;
       }
       catch (JSONException localJSONException)
@@ -373,7 +393,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.commlib.a
  * JD-Core Version:    0.7.0.1
  */

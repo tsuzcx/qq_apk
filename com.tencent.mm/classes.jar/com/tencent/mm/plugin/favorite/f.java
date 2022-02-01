@@ -2,19 +2,21 @@ package com.tencent.mm.plugin.favorite;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gx;
-import com.tencent.mm.g.a.gx.a;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.plugin.fav.a.ab;
-import com.tencent.mm.plugin.fav.a.af;
+import com.tencent.mm.f.a.he;
+import com.tencent.mm.f.a.he.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.fav.a.ac;
+import com.tencent.mm.plugin.fav.a.ag;
 import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.plugin.fav.a.x;
+import com.tencent.mm.plugin.fav.a.g;
 import com.tencent.mm.plugin.fav.a.y;
+import com.tencent.mm.plugin.fav.a.z;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.pluginsdk.ui.applet.o.a;
-import com.tencent.mm.protocal.protobuf.aml;
-import com.tencent.mm.protocal.protobuf.amm;
-import com.tencent.mm.protocal.protobuf.anb;
+import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.protocal.protobuf.ann;
+import com.tencent.mm.protocal.protobuf.aoc;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -25,80 +27,80 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class f
-  implements bd
+  implements be
 {
-  private IListener tnp;
+  private IListener wTN;
   
   public f()
   {
     AppMethodBeat.i(24613);
-    this.tnp = new IListener()
+    this.wTN = new IListener()
     {
-      private static boolean a(gx paramAnonymousgx)
+      private static boolean a(he paramAnonymoushe)
       {
         AppMethodBeat.i(24611);
         Object localObject1;
         Object localObject2;
-        if ((paramAnonymousgx.dLa.dLd != null) && ((paramAnonymousgx.dLa.dLd instanceof o.a)) && (paramAnonymousgx.dLa.dDg != null) && ((paramAnonymousgx.dLa.dDg instanceof Context)))
+        if ((paramAnonymoushe.fDP.fDS != null) && ((paramAnonymoushe.fDP.fDS instanceof o.a)) && (paramAnonymoushe.fDP.fvM != null) && ((paramAnonymoushe.fDP.fvM instanceof Context)))
         {
-          localObject1 = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(paramAnonymousgx.dLa.dFW);
-          localObject2 = paramAnonymousgx.dLa.dLb;
-          if ((Util.isNullOrNil((String)localObject2)) || ((((com.tencent.mm.plugin.fav.a.g)localObject1).field_type != 18) && (((com.tencent.mm.plugin.fav.a.g)localObject1).field_type != 14))) {
-            break label481;
+          localObject1 = ((ag)h.ag(ag.class)).getFavItemInfoStorage().Km(paramAnonymoushe.fDP.fyE);
+          localObject2 = paramAnonymoushe.fDP.fDQ;
+          if ((Util.isNullOrNil((String)localObject2)) || (((localObject1 == null) || (((g)localObject1).field_type != 18)) && (((g)localObject1).field_type != 14))) {
+            break label485;
           }
         }
         for (;;)
         {
           try
           {
-            LinkedList localLinkedList = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.ppH;
-            if (((com.tencent.mm.plugin.fav.a.g)localObject1).field_type != 18) {
-              break label497;
+            LinkedList localLinkedList = ((g)localObject1).field_favProto.syG;
+            if (((g)localObject1).field_type != 18) {
+              break label501;
             }
             i = 1;
             if (i >= localLinkedList.size()) {
-              break label491;
+              break label495;
             }
-            Object localObject3 = (aml)localLinkedList.get(i);
-            if (((String)localObject2).startsWith(((aml)localObject3).dLl))
+            Object localObject3 = (anm)localLinkedList.get(i);
+            if (((String)localObject2).startsWith(((anm)localObject3).fEa))
             {
-              localObject2 = ((com.tencent.mm.plugin.fav.a.g)localObject1).cUC();
-              ((com.tencent.mm.plugin.fav.a.g)localObject2).field_type = paramAnonymousgx.dLa.dLc;
-              ((com.tencent.mm.plugin.fav.a.g)localObject2).tad = true;
-              ((com.tencent.mm.plugin.fav.a.g)localObject2).tae = ((com.tencent.mm.plugin.fav.a.g)localObject1);
-              ((com.tencent.mm.plugin.fav.a.g)localObject2).dLb = (((com.tencent.mm.plugin.fav.a.g)localObject1).field_localId + "_" + ((aml)localObject3).dLl);
-              ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto = com.tencent.mm.plugin.fav.a.a.c.c(((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto);
-              ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.ppH = new LinkedList();
-              ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.ppH.add(localObject3);
-              ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.bhd(((aml)localObject3).title);
-              if (((aml)localObject3).Lwh != null)
+              localObject2 = ((g)localObject1).djI();
+              ((g)localObject2).field_type = paramAnonymoushe.fDP.fDR;
+              ((g)localObject2).wGh = true;
+              ((g)localObject2).wGi = ((g)localObject1);
+              ((g)localObject2).fDQ = (((g)localObject1).field_localId + "_" + ((anm)localObject3).fEa);
+              ((g)localObject2).field_favProto = com.tencent.mm.plugin.fav.a.a.c.c(((g)localObject1).field_favProto);
+              ((g)localObject2).field_favProto.syG = new LinkedList();
+              ((g)localObject2).field_favProto.syG.add(localObject3);
+              ((g)localObject2).field_favProto.btv(((anm)localObject3).title);
+              if (((anm)localObject3).SyG != null)
               {
-                if (paramAnonymousgx.dLa.dLc == 6) {
-                  ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.d(((aml)localObject3).Lwh.LwQ);
+                if (paramAnonymoushe.fDP.fDR == 6) {
+                  ((g)localObject2).field_favProto.d(((anm)localObject3).SyG.Szp);
                 }
               }
               else
               {
                 localObject1 = localObject2;
-                if ((localObject1 != null) || (Util.isNullOrNil(paramAnonymousgx.dLa.dLe))) {
-                  break label494;
+                if ((localObject1 != null) || (Util.isNullOrNil(paramAnonymoushe.fDP.fDT))) {
+                  break label498;
                 }
-                localObject1 = b.arO(paramAnonymousgx.dLa.dLe);
-                localObject2 = (o.a)paramAnonymousgx.dLa.dLd;
-                localObject3 = (Context)paramAnonymousgx.dLa.dDg;
-                d.a((o.a)localObject2, (Context)localObject3, (com.tencent.mm.plugin.fav.a.g)localObject1);
-                d.b((o.a)localObject2, (Context)localObject3, (com.tencent.mm.plugin.fav.a.g)localObject1);
-                paramAnonymousgx.dLa.dFW = 0L;
-                paramAnonymousgx.dLa.dLb = "";
-                paramAnonymousgx.dLa.dLd = null;
-                paramAnonymousgx.dLa.dDg = null;
+                localObject1 = b.azP(paramAnonymoushe.fDP.fDT);
+                localObject2 = (o.a)paramAnonymoushe.fDP.fDS;
+                localObject3 = (Context)paramAnonymoushe.fDP.fvM;
+                d.a((o.a)localObject2, (Context)localObject3, (g)localObject1);
+                d.b((o.a)localObject2, (Context)localObject3, (g)localObject1);
+                paramAnonymoushe.fDP.fyE = 0L;
+                paramAnonymoushe.fDP.fDQ = "";
+                paramAnonymoushe.fDP.fDS = null;
+                paramAnonymoushe.fDP.fvM = null;
                 AppMethodBeat.o(24611);
                 return false;
               }
-              if (paramAnonymousgx.dLa.dLc != 5) {
+              if (paramAnonymoushe.fDP.fDR != 5) {
                 continue;
               }
-              ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.b(((aml)localObject3).Lwh.LwS);
+              ((g)localObject2).field_favProto.c(((anm)localObject3).SyG.Szr);
               continue;
               continue;
             }
@@ -107,14 +109,14 @@ public final class f
           {
             Log.e("MicroMsg.Fav.SubCoreFav", "FavInitConfirmDialogContentEvent callback : %s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
           }
-          label481:
+          label485:
           i += 1;
           continue;
-          label491:
+          label495:
           continue;
-          label494:
+          label498:
           continue;
-          label497:
+          label501:
           int i = 0;
         }
       }
@@ -133,18 +135,18 @@ public final class f
   {
     AppMethodBeat.i(24614);
     Log.i("MicroMsg.Fav.SubCoreFav", "onAccountPostReset updated:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    EventCenter.instance.add(this.tnp);
-    com.tencent.mm.kernel.g.b(y.class, new c());
-    com.tencent.mm.kernel.g.b(ab.class, new e());
+    EventCenter.instance.add(this.wTN);
+    h.b(z.class, new c());
+    h.b(ac.class, new e());
     AppMethodBeat.o(24614);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(24615);
-    EventCenter.instance.removeListener(this.tnp);
-    ((n)com.tencent.mm.kernel.g.ah(n.class)).unregisterFTSUILogic(128);
-    ((n)com.tencent.mm.kernel.g.ah(n.class)).unregisterFTSUILogic(4192);
+    EventCenter.instance.removeListener(this.wTN);
+    ((n)h.ag(n.class)).unregisterFTSUILogic(128);
+    ((n)h.ag(n.class)).unregisterFTSUILogic(4192);
     AppMethodBeat.o(24615);
   }
   
@@ -152,7 +154,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.favorite.f
  * JD-Core Version:    0.7.0.1
  */

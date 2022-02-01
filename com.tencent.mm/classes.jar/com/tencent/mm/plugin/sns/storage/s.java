@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gm;
-import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.f.c.gt;
+import com.tencent.mm.protocal.protobuf.eaf;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Iterator;
@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.Map;
 
 public final class s
-  extends gm
+  extends gt
 {
   protected static IAutoDBItem.MAutoDBInfo info;
-  public int EmS;
+  public int KAb;
   
   static
   {
@@ -48,31 +48,31 @@ public final class s
   {
     AppMethodBeat.i(97622);
     super.convertFrom(paramCursor);
-    this.EmS = ((int)this.systemRowid);
+    this.KAb = ((int)this.systemRowid);
     AppMethodBeat.o(97622);
-  }
-  
-  public final void gX(List<dqi> paramList)
-  {
-    AppMethodBeat.i(97621);
-    this.field_memberList = "";
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      dqi localdqi = (dqi)paramList.next();
-      this.field_memberList = (this.field_memberList + localdqi.MTo + ",");
-    }
-    AppMethodBeat.o(97621);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
+  
+  public final void hF(List<eaf> paramList)
+  {
+    AppMethodBeat.i(97621);
+    this.field_memberList = "";
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      eaf localeaf = (eaf)paramList.next();
+      this.field_memberList = (this.field_memberList + localeaf.Ufy + ",");
+    }
+    AppMethodBeat.o(97621);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.s
  * JD-Core Version:    0.7.0.1
  */

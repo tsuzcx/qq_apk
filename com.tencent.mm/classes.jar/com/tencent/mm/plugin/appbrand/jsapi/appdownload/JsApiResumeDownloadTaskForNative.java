@@ -4,11 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.plugin.downloader.g.a;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.plugin.downloader.model.o;
 import com.tencent.mm.plugin.downloader.model.o.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -16,7 +15,7 @@ import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public final class JsApiResumeDownloadTaskForNative
-  extends com.tencent.mm.plugin.appbrand.jsapi.d<s>
+  extends c<v>
 {
   public static final int CTRL_INDEX = 660;
   public static final String NAME = "resumeDownloadTaskForNative";
@@ -25,14 +24,14 @@ public final class JsApiResumeDownloadTaskForNative
     extends MainProcessTask
   {
     public static final Parcelable.Creator<ResumeDownloadTask> CREATOR;
-    private int csv;
-    private s kAr;
-    private p lAi;
-    private boolean lAq;
-    private String lAr;
-    private long lAs;
-    private boolean lBG;
-    private boolean lDa;
+    private int cqA;
+    private v ntA;
+    private boolean ovH;
+    private String ovI;
+    private long ovJ;
+    private com.tencent.mm.plugin.appbrand.jsapi.o ovz;
+    private boolean owW;
+    private boolean oyC;
     
     static
     {
@@ -48,35 +47,35 @@ public final class JsApiResumeDownloadTaskForNative
       AppMethodBeat.o(45895);
     }
     
-    public ResumeDownloadTask(p paramp, s params, int paramInt, JSONObject paramJSONObject)
+    public ResumeDownloadTask(com.tencent.mm.plugin.appbrand.jsapi.o paramo, v paramv, int paramInt, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(45894);
-      this.lAi = paramp;
-      this.kAr = params;
-      this.csv = paramInt;
-      this.lAs = paramJSONObject.optLong("downloadId");
-      this.lDa = paramJSONObject.optBoolean("useDownloaderWidget", false);
-      this.lBG = paramJSONObject.optBoolean("downloadInWifi", false);
-      this.lAq = true;
+      this.ovz = paramo;
+      this.ntA = paramv;
+      this.cqA = paramInt;
+      this.ovJ = paramJSONObject.optLong("downloadId");
+      this.oyC = paramJSONObject.optBoolean("useDownloaderWidget", false);
+      this.owW = paramJSONObject.optBoolean("downloadInWifi", false);
+      this.ovH = true;
       AppMethodBeat.o(45894);
     }
     
-    public final void bjj()
+    public final void RW()
     {
       boolean bool = false;
       AppMethodBeat.i(45896);
-      Log.i("MicroMsg.JsApiResumeDownloadTaskForNative", "doQueryDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.lAs) });
-      if (this.lAs <= 0L) {
-        this.lAr = "downloadId invalid";
+      Log.i("MicroMsg.JsApiResumeDownloadTaskForNative", "doQueryDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.ovJ) });
+      if (this.ovJ <= 0L) {
+        this.ovI = "downloadId invalid";
       }
       for (;;)
       {
-        bDU();
+        bPt();
         AppMethodBeat.o(45896);
         return;
-        if (this.lDa)
+        if (this.oyC)
         {
-          o.a(MMApplicationContext.getContext(), this.lAs, this.lBG, false, new o.a()
+          com.tencent.mm.plugin.downloader.model.o.a(MMApplicationContext.getContext(), this.ovJ, this.owW, false, new o.a()
           {
             public final void i(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
             {
@@ -95,7 +94,7 @@ public final class JsApiResumeDownloadTaskForNative
         }
         else
         {
-          a locala = com.tencent.mm.plugin.downloader.model.d.Cw(this.lAs);
+          a locala = com.tencent.mm.plugin.downloader.model.d.IF(this.ovJ);
           if (locala != null)
           {
             locala.field_downloadInWifi = false;
@@ -103,28 +102,28 @@ public final class JsApiResumeDownloadTaskForNative
             locala.field_showNotification = true;
             com.tencent.mm.plugin.downloader.model.d.e(locala);
           }
-          if (!f.cBv().Cq(this.lAs)) {
+          if (!f.cPZ().Iz(this.ovJ)) {
             bool = true;
           }
-          this.lAq = bool;
+          this.ovH = bool;
         }
       }
     }
     
-    public final void bjk()
+    public final void bsK()
     {
       AppMethodBeat.i(45897);
-      if (this.lAq)
+      if (this.ovH)
       {
-        if (Util.isNullOrNil(this.lAr)) {}
-        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.lAr }))
+        if (Util.isNullOrNil(this.ovI)) {}
+        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.ovI }))
         {
-          this.kAr.i(this.csv, this.lAi.h(str, null));
+          this.ntA.j(this.cqA, this.ovz.h(str, null));
           AppMethodBeat.o(45897);
           return;
         }
       }
-      this.kAr.i(this.csv, this.lAi.h("ok", null));
+      this.ntA.j(this.cqA, this.ovz.h("ok", null));
       AppMethodBeat.o(45897);
     }
     
@@ -132,18 +131,18 @@ public final class JsApiResumeDownloadTaskForNative
     {
       boolean bool2 = true;
       AppMethodBeat.i(45898);
-      this.lAs = paramParcel.readLong();
+      this.ovJ = paramParcel.readLong();
       if (paramParcel.readByte() == 1)
       {
         bool1 = true;
-        this.lBG = bool1;
+        this.owW = bool1;
         if (paramParcel.readInt() != 1) {
           break label79;
         }
         bool1 = true;
         label40:
-        this.lAq = bool1;
-        this.lAr = paramParcel.readString();
+        this.ovH = bool1;
+        this.ovI = paramParcel.readString();
         if (paramParcel.readInt() != 1) {
           break label84;
         }
@@ -152,7 +151,7 @@ public final class JsApiResumeDownloadTaskForNative
       label84:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.lDa = bool1;
+        this.oyC = bool1;
         AppMethodBeat.o(45898);
         return;
         bool1 = false;
@@ -166,20 +165,20 @@ public final class JsApiResumeDownloadTaskForNative
     {
       int i = 1;
       AppMethodBeat.i(45899);
-      paramParcel.writeLong(this.lAs);
+      paramParcel.writeLong(this.ovJ);
       byte b;
-      if (this.lBG)
+      if (this.owW)
       {
         b = 1;
         paramParcel.writeByte(b);
-        if (!this.lAq) {
+        if (!this.ovH) {
           break label78;
         }
         paramInt = 1;
         label39:
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.lAr);
-        if (!this.lDa) {
+        paramParcel.writeString(this.ovI);
+        if (!this.oyC) {
           break label83;
         }
       }

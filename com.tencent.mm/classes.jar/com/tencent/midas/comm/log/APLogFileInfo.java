@@ -15,7 +15,7 @@ public class APLogFileInfo
   
   private static String buildDirName()
   {
-    AppMethodBeat.i(193405);
+    AppMethodBeat.i(253965);
     APLogInfo localAPLogInfo = APLog.getLogInfo();
     if ((localAPLogInfo != null) && (localAPLogInfo.getLogPath() != null))
     {
@@ -29,16 +29,16 @@ public class APLogFileInfo
       if (!TextUtils.isEmpty(localAPLogInfo.getProcessName())) {
         str1 = str2 + localAPLogInfo.getProcessName() + File.separator;
       }
-      AppMethodBeat.o(193405);
+      AppMethodBeat.o(253965);
       return str1;
     }
-    AppMethodBeat.o(193405);
+    AppMethodBeat.o(253965);
     return "";
   }
   
   private static String buildFileName(boolean paramBoolean)
   {
-    AppMethodBeat.i(193408);
+    AppMethodBeat.i(253970);
     for (;;)
     {
       try
@@ -61,7 +61,7 @@ public class APLogFileInfo
           {
             ((StringBuffer)localObject).append(str);
             str = ((StringBuffer)localObject).toString();
-            AppMethodBeat.o(193408);
+            AppMethodBeat.o(253970);
             return str;
           }
           ((StringBuffer)localObject).append(APLogFileUtil.getToday());
@@ -71,7 +71,7 @@ public class APLogFileInfo
           if (localObject != null) {
             continue;
           }
-          AppMethodBeat.o(193408);
+          AppMethodBeat.o(253970);
           return "";
         }
         catch (Throwable localThrowable2)
@@ -83,7 +83,7 @@ public class APLogFileInfo
         new StringBuilder("create log file name error:").append(localThrowable1.toString());
         continue;
         localObject = ((StringBuffer)localObject).toString();
-        AppMethodBeat.o(193408);
+        AppMethodBeat.o(253970);
         return localObject;
       }
     }
@@ -92,7 +92,7 @@ public class APLogFileInfo
   private static int buildFileNumber(String paramString)
   {
     j = 1;
-    AppMethodBeat.i(193406);
+    AppMethodBeat.i(253967);
     i = j;
     if (!TextUtils.isEmpty(paramString)) {}
     try
@@ -113,21 +113,21 @@ public class APLogFileInfo
         i = j;
       }
     }
-    AppMethodBeat.o(193406);
+    AppMethodBeat.o(253967);
     return i;
   }
   
   private static String buildMmapName()
   {
-    AppMethodBeat.i(193404);
+    AppMethodBeat.i(253963);
     String str = dirName + File.separator + "MidasLog.mmap";
-    AppMethodBeat.o(193404);
+    AppMethodBeat.o(253963);
     return str;
   }
   
   public static void create()
   {
-    AppMethodBeat.i(193403);
+    AppMethodBeat.i(253961);
     try
     {
       dirName = buildDirName();
@@ -135,27 +135,27 @@ public class APLogFileInfo
       mmapName = buildMmapName();
       new StringBuilder("log dir: ").append(dirName);
       new StringBuilder("log file: ").append(fileName);
-      AppMethodBeat.o(193403);
+      AppMethodBeat.o(253961);
       return;
     }
     catch (Throwable localThrowable)
     {
       new StringBuilder("file info create error: ").append(localThrowable.toString());
-      AppMethodBeat.o(193403);
+      AppMethodBeat.o(253961);
     }
   }
   
   public static void updateFileName()
   {
-    AppMethodBeat.i(193407);
+    AppMethodBeat.i(253968);
     fileName = buildFileName(false);
     new StringBuilder("update file name: ").append(fileName);
-    AppMethodBeat.o(193407);
+    AppMethodBeat.o(253968);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.comm.log.APLogFileInfo
  * JD-Core Version:    0.7.0.1
  */

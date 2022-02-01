@@ -12,14 +12,14 @@ final class x
   {
     AppMethodBeat.i(4213);
     Log.isLoggable("EnhancedIntentService", 3);
-    w.a(this.bMm).f(this.bMl.intent);
-    this.bMl.finish();
+    w.a(this.bJR).f(this.bJQ.intent);
+    this.bJQ.finish();
     AppMethodBeat.o(4213);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.x
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.wxpay.a.f;
 import java.util.Iterator;
 import java.util.List;
 
@@ -16,19 +17,19 @@ final class MobileRemittanceUI$18
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(213718);
+    AppMethodBeat.i(273015);
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    a.b("com/tencent/mm/plugin/remittance/mobile/ui/MobileRemittanceUI$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
-    localObject = this.CnX.iterator();
+    ((b)localObject).bn(paramView);
+    a.c("com/tencent/mm/plugin/remittance/mobile/ui/MobileRemittanceUI$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+    localObject = this.IkQ.iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((View)((Iterator)localObject).next()).findViewById(2131304765).setVisibility(8);
+      ((View)((Iterator)localObject).next()).findViewById(a.f.mobile_remit_delay_option_choosw).setVisibility(8);
     }
     paramView = (ImageView)paramView.getTag();
-    this.CnV.CnN = ((Integer)paramView.getTag()).intValue();
+    this.IkO.IkG = ((Integer)paramView.getTag()).intValue();
     paramView.setVisibility(0);
     a.a(this, "com/tencent/mm/plugin/remittance/mobile/ui/MobileRemittanceUI$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(213718);
+    AppMethodBeat.o(273015);
   }
 }
 

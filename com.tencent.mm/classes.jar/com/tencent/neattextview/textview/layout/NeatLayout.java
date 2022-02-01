@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class NeatLayout
   extends c
 {
-  private int RBI = 0;
+  private int Zdk = 0;
   
   static
   {
@@ -26,14 +26,14 @@ public class NeatLayout
   
   public final void a(TextPaint paramTextPaint, float[] paramArrayOfFloat, float paramFloat, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(192277);
+    AppMethodBeat.i(259889);
     float f6 = Math.round(paramTextPaint.getTextSize() / 2.0F);
     if (paramBoolean) {}
     float[] arrayOfFloat1;
     boolean[] arrayOfBoolean;
     for (float f3 = paramTextPaint.getTextSize() / 6.0F;; f3 = 0.0F)
     {
-      i = this.RAP.length();
+      i = this.Zcs.length();
       paramTextPaint = new int[i];
       arrayOfFloat1 = new float[i];
       arrayOfBoolean = new boolean[i];
@@ -44,8 +44,8 @@ public class NeatLayout
         i += 1;
       }
     }
-    int i3 = nComputeBreak(this.RAP, this.RAR, paramArrayOfFloat, paramFloat + f6, paramTextPaint, arrayOfFloat1, f3, arrayOfBoolean, a.RAK, this.RAU, a.RAJ, this.RAT, this.RBq);
-    this.RBI = i3;
+    int i3 = nComputeBreak(this.Zcs, this.Zcu, paramArrayOfFloat, paramFloat + f6, paramTextPaint, arrayOfFloat1, f3, arrayOfBoolean, a.Zcn, this.Zcx, a.Zcm, this.Zcw, this.ZcS);
+    this.Zdk = i3;
     float f2 = 0.0F;
     int i = 0;
     float f5;
@@ -104,7 +104,7 @@ public class NeatLayout
           if (i2 - 1 >= 0)
           {
             j = n;
-            if (this.RAQ[(i2 - 1)] == '\n') {
+            if (this.Zct[(i2 - 1)] == '\n') {
               j = n - 1;
             }
           }
@@ -114,10 +114,10 @@ public class NeatLayout
             if (n < i2)
             {
               int i1 = j;
-              if (this.RAQ[n] != '\n')
+              if (this.Zct[n] != '\n')
               {
                 i1 = j;
-                if (this.RAR[n] == 0.0F) {
+                if (this.Zcu[n] == 0.0F) {
                   i1 = j - 1;
                 }
               }
@@ -139,9 +139,9 @@ public class NeatLayout
       if (m != 0)
       {
         f5 = f1;
-        arrayOfChar = this.RAQ;
-        arrayOfFloat2 = this.RAR;
-        j = this.RAX.size();
+        arrayOfChar = this.Zct;
+        arrayOfFloat2 = this.Zcu;
+        j = this.Zcz.size();
         if (m == 0) {
           break label538;
         }
@@ -156,19 +156,19 @@ public class NeatLayout
         break label465;
         f1 = f2;
       }
-      AppMethodBeat.o(192277);
+      AppMethodBeat.o(259889);
       return;
     }
   }
   
-  public final int hiG()
+  public final int ikp()
   {
-    return this.RBI;
+    return this.Zdk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.neattextview.textview.layout.NeatLayout
  * JD-Core Version:    0.7.0.1
  */

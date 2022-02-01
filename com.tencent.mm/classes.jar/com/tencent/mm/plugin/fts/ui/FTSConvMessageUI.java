@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.search.FTSEditTextView.b;
+import com.tencent.mm.ui.search.FTSEditTextView.c;
 import com.tencent.mm.ui.search.a.c;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,55 +12,55 @@ import java.util.List;
 public class FTSConvMessageUI
   extends FTSBaseUI
 {
-  private int mve;
+  private String BIN;
+  private h BNp;
+  private int ptD;
   private String query;
-  private String wWS;
-  private h xbp;
   
   protected final d a(e parame)
   {
     AppMethodBeat.i(111916);
-    if (this.xbp == null) {
-      this.xbp = new h(parame, this.wWS, this.mve);
+    if (this.BNp == null) {
+      this.BNp = new h(parame, this.BIN, this.ptD);
     }
-    parame = this.xbp;
+    parame = this.BNp;
     AppMethodBeat.o(111916);
     return parame;
   }
   
-  public final void a(String paramString1, String paramString2, List<a.c> paramList, FTSEditTextView.b paramb)
+  public final void a(String paramString1, String paramString2, List<a.c> paramList, FTSEditTextView.c paramc)
   {
     AppMethodBeat.i(168768);
-    super.a(paramString2, paramString2, paramList, paramb);
+    super.a(paramString2, paramString2, paramList, paramc);
     AppMethodBeat.o(168768);
   }
   
-  public final boolean awE()
+  public final boolean aDV()
   {
     return false;
   }
   
-  protected final void dPh()
+  protected final void erD()
   {
     AppMethodBeat.i(111913);
-    super.dPh();
-    this.wWS = getIntent().getStringExtra("key_conv");
+    super.erD();
+    this.BIN = getIntent().getStringExtra("key_conv");
     this.query = getIntent().getStringExtra("key_query");
-    this.mve = getIntent().getIntExtra("Search_Scene", 0);
+    this.ptD = getIntent().getIntExtra("Search_Scene", 0);
     AppMethodBeat.o(111913);
   }
   
   public final String getHint()
   {
     AppMethodBeat.i(111917);
-    String str = getString(2131765107);
+    String str = getString(o.g.search_talker_page_hint);
     AppMethodBeat.o(111917);
     return str;
   }
   
   public int getLayoutId()
   {
-    return 2131494745;
+    return o.e.fts_conv_detail_ui;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -68,18 +68,18 @@ public class FTSConvMessageUI
     AppMethodBeat.i(111914);
     super.onCreate(paramBundle);
     paramBundle = new a((byte)0);
-    a.a(paramBundle, com.tencent.mm.plugin.fts.a.d.arL(this.wWS));
+    a.a(paramBundle, com.tencent.mm.plugin.fts.a.d.azM(this.BIN));
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramBundle);
-    v(this.query, localArrayList);
-    dPc();
+    w(this.query, localArrayList);
+    erw();
     AppMethodBeat.o(111914);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(111915);
-    this.xbp.finish();
+    this.BNp.finish();
     super.onDestroy();
     AppMethodBeat.o(111915);
   }
@@ -93,7 +93,7 @@ public class FTSConvMessageUI
   final class a
     implements a.c
   {
-    private String gCv;
+    private String jmB;
     
     private a() {}
     
@@ -104,13 +104,13 @@ public class FTSConvMessageUI
     
     public final String getTagName()
     {
-      return this.gCv;
+      return this.jmB;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.FTSConvMessageUI
  * JD-Core Version:    0.7.0.1
  */

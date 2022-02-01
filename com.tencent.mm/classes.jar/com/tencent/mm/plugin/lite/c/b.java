@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.lite.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.i;
+import com.tencent.mm.ad.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.net.URLDecoder;
 
 public final class b
 {
-  public static String[] bM(String paramString, boolean paramBoolean)
+  public static String[] bS(String paramString, boolean paramBoolean)
   {
     String[] arrayOfString1 = null;
-    AppMethodBeat.i(198952);
+    AppMethodBeat.i(233913);
     String[] arrayOfString2 = new String[2];
     Object localObject = paramString;
     if (paramBoolean) {}
@@ -37,7 +37,7 @@ public final class b
               if ((arrayOfString1 == null) || (arrayOfString1.length < 2)) {
                 break label197;
               }
-              ((i)localObject).h(arrayOfString1[0].trim(), arrayOfString1[1].trim());
+              ((i)localObject).g(arrayOfString1[0].trim(), arrayOfString1[1].trim());
               break label197;
             }
           }
@@ -59,7 +59,7 @@ public final class b
       catch (Exception paramString)
       {
         Log.printErrStackTrace("LiteAppUtils", paramString, "", new Object[0]);
-        AppMethodBeat.o(198952);
+        AppMethodBeat.o(233913);
         return arrayOfString2;
       }
       continue;

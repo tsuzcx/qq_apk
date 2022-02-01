@@ -10,7 +10,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class WebViewJSSDKUpFileItem
   extends WebViewJSSDKFileItem
 {
   public static final Parcelable.Creator<WebViewJSSDKUpFileItem> CREATOR;
-  public String ISo;
+  public String POG;
   public int fileType = -1;
   
   static
@@ -41,7 +41,7 @@ public class WebViewJSSDKUpFileItem
     super.d(paramd);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(this.fileType);
-    localArrayList.add(this.ISo);
+    localArrayList.add(this.POG);
     localArrayList.add(paramd.field_fileId);
     localArrayList.add(paramd.field_aesKey);
     localArrayList.add(paramd.field_fileLength);
@@ -51,15 +51,15 @@ public class WebViewJSSDKUpFileItem
     }
     for (;;)
     {
-      Log.d("MicroMsg.WebViewJSSDKVoiceItem", "fileType=%d, initUrl=%s, field_fileId=%s", new Object[] { Integer.valueOf(this.fileType), this.ISo, paramd.field_fileId });
-      paramd = h.CyF;
-      h.r(12018, localArrayList);
-      paramd = this.laR;
+      Log.d("MicroMsg.WebViewJSSDKVoiceItem", "fileType=%d, initUrl=%s, field_fileId=%s", new Object[] { Integer.valueOf(this.fileType), this.POG, paramd.field_fileId });
+      paramd = h.IzE;
+      h.u(12018, localArrayList);
+      paramd = this.nVa;
       if (!Util.isNullOrNil(paramd))
       {
-        paramd = new o(paramd);
-        if (paramd.exists()) {
-          paramd.delete();
+        paramd = new q(paramd);
+        if (paramd.ifE()) {
+          paramd.cFq();
         }
       }
       AppMethodBeat.o(79018);
@@ -85,12 +85,17 @@ public class WebViewJSSDKUpFileItem
     return 0;
   }
   
-  public final WebViewJSSDKFileItem gWS()
+  public final WebViewJSSDKFileItem gVL()
   {
     AppMethodBeat.i(79017);
-    this.dJX = ay.aYY(this.laR);
+    this.fCM = az.bkS(this.nVa);
     AppMethodBeat.o(79017);
     return this;
+  }
+  
+  public final String gVM()
+  {
+    return "file";
   }
   
   public final String getFileType()
@@ -98,16 +103,11 @@ public class WebViewJSSDKUpFileItem
     return "nomal";
   }
   
-  public final String hdY()
-  {
-    return "file";
-  }
-  
   public void writeToParcel(Parcel paramParcel, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.WebViewJSSDKUpFileItem
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.thumbplayer.g;
 
 final class f$e
 {
-  int SbF;
-  long length;
+  int ZEq;
+  long aFL;
   long offset;
 }
 

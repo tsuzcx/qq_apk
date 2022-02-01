@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.finder;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 import java.util.HashMap;
 import kotlin.l;
 import kotlin.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/FinderLocationUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "getLayoutId", "", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/FinderLocationUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "getLayoutId", "", "plugin-finder_release"})
 public final class FinderLocationUI
   extends MMActivity
 {
@@ -17,16 +17,16 @@ public final class FinderLocationUI
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(241827);
+    AppMethodBeat.i(273893);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(241827);
+    AppMethodBeat.o(273893);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(241826);
+    AppMethodBeat.i(273892);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -37,7 +37,7 @@ public final class FinderLocationUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(241826);
+    AppMethodBeat.o(273892);
     return localView1;
   }
   

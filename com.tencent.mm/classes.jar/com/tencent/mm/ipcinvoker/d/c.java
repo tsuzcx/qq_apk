@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class c
 {
-  private static volatile c hnt;
+  private static volatile c jZh;
   Map<String, List<e>> mMap;
   
   private c()
@@ -21,16 +21,16 @@ public class c
     AppMethodBeat.o(158785);
   }
   
-  public static c ayj()
+  public static c aFC()
   {
     AppMethodBeat.i(158784);
-    if (hnt == null) {}
+    if (jZh == null) {}
     try
     {
-      if (hnt == null) {
-        hnt = new c();
+      if (jZh == null) {
+        jZh = new c();
       }
-      c localc = hnt;
+      c localc = jZh;
       AppMethodBeat.o(158784);
       return localc;
     }
@@ -100,7 +100,7 @@ public class c
     }
   }
   
-  public final boolean m(String paramString, Bundle paramBundle)
+  public final boolean r(String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(158786);
     if ((paramString == null) || (paramString.length() == 0))
@@ -118,21 +118,18 @@ public class c
     {
       ArrayList localArrayList = new ArrayList(paramString);
       paramString = localArrayList.iterator();
-      while (paramString.hasNext()) {
-        ((e)paramString.next()).bn(paramBundle);
-      }
-      AppMethodBeat.o(158786);
+      if (paramString.hasNext()) {}
+      return true;
     }
     finally
     {
       AppMethodBeat.o(158786);
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.d.c
  * JD-Core Version:    0.7.0.1
  */

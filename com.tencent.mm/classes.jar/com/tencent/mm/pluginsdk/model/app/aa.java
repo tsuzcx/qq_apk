@@ -1,18 +1,18 @@
 package com.tencent.mm.pluginsdk.model.app;
 
-import com.tencent.mm.ak.d;
+import com.tencent.mm.an.d;
 import com.tencent.mm.network.m;
 
 public abstract class aa
   implements m
 {
-  protected d hhm;
+  protected d jTk;
   
-  public abstract void cB(byte[] paramArrayOfByte);
+  public abstract void cS(byte[] paramArrayOfByte);
   
   public abstract int getType();
   
-  public abstract byte[] gmB();
+  public abstract byte[] hha();
 }
 
 

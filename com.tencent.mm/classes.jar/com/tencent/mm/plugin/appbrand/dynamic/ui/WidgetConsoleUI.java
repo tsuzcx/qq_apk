@@ -9,8 +9,13 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.modelappbrand.g;
 import com.tencent.mm.modelappbrand.n;
 import com.tencent.mm.modelappbrand.n.a;
+import com.tencent.mm.plugin.appbrand.wxawidget.b.a;
+import com.tencent.mm.plugin.appbrand.wxawidget.b.b;
+import com.tencent.mm.plugin.appbrand.wxawidget.b.c;
 import com.tencent.mm.plugin.appbrand.wxawidget.console.ConsolePanel;
 import com.tencent.mm.plugin.appbrand.wxawidget.console.d;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -22,18 +27,18 @@ public class WidgetConsoleUI
   implements n.a
 {
   String appId;
-  int dMe;
+  int fES;
   String id;
-  ConsolePanel lpy;
+  ConsolePanel oki;
   int pkgVersion;
   
-  private boolean bCt()
+  private boolean bNO()
   {
     AppMethodBeat.i(121487);
     Intent localIntent = getIntent();
     String str = localIntent.getStringExtra("id");
     this.appId = localIntent.getStringExtra("app_id");
-    this.dMe = localIntent.getIntExtra("pkg_type", 0);
+    this.fES = localIntent.getIntExtra("pkg_type", 0);
     this.pkgVersion = localIntent.getIntExtra("pkg_version", 0);
     setMMSubTitle(String.format("(%s)", new Object[] { str }));
     if (Util.isNullOrNil(str))
@@ -46,10 +51,10 @@ public class WidgetConsoleUI
       AppMethodBeat.o(121487);
       return true;
     }
-    ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.af(com.tencent.mm.modelappbrand.g.class)).aXI().b(this.id, this);
-    ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.af(com.tencent.mm.modelappbrand.g.class)).aXI().a(str, this);
+    ((g)h.ae(g.class)).bgR().b(this.id, this);
+    ((g)h.ae(g.class)).bgR().a(str, this);
     this.id = str;
-    d.a(this.lpy);
+    d.a(this.oki);
     AppMethodBeat.o(121487);
     return true;
   }
@@ -80,7 +85,7 @@ public class WidgetConsoleUI
   
   public int getLayoutId()
   {
-    return 2131497098;
+    return b.b.widget_console_ui;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -97,9 +102,9 @@ public class WidgetConsoleUI
         return false;
       }
     });
-    setMMTitle(2131768820);
-    this.lpy = ((ConsolePanel)findViewById(2131299019));
-    if (!bCt())
+    setMMTitle(b.c.wxa_widget_console);
+    this.oki = ((ConsolePanel)findViewById(b.a.console_widget));
+    if (!bNO())
     {
       finish();
       AppMethodBeat.o(121485);
@@ -112,8 +117,8 @@ public class WidgetConsoleUI
   {
     AppMethodBeat.i(121489);
     super.onDestroy();
-    ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.af(com.tencent.mm.modelappbrand.g.class)).aXI().b(this.id, this);
-    d.b(this.lpy);
+    ((g)h.ae(g.class)).bgR().b(this.id, this);
+    d.b(this.oki);
     AppMethodBeat.o(121489);
   }
   
@@ -121,7 +126,7 @@ public class WidgetConsoleUI
   {
     AppMethodBeat.i(121486);
     super.onNewIntent(paramIntent);
-    if (!bCt())
+    if (!bNO())
     {
       finish();
       AppMethodBeat.o(121486);
@@ -136,7 +141,7 @@ public class WidgetConsoleUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void sF(int paramInt)
+  public final void vC(int paramInt)
   {
     AppMethodBeat.i(121488);
     final String str;
@@ -152,7 +157,7 @@ public class WidgetConsoleUI
         public final void run()
         {
           AppMethodBeat.i(121484);
-          WidgetConsoleUI.this.setMMTitle(String.format("%s%s", new Object[] { WidgetConsoleUI.this.getString(2131768820), str }));
+          WidgetConsoleUI.this.setMMTitle(String.format("%s%s", new Object[] { WidgetConsoleUI.this.getString(b.c.wxa_widget_console), str }));
           Toast.makeText(WidgetConsoleUI.this.getContext(), String.format("%s%s", new Object[] { WidgetConsoleUI.this.id, str }), 1).show();
           AppMethodBeat.o(121484);
         }
@@ -171,7 +176,7 @@ public class WidgetConsoleUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.ui.WidgetConsoleUI
  * JD-Core Version:    0.7.0.1
  */

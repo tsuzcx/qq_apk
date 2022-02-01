@@ -2,8 +2,6 @@ package com.tencent.mm.ui.chatting.a;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -11,7 +9,12 @@ import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.fav.ui.m;
 import com.tencent.mm.plugin.fts.a.f;
@@ -26,73 +29,73 @@ import java.util.regex.Pattern;
 public final class c
   extends RecyclerView.a
 {
-  public static e Pme;
-  public static f Pmf = null;
-  public String Pmg;
+  public static e WFP;
+  public static f WFQ = null;
+  public String WFR;
   private Context mContext;
   
   public c(Context paramContext, f paramf)
   {
-    Pmf = paramf;
+    WFQ = paramf;
     this.mContext = paramContext;
   }
   
-  private static long Cd(long paramLong)
+  private static long Im(long paramLong)
   {
     AppMethodBeat.i(35050);
     Date localDate = new Date(paramLong);
-    paramLong = com.tencent.mm.ui.gridviewheaders.a.gWr().b(localDate);
+    paramLong = com.tencent.mm.ui.gridviewheaders.a.hWZ().b(localDate);
     AppMethodBeat.o(35050);
     return paramLong;
   }
   
-  public final String Cc(long paramLong)
+  public final String Il(long paramLong)
   {
     AppMethodBeat.i(35049);
     Object localObject = new Date(paramLong);
-    localObject = com.tencent.mm.ui.gridviewheaders.a.gWr().a((Date)localObject, this.mContext);
+    localObject = com.tencent.mm.ui.gridviewheaders.a.hWZ().a((Date)localObject, this.mContext);
     AppMethodBeat.o(35049);
     return localObject;
   }
   
-  public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
+  public final RecyclerView.v b(ViewGroup paramViewGroup, int paramInt)
   {
-    AppMethodBeat.i(35046);
+    AppMethodBeat.i(275620);
     if (paramInt == 2147483647)
     {
-      paramViewGroup = new d(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131494792, paramViewGroup, false));
-      AppMethodBeat.o(35046);
+      paramViewGroup = new d(LayoutInflater.from(paramViewGroup.getContext()).inflate(R.i.ehs, paramViewGroup, false));
+      AppMethodBeat.o(275620);
       return paramViewGroup;
     }
     if (paramInt == 2147483646)
     {
-      paramViewGroup = new RecyclerView.v(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131494761, paramViewGroup, false)) {};
-      AppMethodBeat.o(35046);
+      paramViewGroup = new RecyclerView.v(LayoutInflater.from(paramViewGroup.getContext()).inflate(R.i.fts_loading_footer, paramViewGroup, false)) {};
+      AppMethodBeat.o(275620);
       return paramViewGroup;
     }
-    paramViewGroup = Pmf.N(paramViewGroup);
-    AppMethodBeat.o(35046);
+    paramViewGroup = WFQ.V(paramViewGroup);
+    AppMethodBeat.o(275620);
     return paramViewGroup;
   }
   
-  public final void a(RecyclerView.v paramv, int paramInt)
+  public final void d(RecyclerView.v paramv, int paramInt)
   {
-    AppMethodBeat.i(35047);
+    AppMethodBeat.i(275621);
     int i = getItemViewType(paramInt);
-    b localb = Pmf.amy(paramInt);
+    b localb = WFQ.avy(paramInt);
     Object localObject;
     if (i == 2147483647)
     {
-      localObject = Pmf.amy(paramInt + 1);
-      if ((paramInt == getItemCount() - 1) || (Cd(((b)localObject).timestamp) != Cd(localb.timestamp)))
+      localObject = WFQ.avy(paramInt + 1);
+      if ((paramInt == getItemCount() - 1) || (Im(((b)localObject).timestamp) != Im(localb.timestamp)))
       {
-        ((d)paramv).jUO.setVisibility(8);
-        AppMethodBeat.o(35047);
+        ((d)paramv).mMb.setVisibility(8);
+        AppMethodBeat.o(275621);
         return;
       }
-      ((d)paramv).jUO.setVisibility(0);
-      ((d)paramv).jUO.setText(Cc(localb.timestamp));
-      AppMethodBeat.o(35047);
+      ((d)paramv).mMb.setVisibility(0);
+      ((d)paramv).mMb.setText(Il(localb.timestamp));
+      AppMethodBeat.o(275621);
       return;
     }
     a locala;
@@ -102,60 +105,60 @@ public final class c
     {
       locala = (a)paramv;
       locala.convertView.setTag(Integer.valueOf(paramInt));
-      a.b.c(locala.gvv, localb.username);
-      localTextView = locala.kgE;
+      a.b.c(locala.iZG, localb.username);
+      localTextView = locala.mYd;
       localContext = this.mContext;
-      if (!Util.isNullOrNil(this.Pmg)) {
+      if (!Util.isNullOrNil(this.WFR)) {
         break label340;
       }
-      if (!Util.isNullOrNil(localb.cgo)) {
+      if (!Util.isNullOrNil(localb.cip)) {
         break label330;
       }
-      if (!Util.isNullOrNil(localb.ogt)) {
+      if (!Util.isNullOrNil(localb.rif)) {
         break label320;
       }
       localObject = localb.nickname;
     }
     for (;;)
     {
-      localTextView.setText(l.b(localContext, (CharSequence)localObject, locala.kgE.getTextSize()));
+      localTextView.setText(l.b(localContext, (CharSequence)localObject, locala.mYd.getTextSize()));
       locala.timeTV.setText(m.h(this.mContext, localb.timestamp));
-      locala.jVO.setText(localb.title);
-      Pmf.a((a)paramv, paramInt);
-      if (!Util.isNullOrNil(this.Pmg))
+      locala.mNb.setText(localb.title);
+      WFQ.a((a)paramv, paramInt);
+      if (!Util.isNullOrNil(this.WFR))
       {
-        a.g(locala.kgE, this.Pmg);
-        a.g(locala.jVO, this.Pmg);
+        a.h(locala.mYd, this.WFR);
+        a.h(locala.mNb, this.WFR);
       }
-      AppMethodBeat.o(35047);
+      AppMethodBeat.o(275621);
       return;
       label320:
-      localObject = localb.ogt;
+      localObject = localb.rif;
       continue;
       label330:
-      localObject = localb.cgo;
+      localObject = localb.cip;
       continue;
       label340:
-      if (Util.isNullOrNil(localb.cgo))
+      if (Util.isNullOrNil(localb.cip))
       {
-        if (!Util.isNullOrNil(localb.ogt))
+        if (!Util.isNullOrNil(localb.rif))
         {
-          if ((!Util.isNullOrNil(localb.nickname)) && (localb.nickname.contains(this.Pmg))) {
-            localObject = localb.ogt + "(" + localb.nickname + ")";
+          if ((!Util.isNullOrNil(localb.nickname)) && (localb.nickname.contains(this.WFR))) {
+            localObject = localb.rif + "(" + localb.nickname + ")";
           } else {
-            localObject = localb.ogt;
+            localObject = localb.rif;
           }
         }
         else {
           localObject = localb.nickname;
         }
       }
-      else if ((!Util.isNullOrNil(localb.ogt)) && (localb.ogt.contains(this.Pmg))) {
-        localObject = localb.cgo + "(" + localb.ogt + ")";
-      } else if ((!Util.isNullOrNil(localb.nickname)) && (localb.nickname.contains(this.Pmg))) {
-        localObject = localb.cgo + "(" + localb.nickname + ")";
+      else if ((!Util.isNullOrNil(localb.rif)) && (localb.rif.contains(this.WFR))) {
+        localObject = localb.cip + "(" + localb.rif + ")";
+      } else if ((!Util.isNullOrNil(localb.nickname)) && (localb.nickname.contains(this.WFR))) {
+        localObject = localb.cip + "(" + localb.nickname + ")";
       } else {
-        localObject = localb.cgo;
+        localObject = localb.cip;
       }
     }
   }
@@ -164,20 +167,20 @@ public final class c
   {
     AppMethodBeat.i(35048);
     int i;
-    if (Pmf == null)
+    if (WFQ == null)
     {
       i = 0;
-      if (Pmf != null) {
-        break label67;
+      if (WFQ != null) {
+        break label69;
       }
     }
-    label67:
+    label69:
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.MediaHistoryListAdapter", " null == mIDetail?%s getItemCount:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
       AppMethodBeat.o(35048);
       return i;
-      i = Pmf.getCount();
+      i = WFQ.getCount();
       break;
     }
   }
@@ -185,7 +188,7 @@ public final class c
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(35045);
-    paramInt = Pmf.amy(paramInt).getType();
+    paramInt = WFQ.avy(paramInt).getType();
     AppMethodBeat.o(35045);
     return paramInt;
   }
@@ -194,9 +197,9 @@ public final class c
     extends RecyclerView.v
   {
     public View convertView;
-    public ImageView gvv;
-    public TextView jVO;
-    public TextView kgE;
+    public ImageView iZG;
+    public TextView mNb;
+    public TextView mYd;
     public TextView timeTV;
     
     public a(View paramView)
@@ -204,25 +207,25 @@ public final class c
       super();
       AppMethodBeat.i(35042);
       this.convertView = paramView;
-      this.gvv = ((ImageView)paramView.findViewById(2131300432));
-      this.kgE = ((TextView)paramView.findViewById(2131300489));
-      this.timeTV = ((TextView)paramView.findViewById(2131300525));
-      this.jVO = ((TextView)paramView.findViewById(2131300526));
-      this.jVO.setSingleLine(false);
-      this.jVO.setMaxLines(2);
+      this.iZG = ((ImageView)paramView.findViewById(R.h.fav_avatar));
+      this.mYd = ((TextView)paramView.findViewById(R.h.fav_name));
+      this.timeTV = ((TextView)paramView.findViewById(R.h.fav_time));
+      this.mNb = ((TextView)paramView.findViewById(R.h.fav_title));
+      this.mNb.setSingleLine(false);
+      this.mNb.setMaxLines(2);
       paramView.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(35040);
           Object localObject = new b();
-          ((b)localObject).bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/adapter/MediaHistoryListAdapter$BaseHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
-          if (c.gOI() != null)
+          ((b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/adapter/MediaHistoryListAdapter$BaseHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+          if (c.hNU() != null)
           {
             int i = ((Integer)paramAnonymousView.getTag()).intValue();
-            localObject = c.gOJ().amy(i);
-            c.gOI().a(paramAnonymousView, i, (c.b)localObject);
+            localObject = c.hNV().avy(i);
+            c.hNU().a(paramAnonymousView, i, (c.b)localObject);
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/adapter/MediaHistoryListAdapter$BaseHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(35040);
@@ -234,13 +237,13 @@ public final class c
         {
           AppMethodBeat.i(35041);
           Object localObject = new b();
-          ((b)localObject).bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/adapter/MediaHistoryListAdapter$BaseHolder$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject).axR());
-          if (c.gOI() != null)
+          ((b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/adapter/MediaHistoryListAdapter$BaseHolder$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject).aFi());
+          if (c.hNU() != null)
           {
             int i = ((Integer)paramAnonymousView.getTag()).intValue();
-            localObject = c.gOJ().amy(i);
-            c.gOI().b(paramAnonymousView, i, (c.b)localObject);
+            localObject = c.hNV().avy(i);
+            c.hNU().b(paramAnonymousView, i, (c.b)localObject);
           }
           com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/chatting/adapter/MediaHistoryListAdapter$BaseHolder$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
           AppMethodBeat.o(35041);
@@ -250,7 +253,7 @@ public final class c
       AppMethodBeat.o(35042);
     }
     
-    public static void g(TextView paramTextView, String paramString)
+    public static void h(TextView paramTextView, String paramString)
     {
       AppMethodBeat.i(35043);
       if (!Util.isNullOrNil(paramString))
@@ -264,11 +267,11 @@ public final class c
   
   public static abstract class b
   {
-    Pattern Pmj = Pattern.compile("[._a-zA-Z0-9]+");
-    public String cgo;
+    Pattern WFU = Pattern.compile("[._a-zA-Z0-9]+");
+    public String cip;
     public long msgId;
     public String nickname;
-    public String ogt;
+    public String rif;
     public long timestamp;
     public String title;
     public int type;
@@ -284,11 +287,11 @@ public final class c
       this.msgId = paramLong2;
       this.username = paramString2;
       this.nickname = paramString3;
-      this.cgo = paramString4;
-      this.ogt = paramString5;
+      this.cip = paramString4;
+      this.rif = paramString5;
     }
     
-    protected static boolean bmD(String paramString)
+    protected static boolean bze(String paramString)
     {
       boolean bool2 = false;
       paramString = paramString.toCharArray();
@@ -309,22 +312,22 @@ public final class c
       }
     }
     
-    public boolean bmC(String paramString)
+    public boolean bzd(String paramString)
     {
-      if (!bmD(paramString))
+      if (!bze(paramString))
       {
-        if ((!Util.isNullOrNil(this.title)) && (ng(paramString, this.title.toLowerCase()))) {}
-        while (((!Util.isNullOrNil(this.nickname)) && (ng(paramString, this.nickname.toLowerCase()))) || ((!Util.isNullOrNil(this.ogt)) && (ng(paramString, this.ogt.toLowerCase()))) || ((!Util.isNullOrNil(this.cgo)) && (ng(paramString, this.cgo.toLowerCase())))) {
+        if ((!Util.isNullOrNil(this.title)) && (nZ(paramString, this.title.toLowerCase()))) {}
+        while (((!Util.isNullOrNil(this.nickname)) && (nZ(paramString, this.nickname.toLowerCase()))) || ((!Util.isNullOrNil(this.rif)) && (nZ(paramString, this.rif.toLowerCase()))) || ((!Util.isNullOrNil(this.cip)) && (nZ(paramString, this.cip.toLowerCase())))) {
           return true;
         }
       }
       do
       {
         return false;
-        if (((!Util.isNullOrNil(this.title)) && (this.title.toLowerCase().contains(paramString))) || ((!Util.isNullOrNil(this.nickname)) && (this.nickname.toLowerCase().contains(paramString))) || ((!Util.isNullOrNil(this.ogt)) && (this.ogt.toLowerCase().contains(paramString)))) {
+        if (((!Util.isNullOrNil(this.title)) && (this.title.toLowerCase().contains(paramString))) || ((!Util.isNullOrNil(this.nickname)) && (this.nickname.toLowerCase().contains(paramString))) || ((!Util.isNullOrNil(this.rif)) && (this.rif.toLowerCase().contains(paramString)))) {
           break;
         }
-      } while ((Util.isNullOrNil(this.cgo)) || (!this.cgo.toLowerCase().contains(paramString)));
+      } while ((Util.isNullOrNil(this.cip)) || (!this.cip.toLowerCase().contains(paramString)));
       return true;
     }
     
@@ -341,11 +344,11 @@ public final class c
       return this.type;
     }
     
-    protected final boolean ng(String paramString1, String paramString2)
+    protected final boolean nZ(String paramString1, String paramString2)
     {
       if (!Util.isNullOrNil(paramString2))
       {
-        paramString2 = this.Pmj.matcher(paramString2);
+        paramString2 = this.WFU.matcher(paramString2);
         boolean bool1 = false;
         while (paramString2.find())
         {
@@ -371,7 +374,7 @@ public final class c
       this.timestamp = paramLong;
     }
     
-    public final boolean bmC(String paramString)
+    public final boolean bzd(String paramString)
     {
       return false;
     }
@@ -385,15 +388,15 @@ public final class c
   public final class d
     extends RecyclerView.v
   {
-    TextView jUO;
+    TextView mMb;
     
     public d(View paramView)
     {
       super();
       AppMethodBeat.i(35044);
-      this.jUO = ((TextView)paramView.findViewById(2131299414));
-      this.jUO.setTextColor(c.a(c.this).getResources().getColor(2131100393));
-      paramView.findViewById(2131299180).setBackgroundColor(c.a(c.this).getResources().getColor(2131100387));
+      this.mMb = ((TextView)paramView.findViewById(R.h.date_info));
+      this.mMb.setTextColor(c.a(c.this).getResources().getColor(R.e.fav_record_date_color));
+      paramView.findViewById(R.h.content).setBackgroundColor(c.a(c.this).getResources().getColor(R.e.fav_listitem_divider_bg));
       AppMethodBeat.o(35044);
     }
   }
@@ -407,11 +410,11 @@ public final class c
   
   public static abstract interface f
   {
-    public abstract RecyclerView.v N(ViewGroup paramViewGroup);
+    public abstract RecyclerView.v V(ViewGroup paramViewGroup);
     
     public abstract void a(c.a parama, int paramInt);
     
-    public abstract c.b amy(int paramInt);
+    public abstract c.b avy(int paramInt);
     
     public abstract int getCount();
   }
@@ -427,7 +430,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.a.c
  * JD-Core Version:    0.7.0.1
  */

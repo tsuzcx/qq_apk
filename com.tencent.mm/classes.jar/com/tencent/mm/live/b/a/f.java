@@ -1,75 +1,75 @@
 package com.tencent.mm.live.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.a;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.at;
-import com.tencent.mm.protocal.protobuf.au;
+import com.tencent.mm.protocal.protobuf.ar;
+import com.tencent.mm.protocal.protobuf.as;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveAcceptLiveMic;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "liveId", "", "audience", "", "roomId", "liveMicId", "msgId", "(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/AcceptLiveMicRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/AcceptLiveMicResponse;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-logic_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveAcceptLiveMic;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "liveId", "", "audience", "", "roomId", "liveMicId", "msgId", "(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/AcceptLiveMicRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/AcceptLiveMicResponse;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-logic_release"})
 public final class f
   extends q
   implements m
 {
-  public static final a hJO;
+  public static final a kxi;
   private i callback;
-  private at hJM;
-  private au hJN;
-  private d hJu;
+  private d kwO;
+  private ar kxg;
+  private as kxh;
   
   static
   {
-    AppMethodBeat.i(207761);
-    hJO = new a((byte)0);
-    AppMethodBeat.o(207761);
+    AppMethodBeat.i(200537);
+    kxi = new a((byte)0);
+    AppMethodBeat.o(200537);
   }
   
   public f(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(207760);
+    AppMethodBeat.i(200536);
     Object localObject = new d.a();
-    ((d.a)localObject).c((a)new at());
-    ((d.a)localObject).d((a)new au());
-    ((d.a)localObject).sG(3800);
-    ((d.a)localObject).MB("/cgi-bin/micromsg-bin/acceptlivemic");
-    ((d.a)localObject).sI(0);
-    ((d.a)localObject).sJ(0);
-    localObject = ((d.a)localObject).aXF();
-    p.g(localObject, "builder.buildInstance()");
-    this.hJu = ((d)localObject);
-    localObject = this.hJu.aYJ();
+    ((d.a)localObject).c((a)new ar());
+    ((d.a)localObject).d((a)new as());
+    ((d.a)localObject).vD(3800);
+    ((d.a)localObject).TW("/cgi-bin/micromsg-bin/acceptlivemic");
+    ((d.a)localObject).vF(0);
+    ((d.a)localObject).vG(0);
+    localObject = ((d.a)localObject).bgN();
+    p.j(localObject, "builder.buildInstance()");
+    this.kwO = ((d)localObject);
+    localObject = this.kwO.bhX();
     if (localObject == null)
     {
       paramString1 = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.AcceptLiveMicRequest");
-      AppMethodBeat.o(207760);
+      AppMethodBeat.o(200536);
       throw paramString1;
     }
-    this.hJM = ((at)localObject);
-    this.hJM.hyH = paramLong;
-    this.hJM.hFJ = paramString1;
-    this.hJM.KDQ = paramString2;
-    this.hJM.KDS = paramString3;
-    this.hJM.KDR = paramString4;
-    AppMethodBeat.o(207760);
+    this.kxg = ((ar)localObject);
+    this.kxg.klE = paramLong;
+    this.kxg.ktQ = paramString1;
+    this.kxg.RFj = paramString2;
+    this.kxg.RFk = paramString3;
+    this.kxg.cli_msg_id = paramString4;
+    AppMethodBeat.o(200536);
   }
   
   public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(207758);
+    AppMethodBeat.i(200526);
     Log.i("MicroMsg.LiveNetScene.NetSceneLiveAcceptLiveMic", "doScene");
     this.callback = parami;
-    int i = dispatch(paramg, (s)this.hJu, (m)this);
-    AppMethodBeat.o(207758);
+    int i = dispatch(paramg, (s)this.kwO, (m)this);
+    AppMethodBeat.o(200526);
     return i;
   }
   
@@ -80,22 +80,22 @@ public final class f
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(207759);
+    AppMethodBeat.i(200529);
     Log.i("MicroMsg.LiveNetScene.NetSceneLiveAcceptLiveMic", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if (params == null)
     {
       paramString = new t("null cannot be cast to non-null type com.tencent.mm.modelbase.CommReqResp");
-      AppMethodBeat.o(207759);
+      AppMethodBeat.o(200529);
       throw paramString;
     }
-    params = ((d)params).aYK();
+    params = ((d)params).bhY();
     if (params == null)
     {
       paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.AcceptLiveMicResponse");
-      AppMethodBeat.o(207759);
+      AppMethodBeat.o(200529);
       throw paramString;
     }
-    this.hJN = ((au)params);
+    this.kxh = ((as)params);
     if ((paramInt2 != 0) || (paramInt3 != 0)) {
       Log.e("MicroMsg.LiveNetScene.NetSceneLiveAcceptLiveMic", "onGYNetEnd error");
     }
@@ -103,13 +103,13 @@ public final class f
     if (params != null)
     {
       params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
-      AppMethodBeat.o(207759);
+      AppMethodBeat.o(200529);
       return;
     }
-    AppMethodBeat.o(207759);
+    AppMethodBeat.o(200529);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveAcceptLiveMic$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveAcceptLiveMic$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
   public static final class a {}
 }
 

@@ -1,14 +1,13 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
 import android.app.Activity;
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.feed.model.FinderLikedFeedLoader;
 import com.tencent.mm.plugin.finder.megavideo.loader.FinderLikeMegaVideoLoader;
@@ -17,15 +16,16 @@ import com.tencent.mm.plugin.finder.ui.MMFinderUI;
 import com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment;
 import com.tencent.mm.plugin.finder.ui.fragment.FinderLikeFeedGridFragment;
 import com.tencent.mm.plugin.finder.ui.fragment.FinderLikeMegaVideoFragment;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderLikeListTabUIC;
+import com.tencent.mm.plugin.finder.viewmodel.component.ad;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.component.a;
+import com.tencent.mm.ui.component.g;
+import com.tencent.mm.ui.component.g.a;
 import java.util.HashMap;
 import java.util.Set;
 import kotlin.a.ak;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLikeFeedGridUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getCommentScene", "", "getReportType", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLikeFeedGridUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getCommentScene", "", "getReportType", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"})
 public final class FinderLikeFeedGridUI
   extends MMFinderUI
 {
@@ -34,16 +34,16 @@ public final class FinderLikeFeedGridUI
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(245320);
+    AppMethodBeat.i(237445);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(245320);
+    AppMethodBeat.o(237445);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(245319);
+    AppMethodBeat.i(237442);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -54,11 +54,11 @@ public final class FinderLikeFeedGridUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(245319);
+    AppMethodBeat.o(237442);
     return localView1;
   }
   
-  public final int ddN()
+  public final int duR()
   {
     return 3;
   }
@@ -70,9 +70,9 @@ public final class FinderLikeFeedGridUI
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(245316);
-    Set localSet = ak.setOf(FinderLikeListTabUIC.class);
-    AppMethodBeat.o(245316);
+    AppMethodBeat.i(237437);
+    Set localSet = ak.setOf(ad.class);
+    AppMethodBeat.o(237437);
     return localSet;
   }
   
@@ -80,18 +80,18 @@ public final class FinderLikeFeedGridUI
   {
     Object localObject4 = null;
     Object localObject3 = null;
-    AppMethodBeat.i(245318);
+    AppMethodBeat.i(237439);
     Intent localIntent = new Intent();
-    Object localObject1 = a.PRN;
-    localObject1 = ((FinderLikeListTabUIC)a.b((AppCompatActivity)this).get(FinderLikeListTabUIC.class)).getActiveFragment();
-    switch (((FinderHomeTabFragment)localObject1).dLS)
+    Object localObject1 = g.Xox;
+    localObject1 = ((ad)g.b((AppCompatActivity)this).i(ad.class)).getActiveFragment();
+    switch (((FinderHomeTabFragment)localObject1).fEH)
     {
     }
     for (;;)
     {
       setResult(-1, localIntent);
       super.onBackPressed();
-      AppMethodBeat.o(245318);
+      AppMethodBeat.o(237439);
       return;
       Object localObject2 = localObject1;
       if (!(localObject1 instanceof FinderLikeFeedGridFragment)) {
@@ -100,12 +100,12 @@ public final class FinderLikeFeedGridUI
       localObject2 = (FinderLikeFeedGridFragment)localObject2;
       localObject1 = localObject3;
       if (localObject2 != null) {
-        localObject1 = ((FinderLikeFeedGridFragment)localObject2).dAv();
+        localObject1 = ((FinderLikeFeedGridFragment)localObject2).ebN();
       }
       if (localObject1 != null)
       {
-        localObject2 = FinderSelfUI.vOh;
-        localIntent.putExtra(FinderSelfUI.dAc(), ((FinderLikedFeedLoader)localObject1).gAZ);
+        localObject2 = FinderSelfUI.Avb;
+        localIntent.putExtra(FinderSelfUI.eaT(), ((FinderLikedFeedLoader)localObject1).jlf);
         continue;
         localObject2 = localObject1;
         if (!(localObject1 instanceof FinderLikeMegaVideoFragment)) {
@@ -114,12 +114,12 @@ public final class FinderLikeFeedGridUI
         localObject2 = (FinderLikeMegaVideoFragment)localObject2;
         localObject1 = localObject4;
         if (localObject2 != null) {
-          localObject1 = ((FinderLikeMegaVideoFragment)localObject2).dAw();
+          localObject1 = ((FinderLikeMegaVideoFragment)localObject2).ebO();
         }
         if (localObject1 != null)
         {
-          localObject2 = FinderSelfUI.vOh;
-          localIntent.putExtra(FinderSelfUI.dAc(), ((FinderLikeMegaVideoLoader)localObject1).gAZ);
+          localObject2 = FinderSelfUI.Avb;
+          localIntent.putExtra(FinderSelfUI.eaT(), ((FinderLikeMegaVideoLoader)localObject1).jlf);
         }
       }
     }
@@ -127,10 +127,10 @@ public final class FinderLikeFeedGridUI
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(245317);
+    AppMethodBeat.i(237438);
     super.onCreate(paramBundle);
     setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
-    AppMethodBeat.o(245317);
+    AppMethodBeat.o(237438);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -139,7 +139,7 @@ public final class FinderLikeFeedGridUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -147,9 +147,9 @@ public final class FinderLikeFeedGridUI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(245315);
-      this.ubk.onBackPressed();
-      AppMethodBeat.o(245315);
+      AppMethodBeat.i(242577);
+      this.xOA.onBackPressed();
+      AppMethodBeat.o(242577);
       return true;
     }
   }

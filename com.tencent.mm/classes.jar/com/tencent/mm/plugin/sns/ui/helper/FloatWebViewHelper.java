@@ -1,134 +1,134 @@
 package com.tencent.mm.plugin.sns.ui.helper;
 
-import android.arch.lifecycle.Lifecycle.Event;
-import android.arch.lifecycle.LifecycleObserver;
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.OnLifecycleEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.lifecycle.h.a;
+import androidx.lifecycle.k;
+import androidx.lifecycle.l;
+import androidx.lifecycle.t;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class FloatWebViewHelper
-  implements LifecycleObserver
+  implements k
 {
-  public com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e EWp;
-  private com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.e EWq;
-  private ViewGroup EWr;
+  public com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e LkA;
+  private com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.e LkB;
+  private ViewGroup LkC;
   
   private FloatWebViewHelper(com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e parame, ViewGroup paramViewGroup)
   {
-    this.EWp = parame;
-    this.EWr = paramViewGroup;
+    this.LkA = parame;
+    this.LkC = paramViewGroup;
   }
   
   public static FloatWebViewHelper a(com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e parame, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(203903);
+    AppMethodBeat.i(199323);
     parame = new FloatWebViewHelper(parame, paramViewGroup);
-    AppMethodBeat.o(203903);
+    AppMethodBeat.o(199323);
     return parame;
   }
   
-  @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-  public final void onCreate(LifecycleOwner paramLifecycleOwner)
+  @t(jl=h.a.ON_CREATE)
+  public final void onCreate(l paraml)
   {
-    AppMethodBeat.i(203904);
+    AppMethodBeat.i(199327);
     try
     {
-      if (this.EWp != null)
+      if (this.LkA != null)
       {
-        paramLifecycleOwner = this.EWp;
-        ViewGroup localViewGroup = this.EWr;
-        if ((localViewGroup != null) && (paramLifecycleOwner != null))
+        paraml = this.LkA;
+        ViewGroup localViewGroup = this.LkC;
+        if ((localViewGroup != null) && (paraml != null))
         {
-          this.EWq = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.e(localViewGroup.getContext(), paramLifecycleOwner, localViewGroup);
-          if (this.EWq != null)
+          this.LkB = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.e(localViewGroup.getContext(), paraml, localViewGroup);
+          if (this.LkB != null)
           {
-            paramLifecycleOwner = this.EWq.getView();
-            if ((paramLifecycleOwner != null) && (this.EWr != null))
+            paraml = this.LkB.getView();
+            if ((paraml != null) && (this.LkC != null))
             {
-              localViewGroup = (ViewGroup)paramLifecycleOwner.getParent();
+              localViewGroup = (ViewGroup)paraml.getParent();
               if (localViewGroup == null)
               {
-                this.EWr.addView(paramLifecycleOwner, this.EWr.getChildCount() - 1);
-                AppMethodBeat.o(203904);
+                this.LkC.addView(paraml, this.LkC.getChildCount() - 1);
+                AppMethodBeat.o(199327);
                 return;
               }
-              if (localViewGroup != this.EWr)
+              if (localViewGroup != this.LkC)
               {
-                localViewGroup.removeView(paramLifecycleOwner);
-                this.EWr.addView(paramLifecycleOwner, this.EWr.getChildCount() - 1);
+                localViewGroup.removeView(paraml);
+                this.LkC.addView(paraml, this.LkC.getChildCount() - 1);
               }
             }
           }
         }
       }
-      AppMethodBeat.o(203904);
+      AppMethodBeat.o(199327);
       return;
     }
-    catch (Throwable paramLifecycleOwner)
+    catch (Throwable paraml)
     {
-      AppMethodBeat.o(203904);
+      AppMethodBeat.o(199327);
     }
   }
   
-  @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-  public final void onDestroy(LifecycleOwner paramLifecycleOwner)
+  @t(jl=h.a.ON_DESTROY)
+  public final void onDestroy(l paraml)
   {
-    AppMethodBeat.i(203907);
+    AppMethodBeat.i(199330);
     try
     {
-      if (this.EWq != null) {
-        this.EWq.eXd();
+      if (this.LkB != null) {
+        this.LkB.fKo();
       }
-      AppMethodBeat.o(203907);
+      AppMethodBeat.o(199330);
       return;
     }
-    catch (Throwable paramLifecycleOwner)
+    catch (Throwable paraml)
     {
-      AppMethodBeat.o(203907);
+      AppMethodBeat.o(199330);
     }
   }
   
-  @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-  public final void onPause(LifecycleOwner paramLifecycleOwner)
+  @t(jl=h.a.ON_PAUSE)
+  public final void onPause(l paraml)
   {
-    AppMethodBeat.i(203906);
+    AppMethodBeat.i(199329);
     try
     {
-      if (this.EWq != null) {
-        this.EWq.eXa();
+      if (this.LkB != null) {
+        this.LkB.fKl();
       }
-      AppMethodBeat.o(203906);
+      AppMethodBeat.o(199329);
       return;
     }
-    catch (Throwable paramLifecycleOwner)
+    catch (Throwable paraml)
     {
-      AppMethodBeat.o(203906);
+      AppMethodBeat.o(199329);
     }
   }
   
-  @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-  public final void onResume(LifecycleOwner paramLifecycleOwner)
+  @t(jl=h.a.ON_RESUME)
+  public final void onResume(l paraml)
   {
-    AppMethodBeat.i(203905);
+    AppMethodBeat.i(199328);
     try
     {
-      if (this.EWq != null) {
-        this.EWq.eWZ();
+      if (this.LkB != null) {
+        this.LkB.fKk();
       }
-      AppMethodBeat.o(203905);
+      AppMethodBeat.o(199328);
       return;
     }
-    catch (Throwable paramLifecycleOwner)
+    catch (Throwable paraml)
     {
-      AppMethodBeat.o(203905);
+      AppMethodBeat.o(199328);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.helper.FloatWebViewHelper
  * JD-Core Version:    0.7.0.1
  */

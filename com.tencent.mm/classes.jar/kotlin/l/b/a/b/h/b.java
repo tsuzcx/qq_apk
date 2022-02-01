@@ -3,59 +3,20 @@ package kotlin.l.b.a.b.h;
 import java.io.IOException;
 import java.io.InputStream;
 
-public abstract class b<MessageType extends q>
-  implements s<MessageType>
+public abstract class b<MessageType extends r>
+  implements t<MessageType>
 {
-  private static final g TDn = ;
-  
-  /* Error */
-  private MessageType a(d paramd, g paramg)
-  {
-    // Byte code:
-    //   0: aload_1
-    //   1: invokevirtual 33	kotlin/l/b/a/b/h/d:hJn	()Lkotlin/l/b/a/b/h/e;
-    //   4: astore_1
-    //   5: aload_0
-    //   6: aload_1
-    //   7: aload_2
-    //   8: invokevirtual 36	kotlin/l/b/a/b/h/b:a	(Lkotlin/l/b/a/b/h/e;Lkotlin/l/b/a/b/h/g;)Ljava/lang/Object;
-    //   11: checkcast 38	kotlin/l/b/a/b/h/q
-    //   14: astore_2
-    //   15: aload_1
-    //   16: iconst_0
-    //   17: invokevirtual 44	kotlin/l/b/a/b/h/e:fF	(I)V
-    //   20: aload_2
-    //   21: areturn
-    //   22: astore_1
-    //   23: aload_1
-    //   24: aload_2
-    //   25: putfield 48	kotlin/l/b/a/b/h/k:TDK	Lkotlin/l/b/a/b/h/q;
-    //   28: aload_1
-    //   29: athrow
-    //   30: astore_1
-    //   31: aload_1
-    //   32: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	33	0	this	b
-    //   0	33	1	paramd	d
-    //   0	33	2	paramg	g
-    // Exception table:
-    //   from	to	target	type
-    //   15	20	22	kotlin/l/b/a/b/h/k
-    //   0	15	30	kotlin/l/b/a/b/h/k
-    //   23	30	30	kotlin/l/b/a/b/h/k
-  }
+  private static final g abfZ = ;
   
   private static MessageType a(MessageType paramMessageType)
   {
     if ((paramMessageType != null) && (!paramMessageType.isInitialized()))
     {
       if ((paramMessageType instanceof a)) {}
-      for (Object localObject = new w();; localObject = new w())
+      for (Object localObject = new x();; localObject = new x())
       {
-        localObject = new k(((w)localObject).getMessage());
-        ((k)localObject).TDK = paramMessageType;
+        localObject = new l(((x)localObject).getMessage());
+        ((l)localObject).abgy = paramMessageType;
         throw ((Throwable)localObject);
       }
     }
@@ -64,16 +25,16 @@ public abstract class b<MessageType extends q>
   
   private MessageType g(InputStream paramInputStream, g paramg)
   {
-    paramInputStream = e.V(paramInputStream);
-    paramg = (q)a(paramInputStream, paramg);
+    paramInputStream = new e(paramInputStream);
+    paramg = (r)a(paramInputStream, paramg);
     try
     {
-      paramInputStream.fF(0);
+      paramInputStream.gy(0);
       return paramg;
     }
-    catch (k paramInputStream)
+    catch (l paramInputStream)
     {
-      paramInputStream.TDK = paramg;
+      paramInputStream.abgy = paramg;
       throw paramInputStream;
     }
   }
@@ -101,12 +62,12 @@ public abstract class b<MessageType extends q>
         }
         m = paramInputStream.read();
         if (m == -1) {
-          throw k.hJD();
+          throw l.iNV();
         }
       }
       catch (IOException paramInputStream)
       {
-        throw new k(paramInputStream.getMessage());
+        throw new l(paramInputStream.getMessage());
       }
       int k = i | (m & 0x7F) << j;
       int i = k;
@@ -123,12 +84,12 @@ public abstract class b<MessageType extends q>
           {
             j = paramInputStream.read();
             if (j == -1) {
-              throw k.hJD();
+              throw l.iNV();
             }
           }
           else
           {
-            throw k.hJF();
+            throw l.iNX();
           }
         } while ((j & 0x80) != 0);
       }
@@ -137,7 +98,7 @@ public abstract class b<MessageType extends q>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     kotlin.l.b.a.b.h.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,100 +1,48 @@
 package com.tencent.smtt.sdk;
 
 import android.content.Context;
+import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.utils.c;
-import java.util.UnknownFormatConversionException;
+import java.io.File;
 
-public class e
+class e
 {
-  static int a = 5;
-  static int b = 16;
-  static char[] c = new char[16];
-  static String d = "dex2oat-cmdline";
-  static long e = 4096L;
-  
-  public static String a(Context paramContext, String paramString)
+  public static void a(Context paramContext, WebView paramWebView)
   {
-    boolean bool = true;
-    AppMethodBeat.i(188415);
-    paramContext = new c(paramString);
-    paramContext.a(c);
-    if (c[a] == '\001') {}
-    for (;;)
-    {
-      paramContext.a(bool);
-      paramContext.a(e);
-      paramContext = a(new String(a(paramContext)));
-      AppMethodBeat.o(188415);
-      return paramContext;
-      bool = false;
+    AppMethodBeat.i(193934);
+    WebSettings localWebSettings = paramWebView.getSettings();
+    localWebSettings.setJavaScriptEnabled(true);
+    localWebSettings.setAllowFileAccess(true);
+    localWebSettings.setAllowFileAccessFromFileURLs(false);
+    localWebSettings.setAllowUniversalAccessFromFileURLs(false);
+    localWebSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+    localWebSettings.setSupportZoom(true);
+    localWebSettings.setBuiltInZoomControls(true);
+    localWebSettings.setUseWideViewPort(true);
+    localWebSettings.setSupportMultipleWindows(false);
+    localWebSettings.setLoadWithOverviewMode(true);
+    localWebSettings.setAppCacheEnabled(true);
+    localWebSettings.setDatabaseEnabled(true);
+    localWebSettings.setDomStorageEnabled(true);
+    localWebSettings.setGeolocationEnabled(true);
+    localWebSettings.setAppCacheMaxSize(9223372036854775807L);
+    localWebSettings.setAppCachePath(paramContext.getDir("appcache", 0).getPath());
+    localWebSettings.setDatabasePath(paramContext.getDir("databases", 0).getPath());
+    localWebSettings.setGeolocationDatabasePath(paramContext.getDir("geolocation", 0).getPath());
+    localWebSettings.setPluginState(WebSettings.PluginState.ON_DEMAND);
+    localWebSettings.setRenderPriority(WebSettings.RenderPriority.HIGH);
+    if (Build.VERSION.SDK_INT >= 11) {
+      localWebSettings.setDisplayZoomControls(false);
     }
-  }
-  
-  private static String a(String paramString)
-  {
-    AppMethodBeat.i(188416);
-    paramString = paramString.split(new String(""));
-    int i = 0;
-    while (i < paramString.length)
-    {
-      int j = i + 1;
-      Object localObject = paramString[i];
-      i = j + 1;
-      String str = paramString[j];
-      if (localObject.equals(d))
-      {
-        AppMethodBeat.o(188416);
-        return str;
-      }
-    }
-    AppMethodBeat.o(188416);
-    return "";
-  }
-  
-  public static char[] a(c paramc)
-  {
-    AppMethodBeat.i(188417);
-    char[] arrayOfChar1 = new char[4];
-    char[] arrayOfChar2 = new char[4];
-    paramc.a(arrayOfChar1);
-    if ((arrayOfChar1[0] != 'o') || (arrayOfChar1[1] != 'a') || (arrayOfChar1[2] != 't'))
-    {
-      paramc = new UnknownFormatConversionException(String.format("Invalid art magic %c%c%c", new Object[] { Character.valueOf(arrayOfChar1[0]), Character.valueOf(arrayOfChar1[1]), Character.valueOf(arrayOfChar1[2]) }));
-      AppMethodBeat.o(188417);
-      throw paramc;
-    }
-    paramc.a(arrayOfChar2);
-    paramc.b();
-    paramc.b();
-    paramc.b();
-    paramc.b();
-    paramc.b();
-    paramc.b();
-    paramc.b();
-    paramc.b();
-    if (arrayOfChar2[1] <= '4')
-    {
-      paramc.b();
-      paramc.b();
-      paramc.b();
-    }
-    paramc.b();
-    paramc.b();
-    paramc.b();
-    paramc.b();
-    paramc.b();
-    paramc.b();
-    paramc.b();
-    arrayOfChar1 = new char[paramc.b()];
-    paramc.a(arrayOfChar1);
-    AppMethodBeat.o(188417);
-    return arrayOfChar1;
+    CookieSyncManager.createInstance(paramContext);
+    CookieSyncManager.getInstance().sync();
+    paramWebView.setDownloadListener(new e.1(paramContext));
+    AppMethodBeat.o(193934);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sdk.e
  * JD-Core Version:    0.7.0.1
  */

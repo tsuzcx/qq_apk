@@ -19,21 +19,21 @@ import android.os.Build.VERSION;
 import android.os.Process;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.model.z;
+import com.tencent.mm.network.a;
 import com.tencent.mm.network.af;
 import com.tencent.mm.network.v;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.comm.c.d;
+import com.tencent.mm.plugin.comm.c.h;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.widget.a.d;
 import com.tencent.mm.ui.widget.a.f.a;
 import com.tencent.mm.ui.widget.a.f.b;
 import java.util.ArrayList;
@@ -42,37 +42,37 @@ import java.util.List;
 public final class b
 {
   public static final String SOURCE_KEY;
-  private static char[] iNl;
-  private static String pdg;
+  private static char[] lDt;
+  private static String sfi;
   
   static
   {
     AppMethodBeat.i(151453);
     SOURCE_KEY = MMApplicationContext.getPackageName();
-    pdg = "";
-    iNl = new char[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
+    sfi = "";
+    lDt = new char[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
     AppMethodBeat.o(151453);
   }
   
-  public static void K(final Activity paramActivity)
+  public static void L(final Activity paramActivity)
   {
     AppMethodBeat.i(151441);
     if (!MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).getBoolean("no_more_show_add_short_cut_dialog", false))
     {
       f.a locala = new f.a(paramActivity);
-      locala.boz(paramActivity.getString(2131765866));
-      String str1 = paramActivity.getString(2131765868);
-      String str2 = paramActivity.getString(2131765865);
-      locala.aC(str1);
-      locala.bow(str2);
-      locala.apa(2131755874);
-      locala.JnN = true;
+      locala.bBo(paramActivity.getString(c.h.shortcut_permission_dialog_no_more_notify));
+      String str1 = paramActivity.getString(c.h.shortcut_permission_dialog_title_not_know_permission_status);
+      String str2 = paramActivity.getString(c.h.shortcut_permission_dialog_msg_unknown_permission_status);
+      locala.aR(str1);
+      locala.bBl(str2);
+      locala.ayp(c.h.app_i_known);
+      locala.Qlf = true;
       locala.a(new f.b()
       {
-        public final void D(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
+        public final void H(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
         {
           AppMethodBeat.i(151432);
-          this.pdh.kdo.dismiss();
+          this.sfj.mUO.dismiss();
           if (paramAnonymousBoolean2) {
             paramActivity.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).edit().putBoolean("no_more_show_add_short_cut_dialog", true).apply();
           }
@@ -84,15 +84,15 @@ public final class b
     AppMethodBeat.o(151441);
   }
   
-  public static int Q(as paramas)
+  public static int X(as paramas)
   {
     AppMethodBeat.i(151447);
-    if (paramas.gBM())
+    if (paramas.hxX())
     {
       AppMethodBeat.o(151447);
       return 2;
     }
-    if (!ab.JF(paramas.field_username))
+    if (!ab.QY(paramas.field_username))
     {
       AppMethodBeat.o(151447);
       return 1;
@@ -117,14 +117,14 @@ public final class b
       AppMethodBeat.o(151444);
       return null;
     }
-    as localas = ((l)g.af(l.class)).aSN().Kn(paramString1);
-    if ((localas == null) || ((int)localas.gMZ <= 0))
+    as localas = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG(paramString1);
+    if ((localas == null) || ((int)localas.jxt <= 0))
     {
       Log.e("MicroMsg.ShortcutManager", "no such user");
       AppMethodBeat.o(151444);
       return null;
     }
-    String str = agZ(paramString1);
+    String str = aoF(paramString1);
     Log.i("MicroMsg.ShortcutManager", "alvinluo encryptShortcutUser: %s", new Object[] { str });
     if (Util.isNullOrNil(str))
     {
@@ -141,14 +141,14 @@ public final class b
     for (paramContext = "com.android.launcher.action.INSTALL_SHORTCUT";; paramContext = "com.android.launcher.action.UNINSTALL_SHORTCUT")
     {
       paramContext = new Intent(paramContext);
-      paramContext.putExtra("android.intent.extra.shortcut.NAME", ((com.tencent.mm.plugin.messenger.a.b)g.af(com.tencent.mm.plugin.messenger.a.b.class)).b(localas, paramString1));
+      paramContext.putExtra("android.intent.extra.shortcut.NAME", ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.a.b.class)).b(localas, paramString1));
       paramContext.putExtra("duplicate", false);
       paramContext.putExtra("android.intent.extra.shortcut.INTENT", localIntent);
       paramContext.putExtra("android.intent.extra.shortcut.ICON", localBitmap);
       paramContext.putExtra("com.tencent.qlauncher.extra.EXTRA_PUSH_ITEM_SOURCE_KEY", SOURCE_KEY);
-      paramContext.putExtra("com.tencent.qlauncher.extra.EXTRA_PUSH_ITEM_OWNER_ID", agZ(paramString2));
+      paramContext.putExtra("com.tencent.qlauncher.extra.EXTRA_PUSH_ITEM_OWNER_ID", aoF(paramString2));
       paramContext.putExtra("com.tencent.qlauncher.extra.EXTRA_PUSH_ITEM_UNIQUE_ID", str);
-      paramContext.putExtra("com.tencent.qlauncher.extra.EXTRA_PUSH_ITEM_TYPE", Q(localas));
+      paramContext.putExtra("com.tencent.qlauncher.extra.EXTRA_PUSH_ITEM_TYPE", X(localas));
       paramContext.putExtra("com.tencent.qlauncher.extra.EXTRA_PUSH_ITEM_CONTAINER", 0);
       AppMethodBeat.o(151444);
       return paramContext;
@@ -205,7 +205,54 @@ public final class b
     AppMethodBeat.o(151435);
   }
   
-  public static String agY(String paramString)
+  public static boolean ah(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(151433);
+    sfi = z.bcZ();
+    paramString = a(paramContext, paramString, true, sfi);
+    Intent localIntent = (Intent)paramString.getParcelableExtra("android.intent.extra.shortcut.INTENT");
+    if (localIntent == null)
+    {
+      AppMethodBeat.o(151433);
+      return false;
+    }
+    a(paramContext, paramString, localIntent.getStringExtra("app_shortcut_custom_id"), true);
+    AppMethodBeat.o(151433);
+    return true;
+  }
+  
+  public static boolean ai(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(151442);
+    sfi = z.bcZ();
+    p(paramContext, a(paramContext, paramString, false, sfi));
+    AppMethodBeat.o(151442);
+    return true;
+  }
+  
+  private static Bitmap aj(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(151446);
+    int i = (int)(paramContext.getResources().getDisplayMetrics().density * 48.0F);
+    paramString = com.tencent.mm.am.d.a(paramString, false, -1, null);
+    paramContext = paramString;
+    if (paramString == null)
+    {
+      Log.e("MicroMsg.ShortcutManager", "getScaledBitmap fail, bmp is null");
+      paramContext = BitmapUtil.getBitmapNative(c.d.default_avatar);
+    }
+    if (paramContext == null)
+    {
+      Log.e("MicroMsg.ShortcutManager", "use default avatar, bmp is null");
+      AppMethodBeat.o(151446);
+      return null;
+    }
+    paramContext = Bitmap.createScaledBitmap(paramContext, i, i, false);
+    AppMethodBeat.o(151446);
+    return paramContext;
+  }
+  
+  public static String aoE(String paramString)
   {
     AppMethodBeat.i(151449);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -220,17 +267,17 @@ public final class b
     {
       if (str2.equals(str1))
       {
-        boolean bool = g.aAf().azp();
+        boolean bool = com.tencent.mm.kernel.h.aHE().aGM();
         if (!bool)
         {
           AppMethodBeat.o(151449);
           return null;
         }
-        g.aAf();
+        com.tencent.mm.kernel.h.aHE();
       }
-      for (int i = com.tencent.mm.kernel.a.getUin(); paramString.startsWith("shortcut_"); i = af.bkl().jEj.getUin())
+      for (int i = com.tencent.mm.kernel.b.getUin(); paramString.startsWith("shortcut_"); i = af.btU().muM.getUin())
       {
-        paramString = eW(new String(aha(paramString.substring(9))), String.valueOf(i));
+        paramString = fk(new String(aoG(paramString.substring(9))), String.valueOf(i));
         AppMethodBeat.o(151449);
         return paramString;
       }
@@ -245,7 +292,7 @@ public final class b
     return paramString;
   }
   
-  public static String agZ(String paramString)
+  public static String aoF(String paramString)
   {
     AppMethodBeat.i(151450);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -255,7 +302,7 @@ public final class b
     }
     Object localObject = Util.getProcessNameByPid(MMApplicationContext.getContext(), Process.myPid());
     String str = MMApplicationContext.getPackageName();
-    if ((str.equals(localObject)) && (!g.aAf().azp()))
+    if ((str.equals(localObject)) && (!com.tencent.mm.kernel.h.aHE().aGM()))
     {
       AppMethodBeat.o(151450);
       return null;
@@ -266,9 +313,9 @@ public final class b
       if (str.equals(localObject))
       {
         localObject = new StringBuilder();
-        g.aAf();
+        com.tencent.mm.kernel.h.aHE();
       }
-      for (paramString = eW(paramString, com.tencent.mm.kernel.a.getUin()); Util.isNullOrNil(paramString); paramString = eW(paramString, af.bkl().jEj.getUin()))
+      for (paramString = fk(paramString, com.tencent.mm.kernel.b.getUin()); Util.isNullOrNil(paramString); paramString = fk(paramString, af.btU().muM.getUin()))
       {
         AppMethodBeat.o(151450);
         return null;
@@ -285,23 +332,7 @@ public final class b
     return paramString;
   }
   
-  public static boolean ah(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(151433);
-    pdg = z.aTY();
-    paramString = a(paramContext, paramString, true, pdg);
-    Intent localIntent = (Intent)paramString.getParcelableExtra("android.intent.extra.shortcut.INTENT");
-    if (localIntent == null)
-    {
-      AppMethodBeat.o(151433);
-      return false;
-    }
-    a(paramContext, paramString, localIntent.getStringExtra("app_shortcut_custom_id"), true);
-    AppMethodBeat.o(151433);
-    return true;
-  }
-  
-  public static final byte[] aha(String paramString)
+  public static final byte[] aoG(String paramString)
   {
     AppMethodBeat.i(151452);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -318,37 +349,6 @@ public final class b
     }
     AppMethodBeat.o(151452);
     return arrayOfByte;
-  }
-  
-  public static boolean ai(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(151442);
-    pdg = z.aTY();
-    q(paramContext, a(paramContext, paramString, false, pdg));
-    AppMethodBeat.o(151442);
-    return true;
-  }
-  
-  private static Bitmap aj(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(151446);
-    int i = (int)(paramContext.getResources().getDisplayMetrics().density * 48.0F);
-    paramString = com.tencent.mm.aj.c.a(paramString, false, -1, null);
-    paramContext = paramString;
-    if (paramString == null)
-    {
-      Log.e("MicroMsg.ShortcutManager", "getScaledBitmap fail, bmp is null");
-      paramContext = BitmapUtil.getBitmapNative(2131231957);
-    }
-    if (paramContext == null)
-    {
-      Log.e("MicroMsg.ShortcutManager", "use default avatar, bmp is null");
-      AppMethodBeat.o(151446);
-      return null;
-    }
-    paramContext = Bitmap.createScaledBitmap(paramContext, i, i, false);
-    AppMethodBeat.o(151446);
-    return paramContext;
   }
   
   @TargetApi(26)
@@ -435,7 +435,7 @@ public final class b
         }
         List localList = localShortcutManager.getPinnedShortcuts();
         j = 0;
-        label416:
+        label418:
         ShortcutInfo localShortcutInfo2;
         if (j < localList.size())
         {
@@ -443,7 +443,7 @@ public final class b
           if (i != 0)
           {
             if ((localShortcutInfo2 == null) || (localShortcutInfo2.getShortLabel() == null) || (!localShortcutInfo2.getShortLabel().equals(str))) {
-              break label627;
+              break label629;
             }
             i = 0;
             bool1 = true;
@@ -451,7 +451,7 @@ public final class b
         }
         for (;;)
         {
-          label479:
+          label481:
           Log.i("MicroMsg.ShortcutManager", "alvinluo shortcut exist: %b, shortcutName: %s", new Object[] { Boolean.valueOf(bool1), str });
           if (i != 0) {}
           for (paramIntent = a(paramContext, paramString2, paramIntent, localIntent, bool2, (Bitmap)localObject);; paramIntent = localShortcutInfo1)
@@ -467,17 +467,17 @@ public final class b
               {
                 i = 1;
                 bool1 = true;
-                break label479;
+                break label481;
               }
               if ((localShortcutInfo2 != null) && (localShortcutInfo2.getId().equals(paramString1)))
               {
                 i = 0;
                 bool1 = true;
-                break label479;
+                break label481;
               }
-              label627:
+              label629:
               j += 1;
-              break label416;
+              break label418;
             }
             if (paramBoolean)
             {
@@ -516,15 +516,15 @@ public final class b
       }
     }
     label35:
-    for (String str = paramContext.getString(2131755310);; str = paramContext.getString(2131755308))
+    for (String str = paramContext.getString(c.h.app_added);; str = paramContext.getString(c.h.app_add_failed))
     {
-      h.cD(paramContext, str);
+      com.tencent.mm.ui.base.h.cO(paramContext, str);
       AppMethodBeat.o(151440);
       return;
     }
   }
   
-  public static String eW(String paramString1, String paramString2)
+  public static String fk(String paramString1, String paramString2)
   {
     AppMethodBeat.i(151448);
     int[] arrayOfInt;
@@ -594,21 +594,21 @@ public final class b
     }
   }
   
-  public static void o(Context paramContext, Intent paramIntent)
+  public static void n(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(151434);
     a(paramContext, paramIntent, null, true);
     AppMethodBeat.o(151434);
   }
   
-  public static void p(Context paramContext, Intent paramIntent)
+  public static void o(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(151437);
     a(paramContext, paramIntent, null, false);
     AppMethodBeat.o(151437);
   }
   
-  public static boolean q(Context paramContext, Intent paramIntent)
+  public static boolean p(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(151443);
     if (paramContext == null)
@@ -645,8 +645,8 @@ public final class b
     int i = 0;
     while (i < paramArrayOfByte.length)
     {
-      localStringBuilder.append(iNl[((paramArrayOfByte[i] & 0xF0) >>> 4)]);
-      localStringBuilder.append(iNl[(paramArrayOfByte[i] & 0xF)]);
+      localStringBuilder.append(lDt[((paramArrayOfByte[i] & 0xF0) >>> 4)]);
+      localStringBuilder.append(lDt[(paramArrayOfByte[i] & 0xF)]);
       i += 1;
     }
     paramArrayOfByte = localStringBuilder.toString();
@@ -656,7 +656,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.base.model.b
  * JD-Core Version:    0.7.0.1
  */

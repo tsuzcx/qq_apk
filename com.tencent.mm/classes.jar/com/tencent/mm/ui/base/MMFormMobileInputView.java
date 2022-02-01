@@ -12,25 +12,28 @@ import android.view.View.OnFocusChangeListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.a.a;
+import com.tencent.mm.ah.a.f;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.ah.a.m;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.PhoneFormater;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.aa;
+import com.tencent.mm.ui.ad;
 import com.tencent.mm.ui.widget.MMEditText.c;
 
 public class MMFormMobileInputView
   extends LinearLayout
 {
-  private EditText OQd;
-  private EditText OQe;
-  private String OQf;
-  private String OQg;
-  private final int OQh;
-  private a OQi;
+  private EditText Wjk;
+  private EditText Wjl;
+  private String Wjm;
+  private String Wjn;
+  private final int Wjo;
+  private a Wjp;
   private Context mContext;
-  private int nBG;
-  private int[] nBK;
+  private int qDR;
+  private int[] qDV;
   
   public MMFormMobileInputView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -43,67 +46,67 @@ public class MMFormMobileInputView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(141915);
     this.mContext = null;
-    this.nBG = -1;
-    this.OQf = "";
-    this.OQg = "";
-    this.OQh = 13;
-    this.OQi = null;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.FormItemView, paramInt, 0);
-    this.nBG = paramAttributeSet.getResourceId(1, -1);
+    this.qDR = -1;
+    this.Wjm = "";
+    this.Wjn = "";
+    this.Wjo = 13;
+    this.Wjp = null;
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.FormItemView, paramInt, 0);
+    this.qDR = paramAttributeSet.getResourceId(a.m.FormItemView_form_hint, -1);
     paramAttributeSet.recycle();
-    aa.jQ(paramContext).inflate(2131495528, this);
+    ad.kS(paramContext).inflate(a.h.mm_form_mobile_input_view, this);
     this.mContext = paramContext;
     AppMethodBeat.o(141915);
   }
   
-  private void gx(View paramView)
+  private void hI(View paramView)
   {
     AppMethodBeat.i(141918);
-    this.nBK = new int[] { paramView.getPaddingLeft(), paramView.getPaddingTop(), paramView.getPaddingRight(), paramView.getPaddingBottom() };
+    this.qDV = new int[] { paramView.getPaddingLeft(), paramView.getPaddingTop(), paramView.getPaddingRight(), paramView.getPaddingBottom() };
     AppMethodBeat.o(141918);
   }
   
-  private void gy(View paramView)
+  private void hJ(View paramView)
   {
     AppMethodBeat.i(141919);
-    if (this.nBK != null) {
-      paramView.setPadding(this.nBK[0], this.nBK[1], this.nBK[2], this.nBK[3]);
+    if (this.qDV != null) {
+      paramView.setPadding(this.qDV[0], this.qDV[1], this.qDV[2], this.qDV[3]);
     }
     AppMethodBeat.o(141919);
   }
   
-  public final void Bv(boolean paramBoolean)
+  public final void FN(boolean paramBoolean)
   {
     AppMethodBeat.i(141917);
-    gx(this.OQd);
+    hI(this.Wjk);
     if (paramBoolean)
     {
-      this.OQd.setBackgroundResource(2131233162);
-      gy(this.OQd);
-      gx(this.OQe);
+      this.Wjk.setBackgroundResource(a.f.input_bar_bg_active);
+      hJ(this.Wjk);
+      hI(this.Wjl);
       if (!paramBoolean) {
-        break label81;
+        break label84;
       }
-      this.OQe.setBackgroundResource(2131233162);
+      this.Wjl.setBackgroundResource(a.f.input_bar_bg_active);
     }
     for (;;)
     {
-      gy(this.OQe);
+      hJ(this.Wjl);
       AppMethodBeat.o(141917);
       return;
-      this.OQd.setBackgroundResource(2131233163);
+      this.Wjk.setBackgroundResource(a.f.input_bar_bg_normal);
       break;
-      label81:
-      this.OQe.setBackgroundResource(2131233163);
+      label84:
+      this.Wjl.setBackgroundResource(a.f.input_bar_bg_normal);
     }
   }
   
   public String getCountryCode()
   {
     AppMethodBeat.i(141924);
-    if (this.OQd != null)
+    if (this.Wjk != null)
     {
-      String str = this.OQd.getText().toString().trim();
+      String str = this.Wjk.getText().toString().trim();
       AppMethodBeat.o(141924);
       return str;
     }
@@ -113,15 +116,15 @@ public class MMFormMobileInputView
   
   public EditText getCountryCodeEditText()
   {
-    return this.OQd;
+    return this.Wjk;
   }
   
   public String getMobileNumber()
   {
     AppMethodBeat.i(141923);
-    if (this.OQe != null)
+    if (this.Wjl != null)
     {
-      String str = PhoneFormater.pureNumber(this.OQe.getText().toString());
+      String str = PhoneFormater.pureNumber(this.Wjl.getText().toString());
       AppMethodBeat.o(141923);
       return str;
     }
@@ -131,23 +134,23 @@ public class MMFormMobileInputView
   
   public EditText getMobileNumberEditText()
   {
-    return this.OQe;
+    return this.Wjl;
   }
   
   public void onFinishInflate()
   {
     AppMethodBeat.i(141916);
-    this.OQd = ((EditText)findViewById(2131299266));
-    this.OQe = ((EditText)findViewById(2131304759));
-    if ((this.OQd == null) || (this.OQe == null))
+    this.Wjk = ((EditText)findViewById(a.g.country_code));
+    this.Wjl = ((EditText)findViewById(a.g.mobile_number));
+    if ((this.Wjk == null) || (this.Wjl == null))
     {
-      Log.w("MicroMsg.MMFormMobileInputView", "countryCodeET : %s, mobileNumberET : %s", new Object[] { this.OQd, this.OQe });
-      if ((this.OQd != null) && (this.OQe != null))
+      Log.w("MicroMsg.MMFormMobileInputView", "countryCodeET : %s, mobileNumberET : %s", new Object[] { this.Wjk, this.Wjl });
+      if ((this.Wjk != null) && (this.Wjl != null))
       {
-        if ((!this.OQd.hasFocus()) && (!this.OQe.hasFocus())) {
-          break label213;
+        if ((!this.Wjk.hasFocus()) && (!this.Wjl.hasFocus())) {
+          break label215;
         }
-        Bv(true);
+        FN(true);
       }
     }
     for (;;)
@@ -158,17 +161,17 @@ public class MMFormMobileInputView
         {
           AppMethodBeat.i(141911);
           if ((paramAnonymousView == MMFormMobileInputView.a(MMFormMobileInputView.this)) || (paramAnonymousView == MMFormMobileInputView.b(MMFormMobileInputView.this))) {
-            MMFormMobileInputView.this.Bv(paramAnonymousBoolean);
+            MMFormMobileInputView.this.FN(paramAnonymousBoolean);
           }
           AppMethodBeat.o(141911);
         }
       };
-      this.OQd.setOnFocusChangeListener(local1);
-      this.OQe.setOnFocusChangeListener(local1);
-      this.OQe.addTextChangedListener(new MMEditText.c(this.OQe, null, 20));
-      this.OQe.addTextChangedListener(new TextWatcher()
+      this.Wjk.setOnFocusChangeListener(local1);
+      this.Wjl.setOnFocusChangeListener(local1);
+      this.Wjl.addTextChangedListener(new MMEditText.c(this.Wjl, null, 20));
+      this.Wjl.addTextChangedListener(new TextWatcher()
       {
-        private PhoneFormater kqv;
+        private PhoneFormater nii;
         
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
@@ -179,8 +182,8 @@ public class MMFormMobileInputView
           if ((paramAnonymousEditable != null) && (!paramAnonymousEditable.equals(MMFormMobileInputView.c(MMFormMobileInputView.this))))
           {
             String str2 = MMFormMobileInputView.a(MMFormMobileInputView.this).getText().toString();
-            MMFormMobileInputView.a(MMFormMobileInputView.this, this.kqv.formatNumber(str2.replace("+", ""), paramAnonymousEditable));
-            MMFormMobileInputView.b(MMFormMobileInputView.this, this.kqv.formatNumber(str2.replace("+", ""), str1));
+            MMFormMobileInputView.a(MMFormMobileInputView.this, this.nii.formatNumber(str2.replace("+", ""), paramAnonymousEditable));
+            MMFormMobileInputView.b(MMFormMobileInputView.this, this.nii.formatNumber(str2.replace("+", ""), str1));
             if (paramAnonymousEditable.equals(MMFormMobileInputView.c(MMFormMobileInputView.this)))
             {
               AppMethodBeat.o(141913);
@@ -193,7 +196,7 @@ public class MMFormMobileInputView
             }
             try
             {
-              MMFormMobileInputView.b(MMFormMobileInputView.this, this.kqv.formatNumber(str2.replace("+", ""), str1));
+              MMFormMobileInputView.b(MMFormMobileInputView.this, this.nii.formatNumber(str2.replace("+", ""), str1));
               if ((paramAnonymousEditable.length() > 13) && (i <= j)) {
                 break label330;
               }
@@ -231,7 +234,7 @@ public class MMFormMobileInputView
         
         public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       });
-      this.OQd.addTextChangedListener(new TextWatcher()
+      this.Wjk.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
@@ -273,22 +276,22 @@ public class MMFormMobileInputView
       });
       AppMethodBeat.o(141916);
       return;
-      if (this.nBG == -1) {
+      if (this.qDR == -1) {
         break;
       }
-      this.OQe.setHint(this.nBG);
+      this.Wjl.setHint(this.qDR);
       break;
-      label213:
-      Bv(false);
+      label215:
+      FN(false);
     }
   }
   
   public void setCountryCode(String paramString)
   {
     AppMethodBeat.i(141920);
-    if (this.OQd != null)
+    if (this.Wjk != null)
     {
-      this.OQd.setText(paramString);
+      this.Wjk.setText(paramString);
       AppMethodBeat.o(141920);
       return;
     }
@@ -299,9 +302,9 @@ public class MMFormMobileInputView
   public void setHint(String paramString)
   {
     AppMethodBeat.i(141921);
-    if (this.OQe != null)
+    if (this.Wjl != null)
     {
-      this.OQe.setHint(paramString);
+      this.Wjl.setHint(paramString);
       AppMethodBeat.o(141921);
       return;
     }
@@ -312,9 +315,9 @@ public class MMFormMobileInputView
   public void setMobileNumber(String paramString)
   {
     AppMethodBeat.i(141922);
-    if (this.OQe != null)
+    if (this.Wjl != null)
     {
-      this.OQe.setText(paramString);
+      this.Wjl.setText(paramString);
       AppMethodBeat.o(141922);
       return;
     }
@@ -324,14 +327,14 @@ public class MMFormMobileInputView
   
   public void setOnCountryCodeChangedListener(a parama)
   {
-    this.OQi = parama;
+    this.Wjp = parama;
   }
   
   public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMFormMobileInputView
  * JD-Core Version:    0.7.0.1
  */

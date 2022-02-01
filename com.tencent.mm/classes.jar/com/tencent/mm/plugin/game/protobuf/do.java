@@ -4,101 +4,79 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import g.a.a.b;
 
 public final class do
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String Desc;
-  public String Title;
-  public String jfi;
-  public String xIx;
-  public String xIy;
-  public String xJt;
-  public String xMq;
+  public int CRl;
+  public long CRm;
+  public String CRn;
+  public boolean CRo;
+  public int CRp;
+  public String CRq;
+  public String UserName;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41829);
+    AppMethodBeat.i(41828);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.xMq == null)
+      if (this.UserName == null)
       {
-        paramVarArgs = new b("Not all required fields were included: AppName");
-        AppMethodBeat.o(41829);
+        paramVarArgs = new b("Not all required fields were included: UserName");
+        AppMethodBeat.o(41828);
         throw paramVarArgs;
       }
-      if (this.xMq != null) {
-        paramVarArgs.e(1, this.xMq);
+      if (this.UserName != null) {
+        paramVarArgs.f(1, this.UserName);
       }
-      if (this.xIx != null) {
-        paramVarArgs.e(2, this.xIx);
+      paramVarArgs.aY(2, this.CRl);
+      paramVarArgs.bm(3, this.CRm);
+      if (this.CRn != null) {
+        paramVarArgs.f(4, this.CRn);
       }
-      if (this.Title != null) {
-        paramVarArgs.e(3, this.Title);
+      paramVarArgs.co(5, this.CRo);
+      paramVarArgs.aY(6, this.CRp);
+      if (this.CRq != null) {
+        paramVarArgs.f(7, this.CRq);
       }
-      if (this.Desc != null) {
-        paramVarArgs.e(4, this.Desc);
-      }
-      if (this.xJt != null) {
-        paramVarArgs.e(5, this.xJt);
-      }
-      if (this.xIy != null) {
-        paramVarArgs.e(6, this.xIy);
-      }
-      if (this.jfi != null) {
-        paramVarArgs.e(7, this.jfi);
-      }
-      AppMethodBeat.o(41829);
+      AppMethodBeat.o(41828);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.xMq == null) {
-        break label626;
+      if (this.UserName == null) {
+        break label558;
       }
     }
-    label626:
-    for (int i = g.a.a.b.b.a.f(1, this.xMq) + 0;; i = 0)
+    label558:
+    for (paramInt = g.a.a.b.b.a.g(1, this.UserName) + 0;; paramInt = 0)
     {
+      int i = paramInt + g.a.a.b.b.a.bM(2, this.CRl) + g.a.a.b.b.a.p(3, this.CRm);
       paramInt = i;
-      if (this.xIx != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.xIx);
+      if (this.CRn != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.CRn);
       }
-      i = paramInt;
-      if (this.Title != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.Title);
-      }
+      i = paramInt + (g.a.a.b.b.a.gL(5) + 1) + g.a.a.b.b.a.bM(6, this.CRp);
       paramInt = i;
-      if (this.Desc != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.Desc);
+      if (this.CRq != null) {
+        paramInt = i + g.a.a.b.b.a.g(7, this.CRq);
       }
-      i = paramInt;
-      if (this.xJt != null) {
-        i = paramInt + g.a.a.b.b.a.f(5, this.xJt);
-      }
-      paramInt = i;
-      if (this.xIy != null) {
-        paramInt = i + g.a.a.b.b.a.f(6, this.xIy);
-      }
-      i = paramInt;
-      if (this.jfi != null) {
-        i = paramInt + g.a.a.b.b.a.f(7, this.jfi);
-      }
-      AppMethodBeat.o(41829);
-      return i;
+      AppMethodBeat.o(41828);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.xMq == null)
+        if (this.UserName == null)
         {
-          paramVarArgs = new b("Not all required fields were included: AppName");
-          AppMethodBeat.o(41829);
+          paramVarArgs = new b("Not all required fields were included: UserName");
+          AppMethodBeat.o(41828);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(41829);
+        AppMethodBeat.o(41828);
         return 0;
       }
       if (paramInt == 3)
@@ -108,45 +86,45 @@ public final class do
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(41829);
+          AppMethodBeat.o(41828);
           return -1;
         case 1: 
-          localdo.xMq = locala.UbS.readString();
-          AppMethodBeat.o(41829);
+          localdo.UserName = locala.abFh.readString();
+          AppMethodBeat.o(41828);
           return 0;
         case 2: 
-          localdo.xIx = locala.UbS.readString();
-          AppMethodBeat.o(41829);
+          localdo.CRl = locala.abFh.AK();
+          AppMethodBeat.o(41828);
           return 0;
         case 3: 
-          localdo.Title = locala.UbS.readString();
-          AppMethodBeat.o(41829);
+          localdo.CRm = locala.abFh.AN();
+          AppMethodBeat.o(41828);
           return 0;
         case 4: 
-          localdo.Desc = locala.UbS.readString();
-          AppMethodBeat.o(41829);
+          localdo.CRn = locala.abFh.readString();
+          AppMethodBeat.o(41828);
           return 0;
         case 5: 
-          localdo.xJt = locala.UbS.readString();
-          AppMethodBeat.o(41829);
+          localdo.CRo = locala.abFh.AB();
+          AppMethodBeat.o(41828);
           return 0;
         case 6: 
-          localdo.xIy = locala.UbS.readString();
-          AppMethodBeat.o(41829);
+          localdo.CRp = locala.abFh.AK();
+          AppMethodBeat.o(41828);
           return 0;
         }
-        localdo.jfi = locala.UbS.readString();
-        AppMethodBeat.o(41829);
+        localdo.CRq = locala.abFh.readString();
+        AppMethodBeat.o(41828);
         return 0;
       }
-      AppMethodBeat.o(41829);
+      AppMethodBeat.o(41828);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.do
  * JD-Core Version:    0.7.0.1
  */

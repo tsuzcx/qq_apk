@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.account.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.lx;
-import com.tencent.mm.protocal.protobuf.ly;
+import com.tencent.mm.protocal.protobuf.ln;
+import com.tencent.mm.protocal.protobuf.lo;
 
 public final class e
   extends q
   implements m
 {
-  public static int kir = 1;
-  public static int kis = 2;
+  public static int mZR = 1;
+  public static int mZS = 2;
   private i callback;
   private d rr;
   
@@ -25,22 +25,25 @@ public final class e
   {
     AppMethodBeat.i(127829);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new lx();
-    ((d.a)localObject).iLO = new ly();
+    ((d.a)localObject).lBU = new ln();
+    ((d.a)localObject).lBV = new lo();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/bindemail";
     ((d.a)localObject).funcId = 256;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (lx)this.rr.iLK.iLR;
-    ((lx)localObject).OpCode = paramInt;
-    ((lx)localObject).KPz = paramString;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (ln)d.b.b(this.rr.lBR);
+    ((ln)localObject).RLe = paramInt;
+    ((ln)localObject).RQx = paramString;
     AppMethodBeat.o(127829);
   }
   
-  public final int Vj()
+  public final int ZB()
   {
-    return ((lx)this.rr.iLK.iLR).OpCode;
+    AppMethodBeat.i(220049);
+    int i = ((ln)d.b.b(this.rr.lBR)).RLe;
+    AppMethodBeat.o(220049);
+    return i;
   }
   
   public final int doScene(g paramg, i parami)

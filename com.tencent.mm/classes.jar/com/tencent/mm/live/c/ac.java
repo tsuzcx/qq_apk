@@ -8,7 +8,11 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.live.api.LiveConfig;
-import com.tencent.mm.live.b.o.b;
+import com.tencent.mm.live.b.d;
+import com.tencent.mm.live.b.e;
+import com.tencent.mm.live.b.l.b;
+import com.tencent.mm.live.core.core.a.b.b;
+import com.tencent.mm.live.core.core.c.c.a;
 import com.tencent.mm.live.d.f;
 import com.tencent.mm.particles.d;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -17,157 +21,157 @@ import kotlin.g.b.p;
 import kotlin.j.c.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/plugin/LiveLikeConfettiPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "TAG", "", "confettiBitmaps", "Ljava/util/ArrayList;", "Landroid/graphics/Bitmap;", "Lkotlin/collections/ArrayList;", "confettiManager", "Lcom/tencent/mm/particles/ConfettiManager;", "confettiRoot", "Landroid/widget/FrameLayout;", "kotlin.jvm.PlatformType", "emitLikeConfetti", "", "x", "", "y", "setupConfig", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/plugin/LiveLikeConfettiPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "TAG", "", "confettiBitmaps", "Ljava/util/ArrayList;", "Landroid/graphics/Bitmap;", "Lkotlin/collections/ArrayList;", "confettiManager", "Lcom/tencent/mm/particles/ConfettiManager;", "confettiRoot", "Landroid/widget/FrameLayout;", "kotlin.jvm.PlatformType", "emitLikeConfetti", "", "x", "", "y", "setupConfig", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
 public final class ac
   extends a
 {
   private final String TAG;
-  private final b hOp;
-  private final FrameLayout hRf;
-  private com.tencent.mm.particles.c hRg;
-  private final ArrayList<Bitmap> hRh;
+  private final b kCL;
+  private final FrameLayout kFC;
+  private com.tencent.mm.particles.c kFD;
+  private final ArrayList<Bitmap> kFE;
   
   public ac(ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(208080);
-    this.hOp = paramb;
+    AppMethodBeat.i(200927);
+    this.kCL = paramb;
     this.TAG = "MicroMsg.LiveLikeConfettiPlugin";
-    this.hRf = ((FrameLayout)paramViewGroup.findViewById(2131303420));
-    this.hRh = new ArrayList();
-    AppMethodBeat.o(208080);
+    this.kFC = ((FrameLayout)paramViewGroup.findViewById(b.e.live_like_confetti_ui_root));
+    this.kFE = new ArrayList();
+    AppMethodBeat.o(200927);
   }
   
   public final void a(LiveConfig paramLiveConfig)
   {
-    AppMethodBeat.i(208078);
-    p.h(paramLiveConfig, "config");
-    paramLiveConfig = com.tencent.mm.live.core.core.a.b.hyv;
+    AppMethodBeat.i(200909);
+    p.k(paramLiveConfig, "config");
+    paramLiveConfig = com.tencent.mm.live.core.core.a.b.klq;
     Object localObject1;
     int i;
     Object localObject2;
     Object localObject3;
     Object localObject4;
     Object localObject5;
-    o.b localb;
-    if (com.tencent.mm.live.core.core.a.b.a.aDp())
+    l.b localb;
+    if (b.b.aLi())
     {
-      paramLiveConfig = this.hwr.getContext();
-      p.g(paramLiveConfig, "root.context");
-      paramLiveConfig = BitmapFactory.decodeResource(paramLiveConfig.getResources(), 2131233355);
-      localObject1 = o.b.hGo;
-      i = o.b.aFl();
-      localObject1 = o.b.hGo;
-      paramLiveConfig = Bitmap.createScaledBitmap(paramLiveConfig, i, o.b.aFl(), true);
-      localObject1 = this.hwr.getContext();
-      p.g(localObject1, "root.context");
-      localObject1 = BitmapFactory.decodeResource(((Context)localObject1).getResources(), 2131233356);
-      localObject2 = o.b.hGo;
-      i = o.b.aFl();
-      localObject2 = o.b.hGo;
-      localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject1, i, o.b.aFl(), true);
-      localObject2 = this.hwr.getContext();
-      p.g(localObject2, "root.context");
-      localObject2 = BitmapFactory.decodeResource(((Context)localObject2).getResources(), 2131233357);
-      localObject3 = o.b.hGo;
-      i = o.b.aFl();
-      localObject3 = o.b.hGo;
-      localObject2 = Bitmap.createScaledBitmap((Bitmap)localObject2, i, o.b.aFl(), true);
-      localObject3 = this.hwr.getContext();
-      p.g(localObject3, "root.context");
-      localObject3 = BitmapFactory.decodeResource(((Context)localObject3).getResources(), 2131233358);
-      localObject4 = o.b.hGo;
-      i = o.b.aFl();
-      localObject4 = o.b.hGo;
-      localObject3 = Bitmap.createScaledBitmap((Bitmap)localObject3, i, o.b.aFl(), true);
-      localObject4 = this.hwr.getContext();
-      p.g(localObject4, "root.context");
-      localObject4 = BitmapFactory.decodeResource(((Context)localObject4).getResources(), 2131233359);
-      localObject5 = o.b.hGo;
-      i = o.b.aFl();
-      localObject5 = o.b.hGo;
-      localObject4 = Bitmap.createScaledBitmap((Bitmap)localObject4, i, o.b.aFl(), true);
-      localObject5 = this.hwr.getContext();
-      p.g(localObject5, "root.context");
-      localObject5 = BitmapFactory.decodeResource(((Context)localObject5).getResources(), 2131233360);
-      localb = o.b.hGo;
-      i = o.b.aFl();
-      localb = o.b.hGo;
-      localObject5 = Bitmap.createScaledBitmap((Bitmap)localObject5, i, o.b.aFl(), true);
-      this.hRh.add(paramLiveConfig);
-      this.hRh.add(localObject1);
-      this.hRh.add(localObject2);
-      this.hRh.add(localObject3);
-      this.hRh.add(localObject4);
-      this.hRh.add(localObject5);
-      AppMethodBeat.o(208078);
+      paramLiveConfig = this.kiF.getContext();
+      p.j(paramLiveConfig, "root.context");
+      paramLiveConfig = BitmapFactory.decodeResource(paramLiveConfig.getResources(), b.d.live_like_icon1);
+      localObject1 = l.b.kum;
+      i = l.b.aNC();
+      localObject1 = l.b.kum;
+      paramLiveConfig = Bitmap.createScaledBitmap(paramLiveConfig, i, l.b.aNC(), true);
+      localObject1 = this.kiF.getContext();
+      p.j(localObject1, "root.context");
+      localObject1 = BitmapFactory.decodeResource(((Context)localObject1).getResources(), b.d.live_like_icon2);
+      localObject2 = l.b.kum;
+      i = l.b.aNC();
+      localObject2 = l.b.kum;
+      localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject1, i, l.b.aNC(), true);
+      localObject2 = this.kiF.getContext();
+      p.j(localObject2, "root.context");
+      localObject2 = BitmapFactory.decodeResource(((Context)localObject2).getResources(), b.d.live_like_icon3);
+      localObject3 = l.b.kum;
+      i = l.b.aNC();
+      localObject3 = l.b.kum;
+      localObject2 = Bitmap.createScaledBitmap((Bitmap)localObject2, i, l.b.aNC(), true);
+      localObject3 = this.kiF.getContext();
+      p.j(localObject3, "root.context");
+      localObject3 = BitmapFactory.decodeResource(((Context)localObject3).getResources(), b.d.live_like_icon4);
+      localObject4 = l.b.kum;
+      i = l.b.aNC();
+      localObject4 = l.b.kum;
+      localObject3 = Bitmap.createScaledBitmap((Bitmap)localObject3, i, l.b.aNC(), true);
+      localObject4 = this.kiF.getContext();
+      p.j(localObject4, "root.context");
+      localObject4 = BitmapFactory.decodeResource(((Context)localObject4).getResources(), b.d.live_like_icon5);
+      localObject5 = l.b.kum;
+      i = l.b.aNC();
+      localObject5 = l.b.kum;
+      localObject4 = Bitmap.createScaledBitmap((Bitmap)localObject4, i, l.b.aNC(), true);
+      localObject5 = this.kiF.getContext();
+      p.j(localObject5, "root.context");
+      localObject5 = BitmapFactory.decodeResource(((Context)localObject5).getResources(), b.d.live_like_icon6);
+      localb = l.b.kum;
+      i = l.b.aNC();
+      localb = l.b.kum;
+      localObject5 = Bitmap.createScaledBitmap((Bitmap)localObject5, i, l.b.aNC(), true);
+      this.kFE.add(paramLiveConfig);
+      this.kFE.add(localObject1);
+      this.kFE.add(localObject2);
+      this.kFE.add(localObject3);
+      this.kFE.add(localObject4);
+      this.kFE.add(localObject5);
+      AppMethodBeat.o(200909);
       return;
     }
-    paramLiveConfig = com.tencent.mm.live.core.core.d.b.hCo;
-    if (com.tencent.mm.live.core.core.d.b.a.aDp())
+    paramLiveConfig = com.tencent.mm.live.core.core.c.c.kqq;
+    if (c.a.aLi())
     {
-      paramLiveConfig = this.hwr.getContext();
-      p.g(paramLiveConfig, "root.context");
-      paramLiveConfig = BitmapFactory.decodeResource(paramLiveConfig.getResources(), 2131233355);
-      localObject1 = o.b.hGo;
-      i = o.b.aFl();
-      localObject1 = o.b.hGo;
-      paramLiveConfig = Bitmap.createScaledBitmap(paramLiveConfig, i, o.b.aFl(), true);
-      localObject1 = this.hwr.getContext();
-      p.g(localObject1, "root.context");
-      localObject1 = BitmapFactory.decodeResource(((Context)localObject1).getResources(), 2131233356);
-      localObject2 = o.b.hGo;
-      i = o.b.aFl();
-      localObject2 = o.b.hGo;
-      localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject1, i, o.b.aFl(), true);
-      localObject2 = this.hwr.getContext();
-      p.g(localObject2, "root.context");
-      localObject2 = BitmapFactory.decodeResource(((Context)localObject2).getResources(), 2131233357);
-      localObject3 = o.b.hGo;
-      i = o.b.aFl();
-      localObject3 = o.b.hGo;
-      localObject2 = Bitmap.createScaledBitmap((Bitmap)localObject2, i, o.b.aFl(), true);
-      localObject3 = this.hwr.getContext();
-      p.g(localObject3, "root.context");
-      localObject3 = BitmapFactory.decodeResource(((Context)localObject3).getResources(), 2131233358);
-      localObject4 = o.b.hGo;
-      i = o.b.aFl();
-      localObject4 = o.b.hGo;
-      localObject3 = Bitmap.createScaledBitmap((Bitmap)localObject3, i, o.b.aFl(), true);
-      localObject4 = this.hwr.getContext();
-      p.g(localObject4, "root.context");
-      localObject4 = BitmapFactory.decodeResource(((Context)localObject4).getResources(), 2131233359);
-      localObject5 = o.b.hGo;
-      i = o.b.aFl();
-      localObject5 = o.b.hGo;
-      localObject4 = Bitmap.createScaledBitmap((Bitmap)localObject4, i, o.b.aFl(), true);
-      localObject5 = this.hwr.getContext();
-      p.g(localObject5, "root.context");
-      localObject5 = BitmapFactory.decodeResource(((Context)localObject5).getResources(), 2131233360);
-      localb = o.b.hGo;
-      i = o.b.aFl();
-      localb = o.b.hGo;
-      localObject5 = Bitmap.createScaledBitmap((Bitmap)localObject5, i, o.b.aFl(), true);
-      this.hRh.add(paramLiveConfig);
-      this.hRh.add(localObject1);
-      this.hRh.add(localObject2);
-      this.hRh.add(localObject3);
-      this.hRh.add(localObject4);
-      this.hRh.add(localObject5);
+      paramLiveConfig = this.kiF.getContext();
+      p.j(paramLiveConfig, "root.context");
+      paramLiveConfig = BitmapFactory.decodeResource(paramLiveConfig.getResources(), b.d.live_like_icon1);
+      localObject1 = l.b.kum;
+      i = l.b.aNC();
+      localObject1 = l.b.kum;
+      paramLiveConfig = Bitmap.createScaledBitmap(paramLiveConfig, i, l.b.aNC(), true);
+      localObject1 = this.kiF.getContext();
+      p.j(localObject1, "root.context");
+      localObject1 = BitmapFactory.decodeResource(((Context)localObject1).getResources(), b.d.live_like_icon2);
+      localObject2 = l.b.kum;
+      i = l.b.aNC();
+      localObject2 = l.b.kum;
+      localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject1, i, l.b.aNC(), true);
+      localObject2 = this.kiF.getContext();
+      p.j(localObject2, "root.context");
+      localObject2 = BitmapFactory.decodeResource(((Context)localObject2).getResources(), b.d.live_like_icon3);
+      localObject3 = l.b.kum;
+      i = l.b.aNC();
+      localObject3 = l.b.kum;
+      localObject2 = Bitmap.createScaledBitmap((Bitmap)localObject2, i, l.b.aNC(), true);
+      localObject3 = this.kiF.getContext();
+      p.j(localObject3, "root.context");
+      localObject3 = BitmapFactory.decodeResource(((Context)localObject3).getResources(), b.d.live_like_icon4);
+      localObject4 = l.b.kum;
+      i = l.b.aNC();
+      localObject4 = l.b.kum;
+      localObject3 = Bitmap.createScaledBitmap((Bitmap)localObject3, i, l.b.aNC(), true);
+      localObject4 = this.kiF.getContext();
+      p.j(localObject4, "root.context");
+      localObject4 = BitmapFactory.decodeResource(((Context)localObject4).getResources(), b.d.live_like_icon5);
+      localObject5 = l.b.kum;
+      i = l.b.aNC();
+      localObject5 = l.b.kum;
+      localObject4 = Bitmap.createScaledBitmap((Bitmap)localObject4, i, l.b.aNC(), true);
+      localObject5 = this.kiF.getContext();
+      p.j(localObject5, "root.context");
+      localObject5 = BitmapFactory.decodeResource(((Context)localObject5).getResources(), b.d.live_like_icon6);
+      localb = l.b.kum;
+      i = l.b.aNC();
+      localb = l.b.kum;
+      localObject5 = Bitmap.createScaledBitmap((Bitmap)localObject5, i, l.b.aNC(), true);
+      this.kFE.add(paramLiveConfig);
+      this.kFE.add(localObject1);
+      this.kFE.add(localObject2);
+      this.kFE.add(localObject3);
+      this.kFE.add(localObject4);
+      this.kFE.add(localObject5);
     }
-    AppMethodBeat.o(208078);
+    AppMethodBeat.o(200909);
   }
   
   public final void statusChange(b.c paramc, Bundle paramBundle)
   {
     int j = 100;
-    AppMethodBeat.i(208079);
-    p.h(paramc, "status");
+    AppMethodBeat.i(200923);
+    p.k(paramc, "status");
     super.statusChange(paramc, paramBundle);
     switch (ad.$EnumSwitchMapping$0[paramc.ordinal()])
     {
     default: 
-      AppMethodBeat.o(208079);
+      AppMethodBeat.o(200923);
       return;
     }
     if (paramBundle != null) {}
@@ -178,19 +182,19 @@ public final class ac
       }
       Log.d(this.TAG, "emitLikeConfetti containerMiddleX=" + i + " containerMiddleY=" + j);
       paramc = new d(i, j);
-      paramBundle = this.hRh.get(kotlin.j.c.SYP.nextInt(0, this.hRh.size()));
-      p.g(paramBundle, "confettiBitmaps[Random.n…0, confettiBitmaps.size)]");
+      paramBundle = this.kFE.get(kotlin.j.c.aaBL.os(0, this.kFE.size()));
+      p.j(paramBundle, "confettiBitmaps[Random.n…0, confettiBitmaps.size)]");
       paramBundle = (com.tencent.mm.particles.b)new a((Bitmap)paramBundle);
-      this.hRg = new com.tencent.mm.particles.c(this.hwr.getContext(), paramBundle, paramc, (ViewGroup)this.hRf).ax(1.0F).bkF().H(-360.0F, 50.0F).AQ(1000L).bkD().bkJ();
-      if (this.hOp.getLiveRole() != 0) {
+      this.kFD = new com.tencent.mm.particles.c(this.kiF.getContext(), paramBundle, paramc, (ViewGroup)this.kFC).ax(1.0F).but().I(-360.0F, 50.0F).GZ(1000L).bur().bux();
+      if (this.kCL.getLiveRole() != 0) {
         break;
       }
-      f.aIS();
+      f.aQQ();
       break;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/live/view/confetti/LiveLikeConfetti;", "it", "Ljava/util/Random;", "kotlin.jvm.PlatformType", "generateConfetti"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/live/view/confetti/LiveLikeConfetti;", "it", "Ljava/util/Random;", "kotlin.jvm.PlatformType", "generateConfetti"})
   static final class a
     implements com.tencent.mm.particles.b
   {
@@ -199,7 +203,7 @@ public final class ac
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.c.ac
  * JD-Core Version:    0.7.0.1
  */

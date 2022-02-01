@@ -1,32 +1,39 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import android.content.Intent;
-import android.view.ContextMenu;
-import android.view.MenuItem;
-import com.tencent.mm.plugin.mmsight.SightCaptureResult;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.chatting.d.af;
+import com.tencent.mm.ui.chatting.d.ag;
+import com.tencent.mm.ui.chatting.v;
+import java.util.ArrayList;
 
 public abstract interface an
-  extends af
+  extends ag
 {
-  public abstract void Q(String paramString1, int paramInt, String paramString2);
+  public abstract boolean VL(long paramLong);
   
-  public abstract void T(int paramInt1, int paramInt2, String paramString);
+  public abstract void avF(int paramInt);
   
-  public abstract void a(ContextMenu paramContextMenu, int paramInt, ca paramca);
+  public abstract boolean hQA();
   
-  public abstract void a(SightCaptureResult paramSightCaptureResult);
+  public abstract ArrayList<String> hQr();
   
-  public abstract boolean a(MenuItem paramMenuItem, ca paramca);
+  public abstract void hQs();
   
-  public abstract boolean bU(ca paramca);
+  public abstract void hQt();
   
-  public abstract boolean i(int paramInt1, int paramInt2, Intent paramIntent);
+  public abstract boolean hQu();
+  
+  public abstract v hQv();
+  
+  public abstract boolean hQw();
+  
+  public abstract boolean hQx();
+  
+  public abstract boolean hQy();
+  
+  public abstract boolean hQz();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.b.an
  * JD-Core Version:    0.7.0.1
  */

@@ -5,9 +5,10 @@ import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.i.f;
 import com.tencent.mm.plugin.sns.ui.OnlineVideoView;
 import com.tencent.mm.plugin.sns.ui.video.SnsTimelineVideoView;
-import com.tencent.mm.plugin.sns.ui.video.c;
+import com.tencent.mm.plugin.sns.ui.video.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.Map;
@@ -16,62 +17,62 @@ import java.util.Set;
 
 public final class e
 {
-  final Map<String, OnlineVideoView> DzX;
-  String DzY;
+  final Map<String, OnlineVideoView> JLm;
+  String JLn;
   
   public e()
   {
-    AppMethodBeat.i(202327);
-    this.DzX = new ArrayMap();
-    AppMethodBeat.o(202327);
+    AppMethodBeat.i(200493);
+    this.JLm = new ArrayMap();
+    AppMethodBeat.o(200493);
   }
   
   private static boolean a(OnlineVideoView paramOnlineVideoView)
   {
-    AppMethodBeat.i(202333);
+    AppMethodBeat.i(200518);
     if ((paramOnlineVideoView instanceof SnsTimelineVideoView))
     {
-      boolean bool = ((SnsTimelineVideoView)paramOnlineVideoView).YY();
-      AppMethodBeat.o(202333);
+      boolean bool = ((SnsTimelineVideoView)paramOnlineVideoView).adH();
+      AppMethodBeat.o(200518);
       return bool;
     }
-    AppMethodBeat.o(202333);
+    AppMethodBeat.o(200518);
     return false;
   }
   
   private static boolean b(OnlineVideoView paramOnlineVideoView)
   {
-    AppMethodBeat.i(202334);
+    AppMethodBeat.i(200519);
     if ((paramOnlineVideoView instanceof SnsTimelineVideoView))
     {
       paramOnlineVideoView = (SnsTimelineVideoView)paramOnlineVideoView;
-      if ((paramOnlineVideoView.Fdd) || (paramOnlineVideoView.Fdb) || (paramOnlineVideoView.EtU))
+      if ((paramOnlineVideoView.Lrz) || (paramOnlineVideoView.Lrx) || (paramOnlineVideoView.KHA))
       {
         Log.i("VideoViewManager", "the video view is destroyed");
-        AppMethodBeat.o(202334);
+        AppMethodBeat.o(200519);
         return true;
       }
-      AppMethodBeat.o(202334);
+      AppMethodBeat.o(200519);
       return false;
     }
     Log.w("VideoViewManager", "the video view is not SnsTimelineVideoView");
-    AppMethodBeat.o(202334);
+    AppMethodBeat.o(200519);
     return true;
   }
   
-  public final void a(OnlineVideoView paramOnlineVideoView, c paramc, String paramString1, String paramString2)
+  public final void a(OnlineVideoView paramOnlineVideoView, d paramd, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(202328);
-    if ((paramOnlineVideoView == null) || (paramc == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    AppMethodBeat.i(200501);
+    if ((paramOnlineVideoView == null) || (paramd == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
-      AppMethodBeat.o(202328);
+      AppMethodBeat.o(200501);
       return;
     }
     Object localObject;
     try
     {
       paramOnlineVideoView.setVisibility(0);
-      paramString1 = this.DzX;
+      paramString1 = this.JLm;
       if (paramString1 != null)
       {
         paramString1 = paramString1.entrySet().iterator();
@@ -82,17 +83,17 @@ public final class e
           {
             localObject = (OnlineVideoView)((Map.Entry)localObject).getValue();
             if (localObject != paramOnlineVideoView) {
-              ((OnlineVideoView)localObject).cXa();
+              ((OnlineVideoView)localObject).dmi();
             }
           }
         }
       }
-      paramString1 = this.DzX;
+      paramString1 = this.JLm;
     }
     catch (Throwable paramOnlineVideoView)
     {
       Log.e("VideoViewManager", "startPlay has something wrong!");
-      AppMethodBeat.o(202328);
+      AppMethodBeat.o(200501);
       return;
     }
     if (paramString1 != null) {
@@ -116,17 +117,17 @@ public final class e
         }
         paramString1.remove();
         break;
-        paramOnlineVideoView.a(paramc.ebR, paramc.dHp, paramc.iXu);
-        paramOnlineVideoView.fgg();
+        paramOnlineVideoView.a(paramd.fVT, paramd.fAg, paramd.createTime);
+        paramOnlineVideoView.fUe();
         paramOnlineVideoView.setMute(true);
         paramOnlineVideoView.onResume();
-        paramc = this.DzX;
-        if (paramc != null) {
-          paramc.put(paramString2, paramOnlineVideoView);
+        paramd = this.JLm;
+        if (paramd != null) {
+          paramd.put(paramString2, paramOnlineVideoView);
         }
-        Log.d("VideoViewManager", "the view map size is " + paramc.size());
-        this.DzY = paramString2;
-        AppMethodBeat.o(202328);
+        Log.d("VideoViewManager", "the view map size is " + paramd.size());
+        this.JLn = paramString2;
+        AppMethodBeat.o(200501);
         return;
       }
     }
@@ -134,11 +135,11 @@ public final class e
   
   public final void a(OnlineVideoView paramOnlineVideoView, String paramString)
   {
-    AppMethodBeat.i(202329);
+    AppMethodBeat.i(200504);
     if ((paramOnlineVideoView != null) && (paramString != null)) {
       try
       {
-        if (paramString.equals(this.DzY))
+        if (paramString.equals(this.JLn))
         {
           if (!a(paramOnlineVideoView)) {
             break label98;
@@ -147,139 +148,131 @@ public final class e
           if (paramOnlineVideoView.getDuration() - i < 500)
           {
             Log.i("VideoViewManager", "the current position is too near to end of the video!!");
-            paramOnlineVideoView.aT(0, true);
-            AppMethodBeat.o(202329);
+            paramOnlineVideoView.bc(0, true);
+            AppMethodBeat.o(200504);
             return;
           }
-          paramOnlineVideoView.eYd();
-          AppMethodBeat.o(202329);
+          paramOnlineVideoView.fLJ();
+          AppMethodBeat.o(200504);
           return;
         }
       }
       catch (Throwable paramOnlineVideoView)
       {
         Log.e("VideoViewManager", "resumePlay has something wrong!");
-        AppMethodBeat.o(202329);
+        AppMethodBeat.o(200504);
         return;
       }
     } else {
       Log.i("VideoViewManager", "the media is is not same as the current one!!!");
     }
     label98:
-    AppMethodBeat.o(202329);
+    AppMethodBeat.o(200504);
   }
   
   public final void b(OnlineVideoView paramOnlineVideoView, String paramString)
   {
-    AppMethodBeat.i(202330);
+    AppMethodBeat.i(200508);
     for (;;)
     {
       try
       {
-        Map localMap = this.DzX;
+        Map localMap = this.JLm;
         if ((localMap != null) && (paramString != null) && ((OnlineVideoView)localMap.get(paramString) == paramOnlineVideoView) && (paramOnlineVideoView != null) && (!b(paramOnlineVideoView)))
         {
           if (paramOnlineVideoView != null)
           {
-            paramOnlineVideoView.aT(0, true);
-            paramOnlineVideoView.setTag(2131308008, Integer.valueOf(1));
-            AppMethodBeat.o(202330);
+            paramOnlineVideoView.bc(0, true);
+            paramOnlineVideoView.setTag(i.f.sns_ad_finder_topic_card_item_seek_tag, Integer.valueOf(1));
+            AppMethodBeat.o(200508);
             return;
           }
           Log.i("VideoViewManager", "the media is is not same as the current one, or the view is destroyed!!!");
-          AppMethodBeat.o(202330);
+          AppMethodBeat.o(200508);
           return;
         }
       }
       catch (Throwable paramOnlineVideoView)
       {
         Log.w("VideoViewManager", "seekPlay has something wrong!");
-        AppMethodBeat.o(202330);
+        AppMethodBeat.o(200508);
         return;
       }
       paramOnlineVideoView = null;
     }
   }
   
-  public final OnlineVideoView bx(Context paramContext, String paramString)
+  public final OnlineVideoView bL(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(202332);
-    Map localMap = this.DzX;
+    int i = 0;
+    AppMethodBeat.i(200515);
+    Map localMap = this.JLm;
     if (localMap == null)
     {
       Log.w("VideoViewManager", "are you sure? the map is null? I don't think the statement can reach!!");
-      AppMethodBeat.o(202332);
+      AppMethodBeat.o(200515);
       return null;
     }
-    label116:
     for (;;)
     {
       try
       {
         paramString = (OnlineVideoView)localMap.get(paramString);
-        if (paramString != null) {
-          if (b(paramString))
+        if ((paramString != null) && (!b(paramString)))
+        {
+          if (i != 0)
           {
-            break label116;
-            if (i != 0)
-            {
-              Log.d("VideoViewManager", "to new one video view!");
-              paramString = new SnsTimelineVideoView(paramContext);
-              paramString.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-            }
-            AppMethodBeat.o(202332);
-            return paramString;
+            Log.d("VideoViewManager", "to new one video view!");
+            paramString = new SnsTimelineVideoView(paramContext, (byte)0);
+            paramString.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
           }
-          else
-          {
-            i = 0;
-            continue;
-          }
+          AppMethodBeat.o(200515);
+          return paramString;
         }
-        int i = 1;
       }
       catch (Throwable paramContext)
       {
         Log.e("VideoViewManager", "getVideoViewWithMediaId has something wrong!");
-        AppMethodBeat.o(202332);
+        AppMethodBeat.o(200515);
         return null;
       }
+      i = 1;
     }
   }
   
-  public final void cXa()
+  public final void dmi()
   {
-    AppMethodBeat.i(202331);
-    Object localObject = this.DzX;
-    String str = this.DzY;
+    AppMethodBeat.i(200510);
+    Object localObject = this.JLm;
+    String str = this.JLn;
     try
     {
       if ((!TextUtils.isEmpty(str)) && (localObject != null))
       {
         localObject = (OnlineVideoView)((Map)localObject).get(str);
         if (localObject != null) {
-          ((OnlineVideoView)localObject).cXa();
+          ((OnlineVideoView)localObject).dmi();
         }
       }
-      AppMethodBeat.o(202331);
+      AppMethodBeat.o(200510);
       return;
     }
     catch (Throwable localThrowable)
     {
       Log.e("VideoViewManager", "pausePlay has something wrong!");
-      AppMethodBeat.o(202331);
+      AppMethodBeat.o(200510);
     }
   }
   
   public final void stopAll()
   {
-    AppMethodBeat.i(202335);
+    AppMethodBeat.i(200522);
     try
     {
-      Object localObject1 = this.DzX;
+      Object localObject1 = this.JLm;
       if (localObject1 == null)
       {
-        AppMethodBeat.o(202335);
+        AppMethodBeat.o(200522);
         return;
       }
       localObject1 = ((Map)localObject1).entrySet().iterator();
@@ -290,23 +283,23 @@ public final class e
         {
           localObject2 = (OnlineVideoView)((Map.Entry)localObject2).getValue();
           if ((localObject2 instanceof SnsTimelineVideoView)) {
-            ((SnsTimelineVideoView)localObject2).fkP();
+            ((SnsTimelineVideoView)localObject2).fZa();
           }
         }
       }
-      AppMethodBeat.o(202335);
+      AppMethodBeat.o(200522);
     }
     catch (Throwable localThrowable)
     {
       Log.e("VideoViewManager", "stopAll has something wrong!");
-      AppMethodBeat.o(202335);
+      AppMethodBeat.o(200522);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.video.online.e
  * JD-Core Version:    0.7.0.1
  */

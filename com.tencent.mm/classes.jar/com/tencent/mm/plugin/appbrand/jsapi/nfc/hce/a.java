@@ -14,169 +14,200 @@ import android.nfc.NfcAdapter;
 import android.nfc.cardemulation.CardEmulation;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.ResultReceiver;
-import com.tencent.luggage.h.f;
-import com.tencent.luggage.h.f.b;
+import com.tencent.luggage.b.c.a.b;
+import com.tencent.luggage.k.f;
+import com.tencent.luggage.k.f.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.m;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.ui.widget.a.d.a;
 import com.tencent.mm.ui.widget.a.j;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 @TargetApi(19)
 public final class a
 {
-  public static a mht;
-  private ResultReceiver MU;
+  public static a pfy;
+  private MTimerHandler cts;
+  private ResultReceiver dK;
   private final Handler mHandler;
-  private int mhj;
-  private boolean mhk;
-  private boolean mhl;
-  private boolean mhm;
-  private Timer mhn;
-  private TimerTask mho;
-  private ComponentName mhp;
-  private Activity mhq;
-  private j mhr;
-  private com.tencent.mm.ui.widget.a.d mhs;
+  private int pfq;
+  private boolean pfr;
+  private boolean pfs;
+  private boolean pft;
+  private ComponentName pfu;
+  private Activity pfv;
+  private j pfw;
+  private com.tencent.mm.ui.widget.a.d pfx;
   
   static
   {
     AppMethodBeat.i(136154);
-    mht = null;
-    mht = new a();
+    pfy = null;
+    pfy = new a();
     AppMethodBeat.o(136154);
   }
   
   public a()
   {
     AppMethodBeat.i(136130);
-    this.mhj = 0;
-    this.mhk = false;
-    this.mhl = false;
-    this.mhm = false;
-    this.mhs = null;
-    this.mHandler = new Handler();
+    this.pfq = 0;
+    this.pfr = false;
+    this.pfs = false;
+    this.pft = false;
+    this.pfx = null;
+    this.mHandler = new Handler(Looper.getMainLooper());
     AppMethodBeat.o(136130);
   }
   
-  private void am(int paramInt, String paramString)
+  private void ao(int paramInt, String paramString)
   {
     AppMethodBeat.i(136145);
     Bundle localBundle = new Bundle();
     localBundle.putInt("errCode", paramInt);
     localBundle.putString("errMsg", paramString);
-    this.MU.send(10001, localBundle);
+    this.dK.send(10001, localBundle);
     AppMethodBeat.o(136145);
   }
   
-  private void an(int paramInt, String paramString)
+  private void ap(int paramInt, String paramString)
   {
     AppMethodBeat.i(136146);
     Bundle localBundle = new Bundle();
     localBundle.putInt("errCode", paramInt);
     localBundle.putString("errMsg", paramString);
-    this.MU.send(10001, localBundle);
+    this.dK.send(10001, localBundle);
     AppMethodBeat.o(136146);
   }
   
-  private void bHN()
+  @TargetApi(19)
+  private void bTA()
+  {
+    AppMethodBeat.i(136141);
+    if (this.pfv == null)
+    {
+      Log.e("MicroMsg.HCEActivityMgr", "alvinluo checkDefaultNFCApplication mHceActivity is null");
+      AppMethodBeat.o(136141);
+      return;
+    }
+    CardEmulation localCardEmulation = CardEmulation.getInstance(NfcAdapter.getDefaultAdapter(this.pfv));
+    Log.i("MicroMsg.HCEActivityMgr", "alvinluo component name: " + this.pfu);
+    if (!localCardEmulation.isDefaultServiceForCategory(this.pfu, "payment"))
+    {
+      Log.i("MicroMsg.HCEActivityMgr", "alvinluo not NFC Default Application, isAutoSet: %b", new Object[] { Boolean.TRUE });
+      d(this.pfu);
+      AppMethodBeat.o(136141);
+      return;
+    }
+    Log.i("MicroMsg.HCEActivityMgr", "alvinluo now is NFC Default Application");
+    ap(0, "NFC switch has opened and now is NFC default application");
+    AppMethodBeat.o(136141);
+  }
+  
+  private void bTd()
+  {
+    AppMethodBeat.i(136133);
+    if (this.pfv != null)
+    {
+      this.pfw = j.b(this.pfv, this.pfv.getString(a.b.luggage_app_waiting), false);
+      AppMethodBeat.o(136133);
+      return;
+    }
+    Log.e("MicroMsg.HCEActivityMgr", "alvinluo showProgressDialog mHceActivity is null");
+    AppMethodBeat.o(136133);
+  }
+  
+  private void bTw()
   {
     AppMethodBeat.i(136137);
-    this.mho = new TimerTask()
+    this.cts = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
     {
-      public final void run()
+      public final boolean onTimerExpired()
       {
-        AppMethodBeat.i(136122);
+        AppMethodBeat.i(241610);
         Log.i("MicroMsg.HCEActivityMgr", "alvinluo loop check NFC switch currentCount: %d", new Object[] { Integer.valueOf(a.a(a.this)) });
         a.b(a.this);
-        m.runOnUiThread(new Runnable()
+        if (a.a(a.this) > 10)
         {
-          public final void run()
-          {
-            AppMethodBeat.i(136121);
-            if (a.a(a.this) > 10)
-            {
-              Log.i("MicroMsg.HCEActivityMgr", "alvinluo loop check count exceed max limit: %d", new Object[] { Integer.valueOf(10) });
-              a.c(a.this);
-              a.d(a.this);
-              AppMethodBeat.o(136121);
-              return;
-            }
-            if (com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.d.bHY())
-            {
-              Log.i("MicroMsg.HCEActivityMgr", "alvinluo loopCheck NFC switch is opened, and cancel task");
-              a.c(a.this);
-              a.e(a.this);
-            }
-            AppMethodBeat.o(136121);
-          }
-        });
-        AppMethodBeat.o(136122);
+          Log.i("MicroMsg.HCEActivityMgr", "alvinluo loop check count exceed max limit: %d", new Object[] { Integer.valueOf(10) });
+          a.this.dismissDialog();
+          a.c(a.this);
+          AppMethodBeat.o(241610);
+          return false;
+        }
+        if (com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.d.bTH())
+        {
+          Log.i("MicroMsg.HCEActivityMgr", "alvinluo loopCheck NFC switch is opened, and cancel task");
+          a.this.dismissDialog();
+          a.d(a.this);
+          AppMethodBeat.o(241610);
+          return false;
+        }
+        AppMethodBeat.o(241610);
+        return true;
       }
-    };
-    this.mhn = new Timer();
-    this.mhn.scheduleAtFixedRate(this.mho, 0L, 300L);
-    bHv();
+    }, true);
+    this.cts.startTimer(0L, 300L);
+    bTd();
     AppMethodBeat.o(136137);
   }
   
-  private void bHO()
+  private void bTx()
   {
     AppMethodBeat.i(136138);
-    if (!com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.d.bHX())
+    if (!com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.d.bTG())
     {
-      am(13000, "not support NFC");
+      ao(13000, "not support NFC");
       AppMethodBeat.o(136138);
       return;
     }
-    if (!com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.d.bHW())
+    if (!com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.d.bTF())
     {
-      am(13002, "not support HCE");
+      ao(13002, "not support HCE");
       AppMethodBeat.o(136138);
       return;
     }
-    if (!com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.d.bHY())
+    if (!com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.d.bTH())
     {
-      bHP();
+      bTy();
       AppMethodBeat.o(136138);
       return;
     }
-    bHR();
+    bTA();
     AppMethodBeat.o(136138);
   }
   
-  private void bHP()
+  private void bTy()
   {
     AppMethodBeat.i(136139);
-    if (this.mhq == null)
+    if (this.pfv == null)
     {
       Log.e("MicroMsg.HCEActivityMgr", "alvinluo showOpenNFCDialog mHceActivity is null");
       AppMethodBeat.o(136139);
       return;
     }
-    if (this.mhk)
+    if (this.pfr)
     {
       Log.i("MicroMsg.HCEActivityMgr", "alvinluo has shown open NFC dialog");
-      q(13001, "system NFC switch not opened", this.mhq.getString(2131762791));
+      q(13001, "system NFC switch not opened", this.pfv.getString(a.b.luggage_not_open_nfc_switch_tips));
       AppMethodBeat.o(136139);
       return;
     }
-    d.a locala = new d.a(this.mhq);
-    locala.boo(this.mhq.getString(2131762793)).bou(this.mhq.getString(2131762789)).c(new DialogInterface.OnClickListener()
+    d.a locala = new d.a(this.pfv);
+    locala.bBd(this.pfv.getString(a.b.luggage_open_nfc_switch_tips)).bBj(this.pfv.getString(a.b.luggage_jump_to_settings)).c(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(136123);
-        a.f(a.this);
+        a.e(a.this);
         AppMethodBeat.o(136123);
       }
     });
-    if (bHQ()) {
-      locala.bov(this.mhq.getString(2131762776)).d(new DialogInterface.OnClickListener()
+    if (bTz()) {
+      locala.bBk(this.pfv.getString(a.b.luggage_app_cancel)).d(new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -199,27 +230,27 @@ public final class a
           AppMethodBeat.o(136125);
         }
       });
-      this.mhs = locala.hbn();
-      this.mhs.setCanceledOnTouchOutside(false);
-      this.mhs.show();
-      this.mhk = true;
+      this.pfx = locala.icu();
+      this.pfx.setCanceledOnTouchOutside(false);
+      this.pfx.show();
+      this.pfr = true;
       AppMethodBeat.o(136139);
       return;
-      locala.bou(this.mhq.getString(2131762777));
+      locala.bBj(this.pfv.getString(a.b.luggage_app_ok));
     }
   }
   
-  private boolean bHQ()
+  private boolean bTz()
   {
     AppMethodBeat.i(136140);
-    if (this.mhq == null)
+    if (this.pfv == null)
     {
       Log.e("MicroMsg.HCEActivityMgr", "alvinluo isCanJumpNFCSetting mHceActivity is null");
       AppMethodBeat.o(136140);
       return false;
     }
     Object localObject = new Intent("android.settings.NFC_SETTINGS");
-    localObject = this.mhq.getPackageManager().queryIntentActivities((Intent)localObject, 65536);
+    localObject = this.pfv.getPackageManager().queryIntentActivities((Intent)localObject, 65536);
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       Log.i("MicroMsg.HCEActivityMgr", "alvinluo NFC activity not null, activities size: " + ((List)localObject).size());
@@ -237,69 +268,32 @@ public final class a
     return false;
   }
   
-  @TargetApi(19)
-  private void bHR()
-  {
-    AppMethodBeat.i(136141);
-    if (this.mhq == null)
-    {
-      Log.e("MicroMsg.HCEActivityMgr", "alvinluo checkDefaultNFCApplication mHceActivity is null");
-      AppMethodBeat.o(136141);
-      return;
-    }
-    CardEmulation localCardEmulation = CardEmulation.getInstance(NfcAdapter.getDefaultAdapter(this.mhq));
-    Log.i("MicroMsg.HCEActivityMgr", "alvinluo component name: " + this.mhp);
-    if (!localCardEmulation.isDefaultServiceForCategory(this.mhp, "payment"))
-    {
-      Log.i("MicroMsg.HCEActivityMgr", "alvinluo not NFC Default Application, isAutoSet: %b", new Object[] { Boolean.TRUE });
-      c(this.mhp);
-      AppMethodBeat.o(136141);
-      return;
-    }
-    Log.i("MicroMsg.HCEActivityMgr", "alvinluo now is NFC Default Application");
-    an(0, "NFC switch has opened and now is NFC default application");
-    AppMethodBeat.o(136141);
-  }
-  
-  private void bHv()
-  {
-    AppMethodBeat.i(136133);
-    if (this.mhq != null)
-    {
-      this.mhr = j.b(this.mhq, this.mhq.getString(2131762778), false);
-      AppMethodBeat.o(136133);
-      return;
-    }
-    Log.e("MicroMsg.HCEActivityMgr", "alvinluo showProgressDialog mHceActivity is null");
-    AppMethodBeat.o(136133);
-  }
-  
-  private void biW()
+  private void bsu()
   {
     AppMethodBeat.i(136134);
-    if (this.mhr != null)
+    if (this.pfw != null)
     {
-      this.mhr.dismiss();
-      this.mhr = null;
+      this.pfw.dismiss();
+      this.pfw = null;
     }
     AppMethodBeat.o(136134);
   }
   
   @TargetApi(19)
-  private void c(final ComponentName paramComponentName)
+  private void d(final ComponentName paramComponentName)
   {
     AppMethodBeat.i(136142);
-    if (this.mhq == null)
+    if (this.pfv == null)
     {
       Log.e("MicroMsg.HCEActivityMgr", "alvinluo reuquestSetDefaultNFCApplication mHceActivity is null");
       AppMethodBeat.o(136142);
       return;
     }
-    Log.i("MicroMsg.HCEActivityMgr", "alvinluo request set default NFC application, hasRequestSetDefault: %b", new Object[] { Boolean.valueOf(this.mhm) });
-    if (this.mhm)
+    Log.i("MicroMsg.HCEActivityMgr", "alvinluo request set default NFC application, hasRequestSetDefault: %b", new Object[] { Boolean.valueOf(this.pft) });
+    if (this.pft)
     {
       Log.i("MicroMsg.HCEActivityMgr", "alvinluo has request set default NFC application");
-      q(13004, "not set default NFC application", this.mhq.getString(2131762792));
+      q(13004, "not set default NFC application", this.pfv.getString(a.b.luggage_not_set_default_nfc_application_tips));
       AppMethodBeat.o(136142);
       return;
     }
@@ -308,18 +302,18 @@ public final class a
       public final void run()
       {
         AppMethodBeat.i(136128);
-        a.g(a.this);
+        a.f(a.this);
         Intent localIntent = new Intent("android.nfc.cardemulation.action.ACTION_CHANGE_DEFAULT");
         localIntent.putExtra("category", "payment");
         localIntent.putExtra("component", paramComponentName);
-        if ((a.h(a.this) != null) && (localIntent.resolveActivity(a.h(a.this).getPackageManager()) != null))
+        if ((a.g(a.this) != null) && (localIntent.resolveActivity(a.g(a.this).getPackageManager()) != null))
         {
-          f.aK(a.h(a.this)).a(localIntent, new f.b()
+          f.aI(a.g(a.this)).a(localIntent, new f.b()
           {
             public final void a(int paramAnonymous2Int, Intent paramAnonymous2Intent)
             {
               AppMethodBeat.i(136127);
-              a.mht.xk(2);
+              a.pfy.AG(2);
               AppMethodBeat.o(136127);
             }
           });
@@ -327,8 +321,8 @@ public final class a
           return;
         }
         Log.e("MicroMsg.HCEActivityMgr", "alvinluo reuquestSetDefaultNFCApplication can not find activity");
-        if (a.h(a.this) != null) {
-          a.a(a.this, "not set default NFC application", a.h(a.this).getString(2131762792));
+        if (a.g(a.this) != null) {
+          a.a(a.this, "not set default NFC application", a.g(a.this).getString(a.b.luggage_not_set_default_nfc_application_tips));
         }
         AppMethodBeat.o(136128);
       }
@@ -340,16 +334,16 @@ public final class a
   {
     AppMethodBeat.i(136143);
     dismissDialog();
-    if (this.mhq == null)
+    if (this.pfv == null)
     {
       Log.e("MicroMsg.HCEActivityMgr", "alvinluo showErrorDialog mHceActivity is null");
       AppMethodBeat.o(136143);
       return;
     }
-    d.a locala = new d.a(this.mhq);
-    locala.bon("");
-    locala.boo(paramString2);
-    locala.bou(this.mhq.getString(2131762777)).c(new DialogInterface.OnClickListener()
+    d.a locala = new d.a(this.pfv);
+    locala.bBc("");
+    locala.bBd(paramString2);
+    locala.bBj(this.pfv.getString(a.b.luggage_app_ok)).c(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -358,11 +352,27 @@ public final class a
         AppMethodBeat.o(136129);
       }
     });
-    locala.Dk(true);
-    this.mhs = locala.hbn();
-    this.mhs.setCanceledOnTouchOutside(false);
-    this.mhs.show();
+    locala.HG(true);
+    this.pfx = locala.icu();
+    this.pfx.setCanceledOnTouchOutside(false);
+    this.pfx.show();
     AppMethodBeat.o(136143);
+  }
+  
+  public final void AG(int paramInt)
+  {
+    AppMethodBeat.i(136135);
+    if (paramInt == 1)
+    {
+      Log.i("MicroMsg.HCEActivityMgr", "alvinluo back from REQUEST_JUMP_NFC_SETTING");
+      this.pfs = true;
+      AppMethodBeat.o(136135);
+      return;
+    }
+    if (paramInt == 2) {
+      Log.i("MicroMsg.HCEActivityMgr", "alvinluo back from REQUEST_SET_DEFAULT_NFC_APPLICATION");
+    }
+    AppMethodBeat.o(136135);
   }
   
   public final void a(Activity paramActivity, ResultReceiver paramResultReceiver)
@@ -372,70 +382,54 @@ public final class a
     if ((paramActivity == null) || (paramResultReceiver == null)) {
       Log.e("MicroMsg.HCEActivityMgr", "alvinluo setHceActivity hceActivity is null, or resultReceiver is null");
     }
-    this.mhq = paramActivity;
-    this.MU = paramResultReceiver;
+    this.pfv = paramActivity;
+    this.dK = paramResultReceiver;
     AppMethodBeat.o(136131);
   }
   
-  public final void b(ComponentName paramComponentName)
-  {
-    AppMethodBeat.i(136132);
-    Log.i("MicroMsg.HCEActivityMgr", "alvinluo setPaymentServiceComponent");
-    this.mhp = paramComponentName;
-    AppMethodBeat.o(136132);
-  }
-  
-  public final void bHM()
+  public final void bTv()
   {
     AppMethodBeat.i(136136);
-    if (this.mhl)
+    if (this.pfs)
     {
-      bHN();
+      bTw();
       AppMethodBeat.o(136136);
       return;
     }
-    bHO();
+    bTx();
     AppMethodBeat.o(136136);
+  }
+  
+  public final void c(ComponentName paramComponentName)
+  {
+    AppMethodBeat.i(136132);
+    Log.i("MicroMsg.HCEActivityMgr", "alvinluo setPaymentServiceComponent");
+    this.pfu = paramComponentName;
+    AppMethodBeat.o(136132);
   }
   
   public final void dismissDialog()
   {
     AppMethodBeat.i(136144);
-    if ((this.mhs != null) && (this.mhs.isShowing()))
+    if ((this.pfx != null) && (this.pfx.isShowing()))
     {
-      this.mhs.dismiss();
-      this.mhs = null;
+      this.pfx.dismiss();
+      this.pfx = null;
     }
-    biW();
+    bsu();
     AppMethodBeat.o(136144);
   }
   
   public final void resetStatus()
   {
-    this.mhl = false;
-    this.mhm = false;
-    this.mhk = false;
-  }
-  
-  public final void xk(int paramInt)
-  {
-    AppMethodBeat.i(136135);
-    if (paramInt == 1)
-    {
-      Log.i("MicroMsg.HCEActivityMgr", "alvinluo back from REQUEST_JUMP_NFC_SETTING");
-      this.mhl = true;
-      AppMethodBeat.o(136135);
-      return;
-    }
-    if (paramInt == 2) {
-      Log.i("MicroMsg.HCEActivityMgr", "alvinluo back from REQUEST_SET_DEFAULT_NFC_APPLICATION");
-    }
-    AppMethodBeat.o(136135);
+    this.pfs = false;
+    this.pft = false;
+    this.pfr = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a
  * JD-Core Version:    0.7.0.1
  */

@@ -11,31 +11,31 @@ import kotlin.g.b.q;
 import kotlin.k;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"unsafeLazy", "Lkotlin/Lazy;", "T", "initializer", "Lkotlin/Function0;", "bind", "Landroid/view/View;", "Landroid/app/Activity;", "idRes", "", "plugin-radar_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"unsafeLazy", "Lkotlin/Lazy;", "T", "initializer", "Lkotlin/Function0;", "bind", "Landroid/view/View;", "Landroid/app/Activity;", "idRes", "", "plugin-radar_release"})
 public final class i
 {
-  public static final <T extends View> f<T> aq(View paramView, final int paramInt)
+  public static final <T extends View> f<T> au(View paramView, final int paramInt)
   {
     AppMethodBeat.i(138793);
-    p.h(paramView, "$this$bind");
+    p.k(paramView, "$this$bind");
     paramView = (a)new b(paramView, paramInt);
-    paramView = g.a(k.SWR, paramView);
+    paramView = g.a(k.aazD, paramView);
     AppMethodBeat.o(138793);
     return paramView;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "T", "Landroid/view/View;", "invoke", "()Landroid/view/View;"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "T", "Landroid/view/View;", "invoke", "()Landroid/view/View;"})
   static final class a
     extends q
     implements a<T>
   {
-    a(Activity paramActivity)
+    a(Activity paramActivity, int paramInt)
     {
       super();
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "T", "Landroid/view/View;", "invoke", "()Landroid/view/View;"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "T", "Landroid/view/View;", "invoke", "()Landroid/view/View;"})
   static final class b
     extends q
     implements a<T>
@@ -48,7 +48,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.ui.i
  * JD-Core Version:    0.7.0.1
  */

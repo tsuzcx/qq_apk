@@ -20,18 +20,18 @@ public class WXAppExtendObject
   
   public WXAppExtendObject(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(190394);
+    AppMethodBeat.i(254880);
     this.extInfo = paramString1;
     this.filePath = paramString2;
-    AppMethodBeat.o(190394);
+    AppMethodBeat.o(254880);
   }
   
   public WXAppExtendObject(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(190393);
+    AppMethodBeat.i(254878);
     this.extInfo = paramString;
     this.fileData = paramArrayOfByte;
-    AppMethodBeat.o(190393);
+    AppMethodBeat.o(254878);
   }
   
   private int getFileSize(String paramString)
@@ -118,7 +118,7 @@ public class WXAppExtendObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXAppExtendObject
  * JD-Core Version:    0.7.0.1
  */

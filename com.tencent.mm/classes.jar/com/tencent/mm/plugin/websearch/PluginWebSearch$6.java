@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.websearch;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.g.a.ts;
-import com.tencent.mm.plugin.messenger.foundation.a.q;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.f.a.uv;
+import com.tencent.mm.plugin.messenger.foundation.a.t;
 import com.tencent.mm.plugin.websearch.api.aq;
 import com.tencent.mm.plugin.websearch.api.aq.a;
 import com.tencent.mm.sdk.event.EventCenter;
@@ -12,7 +12,7 @@ import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
 
 final class PluginWebSearch$6
-  implements q
+  implements t
 {
   PluginWebSearch$6(PluginWebSearch paramPluginWebSearch)
   {
@@ -41,7 +41,7 @@ final class PluginWebSearch$6
         String str1 = (String)paramMap.get(".sysmsg.mmsearch_reddot_new.reddot_text");
         String str2 = (String)paramMap.get(".sysmsg.mmsearch_reddot_new.reddot_icon");
         l2 = Util.safeParseLong((String)paramMap.get(".sysmsg.mmsearch_reddot_new.timestamp"));
-        localaq = aq.fYk();
+        localaq = aq.gQV();
         paramString = null;
         switch (i)
         {
@@ -53,17 +53,17 @@ final class PluginWebSearch$6
           if (paramMap.timestamp < l2)
           {
             paramMap.id = parama;
-            paramMap.IFp = k;
-            paramMap.IFn = i;
-            paramMap.IFo = m;
-            paramMap.jIU = l1;
-            paramMap.IEj = n;
+            paramMap.PzH = k;
+            paramMap.PzF = i;
+            paramMap.PzG = m;
+            paramMap.mzZ = l1;
+            paramMap.Pyz = n;
             paramMap.type = i1;
             paramMap.text = str1;
             paramMap.icon = str2;
             paramMap.timestamp = l2;
             paramMap.clear = j;
-            paramMap.iUm = System.currentTimeMillis();
+            paramMap.lKF = System.currentTimeMillis();
           }
           break;
         }
@@ -71,12 +71,12 @@ final class PluginWebSearch$6
     }
     for (;;)
     {
-      localaq.save();
-      paramString = new ts();
+      localaq.arg();
+      paramString = new uv();
       EventCenter.instance.publish(paramString);
       AppMethodBeat.o(116516);
       return;
-      paramString = localaq.IFk;
+      paramString = localaq.PzC;
       break;
       Log.i("MicroMsg.WebSearch.WebSearchRedPointMgr", "timestamp %d not big than last msg %d", new Object[] { Long.valueOf(l2), Long.valueOf(paramMap.timestamp) });
     }
@@ -84,7 +84,7 @@ final class PluginWebSearch$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.PluginWebSearch.6
  * JD-Core Version:    0.7.0.1
  */

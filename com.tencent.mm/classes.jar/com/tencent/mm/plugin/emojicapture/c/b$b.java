@@ -7,20 +7,20 @@ import kotlin.g.a.a;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/contract/EditorContract$IView;", "", "destroy", "", "getItemContainer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer;", "getVideoPlayView", "Lcom/tencent/mm/plugin/emojicapture/ui/EmojiVideoPlayTextureView;", "isShow", "", "isShowSmileyPanel", "isShowTextEditor", "reset", "setup", "captureInfo", "Lcom/tencent/mm/plugin/emojicapture/model/capture/EmojiCaptureInfo;", "videoPath", "", "removeBgEnable", "removeBg", "videoPreparedCallback", "Lkotlin/Function0;", "toggleSmileyPanel", "show", "toggleTextEditor", "text", "", "textColor", "", "viewPrepared", "plugin-emojicapture_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/contract/EditorContract$IView;", "", "destroy", "", "getItemContainer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer;", "getVideoPlayView", "Lcom/tencent/mm/plugin/emojicapture/ui/EmojiVideoPlayTextureView;", "isShow", "", "isShowSmileyPanel", "isShowTextEditor", "reset", "setup", "captureInfo", "Lcom/tencent/mm/plugin/emojicapture/model/capture/EmojiCaptureInfo;", "videoPath", "", "removeBgEnable", "removeBg", "videoPreparedCallback", "Lkotlin/Function0;", "toggleSmileyPanel", "show", "toggleTextEditor", "text", "", "textColor", "", "viewPrepared", "plugin-emojicapture_release"})
 public abstract interface b$b
 {
   public abstract void a(b paramb, String paramString, boolean paramBoolean1, boolean paramBoolean2, a<x> parama);
   
   public abstract void a(boolean paramBoolean, CharSequence paramCharSequence, int paramInt);
   
-  public abstract boolean bJw();
+  public abstract boolean bVd();
   
-  public abstract void cIA();
+  public abstract void cXj();
   
-  public abstract boolean cIB();
+  public abstract boolean cXk();
   
-  public abstract boolean cIC();
+  public abstract boolean cXl();
   
   public abstract void destroy();
   
@@ -28,13 +28,13 @@ public abstract interface b$b
   
   public abstract EmojiVideoPlayTextureView getVideoPlayView();
   
-  public abstract void lE(boolean paramBoolean);
+  public abstract void mP(boolean paramBoolean);
   
   public abstract void reset();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.c.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,13 @@ final class WalletBalanceSaveUI$3
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(213912);
+    AppMethodBeat.i(243875);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceSaveUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    WalletBalanceSaveUI.g(this.HwD);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceSaveUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    WalletBalanceSaveUI.g(this.Ooq);
     a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceSaveUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(213912);
+    AppMethodBeat.o(243875);
   }
 }
 

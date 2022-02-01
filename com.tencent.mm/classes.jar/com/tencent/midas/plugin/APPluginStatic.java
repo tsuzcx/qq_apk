@@ -17,6 +17,7 @@ public abstract class APPluginStatic
   public static final String PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY = "PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY";
   public static final String PARAM_PLUGIN_IS_NEW_PROCESS = "pluginsdk_isNewProcess";
   public static final String PARAM_PLUGIN_LOCATION = "pluginsdk_pluginLocation";
+  public static final String PARAM_PLUGIN_LOG_CALLBACK_CLASS_NAME = "pluginsdk_logCallbackClassName";
   public static final String PARAM_PLUGIN_LOG_ENABLE = "pluginsdk_logEnable";
   public static final String PARAM_PLUGIN_NAME = "pluginsdk_pluginName";
   public static final String PARAM_PLUGIN_PATH = "pluginsdk_pluginpath";
@@ -64,24 +65,23 @@ public abstract class APPluginStatic
   {
     ArrayList localArrayList = sInstances;
     int i = 0;
-    for (;;)
+    try
     {
-      try
+      while (i < sInstances.size())
       {
-        if (i < sInstances.size())
+        if (((WeakReference)sInstances.get(i)).get() == paramIAPPluginActivity)
         {
-          if (((WeakReference)sInstances.get(i)).get() == paramIAPPluginActivity)
-          {
-            sInstances.remove(i);
-            return true;
-          }
+          sInstances.remove(i);
+          return true;
         }
-        else {
-          return false;
-        }
+        i += 1;
       }
-      finally {}
-      i += 1;
+      return false;
+    }
+    finally
+    {
+      paramIAPPluginActivity = finally;
+      throw paramIAPPluginActivity;
     }
   }
   
@@ -141,7 +141,7 @@ public abstract class APPluginStatic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.plugin.APPluginStatic
  * JD-Core Version:    0.7.0.1
  */

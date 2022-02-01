@@ -1,19 +1,20 @@
 package com.tencent.mm.plugin.offline.a;
 
 import android.content.Context;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.platformtools.z;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.wallet.e;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.eha;
-import com.tencent.mm.protocal.protobuf.ehb;
+import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.erc;
+import com.tencent.mm.protocal.protobuf.erd;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -25,7 +26,7 @@ import java.util.Set;
 import org.json.JSONObject;
 
 public abstract class h
-  extends com.tencent.mm.ak.q
+  extends com.tencent.mm.an.q
   implements m
 {
   private i callback;
@@ -57,22 +58,22 @@ public abstract class h
   public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     Log.i("MicroMsg.NetSceneTenpayOfflineBase", "Cmd : " + getTenpayCgicmd() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
-    ehb localehb = (ehb)((d)params).iLL.iLR;
+    erd localerd = (erd)d.c.b(((d)params).lBS);
     int i;
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      if (localehb.MhU == 0)
+      if (localerd.TrH == 0)
       {
-        params = z.b(localehb.MhT);
+        params = z.b(localerd.TrG);
         try
         {
           JSONObject localJSONObject = new JSONObject(params);
           paramInt1 = localJSONObject.getInt("retcode");
-          paramArrayOfByte = localehb.MGe;
+          paramArrayOfByte = localerd.TRR;
           params = paramArrayOfByte;
           if (Util.isNullOrNil(paramArrayOfByte)) {
             params = localJSONObject.optString("retmsg");
           }
-          i = localehb.MGd;
+          i = localerd.TRQ;
           if ((paramInt1 != 0) || (i != 0)) {
             break label297;
           }
@@ -85,7 +86,7 @@ public abstract class h
           for (;;)
           {
             Log.printErrStackTrace("MicroMsg.NetSceneTenpayOfflineBase", paramString, "", new Object[0]);
-            paramString = MMApplicationContext.getContext().getString(2131767667);
+            paramString = MMApplicationContext.getContext().getString(a.i.wallet_data_err);
             i = 2;
             paramInt1 = 1000;
           }
@@ -99,19 +100,19 @@ public abstract class h
         label297:
         Log.i("MicroMsg.NetSceneTenpayOfflineBase", "ErrCode tenpayErrType : ".concat(String.valueOf(i)));
         if (i != 0) {
-          break label449;
+          break label450;
         }
         i = -1000;
       }
     }
-    label449:
+    label450:
     for (;;)
     {
       Log.d("MicroMsg.NetSceneTenpayOfflineBase", "ErrCode errMsg : ".concat(String.valueOf(params)));
       paramString = params;
       paramInt1 = 1000;
       break;
-      paramString = localehb.MhV;
+      paramString = localerd.TrI;
       i = 2;
       paramInt1 = 1000;
       break;
@@ -133,25 +134,25 @@ public abstract class h
   
   public final void setRequestData(Map<String, String> paramMap)
   {
-    if (!e.gsQ()) {
-      paramMap.put("jsapi_reqkey", e.gsR());
+    if (!e.hod()) {
+      paramMap.put("jsapi_reqkey", e.hoe());
     }
     if (this.rr == null)
     {
       localObject1 = new d.a();
-      ((d.a)localObject1).iLN = new eha();
-      ((d.a)localObject1).iLO = new ehb();
+      ((d.a)localObject1).lBU = new erc();
+      ((d.a)localObject1).lBV = new erd();
       localObject2 = getUri();
       i = getFuncId();
       ((d.a)localObject1).uri = ((String)localObject2);
       ((d.a)localObject1).funcId = i;
-      ((d.a)localObject1).iLP = 185;
+      ((d.a)localObject1).lBW = 185;
       ((d.a)localObject1).respCmdId = 1000000185;
-      this.rr = ((d.a)localObject1).aXF();
+      this.rr = ((d.a)localObject1).bgN();
     }
-    Object localObject1 = (eha)this.rr.iLK.iLR;
-    ((eha)localObject1).MhQ = getTenpayCgicmd();
-    ((eha)localObject1).MhR = 1;
+    Object localObject1 = (erc)d.b.b(this.rr.lBR);
+    ((erc)localObject1).TrD = getTenpayCgicmd();
+    ((erc)localObject1).TrE = 1;
     Object localObject2 = paramMap.keySet().toArray();
     Arrays.sort((Object[])localObject2);
     Object localObject3 = new StringBuilder();
@@ -191,7 +192,7 @@ public abstract class h
       }
       ((StringBuilder)localObject4).append(str1);
       ((StringBuilder)localObject4).append("=");
-      ((StringBuilder)localObject4).append(com.tencent.mm.compatible.util.q.encode(str2));
+      ((StringBuilder)localObject4).append(com.tencent.mm.compatible.util.q.aT(str2));
       i = 1;
     }
     label438:
@@ -207,7 +208,7 @@ public abstract class h
         ((StringBuilder)localObject4).append("=");
         ((StringBuilder)localObject4).append((String)localObject3);
         paramMap = ((StringBuilder)localObject4).toString().getBytes();
-        ((eha)localObject1).MhS = new SKBuiltinBuffer_t().setBuffer(paramMap);
+        ((erc)localObject1).TrF = new eae().dc(paramMap);
         return;
       }
     }
@@ -215,7 +216,7 @@ public abstract class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.a.h
  * JD-Core Version:    0.7.0.1
  */

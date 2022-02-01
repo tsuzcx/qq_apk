@@ -3,49 +3,49 @@ package com.tencent.mm.plugin.game.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dc
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String Desc;
-  public String xIy;
+  public String CMG;
+  public String CQW;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41816);
+    AppMethodBeat.i(41815);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Desc != null) {
-        paramVarArgs.e(1, this.Desc);
+      if (this.CQW != null) {
+        paramVarArgs.f(1, this.CQW);
       }
-      if (this.xIy != null) {
-        paramVarArgs.e(2, this.xIy);
+      if (this.CMG != null) {
+        paramVarArgs.f(2, this.CMG);
       }
-      AppMethodBeat.o(41816);
+      AppMethodBeat.o(41815);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Desc == null) {
+      if (this.CQW == null) {
         break label274;
       }
     }
     label274:
-    for (paramInt = g.a.a.b.b.a.f(1, this.Desc) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.CQW) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.xIy != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.xIy);
+      if (this.CMG != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.CMG);
       }
-      AppMethodBeat.o(41816);
+      AppMethodBeat.o(41815);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(41816);
+        AppMethodBeat.o(41815);
         return 0;
       }
       if (paramInt == 3)
@@ -55,18 +55,18 @@ public final class dc
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(41816);
+          AppMethodBeat.o(41815);
           return -1;
         case 1: 
-          localdc.Desc = locala.UbS.readString();
-          AppMethodBeat.o(41816);
+          localdc.CQW = locala.abFh.readString();
+          AppMethodBeat.o(41815);
           return 0;
         }
-        localdc.xIy = locala.UbS.readString();
-        AppMethodBeat.o(41816);
+        localdc.CMG = locala.abFh.readString();
+        AppMethodBeat.o(41815);
         return 0;
       }
-      AppMethodBeat.o(41816);
+      AppMethodBeat.o(41815);
       return -1;
     }
   }

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout android:id="@id/a7q" android:background="@color/a" android:paddingTop="@dimen/b7" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@id/a7q" android:background="@color/a" android:paddingTop="@dimen/b7" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.design.widget.AppBarLayout android:orientation="vertical" android:id="@id/a5s" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content" app:elevation="0.0dip">
-        <android.support.design.widget.CollapsingToolbarLayout android:paddingBottom="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_scrollFlags="c6i|hci" app:titleEnabled="false">
+    <com.google.android.material.appbar.AppBarLayout android:orientation="vertical" android:id="@id/a5s" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content" app:elevation="0.0dip">
+        <com.google.android.material.appbar.CollapsingToolbarLayout android:paddingBottom="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_scrollFlags="c6i|hci" app:titleEnabled="false">
             <include android:id="@id/a5f" layout="@layout/x3" />
-        </android.support.design.widget.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
         <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="@dimen/bo" />
         <com.tencent.mm.plugin.profile.ui.tab.view.BizProfileTabLayout android:id="@id/a6_" android:layout_width="fill_parent" android:layout_height="46.0dip" />
-        <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="@dimen/bo" />
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
     <com.tencent.mm.plugin.profile.ui.tab.view.BizProfileViewPager android:id="@id/b8c" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_behavior="@string/a0e" />
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

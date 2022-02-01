@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class i
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public LinkedList<String> oTB;
-  public LinkedList<Long> oTC;
+  public LinkedList<Long> rVA;
+  public LinkedList<String> rVz;
   
   public i()
   {
     AppMethodBeat.i(22110);
-    this.oTB = new LinkedList();
-    this.oTC = new LinkedList();
+    this.rVz = new LinkedList();
+    this.rVA = new LinkedList();
     AppMethodBeat.o(22110);
   }
   
@@ -23,27 +23,27 @@ public final class i
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.e(1, 1, this.oTB);
-      paramVarArgs.e(2, 3, this.oTC);
+      paramVarArgs.e(1, 1, this.rVz);
+      paramVarArgs.e(2, 3, this.rVA);
       AppMethodBeat.o(22111);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.a.c(1, 1, this.oTB);
-      int i = g.a.a.a.c(2, 3, this.oTC);
+      paramInt = g.a.a.a.c(1, 1, this.rVz);
+      int i = g.a.a.a.c(2, 3, this.rVA);
       AppMethodBeat.o(22111);
       return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.oTB.clear();
-      this.oTC.clear();
+      this.rVz.clear();
+      this.rVA.clear();
       paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
       AppMethodBeat.o(22111);
@@ -59,11 +59,11 @@ public final class i
         AppMethodBeat.o(22111);
         return -1;
       case 1: 
-        locali.oTB.add(locala.UbS.readString());
+        locali.rVz.add(locala.abFh.readString());
         AppMethodBeat.o(22111);
         return 0;
       }
-      locali.oTC.add(Long.valueOf(locala.UbS.zl()));
+      locali.rVA.add(Long.valueOf(locala.abFh.AN()));
       AppMethodBeat.o(22111);
       return 0;
     }
@@ -73,7 +73,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.i
  * JD-Core Version:    0.7.0.1
  */

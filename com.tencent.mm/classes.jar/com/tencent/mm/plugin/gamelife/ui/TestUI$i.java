@@ -4,41 +4,41 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.gamelife.PluginGameLife;
 import com.tencent.mm.plugin.gamelife.a.c;
 import com.tencent.mm.plugin.gamelife.e.e;
 import java.util.List;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class TestUI$i
   implements View.OnClickListener
 {
-  public static final i ydD;
+  public static final i Djh;
   
   static
   {
-    AppMethodBeat.i(241543);
-    ydD = new i();
-    AppMethodBeat.o(241543);
+    AppMethodBeat.i(203263);
+    Djh = new i();
+    AppMethodBeat.o(203263);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(241542);
+    AppMethodBeat.i(203260);
     b localb = new b();
-    localb.bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    paramView = ((PluginGameLife)g.ah(PluginGameLife.class)).getConversationStorage();
-    ((c)g.af(c.class)).aAT(((com.tencent.mm.plugin.gamelife.e.a)paramView.dP(0, 1).get(0)).field_sessionId);
+    localb.bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    paramView = ((PluginGameLife)h.ag(PluginGameLife.class)).getConversationStorage();
+    ((c)h.ae(c.class)).aKG(((com.tencent.mm.plugin.gamelife.e.a)paramView.en(0, 1).get(0)).field_sessionId);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/TestUI$onCreate$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(241542);
+    AppMethodBeat.o(203260);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.ui.TestUI.i
  * JD-Core Version:    0.7.0.1
  */

@@ -1,85 +1,176 @@
 package com.tencent.smtt.utils;
 
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.os.Environment;
-import android.os.StatFs;
+import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.sdk.QbSdk;
 import java.io.File;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class q
 {
-  private static File a = null;
+  private b a = null;
+  private b b = null;
   
-  public static long a()
+  private boolean a(b paramb1, b paramb2)
   {
-    AppMethodBeat.i(54010);
-    StatFs localStatFs = new StatFs(Environment.getDataDirectory().getPath());
-    long l1 = localStatFs.getBlockSize();
-    long l2 = localStatFs.getAvailableBlocks();
-    AppMethodBeat.o(54010);
-    return l2 * l1;
-  }
-  
-  @TargetApi(9)
-  public static boolean a(Context paramContext)
-  {
-    AppMethodBeat.i(54011);
-    if (paramContext == null)
+    AppMethodBeat.i(200682);
+    TbsLog.d("TbsCopyVerify", "equal");
+    if ((paramb1 != null) && (paramb1.a() != null) && (paramb2 != null) && (paramb2.a() != null))
     {
-      AppMethodBeat.o(54011);
-      return false;
-    }
-    if (a == null) {
-      try
+      Object localObject1 = paramb1.a();
+      paramb1 = paramb2.a();
+      paramb2 = ((Map)localObject1).entrySet().iterator();
+      while (paramb2.hasNext())
       {
-        boolean bool = paramContext.getApplicationInfo().processName.contains("com.tencent.mm");
-        if (!bool)
+        Object localObject2 = (Map.Entry)paramb2.next();
+        localObject1 = (String)((Map.Entry)localObject2).getKey();
+        localObject2 = (a)((Map.Entry)localObject2).getValue();
+        if (paramb1.containsKey(localObject1))
         {
-          AppMethodBeat.o(54011);
-          return false;
-        }
-        paramContext = QbSdk.getTbsFolderDir(paramContext);
-        if (paramContext != null)
-        {
-          bool = paramContext.isDirectory();
-          if (bool) {}
-        }
-        else
-        {
-          AppMethodBeat.o(54011);
-          return false;
-        }
-        paramContext = new File(paramContext, "share");
-        if (!paramContext.isDirectory())
-        {
-          bool = paramContext.mkdir();
-          if (!bool)
+          localObject1 = (a)paramb1.get(localObject1);
+          if ((((a)localObject2).a() != ((a)localObject1).a()) || (((a)localObject2).b() != ((a)localObject1).b()))
           {
-            AppMethodBeat.o(54011);
+            AppMethodBeat.o(200682);
             return false;
           }
         }
-        a = paramContext;
-        paramContext.setExecutable(true, false);
-        AppMethodBeat.o(54011);
-        return true;
+        else
+        {
+          AppMethodBeat.o(200682);
+          return false;
+        }
       }
-      catch (Exception paramContext)
-      {
-        AppMethodBeat.o(54011);
-        return false;
-      }
+      AppMethodBeat.o(200682);
+      return true;
     }
-    AppMethodBeat.o(54011);
-    return true;
+    AppMethodBeat.o(200682);
+    return false;
+  }
+  
+  public void a(File paramFile)
+  {
+    AppMethodBeat.i(200676);
+    this.a = new b(paramFile);
+    AppMethodBeat.o(200676);
+  }
+  
+  public boolean a()
+  {
+    AppMethodBeat.i(200679);
+    TbsLog.d("TbsCopyVerify", "verify");
+    if ((this.b == null) || (this.a == null))
+    {
+      AppMethodBeat.o(200679);
+      return false;
+    }
+    if ((this.b.a().size() == this.a.a().size()) && (a(this.a, this.b)))
+    {
+      TbsLog.d("TbsCopyVerify", "verify Yes!");
+      AppMethodBeat.o(200679);
+      return true;
+    }
+    TbsLog.d("TbsCopyVerify", "verify No!");
+    AppMethodBeat.o(200679);
+    return false;
+  }
+  
+  public void b(File paramFile)
+  {
+    AppMethodBeat.i(200678);
+    this.b = new b(paramFile);
+    AppMethodBeat.o(200678);
+  }
+  
+  class a
+  {
+    private String b;
+    private long c;
+    private long d;
+    
+    a(String paramString, long paramLong1, long paramLong2)
+    {
+      this.b = paramString;
+      this.c = paramLong1;
+      this.d = paramLong2;
+    }
+    
+    long a()
+    {
+      return this.c;
+    }
+    
+    long b()
+    {
+      return this.d;
+    }
+  }
+  
+  class b
+  {
+    private Map<String, q.a> b;
+    
+    b(File paramFile)
+    {
+      AppMethodBeat.i(199743);
+      this.b = new HashMap();
+      this.b.clear();
+      a(paramFile);
+      AppMethodBeat.o(199743);
+    }
+    
+    private void a(File paramFile)
+    {
+      AppMethodBeat.i(199747);
+      if (paramFile.isDirectory())
+      {
+        paramFile = paramFile.listFiles();
+        if ((paramFile == null) && (Build.VERSION.SDK_INT >= 26))
+        {
+          AppMethodBeat.o(199747);
+          return;
+        }
+        TbsLog.d("TbsCopyVerify", "generateFileInfo len=" + paramFile.length);
+        int i = 0;
+        while (i < paramFile.length)
+        {
+          a(paramFile[i]);
+          i += 1;
+        }
+        AppMethodBeat.o(199747);
+        return;
+      }
+      if (paramFile.isFile()) {
+        a(paramFile.getName(), paramFile.length(), paramFile.lastModified());
+      }
+      AppMethodBeat.o(199747);
+    }
+    
+    private void a(String paramString, long paramLong1, long paramLong2)
+    {
+      AppMethodBeat.i(199752);
+      TbsLog.d("TbsCopyVerify", "generateFileInfo name=" + paramString + ",fileSize=" + paramLong1 + ",lastModify=" + paramLong2);
+      if ((paramString != null) && (paramString.length() > 0) && (paramLong1 > 0L) && (paramLong2 > 0L))
+      {
+        q.a locala = new q.a(q.this, paramString, paramLong1, paramLong2);
+        if (!this.b.containsKey(paramString)) {
+          this.b.put(paramString, locala);
+        }
+      }
+      AppMethodBeat.o(199752);
+    }
+    
+    Map<String, q.a> a()
+    {
+      return this.b;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.utils.q
  * JD-Core Version:    0.7.0.1
  */

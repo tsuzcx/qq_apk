@@ -3,18 +3,14 @@ package com.tencent.mm.plugin.appbrand.config;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.util.Pair;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.g.a.op;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.app.n;
-import com.tencent.mm.plugin.appbrand.appcache.bh;
-import com.tencent.mm.protocal.protobuf.ex;
-import com.tencent.mm.protocal.protobuf.fcu;
+import com.tencent.mm.f.a.pm;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.plugin.appbrand.app.m;
+import com.tencent.mm.plugin.appbrand.appcache.bm;
+import com.tencent.mm.protocal.protobuf.eu;
+import com.tencent.mm.protocal.protobuf.fnv;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -36,10 +32,10 @@ public class z
     super(paramISQLiteDatabase, "WxaAttributesTable", WxaAttributes.INDEX_CREATE);
     AppMethodBeat.i(44905);
     Cursor localCursor;
-    if (bAh())
+    if (bLz())
     {
       paramISQLiteDatabase = (ISQLiteDatabaseEx)paramISQLiteDatabase;
-      if (!g.aAh().azQ().getBoolean(ar.a.NYr, false))
+      if (!com.tencent.mm.kernel.h.aHG().aHp().getBoolean(ar.a.Vmr, false))
       {
         Log.i("MicroMsg.AppBrand.WxaAttributeDesktopURLFix", "before fix");
         localCursor = paramISQLiteDatabase.rawQuery("select appInfo from WxaAttributesTable", null, 2);
@@ -102,7 +98,7 @@ public class z
       if (!localCursor.isClosed()) {
         localCursor.close();
       }
-      g.aAh().azQ().set(ar.a.NYr, Boolean.TRUE);
+      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vmr, Boolean.TRUE);
       AppMethodBeat.o(44905);
       return;
       label367:
@@ -110,23 +106,23 @@ public class z
     }
   }
   
-  protected final boolean a(final WxaAttributes paramWxaAttributes, final fcu paramfcu)
+  protected final boolean a(final WxaAttributes paramWxaAttributes, final fnv paramfnv)
   {
     AppMethodBeat.i(44908);
-    boolean bool = super.a(paramWxaAttributes, paramfcu);
-    if ((bool) && ("WxaAppInfo".equals(paramfcu.xMX)))
+    boolean bool = super.a(paramWxaAttributes, paramfnv);
+    if ((bool) && ("WxaAppInfo".equals(paramfnv.CRg)))
     {
       paramWxaAttributes = paramWxaAttributes.field_appId;
-      paramfcu = paramfcu.Cyk;
-      h.RTc.b(new Runnable()
+      paramfnv = paramfnv.Izj;
+      com.tencent.e.h.ZvG.d(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(44904);
           try
           {
-            ex localex = u.E(new JSONObject(paramfcu));
-            q.b(paramWxaAttributes, localex.KIo);
+            eu localeu = u.H(new JSONObject(paramfnv));
+            q.b(paramWxaAttributes, localeu.RJF);
             AppMethodBeat.o(44904);
             return;
           }
@@ -141,33 +137,33 @@ public class z
     return bool;
   }
   
-  public final boolean a(String paramString, final b paramb, List<fcu> paramList)
+  public final boolean a(String paramString, final com.tencent.mm.cd.b paramb, List<fnv> paramList)
   {
     AppMethodBeat.i(44906);
-    if (!g.aAf().hpY)
+    if (!com.tencent.mm.kernel.h.aHE().kbT)
     {
       Log.e("MicroMsg.WxaAttrStorageWC", "flushAttrs username[%s], account().isInitializedNotifyAllDone()==FALSE", new Object[] { paramString });
       AppMethodBeat.o(44906);
       return false;
     }
     boolean bool = super.a(paramString, paramb, paramList);
-    paramb = super.d(paramString, new String[] { "appId", "versionInfo", "nickname", "bigHeadURL", "smallHeadURL" });
+    paramb = super.c(paramString, new String[] { "appId", "versionInfo", "nickname", "bigHeadURL", "smallHeadURL" });
     if (paramb == null)
     {
       Log.e("MicroMsg.WxaAttrStorageWC", "flushAttrs, get NULL record with username[%s]", new Object[] { paramString });
       AppMethodBeat.o(44906);
       return bool;
     }
-    paramString = paramb.bAp();
-    if ((paramString != null) && (paramString.cyu == 0))
+    paramString = paramb.bLH();
+    if ((paramString != null) && (paramString.cwX == 0))
     {
-      paramString = n.buL();
+      paramString = m.bFP();
       if (paramString != null) {
-        paramString.a(paramb.field_appId, paramb.bAp());
+        paramString.a(paramb.field_appId, paramb.bLH());
       }
     }
     if (bool) {
-      h.RTc.b(new Runnable()
+      com.tencent.e.h.ZvG.d(new Runnable()
       {
         public final void run()
         {
@@ -192,22 +188,22 @@ public class z
   
   public void add(MStorage.IOnStorageChange paramIOnStorageChange)
   {
-    AppMethodBeat.i(226475);
+    AppMethodBeat.i(284218);
     super.add("MicroMsg.WxaAttrStorageWC.WORKER", paramIOnStorageChange);
-    AppMethodBeat.o(226475);
+    AppMethodBeat.o(284218);
   }
   
-  protected final boolean k(String paramString, int paramInt, boolean paramBoolean)
+  protected final boolean o(String paramString, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(44907);
-    paramBoolean = super.k(paramString, paramInt, paramBoolean);
+    paramBoolean = super.o(paramString, paramInt, paramBoolean);
     if (paramBoolean)
     {
-      WxaAttributes localWxaAttributes = d(paramString, new String[] { "appOpt" });
-      op localop = new op();
-      localop.dUD.dCl = paramString;
-      localop.dUD.dUE = localWxaAttributes.field_appOpt;
-      EventCenter.instance.publish(localop);
+      WxaAttributes localWxaAttributes = c(paramString, new String[] { "appOpt" });
+      pm localpm = new pm();
+      localpm.fOf.fuO = paramString;
+      localpm.fOf.fOg = localWxaAttributes.field_appOpt;
+      EventCenter.instance.publish(localpm);
     }
     AppMethodBeat.o(44907);
     return paramBoolean;
@@ -215,7 +211,7 @@ public class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.z
  * JD-Core Version:    0.7.0.1
  */

@@ -10,15 +10,15 @@
             </LinearLayout>
             <LinearLayout android:orientation="horizontal" android:id="@id/gza" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir">
                 <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/g3m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hs" android:text="@string/fzv" />
-                <EditText android:id="@id/gzg" android:minHeight="@dimen/hk" android:hint="@string/fzq" style="@style/nm" />
+                <com.tencent.mm.plugin.account.sdk.ImeEditText android:id="@id/gzg" android:minHeight="@dimen/hk" android:hint="@string/fzq" style="@style/nm" />
             </LinearLayout>
             <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir">
                 <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/g8y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hs" android:text="@string/fzt" />
-                <EditText android:id="@id/gzi" android:minHeight="@dimen/hk" android:hint="@string/fzp" style="@style/nm" />
+                <com.tencent.mm.plugin.account.sdk.ImeEditText android:id="@id/gzi" android:minHeight="@dimen/hk" android:hint="@string/fzp" style="@style/nm" />
             </LinearLayout>
             <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir">
                 <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/b_n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hs" android:text="@string/fzo" />
-                <EditText android:id="@id/gzh" android:minHeight="@dimen/hk" android:hint="@string/fzr" style="@style/nm" />
+                <com.tencent.mm.plugin.account.sdk.ImeEditText android:id="@id/gzh" android:minHeight="@dimen/hk" android:hint="@string/fzr" style="@style/nm" />
             </LinearLayout>
             <TextView android:textSize="@dimen/hc" android:textColor="@color/a2x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" android:text="@string/hvm" />
             <TextView android:textSize="@dimen/hc" android:textColor="@color/x3" android:id="@id/d9c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dhc" />

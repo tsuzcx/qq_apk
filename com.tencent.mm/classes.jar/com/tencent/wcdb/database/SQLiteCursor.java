@@ -200,20 +200,20 @@ public class SQLiteCursor
   
   public boolean moveToPosition(int paramInt)
   {
-    AppMethodBeat.i(193937);
+    AppMethodBeat.i(187833);
     if (!super.moveToPosition(paramInt))
     {
-      AppMethodBeat.o(193937);
+      AppMethodBeat.o(187833);
       return false;
     }
     int i = getCount();
     if (paramInt >= i)
     {
       this.mPos = i;
-      AppMethodBeat.o(193937);
+      AppMethodBeat.o(187833);
       return false;
     }
-    AppMethodBeat.o(193937);
+    AppMethodBeat.o(187833);
     return true;
   }
   
@@ -322,7 +322,6 @@ public class SQLiteCursor
     //   23	38	95	finally
     //   46	60	95	finally
     //   60	82	95	finally
-    //   96	98	95	finally
     //   82	87	106	java/lang/IllegalStateException
   }
   
@@ -343,7 +342,7 @@ public class SQLiteCursor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wcdb.database.SQLiteCursor
  * JD-Core Version:    0.7.0.1
  */

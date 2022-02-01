@@ -10,40 +10,40 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class l
 {
-  private int[] bhG;
-  private long[] bhI;
-  private int[] bmY;
-  private int bwA;
-  public int[] bwB;
-  private m.a[] bwC;
-  private Format[] bwD;
-  private int bwE;
-  private int bwF;
-  public int bwG;
-  private long bwH;
-  private long bwI;
-  private boolean bwJ;
-  private boolean bwK;
-  private Format bwL;
-  public int bwM;
+  private int[] aRk;
+  private long[] aRm;
+  private int[] aWA;
+  private int bgc;
+  public int[] bgd;
+  private m.a[] bge;
+  private Format[] bgf;
+  private int bgg;
+  private int bgh;
+  public int bgi;
+  private long bgj;
+  private long bgk;
+  private boolean bgl;
+  private boolean bgm;
+  private Format bgn;
+  public int bgo;
   private int length;
   private long[] offsets;
   
   public l()
   {
     AppMethodBeat.i(92681);
-    this.bwA = 1000;
-    this.bwB = new int[this.bwA];
-    this.offsets = new long[this.bwA];
-    this.bhI = new long[this.bwA];
-    this.bmY = new int[this.bwA];
-    this.bhG = new int[this.bwA];
-    this.bwC = new m.a[this.bwA];
-    this.bwD = new Format[this.bwA];
-    this.bwH = -9223372036854775808L;
-    this.bwI = -9223372036854775808L;
-    this.bwK = true;
-    this.bwJ = true;
+    this.bgc = 1000;
+    this.bgd = new int[this.bgc];
+    this.offsets = new long[this.bgc];
+    this.aRm = new long[this.bgc];
+    this.aWA = new int[this.bgc];
+    this.aRk = new int[this.bgc];
+    this.bge = new m.a[this.bgc];
+    this.bgf = new Format[this.bgc];
+    this.bgj = -9223372036854775808L;
+    this.bgk = -9223372036854775808L;
+    this.bgm = true;
+    this.bgl = true;
     AppMethodBeat.o(92681);
   }
   
@@ -53,14 +53,14 @@ public final class l
     int k = 0;
     int i = paramInt1;
     paramInt1 = k;
-    while ((paramInt1 < paramInt2) && (this.bhI[i] <= paramLong))
+    while ((paramInt1 < paramInt2) && (this.aRm[i] <= paramLong))
     {
-      if ((!paramBoolean) || ((this.bmY[i] & 0x1) != 0)) {
+      if ((!paramBoolean) || ((this.aWA[i] & 0x1) != 0)) {
         j = paramInt1;
       }
       k = i + 1;
       i = k;
-      if (k == this.bwA) {
+      if (k == this.bgc) {
         i = 0;
       }
       paramInt1 += 1;
@@ -68,12 +68,12 @@ public final class l
     return j;
   }
   
-  private void aa(long paramLong)
+  private void ad(long paramLong)
   {
     try
     {
       AppMethodBeat.i(92691);
-      this.bwI = Math.max(this.bwI, paramLong);
+      this.bgk = Math.max(this.bgk, paramLong);
       AppMethodBeat.o(92691);
       return;
     }
@@ -84,38 +84,38 @@ public final class l
     }
   }
   
-  private long eB(int paramInt)
+  private long eR(int paramInt)
   {
     AppMethodBeat.i(92693);
-    this.bwH = Math.max(this.bwH, eC(paramInt));
+    this.bgj = Math.max(this.bgj, eS(paramInt));
     this.length -= paramInt;
-    this.bwE += paramInt;
-    this.bwF += paramInt;
-    if (this.bwF >= this.bwA) {
-      this.bwF -= this.bwA;
+    this.bgg += paramInt;
+    this.bgh += paramInt;
+    if (this.bgh >= this.bgc) {
+      this.bgh -= this.bgc;
     }
-    this.bwG -= paramInt;
-    if (this.bwG < 0) {
-      this.bwG = 0;
+    this.bgi -= paramInt;
+    if (this.bgi < 0) {
+      this.bgi = 0;
     }
     if (this.length == 0)
     {
-      if (this.bwF == 0) {}
-      for (paramInt = this.bwA;; paramInt = this.bwF)
+      if (this.bgh == 0) {}
+      for (paramInt = this.bgc;; paramInt = this.bgh)
       {
         paramInt -= 1;
         l1 = this.offsets[paramInt];
-        long l2 = this.bhG[paramInt];
+        long l2 = this.aRk[paramInt];
         AppMethodBeat.o(92693);
         return l2 + l1;
       }
     }
-    long l1 = this.offsets[this.bwF];
+    long l1 = this.offsets[this.bgh];
     AppMethodBeat.o(92693);
     return l1;
   }
   
-  private long eC(int paramInt)
+  private long eS(int paramInt)
   {
     AppMethodBeat.i(92694);
     if (paramInt == 0)
@@ -123,7 +123,7 @@ public final class l
       AppMethodBeat.o(92694);
       return -9223372036854775808L;
     }
-    int i = eD(paramInt - 1);
+    int i = eT(paramInt - 1);
     int j = 0;
     long l1 = -9223372036854775808L;
     long l2;
@@ -133,15 +133,15 @@ public final class l
       if (j >= paramInt) {
         break;
       }
-      l1 = Math.max(l1, this.bhI[i]);
+      l1 = Math.max(l1, this.aRm[i]);
       l2 = l1;
-      if ((this.bmY[i] & 0x1) != 0) {
+      if ((this.aWA[i] & 0x1) != 0) {
         break;
       }
       int k = i - 1;
       i = k;
       if (k == -1) {
-        i = this.bwA - 1;
+        i = this.bgc - 1;
       }
       j += 1;
     }
@@ -158,7 +158,7 @@ public final class l
       {
         AppMethodBeat.i(92683);
         int i;
-        if (!vF())
+        if (!tD())
         {
           if (paramBoolean2)
           {
@@ -167,9 +167,9 @@ public final class l
             i = j;
             return i;
           }
-          if ((this.bwL != null) && ((paramBoolean1) || (this.bwL != paramFormat)))
+          if ((this.bgn != null) && ((paramBoolean1) || (this.bgn != paramFormat)))
           {
-            paramk.bdF = this.bwL;
+            paramk.aNg = this.bgn;
             AppMethodBeat.o(92683);
             i = -5;
             continue;
@@ -178,14 +178,14 @@ public final class l
           i = -3;
           continue;
         }
-        int k = eD(this.bwG);
-        if ((paramBoolean1) || (this.bwD[k] != paramFormat))
+        int k = eT(this.bgi);
+        if ((paramBoolean1) || (this.bgf[k] != paramFormat))
         {
-          paramk.bdF = this.bwD[k];
+          paramk.aNg = this.bgf[k];
           AppMethodBeat.o(92683);
           i = -5;
         }
-        else if ((parame.aKP == null) && (parame.bhq == 0))
+        else if ((parame.aQU == null) && (parame.aQV == 0))
         {
           i = 1;
           if (i != 0)
@@ -195,12 +195,12 @@ public final class l
           }
           else
           {
-            parame.timeUs = this.bhI[k];
-            parame.flags = this.bmY[k];
-            parama.size = this.bhG[k];
+            parame.timeUs = this.aRm[k];
+            parame.flags = this.aWA[k];
+            parama.size = this.aRk[k];
             parama.offset = this.offsets[k];
-            parama.bjS = this.bwC[k];
-            this.bwG += 1;
+            parama.aTw = this.bge[k];
+            this.bgi += 1;
             AppMethodBeat.o(92683);
             i = j;
           }
@@ -221,33 +221,33 @@ public final class l
       try
       {
         AppMethodBeat.i(92690);
-        if (this.bwJ)
+        if (this.bgl)
         {
           if ((paramInt1 & 0x1) == 0)
           {
             AppMethodBeat.o(92690);
             return;
           }
-          this.bwJ = false;
+          this.bgl = false;
         }
         boolean bool;
-        if (!this.bwK)
+        if (!this.bgm)
         {
           bool = true;
           a.checkState(bool);
-          aa(paramLong1);
-          int i = eD(this.length);
-          this.bhI[i] = paramLong1;
+          ad(paramLong1);
+          int i = eT(this.length);
+          this.aRm[i] = paramLong1;
           this.offsets[i] = paramLong2;
-          this.bhG[i] = paramInt2;
-          this.bmY[i] = paramInt1;
-          this.bwC[i] = parama;
-          this.bwD[i] = this.bwL;
-          this.bwB[i] = this.bwM;
+          this.aRk[i] = paramInt2;
+          this.aWA[i] = paramInt1;
+          this.bge[i] = parama;
+          this.bgf[i] = this.bgn;
+          this.bgd[i] = this.bgo;
           this.length += 1;
-          if (this.length == this.bwA)
+          if (this.length == this.bgc)
           {
-            paramInt1 = this.bwA + 1000;
+            paramInt1 = this.bgc + 1000;
             parama = new int[paramInt1];
             long[] arrayOfLong1 = new long[paramInt1];
             long[] arrayOfLong2 = new long[paramInt1];
@@ -255,32 +255,32 @@ public final class l
             int[] arrayOfInt2 = new int[paramInt1];
             m.a[] arrayOfa = new m.a[paramInt1];
             Format[] arrayOfFormat = new Format[paramInt1];
-            paramInt2 = this.bwA - this.bwF;
-            System.arraycopy(this.offsets, this.bwF, arrayOfLong1, 0, paramInt2);
-            System.arraycopy(this.bhI, this.bwF, arrayOfLong2, 0, paramInt2);
-            System.arraycopy(this.bmY, this.bwF, arrayOfInt1, 0, paramInt2);
-            System.arraycopy(this.bhG, this.bwF, arrayOfInt2, 0, paramInt2);
-            System.arraycopy(this.bwC, this.bwF, arrayOfa, 0, paramInt2);
-            System.arraycopy(this.bwD, this.bwF, arrayOfFormat, 0, paramInt2);
-            System.arraycopy(this.bwB, this.bwF, parama, 0, paramInt2);
-            i = this.bwF;
+            paramInt2 = this.bgc - this.bgh;
+            System.arraycopy(this.offsets, this.bgh, arrayOfLong1, 0, paramInt2);
+            System.arraycopy(this.aRm, this.bgh, arrayOfLong2, 0, paramInt2);
+            System.arraycopy(this.aWA, this.bgh, arrayOfInt1, 0, paramInt2);
+            System.arraycopy(this.aRk, this.bgh, arrayOfInt2, 0, paramInt2);
+            System.arraycopy(this.bge, this.bgh, arrayOfa, 0, paramInt2);
+            System.arraycopy(this.bgf, this.bgh, arrayOfFormat, 0, paramInt2);
+            System.arraycopy(this.bgd, this.bgh, parama, 0, paramInt2);
+            i = this.bgh;
             System.arraycopy(this.offsets, 0, arrayOfLong1, paramInt2, i);
-            System.arraycopy(this.bhI, 0, arrayOfLong2, paramInt2, i);
-            System.arraycopy(this.bmY, 0, arrayOfInt1, paramInt2, i);
-            System.arraycopy(this.bhG, 0, arrayOfInt2, paramInt2, i);
-            System.arraycopy(this.bwC, 0, arrayOfa, paramInt2, i);
-            System.arraycopy(this.bwD, 0, arrayOfFormat, paramInt2, i);
-            System.arraycopy(this.bwB, 0, parama, paramInt2, i);
+            System.arraycopy(this.aRm, 0, arrayOfLong2, paramInt2, i);
+            System.arraycopy(this.aWA, 0, arrayOfInt1, paramInt2, i);
+            System.arraycopy(this.aRk, 0, arrayOfInt2, paramInt2, i);
+            System.arraycopy(this.bge, 0, arrayOfa, paramInt2, i);
+            System.arraycopy(this.bgf, 0, arrayOfFormat, paramInt2, i);
+            System.arraycopy(this.bgd, 0, parama, paramInt2, i);
             this.offsets = arrayOfLong1;
-            this.bhI = arrayOfLong2;
-            this.bmY = arrayOfInt1;
-            this.bhG = arrayOfInt2;
-            this.bwC = arrayOfa;
-            this.bwD = arrayOfFormat;
-            this.bwB = parama;
-            this.bwF = 0;
-            this.length = this.bwA;
-            this.bwA = paramInt1;
+            this.aRm = arrayOfLong2;
+            this.aWA = arrayOfInt1;
+            this.aRk = arrayOfInt2;
+            this.bge = arrayOfa;
+            this.bgf = arrayOfFormat;
+            this.bgd = parama;
+            this.bgh = 0;
+            this.length = this.bgc;
+            this.bgc = paramInt1;
           }
           AppMethodBeat.o(92690);
         }
@@ -294,7 +294,7 @@ public final class l
   }
   
   /* Error */
-  public final boolean ab(long paramLong)
+  public final boolean ae(long paramLong)
   {
     // Byte code:
     //   0: iconst_1
@@ -310,7 +310,7 @@ public final class l
     //   17: ifne +37 -> 54
     //   20: lload_1
     //   21: aload_0
-    //   22: getfield 68	com/google/android/exoplayer2/source/l:bwH	J
+    //   22: getfield 68	com/google/android/exoplayer2/source/l:bgj	J
     //   25: lcmp
     //   26: ifle +17 -> 43
     //   29: ldc 168
@@ -327,11 +327,11 @@ public final class l
     //   49: istore 7
     //   51: goto -13 -> 38
     //   54: aload_0
-    //   55: getfield 68	com/google/android/exoplayer2/source/l:bwH	J
+    //   55: getfield 68	com/google/android/exoplayer2/source/l:bgj	J
     //   58: aload_0
     //   59: aload_0
-    //   60: getfield 102	com/google/android/exoplayer2/source/l:bwG	I
-    //   63: invokespecial 94	com/google/android/exoplayer2/source/l:eC	(I)J
+    //   60: getfield 102	com/google/android/exoplayer2/source/l:bgi	I
+    //   63: invokespecial 94	com/google/android/exoplayer2/source/l:eS	(I)J
     //   66: invokestatic 88	java/lang/Math:max	(JJ)J
     //   69: lload_1
     //   70: lcmp
@@ -349,14 +349,14 @@ public final class l
     //   93: getfield 96	com/google/android/exoplayer2/source/l:length	I
     //   96: iconst_1
     //   97: isub
-    //   98: invokevirtual 107	com/google/android/exoplayer2/source/l:eD	(I)I
+    //   98: invokevirtual 107	com/google/android/exoplayer2/source/l:eT	(I)I
     //   101: istore_3
     //   102: iload 4
     //   104: aload_0
-    //   105: getfield 102	com/google/android/exoplayer2/source/l:bwG	I
+    //   105: getfield 102	com/google/android/exoplayer2/source/l:bgi	I
     //   108: if_icmple +52 -> 160
     //   111: aload_0
-    //   112: getfield 52	com/google/android/exoplayer2/source/l:bhI	[J
+    //   112: getfield 52	com/google/android/exoplayer2/source/l:aRm	[J
     //   115: iload_3
     //   116: laload
     //   117: lload_1
@@ -378,7 +378,7 @@ public final class l
     //   142: iconst_m1
     //   143: if_icmpne -41 -> 102
     //   146: aload_0
-    //   147: getfield 46	com/google/android/exoplayer2/source/l:bwA	I
+    //   147: getfield 46	com/google/android/exoplayer2/source/l:bgc	I
     //   150: iconst_1
     //   151: isub
     //   152: istore_3
@@ -386,10 +386,10 @@ public final class l
     //   155: istore 4
     //   157: goto -55 -> 102
     //   160: aload_0
-    //   161: getfield 98	com/google/android/exoplayer2/source/l:bwE	I
+    //   161: getfield 98	com/google/android/exoplayer2/source/l:bgg	I
     //   164: istore_3
     //   165: aload_0
-    //   166: invokevirtual 172	com/google/android/exoplayer2/source/l:vD	()I
+    //   166: invokevirtual 172	com/google/android/exoplayer2/source/l:tB	()I
     //   169: iload_3
     //   170: iload 4
     //   172: iadd
@@ -405,7 +405,7 @@ public final class l
     //   188: aload_0
     //   189: getfield 96	com/google/android/exoplayer2/source/l:length	I
     //   192: aload_0
-    //   193: getfield 102	com/google/android/exoplayer2/source/l:bwG	I
+    //   193: getfield 102	com/google/android/exoplayer2/source/l:bgi	I
     //   196: isub
     //   197: if_icmpgt +6 -> 203
     //   200: iconst_1
@@ -420,55 +420,80 @@ public final class l
     //   215: putfield 96	com/google/android/exoplayer2/source/l:length	I
     //   218: aload_0
     //   219: aload_0
-    //   220: getfield 68	com/google/android/exoplayer2/source/l:bwH	J
+    //   220: getfield 68	com/google/android/exoplayer2/source/l:bgj	J
     //   223: aload_0
     //   224: aload_0
     //   225: getfield 96	com/google/android/exoplayer2/source/l:length	I
-    //   228: invokespecial 94	com/google/android/exoplayer2/source/l:eC	(I)J
+    //   228: invokespecial 94	com/google/android/exoplayer2/source/l:eS	(I)J
     //   231: invokestatic 88	java/lang/Math:max	(JJ)J
-    //   234: putfield 70	com/google/android/exoplayer2/source/l:bwI	J
-    //   237: ldc 168
-    //   239: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   242: iload 8
-    //   244: istore 7
-    //   246: goto -208 -> 38
-    //   249: astore 10
-    //   251: aload_0
-    //   252: monitorexit
-    //   253: aload 10
-    //   255: athrow
+    //   234: putfield 70	com/google/android/exoplayer2/source/l:bgk	J
+    //   237: aload_0
+    //   238: getfield 96	com/google/android/exoplayer2/source/l:length	I
+    //   241: ifeq +14 -> 255
+    //   244: aload_0
+    //   245: aload_0
+    //   246: getfield 96	com/google/android/exoplayer2/source/l:length	I
+    //   249: iconst_1
+    //   250: isub
+    //   251: invokevirtual 107	com/google/android/exoplayer2/source/l:eT	(I)I
+    //   254: pop
+    //   255: ldc 168
+    //   257: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   260: iload 8
+    //   262: istore 7
+    //   264: goto -226 -> 38
+    //   267: astore 10
+    //   269: aload_0
+    //   270: monitorexit
+    //   271: aload 10
+    //   273: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	256	0	this	l
-    //   0	256	1	paramLong	long
+    //   0	274	0	this	l
+    //   0	274	1	paramLong	long
     //   101	114	3	i	int
     //   89	84	4	j	int
     //   126	28	5	k	int
     //   131	13	6	m	int
-    //   36	209	7	bool1	boolean
-    //   1	242	8	bool2	boolean
+    //   36	227	7	bool1	boolean
+    //   1	260	8	bool2	boolean
     //   4	180	9	bool3	boolean
-    //   249	5	10	localObject	Object
+    //   267	5	10	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   8	34	249	finally
-    //   43	48	249	finally
-    //   54	79	249	finally
-    //   85	102	249	finally
-    //   102	122	249	finally
-    //   146	153	249	finally
-    //   160	175	249	finally
-    //   187	200	249	finally
-    //   203	242	249	finally
+    //   8	34	267	finally
+    //   43	48	267	finally
+    //   54	79	267	finally
+    //   85	102	267	finally
+    //   102	122	267	finally
+    //   146	153	267	finally
+    //   160	175	267	finally
+    //   187	200	267	finally
+    //   203	255	267	finally
+    //   255	260	267	finally
   }
   
-  public final int eD(int paramInt)
+  public final void ax()
   {
-    paramInt = this.bwF + paramInt;
-    if (paramInt < this.bwA) {
+    try
+    {
+      this.bgi = 0;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final int eT(int paramInt)
+  {
+    paramInt = this.bgh + paramInt;
+    if (paramInt < this.bgc) {
       return paramInt;
     }
-    return paramInt - this.bwA;
+    return paramInt - this.bgc;
   }
   
   public final boolean f(long paramLong, boolean paramBoolean)
@@ -479,21 +504,21 @@ public final class l
       try
       {
         AppMethodBeat.i(92684);
-        int i = eD(this.bwG);
-        if ((!vF()) || (paramLong < this.bhI[i]) || ((paramLong > this.bwI) && (!paramBoolean)))
+        int i = eT(this.bgi);
+        if ((!tD()) || (paramLong < this.aRm[i]) || ((paramLong > this.bgk) && (!paramBoolean)))
         {
           AppMethodBeat.o(92684);
           paramBoolean = bool;
           return paramBoolean;
         }
-        i = a(i, this.length - this.bwG, paramLong, true);
+        i = a(i, this.length - this.bgi, paramLong, true);
         if (i == -1)
         {
           AppMethodBeat.o(92684);
           paramBoolean = bool;
           continue;
         }
-        this.bwG += i;
+        this.bgi += i;
       }
       finally {}
       AppMethodBeat.o(92684);
@@ -507,22 +532,22 @@ public final class l
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 183
+    //   2: ldc 184
     //   4: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
     //   8: getfield 96	com/google/android/exoplayer2/source/l:length	I
     //   11: ifeq +17 -> 28
     //   14: lload_1
     //   15: aload_0
-    //   16: getfield 52	com/google/android/exoplayer2/source/l:bhI	[J
+    //   16: getfield 52	com/google/android/exoplayer2/source/l:aRm	[J
     //   19: aload_0
-    //   20: getfield 100	com/google/android/exoplayer2/source/l:bwF	I
+    //   20: getfield 100	com/google/android/exoplayer2/source/l:bgh	I
     //   23: laload
     //   24: lcmp
     //   25: ifge +16 -> 41
-    //   28: ldc 183
+    //   28: ldc 184
     //   30: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   33: ldc2_w 184
+    //   33: ldc2_w 185
     //   36: lstore_1
     //   37: aload_0
     //   38: monitorexit
@@ -531,29 +556,29 @@ public final class l
     //   41: iload_3
     //   42: ifeq +54 -> 96
     //   45: aload_0
-    //   46: getfield 102	com/google/android/exoplayer2/source/l:bwG	I
+    //   46: getfield 102	com/google/android/exoplayer2/source/l:bgi	I
     //   49: aload_0
     //   50: getfield 96	com/google/android/exoplayer2/source/l:length	I
     //   53: if_icmpeq +43 -> 96
     //   56: aload_0
-    //   57: getfield 102	com/google/android/exoplayer2/source/l:bwG	I
+    //   57: getfield 102	com/google/android/exoplayer2/source/l:bgi	I
     //   60: iconst_1
     //   61: iadd
     //   62: istore 4
     //   64: aload_0
     //   65: aload_0
-    //   66: getfield 100	com/google/android/exoplayer2/source/l:bwF	I
+    //   66: getfield 100	com/google/android/exoplayer2/source/l:bgh	I
     //   69: iload 4
     //   71: lload_1
     //   72: iconst_0
-    //   73: invokespecial 180	com/google/android/exoplayer2/source/l:a	(IIJZ)I
+    //   73: invokespecial 181	com/google/android/exoplayer2/source/l:a	(IIJZ)I
     //   76: istore 4
     //   78: iload 4
     //   80: iconst_m1
     //   81: if_icmpne +24 -> 105
-    //   84: ldc 183
+    //   84: ldc 184
     //   86: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   89: ldc2_w 184
+    //   89: ldc2_w 185
     //   92: lstore_1
     //   93: goto -56 -> 37
     //   96: aload_0
@@ -562,9 +587,9 @@ public final class l
     //   102: goto -38 -> 64
     //   105: aload_0
     //   106: iload 4
-    //   108: invokespecial 187	com/google/android/exoplayer2/source/l:eB	(I)J
+    //   108: invokespecial 188	com/google/android/exoplayer2/source/l:eR	(I)J
     //   111: lstore_1
-    //   112: ldc 183
+    //   112: ldc 184
     //   114: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   117: goto -80 -> 37
     //   120: astore 5
@@ -600,17 +625,17 @@ public final class l
         AppMethodBeat.i(92689);
         if (paramFormat == null)
         {
-          this.bwK = true;
+          this.bgm = true;
           AppMethodBeat.o(92689);
           return bool;
         }
-        this.bwK = false;
-        if (x.j(paramFormat, this.bwL))
+        this.bgm = false;
+        if (x.h(paramFormat, this.bgn))
         {
           AppMethodBeat.o(92689);
           continue;
         }
-        this.bwL = paramFormat;
+        this.bgn = paramFormat;
       }
       finally {}
       AppMethodBeat.o(92689);
@@ -621,51 +646,37 @@ public final class l
   public final void reset(boolean paramBoolean)
   {
     this.length = 0;
-    this.bwE = 0;
-    this.bwF = 0;
-    this.bwG = 0;
-    this.bwJ = true;
-    this.bwH = -9223372036854775808L;
-    this.bwI = -9223372036854775808L;
+    this.bgg = 0;
+    this.bgh = 0;
+    this.bgi = 0;
+    this.bgl = true;
+    this.bgj = -9223372036854775808L;
+    this.bgk = -9223372036854775808L;
     if (paramBoolean)
     {
-      this.bwL = null;
-      this.bwK = true;
+      this.bgn = null;
+      this.bgm = true;
     }
   }
   
-  public final void rewind()
+  public final int tB()
   {
-    try
-    {
-      this.bwG = 0;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return this.bgg + this.length;
   }
   
-  public final int vD()
+  public final int tC()
   {
-    return this.bwE + this.length;
-  }
-  
-  public final int vE()
-  {
-    return this.bwE + this.bwG;
+    return this.bgg + this.bgi;
   }
   
   /* Error */
-  public final boolean vF()
+  public final boolean tD()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 102	com/google/android/exoplayer2/source/l:bwG	I
+    //   3: getfield 102	com/google/android/exoplayer2/source/l:bgi	I
     //   6: istore_1
     //   7: aload_0
     //   8: getfield 96	com/google/android/exoplayer2/source/l:length	I
@@ -700,13 +711,13 @@ public final class l
   }
   
   /* Error */
-  public final Format vG()
+  public final Format tE()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 72	com/google/android/exoplayer2/source/l:bwK	Z
+    //   3: getfield 72	com/google/android/exoplayer2/source/l:bgm	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifeq +9 -> 17
@@ -717,7 +728,7 @@ public final class l
     //   15: aload_2
     //   16: areturn
     //   17: aload_0
-    //   18: getfield 120	com/google/android/exoplayer2/source/l:bwL	Lcom/google/android/exoplayer2/Format;
+    //   18: getfield 120	com/google/android/exoplayer2/source/l:bgn	Lcom/google/android/exoplayer2/Format;
     //   21: astore_2
     //   22: goto -9 -> 13
     //   25: astore_2
@@ -738,7 +749,7 @@ public final class l
   }
   
   /* Error */
-  public final void vH()
+  public final void tF()
   {
     // Byte code:
     //   0: aload_0
@@ -746,7 +757,7 @@ public final class l
     //   2: ldc 202
     //   4: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: invokevirtual 113	com/google/android/exoplayer2/source/l:vF	()Z
+    //   8: invokevirtual 113	com/google/android/exoplayer2/source/l:tD	()Z
     //   11: ifne +11 -> 22
     //   14: ldc 202
     //   16: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -756,7 +767,7 @@ public final class l
     //   22: aload_0
     //   23: aload_0
     //   24: getfield 96	com/google/android/exoplayer2/source/l:length	I
-    //   27: putfield 102	com/google/android/exoplayer2/source/l:bwG	I
+    //   27: putfield 102	com/google/android/exoplayer2/source/l:bgi	I
     //   30: ldc 202
     //   32: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   35: goto -16 -> 19
@@ -776,7 +787,7 @@ public final class l
   }
   
   /* Error */
-  public final long vI()
+  public final long tG()
   {
     // Byte code:
     //   0: aload_0
@@ -784,9 +795,9 @@ public final class l
     //   2: ldc 205
     //   4: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 102	com/google/android/exoplayer2/source/l:bwG	I
+    //   8: getfield 102	com/google/android/exoplayer2/source/l:bgi	I
     //   11: ifne +16 -> 27
-    //   14: ldc2_w 184
+    //   14: ldc2_w 185
     //   17: lstore_1
     //   18: ldc 205
     //   20: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -796,8 +807,8 @@ public final class l
     //   26: lreturn
     //   27: aload_0
     //   28: aload_0
-    //   29: getfield 102	com/google/android/exoplayer2/source/l:bwG	I
-    //   32: invokespecial 187	com/google/android/exoplayer2/source/l:eB	(I)J
+    //   29: getfield 102	com/google/android/exoplayer2/source/l:bgi	I
+    //   32: invokespecial 188	com/google/android/exoplayer2/source/l:eR	(I)J
     //   35: lstore_1
     //   36: ldc 205
     //   38: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -820,7 +831,7 @@ public final class l
   }
   
   /* Error */
-  public final long vJ()
+  public final long tH()
   {
     // Byte code:
     //   0: aload_0
@@ -830,7 +841,7 @@ public final class l
     //   7: aload_0
     //   8: getfield 96	com/google/android/exoplayer2/source/l:length	I
     //   11: ifne +16 -> 27
-    //   14: ldc2_w 184
+    //   14: ldc2_w 185
     //   17: lstore_1
     //   18: ldc 207
     //   20: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -841,7 +852,7 @@ public final class l
     //   27: aload_0
     //   28: aload_0
     //   29: getfield 96	com/google/android/exoplayer2/source/l:length	I
-    //   32: invokespecial 187	com/google/android/exoplayer2/source/l:eB	(I)J
+    //   32: invokespecial 188	com/google/android/exoplayer2/source/l:eR	(I)J
     //   35: lstore_1
     //   36: ldc 207
     //   38: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -863,11 +874,11 @@ public final class l
     //   27	41	44	finally
   }
   
-  public final long vy()
+  public final long tw()
   {
     try
     {
-      long l = this.bwI;
+      long l = this.bgk;
       return l;
     }
     finally
@@ -879,14 +890,14 @@ public final class l
   
   public static final class a
   {
-    public m.a bjS;
+    public m.a aTw;
     public long offset;
     public int size;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.source.l
  * JD-Core Version:    0.7.0.1
  */

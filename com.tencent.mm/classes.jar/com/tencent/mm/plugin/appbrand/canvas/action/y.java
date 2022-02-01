@@ -18,7 +18,7 @@ public final class y
   {
     AppMethodBeat.i(144947);
     if ((paramArrayOfFloat != null) && (paramFloat != 1.4E-45F)) {
-      paramd.kZl.setPathEffect(new DashPathEffect(paramArrayOfFloat, paramFloat));
+      paramd.nTw.setPathEffect(new DashPathEffect(paramArrayOfFloat, paramFloat));
     }
     AppMethodBeat.o(144947);
     return true;
@@ -33,7 +33,7 @@ public final class y
       AppMethodBeat.o(144948);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas.kZL, paramCanvas.kZM);
+    boolean bool = a(paramd, paramCanvas.nTW, paramCanvas.nTX);
     AppMethodBeat.o(144948);
     return bool;
   }
@@ -73,7 +73,7 @@ public final class y
     return false;
   }
   
-  public final BaseDrawActionArg bzj()
+  public final BaseDrawActionArg bKy()
   {
     AppMethodBeat.i(144945);
     SetLineDashActionArg localSetLineDashActionArg = new SetLineDashActionArg();
@@ -88,7 +88,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.y
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
+import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.game.luggage.g.i;
 import com.tencent.mm.plugin.lite.a.a;
 import com.tencent.mm.plugin.lite.b.f;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.webview.luggage.c.c;
 import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -19,21 +19,21 @@ public class m
 {
   public final void a(Context paramContext, String paramString, br.a parama)
   {
-    AppMethodBeat.i(186857);
+    AppMethodBeat.i(231828);
     paramContext = new JSONObject();
     try
     {
-      paramString = com.tencent.mm.plugin.webview.luggage.c.b.Zc(paramString);
+      paramString = c.agO(paramString);
       if ((paramString == null) || (!paramString.has("appId")))
       {
         Log.w("MicroMsg.JsApiGetLiteAppSwitch", "invalid appId");
         paramContext.put("switch", false);
         parama.i(null, paramContext);
-        AppMethodBeat.o(186857);
+        AppMethodBeat.o(231828);
         return;
       }
       localObject = paramString.getString("appId");
-      bool3 = ((a)g.af(a.class)).aCR((String)localObject);
+      bool3 = ((a)com.tencent.mm.kernel.h.ae(a.class)).aMY((String)localObject);
       if (WeChatEnvironment.isCoolassistEnv()) {
         break label427;
       }
@@ -66,22 +66,22 @@ public class m
     if ((paramString != null) && (paramString.has("needPkg")))
     {
       bool2 = paramString.getBoolean("needPkg");
-      f.ecC();
-      paramString = f.aCT((String)localObject);
-      h.CyF.n(1293L, 80L, 1L);
+      f.eLH();
+      paramString = f.cY((String)localObject);
+      com.tencent.mm.plugin.report.service.h.IzE.p(1293L, 80L, 1L);
       if (bool1)
       {
-        h.CyF.n(1293L, 81L, 1L);
+        com.tencent.mm.plugin.report.service.h.IzE.p(1293L, 81L, 1L);
         if (paramString == null)
         {
-          f.ecC();
-          if (f.ecE() == null) {
-            f.ecC().ecF();
+          f.eLH();
+          if (f.eLJ() == null) {
+            f.eLH().eLK();
           }
-          f.ecC().a((String)localObject, null);
+          f.eLH().a((String)localObject, null);
           if (bool2)
           {
-            h.CyF.n(1293L, 82L, 1L);
+            com.tencent.mm.plugin.report.service.h.IzE.p(1293L, 82L, 1L);
             bool1 = false;
             localStringBuilder = new StringBuilder();
             localObject = localStringBuilder.append((String)localObject).append(",");
@@ -94,7 +94,7 @@ public class m
               }
               i = 1;
               ((StringBuilder)localObject).append(i);
-              h.CyF.kvStat(20982, localStringBuilder.toString());
+              com.tencent.mm.plugin.report.service.h.IzE.kvStat(20982, localStringBuilder.toString());
               localStringBuilder = new StringBuilder("debug:false, coolassist:").append(WeChatEnvironment.isCoolassistEnv()).append(", enable:").append(bool3).append(",info:");
               if (paramString != null) {
                 break label396;
@@ -105,7 +105,7 @@ public class m
               Log.i("MicroMsg.JsApiGetLiteAppSwitch", bool2);
               paramContext.put("switch", bool1);
               parama.i(null, paramContext);
-              AppMethodBeat.o(186857);
+              AppMethodBeat.o(231828);
               return;
               bool1 = false;
               break;
@@ -120,9 +120,9 @@ public class m
     }
   }
   
-  public final void b(com.tencent.luggage.d.b<i>.a paramb) {}
+  public final void b(b<i>.a paramb) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 1;
   }

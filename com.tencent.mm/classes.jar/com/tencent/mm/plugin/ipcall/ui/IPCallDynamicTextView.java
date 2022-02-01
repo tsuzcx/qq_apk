@@ -14,29 +14,29 @@ import java.text.DecimalFormat;
 public class IPCallDynamicTextView
   extends TextView
 {
+  private int DVC;
+  private double DVD;
+  private double DVE;
+  private double DVF;
+  private boolean DVG;
+  private int DVH;
+  private int DVI;
+  DecimalFormat DVJ;
+  private String DVK;
+  private String DVL;
   private MMHandler mHandler;
   private int mHeight;
   private String mValue;
-  private double yvA;
-  private double yvB;
-  private boolean yvC;
-  private int yvD;
-  private int yvE;
-  DecimalFormat yvF;
-  private String yvG;
-  private String yvH;
-  private int yvy;
-  private double yvz;
   
   public IPCallDynamicTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(25761);
-    this.yvD = 4000;
-    this.yvE = 50;
-    this.yvF = new DecimalFormat("0.00");
-    this.yvG = "";
-    this.yvH = "";
+    this.DVH = 4000;
+    this.DVI = 50;
+    this.DVJ = new DecimalFormat("0.00");
+    this.DVK = "";
+    this.DVL = "";
     this.mHandler = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
@@ -71,11 +71,11 @@ public class IPCallDynamicTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(25762);
-    this.yvD = 4000;
-    this.yvE = 50;
-    this.yvF = new DecimalFormat("0.00");
-    this.yvG = "";
-    this.yvH = "";
+    this.DVH = 4000;
+    this.DVI = 50;
+    this.DVJ = new DecimalFormat("0.00");
+    this.DVK = "";
+    this.DVL = "";
     this.mHandler = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
@@ -106,7 +106,7 @@ public class IPCallDynamicTextView
     AppMethodBeat.o(25762);
   }
   
-  public static String aCl(String paramString)
+  public static String aMs(String paramString)
   {
     AppMethodBeat.i(25765);
     String str1 = "";
@@ -155,7 +155,7 @@ public class IPCallDynamicTextView
   
   public void setLocHeight(int paramInt)
   {
-    this.yvy = paramInt;
+    this.DVC = paramInt;
   }
   
   public final void setValue(String paramString1, String paramString2)
@@ -169,15 +169,15 @@ public class IPCallDynamicTextView
     }
     try
     {
-      this.yvA = Double.parseDouble(aCl(paramString1));
-      this.yvG = "";
+      this.DVE = Double.parseDouble(aMs(paramString1));
+      this.DVK = "";
       i = 0;
       while ((i < paramString2.length()) && (!Character.isDigit(paramString2.charAt(i))))
       {
-        this.yvG += paramString2.charAt(i);
+        this.DVK += paramString2.charAt(i);
         i += 1;
       }
-      this.yvH = "";
+      this.DVL = "";
     }
     catch (NumberFormatException paramString1)
     {
@@ -188,16 +188,16 @@ public class IPCallDynamicTextView
     int i = paramString2.length() - 1;
     while ((i > 0) && (!Character.isDigit(paramString2.charAt(i))))
     {
-      this.yvH += paramString2.charAt(i);
+      this.DVL += paramString2.charAt(i);
       i -= 1;
     }
-    paramString1 = paramString2.substring(this.yvG.length(), paramString2.length() - this.yvH.length());
+    paramString1 = paramString2.substring(this.DVK.length(), paramString2.length() - this.DVL.length());
     try
     {
-      this.yvB = Double.parseDouble(paramString1);
+      this.DVF = Double.parseDouble(paramString1);
       this.mValue = paramString2;
-      this.yvz = ((this.yvB - this.yvA) / (this.yvD / this.yvE));
-      if (this.yvz == 0.0D)
+      this.DVD = ((this.DVF - this.DVE) / (this.DVH / this.DVI));
+      if (this.DVD == 0.0D)
       {
         setText(paramString2);
         AppMethodBeat.o(25764);
@@ -210,7 +210,7 @@ public class IPCallDynamicTextView
       AppMethodBeat.o(25764);
       return;
     }
-    this.yvz = new BigDecimal(this.yvz).setScale(2, 4).doubleValue();
+    this.DVD = new BigDecimal(this.DVD).setScale(2, 4).doubleValue();
     if (isShown()) {
       this.mHandler.sendEmptyMessage(1);
     }
@@ -219,7 +219,7 @@ public class IPCallDynamicTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallDynamicTextView
  * JD-Core Version:    0.7.0.1
  */

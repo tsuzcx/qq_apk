@@ -1,58 +1,77 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.d.a.a;
-import kotlin.d.a.b;
-import kotlin.d.d;
-import kotlin.d.e;
 import kotlin.d.f;
-import kotlin.d.f.c;
-import kotlin.g.b.p;
-import kotlin.x;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"delay", "Lkotlinx/coroutines/Delay;", "Lkotlin/coroutines/CoroutineContext;", "getDelay", "(Lkotlin/coroutines/CoroutineContext;)Lkotlinx/coroutines/Delay;", "", "timeMillis", "", "(JLkotlin/coroutines/Continuation;)Ljava/lang/Object;", "kotlinx-coroutines-core"})
-public final class au
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/DeferredCoroutine;", "T", "Lkotlinx/coroutines/AbstractCoroutine;", "Lkotlinx/coroutines/Deferred;", "Lkotlinx/coroutines/selects/SelectClause1;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "active", "", "(Lkotlin/coroutines/CoroutineContext;Z)V", "onAwait", "getOnAwait", "()Lkotlinx/coroutines/selects/SelectClause1;", "await", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getCompleted", "()Ljava/lang/Object;", "registerSelectClause1", "", "R", "select", "Lkotlinx/coroutines/selects/SelectInstance;", "block", "Lkotlin/Function2;", "Lkotlin/coroutines/Continuation;", "", "(Lkotlinx/coroutines/selects/SelectInstance;Lkotlin/jvm/functions/Function2;)V", "kotlinx-coroutines-core"})
+class au<T>
+  extends a<T>
+  implements at<T>
 {
-  public static final Object a(long paramLong, d<? super x> paramd)
+  public au(f paramf, boolean paramBoolean)
   {
-    AppMethodBeat.i(118246);
-    if (paramLong <= 0L)
+    super(paramf, paramBoolean);
+    AppMethodBeat.i(118061);
+    AppMethodBeat.o(118061);
+  }
+  
+  public final T iRo()
+  {
+    AppMethodBeat.i(204630);
+    Object localObject = iRJ();
+    if (!(localObject instanceof bt)) {}
+    for (int i = 1; i == 0; i = 0)
     {
-      paramd = x.SXb;
-      AppMethodBeat.o(118246);
-      return paramd;
+      localObject = (Throwable)new IllegalStateException("This job has not completed yet".toString());
+      AppMethodBeat.o(204630);
+      throw ((Throwable)localObject);
     }
-    Object localObject = new l(b.e(paramd));
-    k localk = (k)localObject;
-    c(localk.getContext()).a(paramLong, localk);
-    localObject = ((l)localObject).getResult();
-    if (localObject == a.SXO) {
-      p.h(paramd, "frame");
+    if ((localObject instanceof x))
+    {
+      localObject = ((x)localObject).cause;
+      AppMethodBeat.o(204630);
+      throw ((Throwable)localObject);
     }
-    AppMethodBeat.o(118246);
+    localObject = cf.gl(localObject);
+    AppMethodBeat.o(204630);
     return localObject;
   }
   
-  public static final at c(f paramf)
+  public final Object n(kotlin.d.d<? super T> paramd)
   {
-    AppMethodBeat.i(118247);
-    Object localObject = paramf.get((f.c)e.SXH);
-    paramf = (f)localObject;
-    if (!(localObject instanceof at)) {
-      paramf = null;
+    AppMethodBeat.i(118059);
+    paramd = a(this, paramd);
+    AppMethodBeat.o(118059);
+    return paramd;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"await", "", "T", "continuation", "Lkotlin/coroutines/Continuation;"})
+  static final class a
+    extends kotlin.d.b.a.d
+  {
+    Object L$0;
+    int label;
+    
+    a(au paramau, kotlin.d.d paramd)
+    {
+      super();
     }
-    localObject = (at)paramf;
-    paramf = (f)localObject;
-    if (localObject == null) {
-      paramf = aq.hMR();
+    
+    public final Object invokeSuspend(Object paramObject)
+    {
+      AppMethodBeat.i(118042);
+      this.result = paramObject;
+      this.label |= 0x80000000;
+      paramObject = au.a(this.abwL, this);
+      AppMethodBeat.o(118042);
+      return paramObject;
     }
-    AppMethodBeat.o(118247);
-    return paramf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlinx.coroutines.au
  * JD-Core Version:    0.7.0.1
  */

@@ -6,15 +6,7 @@ import java.util.Locale;
 
 public final class b
 {
-  public static String agW(String paramString)
-  {
-    AppMethodBeat.i(127560);
-    paramString = MD5Util.getMD5String(String.format("%s", new Object[] { paramString }));
-    AppMethodBeat.o(127560);
-    return paramString;
-  }
-  
-  public static String bxa(String paramString)
+  public static String aoB(String paramString)
   {
     AppMethodBeat.i(127558);
     paramString = MD5Util.getMD5String(String.format("%s#%s", new Object[] { Long.valueOf(System.currentTimeMillis()), paramString }));
@@ -22,15 +14,23 @@ public final class b
     return paramString;
   }
   
-  public static String cA(String paramString, int paramInt)
+  public static String aoC(String paramString)
   {
-    AppMethodBeat.i(188578);
-    paramString = String.format(Locale.US, "%s#%d", new Object[] { paramString, Integer.valueOf(paramInt) });
-    AppMethodBeat.o(188578);
+    AppMethodBeat.i(127560);
+    paramString = MD5Util.getMD5String(String.format("%s", new Object[] { paramString }));
+    AppMethodBeat.o(127560);
     return paramString;
   }
   
-  public static String cB(String paramString, int paramInt)
+  public static String cV(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(191329);
+    paramString = String.format(Locale.US, "%s#%d", new Object[] { paramString, Integer.valueOf(paramInt) });
+    AppMethodBeat.o(191329);
+    return paramString;
+  }
+  
+  public static String cW(String paramString, int paramInt)
   {
     AppMethodBeat.i(127559);
     paramString = String.format(Locale.US, "%s#%d", new Object[] { paramString, Integer.valueOf(paramInt) });
@@ -38,14 +38,14 @@ public final class b
     return paramString;
   }
   
-  public static String cjf()
+  public static String cwx()
   {
     return "LiveFloatBall";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.f.b
  * JD-Core Version:    0.7.0.1
  */

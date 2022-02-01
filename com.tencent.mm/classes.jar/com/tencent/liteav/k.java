@@ -1,6 +1,6 @@
 package com.tencent.liteav;
 
-import com.tencent.liteav.basic.a.c;
+import com.tencent.liteav.basic.b.c;
 import javax.microedition.khronos.egl.EGLContext;
 
 public abstract interface k
@@ -15,7 +15,7 @@ public abstract interface k
   
   public abstract void a(c paramc);
   
-  public abstract void a(com.tencent.liteav.basic.b.b paramb);
+  public abstract void a(com.tencent.liteav.basic.c.b paramb);
   
   public abstract void a(com.tencent.liteav.basic.structs.b paramb);
   
@@ -75,7 +75,7 @@ public abstract interface k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.k
  * JD-Core Version:    0.7.0.1
  */

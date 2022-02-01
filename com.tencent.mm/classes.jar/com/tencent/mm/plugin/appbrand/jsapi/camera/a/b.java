@@ -12,13 +12,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class b
 {
-  AtomicBoolean lQs = new AtomicBoolean(false);
-  a lQt;
-  MMHandler lQu = new MMHandler("MicroMsg.appbrand.ScanDecoder");
+  AtomicBoolean oMN = new AtomicBoolean(false);
+  a oMO;
+  MMHandler oMP = new MMHandler("MicroMsg.appbrand.ScanDecoder");
   
   public b(a parama)
   {
-    this.lQt = parama;
+    this.oMO = parama;
   }
   
   protected final void a(final String paramString, final int paramInt1, final int paramInt2, final byte[] paramArrayOfByte, final QbarNative.QBarPoint paramQBarPoint)
@@ -29,8 +29,8 @@ public abstract class b
       public final void run()
       {
         AppMethodBeat.i(46235);
-        if (b.this.lQt != null) {
-          b.this.lQt.a(paramInt1, paramString, paramInt2, paramArrayOfByte, paramQBarPoint);
+        if (b.this.oMO != null) {
+          b.this.oMO.a(paramInt1, paramString, paramInt2, paramArrayOfByte, paramQBarPoint);
         }
         AppMethodBeat.o(46235);
       }

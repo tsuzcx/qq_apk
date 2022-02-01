@@ -1,343 +1,145 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
-import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
+import com.tencent.mm.plugin.webview.d.c.a;
 import com.tencent.mm.plugin.webview.d.f;
 import com.tencent.mm.plugin.webview.d.h;
 import com.tencent.mm.plugin.webview.d.n;
-import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.plugin.webview.ui.tools.video.samelayer.b;
+import com.tencent.mm.plugin.webview.stub.e;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import java.util.HashMap;
 import java.util.Map;
 import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.t;
-import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleDeviceInfo;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "enableFullScreen", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "getSafeAreaInsets", "getScreenBrightness", "getVolume", "handleMsg", "hideKeyBoard", "setOrientation", "setScreenBrightness", "setVolume", "plugin-webview_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiGetNetWorkType;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class l
-  extends com.tencent.mm.plugin.webview.d.c.a
+  extends a
 {
-  private static final int CDJ = 372;
-  public static final l Jxn;
-  private static final String edq = "handleDeviceInfo";
+  private static final int IIl = 16;
+  public static final l Qve;
+  private static final String TAG = "MicroMsg.JsApiGetNetWorkType";
+  private static final String fXz = "getNetworkType";
   
   static
   {
-    AppMethodBeat.i(210606);
-    Jxn = new l();
-    CDJ = 372;
-    edq = "handleDeviceInfo";
-    AppMethodBeat.o(210606);
+    AppMethodBeat.i(229089);
+    Qve = new l();
+    TAG = "MicroMsg.JsApiGetNetWorkType";
+    IIl = 16;
+    fXz = "getNetworkType";
+    AppMethodBeat.o(229089);
   }
   
-  public final boolean a(final f paramf, final n paramn)
+  public final boolean a(f paramf, n paramn)
   {
-    int i = 0;
-    AppMethodBeat.i(210605);
-    p.h(paramf, "env");
-    p.h(paramn, "msg");
-    Object localObject = (String)paramn.params.get("action");
-    Log.i("MicroMsg.JsApiHandleDeviceInfo", "handleDeviceInfo action=%s", new Object[] { localObject });
-    if (Util.isNullOrNil((String)localObject))
+    AppMethodBeat.i(229087);
+    p.k(paramf, "env");
+    p.k(paramn, "msg");
+    Context localContext = paramf.context;
+    if (!NetStatusUtil.isConnected(localContext))
     {
-      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail action is empty", null);
-      AppMethodBeat.o(210605);
+      Log.i(TAG, "getNetworkType, not connected");
+      paramf.PNo.h(paramn.POu, "network_type:fail", null);
+      AppMethodBeat.o(229087);
       return true;
     }
-    boolean bool;
-    if (p.j("enableFullScreen", localObject))
+    if (paramf.pGC != null) {}
+    int i;
+    for (;;)
     {
-      bool = Util.getBoolean((String)paramn.params.get("enable"), false);
-      if ((paramf.context instanceof b))
+      try
       {
-        if (!bool) {
-          break label288;
+        Object localObject = paramf.pGC;
+        if (localObject == null) {
+          p.iCn();
         }
-        switch (Util.getInt((String)paramn.params.get("orientation"), 0))
+        localObject = ((e)localObject).l(110, new Bundle());
+        p.j(localObject, "env.invoker!!.invokeAsRe…_SIM_CARD_TYPE, Bundle())");
+        i = ((Bundle)localObject).getInt("sim_card_type", 0);
+        if (i == 0)
         {
-        }
-        for (;;)
-        {
-          localObject = paramf.context;
-          if (localObject != null) {
+          i = 0;
+          int j = NetStatusUtil.getNetType(localContext);
+          Log.i(TAG, "getNetworkType, type = %s, simType = %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+          localObject = (Map)new HashMap();
+          if (!NetStatusUtil.is2G(localContext)) {
             break;
           }
-          paramf = new t("null cannot be cast to non-null type com.tencent.mm.plugin.webview.ui.tools.video.samelayer.IWebViewUIFullScreen");
-          AppMethodBeat.o(210605);
-          throw paramf;
-          i = 90;
-          continue;
-          i = -90;
+          Log.i(TAG, "getNetworkType, 2g");
+          ((Map)localObject).put("subtype", "2g");
+          ((Map)localObject).put("simtype", Integer.valueOf(i));
+          paramf.PNo.h(paramn.POu, "network_type:wwan", (Map)localObject);
+          AppMethodBeat.o(229087);
+          return true;
         }
-        ((b)localObject).aB(null, i);
-      }
-      for (;;)
-      {
-        paramf.IQZ.h(paramn.ISe, paramn.mhO + ":ok", null);
-        AppMethodBeat.o(210605);
-        return true;
-        label288:
-        localObject = paramf.context;
-        if (localObject == null)
+        if (i == 1)
         {
-          paramf = new t("null cannot be cast to non-null type com.tencent.mm.plugin.webview.ui.tools.video.samelayer.IWebViewUIFullScreen");
-          AppMethodBeat.o(210605);
-          throw paramf;
+          i = 1;
         }
-        ((b)localObject).gfl();
+        else
+        {
+          i = 2;
+          continue;
+          i = 0;
+        }
+      }
+      catch (Exception localException)
+      {
+        Log.e(TAG, "invokeAsResult ex %s", new Object[] { localException.getMessage() });
       }
     }
-    Context localContext;
-    if (p.j("setOrientation", localObject))
+    if (NetStatusUtil.is3G(localContext))
     {
-      i = Util.getInt((String)paramn.params.get("orientation"), 0);
-      bool = Util.getBoolean((String)paramn.params.get("lock"), true);
-      Log.i("MicroMsg.JsApiHandleDeviceInfo", "setOrientation orientation=" + i + ", lock=" + bool);
-      if ((paramf.context instanceof b))
-      {
-        if (!bool) {
-          break label554;
-        }
-        localContext = paramf.context;
-        localObject = localContext;
-        if (!(localContext instanceof Activity)) {
-          localObject = null;
-        }
-        localObject = (Activity)localObject;
-        if (localObject != null) {
-          switch (i)
-          {
-          default: 
-            ((Activity)localObject).setRequestedOrientation(1);
-          }
-        }
-      }
-      for (;;)
-      {
-        paramf.IQZ.h(paramn.ISe, paramn.mhO + ":ok", null);
-        AppMethodBeat.o(210605);
-        return true;
-        ((Activity)localObject).setRequestedOrientation(0);
-        continue;
-        ((Activity)localObject).setRequestedOrientation(8);
-        continue;
-        label554:
-        localContext = paramf.context;
-        localObject = localContext;
-        if (!(localContext instanceof Activity)) {
-          localObject = null;
-        }
-        localObject = (Activity)localObject;
-        if (localObject != null) {
-          ((Activity)localObject).setRequestedOrientation(-1);
-        }
-      }
-    }
-    final float f;
-    if (p.j("setVolume", localObject))
-    {
-      Log.i("MicroMsg.JsApiHandleDeviceInfo", "setVolume");
-      f = (float)Util.getDouble((String)paramn.params.get("data"), 0.0D);
-      if ((f < 0.0F) || (f > 1.0F))
-      {
-        AppMethodBeat.o(210605);
-        return false;
-      }
-      localContext = paramf.context;
-      localObject = localContext;
-      if (!(localContext instanceof Activity)) {
-        localObject = null;
-      }
-      localObject = (Activity)localObject;
-      if (localObject != null)
-      {
-        d.h((kotlin.g.a.a)new f((Activity)localObject, f, paramf, paramn));
-        AppMethodBeat.o(210605);
-        return true;
-      }
-      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail", null);
-      AppMethodBeat.o(210605);
+      Log.i(TAG, "getNetworkType, 3g");
+      localException.put("subtype", "3g");
+      localException.put("simtype", Integer.valueOf(i));
+      paramf.PNo.h(paramn.POu, "network_type:wwan", localException);
+      AppMethodBeat.o(229087);
       return true;
     }
-    if (p.j("getVolume", localObject))
+    if (NetStatusUtil.is4G(localContext))
     {
-      localContext = paramf.context;
-      localObject = localContext;
-      if (!(localContext instanceof Activity)) {
-        localObject = null;
-      }
-      localObject = (Activity)localObject;
-      if (localObject != null)
-      {
-        d.h((kotlin.g.a.a)new c((Activity)localObject, paramf, paramn));
-        AppMethodBeat.o(210605);
-        return true;
-      }
-      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail", null);
-      AppMethodBeat.o(210605);
-      return false;
-    }
-    if (p.j("setScreenBrightness", localObject))
-    {
-      Log.i("MicroMsg.JsApiHandleDeviceInfo", "setScreenBrightness");
-      f = (float)Util.getDouble((String)paramn.params.get("data"), 0.0D);
-      if ((f < 0.0F) || (f > 1.0F))
-      {
-        AppMethodBeat.o(210605);
-        return false;
-      }
-      localContext = paramf.context;
-      localObject = localContext;
-      if (!(localContext instanceof Activity)) {
-        localObject = null;
-      }
-      if ((Activity)localObject != null)
-      {
-        d.h((kotlin.g.a.a)new e(paramf, f, paramn));
-        paramf.IQZ.h(paramn.ISe, paramn.mhO + ":ok", null);
-        AppMethodBeat.o(210605);
-        return true;
-      }
-      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail", null);
-      AppMethodBeat.o(210605);
+      Log.i(TAG, "getNetworkType, 4g");
+      localException.put("subtype", "4g");
+      localException.put("simtype", Integer.valueOf(i));
+      paramf.PNo.h(paramn.POu, "network_type:wwan", localException);
+      AppMethodBeat.o(229087);
       return true;
     }
-    if (p.j("getScreenBrightness", localObject))
+    if (NetStatusUtil.is5G(localContext))
     {
-      localContext = paramf.context;
-      localObject = localContext;
-      if (!(localContext instanceof Activity)) {
-        localObject = null;
-      }
-      localObject = (Activity)localObject;
-      if (localObject != null)
-      {
-        d.h((kotlin.g.a.a)new b((Activity)localObject, paramf, paramn));
-        AppMethodBeat.o(210605);
-        return true;
-      }
-      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail", null);
-      AppMethodBeat.o(210605);
-      return false;
+      Log.i(TAG, "getNetworkType, 5g");
+      localException.put("subtype", "5g");
+      localException.put("simtype", Integer.valueOf(i));
+      paramf.PNo.h(paramn.POu, "network_type:wwan", localException);
+      AppMethodBeat.o(229087);
+      return true;
     }
-    if (p.j("getSafeAreaInsets", localObject))
+    if (NetStatusUtil.isWifi(localContext))
     {
-      localContext = paramf.context;
-      localObject = localContext;
-      if (!(localContext instanceof Activity)) {
-        localObject = null;
-      }
-      localObject = (Activity)localObject;
-      if (localObject != null)
-      {
-        d.h((kotlin.g.a.a)new a((Activity)localObject, paramf, paramn));
-        AppMethodBeat.o(210605);
-        return true;
-      }
-      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail", null);
-      AppMethodBeat.o(210605);
-      return false;
+      Log.i(TAG, "getNetworkType, wifi");
+      localException.put("simtype", Integer.valueOf(i));
+      paramf.PNo.h(paramn.POu, "network_type:wifi", localException);
+      AppMethodBeat.o(229087);
+      return true;
     }
-    if (p.j("hideKeyBoard", localObject))
-    {
-      localContext = paramf.context;
-      localObject = localContext;
-      if (!(localContext instanceof WebViewUI)) {
-        localObject = null;
-      }
-      localObject = (WebViewUI)localObject;
-      if (localObject != null)
-      {
-        d.h((kotlin.g.a.a)new d((WebViewUI)localObject, paramf, paramn));
-        AppMethodBeat.o(210605);
-        return true;
-      }
-      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail", null);
-      AppMethodBeat.o(210605);
-      return false;
-    }
-    AppMethodBeat.o(210605);
-    return false;
+    Log.w(TAG, "getNetworkType, unknown");
+    paramf.PNo.h(paramn.POu, "network_type:fail", null);
+    AppMethodBeat.o(229087);
+    return true;
   }
   
-  public final int ePA()
+  public final String fCm()
   {
-    return CDJ;
+    return fXz;
   }
   
-  public final String ePz()
+  public final int fCn()
   {
-    return edq;
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleDeviceInfo$getSafeAreaInsets$1$1"})
-  static final class a
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    a(Activity paramActivity, f paramf, n paramn)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleDeviceInfo$getScreenBrightness$1$1"})
-  static final class b
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    b(Activity paramActivity, f paramf, n paramn)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleDeviceInfo$getVolume$1$1"})
-  static final class c
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    c(Activity paramActivity, f paramf, n paramn)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleDeviceInfo$hideKeyBoard$1$1"})
-  static final class d
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    d(WebViewUI paramWebViewUI, f paramf, n paramn)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleDeviceInfo$setScreenBrightness$1$1"})
-  static final class e
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    e(f paramf, float paramFloat, n paramn)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleDeviceInfo$setVolume$1$1"})
-  static final class f
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    f(Activity paramActivity, float paramFloat, f paramf, n paramn)
-    {
-      super();
-    }
+    return IIl;
   }
 }
 

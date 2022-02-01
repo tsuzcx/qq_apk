@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:background="@drawable/bdy" android:padding="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/js">
+        <com.tencent.mm.ui.widget.MMRoundCornerImageView android:id="@id/kk8" android:layout_width="72.0dip" android:layout_height="72.0dip" android:scaleType="fitXY" android:layout_centerVertical="true" app:radius="@dimen/bt" />
+        <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/Link" android:id="@id/kcf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_toRightOf="@id/kk8" android:layout_centerVertical="true">
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="38.0dip">
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:textSize="17.0sp" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/kk_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+                    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kka" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="15.0dip" android:layout_marginLeft="8.0dip" android:src="@raw/private_lock" android:scaleType="fitXY" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip">
+                    <com.tencent.mm.ui.widget.MMRoundCornerImageView android:id="@id/kkb" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="4.0dip" app:radius="8.0dip" />
+                    <TextView android:textSize="14.0sp" android:textColor="@color/FG_2" android:ellipsize="end" android:id="@id/kkc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip">
+                <TextView android:textSize="12.0sp" android:textColor="@color/FG_2" android:id="@id/kt0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jyz" />
+                <TextView android:textSize="12.0sp" android:gravity="center_vertical" android:id="@id/kpb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" />
+                <ImageView android:id="@id/kpa" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="3.0dip" android:scaleType="fitXY" />
+                <TextView android:textSize="12.0sp" android:gravity="center_vertical" android:id="@id/kt9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" />
+                <ImageView android:id="@id/kt8" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="3.0dip" android:scaleType="fitXY" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

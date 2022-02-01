@@ -10,24 +10,27 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.plugin.story.a.d;
+import com.tencent.mm.plugin.story.a.e;
+import com.tencent.mm.plugin.story.a.f;
+import com.tencent.mm.ui.au;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "postTipIv", "Landroid/widget/ImageView;", "getPostTipIv", "()Landroid/widget/ImageView;", "setPostTipIv", "(Landroid/widget/ImageView;)V", "postTipLayout", "Landroid/widget/LinearLayout;", "getPostTipLayout", "()Landroid/widget/LinearLayout;", "setPostTipLayout", "(Landroid/widget/LinearLayout;)V", "postTipTv", "Landroid/widget/TextView;", "getPostTipTv", "()Landroid/widget/TextView;", "setPostTipTv", "(Landroid/widget/TextView;)V", "updatePostStatus", "", "item", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "Companion", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "postTipIv", "Landroid/widget/ImageView;", "getPostTipIv", "()Landroid/widget/ImageView;", "setPostTipIv", "(Landroid/widget/ImageView;)V", "postTipLayout", "Landroid/widget/LinearLayout;", "getPostTipLayout", "()Landroid/widget/LinearLayout;", "setPostTipLayout", "(Landroid/widget/LinearLayout;)V", "postTipTv", "Landroid/widget/TextView;", "getPostTipTv", "()Landroid/widget/TextView;", "setPostTipTv", "(Landroid/widget/TextView;)V", "updatePostStatus", "", "item", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "Companion", "plugin-story_release"})
 public final class StoryGalleryPostTip
   extends RelativeLayout
 {
-  public static final a FGl;
+  public static final a Mal;
   public static final String TAG = "MicroMsg.StoryGalleryPostTip";
-  private LinearLayout FGi;
-  private ImageView FGj;
-  public TextView FGk;
+  private LinearLayout Mai;
+  private ImageView Maj;
+  public TextView Mak;
   
   static
   {
     AppMethodBeat.i(120417);
-    FGl = new a((byte)0);
+    Mal = new a((byte)0);
     TAG = "MicroMsg.StoryGalleryPostTip";
     AppMethodBeat.o(120417);
   }
@@ -36,55 +39,55 @@ public final class StoryGalleryPostTip
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120416);
-    View.inflate(paramContext, 2131496602, (ViewGroup)this);
-    paramContext = findViewById(2131308643);
-    p.g(paramContext, "findViewById(R.id.story_gallery_post_tip_iv)");
-    this.FGj = ((ImageView)paramContext);
-    paramContext = findViewById(2131308644);
-    p.g(paramContext, "findViewById(R.id.story_gallery_post_tip_tv)");
-    this.FGk = ((TextView)paramContext);
-    this.FGj.setImageDrawable(ar.e(getResources().getDrawable(2131690795), -65536));
+    View.inflate(paramContext, a.e.LDb, (ViewGroup)this);
+    paramContext = findViewById(a.d.LBN);
+    p.j(paramContext, "findViewById(R.id.story_gallery_post_tip_iv)");
+    this.Maj = ((ImageView)paramContext);
+    paramContext = findViewById(a.d.LBO);
+    p.j(paramContext, "findViewById(R.id.story_gallery_post_tip_tv)");
+    this.Mak = ((TextView)paramContext);
+    this.Maj.setImageDrawable(au.e(getResources().getDrawable(a.f.icons_outlined_error), -65536));
     setVisibility(8);
     AppMethodBeat.o(120416);
   }
   
   public final ImageView getPostTipIv()
   {
-    return this.FGj;
+    return this.Maj;
   }
   
   public final LinearLayout getPostTipLayout()
   {
-    return this.FGi;
+    return this.Mai;
   }
   
   public final TextView getPostTipTv()
   {
-    return this.FGk;
+    return this.Mak;
   }
   
   public final void setPostTipIv(ImageView paramImageView)
   {
     AppMethodBeat.i(120414);
-    p.h(paramImageView, "<set-?>");
-    this.FGj = paramImageView;
+    p.k(paramImageView, "<set-?>");
+    this.Maj = paramImageView;
     AppMethodBeat.o(120414);
   }
   
   public final void setPostTipLayout(LinearLayout paramLinearLayout)
   {
-    this.FGi = paramLinearLayout;
+    this.Mai = paramLinearLayout;
   }
   
   public final void setPostTipTv(TextView paramTextView)
   {
     AppMethodBeat.i(120415);
-    p.h(paramTextView, "<set-?>");
-    this.FGk = paramTextView;
+    p.k(paramTextView, "<set-?>");
+    this.Mak = paramTextView;
     AppMethodBeat.o(120415);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-story_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-story_release"})
   public static final class a {}
 }
 

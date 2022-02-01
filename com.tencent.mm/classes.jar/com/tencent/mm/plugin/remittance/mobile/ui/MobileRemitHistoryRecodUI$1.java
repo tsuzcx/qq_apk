@@ -12,14 +12,14 @@ final class MobileRemitHistoryRecodUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(67681);
-    this.CmE.finish();
+    this.Ijx.finish();
     AppMethodBeat.o(67681);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.mobile.ui.MobileRemitHistoryRecodUI.1
  * JD-Core Version:    0.7.0.1
  */

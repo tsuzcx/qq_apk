@@ -1,55 +1,117 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.a;
+import kotlin.d.a;
+import kotlin.d.d;
+import kotlin.d.e;
 import kotlin.d.f;
+import kotlin.d.f.b;
 import kotlin.d.f.c;
+import kotlin.d.g;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
 import kotlin.l;
+import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"CoroutineExceptionHandler", "Lkotlinx/coroutines/CoroutineExceptionHandler;", "handler", "Lkotlin/Function2;", "Lkotlin/coroutines/CoroutineContext;", "", "", "handleCoroutineException", "context", "exception", "handlerException", "originalException", "thrownException", "kotlinx-coroutines-core"})
-public final class af
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/CoroutineDispatcher;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "Lkotlin/coroutines/ContinuationInterceptor;", "()V", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "dispatchYield", "interceptContinuation", "Lkotlin/coroutines/Continuation;", "T", "continuation", "isDispatchNeeded", "", "plus", "other", "releaseInterceptedContinuation", "toString", "", "Key", "kotlinx-coroutines-core"})
+public abstract class af
+  extends a
+  implements e
 {
-  public static final Throwable b(Throwable paramThrowable1, Throwable paramThrowable2)
+  public static final a abwu = new a((byte)0);
+  
+  public af()
   {
-    AppMethodBeat.i(118053);
-    if (paramThrowable1 == paramThrowable2)
-    {
-      AppMethodBeat.o(118053);
-      return paramThrowable1;
-    }
-    paramThrowable2 = new RuntimeException("Exception while trying to handle coroutine exception", paramThrowable2);
-    a.a((Throwable)paramThrowable2, paramThrowable1);
-    paramThrowable1 = (Throwable)paramThrowable2;
-    AppMethodBeat.o(118053);
-    return paramThrowable1;
+    super((f.c)e.aaAt);
   }
   
-  public static final void b(f paramf, Throwable paramThrowable)
+  public abstract void a(f paramf, Runnable paramRunnable);
+  
+  public <E extends f.b> E get(f.c<E> paramc)
   {
-    AppMethodBeat.i(192334);
-    try
+    p.k(paramc, "key");
+    if ((paramc instanceof kotlin.d.b))
     {
-      CoroutineExceptionHandler localCoroutineExceptionHandler = (CoroutineExceptionHandler)paramf.get((f.c)CoroutineExceptionHandler.TTS);
-      if (localCoroutineExceptionHandler != null)
+      if (((kotlin.d.b)paramc).a(getKey()))
       {
-        localCoroutineExceptionHandler.handleException(paramf, paramThrowable);
-        AppMethodBeat.o(192334);
-        return;
+        f.b localb = ((kotlin.d.b)paramc).a((f.b)this);
+        paramc = localb;
+        if ((localb instanceof f.b)) {}
       }
+      else
+      {
+        paramc = null;
+      }
+      return paramc;
     }
-    catch (Throwable localThrowable)
+    if (e.aaAt == paramc) {
+      return (f.b)this;
+    }
+    return null;
+  }
+  
+  public final <T> d<T> i(d<? super T> paramd)
+  {
+    return (d)new ax(this, paramd);
+  }
+  
+  public boolean iRd()
+  {
+    return true;
+  }
+  
+  public final void j(d<?> paramd)
+  {
+    if (paramd == null) {
+      throw new t("null cannot be cast to non-null type kotlinx.coroutines.DispatchedContinuation<*>");
+    }
+    Object localObject = ((ax)paramd)._reusableCancellableContinuation;
+    paramd = localObject;
+    if (!(localObject instanceof n)) {
+      paramd = null;
+    }
+    paramd = (n)paramd;
+    if (paramd != null) {
+      paramd.iQS();
+    }
+  }
+  
+  public f minusKey(f.c<?> paramc)
+  {
+    p.k(paramc, "key");
+    if ((paramc instanceof kotlin.d.b))
     {
-      ae.a(paramf, b(paramThrowable, localThrowable));
-      AppMethodBeat.o(192334);
-      return;
+      if ((((kotlin.d.b)paramc).a(getKey())) && (((kotlin.d.b)paramc).a((f.b)this) != null)) {
+        return (f)g.aaAw;
+      }
+      return (f)this;
     }
-    ae.a(paramf, paramThrowable);
-    AppMethodBeat.o(192334);
+    if (e.aaAt == paramc) {
+      return (f)g.aaAw;
+    }
+    return (f)this;
+  }
+  
+  public String toString()
+  {
+    return getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this));
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/CoroutineDispatcher$Key;", "Lkotlin/coroutines/AbstractCoroutineContextKey;", "Lkotlin/coroutines/ContinuationInterceptor;", "Lkotlinx/coroutines/CoroutineDispatcher;", "()V", "kotlinx-coroutines-core"})
+  public static final class a
+    extends kotlin.d.b<e, af>
+  {
+    private a()
+    {
+      super((kotlin.g.a.b)1.abwv);
+      AppMethodBeat.i(204315);
+      AppMethodBeat.o(204315);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlinx.coroutines.af
  * JD-Core Version:    0.7.0.1
  */

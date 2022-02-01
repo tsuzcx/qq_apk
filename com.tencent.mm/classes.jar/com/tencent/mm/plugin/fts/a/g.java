@@ -7,61 +7,61 @@ import java.util.HashMap;
 
 public final class g
 {
-  public static HashMap<String, String> jNI;
-  public static final a wVA;
-  public static final a wVB;
-  public static final a wVC;
-  public static final a wVD;
-  public static final a wVE;
-  public static final a wVF;
-  public static final a wVG;
-  public static final a wVH;
-  public static final a wVI;
-  public static final a wVJ;
-  public static final a wVK;
-  public static final a wVL;
-  public static b wVM;
-  public static HashMap<String, String[]> wVN;
-  public static final a wVt;
-  public static final a wVu;
-  public static final a wVv;
-  public static final a wVw;
-  public static final a wVx;
-  public static final a wVy;
-  public static final a wVz;
+  public static final a BHA;
+  public static final a BHB;
+  public static final a BHC;
+  public static final a BHD;
+  public static final a BHE;
+  public static final a BHF;
+  public static final a BHG;
+  public static final a BHH;
+  public static b BHI;
+  public static HashMap<String, String[]> BHJ;
+  public static final a BHp;
+  public static final a BHq;
+  public static final a BHr;
+  public static final a BHs;
+  public static final a BHt;
+  public static final a BHu;
+  public static final a BHv;
+  public static final a BHw;
+  public static final a BHx;
+  public static final a BHy;
+  public static final a BHz;
+  public static HashMap<String, String> mEQ;
   
   static
   {
     AppMethodBeat.i(131669);
-    wVt = new a(19968, 40869);
-    wVu = new a(40870, 40907);
-    wVv = new a(13312, 19893);
-    wVw = new a(131072, 173782);
-    wVx = new a(173824, 177972);
-    wVy = new a(177984, 178205);
-    wVz = new a(12032, 12245);
-    wVA = new a(63744, 64217);
-    wVB = new a(194560, 195101);
-    wVC = new a(59413, 59503);
-    wVD = new a(58368, 58856);
-    wVE = new a(58880, 59087);
-    wVF = new a(12736, 12771);
-    wVG = new a(12272, 12283);
-    wVH = new a(12549, 12576);
-    wVI = new a(12704, 12730);
-    wVJ = new a(65, 90);
-    wVK = new a(97, 122);
-    wVL = new a(48, 57);
-    wVM = new b();
-    jNI = new HashMap();
-    wVN = new HashMap();
+    BHp = new a(19968, 40869);
+    BHq = new a(40870, 40907);
+    BHr = new a(13312, 19893);
+    BHs = new a(131072, 173782);
+    BHt = new a(173824, 177972);
+    BHu = new a(177984, 178205);
+    BHv = new a(12032, 12245);
+    BHw = new a(63744, 64217);
+    BHx = new a(194560, 195101);
+    BHy = new a(59413, 59503);
+    BHz = new a(58368, 58856);
+    BHA = new a(58880, 59087);
+    BHB = new a(12736, 12771);
+    BHC = new a(12272, 12283);
+    BHD = new a(12549, 12576);
+    BHE = new a(12704, 12730);
+    BHF = new a(65, 90);
+    BHG = new a(97, 122);
+    BHH = new a(48, 57);
+    BHI = new b();
+    mEQ = new HashMap();
+    BHJ = new HashMap();
     AppMethodBeat.o(131669);
   }
   
-  public static boolean B(char paramChar)
+  public static boolean J(char paramChar)
   {
     AppMethodBeat.i(131665);
-    if ((wVt.Nm(paramChar)) || (wVu.Nm(paramChar)) || (wVv.Nm(paramChar)) || (wVw.Nm(paramChar)) || (wVx.Nm(paramChar)) || (wVy.Nm(paramChar)))
+    if ((BHp.SA(paramChar)) || (BHq.SA(paramChar)) || (BHr.SA(paramChar)) || (BHs.SA(paramChar)) || (BHt.SA(paramChar)) || (BHu.SA(paramChar)))
     {
       AppMethodBeat.o(131665);
       return true;
@@ -70,10 +70,10 @@ public final class g
     return false;
   }
   
-  public static boolean C(char paramChar)
+  public static boolean K(char paramChar)
   {
     AppMethodBeat.i(131666);
-    if ((wVJ.Nm(paramChar)) || (wVK.Nm(paramChar)))
+    if ((BHF.SA(paramChar)) || (BHG.SA(paramChar)))
     {
       AppMethodBeat.o(131666);
       return true;
@@ -82,15 +82,15 @@ public final class g
     return false;
   }
   
-  public static boolean D(char paramChar)
+  public static boolean L(char paramChar)
   {
     AppMethodBeat.i(131667);
-    boolean bool = wVL.Nm(paramChar);
+    boolean bool = BHH.SA(paramChar);
     AppMethodBeat.o(131667);
     return bool;
   }
   
-  public static final String ayw(String paramString)
+  public static final String aHQ(String paramString)
   {
     AppMethodBeat.i(131668);
     StringBuffer localStringBuffer = new StringBuffer();
@@ -100,9 +100,9 @@ public final class g
     if (i < j)
     {
       char c = paramString[i];
-      if (B(c))
+      if (J(c))
       {
-        String str = (String)jNI.get(String.valueOf(c));
+        String str = (String)mEQ.get(String.valueOf(c));
         if (!Util.isNullOrNil(str)) {
           localStringBuffer.append(str);
         }
@@ -122,23 +122,23 @@ public final class g
   public static final class a
   {
     int bottom;
-    int wVO;
+    int up;
     
     public a(int paramInt1, int paramInt2)
     {
       this.bottom = paramInt1;
-      this.wVO = paramInt2;
+      this.up = paramInt2;
     }
     
-    public final boolean Nm(int paramInt)
+    public final boolean SA(int paramInt)
     {
-      return (paramInt >= this.bottom) && (paramInt <= this.wVO);
+      return (paramInt >= this.bottom) && (paramInt <= this.up);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.g
  * JD-Core Version:    0.7.0.1
  */

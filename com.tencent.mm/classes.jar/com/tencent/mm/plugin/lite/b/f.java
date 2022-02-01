@@ -7,7 +7,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.liteapp.storage.WxaLiteAppInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.m;
+import com.tencent.mm.plugin.boots.a.g;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.expt.h.d;
@@ -17,35 +18,35 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.util.HashMap;
 import java.util.List;
 
 public class f
 {
-  public static f yEM;
-  public HashMap<String, k> yEN;
+  public static f EgB;
+  public HashMap<String, m> EgC;
   
   private f()
   {
-    AppMethodBeat.i(198872);
-    this.yEN = new HashMap();
-    AppMethodBeat.o(198872);
+    AppMethodBeat.i(234093);
+    this.EgC = new HashMap();
+    AppMethodBeat.o(234093);
   }
   
-  public static boolean aCR(String paramString)
+  public static boolean aMY(String paramString)
   {
-    AppMethodBeat.i(198885);
+    AppMethodBeat.i(234119);
     Object localObject = String.format("clicfg_liteapp_%s_enable", new Object[] { paramString });
     String str = String.format("clicfg_liteapp_%s_max_crash", new Object[] { paramString });
-    if ((MMApplicationContext.isMainProcess()) && (ecx()))
+    if ((MMApplicationContext.isMainProcess()) && (eLA()))
     {
-      boolean bool = d.cRY().gA((String)localObject, "0").equalsIgnoreCase("1");
-      int i = Util.getInt(d.cRY().gA(str, "10"), 10);
-      localObject = aCT(paramString);
+      boolean bool = d.dgX().gO((String)localObject, "0").equalsIgnoreCase("1");
+      int i = Util.getInt(d.dgX().gO(str, "10"), 10);
+      localObject = cY(paramString);
       if (localObject == null) {}
-      for (localObject = "";; localObject = ((WxaLiteAppInfo)localObject).cri)
+      for (localObject = "";; localObject = ((WxaLiteAppInfo)localObject).coY)
       {
         int j = MultiProcessMMKV.getMultiDefault().getInt(String.format("liteapp_%s_%s", new Object[] { paramString, localObject }), 0);
         Log.i("MicroMsg.LiteApp.LiteAppLogic", "isLiteAppOpen appId%s version%s enable:%b, crashCount:%d", new Object[] { paramString, localObject, Boolean.valueOf(bool), Integer.valueOf(j) });
@@ -55,61 +56,47 @@ public class f
         if (j >= i) {
           break;
         }
-        com.tencent.mm.plugin.report.service.h.CyF.n(1293L, 100L, 1L);
-        AppMethodBeat.o(198885);
+        com.tencent.mm.plugin.report.service.h.IzE.p(1293L, 100L, 1L);
+        AppMethodBeat.o(234119);
         return true;
       }
-      com.tencent.mm.plugin.report.service.h.CyF.n(1293L, 101L, 1L);
+      com.tencent.mm.plugin.report.service.h.IzE.p(1293L, 101L, 1L);
       for (;;)
       {
-        AppMethodBeat.o(198885);
+        AppMethodBeat.o(234119);
         return false;
         label213:
-        com.tencent.mm.plugin.report.service.h.CyF.n(1293L, 102L, 1L);
+        com.tencent.mm.plugin.report.service.h.IzE.p(1293L, 102L, 1L);
       }
     }
     Log.i("MicroMsg.LiteApp.LiteAppLogic", "can no get 'isLiteAppOpen' value when is no mm process.");
-    AppMethodBeat.o(198885);
+    AppMethodBeat.o(234119);
     return false;
   }
   
-  public static WxaLiteAppInfo aCT(String paramString)
+  public static boolean aMZ(String paramString)
   {
-    AppMethodBeat.i(198876);
-    try
+    AppMethodBeat.i(234116);
+    if (MMApplicationContext.isMainProcess())
     {
-      Bundle localBundle = MMApplicationContext.getContext().getContentResolver().call(getUri(), "getLiteAppInfo", paramString, null);
-      if (localBundle == null)
-      {
-        Log.i("MicroMsg.LiteApp.LiteAppLogic", "null == bundle, appId:".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(198876);
-        return null;
-      }
+      boolean bool = d.dgX().gO("clicfg_liteapp_share_android", "1").equalsIgnoreCase("1");
+      Log.i("MicroMsg.LiteApp.LiteAppLogic", "isSharedLiteAppOpen appId%s enable:%b", new Object[] { paramString, Boolean.valueOf(bool) });
+      AppMethodBeat.o(234116);
+      return bool;
     }
-    catch (Exception localException)
-    {
-      Object localObject;
-      for (;;)
-      {
-        Log.printErrStackTrace("MicroMsg.LiteApp.LiteAppLogic", localException, "", new Object[0]);
-        localObject = null;
-      }
-      localObject.setClassLoader(WxaLiteAppInfo.class.getClassLoader());
-      paramString = (WxaLiteAppInfo)localObject.getParcelable("LiteApp");
-      AppMethodBeat.o(198876);
-    }
-    return paramString;
+    AppMethodBeat.o(234116);
+    return false;
   }
   
-  public static com.tencent.mm.plugin.lite.storage.c aCU(String paramString)
+  public static com.tencent.mm.plugin.lite.storage.c aNb(String paramString)
   {
-    AppMethodBeat.i(198877);
+    AppMethodBeat.i(234104);
     try
     {
       paramString = MMApplicationContext.getContext().getContentResolver().call(getUri(), "getLiteAppAuthInfo", paramString, null);
       if (paramString == null)
       {
-        AppMethodBeat.o(198877);
+        AppMethodBeat.o(234104);
         return null;
       }
     }
@@ -126,31 +113,31 @@ public class f
       localc.field_paramMap = paramString.getString("paramMap");
       localc.field_headerMap = paramString.getString("headerMap");
       localc.field_updateTime = paramString.getLong("updateTime");
-      AppMethodBeat.o(198877);
+      AppMethodBeat.o(234104);
       return localc;
     }
   }
   
   public static void b(WxaLiteAppInfo paramWxaLiteAppInfo)
   {
-    AppMethodBeat.i(198878);
+    AppMethodBeat.i(234105);
     if (Util.isNullOrNil(paramWxaLiteAppInfo.path))
     {
       Log.e("MicroMsg.LiteApp.LiteAppLogic", "app path is empty.");
-      AppMethodBeat.o(198878);
+      AppMethodBeat.o(234105);
       return;
     }
-    if (!new o(paramWxaLiteAppInfo.path).exists())
+    if (!new q(paramWxaLiteAppInfo.path).ifE())
     {
       Log.e("MicroMsg.LiteApp.LiteAppLogic", "app file isn't exist.");
-      AppMethodBeat.o(198878);
+      AppMethodBeat.o(234105);
       return;
     }
-    Object localObject = h.aw(paramWxaLiteAppInfo.appId, paramWxaLiteAppInfo.cri, paramWxaLiteAppInfo.md5);
+    Object localObject = h.aq(paramWxaLiteAppInfo.appId, paramWxaLiteAppInfo.coY, paramWxaLiteAppInfo.md5);
     if (!((String)localObject).equalsIgnoreCase(paramWxaLiteAppInfo.path))
     {
       Log.i("MicroMsg.LiteApp.LiteAppLogic", "rename app folder from %s to %s", new Object[] { paramWxaLiteAppInfo.path, localObject });
-      s.cL(paramWxaLiteAppInfo.path, (String)localObject);
+      u.or(paramWxaLiteAppInfo.path, (String)localObject);
       paramWxaLiteAppInfo.path = ((String)localObject);
     }
     localObject = new Bundle();
@@ -158,130 +145,165 @@ public class f
     try
     {
       MMApplicationContext.getContext().getContentResolver().call(getUri(), "insertLiteAppInfo", paramWxaLiteAppInfo.appId, (Bundle)localObject);
-      AppMethodBeat.o(198878);
+      AppMethodBeat.o(234105);
       return;
     }
     catch (Exception paramWxaLiteAppInfo)
     {
       Log.printErrStackTrace("MicroMsg.LiteApp.LiteAppLogic", paramWxaLiteAppInfo, "", new Object[0]);
-      AppMethodBeat.o(198878);
+      AppMethodBeat.o(234105);
     }
   }
   
   public static void c(WxaLiteAppInfo paramWxaLiteAppInfo)
   {
-    AppMethodBeat.i(198879);
+    AppMethodBeat.i(234106);
     if (paramWxaLiteAppInfo.appId.equalsIgnoreCase("wxalitecce81f5fba338df4dd5f74df8229c600"))
     {
       MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMultiDefault();
-      localMultiProcessMMKV.putString("wxa_lite_app_game_center_version", paramWxaLiteAppInfo.cri);
+      localMultiProcessMMKV.putString("wxa_lite_app_game_center_version", paramWxaLiteAppInfo.coY);
       localMultiProcessMMKV.commit();
     }
-    AppMethodBeat.o(198879);
+    AppMethodBeat.o(234106);
+  }
+  
+  public static WxaLiteAppInfo cY(String paramString)
+  {
+    AppMethodBeat.i(234101);
+    try
+    {
+      Bundle localBundle = MMApplicationContext.getContext().getContentResolver().call(getUri(), "getLiteAppInfo", paramString, null);
+      if (localBundle == null)
+      {
+        Log.i("MicroMsg.LiteApp.LiteAppLogic", "null == bundle, appId:".concat(String.valueOf(paramString)));
+        AppMethodBeat.o(234101);
+        return null;
+      }
+    }
+    catch (Exception localException)
+    {
+      Object localObject;
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.LiteApp.LiteAppLogic", localException, "", new Object[0]);
+        localObject = null;
+      }
+      localObject.setClassLoader(WxaLiteAppInfo.class.getClassLoader());
+      paramString = (WxaLiteAppInfo)localObject.getParcelable("LiteApp");
+      AppMethodBeat.o(234101);
+    }
+    return paramString;
   }
   
   private static boolean d(WxaLiteAppInfo paramWxaLiteAppInfo)
   {
-    AppMethodBeat.i(198883);
+    AppMethodBeat.i(234113);
     if (paramWxaLiteAppInfo == null)
     {
-      AppMethodBeat.o(198883);
+      AppMethodBeat.o(234113);
       return true;
     }
-    if (paramWxaLiteAppInfo.KB())
+    if (paramWxaLiteAppInfo.No())
     {
-      AppMethodBeat.o(198883);
+      AppMethodBeat.o(234113);
       return false;
     }
-    AppMethodBeat.o(198883);
+    AppMethodBeat.o(234113);
     return true;
   }
   
-  public static f ecC()
+  public static boolean eLA()
   {
-    AppMethodBeat.i(198873);
-    if (yEM == null) {}
+    AppMethodBeat.i(234115);
+    com.tencent.mm.plugin.expansions.a.dbf();
+    if (((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vOO, 1) == 1)
+    {
+      AppMethodBeat.o(234115);
+      return true;
+    }
+    AppMethodBeat.o(234115);
+    return false;
+  }
+  
+  public static f eLH()
+  {
+    AppMethodBeat.i(234095);
+    if (EgB == null) {}
     try
     {
-      yEM = new f();
-      f localf = yEM;
-      AppMethodBeat.o(198873);
+      EgB = new f();
+      f localf = EgB;
+      AppMethodBeat.o(234095);
       return localf;
     }
     finally
     {
-      AppMethodBeat.o(198873);
+      AppMethodBeat.o(234095);
     }
   }
   
-  public static List<WxaLiteAppInfo> ecD()
+  public static List<WxaLiteAppInfo> eLI()
   {
-    AppMethodBeat.i(198875);
+    AppMethodBeat.i(234098);
     Object localObject = MMApplicationContext.getContext().getContentResolver().call(getUri(), "getLiteAppList", null, null);
-    if ((localObject != null) && (((Bundle)localObject).containsKey("LiteAppList")))
+    if (localObject == null)
+    {
+      Log.i("MicroMsg.LiteApp.LiteAppLogic", "getLiteAppList bundle is null.");
+      AppMethodBeat.o(234098);
+      return null;
+    }
+    ((Bundle)localObject).setClassLoader(WxaLiteAppInfo.class.getClassLoader());
+    if (((Bundle)localObject).containsKey("LiteAppList"))
     {
       localObject = ((Bundle)localObject).getParcelableArrayList("LiteAppList");
-      AppMethodBeat.o(198875);
+      AppMethodBeat.o(234098);
       return localObject;
     }
-    AppMethodBeat.o(198875);
+    AppMethodBeat.o(234098);
     return null;
   }
   
-  public static WxaLiteAppInfo ecE()
+  public static WxaLiteAppInfo eLJ()
   {
-    AppMethodBeat.i(198880);
-    ecC();
-    WxaLiteAppInfo localWxaLiteAppInfo = aCT("wxalitebaselibrary");
-    AppMethodBeat.o(198880);
+    AppMethodBeat.i(234107);
+    eLH();
+    WxaLiteAppInfo localWxaLiteAppInfo = cY("wxalitebaselibrary");
+    AppMethodBeat.o(234107);
     return localWxaLiteAppInfo;
-  }
-  
-  public static boolean ecx()
-  {
-    AppMethodBeat.i(198884);
-    com.tencent.mm.plugin.expansions.a.cMr();
-    if (((b)com.tencent.mm.kernel.g.af(b.class)).a(b.a.sfe, 1) == 1)
-    {
-      AppMethodBeat.o(198884);
-      return true;
-    }
-    AppMethodBeat.o(198884);
-    return false;
   }
   
   public static Uri getUri()
   {
-    AppMethodBeat.i(198874);
+    AppMethodBeat.i(234096);
     Uri localUri = Uri.parse("content://" + LiteAppContentProvider.AUTHORITY + "/");
-    AppMethodBeat.o(198874);
+    AppMethodBeat.o(234096);
     return localUri;
   }
   
   public final void a(final String paramString, final com.tencent.mm.plugin.lite.launch.a parama)
   {
-    AppMethodBeat.i(198882);
+    AppMethodBeat.i(234111);
     Log.i("MicroMsg.LiteApp.LiteAppLogic", "checkLiteApp appId:%s", new Object[] { paramString });
-    final WxaLiteAppInfo localWxaLiteAppInfo = aCT(paramString);
+    final WxaLiteAppInfo localWxaLiteAppInfo = cY(paramString);
     if (d(localWxaLiteAppInfo)) {
-      if ((localWxaLiteAppInfo == null) || (localWxaLiteAppInfo.cri == null) || (localWxaLiteAppInfo.cri.isEmpty())) {
+      if ((localWxaLiteAppInfo == null) || (localWxaLiteAppInfo.coY == null) || (localWxaLiteAppInfo.coY.isEmpty())) {
         break label149;
       }
     }
     label149:
-    for (String str = localWxaLiteAppInfo.cri;; str = "")
+    for (String str = localWxaLiteAppInfo.coY;; str = "")
     {
       Log.i("MicroMsg.LiteApp.LiteAppLogic", "begin to checkLiteApp:%s patchId:%s", new Object[] { paramString, str });
-      ((com.tencent.mm.plugin.boots.a.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.boots.a.c.class)).a(paramString, paramString, str, new com.tencent.mm.plugin.boots.a.f()
+      ((com.tencent.mm.plugin.boots.a.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.boots.a.c.class)).a(paramString, paramString, str, new com.tencent.mm.plugin.boots.a.f()
       {
-        public final void a(com.tencent.mm.plugin.boots.a.g paramAnonymousg)
+        public final void a(g paramAnonymousg)
         {
-          AppMethodBeat.i(198871);
-          if (!Util.isNullOrNil(paramAnonymousg.pkK))
+          AppMethodBeat.i(233582);
+          if (!Util.isNullOrNil(paramAnonymousg.smT))
           {
-            Log.i("MicroMsg.LiteApp.LiteAppLogic", "start to download liteapp:" + paramString + ", url:" + paramAnonymousg.pkK);
-            e.yEE.a(paramAnonymousg, "release", parama);
-            AppMethodBeat.o(198871);
+            Log.i("MicroMsg.LiteApp.LiteAppLogic", "start to download liteapp:" + paramString + ", url:" + paramAnonymousg.smT);
+            e.Egt.a(paramAnonymousg, "release", parama);
+            AppMethodBeat.o(233582);
             return;
           }
           Log.i("MicroMsg.LiteApp.LiteAppLogic", "checkLiteApp, url is null, appId:" + paramString);
@@ -290,45 +312,45 @@ public class f
             if (localWxaLiteAppInfo != null)
             {
               parama.a(localWxaLiteAppInfo);
-              AppMethodBeat.o(198871);
+              AppMethodBeat.o(233582);
               return;
             }
-            parama.dTu();
+            parama.ewD();
           }
-          AppMethodBeat.o(198871);
+          AppMethodBeat.o(233582);
         }
       });
-      AppMethodBeat.o(198882);
+      AppMethodBeat.o(234111);
       return;
       Log.i("MicroMsg.LiteApp.LiteAppLogic", "no need download, local pkg is debug");
       if (parama != null) {
         parama.a(localWxaLiteAppInfo);
       }
-      AppMethodBeat.o(198882);
+      AppMethodBeat.o(234111);
       return;
     }
   }
   
-  public final void ecF()
+  public final void eLK()
   {
-    AppMethodBeat.i(198881);
-    final WxaLiteAppInfo localWxaLiteAppInfo = ecE();
-    ecC().a("wxalitebaselibrary", new com.tencent.mm.plugin.lite.launch.a()
+    AppMethodBeat.i(234108);
+    final WxaLiteAppInfo localWxaLiteAppInfo = eLJ();
+    eLH().a("wxalitebaselibrary", new com.tencent.mm.plugin.lite.launch.a()
     {
       public final void a(WxaLiteAppInfo paramAnonymousWxaLiteAppInfo)
       {
-        AppMethodBeat.i(198870);
+        AppMethodBeat.i(233972);
         if (paramAnonymousWxaLiteAppInfo == null)
         {
-          AppMethodBeat.o(198870);
+          AppMethodBeat.o(233972);
           return;
         }
         if (localWxaLiteAppInfo != null)
         {
           if (!localWxaLiteAppInfo.path.equals(paramAnonymousWxaLiteAppInfo.path))
           {
-            f.ecC();
-            if (!f.aCR("wxalitebaselibrary")) {}
+            f.eLH();
+            if (!f.aMY("wxalitebaselibrary")) {}
           }
         }
         else
@@ -340,12 +362,12 @@ public class f
           localIntent.putExtra("path", paramAnonymousWxaLiteAppInfo.path);
           MMApplicationContext.getContext().sendBroadcast(localIntent);
         }
-        AppMethodBeat.o(198870);
+        AppMethodBeat.o(233972);
       }
       
-      public final void dTu() {}
+      public final void ewD() {}
     });
-    AppMethodBeat.o(198881);
+    AppMethodBeat.o(234108);
   }
 }
 

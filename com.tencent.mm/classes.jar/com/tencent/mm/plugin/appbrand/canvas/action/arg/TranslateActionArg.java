@@ -28,7 +28,7 @@ public class TranslateActionArg
     super(paramParcel, (byte)0);
   }
   
-  public final boolean bzk()
+  public final boolean bKz()
   {
     return (this.x == 0.0F) && (this.y == 0.0F);
   }
@@ -104,7 +104,7 @@ public class TranslateActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.TranslateActionArg
  * JD-Core Version:    0.7.0.1
  */

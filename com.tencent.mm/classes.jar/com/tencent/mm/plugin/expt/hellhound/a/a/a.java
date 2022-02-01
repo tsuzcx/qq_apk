@@ -6,10 +6,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Build.VERSION;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.Display;
 import android.view.View;
@@ -17,11 +13,16 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AbsListView;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.hellhound.a.f.a.d;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.dzv;
-import com.tencent.mm.protocal.protobuf.ebf;
+import com.tencent.mm.protocal.protobuf.ejv;
+import com.tencent.mm.protocal.protobuf.elf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -41,64 +42,64 @@ public final class a
   private int mScrollState;
   private int mStatusBarHeight;
   private int mVisibleItemCount;
-  private long sBA;
-  private String sBB;
-  private WindowManager sBC;
-  private final int sBg;
-  private final int sBh;
-  public final Map<String, c> sBi;
-  public final Map<String, Boolean> sBj;
-  private ebf sBk;
-  private long sBl;
-  private h sBm;
-  private g sBn;
-  private final com.tencent.mm.plugin.expt.hellhound.a.a.a.b sBo;
-  private final String sBp;
-  private String sBq;
-  public int sBr;
-  private boolean sBs;
-  private boolean sBt;
-  private WeakReference<ViewGroup> sBu;
-  private int sBv;
-  private int sBw;
-  private WeakReference<LinearLayoutManager> sBx;
-  private int sBy;
-  private long sBz;
+  private final int wha;
+  private final int whb;
+  public final Map<String, c> whc;
+  public final Map<String, Boolean> whd;
+  private elf whe;
+  private long whf;
+  private h whg;
+  private g whh;
+  private final com.tencent.mm.plugin.expt.hellhound.a.a.a.b whi;
+  private final String whj;
+  private String whk;
+  public int whl;
+  private boolean whm;
+  private boolean whn;
+  private WeakReference<ViewGroup> who;
+  private int whp;
+  private int whq;
+  private WeakReference<LinearLayoutManager> whr;
+  private int whs;
+  private long wht;
+  private long whu;
+  private String whv;
+  private WindowManager whw;
   
   public a(int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(169282);
     this.mScrollState = 0;
-    this.sBj = new HashMap();
-    this.sBl = 0L;
-    this.sBs = false;
-    this.sBt = false;
-    this.sBu = null;
-    this.sBv = -1;
+    this.whd = new HashMap();
+    this.whf = 0L;
+    this.whm = false;
+    this.whn = false;
+    this.who = null;
+    this.whp = -1;
     this.mVisibleItemCount = 0;
-    this.sBw = 0;
-    this.sBx = null;
-    this.sBy = -1;
-    this.sBz = 0L;
-    this.sBA = -1L;
-    this.sBB = "";
+    this.whq = 0;
+    this.whr = null;
+    this.whs = -1;
+    this.wht = 0L;
+    this.whu = -1L;
+    this.whv = "";
     this.mActionBarHeight = -1;
     this.mStatusBarHeight = -1;
     this.mScreenHeight = 0;
     this.mScreenRealHeight = 0;
-    this.sBC = null;
+    this.whw = null;
     switch (paramInt)
     {
     }
     for (;;)
     {
-      this.sBo = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)localObject);
-      this.sBg = ViewConfiguration.get(MMApplicationContext.getContext()).getScaledTouchSlop();
-      this.sBi = new HashMap();
-      this.sBh = paramInt;
-      this.sBp = paramString1;
-      this.sBq = paramString2;
-      this.sBr = -1;
+      this.whi = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)localObject);
+      this.wha = ViewConfiguration.get(MMApplicationContext.getContext()).getScaledTouchSlop();
+      this.whc = new HashMap();
+      this.whb = paramInt;
+      this.whj = paramString1;
+      this.whk = paramString2;
+      this.whl = -1;
       AppMethodBeat.o(169282);
       return;
       localObject = new com.tencent.mm.plugin.expt.hellhound.a.a.a.c();
@@ -111,7 +112,7 @@ public final class a
   {
     AppMethodBeat.i(186063);
     if (this.mScrollState == 0) {
-      this.sBz = 0L;
+      this.wht = 0L;
     }
     for (boolean bool = true;; bool = i(paramViewGroup, paramInt2))
     {
@@ -126,30 +127,30 @@ public final class a
   private void a(ViewGroup paramViewGroup, int paramInt1, int paramInt2, long paramLong)
   {
     AppMethodBeat.i(186065);
-    if (this.sBm.sBV <= 0L)
+    if (this.whg.whQ <= 0L)
     {
-      this.sBm.sBV = paramLong;
-      if (this.sBn != null)
+      this.whg.whQ = paramLong;
+      if (this.whh != null)
       {
-        this.sBn.startTime = paramLong;
-        if (this.sBh == 0) {}
+        this.whh.startTime = paramLong;
+        if (this.whb == 0) {}
       }
     }
     else
     {
       a(paramViewGroup, paramInt1, paramInt2, paramLong, true);
     }
-    if (this.sBm.sBX > 0L)
+    if (this.whg.whS > 0L)
     {
-      this.sBm.sBY = paramLong;
-      if (this.sBk != null)
+      this.whg.whT = paramLong;
+      if (this.whe != null)
       {
-        paramLong = this.sBm.sBY;
-        long l = this.sBm.sBX;
-        paramViewGroup = this.sBk;
-        paramViewGroup.NaU = (paramLong - l + paramViewGroup.NaU);
+        paramLong = this.whg.whT;
+        long l = this.whg.whS;
+        paramViewGroup = this.whe;
+        paramViewGroup.Uno = (paramLong - l + paramViewGroup.Uno);
       }
-      this.sBm.cOC();
+      this.whg.ddu();
     }
     AppMethodBeat.o(186065);
   }
@@ -157,21 +158,21 @@ public final class a
   private void a(ViewGroup paramViewGroup, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(169296);
-    if ((paramViewGroup == null) || (this.sBn == null))
+    if ((paramViewGroup == null) || (this.whh == null))
     {
       AppMethodBeat.o(169296);
       return;
     }
-    this.sBt = false;
-    if (this.sBn.startTime > 0L)
+    this.whn = false;
+    if (this.whh.startTime > 0L)
     {
-      this.sBn.endTime = paramLong;
-      long l = this.sBn.endTime - this.sBn.startTime;
+      this.whh.endTime = paramLong;
+      long l = this.whh.endTime - this.whh.startTime;
       Object localObject1;
       if (l <= 0L)
       {
-        if (this.sBs) {
-          this.sBs = false;
+        if (this.whm) {
+          this.whm = false;
         }
       }
       else
@@ -188,7 +189,7 @@ public final class a
       AppMethodBeat.o(169296);
       return;
       label130:
-      this.sBj.clear();
+      this.whd.clear();
       double d = l / paramInt1;
       paramViewGroup = ((Map)localObject1).entrySet().iterator();
       while (paramViewGroup.hasNext())
@@ -197,147 +198,147 @@ public final class a
         localObject1 = (c)((Map.Entry)localObject2).getKey();
         if (((Boolean)((Map.Entry)localObject2).getValue()).booleanValue())
         {
-          this.sBj.put(((c)localObject1).sBK.feedId, Boolean.valueOf(((c)localObject1).sBK.isAd));
-          if (this.sBi.containsKey(((c)localObject1).sBK.feedId))
+          this.whd.put(((c)localObject1).whE.feedId, Boolean.valueOf(((c)localObject1).whE.isAd));
+          if (this.whc.containsKey(((c)localObject1).whE.feedId))
           {
-            localObject2 = (c)this.sBi.get(((c)localObject1).sBK.feedId);
+            localObject2 = (c)this.whc.get(((c)localObject1).whE.feedId);
             if (localObject2 != null)
             {
-              dzv localdzv = ((c)localObject2).sBK;
-              localdzv.MZt += d;
-              localdzv = ((c)localObject2).sBK;
-              localdzv.MZu += l;
+              ejv localejv = ((c)localObject2).whE;
+              localejv.UlN += d;
+              localejv = ((c)localObject2).whE;
+              localejv.UlO += l;
               a((c)localObject2, (c)localObject1);
-              this.sBi.put(((c)localObject1).sBK.feedId, localObject2);
-              ((c)localObject2).sBK.likeCount = ((c)localObject1).sBK.likeCount;
-              ((c)localObject2).sBK.commentCount = ((c)localObject1).sBK.commentCount;
-              ((c)localObject2).sBK.userName = ((c)localObject1).sBK.userName;
-              ((c)localObject2).sBK.nickName = ((c)localObject1).sBK.nickName;
-              ((c)localObject2).sBK.isAd = ((c)localObject1).sBK.isAd;
+              this.whc.put(((c)localObject1).whE.feedId, localObject2);
+              ((c)localObject2).whE.likeCount = ((c)localObject1).whE.likeCount;
+              ((c)localObject2).whE.commentCount = ((c)localObject1).whE.commentCount;
+              ((c)localObject2).whE.userName = ((c)localObject1).whE.userName;
+              ((c)localObject2).whE.nickName = ((c)localObject1).whE.nickName;
+              ((c)localObject2).whE.isAd = ((c)localObject1).whE.isAd;
             }
           }
           else
           {
-            ((c)localObject1).sBK.MZt = d;
-            ((c)localObject1).sBK.MZu = l;
-            this.sBi.put(((c)localObject1).sBK.feedId, localObject1);
+            ((c)localObject1).whE.UlN = d;
+            ((c)localObject1).whE.UlO = l;
+            this.whc.put(((c)localObject1).whE.feedId, localObject1);
           }
         }
       }
       if (paramBoolean)
       {
-        this.sBn.startTime = paramLong;
+        this.whh.startTime = paramLong;
         AppMethodBeat.o(169296);
         return;
       }
-      this.sBn.startTime = 0L;
+      this.whh.startTime = 0L;
     }
     AppMethodBeat.o(169296);
   }
   
   private static void a(c paramc1, c paramc2)
   {
-    paramc1.sBK.y = paramc2.sBK.y;
-    paramc1.sBK.height = paramc2.sBK.height;
-    paramc1.sBK.vp = paramc2.sBK.vp;
-    paramc1.sBK.EOS = paramc2.sBK.EOS;
-    paramc1.sBK.mEY = paramc2.sBK.mEY;
-    paramc1.sBK.virtualKeyHeight = paramc2.sBK.virtualKeyHeight;
+    paramc1.whE.y = paramc2.whE.y;
+    paramc1.whE.height = paramc2.whE.height;
+    paramc1.whE.bFP = paramc2.whE.bFP;
+    paramc1.whE.LcN = paramc2.whE.LcN;
+    paramc1.whE.pEk = paramc2.whE.pEk;
+    paramc1.whE.virtualKeyHeight = paramc2.whE.virtualKeyHeight;
   }
   
-  private com.tencent.mm.vending.j.c<c, Boolean> ab(View paramView, int paramInt)
+  private com.tencent.mm.vending.j.c<c, Boolean> ad(View paramView, int paramInt)
   {
-    AppMethodBeat.i(220453);
-    Object localObject1 = this.sBo.ac(paramView, paramInt);
+    AppMethodBeat.i(251136);
+    Object localObject1 = this.whi.ae(paramView, paramInt);
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      AppMethodBeat.o(220453);
+      AppMethodBeat.o(251136);
       return null;
     }
     Object localObject2 = new PInt();
     Object localObject4 = new PInt();
-    this.sBo.a(paramView, (PInt)localObject2, (PInt)localObject4, paramInt);
-    Object localObject3 = dN(paramView);
+    this.whi.a(paramView, (PInt)localObject2, (PInt)localObject4, paramInt);
+    Object localObject3 = el(paramView);
     int i = ((Integer)((com.tencent.mm.vending.j.b)localObject3).get(0)).intValue();
     int j = ((Integer)((com.tencent.mm.vending.j.c)localObject3).get(1)).intValue();
     localObject3 = new c();
-    ((c)localObject3).sBK = new dzv();
-    ((c)localObject3).sBK.feedId = ((String)localObject1);
-    ((c)localObject3).sBK.likeCount = ((PInt)localObject2).value;
-    ((c)localObject3).sBK.commentCount = ((PInt)localObject4).value;
-    localObject2 = this.sBo.ad(paramView, paramInt);
-    localObject4 = ((c)localObject3).sBK;
+    ((c)localObject3).whE = new ejv();
+    ((c)localObject3).whE.feedId = ((String)localObject1);
+    ((c)localObject3).whE.likeCount = ((PInt)localObject2).value;
+    ((c)localObject3).whE.commentCount = ((PInt)localObject4).value;
+    localObject2 = this.whi.af(paramView, paramInt);
+    localObject4 = ((c)localObject3).whE;
     localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = "";
     }
-    ((dzv)localObject4).userName = ((String)localObject1);
-    localObject2 = this.sBo.ae(paramView, paramInt);
-    localObject4 = ((c)localObject3).sBK;
+    ((ejv)localObject4).userName = ((String)localObject1);
+    localObject2 = this.whi.ag(paramView, paramInt);
+    localObject4 = ((c)localObject3).whE;
     localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = "";
     }
-    ((dzv)localObject4).nickName = ((String)localObject1);
-    ((c)localObject3).sBK.isAd = this.sBo.dP(paramView);
-    ((c)localObject3).sBK.y = i;
-    ((c)localObject3).sBK.height = j;
-    ((c)localObject3).sBK.mEY = this.mScreenRealHeight;
-    ((c)localObject3).sBK.virtualKeyHeight = (this.mScreenRealHeight - this.mScreenHeight);
-    ((c)localObject3).sBK.CHZ = this.mStatusBarHeight;
-    paramView = ((c)localObject3).sBK;
+    ((ejv)localObject4).nickName = ((String)localObject1);
+    ((c)localObject3).whE.isAd = this.whi.en(paramView);
+    ((c)localObject3).whE.y = i;
+    ((c)localObject3).whE.height = j;
+    ((c)localObject3).whE.pEk = this.mScreenRealHeight;
+    ((c)localObject3).whE.virtualKeyHeight = (this.mScreenRealHeight - this.mScreenHeight);
+    ((c)localObject3).whE.INC = this.mStatusBarHeight;
+    paramView = ((c)localObject3).whE;
     if (this.mActionBarHeight <= 0) {}
     for (i = 144;; i = this.mActionBarHeight)
     {
-      paramView.udM = i;
-      ((c)localObject3).sBK.vp = this.mScrollState;
-      ((c)localObject3).sBK.EOS = this.sBw;
+      paramView.xRu = i;
+      ((c)localObject3).whE.bFP = this.mScrollState;
+      ((c)localObject3).whE.LcN = this.whq;
       ((c)localObject3).position = paramInt;
-      paramView = com.tencent.mm.vending.j.a.Q(localObject3, Boolean.valueOf(((c)localObject3).GX(this.sBh)));
-      AppMethodBeat.o(220453);
+      paramView = com.tencent.mm.vending.j.a.J(localObject3, Boolean.valueOf(((c)localObject3).KH(this.whb)));
+      AppMethodBeat.o(251136);
       return paramView;
     }
   }
   
-  private void ac(Activity paramActivity)
+  private void ad(Activity paramActivity)
   {
     AppMethodBeat.i(169284);
     this.mScrollState = 0;
     initStatusBarHeight(paramActivity);
     initScreenHeight(paramActivity);
-    cOs();
+    ddk();
     AppMethodBeat.o(169284);
   }
   
-  private void ad(Activity paramActivity)
+  private void ae(Activity paramActivity)
   {
-    AppMethodBeat.i(220450);
+    AppMethodBeat.i(251109);
     this.mScrollState = 0;
     initStatusBarHeight(paramActivity);
     initScreenHeight(paramActivity);
-    cOt();
-    AppMethodBeat.o(220450);
+    ddl();
+    AppMethodBeat.o(251109);
   }
   
   private void b(ViewGroup paramViewGroup, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(186064);
-    if (this.sBm == null)
+    if (this.whg == null)
     {
       AppMethodBeat.o(186064);
       return;
     }
     long l = System.currentTimeMillis();
-    if (this.sBm.sBZ <= 0L) {
-      this.sBm.sBZ = l;
+    if (this.whg.whU <= 0L) {
+      this.whg.whU = l;
     }
-    if ((cOy()) || (this.mScrollState == 0))
+    if ((ddq()) || (this.mScrollState == 0))
     {
       a(paramViewGroup, paramInt1, paramInt2, l);
       AppMethodBeat.o(186064);
       return;
     }
-    if ((this.sBh == 0) && (this.sBr != -1))
+    if ((this.whb == 0) && (this.whl != -1))
     {
       a(paramViewGroup, paramInt1, paramInt2, l);
       AppMethodBeat.o(186064);
@@ -350,21 +351,21 @@ public final class a
   private void b(ViewGroup paramViewGroup, int paramInt1, int paramInt2, long paramLong)
   {
     AppMethodBeat.i(186066);
-    if (this.sBm.sBV > 0L)
+    if (this.whg.whQ > 0L)
     {
-      this.sBm.sBW = paramLong;
-      if (this.sBk != null)
+      this.whg.whR = paramLong;
+      if (this.whe != null)
       {
-        long l1 = this.sBm.sBW;
-        long l2 = this.sBm.sBV;
-        ebf localebf = this.sBk;
-        localebf.NaT = (l1 - l2 + localebf.NaT);
+        long l1 = this.whg.whR;
+        long l2 = this.whg.whQ;
+        elf localelf = this.whe;
+        localelf.Unn = (l1 - l2 + localelf.Unn);
       }
-      this.sBm.cOB();
+      this.whg.ddt();
       a(paramViewGroup, paramInt1, paramInt2, paramLong, false);
     }
-    if (this.sBm.sBX <= 0L) {
-      this.sBm.sBX = paramLong;
+    if (this.whg.whS <= 0L) {
+      this.whg.whS = paramLong;
     }
     AppMethodBeat.o(186066);
   }
@@ -372,7 +373,7 @@ public final class a
   private com.tencent.mm.vending.j.c<Map<c, Boolean>, Integer> c(ViewGroup paramViewGroup, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(169297);
-    if (this.sBh == 0)
+    if (this.whb == 0)
     {
       paramViewGroup = h(paramViewGroup, paramInt2);
       AppMethodBeat.o(169297);
@@ -381,192 +382,6 @@ public final class a
     paramViewGroup = d(paramViewGroup, paramInt1, paramInt2);
     AppMethodBeat.o(169297);
     return paramViewGroup;
-  }
-  
-  private void cOs()
-  {
-    AppMethodBeat.i(169285);
-    int i = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.cNT();
-    Log.i("HABBYGE-MALI.FeedMonitor", "startMonitor activityMethod: %d", new Object[] { Integer.valueOf(i) });
-    switch (i)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(169285);
-      return;
-      gq(com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO().cPR(), d.cPV());
-      this.sBs = true;
-      AppMethodBeat.o(169285);
-      return;
-      this.sBs = true;
-      ViewGroup localViewGroup;
-      if (this.sBu != null)
-      {
-        localViewGroup = (ViewGroup)this.sBu.get();
-        if (localViewGroup != null) {
-          a(localViewGroup, this.sBv, this.mVisibleItemCount);
-        }
-      }
-      AppMethodBeat.o(169285);
-      return;
-      if (System.currentTimeMillis() - this.sBl > 30000L)
-      {
-        Log.i("HABBYGE-MALI.FeedMonitor", "_handleActivityMethod.BACK_2_FRONT: New Session");
-        cOv();
-        AppMethodBeat.o(169285);
-        return;
-      }
-      this.sBs = true;
-      if (this.sBu != null)
-      {
-        localViewGroup = (ViewGroup)this.sBu.get();
-        if (localViewGroup != null) {
-          a(localViewGroup, this.sBv, this.mVisibleItemCount);
-        }
-      }
-    }
-  }
-  
-  private void cOt()
-  {
-    AppMethodBeat.i(220451);
-    gq(com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO().cPR(), d.cPV());
-    this.sBs = true;
-    this.sBt = true;
-    if (this.sBu != null)
-    {
-      ViewGroup localViewGroup = (ViewGroup)this.sBu.get();
-      if (localViewGroup != null) {
-        a(localViewGroup, Math.max(this.sBv, 0), Math.max(this.mVisibleItemCount, 1));
-      }
-    }
-    AppMethodBeat.o(220451);
-  }
-  
-  private void cOu()
-  {
-    AppMethodBeat.i(169287);
-    MMHandlerThread.postToMainThread(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(169279);
-        a.a(a.this);
-        AppMethodBeat.o(169279);
-      }
-    });
-    AppMethodBeat.o(169287);
-  }
-  
-  private void cOv()
-  {
-    AppMethodBeat.i(169288);
-    MMHandlerThread.postToMainThread(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(169280);
-        a.a(a.this);
-        a.this.gq(this.lnN, this.sBE);
-        AppMethodBeat.o(169280);
-      }
-    });
-    AppMethodBeat.o(169288);
-  }
-  
-  private void cOw()
-  {
-    AppMethodBeat.i(169289);
-    if (this.sBm == null)
-    {
-      AppMethodBeat.o(169289);
-      return;
-    }
-    long l1 = System.currentTimeMillis();
-    long l2;
-    long l3;
-    Object localObject;
-    if (this.sBm.sBV > 0L)
-    {
-      this.sBm.sBW = l1;
-      if (this.sBk != null)
-      {
-        l2 = this.sBm.sBW;
-        l3 = this.sBm.sBV;
-        localObject = this.sBk;
-        ((ebf)localObject).NaT = (l2 - l3 + ((ebf)localObject).NaT);
-      }
-      this.sBm.cOB();
-      if (this.sBu != null)
-      {
-        localObject = (ViewGroup)this.sBu.get();
-        if (localObject != null) {
-          a((ViewGroup)localObject, this.sBv, this.mVisibleItemCount, l1, false);
-        }
-      }
-    }
-    if (this.sBm.sBX > 0L)
-    {
-      this.sBm.sBY = l1;
-      if (this.sBk == null) {
-        break label296;
-      }
-      l2 = this.sBm.sBY;
-      l3 = this.sBm.sBX;
-      localObject = this.sBk;
-      ((ebf)localObject).NaU = (l2 - l3 + ((ebf)localObject).NaU);
-    }
-    for (;;)
-    {
-      this.sBm.cOC();
-      if (this.sBm.sBZ > 0L)
-      {
-        this.sBm.sCa = l1;
-        if (this.sBk != null)
-        {
-          l1 = this.sBm.sCa;
-          l2 = this.sBm.sBZ;
-          localObject = this.sBk;
-          ((ebf)localObject).NaS = (l1 - l2 + ((ebf)localObject).NaS);
-        }
-        localObject = this.sBm;
-        ((h)localObject).sBZ = 0L;
-        ((h)localObject).sCa = 0L;
-      }
-      AppMethodBeat.o(169289);
-      return;
-      label296:
-      Log.e("HABBYGE-MALI.FeedMonitor", "_stopComputeTimelineSliceTime mSnsTimeline is NULL 2");
-    }
-  }
-  
-  private void cOx()
-  {
-    AppMethodBeat.i(220452);
-    this.sBt = false;
-    cOu();
-    AppMethodBeat.o(220452);
-  }
-  
-  private boolean cOy()
-  {
-    return this.sBz <= 1000L;
-  }
-  
-  private void cOz()
-  {
-    AppMethodBeat.i(169305);
-    if (this.sBi != null) {
-      this.sBi.clear();
-    }
-    this.sBC = null;
-    if (this.sBu != null)
-    {
-      this.sBu.clear();
-      this.sBu = null;
-    }
-    AppMethodBeat.o(169305);
   }
   
   private com.tencent.mm.vending.j.c<Map<c, Boolean>, Integer> d(ViewGroup paramViewGroup, int paramInt1, int paramInt2)
@@ -589,7 +404,7 @@ public final class a
           if (localObject1 == null) {
             break label255;
           }
-          localObject1 = ab((View)localObject1, j);
+          localObject1 = ad((View)localObject1, j);
           if (localObject1 == null) {
             break label255;
           }
@@ -606,9 +421,9 @@ public final class a
       {
         paramInt2 -= 1;
         break;
-        if (this.sBx != null)
+        if (this.whr != null)
         {
-          localObject2 = (LinearLayoutManager)this.sBx.get();
+          localObject2 = (LinearLayoutManager)this.whr.get();
           localObject1 = localObject2;
           if (localObject2 != null) {}
         }
@@ -618,7 +433,7 @@ public final class a
           if (localObject1 == null) {
             break label255;
           }
-          this.sBx = new WeakReference(localObject1);
+          this.whr = new WeakReference(localObject1);
         }
         j = paramInt1 + paramInt2;
         Object localObject2 = ((LinearLayoutManager)localObject1).findViewByPosition(j);
@@ -631,7 +446,7 @@ public final class a
           {
             localObject1 = paramViewGroup.getChildAt(j);
             break label54;
-            paramViewGroup = com.tencent.mm.vending.j.a.Q(localHashMap, Integer.valueOf(i));
+            paramViewGroup = com.tencent.mm.vending.j.a.J(localHashMap, Integer.valueOf(i));
             AppMethodBeat.o(185576);
             return paramViewGroup;
           }
@@ -641,13 +456,199 @@ public final class a
     }
   }
   
-  private com.tencent.mm.vending.j.c<Integer, Integer> dN(View paramView)
+  private void ddk()
+  {
+    AppMethodBeat.i(169285);
+    int i = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.dcL();
+    Log.i("HABBYGE-MALI.FeedMonitor", "startMonitor activityMethod: %d", new Object[] { Integer.valueOf(i) });
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(169285);
+      return;
+      gE(com.tencent.mm.plugin.expt.hellhound.a.f.b.deI().deL(), d.deP());
+      this.whm = true;
+      AppMethodBeat.o(169285);
+      return;
+      this.whm = true;
+      ViewGroup localViewGroup;
+      if (this.who != null)
+      {
+        localViewGroup = (ViewGroup)this.who.get();
+        if (localViewGroup != null) {
+          a(localViewGroup, this.whp, this.mVisibleItemCount);
+        }
+      }
+      AppMethodBeat.o(169285);
+      return;
+      if (System.currentTimeMillis() - this.whf > 30000L)
+      {
+        Log.i("HABBYGE-MALI.FeedMonitor", "_handleActivityMethod.BACK_2_FRONT: New Session");
+        ddn();
+        AppMethodBeat.o(169285);
+        return;
+      }
+      this.whm = true;
+      if (this.who != null)
+      {
+        localViewGroup = (ViewGroup)this.who.get();
+        if (localViewGroup != null) {
+          a(localViewGroup, this.whp, this.mVisibleItemCount);
+        }
+      }
+    }
+  }
+  
+  private void ddl()
+  {
+    AppMethodBeat.i(251113);
+    gE(com.tencent.mm.plugin.expt.hellhound.a.f.b.deI().deL(), d.deP());
+    this.whm = true;
+    this.whn = true;
+    if (this.who != null)
+    {
+      ViewGroup localViewGroup = (ViewGroup)this.who.get();
+      if (localViewGroup != null) {
+        a(localViewGroup, Math.max(this.whp, 0), Math.max(this.mVisibleItemCount, 1));
+      }
+    }
+    AppMethodBeat.o(251113);
+  }
+  
+  private void ddm()
+  {
+    AppMethodBeat.i(169287);
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(169279);
+        a.a(a.this);
+        AppMethodBeat.o(169279);
+      }
+    });
+    AppMethodBeat.o(169287);
+  }
+  
+  private void ddn()
+  {
+    AppMethodBeat.i(169288);
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(169280);
+        a.a(a.this);
+        a.this.gE(this.oiy, this.why);
+        AppMethodBeat.o(169280);
+      }
+    });
+    AppMethodBeat.o(169288);
+  }
+  
+  private void ddo()
+  {
+    AppMethodBeat.i(169289);
+    if (this.whg == null)
+    {
+      AppMethodBeat.o(169289);
+      return;
+    }
+    long l1 = System.currentTimeMillis();
+    long l2;
+    long l3;
+    Object localObject;
+    if (this.whg.whQ > 0L)
+    {
+      this.whg.whR = l1;
+      if (this.whe != null)
+      {
+        l2 = this.whg.whR;
+        l3 = this.whg.whQ;
+        localObject = this.whe;
+        ((elf)localObject).Unn = (l2 - l3 + ((elf)localObject).Unn);
+      }
+      this.whg.ddt();
+      if (this.who != null)
+      {
+        localObject = (ViewGroup)this.who.get();
+        if (localObject != null) {
+          a((ViewGroup)localObject, this.whp, this.mVisibleItemCount, l1, false);
+        }
+      }
+    }
+    if (this.whg.whS > 0L)
+    {
+      this.whg.whT = l1;
+      if (this.whe == null) {
+        break label296;
+      }
+      l2 = this.whg.whT;
+      l3 = this.whg.whS;
+      localObject = this.whe;
+      ((elf)localObject).Uno = (l2 - l3 + ((elf)localObject).Uno);
+    }
+    for (;;)
+    {
+      this.whg.ddu();
+      if (this.whg.whU > 0L)
+      {
+        this.whg.whV = l1;
+        if (this.whe != null)
+        {
+          l1 = this.whg.whV;
+          l2 = this.whg.whU;
+          localObject = this.whe;
+          ((elf)localObject).Unm = (l1 - l2 + ((elf)localObject).Unm);
+        }
+        localObject = this.whg;
+        ((h)localObject).whU = 0L;
+        ((h)localObject).whV = 0L;
+      }
+      AppMethodBeat.o(169289);
+      return;
+      label296:
+      Log.e("HABBYGE-MALI.FeedMonitor", "_stopComputeTimelineSliceTime mSnsTimeline is NULL 2");
+    }
+  }
+  
+  private void ddp()
+  {
+    AppMethodBeat.i(251120);
+    this.whn = false;
+    ddm();
+    AppMethodBeat.o(251120);
+  }
+  
+  private boolean ddq()
+  {
+    return this.wht <= 1000L;
+  }
+  
+  private void ddr()
+  {
+    AppMethodBeat.i(169305);
+    if (this.whc != null) {
+      this.whc.clear();
+    }
+    this.whw = null;
+    if (this.who != null)
+    {
+      this.who.clear();
+      this.who = null;
+    }
+    AppMethodBeat.o(169305);
+  }
+  
+  private com.tencent.mm.vending.j.c<Integer, Integer> el(View paramView)
   {
     AppMethodBeat.i(169300);
-    if (this.sBh == 0) {}
+    if (this.whb == 0) {}
     for (int i = paramView.getHeight();; i = Math.max(paramView.getMeasuredHeight(), paramView.getHeight()))
     {
-      paramView = com.tencent.mm.vending.j.a.Q(Integer.valueOf(Math.min(getY(paramView), (int)paramView.getY())), Integer.valueOf(i));
+      paramView = com.tencent.mm.vending.j.a.J(Integer.valueOf(Math.min(getY(paramView), (int)paramView.getY())), Integer.valueOf(i));
       AppMethodBeat.o(169300);
       return paramView;
     }
@@ -675,7 +676,7 @@ public final class a
       if (localObject == null) {
         break label118;
       }
-      localObject = ab((View)localObject, i);
+      localObject = ad((View)localObject, i);
       if (localObject == null) {
         break label118;
       }
@@ -691,7 +692,7 @@ public final class a
     {
       i -= 1;
       break;
-      paramViewGroup = com.tencent.mm.vending.j.a.Q(localHashMap, Integer.valueOf(paramInt));
+      paramViewGroup = com.tencent.mm.vending.j.a.J(localHashMap, Integer.valueOf(paramInt));
       AppMethodBeat.o(185575);
       return paramViewGroup;
     }
@@ -706,29 +707,29 @@ public final class a
       AppMethodBeat.o(169299);
       return true;
     }
-    String str = this.sBo.ac(paramViewGroup, paramInt - 1);
+    String str = this.whi.ae(paramViewGroup, paramInt - 1);
     if (str == null)
     {
       AppMethodBeat.o(169299);
       return true;
     }
-    if (!str.equals(this.sBB))
+    if (!str.equals(this.whv))
     {
-      this.sBy = getY(paramViewGroup);
-      this.sBA = System.currentTimeMillis();
-      this.sBB = str;
+      this.whs = getY(paramViewGroup);
+      this.whu = System.currentTimeMillis();
+      this.whv = str;
       AppMethodBeat.o(169299);
       return true;
     }
     paramInt = getY(paramViewGroup);
-    int i = Math.abs(paramInt - this.sBy);
+    int i = Math.abs(paramInt - this.whs);
     long l1 = System.currentTimeMillis();
-    long l2 = l1 - this.sBA;
-    if ((l2 > 0L) && (i > this.sBg))
+    long l2 = l1 - this.whu;
+    if ((l2 > 0L) && (i > this.wha))
     {
-      this.sBz = (i * 1000L / l2);
-      this.sBy = paramInt;
-      this.sBA = l1;
+      this.wht = (i * 1000L / l2);
+      this.whs = paramInt;
+      this.whu = l1;
       AppMethodBeat.o(169299);
       return true;
     }
@@ -742,10 +743,10 @@ public final class a
     AppMethodBeat.i(169304);
     try
     {
-      if (this.sBC == null) {
-        this.sBC = ((WindowManager)MMApplicationContext.getContext().getSystemService("window"));
+      if (this.whw == null) {
+        this.whw = ((WindowManager)MMApplicationContext.getContext().getSystemService("window"));
       }
-      localObject = this.sBC.getDefaultDisplay();
+      localObject = this.whw.getDefaultDisplay();
       paramActivity = (Activity)localObject;
     }
     catch (Exception localException)
@@ -787,7 +788,7 @@ public final class a
     paramActivity = paramActivity.getResources();
     this.mStatusBarHeight = paramActivity.getDimensionPixelSize(paramActivity.getIdentifier("status_bar_height", "dimen", "android"));
     if (this.mStatusBarHeight <= 0) {
-      this.mStatusBarHeight = paramActivity.getDimensionPixelSize(2131166312);
+      this.mStatusBarHeight = paramActivity.getDimensionPixelSize(b.b.expt_sns_statusbar_height);
     }
     AppMethodBeat.o(169303);
   }
@@ -814,10 +815,10 @@ public final class a
         localObject2 = (LinearLayoutManager)((RecyclerView)paramViewGroup).getLayoutManager();
         if (localObject2 != null)
         {
-          localObject1 = ((LinearLayoutManager)localObject2).findViewByPosition(((LinearLayoutManager)localObject2).ku());
+          localObject1 = ((LinearLayoutManager)localObject2).findViewByPosition(((LinearLayoutManager)localObject2).kL());
           if (localObject1 == null)
           {
-            localObject2 = paramViewGroup.getChildAt(((LinearLayoutManager)localObject2).ku());
+            localObject2 = paramViewGroup.getChildAt(((LinearLayoutManager)localObject2).kL());
             localObject1 = localObject2;
             if (localObject2 != null) {}
           }
@@ -833,7 +834,7 @@ public final class a
   private void stopMonitor()
   {
     AppMethodBeat.i(169290);
-    int i = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.cNT();
+    int i = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.dcL();
     Log.i("HABBYGE-MALI.FeedMonitor", "stopMonitor, activityMethod: %s", new Object[] { Integer.valueOf(i) });
     switch (i)
     {
@@ -842,14 +843,14 @@ public final class a
     {
       AppMethodBeat.o(169290);
       return;
-      cOw();
+      ddo();
       AppMethodBeat.o(169290);
       return;
-      cOu();
+      ddm();
       AppMethodBeat.o(169290);
       return;
-      cOw();
-      this.sBl = System.currentTimeMillis();
+      ddo();
+      this.whf = System.currentTimeMillis();
     }
   }
   
@@ -863,22 +864,22 @@ public final class a
     {
       AppMethodBeat.o(169283);
       return;
-      ac(paramActivity);
+      ad(paramActivity);
       AppMethodBeat.o(169283);
       return;
       stopMonitor();
       AppMethodBeat.o(169283);
       return;
-      cOu();
+      ddm();
       AppMethodBeat.o(169283);
       return;
-      cOz();
+      ddr();
       AppMethodBeat.o(169283);
       return;
-      ad(paramActivity);
+      ae(paramActivity);
       AppMethodBeat.o(169283);
       return;
-      cOx();
+      ddp();
     }
   }
   
@@ -886,24 +887,24 @@ public final class a
   {
     AppMethodBeat.i(169291);
     if ((paramViewGroup instanceof RecyclerView)) {
-      this.sBo.setRecyclerView((RecyclerView)paramViewGroup);
+      this.whi.setRecyclerView((RecyclerView)paramViewGroup);
     }
-    if ((this.sBu == null) || (this.sBu.get() == null)) {
-      this.sBu = new WeakReference(paramViewGroup);
+    if ((this.who == null) || (this.who.get() == null)) {
+      this.who = new WeakReference(paramViewGroup);
     }
-    this.sBv = paramInt1;
+    this.whp = paramInt1;
     this.mVisibleItemCount = paramInt2;
     if (this.mScrollState == 1) {}
     for (;;)
     {
       try
       {
-        if (Math.abs(paramInt3) > this.sBg)
+        if (Math.abs(paramInt3) > this.wha)
         {
           if (paramInt3 <= 0) {
             continue;
           }
-          this.sBw = -1;
+          this.whq = -1;
         }
       }
       catch (Exception paramActivity)
@@ -916,7 +917,7 @@ public final class a
       return;
       if (paramInt3 < 0)
       {
-        this.sBw = 1;
+        this.whq = 1;
         continue;
         if ((this.mScrollState == 0) && (this.mActionBarHeight <= 0) && (paramActivity != null)) {
           try
@@ -942,58 +943,58 @@ public final class a
   {
     AppMethodBeat.i(186062);
     this.mScrollState = paramInt;
-    if ((this.sBu == null) || (this.sBu.get() == null)) {
-      this.sBu = new WeakReference(paramViewGroup);
+    if ((this.who == null) || (this.who.get() == null)) {
+      this.who = new WeakReference(paramViewGroup);
     }
     if ((paramViewGroup instanceof RecyclerView)) {
-      this.sBo.setRecyclerView((RecyclerView)paramViewGroup);
+      this.whi.setRecyclerView((RecyclerView)paramViewGroup);
     }
     if (paramInt == 0) {
-      this.sBw = 0;
+      this.whq = 0;
     }
-    if ((this.sBh == 0) && (paramInt != 2)) {
-      this.sBr = -1;
+    if ((this.whb == 0) && (paramInt != 2)) {
+      this.whl = -1;
     }
-    if (this.sBt)
+    if (this.whn)
     {
-      this.sBt = false;
-      a(paramViewGroup, Math.max(this.sBv, 0), Math.max(this.mVisibleItemCount, 1), System.currentTimeMillis(), true);
+      this.whn = false;
+      a(paramViewGroup, Math.max(this.whp, 0), Math.max(this.mVisibleItemCount, 1), System.currentTimeMillis(), true);
     }
     AppMethodBeat.o(186062);
   }
   
-  final void gq(String paramString1, String paramString2)
+  final void gE(String paramString1, String paramString2)
   {
     AppMethodBeat.i(169286);
-    this.sBk = new ebf();
-    this.sBk.NaS = 0L;
-    this.sBk.iGB = this.sBp;
-    this.sBk.NaW = this.sBq;
-    ebf localebf = this.sBk;
+    this.whe = new elf();
+    this.whe.Unm = 0L;
+    this.whe.lwD = this.whj;
+    this.whe.Unq = this.whk;
+    elf localelf = this.whe;
     String str = paramString1;
     if (paramString1 == null) {
       str = "";
     }
-    localebf.dRM = str;
-    this.sBk.dPM = paramString2;
-    com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sEy = this.sBk.dRM;
-    Log.i("HABBYGE-MALI.FeedMonitor", "initTimelineParams: %s, %s", new Object[] { this.sBk.dRM, this.sBk.dPM });
-    this.sBk.NaT = 0L;
-    this.sBk.NaU = 0L;
-    this.sBi.clear();
-    this.sBm = new h();
-    this.sBn = new g();
+    localelf.fLj = str;
+    this.whe.fJc = paramString2;
+    com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkt = this.whe.fLj;
+    Log.i("HABBYGE-MALI.FeedMonitor", "initTimelineParams: %s, %s", new Object[] { this.whe.fLj, this.whe.fJc });
+    this.whe.Unn = 0L;
+    this.whe.Uno = 0L;
+    this.whc.clear();
+    this.whg = new h();
+    this.whh = new g();
     AppMethodBeat.o(169286);
   }
   
-  public final void mc(boolean paramBoolean)
+  public final void no(boolean paramBoolean)
   {
     AppMethodBeat.i(186061);
     ViewGroup localViewGroup;
     int j;
-    if (this.sBu != null)
+    if (this.who != null)
     {
-      localViewGroup = (ViewGroup)this.sBu.get();
+      localViewGroup = (ViewGroup)this.who.get();
       if (localViewGroup != null)
       {
         j = localViewGroup.getChildCount();
@@ -1003,7 +1004,7 @@ public final class a
       }
     }
     label57:
-    for (int i = 0;; i = this.sBv)
+    for (int i = 0;; i = this.whp)
     {
       b(localViewGroup, i, j);
       AppMethodBeat.o(186061);
@@ -1013,7 +1014,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.a.a
  * JD-Core Version:    0.7.0.1
  */

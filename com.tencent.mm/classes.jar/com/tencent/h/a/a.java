@@ -1,23 +1,9 @@
 package com.tencent.h.a;
 
-public abstract class a
-  implements Runnable
-{
-  public abstract void boF();
-  
-  public void run()
-  {
-    try
-    {
-      boF();
-      return;
-    }
-    catch (Throwable localThrowable) {}
-  }
-}
+public final class a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.h.a.a
  * JD-Core Version:    0.7.0.1
  */

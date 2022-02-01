@@ -5,20 +5,19 @@ import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.mx;
+import com.tencent.mm.f.a.np;
 import com.tencent.mm.model.ad.b;
-import com.tencent.mm.plugin.appbrand.h;
-import com.tencent.mm.plugin.appbrand.h.b;
-import com.tencent.mm.plugin.appbrand.h.c;
-import com.tencent.mm.plugin.appbrand.h.d;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.g;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.jsapi.r;
+import com.tencent.mm.plugin.appbrand.k;
+import com.tencent.mm.plugin.appbrand.k.b;
+import com.tencent.mm.plugin.appbrand.k.c;
+import com.tencent.mm.plugin.appbrand.k.d;
 import com.tencent.mm.plugin.appbrand.media.music.a.a;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.c;
 import com.tencent.mm.plugin.appbrand.ui.banner.AppBrandStickyBannerLogic.a;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -27,29 +26,29 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class JsApiOperateMusicPlayer
-  extends com.tencent.mm.plugin.appbrand.jsapi.d<c>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.service.c>
 {
   public static final int CTRL_INDEX = 47;
   public static final String NAME = "operateMusicPlayer";
-  OperateMusicPlayer lEg;
+  OperateMusicPlayer ozH;
   
   static class OperateMusicPlayer
     extends MainProcessTask
   {
     public static final Parcelable.Creator<OperateMusicPlayer> CREATOR;
     public int action;
-    h.c cxI;
-    public String dNI;
+    public String appid;
+    k.c cwl;
     public boolean error;
     public String errorMsg;
     public String jsonString;
-    private com.tencent.mm.plugin.appbrand.s kGT;
-    private p lAw;
-    ad.b lEi;
-    com.tencent.mm.plugin.appbrand.ui.banner.f lEj;
-    public String lEk;
-    private final IListener lEl;
-    private int lqe;
+    private v nAz;
+    private int okO;
+    private o ovN;
+    ad.b ozJ;
+    com.tencent.mm.plugin.appbrand.ui.banner.f ozK;
+    public String ozL;
+    private final IListener ozM;
     
     static
     {
@@ -62,23 +61,23 @@ public final class JsApiOperateMusicPlayer
     {
       AppMethodBeat.i(45918);
       this.error = false;
-      this.lEl = new IListener() {};
+      this.ozM = new IListener() {};
       f(paramParcel);
       AppMethodBeat.o(45918);
     }
     
-    public OperateMusicPlayer(p paramp, com.tencent.mm.plugin.appbrand.s params, int paramInt)
+    public OperateMusicPlayer(o paramo, v paramv, int paramInt)
     {
       AppMethodBeat.i(45917);
       this.error = false;
-      this.lEl = new IListener() {};
-      this.lAw = paramp;
-      this.kGT = params;
-      this.lqe = paramInt;
+      this.ozM = new IListener() {};
+      this.ovN = paramo;
+      this.nAz = paramv;
+      this.okO = paramInt;
       AppMethodBeat.o(45917);
     }
     
-    public final void bjj()
+    public final void RW()
     {
       AppMethodBeat.i(45919);
       Object localObject2;
@@ -94,7 +93,7 @@ public final class JsApiOperateMusicPlayer
           this.action = -1;
           this.error = true;
           this.errorMsg = "operationType is null or nil";
-          bDU();
+          bPt();
           AppMethodBeat.o(45919);
           return;
         }
@@ -105,37 +104,37 @@ public final class JsApiOperateMusicPlayer
         this.action = -1;
         this.error = true;
         this.errorMsg = "data is null";
-        bDU();
+        bPt();
         AppMethodBeat.o(45919);
         return;
       }
-      if (!a.a.bOR().es(this.dNI, str1))
+      if (!a.a.cbh().eG(this.appid, str1))
       {
         Log.i("MicroMsg.JsApiOperateMusicPlayer", "appid not match cannot operate");
         this.action = -1;
         this.error = true;
         this.errorMsg = "appid not match cannot operate";
-        bDU();
+        bPt();
         AppMethodBeat.o(45919);
         return;
       }
       Object localObject1 = str1;
-      if (com.tencent.mm.ay.a.bee())
+      if (com.tencent.mm.bb.a.bnz())
       {
         localObject1 = str1;
-        if (!com.tencent.mm.ay.a.bec())
+        if (!com.tencent.mm.bb.a.bnx())
         {
           localObject1 = str1;
           if (str1.equalsIgnoreCase("play"))
           {
-            localObject1 = com.tencent.mm.ay.a.bef();
-            if ((localObject1 == null) || ((!Util.isNullOrNil(str2)) && (!str2.equals(((com.tencent.mm.ay.f)localObject1).jfb)))) {
+            localObject1 = com.tencent.mm.bb.a.bnA();
+            if ((localObject1 == null) || ((!Util.isNullOrNil(str2)) && (!str2.equals(((com.tencent.mm.bb.f)localObject1).lVz)))) {
               break label331;
             }
-            if (!a.a.bOR().es(this.dNI, "resume")) {
+            if (!a.a.cbh().eG(this.appid, "resume")) {
               break label319;
             }
-            Log.i("MicroMsg.JsApiOperateMusicPlayer", "same appid %s, change play to resume", new Object[] { this.dNI });
+            Log.i("MicroMsg.JsApiOperateMusicPlayer", "same appid %s, change play to resume", new Object[] { this.appid });
             localObject1 = "resume";
           }
         }
@@ -151,7 +150,7 @@ public final class JsApiOperateMusicPlayer
           this.action = -1;
           this.error = true;
           this.errorMsg = "dataUrl is null or nil";
-          bDU();
+          bPt();
           AppMethodBeat.o(45919);
           return;
           label319:
@@ -165,52 +164,52 @@ public final class JsApiOperateMusicPlayer
         else
         {
           Log.i("MicroMsg.JsApiOperateMusicPlayer", "title : %s, singer : %s, epName : %s, coverImgUrl : %s, dataUrl : %s, lowbandUrl : %s, webUrl : %s", new Object[] { localObject1, str1, str3, localObject2, str2, str2, str2 });
-          com.tencent.mm.ay.a.bea();
-          String str4 = a.a.bOR().ncY;
+          com.tencent.mm.bb.a.bnv();
+          String str4 = a.a.cbh().qdn;
           if (!Util.isNullOrNil(str4))
           {
-            Log.i("MicroMsg.JsApiOperateMusicPlayer", "remove listener preAppid is %s, appid is %s", new Object[] { str4, this.dNI });
-            a.a.bOR().acD(str4);
+            Log.i("MicroMsg.JsApiOperateMusicPlayer", "remove listener preAppid is %s, appid is %s", new Object[] { str4, this.appid });
+            a.a.cbh().akx(str4);
           }
           MMHandlerThread.postToMainThreadDelayed(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(45910);
-              String str1 = new StringBuilder().append(JsApiOperateMusicPlayer.OperateMusicPlayer.this.dNI).append(str2).append(this.lEn).toString().hashCode();
-              String str2 = this.lEn;
-              String str3 = this.lEn;
-              String str4 = this.dqb;
+              String str1 = new StringBuilder().append(JsApiOperateMusicPlayer.OperateMusicPlayer.this.appid).append(str2).append(this.ozO).toString().hashCode();
+              String str2 = this.ozO;
+              String str3 = this.ozO;
+              String str4 = this.cWz;
               String str5 = str1;
               String str6 = str2;
               String str7 = str2;
               String str8 = str2;
-              String str9 = com.tencent.mm.loader.j.b.aKJ();
-              String str10 = com.tencent.mm.plugin.image.d.aSY() + this.lEn.hashCode();
+              String str9 = com.tencent.mm.loader.j.b.aSL();
+              String str10 = com.tencent.mm.plugin.image.d.bbW() + this.ozO.hashCode();
               String str11 = str3;
-              com.tencent.mm.ay.f localf = new com.tencent.mm.ay.f();
-              localf.jeT = 7;
-              localf.jfa = str2;
-              localf.jfm = str3;
-              localf.jeX = str4;
-              localf.jeY = str5;
-              localf.jfd = str6;
-              localf.jfc = str7;
-              localf.jfb = str8;
-              localf.jfg = str9;
-              localf.jfi = "";
-              localf.jff = str10;
-              localf.jeV = str1;
-              localf.jeW = 0.0F;
-              localf.jeZ = str11;
-              localf.jeU = 1;
-              localf.jfe = null;
-              localf.jfl = str1;
-              localf.jfr = true;
-              com.tencent.mm.ay.a.c(localf);
-              a.a.bOR().a(JsApiOperateMusicPlayer.OperateMusicPlayer.b(JsApiOperateMusicPlayer.OperateMusicPlayer.this), JsApiOperateMusicPlayer.OperateMusicPlayer.this.dNI);
-              a.a.bOR().ncY = JsApiOperateMusicPlayer.OperateMusicPlayer.this.dNI;
-              a.a.bOR().ncZ = localf.jeV;
+              com.tencent.mm.bb.f localf = new com.tencent.mm.bb.f();
+              localf.lVr = 7;
+              localf.lVy = str2;
+              localf.lVK = str3;
+              localf.lVv = str4;
+              localf.lVw = str5;
+              localf.lVB = str6;
+              localf.lVA = str7;
+              localf.lVz = str8;
+              localf.lVE = str9;
+              localf.lVG = "";
+              localf.lVD = str10;
+              localf.lVt = str1;
+              localf.lVu = 0.0F;
+              localf.lVx = str11;
+              localf.lVs = 1;
+              localf.lVC = null;
+              localf.lVJ = str1;
+              localf.lVP = true;
+              com.tencent.mm.bb.a.c(localf);
+              a.a.cbh().a(JsApiOperateMusicPlayer.OperateMusicPlayer.b(JsApiOperateMusicPlayer.OperateMusicPlayer.this), JsApiOperateMusicPlayer.OperateMusicPlayer.this.appid);
+              a.a.cbh().qdn = JsApiOperateMusicPlayer.OperateMusicPlayer.this.appid;
+              a.a.cbh().qdo = localf.lVt;
               Log.i("MicroMsg.JsApiOperateMusicPlayer", "startPlayMusic");
               JsApiOperateMusicPlayer.OperateMusicPlayer.this.action = -1;
               JsApiOperateMusicPlayer.OperateMusicPlayer.this.errorMsg = "";
@@ -225,19 +224,19 @@ public final class JsApiOperateMusicPlayer
       }
       if (((String)localObject1).equalsIgnoreCase("resume"))
       {
-        localObject1 = a.a.bOR().ncY;
+        localObject1 = a.a.cbh().qdn;
         if (!Util.isNullOrNil((String)localObject1))
         {
-          Log.i("MicroMsg.JsApiOperateMusicPlayer", "remove listener preAppid is %s, appid is %s", new Object[] { localObject1, this.dNI });
-          a.a.bOR().acD((String)localObject1);
+          Log.i("MicroMsg.JsApiOperateMusicPlayer", "remove listener preAppid is %s, appid is %s", new Object[] { localObject1, this.appid });
+          a.a.cbh().akx((String)localObject1);
         }
-        a.a.bOR().a(this.lEl, this.dNI);
-        a.a.bOR().ncY = this.dNI;
-        localObject1 = com.tencent.mm.ay.a.bef();
+        a.a.cbh().a(this.ozM, this.appid);
+        a.a.cbh().qdn = this.appid;
+        localObject1 = com.tencent.mm.bb.a.bnA();
         if (localObject1 != null) {
-          a.a.bOR().ncZ = ((com.tencent.mm.ay.f)localObject1).jeV;
+          a.a.cbh().qdo = ((com.tencent.mm.bb.f)localObject1).lVt;
         }
-        if (com.tencent.mm.ay.b.beh())
+        if (com.tencent.mm.bb.b.bnC())
         {
           MMHandlerThread.postToMainThreadDelayed(new Runnable()
           {
@@ -259,13 +258,13 @@ public final class JsApiOperateMusicPlayer
         this.action = -1;
         this.error = true;
         this.errorMsg = "resume play fail";
-        bDU();
+        bPt();
         AppMethodBeat.o(45919);
         return;
       }
       if (((String)localObject1).equalsIgnoreCase("pause"))
       {
-        if (com.tencent.mm.ay.b.bei())
+        if (com.tencent.mm.bb.b.bnD())
         {
           MMHandlerThread.postToMainThreadDelayed(new Runnable()
           {
@@ -287,13 +286,13 @@ public final class JsApiOperateMusicPlayer
         this.action = -1;
         this.error = true;
         this.errorMsg = "pause play fail";
-        bDU();
+        bPt();
         AppMethodBeat.o(45919);
         return;
       }
       if (((String)localObject1).equalsIgnoreCase("seek"))
       {
-        if (com.tencent.mm.ay.a.tG(Util.getInt(Util.notNullToString(((JSONObject)localObject2).optString("position")), -1) * 1000))
+        if (com.tencent.mm.bb.a.wG(Util.getInt(Util.notNullToString(((JSONObject)localObject2).optString("position")), -1) * 1000))
         {
           MMHandlerThread.postToMainThreadDelayed(new Runnable()
           {
@@ -315,13 +314,13 @@ public final class JsApiOperateMusicPlayer
         this.action = -1;
         this.error = true;
         this.errorMsg = "seek fail";
-        bDU();
+        bPt();
         AppMethodBeat.o(45919);
         return;
       }
       if (((String)localObject1).equalsIgnoreCase("stop"))
       {
-        if (com.tencent.mm.ay.b.bej())
+        if (com.tencent.mm.bb.b.bnE())
         {
           MMHandlerThread.postToMainThreadDelayed(new Runnable()
           {
@@ -343,23 +342,23 @@ public final class JsApiOperateMusicPlayer
         this.action = -1;
         this.error = false;
         this.errorMsg = "stop play fail";
-        bDU();
+        bPt();
         AppMethodBeat.o(45919);
         return;
       }
       this.action = -1;
       this.error = true;
-      bDU();
+      bPt();
       AppMethodBeat.o(45919);
     }
     
-    public final void bjk()
+    public final void bsK()
     {
       AppMethodBeat.i(45920);
       Log.i("MicroMsg.JsApiOperateMusicPlayer", "runInClientProcess(action : %s)", new Object[] { Integer.valueOf(this.action) });
-      com.tencent.mm.plugin.appbrand.s locals = this.kGT;
-      int i = this.lqe;
-      p localp = this.lAw;
+      v localv = this.nAz;
+      int i = this.okO;
+      o localo = this.ovN;
       String str;
       if (this.error)
       {
@@ -369,7 +368,7 @@ public final class JsApiOperateMusicPlayer
           str = "";
           str = str;
           label87:
-          locals.i(i, localp.h(str, null));
+          localv.j(i, localo.h(str, null));
           switch (this.action)
           {
           }
@@ -384,38 +383,38 @@ public final class JsApiOperateMusicPlayer
         str = "ok";
         break label87;
         Log.i("MicroMsg.JsApiOperateMusicPlayer", "onMusicPlay in");
-        new JsApiOperateMusicPlayer.c((byte)0).g(this.kGT).Zg(this.lEk).bEo();
-        this.lEi.l("Music#isPlaying", Boolean.TRUE);
-        AppBrandStickyBannerLogic.a.d(this.lEj);
-        h.a(this.kGT.getAppId(), this.cxI);
+        new JsApiOperateMusicPlayer.c((byte)0).i(this.nAz).agT(this.ozL).bPO();
+        this.ozJ.k("Music#isPlaying", Boolean.TRUE);
+        AppBrandStickyBannerLogic.a.d(this.ozK);
+        k.a(this.nAz.getAppId(), this.cwl);
         AppMethodBeat.o(45920);
         return;
         Log.i("MicroMsg.JsApiOperateMusicPlayer", "onMusicResume in");
-        this.lEi.l("Music#isPlaying", Boolean.TRUE);
-        AppBrandStickyBannerLogic.a.d(this.lEj);
-        h.a(this.kGT.getAppId(), this.cxI);
+        this.ozJ.k("Music#isPlaying", Boolean.TRUE);
+        AppBrandStickyBannerLogic.a.d(this.ozK);
+        k.a(this.nAz.getAppId(), this.cwl);
         AppMethodBeat.o(45920);
         return;
         Log.i("MicroMsg.JsApiOperateMusicPlayer", "onMusicStop in");
-        new JsApiOperateMusicPlayer.a((byte)0).g(this.kGT).Zg(this.lEk).bEo();
+        new JsApiOperateMusicPlayer.a((byte)0).i(this.nAz).agT(this.ozL).bPO();
         Log.i("MicroMsg.JsApiOperateMusicPlayer", "onMusicEnd in");
-        this.lEi.l("Music#isPlaying", Boolean.FALSE);
-        AppBrandStickyBannerLogic.a.c(this.lEj);
-        h.b(this.kGT.getAppId(), this.cxI);
+        this.ozJ.k("Music#isPlaying", Boolean.FALSE);
+        AppBrandStickyBannerLogic.a.c(this.ozK);
+        k.b(this.nAz.getAppId(), this.cwl);
         AppMethodBeat.o(45920);
         return;
         Log.i("MicroMsg.JsApiOperateMusicPlayer", "onMusicPause in");
-        new JsApiOperateMusicPlayer.b((byte)0).g(this.kGT).Zg(this.lEk).bEo();
-        this.lEi.l("Music#isPlaying", Boolean.FALSE);
-        AppBrandStickyBannerLogic.a.c(this.lEj);
-        h.b(this.kGT.getAppId(), this.cxI);
+        new JsApiOperateMusicPlayer.b((byte)0).i(this.nAz).agT(this.ozL).bPO();
+        this.ozJ.k("Music#isPlaying", Boolean.FALSE);
+        AppBrandStickyBannerLogic.a.c(this.ozK);
+        k.b(this.nAz.getAppId(), this.cwl);
         AppMethodBeat.o(45920);
         return;
         Log.i("MicroMsg.JsApiOperateMusicPlayer", "onMusicError in");
-        this.kGT.c("onMusicError", this.lEk, 0);
-        this.lEi.l("Music#isPlaying", Boolean.FALSE);
-        AppBrandStickyBannerLogic.a.c(this.lEj);
-        h.b(this.kGT.getAppId(), this.cxI);
+        this.nAz.ct("onMusicError", this.ozL);
+        this.ozJ.k("Music#isPlaying", Boolean.FALSE);
+        AppBrandStickyBannerLogic.a.c(this.ozK);
+        k.b(this.nAz.getAppId(), this.cwl);
       }
     }
     
@@ -423,12 +422,12 @@ public final class JsApiOperateMusicPlayer
     {
       AppMethodBeat.i(45921);
       this.jsonString = paramParcel.readString();
-      this.dNI = paramParcel.readString();
+      this.appid = paramParcel.readString();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
         this.error = bool;
-        this.lEk = paramParcel.readString();
+        this.ozL = paramParcel.readString();
         this.action = paramParcel.readInt();
         this.errorMsg = paramParcel.readString();
         AppMethodBeat.o(45921);
@@ -440,12 +439,12 @@ public final class JsApiOperateMusicPlayer
     {
       AppMethodBeat.i(45922);
       paramParcel.writeString(this.jsonString);
-      paramParcel.writeString(this.dNI);
+      paramParcel.writeString(this.appid);
       if (this.error) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
-        paramParcel.writeString(this.lEk);
+        paramParcel.writeString(this.ozL);
         paramParcel.writeInt(this.action);
         paramParcel.writeString(this.errorMsg);
         AppMethodBeat.o(45922);
@@ -455,21 +454,21 @@ public final class JsApiOperateMusicPlayer
   }
   
   static final class a
-    extends com.tencent.mm.plugin.appbrand.jsapi.s
+    extends r
   {
     private static final int CTRL_INDEX = 82;
     private static final String NAME = "onMusicEnd";
   }
   
   static final class b
-    extends com.tencent.mm.plugin.appbrand.jsapi.s
+    extends r
   {
     private static final int CTRL_INDEX = 81;
     private static final String NAME = "onMusicPause";
   }
   
   static final class c
-    extends com.tencent.mm.plugin.appbrand.jsapi.s
+    extends r
   {
     private static final int CTRL_INDEX = 80;
     private static final String NAME = "onMusicPlay";
@@ -477,7 +476,7 @@ public final class JsApiOperateMusicPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.JsApiOperateMusicPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -9,11 +9,14 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.remittance.bankcard.a.h;
 import com.tencent.mm.plugin.remittance.bankcard.model.BankcardElemParcel;
-import com.tencent.mm.protocal.protobuf.bja;
-import com.tencent.mm.protocal.protobuf.jg;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.protocal.protobuf.bqj;
+import com.tencent.mm.protocal.protobuf.iv;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.sortview.d;
@@ -28,29 +31,29 @@ import java.util.List;
 public class BankRemitSelectBankUI
   extends BankRemitBaseUI
 {
-  private BankRemitSortView Clv;
+  private BankRemitSortView Iio;
   
   public int getLayoutId()
   {
-    return 2131493208;
+    return a.g.bank_remit_select_bank_ui;
   }
   
   public void initView()
   {
     AppMethodBeat.i(67581);
-    this.Clv = ((BankRemitSortView)findViewById(2131297804));
-    this.Clv.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.Iio = ((BankRemitSortView)findViewById(a.f.brsb_sort_view));
+    this.Iio.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(67576);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousAdapterView);
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.zo(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/remittance/bankcard/ui/BankRemitSelectBankUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
-        paramAnonymousAdapterView = (jg)((d)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt)).data;
+        localb.bn(paramAnonymousAdapterView);
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.Fs(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/remittance/bankcard/ui/BankRemitSelectBankUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+        paramAnonymousAdapterView = (iv)((d)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt)).bnW;
         if (paramAnonymousAdapterView != null)
         {
           paramAnonymousAdapterView = new BankcardElemParcel(paramAnonymousAdapterView);
@@ -75,12 +78,12 @@ public class BankRemitSelectBankUI
   {
     AppMethodBeat.i(67580);
     super.onCreate(paramBundle);
-    setMMTitle(2131756532);
+    setMMTitle(a.i.bank_remit_select_bank_title);
     addSceneEndListener(1399);
     initView();
     Log.i("MicroMsg.BankRemitSelectBankUI", "do fetch data");
     paramBundle = new h();
-    paramBundle.t(this);
+    paramBundle.u(this);
     doSceneProgress(paramBundle);
     AppMethodBeat.o(67580);
   }
@@ -101,12 +104,12 @@ public class BankRemitSelectBankUI
       paramString = (h)paramq;
       paramString.a(new r.a()
       {
-        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+        public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
           AppMethodBeat.i(67579);
           paramAnonymousq = new ArrayList();
-          Object localObject2 = paramString.CiP.LSO;
-          paramAnonymousString = paramString.CiP.LSN;
+          Object localObject2 = paramString.IfI.Tbz;
+          paramAnonymousString = paramString.IfI.Tby;
           Object localObject1 = new com.tencent.mm.plugin.remittance.bankcard.model.b();
           Object localObject3;
           if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
@@ -115,10 +118,10 @@ public class BankRemitSelectBankUI
             localObject2 = ((List)localObject2).iterator();
             while (((Iterator)localObject2).hasNext())
             {
-              localObject3 = (jg)((Iterator)localObject2).next();
+              localObject3 = (iv)((Iterator)localObject2).next();
               d locald = new d();
-              locald.Pae = "☆";
-              locald.data = localObject3;
+              locald.Wtr = "☆";
+              locald.bnW = localObject3;
               paramAnonymousq.add(locald);
             }
           }
@@ -129,40 +132,40 @@ public class BankRemitSelectBankUI
             localObject1 = paramAnonymousString.iterator();
             while (((Iterator)localObject1).hasNext())
             {
-              localObject2 = (jg)((Iterator)localObject1).next();
-              if (!Util.isNullOrNil(((jg)localObject2).ynT))
+              localObject2 = (iv)((Iterator)localObject1).next();
+              if (!Util.isNullOrNil(((iv)localObject2).DNV))
               {
-                if (!Util.isNullOrNil(((jg)localObject2).KNP)) {
-                  Log.i("MicroMsg.BankRemitSelectBankUI", "use sort pingyin: %s", new Object[] { ((jg)localObject2).KNP });
+                if (!Util.isNullOrNil(((iv)localObject2).ROJ)) {
+                  Log.i("MicroMsg.BankRemitSelectBankUI", "use sort pingyin: %s", new Object[] { ((iv)localObject2).ROJ });
                 }
-                for (paramAnonymousString = ((jg)localObject2).KNP.toUpperCase().charAt(0);; paramAnonymousString = com.tencent.mm.plugin.remittance.bankcard.model.a.aLU(((jg)localObject2).ynT))
+                for (paramAnonymousString = ((iv)localObject2).ROJ.toUpperCase().charAt(0);; paramAnonymousString = com.tencent.mm.plugin.remittance.bankcard.model.a.aWy(((iv)localObject2).DNV))
                 {
                   localObject3 = new d();
-                  ((d)localObject3).Pae = paramAnonymousString;
-                  ((d)localObject3).data = localObject2;
+                  ((d)localObject3).Wtr = paramAnonymousString;
+                  ((d)localObject3).bnW = localObject2;
                   paramAnonymousq.add(localObject3);
                   break;
                 }
               }
             }
           }
-          BankRemitSelectBankUI.a(BankRemitSelectBankUI.this).hy(paramAnonymousq);
+          BankRemitSelectBankUI.a(BankRemitSelectBankUI.this).ig(paramAnonymousq);
           AppMethodBeat.o(67579);
         }
       }).b(new r.a()
       {
-        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+        public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
           AppMethodBeat.i(67578);
-          Log.e("MicroMsg.BankRemitSelectBankUI", "response error: %s, %s", new Object[] { Integer.valueOf(paramString.CiP.dDN), paramString.CiP.qwn });
-          if (!Util.isNullOrNil(paramString.CiP.qwn)) {
-            Toast.makeText(BankRemitSelectBankUI.this, paramString.CiP.qwn, 1).show();
+          Log.e("MicroMsg.BankRemitSelectBankUI", "response error: %s, %s", new Object[] { Integer.valueOf(paramString.IfI.fwx), paramString.IfI.tVo });
+          if (!Util.isNullOrNil(paramString.IfI.tVo)) {
+            Toast.makeText(BankRemitSelectBankUI.this, paramString.IfI.tVo, 1).show();
           }
           AppMethodBeat.o(67578);
         }
       }).c(new r.a()
       {
-        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+        public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
           AppMethodBeat.i(67577);
           Log.e("MicroMsg.BankRemitSelectBankUI", "net error: %s", new Object[] { paramString });

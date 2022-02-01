@@ -3,49 +3,43 @@ package com.tencent.mm.plugin.wallet_core.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
-import java.util.Map;
 import org.json.JSONObject;
 
 public final class u
   extends m
 {
-  public u(String paramString)
+  public u()
   {
-    AppMethodBeat.i(69933);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("wallet_tpa_country", paramString);
-    setRequestData(localHashMap);
-    AppMethodBeat.o(69933);
+    AppMethodBeat.i(69932);
+    setRequestData(new HashMap());
+    AppMethodBeat.o(69932);
   }
   
   public final int getFuncId()
   {
-    return 1663;
+    return 2791;
   }
   
   public final int getTenpayCgicmd()
   {
-    return 1663;
+    return 2791;
   }
   
   public final int getType()
   {
-    AppMethodBeat.i(69934);
-    int i = super.getType();
-    AppMethodBeat.o(69934);
-    return i;
+    return 2791;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/setuserwallet";
+    return "/cgi-bin/mmpay-bin/tenpay/setpayuserduty";
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.u
  * JD-Core Version:    0.7.0.1
  */

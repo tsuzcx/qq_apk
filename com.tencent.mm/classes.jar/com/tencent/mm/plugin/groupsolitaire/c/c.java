@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.groupsolitaire.c;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.cm;
 import com.tencent.mm.plugin.groupsolitaire.PluginGroupSolitaire;
 import com.tencent.mm.plugin.groupsolitaire.b.b;
 import com.tencent.mm.plugin.groupsolitaire.b.d;
@@ -16,20 +16,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public final class c
+public class c
   extends MAutoStorage<a>
 {
+  public static final Long DpL;
+  public static final Long DpM;
   public static final String[] INDEX_CREATE;
   public static final String[] SQL_CREATE;
-  public static final Long yfJ;
-  public static final Long yfK;
   private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(110411);
-    yfJ = Long.valueOf(86400L);
-    yfK = Long.valueOf(3600L);
+    DpL = Long.valueOf(86400L);
+    DpM = Long.valueOf(3600L);
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "GroupSolitatire") };
     INDEX_CREATE = new String[] { "DROP INDEX IF EXISTS usernameIndex", "CREATE INDEX IF NOT EXISTS GroupSolitatire_usernameIndex ON GroupSolitatire ( username )", "CREATE INDEX IF NOT EXISTS usernameKeyIndex ON GroupSolitatire ( username,key )", "CREATE INDEX IF NOT EXISTS usernameKeyActiveIndex ON GroupSolitatire ( username,key,active )" };
     AppMethodBeat.o(110411);
@@ -41,7 +41,7 @@ public final class c
     this.db = paramISQLiteDatabase;
   }
   
-  public final List<a> E(String paramString, int paramInt, long paramLong)
+  public final List<a> F(String paramString, int paramInt, long paramLong)
   {
     AppMethodBeat.i(110407);
     ArrayList localArrayList = new ArrayList();
@@ -66,7 +66,7 @@ public final class c
     return localArrayList;
   }
   
-  public final boolean F(String paramString, int paramInt, long paramLong)
+  public final boolean G(String paramString, int paramInt, long paramLong)
   {
     AppMethodBeat.i(110408);
     try
@@ -106,7 +106,7 @@ public final class c
     if (!paramBoolean)
     {
       parama.field_content = b.e(parama);
-      if (parama.yfE.size() <= 1) {
+      if (parama.DpG.size() <= 1) {
         break label101;
       }
       parama.field_active = 1;
@@ -115,7 +115,7 @@ public final class c
     {
       paramBoolean = update(parama.systemRowid, parama);
       if (paramBoolean) {
-        ((PluginGroupSolitaire)g.ah(PluginGroupSolitaire.class)).getGroupSolitatireManager().ic(parama.field_username, parama.field_key);
+        ((PluginGroupSolitaire)h.ag(PluginGroupSolitaire.class)).getGroupSolitatireManager().il(parama.field_username, parama.field_key);
       }
       AppMethodBeat.o(110405);
       return paramBoolean;
@@ -126,7 +126,7 @@ public final class c
     }
   }
   
-  public final List<a> eo(String paramString, int paramInt)
+  public final List<a> eN(String paramString, int paramInt)
   {
     AppMethodBeat.i(110406);
     ArrayList localArrayList = new ArrayList();
@@ -136,16 +136,16 @@ public final class c
       return localArrayList;
     }
     Cursor localCursor = null;
-    long l = cl.aWB();
+    long l = cm.bfF();
     if (paramInt == 1) {
-      localCursor = this.db.query("GroupSolitatire", a.info.columns, "username=? and active=? and lastActiveTime>=?", new String[] { paramString, "1", l - b.dXJ() * yfJ.longValue() }, null, null, "lastActiveTime DESC ");
+      localCursor = this.db.query("GroupSolitatire", a.info.columns, "username=? and active=? and lastActiveTime>=?", new String[] { paramString, "1", l - b.eBh() * DpL.longValue() }, null, null, "lastActiveTime DESC ");
     }
     while (localCursor == null)
     {
       AppMethodBeat.o(110406);
       return localArrayList;
       if (paramInt == 0) {
-        localCursor = this.db.query("GroupSolitatire", a.info.columns, "username=? and active=? and lastActiveTime>=?", new String[] { paramString, "0", l - b.dXL() * yfK.longValue() }, null, null, "lastActiveTime DESC ");
+        localCursor = this.db.query("GroupSolitatire", a.info.columns, "username=? and active=? and lastActiveTime>=?", new String[] { paramString, "0", l - b.eBj() * DpM.longValue() }, null, null, "lastActiveTime DESC ");
       }
     }
     while (localCursor.moveToNext())
@@ -173,7 +173,7 @@ public final class c
       return false;
     }
     parama.field_content = b.e(parama);
-    if (parama.yfE.size() > 1) {
+    if (parama.DpG.size() > 1) {
       parama.field_active = 1;
     }
     for (;;)
@@ -187,7 +187,7 @@ public final class c
     }
   }
   
-  public final a ie(String paramString1, String paramString2)
+  public final a in(String paramString1, String paramString2)
   {
     AppMethodBeat.i(110404);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
@@ -215,15 +215,15 @@ public final class c
       return null;
     }
     paramString2 = (a)localArrayList.get(0);
-    paramString1 = ((PluginGroupSolitaire)g.ah(PluginGroupSolitaire.class)).getGroupSolitatireManager().aBm(paramString1);
+    paramString1 = ((PluginGroupSolitaire)h.ag(PluginGroupSolitaire.class)).getGroupSolitatireManager().aLa(paramString1);
     if (paramString1 != null)
     {
-      if ((paramString2.field_active == 0) && (paramString2.field_lastActiveTime >= paramString1.yfc))
+      if ((paramString2.field_active == 0) && (paramString2.field_lastActiveTime >= paramString1.Dpe))
       {
         AppMethodBeat.o(110404);
         return paramString2;
       }
-      if ((paramString2.field_active == 1) && (paramString2.field_lastActiveTime >= paramString1.yfa))
+      if ((paramString2.field_active == 1) && (paramString2.field_lastActiveTime >= paramString1.Dpc))
       {
         AppMethodBeat.o(110404);
         return paramString2;
@@ -233,61 +233,61 @@ public final class c
     return null;
   }
   
-  public final a r(String paramString1, String paramString2, boolean paramBoolean)
+  public final a t(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(194436);
-    paramString2 = ie(paramString1, paramString2);
+    AppMethodBeat.i(246358);
+    paramString2 = in(paramString1, paramString2);
     if (!paramBoolean)
     {
-      AppMethodBeat.o(194436);
+      AppMethodBeat.o(246358);
       return paramString2;
     }
-    paramString1 = ((PluginGroupSolitaire)g.ah(PluginGroupSolitaire.class)).getGroupSolitatireManager().aBm(paramString1);
+    paramString1 = ((PluginGroupSolitaire)h.ag(PluginGroupSolitaire.class)).getGroupSolitatireManager().aLa(paramString1);
     if ((paramString2 == null) || (paramString1 == null))
     {
-      AppMethodBeat.o(194436);
+      AppMethodBeat.o(246358);
       return paramString2;
     }
     if (paramString2.field_active == 1)
     {
-      if (paramString2.field_lastActiveTime < paramString1.yfa)
+      if (paramString2.field_lastActiveTime < paramString1.Dpc)
       {
-        if (paramString1.yeZ)
+        if (paramString1.Dpb)
         {
-          ((PluginGroupSolitaire)g.ah(PluginGroupSolitaire.class)).getGroupSolitatireReportManager();
+          ((PluginGroupSolitaire)h.ag(PluginGroupSolitaire.class)).getGroupSolitatireReportManager();
           d.a(paramString2, 2);
         }
         while (delete(paramString2.systemRowid))
         {
-          AppMethodBeat.o(194436);
+          AppMethodBeat.o(246358);
           return null;
-          ((PluginGroupSolitaire)g.ah(PluginGroupSolitaire.class)).getGroupSolitatireReportManager();
+          ((PluginGroupSolitaire)h.ag(PluginGroupSolitaire.class)).getGroupSolitatireReportManager();
           d.a(paramString2, 1);
         }
       }
     }
-    else if ((paramString2.field_active == 0) && (paramString2.field_lastActiveTime < paramString1.yfc))
+    else if ((paramString2.field_active == 0) && (paramString2.field_lastActiveTime < paramString1.Dpe))
     {
-      if (paramString1.yfb)
+      if (paramString1.Dpd)
       {
-        ((PluginGroupSolitaire)g.ah(PluginGroupSolitaire.class)).getGroupSolitatireReportManager();
+        ((PluginGroupSolitaire)h.ag(PluginGroupSolitaire.class)).getGroupSolitatireReportManager();
         d.a(paramString2, 2);
       }
       while (delete(paramString2.systemRowid))
       {
-        AppMethodBeat.o(194436);
+        AppMethodBeat.o(246358);
         return null;
-        ((PluginGroupSolitaire)g.ah(PluginGroupSolitaire.class)).getGroupSolitatireReportManager();
+        ((PluginGroupSolitaire)h.ag(PluginGroupSolitaire.class)).getGroupSolitatireReportManager();
         d.a(paramString2, 1);
       }
     }
-    AppMethodBeat.o(194436);
+    AppMethodBeat.o(246358);
     return paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.groupsolitaire.c.c
  * JD-Core Version:    0.7.0.1
  */

@@ -20,10 +20,10 @@ public class NoScaleLinearLayout
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(214347);
+    AppMethodBeat.i(265861);
     super.onFinishInflate();
-    a.hL(this);
-    AppMethodBeat.o(214347);
+    a.jg(this);
+    AppMethodBeat.o(265861);
   }
 }
 

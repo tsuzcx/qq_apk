@@ -8,38 +8,37 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.br.c;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
 import com.tencent.mm.plugin.aa.model.cgi.NetSceneNewAAQueryPFInfo;
 import com.tencent.mm.plugin.aa.model.e;
-import com.tencent.mm.protocal.protobuf.dia;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.plugin.wxpay.a.j;
+import com.tencent.mm.protocal.protobuf.drs;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.ar;
 
 public class LaunchAABeforeUI
   extends AppCompatActivity
 {
   private String appId;
-  private String jWm;
-  private i jWn;
+  private String mNy;
+  private i mNz;
   private Dialog tipDialog;
   
   public LaunchAABeforeUI()
   {
     AppMethodBeat.i(63575);
-    this.jWn = new i()
+    this.mNz = new i()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
       {
@@ -53,32 +52,32 @@ public class LaunchAABeforeUI
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
           {
             paramAnonymousString = (NetSceneNewAAQueryPFInfo)paramAnonymousq;
-            if (paramAnonymousString.jTr == null) {}
-            for (paramAnonymousString = null;; paramAnonymousString = paramAnonymousString.jTr)
+            if (paramAnonymousString.mKF == null) {}
+            for (paramAnonymousString = null;; paramAnonymousString = paramAnonymousString.mKF)
             {
-              Log.i("MicroMsg.Aa.LaunchAABeforeUI", "NetSceneNewAAQueryPFInfo retcode:%s retmsg:%s", new Object[] { Integer.valueOf(paramAnonymousString.dDN), paramAnonymousString.qwn });
-              if (paramAnonymousString.dDN != 0) {
+              Log.i("MicroMsg.Aa.LaunchAABeforeUI", "NetSceneNewAAQueryPFInfo retcode:%s retmsg:%s", new Object[] { Integer.valueOf(paramAnonymousString.fwx), paramAnonymousString.tVo });
+              if (paramAnonymousString.fwx != 0) {
                 break;
               }
               paramAnonymousq = new Intent();
               paramAnonymousq.putExtra("enter_scene", 6);
               paramAnonymousq.putExtra("pfInfo", NetSceneNewAAQueryPFInfo.a(paramAnonymousString));
               paramAnonymousq.putExtra("pfOrderNo", LaunchAABeforeUI.b(LaunchAABeforeUI.this));
-              e.a(paramAnonymousString.MMI);
+              e.a(paramAnonymousString.TYC);
               if (BuildInfo.DEBUG) {
                 Log.d("MicroMsg.Aa.LaunchAABeforeUI", "NetSceneNewAAQueryPFInfo PfInfoParcel:%s", new Object[] { NetSceneNewAAQueryPFInfo.a(paramAnonymousString) });
               }
-              c.b(LaunchAABeforeUI.this, "aa", ".ui.LaunchAAUI", paramAnonymousq);
+              com.tencent.mm.by.c.b(LaunchAABeforeUI.this, "aa", ".ui.LaunchAAUI", paramAnonymousq);
               LaunchAABeforeUI.a(LaunchAABeforeUI.this, false);
               LaunchAABeforeUI.this.finish();
               AppMethodBeat.o(63573);
               return;
             }
             paramAnonymousq = LaunchAABeforeUI.this;
-            if (Util.isNullOrNil(paramAnonymousString.qwn)) {}
-            for (paramAnonymousString = LaunchAABeforeUI.this.getString(2131762176);; paramAnonymousString = paramAnonymousString.qwn)
+            if (Util.isNullOrNil(paramAnonymousString.tVo)) {}
+            for (paramAnonymousString = LaunchAABeforeUI.this.getString(a.i.launch_aa_error_msg);; paramAnonymousString = paramAnonymousString.tVo)
             {
-              h.a(paramAnonymousq, paramAnonymousString, "", LaunchAABeforeUI.this.getString(2131762180), new DialogInterface.OnClickListener()
+              com.tencent.mm.ui.base.h.a(paramAnonymousq, paramAnonymousString, "", LaunchAABeforeUI.this.getString(a.i.launch_aa_i_know), new DialogInterface.OnClickListener()
               {
                 public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                 {
@@ -93,7 +92,7 @@ public class LaunchAABeforeUI
             }
           }
           LaunchAABeforeUI.a(LaunchAABeforeUI.this, false);
-          h.cD(LaunchAABeforeUI.this, paramAnonymousString);
+          com.tencent.mm.ui.base.h.cO(LaunchAABeforeUI.this, paramAnonymousString);
           LaunchAABeforeUI.this.finish();
         }
         AppMethodBeat.o(63573);
@@ -112,9 +111,9 @@ public class LaunchAABeforeUI
   
   public Resources getResources()
   {
-    AppMethodBeat.i(213014);
+    AppMethodBeat.i(275314);
     Resources localResources = MMApplicationContext.getResources();
-    AppMethodBeat.o(213014);
+    AppMethodBeat.o(275314);
     return localResources;
   }
   
@@ -124,12 +123,12 @@ public class LaunchAABeforeUI
     super.onCreate(paramBundle);
     overridePendingTransition(0, 0);
     getWindow().getDecorView().setSystemUiVisibility(1280);
-    ao.q(this, getResources().getColor(2131101287));
-    g.aAi();
-    g.aAg().hqi.a(1809, this.jWn);
-    this.jWm = getIntent().getStringExtra("pfOrderNo");
+    ar.r(this, getResources().getColor(a.c.transparent));
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.a(1809, this.mNz);
+    this.mNy = getIntent().getStringExtra("pfOrderNo");
     this.appId = getIntent().getStringExtra("appid");
-    this.tipDialog = h.a(this, 3, 2131821007, getString(2131762446), true, new DialogInterface.OnCancelListener()
+    this.tipDialog = com.tencent.mm.ui.base.h.a(this, 3, a.j.LuckyMoneyNoAnimDialog, getString(a.i.loading_tips), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -141,9 +140,9 @@ public class LaunchAABeforeUI
         AppMethodBeat.o(63574);
       }
     });
-    paramBundle = new NetSceneNewAAQueryPFInfo(this.jWm, this.appId);
-    g.aAi();
-    g.aAg().hqi.a(paramBundle, 0);
+    paramBundle = new NetSceneNewAAQueryPFInfo(this.mNy, this.appId);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.a(paramBundle, 0);
     setResult(0);
     AppMethodBeat.o(63576);
   }
@@ -151,8 +150,8 @@ public class LaunchAABeforeUI
   public void onDestroy()
   {
     AppMethodBeat.i(63578);
-    g.aAi();
-    g.aAg().hqi.b(1809, this.jWn);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.b(1809, this.mNz);
     super.onDestroy();
     AppMethodBeat.o(63578);
   }
@@ -165,7 +164,7 @@ public class LaunchAABeforeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAABeforeUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.mm.modelmulti;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bos;
-import com.tencent.mm.protocal.protobuf.bot;
+import com.tencent.mm.protocal.protobuf.bwn;
+import com.tencent.mm.protocal.protobuf.bwo;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
@@ -20,7 +20,7 @@ public final class e
 {
   private i callback;
   public String content;
-  public int jcv;
+  public int lSU;
   private d rr;
   public String title;
   
@@ -29,15 +29,15 @@ public final class e
     AppMethodBeat.i(20543);
     this.title = "";
     this.content = "";
-    this.jcv = 0;
+    this.lSU = 0;
     d.a locala = new d.a();
-    locala.iLN = new bos();
-    locala.iLO = new bot();
+    locala.lBU = new bwn();
+    locala.lBV = new bwo();
     locala.uri = "/cgi-bin/micromsg-bin/getinvitefriendsmsg";
     locala.funcId = 1803;
-    this.rr = locala.aXF();
-    ((bos)this.rr.iLK.iLR).LWR = paramInt;
-    this.jcv = paramInt;
+    this.rr = locala.bgN();
+    ((bwn)d.b.b(this.rr.lBR)).Tgp = paramInt;
+    this.lSU = paramInt;
     AppMethodBeat.o(20543);
   }
   
@@ -62,9 +62,9 @@ public final class e
     Log.d("MicroMsg.NetSceneGetInviteFriendsMsg", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (bot)this.rr.iLL.iLR;
-      this.title = params.LWS;
-      this.content = params.LWT;
+      params = (bwo)d.c.b(this.rr.lBS);
+      this.title = params.Tgq;
+      this.content = params.Tgr;
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(20544);
       return;

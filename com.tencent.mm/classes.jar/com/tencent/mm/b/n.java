@@ -56,7 +56,7 @@ public final class n
     return new String(arrayOfChar2);
   }
   
-  public static String fc(String paramString)
+  public static String fS(String paramString)
   {
     MessageDigest localMessageDigest = MessageDigest.getInstance("SHA1");
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
@@ -66,7 +66,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.b.n
  * JD-Core Version:    0.7.0.1
  */

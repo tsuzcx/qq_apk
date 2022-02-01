@@ -15,195 +15,230 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class a<DATA, CONFIG extends i>
 {
-  private static final AtomicInteger gOJ = new AtomicInteger();
-  protected com.tencent.mm.danmaku.c.a gNt;
-  protected long gOK;
-  protected com.tencent.mm.danmaku.d.e gOL;
-  protected final PriorityQueue<a.b> gOM;
-  protected int gON;
-  protected int gOO;
-  protected float gOP = -1.0F;
-  protected float gOQ = -1.0F;
-  protected float gOR;
-  protected boolean gOS;
-  protected Bitmap gOT;
-  protected Canvas gOU;
-  protected int gOV;
-  protected int gOW = -1;
-  protected int gOX;
-  protected boolean gOY;
-  protected boolean gOZ = false;
-  protected a gPa;
-  public float gPb = -1.0F;
-  public float gPc = -1.0F;
-  public volatile boolean gPd = true;
-  public volatile boolean gPe = true;
-  protected CONFIG gPf;
-  private HashMap<String, Object> gPg;
+  private static final AtomicInteger jzd = new AtomicInteger();
+  protected int CX;
+  protected com.tencent.mm.danmaku.c.a jxO;
+  private HashMap<String, Object> jzA;
+  protected long jze;
+  protected com.tencent.mm.danmaku.d.e jzf;
+  protected final PriorityQueue<Object> jzg;
+  protected int jzh;
+  protected int jzi;
+  protected float jzj = -1.0F;
+  protected float jzk = -1.0F;
+  protected float jzl;
+  protected boolean jzm;
+  protected Bitmap jzn;
+  protected Canvas jzo;
+  protected int jzp;
+  protected int jzq = -1;
+  protected int jzr;
+  protected boolean jzs;
+  protected boolean jzt = false;
+  protected a jzu;
+  public float jzv = -1.0F;
+  public float jzw = -1.0F;
+  public volatile boolean jzx = true;
+  public volatile boolean jzy = true;
+  protected CONFIG jzz;
   public DATA mData;
-  protected final int mIndex = gOJ.incrementAndGet();
+  protected final int mIndex = jzd.incrementAndGet();
   protected boolean mIsPaused;
   protected long mTime;
-  protected int mVisibility;
   
   public a(com.tencent.mm.danmaku.c.a parama)
   {
-    this.gNt = parama;
-    this.gOM = new PriorityQueue();
+    this.jxO = parama;
+    this.jzg = new PriorityQueue();
     try
     {
-      this.gPf = this.gNt.oZ(getType());
+      this.jzz = this.jxO.ru(getType());
       reset();
       return;
     }
     catch (Exception parama)
     {
-      while (!c.gNA) {}
+      while (!c.jxV) {}
       throw new RuntimeException("IDanmakuUIConfig should been provided by IDanmakuUIConfigCreator in DanmakuContext");
     }
   }
   
-  public static boolean asF()
+  public static boolean azt()
   {
-    return com.tencent.mm.danmaku.c.a.asO().gPL;
+    return com.tencent.mm.danmaku.c.a.azC().jAe;
   }
   
   public static int getScreenHeight()
   {
-    return com.tencent.mm.danmaku.c.a.asO().mScreenHeight;
+    return com.tencent.mm.danmaku.c.a.azC().mScreenHeight;
   }
   
   public static int getScreenWidth()
   {
-    return com.tencent.mm.danmaku.c.a.asO().mScreenWidth;
+    return com.tencent.mm.danmaku.c.a.azC().mScreenWidth;
+  }
+  
+  public final void ER(long paramLong)
+  {
+    this.mTime = paramLong;
+  }
+  
+  public final boolean Fc(long paramLong)
+  {
+    if (this.jzs) {}
+    while (paramLong - this.mTime < this.jzf.mValue) {
+      return false;
+    }
+    return true;
+  }
+  
+  public final boolean Fd(long paramLong)
+  {
+    return (this.jze > 0L) && (paramLong - this.jze >= this.jzf.mValue);
+  }
+  
+  public final boolean Fe(long paramLong)
+  {
+    return (this.jze > 0L) && (paramLong - this.jze < 0L);
+  }
+  
+  public abstract void Ff(long paramLong);
+  
+  public abstract float[] Fg(long paramLong);
+  
+  public abstract float[] Fh(long paramLong);
+  
+  public final void Fi(long paramLong)
+  {
+    this.jze = paramLong;
   }
   
   public abstract void a(float paramFloat, long paramLong1, long paramLong2);
   
-  public final long adU()
+  public final void ai(float paramFloat)
+  {
+    com.tencent.mm.danmaku.d.e locale = this.jzf;
+    locale.mValue = (((float)locale.mValue * paramFloat));
+  }
+  
+  public final long aiJ()
   {
     return this.mIndex;
   }
   
   public final void aj(float paramFloat)
   {
-    com.tencent.mm.danmaku.d.e locale = this.gOL;
-    locale.mValue = (((float)locale.mValue * paramFloat));
+    this.jzj = paramFloat;
   }
   
   public final void ak(float paramFloat)
   {
-    this.gOP = paramFloat;
+    this.jzk = paramFloat;
   }
   
-  public final void ako()
+  public final void aqk()
   {
     float f = getLeft();
-    if ((!this.gOZ) && (f < com.tencent.mm.danmaku.c.a.asO().mScreenWidth))
+    if ((!this.jzt) && (f < com.tencent.mm.danmaku.c.a.azC().mScreenWidth))
     {
       com.tencent.mm.danmaku.e.e.d("BaseDanmaku", "onFirstExposure, danmaku = " + toString());
-      this.gOZ = true;
+      this.jzt = true;
     }
-    if ((this.gPa != null) && (f <= 0.0F)) {
-      this.gPa = null;
+    if ((this.jzu != null) && (f <= 0.0F)) {
+      this.jzu = null;
     }
   }
   
-  public final void al(float paramFloat)
+  public final boolean azA()
   {
-    this.gOQ = paramFloat;
+    return this.jzs;
   }
   
-  public final int asA()
+  public final long azB()
   {
-    return this.gOO;
+    return this.jze;
   }
   
-  public final float asB()
+  public final void azi()
   {
-    return this.gOP;
+    this.jzf = new com.tencent.mm.danmaku.d.e(com.tencent.mm.danmaku.c.a.azC().alM);
   }
   
-  public final float asC()
+  public abstract float azj();
+  
+  public final long azk()
   {
-    return this.gOQ;
+    return this.jze + this.jzf.mValue;
   }
   
-  public final int asD()
+  public final boolean azl()
   {
-    return this.gOV;
+    return (this.jzj >= 0.0F) && (this.jzk >= 0.0F) && (!this.jzx);
   }
   
-  public final void asE()
+  public void azm()
   {
-    this.gOV = 3000;
+    this.jzx = false;
   }
   
-  public final float asG()
+  public final int azn()
   {
-    return getLeft() + com.tencent.mm.danmaku.c.a.asO().gPJ;
+    return this.jzh;
   }
   
-  public final float asH()
+  public final int azo()
   {
-    return getTop() + com.tencent.mm.danmaku.c.a.asO().gPI;
+    return this.jzi;
   }
   
-  public final boolean asI()
+  public final float azp()
   {
-    return (this.gOS) && (m.asY());
+    return this.jzj;
   }
   
-  public final Bitmap asJ()
+  public final float azq()
   {
-    return this.gOT;
+    return this.jzk;
   }
   
-  public final Canvas asK()
+  public final int azr()
   {
-    return this.gOU;
+    return this.jzp;
   }
   
-  public final void asL()
+  public final void azs()
   {
-    this.gOU.setBitmap(null);
+    this.jzp = 3000;
   }
   
-  public final boolean asM()
+  public final float azu()
   {
-    return this.gOY;
+    return getLeft() + com.tencent.mm.danmaku.c.a.azC().jAc;
   }
   
-  public final long asN()
+  public final float azv()
   {
-    return this.gOK;
+    return getTop() + com.tencent.mm.danmaku.c.a.azC().jAb;
   }
   
-  public final void asu()
+  public final boolean azw()
   {
-    this.gOL = new com.tencent.mm.danmaku.d.e(com.tencent.mm.danmaku.c.a.asO().atU);
+    return (this.jzm) && (m.azM());
   }
   
-  public abstract float asv();
-  
-  public final long asw()
+  public final Bitmap azx()
   {
-    return this.gOK + this.gOL.mValue;
+    return this.jzn;
   }
   
-  public final boolean asx()
+  public final Canvas azy()
   {
-    return (this.gOP >= 0.0F) && (this.gOQ >= 0.0F) && (!this.gPd);
+    return this.jzo;
   }
   
-  public void asy()
+  public final void azz()
   {
-    this.gPd = false;
-  }
-  
-  public final int asz()
-  {
-    return this.gON;
+    this.jzo.setBitmap(null);
   }
   
   public b b(h paramh)
@@ -263,87 +298,87 @@ public abstract class a<DATA, CONFIG extends i>
   
   public final boolean isShown()
   {
-    return this.mVisibility == 1;
+    return this.CX == 1;
   }
   
-  public final void m(Canvas paramCanvas)
+  public final void n(Canvas paramCanvas)
   {
-    this.gOU = paramCanvas;
-    this.gPe = true;
+    this.jzo = paramCanvas;
+    this.jzy = true;
   }
   
-  public final boolean oW(int paramInt)
+  public final void r(Bitmap paramBitmap)
   {
-    if ((this.gOY) || (this.gOV - paramInt >= 0))
+    this.jzn = paramBitmap;
+  }
+  
+  public void reset()
+  {
+    Object localObject = com.tencent.mm.danmaku.c.a.azC();
+    this.jzl = ((m)localObject).jzl;
+    this.jzm = ((m)localObject).jzm;
+    this.jzg.clear();
+    this.jzh = 0;
+    this.jzi = 0;
+    this.jzj = -1.0F;
+    this.jzk = -1.0F;
+    this.CX = 0;
+    this.jzn = null;
+    this.jzp = 0;
+    this.jzr = 0;
+    this.mIsPaused = false;
+    this.jzt = false;
+    this.jzx = true;
+    this.jzy = true;
+    this.jzv = -1.0F;
+    this.jzw = -1.0F;
+    if (this.jzA != null)
     {
-      this.gOV -= paramInt;
-      this.gOK += paramInt;
+      localObject = this.jzA.values().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((Iterator)localObject).next();
+      }
+      this.jzA.clear();
+      this.jzA = null;
+    }
+    azi();
+  }
+  
+  public final boolean rr(int paramInt)
+  {
+    if ((this.jzs) || (this.jzp - paramInt >= 0))
+    {
+      this.jzp -= paramInt;
+      this.jze += paramInt;
       return true;
     }
     return false;
   }
   
-  public final int oX(int paramInt)
+  public final int rs(int paramInt)
   {
-    if (this.gOX > paramInt) {
+    if (this.jzr > paramInt) {
       return paramInt - 1;
     }
-    return this.gOX;
+    return this.jzr;
   }
   
-  public final int oY(int paramInt)
+  public final int rt(int paramInt)
   {
-    if (this.gOW >= paramInt) {
+    if (this.jzq >= paramInt) {
       return paramInt - 1;
     }
-    return this.gOW;
-  }
-  
-  public void reset()
-  {
-    Object localObject = com.tencent.mm.danmaku.c.a.asO();
-    this.gOR = ((m)localObject).gOR;
-    this.gOS = ((m)localObject).gOS;
-    this.gOM.clear();
-    this.gON = 0;
-    this.gOO = 0;
-    this.gOP = -1.0F;
-    this.gOQ = -1.0F;
-    this.mVisibility = 0;
-    this.gOT = null;
-    this.gOV = 0;
-    this.gOX = 0;
-    this.mIsPaused = false;
-    this.gOZ = false;
-    this.gPd = true;
-    this.gPe = true;
-    this.gPb = -1.0F;
-    this.gPc = -1.0F;
-    if (this.gPg != null)
-    {
-      localObject = this.gPg.values().iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((Iterator)localObject).next();
-      }
-      this.gPg.clear();
-      this.gPg = null;
-    }
-    asu();
-  }
-  
-  public final void setTime(long paramLong)
-  {
-    this.mTime = paramLong;
+    return this.jzq;
   }
   
   public final void setVisibility(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.mVisibility = 1;
+      this.CX = 1;
       return;
     }
-    this.mVisibility = 0;
+    this.CX = 0;
   }
   
   public String toString()
@@ -351,59 +386,21 @@ public abstract class a<DATA, CONFIG extends i>
     return "BaseDanmaku" + this.mIndex + "[left:" + getLeft() + ",top:" + getTop() + ",right:" + getRight() + ",bottom:" + getBottom() + ", time:" + this.mTime + ", mData=" + String.valueOf(this.mData) + "mType=" + getType() + "]";
   }
   
-  public final void w(Bitmap paramBitmap)
-  {
-    this.gOT = paramBitmap;
-  }
-  
   public final void x(long paramLong1, long paramLong2)
   {
     if (this.mIsPaused) {
-      this.gOK += paramLong1;
+      this.jze += paramLong1;
     }
-    zb(paramLong2);
-    if (!this.gOM.isEmpty())
+    Ff(paramLong2);
+    if (!this.jzg.isEmpty())
     {
-      Iterator localIterator = this.gOM.iterator();
-      while (localIterator.hasNext())
+      Iterator localIterator = this.jzg.iterator();
+      if (localIterator.hasNext())
       {
-        a.b localb = (a.b)localIterator.next();
-        localb.gPh -= paramLong1;
-        if (localb.gPh <= 0L) {
-          localIterator.remove();
-        }
+        localIterator.next();
+        throw null;
       }
     }
-  }
-  
-  public final boolean yY(long paramLong)
-  {
-    if (this.gOY) {}
-    while (paramLong - this.mTime < this.gOL.mValue) {
-      return false;
-    }
-    return true;
-  }
-  
-  public final boolean yZ(long paramLong)
-  {
-    return (this.gOK > 0L) && (paramLong - this.gOK >= this.gOL.mValue);
-  }
-  
-  public final boolean za(long paramLong)
-  {
-    return (this.gOK > 0L) && (paramLong - this.gOK < 0L);
-  }
-  
-  public abstract void zb(long paramLong);
-  
-  public abstract float[] zc(long paramLong);
-  
-  public abstract float[] zd(long paramLong);
-  
-  public final void ze(long paramLong)
-  {
-    this.gOK = paramLong;
   }
   
   public static abstract interface a {}

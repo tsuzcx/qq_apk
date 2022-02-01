@@ -6,26 +6,28 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.plugin.wxpay.a.m;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.SelectPreference;
 import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.t.b;
+import com.tencent.mm.ui.w.b;
 import java.util.ArrayList;
 
 public class WalletBankCardTypeSelectUI
   extends MMPreference
 {
-  private ArrayList<String> Idc;
-  private String Idd;
-  private SelectPreference Ide;
-  private SelectPreference Idf;
+  private ArrayList<String> OVt;
+  private String OVu;
+  private SelectPreference OVv;
+  private SelectPreference OVw;
   private f screen;
   
   public int getResourceId()
   {
-    return 2132017300;
+    return a.m.wallet_bankcard_type_select_ui;
   }
   
   public void initView()
@@ -33,19 +35,19 @@ public class WalletBankCardTypeSelectUI
     AppMethodBeat.i(70716);
     this.screen = getPreferenceScreen();
     int i = 0;
-    while (i < this.Idc.size())
+    while (i < this.OVt.size())
     {
       SelectPreference localSelectPreference = new SelectPreference(getContext());
-      localSelectPreference.setKey((String)this.Idc.get(i));
-      localSelectPreference.setTitle((CharSequence)this.Idc.get(i));
-      this.screen.c(localSelectPreference);
+      localSelectPreference.setKey((String)this.OVt.get(i));
+      localSelectPreference.setTitle((CharSequence)this.OVt.get(i));
+      this.screen.b(localSelectPreference);
       i += 1;
     }
-    if (this.Idc.get(0) != null)
+    if (this.OVt.get(0) != null)
     {
-      this.Idf = ((SelectPreference)this.screen.bmg((String)this.Idc.get(0)));
-      this.Idf.isSelected = true;
-      this.Idd = ((String)this.Idc.get(0));
+      this.OVw = ((SelectPreference)this.screen.byG((String)this.OVt.get(0)));
+      this.OVw.isSelected = true;
+      this.OVu = ((String)this.OVt.get(0));
       this.screen.notifyDataSetChanged();
     }
     setBackBtn(new MenuItem.OnMenuItemClickListener()
@@ -59,7 +61,7 @@ public class WalletBankCardTypeSelectUI
         return true;
       }
     });
-    addTextOptionMenu(0, getString(2131755858), new MenuItem.OnMenuItemClickListener()
+    addTextOptionMenu(0, getString(a.i.app_finish), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
@@ -72,7 +74,7 @@ public class WalletBankCardTypeSelectUI
         AppMethodBeat.o(174509);
         return true;
       }
-    }, null, t.b.OGU);
+    }, null, w.b.Wao);
     AppMethodBeat.o(70716);
   }
   
@@ -80,8 +82,8 @@ public class WalletBankCardTypeSelectUI
   {
     AppMethodBeat.i(70715);
     super.onCreate(paramBundle);
-    setMMTitle(2131767688);
-    this.Idc = getIntent().getStringArrayListExtra("bank_type_show_list");
+    setMMTitle(a.i.wallet_elment_cardtype_select);
+    this.OVt = getIntent().getStringArrayListExtra("bank_type_show_list");
     initView();
     AppMethodBeat.o(70715);
   }
@@ -91,17 +93,17 @@ public class WalletBankCardTypeSelectUI
     AppMethodBeat.i(174510);
     paramPreference = paramPreference.mKey;
     int i = 0;
-    while (i < this.Idc.size())
+    while (i < this.OVt.size())
     {
-      if (paramPreference.equals(this.Idc.get(i)))
+      if (paramPreference.equals(this.OVt.get(i)))
       {
-        this.Ide = ((SelectPreference)paramf.bmg((String)this.Idc.get(i)));
-        this.Ide.isSelected = true;
-        this.Idd = ((String)this.Idc.get(i));
-        if (!this.Idf.mKey.equals(this.Ide.mKey))
+        this.OVv = ((SelectPreference)paramf.byG((String)this.OVt.get(i)));
+        this.OVv.isSelected = true;
+        this.OVu = ((String)this.OVt.get(i));
+        if (!this.OVw.mKey.equals(this.OVv.mKey))
         {
-          this.Idf.isSelected = false;
-          this.Idf = this.Ide;
+          this.OVw.isSelected = false;
+          this.OVw = this.OVv;
         }
         paramf.notifyDataSetChanged();
       }
@@ -119,7 +121,7 @@ public class WalletBankCardTypeSelectUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletBankCardTypeSelectUI
  * JD-Core Version:    0.7.0.1
  */

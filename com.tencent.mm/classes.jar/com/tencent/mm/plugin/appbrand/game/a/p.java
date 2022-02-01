@@ -4,37 +4,32 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.b.b.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigUseHardDecode;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "()V", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableAlert", "enableKv", "", "getConfigDefaultValue", "()Ljava/lang/Boolean;", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Boolean;", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigTestME;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "()V", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableKv", "", "getConfigDefaultValue", "()Ljava/lang/Boolean;", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Boolean;", "plugin-appbrand-integration_release"})
 public final class p
-  extends v<Boolean>
+  extends x<Boolean>
 {
-  public static final p lrQ;
+  public static final p omL;
   
   static
   {
-    AppMethodBeat.i(228209);
-    lrQ = new p();
-    AppMethodBeat.o(228209);
+    AppMethodBeat.i(276619);
+    omL = new p();
+    AppMethodBeat.o(276619);
   }
   
-  protected final String bCY()
+  protected final String bOt()
   {
-    return "hw-decode";
+    return "me";
   }
   
-  protected final b.a bCZ()
+  protected final b.a bOu()
   {
-    return b.a.rVf;
-  }
-  
-  protected final boolean bDa()
-  {
-    return true;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.a.p
  * JD-Core Version:    0.7.0.1
  */

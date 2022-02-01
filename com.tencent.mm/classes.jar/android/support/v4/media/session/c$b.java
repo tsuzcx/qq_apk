@@ -12,16 +12,16 @@ import java.util.List;
 final class c$b<T extends c.a>
   extends MediaController.Callback
 {
-  protected final T MR;
+  protected final T dH;
   
   public c$b(T paramT)
   {
-    this.MR = paramT;
+    this.dH = paramT;
   }
   
   public final void onAudioInfoChanged(MediaController.PlaybackInfo paramPlaybackInfo)
   {
-    c.a locala = this.MR;
+    c.a locala = this.dH;
     int j = paramPlaybackInfo.getPlaybackType();
     AudioAttributes localAudioAttributes = ((MediaController.PlaybackInfo)paramPlaybackInfo).getAudioAttributes();
     int i;
@@ -30,7 +30,7 @@ final class c$b<T extends c.a>
     }
     for (;;)
     {
-      locala.d(j, i, paramPlaybackInfo.getVolumeControl(), paramPlaybackInfo.getMaxVolume(), paramPlaybackInfo.getCurrentVolume());
+      locala.c(j, i, paramPlaybackInfo.getVolumeControl(), paramPlaybackInfo.getMaxVolume(), paramPlaybackInfo.getCurrentVolume());
       return;
       if ((localAudioAttributes.getFlags() & 0x4) == 4) {
         i = 6;
@@ -75,43 +75,43 @@ final class c$b<T extends c.a>
   public final void onExtrasChanged(Bundle paramBundle)
   {
     MediaSessionCompat.d(paramBundle);
-    this.MR.ff();
+    this.dH.aA();
   }
   
   public final void onMetadataChanged(MediaMetadata paramMediaMetadata)
   {
-    this.MR.y(paramMediaMetadata);
+    this.dH.g(paramMediaMetadata);
   }
   
   public final void onPlaybackStateChanged(PlaybackState paramPlaybackState)
   {
-    this.MR.x(paramPlaybackState);
+    this.dH.f(paramPlaybackState);
   }
   
   public final void onQueueChanged(List<MediaSession.QueueItem> paramList)
   {
-    this.MR.onQueueChanged(paramList);
+    this.dH.onQueueChanged(paramList);
   }
   
   public final void onQueueTitleChanged(CharSequence paramCharSequence)
   {
-    this.MR.fe();
+    this.dH.az();
   }
   
   public final void onSessionDestroyed()
   {
-    this.MR.onSessionDestroyed();
+    this.dH.onSessionDestroyed();
   }
   
   public final void onSessionEvent(String paramString, Bundle paramBundle)
   {
     MediaSessionCompat.d(paramBundle);
-    this.MR.fb();
+    this.dH.ay();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     android.support.v4.media.session.c.b
  * JD-Core Version:    0.7.0.1
  */

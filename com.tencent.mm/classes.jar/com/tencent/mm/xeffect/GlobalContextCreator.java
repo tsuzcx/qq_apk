@@ -5,25 +5,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class GlobalContextCreator
 {
-  public static boolean bpC(String paramString)
+  public static boolean bCz(String paramString)
   {
-    AppMethodBeat.i(236739);
+    AppMethodBeat.i(194527);
     if (EGL14.eglGetCurrentContext() == EGL14.EGL_NO_CONTEXT)
     {
       XEffectLog.e("GlobalContextCreator", "checkCreateGlobalContext, current thread does not have gl context!", new Object[0]);
-      AppMethodBeat.o(236739);
+      AppMethodBeat.o(194527);
       return false;
     }
     boolean bool = nCheckCreateGlobalContext(paramString);
-    AppMethodBeat.o(236739);
+    AppMethodBeat.o(194527);
     return bool;
   }
   
-  public static void hir()
+  public static void ijW()
   {
-    AppMethodBeat.i(236740);
+    AppMethodBeat.i(194528);
     nDestroyGlobalContext();
-    AppMethodBeat.o(236740);
+    AppMethodBeat.o(194528);
   }
   
   private static native boolean nCheckCreateGlobalContext(String paramString);
@@ -34,7 +34,7 @@ public class GlobalContextCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.xeffect.GlobalContextCreator
  * JD-Core Version:    0.7.0.1
  */

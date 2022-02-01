@@ -7,12 +7,12 @@ import java.io.File;
 
 public final class g
 {
-  private static String[] AGk;
-  private static String[] AGl;
-  private static String[] AGm;
-  public static boolean AGn;
-  public static boolean AGo;
-  public static boolean AGp;
+  private static String[] Gzt;
+  private static String[] Gzu;
+  private static String[] Gzv;
+  public static boolean Gzw;
+  public static boolean Gzx;
+  public static boolean Gzy;
   
   /* Error */
   static
@@ -50,7 +50,7 @@ public final class g
     //   68: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   71: invokestatic 63	com/tencent/mm/plugin/normsg/d/g:decodeString	(Ljava/lang/String;)Ljava/lang/String;
     //   74: aastore
-    //   75: putstatic 67	com/tencent/mm/plugin/normsg/d/g:AGk	[Ljava/lang/String;
+    //   75: putstatic 67	com/tencent/mm/plugin/normsg/d/g:Gzt	[Ljava/lang/String;
     //   78: iconst_1
     //   79: anewarray 27	java/lang/String
     //   82: dup
@@ -67,7 +67,7 @@ public final class g
     //   108: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   111: invokestatic 63	com/tencent/mm/plugin/normsg/d/g:decodeString	(Ljava/lang/String;)Ljava/lang/String;
     //   114: aastore
-    //   115: putstatic 71	com/tencent/mm/plugin/normsg/d/g:AGl	[Ljava/lang/String;
+    //   115: putstatic 71	com/tencent/mm/plugin/normsg/d/g:Gzu	[Ljava/lang/String;
     //   118: iconst_3
     //   119: anewarray 27	java/lang/String
     //   122: dup
@@ -112,14 +112,14 @@ public final class g
     //   214: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   217: invokestatic 63	com/tencent/mm/plugin/normsg/d/g:decodeString	(Ljava/lang/String;)Ljava/lang/String;
     //   220: aastore
-    //   221: putstatic 79	com/tencent/mm/plugin/normsg/d/g:AGm	[Ljava/lang/String;
+    //   221: putstatic 79	com/tencent/mm/plugin/normsg/d/g:Gzv	[Ljava/lang/String;
     //   224: iconst_0
-    //   225: putstatic 81	com/tencent/mm/plugin/normsg/d/g:AGn	Z
+    //   225: putstatic 81	com/tencent/mm/plugin/normsg/d/g:Gzw	Z
     //   228: iconst_0
-    //   229: putstatic 83	com/tencent/mm/plugin/normsg/d/g:AGo	Z
+    //   229: putstatic 83	com/tencent/mm/plugin/normsg/d/g:Gzx	Z
     //   232: iconst_0
-    //   233: putstatic 85	com/tencent/mm/plugin/normsg/d/g:AGp	Z
-    //   236: getstatic 67	com/tencent/mm/plugin/normsg/d/g:AGk	[Ljava/lang/String;
+    //   233: putstatic 85	com/tencent/mm/plugin/normsg/d/g:Gzy	Z
+    //   236: getstatic 67	com/tencent/mm/plugin/normsg/d/g:Gzt	[Ljava/lang/String;
     //   239: astore_2
     //   240: aload_2
     //   241: arraylength
@@ -138,7 +138,7 @@ public final class g
     //   260: invokevirtual 92	java/io/File:exists	()Z
     //   263: ifeq +144 -> 407
     //   266: iconst_1
-    //   267: putstatic 81	com/tencent/mm/plugin/normsg/d/g:AGn	Z
+    //   267: putstatic 81	com/tencent/mm/plugin/normsg/d/g:Gzw	Z
     //   270: new 46	java/io/File
     //   273: dup
     //   274: ldc 94
@@ -176,7 +176,7 @@ public final class g
     //   334: aload_3
     //   335: invokespecial 118	java/lang/String:<init>	([B)V
     //   338: astore_2
-    //   339: getstatic 71	com/tencent/mm/plugin/normsg/d/g:AGl	[Ljava/lang/String;
+    //   339: getstatic 71	com/tencent/mm/plugin/normsg/d/g:Gzu	[Ljava/lang/String;
     //   342: astore_3
     //   343: aload_3
     //   344: arraylength
@@ -193,8 +193,8 @@ public final class g
     //   357: invokevirtual 122	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   360: ifeq +90 -> 450
     //   363: iconst_1
-    //   364: putstatic 83	com/tencent/mm/plugin/normsg/d/g:AGo	Z
-    //   367: getstatic 79	com/tencent/mm/plugin/normsg/d/g:AGm	[Ljava/lang/String;
+    //   364: putstatic 83	com/tencent/mm/plugin/normsg/d/g:Gzx	Z
+    //   367: getstatic 79	com/tencent/mm/plugin/normsg/d/g:Gzv	[Ljava/lang/String;
     //   370: astore_2
     //   371: aload_2
     //   372: arraylength
@@ -213,7 +213,7 @@ public final class g
     //   391: invokevirtual 92	java/io/File:exists	()Z
     //   394: ifeq +63 -> 457
     //   397: iconst_1
-    //   398: putstatic 85	com/tencent/mm/plugin/normsg/d/g:AGp	Z
+    //   398: putstatic 85	com/tencent/mm/plugin/normsg/d/g:Gzy	Z
     //   401: ldc 19
     //   403: invokestatic 125	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   406: return
@@ -312,7 +312,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.d.g
  * JD-Core Version:    0.7.0.1
  */

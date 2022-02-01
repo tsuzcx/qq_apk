@@ -2,7 +2,7 @@ package com.tencent.tmediacodec.b;
 
 public final class b
 {
-  public int bIC;
+  public int bsm;
   public int height;
   public int width;
   
@@ -10,12 +10,12 @@ public final class b
   {
     this.width = paramInt1;
     this.height = paramInt2;
-    this.bIC = paramInt3;
+    this.bsm = paramInt3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tmediacodec.b.b
  * JD-Core Version:    0.7.0.1
  */

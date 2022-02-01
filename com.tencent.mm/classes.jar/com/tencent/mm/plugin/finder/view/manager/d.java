@@ -8,8 +8,8 @@ import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.storage.c;
-import com.tencent.mm.plugin.finder.utils.w;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.utils.ag;
 import com.tencent.mm.plugin.finder.view.FinderPostEditText;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -24,40 +24,40 @@ import kotlin.l;
 import kotlin.n.n;
 import kotlin.o;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/manager/FinderStyleManager;", "", "descTv", "Lcom/tencent/mm/plugin/finder/view/FinderPostEditText;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/plugin/finder/view/FinderPostEditText;Lcom/tencent/mm/ui/MMActivity;)V", "activityPostManager", "Lcom/tencent/mm/plugin/finder/view/manager/FinderActivityPostManager;", "getActivityPostManager", "()Lcom/tencent/mm/plugin/finder/view/manager/FinderActivityPostManager;", "setActivityPostManager", "(Lcom/tencent/mm/plugin/finder/view/manager/FinderActivityPostManager;)V", "atManager", "Lcom/tencent/mm/plugin/finder/view/manager/FinderAtManager;", "getAtManager", "()Lcom/tencent/mm/plugin/finder/view/manager/FinderAtManager;", "setAtManager", "(Lcom/tencent/mm/plugin/finder/view/manager/FinderAtManager;)V", "topicSuggestManager", "Lcom/tencent/mm/plugin/finder/view/manager/FinderTopicSuggestManager;", "getTopicSuggestManager", "()Lcom/tencent/mm/plugin/finder/view/manager/FinderTopicSuggestManager;", "setTopicSuggestManager", "(Lcom/tencent/mm/plugin/finder/view/manager/FinderTopicSuggestManager;)V", "extractTopicAndSetSpan", "", "curDesc", "", "s", "Landroid/text/Editable;", "iniFinderTopicSuggestManager", "initFinderAtManager", "initPostManager", "release", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/manager/FinderStyleManager;", "", "descTv", "Lcom/tencent/mm/plugin/finder/view/FinderPostEditText;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/plugin/finder/view/FinderPostEditText;Lcom/tencent/mm/ui/MMActivity;)V", "activityPostManager", "Lcom/tencent/mm/plugin/finder/view/manager/FinderActivityPostManager;", "getActivityPostManager", "()Lcom/tencent/mm/plugin/finder/view/manager/FinderActivityPostManager;", "setActivityPostManager", "(Lcom/tencent/mm/plugin/finder/view/manager/FinderActivityPostManager;)V", "atManager", "Lcom/tencent/mm/plugin/finder/view/manager/FinderAtManager;", "getAtManager", "()Lcom/tencent/mm/plugin/finder/view/manager/FinderAtManager;", "setAtManager", "(Lcom/tencent/mm/plugin/finder/view/manager/FinderAtManager;)V", "topicSuggestManager", "Lcom/tencent/mm/plugin/finder/view/manager/FinderTopicSuggestManager;", "getTopicSuggestManager", "()Lcom/tencent/mm/plugin/finder/view/manager/FinderTopicSuggestManager;", "setTopicSuggestManager", "(Lcom/tencent/mm/plugin/finder/view/manager/FinderTopicSuggestManager;)V", "extractTopicAndSetSpan", "", "curDesc", "", "s", "Landroid/text/Editable;", "iniFinderTopicSuggestManager", "initFinderAtManager", "initPostManager", "release", "Companion", "plugin-finder_release"})
 public final class d
 {
+  public static final a BfJ;
   private static final String TAG = "Finder.FinderStyleManager";
-  public static final a wts;
-  public e wtp;
-  public b wtq;
-  public a wtr;
+  public e BfG;
+  public b BfH;
+  public a BfI;
   
   static
   {
-    AppMethodBeat.i(255288);
-    wts = new a((byte)0);
+    AppMethodBeat.i(282981);
+    BfJ = new a((byte)0);
     TAG = "Finder.FinderStyleManager";
-    AppMethodBeat.o(255288);
+    AppMethodBeat.o(282981);
   }
   
   public d(FinderPostEditText paramFinderPostEditText, MMActivity paramMMActivity)
   {
-    AppMethodBeat.i(255287);
-    this.wtp = new e(paramFinderPostEditText, paramMMActivity);
-    this.wtq = new b();
-    this.wtr = new a();
-    AppMethodBeat.o(255287);
+    AppMethodBeat.i(282980);
+    this.BfG = new e(paramFinderPostEditText, paramMMActivity);
+    this.BfH = new b();
+    this.BfI = new a();
+    AppMethodBeat.o(282980);
   }
   
   public final void a(String paramString, Editable paramEditable)
   {
-    AppMethodBeat.i(255286);
-    p.h(paramString, "curDesc");
-    p.h(paramEditable, "s");
+    AppMethodBeat.i(282978);
+    p.k(paramString, "curDesc");
+    p.k(paramEditable, "s");
     Object localObject1 = (Spannable)paramEditable;
     Object localObject2 = (ForegroundColorSpan[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), ForegroundColorSpan.class);
-    p.g(localObject2, "spans");
+    p.j(localObject2, "spans");
     int j = localObject2.length;
     int i = 0;
     while (i < j)
@@ -65,93 +65,93 @@ public final class d
       ((Spannable)localObject1).removeSpan(localObject2[i]);
       i += 1;
     }
-    localObject1 = c.vCb;
+    localObject1 = com.tencent.mm.plugin.finder.storage.d.AjH;
     Object localObject3;
-    if (c.drO())
+    if (com.tencent.mm.plugin.finder.storage.d.dTe())
     {
-      localObject1 = this.wtq;
+      localObject1 = this.BfH;
       if (localObject1 == null) {
-        p.btv("atManager");
+        p.bGy("atManager");
       }
-      p.h(paramString, "curDesc");
-      p.h(paramEditable, "s");
+      p.k(paramString, "curDesc");
+      p.k(paramEditable, "s");
       localObject2 = (Spannable)paramEditable;
-      ((b)localObject1).vTC.clear();
-      ((b)localObject1).wsH.clear();
-      localObject3 = com.tencent.mm.plugin.finder.utils.d.vVg;
-      localObject2 = com.tencent.mm.plugin.finder.utils.d.a(paramString, ((b)localObject1).wsG, (q)new b.b((Spannable)localObject2));
-      ((b)localObject1).vTC.addAll((Collection)((o)localObject2).first);
-      ((b)localObject1).wsH.addAll((Collection)((o)localObject2).second);
+      ((b)localObject1).ABf.clear();
+      ((b)localObject1).BeY.clear();
+      localObject3 = com.tencent.mm.plugin.finder.utils.e.ACV;
+      localObject2 = com.tencent.mm.plugin.finder.utils.e.a(paramString, ((b)localObject1).BeX, (q)new b.b((Spannable)localObject2));
+      ((b)localObject1).ABf.addAll((Collection)((o)localObject2).Mx);
+      ((b)localObject1).BeY.addAll((Collection)((o)localObject2).My);
     }
-    localObject1 = c.vCb;
-    if (c.drN())
+    localObject1 = com.tencent.mm.plugin.finder.storage.d.AjH;
+    if (com.tencent.mm.plugin.finder.storage.d.dTd())
     {
-      localObject1 = this.wtp;
+      localObject1 = this.BfG;
       if (localObject1 == null) {
-        p.btv("topicSuggestManager");
+        p.bGy("topicSuggestManager");
       }
-      localObject2 = this.wtq;
+      localObject2 = this.BfH;
       if (localObject2 == null) {
-        p.btv("atManager");
+        p.bGy("atManager");
       }
-      localObject2 = ((b)localObject2).wsH;
-      p.h(paramString, "curDesc");
-      p.h(paramEditable, "s");
-      p.h(localObject2, "atStringInfoList");
+      localObject2 = ((b)localObject2).BeY;
+      p.k(paramString, "curDesc");
+      p.k(paramEditable, "s");
+      p.k(localObject2, "atStringInfoList");
       localObject3 = (Spannable)paramEditable;
-      ((e)localObject1).wtt.clear();
-      w localw = w.vXp;
-      localObject2 = w.a(paramString, (ArrayList)localObject2, (m)new e.b((Spannable)localObject3));
-      ((e)localObject1).wtt.addAll((Collection)localObject2);
+      ((e)localObject1).BfK.clear();
+      ag localag = ag.AFH;
+      localObject2 = ag.a(paramString, (ArrayList)localObject2, (m)new e.b((Spannable)localObject3));
+      ((e)localObject1).BfK.addAll((Collection)localObject2);
     }
-    localObject1 = this.wtr;
+    localObject1 = this.BfI;
     if (localObject1 == null) {
-      p.btv("activityPostManager");
+      p.bGy("activityPostManager");
     }
-    p.h(paramString, "curDesc");
-    p.h(paramEditable, "s");
-    i = n.a((CharSequence)paramString, ((a)localObject1).wsz, 0, false, 6);
-    if ((Util.isNullOrNil(((a)localObject1).wsz)) || (i < 0))
+    p.k(paramString, "curDesc");
+    p.k(paramEditable, "s");
+    i = n.a((CharSequence)paramString, ((a)localObject1).BeQ, 0, false, 6);
+    if ((Util.isNullOrNil(((a)localObject1).BeQ)) || (i < 0))
     {
-      paramString = ((a)localObject1).wsA;
+      paramString = ((a)localObject1).BeR;
       if (paramString != null)
       {
         paramString.setVisibility(0);
-        AppMethodBeat.o(255286);
+        AppMethodBeat.o(282978);
         return;
       }
-      AppMethodBeat.o(255286);
+      AppMethodBeat.o(282978);
       return;
     }
-    ((a)localObject1).wsB = true;
+    ((a)localObject1).BeS = true;
     paramString = (Spannable)paramEditable;
-    j = ((a)localObject1).wsz.length() + i;
+    j = ((a)localObject1).BeQ.length() + i;
     paramEditable = MMApplicationContext.getContext();
-    p.g(paramEditable, "MMApplicationContext.getContext()");
-    paramString.setSpan(new ForegroundColorSpan(paramEditable.getResources().getColor(2131100685)), i, j, 17);
+    p.j(paramEditable, "MMApplicationContext.getContext()");
+    paramString.setSpan(new ForegroundColorSpan(paramEditable.getResources().getColor(b.c.link_color)), i, j, 17);
     paramEditable = MMApplicationContext.getContext();
-    p.g(paramEditable, "MMApplicationContext.getContext()");
-    paramString.setSpan(new BackgroundColorSpan(paramEditable.getResources().getColor(2131100556)), i, j, 17);
-    AppMethodBeat.o(255286);
+    p.j(paramEditable, "MMApplicationContext.getContext()");
+    paramString.setSpan(new BackgroundColorSpan(paramEditable.getResources().getColor(b.c.general_sub_background_color)), i, j, 17);
+    AppMethodBeat.o(282978);
   }
   
-  public final b dHI()
+  public final b ejT()
   {
-    AppMethodBeat.i(255285);
-    b localb = this.wtq;
+    AppMethodBeat.i(282977);
+    b localb = this.BfH;
     if (localb == null) {
-      p.btv("atManager");
+      p.bGy("atManager");
     }
-    AppMethodBeat.o(255285);
+    AppMethodBeat.o(282977);
     return localb;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/manager/FinderStyleManager$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/manager/FinderStyleManager$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.manager.d
  * JD-Core Version:    0.7.0.1
  */

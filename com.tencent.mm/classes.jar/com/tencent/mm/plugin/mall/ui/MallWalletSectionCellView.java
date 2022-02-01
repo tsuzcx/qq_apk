@@ -16,20 +16,29 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.xo;
+import com.tencent.mm.an.c.a;
+import com.tencent.mm.f.a.yv;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.appbrand.api.i;
+import com.tencent.mm.plugin.wallet.balance.model.lqt.q;
 import com.tencent.mm.plugin.wallet_core.ui.view.WcPayMoneyLoadingView;
+import com.tencent.mm.plugin.wallet_core.utils.k;
+import com.tencent.mm.plugin.wallet_core.utils.k.b;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.h;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.ccy;
-import com.tencent.mm.protocal.protobuf.cyf;
-import com.tencent.mm.protocal.protobuf.dlp;
-import com.tencent.mm.protocal.protobuf.dqd;
-import com.tencent.mm.protocal.protobuf.dqe;
-import com.tencent.mm.protocal.protobuf.egf;
-import com.tencent.mm.protocal.protobuf.ehf;
-import com.tencent.mm.protocal.protobuf.ehu;
+import com.tencent.mm.protocal.protobuf.clc;
+import com.tencent.mm.protocal.protobuf.def;
+import com.tencent.mm.protocal.protobuf.dhr;
+import com.tencent.mm.protocal.protobuf.dvh;
+import com.tencent.mm.protocal.protobuf.dzz;
+import com.tencent.mm.protocal.protobuf.eaa;
+import com.tencent.mm.protocal.protobuf.eqh;
+import com.tencent.mm.protocal.protobuf.erh;
+import com.tencent.mm.protocal.protobuf.erw;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -42,28 +51,28 @@ import org.json.JSONObject;
 public class MallWalletSectionCellView
   extends LinearLayout
 {
-  private static final int qfn;
-  public View lJI;
-  public View pYY;
-  public CdnImageView zmI;
-  public TextView zmJ;
-  public TextView zmK;
-  public CdnImageView zmL;
-  public TextView zmM;
-  public ImageView zmN;
-  public ImageView zmO;
-  public TextView zmP;
-  public TextView zmQ;
-  public ViewGroup zmR;
-  public TextView zmS;
-  public WcPayMoneyLoadingView zmT;
-  public ProgressBar zmU;
-  private dlp zmV;
+  private static final int tBk;
+  public CdnImageView ERY;
+  public TextView ERZ;
+  public TextView ESa;
+  public CdnImageView ESb;
+  public TextView ESc;
+  public ImageView ESd;
+  public ImageView ESe;
+  public TextView ESf;
+  public TextView ESg;
+  public ViewGroup ESh;
+  public TextView ESi;
+  public WcPayMoneyLoadingView ESj;
+  public ProgressBar ESk;
+  private dvh ESl;
+  public View oFW;
+  public View tuU;
   
   static
   {
     AppMethodBeat.i(66156);
-    qfn = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 16);
+    tBk = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 16);
     AppMethodBeat.o(66156);
   }
   
@@ -91,23 +100,23 @@ public class MallWalletSectionCellView
     AppMethodBeat.o(66150);
   }
   
-  private int bu(float paramFloat)
+  private int bw(float paramFloat)
   {
     AppMethodBeat.i(66153);
-    int i = com.tencent.mm.cb.a.fromDPToPix(getContext(), (int)paramFloat);
+    int i = com.tencent.mm.ci.a.fromDPToPix(getContext(), (int)paramFloat);
     AppMethodBeat.o(66153);
     return i;
   }
   
-  private void ehu()
+  private void eRb()
   {
     AppMethodBeat.i(66154);
-    this.zmP.setVisibility(8);
-    this.zmN.setVisibility(8);
-    this.zmO.setVisibility(8);
-    this.zmQ.setVisibility(8);
-    if ((this.zmV != null) && (this.zmV.type == 4)) {
-      this.zmK.setText("");
+    this.ESf.setVisibility(8);
+    this.ESd.setVisibility(8);
+    this.ESe.setVisibility(8);
+    this.ESg.setVisibility(8);
+    if ((this.ESl != null) && (this.ESl.type == 4)) {
+      this.ESa.setText("");
     }
     AppMethodBeat.o(66154);
   }
@@ -115,301 +124,313 @@ public class MallWalletSectionCellView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(66151);
-    this.lJI = LayoutInflater.from(paramContext).inflate(2131495456, this, true);
-    this.zmI = ((CdnImageView)this.lJI.findViewById(2131305177));
-    this.zmJ = ((TextView)this.lJI.findViewById(2131305185));
-    this.zmK = ((TextView)this.lJI.findViewById(2131305174));
-    this.zmL = ((CdnImageView)this.lJI.findViewById(2131305183));
-    this.zmM = ((TextView)this.lJI.findViewById(2131305184));
-    this.zmN = ((ImageView)this.lJI.findViewById(2131305181));
-    this.zmO = ((ImageView)this.lJI.findViewById(2131305182));
-    this.zmP = ((TextView)this.lJI.findViewById(2131305179));
-    this.zmQ = ((TextView)this.lJI.findViewById(2131305180));
-    this.pYY = this.lJI.findViewById(2131305175);
-    this.zmR = ((ViewGroup)this.lJI.findViewById(2131305178));
-    this.zmS = ((TextView)this.lJI.findViewById(2131305176));
-    this.zmT = ((WcPayMoneyLoadingView)this.lJI.findViewById(2131305173));
-    this.zmU = ((ProgressBar)this.lJI.findViewById(2131310218));
-    this.zmT.setLoadingPb(this.zmU);
+    this.oFW = LayoutInflater.from(paramContext).inflate(a.g.mall_wallet_section_cell_layout, this, true);
+    this.ERY = ((CdnImageView)this.oFW.findViewById(a.f.mwsc_logo_iv));
+    this.ERZ = ((TextView)this.oFW.findViewById(a.f.mwsc_title_tv));
+    this.ESa = ((TextView)this.oFW.findViewById(a.f.mwsc_desc_tv));
+    this.ESb = ((CdnImageView)this.oFW.findViewById(a.f.mwsc_right_iv));
+    this.ESc = ((TextView)this.oFW.findViewById(a.f.mwsc_tips_tv));
+    this.ESd = ((ImageView)this.oFW.findViewById(a.f.mwsc_reddot1_iv));
+    this.ESe = ((ImageView)this.oFW.findViewById(a.f.mwsc_reddot2_iv));
+    this.ESf = ((TextView)this.oFW.findViewById(a.f.mwsc_newdot_tv));
+    this.ESg = ((TextView)this.oFW.findViewById(a.f.mwsc_numdot_tv));
+    this.tuU = this.oFW.findViewById(a.f.mwsc_divider_view);
+    this.ESh = ((ViewGroup)this.oFW.findViewById(a.f.mwsc_main_layout));
+    this.ESi = ((TextView)this.oFW.findViewById(a.f.mwsc_label_tv));
+    this.ESj = ((WcPayMoneyLoadingView)this.oFW.findViewById(a.f.mwsc_desc_layout));
+    this.ESk = ((ProgressBar)this.oFW.findViewById(a.f.wallet_money_load_pb));
+    this.ESj.setLoadingPb(this.ESk);
     setOrientation(1);
-    setBackgroundResource(2131233333);
+    setBackgroundResource(a.e.list_item_white_selector_bg);
     AppMethodBeat.o(66151);
   }
   
-  public final void a(final egf paramegf, final JSONObject paramJSONObject, boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public final void a(final eqh parameqh, final JSONObject paramJSONObject, boolean paramBoolean1, String paramString, boolean paramBoolean2, final i parami, final k.b paramb)
   {
-    AppMethodBeat.i(66152);
-    com.tencent.mm.plugin.wallet_core.utils.g.a(this.zmI, paramegf.Nge);
-    label86:
+    AppMethodBeat.i(293133);
+    k.a(this.ERY, parameqh.UsJ);
+    label87:
     Object localObject;
-    dqd localdqd;
-    label115:
-    label123:
-    int i;
-    if ((paramegf.Ngh != null) && (!Util.isNullOrNil(paramegf.Ngh.url)))
+    dzz localdzz;
+    label116:
+    label124:
+    long l;
+    if ((parameqh.UsM != null) && (!Util.isNullOrNil(parameqh.UsM.url)))
     {
-      com.tencent.mm.plugin.wallet_core.utils.g.a(this.zmL, paramegf.Ngh, 2131235568, true);
-      if ((paramegf.Ngf == null) || (paramegf.Ngf.size() <= 0)) {
-        break label604;
+      k.a(this.ESb, parameqh.UsM, a.e.wallet_arrow, true);
+      if ((parameqh.UsK == null) || (parameqh.UsK.size() <= 0)) {
+        break label715;
       }
-      com.tencent.mm.plugin.wallet_core.utils.g.a(this.zmJ, (ehf)paramegf.Ngf.get(0), null);
-      if (paramegf.Ngj == null) {
-        break label733;
+      k.a(this.ERZ, (erh)parameqh.UsK.get(0), null);
+      if (parameqh.UsN == null) {
+        break label844;
       }
-      localObject = this.zmS;
-      localdqd = paramegf.Ngj;
-      if ((localdqd != null) && (localObject != null)) {
-        break label616;
+      localObject = this.ESi;
+      localdzz = parameqh.UsN;
+      if ((localdzz != null) && (localObject != null)) {
+        break label727;
       }
-      this.zmS.setVisibility(0);
-      if ((paramegf.Ngg == null) || (paramegf.Ngg.size() <= 0)) {
-        break label790;
+      this.ESi.setVisibility(0);
+      if ((parameqh.UsL == null) || (parameqh.UsL.size() <= 0)) {
+        break label901;
       }
       if (Util.isNullOrNil(paramString)) {
-        break label751;
+        break label862;
       }
-      localObject = this.zmT;
+      localObject = this.ESj;
       if (paramBoolean2) {
-        break label745;
+        break label856;
       }
       paramBoolean2 = true;
-      label162:
-      ((WcPayMoneyLoadingView)localObject).cH(paramString, paramBoolean2);
-      this.zmT.setVisibility(0);
-      this.zmK.setVisibility(8);
-      label188:
-      if ((paramegf.Ngg == null) || (paramegf.Ngg.size() <= 1)) {
-        break label876;
+      label163:
+      ((WcPayMoneyLoadingView)localObject).cV(paramString, paramBoolean2);
+      this.ESj.setVisibility(0);
+      this.ESa.setVisibility(8);
+      label189:
+      if ((parameqh.UsL == null) || (parameqh.UsL.size() <= 1)) {
+        break label987;
       }
-      com.tencent.mm.plugin.wallet_core.utils.g.a(this.zmM, (ehf)paramegf.Ngg.get(1), null);
-      label225:
-      if ((paramegf.Ngi == null) || (paramJSONObject == null)) {
-        break label1063;
-      }
-      this.zmV = paramegf.Ngi;
-      if (paramJSONObject.optInt(paramegf.Ngi.LXh, 0) != 1) {
-        break label888;
-      }
-      i = 1;
-      label263:
-      long l = paramJSONObject.optLong(String.format("%s_expiretime", new Object[] { paramegf.Ngi.LXh }), 0L);
-      int j = i;
-      if (l > 0L)
+      k.a(this.ESc, (erh)parameqh.UsL.get(1), null);
+      label226:
+      eRb();
+      if ((parameqh.TJH != null) && (paramJSONObject != null))
       {
-        j = i;
-        if (System.currentTimeMillis() > l)
-        {
-          Log.i("MicroMsg.MallWalletSectionCellView", "red dot expired: %s, %s", new Object[] { paramegf.Ngi.LXh, Long.valueOf(l) });
-          j = 0;
+        this.ESl = parameqh.TJH;
+        if (paramJSONObject.optInt(parameqh.TJH.Ubm, 0) != 1) {
+          break label999;
+        }
+        paramBoolean2 = true;
+        label268:
+        l = paramJSONObject.optLong(String.format("%s_expiretime", new Object[] { parameqh.TJH.Ubm }), 0L);
+        if ((l <= 0L) || (System.currentTimeMillis() <= l)) {
+          break label1225;
         }
       }
-      ehu();
-      if (j == 0) {
-        break label1056;
-      }
-      if (paramegf.Ngi.type != 1) {
-        break label905;
-      }
-      if (Util.isNullOrNil(this.zmK.getText())) {
-        break label894;
-      }
-      this.zmO.setVisibility(0);
-      label389:
-      i = qfn;
-      int k = qfn;
-      j = qfn;
-      int m = qfn;
-      if (paramegf.MTe != null)
-      {
-        paramString = paramegf.MTe;
-        if (paramString.left > 0.0F) {
-          i = bu(paramString.left);
-        }
-        if (paramString.right > 0.0F) {
-          j = bu(paramString.right);
-        }
-        if (paramString.top > 0.0F) {
-          k = bu(paramString.top);
-        }
-        if (paramString.bottom > 0.0F) {
-          m = bu(paramString.bottom);
-        }
-        this.zmR.setPadding(i, k, j, m);
-      }
-      if (!paramBoolean1) {
-        break label1070;
-      }
-      this.zmJ.post(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(66146);
-          Log.d("MicroMsg.MallWalletSectionCellView", "x: %s, left: %s", new Object[] { Float.valueOf(MallWalletSectionCellView.this.zmJ.getX()), Integer.valueOf(MallWalletSectionCellView.this.zmJ.getLeft()) });
-          LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, 1);
-          localLayoutParams.leftMargin = MallWalletSectionCellView.this.zmJ.getLeft();
-          MallWalletSectionCellView.this.pYY.setLayoutParams(localLayoutParams);
-          MallWalletSectionCellView.this.pYY.setVisibility(0);
-          AppMethodBeat.o(66146);
-        }
-      });
     }
-    for (;;)
+    label456:
+    label1225:
+    for (boolean bool = false;; bool = paramBoolean2)
     {
-      if (paramegf.KEP != null) {
-        setOnClickListener(new View.OnClickListener()
+      Log.i("MicroMsg.MallWalletSectionCellView", "red dot expired: %s, %s, %s, %s, %s", new Object[] { parameqh.TJH.Ubm, Long.valueOf(l), Boolean.valueOf(paramBoolean2), Boolean.valueOf(bool), Integer.valueOf(parameqh.TJH.type) });
+      if ((paramBoolean2) && (!bool)) {
+        com.tencent.mm.plugin.report.service.h.IzE.a(22735, new Object[] { parameqh.TJH.Ubm, Integer.valueOf(2), "" });
+      }
+      label496:
+      int i;
+      if (bool)
+      {
+        if (parameqh.TJH.type != 1) {
+          break label1016;
+        }
+        if (!Util.isNullOrNil(this.ESa.getText()))
         {
-          public final void onClick(View paramAnonymousView)
+          this.ESe.setVisibility(0);
+          if (!bool) {
+            break label1174;
+          }
+          com.tencent.mm.plugin.report.service.h.IzE.a(22735, new Object[] { parameqh.TJH.Ubm, Integer.valueOf(1), "" });
+        }
+      }
+      else
+      {
+        i = tBk;
+        int k = tBk;
+        int j = tBk;
+        int m = tBk;
+        if (parameqh.Ufm != null)
+        {
+          paramString = parameqh.Ufm;
+          if (paramString.left > 0.0F) {
+            i = bw(paramString.left);
+          }
+          if (paramString.right > 0.0F) {
+            j = bw(paramString.right);
+          }
+          if (paramString.top > 0.0F) {
+            k = bw(paramString.top);
+          }
+          if (paramString.bottom > 0.0F) {
+            m = bw(paramString.bottom);
+          }
+          this.ESh.setPadding(i, k, j, m);
+        }
+        if (!paramBoolean1) {
+          break label1213;
+        }
+        this.ERZ.post(new Runnable()
+        {
+          public final void run()
           {
-            AppMethodBeat.i(66147);
-            b localb = new b();
-            localb.bm(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/mall/ui/MallWalletSectionCellView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-            paramAnonymousView = new Bundle();
-            paramAnonymousView.putInt("key_tiny_app_scene", 1019);
-            com.tencent.mm.plugin.wallet_core.utils.g.a(MallWalletSectionCellView.this.getContext(), paramegf.KEP, paramAnonymousView);
-            paramAnonymousView = new xo();
-            paramAnonymousView.edO.viewId = paramegf.KNW;
-            EventCenter.instance.publish(paramAnonymousView);
-            MallWalletSectionCellView.a(MallWalletSectionCellView.this);
-            if ((paramJSONObject != null) && (paramegf.Ngi != null))
-            {
-              paramJSONObject.remove(paramegf.Ngi.LXh);
-              paramJSONObject.remove(String.format("%s_expiretime", new Object[] { paramegf.Ngi.LXh }));
-              com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Ofd, paramJSONObject.toString());
-            }
-            paramAnonymousView = "";
-            int i;
-            if (paramegf.KEP.type == 1)
-            {
-              paramAnonymousView = paramegf.KEP.url;
-              i = 1;
-            }
-            for (;;)
-            {
-              h.CyF.a(16502, new Object[] { Integer.valueOf(2), paramAnonymousView, Integer.valueOf(i) });
-              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mall/ui/MallWalletSectionCellView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-              AppMethodBeat.o(66147);
-              return;
-              if (paramegf.KEP.type == 2)
-              {
-                if (paramegf.KEP.MTh != null) {
-                  paramAnonymousView = paramegf.KEP.MTh.username;
-                }
-                i = 2;
-              }
-              else if (paramegf.KEP.type == 4)
-              {
-                paramAnonymousView = paramegf.KEP.url;
-                i = 3;
-              }
-              else
-              {
-                i = 0;
-              }
-            }
+            AppMethodBeat.i(66146);
+            Log.d("MicroMsg.MallWalletSectionCellView", "x: %s, left: %s", new Object[] { Float.valueOf(MallWalletSectionCellView.this.ERZ.getX()), Integer.valueOf(MallWalletSectionCellView.this.ERZ.getLeft()) });
+            LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, 1);
+            localLayoutParams.leftMargin = MallWalletSectionCellView.this.ERZ.getLeft();
+            MallWalletSectionCellView.this.tuU.setLayoutParams(localLayoutParams);
+            MallWalletSectionCellView.this.tuU.setVisibility(0);
+            AppMethodBeat.o(66146);
           }
         });
       }
-      AppMethodBeat.o(66152);
-      return;
-      this.zmL.setImageResource(2131690737);
-      this.zmL.setColorFilter(getContext().getResources().getColor(2131100006), PorterDuff.Mode.SRC_ATOP);
-      break;
-      label604:
-      this.zmJ.setText("");
-      break label86;
-      label616:
-      com.tencent.mm.plugin.wallet_core.utils.g.a((TextView)localObject, localdqd.Lov, null);
-      com.tencent.mm.plugin.wallet_core.utils.g.a((View)localObject, localdqd.MTe);
-      i = (int)localdqd.MTg;
-      if ((localdqd.MTg & 0xFF000000) == 0L) {
-        i = (int)(localdqd.MTg | 0xFF000000);
-      }
-      GradientDrawable localGradientDrawable = new GradientDrawable();
-      localGradientDrawable.setShape(0);
-      if (localdqd.MTf > 0.0F) {
-        localGradientDrawable.setCornerRadius(com.tencent.mm.cb.a.fromDPToPix(((TextView)localObject).getContext(), (int)localdqd.MTf));
-      }
-      localGradientDrawable.setColor(i);
-      ((TextView)localObject).setBackground(localGradientDrawable);
-      break label115;
-      label733:
-      this.zmS.setVisibility(8);
-      break label123;
-      label745:
-      paramBoolean2 = false;
-      break label162;
-      label751:
-      com.tencent.mm.plugin.wallet_core.utils.g.a(this.zmK, (ehf)paramegf.Ngg.get(0), null);
-      this.zmT.setVisibility(8);
-      this.zmK.setVisibility(0);
-      break label188;
-      label790:
-      if (!Util.isNullOrNil(paramString))
+      for (;;)
       {
-        paramString = this.zmT;
-        if (!paramBoolean2) {}
-        for (paramBoolean2 = true;; paramBoolean2 = false)
+        if (parameqh.RGh != null) {
+          setOnClickListener(new View.OnClickListener()
+          {
+            public final void onClick(View paramAnonymousView)
+            {
+              AppMethodBeat.i(66147);
+              Object localObject = new b();
+              ((b)localObject).bn(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mall/ui/MallWalletSectionCellView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+              paramAnonymousView = new Bundle();
+              paramAnonymousView.putInt("key_tiny_app_scene", 1019);
+              k.a(MallWalletSectionCellView.this.getContext(), parameqh.RGh, paramAnonymousView, parami, paramb);
+              paramAnonymousView = new yv();
+              paramAnonymousView.fYd.viewId = parameqh.ROQ;
+              EventCenter.instance.publish(paramAnonymousView);
+              MallWalletSectionCellView.a(MallWalletSectionCellView.this);
+              if ((paramJSONObject != null) && (parameqh.TJH != null) && (!Util.isNullOrNil(parameqh.TJH.Ubm)))
+              {
+                paramJSONObject.remove(parameqh.TJH.Ubm);
+                paramJSONObject.remove(String.format("%s_expiretime", new Object[] { parameqh.TJH.Ubm }));
+                com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vtp, paramJSONObject.toString());
+                com.tencent.mm.plugin.report.service.h.IzE.a(22735, new Object[] { parameqh.TJH.Ubm, Integer.valueOf(3), "" });
+                if ("Lqt".equals(parameqh.TJH.Ubm))
+                {
+                  paramAnonymousView = MallWalletSectionCellView.this;
+                  localObject = parameqh.TJH.Ubm;
+                  Log.i("MicroMsg.MallWalletSectionCellView", "lqtOnClickRedDotReq, redDotID: %s", new Object[] { localObject });
+                  new q((String)localObject).bhW().h(new MallWalletSectionCellView.3(paramAnonymousView));
+                }
+              }
+              paramAnonymousView = "";
+              int i;
+              if (parameqh.RGh.type == 1)
+              {
+                paramAnonymousView = parameqh.RGh.url;
+                i = 1;
+              }
+              for (;;)
+              {
+                com.tencent.mm.plugin.report.service.h.IzE.a(16502, new Object[] { Integer.valueOf(2), paramAnonymousView, Integer.valueOf(i) });
+                com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mall/ui/MallWalletSectionCellView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+                AppMethodBeat.o(66147);
+                return;
+                if (parameqh.RGh.type == 2)
+                {
+                  if (parameqh.RGh.Ufp != null) {
+                    paramAnonymousView = parameqh.RGh.Ufp.username;
+                  }
+                  i = 2;
+                }
+                else if (parameqh.RGh.type == 4)
+                {
+                  paramAnonymousView = parameqh.RGh.url;
+                  i = 3;
+                }
+                else
+                {
+                  i = 0;
+                }
+              }
+            }
+          });
+        }
+        AppMethodBeat.o(293133);
+        return;
+        this.ESb.setImageResource(a.h.icons_outlined_arrow);
+        this.ESb.setColorFilter(getContext().getResources().getColor(a.c.arrow_color), PorterDuff.Mode.SRC_ATOP);
+        break;
+        label715:
+        this.ERZ.setText("");
+        break label87;
+        label727:
+        k.a((TextView)localObject, localdzz.SpR, null);
+        k.a((View)localObject, localdzz.Ufm);
+        i = (int)localdzz.Ufo;
+        if ((localdzz.Ufo & 0xFF000000) == 0L) {
+          i = (int)(localdzz.Ufo | 0xFF000000);
+        }
+        GradientDrawable localGradientDrawable = new GradientDrawable();
+        localGradientDrawable.setShape(0);
+        if (localdzz.Ufn > 0.0F) {
+          localGradientDrawable.setCornerRadius(com.tencent.mm.ci.a.fromDPToPix(((TextView)localObject).getContext(), (int)localdzz.Ufn));
+        }
+        localGradientDrawable.setColor(i);
+        ((TextView)localObject).setBackground(localGradientDrawable);
+        break label116;
+        label844:
+        this.ESi.setVisibility(8);
+        break label124;
+        label856:
+        paramBoolean2 = false;
+        break label163;
+        label862:
+        k.a(this.ESa, (erh)parameqh.UsL.get(0), null);
+        this.ESj.setVisibility(8);
+        this.ESa.setVisibility(0);
+        break label189;
+        if (!Util.isNullOrNil(paramString))
         {
-          paramString.cH("", paramBoolean2);
-          this.zmT.setVisibility(0);
-          this.zmK.setVisibility(8);
-          break;
+          paramString = this.ESj;
+          if (!paramBoolean2) {}
+          for (paramBoolean2 = true;; paramBoolean2 = false)
+          {
+            paramString.cV("", paramBoolean2);
+            this.ESj.setVisibility(0);
+            this.ESa.setVisibility(8);
+            break;
+          }
         }
-      }
-      this.zmK.setText("");
-      this.zmT.setVisibility(8);
-      this.zmK.setVisibility(0);
-      break label188;
-      label876:
-      this.zmM.setVisibility(8);
-      break label225;
-      label888:
-      i = 0;
-      break label263;
-      label894:
-      this.zmN.setVisibility(0);
-      break label389;
-      label905:
-      if (paramegf.Ngi.type == 2)
-      {
-        this.zmP.setVisibility(0);
-        break label389;
-      }
-      if (paramegf.Ngi.type == 3)
-      {
-        this.zmQ.setText(com.tencent.mm.plugin.wallet_core.utils.g.a(getContext(), paramegf.Ngi.Lov));
-        this.zmQ.setVisibility(0);
-        break label389;
-      }
-      if (paramegf.Ngi.type == 4)
-      {
-        this.zmO.setVisibility(0);
-        com.tencent.mm.plugin.wallet_core.utils.g.a(this.zmK, paramegf.Ngi.Lov, null);
-        paramString = this.zmT;
-        paramString.setVisibility(8);
-        if (paramString.kdb != null) {
-          paramString.kdb.setVisibility(8);
+        this.ESa.setText("");
+        this.ESj.setVisibility(8);
+        this.ESa.setVisibility(0);
+        break label189;
+        label987:
+        this.ESc.setVisibility(8);
+        break label226;
+        label999:
+        paramBoolean2 = false;
+        break label268;
+        this.ESd.setVisibility(0);
+        break label456;
+        label1016:
+        if (parameqh.TJH.type == 2)
+        {
+          this.ESf.setVisibility(0);
+          break label456;
         }
-        paramString.removeCallbacks(paramString.Ios);
-        break label389;
+        if (parameqh.TJH.type == 3)
+        {
+          this.ESg.setText(k.a(getContext(), parameqh.TJH.SpR));
+          this.ESg.setVisibility(0);
+          break label456;
+        }
+        if (parameqh.TJH.type == 4)
+        {
+          this.ESe.setVisibility(0);
+          this.ESa.setVisibility(0);
+          k.a(this.ESa, parameqh.TJH.SpR, null);
+          paramString = this.ESj;
+          paramString.setVisibility(8);
+          if (paramString.mUB != null) {
+            paramString.mUB.setVisibility(8);
+          }
+          paramString.removeCallbacks(paramString.PgK);
+          break label456;
+        }
+        bool = false;
+        break label456;
+        com.tencent.mm.plugin.report.service.h.IzE.a(22735, new Object[] { parameqh.TJH.Ubm, Integer.valueOf(0), "Red Dot Type returned by server is invalid." });
+        break label496;
+        this.tuU.setVisibility(8);
       }
-      ehu();
-      break label389;
-      label1056:
-      ehu();
-      break label389;
-      label1063:
-      ehu();
-      break label389;
-      label1070:
-      this.pYY.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.ui.MallWalletSectionCellView
  * JD-Core Version:    0.7.0.1
  */

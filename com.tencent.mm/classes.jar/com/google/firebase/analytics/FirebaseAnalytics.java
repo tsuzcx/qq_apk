@@ -3,7 +3,7 @@ package com.google.firebase.analytics;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.internal.measurement.zzgl;
 import com.google.android.gms.internal.measurement.zzhk;

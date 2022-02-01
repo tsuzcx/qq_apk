@@ -1,56 +1,28 @@
 package com.tencent.mm.plugin.finder.video;
 
-import android.view.MotionEvent;
+import android.graphics.Bitmap;
+import android.view.View;
+import kotlin.g.a.a;
+import kotlin.g.a.b;
 import kotlin.l;
+import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/IFinderVideoSeekBar;", "", "dismissProgressBar", "", "enterSeekMode", "exitSeekMode", "reason", "", "getCurrentProgress", "", "isSeekingMode", "", "isShownSeekBar", "setProgress", "progress", "setSeekBarCallback", "callback", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoSeekBar$SeekBarCallback;", "setVisibility", "visibility", "showProgressBar", "isShowThumb", "updateProgressMs", "percent", "", "offsetMs", "", "allMs", "updateProgressSec", "offsetSec", "allSec", "SeekBarCallback", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/IFinderVideoCoverPreview;", "", "destroy", "", "getBitmap", "Landroid/graphics/Bitmap;", "width", "", "height", "getView", "Landroid/view/View;", "seekTo", "timeMs", "", "start", "onReady", "Lkotlin/Function0;", "onDestroy", "onSeekFrame", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "frameUs", "plugin-finder_release"})
 public abstract interface q
 {
-  public abstract void awG(String paramString);
+  public abstract void a(a<x> parama1, a<x> parama2, b<? super Long, x> paramb);
   
-  public abstract void bm(float paramFloat);
+  public abstract void destroy();
   
-  public abstract void dEX();
+  public abstract Bitmap getBitmap();
   
-  public abstract boolean dEY();
+  public abstract View getView();
   
-  public abstract boolean dEZ();
-  
-  public abstract void dFa();
-  
-  public abstract int getCurrentProgress();
-  
-  public abstract void gs(int paramInt1, int paramInt2);
-  
-  public abstract void oI(boolean paramBoolean);
-  
-  public abstract void setProgress(int paramInt);
-  
-  public abstract void setSeekBarCallback(a parama);
-  
-  public abstract void setVisibility(int paramInt);
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/IFinderVideoSeekBar$SeekBarCallback;", "", "getCurrentPosMs", "", "getCurrentPosSec", "", "getVideoDurationSec", "isEnableSeek", "", "onEnterSeekMode", "", "isEnter", "showPauseTips", "onNeedIgnoreTouchEvent", "event", "Landroid/view/MotionEvent;", "onStartSeek", "onStopSeek", "percent", "", "plugin-finder_release"})
-  public static abstract interface a
-  {
-    public abstract void Q(boolean paramBoolean1, boolean paramBoolean2);
-    
-    public abstract boolean W(MotionEvent paramMotionEvent);
-    
-    public abstract void bn(float paramFloat);
-    
-    public abstract void dFH();
-    
-    public abstract boolean dFI();
-    
-    public abstract int getCurrentPosSec();
-    
-    public abstract int getVideoDurationSec();
-  }
+  public abstract void seekTo(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.q
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.luckymoney.story.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.protocal.protobuf.dlt;
+import com.tencent.mm.f.c.en;
+import com.tencent.mm.protocal.protobuf.dvl;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends ei
+  extends en
 {
   public static IAutoDBItem.MAutoDBInfo info;
   
@@ -16,8 +16,8 @@ public final class a
   {
     AppMethodBeat.i(163692);
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[11];
-    localMAutoDBInfo.columns = new String[12];
+    localMAutoDBInfo.fields = new Field[12];
+    localMAutoDBInfo.columns = new String[13];
     StringBuilder localStringBuilder = new StringBuilder();
     localMAutoDBInfo.columns[0] = "title";
     localMAutoDBInfo.colsMap.put("title", "TEXT");
@@ -63,44 +63,50 @@ public final class a
     localMAutoDBInfo.columns[10] = "update_time";
     localMAutoDBInfo.colsMap.put("update_time", "LONG");
     localStringBuilder.append(" update_time LONG");
-    localMAutoDBInfo.columns[11] = "rowid";
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[11] = "subtype_id";
+    localMAutoDBInfo.colsMap.put("subtype_id", "INTEGER");
+    localStringBuilder.append(" subtype_id INTEGER");
+    localMAutoDBInfo.columns[12] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
     info = localMAutoDBInfo;
     AppMethodBeat.o(163692);
   }
   
-  public static dlt a(a parama)
+  public static dvl a(a parama)
   {
     AppMethodBeat.i(163691);
-    dlt localdlt = new dlt();
-    localdlt.title = parama.field_title;
-    localdlt.description = parama.field_description;
-    localdlt.MPn = parama.field_corp_name;
-    localdlt.MPp = parama.field_action_app_nickname;
-    localdlt.yUL = parama.field_action_app_username;
-    localdlt.pTI = parama.field_action_type;
-    localdlt.yUK = parama.field_action_url;
-    localdlt.iwv = parama.field_logo_url;
-    localdlt.iww = parama.field_logo_md5;
-    localdlt.iwu = parama.field_packet_id;
+    dvl localdvl = new dvl();
+    localdvl.title = parama.field_title;
+    localdvl.description = parama.field_description;
+    localdvl.Ubp = parama.field_corp_name;
+    localdvl.Ubr = parama.field_action_app_nickname;
+    localdvl.EyI = parama.field_action_app_username;
+    localdvl.tpK = parama.field_action_type;
+    localdvl.EyH = parama.field_action_url;
+    localdvl.llI = parama.field_logo_url;
+    localdvl.llJ = parama.field_logo_md5;
+    localdvl.llH = parama.field_packet_id;
+    localdvl.Tkq = parama.field_subtype_id;
     AppMethodBeat.o(163691);
-    return localdlt;
+    return localdvl;
   }
   
-  public static void a(a parama, dlt paramdlt, String paramString)
+  public static void a(a parama, dvl paramdvl, String paramString, int paramInt)
   {
-    if (paramdlt != null)
+    if (paramdvl != null)
     {
-      parama.field_title = paramdlt.title;
-      parama.field_corp_name = paramdlt.MPn;
-      parama.field_action_app_nickname = paramdlt.MPp;
-      parama.field_action_app_username = paramdlt.yUL;
-      parama.field_action_type = paramdlt.pTI;
-      parama.field_action_url = paramdlt.yUK;
-      parama.field_description = paramdlt.description;
-      parama.field_logo_url = paramdlt.iwv;
-      parama.field_logo_md5 = paramdlt.iww;
+      parama.field_title = paramdvl.title;
+      parama.field_corp_name = paramdvl.Ubp;
+      parama.field_action_app_nickname = paramdvl.Ubr;
+      parama.field_action_app_username = paramdvl.EyI;
+      parama.field_action_type = paramdvl.tpK;
+      parama.field_action_url = paramdvl.EyH;
+      parama.field_description = paramdvl.description;
+      parama.field_logo_url = paramdvl.llI;
+      parama.field_logo_md5 = paramdvl.llJ;
       parama.field_packet_id = paramString;
+      parama.field_subtype_id = paramInt;
     }
   }
   
@@ -111,7 +117,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.b.a
  * JD-Core Version:    0.7.0.1
  */

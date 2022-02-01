@@ -12,7 +12,6 @@ import java.io.FilenameFilter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.Locale;
 
@@ -39,7 +38,7 @@ public class APLogFileUtil
   
   public static void deleteFileUpMaxInDir(String paramString, long paramLong1, long paramLong2, int paramInt)
   {
-    AppMethodBeat.i(193459);
+    AppMethodBeat.i(254077);
     for (;;)
     {
       try
@@ -52,7 +51,7 @@ public class APLogFileUtil
         }
         else
         {
-          AppMethodBeat.o(193459);
+          AppMethodBeat.o(254077);
           return;
         }
         if (getFileOrFilesSize(paramString) >= paramLong2)
@@ -66,7 +65,7 @@ public class APLogFileUtil
           }
           else
           {
-            AppMethodBeat.o(193459);
+            AppMethodBeat.o(254077);
             return;
           }
           paramLong2 = System.currentTimeMillis();
@@ -82,13 +81,13 @@ public class APLogFileUtil
             j += 1;
             continue;
           }
-          AppMethodBeat.o(193459);
+          AppMethodBeat.o(254077);
           return;
         }
       }
       catch (Throwable paramString)
       {
-        AppMethodBeat.o(193459);
+        AppMethodBeat.o(254077);
         return;
       }
       int i = 0;
@@ -97,14 +96,14 @@ public class APLogFileUtil
   
   public static void deleteOldFileToday(String paramString)
   {
-    AppMethodBeat.i(193454);
+    AppMethodBeat.i(254072);
     deleteOldFileToday(paramString, maxLogFileNum);
-    AppMethodBeat.o(193454);
+    AppMethodBeat.o(254072);
   }
   
   public static void deleteOldFileToday(String paramString, int paramInt)
   {
-    AppMethodBeat.i(193455);
+    AppMethodBeat.i(254073);
     paramString = getLogFiles(paramString, getToday() + "_");
     int j = paramString.size();
     if ((j >= paramInt) && (paramInt > 0))
@@ -125,12 +124,12 @@ public class APLogFileUtil
         i += 1;
       }
     }
-    AppMethodBeat.o(193455);
+    AppMethodBeat.o(254073);
   }
   
   private static int getConfValue(SharedPreferences paramSharedPreferences, String paramString, int paramInt)
   {
-    AppMethodBeat.i(193462);
+    AppMethodBeat.i(254083);
     paramSharedPreferences = paramSharedPreferences.getString(paramString, null);
     i = paramInt;
     if (!TextUtils.isEmpty(paramSharedPreferences)) {}
@@ -151,13 +150,13 @@ public class APLogFileUtil
         i = paramInt;
       }
     }
-    AppMethodBeat.o(193462);
+    AppMethodBeat.o(254083);
     return i;
   }
   
   public static double getFileOrFilesSize(String paramString)
   {
-    AppMethodBeat.i(193450);
+    AppMethodBeat.i(254067);
     paramString = new File(paramString);
     for (long l1 = 0L;; l1 = l2)
     {
@@ -178,7 +177,7 @@ public class APLogFileUtil
         break label32;
       }
       d = l1 / 1024L / 1024L;
-      AppMethodBeat.o(193450);
+      AppMethodBeat.o(254067);
       return d;
       l2 = getFileSize(paramString);
     }
@@ -186,7 +185,7 @@ public class APLogFileUtil
   
   private static long getFileSize(File paramFile)
   {
-    AppMethodBeat.i(193451);
+    AppMethodBeat.i(254068);
     long l2 = 0L;
     for (long l1 = l2;; l1 = l2)
     {
@@ -209,7 +208,7 @@ public class APLogFileUtil
         label50:
         break label43;
       }
-      AppMethodBeat.o(193451);
+      AppMethodBeat.o(254068);
       return l1;
       l1 = l2;
       paramFile.createNewFile();
@@ -218,7 +217,7 @@ public class APLogFileUtil
   
   private static long getFileSizes(File paramFile)
   {
-    AppMethodBeat.i(193452);
+    AppMethodBeat.i(254069);
     long l = 0L;
     paramFile = paramFile.listFiles();
     int i = 0;
@@ -231,27 +230,27 @@ public class APLogFileUtil
         break;
       }
     }
-    AppMethodBeat.o(193452);
+    AppMethodBeat.o(254069);
     return l;
   }
   
   public static String getLastLogFileName(String paramString)
   {
-    AppMethodBeat.i(193456);
+    AppMethodBeat.i(254074);
     paramString = getLogFiles(paramString, getToday());
     if (paramString.size() > 0)
     {
       paramString = ((File)paramString.get(paramString.size() - 1)).getName();
-      AppMethodBeat.o(193456);
+      AppMethodBeat.o(254074);
       return paramString;
     }
-    AppMethodBeat.o(193456);
+    AppMethodBeat.o(254074);
     return "";
   }
   
   public static ArrayList<File> getLogFiles(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(193457);
+    AppMethodBeat.i(254075);
     paramString1 = new File(paramString1);
     if (paramString1.isDirectory())
     {
@@ -259,60 +258,32 @@ public class APLogFileUtil
       {
         public final boolean accept(File paramAnonymousFile, String paramAnonymousString)
         {
-          AppMethodBeat.i(193446);
+          AppMethodBeat.i(254058);
           boolean bool = paramAnonymousString.startsWith(this.val$prefix);
-          AppMethodBeat.o(193446);
+          AppMethodBeat.o(254058);
           return bool;
         }
       });
-      Arrays.sort(paramString1, new Comparator()
-      {
-        private int extractNumber(String paramAnonymousString)
-        {
-          AppMethodBeat.i(193448);
-          try
-          {
-            i = Integer.parseInt(paramAnonymousString.substring(paramAnonymousString.indexOf('_') + 1, paramAnonymousString.lastIndexOf('.')));
-            AppMethodBeat.o(193448);
-            return i;
-          }
-          catch (Throwable paramAnonymousString)
-          {
-            for (;;)
-            {
-              int i = 0;
-            }
-          }
-        }
-        
-        public final int compare(File paramAnonymousFile1, File paramAnonymousFile2)
-        {
-          AppMethodBeat.i(193447);
-          int i = extractNumber(paramAnonymousFile1.getName());
-          int j = extractNumber(paramAnonymousFile2.getName());
-          AppMethodBeat.o(193447);
-          return i - j;
-        }
-      });
+      Arrays.sort(paramString1, new APLogFileUtil.2());
       paramString1 = new ArrayList(Arrays.asList(paramString1));
-      AppMethodBeat.o(193457);
+      AppMethodBeat.o(254075);
       return paramString1;
     }
     paramString1 = new ArrayList();
-    AppMethodBeat.o(193457);
+    AppMethodBeat.o(254075);
     return paramString1;
   }
   
   public static double getSDCardSpace()
   {
-    AppMethodBeat.i(193453);
+    AppMethodBeat.i(254070);
     try
     {
       StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
       l = localStatFs.getBlockSize();
       l = localStatFs.getAvailableBlocks() * l / 1024L / 1024L;
       double d = l;
-      AppMethodBeat.o(193453);
+      AppMethodBeat.o(254070);
       return d;
     }
     catch (Throwable localThrowable)
@@ -327,48 +298,48 @@ public class APLogFileUtil
   
   public static String getToday()
   {
-    AppMethodBeat.i(193458);
+    AppMethodBeat.i(254076);
     String str = new SimpleDateFormat("yyyyMMdd", Locale.CHINA).format(new Date(System.currentTimeMillis()));
-    AppMethodBeat.o(193458);
+    AppMethodBeat.o(254076);
     return str;
   }
   
   public static boolean initLogDir(String paramString)
   {
-    AppMethodBeat.i(193460);
+    AppMethodBeat.i(254079);
     try
     {
       File localFile = new File(paramString);
       if (!localFile.exists())
       {
         boolean bool = localFile.mkdirs();
-        AppMethodBeat.o(193460);
+        AppMethodBeat.o(254079);
         return bool;
       }
       deleteFileUpMaxInDir(paramString, maxLogFileSizeMB, maxDirSizeMB, maxLogKeepDays);
       deleteOldFileToday(paramString, maxLogFileNum);
-      AppMethodBeat.o(193460);
+      AppMethodBeat.o(254079);
       return true;
     }
     catch (Throwable paramString)
     {
       new StringBuilder("init log dir error: ").append(paramString.toString());
-      AppMethodBeat.o(193460);
+      AppMethodBeat.o(254079);
     }
     return false;
   }
   
   public static boolean isDebugMode(String paramString)
   {
-    AppMethodBeat.i(193461);
+    AppMethodBeat.i(254082);
     boolean bool = new File(paramString + "MidasLogDebug.ini").exists();
-    AppMethodBeat.o(193461);
+    AppMethodBeat.o(254082);
     return bool;
   }
   
   public static void readLogKeepConf(Context paramContext)
   {
-    AppMethodBeat.i(193463);
+    AppMethodBeat.i(254086);
     if (maxLogFileSizeMB > 0)
     {
       i = maxLogFileSizeMB;
@@ -396,7 +367,7 @@ public class APLogFileUtil
       maxLogKeepDays = getConfValue(paramContext, "log_keep_time", maxLogKeepDays);
       maxDirSizeMB = maxLogFileSizeMB * maxLogFileNum * maxLogKeepDays;
       String.format(Locale.CHINA, "final config: max log size: %d MB, max log num: %d, max keep %d DAYS", new Object[] { Integer.valueOf(maxLogFileSizeMB), Integer.valueOf(maxLogFileNum), Integer.valueOf(maxLogKeepDays) });
-      AppMethodBeat.o(193463);
+      AppMethodBeat.o(254086);
       return;
       i = 1;
       break;
@@ -407,7 +378,7 @@ public class APLogFileUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.comm.log.util.APLogFileUtil
  * JD-Core Version:    0.7.0.1
  */

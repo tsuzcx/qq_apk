@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.appbrand.media.record.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -11,20 +11,20 @@ import java.io.OutputStream;
 public class f
   extends c
 {
-  protected o mFile;
-  private OutputStream zw;
+  private OutputStream UE;
+  protected q mFile;
   
-  private boolean acM(String paramString)
+  private boolean akG(String paramString)
   {
     AppMethodBeat.i(146353);
     try
     {
-      this.mFile = new o(paramString);
-      if (this.mFile.exists()) {
-        this.mFile.delete();
+      this.mFile = new q(paramString);
+      if (this.mFile.ifE()) {
+        this.mFile.cFq();
       }
-      this.mFile.createNewFile();
-      this.zw = new DataOutputStream(s.dw(paramString, false));
+      this.mFile.ifM();
+      this.UE = new DataOutputStream(u.Te(paramString));
       AppMethodBeat.o(146353);
       return true;
     }
@@ -42,8 +42,8 @@ public class f
     d(paramArrayOfByte, paramInt, paramBoolean);
     try
     {
-      if (this.zw != null) {
-        this.zw.write(paramArrayOfByte);
+      if (this.UE != null) {
+        this.UE.write(paramArrayOfByte);
       }
       label27:
       AppMethodBeat.o(146350);
@@ -58,13 +58,13 @@ public class f
   public void close()
   {
     AppMethodBeat.i(146352);
-    if (this.zw != null) {}
+    if (this.UE != null) {}
     try
     {
-      this.zw.flush();
-      this.zw.close();
+      this.UE.flush();
+      this.UE.close();
       label26:
-      this.zw = null;
+      this.UE = null;
       AppMethodBeat.o(146352);
       return;
     }
@@ -81,10 +81,10 @@ public class f
     AppMethodBeat.o(146351);
   }
   
-  public boolean i(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public boolean j(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(146349);
-    acM(paramString);
+    akG(paramString);
     AppMethodBeat.o(146349);
     return true;
   }

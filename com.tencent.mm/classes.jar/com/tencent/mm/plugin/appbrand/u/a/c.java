@@ -1,76 +1,80 @@
 package com.tencent.mm.plugin.appbrand.u.a;
 
-import com.tencent.luggage.h.e;
+import com.tencent.luggage.k.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.i;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.plugin.appbrand.v;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class c
 {
-  public final s cAJ;
-  private final b.a nkb;
-  private final int nkc;
+  public final v czP;
+  private final int qlA;
+  private final b.a qlz;
   
-  public c(s params)
+  public c(v paramv)
   {
-    this.cAJ = params;
-    this.nkc = -1;
-    this.nkb = null;
+    this.czP = paramv;
+    this.qlA = -1;
+    this.qlz = null;
   }
   
-  public c(s params, int paramInt, b.a parama)
+  public c(v paramv, int paramInt, b.a parama)
   {
-    this.nkb = parama;
-    this.cAJ = params;
-    this.nkc = paramInt;
+    this.qlz = parama;
+    this.czP = paramv;
+    this.qlA = paramInt;
   }
   
-  private static String Z(Map<String, Object> paramMap)
+  private static String S(Map<String, Object> paramMap)
   {
     AppMethodBeat.i(147385);
-    e.m(paramMap);
+    e.e(paramMap);
     paramMap = new i(paramMap).toString();
     AppMethodBeat.o(147385);
     return paramMap;
   }
   
-  private String adk(String paramString)
+  private String alf(String paramString)
   {
     AppMethodBeat.i(147384);
-    if (this.nkb == null)
+    if (this.qlz == null)
     {
       AppMethodBeat.o(147384);
       return paramString;
     }
-    this.nkb.ap(this.nkc, paramString);
+    this.qlz.ar(this.qlA, paramString);
     AppMethodBeat.o(147384);
     return null;
   }
   
-  public final String Y(Map<String, Object> paramMap)
+  public final String Ck(int paramInt)
   {
-    AppMethodBeat.i(147382);
-    paramMap.put("ret", Integer.valueOf(0));
-    paramMap = adk(Z(paramMap));
-    AppMethodBeat.o(147382);
-    return paramMap;
+    AppMethodBeat.i(237300);
+    Object localObject = new HashMap();
+    ((Map)localObject).put("ret", Integer.valueOf(paramInt));
+    localObject = alf(S((Map)localObject));
+    AppMethodBeat.o(237300);
+    return localObject;
   }
   
-  public final String bPU()
+  public final String R(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(147383);
-    Object localObject = new HashMap();
-    ((Map)localObject).put("ret", Integer.valueOf(2));
-    localObject = adk(Z((Map)localObject));
-    AppMethodBeat.o(147383);
-    return localObject;
+    AppMethodBeat.i(147382);
+    Object localObject = paramMap;
+    if (paramMap == null) {
+      localObject = new HashMap();
+    }
+    ((Map)localObject).put("ret", Integer.valueOf(0));
+    paramMap = alf(S((Map)localObject));
+    AppMethodBeat.o(147382);
+    return paramMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.u.a.c
  * JD-Core Version:    0.7.0.1
  */

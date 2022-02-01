@@ -4,13 +4,13 @@ public final class l
   extends d
 {
   public int duration;
-  public String qPP;
-  public boolean qPW = false;
   public String thumbPath;
+  public String urV;
+  public boolean usc = false;
   
-  public final String cDg()
+  public final String cRL()
   {
-    return this.qPP;
+    return this.urV;
   }
   
   public final int getType()
@@ -20,7 +20,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.a.l
  * JD-Core Version:    0.7.0.1
  */

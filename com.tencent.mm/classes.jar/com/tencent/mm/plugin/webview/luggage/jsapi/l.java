@@ -18,13 +18,13 @@ public class l
   {
     AppMethodBeat.i(78544);
     Log.i("MicroMsg.JsApiClearBounceBackground", "invokeInOwn");
-    g localg = (g)paramb.cta;
+    g localg = (g)paramb.crg;
     localg.mHandler.post(new g.13(localg));
-    paramb.c("", null);
+    paramb.a("", null);
     AppMethodBeat.o(78544);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

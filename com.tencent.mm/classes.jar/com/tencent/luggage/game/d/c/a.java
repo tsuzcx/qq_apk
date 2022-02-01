@@ -2,11 +2,11 @@ package com.tencent.luggage.game.d.c;
 
 import com.tencent.luggage.sdk.b.a.c.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.z.k;
+import com.tencent.mm.plugin.appbrand.jsapi.ab.l;
 import java.util.Map;
 
 public final class a
-  extends k<d>
+  extends l<d>
 {
   private Map<String, Object> a(d paramd)
   {
@@ -22,7 +22,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.game.d.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.subapp.ui.voicetranstext;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.aaa;
-import com.tencent.mm.protocal.protobuf.aab;
-import com.tencent.mm.protocal.protobuf.did;
-import com.tencent.mm.protocal.protobuf.eoe;
-import com.tencent.mm.protocal.protobuf.esg;
-import com.tencent.mm.protocal.protobuf.esm;
+import com.tencent.mm.protocal.protobuf.aae;
+import com.tencent.mm.protocal.protobuf.aaf;
+import com.tencent.mm.protocal.protobuf.drv;
+import com.tencent.mm.protocal.protobuf.eym;
+import com.tencent.mm.protocal.protobuf.fcr;
+import com.tencent.mm.protocal.protobuf.fcx;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -22,22 +22,22 @@ public final class a
   extends q
   implements m
 {
-  public static int FNE = 1;
-  public static int FNF = 2;
-  public static int FNG = 3;
-  private i AAQ;
-  private String FNA;
-  private int FNB;
-  private esg FNC;
-  private long FND;
-  public esm FNH;
-  public eoe FNI;
-  public did FNJ;
-  int FNK;
-  private int Scene;
-  private String dkU;
-  private String dkV;
-  private com.tencent.mm.ak.d iLF;
+  public static int MhF = 1;
+  public static int MhG = 2;
+  public static int MhH = 3;
+  private int CPw;
+  private i GtS;
+  private String MhB;
+  private int MhC;
+  private fcr MhD;
+  private long MhE;
+  public fcx MhI;
+  public eym MhJ;
+  public drv MhK;
+  int MhL;
+  private String fcC;
+  private String fcD;
+  private com.tencent.mm.an.d lBM;
   private String mFileName;
   public int mState;
   
@@ -77,50 +77,55 @@ public final class a
   {
     AppMethodBeat.i(29266);
     d.a locala = new d.a();
-    locala.iLN = new aaa();
-    locala.iLO = new aab();
+    locala.lBU = new aae();
+    locala.lBV = new aaf();
     locala.uri = "/cgi-bin/micromsg-bin/checkvoicetrans";
     locala.funcId = 546;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
     this.mFileName = paramString2;
-    this.iLF = locala.aXF();
+    this.lBM = locala.bgN();
     Log.i("MicroMsg.NetSceneCheckVoiceTrans", "voiceId:%s, totalLen:%d, encodeType: %d, svrMsgId: %s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong) });
     if (paramInt2 >= 0) {
-      this.FNC = d.cz(paramInt2, paramString2);
+      this.MhD = d.cA(paramInt2, paramString2);
     }
     if (paramLong > 0L) {
-      this.FND = paramLong;
+      this.MhE = paramLong;
     }
-    this.FNA = paramString1;
-    this.FNB = paramInt1;
-    this.Scene = paramInt3;
-    this.dkU = paramString3;
-    this.dkV = paramString4;
+    this.MhB = paramString1;
+    this.MhC = paramInt1;
+    this.CPw = paramInt3;
+    this.fcC = paramString3;
+    this.fcD = paramString4;
     AppMethodBeat.o(29266);
   }
   
   public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(29267);
-    this.AAQ = parami;
-    parami = (aaa)this.iLF.iLK.iLR;
-    parami.KXr = this.FNA;
-    parami.BsF = this.FNB;
-    parami.Llj = this.FNC;
-    parami.Brn = this.FND;
-    parami.Scene = this.Scene;
-    parami.xNH = this.dkU;
-    parami.xNG = this.dkV;
-    int i = dispatch(paramg, this.iLF, this);
+    this.GtS = parami;
+    parami = (aae)d.b.b(this.lBM.lBR);
+    parami.RYD = this.MhB;
+    parami.HmZ = this.MhC;
+    parami.Sms = this.MhD;
+    parami.HlH = this.MhE;
+    parami.CPw = this.CPw;
+    parami.CRR = this.fcC;
+    parami.CRQ = this.fcD;
+    int i = dispatch(paramg, this.lBM, this);
     AppMethodBeat.o(29267);
     return i;
   }
   
-  public final boolean ftu()
+  public final int getType()
+  {
+    return 546;
+  }
+  
+  public final boolean ghU()
   {
     AppMethodBeat.i(29269);
-    if ((this.FNH != null) && (!Util.isNullOrNil(this.FNH.NpE)))
+    if ((this.MhI != null) && (!Util.isNullOrNil(this.MhI.UCA)))
     {
       AppMethodBeat.o(29269);
       return true;
@@ -129,40 +134,35 @@ public final class a
     return false;
   }
   
-  public final int getType()
-  {
-    return 546;
-  }
-  
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(29268);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (aab)this.iLF.iLL.iLR;
+      params = (aaf)d.c.b(this.lBM.lBS);
       if (params == null)
       {
         AppMethodBeat.o(29268);
         return;
       }
-      this.FNH = params.Llk;
-      this.mState = params.oTW;
-      this.FNI = params.Lll;
-      this.FNJ = params.Llm;
-      this.FNK = params.Lln;
+      this.MhI = params.Smt;
+      this.mState = params.rVU;
+      this.MhJ = params.Smu;
+      this.MhK = params.Smv;
+      this.MhL = params.Smw;
     }
     for (;;)
     {
-      this.AAQ.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      this.GtS.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(29268);
       return;
-      Log.i("MicroMsg.NetSceneCheckVoiceTrans", "end checkVoiceTrans, & errType:%d, errCode:%d, voiceId: %s ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this.FNA });
+      Log.i("MicroMsg.NetSceneCheckVoiceTrans", "end checkVoiceTrans, & errType:%d, errCode:%d, voiceId: %s ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this.MhB });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.voicetranstext.a
  * JD-Core Version:    0.7.0.1
  */

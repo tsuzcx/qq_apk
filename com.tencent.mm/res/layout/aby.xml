@@ -5,17 +5,16 @@
         <com.tencent.mm.plugin.finder.view.FinderPostProgressView android:id="@id/gfq" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" />
         <TextView android:textSize="@dimen/h_" android:textColor="@color/v9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d6u" android:layout_marginStart="@dimen/bt" />
     </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gfa" android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gfa" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
         <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_filled_error" app:iconColor="@color/Red" />
         <TextView android:textSize="@dimen/h_" android:textColor="@color/v9" android:id="@id/car" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cpf" android:layout_marginStart="@dimen/bt" />
     </LinearLayout>
-    <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gf7" android:layout_width="wrap_content" android:layout_height="wrap_content">
         <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_delete" app:iconColor="@color/v9" />
         <TextView android:textSize="@dimen/bd" android:textColor="@color/v9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/clb" android:layout_marginStart="4.0dip" />
     </LinearLayout>
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gfn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/cb">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_refresh" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_refresh" app:iconColor="@color/v9" />
         <TextView android:textSize="@dimen/bd" android:textColor="@color/v9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yi" android:layout_marginStart="4.0dip" />
     </LinearLayout>
 </LinearLayout>

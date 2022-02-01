@@ -5,24 +5,24 @@ import com.tencent.mm.plugin.appbrand.h.c;
 import kotlin.l;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/samelayer/jsapi/AppBrandWebGLPluginJsApi;", "Lcom/tencent/mm/plugin/appbrand/extendplugin/AppBrandPluginAsyncJsApi;", "()V", "getPluginType", "", "getViewId", "", "data", "Lorg/json/JSONObject;", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/samelayer/jsapi/AppBrandWebGLPluginJsApi;", "Lcom/tencent/mm/plugin/appbrand/extendplugin/AppBrandPluginAsyncJsApi;", "()V", "getPluginType", "", "getViewId", "", "data", "Lorg/json/JSONObject;", "plugin-appbrand-integration_release"})
 public class a
   extends c
 {
-  public final int H(JSONObject paramJSONObject)
+  public final int K(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(228367);
+    AppMethodBeat.i(282422);
     if (paramJSONObject != null)
     {
       int i = paramJSONObject.optInt("canvasId", -1);
-      AppMethodBeat.o(228367);
+      AppMethodBeat.o(282422);
       return i;
     }
-    AppMethodBeat.o(228367);
+    AppMethodBeat.o(282422);
     return -1;
   }
   
-  public final String bCy()
+  public final String bNT()
   {
     return "webgl";
   }

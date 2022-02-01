@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.profile.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.wq;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.f.a.xw;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.openim.a.b.a;
 import com.tencent.mm.openim.a.b.b;
 import com.tencent.mm.plugin.report.service.h;
@@ -10,7 +10,6 @@ import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
-import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.Preference.b;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,27 +19,27 @@ public final class a$6
 {
   public a$6(b.b paramb, as paramas, b.a parama) {}
   
-  public final boolean a(Preference paramPreference)
+  public final boolean fpI()
   {
-    AppMethodBeat.i(231803);
+    AppMethodBeat.i(26871);
     try
     {
-      Object localObject = new JSONObject(this.BcI.jGY);
-      paramPreference = ((JSONObject)localObject).optString("name");
+      Object localObject = new JSONObject(this.GWI.myc);
+      String str = ((JSONObject)localObject).optString("name");
       localObject = ((JSONObject)localObject).optString("pagepath");
-      wq localwq = new wq();
-      localwq.ecI.userName = paramPreference;
-      localwq.ecI.ecK = Util.nullAs((String)localObject, "");
-      EventCenter.instance.publish(localwq);
-      h.CyF.a(15319, new Object[] { this.gAi.field_openImAppid, Integer.valueOf(this.BcI.action), this.BcJ.title });
-      AppMethodBeat.o(231803);
+      xw localxw = new xw();
+      localxw.fWN.userName = str;
+      localxw.fWN.fWP = Util.nullAs((String)localObject, "");
+      EventCenter.instance.publish(localxw);
+      h.IzE.a(15319, new Object[] { this.jkl.field_openImAppid, Integer.valueOf(this.GWI.action), this.GWJ.title });
+      AppMethodBeat.o(26871);
       return true;
     }
-    catch (JSONException paramPreference)
+    catch (JSONException localJSONException)
     {
       for (;;)
       {
-        Log.printErrStackTrace("MicroMsg.Profile.OpenIMProfileLogic", paramPreference, "loadProfile", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.Profile.OpenIMProfileLogic", localJSONException, "loadProfile", new Object[0]);
       }
     }
   }

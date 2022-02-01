@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.multitask;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/IPluginMultiTask$Companion;", "", "()V", "CLASS", "", "plugin-multitask_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/IPluginMultiTask$Companion;", "", "()V", "CLASS", "", "plugin-multitask_release"})
 public final class d$a
 {
   static
   {
-    AppMethodBeat.i(200282);
-    zZf = new a();
-    AppMethodBeat.o(200282);
+    AppMethodBeat.i(247809);
+    FES = new a();
+    AppMethodBeat.o(247809);
   }
 }
 

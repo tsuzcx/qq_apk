@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public final class m
-  extends MAutoStorage<i>
+  extends MAutoStorage<h>
 {
   public static final String[] SQL_CREATE;
   private final ISQLiteDatabase db;
@@ -19,22 +19,22 @@ public final class m
   static
   {
     AppMethodBeat.i(79224);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(i.info, "WebViewHostsFilter") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(h.info, "WebViewHostsFilter") };
     AppMethodBeat.o(79224);
   }
   
   public m(ISQLiteDatabase paramISQLiteDatabase)
   {
-    this(paramISQLiteDatabase, i.info, "WebViewHostsFilter");
+    this(paramISQLiteDatabase, h.info, "WebViewHostsFilter", null);
   }
   
-  private m(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString)
+  public m(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
   {
-    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, null);
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
     this.db = paramISQLiteDatabase;
   }
   
-  public final Set<String> gdE()
+  public final Set<String> gWD()
   {
     AppMethodBeat.i(79223);
     long l = Util.nowSecond();

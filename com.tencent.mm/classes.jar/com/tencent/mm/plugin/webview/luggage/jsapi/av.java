@@ -4,7 +4,7 @@ import android.content.Context;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ch.a;
+import com.tencent.mm.co.a;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -69,7 +69,7 @@ public class av
           FileDownloadTaskInfo localFileDownloadTaskInfo;
           if (l > 0L)
           {
-            localFileDownloadTaskInfo = f.cBv().Co(l);
+            localFileDownloadTaskInfo = f.cPZ().Ix(l);
             localObject = localFileDownloadTaskInfo;
             if (localFileDownloadTaskInfo == null) {
               localObject = new FileDownloadTaskInfo();
@@ -80,7 +80,7 @@ public class av
           }
           if (!Util.isNullOrNil((String)localObject))
           {
-            localFileDownloadTaskInfo = f.cBv().alg((String)localObject);
+            localFileDownloadTaskInfo = f.cPZ().asZ((String)localObject);
             localObject = localFileDownloadTaskInfo;
             if (localFileDownloadTaskInfo == null) {
               localObject = new FileDownloadTaskInfo();
@@ -106,7 +106,7 @@ public class av
   
   public final void b(b<s>.a paramb) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 1;
   }

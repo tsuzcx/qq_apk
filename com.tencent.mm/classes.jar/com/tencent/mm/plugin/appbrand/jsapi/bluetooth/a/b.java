@@ -3,39 +3,37 @@ package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a;
 import android.annotation.TargetApi;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a;
-import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 @TargetApi(18)
 public final class b
-  extends d
+  extends com.tencent.mm.plugin.appbrand.jsapi.c
 {
   private static final int CTRL_INDEX = 174;
   private static final String NAME = "closeBluetoothAdapter";
   
-  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
+  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(144495);
-    c.pl(116);
-    paramJSONObject = paramf.getAppId();
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.rE(116);
+    paramJSONObject = parame.getAppId();
     Log.i("MicroMsg.JsApiCloseBluetoothAdapter", "appId:%s closeBluetoothAdapter!", new Object[] { paramJSONObject });
-    paramJSONObject = a.ZD(paramJSONObject);
+    paramJSONObject = a.ahr(paramJSONObject);
     Log.i("MicroMsg.JsApiCloseBluetoothAdapter", "result:%s", new Object[] { paramJSONObject });
     switch (paramJSONObject.errCode)
     {
     default: 
-      paramf.i(paramInt, h(paramJSONObject.errMsg, null));
-      c.pl(118);
+      parame.j(paramInt, h(paramJSONObject.errMsg, null));
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.rE(118);
       AppMethodBeat.o(144495);
       return;
     }
-    paramf.i(paramInt, h("ok", null));
-    c.pl(117);
+    parame.j(paramInt, h("ok", null));
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.rE(117);
     AppMethodBeat.o(144495);
   }
 }

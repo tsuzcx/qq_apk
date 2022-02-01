@@ -7,14 +7,14 @@ import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class MMScrollView
   extends ScrollView
   implements View.OnFocusChangeListener
 {
-  private a kuA;
+  private a nmo;
   
   public MMScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -80,7 +80,7 @@ public class MMScrollView
   public void setOnSizeChangeListener(a parama)
   {
     if (parama != null) {
-      this.kuA = parama;
+      this.nmo = parama;
     }
   }
   
@@ -88,7 +88,7 @@ public class MMScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.address.ui.MMScrollView
  * JD-Core Version:    0.7.0.1
  */

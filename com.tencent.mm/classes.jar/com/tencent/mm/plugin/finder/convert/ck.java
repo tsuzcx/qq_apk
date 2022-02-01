@@ -1,38 +1,27 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.support.v7.widget.RecyclerView;
-import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.bl;
+import com.tencent.mm.plugin.finder.b.g;
 import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.h;
+import com.tencent.mm.view.recyclerview.i;
 import kotlin.g.b.p;
-import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderTopicFilterConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderTopicInfoFeed;", "()V", "TAG", "", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderSelectActivityConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderActivityInfoData;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"})
 public final class ck
-  extends e<bl>
+  extends e<com.tencent.mm.plugin.finder.model.l>
 {
-  private final String TAG = "Finder.FinderTopicFilterConvert";
-  
-  public final void a(RecyclerView paramRecyclerView, h paramh, int paramInt)
+  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
   {
-    AppMethodBeat.i(243370);
-    p.h(paramRecyclerView, "recyclerView");
-    p.h(paramh, "holder");
-    paramRecyclerView = (TextView)paramh.Mn(2131309359);
-    if (paramRecyclerView != null)
-    {
-      paramRecyclerView.setTextSize(1, 12.0F);
-      AppMethodBeat.o(243370);
-      return;
-    }
-    AppMethodBeat.o(243370);
+    AppMethodBeat.i(246773);
+    p.k(paramRecyclerView, "recyclerView");
+    p.k(parami, "holder");
+    AppMethodBeat.o(246773);
   }
   
   public final int getLayoutId()
   {
-    return 2131494658;
+    return b.g.finder_select_activity_item;
   }
 }
 

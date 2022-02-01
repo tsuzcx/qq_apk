@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -20,14 +21,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.bb.m;
-import com.tencent.mm.bb.n;
-import com.tencent.mm.bb.r;
-import com.tencent.mm.bb.v;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.be.n;
+import com.tencent.mm.be.o;
+import com.tencent.mm.be.r;
+import com.tencent.mm.be.w;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.plugin.setting.b.e;
+import com.tencent.mm.plugin.setting.b.f;
+import com.tencent.mm.plugin.setting.b.g;
+import com.tencent.mm.plugin.setting.b.i;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -35,8 +40,9 @@ import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
-import com.tencent.mm.storagebase.h;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.v;
+import com.tencent.mm.ui.widget.pulldown.e;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -45,24 +51,24 @@ public class SettingsSelectBgUI
   extends MMActivity
   implements i
 {
-  private boolean Dbz;
-  private a Dea;
-  private GridView Deb;
-  private m Dec;
-  private MTimerHandler Ded;
-  private List<m> hiK;
+  private boolean Jha;
+  private a JjE;
+  private GridView JjF;
+  private n JjG;
+  private MTimerHandler JjH;
+  private List<n> jUI;
   private String username;
   
   public SettingsSelectBgUI()
   {
     AppMethodBeat.i(74416);
-    this.hiK = new ArrayList();
-    this.Ded = new MTimerHandler(new MTimerHandler.CallBack()
+    this.jUI = new ArrayList();
+    this.JjH = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(74406);
-        if (SettingsSelectBgUI.this.findViewById(2131307721).getWidth() <= 0)
+        if (SettingsSelectBgUI.this.findViewById(b.f.settings_select_bg_gv).getWidth() <= 0)
         {
           AppMethodBeat.o(74406);
           return true;
@@ -75,29 +81,29 @@ public class SettingsSelectBgUI
     AppMethodBeat.o(74416);
   }
   
-  private void gI(List<m> paramList)
+  private void ho(List<n> paramList)
   {
     AppMethodBeat.i(74421);
     if (paramList.size() > 0)
     {
-      this.Dec = ((m)paramList.remove(0));
-      g.azz().a(this.Dec, 0);
+      this.JjG = ((n)paramList.remove(0));
+      com.tencent.mm.kernel.h.aGY().a(this.JjG, 0);
       AppMethodBeat.o(74421);
       return;
     }
-    this.Dec = null;
+    this.JjG = null;
     AppMethodBeat.o(74421);
   }
   
   public int getLayoutId()
   {
-    return 2131496266;
+    return b.g.settings_select_bg;
   }
   
   public void initView()
   {
     AppMethodBeat.i(74419);
-    setMMTitle(2131765366);
+    setMMTitle(b.i.settings_chatting_bg_select_bg);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -108,9 +114,9 @@ public class SettingsSelectBgUI
         return true;
       }
     });
-    this.Dbz = getIntent().getBooleanExtra("isApplyToAll", true);
+    this.Jha = getIntent().getBooleanExtra("isApplyToAll", true);
     this.username = getIntent().getStringExtra("username");
-    this.Ded.startTimer(20L);
+    this.JjH.startTimer(20L);
     AppMethodBeat.o(74419);
   }
   
@@ -119,12 +125,15 @@ public class SettingsSelectBgUI
     AppMethodBeat.i(74417);
     super.onCreate(paramBundle);
     initView();
-    g.azz().a(159, this);
-    g.azz().a(160, this);
-    if (g.aAh().isSDCardAvailable())
+    if (getBounceView() != null) {
+      getBounceView().setBg(getResources().getDrawable(b.e.settings_select_bg_bg));
+    }
+    com.tencent.mm.kernel.h.aGY().a(159, this);
+    com.tencent.mm.kernel.h.aGY().a(160, this);
+    if (com.tencent.mm.kernel.h.aHG().isSDCardAvailable())
     {
-      paramBundle = new n(1);
-      g.azz().a(paramBundle, 0);
+      paramBundle = new o(1);
+      com.tencent.mm.kernel.h.aGY().a(paramBundle, 0);
     }
     AppMethodBeat.o(74417);
   }
@@ -133,30 +142,30 @@ public class SettingsSelectBgUI
   {
     AppMethodBeat.i(74418);
     super.onDestroy();
-    if (this.Dec != null)
+    if (this.JjG != null)
     {
-      g.azz().a(this.Dec);
-      v.bev().dx(this.Dec.jho, 1);
+      com.tencent.mm.kernel.h.aGY().a(this.JjG);
+      w.bnU().dU(this.JjG.lXR, 1);
     }
-    List localList = this.hiK;
+    List localList = this.jUI;
     Iterator localIterator = localList.iterator();
     while (localIterator.hasNext())
     {
-      m localm = (m)localIterator.next();
-      v.bev().dx(localm.jho, 1);
+      n localn = (n)localIterator.next();
+      w.bnU().dU(localn.lXR, 1);
     }
     localList.clear();
-    g.azz().b(159, this);
-    g.azz().b(160, this);
-    this.Dea.ebf();
-    v.bev().remove(this.Dea);
+    com.tencent.mm.kernel.h.aGY().b(159, this);
+    com.tencent.mm.kernel.h.aGY().b(160, this);
+    this.JjE.eKd();
+    w.bnU().remove(this.JjE);
     AppMethodBeat.o(74418);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(74420);
-    if ((!(paramq instanceof com.tencent.mm.ak.s)) || (((com.tencent.mm.ak.s)paramq).aYR() != 1))
+    if ((!(paramq instanceof com.tencent.mm.an.s)) || (((com.tencent.mm.an.s)paramq).big() != 1))
     {
       Log.d("MicroMsg.SettingsSelectBgUI", "another scene");
       AppMethodBeat.o(74420);
@@ -169,7 +178,7 @@ public class SettingsSelectBgUI
       return;
     }
     if (i == 160) {
-      gI(this.hiK);
+      ho(this.jUI);
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
@@ -186,39 +195,39 @@ public class SettingsSelectBgUI
   }
   
   final class a
-    extends com.tencent.mm.ui.s<com.tencent.mm.bb.q>
+    extends v<r>
   {
     private Context context;
-    private int qmd;
+    private int tHY;
     
     public a(Context paramContext, int paramInt)
     {
-      super(new com.tencent.mm.bb.q());
+      super(new r());
       AppMethodBeat.i(74410);
       this.context = paramContext;
-      this.qmd = paramInt;
+      this.tHY = paramInt;
       AppMethodBeat.o(74410);
     }
     
-    public final void anp()
+    public final void atr()
     {
       AppMethodBeat.i(74413);
-      setCursor(v.bev().ber());
+      v(w.bnU().bnQ());
       super.notifyDataSetChanged();
       AppMethodBeat.o(74413);
     }
     
-    public final void anq()
+    public final void ats()
     {
       AppMethodBeat.i(74412);
-      anp();
+      atr();
       AppMethodBeat.o(74412);
     }
     
     public final int getCount()
     {
       AppMethodBeat.i(74411);
-      int i = getCursor().getCount();
+      int i = hK().getCount();
       AppMethodBeat.o(74411);
       return i + 2;
     }
@@ -227,97 +236,97 @@ public class SettingsSelectBgUI
     {
       AppMethodBeat.i(74414);
       int i;
-      com.tencent.mm.bb.a locala;
+      com.tencent.mm.be.a locala;
       if (paramView == null)
       {
-        paramView = View.inflate(this.context, 2131496267, null);
-        paramView.setLayoutParams(new AbsListView.LayoutParams(this.qmd, this.qmd));
+        paramView = View.inflate(this.context, b.g.settings_select_bg_view, null);
+        paramView.setLayoutParams(new AbsListView.LayoutParams(this.tHY, this.tHY));
         paramViewGroup = new b();
-        paramViewGroup.DfK = ((LinearLayout)paramView.findViewById(2131307501));
-        paramViewGroup.DfL = ((LinearLayout)paramView.findViewById(2131307500));
-        paramViewGroup.DfM = ((LinearLayout)paramView.findViewById(2131307505));
-        paramViewGroup.DfN = ((LinearLayout)paramView.findViewById(2131307506));
-        paramViewGroup.DfO = ((LinearLayout)paramView.findViewById(2131307499));
+        paramViewGroup.Jlq = ((LinearLayout)paramView.findViewById(b.f.select_bg_downloading_ll));
+        paramViewGroup.Jlr = ((LinearLayout)paramView.findViewById(b.f.select_bg_downloaded_ll));
+        paramViewGroup.Jls = ((LinearLayout)paramView.findViewById(b.f.select_bg_undownloaded_ll));
+        paramViewGroup.Jlt = ((LinearLayout)paramView.findViewById(b.f.select_bg_using_ll));
+        paramViewGroup.Jlu = ((LinearLayout)paramView.findViewById(b.f.select_bg_canceling_ll));
         paramView.setTag(paramViewGroup);
-        i = Util.nullAs((Integer)g.aAh().azQ().get(12311, null), -2);
-        locala = v.bew().Pp(SettingsSelectBgUI.f(SettingsSelectBgUI.this));
+        i = Util.nullAs((Integer)com.tencent.mm.kernel.h.aHG().aHp().b(12311, null), -2);
+        locala = w.bnV().WM(SettingsSelectBgUI.f(SettingsSelectBgUI.this));
         if (paramInt != 0) {
-          break label278;
+          break label286;
         }
-        if (((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) || (i != -2)) && ((SettingsSelectBgUI.c(SettingsSelectBgUI.this)) || (i != -2) || (locala != null)) && ((locala == null) || (locala.jgE != -2))) {
-          break label269;
+        if (((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) || (i != -2)) && ((SettingsSelectBgUI.c(SettingsSelectBgUI.this)) || (i != -2) || (locala != null)) && ((locala == null) || (locala.lXh != -2))) {
+          break label277;
         }
-        paramViewGroup.aNi("using");
+        paramViewGroup.aXR("using");
       }
       for (;;)
       {
-        paramViewGroup = BitmapUtil.getRoundedCornerBitmap(BitmapFactory.decodeResource(this.context.getResources(), 2131231718), true, 10.0F);
-        ((ImageView)paramView.findViewById(2131307503)).setImageBitmap(paramViewGroup);
+        paramViewGroup = BitmapUtil.getRoundedCornerBitmap(BitmapFactory.decodeResource(this.context.getResources(), b.e.chatting_bg_purecolor_thumb), true, 10.0F);
+        ((ImageView)paramView.findViewById(b.f.select_bg_pkg_iv)).setImageBitmap(paramViewGroup);
         AppMethodBeat.o(74414);
         return paramView;
         paramViewGroup = (b)paramView.getTag();
         break;
-        label269:
-        paramViewGroup.aNi("downloaded");
+        label277:
+        paramViewGroup.aXR("downloaded");
       }
-      label278:
+      label286:
       if (paramInt == 1)
       {
-        if (((SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (i == 0)) || ((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (i == 0) && (locala == null)) || ((locala != null) && (locala.jgE == 0))) {
-          paramViewGroup.aNi("using");
+        if (((SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (i == 0)) || ((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (i == 0) && (locala == null)) || ((locala != null) && (locala.lXh == 0))) {
+          paramViewGroup.aXR("using");
         }
         for (;;)
         {
-          paramViewGroup = BitmapUtil.getRoundedCornerBitmap(BitmapFactory.decodeResource(this.context.getResources(), 2131231717), true, 10.0F);
-          ((ImageView)paramView.findViewById(2131307503)).setImageBitmap(paramViewGroup);
+          paramViewGroup = BitmapUtil.getRoundedCornerBitmap(BitmapFactory.decodeResource(this.context.getResources(), b.e.chatting_bg_default_thumb), true, 10.0F);
+          ((ImageView)paramView.findViewById(b.f.select_bg_pkg_iv)).setImageBitmap(paramViewGroup);
           AppMethodBeat.o(74414);
           return paramView;
-          paramViewGroup.aNi("downloaded");
+          paramViewGroup.aXR("downloaded");
         }
       }
-      com.tencent.mm.bb.q localq = (com.tencent.mm.bb.q)getItem(paramInt - 2);
-      r localr = v.bev();
-      if (!g.aAh().isSDCardAvailable()) {}
-      for (Bitmap localBitmap = BitmapFactory.decodeResource(SettingsSelectBgUI.this.getResources(), 2131234280); localBitmap == null; localBitmap = BitmapUtil.getBitmapNative(r.bes() + r.du(localq.id, localq.dMe)))
+      r localr = (r)getItem(paramInt - 2);
+      com.tencent.mm.be.s locals = w.bnU();
+      if (!com.tencent.mm.kernel.h.aHG().isSDCardAvailable()) {}
+      for (Bitmap localBitmap = BitmapFactory.decodeResource(SettingsSelectBgUI.this.getResources(), b.e.nosdcard_chatting_bg_thumb); localBitmap == null; localBitmap = BitmapUtil.getBitmapNative(com.tencent.mm.be.s.bnR() + com.tencent.mm.be.s.dR(localr.id, localr.fES)))
       {
-        paramInt = localq.id;
-        i = localq.dMe;
-        if (localr.iFy.delete("packageinfo2", "id= ? and type =?", new String[] { String.valueOf(paramInt), String.valueOf(i) }) > 0) {
-          localr.doNotify();
+        paramInt = localr.id;
+        i = localr.fES;
+        if (locals.lvy.delete("packageinfo2", "id= ? and type =?", new String[] { String.valueOf(paramInt), String.valueOf(i) }) > 0) {
+          locals.doNotify();
         }
         AppMethodBeat.o(74414);
         return paramView;
       }
       localBitmap = BitmapUtil.getRoundedCornerBitmap(localBitmap, true, 10.0F);
-      ((ImageView)paramView.findViewById(2131307503)).setImageBitmap(localBitmap);
-      switch (localq.status)
+      ((ImageView)paramView.findViewById(b.f.select_bg_pkg_iv)).setImageBitmap(localBitmap);
+      switch (localr.status)
       {
       }
       for (;;)
       {
         AppMethodBeat.o(74414);
         return paramView;
-        paramViewGroup.aNi("downloading");
+        paramViewGroup.aXR("downloading");
         continue;
-        if ((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (locala != null) && (locala.jgE == localq.id))
+        if ((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (locala != null) && (locala.lXh == localr.id))
         {
-          paramViewGroup.aNi("using");
+          paramViewGroup.aXR("using");
         }
         else
         {
-          paramViewGroup.aNi("downloaded");
+          paramViewGroup.aXR("downloaded");
           continue;
-          paramViewGroup.aNi("undownloaded");
+          paramViewGroup.aXR("undownloaded");
           continue;
-          if ((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (locala != null) && (locala.jgE != localq.id))
+          if ((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (locala != null) && (locala.lXh != localr.id))
           {
-            paramViewGroup.aNi("downloaded");
+            paramViewGroup.aXR("downloaded");
           }
           else
           {
-            paramViewGroup.aNi("using");
+            paramViewGroup.aXR("using");
             continue;
-            paramViewGroup.aNi("canceling");
+            paramViewGroup.aXR("canceling");
           }
         }
       }
@@ -326,7 +335,7 @@ public class SettingsSelectBgUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsSelectBgUI
  * JD-Core Version:    0.7.0.1
  */

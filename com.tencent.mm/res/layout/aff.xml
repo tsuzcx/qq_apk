@@ -6,5 +6,5 @@
         <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/cy1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
         <TextView android:enabled="false" android:textSize="17.0dip" android:textColor="@drawable/a1v" android:id="@id/cxz" android:background="@drawable/a1u" android:paddingTop="@dimen/bt" android:paddingBottom="@dimen/bt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d_y" android:layout_centerVertical="true" android:paddingStart="@dimen/c5" android:paddingEnd="@dimen/c5" android:layout_alignParentEnd="true" />
     </RelativeLayout>
-    <android.support.v7.widget.RecyclerView android:id="@id/cxx" android:background="@color/y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/cxy" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/cxx" android:background="@color/y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/cxy" />
 </RelativeLayout>

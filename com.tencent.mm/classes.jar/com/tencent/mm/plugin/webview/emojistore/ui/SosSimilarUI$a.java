@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.emojistore.ui;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/emojistore/ui/SosSimilarUI$Companion;", "", "()V", "COLUMN_COUNT", "", "TAG", "", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/emojistore/ui/SosSimilarUI$Companion;", "", "()V", "COLUMN_COUNT", "", "TAG", "", "plugin-webview_release"})
 public final class SosSimilarUI$a {}
 
 

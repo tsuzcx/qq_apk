@@ -1,51 +1,51 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
-import com.google.a.a.g;
+import com.google.b.a.b;
+import com.google.b.a.e;
+import com.google.b.a.g;
 import java.util.Arrays;
 
 public final class a$l
   extends e
 {
-  public int GXO = 0;
-  public long GXP = 0L;
-  public byte[] RDF = g.cbu;
-  public a.bg RDs = null;
-  public int RDu = 0;
+  public int NOc = 0;
+  public long NOd = 0L;
+  public a.bf ZeU = null;
+  public int ZeW = 0;
+  public byte[] Zfl = g.ccX;
   public String groupId = "";
   
   public a$l()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int j = super.Ig();
+    int j = super.JG();
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.f(1, this.groupId);
+      i = j + b.g(1, this.groupId);
     }
     j = i;
-    if (this.GXO != 0) {
-      j = i + b.bu(2, this.GXO);
+    if (this.NOc != 0) {
+      j = i + b.bM(2, this.NOc);
     }
     i = j;
-    if (this.GXP != 0L) {
-      i = j + b.r(3, this.GXP);
+    if (this.NOd != 0L) {
+      i = j + b.p(3, this.NOd);
     }
     j = i;
-    if (this.RDs != null) {
-      j = i + b.b(4, this.RDs);
+    if (this.ZeU != null) {
+      j = i + b.b(4, this.ZeU);
     }
     i = j;
-    if (this.RDu != 0) {
-      i = j + b.bC(5, this.RDu);
+    if (this.ZeW != 0) {
+      i = j + b.bN(5, this.ZeW);
     }
     j = i;
-    if (!Arrays.equals(this.RDF, g.cbu)) {
-      j = i + b.c(200, this.RDF);
+    if (!Arrays.equals(this.Zfl, g.ccX)) {
+      j = i + b.c(200, this.Zfl);
     }
     return j;
   }
@@ -53,22 +53,22 @@ public final class a$l
   public final void a(b paramb)
   {
     if (!this.groupId.equals("")) {
-      paramb.e(1, this.groupId);
+      paramb.f(1, this.groupId);
     }
-    if (this.GXO != 0) {
-      paramb.bs(2, this.GXO);
+    if (this.NOc != 0) {
+      paramb.bJ(2, this.NOc);
     }
-    if (this.GXP != 0L) {
-      paramb.q(3, this.GXP);
+    if (this.NOd != 0L) {
+      paramb.r(3, this.NOd);
     }
-    if (this.RDs != null) {
-      paramb.a(4, this.RDs);
+    if (this.ZeU != null) {
+      paramb.a(4, this.ZeU);
     }
-    if (this.RDu != 0) {
-      paramb.bB(5, this.RDu);
+    if (this.ZeW != 0) {
+      paramb.bK(5, this.ZeW);
     }
-    if (!Arrays.equals(this.RDF, g.cbu)) {
-      paramb.b(200, this.RDF);
+    if (!Arrays.equals(this.Zfl, g.ccX)) {
+      paramb.b(200, this.Zfl);
     }
     super.a(paramb);
   }

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.plugin.game.api.f;
-import com.tencent.mm.plugin.game.protobuf.ac;
-import com.tencent.mm.plugin.game.protobuf.bn;
+import com.tencent.mm.plugin.game.protobuf.ad;
 import com.tencent.mm.plugin.game.protobuf.bo;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.game.protobuf.bp;
 import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -24,7 +24,7 @@ public final class an
   implements m
 {
   private i callback;
-  public final d hhm;
+  public final d jTk;
   
   public an(String paramString, LinkedList<String> paramLinkedList, o paramo1, o paramo2, o paramo3, boolean paramBoolean)
   {
@@ -35,17 +35,17 @@ public final class an
       Log.i("MicroMsg.NetSceneGetGameIndex4", "install id:[%s]", new Object[] { (String)((Iterator)localObject).next() });
     }
     localObject = new d.a();
-    ((d.a)localObject).iLN = new bn();
-    ((d.a)localObject).iLO = new bo();
+    ((d.a)localObject).lBU = new bo();
+    ((d.a)localObject).lBV = new bp();
     ((d.a)localObject).uri = "/cgi-bin/mmgame-bin/getgameindex4";
     ((d.a)localObject).funcId = getType();
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.hhm = ((d.a)localObject).aXF();
-    localObject = (bn)this.hhm.iLK.iLR;
-    ((bn)localObject).xLl = paramString;
-    ((bn)localObject).xLF = paramLinkedList;
-    paramLinkedList = e.gf(MMApplicationContext.getContext());
+    this.jTk = ((d.a)localObject).bgN();
+    localObject = (bo)d.b.b(this.jTk.lBR);
+    ((bo)localObject).CPt = paramString;
+    ((bo)localObject).CPO = paramLinkedList;
+    paramLinkedList = e.gz(MMApplicationContext.getContext());
     paramString = paramLinkedList;
     if (Util.isNullOrNil(paramLinkedList)) {
       paramString = Util.getSimCountryCode(MMApplicationContext.getContext());
@@ -55,37 +55,37 @@ public final class an
     }
     for (;;)
     {
-      ((bn)localObject).keh = paramString;
+      ((bo)localObject).mVH = paramString;
       if (paramo1 != null) {}
       for (;;)
       {
-        ((bn)localObject).xLG = new ac();
+        ((bo)localObject).CPP = new ad();
         if (paramo1 != null)
         {
-          ((bn)localObject).xLG.xJZ = paramo1.xFg.xGi;
-          ((bn)localObject).xLG.jfi = paramo1.field_appId;
-          ((bn)localObject).xLG.xIG = paramo1.xFW;
-          ((bn)localObject).xLG.xKb = paramo1.xFV;
+          ((bo)localObject).CPP.COg = paramo1.CJh.CKl;
+          ((bo)localObject).CPP.lVG = paramo1.field_appId;
+          ((bo)localObject).CPP.CML = paramo1.CJX;
+          ((bo)localObject).CPP.COi = paramo1.CJW;
         }
         if (paramo2 != null)
         {
-          paramLinkedList = ((bn)localObject).xLG;
-          paramLinkedList.xKa |= 0x1;
+          paramLinkedList = ((bo)localObject).CPP;
+          paramLinkedList.COh |= 0x1;
         }
         if (paramo3 != null)
         {
-          paramLinkedList = ((bn)localObject).xLG;
-          paramLinkedList.xKa |= 0x2;
+          paramLinkedList = ((bo)localObject).CPP;
+          paramLinkedList.COh |= 0x2;
         }
-        ((bn)localObject).xLH = ((f)com.tencent.mm.kernel.g.af(f.class)).dSK().dVz();
-        ((bn)localObject).xLI = paramBoolean;
+        ((bo)localObject).CPQ = ((f)com.tencent.mm.kernel.h.ae(f.class)).evo().eyH();
+        ((bo)localObject).CPR = paramBoolean;
         if (ChannelUtil.isGPVersion()) {}
         for (int i = 1;; i = 0)
         {
-          ((bn)localObject).xLm = i;
+          ((bo)localObject).CPu = i;
           Log.i("MicroMsg.NetSceneGetGameIndex4", "Country Code: %s", new Object[] { paramString });
-          if ((!Util.isNullOrNil(((bn)localObject).keh)) && (!"CN".equalsIgnoreCase(((bn)localObject).keh))) {
-            h.CyF.idkeyStat(860L, 7L, 1L, false);
+          if ((!Util.isNullOrNil(((bo)localObject).mVH)) && (!"CN".equalsIgnoreCase(((bo)localObject).mVH))) {
+            com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(860L, 7L, 1L, false);
           }
           AppMethodBeat.o(41601);
           return;
@@ -106,11 +106,11 @@ public final class an
     }
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(41602);
     this.callback = parami;
-    int i = dispatch(paramg, this.hhm, this);
+    int i = dispatch(paramg, this.jTk, this);
     AppMethodBeat.o(41602);
     return i;
   }
@@ -130,7 +130,7 @@ public final class an
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.an
  * JD-Core Version:    0.7.0.1
  */

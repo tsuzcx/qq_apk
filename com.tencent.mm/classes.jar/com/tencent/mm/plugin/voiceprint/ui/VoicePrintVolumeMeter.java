@@ -8,51 +8,52 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.ax;
 
 public class VoicePrintVolumeMeter
   extends View
 {
-  private static int GSh;
-  private static int GSi;
-  private static int GSj;
-  private static float GSq;
-  private static float GSr;
-  private static float GSs;
-  private static float GSt;
-  static int yKE;
-  private int DCs;
-  private int DCt;
-  private MMHandlerThread GSf;
-  MTimerHandler GSg;
-  private float GSk;
-  private float GSl;
-  private float GSm;
-  private float GSn;
-  private float GSo;
-  private float GSp;
-  private boolean GSu;
-  boolean gNC;
+  static int Eox;
+  private static float NIB;
+  private static float NIC;
+  private static float NID;
+  private static float NIE;
+  private static int NIs;
+  private static int NIt;
+  private static int NIu;
+  private View Eol;
+  private int JOL;
+  private int JOM;
+  private float NIA;
+  private boolean NIF;
+  private MMHandlerThread NIq;
+  MTimerHandler NIr;
+  private float NIv;
+  private float NIw;
+  private float NIx;
+  private float NIy;
+  private float NIz;
+  boolean jxX;
   private Context mContext;
   private Paint mPaint;
   private float mVolume;
-  private View yKs;
   
   static
   {
     AppMethodBeat.i(29900);
-    GSh = Color.rgb(240, 250, 235);
-    GSi = Color.rgb(210, 240, 200);
-    GSj = 100;
-    yKE = 20;
-    GSq = 1.5F;
-    GSr = 2.0F;
-    GSs = 0.1F;
-    GSt = 0.05F;
+    NIs = Color.rgb(240, 250, 235);
+    NIt = Color.rgb(210, 240, 200);
+    NIu = 100;
+    Eox = 20;
+    NIB = 1.5F;
+    NIC = 2.0F;
+    NID = 0.1F;
+    NIE = 0.05F;
     AppMethodBeat.o(29900);
   }
   
@@ -60,19 +61,19 @@ public class VoicePrintVolumeMeter
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(29892);
-    this.DCs = -1;
-    this.DCt = -1;
-    this.GSf = null;
-    this.GSg = null;
-    this.GSk = 0.0F;
-    this.GSl = 0.0F;
-    this.GSm = 0.0F;
-    this.GSn = 0.0F;
-    this.GSo = 0.0F;
-    this.GSp = 0.0F;
+    this.JOL = -1;
+    this.JOM = -1;
+    this.NIq = null;
+    this.NIr = null;
+    this.NIv = 0.0F;
+    this.NIw = 0.0F;
+    this.NIx = 0.0F;
+    this.NIy = 0.0F;
+    this.NIz = 0.0F;
+    this.NIA = 0.0F;
     this.mVolume = -1.0F;
-    this.GSu = true;
-    this.gNC = false;
+    this.NIF = true;
+    this.jxX = false;
     init(paramContext);
     AppMethodBeat.o(29892);
   }
@@ -81,19 +82,19 @@ public class VoicePrintVolumeMeter
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29893);
-    this.DCs = -1;
-    this.DCt = -1;
-    this.GSf = null;
-    this.GSg = null;
-    this.GSk = 0.0F;
-    this.GSl = 0.0F;
-    this.GSm = 0.0F;
-    this.GSn = 0.0F;
-    this.GSo = 0.0F;
-    this.GSp = 0.0F;
+    this.JOL = -1;
+    this.JOM = -1;
+    this.NIq = null;
+    this.NIr = null;
+    this.NIv = 0.0F;
+    this.NIw = 0.0F;
+    this.NIx = 0.0F;
+    this.NIy = 0.0F;
+    this.NIz = 0.0F;
+    this.NIA = 0.0F;
     this.mVolume = -1.0F;
-    this.GSu = true;
-    this.gNC = false;
+    this.NIF = true;
+    this.jxX = false;
     init(paramContext);
     AppMethodBeat.o(29893);
   }
@@ -103,9 +104,9 @@ public class VoicePrintVolumeMeter
     AppMethodBeat.i(29894);
     this.mContext = paramContext;
     this.mPaint = new Paint();
-    GSh = paramContext.getResources().getColor(2131099716);
-    GSi = paramContext.getResources().getColor(2131099718);
-    this.GSg = new MTimerHandler("VoicePrintVolumeMeter", new MTimerHandler.CallBack()
+    NIs = paramContext.getResources().getColor(R.e.Brand_Alpha_0_1);
+    NIt = paramContext.getResources().getColor(R.e.Brand_Alpha_0_3);
+    this.NIr = new MTimerHandler("VoicePrintVolumeMeter", new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -119,39 +120,39 @@ public class VoicePrintVolumeMeter
     AppMethodBeat.o(29894);
   }
   
-  final void fES()
+  final void gxf()
   {
     AppMethodBeat.i(29895);
-    if ((this.yKs == null) || (this.yKs.getVisibility() == 8))
+    if ((this.Eol == null) || (this.Eol.getVisibility() == 8))
     {
       AppMethodBeat.o(29895);
       return;
     }
     int[] arrayOfInt = new int[2];
-    this.yKs.getLocationOnScreen(arrayOfInt);
+    this.Eol.getLocationOnScreen(arrayOfInt);
     if ((arrayOfInt[0] == 0) || (arrayOfInt[1] == 0))
     {
       Log.d("MicroMsg.VoicePrintVolumeMeter", "setCenterLocation, cannot get archView location");
       AppMethodBeat.o(29895);
       return;
     }
-    int i = this.yKs.getWidth();
-    int j = this.yKs.getHeight();
+    int i = this.Eol.getWidth();
+    int j = this.Eol.getHeight();
     if ((j == 0) || (i == 0))
     {
       Log.d("MicroMsg.VoicePrintVolumeMeter", "setCenterLocation, cannot get archView size");
       AppMethodBeat.o(29895);
       return;
     }
-    this.DCs = (arrayOfInt[0] + i / 2);
-    this.DCt = (arrayOfInt[1] + j / 2 - au.getStatusBarHeight(this.mContext));
-    Log.d("MicroMsg.VoicePrintVolumeMeter", "setCenterLocation, mCenterX:%d, mCenterY:%d", new Object[] { Integer.valueOf(this.DCs), Integer.valueOf(this.DCt) });
-    this.GSk = (i / 2.0F);
-    this.GSl = (this.GSk * GSq);
-    this.GSm = (this.GSk * GSr);
-    this.GSn = (this.GSl * GSr);
-    this.GSp = this.GSl;
-    this.GSo = this.GSk;
+    this.JOL = (arrayOfInt[0] + i / 2);
+    this.JOM = (arrayOfInt[1] + j / 2 - ax.getStatusBarHeight(this.mContext));
+    Log.d("MicroMsg.VoicePrintVolumeMeter", "setCenterLocation, mCenterX:%d, mCenterY:%d", new Object[] { Integer.valueOf(this.JOL), Integer.valueOf(this.JOM) });
+    this.NIv = (i / 2.0F);
+    this.NIw = (this.NIv * NIB);
+    this.NIx = (this.NIv * NIC);
+    this.NIy = (this.NIw * NIC);
+    this.NIA = this.NIw;
+    this.NIz = this.NIv;
     AppMethodBeat.o(29895);
   }
   
@@ -159,55 +160,55 @@ public class VoicePrintVolumeMeter
   {
     AppMethodBeat.i(29896);
     super.onDraw(paramCanvas);
-    if (!this.gNC)
+    if (!this.jxX)
     {
       AppMethodBeat.o(29896);
       return;
     }
-    if ((this.DCs == -1) || (this.DCt == -1)) {
-      fES();
+    if ((this.JOL == -1) || (this.JOM == -1)) {
+      gxf();
     }
-    this.mPaint.setAlpha(GSj);
-    if (this.GSp > this.GSn) {
-      this.GSp = this.GSn;
+    this.mPaint.setAlpha(NIu);
+    if (this.NIA > this.NIy) {
+      this.NIA = this.NIy;
     }
-    if (this.GSp < this.GSl) {
-      this.GSp = this.GSl;
+    if (this.NIA < this.NIw) {
+      this.NIA = this.NIw;
     }
-    this.mPaint.setColor(GSh);
-    paramCanvas.drawCircle(this.DCs, this.DCt, this.GSp, this.mPaint);
-    if (this.GSo > this.GSm) {
-      this.GSo = this.GSm;
+    this.mPaint.setColor(NIs);
+    paramCanvas.drawCircle(this.JOL, this.JOM, this.NIA, this.mPaint);
+    if (this.NIz > this.NIx) {
+      this.NIz = this.NIx;
     }
-    if (this.GSo < this.GSk) {
-      this.GSo = this.GSk;
+    if (this.NIz < this.NIv) {
+      this.NIz = this.NIv;
     }
-    this.mPaint.setColor(GSi);
-    paramCanvas.drawCircle(this.DCs, this.DCt, this.GSo, this.mPaint);
+    this.mPaint.setColor(NIt);
+    paramCanvas.drawCircle(this.JOL, this.JOM, this.NIz, this.mPaint);
     AppMethodBeat.o(29896);
   }
   
   public final void reset()
   {
     AppMethodBeat.i(29898);
-    this.GSu = false;
+    this.NIF = false;
     this.mVolume = -1.0F;
-    this.gNC = false;
-    this.GSo = 0.0F;
-    this.GSp = 0.0F;
+    this.jxX = false;
+    this.NIz = 0.0F;
+    this.NIA = 0.0F;
     postInvalidate();
     AppMethodBeat.o(29898);
   }
   
   public void setArchView(View paramView)
   {
-    this.yKs = paramView;
+    this.Eol = paramView;
   }
   
   public void setVolume(float paramFloat)
   {
     if (paramFloat > this.mVolume) {}
-    for (this.GSu = true;; this.GSu = false)
+    for (this.NIF = true;; this.NIF = false)
     {
       this.mVolume = paramFloat;
       return;
@@ -218,15 +219,15 @@ public class VoicePrintVolumeMeter
   {
     AppMethodBeat.i(29897);
     reset();
-    this.gNC = false;
-    this.GSg.stopTimer();
+    this.jxX = false;
+    this.NIr.stopTimer();
     postInvalidate();
     AppMethodBeat.o(29897);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.ui.VoicePrintVolumeMeter
  * JD-Core Version:    0.7.0.1
  */

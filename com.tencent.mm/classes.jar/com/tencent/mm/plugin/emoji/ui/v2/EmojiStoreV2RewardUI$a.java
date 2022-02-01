@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(109280);
-    rlG = new a("NORMAL", 0);
-    rlH = new a("CUSTOM", 1);
-    rlI = new a[] { rlG, rlH };
+    uOS = new a("NORMAL", 0);
+    uOT = new a("CUSTOM", 1);
+    uOU = new a[] { uOS, uOT };
     AppMethodBeat.o(109280);
   }
   
@@ -17,7 +17,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2RewardUI.a
  * JD-Core Version:    0.7.0.1
  */

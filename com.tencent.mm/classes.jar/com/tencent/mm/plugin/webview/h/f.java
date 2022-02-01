@@ -1,257 +1,689 @@
 package com.tencent.mm.plugin.webview.h;
 
+import android.os.Bundle;
+import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.x;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.brandservice.a.c;
 import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.ArrayList;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.ui.f.b;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 import org.json.JSONObject;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/preload/WebViewNativePageUtil;", "", "()V", "SHARE_FUN_FLAG_FRIEND", "", "SHARE_FUN_FLAG_TIMELINE", "TAG", "", "doHandleMPPageAction", "", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "msgHandler", "Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/MsgHandler;", "callbacker", "Lcom/tencent/mm/plugin/webview/stub/WebViewStub_Callback_AIDL;", "doHandleSearchItemDetailPage", "fillNativePageData", "", "bundle", "Landroid/os/Bundle;", "itemShowType", "data", "Lorg/json/JSONObject;", "fillNativePageMPMsgInfo", "plugin-webview_release"})
 public final class f
 {
-  private static List<String> JcK;
-  private static List<String> JcL;
+  public static final f PZw;
+  private static final String TAG = "MicroMsg.WebViewNativePageUtil";
   
   static
   {
-    AppMethodBeat.i(79245);
-    ArrayList localArrayList = new ArrayList();
-    JcK = localArrayList;
-    localArrayList.add("updatePageAuth");
-    JcL = new ArrayList();
-    AppMethodBeat.o(79245);
+    AppMethodBeat.i(82516);
+    PZw = new f();
+    TAG = "MicroMsg.WebViewNativePageUtil";
+    AppMethodBeat.o(82516);
   }
   
-  /* Error */
-  public static boolean a(final n paramn, final a parama)
+  private static void a(Bundle paramBundle, int paramInt, JSONObject paramJSONObject)
   {
-    // Byte code:
-    //   0: ldc 47
-    //   2: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: bipush 70
-    //   7: invokestatic 52	com/tencent/mm/plugin/webview/h/a:pl	(I)V
-    //   10: aload_0
-    //   11: getfield 58	com/tencent/mm/plugin/webview/d/n:params	Ljava/util/Map;
-    //   14: ldc 60
-    //   16: invokeinterface 66 2 0
-    //   21: checkcast 68	java/lang/String
-    //   24: ldc 70
-    //   26: invokestatic 76	com/tencent/mm/sdk/platformtools/Util:nullAs	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   29: astore_3
-    //   30: aload_3
-    //   31: astore_2
-    //   32: aload_3
-    //   33: invokestatic 80	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
-    //   36: ifne +17 -> 53
-    //   39: ldc 82
-    //   41: iconst_1
-    //   42: anewarray 4	java/lang/Object
-    //   45: dup
-    //   46: iconst_0
-    //   47: aload_3
-    //   48: aastore
-    //   49: invokestatic 86	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   52: astore_2
-    //   53: new 88	java/lang/StringBuilder
-    //   56: dup
-    //   57: invokespecial 89	java/lang/StringBuilder:<init>	()V
-    //   60: aload_0
-    //   61: getfield 58	com/tencent/mm/plugin/webview/d/n:params	Ljava/util/Map;
-    //   64: ldc 91
-    //   66: invokeinterface 66 2 0
-    //   71: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   74: aload_2
-    //   75: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   78: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   81: astore_2
-    //   82: aload_0
-    //   83: getfield 58	com/tencent/mm/plugin/webview/d/n:params	Ljava/util/Map;
-    //   86: ldc 104
-    //   88: invokeinterface 66 2 0
-    //   93: checkcast 68	java/lang/String
-    //   96: ldc 106
-    //   98: invokestatic 76	com/tencent/mm/sdk/platformtools/Util:nullAs	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   101: astore_3
-    //   102: aload_0
-    //   103: getfield 58	com/tencent/mm/plugin/webview/d/n:params	Ljava/util/Map;
-    //   106: ldc 108
-    //   108: invokeinterface 66 2 0
-    //   113: checkcast 68	java/lang/String
-    //   116: ldc 70
-    //   118: invokestatic 76	com/tencent/mm/sdk/platformtools/Util:nullAs	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   121: astore 4
-    //   123: aload_0
-    //   124: getfield 58	com/tencent/mm/plugin/webview/d/n:params	Ljava/util/Map;
-    //   127: ldc 110
-    //   129: invokeinterface 66 2 0
-    //   134: checkcast 68	java/lang/String
-    //   137: astore 5
-    //   139: ldc 112
-    //   141: ldc 114
-    //   143: iconst_1
-    //   144: anewarray 4	java/lang/Object
-    //   147: dup
-    //   148: iconst_0
-    //   149: aload_2
-    //   150: aastore
-    //   151: invokestatic 119	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   154: aload_0
-    //   155: getfield 58	com/tencent/mm/plugin/webview/d/n:params	Ljava/util/Map;
-    //   158: ldc 121
-    //   160: invokeinterface 66 2 0
-    //   165: checkcast 68	java/lang/String
-    //   168: ldc 70
-    //   170: invokestatic 76	com/tencent/mm/sdk/platformtools/Util:nullAs	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   173: astore 7
-    //   175: new 123	java/util/HashMap
-    //   178: dup
-    //   179: invokespecial 124	java/util/HashMap:<init>	()V
-    //   182: astore 6
-    //   184: aload 7
-    //   186: invokestatic 80	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
-    //   189: ifne +135 -> 324
-    //   192: new 126	org/json/JSONObject
-    //   195: dup
-    //   196: aload 7
-    //   198: invokespecial 129	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   201: astore 7
-    //   203: aload 7
-    //   205: invokevirtual 133	org/json/JSONObject:keys	()Ljava/util/Iterator;
-    //   208: astore 8
-    //   210: aload 8
-    //   212: invokeinterface 139 1 0
-    //   217: ifeq +107 -> 324
-    //   220: aload 8
-    //   222: invokeinterface 143 1 0
-    //   227: checkcast 68	java/lang/String
-    //   230: astore 9
-    //   232: aload 6
-    //   234: aload 9
-    //   236: aload 7
-    //   238: aload 9
-    //   240: invokevirtual 147	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   243: invokeinterface 151 3 0
-    //   248: pop
-    //   249: goto -39 -> 210
-    //   252: astore 7
-    //   254: ldc 112
-    //   256: ldc 70
-    //   258: iconst_1
-    //   259: anewarray 4	java/lang/Object
-    //   262: dup
-    //   263: iconst_0
-    //   264: aload 7
-    //   266: aastore
-    //   267: invokestatic 154	com/tencent/mm/sdk/platformtools/Log:printInfoStack	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   270: ldc 112
-    //   272: ldc 156
-    //   274: iconst_4
-    //   275: anewarray 4	java/lang/Object
-    //   278: dup
-    //   279: iconst_0
-    //   280: aload_2
-    //   281: aastore
-    //   282: dup
-    //   283: iconst_1
-    //   284: aload_3
-    //   285: aastore
-    //   286: dup
-    //   287: iconst_2
-    //   288: aload 4
-    //   290: aastore
-    //   291: dup
-    //   292: iconst_3
-    //   293: aload 5
-    //   295: aastore
-    //   296: invokestatic 159	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   299: new 6	com/tencent/mm/plugin/webview/h/f$1
-    //   302: dup
-    //   303: aload_3
-    //   304: aload_2
-    //   305: aload 6
-    //   307: aload 5
-    //   309: aload_1
-    //   310: aload_0
-    //   311: invokespecial 162	com/tencent/mm/plugin/webview/h/f$1:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;Lcom/tencent/mm/plugin/webview/h/f$a;Lcom/tencent/mm/plugin/webview/d/n;)V
-    //   314: invokestatic 168	com/tencent/mm/plugin/webview/a/a:aj	(Ljava/lang/Runnable;)V
-    //   317: ldc 47
-    //   319: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   322: iconst_1
-    //   323: ireturn
-    //   324: aload 4
-    //   326: invokestatic 80	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
-    //   329: ifne -59 -> 270
-    //   332: new 126	org/json/JSONObject
-    //   335: dup
-    //   336: aload 4
-    //   338: invokespecial 129	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   341: astore 7
-    //   343: aload 7
-    //   345: invokevirtual 133	org/json/JSONObject:keys	()Ljava/util/Iterator;
-    //   348: astore 8
-    //   350: aload 8
-    //   352: invokeinterface 139 1 0
-    //   357: ifeq -87 -> 270
-    //   360: aload 8
-    //   362: invokeinterface 143 1 0
-    //   367: checkcast 68	java/lang/String
-    //   370: astore 9
-    //   372: aload 6
-    //   374: aload 9
-    //   376: aload 7
-    //   378: aload 9
-    //   380: invokevirtual 147	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   383: invokeinterface 151 3 0
-    //   388: pop
-    //   389: goto -39 -> 350
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	392	0	paramn	n
-    //   0	392	1	parama	a
-    //   31	274	2	str1	String
-    //   29	275	3	str2	String
-    //   121	216	4	str3	String
-    //   137	171	5	str4	String
-    //   182	191	6	localHashMap	HashMap
-    //   173	64	7	localObject	Object
-    //   252	13	7	localJSONException	org.json.JSONException
-    //   341	36	7	localJSONObject	JSONObject
-    //   208	153	8	localIterator	Iterator
-    //   230	149	9	str5	String
-    // Exception table:
-    //   from	to	target	type
-    //   184	210	252	org/json/JSONException
-    //   210	249	252	org/json/JSONException
-    //   324	350	252	org/json/JSONException
-    //   350	389	252	org/json/JSONException
-  }
-  
-  private static void m(Map paramMap)
-  {
-    AppMethodBeat.i(79242);
-    Iterator localIterator = paramMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(175654);
+    p.k(paramBundle, "bundle");
+    p.k(paramJSONObject, "data");
+    x localx;
+    if (paramInt == 5)
     {
-      Object localObject2 = (Map.Entry)localIterator.next();
-      Object localObject1 = ((Map.Entry)localObject2).getKey();
-      localObject2 = ((Map.Entry)localObject2).getValue();
-      if (((localObject1 instanceof String)) && ((localObject2 instanceof Map)))
-      {
-        m((Map)localObject2);
-        paramMap.put(localObject1, new JSONObject((Map)localObject2));
+      localx = new x();
+      localx.fzT = paramJSONObject.optString("srcUserName");
+      localx.lpC = paramJSONObject.optString("srcDisplayName");
+      if (!paramJSONObject.has("url")) {
+        break label196;
+      }
+      localx.lpE.url = paramJSONObject.optString("url");
+    }
+    for (;;)
+    {
+      localx.lpE.title = paramJSONObject.optString("title");
+      localx.lpE.lpM = paramJSONObject.optString("digest");
+      localx.lpE.lpK = paramJSONObject.optString("cover");
+      localx.lpE.type = paramInt;
+      localx.lpE.time = paramJSONObject.optInt("pubTime");
+      localx.lpE.lpO = paramJSONObject.optInt("duration");
+      localx.lpE.videoWidth = paramJSONObject.optInt("videoWidth");
+      localx.lpE.videoHeight = paramJSONObject.optInt("videoHeight");
+      localx.lpE.vid = paramJSONObject.optString("vid");
+      localx.G(paramBundle);
+      AppMethodBeat.o(175654);
+      return;
+      label196:
+      if (paramJSONObject.has("jumpUrl")) {
+        localx.lpE.url = paramJSONObject.optString("jumpUrl");
       }
     }
-    AppMethodBeat.o(79242);
   }
   
-  public static abstract interface a
+  public static final boolean a(n paramn, com.tencent.mm.plugin.webview.ui.tools.jsapi.h paramh, com.tencent.mm.plugin.webview.stub.f paramf)
   {
-    public abstract void a(n paramn, String paramString, Map<String, Object> paramMap);
+    Object localObject1 = null;
+    int i = 0;
+    int j = 0;
+    AppMethodBeat.i(234789);
+    p.k(paramn, "msg");
+    p.k(paramh, "msgHandler");
+    Object localObject2 = paramn.params.get("action");
+    if (localObject2 == null)
+    {
+      paramn = new t("null cannot be cast to non-null type kotlin.String");
+      AppMethodBeat.o(234789);
+      throw paramn;
+    }
+    Object localObject3 = (String)localObject2;
+    Log.i(TAG, "doHandleMPPageAction action=%s", new Object[] { localObject3 });
+    if (Util.isNullOrNil((String)localObject3))
+    {
+      paramh.a(paramn, "handleMPPageAction:fail action is empty", null);
+      AppMethodBeat.o(234789);
+      return false;
+    }
+    localObject2 = new Bundle();
+    ((Bundle)localObject2).putString("action", (String)localObject3);
+    long l;
+    if (p.h("writeComment", localObject3))
+    {
+      localObject1 = paramn.params.get("style");
+      if (localObject1 == null)
+      {
+        paramn = new t("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(234789);
+        throw paramn;
+      }
+      localObject1 = (String)localObject1;
+      localObject3 = paramn.params.get("comment_id");
+      if (localObject3 == null)
+      {
+        paramn = new t("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(234789);
+        throw paramn;
+      }
+      l = Util.getLong((String)localObject3, 0L);
+      ((Bundle)localObject2).putString("style", (String)localObject1);
+      ((Bundle)localObject2).putLong("commentTopicId", l);
+      if (paramf != null) {}
+      try
+      {
+        paramf.l(201, (Bundle)localObject2);
+        paramh.a(paramn, "handleMPPageAction:ok", null);
+        AppMethodBeat.o(234789);
+        return true;
+      }
+      catch (RemoteException paramf)
+      {
+        for (;;)
+        {
+          Log.e(TAG, "doHandleHaoKanAction e=%s", new Object[] { paramf.getMessage() });
+        }
+      }
+    }
+    if (p.h("writeCommentReply", localObject3))
+    {
+      localObject1 = paramn.params.get("comment_id");
+      if (localObject1 == null)
+      {
+        paramn = new t("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(234789);
+        throw paramn;
+      }
+      l = Util.getLong((String)localObject1, 0L);
+      localObject1 = paramn.params.get("reply_content");
+      if (localObject1 == null)
+      {
+        paramn = new t("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(234789);
+        throw paramn;
+      }
+      localObject1 = (String)localObject1;
+      localObject3 = paramn.params.get("personal_comment_id");
+      if (localObject3 == null)
+      {
+        paramn = new t("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(234789);
+        throw paramn;
+      }
+      i = Util.getInt((String)localObject3, 0);
+      ((Bundle)localObject2).putLong("commentTopicId", l);
+      ((Bundle)localObject2).putString("reply_content", (String)localObject1);
+      ((Bundle)localObject2).putInt("personal_comment_id", i);
+      if (paramf != null) {}
+      try
+      {
+        paramf.l(201, (Bundle)localObject2);
+        paramh.a(paramn, "handleMPPageAction:ok", null);
+        AppMethodBeat.o(234789);
+        return true;
+      }
+      catch (RemoteException paramf)
+      {
+        for (;;)
+        {
+          Log.e(TAG, "doHandleHaoKanAction e=%s", new Object[] { paramf.getMessage() });
+        }
+      }
+    }
+    if (p.h("share", localObject3))
+    {
+      try
+      {
+        ((Bundle)localObject2).putString("extInfo", (String)paramn.params.get("extInfo"));
+        if (paramf != null) {
+          paramf.l(201, (Bundle)localObject2);
+        }
+      }
+      catch (RemoteException paramf)
+      {
+        for (;;)
+        {
+          Log.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf.getMessage() });
+        }
+      }
+      paramh.a(paramn, "handleMPPageAction:ok", null);
+      AppMethodBeat.o(234789);
+      return true;
+    }
+    if (p.h("showToast", localObject3))
+    {
+      localObject1 = paramn.params.get("wording");
+      if (localObject1 == null)
+      {
+        paramn = new t("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(234789);
+        throw paramn;
+      }
+      localObject1 = (String)localObject1;
+      localObject3 = paramn.params.get("status");
+      if (localObject3 == null)
+      {
+        paramn = new t("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(234789);
+        throw paramn;
+      }
+      localObject3 = (String)localObject3;
+      ((Bundle)localObject2).putString("wording", (String)localObject1);
+      ((Bundle)localObject2).putString("status", (String)localObject3);
+      if (paramf != null) {}
+      try
+      {
+        paramf.l(201, (Bundle)localObject2);
+        paramh.a(paramn, "handleMPPageAction:ok", null);
+        AppMethodBeat.o(234789);
+        return true;
+      }
+      catch (RemoteException paramf)
+      {
+        for (;;)
+        {
+          Log.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf.getMessage() });
+        }
+      }
+    }
+    if (p.h("switchVideo", localObject3))
+    {
+      localObject1 = paramn.POv;
+      p.j(localObject1, "msg.rawParams");
+      p.k(localObject2, "bundle");
+      p.k(localObject1, "data");
+      Log.i(TAG, "fillNativePageData itemShowType 5");
+      ((Bundle)localObject2).putString("url", ((JSONObject)localObject1).optString("url"));
+      if (((JSONObject)localObject1).has("item_show_type")) {
+        ((Bundle)localObject2).putInt("item_show_type", ((JSONObject)localObject1).getInt("item_show_type"));
+      }
+      if (((JSONObject)localObject1).has("scene"))
+      {
+        ((Bundle)localObject2).putInt("scene", ((JSONObject)localObject1).optInt("scene"));
+        ((Bundle)localObject2).putInt(f.b.VRT, ((JSONObject)localObject1).optInt("scene"));
+      }
+      if (((JSONObject)localObject1).has("subscene"))
+      {
+        ((Bundle)localObject2).putInt("subscene", ((JSONObject)localObject1).optInt("subscene"));
+        ((Bundle)localObject2).putInt(f.b.VRU, ((JSONObject)localObject1).optInt("subscene"));
+      }
+      if (((JSONObject)localObject1).has("openType")) {
+        ((Bundle)localObject2).putInt("openType", ((JSONObject)localObject1).optInt("openType"));
+      }
+      if (((JSONObject)localObject1).has("currentInfo")) {
+        ((Bundle)localObject2).putString("currentInfo", ((JSONObject)localObject1).optString("currentInfo"));
+      }
+      if (((JSONObject)localObject1).has("channelSessionId")) {
+        ((Bundle)localObject2).putString("biz_video_channel_session_id", ((JSONObject)localObject1).optString("channelSessionId"));
+      }
+      ((Bundle)localObject2).putBoolean("isNativePage", true);
+      ((Bundle)localObject2).putInt("biz_video_session_id", ab.getSessionId());
+      a((Bundle)localObject2, 5, (JSONObject)localObject1);
+      if (paramf != null) {}
+      try
+      {
+        paramf.l(201, (Bundle)localObject2);
+        paramh.a(paramn, "handleMPPageAction:ok", null);
+        AppMethodBeat.o(234789);
+        return true;
+      }
+      catch (RemoteException paramf)
+      {
+        for (;;)
+        {
+          Log.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf.getMessage() });
+        }
+      }
+    }
+    if (p.h("createAdWebview", localObject3))
+    {
+      localObject1 = paramn.params.get("adUrl");
+      if (localObject1 == null)
+      {
+        paramn = new t("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(234789);
+        throw paramn;
+      }
+      ((Bundle)localObject2).putString("adUrl", (String)localObject1);
+      if (paramf != null) {}
+      for (;;)
+      {
+        try
+        {
+          paramf = paramf.l(201, (Bundle)localObject2);
+          if (paramf == null) {
+            p.iCn();
+          }
+          boolean bool = paramf.getBoolean("ret");
+          j = bool;
+        }
+        catch (RemoteException paramf)
+        {
+          Log.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf.getMessage() });
+          continue;
+          paramh.a(paramn, "handleMPPageAction:fail", null);
+          continue;
+        }
+        if (j == 0) {
+          continue;
+        }
+        paramh.a(paramn, "handleMPPageAction:ok", null);
+        AppMethodBeat.o(234789);
+        return true;
+        paramf = null;
+      }
+    }
+    if (p.h("closeAdWebview", localObject3))
+    {
+      if (paramf != null) {}
+      try
+      {
+        paramf.l(201, (Bundle)localObject2);
+        paramh.a(paramn, "handleMPPageAction:ok", null);
+        AppMethodBeat.o(234789);
+        return true;
+      }
+      catch (RemoteException paramf)
+      {
+        for (;;)
+        {
+          Log.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf.getMessage() });
+        }
+      }
+    }
+    if (p.h("adWebviewReady", localObject3))
+    {
+      if (paramf != null) {}
+      try
+      {
+        paramf.l(201, (Bundle)localObject2);
+        paramh.a(paramn, "handleMPPageAction:ok", null);
+        AppMethodBeat.o(234789);
+        return true;
+      }
+      catch (RemoteException paramf)
+      {
+        for (;;)
+        {
+          Log.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf.getMessage() });
+        }
+      }
+    }
+    if ((p.h("closeDotWebview", localObject3)) || (p.h("hideDotWebview", localObject3)))
+    {
+      try
+      {
+        localObject1 = paramn.params.get("webviewId");
+        if (localObject1 == null)
+        {
+          paramf = new t("null cannot be cast to non-null type kotlin.String");
+          AppMethodBeat.o(234789);
+          throw paramf;
+        }
+      }
+      catch (RemoteException paramf)
+      {
+        Log.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf.getMessage() });
+      }
+      for (;;)
+      {
+        paramh.a(paramn, "handleMPPageAction:ok", null);
+        AppMethodBeat.o(234789);
+        return true;
+        ((Bundle)localObject2).putInt("webviewId", Util.getInt((String)localObject1, 0));
+        if (paramf != null) {
+          paramf.l(201, (Bundle)localObject2);
+        }
+      }
+    }
+    if (p.h("dotWebViewReady", localObject3))
+    {
+      try
+      {
+        localObject1 = paramn.params.get("webviewId");
+        if (localObject1 == null)
+        {
+          paramf = new t("null cannot be cast to non-null type kotlin.String");
+          AppMethodBeat.o(234789);
+          throw paramf;
+        }
+      }
+      catch (RemoteException paramf)
+      {
+        Log.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf.getMessage() });
+      }
+      for (;;)
+      {
+        paramh.a(paramn, "handleMPPageAction:ok", null);
+        AppMethodBeat.o(234789);
+        return true;
+        ((Bundle)localObject2).putInt("webviewId", Util.getInt((String)localObject1, 0));
+        if (paramf != null) {
+          paramf.l(201, (Bundle)localObject2);
+        }
+      }
+    }
+    if (p.h("setDotScriptData", localObject3))
+    {
+      try
+      {
+        localObject1 = paramn.params.get("data");
+        if (localObject1 == null)
+        {
+          paramf = new t("null cannot be cast to non-null type kotlin.String");
+          AppMethodBeat.o(234789);
+          throw paramf;
+        }
+      }
+      catch (RemoteException paramf)
+      {
+        Log.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf.getMessage() });
+      }
+      for (;;)
+      {
+        paramh.a(paramn, "handleMPPageAction:ok", null);
+        AppMethodBeat.o(234789);
+        return true;
+        ((Bundle)localObject2).putString("data", (String)localObject1);
+        if (paramf != null) {
+          paramf.l(201, (Bundle)localObject2);
+        }
+      }
+    }
+    if (p.h("getMPVideoState", localObject3))
+    {
+      if (paramf != null) {}
+      try
+      {
+        for (paramf = paramf.l(201, (Bundle)localObject2);; paramf = null)
+        {
+          localObject1 = new HashMap();
+          if (paramf != null)
+          {
+            ((Map)localObject1).put("currentTime", Integer.valueOf(paramf.getInt("currentTime")));
+            ((Map)localObject1).put("duration", Integer.valueOf(paramf.getInt("duration")));
+            ((Map)localObject1).put("state", paramf.getString("state"));
+            ((Map)localObject1).put("vid", paramf.getString("vid"));
+          }
+          paramh.a(paramn, "handleMPPageAction:ok", (Map)localObject1);
+          AppMethodBeat.o(234789);
+          return true;
+        }
+      }
+      catch (RemoteException paramf)
+      {
+        for (;;)
+        {
+          Log.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf.getMessage() });
+          paramf = (com.tencent.mm.plugin.webview.stub.f)localObject1;
+        }
+      }
+    }
+    if (p.h("sendMPPageData", localObject3))
+    {
+      localObject1 = paramn.params.get("data");
+      if (localObject1 == null)
+      {
+        paramn = new t("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(234789);
+        throw paramn;
+      }
+      ((Bundle)localObject2).putString("data", (String)localObject1);
+      localObject1 = paramn.params.get("sendTo");
+      if (localObject1 == null)
+      {
+        paramn = new t("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(234789);
+        throw paramn;
+      }
+      ((Bundle)localObject2).putString("sendTo", (String)localObject1);
+      if (!paramn.params.containsKey("webviewId")) {
+        break label2743;
+      }
+      localObject1 = paramn.params.get("webviewId");
+      if (localObject1 == null)
+      {
+        paramn = new t("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(234789);
+        throw paramn;
+      }
+    }
+    label2738:
+    label2743:
+    for (i = Util.getInt((String)localObject1, 0);; i = 0)
+    {
+      ((Bundle)localObject2).putInt("webviewId", i);
+      if (paramf != null) {}
+      try
+      {
+        paramf.l(201, (Bundle)localObject2);
+        paramh.a(paramn, "handleMPPageAction:ok", null);
+        AppMethodBeat.o(234789);
+        return true;
+      }
+      catch (RemoteException paramf)
+      {
+        for (;;)
+        {
+          Log.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf.getMessage() });
+        }
+      }
+      if (p.h("setWebviewBackground", localObject3))
+      {
+        localObject1 = paramn.params.get("backgroundColor");
+        if (localObject1 == null)
+        {
+          paramn = new t("null cannot be cast to non-null type kotlin.String");
+          AppMethodBeat.o(234789);
+          throw paramn;
+        }
+        ((Bundle)localObject2).putString("backgroundColor", (String)localObject1);
+        if (paramf != null) {}
+        try
+        {
+          paramf.l(201, (Bundle)localObject2);
+          paramh.a(paramn, "handleMPPageAction:ok", null);
+          AppMethodBeat.o(234789);
+          return true;
+        }
+        catch (RemoteException paramf)
+        {
+          for (;;)
+          {
+            Log.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf.getMessage() });
+          }
+        }
+      }
+      if (p.h("opPlayer", localObject3))
+      {
+        localObject1 = paramn.params.get("opType");
+        if (localObject1 == null)
+        {
+          paramn = new t("null cannot be cast to non-null type kotlin.String");
+          AppMethodBeat.o(234789);
+          throw paramn;
+        }
+        ((Bundle)localObject2).putString("opType", (String)localObject1);
+        if (paramf != null) {}
+        try
+        {
+          paramf.l(201, (Bundle)localObject2);
+          paramh.a(paramn, "handleMPPageAction:ok", null);
+          AppMethodBeat.o(234789);
+          return true;
+        }
+        catch (RemoteException paramf)
+        {
+          for (;;)
+          {
+            Log.e(TAG, "doHandleMPPageAction e=%s", new Object[] { paramf.getMessage() });
+          }
+        }
+      }
+      if (p.h("paySuccess", localObject3))
+      {
+        paramf = paramn.params;
+        p.j(paramf, "msg.params");
+        if (paramf.containsKey("fullUrl"))
+        {
+          paramf = paramn.params.get("fullUrl");
+          if (paramf == null)
+          {
+            paramn = new t("null cannot be cast to non-null type kotlin.String");
+            AppMethodBeat.o(234789);
+            throw paramn;
+          }
+        }
+        for (paramf = (String)paramf;; paramf = (String)paramf)
+        {
+          localObject1 = paramn.params;
+          p.j(localObject1, "msg.params");
+          if (!((Map)localObject1).containsKey("itemShowType")) {
+            break label2738;
+          }
+          localObject1 = paramn.params.get("itemShowType");
+          if (localObject1 != null) {
+            break;
+          }
+          paramn = new t("null cannot be cast to non-null type kotlin.String");
+          AppMethodBeat.o(234789);
+          throw paramn;
+          paramf = paramn.params.get("url");
+          if (paramf == null)
+          {
+            paramn = new t("null cannot be cast to non-null type kotlin.String");
+            AppMethodBeat.o(234789);
+            throw paramn;
+          }
+        }
+      }
+      for (i = Util.getInt((String)localObject1, -1);; i = -1)
+      {
+        if (Util.isNullOrNil(paramf))
+        {
+          paramh.a(paramn, "handleMPPageAction:fail_url_is_null", null);
+          AppMethodBeat.o(234789);
+          return true;
+        }
+        ((c)com.tencent.mm.kernel.h.ae(c.class)).cZ(paramf, i);
+        paramh.a(paramn, "handleMPPageAction:ok", null);
+        AppMethodBeat.o(234789);
+        return true;
+        if (p.h("isGPVersion", localObject3))
+        {
+          paramf = new HashMap();
+          localObject1 = (Map)paramf;
+          if ((ChannelUtil.isGPVersion()) || (z.bdp())) {
+            i = 1;
+          }
+          ((Map)localObject1).put("GPVersion", Integer.valueOf(i));
+          paramh.a(paramn, "handleMPPageAction:ok", (Map)paramf);
+          AppMethodBeat.o(234789);
+          return true;
+        }
+        paramh.a(paramn, "handleMPPageAction:fail, action not support", null);
+        AppMethodBeat.o(234789);
+        return false;
+      }
+    }
+  }
+  
+  public static final boolean b(n paramn, com.tencent.mm.plugin.webview.ui.tools.jsapi.h paramh, com.tencent.mm.plugin.webview.stub.f paramf)
+  {
+    AppMethodBeat.i(234791);
+    p.k(paramn, "msg");
+    p.k(paramh, "msgHandler");
+    if (!((c)com.tencent.mm.kernel.h.ae(c.class)).Gw(5))
+    {
+      AppMethodBeat.o(234791);
+      return false;
+    }
+    int i = paramn.POv.optInt("itemType", -1);
+    paramh = new Bundle();
+    if (i >= 0)
+    {
+      paramh.putString("url", paramn.POv.optString("jumpUrl"));
+      paramh.putInt("item_show_type", i);
+      paramh.putInt("scene", paramn.POv.optInt("scene"));
+      paramh.putInt("openType", -1);
+      paramh.putString("KPublisherId", paramn.POv.optString("publishId"));
+      if (i == 5)
+      {
+        if (paramn.POv.has("currentInfo")) {
+          paramh.putString("currentInfo", paramn.POv.optString("currentInfo"));
+        }
+        if (paramn.POv.has("scene")) {
+          paramh.putInt(f.b.VRT, paramn.POv.optInt("scene"));
+        }
+        paramh.putInt(f.b.VRU, paramn.POv.optInt("subScene"));
+        paramh.putInt("biz_video_session_id", ab.getSessionId());
+        paramh.putBoolean("isNativePage", true);
+        paramn = paramn.POv;
+        p.j(paramn, "msg.rawParams");
+        a(paramh, i, paramn);
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1061L, 20L, 1L, false);
+      }
+      if (paramf == null) {
+        break label310;
+      }
+    }
+    label310:
+    for (paramn = paramf.l(200, paramh); (paramn != null) && (paramn.getBoolean("success")); paramn = null)
+    {
+      AppMethodBeat.o(234791);
+      return true;
+      AppMethodBeat.o(234791);
+      return false;
+    }
+    AppMethodBeat.o(234791);
+    return false;
   }
 }
 

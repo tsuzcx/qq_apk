@@ -11,9 +11,9 @@ public class AppBrandWeishiParams
   public static final Parcelable.Creator<AppBrandWeishiParams> CREATOR;
   public String appId;
   public String appName;
-  public int ivk;
-  public String leN;
-  public String leO;
+  public int lkt;
+  public String nZa;
+  public String nZb;
   public String sourceUserName;
   public String thumbUrl;
   
@@ -36,10 +36,10 @@ public class AppBrandWeishiParams
   private void j(Parcel paramParcel)
   {
     AppMethodBeat.i(134802);
-    this.ivk = paramParcel.readInt();
+    this.lkt = paramParcel.readInt();
     this.thumbUrl = paramParcel.readString();
-    this.leN = paramParcel.readString();
-    this.leO = paramParcel.readString();
+    this.nZa = paramParcel.readString();
+    this.nZb = paramParcel.readString();
     this.appId = paramParcel.readString();
     this.appName = paramParcel.readString();
     this.sourceUserName = paramParcel.readString();
@@ -71,7 +71,7 @@ public class AppBrandWeishiParams
   public String toString()
   {
     AppMethodBeat.i(134800);
-    String str = "AppBrandWeishiParams{fromOpenSdk=" + this.ivk + ", thumbUrl='" + this.thumbUrl + '\'' + ", thumbFullPath='" + this.leN + '\'' + ", msgImgPath='" + this.leO + '\'' + ", appId='" + this.appId + '\'' + ", appName='" + this.appName + '\'' + ", sourceUserName='" + this.sourceUserName + '\'' + '}';
+    String str = "AppBrandWeishiParams{fromOpenSdk=" + this.lkt + ", thumbUrl='" + this.thumbUrl + '\'' + ", thumbFullPath='" + this.nZa + '\'' + ", msgImgPath='" + this.nZb + '\'' + ", appId='" + this.appId + '\'' + ", appName='" + this.appName + '\'' + ", sourceUserName='" + this.sourceUserName + '\'' + '}';
     AppMethodBeat.o(134800);
     return str;
   }
@@ -79,10 +79,10 @@ public class AppBrandWeishiParams
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(134804);
-    paramParcel.writeInt(this.ivk);
+    paramParcel.writeInt(this.lkt);
     paramParcel.writeString(this.thumbUrl);
-    paramParcel.writeString(this.leN);
-    paramParcel.writeString(this.leO);
+    paramParcel.writeString(this.nZa);
+    paramParcel.writeString(this.nZb);
     paramParcel.writeString(this.appId);
     paramParcel.writeString(this.appName);
     paramParcel.writeString(this.sourceUserName);
@@ -91,7 +91,7 @@ public class AppBrandWeishiParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.AppBrandWeishiParams
  * JD-Core Version:    0.7.0.1
  */

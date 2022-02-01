@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  public static long aqI(String paramString)
+  public static long ayJ(String paramString)
   {
     AppMethodBeat.i(122150);
     if ((paramString == null) || (paramString.isEmpty()))
@@ -22,7 +22,7 @@ public final class d
     return l;
   }
   
-  public static String aqJ(String paramString)
+  public static String ayK(String paramString)
   {
     AppMethodBeat.i(122151);
     if ((paramString == null) || (paramString.isEmpty()))
@@ -48,7 +48,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.c.d
  * JD-Core Version:    0.7.0.1
  */

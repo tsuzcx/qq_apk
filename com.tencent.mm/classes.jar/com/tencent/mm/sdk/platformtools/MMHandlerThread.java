@@ -82,14 +82,14 @@ public class MMHandlerThread
   
   private static void postToMainThreadAtFrontOfQueue(Runnable paramRunnable)
   {
-    AppMethodBeat.i(230345);
+    AppMethodBeat.i(189615);
     if (paramRunnable == null)
     {
-      AppMethodBeat.o(230345);
+      AppMethodBeat.o(189615);
       return;
     }
     getMainHandler().postAtFrontOfQueue(paramRunnable);
-    AppMethodBeat.o(230345);
+    AppMethodBeat.o(189615);
   }
   
   public static void postToMainThreadDelayed(Runnable paramRunnable, long paramLong)
@@ -136,29 +136,29 @@ public class MMHandlerThread
   
   public String dump(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(230346);
+    AppMethodBeat.i(189617);
     Object localObject = getWorkerHandler().getRunningMessage();
     if (localObject == null)
     {
-      AppMethodBeat.o(230346);
+      AppMethodBeat.o(189617);
       return null;
     }
     localObject = ((Message)localObject).toString();
-    AppMethodBeat.o(230346);
+    AppMethodBeat.o(189617);
     return localObject;
   }
   
   public Runnable findTaskByRunTime(boolean paramBoolean, long paramLong)
   {
-    AppMethodBeat.i(230347);
+    AppMethodBeat.i(189621);
     Object localObject = getWorkerHandler().getRunningMessage();
     if (localObject == null)
     {
-      AppMethodBeat.o(230347);
+      AppMethodBeat.o(189621);
       return null;
     }
     localObject = ((Message)localObject).getCallback();
-    AppMethodBeat.o(230347);
+    AppMethodBeat.o(189621);
     return localObject;
   }
   
@@ -196,11 +196,11 @@ public class MMHandlerThread
   
   public boolean inHighPriority()
   {
-    AppMethodBeat.i(230341);
+    AppMethodBeat.i(189590);
     if ((this.thread == null) || (!this.thread.isAlive()))
     {
       Log.e("MicroMsg.MMHandlerThread", "check inHighPriority failed thread is dead");
-      AppMethodBeat.o(230341);
+      AppMethodBeat.o(189590);
       return false;
     }
     int i = this.thread.getThreadId();
@@ -209,7 +209,7 @@ public class MMHandlerThread
       int j = Process.getThreadPriority(i);
       if (-8 == j)
       {
-        AppMethodBeat.o(230341);
+        AppMethodBeat.o(189590);
         return true;
       }
     }
@@ -217,16 +217,16 @@ public class MMHandlerThread
     {
       Log.w("MicroMsg.MMHandlerThread", "thread:%d  check inHighPriority failed", new Object[] { Integer.valueOf(i) });
       Log.printErrStackTrace("MicroMsg.MMHandlerThread", localException, "", new Object[0]);
-      AppMethodBeat.o(230341);
+      AppMethodBeat.o(189590);
     }
     return false;
   }
   
   public void interrupt()
   {
-    AppMethodBeat.i(230342);
+    AppMethodBeat.i(189599);
     this.thread.interrupt();
-    AppMethodBeat.o(230342);
+    AppMethodBeat.o(189599);
   }
   
   public boolean isThisHandlerThread()
@@ -324,9 +324,9 @@ public class MMHandlerThread
   
   public boolean quit()
   {
-    AppMethodBeat.i(230344);
+    AppMethodBeat.i(189607);
     boolean bool = this.thread.quit();
-    AppMethodBeat.o(230344);
+    AppMethodBeat.o(189607);
     return bool;
   }
   
@@ -340,39 +340,39 @@ public class MMHandlerThread
   
   public int reset(final IWaitWorkThread paramIWaitWorkThread)
   {
-    AppMethodBeat.i(230343);
+    AppMethodBeat.i(189603);
     Log.i("MicroMsg.MMHandlerThread", "reset stack:%s", new Object[] { Util.getStack() });
     int i = postAtFrontOfWorker(new IWaitWorkThread()
     {
       public boolean doInBackground()
       {
-        AppMethodBeat.i(230340);
+        AppMethodBeat.i(189134);
         if (paramIWaitWorkThread != null)
         {
           boolean bool = paramIWaitWorkThread.doInBackground();
-          AppMethodBeat.o(230340);
+          AppMethodBeat.o(189134);
           return bool;
         }
         MMHandlerThread.this.thread.quit();
         MMHandlerThread.access$100(MMHandlerThread.this, this.val$threadName);
-        AppMethodBeat.o(230340);
+        AppMethodBeat.o(189134);
         return true;
       }
       
       public boolean onPostExecute()
       {
-        AppMethodBeat.i(230339);
+        AppMethodBeat.i(189131);
         if (paramIWaitWorkThread != null)
         {
           boolean bool = paramIWaitWorkThread.onPostExecute();
-          AppMethodBeat.o(230339);
+          AppMethodBeat.o(189131);
           return bool;
         }
-        AppMethodBeat.o(230339);
+        AppMethodBeat.o(189131);
         return true;
       }
     });
-    AppMethodBeat.o(230343);
+    AppMethodBeat.o(189603);
     return i;
   }
   
@@ -587,7 +587,6 @@ public class MMHandlerThread
     //   137	142	176	finally
     //   142	145	176	finally
     //   154	173	176	finally
-    //   177	180	176	finally
   }
   
   public static abstract interface IWaitWorkThread
@@ -604,7 +603,7 @@ public class MMHandlerThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MMHandlerThread
  * JD-Core Version:    0.7.0.1
  */

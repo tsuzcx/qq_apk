@@ -9,15 +9,15 @@ public final class d
 {
   public static int e(Context paramContext, float paramFloat)
   {
-    AppMethodBeat.i(206170);
+    AppMethodBeat.i(217173);
     int i = (int)TypedValue.applyDimension(1, paramFloat, paramContext.getResources().getDisplayMetrics());
-    AppMethodBeat.o(206170);
+    AppMethodBeat.o(217173);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.view.d
  * JD-Core Version:    0.7.0.1
  */

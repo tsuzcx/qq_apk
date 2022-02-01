@@ -3,16 +3,18 @@ package com.tencent.mm.msgsubscription.api;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/msgsubscription/api/ISubscribeMsgService$SubscribeStatusResult;", "", "isSubscribed", "", "isSwitchOpened", "(ZZ)V", "()Z", "setSubscribed", "(Z)V", "setSwitchOpened", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-comm_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/api/ISubscribeMsgService$SubscribeStatusResult;", "", "isSubscribed", "", "isSwitchOpened", "(ZZ)V", "isAcceptWithAudio", "()Z", "setAcceptWithAudio", "(Z)V", "isAudioTemplate", "setAudioTemplate", "setSubscribed", "setSwitchOpened", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-comm_release"})
 public final class ISubscribeMsgService$c
 {
-  public boolean jyX;
-  public boolean jyY;
+  public boolean mnH;
+  public boolean moD;
+  public boolean moE;
+  public boolean mok;
   
   public ISubscribeMsgService$c(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jyX = paramBoolean1;
-    this.jyY = paramBoolean2;
+    this.moD = paramBoolean1;
+    this.moE = paramBoolean2;
   }
   
   public final boolean equals(Object paramObject)
@@ -22,23 +24,13 @@ public final class ISubscribeMsgService$c
       if ((paramObject instanceof c))
       {
         paramObject = (c)paramObject;
-        if ((this.jyX != paramObject.jyX) || (this.jyY != paramObject.jyY)) {}
+        if ((this.moD != paramObject.moD) || (this.moE != paramObject.moE)) {}
       }
     }
     else {
       return true;
     }
     return false;
-  }
-  
-  public final void fY(boolean paramBoolean)
-  {
-    this.jyX = paramBoolean;
-  }
-  
-  public final void fZ(boolean paramBoolean)
-  {
-    this.jyY = paramBoolean;
   }
   
   public final int hashCode()
@@ -48,15 +40,15 @@ public final class ISubscribeMsgService$c
   
   public final String toString()
   {
-    AppMethodBeat.i(223228);
-    String str = "SubscribeStatusResult(isSubscribed=" + this.jyX + ", isSwitchOpened=" + this.jyY + ")";
-    AppMethodBeat.o(223228);
+    AppMethodBeat.i(188425);
+    String str = "SubscribeStatusResult(isSubscribed=" + this.moD + ", isSwitchOpened=" + this.moE + ")";
+    AppMethodBeat.o(188425);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.msgsubscription.api.ISubscribeMsgService.c
  * JD-Core Version:    0.7.0.1
  */

@@ -5,9 +5,9 @@ import kotlin.n.n;
 
 public final class a
 {
-  public final boolean BPb;
-  private final b TCO;
-  private final b TfF;
+  public final boolean HLG;
+  private final b aaIz;
+  private final b abfC;
   
   static
   {
@@ -24,8 +24,8 @@ public final class a
   public a(b paramb1, b paramb2, boolean paramBoolean)
   {
     AppMethodBeat.i(59263);
-    this.TfF = paramb1;
-    if ((!$assertionsDisabled) && (paramb2.TCR.TCW.isEmpty()))
+    this.aaIz = paramb1;
+    if ((!$assertionsDisabled) && (paramb2.abfE.abfJ.isEmpty()))
     {
       paramb2 = new StringBuilder("Class name must not be root: ").append(paramb1);
       if (paramBoolean) {}
@@ -36,8 +36,8 @@ public final class a
         throw paramb1;
       }
     }
-    this.TCO = paramb2;
-    this.BPb = paramBoolean;
+    this.abfC = paramb2;
+    this.HLG = paramBoolean;
     AppMethodBeat.o(59263);
   }
   
@@ -48,21 +48,21 @@ public final class a
     AppMethodBeat.o(59264);
   }
   
-  public static a btX(String paramString)
+  public static a bHa(String paramString)
   {
     AppMethodBeat.i(59272);
-    paramString = dT(paramString, false);
+    paramString = eg(paramString, false);
     AppMethodBeat.o(59272);
     return paramString;
   }
   
-  public static a dT(String paramString, boolean paramBoolean)
+  public static a eg(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(59273);
     if (paramString == null) {
-      atM(12);
+      aDG(12);
     }
-    String str = n.oC(paramString, "").replace('/', '.');
+    String str = n.py(paramString, "").replace('/', '.');
     paramString = n.b(paramString, '/', paramString);
     paramString = new a(new b(str), new b(paramString), paramBoolean);
     AppMethodBeat.o(59273);
@@ -73,9 +73,9 @@ public final class a
   {
     AppMethodBeat.i(59262);
     if (paramb == null) {
-      atM(0);
+      aDG(0);
     }
-    paramb = new a(paramb.hJf(), paramb.hJg());
+    paramb = new a(paramb.iNz(), paramb.iNA());
     AppMethodBeat.o(59262);
     return paramb;
   }
@@ -94,7 +94,7 @@ public final class a
       return false;
     }
     paramObject = (a)paramObject;
-    if ((this.TfF.equals(paramObject.TfF)) && (this.TCO.equals(paramObject.TCO)) && (this.BPb == paramObject.BPb))
+    if ((this.aaIz.equals(paramObject.aaIz)) && (this.abfC.equals(paramObject.abfC)) && (this.HLG == paramObject.HLG))
     {
       AppMethodBeat.o(59275);
       return true;
@@ -103,57 +103,67 @@ public final class a
     return false;
   }
   
-  public final b hIY()
+  public final int hashCode()
+  {
+    AppMethodBeat.i(59276);
+    int i = this.aaIz.hashCode();
+    int j = this.abfC.hashCode();
+    int k = Boolean.valueOf(this.HLG).hashCode();
+    AppMethodBeat.o(59276);
+    return (i * 31 + j) * 31 + k;
+  }
+  
+  public final b iNs()
   {
     AppMethodBeat.i(59265);
-    b localb = this.TfF;
+    b localb = this.aaIz;
     if (localb == null) {
-      atM(5);
+      aDG(5);
     }
     AppMethodBeat.o(59265);
     return localb;
   }
   
-  public final b hIZ()
+  public final b iNt()
   {
     AppMethodBeat.i(59266);
-    b localb = this.TCO;
+    b localb = this.abfC;
     if (localb == null) {
-      atM(6);
+      aDG(6);
     }
     AppMethodBeat.o(59266);
     return localb;
   }
   
-  public final f hJa()
+  public final f iNu()
   {
     AppMethodBeat.i(59267);
-    f localf = this.TCO.hJg();
+    f localf = this.abfC.iNA();
     if (localf == null) {
-      atM(7);
+      aDG(7);
     }
     AppMethodBeat.o(59267);
     return localf;
   }
   
-  public final a hJb()
+  public final a iNv()
   {
     AppMethodBeat.i(59269);
-    Object localObject = this.TCO.hJf();
-    if (((b)localObject).TCR.TCW.isEmpty())
+    Object localObject = this.abfC.iNz();
+    if (((b)localObject).abfE.abfJ.isEmpty())
     {
       AppMethodBeat.o(59269);
       return null;
     }
-    localObject = new a(hIY(), (b)localObject, this.BPb);
+    localObject = new a(iNs(), (b)localObject, this.HLG);
     AppMethodBeat.o(59269);
     return localObject;
   }
   
-  public final boolean hJc()
+  public final boolean iNw()
   {
     AppMethodBeat.i(59270);
-    if (!this.TCO.hJf().TCR.TCW.isEmpty())
+    if (!this.abfC.iNz().abfE.abfJ.isEmpty())
     {
       AppMethodBeat.o(59270);
       return true;
@@ -162,59 +172,49 @@ public final class a
     return false;
   }
   
-  public final b hJd()
+  public final b iNx()
   {
     AppMethodBeat.i(59271);
-    if (this.TfF.TCR.TCW.isEmpty())
+    if (this.aaIz.abfE.abfJ.isEmpty())
     {
-      localb = this.TCO;
+      localb = this.abfC;
       if (localb == null) {
-        atM(9);
+        aDG(9);
       }
       AppMethodBeat.o(59271);
       return localb;
     }
-    b localb = new b(this.TfF.sG() + "." + this.TCO.sG());
+    b localb = new b(this.aaIz.qu() + "." + this.abfC.qu());
     AppMethodBeat.o(59271);
     return localb;
-  }
-  
-  public final int hashCode()
-  {
-    AppMethodBeat.i(59276);
-    int i = this.TfF.hashCode();
-    int j = this.TCO.hashCode();
-    int k = Boolean.valueOf(this.BPb).hashCode();
-    AppMethodBeat.o(59276);
-    return (i * 31 + j) * 31 + k;
   }
   
   public final a o(f paramf)
   {
     AppMethodBeat.i(59268);
     if (paramf == null) {
-      atM(8);
+      aDG(8);
     }
-    paramf = new a(hIY(), this.TCO.p(paramf), this.BPb);
+    paramf = new a(iNs(), this.abfC.p(paramf), this.HLG);
     AppMethodBeat.o(59268);
     return paramf;
   }
   
-  public final String sG()
+  public final String qu()
   {
     AppMethodBeat.i(59274);
-    if (this.TfF.TCR.TCW.isEmpty())
+    if (this.aaIz.abfE.abfJ.isEmpty())
     {
-      str = this.TCO.sG();
+      str = this.abfC.qu();
       if (str == null) {
-        atM(13);
+        aDG(13);
       }
       AppMethodBeat.o(59274);
       return str;
     }
-    String str = this.TfF.sG().replace('.', '/') + "/" + this.TCO.sG();
+    String str = this.aaIz.qu().replace('.', '/') + "/" + this.abfC.qu();
     if (str == null) {
-      atM(14);
+      aDG(14);
     }
     AppMethodBeat.o(59274);
     return str;
@@ -223,20 +223,20 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(59277);
-    if (this.TfF.TCR.TCW.isEmpty())
+    if (this.aaIz.abfE.abfJ.isEmpty())
     {
-      str = "/" + sG();
+      str = "/" + qu();
       AppMethodBeat.o(59277);
       return str;
     }
-    String str = sG();
+    String str = qu();
     AppMethodBeat.o(59277);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.f.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.sns.ui.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.data.t;
 import com.tencent.mm.plugin.sns.model.aj;
-import com.tencent.mm.plugin.sns.model.aq.a;
+import com.tencent.mm.plugin.sns.model.ap.a;
 import com.tencent.mm.plugin.sns.storage.SnsInfo;
 import com.tencent.mm.plugin.sns.storage.l;
 import com.tencent.mm.plugin.sns.storage.m;
 import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.protocal.protobuf.ami;
+import com.tencent.mm.protocal.protobuf.anj;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
@@ -18,16 +18,16 @@ public final class c
   {
     super(new SnsInfo());
     AppMethodBeat.i(99844);
-    hdm();
+    iet();
     AppMethodBeat.o(99844);
   }
   
-  public final String JV(long paramLong)
+  public final String Rp(long paramLong)
   {
     AppMethodBeat.i(179325);
-    Log.d("MicroMsg.SnsTimeLineVending", "updateUpLimitSeq %s", new Object[] { Integer.valueOf(aj.faE().fbw()) });
-    String str1 = r.Jc(aj.faO().h(paramLong, aj.faE().fbw(), false));
-    String str2 = fkd();
+    Log.d("MicroMsg.SnsTimeLineVending", "updateUpLimitSeq %s", new Object[] { Integer.valueOf(aj.fOy().fPp()) });
+    String str1 = t.Qv(aj.fOI().h(paramLong, aj.fOy().fPp(), false));
+    String str2 = fYm();
     if (str2.equals(""))
     {
       AppMethodBeat.o(179325);
@@ -42,19 +42,19 @@ public final class c
     return "";
   }
   
-  public final String L(long paramLong, String paramString)
+  public final String T(long paramLong, String paramString)
   {
     AppMethodBeat.i(179324);
     Log.printDebugStack("MicroMsg.SnsTimeLineVending", "updateDownLimitSeq", new Object[0]);
-    Log.d("MicroMsg.SnsTimeLineVending", "updateLitmitSeq %s %s", new Object[] { Integer.valueOf(aj.faE().fbw()), paramString });
-    Object localObject = aj.faO();
+    Log.d("MicroMsg.SnsTimeLineVending", "updateLitmitSeq %s %s", new Object[] { Integer.valueOf(aj.fOy().fPp()), paramString });
+    Object localObject = aj.fOI();
     int i;
     String str;
     if (paramString.equals(""))
     {
-      i = aj.faE().fbw() / 2;
-      localObject = r.Jc(((n)localObject).g(paramLong, i, false));
-      str = fkh();
+      i = aj.fOy().fPp() / 2;
+      localObject = t.Qv(((n)localObject).g(paramLong, i, false));
+      str = fYq();
       if (!str.equals("")) {
         break label141;
       }
@@ -62,13 +62,13 @@ public final class c
     }
     for (;;)
     {
-      localObject = aj.faS().aQr("@__weixintimtline").feM();
-      if (((ami)localObject).Lvc != 0L) {
+      localObject = aj.fOM().bbr("@__weixintimtline").fSG();
+      if (((anj)localObject).SxC != 0L) {
         break label160;
       }
       AppMethodBeat.o(179324);
       return paramString;
-      i = aj.faE().fbw();
+      i = aj.fOy().fPp();
       break;
       label141:
       paramString = (String)localObject;
@@ -77,7 +77,7 @@ public final class c
       }
     }
     label160:
-    localObject = r.Jc(((ami)localObject).Lvc);
+    localObject = t.Qv(((anj)localObject).SxC);
     if (paramString.equals(""))
     {
       AppMethodBeat.o(179324);
@@ -94,7 +94,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.a.b.c
  * JD-Core Version:    0.7.0.1
  */

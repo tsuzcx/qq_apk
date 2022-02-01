@@ -10,11 +10,11 @@ import java.util.Comparator;
 public abstract class b
   implements f
 {
-  private int aHK;
-  protected final q bEd;
-  protected final int[] bEe;
-  private final long[] bEf;
-  final Format[] bwD;
+  private int aNf;
+  private final Format[] bgf;
+  protected final q bnE;
+  protected final int[] bnF;
+  private final long[] bnG;
   protected final int length;
   
   public b(q paramq, int... paramVarArgs)
@@ -23,37 +23,27 @@ public abstract class b
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      this.bEd = ((q)a.checkNotNull(paramq));
+      this.bnE = ((q)a.checkNotNull(paramq));
       this.length = paramVarArgs.length;
-      this.bwD = new Format[this.length];
+      this.bgf = new Format[this.length];
       i = 0;
       while (i < paramVarArgs.length)
       {
-        Format[] arrayOfFormat = this.bwD;
+        Format[] arrayOfFormat = this.bgf;
         int k = paramVarArgs[i];
-        arrayOfFormat[i] = paramq.bwD[k];
+        arrayOfFormat[i] = paramq.bgf[k];
         i += 1;
       }
     }
-    Arrays.sort(this.bwD, new a((byte)0));
-    this.bEe = new int[this.length];
+    Arrays.sort(this.bgf, new a((byte)0));
+    this.bnF = new int[this.length];
     int i = j;
     while (i < this.length)
     {
-      this.bEe[i] = paramq.j(this.bwD[i]);
+      this.bnF[i] = paramq.j(this.bgf[i]);
       i += 1;
     }
-    this.bEf = new long[this.length];
-  }
-  
-  public final Format eU(int paramInt)
-  {
-    return this.bwD[paramInt];
-  }
-  
-  public final int eV(int paramInt)
-  {
-    return this.bEe[paramInt];
+    this.bnG = new long[this.length];
   }
   
   public boolean equals(Object paramObject)
@@ -66,24 +56,26 @@ public abstract class b
         return false;
       }
       paramObject = (b)paramObject;
-    } while ((this.bEd == paramObject.bEd) && (Arrays.equals(this.bEe, paramObject.bEe)));
+    } while ((this.bnE == paramObject.bnE) && (Arrays.equals(this.bnF, paramObject.bnF)));
     return false;
   }
   
-  public int hashCode()
+  public final Format fm(int paramInt)
   {
-    if (this.aHK == 0) {
-      this.aHK = (System.identityHashCode(this.bEd) * 31 + Arrays.hashCode(this.bEe));
-    }
-    return this.aHK;
+    return this.bgf[paramInt];
   }
   
-  public final int indexOf(int paramInt)
+  public final int fn(int paramInt)
+  {
+    return this.bnF[paramInt];
+  }
+  
+  public final int fo(int paramInt)
   {
     int i = 0;
     while (i < this.length)
     {
-      if (this.bEe[i] == paramInt) {
+      if (this.bnF[i] == paramInt) {
         return i;
       }
       i += 1;
@@ -91,12 +83,20 @@ public abstract class b
     return -1;
   }
   
+  public int hashCode()
+  {
+    if (this.aNf == 0) {
+      this.aNf = (System.identityHashCode(this.bnE) * 31 + Arrays.hashCode(this.bnF));
+    }
+    return this.aNf;
+  }
+  
   public final int j(Format paramFormat)
   {
     int i = 0;
     while (i < this.length)
     {
-      if (this.bwD[i] == paramFormat) {
+      if (this.bgf[i] == paramFormat) {
         return i;
       }
       i += 1;
@@ -121,34 +121,34 @@ public abstract class b
     if (!bool) {
       return false;
     }
-    long[] arrayOfLong = this.bEf;
+    long[] arrayOfLong = this.bnG;
     arrayOfLong[paramInt] = Math.max(arrayOfLong[paramInt], paramLong + 60000L);
     return true;
   }
   
   protected final boolean l(int paramInt, long paramLong)
   {
-    return this.bEf[paramInt] > paramLong;
+    return this.bnG[paramInt] > paramLong;
   }
   
   public final int length()
   {
-    return this.bEe.length;
+    return this.bnF.length;
   }
   
-  public final int wA()
+  public final Format uA()
   {
-    return this.bEe[getSelectedIndex()];
+    return this.bgf[getSelectedIndex()];
   }
   
-  public final q wy()
+  public final int uB()
   {
-    return this.bEd;
+    return this.bnF[getSelectedIndex()];
   }
   
-  public final Format wz()
+  public final q uz()
   {
-    return this.bwD[getSelectedIndex()];
+    return this.bnE;
   }
   
   static final class a
@@ -157,7 +157,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.g.b
  * JD-Core Version:    0.7.0.1
  */

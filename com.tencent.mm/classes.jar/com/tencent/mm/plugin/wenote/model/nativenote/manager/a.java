@@ -10,23 +10,23 @@ import java.lang.reflect.Array;
 public final class a
   extends SpannableString
 {
-  private int apM;
-  private Object[] qQl;
-  private int[] qQm;
+  private int ahF;
+  private Object[] usr;
+  private int[] uss;
   
   public a(CharSequence paramCharSequence)
   {
     super(paramCharSequence.toString());
     AppMethodBeat.i(30401);
-    h(paramCharSequence, paramCharSequence.length());
+    j(paramCharSequence, paramCharSequence.length());
     AppMethodBeat.o(30401);
   }
   
-  private void h(CharSequence paramCharSequence, int paramInt)
+  private void j(CharSequence paramCharSequence, int paramInt)
   {
     AppMethodBeat.i(30402);
-    this.qQl = new Object[20];
-    this.qQm = new int[60];
+    this.usr = new Object[20];
+    this.uss = new int[60];
     if ((paramCharSequence instanceof Spanned))
     {
       paramCharSequence = (Spanned)paramCharSequence;
@@ -59,9 +59,9 @@ public final class a
   
   public final int getSpanEnd(Object paramObject)
   {
-    int i = this.apM;
-    Object[] arrayOfObject = this.qQl;
-    int[] arrayOfInt = this.qQm;
+    int i = this.ahF;
+    Object[] arrayOfObject = this.usr;
+    int[] arrayOfInt = this.uss;
     i -= 1;
     while (i >= 0)
     {
@@ -75,9 +75,9 @@ public final class a
   
   public final int getSpanFlags(Object paramObject)
   {
-    int i = this.apM;
-    Object[] arrayOfObject = this.qQl;
-    int[] arrayOfInt = this.qQm;
+    int i = this.ahF;
+    Object[] arrayOfObject = this.usr;
+    int[] arrayOfInt = this.uss;
     i -= 1;
     while (i >= 0)
     {
@@ -91,9 +91,9 @@ public final class a
   
   public final int getSpanStart(Object paramObject)
   {
-    int i = this.apM;
-    Object[] arrayOfObject = this.qQl;
-    int[] arrayOfInt = this.qQm;
+    int i = this.ahF;
+    Object[] arrayOfObject = this.usr;
+    int[] arrayOfInt = this.uss;
     i -= 1;
     while (i >= 0)
     {
@@ -109,9 +109,9 @@ public final class a
   {
     AppMethodBeat.i(30405);
     int k = 0;
-    int m = this.apM;
-    Object[] arrayOfObject = this.qQl;
-    int[] arrayOfInt = this.qQm;
+    int m = this.ahF;
+    Object[] arrayOfObject = this.usr;
+    int[] arrayOfInt = this.uss;
     Object localObject1 = null;
     Object localObject2 = null;
     int j = 0;
@@ -231,9 +231,9 @@ public final class a
   public final int nextSpanTransition(int paramInt1, int paramInt2, Class paramClass)
   {
     AppMethodBeat.i(30406);
-    int m = this.apM;
-    Object[] arrayOfObject = this.qQl;
-    int[] arrayOfInt = this.qQm;
+    int m = this.ahF;
+    Object[] arrayOfObject = this.usr;
+    int[] arrayOfInt = this.uss;
     Object localObject = paramClass;
     if (paramClass == null) {
       localObject = Object.class;
@@ -268,9 +268,9 @@ public final class a
   public final void removeSpan(Object paramObject)
   {
     AppMethodBeat.i(30404);
-    int j = this.apM;
-    Object[] arrayOfObject = this.qQl;
-    int[] arrayOfInt = this.qQm;
+    int j = this.ahF;
+    Object[] arrayOfObject = this.usr;
+    int[] arrayOfInt = this.uss;
     int i = j - 1;
     while (i >= 0)
     {
@@ -279,7 +279,7 @@ public final class a
         j -= i + 1;
         System.arraycopy(arrayOfObject, i + 1, arrayOfObject, i, j);
         System.arraycopy(arrayOfInt, (i + 1) * 3, arrayOfInt, i * 3, j * 3);
-        this.apM -= 1;
+        this.ahF -= 1;
         AppMethodBeat.o(30404);
         return;
       }
@@ -291,27 +291,27 @@ public final class a
   public final void setSpan(Object paramObject, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(30403);
-    if (this.apM + 1 >= this.qQl.length)
+    if (this.ahF + 1 >= this.usr.length)
     {
-      int i = this.apM + 10;
+      int i = this.ahF + 10;
       Object[] arrayOfObject = new Object[i];
       int[] arrayOfInt = new int[i * 3];
-      System.arraycopy(this.qQl, 0, arrayOfObject, 0, this.apM);
-      System.arraycopy(this.qQm, 0, arrayOfInt, 0, this.apM * 3);
-      this.qQl = arrayOfObject;
-      this.qQm = arrayOfInt;
+      System.arraycopy(this.usr, 0, arrayOfObject, 0, this.ahF);
+      System.arraycopy(this.uss, 0, arrayOfInt, 0, this.ahF * 3);
+      this.usr = arrayOfObject;
+      this.uss = arrayOfInt;
     }
-    this.qQl[this.apM] = paramObject;
-    this.qQm[(this.apM * 3 + 0)] = paramInt1;
-    this.qQm[(this.apM * 3 + 1)] = paramInt2;
-    this.qQm[(this.apM * 3 + 2)] = paramInt3;
-    this.apM += 1;
+    this.usr[this.ahF] = paramObject;
+    this.uss[(this.ahF * 3 + 0)] = paramInt1;
+    this.uss[(this.ahF * 3 + 1)] = paramInt2;
+    this.uss[(this.ahF * 3 + 2)] = paramInt3;
+    this.ahF += 1;
     AppMethodBeat.o(30403);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.manager.a
  * JD-Core Version:    0.7.0.1
  */

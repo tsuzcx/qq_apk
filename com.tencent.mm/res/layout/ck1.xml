@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.view.TouchableLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:background="@color/w" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/f6f" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView android:id="@id/gy2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </com.tencent.mm.view.RefreshLoadMoreLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_3" android:gravity="center" android:id="@id/g01" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip" android:text="@string/d8e" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/epl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip">
+            <ProgressBar android:background="@color/ac_" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:indeterminateDrawable="@drawable/apb" />
+        </LinearLayout>
+        <ListView android:id="@id/dpq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ListView android:id="@id/kj_" android:background="@color/w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+</com.tencent.mm.view.TouchableLayout>

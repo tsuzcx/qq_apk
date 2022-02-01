@@ -10,14 +10,14 @@ final class AppBrandProfileUI$18
   
   public final void run()
   {
-    AppMethodBeat.i(227643);
+    AppMethodBeat.i(264969);
     this.val$view.setVisibility(8);
-    AppMethodBeat.o(227643);
+    AppMethodBeat.o(264969);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandProfileUI.18
  * JD-Core Version:    0.7.0.1
  */

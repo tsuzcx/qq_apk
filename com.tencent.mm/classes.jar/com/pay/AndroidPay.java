@@ -22,23 +22,23 @@ public class AndroidPay
   
   private AndroidPay()
   {
-    AppMethodBeat.i(193305);
+    AppMethodBeat.i(253732);
     this.applicationContext = null;
     this.payResponseInfo = null;
     this.unit = "";
     this.isShowNum = true;
     this.isShowListOtherNum = true;
     this.payResponseInfo = new APPayResponseInfo();
-    AppMethodBeat.o(193305);
+    AppMethodBeat.o(253732);
   }
   
   public static void Destory() {}
   
   public static String getPaySDKVersion(Activity paramActivity)
   {
-    AppMethodBeat.i(193310);
+    AppMethodBeat.i(253741);
     paramActivity = APMidasPayAPI.getMidasSDKVersion(paramActivity);
-    AppMethodBeat.o(193310);
+    AppMethodBeat.o(253741);
     return paramActivity;
   }
   
@@ -51,9 +51,9 @@ public class AndroidPay
   
   public static void setEnv(String paramString)
   {
-    AppMethodBeat.i(193307);
+    AppMethodBeat.i(253735);
     APMidasPayAPI.setEnv(paramString);
-    AppMethodBeat.o(193307);
+    AppMethodBeat.o(253735);
   }
   
   public static void setIsShowSaveNum(boolean paramBoolean)
@@ -63,16 +63,16 @@ public class AndroidPay
   
   public static void setLogEnable(boolean paramBoolean)
   {
-    AppMethodBeat.i(193308);
+    AppMethodBeat.i(253738);
     APMidasPayAPI.setLogEnable(paramBoolean);
-    AppMethodBeat.o(193308);
+    AppMethodBeat.o(253738);
   }
   
   public static void setNumberVisible(boolean paramBoolean)
   {
-    AppMethodBeat.i(193309);
+    AppMethodBeat.i(253740);
     setIsShowSaveNum(paramBoolean);
-    AppMethodBeat.o(193309);
+    AppMethodBeat.o(253740);
   }
   
   public static void setOfferId(String paramString)
@@ -96,7 +96,7 @@ public class AndroidPay
   
   public static AndroidPay singleton()
   {
-    AppMethodBeat.i(193306);
+    AppMethodBeat.i(253734);
     if (gInstance == null) {}
     try
     {
@@ -104,12 +104,12 @@ public class AndroidPay
         gInstance = new AndroidPay();
       }
       AndroidPay localAndroidPay = gInstance;
-      AppMethodBeat.o(193306);
+      AppMethodBeat.o(253734);
       return localAndroidPay;
     }
     finally
     {
-      AppMethodBeat.o(193306);
+      AppMethodBeat.o(253734);
     }
   }
   
@@ -120,7 +120,7 @@ public class AndroidPay
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.pay.AndroidPay
  * JD-Core Version:    0.7.0.1
  */

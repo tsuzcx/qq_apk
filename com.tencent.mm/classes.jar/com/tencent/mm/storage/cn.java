@@ -1,113 +1,226 @@
 package com.tencent.mm.storage;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gv;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.foundation.a.a.m;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import java.util.ArrayList;
 
 public final class cn
-  extends gv
+  extends MAutoStorage<cm>
+  implements m
 {
-  protected static IAutoDBItem.MAutoDBInfo info;
+  public static final String[] INDEX_CREATE;
+  public static final String[] SQL_CREATE;
+  public ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(43306);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[5];
-    localMAutoDBInfo.columns = new String[6];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "encryptUsername";
-    localMAutoDBInfo.colsMap.put("encryptUsername", "TEXT default ''  PRIMARY KEY ");
-    localStringBuilder.append(" encryptUsername TEXT default ''  PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "encryptUsername";
-    localMAutoDBInfo.columns[1] = "conRemark";
-    localMAutoDBInfo.colsMap.put("conRemark", "TEXT default '' ");
-    localStringBuilder.append(" conRemark TEXT default '' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "contactLabels";
-    localMAutoDBInfo.colsMap.put("contactLabels", "TEXT default '' ");
-    localStringBuilder.append(" contactLabels TEXT default '' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[3] = "conDescription";
-    localMAutoDBInfo.colsMap.put("conDescription", "TEXT default '' ");
-    localStringBuilder.append(" conDescription TEXT default '' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[4] = "conPhone";
-    localMAutoDBInfo.colsMap.put("conPhone", "TEXT default '' ");
-    localStringBuilder.append(" conPhone TEXT default '' ");
-    localMAutoDBInfo.columns[5] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
-    AppMethodBeat.o(43306);
+    AppMethodBeat.i(117342);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(cm.info, "shakeverifymessage") };
+    INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS  shakeverifymessage_unread_index ON shakeverifymessage ( status )", "CREATE INDEX IF NOT EXISTS shakeverifymessage_statusIndex ON shakeverifymessage ( status )", "CREATE INDEX IF NOT EXISTS shakeverifymessage_createtimeIndex ON shakeverifymessage ( createtime )" };
+    AppMethodBeat.o(117342);
   }
   
-  public cn()
+  public cn(ISQLiteDatabase paramISQLiteDatabase)
   {
-    AppMethodBeat.i(43304);
-    this.field_encryptUsername = "";
-    this.field_conRemark = "";
-    AppMethodBeat.o(43304);
+    super(paramISQLiteDatabase, cm.info, "shakeverifymessage", INDEX_CREATE);
+    this.db = paramISQLiteDatabase;
   }
   
-  public cn(String paramString)
+  public final Cursor Vo(int paramInt)
   {
-    this();
-    AppMethodBeat.i(43302);
-    this.field_conRemark = "";
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.field_encryptUsername = str;
-    AppMethodBeat.o(43302);
-  }
-  
-  public cn(String paramString1, String paramString2)
-  {
-    this();
-    AppMethodBeat.i(43303);
-    String str = paramString1;
-    if (paramString1 == null) {
-      str = "";
-    }
-    this.field_encryptUsername = str;
-    paramString1 = paramString2;
-    if (paramString2 == null) {
-      paramString1 = "";
-    }
-    this.field_conRemark = paramString1;
-    AppMethodBeat.o(43303);
-  }
-  
-  public final String ajB()
-  {
-    return this.field_encryptUsername;
-  }
-  
-  public final String ajy()
-  {
-    return this.field_conRemark;
-  }
-  
-  protected final Object clone()
-  {
-    AppMethodBeat.i(43305);
-    Object localObject = super.clone();
-    AppMethodBeat.o(43305);
+    AppMethodBeat.i(117334);
+    Object localObject = "SELECT * FROM " + getTableName() + " where isSend = 0 ORDER BY createtime desc LIMIT " + paramInt;
+    localObject = this.db.rawQuery((String)localObject, null);
+    AppMethodBeat.o(117334);
     return localObject;
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  public final boolean a(cm paramcm)
   {
-    return info;
+    AppMethodBeat.i(117337);
+    if (paramcm == null)
+    {
+      Log.e("MicroMsg.ShakeVerifyMessageStorage", "insert fail, shakeMsg is null");
+      AppMethodBeat.o(117337);
+      return false;
+    }
+    if (super.insert(paramcm))
+    {
+      doNotify(paramcm.systemRowid);
+      AppMethodBeat.o(117337);
+      return true;
+    }
+    AppMethodBeat.o(117337);
+    return false;
+  }
+  
+  public final long aOB(String paramString)
+  {
+    AppMethodBeat.i(117340);
+    if (paramString != null)
+    {
+      paramString = ((cn)((n)h.ae(n.class)).eSa()).hAO();
+      if (paramString == null) {}
+    }
+    for (long l1 = paramString.field_createtime + 1L;; l1 = 0L)
+    {
+      long l2 = Util.nowSecond();
+      if (l1 > l2)
+      {
+        AppMethodBeat.o(117340);
+        return l1;
+      }
+      AppMethodBeat.o(117340);
+      return l2;
+    }
+  }
+  
+  public final void aOz(String paramString)
+  {
+    AppMethodBeat.i(117335);
+    paramString = "svrid = '" + paramString + "'";
+    int i = this.db.delete(getTableName(), paramString, null);
+    if (i > 0) {
+      doNotify();
+    }
+    Log.i("MicroMsg.ShakeVerifyMessageStorage", "delBySvrId = ".concat(String.valueOf(i)));
+    AppMethodBeat.o(117335);
+  }
+  
+  public final void bJQ()
+  {
+    AppMethodBeat.i(117336);
+    this.db.delete(getTableName(), null, null);
+    AppMethodBeat.o(117336);
+  }
+  
+  public final cm[] bxw(String paramString)
+  {
+    AppMethodBeat.i(117339);
+    Log.d("MicroMsg.ShakeVerifyMessageStorage", "getLastShakeVerifyMessage");
+    paramString = "select *, rowid from ShakeVerifyMessage  where sayhiuser = '" + Util.escapeSqlValue(paramString) + "' order by createtime DESC limit 3";
+    paramString = this.db.rawQuery(paramString, null, 2);
+    ArrayList localArrayList = new ArrayList();
+    while (paramString.moveToNext())
+    {
+      cm localcm = new cm();
+      localcm.convertFrom(paramString);
+      localArrayList.add(localcm);
+    }
+    paramString.close();
+    if (localArrayList.size() == 0)
+    {
+      AppMethodBeat.o(117339);
+      return null;
+    }
+    paramString = (cm[])localArrayList.toArray(new cm[localArrayList.size()]);
+    AppMethodBeat.o(117339);
+    return paramString;
+  }
+  
+  public final int cHo()
+  {
+    AppMethodBeat.i(117331);
+    Cursor localCursor = this.db.rawQuery("select count(*) from " + getTableName() + " where status != 4", null, 2);
+    if (!localCursor.moveToFirst())
+    {
+      localCursor.close();
+      AppMethodBeat.o(117331);
+      return 0;
+    }
+    int i = localCursor.getInt(0);
+    localCursor.close();
+    if (i > 0)
+    {
+      AppMethodBeat.o(117331);
+      return i;
+    }
+    AppMethodBeat.o(117331);
+    return 0;
+  }
+  
+  public final int getCount()
+  {
+    AppMethodBeat.i(117332);
+    Cursor localCursor = this.db.rawQuery("select count(*) from " + getTableName(), null, 2);
+    if (!localCursor.moveToFirst())
+    {
+      localCursor.close();
+      AppMethodBeat.o(117332);
+      return 0;
+    }
+    int i = localCursor.getInt(0);
+    localCursor.close();
+    if (i > 0)
+    {
+      AppMethodBeat.o(117332);
+      return i;
+    }
+    AppMethodBeat.o(117332);
+    return 0;
+  }
+  
+  public final cm hAO()
+  {
+    AppMethodBeat.i(117333);
+    Cursor localCursor = this.db.rawQuery("SELECT * FROM " + getTableName() + " ORDER BY createtime DESC LIMIT 1", null, 2);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(117333);
+      return null;
+    }
+    if (!localCursor.moveToFirst())
+    {
+      localCursor.close();
+      AppMethodBeat.o(117333);
+      return null;
+    }
+    cm localcm = new cm();
+    localcm.convertFrom(localCursor);
+    localCursor.close();
+    AppMethodBeat.o(117333);
+    return localcm;
+  }
+  
+  public final cm[] hC(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(117338);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      Log.e("MicroMsg.ShakeVerifyMessageStorage", "getLastRecvShakeMsg fail, talker is null");
+      AppMethodBeat.o(117338);
+      return null;
+    }
+    paramString = "select * from ShakeVerifyMessage where isSend = 0 and sayhiuser = '" + Util.escapeSqlValue(paramString) + "' order by createTime DESC limit " + paramInt;
+    paramString = this.db.rawQuery(paramString, null, 2);
+    ArrayList localArrayList = new ArrayList();
+    while (paramString.moveToNext())
+    {
+      cm localcm = new cm();
+      localcm.convertFrom(paramString);
+      localArrayList.add(localcm);
+    }
+    paramString.close();
+    if (localArrayList.size() == 0)
+    {
+      AppMethodBeat.o(117338);
+      return null;
+    }
+    paramString = (cm[])localArrayList.toArray(new cm[localArrayList.size()]);
+    AppMethodBeat.o(117338);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.cn
  * JD-Core Version:    0.7.0.1
  */

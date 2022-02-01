@@ -18,28 +18,28 @@ import kotlin.t;
 public final class l
   implements b
 {
-  final av TIo;
-  final as TOv;
-  private final f TPk;
-  kotlin.g.a.a<? extends List<? extends bg>> TPl;
-  final l TPm;
+  final av abkS;
+  final as abqV;
+  private final f abrJ;
+  kotlin.g.a.a<? extends List<? extends bg>> abrK;
+  final l abrL;
   
   private l(av paramav, List<? extends bg> paramList)
   {
-    this(paramav, (kotlin.g.a.a)new l.1(paramList), null, null, 8);
+    this(paramav, (kotlin.g.a.a)new q(paramList) {}, null, null, 8);
     AppMethodBeat.i(61082);
     AppMethodBeat.o(61082);
   }
   
   l(av paramav, kotlin.g.a.a<? extends List<? extends bg>> parama, l paraml, as paramas)
   {
-    AppMethodBeat.i(186276);
-    this.TIo = paramav;
-    this.TPl = parama;
-    this.TPm = paraml;
-    this.TOv = paramas;
-    this.TPk = kotlin.g.a(k.SWQ, (kotlin.g.a.a)new a(this));
-    AppMethodBeat.o(186276);
+    AppMethodBeat.i(270319);
+    this.abkS = paramav;
+    this.abrK = parama;
+    this.abrL = paraml;
+    this.abqV = paramas;
+    this.abrJ = kotlin.g.a(k.aazC, (kotlin.g.a.a)new a(this));
+    AppMethodBeat.o(270319);
   }
   
   public final boolean equals(Object paramObject)
@@ -52,7 +52,7 @@ public final class l
     }
     Object localObject2 = getClass();
     if (paramObject != null) {}
-    for (Object localObject1 = paramObject.getClass(); (p.j(localObject2, localObject1) ^ true); localObject1 = null)
+    for (Object localObject1 = paramObject.getClass(); (p.h(localObject2, localObject1) ^ true); localObject1 = null)
     {
       AppMethodBeat.o(61078);
       return false;
@@ -63,13 +63,13 @@ public final class l
       AppMethodBeat.o(61078);
       throw paramObject;
     }
-    localObject1 = this.TPm;
+    localObject1 = this.abrL;
     if (localObject1 == null) {
       localObject1 = this;
     }
     for (;;)
     {
-      localObject2 = ((l)paramObject).TPm;
+      localObject2 = ((l)paramObject).abrL;
       if (localObject2 == null) {}
       for (paramObject = (l)paramObject;; paramObject = localObject2)
       {
@@ -84,45 +84,13 @@ public final class l
     }
   }
   
-  public final List<as> getParameters()
-  {
-    return (List)v.SXr;
-  }
-  
-  public final kotlin.l.b.a.b.a.g hBh()
-  {
-    AppMethodBeat.i(61077);
-    Object localObject = this.TIo.hBy();
-    p.g(localObject, "projection.type");
-    localObject = kotlin.l.b.a.b.m.d.a.aM((ab)localObject);
-    AppMethodBeat.o(61077);
-    return localObject;
-  }
-  
-  public final av hKF()
-  {
-    return this.TIo;
-  }
-  
-  public final List<bg> hLx()
-  {
-    AppMethodBeat.i(61075);
-    List localList2 = (List)this.TPk.getValue();
-    List localList1 = localList2;
-    if (localList2 == null) {
-      localList1 = (List)v.SXr;
-    }
-    AppMethodBeat.o(61075);
-    return localList1;
-  }
-  
   public final int hashCode()
   {
     AppMethodBeat.i(61079);
     l locall;
     for (Object localObject = this;; localObject = locall)
     {
-      locall = ((l)localObject).TPm;
+      locall = ((l)localObject).abrL;
       if (locall == null) {
         break;
       }
@@ -132,20 +100,52 @@ public final class l
     return i;
   }
   
-  public final h hzS()
+  public final List<as> iCb()
+  {
+    return (List)v.aaAd;
+  }
+  
+  public final h iEf()
   {
     return null;
   }
   
-  public final boolean hzU()
+  public final boolean iEh()
   {
     return false;
+  }
+  
+  public final kotlin.l.b.a.b.a.g iFv()
+  {
+    AppMethodBeat.i(61077);
+    Object localObject = this.abkS.iFN();
+    p.j(localObject, "projection.type");
+    localObject = kotlin.l.b.a.b.m.d.a.aM((ab)localObject);
+    AppMethodBeat.o(61077);
+    return localObject;
+  }
+  
+  public final av iOV()
+  {
+    return this.abkS;
+  }
+  
+  public final List<bg> iPQ()
+  {
+    AppMethodBeat.i(61075);
+    List localList2 = (List)this.abrJ.getValue();
+    List localList1 = localList2;
+    if (localList2 == null) {
+      localList1 = (List)v.aaAd;
+    }
+    AppMethodBeat.o(61075);
+    return localList1;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(61080);
-    String str = "CapturedType(" + this.TIo + ')';
+    String str = "CapturedType(" + this.abkS + ')';
     AppMethodBeat.o(61080);
     return str;
   }
@@ -172,7 +172,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.a.l
  * JD-Core Version:    0.7.0.1
  */

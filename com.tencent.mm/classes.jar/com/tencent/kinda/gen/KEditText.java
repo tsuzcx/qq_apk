@@ -3,6 +3,8 @@ package com.tencent.kinda.gen;
 public abstract interface KEditText
   extends KView
 {
+  public abstract void enableConfirmBtn(boolean paramBoolean);
+  
   public abstract String encryptWith3Des();
   
   public abstract ClearButtonMode getClearButtonMode();
@@ -49,6 +51,8 @@ public abstract interface KEditText
   
   public abstract void setMaxLength(int paramInt);
   
+  public abstract void setOnEditorActionCallback(KEditTextOnEditorActionCallback paramKEditTextOnEditorActionCallback);
+  
   public abstract void setOnTextBeginChangeCallback(KEditTextOnTextBeginChangeCallback paramKEditTextOnTextBeginChangeCallback);
   
   public abstract void setOnTextChangedCallback(KEditTextOnTextChangedCallback paramKEditTextOnTextChangedCallback);
@@ -73,7 +77,7 @@ public abstract interface KEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.gen.KEditText
  * JD-Core Version:    0.7.0.1
  */

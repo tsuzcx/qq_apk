@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthHelper$ApiInvokeInterruptCallbackException;", "Ljava/lang/Exception;", "Lkotlin/Exception;", "message", "", "(Ljava/lang/String;)V", "luggage-wechat-full-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthHelper$ApiInvokeInterruptCallbackException;", "Ljava/lang/Exception;", "Lkotlin/Exception;", "message", "", "(Ljava/lang/String;)V", "luggage-wechat-full-sdk_release"})
 public final class f$a
   extends Exception
 {

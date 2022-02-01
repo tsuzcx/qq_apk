@@ -8,37 +8,37 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class j
 {
-  public static int dAR = 100;
-  private com.tencent.mm.compatible.util.b dAO;
-  public b dAP;
-  public a dAQ;
+  public static int ftG = 100;
   String fileName;
+  private com.tencent.mm.compatible.util.b ftD;
+  public b ftE;
+  public a ftF;
   public int status;
   
   public j()
   {
     AppMethodBeat.i(148365);
     this.fileName = "";
-    this.dAQ = null;
+    this.ftF = null;
     this.status = 0;
-    this.dAP = new b(c.a.gCN);
-    this.dAO = new com.tencent.mm.compatible.util.b(MMApplicationContext.getContext());
+    this.ftE = new b(c.a.jmT);
+    this.ftD = new com.tencent.mm.compatible.util.b(MMApplicationContext.getContext());
     AppMethodBeat.o(148365);
   }
   
-  public final boolean ZZ()
+  public final boolean aeJ()
   {
     AppMethodBeat.i(148367);
-    this.dAO.apm();
-    if (this.dAP == null)
+    this.ftD.avz();
+    if (this.ftE == null)
     {
       AppMethodBeat.o(148367);
       return true;
     }
     try
     {
-      this.dAP.Qt();
-      this.dAP.release();
+      this.ftE.TV();
+      this.ftE.release();
       this.fileName = "";
       this.status = 0;
       AppMethodBeat.o(148367);
@@ -53,7 +53,7 @@ public final class j
     return false;
   }
   
-  public final boolean hy(String paramString)
+  public final boolean im(String paramString)
   {
     AppMethodBeat.i(148366);
     f.a locala = new f.a();
@@ -66,13 +66,13 @@ public final class j
     this.fileName = paramString;
     try
     {
-      this.dAO.requestFocus();
-      this.dAP.a(new b.a()
+      this.ftD.avy();
+      this.ftE.a(new b.a()
       {
         public final void onError()
         {
           AppMethodBeat.i(148364);
-          j.a(j.this).apm();
+          j.a(j.this).avz();
           if (j.b(j.this) != null) {
             j.b(j.this).onError();
           }
@@ -90,21 +90,21 @@ public final class j
           }
         }
       });
-      this.dAP.aac();
-      this.dAP.aad();
-      this.dAP.aab();
-      this.dAP.setOutputFile(this.fileName);
-      this.dAP.setMaxDuration(3600010);
-      this.dAP.prepare();
-      this.dAP.start();
-      Log.d("MicroMsg.SimpleVoiceRecorder", "StartRecord File[" + this.fileName + "] start time:" + locala.apr());
+      this.ftE.aeN();
+      this.ftE.aeO();
+      this.ftE.aeM();
+      this.ftE.setOutputFile(this.fileName);
+      this.ftE.kC(3600010);
+      this.ftE.prepare();
+      this.ftE.start();
+      Log.d("MicroMsg.SimpleVoiceRecorder", "StartRecord File[" + this.fileName + "] start time:" + locala.avE());
       this.status = 1;
       AppMethodBeat.o(148366);
       return true;
     }
     catch (Exception paramString)
     {
-      this.dAO.apm();
+      this.ftD.avz();
       Log.e("MicroMsg.SimpleVoiceRecorder", "StartRecord File[" + this.fileName + "] ErrMsg[" + paramString.getMessage() + "]");
       this.status = -1;
       AppMethodBeat.o(148366);
@@ -119,7 +119,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.audio.b.j
  * JD-Core Version:    0.7.0.1
  */

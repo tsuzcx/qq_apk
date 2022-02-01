@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.menu.b;
 
 import android.content.Context;
 import android.widget.Toast;
+import com.tencent.luggage.l.a.g;
 import com.tencent.luggage.sdk.b.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ac.m;
@@ -12,7 +13,7 @@ public final class b
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.b.b
  * JD-Core Version:    0.7.0.1
  */

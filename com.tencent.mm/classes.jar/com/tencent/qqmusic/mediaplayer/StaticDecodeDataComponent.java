@@ -23,9 +23,9 @@ class StaticDecodeDataComponent
   private boolean mHasTerminal = false;
   private boolean mIsfirstStarted;
   
-  StaticDecodeDataComponent(CorePlayer paramCorePlayer, PlayerStateRunner paramPlayerStateRunner, AudioInformation paramAudioInformation, PlayerCallback paramPlayerCallback, BaseDecodeDataComponent.HandleDecodeDataCallback paramHandleDecodeDataCallback, Handler paramHandler, int paramInt)
+  StaticDecodeDataComponent(CorePlayer paramCorePlayer, PlayerStateRunner paramPlayerStateRunner, AudioInformation paramAudioInformation, PlayerCallback paramPlayerCallback, BaseDecodeDataComponent.HandleDecodeDataCallback paramHandleDecodeDataCallback, Handler paramHandler, int paramInt, IAudioListener paramIAudioListener1, IAudioListener paramIAudioListener2)
   {
-    super(paramCorePlayer, paramPlayerStateRunner, paramAudioInformation, paramPlayerCallback, paramHandleDecodeDataCallback, paramHandler, paramInt);
+    super(paramCorePlayer, paramPlayerStateRunner, paramAudioInformation, paramPlayerCallback, paramHandleDecodeDataCallback, paramHandler, paramInt, paramIAudioListener1, paramIAudioListener2);
     this.mBuffSize = 8192;
   }
   
@@ -312,9 +312,9 @@ class StaticDecodeDataComponent
             {
               public void run()
               {
-                AppMethodBeat.i(190297);
+                AppMethodBeat.i(245399);
                 StaticDecodeDataComponent.this.mCallback.playerEnded(StaticDecodeDataComponent.this.mCorePlayer);
-                AppMethodBeat.o(190297);
+                AppMethodBeat.o(245399);
               }
             }, 20);
           }
@@ -327,68 +327,58 @@ class StaticDecodeDataComponent
   private boolean writeAudioTrack()
   {
     AppMethodBeat.i(76745);
-    Object localObject = new BufferInfo();
+    BufferInfo localBufferInfo = new BufferInfo();
     if ((this.mDecodeBufferInfo.byteBuffer != null) && (this.mAudioTrack != null))
     {
       if (this.mTargetBitDepth != this.mInformation.getBitDepth())
       {
-        handleHighBitDepth(this.mDecodeBufferInfo, (BufferInfo)localObject);
-        this.mDecodeBufferInfo.fillInto((BufferInfo)localObject);
+        handleHighBitDepth(this.mDecodeBufferInfo, localBufferInfo);
+        this.mDecodeBufferInfo.fillInto(localBufferInfo);
       }
       if (this.mTargetPlaySample != this.mInformation.getSampleRate())
       {
-        handleHighSample(this.mDecodeBufferInfo, (BufferInfo)localObject);
-        this.mDecodeBufferInfo.fillInto((BufferInfo)localObject);
+        handleHighSample(this.mDecodeBufferInfo, localBufferInfo);
+        this.mDecodeBufferInfo.fillInto(localBufferInfo);
       }
-      int i;
       if (this.isUseFloatForHighDepth)
       {
         convertBytePcmToFloatPcm(this.mDecodeBufferInfo, this.mFloatBufferInfo);
-        processAudioListeners(this.mFloatBufferInfo, this.mFloatBufferInfo);
+        this.mAudioEffectListener.onPcm(this.mFloatBufferInfo, this.mFloatBufferInfo, this.mCorePlayer.getCurPositionByDecoder());
         this.mHasTerminal = false;
-        i = this.mTerminalAudioEffectList.size() - 1;
+        if (this.mTerminalAudioEffectListener.isEnabled())
+        {
+          if (!this.isUseFloatForHighDepth) {
+            break label349;
+          }
+          this.mTerminalAudioEffectListener.onPcm(this.mFloatBufferInfo, this.mFloatBufferInfo, this.mCorePlayer.getCurPositionByDecoder());
+        }
       }
+      int i;
       for (;;)
       {
-        if (i >= 0)
-        {
-          localObject = (IAudioListener)this.mTerminalAudioEffectList.get(i);
-          if (!((IAudioListener)localObject).isEnabled()) {
-            break label372;
-          }
-          if (!this.isUseFloatForHighDepth) {
-            break label347;
-          }
-          ((IAudioListener)localObject).onPcm(this.mFloatBufferInfo, this.mFloatBufferInfo, this.mCorePlayer.getCurPositionByDecoder());
+        this.mHasTerminal = true;
+        if (this.mHasTerminal) {
+          break label592;
         }
-        for (;;)
-        {
-          this.mHasTerminal = true;
-          if (this.mHasTerminal) {
-            break label594;
-          }
-          if ((!this.isUseFloatForHighDepth) || (Build.VERSION.SDK_INT < 21)) {
-            break label440;
-          }
-          i = this.mAudioTrack.write(this.mFloatBufferInfo.floatBuffer, 0, this.mFloatBufferInfo.bufferSize, 0);
-          if (i >= 0) {
-            break label379;
-          }
-          Logger.e("StaticDecodeDataComponent", axiliary("mAudioTrack write float failed: " + i + ", expect: " + this.mFloatBufferInfo.bufferSize));
-          this.mStateRunner.transfer(Integer.valueOf(9));
-          callExceptionCallback(91, 102);
-          AppMethodBeat.o(76745);
-          return false;
-          processAudioListeners(this.mDecodeBufferInfo, (BufferInfo)localObject);
-          this.mDecodeBufferInfo.fillInto((BufferInfo)localObject);
-          break;
-          label347:
-          ((IAudioListener)localObject).onPcm(this.mDecodeBufferInfo, this.mDecodeBufferInfo, this.mCorePlayer.getCurPositionByDecoder());
+        if ((!this.isUseFloatForHighDepth) || (Build.VERSION.SDK_INT < 21)) {
+          break label438;
         }
-        label372:
-        i -= 1;
+        i = this.mAudioTrack.write(this.mFloatBufferInfo.floatBuffer, 0, this.mFloatBufferInfo.bufferSize, 0);
+        if (i >= 0) {
+          break label377;
+        }
+        Logger.e("StaticDecodeDataComponent", axiliary("mAudioTrack write float failed: " + i + ", expect: " + this.mFloatBufferInfo.bufferSize));
+        this.mStateRunner.transfer(Integer.valueOf(9));
+        callExceptionCallback(91, 102);
+        AppMethodBeat.o(76745);
+        return false;
+        this.mAudioEffectListener.onPcm(this.mDecodeBufferInfo, localBufferInfo, this.mCorePlayer.getCurPositionByDecoder());
+        this.mDecodeBufferInfo.fillInto(localBufferInfo);
+        break;
+        label349:
+        this.mTerminalAudioEffectListener.onPcm(this.mDecodeBufferInfo, this.mDecodeBufferInfo, this.mCorePlayer.getCurPositionByDecoder());
       }
-      label379:
+      label377:
       if (i != this.mFloatBufferInfo.bufferSize) {
         Logger.w("StaticDecodeDataComponent", axiliary("mAudioTrack write float not equal: " + i + ", expect: " + this.mFloatBufferInfo.bufferSize));
       }
@@ -396,7 +386,7 @@ class StaticDecodeDataComponent
       {
         AppMethodBeat.o(76745);
         return true;
-        label440:
+        label438:
         i = this.mAudioTrack.write(this.mDecodeBufferInfo.byteBuffer, 0, this.mDecodeBufferInfo.bufferSize);
         if (i < 0)
         {
@@ -410,7 +400,7 @@ class StaticDecodeDataComponent
           Logger.w("StaticDecodeDataComponent", axiliary("mAudioTrack write bytes not equal: " + i + ", expect: " + this.mDecodeBufferInfo.bufferSize));
         }
       }
-      label594:
+      label592:
       Logger.i("StaticDecodeDataComponent", "mTerminalAudioEffectList has blocked");
       AppMethodBeat.o(76745);
       return false;
@@ -447,9 +437,17 @@ class StaticDecodeDataComponent
     {
       try
       {
-        if (0L == this.mInformation.getSampleRate())
+        if (0L >= this.mInformation.getSampleRate())
         {
           Logger.e("StaticDecodeDataComponent", "failed to getSampleRate");
+          this.mStateRunner.transfer(Integer.valueOf(9));
+          callExceptionCallback(91, 63);
+          AppMethodBeat.o(76742);
+          return;
+        }
+        if (this.mInformation.getChannels() <= 0)
+        {
+          Logger.e("StaticDecodeDataComponent", "failed to getChannels");
           this.mStateRunner.transfer(Integer.valueOf(9));
           callExceptionCallback(91, 63);
           AppMethodBeat.o(76742);
@@ -470,6 +468,7 @@ class StaticDecodeDataComponent
           AppMethodBeat.o(76742);
           return;
         }
+        initAudioListeners(this.mTargetBitDepth, this.mInformation, getCurPosition());
         if ((!writeAudioTrack()) && (!this.mHasTerminal))
         {
           Logger.e("StaticDecodeDataComponent", "failed to writeAudioTrack");
@@ -490,7 +489,6 @@ class StaticDecodeDataComponent
           return;
         }
         this.mIsfirstStarted = false;
-        initAudioListeners(this.mTargetBitDepth, this.mInformation, getCurPosition());
         postRunnable(new Runnable()
         {
           public void run()
@@ -519,13 +517,13 @@ class StaticDecodeDataComponent
       {
         public boolean keepWaiting()
         {
-          AppMethodBeat.i(190296);
+          AppMethodBeat.i(245346);
           if (StaticDecodeDataComponent.this.getPlayerState() == 2)
           {
-            AppMethodBeat.o(190296);
+            AppMethodBeat.o(245346);
             return true;
           }
-          AppMethodBeat.o(190296);
+          AppMethodBeat.o(245346);
           return false;
         }
       });
@@ -542,7 +540,7 @@ class StaticDecodeDataComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.StaticDecodeDataComponent
  * JD-Core Version:    0.7.0.1
  */

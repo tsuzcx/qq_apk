@@ -8,12 +8,12 @@ import java.util.concurrent.locks.Lock;
 final class e
   implements Lock
 {
-  public static final Lock TNg;
+  public static final Lock abpI;
   
   static
   {
     AppMethodBeat.i(60555);
-    TNg = new e();
+    abpI = new e();
     AppMethodBeat.o(60555);
   }
   
@@ -61,7 +61,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlin.l.b.a.b.l.e
  * JD-Core Version:    0.7.0.1
  */

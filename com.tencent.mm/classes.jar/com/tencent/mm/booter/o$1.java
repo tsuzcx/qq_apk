@@ -12,7 +12,7 @@ final class o$1
   public final void run()
   {
     AppMethodBeat.i(19899);
-    h.CyF.kvStat(10675, this.gmH + "," + ChannelUtil.channelId);
+    h.IzE.kvStat(10675, this.iQQ + "," + ChannelUtil.channelId);
     AppMethodBeat.o(19899);
   }
 }

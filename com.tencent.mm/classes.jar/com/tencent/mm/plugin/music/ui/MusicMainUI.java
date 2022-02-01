@@ -7,8 +7,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.Message;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,15 +18,20 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.ho;
-import com.tencent.mm.g.a.ho.a;
-import com.tencent.mm.g.a.mx;
-import com.tencent.mm.g.a.mx.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.q;
+import com.tencent.mm.f.a.hv;
+import com.tencent.mm.f.a.hv.a;
+import com.tencent.mm.f.a.np;
+import com.tencent.mm.f.a.np.a;
 import com.tencent.mm.plugin.appbrand.widget.music.MusicSeekBar;
 import com.tencent.mm.plugin.appbrand.widget.music.MusicSeekBar.a;
+import com.tencent.mm.plugin.music.a.b;
+import com.tencent.mm.plugin.music.a.e;
+import com.tencent.mm.plugin.music.a.g;
+import com.tencent.mm.plugin.music.a.h;
 import com.tencent.mm.plugin.music.e.k;
 import com.tencent.mm.plugin.music.model.m;
 import com.tencent.mm.plugin.music.model.o;
@@ -39,7 +42,9 @@ import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.base.h.d;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,62 +52,62 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.concurrent.Future;
 import junit.framework.Assert;
 
 @com.tencent.mm.ui.base.a(32)
 public class MusicMainUI
   extends MMActivity
-  implements ViewPager.OnPageChangeListener, com.tencent.mm.ak.i
+  implements ViewPager.OnPageChangeListener, com.tencent.mm.an.i
 {
-  private com.tencent.mm.plugin.music.f.a.d.a AhI;
-  private boolean AkV;
-  private CheckBox AnB;
-  private ImageButton AnC;
-  private ImageButton AnD;
-  private MusicSeekBar AnE;
-  private MusicViewPager AnF;
-  private b AnG;
-  private LinearLayout AnH;
-  private TextView AnI;
-  private ImageView AnJ;
-  private ImageView AnK;
-  private boolean AnL;
-  private long AnM;
-  private long AnN;
-  private String AnO;
-  private boolean AnP;
-  private String AnQ;
-  private String AnR;
-  private boolean AnS;
-  private int AnT;
-  private Timer AnU;
-  private MMHandler AnV;
-  private MMHandler goC;
-  private IListener lEl;
+  private int BoC;
+  private com.tencent.mm.plugin.music.f.a.d.a FOE;
+  private boolean FSb;
+  private CheckBox FUH;
+  private ImageButton FUI;
+  private ImageButton FUJ;
+  private MusicSeekBar FUK;
+  private MusicViewPager FUL;
+  private b FUM;
+  private LinearLayout FUN;
+  private TextView FUO;
+  private ImageView FUP;
+  private ImageView FUQ;
+  private boolean FUR;
+  private long FUS;
+  private long FUT;
+  private String FUU;
+  private boolean FUV;
+  private String FUW;
+  private String FUX;
+  private boolean FUY;
+  private int FUZ;
+  private Future<?> FVa;
+  private MMHandler FVb;
+  private MMHandler iSL;
   private long lastShakeTime;
   private int mode;
+  private IListener ozM;
   private int scene;
-  private com.tencent.mm.pluginsdk.l.d shakeSensor;
-  private int wAr;
+  private com.tencent.mm.pluginsdk.m.d shakeSensor;
   
   public MusicMainUI()
   {
     AppMethodBeat.i(63247);
-    this.AnM = 0L;
-    this.AnN = 0L;
-    this.AnP = false;
-    this.AnQ = "";
-    this.AnR = "";
-    this.AnS = false;
-    this.AnT = 0;
-    this.lEl = new IListener() {};
-    this.goC = new MMHandler(Looper.getMainLooper());
-    this.wAr = -1;
-    this.AhI = new com.tencent.mm.plugin.music.f.a.d.a()
+    this.FUS = 0L;
+    this.FUT = 0L;
+    this.FUV = false;
+    this.FUW = "";
+    this.FUX = "";
+    this.FUY = false;
+    this.FUZ = 0;
+    this.ozM = new IListener() {};
+    this.FVa = null;
+    this.iSL = new MMHandler(Looper.getMainLooper());
+    this.BoC = -1;
+    this.FOE = new com.tencent.mm.plugin.music.f.a.d.a()
     {
-      public final void fn(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void fK(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(63244);
         if (MusicMainUI.j(MusicMainUI.this) == null)
@@ -120,7 +125,7 @@ public class MusicMainUI
           long l = MusicMainUI.this.getIntent().getLongExtra("music_player_beg_time", 0L);
           l = (f * 1000.0F + (float)(System.currentTimeMillis() - l));
           if (l >= 0L) {
-            MusicMainUI.j(MusicMainUI.this).av(MusicMainUI.k(MusicMainUI.this).getCurrentItem(), l + 200L);
+            MusicMainUI.j(MusicMainUI.this).aE(MusicMainUI.k(MusicMainUI.this).getCurrentItem(), l + 200L);
           }
         }
         for (;;)
@@ -131,12 +136,12 @@ public class MusicMainUI
           AppMethodBeat.o(63244);
           return;
           if ((paramAnonymousInt1 >= 0) && (paramAnonymousInt2 > 0)) {
-            MusicMainUI.j(MusicMainUI.this).av(MusicMainUI.k(MusicMainUI.this).getCurrentItem(), paramAnonymousInt1);
+            MusicMainUI.j(MusicMainUI.this).aE(MusicMainUI.k(MusicMainUI.this).getCurrentItem(), paramAnonymousInt1);
           }
         }
       }
     };
-    this.AnV = new MMHandler(Looper.getMainLooper())
+    this.FVb = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -150,104 +155,104 @@ public class MusicMainUI
     AppMethodBeat.o(63247);
   }
   
-  private void cBY()
+  private void cQC()
   {
     AppMethodBeat.i(63259);
-    int i = k.euj().etW().etn();
-    int j = k.euj().etW().getDuration();
+    int i = k.fet().feg().fdx();
+    int j = k.fet().feg().getDuration();
     if ((i > 0) && (j > 0))
     {
-      this.AnE.setProgress(i);
-      this.AnE.setMaxProgress(j);
+      this.FUK.setProgress(i);
+      this.FUK.setMaxProgress(j);
     }
     AppMethodBeat.o(63259);
   }
   
-  private void eB(View paramView)
+  private void fB(View paramView)
   {
-    AppMethodBeat.i(219882);
+    AppMethodBeat.i(259990);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
     int i = localLayoutParams.topMargin;
-    int j = com.tencent.mm.ui.ao.getStatusBarHeight(getContext());
+    int j = ar.getStatusBarHeight(getContext());
     localLayoutParams.setMargins(localLayoutParams.leftMargin, i + j, localLayoutParams.rightMargin, localLayoutParams.bottomMargin);
     paramView.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(219882);
+    AppMethodBeat.o(259990);
   }
   
-  private void evl()
+  private void ffE()
   {
     AppMethodBeat.i(63251);
-    this.AnG.count = 200000;
-    this.AnG.notifyDataSetChanged();
-    if (((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aS(com.tencent.mm.plugin.music.e.e.class)).eug())
+    this.FUM.count = 200000;
+    this.FUM.notifyDataSetChanged();
+    if (((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).feq())
     {
-      this.AnF.setCanSlide(true);
+      this.FUL.setCanSlide(true);
       AppMethodBeat.o(63251);
       return;
     }
-    this.AnF.setCanSlide(false);
+    this.FUL.setCanSlide(false);
     AppMethodBeat.o(63251);
   }
   
-  private void evm()
+  private void ffF()
   {
     AppMethodBeat.i(63252);
-    if (this.AnU != null) {
-      this.AnU.cancel();
+    if (this.FVa != null) {
+      this.FVa.cancel(false);
     }
-    this.AnU = null;
+    this.FVa = null;
     AppMethodBeat.o(63252);
   }
   
   private void k(com.tencent.mm.plugin.music.model.e.a parama)
   {
     AppMethodBeat.i(63256);
-    if ((m.a(parama)) && (!this.AkV))
+    if ((m.a(parama)) && (!this.FSb))
     {
-      this.AnB.setVisibility(0);
-      this.AnD.setVisibility(0);
+      this.FUH.setVisibility(0);
+      this.FUJ.setVisibility(0);
       AppMethodBeat.o(63256);
       return;
     }
-    this.AnB.setVisibility(4);
-    this.AnD.setVisibility(4);
+    this.FUH.setVisibility(4);
+    this.FUJ.setVisibility(4);
     AppMethodBeat.o(63256);
   }
   
   public int getLayoutId()
   {
-    return 2131495778;
+    return a.g.music_main_ui;
   }
   
   public final void l(com.tencent.mm.plugin.music.model.e.a parama)
   {
     AppMethodBeat.i(63260);
-    com.tencent.mm.plugin.music.model.e.a locala = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aS(com.tencent.mm.plugin.music.e.e.class)).etY();
+    com.tencent.mm.plugin.music.model.e.a locala = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).fei();
     if (locala == null)
     {
       AppMethodBeat.o(63260);
       return;
     }
-    if ((locala.h(parama)) && (this.AnD != null) && (this.AnC != null) && (this.AnB != null) && (this.AnD.getBackground() != null) && (this.AnC.getBackground() != null) && (this.AnB.getBackground() != null) && (this.AnE != null))
+    if ((locala.h(parama)) && (this.FUJ != null) && (this.FUI != null) && (this.FUH != null) && (this.FUJ.getBackground() != null) && (this.FUI.getBackground() != null) && (this.FUH.getBackground() != null) && (this.FUK != null))
     {
-      if (parama.euM())
+      if (parama.fff())
       {
         int i = parama.field_songLyricColor;
-        this.AnD.getBackground().setColorFilter(i, PorterDuff.Mode.MULTIPLY);
-        this.AnC.getBackground().setColorFilter(i, PorterDuff.Mode.MULTIPLY);
-        this.AnB.getBackground().setColorFilter(i, PorterDuff.Mode.MULTIPLY);
-        this.AnE.setColor(i);
-        this.AnI.setTextColor(i);
-        this.AnK.getDrawable().setColorFilter(i, PorterDuff.Mode.MULTIPLY);
+        this.FUJ.getBackground().setColorFilter(i, PorterDuff.Mode.MULTIPLY);
+        this.FUI.getBackground().setColorFilter(i, PorterDuff.Mode.MULTIPLY);
+        this.FUH.getBackground().setColorFilter(i, PorterDuff.Mode.MULTIPLY);
+        this.FUK.setColor(i);
+        this.FUO.setTextColor(i);
+        this.FUQ.getDrawable().setColorFilter(i, PorterDuff.Mode.MULTIPLY);
         AppMethodBeat.o(63260);
         return;
       }
-      this.AnD.getBackground().setColorFilter(-1, PorterDuff.Mode.MULTIPLY);
-      this.AnC.getBackground().setColorFilter(-1, PorterDuff.Mode.MULTIPLY);
-      this.AnB.getBackground().setColorFilter(-1, PorterDuff.Mode.MULTIPLY);
-      this.AnE.setColor(-1);
-      this.AnI.setTextColor(-1);
-      this.AnK.getDrawable().setColorFilter(-1, PorterDuff.Mode.MULTIPLY);
+      this.FUJ.getBackground().setColorFilter(-1, PorterDuff.Mode.MULTIPLY);
+      this.FUI.getBackground().setColorFilter(-1, PorterDuff.Mode.MULTIPLY);
+      this.FUH.getBackground().setColorFilter(-1, PorterDuff.Mode.MULTIPLY);
+      this.FUK.setColor(-1);
+      this.FUO.setTextColor(-1);
+      this.FUQ.getDrawable().setColorFilter(-1, PorterDuff.Mode.MULTIPLY);
     }
     AppMethodBeat.o(63260);
   }
@@ -257,7 +262,7 @@ public class MusicMainUI
     AppMethodBeat.i(63258);
     if ((-1 == paramInt2) && (1 == paramInt1))
     {
-      m.a(k.euj().etU(), paramIntent, this);
+      m.a(k.fet().fed(), paramIntent, this);
       AppMethodBeat.o(63258);
       return;
     }
@@ -276,39 +281,39 @@ public class MusicMainUI
   public void onClickSend(View paramView)
   {
     AppMethodBeat.i(63255);
-    Object localObject2 = k.euj().etU();
-    Log.i("MicroMsg.Music.MusicMainUI", "MusicType:%d, SongWebUrl ", new Object[] { Integer.valueOf(((com.tencent.mm.ay.f)localObject2).jeT), ((com.tencent.mm.ay.f)localObject2).jfd });
+    Object localObject2 = k.fet().fed();
+    Log.i("MicroMsg.Music.MusicMainUI", "MusicType:%d, SongWebUrl ", new Object[] { Integer.valueOf(((com.tencent.mm.bb.f)localObject2).lVr), ((com.tencent.mm.bb.f)localObject2).lVB });
     final String str1;
     Object localObject1;
     final String str2;
     Object localObject3;
-    if (((com.tencent.mm.ay.f)localObject2).jeT == 11)
+    if (((com.tencent.mm.bb.f)localObject2).lVr == 11)
     {
-      paramView = new ho();
+      paramView = new hv();
       EventCenter.instance.publish(paramView);
-      str1 = paramView.dMd.appId;
-      localObject1 = paramView.dMd.brandName;
-      str2 = paramView.dMd.appUserName;
-      final int i = paramView.dMd.dMe;
+      str1 = paramView.fER.appId;
+      localObject1 = paramView.fER.fzM;
+      str2 = paramView.fER.appUserName;
+      final int i = paramView.fER.fES;
       paramView = (View)localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         paramView = "";
       }
       Log.i("MicroMsg.Music.MusicMainUI", "from app brand, appId:%s, brandName:%s, pkgType:%d, appUserName:%s", new Object[] { str1, paramView, Integer.valueOf(i), str2 });
-      paramView = getString(2131761451, new Object[] { paramView });
-      if (!TextUtils.isEmpty(((com.tencent.mm.ay.f)localObject2).jfd))
+      paramView = getString(a.h.go_to_app_brand, new Object[] { paramView });
+      if (!TextUtils.isEmpty(((com.tencent.mm.bb.f)localObject2).lVB))
       {
         ArrayList localArrayList = new ArrayList();
-        localObject1 = getString(2131763407);
-        localObject3 = getString(2131763408);
-        String str3 = getString(2131757361);
+        localObject1 = getString(a.h.music_send_to_friend);
+        localObject3 = getString(a.h.music_share_timeline);
+        String str3 = getString(a.h.chatting_fav);
         localArrayList.add(Integer.valueOf(0));
         localArrayList.add(Integer.valueOf(2));
         localArrayList.add(Integer.valueOf(3));
         localArrayList.add(Integer.valueOf(4));
         localObject2 = new h.d()
         {
-          public final void oj(int paramAnonymousInt)
+          public final void qy(int paramAnonymousInt)
           {
             AppMethodBeat.i(63241);
             switch (paramAnonymousInt)
@@ -318,21 +323,21 @@ public class MusicMainUI
             {
               AppMethodBeat.o(63241);
               return;
-              m.av(MusicMainUI.this);
-              com.tencent.mm.plugin.music.model.d.e.SX(MusicMainUI.i(MusicMainUI.this));
-              com.tencent.mm.plugin.music.model.d.e.SZ(2);
+              m.aB(MusicMainUI.this);
+              com.tencent.mm.plugin.music.model.d.e.Zs(MusicMainUI.i(MusicMainUI.this));
+              com.tencent.mm.plugin.music.model.d.e.Zu(2);
               AppMethodBeat.o(63241);
               return;
-              m.c(this.jeI, MusicMainUI.this);
-              com.tencent.mm.plugin.music.model.d.e.SY(MusicMainUI.i(MusicMainUI.this));
-              com.tencent.mm.plugin.music.model.d.e.SZ(1);
+              m.c(this.lVh, MusicMainUI.this);
+              com.tencent.mm.plugin.music.model.d.e.Zt(MusicMainUI.i(MusicMainUI.this));
+              com.tencent.mm.plugin.music.model.d.e.Zu(1);
               AppMethodBeat.o(63241);
               return;
-              m.a(this.jeI, MusicMainUI.this);
-              com.tencent.mm.plugin.music.model.d.e.SZ(3);
+              m.a(this.lVh, MusicMainUI.this);
+              com.tencent.mm.plugin.music.model.d.e.Zu(3);
               AppMethodBeat.o(63241);
               return;
-              m.ag(str1, str2, i);
+              m.al(str1, str2, i);
             }
           }
         };
@@ -343,7 +348,7 @@ public class MusicMainUI
       new ArrayList().add(Integer.valueOf(1));
       localObject1 = new h.d()
       {
-        public final void oj(int paramAnonymousInt)
+        public final void qy(int paramAnonymousInt)
         {
           AppMethodBeat.i(63242);
           switch (paramAnonymousInt)
@@ -353,7 +358,7 @@ public class MusicMainUI
           {
             AppMethodBeat.o(63242);
             return;
-            m.ag(str1, str2, i);
+            m.al(str1, str2, i);
           }
         }
       };
@@ -361,20 +366,20 @@ public class MusicMainUI
       AppMethodBeat.o(63255);
       return;
     }
-    if (!TextUtils.isEmpty(((com.tencent.mm.ay.f)localObject2).jfd))
+    if (!TextUtils.isEmpty(((com.tencent.mm.bb.f)localObject2).lVB))
     {
       localObject3 = new ArrayList();
-      paramView = getString(2131763407);
-      localObject1 = getString(2131763408);
-      str1 = getString(2131757361);
-      str2 = getString(2131759166);
+      paramView = getString(a.h.music_send_to_friend);
+      localObject1 = getString(a.h.music_share_timeline);
+      str1 = getString(a.h.chatting_fav);
+      str2 = getString(a.h.fav_to_qq_music);
       ((List)localObject3).add(Integer.valueOf(0));
       ((List)localObject3).add(Integer.valueOf(2));
       ((List)localObject3).add(Integer.valueOf(3));
       ((List)localObject3).add(Integer.valueOf(4));
       localObject2 = new h.d()
       {
-        public final void oj(int paramAnonymousInt)
+        public final void qy(int paramAnonymousInt)
         {
           AppMethodBeat.i(63243);
           switch (paramAnonymousInt)
@@ -384,22 +389,22 @@ public class MusicMainUI
           {
             AppMethodBeat.o(63243);
             return;
-            m.av(MusicMainUI.this);
-            com.tencent.mm.plugin.music.model.d.e.SX(MusicMainUI.i(MusicMainUI.this));
-            com.tencent.mm.plugin.music.model.d.e.SZ(2);
+            m.aB(MusicMainUI.this);
+            com.tencent.mm.plugin.music.model.d.e.Zs(MusicMainUI.i(MusicMainUI.this));
+            com.tencent.mm.plugin.music.model.d.e.Zu(2);
             AppMethodBeat.o(63243);
             return;
-            m.c(this.jeI, MusicMainUI.this);
-            com.tencent.mm.plugin.music.model.d.e.SY(MusicMainUI.i(MusicMainUI.this));
-            com.tencent.mm.plugin.music.model.d.e.SZ(1);
+            m.c(this.lVh, MusicMainUI.this);
+            com.tencent.mm.plugin.music.model.d.e.Zt(MusicMainUI.i(MusicMainUI.this));
+            com.tencent.mm.plugin.music.model.d.e.Zu(1);
             AppMethodBeat.o(63243);
             return;
-            m.a(this.jeI, MusicMainUI.this);
-            com.tencent.mm.plugin.music.model.d.e.SZ(3);
+            m.a(this.lVh, MusicMainUI.this);
+            com.tencent.mm.plugin.music.model.d.e.Zu(3);
             AppMethodBeat.o(63243);
             return;
-            m.b(this.jeI, MusicMainUI.this);
-            com.tencent.mm.plugin.music.model.d.e.SZ(4);
+            m.b(this.lVh, MusicMainUI.this);
+            com.tencent.mm.plugin.music.model.d.e.Zu(4);
           }
         }
       };
@@ -422,112 +427,112 @@ public class MusicMainUI
     }
     this.mode = getIntent().getIntExtra("key_mode", 2);
     this.scene = getIntent().getIntExtra("key_scene", 0);
-    this.AkV = getIntent().getBooleanExtra("KGlobalShakeMusic", false);
-    this.AnF = ((MusicViewPager)findViewById(2131309864));
-    this.AnG = new b(this, this.scene, this.AkV);
-    this.AnF.setAdapter(this.AnG);
-    this.AnF.setOnPageChangeListener(this);
-    this.AnF.setSystemUiVisibility(4096);
-    this.AnC = ((ImageButton)findViewById(2131297163));
-    this.AnD = ((ImageButton)findViewById(2131307604));
-    if ((!this.AnS) && (com.tencent.mm.ui.ao.aQ(getContext())))
+    this.FSb = getIntent().getBooleanExtra("KGlobalShakeMusic", false);
+    this.FUL = ((MusicViewPager)findViewById(a.e.view_pager));
+    this.FUM = new b(this, this.scene, this.FSb);
+    this.FUL.setAdapter(this.FUM);
+    this.FUL.setOnPageChangeListener(this);
+    this.FUL.setSystemUiVisibility(4096);
+    this.FUI = ((ImageButton)findViewById(a.e.back_btn));
+    this.FUJ = ((ImageButton)findViewById(a.e.send_btn));
+    if ((!this.FUY) && (ar.aN(getContext())))
     {
-      eB(this.AnC);
-      eB(this.AnD);
-      this.AnS = true;
+      fB(this.FUI);
+      fB(this.FUJ);
+      this.FUY = true;
     }
-    this.AnB = ((CheckBox)findViewById(2131305109));
-    paramBundle = this.AnB;
+    this.FUH = ((CheckBox)findViewById(a.e.music_play_btn));
+    paramBundle = this.FUH;
     boolean bool;
     int i;
-    if (!k.euj().etW().bec())
+    if (!k.fet().feg().bnx())
     {
       bool = true;
       paramBundle.setChecked(bool);
-      this.shakeSensor = new com.tencent.mm.pluginsdk.l.d();
-      this.AnB.setOnClickListener(new View.OnClickListener()
+      this.shakeSensor = new com.tencent.mm.pluginsdk.m.d();
+      this.FUH.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(63228);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/music/ui/MusicMainUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/music/ui/MusicMainUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           MusicMainUI.a(MusicMainUI.this);
           if (MusicMainUI.b(MusicMainUI.this).isChecked())
           {
-            com.tencent.mm.ay.a.bdY();
+            com.tencent.mm.bb.a.bnt();
             MusicMainUI.b(MusicMainUI.this).setChecked(true);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/music/ui/MusicMainUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(63228);
             return;
           }
           MusicMainUI.c(MusicMainUI.this);
-          if (k.euj().etW().bee()) {
-            k.euj().etW().resume();
+          if (k.fet().feg().bnz()) {
+            k.fet().feg().resume();
           }
           for (;;)
           {
             MusicMainUI.b(MusicMainUI.this).setChecked(false);
             break;
-            k.euj().s(null);
+            k.fet().s(null);
           }
         }
       });
-      EventCenter.instance.addListener(this.lEl);
-      this.AnE = ((MusicSeekBar)findViewById(2131305110));
-      this.AnE.setOnSeekBarChange(new MusicSeekBar.a()
+      EventCenter.instance.addListener(this.ozM);
+      this.FUK = ((MusicSeekBar)findViewById(a.e.music_seek_bar));
+      this.FUK.setOnSeekBarChange(new MusicSeekBar.a()
       {
-        public final void As(int paramAnonymousInt)
+        public final void DZ(int paramAnonymousInt)
         {
           AppMethodBeat.i(63231);
-          com.tencent.mm.ay.a.tG(paramAnonymousInt);
+          com.tencent.mm.bb.a.wG(paramAnonymousInt);
           MusicMainUI.d(MusicMainUI.this).setProgress(paramAnonymousInt);
-          MusicMainUI.d(MusicMainUI.this).jl(true);
+          MusicMainUI.d(MusicMainUI.this).kw(true);
           AppMethodBeat.o(63231);
         }
       });
-      this.AnH = ((LinearLayout)findViewById(2131305113));
-      this.AnJ = ((ImageView)findViewById(2131305097));
-      this.AnI = ((TextView)findViewById(2131301705));
-      this.AnK = ((ImageView)findViewById(2131301704));
-      this.AnH.setOnClickListener(new View.OnClickListener()
+      this.FUN = ((LinearLayout)findViewById(a.e.music_source_layout));
+      this.FUP = ((ImageView)findViewById(a.e.music_logo));
+      this.FUO = ((TextView)findViewById(a.e.forward_to_tv));
+      this.FUQ = ((ImageView)findViewById(a.e.forward_to_arrow));
+      this.FUN.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(63232);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/music/ui/MusicMainUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/music/ui/MusicMainUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           MusicMainUI.e(MusicMainUI.this);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/music/ui/MusicMainUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(63232);
         }
       });
-      this.AnH.setVisibility(8);
-      if (!this.shakeSensor.gom()) {
+      this.FUN.setVisibility(8);
+      if (!this.shakeSensor.hiW()) {
         Log.w("MicroMsg.Music.MusicMainUI", "not support shake");
       }
-      evl();
+      ffE();
       i = this.scene;
-      paramBundle = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aS(com.tencent.mm.plugin.music.e.e.class)).etY();
+      paramBundle = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).fei();
       if (paramBundle != null)
       {
         Log.v("MicroMsg.Music.MusicReportUtil", "kvReportEnterMusicUI: %d, %d, %s, %s, %s, %s, %s, %s", new Object[] { Integer.valueOf(13041), Integer.valueOf(i), paramBundle.field_musicId, paramBundle.field_songName, paramBundle.field_songAlbum, Integer.valueOf(paramBundle.field_songId), paramBundle.field_songSinger, paramBundle.field_appId });
-        com.tencent.mm.plugin.report.service.h.CyF.a(13041, new Object[] { Integer.valueOf(i), paramBundle.field_musicId, paramBundle.field_songName, paramBundle.field_songAlbum, Integer.valueOf(paramBundle.field_songId), paramBundle.field_songSinger, paramBundle.field_appId });
+        com.tencent.mm.plugin.report.service.h.IzE.a(13041, new Object[] { Integer.valueOf(i), paramBundle.field_musicId, paramBundle.field_songName, paramBundle.field_songAlbum, Integer.valueOf(paramBundle.field_songId), paramBundle.field_songSinger, paramBundle.field_appId });
       }
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(285L, 1L, 1L, false);
-      paramBundle = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aS(com.tencent.mm.plugin.music.e.e.class)).etY();
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(285L, 1L, 1L, false);
+      paramBundle = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).fei();
       if (paramBundle != null) {
-        break label845;
+        break label832;
       }
       String str = getIntent().getStringExtra("db_music_id");
       if (TextUtils.isEmpty(str)) {
-        break label845;
+        break label832;
       }
-      paramBundle = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aS(com.tencent.mm.plugin.music.e.e.class)).aHL(str);
+      paramBundle = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).aSa(str);
     }
-    label845:
+    label832:
     for (;;)
     {
       if (paramBundle == null)
@@ -538,31 +543,27 @@ public class MusicMainUI
         bool = false;
         break;
       }
-      this.AnF.setCurrentItem(((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aS(com.tencent.mm.plugin.music.e.e.class)).eue() + 100000);
-      if ((this.scene == 4) && (((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aS(com.tencent.mm.plugin.music.e.e.class)).getMode() == 2))
+      this.FUL.setCurrentItem(((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).feo() + 100000);
+      if ((this.scene == 4) && (((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).getMode() == 2))
       {
-        i = g.aAh().azQ().getInt(83, 0);
+        i = com.tencent.mm.kernel.h.aHG().aHp().getInt(83, 0);
         if (i < 3)
         {
-          Toast.makeText(this, 2131761040, 0).show();
-          g.aAh().azQ().set(83, Integer.valueOf(i + 1));
+          Toast.makeText(this, a.h.fts_search_enter_wording, 0).show();
+          com.tencent.mm.kernel.h.aHG().aHp().i(83, Integer.valueOf(i + 1));
         }
       }
       if (this.scene == 5) {
         com.tencent.mm.plugin.music.model.d.e.a(0, paramBundle);
       }
       k(paramBundle);
-      if (this.mode == 1)
-      {
-        if (this.AnU == null) {
-          this.AnU = new Timer();
-        }
-        this.AnU.schedule(new TimerTask()
+      if (this.mode == 1) {
+        this.FVa = com.tencent.e.h.ZvG.b(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(63240);
-            MusicMainUI.m(MusicMainUI.this).fn(0, 0);
+            MusicMainUI.m(MusicMainUI.this).fK(0, 0);
             AppMethodBeat.o(63240);
           }
         }, 0L, 500L);
@@ -577,26 +578,26 @@ public class MusicMainUI
     AppMethodBeat.i(63253);
     super.onDestroy();
     if (this.shakeSensor != null) {
-      this.shakeSensor.cBo();
+      this.shakeSensor.cPS();
     }
-    if (this.AnG != null)
+    if (this.FUM != null)
     {
-      Object localObject = this.AnG;
-      ((b)localObject).Aky.removeCallbacksAndMessages(null);
-      localObject = ((b)localObject).Ank;
-      ((com.tencent.mm.plugin.music.model.i)localObject).Aky.removeCallbacksAndMessages(null);
-      ((com.tencent.mm.plugin.music.model.i)localObject).gnw.clear();
+      Object localObject = this.FUM;
+      ((b)localObject).FRC.removeCallbacksAndMessages(null);
+      localObject = ((b)localObject).FUr;
+      ((com.tencent.mm.plugin.music.model.i)localObject).FRC.removeCallbacksAndMessages(null);
+      ((com.tencent.mm.plugin.music.model.i)localObject).iRF.clear();
     }
-    if (this.AnE != null) {
-      this.AnE.jl(false);
+    if (this.FUK != null) {
+      this.FUK.kw(false);
     }
-    evm();
-    EventCenter.instance.removeListener(this.lEl);
-    k.euj().etW().c(this.AhI);
-    if (!k.euj().etW().bec()) {
-      k.euj().etW().stopPlay();
+    ffF();
+    EventCenter.instance.removeListener(this.ozM);
+    k.fet().feg().b(this.FOE);
+    if (!k.fet().feg().bnx()) {
+      k.fet().feg().stopPlay();
     }
-    ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aS(com.tencent.mm.plugin.music.e.e.class)).euf();
+    ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).fep();
     AppMethodBeat.o(63253);
   }
   
@@ -608,20 +609,20 @@ public class MusicMainUI
   {
     AppMethodBeat.i(63257);
     Log.i("MicroMsg.Music.MusicMainUI", "onPageSelected %d", new Object[] { Integer.valueOf(paramInt) });
-    if (((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aS(com.tencent.mm.plugin.music.e.e.class)).eug()) {
-      this.AnF.setCanSlide(false);
+    if (((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).feq()) {
+      this.FUL.setCanSlide(false);
     }
-    this.goC.removeCallbacksAndMessages(null);
-    this.goC.postDelayed(new a(paramInt), 500L);
-    if (this.wAr == -1) {
-      this.wAr = paramInt;
+    this.iSL.removeCallbacksAndMessages(null);
+    this.iSL.postDelayed(new a(paramInt), 500L);
+    if (this.BoC == -1) {
+      this.BoC = paramInt;
     }
-    if (this.wAr != paramInt)
+    if (this.BoC != paramInt)
     {
-      this.wAr = paramInt;
-      com.tencent.mm.plugin.music.model.d.e.Alx = true;
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(285L, 3L, 1L, false);
-      com.tencent.mm.plugin.music.model.d.e.hu(1, this.scene);
+      this.BoC = paramInt;
+      com.tencent.mm.plugin.music.model.d.e.FSE = true;
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(285L, 3L, 1L, false);
+      com.tencent.mm.plugin.music.model.d.e.iy(1, this.scene);
     }
     AppMethodBeat.o(63257);
   }
@@ -631,39 +632,39 @@ public class MusicMainUI
     int k = 1;
     AppMethodBeat.i(63250);
     super.onPause();
-    this.AnN = System.currentTimeMillis();
-    Object localObject2 = k.euj().etU();
-    Object localObject1 = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aS(com.tencent.mm.plugin.music.e.e.class)).etY();
+    this.FUT = System.currentTimeMillis();
+    Object localObject2 = k.fet().fed();
+    Object localObject1 = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).fei();
     if ((localObject2 == null) || (localObject1 == null))
     {
       if (this.shakeSensor != null) {
-        this.shakeSensor.cBo();
+        this.shakeSensor.cPS();
       }
-      k.euj().etW().c(this.AhI);
+      k.fet().feg().b(this.FOE);
       AppMethodBeat.o(63250);
       return;
     }
     if (!TextUtils.isEmpty(((com.tencent.mm.plugin.music.model.e.a)localObject1).field_songLyric)) {}
     for (int i = 1;; i = 0)
     {
-      if (!TextUtils.isEmpty(((com.tencent.mm.ay.f)localObject2).jfw)) {
-        this.AnQ = ((com.tencent.mm.ay.f)localObject2).jfw;
+      if (!TextUtils.isEmpty(((com.tencent.mm.bb.f)localObject2).lVU)) {
+        this.FUW = ((com.tencent.mm.bb.f)localObject2).lVU;
       }
-      com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.CyF;
-      long l1 = this.AnM;
-      long l2 = this.AnN;
+      com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.IzE;
+      long l1 = this.FUS;
+      long l2 = this.FUT;
       localObject1 = ((com.tencent.mm.plugin.music.model.e.a)localObject1).field_songName;
-      String str1 = this.AnO;
+      String str1 = this.FUU;
       int j;
       label161:
       int m;
       String str2;
-      if (this.AnP)
+      if (this.FUV)
       {
         j = 1;
-        m = ((com.tencent.mm.ay.f)localObject2).jeT;
-        localObject2 = this.AnQ;
-        str2 = this.AnR;
+        m = ((com.tencent.mm.bb.f)localObject2).lVr;
+        localObject2 = this.FUW;
+        str2 = this.FUX;
         if (this.scene != 9) {
           break label299;
         }
@@ -684,12 +685,12 @@ public class MusicMainUI
   {
     AppMethodBeat.i(63249);
     super.onResume();
-    this.AnM = System.currentTimeMillis();
-    this.AnP = false;
-    if (((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aS(com.tencent.mm.plugin.music.e.e.class)).etZ()) {
-      if (!this.AkV)
+    this.FUS = System.currentTimeMillis();
+    this.FUV = false;
+    if (((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).fej()) {
+      if (!this.FSb)
       {
-        if ((this.shakeSensor != null) && (this.shakeSensor.gom()) && (!this.shakeSensor.gok())) {
+        if ((this.shakeSensor != null) && (this.shakeSensor.hiW()) && (!this.shakeSensor.hiU())) {
           this.shakeSensor.a(new b((byte)0));
         }
         this.lastShakeTime = Util.currentTicks();
@@ -697,12 +698,12 @@ public class MusicMainUI
     }
     for (;;)
     {
-      k.euj().etW().b(this.AhI);
-      cBY();
+      k.fet().feg().a(this.FOE);
+      cQC();
       AppMethodBeat.o(63249);
       return;
       Log.i("MicroMsg.Music.MusicMainUI", "no need to shake music");
-      ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aS(com.tencent.mm.plugin.music.e.e.class)).eub();
+      ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).fel();
     }
   }
   
@@ -710,26 +711,26 @@ public class MusicMainUI
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
-    AppMethodBeat.i(219881);
+    AppMethodBeat.i(259989);
     AppMethodBeat.at(this, paramBoolean);
     super.onWindowFocusChanged(paramBoolean);
     if (paramBoolean)
     {
       getWindow().getDecorView().setSystemUiVisibility(1280);
-      setActionbarColor(getContext().getResources().getColor(2131101287));
+      setActionbarColor(getContext().getResources().getColor(a.b.transparent));
       hideActionbarLine();
-      if (!this.AnS)
+      if (!this.FUY)
       {
-        if (this.AnC != null) {
-          eB(this.AnC);
+        if (this.FUI != null) {
+          fB(this.FUI);
         }
-        if (this.AnD != null) {
-          eB(this.AnD);
+        if (this.FUJ != null) {
+          fB(this.FUJ);
         }
-        this.AnS = true;
+        this.FUY = true;
       }
     }
-    AppMethodBeat.o(219881);
+    AppMethodBeat.o(259989);
   }
   
   final class a
@@ -745,17 +746,17 @@ public class MusicMainUI
     public final void run()
     {
       AppMethodBeat.i(63245);
-      ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aS(com.tencent.mm.plugin.music.e.e.class)).SO(this.position);
-      com.tencent.mm.plugin.music.model.e.a locala = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aS(com.tencent.mm.plugin.music.e.e.class)).etY();
+      ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).Zk(this.position);
+      com.tencent.mm.plugin.music.model.e.a locala = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).fei();
       if (locala == null)
       {
         AppMethodBeat.o(63245);
         return;
       }
-      if (locala.euM()) {
+      if (locala.fff()) {
         MusicMainUI.this.l(locala);
       }
-      if (((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aS(com.tencent.mm.plugin.music.e.e.class)).eug()) {
+      if (((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).feq()) {
         MusicMainUI.k(MusicMainUI.this).setCanSlide(true);
       }
       MusicMainUI.a(MusicMainUI.this, locala);
@@ -764,7 +765,7 @@ public class MusicMainUI
   }
   
   final class b
-    extends com.tencent.mm.pluginsdk.l.d.a
+    extends com.tencent.mm.pluginsdk.m.d.a
   {
     private b() {}
     
@@ -785,7 +786,7 @@ public class MusicMainUI
       MusicMainUI.a(MusicMainUI.this, Util.currentTicks());
       MusicMainUI.g(MusicMainUI.this);
       if (MusicMainUI.h(MusicMainUI.this) % 2 == 0) {
-        ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.aS(com.tencent.mm.plugin.music.e.e.class)).Pl(MusicMainUI.i(MusicMainUI.this));
+        ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).Vu(MusicMainUI.i(MusicMainUI.this));
       }
       AppMethodBeat.o(63246);
     }
@@ -793,7 +794,7 @@ public class MusicMainUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.MusicMainUI
  * JD-Core Version:    0.7.0.1
  */

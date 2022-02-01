@@ -3,43 +3,38 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class egs
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int NgD;
-  public String UserName;
+  public int CPw;
+  public int Uji;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152711);
+    AppMethodBeat.i(124555);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.NgD);
-      if (this.UserName != null) {
-        paramVarArgs.e(2, this.UserName);
-      }
-      AppMethodBeat.o(152711);
+      paramVarArgs.aY(1, this.CPw);
+      paramVarArgs.aY(2, this.Uji);
+      AppMethodBeat.o(124555);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bu(1, this.NgD) + 0;
-      paramInt = i;
-      if (this.UserName != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.UserName);
-      }
-      AppMethodBeat.o(152711);
-      return paramInt;
+      paramInt = g.a.a.b.b.a.bM(1, this.CPw);
+      int i = g.a.a.b.b.a.bM(2, this.Uji);
+      AppMethodBeat.o(124555);
+      return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(152711);
+      AppMethodBeat.o(124555);
       return 0;
     }
     if (paramInt == 3)
@@ -49,18 +44,18 @@ public final class egs
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(152711);
+        AppMethodBeat.o(124555);
         return -1;
       case 1: 
-        localegs.NgD = locala.UbS.zi();
-        AppMethodBeat.o(152711);
+        localegs.CPw = locala.abFh.AK();
+        AppMethodBeat.o(124555);
         return 0;
       }
-      localegs.UserName = locala.UbS.readString();
-      AppMethodBeat.o(152711);
+      localegs.Uji = locala.abFh.AK();
+      AppMethodBeat.o(124555);
       return 0;
     }
-    AppMethodBeat.o(152711);
+    AppMethodBeat.o(124555);
     return -1;
   }
 }

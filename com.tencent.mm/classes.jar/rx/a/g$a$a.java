@@ -6,7 +6,7 @@ import java.util.Set;
 
 final class g$a$a
 {
-  static final Set<Class<?>> Ukm;
+  static final Set<Class<?>> abNI;
   
   static
   {
@@ -20,13 +20,13 @@ final class g$a$a
     localHashSet.add(Long.class);
     localHashSet.add(Float.class);
     localHashSet.add(Double.class);
-    Ukm = localHashSet;
+    abNI = localHashSet;
     AppMethodBeat.o(90052);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     rx.a.g.a.a
  * JD-Core Version:    0.7.0.1
  */

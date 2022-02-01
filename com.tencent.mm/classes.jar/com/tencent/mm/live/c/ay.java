@@ -9,70 +9,71 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.b.x;
+import com.tencent.mm.live.b.e;
+import com.tencent.mm.live.b.u;
 import com.tencent.mm.live.d.e;
 import com.tencent.mm.live.d.f;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.protobuf.civ;
+import com.tencent.mm.protocal.protobuf.crq;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.at;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.ax;
 import kotlin.g.b.p;
 import kotlin.t;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/plugin/LiveTitleInfoPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "acatarIcon", "Landroid/widget/ImageView;", "anchorUsername", "", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "value", "", "mNavigatorHeight", "setMNavigatorHeight", "(I)V", "nameTv", "Landroid/widget/TextView;", "titleTv", "resume", "", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "updateLiveTitle", "title", "", "username", "plugin-logic_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/plugin/LiveTitleInfoPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "acatarIcon", "Landroid/widget/ImageView;", "anchorUsername", "", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "value", "", "mNavigatorHeight", "setMNavigatorHeight", "(I)V", "nameTv", "Landroid/widget/TextView;", "titleTv", "resume", "", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "updateLiveTitle", "title", "", "username", "plugin-logic_release"})
 public final class ay
   extends a
 {
   private Context context;
-  private final TextView gxs;
-  final b hOp;
-  private int hOw;
-  private final ImageView hSF;
-  String hwd;
+  private final TextView jbF;
+  private final b kCL;
+  private int kCS;
+  private final ImageView kHc;
+  private String kig;
   private final TextView titleTv;
   
   public ay(ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(208183);
-    this.hOp = paramb;
+    AppMethodBeat.i(196921);
+    this.kCL = paramb;
     this.context = paramViewGroup.getContext();
-    paramb = paramViewGroup.findViewById(2131303591);
-    p.g(paramb, "root.findViewById(R.id.l…e_title_info_avatar_icon)");
-    this.hSF = ((ImageView)paramb);
-    paramb = paramViewGroup.findViewById(2131303593);
-    p.g(paramb, "root.findViewById(R.id.live_title_info_name_tv)");
-    this.gxs = ((TextView)paramb);
-    paramb = paramViewGroup.findViewById(2131303595);
-    p.g(paramb, "root.findViewById(R.id.live_title_info_title_tv)");
+    paramb = paramViewGroup.findViewById(b.e.live_title_info_avatar_icon);
+    p.j(paramb, "root.findViewById(R.id.l…e_title_info_avatar_icon)");
+    this.kHc = ((ImageView)paramb);
+    paramb = paramViewGroup.findViewById(b.e.live_title_info_name_tv);
+    p.j(paramb, "root.findViewById(R.id.live_title_info_name_tv)");
+    this.jbF = ((TextView)paramb);
+    paramb = paramViewGroup.findViewById(b.e.live_title_info_title_tv);
+    p.j(paramb, "root.findViewById(R.id.live_title_info_title_tv)");
     this.titleTv = ((TextView)paramb);
-    this.hOw = au.aD(paramViewGroup.getContext());
-    this.hSF.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.kCS = ax.aB(paramViewGroup.getContext());
+    this.kHc.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(208178);
+        AppMethodBeat.i(195683);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveTitleInfoPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/plugin/LiveTitleInfoPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
         paramAnonymousView = new Bundle();
-        paramAnonymousView.putString("PARAM_MEMBERS_PROFILE_USERNAME", this.hSG.hwd);
-        this.hSG.hOp.statusChange(b.c.hMk, paramAnonymousView);
-        if (this.hSG.hOp.getLiveRole() == 0)
+        paramAnonymousView.putString("PARAM_MEMBERS_PROFILE_USERNAME", ay.a(this.kHd));
+        ay.b(this.kHd).statusChange(b.c.kzF, paramAnonymousView);
+        if (ay.b(this.kHd).getLiveRole() == 0)
         {
-          paramAnonymousView = x.hJf;
-          paramAnonymousView = x.aGm();
-          localObject = x.hJf;
-          long l = x.aGr().hyH;
-          localObject = x.hJf;
-          localObject = x.aGt();
-          x localx = x.hJf;
-          e.a(paramAnonymousView, l, (String)localObject, 8, 1, x.aGr().LIa);
-          f.aIO();
+          paramAnonymousView = u.kwz;
+          paramAnonymousView = u.aOm();
+          localObject = u.kwz;
+          long l = u.aOr().klE;
+          localObject = u.kwz;
+          localObject = u.aOt();
+          u localu = u.kwz;
+          e.a(paramAnonymousView, l, (String)localObject, 8, 1, u.aOr().SOs);
+          f.aQM();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveTitleInfoPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(208178);
+        AppMethodBeat.o(195683);
       }
     });
     if ((paramViewGroup.getLayoutParams() != null) && ((paramViewGroup.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)) && (isLandscape())) {
@@ -82,122 +83,122 @@ public final class ay
     }
     for (;;)
     {
-      AppMethodBeat.o(208183);
+      AppMethodBeat.o(196921);
       return;
       paramb = paramViewGroup.getLayoutParams();
       if (paramb == null)
       {
         paramViewGroup = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-        AppMethodBeat.o(208183);
+        AppMethodBeat.o(196921);
         throw paramViewGroup;
       }
-      ((ViewGroup.MarginLayoutParams)paramb).setMarginStart(au.aD(paramViewGroup.getContext()));
-      AppMethodBeat.o(208183);
+      ((ViewGroup.MarginLayoutParams)paramb).setMarginStart(ax.aB(paramViewGroup.getContext()));
+      AppMethodBeat.o(196921);
       return;
       paramb = paramViewGroup.getLayoutParams();
       if (paramb == null)
       {
         paramViewGroup = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-        AppMethodBeat.o(208183);
+        AppMethodBeat.o(196921);
         throw paramViewGroup;
       }
-      ((ViewGroup.MarginLayoutParams)paramb).setMarginStart(at.fromDPToPix(paramViewGroup.getContext(), 16));
+      ((ViewGroup.MarginLayoutParams)paramb).setMarginStart(aw.fromDPToPix(paramViewGroup.getContext(), 16));
     }
   }
   
   public final void a(CharSequence paramCharSequence, String paramString)
   {
-    AppMethodBeat.i(208181);
-    p.h(paramCharSequence, "title");
-    p.h(paramString, "username");
-    this.hwd = paramString;
-    a.b.c(this.hSF, paramString);
+    AppMethodBeat.i(196902);
+    p.k(paramCharSequence, "title");
+    p.k(paramString, "username");
+    this.kig = paramString;
+    a.b.c(this.kHc, paramString);
     this.titleTv.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.b(this.context, paramCharSequence, this.titleTv.getTextSize()));
-    TextView localTextView = this.gxs;
-    Context localContext = this.hwr.getContext();
-    x localx = x.hJf;
-    localTextView.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.b(localContext, (CharSequence)x.GV(paramString), this.titleTv.getTextSize()));
+    TextView localTextView = this.jbF;
+    Context localContext = this.kiF.getContext();
+    u localu = u.kwz;
+    localTextView.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.b(localContext, (CharSequence)u.Og(paramString), this.titleTv.getTextSize()));
     if (Util.isNullOrNil(paramCharSequence))
     {
       this.titleTv.setVisibility(8);
-      this.gxs.requestLayout();
-      AppMethodBeat.o(208181);
+      this.jbF.requestLayout();
+      AppMethodBeat.o(196902);
       return;
     }
     this.titleTv.setVisibility(0);
-    AppMethodBeat.o(208181);
+    AppMethodBeat.o(196902);
   }
   
   public final void resume()
   {
-    AppMethodBeat.i(208180);
+    AppMethodBeat.i(196900);
     super.resume();
-    int j = au.aD(this.hwr.getContext());
+    int j = ax.aB(this.kiF.getContext());
     int i = j;
     if (j == 0) {
-      i = at.fromDPToPix(this.hwr.getContext(), 16);
+      i = aw.fromDPToPix(this.kiF.getContext(), 16);
     }
-    this.hOw = i;
-    AppMethodBeat.o(208180);
+    this.kCS = i;
+    AppMethodBeat.o(196900);
   }
   
   public final void statusChange(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(208182);
-    p.h(paramc, "status");
+    AppMethodBeat.i(196906);
+    p.k(paramc, "status");
     super.statusChange(paramc, paramBundle);
     switch (az.$EnumSwitchMapping$0[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(208182);
+      AppMethodBeat.o(196906);
       return;
-      rg(4);
-      AppMethodBeat.o(208182);
+      tU(4);
+      AppMethodBeat.o(196906);
       return;
-      rg(0);
-      AppMethodBeat.o(208182);
+      tU(0);
+      AppMethodBeat.o(196906);
       return;
-      if (this.hOp.getLiveRole() == 0)
+      if (this.kCL.getLiveRole() == 0)
       {
         if ((paramBundle != null) && (paramBundle.getBoolean("PARAM_IS_ENTERING_COMMENT") == true))
         {
-          rg(4);
-          AppMethodBeat.o(208182);
+          tU(4);
+          AppMethodBeat.o(196906);
           return;
         }
-        rg(0);
-        AppMethodBeat.o(208182);
+        tU(0);
+        AppMethodBeat.o(196906);
         return;
-        if ((this.hwr.getLayoutParams() != null) && ((this.hwr.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))) {
+        if ((this.kiF.getLayoutParams() != null) && ((this.kiF.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))) {
           switch (getCurrentOrientation())
           {
           case 2: 
           default: 
             break;
           case 1: 
-            paramc = this.hwr.getLayoutParams();
+            paramc = this.kiF.getLayoutParams();
             if (paramc == null)
             {
               paramc = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-              AppMethodBeat.o(208182);
+              AppMethodBeat.o(196906);
               throw paramc;
             }
           case 3: 
-            paramc = this.hwr.getLayoutParams();
+            paramc = this.kiF.getLayoutParams();
             if (paramc == null)
             {
               paramc = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-              AppMethodBeat.o(208182);
+              AppMethodBeat.o(196906);
               throw paramc;
             }
-            ((ViewGroup.MarginLayoutParams)paramc).setMarginStart(this.hOw);
-            this.hwr.requestLayout();
-            AppMethodBeat.o(208182);
+            ((ViewGroup.MarginLayoutParams)paramc).setMarginStart(this.kCS);
+            this.kiF.requestLayout();
+            AppMethodBeat.o(196906);
             return;
-            ((ViewGroup.MarginLayoutParams)paramc).setMarginStart(at.fromDPToPix(this.hwr.getContext(), 16));
-            this.hwr.requestLayout();
+            ((ViewGroup.MarginLayoutParams)paramc).setMarginStart(aw.fromDPToPix(this.kiF.getContext(), 16));
+            this.kiF.requestLayout();
           }
         }
       }
@@ -206,7 +207,7 @@ public final class ay
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.c.ay
  * JD-Core Version:    0.7.0.1
  */

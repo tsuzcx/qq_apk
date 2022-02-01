@@ -1,29 +1,27 @@
 package com.tencent.mm.plugin.taskbar;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.k;
-import com.tencent.mm.ipcinvoker.type.IPCBoolean;
-import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import android.graphics.Bitmap;
+import com.tencent.mm.kernel.b.a;
+import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
+import com.tencent.mm.protocal.protobuf.dar;
+import java.util.List;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/taskbar/HasTaskInfo;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "()V", "TAG", "", "invoke", "id", "plugin-taskbar_release"})
-public final class c
-  implements k<IPCString, IPCBoolean>
+public abstract interface c
+  extends a
 {
-  private final String TAG;
+  public abstract void addOrUpdateTaskInfoByBitmap(String paramString, int paramInt, dar paramdar, Bitmap paramBitmap, byte[] paramArrayOfByte);
   
-  public c()
-  {
-    AppMethodBeat.i(238394);
-    this.TAG = "MicroMsg.TaskBar.GetTaskInfo";
-    Log.i(this.TAG, "create get task info");
-    AppMethodBeat.o(238394);
-  }
+  public abstract MultiTaskInfo getTaskInfoById(String paramString);
+  
+  public abstract List<MultiTaskInfo> getTaskInfoByType(int paramInt);
+  
+  public abstract void removeTaskInfo(String paramString, boolean paramBoolean, int paramInt);
+  
+  public abstract void updateTaskInfoByBitmap(String paramString, int paramInt, dar paramdar, Bitmap paramBitmap, byte[] paramArrayOfByte, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.taskbar.c
  * JD-Core Version:    0.7.0.1
  */

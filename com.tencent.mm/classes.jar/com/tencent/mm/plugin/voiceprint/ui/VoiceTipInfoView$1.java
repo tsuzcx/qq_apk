@@ -5,9 +5,9 @@ final class VoiceTipInfoView$1
 {
   VoiceTipInfoView$1(VoiceTipInfoView paramVoiceTipInfoView) {}
   
-  public final void fEL() {}
+  public final void gwY() {}
   
-  public final void fEM() {}
+  public final void gwZ() {}
 }
 
 

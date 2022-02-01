@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.voip_cs.c.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.eta;
-import com.tencent.mm.protocal.protobuf.etb;
+import com.tencent.mm.protocal.protobuf.fdl;
+import com.tencent.mm.protocal.protobuf.fdm;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
@@ -25,22 +25,22 @@ public final class c
   {
     AppMethodBeat.i(125428);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new eta();
-    ((d.a)localObject).iLO = new etb();
+    ((d.a)localObject).lBU = new fdl();
+    ((d.a)localObject).lBV = new fdm();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/csvoipinvite";
     ((d.a)localObject).funcId = 823;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (eta)this.rr.iLK.iLR;
-    ((eta)localObject).MKg = paramInt1;
-    ((eta)localObject).Nqu = paramString1;
-    ((eta)localObject).Llx = paramInt2;
-    ((eta)localObject).Nqv = b.cD(paramArrayOfByte1);
-    ((eta)localObject).Nqw = b.cD(paramArrayOfByte2);
-    ((eta)localObject).MKf = System.currentTimeMillis();
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (fdl)d.b.b(this.rr.lBR);
+    ((fdl)localObject).TWa = paramInt1;
+    ((fdl)localObject).UDq = paramString1;
+    ((fdl)localObject).SmH = paramInt2;
+    ((fdl)localObject).UDr = b.cU(paramArrayOfByte1);
+    ((fdl)localObject).UDs = b.cU(paramArrayOfByte2);
+    ((fdl)localObject).TVZ = System.currentTimeMillis();
     if ((paramString2 != null) && (!paramString2.equals(""))) {
-      ((eta)localObject).Nqx = paramString2;
+      ((fdl)localObject).UDt = paramString2;
     }
     AppMethodBeat.o(125428);
   }
@@ -69,7 +69,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.c.c.c
  * JD-Core Version:    0.7.0.1
  */

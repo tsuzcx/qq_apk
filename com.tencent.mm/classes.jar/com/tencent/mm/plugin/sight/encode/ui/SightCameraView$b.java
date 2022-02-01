@@ -7,10 +7,10 @@ public enum SightCameraView$b
   static
   {
     AppMethodBeat.i(28789);
-    DqA = new b("CREATE", 0);
-    DqB = new b("CHANGED", 1);
-    DqC = new b("DESTORY", 2);
-    DqD = new b[] { DqA, DqB, DqC };
+    Jwe = new b("CREATE", 0);
+    Jwf = new b("CHANGED", 1);
+    Jwg = new b("DESTORY", 2);
+    Jwh = new b[] { Jwe, Jwf, Jwg };
     AppMethodBeat.o(28789);
   }
   

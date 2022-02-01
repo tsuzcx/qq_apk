@@ -344,24 +344,22 @@ public final class DynamiteModule
     //   201	235	268	finally
     //   235	238	268	finally
     //   251	265	268	finally
-    //   270	273	268	finally
     //   23	52	282	java/lang/ClassNotFoundException
-    //   273	282	282	java/lang/ClassNotFoundException
+    //   270	282	282	java/lang/ClassNotFoundException
     //   9	14	329	finally
     //   23	52	329	finally
     //   84	89	329	finally
     //   89	92	329	finally
     //   190	193	329	finally
     //   238	241	329	finally
-    //   273	282	329	finally
+    //   270	282	329	finally
     //   284	326	329	finally
-    //   330	333	329	finally
     //   100	107	341	com/google/android/gms/dynamite/DynamiteModule$LoadingException
     //   115	120	402	com/google/android/gms/dynamite/DynamiteModule$LoadingException
     //   23	52	407	java/lang/NoSuchFieldException
-    //   273	282	407	java/lang/NoSuchFieldException
+    //   270	282	407	java/lang/NoSuchFieldException
     //   23	52	412	java/lang/IllegalAccessException
-    //   273	282	412	java/lang/IllegalAccessException
+    //   270	282	412	java/lang/IllegalAccessException
   }
   
   @VisibleForTesting
@@ -508,9 +506,8 @@ public final class DynamiteModule
     // Exception table:
     //   from	to	target	type
     //   22	29	33	finally
-    //   34	37	33	finally
     //   3	22	39	finally
-    //   37	39	39	finally
+    //   34	39	39	finally
   }
   
   @VisibleForTesting
@@ -689,7 +686,7 @@ public final class DynamiteModule
     //   59: astore_1
     //   60: aload 4
     //   62: instanceof 9
-    //   65: ifeq +153 -> 218
+    //   65: ifeq +155 -> 220
     //   68: aload_0
     //   69: astore_1
     //   70: sipush 5450
@@ -760,53 +757,55 @@ public final class DynamiteModule
     //   198: iload_3
     //   199: ireturn
     //   200: astore 4
-    //   202: ldc 2
-    //   204: monitorexit
-    //   205: aload_0
-    //   206: astore_1
-    //   207: sipush 5450
-    //   210: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   213: aload_0
-    //   214: astore_1
-    //   215: aload 4
-    //   217: athrow
-    //   218: aload_0
-    //   219: astore_1
-    //   220: new 9	com/google/android/gms/dynamite/DynamiteModule$LoadingException
-    //   223: dup
-    //   224: ldc_w 468
-    //   227: aload 4
-    //   229: aconst_null
-    //   230: invokespecial 358	com/google/android/gms/dynamite/DynamiteModule$LoadingException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;Lcom/google/android/gms/dynamite/zza;)V
-    //   233: astore 4
-    //   235: aload_0
-    //   236: astore_1
-    //   237: sipush 5450
-    //   240: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   243: aload_0
-    //   244: astore_1
-    //   245: aload 4
-    //   247: athrow
-    //   248: astore_0
-    //   249: aconst_null
-    //   250: astore_1
-    //   251: goto -169 -> 82
-    //   254: astore 4
-    //   256: aconst_null
-    //   257: astore_0
-    //   258: goto -200 -> 58
+    //   202: aload_0
+    //   203: astore_1
+    //   204: ldc 2
+    //   206: monitorexit
+    //   207: aload_0
+    //   208: astore_1
+    //   209: sipush 5450
+    //   212: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   215: aload_0
+    //   216: astore_1
+    //   217: aload 4
+    //   219: athrow
+    //   220: aload_0
+    //   221: astore_1
+    //   222: new 9	com/google/android/gms/dynamite/DynamiteModule$LoadingException
+    //   225: dup
+    //   226: ldc_w 468
+    //   229: aload 4
+    //   231: aconst_null
+    //   232: invokespecial 358	com/google/android/gms/dynamite/DynamiteModule$LoadingException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;Lcom/google/android/gms/dynamite/zza;)V
+    //   235: astore 4
+    //   237: aload_0
+    //   238: astore_1
+    //   239: sipush 5450
+    //   242: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   245: aload_0
+    //   246: astore_1
+    //   247: aload 4
+    //   249: athrow
+    //   250: astore_0
+    //   251: aconst_null
+    //   252: astore_1
+    //   253: goto -171 -> 82
+    //   256: astore 4
+    //   258: aconst_null
+    //   259: astore_0
+    //   260: goto -202 -> 58
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	261	0	paramContext	Context
-    //   0	261	1	paramString	String
-    //   0	261	2	paramBoolean	boolean
+    //   0	263	0	paramContext	Context
+    //   0	263	1	paramString	String
+    //   0	263	2	paramBoolean	boolean
     //   109	90	3	i	int
     //   41	13	4	localLoadingException1	LoadingException
     //   56	23	4	localException1	Exception
     //   111	75	4	localContext	Context
-    //   200	28	4	localThrowable	Throwable
-    //   233	13	4	localLoadingException2	LoadingException
-    //   254	1	4	localException2	Exception
+    //   200	30	4	localThrowable	Throwable
+    //   235	13	4	localLoadingException2	LoadingException
+    //   256	1	4	localException2	Exception
     //   146	26	5	localzza	zza
     // Exception table:
     //   from	to	target	type
@@ -819,8 +818,9 @@ public final class DynamiteModule
     //   137	148	56	java/lang/Exception
     //   161	169	56	java/lang/Exception
     //   171	177	56	java/lang/Exception
-    //   207	213	56	java/lang/Exception
-    //   215	218	56	java/lang/Exception
+    //   204	207	56	java/lang/Exception
+    //   209	215	56	java/lang/Exception
+    //   217	220	56	java/lang/Exception
     //   19	28	81	finally
     //   30	43	81	finally
     //   45	51	81	finally
@@ -833,15 +833,15 @@ public final class DynamiteModule
     //   137	148	81	finally
     //   161	169	81	finally
     //   171	177	81	finally
-    //   207	213	81	finally
-    //   215	218	81	finally
-    //   220	235	81	finally
-    //   237	243	81	finally
-    //   245	248	81	finally
+    //   204	207	81	finally
+    //   209	215	81	finally
+    //   217	220	81	finally
+    //   222	237	81	finally
+    //   239	245	81	finally
+    //   247	250	81	finally
     //   122	135	200	finally
-    //   202	205	200	finally
-    //   6	13	248	finally
-    //   6	13	254	java/lang/Exception
+    //   6	13	250	finally
+    //   6	13	256	java/lang/Exception
   }
   
   private static DynamiteModule zzb(Context paramContext, String paramString, int paramInt)
@@ -1025,7 +1025,6 @@ public final class DynamiteModule
     //   98	121	146	finally
     //   121	124	146	finally
     //   132	143	146	finally
-    //   147	150	146	finally
   }
   
   public final Context getModuleContext()
@@ -1134,7 +1133,7 @@ public final class DynamiteModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.gms.dynamite.DynamiteModule
  * JD-Core Version:    0.7.0.1
  */

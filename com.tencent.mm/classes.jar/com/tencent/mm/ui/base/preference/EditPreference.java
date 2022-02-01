@@ -10,18 +10,20 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ah.a.e;
+import com.tencent.mm.ah.a.k;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.a.d;
 
 public class EditPreference
   extends Preference
 {
-  a OXD;
-  private Preference.a OXy;
-  private d kdo;
+  private Preference.a WqI;
+  a WqN;
+  private EditText bGw;
+  private d mUO;
   String value;
-  private EditText vy;
   
   public EditPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,15 +37,15 @@ public class EditPreference
   
   public final void a(Preference.a parama)
   {
-    this.OXy = parama;
+    this.WqI = parama;
   }
   
-  public final void showDialog()
+  public final void elK()
   {
     AppMethodBeat.i(142539);
     final EditText localEditText;
-    if (this.vy != null) {
-      localEditText = this.vy;
+    if (this.bGw != null) {
+      localEditText = this.bGw;
     }
     for (;;)
     {
@@ -51,7 +53,7 @@ public class EditPreference
       if ((localObject instanceof ViewGroup.MarginLayoutParams))
       {
         localObject = (ViewGroup.MarginLayoutParams)localObject;
-        int i = localEditText.getResources().getDimensionPixelSize(2131165498);
+        int i = localEditText.getResources().getDimensionPixelSize(a.e.LargePadding);
         ((ViewGroup.MarginLayoutParams)localObject).leftMargin = i;
         ((ViewGroup.MarginLayoutParams)localObject).rightMargin = i;
         ((ViewGroup.MarginLayoutParams)localObject).topMargin = i;
@@ -60,7 +62,7 @@ public class EditPreference
       if (localEditText.getParent() != null) {
         ((ViewGroup)localEditText.getParent()).removeView(localEditText);
       }
-      this.kdo = h.a(this.mContext, getTitle().toString(), localEditText, a.aI(this.mContext, 2131755921), a.aI(this.mContext, 2131755761), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      this.mUO = h.a(this.mContext, getTitle().toString(), localEditText, a.ba(this.mContext, a.k.app_ok), a.ba(this.mContext, a.k.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -70,7 +72,7 @@ public class EditPreference
           }
           EditPreference.this.value = localEditText.getText().toString();
           if (EditPreference.b(EditPreference.this) != null) {
-            EditPreference.b(EditPreference.this).gLD();
+            EditPreference.b(EditPreference.this).hKF();
           }
           if (EditPreference.c(EditPreference.this) != null) {
             EditPreference.c(EditPreference.this).a(EditPreference.this, EditPreference.d(EditPreference.this));
@@ -99,12 +101,12 @@ public class EditPreference
   
   public static abstract interface a
   {
-    public abstract void gLD();
+    public abstract void hKF();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.EditPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ public final class b
     Log.i("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data from url:%s", new Object[] { parama });
     try
     {
-      paramb.a(a.Hj((String)parama.value()));
+      paramb.a(a.Ou((String)parama.aSr()));
       return;
     }
     catch (InterruptedException parama)
@@ -78,7 +78,7 @@ public final class b
   
   static final class a
   {
-    public static com.tencent.mm.loader.h.b Hj(String paramString)
+    public static com.tencent.mm.loader.h.b Ou(String paramString)
     {
       paramString = (HttpURLConnection)new URL(paramString).openConnection();
       paramString.setConnectTimeout(15000);
@@ -104,7 +104,7 @@ public final class b
       }
       Object localObject = paramString.getInputStream();
       String str = paramString.getContentType();
-      localObject = e.r((InputStream)localObject);
+      localObject = e.p((InputStream)localObject);
       try
       {
         paramString.getInputStream().close();

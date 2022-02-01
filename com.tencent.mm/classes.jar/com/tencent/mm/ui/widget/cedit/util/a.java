@@ -5,13 +5,13 @@ import java.lang.reflect.Method;
 
 public final class a<T>
 {
-  private Object QLN;
+  private Object YkF;
   private Method mMethod;
   
   public a(Object paramObject, String paramString, Class<?>... paramVarArgs)
   {
-    AppMethodBeat.i(206117);
-    this.QLN = paramObject;
+    AppMethodBeat.i(189774);
+    this.YkF = paramObject;
     paramObject = paramObject.getClass();
     for (;;)
     {
@@ -25,7 +25,7 @@ public final class a<T>
         if (this.mMethod == null) {
           new Throwable("MB ".concat(String.valueOf(paramString)));
         }
-        AppMethodBeat.o(206117);
+        AppMethodBeat.o(189774);
         return;
       }
       catch (Throwable localThrowable)
@@ -48,7 +48,7 @@ public final class a<T>
     //   13: astore_1
     //   14: aload_0
     //   15: aconst_null
-    //   16: putfield 25	com/tencent/mm/ui/widget/cedit/util/a:QLN	Ljava/lang/Object;
+    //   16: putfield 25	com/tencent/mm/ui/widget/cedit/util/a:YkF	Ljava/lang/Object;
     //   19: aload_1
     //   20: ldc 5
     //   22: if_acmpeq +27 -> 49
@@ -86,24 +86,24 @@ public final class a<T>
   
   public final T invoke(Object... paramVarArgs)
   {
-    AppMethodBeat.i(206119);
+    AppMethodBeat.i(189779);
     try
     {
       this.mMethod.setAccessible(true);
-      paramVarArgs = this.mMethod.invoke(this.QLN, paramVarArgs);
-      AppMethodBeat.o(206119);
+      paramVarArgs = this.mMethod.invoke(this.YkF, paramVarArgs);
+      AppMethodBeat.o(189779);
       return paramVarArgs;
     }
     catch (Throwable paramVarArgs)
     {
-      AppMethodBeat.o(206119);
+      AppMethodBeat.o(189779);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cedit.util.a
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.c.y;
+import com.tencent.mm.R.l;
+import com.tencent.mm.R.o;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.f.c.y;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.model.ab;
@@ -31,34 +33,34 @@ public class ServiceAppUI
   extends MMPreference
   implements i
 {
-  private ServicePreference FMA;
-  private ServicePreference FMB;
-  private PreferenceTitleCategory FMC;
-  private PreferenceTitleCategory FMD;
-  private List<g> FME;
-  private List<g> FMF;
-  private AdapterView.OnItemClickListener FMG;
-  private AdapterView.OnItemClickListener FMH;
+  private ServicePreference MgC;
+  private ServicePreference MgD;
+  private PreferenceTitleCategory MgE;
+  private PreferenceTitleCategory MgF;
+  private List<g> MgG;
+  private List<g> MgH;
+  private AdapterView.OnItemClickListener MgI;
+  private AdapterView.OnItemClickListener MgJ;
   private f screen;
   private String talker;
   
   public ServiceAppUI()
   {
     AppMethodBeat.i(29168);
-    this.FME = new ArrayList();
-    this.FMF = new ArrayList();
+    this.MgG = new ArrayList();
+    this.MgH = new ArrayList();
     AppMethodBeat.o(29168);
   }
   
   public int getResourceId()
   {
-    return 2132017258;
+    return R.o.eXO;
   }
   
   public void initView()
   {
     AppMethodBeat.i(29172);
-    setMMTitle(2131765242);
+    setMMTitle(R.l.eSn);
     this.talker = getIntent().getStringExtra("service_app_talker_user");
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -70,12 +72,12 @@ public class ServiceAppUI
         return true;
       }
     });
-    this.FME.clear();
-    this.FMF.clear();
+    this.MgG.clear();
+    this.MgH.clear();
     Cursor localCursor;
-    if (ab.Eq(this.talker))
+    if (ab.Lj(this.talker))
     {
-      localCursor = ao.eAS().hG(0, 2);
+      localCursor = ao.fmz().iL(0, 2);
       if (localCursor != null) {
         if (!localCursor.moveToFirst()) {}
       }
@@ -86,7 +88,7 @@ public class ServiceAppUI
       g localg = new g();
       localg.convertFrom(localCursor);
       if (localg.field_serviceAppType == 1) {
-        this.FME.add(localg);
+        this.MgG.add(localg);
       }
       for (;;)
       {
@@ -94,19 +96,19 @@ public class ServiceAppUI
           break label510;
         }
         localCursor.close();
-        Log.i("MicroMsg.ServiceAppUI", "initAppList: wxServiceList size %s, bizServiceList size %s", new Object[] { Integer.valueOf(this.FME.size()), Integer.valueOf(this.FMF.size()) });
-        if (this.FMG == null) {
-          this.FMG = new AdapterView.OnItemClickListener()
+        Log.i("MicroMsg.ServiceAppUI", "initAppList: wxServiceList size %s, bizServiceList size %s", new Object[] { Integer.valueOf(this.MgG.size()), Integer.valueOf(this.MgH.size()) });
+        if (this.MgI == null) {
+          this.MgI = new AdapterView.OnItemClickListener()
           {
             public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
             {
               AppMethodBeat.i(29166);
               b localb = new b();
-              localb.bm(paramAnonymousAdapterView);
-              localb.bm(paramAnonymousView);
-              localb.pH(paramAnonymousInt);
-              localb.zo(paramAnonymousLong);
-              a.b("com/tencent/mm/plugin/subapp/ui/openapi/ServiceAppUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+              localb.bn(paramAnonymousAdapterView);
+              localb.bn(paramAnonymousView);
+              localb.sg(paramAnonymousInt);
+              localb.Fs(paramAnonymousLong);
+              a.c("com/tencent/mm/plugin/subapp/ui/openapi/ServiceAppUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
               if (ServiceAppUI.a(ServiceAppUI.this) == null)
               {
                 Log.e("MicroMsg.ServiceAppUI", "wx onItemClick wxServicePref null");
@@ -114,7 +116,7 @@ public class ServiceAppUI
                 AppMethodBeat.o(29166);
                 return;
               }
-              paramAnonymousAdapterView = ServiceAppUI.a(ServiceAppUI.this).abn(paramAnonymousInt);
+              paramAnonymousAdapterView = ServiceAppUI.a(ServiceAppUI.this).aiJ(paramAnonymousInt);
               if (paramAnonymousAdapterView == null)
               {
                 Log.e("MicroMsg.ServiceAppUI", "wx onItemClick app is null");
@@ -122,25 +124,25 @@ public class ServiceAppUI
                 AppMethodBeat.o(29166);
                 return;
               }
-              Log.i("MicroMsg.ServiceAppUI", "onItemClick, jumpType[%d], package[%s], appid[%s]", new Object[] { Integer.valueOf(paramAnonymousAdapterView.fmZ), paramAnonymousAdapterView.field_packageName, paramAnonymousAdapterView.field_appId });
+              Log.i("MicroMsg.ServiceAppUI", "onItemClick, jumpType[%d], package[%s], appid[%s]", new Object[] { Integer.valueOf(paramAnonymousAdapterView.hrY), paramAnonymousAdapterView.field_packageName, paramAnonymousAdapterView.field_appId });
               ServiceAppUI.a(ServiceAppUI.this, paramAnonymousAdapterView);
               a.a(this, "com/tencent/mm/plugin/subapp/ui/openapi/ServiceAppUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
               AppMethodBeat.o(29166);
             }
           };
         }
-        if (this.FMH == null) {
-          this.FMH = new AdapterView.OnItemClickListener()
+        if (this.MgJ == null) {
+          this.MgJ = new AdapterView.OnItemClickListener()
           {
             public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
             {
               AppMethodBeat.i(29167);
               b localb = new b();
-              localb.bm(paramAnonymousAdapterView);
-              localb.bm(paramAnonymousView);
-              localb.pH(paramAnonymousInt);
-              localb.zo(paramAnonymousLong);
-              a.b("com/tencent/mm/plugin/subapp/ui/openapi/ServiceAppUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+              localb.bn(paramAnonymousAdapterView);
+              localb.bn(paramAnonymousView);
+              localb.sg(paramAnonymousInt);
+              localb.Fs(paramAnonymousLong);
+              a.c("com/tencent/mm/plugin/subapp/ui/openapi/ServiceAppUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
               if (ServiceAppUI.b(ServiceAppUI.this) == null)
               {
                 Log.e("MicroMsg.ServiceAppUI", "biz onItemClick bizServicePref null");
@@ -148,7 +150,7 @@ public class ServiceAppUI
                 AppMethodBeat.o(29167);
                 return;
               }
-              paramAnonymousAdapterView = ServiceAppUI.b(ServiceAppUI.this).abn(paramAnonymousInt);
+              paramAnonymousAdapterView = ServiceAppUI.b(ServiceAppUI.this).aiJ(paramAnonymousInt);
               if (paramAnonymousAdapterView == null)
               {
                 Log.e("MicroMsg.ServiceAppUI", "biz onItemClick app is null");
@@ -156,7 +158,7 @@ public class ServiceAppUI
                 AppMethodBeat.o(29167);
                 return;
               }
-              Log.i("MicroMsg.ServiceAppUI", "onItemClick, jumpType[%d], package[%s], appid[%s]", new Object[] { Integer.valueOf(paramAnonymousAdapterView.fmZ), paramAnonymousAdapterView.field_packageName, paramAnonymousAdapterView.field_appId });
+              Log.i("MicroMsg.ServiceAppUI", "onItemClick, jumpType[%d], package[%s], appid[%s]", new Object[] { Integer.valueOf(paramAnonymousAdapterView.hrY), paramAnonymousAdapterView.field_packageName, paramAnonymousAdapterView.field_appId });
               ServiceAppUI.a(ServiceAppUI.this, paramAnonymousAdapterView);
               a.a(this, "com/tencent/mm/plugin/subapp/ui/openapi/ServiceAppUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
               AppMethodBeat.o(29167);
@@ -165,47 +167,47 @@ public class ServiceAppUI
         }
         this.screen = getPreferenceScreen();
         this.screen.removeAll();
-        if (this.FME.size() > 0)
+        if (this.MgG.size() > 0)
         {
-          this.FMA = new ServicePreference(this);
-          this.FMA.Dcn = this.FME;
-          if (this.FMG != null) {
-            this.FMA.FMs = this.FMG;
+          this.MgC = new ServicePreference(this);
+          this.MgC.JhO = this.MgG;
+          if (this.MgI != null) {
+            this.MgC.Mgu = this.MgI;
           }
-          if (this.FMC == null)
+          if (this.MgE == null)
           {
-            this.FMC = new PreferenceTitleCategory(this);
-            this.FMC.setTitle(2131768809);
+            this.MgE = new PreferenceTitleCategory(this);
+            this.MgE.setTitle(R.l.eWd);
           }
-          this.screen.c(this.FMC);
-          this.screen.c(this.FMA);
+          this.screen.b(this.MgE);
+          this.screen.b(this.MgC);
         }
-        if (this.FMF.size() > 0)
+        if (this.MgH.size() > 0)
         {
-          this.FMB = new ServicePreference(this);
-          this.FMB.Dcn = this.FMF;
-          if (this.FMH != null) {
-            this.FMB.FMs = this.FMH;
+          this.MgD = new ServicePreference(this);
+          this.MgD.JhO = this.MgH;
+          if (this.MgJ != null) {
+            this.MgD.Mgu = this.MgJ;
           }
-          if (this.FMD == null)
+          if (this.MgF == null)
           {
-            this.FMD = new PreferenceTitleCategory(this);
-            this.FMD.setTitle(2131756737);
+            this.MgF = new PreferenceTitleCategory(this);
+            this.MgF.setTitle(R.l.esN);
           }
-          this.screen.c(this.FMD);
-          this.screen.c(this.FMB);
+          this.screen.b(this.MgF);
+          this.screen.b(this.MgD);
         }
         AppMethodBeat.o(29172);
         return;
-        if (ab.IT(this.talker))
+        if (ab.Qm(this.talker))
         {
-          localCursor = ao.eAS().hG(0, 4);
+          localCursor = ao.fmz().iL(0, 4);
           break;
         }
-        localCursor = ao.eAS().hG(0, 1);
+        localCursor = ao.fmz().iL(0, 1);
         break;
         if (localg.field_serviceAppType == 2) {
-          this.FMF.add(localg);
+          this.MgH.add(localg);
         }
       }
     }
@@ -222,11 +224,11 @@ public class ServiceAppUI
   {
     AppMethodBeat.i(29171);
     super.onPause();
-    if (this.FMA != null) {
-      this.FMA.onPause();
+    if (this.MgC != null) {
+      this.MgC.onPause();
     }
-    if (this.FMB != null) {
-      this.FMB.onPause();
+    if (this.MgD != null) {
+      this.MgD.onPause();
     }
     AppMethodBeat.o(29171);
   }
@@ -241,11 +243,11 @@ public class ServiceAppUI
     AppMethodBeat.i(29170);
     super.onResume();
     initView();
-    if (this.FMA != null) {
-      this.FMA.onResume();
+    if (this.MgC != null) {
+      this.MgC.onResume();
     }
-    if (this.FMB != null) {
-      this.FMB.onResume();
+    if (this.MgD != null) {
+      this.MgD.onResume();
     }
     AppMethodBeat.o(29170);
   }
@@ -271,7 +273,7 @@ public class ServiceAppUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.openapi.ServiceAppUI
  * JD-Core Version:    0.7.0.1
  */

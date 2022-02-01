@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:layout_gravity="center_horizontal" android:id="@id/ut" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:layout_marginBottom="@dimen/bt"
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_gravity="center_horizontal" android:id="@id/ut" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:layout_marginBottom="@dimen/bt"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.MMImageView android:id="@id/ur" android:background="?ka" android:padding="4.0dip" android:layout_width="@dimen/a2x" android:layout_height="@dimen/a2x" android:scaleType="fitCenter" app:layout_constraintBottom_toTopOf="@id/us" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+    <com.tencent.mm.ui.MMImageView android:id="@id/ur" android:background="?ka" android:padding="4.0dip" android:layout_width="@dimen/a2x" android:layout_height="@dimen/a2x" android:src="@drawable/emoji_download_icon" android:scaleType="fitCenter" app:layout_constraintBottom_toTopOf="@id/us" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
     <TextView android:textSize="12.0sp" android:textColor="?kb" android:id="@id/us" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toBottomOf="@id/ur" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

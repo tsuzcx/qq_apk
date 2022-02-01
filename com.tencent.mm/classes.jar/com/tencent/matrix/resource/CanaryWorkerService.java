@@ -16,7 +16,7 @@ public class CanaryWorkerService
   }
   
   /* Error */
-  protected final void l(Intent paramIntent)
+  protected final void n(Intent paramIntent)
   {
     // Byte code:
     //   0: aload_1
@@ -38,11 +38,11 @@ public class CanaryWorkerService
     //   35: aload 6
     //   37: ifnull +775 -> 812
     //   40: aload 6
-    //   42: getfield 66	com/tencent/matrix/resource/analyzer/model/f:cXV	Ljava/io/File;
+    //   42: getfield 66	com/tencent/matrix/resource/analyzer/model/f:dbW	Ljava/io/File;
     //   45: invokevirtual 72	java/io/File:getParentFile	()Ljava/io/File;
     //   48: astore_1
     //   49: aload 6
-    //   51: getfield 66	com/tencent/matrix/resource/analyzer/model/f:cXV	Ljava/io/File;
+    //   51: getfield 66	com/tencent/matrix/resource/analyzer/model/f:dbW	Ljava/io/File;
     //   54: invokevirtual 75	java/io/File:getName	()Ljava/lang/String;
     //   57: astore 4
     //   59: aload 4
@@ -103,13 +103,13 @@ public class CanaryWorkerService
     //   186: invokespecial 100	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   189: astore 8
     //   191: aload 6
-    //   193: getfield 66	com/tencent/matrix/resource/analyzer/model/f:cXV	Ljava/io/File;
+    //   193: getfield 66	com/tencent/matrix/resource/analyzer/model/f:dbW	Ljava/io/File;
     //   196: astore 9
     //   198: invokestatic 145	java/lang/System:currentTimeMillis	()J
     //   201: lstore_2
-    //   202: new 147	com/tencent/matrix/resource/c/a
+    //   202: new 147	com/tencent/matrix/resource/d/a
     //   205: dup
-    //   206: invokespecial 148	com/tencent/matrix/resource/c/a:<init>	()V
+    //   206: invokespecial 148	com/tencent/matrix/resource/d/a:<init>	()V
     //   209: astore_1
     //   210: new 150	java/io/FileInputStream
     //   213: dup
@@ -124,46 +124,46 @@ public class CanaryWorkerService
     //   231: invokespecial 158	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   234: invokespecial 161	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   237: astore 4
-    //   239: new 163	com/tencent/matrix/resource/c/c
+    //   239: new 163	com/tencent/matrix/resource/d/c
     //   242: dup
     //   243: new 165	java/io/BufferedInputStream
     //   246: dup
     //   247: aload 5
     //   249: invokespecial 168	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   252: invokespecial 169	com/tencent/matrix/resource/c/c:<init>	(Ljava/io/InputStream;)V
+    //   252: invokespecial 169	com/tencent/matrix/resource/d/c:<init>	(Ljava/io/InputStream;)V
     //   255: astore 10
     //   257: aload 10
-    //   259: new 171	com/tencent/matrix/resource/c/a$b
+    //   259: new 171	com/tencent/matrix/resource/d/a$b
     //   262: dup
     //   263: aload_1
-    //   264: invokespecial 174	com/tencent/matrix/resource/c/a$b:<init>	(Lcom/tencent/matrix/resource/c/a;)V
-    //   267: invokevirtual 177	com/tencent/matrix/resource/c/c:a	(Lcom/tencent/matrix/resource/c/d;)V
+    //   264: invokespecial 174	com/tencent/matrix/resource/d/a$b:<init>	(Lcom/tencent/matrix/resource/d/a;)V
+    //   267: invokevirtual 177	com/tencent/matrix/resource/d/c:a	(Lcom/tencent/matrix/resource/d/d;)V
     //   270: aload 5
     //   272: invokevirtual 181	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
     //   275: lconst_0
     //   276: invokevirtual 187	java/nio/channels/FileChannel:position	(J)Ljava/nio/channels/FileChannel;
     //   279: pop
     //   280: aload 10
-    //   282: new 189	com/tencent/matrix/resource/c/a$c
+    //   282: new 189	com/tencent/matrix/resource/d/a$c
     //   285: dup
     //   286: aload_1
-    //   287: invokespecial 190	com/tencent/matrix/resource/c/a$c:<init>	(Lcom/tencent/matrix/resource/c/a;)V
-    //   290: invokevirtual 177	com/tencent/matrix/resource/c/c:a	(Lcom/tencent/matrix/resource/c/d;)V
+    //   287: invokespecial 190	com/tencent/matrix/resource/d/a$c:<init>	(Lcom/tencent/matrix/resource/d/a;)V
+    //   290: invokevirtual 177	com/tencent/matrix/resource/d/c:a	(Lcom/tencent/matrix/resource/d/d;)V
     //   293: aload 5
     //   295: invokevirtual 181	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
     //   298: lconst_0
     //   299: invokevirtual 187	java/nio/channels/FileChannel:position	(J)Ljava/nio/channels/FileChannel;
     //   302: pop
     //   303: aload 10
-    //   305: new 192	com/tencent/matrix/resource/c/a$a
+    //   305: new 192	com/tencent/matrix/resource/d/a$a
     //   308: dup
     //   309: aload_1
-    //   310: new 194	com/tencent/matrix/resource/c/e
+    //   310: new 194	com/tencent/matrix/resource/d/e
     //   313: dup
     //   314: aload 4
-    //   316: invokespecial 195	com/tencent/matrix/resource/c/e:<init>	(Ljava/io/OutputStream;)V
-    //   319: invokespecial 198	com/tencent/matrix/resource/c/a$a:<init>	(Lcom/tencent/matrix/resource/c/a;Lcom/tencent/matrix/resource/c/e;)V
-    //   322: invokevirtual 177	com/tencent/matrix/resource/c/c:a	(Lcom/tencent/matrix/resource/c/d;)V
+    //   316: invokespecial 195	com/tencent/matrix/resource/d/e:<init>	(Ljava/io/OutputStream;)V
+    //   319: invokespecial 198	com/tencent/matrix/resource/d/a$a:<init>	(Lcom/tencent/matrix/resource/d/a;Lcom/tencent/matrix/resource/d/e;)V
+    //   322: invokevirtual 177	com/tencent/matrix/resource/d/c:a	(Lcom/tencent/matrix/resource/d/d;)V
     //   325: aload 4
     //   327: invokevirtual 203	java/io/OutputStream:close	()V
     //   330: aload 5
@@ -205,7 +205,7 @@ public class CanaryWorkerService
     //   395: lsub
     //   396: invokestatic 224	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   399: aastore
-    //   400: invokestatic 230	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   400: invokestatic 230	com/tencent/matrix/e/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   403: new 232	java/util/zip/ZipOutputStream
     //   406: dup
     //   407: new 155	java/io/BufferedOutputStream
@@ -296,7 +296,7 @@ public class CanaryWorkerService
     //   598: ldc_w 286
     //   601: invokespecial 105	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   604: aload 6
-    //   606: getfield 289	com/tencent/matrix/resource/analyzer/model/f:cWR	Ljava/lang/String;
+    //   606: getfield 289	com/tencent/matrix/resource/analyzer/model/f:daR	Ljava/lang/String;
     //   609: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   612: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   615: invokevirtual 265	java/io/PrintWriter:println	(Ljava/lang/String;)V
@@ -345,7 +345,7 @@ public class CanaryWorkerService
     //   698: lsub
     //   699: invokestatic 224	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   702: aastore
-    //   703: invokestatic 230	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   703: invokestatic 230	com/tencent/matrix/e/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   706: aload 4
     //   708: astore_1
     //   709: aload_0
@@ -382,7 +382,7 @@ public class CanaryWorkerService
     //   770: ldc_w 324
     //   773: iconst_0
     //   774: anewarray 210	java/lang/Object
-    //   777: invokestatic 328	com/tencent/matrix/g/c:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   777: invokestatic 328	com/tencent/matrix/e/c:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   780: aload 4
     //   782: invokestatic 322	com/tencent/matrix/resource/a/a/c:closeQuietly	(Ljava/lang/Object;)V
     //   785: return
@@ -392,7 +392,7 @@ public class CanaryWorkerService
     //   790: ldc_w 330
     //   793: iconst_0
     //   794: anewarray 210	java/lang/Object
-    //   797: invokestatic 328	com/tencent/matrix/g/c:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   797: invokestatic 328	com/tencent/matrix/e/c:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   800: return
     //   801: astore 4
     //   803: aconst_null
@@ -405,7 +405,7 @@ public class CanaryWorkerService
     //   814: ldc_w 330
     //   817: iconst_0
     //   818: anewarray 210	java/lang/Object
-    //   821: invokestatic 333	com/tencent/matrix/g/c:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   821: invokestatic 333	com/tencent/matrix/e/c:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   824: return
     //   825: astore_1
     //   826: goto -496 -> 330
@@ -514,7 +514,7 @@ public class CanaryWorkerService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.resource.CanaryWorkerService
  * JD-Core Version:    0.7.0.1
  */

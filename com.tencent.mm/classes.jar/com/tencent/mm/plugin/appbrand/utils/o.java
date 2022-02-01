@@ -1,62 +1,97 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import org.apache.commons.b.a;
 
-public final class o
+public class o
+  implements InvocationHandler
 {
-  private long ogT;
-  private long ogU;
-  private a ogV;
-  
-  public o() {}
-  
-  public o(long paramLong, a parama)
+  public static <I> I g(String paramString, Class<I> paramClass)
   {
-    this.ogT = paramLong;
-    this.ogV = parama;
+    AppMethodBeat.i(176786);
+    paramString = new o()
+    {
+      public final Object invoke(Object paramAnonymousObject, Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
+      {
+        AppMethodBeat.i(176785);
+        Log.i(this.riF, "dummy invoke method(%s) args(%s)", new Object[] { paramAnonymousMethod.getName(), a.m(paramAnonymousArrayOfObject, "NULL") });
+        paramAnonymousObject = super.invoke(paramAnonymousObject, paramAnonymousMethod, paramAnonymousArrayOfObject);
+        AppMethodBeat.o(176785);
+        return paramAnonymousObject;
+      }
+    };
+    paramString = paramClass.cast(Proxy.newProxyInstance(paramClass.getClassLoader(), new Class[] { paramClass }, paramString));
+    AppMethodBeat.o(176786);
+    return paramString;
   }
   
-  private boolean bZr()
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(137914);
-    if (System.currentTimeMillis() - this.ogU < this.ogT)
+    AppMethodBeat.i(147718);
+    paramObject = paramMethod.getReturnType();
+    if (paramObject.equals(Integer.TYPE))
     {
-      AppMethodBeat.o(137914);
-      return true;
+      AppMethodBeat.o(147718);
+      return Integer.valueOf(0);
     }
-    AppMethodBeat.o(137914);
-    return false;
-  }
-  
-  public final boolean l(Object... paramVarArgs)
-  {
-    AppMethodBeat.i(137915);
-    if (bZr())
+    if (paramObject.equals(Long.TYPE))
     {
-      AppMethodBeat.o(137915);
-      return false;
+      AppMethodBeat.o(147718);
+      return Long.valueOf(0L);
     }
-    if (this.ogV == null)
+    if (paramObject.equals(Double.TYPE))
     {
-      AppMethodBeat.o(137915);
-      return false;
+      AppMethodBeat.o(147718);
+      return Double.valueOf(0.0D);
     }
-    boolean bool = this.ogV.j(paramVarArgs);
-    if (bool) {
-      this.ogU = System.currentTimeMillis();
+    if (paramObject.equals(Float.TYPE))
+    {
+      AppMethodBeat.o(147718);
+      return Float.valueOf(0.0F);
     }
-    AppMethodBeat.o(137915);
-    return bool;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract boolean j(Object... paramVarArgs);
+    if (paramObject.equals(Short.TYPE))
+    {
+      AppMethodBeat.o(147718);
+      return Integer.valueOf(0);
+    }
+    if (paramObject.equals(Byte.TYPE))
+    {
+      AppMethodBeat.o(147718);
+      return Integer.valueOf(0);
+    }
+    if (paramObject.equals(Character.TYPE))
+    {
+      AppMethodBeat.o(147718);
+      return Integer.valueOf(0);
+    }
+    if (paramObject.equals(Boolean.TYPE))
+    {
+      paramObject = Boolean.FALSE;
+      AppMethodBeat.o(147718);
+      return paramObject;
+    }
+    if (paramObject.equals(Boolean.class))
+    {
+      paramObject = Boolean.FALSE;
+      AppMethodBeat.o(147718);
+      return paramObject;
+    }
+    if (paramObject.isInterface())
+    {
+      AppMethodBeat.o(147718);
+      return null;
+    }
+    AppMethodBeat.o(147718);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.o
  * JD-Core Version:    0.7.0.1
  */

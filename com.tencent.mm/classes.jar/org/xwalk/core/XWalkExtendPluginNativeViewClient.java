@@ -9,13 +9,13 @@ import android.graphics.drawable.ColorDrawable;
 import android.hardware.display.DisplayManager;
 import android.hardware.display.VirtualDisplay;
 import android.os.Bundle;
-import android.support.annotation.Keep;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.Window;
 import android.widget.FrameLayout;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class XWalkExtendPluginNativeViewClient
@@ -185,7 +185,7 @@ public class XWalkExtendPluginNativeViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.XWalkExtendPluginNativeViewClient
  * JD-Core Version:    0.7.0.1
  */

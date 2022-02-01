@@ -20,9 +20,11 @@ import android.widget.TextView;
 import com.pay.tool.APMidasCommMethod;
 import com.pay.tool.APMidasTools;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.midas.api.APMidasResponse;
 import com.tencent.midas.api.request.APMidasBaseRequest;
 import com.tencent.midas.comm.APLog;
 import com.tencent.midas.comm.APProgressDialog;
+import com.tencent.midas.control.APMidasPayHelper;
 import com.tencent.midas.data.APPluginDataInterface;
 import com.tencent.midas.data.APPluginReportManager;
 
@@ -40,15 +42,15 @@ public class APSystemWebPage
   
   public APSystemWebPage()
   {
-    AppMethodBeat.i(192858);
+    AppMethodBeat.i(253091);
     this.webviewCallback = new IAPWebViewCallback()
     {
       public boolean WebChromeClientJsAlert(WebView paramAnonymousWebView, String paramAnonymousString1, String paramAnonymousString2, JsResult paramAnonymousJsResult)
       {
-        AppMethodBeat.i(192865);
+        AppMethodBeat.i(253184);
         APLog.d("APSystemWebPage", "WebChromeClientJsAlert message=".concat(String.valueOf(paramAnonymousString2)));
         APWebProtocol.AnalyzeWebEntry(APSystemWebPage.this.activity, APSystemWebPage.this.webView.getWebView(), APSystemWebPage.this, paramAnonymousString2);
-        AppMethodBeat.o(192865);
+        AppMethodBeat.o(253184);
         return true;
       }
       
@@ -59,44 +61,44 @@ public class APSystemWebPage
       
       public void WebViewClientPageFinished(WebView paramAnonymousWebView, String paramAnonymousString)
       {
-        AppMethodBeat.i(192866);
+        AppMethodBeat.i(253185);
         if ((!APSystemWebPage.this.activity.isFinishing()) && (APSystemWebPage.this.waitDialog != null) && (APSystemWebPage.this.waitDialog.isShowing())) {
           APSystemWebPage.this.waitDialog.dismiss();
         }
-        AppMethodBeat.o(192866);
+        AppMethodBeat.o(253185);
       }
       
       public void WebViewClientPageStarted(WebView paramAnonymousWebView, String paramAnonymousString, Bitmap paramAnonymousBitmap)
       {
-        AppMethodBeat.i(192867);
+        AppMethodBeat.i(253186);
         APSystemWebPage.this.waitDialog.show();
-        AppMethodBeat.o(192867);
+        AppMethodBeat.o(253186);
       }
       
       public void WebViewClientReceivedError(WebView paramAnonymousWebView, int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
       {
-        AppMethodBeat.i(192868);
+        AppMethodBeat.i(253187);
         if ((!APSystemWebPage.this.activity.isFinishing()) && (APSystemWebPage.this.waitDialog != null) && (APSystemWebPage.this.waitDialog.isShowing())) {
           APSystemWebPage.this.waitDialog.dismiss();
         }
-        AppMethodBeat.o(192868);
+        AppMethodBeat.o(253187);
       }
     };
-    AppMethodBeat.o(192858);
+    AppMethodBeat.o(253091);
   }
   
   protected APProgressDialog createDialog()
   {
-    AppMethodBeat.i(192864);
+    AppMethodBeat.i(253101);
     APProgressDialog localAPProgressDialog = new APProgressDialog(this.activity);
     localAPProgressDialog.setMessage("请稍候...");
-    AppMethodBeat.o(192864);
+    AppMethodBeat.o(253101);
     return localAPProgressDialog;
   }
   
-  public void initHead(Activity paramActivity, String paramString1, String paramString2)
+  public void initHead(final Activity paramActivity, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192862);
+    AppMethodBeat.i(253097);
     for (;;)
     {
       try
@@ -114,7 +116,7 @@ public class APSystemWebPage
           if ((i <= 0) && (TextUtils.isEmpty(paramString1)))
           {
             paramString2.setVisibility(8);
-            AppMethodBeat.o(192862);
+            AppMethodBeat.o(253097);
             return;
           }
         }
@@ -139,7 +141,7 @@ public class APSystemWebPage
         {
           public void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(192834);
+            AppMethodBeat.i(253168);
             APLog.d("APSystemWebPage", "backBtn() clicked");
             if ((APSystemWebPage.this.webView != null) && (APSystemWebPage.this.webView.getWebView() != null)) {}
             for (boolean bool = true;; bool = false)
@@ -148,7 +150,7 @@ public class APSystemWebPage
               if ((bool) && (APSystemWebPage.this.webView.getWebView().canGoBack())) {
                 APSystemWebPage.this.webView.getWebView().goBack();
               }
-              AppMethodBeat.o(192834);
+              AppMethodBeat.o(253168);
               return;
             }
           }
@@ -158,7 +160,21 @@ public class APSystemWebPage
           break label300;
         }
         paramString1.setVisibility(0);
-        paramString1.setOnClickListener(new APSystemWebPage.5(this, paramActivity));
+        paramString1.setOnClickListener(new View.OnClickListener()
+        {
+          public void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(253172);
+            APLog.d("APSystemWebPage", "closeBtn() clicked");
+            APPluginReportManager.getInstance().insertData(APPluginDataInterface.singleton().getLaunchInterface(), "sdk.plugin.webpage.close", "", "");
+            paramAnonymousView = new APMidasResponse();
+            paramAnonymousView.resultCode = 100;
+            paramAnonymousView.resultMsg = "关闭";
+            APMidasPayHelper.midasCallBack(paramAnonymousView);
+            paramActivity.finish();
+            AppMethodBeat.o(253172);
+          }
+        });
         paramActivity = (ImageButton)paramActivity.findViewById(APMidasCommMethod.getId(paramActivity, "midas_header_refresh"));
         if ((i & 0x4) != 4) {
           break;
@@ -168,21 +184,21 @@ public class APSystemWebPage
         {
           public void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(192821);
+            AppMethodBeat.i(253065);
             APLog.d("APSystemWebPage", "refreshBtn() clicked");
             APPluginReportManager.getInstance().insertData(APPluginDataInterface.singleton().getLaunchInterface(), "sdk.plugin.webpage.refresh", "", "");
             if ((APSystemWebPage.this.webView != null) && (APSystemWebPage.this.webView.getWebView() != null)) {
               APSystemWebPage.this.webView.getWebView().reload();
             }
-            AppMethodBeat.o(192821);
+            AppMethodBeat.o(253065);
           }
         });
-        AppMethodBeat.o(192862);
+        AppMethodBeat.o(253097);
         return;
       }
       catch (Throwable paramActivity)
       {
-        AppMethodBeat.o(192862);
+        AppMethodBeat.o(253097);
         return;
       }
       label282:
@@ -195,12 +211,12 @@ public class APSystemWebPage
       paramString1.setVisibility(8);
     }
     paramActivity.setVisibility(8);
-    AppMethodBeat.o(192862);
+    AppMethodBeat.o(253097);
   }
   
   public void initUI(Activity paramActivity)
   {
-    AppMethodBeat.i(192859);
+    AppMethodBeat.i(253092);
     this.activity = paramActivity;
     paramActivity.setContentView(APMidasCommMethod.getLayoutId(paramActivity, "unipay_layout_activity_web"));
     this.webView = new APWebView(paramActivity, (WebView)paramActivity.findViewById(APMidasCommMethod.getId(paramActivity, "unipay_id_WebView")), this.webviewCallback);
@@ -209,19 +225,19 @@ public class APSystemWebPage
     {
       public void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
-    AppMethodBeat.o(192859);
+    AppMethodBeat.o(253092);
   }
   
   public void loadUrl(String paramString)
   {
-    AppMethodBeat.i(192861);
+    AppMethodBeat.i(253095);
     this.webView.loadUrl(paramString);
-    AppMethodBeat.o(192861);
+    AppMethodBeat.o(253095);
   }
   
   public void toPureH5Pay(Activity paramActivity, APMidasBaseRequest paramAPMidasBaseRequest)
   {
-    AppMethodBeat.i(192860);
+    AppMethodBeat.i(253094);
     this.activity = paramActivity;
     paramActivity.setContentView(APMidasCommMethod.getLayoutId(paramActivity, "unipay_layout_activity_web"));
     paramAPMidasBaseRequest = (WebView)paramActivity.findViewById(APMidasCommMethod.getId(paramActivity, "unipay_id_WebView"));
@@ -237,13 +253,13 @@ public class APSystemWebPage
     {
       public void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
-    AppMethodBeat.o(192860);
+    AppMethodBeat.o(253094);
   }
   
   public void updateWebViewSize(String paramString)
   {
     int j = 0;
-    AppMethodBeat.i(192863);
+    AppMethodBeat.i(253099);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.webView.getWebView().getLayoutParams();
     APLog.i("webviewclient == ", "updateWebViewSize ");
     String str = APMidasTools.getUrlParamsValue(paramString, "mpwidth");
@@ -260,14 +276,14 @@ public class APSystemWebPage
         localLayoutParams.height = APMidasCommMethod.dip2px(this.activity, j);
         this.webView.getWebView().setLayoutParams(localLayoutParams);
       }
-      AppMethodBeat.o(192863);
+      AppMethodBeat.o(253099);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.jsbridge.APSystemWebPage
  * JD-Core Version:    0.7.0.1
  */

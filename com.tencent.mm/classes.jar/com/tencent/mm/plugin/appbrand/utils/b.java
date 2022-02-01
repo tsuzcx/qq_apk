@@ -1,104 +1,88 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
-import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import com.tencent.luggage.sdk.config.c;
-import com.tencent.luggage.sdk.config.c.a;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.g;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.lang.Class<+Landroid.app.Activity;>;
-import kotlin.a.j;
+import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/utils/AppBrandComponentUtil;", "", "()V", "generateInstanceId", "", "uin", "", "hasPreLoading", "", "triggerServiceName", "isActivityHasSpecificTaskAffinity", "clazz", "Ljava/lang/Class;", "Landroid/app/Activity;", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/utils/AndroidOrientationGetter;", "Lcom/tencent/mm/plugin/appbrand/utils/IOrientationGetter;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "curOrientation", "Lcom/tencent/mm/plugin/appbrand/utils/Orientation;", "getCurOrientation", "()Lcom/tencent/mm/plugin/appbrand/utils/Orientation;", "name", "", "getName", "()Ljava/lang/String;", "androidOrientation2Orientation", "androidOrientation", "", "Companion", "luggage-commons-jsapi-default-impl_release"})
 public final class b
+  implements s
 {
-  public static final b ogD;
+  public static final a rip;
+  private final Context context;
   
   static
   {
-    AppMethodBeat.i(51400);
-    ogD = new b();
-    AppMethodBeat.o(51400);
+    AppMethodBeat.i(205672);
+    rip = new a((byte)0);
+    AppMethodBeat.o(205672);
   }
   
-  public static final boolean aI(Class<? extends Activity> paramClass)
+  public b(Context paramContext)
   {
-    AppMethodBeat.i(51397);
-    kotlin.g.b.p.h(paramClass, "clazz");
-    try
-    {
-      Context localContext = MMApplicationContext.getContext();
-      if (localContext != null)
-      {
-        Object localObject = localContext.getPackageManager();
-        if (localObject != null)
-        {
-          paramClass = ((PackageManager)localObject).getActivityInfo(new ComponentName(localContext, paramClass), 128);
-          if (paramClass != null)
-          {
-            localObject = paramClass.taskAffinity;
-            paramClass = (Class<? extends Activity>)localObject;
-            if (localObject != null) {
-              break label71;
-            }
-          }
-        }
-      }
-      kotlin.g.b.p.g(localContext, "appContext");
-      paramClass = localContext.getPackageName();
-      label71:
-      boolean bool = kotlin.g.b.p.j(paramClass, localContext.getPackageName());
-      AppMethodBeat.o(51397);
-      return bool ^ true;
-    }
-    catch (PackageManager.NameNotFoundException paramClass)
-    {
-      AppMethodBeat.o(51397);
-    }
-    return false;
+    AppMethodBeat.i(205671);
+    this.context = paramContext;
+    AppMethodBeat.o(205671);
   }
   
-  public static final boolean afF(String paramString)
+  public final ae cgT()
   {
-    AppMethodBeat.i(229594);
-    paramString = (CharSequence)paramString;
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    for (int i = 1; i == 0; i = 0)
+    AppMethodBeat.i(205670);
+    Object localObject = this.context.getResources();
+    p.j(localObject, "context.resources");
+    switch (((Resources)localObject).getConfiguration().orientation)
     {
-      AppMethodBeat.o(229594);
-      return true;
-    }
-    AppMethodBeat.o(229594);
-    return false;
-  }
-  
-  public static final String zF(int paramInt)
-  {
-    AppMethodBeat.i(51399);
-    Object localObject = c.a.czh;
-    if (localObject != null)
-    {
-      localObject = ((c)localObject).NI();
-      kotlin.g.b.p.g(localObject, "factory.createInstanceId()");
-      AppMethodBeat.o(51399);
+    default: 
+      localObject = ae.rji;
+      AppMethodBeat.o(205670);
+      return localObject;
+    case 1: 
+      localObject = ae.rjj;
+      AppMethodBeat.o(205670);
       return localObject;
     }
-    localObject = com.tencent.mm.b.p.getString(paramInt);
-    kotlin.g.b.p.g(localObject, "UIN.getString(uin)");
-    localObject = j.a((Iterable)j.listOf(new String[] { localObject, String.valueOf(Util.nowMilliSecond()) }), (CharSequence)"_", null, null, 0, null, null, 62);
-    AppMethodBeat.o(51399);
+    localObject = ae.rjk;
+    AppMethodBeat.o(205670);
     return localObject;
+  }
+  
+  public final String getName()
+  {
+    return "AndroidOrientationGetter";
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/utils/AndroidOrientationGetter$Companion;", "Lcom/tencent/mm/plugin/appbrand/utils/IOrientationGetter$IFactory;", "()V", "create", "Lcom/tencent/mm/plugin/appbrand/utils/AndroidOrientationGetter;", "componentView", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentView;", "luggage-commons-jsapi-default-impl_release"})
+  public static final class a
+    implements s.a
+  {
+    public static b b(g paramg)
+    {
+      AppMethodBeat.i(205506);
+      if (paramg != null)
+      {
+        Context localContext = paramg.getContext();
+        paramg = localContext;
+        if (localContext != null) {}
+      }
+      else
+      {
+        paramg = MMApplicationContext.getContext();
+        p.j(paramg, "MMApplicationContext.getContext()");
+      }
+      paramg = new b(paramg);
+      AppMethodBeat.o(205506);
+      return paramg;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.b
  * JD-Core Version:    0.7.0.1
  */

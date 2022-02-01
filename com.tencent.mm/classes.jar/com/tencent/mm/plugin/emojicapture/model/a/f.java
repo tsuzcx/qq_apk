@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.emojicapture.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bpi;
-import com.tencent.mm.protocal.protobuf.chz;
+import com.tencent.mm.protocal.protobuf.bxc;
+import com.tencent.mm.protocal.protobuf.cqv;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sticker.c.d.a;
 import com.tencent.mm.sticker.c.h;
@@ -20,96 +20,96 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerPanelData;", "", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "callback", "Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerPanelCallback;", "(Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerPanelCallback;)V", "appendList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "getCallback", "()Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerPanelCallback;", "codeMore", "", "ctxBuff", "", "dataHasMore", "", "firstLoaded", "firstPage", "historyList", "isLoading", "getLifeCycleKeeper", "()Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "moreList", "pageBuff", "recommendHasMore", "recommendList", "requestType", "appendRecommend", "", "info", "lensId", "", "destroy", "loadData", "loadMore", "processData", "lensList", "", "processMore", "processRecommend", "setup", "timeEnter", "", "username", "updateHistory", "Companion", "plugin-emojicapture_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerPanelData;", "", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "callback", "Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerPanelCallback;", "(Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerPanelCallback;)V", "appendList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "getCallback", "()Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerPanelCallback;", "codeMore", "", "ctxBuff", "", "dataHasMore", "", "firstLoaded", "firstPage", "historyList", "isLoading", "getLifeCycleKeeper", "()Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "moreList", "pageBuff", "recommendHasMore", "recommendList", "requestType", "appendRecommend", "", "info", "lensId", "", "destroy", "loadData", "loadMore", "processData", "lensList", "", "processMore", "processRecommend", "setup", "timeEnter", "", "username", "updateHistory", "Companion", "plugin-emojicapture_release"})
 public final class f
 {
-  private static final chz rpl;
-  private static final chz rpm;
-  private static final chz rpn;
-  private static final chz rpo;
-  private static final chz rpp;
-  private static final chz rpq;
-  public static final f.a rpr;
-  private final com.tencent.mm.vending.e.b<com.tencent.mm.vending.e.a> gZm;
+  private static final cqv uUR;
+  private static final cqv uUS;
+  private static final cqv uUT;
+  private static final cqv uUU;
+  private static final cqv uUV;
+  private static final cqv uUW;
+  public static final f.a uUX;
   private boolean isLoading;
+  private final com.tencent.mm.vending.e.b<com.tencent.mm.vending.e.a> jKn;
   public int requestType;
-  public final LinkedList<chz> roR;
-  private final int rpa;
-  private byte[] rpb;
-  private boolean rpc;
-  private boolean rpd;
-  private boolean rpe;
-  public boolean rpf;
-  public byte[] rpg;
-  private final LinkedList<chz> rph;
-  private final LinkedList<chz> rpi;
-  private final LinkedList<chz> rpj;
-  final d rpk;
+  private final int uUG;
+  private byte[] uUH;
+  private boolean uUI;
+  private boolean uUJ;
+  private boolean uUK;
+  public boolean uUL;
+  public byte[] uUM;
+  private final LinkedList<cqv> uUN;
+  private final LinkedList<cqv> uUO;
+  private final LinkedList<cqv> uUP;
+  final d uUQ;
+  public final LinkedList<cqv> uUx;
   
   static
   {
     AppMethodBeat.i(249);
-    rpr = new f.a((byte)0);
-    rpl = new chz();
-    rpm = new chz();
-    rpn = new chz();
-    rpo = new chz();
-    rpp = new chz();
-    rpq = new chz();
+    uUX = new f.a((byte)0);
+    uUR = new cqv();
+    uUS = new cqv();
+    uUT = new cqv();
+    uUU = new cqv();
+    uUV = new cqv();
+    uUW = new cqv();
     AppMethodBeat.o(249);
   }
   
   public f(com.tencent.mm.vending.e.b<com.tencent.mm.vending.e.a> paramb, d paramd)
   {
     AppMethodBeat.i(248);
-    this.gZm = paramb;
-    this.rpk = paramd;
-    this.rpa = 2;
-    this.rpc = true;
-    this.rpd = true;
+    this.jKn = paramb;
+    this.uUQ = paramd;
+    this.uUG = 2;
+    this.uUI = true;
+    this.uUJ = true;
     this.requestType = 1;
-    this.roR = new LinkedList();
-    this.rph = new LinkedList();
-    this.rpi = new LinkedList();
-    this.rpj = new LinkedList();
+    this.uUx = new LinkedList();
+    this.uUN = new LinkedList();
+    this.uUO = new LinkedList();
+    this.uUP = new LinkedList();
     AppMethodBeat.o(248);
   }
   
   public static void destroy()
   {
     AppMethodBeat.i(245);
-    com.tencent.mm.sticker.a.b localb = com.tencent.mm.sticker.a.b.NOi;
-    com.tencent.mm.sticker.a.b.ae(null);
+    com.tencent.mm.sticker.a.b localb = com.tencent.mm.sticker.a.b.VbS;
+    com.tencent.mm.sticker.a.b.an(null);
     AppMethodBeat.o(245);
   }
   
-  public final void a(chz paramchz)
+  public final void a(cqv paramcqv)
   {
     AppMethodBeat.i(244);
-    p.h(paramchz, "info");
-    Object localObject2 = ((Iterable)this.roR).iterator();
+    p.k(paramcqv, "info");
+    Object localObject2 = ((Iterable)this.uUx).iterator();
     Object localObject1;
     while (((Iterator)localObject2).hasNext())
     {
       localObject1 = ((Iterator)localObject2).next();
-      if (p.j(((chz)localObject1).Lso, paramchz.Lso))
+      if (p.h(((cqv)localObject1).LensId, paramcqv.LensId))
       {
-        localObject2 = (chz)localObject1;
-        Iterator localIterator = ((Iterable)this.rph).iterator();
+        localObject2 = (cqv)localObject1;
+        Iterator localIterator = ((Iterable)this.uUN).iterator();
         for (;;)
         {
           if (localIterator.hasNext())
           {
             localObject1 = localIterator.next();
-            if (p.j(((chz)localObject1).Lso, paramchz.Lso))
+            if (p.h(((cqv)localObject1).LensId, paramcqv.LensId))
             {
               label112:
-              localObject1 = (chz)localObject1;
+              localObject1 = (cqv)localObject1;
               if (localObject2 == null) {
                 break label155;
               }
               if (localObject1 == null) {
-                this.rph.add(localObject2);
+                this.uUN.add(localObject2);
               }
             }
           }
@@ -118,7 +118,7 @@ public final class f
     }
     for (;;)
     {
-      cJm();
+      cXU();
       AppMethodBeat.o(244);
       return;
       localObject1 = null;
@@ -128,78 +128,78 @@ public final class f
       label155:
       if (localObject1 == null)
       {
-        localObject1 = paramchz.Lso;
-        if ((localObject1 != null) && (!f.a.b(paramchz)))
+        localObject1 = paramcqv.LensId;
+        if ((localObject1 != null) && (!f.a.b(paramcqv)))
         {
-          paramchz = com.tencent.mm.sticker.c.d.NOm;
-          d.a.a(this.gZm, (String)localObject1, (com.tencent.mm.sticker.c.c)new b(this));
+          paramcqv = com.tencent.mm.sticker.c.d.VbW;
+          d.a.a(this.jKn, (String)localObject1, (com.tencent.mm.sticker.c.c)new b(this));
         }
         else
         {
-          this.rph.add(paramchz);
+          this.uUN.add(paramcqv);
         }
       }
     }
   }
   
-  public final void ann(String paramString)
-  {
-    AppMethodBeat.i(243);
-    p.h(paramString, "lensId");
-    chz localchz = new chz();
-    localchz.Lso = paramString;
-    a(localchz);
-    AppMethodBeat.o(243);
-  }
-  
-  public final void cJk()
+  public final void aDi()
   {
     AppMethodBeat.i(241);
-    Log.i(g.auD(), "loadMore: " + this.isLoading + ", " + this.rpc);
-    if ((!this.rpc) || (this.isLoading))
+    Log.i(g.aBy(), "loadMore: " + this.isLoading + ", " + this.uUI);
+    if ((!this.uUI) || (this.isLoading))
     {
       AppMethodBeat.o(241);
       return;
     }
     this.isLoading = true;
-    i.a locala = i.NOv;
-    i.a.a(this.requestType, this.rpb, this.rpg, this.gZm, (h)new d(this));
+    i.a locala = i.Vce;
+    i.a.a(this.requestType, this.uUH, this.uUM, this.jKn, (h)new d(this));
     AppMethodBeat.o(241);
   }
   
-  public final void cJl()
+  public final void avl(String paramString)
+  {
+    AppMethodBeat.i(243);
+    p.k(paramString, "lensId");
+    cqv localcqv = new cqv();
+    localcqv.LensId = paramString;
+    a(localcqv);
+    AppMethodBeat.o(243);
+  }
+  
+  public final void cXT()
   {
     AppMethodBeat.i(242);
-    this.rpi.clear();
-    LinkedList localLinkedList = this.rpi;
-    com.tencent.mm.sticker.a.b localb = com.tencent.mm.sticker.a.b.NOi;
-    localLinkedList.addAll((Collection)com.tencent.mm.sticker.a.b.gzf());
-    Log.i(g.auD(), "updateHistory: " + this.rpi.size());
-    cJn();
+    this.uUO.clear();
+    LinkedList localLinkedList = this.uUO;
+    com.tencent.mm.sticker.a.b localb = com.tencent.mm.sticker.a.b.VbS;
+    localLinkedList.addAll((Collection)com.tencent.mm.sticker.a.b.hvf());
+    Log.i(g.aBy(), "updateHistory: " + this.uUO.size());
+    cXV();
     AppMethodBeat.o(242);
   }
   
-  public final void cJm()
+  public final void cXU()
   {
     AppMethodBeat.i(246);
-    com.tencent.mm.ac.d.h((kotlin.g.a.a)new f(this));
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new f(this));
     AppMethodBeat.o(246);
   }
   
-  public final void cJn()
+  public final void cXV()
   {
     int j = 0;
     AppMethodBeat.i(247);
-    Log.i(g.auD(), "processMore: " + this.rpi.size() + ", " + this.rpj.size());
+    Log.i(g.aBy(), "processMore: " + this.uUO.size() + ", " + this.uUP.size());
     LinkedList localLinkedList = new LinkedList();
     Object localObject1;
     Collection localCollection;
     int i;
     Object localObject2;
-    if (this.rpi.size() > 0)
+    if (this.uUO.size() > 0)
     {
-      localLinkedList.add(new com.tencent.mm.sticker.c(rpo, 0, 6, (byte)0));
-      localObject1 = (Iterable)this.rpi;
+      localLinkedList.add(new com.tencent.mm.sticker.c(uUU, 0, 6, (byte)0));
+      localObject1 = (Iterable)this.uUO;
       localCollection = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
       localObject1 = ((Iterable)localObject1).iterator();
       i = 0;
@@ -207,18 +207,18 @@ public final class f
       {
         localObject2 = ((Iterator)localObject1).next();
         if (i < 0) {
-          j.hxH();
+          j.iBO();
         }
-        localCollection.add(new com.tencent.mm.sticker.c((chz)localObject2, i + 1, 2));
+        localCollection.add(new com.tencent.mm.sticker.c((cqv)localObject2, i + 1, 2));
         i += 1;
       }
       localLinkedList.addAll((Collection)localCollection);
-      localLinkedList.add(new com.tencent.mm.sticker.c(rpp, 0, 6, (byte)0));
+      localLinkedList.add(new com.tencent.mm.sticker.c(uUV, 0, 6, (byte)0));
     }
-    if (this.rpj.size() > 0)
+    if (this.uUP.size() > 0)
     {
-      localLinkedList.add(new com.tencent.mm.sticker.c(rpq, 0, 6, (byte)0));
-      localObject1 = (Iterable)this.rpj;
+      localLinkedList.add(new com.tencent.mm.sticker.c(uUW, 0, 6, (byte)0));
+      localObject1 = (Iterable)this.uUP;
       localCollection = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
       localObject1 = ((Iterable)localObject1).iterator();
       i = j;
@@ -226,35 +226,35 @@ public final class f
       {
         localObject2 = ((Iterator)localObject1).next();
         if (i < 0) {
-          j.hxH();
+          j.iBO();
         }
-        localCollection.add(new com.tencent.mm.sticker.c((chz)localObject2, i + 1, 3));
+        localCollection.add(new com.tencent.mm.sticker.c((cqv)localObject2, i + 1, 3));
         i += 1;
       }
       localLinkedList.addAll((Collection)localCollection);
     }
-    this.rpk.dl((List)localLinkedList);
+    this.uUQ.dm((List)localLinkedList);
     AppMethodBeat.o(247);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/emojicapture/model/capture/StickerPanelData$appendRecommend$1", "Lcom/tencent/mm/sticker/task/GetLensInfoCallback;", "onResult", "", "errType", "", "info", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "plugin-emojicapture_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/emojicapture/model/capture/StickerPanelData$appendRecommend$1", "Lcom/tencent/mm/sticker/task/GetLensInfoCallback;", "onResult", "", "errType", "", "info", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "plugin-emojicapture_release"})
   public static final class b
     implements com.tencent.mm.sticker.c.c
   {
-    public final void a(int paramInt, chz paramchz)
+    public final void a(int paramInt, cqv paramcqv)
     {
       AppMethodBeat.i(236);
-      Log.i(g.auD(), "getLensInfo onResult: ".concat(String.valueOf(paramchz)));
-      if (paramchz != null)
+      Log.i(g.aBy(), "getLensInfo onResult: ".concat(String.valueOf(paramcqv)));
+      if (paramcqv != null)
       {
-        f.f(this.rps).add(paramchz);
-        f.g(this.rps);
+        f.f(this.uUY).add(paramcqv);
+        f.g(this.uUY);
       }
       AppMethodBeat.o(236);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   public static final class c
     extends q
     implements kotlin.g.a.a<x>
@@ -265,28 +265,28 @@ public final class f
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/emojicapture/model/capture/StickerPanelData$loadMore$1", "Lcom/tencent/mm/sticker/task/GetLensListCallback;", "onResult", "", "errType", "", "errCode", "response", "Lcom/tencent/mm/protocal/protobuf/GetLensListResponse;", "plugin-emojicapture_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/emojicapture/model/capture/StickerPanelData$loadMore$1", "Lcom/tencent/mm/sticker/task/GetLensListCallback;", "onResult", "", "errType", "", "errCode", "response", "Lcom/tencent/mm/protocal/protobuf/GetLensListResponse;", "plugin-emojicapture_release"})
   public static final class d
     implements h
   {
-    public final void a(int paramInt1, int paramInt2, bpi parambpi)
+    public final void a(int paramInt1, int paramInt2, bxc parambxc)
     {
       Object localObject2 = null;
       Object localObject1 = null;
       boolean bool = true;
       AppMethodBeat.i(238);
-      f.b(this.rps);
+      f.b(this.uUY);
       Object localObject3;
-      if ((paramInt1 == 4) && (paramInt2 == f.c(this.rps)) && (parambpi != null))
+      if ((paramInt1 == 4) && (paramInt2 == f.c(this.uUY)) && (parambxc != null))
       {
-        localObject2 = this.rps;
-        localObject3 = parambpi.LXB;
+        localObject2 = this.uUY;
+        localObject3 = parambxc.TgS;
         if (localObject3 != null) {
-          localObject1 = ((com.tencent.mm.bw.b)localObject3).zy;
+          localObject1 = ((com.tencent.mm.cd.b)localObject3).UH;
         }
         f.a((f)localObject2, (byte[])localObject1);
-        localObject1 = this.rps;
-        localObject2 = f.d(this.rps);
+        localObject1 = this.uUY;
+        localObject2 = f.d(this.uUY);
         if (localObject2 != null) {
           if (localObject2.length == 0)
           {
@@ -301,16 +301,16 @@ public final class f
             }
             label112:
             f.a((f)localObject1, bool);
-            localObject1 = this.rps;
-            parambpi = parambpi.LXD;
-            p.g(parambpi, "response.LensList");
-            f.a((f)localObject1, (List)parambpi);
+            localObject1 = this.uUY;
+            parambxc = parambxc.TgU;
+            p.j(parambxc, "response.LensList");
+            f.a((f)localObject1, (List)parambxc);
           }
         }
       }
       for (;;)
       {
-        Log.i(g.auD(), "getLensList onResult: " + f.a(this.rps) + ", " + f.e(this.rps));
+        Log.i(g.aBy(), "getLensList onResult: " + f.a(this.uUY) + ", " + f.e(this.uUY));
         AppMethodBeat.o(238);
         return;
         paramInt1 = 0;
@@ -321,30 +321,30 @@ public final class f
         label205:
         bool = false;
         break label112;
-        if ((paramInt1 == 0) && (paramInt2 == 0) && (parambpi != null))
+        if ((paramInt1 == 0) && (paramInt2 == 0) && (parambxc != null))
         {
-          f.a(this.rps, false);
-          localObject3 = this.rps;
-          com.tencent.mm.bw.b localb = parambpi.LXB;
+          f.a(this.uUY, false);
+          localObject3 = this.uUY;
+          com.tencent.mm.cd.b localb = parambxc.TgS;
           localObject1 = localObject2;
           if (localb != null) {
-            localObject1 = localb.zy;
+            localObject1 = localb.UH;
           }
           f.a((f)localObject3, (byte[])localObject1);
-          localObject1 = this.rps;
-          parambpi = parambpi.LXD;
-          p.g(parambpi, "response.LensList");
-          f.a((f)localObject1, (List)parambpi);
+          localObject1 = this.uUY;
+          parambxc = parambxc.TgU;
+          p.j(parambxc, "response.LensList");
+          f.a((f)localObject1, (List)parambxc);
         }
         else
         {
-          f.a(this.rps, (List)v.SXr);
+          f.a(this.uUY, (List)v.aaAd);
         }
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class e
     extends q
     implements kotlin.g.a.a<x>
@@ -355,7 +355,7 @@ public final class f
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class f
     extends q
     implements kotlin.g.a.a<x>
@@ -368,7 +368,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.a.f
  * JD-Core Version:    0.7.0.1
  */

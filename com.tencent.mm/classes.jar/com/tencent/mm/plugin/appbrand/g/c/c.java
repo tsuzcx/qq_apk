@@ -7,17 +7,17 @@ import java.util.Map;
 public final class c
 {
   private boolean enable;
-  private String lkC;
-  private int lkD;
-  Map<String, com.tencent.mm.plugin.appbrand.g.c.b.c> lkE;
-  Map<String, com.tencent.mm.plugin.appbrand.g.c.b.c> lkF;
-  private a lkG;
+  private String ofo;
+  private int ofp;
+  Map<String, com.tencent.mm.plugin.appbrand.g.c.b.c> ofq;
+  Map<String, com.tencent.mm.plugin.appbrand.g.c.b.c> ofr;
+  private a ofs;
   
   private c()
   {
     AppMethodBeat.i(158965);
     this.enable = false;
-    this.lkG = new a()
+    this.ofs = new a()
     {
       public final boolean b(com.tencent.mm.plugin.appbrand.g.c.b.d paramAnonymousd)
       {
@@ -27,16 +27,16 @@ public final class c
           int i;
           try
           {
-            String str1 = paramAnonymousd.llp.get("SID");
+            String str1 = paramAnonymousd.ogb.get("SID");
             com.tencent.mm.plugin.appbrand.g.c.b.c localc = null;
-            String str2 = paramAnonymousd.llo;
+            String str2 = paramAnonymousd.oga;
             i = -1;
             switch (str2.hashCode())
             {
             case -2006516997: 
-              if ((localc != null) && (localc.lln != null))
+              if ((localc != null) && (localc.ofZ != null))
               {
-                boolean bool = localc.lln.a(paramAnonymousd);
+                boolean bool = localc.ofZ.a(paramAnonymousd);
                 return bool;
                 if (!str2.equals("avtEvent")) {
                   break label190;
@@ -49,9 +49,9 @@ public final class c
               {
                 i = 1;
                 break label190;
-                localc = (com.tencent.mm.plugin.appbrand.g.c.b.c)c.this.lkE.get(str1);
+                localc = (com.tencent.mm.plugin.appbrand.g.c.b.c)c.this.ofq.get(str1);
                 continue;
-                localc = (com.tencent.mm.plugin.appbrand.g.c.b.c)c.this.lkF.get(str1);
+                localc = (com.tencent.mm.plugin.appbrand.g.c.b.c)c.this.ofr.get(str1);
                 continue;
                 return true;
               }
@@ -69,50 +69,50 @@ public final class c
         }
       }
     };
-    this.lkE = new HashMap();
-    this.lkF = new HashMap();
+    this.ofq = new HashMap();
+    this.ofr = new HashMap();
     AppMethodBeat.o(158965);
   }
   
-  public static c bBw()
+  public static c bMR()
   {
-    AppMethodBeat.i(258731);
-    c localc = b.bBx();
-    AppMethodBeat.o(258731);
+    AppMethodBeat.i(292904);
+    c localc = b.bMT();
+    AppMethodBeat.o(292904);
     return localc;
   }
   
-  public final String Yc(String paramString)
+  public final String afQ(String paramString)
   {
     AppMethodBeat.i(158969);
-    paramString = "http://" + this.lkC + ":" + this.lkD + paramString;
+    paramString = "http://" + this.ofo + ":" + this.ofp + paramString;
     AppMethodBeat.o(158969);
     return paramString;
   }
   
-  public final boolean disable()
-  {
-    AppMethodBeat.i(158968);
-    this.enable = false;
-    d locald = d.c.bBy();
-    locald.lkG = null;
-    locald.stop();
-    this.lkE.clear();
-    this.lkF.clear();
-    AppMethodBeat.o(158968);
-    return true;
-  }
-  
-  public final boolean enable()
+  public final boolean bFu()
   {
     AppMethodBeat.i(158967);
     this.enable = true;
-    d locald = d.c.bBy();
-    locald.lkG = this.lkG;
+    d locald = d.c.bMU();
+    locald.ofs = this.ofs;
     locald.start();
-    this.lkC = locald.ip;
-    this.lkD = locald.port;
+    this.ofo = locald.ip;
+    this.ofp = locald.port;
     AppMethodBeat.o(158967);
+    return true;
+  }
+  
+  public final boolean bMS()
+  {
+    AppMethodBeat.i(158968);
+    this.enable = false;
+    d locald = d.c.bMU();
+    locald.ofs = null;
+    locald.stop();
+    this.ofq.clear();
+    this.ofr.clear();
+    AppMethodBeat.o(158968);
     return true;
   }
   
@@ -123,19 +123,19 @@ public final class c
   
   public static final class b
   {
-    private static c lkM;
+    private static c ofy;
     
     static
     {
       AppMethodBeat.i(158964);
-      lkM = new c((byte)0);
+      ofy = new c((byte)0);
       AppMethodBeat.o(158964);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.c.c
  * JD-Core Version:    0.7.0.1
  */

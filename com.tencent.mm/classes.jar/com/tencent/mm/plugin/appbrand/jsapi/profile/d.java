@@ -5,31 +5,37 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.c;
-import com.tencent.mm.g.a.uj;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ay.a;
-import com.tencent.mm.model.ay.b;
-import com.tencent.mm.model.ay.b.a;
+import com.tencent.mm.am.e;
+import com.tencent.mm.am.q;
+import com.tencent.mm.f.a.vm;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.model.az.a;
+import com.tencent.mm.model.az.b;
+import com.tencent.mm.model.az.b.a;
+import com.tencent.mm.plugin.appbrand.au.i;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.q;
+import com.tencent.mm.ui.base.s;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/profile/ProfileTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask;", "()V", "handleRequest", "", "request", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/profile/ProfileTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask;", "()V", "handleRequest", "", "request", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "plugin-appbrand-integration_release"})
 public final class d
   extends AppBrandProxyUIProcessTask
 {
   public final void a(final AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
   {
     AppMethodBeat.i(50656);
-    kotlin.g.b.p.h(paramProcessRequest, "request");
+    p.k(paramProcessRequest, "request");
     final ProfileResult localProfileResult = new ProfileResult();
     if (!(paramProcessRequest instanceof ProfileRequest))
     {
@@ -39,8 +45,8 @@ public final class d
       AppMethodBeat.o(50656);
       return;
     }
-    g.aAf();
-    if (!com.tencent.mm.kernel.a.azo())
+    com.tencent.mm.kernel.h.aHE();
+    if (!b.aGL())
     {
       Log.e("ProfileTask", "handleRequest, MMKernel.account().hasLogin() is false");
       localProfileResult.resultCode = 0;
@@ -50,37 +56,37 @@ public final class d
     }
     final int i = ((ProfileRequest)paramProcessRequest).scene;
     final String str = ((ProfileRequest)paramProcessRequest).username;
-    paramProcessRequest = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-    kotlin.g.b.p.g(paramProcessRequest, "MMKernel.service(IMessengerStorage::class.java)");
-    Object localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)paramProcessRequest).aSN().Kn(str);
+    paramProcessRequest = com.tencent.mm.kernel.h.ae(n.class);
+    p.j(paramProcessRequest, "MMKernel.service(IMessengerStorage::class.java)");
+    Object localObject = ((n)paramProcessRequest).bbL().RG(str);
     if (localObject != null)
     {
       paramProcessRequest = (AppBrandProxyUIProcessTask.ProcessRequest)localObject;
-      if (((as)localObject).arH() > 0) {}
+      if (((as)localObject).ayq() > 0) {}
     }
     else
     {
-      paramProcessRequest = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-      kotlin.g.b.p.g(paramProcessRequest, "MMKernel.service(IMessengerStorage::class.java)");
-      paramProcessRequest = ((com.tencent.mm.plugin.messenger.foundation.a.l)paramProcessRequest).aSN().bjH(str);
+      paramProcessRequest = com.tencent.mm.kernel.h.ae(n.class);
+      p.j(paramProcessRequest, "MMKernel.service(IMessengerStorage::class.java)");
+      paramProcessRequest = ((n)paramProcessRequest).bbL().bwe(str);
     }
-    if ((paramProcessRequest != null) && (paramProcessRequest.arH() > 0))
+    if ((paramProcessRequest != null) && (paramProcessRequest.ayq() > 0))
     {
       localObject = new Intent();
       ((Intent)localObject).putExtra("Contact_User", str);
       localProfileResult.username = paramProcessRequest.getUsername();
-      if (paramProcessRequest.gBM())
+      if (paramProcessRequest.hxX())
       {
-        com.tencent.mm.plugin.report.service.h.CyF.kvStat(10298, paramProcessRequest.getUsername() + "," + i);
-        localProfileResult.mnH |= 0x1;
+        com.tencent.mm.plugin.report.service.h.IzE.kvStat(10298, paramProcessRequest.getUsername() + "," + i);
+        localProfileResult.plN |= 0x1;
         ((Intent)localObject).putExtra("Contact_Scene", i);
       }
-      if (paramProcessRequest.arv())
+      if (paramProcessRequest.axZ())
       {
-        localProfileResult.mnH |= 0x2;
-        paramProcessRequest = new uj();
-        paramProcessRequest.eaI.intent = ((Intent)localObject);
-        paramProcessRequest.eaI.username = str;
+        localProfileResult.plN |= 0x2;
+        paramProcessRequest = new vm();
+        paramProcessRequest.fUF.intent = ((Intent)localObject);
+        paramProcessRequest.fUF.username = str;
         EventCenter.instance.publish((IEvent)paramProcessRequest);
       }
       localProfileResult.resultCode = 1;
@@ -89,73 +95,73 @@ public final class d
       return;
     }
     Log.i("ProfileTask", "handleRequest, request contact info");
-    paramProcessRequest = (Context)bDF();
-    bDF().getString(2131755998);
-    paramProcessRequest = com.tencent.mm.ui.base.h.a(paramProcessRequest, bDF().getString(2131756029), true, (DialogInterface.OnCancelListener)new b(this, str, localProfileResult));
-    ay.a.aVo().a(str, "", (ay.b.a)new a(this, localProfileResult, paramProcessRequest, i));
+    paramProcessRequest = (Context)bPf();
+    bPf().getString(au.i.app_tip);
+    paramProcessRequest = com.tencent.mm.ui.base.h.a(paramProcessRequest, bPf().getString(au.i.app_waiting), true, (DialogInterface.OnCancelListener)new b(this, str, localProfileResult));
+    az.a.ber().a(str, "", (az.b.a)new a(this, localProfileResult, paramProcessRequest, i));
     AppMethodBeat.o(50656);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "username", "", "kotlin.jvm.PlatformType", "succ", "", "getContactCallBack"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "username", "", "kotlin.jvm.PlatformType", "succ", "", "getContactCallBack"})
   static final class a
-    implements ay.b.a
+    implements az.b.a
   {
-    a(d paramd, ProfileResult paramProfileResult, q paramq, int paramInt) {}
+    a(d paramd, ProfileResult paramProfileResult, s params, int paramInt) {}
     
-    public final void p(String paramString, boolean paramBoolean)
+    public final void s(String paramString, boolean paramBoolean)
     {
       AppMethodBeat.i(50654);
-      if (d.a(this.mnI) == null)
+      if (d.a(this.plO) == null)
       {
         Log.w("ProfileTask", "handleRequest, getNow callback, context has already been detached!");
         localProfileResult.resultCode = 0;
-        d.a(this.mnI, (AppBrandProxyUIProcessTask.ProcessResult)localProfileResult);
+        d.a(this.plO, (AppBrandProxyUIProcessTask.ProcessResult)localProfileResult);
         AppMethodBeat.o(50654);
         return;
       }
       Object localObject = paramProcessRequest;
       if (localObject != null) {
-        ((q)localObject).dismiss();
+        ((s)localObject).dismiss();
       }
-      localObject = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-      kotlin.g.b.p.g(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).aSN().Kn(paramString);
-      if ((localObject == null) || (((as)localObject).arH() <= 0))
+      localObject = com.tencent.mm.kernel.h.ae(n.class);
+      p.j(localObject, "MMKernel.service(IMessengerStorage::class.java)");
+      localObject = ((n)localObject).bbL().RG(paramString);
+      if ((localObject == null) || (((as)localObject).ayq() <= 0))
       {
-        com.tencent.mm.kernel.c.a locala = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-        kotlin.g.b.p.g(locala, "MMKernel.service(IMessengerStorage::class.java)");
-        ((com.tencent.mm.plugin.messenger.foundation.a.l)locala).aSN().bjH(paramString);
+        a locala = com.tencent.mm.kernel.h.ae(n.class);
+        p.j(locala, "MMKernel.service(IMessengerStorage::class.java)");
+        ((n)locala).bbL().bwe(paramString);
         paramBoolean = false;
       }
       while (!paramBoolean)
       {
         Log.w("ProfileTask", "handleRequest, getNow callback fail");
         localProfileResult.resultCode = 0;
-        d.a(this.mnI, (AppBrandProxyUIProcessTask.ProcessResult)localProfileResult);
+        d.a(this.plO, (AppBrandProxyUIProcessTask.ProcessResult)localProfileResult);
         AppMethodBeat.o(50654);
         return;
         paramString = ((as)localObject).getUsername();
       }
-      c.ap(paramString, 3);
-      com.tencent.mm.aj.p.aYD().Mg(paramString);
+      com.tencent.mm.am.d.aH(paramString, 3);
+      q.bhR().TB(paramString);
       if (localObject == null) {
-        kotlin.g.b.p.hyc();
+        p.iCn();
       }
-      if (((as)localObject).gBM())
+      if (((as)localObject).hxX())
       {
-        com.tencent.mm.plugin.report.service.h.CyF.kvStat(10298, ((as)localObject).getUsername() + "," + i);
-        localProfileResult.mnH |= 0x1;
+        com.tencent.mm.plugin.report.service.h.IzE.kvStat(10298, ((as)localObject).getUsername() + "," + i);
+        localProfileResult.plN |= 0x1;
       }
-      if (((as)localObject).arv()) {
-        localProfileResult.mnH |= 0x2;
+      if (((as)localObject).axZ()) {
+        localProfileResult.plN |= 0x2;
       }
       localProfileResult.resultCode = 1;
-      d.a(this.mnI, (AppBrandProxyUIProcessTask.ProcessResult)localProfileResult);
+      d.a(this.plO, (AppBrandProxyUIProcessTask.ProcessResult)localProfileResult);
       AppMethodBeat.o(50654);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
   static final class b
     implements DialogInterface.OnCancelListener
   {
@@ -164,16 +170,16 @@ public final class d
     public final void onCancel(DialogInterface paramDialogInterface)
     {
       AppMethodBeat.i(50655);
-      ay.a.aVo().JZ(str);
+      az.a.ber().Rr(str);
       localProfileResult.resultCode = 2;
-      d.a(this.mnI, (AppBrandProxyUIProcessTask.ProcessResult)localProfileResult);
+      d.a(this.plO, (AppBrandProxyUIProcessTask.ProcessResult)localProfileResult);
       AppMethodBeat.o(50655);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.profile.d
  * JD-Core Version:    0.7.0.1
  */

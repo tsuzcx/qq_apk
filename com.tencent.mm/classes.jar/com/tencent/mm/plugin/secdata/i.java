@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.secdata;
 
-import com.tencent.mm.bw.a;
+import com.tencent.mm.cd.a;
 
 public abstract interface i<T extends a>
 {
@@ -8,7 +8,7 @@ public abstract interface i<T extends a>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.secdata.i
  * JD-Core Version:    0.7.0.1
  */

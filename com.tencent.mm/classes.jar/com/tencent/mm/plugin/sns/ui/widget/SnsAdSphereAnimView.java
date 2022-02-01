@@ -17,23 +17,23 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class SnsAdSphereAnimView
   extends FrameLayout
 {
-  public static int Fes = 1;
-  public static int Fet = 2;
-  public static int Feu = 3;
-  public static int Fev = 4;
-  public Handler DAC;
-  public a Few;
-  public int Fex;
-  private long kZb;
+  public static int LsX = 1;
+  public static int LsY = 2;
+  public static int LsZ = 3;
+  public static int Lta = 4;
+  public Handler JMp;
+  public a Ltb;
+  public int Ltc;
   public Context mContext;
+  private long nTm;
   
   public SnsAdSphereAnimView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(179378);
-    this.Fex = 0;
-    this.kZb = 0L;
-    this.DAC = new Handler(Looper.getMainLooper());
+    this.Ltc = 0;
+    this.nTm = 0L;
+    this.JMp = new Handler(Looper.getMainLooper());
     this.mContext = paramContext;
     AppMethodBeat.o(179378);
   }
@@ -42,9 +42,9 @@ public class SnsAdSphereAnimView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(179379);
-    this.Fex = 0;
-    this.kZb = 0L;
-    this.DAC = new Handler(Looper.getMainLooper());
+    this.Ltc = 0;
+    this.nTm = 0L;
+    this.JMp = new Handler(Looper.getMainLooper());
     this.mContext = paramContext;
     AppMethodBeat.o(179379);
   }
@@ -53,12 +53,12 @@ public class SnsAdSphereAnimView
   {
     AppMethodBeat.i(179380);
     Log.i("SnsAdSphereAnimView", "clear");
-    if (this.Few != null)
+    if (this.Ltb != null)
     {
-      this.Few.clear();
-      this.Few = null;
+      this.Ltb.clear();
+      this.Ltb = null;
     }
-    this.DAC.removeCallbacksAndMessages(null);
+    this.JMp.removeCallbacksAndMessages(null);
     AppMethodBeat.o(179380);
   }
   
@@ -72,7 +72,7 @@ public class SnsAdSphereAnimView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.SnsAdSphereAnimView
  * JD-Core Version:    0.7.0.1
  */

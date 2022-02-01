@@ -15,14 +15,14 @@ final class MailAddrListUI$4
   {
     AppMethodBeat.i(123040);
     if (1 == paramInt) {
-      this.BvT.hideVKB();
+      this.Hqo.hideVKB();
     }
     AppMethodBeat.o(123040);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.MailAddrListUI.4
  * JD-Core Version:    0.7.0.1
  */

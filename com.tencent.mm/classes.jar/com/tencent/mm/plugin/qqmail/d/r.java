@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.qqmail.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
@@ -15,29 +15,29 @@ public final class r
   implements m
 {
   private i callback;
-  public d hJu;
+  public d kwO;
   
   public r(String paramString)
   {
-    AppMethodBeat.i(198606);
+    AppMethodBeat.i(250098);
     d.a locala = new d.a();
     locala.funcId = getType();
     w localw = new w();
-    localw.Bsf = paramString;
-    locala.iLN = localw;
-    locala.iLO = new x();
+    localw.Hmy = paramString;
+    locala.lBU = localw;
+    locala.lBV = new x();
     locala.uri = "/cgi-bin/micromsg-bin/preparebindxmail";
     Log.i("MicroMsg.NetScenePrepareBindXmail", "bindQQMail %s", new Object[] { paramString });
-    this.hJu = locala.aXF();
-    AppMethodBeat.o(198606);
+    this.kwO = locala.bgN();
+    AppMethodBeat.o(250098);
   }
   
   public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(198607);
+    AppMethodBeat.i(250100);
     this.callback = parami;
-    int i = dispatch(paramg, this.hJu, this);
-    AppMethodBeat.o(198607);
+    int i = dispatch(paramg, this.kwO, this);
+    AppMethodBeat.o(250100);
     return i;
   }
   
@@ -48,9 +48,9 @@ public final class r
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(198608);
+    AppMethodBeat.i(250101);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(198608);
+    AppMethodBeat.o(250101);
   }
 }
 

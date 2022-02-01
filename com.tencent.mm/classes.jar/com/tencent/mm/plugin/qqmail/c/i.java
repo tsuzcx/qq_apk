@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.qqmail.c;
 
 import android.os.Bundle;
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 
 public class i
-  implements b<Bundle, IPCVoid>
+  implements d<Bundle, IPCVoid>
 {}
 
 

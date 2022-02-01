@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.topstory.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.eik;
-import com.tencent.mm.protocal.protobuf.eil;
+import com.tencent.mm.protocal.protobuf.esm;
+import com.tencent.mm.protocal.protobuf.esn;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
@@ -20,91 +20,91 @@ public final class f
   implements m
 {
   private i callback;
+  private long fhq;
   public d rr;
-  private long uOV;
   
   public f(f paramf)
   {
     AppMethodBeat.i(88485);
-    this.uOV = System.currentTimeMillis();
+    this.fhq = System.currentTimeMillis();
     Object localObject = new d.a();
     ((d.a)localObject).funcId = getType();
     ((d.a)localObject).uri = "/cgi-bin/mmsearch-bin/topstorypluginpostcomment";
-    ((d.a)localObject).iLN = new eik();
-    ((d.a)localObject).iLO = new eil();
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (eik)this.rr.iLK.iLR;
-    paramf = paramf.fyd();
-    ((eik)localObject).Mba = paramf.Mba;
-    ((eik)localObject).MEq = paramf.MEq;
-    ((eik)localObject).iAc = paramf.iAc;
-    ((eik)localObject).NhF = paramf.NhF;
-    ((eik)localObject).NhG = paramf.NhG;
-    ((eik)localObject).LOr = paramf.LOr;
-    ((eik)localObject).Title = paramf.Title;
-    ((eik)localObject).Mbb = paramf.Mbb;
-    ((eik)localObject).Scene = paramf.Scene;
-    ((eik)localObject).KJS = paramf.KJS;
-    ((eik)localObject).pLq = paramf.pLq;
-    ((eik)localObject).MRt = paramf.MRt;
-    ((eik)localObject).xub = paramf.xub;
-    Log.i("MicroMsg.TopStory.NetSceneTopStoryPostComment", "TopStoryPluginPostCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { ((eik)localObject).Mba, ((eik)localObject).MEq, ((eik)localObject).iAc, ((eik)localObject).NhF, ((eik)localObject).NhG, ((eik)localObject).LOr, ((eik)localObject).Title, ((eik)localObject).Mbb, Integer.valueOf(((eik)localObject).Scene), Integer.valueOf(((eik)localObject).KJS) });
+    ((d.a)localObject).lBU = new esm();
+    ((d.a)localObject).lBV = new esn();
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (esm)d.b.b(this.rr.lBR);
+    paramf = paramf.gpY();
+    ((esm)localObject).Tkx = paramf.Tkx;
+    ((esm)localObject).TPZ = paramf.TPZ;
+    ((esm)localObject).lpy = paramf.lpy;
+    ((esm)localObject).Uul = paramf.Uul;
+    ((esm)localObject).Uum = paramf.Uum;
+    ((esm)localObject).SWP = paramf.SWP;
+    ((esm)localObject).fwr = paramf.fwr;
+    ((esm)localObject).Tky = paramf.Tky;
+    ((esm)localObject).CPw = paramf.CPw;
+    ((esm)localObject).RKI = paramf.RKI;
+    ((esm)localObject).sSY = paramf.sSY;
+    ((esm)localObject).Udz = paramf.Udz;
+    ((esm)localObject).Cqs = paramf.Cqs;
+    Log.i("MicroMsg.TopStory.NetSceneTopStoryPostComment", "TopStoryPluginPostCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { ((esm)localObject).Tkx, ((esm)localObject).TPZ, ((esm)localObject).lpy, ((esm)localObject).Uul, ((esm)localObject).Uum, ((esm)localObject).SWP, ((esm)localObject).fwr, ((esm)localObject).Tky, Integer.valueOf(((esm)localObject).CPw), Integer.valueOf(((esm)localObject).RKI) });
     AppMethodBeat.o(88485);
   }
   
   public f(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt1, int paramInt2, String paramString9, String paramString10)
   {
     AppMethodBeat.i(88484);
-    this.uOV = System.currentTimeMillis();
+    this.fhq = System.currentTimeMillis();
     Object localObject = new d.a();
     ((d.a)localObject).funcId = getType();
     ((d.a)localObject).uri = "/cgi-bin/mmsearch-bin/topstorypluginpostcomment";
-    ((d.a)localObject).iLN = new eik();
-    ((d.a)localObject).iLO = new eil();
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (eik)this.rr.iLK.iLR;
-    ((eik)localObject).Mba = paramString1;
-    ((eik)localObject).MEq = paramString2;
-    ((eik)localObject).iAc = paramString3;
-    ((eik)localObject).NhF = paramString4;
-    ((eik)localObject).NhG = paramString5;
-    ((eik)localObject).LOr = paramString6;
-    ((eik)localObject).Title = paramString7;
-    ((eik)localObject).Mbb = paramString8;
-    ((eik)localObject).Scene = paramInt1;
-    ((eik)localObject).KJS = paramInt2;
-    ((eik)localObject).pLq = paramString9;
-    ((eik)localObject).MRt = paramString10;
-    ((eik)localObject).xub = 1;
-    Log.i("MicroMsg.TopStory.NetSceneTopStoryPostComment", "TopStoryPluginPostCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { ((eik)localObject).Mba, ((eik)localObject).MEq, ((eik)localObject).iAc, ((eik)localObject).NhF, ((eik)localObject).NhG, ((eik)localObject).LOr, ((eik)localObject).Title, ((eik)localObject).Mbb, Integer.valueOf(((eik)localObject).Scene), Integer.valueOf(((eik)localObject).KJS) });
+    ((d.a)localObject).lBU = new esm();
+    ((d.a)localObject).lBV = new esn();
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (esm)d.b.b(this.rr.lBR);
+    ((esm)localObject).Tkx = paramString1;
+    ((esm)localObject).TPZ = paramString2;
+    ((esm)localObject).lpy = paramString3;
+    ((esm)localObject).Uul = paramString4;
+    ((esm)localObject).Uum = paramString5;
+    ((esm)localObject).SWP = paramString6;
+    ((esm)localObject).fwr = paramString7;
+    ((esm)localObject).Tky = paramString8;
+    ((esm)localObject).CPw = paramInt1;
+    ((esm)localObject).RKI = paramInt2;
+    ((esm)localObject).sSY = paramString9;
+    ((esm)localObject).Udz = paramString10;
+    ((esm)localObject).Cqs = 1;
+    Log.i("MicroMsg.TopStory.NetSceneTopStoryPostComment", "TopStoryPluginPostCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { ((esm)localObject).Tkx, ((esm)localObject).TPZ, ((esm)localObject).lpy, ((esm)localObject).Uul, ((esm)localObject).Uum, ((esm)localObject).SWP, ((esm)localObject).fwr, ((esm)localObject).Tky, Integer.valueOf(((esm)localObject).CPw), Integer.valueOf(((esm)localObject).RKI) });
     AppMethodBeat.o(88484);
   }
   
   public f(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(88483);
-    this.uOV = System.currentTimeMillis();
+    this.fhq = System.currentTimeMillis();
     Object localObject = new d.a();
     ((d.a)localObject).funcId = getType();
     ((d.a)localObject).uri = "/cgi-bin/mmsearch-bin/topstorypluginpostcomment";
-    ((d.a)localObject).iLN = new eik();
-    ((d.a)localObject).iLO = new eil();
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (eik)this.rr.iLK.iLR;
-    ((eik)localObject).Mba = paramJSONObject.optString("requestId", "");
-    ((eik)localObject).MEq = paramJSONObject.optString("docId", "");
-    ((eik)localObject).iAc = paramJSONObject.optString("content", "");
-    ((eik)localObject).NhF = paramJSONObject.optString("replyId", "");
-    ((eik)localObject).NhG = paramJSONObject.optString("subReplyId", "");
-    ((eik)localObject).LOr = paramJSONObject.optString("docUrl", "");
-    ((eik)localObject).Title = paramJSONObject.optString("title", "");
-    ((eik)localObject).Mbb = paramJSONObject.optString("searchId", "");
-    ((eik)localObject).Scene = paramJSONObject.optInt("scene", 0);
-    ((eik)localObject).KJS = paramJSONObject.optInt("subScene", 0);
-    ((eik)localObject).pLq = paramJSONObject.optString("vid", "");
-    ((eik)localObject).MRt = paramJSONObject.optString("byPass", "");
-    ((eik)localObject).xub = 0;
-    Log.i("MicroMsg.TopStory.NetSceneTopStoryPostComment", "TopStoryPluginPostCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { ((eik)localObject).Mba, ((eik)localObject).MEq, ((eik)localObject).iAc, ((eik)localObject).NhF, ((eik)localObject).NhG, ((eik)localObject).LOr, ((eik)localObject).Title, ((eik)localObject).Mbb, Integer.valueOf(((eik)localObject).Scene), Integer.valueOf(((eik)localObject).KJS) });
+    ((d.a)localObject).lBU = new esm();
+    ((d.a)localObject).lBV = new esn();
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (esm)d.b.b(this.rr.lBR);
+    ((esm)localObject).Tkx = paramJSONObject.optString("requestId", "");
+    ((esm)localObject).TPZ = paramJSONObject.optString("docId", "");
+    ((esm)localObject).lpy = paramJSONObject.optString("content", "");
+    ((esm)localObject).Uul = paramJSONObject.optString("replyId", "");
+    ((esm)localObject).Uum = paramJSONObject.optString("subReplyId", "");
+    ((esm)localObject).SWP = paramJSONObject.optString("docUrl", "");
+    ((esm)localObject).fwr = paramJSONObject.optString("title", "");
+    ((esm)localObject).Tky = paramJSONObject.optString("searchId", "");
+    ((esm)localObject).CPw = paramJSONObject.optInt("scene", 0);
+    ((esm)localObject).RKI = paramJSONObject.optInt("subScene", 0);
+    ((esm)localObject).sSY = paramJSONObject.optString("vid", "");
+    ((esm)localObject).Udz = paramJSONObject.optString("byPass", "");
+    ((esm)localObject).Cqs = 0;
+    Log.i("MicroMsg.TopStory.NetSceneTopStoryPostComment", "TopStoryPluginPostCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { ((esm)localObject).Tkx, ((esm)localObject).TPZ, ((esm)localObject).lpy, ((esm)localObject).Uul, ((esm)localObject).Uum, ((esm)localObject).SWP, ((esm)localObject).fwr, ((esm)localObject).Tky, Integer.valueOf(((esm)localObject).CPw), Integer.valueOf(((esm)localObject).RKI) });
     AppMethodBeat.o(88483);
   }
   
@@ -117,32 +117,38 @@ public final class f
     return i;
   }
   
-  public final eil fyc()
-  {
-    return (eil)this.rr.iLL.iLR;
-  }
-  
-  public final eik fyd()
-  {
-    return (eik)this.rr.iLK.iLR;
-  }
-  
   public final int getType()
   {
     return 2906;
   }
   
+  public final esn gpX()
+  {
+    AppMethodBeat.i(262130);
+    esn localesn = (esn)d.c.b(this.rr.lBS);
+    AppMethodBeat.o(262130);
+    return localesn;
+  }
+  
+  public final esm gpY()
+  {
+    AppMethodBeat.i(262131);
+    esm localesm = (esm)d.b.b(this.rr.lBR);
+    AppMethodBeat.o(262131);
+    return localesm;
+  }
+  
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88487);
-    Log.i("MicroMsg.TopStory.NetSceneTopStoryPostComment", "netId %d | errType %d | errCode %d | errMsg %s useTime %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Long.valueOf(System.currentTimeMillis() - this.uOV) });
+    Log.i("MicroMsg.TopStory.NetSceneTopStoryPostComment", "netId %d | errType %d | errCode %d | errMsg %s useTime %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Long.valueOf(System.currentTimeMillis() - this.fhq) });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(88487);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a.c.f
  * JD-Core Version:    0.7.0.1
  */

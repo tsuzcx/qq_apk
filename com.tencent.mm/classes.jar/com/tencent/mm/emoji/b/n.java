@@ -1,344 +1,150 @@
 package com.tencent.mm.emoji.b;
 
-import android.content.Context;
-import android.content.pm.PackageManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.n.f;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.gif.MMWXGFJNI;
+import com.tencent.mm.emoji.d.d.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.emotion.EmojiInfo;
+import com.tencent.mm.vfs.u;
+import kotlin.g.b.p;
 
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/model/EmojiUploadLogic;", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "callback", "Lcom/tencent/mm/emoji/model/EmojiUploadLogic$EmojiUploadCallback;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Lcom/tencent/mm/emoji/model/EmojiUploadLogic$EmojiUploadCallback;)V", "getCallback", "()Lcom/tencent/mm/emoji/model/EmojiUploadLogic$EmojiUploadCallback;", "setCallback", "(Lcom/tencent/mm/emoji/model/EmojiUploadLogic$EmojiUploadCallback;)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "setEmojiInfo", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "emojiMgr", "Lcom/tencent/mm/pluginsdk/defimpl/IEmojiMgr;", "kotlin.jvm.PlatformType", "dealSaveSuccess", "", "gifMd5", "", "doUpload", "preCheck", "", "Companion", "EmojiUploadCallback", "plugin-emojisdk_release"})
 public final class n
 {
-  private static boolean gXN = false;
-  private static boolean gXO = false;
-  private static boolean gXP = false;
-  private static boolean gXQ = false;
-  private static boolean gXR = false;
-  private static boolean gXS = false;
+  public static final n.a jIK;
+  EmojiInfo jHh;
+  private final com.tencent.mm.pluginsdk.b.d jII;
+  b jIJ;
   
-  public static boolean auV()
+  static
   {
-    AppMethodBeat.i(104462);
-    if ((com.tencent.mm.n.h.aqJ().getInt("EmotionRewardOption", 0) & 0x1) == 1)
+    AppMethodBeat.i(105522);
+    jIK = new n.a((byte)0);
+    AppMethodBeat.o(105522);
+  }
+  
+  public n(EmojiInfo paramEmojiInfo, b paramb)
+  {
+    AppMethodBeat.i(105521);
+    this.jHh = paramEmojiInfo;
+    this.jIJ = paramb;
+    paramEmojiInfo = com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class);
+    p.j(paramEmojiInfo, "plugin(IPluginEmoji::class.java)");
+    this.jII = ((com.tencent.mm.plugin.emoji.b.d)paramEmojiInfo).getEmojiMgr();
+    int i;
+    if (!u.agG(this.jHh.ifh()))
     {
-      AppMethodBeat.o(104462);
-      return false;
-    }
-    AppMethodBeat.o(104462);
-    return true;
-  }
-  
-  public static boolean auW()
-  {
-    AppMethodBeat.i(104463);
-    if ((com.tencent.mm.n.h.aqJ().getInt("EmotionRewardOption", 0) & 0x2) == 2)
-    {
-      AppMethodBeat.o(104463);
-      return false;
-    }
-    AppMethodBeat.o(104463);
-    return true;
-  }
-  
-  public static boolean auX()
-  {
-    AppMethodBeat.i(104464);
-    if ((com.tencent.mm.n.h.aqJ().getInt("EmotionRewardOption", 0) & 0x4) == 4)
-    {
-      AppMethodBeat.o(104464);
-      return true;
-    }
-    AppMethodBeat.o(104464);
-    return false;
-  }
-  
-  public static int auY()
-  {
-    AppMethodBeat.i(104465);
-    int i = Util.getInt(com.tencent.mm.n.h.aqJ().getValue("CustomEmojiMaxSize"), 300);
-    AppMethodBeat.o(104465);
-    return i;
-  }
-  
-  public static int auZ()
-  {
-    AppMethodBeat.i(104466);
-    int i = Util.getInt(com.tencent.mm.n.h.aqJ().getValue("CustomEmojiMaxSize"), 300);
-    AppMethodBeat.o(104466);
-    return i;
-  }
-  
-  public static String ava()
-  {
-    AppMethodBeat.i(104467);
-    String str = com.tencent.mm.n.h.aqJ().getValue("C2CEmojiNotAutoDownloadTimeRange");
-    AppMethodBeat.o(104467);
-    return str;
-  }
-  
-  public static String avb()
-  {
-    AppMethodBeat.i(104468);
-    String str = com.tencent.mm.n.h.aqJ().getValue("EmotionPanelConfigName");
-    AppMethodBeat.o(104468);
-    return str;
-  }
-  
-  public static boolean avc()
-  {
-    AppMethodBeat.i(104469);
-    if (!gXN)
-    {
-      int i = com.tencent.mm.n.h.aqJ().getInt("EnableEmoticonExternUrl", 0);
-      int j = MMWXGFJNI.getErrorCode();
-      if ((i & 0x1) != 1) {
-        break label138;
+      paramEmojiInfo = this.jIJ;
+      if (paramEmojiInfo != null) {
+        paramEmojiInfo.A(10, null);
       }
-      if ((avj()) || (avk())) {
-        break label131;
-      }
-      gXQ = true;
-      if (j < 0)
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i != 0)
       {
-        gXQ = false;
-        switch (j)
-        {
+        Log.i("MicroMsg.EmojiUploadLogic", "start upload emoji");
+        paramEmojiInfo = com.tencent.mm.emoji.d.h.jPr;
+        com.tencent.mm.emoji.d.h.a(this.jHh, true, (d.a)new c(this));
+      }
+      AppMethodBeat.o(105521);
+      return;
+      if (u.bBQ(this.jHh.ifh()) > this.jII.d(this.jHh, true))
+      {
+        paramEmojiInfo = this.jIJ;
+        if (paramEmojiInfo != null) {
+          paramEmojiInfo.A(2, null);
         }
+        i = 0;
+      }
+      else
+      {
+        paramEmojiInfo = l.jIq;
+        if (l.aBM())
+        {
+          if (this.jHh.hBC() < 5)
+          {
+            this.jHh.hBD();
+            paramEmojiInfo = this.jIJ;
+            if (paramEmojiInfo != null) {
+              paramEmojiInfo.A(3, null);
+            }
+          }
+          for (;;)
+          {
+            i = 0;
+            break;
+            paramEmojiInfo = this.jIJ;
+            if (paramEmojiInfo != null) {
+              paramEmojiInfo.A(9, null);
+            }
+          }
+        }
+        i = 1;
       }
     }
-    for (;;)
-    {
-      gXN = true;
-      Log.i("MicroMsg.emoji.EmotionDynamicConfigMgr", "isEnableHevcDownload:%b", new Object[] { Boolean.valueOf(gXQ) });
-      boolean bool = gXQ;
-      AppMethodBeat.o(104469);
-      return bool;
-      label131:
-      gXQ = false;
-      break;
-      label138:
-      gXQ = false;
-      break;
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(711L, 5L, 1L, false);
-      continue;
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(711L, 6L, 1L, false);
-      continue;
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(711L, 7L, 1L, false);
-      continue;
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(711L, 8L, 1L, false);
-      continue;
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(711L, 9L, 1L, false);
-      continue;
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(711L, 10L, 1L, false);
-    }
   }
   
-  public static boolean avd()
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/model/EmojiUploadLogic$EmojiUploadCallback;", "", "uploadCallback", "", "errorCode", "", "gifMd5", "", "activityId", "plugin-emojisdk_release"})
+  public static abstract interface b
   {
-    AppMethodBeat.i(104470);
-    int j;
-    if (!gXO)
+    public abstract void A(int paramInt, String paramString);
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "errType", "", "gifMd5", "", "kotlin.jvm.PlatformType", "onResult"})
+  static final class c
+    implements d.a
+  {
+    c(n paramn) {}
+    
+    public final void B(int paramInt, String paramString)
     {
-      int i = com.tencent.mm.n.h.aqJ().getInt("EnableEmoticonExternUrl", 0);
-      j = MMWXGFJNI.getErrorCode();
-      if ((i & 0x2) != 2) {
-        break label115;
+      AppMethodBeat.i(105520);
+      if (paramInt == 0)
+      {
+        n.a(this.jIL, paramString);
+        AppMethodBeat.o(105520);
+        return;
       }
-      if ((avj()) || (avk())) {
-        break label103;
+      int i = paramInt;
+      switch (paramInt)
+      {
+      case 3: 
+      case 9: 
+      case 10: 
+      default: 
+        if (this.jIL.jHh.hBC() < 5)
+        {
+          this.jIL.jHh.hBD();
+          paramString = com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class);
+          p.j(paramString, "MMKernel.plugin(IPluginEmoji::class.java)");
+          ((com.tencent.mm.plugin.emoji.b.d)paramString).getEmojiMgr().updateEmojiInfo(this.jIL.jHh);
+          if (paramInt == 3) {
+            i = 3;
+          }
+        }
+        break;
       }
-      gXR = true;
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(711L, 1L, 1L, false);
-    }
-    for (;;)
-    {
-      if (j < 0) {
-        gXR = false;
-      }
-      gXO = true;
-      Log.i("MicroMsg.emoji.EmotionDynamicConfigMgr", "isEnableHevcDecode:%b", new Object[] { Boolean.valueOf(gXR) });
-      boolean bool = gXR;
-      AppMethodBeat.o(104470);
-      return bool;
-      label103:
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(711L, 0L, 1L, false);
-      label115:
-      gXR = false;
-    }
-  }
-  
-  public static boolean ave()
-  {
-    AppMethodBeat.i(104471);
-    if (!gXP) {
-      if ((com.tencent.mm.n.h.aqJ().getInt("EnableEmoticonExternUrl", 0) & 0x4) != 4) {
-        break label65;
-      }
-    }
-    label65:
-    for (gXS = true;; gXS = false)
-    {
-      gXP = true;
-      Log.i("MicroMsg.emoji.EmotionDynamicConfigMgr", "isEnableHevcUpload:%b", new Object[] { Boolean.valueOf(gXS) });
-      boolean bool = gXS;
-      AppMethodBeat.o(104471);
-      return bool;
-    }
-  }
-  
-  public static boolean avf()
-  {
-    AppMethodBeat.i(104472);
-    if ((com.tencent.mm.n.h.aqJ().getInt("ShowEmoticonCameraEntrance", 3) & 0x1) > 0)
-    {
-      AppMethodBeat.o(104472);
-      return true;
-    }
-    AppMethodBeat.o(104472);
-    return false;
-  }
-  
-  public static boolean avg()
-  {
-    AppMethodBeat.i(104473);
-    if ((com.tencent.mm.n.h.aqJ().getInt("ShowEmoticonCameraEntrance", 3) & 0x2) > 0)
-    {
-      AppMethodBeat.o(104473);
-      return true;
-    }
-    AppMethodBeat.o(104473);
-    return false;
-  }
-  
-  public static boolean avh()
-  {
-    AppMethodBeat.i(104475);
-    if (g.aAh().azQ().getInt(ar.a.OiP, 1) == 0)
-    {
-      AppMethodBeat.o(104475);
-      return true;
-    }
-    AppMethodBeat.o(104475);
-    return false;
-  }
-  
-  public static boolean avi()
-  {
-    AppMethodBeat.i(104476);
-    if (com.tencent.mm.n.h.aqJ().getInt("ForbiddenEmotionSpringFestivalMsgTail", 0) > 0)
-    {
-      AppMethodBeat.o(104476);
-      return false;
-    }
-    AppMethodBeat.o(104476);
-    return true;
-  }
-  
-  private static boolean avj()
-  {
-    boolean bool = true;
-    AppMethodBeat.i(104478);
-    PackageManager localPackageManager = MMApplicationContext.getContext().getPackageManager();
-    try
-    {
-      localPackageManager.getPackageInfo("com.google.android.wearable.app.cn", 1);
-      AppMethodBeat.o(104478);
-      return bool;
-    }
-    catch (Exception localException)
-    {
       for (;;)
       {
-        bool = false;
+        paramString = this.jIL.jIJ;
+        if (paramString == null) {
+          break;
+        }
+        paramString.A(i, null);
+        AppMethodBeat.o(105520);
+        return;
+        i = 1;
+        continue;
+        i = 9;
       }
+      AppMethodBeat.o(105520);
     }
-  }
-  
-  private static boolean avk()
-  {
-    boolean bool = true;
-    AppMethodBeat.i(104479);
-    PackageManager localPackageManager = MMApplicationContext.getContext().getPackageManager();
-    try
-    {
-      localPackageManager.getPackageInfo("com.google.android.wearable.app", 1);
-      AppMethodBeat.o(104479);
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        bool = false;
-      }
-    }
-  }
-  
-  public static boolean avl()
-  {
-    AppMethodBeat.i(104480);
-    int i = g.aAh().azQ().getInt(ar.a.OiQ, 0);
-    if (i == 1)
-    {
-      AppMethodBeat.o(104480);
-      return true;
-    }
-    if (i == 2)
-    {
-      AppMethodBeat.o(104480);
-      return false;
-    }
-    boolean bool = ((b)g.af(b.class)).a(b.a.rWs, false);
-    AppMethodBeat.o(104480);
-    return bool;
-  }
-  
-  public static boolean isSpringFestivalEnable()
-  {
-    AppMethodBeat.i(104474);
-    ((b)g.af(b.class)).a(b.a.rWh, 0);
-    com.tencent.mm.n.h.aqJ().getInt("EmotionSpringFestivalPendantSwitch", 0);
-    AppMethodBeat.o(104474);
-    return false;
-  }
-  
-  public static boolean isStickerEnable()
-  {
-    AppMethodBeat.i(104477);
-    int i = g.aAh().azQ().getInt(ar.a.OiU, 0);
-    if (i == 1)
-    {
-      AppMethodBeat.o(104477);
-      return true;
-    }
-    if (i == 2)
-    {
-      AppMethodBeat.o(104477);
-      return false;
-    }
-    AppMethodBeat.o(104477);
-    return true;
-  }
-  
-  public static int stickerRecommendCount()
-  {
-    AppMethodBeat.i(177029);
-    int i = ((b)g.af(b.class)).a(b.a.rWu, 9);
-    AppMethodBeat.o(177029);
-    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.b.n
  * JD-Core Version:    0.7.0.1
  */

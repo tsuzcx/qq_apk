@@ -1,74 +1,61 @@
 package com.tencent.mm.plugin.appbrand.jsapi.q;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.r;
+import com.tencent.mm.plugin.appbrand.page.x;
 import com.tencent.mm.sdk.platformtools.Log;
+import java.util.HashMap;
+import java.util.Map;
 import kotlin.g.b.p;
 import kotlin.l;
-import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/perf/EventOnNewPerformanceMetric;", "", "()V", "endTime", "", "getEndTime", "()J", "setEndTime", "(J)V", "extraInfo", "Lorg/json/JSONObject;", "name", "", "getName", "()Ljava/lang/String;", "setName", "(Ljava/lang/String;)V", "startTime", "getStartTime", "setStartTime", "dispatch", "", "receiver", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "putExtraInfo", "value", "Companion", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/AppBrandOnNavigateBackInterceptEvent;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApiEvent;", "Lcom/tencent/mm/plugin/appbrand/jsapi/page/NavigateBackInterceptionConstant;", "()V", "Companion", "luggage-wxa-app-jsapi_release"})
 public final class a
+  extends r
 {
-  @Deprecated
-  public static final a mmB;
-  public long endTime;
-  private final JSONObject mmA;
-  private String name;
-  public long startTime;
+  private static final int CTRL_INDEX = 881;
+  private static final String NAME = "onNavigateBackIntercept";
+  public static final a pir;
   
   static
   {
-    AppMethodBeat.i(162176);
-    mmB = new a((byte)0);
-    AppMethodBeat.o(162176);
+    AppMethodBeat.i(209118);
+    pir = new a((byte)0);
+    AppMethodBeat.o(209118);
   }
   
-  public a()
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/AppBrandOnNavigateBackInterceptEvent$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "dispatch", "", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "type", "luggage-wxa-app-jsapi_release"})
+  public static final class a
   {
-    AppMethodBeat.i(162175);
-    this.name = "";
-    this.mmA = new JSONObject();
-    AppMethodBeat.o(162175);
+    public static void a(AppBrandRuntime paramAppBrandRuntime, int paramInt)
+    {
+      AppMethodBeat.i(209150);
+      p.k(paramAppBrandRuntime, "rt");
+      a locala = new a((byte)0);
+      Log.i("AppBrandOnNavigateBackInterceptEvent", "[dispatch] type=".concat(String.valueOf(paramInt)));
+      HashMap localHashMap = new HashMap(1);
+      ((Map)localHashMap).put("type", Integer.valueOf(paramInt));
+      locala.D((Map)localHashMap).i((e)paramAppBrandRuntime.QW()).bPO();
+      paramAppBrandRuntime = paramAppBrandRuntime.bBX();
+      if (paramAppBrandRuntime != null)
+      {
+        paramAppBrandRuntime = paramAppBrandRuntime.getPageView();
+        if (paramAppBrandRuntime != null)
+        {
+          locala.D((Map)localHashMap).i((e)paramAppBrandRuntime).bPO();
+          AppMethodBeat.o(209150);
+          return;
+        }
+      }
+      AppMethodBeat.o(209150);
+    }
   }
-  
-  public final void d(s params)
-  {
-    AppMethodBeat.i(162174);
-    p.h(params, "receiver");
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("name", this.name);
-    localJSONObject.put("startTime", this.startTime);
-    localJSONObject.put("endTime", this.endTime);
-    localJSONObject.put("extraInfo", this.mmA);
-    Log.i("MicroMsg.AppBrand.EventOnNewPerformanceMetric", "dispatch ".concat(String.valueOf(localJSONObject)));
-    params.co("onNewPerformanceMetric", localJSONObject.toString());
-    AppMethodBeat.o(162174);
-  }
-  
-  public final void r(String paramString, Object paramObject)
-  {
-    AppMethodBeat.i(162173);
-    p.h(paramString, "name");
-    p.h(paramObject, "value");
-    this.mmA.put(paramString, paramObject);
-    AppMethodBeat.o(162173);
-  }
-  
-  public final void setName(String paramString)
-  {
-    AppMethodBeat.i(162172);
-    p.h(paramString, "<set-?>");
-    this.name = paramString;
-    AppMethodBeat.o(162172);
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/perf/EventOnNewPerformanceMetric$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
-  static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.q.a
  * JD-Core Version:    0.7.0.1
  */

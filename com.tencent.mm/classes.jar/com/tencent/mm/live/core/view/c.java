@@ -5,28 +5,29 @@ import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.ax;
 import java.util.ArrayList;
 
 public final class c
 {
-  public static RelativeLayout.LayoutParams G(Context paramContext, int paramInt)
+  public static RelativeLayout.LayoutParams J(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(196373);
+    AppMethodBeat.i(198466);
     int i = dip2px(paramContext, 10.0F);
     int j = dip2px(paramContext, 15.0F);
     int k = dip2px(paramContext, 50.0F);
     int m = dip2px(paramContext, 192.0F);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(m, dip2px(paramContext, 108.0F));
-    localLayoutParams.leftMargin = (paramInt - j - m - au.aD(paramContext));
+    localLayoutParams.leftMargin = (paramInt - j - m - ax.aB(paramContext));
     localLayoutParams.topMargin = (i + k);
-    AppMethodBeat.o(196373);
+    AppMethodBeat.o(198466);
     return localLayoutParams;
   }
   
-  public static RelativeLayout.LayoutParams H(Context paramContext, int paramInt)
+  public static RelativeLayout.LayoutParams K(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(196374);
+    AppMethodBeat.i(198469);
     int i = dip2px(paramContext, 10.0F);
     int j = dip2px(paramContext, 15.0F);
     int k = dip2px(paramContext, 50.0F);
@@ -34,13 +35,13 @@ public final class c
     paramContext = new RelativeLayout.LayoutParams(m, dip2px(paramContext, 192.0F));
     paramContext.leftMargin = (paramInt - j - m);
     paramContext.topMargin = (i + k);
-    AppMethodBeat.o(196374);
+    AppMethodBeat.o(198469);
     return paramContext;
   }
   
-  public static RelativeLayout.LayoutParams I(Context paramContext, int paramInt)
+  public static RelativeLayout.LayoutParams L(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(196377);
+    AppMethodBeat.i(198498);
     int i = dip2px(paramContext, 10.0F);
     int j = dip2px(paramContext, 15.0F);
     int k = dip2px(paramContext, 50.0F);
@@ -48,13 +49,25 @@ public final class c
     paramContext = new RelativeLayout.LayoutParams(m, dip2px(paramContext, 192.0F));
     paramContext.leftMargin = (paramInt - j - m);
     paramContext.topMargin = (i + k);
-    AppMethodBeat.o(196377);
+    AppMethodBeat.o(198498);
     return paramContext;
+  }
+  
+  public static float aNu()
+  {
+    AppMethodBeat.i(198499);
+    if (ar.hIH())
+    {
+      AppMethodBeat.o(198499);
+      return 1.0F;
+    }
+    AppMethodBeat.o(198499);
+    return 1.777778F;
   }
   
   public static ArrayList<RelativeLayout.LayoutParams> b(Context paramContext, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(196375);
+    AppMethodBeat.i(198481);
     int i = dip2px(paramContext, 10.0F);
     int j = dip2px(paramContext, 50.0F);
     paramContext = new ArrayList();
@@ -84,13 +97,13 @@ public final class c
     paramContext.add(localLayoutParams2);
     paramContext.add(localLayoutParams3);
     paramContext.add(localLayoutParams4);
-    AppMethodBeat.o(196375);
+    AppMethodBeat.o(198481);
     return paramContext;
   }
   
   public static ArrayList<RelativeLayout.LayoutParams> c(Context paramContext, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(196376);
+    AppMethodBeat.i(198495);
     int i = dip2px(paramContext, 10.0F);
     int j = dip2px(paramContext, 50.0F);
     paramContext = new ArrayList();
@@ -146,21 +159,21 @@ public final class c
     paramContext.add(localLayoutParams7);
     paramContext.add(localLayoutParams8);
     paramContext.add(localLayoutParams9);
-    AppMethodBeat.o(196376);
+    AppMethodBeat.o(198495);
     return paramContext;
   }
   
   public static int dip2px(Context paramContext, float paramFloat)
   {
-    AppMethodBeat.i(196372);
+    AppMethodBeat.i(198462);
     int i = (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
-    AppMethodBeat.o(196372);
+    AppMethodBeat.o(198462);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.core.view.c
  * JD-Core Version:    0.7.0.1
  */

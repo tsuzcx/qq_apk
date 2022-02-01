@@ -7,7 +7,7 @@ import android.opengl.EGLDisplay;
 import android.opengl.EGLSurface;
 import android.opengl.GLES20;
 import android.os.HandlerThread;
-import com.tencent.f.c.d;
+import com.tencent.e.c.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -20,43 +20,43 @@ public final class h
   private final String TAG;
   EGLDisplay eglDisplay;
   EGLSurface eglSurface;
-  private boolean hki;
-  HandlerThread igZ;
-  MMHandler iha;
-  int[] ilp;
-  EGLContext ilv;
-  int iqx;
-  int kxW;
-  int kxX;
-  i kza;
-  i.a kzb;
-  int kzc;
-  int kzd;
+  private boolean jVR;
+  HandlerThread kVN;
+  MMHandler kVO;
+  int[] lam;
+  EGLContext lau;
+  int lfC;
+  int nqW;
+  int nqX;
+  i nsa;
+  i.a nsb;
+  int nsc;
+  int nsd;
   
   public h()
   {
     AppMethodBeat.i(89273);
     this.TAG = "MicroMsg.YUVDateRenderToRBGBufferThread";
-    this.igZ = d.hC("YUVDateRenderToRBGBufferThread", 5);
-    this.kzb = null;
-    this.hki = false;
-    this.ilp = new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12610, 1, 12344 };
+    this.kVN = d.im("YUVDateRenderToRBGBufferThread", 5);
+    this.nsb = null;
+    this.jVR = false;
+    this.lam = new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12610, 1, 12344 };
     this.eglDisplay = null;
     this.eglSurface = null;
-    this.ilv = null;
+    this.lau = null;
     AppMethodBeat.o(89273);
   }
   
   private void M(Runnable paramRunnable)
   {
     AppMethodBeat.i(89277);
-    if (this.igZ.isAlive()) {
-      this.iha.post(paramRunnable);
+    if (this.kVN.isAlive()) {
+      this.kVO.post(paramRunnable);
     }
     AppMethodBeat.o(89277);
   }
   
-  static boolean TP(String paramString)
+  static boolean abz(String paramString)
   {
     AppMethodBeat.i(89279);
     int i = EGL14.eglGetError();
@@ -70,10 +70,10 @@ public final class h
     return false;
   }
   
-  public final void E(final byte[] paramArrayOfByte, final int paramInt)
+  public final void D(final byte[] paramArrayOfByte, final int paramInt)
   {
     AppMethodBeat.i(89275);
-    if ((!this.hki) && (this.kza == null))
+    if ((!this.jVR) && (this.nsa == null))
     {
       AppMethodBeat.o(89275);
       return;
@@ -83,18 +83,18 @@ public final class h
       public final void run()
       {
         AppMethodBeat.i(89271);
-        i locali = h.this.kza;
+        i locali = h.this.nsa;
         byte[] arrayOfByte = paramArrayOfByte;
-        int j = h.this.kxW;
-        int k = h.this.kxX;
-        int m = h.this.iqx;
+        int j = h.this.nqW;
+        int k = h.this.nqX;
+        int m = h.this.lfC;
         int n = paramInt;
         try
         {
-          if ((locali.kxX != k) || (locali.kxW != j) || (locali.dYT != m)) {
+          if ((locali.nqX != k) || (locali.nqW != j) || (locali.fSM != m)) {
             break label447;
           }
-          if (locali.kyf == n) {
+          if (locali.nrf == n) {
             break label442;
           }
         }
@@ -110,37 +110,37 @@ public final class h
           }
         }
         if (i != 0) {
-          Log.d("MicroMsg.YUVDateRenderToRGBBufferRenderer", "setDrawFrame, frameData: %s, frameWidth: %s, frameHeight: %s, rotate: %s, isLandScape, frameSizeChange: %s, this %s", new Object[] { arrayOfByte, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(locali.iqo), Boolean.TRUE, locali });
+          Log.d("MicroMsg.YUVDateRenderToRGBBufferRenderer", "setDrawFrame, frameData: %s, frameWidth: %s, frameHeight: %s, rotate: %s, isLandScape, frameSizeChange: %s, this %s", new Object[] { arrayOfByte, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(locali.lft), Boolean.TRUE, locali });
         }
         if ((locali.frameData == null) || (locali.frameData.length != arrayOfByte.length)) {
           locali.frameData = new byte[arrayOfByte.length];
         }
         System.arraycopy(arrayOfByte, 0, locali.frameData, 0, arrayOfByte.length);
-        locali.kxW = j;
-        locali.kxX = k;
-        locali.dYT = m;
-        locali.kyf = n;
+        locali.nqW = j;
+        locali.nqX = k;
+        locali.fSM = m;
+        locali.nrf = n;
         if (i != 0)
         {
-          locali.ikI = ByteBuffer.allocateDirect(k * j);
-          locali.ikP = ByteBuffer.allocateDirect(j * k / 2);
-          locali.ikI.order(ByteOrder.nativeOrder());
-          locali.ikP.order(ByteOrder.nativeOrder());
-          if (locali.kyd != null)
+          locali.kZC = ByteBuffer.allocateDirect(k * j);
+          locali.kZJ = ByteBuffer.allocateDirect(j * k / 2);
+          locali.kZC.order(ByteOrder.nativeOrder());
+          locali.kZJ.order(ByteOrder.nativeOrder());
+          if (locali.nrd != null)
           {
-            locali.hDU.put(locali.kyd);
-            locali.hDU.position(0);
+            locali.ksb.put(locali.nrd);
+            locali.ksb.position(0);
           }
         }
-        if ((locali.ikI != null) && (locali.ikP != null))
+        if ((locali.kZC != null) && (locali.kZJ != null))
         {
-          locali.ikI.put(locali.frameData, 0, j * k);
-          locali.ikI.position(0);
-          locali.ikP.put(locali.frameData, j * k, j * k / 2);
-          locali.ikP.position(0);
+          locali.kZC.put(locali.frameData, 0, j * k);
+          locali.kZC.position(0);
+          locali.kZJ.put(locali.frameData, j * k, j * k / 2);
+          locali.kZJ.position(0);
         }
-        h.this.kza.onDrawFrame(null);
-        h.this.kzb.bqT();
+        h.this.nsa.onDrawFrame(null);
+        h.this.nsb.bBI();
         AppMethodBeat.o(89271);
       }
     });
@@ -149,21 +149,21 @@ public final class h
   
   public final void a(i.a parama)
   {
-    this.kzb = parama;
+    this.nsb = parama;
   }
   
   public final void b(final EGLContext paramEGLContext)
   {
     AppMethodBeat.i(89274);
-    Log.d("MicroMsg.YUVDateRenderToRBGBufferThread", "start context : " + paramEGLContext + "  hasStart : " + this.hki);
-    if ((this.hki) || (paramEGLContext == null))
+    Log.d("MicroMsg.YUVDateRenderToRBGBufferThread", "start context : " + paramEGLContext + "  hasStart : " + this.jVR);
+    if ((this.jVR) || (paramEGLContext == null))
     {
       AppMethodBeat.o(89274);
       return;
     }
-    this.hki = true;
-    this.igZ.start();
-    this.iha = new MMHandler(this.igZ.getLooper());
+    this.jVR = true;
+    this.kVN.start();
+    this.kVO = new MMHandler(this.kVN.getLooper());
     M(new Runnable()
     {
       public final void run()
@@ -171,8 +171,8 @@ public final class h
         AppMethodBeat.i(89270);
         Object localObject1 = h.this;
         EGLContext localEGLContext = paramEGLContext;
-        int i = h.this.kxW;
-        int j = h.this.kxX;
+        int i = h.this.nqW;
+        int j = h.this.nqX;
         ((h)localObject1).eglDisplay = EGL14.eglGetDisplay(0);
         if (((h)localObject1).eglDisplay == EGL14.EGL_NO_DISPLAY)
         {
@@ -190,40 +190,40 @@ public final class h
         }
         localObject2 = new EGLConfig[1];
         int[] arrayOfInt = new int[1];
-        EGL14.eglChooseConfig(((h)localObject1).eglDisplay, ((h)localObject1).ilp, 0, (EGLConfig[])localObject2, 0, 1, arrayOfInt, 0);
+        EGL14.eglChooseConfig(((h)localObject1).eglDisplay, ((h)localObject1).lam, 0, (EGLConfig[])localObject2, 0, 1, arrayOfInt, 0);
         if (localObject2[0] == null)
         {
           localObject1 = new RuntimeException("chooseConfig failed");
           AppMethodBeat.o(89270);
           throw ((Throwable)localObject1);
         }
-        ((h)localObject1).ilv = EGL14.eglCreateContext(((h)localObject1).eglDisplay, localObject2[0], localEGLContext, new int[] { 12440, 2, 12344 }, 0);
-        if (((h)localObject1).ilv == EGL14.EGL_NO_CONTEXT)
+        ((h)localObject1).lau = EGL14.eglCreateContext(((h)localObject1).eglDisplay, localObject2[0], localEGLContext, new int[] { 12440, 2, 12344 }, 0);
+        if (((h)localObject1).lau == EGL14.EGL_NO_CONTEXT)
         {
           localObject1 = new RuntimeException("EGL error " + EGL14.eglGetError());
           AppMethodBeat.o(89270);
           throw ((Throwable)localObject1);
         }
-        h.TP("eglCreateContext");
+        h.abz("eglCreateContext");
         ((h)localObject1).eglSurface = null;
         try
         {
           ((h)localObject1).eglSurface = EGL14.eglCreatePbufferSurface(((h)localObject1).eglDisplay, localObject2[0], new int[] { 12375, i, 12374, j, 12344 }, 0);
-          h.TP("eglCreatePbufferSurface");
+          h.abz("eglCreatePbufferSurface");
           if (((((h)localObject1).eglSurface == null) || (((h)localObject1).eglSurface == EGL14.EGL_NO_SURFACE)) && (EGL14.eglGetError() == 12299)) {
             Log.e("MicroMsg.YUVDateRenderToRBGBufferThread", "makeMyEGLCurrentSurface:returned EGL_BAD_NATIVE_WINDOW.");
           }
-          if (!EGL14.eglMakeCurrent(((h)localObject1).eglDisplay, ((h)localObject1).eglSurface, ((h)localObject1).eglSurface, ((h)localObject1).ilv)) {
+          if (!EGL14.eglMakeCurrent(((h)localObject1).eglDisplay, ((h)localObject1).eglSurface, ((h)localObject1).eglSurface, ((h)localObject1).lau)) {
             Log.w("MicroMsg.YUVDateRenderToRBGBufferThread", "eglMakeCurrent:" + EGL14.eglGetError());
           }
           localObject1 = h.this;
-          i = h.this.kzc;
-          j = h.this.kzd;
-          ((h)localObject1).kza = new i(i, j);
-          ((h)localObject1).kza.onSurfaceCreated(null, null);
-          ((h)localObject1).kza.onSurfaceChanged(null, i, j);
-          if (((h)localObject1).kzb != null) {
-            ((h)localObject1).kza.buffer = ((h)localObject1).kzb.getBuffer();
+          i = h.this.nsc;
+          j = h.this.nsd;
+          ((h)localObject1).nsa = new i(i, j);
+          ((h)localObject1).nsa.onSurfaceCreated(null, null);
+          ((h)localObject1).nsa.onSurfaceChanged(null, i, j);
+          if (((h)localObject1).nsb != null) {
+            ((h)localObject1).nsa.buffer = ((h)localObject1).nsb.getBuffer();
           }
           AppMethodBeat.o(89270);
           return;
@@ -240,18 +240,18 @@ public final class h
     AppMethodBeat.o(89274);
   }
   
-  public final void i(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public final void k(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(89276);
     Log.i("MicroMsg.YUVDateRenderToRBGBufferThread", "setFrameInfo, width: %s, height: %s, rotate: %s ,targetWidth:%d ,targetHeight:%d , this: %s ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), this });
-    if ((paramInt1 != this.kxW) || (paramInt2 != this.kxX) || (paramInt3 != this.iqx))
+    if ((paramInt1 != this.nqW) || (paramInt2 != this.nqX) || (paramInt3 != this.lfC))
     {
-      this.kxW = paramInt1;
-      this.kxX = paramInt2;
-      this.iqx = paramInt3;
+      this.nqW = paramInt1;
+      this.nqX = paramInt2;
+      this.lfC = paramInt3;
     }
-    this.kzc = paramInt4;
-    this.kzd = paramInt5;
+    this.nsc = paramInt4;
+    this.nsd = paramInt5;
     AppMethodBeat.o(89276);
   }
   
@@ -263,28 +263,28 @@ public final class h
       public final void run()
       {
         AppMethodBeat.i(89272);
-        Object localObject = h.this.kza;
-        if (((i)localObject).kzh != 0) {
-          GLES20.glDeleteTextures(1, new int[] { ((i)localObject).kzh }, 0);
+        Object localObject = h.this.nsa;
+        if (((i)localObject).nsh != 0) {
+          GLES20.glDeleteTextures(1, new int[] { ((i)localObject).nsh }, 0);
         }
-        if (((i)localObject).kzi != 0) {
-          GLES20.glDeleteFramebuffers(1, new int[] { ((i)localObject).kzi }, 0);
+        if (((i)localObject).nsi != 0) {
+          GLES20.glDeleteFramebuffers(1, new int[] { ((i)localObject).nsi }, 0);
         }
         localObject = h.this.eglDisplay;
         EGLSurface localEGLSurface = EGL14.EGL_NO_SURFACE;
         EGL14.eglMakeCurrent((EGLDisplay)localObject, localEGLSurface, localEGLSurface, EGL14.EGL_NO_CONTEXT);
-        if ((h.this.eglSurface != null) && (h.this.ilv != null) && (h.this.eglDisplay != null))
+        if ((h.this.eglSurface != null) && (h.this.lau != null) && (h.this.eglDisplay != null))
         {
           EGL14.eglDestroySurface(h.this.eglDisplay, h.this.eglSurface);
-          EGL14.eglDestroyContext(h.this.eglDisplay, h.this.ilv);
+          EGL14.eglDestroyContext(h.this.eglDisplay, h.this.lau);
           EGL14.eglReleaseThread();
           EGL14.eglTerminate(h.this.eglDisplay);
-          h.this.ilv = null;
+          h.this.lau = null;
           h.this.eglDisplay = null;
           h.this.eglSurface = null;
         }
-        h.this.iha.removeCallbacksAndMessages(null);
-        h.this.igZ.quitSafely();
+        h.this.kVO.removeCallbacksAndMessages(null);
+        h.this.kVN.quitSafely();
         AppMethodBeat.o(89272);
       }
     });
@@ -293,7 +293,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.api.recordView.h
  * JD-Core Version:    0.7.0.1
  */

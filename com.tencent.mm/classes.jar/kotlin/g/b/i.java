@@ -8,16 +8,16 @@ import java.util.Iterator;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"EMPTY", "", "", "[Ljava/lang/Object;", "MAX_SIZE", "", "collectionToArray", "collection", "", "toArray", "(Ljava/util/Collection;)[Ljava/lang/Object;", "a", "(Ljava/util/Collection;[Ljava/lang/Object;)[Ljava/lang/Object;", "toArrayImpl", "empty", "Lkotlin/Function0;", "alloc", "Lkotlin/Function1;", "trim", "Lkotlin/Function2;", "(Ljava/util/Collection;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;)[Ljava/lang/Object;", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"EMPTY", "", "", "[Ljava/lang/Object;", "MAX_SIZE", "", "collectionToArray", "collection", "", "toArray", "(Ljava/util/Collection;)[Ljava/lang/Object;", "a", "(Ljava/util/Collection;[Ljava/lang/Object;)[Ljava/lang/Object;", "toArrayImpl", "empty", "Lkotlin/Function0;", "alloc", "Lkotlin/Function1;", "trim", "Lkotlin/Function2;", "(Ljava/util/Collection;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;)[Ljava/lang/Object;", "kotlin-stdlib"})
 public final class i
 {
-  private static final Object[] gKK = new Object[0];
+  private static final Object[] juY = new Object[0];
   
-  public static final Object[] a(Collection<?> paramCollection, Object[] paramArrayOfObject)
+  public static final Object[] b(Collection<?> paramCollection, Object[] paramArrayOfObject)
   {
     int i = 0;
     AppMethodBeat.i(129342);
-    p.h(paramCollection, "collection");
+    p.k(paramCollection, "collection");
     if (paramArrayOfObject == null)
     {
       paramCollection = (Throwable)new NullPointerException();
@@ -79,7 +79,7 @@ public final class i
             i = 2147483645;
           }
           paramCollection = Arrays.copyOf(paramCollection, i);
-          p.g(paramCollection, "Arrays.copyOf(result, newSize)");
+          p.j(paramCollection, "Arrays.copyOf(result, newSize)");
           i = j;
         }
       }
@@ -94,7 +94,7 @@ public final class i
             return paramArrayOfObject;
           }
           paramCollection = Arrays.copyOf(paramCollection, j);
-          p.g(paramCollection, "Arrays.copyOf(result, size)");
+          p.j(paramCollection, "Arrays.copyOf(result, size)");
           AppMethodBeat.o(129342);
           return paramCollection;
         }
@@ -103,21 +103,21 @@ public final class i
     }
   }
   
-  public static final Object[] w(Collection<?> paramCollection)
+  public static final Object[] u(Collection<?> paramCollection)
   {
     AppMethodBeat.i(129341);
-    p.h(paramCollection, "collection");
+    p.k(paramCollection, "collection");
     int i = paramCollection.size();
     if (i == 0)
     {
-      paramCollection = gKK;
+      paramCollection = juY;
       AppMethodBeat.o(129341);
       return paramCollection;
     }
     Iterator localIterator = paramCollection.iterator();
     if (!localIterator.hasNext())
     {
-      paramCollection = gKK;
+      paramCollection = juY;
       AppMethodBeat.o(129341);
       return paramCollection;
     }
@@ -147,7 +147,7 @@ public final class i
           i = 2147483645;
         }
         paramCollection = Arrays.copyOf(paramCollection, i);
-        p.g(paramCollection, "Arrays.copyOf(result, newSize)");
+        p.j(paramCollection, "Arrays.copyOf(result, newSize)");
         i = j;
       }
       else
@@ -155,7 +155,7 @@ public final class i
         if (!localIterator.hasNext())
         {
           paramCollection = Arrays.copyOf(paramCollection, j);
-          p.g(paramCollection, "Arrays.copyOf(result, size)");
+          p.j(paramCollection, "Arrays.copyOf(result, size)");
           AppMethodBeat.o(129341);
           return paramCollection;
         }

@@ -6,16 +6,16 @@ import kotlin.g.a.b;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/handoff/service/BundlePair;", "", "block", "Lkotlin/Function1;", "Landroid/os/Bundle;", "", "(Lkotlin/jvm/functions/Function1;)V", "apply", "bundle", "plugin-handoff_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/BundlePair;", "", "block", "Lkotlin/Function1;", "Landroid/os/Bundle;", "", "(Lkotlin/jvm/functions/Function1;)V", "apply", "bundle", "plugin-handoff_release"})
 public final class c
 {
-  final b<Bundle, x> yhT;
+  final b<Bundle, x> DrV;
   
   public c(b<? super Bundle, x> paramb)
   {
-    AppMethodBeat.i(199157);
-    this.yhT = paramb;
-    AppMethodBeat.o(199157);
+    AppMethodBeat.i(248612);
+    this.DrV = paramb;
+    AppMethodBeat.o(248612);
   }
 }
 

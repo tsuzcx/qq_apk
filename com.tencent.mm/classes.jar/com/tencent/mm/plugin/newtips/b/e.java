@@ -4,33 +4,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  public String ADR = "";
-  public boolean ADS = false;
+  public String GwV = "";
+  public boolean GwW = false;
   public int path;
   
   public e(int paramInt)
   {
     this.path = paramInt;
-    this.ADS = false;
+    this.GwW = false;
   }
   
   public e(String paramString)
   {
-    this.ADR = paramString;
-    this.ADS = true;
+    this.GwV = paramString;
+    this.GwW = true;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(188570);
-    String str = "NewTipsPath{dynamicPath='" + this.ADR + '\'' + ", path=" + this.path + ", isDynamicPtch=" + this.ADS + '}';
-    AppMethodBeat.o(188570);
+    AppMethodBeat.i(186282);
+    String str = "NewTipsPath{dynamicPath='" + this.GwV + '\'' + ", path=" + this.path + ", isDynamicPtch=" + this.GwW + '}';
+    AppMethodBeat.o(186282);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.b.e
  * JD-Core Version:    0.7.0.1
  */

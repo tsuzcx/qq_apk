@@ -9,44 +9,44 @@ import kotlin.g.b.p;
 
 public abstract class a
 {
-  public static final a TAS = new a((byte)0);
-  public final int TAP;
-  private final List<Integer> TAQ;
-  private final int[] TAR;
-  public final int major;
-  public final int minor;
+  public static final a abdH = new a((byte)0);
+  public final int TsL;
+  private final List<Integer> abdF;
+  private final int[] abdG;
+  public final int oey;
+  public final int oez;
   
   public a(int... paramVarArgs)
   {
-    this.TAR = paramVarArgs;
-    paramVarArgs = e.m(this.TAR, 0);
+    this.abdG = paramVarArgs;
+    paramVarArgs = e.m(this.abdG, 0);
     int i;
     if (paramVarArgs != null)
     {
       i = paramVarArgs.intValue();
-      this.major = i;
-      paramVarArgs = e.m(this.TAR, 1);
+      this.oey = i;
+      paramVarArgs = e.m(this.abdG, 1);
       if (paramVarArgs == null) {
         break label133;
       }
       i = paramVarArgs.intValue();
       label58:
-      this.minor = i;
-      paramVarArgs = e.m(this.TAR, 2);
+      this.oez = i;
+      paramVarArgs = e.m(this.abdG, 2);
       i = j;
       if (paramVarArgs != null) {
         i = paramVarArgs.intValue();
       }
-      this.TAP = i;
-      if (this.TAR.length <= 3) {
+      this.TsL = i;
+      if (this.abdG.length <= 3) {
         break label138;
       }
     }
     label133:
     label138:
-    for (paramVarArgs = j.p((Iterable)e.W(this.TAR).subList(3, this.TAR.length));; paramVarArgs = (List)v.SXr)
+    for (paramVarArgs = j.p((Iterable)e.V(this.abdG).subList(3, this.abdG.length));; paramVarArgs = (List)v.aaAd)
     {
-      this.TAQ = paramVarArgs;
+      this.abdF = paramVarArgs;
       return;
       i = -1;
       break;
@@ -57,11 +57,11 @@ public abstract class a
   
   protected final boolean a(a parama)
   {
-    p.h(parama, "ourVersion");
-    if (this.major == 0) {
-      if ((parama.major != 0) || (this.minor != parama.minor)) {}
+    p.k(parama, "ourVersion");
+    if (this.oey == 0) {
+      if ((parama.oey != 0) || (this.oez != parama.oez)) {}
     }
-    while ((this.major == parama.major) && (this.minor <= parama.minor))
+    while ((this.oey == parama.oey) && (this.oez <= parama.oez))
     {
       return true;
       return false;
@@ -71,20 +71,20 @@ public abstract class a
   
   public boolean equals(Object paramObject)
   {
-    return (paramObject != null) && (p.j(getClass(), paramObject.getClass())) && (this.major == ((a)paramObject).major) && (this.minor == ((a)paramObject).minor) && (this.TAP == ((a)paramObject).TAP) && (p.j(this.TAQ, ((a)paramObject).TAQ));
+    return (paramObject != null) && (p.h(getClass(), paramObject.getClass())) && (this.oey == ((a)paramObject).oey) && (this.oez == ((a)paramObject).oez) && (this.TsL == ((a)paramObject).TsL) && (p.h(this.abdF, ((a)paramObject).abdF));
   }
   
   public int hashCode()
   {
-    int i = this.major;
-    i += i * 31 + this.minor;
-    i += i * 31 + this.TAP;
-    return i + (i * 31 + this.TAQ.hashCode());
+    int i = this.oey;
+    i += i * 31 + this.oez;
+    i += i * 31 + this.TsL;
+    return i + (i * 31 + this.abdF.hashCode());
   }
   
   public String toString()
   {
-    Object localObject = this.TAR;
+    Object localObject = this.abdG;
     ArrayList localArrayList = new ArrayList();
     int k = localObject.length;
     int i = 0;
@@ -114,7 +114,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.e.b.a
  * JD-Core Version:    0.7.0.1
  */

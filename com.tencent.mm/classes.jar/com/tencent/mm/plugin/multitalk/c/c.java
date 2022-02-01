@@ -53,7 +53,7 @@ public final class c
     }
   }
   
-  public final LinkedList<b> aGq(String paramString)
+  public final LinkedList<b> aQE(String paramString)
   {
     AppMethodBeat.i(114646);
     paramString = rawQuery("select memberUuid, wxGroupId, userName, inviteUserName, memberId, status,createTime  from MultiTalkMember  where wxGroupId = '" + paramString + "'", new String[0]);
@@ -101,7 +101,7 @@ public final class c
   
   public final boolean b(b paramb)
   {
-    AppMethodBeat.i(239432);
+    AppMethodBeat.i(197196);
     String str = paramb.field_userName;
     Cursor localCursor = rawQuery("select * from MultiTalkMember where userName = '" + str + "' and wxGroupId = '" + paramb.field_wxGroupId + "'", new String[0]);
     try
@@ -124,11 +124,11 @@ public final class c
     finally
     {
       localCursor.close();
-      AppMethodBeat.o(239432);
+      AppMethodBeat.o(197196);
     }
   }
   
-  public final boolean fr(String paramString1, String paramString2)
+  public final boolean fF(String paramString1, String paramString2)
   {
     AppMethodBeat.i(114648);
     Log.i("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "delete where wxGroupId = " + paramString1 + ",member = " + paramString2);
@@ -146,7 +146,7 @@ public final class c
     return false;
   }
   
-  public final boolean gC(String paramString)
+  public final boolean ho(String paramString)
   {
     AppMethodBeat.i(114649);
     Log.i("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "delete where wxGroupId = ".concat(String.valueOf(paramString)));
@@ -164,7 +164,7 @@ public final class c
     return false;
   }
   
-  public final b iP(String paramString1, String paramString2)
+  public final b ja(String paramString1, String paramString2)
   {
     AppMethodBeat.i(114645);
     paramString1 = rawQuery("select memberUuid, wxGroupId, userName, inviteUserName, memberId, status,createTime  from MultiTalkMember  where wxGroupId = '" + paramString1 + "' and userName ='" + paramString2 + "'", new String[0]);
@@ -212,7 +212,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.c.c
  * JD-Core Version:    0.7.0.1
  */

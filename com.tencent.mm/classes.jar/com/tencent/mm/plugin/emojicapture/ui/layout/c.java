@@ -1,49 +1,47 @@
 package com.tencent.mm.plugin.emojicapture.ui.layout;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.r;
-import android.support.v7.widget.RecyclerView.r.a;
-import android.support.v7.widget.RecyclerView.r.b;
-import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.ae;
-import android.support.v7.widget.af;
-import android.support.v7.widget.aj;
 import android.view.View;
 import android.view.animation.Interpolator;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.LayoutParams;
+import androidx.recyclerview.widget.RecyclerView.r;
+import androidx.recyclerview.widget.RecyclerView.r.a;
+import androidx.recyclerview.widget.RecyclerView.r.b;
+import androidx.recyclerview.widget.RecyclerView.s;
+import androidx.recyclerview.widget.q;
+import androidx.recyclerview.widget.u;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper;", "Landroid/support/v7/widget/LinearSnapHelper;", "()V", "horizontalHelper", "Landroid/support/v7/widget/OrientationHelper;", "onPageSelectedListener", "Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$OnPageSelectedListener;", "getOnPageSelectedListener", "()Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$OnPageSelectedListener;", "setOnPageSelectedListener", "(Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$OnPageSelectedListener;)V", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "verticalHelper", "attachToRecyclerView", "", "createScroller", "Landroid/support/v7/widget/RecyclerView$SmoothScroller;", "layoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "findCenterView", "Landroid/view/View;", "helper", "findSnapView", "findTargetSnapPosition", "", "velocityX", "velocityY", "getHorizontalHelper", "getVerticalHelper", "OnPageSelectedListener", "plugin-emojicapture_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper;", "Landroidx/recyclerview/widget/LinearSnapHelper;", "()V", "horizontalHelper", "Landroidx/recyclerview/widget/OrientationHelper;", "onPageSelectedListener", "Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$OnPageSelectedListener;", "getOnPageSelectedListener", "()Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$OnPageSelectedListener;", "setOnPageSelectedListener", "(Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$OnPageSelectedListener;)V", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "verticalHelper", "attachToRecyclerView", "", "createScroller", "Landroidx/recyclerview/widget/RecyclerView$SmoothScroller;", "layoutManager", "Landroidx/recyclerview/widget/RecyclerView$LayoutManager;", "findCenterView", "Landroid/view/View;", "helper", "findSnapView", "findTargetSnapPosition", "", "velocityX", "velocityY", "getHorizontalHelper", "getVerticalHelper", "OnPageSelectedListener", "plugin-emojicapture_release"})
 public final class c
-  extends af
+  extends q
 {
-  RecyclerView hak;
-  private aj hbL;
-  private aj hbM;
-  public a rwT;
+  private RecyclerView jLl;
+  private u jMV;
+  private u jMW;
+  public a vcz;
   
   public final int a(RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(893);
+    AppMethodBeat.i(201549);
     paramInt1 = super.a(paramLayoutManager, paramInt1, paramInt2);
-    paramLayoutManager = this.rwT;
+    paramLayoutManager = this.vcz;
     if (paramLayoutManager != null) {
       paramLayoutManager.onPageSelected(paramInt1);
     }
-    AppMethodBeat.o(893);
+    AppMethodBeat.o(201549);
     return paramInt1;
   }
   
   public final View a(RecyclerView.LayoutManager paramLayoutManager)
   {
-    AppMethodBeat.i(894);
+    AppMethodBeat.i(201562);
     if (paramLayoutManager == null)
     {
-      AppMethodBeat.o(894);
+      AppMethodBeat.o(201562);
       return null;
     }
     Object localObject1;
@@ -51,88 +49,88 @@ public final class c
     int i1;
     if (paramLayoutManager.canScrollHorizontally())
     {
-      if (this.hbM != null)
+      if (this.jMW != null)
       {
-        localObject1 = this.hbM;
+        localObject1 = this.jMW;
         if (localObject1 == null) {
-          break label164;
+          break label161;
         }
-        localObject1 = ((aj)localObject1).getLayoutManager();
+        localObject1 = ((u)localObject1).getLayoutManager();
         if (localObject1 == paramLayoutManager) {}
       }
       else
       {
-        this.hbM = aj.d(paramLayoutManager);
+        this.jMW = u.d(paramLayoutManager);
       }
-      localObject2 = this.hbM;
+      localObject2 = this.jMW;
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        p.hyc();
+        kotlin.g.b.p.iCn();
         localObject1 = localObject2;
       }
       i1 = paramLayoutManager.getChildCount();
       if (i1 != 0) {
-        break label240;
+        break label237;
       }
       localObject1 = null;
-      label100:
+      label98:
       if (localObject1 == null) {
-        break label397;
+        break label394;
       }
       paramLayoutManager = ((View)localObject1).getLayoutParams();
-      label111:
+      label109:
       localObject2 = paramLayoutManager;
       if (!(paramLayoutManager instanceof RecyclerView.LayoutParams)) {
         localObject2 = null;
       }
       paramLayoutManager = (RecyclerView.LayoutParams)localObject2;
       if (paramLayoutManager == null) {
-        break label402;
+        break label399;
       }
     }
+    label391:
     label394:
-    label397:
-    label402:
-    for (int i = paramLayoutManager.lG();; i = -1)
+    label399:
+    for (int i = paramLayoutManager.lS();; i = -1)
     {
-      paramLayoutManager = this.rwT;
+      paramLayoutManager = this.vcz;
       if (paramLayoutManager != null) {
         paramLayoutManager.onPageSelected(i);
       }
-      AppMethodBeat.o(894);
+      AppMethodBeat.o(201562);
       return localObject1;
-      label164:
+      label161:
       localObject1 = null;
       break;
-      if (this.hbL != null)
+      if (this.jMV != null)
       {
-        localObject1 = this.hbL;
+        localObject1 = this.jMV;
         if (localObject1 == null) {
-          break label234;
+          break label231;
         }
       }
-      label234:
-      for (localObject1 = ((aj)localObject1).getLayoutManager();; localObject1 = null)
+      label231:
+      for (localObject1 = ((u)localObject1).getLayoutManager();; localObject1 = null)
       {
         if (localObject1 != paramLayoutManager) {
-          this.hbL = aj.e(paramLayoutManager);
+          this.jMV = u.e(paramLayoutManager);
         }
-        localObject2 = this.hbL;
+        localObject2 = this.jMV;
         localObject1 = localObject2;
         if (localObject2 != null) {
           break;
         }
-        p.hyc();
+        kotlin.g.b.p.iCn();
         localObject1 = localObject2;
         break;
       }
-      label240:
+      label237:
       if (paramLayoutManager.getClipToPadding()) {
-        i = ((aj)localObject1).kH();
+        i = ((u)localObject1).kT();
       }
       int k;
-      for (i = ((aj)localObject1).kJ() / 2 + i;; i = ((aj)localObject1).getEnd() / 2)
+      for (i = ((u)localObject1).kV() / 2 + i;; i = ((u)localObject1).getEnd() / 2)
       {
         k = 2147483647;
         int j = 0;
@@ -140,7 +138,7 @@ public final class c
         for (;;)
         {
           if (j >= i1) {
-            break label394;
+            break label391;
           }
           localObject2 = paramLayoutManager.getChildAt(j);
           if (localObject2 != null) {
@@ -151,7 +149,7 @@ public final class c
           k = m;
         }
       }
-      p.g(localObject2, "layoutManager.getChildAt(i) ?: continue");
+      kotlin.g.b.p.j(localObject2, "layoutManager.getChildAt(i) ?: continue");
       if (paramLayoutManager.canScrollHorizontally()) {}
       for (int m = ((View)localObject2).getLeft() + ((View)localObject2).getMeasuredWidth() / 2;; m = ((View)localObject2).getTop() + ((View)localObject2).getMeasuredHeight() / 2)
       {
@@ -164,48 +162,48 @@ public final class c
         localObject1 = localObject2;
         break;
       }
-      break label100;
+      break label98;
       paramLayoutManager = null;
-      break label111;
+      break label109;
     }
   }
   
-  public final void f(RecyclerView paramRecyclerView)
+  public final void a(RecyclerView paramRecyclerView)
   {
-    AppMethodBeat.i(891);
-    super.f(paramRecyclerView);
-    this.hak = paramRecyclerView;
-    AppMethodBeat.o(891);
+    AppMethodBeat.i(201541);
+    super.a(paramRecyclerView);
+    this.jLl = paramRecyclerView;
+    AppMethodBeat.o(201541);
   }
   
   public final RecyclerView.r g(RecyclerView.LayoutManager paramLayoutManager)
   {
     Object localObject = null;
-    AppMethodBeat.i(892);
+    AppMethodBeat.i(201546);
     if (!(paramLayoutManager instanceof RecyclerView.r.b))
     {
-      AppMethodBeat.o(892);
+      AppMethodBeat.o(201546);
       return null;
     }
-    RecyclerView localRecyclerView = this.hak;
+    RecyclerView localRecyclerView = this.jLl;
     paramLayoutManager = localObject;
     if (localRecyclerView != null) {
       paramLayoutManager = localRecyclerView.getContext();
     }
     paramLayoutManager = (RecyclerView.r)new b(this, paramLayoutManager);
-    AppMethodBeat.o(892);
+    AppMethodBeat.o(201546);
     return paramLayoutManager;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$OnPageSelectedListener;", "", "onPageSelected", "", "position", "", "plugin-emojicapture_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$OnPageSelectedListener;", "", "onPageSelected", "", "position", "", "plugin-emojicapture_release"})
   public static abstract interface a
   {
     public abstract void onPageSelected(int paramInt);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$createScroller$1", "Landroid/support/v7/widget/LinearSmoothScroller;", "onTargetFound", "", "targetView", "Landroid/view/View;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "action", "Landroid/support/v7/widget/RecyclerView$SmoothScroller$Action;", "plugin-emojicapture_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$createScroller$1", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "onTargetFound", "", "targetView", "Landroid/view/View;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "action", "Landroidx/recyclerview/widget/RecyclerView$SmoothScroller$Action;", "plugin-emojicapture_release"})
   public static final class b
-    extends ae
+    extends androidx.recyclerview.widget.p
   {
     b(Context paramContext)
     {
@@ -214,45 +212,45 @@ public final class c
     
     public final void a(View paramView, RecyclerView.s params, RecyclerView.r.a parama)
     {
-      AppMethodBeat.i(890);
-      p.h(paramView, "targetView");
-      p.h(params, "state");
-      p.h(parama, "action");
-      if (this.rwU.hak != null)
+      AppMethodBeat.i(202605);
+      kotlin.g.b.p.k(paramView, "targetView");
+      kotlin.g.b.p.k(params, "state");
+      kotlin.g.b.p.k(parama, "action");
+      if (c.a(this.vcA) != null)
       {
-        c localc = this.rwU;
-        params = this.rwU.hak;
+        c localc = this.vcA;
+        params = c.a(this.vcA);
         if (params != null) {}
         int i;
         int j;
         for (params = params.getLayoutManager();; params = null)
         {
           if (params == null) {
-            p.hyc();
+            kotlin.g.b.p.iCn();
           }
           paramView = localc.a(params, paramView);
           if (paramView == null) {
-            p.hyc();
+            kotlin.g.b.p.iCn();
           }
           i = paramView[0];
           j = paramView[1];
-          int k = cc(Math.max(Math.abs(i), Math.abs(j)));
+          int k = cE(Math.max(Math.abs(i), Math.abs(j)));
           if (k <= 0) {
             break;
           }
-          parama.a(i, j, k, (Interpolator)this.VQ);
-          AppMethodBeat.o(890);
+          parama.a(i, j, k, (Interpolator)this.aju);
+          AppMethodBeat.o(202605);
           return;
         }
-        parama.a(i, j, 1, (Interpolator)this.VQ);
+        parama.a(i, j, 1, (Interpolator)this.aju);
       }
-      AppMethodBeat.o(890);
+      AppMethodBeat.o(202605);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.layout.c
  * JD-Core Version:    0.7.0.1
  */

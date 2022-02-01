@@ -9,14 +9,14 @@ public final class a$2
   
   public final void run()
   {
-    AppMethodBeat.i(240928);
-    this.wJp.onDestroy();
-    AppMethodBeat.o(240928);
+    AppMethodBeat.i(221127);
+    this.BCE.onDestroy();
+    AppMethodBeat.o(221127);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.b.a.2
  * JD-Core Version:    0.7.0.1
  */

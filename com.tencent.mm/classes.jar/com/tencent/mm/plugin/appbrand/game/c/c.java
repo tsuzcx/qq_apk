@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.appbrand.game.c;
 
-import com.tencent.luggage.game.b.d;
+import com.tencent.luggage.game.b.e;
 import com.tencent.magicbrush.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c
-  extends d
+  extends e
 {
-  public final void LX()
+  public final void OP()
   {
     AppMethodBeat.i(45113);
-    super.LX();
+    super.OP();
     long l = Util.currentTicks();
     b.loadLibrary("gamelog_delegate");
     Log.i("MicroMsg.MBLogDelegateRegistryWC", "dl: load gamelog_delegate [%d]ms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });

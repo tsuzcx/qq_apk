@@ -2,21 +2,22 @@ package com.tencent.mm.plugin.appbrand.jsapi.pay;
 
 import android.app.Activity;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
+import com.tencent.luggage.sdk.e.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.m;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.base.ReportSubmitFormTask;
+import com.tencent.mm.plugin.appbrand.jsapi.j;
 import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.l;
-import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.o;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.page.x;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.y;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.t;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.pointers.PString;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.system.AndroidContextUtil;
@@ -25,41 +26,41 @@ import org.apache.commons.b.g;
 import org.json.JSONObject;
 
 public class n
-  extends com.tencent.mm.plugin.appbrand.jsapi.d<com.tencent.mm.plugin.appbrand.jsapi.k>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<j>
 {
   public static final int CTRL_INDEX = 57;
   public static final String NAME = "requestPayment";
   
-  public void a(final com.tencent.mm.plugin.appbrand.jsapi.k paramk, JSONObject paramJSONObject, final int paramInt)
+  public void a(final j paramj, JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(226965);
+    AppMethodBeat.i(268117);
     if (paramJSONObject == null)
     {
-      paramk.i(paramInt, h("fail:invalid data", null));
-      AppMethodBeat.o(226965);
+      paramj.j(paramInt, h("fail:invalid data", null));
+      AppMethodBeat.o(268117);
       return;
     }
-    q localq = (q)paramk.getRuntime();
-    Activity localActivity = AndroidContextUtil.castActivityOrNull(localq.mContext);
+    t localt = (t)paramj.getRuntime();
+    Activity localActivity = AndroidContextUtil.castActivityOrNull(localt.mContext);
     if (localActivity == null)
     {
-      paramk.i(paramInt, h("fail:internal error invalid android context", null));
-      AppMethodBeat.o(226965);
+      paramj.j(paramInt, h("fail:internal error invalid android context", null));
+      AppMethodBeat.o(268117);
       return;
     }
-    Object localObject = g.id(localq.bsD().getCurrentUrl(), 1024);
-    String str = localq.bsC().username;
+    Object localObject = g.bh(localt.bDz().getCurrentUrl(), 0, 1024);
+    String str = localt.bDy().username;
     try
     {
-      if ((paramJSONObject.optBoolean("useCustomAppId", false)) && ((paramk instanceof com.tencent.mm.plugin.appbrand.service.c)))
+      if ((paramJSONObject.optBoolean("useCustomAppId", false)) && ((paramj instanceof com.tencent.mm.plugin.appbrand.service.c)))
       {
-        AppBrandJsApiPayUtils localAppBrandJsApiPayUtils = AppBrandJsApiPayUtils.mlZ;
-        if (AppBrandJsApiPayUtils.c((com.tencent.mm.plugin.appbrand.service.c)paramk))
+        AppBrandJsApiPayUtils localAppBrandJsApiPayUtils = AppBrandJsApiPayUtils.pke;
+        if (AppBrandJsApiPayUtils.d((com.tencent.mm.plugin.appbrand.service.c)paramj))
         {
-          localObject = AppBrandJsApiPayUtils.mlZ;
-          if (AppBrandJsApiPayUtils.c((com.tencent.mm.plugin.appbrand.service.c)paramk, paramJSONObject.optString("appId")))
+          localObject = AppBrandJsApiPayUtils.pke;
+          if (AppBrandJsApiPayUtils.c((com.tencent.mm.plugin.appbrand.service.c)paramj, paramJSONObject.optString("appId")))
           {
-            localObject = (IPCString)XIPCInvoker.a(MainProcessIPCService.dkO, new IPCString(paramJSONObject.optString("appId")), a.class);
+            localObject = (IPCString)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramJSONObject.optString("appId")), a.class);
             if (localObject == null)
             {
               localObject = null;
@@ -71,8 +72,9 @@ public class n
       }
       for (;;)
       {
+        paramJSONObject.put("key_chat_type", localt.bDy().cxf.chatType);
         localObject = new PString();
-        if (AppBrandJsApiPayService.mlD.startPay(localActivity, paramk, localq.ON().cyA, paramJSONObject, new a.c()
+        if (AppBrandJsApiPayService.pjI.startPay(localActivity, paramj, localt.Sk().cxf, paramJSONObject, new a.c()
         {
           public final void a(int paramAnonymousInt, String paramAnonymousString, Map<String, Object> paramAnonymousMap)
           {
@@ -84,23 +86,23 @@ public class n
             {
               AppMethodBeat.o(46732);
               return;
-              paramk.i(paramInt, n.this.h("ok", null));
+              paramj.j(paramInt, n.this.h("ok", null));
               AppMethodBeat.o(46732);
               return;
-              paramk.i(paramInt, n.this.h("fail:".concat(String.valueOf(paramAnonymousString)), null));
+              paramj.j(paramInt, n.this.h("fail:".concat(String.valueOf(paramAnonymousString)), null));
               AppMethodBeat.o(46732);
               return;
-              paramk.i(paramInt, n.this.h("fail cancel", null));
+              paramj.j(paramInt, n.this.h("fail cancel", null));
             }
           }
           
           public final void b(int paramAnonymousInt, String paramAnonymousString, Map<String, Object> paramAnonymousMap)
           {
-            AppMethodBeat.i(226963);
+            AppMethodBeat.i(243134);
             Object localObject;
-            if ((paramk.getRuntime() instanceof l))
+            if ((paramj.getRuntime() instanceof l))
             {
-              localObject = (l)paramk.getRuntime();
+              localObject = (l)paramj.getRuntime();
               switch (paramAnonymousInt)
               {
               default: 
@@ -109,20 +111,20 @@ public class n
             }
             for (;;)
             {
-              paramAnonymousString = n.this.n(paramAnonymousString, paramAnonymousMap);
-              localObject = ((l)localObject).naC;
-              paramAnonymousMap = (com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.p)paramk;
+              paramAnonymousString = n.this.m(paramAnonymousString, paramAnonymousMap);
+              localObject = ((l)localObject).qaR;
+              paramAnonymousMap = (com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.p)paramj;
               paramAnonymousInt = paramInt;
-              kotlin.g.b.p.h(paramAnonymousMap, "component");
-              kotlin.g.b.p.h(paramAnonymousString, "callbackStr");
-              localObject = ((com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.c)localObject).nar;
+              kotlin.g.b.p.k(paramAnonymousMap, "component");
+              kotlin.g.b.p.k(paramAnonymousString, "callbackStr");
+              localObject = ((com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.c)localObject).qaG;
               if (localObject == null) {
-                kotlin.g.b.p.btv("invokeProcess");
+                kotlin.g.b.p.bGy("invokeProcess");
               }
-              ((o)localObject).b(paramAnonymousMap, paramAnonymousInt, paramAnonymousString);
-              AppMethodBeat.o(226963);
+              ((com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.o)localObject).b(paramAnonymousMap, paramAnonymousInt, paramAnonymousString);
+              AppMethodBeat.o(243134);
               return;
-              AppMethodBeat.o(226963);
+              AppMethodBeat.o(243134);
               return;
               paramAnonymousString = "ok";
               continue;
@@ -130,53 +132,53 @@ public class n
             }
           }
         }, (PString)localObject)) {
-          break label394;
+          break label413;
         }
-        paramk.i(paramInt, h("fail", null));
-        AppMethodBeat.o(226965);
+        paramj.j(paramInt, h("fail", null));
+        AppMethodBeat.o(268117);
         return;
         localObject = ((IPCString)localObject).value;
         break;
         Log.i("MicroMsg.JsApiRequestPayment", "use custom illegal appId:%s ");
-        paramk.i(paramInt, h("fail illegal appId", null));
-        AppMethodBeat.o(226965);
+        paramj.j(paramInt, h("fail illegal appId", null));
+        AppMethodBeat.o(268117);
         return;
-        paramJSONObject.put("appId", paramk.getAppId());
+        paramJSONObject.put("appId", paramj.getAppId());
         paramJSONObject.put("key_appbrand_from_path", localObject);
         paramJSONObject.put("key_appbrand_from_username", str);
       }
       if (!paramJSONObject.optBoolean("grantMessageQuota", true)) {
-        break label475;
+        break label494;
       }
     }
     catch (Exception paramJSONObject)
     {
       Log.e("MicroMsg.JsApiRequestPayment", paramJSONObject.getMessage());
-      paramk.i(paramInt, h("fail", null));
-      AppMethodBeat.o(226965);
+      paramj.j(paramInt, h("fail", null));
+      AppMethodBeat.o(268117);
       return;
     }
-    label394:
-    if ((paramk instanceof ac)) {}
-    for (paramk = (ac)paramk;; paramk = ((s)paramk).getCurrentPageView())
+    label413:
+    if ((paramj instanceof ad)) {}
+    for (paramj = (ad)paramj;; paramj = ((v)paramj).getCurrentPageView())
     {
       paramJSONObject = ((PString)localObject).value;
-      if (paramk != null)
+      if (paramj != null)
       {
-        localObject = new ReportSubmitFormTask(paramk.getRuntime().OT());
+        localObject = new ReportSubmitFormTask(paramj.getRuntime().Sp());
         ((ReportSubmitFormTask)localObject).type = 0;
-        ((ReportSubmitFormTask)localObject).lKc = paramJSONObject.replace("prepay_id=", "");
-        ((ReportSubmitFormTask)localObject).pageId = paramk.lBI;
-        AppBrandMainProcessService.a((MainProcessTask)localObject);
+        ((ReportSubmitFormTask)localObject).oGs = paramJSONObject.replace("prepay_id=", "");
+        ((ReportSubmitFormTask)localObject).pageId = paramj.oxe;
+        ((ReportSubmitFormTask)localObject).bsM();
       }
-      label475:
-      AppMethodBeat.o(226965);
+      label494:
+      AppMethodBeat.o(268117);
       return;
     }
   }
   
   static class a
-    implements com.tencent.mm.ipcinvoker.k<IPCString, IPCString>
+    implements m<IPCString, IPCString>
   {}
 }
 

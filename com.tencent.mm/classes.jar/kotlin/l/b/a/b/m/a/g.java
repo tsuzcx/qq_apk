@@ -5,11 +5,11 @@ import kotlin.l.b.a.b.m.at;
 
 public abstract interface g
 {
-  public static final g TPc = n.a.hLO();
+  public static final g abrB = n.a.iQg();
   
   static
   {
-    n.a locala = n.TPq;
+    n.a locala = n.abrP;
   }
   
   public abstract boolean c(ab paramab1, ab paramab2);
@@ -23,7 +23,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.a.g
  * JD-Core Version:    0.7.0.1
  */

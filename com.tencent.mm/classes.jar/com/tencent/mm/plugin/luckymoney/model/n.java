@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.av;
+import com.tencent.mm.f.a.ax;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 
 public final class n
-  extends IListener<av>
+  extends IListener<ax>
 {
-  private ArrayList<String> yUP;
+  private ArrayList<String> EyM;
   
   public n()
   {
     AppMethodBeat.i(65177);
-    this.yUP = new ArrayList();
-    this.__eventId = av.class.getName().hashCode();
+    this.EyM = new ArrayList();
+    this.__eventId = ax.class.getName().hashCode();
     AppMethodBeat.o(65177);
   }
 }

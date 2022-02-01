@@ -1,6 +1,12 @@
 package com.google.android.gms.auth.api;
 
-public final class R {}
+public final class R
+{
+  public static final class integer
+  {
+    public static final int google_play_services_version = 2131361804;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

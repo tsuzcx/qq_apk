@@ -15,47 +15,47 @@ public class RealnameGuideHelper
   implements Parcelable
 {
   public static final Parcelable.Creator<RealnameGuideHelper> CREATOR;
-  private SetPwdInfo HUB;
-  private boolean HUC;
-  private String lHA;
-  private String lHB;
+  private String EBM;
+  private String EBN;
+  private String EBO;
+  private SetPwdInfo OMC;
+  private boolean OMD;
   private int mEntryScene;
-  private String yXI;
-  private String yXJ;
-  private String yXK;
+  private String oDJ;
+  private String oDK;
   
   static
   {
     AppMethodBeat.i(70175);
-    CREATOR = new RealnameGuideHelper.1();
+    CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(70175);
   }
   
   public RealnameGuideHelper()
   {
-    this.lHA = "";
-    this.lHB = "";
-    this.yXK = "";
-    this.HUC = false;
+    this.oDJ = "";
+    this.oDK = "";
+    this.EBO = "";
+    this.OMD = false;
   }
   
   protected RealnameGuideHelper(Parcel paramParcel)
   {
     AppMethodBeat.i(70169);
-    this.lHA = "";
-    this.lHB = "";
-    this.yXK = "";
-    this.HUC = false;
-    this.HUB = ((SetPwdInfo)paramParcel.readParcelable(SetPwdInfo.class.getClassLoader()));
-    this.yXI = paramParcel.readString();
-    this.yXJ = paramParcel.readString();
-    this.lHA = paramParcel.readString();
-    this.lHB = paramParcel.readString();
-    this.yXK = paramParcel.readString();
+    this.oDJ = "";
+    this.oDK = "";
+    this.EBO = "";
+    this.OMD = false;
+    this.OMC = ((SetPwdInfo)paramParcel.readParcelable(SetPwdInfo.class.getClassLoader()));
+    this.EBM = paramParcel.readString();
+    this.EBN = paramParcel.readString();
+    this.oDJ = paramParcel.readString();
+    this.oDK = paramParcel.readString();
+    this.EBO = paramParcel.readString();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.HUC = bool;
+      this.OMD = bool;
       this.mEntryScene = paramParcel.readInt();
       AppMethodBeat.o(70169);
       return;
@@ -64,29 +64,36 @@ public class RealnameGuideHelper
   
   public final void a(String paramString1, SetPwdInfo paramSetPwdInfo, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
   {
-    this.HUB = paramSetPwdInfo;
-    this.yXI = paramString1;
-    this.yXJ = paramString2;
-    this.lHA = paramString3;
-    this.lHB = paramString4;
-    this.yXK = paramString5;
+    this.OMC = paramSetPwdInfo;
+    this.EBM = paramString1;
+    this.EBN = paramString2;
+    this.oDJ = paramString3;
+    this.oDK = paramString4;
+    this.EBO = paramString5;
     this.mEntryScene = paramInt;
+  }
+  
+  public final void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
+  {
+    AppMethodBeat.i(70171);
+    a(paramString1, null, paramString2, paramString3, paramString4, paramString5, paramInt);
+    AppMethodBeat.o(70171);
   }
   
   public final boolean a(MMActivity paramMMActivity, Bundle paramBundle, DialogInterface.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(70172);
-    Log.d("MicroMsg.RealnameGuideHelper", "doIfNeedSetPwd sendPwdMsg %s mEntryScene %s guide_wording %s upload_credit_url %s left_button_wording %s right_button_wording %s hadShow %s guide_flag %s", new Object[] { this.HUB, Integer.valueOf(this.mEntryScene), this.yXJ, this.yXK, this.lHA, this.lHB, Boolean.valueOf(this.HUC), this.yXI });
-    if (this.HUC)
+    Log.d("MicroMsg.RealnameGuideHelper", "doIfNeedSetPwd sendPwdMsg %s mEntryScene %s guide_wording %s upload_credit_url %s left_button_wording %s right_button_wording %s hadShow %s guide_flag %s", new Object[] { this.OMC, Integer.valueOf(this.mEntryScene), this.EBN, this.EBO, this.oDJ, this.oDK, Boolean.valueOf(this.OMD), this.EBM });
+    if (this.OMD)
     {
       AppMethodBeat.o(70172);
       return false;
     }
-    if ((this.HUB != null) && (this.HUB.HUM == 1))
+    if ((this.OMC != null) && (this.OMC.OMN == 1))
     {
-      boolean bool = a.a(paramMMActivity, paramBundle, this.mEntryScene, this.HUB.yXJ, this.HUB.lHA, this.HUB.lHB, paramOnClickListener);
-      if ((bool) && (!this.HUC)) {
-        this.HUC = true;
+      boolean bool = a.a(paramMMActivity, paramBundle, this.mEntryScene, this.OMC.EBN, this.OMC.oDJ, this.OMC.oDK, paramOnClickListener);
+      if ((bool) && (!this.OMD)) {
+        this.OMD = true;
       }
       AppMethodBeat.o(70172);
       return bool;
@@ -98,38 +105,31 @@ public class RealnameGuideHelper
   public final boolean a(MMActivity paramMMActivity, Bundle paramBundle, DialogInterface.OnClickListener paramOnClickListener, d.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(70174);
-    if (this.HUC)
+    if (this.OMD)
     {
       AppMethodBeat.o(70174);
       return false;
     }
-    if ("1".equals(this.yXI))
+    if ("1".equals(this.EBM))
     {
-      if (!this.HUC) {
-        this.HUC = true;
+      if (!this.OMD) {
+        this.OMD = true;
       }
       paramBoolean = a.a(paramMMActivity, paramBundle, parama, this.mEntryScene);
       AppMethodBeat.o(70174);
       return paramBoolean;
     }
-    if (("2".equals(this.yXI)) && (!Util.isNullOrNil(this.yXK)))
+    if (("2".equals(this.EBM)) && (!Util.isNullOrNil(this.EBO)))
     {
-      if (!this.HUC) {
-        this.HUC = true;
+      if (!this.OMD) {
+        this.OMD = true;
       }
-      paramBoolean = a.a(paramMMActivity, this.yXJ, this.yXK, this.lHA, this.lHB, paramBoolean, paramOnClickListener);
+      paramBoolean = a.a(paramMMActivity, this.EBN, this.EBO, this.oDJ, this.oDK, paramBoolean, paramOnClickListener);
       AppMethodBeat.o(70174);
       return paramBoolean;
     }
     AppMethodBeat.o(70174);
     return false;
-  }
-  
-  public final void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
-  {
-    AppMethodBeat.i(70171);
-    a(paramString1, null, paramString2, paramString3, paramString4, paramString5, paramInt);
-    AppMethodBeat.o(70171);
   }
   
   public final boolean b(MMActivity paramMMActivity, Bundle paramBundle, DialogInterface.OnClickListener paramOnClickListener)
@@ -148,13 +148,13 @@ public class RealnameGuideHelper
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70170);
-    paramParcel.writeParcelable(this.HUB, paramInt);
-    paramParcel.writeString(this.yXI);
-    paramParcel.writeString(this.yXJ);
-    paramParcel.writeString(this.lHA);
-    paramParcel.writeString(this.lHB);
-    paramParcel.writeString(this.yXK);
-    if (this.HUC) {}
+    paramParcel.writeParcelable(this.OMC, paramInt);
+    paramParcel.writeString(this.EBM);
+    paramParcel.writeString(this.EBN);
+    paramParcel.writeString(this.oDJ);
+    paramParcel.writeString(this.oDK);
+    paramParcel.writeString(this.EBO);
+    if (this.OMD) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);

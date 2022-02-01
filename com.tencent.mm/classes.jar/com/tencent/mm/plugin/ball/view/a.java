@@ -8,16 +8,16 @@ import com.tencent.mm.sdk.platformtools.BitmapUtil;
 public final class a
   implements b.h
 {
-  public static final a oZc;
+  public static final a sbd;
   
   static
   {
     AppMethodBeat.i(106375);
-    oZc = new a();
+    sbd = new a();
     AppMethodBeat.o(106375);
   }
   
-  public final Bitmap J(Bitmap paramBitmap)
+  public final Bitmap H(Bitmap paramBitmap)
   {
     AppMethodBeat.i(106374);
     if ((paramBitmap.getWidth() <= 0) || (paramBitmap.getHeight() <= 0))
@@ -30,14 +30,14 @@ public final class a
     return paramBitmap;
   }
   
-  public final String Lb()
+  public final String key()
   {
     return "FloatBallIcon";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.view.a
  * JD-Core Version:    0.7.0.1
  */

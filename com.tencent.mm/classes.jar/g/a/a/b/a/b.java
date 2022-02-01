@@ -11,31 +11,7 @@ public final class b
     super(paramString);
   }
   
-  static b hPp()
-  {
-    AppMethodBeat.i(2405);
-    b localb = new b("While parsing a protocol message, the input ended unexpectedly in the middle of a field.  This could mean either than the input has been truncated or that an embedded message misreported its own length.");
-    AppMethodBeat.o(2405);
-    return localb;
-  }
-  
-  static b hPq()
-  {
-    AppMethodBeat.i(2406);
-    b localb = new b("CodedInputStream encountered an embedded string or message which claimed to have negative size.");
-    AppMethodBeat.o(2406);
-    return localb;
-  }
-  
-  static b hPr()
-  {
-    AppMethodBeat.i(2407);
-    b localb = new b("CodedInputStream encountered a malformed varint.");
-    AppMethodBeat.o(2407);
-    return localb;
-  }
-  
-  static b hPs()
+  static b iUA()
   {
     AppMethodBeat.i(2408);
     b localb = new b("Protocol message contained an invalid tag (zero).");
@@ -43,17 +19,41 @@ public final class b
     return localb;
   }
   
-  static b hPt()
+  static b iUB()
   {
     AppMethodBeat.i(2409);
     b localb = new b("Protocol message was too large.  May be malicious.  Use CodedInputStream.setSizeLimit() to increase the size limit.");
     AppMethodBeat.o(2409);
     return localb;
   }
+  
+  static b iUx()
+  {
+    AppMethodBeat.i(2405);
+    b localb = new b("While parsing a protocol message, the input ended unexpectedly in the middle of a field.  This could mean either than the input has been truncated or that an embedded message misreported its own length.");
+    AppMethodBeat.o(2405);
+    return localb;
+  }
+  
+  static b iUy()
+  {
+    AppMethodBeat.i(2406);
+    b localb = new b("CodedInputStream encountered an embedded string or message which claimed to have negative size.");
+    AppMethodBeat.o(2406);
+    return localb;
+  }
+  
+  static b iUz()
+  {
+    AppMethodBeat.i(2407);
+    b localb = new b("CodedInputStream encountered a malformed varint.");
+    AppMethodBeat.o(2407);
+    return localb;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     g.a.a.b.a.b
  * JD-Core Version:    0.7.0.1
  */

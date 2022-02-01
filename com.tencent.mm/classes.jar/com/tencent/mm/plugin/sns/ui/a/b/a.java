@@ -2,22 +2,17 @@ package com.tencent.mm.plugin.sns.ui.a.b;
 
 import android.content.Context;
 import android.database.Cursor;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.kiss.widget.textview.c;
-import com.tencent.mm.modelsns.k;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.modelsns.l;
+import com.tencent.mm.plugin.sns.data.t;
 import com.tencent.mm.plugin.sns.model.aj;
-import com.tencent.mm.plugin.sns.model.aq.a;
+import com.tencent.mm.plugin.sns.model.ap.a;
+import com.tencent.mm.plugin.sns.model.av;
 import com.tencent.mm.plugin.sns.model.aw;
-import com.tencent.mm.plugin.sns.model.ax;
 import com.tencent.mm.plugin.sns.storage.SnsInfo;
-import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.plugin.sns.ui.bk;
+import com.tencent.mm.plugin.sns.ui.bm;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,98 +22,98 @@ public abstract class a
   extends b
 {
   private boolean DEBUG = false;
-  private String ELj;
-  private List<String> EQI = new ArrayList();
-  private bk ESO;
-  private int ESP = (int)(System.currentTimeMillis() / 1000L);
-  private boolean ESQ = false;
-  private volatile boolean ESR = false;
-  private byte[] ESS = new byte[0];
-  public HashMap<String, Boolean> EST = new HashMap();
-  protected HashMap<String, String> ESU = new HashMap();
-  private String ESV = "";
-  private String ESW = "";
-  protected volatile String EvF = "";
-  protected volatile String EvG = "";
-  protected volatile String EvH = "";
-  protected volatile String EvI = "";
-  private bv iFD;
+  protected volatile String KJw = "";
+  protected volatile String KJx = "";
+  protected volatile String KJy = "";
+  protected volatile String KJz = "";
+  private String KZk;
+  private List<String> LeH = new ArrayList();
+  private bm LgP;
+  private int LgQ = (int)(System.currentTimeMillis() / 1000L);
+  private boolean LgR = false;
+  private volatile boolean LgS = false;
+  private byte[] LgT = new byte[0];
+  public HashMap<String, Boolean> LgU = new HashMap();
+  protected HashMap<String, String> LgV = new HashMap();
+  private String LgW = "";
+  private String LgX = "";
+  private bv lvF;
   private Context mContext;
-  protected volatile String sNG = "";
+  protected volatile String wtB = "";
   
   public a(SnsInfo paramSnsInfo)
   {
     super(paramSnsInfo);
-    hdm();
+    iet();
   }
   
-  private void amZ()
+  private void ata()
   {
-    synchronized (this.ESS)
+    synchronized (this.LgT)
     {
       Log.i("MicroMsg.SnsTimeLineVendingSide", "updateDownLimitSeq by initData");
-      if (Util.isNullOrNil(this.EvI)) {
-        this.sNG = L(0L, this.sNG);
+      if (Util.isNullOrNil(this.KJz)) {
+        this.wtB = T(0L, this.wtB);
       }
       return;
     }
   }
   
-  public final void a(Context paramContext, bk parambk, String paramString)
+  public final void a(Context paramContext, bm parambm, String paramString)
   {
     this.mContext = paramContext;
-    this.ESO = parambk;
-    this.ELj = paramString;
-    g.aAi();
-    this.iFD = ((l)g.af(l.class)).aSN();
+    this.LgP = parambm;
+    this.KZk = paramString;
+    com.tencent.mm.kernel.h.aHH();
+    this.lvF = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL();
   }
   
-  public final void aRi(String paramString)
-  {
-    this.EvF = paramString;
-  }
-  
-  public final void aRj(String paramString)
-  {
-    Log.i("MicroMsg.SnsTimeLineVendingSide", "setUnreadBottomSeq:[%s, %s]", new Object[] { paramString, Long.valueOf(r.aOw(paramString)) });
-    this.EvG = paramString;
-  }
-  
-  public final void aRk(String paramString)
-  {
-    Log.i("MicroMsg.SnsTimeLineVendingSide", "setUnreadTopSeq:[%s, %s]", new Object[] { paramString, Long.valueOf(r.aOw(paramString)) });
-    this.EvH = paramString;
-  }
-  
-  public final void aRl(String paramString)
-  {
-    synchronized (this.ESS)
-    {
-      this.sNG = paramString;
-      return;
-    }
-  }
-  
-  public final void aRm(String paramString)
-  {
-    synchronized (this.ESS)
-    {
-      this.EvI = paramString;
-      return;
-    }
-  }
-  
-  public final void axJ()
+  public final void aFa()
   {
     looperCheckForVending();
-    Log.i("MicroMsg.SnsTimeLineVendingSide", "resetSize %s", new Object[] { Boolean.valueOf(this.ESR) });
-    if (this.ESR) {
+    Log.i("MicroMsg.SnsTimeLineVendingSide", "resetSize %s", new Object[] { Boolean.valueOf(this.LgS) });
+    if (this.LgS) {
       return;
     }
-    synchronized (this.ESS)
+    synchronized (this.LgT)
     {
       Log.i("MicroMsg.SnsTimeLineVendingSide", "updateDownLimitSeq by resetSize");
-      this.sNG = L(0L, this.sNG);
+      this.wtB = T(0L, this.wtB);
+      return;
+    }
+  }
+  
+  public final void bck(String paramString)
+  {
+    this.KJw = paramString;
+  }
+  
+  public final void bcl(String paramString)
+  {
+    Log.i("MicroMsg.SnsTimeLineVendingSide", "setUnreadBottomSeq:[%s, %s]", new Object[] { paramString, Long.valueOf(t.aZs(paramString)) });
+    this.KJx = paramString;
+  }
+  
+  public final void bcm(String paramString)
+  {
+    Log.i("MicroMsg.SnsTimeLineVendingSide", "setUnreadTopSeq:[%s, %s]", new Object[] { paramString, Long.valueOf(t.aZs(paramString)) });
+    this.KJy = paramString;
+  }
+  
+  public final void bcn(String paramString)
+  {
+    synchronized (this.LgT)
+    {
+      this.wtB = paramString;
+      return;
+    }
+  }
+  
+  public final void bco(String paramString)
+  {
+    synchronized (this.LgT)
+    {
+      this.KJz = paramString;
       return;
     }
   }
@@ -126,43 +121,43 @@ public abstract class a
   public void destroyAsynchronous()
   {
     super.destroyAsynchronous();
-    c.hue.aBj();
-    this.EST.clear();
+    com.tencent.mm.kiss.widget.textview.c.kfZ.aIM();
+    this.LgU.clear();
     this.mContext = null;
-    this.ESO = null;
-    this.iFD = null;
-    this.QYM = null;
+    this.LgP = null;
+    this.lvF = null;
+    this.Yzc = null;
   }
   
-  public final void fiE()
+  public final void fWS()
   {
     long l2 = 0L;
     looperCheckForVending();
-    int i = aj.faZ().DNF;
+    int i = aj.fOT().KaH;
     long l1;
-    if (i == ax.DOd)
+    if (i == aw.Kbj)
     {
-      l1 = aj.faZ().DNE;
+      l1 = aj.fOT().KaG;
       Log.printDebugStack("MicroMsg.SnsTimeLineVendingSide", "updateDownLimitSeqWithoutFault", new Object[0]);
-      Log.d("MicroMsg.SnsTimeLineVendingSide", "updateDownLimitSeqWithoutFault %s %s", new Object[] { Integer.valueOf(aj.faE().fbw()), this.sNG });
-      this.sNG = r.Jc(aj.faO().g(l1, aj.faE().fbw(), false));
-      this.sNG = this.sNG;
-      this.EvI = r.Jc(l1);
-      Log.d("MicroMsg.SnsTimeLineVendingSide", "unreadTipFaultItem.end:%s, upLimitSeq:%s, downLimitSeq:%s", new Object[] { Long.valueOf(l1), Long.valueOf(r.aOw(this.EvI)), Long.valueOf(r.aOw(this.sNG)) });
+      Log.d("MicroMsg.SnsTimeLineVendingSide", "updateDownLimitSeqWithoutFault %s %s", new Object[] { Integer.valueOf(aj.fOy().fPp()), this.wtB });
+      this.wtB = t.Qv(aj.fOI().g(l1, aj.fOy().fPp(), false));
+      this.wtB = this.wtB;
+      this.KJz = t.Qv(l1);
+      Log.d("MicroMsg.SnsTimeLineVendingSide", "unreadTipFaultItem.end:%s, upLimitSeq:%s, downLimitSeq:%s", new Object[] { Long.valueOf(l1), Long.valueOf(t.aZs(this.KJz)), Long.valueOf(t.aZs(this.wtB)) });
       return;
     }
     label170:
     int j;
-    if (i == ax.DOf)
+    if (i == aw.Kbl)
     {
       if (this.mCount == 0)
       {
         l1 = 0L;
-        this.ESR = true;
-        synchronized (this.ESS)
+        this.LgS = true;
+        synchronized (this.LgT)
         {
           Log.i("MicroMsg.SnsTimeLineVendingSide", "updateDownLimitSeq by addSizeByNormal");
-          this.sNG = L(l1, this.sNG);
+          this.wtB = T(l1, this.wtB);
           return;
         }
       }
@@ -184,15 +179,15 @@ public abstract class a
       {
         l1 = 0L;
         break label170;
-        if (i != ax.DOe) {
+        if (i != aw.Kbk) {
           break;
         }
         if (this.mCount == 0)
         {
           l1 = l2;
-          synchronized (this.ESS)
+          synchronized (this.LgT)
           {
-            this.EvI = JV(l1);
+            this.KJz = Rp(l1);
             return;
           }
         }
@@ -222,32 +217,32 @@ public abstract class a
     }
   }
   
-  public final String fkd()
+  public final String fYm()
   {
-    return this.EvG;
+    return this.KJx;
   }
   
-  public final String fke()
+  public final String fYn()
   {
-    return this.EvH;
+    return this.KJy;
   }
   
-  public final String fkf()
+  public final String fYo()
   {
-    return this.sNG;
+    return this.wtB;
   }
   
-  public final String fkg()
+  public final String fYp()
   {
-    return this.EvI;
+    return this.KJz;
   }
   
-  public final String fkh()
+  public final String fYq()
   {
-    return this.EvF;
+    return this.KJw;
   }
   
-  public Cursor fki()
+  public Cursor fYr()
   {
     long l = System.currentTimeMillis();
     init();
@@ -256,25 +251,25 @@ public abstract class a
     boolean bool;
     Object localObject2;
     Object localObject1;
-    if (!Util.isNullOrNil(this.EvI))
+    if (!Util.isNullOrNil(this.KJz))
     {
-      localObject4 = aj.faO();
-      String str2 = this.sNG;
-      String str1 = this.EvI;
+      localObject4 = aj.fOI();
+      String str2 = this.wtB;
+      String str1 = this.KJz;
       localObject3 = new int[2];
-      bool = n.aQw(str1);
-      localObject2 = n.feT();
+      bool = com.tencent.mm.plugin.sns.storage.n.bbw(str1);
+      localObject2 = com.tencent.mm.plugin.sns.storage.n.fSO();
       localObject1 = localObject2;
-      if (n.aQw(str2)) {
-        localObject1 = (String)localObject2 + " AND " + ((n)localObject4).aQx(str2);
+      if (com.tencent.mm.plugin.sns.storage.n.bbw(str2)) {
+        localObject1 = (String)localObject2 + " AND " + ((com.tencent.mm.plugin.sns.storage.n)localObject4).bbx(str2);
       }
       localObject2 = localObject1;
       if (bool) {
-        localObject2 = (String)localObject1 + " AND " + ((n)localObject4).aQB(str1);
+        localObject2 = (String)localObject1 + " AND " + ((com.tencent.mm.plugin.sns.storage.n)localObject4).bbB(str1);
       }
       localObject1 = (String)localObject2 + " AND  (snsId != 0 ) ";
-      localObject1 = (String)localObject1 + n.Emv;
-      localObject2 = ((n)localObject4).iFy.rawQuery((String)localObject1, null, 2);
+      localObject1 = (String)localObject1 + com.tencent.mm.plugin.sns.storage.n.KzE;
+      localObject2 = ((com.tencent.mm.plugin.sns.storage.n)localObject4).lvy.rawQuery((String)localObject1, null, 2);
       if (!((Cursor)localObject2).moveToFirst()) {
         break label706;
       }
@@ -299,33 +294,33 @@ public abstract class a
         i = localObject3[1];
         for (;;)
         {
-          Log.i("MicroMsg.SnsTimeLineVendingSide", "create time sql %s to %s getLimitSeq() %s", new Object[] { Integer.valueOf(this.ESP), Integer.valueOf(j), this.sNG });
+          Log.i("MicroMsg.SnsTimeLineVendingSide", "create time sql %s to %s getLimitSeq() %s", new Object[] { Integer.valueOf(this.LgQ), Integer.valueOf(j), this.wtB });
           try
           {
-            com.tencent.mm.plugin.sns.ad.e.a.G(this.ESP, j, this.ELj);
-            this.ESP = j;
-            Log.i("MicroMsg.SnsTimeLineVendingSide", "up:%s, down:%s, upCreateTime:%s, downCreateTime:%s", new Object[] { Long.valueOf(r.aOw(this.EvI)), Long.valueOf(r.aOw(this.sNG)), Integer.valueOf(i), Integer.valueOf(j) });
-            localObject1 = aj.faO().q(this.sNG, this.EvI, j, i);
+            com.tencent.mm.plugin.sns.ad.d.c.H(this.LgQ, j, this.KZk);
+            this.LgQ = j;
+            Log.i("MicroMsg.SnsTimeLineVendingSide", "up:%s, down:%s, upCreateTime:%s, downCreateTime:%s", new Object[] { Long.valueOf(t.aZs(this.KJz)), Long.valueOf(t.aZs(this.wtB)), Integer.valueOf(i), Integer.valueOf(j) });
+            localObject1 = aj.fOI().q(this.wtB, this.KJz, j, i);
             Log.i("MicroMsg.SnsTimeLineVendingSide", "prepareCursorAsynchronous %s", new Object[] { Long.valueOf(Util.milliSecondsToNow(l)) });
             Log.d("MicroMsg.SnsTimeLineVendingSide", "onCursorResetFinish");
-            localObject2 = k.tO(500);
-            if (((k)localObject2).bfG())
+            localObject2 = l.wO(500);
+            if (((l)localObject2).boW())
             {
               i = this.mCount;
               if (i == 0)
               {
-                ((k)localObject2).tR(0).tR(0).tR(0);
-                ((k)localObject2).bfK();
+                ((l)localObject2).wR(0).wR(0).wR(0);
+                ((l)localObject2).bpa();
               }
             }
             else
             {
-              localObject2 = aj.faZ();
-              if (((aw)localObject2).DNn) {
-                ((aw)localObject2).DNy.clear();
+              localObject2 = aj.fOT();
+              if (((av)localObject2).Kap) {
+                ((av)localObject2).KaA.clear();
               }
               return localObject1;
-              j = aj.faO().aQC(this.sNG);
+              j = aj.fOI().bbC(this.wtB);
               i = 0;
             }
           }
@@ -335,14 +330,14 @@ public abstract class a
             {
               Log.e("MicroMsg.SnsTimeLineVendingSide", "checkDeleteExpireAdByPage exp=" + localThrowable.toString());
               continue;
-              localObject3 = r.v((SnsInfo)getItem(1));
-              localObject4 = r.v((SnsInfo)getItem(i - 1));
-              if ((!((String)localObject3).equals(this.ESV)) || (!((String)localObject4).equals(this.ESW)))
+              localObject3 = t.w((SnsInfo)getItem(1));
+              localObject4 = t.w((SnsInfo)getItem(i - 1));
+              if ((!((String)localObject3).equals(this.LgW)) || (!((String)localObject4).equals(this.LgX)))
               {
-                this.ESV = ((String)localObject3);
-                this.ESW = ((String)localObject4);
-                ((k)localObject2).tR(i).PH((String)localObject3).PH((String)localObject4);
-                ((k)localObject2).bfK();
+                this.LgW = ((String)localObject3);
+                this.LgX = ((String)localObject4);
+                ((l)localObject2).wR(i).Xf((String)localObject3).Xf((String)localObject4);
+                ((l)localObject2).bpa();
               }
             }
           }
@@ -353,21 +348,21 @@ public abstract class a
   
   protected final void init()
   {
-    if (!this.ESQ)
+    if (!this.LgR)
     {
-      amZ();
-      this.ESQ = true;
+      ata();
+      this.LgR = true;
     }
   }
   
-  public final void vD(boolean paramBoolean)
+  public final void zh(boolean paramBoolean)
   {
-    this.ESR = paramBoolean;
+    this.LgS = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.a.b.a
  * JD-Core Version:    0.7.0.1
  */

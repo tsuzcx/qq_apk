@@ -1,7 +1,7 @@
 package com.tencent.mm.storage.emotion;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.storage.MStorage;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
@@ -17,25 +17,25 @@ import org.xwalk.core.Log;
 public final class w
   extends MStorage
 {
-  public final LinkedList<v> zns;
+  public final LinkedList<v> ESJ;
   
   public w()
   {
     AppMethodBeat.i(105154);
-    this.zns = new LinkedList();
-    gFs();
+    this.ESJ = new LinkedList();
+    hBL();
     AppMethodBeat.o(105154);
   }
   
-  private void gFs()
+  private void hBL()
   {
     AppMethodBeat.i(105155);
-    Object localObject1 = (String)g.aAh().azQ().get(ar.a.OgR, "");
+    Object localObject1 = (String)h.aHG().aHp().get(ar.a.Vvh, "");
     try
     {
-      synchronized (this.zns)
+      synchronized (this.ESJ)
       {
-        this.zns.clear();
+        this.ESJ.clear();
         localObject1 = new JSONArray((String)localObject1);
         int i = 0;
         while (i < ((JSONArray)localObject1).length())
@@ -43,9 +43,9 @@ public final class w
           v localv = new v();
           JSONObject localJSONObject = ((JSONArray)localObject1).getJSONObject(i);
           localv.key = localJSONObject.optString("key", "");
-          localv.OsQ = localJSONObject.optInt("use_count", 0);
-          localv.hwQ = localJSONObject.optLong("last_time", 0L);
-          this.zns.add(localv);
+          localv.VIP = localJSONObject.optInt("use_count", 0);
+          localv.kje = localJSONObject.optLong("last_time", 0L);
+          this.ESJ.add(localv);
           i += 1;
         }
         AppMethodBeat.o(105155);
@@ -56,30 +56,30 @@ public final class w
     catch (JSONException localJSONException)
     {
       Log.w("SmileyUsageInfoStorage", "data error clear all");
-      byC();
+      bJQ();
       AppMethodBeat.o(105155);
     }
   }
   
-  public final void byC()
+  public final void bJQ()
   {
     AppMethodBeat.i(105157);
-    g.aAh().azQ().set(ar.a.OgR, null);
-    this.zns.clear();
+    h.aHG().aHp().set(ar.a.Vvh, null);
+    this.ESJ.clear();
     AppMethodBeat.o(105157);
   }
   
-  public final List<v> cFQ()
+  public final List<v> cUx()
   {
     AppMethodBeat.i(105156);
     ArrayList localArrayList = new ArrayList();
-    synchronized (this.zns)
+    synchronized (this.ESJ)
     {
-      Iterator localIterator = this.zns.iterator();
+      Iterator localIterator = this.ESJ.iterator();
       while (localIterator.hasNext())
       {
         v localv = (v)localIterator.next();
-        if (com.tencent.mm.ce.e.gxR().containsKey(localv.key)) {
+        if (com.tencent.mm.cl.f.htQ().containsKey(localv.key)) {
           localArrayList.add(localv);
         }
       }
@@ -90,7 +90,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.w
  * JD-Core Version:    0.7.0.1
  */

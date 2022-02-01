@@ -8,12 +8,12 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.z;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
 import com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesUI;
 import com.tencent.mm.plugin.sns.ui.VideoFullScreenActivity;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,83 +21,63 @@ import org.json.JSONObject;
 
 public class m
 {
-  int Dzo;
-  protected z EcX;
-  private long EcY;
-  boolean EcZ;
-  protected ViewGroup Eda;
+  private long Hgs;
+  private int JGy;
+  public aa KqB;
+  boolean KqC;
+  protected ViewGroup KqD;
   protected int backgroundColor;
   public View contentView;
   public Context context;
-  private long dUy;
-  protected int mEX;
-  protected int mEY;
+  private long fOa;
+  public int pEj;
+  public int pEk;
   
-  public m(Context paramContext, z paramz, ViewGroup paramViewGroup)
+  public m(Context paramContext, aa paramaa, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(96466);
-    this.Dzo = 0;
-    this.EcY = 0L;
-    this.dUy = 0L;
-    this.EcZ = false;
+    this.JGy = 0;
+    this.Hgs = 0L;
+    this.fOa = 0L;
+    this.KqC = false;
     this.contentView = null;
     this.context = paramContext;
-    this.EcX = paramz;
-    this.Eda = paramViewGroup;
-    paramz = ap.ha(paramContext);
-    this.mEX = paramz[0];
-    this.mEY = paramz[1];
-    if (ao.aQ(paramContext)) {
-      this.mEY -= ao.aP(paramContext);
+    this.KqB = paramaa;
+    this.KqD = paramViewGroup;
+    paramaa = ao.ib(paramContext);
+    this.pEj = paramaa[0];
+    this.pEk = paramaa[1];
+    if (ar.aN(paramContext)) {
+      this.pEk -= ar.aM(paramContext);
     }
     AppMethodBeat.o(96466);
   }
   
-  public boolean G(JSONArray paramJSONArray)
+  public boolean H(JSONArray paramJSONArray)
   {
     return false;
   }
   
-  public void aQ(Map<String, Object> paramMap) {}
+  public void aK(Map<String, Object> paramMap) {}
   
-  public void b(z paramz)
-  {
-    AppMethodBeat.i(96467);
-    z localz = this.EcX;
-    if (localz == paramz)
-    {
-      AppMethodBeat.o(96467);
-      return;
-    }
-    if ((localz != null) && (localz.equals(paramz)))
-    {
-      AppMethodBeat.o(96467);
-      return;
-    }
-    this.EcX = paramz;
-    eWT();
-    fdp();
-    AppMethodBeat.o(96467);
-  }
-  
-  public boolean bp(JSONObject paramJSONObject)
+  public boolean by(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(96475);
-    if (this.Dzo == 0)
+    if (this.JGy == 0)
     {
       AppMethodBeat.o(96475);
       return false;
     }
-    if (this.EcX.DZr)
+    if (this.KqB.KmK)
     {
       AppMethodBeat.o(96475);
       return false;
     }
     try
     {
-      paramJSONObject.put("cid", this.EcX.DZi);
-      paramJSONObject.put("exposureCount", this.Dzo);
-      paramJSONObject.put("stayTime", fdo());
+      paramJSONObject.put("cid", this.KqB.KmB);
+      paramJSONObject.put("exposureCount", this.JGy);
+      paramJSONObject.put("stayTime", fRk());
       AppMethodBeat.o(96475);
       return true;
     }
@@ -109,67 +89,82 @@ public class m
     return false;
   }
   
-  protected void eWT()
+  public void c(aa paramaa)
+  {
+    AppMethodBeat.i(96467);
+    aa localaa = this.KqB;
+    if (localaa == paramaa)
+    {
+      AppMethodBeat.o(96467);
+      return;
+    }
+    if ((localaa != null) && (localaa.equals(paramaa)))
+    {
+      AppMethodBeat.o(96467);
+      return;
+    }
+    this.KqB = paramaa;
+    fKe();
+    fRm();
+    AppMethodBeat.o(96467);
+  }
+  
+  protected void fKe()
   {
     AppMethodBeat.i(96469);
     Log.w("MicroMsg.Sns.AdLandingPageBaseComponent", "for component reuse, subclass must implement this method");
     AppMethodBeat.o(96469);
   }
   
-  protected void eWX() {}
+  protected void fKi() {}
   
-  protected View eWY()
+  protected View fKj()
   {
     return null;
   }
   
-  public void eWZ()
+  public void fKk()
   {
     AppMethodBeat.i(96470);
-    if (this.EcZ)
+    if (this.KqC)
     {
       AppMethodBeat.o(96470);
       return;
     }
-    this.EcZ = true;
-    this.EcY = System.currentTimeMillis();
-    this.Dzo += 1;
+    this.KqC = true;
+    this.Hgs = System.currentTimeMillis();
+    this.JGy += 1;
     AppMethodBeat.o(96470);
   }
   
-  public void eXa()
+  public void fKl()
   {
     AppMethodBeat.i(96471);
-    if (!this.EcZ)
+    if (!this.KqC)
     {
       AppMethodBeat.o(96471);
       return;
     }
-    this.EcZ = false;
-    if (this.EcY > 0L) {
-      this.dUy += System.currentTimeMillis() - this.EcY;
+    this.KqC = false;
+    if (this.Hgs > 0L) {
+      this.fOa += System.currentTimeMillis() - this.Hgs;
     }
-    this.EcY = 0L;
+    this.Hgs = 0L;
     AppMethodBeat.o(96471);
   }
   
-  public void eXb() {}
+  public void fKm() {}
   
-  public void eXd()
+  public void fKo()
   {
     AppMethodBeat.i(96474);
-    eXa();
+    fKl();
     AppMethodBeat.o(96474);
   }
   
-  public void eXe() {}
+  public void fKp() {}
   
-  public final z fdk()
-  {
-    return this.EcX;
-  }
-  
-  public final int fdl()
+  public final int fRi()
   {
     AppMethodBeat.i(96472);
     View localView = getView();
@@ -179,7 +174,7 @@ public class m
     int j = localView.getHeight() + k;
     Log.d("MicroMsg.Sns.AdLandingPageBaseComponent", "comp %s , top %d,bottom %d ", new Object[] { this, Integer.valueOf(k), Integer.valueOf(j) });
     int i;
-    if ((k >= 0) && (j <= this.mEY)) {
+    if ((k >= 0) && (j <= this.pEk)) {
       i = localView.getHeight();
     }
     for (;;)
@@ -189,15 +184,15 @@ public class m
       if ((k < 0) && (j > 0))
       {
         i = j;
-        if (j <= this.mEY) {}
+        if (j <= this.pEk) {}
       }
-      else if ((k < 0) && (j > this.mEY))
+      else if ((k < 0) && (j > this.pEk))
       {
-        i = this.mEY;
+        i = this.pEk;
       }
-      else if ((k < this.mEY) && (j > this.mEY))
+      else if ((k < this.pEk) && (j > this.pEk))
       {
-        i = this.mEY - k;
+        i = this.pEk - k;
       }
       else
       {
@@ -206,10 +201,10 @@ public class m
     }
   }
   
-  public boolean fdm()
+  public boolean fRj()
   {
     AppMethodBeat.i(96473);
-    if (fdl() >= Math.min(getView().getHeight() >>> 1, this.mEY >>> 1))
+    if (fRi() >= Math.min(getView().getHeight() >>> 1, this.pEk >>> 1))
     {
       AppMethodBeat.o(96473);
       return true;
@@ -218,17 +213,17 @@ public class m
     return false;
   }
   
-  public final String fdn()
+  public long fRk()
   {
-    return this.EcX.DZi;
+    return this.fOa;
   }
   
-  public long fdo()
+  public final int fRl()
   {
-    return this.dUy;
+    return this.JGy;
   }
   
-  public final void fdp()
+  public final void fRm()
   {
     AppMethodBeat.i(96476);
     Object localObject1;
@@ -238,16 +233,16 @@ public class m
       AppMethodBeat.o(96476);
       throw ((Throwable)localObject1);
     }
-    if (this.EcX != null)
+    if (this.KqB != null)
     {
       localObject1 = this.contentView.getLayoutParams();
       if (localObject1 != null)
       {
-        if (this.EcX.DZk != 2.147484E+009F) {
-          ((ViewGroup.LayoutParams)localObject1).width = ((int)this.EcX.DZk);
+        if (this.KqB.KmD != 2.147484E+009F) {
+          ((ViewGroup.LayoutParams)localObject1).width = ((int)this.KqB.KmD);
         }
-        if (this.EcX.DZl != 2.147484E+009F) {
-          ((ViewGroup.LayoutParams)localObject1).height = ((int)this.EcX.DZl);
+        if (this.KqB.KmE != 2.147484E+009F) {
+          ((ViewGroup.LayoutParams)localObject1).height = ((int)this.KqB.KmE);
         }
         Object localObject2;
         int i;
@@ -274,53 +269,58 @@ public class m
           }
         }
       }
-      Log.i("MicroMsg.Sns.AdLandingPageBaseComponent", this + " has no layoutParams in container " + this.Eda);
+      Log.i("MicroMsg.Sns.AdLandingPageBaseComponent", this + " has no layoutParams in container " + this.KqD);
     }
     AppMethodBeat.o(96476);
   }
   
-  public void fdq() {}
+  public void fRn() {}
   
-  protected final <T> T fdr()
+  protected final <T> T fRo()
   {
     try
     {
-      z localz = this.EcX;
-      return localz;
+      aa localaa = this.KqB;
+      return localaa;
     }
     catch (Exception localException) {}
     return null;
   }
   
-  public final ah fds()
+  public final ai fRp()
   {
     AppMethodBeat.i(96477);
     if ((this.context instanceof SnsAdNativeLandingPagesUI))
     {
-      localah = ((SnsAdNativeLandingPagesUI)this.context).fds();
+      localai = ((SnsAdNativeLandingPagesUI)this.context).fRp();
       AppMethodBeat.o(96477);
-      return localah;
+      return localai;
     }
     if ((this.context instanceof VideoFullScreenActivity))
     {
-      localah = VideoFullScreenActivity.fcZ();
+      localai = VideoFullScreenActivity.fQU();
       AppMethodBeat.o(96477);
-      return localah;
+      return localai;
     }
-    ah localah = new ah();
+    ai localai = new ai();
     AppMethodBeat.o(96477);
-    return localah;
+    return localai;
+  }
+  
+  public View getContentView()
+  {
+    return this.contentView;
   }
   
   public final int getGravity()
   {
     int i = 0;
-    switch (this.EcX.DZo)
+    switch (this.KqB.KmH)
     {
     }
     for (;;)
     {
-      switch (this.EcX.DZp)
+      switch (this.KqB.KmI)
       {
       default: 
         return i;
@@ -354,27 +354,27 @@ public class m
     {
       int i = getLayout();
       if (i != 2147483647) {
-        this.contentView = ((LayoutInflater)this.context.getSystemService("layout_inflater")).inflate(i, this.Eda, false);
+        this.contentView = ((LayoutInflater)this.context.getSystemService("layout_inflater")).inflate(i, this.KqD, false);
       }
       while (this.contentView == null)
       {
         localObject = new IllegalStateException("implement getLayout() or customLayout() to get a valid root view");
         AppMethodBeat.o(96468);
         throw ((Throwable)localObject);
-        this.contentView = eWY();
+        this.contentView = fKj();
         if ((this.contentView != null) && (this.contentView.getLayoutParams() == null))
         {
-          this.Eda.addView(this.contentView);
+          this.KqD.addView(this.contentView);
           localObject = this.contentView.getLayoutParams();
-          this.Eda.removeView(this.contentView);
+          this.KqD.removeView(this.contentView);
           this.contentView.setLayoutParams((ViewGroup.LayoutParams)localObject);
         }
       }
     }
-    eXe();
-    eWT();
-    eWX();
-    fdp();
+    fKp();
+    fKe();
+    fKi();
+    fRm();
     Object localObject = this.contentView;
     AppMethodBeat.o(96468);
     return localObject;
@@ -387,7 +387,7 @@ public class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m
  * JD-Core Version:    0.7.0.1
  */

@@ -11,18 +11,19 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.zz;
+import com.tencent.mm.an.q;
+import com.tencent.mm.f.a.abg;
 import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet.pay.ui.WalletPayUI;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.FavorPayInfo;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
-import com.tencent.mm.plugin.wallet_core.model.an;
-import com.tencent.mm.plugin.wallet_core.utils.f;
+import com.tencent.mm.plugin.wallet_core.model.ao;
+import com.tencent.mm.plugin.wallet_core.utils.j;
 import com.tencent.mm.plugin.wallet_payu.pay.a.c;
 import com.tencent.mm.plugin.wallet_payu.pay.a.d;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -36,17 +37,50 @@ import java.util.List;
 public class WalletPayUPayUI
   extends WalletPayUI
 {
-  private String ItZ = null;
+  private String PmJ = null;
   
-  public final void aI(Bundle paramBundle)
+  public final void BS(boolean paramBoolean)
+  {
+    AppMethodBeat.i(72134);
+    if ((this.mPayInfo.fOY == 32) || (this.mPayInfo.fOY == 31))
+    {
+      if (this.mPayInfo.fOY == 32) {
+        Log.d("MicroMsg.WalletPayUPayUI", "hy: transfer ftf");
+      }
+      for (int i = 1;; i = 0)
+      {
+        doSceneForceProgress(new com.tencent.mm.plugin.wallet_payu.remittance.a.a(this.mPayInfo.fwv, this.njf, this.mPayInfo.lfu.getDouble("total_fee"), this.mPayInfo.lfu.getString("fee_type"), i, this.mPayInfo.lfu.getString("extinfo_key_1"), this.OmO.field_bindSerial, this.mPayInfo.lfu.getString("extinfo_key_4")));
+        AppMethodBeat.o(72134);
+        return;
+      }
+    }
+    if (this.mPayInfo.fOY == 11)
+    {
+      String str1 = this.njf;
+      String str2 = this.PmJ;
+      String str3 = this.mPayInfo.fwv;
+      double d = this.mPayInfo.lfu.getDouble("total_fee");
+      String str4 = this.mPayInfo.lfu.getString("fee_type");
+      String str5 = this.OmO.field_bindSerial;
+      String str6 = this.OmO.field_bankcardType;
+      s.gGL();
+      doSceneForceProgress(new com.tencent.mm.plugin.wallet_payu.balance.a.b(str1, str2, str3, d, str4, str5, str6, s.gGM().OnP.field_bindSerial));
+      AppMethodBeat.o(72134);
+      return;
+    }
+    doSceneProgress(new com.tencent.mm.plugin.wallet_payu.pay.a.a(this.mPayInfo.fwv, this.mPayInfo.lfu.getDouble("total_fee"), this.mPayInfo.lfu.getString("fee_type"), this.OmO.field_bankcardType, this.OmO.field_bindSerial, this.PmJ, this.njf));
+    AppMethodBeat.o(72134);
+  }
+  
+  public final void aE(Bundle paramBundle)
   {
     boolean bool = true;
     AppMethodBeat.i(72133);
-    this.HGU = true;
-    if (this.CwO != null) {
-      paramBundle.putInt("key_support_bankcard", this.CwO.HQg);
+    this.OyO = true;
+    if (this.Ivh != null) {
+      paramBundle.putInt("key_support_bankcard", this.Ivh.OIp);
     }
-    if (!fOD()) {}
+    if (!gHj()) {}
     for (;;)
     {
       paramBundle.putBoolean("key_is_oversea", bool);
@@ -57,16 +91,16 @@ public class WalletPayUPayUI
     }
   }
   
-  public final void fOs()
+  public final void gGY()
   {
     AppMethodBeat.i(72132);
-    if (!bqg())
+    if (!bAu())
     {
       AppMethodBeat.o(72132);
       return;
     }
     Log.d("MicroMsg.WalletPayUPayUI", "pay with old bankcard!");
-    this.HHm = b.a(this, this.CwO, this.HGf, this.Hvb, new b.b()new View.OnClickListener
+    this.Ozg = b.a(this, this.Ivh, this.OxY, this.OmO, new b.b()new View.OnClickListener
     {
       public final void a(String paramAnonymousString1, String paramAnonymousString2, FavorPayInfo paramAnonymousFavorPayInfo)
       {
@@ -74,8 +108,8 @@ public class WalletPayUPayUI
         WalletPayUPayUI.this.hideVKB();
         WalletPayUPayUI.a(WalletPayUPayUI.this, paramAnonymousString1);
         WalletPayUPayUI.b(WalletPayUPayUI.this, paramAnonymousString2);
-        WalletPayUPayUI.this.xY(false);
-        f.fUi();
+        WalletPayUPayUI.this.BS(false);
+        j.gMO();
         AppMethodBeat.o(72124);
       }
     }, new View.OnClickListener()new DialogInterface.OnCancelListener
@@ -84,11 +118,11 @@ public class WalletPayUPayUI
       {
         AppMethodBeat.i(72125);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_payu/pay/ui/WalletPayUPayUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_payu/pay/ui/WalletPayUPayUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         WalletPayUPayUI.a(WalletPayUPayUI.this, (FavorPayInfo)paramAnonymousView.getTag());
         if (WalletPayUPayUI.a(WalletPayUPayUI.this) != null) {
-          WalletPayUPayUI.b(WalletPayUPayUI.this).HXM = "";
+          WalletPayUPayUI.b(WalletPayUPayUI.this).OPM = "";
         }
         WalletPayUPayUI.c(WalletPayUPayUI.this, "");
         WalletPayUPayUI.c(WalletPayUPayUI.this).dismiss();
@@ -109,15 +143,15 @@ public class WalletPayUPayUI
         }
         AppMethodBeat.o(72126);
       }
-    }, "CREDITCARD_PAYU".equals(this.Hvb.field_bankcardType));
+    }, "CREDITCARD_PAYU".equals(this.OmO.field_bankcardType));
     AppMethodBeat.o(72132);
   }
   
-  public final void fOy()
+  public final void gHe()
   {
     AppMethodBeat.i(72131);
-    doSceneProgress(new com.tencent.mm.plugin.wallet_payu.pay.a.b(getPayInfo().dDL), getPayInfo().Kxs);
-    doSceneProgress(new com.tencent.mm.plugin.wallet_core.c.b.a(getPayInfo().dDL), getPayInfo().Kxs);
+    doSceneProgress(new com.tencent.mm.plugin.wallet_payu.pay.a.b(getPayInfo().fwv), getPayInfo().Rzg);
+    doSceneProgress(new com.tencent.mm.plugin.wallet_core.c.b.a(getPayInfo().fwv), getPayInfo().Rzg);
     AppMethodBeat.o(72131);
   }
   
@@ -143,48 +177,48 @@ public class WalletPayUPayUI
     {
       if ((paramq instanceof com.tencent.mm.plugin.wallet_payu.pay.a.b))
       {
-        this.CwO = ((com.tencent.mm.plugin.wallet_payu.pay.a.b)paramq).CwO;
-        if (this.CwO != null)
+        this.Ivh = ((com.tencent.mm.plugin.wallet_payu.pay.a.b)paramq).Ivh;
+        if (this.Ivh != null)
         {
-          paramInt1 = this.CwO.HZd.size();
+          paramInt1 = this.Ivh.ORd.size();
           this.mCount = paramInt1;
           paramq = new StringBuilder("get mOrders! bankcardTag : ");
-          if (this.CwO == null) {
-            break label208;
+          if (this.Ivh == null) {
+            break label210;
           }
         }
-        label208:
-        for (paramString = Integer.valueOf(this.CwO.HQg);; paramString = "")
+        label210:
+        for (paramString = Integer.valueOf(this.Ivh.OIp);; paramString = "")
         {
           Log.d("MicroMsg.WalletPayUPayUI", paramString);
-          bqg();
-          if ((this.CwO == null) || (this.CwO.HZd == null)) {
+          bAu();
+          if ((this.Ivh == null) || (this.Ivh.ORd == null)) {
             break label299;
           }
           paramString = new LinkedList();
-          paramq = this.CwO.HZd.iterator();
+          paramq = this.Ivh.ORd.iterator();
           while (paramq.hasNext())
           {
             Orders.Commodity localCommodity = (Orders.Commodity)paramq.next();
-            if (Util.isNullOrNil(localCommodity.dDM)) {
-              localCommodity.dDM = this.mPayInfo.dDL;
+            if (Util.isNullOrNil(localCommodity.fww)) {
+              localCommodity.fww = this.mPayInfo.fwv;
             }
-            paramString.add(localCommodity.dDM);
+            paramString.add(localCommodity.fww);
           }
           paramInt1 = 0;
           break;
         }
         if (paramString.size() > 0)
         {
-          paramq = new zz();
-          paramq.egG.egI = paramString;
+          paramq = new abg();
+          paramq.gaW.gaY = paramString;
           EventCenter.instance.publish(paramq);
         }
         paramString = new Bundle();
-        paramString.putDouble("total_fee", this.CwO.dDO);
+        paramString.putDouble("total_fee", this.Ivh.fwy);
         paramString.putString("fee_type", "ZAR");
-        if (this.mPayInfo.iqp == null) {
-          this.mPayInfo.iqp = paramString;
+        if (this.mPayInfo.lfu == null) {
+          this.mPayInfo.lfu = paramString;
         }
       }
       label299:
@@ -197,25 +231,25 @@ public class WalletPayUPayUI
             updateView();
             AppMethodBeat.o(72135);
             return true;
-            this.mPayInfo.iqp.putAll(paramString);
+            this.mPayInfo.lfu.putAll(paramString);
           }
           if (!(paramq instanceof com.tencent.mm.plugin.wallet_core.c.b.a)) {
             break;
           }
-          s.fOg();
-          this.Hva = s.fOh().yk(fOL());
-          s.fOg();
-          this.Hvb = s.fOh().a(null, null, fOL(), false);
-          this.Cwg.setClickable(true);
-        } while ((this.CwO == null) || (this.Hva == null) || (this.mPayInfo == null));
-        f.a(this.mPayInfo, this.CwO);
-        paramString = com.tencent.mm.plugin.report.service.h.CyF;
-        paramInt2 = this.mPayInfo.dVv;
-        s.fOg();
-        if (s.fOh().fRk()) {}
+          s.gGL();
+          this.OmN = s.gGM().Cf(gGW());
+          s.gGL();
+          this.OmO = s.gGM().a(null, null, gGW(), false);
+          this.Iub.setClickable(true);
+        } while ((this.Ivh == null) || (this.OmN == null) || (this.mPayInfo == null));
+        j.a(this.mPayInfo, this.Ivh);
+        paramString = com.tencent.mm.plugin.report.service.h.IzE;
+        paramInt2 = this.mPayInfo.fOY;
+        s.gGL();
+        if (s.gGM().gJQ()) {}
         for (paramInt1 = 2;; paramInt1 = 1)
         {
-          paramString.a(10690, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(paramInt1), Integer.valueOf((int)(this.CwO.dDO * 100.0D)), this.CwO.AOl });
+          paramString.a(10690, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(paramInt1), Integer.valueOf((int)(this.Ivh.fwy * 100.0D)), this.Ivh.GHz });
           break;
         }
         if ((paramq instanceof com.tencent.mm.plugin.wallet_payu.pay.a.a))
@@ -223,25 +257,25 @@ public class WalletPayUPayUI
           paramString = (com.tencent.mm.plugin.wallet_payu.pay.a.a)paramq;
           paramq = getInput();
           paramq.putParcelable("key_pay_info", this.mPayInfo);
-          paramq.putParcelable("key_bankcard", this.Hvb);
-          paramq.putString("key_bank_type", this.Hvb.field_bankcardType);
-          if (!Util.isNullOrNil(this.krw)) {
-            paramq.putString("key_pwd1", this.krw);
+          paramq.putParcelable("key_bankcard", this.OmO);
+          paramq.putString("key_bank_type", this.OmO.field_bankcardType);
+          if (!Util.isNullOrNil(this.njf)) {
+            paramq.putString("key_pwd1", this.njf);
           }
           paramq.putString("kreq_token", paramString.getToken());
-          paramq.putParcelable("key_authen", fOC());
+          paramq.putParcelable("key_authen", gHi());
           paramq.putBoolean("key_need_verify_sms", false);
-          paramq.putString("key_mobile", this.Hvb.field_mobile);
+          paramq.putString("key_mobile", this.OmO.field_mobile);
           if (paramString.isSuccess()) {
-            paramq.putParcelable("key_orders", c.a(this.CwO, paramString.ItV, paramString.ItW, paramString.qwL, paramString.dQl));
+            paramq.putParcelable("key_orders", c.a(this.Ivh, paramString.PmF, paramString.PmG, paramString.dXr, paramString.fJC));
           }
-          getInput().putBoolean("key_should_redirect", paramString.ItT);
-          getInput().putString("key_gateway_code", paramString.Isy);
-          getInput().putString("key_gateway_reference", paramString.Isx);
-          getInput().putBoolean("key_should_force_adjust", paramString.ItU);
-          getInput().putString("key_force_adjust_code", paramString.IsA);
+          getInput().putBoolean("key_should_redirect", paramString.PmD);
+          getInput().putString("key_gateway_code", paramString.Pli);
+          getInput().putString("key_gateway_reference", paramString.Plh);
+          getInput().putBoolean("key_should_force_adjust", paramString.PmE);
+          getInput().putString("key_force_adjust_code", paramString.Plk);
           paramq.putInt("key_pay_flag", 3);
-          aI(paramq);
+          aE(paramq);
           AppMethodBeat.o(72135);
           return true;
         }
@@ -249,18 +283,18 @@ public class WalletPayUPayUI
       paramString = (com.tencent.mm.plugin.wallet_payu.remittance.a.a)paramq;
       paramq = getInput();
       paramq.putParcelable("key_pay_info", this.mPayInfo);
-      paramq.putParcelable("key_bankcard", this.Hvb);
-      paramq.putString("key_bank_type", this.Hvb.field_bankcardType);
-      if (!Util.isNullOrNil(this.krw)) {
-        paramq.putString("key_pwd1", this.krw);
+      paramq.putParcelable("key_bankcard", this.OmO);
+      paramq.putString("key_bank_type", this.OmO.field_bankcardType);
+      if (!Util.isNullOrNil(this.njf)) {
+        paramq.putString("key_pwd1", this.njf);
       }
       paramq.putString("kreq_token", paramString.getToken());
-      paramq.putParcelable("key_authen", fOC());
+      paramq.putParcelable("key_authen", gHi());
       paramq.putBoolean("key_need_verify_sms", false);
-      paramq.putString("key_mobile", this.Hvb.field_mobile);
-      paramq.putParcelable("key_orders", this.CwO);
+      paramq.putString("key_mobile", this.OmO.field_mobile);
+      paramq.putParcelable("key_orders", this.Ivh);
       paramq.putInt("key_pay_flag", 3);
-      aI(paramq);
+      aE(paramq);
       AppMethodBeat.o(72135);
       return true;
     }
@@ -277,30 +311,30 @@ public class WalletPayUPayUI
     case 403: 
     case 408: 
       paramq = (com.tencent.mm.plugin.wallet_payu.pay.a.a)paramq;
-      this.HGZ = getInput();
-      this.HGZ.putParcelable("key_pay_info", this.mPayInfo);
-      this.HGZ.putParcelable("key_bankcard", this.Hvb);
-      if (!Util.isNullOrNil(this.krw)) {
-        this.HGZ.putString("key_pwd1", this.krw);
+      this.OyT = getInput();
+      this.OyT.putParcelable("key_pay_info", this.mPayInfo);
+      this.OyT.putParcelable("key_bankcard", this.OmO);
+      if (!Util.isNullOrNil(this.njf)) {
+        this.OyT.putString("key_pwd1", this.njf);
       }
-      this.HGZ.putString("kreq_token", paramq.getToken());
-      this.HGZ.putString("key_mobile", this.Hvb.field_mobile);
-      this.HGZ.putInt("key_err_code", paramInt2);
-      this.HGZ.putParcelable("key_orders", this.CwO);
+      this.OyT.putString("kreq_token", paramq.getToken());
+      this.OyT.putString("key_mobile", this.OmO.field_mobile);
+      this.OyT.putInt("key_err_code", paramInt2);
+      this.OyT.putParcelable("key_orders", this.Ivh);
       if (Util.isNullOrNil(paramString)) {
-        paramString = getString(2131768158);
+        paramString = getString(a.i.wallet_pay_reset_info_tips);
       }
       break;
     }
     for (;;)
     {
-      com.tencent.mm.ui.base.h.c(this, paramString, "", getString(2131768157), getString(2131755761), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      com.tencent.mm.ui.base.h.c(this, paramString, "", getString(a.i.wallet_pay_reset_info), getString(a.i.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(72127);
           WalletPayUPayUI.h(WalletPayUPayUI.this).putInt("key_pay_flag", 3);
-          WalletPayUPayUI.this.aI(WalletPayUPayUI.i(WalletPayUPayUI.this));
+          WalletPayUPayUI.this.aE(WalletPayUPayUI.i(WalletPayUPayUI.this));
           AppMethodBeat.o(72127);
         }
       }, new DialogInterface.OnClickListener()
@@ -316,18 +350,18 @@ public class WalletPayUPayUI
       });
       AppMethodBeat.o(72135);
       return true;
-      if ((this.Hvb == null) || (this.CwO == null)) {
+      if ((this.OmO == null) || (this.Ivh == null)) {
         break;
       }
-      this.Hvb.HVB = this.CwO.dDL;
-      if ((this.Hva != null) && (this.Hva.size() > 1)) {
-        d(true, 4, paramString);
+      this.OmO.ONC = this.Ivh.fwv;
+      if ((this.OmN != null) && (this.OmN.size() > 1)) {
+        e(true, 4, paramString);
       }
       for (;;)
       {
         AppMethodBeat.o(72135);
         return true;
-        c(true, 4, paramString);
+        d(true, 4, paramString);
       }
     }
   }
@@ -336,39 +370,6 @@ public class WalletPayUPayUI
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
-  }
-  
-  public final void xY(boolean paramBoolean)
-  {
-    AppMethodBeat.i(72134);
-    if ((this.mPayInfo.dVv == 32) || (this.mPayInfo.dVv == 31))
-    {
-      if (this.mPayInfo.dVv == 32) {
-        Log.d("MicroMsg.WalletPayUPayUI", "hy: transfer ftf");
-      }
-      for (int i = 1;; i = 0)
-      {
-        doSceneForceProgress(new com.tencent.mm.plugin.wallet_payu.remittance.a.a(this.mPayInfo.dDL, this.krw, this.mPayInfo.iqp.getDouble("total_fee"), this.mPayInfo.iqp.getString("fee_type"), i, this.mPayInfo.iqp.getString("extinfo_key_1"), this.Hvb.field_bindSerial, this.mPayInfo.iqp.getString("extinfo_key_4")));
-        AppMethodBeat.o(72134);
-        return;
-      }
-    }
-    if (this.mPayInfo.dVv == 11)
-    {
-      String str1 = this.krw;
-      String str2 = this.ItZ;
-      String str3 = this.mPayInfo.dDL;
-      double d = this.mPayInfo.iqp.getDouble("total_fee");
-      String str4 = this.mPayInfo.iqp.getString("fee_type");
-      String str5 = this.Hvb.field_bindSerial;
-      String str6 = this.Hvb.field_bankcardType;
-      s.fOg();
-      doSceneForceProgress(new com.tencent.mm.plugin.wallet_payu.balance.a.b(str1, str2, str3, d, str4, str5, str6, s.fOh().Hwc.field_bindSerial));
-      AppMethodBeat.o(72134);
-      return;
-    }
-    doSceneProgress(new com.tencent.mm.plugin.wallet_payu.pay.a.a(this.mPayInfo.dDL, this.mPayInfo.iqp.getDouble("total_fee"), this.mPayInfo.iqp.getString("fee_type"), this.Hvb.field_bankcardType, this.Hvb.field_bindSerial, this.ItZ, this.krw));
-    AppMethodBeat.o(72134);
   }
 }
 

@@ -6,14 +6,19 @@ import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
+import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.remittance.bankcard.model.EnterTimeParcel;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.h;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.MMPreference;
@@ -26,51 +31,51 @@ import java.util.List;
 public class BankRemitSelectArriveTimeUI
   extends MMPreference
 {
-  private List<EnterTimeParcel> Clr;
-  private List<Preference> Cls;
-  private int Clt;
+  private List<EnterTimeParcel> Iik;
+  private List<Preference> Iil;
+  private int Iim;
   private f screen;
   
   public int getResourceId()
   {
-    return 2131493207;
+    return a.g.bank_remit_select_arrive_time_ui;
   }
   
   public void initView()
   {
     AppMethodBeat.i(67574);
     this.screen = getPreferenceScreen();
-    if ((this.Clr != null) && (this.Clr.size() > 0))
+    if ((this.Iik != null) && (this.Iik.size() > 0))
     {
-      this.Cls = new ArrayList();
+      this.Iil = new ArrayList();
       int i = 0;
-      if (i < this.Clr.size())
+      if (i < this.Iik.size())
       {
-        EnterTimeParcel localEnterTimeParcel = (EnterTimeParcel)this.Clr.get(i);
-        Log.d("MicroMsg.BankRemitSelectArriveTimeUI", "enter scene: %d", new Object[] { Integer.valueOf(localEnterTimeParcel.Cjg) });
+        EnterTimeParcel localEnterTimeParcel = (EnterTimeParcel)this.Iik.get(i);
+        Log.d("MicroMsg.BankRemitSelectArriveTimeUI", "enter scene: %d", new Object[] { Integer.valueOf(localEnterTimeParcel.IfZ) });
         Preference localPreference = new Preference(this);
-        localPreference.setLayoutResource(2131493206);
-        localPreference.OZw = false;
-        localPreference.setKey(localEnterTimeParcel.Cjg);
-        localPreference.setTitle(localEnterTimeParcel.Cjh);
-        if (localEnterTimeParcel.Cjg == this.Clt) {
-          localPreference.setWidgetLayoutResource(2131495615);
+        localPreference.setLayoutResource(a.g.bank_remit_select_arrive_preference);
+        localPreference.WsF = false;
+        localPreference.setKey(localEnterTimeParcel.IfZ);
+        localPreference.setTitle(localEnterTimeParcel.Iga);
+        if (localEnterTimeParcel.IfZ == this.Iim) {
+          localPreference.auN(a.g.mm_preference_radio_checked);
         }
         for (;;)
         {
-          if (localEnterTimeParcel.Cjj == 0)
+          if (localEnterTimeParcel.Igc == 0)
           {
-            if (!Util.isNullOrNil(localEnterTimeParcel.Cji)) {
-              localPreference.setSummary(localEnterTimeParcel.Cji);
+            if (!Util.isNullOrNil(localEnterTimeParcel.Igb)) {
+              localPreference.aF(localEnterTimeParcel.Igb);
             }
             localPreference.setEnabled(false);
           }
           localPreference.getExtras().putParcelable("arrive_time", localEnterTimeParcel);
-          this.screen.c(localPreference);
-          this.Cls.add(localPreference);
+          this.screen.b(localPreference);
+          this.Iil.add(localPreference);
           i += 1;
           break;
-          localPreference.setWidgetLayoutResource(2131495616);
+          localPreference.auN(a.g.mm_preference_radio_unchecked);
         }
       }
     }
@@ -81,32 +86,32 @@ public class BankRemitSelectArriveTimeUI
   {
     AppMethodBeat.i(67573);
     super.onCreate(paramBundle);
-    getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(2131100019)));
+    getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(a.c.bank_remit_common_bg)));
     paramBundle = getSupportActionBar().getCustomView();
     if (paramBundle != null)
     {
-      View localView = paramBundle.findViewById(2131299682);
+      View localView = paramBundle.findViewById(a.f.divider);
       if (localView != null) {
-        localView.setBackgroundColor(getResources().getColor(2131100042));
+        localView.setBackgroundColor(getResources().getColor(a.c.black));
       }
       paramBundle = paramBundle.findViewById(16908308);
       if ((paramBundle != null) && ((paramBundle instanceof TextView))) {
-        ((TextView)paramBundle).setTextColor(getResources().getColor(2131100904));
+        ((TextView)paramBundle).setTextColor(getResources().getColor(a.c.normal_text_color));
       }
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramBundle = getWindow();
       paramBundle.addFlags(-2147483648);
-      paramBundle.setStatusBarColor(getResources().getColor(2131100019));
+      paramBundle.setStatusBarColor(getResources().getColor(a.c.bank_remit_common_bg));
     }
-    BankRemitBaseUI.aC(this);
+    BankRemitBaseUI.aI(this);
     getContentView().setFitsSystemWindows(true);
-    setMMTitle(2131756530);
-    this.Clr = getIntent().getParcelableArrayListExtra("key_arrive_time_parcel_list");
-    this.Clt = getIntent().getIntExtra("key_select_arrive_time", -1);
+    setMMTitle(a.i.bank_remit_select_arrive_time_title);
+    this.Iik = getIntent().getParcelableArrayListExtra("key_arrive_time_parcel_list");
+    this.Iim = getIntent().getIntExtra("key_select_arrive_time", -1);
     initView();
-    findViewById(16908298).setBackgroundColor(getResources().getColor(2131100019));
+    findViewById(16908298).setBackgroundColor(getResources().getColor(a.c.bank_remit_common_bg));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -116,21 +121,21 @@ public class BankRemitSelectArriveTimeUI
         AppMethodBeat.o(67572);
         return false;
       }
-    }, 2131689492);
+    }, a.h.actionbar_icon_dark_back);
     AppMethodBeat.o(67573);
   }
   
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(67575);
-    paramf = this.Cls.iterator();
+    paramf = this.Iil.iterator();
     while (paramf.hasNext())
     {
       Preference localPreference = (Preference)paramf.next();
       if (localPreference == paramPreference) {
-        localPreference.setWidgetLayoutResource(2131495615);
+        localPreference.auN(a.g.mm_preference_radio_checked);
       } else {
-        localPreference.setWidgetLayoutResource(2131495616);
+        localPreference.auN(a.g.mm_preference_radio_unchecked);
       }
     }
     this.screen.notifyDataSetChanged();
@@ -142,7 +147,7 @@ public class BankRemitSelectArriveTimeUI
       return false;
     }
     paramPreference = new Intent();
-    paramPreference.putExtra("key_enter_time_scene", paramf.Cjg);
+    paramPreference.putExtra("key_enter_time_scene", paramf.IfZ);
     setResult(-1, paramPreference);
     finish();
     AppMethodBeat.o(67575);

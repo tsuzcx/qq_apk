@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.f;
+import com.tencent.mm.game.report.g;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.game.model.e;
@@ -15,23 +15,23 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class q
   implements View.OnClickListener
 {
-  int gwE;
+  private com.tencent.mm.plugin.game.model.c CIQ;
+  String CZK;
+  int jaR;
   protected Context mContext;
-  private com.tencent.mm.plugin.game.model.c xEP;
-  String xVz;
   
   public q(Context paramContext)
   {
     this.mContext = paramContext;
-    this.xVz = null;
+    this.CZK = null;
   }
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(42340);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/game/ui/GamePreemptiveCliclListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/game/ui/GamePreemptiveCliclListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
     if (!(paramView.getTag() instanceof com.tencent.mm.plugin.game.model.c))
     {
       Log.e("MicroMsg.GamePreemptiveCliclListener", "No GameAppInfo");
@@ -39,22 +39,22 @@ public final class q
       AppMethodBeat.o(42340);
       return;
     }
-    this.xEP = ((com.tencent.mm.plugin.game.model.c)paramView.getTag());
-    Log.i("MicroMsg.GamePreemptiveCliclListener", "Clicked appid = " + this.xEP.field_appId);
-    if (h.s(this.mContext, this.xEP.field_appId))
+    this.CIQ = ((com.tencent.mm.plugin.game.model.c)paramView.getTag());
+    Log.i("MicroMsg.GamePreemptiveCliclListener", "Clicked appid = " + this.CIQ.field_appId);
+    if (h.u(this.mContext, this.CIQ.field_appId))
     {
-      Log.d("MicroMsg.GamePreemptiveCliclListener", "launchFromWX, appId = " + this.xEP.field_appId + ", pkg = " + this.xEP.field_packageName + ", openId = " + this.xEP.field_openId);
-      e.at(this.mContext, this.xEP.field_appId);
-      f.a(this.mContext, this.xEP.scene, this.xEP.dYu, this.xEP.position, 3, this.xEP.field_appId, this.gwE, this.xEP.dDJ, this.xEP.xEl);
+      Log.d("MicroMsg.GamePreemptiveCliclListener", "launchFromWX, appId = " + this.CIQ.field_appId + ", pkg = " + this.CIQ.field_packageName + ", openId = " + this.CIQ.field_openId);
+      e.at(this.mContext, this.CIQ.field_appId);
+      g.a(this.mContext, this.CIQ.scene, this.CIQ.fSl, this.CIQ.position, 3, this.CIQ.field_appId, this.jaR, this.CIQ.fwt, this.CIQ.CIm);
       a.a(this, "com/tencent/mm/plugin/game/ui/GamePreemptiveCliclListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42340);
       return;
     }
-    Log.i("MicroMsg.GamePreemptiveCliclListener", "get preemptive url:[%s]", new Object[] { this.xVz });
-    if (!Util.isNullOrNil(this.xVz))
+    Log.i("MicroMsg.GamePreemptiveCliclListener", "get preemptive url:[%s]", new Object[] { this.CZK });
+    if (!Util.isNullOrNil(this.CZK))
     {
-      com.tencent.mm.plugin.game.e.c.aQ(this.mContext, this.xVz);
-      f.a(this.mContext, this.xEP.scene, this.xEP.dYu, this.xEP.position, 11, this.xEP.field_appId, this.gwE, this.xEP.dDJ, this.xEP.xEl);
+      com.tencent.mm.plugin.game.d.c.aY(this.mContext, this.CZK);
+      g.a(this.mContext, this.CIQ.scene, this.CIQ.fSl, this.CIQ.position, 11, this.CIQ.field_appId, this.jaR, this.CIQ.fwt, this.CIQ.CIm);
     }
     for (;;)
     {
@@ -67,7 +67,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.q
  * JD-Core Version:    0.7.0.1
  */

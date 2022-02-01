@@ -11,97 +11,103 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.plugin.multitalk.ui.widget.k;
 import com.tencent.mm.plugin.multitalk.ui.widget.k.a;
+import com.tencent.mm.plugin.recordvideo.b.b;
+import com.tencent.mm.plugin.recordvideo.b.e;
+import com.tencent.mm.plugin.recordvideo.b.g;
 import com.tencent.mm.plugin.recordvideo.d.c;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
-import com.tencent.mm.plugin.recordvideo.plugin.t;
-import com.tencent.mm.plugin.recordvideo.plugin.t.a;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.plugin.recordvideo.plugin.u;
+import com.tencent.mm.plugin.recordvideo.plugin.u.a;
+import com.tencent.mm.ui.au;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/ui/editor/MultitalkScreenEditPhotoPencilPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "viewGroup", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "editPhotoDoodlePlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/MultiTalkScreenDoodlePlugin;", "editPhotoDoodlePluginRoot", "Landroid/widget/RelativeLayout;", "isSelected", "", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "view", "Landroid/widget/ImageView;", "getViewGroup", "()Landroid/view/ViewGroup;", "setViewGroup", "(Landroid/view/ViewGroup;)V", "checkDoodleStatus", "", "onBackPress", "onClick", "v", "Landroid/view/View;", "refreshDoodleLayout", "isLand", "reset", "setVisibility", "visibility", "", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/editor/MultitalkScreenEditPhotoPencilPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "viewGroup", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "editPhotoDoodlePlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/MultiTalkScreenDoodlePlugin;", "editPhotoDoodlePluginRoot", "Landroid/widget/RelativeLayout;", "isSelected", "", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "view", "Landroid/widget/ImageView;", "getViewGroup", "()Landroid/view/ViewGroup;", "setViewGroup", "(Landroid/view/ViewGroup;)V", "checkDoodleStatus", "", "onBackPress", "onClick", "v", "Landroid/view/View;", "refreshDoodleLayout", "isLand", "reset", "setVisibility", "visibility", "", "plugin-multitalk_release"})
 public final class d
-  implements View.OnClickListener, t
+  implements View.OnClickListener, u
 {
+  private com.tencent.mm.plugin.recordvideo.plugin.parent.d APl;
+  public com.tencent.mm.plugin.recordvideo.plugin.doodle.b Fwi;
+  public final RelativeLayout Fwj;
+  private ViewGroup Fwk;
   private boolean isSelected;
-  private final ImageView tkI;
-  private com.tencent.mm.plugin.recordvideo.plugin.parent.d wgr;
-  public com.tencent.mm.plugin.recordvideo.plugin.doodle.b zQF;
-  public final RelativeLayout zQG;
-  private ViewGroup zQH;
+  private final ImageView wRg;
   
   public d(ViewGroup paramViewGroup, com.tencent.mm.plugin.recordvideo.plugin.parent.d paramd)
   {
-    AppMethodBeat.i(239755);
-    this.zQH = paramViewGroup;
-    this.wgr = paramd;
-    paramViewGroup = this.zQH.findViewById(2131299727);
-    p.g(paramViewGroup, "viewGroup.findViewById(R.id.doddle_layout_root)");
-    this.zQG = ((RelativeLayout)paramViewGroup);
-    paramViewGroup = k.zTz;
-    paramViewGroup = this.zQH.getContext();
-    p.g(paramViewGroup, "viewGroup.context");
-    if (k.a.gE(paramViewGroup) != 90)
+    AppMethodBeat.i(196466);
+    this.Fwk = paramViewGroup;
+    this.APl = paramd;
+    paramViewGroup = this.Fwk.findViewById(b.e.doddle_layout_root);
+    p.j(paramViewGroup, "viewGroup.findViewById(R.id.doddle_layout_root)");
+    this.Fwj = ((RelativeLayout)paramViewGroup);
+    paramViewGroup = k.Fzb;
+    paramViewGroup = this.Fwk.getContext();
+    p.j(paramViewGroup, "viewGroup.context");
+    if (k.a.hB(paramViewGroup) != 90)
     {
-      paramViewGroup = k.zTz;
-      paramViewGroup = this.zQH.getContext();
-      p.g(paramViewGroup, "viewGroup.context");
-      if (k.a.gE(paramViewGroup) != 270) {
-        break label214;
+      paramViewGroup = k.Fzb;
+      paramViewGroup = this.Fwk.getContext();
+      p.j(paramViewGroup, "viewGroup.context");
+      if (k.a.hB(paramViewGroup) != 270) {
+        break label217;
       }
     }
-    label214:
+    label217:
     for (boolean bool = true;; bool = false)
     {
-      this.zQF = new com.tencent.mm.plugin.recordvideo.plugin.doodle.b(bool, this.zQG);
-      paramViewGroup = this.zQF;
+      this.Fwi = new com.tencent.mm.plugin.recordvideo.plugin.doodle.b(bool, this.Fwj);
+      paramViewGroup = this.Fwi;
       if (paramViewGroup != null)
       {
-        paramd = this.wgr;
-        p.h(paramd, "status");
-        paramViewGroup.BSR = paramd;
+        paramd = this.APl;
+        p.k(paramd, "status");
+        paramViewGroup.HPF = paramd;
       }
-      paramViewGroup = this.zQH.findViewById(2131299868);
-      p.g(paramViewGroup, "viewGroup.findViewById(R.id.editor_add_pencil)");
-      this.tkI = ((ImageView)paramViewGroup);
-      this.tkI.setImageDrawable(ar.m(this.tkI.getContext(), 2131690543, -1));
-      this.tkI.setOnClickListener((View.OnClickListener)this);
-      AppMethodBeat.o(239755);
+      paramViewGroup = this.Fwk.findViewById(b.e.editor_add_pencil);
+      p.j(paramViewGroup, "viewGroup.findViewById(R.id.editor_add_pencil)");
+      this.wRg = ((ImageView)paramViewGroup);
+      this.wRg.setImageDrawable(au.o(this.wRg.getContext(), b.g.icons_filled_duddle, -1));
+      this.wRg.setOnClickListener((View.OnClickListener)this);
+      AppMethodBeat.o(196466);
       return;
     }
   }
   
-  private void eox()
+  private void eYp()
   {
-    AppMethodBeat.i(239754);
+    AppMethodBeat.i(196461);
     if (this.isSelected)
     {
-      localb = this.zQF;
+      localb = this.Fwi;
       if (localb != null)
       {
-        localb.l(Integer.valueOf(0));
-        AppMethodBeat.o(239754);
+        localb.t(Integer.valueOf(0));
+        AppMethodBeat.o(196461);
         return;
       }
-      AppMethodBeat.o(239754);
+      AppMethodBeat.o(196461);
       return;
     }
-    com.tencent.mm.plugin.recordvideo.plugin.doodle.b localb = this.zQF;
+    com.tencent.mm.plugin.recordvideo.plugin.doodle.b localb = this.Fwi;
     if (localb != null)
     {
-      localb.l(Integer.valueOf(4));
-      AppMethodBeat.o(239754);
+      localb.t(Integer.valueOf(4));
+      AppMethodBeat.o(196461);
       return;
     }
-    AppMethodBeat.o(239754);
+    AppMethodBeat.o(196461);
   }
   
-  public final void aSs() {}
+  public final void bbp() {}
   
   public final String name()
   {
-    return null;
+    AppMethodBeat.i(196467);
+    String str = getClass().getName();
+    AppMethodBeat.o(196467);
+    return str;
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
@@ -113,36 +119,36 @@ public final class d
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(239751);
+    AppMethodBeat.i(196457);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/multitalk/ui/editor/MultitalkScreenEditPhotoPencilPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/multitalk/ui/editor/MultitalkScreenEditPhotoPencilPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
     boolean bool;
     if (!this.isSelected)
     {
       bool = true;
       this.isSelected = bool;
       if (!this.isSelected) {
-        break label141;
+        break label143;
       }
-      paramView = c.BXI;
-      c.aLu("KEY_CLICK_DOODLE_COUNT_INT");
-      paramView = c.BXI;
-      c.VH(7);
-      this.tkI.setImageDrawable(ar.m(this.tkI.getContext(), 2131690543, this.tkI.getResources().getColor(2131101414)));
-      d.b.a(this.wgr, d.c.BVE);
+      paramView = c.HUw;
+      c.aVY("KEY_CLICK_DOODLE_COUNT_INT");
+      paramView = c.HUw;
+      c.acq(7);
+      this.wRg.setImageDrawable(au.o(this.wRg.getContext(), b.g.icons_filled_duddle, this.wRg.getResources().getColor(b.b.wechat_green)));
+      d.b.a(this.APl, d.c.HSs);
     }
     for (;;)
     {
-      eox();
+      eYp();
       a.a(this, "com/tencent/mm/plugin/multitalk/ui/editor/MultitalkScreenEditPhotoPencilPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(239751);
+      AppMethodBeat.o(196457);
       return;
       bool = false;
       break;
-      label141:
-      d.b.a(this.wgr, d.c.BVI);
-      this.tkI.setImageDrawable(ar.m(this.tkI.getContext(), 2131690543, -1));
+      label143:
+      d.b.a(this.APl, d.c.HSw);
+      this.wRg.setImageDrawable(au.o(this.wRg.getContext(), b.g.icons_filled_duddle, -1));
     }
   }
   
@@ -152,11 +158,11 @@ public final class d
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(239756);
-    p.h(paramArrayOfString, "permissions");
-    p.h(paramArrayOfInt, "grantResults");
-    t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(239756);
+    AppMethodBeat.i(196468);
+    p.k(paramArrayOfString, "permissions");
+    p.k(paramArrayOfInt, "grantResults");
+    u.a.a(paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(196468);
   }
   
   public final void onResume() {}
@@ -165,31 +171,31 @@ public final class d
   
   public final void reset()
   {
-    AppMethodBeat.i(239752);
+    AppMethodBeat.i(196458);
     this.isSelected = false;
-    eox();
-    d.b.a(this.wgr, d.c.BVI);
-    this.tkI.setImageDrawable(ar.m(this.tkI.getContext(), 2131690543, -1));
-    AppMethodBeat.o(239752);
+    eYp();
+    d.b.a(this.APl, d.c.HSw);
+    this.wRg.setImageDrawable(au.o(this.wRg.getContext(), b.g.icons_filled_duddle, -1));
+    AppMethodBeat.o(196458);
   }
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(239753);
-    this.tkI.setVisibility(paramInt);
-    RelativeLayout localRelativeLayout = this.zQG;
+    AppMethodBeat.i(196459);
+    this.wRg.setVisibility(paramInt);
+    RelativeLayout localRelativeLayout = this.Fwj;
     if (localRelativeLayout != null)
     {
       localRelativeLayout.setVisibility(paramInt);
-      AppMethodBeat.o(239753);
+      AppMethodBeat.o(196459);
       return;
     }
-    AppMethodBeat.o(239753);
+    AppMethodBeat.o(196459);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,15 @@ import android.graphics.Color;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.os.Looper;
-import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.EditText;
+import androidx.fragment.app.FragmentActivity;
+import com.tencent.kinda.framework.R.id;
+import com.tencent.kinda.framework.R.string;
 import com.tencent.kinda.framework.widget.base.BaseFragment;
 import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.framework.widget.tools.ResourcesUtils;
@@ -27,41 +30,51 @@ import com.tencent.mm.plugin.appbrand.service.r;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragment;
+import com.tencent.mm.ui.c;
 import com.tencent.mm.wallet_core.keyboard.WcPayKeyboard;
-import com.tencent.mm.wallet_core.ui.h;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
 public class UIPagePlatformFuncDelegateImpl
   implements IUIPagePlatformFuncDelegate
 {
   private static final String TAG = "UIPagePlatformFuncDelegateImpl";
-  private MMFragment activity;
-  private Dialog mTipDialog = null;
-  private String mmTitle = "";
+  private c mAndroidBug5497Workaround;
+  private Dialog mTipDialog;
+  private String mmTitle;
   private VoidBoolI32Callback onKeyboardShowCallback;
   private VoidCallback topLeftBtnCallback;
   private VoidCallback topRightBtnCallback;
   private String topRightBtnColor;
-  private int topRightBtnResId = -1;
+  private int topRightBtnResId;
   private String topRightBtnTitle;
-  
-  public UIPagePlatformFuncDelegateImpl(MMActivity paramMMActivity) {}
+  private WeakReference<MMFragment> weakFragment;
   
   public UIPagePlatformFuncDelegateImpl(MMFragment paramMMFragment)
   {
-    this.activity = paramMMFragment;
+    AppMethodBeat.i(262968);
+    this.topRightBtnResId = -1;
+    this.mmTitle = "";
+    this.mTipDialog = null;
+    this.weakFragment = new WeakReference(paramMMFragment);
+    AppMethodBeat.o(262968);
   }
   
   private void recreateTopRightBtn()
   {
     AppMethodBeat.i(18603);
-    this.activity.removeAllOptionMenu();
+    MMFragment localMMFragment = (MMFragment)this.weakFragment.get();
+    if (localMMFragment == null)
+    {
+      Log.i("UIPagePlatformFuncDelegateImpl", "activity == null.");
+      AppMethodBeat.o(18603);
+      return;
+    }
+    localMMFragment.removeAllOptionMenu();
     Object localObject1 = null;
     if (this.topRightBtnResId > 0)
     {
-      localDrawable = this.activity.getResources().getDrawable(this.topRightBtnResId);
+      localDrawable = localMMFragment.getResources().getDrawable(this.topRightBtnResId);
       localObject1 = localDrawable;
       if (localDrawable != null)
       {
@@ -81,7 +94,7 @@ public class UIPagePlatformFuncDelegateImpl
         Object localObject2 = localDrawable;
       }
     }
-    this.activity.addIconOptionMenu(1, this.topRightBtnTitle, localObject1, new MenuItem.OnMenuItemClickListener()
+    localMMFragment.addIconOptionMenu(1, this.topRightBtnTitle, localObject1, new MenuItem.OnMenuItemClickListener()
     {
       public boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
@@ -102,35 +115,56 @@ public class UIPagePlatformFuncDelegateImpl
   public void beginIgnoringInteractionEvents()
   {
     AppMethodBeat.i(18598);
-    this.activity.getWindow().addFlags(16);
+    MMFragment localMMFragment = (MMFragment)this.weakFragment.get();
+    if (localMMFragment == null)
+    {
+      Log.i("UIPagePlatformFuncDelegateImpl", "activity == null.");
+      AppMethodBeat.o(18598);
+      return;
+    }
+    localMMFragment.getWindow().addFlags(16);
     AppMethodBeat.o(18598);
   }
   
   public void closeUI(boolean paramBoolean)
   {
-    AppMethodBeat.i(214434);
-    if ((this.activity instanceof BaseFragment))
+    AppMethodBeat.i(262972);
+    Object localObject = (MMFragment)this.weakFragment.get();
+    if (localObject == null)
     {
-      BaseFragment localBaseFragment = (BaseFragment)this.activity;
-      if ((localBaseFragment.isTinyApp) && (localBaseFragment.tinyAppUserName != null)) {
-        ((r)com.tencent.mm.kernel.g.af(r.class)).ej(localBaseFragment.tinyAppUserName, "");
-      }
-      localBaseFragment.popFragment();
+      Log.i("UIPagePlatformFuncDelegateImpl", "activity == null.");
+      AppMethodBeat.o(262972);
+      return;
     }
-    AppMethodBeat.o(214434);
+    if ((localObject instanceof BaseFragment))
+    {
+      localObject = (BaseFragment)localObject;
+      if ((((BaseFragment)localObject).isTinyApp) && (((BaseFragment)localObject).tinyAppUserName != null)) {
+        ((r)com.tencent.mm.kernel.h.ae(r.class)).ex(((BaseFragment)localObject).tinyAppUserName, "");
+      }
+      ((BaseFragment)localObject).popFragment();
+    }
+    AppMethodBeat.o(262972);
   }
   
   public void endEditing()
   {
     AppMethodBeat.i(18605);
-    this.activity.hideVKB();
-    if (this.activity.getActivity() != null)
+    Object localObject = (MMFragment)this.weakFragment.get();
+    if (localObject == null)
     {
-      Object localObject = getKBLayout(this.activity.getActivity());
+      Log.i("UIPagePlatformFuncDelegateImpl", "activity == null.");
+      AppMethodBeat.o(18605);
+      return;
+    }
+    ((MMFragment)localObject).hideVKB();
+    if (((MMFragment)localObject).getActivity() != null)
+    {
+      localObject = getKBLayout();
       if ((localObject != null) && (((View)localObject).isShown())) {
         ((View)localObject).setVisibility(8);
       }
-      localObject = getWcPayKeyboard(this.activity.getActivity());
+      localObject = getWcPayKeyboard();
       if (localObject != null)
       {
         ((WcPayKeyboard)localObject).hideWcKb();
@@ -150,58 +184,80 @@ public class UIPagePlatformFuncDelegateImpl
       public void run()
       {
         AppMethodBeat.i(18591);
-        UIPagePlatformFuncDelegateImpl.this.activity.getWindow().clearFlags(16);
+        MMFragment localMMFragment = (MMFragment)UIPagePlatformFuncDelegateImpl.this.weakFragment.get();
+        if (localMMFragment == null)
+        {
+          Log.i("UIPagePlatformFuncDelegateImpl", "activity == null.");
+          AppMethodBeat.o(18591);
+          return;
+        }
+        localMMFragment.getWindow().clearFlags(16);
         AppMethodBeat.o(18591);
       }
     });
     AppMethodBeat.o(18599);
   }
   
-  protected View getKBLayout(FragmentActivity paramFragmentActivity)
+  protected View getKBLayout()
   {
-    AppMethodBeat.i(214435);
-    int i = paramFragmentActivity.getSupportFragmentManager().getFragments().size();
-    if (i <= 0)
+    AppMethodBeat.i(262985);
+    Object localObject = (MMFragment)this.weakFragment.get();
+    if (localObject == null)
     {
-      paramFragmentActivity = paramFragmentActivity.findViewById(2131308960);
-      AppMethodBeat.o(214435);
-      return paramFragmentActivity;
+      Log.i("UIPagePlatformFuncDelegateImpl", "activity == null.");
+      AppMethodBeat.o(262985);
+      return null;
     }
-    paramFragmentActivity = ((BaseFragment)paramFragmentActivity.getSupportFragmentManager().getFragments().get(i - 1)).findViewById(2131308960);
-    AppMethodBeat.o(214435);
-    return paramFragmentActivity;
+    localObject = ((MMFragment)localObject).findViewById(R.id.tenpay_keyboard_layout);
+    AppMethodBeat.o(262985);
+    return localObject;
   }
   
   public String getTitle()
   {
     AppMethodBeat.i(18596);
-    String str = this.activity.getMMTitle();
-    AppMethodBeat.o(18596);
-    return str;
-  }
-  
-  protected WcPayKeyboard getWcPayKeyboard(FragmentActivity paramFragmentActivity)
-  {
-    AppMethodBeat.i(214436);
-    int i = paramFragmentActivity.getSupportFragmentManager().getFragments().size();
-    if (i <= 0)
+    Object localObject = (MMFragment)this.weakFragment.get();
+    if (localObject == null)
     {
-      paramFragmentActivity = (WcPayKeyboard)paramFragmentActivity.findViewById(2131310342);
-      AppMethodBeat.o(214436);
-      return paramFragmentActivity;
+      Log.i("UIPagePlatformFuncDelegateImpl", "activity == null.");
+      AppMethodBeat.o(18596);
+      return "";
     }
-    paramFragmentActivity = (WcPayKeyboard)((BaseFragment)paramFragmentActivity.getSupportFragmentManager().getFragments().get(i - 1)).findViewById(2131310342);
-    AppMethodBeat.o(214436);
-    return paramFragmentActivity;
+    localObject = ((MMFragment)localObject).getMMTitle();
+    AppMethodBeat.o(18596);
+    return localObject;
   }
   
-  public void onKeyboardShow(boolean paramBoolean, int paramInt)
+  protected WcPayKeyboard getWcPayKeyboard()
   {
-    AppMethodBeat.i(214437);
-    if (this.onKeyboardShowCallback != null) {
-      this.onKeyboardShowCallback.call(paramBoolean, paramInt);
+    AppMethodBeat.i(262987);
+    Object localObject = (MMFragment)this.weakFragment.get();
+    if (localObject == null)
+    {
+      Log.i("UIPagePlatformFuncDelegateImpl", "activity == null.");
+      AppMethodBeat.o(262987);
+      return null;
     }
-    AppMethodBeat.o(214437);
+    localObject = (WcPayKeyboard)((MMFragment)localObject).findViewById(R.id.wc_pay_keyboard);
+    AppMethodBeat.o(262987);
+    return localObject;
+  }
+  
+  public void onKeyboardShow(final boolean paramBoolean, final int paramInt)
+  {
+    AppMethodBeat.i(262990);
+    if (this.onKeyboardShowCallback != null) {
+      com.tencent.e.h.ZvG.n(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(264046);
+          UIPagePlatformFuncDelegateImpl.this.onKeyboardShowCallback.call(paramBoolean, paramInt);
+          AppMethodBeat.o(264046);
+        }
+      }, 100L);
+    }
+    AppMethodBeat.o(262990);
   }
   
   public void refreshNavigationBar() {}
@@ -209,9 +265,16 @@ public class UIPagePlatformFuncDelegateImpl
   public void reset()
   {
     AppMethodBeat.i(18604);
-    this.activity.setMMNormalView();
+    MMFragment localMMFragment = (MMFragment)this.weakFragment.get();
+    if (localMMFragment == null)
+    {
+      Log.i("UIPagePlatformFuncDelegateImpl", "activity == null.");
+      AppMethodBeat.o(18604);
+      return;
+    }
+    localMMFragment.setMMNormalView();
     if (!Util.isNullOrNil(this.mmTitle)) {
-      this.activity.setMMTitle(this.mmTitle);
+      localMMFragment.setMMTitle(this.mmTitle);
     }
     recreateTopRightBtn();
     if (this.topLeftBtnCallback != null) {
@@ -230,7 +293,14 @@ public class UIPagePlatformFuncDelegateImpl
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(18595);
-    this.activity.setMMTitle(paramString);
+    MMFragment localMMFragment = (MMFragment)this.weakFragment.get();
+    if (localMMFragment == null)
+    {
+      Log.i("UIPagePlatformFuncDelegateImpl", "activity == null.");
+      AppMethodBeat.o(18595);
+      return;
+    }
+    localMMFragment.setMMTitle(paramString);
     this.mmTitle = paramString;
     AppMethodBeat.o(18595);
   }
@@ -239,7 +309,14 @@ public class UIPagePlatformFuncDelegateImpl
   {
     AppMethodBeat.i(18600);
     this.topLeftBtnCallback = paramVoidCallback;
-    this.activity.setBackBtn(new MenuItem.OnMenuItemClickListener()
+    MMFragment localMMFragment = (MMFragment)this.weakFragment.get();
+    if (localMMFragment == null)
+    {
+      Log.i("UIPagePlatformFuncDelegateImpl", "activity == null.");
+      AppMethodBeat.o(18600);
+      return;
+    }
+    localMMFragment.setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
@@ -260,11 +337,18 @@ public class UIPagePlatformFuncDelegateImpl
   public void setTopRightBtnImage(String paramString)
   {
     AppMethodBeat.i(18602);
+    MMFragment localMMFragment = (MMFragment)this.weakFragment.get();
+    if (localMMFragment == null)
+    {
+      Log.i("UIPagePlatformFuncDelegateImpl", "activity == null.");
+      AppMethodBeat.o(18602);
+      return;
+    }
     if (!Util.isNullOrNil(paramString))
     {
-      this.topRightBtnResId = ResourcesUtils.getDrawableId(this.activity.getContext(), paramString);
+      this.topRightBtnResId = ResourcesUtils.getDrawableId(localMMFragment.getContext(), paramString);
       if (this.topRightBtnResId <= 0) {
-        this.topRightBtnResId = ResourcesUtils.getResId(this.activity.getContext(), paramString, "raw");
+        this.topRightBtnResId = ResourcesUtils.getResId(localMMFragment.getContext(), paramString, "raw");
       }
       recreateTopRightBtn();
     }
@@ -287,18 +371,33 @@ public class UIPagePlatformFuncDelegateImpl
   
   public void setWindowAdjustUnspecified(boolean paramBoolean)
   {
-    AppMethodBeat.i(214438);
-    if (this.activity.getActivity().getWindow() != null)
+    AppMethodBeat.i(262996);
+    Object localObject = (MMFragment)this.weakFragment.get();
+    if (localObject == null)
+    {
+      Log.i("UIPagePlatformFuncDelegateImpl", "activity == null.");
+      AppMethodBeat.o(262996);
+      return;
+    }
+    if (((MMFragment)localObject).getActivity().getWindow() != null)
     {
       if (paramBoolean)
       {
-        this.activity.getActivity().getWindow().setSoftInputMode(19);
-        AppMethodBeat.o(214438);
+        ((MMFragment)localObject).getActivity().getWindow().setSoftInputMode(19);
+        this.mAndroidBug5497Workaround = c.bh(((MMFragment)localObject).getActivity());
+        AppMethodBeat.o(262996);
         return;
       }
-      this.activity.getActivity().getWindow().setSoftInputMode(35);
+      ((MMFragment)localObject).getActivity().getWindow().setSoftInputMode(35);
+      if (this.mAndroidBug5497Workaround != null)
+      {
+        localObject = this.mAndroidBug5497Workaround;
+        ((c)localObject).VQp.getViewTreeObserver().removeOnGlobalLayoutListener(((c)localObject).qc);
+        ((c)localObject).VQr.height = -1;
+        ((c)localObject).VQp.requestLayout();
+      }
     }
-    AppMethodBeat.o(214438);
+    AppMethodBeat.o(262996);
   }
   
   public void startLoading(String paramString, boolean paramBoolean)
@@ -317,15 +416,15 @@ public class UIPagePlatformFuncDelegateImpl
       AppMethodBeat.o(18607);
       return;
     }
-    this.mTipDialog = h.c(paramString, paramString.getString(2131768146), true, new DialogInterface.OnCancelListener()
+    this.mTipDialog = com.tencent.mm.wallet_core.ui.i.c(paramString, paramString.getString(R.string.wallet_pay_loading), true, new DialogInterface.OnCancelListener()
     {
       public void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
-        AppMethodBeat.i(18594);
+        AppMethodBeat.i(265237);
         if ((UIPagePlatformFuncDelegateImpl.this.mTipDialog != null) && (UIPagePlatformFuncDelegateImpl.this.mTipDialog.isShowing())) {
           UIPagePlatformFuncDelegateImpl.this.mTipDialog.dismiss();
         }
-        AppMethodBeat.o(18594);
+        AppMethodBeat.o(265237);
       }
     });
     this.mTipDialog.setCancelable(false);
@@ -343,7 +442,7 @@ public class UIPagePlatformFuncDelegateImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.app.UIPagePlatformFuncDelegateImpl
  * JD-Core Version:    0.7.0.1
  */

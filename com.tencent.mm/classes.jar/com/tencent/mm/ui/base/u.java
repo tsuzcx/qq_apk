@@ -1,366 +1,248 @@
 package com.tencent.mm.ui.base;
 
-import android.app.Activity;
+import android.annotation.TargetApi;
+import android.app.ActivityManager;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.os.Message;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.os.Environment;
+import android.os.StatFs;
+import android.util.Base64;
+import android.util.StringBuilderPrinter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
-import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.widget.imageview.WeImageView;
+import com.tencent.mm.loader.j.b;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
-public final class u
-  extends Toast
+@TargetApi(16)
+final class u
+  extends SurfaceTexture
 {
-  private View OTO;
-  private final Context context;
-  public long duration;
-  private int level;
-  private int qdp;
-  public final MTimerHandler timer;
-  private final TextView yva;
+  public SurfaceTexture mSurfaceTexture = null;
   
-  public u(Context paramContext)
+  public u()
   {
-    super(paramContext);
-    AppMethodBeat.i(142239);
-    this.timer = new MTimerHandler(new MTimerHandler.CallBack()
-    {
-      public final boolean onTimerExpired()
-      {
-        AppMethodBeat.i(142230);
-        if (u.a(u.this) == -1L)
-        {
-          u.this.show();
-          AppMethodBeat.o(142230);
-          return true;
-        }
-        u.b(u.this);
-        if (u.c(u.this) >= 0)
-        {
-          u.this.show();
-          AppMethodBeat.o(142230);
-          return true;
-        }
-        u.this.cancel();
-        AppMethodBeat.o(142230);
-        return false;
-      }
-    }, true);
-    this.context = paramContext;
-    reset();
-    this.OTO = View.inflate(paramContext, 2131496724, null);
-    setView(this.OTO);
-    setGravity(55, 0, BackwardSupportUtil.BitmapFactory.fromDPToPix(paramContext, 40.0F));
-    setDuration(0);
-    this.yva = ((TextView)this.OTO.findViewById(2131309261));
-    switch (this.level)
-    {
+    super(0);
+  }
+  
+  private static String bgF()
+  {
+    AppMethodBeat.i(142160);
+    StringBuilder localStringBuilder = new StringBuilder(256);
+    StringBuilderPrinter localStringBuilderPrinter = new StringBuilderPrinter(localStringBuilder);
+    Object localObject2 = MMApplicationContext.getContext();
+    localStringBuilderPrinter.println("#accinfo.revision=" + BuildInfo.REV);
+    localStringBuilderPrinter.println("#accinfo.build=" + BuildInfo.TIME + ":" + BuildInfo.HOSTNAME + ":" + ChannelUtil.channelId);
+    Object localObject3 = new StringBuilder("#accinfo.env=");
+    Object localObject1;
+    if (CrashReportFactory.foreground) {
+      localObject1 = "f";
     }
     for (;;)
     {
-      AppMethodBeat.o(142239);
-      return;
-      this.yva.setTextColor(-1);
-      AppMethodBeat.o(142239);
-      return;
-      this.yva.setTextColor(this.context.getResources().getColor(2131101271));
-    }
-  }
-  
-  public static p a(Activity paramActivity, String paramString, long paramLong)
-  {
-    AppMethodBeat.i(142242);
-    Object localObject = View.inflate(paramActivity, 2131496724, null);
-    ((TextView)((View)localObject).findViewById(2131309261)).setText(paramString);
-    paramString = new p((View)localObject);
-    paramString.setWidth(-1);
-    paramString.setHeight(-2);
-    localObject = new Rect();
-    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = ((Rect)localObject).top;
-    int j = eu(paramActivity);
-    paramString.showAtLocation(paramActivity.getWindow().getDecorView(), 48, 0, i + j);
-    new MMHandler()
-    {
-      public final void handleMessage(Message paramAnonymousMessage)
+      localStringBuilderPrinter.println((String)localObject1 + ":" + Thread.currentThread().getName() + ":" + CrashReportFactory.currentActivity);
+      try
       {
-        AppMethodBeat.i(142233);
-        this.OTQ.dismiss();
-        super.handleMessage(paramAnonymousMessage);
-        AppMethodBeat.o(142233);
+        localObject1 = new StatFs(Environment.getDataDirectory().getPath());
+        localObject3 = new StatFs(b.aSF());
+        localObject1 = String.format("%dMB %s:%d:%d:%d %s:%d:%d:%d", new Object[] { Integer.valueOf(((ActivityManager)((Context)localObject2).getSystemService("activity")).getMemoryClass()), Environment.getDataDirectory().getAbsolutePath(), Integer.valueOf(((StatFs)localObject1).getBlockSize()), Integer.valueOf(((StatFs)localObject1).getBlockCount()), Integer.valueOf(((StatFs)localObject1).getAvailableBlocks()), b.aSF(), Integer.valueOf(((StatFs)localObject3).getBlockSize()), Integer.valueOf(((StatFs)localObject3).getBlockCount()), Integer.valueOf(((StatFs)localObject3).getAvailableBlocks()) });
+        localStringBuilderPrinter.println("#accinfo.data=".concat(String.valueOf(localObject1)));
+        localObject1 = new Date();
+        localObject2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ", Locale.getDefault());
+        localStringBuilderPrinter.println("#accinfo.crashTime=" + ((SimpleDateFormat)localObject2).format((Date)localObject1));
+        localStringBuilderPrinter.println("#crashContent=");
+        localObject1 = localStringBuilder.toString();
+        AppMethodBeat.o(142160);
+        return localObject1;
+        localObject1 = "b";
       }
-    }.sendEmptyMessageDelayed(0, paramLong);
-    AppMethodBeat.o(142242);
-    return paramString;
-  }
-  
-  public static void a(Context paramContext, String paramString, u.b paramb)
-  {
-    AppMethodBeat.i(205250);
-    Toast localToast = Toast.makeText(paramContext, "", 0);
-    paramContext = View.inflate(paramContext, 2131493459, null);
-    ((WeImageView)paramContext.findViewById(2131309259)).setImageResource(2131690547);
-    ((TextView)paramContext.findViewById(2131309260)).setText(paramString);
-    paramb.dU(paramContext);
-    localToast.setGravity(17, 0, 0);
-    localToast.setView(paramContext);
-    localToast.show();
-    AppMethodBeat.o(205250);
-  }
-  
-  public static int ay(Context paramContext)
-  {
-    AppMethodBeat.i(258463);
-    int i = ao.jK(paramContext);
-    AppMethodBeat.o(258463);
-    return i;
-  }
-  
-  public static void cE(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(205247);
-    Toast localToast = Toast.makeText(paramContext, "", 0);
-    paramContext = View.inflate(paramContext, 2131496707, null);
-    ((TextView)paramContext.findViewById(2131309260)).setText(paramString);
-    localToast.setGravity(17, 0, 0);
-    localToast.setView(paramContext);
-    localToast.show();
-    AppMethodBeat.o(205247);
-  }
-  
-  public static void cF(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(205248);
-    Toast localToast = Toast.makeText(paramContext, "", 1);
-    paramContext = View.inflate(paramContext, 2131496707, null);
-    ((TextView)paramContext.findViewById(2131309260)).setText(paramString);
-    localToast.setGravity(17, 0, 0);
-    localToast.setView(paramContext);
-    localToast.show();
-    AppMethodBeat.o(205248);
-  }
-  
-  public static void cG(final Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(142246);
-    Toast localToast = Toast.makeText(paramContext, "", 0);
-    View localView = View.inflate(paramContext, 2131493459, null);
-    TextView localTextView = (TextView)localView.findViewById(2131309260);
-    localTextView.setText(paramString);
-    localTextView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
-    {
-      public final void onGlobalLayout()
+      catch (Exception localException)
       {
-        AppMethodBeat.i(205242);
-        if (this.lWh.getLineCount() > 1) {
-          this.lWh.setTextSize(0, com.tencent.mm.cb.a.aG(paramContext, 2131165261));
-        }
-        this.lWh.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-        AppMethodBeat.o(205242);
-      }
-    });
-    localToast.setGravity(17, 0, 0);
-    localToast.setView(localView);
-    localToast.show();
-    AppMethodBeat.o(142246);
-  }
-  
-  public static void cH(final Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(142247);
-    Toast localToast = Toast.makeText(paramContext, "", 0);
-    View localView = View.inflate(paramContext, 2131493459, null);
-    ((WeImageView)localView.findViewById(2131309259)).setImageResource(2131690574);
-    TextView localTextView = (TextView)localView.findViewById(2131309260);
-    localTextView.setText(paramString);
-    localTextView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
-    {
-      public final void onGlobalLayout()
-      {
-        AppMethodBeat.i(205244);
-        if (this.lWh.getLineCount() > 1) {
-          this.lWh.setTextSize(0, com.tencent.mm.cb.a.aG(paramContext, 2131165261));
-        }
-        this.lWh.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-        AppMethodBeat.o(205244);
-      }
-    });
-    localToast.setGravity(17, 0, 0);
-    localToast.setView(localView);
-    localToast.show();
-    AppMethodBeat.o(142247);
-  }
-  
-  private static int eu(Context paramContext)
-  {
-    AppMethodBeat.i(142243);
-    int i;
-    if (((paramContext instanceof AppCompatActivity)) && (((AppCompatActivity)paramContext).getSupportActionBar() != null)) {
-      i = ((AppCompatActivity)paramContext).getSupportActionBar().getHeight();
-    }
-    while (i == 0)
-    {
-      i = paramContext.getResources().getDimensionPixelSize(2131165256);
-      AppMethodBeat.o(142243);
-      return i;
-      DisplayMetrics localDisplayMetrics = paramContext.getResources().getDisplayMetrics();
-      if (localDisplayMetrics.widthPixels > localDisplayMetrics.heightPixels) {
-        i = paramContext.getResources().getDimensionPixelSize(2131165255);
-      } else {
-        i = paramContext.getResources().getDimensionPixelSize(2131165256);
-      }
-    }
-    AppMethodBeat.o(142243);
-    return i;
-  }
-  
-  public static void g(Context paramContext, View paramView)
-  {
-    AppMethodBeat.i(164156);
-    if (((paramContext instanceof Activity)) && (android.support.v4.content.b.checkSelfPermission((Activity)paramContext, "android.permission.WRITE_EXTERNAL_STORAGE") != 0))
-    {
-      com.tencent.mm.ui.widget.snackbar.b.a(paramContext, paramView, paramContext.getString(2131763889), paramContext.getString(2131755981), new u.4(paramContext));
-      AppMethodBeat.o(164156);
-      return;
-    }
-    kf(paramContext);
-    AppMethodBeat.o(164156);
-  }
-  
-  public static void kf(Context paramContext)
-  {
-    AppMethodBeat.i(142248);
-    if (g.getExternalStorageState().equals("mounted_ro"))
-    {
-      u.a.aP(paramContext, 3);
-      AppMethodBeat.o(142248);
-      return;
-    }
-    u.a.aP(paramContext, 1);
-    AppMethodBeat.o(142248);
-  }
-  
-  public static void kg(Context paramContext)
-  {
-    AppMethodBeat.i(142249);
-    u.a.aP(paramContext, 2);
-    AppMethodBeat.o(142249);
-  }
-  
-  public static p q(Activity paramActivity, String paramString)
-  {
-    AppMethodBeat.i(205246);
-    View localView = View.inflate(paramActivity, 2131495214, null);
-    Object localObject = (TextView)localView.findViewById(2131303240);
-    ((TextView)localObject).setText(paramString);
-    ((TextView)localObject).setOnClickListener(null);
-    ((ImageView)localView.findViewById(2131303239)).setVisibility(8);
-    paramString = new p(localView);
-    paramString.setWidth(-1);
-    paramString.setHeight(-2);
-    localObject = new Rect();
-    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    int j = ((Rect)localObject).top;
-    int k = eu(paramActivity);
-    int i = j;
-    if (j == 0) {
-      i = ao.jK(paramActivity);
-    }
-    MMHandlerThread.postToMainThread(new u.9(paramString, paramActivity, i + k));
-    MMHandlerThread.postToMainThreadDelayed(new u.2(paramString), 2000L);
-    paramActivity = (ImageButton)localView.findViewById(2131303238);
-    paramActivity.setVisibility(8);
-    paramActivity.setOnClickListener(new u.3(paramString));
-    AppMethodBeat.o(205246);
-    return paramString;
-  }
-  
-  public static void u(final Context paramContext, String paramString, int paramInt)
-  {
-    AppMethodBeat.i(205249);
-    Toast localToast = Toast.makeText(paramContext, "", 0);
-    View localView = View.inflate(paramContext, 2131493459, null);
-    Object localObject = (WeImageView)localView.findViewById(2131309259);
-    if (paramInt != 0) {
-      ((WeImageView)localObject).setImageResource(paramInt);
-    }
-    for (;;)
-    {
-      localObject = (TextView)localView.findViewById(2131309260);
-      ((TextView)localObject).setText(paramString);
-      ((TextView)localObject).getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
-      {
-        public final void onGlobalLayout()
+        for (;;)
         {
-          AppMethodBeat.i(205243);
-          if (this.lWh.getLineCount() > 1) {
-            this.lWh.setTextSize(0, com.tencent.mm.cb.a.aG(paramContext, 2131165261));
-          }
-          this.lWh.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-          AppMethodBeat.o(205243);
+          Log.e("MicroMsg.MMSurfaceTextureWrap", "check data size failed :%s", new Object[] { localException.getMessage() });
+          String str = "";
         }
-      });
-      localToast.setGravity(17, 0, 0);
-      localToast.setView(localView);
-      localToast.show();
-      AppMethodBeat.o(205249);
-      return;
-      ((WeImageView)localObject).setVisibility(8);
+      }
     }
   }
   
-  public final void gLj()
+  public final void attachToGLContext(int paramInt)
   {
-    AppMethodBeat.i(205245);
-    cancel();
-    this.timer.stopTimer();
-    this.qdp = ((int)(this.duration / 70L) + 1);
-    this.timer.startTimer(70L);
-    AppMethodBeat.o(205245);
+    AppMethodBeat.i(142161);
+    Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, attachToGLContext");
+    this.mSurfaceTexture.attachToGLContext(paramInt);
+    AppMethodBeat.o(142161);
   }
   
-  public final void reset()
+  public final void detachFromGLContext()
   {
-    this.level = 1;
-    this.duration = 2000L;
-    this.qdp = ((int)(this.duration / 70L) + 1);
+    AppMethodBeat.i(142159);
+    Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, detachFromGLContext");
+    try
+    {
+      this.mSurfaceTexture.detachFromGLContext();
+      bool = false;
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        try
+        {
+          Object localObject1 = SurfaceTexture.class.getDeclaredMethod("nativeDetachFromGLContext", new Class[0]);
+          ((Method)localObject1).setAccessible(true);
+          int i = ((Integer)((Method)localObject1).invoke(this.mSurfaceTexture, new Object[0])).intValue();
+          localObject1 = bgF() + " detect texture problem error code = " + i + ", detach = true, and error = " + bool;
+          CrashReportFactory.reportRawMessage(Base64.encodeToString(((String)localObject1).getBytes(), 2), "DetachFromGLContext");
+          Log.w("MicroMsg.MMSurfaceTextureWrap", (String)localObject1);
+          Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, err %s hasDetach %s hasError %s", new Object[] { Integer.valueOf(i), Boolean.TRUE, Boolean.valueOf(bool) });
+          AppMethodBeat.o(142159);
+          return;
+        }
+        catch (IllegalArgumentException localIllegalArgumentException)
+        {
+          Log.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localIllegalArgumentException, "%s", new Object[] { "detect texture problem, IllegalArgumentException" });
+          String str1;
+          return;
+        }
+        catch (IllegalAccessException localIllegalAccessException)
+        {
+          Log.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localIllegalAccessException, "%s", new Object[] { "detect texture problem, IllegalAccessException" });
+          String str2;
+          return;
+        }
+        catch (InvocationTargetException localInvocationTargetException)
+        {
+          Log.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localInvocationTargetException, "%s", new Object[] { "detect texture problem, InvocationTargetException" });
+          String str3;
+          return;
+        }
+        catch (NoSuchMethodException localNoSuchMethodException)
+        {
+          Log.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localNoSuchMethodException, "%s", new Object[] { "detect texture problem, NoSuchMethodException" });
+          String str4;
+          return;
+        }
+        catch (Exception localException2)
+        {
+          Log.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localException2, "%s", new Object[] { "detect texture problem, Exception" });
+          String str5;
+          return;
+        }
+        finally
+        {
+          boolean bool;
+          String str6 = bgF() + " detect texture problem error code = 0, detach = false, and error = " + bool;
+          CrashReportFactory.reportRawMessage(Base64.encodeToString(str6.getBytes(), 2), "DetachFromGLContext");
+          Log.w("MicroMsg.MMSurfaceTextureWrap", str6);
+          Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, err %s hasDetach %s hasError %s", new Object[] { Integer.valueOf(0), Boolean.FALSE, Boolean.valueOf(bool) });
+          AppMethodBeat.o(142159);
+        }
+        localException1 = localException1;
+        Log.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localException1, "%s", new Object[] { "detect texture problem, RuntimeException detachFromGLContext" });
+        bool = true;
+      }
+    }
+    if (bool) {}
+    AppMethodBeat.o(142159);
   }
   
-  public final void setText(int paramInt)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(142241);
-    this.yva.setText(com.tencent.mm.ui.e.a.kn(this.context).getString(paramInt));
-    AppMethodBeat.o(142241);
+    AppMethodBeat.i(142165);
+    boolean bool = this.mSurfaceTexture.equals(paramObject);
+    AppMethodBeat.o(142165);
+    return bool;
   }
   
-  public final void setText(CharSequence paramCharSequence)
+  public final long getTimestamp()
   {
-    AppMethodBeat.i(142240);
-    this.yva.setText(paramCharSequence);
-    AppMethodBeat.o(142240);
+    AppMethodBeat.i(142163);
+    Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, getTimestamp");
+    long l = this.mSurfaceTexture.getTimestamp();
+    AppMethodBeat.o(142163);
+    return l;
+  }
+  
+  public final void getTransformMatrix(float[] paramArrayOfFloat)
+  {
+    AppMethodBeat.i(142162);
+    Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, getTransformMatrix");
+    this.mSurfaceTexture.getTransformMatrix(paramArrayOfFloat);
+    AppMethodBeat.o(142162);
+  }
+  
+  public final int hashCode()
+  {
+    AppMethodBeat.i(142166);
+    int i = this.mSurfaceTexture.hashCode();
+    AppMethodBeat.o(142166);
+    return i;
+  }
+  
+  public final void release()
+  {
+    AppMethodBeat.i(142164);
+    super.release();
+    Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, release");
+    this.mSurfaceTexture.release();
+    AppMethodBeat.o(142164);
+  }
+  
+  @TargetApi(19)
+  public final void releaseTexImage()
+  {
+    AppMethodBeat.i(142168);
+    Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, releaseTexImage");
+    this.mSurfaceTexture.releaseTexImage();
+    AppMethodBeat.o(142168);
+  }
+  
+  public final void setDefaultBufferSize(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(142157);
+    Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, setDefaultBufferSize");
+    this.mSurfaceTexture.setDefaultBufferSize(paramInt1, paramInt2);
+    AppMethodBeat.o(142157);
+  }
+  
+  public final void setOnFrameAvailableListener(SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener)
+  {
+    AppMethodBeat.i(142156);
+    Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, setOnFrameAvailableListener");
+    this.mSurfaceTexture.setOnFrameAvailableListener(paramOnFrameAvailableListener);
+    AppMethodBeat.o(142156);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(142167);
+    String str = this.mSurfaceTexture.toString();
+    AppMethodBeat.o(142167);
+    return str;
+  }
+  
+  public final void updateTexImage()
+  {
+    AppMethodBeat.i(142158);
+    Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, updateTexImage");
+    this.mSurfaceTexture.updateTexImage();
+    AppMethodBeat.o(142158);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.base.u
  * JD-Core Version:    0.7.0.1
  */

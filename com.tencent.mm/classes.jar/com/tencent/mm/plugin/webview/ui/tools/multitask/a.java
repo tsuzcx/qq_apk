@@ -7,19 +7,22 @@ import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.api.aa;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.multitask.animation.swipeahead.b.c;
+import com.tencent.mm.plugin.multitask.g;
 import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
-import com.tencent.mm.plugin.taskbar.api.c.a;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.plugin.webview.ui.tools.o.a;
-import com.tencent.mm.protocal.protobuf.cru;
-import com.tencent.mm.protocal.protobuf.fah;
+import com.tencent.mm.plugin.webview.ui.tools.floatball.d;
+import com.tencent.mm.plugin.webview.ui.tools.p.b;
+import com.tencent.mm.protocal.protobuf.dar;
+import com.tencent.mm.protocal.protobuf.fky;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
-import com.tencent.mm.ui.e.p;
+import com.tencent.mm.ui.f.r;
 import com.tencent.mm.ui.widget.MMWebView;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,420 +30,420 @@ import java.util.Set;
 public final class a
   extends com.tencent.mm.plugin.multitask.b.c
 {
-  private static final Set<String> IUM;
-  private static final c.a JwV;
-  public fah IVb;
-  private WebViewUI Jkg;
-  private boolean JmJ;
-  private boolean JmK;
-  private boolean JwT;
-  private boolean JwU;
+  private static final Set<String> PRd;
+  private static final com.tencent.mm.plugin.taskbar.api.b.a QuK;
+  public fky PRr;
+  private WebViewUI QcD;
+  private boolean Qka;
+  private boolean Qkb;
+  private boolean QuI;
+  private boolean QuJ;
   
   static
   {
-    AppMethodBeat.i(212049);
+    AppMethodBeat.i(244049);
     HashSet localHashSet = new HashSet();
-    IUM = localHashSet;
+    PRd = localHashSet;
     localHashSet.add("title");
-    IUM.add("webpageTitle");
-    IUM.add("hide_option_menu");
-    IUM.add("translate_webview");
-    IUM.add("srcUsername");
-    IUM.add("srcDisplayname");
-    IUM.add("mode");
-    IUM.add("KTemplateId");
-    IUM.add("KPublisherId");
-    IUM.add(e.p.Ozw);
-    IUM.add(e.p.Ozx);
-    IUM.add("pay_channel");
-    IUM.add("key_download_restrict");
-    IUM.add("key_wallet_region");
-    IUM.add("key_function_id");
-    IUM.add(e.p.OzA);
-    IUM.add("geta8key_scene");
-    IUM.add("biz_video_msg_id");
-    IUM.add("biz_video_msg_index");
-    IUM.add("biz_video_msg_svr_id");
-    IUM.add("biz_mp_msg_info");
-    IUM.add(e.p.OzI);
-    IUM.add("key_menu_hide_expose");
-    IUM.add("webviewCurrentProcess");
-    JwV = new c.a()
+    PRd.add("webpageTitle");
+    PRd.add("hide_option_menu");
+    PRd.add("translate_webview");
+    PRd.add("srcUsername");
+    PRd.add("srcDisplayname");
+    PRd.add("mode");
+    PRd.add("KTemplateId");
+    PRd.add("KPublisherId");
+    PRd.add(f.r.VSK);
+    PRd.add(f.r.VSL);
+    PRd.add("pay_channel");
+    PRd.add("key_download_restrict");
+    PRd.add("key_wallet_region");
+    PRd.add("key_function_id");
+    PRd.add(f.r.VSO);
+    PRd.add("geta8key_scene");
+    PRd.add(f.r.VSW);
+    PRd.add("key_menu_hide_expose");
+    PRd.add("webviewCurrentProcess");
+    QuK = new com.tencent.mm.plugin.taskbar.api.b.a()
     {
       public final void a(MultiTaskInfo paramAnonymousMultiTaskInfo)
       {
-        AppMethodBeat.i(212023);
+        AppMethodBeat.i(223769);
         Log.d("MicroMsg.WebMultiTaskHelper", "MultiTaskInfo, name:%s", new Object[] { paramAnonymousMultiTaskInfo.field_showData.title });
-        Object localObject = new fah();
+        Object localObject = new fky();
         try
         {
-          ((fah)localObject).parseFrom(paramAnonymousMultiTaskInfo.field_data);
-          int i = ((fah)localObject).Nwt;
-          String str = ((fah)localObject).edo;
+          ((fky)localObject).parseFrom(paramAnonymousMultiTaskInfo.field_data);
+          int i = ((fky)localObject).UJE;
+          String str = ((fky)localObject).fXu;
           if ((i >= 0) && (!Util.isNullOrNil(str)))
           {
-            int j = ((fah)localObject).Nwo;
+            int j = ((fky)localObject).UJz;
             Log.d("MicroMsg.WebMultiTaskHelper", "addToPreload, name:%s", new Object[] { paramAnonymousMultiTaskInfo.field_showData.title });
-            ((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.brandservice.a.b.class)).a(str, i, j, new Object[0]);
+            ((com.tencent.mm.plugin.brandservice.a.c)h.ae(com.tencent.mm.plugin.brandservice.a.c.class)).a(str, i, j, new Object[0]);
           }
-          localObject = com.tencent.mm.plugin.webview.ui.tools.floatball.d.JmQ;
-          com.tencent.mm.plugin.webview.ui.tools.floatball.d.r(paramAnonymousMultiTaskInfo);
-          AppMethodBeat.o(212023);
+          localObject = d.Qkh;
+          d.t(paramAnonymousMultiTaskInfo);
+          AppMethodBeat.o(223769);
           return;
         }
         catch (Throwable paramAnonymousMultiTaskInfo)
         {
           Log.e("MicroMsg.WebMultiTaskHelper", "WebMultiTaskData parse fail", new Object[] { paramAnonymousMultiTaskInfo });
-          AppMethodBeat.o(212023);
+          AppMethodBeat.o(223769);
         }
       }
       
       public final void b(MultiTaskInfo paramAnonymousMultiTaskInfo)
       {
-        AppMethodBeat.i(212024);
-        a.t(paramAnonymousMultiTaskInfo);
-        AppMethodBeat.o(212024);
+        AppMethodBeat.i(223773);
+        a.v(paramAnonymousMultiTaskInfo);
+        AppMethodBeat.o(223773);
       }
       
       public final void c(MultiTaskInfo paramAnonymousMultiTaskInfo)
       {
-        AppMethodBeat.i(212025);
+        AppMethodBeat.i(223780);
         Log.d("MicroMsg.WebMultiTaskHelper", "onTaskBarItemRemoved, name:%s", new Object[] { paramAnonymousMultiTaskInfo.field_showData.title });
-        com.tencent.mm.plugin.webview.ui.tools.floatball.d locald = com.tencent.mm.plugin.webview.ui.tools.floatball.d.JmQ;
-        com.tencent.mm.plugin.webview.ui.tools.floatball.d.q(paramAnonymousMultiTaskInfo);
-        AppMethodBeat.o(212025);
+        d locald = d.Qkh;
+        d.s(paramAnonymousMultiTaskInfo);
+        AppMethodBeat.o(223780);
       }
     };
-    AppMethodBeat.o(212049);
+    AppMethodBeat.o(244049);
   }
   
   public a(com.tencent.mm.plugin.multitask.a.a parama, WebViewUI paramWebViewUI)
   {
     super(parama);
-    AppMethodBeat.i(212026);
-    this.JwT = true;
-    this.JwU = false;
-    this.JmK = false;
-    this.Jkg = paramWebViewUI;
-    this.IVb = new fah();
-    if (this.Aak.getIntent() != null) {
-      com.tencent.mm.plugin.multitask.f.b.b(this.Aak.getIntent(), this.IVb);
+    AppMethodBeat.i(244008);
+    this.QuI = true;
+    this.QuJ = false;
+    this.Qkb = false;
+    this.QcD = paramWebViewUI;
+    this.PRr = new fky();
+    if (this.FGb.getIntent() != null) {
+      com.tencent.mm.plugin.multitask.f.b.b(this.FGb.getIntent(), this.PRr);
     }
     Log.i("MicroMsg.WebMultiTaskHelper", "createWebMultiTaskHelper, WebViewUI:%s", new Object[] { Integer.valueOf(paramWebViewUI.hashCode()) });
-    AppMethodBeat.o(212026);
+    AppMethodBeat.o(244008);
   }
   
-  public static void euA()
+  public static void dFh()
   {
-    AppMethodBeat.i(212044);
-    ((com.tencent.mm.plugin.taskbar.api.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.taskbar.api.c.class)).a(2, JwV);
-    AppMethodBeat.o(212044);
+    AppMethodBeat.i(244037);
+    ((com.tencent.mm.plugin.taskbar.api.b)h.ae(com.tencent.mm.plugin.taskbar.api.b.class)).a(2, QuK);
+    AppMethodBeat.o(244037);
   }
   
-  public static void euB()
+  public static void dFi()
   {
-    AppMethodBeat.i(212045);
-    ((com.tencent.mm.plugin.taskbar.api.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.taskbar.api.c.class)).b(2, JwV);
-    AppMethodBeat.o(212045);
+    AppMethodBeat.i(244038);
+    ((com.tencent.mm.plugin.taskbar.api.b)h.ae(com.tencent.mm.plugin.taskbar.api.b.class)).b(2, QuK);
+    AppMethodBeat.o(244038);
+  }
+  
+  public static boolean hbx()
+  {
+    AppMethodBeat.i(244042);
+    if (BuildInfo.IS_FLAVOR_RED)
+    {
+      AppMethodBeat.o(244042);
+      return true;
+    }
+    boolean bool = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.waK, true);
+    AppMethodBeat.o(244042);
+    return bool;
   }
   
   public static boolean isMpUrl(String paramString)
   {
-    AppMethodBeat.i(212046);
+    AppMethodBeat.i(244039);
     if (!Util.isNullOrNil(paramString))
     {
-      if ((paramString.startsWith("https://" + WeChatHosts.domainString(2131761726) + "/")) || (paramString.startsWith("http://" + WeChatHosts.domainString(2131761726) + "/")))
+      if ((paramString.startsWith("https://" + WeChatHosts.domainString(c.i.host_mp_weixin_qq_com) + "/")) || (paramString.startsWith("http://" + WeChatHosts.domainString(c.i.host_mp_weixin_qq_com) + "/")))
       {
-        AppMethodBeat.o(212046);
+        AppMethodBeat.o(244039);
         return true;
       }
-      AppMethodBeat.o(212046);
+      AppMethodBeat.o(244039);
       return false;
     }
-    AppMethodBeat.o(212046);
+    AppMethodBeat.o(244039);
     return false;
   }
   
-  public final void G(int paramInt, String paramString)
+  public final void I(int paramInt, String paramString)
   {
-    AppMethodBeat.i(212036);
-    this.JmJ = true;
-    super.G(paramInt, paramString);
-    if ((!eqZ()) && (((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.brandservice.a.b.class)).ahv(this.Jkg.coX())))
+    AppMethodBeat.i(244028);
+    this.Qka = true;
+    super.I(paramInt, paramString);
+    if ((!faT()) && (((com.tencent.mm.plugin.brandservice.a.c)h.ae(com.tencent.mm.plugin.brandservice.a.c.class)).apb(this.QcD.cDu())))
     {
-      this.Abp.field_id = com.tencent.mm.plugin.multitask.g.aGH(this.Jkg.coX());
-      Log.i("MicroMsg.WebMultiTaskHelper", "isMpArticle, url: %s", new Object[] { this.Jkg.coX() });
+      this.FHd.field_id = g.aQV(this.QcD.cDu());
+      Log.i("MicroMsg.WebMultiTaskHelper", "isMpArticle, url: %s", new Object[] { this.QcD.cDu() });
     }
-    AppMethodBeat.o(212036);
+    AppMethodBeat.o(244028);
   }
   
-  public final boolean O(int paramInt, boolean paramBoolean)
+  public final boolean Q(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(212028);
-    bPu();
-    Object localObject;
-    if (!this.JwU)
-    {
-      localObject = era();
-      if (localObject == null) {
-        break label78;
-      }
-      localObject = ((MultiTaskInfo)localObject).field_id;
-      if (localObject == null) {
-        break label78;
-      }
+    AppMethodBeat.i(244012);
+    cbL();
+    if (!this.QuJ) {
+      this.QuI = false;
     }
-    label78:
-    for (paramBoolean = ((com.tencent.mm.plugin.taskbar.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.taskbar.d.class)).hasTaskInfo((String)localObject);; paramBoolean = false)
-    {
-      if (paramBoolean) {
-        this.JwT = false;
-      }
-      paramBoolean = super.O(paramInt, this.JwT);
-      AppMethodBeat.o(212028);
-      return paramBoolean;
-    }
+    paramBoolean = super.Q(paramInt, this.QuI);
+    AppMethodBeat.o(244012);
+    return paramBoolean;
   }
   
-  public final void aGj()
+  public final void aOj()
   {
-    AppMethodBeat.i(212042);
-    super.aGj();
-    this.JmK = false;
-    AppMethodBeat.o(212042);
+    AppMethodBeat.i(244035);
+    super.aOj();
+    this.Qkb = false;
+    AppMethodBeat.o(244035);
   }
   
-  public final void ah(Bitmap paramBitmap)
+  public final void af(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(212037);
-    if (this.JmJ) {
-      super.ah(paramBitmap);
+    AppMethodBeat.i(244029);
+    if (this.Qka) {
+      super.af(paramBitmap);
     }
-    AppMethodBeat.o(212037);
+    AppMethodBeat.o(244029);
   }
   
-  public final void ahe(int paramInt)
+  public final void ag(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(212034);
-    this.JwU = true;
+    AppMethodBeat.i(244032);
+    if (this.Qka) {
+      super.ag(paramBitmap);
+    }
+    AppMethodBeat.o(244032);
+  }
+  
+  public final void aoV(int paramInt)
+  {
+    AppMethodBeat.i(244024);
+    Log.i("MicroMsg.WebMultiTaskHelper", "sync Read State %d", new Object[] { Integer.valueOf(paramInt) });
+    this.QuJ = true;
     if (paramInt == 0)
     {
-      this.JwT = false;
-      bPu();
-      ai(null);
-      AppMethodBeat.o(212034);
+      this.QuI = false;
+      cbL();
+      ag(null);
+      AppMethodBeat.o(244024);
       return;
     }
-    this.JwT = true;
-    erc();
-    AppMethodBeat.o(212034);
+    this.QuI = true;
+    faW();
+    AppMethodBeat.o(244024);
   }
   
-  public final void ai(Bitmap paramBitmap)
+  public final void bNV()
   {
-    AppMethodBeat.i(212040);
-    if (this.JmJ) {
-      super.ai(paramBitmap);
+    AppMethodBeat.i(244034);
+    super.bNV();
+    if (!this.Qkb) {
+      this.Qkb = true;
     }
-    AppMethodBeat.o(212040);
+    AppMethodBeat.o(244034);
   }
   
-  public final void bCA()
+  public final boolean cbG()
   {
-    AppMethodBeat.i(212041);
-    super.bCA();
-    if (!this.JmK) {
-      this.JmK = true;
-    }
-    AppMethodBeat.o(212041);
-  }
-  
-  public final boolean bPp()
-  {
-    AppMethodBeat.i(212031);
-    if ((this.Jkg.gbH()) && (this.Aak.bPp()))
+    AppMethodBeat.i(244018);
+    if ((this.QcD.gUC()) && (this.FGb.cbG()))
     {
-      AppMethodBeat.o(212031);
+      AppMethodBeat.o(244018);
       return true;
     }
-    AppMethodBeat.o(212031);
+    AppMethodBeat.o(244018);
     return false;
   }
   
-  public final boolean bPq()
+  public final boolean cbH()
   {
-    AppMethodBeat.i(212043);
-    boolean bool = this.Jkg.gbH();
-    AppMethodBeat.o(212043);
+    AppMethodBeat.i(244036);
+    boolean bool = this.QcD.gUC();
+    AppMethodBeat.o(244036);
     return bool;
   }
   
-  public final void bPu()
+  public final void cbL()
   {
-    AppMethodBeat.i(212035);
+    AppMethodBeat.i(244026);
     try
     {
-      this.IVb.edo = this.Jkg.coX();
-      o.a locala = this.Jkg.gft();
-      if (locala != null)
+      this.PRr.fXu = this.QcD.cDu();
+      p.b localb = this.QcD.gYE();
+      if (localb != null)
       {
-        this.Abp.erh().title = locala.title;
-        this.Abp.erh().MwR = locala.Jko;
-        localObject2 = this.Abp.erh().nickname;
+        this.FHd.fbc().title = localb.title;
+        this.FHd.fbc().TIg = localb.QhG;
+        localObject2 = this.FHd.fbc().nickname;
         localObject1 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          localObject1 = locala.Jkn;
+          localObject1 = localb.QhF;
         }
-        this.Abp.erh().nickname = ((String)localObject1);
-        this.IVb.coverUrl = locala.iAo;
+        this.FHd.fbc().nickname = ((String)localObject1);
+        this.PRr.coverUrl = localb.lpK;
       }
-      Object localObject2 = this.Abp.erh().title;
+      Object localObject2 = this.FHd.fbc().title;
       Object localObject1 = localObject2;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = this.Jkg.getIntent().getStringExtra("webpageTitle");
+        localObject1 = this.QcD.getIntent().getStringExtra("webpageTitle");
       }
       localObject2 = localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = this.Jkg.pGj.getTitle();
+        localObject2 = this.QcD.pHS.getTitle();
       }
-      this.Abp.erh().title = ((String)localObject2);
-      this.Abp.field_data = this.IVb.toByteArray();
-      AppMethodBeat.o(212035);
+      this.FHd.fbc().title = ((String)localObject2);
+      this.FHd.field_data = this.PRr.toByteArray();
+      AppMethodBeat.o(244026);
       return;
     }
     catch (Exception localException)
     {
       Log.printErrStackTrace("MicroMsg.WebMultiTaskHelper", localException, "onMenuMultiTaskSelected", new Object[0]);
-      AppMethodBeat.o(212035);
+      AppMethodBeat.o(244026);
     }
   }
   
   public final void d(Bitmap paramBitmap, boolean paramBoolean)
   {
-    AppMethodBeat.i(212030);
+    AppMethodBeat.i(244015);
+    if (this.QcD.gYE() == null)
+    {
+      Log.i("MicroMsg.WebMultiTaskHelper", "not MP page");
+      AppMethodBeat.o(244015);
+      return;
+    }
     if (paramBoolean)
     {
       Log.i("MicroMsg.WebMultiTaskHelper", "ended, remove historyTaskInfo");
-      erc();
-      AppMethodBeat.o(212030);
+      faW();
+      AppMethodBeat.o(244015);
       return;
     }
     Log.i("MicroMsg.WebMultiTaskHelper", "not ended update historyTaskInfo");
     c(paramBitmap, true);
-    AppMethodBeat.o(212030);
+    AppMethodBeat.o(244015);
   }
   
-  public final boolean dki()
+  public final boolean dJN()
   {
     return true;
   }
   
-  public final void dkj()
+  public final void dJO()
   {
-    AppMethodBeat.i(212039);
-    if (this.JmJ) {
-      super.dkj();
+    AppMethodBeat.i(244031);
+    if (this.Qka) {
+      super.dJO();
     }
-    AppMethodBeat.o(212039);
+    AppMethodBeat.o(244031);
   }
   
-  public final void eqX()
+  public final Boolean faJ()
   {
-    AppMethodBeat.i(212038);
-    if (this.JmJ) {
-      super.eqX();
-    }
-    AppMethodBeat.o(212038);
+    return Boolean.FALSE;
   }
   
-  public final MultiTaskInfo era()
+  public final void faR()
   {
-    AppMethodBeat.i(212033);
-    if ((this.Abp == null) || (this.Abp.field_data == null))
+    AppMethodBeat.i(244030);
+    if (this.Qka) {
+      super.faR();
+    }
+    AppMethodBeat.o(244030);
+  }
+  
+  public final MultiTaskInfo faU()
+  {
+    AppMethodBeat.i(244023);
+    if ((this.FHd == null) || (this.FHd.field_data == null))
     {
-      AppMethodBeat.o(212033);
+      AppMethodBeat.o(244023);
       return null;
     }
     Object localObject = Parcel.obtain();
     ((Parcel)localObject).setDataPosition(0);
-    this.Abp.writeToParcel((Parcel)localObject, 0);
+    this.FHd.writeToParcel((Parcel)localObject, 0);
     ((Parcel)localObject).setDataPosition(0);
     localObject = (MultiTaskInfo)MultiTaskInfo.CREATOR.createFromParcel((Parcel)localObject);
-    ((MultiTaskInfo)localObject).field_id = com.tencent.mm.plugin.multitask.g.aGG(((aa)com.tencent.mm.kernel.g.af(aa.class)).fM(this.Jkg.coX()));
-    AppMethodBeat.o(212033);
+    ((MultiTaskInfo)localObject).field_id = g.aQU(((aa)h.ae(aa.class)).gw(this.QcD.cDu()));
+    AppMethodBeat.o(244023);
     return localObject;
   }
   
-  public final boolean erb()
+  public final boolean faV()
   {
-    AppMethodBeat.i(212029);
+    AppMethodBeat.i(244014);
     int i;
-    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.soS, 0) != 0)
+    if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.wax, 0) != 0)
     {
       i = 1;
       if (i != 0) {
-        break label71;
+        break label70;
       }
     }
-    label71:
+    label70:
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.WebMultiTaskHelper", "shouldCaptureOnClose:%b", new Object[] { Boolean.valueOf(bool) });
       if (i != 0) {
-        break label76;
+        break label75;
       }
-      AppMethodBeat.o(212029);
+      AppMethodBeat.o(244014);
       return true;
       i = 0;
       break;
     }
-    label76:
-    AppMethodBeat.o(212029);
+    label75:
+    AppMethodBeat.o(244014);
     return false;
   }
   
-  public final int ghY()
+  public final void hbw()
   {
-    return this.IVb.Nwi;
-  }
-  
-  public final void ghZ()
-  {
-    AppMethodBeat.i(212047);
-    if (this.AbC != null)
+    AppMethodBeat.i(244041);
+    if (faX() != null)
     {
-      com.tencent.mm.plugin.multitask.animation.swipeahead.b localb = this.AbC;
+      com.tencent.mm.plugin.multitask.animation.swipeahead.b localb = faX();
       Log.i("MicroMsg.FloatMultiTaskIndicatorController", "stop FloatIndicatorController");
       MMHandlerThread.postToMainThread((Runnable)new b.c(localb));
-      localb.Aak.a(null);
+      localb.FGb.a(null);
     }
-    AppMethodBeat.o(212047);
+    AppMethodBeat.o(244041);
   }
   
-  public final void ic(boolean paramBoolean)
+  public final void iW(boolean paramBoolean)
   {
-    AppMethodBeat.i(212027);
-    bPu();
-    super.ic(paramBoolean);
-    AppMethodBeat.o(212027);
+    AppMethodBeat.i(244009);
+    cbL();
+    super.iW(paramBoolean);
+    AppMethodBeat.o(244009);
   }
   
   public final void setRawUrl(String paramString)
   {
-    this.IVb.edo = paramString;
+    this.PRr.fXu = paramString;
   }
   
-  public final boolean wu(int paramInt)
+  public final boolean zH(int paramInt)
   {
-    AppMethodBeat.i(212032);
-    boolean bool = O(paramInt, this.JwT);
-    AppMethodBeat.o(212032);
+    AppMethodBeat.i(244021);
+    boolean bool = Q(paramInt, this.QuI);
+    AppMethodBeat.o(244021);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.multitask.a
  * JD-Core Version:    0.7.0.1
  */

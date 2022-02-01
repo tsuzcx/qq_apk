@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:background="@drawable/cts" android:layout_width="fill_parent" android:layout_height="@dimen/cp">
+        <CheckBox android:layout_gravity="center_vertical" android:id="@id/kgf" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_marginLeft="@dimen/cb" style="@style/jk" />
+        <RelativeLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/kgc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cn" android:layout_marginRight="@dimen/ci">
+            <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:id="@id/kgt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="歌曲名字" android:singleLine="true" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/ua" android:ellipsize="end" android:id="@id/kik" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="歌手" android:singleLine="true" android:layout_below="@id/kgt" />
+        </RelativeLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center|right" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginRight="@dimen/cb" android:src="@raw/finder_live_move_icon" app:iconColor="@color/aik" />
+        <View android:layout_gravity="bottom" android:background="@color/BW_100_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cn" />
+    </FrameLayout>
+</FrameLayout>

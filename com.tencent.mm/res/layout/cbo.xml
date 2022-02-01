@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bun" android:layout_width="@dimen/hu" android:layout_height="@dimen/hu" android:layout_marginTop="@dimen/hi" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
-    <TextView android:ellipsize="end" android:id="@id/bup" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hv" android:layout_marginTop="@dimen/ir" android:layout_marginRight="@dimen/hv" android:layout_marginBottom="@dimen/i2" android:maxLines="1" android:layout_below="@id/bun" android:layout_centerHorizontal="true" style="@style/p_" />
-    <TextView android:id="@id/buj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/bup" android:layout_centerHorizontal="true" style="@style/m0" />
-    <Button android:id="@id/bu9" android:layout_marginLeft="@dimen/hv" android:layout_marginTop="@dimen/hw" android:layout_marginRight="@dimen/hv" android:layout_marginBottom="@dimen/k" android:minWidth="220.0dip" android:text="@string/iym" android:layout_below="@id/buj" android:layout_centerHorizontal="true" style="@style/ou" />
-    <TextView android:id="@id/buo" android:visibility="gone" android:layout_width="wrap_content" android:layout_marginTop="@dimen/hw" android:text="@string/iyu" android:layout_below="@id/buj" android:layout_centerHorizontal="true" style="@style/m0" />
-    <TextView android:textSize="@dimen/is" android:textColor="@color/x3" android:id="@id/btq" android:paddingLeft="@dimen/k_" android:paddingRight="@dimen/k_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" android:text="@string/iyk" android:layout_below="@id/buo" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.ThreeDotsLoadingView android:id="@id/epy" android:paddingTop="@dimen/ct" android:paddingBottom="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content" app:dotColor="@color/am" />
+</FrameLayout>

@@ -14,11 +14,11 @@ public class PluginTrafficMonitor
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(123901);
-    if ((paramg.aBb()) && (Build.VERSION.SDK_INT < 29) && (Build.VERSION.SDK_INT > 19))
+    if ((paramg.aIE()) && (Build.VERSION.SDK_INT < 29) && (Build.VERSION.SDK_INT > 19))
     {
-      paramg.ca.registerReceiver(new TrafficClickFlowReceiver(), new IntentFilter("com.tencent.mm.Intent.ACTION_NET_STATS"));
-      g.fAk();
-      g.fAl();
+      paramg.Zw.registerReceiver(new TrafficClickFlowReceiver(), new IntentFilter("com.tencent.mm.Intent.ACTION_NET_STATS"));
+      g.gsl();
+      g.gsm();
     }
     AppMethodBeat.o(123901);
   }
@@ -38,7 +38,7 @@ public class PluginTrafficMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.trafficmonitor.PluginTrafficMonitor
  * JD-Core Version:    0.7.0.1
  */

@@ -13,21 +13,21 @@ public class VoipCSVideoView
   extends MMTextureView
   implements TextureView.SurfaceTextureListener
 {
-  private static final int[] Hqr = { 452984831, 369098751, 268435455, 369098751, 268435455, 184549375, 268435455, 184549375, 100663295 };
-  private VoipCSVideoView.a HsG;
+  private static final int[] Ohk = { 452984831, 369098751, 268435455, 369098751, 268435455, 184549375, 268435455, 184549375, 100663295 };
+  private VoipCSVideoView.a Okr;
   private int index;
   private int position;
-  private Paint qvj;
   private int surfaceHeight;
   private SurfaceTexture surfaceTexture;
   private int surfaceWidth;
+  private Paint tUe;
   private String username;
   
   public VoipCSVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(125480);
-    this.HsG = VoipCSVideoView.a.HsJ;
+    this.Okr = VoipCSVideoView.a.Oku;
     initView();
     AppMethodBeat.o(125480);
   }
@@ -36,7 +36,7 @@ public class VoipCSVideoView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(125481);
-    this.HsG = VoipCSVideoView.a.HsJ;
+    this.Okr = VoipCSVideoView.a.Oku;
     initView();
     AppMethodBeat.o(125481);
   }
@@ -44,10 +44,10 @@ public class VoipCSVideoView
   private void initView()
   {
     AppMethodBeat.i(125482);
-    this.qvj = new Paint();
-    this.qvj.setColor(-16777216);
-    this.qvj.setFilterBitmap(true);
-    this.qvj.setTextSize(40.0F);
+    this.tUe = new Paint();
+    this.tUe.setColor(-16777216);
+    this.tUe.setFilterBitmap(true);
+    this.tUe.setTextSize(40.0F);
     setSurfaceTextureListener(this);
     if (isAvailable()) {
       onSurfaceTextureAvailable(getSurfaceTexture(), getWidth(), getHeight());
@@ -134,7 +134,7 @@ public class VoipCSVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.ui.widget.VoipCSVideoView
  * JD-Core Version:    0.7.0.1
  */

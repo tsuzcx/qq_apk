@@ -11,35 +11,35 @@ public enum c
   implements Choreographer.FrameCallback
 {
   private Choreographer choreographer;
-  private int gTn;
-  private long hkf;
-  private int hkg;
-  double hkh;
-  public boolean hki;
+  private int interval;
+  private long jVO;
+  private int jVP;
+  double jVQ;
+  public boolean jVR;
   private final Object lock;
   
   static
   {
     AppMethodBeat.i(136204);
-    hke = new c("INSTANCE");
-    hkj = new c[] { hke };
+    jVN = new c("INSTANCE");
+    jVS = new c[] { jVN };
     AppMethodBeat.o(136204);
   }
   
   private c()
   {
     AppMethodBeat.i(136201);
-    this.hkf = 0L;
-    this.hkg = 0;
-    this.hkh = 0.0D;
-    this.gTn = 500;
+    this.jVO = 0L;
+    this.jVP = 0;
+    this.jVQ = 0.0D;
+    this.interval = 500;
     this.lock = new Object();
-    this.hki = false;
+    this.jVR = false;
     AppMethodBeat.o(136201);
   }
   
   /* Error */
-  public final Choreographer axF()
+  public final Choreographer aEX()
   {
     // Byte code:
     //   0: ldc 94
@@ -114,49 +114,47 @@ public enum c
     // Exception table:
     //   from	to	target	type
     //   62	71	85	finally
-    //   86	88	85	finally
     //   55	62	95	java/lang/InterruptedException
-    //   88	95	95	java/lang/InterruptedException
+    //   86	95	95	java/lang/InterruptedException
     //   14	55	109	finally
     //   55	62	109	finally
     //   71	73	109	finally
-    //   88	95	109	finally
+    //   86	95	109	finally
     //   99	106	109	finally
-    //   110	112	109	finally
   }
   
   public final void doFrame(long paramLong)
   {
     AppMethodBeat.i(136203);
     paramLong = TimeUnit.NANOSECONDS.toMillis(paramLong);
-    if (this.hkf > 0L)
+    if (this.jVO > 0L)
     {
-      long l = paramLong - this.hkf;
-      this.hkg += 1;
-      if (l > this.gTn)
+      long l = paramLong - this.jVO;
+      this.jVP += 1;
+      if (l > this.interval)
       {
-        this.hkh = (this.hkg * 1000 / l);
-        this.hkf = paramLong;
-        this.hkg = 0;
+        this.jVQ = (this.jVP * 1000 / l);
+        this.jVO = paramLong;
+        this.jVP = 0;
       }
     }
     for (;;)
     {
-      axF().postFrameCallback(this);
+      aEX().postFrameCallback(this);
       AppMethodBeat.o(136203);
       return;
-      this.hkf = paramLong;
+      this.jVO = paramLong;
     }
   }
   
   public final void stop()
   {
     AppMethodBeat.i(136202);
-    this.hkf = 0L;
-    this.hkg = 0;
-    this.hki = false;
+    this.jVO = 0L;
+    this.jVP = 0;
+    this.jVR = false;
     Log.i("MicroMsg.Metronome", "[stop] stack:%s", new Object[] { Util.getStack() });
-    axF().removeFrameCallback(this);
+    aEX().removeFrameCallback(this);
     AppMethodBeat.o(136202);
   }
 }

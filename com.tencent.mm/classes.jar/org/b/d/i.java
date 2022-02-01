@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Serializable;
 import org.b.g.d;
 
-public final class i
+public class i
   implements Serializable
 {
-  public final String Mte;
+  public final String TEk;
   private final String rawResponse;
   public final String token;
   
@@ -19,15 +19,15 @@ public final class i
   public i(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(40536);
-    d.j(paramString1, "Token can't be null");
-    d.j(paramString2, "Secret can't be null");
+    d.n(paramString1, "Token can't be null");
+    d.n(paramString2, "Secret can't be null");
     this.token = paramString1;
-    this.Mte = paramString2;
+    this.TEk = paramString2;
     this.rawResponse = paramString3;
     AppMethodBeat.o(40536);
   }
   
-  public final boolean equals(Object paramObject)
+  public boolean equals(Object paramObject)
   {
     AppMethodBeat.i(40538);
     if (this == paramObject)
@@ -41,7 +41,7 @@ public final class i
       return false;
     }
     paramObject = (i)paramObject;
-    if ((this.token.equals(paramObject.token)) && (this.Mte.equals(paramObject.Mte)))
+    if ((this.token.equals(paramObject.token)) && (this.TEk.equals(paramObject.TEk)))
     {
       AppMethodBeat.o(40538);
       return true;
@@ -50,19 +50,19 @@ public final class i
     return false;
   }
   
-  public final int hashCode()
+  public int hashCode()
   {
     AppMethodBeat.i(40539);
     int i = this.token.hashCode();
-    int j = this.Mte.hashCode();
+    int j = this.TEk.hashCode();
     AppMethodBeat.o(40539);
     return i * 31 + j;
   }
   
-  public final String toString()
+  public String toString()
   {
     AppMethodBeat.i(40537);
-    String str = String.format("Token[%s , %s]", new Object[] { this.token, this.Mte });
+    String str = String.format("Token[%s , %s]", new Object[] { this.token, this.TEk });
     AppMethodBeat.o(40537);
     return str;
   }

@@ -72,10 +72,19 @@ public class TXRecordCommon
   public static final int VIDOE_VOICECHANGER_TYPE_7 = 7;
   public static final int VIDOE_VOICECHANGER_TYPE_8 = 8;
   public static final int VIDOE_VOICECHANGER_TYPE_9 = 9;
+  
+  public static abstract interface ITXBGMNotify
+  {
+    public abstract void onBGMComplete(int paramInt);
+    
+    public abstract void onBGMProgress(long paramLong1, long paramLong2);
+    
+    public abstract void onBGMStart();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.ugc.TXRecordCommon
  * JD-Core Version:    0.7.0.1
  */

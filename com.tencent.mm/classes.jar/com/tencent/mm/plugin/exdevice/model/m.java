@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.exdevice.i.c;
-import com.tencent.mm.protocal.protobuf.cat;
-import com.tencent.mm.protocal.protobuf.ml;
-import com.tencent.mm.protocal.protobuf.mm;
+import com.tencent.mm.protocal.protobuf.ciu;
+import com.tencent.mm.protocal.protobuf.mb;
+import com.tencent.mm.protocal.protobuf.mc;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class m
@@ -20,18 +20,18 @@ public final class m
   implements com.tencent.mm.network.m
 {
   private i callback;
-  private String rAs;
-  private long rAt;
-  private String rAu;
-  private long rAv;
   private d rr;
+  private String vfZ;
+  private long vga;
+  private String vgb;
+  private long vgc;
   
   public m(long paramLong1, String paramString1, String paramString2, long paramLong2)
   {
-    this.rAt = paramLong1;
-    this.rAu = paramString1;
-    this.rAs = paramString2;
-    this.rAv = paramLong2;
+    this.vga = paramLong1;
+    this.vgb = paramString1;
+    this.vfZ = paramString2;
+    this.vgc = paramLong2;
   }
   
   public final int doScene(g paramg, i parami)
@@ -39,18 +39,18 @@ public final class m
     AppMethodBeat.i(23387);
     this.callback = parami;
     parami = new d.a();
-    parami.iLN = new ml();
-    parami.iLO = new mm();
+    parami.lBU = new mb();
+    parami.lBV = new mc();
     parami.uri = "/cgi-bin/mmoc-bin/hardware/bindunauthdevice";
     parami.funcId = 1262;
-    parami.iLP = 0;
+    parami.lBW = 0;
     parami.respCmdId = 0;
-    this.rr = parami.aXF();
-    parami = (ml)this.rr.iLK.iLR;
-    parami.mac = com.tencent.mm.plugin.exdevice.k.b.Dk(this.rAt);
-    parami.KQG = this.rAu;
-    parami.KQF = this.rAs;
-    parami.KQH = this.rAv;
+    this.rr = parami.bgN();
+    parami = (mb)d.b.b(this.rr.lBR);
+    parami.mac = com.tencent.mm.plugin.exdevice.k.b.Jy(this.vga);
+    parami.RRE = this.vgb;
+    parami.RRD = this.vfZ;
+    parami.RRF = this.vgc;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(23387);
     return i;
@@ -65,24 +65,24 @@ public final class m
   {
     AppMethodBeat.i(23386);
     Log.i("MicroMsg.NetSceneBindUnauthDevice", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
-    mm localmm;
-    cat localcat;
+    mc localmc;
+    ciu localciu;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      localmm = (mm)this.rr.iLL.iLR;
-      localcat = localmm.KPD;
+      localmc = (mc)d.c.b(this.rr.lBS);
+      localciu = localmc.RQB;
       paramArrayOfByte = null;
       params = null;
-      if (localcat != null)
+      if (localciu != null)
       {
-        paramArrayOfByte = localcat.oTH;
-        params = localcat.KLO;
+        paramArrayOfByte = localciu.rVF;
+        params = localciu.RMK;
       }
       Log.d("MicroMsg.NetSceneBindUnauthDevice", "unauth bind deviceId = %s, deviceType = %s", new Object[] { paramArrayOfByte, params });
-      if (ad.cKL().gc(params, paramArrayOfByte) == null) {
+      if (ae.cZx().gr(params, paramArrayOfByte) == null) {
         break label291;
       }
-      boolean bool = ad.cKL().gd(paramArrayOfByte, params);
+      boolean bool = ae.cZx().gs(paramArrayOfByte, params);
       Log.i("MicroMsg.NetSceneBindUnauthDevice", "delete local deviceinfo : %s, ret : %b", new Object[] { params, Boolean.valueOf(bool) });
       if (!bool) {
         break label308;
@@ -92,18 +92,18 @@ public final class m
     for (;;)
     {
       params = new com.tencent.mm.plugin.exdevice.i.b();
-      params.field_connProto = this.rAs;
+      params.field_connProto = this.vfZ;
       params.field_connStrategy = 1;
       params.field_closeStrategy = 1;
       params.field_url = "";
-      f.a(params, localcat, localmm.KPE);
+      f.a(params, localciu, localmc.RQC);
       if (params.field_mac == 0L)
       {
         Log.d("MicroMsg.NetSceneBindUnauthDevice", "onSceneEnd, mac of hardDeviceAttr is 0 so set a local mac.");
-        params.field_mac = this.rAt;
+        params.field_mac = this.vga;
       }
       if (paramInt1 != 0) {
-        ad.cKL().insert(params);
+        ae.cZx().insert(params);
       }
       for (;;)
       {
@@ -113,7 +113,7 @@ public final class m
         label291:
         paramInt1 = 1;
         break;
-        ad.cKL().e(params);
+        ae.cZx().e(params);
       }
       label308:
       paramInt1 = 0;
@@ -122,7 +122,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.m
  * JD-Core Version:    0.7.0.1
  */

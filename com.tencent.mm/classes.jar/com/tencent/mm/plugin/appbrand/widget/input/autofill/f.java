@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(136672);
-    owz = new f("SCREEN", 0);
-    owA = new f("VIEW", 1);
-    owB = new f[] { owz, owA };
+    rzt = new f("SCREEN", 0);
+    rzu = new f("VIEW", 1);
+    rzv = new f[] { rzt, rzu };
     AppMethodBeat.o(136672);
   }
   

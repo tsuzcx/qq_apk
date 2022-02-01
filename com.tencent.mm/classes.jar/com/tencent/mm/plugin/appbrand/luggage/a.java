@@ -11,12 +11,12 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 public final class a
   extends com.tencent.luggage.bridge.impl.a
 {
-  private static e lmN;
+  private static e ohz;
   
   static
   {
     AppMethodBeat.i(47471);
-    lmN = new c();
+    ohz = new c();
     AppMethodBeat.o(47471);
   }
   
@@ -33,13 +33,13 @@ public final class a
     AppMethodBeat.i(47469);
     Log.i("MicroMsg.LuggageInitDelegateWxImpl", "onInitialize %s", new Object[] { MMApplicationContext.getProcessName() });
     super.a(paramc);
-    paramc.a(e.class, lmN);
+    paramc.a(e.class, ohz);
     AppMethodBeat.o(47469);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.a
  * JD-Core Version:    0.7.0.1
  */

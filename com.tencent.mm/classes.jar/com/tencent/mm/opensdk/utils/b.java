@@ -18,13 +18,13 @@ public final class b
   
   static
   {
-    AppMethodBeat.i(190351);
+    AppMethodBeat.i(253481);
     int i = Runtime.getRuntime().availableProcessors();
     b = i;
     c = i + 1;
     d = i * 2 + 1;
     e = new ThreadPoolExecutor(c, d, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque());
-    AppMethodBeat.o(190351);
+    AppMethodBeat.o(253481);
   }
   
   /* Error */
@@ -138,7 +138,7 @@ public final class b
   
   public static int a(String paramString)
   {
-    AppMethodBeat.i(190349);
+    AppMethodBeat.i(253475);
     if ((paramString != null) && (paramString.length() != 0))
     {
       File localFile = new File(paramString);
@@ -148,29 +148,29 @@ public final class b
           try
           {
             i = a(a.getContentResolver(), Uri.parse(paramString));
-            AppMethodBeat.o(190349);
+            AppMethodBeat.o(253475);
             return i;
           }
           catch (Exception paramString)
           {
-            AppMethodBeat.o(190349);
+            AppMethodBeat.o(253475);
             return 0;
           }
         }
-        AppMethodBeat.o(190349);
+        AppMethodBeat.o(253475);
         return 0;
       }
       int i = (int)localFile.length();
-      AppMethodBeat.o(190349);
+      AppMethodBeat.o(253475);
       return i;
     }
-    AppMethodBeat.o(190349);
+    AppMethodBeat.o(253475);
     return 0;
   }
   
   public static int a(String paramString, int paramInt)
   {
-    AppMethodBeat.i(190348);
+    AppMethodBeat.i(253470);
     int i = paramInt;
     if (paramString != null) {
       i = paramInt;
@@ -180,12 +180,12 @@ public final class b
       if (paramString.length() > 0) {
         i = Integer.parseInt(paramString);
       }
-      AppMethodBeat.o(190348);
+      AppMethodBeat.o(253470);
       return i;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(190348);
+      AppMethodBeat.o(253470);
     }
     return paramInt;
   }
@@ -197,13 +197,13 @@ public final class b
   
   public static boolean b(String paramString)
   {
-    AppMethodBeat.i(190347);
+    AppMethodBeat.i(253468);
     if ((paramString != null) && (paramString.length() > 0))
     {
-      AppMethodBeat.o(190347);
+      AppMethodBeat.o(253468);
       return false;
     }
-    AppMethodBeat.o(190347);
+    AppMethodBeat.o(253468);
     return true;
   }
 }

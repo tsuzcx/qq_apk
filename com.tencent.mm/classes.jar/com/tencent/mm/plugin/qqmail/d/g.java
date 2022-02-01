@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.qqmail.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int Brl;
-  public long Brn;
+  public int HlE;
+  public long HlH;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -14,24 +14,24 @@ public final class g
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.Brl);
-      paramVarArgs.bb(2, this.Brn);
+      paramVarArgs.aY(1, this.HlE);
+      paramVarArgs.bm(2, this.HlH);
       AppMethodBeat.o(122661);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bu(1, this.Brl);
-      int i = g.a.a.b.b.a.r(2, this.Brn);
+      paramInt = g.a.a.b.b.a.bM(1, this.HlE);
+      int i = g.a.a.b.b.a.p(2, this.HlH);
       AppMethodBeat.o(122661);
       return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
       AppMethodBeat.o(122661);
@@ -47,11 +47,11 @@ public final class g
         AppMethodBeat.o(122661);
         return -1;
       case 1: 
-        localg.Brl = locala.UbS.zi();
+        localg.HlE = locala.abFh.AK();
         AppMethodBeat.o(122661);
         return 0;
       }
-      localg.Brn = locala.UbS.zl();
+      localg.HlH = locala.abFh.AN();
       AppMethodBeat.o(122661);
       return 0;
     }

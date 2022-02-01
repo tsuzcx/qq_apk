@@ -8,13 +8,12 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory.Options;
-import com.tencent.f.h;
+import com.tencent.e.h;
 import com.tencent.luggage.e.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
 import com.tencent.mm.compatible.util.Exif;
 import com.tencent.mm.graphics.MMBitmapFactory;
-import com.tencent.mm.plugin.game.commlib.util.b.a;
+import com.tencent.mm.plugin.game.commlib.e.c.a;
 import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
@@ -24,8 +23,8 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import com.tencent.mm.ui.MMFragmentActivity.a;
-import com.tencent.mm.ui.base.q;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -35,20 +34,20 @@ import org.json.JSONObject;
 public class f
   extends bs<com.tencent.mm.plugin.game.luggage.g.i>
 {
-  private static final String xwF;
-  private static final int xwG;
-  private q gxX;
-  private DialogInterface.OnCancelListener mcu;
+  private static final String CAN;
+  private static final int CAO;
+  private s jhZ;
+  private DialogInterface.OnCancelListener pak;
   
   static
   {
     AppMethodBeat.i(83062);
-    xwF = com.tencent.mm.plugin.game.commlib.util.b.c(b.a.xvH) + "haowan/";
-    xwG = "choose_media_request_code".hashCode() & 0xFFFF;
+    CAN = com.tencent.mm.plugin.game.commlib.e.c.c(c.a.Czx) + "haowan/";
+    CAO = "choose_media_request_code".hashCode() & 0xFFFF;
     AppMethodBeat.o(83062);
   }
   
-  private static String hE(String paramString1, String paramString2)
+  private static String hN(String paramString1, String paramString2)
   {
     AppMethodBeat.i(83059);
     int i = Exif.fromFile(paramString1).getOrientationInDegree();
@@ -66,13 +65,13 @@ public class f
         float f = i % 360;
         Bitmap localBitmap = BitmapUtil.rotate((Bitmap)localObject, f);
         Log.i("MicroMsg.JsApiChooseHaowanMedia", "doRotate, dstPath : %s", new Object[] { paramString2 });
-        if (a.d(localOptions)) {}
+        if (a.a(localOptions)) {}
         for (localObject = Bitmap.CompressFormat.JPEG;; localObject = Bitmap.CompressFormat.PNG) {
           try
           {
             BitmapUtil.saveBitmapToImage(localBitmap, 80, (Bitmap.CompressFormat)localObject, paramString2, true);
-            if (a.d(localOptions)) {
-              com.tencent.mm.plugin.appbrand.l.b.dk(paramString1, paramString2);
+            if (a.a(localOptions)) {
+              com.tencent.mm.plugin.appbrand.l.b.dt(paramString1, paramString2);
             }
             AppMethodBeat.o(83059);
             return paramString2;
@@ -80,7 +79,7 @@ public class f
           catch (Exception localException)
           {
             Log.e("MicroMsg.JsApiChooseHaowanMedia", "rotate image, exception occurred when saving | %s", new Object[] { localException });
-            s.deleteFile(paramString2);
+            u.deleteFile(paramString2);
             AppMethodBeat.o(83059);
             return paramString1;
           }
@@ -104,7 +103,7 @@ public class f
   public final void a(final Context paramContext, String paramString, final br.a parama)
   {
     AppMethodBeat.i(83058);
-    Object localObject = com.tencent.mm.plugin.webview.luggage.c.b.Zc(paramString);
+    Object localObject = com.tencent.mm.plugin.webview.luggage.c.c.agO(paramString);
     if (localObject == null)
     {
       parama.i("invalid_params", null);
@@ -128,7 +127,7 @@ public class f
         AppMethodBeat.i(83057);
         String str;
         Object localObject;
-        if (paramAnonymousInt1 == f.xwG)
+        if (paramAnonymousInt1 == f.CAO)
         {
           if (paramAnonymousInt2 != -1) {
             break label278;
@@ -159,7 +158,7 @@ public class f
             if (!Util.isNullOrNil((List)localObject))
             {
               f.a(f.this, paramContext);
-              h.RTc.aX(new Runnable()
+              h.ZvG.be(new Runnable()
               {
                 public final void run()
                 {
@@ -176,11 +175,11 @@ public class f
                       try
                       {
                         localJSONObject.put("type", 1);
-                        localJSONObject.put("localIds", this.xwK);
+                        localJSONObject.put("localIds", this.CAS);
                         localJSONObject.put("appId", f.1.1.this.val$data.getStringExtra("key_game_video_appid"));
                         localJSONObject.put("appName", f.1.1.this.val$data.getStringExtra("key_game_video_appname"));
                         label102:
-                        f.1.this.xwB.i(null, localJSONObject);
+                        f.1.this.CAJ.i(null, localJSONObject);
                         AppMethodBeat.o(83055);
                         return;
                       }
@@ -234,17 +233,17 @@ public class f
     ((Intent)localObject).putExtra("game_haowan_ignore_video_preview", bool);
     ((Intent)localObject).putExtra("game_haowan_source_scene_id", m);
     if (k == 2) {
-      c.b(paramContext, "game", ".media.GameTabGalleryUI", (Intent)localObject, xwG);
+      com.tencent.mm.by.c.b(paramContext, "game", ".media.GameTabGalleryUI", (Intent)localObject, CAO);
     }
     for (;;)
     {
-      ((Activity)paramContext).overridePendingTransition(MMFragmentActivity.a.ogm, MMFragmentActivity.a.ogn);
+      ((Activity)paramContext).overridePendingTransition(MMFragmentActivity.a.rhY, MMFragmentActivity.a.rhZ);
       AppMethodBeat.o(83058);
       return;
       if (k != 1) {
         break;
       }
-      c.b(paramContext, "game", ".media.GamePublishGalleryUI", (Intent)localObject, xwG);
+      com.tencent.mm.by.c.b(paramContext, "game", ".media.GamePublishGalleryUI", (Intent)localObject, CAO);
     }
     parama.i("galleryType is invalid", null);
     AppMethodBeat.o(83058);
@@ -252,7 +251,7 @@ public class f
   
   public final void b(com.tencent.luggage.d.b<com.tencent.mm.plugin.game.luggage.g.i>.a paramb) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 2;
   }

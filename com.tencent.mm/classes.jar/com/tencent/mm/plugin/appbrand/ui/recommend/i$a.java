@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.a.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
 final class i$a
   implements Runnable
 {
@@ -13,13 +13,13 @@ final class i$a
   public final void run()
   {
     AppMethodBeat.i(51378);
-    this.kXn.invoke();
+    this.nRz.invoke();
     AppMethodBeat.o(51378);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.i.a
  * JD-Core Version:    0.7.0.1
  */

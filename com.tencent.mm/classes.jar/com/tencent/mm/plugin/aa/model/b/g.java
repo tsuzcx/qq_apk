@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.aa.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.r;
-import com.tencent.mm.protocal.protobuf.y;
+import com.tencent.mm.protocal.protobuf.s;
+import com.tencent.mm.protocal.protobuf.z;
 import com.tencent.mm.vending.c.b;
 import com.tencent.mm.vending.h.e;
 import com.tencent.mm.vending.j.d;
@@ -10,13 +10,13 @@ import com.tencent.mm.vending.j.d;
 public class g
   implements b<f>
 {
-  protected f jUj;
-  public final d jUk;
-  public final a jUl;
-  public final e jUm;
-  public final c jUn;
-  public final b jUo;
-  public final f jUp;
+  public final c mLA;
+  public final b mLB;
+  public final f mLC;
+  protected f mLw;
+  public final d mLx;
+  public final a mLy;
+  public final e mLz;
   
   public g()
   {
@@ -28,31 +28,31 @@ public class g
   private g(f paramf)
   {
     AppMethodBeat.i(63469);
-    this.jUk = new d();
-    this.jUl = new a();
-    this.jUm = new e();
-    this.jUn = new c();
-    this.jUo = new b();
-    this.jUp = new f();
-    this.jUj = paramf;
+    this.mLx = new d();
+    this.mLy = new a();
+    this.mLz = new e();
+    this.mLA = new c();
+    this.mLB = new b();
+    this.mLC = new f();
+    this.mLw = paramf;
     AppMethodBeat.o(63469);
   }
   
   public final class a
-    implements e<r, com.tencent.mm.vending.j.c<Long, String>>
+    implements e<s, com.tencent.mm.vending.j.c<Long, String>>
   {
     public a() {}
     
-    public final String akn()
+    public final String aqj()
     {
       return "Vending.LOGIC";
     }
     
-    public final com.tencent.mm.vending.g.c<r> j(long paramLong, String paramString)
+    public final com.tencent.mm.vending.g.c<s> l(long paramLong, String paramString)
     {
-      AppMethodBeat.i(212951);
-      paramString = com.tencent.mm.vending.g.g.O(Long.valueOf(paramLong), paramString).c(this);
-      AppMethodBeat.o(212951);
+      AppMethodBeat.i(275368);
+      paramString = com.tencent.mm.vending.g.g.H(Long.valueOf(paramLong), paramString).c(this);
+      AppMethodBeat.o(275368);
       return paramString;
     }
   }
@@ -62,7 +62,7 @@ public class g
   {
     public b() {}
     
-    public final String akn()
+    public final String aqj()
     {
       return "Vending.LOGIC";
     }
@@ -73,7 +73,7 @@ public class g
   {
     public c() {}
     
-    public final String akn()
+    public final String aqj()
     {
       return "Vending.LOGIC";
     }
@@ -81,26 +81,26 @@ public class g
     public final com.tencent.mm.vending.g.c<Void> b(long paramLong, String paramString1, String paramString2)
     {
       AppMethodBeat.i(63461);
-      paramString1 = com.tencent.mm.vending.g.g.h(Long.valueOf(paramLong), paramString1, paramString2).c(this);
+      paramString1 = com.tencent.mm.vending.g.g.g(Long.valueOf(paramLong), paramString1, paramString2).c(this);
       AppMethodBeat.o(63461);
       return paramString1;
     }
   }
   
   public final class d
-    implements e<y, Void>
+    implements e<z, Void>
   {
     public d() {}
     
-    public final String akn()
+    public final String aqj()
     {
       return "Vending.LOGIC";
     }
     
-    public final com.tencent.mm.vending.g.c<y> bmq()
+    public final com.tencent.mm.vending.g.c<z> bwy()
     {
       AppMethodBeat.i(63463);
-      com.tencent.mm.vending.g.c localc = com.tencent.mm.vending.g.g.hdG().c(this);
+      com.tencent.mm.vending.g.c localc = com.tencent.mm.vending.g.g.ieN().c(this);
       AppMethodBeat.o(63463);
       return localc;
     }
@@ -111,15 +111,15 @@ public class g
   {
     public e() {}
     
-    public final String akn()
+    public final String aqj()
     {
       return "Vending.LOGIC";
     }
     
-    public final com.tencent.mm.vending.g.c<Void> w(String paramString1, String paramString2, String paramString3)
+    public final com.tencent.mm.vending.g.c<Void> z(String paramString1, String paramString2, String paramString3)
     {
       AppMethodBeat.i(63465);
-      paramString1 = com.tencent.mm.vending.g.g.h(paramString1, paramString2, paramString3).c(this);
+      paramString1 = com.tencent.mm.vending.g.g.g(paramString1, paramString2, paramString3).c(this);
       AppMethodBeat.o(63465);
       return paramString1;
     }
@@ -130,7 +130,7 @@ public class g
   {
     public f() {}
     
-    public final String akn()
+    public final String aqj()
     {
       return "Vending.LOGIC";
     }
@@ -138,7 +138,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.b.g
  * JD-Core Version:    0.7.0.1
  */

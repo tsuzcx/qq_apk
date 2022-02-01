@@ -31,18 +31,18 @@ public class EasyXml
   
   public static String filterId(String paramString)
   {
-    AppMethodBeat.i(230281);
+    AppMethodBeat.i(191848);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(230281);
+      AppMethodBeat.o(191848);
       return "";
     }
     if (isNumeric(paramString))
     {
-      AppMethodBeat.o(230281);
+      AppMethodBeat.o(191848);
       return paramString;
     }
-    AppMethodBeat.o(230281);
+    AppMethodBeat.o(191848);
     return "";
   }
   
@@ -57,23 +57,23 @@ public class EasyXml
   
   public static boolean isNumeric(String paramString)
   {
-    AppMethodBeat.i(230280);
+    AppMethodBeat.i(191845);
     if (paramString.matches("\\d*"))
     {
-      AppMethodBeat.o(230280);
+      AppMethodBeat.o(191845);
       return true;
     }
-    AppMethodBeat.o(230280);
+    AppMethodBeat.o(191845);
     return false;
   }
   
   public void addTag(String paramString, int paramInt)
   {
-    AppMethodBeat.i(230285);
+    AppMethodBeat.i(191872);
     startTag(paramString);
     setText(paramInt);
     endTag(paramString);
-    AppMethodBeat.o(230285);
+    AppMethodBeat.o(191872);
   }
   
   public void addTag(String paramString1, String paramString2)
@@ -94,22 +94,22 @@ public class EasyXml
   
   public String getXml()
   {
-    AppMethodBeat.i(230287);
+    AppMethodBeat.i(191882);
     if (!Util.isNullOrNil(this.mprevTag))
     {
       endTag(this.mprevTag);
       this.mprevTag = "";
     }
     String str = this.sb.toString();
-    AppMethodBeat.o(230287);
+    AppMethodBeat.o(191882);
     return str;
   }
   
   public void setText(int paramInt)
   {
-    AppMethodBeat.i(230284);
+    AppMethodBeat.i(191866);
     this.sb.append(paramInt);
-    AppMethodBeat.o(230284);
+    AppMethodBeat.o(191866);
   }
   
   public void setText(String paramString)
@@ -139,7 +139,7 @@ public class EasyXml
   
   public void startTag(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(230286);
+    AppMethodBeat.i(191879);
     this.sb.append("<".concat(String.valueOf(paramString)));
     paramString = paramMap.keySet().iterator();
     while (paramString.hasNext())
@@ -150,21 +150,21 @@ public class EasyXml
     }
     this.sb.append(">");
     paramMap.clear();
-    AppMethodBeat.o(230286);
+    AppMethodBeat.o(191879);
   }
   
   public void text(int paramInt)
   {
-    AppMethodBeat.i(230283);
+    AppMethodBeat.i(191865);
     setText(paramInt);
-    AppMethodBeat.o(230283);
+    AppMethodBeat.o(191865);
   }
   
   public void text(String paramString)
   {
-    AppMethodBeat.i(230282);
+    AppMethodBeat.i(191856);
     setText(paramString);
-    AppMethodBeat.o(230282);
+    AppMethodBeat.o(191856);
   }
 }
 

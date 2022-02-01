@@ -1,322 +1,397 @@
 package com.tencent.mm.ui.conversation.a;
 
-import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.PowerManager;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Toast;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ap.a.a;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.an.t;
+import com.tencent.mm.by.c;
+import com.tencent.mm.f.a.oc;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.z;
+import com.tencent.mm.platformtools.ac;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.GreenManUtil;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
-import java.io.OutputStream;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import com.tencent.mm.ui.MMAppMgr;
+import com.tencent.mm.ui.au;
 import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
 
 public final class n
   extends com.tencent.mm.pluginsdk.ui.b.b
-  implements View.OnClickListener
 {
-  private static int gWk()
+  private static final String Jgw;
+  private int Nen;
+  private TextView XFH;
+  private TextView XFI;
+  private ImageView XFJ;
+  private ImageView XFK;
+  private ImageView XFL;
+  private ProgressBar XFM;
+  private String XFN;
+  private boolean XFO;
+  private int XFP;
+  private boolean XFQ;
+  private boolean XFR;
+  private boolean XFS;
+  private String XFT;
+  private MTimerHandler XFU;
+  private IListener<oc> XFV;
+  private boolean XFW;
+  private View bvK;
+  private ProgressDialog iXX;
+  private boolean lTb;
+  private TextView mNb;
+  private TextView mrM;
+  private TextView nfC;
+  private ImageView qps;
+  
+  static
   {
-    AppMethodBeat.i(38828);
-    if (Build.VERSION.SDK_INT < 23)
+    AppMethodBeat.i(245985);
+    Jgw = "http://" + WeChatHosts.domainString(R.l.host_w_mail_qq_com) + "/cgi-bin/report_mm?failuretype=1&devicetype=2&clientversion=%s&os=%s&username=%s&iport=%s&t=weixin_bulletin&f=xhtml&lang=%s";
+    AppMethodBeat.o(245985);
+  }
+  
+  public n(Context paramContext)
+  {
+    super(paramContext);
+    AppMethodBeat.i(38844);
+    this.iXX = null;
+    this.lTb = false;
+    this.XFO = false;
+    this.Nen = 0;
+    this.bvK = null;
+    this.XFW = false;
+    initialize();
+    AppMethodBeat.o(38844);
+  }
+  
+  private void hWO()
+  {
+    AppMethodBeat.i(38846);
+    if (this.XFU != null)
     {
-      AppMethodBeat.o(38828);
-      return 1;
+      this.XFU.stopTimer();
+      this.XFU = null;
     }
-    PowerManager localPowerManager = (PowerManager)MMApplicationContext.getContext().getSystemService("power");
+    AppMethodBeat.o(38846);
+  }
+  
+  private void initialize()
+  {
+    AppMethodBeat.i(38845);
+    if ((!this.XFO) && (this.view != null))
+    {
+      this.bvK = this.view.findViewById(R.h.dQA);
+      this.mNb = ((TextView)this.view.findViewById(R.h.dQw));
+      this.mrM = ((TextView)this.view.findViewById(R.h.dQx));
+      this.nfC = ((TextView)this.view.findViewById(R.h.dQy));
+      this.XFH = ((TextView)this.view.findViewById(R.h.nw_btn));
+      this.XFM = ((ProgressBar)this.view.findViewById(R.h.dQz));
+      this.qps = ((ImageView)this.view.findViewById(R.h.nw_icon));
+      this.XFJ = ((ImageView)this.view.findViewById(R.h.close_icon));
+      this.XFK = ((ImageView)this.view.findViewById(R.h.dHD));
+      this.XFL = ((ImageView)this.view.findViewById(R.h.dVo));
+      this.XFI = ((TextView)this.view.findViewById(R.h.dFy));
+      this.XFJ.setVisibility(8);
+      this.XFO = true;
+    }
+    AppMethodBeat.o(38845);
+  }
+  
+  private static boolean w(Object paramObject, int paramInt)
+  {
+    AppMethodBeat.i(38848);
+    if (paramObject == null)
+    {
+      AppMethodBeat.o(38848);
+      return true;
+    }
+    if (((Integer)paramObject).intValue() != paramInt)
+    {
+      AppMethodBeat.o(38848);
+      return true;
+    }
+    AppMethodBeat.o(38848);
+    return false;
+  }
+  
+  public final boolean ckL()
+  {
+    boolean bool3 = true;
+    int i = 0;
+    AppMethodBeat.i(38847);
+    final int j = bh.aGY().bih();
+    Object localObject = bh.aGY().getNetworkServerIp();
+    this.XFN = String.format(Jgw, new Object[] { "0x" + Integer.toHexString(d.RAD), d.kQZ, z.bcZ(), localObject, LocaleUtil.getApplicationLanguage() });
+    initialize();
+    Log.i("MicroMsg.NetWarnView", "update st:%d", new Object[] { Integer.valueOf(j) });
+    boolean bool1;
+    boolean bool2;
+    switch (j)
+    {
+    case 1: 
+    case 4: 
+    default: 
+      bool1 = false;
+      ((Context)this.Rhc.get()).getResources().getColor(R.e.BW_50);
+      if (bool1)
+      {
+        this.nfC.setVisibility(8);
+        this.mNb.setVisibility(0);
+        this.bvK.setBackgroundResource(R.g.tips_bar_red_selector);
+        localObject = new LinearLayout.LayoutParams(this.qps.getLayoutParams());
+        ((LinearLayout.LayoutParams)localObject).setMargins(com.tencent.mm.ci.a.fromDPToPix((Context)this.Rhc.get(), 28), 0, com.tencent.mm.ci.a.fromDPToPix((Context)this.Rhc.get(), 24), 0);
+        this.qps.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        if (w(this.qps.getTag(), R.k.icons_filled_error))
+        {
+          this.qps.setTag(Integer.valueOf(R.k.icons_filled_error));
+          this.qps.setImageDrawable(au.o((Context)this.Rhc.get(), R.k.icons_filled_error, ((Context)this.Rhc.get()).getResources().getColor(R.e.Red)));
+        }
+        this.XFK.setVisibility(8);
+        this.XFL.setVisibility(8);
+        this.XFI.setVisibility(8);
+      }
+      bool2 = bool1;
+      if (!bool1)
+      {
+        this.XFJ.setVisibility(8);
+        bool2 = bool1;
+        if (ac.mFe)
+        {
+          j = NetStatusUtil.getBackgroundLimitType((Context)this.Rhc.get());
+          if ((!NetStatusUtil.isLimited(j)) || (this.XFW)) {
+            break;
+          }
+          this.mNb.setText(((Context)this.Rhc.get()).getString(R.l.ePx));
+          this.mrM.setText(((Context)this.Rhc.get()).getString(R.l.ePw));
+          this.mrM.setVisibility(0);
+          this.XFH.setVisibility(8);
+          this.XFM.setVisibility(8);
+          this.qps.setVisibility(0);
+          this.XFJ.setVisibility(0);
+          this.bvK.setOnClickListener(new n.6(this, j));
+          this.XFJ.setOnClickListener(new View.OnClickListener()
+          {
+            public final void onClick(View paramAnonymousView)
+            {
+              AppMethodBeat.i(38843);
+              com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+              localb.bn(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/conversation/banner/NetWarnBanner$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+              MMAppMgr.a((Context)n.w(n.this).get(), j, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+              {
+                public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+                {
+                  AppMethodBeat.i(38841);
+                  try
+                  {
+                    n.x(n.this).setVisibility(8);
+                    n.y(n.this);
+                    NetStatusUtil.startSettingItent((Context)n.z(n.this).get(), n.7.this.val$type);
+                    AppMethodBeat.o(38841);
+                    return;
+                  }
+                  catch (Exception paramAnonymous2DialogInterface)
+                  {
+                    Log.printErrStackTrace("MicroMsg.NetWarnView", paramAnonymous2DialogInterface, "", new Object[0]);
+                    AppMethodBeat.o(38841);
+                  }
+                }
+              }, new DialogInterface.OnClickListener()
+              {
+                public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+                {
+                  AppMethodBeat.i(38842);
+                  n.x(n.this).setVisibility(8);
+                  n.y(n.this);
+                  AppMethodBeat.o(38842);
+                }
+              });
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/NetWarnBanner$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+              AppMethodBeat.o(38843);
+            }
+          });
+          bool1 = bool3;
+          label541:
+          bool2 = bool1;
+        }
+      }
+      if (w(this.XFL.getTag(), R.k.chat_mute_notify_normal))
+      {
+        this.XFL.setTag(Integer.valueOf(R.k.chat_mute_notify_normal));
+        this.XFL.setImageResource(R.k.chat_mute_notify_normal);
+      }
+      if (w(this.XFJ.getTag(), R.k.chat_mute_notify_normal))
+      {
+        this.XFJ.setTag(Integer.valueOf(R.k.chat_mute_notify_normal));
+        this.XFJ.setImageResource(R.g.dmC);
+      }
+      localObject = this.bvK;
+      if (!bool2) {}
+      break;
+    }
     for (;;)
     {
-      try
+      ((View)localObject).setVisibility(i);
+      AppMethodBeat.o(38847);
+      return bool2;
+      this.mNb.setText(R.l.net_warn_no_network);
+      this.mrM.setVisibility(8);
+      this.XFH.setVisibility(8);
+      this.XFM.setVisibility(8);
+      this.qps.setVisibility(0);
+      this.bvK.setOnClickListener(new View.OnClickListener()
       {
-        boolean bool = localPowerManager.isIgnoringBatteryOptimizations(MMApplicationContext.getContext().getPackageName());
-        Log.i("MicroMsg.MsgDelayTipsBanner", "[oneliang]app is ignore:".concat(String.valueOf(bool)));
-        Log.i("MicroMsg.MsgDelayTipsBanner", "[oneliang]is device idle mode:" + localPowerManager.isDeviceIdleMode());
-        if (bool) {
-          continue;
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(38837);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/conversation/banner/NetWarnBanner$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          paramAnonymousView = new Intent();
+          paramAnonymousView.putExtra("title", ((Context)n.j(n.this).get()).getString(R.l.net_warn_no_network));
+          paramAnonymousView.putExtra("rawUrl", ((Context)n.k(n.this).get()).getString(R.l.net_warn_detail_doc));
+          paramAnonymousView.putExtra("neverGetA8Key", true);
+          paramAnonymousView.putExtra("showShare", false);
+          c.b((Context)n.l(n.this).get(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/NetWarnBanner$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(38837);
         }
-        i = 2;
+      });
+      bool1 = true;
+      break;
+      this.mNb.setText(R.l.net_warn_connecting);
+      this.mrM.setVisibility(8);
+      this.XFH.setVisibility(8);
+      this.XFM.setVisibility(0);
+      this.qps.setVisibility(0);
+      bool1 = true;
+      break;
+      if (this.Nen == 1) {
+        this.mNb.setText(((Context)this.Rhc.get()).getResources().getString(R.l.net_warn_diagnose_doing, new Object[] { Integer.valueOf(this.XFP) }));
       }
-      catch (Exception localException)
-      {
-        Log.e("MicroMsg.MsgDelayTipsBanner", "[oneliang]ignoring battery optimizations check failure.use another way.");
-        int i = 3;
-        continue;
-      }
-      AppMethodBeat.o(38828);
-      return i;
-      i = 3;
-    }
-  }
-  
-  private static int gWl()
-  {
-    AppMethodBeat.i(38829);
-    String str = Build.BRAND;
-    if (str == null)
-    {
-      AppMethodBeat.o(38829);
-      return 2131763184;
-    }
-    if (str.toLowerCase().startsWith("samsung"))
-    {
-      AppMethodBeat.o(38829);
-      return 2131763185;
-    }
-    if (str.toLowerCase().equalsIgnoreCase("huawei"))
-    {
-      if ((Build.VERSION.SDK_INT == 21) || (Build.VERSION.SDK_INT == 22) || (Build.VERSION.SDK_INT == 23))
-      {
-        AppMethodBeat.o(38829);
-        return 2131763182;
-      }
-      if (Build.VERSION.SDK_INT == 24)
-      {
-        AppMethodBeat.o(38829);
-        return 2131763183;
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(38829);
-      return 2131763184;
-    }
-    AppMethodBeat.o(38829);
-    return 2131763184;
-  }
-  
-  public static void kv(Context paramContext)
-  {
-    AppMethodBeat.i(38830);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(38830);
-      return;
-    }
-    switch (gWk())
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(38830);
-      return;
-      int i = gWl();
-      if (i > 0)
-      {
-        h.d(paramContext, paramContext.getString(i), "", new n.1());
-        AppMethodBeat.o(38830);
-        return;
-      }
-      Log.e("MicroMsg.MsgDelayTipsBanner", "[oneliang]impossible......");
-      AppMethodBeat.o(38830);
-      return;
-      Log.i("MicroMsg.MsgDelayTipsBanner", "[oneliang]need to add ignore");
-      Object localObject = new Intent("android.settings.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS").setData(Uri.parse("package:" + MMApplicationContext.getContext().getPackageName()));
-      ((Intent)localObject).setFlags(268435456);
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/ui/conversation/banner/MsgDelayTipsBanner", "showTips", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/ui/conversation/banner/MsgDelayTipsBanner", "showTips", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    }
-  }
-  
-  public static void kw(Context paramContext)
-  {
-    AppMethodBeat.i(38831);
-    paramContext.getString(2131755998);
-    localObject2 = h.a(paramContext, paramContext.getString(2131756029), true, new DialogInterface.OnCancelListener()
-    {
-      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-      {
-        AppMethodBeat.i(38826);
-        if (paramAnonymousDialogInterface != null) {
-          paramAnonymousDialogInterface.dismiss();
-        }
-        AppMethodBeat.o(38826);
-      }
-    });
-    Object localObject3 = com.tencent.mm.ap.a.bbr();
-    Object localObject1 = new StringBuilder();
-    if (localObject3 != null)
-    {
-      localObject3 = ((List)localObject3).iterator();
-      while (((Iterator)localObject3).hasNext())
-      {
-        localObject4 = (a.a)((Iterator)localObject3).next();
-        ((StringBuilder)localObject1).append(((a.a)localObject4).toString());
-        Log.i("MicroMsg.MsgDelayTipsBanner", ((a.a)localObject4).toString());
-      }
-    }
-    if (localObject2 != null) {
-      ((Dialog)localObject2).dismiss();
-    }
-    localObject2 = new StringBuilder();
-    bg.aVF();
-    localObject2 = c.aSJ() + "/delayedMsg";
-    s.boN((String)localObject2);
-    Object localObject4 = new o((String)localObject2, "data.txt");
-    String str = ((StringBuilder)localObject1).toString();
-    if (!((o)localObject4).exists()) {}
-    try
-    {
-      ((o)localObject4).createNewFile();
-      localObject2 = null;
-      localObject1 = null;
-    }
-    catch (Exception localException1)
-    {
       for (;;)
       {
-        try
+        this.mrM.setVisibility(8);
+        this.XFH.setVisibility(8);
+        this.XFM.setVisibility(8);
+        this.qps.setVisibility(0);
+        this.bvK.setOnClickListener(new View.OnClickListener()
         {
-          localObject3 = s.d((o)localObject4, false);
-          localObject1 = localObject3;
-          localObject2 = localObject3;
-          ((OutputStream)localObject3).write((str + "\n").getBytes("UTF-8"));
-          localObject1 = localObject3;
-          localObject2 = localObject3;
-          ((OutputStream)localObject3).flush();
-          if (localObject3 == null) {}
-        }
-        catch (Exception localException5)
-        {
-          localObject2 = localException2;
-          Log.i("MicroMsg.MsgDelayTipsBanner", "exception:" + localException5.getMessage());
-          if (localException2 == null) {
-            continue;
-          }
-          try
+          public final void onClick(View paramAnonymousView)
           {
-            localException2.close();
+            AppMethodBeat.i(38838);
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bn(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/conversation/banner/NetWarnBanner$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+            n.c(n.this, n.g(n.this));
+            n.b(n.this, 1);
+            if (n.m(n.this) == null) {
+              n.n(n.this);
+            }
+            if (n.o(n.this) == null) {
+              n.p(n.this);
+            }
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/NetWarnBanner$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(38838);
           }
-          catch (Exception localException3)
-          {
-            Log.i("MicroMsg.MsgDelayTipsBanner", "close exception:" + localException3.getMessage());
-          }
-          continue;
-        }
-        finally
-        {
-          if (localObject2 == null) {
-            continue;
-          }
-          try
-          {
-            ((OutputStream)localObject2).close();
-            AppMethodBeat.o(38831);
-            throw paramContext;
-          }
-          catch (Exception localException4)
-          {
-            Log.i("MicroMsg.MsgDelayTipsBanner", "close exception:" + localException4.getMessage());
-            continue;
-          }
-          localException4.setStatus(3);
-          continue;
-        }
-        try
-        {
-          ((OutputStream)localObject3).close();
-          Toast.makeText(paramContext, aa.z(((o)localObject4).her()), 1).show();
-          paramContext = aa.z(((o)localObject4).her());
-          localObject1 = new ca();
-          ((ca)localObject1).Cy("weixin");
-          ((ca)localObject1).setContent(paramContext);
-          ((ca)localObject1).setType(1);
-          ((ca)localObject1).nv(0);
-          if (((eo)localObject1).field_isSend == 1)
-          {
-            ((ca)localObject1).setStatus(4);
-            long l = System.currentTimeMillis();
-            ((ca)localObject1).yF(l);
-            ((ca)localObject1).setCreateTime(l);
-            ((l)g.af(l.class)).eiy().aC((ca)localObject1);
-            AppMethodBeat.o(38831);
-            return;
-            localException1 = localException1;
-            Log.i("MicroMsg.MsgDelayTipsBanner", "create new file exception:" + localException1.getMessage());
-          }
-        }
-        catch (Exception localException2)
-        {
-          Log.i("MicroMsg.MsgDelayTipsBanner", "close exception:" + localException2.getMessage());
-        }
+        });
+        bool1 = true;
+        break;
+        this.mNb.setText(R.l.net_warn_diagnose_begin);
       }
+      this.mNb.setText(R.l.net_warn_server_down);
+      this.mrM.setText(((Context)this.Rhc.get()).getString(R.l.net_warn_server_down_tip));
+      this.mrM.setVisibility(0);
+      this.XFH.setVisibility(8);
+      this.XFM.setVisibility(8);
+      this.qps.setVisibility(0);
+      this.bvK.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(38839);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/conversation/banner/NetWarnBanner$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          if (!Util.jump((Context)n.q(n.this).get(), n.r(n.this)))
+          {
+            paramAnonymousView = new Intent();
+            paramAnonymousView.putExtra("title", ((Context)n.s(n.this).get()).getString(R.l.net_warn_server_failed));
+            paramAnonymousView.putExtra("rawUrl", ((Context)n.t(n.this).get()).getString(R.l.net_warn_detail_doc));
+            paramAnonymousView.putExtra("showShare", false);
+            c.b((Context)n.u(n.this).get(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
+          }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/NetWarnBanner$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(38839);
+        }
+      });
+      bool1 = true;
+      break;
+      this.XFJ.setVisibility(8);
+      break label541;
+      i = 8;
     }
   }
   
-  public final boolean bYa()
+  public final void destroy()
   {
-    AppMethodBeat.i(38832);
-    Log.i("MicroMsg.MsgDelayTipsBanner", "refresh banner.");
-    g.aAi();
-    boolean bool = g.aAh().azQ().getBoolean(ar.a.Oet, false);
-    Log.i("MicroMsg.MsgDelayTipsBanner", "[oneliang]need to show banner:%s", new Object[] { Boolean.valueOf(bool) });
-    if (bool) {
-      if (this.view != null) {
-        this.view.setVisibility(0);
-      }
+    AppMethodBeat.i(38849);
+    hWO();
+    if (this.XFV != null) {
+      EventCenter.instance.removeListener(this.XFV);
     }
-    for (;;)
-    {
-      bool = super.bYa();
-      AppMethodBeat.o(38832);
-      return bool;
-      if (this.view != null) {
-        this.view.setVisibility(8);
-      }
-    }
+    AppMethodBeat.o(38849);
   }
-  
-  public final void destroy() {}
   
   public final int getLayoutId()
   {
-    return 2131495412;
+    return R.i.ejr;
   }
   
-  public final void onClick(View paramView)
+  public final int getOrder()
   {
-    AppMethodBeat.i(38827);
-    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/MsgDelayTipsBanner", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    kv((Context)this.Kgr.get());
-    g.aAi();
-    g.aAh().azQ().set(ar.a.Oet, Boolean.FALSE);
-    if (this.view != null) {
-      this.view.setVisibility(8);
+    return 4;
+  }
+  
+  public final void setVisibility(int paramInt)
+  {
+    AppMethodBeat.i(38850);
+    if (this.bvK != null) {
+      this.bvK.setVisibility(paramInt);
     }
-    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/MsgDelayTipsBanner", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(38827);
+    AppMethodBeat.o(38850);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.n
  * JD-Core Version:    0.7.0.1
  */

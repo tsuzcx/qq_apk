@@ -1,16 +1,16 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dtw;
-import com.tencent.mm.protocal.protobuf.dtx;
+import com.tencent.mm.protocal.protobuf.edy;
+import com.tencent.mm.protocal.protobuf.edz;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class o
@@ -18,26 +18,26 @@ public final class o
   implements m
 {
   private i callback;
-  private String jGZ;
+  private String myd;
   private final d rr;
   
   public o(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    AppMethodBeat.i(223645);
-    this.jGZ = paramString1;
+    AppMethodBeat.i(194923);
+    this.myd = paramString1;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new dtw();
-    ((d.a)localObject).iLO = new dtx();
+    ((d.a)localObject).lBU = new edy();
+    ((d.a)localObject).lBV = new edz();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/sendopenimverifyrequest";
     ((d.a)localObject).funcId = 243;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (dtw)this.rr.iLK.iLR;
-    ((dtw)localObject).jGZ = paramString1;
-    ((dtw)localObject).MVG = paramString2;
-    ((dtw)localObject).KHz = paramString3;
-    ((dtw)localObject).KHA = paramInt;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (edy)d.b.b(this.rr.lBR);
+    ((edy)localObject).myd = paramString1;
+    ((edy)localObject).UhZ = paramString2;
+    ((edy)localObject).RIS = paramString3;
+    ((edy)localObject).RIT = paramInt;
     Log.i("MicroMsg.NetSceneSendOpenIMVerifyRequest", "init user:%s anti:%s", new Object[] { paramString1, paramString3 });
-    AppMethodBeat.o(223645);
+    AppMethodBeat.o(194923);
   }
   
   public final int doScene(g paramg, i parami)
@@ -57,7 +57,7 @@ public final class o
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151221);
-    Log.i("MicroMsg.NetSceneSendOpenIMVerifyRequest", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, tp_username = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.jGZ });
+    Log.i("MicroMsg.NetSceneSendOpenIMVerifyRequest", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, tp_username = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.myd });
     if ((paramInt2 != 0) || (paramInt3 != 0)) {
       Log.e("MicroMsg.NetSceneSendOpenIMVerifyRequest", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     }

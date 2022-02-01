@@ -2,257 +2,272 @@ package com.tencent.magicbrush;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import com.github.henryye.nativeiv.BaseImageDecodeService;
-import com.github.henryye.nativeiv.a.c.b;
-import com.github.henryye.nativeiv.api.IImageDecodeService.a;
 import com.tencent.magicbrush.handler.glfont.IMBFontHandler;
 import com.tencent.magicbrush.ui.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import java.util.List;
+import kotlin.g.a.b;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/magicbrush/MagicBrushConfig;", "", "()V", "abortIfBuildingError", "", "getAbortIfBuildingError", "()Z", "setAbortIfBuildingError", "(Z)V", "<set-?>", "adjustThreadPriority", "getAdjustThreadPriority", "setAdjustThreadPriority", "adjustThreadPriority$delegate", "Lcom/tencent/magicbrush/MagicBrushConfig$A;", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "animationFrameHandlerStrategy", "getAnimationFrameHandlerStrategy", "()Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "setAnimationFrameHandlerStrategy", "(Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;)V", "animationFrameHandlerStrategy$delegate", "Landroid/content/res/AssetManager;", "assetManager", "getAssetManager", "()Landroid/content/res/AssetManager;", "setAssetManager", "(Landroid/content/res/AssetManager;)V", "assetManager$delegate", "", "canvasHeight", "getCanvasHeight", "()I", "setCanvasHeight", "(I)V", "canvasHeight$delegate", "canvasWidth", "getCanvasWidth", "setCanvasWidth", "canvasWidth$delegate", "cmdPoolType", "getCmdPoolType", "setCmdPoolType", "cmdPoolType$delegate", "context", "Landroid/content/Context;", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "", "devicePixelRatio", "getDevicePixelRatio", "()F", "setDevicePixelRatio", "(F)V", "devicePixelRatio$delegate", "enable2d", "getEnable2d", "setEnable2d", "enable2d$delegate", "enableAntialias", "getEnableAntialias", "setEnableAntialias", "enableAntialias$delegate", "enableCommandBuffer", "getEnableCommandBuffer", "setEnableCommandBuffer", "enableCommandBuffer$delegate", "enableFontBatch", "getEnableFontBatch", "setEnableFontBatch", "enableFontBatch$delegate", "enableGfx", "getEnableGfx", "setEnableGfx", "enableGfx$delegate", "enableOpenGL3", "getEnableOpenGL3", "setEnableOpenGL3", "enableOpenGL3$delegate", "enableRequestAnimationFrame", "getEnableRequestAnimationFrame", "setEnableRequestAnimationFrame", "enableRequestAnimationFrame$delegate", "enableVerboseInBuilding", "getEnableVerboseInBuilding", "setEnableVerboseInBuilding", "enableWindowAttributesAlpha", "getEnableWindowAttributesAlpha", "setEnableWindowAttributesAlpha", "enableWindowAttributesAlpha$delegate", "enableWxBindCanvasTexture", "getEnableWxBindCanvasTexture", "setEnableWxBindCanvasTexture", "enableWxBindCanvasTexture$delegate", "Lcom/tencent/magicbrush/handler/fs/IMBFileSystem;", "fileSystem", "getFileSystem", "()Lcom/tencent/magicbrush/handler/fs/IMBFileSystem;", "setFileSystem", "(Lcom/tencent/magicbrush/handler/fs/IMBFileSystem;)V", "fileSystem$delegate", "fontHandler", "Lcom/tencent/magicbrush/handler/glfont/IMBFontHandler;", "getFontHandler", "()Lcom/tencent/magicbrush/handler/glfont/IMBFontHandler;", "setFontHandler", "(Lcom/tencent/magicbrush/handler/glfont/IMBFontHandler;)V", "forceRunV8MicroTasks", "getForceRunV8MicroTasks", "setForceRunV8MicroTasks", "forceRunV8MicroTasks$delegate", "gcFactor", "getGcFactor", "setGcFactor", "gcFactor$delegate", "imageHandler", "Lcom/tencent/magicbrush/MagicBrushConfig$ImageHandlerConfig;", "getImageHandlerConfig", "()Lcom/tencent/magicbrush/MagicBrushConfig$ImageHandlerConfig;", "isGame", "setGame", "isGame$delegate", "jsThreadHandler", "Lcom/tencent/magicbrush/handler/IJsThreadHandler;", "getJsThreadHandler", "()Lcom/tencent/magicbrush/handler/IJsThreadHandler;", "setJsThreadHandler", "(Lcom/tencent/magicbrush/handler/IJsThreadHandler;)V", "params", "Lcom/tencent/magicbrush/MBRuntime$MBParams;", "getParams$lib_magicbrush_nano_release", "()Lcom/tencent/magicbrush/MBRuntime$MBParams;", "", "renderThreadName", "getRenderThreadName", "()Ljava/lang/String;", "setRenderThreadName", "(Ljava/lang/String;)V", "renderThreadName$delegate", "revertCpuOptimizerTest", "getRevertCpuOptimizerTest", "setRevertCpuOptimizerTest", "revertCpuOptimizerTest$delegate", "sdcardPath", "getSdcardPath", "setSdcardPath", "sdcardPath$delegate", "supportClientVertexBuffer", "getSupportClientVertexBuffer", "setSupportClientVertexBuffer", "supportClientVertexBuffer$delegate", "supportGfxImageShareTexture", "getSupportGfxImageShareTexture", "setSupportGfxImageShareTexture", "supportGfxImageShareTexture$delegate", "supportHardDecode", "getSupportHardDecode", "setSupportHardDecode", "supportHardDecode$delegate", "supportHardEncode", "getSupportHardEncode", "setSupportHardEncode", "supportHardEncode$delegate", "syncSurfaceDestroy", "getSyncSurfaceDestroy", "setSyncSurfaceDestroy", "syncSurfaceDestroy$delegate", "v8RawPointer", "Lkotlin/Function0;", "Lcom/tencent/magicbrush/V8RawPointer;", "getV8RawPointer", "()Lkotlin/jvm/functions/Function0;", "setV8RawPointer", "(Lkotlin/jvm/functions/Function0;)V", "getImageHandler", "Lcom/github/henryye/nativeiv/BaseImageDecodeService;", "", "dls", "Lkotlin/Function1;", "Lkotlin/ExtensionFunctionType;", "A", "ImageHandlerConfig", "lib-magicbrush-nano_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/magicbrush/MagicBrushConfig;", "", "()V", "abortIfBuildingError", "", "getAbortIfBuildingError", "()Z", "setAbortIfBuildingError", "(Z)V", "<set-?>", "adjustThreadPriority", "getAdjustThreadPriority", "setAdjustThreadPriority", "adjustThreadPriority$delegate", "Lcom/tencent/magicbrush/MagicBrushConfig$A;", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "animationFrameHandlerStrategy", "getAnimationFrameHandlerStrategy", "()Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "setAnimationFrameHandlerStrategy", "(Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;)V", "animationFrameHandlerStrategy$delegate", "", "appBrandRuntime", "getAppBrandRuntime", "()J", "setAppBrandRuntime", "(J)V", "appBrandRuntime$delegate", "Landroid/content/res/AssetManager;", "assetManager", "getAssetManager", "()Landroid/content/res/AssetManager;", "setAssetManager", "(Landroid/content/res/AssetManager;)V", "assetManager$delegate", "", "canvasHeight", "getCanvasHeight", "()I", "setCanvasHeight", "(I)V", "canvasHeight$delegate", "canvasWidth", "getCanvasWidth", "setCanvasWidth", "canvasWidth$delegate", "cmdPoolType", "getCmdPoolType", "setCmdPoolType", "cmdPoolType$delegate", "context", "Landroid/content/Context;", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "", "devicePixelRatio", "getDevicePixelRatio", "()F", "setDevicePixelRatio", "(F)V", "devicePixelRatio$delegate", "enable2d", "getEnable2d", "setEnable2d", "enable2d$delegate", "enableAntialias", "getEnableAntialias", "setEnableAntialias", "enableAntialias$delegate", "enableCommandBuffer", "getEnableCommandBuffer", "setEnableCommandBuffer", "enableCommandBuffer$delegate", "enableFontBatch", "getEnableFontBatch", "setEnableFontBatch", "enableFontBatch$delegate", "enableGfx", "getEnableGfx", "setEnableGfx", "enableGfx$delegate", "enableOpenGL3", "getEnableOpenGL3", "setEnableOpenGL3", "enableOpenGL3$delegate", "enableRequestAnimationFrame", "getEnableRequestAnimationFrame", "setEnableRequestAnimationFrame", "enableRequestAnimationFrame$delegate", "enableVerboseInBuilding", "getEnableVerboseInBuilding", "setEnableVerboseInBuilding", "enableWindowAttributesAlpha", "getEnableWindowAttributesAlpha", "setEnableWindowAttributesAlpha", "enableWindowAttributesAlpha$delegate", "enableWxBindCanvasTexture", "getEnableWxBindCanvasTexture", "setEnableWxBindCanvasTexture", "enableWxBindCanvasTexture$delegate", "Lcom/tencent/magicbrush/handler/fs/IMBFileSystem;", "fileSystem", "getFileSystem", "()Lcom/tencent/magicbrush/handler/fs/IMBFileSystem;", "setFileSystem", "(Lcom/tencent/magicbrush/handler/fs/IMBFileSystem;)V", "fileSystem$delegate", "fontHandler", "Lcom/tencent/magicbrush/handler/glfont/IMBFontHandler;", "getFontHandler", "()Lcom/tencent/magicbrush/handler/glfont/IMBFontHandler;", "setFontHandler", "(Lcom/tencent/magicbrush/handler/glfont/IMBFontHandler;)V", "forceRunV8MicroTasks", "getForceRunV8MicroTasks", "setForceRunV8MicroTasks", "forceRunV8MicroTasks$delegate", "gcFactor", "getGcFactor", "setGcFactor", "gcFactor$delegate", "imageHandler", "Lcom/tencent/magicbrush/MagicBrushConfig$ImageHandlerConfig;", "getImageHandlerConfig", "()Lcom/tencent/magicbrush/MagicBrushConfig$ImageHandlerConfig;", "isGame", "setGame", "isGame$delegate", "jsThreadHandler", "Lcom/tencent/magicbrush/handler/IJsThreadHandler;", "getJsThreadHandler", "()Lcom/tencent/magicbrush/handler/IJsThreadHandler;", "setJsThreadHandler", "(Lcom/tencent/magicbrush/handler/IJsThreadHandler;)V", "params", "Lcom/tencent/magicbrush/MBRuntime$MBParams;", "getParams$lib_magicbrush_nano_release", "()Lcom/tencent/magicbrush/MBRuntime$MBParams;", "", "renderThreadName", "getRenderThreadName", "()Ljava/lang/String;", "setRenderThreadName", "(Ljava/lang/String;)V", "renderThreadName$delegate", "revertCpuOptimizerTest", "getRevertCpuOptimizerTest", "setRevertCpuOptimizerTest", "revertCpuOptimizerTest$delegate", "screenCanvasDelegate", "Lcom/tencent/magicbrush/MagicBrush$ScreenCanvasDelegate;", "getScreenCanvasDelegate", "()Lcom/tencent/magicbrush/MagicBrush$ScreenCanvasDelegate;", "setScreenCanvasDelegate", "(Lcom/tencent/magicbrush/MagicBrush$ScreenCanvasDelegate;)V", "sdcardPath", "getSdcardPath", "setSdcardPath", "sdcardPath$delegate", "supportClientVertexBuffer", "getSupportClientVertexBuffer", "setSupportClientVertexBuffer", "supportClientVertexBuffer$delegate", "supportETC2nASTC", "getSupportETC2nASTC", "setSupportETC2nASTC", "supportETC2nASTC$delegate", "supportGfxImageShareTexture", "getSupportGfxImageShareTexture", "setSupportGfxImageShareTexture", "supportGfxImageShareTexture$delegate", "supportHardDecode", "getSupportHardDecode", "setSupportHardDecode", "supportHardDecode$delegate", "supportHardEncode", "getSupportHardEncode", "setSupportHardEncode", "supportHardEncode$delegate", "syncSurfaceDestroy", "getSyncSurfaceDestroy", "setSyncSurfaceDestroy", "syncSurfaceDestroy$delegate", "v8RawPointer", "Lkotlin/Function0;", "Lcom/tencent/magicbrush/V8RawPointer;", "getV8RawPointer", "()Lkotlin/jvm/functions/Function0;", "setV8RawPointer", "(Lkotlin/jvm/functions/Function0;)V", "getImageHandler", "Lcom/github/henryye/nativeiv/BaseImageDecodeService;", "", "dls", "Lkotlin/Function1;", "Lkotlin/ExtensionFunctionType;", "A", "ImageHandlerConfig", "lib-magicbrush-nano_release"})
 public class g
 {
-  public com.tencent.magicbrush.handler.a cLJ;
-  public kotlin.g.a.a<aj> cLK;
-  private final a cLL;
-  public final a cLM;
-  public final a cLN;
-  public final a cLO;
-  public final a cLP;
-  public final b cLQ;
-  public IMBFontHandler cLR;
-  private final a cLS;
-  public final a cLT;
-  public final a cLU;
-  private final a cLV;
-  public final a cLW;
-  private final a cLX;
-  private final a cLY;
-  private final a cLZ;
-  private final a cMa;
-  private final a cMb;
-  public final a cMc;
-  public boolean cMd;
-  public boolean cMe;
-  public final a cMf;
-  public final a cMg;
-  public final a cMh;
-  private final a cMi;
-  private final a cMj;
-  private final a cMk;
-  private final a cMl;
-  private final a cMm;
-  private final a cMn;
-  private final a cMo;
-  private final a cMp;
-  public final a cMq;
-  final MBRuntime.MBParams cMr;
+  public final a cMA;
+  public final g.b cMB;
+  public IMBFontHandler cMC;
+  private final a cMD;
+  public final a cME;
+  public final a cMF;
+  private final a cMG;
+  public final a cMH;
+  private final a cMI;
+  private final a cMJ;
+  private final a cMK;
+  private final a cML;
+  private final a cMM;
+  public final a cMN;
+  public boolean cMO;
+  public boolean cMP;
+  public final a cMQ;
+  public final a cMR;
+  public final a cMS;
+  private final a cMT;
+  private final a cMU;
+  private final a cMV;
+  private final a cMW;
+  private final a cMX;
+  private final a cMY;
+  private final a cMZ;
+  public e.e cMl;
+  public com.tencent.magicbrush.handler.a cMu;
+  public kotlin.g.a.a<al> cMv;
+  private final a cMw;
+  public final a cMx;
+  public final a cMy;
+  public final a cMz;
+  private final a cNa;
+  private final a cNb;
+  public final a cNc;
+  private final a cNd;
+  final MBRuntime.MBParams cNe;
   public Context context;
   
   static
   {
     AppMethodBeat.i(140174);
-    cLI = new kotlin.l.k[] { (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "devicePixelRatio", "getDevicePixelRatio()F")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "canvasWidth", "getCanvasWidth()I")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "canvasHeight", "getCanvasHeight()I")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "fileSystem", "getFileSystem()Lcom/tencent/magicbrush/handler/fs/IMBFileSystem;")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "assetManager", "getAssetManager()Landroid/content/res/AssetManager;")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "animationFrameHandlerStrategy", "getAnimationFrameHandlerStrategy()Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "enableAntialias", "getEnableAntialias()Z")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "enableOpenGL3", "getEnableOpenGL3()Z")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "enableCommandBuffer", "getEnableCommandBuffer()Z")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "enableGfx", "getEnableGfx()Z")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "gcFactor", "getGcFactor()F")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "enableRequestAnimationFrame", "getEnableRequestAnimationFrame()Z")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "enableWxBindCanvasTexture", "getEnableWxBindCanvasTexture()Z")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "enable2d", "getEnable2d()Z")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "enableWindowAttributesAlpha", "getEnableWindowAttributesAlpha()Z")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "adjustThreadPriority", "getAdjustThreadPriority()Z")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "cmdPoolType", "getCmdPoolType()I")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "revertCpuOptimizerTest", "getRevertCpuOptimizerTest()Z")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "isGame", "isGame()Z")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "enableFontBatch", "getEnableFontBatch()Z")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "sdcardPath", "getSdcardPath()Ljava/lang/String;")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "syncSurfaceDestroy", "getSyncSurfaceDestroy()Z")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "supportGfxImageShareTexture", "getSupportGfxImageShareTexture()I")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "supportClientVertexBuffer", "getSupportClientVertexBuffer()Z")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "supportHardEncode", "getSupportHardEncode()Z")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "supportHardDecode", "getSupportHardDecode()Z")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "forceRunV8MicroTasks", "getForceRunV8MicroTasks()Z")), (kotlin.l.k)kotlin.g.b.aa.a(new kotlin.g.b.v(kotlin.g.b.aa.bp(g.class), "renderThreadName", "getRenderThreadName()Ljava/lang/String;")) };
+    cMt = new kotlin.l.n[] { (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "devicePixelRatio", "getDevicePixelRatio()F")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "canvasWidth", "getCanvasWidth()I")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "canvasHeight", "getCanvasHeight()I")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "fileSystem", "getFileSystem()Lcom/tencent/magicbrush/handler/fs/IMBFileSystem;")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "assetManager", "getAssetManager()Landroid/content/res/AssetManager;")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "animationFrameHandlerStrategy", "getAnimationFrameHandlerStrategy()Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "enableAntialias", "getEnableAntialias()Z")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "enableOpenGL3", "getEnableOpenGL3()Z")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "enableCommandBuffer", "getEnableCommandBuffer()Z")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "enableGfx", "getEnableGfx()Z")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "gcFactor", "getGcFactor()F")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "enableRequestAnimationFrame", "getEnableRequestAnimationFrame()Z")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "enableWxBindCanvasTexture", "getEnableWxBindCanvasTexture()Z")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "enable2d", "getEnable2d()Z")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "enableWindowAttributesAlpha", "getEnableWindowAttributesAlpha()Z")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "adjustThreadPriority", "getAdjustThreadPriority()Z")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "cmdPoolType", "getCmdPoolType()I")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "revertCpuOptimizerTest", "getRevertCpuOptimizerTest()Z")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "isGame", "isGame()Z")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "enableFontBatch", "getEnableFontBatch()Z")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "sdcardPath", "getSdcardPath()Ljava/lang/String;")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "syncSurfaceDestroy", "getSyncSurfaceDestroy()Z")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "supportGfxImageShareTexture", "getSupportGfxImageShareTexture()I")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "supportClientVertexBuffer", "getSupportClientVertexBuffer()Z")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "supportHardEncode", "getSupportHardEncode()Z")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "supportHardDecode", "getSupportHardDecode()Z")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "supportETC2nASTC", "getSupportETC2nASTC()Z")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "forceRunV8MicroTasks", "getForceRunV8MicroTasks()Z")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "renderThreadName", "getRenderThreadName()Ljava/lang/String;")), (kotlin.l.n)kotlin.g.b.ab.a(new kotlin.g.b.v(kotlin.g.b.ab.bO(g.class), "appBrandRuntime", "getAppBrandRuntime()J")) };
     AppMethodBeat.o(140174);
   }
   
   public g()
   {
     AppMethodBeat.i(140186);
-    this.cLL = new a(n.cMy);
-    this.cLM = new a(l.cMy);
-    this.cLN = new a(k.cMy);
-    this.cLO = new a(x.cMy);
-    this.cLP = new a(j.cMy);
-    this.cLQ = new b();
-    this.cLS = new a(i.cMy);
-    this.cLT = new a(p.cMy);
-    this.cLU = new a(t.cMy);
-    this.cLV = new a(q.cMy);
-    this.cLW = new a(s.cMy);
-    this.cLX = new a(z.cMy);
-    this.cLY = new a(u.cMy);
-    this.cLZ = new a(w.cMy);
-    this.cMa = new a(o.cMy);
-    this.cMb = new a(v.cMy);
-    this.cMc = new a(h.cMy);
-    this.cMd = true;
-    this.cMe = true;
-    this.cMf = new a(m.cMy);
-    this.cMg = new a(ac.cMy);
-    this.cMh = new a(aa.cMy);
-    this.cMi = new a(r.cMy);
-    this.cMj = new a(ad.cMy);
-    this.cMk = new a(ai.cMy);
-    this.cMl = new a(af.cMy);
-    this.cMm = new a(ae.cMy);
-    this.cMn = new a(ah.cMy);
-    this.cMo = new a(ag.cMy);
-    this.cMp = new a(y.cMy);
-    this.cMq = new a(ab.cMy);
-    this.cMr = new MBRuntime.MBParams();
+    this.cMw = new a(o.cNl);
+    this.cMx = new a(m.cNl);
+    this.cMy = new a(l.cNl);
+    this.cMz = new a(y.cNl);
+    this.cMA = new a(k.cNl);
+    this.cMB = new g.b();
+    this.cMD = new a(i.cNl);
+    this.cME = new a(q.cNl);
+    this.cMF = new a(u.cNl);
+    this.cMG = new a(r.cNl);
+    this.cMH = new a(t.cNl);
+    this.cMI = new a(aa.cNl);
+    this.cMJ = new a(v.cNl);
+    this.cMK = new a(x.cNl);
+    this.cML = new a(p.cNl);
+    this.cMM = new a(w.cNl);
+    this.cMN = new a(h.cNl);
+    this.cMO = true;
+    this.cMP = true;
+    this.cMQ = new a(n.cNl);
+    this.cMR = new a(ad.cNl);
+    this.cMS = new a(ab.cNl);
+    this.cMT = new a(s.cNl);
+    this.cMU = new a(ae.cNl);
+    this.cMV = new a(ak.cNl);
+    this.cMW = new a(ah.cNl);
+    this.cMX = new a(af.cNl);
+    this.cMY = new a(aj.cNl);
+    this.cMZ = new a(ai.cNl);
+    this.cNa = new a(ag.cNl);
+    this.cNb = new a(z.cNl);
+    this.cNc = new a(ac.cNl);
+    this.cNd = new a(j.cNl);
+    this.cNe = new MBRuntime.MBParams();
     AppMethodBeat.o(140186);
   }
   
-  public final int Rn()
+  public final int UX()
   {
     AppMethodBeat.i(140177);
-    int i = ((Number)this.cLM.a(cLI[1])).intValue();
+    int i = ((Number)this.cMx.a(cMt[1])).intValue();
     AppMethodBeat.o(140177);
     return i;
   }
   
-  public final int Ro()
+  public final int UY()
   {
     AppMethodBeat.i(140178);
-    int i = ((Number)this.cLN.a(cLI[2])).intValue();
+    int i = ((Number)this.cMy.a(cMt[2])).intValue();
     AppMethodBeat.o(140178);
     return i;
   }
   
-  public final AssetManager Rp()
+  public final AssetManager UZ()
   {
     AppMethodBeat.i(140179);
-    AssetManager localAssetManager = (AssetManager)this.cLP.a(cLI[4]);
+    AssetManager localAssetManager = (AssetManager)this.cMA.a(cMt[4]);
     AppMethodBeat.o(140179);
     return localAssetManager;
   }
   
-  public final a.b Rq()
+  public final a.b Va()
   {
     AppMethodBeat.i(140180);
-    a.b localb = (a.b)this.cLS.a(cLI[5]);
+    a.b localb = (a.b)this.cMD.a(cMt[5]);
     AppMethodBeat.o(140180);
     return localb;
   }
   
-  public final float Rr()
+  public final float Vb()
   {
     AppMethodBeat.i(140182);
-    float f = ((Number)this.cLX.a(cLI[10])).floatValue();
+    float f = ((Number)this.cMI.a(cMt[10])).floatValue();
     AppMethodBeat.o(140182);
     return f;
   }
   
-  public final void a(kotlin.g.a.b<? super b, kotlin.x> paramb)
+  public final void a(b<? super g.b, kotlin.x> paramb)
   {
-    AppMethodBeat.i(206853);
-    kotlin.g.b.p.h(paramb, "dls");
-    paramb.invoke(this.cLQ);
-    AppMethodBeat.o(206853);
+    AppMethodBeat.i(204573);
+    kotlin.g.b.p.k(paramb, "dls");
+    paramb.invoke(this.cMB);
+    AppMethodBeat.o(204573);
+  }
+  
+  public final void ad(float paramFloat)
+  {
+    AppMethodBeat.i(140176);
+    this.cMw.a(cMt[0], Float.valueOf(paramFloat));
+    AppMethodBeat.o(140176);
   }
   
   public final void ae(float paramFloat)
   {
-    AppMethodBeat.i(140176);
-    this.cLL.a(cLI[0], Float.valueOf(paramFloat));
-    AppMethodBeat.o(140176);
-  }
-  
-  public final void af(float paramFloat)
-  {
     AppMethodBeat.i(140183);
-    this.cLX.a(cLI[10], Float.valueOf(paramFloat));
+    this.cMI.a(cMt[10], Float.valueOf(paramFloat));
     AppMethodBeat.o(140183);
   }
   
   public final void b(a.b paramb)
   {
     AppMethodBeat.i(140181);
-    kotlin.g.b.p.h(paramb, "<set-?>");
-    this.cLS.a(cLI[5], paramb);
+    kotlin.g.b.p.k(paramb, "<set-?>");
+    this.cMD.a(cMt[5], paramb);
     AppMethodBeat.o(140181);
   }
   
-  public final void co(boolean paramBoolean)
+  public final void bg(long paramLong)
   {
-    AppMethodBeat.i(206854);
-    this.cLV.a(cLI[8], Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(206854);
+    AppMethodBeat.i(204585);
+    this.cNd.a(cMt[29], Long.valueOf(paramLong));
+    AppMethodBeat.o(204585);
   }
   
-  public final void cp(boolean paramBoolean)
+  public final void cC(boolean paramBoolean)
+  {
+    AppMethodBeat.i(204574);
+    this.cMG.a(cMt[8], Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(204574);
+  }
+  
+  public final void cD(boolean paramBoolean)
   {
     AppMethodBeat.i(140184);
-    this.cLZ.a(cLI[12], Boolean.valueOf(paramBoolean));
+    this.cMK.a(cMt[12], Boolean.valueOf(paramBoolean));
     AppMethodBeat.o(140184);
   }
   
-  public final void cq(boolean paramBoolean)
+  public final void cE(boolean paramBoolean)
   {
-    AppMethodBeat.i(206855);
-    this.cMa.a(cLI[13], Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(206855);
+    AppMethodBeat.i(204576);
+    this.cML.a(cMt[13], Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(204576);
   }
   
-  public final void cr(boolean paramBoolean)
+  public final void cF(boolean paramBoolean)
   {
     AppMethodBeat.i(140185);
-    this.cMb.a(cLI[14], Boolean.valueOf(paramBoolean));
+    this.cMM.a(cMt[14], Boolean.valueOf(paramBoolean));
     AppMethodBeat.o(140185);
   }
   
-  public final void cs(boolean paramBoolean)
+  public final void cG(boolean paramBoolean)
   {
-    AppMethodBeat.i(206856);
-    this.cMi.a(cLI[19], Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(206856);
+    AppMethodBeat.i(204577);
+    this.cMT.a(cMt[19], Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(204577);
   }
   
-  public final void ct(boolean paramBoolean)
+  public final void cH(boolean paramBoolean)
   {
-    AppMethodBeat.i(206858);
-    this.cMk.a(cLI[21], Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(206858);
+    AppMethodBeat.i(204579);
+    this.cMV.a(cMt[21], Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(204579);
   }
   
-  public final void cu(boolean paramBoolean)
+  public final void cI(boolean paramBoolean)
   {
-    AppMethodBeat.i(206859);
-    this.cMm.a(cLI[23], Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(206859);
+    AppMethodBeat.i(204580);
+    this.cMX.a(cMt[23], Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(204580);
   }
   
-  public final void cv(boolean paramBoolean)
+  public final void cJ(boolean paramBoolean)
   {
-    AppMethodBeat.i(206860);
-    this.cMn.a(cLI[24], Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(206860);
+    AppMethodBeat.i(204581);
+    this.cMY.a(cMt[24], Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(204581);
   }
   
-  public final void cw(boolean paramBoolean)
+  public final void cK(boolean paramBoolean)
   {
-    AppMethodBeat.i(206861);
-    this.cMo.a(cLI[25], Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(206861);
+    AppMethodBeat.i(204582);
+    this.cMZ.a(cMt[25], Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(204582);
   }
   
-  public final void cx(boolean paramBoolean)
+  public final void cL(boolean paramBoolean)
   {
-    AppMethodBeat.i(206862);
-    this.cMp.a(cLI[26], Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(206862);
+    AppMethodBeat.i(204583);
+    this.cNa.a(cMt[26], Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(204583);
   }
   
-  public final void dY(String paramString)
+  public final void cM(boolean paramBoolean)
   {
-    AppMethodBeat.i(206857);
-    kotlin.g.b.p.h(paramString, "<set-?>");
-    this.cMj.a(cLI[20], paramString);
-    AppMethodBeat.o(206857);
+    AppMethodBeat.i(204584);
+    this.cNb.a(cMt[27], Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(204584);
+  }
+  
+  public final void ez(String paramString)
+  {
+    AppMethodBeat.i(204578);
+    kotlin.g.b.p.k(paramString, "<set-?>");
+    this.cMU.a(cMt[20], paramString);
+    AppMethodBeat.o(204578);
   }
   
   public final float getDevicePixelRatio()
   {
     AppMethodBeat.i(140175);
-    float f = ((Number)this.cLL.a(cLI[0])).floatValue();
+    float f = ((Number)this.cMw.a(cMt[0])).floatValue();
     AppMethodBeat.o(140175);
     return f;
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/magicbrush/MagicBrushConfig$A;", "T", "Lcom/tencent/magicbrush/utils/Alias;", "Lcom/tencent/magicbrush/MBRuntime$MBParams;", "k", "Lkotlin/reflect/KMutableProperty1;", "(Lcom/tencent/magicbrush/MagicBrushConfig;Lkotlin/reflect/KMutableProperty1;)V", "lib-magicbrush-nano_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/magicbrush/MagicBrushConfig$A;", "T", "Lcom/tencent/magicbrush/utils/Alias;", "Lcom/tencent/magicbrush/MBRuntime$MBParams;", "k", "Lkotlin/reflect/KMutableProperty1;", "(Lcom/tencent/magicbrush/MagicBrushConfig;Lkotlin/reflect/KMutableProperty1;)V", "lib-magicbrush-nano_release"})
   public final class a<T>
     extends com.tencent.magicbrush.utils.a<MBRuntime.MBParams, T>
   {
@@ -263,28 +278,10 @@ public class g
       AppMethodBeat.o(140098);
     }
   }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/magicbrush/MagicBrushConfig$ImageHandlerConfig;", "", "()V", "decodeSlaveForDefault", "Lcom/github/henryye/nativeiv/api/IImageDecodeService$BitmapDecodeSlave;", "getDecodeSlaveForDefault", "()Lcom/github/henryye/nativeiv/api/IImageDecodeService$BitmapDecodeSlave;", "setDecodeSlaveForDefault", "(Lcom/github/henryye/nativeiv/api/IImageDecodeService$BitmapDecodeSlave;)V", "enableDefaultImageHandler", "", "getEnableDefaultImageHandler", "()Z", "setEnableDefaultImageHandler", "(Z)V", "imageDecoderForDefault", "", "Lcom/github/henryye/nativeiv/stream/IImageStreamFetcher;", "getImageDecoderForDefault", "()Ljava/util/List;", "setImageDecoderForDefault", "(Ljava/util/List;)V", "imageHandler", "Lcom/github/henryye/nativeiv/BaseImageDecodeService;", "getImageHandler", "()Lcom/github/henryye/nativeiv/BaseImageDecodeService;", "setImageHandler", "(Lcom/github/henryye/nativeiv/BaseImageDecodeService;)V", "reporterForDefault", "Lcom/github/henryye/nativeiv/delegate/ReportDelegate$IKvReport;", "getReporterForDefault", "()Lcom/github/henryye/nativeiv/delegate/ReportDelegate$IKvReport;", "setReporterForDefault", "(Lcom/github/henryye/nativeiv/delegate/ReportDelegate$IKvReport;)V", "lib-magicbrush-nano_release"})
-  public static final class b
-  {
-    public boolean cMt;
-    public List<com.github.henryye.nativeiv.b.b> cMu;
-    public c.b cMv;
-    public IImageDecodeService.a cMw;
-    public BaseImageDecodeService cMx;
-    
-    public b()
-    {
-      AppMethodBeat.i(140099);
-      this.cMt = true;
-      this.cMu = ((List)new ArrayList());
-      AppMethodBeat.o(140099);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.magicbrush.g
  * JD-Core Version:    0.7.0.1
  */

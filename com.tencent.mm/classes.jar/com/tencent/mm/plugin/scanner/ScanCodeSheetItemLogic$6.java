@@ -16,17 +16,17 @@ final class ScanCodeSheetItemLogic$6
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(223708);
+    AppMethodBeat.i(199514);
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    a.b("com/tencent/mm/plugin/scanner/ScanCodeSheetItemLogic$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+    ((b)localObject).bn(paramView);
+    a.c("com/tencent/mm/plugin/scanner/ScanCodeSheetItemLogic$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
     long l = System.currentTimeMillis();
-    localObject = Util.safeFormatString("%d,%d", new Object[] { Integer.valueOf(this.CAv), Long.valueOf(l) });
+    localObject = Util.safeFormatString("%d,%d", new Object[] { Integer.valueOf(this.IFZ), Long.valueOf(l) });
     Log.i("MicroMsg.ScanCodeSheetItemLogic", "18684 report:".concat(String.valueOf(localObject)));
-    h.CyF.kvStat(18684, (String)localObject);
-    this.CAw.onClick(paramView);
+    h.IzE.kvStat(18684, (String)localObject);
+    this.IGa.onClick(paramView);
     a.a(this, "com/tencent/mm/plugin/scanner/ScanCodeSheetItemLogic$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(223708);
+    AppMethodBeat.o(199514);
   }
 }
 

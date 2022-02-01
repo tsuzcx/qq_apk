@@ -1,19 +1,20 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.model.v;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.protobuf.abx;
-import com.tencent.mm.protocal.protobuf.aby;
-import com.tencent.mm.protocal.protobuf.caa;
+import com.tencent.mm.protocal.protobuf.ace;
+import com.tencent.mm.protocal.protobuf.acf;
+import com.tencent.mm.protocal.protobuf.chv;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -23,24 +24,24 @@ public final class h
   implements m
 {
   private i callback;
-  private LinkedList<caa> dSP;
+  private LinkedList<chv> fMn;
   private final d rr;
   
-  public h(LinkedList<caa> paramLinkedList)
+  public h(LinkedList<chv> paramLinkedList)
   {
     AppMethodBeat.i(12458);
-    this.dSP = paramLinkedList;
+    this.fMn = paramLinkedList;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new abx();
-    ((d.a)localObject).iLO = new aby();
+    ((d.a)localObject).lBU = new ace();
+    ((d.a)localObject).lBV = new acf();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/collectchatroom";
     ((d.a)localObject).funcId = 181;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (abx)this.rr.iLK.iLR;
-    ((abx)localObject).LmA = paramLinkedList;
-    ((abx)localObject).Lmz = paramLinkedList.size();
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (ace)d.b.b(this.rr.lBR);
+    ((ace)localObject).SnO = paramLinkedList;
+    ((ace)localObject).SnN = paramLinkedList.size();
     AppMethodBeat.o(12458);
   }
   
@@ -63,20 +64,21 @@ public final class h
     AppMethodBeat.i(12460);
     updateDispatchId(paramInt1);
     Log.d("MicroMsg.NetSceneCollectChatRoom", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    d.c.b(((d)params).lBS);
     if (params.getRespObj().getRetCode() != 0)
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(12460);
       return;
     }
-    if (this.dSP != null)
+    if (this.fMn != null)
     {
-      params = this.dSP.iterator();
+      params = this.fMn.iterator();
       while (params.hasNext())
       {
-        paramArrayOfByte = (caa)params.next();
-        Log.d("MicroMsg.NetSceneCollectChatRoom", "del groupcard Name :" + paramArrayOfByte.Mfw);
-        v.HZ(paramArrayOfByte.Mfw);
+        paramArrayOfByte = (chv)params.next();
+        Log.d("MicroMsg.NetSceneCollectChatRoom", "del groupcard Name :" + paramArrayOfByte.Tpa);
+        v.Pp(paramArrayOfByte.Tpa);
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);

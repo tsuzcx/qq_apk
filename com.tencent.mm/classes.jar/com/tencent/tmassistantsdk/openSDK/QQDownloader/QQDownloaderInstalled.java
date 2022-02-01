@@ -3,8 +3,8 @@ package com.tencent.tmassistantsdk.openSDK.QQDownloader;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.tmassistantsdk.util.TMLog;
@@ -36,7 +36,7 @@ public class QQDownloaderInstalled
   {
     AppMethodBeat.i(102099);
     TMLog.i("QQDownloaderInstalled", "onReceive!");
-    h.RTc.ba(new Runnable()
+    h.ZvG.bh(new Runnable()
     {
       public void run()
       {
@@ -116,7 +116,7 @@ public class QQDownloaderInstalled
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.QQDownloader.QQDownloaderInstalled
  * JD-Core Version:    0.7.0.1
  */

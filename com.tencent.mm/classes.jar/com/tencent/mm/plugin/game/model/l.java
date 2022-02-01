@@ -2,32 +2,32 @@ package com.tencent.mm.plugin.game.model;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.y;
+import com.tencent.mm.f.c.y;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 
-public final class l
+public class l
 {
+  public c CIQ;
+  public boolean CIR = false;
   public int mode = 1;
   public int progress = 0;
   public int status = 0;
-  public c xEP;
-  public boolean xEQ = false;
   
   public l(c paramc)
   {
-    this.xEP = paramc;
+    this.CIQ = paramc;
   }
   
-  public final void cCq()
+  public final void cQV()
   {
     AppMethodBeat.i(41434);
-    if (this.xEP == null)
+    if (this.CIQ == null)
     {
       AppMethodBeat.o(41434);
       return;
@@ -40,13 +40,13 @@ public final class l
     for (;;)
     {
       label45:
-      Log.i("MicroMsg.GameDownloadInfo", "Updating Download Status, AppId: %s, downloadMode: %d, downloadStatus: %d", new Object[] { this.xEP.field_appId, Integer.valueOf(this.mode), Integer.valueOf(this.status) });
+      Log.i("MicroMsg.GameDownloadInfo", "Updating Download Status, AppId: %s, downloadMode: %d, downloadStatus: %d", new Object[] { this.CIQ.field_appId, Integer.valueOf(this.mode), Integer.valueOf(this.status) });
       AppMethodBeat.o(41434);
       return;
-      FileDownloadTaskInfo localFileDownloadTaskInfo = f.cBv().alg(this.xEP.field_appId);
-      if (localFileDownloadTaskInfo.oJj != 0L)
+      FileDownloadTaskInfo localFileDownloadTaskInfo = f.cPZ().asZ(this.CIQ.field_appId);
+      if (localFileDownloadTaskInfo.rKZ != 0L)
       {
-        this.progress = ((int)(localFileDownloadTaskInfo.qJe / localFileDownloadTaskInfo.oJj * 100.0D));
+        this.progress = ((int)(localFileDownloadTaskInfo.uih / localFileDownloadTaskInfo.rKZ * 100.0D));
         label135:
         if (this.progress != 0) {
           break label228;
@@ -72,7 +72,7 @@ public final class l
       continue;
       this.status = 0;
       continue;
-      if (s.YS(localFileDownloadTaskInfo.path))
+      if (u.agG(localFileDownloadTaskInfo.path))
       {
         this.status = 3;
       }
@@ -89,23 +89,23 @@ public final class l
     }
   }
   
-  public final void dVj()
+  public final void eyr()
   {
     this.mode = 1;
-    this.xEQ = true;
+    this.CIR = true;
   }
   
-  public final void gi(Context paramContext)
+  public final void gC(Context paramContext)
   {
     AppMethodBeat.i(41433);
-    if (this.xEP == null)
+    if (this.CIQ == null)
     {
       AppMethodBeat.o(41433);
       return;
     }
-    int j = this.xEP.fmN;
-    int i = this.xEP.fmN;
-    Log.i("MicroMsg.GameDownloadInfo", "AppId: %s, Initial downloadMode: %d", new Object[] { this.xEP.field_appId, Integer.valueOf(j) });
+    int j = this.CIQ.hrM;
+    int i = this.CIQ.hrM;
+    Log.i("MicroMsg.GameDownloadInfo", "AppId: %s, Initial downloadMode: %d", new Object[] { this.CIQ.field_appId, Integer.valueOf(j) });
     if (j == 2) {
       i = 3;
     }
@@ -113,14 +113,14 @@ public final class l
     if (i == 3)
     {
       j = i;
-      if (!h.s(paramContext, "wx3909f6add1206543")) {
+      if (!h.u(paramContext, "wx3909f6add1206543")) {
         j = 1;
       }
     }
     i = j;
     if (j != 1)
     {
-      paramContext = f.cBv().alg(this.xEP.field_appId);
+      paramContext = f.cPZ().asZ(this.CIQ.field_appId);
       if ((paramContext.status != 1) && (paramContext.status != 2))
       {
         i = j;
@@ -132,13 +132,13 @@ public final class l
       }
     }
     this.mode = i;
-    Log.i("MicroMsg.GameDownloadInfo", "AppId: %s, Final downloadMode: %d", new Object[] { this.xEP.field_appId, Integer.valueOf(i) });
+    Log.i("MicroMsg.GameDownloadInfo", "AppId: %s, Final downloadMode: %d", new Object[] { this.CIQ.field_appId, Integer.valueOf(i) });
     AppMethodBeat.o(41433);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.l
  * JD-Core Version:    0.7.0.1
  */

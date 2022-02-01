@@ -5,12 +5,13 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -23,30 +24,30 @@ public abstract class r
   extends q
   implements m
 {
-  private static final String RtY = MMApplicationContext.getResources().getString(2131768354);
-  protected int RtZ = 0;
-  protected String Rua;
-  private WeakReference<MMActivity> aWF;
+  private static final String YVx = MMApplicationContext.getResources().getString(a.i.wallet_unknown_err);
+  protected int YVy = 0;
+  protected String YVz;
+  private WeakReference<MMActivity> aFX;
   protected i callback;
   protected int errCode = 0;
   protected String errMsg;
   protected int errType = 0;
-  protected boolean qxx = true;
-  protected boolean qxy = false;
   protected d rr;
+  protected boolean tWx = true;
+  protected boolean tWy = false;
   
   public final r a(a parama)
   {
-    if ((!this.qxx) && (!this.qxy)) {
-      parama.d(this.errCode, this.errType, this.errMsg, this);
+    if ((!this.tWx) && (!this.tWy)) {
+      parama.e(this.errCode, this.errType, this.errMsg, this);
     }
     return this;
   }
   
   public final r b(a parama)
   {
-    if (this.qxy) {
-      parama.d(this.errCode, this.errType, this.errMsg, this);
+    if (this.tWy) {
+      parama.e(this.errCode, this.errType, this.errMsg, this);
     }
     return this;
   }
@@ -55,13 +56,13 @@ public abstract class r
   
   public final r c(a parama)
   {
-    if (this.qxx) {
-      parama.d(this.errCode, this.errType, this.errMsg, this);
+    if (this.tWx) {
+      parama.e(this.errCode, this.errType, this.errMsg, this);
     }
     return this;
   }
   
-  public boolean czQ()
+  public boolean cOq()
   {
     return false;
   }
@@ -73,14 +74,14 @@ public abstract class r
     return dispatch(paramg, this.rr, this);
   }
   
-  protected abstract void e(s params);
+  protected abstract void f(s params);
   
-  public boolean eMY()
+  public boolean fzN()
   {
     return true;
   }
   
-  public boolean eMZ()
+  public boolean fzO()
   {
     return true;
   }
@@ -88,26 +89,26 @@ public abstract class r
   public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, final String paramString, s params, byte[] paramArrayOfByte)
   {
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.qxx = false;
+      this.tWx = false;
     }
-    if (!this.qxx)
+    if (!this.tWx)
     {
-      e(params);
-      if (this.RtZ != 0) {
-        this.qxy = true;
+      f(params);
+      if (this.YVy != 0) {
+        this.tWy = true;
       }
     }
     this.errCode = paramInt3;
     this.errType = paramInt2;
     this.errMsg = paramString;
-    Log.i("MicroMsg.NetSceneNewPayBase", "errType: %s, errCode: %s, errMsg: %s, retCode: %s, retMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(this.RtZ), this.Rua });
+    Log.i("MicroMsg.NetSceneNewPayBase", "errType: %s, errCode: %s, errMsg: %s, retCode: %s, retMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(this.YVy), this.YVz });
     b(paramInt2, paramInt3, paramString, params);
-    if (this.aWF != null)
+    if (this.aFX != null)
     {
-      paramString = (MMActivity)this.aWF.get();
+      paramString = (MMActivity)this.aFX.get();
       if (paramString != null)
       {
-        if (!this.qxx) {
+        if (!this.tWx) {
           break label171;
         }
         Log.w("MicroMsg.NetSceneNewPayBase", "show net error alert");
@@ -116,7 +117,7 @@ public abstract class r
     label171:
     do
     {
-      h.a(paramString, RtY, null, false, new DialogInterface.OnClickListener()
+      h.a(paramString, YVx, null, false, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -128,21 +129,21 @@ public abstract class r
       do
       {
         return;
-      } while ((!this.qxy) || (Util.isNullOrNil(this.Rua)));
-      if (czQ())
+      } while ((!this.tWy) || (Util.isNullOrNil(this.YVz)));
+      if (cOq())
       {
         Log.w("MicroMsg.NetSceneNewPayBase", "show resp error toast");
-        Toast.makeText(paramString, this.Rua, 1).show();
+        Toast.makeText(paramString, this.YVz, 1).show();
         return;
       }
-    } while (!eMZ());
+    } while (!fzO());
     Log.w("MicroMsg.NetSceneNewPayBase", "show resp error alert");
-    h.a(paramString, this.Rua, null, false, new DialogInterface.OnClickListener()
+    h.a(paramString, this.YVz, null, false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(72793);
-        if (r.this.eMY()) {
+        if (r.this.fzN()) {
           paramString.finish();
         }
         AppMethodBeat.o(72793);
@@ -150,19 +151,19 @@ public abstract class r
     });
   }
   
-  public final void t(MMActivity paramMMActivity)
+  public final void u(MMActivity paramMMActivity)
   {
-    this.aWF = new WeakReference(paramMMActivity);
+    this.aFX = new WeakReference(paramMMActivity);
   }
   
   public static abstract interface a<T extends q>
   {
-    public abstract void d(int paramInt1, int paramInt2, String paramString, T paramT);
+    public abstract void e(int paramInt1, int paramInt2, String paramString, T paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.r
  * JD-Core Version:    0.7.0.1
  */

@@ -4,17 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ajr;
+import com.tencent.mm.protocal.protobuf.aks;
 
 public class EnterTimeParcel
   implements Parcelable
 {
   public static final Parcelable.Creator<EnterTimeParcel> CREATOR;
-  public int Cjg;
-  public String Cjh;
-  public String Cji;
-  public int Cjj;
-  public String ixw;
+  public int IfZ;
+  public String Iga;
+  public String Igb;
+  public int Igc;
+  public String lmL;
   
   static
   {
@@ -28,21 +28,21 @@ public class EnterTimeParcel
   public EnterTimeParcel(Parcel paramParcel)
   {
     AppMethodBeat.i(67406);
-    this.Cjg = paramParcel.readInt();
-    this.Cjh = paramParcel.readString();
-    this.Cji = paramParcel.readString();
-    this.Cjj = paramParcel.readInt();
-    this.ixw = paramParcel.readString();
+    this.IfZ = paramParcel.readInt();
+    this.Iga = paramParcel.readString();
+    this.Igb = paramParcel.readString();
+    this.Igc = paramParcel.readInt();
+    this.lmL = paramParcel.readString();
     AppMethodBeat.o(67406);
   }
   
-  public EnterTimeParcel(ajr paramajr)
+  public EnterTimeParcel(aks paramaks)
   {
-    this.Cjg = paramajr.Cjg;
-    this.Cjh = paramajr.Cjh;
-    this.Cji = paramajr.Cji;
-    this.Cjj = paramajr.Cjj;
-    this.ixw = paramajr.ixw;
+    this.IfZ = paramaks.IfZ;
+    this.Iga = paramaks.Iga;
+    this.Igb = paramaks.Igb;
+    this.Igc = paramaks.Igc;
+    this.lmL = paramaks.lmL;
   }
   
   public int describeContents()
@@ -53,17 +53,17 @@ public class EnterTimeParcel
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(67407);
-    paramParcel.writeInt(this.Cjg);
-    paramParcel.writeString(this.Cjh);
-    paramParcel.writeString(this.Cji);
-    paramParcel.writeInt(this.Cjj);
-    paramParcel.writeString(this.ixw);
+    paramParcel.writeInt(this.IfZ);
+    paramParcel.writeString(this.Iga);
+    paramParcel.writeString(this.Igb);
+    paramParcel.writeInt(this.Igc);
+    paramParcel.writeString(this.lmL);
     AppMethodBeat.o(67407);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.model.EnterTimeParcel
  * JD-Core Version:    0.7.0.1
  */

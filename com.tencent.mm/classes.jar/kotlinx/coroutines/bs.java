@@ -1,55 +1,48 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
-import kotlin.g.a.b;
 import kotlin.l;
-import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/InvokeOnCancelling;", "Lkotlinx/coroutines/Job;", "job", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "handler", "<init>", "(Lkotlinx/coroutines/Job;Lkotlin/jvm/functions/Function1;)V", "invoke", "(Ljava/lang/Throwable;)V", "", "toString", "()Ljava/lang/String;", "Lkotlin/jvm/functions/Function1;", "kotlinx-coroutines-core", "Lkotlinx/coroutines/JobCancellingNode;"})
-final class bs
-  extends bw<bu>
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/InactiveNodeList;", "Lkotlinx/coroutines/Incomplete;", "list", "Lkotlinx/coroutines/NodeList;", "(Lkotlinx/coroutines/NodeList;)V", "isActive", "", "()Z", "getList", "()Lkotlinx/coroutines/NodeList;", "toString", "", "kotlinx-coroutines-core"})
+public final class bs
+  implements bt
 {
-  private static final AtomicIntegerFieldUpdater TUN;
-  private volatile int _invoked;
-  private final b<Throwable, x> lJK;
+  final cj abxp;
   
-  static
+  public bs(cj paramcj)
   {
-    AppMethodBeat.i(118220);
-    TUN = AtomicIntegerFieldUpdater.newUpdater(bs.class, "_invoked");
-    AppMethodBeat.o(118220);
+    AppMethodBeat.i(118136);
+    this.abxp = paramcj;
+    AppMethodBeat.o(118136);
   }
   
-  public bs(bu parambu, b<? super Throwable, x> paramb)
+  public final cj iRt()
   {
-    super(parambu);
-    AppMethodBeat.i(118219);
-    this.lJK = paramb;
-    this._invoked = 0;
-    AppMethodBeat.o(118219);
+    return this.abxp;
+  }
+  
+  public final boolean isActive()
+  {
+    return false;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(118218);
-    String str = "InvokeOnCancelling[" + getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this)) + ']';
-    AppMethodBeat.o(118218);
-    return str;
-  }
-  
-  public final void y(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118216);
-    if (TUN.compareAndSet(this, 0, 1)) {
-      this.lJK.invoke(paramThrowable);
+    AppMethodBeat.i(118135);
+    if (ap.getDEBUG())
+    {
+      str = this.abxp.getString("New");
+      AppMethodBeat.o(118135);
+      return str;
     }
-    AppMethodBeat.o(118216);
+    String str = super.toString();
+    AppMethodBeat.o(118135);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlinx.coroutines.bs
  * JD-Core Version:    0.7.0.1
  */

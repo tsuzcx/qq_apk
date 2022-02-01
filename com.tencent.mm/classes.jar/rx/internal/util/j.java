@@ -11,8 +11,8 @@ public final class j
     static
     {
       AppMethodBeat.i(90230);
-      UnC = new a("INSTANCE");
-      UnD = new a[] { UnC };
+      abQQ = new a("INSTANCE");
+      abQR = new a[] { abQQ };
       AppMethodBeat.o(90230);
     }
     

@@ -22,7 +22,7 @@ public abstract interface a
   
   public abstract int getPlayerType();
   
-  public abstract b hmK();
+  public abstract b iql();
   
   public abstract boolean isPlaying();
   

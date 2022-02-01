@@ -7,36 +7,38 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.aaa;
-import com.tencent.mm.g.a.aaw;
-import com.tencent.mm.g.a.zu;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.q;
+import com.tencent.mm.f.a.abb;
+import com.tencent.mm.f.a.abh;
+import com.tencent.mm.f.a.aca;
+import com.tencent.mm.f.a.ace;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.protocal.protobuf.th;
+import com.tencent.mm.protocal.protobuf.tj;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.a.d;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.g;
 
 @com.tencent.mm.ui.base.a(3)
 public class WalletMixOrderInfoUI
   extends WalletBaseUI
 {
-  private boolean Ihf;
-  public boolean Ihg;
-  private th Ihh;
-  private int Ihi;
-  private IListener Ihj;
+  private IListener ERe;
+  private boolean OZl;
+  public boolean OZm;
+  private tj OZn;
+  private int OZo;
+  private IListener OZp;
   private String appId;
-  private String dDL;
-  private String dQk;
-  public int efQ;
+  private String fJB;
+  private String fwv;
+  public int gag;
   private String nonceStr;
   private String packageExt;
   public String prepayId;
@@ -51,14 +53,50 @@ public class WalletMixOrderInfoUI
     this.timeStamp = null;
     this.nonceStr = null;
     this.packageExt = null;
-    this.dDL = null;
+    this.fwv = null;
     this.signType = null;
-    this.dQk = null;
-    this.Ihj = new IListener() {};
+    this.fJB = null;
+    this.ERe = new IListener() {};
+    this.OZp = new IListener() {};
     AppMethodBeat.o(70979);
   }
   
-  private void aVP(String paramString)
+  private boolean amF(int paramInt)
+  {
+    AppMethodBeat.i(273170);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("appid", this.appId);
+    localBundle.putString("timestamp", this.timeStamp);
+    localBundle.putString("nonce_str", this.nonceStr);
+    localBundle.putString("package", this.packageExt);
+    localBundle.putInt("input_pay_scene", this.gag);
+    localBundle.putString("sign_type", this.signType);
+    localBundle.putString("pay_sign", this.fJB);
+    localBundle.putString("req_key", this.fwv);
+    localBundle.putInt("origin_pay_scene", paramInt);
+    localBundle.putString("order_id", this.prepayId);
+    localBundle.putInt("retry_max_count", this.OZn.Sdg);
+    localBundle.putInt("retry_interval_seconds", this.OZn.Sdf);
+    localBundle.putString("retry_default_wording", this.OZn.Sdh);
+    if (((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.pluginsdk.wallet.a.class)).startOverseaWalletSuccPageUseCase(this, localBundle))
+    {
+      AppMethodBeat.o(273170);
+      return true;
+    }
+    AppMethodBeat.o(273170);
+    return false;
+  }
+  
+  public static void amG(int paramInt)
+  {
+    AppMethodBeat.i(273171);
+    ace localace = new ace();
+    localace.gcd.result = paramInt;
+    EventCenter.instance.publish(localace);
+    AppMethodBeat.o(273171);
+  }
+  
+  private void bhy(String paramString)
   {
     AppMethodBeat.i(70984);
     if (Util.isNullOrNil(paramString))
@@ -72,76 +110,42 @@ public class WalletMixOrderInfoUI
     localIntent.putExtra("showShare", false);
     localIntent.putExtra("show_bottom", false);
     localIntent.putExtra("needRedirect", false);
-    localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.Kzm);
-    localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.Kzg);
-    f.b(getContext(), localIntent, 1);
+    localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.RBc);
+    localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.RAX);
+    g.c(getContext(), localIntent, 1);
+    EventCenter.instance.addListener(this.ERe);
     AppMethodBeat.o(70984);
   }
   
-  private boolean aeR(int paramInt)
-  {
-    AppMethodBeat.i(214241);
-    Bundle localBundle = new Bundle();
-    localBundle.putString("appid", this.appId);
-    localBundle.putString("timestamp", this.timeStamp);
-    localBundle.putString("nonce_str", this.nonceStr);
-    localBundle.putString("package", this.packageExt);
-    localBundle.putInt("input_pay_scene", this.efQ);
-    localBundle.putString("sign_type", this.signType);
-    localBundle.putString("pay_sign", this.dQk);
-    localBundle.putString("req_key", this.dDL);
-    localBundle.putInt("origin_pay_scene", paramInt);
-    localBundle.putString("order_id", this.prepayId);
-    localBundle.putInt("retry_max_count", this.Ihh.LbT);
-    localBundle.putInt("retry_interval_seconds", this.Ihh.LbS);
-    localBundle.putString("retry_default_wording", this.Ihh.LbU);
-    if (((com.tencent.mm.pluginsdk.wallet.a)g.af(com.tencent.mm.pluginsdk.wallet.a.class)).startOverseaWalletSuccPageUseCase(this, localBundle))
-    {
-      AppMethodBeat.o(214241);
-      return true;
-    }
-    AppMethodBeat.o(214241);
-    return false;
-  }
-  
-  public static void aeS(int paramInt)
-  {
-    AppMethodBeat.i(214242);
-    aaw localaaw = new aaw();
-    localaaw.ehM.result = paramInt;
-    EventCenter.instance.publish(localaaw);
-    AppMethodBeat.o(214242);
-  }
-  
-  private void bQ(Context paramContext, String paramString)
+  private void cb(Context paramContext, String paramString)
   {
     AppMethodBeat.i(70985);
     Log.i("MicroMsg.WalletMixOrderInfoUI", "showErrorAlert");
-    if (!this.Ihf)
+    if (!this.OZl)
     {
-      aaw localaaw = new aaw();
-      localaaw.ehM.result = 0;
-      EventCenter.instance.publish(localaaw);
+      ace localace = new ace();
+      localace.gcd.result = 0;
+      EventCenter.instance.publish(localace);
     }
-    paramContext = h.a(paramContext, paramString, "", false, new DialogInterface.OnClickListener()
+    paramContext = com.tencent.mm.ui.base.h.a(paramContext, paramString, "", false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
-        AppMethodBeat.i(70978);
+        AppMethodBeat.i(213689);
         paramAnonymousDialogInterface.dismiss();
-        if (WalletMixOrderInfoUI.l(WalletMixOrderInfoUI.this))
+        if (WalletMixOrderInfoUI.m(WalletMixOrderInfoUI.this))
         {
-          paramAnonymousDialogInterface = new aaw();
-          paramAnonymousDialogInterface.ehM.result = this.Ihm;
+          paramAnonymousDialogInterface = new ace();
+          paramAnonymousDialogInterface.gcd.result = this.OZs;
           EventCenter.instance.publish(paramAnonymousDialogInterface);
         }
-        paramAnonymousDialogInterface = new aaa();
-        paramAnonymousDialogInterface.egJ.dDL = WalletMixOrderInfoUI.a(WalletMixOrderInfoUI.this);
-        paramAnonymousDialogInterface.egJ.result = this.Ihm;
+        paramAnonymousDialogInterface = new abh();
+        paramAnonymousDialogInterface.gaZ.fwv = WalletMixOrderInfoUI.a(WalletMixOrderInfoUI.this);
+        paramAnonymousDialogInterface.gaZ.result = this.OZs;
         EventCenter.instance.publish(paramAnonymousDialogInterface);
-        WalletMixOrderInfoUI.this.setResult(this.Ihm);
+        WalletMixOrderInfoUI.this.setResult(this.OZs);
         WalletMixOrderInfoUI.this.finish();
-        AppMethodBeat.o(70978);
+        AppMethodBeat.o(213689);
       }
     });
     if (paramContext != null) {
@@ -160,7 +164,7 @@ public class WalletMixOrderInfoUI
   
   public int getLayoutId()
   {
-    return 2131496765;
+    return a.g.transparent_layout;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -169,12 +173,13 @@ public class WalletMixOrderInfoUI
     if ((paramInt1 == 1) && (paramInt2 == 0))
     {
       Log.d("MicroMsg.WalletMixOrderInfoUI", "requestCode: %d, resultCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      if (this.Ihg)
+      if (this.OZm)
       {
-        EventCenter.instance.removeListener(this.Ihj);
-        paramIntent = new aaa();
-        paramIntent.egJ.dDL = this.prepayId;
-        paramIntent.egJ.result = 0;
+        Log.i("MicroMsg.WalletMixOrderInfoUI", "onActivityResult, mIsPending is true");
+        EventCenter.instance.removeListener(this.OZp);
+        paramIntent = new abh();
+        paramIntent.gaZ.fwv = this.prepayId;
+        paramIntent.gaZ.result = 0;
         EventCenter.instance.publish(paramIntent);
         finish();
       }
@@ -187,17 +192,17 @@ public class WalletMixOrderInfoUI
     AppMethodBeat.i(70980);
     super.onCreate(paramBundle);
     paramBundle = getIntent();
-    this.Ihh = new th();
-    this.Ihh.LbT = paramBundle.getIntExtra("max_count", 3);
-    this.Ihh.LbS = paramBundle.getIntExtra("inteval_time", 4);
-    this.Ihh.LbU = paramBundle.getStringExtra("default_wording");
-    if (Util.isNullOrNil(this.Ihh.LbU)) {
-      this.Ihh.LbU = getString(2131767667);
+    this.OZn = new tj();
+    this.OZn.Sdg = paramBundle.getIntExtra("max_count", 3);
+    this.OZn.Sdf = paramBundle.getIntExtra("inteval_time", 4);
+    this.OZn.Sdh = paramBundle.getStringExtra("default_wording");
+    if (Util.isNullOrNil(this.OZn.Sdh)) {
+      this.OZn.Sdh = getString(a.i.wallet_data_err);
     }
-    this.Ihi = this.Ihh.LbT;
-    this.Ihf = paramBundle.getBooleanExtra("is_jsapi_offline_pay", false);
-    this.Ihg = true;
-    if (!this.Ihf)
+    this.OZo = this.OZn.Sdg;
+    this.OZl = paramBundle.getBooleanExtra("is_jsapi_offline_pay", false);
+    this.OZm = true;
+    if (!this.OZl)
     {
       final String str1 = paramBundle.getStringExtra("pay_gate_url");
       boolean bool = paramBundle.getBooleanExtra("need_dialog", false);
@@ -205,7 +210,7 @@ public class WalletMixOrderInfoUI
       this.prepayId = paramBundle.getStringExtra("prepayId");
       Log.i("MicroMsg.WalletMixOrderInfoUI", " prepayId:%s ，need_dialog:%s", new Object[] { this.prepayId, Boolean.valueOf(bool) });
       if (bool) {
-        h.a(this, str2, "", new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        com.tencent.mm.ui.base.h.a(this, str2, "", new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -220,9 +225,9 @@ public class WalletMixOrderInfoUI
           {
             AppMethodBeat.i(70976);
             paramAnonymousDialogInterface.dismiss();
-            paramAnonymousDialogInterface = new aaa();
-            paramAnonymousDialogInterface.egJ.dDL = WalletMixOrderInfoUI.a(WalletMixOrderInfoUI.this);
-            paramAnonymousDialogInterface.egJ.result = 0;
+            paramAnonymousDialogInterface = new abh();
+            paramAnonymousDialogInterface.gaZ.fwv = WalletMixOrderInfoUI.a(WalletMixOrderInfoUI.this);
+            paramAnonymousDialogInterface.gaZ.result = 0;
             EventCenter.instance.publish(paramAnonymousDialogInterface);
             WalletMixOrderInfoUI.this.finish();
             AppMethodBeat.o(70976);
@@ -231,35 +236,44 @@ public class WalletMixOrderInfoUI
       }
       for (;;)
       {
-        EventCenter.instance.addListener(this.Ihj);
+        EventCenter.instance.addListener(this.OZp);
         AppMethodBeat.o(70980);
         return;
-        aVP(str1);
+        bhy(str1);
       }
     }
     this.appId = getIntent().getStringExtra("appId");
     this.timeStamp = getIntent().getStringExtra("timeStamp");
     this.nonceStr = getIntent().getStringExtra("nonceStr");
     this.packageExt = getIntent().getStringExtra("packageExt");
-    this.dDL = getIntent().getStringExtra("reqKey");
-    this.efQ = getIntent().getIntExtra("payScene", -1);
+    this.fwv = getIntent().getStringExtra("reqKey");
+    this.gag = getIntent().getIntExtra("payScene", -1);
     this.signType = getIntent().getStringExtra("signtype");
-    this.dQk = getIntent().getStringExtra("paySignature");
-    Log.i("MicroMsg.WalletMixOrderInfoUI", "start query offline walletmix succ page, prepayId:%s, payScene：%s, reqKey:%s", new Object[] { this.prepayId, Integer.valueOf(this.efQ), this.dDL });
-    if (aeR(2))
+    this.fJB = getIntent().getStringExtra("paySignature");
+    Log.i("MicroMsg.WalletMixOrderInfoUI", "start query offline walletmix succ page, prepayId:%s, payScene：%s, reqKey:%s", new Object[] { this.prepayId, Integer.valueOf(this.gag), this.fwv });
+    if (amF(2))
     {
       Log.i("MicroMsg.WalletMixOrderInfoUI", "startOverseaWalletSuccPageUseCase is true, go kinda");
       AppMethodBeat.o(70980);
       return;
     }
-    if ((this.efQ == 2) && (Util.isNullOrNil(this.prepayId)))
+    if ((this.gag == 2) && (Util.isNullOrNil(this.prepayId)))
     {
-      doSceneForceProgress(new com.tencent.mm.plugin.wallet_core.c.c.a(this.appId, this.timeStamp, this.nonceStr, this.packageExt, this.dDL, this.efQ, this.signType, this.dQk));
+      doSceneForceProgress(new com.tencent.mm.plugin.wallet_core.c.c.a(this.appId, this.timeStamp, this.nonceStr, this.packageExt, this.fwv, this.gag, this.signType, this.fJB));
       AppMethodBeat.o(70980);
       return;
     }
-    bQ(this, getString(2131768038));
+    cb(this, getString(a.i.wallet_paid_unknown_error_wallet_mix));
     AppMethodBeat.o(70980);
+  }
+  
+  public void onDestroy()
+  {
+    AppMethodBeat.i(273169);
+    super.onDestroy();
+    EventCenter.instance.removeListener(this.OZp);
+    EventCenter.instance.removeListener(this.ERe);
+    AppMethodBeat.o(273169);
   }
   
   public void onResume()
@@ -276,19 +290,19 @@ public class WalletMixOrderInfoUI
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        this.Ihg = false;
-        paramString = new aaw();
-        paramString.ehM.result = -1;
+        this.OZm = false;
+        paramString = new ace();
+        paramString.gcd.result = -1;
         EventCenter.instance.publish(paramString);
-        paramString = ((com.tencent.mm.plugin.wallet_core.c.c.a)paramq).HQL;
+        paramString = ((com.tencent.mm.plugin.wallet_core.c.c.a)paramq).OIT;
         Log.i("MicroMsg.WalletMixOrderInfoUI", " go to WalletMixOrderInfoProxyUI");
         paramq = new Intent(this, WalletMixOrderInfoProxyUI.class);
         paramq.putExtra("key_orders", paramString);
         paramq.putExtra("prepayId", this.prepayId);
-        paramString = new com.tencent.mm.hellhoundlib.b.a().bl(paramq);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramString.axQ(), "com/tencent/mm/plugin/wallet_core/ui/WalletMixOrderInfoUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramString.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletMixOrderInfoUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramString = new com.tencent.mm.hellhoundlib.b.a().bm(paramq);
+        com.tencent.mm.hellhoundlib.a.a.b(this, paramString.aFh(), "com/tencent/mm/plugin/wallet_core/ui/WalletMixOrderInfoUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramString.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/wallet_core/ui/WalletMixOrderInfoUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         setResult(-1);
         finish();
       }
@@ -296,25 +310,25 @@ public class WalletMixOrderInfoUI
       {
         AppMethodBeat.o(70982);
         return true;
-        if (this.Ihi == 0) {}
+        if (this.OZo == 0) {}
         for (paramInt1 = 0;; paramInt1 = 1)
         {
           if (paramInt1 == 0) {
             break label305;
           }
           Log.d("MicroMsg.WalletMixOrderInfoUI", "retryGetPaidOrderDetailAgain again");
-          Log.d("MicroMsg.WalletMixOrderInfoUI", "retryGetPaidOrderDetailAgain：m_currentRetryCount: %d", new Object[] { Integer.valueOf(this.Ihi) });
-          this.Ihi -= 1;
-          doSceneForceProgress(new com.tencent.mm.plugin.wallet_core.c.c.a(this.appId, this.timeStamp, this.nonceStr, this.packageExt, this.prepayId, this.efQ, this.signType, this.dQk), this.Ihh.LbS);
+          Log.d("MicroMsg.WalletMixOrderInfoUI", "retryGetPaidOrderDetailAgain：m_currentRetryCount: %d", new Object[] { Integer.valueOf(this.OZo) });
+          this.OZo -= 1;
+          doSceneForceProgress(new com.tencent.mm.plugin.wallet_core.c.c.a(this.appId, this.timeStamp, this.nonceStr, this.packageExt, this.prepayId, this.gag, this.signType, this.fJB), this.OZn.Sdf);
           break;
         }
         label305:
-        this.Ihg = false;
+        this.OZm = false;
         paramq = paramString;
         if (paramString.isEmpty()) {
-          paramq = this.Ihh.LbU;
+          paramq = this.OZn.Sdh;
         }
-        bQ(this, paramq);
+        cb(this, paramq);
       }
     }
     AppMethodBeat.o(70982);

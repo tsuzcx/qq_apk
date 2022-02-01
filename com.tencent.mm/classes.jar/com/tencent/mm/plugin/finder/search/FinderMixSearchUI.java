@@ -2,129 +2,97 @@ package com.tencent.mm.plugin.finder.search;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.l;
+import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cl;
-import com.tencent.mm.plugin.finder.report.live.s.j;
-import com.tencent.mm.plugin.finder.report.live.s.p;
+import com.tencent.mm.model.cm;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.live.report.c;
+import com.tencent.mm.plugin.finder.live.report.s.l;
+import com.tencent.mm.plugin.finder.live.report.s.t;
+import com.tencent.mm.plugin.finder.report.o;
+import com.tencent.mm.plugin.finder.storage.d;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
+import com.tencent.mm.plugin.finder.viewmodel.component.aj;
+import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.component.g.a;
 import com.tencent.mm.ui.search.FTSEditTextView;
-import com.tencent.mm.ui.search.FTSEditTextView.a;
 import com.tencent.mm.ui.search.FTSEditTextView.b;
+import com.tencent.mm.ui.search.FTSEditTextView.c;
 import com.tencent.mm.ui.search.a.b;
 import com.tencent.mm.ui.search.a.c;
+import com.tencent.mm.ui.w;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
-import kotlin.n.n;
 import kotlin.t;
 import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/search/FinderMixSearchUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/ui/search/FTSSearchView$FTSSearchViewListener;", "Lcom/tencent/mm/ui/search/FTSEditTextView$FTSEditTextListener;", "()V", "backBtn", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "historyLogic", "Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic;", "isHotSearchEnable", "", "mOnScrollListener", "com/tencent/mm/plugin/finder/search/FinderMixSearchUI$mOnScrollListener$1", "Lcom/tencent/mm/plugin/finder/search/FinderMixSearchUI$mOnScrollListener$1;", "popularListLogic", "Lcom/tencent/mm/plugin/finder/search/FinderPopularListLogic;", "presenter", "Lcom/tencent/mm/plugin/finder/search/FinderMixSearchPresenter;", "searchView", "Lcom/tencent/mm/ui/search/FTSSearchView;", "viewCallback", "Lcom/tencent/mm/plugin/finder/search/FinderMixSearchViewCallback;", "getCommentScene", "", "getLayoutId", "getReportType", "initData", "", "initPopularList", "initSearchView", "onClickBackBtn", "view", "Landroid/view/View;", "onClickCancelBtn", "onClickClearTextBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onEditTextChange", "totalText", "", "inEditText", "tagList", "", "Lcom/tencent/mm/ui/search/FTSSearchView$IFTSTagModel;", "textChangeStatus", "Lcom/tencent/mm/ui/search/FTSEditTextView$TextChangeStatus;", "onEditTextFocusChange", "hasFocus", "onPause", "onResume", "onSearchKeyDown", "onSwipeBack", "onTagClick", "index", "tag", "reportStartSearch", "requestSearch", "showPopularList", "Companion", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/search/FinderMixSearchUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/ui/search/FTSSearchView$FTSSearchViewListener;", "Lcom/tencent/mm/ui/search/FTSEditTextView$FTSEditTextListener;", "()V", "backBtn", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "historyLogic", "Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic;", "isHotSearchEnable", "", "mOnScrollListener", "com/tencent/mm/plugin/finder/search/FinderMixSearchUI$mOnScrollListener$1", "Lcom/tencent/mm/plugin/finder/search/FinderMixSearchUI$mOnScrollListener$1;", "presenter", "Lcom/tencent/mm/plugin/finder/search/FinderMixSearchPresenter;", "searchSceneForPull", "", "searchSuggestionManager", "Lcom/tencent/mm/plugin/finder/search/FinderSearchSuggestionManager;", "searchView", "Lcom/tencent/mm/ui/search/FTSSearchView;", "viewCallback", "Lcom/tencent/mm/plugin/finder/search/FinderMixSearchViewCallback;", "adapteNightMode", "", "getCommentScene", "getLayoutId", "getReportType", "initData", "initSearchView", "initSuggestion", "isFinderLiveSearch", "onClickBackBtn", "view", "Landroid/view/View;", "onClickCancelBtn", "onClickClearTextBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onEditTextChange", "totalText", "", "inEditText", "tagList", "", "Lcom/tencent/mm/ui/search/FTSSearchView$IFTSTagModel;", "textChangeStatus", "Lcom/tencent/mm/ui/search/FTSEditTextView$TextChangeStatus;", "onEditTextFocusChange", "hasFocus", "onPause", "onResume", "onSearchKeyDown", "onSwipeBack", "onTagClick", "index", "tag", "reportStartSearch", "requestSearch", "Companion", "plugin-finder_release"})
 public final class FinderMixSearchUI
   extends MMFinderUI
-  implements FTSEditTextView.a, a.b
+  implements FTSEditTextView.b, a.b
 {
-  public static final a vuA;
+  public static final a Abx;
+  private g Abt;
+  private boolean Abu;
+  private int Abv;
+  private final f Abw;
   private HashMap _$_findViewCache;
   private FinderMixSearchPresenter presenter;
-  private com.tencent.mm.ui.search.a ubO;
-  private g ubP;
-  private h vtK;
-  private f vux;
-  private boolean vuy;
-  private final e vuz;
+  private com.tencent.mm.ui.search.a xNC;
+  private i xNE;
+  private k xNF;
   
   static
   {
-    AppMethodBeat.i(251322);
-    vuA = new a((byte)0);
-    AppMethodBeat.o(251322);
+    AppMethodBeat.i(239792);
+    Abx = new a((byte)0);
+    AppMethodBeat.o(239792);
   }
   
   public FinderMixSearchUI()
   {
-    AppMethodBeat.i(251321);
-    this.vuz = new e();
-    AppMethodBeat.o(251321);
+    AppMethodBeat.i(239790);
+    this.Abw = new f();
+    AppMethodBeat.o(239790);
   }
   
-  private final boolean dpD()
+  private boolean dpJ()
   {
-    AppMethodBeat.i(251318);
-    g localg = this.ubP;
-    if (localg != null)
-    {
-      Object localObject = this.vtK;
-      if (localObject == null) {
-        p.btv("historyLogic");
-      }
-      if (!((h)localObject).isShowing())
-      {
-        localObject = this.vux;
-        if (localObject == null) {
-          p.btv("viewCallback");
-        }
-        if (!((f)localObject).isShowing()) {}
-      }
-      else
-      {
-        localObject = this.ubO;
-        if (localObject == null) {
-          p.btv("searchView");
-        }
-        ((com.tencent.mm.ui.search.a)localObject).getFtsEditText().O("", null);
-        localObject = this.ubO;
-        if (localObject == null) {
-          p.btv("searchView");
-        }
-        ((com.tencent.mm.ui.search.a)localObject).getFtsEditText().gUA();
-        localObject = this.vux;
-        if (localObject == null) {
-          p.btv("viewCallback");
-        }
-        ((f)localObject).dpG();
-        localObject = this.vtK;
-        if (localObject == null) {
-          p.btv("historyLogic");
-        }
-        ((h)localObject).dpU();
-        boolean bool = localg.ow(true);
-        AppMethodBeat.o(251318);
-        return bool;
-      }
-    }
-    AppMethodBeat.o(251318);
-    return true;
+    return this.Abv == 13;
   }
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(251325);
+    AppMethodBeat.i(239808);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(251325);
+    AppMethodBeat.o(239808);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(251324);
+    AppMethodBeat.i(239805);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -135,11 +103,11 @@ public final class FinderMixSearchUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(251324);
+    AppMethodBeat.o(239805);
     return localView1;
   }
   
-  public final void a(String paramString1, String paramString2, List<a.c> paramList, FTSEditTextView.b paramb)
+  public final void a(String paramString1, String paramString2, List<a.c> paramList, FTSEditTextView.c paramc)
   {
     AppMethodBeat.i(166822);
     if (paramString1 != null)
@@ -150,7 +118,7 @@ public final class FinderMixSearchUI
         AppMethodBeat.o(166822);
         throw paramString1;
       }
-      paramString2 = n.trim((CharSequence)paramString1).toString();
+      paramString2 = kotlin.n.n.bb((CharSequence)paramString1).toString();
       paramString1 = paramString2;
       if (paramString2 != null) {}
     }
@@ -158,34 +126,34 @@ public final class FinderMixSearchUI
     {
       paramString1 = "";
     }
-    paramString2 = this.vtK;
+    paramString2 = this.xNE;
     if (paramString2 == null) {
-      p.btv("historyLogic");
+      p.bGy("historyLogic");
     }
-    paramString2.auW(paramString1);
-    paramString2 = this.vux;
+    paramString2.aEm(paramString1);
+    paramString2 = this.Abt;
     if (paramString2 == null) {
-      p.btv("viewCallback");
+      p.bGy("viewCallback");
     }
     if (Util.isNullOrNil(paramString1))
     {
-      paramString2.vtJ.setVisibility(8);
-      paramString2.hSw.setVisibility(8);
-      paramString2.hak.setVisibility(8);
+      paramString2.xND.setVisibility(8);
+      paramString2.kGT.setVisibility(8);
+      paramString2.jLl.setVisibility(8);
     }
     AppMethodBeat.o(166822);
   }
   
-  public final boolean awE()
+  public final boolean aDV()
   {
     AppMethodBeat.i(166825);
     hideVKB();
-    Object localObject1 = this.ubO;
+    Object localObject1 = this.xNC;
     if (localObject1 == null) {
-      p.btv("searchView");
+      p.bGy("searchView");
     }
     localObject1 = ((com.tencent.mm.ui.search.a)localObject1).getFtsEditText();
-    p.g(localObject1, "searchView.ftsEditText");
+    p.j(localObject1, "searchView.ftsEditText");
     localObject1 = ((FTSEditTextView)localObject1).getTotalQuery();
     if (localObject1 != null)
     {
@@ -195,7 +163,7 @@ public final class FinderMixSearchUI
         AppMethodBeat.o(166825);
         throw ((Throwable)localObject1);
       }
-      localObject2 = n.trim((CharSequence)localObject1).toString();
+      localObject2 = kotlin.n.n.bb((CharSequence)localObject1).toString();
       localObject1 = localObject2;
       if (localObject2 != null) {}
     }
@@ -210,81 +178,39 @@ public final class FinderMixSearchUI
     }
     Object localObject2 = this.presenter;
     if (localObject2 == null) {
-      p.btv("presenter");
+      p.bGy("presenter");
     }
-    ((FinderMixSearchPresenter)localObject2).br((String)localObject1, false);
-    localObject2 = this.ubP;
-    if (localObject2 != null) {
-      ((g)localObject2).dpJ();
-    }
-    localObject2 = this.vtK;
+    ((FinderMixSearchPresenter)localObject2).ag((String)localObject1, 1, this.Abv);
+    localObject2 = this.xNE;
     if (localObject2 == null) {
-      p.btv("historyLogic");
+      p.bGy("historyLogic");
     }
-    ((h)localObject2).auX((String)localObject1);
+    ((i)localObject2).aEn((String)localObject1);
+    localObject1 = this.xNF;
+    if (localObject1 == null) {
+      p.bGy("searchSuggestionManager");
+    }
+    ((k)localObject1).dRj();
     AppMethodBeat.o(166825);
     return true;
   }
   
-  public final int ddN()
+  public final int duR()
   {
     return 3;
   }
   
-  public final void dpw() {}
+  public final void dvg() {}
   
-  public final void eh(boolean paramBoolean)
+  public final void eF(boolean paramBoolean)
   {
     AppMethodBeat.i(166823);
-    g localg;
     if (paramBoolean)
     {
-      localg = this.ubP;
-      if (localg != null)
-      {
-        if (localg.tmh.getVisibility() == 0) {}
-        for (int i = 1;; i = 0)
-        {
-          if (i == 0) {
-            break label141;
-          }
-          localObject = this.ubO;
-          if (localObject == null) {
-            p.btv("searchView");
-          }
-          localObject = ((com.tencent.mm.ui.search.a)localObject).getFtsEditText();
-          p.g(localObject, "searchView.ftsEditText");
-          localObject = ((FTSEditTextView)localObject).getTotalQuery();
-          if (localObject == null) {
-            break label155;
-          }
-          if (localObject != null) {
-            break;
-          }
-          localObject = new t("null cannot be cast to non-null type kotlin.CharSequence");
-          AppMethodBeat.o(166823);
-          throw ((Throwable)localObject);
-        }
-      }
+      o localo = o.zWG;
+      o.dPE();
     }
-    label141:
-    label155:
-    for (Object localObject = n.trim((CharSequence)localObject).toString();; localObject = null)
-    {
-      if (Util.isNullOrNil((String)localObject))
-      {
-        localg.dpJ();
-        localObject = this.vtK;
-        if (localObject == null) {
-          p.btv("historyLogic");
-        }
-        ((h)localObject).dpT();
-      }
-      localObject = com.tencent.mm.plugin.finder.report.l.vfB;
-      com.tencent.mm.plugin.finder.report.l.doe();
-      AppMethodBeat.o(166823);
-      return;
-    }
+    AppMethodBeat.o(166823);
   }
   
   public final int getCommentScene()
@@ -294,16 +220,23 @@ public final class FinderMixSearchUI
   
   public final int getLayoutId()
   {
-    return 2131494514;
+    AppMethodBeat.i(239774);
+    if (dpJ())
+    {
+      i = b.g.finder_mix_search_ui_night_mode;
+      AppMethodBeat.o(239774);
+      return i;
+    }
+    int i = b.g.finder_mix_search_ui;
+    AppMethodBeat.o(239774);
+    return i;
   }
   
   public final void onClickBackBtn(View paramView)
   {
     AppMethodBeat.i(166820);
     hideVKB();
-    if (dpD()) {
-      finish();
-    }
+    finish();
     AppMethodBeat.o(166820);
   }
   
@@ -318,11 +251,11 @@ public final class FinderMixSearchUI
   public final void onClickClearTextBtn(View paramView)
   {
     AppMethodBeat.i(166824);
-    paramView = this.ubO;
+    paramView = this.xNC;
     if (paramView == null) {
-      p.btv("searchView");
+      p.bGy("searchView");
     }
-    paramView.getFtsEditText().awD();
+    paramView.getFtsEditText().aDU();
     showVKB();
     AppMethodBeat.o(166824);
   }
@@ -331,156 +264,192 @@ public final class FinderMixSearchUI
   {
     AppMethodBeat.i(166818);
     super.onCreate(paramBundle);
-    paramBundle = com.tencent.mm.plugin.finder.storage.c.vCb;
+    paramBundle = d.AjH;
     boolean bool;
     Object localObject;
+    label119:
+    int i;
+    label239:
     String str;
-    if (((Number)com.tencent.mm.plugin.finder.storage.c.dwL().value()).intValue() == 1)
+    if (((Number)d.dWR().aSr()).intValue() == 1)
     {
       bool = true;
-      this.vuy = bool;
-      this.ubO = new com.tencent.mm.ui.search.a((Context)this);
-      paramBundle = this.ubO;
+      this.Abu = bool;
+      this.Abv = getIntent().getIntExtra("request_type", 0);
+      paramBundle = getIntent().getStringExtra("key_click_sub_tab_context_id");
+      if (!TextUtils.isEmpty((CharSequence)paramBundle))
+      {
+        localObject = com.tencent.mm.ui.component.g.Xox;
+        ((aj)com.tencent.mm.ui.component.g.b((AppCompatActivity)this).i(aj.class)).yAU = paramBundle;
+      }
+      if (!dpJ()) {
+        break label816;
+      }
+      paramBundle = new com.tencent.mm.ui.search.a((Context)this, true);
+      this.xNC = paramBundle;
+      paramBundle = this.xNC;
       if (paramBundle == null) {
-        p.btv("searchView");
+        p.bGy("searchView");
       }
       paramBundle.setSearchViewListener((a.b)this);
-      paramBundle = this.ubO;
+      paramBundle = this.xNC;
       if (paramBundle == null) {
-        p.btv("searchView");
+        p.bGy("searchView");
       }
-      paramBundle.getFtsEditText().setHint(getString(2131755972));
-      paramBundle = this.ubO;
+      paramBundle.getFtsEditText().setHint(getString(b.j.app_search));
+      paramBundle = this.xNC;
       if (paramBundle == null) {
-        p.btv("searchView");
+        p.bGy("searchView");
       }
-      paramBundle.getFtsEditText().setFtsEditTextListener((FTSEditTextView.a)this);
-      paramBundle = this.ubO;
+      paramBundle.getFtsEditText().setFtsEditTextListener((FTSEditTextView.b)this);
+      paramBundle = this.xNC;
       if (paramBundle == null) {
-        p.btv("searchView");
+        p.bGy("searchView");
       }
       paramBundle.getFtsEditText().setCanDeleteTag(false);
-      if (this.vuy)
+      if (this.Abu)
       {
-        paramBundle = this.ubO;
-        if (paramBundle == null) {
-          p.btv("searchView");
+        if (!dpJ()) {
+          break label831;
         }
-        paramBundle.gXh();
+        i = b.c.Dark_0;
+        paramBundle = this.xNC;
+        if (paramBundle == null) {
+          p.bGy("searchView");
+        }
+        paramBundle.axr(i);
       }
-      paramBundle = this.ubO;
+      paramBundle = this.xNC;
       if (paramBundle == null) {
-        p.btv("searchView");
+        p.bGy("searchView");
       }
-      paramBundle.getFtsEditText().awD();
-      paramBundle = this.ubO;
+      paramBundle.getFtsEditText().aDU();
+      paramBundle = this.xNC;
       if (paramBundle == null) {
-        p.btv("searchView");
+        p.bGy("searchView");
       }
-      paramBundle.getFtsEditText().awC();
-      paramBundle = this.ubO;
+      paramBundle.getFtsEditText().aDT();
+      paramBundle = this.xNC;
       if (paramBundle == null) {
-        p.btv("searchView");
+        p.bGy("searchView");
       }
-      paramBundle.getFtsEditText().gWY();
+      paramBundle.getFtsEditText().hXB();
       paramBundle = getSupportActionBar();
       if (paramBundle == null) {
-        p.hyc();
+        p.iCn();
       }
-      p.g(paramBundle, "supportActionBar!!");
-      localObject = this.ubO;
+      p.j(paramBundle, "supportActionBar!!");
+      localObject = this.xNC;
       if (localObject == null) {
-        p.btv("searchView");
+        p.bGy("searchView");
       }
       paramBundle.setCustomView((View)localObject);
-      this.vtK = new h((MMActivity)this, false, (kotlin.g.a.b)new b(this), (j)new c(this));
-      this.presenter = new FinderMixSearchPresenter((MMActivity)this);
+      this.xNE = new i((MMActivity)this, false, dpJ(), (kotlin.g.a.b)new b(this), (l)new c());
+      this.presenter = new FinderMixSearchPresenter((MMActivity)this, this.Abv);
       paramBundle = (MMActivity)this;
       localObject = this.presenter;
       if (localObject == null) {
-        p.btv("presenter");
+        p.bGy("presenter");
       }
-      this.vux = new f(paramBundle, (e.a)localObject);
+      this.Abt = new g(paramBundle, (f.a)localObject, this.Abv);
       paramBundle = this.presenter;
       if (paramBundle == null) {
-        p.btv("presenter");
+        p.bGy("presenter");
       }
-      localObject = this.vux;
+      localObject = this.Abt;
       if (localObject == null) {
-        p.btv("viewCallback");
+        p.bGy("viewCallback");
       }
-      paramBundle.a((e.b)localObject);
-      paramBundle = this.vux;
+      paramBundle.a((f.b)localObject);
+      paramBundle = this.Abt;
       if (paramBundle == null) {
-        p.btv("viewCallback");
+        p.bGy("viewCallback");
       }
-      paramBundle.hak.setOnTouchListener((View.OnTouchListener)new d(this));
-      paramBundle = this.vtK;
-      if (paramBundle == null) {
-        p.btv("historyLogic");
+      paramBundle.jLl.setOnTouchListener((View.OnTouchListener)new d(this));
+      paramBundle = (MMActivity)this;
+      localObject = this.xNC;
+      if (localObject == null) {
+        p.bGy("searchView");
       }
-      paramBundle.dpT();
-      paramBundle = this.vux;
-      if (paramBundle == null) {
-        p.btv("viewCallback");
-      }
-      paramBundle.hak.a((RecyclerView.l)this.vuz);
-      if (!this.vuy)
+      localObject = ((com.tencent.mm.ui.search.a)localObject).getFtsEditText();
+      p.j(localObject, "searchView.ftsEditText");
+      this.xNF = new k(paramBundle, (FTSEditTextView)localObject, this.Abv, 1, false, dpJ(), (kotlin.g.a.b)new e(this));
+      if (dpJ())
       {
-        paramBundle = com.tencent.mm.plugin.finder.report.k.vfA;
-        com.tencent.mm.plugin.finder.report.k.auJ(String.valueOf(cl.aWA()));
+        paramBundle = getController();
+        localObject = getContext();
+        p.j(localObject, "context");
+        paramBundle.setActionbarColor(((AppCompatActivity)localObject).getResources().getColor(b.c.Dark_0));
+        setBackGroundColorResource(b.c.Dark_0);
+      }
+      paramBundle = this.xNE;
+      if (paramBundle == null) {
+        p.bGy("historyLogic");
+      }
+      paramBundle.AbZ.setVisibility(0);
+      paramBundle = this.Abt;
+      if (paramBundle == null) {
+        p.bGy("viewCallback");
+      }
+      paramBundle.jLl.a((RecyclerView.l)this.Abw);
+      if (!this.Abu)
+      {
+        paramBundle = com.tencent.mm.plugin.finder.report.n.zWF;
+        com.tencent.mm.plugin.finder.report.n.aEc(String.valueOf(cm.bfE()));
         localObject = UUID.randomUUID().toString();
-        p.g(localObject, "UUID.randomUUID().toString()");
-        paramBundle = com.tencent.mm.plugin.finder.report.k.vfA;
-        paramBundle = com.tencent.mm.plugin.finder.report.k.vfA;
-        str = com.tencent.mm.plugin.finder.report.k.dob();
-        paramBundle = FinderReporterUIC.wzC;
+        p.j(localObject, "UUID.randomUUID().toString()");
+        paramBundle = com.tencent.mm.plugin.finder.report.n.zWF;
+        paramBundle = com.tencent.mm.plugin.finder.report.n.zWF;
+        str = com.tencent.mm.plugin.finder.report.n.dPC();
+        paramBundle = aj.Bnu;
         paramBundle = getContext();
-        p.g(paramBundle, "context");
-        paramBundle = FinderReporterUIC.a.fH((Context)paramBundle);
+        p.j(paramBundle, "context");
+        paramBundle = aj.a.fZ((Context)paramBundle);
         if (paramBundle == null) {
-          break label587;
+          break label838;
         }
       }
     }
-    label587:
-    for (paramBundle = paramBundle.dIx();; paramBundle = null)
+    label816:
+    label831:
+    label838:
+    for (paramBundle = paramBundle.ekY();; paramBundle = null)
     {
-      com.tencent.mm.plugin.finder.report.k.a(str, (String)localObject, "", 1, 1, 1, 0, 0, paramBundle);
+      com.tencent.mm.plugin.finder.report.n.a(str, (String)localObject, "", 1, 1, 1, 0, 0, paramBundle);
       AppMethodBeat.o(166818);
       return;
       bool = false;
       break;
+      paramBundle = new com.tencent.mm.ui.search.a((Context)this);
+      break label119;
+      i = b.c.BW_93;
+      break label239;
     }
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(166819);
-    Object localObject = this.vtK;
+    Object localObject = this.xNE;
     if (localObject == null) {
-      p.btv("historyLogic");
+      p.bGy("historyLogic");
     }
-    ((h)localObject).onDestroy();
-    localObject = this.ubP;
-    if (localObject != null) {
-      ((g)localObject).onDestroy();
-    }
+    ((i)localObject).onDestroy();
     localObject = this.presenter;
     if (localObject == null) {
-      p.btv("presenter");
+      p.bGy("presenter");
     }
     ((FinderMixSearchPresenter)localObject).onDetach();
     hideVKB();
-    localObject = this.vux;
+    localObject = this.Abt;
     if (localObject == null) {
-      p.btv("viewCallback");
+      p.bGy("viewCallback");
     }
-    ((f)localObject).hak.b((RecyclerView.l)this.vuz);
-    if (!this.vuy)
+    ((g)localObject).jLl.b((RecyclerView.l)this.Abw);
+    if (!this.Abu)
     {
-      localObject = com.tencent.mm.plugin.finder.report.k.vfA;
-      com.tencent.mm.plugin.finder.report.k.auJ("");
+      localObject = com.tencent.mm.plugin.finder.report.n.zWF;
+      com.tencent.mm.plugin.finder.report.n.aEc("");
     }
     super.onDestroy();
     AppMethodBeat.o(166819);
@@ -488,28 +457,38 @@ public final class FinderMixSearchUI
   
   public final void onPause()
   {
-    AppMethodBeat.i(251320);
+    AppMethodBeat.i(239787);
     super.onPause();
-    com.tencent.mm.plugin.finder.report.live.k localk = com.tencent.mm.plugin.finder.report.live.k.vkd;
-    com.tencent.mm.plugin.finder.report.live.k.b(null, s.p.voA, s.j.vnQ.scene, com.tencent.mm.plugin.finder.report.live.c.vjg);
-    AppMethodBeat.o(251320);
+    Object localObject = com.tencent.mm.plugin.finder.live.report.k.yBj;
+    com.tencent.mm.plugin.finder.live.report.k.b(null, s.t.yGN, s.l.yFS.scene, c.yAj);
+    localObject = this.xNF;
+    if (localObject == null) {
+      p.bGy("searchSuggestionManager");
+    }
+    ((k)localObject).onActivityPause();
+    AppMethodBeat.o(239787);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(251319);
+    AppMethodBeat.i(239785);
     super.onResume();
-    com.tencent.mm.plugin.finder.report.live.k localk = com.tencent.mm.plugin.finder.report.live.k.vkd;
-    com.tencent.mm.plugin.finder.report.live.k.b(null, s.p.voA, s.j.vnQ.scene, com.tencent.mm.plugin.finder.report.live.c.vjf);
-    AppMethodBeat.o(251319);
+    Object localObject = com.tencent.mm.plugin.finder.live.report.k.yBj;
+    com.tencent.mm.plugin.finder.live.report.k.b(null, s.t.yGN, s.l.yFS.scene, c.yAi);
+    localObject = this.xNF;
+    if (localObject == null) {
+      p.bGy("searchSuggestionManager");
+    }
+    ((k)localObject).onActivityResume();
+    AppMethodBeat.o(239785);
   }
   
   public final void onSwipeBack()
   {
-    AppMethodBeat.i(251317);
+    AppMethodBeat.i(239778);
     super.onSwipeBack();
     hideVKB();
-    AppMethodBeat.o(251317);
+    AppMethodBeat.o(239778);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -518,10 +497,10 @@ public final class FinderMixSearchUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/search/FinderMixSearchUI$Companion;", "", "()V", "KEY_SEARCH_QUERY", "", "KEY_SEARCH_SESSION_BUFFER", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/search/FinderMixSearchUI$Companion;", "", "()V", "KEY_SEARCH_QUERY", "", "KEY_SEARCH_SESSION_BUFFER", "TAG", "plugin-finder_release"})
   public static final class a {}
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "query", "", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "query", "", "invoke"})
   static final class b
     extends q
     implements kotlin.g.a.b<String, x>
@@ -532,19 +511,12 @@ public final class FinderMixSearchUI
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/search/FinderMixSearchUI$initData$2", "Lcom/tencent/mm/plugin/finder/search/OnHistoryClearListener;", "onClear", "", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/search/FinderMixSearchUI$initData$2", "Lcom/tencent/mm/plugin/finder/search/OnHistoryClearListener;", "onClear", "", "plugin-finder_release"})
   public static final class c
-    implements j
-  {
-    public final void cwc()
-    {
-      AppMethodBeat.i(251313);
-      FinderMixSearchUI.d(this.vuB);
-      AppMethodBeat.o(251313);
-    }
-  }
+    implements l
+  {}
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"})
   static final class d
     implements View.OnTouchListener
   {
@@ -552,44 +524,55 @@ public final class FinderMixSearchUI
     
     public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(251314);
-      FinderMixSearchUI.a(this.vuB).getFtsEditText().gUA();
-      this.vuB.hideVKB();
-      AppMethodBeat.o(251314);
+      AppMethodBeat.i(287433);
+      FinderMixSearchUI.a(this.Aby).getFtsEditText().hUu();
+      this.Aby.hideVKB();
+      AppMethodBeat.o(287433);
       return false;
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/search/FinderMixSearchUI$mOnScrollListener$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "onScrolled", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "dx", "", "dy", "plugin-finder_release"})
-  public static final class e
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "suggestion", "", "invoke"})
+  static final class e
+    extends q
+    implements kotlin.g.a.b<String, x>
+  {
+    e(FinderMixSearchUI paramFinderMixSearchUI)
+    {
+      super();
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/search/FinderMixSearchUI$mOnScrollListener$1", "Landroidx/recyclerview/widget/RecyclerView$OnScrollListener;", "onScrolled", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "dx", "", "dy", "plugin-finder_release"})
+  public static final class f
     extends RecyclerView.l
   {
     public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
     {
-      AppMethodBeat.i(251316);
+      AppMethodBeat.i(264827);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramRecyclerView);
-      localb.pH(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/search/FinderMixSearchUI$mOnScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.axR());
+      localb.bn(paramRecyclerView);
+      localb.sg(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/search/FinderMixSearchUI$mOnScrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
       super.onScrollStateChanged(paramRecyclerView, paramInt);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/search/FinderMixSearchUI$mOnScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-      AppMethodBeat.o(251316);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/search/FinderMixSearchUI$mOnScrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
+      AppMethodBeat.o(264827);
     }
     
     public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(251315);
+      AppMethodBeat.i(264825);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramRecyclerView);
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).pH(paramInt1);
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).pH(paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/search/FinderMixSearchUI$mOnScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-      p.h(paramRecyclerView, "recyclerView");
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramRecyclerView);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).sg(paramInt1);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).sg(paramInt2);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/search/FinderMixSearchUI$mOnScrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+      p.k(paramRecyclerView, "recyclerView");
       super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-      localObject = com.tencent.mm.plugin.finder.report.live.k.vkd;
-      com.tencent.mm.plugin.finder.report.live.k.b(paramRecyclerView, s.p.voA, s.j.vnQ.scene, com.tencent.mm.plugin.finder.report.live.c.vje);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/search/FinderMixSearchUI$mOnScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-      AppMethodBeat.o(251315);
+      localObject = com.tencent.mm.plugin.finder.live.report.k.yBj;
+      com.tencent.mm.plugin.finder.live.report.k.b(paramRecyclerView, s.t.yGN, s.l.yFS.scene, c.yAh);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/search/FinderMixSearchUI$mOnScrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
+      AppMethodBeat.o(264825);
     }
   }
 }

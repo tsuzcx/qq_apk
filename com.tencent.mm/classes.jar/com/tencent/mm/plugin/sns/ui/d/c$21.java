@@ -13,16 +13,16 @@ final class c$21
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(203961);
+    AppMethodBeat.i(270401);
     Log.d("MicroMsg.TimelineClickListener", "v " + paramView.getId() + "  ");
-    this.Fbj.fq(paramView);
-    AppMethodBeat.o(203961);
+    this.LpH.gx(paramView);
+    AppMethodBeat.o(270401);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.d.c.21
  * JD-Core Version:    0.7.0.1
  */

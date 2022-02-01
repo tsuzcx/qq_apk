@@ -5,7 +5,7 @@ import java.util.List;
 
 public abstract interface i
 {
-  public abstract void bH(List<BallInfo> paramList);
+  public abstract void bG(List<BallInfo> paramList);
 }
 
 

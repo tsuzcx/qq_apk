@@ -1,51 +1,52 @@
 package com.tencent.mm.plugin.wallet_index.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bhy;
-import com.tencent.mm.protocal.protobuf.bhz;
-import com.tencent.mm.protocal.protobuf.ccu;
-import com.tencent.mm.protocal.protobuf.ccv;
+import com.tencent.mm.protocal.protobuf.bpj;
+import com.tencent.mm.protocal.protobuf.bpk;
+import com.tencent.mm.protocal.protobuf.cky;
+import com.tencent.mm.protocal.protobuf.ckz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.c.w;
 
 public final class g
   extends w
 {
-  public ccu IqP;
-  public ccv IqQ;
+  public cky Pjy;
+  public ckz Pjz;
   private i callback;
   public int errCode;
   private d rr;
   
-  public g(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7)
+  public g(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
-    AppMethodBeat.i(71819);
+    AppMethodBeat.i(272266);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bhy();
-    ((d.a)localObject).iLO = new bhz();
+    ((d.a)localObject).lBU = new bpj();
+    ((d.a)localObject).lBV = new bpk();
     ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/boss/getandroidiappackage";
     ((d.a)localObject).funcId = 1130;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (bhy)this.rr.iLK.iLR;
-    ((bhy)localObject).dNI = paramString1;
-    ((bhy)localObject).LSk = paramInt1;
-    ((bhy)localObject).LSl = Integer.parseInt(paramString2);
-    ((bhy)localObject).desc = paramString3;
-    ((bhy)localObject).count = paramInt2;
-    ((bhy)localObject).scene = 13;
-    ((bhy)localObject).LSm = paramString4;
-    ((bhy)localObject).GaP = paramString5;
-    ((bhy)localObject).sign = paramString6;
-    ((bhy)localObject).LSn = paramString7;
-    AppMethodBeat.o(71819);
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (bpj)d.b.b(this.rr.lBR);
+    ((bpj)localObject).appid = paramString1;
+    ((bpj)localObject).TaU = paramInt1;
+    ((bpj)localObject).TaV = Integer.parseInt(paramString2);
+    ((bpj)localObject).desc = paramString3;
+    ((bpj)localObject).count = paramInt2;
+    ((bpj)localObject).scene = 13;
+    ((bpj)localObject).TaW = paramString4;
+    ((bpj)localObject).TaX = paramString5;
+    ((bpj)localObject).sign = paramString6;
+    ((bpj)localObject).TaY = paramString7;
+    ((bpj)localObject).MFj = paramString8;
+    AppMethodBeat.o(272266);
   }
   
   public final int doScene(com.tencent.mm.network.g paramg, i parami)
@@ -72,14 +73,14 @@ public final class g
       AppMethodBeat.o(71820);
       return;
     }
-    paramString = (bhz)this.rr.iLL.iLR;
-    Log.e("MicroMsg.NetSceneGetAndroidIapPackage", "business: errCode:" + paramString.dOK + ",errMsg:" + paramString.dOL);
-    paramInt1 = paramString.dOK;
-    params = paramString.dOL;
+    paramString = (bpk)d.c.b(this.rr.lBS);
+    Log.e("MicroMsg.NetSceneGetAndroidIapPackage", "business: errCode:" + paramString.fHV + ",errMsg:" + paramString.fHW);
+    paramInt1 = paramString.fHV;
+    params = paramString.fHW;
     if (paramInt1 == 0)
     {
-      this.IqP = paramString.LSo;
-      this.IqQ = paramString.LSp;
+      this.Pjy = paramString.Tba;
+      this.Pjz = paramString.Tbb;
     }
     this.callback.onSceneEnd(paramInt2, paramInt1, params, this);
     AppMethodBeat.o(71820);
@@ -87,7 +88,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.c.g
  * JD-Core Version:    0.7.0.1
  */

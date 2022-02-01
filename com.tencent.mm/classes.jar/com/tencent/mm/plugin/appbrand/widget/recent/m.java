@@ -1,15 +1,24 @@
 package com.tencent.mm.plugin.appbrand.widget.recent;
 
-import kotlin.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/widget/recent/IQueryCache;", "DATA", "", "createQueryCacheConfig", "Lcom/tencent/mm/plugin/appbrand/widget/recent/QueryCacheConfig;", "queryAndCache", "()Ljava/lang/Object;", "plugin-appbrand-integration_release"})
-public abstract interface m<DATA>
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/widget/recent/UsageQueryCacheConfig;", "Lcom/tencent/mm/plugin/appbrand/widget/recent/QueryCacheConfig;", "count", "", "(I)V", "getCount", "()I", "plugin-appbrand-integration_release"})
+public final class m
+  extends l
 {
-  public abstract n ccO();
+  public final int count;
+  
+  public m()
+  {
+    super(new Object[] { Integer.valueOf(32) });
+    AppMethodBeat.i(271602);
+    this.count = 32;
+    AppMethodBeat.o(271602);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.recent.m
  * JD-Core Version:    0.7.0.1
  */

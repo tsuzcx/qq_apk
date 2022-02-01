@@ -12,14 +12,14 @@ final class FTSEmojiDetailPageUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(109099);
-    this.rjA.finish();
+    this.uMN.finish();
     AppMethodBeat.o(109099);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.fts.FTSEmojiDetailPageUI.1
  * JD-Core Version:    0.7.0.1
  */

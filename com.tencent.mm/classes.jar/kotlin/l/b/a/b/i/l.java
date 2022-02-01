@@ -7,12 +7,12 @@ import java.util.Set;
 
 public final class l
 {
-  public static final Set<String> TGW;
+  public static final Set<String> abjA;
   
   static
   {
     AppMethodBeat.i(59857);
-    TGW = new HashSet(Arrays.asList(new String[] { "package", "as", "typealias", "class", "this", "super", "val", "var", "fun", "for", "null", "true", "false", "is", "in", "throw", "return", "break", "continue", "object", "if", "try", "else", "while", "do", "when", "interface", "typeof" }));
+    abjA = new HashSet(Arrays.asList(new String[] { "package", "as", "typealias", "class", "this", "super", "val", "var", "fun", "for", "null", "true", "false", "is", "in", "throw", "return", "break", "continue", "object", "if", "try", "else", "while", "do", "when", "interface", "typeof" }));
     AppMethodBeat.o(59857);
   }
 }

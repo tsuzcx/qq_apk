@@ -10,14 +10,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.r;
-import com.tencent.mm.bb.v;
+import com.tencent.mm.be.s;
+import com.tencent.mm.be.w;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.modelsns.n;
+import com.tencent.mm.modelsns.o;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
 import com.tencent.mm.plugin.sns.model.aj;
-import com.tencent.mm.protocal.protobuf.cnb;
-import com.tencent.mm.protocal.protobuf.he;
+import com.tencent.mm.protocal.protobuf.cvt;
+import com.tencent.mm.protocal.protobuf.gs;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.storage.bp;
@@ -31,36 +33,36 @@ import java.util.Set;
 public final class f
   extends BaseAdapter
 {
-  private final b EnA;
-  private final g EnB;
-  final a EnC;
-  he EnD;
-  final Map<Integer, Integer> Enw;
-  final Map<Integer, Integer> Enx;
-  int Eny;
-  int Enz;
-  private final Activity dKq;
+  private String Ejr;
+  final Map<Integer, Integer> KAF;
+  final Map<Integer, Integer> KAG;
+  int KAH;
+  int KAI;
+  private final b KAJ;
+  private final g KAK;
+  final a KAL;
+  gs KAM;
+  private final Activity fDf;
   private final MMHandler handler;
-  final List<cnb> list;
-  private String yFy;
+  final List<cvt> list;
   
   public f(Activity paramActivity, String paramString, b paramb, a parama)
   {
     AppMethodBeat.i(97707);
     this.list = new ArrayList();
-    this.Enw = new HashMap();
-    this.Enx = new HashMap();
-    this.Eny = 0;
-    this.Enz = 0;
+    this.KAF = new HashMap();
+    this.KAG = new HashMap();
+    this.KAH = 0;
+    this.KAI = 0;
     this.handler = new MMHandler();
-    this.yFy = "";
-    this.dKq = paramActivity;
-    this.yFy = paramString;
-    this.EnA = paramb;
-    this.EnC = parama;
-    this.EnB = new g(new g.a()
+    this.Ejr = "";
+    this.fDf = paramActivity;
+    this.Ejr = paramString;
+    this.KAJ = paramb;
+    this.KAL = parama;
+    this.KAK = new g(new g.a()
     {
-      public final void a(List<cnb> paramAnonymousList, Map<Integer, Integer> paramAnonymousMap1, Map<Integer, Integer> paramAnonymousMap2, int paramAnonymousInt1, int paramAnonymousInt2, he paramAnonymoushe)
+      public final void a(List<cvt> paramAnonymousList, Map<Integer, Integer> paramAnonymousMap1, Map<Integer, Integer> paramAnonymousMap2, int paramAnonymousInt1, int paramAnonymousInt2, gs paramAnonymousgs)
       {
         AppMethodBeat.i(97702);
         Log.d("MicroMsg.ArtistAdapter", "onFinishFixPos");
@@ -72,98 +74,98 @@ public final class f
         }
         try
         {
-          localf.EnD = ((he)new he().parseFrom(paramAnonymoushe.toByteArray()));
-          localf.EnC.a(localf.EnD);
+          localf.KAM = ((gs)new gs().parseFrom(paramAnonymousgs.toByteArray()));
+          localf.KAL.a(localf.KAM);
           Log.d("MicroMsg.ArtistAdapter", "copy list info");
           j = paramAnonymousList.size();
           localf.list.clear();
-          localf.Enw.clear();
-          localf.Enx.clear();
+          localf.KAF.clear();
+          localf.KAG.clear();
           i = 0;
           while (i < j)
           {
-            paramAnonymoushe = (cnb)paramAnonymousList.get(i);
-            paramAnonymoushe = n.a(paramAnonymoushe.Id, paramAnonymoushe.oUv, paramAnonymoushe.Url, paramAnonymoushe.Msz, paramAnonymoushe.Mcw, paramAnonymoushe.MsA, paramAnonymoushe.Desc);
-            localf.list.add(paramAnonymoushe);
+            paramAnonymousgs = (cvt)paramAnonymousList.get(i);
+            paramAnonymousgs = o.a(paramAnonymousgs.Id, paramAnonymousgs.rWu, paramAnonymousgs.Url, paramAnonymousgs.TDF, paramAnonymousgs.TlV, paramAnonymousgs.TDG, paramAnonymousgs.CMB);
+            localf.list.add(paramAnonymousgs);
             i += 1;
           }
         }
-        catch (Exception paramAnonymoushe)
+        catch (Exception paramAnonymousgs)
         {
           int j;
           int i;
           for (;;)
           {
-            Log.printErrStackTrace("MicroMsg.ArtistAdapter", paramAnonymoushe, "", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.ArtistAdapter", paramAnonymousgs, "", new Object[0]);
           }
-          paramAnonymoushe = paramAnonymousMap1.keySet().iterator();
-          while (paramAnonymoushe.hasNext())
+          paramAnonymousgs = paramAnonymousMap1.keySet().iterator();
+          while (paramAnonymousgs.hasNext())
           {
-            i = ((Integer)paramAnonymoushe.next()).intValue();
+            i = ((Integer)paramAnonymousgs.next()).intValue();
             j = ((Integer)paramAnonymousMap1.get(Integer.valueOf(i))).intValue();
-            localf.Enw.put(Integer.valueOf(i), Integer.valueOf(j));
+            localf.KAF.put(Integer.valueOf(i), Integer.valueOf(j));
           }
-          paramAnonymoushe = paramAnonymousMap2.keySet().iterator();
-          while (paramAnonymoushe.hasNext())
+          paramAnonymousgs = paramAnonymousMap2.keySet().iterator();
+          while (paramAnonymousgs.hasNext())
           {
-            i = ((Integer)paramAnonymoushe.next()).intValue();
+            i = ((Integer)paramAnonymousgs.next()).intValue();
             j = ((Integer)paramAnonymousMap2.get(Integer.valueOf(i))).intValue();
-            localf.Enx.put(Integer.valueOf(i), Integer.valueOf(j));
+            localf.KAG.put(Integer.valueOf(i), Integer.valueOf(j));
           }
           paramAnonymousList.clear();
           paramAnonymousMap1.clear();
           paramAnonymousMap2.clear();
-          localf.Enz = paramAnonymousInt1;
-          localf.Eny = paramAnonymousInt2;
+          localf.KAI = paramAnonymousInt1;
+          localf.KAH = paramAnonymousInt2;
           Log.d("MicroMsg.ArtistAdapter", "reallyCount " + paramAnonymousInt1 + " icount " + paramAnonymousInt2);
           localf.notifyDataSetChanged();
           AppMethodBeat.o(97702);
         }
       }
       
-      public final void ffi()
+      public final void fTd()
       {
         AppMethodBeat.i(97703);
         f localf = f.this;
-        if (localf.EnC != null) {
-          localf.EnC.ffj();
+        if (localf.KAL != null) {
+          localf.KAL.fTe();
         }
         AppMethodBeat.o(97703);
       }
     });
-    anp();
+    atr();
     AppMethodBeat.o(97707);
   }
   
   private void a(int paramInt, ImageView paramImageView)
   {
     AppMethodBeat.i(97711);
-    cnb localcnb = (cnb)getItem(paramInt);
+    cvt localcvt = (cvt)getItem(paramInt);
     paramImageView.setVisibility(0);
     f.b.a locala = new f.b.a();
-    locala.dRS = "";
+    locala.fLp = "";
     locala.position = paramInt;
     paramImageView.setTag(locala);
-    aj.faL().b(localcnb, paramImageView, this.dKq.hashCode(), bp.Oqt);
+    aj.fOF().b(localcvt, paramImageView, this.fDf.hashCode(), bp.VGp);
     AppMethodBeat.o(97711);
   }
   
-  public final void anp()
+  public final void atr()
   {
     AppMethodBeat.i(97708);
-    if (this.EnB != null)
+    if (this.KAK != null)
     {
-      v.bev();
-      String str = r.bes();
+      w.bnU();
+      String str = s.bnR();
       Log.d("MicroMsg.ArtistAdapter", "packgePath: ".concat(String.valueOf(str)));
-      this.EnB.kO(this.yFy, str);
+      this.KAK.lk(this.Ejr, str);
     }
     AppMethodBeat.o(97708);
   }
   
   public final int getCount()
   {
-    return this.Eny;
+    return this.KAH;
   }
   
   public final Object getItem(int paramInt)
@@ -185,39 +187,38 @@ public final class f
     if (paramView == null)
     {
       paramViewGroup = new c();
-      paramView = View.inflate(this.dKq, 2131496416, null);
-      paramViewGroup.hbb = ((TextView)paramView.findViewById(2131308244));
-      paramViewGroup.EnK = ((TextView)paramView.findViewById(2131308245));
-      paramViewGroup.EnL = ((ImageView)paramView.findViewById(2131302614));
-      paramViewGroup.EnM = ((ImageView)paramView.findViewById(2131302615));
-      paramViewGroup.EnN = ((ImageView)paramView.findViewById(2131302616));
-      paramViewGroup.EnO = ((LinearLayout)paramView.findViewById(2131303241));
-      paramViewGroup.EnP = paramView.findViewById(2131303198);
-      paramViewGroup.EnL.setOnClickListener(this.EnA.EnF);
-      paramViewGroup.EnM.setOnClickListener(this.EnA.EnG);
-      paramViewGroup.EnN.setOnClickListener(this.EnA.EnH);
+      paramView = View.inflate(this.fDf, i.g.sns_artist_item, null);
+      paramViewGroup.jMg = ((TextView)paramView.findViewById(i.f.sns_title));
+      paramViewGroup.KAT = ((TextView)paramView.findViewById(i.f.sns_title_en));
+      paramViewGroup.KAU = ((ImageView)paramView.findViewById(i.f.img1));
+      paramViewGroup.KAV = ((ImageView)paramView.findViewById(i.f.img2));
+      paramViewGroup.KAW = ((ImageView)paramView.findViewById(i.f.img3));
+      paramViewGroup.KAX = ((LinearLayout)paramView.findViewById(i.f.listener_keeper));
+      paramViewGroup.KAY = paramView.findViewById(i.f.line_add);
+      paramViewGroup.KAU.setOnClickListener(this.KAJ.KAO);
+      paramViewGroup.KAV.setOnClickListener(this.KAJ.KAP);
+      paramViewGroup.KAW.setOnClickListener(this.KAJ.KAQ);
       paramView.setTag(paramViewGroup);
-      if (this.Enw.get(Integer.valueOf(paramInt)) == null) {
-        break label638;
+      if (this.KAF.get(Integer.valueOf(paramInt)) == null) {
+        break label646;
       }
     }
-    label342:
-    label638:
-    for (int i = ((Integer)this.Enw.get(Integer.valueOf(paramInt))).intValue();; i = -1)
+    label646:
+    for (int i = ((Integer)this.KAF.get(Integer.valueOf(paramInt))).intValue();; i = -1)
     {
-      paramViewGroup.EnL.setVisibility(8);
-      paramViewGroup.EnM.setVisibility(8);
-      paramViewGroup.EnN.setVisibility(8);
-      paramViewGroup.EnP.setVisibility(8);
-      if (paramViewGroup.EnE.yFy.equals("en"))
+      paramViewGroup.KAU.setVisibility(8);
+      paramViewGroup.KAV.setVisibility(8);
+      paramViewGroup.KAW.setVisibility(8);
+      paramViewGroup.KAY.setVisibility(8);
+      if (paramViewGroup.KAN.Ejr.equals("en"))
       {
-        paramViewGroup.hbb.setVisibility(8);
-        paramViewGroup.EnK.setVisibility(4);
+        paramViewGroup.jMg.setVisibility(8);
+        paramViewGroup.KAT.setVisibility(4);
       }
       for (;;)
       {
-        if ((i < this.Enz) && (i != -1)) {
-          break label342;
+        if ((i < this.KAI) && (i != -1)) {
+          break label350;
         }
         paramView.setLayoutParams(new AbsListView.LayoutParams(-1, 1));
         paramView.setVisibility(8);
@@ -225,46 +226,48 @@ public final class f
         return paramView;
         paramViewGroup = (c)paramView.getTag();
         break;
-        paramViewGroup.hbb.setVisibility(4);
-        paramViewGroup.EnK.setVisibility(8);
+        paramViewGroup.jMg.setVisibility(4);
+        paramViewGroup.KAT.setVisibility(8);
       }
+      label350:
       if (i - 1 >= 0) {}
-      for (String str = ((cnb)getItem(i - 1)).Desc;; str = "")
+      for (String str = ((cvt)getItem(i - 1)).CMB;; str = "")
       {
         paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
         paramView.setVisibility(0);
-        if (this.Enx.get(Integer.valueOf(paramInt)) != null) {}
-        for (paramInt = ((Integer)this.Enx.get(Integer.valueOf(paramInt))).intValue();; paramInt = 1)
+        if (this.KAG.get(Integer.valueOf(paramInt)) != null) {}
+        for (paramInt = ((Integer)this.KAG.get(Integer.valueOf(paramInt))).intValue();; paramInt = 1)
         {
-          cnb localcnb = (cnb)getItem(i);
-          if ((localcnb.Desc.equals("")) || (!localcnb.Desc.equals(str)))
+          cvt localcvt = (cvt)getItem(i);
+          if ((localcvt.CMB.equals("")) || (!localcvt.CMB.equals(str)))
           {
-            if (!this.yFy.equals("en")) {
-              break label582;
+            if (!this.Ejr.equals("en")) {
+              break label590;
             }
-            paramViewGroup.EnK.setVisibility(0);
-            paramViewGroup.EnK.setText(localcnb.Desc);
-            paramViewGroup.EnP.setVisibility(0);
+            paramViewGroup.KAT.setVisibility(0);
+            paramViewGroup.KAT.setText(localcvt.CMB);
+            paramViewGroup.KAY.setVisibility(0);
           }
           for (;;)
           {
             if (paramInt > 0) {
-              a(i, paramViewGroup.EnL);
+              a(i, paramViewGroup.KAU);
             }
             if (paramInt >= 2) {
-              a(i + 1, paramViewGroup.EnM);
+              a(i + 1, paramViewGroup.KAV);
             }
             if (paramInt >= 3) {
-              a(i + 2, paramViewGroup.EnN);
+              a(i + 2, paramViewGroup.KAW);
             }
-            if (this.EnC == null) {
+            if (this.KAL == null) {
               break;
             }
-            this.EnC.b(this.EnD);
+            this.KAL.b(this.KAM);
             break;
-            paramViewGroup.hbb.setVisibility(0);
-            paramViewGroup.hbb.setText(localcnb.Desc);
-            paramViewGroup.EnP.setVisibility(0);
+            label590:
+            paramViewGroup.jMg.setVisibility(0);
+            paramViewGroup.jMg.setText(localcvt.CMB);
+            paramViewGroup.KAY.setVisibility(0);
           }
         }
       }
@@ -273,87 +276,87 @@ public final class f
   
   public static abstract interface a
   {
-    public abstract void a(he paramhe);
+    public abstract void a(gs paramgs);
     
-    public abstract void b(he paramhe);
+    public abstract void b(gs paramgs);
     
-    public abstract void ffj();
+    public abstract void fTe();
   }
   
   static abstract class b
   {
-    View.OnClickListener EnF = new View.OnClickListener()
+    View.OnClickListener KAO = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(97704);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/sns/ui/ArtistAdapter$SnsEventListeners$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        f.b.this.EnI = ((f.b.a)paramAnonymousView.getTag());
-        int i = f.b.this.EnI.position;
-        f.b.this.Zt(i);
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/sns/ui/ArtistAdapter$SnsEventListeners$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        f.b.this.KAR = ((f.b.a)paramAnonymousView.getTag());
+        int i = f.b.this.KAR.position;
+        f.b.this.agK(i);
         a.a(this, "com/tencent/mm/plugin/sns/ui/ArtistAdapter$SnsEventListeners$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(97704);
       }
     };
-    View.OnClickListener EnG = new View.OnClickListener()
+    View.OnClickListener KAP = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(97705);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/sns/ui/ArtistAdapter$SnsEventListeners$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        f.b.this.EnI = ((f.b.a)paramAnonymousView.getTag());
-        int i = f.b.this.EnI.position;
-        f.b.this.Zt(i);
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/sns/ui/ArtistAdapter$SnsEventListeners$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        f.b.this.KAR = ((f.b.a)paramAnonymousView.getTag());
+        int i = f.b.this.KAR.position;
+        f.b.this.agK(i);
         a.a(this, "com/tencent/mm/plugin/sns/ui/ArtistAdapter$SnsEventListeners$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(97705);
       }
     };
-    View.OnClickListener EnH = new View.OnClickListener()
+    View.OnClickListener KAQ = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(97706);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/sns/ui/ArtistAdapter$SnsEventListeners$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        f.b.this.EnI = ((f.b.a)paramAnonymousView.getTag());
-        int i = f.b.this.EnI.position;
-        f.b.this.Zt(i);
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/sns/ui/ArtistAdapter$SnsEventListeners$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        f.b.this.KAR = ((f.b.a)paramAnonymousView.getTag());
+        int i = f.b.this.KAR.position;
+        f.b.this.agK(i);
         a.a(this, "com/tencent/mm/plugin/sns/ui/ArtistAdapter$SnsEventListeners$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(97706);
       }
     };
-    public a EnI = new a();
+    public a KAR = new a();
     
-    public abstract void Zt(int paramInt);
+    public abstract void agK(int paramInt);
     
     public static final class a
     {
-      public String dRS;
+      public String fLp;
       public int position;
     }
   }
   
   final class c
   {
-    TextView EnK;
-    ImageView EnL;
-    ImageView EnM;
-    ImageView EnN;
-    LinearLayout EnO;
-    View EnP;
-    TextView hbb;
+    TextView KAT;
+    ImageView KAU;
+    ImageView KAV;
+    ImageView KAW;
+    LinearLayout KAX;
+    View KAY;
+    TextView jMg;
     
     c() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.f
  * JD-Core Version:    0.7.0.1
  */

@@ -7,11 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.modelappbrand.a.b.h;
-import com.tencent.mm.plugin.appbrand.ac.c.a;
 import com.tencent.mm.plugin.appbrand.ac.e;
+import com.tencent.mm.plugin.appbrand.c.c.b;
+import com.tencent.mm.plugin.appbrand.c.c.c;
 import com.tencent.mm.plugin.appbrand.widget.AppBrandNearbyShowcaseView;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -22,31 +23,31 @@ import java.util.LinkedList;
 public class AppBrandLoadIconPreference
   extends Preference
 {
-  private String gAn;
-  private b.h gCj;
-  private int gCk;
-  private int gCl;
-  private int gCm;
-  private int gCn;
-  private int gCo;
+  private String jkq;
+  private b.h jmp;
+  private int jmq;
+  private int jmr;
+  private int jms;
+  private int jmt;
+  private int jmu;
   private Context mContext;
   private View mView;
-  private ThreeDotsLoadingView nNl;
-  private AppBrandNearbyShowcaseView ogf;
-  private View ogg;
-  private boolean ogh;
-  private LinkedList<e> ogi;
+  private ThreeDotsLoadingView qPG;
+  private AppBrandNearbyShowcaseView rhQ;
+  private View rhR;
+  private boolean rhS;
+  private LinkedList<e> rhT;
   
   public AppBrandLoadIconPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(121074);
     this.mView = null;
-    this.ogh = false;
-    this.gCn = -1;
-    this.gCo = -1;
-    this.ogi = new LinkedList();
-    cs(paramContext);
+    this.rhS = false;
+    this.jmt = -1;
+    this.jmu = -1;
+    this.rhT = new LinkedList();
+    co(paramContext);
     AppMethodBeat.o(121074);
   }
   
@@ -55,15 +56,23 @@ public class AppBrandLoadIconPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(121075);
     this.mView = null;
-    this.ogh = false;
-    this.gCn = -1;
-    this.gCo = -1;
-    this.ogi = new LinkedList();
-    cs(paramContext);
+    this.rhS = false;
+    this.jmt = -1;
+    this.jmu = -1;
+    this.rhT = new LinkedList();
+    co(paramContext);
     AppMethodBeat.o(121075);
   }
   
-  private void cH(final View paramView)
+  private void co(Context paramContext)
+  {
+    AppMethodBeat.i(121076);
+    setLayoutResource(c.c.mm_preference);
+    this.mContext = paramContext;
+    AppMethodBeat.o(121076);
+  }
+  
+  private void db(final View paramView)
   {
     AppMethodBeat.i(121080);
     if (paramView.getVisibility() == 0) {
@@ -78,14 +87,6 @@ public class AppBrandLoadIconPreference
       }).start();
     }
     AppMethodBeat.o(121080);
-  }
-  
-  private void cs(Context paramContext)
-  {
-    AppMethodBeat.i(121076);
-    setLayoutResource(2131495538);
-    this.mContext = paramContext;
-    AppMethodBeat.o(121076);
   }
   
   private static void g(View paramView, Runnable paramRunnable)
@@ -104,32 +105,32 @@ public class AppBrandLoadIconPreference
   {
     AppMethodBeat.i(121078);
     super.onBindView(paramView);
-    this.gCk = a.fromDPToPix(this.mContext, 21);
-    this.gCl = a.fromDPToPix(this.mContext, 11);
-    this.gCm = a.fromDPToPix(this.mContext, 2);
-    this.gCn = this.mContext.getResources().getColor(2131100633);
-    this.ogg = paramView.findViewById(2131296850);
-    this.nNl = ((ThreeDotsLoadingView)paramView.findViewById(2131296855));
-    this.ogf = ((AppBrandNearbyShowcaseView)paramView.findViewById(2131296851));
-    this.ogf.setIconSize(this.gCk + this.gCm * 2);
-    this.ogf.setIconGap(this.gCl);
-    if ((this.gAn == null) || (this.nNl == null))
+    this.jmq = a.fromDPToPix(this.mContext, 21);
+    this.jmr = a.fromDPToPix(this.mContext, 11);
+    this.jms = a.fromDPToPix(this.mContext, 2);
+    this.jmt = this.mContext.getResources().getColor(com.tencent.mm.plugin.appbrand.c.c.a.icon_border_color);
+    this.rhR = paramView.findViewById(c.b.app_brand_loading_icon_layout);
+    this.qPG = ((ThreeDotsLoadingView)paramView.findViewById(c.b.app_brand_loading_view));
+    this.rhQ = ((AppBrandNearbyShowcaseView)paramView.findViewById(c.b.app_brand_loading_icon_view));
+    this.rhQ.setIconSize(this.jmq + this.jms * 2);
+    this.rhQ.setIconGap(this.jmr);
+    if ((this.jkq == null) || (this.qPG == null))
     {
       Log.i("MicroMsg.AppBrandLoadIconPreference", "startLoad mTalker or mLoadingView is null");
       AppMethodBeat.o(121078);
       return;
     }
-    if (this.ogh)
+    if (this.rhS)
     {
       Log.i("MicroMsg.AppBrandLoadIconPreference", "startLoad has load.");
       AppMethodBeat.o(121078);
       return;
     }
-    this.ogh = true;
-    cH(this.ogg);
-    g(this.nNl, null);
-    this.nNl.gZh();
-    g.aAk().postToWorker(new Runnable()
+    this.rhS = true;
+    db(this.rhR);
+    g(this.qPG, null);
+    this.qPG.hZX();
+    h.aHJ().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -147,9 +148,9 @@ public class AppBrandLoadIconPreference
     if (this.mView == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(c.b.content);
       localViewGroup.removeAllViews();
-      View.inflate(this.mContext, 2131493139, localViewGroup);
+      View.inflate(this.mContext, c.c.appbrand_load_icon_preference, localViewGroup);
       this.mView = paramViewGroup;
     }
     paramViewGroup = this.mView;
@@ -159,7 +160,7 @@ public class AppBrandLoadIconPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.widget.AppBrandLoadIconPreference
  * JD-Core Version:    0.7.0.1
  */

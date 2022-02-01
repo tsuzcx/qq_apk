@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView android:textSize="@dimen/bd" android:textColor="@color/u_" android:id="@id/jpt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
     <Space android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/jpu" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="3.399994dip" />
+    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/jpu" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="2.0dip" />
     <TextView android:textSize="@dimen/bd" android:textColor="@color/u_" android:ellipsize="end" android:gravity="right" android:id="@id/jpw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:maxLines="2" />
     <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/jpv" android:layout_width="4.799988dip" android:layout_height="8.599976dip" android:layout_marginLeft="5.5999756dip" android:src="@raw/arrow_right" />
 </LinearLayout>

@@ -10,14 +10,14 @@ import java.security.PublicKey;
 
 final class ag
 {
-  final KeyPair bMC;
-  final long bMD;
+  final KeyPair bKh;
+  final long bKi;
   
   @VisibleForTesting
   ag(KeyPair paramKeyPair, long paramLong)
   {
-    this.bMC = paramKeyPair;
-    this.bMD = paramLong;
+    this.bKh = paramKeyPair;
+    this.bKi = paramLong;
   }
   
   public final boolean equals(Object paramObject)
@@ -29,7 +29,7 @@ final class ag
       return false;
     }
     paramObject = (ag)paramObject;
-    if ((this.bMD == paramObject.bMD) && (this.bMC.getPublic().equals(paramObject.bMC.getPublic())) && (this.bMC.getPrivate().equals(paramObject.bMC.getPrivate())))
+    if ((this.bKi == paramObject.bKi) && (this.bKh.getPublic().equals(paramObject.bKh.getPublic())) && (this.bKh.getPrivate().equals(paramObject.bKh.getPrivate())))
     {
       AppMethodBeat.o(4249);
       return true;
@@ -41,15 +41,15 @@ final class ag
   public final int hashCode()
   {
     AppMethodBeat.i(4250);
-    int i = Objects.hashCode(new Object[] { this.bMC.getPublic(), this.bMC.getPrivate(), Long.valueOf(this.bMD) });
+    int i = Objects.hashCode(new Object[] { this.bKh.getPublic(), this.bKh.getPrivate(), Long.valueOf(this.bKi) });
     AppMethodBeat.o(4250);
     return i;
   }
   
-  final String yv()
+  final String yP()
   {
     AppMethodBeat.i(4252);
-    String str = Base64.encodeToString(this.bMC.getPrivate().getEncoded(), 11);
+    String str = Base64.encodeToString(this.bKh.getPrivate().getEncoded(), 11);
     AppMethodBeat.o(4252);
     return str;
   }
@@ -57,14 +57,14 @@ final class ag
   final String zzq()
   {
     AppMethodBeat.i(4251);
-    String str = Base64.encodeToString(this.bMC.getPublic().getEncoded(), 11);
+    String str = Base64.encodeToString(this.bKh.getPublic().getEncoded(), 11);
     AppMethodBeat.o(4251);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.ag
  * JD-Core Version:    0.7.0.1
  */

@@ -2,17 +2,14 @@ package com.tencent.mm.storage.emotion;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.GetEmotionDetailResponse;
+import com.tencent.mm.protocal.protobuf.bud;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.storagebase.g;
-import com.tencent.mm.storagebase.g.a;
 
 public final class m
   extends MAutoStorage<l>
-  implements g.a
 {
   public static final String[] SQL_CREATE;
   private ISQLiteDatabase db;
@@ -30,26 +27,20 @@ public final class m
     this.db = paramISQLiteDatabase;
   }
   
-  public final int a(g paramg)
-  {
-    this.db = paramg;
-    return 0;
-  }
-  
-  public final void a(String paramString1, GetEmotionDetailResponse paramGetEmotionDetailResponse, String paramString2)
+  public final void a(String paramString1, bud parambud, String paramString2)
   {
     AppMethodBeat.i(183930);
-    if ((Util.isNullOrNil(paramString1)) || (paramGetEmotionDetailResponse == null)) {
+    if ((Util.isNullOrNil(paramString1)) || (parambud == null)) {
       Log.w("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionRewardResponseWithPID failed. productId or response is null.");
     }
     try
     {
       l locall = new l();
       locall.field_productID = paramString1;
-      locall.field_content = paramGetEmotionDetailResponse.toByteArray();
+      locall.field_content = parambud.toByteArray();
       locall.field_lan = paramString2;
-      paramGetEmotionDetailResponse = locall.convertTo();
-      if (this.db.replace("EmotionDetailInfo", "productID", paramGetEmotionDetailResponse) > 0L)
+      parambud = locall.convertTo();
+      if (this.db.replace("EmotionDetailInfo", "productID", parambud) > 0L)
       {
         Log.i("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionDetailResponseWithPID success. ProductId:%s", new Object[] { paramString1 });
         AppMethodBeat.o(183930);
@@ -66,7 +57,7 @@ public final class m
     }
   }
   
-  public final l blt(String paramString)
+  public final l bxT(String paramString)
   {
     Object localObject2 = null;
     AppMethodBeat.i(105116);
@@ -103,7 +94,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.m
  * JD-Core Version:    0.7.0.1
  */

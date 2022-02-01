@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.SummaryBelowPreference;
@@ -13,7 +15,7 @@ import com.tencent.mm.ui.base.preference.SummaryBelowPreference;
 public class RightBelowPreference
   extends SummaryBelowPreference
 {
-  private CharSequence HII;
+  private CharSequence OAA;
   
   public RightBelowPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,10 +27,10 @@ public class RightBelowPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void S(CharSequence paramCharSequence)
+  public final void ag(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(69585);
-    this.HII = paramCharSequence;
+    this.OAA = paramCharSequence;
     notifyChanged();
     AppMethodBeat.o(69585);
   }
@@ -37,10 +39,10 @@ public class RightBelowPreference
   {
     AppMethodBeat.i(69584);
     super.onBindView(paramView);
-    if (!Util.isNullOrNil(this.HII)) {
-      ((TextView)paramView.findViewById(2131307092)).setText(this.HII);
+    if (!Util.isNullOrNil(this.OAA)) {
+      ((TextView)paramView.findViewById(a.f.right_desc_tv)).setText(this.OAA);
     }
-    paramView.findViewById(2131307076).setVisibility(8);
+    paramView.findViewById(a.f.right_arrow).setVisibility(8);
     AppMethodBeat.o(69584);
   }
   
@@ -48,14 +50,14 @@ public class RightBelowPreference
   {
     AppMethodBeat.i(69583);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ((ViewGroup)((ViewGroup)paramViewGroup.findViewById(2131299180)).findViewById(16908312)).addView((ViewGroup)View.inflate(this.mContext, 2131496993, null));
+    ((ViewGroup)((ViewGroup)paramViewGroup.findViewById(a.f.content)).findViewById(16908312)).addView((ViewGroup)View.inflate(this.mContext, a.g.wallet_pref_right_desc_layout, null));
     AppMethodBeat.o(69583);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.RightBelowPreference
  * JD-Core Version:    0.7.0.1
  */

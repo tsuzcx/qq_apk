@@ -1,69 +1,36 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.content.Context;
-import android.text.TextPaint;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.mm.plugin.finder.model.a;
-import com.tencent.mm.plugin.finder.model.av;
-import com.tencent.mm.plugin.finder.storage.ao;
-import com.tencent.mm.plugin.finder.utils.k;
-import com.tencent.mm.protocal.protobuf.aym;
-import com.tencent.mm.view.recyclerview.h;
+import com.tencent.mm.view.recyclerview.e;
+import com.tencent.mm.view.recyclerview.i;
 import kotlin.g.b.p;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgFollowConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMsgConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMsgFollow;", "scene", "", "(I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getScene", "()I", "convertMsg", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "plugin-finder_release"})
-public final class bj
-  extends bh<av>
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgConvert;", "T", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "layoutResId", "", "scene", "(II)V", "convertMsg", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "(Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;I)V", "getLayoutId", "onBindViewHolder", "type", "isHotPatch", "", "payloads", "", "", "(Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;IIZLjava/util/List;)V", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "showFinderMentionDialog", "context", "Landroid/content/Context;", "finderMention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "plugin-finder_release"})
+public abstract class bj<T extends a>
+  extends e<T>
 {
-  private final String TAG;
   private final int scene;
+  private final int xmc;
   
-  public bj(int paramInt)
+  public bj(int paramInt1, int paramInt2)
   {
-    super(2131494524, paramInt);
-    this.scene = paramInt;
-    this.TAG = "Finder.FinderMsgFollowConvert";
+    this.xmc = paramInt1;
+    this.scene = paramInt2;
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
+  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
   {
-    a(h paramh, TextView paramTextView1, String paramString, TextView paramTextView2, av paramav) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(243195);
-      Object localObject = this.qhp.Mn(2131305214);
-      p.g(localObject, "holder.getView<View>(R.id.name_container)");
-      int i = ((View)localObject).getWidth();
-      localObject = this.tEU;
-      p.g(localObject, "nickTv");
-      float f = ((TextView)localObject).getPaint().measureText(this.tEV);
-      if (i > f)
-      {
-        localObject = this.tEW;
-        p.g(localObject, "suffixTv");
-        ((TextView)localObject).setVisibility(8);
-        localObject = this.tEU;
-        p.g(localObject, "nickTv");
-        ((TextView)localObject).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(this.qhp.getContext(), (CharSequence)this.tEV));
-        AppMethodBeat.o(243195);
-        return;
-      }
-      localObject = this.tEW;
-      p.g(localObject, "suffixTv");
-      ((TextView)localObject).setVisibility(0);
-      localObject = this.tEW;
-      p.g(localObject, "suffixTv");
-      ((TextView)localObject).setText((CharSequence)this.qhp.getContext().getString(2131760306, new Object[] { k.Lw(this.tFb.uNF.field_aggregatedContacts.LII) }));
-      localObject = this.tEU;
-      p.g(localObject, "nickTv");
-      ((TextView)localObject).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(this.qhp.getContext(), (CharSequence)this.tEV));
-      AppMethodBeat.o(243195);
-    }
+    p.k(paramRecyclerView, "recyclerView");
+    p.k(parami, "holder");
+  }
+  
+  public abstract void a(i parami, T paramT);
+  
+  public final int getLayoutId()
+  {
+    return this.xmc;
   }
 }
 

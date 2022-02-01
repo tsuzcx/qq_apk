@@ -1,8 +1,6 @@
 package com.facebook.internal;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
@@ -85,41 +83,9 @@ public class FetchedAppGateKeepersManager
     {
       AppMethodBeat.i(17730);
       Context localContext = FacebookSdk.getApplicationContext();
-      final String str1 = FacebookSdk.getApplicationId();
-      final String str2 = String.format("com.facebook.internal.APP_GATEKEEPERS.%s", new Object[] { str1 });
-      FacebookSdk.getExecutor().execute(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(17729);
-          SharedPreferences localSharedPreferences = this.val$context.getSharedPreferences("com.facebook.internal.preferences.APP_GATEKEEPERS", 0);
-          Object localObject1 = localSharedPreferences.getString(str2, null);
-          if (!Utility.isNullOrEmpty((String)localObject1)) {}
-          try
-          {
-            localObject1 = new JSONObject((String)localObject1);
-            if (localObject1 != null) {
-              FetchedAppGateKeepersManager.access$000(str1, (JSONObject)localObject1);
-            }
-            localObject1 = FetchedAppGateKeepersManager.access$100(str1);
-            if (localObject1 != null)
-            {
-              FetchedAppGateKeepersManager.access$000(str1, (JSONObject)localObject1);
-              localSharedPreferences.edit().putString(str2, ((JSONObject)localObject1).toString()).apply();
-            }
-            AppMethodBeat.o(17729);
-            return;
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              Utility.logd("FacebookSDK", localJSONException);
-              Object localObject2 = null;
-            }
-          }
-        }
-      });
+      String str1 = FacebookSdk.getApplicationId();
+      String str2 = String.format("com.facebook.internal.APP_GATEKEEPERS.%s", new Object[] { str1 });
+      FacebookSdk.getExecutor().execute(new FetchedAppGateKeepersManager.1(localContext, str2, str1));
       AppMethodBeat.o(17730);
       return;
     }
@@ -174,7 +140,7 @@ public class FetchedAppGateKeepersManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.internal.FetchedAppGateKeepersManager
  * JD-Core Version:    0.7.0.1
  */

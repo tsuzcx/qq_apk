@@ -10,9 +10,9 @@ import java.util.Map;
 
 class CursorFieldHelper
 {
-  private static final Map<Class<?>, IGetMethod> GET_METHODS;
+  private static final Map<Class<?>, CursorFieldHelper.IGetMethod> GET_METHODS;
   private static final Map<Class<?>, String> GET_TYPE;
-  private static final Map<Class<?>, ISetMethod> SET_METHODS;
+  private static final Map<Class<?>, CursorFieldHelper.ISetMethod> SET_METHODS;
   private static final String TAG = "MicroMsg.SDK.CursorFieldHelper";
   
   static
@@ -23,256 +23,256 @@ class CursorFieldHelper
     GET_TYPE = new HashMap();
     try
     {
-      SET_METHODS.put([B.class, new ISetMethod()
+      SET_METHODS.put([B.class, new CursorFieldHelper.ISetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, Cursor paramAnonymousCursor, int paramAnonymousInt)
         {
-          AppMethodBeat.i(230504);
+          AppMethodBeat.i(190195);
           CursorFieldHelper.keep_setBlob(paramAnonymousField, paramAnonymousObject, paramAnonymousCursor, paramAnonymousInt);
-          AppMethodBeat.o(230504);
+          AppMethodBeat.o(190195);
         }
       });
-      SET_METHODS.put(Short.TYPE, new ISetMethod()
+      SET_METHODS.put(Short.TYPE, new CursorFieldHelper.ISetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, Cursor paramAnonymousCursor, int paramAnonymousInt)
         {
-          AppMethodBeat.i(230515);
+          AppMethodBeat.i(192463);
           CursorFieldHelper.keep_setShort(paramAnonymousField, paramAnonymousObject, paramAnonymousCursor, paramAnonymousInt);
-          AppMethodBeat.o(230515);
+          AppMethodBeat.o(192463);
         }
       });
-      SET_METHODS.put(Short.class, new ISetMethod()
+      SET_METHODS.put(Short.class, new CursorFieldHelper.ISetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, Cursor paramAnonymousCursor, int paramAnonymousInt)
         {
-          AppMethodBeat.i(230525);
+          AppMethodBeat.i(190831);
           CursorFieldHelper.keep_setShort(paramAnonymousField, paramAnonymousObject, paramAnonymousCursor, paramAnonymousInt);
-          AppMethodBeat.o(230525);
+          AppMethodBeat.o(190831);
         }
       });
-      SET_METHODS.put(Boolean.TYPE, new ISetMethod()
+      SET_METHODS.put(Boolean.TYPE, new CursorFieldHelper.ISetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, Cursor paramAnonymousCursor, int paramAnonymousInt)
         {
-          AppMethodBeat.i(230526);
+          AppMethodBeat.i(193826);
           CursorFieldHelper.keep_setBoolean(paramAnonymousField, paramAnonymousObject, paramAnonymousCursor, paramAnonymousInt);
-          AppMethodBeat.o(230526);
+          AppMethodBeat.o(193826);
         }
       });
-      SET_METHODS.put(Boolean.class, new ISetMethod()
+      SET_METHODS.put(Boolean.class, new CursorFieldHelper.ISetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, Cursor paramAnonymousCursor, int paramAnonymousInt)
         {
-          AppMethodBeat.i(230527);
+          AppMethodBeat.i(194252);
           CursorFieldHelper.keep_setBoolean(paramAnonymousField, paramAnonymousObject, paramAnonymousCursor, paramAnonymousInt);
-          AppMethodBeat.o(230527);
+          AppMethodBeat.o(194252);
         }
       });
-      SET_METHODS.put(Integer.TYPE, new ISetMethod()
+      SET_METHODS.put(Integer.TYPE, new CursorFieldHelper.ISetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, Cursor paramAnonymousCursor, int paramAnonymousInt)
         {
-          AppMethodBeat.i(230528);
+          AppMethodBeat.i(194595);
           CursorFieldHelper.keep_setInt(paramAnonymousField, paramAnonymousObject, paramAnonymousCursor, paramAnonymousInt);
-          AppMethodBeat.o(230528);
+          AppMethodBeat.o(194595);
         }
       });
-      SET_METHODS.put(Integer.class, new ISetMethod()
+      SET_METHODS.put(Integer.class, new CursorFieldHelper.ISetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, Cursor paramAnonymousCursor, int paramAnonymousInt)
         {
-          AppMethodBeat.i(230529);
+          AppMethodBeat.i(193560);
           CursorFieldHelper.keep_setInt(paramAnonymousField, paramAnonymousObject, paramAnonymousCursor, paramAnonymousInt);
-          AppMethodBeat.o(230529);
+          AppMethodBeat.o(193560);
         }
       });
-      SET_METHODS.put(Float.TYPE, new ISetMethod()
+      SET_METHODS.put(Float.TYPE, new CursorFieldHelper.ISetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, Cursor paramAnonymousCursor, int paramAnonymousInt)
         {
-          AppMethodBeat.i(230530);
+          AppMethodBeat.i(192202);
           CursorFieldHelper.keep_setFloat(paramAnonymousField, paramAnonymousObject, paramAnonymousCursor, paramAnonymousInt);
-          AppMethodBeat.o(230530);
+          AppMethodBeat.o(192202);
         }
       });
-      SET_METHODS.put(Float.class, new ISetMethod()
+      SET_METHODS.put(Float.class, new CursorFieldHelper.ISetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, Cursor paramAnonymousCursor, int paramAnonymousInt)
         {
-          AppMethodBeat.i(230531);
+          AppMethodBeat.i(193105);
           CursorFieldHelper.keep_setFloat(paramAnonymousField, paramAnonymousObject, paramAnonymousCursor, paramAnonymousInt);
-          AppMethodBeat.o(230531);
+          AppMethodBeat.o(193105);
         }
       });
-      SET_METHODS.put(Double.TYPE, new ISetMethod()
+      SET_METHODS.put(Double.TYPE, new CursorFieldHelper.ISetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, Cursor paramAnonymousCursor, int paramAnonymousInt)
         {
-          AppMethodBeat.i(230505);
+          AppMethodBeat.i(186266);
           CursorFieldHelper.keep_setDouble(paramAnonymousField, paramAnonymousObject, paramAnonymousCursor, paramAnonymousInt);
-          AppMethodBeat.o(230505);
+          AppMethodBeat.o(186266);
         }
       });
-      SET_METHODS.put(Double.class, new ISetMethod()
+      SET_METHODS.put(Double.class, new CursorFieldHelper.ISetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, Cursor paramAnonymousCursor, int paramAnonymousInt)
         {
-          AppMethodBeat.i(230506);
+          AppMethodBeat.i(189565);
           CursorFieldHelper.keep_setDouble(paramAnonymousField, paramAnonymousObject, paramAnonymousCursor, paramAnonymousInt);
-          AppMethodBeat.o(230506);
+          AppMethodBeat.o(189565);
         }
       });
-      SET_METHODS.put(Long.TYPE, new ISetMethod()
+      SET_METHODS.put(Long.TYPE, new CursorFieldHelper.ISetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, Cursor paramAnonymousCursor, int paramAnonymousInt)
         {
-          AppMethodBeat.i(230507);
+          AppMethodBeat.i(190215);
           CursorFieldHelper.keep_setLong(paramAnonymousField, paramAnonymousObject, paramAnonymousCursor, paramAnonymousInt);
-          AppMethodBeat.o(230507);
+          AppMethodBeat.o(190215);
         }
       });
-      SET_METHODS.put(Long.class, new ISetMethod()
+      SET_METHODS.put(Long.class, new CursorFieldHelper.ISetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, Cursor paramAnonymousCursor, int paramAnonymousInt)
         {
-          AppMethodBeat.i(230508);
+          AppMethodBeat.i(191425);
           CursorFieldHelper.keep_setLong(paramAnonymousField, paramAnonymousObject, paramAnonymousCursor, paramAnonymousInt);
-          AppMethodBeat.o(230508);
+          AppMethodBeat.o(191425);
         }
       });
-      SET_METHODS.put(String.class, new ISetMethod()
+      SET_METHODS.put(String.class, new CursorFieldHelper.ISetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, Cursor paramAnonymousCursor, int paramAnonymousInt)
         {
-          AppMethodBeat.i(230509);
+          AppMethodBeat.i(189958);
           CursorFieldHelper.keep_setString(paramAnonymousField, paramAnonymousObject, paramAnonymousCursor, paramAnonymousInt);
-          AppMethodBeat.o(230509);
+          AppMethodBeat.o(189958);
         }
       });
-      GET_METHODS.put([B.class, new IGetMethod()
+      GET_METHODS.put([B.class, new CursorFieldHelper.IGetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, ContentValues paramAnonymousContentValues)
         {
-          AppMethodBeat.i(230510);
+          AppMethodBeat.i(188554);
           CursorFieldHelper.keep_getBlob(paramAnonymousField, paramAnonymousObject, paramAnonymousContentValues);
-          AppMethodBeat.o(230510);
+          AppMethodBeat.o(188554);
         }
       });
-      GET_METHODS.put(Short.TYPE, new IGetMethod()
+      GET_METHODS.put(Short.TYPE, new CursorFieldHelper.IGetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, ContentValues paramAnonymousContentValues)
         {
-          AppMethodBeat.i(230511);
+          AppMethodBeat.i(187903);
           CursorFieldHelper.keep_getShort(paramAnonymousField, paramAnonymousObject, paramAnonymousContentValues);
-          AppMethodBeat.o(230511);
+          AppMethodBeat.o(187903);
         }
       });
-      GET_METHODS.put(Short.class, new IGetMethod()
+      GET_METHODS.put(Short.class, new CursorFieldHelper.IGetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, ContentValues paramAnonymousContentValues)
         {
-          AppMethodBeat.i(230512);
+          AppMethodBeat.i(194005);
           CursorFieldHelper.keep_getShort(paramAnonymousField, paramAnonymousObject, paramAnonymousContentValues);
-          AppMethodBeat.o(230512);
+          AppMethodBeat.o(194005);
         }
       });
-      GET_METHODS.put(Boolean.TYPE, new IGetMethod()
+      GET_METHODS.put(Boolean.TYPE, new CursorFieldHelper.IGetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, ContentValues paramAnonymousContentValues)
         {
-          AppMethodBeat.i(230513);
+          AppMethodBeat.i(194377);
           CursorFieldHelper.keep_getBoolean(paramAnonymousField, paramAnonymousObject, paramAnonymousContentValues);
-          AppMethodBeat.o(230513);
+          AppMethodBeat.o(194377);
         }
       });
-      GET_METHODS.put(Boolean.class, new IGetMethod()
+      GET_METHODS.put(Boolean.class, new CursorFieldHelper.IGetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, ContentValues paramAnonymousContentValues)
         {
-          AppMethodBeat.i(230514);
+          AppMethodBeat.i(194135);
           CursorFieldHelper.keep_getBoolean(paramAnonymousField, paramAnonymousObject, paramAnonymousContentValues);
-          AppMethodBeat.o(230514);
+          AppMethodBeat.o(194135);
         }
       });
-      GET_METHODS.put(Integer.TYPE, new IGetMethod()
+      GET_METHODS.put(Integer.TYPE, new CursorFieldHelper.IGetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, ContentValues paramAnonymousContentValues)
         {
-          AppMethodBeat.i(230516);
+          AppMethodBeat.i(191170);
           CursorFieldHelper.keep_getInt(paramAnonymousField, paramAnonymousObject, paramAnonymousContentValues);
-          AppMethodBeat.o(230516);
+          AppMethodBeat.o(191170);
         }
       });
-      GET_METHODS.put(Integer.class, new IGetMethod()
+      GET_METHODS.put(Integer.class, new CursorFieldHelper.IGetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, ContentValues paramAnonymousContentValues)
         {
-          AppMethodBeat.i(230517);
+          AppMethodBeat.i(192653);
           CursorFieldHelper.keep_getInt(paramAnonymousField, paramAnonymousObject, paramAnonymousContentValues);
-          AppMethodBeat.o(230517);
+          AppMethodBeat.o(192653);
         }
       });
-      GET_METHODS.put(Float.TYPE, new IGetMethod()
+      GET_METHODS.put(Float.TYPE, new CursorFieldHelper.IGetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, ContentValues paramAnonymousContentValues)
         {
-          AppMethodBeat.i(230518);
+          AppMethodBeat.i(187513);
           CursorFieldHelper.keep_getFloat(paramAnonymousField, paramAnonymousObject, paramAnonymousContentValues);
-          AppMethodBeat.o(230518);
+          AppMethodBeat.o(187513);
         }
       });
-      GET_METHODS.put(Float.class, new IGetMethod()
+      GET_METHODS.put(Float.class, new CursorFieldHelper.IGetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, ContentValues paramAnonymousContentValues)
         {
-          AppMethodBeat.i(230519);
+          AppMethodBeat.i(186505);
           CursorFieldHelper.keep_getFloat(paramAnonymousField, paramAnonymousObject, paramAnonymousContentValues);
-          AppMethodBeat.o(230519);
+          AppMethodBeat.o(186505);
         }
       });
-      GET_METHODS.put(Double.TYPE, new IGetMethod()
+      GET_METHODS.put(Double.TYPE, new CursorFieldHelper.IGetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, ContentValues paramAnonymousContentValues)
         {
-          AppMethodBeat.i(230520);
+          AppMethodBeat.i(194562);
           CursorFieldHelper.keep_getDouble(paramAnonymousField, paramAnonymousObject, paramAnonymousContentValues);
-          AppMethodBeat.o(230520);
+          AppMethodBeat.o(194562);
         }
       });
-      GET_METHODS.put(Double.class, new IGetMethod()
+      GET_METHODS.put(Double.class, new CursorFieldHelper.IGetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, ContentValues paramAnonymousContentValues)
         {
-          AppMethodBeat.i(230521);
+          AppMethodBeat.i(194140);
           CursorFieldHelper.keep_getDouble(paramAnonymousField, paramAnonymousObject, paramAnonymousContentValues);
-          AppMethodBeat.o(230521);
+          AppMethodBeat.o(194140);
         }
       });
-      GET_METHODS.put(Long.TYPE, new IGetMethod()
+      GET_METHODS.put(Long.TYPE, new CursorFieldHelper.IGetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, ContentValues paramAnonymousContentValues)
         {
-          AppMethodBeat.i(230522);
+          AppMethodBeat.i(192529);
           CursorFieldHelper.keep_getLong(paramAnonymousField, paramAnonymousObject, paramAnonymousContentValues);
-          AppMethodBeat.o(230522);
+          AppMethodBeat.o(192529);
         }
       });
-      GET_METHODS.put(Long.class, new IGetMethod()
+      GET_METHODS.put(Long.class, new CursorFieldHelper.IGetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, ContentValues paramAnonymousContentValues)
         {
-          AppMethodBeat.i(230523);
+          AppMethodBeat.i(188812);
           CursorFieldHelper.keep_getLong(paramAnonymousField, paramAnonymousObject, paramAnonymousContentValues);
-          AppMethodBeat.o(230523);
+          AppMethodBeat.o(188812);
         }
       });
-      GET_METHODS.put(String.class, new IGetMethod()
+      GET_METHODS.put(String.class, new CursorFieldHelper.IGetMethod()
       {
         public final void invoke(Field paramAnonymousField, Object paramAnonymousObject, ContentValues paramAnonymousContentValues)
         {
-          AppMethodBeat.i(230524);
+          AppMethodBeat.i(186717);
           CursorFieldHelper.keep_getString(paramAnonymousField, paramAnonymousObject, paramAnonymousContentValues);
-          AppMethodBeat.o(230524);
+          AppMethodBeat.o(186717);
         }
       });
       GET_TYPE.put([B.class, "BLOB");
@@ -299,11 +299,11 @@ class CursorFieldHelper
     }
   }
   
-  public static IGetMethod getter(Class<?> paramClass)
+  public static CursorFieldHelper.IGetMethod getter(Class<?> paramClass)
   {
-    AppMethodBeat.i(230532);
-    paramClass = (IGetMethod)GET_METHODS.get(paramClass);
-    AppMethodBeat.o(230532);
+    AppMethodBeat.i(193284);
+    paramClass = (CursorFieldHelper.IGetMethod)GET_METHODS.get(paramClass);
+    AppMethodBeat.o(193284);
     return paramClass;
   }
   
@@ -640,11 +640,11 @@ class CursorFieldHelper
     }
   }
   
-  public static ISetMethod setter(Class<?> paramClass)
+  public static CursorFieldHelper.ISetMethod setter(Class<?> paramClass)
   {
-    AppMethodBeat.i(230533);
-    paramClass = (ISetMethod)SET_METHODS.get(paramClass);
-    AppMethodBeat.o(230533);
+    AppMethodBeat.i(193289);
+    paramClass = (CursorFieldHelper.ISetMethod)SET_METHODS.get(paramClass);
+    AppMethodBeat.o(193289);
     return paramClass;
   }
   
@@ -655,20 +655,10 @@ class CursorFieldHelper
     AppMethodBeat.o(158064);
     return paramClass;
   }
-  
-  public static abstract interface IGetMethod
-  {
-    public abstract void invoke(Field paramField, Object paramObject, ContentValues paramContentValues);
-  }
-  
-  public static abstract interface ISetMethod
-  {
-    public abstract void invoke(Field paramField, Object paramObject, Cursor paramCursor, int paramInt);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.sdk.storage.CursorFieldHelper
  * JD-Core Version:    0.7.0.1
  */

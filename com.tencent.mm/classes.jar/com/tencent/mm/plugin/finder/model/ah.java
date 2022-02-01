@@ -1,93 +1,34 @@
 package com.tencent.mm.plugin.finder.model;
 
-import android.arch.lifecycle.MutableLiveData;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.extension.reddot.h.a;
-import com.tencent.mm.plugin.finder.feed.model.internal.i;
-import com.tencent.mm.view.recyclerview.g.b;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import kotlin.g.b.p;
+import com.tencent.mm.plugin.finder.api.i;
+import com.tencent.mm.view.recyclerview.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/FinderHeaderFullMergedData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "msgNotifyData", "Lcom/tencent/mm/plugin/finder/model/FeedHeaderMsgNotifyData;", "privateMsgNotifyData", "Lcom/tencent/mm/plugin/finder/model/FinderPrivateMsgNotifyData;", "commentFailedNotifyDataList", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Lcom/tencent/mm/plugin/finder/model/FeedHeaderCommentFailedNotifyData;", "(Lcom/tencent/mm/plugin/finder/model/FeedHeaderMsgNotifyData;Lcom/tencent/mm/plugin/finder/model/FinderPrivateMsgNotifyData;Ljava/util/concurrent/ConcurrentLinkedQueue;)V", "getCommentFailedNotifyDataList", "()Ljava/util/concurrent/ConcurrentLinkedQueue;", "getMsgNotifyData", "()Lcom/tencent/mm/plugin/finder/model/FeedHeaderMsgNotifyData;", "getPrivateMsgNotifyData", "()Lcom/tencent/mm/plugin/finder/model/FinderPrivateMsgNotifyData;", "compare", "", "obj", "getItemId", "", "getItemType", "isEmpty", "", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderFollowData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "contact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "(Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;)V", "getContact", "()Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "getItemId", "", "getItemType", "", "plugin-finder_release"})
 public final class ah
-  extends g.b
-  implements i
+  implements a
 {
-  public final h msgNotifyData;
-  public final bh tSf;
-  public final ConcurrentLinkedQueue<f> tSj;
+  public final i contact;
   
-  public ah(h paramh, bh parambh, ConcurrentLinkedQueue<f> paramConcurrentLinkedQueue)
+  public ah(i parami)
   {
-    AppMethodBeat.i(248761);
-    this.msgNotifyData = paramh;
-    this.tSf = parambh;
-    this.tSj = paramConcurrentLinkedQueue;
-    AppMethodBeat.o(248761);
+    AppMethodBeat.i(286937);
+    this.contact = parami;
+    AppMethodBeat.o(286937);
   }
   
-  public final int a(i parami)
+  public final int bAQ()
   {
-    AppMethodBeat.i(248758);
-    p.h(parami, "obj");
-    AppMethodBeat.o(248758);
-    return 2147483647;
+    AppMethodBeat.i(286936);
+    int i = ah.class.getName().hashCode();
+    AppMethodBeat.o(286936);
+    return i;
   }
   
-  public final int cxn()
+  public final long mf()
   {
-    return 2019;
-  }
-  
-  public final boolean isEmpty()
-  {
-    AppMethodBeat.i(248760);
-    Iterator localIterator = ((Iterable)this.tSj).iterator();
-    Object localObject;
-    int i;
-    if (localIterator.hasNext())
-    {
-      localObject = localIterator.next();
-      if (((f)localObject).uNO != 1)
-      {
-        i = 1;
-        label47:
-        if (i == 0) {
-          break label101;
-        }
-      }
-    }
-    for (;;)
-    {
-      if ((localObject != null) || (this.msgNotifyData.count > 0)) {
-        break label108;
-      }
-      localObject = com.tencent.mm.plugin.finder.extension.reddot.h.tKR;
-      localObject = (h.a)com.tencent.mm.plugin.finder.extension.reddot.h.daX().getValue();
-      if ((localObject != null) && (((h.a)localObject).dEF == true)) {
-        break label108;
-      }
-      AppMethodBeat.o(248760);
-      return true;
-      i = 0;
-      break label47;
-      label101:
-      break;
-      localObject = null;
-    }
-    label108:
-    AppMethodBeat.o(248760);
-    return false;
-  }
-  
-  public final long lT()
-  {
-    AppMethodBeat.i(248759);
-    long l = hashCode();
-    AppMethodBeat.o(248759);
-    return l;
+    return 0L;
   }
 }
 

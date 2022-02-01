@@ -33,28 +33,28 @@ public class PluginSystemCrashFix
     AppMethodBeat.i(145616);
     Log.i("MicroMsg.SystemCrashFixPatch", "api level : " + Build.VERSION.SDK_INT);
     paramg = new Handler(Looper.myLooper());
-    if (c.qCA == null)
+    if (c.ubA == null)
     {
       localObject = new ArrayList();
-      c.qCA = (List)localObject;
+      c.ubA = (List)localObject;
       ((List)localObject).add(new d());
-      c.qCA.add(new com.tencent.mm.plugin.crashfix.d.e.a());
-      c.qCA.add(new com.tencent.mm.plugin.crashfix.d.a.a());
-      c.qCA.add(new com.tencent.mm.plugin.crashfix.d.b.a());
-      c.qCA.add(new com.tencent.mm.plugin.crashfix.d.c.a());
+      c.ubA.add(new com.tencent.mm.plugin.crashfix.d.e.a());
+      c.ubA.add(new com.tencent.mm.plugin.crashfix.d.a.a());
+      c.ubA.add(new com.tencent.mm.plugin.crashfix.d.b.a());
+      c.ubA.add(new com.tencent.mm.plugin.crashfix.d.c.a());
     }
-    Object localObject = c.qCA.iterator();
+    Object localObject = c.ubA.iterator();
     while (((Iterator)localObject).hasNext())
     {
       b localb = (b)((Iterator)localObject).next();
-      if (localb.Fh(Build.VERSION.SDK_INT)) {
+      if (localb.IP(Build.VERSION.SDK_INT)) {
         if ((localb instanceof com.tencent.mm.plugin.crashfix.d.a))
         {
           paramg.postDelayed(new c.1((com.tencent.mm.plugin.crashfix.d.a)localb, localb), 0L);
         }
         else
         {
-          boolean bool = localb.cAO();
+          boolean bool = localb.cPs();
           Log.i("MicroMsg.SystemCrashFixPatch", localb.getClass().getCanonicalName() + " : " + bool);
         }
       }
@@ -71,7 +71,7 @@ public class PluginSystemCrashFix
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.crashfix.PluginSystemCrashFix
  * JD-Core Version:    0.7.0.1
  */

@@ -1,185 +1,209 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hl;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 
 public final class am
-  extends hl
 {
-  public static IAutoDBItem.MAutoDBInfo info;
+  public int OTR;
+  private int OTS;
   
-  static
+  public am()
   {
-    AppMethodBeat.i(70492);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[32];
-    localMAutoDBInfo.columns = new String[33];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "uin";
-    localMAutoDBInfo.colsMap.put("uin", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" uin TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "uin";
-    localMAutoDBInfo.columns[1] = "is_reg";
-    localMAutoDBInfo.colsMap.put("is_reg", "INTEGER");
-    localStringBuilder.append(" is_reg INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "true_name";
-    localMAutoDBInfo.colsMap.put("true_name", "TEXT");
-    localStringBuilder.append(" true_name TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[3] = "card_num";
-    localMAutoDBInfo.colsMap.put("card_num", "INTEGER");
-    localStringBuilder.append(" card_num INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[4] = "isDomesticUser";
-    localMAutoDBInfo.colsMap.put("isDomesticUser", "INTEGER");
-    localStringBuilder.append(" isDomesticUser INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[5] = "cre_type";
-    localMAutoDBInfo.colsMap.put("cre_type", "INTEGER");
-    localStringBuilder.append(" cre_type INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[6] = "main_card_bind_serialno";
-    localMAutoDBInfo.colsMap.put("main_card_bind_serialno", "TEXT");
-    localStringBuilder.append(" main_card_bind_serialno TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[7] = "ftf_pay_url";
-    localMAutoDBInfo.colsMap.put("ftf_pay_url", "TEXT");
-    localStringBuilder.append(" ftf_pay_url TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[8] = "switchConfig";
-    localMAutoDBInfo.colsMap.put("switchConfig", "INTEGER");
-    localStringBuilder.append(" switchConfig INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[9] = "reset_passwd_flag";
-    localMAutoDBInfo.colsMap.put("reset_passwd_flag", "TEXT");
-    localStringBuilder.append(" reset_passwd_flag TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[10] = "find_passwd_url";
-    localMAutoDBInfo.colsMap.put("find_passwd_url", "TEXT");
-    localStringBuilder.append(" find_passwd_url TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[11] = "is_open_touch";
-    localMAutoDBInfo.colsMap.put("is_open_touch", "INTEGER");
-    localStringBuilder.append(" is_open_touch INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[12] = "lct_wording";
-    localMAutoDBInfo.colsMap.put("lct_wording", "TEXT");
-    localStringBuilder.append(" lct_wording TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[13] = "lct_url";
-    localMAutoDBInfo.colsMap.put("lct_url", "TEXT");
-    localStringBuilder.append(" lct_url TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[14] = "cre_name";
-    localMAutoDBInfo.colsMap.put("cre_name", "TEXT");
-    localStringBuilder.append(" cre_name TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[15] = "lqt_state";
-    localMAutoDBInfo.colsMap.put("lqt_state", "INTEGER");
-    localStringBuilder.append(" lqt_state INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[16] = "paymenu_use_new";
-    localMAutoDBInfo.colsMap.put("paymenu_use_new", "INTEGER");
-    localStringBuilder.append(" paymenu_use_new INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[17] = "is_show_lqb";
-    localMAutoDBInfo.colsMap.put("is_show_lqb", "INTEGER");
-    localStringBuilder.append(" is_show_lqb INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[18] = "is_open_lqb";
-    localMAutoDBInfo.colsMap.put("is_open_lqb", "INTEGER");
-    localStringBuilder.append(" is_open_lqb INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[19] = "lqb_open_url";
-    localMAutoDBInfo.colsMap.put("lqb_open_url", "TEXT");
-    localStringBuilder.append(" lqb_open_url TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[20] = "lqt_cell_is_show";
-    localMAutoDBInfo.colsMap.put("lqt_cell_is_show", "INTEGER");
-    localStringBuilder.append(" lqt_cell_is_show INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[21] = "lqt_cell_icon";
-    localMAutoDBInfo.colsMap.put("lqt_cell_icon", "TEXT");
-    localStringBuilder.append(" lqt_cell_icon TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[22] = "lqt_cell_is_open_lqt";
-    localMAutoDBInfo.colsMap.put("lqt_cell_is_open_lqt", "INTEGER");
-    localStringBuilder.append(" lqt_cell_is_open_lqt INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[23] = "lqt_cell_lqt_open_url";
-    localMAutoDBInfo.colsMap.put("lqt_cell_lqt_open_url", "TEXT");
-    localStringBuilder.append(" lqt_cell_lqt_open_url TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[24] = "lqt_cell_lqt_title";
-    localMAutoDBInfo.colsMap.put("lqt_cell_lqt_title", "TEXT");
-    localStringBuilder.append(" lqt_cell_lqt_title TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[25] = "lqt_cell_lqt_wording";
-    localMAutoDBInfo.colsMap.put("lqt_cell_lqt_wording", "TEXT");
-    localStringBuilder.append(" lqt_cell_lqt_wording TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[26] = "forget_passwd_url";
-    localMAutoDBInfo.colsMap.put("forget_passwd_url", "TEXT");
-    localStringBuilder.append(" forget_passwd_url TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[27] = "unipay_order_state";
-    localMAutoDBInfo.colsMap.put("unipay_order_state", "INTEGER");
-    localStringBuilder.append(" unipay_order_state INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[28] = "bank_priority";
-    localMAutoDBInfo.colsMap.put("bank_priority", "TEXT");
-    localStringBuilder.append(" bank_priority TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[29] = "wallet_balance";
-    localMAutoDBInfo.colsMap.put("wallet_balance", "LONG");
-    localStringBuilder.append(" wallet_balance LONG");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[30] = "wallet_entrance_balance_switch_state";
-    localMAutoDBInfo.colsMap.put("wallet_entrance_balance_switch_state", "INTEGER");
-    localStringBuilder.append(" wallet_entrance_balance_switch_state INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[31] = "soter_pay_open_type";
-    localMAutoDBInfo.colsMap.put("soter_pay_open_type", "INTEGER");
-    localStringBuilder.append(" soter_pay_open_type INTEGER");
-    localMAutoDBInfo.columns[32] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
-    AppMethodBeat.o(70492);
+    AppMethodBeat.i(70477);
+    this.OTR = 0;
+    this.OTS = 0;
+    h.aHH();
+    this.OTR = ((Integer)h.aHG().aHp().b(196660, Integer.valueOf(0))).intValue();
+    h.aHH();
+    this.OTS = ((Integer)h.aHG().aHp().get(ar.a.VwJ, Integer.valueOf(0))).intValue();
+    Log.i("MicroMsg.WalletSwitchConfig", "WalletSwitchConfig2 " + this.OTR + "balanceShow:" + this.OTS);
+    AppMethodBeat.o(70477);
   }
   
-  public final boolean fRk()
+  public am(int paramInt1, int paramInt2)
   {
-    return this.field_is_reg == 1;
+    AppMethodBeat.i(70476);
+    this.OTR = 0;
+    this.OTS = 0;
+    h.aHH();
+    h.aHG().aHp().i(196660, Integer.valueOf(paramInt1));
+    h.aHH();
+    h.aHG().aHp().set(ar.a.VwJ, Integer.valueOf(paramInt2));
+    this.OTR = paramInt1;
+    this.OTS = paramInt2;
+    Log.i("MicroMsg.WalletSwitchConfig", "WalletSwitchConfig1 " + paramInt1 + "balanceShow:" + paramInt2);
+    AppMethodBeat.o(70476);
   }
   
-  public final boolean fRl()
+  public final boolean YT()
   {
-    return this.field_is_reg == 2;
+    AppMethodBeat.i(70484);
+    if ((this.OTR & 0x2000) > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.WalletSwitchConfig", "isReportLocation, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.OTR) });
+      AppMethodBeat.o(70484);
+      return bool;
+    }
   }
   
-  public final boolean fRm()
+  public final boolean gFU()
   {
-    return this.field_is_reg == 0;
+    AppMethodBeat.i(70479);
+    if ((this.OTR & 0x4) > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.WalletSwitchConfig", "isBalanceFetchOn, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.OTR) });
+      AppMethodBeat.o(70479);
+      return bool;
+    }
   }
   
-  public final boolean fRn()
+  public final boolean gJE()
   {
-    return this.field_is_reg == -1;
+    AppMethodBeat.i(70478);
+    if ((this.OTR & 0x2) > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.WalletSwitchConfig", "isMicroPayOn, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.OTR) });
+      AppMethodBeat.o(70478);
+      return bool;
+    }
   }
   
-  public final boolean fRo()
+  public final boolean gJF()
   {
-    return this.field_is_open_touch == 1;
+    AppMethodBeat.i(70480);
+    if ((this.OTR & 0x80) > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.WalletSwitchConfig", "isSupportScanBankCard, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.OTR) });
+      AppMethodBeat.o(70480);
+      return bool;
+    }
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  public final boolean gJG()
   {
-    return info;
+    AppMethodBeat.i(70481);
+    if ((this.OTR & 0x100) > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.WalletSwitchConfig", "isSupportTouchPay, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.OTR) });
+      AppMethodBeat.o(70481);
+      return bool;
+    }
+  }
+  
+  public final boolean gJH()
+  {
+    AppMethodBeat.i(70482);
+    if ((this.OTR & 0x400) > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.WalletSwitchConfig", "isSupportLCT, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.OTR) });
+      AppMethodBeat.o(70482);
+      return bool;
+    }
+  }
+  
+  public final boolean gJI()
+  {
+    AppMethodBeat.i(70483);
+    if ((this.OTR & 0x800) > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.WalletSwitchConfig", "isSupporSwitchWalletCurrency, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.OTR) });
+      AppMethodBeat.o(70483);
+      return bool;
+    }
+  }
+  
+  public final boolean gJJ()
+  {
+    AppMethodBeat.i(70485);
+    if ((this.OTR & 0x40000) > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.WalletSwitchConfig", "isReportWifiSSid, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.OTR) });
+      AppMethodBeat.o(70485);
+      return bool;
+    }
+  }
+  
+  public final boolean gJK()
+  {
+    AppMethodBeat.i(70486);
+    if ((this.OTR & 0x800000) > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.WalletSwitchConfig", "isReportCellInfo, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.OTR) });
+      AppMethodBeat.o(70486);
+      return bool;
+    }
+  }
+  
+  public final boolean gJL()
+  {
+    AppMethodBeat.i(70487);
+    if ((this.OTR & 0x4000) > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.WalletSwitchConfig", "isHideBalanceNum, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.OTR) });
+      AppMethodBeat.o(70487);
+      return bool;
+    }
+  }
+  
+  public final boolean gJM()
+  {
+    AppMethodBeat.i(70488);
+    if ((this.OTR & 0x8000) > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.WalletSwitchConfig", "isShowRealnameGuide, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.OTR) });
+      AppMethodBeat.o(70488);
+      return bool;
+    }
+  }
+  
+  public final boolean gJN()
+  {
+    AppMethodBeat.i(70489);
+    if ((this.OTR & 0x400000) > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.WalletSwitchConfig", "isShowBalanceAmount, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.OTR) });
+      AppMethodBeat.o(70489);
+      return bool;
+    }
+  }
+  
+  public final boolean gJO()
+  {
+    AppMethodBeat.i(70490);
+    if ((this.OTR & 0x200000) > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.WalletSwitchConfig", "isShowProtocol, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.OTR) });
+      AppMethodBeat.o(70490);
+      return bool;
+    }
+  }
+  
+  public final boolean gJP()
+  {
+    AppMethodBeat.i(70491);
+    boolean bool = Util.isEqual(this.OTS, 1);
+    Log.i("MicroMsg.WalletSwitchConfig", "isShowBalance, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.OTR) });
+    AppMethodBeat.o(70491);
+    return bool;
   }
 }
 

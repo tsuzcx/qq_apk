@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.widget;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-webview_release"})
 public final class n$a {}
 
 

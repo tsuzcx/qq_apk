@@ -5,7 +5,7 @@ import com.tencent.mm.i.c;
 import com.tencent.mm.i.d;
 import com.tencent.mm.i.g.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.ByteArrayOutputStream;
 
 final class EnvelopeStoryVideoManager$2
@@ -18,7 +18,7 @@ final class EnvelopeStoryVideoManager$2
     AppMethodBeat.i(182456);
     Log.i("MicroMsg.EnvelopeStoryVideoManager", "task callback: %s", new Object[] { Integer.valueOf(paramInt) });
     if (paramInt != 0) {
-      s.deleteFile(this.val$path);
+      u.deleteFile(this.val$path);
     }
     AppMethodBeat.o(182456);
     return 0;

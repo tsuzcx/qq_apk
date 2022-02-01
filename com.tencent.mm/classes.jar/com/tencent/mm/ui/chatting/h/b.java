@@ -16,60 +16,60 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public final class b
   implements f<ca>
 {
-  private MMChattingListView PDB;
-  public a PDC;
-  private a dom;
+  private MMChattingListView WYo;
+  public a WYp;
+  private a fgR;
   
   public b(a parama, MMChattingListView paramMMChattingListView)
   {
-    this.PDB = paramMMChattingListView;
-    this.dom = parama;
+    this.WYo = paramMMChattingListView;
+    this.fgR = parama;
   }
   
   public final void a(d.d paramd)
   {
     AppMethodBeat.i(36420);
-    this.dom.Pwj = false;
+    this.fgR.WQC = false;
     Log.i("MicroMsg.ChattingLoader.ChattingViewCallback", "[onViewUpdate] result:%s", new Object[] { paramd.toString() });
-    Object localObject = (u)this.dom.bh(u.class);
-    if ((localObject != null) && (((u)localObject).gPO() != null) && (((u)localObject).gPO().xfU))
+    Object localObject = (u)this.fgR.bC(u.class);
+    if ((localObject != null) && (((u)localObject).hPj() != null) && (((u)localObject).hPj().BSf))
     {
       Log.i("MicroMsg.ChattingLoader.ChattingViewCallback", "keyboard is shown! scroll to last");
-      this.dom.BN(true);
+      this.fgR.Gi(true);
     }
-    if (paramd.PDL != d.a.PDF)
+    if (paramd.WYy != d.a.WYs)
     {
-      localObject = this.PDB;
-      MMPullDownView.n((ViewGroup)((MMPullDownView)localObject).OSi, 4);
-      MMPullDownView.n((ViewGroup)((MMPullDownView)localObject).GEr, 4);
+      localObject = this.WYo;
+      MMPullDownView.o((ViewGroup)((MMPullDownView)localObject).Wlv, 4);
+      MMPullDownView.o((ViewGroup)((MMPullDownView)localObject).Nsh, 4);
     }
-    ((w)this.dom.bh(w.class)).startTimer();
-    if (this.PDC != null) {
-      this.PDC.a(this.PDB, paramd);
+    ((w)this.fgR.bC(w.class)).startTimer();
+    if (this.WYp != null) {
+      this.WYp.a(this.WYo, paramd);
     }
     AppMethodBeat.o(36420);
   }
   
   public final boolean b(d.a parama)
   {
-    AppMethodBeat.i(233462);
-    if (!this.dom.cQp)
+    AppMethodBeat.i(243174);
+    if (!this.fgR.dgo)
     {
       Log.e("MicroMsg.ChattingLoader.ChattingViewCallback", "[onViewUpdate] this ChattingUI has been in background!");
-      AppMethodBeat.o(233462);
+      AppMethodBeat.o(243174);
       return false;
     }
-    if (!this.dom.Pwi)
+    if (!this.fgR.WQB)
     {
       Log.e("MicroMsg.ChattingLoader.ChattingViewCallback", "current ChattingUI lose focus! action=%s", new Object[] { parama });
-      a locala = this.dom;
+      a locala = this.fgR;
       Log.i("MicroMsg.ChattingContext", "trace setNeedUpdateUI, needUpdateUI %s, trace %s", new Object[] { Boolean.TRUE, Util.getStack() });
-      locala.Pwj = true;
-      locala.Pwm.add(parama);
-      AppMethodBeat.o(233462);
+      locala.WQC = true;
+      locala.WQF.add(parama);
+      AppMethodBeat.o(243174);
       return false;
     }
-    AppMethodBeat.o(233462);
+    AppMethodBeat.o(243174);
     return true;
   }
   
@@ -80,7 +80,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.h.b
  * JD-Core Version:    0.7.0.1
  */

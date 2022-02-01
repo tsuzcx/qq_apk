@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 
@@ -77,16 +77,16 @@ public class ModulePkgInfo
   public long getPkgSize()
   {
     AppMethodBeat.i(182977);
-    if (!s.YS(this.pkgPath))
+    if (!u.agG(this.pkgPath))
     {
       localObject = new FileNotFoundException();
       AppMethodBeat.o(182977);
       throw ((Throwable)localObject);
     }
-    Object localObject = new o(this.pkgPath);
-    if ((((o)localObject).isFile()) && (((o)localObject).canRead()))
+    Object localObject = new q(this.pkgPath);
+    if ((((q)localObject).ifH()) && (((q)localObject).ifC()))
     {
-      long l = ((o)localObject).length();
+      long l = ((q)localObject).length();
       AppMethodBeat.o(182977);
       return l;
     }
@@ -105,9 +105,9 @@ public class ModulePkgInfo
   public long lastModified()
   {
     AppMethodBeat.i(182973);
-    if (s.YS(this.pkgPath))
+    if (u.agG(this.pkgPath))
     {
-      long l = s.boX(this.pkgPath);
+      long l = u.bBR(this.pkgPath);
       AppMethodBeat.o(182973);
       return l;
     }
@@ -143,9 +143,9 @@ public class ModulePkgInfo
   
   public String toString()
   {
-    AppMethodBeat.i(196150);
-    String str = "ModulePkgInfo{pkgPath='" + this.pkgPath + '\'' + ", name='" + this.name + '\'' + ", md5='" + this.md5 + '\'' + ", independent=" + this.independent + ", aliases=" + Arrays.toString(this.aliases) + ", pkgVersion=" + this.pkgVersion + '}';
-    AppMethodBeat.o(196150);
+    AppMethodBeat.i(224750);
+    String str = "ModulePkgInfo{name='" + this.name + '\'' + ", md5='" + this.md5 + '\'' + ", independent=" + this.independent + ", aliases=" + Arrays.toString(this.aliases) + ", pkgVersion=" + this.pkgVersion + ", pkgPath='" + this.pkgPath + '\'' + '}';
+    AppMethodBeat.o(224750);
     return str;
   }
   
@@ -167,7 +167,7 @@ public class ModulePkgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ModulePkgInfo
  * JD-Core Version:    0.7.0.1
  */

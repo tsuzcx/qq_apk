@@ -4,8 +4,8 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
-import com.tencent.mm.plugin.wallet_core.model.v;
-import com.tencent.mm.plugin.wallet_core.utils.e;
+import com.tencent.mm.plugin.wallet_core.model.w;
+import com.tencent.mm.plugin.wallet_core.utils.i;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -21,38 +21,38 @@ import org.json.JSONObject;
 public class j
   extends n
 {
-  public Orders HFH;
+  public Orders OxA;
   private int mPayScene;
   
-  public j(v paramv, Orders paramOrders)
+  public j(w paramw, Orders paramOrders)
   {
     AppMethodBeat.i(69299);
-    this.HFH = null;
+    this.OxA = null;
     this.mPayScene = -1;
-    this.HFH = paramOrders;
-    if (paramv.BDB != null)
+    this.OxA = paramOrders;
+    if (paramw.HzF != null)
     {
-      this.mPayScene = paramv.BDB.dVv;
-      i = paramv.BDB.channel;
+      this.mPayScene = paramw.HzF.fOY;
+      i = paramw.HzF.channel;
     }
-    List localList = paramOrders.HZd;
+    List localList = paramOrders.ORd;
     if (localList.size() > 0) {
-      localObject = ((Orders.Commodity)localList.get(0)).dDM;
+      localObject = ((Orders.Commodity)localList.get(0)).fww;
     }
-    b(paramOrders.dDL, (String)localObject, this.mPayScene, i, paramv.dDj, paramv.ANo);
+    b(paramOrders.fwv, (String)localObject, this.mPayScene, i, paramw.fvP, paramw.GGC);
     paramOrders = new HashMap();
     localObject = new HashMap();
-    if (!Util.isNullOrNil(paramv.kdF)) {}
+    if (!Util.isNullOrNil(paramw.mVf)) {}
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.NetSceneTenpayVertifyReg", "hy: has pwd: %b", new Object[] { Boolean.valueOf(bool) });
-      setPayInfo(paramv.BDB, paramOrders, (Map)localObject, bool);
-      paramOrders.put("flag", paramv.flag);
-      paramOrders.put("passwd", paramv.kdF);
-      paramOrders.put("verify_code", paramv.IaW);
-      paramOrders.put("token", paramv.token);
-      paramOrders.put("favorcomposedid", paramv.HUY);
-      paramOrders.put("default_favorcomposedid", paramv.HUX);
+      setPayInfo(paramw.HzF, paramOrders, (Map)localObject, bool);
+      paramOrders.put("flag", paramw.flag);
+      paramOrders.put("passwd", paramw.mVf);
+      paramOrders.put("verify_code", paramw.OTh);
+      paramOrders.put("token", paramw.token);
+      paramOrders.put("favorcomposedid", paramw.OMZ);
+      paramOrders.put("default_favorcomposedid", paramw.OMY);
       setRequestData(paramOrders);
       setWXRequestData((Map)localObject);
       AppMethodBeat.o(69299);
@@ -60,7 +60,7 @@ public class j
     }
   }
   
-  public final boolean fOn()
+  public final boolean gGS()
   {
     return (this.mPayScene == 11) || (this.mPayScene == 21);
   }
@@ -105,19 +105,19 @@ public class j
     if ("1".equals(paramJSONObject.optString("pay_flag")))
     {
       setPaySuccess(true);
-      this.HFH = Orders.a(paramJSONObject, this.HFH);
+      this.OxA = Orders.a(paramJSONObject, this.OxA);
       Log.i("MicroMsg.NetSceneTenpayVertifyReg", "mPayScene:" + this.mPayScene);
       if (this.mPayScene != 39) {
         break label169;
       }
       Log.i("MicroMsg.NetSceneTenpayVertifyReg", "it's the sns scene, parse the sns pay data");
-      e.bW(paramJSONObject);
+      i.ch(paramJSONObject);
     }
     for (;;)
     {
-      paramString = a.bpk("PayProcess").iterator();
+      paramString = a.bCh("PayProcess").iterator();
       while (paramString.hasNext()) {
-        ((d)paramString.next()).dQL.putInt("key_is_clear_failure", this.RuW);
+        ((d)paramString.next()).fKb.putInt("key_is_clear_failure", this.YWu);
       }
       setPaySuccess(false);
       break;

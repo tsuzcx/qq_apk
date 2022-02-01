@@ -7,7 +7,9 @@ import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.Adapter;
@@ -21,24 +23,31 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.br.c;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.collect.model.s;
+import com.tencent.mm.plugin.collect.model.r;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.cqb;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.h;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.protocal.protobuf.cys;
+import com.tencent.mm.protocal.protobuf.eg;
+import com.tencent.mm.protocal.protobuf.vp;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
-import com.tencent.mm.ui.aa;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.tools.m;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import com.tencent.mm.wallet_core.ui.g;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -47,39 +56,93 @@ public class CollectBillUI
   extends WalletBaseUI
 {
   private int fromScene;
-  private boolean iGD;
-  private String jTK;
   private int limit;
-  private com.tencent.mm.ui.tools.l mHj;
-  private boolean qAa;
-  private long qAb;
-  private i qAc;
-  private o.g qAd;
-  private View qdm;
-  private long qwd;
-  private boolean qzD;
-  private a qzR;
-  private LinearLayout qzS;
-  private CollectBillHeaderView qzT;
-  private ImageView qzU;
-  private MMSwitchBtn qzV;
-  private ImageView qzW;
-  private MMSwitchBtn qzX;
-  private TextView qzY;
-  private boolean qzZ;
-  private ListView qzv;
+  private boolean lwF;
+  private String mKX;
+  private m pGE;
+  private long tVc;
+  private boolean tYD;
+  private a tYR;
+  private LinearLayout tYS;
+  private CollectBillHeaderView tYT;
+  private ImageView tYU;
+  private MMSwitchBtn tYV;
+  private ImageView tYW;
+  private MMSwitchBtn tYX;
+  private TextView tYY;
+  private boolean tYZ;
+  private ListView tYv;
+  private boolean tZa;
+  private long tZb;
+  private i tZc;
+  private q.g tZd;
   private int type;
+  private View tzj;
   
   public CollectBillUI()
   {
     AppMethodBeat.i(64079);
-    this.qzZ = false;
-    this.qzD = false;
-    this.iGD = false;
-    this.qAa = true;
+    this.tYZ = false;
+    this.tYD = false;
+    this.lwF = false;
+    this.tZa = true;
     this.limit = 20;
-    this.qAc = new CollectBillUI.1(this);
-    this.qAd = new o.g()
+    this.tZc = new i()
+    {
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, final q paramAnonymousq)
+      {
+        AppMethodBeat.i(64072);
+        if ((paramAnonymousq instanceof com.tencent.mm.plugin.collect.model.j))
+        {
+          paramAnonymousString = (com.tencent.mm.plugin.collect.model.j)paramAnonymousq;
+          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
+          {
+            paramAnonymousString = paramAnonymousString.tVh.ShP;
+            if ((paramAnonymousString == null) || (paramAnonymousString.isEmpty()))
+            {
+              CollectBillUI.a(CollectBillUI.this).setVisibility(8);
+              AppMethodBeat.o(64072);
+              return;
+            }
+            paramAnonymousString = paramAnonymousString.iterator();
+            while (paramAnonymousString.hasNext())
+            {
+              paramAnonymousq = (eg)paramAnonymousString.next();
+              if ((paramAnonymousq.type == 1) && (!Util.isNullOrNil(paramAnonymousq.wording)))
+              {
+                Log.i("MicroMsg.CollectBillUI", "show notice");
+                CollectBillUI.a(CollectBillUI.this).setText(paramAnonymousq.wording);
+                CollectBillUI.a(CollectBillUI.this).setOnClickListener(new View.OnClickListener()
+                {
+                  public final void onClick(View paramAnonymous2View)
+                  {
+                    AppMethodBeat.i(64071);
+                    b localb = new b();
+                    localb.bn(paramAnonymous2View);
+                    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/collect/ui/CollectBillUI$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+                    if (!Util.isNullOrNil(paramAnonymousq.url)) {
+                      g.p(CollectBillUI.this.getContext(), paramAnonymousq.url, true);
+                    }
+                    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/collect/ui/CollectBillUI$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+                    AppMethodBeat.o(64071);
+                  }
+                });
+                CollectBillUI.a(CollectBillUI.this).setVisibility(0);
+                AppMethodBeat.o(64072);
+                return;
+              }
+            }
+            CollectBillUI.a(CollectBillUI.this).setVisibility(8);
+            AppMethodBeat.o(64072);
+            return;
+          }
+          Log.e("MicroMsg.CollectBillUI", "net error: %s", new Object[] { paramAnonymousString });
+          CollectBillUI.a(CollectBillUI.this).setVisibility(8);
+        }
+        AppMethodBeat.o(64072);
+      }
+    };
+    this.tZd = new q.g()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -89,7 +152,7 @@ public class CollectBillUI
           paramAnonymousMenuItem = (AdapterView.AdapterContextMenuInfo)paramAnonymousMenuItem.getMenuInfo();
           paramAnonymousMenuItem = (com.tencent.mm.plugin.collect.model.a)CollectBillUI.b(CollectBillUI.this).getItemAtPosition(paramAnonymousMenuItem.position);
           if (paramAnonymousMenuItem != null) {
-            CollectBillUI.a(CollectBillUI.this, paramAnonymousMenuItem.qvC, paramAnonymousMenuItem.timestamp);
+            CollectBillUI.a(CollectBillUI.this, paramAnonymousMenuItem.tUB, paramAnonymousMenuItem.timestamp);
           }
         }
         AppMethodBeat.o(64078);
@@ -98,54 +161,54 @@ public class CollectBillUI
     AppMethodBeat.o(64079);
   }
   
-  private void bIo()
+  private void bTY()
   {
     AppMethodBeat.i(64087);
-    this.qzv.setVisibility(8);
-    this.qzS.setVisibility(0);
-    findViewById(2131298841).setVisibility(0);
+    this.tYv.setVisibility(8);
+    this.tYS.setVisibility(0);
+    findViewById(a.f.collect_bill_empty_tv).setVisibility(0);
     AppMethodBeat.o(64087);
   }
   
-  private void cAi()
+  private void cOI()
   {
     AppMethodBeat.i(64086);
-    if (!this.iGD)
+    if (!this.lwF)
     {
-      doSceneForceProgress(new s(this.type, this.qwd, this.jTK, this.limit));
-      this.qzD = true;
+      doSceneForceProgress(new com.tencent.mm.plugin.collect.model.t(this.type, this.tVc, this.mKX, this.limit));
+      this.tYD = true;
     }
     AppMethodBeat.o(64086);
   }
   
-  private void h(int paramInt1, int paramInt2, long paramLong)
+  private void i(int paramInt1, int paramInt2, long paramLong)
   {
     AppMethodBeat.i(64085);
-    if (this.qAa)
+    if (this.tZa)
     {
-      this.qzT.b(paramInt1, paramInt2, paramLong, this.type);
-      this.qAa = false;
+      this.tYT.b(paramInt1, paramInt2, paramLong, this.type);
+      this.tZa = false;
     }
     AppMethodBeat.o(64085);
   }
   
   public int getLayoutId()
   {
-    return 2131493662;
+    return a.g.collect_bill;
   }
   
   public void initView()
   {
     AppMethodBeat.i(64082);
-    this.qzv = ((ListView)findViewById(2131298854));
-    this.qzS = ((LinearLayout)findViewById(2131298840));
-    this.qzY = ((TextView)findViewById(2131298837));
-    this.qdm = aa.jQ(this).inflate(2131493669, this.qzv, false);
-    this.qzT = new CollectBillHeaderView(this);
-    this.qzv.addHeaderView(this.qzT, null, false);
-    this.qzR = new a(this);
-    this.qzv.setAdapter(this.qzR);
-    this.qzv.setOnScrollListener(new AbsListView.OnScrollListener()
+    this.tYv = ((ListView)findViewById(a.f.collect_bill_lv));
+    this.tYS = ((LinearLayout)findViewById(a.f.collect_bill_empty_ll));
+    this.tYY = ((TextView)findViewById(a.f.collect_banner_tips));
+    this.tzj = ad.kS(this).inflate(a.g.collect_bill_loading_view, this.tYv, false);
+    this.tYT = new CollectBillHeaderView(this);
+    this.tYv.addHeaderView(this.tYT, null, false);
+    this.tYR = new a(this);
+    this.tYv.setAdapter(this.tYR);
+    this.tYv.setOnScrollListener(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
@@ -160,18 +223,18 @@ public class CollectBillUI
       
       public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt) {}
     });
-    this.mHj = new com.tencent.mm.ui.tools.l(this);
-    this.qzv.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.pGE = new m(this);
+    this.tYv.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(64074);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousAdapterView);
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.zo(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/collect/ui/CollectBillUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+        b localb = new b();
+        localb.bn(paramAnonymousAdapterView);
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.Fs(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/collect/ui/CollectBillUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
         if ((paramAnonymousInt < 0) || (paramAnonymousInt >= paramAnonymousAdapterView.getAdapter().getCount()))
         {
           Log.i("MicroMsg.CollectBillUI", "illegal position: %s, count: %s", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(paramAnonymousAdapterView.getAdapter().getCount()) });
@@ -190,13 +253,13 @@ public class CollectBillUI
           return;
           paramAnonymousView = new Intent();
           paramAnonymousView.putExtra("scene", 2);
-          paramAnonymousView.putExtra("trans_id", paramAnonymousAdapterView.qvD);
-          paramAnonymousView.putExtra("bill_id", paramAnonymousAdapterView.qvC);
-          c.b(CollectBillUI.this.getContext(), "order", ".ui.MallOrderTransactionInfoUI", paramAnonymousView);
+          paramAnonymousView.putExtra("trans_id", paramAnonymousAdapterView.tUC);
+          paramAnonymousView.putExtra("bill_id", paramAnonymousAdapterView.tUB);
+          com.tencent.mm.by.c.b(CollectBillUI.this.getContext(), "order", ".ui.MallOrderTransactionInfoUI", paramAnonymousView);
         }
       }
     });
-    this.qzv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    this.tYv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
     {
       public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
@@ -213,29 +276,43 @@ public class CollectBillUI
       }
     });
     if (this.fromScene != 2) {
-      addTextOptionMenu(0, getString(2131757662), new CollectBillUI.5(this));
+      addTextOptionMenu(0, getString(a.i.collect_bill_list_title), new MenuItem.OnMenuItemClickListener()
+      {
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(64076);
+          Object localObject = new Intent(CollectBillUI.this.getContext(), CollectBillListUI.class);
+          paramAnonymousMenuItem = CollectBillUI.this;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/collect/ui/CollectBillUI$5", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousMenuItem, "com/tencent/mm/plugin/collect/ui/CollectBillUI$5", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          AppMethodBeat.o(64076);
+          return false;
+        }
+      });
     }
     Object localObject;
     if (this.fromScene == 2)
     {
-      localObject = this.qzT.findViewById(2131298906);
-      View localView = this.qzS.findViewById(2131298905);
+      localObject = this.tYT.findViewById(a.f.collect_rint_switch_layout);
+      View localView = this.tYS.findViewById(a.f.collect_ring_switch_empty_layout);
       ((View)localObject).setVisibility(8);
       localView.setVisibility(8);
       AppMethodBeat.o(64082);
       return;
     }
-    this.qzU = ((ImageView)this.qzT.findViewById(2131298903));
-    this.qzV = ((MMSwitchBtn)this.qzT.findViewById(2131298904));
-    this.qzW = ((ImageView)this.qzS.findViewById(2131298903));
-    this.qzX = ((MMSwitchBtn)this.qzS.findViewById(2131298904));
-    com.tencent.mm.plugin.collect.a.a.czp();
-    if (com.tencent.mm.plugin.collect.a.a.czr())
+    this.tYU = ((ImageView)this.tYT.findViewById(a.f.collect_ring_icon_iv));
+    this.tYV = ((MMSwitchBtn)this.tYT.findViewById(a.f.collect_ring_switch_btn));
+    this.tYW = ((ImageView)this.tYS.findViewById(a.f.collect_ring_icon_iv));
+    this.tYX = ((MMSwitchBtn)this.tYS.findViewById(a.f.collect_ring_switch_btn));
+    com.tencent.mm.plugin.collect.a.a.cNP();
+    if (com.tencent.mm.plugin.collect.a.a.cNR())
     {
-      this.qzV.setCheck(true);
-      this.qzX.setCheck(true);
-      this.qzU.setImageResource(2131689984);
-      this.qzW.setImageResource(2131689984);
+      this.tYV.setCheck(true);
+      this.tYX.setCheck(true);
+      this.tYU.setImageResource(a.h.collect_sound_on);
+      this.tYW.setImageResource(a.h.collect_sound_on);
     }
     for (;;)
     {
@@ -250,42 +327,42 @@ public class CollectBillUI
           if (paramAnonymousBoolean)
           {
             CollectBillUI.a(CollectBillUI.this, CollectBillUI.l(CollectBillUI.this) | 0x8000);
-            CollectBillUI.m(CollectBillUI.this).setImageResource(2131689984);
-            CollectBillUI.n(CollectBillUI.this).setImageResource(2131689984);
-            Toast.makeText(CollectBillUI.this.getContext(), 2131757687, 1).show();
-            h.CyF.a(13944, new Object[] { Integer.valueOf(11) });
+            CollectBillUI.m(CollectBillUI.this).setImageResource(a.h.collect_sound_on);
+            CollectBillUI.n(CollectBillUI.this).setImageResource(a.h.collect_sound_on);
+            Toast.makeText(CollectBillUI.this.getContext(), a.i.collect_main_open_ring_tone_tips, 1).show();
+            com.tencent.mm.plugin.report.service.h.IzE.a(13944, new Object[] { Integer.valueOf(11) });
           }
           for (int i = 1;; i = 2)
           {
-            g.aAi();
-            g.aAh().azQ().set(147457, Long.valueOf(CollectBillUI.l(CollectBillUI.this)));
-            cqb localcqb = new cqb();
-            localcqb.Cyb = i;
-            ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new k.a(209, localcqb));
+            com.tencent.mm.kernel.h.aHH();
+            com.tencent.mm.kernel.h.aHG().aHp().i(147457, Long.valueOf(CollectBillUI.l(CollectBillUI.this)));
+            cys localcys = new cys();
+            localcys.Iza = i;
+            ((n)com.tencent.mm.kernel.h.ae(n.class)).bbK().d(new k.a(209, localcys));
             if (i != 1) {
               break;
             }
-            com.tencent.mm.plugin.collect.a.a.czp().czs();
+            com.tencent.mm.plugin.collect.a.a.cNP().cNS();
             AppMethodBeat.o(64077);
             return;
             CollectBillUI.a(CollectBillUI.this, CollectBillUI.l(CollectBillUI.this) & 0xFFFF7FFF);
-            CollectBillUI.m(CollectBillUI.this).setImageResource(2131689983);
-            CollectBillUI.n(CollectBillUI.this).setImageResource(2131689983);
-            Toast.makeText(CollectBillUI.this.getContext(), 2131757677, 1).show();
-            h.CyF.a(13944, new Object[] { Integer.valueOf(12) });
+            CollectBillUI.m(CollectBillUI.this).setImageResource(a.h.collect_sound_off);
+            CollectBillUI.n(CollectBillUI.this).setImageResource(a.h.collect_sound_off);
+            Toast.makeText(CollectBillUI.this.getContext(), a.i.collect_main_close_ring_tone_tips, 1).show();
+            com.tencent.mm.plugin.report.service.h.IzE.a(13944, new Object[] { Integer.valueOf(12) });
           }
-          com.tencent.mm.plugin.collect.a.a.czp().czt();
+          com.tencent.mm.plugin.collect.a.a.cNP().cNT();
           AppMethodBeat.o(64077);
         }
       };
-      this.qzV.setSwitchListener((MMSwitchBtn.a)localObject);
-      this.qzX.setSwitchListener((MMSwitchBtn.a)localObject);
+      this.tYV.setSwitchListener((MMSwitchBtn.a)localObject);
+      this.tYX.setSwitchListener((MMSwitchBtn.a)localObject);
       AppMethodBeat.o(64082);
       return;
-      this.qzV.setCheck(false);
-      this.qzX.setCheck(false);
-      this.qzU.setImageResource(2131689983);
-      this.qzW.setImageResource(2131689983);
+      this.tYV.setCheck(false);
+      this.tYX.setCheck(false);
+      this.tYU.setImageResource(a.h.collect_sound_off);
+      this.tYW.setImageResource(a.h.collect_sound_off);
     }
   }
   
@@ -293,25 +370,25 @@ public class CollectBillUI
   {
     AppMethodBeat.i(64080);
     super.onCreate(paramBundle);
-    this.qAb = z.aUd();
+    this.tZb = z.bde();
     this.fromScene = getIntent().getIntExtra("key_from_scene", 0);
     this.type = getIntent().getIntExtra("key_type", 0);
-    this.qwd = getIntent().getLongExtra("key_timestamp", System.currentTimeMillis() / 1000L);
-    cAi();
+    this.tVc = getIntent().getLongExtra("key_timestamp", System.currentTimeMillis() / 1000L);
+    cOI();
     initView();
-    setMMTitle(2131757666);
-    g.aAi();
-    g.aAg().hqi.a(1256, this.qAc);
+    setMMTitle(a.i.collect_bill_title);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.a(1256, this.tZc);
     paramBundle = new com.tencent.mm.plugin.collect.model.j();
-    g.aAi();
-    g.aAg().hqi.a(paramBundle, 0);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.a(paramBundle, 0);
     AppMethodBeat.o(64080);
   }
   
   public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
     AppMethodBeat.i(64083);
-    paramContextMenu.add(0, 0, 0, 2131757663);
+    paramContextMenu.add(0, 0, 0, a.i.collect_bill_menu_item_del_text);
     AppMethodBeat.o(64083);
   }
   
@@ -319,96 +396,96 @@ public class CollectBillUI
   {
     AppMethodBeat.i(64081);
     super.onDestroy();
-    g.aAi();
-    g.aAg().hqi.b(1256, this.qAc);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.b(1256, this.tZc);
     AppMethodBeat.o(64081);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(64084);
     Object localObject;
-    if ((paramq instanceof s))
+    if ((paramq instanceof com.tencent.mm.plugin.collect.model.t))
     {
-      paramString = (s)paramq;
-      if (this.qzZ)
+      paramString = (com.tencent.mm.plugin.collect.model.t)paramq;
+      if (this.tYZ)
       {
-        this.qzv.removeFooterView(this.qdm);
-        this.qzZ = false;
+        this.tYv.removeFooterView(this.tzj);
+        this.tYZ = false;
       }
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        this.iGD = paramString.iGD;
+        this.lwF = paramString.lwF;
         this.type = paramString.type;
-        this.qwd = paramString.qwd;
-        h(paramString.qwe, paramString.dKt, paramString.qwd);
-        if (!paramString.qwH.isEmpty())
+        this.tVc = paramString.tVc;
+        i(paramString.tVd, paramString.fDi, paramString.tVc);
+        if (!paramString.tVI.isEmpty())
         {
-          if (Util.isNullOrNil(this.jTK))
+          if (Util.isNullOrNil(this.mKX))
           {
             Log.d("MicroMsg.CollectBillUI", "first query, hide block view");
-            this.qzv.setVisibility(0);
-            this.qzS.setVisibility(8);
+            this.tYv.setVisibility(0);
+            this.tYS.setVisibility(8);
           }
-          paramq = this.qzR;
-          localObject = paramString.qwH;
-          paramq.qzs.addAll((Collection)localObject);
+          paramq = this.tYR;
+          localObject = paramString.tVI;
+          paramq.tYs.addAll((Collection)localObject);
           paramq.notifyDataSetChanged();
-          this.jTK = ((com.tencent.mm.plugin.collect.model.a)paramString.qwH.get(paramString.qwH.size() - 1)).qvC;
+          this.mKX = ((com.tencent.mm.plugin.collect.model.a)paramString.tVI.get(paramString.tVI.size() - 1)).tUB;
         }
         for (;;)
         {
-          this.qzD = false;
+          this.tYD = false;
           AppMethodBeat.o(64084);
           return true;
-          this.iGD = true;
-          if (Util.isNullOrNil(this.jTK))
+          this.lwF = true;
+          if (Util.isNullOrNil(this.mKX))
           {
             Log.i("MicroMsg.CollectBillUI", "no record, show empty view");
-            bIo();
+            bTY();
           }
         }
       }
       Log.i("MicroMsg.CollectBillUI", "net error!");
-      this.qzD = false;
-      Toast.makeText(this, 2131757659, 1).show();
-      if (Util.isNullOrNil(this.jTK)) {
+      this.tYD = false;
+      Toast.makeText(this, a.i.collect_bill_item_load_fail_text, 1).show();
+      if (Util.isNullOrNil(this.mKX)) {
         Log.i("MicroMsg.CollectBillUI", "first query failed, finish activity!");
       }
       AppMethodBeat.o(64084);
       return true;
     }
-    if ((paramq instanceof com.tencent.mm.plugin.collect.model.q))
+    if ((paramq instanceof r))
     {
-      paramq = (com.tencent.mm.plugin.collect.model.q)paramq;
+      paramq = (r)paramq;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = this.qzR;
-        localObject = paramq.qvC;
-        Iterator localIterator = paramString.qzs.iterator();
+        paramString = this.tYR;
+        localObject = paramq.tUB;
+        Iterator localIterator = paramString.tYs.iterator();
         while (localIterator.hasNext())
         {
           com.tencent.mm.plugin.collect.model.a locala = (com.tencent.mm.plugin.collect.model.a)localIterator.next();
-          if (locala.qvC.equals(localObject))
+          if (locala.tUB.equals(localObject))
           {
-            paramString.qzs.remove(locala);
+            paramString.tYs.remove(locala);
             paramString.notifyDataSetChanged();
           }
         }
-        if (this.qzR.getCount() <= 0)
+        if (this.tYR.getCount() <= 0)
         {
           Log.i("MicroMsg.CollectBillUI", "delete all records");
-          bIo();
+          bTY();
         }
         for (;;)
         {
           AppMethodBeat.o(64084);
           return false;
-          h(paramq.qwe, paramq.dKt, this.qwd);
+          i(paramq.tVd, paramq.fDi, this.tVc);
         }
       }
-      Log.i("MicroMsg.CollectBillUI", "net error, errType: %s, errCode: %s, errMsg: %s, billId: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramq.qvC });
-      Toast.makeText(this, 2131757658, 1).show();
+      Log.i("MicroMsg.CollectBillUI", "net error, errType: %s, errCode: %s, errMsg: %s, billId: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramq.tUB });
+      Toast.makeText(this, a.i.collect_bill_item_del_fail_text, 1).show();
       AppMethodBeat.o(64084);
       return false;
     }
@@ -424,7 +501,7 @@ public class CollectBillUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.ui.CollectBillUI
  * JD-Core Version:    0.7.0.1
  */

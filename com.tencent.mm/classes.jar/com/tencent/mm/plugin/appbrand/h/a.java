@@ -74,21 +74,21 @@ public final class a
   
   public static void h(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(215761);
+    AppMethodBeat.i(225953);
     c(paramJSONObject, "abtestXWebCameraEnable", Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(215761);
+    AppMethodBeat.o(225953);
   }
   
   public static void i(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(215762);
+    AppMethodBeat.i(225955);
     c(paramJSONObject, "useXWebVoipRoom", Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(215762);
+    AppMethodBeat.o(225955);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.h.a
  * JD-Core Version:    0.7.0.1
  */

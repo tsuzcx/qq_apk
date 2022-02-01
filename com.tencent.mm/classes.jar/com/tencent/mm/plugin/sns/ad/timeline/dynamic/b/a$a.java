@@ -4,24 +4,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a$a
 {
-  public int cnR;
-  public String dWJ;
+  public String JHP;
+  public int cjr;
+  public String fQv;
   public int height;
   public String url;
-  public String wQO;
   public int width;
   
   public final String toString()
   {
-    AppMethodBeat.i(202153);
-    String str = "MediaInfo{mid='" + this.wQO + '\'' + ", url='" + this.url + '\'' + ", thumb='" + this.dWJ + '\'' + ", width=" + this.width + ", height=" + this.height + ", totalSize=" + this.cnR + '}';
-    AppMethodBeat.o(202153);
+    AppMethodBeat.i(267723);
+    String str = "MediaInfo{mid='" + this.JHP + '\'' + ", url='" + this.url + '\'' + ", thumb='" + this.fQv + '\'' + ", width=" + this.width + ", height=" + this.height + ", totalSize=" + this.cjr + '}';
+    AppMethodBeat.o(267723);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.dynamic.b.a.a
  * JD-Core Version:    0.7.0.1
  */

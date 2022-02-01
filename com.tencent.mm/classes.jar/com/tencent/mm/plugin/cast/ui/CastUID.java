@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.cast.ui;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 import java.util.HashMap;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/cast/ui/CastUID;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "getLayoutId", "", "plugin-cast_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/cast/ui/CastUID;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "getLayoutId", "", "plugin-cast_release"})
 public final class CastUID
   extends MMActivity
 {
@@ -16,16 +16,16 @@ public final class CastUID
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(197263);
+    AppMethodBeat.i(190585);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(197263);
+    AppMethodBeat.o(190585);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(197262);
+    AppMethodBeat.i(190584);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -36,7 +36,7 @@ public final class CastUID
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(197262);
+    AppMethodBeat.o(190584);
     return localView1;
   }
   

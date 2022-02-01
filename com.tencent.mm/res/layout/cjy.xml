@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.finder.webview.ad.WebViewFrameLayout android:orientation="vertical" android:background="@color/ag1" android:layout_width="fill_parent" android:layout_height="@dimen/a4z" app:cornerRadius="@dimen/ce"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.webview.BoxWebViewContainer android:id="@id/jkn" android:background="@color/f" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/a4z" />
+    <FrameLayout android:layout_gravity="center|top" android:id="@id/b4g" android:background="@drawable/d0b" android:layout_width="@dimen/cl" android:layout_height="@dimen/cb" android:layout_marginTop="@dimen/cc" android:contentDescription="@string/js_">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cb" android:layout_height="wrap_content" android:src="@raw/icons_filled_arrow" android:rotation="90.0" app:iconColor="@color/FG_2" />
+    </FrameLayout>
+    <ProgressBar android:layout_gravity="center" android:id="@id/kp6" android:background="@color/ac_" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:indeterminateDrawable="@drawable/d01" />
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/kp7" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kp8" android:clickable="false" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_refresh" app:iconColor="@color/FG_2" />
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/kp9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:text="@string/dii" style="@style/zy" />
+    </LinearLayout>
+    <com.tencent.mm.plugin.scanner.MultiCodeMaskView android:id="@id/krr" android:background="#b3000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.tencent.mm.plugin.finder.webview.ad.WebViewFrameLayout>

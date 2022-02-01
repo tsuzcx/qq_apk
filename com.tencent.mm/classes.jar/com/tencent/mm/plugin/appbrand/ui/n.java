@@ -1,116 +1,218 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.MutableContextWrapper;
-import android.content.ServiceConnection;
-import android.view.ContextThemeWrapper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.app.f;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 
 public final class n
-  extends MutableContextWrapper
 {
-  private boolean nWr;
-  private ContextThemeWrapper nWs;
+  private static Boolean qYq;
+  private static Boolean qYr;
+  private static Boolean qYs;
   
-  private n(Context paramContext, int paramInt)
+  public static boolean cjZ()
   {
-    super(paramContext);
-    AppMethodBeat.i(177763);
-    this.nWr = false;
-    this.nWs = new n.a(paramContext.getApplicationContext(), paramInt);
-    if (!(paramContext instanceof ContextThemeWrapper)) {
-      super.setBaseContext(this.nWs);
+    AppMethodBeat.i(271826);
+    boolean bool;
+    if (qYq != null)
+    {
+      bool = qYq.booleanValue();
+      AppMethodBeat.o(271826);
+      return bool;
+    }
+    MultiProcessMMKV localMultiProcessMMKV = f.nCi.aal();
+    if (localMultiProcessMMKV == null)
+    {
+      Log.w("MicroMsg.AppBrandTaskTestSwitcher", "useManagerV2: mmkv is null");
+      AppMethodBeat.o(271826);
+      return false;
+    }
+    int i = localMultiProcessMMKV.getInt("enable_v2_task_manager", 2);
+    if (i == 1) {
+      bool = true;
     }
     for (;;)
     {
-      this.nWr = (paramContext instanceof AppBrandUI);
-      AppMethodBeat.o(177763);
-      return;
-      paramContext.setTheme(paramInt);
+      qYq = Boolean.valueOf(bool);
+      Log.i("MicroMsg.AppBrandTaskTestSwitcher", "useManagerV2: [%b]", new Object[] { qYq });
+      bool = qYq.booleanValue();
+      AppMethodBeat.o(271826);
+      return bool;
+      if (i != 0)
+      {
+        i = ((b)h.ae(b.class)).a(b.a.vEC, 0);
+        if (BuildInfo.IS_FLAVOR_RED) {
+          i = 1;
+        }
+        if (i > 0)
+        {
+          bool = true;
+          continue;
+        }
+      }
+      bool = false;
     }
   }
   
-  public static n eo(Context paramContext)
+  public static boolean cka()
   {
-    AppMethodBeat.i(48774);
-    paramContext = new n(paramContext, x.bXG());
-    AppMethodBeat.o(48774);
-    return paramContext;
-  }
-  
-  public final Object getSystemService(String paramString)
-  {
-    AppMethodBeat.i(48777);
-    if ("layout_inflater".equals(paramString))
+    AppMethodBeat.i(271827);
+    if (qYr != null)
     {
-      paramString = this.nWs.getSystemService(paramString);
-      AppMethodBeat.o(48777);
-      return paramString;
+      bool = qYr.booleanValue();
+      AppMethodBeat.o(271827);
+      return bool;
     }
-    paramString = super.getSystemService(paramString);
-    AppMethodBeat.o(48777);
-    return paramString;
-  }
-  
-  public final void setBaseContext(Context paramContext)
-  {
-    AppMethodBeat.i(48776);
-    if (paramContext == getBaseContext())
+    Object localObject = f.nCi.aal();
+    if (localObject == null)
     {
-      AppMethodBeat.o(48776);
-      return;
+      Log.w("MicroMsg.AppBrandTaskTestSwitcher", "useSingleTaskDispatchStrategy: mmkv is null");
+      AppMethodBeat.o(271827);
+      return false;
     }
-    if (this.nWr) {
-      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrandRuntimePersistentContextWrapper", "setBaseContext hash:%d, new:%s, old:%s, stack:%s", new Object[] { Integer.valueOf(hashCode()), paramContext, super.getBaseContext(), android.util.Log.getStackTraceString(new Throwable()) });
-    }
-    if ((paramContext instanceof Activity))
+    int i = ((MultiProcessMMKV)localObject).getInt("enable_single_task_dispatch", 2);
+    if (i == 1) {}
+    for (qYr = Boolean.TRUE;; qYr = Boolean.FALSE)
     {
-      super.setBaseContext(paramContext);
-      this.nWr = true;
-      AppMethodBeat.o(48776);
-      return;
+      Log.i("MicroMsg.AppBrandTaskTestSwitcher", "useSingleTaskDispatchStrategy: [%b]", new Object[] { qYr });
+      bool = qYr.booleanValue();
+      AppMethodBeat.o(271827);
+      return bool;
+      if (i != 0) {
+        break;
+      }
     }
-    super.setBaseContext(this.nWs);
-    AppMethodBeat.o(48776);
-  }
-  
-  public final void unbindService(ServiceConnection paramServiceConnection)
-  {
-    AppMethodBeat.i(48778);
-    try
-    {
-      super.unbindService(paramServiceConnection);
-      AppMethodBeat.o(48778);
-      return;
+    i = ((b)h.ae(b.class)).a(b.a.vED, 0);
+    if (BuildInfo.IS_FLAVOR_RED) {
+      i = 1;
     }
-    catch (IllegalArgumentException paramServiceConnection)
+    if (i == 1) {}
+    for (boolean bool = true;; bool = false)
     {
-      com.tencent.mm.sdk.platformtools.Log.printErrStackTrace("MicroMsg.AppBrandRuntimePersistentContextWrapper", paramServiceConnection, "[CAPTURED CRASH]", new Object[0]);
-      AppMethodBeat.o(48778);
+      localObject = Boolean.valueOf(bool);
+      qYr = (Boolean)localObject;
+      if ((((Boolean)localObject).booleanValue()) && (!q.is64BitRuntime()))
+      {
+        Log.i("MicroMsg.AppBrandTaskTestSwitcher", "useSingleTaskDispatchStrategy: test is64BitRuntime fail");
+        qYr = Boolean.FALSE;
+      }
+      if ((!qYr.booleanValue()) || (cjZ())) {
+        break;
+      }
+      qYr = Boolean.FALSE;
+      break;
     }
   }
   
-  public final void unregisterReceiver(BroadcastReceiver paramBroadcastReceiver)
+  public static boolean ckb()
   {
-    AppMethodBeat.i(227665);
-    try
+    AppMethodBeat.i(271828);
+    if (qYs != null)
     {
-      super.unregisterReceiver(paramBroadcastReceiver);
-      AppMethodBeat.o(227665);
+      bool = qYs.booleanValue();
+      AppMethodBeat.o(271828);
+      return bool;
+    }
+    Object localObject = f.nCi.aal();
+    if (localObject == null)
+    {
+      Log.w("MicroMsg.AppBrandTaskTestSwitcher", "useThreeTasksDispatchStrategy: mmkv is null");
+      AppMethodBeat.o(271828);
+      return false;
+    }
+    int i = ((MultiProcessMMKV)localObject).getInt("enable_three_proc_tasks_dispatch", 2);
+    if (i == 1) {}
+    for (qYs = Boolean.TRUE;; qYs = Boolean.FALSE)
+    {
+      Log.i("MicroMsg.AppBrandTaskTestSwitcher", "useThreeTasksDispatchStrategy: [%b]", new Object[] { qYs });
+      bool = qYs.booleanValue();
+      AppMethodBeat.o(271828);
+      return bool;
+      if (i != 0) {
+        break;
+      }
+    }
+    if (((b)h.ae(b.class)).a(b.a.vED, 0) == 2) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localObject = Boolean.valueOf(bool);
+      qYs = (Boolean)localObject;
+      if ((((Boolean)localObject).booleanValue()) && (!q.is64BitRuntime()))
+      {
+        Log.i("MicroMsg.AppBrandTaskTestSwitcher", "useThreeTasksDispatchStrategy: test is64BitRuntime fail");
+        qYs = Boolean.FALSE;
+      }
+      if ((!qYs.booleanValue()) || (cjZ())) {
+        break;
+      }
+      qYs = Boolean.FALSE;
+      break;
+    }
+  }
+  
+  public static void jJ(boolean paramBoolean)
+  {
+    AppMethodBeat.i(271829);
+    MultiProcessMMKV localMultiProcessMMKV = f.nCi.aal();
+    if (localMultiProcessMMKV != null) {
+      if (!paramBoolean) {
+        break label36;
+      }
+    }
+    label36:
+    for (int i = 1;; i = 0)
+    {
+      localMultiProcessMMKV.putInt("enable_v2_task_manager", i);
+      AppMethodBeat.o(271829);
       return;
     }
-    catch (IllegalArgumentException paramBroadcastReceiver)
+  }
+  
+  public static void jK(boolean paramBoolean)
+  {
+    AppMethodBeat.i(271830);
+    MultiProcessMMKV localMultiProcessMMKV = f.nCi.aal();
+    if (localMultiProcessMMKV != null) {
+      if (!paramBoolean) {
+        break label36;
+      }
+    }
+    label36:
+    for (int i = 1;; i = 0)
     {
-      com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AppBrandRuntimePersistentContextWrapper", "unregisterReceiver IllegalArgumentException %s", new Object[] { paramBroadcastReceiver });
-      AppMethodBeat.o(227665);
+      localMultiProcessMMKV.putInt("enable_three_proc_tasks_dispatch", i);
+      AppMethodBeat.o(271830);
+      return;
+    }
+  }
+  
+  public static void jL(boolean paramBoolean)
+  {
+    AppMethodBeat.i(271831);
+    MultiProcessMMKV localMultiProcessMMKV = f.nCi.aal();
+    if (localMultiProcessMMKV != null) {
+      if (!paramBoolean) {
+        break label36;
+      }
+    }
+    label36:
+    for (int i = 1;; i = 0)
+    {
+      localMultiProcessMMKV.putInt("enable_single_task_dispatch", i);
+      AppMethodBeat.o(271831);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.n
  * JD-Core Version:    0.7.0.1
  */

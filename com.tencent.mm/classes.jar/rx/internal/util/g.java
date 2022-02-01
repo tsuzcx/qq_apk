@@ -8,13 +8,13 @@ public final class g
   extends AtomicLong
   implements ThreadFactory
 {
-  public static final ThreadFactory Unq;
+  public static final ThreadFactory abQM;
   final String prefix;
   
   static
   {
     AppMethodBeat.i(90207);
-    Unq = new ThreadFactory()
+    abQM = new ThreadFactory()
     {
       public final Thread newThread(Runnable paramAnonymousRunnable)
       {
@@ -43,7 +43,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     rx.internal.util.g
  * JD-Core Version:    0.7.0.1
  */

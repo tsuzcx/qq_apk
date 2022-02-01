@@ -6,26 +6,29 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.g;
 
 public class WalletWXCreditChangeAmountResultUI
   extends WalletBaseUI
 {
   public int getLayoutId()
   {
-    return 2131497023;
+    return a.g.wallet_wxcredit_change_amount_result_ui;
   }
   
   public void initView()
   {
     AppMethodBeat.i(72331);
-    ((TextView)findViewById(2131310307)).setText(f.D(getInput().getDouble("key_credit_amount")));
+    ((TextView)findViewById(a.f.wallet_wxcredit_amount)).setText(g.F(getInput().getDouble("key_credit_amount")));
     showHomeBtn(false);
     enableBackMenu(false);
-    addTextOptionMenu(0, getString(2131755858), new MenuItem.OnMenuItemClickListener()
+    addTextOptionMenu(0, getString(a.i.app_finish), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
@@ -59,7 +62,7 @@ public class WalletWXCreditChangeAmountResultUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditChangeAmountResultUI
  * JD-Core Version:    0.7.0.1
  */

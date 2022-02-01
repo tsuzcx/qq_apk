@@ -6,25 +6,25 @@ import kotlin.l.b.a.b.e.b.b.c;
 
 public final class d
 {
-  private static final b.a TCB;
-  public static final d TCC;
+  private static final b.a abfp;
+  public static final d abfq;
   
   static
   {
     AppMethodBeat.i(59232);
-    TCC = new d();
-    TCB = b.c.hIk();
+    abfq = new d();
+    abfp = b.c.iME();
     AppMethodBeat.o(59232);
   }
   
-  public static b.a hIW()
+  public static b.a iNq()
   {
-    return TCB;
+    return abfp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.e.c.a.d
  * JD-Core Version:    0.7.0.1
  */

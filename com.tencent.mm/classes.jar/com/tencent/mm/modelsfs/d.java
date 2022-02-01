@@ -5,13 +5,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   extends SFSOutputStream
 {
-  private a jiU;
+  private a lYR;
   
   public d(long paramLong, String paramString)
   {
     super(paramLong);
     AppMethodBeat.i(155992);
-    this.jiU = new a(paramString);
+    this.lYR = new a(paramString);
     AppMethodBeat.o(155992);
   }
   
@@ -19,8 +19,8 @@ public final class d
   {
     AppMethodBeat.i(155995);
     super.close();
-    if (this.jiU != null) {
-      this.jiU.free();
+    if (this.lYR != null) {
+      this.lYR.free();
     }
     AppMethodBeat.o(155995);
   }
@@ -42,14 +42,14 @@ public final class d
   public final void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(155994);
-    this.jiU.B(paramArrayOfByte, paramInt2);
+    this.lYR.B(paramArrayOfByte, paramInt2);
     super.write(paramArrayOfByte, paramInt1, paramInt2);
     AppMethodBeat.o(155994);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelsfs.d
  * JD-Core Version:    0.7.0.1
  */

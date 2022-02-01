@@ -15,17 +15,17 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class AppBrandNumberKeyboardView
   extends BaseNumberKeyboardView
 {
-  private int otS;
-  private final SparseArray<String> otT;
-  InputConnection otU;
-  com.tencent.mm.plugin.appbrand.widget.input.numberpad.a otV;
+  private int rwg;
+  private final SparseArray<String> rwh;
+  InputConnection rwi;
+  com.tencent.mm.plugin.appbrand.widget.input.numberpad.a rwj;
   
   public AppBrandNumberKeyboardView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(136495);
-    this.otS = 0;
-    this.otT = new SparseArray() {};
+    this.rwg = 0;
+    this.rwh = new SparseArray() {};
     init();
     AppMethodBeat.o(136495);
   }
@@ -34,8 +34,8 @@ public final class AppBrandNumberKeyboardView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(136496);
-    this.otS = 0;
-    this.otT = new SparseArray() {};
+    this.rwg = 0;
+    this.rwh = new SparseArray() {};
     init();
     AppMethodBeat.o(136496);
   }
@@ -49,8 +49,8 @@ public final class AppBrandNumberKeyboardView
       {
         AppMethodBeat.i(136492);
         Object localObject1 = new b();
-        ((b)localObject1).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/input/AppBrandNumberKeyboardView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject1).axR());
+        ((b)localObject1).bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/widget/input/AppBrandNumberKeyboardView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject1).aFi());
         if (AppBrandNumberKeyboardView.a(AppBrandNumberKeyboardView.this) == null)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/input/AppBrandNumberKeyboardView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -102,16 +102,16 @@ public final class AppBrandNumberKeyboardView
       }
     };
     int i = 0;
-    while (i < this.otT.size())
+    while (i < this.rwh.size())
     {
-      findViewById(getId((String)this.otT.valueAt(i))).setOnClickListener(local2);
+      findViewById(getId((String)this.rwh.valueAt(i))).setOnClickListener(local2);
       i += 1;
     }
     findViewById(getId("tenpay_keyboard_x")).setOnClickListener(local2);
     findViewById(getId("tenpay_keyboard_d")).setOnClickListener(null);
-    findViewById(getId("tenpay_keyboard_d")).setOnTouchListener(new an()
+    findViewById(getId("tenpay_keyboard_d")).setOnTouchListener(new as()
     {
-      protected final void bJj()
+      protected final void bUS()
       {
         AppMethodBeat.i(136493);
         Log.d("MicroMsg.AppBrand.AppBrandNumberKeyboardView", "backspace onSingleTap");
@@ -119,7 +119,7 @@ public final class AppBrandNumberKeyboardView
         AppMethodBeat.o(136493);
       }
       
-      protected final void cbF()
+      protected final void coP()
       {
         AppMethodBeat.i(136494);
         Log.d("MicroMsg.AppBrand.AppBrandNumberKeyboardView", "backspace onRepeat");
@@ -142,7 +142,7 @@ public final class AppBrandNumberKeyboardView
   {
     AppMethodBeat.i(136498);
     super.setXMode(paramInt);
-    this.otS = paramInt;
+    this.rwg = paramInt;
     AppMethodBeat.o(136498);
   }
 }

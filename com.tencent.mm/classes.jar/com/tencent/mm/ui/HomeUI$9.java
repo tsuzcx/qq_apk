@@ -13,13 +13,13 @@ final class HomeUI$9
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(232555);
+    AppMethodBeat.i(291700);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/ui/HomeUI$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    HomeUI.q(this.ODr);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/ui/HomeUI$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    HomeUI.q(this.VWJ);
     a.a(this, "com/tencent/mm/ui/HomeUI$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(232555);
+    AppMethodBeat.o(291700);
   }
 }
 

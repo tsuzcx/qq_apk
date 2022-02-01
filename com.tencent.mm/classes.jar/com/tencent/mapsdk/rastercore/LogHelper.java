@@ -10,103 +10,103 @@ public class LogHelper
   
   public static void d(String paramString)
   {
-    AppMethodBeat.i(217185);
+    AppMethodBeat.i(187159);
     log(null, paramString, 'd');
-    AppMethodBeat.o(217185);
+    AppMethodBeat.o(187159);
   }
   
   public static void d(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(217180);
+    AppMethodBeat.i(187140);
     log(paramString1, paramString2, 'd');
-    AppMethodBeat.o(217180);
+    AppMethodBeat.o(187140);
   }
   
   public static void e(String paramString)
   {
-    AppMethodBeat.i(217182);
+    AppMethodBeat.i(187150);
     log(null, paramString, 'e');
-    AppMethodBeat.o(217182);
+    AppMethodBeat.o(187150);
   }
   
   public static void e(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(217177);
+    AppMethodBeat.i(187131);
     log(paramString1, paramString2, 'e');
-    AppMethodBeat.o(217177);
+    AppMethodBeat.o(187131);
   }
   
   public static void i(String paramString)
   {
-    AppMethodBeat.i(217184);
+    AppMethodBeat.i(187155);
     log(null, paramString, 'i');
-    AppMethodBeat.o(217184);
+    AppMethodBeat.o(187155);
   }
   
   public static void i(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(217179);
+    AppMethodBeat.i(187133);
     log(paramString1, paramString2, 'i');
-    AppMethodBeat.o(217179);
+    AppMethodBeat.o(187133);
   }
   
   public static void log(String paramString)
   {
-    AppMethodBeat.i(217187);
+    AppMethodBeat.i(187165);
     log(null, paramString, 'v');
-    AppMethodBeat.o(217187);
+    AppMethodBeat.o(187165);
   }
   
   private static void log(String paramString1, String paramString2, char paramChar)
   {
-    AppMethodBeat.i(217188);
+    AppMethodBeat.i(187169);
     if (!DEBUG.booleanValue())
     {
-      AppMethodBeat.o(217188);
+      AppMethodBeat.o(187169);
       return;
     }
     TextUtils.isEmpty(paramString1);
-    AppMethodBeat.o(217188);
+    AppMethodBeat.o(187169);
   }
   
   public static void setDebugMode(boolean paramBoolean)
   {
-    AppMethodBeat.i(217176);
+    AppMethodBeat.i(187126);
     DEBUG = Boolean.valueOf(paramBoolean);
-    AppMethodBeat.o(217176);
+    AppMethodBeat.o(187126);
   }
   
   public static void v(String paramString)
   {
-    AppMethodBeat.i(217186);
+    AppMethodBeat.i(187163);
     log(null, paramString, 'v');
-    AppMethodBeat.o(217186);
+    AppMethodBeat.o(187163);
   }
   
   public static void v(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(217181);
+    AppMethodBeat.i(187141);
     log(paramString1, paramString2, 'v');
-    AppMethodBeat.o(217181);
+    AppMethodBeat.o(187141);
   }
   
   public static void w(String paramString)
   {
-    AppMethodBeat.i(217183);
+    AppMethodBeat.i(187153);
     log(null, paramString, 'w');
-    AppMethodBeat.o(217183);
+    AppMethodBeat.o(187153);
   }
   
   public static void w(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(217178);
+    AppMethodBeat.i(187132);
     log(paramString1, paramString2, 'w');
-    AppMethodBeat.o(217178);
+    AppMethodBeat.o(187132);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mapsdk.rastercore.LogHelper
  * JD-Core Version:    0.7.0.1
  */

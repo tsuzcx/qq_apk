@@ -10,15 +10,15 @@ import java.util.Random;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/CommentSmallConfetti;", "Lcom/tencent/mm/particles/confetti/Confetti;", "bitmap", "Landroid/graphics/Bitmap;", "(Landroid/graphics/Bitmap;)V", "TAG", "", "getBitmap", "()Landroid/graphics/Bitmap;", "centerX", "", "centerY", "startX", "drawInternal", "", "canvas", "Landroid/graphics/Canvas;", "matrix", "Landroid/graphics/Matrix;", "paint", "Landroid/graphics/Paint;", "x", "", "y", "rotation", "percentAnimated", "getHeight", "getWidth", "reset", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/CommentSmallConfetti;", "Lcom/tencent/mm/particles/confetti/Confetti;", "bitmap", "Landroid/graphics/Bitmap;", "(Landroid/graphics/Bitmap;)V", "TAG", "", "getBitmap", "()Landroid/graphics/Bitmap;", "centerX", "", "centerY", "startX", "drawInternal", "", "canvas", "Landroid/graphics/Canvas;", "matrix", "Landroid/graphics/Matrix;", "paint", "Landroid/graphics/Paint;", "x", "", "y", "rotation", "percentAnimated", "getHeight", "getWidth", "reset", "plugin-story_release"})
 public final class d
   extends b
 {
+  private int LVb;
   private final String TAG;
   private final Bitmap bitmap;
   private final int centerX;
   private final int centerY;
-  private int startX;
   
   public d(Bitmap paramBitmap)
   {
@@ -30,7 +30,7 @@ public final class d
     if (new Random().nextBoolean()) {}
     for (int i = this.centerX;; i = -this.centerX)
     {
-      this.startX = i;
+      this.LVb = i;
       AppMethodBeat.o(120042);
       return;
     }
@@ -40,9 +40,9 @@ public final class d
   {
     paramFloat3 = 1.0F;
     AppMethodBeat.i(120041);
-    p.h(paramCanvas, "canvas");
-    p.h(paramMatrix, "matrix");
-    p.h(paramPaint, "paint");
+    p.k(paramCanvas, "canvas");
+    p.k(paramMatrix, "matrix");
+    p.k(paramPaint, "paint");
     if (paramFloat4 > 0.8D) {
       paramFloat3 = (1.0F - paramFloat4) / 0.2F;
     }
@@ -78,7 +78,7 @@ public final class d
     if (new Random().nextBoolean()) {}
     for (int i = this.centerX;; i = -this.centerX)
     {
-      this.startX = i;
+      this.LVb = i;
       AppMethodBeat.o(120038);
       return;
     }
@@ -86,7 +86,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.d
  * JD-Core Version:    0.7.0.1
  */

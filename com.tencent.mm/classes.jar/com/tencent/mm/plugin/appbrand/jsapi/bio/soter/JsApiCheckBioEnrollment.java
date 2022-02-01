@@ -3,12 +3,11 @@ package com.tencent.mm.plugin.appbrand.jsapi.bio.soter;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jt;
-import com.tencent.mm.g.a.jt.b;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
+import com.tencent.mm.f.a.kj;
+import com.tencent.mm.f.a.kj.b;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
@@ -16,19 +15,18 @@ import java.util.Map;
 import org.json.JSONObject;
 
 public final class JsApiCheckBioEnrollment
-  extends d
+  extends c
 {
   public static final int CTRL_INDEX = 344;
   public static final String NAME = "checkIsSoterEnrolledInDevice";
-  private GetIsEnrolledTask lKm = null;
+  private GetIsEnrolledTask oGC = null;
   
-  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
+  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(106580);
     Log.i("MicroMsg.JsApiCheckBioEnrollment", "hy: subapp start do check is enrolled");
-    this.lKm = new GetIsEnrolledTask(paramf, paramInt, a.ZB(paramJSONObject.optString("checkAuthMode")), this);
-    this.lKm.bDJ();
-    AppBrandMainProcessService.a(this.lKm);
+    this.oGC = new GetIsEnrolledTask(parame, paramInt, a.ahp(paramJSONObject.optString("checkAuthMode")), this);
+    this.oGC.bsM();
     AppMethodBeat.o(106580);
   }
   
@@ -36,11 +34,11 @@ public final class JsApiCheckBioEnrollment
     extends MainProcessTask
   {
     public static final Parcelable.Creator<GetIsEnrolledTask> CREATOR;
-    private int csv;
-    private f kSY;
-    private JsApiCheckBioEnrollment lKn;
-    private int lKo;
-    private int lKp;
+    private int cqA;
+    private e nNw;
+    private JsApiCheckBioEnrollment oGD;
+    private int oGE;
+    private int oGF;
     
     static
     {
@@ -52,63 +50,63 @@ public final class JsApiCheckBioEnrollment
     protected GetIsEnrolledTask(Parcel paramParcel)
     {
       AppMethodBeat.i(106577);
-      this.kSY = null;
-      this.csv = -1;
-      this.lKo = -1;
-      this.lKp = -1;
+      this.nNw = null;
+      this.cqA = -1;
+      this.oGE = -1;
+      this.oGF = -1;
       f(paramParcel);
       AppMethodBeat.o(106577);
     }
     
-    public GetIsEnrolledTask(f paramf, int paramInt1, int paramInt2, JsApiCheckBioEnrollment paramJsApiCheckBioEnrollment)
+    public GetIsEnrolledTask(e parame, int paramInt1, int paramInt2, JsApiCheckBioEnrollment paramJsApiCheckBioEnrollment)
     {
-      this.kSY = null;
-      this.csv = -1;
-      this.lKo = -1;
-      this.lKp = -1;
-      this.kSY = paramf;
-      this.csv = paramInt1;
-      this.lKn = paramJsApiCheckBioEnrollment;
-      this.lKo = paramInt2;
+      this.nNw = null;
+      this.cqA = -1;
+      this.oGE = -1;
+      this.oGF = -1;
+      this.nNw = parame;
+      this.cqA = paramInt1;
+      this.oGD = paramJsApiCheckBioEnrollment;
+      this.oGE = paramInt2;
     }
     
-    public final void bjj()
+    public final void RW()
     {
       AppMethodBeat.i(106575);
-      jt localjt = new jt();
-      localjt.dOE.dOG = this.lKo;
-      EventCenter.instance.publish(localjt);
-      this.lKp = localjt.dOF.dOH;
-      Log.i("MicroMsg.GetIsEnrolledTask", "hy: enrollResult: %d", new Object[] { Integer.valueOf(this.lKp) });
-      bDU();
+      kj localkj = new kj();
+      localkj.fHP.fHR = this.oGE;
+      EventCenter.instance.publish(localkj);
+      this.oGF = localkj.fHQ.fHS;
+      Log.i("MicroMsg.GetIsEnrolledTask", "hy: enrollResult: %d", new Object[] { Integer.valueOf(this.oGF) });
+      bPt();
       AppMethodBeat.o(106575);
     }
     
-    public final void bjk()
+    public final void bsK()
     {
       boolean bool = false;
       AppMethodBeat.i(106574);
-      super.bjk();
-      Log.d("MicroMsg.GetIsEnrolledTask", "hy: callback. enrollResult: %d", new Object[] { Integer.valueOf(this.lKp) });
+      super.bsK();
+      Log.d("MicroMsg.GetIsEnrolledTask", "hy: callback. enrollResult: %d", new Object[] { Integer.valueOf(this.oGF) });
       HashMap localHashMap = new HashMap(2);
-      if (this.lKp == 1) {
+      if (this.oGF == 1) {
         bool = true;
       }
       localHashMap.put("isEnrolled", Boolean.valueOf(bool));
-      if (this.lKp == 0) {
-        this.kSY.i(this.csv, this.lKn.n("ok", localHashMap));
+      if (this.oGF == 0) {
+        this.nNw.j(this.cqA, this.oGD.m("ok", localHashMap));
       }
       for (;;)
       {
-        bDK();
+        bPk();
         AppMethodBeat.o(106574);
         return;
-        if (this.lKp == -1) {
-          this.kSY.i(this.csv, this.lKn.n("fail not support", localHashMap));
-        } else if (this.lKp == 1) {
-          this.kSY.i(this.csv, this.lKn.n("ok", localHashMap));
+        if (this.oGF == -1) {
+          this.nNw.j(this.cqA, this.oGD.m("fail not support", localHashMap));
+        } else if (this.oGF == 1) {
+          this.nNw.j(this.cqA, this.oGD.m("ok", localHashMap));
         } else {
-          this.kSY.i(this.csv, this.lKn.n("fail unknown error", localHashMap));
+          this.nNw.j(this.cqA, this.oGD.m("fail unknown error", localHashMap));
         }
       }
     }
@@ -122,8 +120,8 @@ public final class JsApiCheckBioEnrollment
     {
       AppMethodBeat.i(106578);
       super.f(paramParcel);
-      this.lKp = paramParcel.readInt();
-      this.lKo = paramParcel.readInt();
+      this.oGF = paramParcel.readInt();
+      this.oGE = paramParcel.readInt();
       AppMethodBeat.o(106578);
     }
     
@@ -131,8 +129,8 @@ public final class JsApiCheckBioEnrollment
     {
       AppMethodBeat.i(106576);
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeInt(this.lKp);
-      paramParcel.writeInt(this.lKo);
+      paramParcel.writeInt(this.oGF);
+      paramParcel.writeInt(this.oGE);
       AppMethodBeat.o(106576);
     }
   }

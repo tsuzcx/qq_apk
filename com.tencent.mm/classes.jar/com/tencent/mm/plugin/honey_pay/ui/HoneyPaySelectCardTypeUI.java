@@ -13,21 +13,23 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.an.q;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.plugin.honey_pay.model.HoneyPayCardType;
 import com.tencent.mm.plugin.honey_pay.model.c;
-import com.tencent.mm.plugin.wallet_core.ui.q.a;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.pluginsdk.ui.span.o;
-import com.tencent.mm.protocal.protobuf.caj;
-import com.tencent.mm.protocal.protobuf.cak;
-import com.tencent.mm.protocal.protobuf.cal;
-import com.tencent.mm.protocal.protobuf.yp;
+import com.tencent.mm.protocal.protobuf.cik;
+import com.tencent.mm.protocal.protobuf.cil;
+import com.tencent.mm.protocal.protobuf.cim;
+import com.tencent.mm.protocal.protobuf.yv;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.wallet_core.c.r;
-import com.tencent.mm.wallet_core.c.r.a;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.g;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -36,52 +38,52 @@ import java.util.List;
 public class HoneyPaySelectCardTypeUI
   extends HoneyPayBaseUI
 {
-  private LinearLayout yma;
-  private List<cak> ymb;
-  private int ymc;
-  private cal ymd;
+  private LinearLayout DMc;
+  private List<cil> DMd;
+  private int DMe;
+  private cim DMf;
   
   private void refreshView()
   {
     AppMethodBeat.i(64850);
-    this.yma.removeAllViews();
-    if ((this.ymb == null) || (this.ymb.isEmpty()))
+    this.DMc.removeAllViews();
+    if ((this.DMd == null) || (this.DMd.isEmpty()))
     {
       AppMethodBeat.o(64850);
       return;
     }
-    Iterator localIterator = this.ymb.iterator();
+    Iterator localIterator = this.DMd.iterator();
     if (localIterator.hasNext())
     {
-      cak localcak = (cak)localIterator.next();
+      cil localcil = (cil)localIterator.next();
       a locala = new a((byte)0);
       Object localObject1;
       Object localObject2;
-      if (localcak.LWF == null)
+      if (localcil.TfM == null)
       {
         localObject1 = getContext();
-        localObject2 = this.yma;
-        localObject1 = LayoutInflater.from((Context)localObject1).inflate(2131495031, (ViewGroup)localObject2, false);
-        locala.a((View)localObject1, localcak);
+        localObject2 = this.DMc;
+        localObject1 = LayoutInflater.from((Context)localObject1).inflate(a.g.honey_pay_select_cardtype_item, (ViewGroup)localObject2, false);
+        locala.a((View)localObject1, localcil);
       }
       for (;;)
       {
-        this.yma.addView((View)localObject1);
+        this.DMc.addView((View)localObject1);
         break;
         localObject2 = getContext();
-        localObject1 = this.yma;
-        localObject1 = LayoutInflater.from((Context)localObject2).inflate(2131495032, (ViewGroup)localObject1, false);
-        locala.a((View)localObject1, localcak);
-        locala.ykj = ((CdnImageView)((View)localObject1).findViewById(2131302459));
-        locala.ymh = ((TextView)((View)localObject1).findViewById(2131302460));
-        locala.ykj.setUrl(localcak.LWF.icon);
+        localObject1 = this.DMc;
+        localObject1 = LayoutInflater.from((Context)localObject2).inflate(a.g.honey_pay_select_cardtype_item_with_operations, (ViewGroup)localObject1, false);
+        locala.a((View)localObject1, localcil);
+        locala.DKl = ((CdnImageView)((View)localObject1).findViewById(a.f.hpsc_operations_icon_iv));
+        locala.DMj = ((TextView)((View)localObject1).findViewById(a.f.hpsc_operations_tv));
+        locala.DKl.setUrl(localcil.TfM.icon);
         SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-        localSpannableStringBuilder.append(localcak.LWF.MfC);
-        localSpannableStringBuilder.append(localcak.LWF.MfD);
-        localSpannableStringBuilder.setSpan(new com.tencent.mm.plugin.wallet_core.ui.q(new HoneyPaySelectCardTypeUI.a.1(locala, localcak, (Context)localObject2)), localcak.LWF.MfC.length(), localSpannableStringBuilder.length(), 34);
-        locala.ymh.setOnTouchListener(new o((Context)localObject2));
-        locala.ymh.setClickable(true);
-        locala.ymh.setText(localSpannableStringBuilder);
+        localSpannableStringBuilder.append(localcil.TfM.Tpo);
+        localSpannableStringBuilder.append(localcil.TfM.Tpp);
+        localSpannableStringBuilder.setSpan(new com.tencent.mm.plugin.wallet_core.ui.r(new HoneyPaySelectCardTypeUI.a.1(locala, localcil, (Context)localObject2)), localcil.TfM.Tpo.length(), localSpannableStringBuilder.length(), 34);
+        locala.DMj.setOnTouchListener(new o((Context)localObject2));
+        locala.DMj.setClickable(true);
+        locala.DMj.setText(localSpannableStringBuilder);
       }
     }
     AppMethodBeat.o(64850);
@@ -89,13 +91,13 @@ public class HoneyPaySelectCardTypeUI
   
   public int getLayoutId()
   {
-    return 2131495033;
+    return a.g.honey_pay_select_cardtype_ui;
   }
   
   public void initView()
   {
     AppMethodBeat.i(64846);
-    this.yma = ((LinearLayout)$(2131302461));
+    this.DMc = ((LinearLayout)$(a.f.hpsc_top_layout));
     AppMethodBeat.o(64846);
   }
   
@@ -115,9 +117,9 @@ public class HoneyPaySelectCardTypeUI
       Object localObject = paramIntent.getStringExtra("Select_Conv_User");
       Log.i("MicroMsg.HoneyPaySelectCardTypeUI", "select friend: %s", new Object[] { localObject });
       Log.i("MicroMsg.HoneyPaySelectCardTypeUI", "do check user: %s", new Object[] { localObject });
-      localObject = new com.tencent.mm.plugin.honey_pay.a.b((String)localObject, this.ymc);
-      ((com.tencent.mm.plugin.honey_pay.a.b)localObject).t(this);
-      doSceneProgress((com.tencent.mm.ak.q)localObject, true);
+      localObject = new com.tencent.mm.plugin.honey_pay.a.b((String)localObject, this.DMe);
+      ((com.tencent.mm.plugin.honey_pay.a.b)localObject).u(this);
+      doSceneProgress((q)localObject, true);
     }
     for (;;)
     {
@@ -132,24 +134,24 @@ public class HoneyPaySelectCardTypeUI
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(64845);
-    this.wwG = 2131100596;
+    this.BkW = a.c.honey_pay_grey_bg_1;
     super.onCreate(paramBundle);
     addSceneEndListener(2618);
     addSceneEndListener(2926);
-    setMMTitle(2131761692);
+    setMMTitle(a.i.honey_pay_select_card_type_title);
     paramBundle = getIntent().getParcelableArrayListExtra("key_card_type_list");
     if ((paramBundle != null) && (!paramBundle.isEmpty()))
     {
-      this.ymb = new ArrayList();
+      this.DMd = new ArrayList();
       try
       {
         paramBundle = paramBundle.iterator();
         while (paramBundle.hasNext())
         {
           HoneyPayCardType localHoneyPayCardType = (HoneyPayCardType)paramBundle.next();
-          cak localcak = new cak();
-          localcak.parseFrom(localHoneyPayCardType.zy);
-          this.ymb.add(localcak);
+          cil localcil = new cil();
+          localcil.parseFrom(localHoneyPayCardType.UH);
+          this.DMd.add(localcil);
         }
         initView();
       }
@@ -171,26 +173,26 @@ public class HoneyPaySelectCardTypeUI
     AppMethodBeat.o(64847);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.ak.q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, final String paramString, q paramq)
   {
     AppMethodBeat.i(64848);
     if ((paramq instanceof com.tencent.mm.plugin.honey_pay.a.b))
     {
       paramString = (com.tencent.mm.plugin.honey_pay.a.b)paramq;
-      paramString.a(new r.a()
+      paramString.a(new com.tencent.mm.wallet_core.c.r.a()
       {
-        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.q paramAnonymousq)
+        public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
           AppMethodBeat.i(64841);
-          HoneyPaySelectCardTypeUI.a(HoneyPaySelectCardTypeUI.this, paramString.yjy.LjF, paramString.yjy.LjE, paramString.yjy.LjG, paramString.yjy.LjH, paramString.username, paramString.yjy.yPK, paramString.yjy.qGB);
+          HoneyPaySelectCardTypeUI.a(HoneyPaySelectCardTypeUI.this, paramString.DJA.SkW, paramString.DJA.SkV, paramString.DJA.SkX, paramString.DJA.SkY, paramString.username, paramString.DJA.EtJ, paramString.DJA.ufC);
           AppMethodBeat.o(64841);
         }
-      }).b(new r.a()
+      }).b(new com.tencent.mm.wallet_core.c.r.a()
       {
-        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.q paramAnonymousq) {}
-      }).c(new r.a()
+        public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq) {}
+      }).c(new com.tencent.mm.wallet_core.c.r.a()
       {
-        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.q paramAnonymousq) {}
+        public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq) {}
       });
     }
     AppMethodBeat.o(64848);
@@ -205,32 +207,32 @@ public class HoneyPaySelectCardTypeUI
   
   final class a
   {
-    public CdnImageView ykj;
-    public TextView ykt;
-    public CdnImageView ymf;
-    public TextView ymg;
-    public TextView ymh;
-    public ImageView ymi;
+    public CdnImageView DKl;
+    public TextView DKv;
+    public CdnImageView DMh;
+    public TextView DMi;
+    public TextView DMj;
+    public ImageView DMk;
     
     private a() {}
     
-    final void a(View paramView, final cak paramcak)
+    final void a(View paramView, final cil paramcil)
     {
       AppMethodBeat.i(64844);
-      this.ymf = ((CdnImageView)paramView.findViewById(2131302456));
-      this.ykt = ((TextView)paramView.findViewById(2131302458));
-      this.ymg = ((TextView)paramView.findViewById(2131302457));
-      this.ymi = ((ImageView)paramView.findViewById(2131302455));
-      this.ymf.setImageResource(c.aB(paramcak.nHh, paramcak.MfE));
-      this.ykt.setText(paramcak.pTn);
-      this.ymg.setText(paramcak.pWf);
-      if (paramcak.MfE)
+      this.DMh = ((CdnImageView)paramView.findViewById(a.f.hpsc_avatar_iv));
+      this.DKv = ((TextView)paramView.findViewById(a.f.hpsc_card_type_tv));
+      this.DMi = ((TextView)paramView.findViewById(a.f.hpsc_card_type_desc_tv));
+      this.DMk = ((ImageView)paramView.findViewById(a.f.hpsc_arrow_iv));
+      this.DMh.setImageResource(c.aH(paramcil.qJt, paramcil.Tpq));
+      this.DKv.setText(paramcil.tpo);
+      this.DMi.setText(paramcil.tsf);
+      if (paramcil.Tpq)
       {
         Log.i("MicroMsg.HoneyPaySelectCardTypeUI", "disable this card");
         paramView.setEnabled(false);
-        this.ykt.setEnabled(false);
-        this.ymg.setEnabled(false);
-        this.ymi.setVisibility(8);
+        this.DKv.setEnabled(false);
+        this.DMi.setEnabled(false);
+        this.DMk.setVisibility(8);
         AppMethodBeat.o(64844);
         return;
       }
@@ -240,8 +242,8 @@ public class HoneyPaySelectCardTypeUI
         {
           AppMethodBeat.i(64843);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/honey_pay/ui/HoneyPaySelectCardTypeUI$CardTypeViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/honey_pay/ui/HoneyPaySelectCardTypeUI$CardTypeViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           Log.i("MicroMsg.HoneyPaySelectCardTypeUI", "card type clicked");
           if (HoneyPaySelectCardTypeUI.a(HoneyPaySelectCardTypeUI.this) != null) {
             HoneyPaySelectCardTypeUI.a(HoneyPaySelectCardTypeUI.this, HoneyPaySelectCardTypeUI.a(HoneyPaySelectCardTypeUI.this));
@@ -251,7 +253,7 @@ public class HoneyPaySelectCardTypeUI
             a.a(this, "com/tencent/mm/plugin/honey_pay/ui/HoneyPaySelectCardTypeUI$CardTypeViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(64843);
             return;
-            HoneyPaySelectCardTypeUI.a(HoneyPaySelectCardTypeUI.this, paramcak.nHh);
+            HoneyPaySelectCardTypeUI.a(HoneyPaySelectCardTypeUI.this, paramcil.qJt);
             HoneyPaySelectCardTypeUI.b(HoneyPaySelectCardTypeUI.this);
           }
         }

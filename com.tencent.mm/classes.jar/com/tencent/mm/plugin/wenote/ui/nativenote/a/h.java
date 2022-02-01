@@ -3,32 +3,33 @@ package com.tencent.mm.plugin.wenote.ui.nativenote.a;
 import android.util.SparseArray;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.i;
 
 public final class h
 {
-  public static final int JKT = 2131495863;
-  public static final int JKU = 2131495862;
-  public static final int qOn = 2131495866;
-  public static final int qOo = 2131495865;
-  public SparseArray<Integer> JKV;
+  public static final int QKm = R.i.ejD;
+  public static final int QKn = R.i.ejC;
+  public static final int uqr = R.i.ejG;
+  public static final int uqs = R.i.ejF;
+  public SparseArray<Integer> QKo;
   
   public h()
   {
     AppMethodBeat.i(30862);
-    this.JKV = new SparseArray();
-    this.JKV.put(1, Integer.valueOf(qOn));
-    this.JKV.put(2, Integer.valueOf(qOo));
-    this.JKV.put(4, Integer.valueOf(qOo));
-    this.JKV.put(3, Integer.valueOf(qOo));
-    this.JKV.put(5, Integer.valueOf(qOo));
-    this.JKV.put(6, Integer.valueOf(qOo));
-    this.JKV.put(0, Integer.valueOf(qOo));
-    this.JKV.put(-1, Integer.valueOf(qOo));
-    this.JKV.put(-3, Integer.valueOf(JKT));
-    this.JKV.put(-2, Integer.valueOf(qOo));
-    this.JKV.put(-4, Integer.valueOf(qOo));
-    this.JKV.put(20, Integer.valueOf(qOo));
-    this.JKV.put(30, Integer.valueOf(JKU));
+    this.QKo = new SparseArray();
+    this.QKo.put(1, Integer.valueOf(uqr));
+    this.QKo.put(2, Integer.valueOf(uqs));
+    this.QKo.put(4, Integer.valueOf(uqs));
+    this.QKo.put(3, Integer.valueOf(uqs));
+    this.QKo.put(5, Integer.valueOf(uqs));
+    this.QKo.put(6, Integer.valueOf(uqs));
+    this.QKo.put(0, Integer.valueOf(uqs));
+    this.QKo.put(-1, Integer.valueOf(uqs));
+    this.QKo.put(-3, Integer.valueOf(QKm));
+    this.QKo.put(-2, Integer.valueOf(uqs));
+    this.QKo.put(-4, Integer.valueOf(uqs));
+    this.QKo.put(20, Integer.valueOf(uqs));
+    this.QKo.put(30, Integer.valueOf(QKn));
     AppMethodBeat.o(30862);
   }
   
@@ -96,7 +97,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.h
  * JD-Core Version:    0.7.0.1
  */

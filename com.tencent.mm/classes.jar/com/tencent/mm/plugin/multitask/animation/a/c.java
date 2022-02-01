@@ -18,223 +18,220 @@ import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.at;
+import com.tencent.mm.ui.aw;
 import java.util.Arrays;
-import kotlin.g.b.ae;
+import kotlin.g.b.af;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/animation/enter/TransformEnterToMultiTaskView;", "Lcom/tencent/mm/plugin/multitask/animation/enter/TransformEnterBaseView;", "context", "Landroid/content/Context;", "contentBitmap", "Landroid/graphics/Bitmap;", "(Landroid/content/Context;Landroid/graphics/Bitmap;)V", "<set-?>", "getContentBitmap", "()Landroid/graphics/Bitmap;", "Landroid/graphics/drawable/GradientDrawable;", "gradientDrawable", "getGradientDrawable", "()Landroid/graphics/drawable/GradientDrawable;", "mClipPath", "Landroid/graphics/Path;", "mDrawRect", "Landroid/graphics/Rect;", "mDstRect", "mHeight", "", "mMaskAlpha", "mMaskPaint", "Landroid/graphics/Paint;", "mMaskRect", "Landroid/graphics/RectF;", "mPaint", "mRectConnerRadius", "", "mWidth", "init", "", "bitmap", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "setDstRect", "dstRect", "setMaskAlpha", "maskAlpha", "setMaskRect", "left", "", "top", "right", "buttom", "setRectConnerRadius", "radll", "radlt", "radtl", "radtt", "radrl", "radrt", "radbl", "radbt", "setViewSize", "width", "height", "Companion", "plugin-multitask_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/animation/enter/TransformEnterToMultiTaskView;", "Lcom/tencent/mm/plugin/multitask/animation/enter/TransformEnterBaseView;", "context", "Landroid/content/Context;", "contentBitmap", "Landroid/graphics/Bitmap;", "(Landroid/content/Context;Landroid/graphics/Bitmap;)V", "<set-?>", "getContentBitmap", "()Landroid/graphics/Bitmap;", "Landroid/graphics/drawable/GradientDrawable;", "gradientDrawable", "getGradientDrawable", "()Landroid/graphics/drawable/GradientDrawable;", "mClipPath", "Landroid/graphics/Path;", "mDrawRect", "Landroid/graphics/Rect;", "mDstRect", "mHeight", "", "mMaskAlpha", "mMaskPaint", "Landroid/graphics/Paint;", "mMaskRect", "Landroid/graphics/RectF;", "mPaint", "mRectConnerRadius", "", "mWidth", "init", "", "bitmap", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "setDstRect", "dstRect", "setMaskAlpha", "maskAlpha", "setMaskRect", "left", "", "top", "right", "buttom", "setRectConnerRadius", "radll", "radlt", "radtl", "radtt", "radrl", "radrt", "radbl", "radbt", "setViewSize", "width", "height", "Companion", "plugin-multitask_release"})
 public final class c
   extends a
 {
-  private static final int zZS;
-  public static final a zZU;
-  private Rect Ky;
+  private static final int FFI;
+  public static final c.a FFK;
+  private Bitmap FFC;
+  private GradientDrawable FFE;
+  private final float[] FFH;
+  private Rect KV;
   private int mHeight;
   private Paint mPaint;
   private int mWidth;
-  private int oZh;
-  private Paint oZj;
-  private Path pcR;
-  private Rect pcS;
-  private RectF pcT;
-  private Bitmap zZM;
-  private GradientDrawable zZO;
-  private final float[] zZR;
+  private int sbi;
+  private Paint sbk;
+  private Path seT;
+  private Rect seU;
+  private RectF seV;
   
   static
   {
-    AppMethodBeat.i(200390);
-    zZU = new a((byte)0);
-    zZS = at.fromDPToPix(MMApplicationContext.getContext(), 8);
-    AppMethodBeat.o(200390);
+    AppMethodBeat.i(248314);
+    FFK = new c.a((byte)0);
+    FFI = aw.fromDPToPix(MMApplicationContext.getContext(), 8);
+    AppMethodBeat.o(248314);
   }
   
   public c(Context paramContext, Bitmap paramBitmap)
   {
     super(paramContext);
-    AppMethodBeat.i(200389);
-    this.zZR = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, zZS, zZS, zZS, zZS };
+    AppMethodBeat.i(248313);
+    this.FFH = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, FFI, FFI, FFI, FFI };
     this.mPaint = new Paint();
-    this.pcR = new Path();
-    this.oZj = new Paint();
+    this.seT = new Path();
+    this.sbk = new Paint();
     paramContext = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
-    Paint localPaint = this.oZj;
+    Paint localPaint = this.sbk;
     if (localPaint == null) {
-      p.btv("mMaskPaint");
+      p.bGy("mMaskPaint");
     }
     localPaint.setXfermode((Xfermode)paramContext);
-    this.zZM = paramBitmap;
+    this.FFC = paramBitmap;
     this.mWidth = ((int)(paramBitmap.getWidth() * 1.25F));
     this.mHeight = ((int)(paramBitmap.getHeight() * 1.25F));
-    this.pcS = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-    this.Ky = new Rect(0, 0, this.mWidth, this.mHeight);
-    this.pcT = new RectF();
-    paramContext = this.pcT;
+    this.seU = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+    this.KV = new Rect(0, 0, this.mWidth, this.mHeight);
+    this.seV = new RectF();
+    paramContext = this.seV;
     if (paramContext == null) {
-      p.btv("mMaskRect");
+      p.bGy("mMaskRect");
     }
     paramContext.left = 0.0F;
-    paramContext = this.pcT;
+    paramContext = this.seV;
     if (paramContext == null) {
-      p.btv("mMaskRect");
+      p.bGy("mMaskRect");
     }
     paramContext.top = 0.0F;
-    paramContext = this.pcT;
+    paramContext = this.seV;
     if (paramContext == null) {
-      p.btv("mMaskRect");
+      p.bGy("mMaskRect");
     }
     paramContext.right = this.mWidth;
-    paramContext = this.pcT;
+    paramContext = this.seV;
     if (paramContext == null) {
-      p.btv("mMaskRect");
+      p.bGy("mMaskRect");
     }
     paramContext.bottom = this.mHeight;
     int i = Color.argb(230, 0, 0, 0);
     int j = Color.argb(76, 0, 0, 0);
     int k = Color.argb(0, 0, 0, 0);
-    this.zZO = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { i, j, k });
-    paramContext = this.zZO;
+    this.FFE = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { i, j, k });
+    paramContext = this.FFE;
     if (paramContext != null) {
       paramContext.setGradientType(0);
     }
-    paramContext = this.zZO;
+    paramContext = this.FFE;
     if (paramContext != null) {
       paramContext.setGradientCenter(0.5F, 0.4F);
     }
-    paramContext = this.zZO;
+    paramContext = this.FFE;
     if (paramContext != null)
     {
-      paramBitmap = this.Ky;
+      paramBitmap = this.KV;
       if (paramBitmap == null) {
-        p.btv("mDstRect");
+        p.bGy("mDstRect");
       }
       paramContext.setBounds(paramBitmap);
     }
-    paramContext = ae.SYK;
+    paramContext = af.aaBG;
     paramContext = String.format("default init: mWidth:%d mHeight:%d", Arrays.copyOf(new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) }, 2));
-    p.g(paramContext, "java.lang.String.format(format, *args)");
+    p.j(paramContext, "java.lang.String.format(format, *args)");
     Log.i("MicroMsg.TransformSwipeBackToMultiTaskView", paramContext);
-    AppMethodBeat.o(200389);
+    AppMethodBeat.o(248313);
   }
   
   public final Bitmap getContentBitmap()
   {
-    return this.zZM;
+    return this.FFC;
   }
   
   public final GradientDrawable getGradientDrawable()
   {
-    return this.zZO;
+    return this.FFE;
   }
   
-  public final void hk(int paramInt1, int paramInt2)
+  public final void ip(int paramInt1, int paramInt2)
   {
     this.mWidth = paramInt1;
     this.mHeight = paramInt2;
   }
   
-  public final void m(float paramFloat1, float paramFloat2, float paramFloat3)
+  public final void n(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    AppMethodBeat.i(200387);
-    RectF localRectF = this.pcT;
+    AppMethodBeat.i(248305);
+    RectF localRectF = this.seV;
     if (localRectF == null) {
-      p.btv("mMaskRect");
+      p.bGy("mMaskRect");
     }
     localRectF.set(0.0F, paramFloat1, paramFloat2, paramFloat3);
-    AppMethodBeat.o(200387);
+    AppMethodBeat.o(248305);
   }
   
-  public final void m(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public final void n(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.zZR[0] = 0.0F;
-    this.zZR[1] = 0.0F;
-    this.zZR[2] = 0.0F;
-    this.zZR[3] = 0.0F;
-    this.zZR[4] = paramFloat1;
-    this.zZR[5] = paramFloat2;
-    this.zZR[6] = paramFloat3;
-    this.zZR[7] = paramFloat4;
+    this.FFH[0] = 0.0F;
+    this.FFH[1] = 0.0F;
+    this.FFH[2] = 0.0F;
+    this.FFH[3] = 0.0F;
+    this.FFH[4] = paramFloat1;
+    this.FFH[5] = paramFloat2;
+    this.FFH[6] = paramFloat3;
+    this.FFH[7] = paramFloat4;
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(200385);
-    p.h(paramCanvas, "canvas");
-    Object localObject1 = this.pcR;
+    AppMethodBeat.i(248298);
+    p.k(paramCanvas, "canvas");
+    Object localObject1 = this.seT;
     if (localObject1 == null) {
-      p.btv("mClipPath");
+      p.bGy("mClipPath");
     }
     ((Path)localObject1).reset();
-    localObject1 = this.pcR;
+    localObject1 = this.seT;
     if (localObject1 == null) {
-      p.btv("mClipPath");
+      p.bGy("mClipPath");
     }
-    Object localObject2 = this.pcT;
+    Object localObject2 = this.seV;
     if (localObject2 == null) {
-      p.btv("mMaskRect");
+      p.bGy("mMaskRect");
     }
-    ((Path)localObject1).addRoundRect((RectF)localObject2, this.zZR, Path.Direction.CW);
-    localObject1 = this.pcR;
+    ((Path)localObject1).addRoundRect((RectF)localObject2, this.FFH, Path.Direction.CW);
+    localObject1 = this.seT;
     if (localObject1 == null) {
-      p.btv("mClipPath");
+      p.bGy("mClipPath");
     }
     paramCanvas.clipPath((Path)localObject1);
-    localObject1 = this.zZM;
+    localObject1 = this.FFC;
     if (localObject1 != null)
     {
-      localObject2 = this.pcS;
+      localObject2 = this.seU;
       if (localObject2 == null) {
-        p.btv("mDrawRect");
+        p.bGy("mDrawRect");
       }
-      Rect localRect = this.Ky;
+      Rect localRect = this.KV;
       if (localRect == null) {
-        p.btv("mDstRect");
+        p.bGy("mDstRect");
       }
       Paint localPaint = this.mPaint;
       if (localPaint == null) {
-        p.btv("mPaint");
+        p.bGy("mPaint");
       }
       paramCanvas.drawBitmap((Bitmap)localObject1, (Rect)localObject2, localRect, localPaint);
     }
-    localObject1 = this.zZO;
+    localObject1 = this.FFE;
     if (localObject1 != null)
     {
-      ((GradientDrawable)localObject1).setAlpha(this.oZh);
+      ((GradientDrawable)localObject1).setAlpha(this.sbi);
       ((GradientDrawable)localObject1).draw(paramCanvas);
-      AppMethodBeat.o(200385);
+      AppMethodBeat.o(248298);
       return;
     }
-    AppMethodBeat.o(200385);
+    AppMethodBeat.o(248298);
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(200386);
+    AppMethodBeat.i(248302);
     super.onMeasure(View.MeasureSpec.makeMeasureSpec(this.mWidth, 1073741824), View.MeasureSpec.makeMeasureSpec(this.mHeight, 1073741824));
-    AppMethodBeat.o(200386);
+    AppMethodBeat.o(248302);
   }
   
   public final void setDstRect(Rect paramRect)
   {
-    AppMethodBeat.i(200388);
-    p.h(paramRect, "dstRect");
-    this.Ky = paramRect;
-    AppMethodBeat.o(200388);
+    AppMethodBeat.i(248307);
+    p.k(paramRect, "dstRect");
+    this.KV = paramRect;
+    AppMethodBeat.o(248307);
   }
   
   public final void setMaskAlpha(int paramInt)
   {
-    this.oZh = paramInt;
+    this.sbi = paramInt;
   }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/animation/enter/TransformEnterToMultiTaskView$Companion;", "", "()V", "DEFAULT_CORNER_RADIUS", "", "getDEFAULT_CORNER_RADIUS", "()I", "TAG", "", "plugin-multitask_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.animation.a.c
  * JD-Core Version:    0.7.0.1
  */

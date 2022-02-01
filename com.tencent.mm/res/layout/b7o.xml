@@ -6,5 +6,5 @@
         <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dt5" android:layout_width="@dimen/tw" android:layout_height="@dimen/tw" android:scaleType="fitCenter" android:layout_centerInParent="true" />
         <ImageView android:id="@id/dti" android:visibility="gone" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
     </RelativeLayout>
-    <TextView android:textSize="@dimen/ty" android:textColor="@color/BW_0_Alpha_0_5" android:gravity="center" android:id="@id/ipm" android:layout_width="@dimen/cp" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:maxLines="2" />
+    <TextView android:textSize="@dimen/ty" android:textColor="@color/BW_0_Alpha_0_5" android:gravity="center|top" android:id="@id/ipm" android:layout_width="@dimen/cp" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:maxLines="2" />
 </LinearLayout>

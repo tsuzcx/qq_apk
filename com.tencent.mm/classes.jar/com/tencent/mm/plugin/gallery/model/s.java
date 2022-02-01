@@ -8,14 +8,18 @@ import android.net.Uri;
 import android.net.Uri.Builder;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fav.a.af;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.fav.a.ag;
 import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.protocal.protobuf.aml;
-import com.tencent.mm.protocal.protobuf.anb;
+import com.tencent.mm.plugin.fav.a.g;
+import com.tencent.mm.plugin.fav.a.y;
+import com.tencent.mm.plugin.gallery.b.i;
+import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.protocal.protobuf.aoc;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -30,30 +34,30 @@ import org.json.JSONObject;
 
 public final class s
 {
-  public static final Uri BASE_URI;
-  public int eT;
-  public ContentResolver hwt;
-  public boolean xjF;
-  public boolean xjG;
-  public List<GalleryItem.MediaItem> xjH;
+  public static final Uri BVU;
+  public boolean BVV;
+  public boolean BVW;
+  public List<GalleryItem.MediaItem> BVX;
+  public int aeh;
+  public ContentResolver kiH;
   
   static
   {
     AppMethodBeat.i(111376);
-    BASE_URI = Uri.parse("content://com.open.gallery.smart.provider");
+    BVU = Uri.parse("content://com.open.gallery.smart.provider");
     AppMethodBeat.o(111376);
   }
   
   private s()
   {
     AppMethodBeat.i(111368);
-    this.eT = 100;
-    this.xjH = new ArrayList();
-    this.hwt = MMApplicationContext.getContext().getContentResolver();
+    this.aeh = 100;
+    this.BVX = new ArrayList();
+    this.kiH = MMApplicationContext.getContext().getContentResolver();
     AppMethodBeat.o(111368);
   }
   
-  static LinkedList<GalleryItem.AlbumItem> ap(ArrayList<a> paramArrayList)
+  static LinkedList<GalleryItem.AlbumItem> av(ArrayList<a> paramArrayList)
   {
     AppMethodBeat.i(173744);
     LinkedList localLinkedList = new LinkedList();
@@ -65,17 +69,17 @@ public final class s
     return localLinkedList;
   }
   
-  public static s dRv()
+  public static s etX()
   {
-    return j.xjY;
+    return s.j.BWs;
   }
   
-  public static String[] dRw()
+  public static String[] etY()
   {
     return new String[] { "categoryID", "categoryName", "albumID", "albumName", "albumCapacity", "coverID", "coverData", "albumTag" };
   }
   
-  public static c eV(List<a> paramList)
+  public static c fl(List<a> paramList)
   {
     AppMethodBeat.i(111369);
     ArrayList localArrayList = new ArrayList();
@@ -84,7 +88,7 @@ public final class s
     while (paramList.hasNext())
     {
       a locala = (a)paramList.next();
-      d locald = locala.xjI;
+      d locald = locala.BVY;
       Object localObject = (List)localHashMap.get(locald);
       if (localObject == null)
       {
@@ -103,7 +107,7 @@ public final class s
     return paramList;
   }
   
-  public static b hC(String paramString1, String paramString2)
+  public static b hJ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(111372);
     if (Util.isNullOrNil(paramString1))
@@ -117,7 +121,7 @@ public final class s
       try
       {
         paramString1 = new JSONObject(paramString1);
-        localb.xjO = paramString1.optBoolean("ocr", false);
+        localb.BWe = paramString1.optBoolean("ocr", false);
         Object localObject = paramString1.optJSONObject("cropArea");
         if (localObject != null)
         {
@@ -126,21 +130,21 @@ public final class s
           double d2 = ((JSONObject)localObject).optDouble("top", -1.0D);
           double d3 = ((JSONObject)localObject).optDouble("right", -1.0D);
           double d4 = ((JSONObject)localObject).optDouble("bottom", -1.0D);
-          localObject = new e();
-          ((e)localObject).xjV = i;
-          ((e)localObject).pKw = d1;
-          ((e)localObject).pKx = d2;
-          ((e)localObject).pKy = d3;
-          ((e)localObject).pKz = d4;
-          ((e)localObject).id = paramString2;
-          localb.xhZ = ((e)localObject);
+          localObject = new s.e();
+          ((s.e)localObject).BWl = i;
+          ((s.e)localObject).BWm = d1;
+          ((s.e)localObject).BWn = d2;
+          ((s.e)localObject).BWo = d3;
+          ((s.e)localObject).BWp = d4;
+          ((s.e)localObject).id = paramString2;
+          localb.BUm = ((s.e)localObject);
         }
         if (3 != paramString1.optInt("coverType", 1)) {
           continue;
         }
         bool = true;
-        localb.xjP = bool;
-        localb.xjQ = paramString1.optBoolean("favorite", false);
+        localb.BWf = bool;
+        localb.BWg = paramString1.optBoolean("favorite", false);
       }
       catch (JSONException paramString1)
       {
@@ -154,7 +158,7 @@ public final class s
     }
   }
   
-  public static List<i> n(List<a> paramList, String paramString)
+  public static List<i> p(List<a> paramList, String paramString)
   {
     AppMethodBeat.i(111370);
     ArrayList localArrayList = new ArrayList();
@@ -164,13 +168,13 @@ public final class s
     while (((Iterator)localObject2).hasNext())
     {
       localObject1 = (a)((Iterator)localObject2).next();
-      if ((((a)localObject1).xjN != null) && (((a)localObject1).xjN.xjO))
+      if ((((a)localObject1).BWd != null) && (((a)localObject1).BWd.BWe))
       {
         paramList = (List<a>)localObject1;
       }
       else
       {
-        d locald = ((a)localObject1).xjI;
+        d locald = ((a)localObject1).BVY;
         Object localObject3 = (List)localHashMap.get(locald);
         if (localObject3 == null)
         {
@@ -193,15 +197,15 @@ public final class s
     }
     if (paramList != null)
     {
-      localArrayList.add(new d("OCR", MMApplicationContext.getContext().getResources().getString(2131765917)));
-      paramList.albumName = MMApplicationContext.getContext().getResources().getString(2131765916, new Object[] { paramString });
+      localArrayList.add(new d("OCR", MMApplicationContext.getContext().getResources().getString(b.i.smart_gallery_ocr_category_name)));
+      paramList.albumName = MMApplicationContext.getContext().getResources().getString(b.i.smart_gallery_ocr_album_name, new Object[] { paramString });
       localArrayList.add(paramList);
     }
     AppMethodBeat.o(111370);
     return localArrayList;
   }
   
-  public static List<GalleryItem.MediaItem> w(List<Long> paramList, int paramInt)
+  public static List<GalleryItem.MediaItem> v(List<Long> paramList, int paramInt)
   {
     AppMethodBeat.i(111371);
     ArrayList localArrayList = new ArrayList();
@@ -212,88 +216,81 @@ public final class s
       return localArrayList;
     }
     Object localObject1 = new ArrayList();
-    int i;
-    for (int j = 0;; j = i)
+    int j;
+    for (int i = 0;; i = j)
     {
-      Object localObject2;
-      if (j + 20 < paramList.size())
+      j = Math.min(i + 20, paramList.size());
+      Object localObject2 = ((ag)h.ag(ag.class)).getFavItemInfoStorage().a(paramList.subList(i, j), null, null, null);
+      if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0)) {
+        ((ArrayList)localObject1).addAll((Collection)localObject2);
+      }
+      if (j >= paramList.size())
       {
-        i = j + 20;
-        localObject2 = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().a(paramList.subList(j, i), null, null, null);
-        if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0)) {
-          ((ArrayList)localObject1).addAll((Collection)localObject2);
-        }
-        if (i < paramList.size()) {
-          continue;
-        }
         paramList = ((ArrayList)localObject1).iterator();
-        label186:
-        do
+        while (paramList.hasNext())
         {
-          do
+          localObject1 = (g)paramList.next();
+          if (((g)localObject1).field_favProto.syG.size() != 0)
           {
-            if (!paramList.hasNext()) {
-              break;
-            }
-            localObject1 = (com.tencent.mm.plugin.fav.a.g)paramList.next();
-          } while (((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.ppH.size() == 0);
-          i = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.ppH.size() - 1;
-        } while (i < 0);
-        localObject2 = (aml)((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.ppH.get(i);
-        if (com.tencent.mm.vfs.s.YS(b.d((aml)localObject2))) {
-          switch (paramInt)
-          {
-          }
-        }
-      }
-      for (;;)
-      {
-        i -= 1;
-        break label186;
-        i = paramList.size();
-        break;
-        if (((aml)localObject2).dataType == 2)
-        {
-          localObject2 = GalleryItem.MediaItem.a(1, -1L, b.d((aml)localObject2), "", "image/fav");
-          ((GalleryItem.MediaItem)localObject2).xja = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_updateTime;
-          localArrayList.add(localObject2);
-          continue;
-          if ((((aml)localObject2).dataType == 4) || (((aml)localObject2).dataType == 15))
-          {
-            localObject2 = GalleryItem.MediaItem.a(2, -1L, b.d((aml)localObject2), "", "video/fav");
-            ((GalleryItem.MediaItem)localObject2).xja = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_updateTime;
-            localArrayList.add(localObject2);
-            continue;
-            if ((((aml)localObject2).dataType == 2) || (((aml)localObject2).dataType == 4) || (((aml)localObject2).dataType == 15)) {
-              if (((aml)localObject2).dataType == 2)
-              {
-                localObject2 = GalleryItem.MediaItem.a(1, -1L, b.d((aml)localObject2), "", "image/fav");
-                ((GalleryItem.MediaItem)localObject2).xja = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_updateTime;
-                localArrayList.add(localObject2);
+            i = ((g)localObject1).field_favProto.syG.size() - 1;
+            if (i >= 0)
+            {
+              localObject2 = (anm)((g)localObject1).field_favProto.syG.get(i);
+              if (u.agG(b.d((anm)localObject2))) {
+                switch (paramInt)
+                {
+                }
               }
-              else
+              for (;;)
               {
-                localObject2 = GalleryItem.MediaItem.a(2, -1L, b.d((aml)localObject2), "", "video/fav");
-                ((GalleryItem.MediaItem)localObject2).xja = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_updateTime;
-                localArrayList.add(localObject2);
+                i -= 1;
+                break;
+                if (((anm)localObject2).dataType == 2)
+                {
+                  localObject2 = GalleryItem.MediaItem.a(1, -1L, b.d((anm)localObject2), "", "image/fav");
+                  ((GalleryItem.MediaItem)localObject2).BVm = ((g)localObject1).field_updateTime;
+                  localArrayList.add(localObject2);
+                  continue;
+                  if ((((anm)localObject2).dataType == 4) || (((anm)localObject2).dataType == 15))
+                  {
+                    localObject2 = GalleryItem.MediaItem.a(2, -1L, b.d((anm)localObject2), "", "video/fav");
+                    ((GalleryItem.MediaItem)localObject2).BVm = ((g)localObject1).field_updateTime;
+                    localArrayList.add(localObject2);
+                    continue;
+                    if ((((anm)localObject2).dataType == 2) || (((anm)localObject2).dataType == 4) || (((anm)localObject2).dataType == 15)) {
+                      if (((anm)localObject2).dataType == 2)
+                      {
+                        localObject2 = GalleryItem.MediaItem.a(1, -1L, b.d((anm)localObject2), "", "image/fav");
+                        ((GalleryItem.MediaItem)localObject2).BVm = ((g)localObject1).field_updateTime;
+                        localArrayList.add(localObject2);
+                      }
+                      else
+                      {
+                        localObject2 = GalleryItem.MediaItem.a(2, -1L, b.d((anm)localObject2), "", "video/fav");
+                        ((GalleryItem.MediaItem)localObject2).BVm = ((g)localObject1).field_updateTime;
+                        localArrayList.add(localObject2);
+                      }
+                    }
+                  }
+                }
               }
             }
           }
         }
+        AppMethodBeat.o(111371);
+        return localArrayList;
       }
-      AppMethodBeat.o(111371);
-      return localArrayList;
     }
   }
   
-  public final boolean dRx()
+  public final boolean etZ()
   {
     AppMethodBeat.i(173743);
     boolean bool;
     Object localObject;
     try
     {
-      Bundle localBundle = this.hwt.call(BASE_URI, "isSmartGalleryAvailable", null, null);
+      Bundle localBundle = this.kiH.call(BVU, "isSmartGalleryAvailable", null, null);
       if (localBundle != null)
       {
         bool = localBundle.getBoolean("isSmartGalleryAvailable");
@@ -304,8 +301,8 @@ public final class s
     }
     catch (Exception localException)
     {
-      localObject = BASE_URI.buildUpon().appendEncodedPath("albums").build();
-      localObject = this.hwt.query((Uri)localObject, dRw(), null, null, null);
+      localObject = BVU.buildUpon().appendEncodedPath("albums").build();
+      localObject = this.kiH.query((Uri)localObject, etY(), null, null, null);
       if (localObject == null) {
         break label146;
       }
@@ -328,57 +325,57 @@ public final class s
     }
   }
   
-  public final void dRy()
+  public final void eua()
   {
     AppMethodBeat.i(111373);
     Log.i("MicroMsg.SmartGalleryQueryUtil", "clearSelectedMediaPath");
-    this.xjH.clear();
+    this.BVX.clear();
     AppMethodBeat.o(111373);
   }
   
-  public final int dRz()
+  public final int eub()
   {
     AppMethodBeat.i(111375);
-    int i = this.xjH.size();
+    int i = this.BVX.size();
     AppMethodBeat.o(111375);
     return i;
   }
   
-  public final void eW(List<GalleryItem.MediaItem> paramList)
+  public final void fm(List<GalleryItem.MediaItem> paramList)
   {
     AppMethodBeat.i(111374);
-    dRy();
-    this.xjH.addAll(paramList);
+    eua();
+    this.BVX.addAll(paramList);
     AppMethodBeat.o(111374);
   }
   
   public static final class a
     extends s.i
   {
+    public s.d BVY;
+    public String BVZ;
+    public int BWa;
+    public long BWb;
+    public String BWc;
+    public s.b BWd;
     public String albumName;
-    public s.d xjI;
-    public String xjJ;
-    public int xjK;
-    public long xjL;
-    public String xjM;
-    public s.b xjN;
     
     public a()
     {
       this.mType = 1;
     }
     
-    public final void hD(String paramString1, String paramString2)
+    public final void hK(String paramString1, String paramString2)
     {
       AppMethodBeat.i(111360);
-      this.xjI = new s.d(paramString1, paramString2);
+      this.BVY = new s.d(paramString1, paramString2);
       AppMethodBeat.o(111360);
     }
     
     public final String toString()
     {
       AppMethodBeat.i(111361);
-      String str = "[albumID " + this.xjJ + " albumName " + this.albumName + " albumCapacity " + this.xjK + " albumCoverId " + this.xjL + " albumCoverData " + this.xjM + " albumTag " + this.xjN + "]";
+      String str = "[albumID " + this.BVZ + " albumName " + this.albumName + " albumCapacity " + this.BWa + " albumCoverId " + this.BWb + " albumCoverData " + this.BWc + " albumTag " + this.BWd + "]";
       AppMethodBeat.o(111361);
       return str;
     }
@@ -386,19 +383,19 @@ public final class s
   
   public static final class b
   {
-    public s.e xhZ;
-    public boolean xjO = false;
-    public boolean xjP = false;
-    public boolean xjQ;
+    public s.e BUm;
+    public boolean BWe = false;
+    public boolean BWf = false;
+    public boolean BWg;
     
     public final String toString()
     {
       AppMethodBeat.i(111362);
-      StringBuilder localStringBuilder = new StringBuilder("isOcr: ").append(this.xjO).append(" cropArea: ");
-      if (this.xhZ == null) {}
-      for (String str = "";; str = this.xhZ.toString())
+      StringBuilder localStringBuilder = new StringBuilder("isOcr: ").append(this.BWe).append(" cropArea: ");
+      if (this.BUm == null) {}
+      for (String str = "";; str = this.BUm.toString())
       {
-        str = str + " coverIsVideo: " + this.xjP;
+        str = str + " coverIsVideo: " + this.BWf;
         AppMethodBeat.o(111362);
         return str;
       }
@@ -407,21 +404,21 @@ public final class s
   
   public static final class c
   {
-    public List<s.d> xjR;
-    public Map<s.d, List<s.a>> xjS;
+    public List<s.d> BWh;
+    public Map<s.d, List<s.a>> BWi;
     
     public c(List<s.d> paramList, Map<s.d, List<s.a>> paramMap)
     {
-      this.xjR = paramList;
-      this.xjS = paramMap;
+      this.BWh = paramList;
+      this.BWi = paramMap;
     }
   }
   
   public static final class d
     extends s.i
   {
-    public String xjT;
-    public String xjU;
+    public String BWj;
+    public String BWk;
     
     d()
     {
@@ -431,14 +428,14 @@ public final class s
     d(String paramString1, String paramString2)
     {
       this();
-      this.xjT = paramString1;
-      this.xjU = paramString2;
+      this.BWj = paramString1;
+      this.BWk = paramString2;
     }
     
     public final boolean equals(Object paramObject)
     {
       AppMethodBeat.i(111364);
-      if (((paramObject instanceof d)) && (this.xjU.equals(((d)paramObject).xjU)) && (this.xjT.equals(((d)paramObject).xjT)))
+      if (((paramObject instanceof d)) && (this.BWk.equals(((d)paramObject).BWk)) && (this.BWj.equals(((d)paramObject).BWj)))
       {
         AppMethodBeat.o(111364);
         return true;
@@ -450,41 +447,10 @@ public final class s
     public final int hashCode()
     {
       AppMethodBeat.i(111363);
-      int i = this.xjT.hashCode();
-      int j = this.xjU.hashCode();
+      int i = this.BWj.hashCode();
+      int j = this.BWk.hashCode();
       AppMethodBeat.o(111363);
       return (i + 629) * 37 + j;
-    }
-  }
-  
-  public static final class e
-  {
-    public String id;
-    double pKw;
-    double pKx;
-    double pKy;
-    double pKz;
-    int xjV = 0;
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(111365);
-      if (paramObject == null)
-      {
-        AppMethodBeat.o(111365);
-        return false;
-      }
-      boolean bool = ((e)paramObject).id.equals(this.id);
-      AppMethodBeat.o(111365);
-      return bool;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(111366);
-      String str = "crop area info -> cropType:" + this.xjV + " left:" + this.pKw + " top:" + this.pKx + " right:" + this.pKy + " bottom:" + this.pKz + " id:" + this.id;
-      AppMethodBeat.o(111366);
-      return str;
     }
   }
   
@@ -501,22 +467,10 @@ public final class s
   {
     public int mType;
   }
-  
-  static final class j
-  {
-    static s xjY;
-    
-    static
-    {
-      AppMethodBeat.i(111367);
-      xjY = new s((byte)0);
-      AppMethodBeat.o(111367);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.s
  * JD-Core Version:    0.7.0.1
  */

@@ -39,7 +39,7 @@ public final class b
     }
   }
   
-  public final Bitmap J(Bitmap paramBitmap)
+  public final Bitmap H(Bitmap paramBitmap)
   {
     AppMethodBeat.i(48318);
     if ((paramBitmap == null) || (paramBitmap.isRecycled()))
@@ -72,7 +72,7 @@ public final class b
     }
   }
   
-  public final String Lb()
+  public final String key()
   {
     AppMethodBeat.i(48319);
     String str = String.format("Transformation_w%s_h%s", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) });

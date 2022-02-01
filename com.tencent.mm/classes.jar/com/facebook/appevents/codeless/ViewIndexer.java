@@ -4,19 +4,14 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.view.View;
-import android.view.Window;
 import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphRequest.Callback;
 import com.facebook.GraphResponse;
 import com.facebook.LoggingBehavior;
-import com.facebook.appevents.codeless.internal.UnityReflection;
-import com.facebook.appevents.codeless.internal.ViewHierarchy;
 import com.facebook.appevents.internal.ActivityLifecycleTracker;
 import com.facebook.appevents.internal.AppEventUtility;
-import com.facebook.internal.InternalSettings;
 import com.facebook.internal.Logger;
 import com.facebook.internal.Utility;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -25,9 +20,6 @@ import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.Executor;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.TimeUnit;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -158,66 +150,9 @@ public class ViewIndexer
       AppMethodBeat.o(17519);
       return;
     }
-    final String str = localObject.getClass().getSimpleName();
+    String str = localObject.getClass().getSimpleName();
     FacebookSdk.getApplicationId();
-    localObject = new TimerTask()
-    {
-      public void run()
-      {
-        AppMethodBeat.i(17511);
-        try
-        {
-          View localView = this.val$activity.getWindow().getDecorView().getRootView();
-          boolean bool = ActivityLifecycleTracker.getIsAppIndexingEnabled();
-          if (!bool)
-          {
-            AppMethodBeat.o(17511);
-            return;
-          }
-          if (InternalSettings.isUnityApp())
-          {
-            UnityReflection.captureViewHierarchy();
-            AppMethodBeat.o(17511);
-            return;
-          }
-          Object localObject = new FutureTask(new ViewIndexer.ScreenshotTaker(localView));
-          ViewIndexer.this.uiThreadHandler.post((Runnable)localObject);
-          try
-          {
-            localObject = (String)((FutureTask)localObject).get(1L, TimeUnit.SECONDS);
-            localJSONObject = new JSONObject();
-          }
-          catch (Exception localException1)
-          {
-            try
-            {
-              JSONObject localJSONObject;
-              localJSONObject.put("screenname", str);
-              localJSONObject.put("screenshot", localObject);
-              localObject = new JSONArray();
-              ((JSONArray)localObject).put(ViewHierarchy.getDictionaryOfView(localView));
-              localJSONObject.put("view", localObject);
-              label147:
-              localObject = localJSONObject.toString();
-              ViewIndexer.access$200(ViewIndexer.this, (String)localObject, str);
-              AppMethodBeat.o(17511);
-              return;
-              localException1 = localException1;
-              String str = "";
-            }
-            catch (JSONException localJSONException)
-            {
-              break label147;
-            }
-          }
-          return;
-        }
-        catch (Exception localException2)
-        {
-          AppMethodBeat.o(17511);
-        }
-      }
-    };
+    localObject = new ViewIndexer.1(this, (Activity)localObject, str);
     FacebookSdk.getExecutor().execute(new Runnable()
     {
       public void run()
@@ -279,7 +214,7 @@ public class ViewIndexer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.appevents.codeless.ViewIndexer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.appcache.predownload.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.x;
+import com.tencent.mm.f.c.x;
 import com.tencent.mm.plugin.appbrand.ab.b.a;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
@@ -11,13 +11,13 @@ public final class b
   extends x
   implements com.tencent.mm.plugin.appbrand.ab.b
 {
-  static final IAutoDBItem.MAutoDBInfo iBg;
-  static final String[] kJX;
+  static final IAutoDBItem.MAutoDBInfo lqK;
+  static final String[] nDP;
   
   static
   {
     AppMethodBeat.i(44430);
-    kJX = new String[] { "appId", "version", "packageType", "packageKey" };
+    nDP = new String[] { "appId", "version", "packageType", "packageKey" };
     Object localObject1 = new IAutoDBItem.MAutoDBInfo();
     ((IAutoDBItem.MAutoDBInfo)localObject1).fields = new Field[7];
     ((IAutoDBItem.MAutoDBInfo)localObject1).columns = new String[8];
@@ -51,26 +51,26 @@ public final class b
     ((StringBuilder)localObject2).append(" reportId INTEGER default '0' ");
     ((IAutoDBItem.MAutoDBInfo)localObject1).columns[7] = "rowid";
     ((IAutoDBItem.MAutoDBInfo)localObject1).sql = ((StringBuilder)localObject2).toString();
-    iBg = (IAutoDBItem.MAutoDBInfo)localObject1;
+    lqK = (IAutoDBItem.MAutoDBInfo)localObject1;
     localObject1 = new StringBuilder();
-    localObject2 = iBg;
-    ((IAutoDBItem.MAutoDBInfo)localObject2).sql += b.a.t(kJX);
+    localObject2 = lqK;
+    ((IAutoDBItem.MAutoDBInfo)localObject2).sql += b.a.s(nDP);
     AppMethodBeat.o(44430);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return iBg;
+    return lqK;
   }
   
   public final String[] getKeys()
   {
-    return kJX;
+    return nDP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.predownload.d.b
  * JD-Core Version:    0.7.0.1
  */

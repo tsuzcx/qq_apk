@@ -8,12 +8,12 @@ import java.util.Map;
 
 public final class m$d
 {
-  public String Djd;
+  public String JoJ;
   public String thumbUrl;
   public String title;
   public String username;
   
-  public static d aNq(String paramString)
+  public static d aXZ(String paramString)
   {
     AppMethodBeat.i(28344);
     Map localMap = XmlParser.parseXml(paramString, "tempsession", null);
@@ -26,7 +26,7 @@ public final class m$d
         paramString.title = Util.nullAsNil((String)localMap.get(".tempsession.title"));
         paramString.thumbUrl = Util.nullAsNil((String)localMap.get(".tempsession.thumburl"));
         paramString.username = Util.nullAsNil((String)localMap.get(".tempsession.username"));
-        paramString.Djd = Util.nullAsNil((String)localMap.get(".tempsession.deeplinkjumpurl"));
+        paramString.JoJ = Util.nullAsNil((String)localMap.get(".tempsession.deeplinkjumpurl"));
         AppMethodBeat.o(28344);
         return paramString;
       }
@@ -42,7 +42,7 @@ public final class m$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.m.d
  * JD-Core Version:    0.7.0.1
  */

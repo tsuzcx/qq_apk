@@ -6,13 +6,13 @@ import kotlin.l.b.a.b.f.f;
 
 final class r
 {
-  final f TjT;
+  final f aaMN;
   final String signature;
   
   public r(f paramf, String paramString)
   {
     AppMethodBeat.i(57618);
-    this.TjT = paramf;
+    this.aaMN = paramf;
     this.signature = paramString;
     AppMethodBeat.o(57618);
   }
@@ -25,7 +25,7 @@ final class r
       if ((paramObject instanceof r))
       {
         paramObject = (r)paramObject;
-        if ((!p.j(this.TjT, paramObject.TjT)) || (!p.j(this.signature, paramObject.signature))) {}
+        if ((!p.h(this.aaMN, paramObject.aaMN)) || (!p.h(this.signature, paramObject.signature))) {}
       }
     }
     else
@@ -41,7 +41,7 @@ final class r
   {
     int j = 0;
     AppMethodBeat.i(57620);
-    Object localObject = this.TjT;
+    Object localObject = this.aaMN;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
@@ -57,14 +57,14 @@ final class r
   public final String toString()
   {
     AppMethodBeat.i(57619);
-    String str = "NameAndSignature(name=" + this.TjT + ", signature=" + this.signature + ")";
+    String str = "NameAndSignature(name=" + this.aaMN + ", signature=" + this.signature + ")";
     AppMethodBeat.o(57619);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.r
  * JD-Core Version:    0.7.0.1
  */

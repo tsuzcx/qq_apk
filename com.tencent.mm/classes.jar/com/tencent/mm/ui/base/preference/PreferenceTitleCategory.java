@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.h;
 
 public class PreferenceTitleCategory
   extends PreferenceCategory
@@ -23,8 +24,8 @@ public class PreferenceTitleCategory
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142664);
-    if (getLayoutResource() != 2131495603) {
-      setLayoutResource(2131495600);
+    if ((getLayoutResource() != a.h.mm_preference_info_normaltext) || (getLayoutResource() != a.h.mm_preference_info_smalltext)) {
+      setLayoutResource(a.h.mm_preference_info_bigtext);
     }
     AppMethodBeat.o(142664);
   }
@@ -52,7 +53,7 @@ public class PreferenceTitleCategory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.PreferenceTitleCategory
  * JD-Core Version:    0.7.0.1
  */

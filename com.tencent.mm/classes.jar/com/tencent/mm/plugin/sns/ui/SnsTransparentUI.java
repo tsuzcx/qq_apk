@@ -7,14 +7,14 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ap;
+import com.tencent.mm.by.c;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ao;
 import com.tencent.mm.pluginsdk.ui.span.e;
 import com.tencent.mm.pluginsdk.ui.span.e.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.t;
+import com.tencent.mm.ui.w;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,12 +22,12 @@ import java.util.Map;
 public class SnsTransparentUI
   extends MMActivity
 {
-  private Map<String, Bitmap> Eer;
+  private Map<String, Bitmap> KrX;
   
   public SnsTransparentUI()
   {
     AppMethodBeat.i(99457);
-    this.Eer = new HashMap();
+    this.KrX = new HashMap();
     AppMethodBeat.o(99457);
   }
   
@@ -68,12 +68,12 @@ public class SnsTransparentUI
       AppMethodBeat.o(99458);
       return;
       paramBundle = ((Intent)localObject).getStringExtra("phoneNum");
-      e.a.KqE.a(this, paramBundle, new DialogInterface.OnDismissListener()new Bundle
+      e.a.RrL.a(this, paramBundle, new DialogInterface.OnDismissListener()new Bundle
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(99456);
-          ap.hb(SnsTransparentUI.this);
+          ao.ic(SnsTransparentUI.this);
           SnsTransparentUI.this.finish();
           AppMethodBeat.o(99456);
         }
@@ -89,7 +89,7 @@ public class SnsTransparentUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsTransparentUI
  * JD-Core Version:    0.7.0.1
  */

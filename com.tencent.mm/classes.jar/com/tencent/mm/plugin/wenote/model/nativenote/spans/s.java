@@ -7,9 +7,9 @@ public enum s
   static
   {
     AppMethodBeat.i(30666);
-    JJe = new s("EXACT", 0);
-    JJf = new s("SPAN_FLAGS", 1);
-    JJg = new s[] { JJe, JJf };
+    QIw = new s("EXACT", 0);
+    QIx = new s("SPAN_FLAGS", 1);
+    QIy = new s[] { QIw, QIx };
     AppMethodBeat.o(30666);
   }
   
@@ -17,7 +17,7 @@ public enum s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.spans.s
  * JD-Core Version:    0.7.0.1
  */

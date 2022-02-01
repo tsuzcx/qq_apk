@@ -9,23 +9,23 @@ import kotlin.l.b.a.b.m.bc;
 
 public final class j
 {
-  public static final j Thl;
+  public static final j aaKf;
   
   static
   {
     AppMethodBeat.i(56849);
-    Thl = new j();
+    aaKf = new j();
     AppMethodBeat.o(56849);
   }
   
   public static final boolean F(ab paramab)
   {
     AppMethodBeat.i(56848);
-    p.h(paramab, "type");
-    p.h(paramab, "$this$canBeUsedForConstVal");
+    p.k(paramab, "type");
+    p.k(paramab, "$this$canBeUsedForConstVal");
     if (!g.o(paramab))
     {
-      m localm = m.Tfo;
+      m localm = m.aaIi;
       if (!m.E(paramab)) {
         break label42;
       }
@@ -42,7 +42,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.j
  * JD-Core Version:    0.7.0.1
  */

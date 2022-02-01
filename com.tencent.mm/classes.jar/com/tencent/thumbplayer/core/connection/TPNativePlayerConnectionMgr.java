@@ -12,7 +12,7 @@ public class TPNativePlayerConnectionMgr
   
   public TPNativePlayerConnectionMgr()
   {
-    AppMethodBeat.i(189868);
+    AppMethodBeat.i(223303);
     this.mInited = false;
     this.mIsLibLoaded = false;
     this.mNativeContext = 0L;
@@ -20,13 +20,13 @@ public class TPNativePlayerConnectionMgr
     {
       TPNativeLibraryLoader.loadLibIfNeeded(null);
       this.mIsLibLoaded = true;
-      AppMethodBeat.o(189868);
+      AppMethodBeat.o(223303);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
     {
       this.mIsLibLoaded = false;
-      AppMethodBeat.o(189868);
+      AppMethodBeat.o(223303);
     }
   }
   
@@ -50,189 +50,189 @@ public class TPNativePlayerConnectionMgr
   
   public int activeAllConnections()
   {
-    AppMethodBeat.i(189875);
+    AppMethodBeat.i(223327);
     Object localObject;
     if (!this.mIsLibLoaded)
     {
       localObject = new UnsupportedOperationException("Failed to load native library");
-      AppMethodBeat.o(189875);
+      AppMethodBeat.o(223327);
       throw ((Throwable)localObject);
     }
     if (!this.mInited)
     {
       localObject = new IllegalStateException("Failed to addConnection due to invalid state.");
-      AppMethodBeat.o(189875);
+      AppMethodBeat.o(223327);
       throw ((Throwable)localObject);
     }
     int i = _activeAllConnections();
-    AppMethodBeat.o(189875);
+    AppMethodBeat.o(223327);
     return i;
   }
   
   public int activeConnection(int paramInt)
   {
-    AppMethodBeat.i(189874);
+    AppMethodBeat.i(223324);
     Object localObject;
     if (!this.mIsLibLoaded)
     {
       localObject = new UnsupportedOperationException("Failed to load native library");
-      AppMethodBeat.o(189874);
+      AppMethodBeat.o(223324);
       throw ((Throwable)localObject);
     }
     if (!this.mInited)
     {
       localObject = new IllegalStateException("Failed to addConnection due to invalid state.");
-      AppMethodBeat.o(189874);
+      AppMethodBeat.o(223324);
       throw ((Throwable)localObject);
     }
     paramInt = _activeConnection(paramInt);
-    AppMethodBeat.o(189874);
+    AppMethodBeat.o(223324);
     return paramInt;
   }
   
   public int addConnection(long paramLong1, TPNativePlayerConnectionNode paramTPNativePlayerConnectionNode1, long paramLong2, TPNativePlayerConnectionNode paramTPNativePlayerConnectionNode2)
   {
-    AppMethodBeat.i(189872);
+    AppMethodBeat.i(223313);
     if (!this.mIsLibLoaded)
     {
       paramTPNativePlayerConnectionNode1 = new UnsupportedOperationException("Failed to load native library");
-      AppMethodBeat.o(189872);
+      AppMethodBeat.o(223313);
       throw paramTPNativePlayerConnectionNode1;
     }
     if (!this.mInited)
     {
       paramTPNativePlayerConnectionNode1 = new IllegalStateException("Failed to addConnection due to invalid state.");
-      AppMethodBeat.o(189872);
+      AppMethodBeat.o(223313);
       throw paramTPNativePlayerConnectionNode1;
     }
     int i = _addConnectionWithAddr(paramLong1, paramTPNativePlayerConnectionNode1, paramLong2, paramTPNativePlayerConnectionNode2);
-    AppMethodBeat.o(189872);
+    AppMethodBeat.o(223313);
     return i;
   }
   
   public int addConnection(TPNativePlayer paramTPNativePlayer1, TPNativePlayerConnectionNode paramTPNativePlayerConnectionNode1, TPNativePlayer paramTPNativePlayer2, TPNativePlayerConnectionNode paramTPNativePlayerConnectionNode2)
   {
-    AppMethodBeat.i(189871);
+    AppMethodBeat.i(223311);
     if (!this.mIsLibLoaded)
     {
       paramTPNativePlayer1 = new UnsupportedOperationException("Failed to load native library");
-      AppMethodBeat.o(189871);
+      AppMethodBeat.o(223311);
       throw paramTPNativePlayer1;
     }
     if (!this.mInited)
     {
       paramTPNativePlayer1 = new IllegalStateException("Failed to addConnection due to invalid state.");
-      AppMethodBeat.o(189871);
+      AppMethodBeat.o(223311);
       throw paramTPNativePlayer1;
     }
     int i = _addConnection(paramTPNativePlayer1, paramTPNativePlayerConnectionNode1, paramTPNativePlayer2, paramTPNativePlayerConnectionNode2);
-    AppMethodBeat.o(189871);
+    AppMethodBeat.o(223311);
     return i;
   }
   
   public void deactiveAllConnections()
   {
-    AppMethodBeat.i(189877);
+    AppMethodBeat.i(223335);
     Object localObject;
     if (!this.mIsLibLoaded)
     {
       localObject = new UnsupportedOperationException("Failed to load native library");
-      AppMethodBeat.o(189877);
+      AppMethodBeat.o(223335);
       throw ((Throwable)localObject);
     }
     if (!this.mInited)
     {
       localObject = new IllegalStateException("Failed to addConnection due to invalid state.");
-      AppMethodBeat.o(189877);
+      AppMethodBeat.o(223335);
       throw ((Throwable)localObject);
     }
     _deactiveAllConnections();
-    AppMethodBeat.o(189877);
+    AppMethodBeat.o(223335);
   }
   
   public void deactiveConnection(int paramInt)
   {
-    AppMethodBeat.i(189876);
+    AppMethodBeat.i(223332);
     Object localObject;
     if (!this.mIsLibLoaded)
     {
       localObject = new UnsupportedOperationException("Failed to load native library");
-      AppMethodBeat.o(189876);
+      AppMethodBeat.o(223332);
       throw ((Throwable)localObject);
     }
     if (!this.mInited)
     {
       localObject = new IllegalStateException("Failed to addConnection due to invalid state.");
-      AppMethodBeat.o(189876);
+      AppMethodBeat.o(223332);
       throw ((Throwable)localObject);
     }
     _deactiveConnection(paramInt);
-    AppMethodBeat.o(189876);
+    AppMethodBeat.o(223332);
   }
   
   public void init()
   {
-    AppMethodBeat.i(189869);
+    AppMethodBeat.i(223305);
     Object localObject;
     if (!this.mIsLibLoaded)
     {
       localObject = new UnsupportedOperationException("Failed to load native library");
-      AppMethodBeat.o(189869);
+      AppMethodBeat.o(223305);
       throw ((Throwable)localObject);
     }
     if (this.mInited)
     {
       localObject = new IllegalStateException("Failed to init due to invalid state.");
-      AppMethodBeat.o(189869);
+      AppMethodBeat.o(223305);
       throw ((Throwable)localObject);
     }
     this.mInited = true;
     _init();
-    AppMethodBeat.o(189869);
+    AppMethodBeat.o(223305);
   }
   
   public void removeConnection(int paramInt)
   {
-    AppMethodBeat.i(189873);
+    AppMethodBeat.i(223318);
     Object localObject;
     if (!this.mIsLibLoaded)
     {
       localObject = new UnsupportedOperationException("Failed to load native library");
-      AppMethodBeat.o(189873);
+      AppMethodBeat.o(223318);
       throw ((Throwable)localObject);
     }
     if (!this.mInited)
     {
       localObject = new IllegalStateException("Failed to addConnection due to invalid state.");
-      AppMethodBeat.o(189873);
+      AppMethodBeat.o(223318);
       throw ((Throwable)localObject);
     }
     _removeConnection(paramInt);
-    AppMethodBeat.o(189873);
+    AppMethodBeat.o(223318);
   }
   
   public void unInit()
   {
-    AppMethodBeat.i(189870);
+    AppMethodBeat.i(223308);
     if (!this.mIsLibLoaded)
     {
       UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("Failed to load native library");
-      AppMethodBeat.o(189870);
+      AppMethodBeat.o(223308);
       throw localUnsupportedOperationException;
     }
     if (!this.mInited)
     {
-      AppMethodBeat.o(189870);
+      AppMethodBeat.o(223308);
       return;
     }
     this.mInited = false;
     _unInit();
-    AppMethodBeat.o(189870);
+    AppMethodBeat.o(223308);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.core.connection.TPNativePlayerConnectionMgr
  * JD-Core Version:    0.7.0.1
  */

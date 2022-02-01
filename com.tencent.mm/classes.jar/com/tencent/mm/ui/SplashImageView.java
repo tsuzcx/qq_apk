@@ -6,19 +6,20 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.g;
 import com.tencent.mm.ui.chatting.ar;
 
 public class SplashImageView
   extends ImageView
 {
-  private ar OLl;
+  private ar WeK;
   private boolean hasDrawed;
   
   public SplashImageView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(33760);
-    etg();
+    fdq();
     AppMethodBeat.o(33760);
   }
   
@@ -26,7 +27,7 @@ public class SplashImageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(33761);
-    etg();
+    fdq();
     AppMethodBeat.o(33761);
   }
   
@@ -34,14 +35,14 @@ public class SplashImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(33762);
-    etg();
+    fdq();
     AppMethodBeat.o(33762);
   }
   
-  private void etg()
+  private void fdq()
   {
     AppMethodBeat.i(33763);
-    setBackgroundDrawable(getResources().getDrawable(2131235369));
+    setBackgroundDrawable(getResources().getDrawable(R.g.ui_loading));
     AppMethodBeat.o(33763);
   }
   
@@ -49,12 +50,12 @@ public class SplashImageView
   {
     AppMethodBeat.i(33764);
     super.onDraw(paramCanvas);
-    setBackgroundDrawable(getResources().getDrawable(2131235369));
+    setBackgroundDrawable(getResources().getDrawable(R.g.ui_loading));
     if (!this.hasDrawed)
     {
       this.hasDrawed = true;
-      if (this.OLl != null) {
-        this.OLl.dSa();
+      if (this.WeK != null) {
+        this.WeK.euB();
       }
     }
     AppMethodBeat.o(33764);
@@ -62,12 +63,12 @@ public class SplashImageView
   
   public void setOnDrawListener(ar paramar)
   {
-    this.OLl = paramar;
+    this.WeK = paramar;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.SplashImageView
  * JD-Core Version:    0.7.0.1
  */

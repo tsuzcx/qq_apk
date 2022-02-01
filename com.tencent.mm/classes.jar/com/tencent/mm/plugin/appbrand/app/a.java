@@ -12,10 +12,10 @@ import java.lang.reflect.Method;
 
 final class a
 {
-  static boolean bug()
+  static boolean bFg()
   {
-    AppMethodBeat.i(226281);
-    if ((a.dmH == null) || (a.kHW == null)) {}
+    AppMethodBeat.i(283006);
+    if ((a.feV == null) || (a.nBO == null)) {}
     for (;;)
     {
       try
@@ -27,10 +27,10 @@ final class a
         if (localObject1 == null) {
           continue;
         }
-        a.dmH = localObject1;
+        a.feV = localObject1;
         localObject2 = localObject1.getClass().getDeclaredField("mH");
         ((Field)localObject2).setAccessible(true);
-        a.kHW = (Handler)((Field)localObject2).get(localObject1);
+        a.nBO = (Handler)((Field)localObject2).get(localObject1);
       }
       catch (Throwable localThrowable)
       {
@@ -38,17 +38,17 @@ final class a
         Object localObject1;
         Log.e("MicroMsg.AppBrandProcessSuicideLogic.ActivityThreadHackDetector", "hack ActivityThread failed %s", new Object[] { localThrowable });
         continue;
-        AppMethodBeat.o(226281);
+        AppMethodBeat.o(283006);
         return false;
       }
-      localObject1 = a.kHW;
+      localObject1 = a.nBO;
       if (localObject1 == null) {
         break label223;
       }
       if ((!((Handler)localObject1).hasMessages(100)) && (!((Handler)localObject1).hasMessages(126)) && ((Build.VERSION.SDK_INT != 28) || (!((Handler)localObject1).hasMessages(160))) && (!((Handler)localObject1).hasMessages(159))) {
         continue;
       }
-      AppMethodBeat.o(226281);
+      AppMethodBeat.o(283006);
       return true;
       localObject1 = localObject2.getClass().getField("mLoadedApk");
       ((Field)localObject1).setAccessible(true);
@@ -58,19 +58,19 @@ final class a
       localObject1 = ((Field)localObject2).get(localObject1);
     }
     label223:
-    AppMethodBeat.o(226281);
+    AppMethodBeat.o(283006);
     return false;
   }
   
   static final class a
   {
-    public static Object dmH;
-    public static Handler kHW;
+    public static Object feV;
+    public static Handler nBO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.a
  * JD-Core Version:    0.7.0.1
  */

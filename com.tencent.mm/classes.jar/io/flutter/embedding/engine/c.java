@@ -2,11 +2,11 @@ package io.flutter.embedding.engine;
 
 import android.app.Activity;
 import android.app.Service;
-import android.arch.lifecycle.Lifecycle;
 import android.content.BroadcastReceiver;
 import android.content.ContentProvider;
 import android.content.Context;
 import android.content.Intent;
+import androidx.lifecycle.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import io.flutter.embedding.engine.plugins.a.a;
 import io.flutter.embedding.engine.plugins.a.b;
@@ -26,275 +26,313 @@ import java.util.Set;
 final class c
   implements io.flutter.embedding.engine.plugins.a.b, io.flutter.embedding.engine.plugins.b
 {
-  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.a> SOn;
-  private final a.b SOo;
-  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.a.a> SOp;
-  private b SOq;
-  private boolean SOr;
-  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.d.a> SOs;
-  private Service SOt;
-  private c SOu;
-  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.b.a> SOv;
-  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.c.a> SOw;
-  private ContentProvider SOx;
+  private final a BCx;
+  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.a> aaql;
+  private final a.b aaqm;
+  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.a.a> aaqn;
+  private io.flutter.embedding.android.c<Activity> aaqo;
+  private b aaqp;
+  private boolean aaqq;
+  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.d.a> aaqr;
+  private Service aaqs;
+  private c aaqt;
+  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.b.a> aaqu;
+  private final Map<Class<? extends io.flutter.embedding.engine.plugins.a>, io.flutter.embedding.engine.plugins.c.a> aaqv;
+  private ContentProvider aaqw;
+  @Deprecated
   private Activity activity;
   private BroadcastReceiver broadcastReceiver;
-  private final a wJi;
   
-  c(Context paramContext, a parama, io.flutter.embedding.engine.a.a parama1)
+  c(Context paramContext, a parama, io.flutter.embedding.engine.a.c paramc)
   {
-    AppMethodBeat.i(214934);
-    this.SOn = new HashMap();
-    this.SOp = new HashMap();
-    this.SOr = false;
-    this.SOs = new HashMap();
-    this.SOv = new HashMap();
-    this.SOw = new HashMap();
-    this.wJi = parama;
-    this.SOo = new a.b(paramContext, parama, parama.SNW, parama.SMr, parama.platformViewsController.STj, new a(parama1, (byte)0));
-    AppMethodBeat.o(214934);
+    AppMethodBeat.i(254999);
+    this.aaql = new HashMap();
+    this.aaqn = new HashMap();
+    this.aaqq = false;
+    this.aaqr = new HashMap();
+    this.aaqu = new HashMap();
+    this.aaqv = new HashMap();
+    this.BCx = parama;
+    this.aaqm = new a.b(paramContext, parama, parama.aapU, parama.aaos, parama.platformViewsController.aavW, new a(paramc, (byte)0));
+    AppMethodBeat.o(254999);
   }
   
-  private void B(Set<Class<? extends io.flutter.embedding.engine.plugins.a>> paramSet)
+  private void A(Set<Class<? extends io.flutter.embedding.engine.plugins.a>> paramSet)
   {
-    AppMethodBeat.i(10167);
+    AppMethodBeat.i(255010);
     paramSet = paramSet.iterator();
-    while (paramSet.hasNext())
+    while (paramSet.hasNext()) {
+      bM((Class)paramSet.next());
+    }
+    AppMethodBeat.o(255010);
+  }
+  
+  private void b(Activity paramActivity, h paramh)
+  {
+    AppMethodBeat.i(255019);
+    this.aaqp = new b(paramActivity, paramh);
+    this.BCx.platformViewsController.a(paramActivity, this.BCx.aaos, this.BCx.aapU);
+    paramActivity = this.aaqn.values().iterator();
+    while (paramActivity.hasNext())
     {
-      Class localClass = (Class)paramSet.next();
-      io.flutter.embedding.engine.plugins.a locala = (io.flutter.embedding.engine.plugins.a)this.SOn.get(localClass);
-      if (locala != null)
-      {
-        new StringBuilder("Removing plugin: ").append(locala);
-        io.flutter.a.hwd();
-        if ((locala instanceof io.flutter.embedding.engine.plugins.a.a))
-        {
-          if (hwI()) {
-            ((io.flutter.embedding.engine.plugins.a.a)locala).sU();
-          }
-          this.SOp.remove(localClass);
-        }
-        if ((locala instanceof io.flutter.embedding.engine.plugins.d.a)) {
-          this.SOs.remove(localClass);
-        }
-        if ((locala instanceof io.flutter.embedding.engine.plugins.b.a)) {
-          this.SOv.remove(localClass);
-        }
-        if ((locala instanceof io.flutter.embedding.engine.plugins.c.a)) {
-          this.SOw.remove(localClass);
-        }
-        locala.b(this.SOo);
-        this.SOn.remove(localClass);
+      paramh = (io.flutter.embedding.engine.plugins.a.a)paramActivity.next();
+      if (this.aaqq) {
+        paramh.b(this.aaqp);
+      } else {
+        paramh.a(this.aaqp);
       }
     }
-    AppMethodBeat.o(10167);
+    this.aaqq = false;
+    AppMethodBeat.o(255019);
   }
   
-  private void hwH()
+  private void iAK()
   {
-    AppMethodBeat.i(10169);
-    if (hwI())
+    AppMethodBeat.i(255013);
+    if (iAL())
     {
-      hwK();
-      AppMethodBeat.o(10169);
+      iAO();
+      AppMethodBeat.o(255013);
       return;
     }
-    if (hwN())
+    if (iAS())
     {
-      hwO();
-      AppMethodBeat.o(10169);
+      iAT();
+      AppMethodBeat.o(255013);
       return;
     }
-    if (hwP())
+    if (iAU())
     {
-      hwQ();
-      AppMethodBeat.o(10169);
+      iAV();
+      AppMethodBeat.o(255013);
       return;
     }
-    if (hwR()) {
-      hwS();
+    if (iAW()) {
+      iAX();
     }
-    AppMethodBeat.o(10169);
+    AppMethodBeat.o(255013);
   }
   
-  private boolean hwI()
+  private boolean iAL()
   {
-    return this.activity != null;
+    return (this.activity != null) || (this.aaqo != null);
   }
   
-  private boolean hwN()
+  private Activity iAM()
   {
-    return this.SOt != null;
-  }
-  
-  private void hwO()
-  {
-    AppMethodBeat.i(10177);
-    if (hwN())
+    AppMethodBeat.i(255014);
+    if (this.aaqo != null)
     {
-      new StringBuilder("Detaching from a Service: ").append(this.SOt);
-      io.flutter.a.hwd();
-      Iterator localIterator = this.SOs.values().iterator();
+      localActivity = (Activity)this.aaqo.iAn();
+      AppMethodBeat.o(255014);
+      return localActivity;
+    }
+    Activity localActivity = this.activity;
+    AppMethodBeat.o(255014);
+    return localActivity;
+  }
+  
+  private void iAP()
+  {
+    AppMethodBeat.i(255022);
+    this.BCx.platformViewsController.detach();
+    this.aaqo = null;
+    this.activity = null;
+    this.aaqp = null;
+    AppMethodBeat.o(255022);
+  }
+  
+  private boolean iAS()
+  {
+    return this.aaqs != null;
+  }
+  
+  private void iAT()
+  {
+    AppMethodBeat.i(255029);
+    if (iAS())
+    {
+      new StringBuilder("Detaching from a Service: ").append(this.aaqs);
+      io.flutter.b.iAd();
+      Iterator localIterator = this.aaqr.values().iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      this.SOt = null;
-      this.SOu = null;
-      AppMethodBeat.o(10177);
+      this.aaqs = null;
+      this.aaqt = null;
+      AppMethodBeat.o(255029);
       return;
     }
-    io.flutter.a.hwg();
-    AppMethodBeat.o(10177);
+    io.flutter.b.iAh();
+    AppMethodBeat.o(255029);
   }
   
-  private boolean hwP()
+  private boolean iAU()
   {
     return this.broadcastReceiver != null;
   }
   
-  private void hwQ()
+  private void iAV()
   {
-    AppMethodBeat.i(10178);
-    if (hwP())
+    AppMethodBeat.i(255030);
+    if (iAU())
     {
       new StringBuilder("Detaching from BroadcastReceiver: ").append(this.broadcastReceiver);
-      io.flutter.a.hwd();
-      Iterator localIterator = this.SOv.values().iterator();
+      io.flutter.b.iAd();
+      Iterator localIterator = this.aaqu.values().iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      AppMethodBeat.o(10178);
+      AppMethodBeat.o(255030);
       return;
     }
-    io.flutter.a.hwg();
-    AppMethodBeat.o(10178);
+    io.flutter.b.iAh();
+    AppMethodBeat.o(255030);
   }
   
-  private boolean hwR()
+  private boolean iAW()
   {
-    return this.SOx != null;
+    return this.aaqw != null;
   }
   
-  private void hwS()
+  private void iAX()
   {
-    AppMethodBeat.i(10179);
-    if (hwR())
+    AppMethodBeat.i(255031);
+    if (iAW())
     {
-      new StringBuilder("Detaching from ContentProvider: ").append(this.SOx);
-      io.flutter.a.hwd();
-      Iterator localIterator = this.SOw.values().iterator();
+      new StringBuilder("Detaching from ContentProvider: ").append(this.aaqw);
+      io.flutter.b.iAd();
+      Iterator localIterator = this.aaqv.values().iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      AppMethodBeat.o(10179);
+      AppMethodBeat.o(255031);
       return;
     }
-    io.flutter.a.hwg();
-    AppMethodBeat.o(10179);
+    io.flutter.b.iAh();
+    AppMethodBeat.o(255031);
   }
   
   private void removeAll()
   {
-    AppMethodBeat.i(10168);
-    B(new HashSet(this.SOn.keySet()));
-    this.SOn.clear();
-    AppMethodBeat.o(10168);
+    AppMethodBeat.i(255011);
+    A(new HashSet(this.aaql.keySet()));
+    this.aaql.clear();
+    AppMethodBeat.o(255011);
   }
   
-  public final void A(Set<io.flutter.embedding.engine.plugins.a> paramSet)
+  public final void a(Activity paramActivity, h paramh)
   {
-    AppMethodBeat.i(214936);
-    paramSet = paramSet.iterator();
-    while (paramSet.hasNext()) {
-      a((io.flutter.embedding.engine.plugins.a)paramSet.next());
-    }
-    AppMethodBeat.o(214936);
-  }
-  
-  public final void a(Activity paramActivity, Lifecycle paramLifecycle)
-  {
-    AppMethodBeat.i(10170);
+    AppMethodBeat.i(255015);
     StringBuilder localStringBuilder = new StringBuilder("Attaching to an Activity: ").append(paramActivity).append(".");
-    String str;
-    if (this.SOr)
+    if (this.aaqq) {}
+    for (String str = " This is after a config change.";; str = "")
     {
-      str = " This is after a config change.";
       localStringBuilder.append(str);
-      io.flutter.a.hwd();
-      hwH();
-      this.activity = paramActivity;
-      this.SOq = new b(paramActivity, paramLifecycle);
-      this.wJi.platformViewsController.a(paramActivity, this.wJi.SMr, this.wJi.SNW);
-      paramActivity = this.SOp.values().iterator();
-    }
-    for (;;)
-    {
-      if (!paramActivity.hasNext()) {
-        break label167;
+      io.flutter.b.iAd();
+      if (this.aaqo != null) {
+        this.aaqo.iAm();
       }
-      paramLifecycle = (io.flutter.embedding.engine.plugins.a.a)paramActivity.next();
-      if (this.SOr)
-      {
-        paramLifecycle.b(this.SOq);
-        continue;
-        str = "";
+      iAK();
+      if (this.aaqo == null) {
         break;
       }
-      paramLifecycle.a(this.SOq);
+      paramActivity = new AssertionError("Only activity or exclusiveActivity should be set");
+      AppMethodBeat.o(255015);
+      throw paramActivity;
     }
-    label167:
-    this.SOr = false;
-    AppMethodBeat.o(10170);
+    this.activity = paramActivity;
+    b(paramActivity, paramh);
+    AppMethodBeat.o(255015);
+  }
+  
+  public final void a(io.flutter.embedding.android.c<Activity> paramc, h paramh)
+  {
+    AppMethodBeat.i(255018);
+    StringBuilder localStringBuilder = new StringBuilder("Attaching to an exclusive Activity: ").append(paramc.iAn());
+    if (iAL())
+    {
+      str = " evicting previous activity " + iAM();
+      localStringBuilder = localStringBuilder.append(str).append(".");
+      if (!this.aaqq) {
+        break label143;
+      }
+    }
+    label143:
+    for (String str = " This is after a config change.";; str = "")
+    {
+      localStringBuilder.append(str);
+      io.flutter.b.iAd();
+      if (this.aaqo != null) {
+        this.aaqo.iAm();
+      }
+      iAK();
+      if (this.activity == null) {
+        break label150;
+      }
+      paramc = new AssertionError("Only activity or exclusiveActivity should be set");
+      AppMethodBeat.o(255018);
+      throw paramc;
+      str = "";
+      break;
+    }
+    label150:
+    this.aaqo = paramc;
+    b((Activity)paramc.iAn(), paramh);
+    AppMethodBeat.o(255018);
   }
   
   public final void a(io.flutter.embedding.engine.plugins.a parama)
   {
-    AppMethodBeat.i(214935);
-    Object localObject = parama.getClass();
-    if (this.SOn.containsKey(localObject))
+    AppMethodBeat.i(255002);
+    if (bK(parama.getClass()))
     {
-      new StringBuilder("Attempted to register plugin (").append(parama).append(") but it was already registered with this FlutterEngine (").append(this.wJi).append(").");
-      io.flutter.a.hwf();
-      AppMethodBeat.o(214935);
+      new StringBuilder("Attempted to register plugin (").append(parama).append(") but it was already registered with this FlutterEngine (").append(this.BCx).append(").");
+      io.flutter.b.iAf();
+      AppMethodBeat.o(255002);
       return;
     }
     new StringBuilder("Adding plugin: ").append(parama);
-    io.flutter.a.hwd();
-    this.SOn.put(parama.getClass(), parama);
-    parama.a(this.SOo);
+    io.flutter.b.iAd();
+    this.aaql.put(parama.getClass(), parama);
+    parama.a(this.aaqm);
+    Object localObject;
     if ((parama instanceof io.flutter.embedding.engine.plugins.a.a))
     {
       localObject = (io.flutter.embedding.engine.plugins.a.a)parama;
-      this.SOp.put(parama.getClass(), localObject);
-      if (hwI()) {
-        ((io.flutter.embedding.engine.plugins.a.a)localObject).a(this.SOq);
+      this.aaqn.put(parama.getClass(), localObject);
+      if (iAL()) {
+        ((io.flutter.embedding.engine.plugins.a.a)localObject).a(this.aaqp);
       }
     }
     if ((parama instanceof io.flutter.embedding.engine.plugins.d.a))
     {
       localObject = (io.flutter.embedding.engine.plugins.d.a)parama;
-      this.SOs.put(parama.getClass(), localObject);
+      this.aaqr.put(parama.getClass(), localObject);
+      iAS();
     }
     if ((parama instanceof io.flutter.embedding.engine.plugins.b.a))
     {
       localObject = (io.flutter.embedding.engine.plugins.b.a)parama;
-      this.SOv.put(parama.getClass(), localObject);
+      this.aaqu.put(parama.getClass(), localObject);
+      iAU();
     }
     if ((parama instanceof io.flutter.embedding.engine.plugins.c.a))
     {
       localObject = (io.flutter.embedding.engine.plugins.c.a)parama;
-      this.SOw.put(parama.getClass(), localObject);
+      this.aaqv.put(parama.getClass(), localObject);
+      iAW();
     }
-    AppMethodBeat.o(214935);
+    AppMethodBeat.o(255002);
   }
   
   public final boolean a(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(10173);
-    io.flutter.a.hwd();
-    if (hwI())
+    AppMethodBeat.i(255023);
+    io.flutter.b.iAd();
+    if (iAL())
     {
-      Iterator localIterator = this.SOq.SOA.iterator();
+      Iterator localIterator = this.aaqp.aaqy.iterator();
       boolean bool = false;
       if (localIterator.hasNext())
       {
@@ -303,107 +341,155 @@ final class c
           break;
         }
       }
-      AppMethodBeat.o(10173);
+      AppMethodBeat.o(255023);
       return bool;
     }
-    io.flutter.a.hwg();
-    AppMethodBeat.o(10173);
+    io.flutter.b.iAh();
+    AppMethodBeat.o(255023);
     return false;
+  }
+  
+  public final boolean bK(Class<? extends io.flutter.embedding.engine.plugins.a> paramClass)
+  {
+    AppMethodBeat.i(255003);
+    boolean bool = this.aaql.containsKey(paramClass);
+    AppMethodBeat.o(255003);
+    return bool;
+  }
+  
+  public final io.flutter.embedding.engine.plugins.a bL(Class<? extends io.flutter.embedding.engine.plugins.a> paramClass)
+  {
+    AppMethodBeat.i(255004);
+    paramClass = (io.flutter.embedding.engine.plugins.a)this.aaql.get(paramClass);
+    AppMethodBeat.o(255004);
+    return paramClass;
+  }
+  
+  public final void bM(Class<? extends io.flutter.embedding.engine.plugins.a> paramClass)
+  {
+    AppMethodBeat.i(255007);
+    io.flutter.embedding.engine.plugins.a locala = (io.flutter.embedding.engine.plugins.a)this.aaql.get(paramClass);
+    if (locala != null)
+    {
+      new StringBuilder("Removing plugin: ").append(locala);
+      io.flutter.b.iAd();
+      if ((locala instanceof io.flutter.embedding.engine.plugins.a.a))
+      {
+        if (iAL()) {
+          ((io.flutter.embedding.engine.plugins.a.a)locala).qI();
+        }
+        this.aaqn.remove(paramClass);
+      }
+      if ((locala instanceof io.flutter.embedding.engine.plugins.d.a))
+      {
+        iAS();
+        this.aaqr.remove(paramClass);
+      }
+      if ((locala instanceof io.flutter.embedding.engine.plugins.b.a))
+      {
+        iAU();
+        this.aaqu.remove(paramClass);
+      }
+      if ((locala instanceof io.flutter.embedding.engine.plugins.c.a))
+      {
+        iAW();
+        this.aaqv.remove(paramClass);
+      }
+      locala.b(this.aaqm);
+      this.aaql.remove(paramClass);
+    }
+    AppMethodBeat.o(255007);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(10166);
-    io.flutter.a.hwd();
-    hwH();
+    AppMethodBeat.i(255000);
+    io.flutter.b.iAd();
+    iAK();
     removeAll();
-    AppMethodBeat.o(10166);
+    AppMethodBeat.o(255000);
   }
   
-  public final void hwJ()
+  public final void iAN()
   {
-    AppMethodBeat.i(10171);
-    if (hwI())
+    AppMethodBeat.i(255020);
+    if (iAL())
     {
-      new StringBuilder("Detaching from an Activity for config changes: ").append(this.activity);
-      io.flutter.a.hwd();
-      this.SOr = true;
-      Iterator localIterator = this.SOp.values().iterator();
+      new StringBuilder("Detaching from an Activity for config changes: ").append(iAM());
+      io.flutter.b.iAd();
+      this.aaqq = true;
+      Iterator localIterator = this.aaqn.values().iterator();
       while (localIterator.hasNext()) {
-        ((io.flutter.embedding.engine.plugins.a.a)localIterator.next()).sV();
+        ((io.flutter.embedding.engine.plugins.a.a)localIterator.next()).qJ();
       }
-      this.wJi.platformViewsController.detach();
-      this.activity = null;
-      this.SOq = null;
-      AppMethodBeat.o(10171);
+      iAP();
+      AppMethodBeat.o(255020);
       return;
     }
-    io.flutter.a.hwg();
-    AppMethodBeat.o(10171);
+    io.flutter.b.iAh();
+    AppMethodBeat.o(255020);
   }
   
-  public final void hwK()
+  public final void iAO()
   {
-    AppMethodBeat.i(10172);
-    if (hwI())
+    AppMethodBeat.i(255021);
+    if (iAL())
     {
-      new StringBuilder("Detaching from an Activity: ").append(this.activity);
-      io.flutter.a.hwd();
-      Iterator localIterator = this.SOp.values().iterator();
+      new StringBuilder("Detaching from an Activity: ").append(iAM());
+      io.flutter.b.iAd();
+      Iterator localIterator = this.aaqn.values().iterator();
       while (localIterator.hasNext()) {
-        ((io.flutter.embedding.engine.plugins.a.a)localIterator.next()).sU();
+        ((io.flutter.embedding.engine.plugins.a.a)localIterator.next()).qI();
       }
-      this.wJi.platformViewsController.detach();
-      this.activity = null;
-      this.SOq = null;
-      AppMethodBeat.o(10172);
+      iAP();
+      AppMethodBeat.o(255021);
       return;
     }
-    io.flutter.a.hwg();
-    AppMethodBeat.o(10172);
+    io.flutter.b.iAh();
+    AppMethodBeat.o(255021);
   }
   
-  public final void hwL()
+  public final void iAQ()
   {
-    AppMethodBeat.i(214937);
-    io.flutter.a.hwd();
-    if (hwI())
+    AppMethodBeat.i(255027);
+    io.flutter.b.iAd();
+    if (iAL())
     {
-      Iterator localIterator = this.SOq.SOE.iterator();
+      Iterator localIterator = this.aaqp.aaqC.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      AppMethodBeat.o(214937);
+      AppMethodBeat.o(255027);
       return;
     }
-    io.flutter.a.hwg();
-    AppMethodBeat.o(214937);
+    io.flutter.b.iAh();
+    AppMethodBeat.o(255027);
   }
   
-  public final void hwM()
+  public final void iAR()
   {
-    AppMethodBeat.i(214938);
-    io.flutter.a.hwd();
-    if (hwI())
+    AppMethodBeat.i(255028);
+    io.flutter.b.iAd();
+    if (iAL())
     {
-      Iterator localIterator = this.SOq.SOE.iterator();
+      Iterator localIterator = this.aaqp.aaqC.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      AppMethodBeat.o(214938);
+      AppMethodBeat.o(255028);
       return;
     }
-    io.flutter.a.hwg();
-    AppMethodBeat.o(214938);
+    io.flutter.b.iAh();
+    AppMethodBeat.o(255028);
   }
   
   public final boolean onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(10174);
-    io.flutter.a.hwd();
-    if (hwI())
+    AppMethodBeat.i(255024);
+    io.flutter.b.iAd();
+    if (iAL())
     {
-      Iterator localIterator = this.SOq.SOB.iterator();
+      Iterator localIterator = new HashSet(this.aaqp.aaqz).iterator();
       boolean bool = false;
       if (localIterator.hasNext())
       {
@@ -412,71 +498,71 @@ final class c
           break;
         }
       }
-      AppMethodBeat.o(10174);
+      AppMethodBeat.o(255024);
       return bool;
     }
-    io.flutter.a.hwg();
-    AppMethodBeat.o(10174);
+    io.flutter.b.iAh();
+    AppMethodBeat.o(255024);
     return false;
   }
   
   public final void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(10175);
-    io.flutter.a.hwd();
-    if (hwI())
+    AppMethodBeat.i(255025);
+    io.flutter.b.iAd();
+    if (iAL())
     {
-      Iterator localIterator = this.SOq.SOC.iterator();
+      Iterator localIterator = this.aaqp.aaqA.iterator();
       while (localIterator.hasNext()) {
         ((m.b)localIterator.next()).onNewIntent(paramIntent);
       }
-      AppMethodBeat.o(10175);
+      AppMethodBeat.o(255025);
       return;
     }
-    io.flutter.a.hwg();
-    AppMethodBeat.o(10175);
+    io.flutter.b.iAh();
+    AppMethodBeat.o(255025);
   }
   
   public final void onUserLeaveHint()
   {
-    AppMethodBeat.i(10176);
-    io.flutter.a.hwd();
-    if (hwI())
+    AppMethodBeat.i(255026);
+    io.flutter.b.iAd();
+    if (iAL())
     {
-      Iterator localIterator = this.SOq.SOD.iterator();
+      Iterator localIterator = this.aaqp.aaqB.iterator();
       while (localIterator.hasNext()) {
         ((m.e)localIterator.next()).onUserLeaveHint();
       }
-      AppMethodBeat.o(10176);
+      AppMethodBeat.o(255026);
       return;
     }
-    io.flutter.a.hwg();
-    AppMethodBeat.o(10176);
+    io.flutter.b.iAh();
+    AppMethodBeat.o(255026);
   }
   
   static final class a
     implements a.a
   {
-    final io.flutter.embedding.engine.a.a SOy;
+    final io.flutter.embedding.engine.a.c aanR;
     
-    private a(io.flutter.embedding.engine.a.a parama)
+    private a(io.flutter.embedding.engine.a.c paramc)
     {
-      this.SOy = parama;
+      this.aanR = paramc;
     }
     
-    public final String btc(String paramString)
+    public final String bGe(String paramString)
     {
-      AppMethodBeat.i(214932);
-      paramString = this.SOy.btd(paramString);
-      AppMethodBeat.o(214932);
+      AppMethodBeat.i(255824);
+      paramString = this.aanR.bGf(paramString);
+      AppMethodBeat.o(255824);
       return paramString;
     }
     
-    public final String op(String paramString1, String paramString2)
+    public final String pl(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(214933);
-      paramString1 = this.SOy.getLookupKeyForAsset(paramString1, paramString2);
-      AppMethodBeat.o(214933);
+      AppMethodBeat.i(255826);
+      paramString1 = this.aanR.getLookupKeyForAsset(paramString1, paramString2);
+      AppMethodBeat.o(255826);
       return paramString1;
     }
   }
@@ -484,25 +570,25 @@ final class c
   static final class b
     implements io.flutter.embedding.engine.plugins.a.c
   {
-    final Set<m.d> SOA;
-    final Set<m.a> SOB;
-    final Set<m.b> SOC;
-    final Set<m.e> SOD;
-    final Set<Object> SOE;
-    private final HiddenLifecycleReference SOz;
+    final Set<m.b> aaqA;
+    final Set<m.e> aaqB;
+    final Set<Object> aaqC;
+    private final HiddenLifecycleReference aaqx;
+    final Set<m.d> aaqy;
+    final Set<m.a> aaqz;
     private final Activity activity;
     
-    public b(Activity paramActivity, Lifecycle paramLifecycle)
+    public b(Activity paramActivity, h paramh)
     {
-      AppMethodBeat.i(214939);
-      this.SOA = new HashSet();
-      this.SOB = new HashSet();
-      this.SOC = new HashSet();
-      this.SOD = new HashSet();
-      this.SOE = new HashSet();
+      AppMethodBeat.i(255301);
+      this.aaqy = new HashSet();
+      this.aaqz = new HashSet();
+      this.aaqA = new HashSet();
+      this.aaqB = new HashSet();
+      this.aaqC = new HashSet();
       this.activity = paramActivity;
-      this.SOz = new HiddenLifecycleReference(paramLifecycle);
-      AppMethodBeat.o(214939);
+      this.aaqx = new HiddenLifecycleReference(paramh);
+      AppMethodBeat.o(255301);
     }
     
     public final Activity getActivity()

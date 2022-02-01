@@ -38,7 +38,7 @@ public final class ak
     return true;
   }
   
-  public final BaseDrawActionArg bzj()
+  public final BaseDrawActionArg bKy()
   {
     AppMethodBeat.i(144989);
     TranslateActionArg localTranslateActionArg = new TranslateActionArg();
@@ -53,7 +53,7 @@ public final class ak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.ak
  * JD-Core Version:    0.7.0.1
  */

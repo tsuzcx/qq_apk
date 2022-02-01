@@ -3,36 +3,31 @@ package com.tencent.mm.plugin.luckymoney.b;
 import android.net.Uri;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.c;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.c;
 import com.tencent.mm.app.AppForegroundDelegate;
-import com.tencent.mm.g.a.aaj;
-import com.tencent.mm.g.a.aaj.a;
-import com.tencent.mm.g.a.fp;
-import com.tencent.mm.g.c.bb;
-import com.tencent.mm.g.c.eo;
+import com.tencent.mm.app.o;
+import com.tencent.mm.f.a.abq;
+import com.tencent.mm.f.a.abq.a;
+import com.tencent.mm.f.a.bj;
+import com.tencent.mm.f.a.fw;
+import com.tencent.mm.f.c.bb;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.cj;
-import com.tencent.mm.model.cj.a;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.ck;
+import com.tencent.mm.model.ck.a;
 import com.tencent.mm.model.y;
-import com.tencent.mm.plugin.luckymoney.model.af;
-import com.tencent.mm.plugin.luckymoney.model.bj;
+import com.tencent.mm.plugin.luckymoney.model.ag;
+import com.tencent.mm.plugin.luckymoney.model.bk;
 import com.tencent.mm.plugin.luckymoney.model.m;
-import com.tencent.mm.plugin.luckymoney.model.n;
 import com.tencent.mm.plugin.luckymoney.model.p;
-import com.tencent.mm.plugin.luckymoney.model.v;
 import com.tencent.mm.plugin.luckymoney.model.w;
-import com.tencent.mm.plugin.luckymoney.story.b.f;
+import com.tencent.mm.plugin.luckymoney.model.x;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.messenger.foundation.a.s;
 import com.tencent.mm.pluginsdk.model.app.ap;
-import com.tencent.mm.pluginsdk.model.app.u;
-import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.protocal.protobuf.db;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -44,75 +39,67 @@ import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.bw;
 import com.tencent.mm.storage.ca;
 import com.tencent.mm.storagebase.h.b;
+import com.tencent.mm.vfs.q;
 import java.net.URLDecoder;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 public class a
-  implements com.tencent.mm.app.o, bd, i.a, com.tencent.mm.plugin.messenger.foundation.a.g
+  implements o, be, i.a, com.tencent.mm.plugin.messenger.foundation.a.i
 {
+  public static int Etd;
   private static HashMap<Integer, h.b> baseDBFactories;
-  private cj.a qvw;
-  private p yPb;
-  private com.tencent.mm.plugin.luckymoney.model.ae yPc;
-  private w yPd;
-  private n yPe;
-  private bj yPf;
-  private com.tencent.mm.co.h<v> yPg;
-  private com.tencent.mm.co.h<com.tencent.mm.plugin.luckymoney.story.b.b> yPh;
-  private com.tencent.mm.co.h<com.tencent.mm.plugin.luckymoney.story.b.d> yPi;
-  private com.tencent.mm.co.h<f> yPj;
-  private com.tencent.mm.plugin.luckymoney.model.t yPk;
-  public IListener<fp> yPl;
-  private IListener<aaj> yPm;
+  private p EsY;
+  private com.tencent.mm.plugin.luckymoney.model.af EsZ;
+  private w Eta;
+  private x Etb;
+  private com.tencent.mm.plugin.luckymoney.model.n Etc;
+  private bk Ete;
+  private com.tencent.mm.cw.h<com.tencent.mm.plugin.luckymoney.model.v> Etf;
+  private com.tencent.mm.cw.h<com.tencent.mm.plugin.luckymoney.story.b.b> Etg;
+  private com.tencent.mm.cw.h<com.tencent.mm.plugin.luckymoney.story.b.d> Eth;
+  private com.tencent.mm.cw.h<com.tencent.mm.plugin.luckymoney.story.b.f> Eti;
+  private com.tencent.mm.plugin.luckymoney.model.t Etj;
+  public IListener<fw> Etk;
+  private IListener<bj> Etl;
+  private IListener<abq> Etm;
+  private ck.a tUv;
   
   static
   {
     AppMethodBeat.i(64867);
+    Etd = -1;
     HashMap localHashMap = new HashMap();
     baseDBFactories = localHashMap;
-    localHashMap.put(Integer.valueOf("LuckyMoneyEnvelopeResource".hashCode()), new a.9());
-    baseDBFactories.put(Integer.valueOf("LocalRedPacketStoryInfo".hashCode()), new h.b()
-    {
-      public final String[] getSQLs()
-      {
-        return com.tencent.mm.plugin.luckymoney.story.b.b.SQL_CREATE;
-      }
-    });
-    baseDBFactories.put(Integer.valueOf("LocalStoryDetail".hashCode()), new h.b()
-    {
-      public final String[] getSQLs()
-      {
-        return com.tencent.mm.plugin.luckymoney.story.b.d.SQL_CREATE;
-      }
-    });
-    baseDBFactories.put(Integer.valueOf("LuckyMoneyDetailOpenRecord".hashCode()), new a.12());
+    localHashMap.put(Integer.valueOf("LuckyMoneyEnvelopeResource".hashCode()), new a.11());
+    baseDBFactories.put(Integer.valueOf("LocalRedPacketStoryInfo".hashCode()), new a.12());
+    baseDBFactories.put(Integer.valueOf("LocalStoryDetail".hashCode()), new a.13());
+    baseDBFactories.put(Integer.valueOf("LuckyMoneyDetailOpenRecord".hashCode()), new a.14());
     AppMethodBeat.o(64867);
   }
   
   public a()
   {
     AppMethodBeat.i(64861);
-    this.yPe = new n();
-    this.yPg = new com.tencent.mm.co.h(new a.1(this));
-    this.yPh = new com.tencent.mm.co.h(new com.tencent.mm.co.c() {});
-    this.yPi = new com.tencent.mm.co.h(new com.tencent.mm.co.c() {});
-    this.yPj = new com.tencent.mm.co.h(new a.8(this));
-    this.yPk = new com.tencent.mm.plugin.luckymoney.model.t();
-    this.yPl = new a.13(this);
-    this.qvw = new cj.a()
+    this.Etc = new com.tencent.mm.plugin.luckymoney.model.n();
+    this.Etf = new com.tencent.mm.cw.h(new a.1(this));
+    this.Etg = new com.tencent.mm.cw.h(new a.8(this));
+    this.Eth = new com.tencent.mm.cw.h(new a.9(this));
+    this.Eti = new com.tencent.mm.cw.h(new a.10(this));
+    this.Etj = new com.tencent.mm.plugin.luckymoney.model.t();
+    this.Etk = new a.15(this);
+    this.Etl = new a.2(this);
+    this.tUv = new ck.a()
     {
       public final void a(h.a paramAnonymousa)
       {
-        AppMethodBeat.i(213244);
-        paramAnonymousa = XmlParser.parseXml(com.tencent.mm.platformtools.z.a(paramAnonymousa.heO.KHn), "sysmsg", null);
+        AppMethodBeat.i(276302);
+        paramAnonymousa = XmlParser.parseXml(com.tencent.mm.platformtools.z.a(paramAnonymousa.jQG.RIF), "sysmsg", null);
         Log.i("MicroMsg.SubCoreLuckyMoney", "helios::::mPayMsgListener");
         if (paramAnonymousa == null)
         {
           Log.e("MicroMsg.SubCoreLuckyMoney", "Resolve msg error");
-          AppMethodBeat.o(213244);
+          AppMethodBeat.o(276302);
           return;
         }
         Object localObject1 = (String)paramAnonymousa.get(".sysmsg.paymsg.PayMsgType");
@@ -122,116 +109,110 @@ public class a
           if (TextUtils.isEmpty((CharSequence)localObject1))
           {
             Log.e("MicroMsg.SubCoreLuckyMoney", "msgxml illegal");
-            AppMethodBeat.o(213244);
+            AppMethodBeat.o(276302);
             return;
           }
           Object localObject2 = XmlParser.parseXml((String)localObject1, "msg", null);
           if (localObject2 == null)
           {
             Log.e("MicroMsg.SubCoreLuckyMoney", "Resolve appmsgxml error");
-            AppMethodBeat.o(213244);
+            AppMethodBeat.o(276302);
             return;
           }
           localObject2 = (String)((Map)localObject2).get(".msg.appmsg.wcpayinfo.paymsgid");
           if (Util.isNullOrNil((String)localObject2))
           {
             Log.e("MicroMsg.SubCoreLuckyMoney", "paymsgid is null");
-            AppMethodBeat.o(213244);
+            AppMethodBeat.o(276302);
             return;
           }
           paramAnonymousa = (String)paramAnonymousa.get(".sysmsg.paymsg.tousername");
           if ((Util.isNullOrNil((String)localObject1)) || (Util.isNullOrNil(paramAnonymousa)))
           {
             Log.e("MicroMsg.SubCoreLuckyMoney", "onRecieveMsg get a illegal msg,which content or toUserName is null");
-            AppMethodBeat.o(213244);
+            AppMethodBeat.o(276302);
             return;
           }
-          if (a.this.eeB().aDu((String)localObject2))
+          if (a.this.eNW().aND((String)localObject2))
           {
             Log.i("MicroMsg.SubCoreLuckyMoney", "insert a local msg for luckymoney");
-            if (!af.ac((String)localObject1, paramAnonymousa, 1)) {
-              a.this.eeB().aDv((String)localObject2);
+            if (!ag.ag((String)localObject1, paramAnonymousa, 1)) {
+              a.this.eNW().aNE((String)localObject2);
             }
           }
-          AppMethodBeat.o(213244);
+          AppMethodBeat.o(276302);
           return;
         }
         if ("47".equals(localObject1))
         {
           paramAnonymousa = Util.nullAs((String)paramAnonymousa.get(".sysmsg.paymsg.OrderId"), "");
-          localObject1 = com.tencent.mm.plugin.wallet_core.model.t.fQE().aVC(paramAnonymousa);
+          localObject1 = com.tencent.mm.plugin.wallet_core.model.u.gJk().bhl(paramAnonymousa);
           if (localObject1 == null)
           {
             Log.w("MicroMsg.SubCoreLuckyMoney", "can't find sendid: %s", new Object[] { paramAnonymousa });
-            AppMethodBeat.o(213244);
+            AppMethodBeat.o(276302);
             return;
           }
-          ((com.tencent.mm.plugin.wallet_core.model.ae)localObject1).field_hbStatus = 5;
-          com.tencent.mm.plugin.wallet_core.model.t.fQE().a((com.tencent.mm.plugin.wallet_core.model.ae)localObject1);
-          a.this.aDq(((com.tencent.mm.plugin.wallet_core.model.ae)localObject1).field_sender);
+          ((com.tencent.mm.plugin.wallet_core.model.af)localObject1).field_hbStatus = 5;
+          com.tencent.mm.plugin.wallet_core.model.u.gJk().a((com.tencent.mm.plugin.wallet_core.model.af)localObject1);
+          a.this.aNA(((com.tencent.mm.plugin.wallet_core.model.af)localObject1).field_sender);
         }
-        AppMethodBeat.o(213244);
+        AppMethodBeat.o(276302);
       }
       
       public final void a(h.c paramAnonymousc) {}
     };
-    this.yPm = new IListener()
+    this.Etm = new IListener()
     {
-      private boolean a(final aaj paramAnonymousaaj)
+      private boolean a(abq paramAnonymousabq)
       {
-        AppMethodBeat.i(213247);
+        AppMethodBeat.i(264428);
         k.b localb;
         Object localObject;
-        if (!Util.isNullOrNil(paramAnonymousaaj.ehg.dWG))
+        if (!Util.isNullOrNil(paramAnonymousabq.gbx.fQs))
         {
-          localb = k.b.HD(paramAnonymousaaj.ehg.dWG);
-          if (!Util.isNullOrNil(localb.iyr))
+          localb = k.b.OQ(paramAnonymousabq.gbx.fQs);
+          if (!Util.isNullOrNil(localb.lnH))
           {
-            Log.i("MicroMsg.SubCoreLuckyMoney", "receive lucky money: %s", new Object[] { localb.iyr });
-            localObject = Uri.parse(Util.nullAsNil(localb.iyr));
+            Log.i("MicroMsg.SubCoreLuckyMoney", "receive lucky money: %s", new Object[] { localb.lnH });
+            localObject = Uri.parse(Util.nullAsNil(localb.lnH));
           }
         }
         try
         {
           localObject = ((Uri)localObject).getQueryParameter("sendid");
-          com.tencent.mm.ag.c localc = (com.tencent.mm.ag.c)localb.as(com.tencent.mm.ag.c.class);
-          com.tencent.mm.plugin.wallet_core.model.ae localae2 = com.tencent.mm.plugin.wallet_core.model.t.fQE().aVA(localb.iyr);
-          com.tencent.mm.plugin.wallet_core.model.ae localae1 = localae2;
-          if (localae2 == null) {
-            localae1 = new com.tencent.mm.plugin.wallet_core.model.ae();
+          com.tencent.mm.aj.c localc = (com.tencent.mm.aj.c)localb.ar(com.tencent.mm.aj.c.class);
+          com.tencent.mm.plugin.wallet_core.model.af localaf2 = com.tencent.mm.plugin.wallet_core.model.u.gJk().bhj(localb.lnH);
+          com.tencent.mm.plugin.wallet_core.model.af localaf1 = localaf2;
+          if (localaf2 == null) {
+            localaf1 = new com.tencent.mm.plugin.wallet_core.model.af();
           }
-          if (Util.isNullOrNil(localae1.field_mNativeUrl))
+          if (Util.isNullOrNil(localaf1.field_mNativeUrl))
           {
-            localae1.field_mNativeUrl = localb.iyr;
-            localae1.field_receiveStatus = 0;
-            if (!Util.isNullOrNil(localc.iwa))
+            localaf1.field_mNativeUrl = localb.lnH;
+            localaf1.field_receiveStatus = 0;
+            if (!Util.isNullOrNil(localc.lln))
             {
-              localae1.field_hbType = 3;
-              localae1.field_exclusiveUsername = localc.iwa;
+              localaf1.field_hbType = 3;
+              localaf1.field_exclusiveUsername = localc.lln;
             }
-            localae1.field_invalidtime = localb.ixR;
-            localae1.field_sender = paramAnonymousaaj.ehg.ehh;
-            localae1.field_sendId = ((String)localObject);
-            localae1.field_msgSvrId = paramAnonymousaaj.ehg.dTS;
+            localaf1.field_invalidtime = localb.lnh;
+            localaf1.field_sender = paramAnonymousabq.gbx.gby;
+            localaf1.field_sendId = ((String)localObject);
+            localaf1.field_msgSvrId = paramAnonymousabq.gbx.fNu;
           }
-          com.tencent.mm.plugin.wallet_core.model.t.fQE().a(localae1);
-          com.tencent.f.h.RTc.o(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(213245);
-              a.this.aDq(paramAnonymousaaj.ehg.ehh);
-              AppMethodBeat.o(213245);
-            }
-          }, 50L);
-          paramAnonymousaaj = new com.tencent.mm.plugin.luckymoney.story.b.e();
-          paramAnonymousaaj.field_send_id = ((String)localObject);
-          if (!a.this.eew().get(paramAnonymousaaj, new String[0]))
-          {
-            paramAnonymousaaj.field_open_count = 0;
-            Log.d("MicroMsg.SubCoreLuckyMoney", "insert record: %s, %s", new Object[] { localObject, Boolean.valueOf(a.this.eew().insert(paramAnonymousaaj)) });
+          com.tencent.mm.plugin.wallet_core.model.u.gJk().a(localaf1);
+          if ((localaf1.field_hbType == 3) && (com.tencent.mm.model.z.bcZ().equals(localaf1.field_exclusiveUsername))) {
+            a.this.bT(paramAnonymousabq.gbx.gby, true);
           }
-          AppMethodBeat.o(213247);
+          paramAnonymousabq = new com.tencent.mm.plugin.luckymoney.story.b.e();
+          paramAnonymousabq.field_send_id = ((String)localObject);
+          if (!a.this.eNQ().get(paramAnonymousabq, new String[0]))
+          {
+            paramAnonymousabq.field_open_count = 0;
+            Log.d("MicroMsg.SubCoreLuckyMoney", "insert record: %s, %s", new Object[] { localObject, Boolean.valueOf(a.this.eNQ().insert(paramAnonymousabq)) });
+          }
+          AppMethodBeat.o(264428);
           return false;
         }
         catch (Exception localException)
@@ -243,47 +224,66 @@ public class a
         }
       }
     };
-    com.tencent.mm.vfs.o localo = new com.tencent.mm.vfs.o(eeA());
-    if (!localo.exists()) {
-      localo.mkdirs();
+    q localq = new q(eNV());
+    if (!localq.ifE()) {
+      localq.ifK();
     }
     AppMethodBeat.o(64861);
   }
   
-  private static boolean aDr(String paramString)
+  public static a eNR()
   {
-    AppMethodBeat.i(213257);
-    if (!ab.Eq(paramString))
-    {
-      AppMethodBeat.o(213257);
-      return false;
-    }
-    Object localObject = com.tencent.mm.plugin.wallet_core.model.t.fQE().aVB(paramString);
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        com.tencent.mm.plugin.wallet_core.model.ae localae = (com.tencent.mm.plugin.wallet_core.model.ae)((Iterator)localObject).next();
-        ca localca = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().aJ(paramString, localae.field_msgSvrId);
-        if ((localae.field_hbType == 3) && (localca.field_msgId > 0L) && (com.tencent.mm.model.z.aTY().equals(localae.field_exclusiveUsername)) && (localae.field_hbStatus != 4) && (localae.field_hbStatus != 5) && (localae.field_invalidtime * 1000L - cl.aWA() > 0L)) {
-          Log.i("MicroMsg.SubCoreLuckyMoney", "need mark red: %s, %s", new Object[] { Long.valueOf(localae.field_msgSvrId), localae.field_sendId });
-        }
-      }
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      AppMethodBeat.o(213257);
-      return bool;
-    }
+    AppMethodBeat.i(64860);
+    a locala = (a)y.as(a.class);
+    AppMethodBeat.o(64860);
+    return locala;
   }
   
-  public static String eeA()
+  public static p eNS()
+  {
+    AppMethodBeat.i(64864);
+    Log.i("MicroMsg.SubCoreLuckyMoney", "getConfigMgr()");
+    com.tencent.mm.kernel.h.aHE().aGH();
+    if (eNR().EsY == null) {
+      eNR().EsY = new p();
+    }
+    p localp = eNR().EsY;
+    AppMethodBeat.o(64864);
+    return localp;
+  }
+  
+  public static com.tencent.mm.plugin.luckymoney.model.af eNT()
+  {
+    AppMethodBeat.i(272332);
+    Log.i("MicroMsg.SubCoreLuckyMoney", "getConfigMgrUnion()");
+    com.tencent.mm.kernel.h.aHE().aGH();
+    if (eNR().EsZ == null) {
+      eNR().EsZ = new com.tencent.mm.plugin.luckymoney.model.af();
+    }
+    com.tencent.mm.plugin.luckymoney.model.af localaf = eNR().EsZ;
+    AppMethodBeat.o(272332);
+    return localaf;
+  }
+  
+  public static w eNU()
+  {
+    AppMethodBeat.i(272335);
+    Log.i("MicroMsg.SubCoreLuckyMoney", "getConfigMgrLive()");
+    com.tencent.mm.kernel.h.aHE().aGH();
+    if (eNR().Eta == null) {
+      eNR().Eta = new w();
+    }
+    w localw = eNR().Eta;
+    AppMethodBeat.o(272335);
+    return localw;
+  }
+  
+  public static String eNV()
   {
     AppMethodBeat.i(64865);
-    if (com.tencent.mm.kernel.g.aAc())
+    if (com.tencent.mm.kernel.h.aHB())
     {
-      String str = com.tencent.mm.plugin.image.d.aSY() + "luckymoney";
+      String str = com.tencent.mm.plugin.image.d.bbW() + "luckymoney";
       AppMethodBeat.o(64865);
       return str;
     }
@@ -291,149 +291,80 @@ public class a
     return "";
   }
   
-  public static a eex()
-  {
-    AppMethodBeat.i(64860);
-    a locala = (a)y.at(a.class);
-    AppMethodBeat.o(64860);
-    return locala;
-  }
-  
-  public static p eey()
-  {
-    AppMethodBeat.i(64864);
-    Log.i("MicroMsg.SubCoreLuckyMoney", "getConfigMgr()");
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (eex().yPb == null) {
-      eex().yPb = new p();
-    }
-    p localp = eex().yPb;
-    AppMethodBeat.o(64864);
-    return localp;
-  }
-  
-  public static com.tencent.mm.plugin.luckymoney.model.ae eez()
-  {
-    AppMethodBeat.i(213255);
-    Log.i("MicroMsg.SubCoreLuckyMoney", "getConfigMgrUnion()");
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (eex().yPc == null) {
-      eex().yPc = new com.tencent.mm.plugin.luckymoney.model.ae();
-    }
-    com.tencent.mm.plugin.luckymoney.model.ae localae = eex().yPc;
-    AppMethodBeat.o(213255);
-    return localae;
-  }
-  
-  public final void a(com.tencent.mm.plugin.messenger.foundation.a.a.i parami, i.c paramc)
-  {
-    AppMethodBeat.i(213259);
-    if (paramc.zqn.equals("delete"))
-    {
-      Log.i("MicroMsg.SubCoreLuckyMoney", "update red flag when delete msg: %s", new Object[] { paramc.talker });
-      aDq(paramc.talker);
-    }
-    AppMethodBeat.o(213259);
-  }
-  
   public final void a(ca paramca, i.c paramc, boolean[] paramArrayOfBoolean) {}
   
   public final void a(ca paramca, az paramaz, boolean paramBoolean, i.c paramc)
   {
-    AppMethodBeat.i(213258);
-    if ((paramBoolean) && (!ab.Eq(paramaz.field_username))) {
-      if (!aDr(paramaz.field_username)) {
-        break label46;
-      }
+    AppMethodBeat.i(272346);
+    if ((paramBoolean) && (ab.Lj(paramaz.field_username))) {
+      aNA(paramaz.field_username);
     }
-    label46:
-    for (int i = 1;; i = 0)
-    {
-      paramaz.nD(i);
-      AppMethodBeat.o(213258);
-      return;
-    }
+    AppMethodBeat.o(272346);
   }
   
-  public final void aDq(final String paramString)
+  public final void aNA(String paramString)
   {
-    AppMethodBeat.i(213256);
-    com.tencent.f.h.RTc.aX(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(213249);
-        boolean bool = a.aDs(paramString);
-        az localaz = ((l)com.tencent.mm.kernel.g.af(l.class)).aST().bjY(paramString);
-        if ((localaz != null) && (ab.Eq(paramString)))
-        {
-          Log.i("MicroMsg.SubCoreLuckyMoney", "update red flag: %s, %s", new Object[] { paramString, Boolean.valueOf(bool) });
-          if (!bool) {
-            break label132;
-          }
-        }
-        label132:
-        for (int i = 1;; i = 0)
-        {
-          localaz.nD(i);
-          Log.i("MicroMsg.SubCoreLuckyMoney", "update ret: %s", new Object[] { Integer.valueOf(((l)com.tencent.mm.kernel.g.af(l.class)).aST().a(localaz, paramString)) });
-          AppMethodBeat.o(213249);
-          return;
-        }
-      }
-    });
-    AppMethodBeat.o(213256);
+    AppMethodBeat.i(272342);
+    com.tencent.e.h.ZvG.d(new a.6(this, paramString), "update_hb_red_flag");
+    AppMethodBeat.o(272342);
   }
   
   public final void b(ca paramca, az paramaz, boolean paramBoolean, i.c paramc) {}
   
-  public void clearPluginData(int paramInt) {}
-  
-  public final w eeB()
+  public final void bT(String paramString, boolean paramBoolean)
   {
-    try
-    {
-      AppMethodBeat.i(64866);
-      if (this.yPd == null) {
-        this.yPd = new w();
-      }
-      w localw = this.yPd;
-      AppMethodBeat.o(64866);
-      return localw;
-    }
-    finally {}
+    AppMethodBeat.i(272339);
+    com.tencent.e.h.ZvG.d(new a.5(this, paramString, paramBoolean), "update_hb_red_flag_2");
+    AppMethodBeat.o(272339);
   }
   
-  public final v eet()
+  public void clearPluginData(int paramInt) {}
+  
+  public final com.tencent.mm.plugin.luckymoney.model.v eNN()
   {
     AppMethodBeat.i(64859);
-    v localv = (v)this.yPg.get();
+    com.tencent.mm.plugin.luckymoney.model.v localv = (com.tencent.mm.plugin.luckymoney.model.v)this.Etf.get();
     AppMethodBeat.o(64859);
     return localv;
   }
   
-  public final com.tencent.mm.plugin.luckymoney.story.b.b eeu()
+  public final com.tencent.mm.plugin.luckymoney.story.b.b eNO()
   {
     AppMethodBeat.i(163538);
-    com.tencent.mm.plugin.luckymoney.story.b.b localb = (com.tencent.mm.plugin.luckymoney.story.b.b)this.yPh.get();
+    com.tencent.mm.plugin.luckymoney.story.b.b localb = (com.tencent.mm.plugin.luckymoney.story.b.b)this.Etg.get();
     AppMethodBeat.o(163538);
     return localb;
   }
   
-  public final com.tencent.mm.plugin.luckymoney.story.b.d eev()
+  public final com.tencent.mm.plugin.luckymoney.story.b.d eNP()
   {
     AppMethodBeat.i(163539);
-    com.tencent.mm.plugin.luckymoney.story.b.d locald = (com.tencent.mm.plugin.luckymoney.story.b.d)this.yPi.get();
+    com.tencent.mm.plugin.luckymoney.story.b.d locald = (com.tencent.mm.plugin.luckymoney.story.b.d)this.Eth.get();
     AppMethodBeat.o(163539);
     return locald;
   }
   
-  public final f eew()
+  public final com.tencent.mm.plugin.luckymoney.story.b.f eNQ()
   {
-    AppMethodBeat.i(213254);
-    f localf = (f)this.yPj.get();
-    AppMethodBeat.o(213254);
+    AppMethodBeat.i(272329);
+    com.tencent.mm.plugin.luckymoney.story.b.f localf = (com.tencent.mm.plugin.luckymoney.story.b.f)this.Eti.get();
+    AppMethodBeat.o(272329);
     return localf;
+  }
+  
+  public final x eNW()
+  {
+    try
+    {
+      AppMethodBeat.i(64866);
+      if (this.Etb == null) {
+        this.Etb = new x();
+      }
+      x localx = this.Etb;
+      AppMethodBeat.o(64866);
+      return localx;
+    }
+    finally {}
   }
   
   public HashMap<Integer, h.b> getBaseDBFactories()
@@ -444,21 +375,26 @@ public class a
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(64862);
-    ap localap = ap.gni();
-    if (com.tencent.mm.kernel.g.aAc())
+    Object localObject = ap.hhK();
+    if (com.tencent.mm.kernel.h.aHB())
     {
-      com.tencent.mm.plugin.r.a.eAV().a(4, localap);
-      com.tencent.mm.kernel.g.aAi();
-      com.tencent.mm.kernel.g.aAg().hqi.a(1060, localap);
+      com.tencent.mm.plugin.ab.a.fmC().a(4, (com.tencent.mm.pluginsdk.model.app.u)localObject);
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHF().kcd.a(1060, (com.tencent.mm.an.i)localObject);
     }
-    this.yPk.alive();
-    ((s)com.tencent.mm.kernel.g.ah(s.class)).getSysCmdMsgExtension().a("paymsg", this.qvw, true);
-    ((l)com.tencent.mm.kernel.g.af(l.class)).aST().a(this);
-    ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().a(this, null);
-    AppForegroundDelegate.djR.a(this);
+    localObject = this.Etj;
+    com.tencent.mm.plugin.report.service.h.IzE.el(991, 18);
+    com.tencent.mm.pluginsdk.k.a.a.b.hii();
+    com.tencent.mm.pluginsdk.k.a.a.b.apP(58);
+    com.tencent.mm.kernel.h.aGY().a(721, (com.tencent.mm.an.i)localObject);
+    this.Etj.alive();
+    ((com.tencent.mm.plugin.messenger.foundation.a.v)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.messenger.foundation.a.v.class)).getSysCmdMsgExtension().a("paymsg", this.tUv, true);
+    ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbR().a(this);
+    ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).eSe().a(this, null);
+    AppForegroundDelegate.fby.a(this);
     boolean bool = false;
-    com.tencent.mm.kernel.g.aAi();
-    long l = com.tencent.mm.kernel.g.aAh().azQ().akg(352276);
+    com.tencent.mm.kernel.h.aHH();
+    long l = com.tencent.mm.kernel.h.aHG().aHp().ahV(352276);
     if (System.currentTimeMillis() - l >= 43200000L) {
       bool = true;
     }
@@ -466,57 +402,61 @@ public class a
     if ((paramBoolean) || (bool))
     {
       Log.i("MicroMsg.SubCoreLuckyMoney", "get service applist");
-      ap.gni().iv(MMApplicationContext.getContext());
+      ap.hhK().jy(MMApplicationContext.getContext());
     }
-    EventCenter.instance.addListener(this.yPe);
-    EventCenter.instance.addListener(this.yPm);
-    this.yPl.alive();
-    this.yPf = new bj();
-    m.efc();
+    EventCenter.instance.addListener(this.Etc);
+    EventCenter.instance.addListener(this.Etm);
+    this.Etk.alive();
+    this.Etl.alive();
+    this.Ete = new bk();
+    m.eOx();
     AppMethodBeat.o(64862);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(64863);
-    Object localObject1 = ap.gni();
-    if (com.tencent.mm.kernel.g.aAc())
+    Object localObject1 = ap.hhK();
+    if (com.tencent.mm.kernel.h.aHB())
     {
-      com.tencent.mm.plugin.r.a.eAV().b(4, (u)localObject1);
-      com.tencent.mm.kernel.g.aAi();
-      com.tencent.mm.kernel.g.aAg().hqi.b(1060, (com.tencent.mm.ak.i)localObject1);
-      ((ap)localObject1).JXl = false;
-      ((ap)localObject1).JXm = false;
+      com.tencent.mm.plugin.ab.a.fmC().b(4, (com.tencent.mm.pluginsdk.model.app.u)localObject1);
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHF().kcd.b(1060, (com.tencent.mm.an.i)localObject1);
+      ((ap)localObject1).QXF = false;
+      ((ap)localObject1).QXG = false;
     }
-    ((s)com.tencent.mm.kernel.g.ah(s.class)).getSysCmdMsgExtension().b("paymsg", this.qvw, true);
-    ((l)com.tencent.mm.kernel.g.af(l.class)).aST().b(this);
-    ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().a(this);
-    AppForegroundDelegate.djR.b(this);
+    ((com.tencent.mm.plugin.messenger.foundation.a.v)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.messenger.foundation.a.v.class)).getSysCmdMsgExtension().b("paymsg", this.tUv, true);
+    ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbR().b(this);
+    ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).eSe().a(this);
+    AppForegroundDelegate.fby.b(this);
     try
     {
-      this.yPd = null;
-      EventCenter.instance.removeListener(this.yPe);
-      EventCenter.instance.removeListener(this.yPm);
-      this.yPl.dead();
-      if (this.yPf != null)
+      this.Etb = null;
+      EventCenter.instance.removeListener(this.Etc);
+      EventCenter.instance.removeListener(this.Etm);
+      this.Etk.dead();
+      this.Etl.dead();
+      if (this.Ete != null)
       {
-        localObject1 = this.yPf;
-        EventCenter.instance.removeListener(((bj)localObject1).yYb);
-        if (((bj)localObject1).yXY != null)
+        localObject1 = this.Ete;
+        EventCenter.instance.removeListener(((bk)localObject1).ECh);
+        if (((bk)localObject1).ECe != null)
         {
-          com.tencent.mm.kernel.g.aAi();
-          com.tencent.mm.kernel.g.aAg().hqi.a(((bj)localObject1).yXY);
-          ((bj)localObject1).yXY = null;
+          com.tencent.mm.kernel.h.aHH();
+          com.tencent.mm.kernel.h.aHF().kcd.a(((bk)localObject1).ECe);
+          ((bk)localObject1).ECe = null;
         }
-        if (((bj)localObject1).yXZ != null)
+        if (((bk)localObject1).ECf != null)
         {
-          com.tencent.mm.kernel.g.aAi();
-          com.tencent.mm.kernel.g.aAg().hqi.a(((bj)localObject1).yXZ);
-          ((bj)localObject1).yXZ = null;
+          com.tencent.mm.kernel.h.aHH();
+          com.tencent.mm.kernel.h.aHF().kcd.a(((bk)localObject1).ECf);
+          ((bk)localObject1).ECf = null;
         }
       }
       m.unInit();
-      this.yPk.dead();
+      localObject1 = this.Etj;
+      com.tencent.mm.kernel.h.aGY().b(721, (com.tencent.mm.an.i)localObject1);
+      this.Etj.dead();
       AppMethodBeat.o(64863);
       return;
     }
@@ -528,26 +468,37 @@ public class a
   
   public void onAppBackground(String paramString)
   {
-    AppMethodBeat.i(213260);
-    com.tencent.f.h.RTc.aX(new Runnable()
+    AppMethodBeat.i(272350);
+    com.tencent.e.h.ZvG.d(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(213250);
+        AppMethodBeat.i(276801);
         a.a(a.this);
-        AppMethodBeat.o(213250);
+        AppMethodBeat.o(276801);
       }
-    });
-    AppMethodBeat.o(213260);
+    }, "check_hb_red_flag_background");
+    AppMethodBeat.o(272350);
   }
   
   public void onAppForeground(String paramString) {}
+  
+  public void onNotifyChange(com.tencent.mm.plugin.messenger.foundation.a.a.i parami, i.c paramc)
+  {
+    AppMethodBeat.i(272349);
+    if (paramc.EVM.equals("delete"))
+    {
+      Log.i("MicroMsg.SubCoreLuckyMoney", "update red flag when delete msg: %s", new Object[] { paramc.talker });
+      aNA(paramc.talker);
+    }
+    AppMethodBeat.o(272349);
+  }
   
   public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.b.a
  * JD-Core Version:    0.7.0.1
  */

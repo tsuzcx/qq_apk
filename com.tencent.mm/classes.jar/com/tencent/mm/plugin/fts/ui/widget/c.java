@@ -1,41 +1,41 @@
 package com.tencent.mm.plugin.fts.ui.widget;
 
-import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.tools.s;
+import com.tencent.mm.ui.tools.t;
 
 public final class c
-  extends s
+  extends t
 {
-  public boolean xfJ;
+  public boolean BRU;
   
   public final void a(FragmentActivity paramFragmentActivity, Menu paramMenu)
   {
-    AppMethodBeat.i(112329);
+    AppMethodBeat.i(191909);
     if (paramFragmentActivity == null)
     {
       Log.w("MicroMsg.FTSVoiceSearchViewHelper", "on add search menu, activity is null");
-      AppMethodBeat.o(112329);
+      AppMethodBeat.o(191909);
       return;
     }
-    if (this.Qwh == null) {
-      this.Qwh = new FTSActionBarSearchView(paramFragmentActivity);
+    if (this.XUk == null) {
+      this.XUk = new FTSActionBarSearchView(paramFragmentActivity);
     }
     super.a(paramFragmentActivity, paramMenu);
-    AppMethodBeat.o(112329);
+    AppMethodBeat.o(191909);
   }
   
-  public final boolean biK()
+  public final boolean bsi()
   {
-    return this.xfJ;
+    return this.BRU;
   }
   
   public final void setCursorVisible(boolean paramBoolean)
   {
     AppMethodBeat.i(112330);
-    ((FTSActionBarSearchView)this.Qwh).setCursorVisible(paramBoolean);
+    ((FTSActionBarSearchView)this.XUk).setCursorVisible(paramBoolean);
     AppMethodBeat.o(112330);
   }
   
@@ -57,7 +57,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.c
  * JD-Core Version:    0.7.0.1
  */

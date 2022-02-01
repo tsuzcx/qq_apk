@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.wallet.pwd.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.zr;
+import com.tencent.mm.f.a.aay;
 import com.tencent.mm.sdk.event.IListener;
 
 final class WalletForgotPwdUI$8
-  extends IListener<zr>
+  extends IListener<aay>
 {
   WalletForgotPwdUI$8(WalletForgotPwdUI paramWalletForgotPwdUI)
   {
     AppMethodBeat.i(160869);
-    this.__eventId = zr.class.getName().hashCode();
+    this.__eventId = aay.class.getName().hashCode();
     AppMethodBeat.o(160869);
   }
 }

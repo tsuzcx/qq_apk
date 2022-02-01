@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.finder.presenter.contract;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLotteryListContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLotteryListContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
 public final class FinderLotteryListContract
 {
-  public static final FinderLotteryListContract uYg;
+  public static final FinderLotteryListContract zOu;
   
   static
   {
-    AppMethodBeat.i(249877);
-    uYg = new FinderLotteryListContract();
-    AppMethodBeat.o(249877);
+    AppMethodBeat.i(286047);
+    zOu = new FinderLotteryListContract();
+    AppMethodBeat.o(286047);
   }
 }
 

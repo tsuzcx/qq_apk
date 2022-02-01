@@ -7,9 +7,9 @@ import com.tencent.stubs.logger.Log.Logger;
 public final class m
   implements Log.Logger
 {
-  public static m Wp()
+  public static m aaK()
   {
-    return a.dle;
+    return a.fcK;
   }
   
   public final boolean isLoggable(String paramString, int paramInt)
@@ -45,19 +45,19 @@ public final class m
   
   static final class a
   {
-    static final m dle;
+    static final m fcK;
     
     static
     {
       AppMethodBeat.i(123465);
-      dle = new m((byte)0);
+      fcK = new m((byte)0);
       AppMethodBeat.o(123465);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.app.m
  * JD-Core Version:    0.7.0.1
  */

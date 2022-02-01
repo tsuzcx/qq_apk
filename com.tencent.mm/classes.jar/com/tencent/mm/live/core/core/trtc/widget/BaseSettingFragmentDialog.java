@@ -2,8 +2,6 @@ package com.tencent.mm.live.core.core.trtc.widget;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -12,6 +10,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentActivity;
 
 public abstract class BaseSettingFragmentDialog
   extends DialogFragment
@@ -48,7 +48,7 @@ public abstract class BaseSettingFragmentDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.live.core.core.trtc.widget.BaseSettingFragmentDialog
  * JD-Core Version:    0.7.0.1
  */

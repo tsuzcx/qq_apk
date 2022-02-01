@@ -2,27 +2,27 @@ package com.tencent.mm.ui;
 
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.base.q.g;
 
 final class HomeUI$14
-  implements o.g
+  implements q.g
 {
   HomeUI$14(HomeUI paramHomeUI) {}
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    AppMethodBeat.i(232560);
+    AppMethodBeat.i(285951);
     switch (paramMenuItem.getItemId())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(232560);
+      AppMethodBeat.o(285951);
       return;
-      HomeUI.p(this.ODr);
-      AppMethodBeat.o(232560);
+      HomeUI.p(this.VWJ);
+      AppMethodBeat.o(285951);
       return;
-      HomeUI.o(this.ODr);
+      HomeUI.o(this.VWJ);
     }
   }
 }

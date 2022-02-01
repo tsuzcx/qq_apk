@@ -14,11 +14,11 @@ public class u
   public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(78556);
-    paramb.c("fail", null);
+    paramb.a("fail", null);
     AppMethodBeat.o(78556);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

@@ -553,11 +553,11 @@ public class LoginManager
     AppMethodBeat.o(7928);
   }
   
-  public void logInWithPublishPermissions(android.support.v4.app.Fragment paramFragment, Collection<String> paramCollection)
+  public void logInWithPublishPermissions(androidx.fragment.app.Fragment paramFragment, Collection<String> paramCollection)
   {
-    AppMethodBeat.i(7927);
+    AppMethodBeat.i(223763);
     logInWithPublishPermissions(new FragmentWrapper(paramFragment), paramCollection);
-    AppMethodBeat.o(7927);
+    AppMethodBeat.o(223763);
   }
   
   public void logInWithReadPermissions(Activity paramActivity, Collection<String> paramCollection)
@@ -576,11 +576,11 @@ public class LoginManager
     AppMethodBeat.o(7921);
   }
   
-  public void logInWithReadPermissions(android.support.v4.app.Fragment paramFragment, Collection<String> paramCollection)
+  public void logInWithReadPermissions(androidx.fragment.app.Fragment paramFragment, Collection<String> paramCollection)
   {
-    AppMethodBeat.i(7920);
+    AppMethodBeat.i(223736);
     logInWithReadPermissions(new FragmentWrapper(paramFragment), paramCollection);
-    AppMethodBeat.o(7920);
+    AppMethodBeat.o(223736);
   }
   
   public void logOut()
@@ -694,11 +694,11 @@ public class LoginManager
     AppMethodBeat.o(7924);
   }
   
-  public void reauthorizeDataAccess(android.support.v4.app.Fragment paramFragment)
+  public void reauthorizeDataAccess(androidx.fragment.app.Fragment paramFragment)
   {
-    AppMethodBeat.i(7925);
+    AppMethodBeat.i(223753);
     reauthorizeDataAccess(new FragmentWrapper(paramFragment));
-    AppMethodBeat.o(7925);
+    AppMethodBeat.o(223753);
   }
   
   public void registerCallback(CallbackManager paramCallbackManager, final FacebookCallback<LoginResult> paramFacebookCallback)
@@ -737,11 +737,11 @@ public class LoginManager
     AppMethodBeat.o(7909);
   }
   
-  public void resolveError(android.support.v4.app.Fragment paramFragment, GraphResponse paramGraphResponse)
+  public void resolveError(androidx.fragment.app.Fragment paramFragment, GraphResponse paramGraphResponse)
   {
-    AppMethodBeat.i(7908);
+    AppMethodBeat.i(223704);
     resolveError(new FragmentWrapper(paramFragment), paramGraphResponse);
-    AppMethodBeat.o(7908);
+    AppMethodBeat.o(223704);
   }
   
   public void retrieveLoginStatus(Context paramContext, long paramLong, LoginStatusCallback paramLoginStatusCallback)
@@ -904,7 +904,7 @@ public class LoginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.login.LoginManager
  * JD-Core Version:    0.7.0.1
  */

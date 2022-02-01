@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/k6n" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/asb" android:textColor="@color/ahz" android:id="@id/e9w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_centerVertical="true" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-10.0dip" android:layout_toRightOf="@id/e9w" android:layout_below="@id/e9w" android:layout_marginStart="-1.0dip">
+            <TextView android:textSize="@dimen/au5" android:textStyle="bold" android:textColor="@color/FG_2" android:gravity="center" android:id="@id/kat" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jlk" android:includeFontPadding="false" />
+            <TextView android:textSize="@dimen/au5" android:textColor="@color/FG_2" android:gravity="center" android:id="@id/e_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

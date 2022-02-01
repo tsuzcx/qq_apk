@@ -1,14 +1,14 @@
 package com.tencent.mm.compatible.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.af;
+import com.tencent.mm.compatible.deviceinfo.ag;
 
 public final class l
 {
-  public static boolean apy()
+  public static boolean avR()
   {
     AppMethodBeat.i(155909);
-    String str = af.get("ro.mediatek.platform");
+    String str = ag.get("ro.mediatek.platform");
     if ((str != null) && ((str.startsWith("MT")) || (str.startsWith("mt"))))
     {
       AppMethodBeat.o(155909);
@@ -20,7 +20,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.compatible.util.l
  * JD-Core Version:    0.7.0.1
  */

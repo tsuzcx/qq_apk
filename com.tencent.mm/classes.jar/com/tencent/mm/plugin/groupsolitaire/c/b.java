@@ -5,28 +5,28 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class b
 {
+  public int DpJ = 0;
+  public int DpK = 0;
+  public String bOX = " ";
   public String content = "";
   public long createtime = 9223372036854775807L;
-  public String separator = " ";
   public String username = "";
-  public int yfH = 0;
-  public int yfI = 0;
   
-  public static boolean id(String paramString1, String paramString2)
+  public static boolean im(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(194435);
+    AppMethodBeat.i(246629);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
     {
-      AppMethodBeat.o(194435);
+      AppMethodBeat.o(246629);
       return false;
     }
-    boolean bool = Util.isEqual(paramString1.replaceAll(com.tencent.mm.plugin.groupsolitaire.b.b.dXS(), "").replace(" ", "").toLowerCase(), paramString2.replaceAll(com.tencent.mm.plugin.groupsolitaire.b.b.dXS(), "").replace(" ", "").toLowerCase());
-    AppMethodBeat.o(194435);
+    boolean bool = Util.isEqual(paramString1.replaceAll(com.tencent.mm.plugin.groupsolitaire.b.b.eBq(), "").replace(" ", "").toLowerCase(), paramString2.replaceAll(com.tencent.mm.plugin.groupsolitaire.b.b.eBq(), "").replace(" ", "").toLowerCase());
+    AppMethodBeat.o(246629);
     return bool;
   }
   
   /* Error */
-  public final b dXW()
+  public final b eBu()
   {
     // Byte code:
     //   0: ldc 86
@@ -41,12 +41,12 @@ public final class b
     //   18: putfield 21	com/tencent/mm/plugin/groupsolitaire/c/b:username	Ljava/lang/String;
     //   21: aload_1
     //   22: aload_0
-    //   23: getfield 23	com/tencent/mm/plugin/groupsolitaire/c/b:yfH	I
-    //   26: putfield 23	com/tencent/mm/plugin/groupsolitaire/c/b:yfH	I
+    //   23: getfield 23	com/tencent/mm/plugin/groupsolitaire/c/b:DpJ	I
+    //   26: putfield 23	com/tencent/mm/plugin/groupsolitaire/c/b:DpJ	I
     //   29: aload_1
     //   30: aload_0
-    //   31: getfield 27	com/tencent/mm/plugin/groupsolitaire/c/b:separator	Ljava/lang/String;
-    //   34: putfield 27	com/tencent/mm/plugin/groupsolitaire/c/b:separator	Ljava/lang/String;
+    //   31: getfield 27	com/tencent/mm/plugin/groupsolitaire/c/b:bOX	Ljava/lang/String;
+    //   34: putfield 27	com/tencent/mm/plugin/groupsolitaire/c/b:bOX	Ljava/lang/String;
     //   37: aload_1
     //   38: aload_0
     //   39: getfield 31	com/tencent/mm/plugin/groupsolitaire/c/b:createtime	J
@@ -57,8 +57,8 @@ public final class b
     //   50: putfield 33	com/tencent/mm/plugin/groupsolitaire/c/b:content	Ljava/lang/String;
     //   53: aload_1
     //   54: aload_0
-    //   55: getfield 35	com/tencent/mm/plugin/groupsolitaire/c/b:yfI	I
-    //   58: putfield 35	com/tencent/mm/plugin/groupsolitaire/c/b:yfI	I
+    //   55: getfield 35	com/tencent/mm/plugin/groupsolitaire/c/b:DpK	I
+    //   58: putfield 35	com/tencent/mm/plugin/groupsolitaire/c/b:DpK	I
     //   61: ldc 86
     //   63: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   66: aload_1
@@ -115,7 +115,7 @@ public final class b
       AppMethodBeat.o(110401);
       return true;
     }
-    boolean bool = id(this.content.trim(), paramObject.content.trim());
+    boolean bool = im(this.content.trim(), paramObject.content.trim());
     AppMethodBeat.o(110401);
     return bool;
   }
@@ -128,7 +128,7 @@ public final class b
       AppMethodBeat.o(110400);
       return 0;
     }
-    int i = this.content.trim().replaceAll(com.tencent.mm.plugin.groupsolitaire.b.b.dXS(), "").replace(" ", "").toLowerCase().hashCode();
+    int i = this.content.trim().replaceAll(com.tencent.mm.plugin.groupsolitaire.b.b.eBq(), "").replace(" ", "").toLowerCase().hashCode();
     AppMethodBeat.o(110400);
     return i;
   }
@@ -136,14 +136,14 @@ public final class b
   public final String toString()
   {
     AppMethodBeat.i(110398);
-    String str = "GroupSolitatireItem{username='" + this.username + '\'' + ", asheader=" + this.yfH + ", separator='" + this.separator + '\'' + ", createtime=" + this.createtime + ", content='" + this.content + '\'' + ", orderNum='" + this.yfI + '\'' + '}';
+    String str = "GroupSolitatireItem{username='" + this.username + '\'' + ", asheader=" + this.DpJ + ", separator='" + this.bOX + '\'' + ", createtime=" + this.createtime + ", content='" + this.content + '\'' + ", orderNum='" + this.DpK + '\'' + '}';
     AppMethodBeat.o(110398);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.groupsolitaire.c.b
  * JD-Core Version:    0.7.0.1
  */

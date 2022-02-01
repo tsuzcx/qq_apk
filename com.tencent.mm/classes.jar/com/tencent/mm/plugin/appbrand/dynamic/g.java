@@ -2,7 +2,9 @@ package com.tencent.mm.plugin.appbrand.dynamic;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.network.p.a;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.Collection;
@@ -10,21 +12,21 @@ import java.util.Iterator;
 
 public final class g
 {
-  private static p.a lme;
+  private static p.a ogQ;
   
   static
   {
     AppMethodBeat.i(121177);
-    lme = new p.a()
+    ogQ = new p.a()
     {
       public final void onNetworkChange(int paramAnonymousInt)
       {
         AppMethodBeat.i(121173);
         Bundle localBundle = new Bundle();
         localBundle.putInt("status", paramAnonymousInt);
-        Iterator localIterator = i.bBL().bBM().iterator();
+        Iterator localIterator = i.bNh().bNi().iterator();
         while (localIterator.hasNext()) {
-          h.a((String)localIterator.next(), localBundle, g.a.class, null);
+          j.a((String)localIterator.next(), localBundle, g.a.class, null);
         }
         AppMethodBeat.o(121173);
       }
@@ -40,26 +42,22 @@ public final class g
       AppMethodBeat.o(121175);
       return;
     }
-    com.tencent.mm.kernel.g.aAi();
-    com.tencent.mm.kernel.g.aAg().a(lme);
+    h.aHH();
+    h.aHF().a(ogQ);
     AppMethodBeat.o(121175);
   }
   
   public static void release()
   {
     AppMethodBeat.i(121176);
-    com.tencent.mm.kernel.g.aAi();
-    com.tencent.mm.kernel.g.aAg().b(lme);
+    h.aHH();
+    h.aHF().b(ogQ);
     AppMethodBeat.o(121176);
   }
-  
-  static final class a
-    implements com.tencent.mm.ipcinvoker.b<Bundle, Bundle>
-  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.g
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.gamelife.g;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessageInterceptor$Companion;", "", "()V", "TAG", "", "plugin-gamelife_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessageInterceptor$Companion;", "", "()V", "TAG", "", "plugin-gamelife_release"})
 public final class b$a {}
 
 

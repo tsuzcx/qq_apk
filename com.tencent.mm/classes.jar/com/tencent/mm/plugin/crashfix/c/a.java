@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
 
 public final class a
 {
-  public static void c(Field paramField)
+  public static void e(Field paramField)
   {
     AppMethodBeat.i(145624);
     try

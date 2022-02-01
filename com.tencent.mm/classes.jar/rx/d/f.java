@@ -9,30 +9,30 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public final class f
 {
-  private static final f Uoc;
-  static final b Uoi;
-  private final AtomicReference<b> Uod;
-  private final AtomicReference<d> Uoe;
-  private final AtomicReference<h> Uof;
-  private final AtomicReference<a> Uog;
-  private final AtomicReference<g> Uoh;
+  private static final f abRq;
+  static final b abRw;
+  private final AtomicReference<b> abRr;
+  private final AtomicReference<d> abRs;
+  private final AtomicReference<h> abRt;
+  private final AtomicReference<a> abRu;
+  private final AtomicReference<g> abRv;
   
   static
   {
     AppMethodBeat.i(90495);
-    Uoc = new f();
-    Uoi = new b() {};
+    abRq = new f();
+    abRw = new b() {};
     AppMethodBeat.o(90495);
   }
   
   f()
   {
     AppMethodBeat.i(90488);
-    this.Uod = new AtomicReference();
-    this.Uoe = new AtomicReference();
-    this.Uof = new AtomicReference();
-    this.Uog = new AtomicReference();
-    this.Uoh = new AtomicReference();
+    this.abRr = new AtomicReference();
+    this.abRs = new AtomicReference();
+    this.abRt = new AtomicReference();
+    this.abRu = new AtomicReference();
+    this.abRv = new AtomicReference();
     AppMethodBeat.o(90488);
   }
   
@@ -106,124 +106,124 @@ public final class f
   }
   
   @Deprecated
-  public static f hQW()
+  public static f iWg()
   {
-    return Uoc;
+    return abRq;
   }
   
-  public final b hQX()
+  public final b iWh()
   {
     AppMethodBeat.i(90489);
     Object localObject;
-    if (this.Uod.get() == null)
+    if (this.abRr.get() == null)
     {
       localObject = a(b.class, System.getProperties());
       if (localObject != null) {
         break label58;
       }
-      this.Uod.compareAndSet(null, Uoi);
+      this.abRr.compareAndSet(null, abRw);
     }
     for (;;)
     {
-      localObject = (b)this.Uod.get();
+      localObject = (b)this.abRr.get();
       AppMethodBeat.o(90489);
       return localObject;
       label58:
-      this.Uod.compareAndSet(null, (b)localObject);
+      this.abRr.compareAndSet(null, (b)localObject);
     }
   }
   
-  public final d hQY()
+  public final d iWi()
   {
     AppMethodBeat.i(90490);
     Object localObject;
-    if (this.Uoe.get() == null)
+    if (this.abRs.get() == null)
     {
       localObject = a(d.class, System.getProperties());
       if (localObject != null) {
         break label58;
       }
-      this.Uoe.compareAndSet(null, e.hQV());
+      this.abRs.compareAndSet(null, e.iWf());
     }
     for (;;)
     {
-      localObject = (d)this.Uoe.get();
+      localObject = (d)this.abRs.get();
       AppMethodBeat.o(90490);
       return localObject;
       label58:
-      this.Uoe.compareAndSet(null, (d)localObject);
+      this.abRs.compareAndSet(null, (d)localObject);
     }
   }
   
-  public final h hQZ()
+  public final h iWj()
   {
     AppMethodBeat.i(90491);
     Object localObject;
-    if (this.Uof.get() == null)
+    if (this.abRt.get() == null)
     {
       localObject = a(h.class, System.getProperties());
       if (localObject != null) {
         break label58;
       }
-      this.Uof.compareAndSet(null, i.hRg());
+      this.abRt.compareAndSet(null, i.iWq());
     }
     for (;;)
     {
-      localObject = (h)this.Uof.get();
+      localObject = (h)this.abRt.get();
       AppMethodBeat.o(90491);
       return localObject;
       label58:
-      this.Uof.compareAndSet(null, (h)localObject);
+      this.abRt.compareAndSet(null, (h)localObject);
     }
   }
   
-  public final a hRa()
+  public final a iWk()
   {
     AppMethodBeat.i(90492);
     Object localObject;
-    if (this.Uog.get() == null)
+    if (this.abRu.get() == null)
     {
       localObject = a(a.class, System.getProperties());
       if (localObject != null) {
         break label63;
       }
-      this.Uog.compareAndSet(null, new a() {});
+      this.abRu.compareAndSet(null, new a() {});
     }
     for (;;)
     {
-      localObject = (a)this.Uog.get();
+      localObject = (a)this.abRu.get();
       AppMethodBeat.o(90492);
       return localObject;
       label63:
-      this.Uog.compareAndSet(null, (a)localObject);
+      this.abRu.compareAndSet(null, (a)localObject);
     }
   }
   
-  public final g hRb()
+  public final g iWl()
   {
     AppMethodBeat.i(90494);
     Object localObject;
-    if (this.Uoh.get() == null)
+    if (this.abRv.get() == null)
     {
       localObject = a(g.class, System.getProperties());
       if (localObject != null) {
         break label58;
       }
-      this.Uoh.compareAndSet(null, g.hRf());
+      this.abRv.compareAndSet(null, g.iWp());
     }
     for (;;)
     {
-      localObject = (g)this.Uoh.get();
+      localObject = (g)this.abRv.get();
       AppMethodBeat.o(90494);
       return localObject;
       label58:
-      this.Uoh.compareAndSet(null, (g)localObject);
+      this.abRv.compareAndSet(null, (g)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.d.f
  * JD-Core Version:    0.7.0.1
  */

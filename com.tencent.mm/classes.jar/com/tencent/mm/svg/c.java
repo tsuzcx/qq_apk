@@ -15,7 +15,7 @@ public abstract class c
   protected static void done(Looper paramLooper)
   {
     if (paramLooper != null) {
-      b.h(paramLooper);
+      b.j(paramLooper);
     }
   }
   
@@ -85,7 +85,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.svg.c
  * JD-Core Version:    0.7.0.1
  */

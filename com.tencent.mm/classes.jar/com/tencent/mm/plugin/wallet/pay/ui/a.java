@@ -6,36 +6,36 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jd;
-import com.tencent.mm.g.a.jd.b;
+import com.tencent.mm.f.a.jt;
+import com.tencent.mm.f.a.jt.b;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.ui.h;
+import com.tencent.mm.wallet_core.ui.i;
 
 public final class a
 {
-  a HFX = null;
+  a OxQ = null;
   private Context mContext;
   private Dialog tipDialog = null;
   
   public a(Context paramContext, a parama)
   {
     this.mContext = paramContext;
-    this.HFX = parama;
+    this.OxQ = parama;
   }
   
-  public final void b(boolean paramBoolean, int paramInt, String paramString)
+  public final void c(boolean paramBoolean, int paramInt, String paramString)
   {
     AppMethodBeat.i(69303);
-    final jd localjd = new jd();
-    localjd.dNN = null;
-    localjd.dNM.dNO = paramBoolean;
+    final jt localjt = new jt();
+    localjt.fGY = null;
+    localjt.fGX.fGZ = paramBoolean;
     if ((paramBoolean) && ((this.tipDialog == null) || ((this.tipDialog != null) && (!this.tipDialog.isShowing()))))
     {
       if (this.tipDialog != null) {
         this.tipDialog.dismiss();
       }
-      this.tipDialog = h.a(this.mContext, false, new DialogInterface.OnCancelListener()
+      this.tipDialog = i.a(this.mContext, false, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
@@ -45,22 +45,22 @@ public final class a
         }
       });
     }
-    localjd.dNM.dNP = paramInt;
-    localjd.dNM.dNQ = paramString;
-    localjd.callback = new Runnable()
+    localjt.fGX.fHa = paramInt;
+    localjt.fGX.fHb = paramString;
+    localjt.callback = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(69301);
         Log.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback");
-        jd.b localb = localjd.dNN;
+        jt.b localb = localjt.fGY;
         if ((localb != null) && (localb.isSuccess))
         {
           Log.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result.isSuccess is true");
           a.this.closeTipDialog();
-          if (a.this.HFX != null)
+          if (a.this.OxQ != null)
           {
-            a.this.HFX.d(localb.isSuccess, localb.dNR, localb.dNS);
+            a.this.OxQ.h(localb.isSuccess, localb.fHc, localb.fHd);
             AppMethodBeat.o(69301);
           }
         }
@@ -69,8 +69,8 @@ public final class a
           if ((localb != null) && (!localb.isSuccess))
           {
             a.this.closeTipDialog();
-            if (a.this.HFX != null) {
-              a.this.HFX.d(localb.isSuccess, localb.dNR, localb.dNS);
+            if (a.this.OxQ != null) {
+              a.this.OxQ.h(localb.isSuccess, localb.fHc, localb.fHd);
             }
             Log.e("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result.isSuccess is false");
             AppMethodBeat.o(69301);
@@ -81,7 +81,7 @@ public final class a
         AppMethodBeat.o(69301);
       }
     };
-    EventCenter.instance.asyncPublish(localjd, Looper.getMainLooper());
+    EventCenter.instance.asyncPublish(localjt, Looper.getMainLooper());
     AppMethodBeat.o(69303);
   }
   
@@ -98,13 +98,13 @@ public final class a
   
   public final void release()
   {
-    this.HFX = null;
+    this.OxQ = null;
     this.mContext = null;
   }
   
   public static abstract interface a
   {
-    public abstract void d(boolean paramBoolean, String paramString1, String paramString2);
+    public abstract void h(boolean paramBoolean, String paramString1, String paramString2);
   }
 }
 

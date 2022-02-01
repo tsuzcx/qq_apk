@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.do;
-import com.tencent.mm.protocal.protobuf.dp;
-import com.tencent.mm.protocal.protobuf.eku;
+import com.tencent.mm.protocal.protobuf.dm;
+import com.tencent.mm.protocal.protobuf.dn;
+import com.tencent.mm.protocal.protobuf.euz;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -20,11 +20,11 @@ public final class c
   implements m
 {
   private i callback;
-  private List<String> sNv;
+  private List<String> wtq;
   
   public c(List<String> paramList)
   {
-    this.sNv = paramList;
+    this.wtq = paramList;
   }
   
   public final int doScene(g paramg, i parami)
@@ -32,27 +32,27 @@ public final class c
     AppMethodBeat.i(73763);
     this.callback = parami;
     parami = new d.a();
-    do localdo = new do();
+    dm localdm = new dm();
     ArrayList localArrayList = new ArrayList();
-    if (this.sNv != null)
+    if (this.wtq != null)
     {
       i = 0;
-      while (i < this.sNv.size())
+      while (i < this.wtq.size())
       {
-        eku localeku = new eku();
-        localeku.UserName = ((String)this.sNv.get(i));
-        localArrayList.add(localeku);
+        euz localeuz = new euz();
+        localeuz.UserName = ((String)this.wtq.get(i));
+        localArrayList.add(localeuz);
         i += 1;
       }
     }
-    localdo.KHC.addAll(localArrayList);
-    parami.iLN = localdo;
-    parami.iLO = new dp();
+    localdm.RIV.addAll(localArrayList);
+    parami.lBU = localdm;
+    parami.lBV = new dn();
     parami.uri = "/cgi-bin/micromsg-bin/addtrustedfriends";
     parami.funcId = 583;
-    parami.iLP = 0;
-    parami.iLP = 0;
-    int i = dispatch(paramg, parami.aXF(), this);
+    parami.lBW = 0;
+    parami.lBW = 0;
+    int i = dispatch(paramg, parami.bgN(), this);
     AppMethodBeat.o(73763);
     return i;
   }

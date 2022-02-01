@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/aum" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include android:id="@id/kjj" android:visibility="gone" layout="@layout/cii" />
+    </FrameLayout>
+</LinearLayout>

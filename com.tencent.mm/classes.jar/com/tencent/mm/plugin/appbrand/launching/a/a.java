@@ -2,48 +2,48 @@ package com.tencent.mm.plugin.appbrand.launching.a;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.co.f;
-import com.tencent.mm.co.g;
-import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.an.c;
+import com.tencent.mm.cw.f;
+import com.tencent.mm.cw.g;
+import com.tencent.mm.plugin.appbrand.app.m;
 import com.tencent.mm.plugin.appbrand.appcache.predownload.e.b;
 import com.tencent.mm.plugin.appbrand.appcache.predownload.e.e;
-import com.tencent.mm.protocal.protobuf.chd;
-import com.tencent.mm.protocal.protobuf.che;
-import com.tencent.mm.protocal.protobuf.fcc;
-import com.tencent.mm.protocal.protobuf.fdb;
+import com.tencent.mm.protocal.protobuf.cpz;
+import com.tencent.mm.protocal.protobuf.cqa;
+import com.tencent.mm.protocal.protobuf.fnd;
+import com.tencent.mm.protocal.protobuf.foc;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  public final f<com.tencent.mm.ak.c.a<che>> a(chd paramchd, boolean paramBoolean, final c paramc)
+  public final f<com.tencent.mm.an.c.a<cqa>> a(cpz paramcpz, boolean paramBoolean, final c paramc)
   {
     AppMethodBeat.i(180318);
-    String str = paramchd.jfi;
-    int i = paramchd.Mmn.Scene;
-    int j = paramchd.Mmp.MqF;
-    Object localObject = ((e)n.W(e.class)).bd(str, i);
+    String str = paramcpz.lVG;
+    int i = paramcpz.Txh.CPw;
+    int j = paramcpz.Txj.TBI;
+    Object localObject = ((e)m.W(e.class)).bw(str, i);
     if (((Pair)localObject).first != null)
     {
       Log.i("MicroMsg.AppBrand.CgiLaunchSimpleIntercepor", "before run, get issued data by appId(%s) scene(%d)", new Object[] { str, Integer.valueOf(i) });
-      paramchd = com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.kQt;
+      paramcpz = com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.nKB;
       com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.F(((Long)((Pair)localObject).second).longValue(), 106L);
-      paramchd = g.c(new com.tencent.mm.vending.g.c.a() {});
+      paramcpz = g.c(new com.tencent.mm.vending.g.c.a() {});
       AppMethodBeat.o(180318);
-      return paramchd;
+      return paramcpz;
     }
-    Log.i("MicroMsg.AppBrand.CgiLaunchSimpleIntercepor", "run() appId[%s], scene[%d], libVersion[%d] performanceLevel[%d]", new Object[] { str, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramchd.Mmt) });
+    Log.i("MicroMsg.AppBrand.CgiLaunchSimpleIntercepor", "run() appId[%s], scene[%d], libVersion[%d] performanceLevel[%d]", new Object[] { str, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramcpz.Txn) });
     if (!paramBoolean)
     {
-      paramchd = ((b)n.W(b.class)).J(str, 2, i);
-      if (((Boolean)paramchd.first).booleanValue())
+      paramcpz = ((b)m.W(b.class)).J(str, 2, i);
+      if (((Boolean)paramcpz.first).booleanValue())
       {
-        localObject = com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.kQt;
-        com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.F(((Integer)paramchd.second).intValue(), 168L);
+        localObject = com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.nKB;
+        com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.F(((Integer)paramcpz.second).intValue(), 168L);
         Log.i("MicroMsg.AppBrand.CgiLaunchSimpleIntercepor", "async launch with appid(%s) scene(%d) blocked", new Object[] { str, Integer.valueOf(i) });
-        paramchd = g.c(new com.tencent.mm.vending.g.c.a() {});
+        paramcpz = g.c(new com.tencent.mm.vending.g.c.a() {});
         AppMethodBeat.o(180318);
-        return paramchd;
+        return paramcpz;
       }
     }
     AppMethodBeat.o(180318);
@@ -52,7 +52,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,18 @@
 package com.tencent.mm.wallet_core.b.a;
 
 import android.content.Context;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cby;
-import com.tencent.mm.protocal.protobuf.cbz;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.protocal.protobuf.ckb;
+import com.tencent.mm.protocal.protobuf.ckc;
+import com.tencent.mm.protocal.protobuf.eae;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -28,11 +29,11 @@ public abstract class a
   private i callback;
   private d rr;
   
-  public abstract String czD();
+  public abstract String cOd();
   
-  public abstract int czE();
+  public abstract int cOe();
   
-  public boolean czF()
+  public boolean cOf()
   {
     return false;
   }
@@ -45,14 +46,14 @@ public abstract class a
   
   public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    Log.i("MiroMsg.NetSceneTenpayH5TransferBase", "Cmd : " + czE() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString + " " + getType());
-    cbz localcbz = (cbz)((d)params).iLL.iLR;
+    Log.i("MiroMsg.NetSceneTenpayH5TransferBase", "Cmd : " + cOe() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString + " " + getType());
+    ckc localckc = (ckc)d.c.b(((d)params).lBS);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramInt1 = localcbz.MhU;
-      params = z.b(localcbz.MhT);
+      paramInt1 = localckc.TrH;
+      params = z.b(localckc.TrG);
       if ((paramInt1 == 0) && (!Util.isNullOrNil(params))) {
-        paramInt1 = localcbz.dGe;
+        paramInt1 = localckc.fyO;
       }
     }
     for (;;)
@@ -65,9 +66,9 @@ public abstract class a
         paramArrayOfByte = localJSONObject.optString("retmsg");
         params = paramArrayOfByte;
         if (!Util.isNullOrNil(paramArrayOfByte)) {
-          break label385;
+          break label386;
         }
-        params = localcbz.errorMsg;
+        params = localckc.errorMsg;
       }
       catch (Exception paramString)
       {
@@ -76,11 +77,11 @@ public abstract class a
         i = 1000;
         paramInt1 = 2;
       }
-      if (czF())
+      if (cOf())
       {
         onGYNetEnd(i, params, localJSONObject);
         if (paramInt2 != 0) {
-          Log.e("MiroMsg.NetSceneTenpayH5TransferBase", "Cmd : " + czE() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
+          Log.e("MiroMsg.NetSceneTenpayH5TransferBase", "Cmd : " + cOe() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
         }
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
         return;
@@ -94,13 +95,13 @@ public abstract class a
         continue;
         do
         {
-          paramString = MMApplicationContext.getContext().getString(2131767667);
+          paramString = MMApplicationContext.getContext().getString(a.i.wallet_data_err);
           paramInt2 = i;
           paramInt3 = paramInt1;
           break;
           paramInt2 = 1000;
           paramInt3 = 2;
-          paramString = localcbz.MhV;
+          paramString = localckc.TrI;
           break;
           paramString = XmlParser.parseXml(paramString, "e", null);
           i = paramInt2;
@@ -112,7 +113,7 @@ public abstract class a
       else
       {
         continue;
-        label385:
+        label386:
         if (i == 0) {
           if (paramInt1 == 0) {}
         }
@@ -127,18 +128,18 @@ public abstract class a
     if (this.rr == null)
     {
       localObject1 = new d.a();
-      ((d.a)localObject1).iLN = new cby();
-      ((d.a)localObject1).iLO = new cbz();
-      ((d.a)localObject1).uri = czD();
+      ((d.a)localObject1).lBU = new ckb();
+      ((d.a)localObject1).lBV = new ckc();
+      ((d.a)localObject1).uri = cOd();
       ((d.a)localObject1).funcId = getType();
-      ((d.a)localObject1).iLP = 0;
+      ((d.a)localObject1).lBW = 0;
       ((d.a)localObject1).respCmdId = 0;
-      this.rr = ((d.a)localObject1).aXF();
+      this.rr = ((d.a)localObject1).bgN();
       this.rr.setIsUserCmd(true);
     }
-    Object localObject1 = (cby)this.rr.iLK.iLR;
-    ((cby)localObject1).MhQ = czE();
-    ((cby)localObject1).MhR = 1;
+    Object localObject1 = (ckb)d.b.b(this.rr.lBR);
+    ((ckb)localObject1).TrD = cOe();
+    ((ckb)localObject1).TrE = 1;
     Object[] arrayOfObject = paramMap.keySet().toArray();
     Arrays.sort(arrayOfObject);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -161,14 +162,14 @@ public abstract class a
       }
       i += 1;
     }
-    Log.i("MiroMsg.NetSceneTenpayH5TransferBase", "Cmd : " + ((cby)localObject1).MhQ + ", req = " + localStringBuilder.toString());
+    Log.i("MiroMsg.NetSceneTenpayH5TransferBase", "Cmd : " + ((ckb)localObject1).TrD + ", req = " + localStringBuilder.toString());
     paramMap = localStringBuilder.toString().getBytes();
-    ((cby)localObject1).MhS = new SKBuiltinBuffer_t().setBuffer(paramMap);
+    ((ckb)localObject1).TrF = new eae().dc(paramMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.wallet_core.b.a.a
  * JD-Core Version:    0.7.0.1
  */

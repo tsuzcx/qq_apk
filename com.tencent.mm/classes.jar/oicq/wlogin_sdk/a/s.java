@@ -5,17 +5,17 @@ public final class s
 {
   public s()
   {
-    this.Ucx = 281;
+    this.abFM = 281;
   }
   
-  public final Boolean hPC()
+  public final Boolean iUK()
   {
     return Boolean.TRUE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     oicq.wlogin_sdk.a.s
  * JD-Core Version:    0.7.0.1
  */

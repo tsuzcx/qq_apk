@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.notification.c;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Looper;
-import android.support.v4.app.s.c;
+import androidx.core.app.e.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.nn;
+import com.tencent.mm.f.a.oj;
 import com.tencent.mm.plugin.notification.d.b.a;
 import com.tencent.mm.plugin.notification.d.f;
 import com.tencent.mm.plugin.notification.ui.FailSendMsgNotification;
@@ -23,22 +23,22 @@ import java.util.Iterator;
 public abstract class a<T>
   implements c
 {
-  protected b AGQ = null;
-  protected FailSendMsgNotification AGR = null;
-  protected boolean AGS = false;
-  protected ArrayList<Long> AGT = null;
-  protected ArrayList<Long> AGU = null;
-  protected ArrayList<Long> AGV = null;
-  private ArrayList<MTimerHandler> AGW = new ArrayList();
-  private MTimerHandler AGX = null;
-  private IListener AGY = new a.1(this);
+  protected FailSendMsgNotification GAa = null;
+  protected boolean GAb = false;
+  protected ArrayList<Long> GAc = null;
+  protected ArrayList<Long> GAd = null;
+  protected ArrayList<Long> GAe = null;
+  private ArrayList<MTimerHandler> GAf = new ArrayList();
+  private MTimerHandler GAg = null;
+  private IListener GAh = new a.1(this);
+  protected b GzZ = null;
   protected Context mContext = null;
   
   public a()
   {
-    this.AGR.AHJ = new com.tencent.mm.plugin.notification.ui.a()
+    this.GAa.GAT = new com.tencent.mm.plugin.notification.ui.a()
     {
-      public final void eyL()
+      public final void fkq()
       {
         AppMethodBeat.i(26728);
         Log.d("MicroMsg.AbstractSendMsgFailNotification", "onClickResendButton");
@@ -47,17 +47,17 @@ public abstract class a<T>
           public final void run()
           {
             AppMethodBeat.i(26726);
-            h.CyF.a(11425, new Object[] { Integer.valueOf(a.this.getType()), Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0) });
-            a.this.eyI();
+            h.IzE.a(11425, new Object[] { Integer.valueOf(a.this.getType()), Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0) });
+            a.this.fkn();
             a.a(a.this);
-            a.this.eyz();
+            a.this.fke();
             AppMethodBeat.o(26726);
           }
         });
         AppMethodBeat.o(26728);
       }
       
-      public final void eyM()
+      public final void fkr()
       {
         AppMethodBeat.i(26729);
         Log.d("MicroMsg.AbstractSendMsgFailNotification", "onClickOmitButton");
@@ -66,32 +66,32 @@ public abstract class a<T>
           public final void run()
           {
             AppMethodBeat.i(26727);
-            h.CyF.a(11425, new Object[] { Integer.valueOf(a.this.getType()), Integer.valueOf(2), Integer.valueOf(0), Integer.valueOf(0) });
-            a.this.eyI();
-            a.this.eyE();
+            h.IzE.a(11425, new Object[] { Integer.valueOf(a.this.getType()), Integer.valueOf(2), Integer.valueOf(0), Integer.valueOf(0) });
+            a.this.fkn();
+            a.this.fkj();
             a.b(a.this);
-            a.this.AGR.dismiss();
+            a.this.GAa.dismiss();
             AppMethodBeat.o(26727);
           }
         });
         AppMethodBeat.o(26729);
       }
     };
-    this.AGR.AHK = new com.tencent.mm.plugin.notification.ui.b()
+    this.GAa.GAU = new com.tencent.mm.plugin.notification.ui.b()
     {
-      public final void eyN()
+      public final void fks()
       {
         AppMethodBeat.i(26730);
-        h.CyF.a(11425, new Object[] { Integer.valueOf(a.this.getType()), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0) });
-        a.this.eyI();
-        a.this.eyK();
-        if (!a.this.AGS) {
-          a.this.AGR.dismiss();
+        h.IzE.a(11425, new Object[] { Integer.valueOf(a.this.getType()), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0) });
+        a.this.fkn();
+        a.this.fkp();
+        if (!a.this.GAb) {
+          a.this.GAa.dismiss();
         }
         AppMethodBeat.o(26730);
       }
     };
-    this.AGR.AHL = new com.tencent.mm.plugin.notification.ui.c()
+    this.GAa.GAV = new com.tencent.mm.plugin.notification.ui.c()
     {
       public final void onDismiss()
       {
@@ -100,133 +100,22 @@ public abstract class a<T>
         AppMethodBeat.o(26731);
       }
     };
-    eyt();
+    fjY();
   }
   
-  private void eyA()
+  private void fjY()
   {
-    Log.d("MicroMsg.AbstractSendMsgFailNotification", "checkMsgExistAfterResend, before check, mMsgList.size:%d, mSuccessList.size:%d, mFailList.size:%d", new Object[] { Integer.valueOf(this.AGQ.AHb.size()), Integer.valueOf(this.AGT.size()), Integer.valueOf(this.AGU.size()) });
-    eyB();
-    eyC();
-    Log.d("MicroMsg.AbstractSendMsgFailNotification", "checkMsgExistAfterResend, after check, mMsgList.size:%d, mSuccessList.size:%d, mFailList.size:%d", new Object[] { Integer.valueOf(this.AGQ.AHb.size()), Integer.valueOf(this.AGT.size()), Integer.valueOf(this.AGU.size()) });
-  }
-  
-  private void eyB()
-  {
-    Object localObject = new ArrayList();
-    int i = 0;
-    while (i < this.AGQ.AHb.size())
-    {
-      long l = this.AGQ.get(i);
-      if (!HB(l)) {
-        ((ArrayList)localObject).add(Long.valueOf(l));
-      }
-      i += 1;
-    }
-    if (((ArrayList)localObject).size() > 0)
-    {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Long localLong = (Long)((Iterator)localObject).next();
-        this.AGQ.remove(localLong.longValue());
-      }
-    }
-  }
-  
-  private void eyC()
-  {
-    Object localObject1 = new ArrayList();
-    Object localObject2 = this.AGT.iterator();
-    Long localLong;
-    while (((Iterator)localObject2).hasNext())
-    {
-      localLong = (Long)((Iterator)localObject2).next();
-      if (!HB(localLong.longValue())) {
-        ((ArrayList)localObject1).add(localLong);
-      }
-    }
-    localObject2 = ((ArrayList)localObject1).iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      localLong = (Long)((Iterator)localObject2).next();
-      this.AGT.remove(localLong);
-    }
-    ((ArrayList)localObject1).clear();
-    localObject2 = this.AGU.iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      localLong = (Long)((Iterator)localObject2).next();
-      if (!HB(localLong.longValue())) {
-        ((ArrayList)localObject1).add(localLong);
-      }
-    }
-    localObject1 = ((ArrayList)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (Long)((Iterator)localObject1).next();
-      this.AGU.remove(localObject2);
-    }
-  }
-  
-  private void eyD()
-  {
-    Iterator localIterator = this.AGW.iterator();
-    while (localIterator.hasNext()) {
-      ((MTimerHandler)localIterator.next()).stopTimer();
-    }
-    this.AGW.clear();
-    this.AGV.clear();
-  }
-  
-  private String eyF()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("");
-    int i = 0;
-    while (i < this.AGQ.AHb.size())
-    {
-      long l = this.AGQ.get(i);
-      localStringBuilder.append(l + ", ");
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
-  private void eyH()
-  {
-    this.AGQ.currentIndex = 0;
-    if (this.AGT.size() > 0)
-    {
-      Iterator localIterator = this.AGT.iterator();
-      while (localIterator.hasNext())
-      {
-        Long localLong = (Long)localIterator.next();
-        this.AGQ.remove(localLong.longValue());
-      }
-    }
-    this.AGT.clear();
-    this.AGU.clear();
-  }
-  
-  private void eyJ()
-  {
-    b.a locala = new b.a(this.AGQ, this.AGQ.currentIndex, this.AGT, this.AGU);
-    com.tencent.mm.plugin.notification.d.b.a(getType(), locala);
-  }
-  
-  private void eyt()
-  {
-    this.AGX = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
+    this.GAg = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(26732);
-        if (a.this.AGS)
+        if (a.this.GAb)
         {
-          Log.i("MicroMsg.AbstractSendMsgFailNotification", "mCheckMsgExistTimer, before check msgList.size:%d, successList.size:%d, failedList.size:%d", new Object[] { Integer.valueOf(a.this.AGQ.AHb.size()), Integer.valueOf(a.this.AGT.size()), Integer.valueOf(a.this.AGU.size()) });
+          Log.i("MicroMsg.AbstractSendMsgFailNotification", "mCheckMsgExistTimer, before check msgList.size:%d, successList.size:%d, failedList.size:%d", new Object[] { Integer.valueOf(a.this.GzZ.GAk.size()), Integer.valueOf(a.this.GAc.size()), Integer.valueOf(a.this.GAd.size()) });
           a.c(a.this);
-          Log.i("MicroMsg.AbstractSendMsgFailNotification", "mCheckMsgExistTimer, after check msgList.size:%d, successList.size:%d, failedList.size:%d", new Object[] { Integer.valueOf(a.this.AGQ.AHb.size()), Integer.valueOf(a.this.AGT.size()), Integer.valueOf(a.this.AGU.size()) });
-          if (a.this.AGQ.AHb.size() > 0) {
+          Log.i("MicroMsg.AbstractSendMsgFailNotification", "mCheckMsgExistTimer, after check msgList.size:%d, successList.size:%d, failedList.size:%d", new Object[] { Integer.valueOf(a.this.GzZ.GAk.size()), Integer.valueOf(a.this.GAc.size()), Integer.valueOf(a.this.GAd.size()) });
+          if (a.this.GzZ.GAk.size() > 0) {
             a.d(a.this);
           }
           for (;;)
@@ -242,109 +131,216 @@ public abstract class a<T>
     }, true);
   }
   
-  private void eyu()
+  private void fjZ()
   {
-    if (this.AGX != null)
+    if (this.GAg != null)
     {
-      this.AGX.stopTimer();
+      this.GAg.stopTimer();
       return;
     }
     Log.e("MicroMsg.AbstractSendMsgFailNotification", "stopCheckMsgExistTimer error, timer is null");
   }
   
-  private void eyv()
+  private void fka()
   {
-    Log.d("MicroMsg.AbstractSendMsgFailNotification", "showInitNotification, isInForeground:%b", new Object[] { Boolean.valueOf(f.Pv()) });
-    this.AGR.AHN = TR(this.AGQ.AHb.size());
-    this.AGR.eza();
-    if ((!f.Pv()) && (!this.AGR.AHS))
+    Log.d("MicroMsg.AbstractSendMsgFailNotification", "showInitNotification, isInForeground:%b", new Object[] { Boolean.valueOf(f.SV()) });
+    this.GAa.GAX = aaE(this.GzZ.GAk.size());
+    this.GAa.fkF();
+    if ((!f.SV()) && (!this.GAa.GBc))
     {
-      this.AGR.AHM = TR(this.AGQ.AHb.size());
-      this.AGR.eyZ();
-      this.AGR.eyY();
+      this.GAa.GAW = aaE(this.GzZ.GAk.size());
+      this.GAa.fkE();
+      this.GAa.fkD();
       Log.d("MicroMsg.AbstractSendMsgFailNotification", "showInitNotification, first show notification");
-      this.AGR.show();
-      EventCenter.instance.removeListener(this.AGY);
-      EventCenter.instance.addListener(this.AGY);
+      this.GAa.show();
+      EventCenter.instance.removeListener(this.GAh);
+      EventCenter.instance.addListener(this.GAh);
       return;
     }
-    if (this.AGR.AHS)
+    if (this.GAa.GBc)
     {
-      this.AGR.eyZ();
-      this.AGR.eyY();
+      this.GAa.fkE();
+      this.GAa.fkD();
       Log.d("MicroMsg.AbstractSendMsgFailNotification", "showInitNotification, update notification content text");
-      this.AGR.aJb(TR(this.AGQ.AHb.size()));
-      EventCenter.instance.removeListener(this.AGY);
-      EventCenter.instance.addListener(this.AGY);
+      this.GAa.aTx(aaE(this.GzZ.GAk.size()));
+      EventCenter.instance.removeListener(this.GAh);
+      EventCenter.instance.addListener(this.GAh);
       return;
     }
-    Log.d("MicroMsg.AbstractSendMsgFailNotification", "showInitNotification, not show or update notification, isForeground:%b", new Object[] { Boolean.valueOf(f.Pv()) });
+    Log.d("MicroMsg.AbstractSendMsgFailNotification", "showInitNotification, not show or update notification, isForeground:%b", new Object[] { Boolean.valueOf(f.SV()) });
   }
   
-  private void eyw()
+  private void fkb()
   {
     if (Build.VERSION.SDK_INT >= 16)
     {
-      this.AGR.AHN = TR(this.AGQ.AHb.size());
-      if (this.AGU.size() <= 0) {
-        this.AGR.aJb(hB(this.AGQ.AHb.size(), this.AGT.size() + this.AGU.size()));
+      this.GAa.GAX = aaE(this.GzZ.GAk.size());
+      if (this.GAd.size() <= 0) {
+        this.GAa.aTx(iG(this.GzZ.GAk.size(), this.GAc.size() + this.GAd.size()));
       }
     }
     else
     {
       return;
     }
-    this.AGR.aJb(av(this.AGQ.AHb.size(), this.AGT.size() + this.AGU.size(), this.AGU.size()));
+    this.GAa.aTx(az(this.GzZ.GAk.size(), this.GAc.size() + this.GAd.size(), this.GAd.size()));
   }
   
-  private void eyx()
+  private void fkc()
   {
-    this.AGS = false;
-    Log.d("MicroMsg.AbstractSendMsgFailNotification", "finish resend, msgList.size:%d, mFailList.size:%d, mSuccessList.size:%d", new Object[] { Integer.valueOf(this.AGQ.AHb.size()), Integer.valueOf(this.AGU.size()), Integer.valueOf(this.AGT.size()) });
-    eyA();
-    if ((this.AGU.size() <= 0) || (Build.VERSION.SDK_INT < 16)) {
-      com.tencent.mm.plugin.notification.d.b.TT(getType());
+    this.GAb = false;
+    Log.d("MicroMsg.AbstractSendMsgFailNotification", "finish resend, msgList.size:%d, mFailList.size:%d, mSuccessList.size:%d", new Object[] { Integer.valueOf(this.GzZ.GAk.size()), Integer.valueOf(this.GAd.size()), Integer.valueOf(this.GAc.size()) });
+    fkf();
+    if ((this.GAd.size() <= 0) || (Build.VERSION.SDK_INT < 16)) {
+      com.tencent.mm.plugin.notification.d.b.aaG(getType());
     }
-    h.CyF.a(11425, new Object[] { Integer.valueOf(getType()), Integer.valueOf(0), Integer.valueOf(this.AGT.size()), Integer.valueOf(this.AGU.size()) });
+    h.IzE.a(11425, new Object[] { Integer.valueOf(getType()), Integer.valueOf(0), Integer.valueOf(this.GAc.size()), Integer.valueOf(this.GAd.size()) });
     if (Build.VERSION.SDK_INT >= 16)
     {
-      this.AGR.eyZ();
-      this.AGR.AHN = TR(this.AGQ.AHb.size());
-      localObject = this.AGR;
-      this.AGQ.AHb.size();
-      ((FailSendMsgNotification)localObject).aJb(hC(this.AGT.size(), this.AGU.size()));
-      this.AGR.eyY();
-      if (this.AGU.size() > 0)
+      this.GAa.fkE();
+      this.GAa.GAX = aaE(this.GzZ.GAk.size());
+      localObject = this.GAa;
+      this.GzZ.GAk.size();
+      ((FailSendMsgNotification)localObject).aTx(iH(this.GAc.size(), this.GAd.size()));
+      this.GAa.fkD();
+      if (this.GAd.size() > 0)
       {
-        this.AGR.eza();
-        this.AGR.show();
-        eyH();
-        eyJ();
+        this.GAa.fkF();
+        this.GAa.show();
+        fkm();
+        fko();
       }
     }
-    Object localObject = new nn();
-    ((nn)localObject).dTH.type = getType();
+    Object localObject = new oj();
+    ((oj)localObject).fNi.type = getType();
     EventCenter.instance.publish((IEvent)localObject);
-    eyu();
-    eyD();
-    EventCenter.instance.removeListener(this.AGY);
-    eyy();
+    fjZ();
+    fki();
+    EventCenter.instance.removeListener(this.GAh);
+    fkd();
+  }
+  
+  private void fkf()
+  {
+    Log.d("MicroMsg.AbstractSendMsgFailNotification", "checkMsgExistAfterResend, before check, mMsgList.size:%d, mSuccessList.size:%d, mFailList.size:%d", new Object[] { Integer.valueOf(this.GzZ.GAk.size()), Integer.valueOf(this.GAc.size()), Integer.valueOf(this.GAd.size()) });
+    fkg();
+    fkh();
+    Log.d("MicroMsg.AbstractSendMsgFailNotification", "checkMsgExistAfterResend, after check, mMsgList.size:%d, mSuccessList.size:%d, mFailList.size:%d", new Object[] { Integer.valueOf(this.GzZ.GAk.size()), Integer.valueOf(this.GAc.size()), Integer.valueOf(this.GAd.size()) });
+  }
+  
+  private void fkg()
+  {
+    Object localObject = new ArrayList();
+    int i = 0;
+    while (i < this.GzZ.GAk.size())
+    {
+      long l = this.GzZ.get(i);
+      if (!OV(l)) {
+        ((ArrayList)localObject).add(Long.valueOf(l));
+      }
+      i += 1;
+    }
+    if (((ArrayList)localObject).size() > 0)
+    {
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Long localLong = (Long)((Iterator)localObject).next();
+        this.GzZ.remove(localLong.longValue());
+      }
+    }
+  }
+  
+  private void fkh()
+  {
+    Object localObject1 = new ArrayList();
+    Object localObject2 = this.GAc.iterator();
+    Long localLong;
+    while (((Iterator)localObject2).hasNext())
+    {
+      localLong = (Long)((Iterator)localObject2).next();
+      if (!OV(localLong.longValue())) {
+        ((ArrayList)localObject1).add(localLong);
+      }
+    }
+    localObject2 = ((ArrayList)localObject1).iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      localLong = (Long)((Iterator)localObject2).next();
+      this.GAc.remove(localLong);
+    }
+    ((ArrayList)localObject1).clear();
+    localObject2 = this.GAd.iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      localLong = (Long)((Iterator)localObject2).next();
+      if (!OV(localLong.longValue())) {
+        ((ArrayList)localObject1).add(localLong);
+      }
+    }
+    localObject1 = ((ArrayList)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (Long)((Iterator)localObject1).next();
+      this.GAd.remove(localObject2);
+    }
+  }
+  
+  private void fki()
+  {
+    Iterator localIterator = this.GAf.iterator();
+    while (localIterator.hasNext()) {
+      ((MTimerHandler)localIterator.next()).stopTimer();
+    }
+    this.GAf.clear();
+    this.GAe.clear();
+  }
+  
+  private String fkk()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("");
+    int i = 0;
+    while (i < this.GzZ.GAk.size())
+    {
+      long l = this.GzZ.get(i);
+      localStringBuilder.append(l + ", ");
+      i += 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  private void fkm()
+  {
+    this.GzZ.currentIndex = 0;
+    if (this.GAc.size() > 0)
+    {
+      Iterator localIterator = this.GAc.iterator();
+      while (localIterator.hasNext())
+      {
+        Long localLong = (Long)localIterator.next();
+        this.GzZ.remove(localLong.longValue());
+      }
+    }
+    this.GAc.clear();
+    this.GAd.clear();
+  }
+  
+  private void fko()
+  {
+    b.a locala = new b.a(this.GzZ, this.GzZ.currentIndex, this.GAc, this.GAd);
+    com.tencent.mm.plugin.notification.d.b.a(getType(), locala);
   }
   
   private void resetStatus()
   {
-    this.AGQ.clear();
-    this.AGS = false;
-    this.AGT.clear();
-    this.AGU.clear();
-    eyD();
+    this.GzZ.clear();
+    this.GAb = false;
+    this.GAc.clear();
+    this.GAd.clear();
+    fki();
   }
   
-  public abstract void HA(long paramLong);
-  
-  public abstract boolean HB(long paramLong);
-  
-  final void Hz(final long paramLong)
+  final void OT(final long paramLong)
   {
     MMHandlerThread.postToMainThreadDelayed(new Runnable()
     {
@@ -357,41 +353,45 @@ public abstract class a<T>
     }, 200L);
   }
   
-  protected abstract String TR(int paramInt);
+  public abstract void OU(long paramLong);
   
-  protected abstract void aH(ArrayList<Long> paramArrayList);
+  public abstract boolean OV(long paramLong);
   
-  protected abstract String av(int paramInt1, int paramInt2, int paramInt3);
+  protected abstract void aP(ArrayList<Long> paramArrayList);
   
-  public final void dI(T paramT)
+  protected abstract String aaE(int paramInt);
+  
+  protected abstract String az(int paramInt1, int paramInt2, int paramInt3);
+  
+  public final void dL(T paramT)
   {
     if (paramT == null) {
       return;
     }
-    Log.d("MicroMsg.AbstractSendMsgFailNotification", "processSendMsgFail, msgId:%d, msgList:%s, isResending:%b", new Object[] { Long.valueOf(dK(paramT)), eyF(), Boolean.valueOf(this.AGS) });
-    if (!this.AGS)
+    Log.d("MicroMsg.AbstractSendMsgFailNotification", "processSendMsgFail, msgId:%d, msgList:%s, isResending:%b", new Object[] { Long.valueOf(dN(paramT)), fkk(), Boolean.valueOf(this.GAb) });
+    if (!this.GAb)
     {
-      if (!this.AGV.contains(Long.valueOf(dK(paramT))))
+      if (!this.GAe.contains(Long.valueOf(dN(paramT))))
       {
         if (paramT == null)
         {
           Log.e("MicroMsg.AbstractSendMsgFailNotification", "showNotificationAfterSendFail, msgObj is null");
           return;
         }
-        paramT = dL(paramT);
+        paramT = dO(paramT);
         if ((paramT == null) || (paramT.size() <= 0))
         {
           Log.e("MicroMsg.AbstractSendMsgFailNotification", "showNotificationAfterSendFail, cannot get history fail msg");
           return;
         }
         resetStatus();
-        b localb = this.AGQ;
+        b localb = this.GzZ;
         if ((paramT != null) && (paramT.size() > 0)) {
-          localb.AHb.addAll(paramT);
+          localb.GAk.addAll(paramT);
         }
-        eyJ();
-        Log.d("MicroMsg.AbstractSendMsgFailNotification", "showNotificationAfterSendFail, msgList.size:%d, msgList:%s", new Object[] { Integer.valueOf(this.AGQ.AHb.size()), eyF() });
-        h.CyF.a(11426, new Object[] { Integer.valueOf(getType()) });
+        fko();
+        Log.d("MicroMsg.AbstractSendMsgFailNotification", "showNotificationAfterSendFail, msgList.size:%d, msgList:%s", new Object[] { Integer.valueOf(this.GzZ.GAk.size()), fkk() });
+        h.IzE.a(11426, new Object[] { Integer.valueOf(getType()) });
         MMHandlerThread.postToMainThreadDelayed(new Runnable()
         {
           public final void run()
@@ -403,58 +403,58 @@ public abstract class a<T>
         }, 1000L);
         return;
       }
-      this.AGV.remove(Long.valueOf(dK(paramT)));
+      this.GAe.remove(Long.valueOf(dN(paramT)));
       return;
     }
-    if ((this.AGQ.contains(dK(paramT))) && (!this.AGU.contains(Long.valueOf(dK(paramT))))) {
-      this.AGU.add(Long.valueOf(dK(paramT)));
+    if ((this.GzZ.contains(dN(paramT))) && (!this.GAd.contains(Long.valueOf(dN(paramT))))) {
+      this.GAd.add(Long.valueOf(dN(paramT)));
     }
-    if (!this.AGQ.contains(dK(paramT)))
+    if (!this.GzZ.contains(dN(paramT)))
     {
       Log.d("MicroMsg.AbstractSendMsgFailNotification", "sending msg, another fail msg");
-      this.AGQ.HC(dK(paramT));
+      this.GzZ.OW(dN(paramT));
     }
-    eyw();
-    Log.d("MicroMsg.AbstractSendMsgFailNotification", "processSendMsgFail, successlist.size:%d, faillist.size:%d", new Object[] { Integer.valueOf(this.AGT.size()), Integer.valueOf(this.AGU.size()) });
-    if (this.AGT.size() + this.AGU.size() < this.AGQ.AHb.size())
+    fkb();
+    Log.d("MicroMsg.AbstractSendMsgFailNotification", "processSendMsgFail, successlist.size:%d, faillist.size:%d", new Object[] { Integer.valueOf(this.GAc.size()), Integer.valueOf(this.GAd.size()) });
+    if (this.GAc.size() + this.GAd.size() < this.GzZ.GAk.size())
     {
-      long l = this.AGQ.eyO();
+      long l = this.GzZ.fkt();
       if (l == -1L)
       {
         Log.e("TAG", "resend error, next msg id is -1");
         return;
       }
       Log.d("MicroMsg.AbstractSendMsgFailNotification", "continue resend, nextId:%d", new Object[] { Long.valueOf(l) });
-      eyJ();
-      Hz(l);
+      fko();
+      OT(l);
       return;
     }
-    eyx();
+    fkc();
   }
   
-  public final void dJ(T paramT)
+  public final void dM(T paramT)
   {
-    Log.d("MicroMsg.AbstractSendMsgFailNotification", "processSendMsgSucess, msgId:%d, msgList:%s", new Object[] { Long.valueOf(dK(paramT)), eyF() });
+    Log.d("MicroMsg.AbstractSendMsgFailNotification", "processSendMsgSucess, msgId:%d, msgList:%s", new Object[] { Long.valueOf(dN(paramT)), fkk() });
     long l;
-    if (this.AGQ.contains(dK(paramT)))
+    if (this.GzZ.contains(dN(paramT)))
     {
-      l = dK(paramT);
-      if ((this.AGV.contains(Long.valueOf(l))) && (this.AGU.contains(Long.valueOf(l))))
+      l = dN(paramT);
+      if ((this.GAe.contains(Long.valueOf(l))) && (this.GAd.contains(Long.valueOf(l))))
       {
         Log.i("MicroMsg.AbstractSendMsgFailNotification", "receive send msg success event from a timout message, remvoe it from the fail list");
-        this.AGV.remove(Long.valueOf(l));
-        this.AGU.remove(Long.valueOf(l));
+        this.GAe.remove(Long.valueOf(l));
+        this.GAd.remove(Long.valueOf(l));
       }
-      if (!this.AGS) {
+      if (!this.GAb) {
         break label260;
       }
-      this.AGT.add(Long.valueOf(l));
-      eyw();
-      Log.d("MicroMsg.AbstractSendMsgFailNotification", "processSendMsgSuccess, successlist.size:%d, faillist.size:%d", new Object[] { Integer.valueOf(this.AGT.size()), Integer.valueOf(this.AGU.size()) });
-      if (this.AGT.size() + this.AGU.size() >= this.AGQ.AHb.size()) {
+      this.GAc.add(Long.valueOf(l));
+      fkb();
+      Log.d("MicroMsg.AbstractSendMsgFailNotification", "processSendMsgSuccess, successlist.size:%d, faillist.size:%d", new Object[] { Integer.valueOf(this.GAc.size()), Integer.valueOf(this.GAd.size()) });
+      if (this.GAc.size() + this.GAd.size() >= this.GzZ.GAk.size()) {
         break label255;
       }
-      l = this.AGQ.eyO();
+      l = this.GzZ.fkt();
       if (l == -1L) {
         Log.e("TAG", "resend error, next msg id is -1");
       }
@@ -464,56 +464,90 @@ public abstract class a<T>
       return;
     }
     Log.d("MicroMsg.AbstractSendMsgFailNotification", "continue resend, nextId:%d", new Object[] { Long.valueOf(l) });
-    eyJ();
-    Hz(l);
+    fko();
+    OT(l);
     return;
     label255:
-    eyx();
+    fkc();
     return;
     label260:
-    this.AGQ.remove(dK(paramT));
-    if (this.AGQ.AHb.size() == 0)
+    this.GzZ.remove(dN(paramT));
+    if (this.GzZ.GAk.size() == 0)
     {
-      this.AGR.dismiss();
+      this.GAa.dismiss();
       resetStatus();
-      com.tencent.mm.plugin.notification.d.b.TT(getType());
+      com.tencent.mm.plugin.notification.d.b.aaG(getType());
       return;
     }
     Log.d("MicroMsg.AbstractSendMsgFailNotification", "maybe the user manually resend the message, update init wording");
-    this.AGR.aJb(TR(this.AGQ.AHb.size()));
+    this.GAa.aTx(aaE(this.GzZ.GAk.size()));
   }
   
-  protected abstract long dK(T paramT);
+  protected abstract long dN(T paramT);
   
-  protected abstract ArrayList<Long> dL(T paramT);
+  protected abstract ArrayList<Long> dO(T paramT);
   
-  public final void eyE()
+  protected void fkd() {}
+  
+  public final void fke()
   {
-    Log.d("MicroMsg.AbstractSendMsgFailNotification", "omitFailMsg, size:%d", new Object[] { Integer.valueOf(this.AGQ.AHb.size()) });
-    if (this.AGQ.AHb.size() > 0)
+    Log.d("MicroMsg.AbstractSendMsgFailNotification", "resendAllMsg, mMsgList.size:%d", new Object[] { Integer.valueOf(this.GzZ.GAk.size()) });
+    this.GAb = true;
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      Object localObject = this.AGQ;
+      FailSendMsgNotification localFailSendMsgNotification = this.GAa;
+      localFailSendMsgNotification.GBe = false;
+      localFailSendMsgNotification.GAQ = com.tencent.mm.bx.a.cp(localFailSendMsgNotification.mContext, com.tencent.mm.bx.a.hfv());
+      localFailSendMsgNotification.fkC();
+      localFailSendMsgNotification.show();
+      Log.d("MicroMsg.FailSendMsgNotification", "FailSendMsgNotification, removeActionButton");
+      localFailSendMsgNotification = this.GAa;
+      localFailSendMsgNotification.GAQ.e(2, true);
+      localFailSendMsgNotification.GBd = true;
+      localFailSendMsgNotification.show();
+      Log.d("MicroMsg.FailSendMsgNotification", "FailSendMsgNotification, setLockInNotificationBar");
+      this.GAa.aTx(iG(this.GzZ.GAk.size(), 0));
+    }
+    this.GzZ.currentIndex = 0;
+    fki();
+    EventCenter.instance.removeListener(this.GAh);
+    EventCenter.instance.addListener(this.GAh);
+    OT(this.GzZ.fkt());
+    if (this.GAg != null)
+    {
+      this.GAg.startTimer(300000L);
+      return;
+    }
+    Log.e("MicroMsg.AbstractSendMsgFailNotification", "startCheckMsgExistTimer error, timer is null");
+  }
+  
+  public final void fkj()
+  {
+    Log.d("MicroMsg.AbstractSendMsgFailNotification", "omitFailMsg, size:%d", new Object[] { Integer.valueOf(this.GzZ.GAk.size()) });
+    if (this.GzZ.GAk.size() > 0)
+    {
+      Object localObject = this.GzZ;
       ArrayList localArrayList = new ArrayList();
-      localObject = ((b)localObject).AHb.iterator();
+      localObject = ((b)localObject).GAk.iterator();
       while (((Iterator)localObject).hasNext()) {
         localArrayList.add(Long.valueOf(((Long)((Iterator)localObject).next()).longValue()));
       }
-      aH(localArrayList);
+      aP(localArrayList);
     }
   }
   
-  public final FailSendMsgNotification eyG()
+  public final FailSendMsgNotification fkl()
   {
-    return this.AGR;
+    return this.GAa;
   }
   
-  protected final void eyI()
+  protected final void fkn()
   {
     b.a locala;
-    if ((this.AGQ == null) || (this.AGQ.AHb.size() == 0))
+    if ((this.GzZ == null) || (this.GzZ.GAk.size() == 0))
     {
       Log.d("MicroMsg.AbstractSendMsgFailNotification", "autoResumeFromCrash");
-      locala = com.tencent.mm.plugin.notification.d.b.TS(getType());
+      locala = com.tencent.mm.plugin.notification.d.b.aaF(getType());
       if (locala == null) {
         Log.e("MicroMsg.AbstractSendMsgFailNotification", "resetNotificationAfterCrash, cacheObj is null");
       }
@@ -522,75 +556,41 @@ public abstract class a<T>
     {
       return;
     }
-    if (this.AGX == null) {
-      eyt();
+    if (this.GAg == null) {
+      fjY();
     }
-    b localb = locala.AHe;
-    ArrayList localArrayList1 = locala.AHg;
-    ArrayList localArrayList2 = locala.AHh;
-    int i = locala.AHf;
+    b localb = locala.GAn;
+    ArrayList localArrayList1 = locala.GAp;
+    ArrayList localArrayList2 = locala.GAq;
+    int i = locala.GAo;
     if ((localArrayList1.size() == 0) && (localArrayList2.size() == 0) && (i == 0))
     {
       Log.d("MicroMsg.AbstractSendMsgFailNotification", "resetNotificationAfterCrash, not start resend");
-      this.AGQ.clear();
-      this.AGQ = localb;
-      this.AGT.clear();
-      this.AGU.clear();
-      eyv();
+      this.GzZ.clear();
+      this.GzZ = localb;
+      this.GAc.clear();
+      this.GAd.clear();
+      fka();
       return;
     }
-    if (localArrayList1.size() + localArrayList2.size() >= localb.AHb.size())
+    if (localArrayList1.size() + localArrayList2.size() >= localb.GAk.size())
     {
       Log.d("MicroMsg.AbstractSendMsgFailNotification", "resetNotificationAfterCrash, resendFinish");
-      eyx();
+      fkc();
       return;
     }
     Log.d("MicroMsg.AbstractSendMsgFailNotification", "resetNotificationAfterCrash, currently resending");
-    this.AGQ.clear();
-    this.AGQ = localb;
-    this.AGQ.currentIndex = i;
-    this.AGT.clear();
-    this.AGT.addAll(localArrayList1);
-    this.AGU.clear();
-    this.AGU.addAll(localArrayList2);
-    eyw();
+    this.GzZ.clear();
+    this.GzZ = localb;
+    this.GzZ.currentIndex = i;
+    this.GAc.clear();
+    this.GAc.addAll(localArrayList1);
+    this.GAd.clear();
+    this.GAd.addAll(localArrayList2);
+    fkb();
   }
   
-  protected abstract void eyK();
-  
-  protected void eyy() {}
-  
-  public final void eyz()
-  {
-    Log.d("MicroMsg.AbstractSendMsgFailNotification", "resendAllMsg, mMsgList.size:%d", new Object[] { Integer.valueOf(this.AGQ.AHb.size()) });
-    this.AGS = true;
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      FailSendMsgNotification localFailSendMsgNotification = this.AGR;
-      localFailSendMsgNotification.AHU = false;
-      localFailSendMsgNotification.AHH = com.tencent.mm.bq.a.cd(localFailSendMsgNotification.mContext, com.tencent.mm.bq.a.glE());
-      localFailSendMsgNotification.eyX();
-      localFailSendMsgNotification.show();
-      Log.d("MicroMsg.FailSendMsgNotification", "FailSendMsgNotification, removeActionButton");
-      localFailSendMsgNotification = this.AGR;
-      localFailSendMsgNotification.AHH.g(2, true);
-      localFailSendMsgNotification.AHT = true;
-      localFailSendMsgNotification.show();
-      Log.d("MicroMsg.FailSendMsgNotification", "FailSendMsgNotification, setLockInNotificationBar");
-      this.AGR.aJb(hB(this.AGQ.AHb.size(), 0));
-    }
-    this.AGQ.currentIndex = 0;
-    eyD();
-    EventCenter.instance.removeListener(this.AGY);
-    EventCenter.instance.addListener(this.AGY);
-    Hz(this.AGQ.eyO());
-    if (this.AGX != null)
-    {
-      this.AGX.startTimer(300000L);
-      return;
-    }
-    Log.e("MicroMsg.AbstractSendMsgFailNotification", "startCheckMsgExistTimer error, timer is null");
-  }
+  protected abstract void fkp();
   
   protected final Context getContext()
   {
@@ -599,13 +599,13 @@ public abstract class a<T>
   
   protected abstract int getType();
   
-  protected abstract String hB(int paramInt1, int paramInt2);
+  protected abstract String iG(int paramInt1, int paramInt2);
   
-  protected abstract String hC(int paramInt1, int paramInt2);
+  protected abstract String iH(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.c.a
  * JD-Core Version:    0.7.0.1
  */

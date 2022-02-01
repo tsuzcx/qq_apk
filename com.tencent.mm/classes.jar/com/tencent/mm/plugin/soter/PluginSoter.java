@@ -2,11 +2,14 @@ package com.tencent.mm.plugin.soter;
 
 import android.os.Build;
 import android.util.SparseArray;
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.f.a.pk;
+import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.soter.a.a;
 import com.tencent.mm.plugin.soter.d.d;
+import com.tencent.mm.plugin.soter.d.e;
 import com.tencent.mm.plugin.soter.d.m;
 import com.tencent.mm.protocal.j.h;
 import com.tencent.mm.protocal.j.i;
@@ -22,21 +25,21 @@ import com.tencent.mm.storage.ar.a;
 
 public class PluginSoter
   extends com.tencent.mm.kernel.b.f
-  implements com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.plugin.soter.a.a
+  implements com.tencent.mm.kernel.api.bucket.c, a
 {
-  private static com.tencent.mm.plugin.soter.d.c FgZ;
-  private static com.tencent.mm.plugin.soter.d.b Fha;
-  private com.tencent.mm.plugin.soter.d.f FgX = null;
-  private boolean FgY = false;
-  private int Fhb = 0;
-  private com.tencent.mm.vending.b.b kJs;
-  private String mRa = "";
+  private static com.tencent.mm.plugin.soter.d.c LvE;
+  private static com.tencent.mm.plugin.soter.d.b LvF;
+  private com.tencent.mm.plugin.soter.d.f LvC = null;
+  private boolean LvD = false;
+  private int LvG = 0;
+  private com.tencent.mm.vending.b.b nDk;
+  private String pRV = "";
   
   static
   {
     AppMethodBeat.i(130796);
-    FgZ = new com.tencent.mm.plugin.soter.d.c();
-    Fha = new com.tencent.mm.plugin.soter.d.b();
+    LvE = new com.tencent.mm.plugin.soter.d.c();
+    LvF = new com.tencent.mm.plugin.soter.d.b();
     AppMethodBeat.o(130796);
   }
   
@@ -61,7 +64,7 @@ public class PluginSoter
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(130782);
-        if (!com.tencent.mm.kernel.g.aAf().azp())
+        if (!com.tencent.mm.kernel.h.aHE().aGM())
         {
           Log.i("MicroMsg.PluginSoter", "account not ready.");
           AppMethodBeat.o(130782);
@@ -69,44 +72,56 @@ public class PluginSoter
         }
         String str1;
         String str2;
-        if (!Util.isNullOrNil(PluginSoter.this.mRa))
+        if (!Util.isNullOrNil(PluginSoter.this.pRV))
         {
-          str1 = PluginSoter.this.mRa;
-          str2 = (String)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.OfH, "");
-          Log.i("MicroMsg.PluginSoter", "username old: %s, new: %s, %s", new Object[] { str2, str1, PluginSoter.this.mRa });
-          if ((Util.isNullOrNil(str1)) && (PluginSoter.this.Fhb < 10)) {
+          str1 = PluginSoter.this.pRV;
+          str2 = (String)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VtV, "");
+          Log.i("MicroMsg.PluginSoter", "username old: %s, new: %s, %s", new Object[] { str2, str1, PluginSoter.this.pRV });
+          if ((Util.isNullOrNil(str1)) && (PluginSoter.this.LvG < 10)) {
             break label307;
           }
           if ((Util.isNullOrNil(str2)) || (str2.equals(str1))) {
             break label242;
           }
           Log.i("MicroMsg.PluginSoter", "have changed username, old: %s, new: %s", new Object[] { str2, str1 });
-          m.Fib = str2;
+          m.LwG = str2;
           label153:
-          Log.i("MicroMsg.PluginSoter", "do init soter: %s, %s, %s", new Object[] { Integer.valueOf(PluginSoter.this.Fhb), str1, m.Fib });
-          if (PluginSoter.this.Fhb < 10) {
+          Log.i("MicroMsg.PluginSoter", "do init soter: %s, %s, %s", new Object[] { Integer.valueOf(PluginSoter.this.LvG), str1, m.LwG });
+          if (PluginSoter.this.LvG < 10) {
             break label269;
           }
-          com.tencent.mm.plugin.report.service.h.CyF.dN(1104, 44);
+          com.tencent.mm.plugin.report.service.h.IzE.el(1104, 44);
         }
         for (;;)
         {
-          com.tencent.mm.plugin.soter.e.b.a(PluginSoter.access$200(PluginSoter.this), new PluginSoter.1.1(this));
+          com.tencent.mm.plugin.soter.e.b.a(PluginSoter.access$200(PluginSoter.this), new com.tencent.mm.plugin.soter.d.g()
+          {
+            public final void bh(int paramAnonymous2Int, String paramAnonymous2String)
+            {
+              AppMethodBeat.i(130781);
+              Log.i("MicroMsg.PluginSoter", "init finish: %s, %s", new Object[] { Integer.valueOf(paramAnonymous2Int), paramAnonymous2String });
+              pk localpk = new pk();
+              localpk.fOe.errCode = paramAnonymous2Int;
+              localpk.fOe.errMsg = paramAnonymous2String;
+              EventCenter.instance.publish(localpk);
+              AppMethodBeat.o(130781);
+            }
+          });
           AppMethodBeat.o(130782);
           return false;
-          str1 = z.aUb();
+          str1 = z.bdc();
           break;
           label242:
           if (Util.isNullOrNil(str2)) {
-            com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OfH, str1);
+            com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VtV, str1);
           }
-          m.Fib = str1;
+          m.LwG = str1;
           break label153;
           label269:
-          if (PluginSoter.this.Fhb > 0) {
-            com.tencent.mm.plugin.report.service.h.CyF.dN(1104, 45);
+          if (PluginSoter.this.LvG > 0) {
+            com.tencent.mm.plugin.report.service.h.IzE.el(1104, 45);
           } else {
-            com.tencent.mm.plugin.report.service.h.CyF.dN(1104, 47);
+            com.tencent.mm.plugin.report.service.h.IzE.el(1104, 47);
           }
         }
         label307:
@@ -154,8 +169,8 @@ public class PluginSoter
   private boolean shouldPreparedASK()
   {
     AppMethodBeat.i(130790);
-    com.tencent.mm.plugin.soter.d.e locale = d.flM();
-    if ((!Util.isNullOrNil(locale.FhU)) && (!Util.isNullOrNil(locale.hFF))) {}
+    e locale = d.gai();
+    if ((!Util.isNullOrNil(locale.Lwz)) && (!Util.isNullOrNil(locale.ktM))) {}
     for (int i = 1; (i == 0) && (!block()); i = 0)
     {
       AppMethodBeat.o(130790);
@@ -168,13 +183,13 @@ public class PluginSoter
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(130785);
-    if (paramg.aBb())
+    if (paramg.aIE())
     {
       Log.i("MicroMsg.PluginSoter", "alvinluo PluginSoter in process: %s execute and run pipeline", new Object[] { paramg.mProcessName });
-      this.FgY = true;
+      this.LvD = true;
       Log.v("MicroMsg.PluginSoter", "alvinluo PluginSoter add SoterDynamicConfigUpdatedEventListener");
-      this.FgX = new com.tencent.mm.plugin.soter.d.f();
-      safeAddListener(this.FgX);
+      this.LvC = new com.tencent.mm.plugin.soter.d.f();
+      safeAddListener(this.LvC);
     }
     AppMethodBeat.o(130785);
   }
@@ -184,26 +199,26 @@ public class PluginSoter
     return "plugin-soter";
   }
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(130792);
-    Log.v("MicroMsg.PluginSoter", "alvinluo onAccountInitialized, isMainProcess: %b", new Object[] { Boolean.valueOf(this.FgY) });
-    if (this.FgY)
+    Log.v("MicroMsg.PluginSoter", "alvinluo onAccountInitialized, isMainProcess: %b", new Object[] { Boolean.valueOf(this.LvD) });
+    if (this.LvD)
     {
-      m.flO();
-      this.mRa = z.aUb();
+      m.gak();
+      this.pRV = z.bdc();
       initSoter();
-      this.kJs = ((com.tencent.mm.plugin.auth.a.c)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.auth.a.c.class)).addHandleAuthResponse(new com.tencent.mm.plugin.auth.a.b()
+      this.nDk = ((com.tencent.mm.plugin.auth.a.c)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.auth.a.c.class)).addHandleAuthResponse(new com.tencent.mm.plugin.auth.a.b()
       {
         public final void a(j.h paramAnonymoush, j.i paramAnonymousi, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(130784);
           Log.i("MicroMsg.PluginSoter", "autoAuth: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
-          com.tencent.f.h.RTc.aX(new PluginSoter.2.1(this));
-          if ((!paramAnonymousBoolean) && (com.tencent.soter.a.c.b.hlG().isInit()) && (((String)com.tencent.soter.a.c.b.hlG().hlI().get(1)).equals("WechatAuthKeyPay&null")))
+          com.tencent.e.h.ZvG.be(new PluginSoter.2.1(this));
+          if ((!paramAnonymousBoolean) && (com.tencent.soter.a.c.b.ipf().isInit()) && (((String)com.tencent.soter.a.c.b.ipf().iph().get(1)).equals("WechatAuthKeyPay&null")))
           {
             Log.i("MicroMsg.PluginSoter", "init error, reinit");
-            com.tencent.soter.a.c.b.hlG().DQ(false);
+            com.tencent.soter.a.c.b.ipf().Ir(false);
             PluginSoter.access$300(PluginSoter.this);
           }
           AppMethodBeat.o(130784);
@@ -212,11 +227,11 @@ public class PluginSoter
         public final void a(x.b paramAnonymousb, String paramAnonymousString1, int paramAnonymousInt1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt2) {}
       });
     }
-    if (!EventCenter.instance.hadListened(FgZ)) {
-      EventCenter.instance.addListener(FgZ);
+    if (!EventCenter.instance.hadListened(LvE)) {
+      EventCenter.instance.addListener(LvE);
     }
-    if (!EventCenter.instance.hadListened(Fha)) {
-      EventCenter.instance.addListener(Fha);
+    if (!EventCenter.instance.hadListened(LvF)) {
+      EventCenter.instance.addListener(LvF);
     }
     AppMethodBeat.o(130792);
   }
@@ -225,8 +240,8 @@ public class PluginSoter
   {
     AppMethodBeat.i(130793);
     Log.v("MicroMsg.PluginSoter", "alvinluo onAccountRelease");
-    if (this.FgY) {
-      this.kJs.dead();
+    if (this.LvD) {
+      this.nDk.dead();
     }
     AppMethodBeat.o(130793);
   }
@@ -235,7 +250,7 @@ public class PluginSoter
   {
     AppMethodBeat.i(130786);
     super.uninstalled();
-    safeRemoveListener(this.FgX);
+    safeRemoveListener(this.LvC);
     AppMethodBeat.o(130786);
   }
 }

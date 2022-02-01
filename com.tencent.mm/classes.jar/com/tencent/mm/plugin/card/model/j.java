@@ -23,7 +23,7 @@ public final class j
     this.db = paramISQLiteDatabase;
   }
   
-  public final i ajl(String paramString)
+  public final i aqY(String paramString)
   {
     AppMethodBeat.i(112782);
     i locali = new i();
@@ -39,7 +39,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.j
  * JD-Core Version:    0.7.0.1
  */

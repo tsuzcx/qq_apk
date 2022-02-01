@@ -1,69 +1,69 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
-import com.google.a.a.g;
+import com.google.b.a.b;
+import com.google.b.a.e;
+import com.google.b.a.g;
 import java.util.Arrays;
 
 public final class a$n
   extends e
 {
-  public int GXO = 0;
-  public long GXP = 0L;
-  public int RDH = 0;
-  public byte[] RDI = g.cbu;
-  public a.bf[] RDJ = a.bf.hjn();
-  public a.au[] RDK = a.au.hji();
-  public int RDL = 0;
-  public int RDM = 0;
+  public int NOc = 0;
+  public long NOd = 0L;
+  public int Zfn = 0;
+  public byte[] Zfo = g.ccX;
+  public a.be[] Zfp = a.be.ikX();
+  public a.at[] Zfq = a.at.ikS();
+  public int Zfr = 0;
+  public int Zfs = 0;
   public String groupId = "";
-  public int jqs = 0;
-  public int qrD = -1;
+  public int mfT = 0;
+  public int tQm = -1;
   
   public a$n()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
     int m = 0;
-    int j = super.Ig();
+    int j = super.JG();
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.f(1, this.groupId);
+      i = j + b.g(1, this.groupId);
     }
     j = i;
-    if (this.GXO != 0) {
-      j = i + b.bu(2, this.GXO);
+    if (this.NOc != 0) {
+      j = i + b.bM(2, this.NOc);
     }
     i = j;
-    if (this.GXP != 0L) {
-      i = j + b.r(3, this.GXP);
+    if (this.NOd != 0L) {
+      i = j + b.p(3, this.NOd);
     }
     j = i;
-    if (this.qrD != -1) {
-      j = i + b.bu(4, this.qrD);
+    if (this.tQm != -1) {
+      j = i + b.bM(4, this.tQm);
     }
     int k = j;
-    if (this.RDH != 0) {
-      k = j + b.bu(5, this.RDH);
+    if (this.Zfn != 0) {
+      k = j + b.bM(5, this.Zfn);
     }
     i = k;
-    if (!Arrays.equals(this.RDI, g.cbu)) {
-      i = k + b.c(6, this.RDI);
+    if (!Arrays.equals(this.Zfo, g.ccX)) {
+      i = k + b.c(6, this.Zfo);
     }
     j = i;
     Object localObject;
-    if (this.RDJ != null)
+    if (this.Zfp != null)
     {
       j = i;
-      if (this.RDJ.length > 0)
+      if (this.Zfp.length > 0)
       {
         j = 0;
-        while (j < this.RDJ.length)
+        while (j < this.Zfp.length)
         {
-          localObject = this.RDJ[j];
+          localObject = this.Zfp[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(7, (e)localObject);
@@ -75,19 +75,19 @@ public final class a$n
       }
     }
     i = j;
-    if (this.RDK != null)
+    if (this.Zfq != null)
     {
       i = j;
-      if (this.RDK.length > 0)
+      if (this.Zfq.length > 0)
       {
         k = m;
         for (;;)
         {
           i = j;
-          if (k >= this.RDK.length) {
+          if (k >= this.Zfq.length) {
             break;
           }
-          localObject = this.RDK[k];
+          localObject = this.Zfq[k];
           i = j;
           if (localObject != null) {
             i = j + b.b(8, (e)localObject);
@@ -98,16 +98,16 @@ public final class a$n
       }
     }
     j = i;
-    if (this.RDL != 0) {
-      j = i + b.bu(9, this.RDL);
+    if (this.Zfr != 0) {
+      j = i + b.bM(9, this.Zfr);
     }
     i = j;
-    if (this.RDM != 0) {
-      i = j + b.bu(10, this.RDM);
+    if (this.Zfs != 0) {
+      i = j + b.bM(10, this.Zfs);
     }
     j = i;
-    if (this.jqs != 0) {
-      j = i + b.bu(11, this.jqs);
+    if (this.mfT != 0) {
+      j = i + b.bM(11, this.mfT);
     }
     return j;
   }
@@ -116,57 +116,57 @@ public final class a$n
   {
     int j = 0;
     if (!this.groupId.equals("")) {
-      paramb.e(1, this.groupId);
+      paramb.f(1, this.groupId);
     }
-    if (this.GXO != 0) {
-      paramb.bs(2, this.GXO);
+    if (this.NOc != 0) {
+      paramb.bJ(2, this.NOc);
     }
-    if (this.GXP != 0L) {
-      paramb.q(3, this.GXP);
+    if (this.NOd != 0L) {
+      paramb.r(3, this.NOd);
     }
-    if (this.qrD != -1) {
-      paramb.bs(4, this.qrD);
+    if (this.tQm != -1) {
+      paramb.bJ(4, this.tQm);
     }
-    if (this.RDH != 0) {
-      paramb.bs(5, this.RDH);
+    if (this.Zfn != 0) {
+      paramb.bJ(5, this.Zfn);
     }
-    if (!Arrays.equals(this.RDI, g.cbu)) {
-      paramb.b(6, this.RDI);
+    if (!Arrays.equals(this.Zfo, g.ccX)) {
+      paramb.b(6, this.Zfo);
     }
     int i;
     Object localObject;
-    if ((this.RDJ != null) && (this.RDJ.length > 0))
+    if ((this.Zfp != null) && (this.Zfp.length > 0))
     {
       i = 0;
-      while (i < this.RDJ.length)
+      while (i < this.Zfp.length)
       {
-        localObject = this.RDJ[i];
+        localObject = this.Zfp[i];
         if (localObject != null) {
           paramb.a(7, (e)localObject);
         }
         i += 1;
       }
     }
-    if ((this.RDK != null) && (this.RDK.length > 0))
+    if ((this.Zfq != null) && (this.Zfq.length > 0))
     {
       i = j;
-      while (i < this.RDK.length)
+      while (i < this.Zfq.length)
       {
-        localObject = this.RDK[i];
+        localObject = this.Zfq[i];
         if (localObject != null) {
           paramb.a(8, (e)localObject);
         }
         i += 1;
       }
     }
-    if (this.RDL != 0) {
-      paramb.bs(9, this.RDL);
+    if (this.Zfr != 0) {
+      paramb.bJ(9, this.Zfr);
     }
-    if (this.RDM != 0) {
-      paramb.bs(10, this.RDM);
+    if (this.Zfs != 0) {
+      paramb.bJ(10, this.Zfs);
     }
-    if (this.jqs != 0) {
-      paramb.bs(11, this.jqs);
+    if (this.mfT != 0) {
+      paramb.bJ(11, this.mfT);
     }
     super.a(paramb);
   }

@@ -21,7 +21,7 @@ import android.webkit.WebView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.ISharedPreferenceProvider;
 import com.tencent.xweb.WebView.c;
-import com.tencent.xweb.ai;
+import com.tencent.xweb.ak;
 import com.tencent.xweb.b;
 import com.tencent.xweb.internal.l;
 import com.tencent.xweb.internal.l.a;
@@ -38,6 +38,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Random;
 import java.util.Set;
 
@@ -61,8 +62,8 @@ public class XWalkEnvironment
   public static final String RUNTIME_ABI_ARM64_STR = "arm64-v8a";
   public static final int SDK_SUPPORT_INVOKE_NOTIFY_MIN_APKVERSION = 153;
   public static final int SDK_SUPPORT_INVOKE_RUNTIME_MIN_APKVERSION = 255;
-  public static final int SDK_SUPPORT_MIN_APKVERSION = 49;
-  public static final int SDK_VERSION = 201201;
+  public static final int SDK_SUPPORT_MIN_APKVERSION = 2000;
+  public static final int SDK_VERSION = 20210601;
   private static final int SPECIAL_TEST_USER_ID = 10001;
   public static final String SP_KEY_DEVICE_RD = "sNDeviceRd";
   public static final String SP_KEY_FILE_READER_POSTFIX_COUNT = "_count";
@@ -72,6 +73,7 @@ public class XWalkEnvironment
   private static final String SP_KEY_GRAY_VALUE_TEST = "TEST_GRAY_VALUE";
   private static final String SP_KEY_IP_TYPE = "IP_TYPE";
   public static final String SP_KEY_PLUGIN_AVAILABLE_VERSION = "availableVersion";
+  public static final String SP_KEY_PLUGIN_LAST_ENV_INFO = "lastEnvInfo";
   public static final String SP_KEY_PLUGIN_LAST_REPORT_DATE = "lastReportDate";
   public static final String SP_KEY_PLUGIN_LAST_REPORT_VERSION = "lastReportVersion";
   public static final String SP_KEY_PLUGIN_PATCH_DOWNLOAD_COUNT_PREFIX = "patchDownloadCount_";
@@ -125,6 +127,7 @@ public class XWalkEnvironment
   private static boolean sIsForceDarkMode;
   private static boolean sIsPluginInited;
   private static Boolean sIsXWalkVerify;
+  private static String sLocaleString;
   static Method sMMKVMethod;
   static int sNChromiuVersion;
   public static int sNDeviceRd;
@@ -301,11 +304,11 @@ public class XWalkEnvironment
   {
     try
     {
-      AppMethodBeat.i(219120);
+      AppMethodBeat.i(196093);
       if (!sAppInfos.contains(paramString)) {
         sAppInfos.add(paramString);
       }
-      AppMethodBeat.o(219120);
+      AppMethodBeat.o(196093);
       return;
     }
     finally {}
@@ -343,7 +346,7 @@ public class XWalkEnvironment
     {
       Object localObject = paramContext[i];
       if ((localObject.getName().startsWith("app_xwalk_")) && (localObject.isDirectory())) {
-        c.bsB(localObject.getAbsolutePath());
+        c.bFA(localObject.getAbsolutePath());
       }
       i += 1;
     }
@@ -359,11 +362,11 @@ public class XWalkEnvironment
     {
       try
       {
-        AppMethodBeat.i(219122);
+        AppMethodBeat.i(196100);
         paramString = paramString.split("&");
         if ((paramString == null) || (paramString.length == 0))
         {
-          AppMethodBeat.o(219122);
+          AppMethodBeat.o(196100);
           bool = true;
           return bool;
         }
@@ -375,7 +378,7 @@ public class XWalkEnvironment
         CharSequence localCharSequence = paramString[i];
         if ((!TextUtils.isEmpty(localCharSequence)) && (!sAppInfos.contains(localCharSequence.trim())))
         {
-          AppMethodBeat.o(219122);
+          AppMethodBeat.o(196100);
           continue;
         }
         i += 1;
@@ -383,7 +386,7 @@ public class XWalkEnvironment
       finally {}
       continue;
       label102:
-      AppMethodBeat.o(219122);
+      AppMethodBeat.o(196100);
       bool = true;
     }
   }
@@ -391,20 +394,20 @@ public class XWalkEnvironment
   public static boolean delApiVersion(int paramInt)
   {
     AppMethodBeat.i(157317);
-    boolean bool = c.bsB(getVesionDir(paramInt));
+    boolean bool = c.bFA(getVesionDir(paramInt));
     AppMethodBeat.o(157317);
     return bool;
   }
   
   public static String dumpAppInfo()
   {
-    AppMethodBeat.i(219121);
+    AppMethodBeat.i(196098);
     Iterator localIterator = sAppInfos.iterator();
     String str2;
     for (String str1 = ""; localIterator.hasNext(); str1 = str1 + str2 + ";") {
       str2 = (String)localIterator.next();
     }
-    AppMethodBeat.o(219121);
+    AppMethodBeat.o(196098);
     return str1;
   }
   
@@ -529,83 +532,83 @@ public class XWalkEnvironment
   public static String getDeviceAbi()
   {
     // Byte code:
-    //   0: ldc_w 678
-    //   3: invokestatic 252	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: getstatic 680	org/xwalk/core/XWalkEnvironment:sDeviceAbi	Ljava/lang/String;
+    //   0: ldc_w 682
+    //   3: invokestatic 256	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: getstatic 684	org/xwalk/core/XWalkEnvironment:sDeviceAbi	Ljava/lang/String;
     //   9: ifnonnull +103 -> 112
-    //   12: getstatic 685	android/os/Build$VERSION:SDK_INT	I
+    //   12: getstatic 689	android/os/Build$VERSION:SDK_INT	I
     //   15: bipush 21
     //   17: if_icmplt +14 -> 31
-    //   20: getstatic 690	android/os/Build:SUPPORTED_ABIS	[Ljava/lang/String;
+    //   20: getstatic 694	android/os/Build:SUPPORTED_ABIS	[Ljava/lang/String;
     //   23: iconst_0
     //   24: aaload
-    //   25: invokevirtual 693	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   28: putstatic 680	org/xwalk/core/XWalkEnvironment:sDeviceAbi	Ljava/lang/String;
-    //   31: getstatic 680	org/xwalk/core/XWalkEnvironment:sDeviceAbi	Ljava/lang/String;
+    //   25: invokevirtual 697	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   28: putstatic 684	org/xwalk/core/XWalkEnvironment:sDeviceAbi	Ljava/lang/String;
+    //   31: getstatic 684	org/xwalk/core/XWalkEnvironment:sDeviceAbi	Ljava/lang/String;
     //   34: ifnonnull +54 -> 88
-    //   37: new 695	java/io/InputStreamReader
+    //   37: new 699	java/io/InputStreamReader
     //   40: dup
-    //   41: invokestatic 701	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
-    //   44: ldc_w 703
-    //   47: invokevirtual 707	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
-    //   50: invokevirtual 713	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   53: invokespecial 716	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   41: invokestatic 705	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
+    //   44: ldc_w 707
+    //   47: invokevirtual 711	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
+    //   50: invokevirtual 717	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   53: invokespecial 720	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   56: astore_1
-    //   57: new 718	java/io/BufferedReader
+    //   57: new 722	java/io/BufferedReader
     //   60: dup
     //   61: aload_1
-    //   62: invokespecial 721	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   62: invokespecial 725	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   65: astore_0
     //   66: aload_0
     //   67: astore_3
     //   68: aload_1
     //   69: astore_2
     //   70: aload_0
-    //   71: invokevirtual 724	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   74: invokevirtual 693	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   77: putstatic 680	org/xwalk/core/XWalkEnvironment:sDeviceAbi	Ljava/lang/String;
+    //   71: invokevirtual 728	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   74: invokevirtual 697	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   77: putstatic 684	org/xwalk/core/XWalkEnvironment:sDeviceAbi	Ljava/lang/String;
     //   80: aload_1
-    //   81: invokestatic 728	org/xwalk/core/XWalkEnvironment:tryClose	(Ljava/io/Closeable;)V
+    //   81: invokestatic 732	org/xwalk/core/XWalkEnvironment:tryClose	(Ljava/io/Closeable;)V
     //   84: aload_0
-    //   85: invokestatic 728	org/xwalk/core/XWalkEnvironment:tryClose	(Ljava/io/Closeable;)V
-    //   88: ldc 128
-    //   90: new 406	java/lang/StringBuilder
+    //   85: invokestatic 732	org/xwalk/core/XWalkEnvironment:tryClose	(Ljava/io/Closeable;)V
+    //   88: ldc 131
+    //   90: new 410	java/lang/StringBuilder
     //   93: dup
-    //   94: ldc_w 730
-    //   97: invokespecial 411	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   100: getstatic 680	org/xwalk/core/XWalkEnvironment:sDeviceAbi	Ljava/lang/String;
-    //   103: invokevirtual 418	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   106: invokevirtual 421	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   109: invokestatic 641	org/xwalk/core/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   112: getstatic 680	org/xwalk/core/XWalkEnvironment:sDeviceAbi	Ljava/lang/String;
+    //   94: ldc_w 734
+    //   97: invokespecial 415	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   100: getstatic 684	org/xwalk/core/XWalkEnvironment:sDeviceAbi	Ljava/lang/String;
+    //   103: invokevirtual 422	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   106: invokevirtual 425	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   109: invokestatic 645	org/xwalk/core/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   112: getstatic 684	org/xwalk/core/XWalkEnvironment:sDeviceAbi	Ljava/lang/String;
     //   115: ifnonnull +139 -> 254
-    //   118: ldc_w 678
-    //   121: invokestatic 333	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   124: ldc_w 299
+    //   118: ldc_w 682
+    //   121: invokestatic 337	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   124: ldc_w 303
     //   127: areturn
     //   128: astore_0
-    //   129: ldc 128
-    //   131: new 406	java/lang/StringBuilder
+    //   129: ldc 131
+    //   131: new 410	java/lang/StringBuilder
     //   134: dup
-    //   135: ldc_w 732
-    //   138: invokespecial 411	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   135: ldc_w 736
+    //   138: invokespecial 415	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   141: aload_0
-    //   142: invokevirtual 414	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   145: invokevirtual 418	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   148: invokevirtual 421	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   151: invokestatic 374	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   142: invokevirtual 418	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   145: invokevirtual 422	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: invokevirtual 425	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   151: invokestatic 378	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   154: goto -123 -> 31
     //   157: astore_0
-    //   158: ldc 128
-    //   160: new 406	java/lang/StringBuilder
+    //   158: ldc 131
+    //   160: new 410	java/lang/StringBuilder
     //   163: dup
-    //   164: ldc_w 734
-    //   167: invokespecial 411	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   164: ldc_w 738
+    //   167: invokespecial 415	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   170: aload_0
-    //   171: invokevirtual 735	java/lang/NoSuchFieldError:getMessage	()Ljava/lang/String;
-    //   174: invokevirtual 418	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   177: invokevirtual 421	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   180: invokestatic 374	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   171: invokevirtual 739	java/lang/NoSuchFieldError:getMessage	()Ljava/lang/String;
+    //   174: invokevirtual 422	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: invokevirtual 425	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   180: invokestatic 378	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   183: goto -152 -> 31
     //   186: astore 4
     //   188: aconst_null
@@ -616,20 +619,20 @@ public class XWalkEnvironment
     //   193: astore_3
     //   194: aload_1
     //   195: astore_2
-    //   196: ldc 128
-    //   198: new 406	java/lang/StringBuilder
+    //   196: ldc 131
+    //   198: new 410	java/lang/StringBuilder
     //   201: dup
-    //   202: ldc_w 730
-    //   205: invokespecial 411	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   202: ldc_w 734
+    //   205: invokespecial 415	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   208: aload 4
-    //   210: invokevirtual 414	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   213: invokevirtual 418	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   216: invokevirtual 421	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   219: invokestatic 374	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   210: invokevirtual 418	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   213: invokevirtual 422	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   216: invokevirtual 425	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   219: invokestatic 378	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   222: aload_1
-    //   223: invokestatic 728	org/xwalk/core/XWalkEnvironment:tryClose	(Ljava/io/Closeable;)V
+    //   223: invokestatic 732	org/xwalk/core/XWalkEnvironment:tryClose	(Ljava/io/Closeable;)V
     //   226: aload_0
-    //   227: invokestatic 728	org/xwalk/core/XWalkEnvironment:tryClose	(Ljava/io/Closeable;)V
+    //   227: invokestatic 732	org/xwalk/core/XWalkEnvironment:tryClose	(Ljava/io/Closeable;)V
     //   230: goto -142 -> 88
     //   233: astore_0
     //   234: aconst_null
@@ -637,17 +640,17 @@ public class XWalkEnvironment
     //   236: aconst_null
     //   237: astore_1
     //   238: aload_1
-    //   239: invokestatic 728	org/xwalk/core/XWalkEnvironment:tryClose	(Ljava/io/Closeable;)V
+    //   239: invokestatic 732	org/xwalk/core/XWalkEnvironment:tryClose	(Ljava/io/Closeable;)V
     //   242: aload_3
-    //   243: invokestatic 728	org/xwalk/core/XWalkEnvironment:tryClose	(Ljava/io/Closeable;)V
-    //   246: ldc_w 678
-    //   249: invokestatic 333	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   243: invokestatic 732	org/xwalk/core/XWalkEnvironment:tryClose	(Ljava/io/Closeable;)V
+    //   246: ldc_w 682
+    //   249: invokestatic 337	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   252: aload_0
     //   253: athrow
-    //   254: getstatic 680	org/xwalk/core/XWalkEnvironment:sDeviceAbi	Ljava/lang/String;
+    //   254: getstatic 684	org/xwalk/core/XWalkEnvironment:sDeviceAbi	Ljava/lang/String;
     //   257: astore_0
-    //   258: ldc_w 678
-    //   261: invokestatic 333	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   258: ldc_w 682
+    //   261: invokestatic 337	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   264: aload_0
     //   265: areturn
     //   266: astore_0
@@ -885,7 +888,7 @@ public class XWalkEnvironment
   private static boolean getFeatureSupport(int paramInt)
   {
     AppMethodBeat.i(157253);
-    boolean bool = ((Boolean)l.g(WebView.c.SAt).excute("STR_CMD_FEATURE_SUPPORT", new Object[] { Integer.valueOf(paramInt) })).booleanValue();
+    boolean bool = ((Boolean)l.h(WebView.c.aabm).excute("STR_CMD_FEATURE_SUPPORT", new Object[] { Integer.valueOf(paramInt) })).booleanValue();
     AppMethodBeat.o(157253);
     return bool;
   }
@@ -963,14 +966,14 @@ public class XWalkEnvironment
   
   public static int getInstalledNewstVersionForPredownAbi()
   {
-    AppMethodBeat.i(219109);
+    AppMethodBeat.i(195942);
     String str2 = getRuntimeAbi();
     String str1 = "armeabi-v7a";
     if ("armeabi-v7a".equalsIgnoreCase(str2)) {
       str1 = "arm64-v8a";
     }
     int i = getInstalledNewstVersion(str1);
-    AppMethodBeat.o(219109);
+    AppMethodBeat.o(195942);
     return i;
   }
   
@@ -1003,6 +1006,24 @@ public class XWalkEnvironment
     return i;
   }
   
+  public static Locale getLocale()
+  {
+    AppMethodBeat.i(195894);
+    if ((sLocaleString != null) && (!sLocaleString.isEmpty()))
+    {
+      Locale localLocale = Locale.forLanguageTag(sLocaleString);
+      AppMethodBeat.o(195894);
+      return localLocale;
+    }
+    AppMethodBeat.o(195894);
+    return null;
+  }
+  
+  public static String getLocaleString()
+  {
+    return sLocaleString;
+  }
+  
   public static SharedPreferences getMMKVSharedPreferences(String paramString)
   {
     AppMethodBeat.i(157232);
@@ -1019,7 +1040,7 @@ public class XWalkEnvironment
       {
         Object localObject1 = sSPProvider;
         getApplicationContext();
-        localObject1 = ((ISharedPreferenceProvider)localObject1).C(paramString, paramInt, paramBoolean);
+        localObject1 = ((ISharedPreferenceProvider)localObject1).F(paramString, paramInt, paramBoolean);
         if (localObject1 != null)
         {
           AppMethodBeat.o(157234);
@@ -1033,7 +1054,8 @@ public class XWalkEnvironment
           Log.e("XWalkEnvironment", "got sp from mmkv callback failed " + localException1.getMessage());
           localObject2 = null;
         }
-        com.tencent.xweb.util.h.OQ(176L);
+        Log.e("XWalkEnvironment", "got sp from mmkv callback retSp == null ");
+        com.tencent.xweb.util.h.Xg(176L);
       }
     }
     for (;;)
@@ -1045,26 +1067,26 @@ public class XWalkEnvironment
       paramString = sApplicationContext.getSharedPreferences(paramString, paramInt);
       AppMethodBeat.o(157234);
       return paramString;
-      com.tencent.xweb.util.h.OQ(177L);
+      com.tencent.xweb.util.h.Xg(177L);
     }
     try
     {
       localObject2 = sMMKVMethod.invoke(null, new Object[] { getApplicationContext(), paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
       if ((localObject2 != null) && ((localObject2 instanceof SharedPreferences))) {
-        break label192;
+        break label200;
       }
       Log.e("XWalkEnvironment", "get mmmkv from reflection failed");
     }
     catch (Exception localException2)
     {
-      label169:
-      break label169;
+      label177:
+      break label177;
     }
-    com.tencent.xweb.util.h.OQ(179L);
+    com.tencent.xweb.util.h.Xg(179L);
     paramString = sApplicationContext.getSharedPreferences(paramString, paramInt);
     AppMethodBeat.o(157234);
     return paramString;
-    label192:
+    label200:
     Object localObject2 = (SharedPreferences)localObject2;
     AppMethodBeat.o(157234);
     return localObject2;
@@ -1309,7 +1331,7 @@ public class XWalkEnvironment
       AppMethodBeat.o(157291);
       return i;
     }
-    i = b.hsl();
+    i = b.ivT();
     if (i > 0)
     {
       addXWalkInitializeLog("getPluginUpdatePeriod use cmdPeriod = ".concat(String.valueOf(i)));
@@ -1339,7 +1361,7 @@ public class XWalkEnvironment
       return localObject;
     }
     getApplicationContext();
-    localObject = f.htT();
+    localObject = f.ixC();
     sStrCurentProcessName = (String)localObject;
     AppMethodBeat.o(157319);
     return localObject;
@@ -1541,30 +1563,30 @@ public class XWalkEnvironment
   
   public static String getSafeModuleForCommand(String paramString)
   {
-    AppMethodBeat.i(219119);
+    AppMethodBeat.i(196073);
     try
     {
       String str = getModuleName();
       if (("tools".equalsIgnoreCase(str)) || ("toolsmp".equalsIgnoreCase(str)) || ("mm".equalsIgnoreCase(str)) || ("support".equalsIgnoreCase(str)))
       {
         Log.i("XWalkEnvironment", "getSafeModuleForCommand ".concat(String.valueOf(str)));
-        AppMethodBeat.o(219119);
+        AppMethodBeat.o(196073);
         return str;
       }
       if (str.startsWith("appbrand"))
       {
         Log.i("XWalkEnvironment", "getSafeModuleForCommand appbrand");
-        AppMethodBeat.o(219119);
+        AppMethodBeat.o(196073);
         return "appbrand";
       }
       Log.i("XWalkEnvironment", "getSafeModuleForCommand unknown " + str + ", use defaultVal " + paramString);
-      AppMethodBeat.o(219119);
+      AppMethodBeat.o(196073);
       return paramString;
     }
     catch (Exception localException)
     {
       Log.e("XWalkEnvironment", "getSafeModuleForCommand error, use defaultVal " + paramString + ", error info: ", localException);
-      AppMethodBeat.o(219119);
+      AppMethodBeat.o(196073);
     }
     return paramString;
   }
@@ -1572,7 +1594,7 @@ public class XWalkEnvironment
   public static SharedPreferences getSharedPreferences()
   {
     AppMethodBeat.i(157244);
-    SharedPreferences localSharedPreferences = sApplicationContext.getSharedPreferences("libxwalkcore", 4);
+    SharedPreferences localSharedPreferences = getProcessSafePreferences("libxwalkcore", 4);
     AppMethodBeat.o(157244);
     return localSharedPreferences;
   }
@@ -1654,7 +1676,7 @@ public class XWalkEnvironment
   public static SharedPreferences getSharedPreferencesForVersionInfo()
   {
     AppMethodBeat.i(157236);
-    SharedPreferences localSharedPreferences = sApplicationContext.getSharedPreferences("XWALKINFOS", 4);
+    SharedPreferences localSharedPreferences = getProcessSafePreferences("XWALKINFOS", 4);
     AppMethodBeat.o(157236);
     return localSharedPreferences;
   }
@@ -1719,12 +1741,12 @@ public class XWalkEnvironment
   
   public static int getTodayGrayValue()
   {
-    AppMethodBeat.i(219112);
+    AppMethodBeat.i(195952);
     Object localObject = new SimpleDateFormat("yyyyMMdd").format(new Date());
     if ((s_todayGrayValue != 0) && (((String)localObject).equals(s_todayDate)))
     {
       i = s_todayGrayValue;
-      AppMethodBeat.o(219112);
+      AppMethodBeat.o(195952);
       return i;
     }
     s_todayDate = (String)localObject;
@@ -1740,7 +1762,7 @@ public class XWalkEnvironment
         if ((localObject == null) || (localObject.length <= 3))
         {
           s_todayGrayValue = i;
-          AppMethodBeat.o(219112);
+          AppMethodBeat.o(195952);
           return i;
           i = getGrayValue();
         }
@@ -1753,7 +1775,7 @@ public class XWalkEnvironment
           if (j == 0)
           {
             s_todayGrayValue = i;
-            AppMethodBeat.o(219112);
+            AppMethodBeat.o(195952);
             return i;
           }
           s_todayGrayValue = j % 10000 + 1;
@@ -1768,13 +1790,13 @@ public class XWalkEnvironment
       }
     }
     i = s_todayGrayValue;
-    AppMethodBeat.o(219112);
+    AppMethodBeat.o(195952);
     return i;
   }
   
   public static int getTodayGrayValueByKey(String paramString)
   {
-    AppMethodBeat.i(219113);
+    AppMethodBeat.i(195957);
     String str = new SimpleDateFormat("yyyyMMdd").format(new Date());
     int i = getUserId();
     if (i != 0) {}
@@ -1788,7 +1810,7 @@ public class XWalkEnvironment
         if ((paramString == null) || (paramString.length <= 3))
         {
           i = s_todayGrayValue;
-          AppMethodBeat.o(219113);
+          AppMethodBeat.o(195957);
           return i;
           i = getGrayValue();
         }
@@ -1801,17 +1823,17 @@ public class XWalkEnvironment
           if (i == 0)
           {
             i = s_todayGrayValue;
-            AppMethodBeat.o(219113);
+            AppMethodBeat.o(195957);
             return i;
           }
-          AppMethodBeat.o(219113);
+          AppMethodBeat.o(195957);
           return i % 10000 + 1;
         }
       }
       catch (Exception paramString)
       {
         i = s_todayGrayValue;
-        AppMethodBeat.o(219113);
+        AppMethodBeat.o(195957);
       }
     }
     return i;
@@ -1835,9 +1857,9 @@ public class XWalkEnvironment
   
   public static int getUserId()
   {
-    AppMethodBeat.i(219117);
+    AppMethodBeat.i(196055);
     int i = getMMKVSharedPreferences("XWEB_USER_INFO").getInt("USER_ID", 0);
-    AppMethodBeat.o(219117);
+    AppMethodBeat.o(196055);
     return i;
   }
   
@@ -1949,28 +1971,28 @@ public class XWalkEnvironment
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc_w 1245
-    //   6: invokestatic 252	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: getstatic 1247	org/xwalk/core/XWalkEnvironment:sXWebArgs	Ljava/util/HashMap;
+    //   3: ldc_w 1263
+    //   6: invokestatic 256	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: getstatic 1265	org/xwalk/core/XWalkEnvironment:sXWebArgs	Ljava/util/HashMap;
     //   12: ifnull +13 -> 25
-    //   15: getstatic 1247	org/xwalk/core/XWalkEnvironment:sXWebArgs	Ljava/util/HashMap;
+    //   15: getstatic 1265	org/xwalk/core/XWalkEnvironment:sXWebArgs	Ljava/util/HashMap;
     //   18: aload_0
-    //   19: invokevirtual 1252	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   19: invokevirtual 1270	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   22: ifne +16 -> 38
     //   25: aconst_null
     //   26: astore_0
-    //   27: ldc_w 1245
-    //   30: invokestatic 333	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   27: ldc_w 1263
+    //   30: invokestatic 337	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   33: ldc 2
     //   35: monitorexit
     //   36: aload_0
     //   37: areturn
-    //   38: getstatic 1247	org/xwalk/core/XWalkEnvironment:sXWebArgs	Ljava/util/HashMap;
+    //   38: getstatic 1265	org/xwalk/core/XWalkEnvironment:sXWebArgs	Ljava/util/HashMap;
     //   41: aload_0
-    //   42: invokevirtual 1255	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   42: invokevirtual 1273	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   45: astore_0
-    //   46: ldc_w 1245
-    //   49: invokestatic 333	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   46: ldc_w 1263
+    //   49: invokestatic 337	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   52: goto -19 -> 33
     //   55: astore_0
     //   56: ldc 2
@@ -1993,27 +2015,27 @@ public class XWalkEnvironment
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc_w 1256
-    //   6: invokestatic 252	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: ldc_w 1274
+    //   6: invokestatic 256	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
-    //   10: invokestatic 1034	org/xwalk/core/XWalkEnvironment:getXWebInitArgs	(Ljava/lang/String;)Ljava/lang/Object;
+    //   10: invokestatic 1052	org/xwalk/core/XWalkEnvironment:getXWebInitArgs	(Ljava/lang/String;)Ljava/lang/Object;
     //   13: astore_0
     //   14: aload_0
     //   15: ifnull +10 -> 25
     //   18: aload_0
-    //   19: instanceof 258
+    //   19: instanceof 262
     //   22: ifne +14 -> 36
-    //   25: ldc_w 1256
-    //   28: invokestatic 333	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   25: ldc_w 1274
+    //   28: invokestatic 337	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   31: ldc 2
     //   33: monitorexit
     //   34: aload_1
     //   35: areturn
     //   36: aload_0
-    //   37: checkcast 258	java/lang/String
+    //   37: checkcast 262	java/lang/String
     //   40: astore_1
-    //   41: ldc_w 1256
-    //   44: invokestatic 333	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   41: ldc_w 1274
+    //   44: invokestatic 337	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   47: goto -16 -> 31
     //   50: astore_0
     //   51: ldc 2
@@ -2067,7 +2089,7 @@ public class XWalkEnvironment
   public static boolean hasAvailableVersion()
   {
     AppMethodBeat.i(157254);
-    if (49 > getAvailableVersion())
+    if (2000 > getAvailableVersion())
     {
       AppMethodBeat.o(157254);
       return false;
@@ -2078,13 +2100,13 @@ public class XWalkEnvironment
   
   public static boolean hasInstalledAvailableVersion()
   {
-    AppMethodBeat.i(219108);
-    if (49 > getInstalledNewstVersionForCurAbi())
+    AppMethodBeat.i(195937);
+    if (2000 > getInstalledNewstVersionForCurAbi())
     {
-      AppMethodBeat.o(219108);
+      AppMethodBeat.o(195937);
       return false;
     }
-    AppMethodBeat.o(219108);
+    AppMethodBeat.o(195937);
     return true;
   }
   
@@ -2094,79 +2116,79 @@ public class XWalkEnvironment
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc_w 1273
-    //   6: invokestatic 252	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: ldc_w 1291
+    //   6: invokestatic 256	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
     //   10: ifnull +9 -> 19
-    //   13: getstatic 599	org/xwalk/core/XWalkEnvironment:sApplicationContext	Landroid/content/Context;
+    //   13: getstatic 603	org/xwalk/core/XWalkEnvironment:sApplicationContext	Landroid/content/Context;
     //   16: ifnull +13 -> 29
-    //   19: ldc_w 1273
-    //   22: invokestatic 333	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   19: ldc_w 1291
+    //   22: invokestatic 337	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   25: ldc 2
     //   27: monitorexit
     //   28: return
     //   29: aload_0
-    //   30: invokevirtual 1274	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   33: putstatic 599	org/xwalk/core/XWalkEnvironment:sApplicationContext	Landroid/content/Context;
-    //   36: invokestatic 861	org/xwalk/core/XWalkEnvironment:getRuntimeAbi	()Ljava/lang/String;
+    //   30: invokevirtual 1292	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   33: putstatic 603	org/xwalk/core/XWalkEnvironment:sApplicationContext	Landroid/content/Context;
+    //   36: invokestatic 865	org/xwalk/core/XWalkEnvironment:getRuntimeAbi	()Ljava/lang/String;
     //   39: astore_2
-    //   40: ldc 128
-    //   42: ldc_w 1276
+    //   40: ldc 131
+    //   42: ldc_w 1294
     //   45: aload_2
-    //   46: invokestatic 876	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   49: invokevirtual 879	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   52: invokestatic 440	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   46: invokestatic 880	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   49: invokevirtual 883	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   52: invokestatic 444	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   55: aload_2
-    //   56: invokestatic 856	org/xwalk/core/XWebCoreInfo:getBackupCoreInfo	(Ljava/lang/String;)Lorg/xwalk/core/XWebCoreInfo;
+    //   56: invokestatic 860	org/xwalk/core/XWebCoreInfo:getBackupCoreInfo	(Ljava/lang/String;)Lorg/xwalk/core/XWebCoreInfo;
     //   59: astore_3
     //   60: aload_3
-    //   61: getfield 649	org/xwalk/core/XWebCoreInfo:ver	I
+    //   61: getfield 653	org/xwalk/core/XWebCoreInfo:ver	I
     //   64: ifgt +92 -> 156
-    //   67: invokestatic 1278	org/xwalk/core/XWalkEnvironment:getSharedPreferencesForVersionInfo	()Landroid/content/SharedPreferences;
-    //   70: ldc_w 1280
+    //   67: invokestatic 1296	org/xwalk/core/XWalkEnvironment:getSharedPreferencesForVersionInfo	()Landroid/content/SharedPreferences;
+    //   70: ldc_w 1298
     //   73: iconst_0
-    //   74: invokeinterface 1283 3 0
+    //   74: invokeinterface 1301 3 0
     //   79: ifne +47 -> 126
-    //   82: invokestatic 1278	org/xwalk/core/XWalkEnvironment:getSharedPreferencesForVersionInfo	()Landroid/content/SharedPreferences;
+    //   82: invokestatic 1296	org/xwalk/core/XWalkEnvironment:getSharedPreferencesForVersionInfo	()Landroid/content/SharedPreferences;
     //   85: ldc 92
     //   87: iconst_m1
-    //   88: invokeinterface 757 3 0
+    //   88: invokeinterface 761 3 0
     //   93: istore_1
-    //   94: invokestatic 1278	org/xwalk/core/XWalkEnvironment:getSharedPreferencesForVersionInfo	()Landroid/content/SharedPreferences;
-    //   97: ldc_w 1285
-    //   100: ldc_w 299
-    //   103: invokeinterface 475 3 0
+    //   94: invokestatic 1296	org/xwalk/core/XWalkEnvironment:getSharedPreferencesForVersionInfo	()Landroid/content/SharedPreferences;
+    //   97: ldc_w 1303
+    //   100: ldc_w 303
+    //   103: invokeinterface 479 3 0
     //   108: astore 4
     //   110: aload_3
     //   111: aload_2
-    //   112: putfield 1288	org/xwalk/core/XWebCoreInfo:strAbi	Ljava/lang/String;
+    //   112: putfield 1306	org/xwalk/core/XWebCoreInfo:strAbi	Ljava/lang/String;
     //   115: aload_3
     //   116: iload_1
-    //   117: putfield 649	org/xwalk/core/XWebCoreInfo:ver	I
+    //   117: putfield 653	org/xwalk/core/XWebCoreInfo:ver	I
     //   120: aload_3
     //   121: aload 4
-    //   123: putfield 653	org/xwalk/core/XWebCoreInfo:verDetail	Ljava/lang/String;
+    //   123: putfield 657	org/xwalk/core/XWebCoreInfo:verDetail	Ljava/lang/String;
     //   126: aload_3
-    //   127: invokestatic 1292	org/xwalk/core/XWebCoreInfo:setVersionForAbi	(Lorg/xwalk/core/XWebCoreInfo;)Z
+    //   127: invokestatic 1310	org/xwalk/core/XWebCoreInfo:setVersionForAbi	(Lorg/xwalk/core/XWebCoreInfo;)Z
     //   130: ifeq +26 -> 156
-    //   133: invokestatic 1278	org/xwalk/core/XWalkEnvironment:getSharedPreferencesForVersionInfo	()Landroid/content/SharedPreferences;
-    //   136: invokeinterface 485 1 0
-    //   141: ldc_w 1280
+    //   133: invokestatic 1296	org/xwalk/core/XWalkEnvironment:getSharedPreferencesForVersionInfo	()Landroid/content/SharedPreferences;
+    //   136: invokeinterface 489 1 0
+    //   141: ldc_w 1298
     //   144: iconst_1
-    //   145: invokeinterface 1296 3 0
-    //   150: invokeinterface 1299 1 0
+    //   145: invokeinterface 1314 3 0
+    //   150: invokeinterface 1317 1 0
     //   155: pop
     //   156: aload_3
-    //   157: putstatic 644	org/xwalk/core/XWalkEnvironment:sXWebCoreInfo	Lorg/xwalk/core/XWebCoreInfo;
-    //   160: getstatic 262	org/xwalk/core/XWalkEnvironment:sIsPluginInited	Z
+    //   157: putstatic 648	org/xwalk/core/XWalkEnvironment:sXWebCoreInfo	Lorg/xwalk/core/XWebCoreInfo;
+    //   160: getstatic 266	org/xwalk/core/XWalkEnvironment:sIsPluginInited	Z
     //   163: ifne +9 -> 172
-    //   166: invokestatic 1302	org/xwalk/core/XWalkEnvironment:initXWalkPlugins	()Z
-    //   169: putstatic 262	org/xwalk/core/XWalkEnvironment:sIsPluginInited	Z
+    //   166: invokestatic 1320	org/xwalk/core/XWalkEnvironment:initXWalkPlugins	()Z
+    //   169: putstatic 266	org/xwalk/core/XWalkEnvironment:sIsPluginInited	Z
     //   172: aload_0
-    //   173: invokestatic 1307	com/tencent/xweb/y:lC	(Landroid/content/Context;)V
-    //   176: invokestatic 1310	org/xwalk/core/XWalkEnvironment:initTurnOnKVLog	()V
-    //   179: ldc_w 1273
-    //   182: invokestatic 333	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   173: invokestatic 1325	com/tencent/xweb/y:mA	(Landroid/content/Context;)V
+    //   176: invokestatic 1328	org/xwalk/core/XWalkEnvironment:initTurnOnKVLog	()V
+    //   179: ldc_w 1291
+    //   182: invokestatic 337	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   185: goto -160 -> 25
     //   188: astore_0
     //   189: ldc 2
@@ -2201,11 +2223,11 @@ public class XWalkEnvironment
     }
     try
     {
-      sMMKVMethod = Class.forName("com.tencent.mm.cr.c").getMethod("getMMKV", new Class[] { Context.class, String.class, Integer.TYPE, Boolean.TYPE });
+      sMMKVMethod = Class.forName("com.tencent.mm.xwebutil.XWebMMkvWrapper").getMethod("getMMKV", new Class[] { Context.class, String.class, Integer.TYPE, Boolean.TYPE });
       label62:
       if (sMMKVMethod == null)
       {
-        com.tencent.xweb.util.h.OQ(178L);
+        com.tencent.xweb.util.h.Xg(178L);
         Log.e("XWalkEnvironment", "initSafePsProvider failed");
       }
       for (;;)
@@ -2227,7 +2249,7 @@ public class XWalkEnvironment
     AppMethodBeat.i(157225);
     try
     {
-      isTurnOnKVLog = y.hsF().hsJ();
+      isTurnOnKVLog = y.iwp().iwt();
       AppMethodBeat.o(157225);
       return;
     }
@@ -2241,7 +2263,7 @@ public class XWalkEnvironment
   private static boolean initXWalkPlugins()
   {
     AppMethodBeat.i(157226);
-    boolean bool = com.tencent.xweb.xwalk.a.h.hvn();
+    boolean bool = com.tencent.xweb.xwalk.a.h.izg();
     AppMethodBeat.o(157226);
     return bool;
   }
@@ -2294,6 +2316,18 @@ public class XWalkEnvironment
       return true;
     }
     AppMethodBeat.o(157247);
+    return false;
+  }
+  
+  public static boolean isCurrentVersionSupportCustomInputForAppbrand()
+  {
+    AppMethodBeat.i(195915);
+    if ((hasAvailableVersion()) && (getFeatureSupport(1041)))
+    {
+      AppMethodBeat.o(195915);
+      return true;
+    }
+    AppMethodBeat.o(195915);
     return false;
   }
   
@@ -2369,6 +2403,18 @@ public class XWalkEnvironment
     return false;
   }
   
+  public static boolean isCurrentVersionSupportSetWebContentsSize()
+  {
+    AppMethodBeat.i(195917);
+    if ((hasAvailableVersion()) && (getFeatureSupport(1042)))
+    {
+      AppMethodBeat.o(195917);
+      return true;
+    }
+    AppMethodBeat.o(195917);
+    return false;
+  }
+  
   public static boolean isDownloadMode()
   {
     AppMethodBeat.i(157296);
@@ -2387,9 +2433,9 @@ public class XWalkEnvironment
   
   public static boolean isForbidDownloadCode()
   {
-    AppMethodBeat.i(219106);
-    boolean bool = ai.htj();
-    AppMethodBeat.o(219106);
+    AppMethodBeat.i(195900);
+    boolean bool = ak.iwQ();
+    AppMethodBeat.o(195900);
     return bool;
   }
   
@@ -2513,13 +2559,13 @@ public class XWalkEnvironment
   
   public static void refreshAvailableVersion()
   {
-    AppMethodBeat.i(219110);
+    AppMethodBeat.i(195943);
     XWebCoreInfo localXWebCoreInfo = XWebCoreInfo.getBackupCoreInfo(getRuntimeAbi());
     sXWebCoreInfo = localXWebCoreInfo;
     if (localXWebCoreInfo.ver != -1) {
       getSharedPreferences().edit().putString("XWALK_CORE_EXTRACTED_DIR", getExtractedCoreDir(sXWebCoreInfo.ver)).commit();
     }
-    AppMethodBeat.o(219110);
+    AppMethodBeat.o(195943);
   }
   
   public static void refreshVerInfo()
@@ -2538,13 +2584,13 @@ public class XWalkEnvironment
   
   static boolean runnintOnUiThread()
   {
-    AppMethodBeat.i(219114);
+    AppMethodBeat.i(195977);
     if (Looper.getMainLooper() == Looper.myLooper())
     {
-      AppMethodBeat.o(219114);
+      AppMethodBeat.o(195977);
       return true;
     }
-    AppMethodBeat.o(219114);
+    AppMethodBeat.o(195977);
     return false;
   }
   
@@ -2612,7 +2658,7 @@ public class XWalkEnvironment
     for (;;)
     {
       Log.i("XWalkEnvironment", "setForceDarkMode forceDarkBehavior:".concat(String.valueOf(paramForceDarkBehavior)));
-      l.g(WebView.c.SAt).excute("STR_CMD_FORCE_DARK_MODE_BEHAVIOR_COMMAND", new Object[] { Integer.valueOf(sForceDarkBehavior) });
+      l.h(WebView.c.aabm).excute("STR_CMD_FORCE_DARK_MODE_BEHAVIOR_COMMAND", new Object[] { Integer.valueOf(sForceDarkBehavior) });
       AppMethodBeat.o(157251);
       return;
       sForceDarkBehavior = 0;
@@ -2628,7 +2674,7 @@ public class XWalkEnvironment
     AppMethodBeat.i(157250);
     sIsForceDarkMode = paramBoolean;
     Log.i("XWalkEnvironment", "setForceDarkMode forceDarkMode:".concat(String.valueOf(paramBoolean)));
-    l.g(WebView.c.SAt).excute("STR_CMD_FORCE_DARK_MODE_COMMAND", new Object[] { Boolean.valueOf(sIsForceDarkMode) });
+    l.h(WebView.c.aabm).excute("STR_CMD_FORCE_DARK_MODE_COMMAND", new Object[] { Boolean.valueOf(sIsForceDarkMode) });
     AppMethodBeat.o(157250);
   }
   
@@ -2678,7 +2724,7 @@ public class XWalkEnvironment
     if (paramInt != s_grayValue)
     {
       Log.i("XWalkEnvironment", "gray value changed to " + s_grayValue);
-      l.g(WebView.c.SAt).excute("STR_CMD_SET_RECHECK_COMMAND", null);
+      l.h(WebView.c.aabm).excute("STR_CMD_SET_RECHECK_COMMAND", null);
     }
     AppMethodBeat.o(157308);
   }
@@ -2704,20 +2750,20 @@ public class XWalkEnvironment
       if ((i != 0) || (paramInt != 1)) {
         break label103;
       }
-      com.tencent.xweb.util.h.OQ(197L);
+      com.tencent.xweb.util.h.Xg(197L);
     }
     for (;;)
     {
       if ((i > 0) || (paramInt > 0))
       {
         sBIsIpTypeChanged = true;
-        l.g(WebView.c.SAt).excute("STR_CMD_SET_RECHECK_COMMAND", null);
+        l.h(WebView.c.aabm).excute("STR_CMD_SET_RECHECK_COMMAND", null);
       }
       AppMethodBeat.o(157305);
       return;
       label103:
       if ((i == 1) && (paramInt == 0)) {
-        com.tencent.xweb.util.h.OQ(198L);
+        com.tencent.xweb.util.h.Xg(198L);
       }
     }
   }
@@ -2725,8 +2771,27 @@ public class XWalkEnvironment
   public static void setIsForbidDownloadCode(boolean paramBoolean)
   {
     AppMethodBeat.i(157227);
-    ai.El(paramBoolean);
+    ak.IN(paramBoolean);
     AppMethodBeat.o(157227);
+  }
+  
+  public static void setLocale(Locale paramLocale)
+  {
+    AppMethodBeat.i(195898);
+    if (paramLocale != null)
+    {
+      Log.i("XWalkEnvironment", "[setLocale] customize locale:" + paramLocale.toLanguageTag());
+      setLocaleString(paramLocale.toLanguageTag());
+      AppMethodBeat.o(195898);
+      return;
+    }
+    Log.w("XWalkEnvironment", "[setLocale] customize locale not set");
+    AppMethodBeat.o(195898);
+  }
+  
+  private static void setLocaleString(String paramString)
+  {
+    sLocaleString = paramString;
   }
   
   public static boolean setPluginTestConfigUrl(String paramString)
@@ -2788,7 +2853,7 @@ public class XWalkEnvironment
     {
       try
       {
-        AppMethodBeat.i(219116);
+        AppMethodBeat.i(196008);
         if (!TextUtils.isEmpty(paramString2))
         {
           SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
@@ -2799,12 +2864,12 @@ public class XWalkEnvironment
               break label92;
             }
             Log.i("XWalkEnvironment", "today is after enddate set tempConfig failed ");
-            AppMethodBeat.o(219116);
+            AppMethodBeat.o(196008);
           }
           catch (Exception paramString1)
           {
             Log.e("XWalkEnvironment", "parse strEndDate failed , set url failed  ");
-            AppMethodBeat.o(219116);
+            AppMethodBeat.o(196008);
             continue;
           }
           return bool;
@@ -2814,7 +2879,7 @@ public class XWalkEnvironment
       label92:
       sStrTempPluginUpdateConfigUrl = paramString1;
       bool = true;
-      AppMethodBeat.o(219116);
+      AppMethodBeat.o(196008);
     }
   }
   
@@ -2853,7 +2918,7 @@ public class XWalkEnvironment
     {
       try
       {
-        AppMethodBeat.i(219115);
+        AppMethodBeat.i(195987);
         if (!TextUtils.isEmpty(paramString2))
         {
           SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
@@ -2864,12 +2929,12 @@ public class XWalkEnvironment
               break label92;
             }
             Log.i("XWalkEnvironment", "today is after enddate set tempConfig failed ");
-            AppMethodBeat.o(219115);
+            AppMethodBeat.o(195987);
           }
           catch (Exception paramString1)
           {
             Log.e("XWalkEnvironment", "parse strEndDate failed , set url failed  ");
-            AppMethodBeat.o(219115);
+            AppMethodBeat.o(195987);
             continue;
           }
           return bool;
@@ -2879,7 +2944,7 @@ public class XWalkEnvironment
       label92:
       sStrTempUpdateConfigUrl = paramString1;
       bool = true;
-      AppMethodBeat.o(219115);
+      AppMethodBeat.o(195987);
     }
   }
   
@@ -2901,17 +2966,17 @@ public class XWalkEnvironment
   
   public static void setTodayGrayValueForTest(int paramInt)
   {
-    AppMethodBeat.i(219111);
+    AppMethodBeat.i(195947);
     s_todayGrayValue = paramInt;
     s_todayDate = new SimpleDateFormat("yyyyMMdd").format(new Date());
-    AppMethodBeat.o(219111);
+    AppMethodBeat.o(195947);
   }
   
   public static void setUserId(int paramInt)
   {
-    AppMethodBeat.i(219118);
+    AppMethodBeat.i(196057);
     getMMKVSharedPreferences("XWEB_USER_INFO").edit().putInt("USER_ID", paramInt).commit();
-    AppMethodBeat.o(219118);
+    AppMethodBeat.o(196057);
   }
   
   public static void setUsingCustomContext(boolean paramBoolean)
@@ -2975,7 +3040,7 @@ public class XWalkEnvironment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.XWalkEnvironment
  * JD-Core Version:    0.7.0.1
  */

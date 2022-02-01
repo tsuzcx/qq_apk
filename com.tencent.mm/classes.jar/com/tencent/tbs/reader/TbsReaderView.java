@@ -53,7 +53,7 @@ public class TbsReaderView
   public TbsReaderView(Context paramContext, TbsReaderView.ReaderCallback paramReaderCallback)
   {
     super(paramContext.getApplicationContext());
-    AppMethodBeat.i(187987);
+    AppMethodBeat.i(186851);
     this.a = null;
     this.b = null;
     this.c = null;
@@ -63,12 +63,12 @@ public class TbsReaderView
     if (!(paramContext instanceof Activity))
     {
       paramContext = new RuntimeException("error: unexpect context(none Activity)");
-      AppMethodBeat.o(187987);
+      AppMethodBeat.o(186851);
       throw paramContext;
     }
     this.c = paramReaderCallback;
     this.a = paramContext;
-    AppMethodBeat.o(187987);
+    AppMethodBeat.o(186851);
   }
   
   public static Drawable getResDrawable(Context paramContext, int paramInt)
@@ -83,31 +83,31 @@ public class TbsReaderView
   
   public static boolean initSDK(Context paramContext)
   {
-    AppMethodBeat.i(187989);
+    AppMethodBeat.i(186856);
     if (!g) {
       g = TbsFileInterfaceImpl.initEngine(paramContext.getApplicationContext());
     }
     new StringBuilder("gInitSdk:").append(g);
     boolean bool = g;
-    AppMethodBeat.o(187989);
+    AppMethodBeat.o(186856);
     return bool;
   }
   
   public static boolean isSupportExt(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(187990);
+    AppMethodBeat.i(186857);
     boolean bool = false;
     if (initSDK(paramContext)) {
       bool = TbsFileInterfaceImpl.canOpenFile(paramString);
     }
-    AppMethodBeat.o(187990);
+    AppMethodBeat.o(186857);
     return bool;
   }
   
   boolean a()
   {
     bool2 = false;
-    AppMethodBeat.i(187997);
+    AppMethodBeat.i(186876);
     try
     {
       this.b = ReaderEngine.getInstance().createTbsReader(this.a.getApplicationContext(), Integer.valueOf(3), this);
@@ -125,26 +125,26 @@ public class TbsReaderView
         boolean bool1 = bool2;
       }
     }
-    AppMethodBeat.o(187997);
+    AppMethodBeat.o(186876);
     return bool1;
   }
   
   public void doCommand(Integer paramInteger, Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(187994);
+    AppMethodBeat.i(186867);
     if ((this.e != null) && (this.b != null)) {
       this.b.doCommand(paramInteger, paramObject1, paramObject2);
     }
-    AppMethodBeat.o(187994);
+    AppMethodBeat.o(186867);
   }
   
   public boolean downloadPlugin(String paramString)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(187992);
+    AppMethodBeat.i(186864);
     if (this.b == null)
     {
-      AppMethodBeat.o(187992);
+      AppMethodBeat.o(186864);
       return false;
     }
     if (this.f == null) {
@@ -158,32 +158,32 @@ public class TbsReaderView
         bool1 = true;
       }
     }
-    AppMethodBeat.o(187992);
+    AppMethodBeat.o(186864);
     return bool1;
   }
   
   public void onCallBackAction(Integer paramInteger, Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(187988);
+    AppMethodBeat.i(186854);
     new StringBuilder("onCallBackAction:").append(paramInteger);
     if (this.c != null) {
       this.c.onCallBackAction(paramInteger, paramObject1, paramObject2);
     }
-    AppMethodBeat.o(187988);
+    AppMethodBeat.o(186854);
   }
   
   public void onSizeChanged(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187995);
+    AppMethodBeat.i(186868);
     if (this.e != null) {
       this.e.onSizeChanged(paramInt1, paramInt2);
     }
-    AppMethodBeat.o(187995);
+    AppMethodBeat.o(186868);
   }
   
   public void onStop()
   {
-    AppMethodBeat.i(187996);
+    AppMethodBeat.i(186872);
     if (this.e != null)
     {
       this.e.destroy();
@@ -199,15 +199,15 @@ public class TbsReaderView
     this.b = null;
     this.a = null;
     g = false;
-    AppMethodBeat.o(187996);
+    AppMethodBeat.o(186872);
   }
   
   public int openFile(Bundle paramBundle)
   {
-    AppMethodBeat.i(187993);
+    AppMethodBeat.i(186866);
     if ((this.b == null) || (paramBundle == null) || (this.e == null))
     {
-      AppMethodBeat.o(187993);
+      AppMethodBeat.o(186866);
       return -1;
     }
     if (!paramBundle.containsKey("file_reader_top_bar_hide")) {
@@ -215,16 +215,16 @@ public class TbsReaderView
     }
     paramBundle.putInt("windowType", TbsFileInterfaceImpl.FILE_READER_WINDOW_TYPE_VIEW);
     int i = this.e.openFile(paramBundle, this);
-    AppMethodBeat.o(187993);
+    AppMethodBeat.o(186866);
     return i;
   }
   
   public boolean preOpen(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(187991);
+    AppMethodBeat.i(186859);
     if (!isSupportExt(this.a, paramString))
     {
-      AppMethodBeat.o(187991);
+      AppMethodBeat.o(186859);
       return false;
     }
     boolean bool2 = initSDK(this.a);
@@ -243,7 +243,7 @@ public class TbsReaderView
         }
       }
     }
-    AppMethodBeat.o(187991);
+    AppMethodBeat.o(186859);
     return bool1;
   }
   
@@ -251,7 +251,7 @@ public class TbsReaderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tbs.reader.TbsReaderView
  * JD-Core Version:    0.7.0.1
  */

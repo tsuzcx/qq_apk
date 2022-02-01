@@ -1,33 +1,32 @@
 package androidx.media;
 
 import android.media.AudioAttributes;
-import android.support.v4.media.AudioAttributesImplApi21;
 import androidx.versionedparcelable.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class AudioAttributesImplApi21Parcelizer
 {
-  public static AudioAttributesImplApi21 read(a parama)
+  public static b read(a parama)
   {
-    AppMethodBeat.i(107786);
-    AudioAttributesImplApi21 localAudioAttributesImplApi21 = new AudioAttributesImplApi21();
-    localAudioAttributesImplApi21.mAudioAttributes = ((AudioAttributes)parama.a(localAudioAttributesImplApi21.mAudioAttributes, 1));
-    localAudioAttributesImplApi21.mLegacyStreamType = parama.aN(localAudioAttributesImplApi21.mLegacyStreamType, 2);
-    AppMethodBeat.o(107786);
-    return localAudioAttributesImplApi21;
+    AppMethodBeat.i(242718);
+    b localb = new b();
+    localb.abJ = ((AudioAttributes)parama.b(localb.abJ, 1));
+    localb.abK = parama.aZ(localb.abK, 2);
+    AppMethodBeat.o(242718);
+    return localb;
   }
   
-  public static void write(AudioAttributesImplApi21 paramAudioAttributesImplApi21, a parama)
+  public static void write(b paramb, a parama)
   {
-    AppMethodBeat.i(107787);
-    parama.writeParcelable(paramAudioAttributesImplApi21.mAudioAttributes, 1);
-    parama.aM(paramAudioAttributesImplApi21.mLegacyStreamType, 2);
-    AppMethodBeat.o(107787);
+    AppMethodBeat.i(242719);
+    parama.a(paramb.abJ, 1);
+    parama.aY(paramb.abK, 2);
+    AppMethodBeat.o(242719);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     androidx.media.AudioAttributesImplApi21Parcelizer
  * JD-Core Version:    0.7.0.1
  */

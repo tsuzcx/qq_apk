@@ -7,12 +7,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.wallet_core.c.y;
+import com.tencent.mm.plugin.wallet_core.c.z;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCardSelectUI;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.h;
@@ -24,37 +27,37 @@ import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 public class WalletBindDepositUI
   extends WalletBaseUI
 {
-  private ElementQuery HRy;
-  private WalletFormView Idp;
-  private WalletFormView IeY;
-  private WalletFormView JQf;
-  private Button gxv;
+  private ElementQuery OJG;
+  private WalletFormView OVG;
+  private WalletFormView OXn;
+  private WalletFormView QOw;
   private boolean isFirst;
+  private Button jbJ;
   
   public WalletBindDepositUI()
   {
     AppMethodBeat.i(72318);
     this.isFirst = true;
-    this.HRy = new ElementQuery();
+    this.OJG = new ElementQuery();
     AppMethodBeat.o(72318);
   }
   
   private void updateView()
   {
     AppMethodBeat.i(72321);
-    if (Util.isNullOrNil(this.HRy.ynT))
+    if (Util.isNullOrNil(this.OJG.DNV))
     {
-      this.IeY.setText("");
+      this.OXn.setText("");
       AppMethodBeat.o(72321);
       return;
     }
-    if (2 == this.HRy.HXl)
+    if (2 == this.OJG.OPl)
     {
-      this.IeY.setText(this.HRy.ynT + " " + getString(2131767664));
+      this.OXn.setText(this.OJG.DNV + " " + getString(a.i.wallet_credit_card));
       AppMethodBeat.o(72321);
       return;
     }
-    this.IeY.setText(this.HRy.ynT + " " + getString(2131767684));
+    this.OXn.setText(this.OJG.DNV + " " + getString(a.i.wallet_deposit_card));
     AppMethodBeat.o(72321);
   }
   
@@ -65,29 +68,29 @@ public class WalletBindDepositUI
   
   public int getLayoutId()
   {
-    return 2131496870;
+    return a.g.walle_wxcredit_bind_deposit_ui;
   }
   
   public void initView()
   {
     AppMethodBeat.i(72320);
-    setMMTitle(2131767511);
-    this.Idp = ((WalletFormView)findViewById(2131310161));
-    com.tencent.mm.wallet_core.ui.formview.a.b(this.Idp);
-    this.IeY = ((WalletFormView)findViewById(2131310178));
-    this.JQf = ((WalletFormView)findViewById(2131304743));
-    com.tencent.mm.wallet_core.ui.formview.a.c(this, this.JQf);
-    this.gxv = ((Button)findViewById(2131305423));
-    setEditFocusListener(this.Idp, 0, false);
-    setEditFocusListener(this.JQf, 0, false);
-    this.IeY.setOnClickListener(new View.OnClickListener()
+    setMMTitle(a.i.wallet_bind_deposit_title);
+    this.OVG = ((WalletFormView)findViewById(a.f.wallet_card_bankcard_id));
+    com.tencent.mm.wallet_core.ui.formview.a.b(this.OVG);
+    this.OXn = ((WalletFormView)findViewById(a.f.wallet_card_type));
+    this.QOw = ((WalletFormView)findViewById(a.f.mobile_et));
+    com.tencent.mm.wallet_core.ui.formview.a.c(this, this.QOw);
+    this.jbJ = ((Button)findViewById(a.f.next_btn));
+    setEditFocusListener(this.OVG, 0, false);
+    setEditFocusListener(this.QOw, 0, false);
+    this.OXn.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72316);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wxcredit/ui/WalletBindDepositUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wxcredit/ui/WalletBindDepositUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         paramAnonymousView = WalletBindDepositUI.a(WalletBindDepositUI.this).getText();
         if (Util.isNullOrNil(paramAnonymousView))
         {
@@ -107,22 +110,22 @@ public class WalletBindDepositUI
           return;
           paramAnonymousView = new Bundle();
           paramAnonymousView.putInt("key_support_bankcard", 1);
-          paramAnonymousView.putString("key_bank_type", WalletBindDepositUI.d(WalletBindDepositUI.this).dDj);
+          paramAnonymousView.putString("key_bank_type", WalletBindDepositUI.d(WalletBindDepositUI.this).fvP);
           paramAnonymousView.putInt("key_bankcard_type", 1);
-          com.tencent.mm.wallet_core.a.by(WalletBindDepositUI.this).a(WalletBindDepositUI.this, WalletCardSelectUI.class, paramAnonymousView, 1);
+          com.tencent.mm.wallet_core.a.bF(WalletBindDepositUI.this).a(WalletBindDepositUI.this, WalletCardSelectUI.class, paramAnonymousView, 1);
         }
       }
     });
-    this.gxv.setOnClickListener(new View.OnClickListener()
+    this.jbJ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72317);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wxcredit/ui/WalletBindDepositUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wxcredit/ui/WalletBindDepositUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (WalletBindDepositUI.e(WalletBindDepositUI.this)) {
-          WalletBindDepositUI.this.getNetController().r(new Object[] { WalletBindDepositUI.a(WalletBindDepositUI.this).getText(), WalletBindDepositUI.d(WalletBindDepositUI.this).dDj, WalletBindDepositUI.f(WalletBindDepositUI.this).getText(), WalletBindDepositUI.d(WalletBindDepositUI.this).HXo, Boolean.FALSE });
+          WalletBindDepositUI.this.getNetController().r(new Object[] { WalletBindDepositUI.a(WalletBindDepositUI.this).getText(), WalletBindDepositUI.d(WalletBindDepositUI.this).fvP, WalletBindDepositUI.f(WalletBindDepositUI.this).getText(), WalletBindDepositUI.d(WalletBindDepositUI.this).OPo, Boolean.FALSE });
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wxcredit/ui/WalletBindDepositUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(72317);
@@ -148,14 +151,14 @@ public class WalletBindDepositUI
       AppMethodBeat.o(72322);
       return;
       paramIntent = (ElementQuery)paramIntent.getParcelableExtra("elemt_query");
-      if (paramIntent.fQr())
+      if (paramIntent.gIX())
       {
-        this.HRy = paramIntent;
+        this.OJG = paramIntent;
         updateView();
         AppMethodBeat.o(72322);
         return;
       }
-      h.n(this, 2131767509, 2131755998);
+      h.p(this, a.i.wallet_bind_deposit_bank_type_err, a.i.app_tip);
     }
   }
   
@@ -171,64 +174,64 @@ public class WalletBindDepositUI
   {
     boolean bool = false;
     AppMethodBeat.i(72323);
-    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramq instanceof y)))
+    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramq instanceof z)))
     {
-      paramString = (y)paramq;
-      if (paramString.HQf != null)
+      paramString = (z)paramq;
+      if (paramString.OIo != null)
       {
-        if (!paramString.HQf.fQr())
+        if (!paramString.OIo.gIX())
         {
-          h.n(this, 2131767509, 2131755998);
+          h.p(this, a.i.wallet_bind_deposit_bank_type_err, a.i.app_tip);
           AppMethodBeat.o(72323);
           return true;
         }
-        this.HRy = paramString.HQf;
+        this.OJG = paramString.OIo;
         updateView();
-        if ((this.HRy.HXj) && (this.HRy.isError()))
+        if ((this.OJG.OPj) && (this.OJG.isError()))
         {
-          h.n(this, 2131767479, 2131755998);
+          h.p(this, a.i.wallet_bank_broken, a.i.app_tip);
           AppMethodBeat.o(72323);
           return true;
         }
-        paramString = com.tencent.mm.wallet_core.a.by(this);
+        paramString = com.tencent.mm.wallet_core.a.bF(this);
         if (paramString != null)
         {
-          paramInt1 = this.HRy.HQg;
+          paramInt1 = this.OJG.OIp;
           if (paramString == null)
           {
             if (bool) {
-              break label238;
+              break label247;
             }
-            if (!paramString.fTp()) {
-              break label217;
+            if (!paramString.gLV()) {
+              break label225;
             }
             Log.w("MicroMsg.WalletBindDepositUI", "Overseas user try to bind domestic card!");
-            h.n(this, 2131767409, 2131755998);
+            h.p(this, a.i.wallet_allow_international_bankcard, a.i.app_tip);
           }
           for (;;)
           {
-            this.Idp.eIj();
+            this.OVG.fuo();
             AppMethodBeat.o(72323);
             return true;
-            if (!paramString.dQL.containsKey("key_support_bankcard"))
+            if (!paramString.fKb.containsKey("key_support_bankcard"))
             {
               bool = true;
               break;
             }
-            paramInt2 = paramString.hgI();
+            paramInt2 = paramString.iik();
             if (paramInt2 == 0)
             {
               bool = true;
               break;
             }
-            bool = Bankcard.jT(paramInt2, paramInt1);
+            bool = Bankcard.lj(paramInt2, paramInt1);
             break;
-            label217:
+            label225:
             Log.w("MicroMsg.WalletBindDepositUI", "Domestic user try to bind international card!");
-            h.n(this, 2131767408, 2131755998);
+            h.p(this, a.i.wallet_allow_domestic_bankcard, a.i.app_tip);
           }
         }
-        label238:
+        label247:
         updateView();
         AppMethodBeat.o(72323);
         return true;

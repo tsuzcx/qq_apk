@@ -10,15 +10,15 @@ import java.lang.reflect.Proxy;
 final class SingleViewPresentation$d
   extends ContextWrapper
 {
-  private final SingleViewPresentation.f STD;
-  private final Context STE;
+  private final SingleViewPresentation.f aawp;
+  private final Context aawq;
   private WindowManager windowManager;
   
   SingleViewPresentation$d(Context paramContext1, SingleViewPresentation.f paramf, Context paramContext2)
   {
     super(paramContext1);
-    this.STD = paramf;
-    this.STE = paramContext2;
+    this.aawp = paramf;
+    this.aawq = paramContext2;
   }
   
   public final Object getSystemService(String paramString)
@@ -36,7 +36,7 @@ final class SingleViewPresentation$d
         if (i == 0) {
           break label102;
         }
-        paramString = this.STE.getSystemService(paramString);
+        paramString = this.aawq.getSystemService(paramString);
         AppMethodBeat.o(9933);
         return paramString;
         i += 1;
@@ -45,7 +45,7 @@ final class SingleViewPresentation$d
       label102:
       if (this.windowManager == null)
       {
-        paramString = this.STD;
+        paramString = this.aawp;
         this.windowManager = ((WindowManager)Proxy.newProxyInstance(WindowManager.class.getClassLoader(), new Class[] { WindowManager.class }, paramString));
       }
       paramString = this.windowManager;
@@ -59,7 +59,7 @@ final class SingleViewPresentation$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.plugin.platform.SingleViewPresentation.d
  * JD-Core Version:    0.7.0.1
  */

@@ -9,10 +9,10 @@ public enum r
   static
   {
     AppMethodBeat.i(113873);
-    qlh = new r("EN_DYNAMIC_CODE_SCENE_ENTER_FOREGROUND", 0, 1);
-    qli = new r("EN_DYNAMIC_CODE_SCENE_ENTER_WXCARD", 1, 2);
-    qlj = new r("EN_DYNAMIC_CODE_SCENE_ENTER_CARD_DETAIL", 2, 3);
-    qlk = new r[] { qlh, qli, qlj };
+    tHd = new r("EN_DYNAMIC_CODE_SCENE_ENTER_FOREGROUND", 0, 1);
+    tHe = new r("EN_DYNAMIC_CODE_SCENE_ENTER_WXCARD", 1, 2);
+    tHf = new r("EN_DYNAMIC_CODE_SCENE_ENTER_CARD_DETAIL", 2, 3);
+    tHg = new r[] { tHd, tHe, tHf };
     AppMethodBeat.o(113873);
   }
   

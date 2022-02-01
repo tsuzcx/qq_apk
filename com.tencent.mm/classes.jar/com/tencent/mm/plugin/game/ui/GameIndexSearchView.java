@@ -1,10 +1,17 @@
 package com.tencent.mm.plugin.game.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.game.report.g;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.game.d.c;
+import com.tencent.mm.plugin.game.model.a.a;
 
 public class GameIndexSearchView
   extends LinearLayout
@@ -24,7 +31,7 @@ public class GameIndexSearchView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameIndexSearchView
  * JD-Core Version:    0.7.0.1
  */

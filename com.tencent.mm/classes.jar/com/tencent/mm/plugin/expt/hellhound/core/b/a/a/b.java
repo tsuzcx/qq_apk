@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.expt.hellhound.core.b.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cgh;
-import com.tencent.mm.protocal.protobuf.cyi;
+import com.tencent.mm.protocal.protobuf.cpd;
+import com.tencent.mm.protocal.protobuf.dhu;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class b
 {
-  public static String apk(String paramString)
+  public static String axk(String paramString)
   {
     AppMethodBeat.i(121960);
-    Object localObject = cNX();
-    if ((localObject == null) || (((cyi)localObject).MDh.isEmpty()))
+    Object localObject = dcP();
+    if ((localObject == null) || (((dhu)localObject).TOQ.isEmpty()))
     {
       AppMethodBeat.o(121960);
       return null;
     }
-    Iterator localIterator = ((cyi)localObject).MDh.iterator();
+    Iterator localIterator = ((dhu)localObject).TOQ.iterator();
     localObject = null;
     if (localIterator.hasNext())
     {
-      cgh localcgh = (cgh)localIterator.next();
-      if ((localcgh == null) || (!paramString.equals(localcgh.key))) {
+      cpd localcpd = (cpd)localIterator.next();
+      if ((localcpd == null) || (!paramString.equals(localcpd.key))) {
         break label102;
       }
-      localObject = localcgh;
+      localObject = localcpd;
     }
     label102:
     for (;;)
@@ -37,27 +37,27 @@ public final class b
         AppMethodBeat.o(121960);
         return null;
       }
-      paramString = ((cgh)localObject).value;
+      paramString = ((cpd)localObject).value;
       AppMethodBeat.o(121960);
       return paramString;
     }
   }
   
-  private static cyi cNX()
+  private static dhu dcP()
   {
     AppMethodBeat.i(121962);
-    byte[] arrayOfByte = com.tencent.mm.plugin.expt.hellhound.core.a.b.getBytes("hell_ac_ble_mmkv_key");
+    byte[] arrayOfByte = com.tencent.mm.plugin.expt.hellhound.core.a.b.awZ("hell_ac_ble_mmkv_key");
     if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
     {
       AppMethodBeat.o(121962);
       return null;
     }
-    cyi localcyi = new cyi();
+    dhu localdhu = new dhu();
     try
     {
-      localcyi.parseFrom(arrayOfByte);
+      localdhu.parseFrom(arrayOfByte);
       AppMethodBeat.o(121962);
-      return localcyi;
+      return localdhu;
     }
     catch (Exception localException)
     {
@@ -69,30 +69,30 @@ public final class b
     }
   }
   
-  public static void go(String paramString1, String paramString2)
+  public static void gC(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121961);
-    cyi localcyi = cNX();
-    if (localcyi == null) {
-      localcyi = new cyi();
+    dhu localdhu = dcP();
+    if (localdhu == null) {
+      localdhu = new dhu();
     }
     for (;;)
     {
-      Object localObject = localcyi.MDh.iterator();
+      Object localObject = localdhu.TOQ.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        cgh localcgh = (cgh)((Iterator)localObject).next();
-        if ((localcgh != null) && (paramString1.equals(localcgh.key))) {
-          localcyi.MDh.remove(localcgh);
+        cpd localcpd = (cpd)((Iterator)localObject).next();
+        if ((localcpd != null) && (paramString1.equals(localcpd.key))) {
+          localdhu.TOQ.remove(localcpd);
         }
       }
-      localObject = new cgh();
-      ((cgh)localObject).key = paramString1;
-      ((cgh)localObject).value = paramString2;
-      localcyi.MDh.add(localObject);
+      localObject = new cpd();
+      ((cpd)localObject).key = paramString1;
+      ((cpd)localObject).value = paramString2;
+      localdhu.TOQ.add(localObject);
       try
       {
-        com.tencent.mm.plugin.expt.hellhound.core.a.b.o("hell_ac_ble_mmkv_key", localcyi.toByteArray());
+        com.tencent.mm.plugin.expt.hellhound.core.a.b.r("hell_ac_ble_mmkv_key", localdhu.toByteArray());
         AppMethodBeat.o(121961);
         return;
       }
@@ -107,7 +107,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b
  * JD-Core Version:    0.7.0.1
  */

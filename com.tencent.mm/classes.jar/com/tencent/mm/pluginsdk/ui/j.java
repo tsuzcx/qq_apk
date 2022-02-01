@@ -17,49 +17,49 @@ public class j
   extends BitmapDrawable
   implements e.a
 {
-  protected static final MMHandler iuH;
-  protected final a Boe;
-  protected boolean CfV;
-  protected boolean Kcf;
-  private int Kcg;
-  private int Kch;
-  protected boolean Kci;
-  protected float Kcj;
-  private PaintFlagsDrawFilter Kck;
-  public c Kcl;
-  protected final Paint iuG;
-  private Runnable iuJ;
-  private Path lR;
+  protected static final MMHandler ljQ;
+  protected boolean FcG;
+  protected final a Hix;
+  protected boolean IcL;
+  protected boolean RcK;
+  private int RcL;
+  private int RcM;
+  protected boolean RcN;
+  protected float RcO;
+  private PaintFlagsDrawFilter RcP;
+  public c RcQ;
+  private Path aBZ;
+  private Rect byG;
+  protected final Paint ljP;
+  private Runnable ljS;
   private Paint paint;
-  private Rect rect;
   protected String tag;
-  protected boolean zxm;
   
   static
   {
     AppMethodBeat.i(152146);
-    iuH = new MMHandler(Looper.getMainLooper());
+    ljQ = new MMHandler(Looper.getMainLooper());
     AppMethodBeat.o(152146);
   }
   
   public j(a parama, String paramString)
   {
-    super(parama.Wg());
+    super(parama.aaC());
     AppMethodBeat.i(152139);
-    this.iuG = new Paint();
-    this.zxm = false;
-    this.Kcf = false;
-    this.Kcg = 0;
-    this.Kch = 0;
-    this.Kcj = 1.0F;
-    this.rect = new Rect();
-    this.Kck = new PaintFlagsDrawFilter(0, 3);
+    this.ljP = new Paint();
+    this.FcG = false;
+    this.RcK = false;
+    this.RcL = 0;
+    this.RcM = 0;
+    this.RcO = 1.0F;
+    this.byG = new Rect();
+    this.RcP = new PaintFlagsDrawFilter(0, 3);
     this.paint = new Paint();
     this.paint.setStyle(Paint.Style.STROKE);
     this.paint.setFlags(1);
     this.paint.setAntiAlias(true);
-    this.lR = new Path();
-    this.iuJ = new Runnable()
+    this.aBZ = new Path();
+    this.ljS = new Runnable()
     {
       public final void run()
       {
@@ -68,32 +68,32 @@ public class j
         AppMethodBeat.o(152138);
       }
     };
-    this.iuG.setAntiAlias(true);
-    this.iuG.setFilterBitmap(true);
-    this.Boe = parama;
+    this.ljP.setAntiAlias(true);
+    this.ljP.setFilterBitmap(true);
+    this.Hix = parama;
     this.tag = paramString;
-    this.Boe.a(this);
+    this.Hix.a(this);
     AppMethodBeat.o(152139);
   }
   
   public j(a parama, String paramString, byte paramByte)
   {
-    super(parama.Wg());
+    super(parama.aaC());
     AppMethodBeat.i(152140);
-    this.iuG = new Paint();
-    this.zxm = false;
-    this.Kcf = false;
-    this.Kcg = 0;
-    this.Kch = 0;
-    this.Kcj = 1.0F;
-    this.rect = new Rect();
-    this.Kck = new PaintFlagsDrawFilter(0, 3);
+    this.ljP = new Paint();
+    this.FcG = false;
+    this.RcK = false;
+    this.RcL = 0;
+    this.RcM = 0;
+    this.RcO = 1.0F;
+    this.byG = new Rect();
+    this.RcP = new PaintFlagsDrawFilter(0, 3);
     this.paint = new Paint();
     this.paint.setStyle(Paint.Style.STROKE);
     this.paint.setFlags(1);
     this.paint.setAntiAlias(true);
-    this.lR = new Path();
-    this.iuJ = new Runnable()
+    this.aBZ = new Path();
+    this.ljS = new Runnable()
     {
       public final void run()
       {
@@ -102,21 +102,26 @@ public class j
         AppMethodBeat.o(152138);
       }
     };
-    this.iuG.setAntiAlias(true);
-    this.iuG.setFilterBitmap(true);
-    this.zxm = false;
-    this.Boe = parama;
+    this.ljP.setAntiAlias(true);
+    this.ljP.setFilterBitmap(true);
+    this.FcG = false;
+    this.Hix = parama;
     this.tag = paramString;
-    this.Boe.a(this);
+    this.Hix.a(this);
     AppMethodBeat.o(152140);
   }
   
-  public void Mr(String paramString)
+  public final void DT(boolean paramBoolean)
+  {
+    this.RcK = paramBoolean;
+  }
+  
+  public void TM(String paramString)
   {
     AppMethodBeat.i(152143);
-    if (this.Kcl != null)
+    if (this.RcQ != null)
     {
-      this.Kcl.auc(paramString);
+      this.RcQ.aDo(paramString);
       AppMethodBeat.o(152143);
       return;
     }
@@ -126,7 +131,7 @@ public class j
       return;
     }
     Log.v("MicroMsg.SDK.LazyBitmapDrawable", "notifyChanged :%s", new Object[] { paramString });
-    iuH.post(this.iuJ);
+    ljQ.post(this.ljS);
     AppMethodBeat.o(152143);
   }
   
@@ -134,43 +139,43 @@ public class j
   {
     AppMethodBeat.i(152142);
     Bitmap localBitmap;
-    if (this.Kcf)
+    if (this.RcK)
     {
-      localBitmap = this.Boe.a(this.tag, paramCanvas.getWidth(), paramCanvas.getHeight(), 1);
+      localBitmap = this.Hix.b(this.tag, paramCanvas.getWidth(), paramCanvas.getHeight(), 1);
       if ((localBitmap != null) && (!localBitmap.isRecycled())) {
         break label215;
       }
-      localBitmap = this.Boe.Wg();
-      if (!this.Kci) {
+      localBitmap = this.Hix.aaC();
+      if (!this.RcN) {
         break label207;
       }
-      this.CfV = true;
+      this.IcL = true;
     }
     for (;;)
     {
       Rect localRect2 = getBounds();
       Rect localRect1 = null;
-      if ((this.Kcj > 1.0F) || (this.zxm))
+      if ((this.RcO > 1.0F) || (this.FcG))
       {
         int i = localBitmap.getHeight() / 15 / 2;
         int j = localBitmap.getWidth() / 15 / 2;
         localRect1 = new Rect(j, i, localBitmap.getWidth() - j, localBitmap.getHeight() - i);
       }
-      paramCanvas.drawBitmap(localBitmap, localRect1, localRect2, this.iuG);
+      paramCanvas.drawBitmap(localBitmap, localRect1, localRect2, this.ljP);
       AppMethodBeat.o(152142);
       return;
-      if (this.Kci)
+      if (this.RcN)
       {
-        localBitmap = this.Boe.ga(this.tag);
+        localBitmap = this.Hix.gK(this.tag);
         break;
       }
-      localBitmap = this.Boe.fZ(this.tag);
+      localBitmap = this.Hix.gJ(this.tag);
       break;
       label207:
-      this.CfV = false;
+      this.IcL = false;
       continue;
       label215:
-      this.CfV = false;
+      this.IcL = false;
     }
   }
   
@@ -179,30 +184,30 @@ public class j
     return this.tag;
   }
   
-  public final void goH()
+  public final void hjt()
   {
-    AppMethodBeat.i(223847);
-    iuH.post(this.iuJ);
-    AppMethodBeat.o(223847);
+    AppMethodBeat.i(220468);
+    ljQ.post(this.ljS);
+    AppMethodBeat.o(220468);
   }
   
-  public final void goI()
+  public final void hju()
   {
-    this.Kci = true;
+    this.RcN = true;
   }
   
-  public final void goJ()
+  public final void hjv()
   {
     AppMethodBeat.i(152144);
-    if (!this.Kci)
+    if (!this.RcN)
     {
       AppMethodBeat.o(152144);
       return;
     }
-    this.Kci = false;
-    if (this.CfV)
+    this.RcN = false;
+    if (this.IcL)
     {
-      this.CfV = false;
+      this.IcL = false;
       invalidateSelf();
     }
     AppMethodBeat.o(152144);
@@ -213,11 +218,11 @@ public class j
     AppMethodBeat.i(152145);
     if (paramBoolean)
     {
-      this.Kci = true;
+      this.RcN = true;
       AppMethodBeat.o(152145);
       return;
     }
-    goJ();
+    hjv();
     AppMethodBeat.o(152145);
   }
   
@@ -232,42 +237,37 @@ public class j
     if (!paramString.equals(this.tag))
     {
       this.tag = paramString;
-      iuH.post(this.iuJ);
+      ljQ.post(this.ljS);
     }
     AppMethodBeat.o(152141);
   }
   
-  public final void zO(boolean paramBoolean)
-  {
-    this.Kcf = paramBoolean;
-  }
-  
   public static abstract interface a
   {
-    public abstract Bitmap Wg();
-    
-    public abstract Bitmap a(String paramString, int paramInt1, int paramInt2, int paramInt3);
-    
     public abstract void a(j paramj);
     
-    public abstract Bitmap fZ(String paramString);
+    public abstract Bitmap aaC();
     
-    public abstract Bitmap ga(String paramString);
+    public abstract Bitmap b(String paramString, int paramInt1, int paramInt2, int paramInt3);
+    
+    public abstract Bitmap gJ(String paramString);
+    
+    public abstract Bitmap gK(String paramString);
   }
   
   public static abstract interface b
   {
-    public abstract boolean aub(String paramString);
+    public abstract boolean aDn(String paramString);
   }
   
   public static abstract interface c
   {
-    public abstract boolean auc(String paramString);
+    public abstract boolean aDo(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.j
  * JD-Core Version:    0.7.0.1
  */

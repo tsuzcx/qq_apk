@@ -6,38 +6,38 @@ public class DeviceCallback
 {
   public static void OnFinishGetStrategy()
   {
-    AppMethodBeat.i(187954);
+    AppMethodBeat.i(217200);
     if (DeviceInterface.getInstance().getDeviceCallback() != null) {
       DeviceInterface.getInstance().getDeviceCallback().OnFinishGetStrategy();
     }
-    AppMethodBeat.o(187954);
+    AppMethodBeat.o(217200);
   }
   
   public static void OnLonglinkConnected()
   {
-    AppMethodBeat.i(187952);
+    AppMethodBeat.i(217197);
     if (DeviceInterface.getInstance().getDeviceCallback() != null) {
       DeviceInterface.getInstance().getDeviceCallback().OnLonglinkConnected();
     }
-    AppMethodBeat.o(187952);
+    AppMethodBeat.o(217197);
   }
   
   public static void OnLonglinkDisconnected()
   {
-    AppMethodBeat.i(187953);
+    AppMethodBeat.i(217198);
     if (DeviceInterface.getInstance().getDeviceCallback() != null) {
       DeviceInterface.getInstance().getDeviceCallback().OnLonglinkDisconnected();
     }
-    AppMethodBeat.o(187953);
+    AppMethodBeat.o(217198);
   }
   
   public static void OnSessionTimeout()
   {
-    AppMethodBeat.i(187951);
+    AppMethodBeat.i(217194);
     if (DeviceInterface.getInstance().getDeviceCallback() != null) {
       DeviceInterface.getInstance().getDeviceCallback().OnSessionTimeout();
     }
-    AppMethodBeat.o(187951);
+    AppMethodBeat.o(217194);
   }
 }
 

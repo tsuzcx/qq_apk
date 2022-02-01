@@ -6,137 +6,137 @@ public class WeChatAuthorities
 {
   public static final String AUTHORITIES_APPFOREGROUNDDELEGATE_PROVIDER()
   {
-    AppMethodBeat.i(200924);
+    AppMethodBeat.i(249269);
     String str = MMApplicationContext.getApplicationId() + ".AppForegroundDelegate.Provider";
-    AppMethodBeat.o(200924);
+    AppMethodBeat.o(249269);
     return str;
   }
   
   public static final String AUTHORITIES_LIB_RISHSCANNER_RISKSCANNERREQBUFFERPROVIDER()
   {
-    AppMethodBeat.i(200918);
+    AppMethodBeat.i(249262);
     String str = MMApplicationContext.getApplicationId() + ".lib.riskscanner.RiskScannerReqBufferProvider";
-    AppMethodBeat.o(200918);
+    AppMethodBeat.o(249262);
     return str;
   }
   
   public static final String AUTHORITIES_PLUGIN_EXT_ACCOUNTSYNC()
   {
-    AppMethodBeat.i(200928);
+    AppMethodBeat.i(249275);
     String str = MMApplicationContext.getApplicationId() + ".plugin.ext.AccountSync";
-    AppMethodBeat.o(200928);
+    AppMethodBeat.o(249275);
     return str;
   }
   
   public static final String AUTHORITIES_PLUGIN_EXT_ENTRY()
   {
-    AppMethodBeat.i(200929);
+    AppMethodBeat.i(249278);
     String str = MMApplicationContext.getApplicationId() + ".plugin.ext.entry";
-    AppMethodBeat.o(200929);
+    AppMethodBeat.o(249278);
     return str;
   }
   
   public static final String AUTHORITIES_PLUGIN_EXT_MESSAGE()
   {
-    AppMethodBeat.i(200925);
+    AppMethodBeat.i(249271);
     String str = MMApplicationContext.getApplicationId() + ".plugin.ext.message";
-    AppMethodBeat.o(200925);
+    AppMethodBeat.o(249271);
     return str;
   }
   
   public static final String AUTHORITIES_PLUGIN_EXT_NEARBY()
   {
-    AppMethodBeat.i(200926);
+    AppMethodBeat.i(249272);
     String str = MMApplicationContext.getApplicationId() + ".plugin.ext.NearBy";
-    AppMethodBeat.o(200926);
+    AppMethodBeat.o(249272);
     return str;
   }
   
   public static final String AUTHORITIES_PLUGIN_EXT_SNS()
   {
-    AppMethodBeat.i(200927);
+    AppMethodBeat.i(249274);
     String str = MMApplicationContext.getApplicationId() + ".plugin.ext.SNS";
-    AppMethodBeat.o(200927);
+    AppMethodBeat.o(249274);
     return str;
   }
   
   public static final String AUTHORITIES_PLUGIN_GWALLET_QUERYPROVIDER()
   {
-    AppMethodBeat.i(200923);
+    AppMethodBeat.i(249268);
     String str = MMApplicationContext.getApplicationId() + ".plugin.gwallet.queryprovider";
-    AppMethodBeat.o(200923);
+    AppMethodBeat.o(249268);
     return str;
   }
   
   public static final String AUTHORITIES_PLUGIN_LITE_LOGIC_LITEAPPINFO()
   {
-    AppMethodBeat.i(200916);
+    AppMethodBeat.i(249260);
     String str = MMApplicationContext.getApplicationId() + ".plugin.lite.logic.LiteAppInfo";
-    AppMethodBeat.o(200916);
+    AppMethodBeat.o(249260);
     return str;
   }
   
   public static final String AUTHORITIES_PLUGIN_NORMSG_NMDATA()
   {
-    AppMethodBeat.i(200919);
+    AppMethodBeat.i(249263);
     String str = MMApplicationContext.getApplicationId() + ".plugin.normsg.NMData";
-    AppMethodBeat.o(200919);
+    AppMethodBeat.o(249263);
     return str;
   }
   
   public static final String AUTHORITIES_PLUGIN_NORMSG_NMINFO()
   {
-    AppMethodBeat.i(200920);
+    AppMethodBeat.i(249265);
     String str = MMApplicationContext.getApplicationId() + ".plugin.normsg.NMInfo";
-    AppMethodBeat.o(200920);
+    AppMethodBeat.o(249265);
     return str;
   }
   
   public static final String AUTHORITIES_PLUGIN_RECORDVIDEO_BACKGROUND_PROVIDER_WESEEPROVIDER()
   {
-    AppMethodBeat.i(200917);
+    AppMethodBeat.i(249261);
     String str = MMApplicationContext.getApplicationId() + ".plugin.recordvideo.background.provider.WeSeeProvider";
-    AppMethodBeat.o(200917);
+    AppMethodBeat.o(249261);
     return str;
   }
   
   public static final String AUTHORITIES_PLUGIN_SPORT()
   {
-    AppMethodBeat.i(200922);
+    AppMethodBeat.i(249267);
     String str = MMApplicationContext.getApplicationId() + ".plugin.sport";
-    AppMethodBeat.o(200922);
+    AppMethodBeat.o(249267);
     return str;
   }
   
   public static final String AUTHORITIES_SDK_COMM_PROVIDER()
   {
-    AppMethodBeat.i(200914);
+    AppMethodBeat.i(249258);
     String str = MMApplicationContext.getApplicationId() + ".sdk.comm.provider";
-    AppMethodBeat.o(200914);
+    AppMethodBeat.o(249258);
     return str;
   }
   
   public static final String AUTHORITIES_SDK_PLUGIN_PROVIDER()
   {
-    AppMethodBeat.i(200913);
+    AppMethodBeat.i(249256);
     String str = MMApplicationContext.getApplicationId() + ".sdk.plugin.provider";
-    AppMethodBeat.o(200913);
+    AppMethodBeat.o(249256);
     return str;
   }
   
   public static final String AUTHORITIES_STORAGE_PROVIDER_EMOTION()
   {
-    AppMethodBeat.i(200915);
+    AppMethodBeat.i(249259);
     String str = MMApplicationContext.getApplicationId() + ".storage.provider.emotion";
-    AppMethodBeat.o(200915);
+    AppMethodBeat.o(249259);
     return str;
   }
   
   public static final String AUTHORITIES_WAIDPROVIDER()
   {
-    AppMethodBeat.i(200921);
+    AppMethodBeat.i(249266);
     String str = MMApplicationContext.getApplicationId() + ".ad.waid";
-    AppMethodBeat.o(200921);
+    AppMethodBeat.o(249266);
     return str;
   }
 }

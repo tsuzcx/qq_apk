@@ -7,10 +7,10 @@ public enum VoipCSVideoView$a
   static
   {
     AppMethodBeat.i(125479);
-    HsH = new a("Avatar", 0);
-    HsI = new a("Video", 1);
-    HsJ = new a("None", 2);
-    HsK = new a[] { HsH, HsI, HsJ };
+    Oks = new a("Avatar", 0);
+    Okt = new a("Video", 1);
+    Oku = new a("None", 2);
+    Okv = new a[] { Oks, Okt, Oku };
     AppMethodBeat.o(125479);
   }
   

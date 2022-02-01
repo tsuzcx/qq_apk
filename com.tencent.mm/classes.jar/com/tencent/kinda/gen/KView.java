@@ -112,6 +112,8 @@ public abstract interface KView
   
   public abstract float getScaleY();
   
+  public abstract boolean getSecure();
+  
   public abstract DynamicColor getShadowColor();
   
   public abstract float getShadowOffset();
@@ -141,6 +143,8 @@ public abstract interface KView
   public abstract void initWithPlatformDelegate(IUIPagePlatformDelegate paramIUIPagePlatformDelegate);
   
   public abstract void removeBlurEffect();
+  
+  public abstract void requestFrameImpl(VoidKRectCallback paramVoidKRectCallback);
   
   public abstract void requestLayout();
   
@@ -181,6 +185,8 @@ public abstract interface KView
   public abstract void setFlexGrow(float paramFloat);
   
   public abstract void setFlexShrink(float paramFloat);
+  
+  public abstract void setFrameImpl(KRect paramKRect, VoidCallback paramVoidCallback);
   
   public abstract void setHeight(float paramFloat);
   
@@ -250,6 +256,8 @@ public abstract interface KView
   
   public abstract void setScaleY(float paramFloat);
   
+  public abstract void setSecure(boolean paramBoolean);
+  
   public abstract void setShadowColor(DynamicColor paramDynamicColor);
   
   public abstract void setShadowOffset(float paramFloat);
@@ -278,7 +286,7 @@ public abstract interface KView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.gen.KView
  * JD-Core Version:    0.7.0.1
  */

@@ -6,19 +6,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  int cSx;
-  String fMb;
-  int fuA;
-  public long fuC;
-  private String fuD;
-  int fuI;
-  String fuJ;
-  String fuK;
-  String kdR;
-  String kdS;
-  String ker;
-  int kes;
+  int cUP;
+  String city;
+  public long hDe;
+  private String hDf;
+  int hDk;
+  String idS;
+  String mVR;
+  int mVS;
+  String mVr;
+  String mVs;
   String nickName;
+  String province;
+  int sex;
   String signature;
   public int status;
   private int type;
@@ -27,53 +27,53 @@ public final class g
   public g()
   {
     AppMethodBeat.i(130993);
-    this.cSx = -1;
-    this.fuC = 0L;
-    this.ker = "";
-    this.kes = 0;
+    this.cUP = -1;
+    this.hDe = 0L;
+    this.mVR = "";
+    this.mVS = 0;
     this.status = 0;
     this.username = "";
     this.nickName = "";
-    this.kdR = "";
-    this.kdS = "";
-    this.fuA = 0;
-    this.fuI = 0;
-    this.fuJ = "";
-    this.fuK = "";
+    this.mVr = "";
+    this.mVs = "";
+    this.sex = 0;
+    this.hDk = 0;
+    this.province = "";
+    this.city = "";
     this.signature = "";
-    this.fMb = "";
+    this.idS = "";
     this.type = 0;
-    this.fuD = "";
+    this.hDf = "";
     AppMethodBeat.o(130993);
   }
   
-  public final String bnT()
+  public final String byc()
   {
-    if (this.ker == null) {
+    if (this.mVR == null) {
       return "";
     }
-    return this.ker;
+    return this.mVR;
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(130994);
-    this.fuC = paramCursor.getLong(0);
-    this.ker = paramCursor.getString(1);
-    this.kes = paramCursor.getInt(2);
+    this.hDe = paramCursor.getLong(0);
+    this.mVR = paramCursor.getString(1);
+    this.mVS = paramCursor.getInt(2);
     this.status = paramCursor.getInt(3);
     this.username = paramCursor.getString(4);
     this.nickName = paramCursor.getString(5);
-    this.kdR = paramCursor.getString(6);
-    this.kdS = paramCursor.getString(7);
-    this.fuA = paramCursor.getInt(8);
-    this.fuI = paramCursor.getInt(9);
-    this.fuJ = paramCursor.getString(10);
-    this.fuK = paramCursor.getString(11);
+    this.mVr = paramCursor.getString(6);
+    this.mVs = paramCursor.getString(7);
+    this.sex = paramCursor.getInt(8);
+    this.hDk = paramCursor.getInt(9);
+    this.province = paramCursor.getString(10);
+    this.city = paramCursor.getString(11);
     this.signature = paramCursor.getString(12);
-    this.fMb = paramCursor.getString(13);
+    this.idS = paramCursor.getString(13);
     this.type = paramCursor.getInt(14);
-    this.fuD = paramCursor.getString(15);
+    this.hDf = paramCursor.getString(15);
     AppMethodBeat.o(130994);
   }
   
@@ -81,27 +81,27 @@ public final class g
   {
     AppMethodBeat.i(130995);
     ContentValues localContentValues = new ContentValues();
-    if ((this.cSx & 0x1) != 0) {
-      localContentValues.put("fbid", Long.valueOf(this.fuC));
+    if ((this.cUP & 0x1) != 0) {
+      localContentValues.put("fbid", Long.valueOf(this.hDe));
     }
-    if ((this.cSx & 0x2) != 0) {
-      localContentValues.put("fbname", bnT());
+    if ((this.cUP & 0x2) != 0) {
+      localContentValues.put("fbname", byc());
     }
-    if ((this.cSx & 0x4) != 0) {
-      localContentValues.put("fbimgkey", Integer.valueOf(this.kes));
+    if ((this.cUP & 0x4) != 0) {
+      localContentValues.put("fbimgkey", Integer.valueOf(this.mVS));
     }
-    if ((this.cSx & 0x8) != 0) {
+    if ((this.cUP & 0x8) != 0) {
       localContentValues.put("status", Integer.valueOf(this.status));
     }
-    if ((this.cSx & 0x10) != 0) {
+    if ((this.cUP & 0x10) != 0) {
       localContentValues.put("username", getUsername());
     }
-    if ((this.cSx & 0x20) != 0) {
+    if ((this.cUP & 0x20) != 0) {
       localContentValues.put("nickname", getNickName());
     }
-    if ((this.cSx & 0x40) != 0)
+    if ((this.cUP & 0x40) != 0)
     {
-      if (this.kdR == null)
+      if (this.mVr == null)
       {
         str = "";
         localContentValues.put("nicknamepyinitial", str);
@@ -109,40 +109,40 @@ public final class g
     }
     else
     {
-      if ((this.cSx & 0x80) != 0)
+      if ((this.cUP & 0x80) != 0)
       {
-        if (this.kdS != null) {
+        if (this.mVs != null) {
           break label420;
         }
         str = "";
         label187:
         localContentValues.put("nicknamequanpin", str);
       }
-      if ((this.cSx & 0x100) != 0) {
-        localContentValues.put("sex", Integer.valueOf(this.fuA));
+      if ((this.cUP & 0x100) != 0) {
+        localContentValues.put("sex", Integer.valueOf(this.sex));
       }
-      if ((this.cSx & 0x200) != 0) {
-        localContentValues.put("personalcard", Integer.valueOf(this.fuI));
+      if ((this.cUP & 0x200) != 0) {
+        localContentValues.put("personalcard", Integer.valueOf(this.hDk));
       }
-      if ((this.cSx & 0x400) != 0)
+      if ((this.cUP & 0x400) != 0)
       {
-        if (this.fuJ != null) {
+        if (this.province != null) {
           break label428;
         }
         str = "";
         label263:
         localContentValues.put("province", str);
       }
-      if ((this.cSx & 0x800) != 0)
+      if ((this.cUP & 0x800) != 0)
       {
-        if (this.fuK != null) {
+        if (this.city != null) {
           break label436;
         }
         str = "";
         label291:
         localContentValues.put("city", str);
       }
-      if ((this.cSx & 0x1000) != 0)
+      if ((this.cUP & 0x1000) != 0)
       {
         if (this.signature != null) {
           break label444;
@@ -151,20 +151,20 @@ public final class g
         label319:
         localContentValues.put("signature", str);
       }
-      if ((this.cSx & 0x2000) != 0)
+      if ((this.cUP & 0x2000) != 0)
       {
-        if (this.fMb != null) {
+        if (this.idS != null) {
           break label452;
         }
         str = "";
         label347:
         localContentValues.put("alias", str);
       }
-      if ((this.cSx & 0x4000) != 0) {
+      if ((this.cUP & 0x4000) != 0) {
         localContentValues.put("type", Integer.valueOf(this.type));
       }
-      if ((this.cSx & 0x8000) != 0) {
-        if (this.fuD != null) {
+      if ((this.cUP & 0x8000) != 0) {
+        if (this.hDf != null) {
           break label460;
         }
       }
@@ -175,22 +175,22 @@ public final class g
     label444:
     label452:
     label460:
-    for (String str = "";; str = this.fuD)
+    for (String str = "";; str = this.hDf)
     {
       localContentValues.put("email", str);
       AppMethodBeat.o(130995);
       return localContentValues;
-      str = this.kdR;
+      str = this.mVr;
       break;
-      str = this.kdS;
+      str = this.mVs;
       break label187;
-      str = this.fuJ;
+      str = this.province;
       break label263;
-      str = this.fuK;
+      str = this.city;
       break label291;
       str = this.signature;
       break label319;
-      str = this.fMb;
+      str = this.idS;
       break label347;
     }
   }
@@ -213,7 +213,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.appbrand.task.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ia;
+import com.tencent.mm.f.c.ij;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class b
-  extends ia
+  extends ij
 {
-  static final IAutoDBItem.MAutoDBInfo kLR;
+  static final IAutoDBItem.MAutoDBInfo nFK;
   
   static
   {
-    AppMethodBeat.i(227533);
+    AppMethodBeat.i(270141);
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
     localMAutoDBInfo.fields = new Field[3];
     localMAutoDBInfo.columns = new String[4];
@@ -32,18 +32,18 @@ public final class b
     localStringBuilder.append(" versiontime LONG");
     localMAutoDBInfo.columns[3] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
-    kLR = localMAutoDBInfo;
-    AppMethodBeat.o(227533);
+    nFK = localMAutoDBInfo;
+    AppMethodBeat.o(270141);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return kLR;
+    return nFK;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.a.b
  * JD-Core Version:    0.7.0.1
  */

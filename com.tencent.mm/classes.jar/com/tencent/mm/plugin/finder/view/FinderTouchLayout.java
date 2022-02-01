@@ -8,119 +8,119 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isInterceptDown", "", "()Z", "setInterceptDown", "(Z)V", "lastX", "", "getLastX", "()F", "setLastX", "(F)V", "touchListener", "Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;", "getTouchListener", "()Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;", "setTouchListener", "(Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;)V", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "TouchListener", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isInterceptDown", "", "()Z", "setInterceptDown", "(Z)V", "lastX", "", "getLastX", "()F", "setLastX", "(F)V", "touchListener", "Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;", "getTouchListener", "()Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;", "setTouchListener", "(Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;)V", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "TouchListener", "plugin-finder_release"})
 public final class FinderTouchLayout
   extends FrameLayout
 {
-  private float aTD;
-  private boolean wpJ;
-  public a wpK;
+  private boolean Bbr;
+  public a Bbs;
+  private float aCa;
   
   public FinderTouchLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(254999);
-    AppMethodBeat.o(254999);
+    AppMethodBeat.i(285202);
+    AppMethodBeat.o(285202);
   }
   
   public FinderTouchLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(255000);
-    AppMethodBeat.o(255000);
+    AppMethodBeat.i(285203);
+    AppMethodBeat.o(285203);
   }
   
   public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(254998);
-    p.h(paramMotionEvent, "event");
+    AppMethodBeat.i(285200);
+    p.k(paramMotionEvent, "event");
     a locala;
     if (paramMotionEvent.getAction() == 0)
     {
-      this.aTD = paramMotionEvent.getRawX();
-      locala = this.wpK;
+      this.aCa = paramMotionEvent.getRawX();
+      locala = this.Bbs;
       if (locala == null) {
-        p.btv("touchListener");
+        p.bGy("touchListener");
       }
-      this.wpJ = locala.T(paramMotionEvent);
-      if (this.wpJ)
+      this.Bbr = locala.Z(paramMotionEvent);
+      if (this.Bbr)
       {
-        AppMethodBeat.o(254998);
+        AppMethodBeat.o(285200);
         return true;
       }
       bool = super.dispatchTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(254998);
+      AppMethodBeat.o(285200);
       return bool;
     }
     if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1))
     {
-      if (this.wpJ)
+      if (this.Bbr)
       {
-        locala = this.wpK;
+        locala = this.Bbs;
         if (locala == null) {
-          p.btv("touchListener");
+          p.bGy("touchListener");
         }
-        locala.U(paramMotionEvent);
-        this.wpJ = false;
-        AppMethodBeat.o(254998);
+        locala.aa(paramMotionEvent);
+        this.Bbr = false;
+        AppMethodBeat.o(285200);
         return true;
       }
     }
-    else if (this.wpJ)
+    else if (this.Bbr)
     {
-      locala = this.wpK;
+      locala = this.Bbs;
       if (locala == null) {
-        p.btv("touchListener");
+        p.bGy("touchListener");
       }
-      locala.bh(paramMotionEvent.getRawX() - this.aTD);
+      locala.bg(paramMotionEvent.getRawX() - this.aCa);
     }
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(254998);
+    AppMethodBeat.o(285200);
     return bool;
   }
   
   public final float getLastX()
   {
-    return this.aTD;
+    return this.aCa;
   }
   
   public final a getTouchListener()
   {
-    AppMethodBeat.i(254996);
-    a locala = this.wpK;
+    AppMethodBeat.i(285197);
+    a locala = this.Bbs;
     if (locala == null) {
-      p.btv("touchListener");
+      p.bGy("touchListener");
     }
-    AppMethodBeat.o(254996);
+    AppMethodBeat.o(285197);
     return locala;
   }
   
   public final void setInterceptDown(boolean paramBoolean)
   {
-    this.wpJ = paramBoolean;
+    this.Bbr = paramBoolean;
   }
   
   public final void setLastX(float paramFloat)
   {
-    this.aTD = paramFloat;
+    this.aCa = paramFloat;
   }
   
   public final void setTouchListener(a parama)
   {
-    AppMethodBeat.i(254997);
-    p.h(parama, "<set-?>");
-    this.wpK = parama;
-    AppMethodBeat.o(254997);
+    AppMethodBeat.i(285198);
+    p.k(parama, "<set-?>");
+    this.Bbs = parama;
+    AppMethodBeat.o(285198);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;", "", "interceptDown", "", "event", "Landroid/view/MotionEvent;", "onScrollX", "", "x", "", "onTouchUp", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;", "", "interceptDown", "", "event", "Landroid/view/MotionEvent;", "onScrollX", "", "x", "", "onTouchUp", "plugin-finder_release"})
   public static abstract interface a
   {
-    public abstract boolean T(MotionEvent paramMotionEvent);
+    public abstract boolean Z(MotionEvent paramMotionEvent);
     
-    public abstract void U(MotionEvent paramMotionEvent);
+    public abstract void aa(MotionEvent paramMotionEvent);
     
-    public abstract void bh(float paramFloat);
+    public abstract void bg(float paramFloat);
   }
 }
 

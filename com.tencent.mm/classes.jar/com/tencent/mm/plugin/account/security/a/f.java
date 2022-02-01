@@ -3,20 +3,22 @@ package com.tencent.mm.plugin.account.security.a;
 import android.content.Context;
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.account.a.a;
+import com.tencent.mm.plugin.account.sdk.a;
+import com.tencent.mm.plugin.account.security.a.d;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
-import com.tencent.mm.protocal.protobuf.bfx;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.protocal.protobuf.bmy;
 import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.storage.ao;
 
 public final class f
 {
-  public static String boP()
+  public static String bza()
   {
     AppMethodBeat.i(125529);
     String str = Build.MANUFACTURER + "-" + Build.MODEL;
@@ -24,50 +26,50 @@ public final class f
     return str;
   }
   
-  public static String dD(Context paramContext)
+  public static String dB(Context paramContext)
   {
     AppMethodBeat.i(125528);
     if (paramContext == null)
     {
       if (ChannelUtil.isNokiaAol)
       {
-        paramContext = MMApplicationContext.getContext().getString(2131764834);
+        paramContext = MMApplicationContext.getContext().getString(a.d.safe_device_android_device_nm);
         AppMethodBeat.o(125528);
         return paramContext;
       }
-      paramContext = MMApplicationContext.getContext().getString(2131764833);
+      paramContext = MMApplicationContext.getContext().getString(a.d.safe_device_android_device);
       AppMethodBeat.o(125528);
       return paramContext;
     }
     if (ChannelUtil.isNokiaAol)
     {
-      paramContext = paramContext.getString(2131764834);
+      paramContext = paramContext.getString(a.d.safe_device_android_device_nm);
       AppMethodBeat.o(125528);
       return paramContext;
     }
-    paramContext = paramContext.getString(2131764833);
+    paramContext = paramContext.getString(a.d.safe_device_android_device);
     AppMethodBeat.o(125528);
     return paramContext;
   }
   
-  public static void p(boolean paramBoolean1, boolean paramBoolean2)
+  public static void t(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(125527);
-    if (!g.aAc())
+    if (!h.aHB())
     {
       AppMethodBeat.o(125527);
       return;
     }
-    int i = z.aUe();
-    bfx localbfx;
+    int i = z.bdf();
+    bmy localbmy;
     if (paramBoolean1)
     {
       i |= 0x4000;
-      g.aAh().azQ().set(40, Integer.valueOf(i));
+      h.aHG().aHp().i(40, Integer.valueOf(i));
       if (paramBoolean2)
       {
-        localbfx = new bfx();
-        localbfx.LPB = 28;
+        localbmy = new bmy();
+        localbmy.SXP = 28;
         if (!paramBoolean1) {
           break label126;
         }
@@ -76,9 +78,9 @@ public final class f
     label126:
     for (i = 1;; i = 2)
     {
-      localbfx.BsD = i;
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new k.a(23, localbfx));
-      a.jRu.WZ();
+      localbmy.HmX = i;
+      ((n)h.ae(n.class)).bbK().d(new k.a(23, localbmy));
+      a.mIH.abC();
       AppMethodBeat.o(125527);
       return;
       i &= 0xFFFFBFFF;
@@ -88,7 +90,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -3,73 +3,62 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dva
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String MWb;
-  public String MWh;
-  public String MWi;
-  public String dMl;
-  public String sGF;
+  public long RWK;
+  public String SRj;
+  public String Ubj;
+  public int cUP;
+  public String zaX;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(122529);
+    AppMethodBeat.i(206356);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.sGF != null) {
-        paramVarArgs.e(1, this.sGF);
+      if (this.zaX != null) {
+        paramVarArgs.f(1, this.zaX);
       }
-      if (this.MWb != null) {
-        paramVarArgs.e(2, this.MWb);
+      paramVarArgs.bm(2, this.RWK);
+      paramVarArgs.aY(3, this.cUP);
+      if (this.SRj != null) {
+        paramVarArgs.f(4, this.SRj);
       }
-      if (this.dMl != null) {
-        paramVarArgs.e(3, this.dMl);
+      if (this.Ubj != null) {
+        paramVarArgs.f(5, this.Ubj);
       }
-      if (this.MWh != null) {
-        paramVarArgs.e(4, this.MWh);
-      }
-      if (this.MWi != null) {
-        paramVarArgs.e(5, this.MWi);
-      }
-      AppMethodBeat.o(122529);
+      AppMethodBeat.o(206356);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.sGF == null) {
-        break label454;
+      if (this.zaX == null) {
+        break label422;
       }
     }
-    label454:
-    for (int i = g.a.a.b.b.a.f(1, this.sGF) + 0;; i = 0)
+    label422:
+    for (paramInt = g.a.a.b.b.a.g(1, this.zaX) + 0;; paramInt = 0)
     {
+      int i = paramInt + g.a.a.b.b.a.p(2, this.RWK) + g.a.a.b.b.a.bM(3, this.cUP);
       paramInt = i;
-      if (this.MWb != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.MWb);
+      if (this.SRj != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.SRj);
       }
       i = paramInt;
-      if (this.dMl != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.dMl);
+      if (this.Ubj != null) {
+        i = paramInt + g.a.a.b.b.a.g(5, this.Ubj);
       }
-      paramInt = i;
-      if (this.MWh != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.MWh);
-      }
-      i = paramInt;
-      if (this.MWi != null) {
-        i = paramInt + g.a.a.b.b.a.f(5, this.MWi);
-      }
-      AppMethodBeat.o(122529);
+      AppMethodBeat.o(206356);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(122529);
+        AppMethodBeat.o(206356);
         return 0;
       }
       if (paramInt == 3)
@@ -79,37 +68,37 @@ public final class dva
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(122529);
+          AppMethodBeat.o(206356);
           return -1;
         case 1: 
-          localdva.sGF = locala.UbS.readString();
-          AppMethodBeat.o(122529);
+          localdva.zaX = locala.abFh.readString();
+          AppMethodBeat.o(206356);
           return 0;
         case 2: 
-          localdva.MWb = locala.UbS.readString();
-          AppMethodBeat.o(122529);
+          localdva.RWK = locala.abFh.AN();
+          AppMethodBeat.o(206356);
           return 0;
         case 3: 
-          localdva.dMl = locala.UbS.readString();
-          AppMethodBeat.o(122529);
+          localdva.cUP = locala.abFh.AK();
+          AppMethodBeat.o(206356);
           return 0;
         case 4: 
-          localdva.MWh = locala.UbS.readString();
-          AppMethodBeat.o(122529);
+          localdva.SRj = locala.abFh.readString();
+          AppMethodBeat.o(206356);
           return 0;
         }
-        localdva.MWi = locala.UbS.readString();
-        AppMethodBeat.o(122529);
+        localdva.Ubj = locala.abFh.readString();
+        AppMethodBeat.o(206356);
         return 0;
       }
-      AppMethodBeat.o(122529);
+      AppMethodBeat.o(206356);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dva
  * JD-Core Version:    0.7.0.1
  */

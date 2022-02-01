@@ -4,15 +4,15 @@ import com.google.android.exoplayer2.c.l;
 
 abstract interface f
 {
-  public abstract long R(long paramLong);
+  public abstract long U(long paramLong);
   
   public abstract long i(com.google.android.exoplayer2.c.f paramf);
   
-  public abstract l uH();
+  public abstract l sC();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.c.e.f
  * JD-Core Version:    0.7.0.1
  */

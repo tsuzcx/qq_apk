@@ -29,16 +29,16 @@ public class DetectOnlyState
   
   static
   {
-    AppMethodBeat.i(187156);
+    AppMethodBeat.i(247091);
     TAG = DetectOnlyState.class.getSimpleName();
-    AppMethodBeat.o(187156);
+    AppMethodBeat.o(247091);
   }
   
   public void enterFirst() {}
   
   public void loadStateWith(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(187154);
+    AppMethodBeat.i(247085);
     super.loadStateWith(paramString, paramJSONObject);
     try
     {
@@ -93,7 +93,7 @@ public class DetectOnlyState
       }
       YtSDKStats.getInstance().reportError(i, "failed to init face trace sdk");
       YtFSM.getInstance().sendFSMEvent(new HashMap() {});
-      AppMethodBeat.o(187154);
+      AppMethodBeat.o(247085);
       return;
       paramString = YTFaceTrack.getInstance().GetFaceDetectParam();
       YtLogger.i(TAG, "big face mode" + this.needBigFaceMode);
@@ -106,7 +106,7 @@ public class DetectOnlyState
       paramString.detect_interval = -1;
       YTFaceTrack.getInstance().SetFaceTrackParam(paramString);
       YtLogger.i(TAG, "Detect version:" + YTFaceTrack.Version);
-      AppMethodBeat.o(187154);
+      AppMethodBeat.o(247085);
     }
     if (!this.isLoadResourceOnline) {
       FileUtils.loadLibrary("YTFaceTrackPro2");
@@ -136,7 +136,7 @@ public class DetectOnlyState
   
   public void update(final byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    AppMethodBeat.i(187155);
+    AppMethodBeat.i(247089);
     super.update(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramLong);
     Object localObject = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
     ((Bitmap)localObject).copyPixelsFromBuffer(ByteBuffer.wrap(paramArrayOfByte));
@@ -145,7 +145,7 @@ public class DetectOnlyState
     {
       YtSDKStats.getInstance().reportError(3145728, "detecet failed");
       YtFSM.getInstance().sendFSMEvent(new HashMap() {});
-      AppMethodBeat.o(187155);
+      AppMethodBeat.o(247089);
       return;
     }
     paramArrayOfByte = "[";
@@ -169,7 +169,7 @@ public class DetectOnlyState
     paramArrayOfByte = "{\"errorcode\":0,\"errormsg\":\"OK\",\"face_count\":" + arrayOfRect.length + ",\"face_rects\":" + paramArrayOfByte + "}";
     YtSDKStats.getInstance().reportInfo("errorcode: 0, face_count: " + arrayOfRect.length);
     YtFSM.getInstance().sendFSMEvent(new HashMap() {});
-    AppMethodBeat.o(187155);
+    AppMethodBeat.o(247089);
   }
 }
 

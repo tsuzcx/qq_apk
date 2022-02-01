@@ -11,15 +11,18 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.c;
 import com.tencent.mm.b.p;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.account.friend.a.c;
+import com.tencent.mm.plugin.account.friend.a.d;
+import com.tencent.mm.plugin.account.friend.a.f;
+import com.tencent.mm.plugin.account.friend.a.g;
 import com.tencent.mm.plugin.account.friend.a.as;
 import com.tencent.mm.plugin.account.friend.a.at;
-import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.applet.a.a;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.bv;
@@ -29,19 +32,19 @@ import java.util.LinkedList;
 public final class f
   extends d
 {
-  private final int adT;
-  private final MMActivity gte;
-  private String kcL;
-  private d.a khc;
-  boolean khk;
-  private a khl;
+  private final MMActivity iXq;
+  private final int ka;
+  private String mUk;
+  private d.a mYB;
+  boolean mYJ;
+  private a mYK;
   
   public f(MMActivity paramMMActivity, int paramInt)
   {
     super(paramMMActivity, new as());
     AppMethodBeat.i(131267);
-    this.khk = false;
-    this.khl = new a()
+    this.mYJ = false;
+    this.mYK = new a()
     {
       public final void f(int paramAnonymousInt1, String paramAnonymousString, int paramAnonymousInt2)
       {
@@ -55,30 +58,30 @@ public final class f
           return;
         }
         Log.d("MicroMsg.QQFriendAdapterCaseB", "qq friend:%s", new Object[] { localas.toString() });
-        if (localas.kfO == 1)
+        if (localas.mXn == 1)
         {
-          paramAnonymousString = new com.tencent.mm.pluginsdk.ui.applet.a(f.a(f.this), new a.a()
+          paramAnonymousString = new com.tencent.mm.pluginsdk.ui.applet.a(f.a(f.this), new com.tencent.mm.pluginsdk.ui.applet.a.a()
           {
             public final void a(boolean paramAnonymous2Boolean1, boolean paramAnonymous2Boolean2, String paramAnonymous2String1, String paramAnonymous2String2)
             {
               AppMethodBeat.i(131263);
               Log.i("MicroMsg.QQFriendAdapterCaseB", "cpan ok:%b hasSendVerify:%b  username:%s gitemId:%s", new Object[] { Boolean.valueOf(paramAnonymous2Boolean1), Boolean.valueOf(paramAnonymous2Boolean2), paramAnonymous2String1, paramAnonymous2String2 });
-              long l = new p(p.fd(paramAnonymous2String2)).longValue();
-              as localas = ((at)((com.tencent.mm.plugin.account.a.a.a)g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg()).AT(l);
+              long l = new p(p.fT(paramAnonymous2String2)).longValue();
+              as localas = ((at)((com.tencent.mm.plugin.account.sdk.a.a)h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getQQListStg()).Hd(l);
               if ((paramAnonymous2Boolean1) && (localas != null)) {
                 localas.username = paramAnonymous2String1;
               }
               if (localas != null)
               {
-                localas.iKU = 2;
+                localas.lBb = 2;
                 Log.d("MicroMsg.QQFriendAdapterCaseB", "f :%s", new Object[] { localas.toString() });
-                ((at)((com.tencent.mm.plugin.account.a.a.a)g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg()).a(l, localas);
-                f.this.anp();
+                ((at)((com.tencent.mm.plugin.account.sdk.a.a)h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getQQListStg()).a(l, localas);
+                f.this.atr();
               }
               for (;;)
               {
                 if ((paramAnonymous2Boolean1) && (localas != null)) {
-                  f.Tk(paramAnonymous2String1);
+                  f.aaQ(paramAnonymous2String1);
                 }
                 AppMethodBeat.o(131263);
                 return;
@@ -86,8 +89,8 @@ public final class f
               }
             }
           });
-          paramAnonymousString.khI = localas.kfN;
-          paramAnonymousString.Kee = false;
+          paramAnonymousString.mZh = localas.mXm;
+          paramAnonymousString.fgi = false;
           LinkedList localLinkedList = new LinkedList();
           localLinkedList.add(Integer.valueOf(12));
           if (Util.isNullOrNil(localas.getUsername()))
@@ -97,72 +100,72 @@ public final class f
             return;
           }
           paramAnonymousString.b(localas.getUsername(), localLinkedList, true);
-          localas.iKU = 1;
-          ((at)((com.tencent.mm.plugin.account.a.a.a)g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg()).a(localas.kfN, localas);
-          f.this.anp();
+          localas.lBb = 1;
+          ((at)((com.tencent.mm.plugin.account.sdk.a.a)h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getQQListStg()).a(localas.mXm, localas);
+          f.this.atr();
         }
         AppMethodBeat.o(131264);
       }
     };
-    this.gte = paramMMActivity;
-    this.adT = paramInt;
-    this.khk = paramMMActivity.getIntent().getBooleanExtra("qqgroup_sendmessage", false);
-    Bh(true);
+    this.iXq = paramMMActivity;
+    this.ka = paramInt;
+    this.mYJ = paramMMActivity.getIntent().getBooleanExtra("qqgroup_sendmessage", false);
+    Fx(true);
     AppMethodBeat.o(131267);
   }
   
   private static String b(as paramas)
   {
     AppMethodBeat.i(131272);
-    if (paramas.iKT == 123)
+    if (paramas.lBa == 123)
     {
       AppMethodBeat.o(131272);
       return "#";
     }
-    char c = (char)paramas.iKT;
+    char c = (char)paramas.lBa;
     AppMethodBeat.o(131272);
     return String.valueOf(c);
   }
   
-  public final void Mr(String paramString) {}
-  
-  public final void SM(String paramString)
-  {
-    AppMethodBeat.i(131268);
-    this.kcL = Util.escapeSqlValue(paramString.trim());
-    ebf();
-    anp();
-    AppMethodBeat.o(131268);
-  }
+  public final void TM(String paramString) {}
   
   public final void a(d.a parama)
   {
-    this.khc = parama;
+    this.mYB = parama;
   }
   
-  public final void anp()
+  public final void aas(String paramString)
+  {
+    AppMethodBeat.i(131268);
+    this.mUk = Util.escapeSqlValue(paramString.trim());
+    eKd();
+    atr();
+    AppMethodBeat.o(131268);
+  }
+  
+  public final void atr()
   {
     AppMethodBeat.i(131270);
-    ebf();
-    if (Util.isNullOrNil(this.kcL)) {
-      setCursor(((at)((com.tencent.mm.plugin.account.a.a.a)g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg()).J(this.adT, this.khk));
+    eKd();
+    if (Util.isNullOrNil(this.mUk)) {
+      v(((at)((com.tencent.mm.plugin.account.sdk.a.a)h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getQQListStg()).L(this.ka, this.mYJ));
     }
     for (;;)
     {
-      if ((this.khc != null) && (this.kcL != null)) {
-        this.khc.ve(getCursor().getCount());
+      if ((this.mYB != null) && (this.mUk != null)) {
+        this.mYB.yi(hK().getCount());
       }
       notifyDataSetChanged();
       AppMethodBeat.o(131270);
       return;
-      setCursor(((at)((com.tencent.mm.plugin.account.a.a.a)g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg()).b(this.adT, this.kcL, this.khk));
+      v(((at)((com.tencent.mm.plugin.account.sdk.a.a)h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getQQListStg()).b(this.ka, this.mUk, this.mYJ));
     }
   }
   
-  public final void anq()
+  public final void ats()
   {
     AppMethodBeat.i(131269);
-    anp();
+    atr();
     AppMethodBeat.o(131269);
   }
   
@@ -172,45 +175,45 @@ public final class f
     as localas = (as)getItem(paramInt);
     if (paramView == null)
     {
-      paramView = View.inflate(this.gte, 2131494735, null);
+      paramView = View.inflate(this.iXq, a.d.friend_list_item, null);
       paramViewGroup = new b(paramView);
       paramView.setTag(paramViewGroup);
-      paramViewGroup.kcR = paramInt;
-      paramViewGroup.account = localas.kfN;
-      paramViewGroup.status = localas.kfO;
-      paramViewGroup.kcZ.setText(com.tencent.mm.pluginsdk.ui.span.l.b(this.gte, localas.getDisplayName(), paramViewGroup.kcZ.getTextSize()));
-      paramViewGroup.kda.setText(com.tencent.mm.pluginsdk.ui.span.l.b(this.gte, localas.getNickname(), paramViewGroup.kda.getTextSize()));
-      if (!this.khk) {
-        break label364;
+      paramViewGroup.mUq = paramInt;
+      paramViewGroup.account = localas.mXm;
+      paramViewGroup.status = localas.mXn;
+      paramViewGroup.mUy.setText(l.b(this.iXq, localas.getDisplayName(), paramViewGroup.mUy.getTextSize()));
+      paramViewGroup.mUz.setText(l.b(this.iXq, localas.getNickname(), paramViewGroup.mUz.getTextSize()));
+      if (!this.mYJ) {
+        break label365;
       }
-      if (p.fd(paramViewGroup.account) == 0) {
+      if (p.fT(paramViewGroup.account) == 0) {
         break label847;
       }
     }
-    label182:
-    label198:
+    label183:
+    label199:
     label847:
-    for (Object localObject = c.Ah(localas.kfN);; localObject = null)
+    for (Object localObject = com.tencent.mm.am.d.Go(localas.mXm);; localObject = null)
     {
       int i;
       if (localObject == null)
       {
-        paramViewGroup.gyr.setImageDrawable(com.tencent.mm.cb.a.l(this.gte, 2131690042));
-        if (!this.khk) {
-          break label379;
+        paramViewGroup.jiu.setImageDrawable(com.tencent.mm.ci.a.m(this.iXq, a.f.default_avatar));
+        if (!this.mYJ) {
+          break label380;
         }
-        paramViewGroup.kcT.setVisibility(8);
+        paramViewGroup.mUs.setVisibility(8);
         localObject = (as)getItem(paramInt - 1);
         if (localObject != null) {
           break label680;
         }
         i = -1;
-        label218:
+        label219:
         if (localObject == null) {
           break label690;
         }
         localObject = ((as)localObject).toString();
-        label230:
+        label231:
         Log.d("MicroMsg.QQFriendAdapterCaseB", "qq friend pre:%s", new Object[] { localObject });
         if (localas == null) {
           break label698;
@@ -225,7 +228,7 @@ public final class f
           break label706;
         }
         Log.w("MicroMsg.QQFriendAdapterCaseB", "get display show head return null, user[%s] pos[%d]", new Object[] { localas.getUsername(), Integer.valueOf(paramInt) });
-        paramViewGroup.kcY.setVisibility(8);
+        paramViewGroup.mUx.setVisibility(8);
       }
       for (;;)
       {
@@ -233,65 +236,65 @@ public final class f
         return paramView;
         paramViewGroup = (b)paramView.getTag();
         break;
-        paramViewGroup.gyr.setImageBitmap((Bitmap)localObject);
-        break label182;
-        label364:
-        a.b.c(paramViewGroup.gyr, localas.getUsername());
-        break label182;
-        label379:
-        switch (localas.kfO)
+        paramViewGroup.jiu.setImageBitmap((Bitmap)localObject);
+        break label183;
+        label365:
+        com.tencent.mm.pluginsdk.ui.a.b.c(paramViewGroup.jiu, localas.getUsername());
+        break label183;
+        label380:
+        switch (localas.mXn)
         {
         }
         for (;;)
         {
-          switch (localas.iKU)
+          switch (localas.lBb)
           {
           default: 
             break;
           case 0: 
           case 2: 
-            paramViewGroup.gCd.setVisibility(0);
-            paramViewGroup.kdb.setVisibility(4);
+            paramViewGroup.jmj.setVisibility(0);
+            paramViewGroup.mUB.setVisibility(4);
             break;
-            if ((((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().bjG(localas.getUsername())) || (z.aTY().equals(localas.getUsername())))
+            if ((((n)h.ae(n.class)).bbL().bwd(localas.getUsername())) || (z.bcZ().equals(localas.getUsername())))
             {
-              paramViewGroup.kcT.setClickable(false);
-              paramViewGroup.kcT.setBackgroundDrawable(null);
-              paramViewGroup.gCd.setText(2131760983);
-              paramViewGroup.gCd.setTextColor(this.gte.getResources().getColor(2131100682));
+              paramViewGroup.mUs.setClickable(false);
+              paramViewGroup.mUs.setBackgroundDrawable(null);
+              paramViewGroup.jmj.setText(a.g.friend_added);
+              paramViewGroup.jmj.setTextColor(this.iXq.getResources().getColor(com.tencent.mm.plugin.account.friend.a.a.lightgrey));
             }
-            else if (localas.iKU == 2)
+            else if (localas.lBb == 2)
             {
-              paramViewGroup.kcT.setClickable(false);
-              paramViewGroup.kcT.setBackgroundDrawable(null);
-              paramViewGroup.gCd.setText(2131760988);
-              paramViewGroup.gCd.setTextColor(this.gte.getResources().getColor(2131100682));
+              paramViewGroup.mUs.setClickable(false);
+              paramViewGroup.mUs.setBackgroundDrawable(null);
+              paramViewGroup.jmj.setText(a.g.friend_waiting_ask);
+              paramViewGroup.jmj.setTextColor(this.iXq.getResources().getColor(com.tencent.mm.plugin.account.friend.a.a.lightgrey));
             }
             else
             {
-              paramViewGroup.kcT.setClickable(true);
-              paramViewGroup.kcT.setBackgroundResource(2131231429);
-              paramViewGroup.gCd.setText(2131760982);
-              paramViewGroup.gCd.setTextColor(this.gte.getResources().getColor(2131101427));
+              paramViewGroup.mUs.setClickable(true);
+              paramViewGroup.mUs.setBackgroundResource(com.tencent.mm.plugin.account.friend.a.b.btn_solid_green);
+              paramViewGroup.jmj.setText(a.g.friend_add);
+              paramViewGroup.jmj.setTextColor(this.iXq.getResources().getColor(com.tencent.mm.plugin.account.friend.a.a.white_text_color));
             }
             break;
           }
         }
-        paramViewGroup.gCd.setVisibility(4);
-        paramViewGroup.kdb.setVisibility(0);
-        break label198;
-        i = ((as)localObject).iKT;
-        break label218;
+        paramViewGroup.jmj.setVisibility(4);
+        paramViewGroup.mUB.setVisibility(0);
+        break label199;
+        i = ((as)localObject).lBa;
+        break label219;
         localObject = "";
-        break label230;
+        break label231;
         localObject = "";
-        break label260;
-        paramViewGroup.kcY.setVisibility(0);
-        paramViewGroup.kcY.setText((CharSequence)localObject);
-        paramViewGroup.kcY.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        break label261;
+        paramViewGroup.mUx.setVisibility(0);
+        paramViewGroup.mUx.setText((CharSequence)localObject);
+        paramViewGroup.mUx.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         continue;
         label737:
-        if (localas.iKT != i) {}
+        if (localas.lBa != i) {}
         for (i = 1;; i = 0)
         {
           localObject = b(localas);
@@ -299,12 +302,12 @@ public final class f
             break label816;
           }
           Log.w("MicroMsg.QQFriendAdapterCaseB", "get display show head return null, user[%s] pos[%d]", new Object[] { localas.getUsername(), Integer.valueOf(paramInt) });
-          paramViewGroup.kcY.setVisibility(8);
+          paramViewGroup.mUx.setVisibility(8);
           break;
         }
-        paramViewGroup.kcY.setVisibility(0);
-        paramViewGroup.kcY.setText((CharSequence)localObject);
-        paramViewGroup.kcY.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        paramViewGroup.mUx.setVisibility(0);
+        paramViewGroup.mUx.setText((CharSequence)localObject);
+        paramViewGroup.mUx.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       }
     }
   }
@@ -317,36 +320,36 @@ public final class f
   final class b
   {
     String account;
-    TextView gCd;
-    ImageView gyr;
-    int kcR;
-    View kcT;
-    TextView kcY;
-    TextView kcZ;
-    TextView kda;
-    ProgressBar kdb;
+    ImageView jiu;
+    TextView jmj;
+    ProgressBar mUB;
+    int mUq;
+    View mUs;
+    TextView mUx;
+    TextView mUy;
+    TextView mUz;
     int status;
     
     public b(View paramView)
     {
       AppMethodBeat.i(131266);
-      this.kcY = ((TextView)paramView.findViewById(2131301784));
-      this.gyr = ((ImageView)paramView.findViewById(2131301783));
-      this.kcZ = ((TextView)paramView.findViewById(2131301785));
-      this.kda = ((TextView)paramView.findViewById(2131301788));
-      this.kcT = paramView.findViewById(2131301782);
-      this.gCd = ((TextView)paramView.findViewById(2131301787));
-      this.kdb = ((ProgressBar)paramView.findViewById(2131301786));
-      this.kcT.setOnClickListener(new View.OnClickListener()
+      this.mUx = ((TextView)paramView.findViewById(a.c.friend_item_catalog));
+      this.jiu = ((ImageView)paramView.findViewById(a.c.friend_item_avatar_iv));
+      this.mUy = ((TextView)paramView.findViewById(a.c.friend_item_nickname));
+      this.mUz = ((TextView)paramView.findViewById(a.c.friend_item_wx_nickname));
+      this.mUs = paramView.findViewById(a.c.friend_item_action_view);
+      this.jmj = ((TextView)paramView.findViewById(a.c.friend_item_status_tv));
+      this.mUB = ((ProgressBar)paramView.findViewById(a.c.friend_item_status_pb));
+      this.mUs.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(131265);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/ui/QQFriendAdapterCaseB$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/friend/ui/QQFriendAdapterCaseB$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           if (f.b(f.this) != null) {
-            f.b(f.this).f(f.b.this.kcR, f.b.this.account, f.b.this.status);
+            f.b(f.this).f(f.b.this.mUq, f.b.this.account, f.b.this.status);
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/friend/ui/QQFriendAdapterCaseB$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(131265);
@@ -358,7 +361,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.f
  * JD-Core Version:    0.7.0.1
  */

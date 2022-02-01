@@ -1,49 +1,72 @@
 package com.tencent.mm.plugin.appbrand;
 
+import com.tencent.luggage.sdk.launching.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.page.ah;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/PreRenderIDKeyReport;", "", "()V", "ID", "", "KEY_TASK_COMPLETE", "KEY_TASK_FAIL_ALREADY_ALIVE", "KEY_TASK_FAIL_BIND_REMOTE_SERVICE_FAIL", "KEY_TASK_FAIL_CREATE_RUNTIME_FAILED", "KEY_TASK_FAIL_GET_ATTRS_FAIL", "KEY_TASK_FAIL_INVALID_PARAMS", "KEY_TASK_FAIL_REMOTE_SERVICE_DIED", "KEY_TASK_FAIL_RESOURCE_PREPARE_FAIL", "KEY_TASK_FAIL_UNSUPPORTED", "KEY_TASK_START", "codeToKey", "code", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/PreRenderAutoRelaunchLogicInterceptor;", "Lcom/tencent/mm/plugin/appbrand/IRuntimeAutoReLaunchLogicInterceptor;", "updatedConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;)V", "onConfigUpdated", "", "newConfig", "shouldReLaunchOnConfigWillUpdate", "", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)Ljava/lang/Boolean;", "Companion", "plugin-appbrand-integration_release"})
 public final class as
+  implements aj
 {
-  public static final as kFm;
+  @Deprecated
+  public static final as.a nyR;
+  private AppBrandInitConfigWC nyP;
+  private final t nyQ;
   
   static
   {
-    AppMethodBeat.i(227934);
-    kFm = new as();
-    AppMethodBeat.o(227934);
+    AppMethodBeat.i(271248);
+    nyR = new as.a((byte)0);
+    AppMethodBeat.o(271248);
   }
   
-  public static int vD(int paramInt)
+  public as(AppBrandInitConfigWC paramAppBrandInitConfigWC, t paramt)
   {
-    switch (paramInt)
+    AppMethodBeat.i(271247);
+    this.nyP = paramAppBrandInitConfigWC;
+    this.nyQ = paramt;
+    AppMethodBeat.o(271247);
+  }
+  
+  public final Boolean b(AppBrandInitConfigWC paramAppBrandInitConfigWC)
+  {
+    AppMethodBeat.i(271245);
+    p.k(paramAppBrandInitConfigWC, "newConfig");
+    Object localObject = this.nyQ.bDv();
+    if (localObject != null) {}
+    for (localObject = ((ah)localObject).ceb();; localObject = null)
     {
-    default: 
-      return 10000;
-    case 0: 
-      return 1;
-    case -1: 
-      return 2;
-    case -2: 
-      return 3;
-    case -3: 
-      return 4;
-    case -4: 
-      return 5;
-    case -5: 
-      return 6;
-    case -6: 
-      return 7;
-    case -7: 
-      return 8;
+      String str = paramAppBrandInitConfigWC.nBq;
+      int i = this.nyP.Qu().scene;
+      int j = paramAppBrandInitConfigWC.Qu().scene;
+      if ((this.nyP.cxe != b.cBf) || (this.nyP.cxe == paramAppBrandInitConfigWC.cxe) || (!p.h(localObject, str)) || (i != j)) {
+        break;
+      }
+      Log.i("MicroMsg.AppBrand.PreRenderAutoRelaunchLogicInterceptor", "shouldReLaunchOnConfigWillUpdate returns false, appId:" + this.nyQ.getAppId() + ", currentOriginRouteUrl:" + (String)localObject + ", newRouteUrl:" + str + ", oldScene:" + i + ", newScene:" + j);
+      paramAppBrandInitConfigWC = Boolean.FALSE;
+      AppMethodBeat.o(271245);
+      return paramAppBrandInitConfigWC;
     }
-    return 9;
+    AppMethodBeat.o(271245);
+    return null;
+  }
+  
+  public final void c(AppBrandInitConfigWC paramAppBrandInitConfigWC)
+  {
+    AppMethodBeat.i(271246);
+    p.k(paramAppBrandInitConfigWC, "newConfig");
+    this.nyP = paramAppBrandInitConfigWC;
+    AppMethodBeat.o(271246);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.as
  * JD-Core Version:    0.7.0.1
  */

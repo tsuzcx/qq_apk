@@ -8,13 +8,15 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.g.e;
+import com.tencent.mm.plugin.game.g.f;
 import com.tencent.mm.plugin.game.model.e;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class GameRegionPreference
   extends Preference
 {
-  a xVD;
+  a CZO;
   
   public GameRegionPreference(Context paramContext)
   {
@@ -30,7 +32,7 @@ public class GameRegionPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(42353);
-    setLayoutResource(2131495538);
+    setLayoutResource(g.f.mm_preference);
     AppMethodBeat.o(42353);
   }
   
@@ -38,12 +40,12 @@ public class GameRegionPreference
   {
     AppMethodBeat.i(42355);
     super.onBindView(paramView);
-    TextView localTextView = (TextView)paramView.findViewById(2131306815);
-    paramView = (CheckBox)paramView.findViewById(2131308377);
-    if ((localTextView != null) && (paramView != null) && (this.xVD != null))
+    TextView localTextView = (TextView)paramView.findViewById(g.e.Clr);
+    paramView = (CheckBox)paramView.findViewById(g.e.state_icon);
+    if ((localTextView != null) && (paramView != null) && (this.CZO != null))
     {
-      localTextView.setText(e.a(this.xVD));
-      paramView.setChecked(this.xVD.isSelected);
+      localTextView.setText(e.a(this.CZO));
+      paramView.setChecked(this.CZO.isSelected);
     }
     AppMethodBeat.o(42355);
   }
@@ -53,26 +55,26 @@ public class GameRegionPreference
     AppMethodBeat.i(42354);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(g.e.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2131494941, localViewGroup);
+    localLayoutInflater.inflate(g.f.CnX, localViewGroup);
     AppMethodBeat.o(42354);
     return paramViewGroup;
   }
   
   public static final class a
   {
-    public String fuO;
-    public boolean isDefault;
+    public String CZP;
+    public String CZQ;
+    public String CZR;
+    public String hDn;
     public boolean isSelected;
-    public String xVE;
-    public String xVF;
-    public String xVG;
+    public boolean lJx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameRegionPreference
  * JD-Core Version:    0.7.0.1
  */

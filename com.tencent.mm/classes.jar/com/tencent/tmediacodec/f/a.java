@@ -6,71 +6,71 @@ import java.util.Map;
 
 public final class a
 {
-  public final Map<String, Long> SmO;
-  public long SmP;
-  public boolean SmQ;
-  public boolean SmR;
-  public boolean SmS;
-  public String SmT;
-  public boolean SmU;
+  public long ZPA;
+  public boolean ZPB;
+  public boolean ZPC;
+  public boolean ZPD;
+  public String ZPE;
+  public boolean ZPF;
+  public final Map<String, Long> ZPz;
   
   public a(boolean paramBoolean)
   {
-    AppMethodBeat.i(190177);
-    this.SmO = new HashMap();
-    this.SmT = "";
-    this.SmU = paramBoolean;
-    AppMethodBeat.o(190177);
+    AppMethodBeat.i(224580);
+    this.ZPz = new HashMap();
+    this.ZPE = "";
+    this.ZPF = paramBoolean;
+    AppMethodBeat.o(224580);
   }
   
-  private final void Ec(boolean paramBoolean)
+  private final void ID(boolean paramBoolean)
   {
-    this.SmQ = paramBoolean;
-    this.SmS = true;
+    this.ZPB = paramBoolean;
+    this.ZPD = true;
   }
   
-  public final void Ed(boolean paramBoolean)
+  public final void IE(boolean paramBoolean)
   {
-    AppMethodBeat.i(190180);
-    this.SmR = paramBoolean;
-    this.SmP = System.currentTimeMillis();
-    AppMethodBeat.o(190180);
+    AppMethodBeat.i(224583);
+    this.ZPC = paramBoolean;
+    this.ZPA = System.currentTimeMillis();
+    AppMethodBeat.o(224583);
   }
   
-  public final void Ee(boolean paramBoolean)
+  public final void IF(boolean paramBoolean)
   {
-    AppMethodBeat.i(190181);
-    Ec(paramBoolean);
-    this.SmO.put("configCodec", Long.valueOf(System.currentTimeMillis() - this.SmP));
-    AppMethodBeat.o(190181);
+    AppMethodBeat.i(224586);
+    ID(paramBoolean);
+    this.ZPz.put("configCodec", Long.valueOf(System.currentTimeMillis() - this.ZPA));
+    AppMethodBeat.o(224586);
   }
   
-  public final void hpE()
+  public final void itl()
   {
-    AppMethodBeat.i(190178);
-    this.SmT = "";
-    this.SmO.clear();
-    this.SmP = System.currentTimeMillis();
-    AppMethodBeat.o(190178);
+    AppMethodBeat.i(224581);
+    this.ZPE = "";
+    this.ZPz.clear();
+    this.ZPA = System.currentTimeMillis();
+    AppMethodBeat.o(224581);
   }
   
-  public final void hpF()
+  public final void itm()
   {
-    AppMethodBeat.i(190179);
-    this.SmO.put("createCodec", Long.valueOf(System.currentTimeMillis() - this.SmP));
-    AppMethodBeat.o(190179);
+    AppMethodBeat.i(224582);
+    this.ZPz.put("createCodec", Long.valueOf(System.currentTimeMillis() - this.ZPA));
+    AppMethodBeat.o(224582);
   }
   
-  public final void hpG()
+  public final void itn()
   {
-    AppMethodBeat.i(190182);
-    this.SmO.put("startCodec", Long.valueOf(System.currentTimeMillis() - this.SmP));
-    AppMethodBeat.o(190182);
+    AppMethodBeat.i(224589);
+    this.ZPz.put("startCodec", Long.valueOf(System.currentTimeMillis() - this.ZPA));
+    AppMethodBeat.o(224589);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tmediacodec.f.a
  * JD-Core Version:    0.7.0.1
  */

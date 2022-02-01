@@ -7,17 +7,17 @@ import kotlin.l.b.a.b.e.b.a;
 public final class f
   extends a
 {
-  public static final f TCE;
-  public static final f TCF;
-  public static final a TCG;
-  private final boolean TCD;
+  public static final f abfs;
+  public static final f abft;
+  public static final a abfu;
+  private final boolean abfr;
   
   static
   {
     AppMethodBeat.i(59244);
-    TCG = new a((byte)0);
-    TCE = new f(new int[] { 1, 1, 16 });
-    TCF = new f(new int[0]);
+    abfu = new a((byte)0);
+    abfs = new f(new int[] { 1, 1, 16 });
+    abft = new f(new int[0]);
     AppMethodBeat.o(59244);
   }
   
@@ -32,24 +32,24 @@ public final class f
   {
     super(Arrays.copyOf(paramArrayOfInt, paramArrayOfInt.length));
     AppMethodBeat.i(59242);
-    this.TCD = paramBoolean;
+    this.abfr = paramBoolean;
     AppMethodBeat.o(59242);
   }
   
-  public final boolean hIi()
+  public final boolean iMC()
   {
     AppMethodBeat.i(59241);
-    if ((this.major != 1) || (this.minor != 0))
+    if ((this.oey != 1) || (this.oez != 0))
     {
       boolean bool;
-      if (this.TCD) {
-        bool = a((a)TCE);
+      if (this.abfr) {
+        bool = a((a)abfs);
       }
       while (bool)
       {
         AppMethodBeat.o(59241);
         return true;
-        if ((this.major == 1) && (this.minor <= 4)) {
+        if ((this.oey == 1) && (this.oez <= 4)) {
           bool = true;
         } else {
           bool = false;
@@ -64,7 +64,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.e.c.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:background="@drawable/b22" android:layout_width="fill_parent" android:layout_height="192.0dip"
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@drawable/b22" android:layout_width="fill_parent" android:layout_height="192.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.constraint.Guideline android:orientation="horizontal" android:id="@id/iup" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginTop="56.0dip" app:layout_constraintGuide_begin="56.0dip" />
+    <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/iup" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginTop="56.0dip" app:layout_constraintGuide_begin="56.0dip" />
     <com.tencent.mm.ui.widget.imageview.WeImageView android:textColor="@color/am" android:id="@id/iul" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/cb" android:src="@raw/icons_filled_close" android:contentDescription="@string/sz" android:layout_marginStart="@dimen/ce" app:iconColor="@color/am" app:layout_constraintBottom_toTopOf="@id/iup" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
     <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/iuo" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/cb" android:src="@raw/icons_filled_done" android:contentDescription="@string/x_" android:layout_marginEnd="@dimen/ce" app:iconColor="@color/Orange" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
     <com.tencent.mm.plugin.vlog.ui.LabelSlider android:id="@id/iun" android:layout_width="fill_parent" android:layout_height="@dimen/cp" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

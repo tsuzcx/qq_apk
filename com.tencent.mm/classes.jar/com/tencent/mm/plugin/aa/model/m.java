@@ -10,10 +10,10 @@ import java.util.Map;
 public final class m
   implements b<l>
 {
-  protected l jSX;
-  public final a jSY;
-  public final c jSZ;
-  public final b jTa;
+  protected l mKl;
+  public final a mKm;
+  public final c mKn;
+  public final b mKo;
   
   public m()
   {
@@ -25,16 +25,16 @@ public final class m
   private m(l paraml)
   {
     AppMethodBeat.i(63369);
-    this.jSY = new a();
-    this.jSZ = new c();
-    this.jTa = new b();
-    this.jSX = paraml;
+    this.mKm = new a();
+    this.mKn = new c();
+    this.mKo = new b();
+    this.mKl = paraml;
     AppMethodBeat.o(63369);
   }
   
-  public final l bmn()
+  public final l bwv()
   {
-    return this.jSX;
+    return this.mKl;
   }
   
   public final class a
@@ -42,7 +42,7 @@ public final class m
   {
     public a() {}
     
-    public final String akn()
+    public final String aqj()
     {
       return "Vending.LOGIC";
     }
@@ -53,7 +53,7 @@ public final class m
   {
     public b() {}
     
-    public final String akn()
+    public final String aqj()
     {
       return "Vending.LOGIC";
     }
@@ -64,7 +64,7 @@ public final class m
   {
     public c() {}
     
-    public final String akn()
+    public final String aqj()
     {
       return "Vending.LOGIC";
     }
@@ -72,7 +72,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.m
  * JD-Core Version:    0.7.0.1
  */

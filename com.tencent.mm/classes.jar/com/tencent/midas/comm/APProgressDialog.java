@@ -25,7 +25,7 @@ public class APProgressDialog
   
   protected void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(193215);
+    AppMethodBeat.i(253546);
     super.onCreate(paramBundle);
     setContentView(APMidasCommMethod.getLayoutId(this.context, "unipay_layout_loadding"));
     paramBundle = (ProgressBar)findViewById(APMidasCommMethod.getId(this.context, "unipay_progress"));
@@ -38,29 +38,29 @@ public class APProgressDialog
     this.loading_txt = ((TextView)findViewById(APMidasCommMethod.getId(this.context, "unipay_id_LoadingTxt")));
     this.loading_txt.setText(this.loadingTxt);
     setCancelable(false);
-    AppMethodBeat.o(193215);
+    AppMethodBeat.o(253546);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(193217);
+    AppMethodBeat.i(253549);
     if (paramInt == 4)
     {
       cancel();
-      AppMethodBeat.o(193217);
+      AppMethodBeat.o(253549);
       return false;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(193217);
+    AppMethodBeat.o(253549);
     return bool;
   }
   
   public void setMessage(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(193216);
+    AppMethodBeat.i(253548);
     super.setMessage(paramCharSequence);
     this.loadingTxt = String.valueOf(paramCharSequence);
-    AppMethodBeat.o(193216);
+    AppMethodBeat.o(253548);
   }
 }
 

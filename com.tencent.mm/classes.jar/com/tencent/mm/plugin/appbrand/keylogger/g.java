@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.keylogger;
 
 import android.content.SharedPreferences;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import android.content.SharedPreferences.Editor;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.plugin.appbrand.keylogger.base.c;
 import com.tencent.mm.sdk.platformtools.FilePathGenerator;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -25,52 +25,52 @@ import java.util.Map;
 public final class g
   implements c
 {
-  private static final Map<Long, String> mPp;
-  private static String mPq;
+  private static final Map<Long, String> pQi;
+  private static String pQj;
   private static SimpleDateFormat sDateFormat;
   
   static
   {
-    AppMethodBeat.i(229920);
+    AppMethodBeat.i(243942);
     sDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-    mPp = new HashMap();
-    AppMethodBeat.o(229920);
+    pQi = new HashMap();
+    AppMethodBeat.o(243942);
   }
   
-  private static String Bk(long paramLong)
+  private static String Hy(long paramLong)
   {
-    AppMethodBeat.i(229913);
-    if (mPp.containsKey(Long.valueOf(paramLong)))
+    AppMethodBeat.i(243929);
+    if (pQi.containsKey(Long.valueOf(paramLong)))
     {
-      str = (String)mPp.get(Long.valueOf(paramLong));
-      AppMethodBeat.o(229913);
+      str = (String)pQi.get(Long.valueOf(paramLong));
+      AppMethodBeat.o(243929);
       return str;
     }
-    if (Util.isNullOrNil(bMR()))
+    if (Util.isNullOrNil(bZi()))
     {
-      AppMethodBeat.o(229913);
+      AppMethodBeat.o(243929);
       return null;
     }
-    String str = String.format("%s%s/", new Object[] { bMR(), sDateFormat.format(Long.valueOf(paramLong)) });
+    String str = String.format("%s%s/", new Object[] { bZi(), sDateFormat.format(Long.valueOf(paramLong)) });
     FilePathGenerator.checkMkdir(str);
-    mPp.put(Long.valueOf(paramLong), str);
-    AppMethodBeat.o(229913);
+    pQi.put(Long.valueOf(paramLong), str);
+    AppMethodBeat.o(243929);
     return str;
   }
   
-  private static long abU(String paramString)
+  private static long ajP(String paramString)
   {
-    AppMethodBeat.i(229917);
+    AppMethodBeat.i(243937);
     if (paramString == null)
     {
-      AppMethodBeat.o(229917);
+      AppMethodBeat.o(243937);
       return 0L;
     }
     String[] arrayOfString = paramString.split("-", -1);
     if ((arrayOfString == null) || (arrayOfString.length != 3))
     {
       Log.w("MicroMsg.DefaultKeyStepLogger", "getTimeFromDateFormatStr invalid date:%s", new Object[] { paramString });
-      AppMethodBeat.o(229917);
+      AppMethodBeat.o(243937);
       return 0L;
     }
     paramString = Calendar.getInstance();
@@ -78,30 +78,30 @@ public final class g
     {
       paramString.set(Util.getInt(arrayOfString[0], 0), Util.getInt(arrayOfString[1], 0), Util.getInt(arrayOfString[2], 0));
       long l = paramString.getTimeInMillis();
-      AppMethodBeat.o(229917);
+      AppMethodBeat.o(243937);
       return l;
     }
     catch (Exception paramString)
     {
       Log.w("MicroMsg.DefaultKeyStepLogger", "getTimeFromDateFormatStr exp:%s", new Object[] { paramString });
-      AppMethodBeat.o(229917);
+      AppMethodBeat.o(243937);
     }
     return 0L;
   }
   
-  private static String bMR()
+  private static String bZi()
   {
-    AppMethodBeat.i(229914);
-    if (!Util.isNullOrNil(mPq))
+    AppMethodBeat.i(243930);
+    if (!Util.isNullOrNil(pQj))
     {
-      localObject = mPq;
-      AppMethodBeat.o(229914);
+      localObject = pQj;
+      AppMethodBeat.o(243930);
       return localObject;
     }
-    String str = bMS();
+    String str = bZj();
     if (Util.isNullOrNil(str))
     {
-      AppMethodBeat.o(229914);
+      AppMethodBeat.o(243930);
       return null;
     }
     Object localObject = str;
@@ -109,44 +109,44 @@ public final class g
       localObject = str + "/";
     }
     localObject = String.format("%skeystep/", new Object[] { localObject });
-    mPq = (String)localObject;
-    AppMethodBeat.o(229914);
+    pQj = (String)localObject;
+    AppMethodBeat.o(243930);
     return localObject;
   }
   
-  private static String bMS()
+  private static String bZj()
   {
-    AppMethodBeat.i(229915);
+    AppMethodBeat.i(243932);
     if (MMApplicationContext.isMMProcess())
     {
-      if (!com.tencent.mm.kernel.g.aAc())
+      if (!com.tencent.mm.kernel.h.aHB())
       {
         Log.w("MicroMsg.DefaultKeyStepLogger", "doGetAccPath not accHasReady");
-        AppMethodBeat.o(229915);
+        AppMethodBeat.o(243932);
         return null;
       }
-      localObject = com.tencent.mm.kernel.g.aAh().cachePath;
-      AppMethodBeat.o(229915);
+      localObject = com.tencent.mm.kernel.h.aHG().cachePath;
+      AppMethodBeat.o(243932);
       return localObject;
     }
     Object localObject = (IPCString)XIPCInvoker.a(MMApplicationContext.getApplicationId(), new IPCVoid(), g.a.class);
     if (localObject == null)
     {
-      AppMethodBeat.o(229915);
+      AppMethodBeat.o(243932);
       return null;
     }
     localObject = ((IPCString)localObject).value;
-    AppMethodBeat.o(229915);
+    AppMethodBeat.o(243932);
     return localObject;
   }
   
-  public static void bMT()
+  public static void bZk()
   {
-    AppMethodBeat.i(229916);
+    AppMethodBeat.i(243934);
     Log.d("MicroMsg.DefaultKeyStepLogger", "cleanOldLogs enter");
     if (!MMApplicationContext.isMMProcess())
     {
-      AppMethodBeat.o(229916);
+      AppMethodBeat.o(243934);
       return;
     }
     long l1 = System.currentTimeMillis();
@@ -154,34 +154,43 @@ public final class g
     Log.i("MicroMsg.DefaultKeyStepLogger", "cleanOldLogs now:%d lastCleanTime:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
     if (l1 - l2 < 604800000L)
     {
-      AppMethodBeat.o(229916);
+      AppMethodBeat.o(243934);
       return;
     }
-    h.RTc.b(new g.2(), "MMTempKeyStepLogger#cleanOldLogs");
-    AppMethodBeat.o(229916);
+    com.tencent.e.h.ZvG.d(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(235080);
+        g.access$100();
+        MMApplicationContext.getDefaultPreference().edit().putLong("MMTempKeyStepLogger-Last-Clean-Time", System.currentTimeMillis()).commit();
+        AppMethodBeat.o(235080);
+      }
+    }, "MMTempKeyStepLogger#cleanOldLogs");
+    AppMethodBeat.o(243934);
   }
   
   public final List<String> V(String paramString, long paramLong)
   {
     int i = 0;
-    AppMethodBeat.i(229912);
+    AppMethodBeat.i(243927);
     ArrayList localArrayList = new ArrayList();
-    Object localObject = Bk(paramLong);
+    Object localObject = Hy(paramLong);
     if (Util.isNullOrNil((String)localObject))
     {
-      AppMethodBeat.o(229912);
+      AppMethodBeat.o(243927);
       return localArrayList;
     }
     localObject = new File((String)localObject);
     if (!((File)localObject).isDirectory())
     {
-      AppMethodBeat.o(229912);
+      AppMethodBeat.o(243927);
       return localArrayList;
     }
     localObject = ((File)localObject).listFiles();
     if (localObject == null)
     {
-      AppMethodBeat.o(229912);
+      AppMethodBeat.o(243927);
       return localArrayList;
     }
     Log.i("MicroMsg.DefaultKeyStepLogger", "collectLogPathsByProcessAndDate : %s", new Object[] { paramString });
@@ -192,29 +201,29 @@ public final class g
       }
       i += 1;
     }
-    AppMethodBeat.o(229912);
+    AppMethodBeat.o(243927);
     return localArrayList;
   }
   
-  public final void g(final String paramString1, final String paramString2, final Object... paramVarArgs)
+  public final void h(final String paramString1, final String paramString2, final Object... paramVarArgs)
   {
-    AppMethodBeat.i(229911);
-    h.RTc.b(new Runnable()
+    AppMethodBeat.i(243925);
+    com.tencent.e.h.ZvG.d(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(229908);
+        AppMethodBeat.i(239882);
         String str = String.format(paramString2, paramVarArgs);
-        g.ec(paramString1, str);
-        AppMethodBeat.o(229908);
+        g.en(paramString1, str);
+        AppMethodBeat.o(239882);
       }
     }, "MMTempKeyStepLogger");
-    AppMethodBeat.o(229911);
+    AppMethodBeat.o(243925);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.g
  * JD-Core Version:    0.7.0.1
  */

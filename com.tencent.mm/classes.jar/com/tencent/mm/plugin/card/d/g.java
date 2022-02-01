@@ -13,28 +13,28 @@ public final class g
   {
     AppMethodBeat.i(113800);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("<from_username>").append(paramd.pPy).append("</from_username>");
-    localStringBuilder.append("<card_id>").append(paramd.eaO).append("</card_id>");
-    localStringBuilder.append("<card_type>").append(paramd.nHh).append("</card_type>");
-    localStringBuilder.append("<from_scene>").append(paramd.eaQ).append("</from_scene>");
-    localStringBuilder.append("<color>").append(paramd.ixw).append("</color>");
-    localStringBuilder.append("<card_type_name>").append(paramd.pTn).append("</card_type_name>");
-    localStringBuilder.append("<brand_name>").append(paramd.gTG).append("</brand_name>");
-    if (TextUtils.isEmpty(paramd.eaP)) {
+    localStringBuilder.append("<from_username>").append(paramd.from_username).append("</from_username>");
+    localStringBuilder.append("<card_id>").append(paramd.fUL).append("</card_id>");
+    localStringBuilder.append("<card_type>").append(paramd.qJt).append("</card_type>");
+    localStringBuilder.append("<from_scene>").append(paramd.fUN).append("</from_scene>");
+    localStringBuilder.append("<color>").append(paramd.lmL).append("</color>");
+    localStringBuilder.append("<card_type_name>").append(paramd.tpo).append("</card_type_name>");
+    localStringBuilder.append("<brand_name>").append(paramd.jEi).append("</brand_name>");
+    if (TextUtils.isEmpty(paramd.fUM)) {
       localStringBuilder.append("<card_ext></card_ext>");
     }
     for (;;)
     {
-      localStringBuilder.append("<is_recommend>").append(paramd.pTo).append("</is_recommend>");
-      localStringBuilder.append("<recommend_card_id>").append(paramd.pTp).append("</recommend_card_id>");
+      localStringBuilder.append("<is_recommend>").append(paramd.tpp).append("</is_recommend>");
+      localStringBuilder.append("<recommend_card_id>").append(paramd.tpq).append("</recommend_card_id>");
       paramd = localStringBuilder.toString();
       AppMethodBeat.o(113800);
       return paramd;
-      localStringBuilder.append("<card_ext>").append(paramd.eaP).append("</card_ext>");
+      localStringBuilder.append("<card_ext>").append(paramd.fUM).append("</card_ext>");
     }
   }
   
-  public static d ajZ(String paramString)
+  public static d arM(String paramString)
   {
     AppMethodBeat.i(113797);
     if (TextUtils.isEmpty(paramString))
@@ -49,21 +49,21 @@ public final class g
       AppMethodBeat.o(113797);
       return locald;
     }
-    locald.pPy = ((String)paramString.get(".msg.appmsg.carditem.from_username"));
-    locald.eaO = ((String)paramString.get(".msg.appmsg.carditem.card_id"));
-    locald.nHh = akb((String)paramString.get(".msg.appmsg.carditem.card_type"));
-    locald.eaQ = akb((String)paramString.get(".msg.appmsg.carditem.from_scene"));
-    locald.ixw = ((String)paramString.get(".msg.appmsg.carditem.color"));
-    locald.pTn = ((String)paramString.get(".msg.appmsg.carditem.card_type_name"));
-    locald.gTG = ((String)paramString.get(".msg.appmsg.carditem.brand_name"));
-    locald.eaP = ((String)paramString.get(".msg.appmsg.carditem.card_ext"));
-    locald.pTo = akb((String)paramString.get(".msg.appmsg.carditem.is_recommend"));
-    locald.pTp = ((String)paramString.get(".msg.appmsg.carditem.recommend_card_id"));
+    locald.from_username = ((String)paramString.get(".msg.appmsg.carditem.from_username"));
+    locald.fUL = ((String)paramString.get(".msg.appmsg.carditem.card_id"));
+    locald.qJt = arO((String)paramString.get(".msg.appmsg.carditem.card_type"));
+    locald.fUN = arO((String)paramString.get(".msg.appmsg.carditem.from_scene"));
+    locald.lmL = ((String)paramString.get(".msg.appmsg.carditem.color"));
+    locald.tpo = ((String)paramString.get(".msg.appmsg.carditem.card_type_name"));
+    locald.jEi = ((String)paramString.get(".msg.appmsg.carditem.brand_name"));
+    locald.fUM = ((String)paramString.get(".msg.appmsg.carditem.card_ext"));
+    locald.tpp = arO((String)paramString.get(".msg.appmsg.carditem.is_recommend"));
+    locald.tpq = ((String)paramString.get(".msg.appmsg.carditem.recommend_card_id"));
     AppMethodBeat.o(113797);
     return locald;
   }
   
-  public static String aka(String paramString)
+  public static String arN(String paramString)
   {
     AppMethodBeat.i(113798);
     if (TextUtils.isEmpty(paramString))
@@ -82,7 +82,7 @@ public final class g
     return paramString;
   }
   
-  private static int akb(String paramString)
+  private static int arO(String paramString)
   {
     AppMethodBeat.i(113799);
     if ((TextUtils.isEmpty(paramString)) || (!l.isNumeric(paramString)))

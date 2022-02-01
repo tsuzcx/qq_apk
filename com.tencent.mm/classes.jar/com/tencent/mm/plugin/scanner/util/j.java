@@ -12,33 +12,33 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 public final class j
   implements SensorEventListener
 {
-  public static final j CUb;
-  public Sensor CTX;
-  public float[] CTY;
-  public int CTZ;
-  private long CUa;
+  public static final j IZt;
+  public Sensor IZp;
+  public float[] IZq;
+  public int IZr;
+  private long IZs;
   public SensorManager mSensorManager;
   
   static
   {
     AppMethodBeat.i(52061);
-    CUb = new j();
+    IZt = new j();
     AppMethodBeat.o(52061);
   }
   
   private j()
   {
     AppMethodBeat.i(52059);
-    this.CTY = new float[3];
+    this.IZq = new float[3];
     this.mSensorManager = ((SensorManager)MMApplicationContext.getContext().getSystemService("sensor"));
-    this.CTX = this.mSensorManager.getDefaultSensor(1);
+    this.IZp = this.mSensorManager.getDefaultSensor(1);
     AppMethodBeat.o(52059);
   }
   
-  public final long eRV()
+  public final long fEU()
   {
-    if (this.CTZ >= 5) {
-      return this.CUa;
+    if (this.IZr >= 5) {
+      return this.IZs;
     }
     return 0L;
   }
@@ -52,33 +52,33 @@ public final class j
     {
       paramSensorEvent = paramSensorEvent.values;
       Log.d("MicroMsg.ScanStableDetector", "x:%f,y:%f,z:%f", new Object[] { Float.valueOf(paramSensorEvent[0]), Float.valueOf(paramSensorEvent[1]), Float.valueOf(paramSensorEvent[2]) });
-      if ((this.CTY[0] == 0.0F) && (this.CTY[1] == 0.0F) && (this.CTY[2] == 0.0F))
+      if ((this.IZq[0] == 0.0F) && (this.IZq[1] == 0.0F) && (this.IZq[2] == 0.0F))
       {
-        this.CTY[0] = paramSensorEvent[0];
-        this.CTY[1] = paramSensorEvent[1];
-        this.CTY[2] = paramSensorEvent[2];
+        this.IZq[0] = paramSensorEvent[0];
+        this.IZq[1] = paramSensorEvent[1];
+        this.IZq[2] = paramSensorEvent[2];
         AppMethodBeat.o(52060);
         return;
       }
-      if ((Math.abs(paramSensorEvent[0] - this.CTY[0]) <= 0.7F) && (Math.abs(paramSensorEvent[1] - this.CTY[1]) <= 0.7F) && (Math.abs(paramSensorEvent[2] - this.CTY[2]) <= 0.7F)) {
+      if ((Math.abs(paramSensorEvent[0] - this.IZq[0]) <= 0.7F) && (Math.abs(paramSensorEvent[1] - this.IZq[1]) <= 0.7F) && (Math.abs(paramSensorEvent[2] - this.IZq[2]) <= 0.7F)) {
         break label227;
       }
       Log.d("MicroMsg.ScanStableDetector", "scan unstable");
-      this.CTZ = 0;
+      this.IZr = 0;
     }
     for (;;)
     {
-      this.CTY[0] = paramSensorEvent[0];
-      this.CTY[1] = paramSensorEvent[1];
-      this.CTY[2] = paramSensorEvent[2];
+      this.IZq[0] = paramSensorEvent[0];
+      this.IZq[1] = paramSensorEvent[1];
+      this.IZq[2] = paramSensorEvent[2];
       AppMethodBeat.o(52060);
       return;
       label227:
-      if (this.CTZ == 0) {
-        this.CUa = System.currentTimeMillis();
+      if (this.IZr == 0) {
+        this.IZs = System.currentTimeMillis();
       }
-      this.CTZ += 1;
-      if (this.CTZ >= 5) {
+      this.IZr += 1;
+      if (this.IZr >= 5) {
         Log.d("MicroMsg.ScanStableDetector", "scan stable");
       }
     }

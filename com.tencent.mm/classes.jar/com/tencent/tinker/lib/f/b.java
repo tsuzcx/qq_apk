@@ -17,7 +17,7 @@ import java.util.List;
 public final class b
   extends ShareTinkerInternals
 {
-  private static String Skr = null;
+  private static String ZNc = null;
   
   private static String f(Context paramContext, Class<? extends Service> paramClass)
   {
@@ -32,9 +32,9 @@ public final class b
     return null;
   }
   
-  public static void ll(Context paramContext)
+  public static void mj(Context paramContext)
   {
-    String str = ln(paramContext);
+    String str = ml(paramContext);
     if (str == null) {}
     for (;;)
     {
@@ -54,10 +54,10 @@ public final class b
     }
   }
   
-  public static boolean lm(Context paramContext)
+  public static boolean mk(Context paramContext)
   {
     Object localObject = (ActivityManager)paramContext.getSystemService("activity");
-    paramContext = ln(paramContext);
+    paramContext = ml(paramContext);
     if (paramContext == null) {
       return false;
     }
@@ -89,23 +89,23 @@ public final class b
     return false;
   }
   
-  private static String ln(Context paramContext)
+  private static String ml(Context paramContext)
   {
-    if (Skr != null) {
-      return Skr;
+    if (ZNc != null) {
+      return ZNc;
     }
     paramContext = f(paramContext, TinkerPatchService.class);
     if (paramContext == null) {
       return null;
     }
-    Skr = paramContext;
+    ZNc = paramContext;
     return paramContext;
   }
   
-  public static boolean lo(Context paramContext)
+  public static boolean mm(Context paramContext)
   {
     String str = getProcessName(paramContext);
-    paramContext = ln(paramContext);
+    paramContext = ml(paramContext);
     if ((paramContext == null) || (paramContext.length() == 0)) {
       return false;
     }
@@ -114,7 +114,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.lib.f.b
  * JD-Core Version:    0.7.0.1
  */

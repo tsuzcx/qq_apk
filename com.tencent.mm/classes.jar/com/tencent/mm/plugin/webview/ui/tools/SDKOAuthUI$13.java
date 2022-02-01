@@ -20,8 +20,8 @@ final class SDKOAuthUI$13
     {
       AppMethodBeat.o(79745);
       return false;
-      SDKOAuthUI.b(this.Jfk, (int)paramMotionEvent.getRawX());
-      SDKOAuthUI.c(this.Jfk, (int)paramMotionEvent.getRawY());
+      SDKOAuthUI.b(this.Qcn, (int)paramMotionEvent.getRawX());
+      SDKOAuthUI.c(this.Qcn, (int)paramMotionEvent.getRawY());
     }
   }
 }

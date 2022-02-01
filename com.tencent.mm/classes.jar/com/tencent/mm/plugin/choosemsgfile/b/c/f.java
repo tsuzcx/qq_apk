@@ -1,22 +1,30 @@
 package com.tencent.mm.plugin.choosemsgfile.b.c;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.GridLayoutManager.b;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.b;
-import android.support.v7.widget.RecyclerView.v;
+import android.graphics.Rect;
+import android.view.View;
 import android.widget.ImageView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager.b;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
+import androidx.recyclerview.widget.RecyclerView.h;
+import androidx.recyclerview.widget.RecyclerView.s;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.choosemsgfile.compat.MsgFile;
-import com.tencent.mm.g.a.ir;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.a.jh;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.choosemsgfile.a.c;
 import com.tencent.mm.plugin.choosemsgfile.b.b.m;
+import com.tencent.mm.plugin.choosemsgfile.ui.e;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -29,40 +37,168 @@ import java.util.LinkedList;
 public final class f
   extends b
 {
-  int fs;
-  public c qoB;
-  private IListener qoC;
-  private GridLayoutManager qoD;
-  int qoE;
+  public c tNk;
+  private IListener tNl;
+  private GridLayoutManager tNm;
+  int tNn;
+  int zP;
   
-  public f(com.tencent.mm.plugin.choosemsgfile.ui.c paramc)
+  public f(e parame)
   {
-    super(paramc);
+    super(parame);
     AppMethodBeat.i(123339);
-    this.fs = 0;
-    this.qoE = 0;
-    this.qoC = new IListener() {};
+    this.zP = 0;
+    this.tNn = 0;
+    this.tNl = new IListener() {};
     AppMethodBeat.o(123339);
   }
   
-  public final void c(final boolean paramBoolean, final String paramString1, final String paramString2)
+  public final RecyclerView.a cNa()
+  {
+    AppMethodBeat.i(243389);
+    this.tNk = new c(this.tMV, this.mDataList);
+    this.tNk.tMX = new g.a()
+    {
+      public final void a(boolean paramAnonymousBoolean, final com.tencent.mm.plugin.choosemsgfile.b.b.a paramAnonymousa, final RecyclerView.v paramAnonymousv)
+      {
+        AppMethodBeat.i(243498);
+        if (paramAnonymousa == null)
+        {
+          Log.e("MicroMsg.ChooseMsgFileUIController", "[onCheck] item is null, err");
+          AppMethodBeat.o(243498);
+          return;
+        }
+        Log.i("MicroMsg.ChooseMsgFileUIController", "[onCheck] isChecked:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+        if (paramAnonymousBoolean)
+        {
+          paramAnonymousa.cMP();
+          f.a(f.this).Ii(paramAnonymousa.tMi.field_msgId);
+          com.tencent.mm.plugin.choosemsgfile.b.a.b.a(paramAnonymousa, new com.tencent.mm.plugin.choosemsgfile.b.a.a()
+          {
+            public final void a(MsgFile paramAnonymous2MsgFile)
+            {
+              AppMethodBeat.i(123328);
+              Log.i("MicroMsg.ChooseMsgFileUIController", "item:%s onDownloadSuccess msgFile:%s", new Object[] { paramAnonymousa, paramAnonymous2MsgFile });
+              f.a(f.this).Ij(paramAnonymousa.tMi.field_msgId);
+              f.a(f.this).a(paramAnonymousa.tMi.field_msgId, paramAnonymous2MsgFile);
+              if (f.a(f.this).cNb()) {
+                MMHandlerThread.postToMainThread(new Runnable()
+                {
+                  public final void run()
+                  {
+                    AppMethodBeat.i(123327);
+                    f.this.tNk.alc.notifyChanged();
+                    AppMethodBeat.o(123327);
+                  }
+                });
+              }
+              f.this.tMV.cNe();
+              paramAnonymousa.cMQ();
+              paramAnonymous2MsgFile = (com.tencent.mm.plugin.choosemsgfile.b.b.a)((m)paramAnonymousv).sDJ.getTag();
+              if (paramAnonymous2MsgFile.equals(paramAnonymousa)) {
+                paramAnonymous2MsgFile.V(paramAnonymousv);
+              }
+              AppMethodBeat.o(123328);
+            }
+            
+            public final void cMF()
+            {
+              AppMethodBeat.i(123329);
+              Log.e("MicroMsg.ChooseMsgFileUIController", "item:%s onDownloadFails", new Object[] { paramAnonymousa });
+              f.a(f.this).Ij(paramAnonymousa.tMi.field_msgId);
+              paramAnonymousa.cMS();
+              com.tencent.mm.plugin.choosemsgfile.b.b.a locala = (com.tencent.mm.plugin.choosemsgfile.b.b.a)((m)paramAnonymousv).sDJ.getTag();
+              if (locala.equals(paramAnonymousa)) {
+                locala.V(paramAnonymousv);
+              }
+              AppMethodBeat.o(123329);
+            }
+            
+            public final void cMG()
+            {
+              AppMethodBeat.i(123330);
+              Log.i("MicroMsg.ChooseMsgFileUIController", "item:%s onDownloadPause", new Object[] { paramAnonymousa });
+              f.a(f.this).Ij(paramAnonymousa.tMi.field_msgId);
+              paramAnonymousa.cMT();
+              com.tencent.mm.plugin.choosemsgfile.b.b.a locala = (com.tencent.mm.plugin.choosemsgfile.b.b.a)((m)paramAnonymousv).sDJ.getTag();
+              if (locala.equals(paramAnonymousa)) {
+                locala.V(paramAnonymousv);
+              }
+              AppMethodBeat.o(123330);
+            }
+            
+            public final void cMH()
+            {
+              AppMethodBeat.i(123331);
+              Log.e("MicroMsg.ChooseMsgFileUIController", "item:%s onExpireFail", new Object[] { paramAnonymousa });
+              f.a(f.this).Ij(paramAnonymousa.tMi.field_msgId);
+              paramAnonymousa.cMR();
+              com.tencent.mm.plugin.choosemsgfile.b.b.a locala = (com.tencent.mm.plugin.choosemsgfile.b.b.a)((m)paramAnonymousv).sDJ.getTag();
+              if (locala.equals(paramAnonymousa)) {
+                locala.V(paramAnonymousv);
+              }
+              AppMethodBeat.o(123331);
+            }
+            
+            public final void fH(int paramAnonymous2Int1, int paramAnonymous2Int2)
+            {
+              AppMethodBeat.i(123332);
+              Log.e("MicroMsg.ChooseMsgFileUIController", "item:%s onDownloadProgress offset:%d totalLen:%d", new Object[] { paramAnonymousa, Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
+              paramAnonymousa.fJ(paramAnonymous2Int1, paramAnonymous2Int2);
+              com.tencent.mm.plugin.choosemsgfile.b.b.a locala = (com.tencent.mm.plugin.choosemsgfile.b.b.a)((m)paramAnonymousv).sDJ.getTag();
+              if (locala.equals(paramAnonymousa)) {
+                locala.V(paramAnonymousv);
+              }
+              AppMethodBeat.o(123332);
+            }
+          }, f.this.cMZ());
+        }
+        for (;;)
+        {
+          paramAnonymousa.V(paramAnonymousv);
+          AppMethodBeat.o(243498);
+          return;
+          paramAnonymousa.cMT();
+          f.a(f.this).Ij(paramAnonymousa.tMi.field_msgId);
+          f.a(f.this).Ig(paramAnonymousa.tMi.field_msgId);
+          if (f.a(f.this).cNb()) {
+            MMHandlerThread.postToMainThread(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(123333);
+                f.this.tNk.alc.notifyChanged();
+                AppMethodBeat.o(123333);
+              }
+            });
+          }
+          f.this.tMV.cNe();
+        }
+      }
+    };
+    c localc = this.tNk;
+    AppMethodBeat.o(243389);
+    return localc;
+  }
+  
+  public final void d(final boolean paramBoolean, final String paramString1, final String paramString2)
   {
     AppMethodBeat.i(123346);
     if (paramBoolean)
     {
       this.mDataList.clear();
-      this.fs = 0;
+      this.zP = 0;
     }
-    this.qoB.qor = true;
-    this.qon.kF(paramBoolean);
-    g.aAi();
-    g.aAk().postToWorker(new Runnable()
+    this.tNk.tMZ = true;
+    this.tMV.lR(paramBoolean);
+    h.aHH();
+    h.aHJ().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(123338);
         LinkedList localLinkedList = new LinkedList();
-        Cursor localCursor = ((l)g.af(l.class)).eiy().eB(f.this.goe, f.this.fs);
+        Cursor localCursor = ((n)h.ae(n.class)).eSe().fc(f.this.iSn, f.this.zP);
         if (localCursor == null)
         {
           Log.e("MicroMsg.ChooseMsgFileUIController", "[loadData] NULL == cursor ");
@@ -83,15 +219,15 @@ public final class f
               f.b(f.this);
               localObject2 = new ca();
               ((ca)localObject2).convertFrom(localCursor);
-              localObject3 = com.tencent.mm.plugin.choosemsgfile.b.d.c.a(f.this.qoB, (ca)localObject2, f.this.goe, paramString1, paramString2);
+              localObject3 = com.tencent.mm.plugin.choosemsgfile.b.d.c.a(f.this.tNk, (ca)localObject2, f.this.iSn, paramString1, paramString2);
               if (localObject3 == null) {
                 break label723;
               }
-              localObject4 = new Date(((eo)localObject2).field_createTime);
-              l2 = com.tencent.mm.ui.gridviewheaders.a.gWr().b((Date)localObject4);
+              localObject4 = new Date(((et)localObject2).field_createTime);
+              l2 = com.tencent.mm.ui.gridviewheaders.a.hWZ().b((Date)localObject4);
               if (l1 != l2)
               {
-                localLinkedList.add(new com.tencent.mm.plugin.choosemsgfile.b.b.c(f.this.qoB, ((eo)localObject2).field_createTime));
+                localLinkedList.add(new com.tencent.mm.plugin.choosemsgfile.b.b.c(f.this.tNk, ((et)localObject2).field_createTime));
                 f.c(f.this);
               }
               localLinkedList.add(localObject3);
@@ -100,16 +236,16 @@ public final class f
             }
             localCursor.close();
             localObject2 = new LinkedList();
-            if (localLinkedList.size() - f.this.qoE != 200) {
+            if (localLinkedList.size() - f.this.tNn != 200) {
               break label614;
             }
             l1 = ((com.tencent.mm.plugin.choosemsgfile.b.b.a)localLinkedList.get(0)).getTimeStamp();
-            com.tencent.mm.ui.gridviewheaders.a.gWr();
-            l2 = com.tencent.mm.ui.gridviewheaders.a.NX(l1);
+            com.tencent.mm.ui.gridviewheaders.a.hWZ();
+            l2 = com.tencent.mm.ui.gridviewheaders.a.Wk(l1);
             Log.i("MicroMsg.ChooseMsgFileUIController", "[loadData] list size:%s start:%s end:%s", new Object[] { Integer.valueOf(localLinkedList.size()), Long.valueOf(l2), Long.valueOf(l1) });
-            localCursor = ((l)g.af(l.class)).eiy().C(f.this.goe, l2, l1);
+            localCursor = ((n)h.ae(n.class)).eSe().B(f.this.iSn, l2, l1);
             Object localObject3 = new Date(l1);
-            l1 = com.tencent.mm.ui.gridviewheaders.a.gWr().b((Date)localObject3);
+            l1 = com.tencent.mm.ui.gridviewheaders.a.hWZ().b((Date)localObject3);
             if (localCursor == null) {
               break label602;
             }
@@ -121,15 +257,15 @@ public final class f
               f.b(f.this);
               localObject4 = new ca();
               ((ca)localObject4).convertFrom(localCursor);
-              com.tencent.mm.plugin.choosemsgfile.b.b.a locala = com.tencent.mm.plugin.choosemsgfile.b.d.c.a(f.this.qoB, (ca)localObject4, f.this.goe, paramString1, paramString2);
+              com.tencent.mm.plugin.choosemsgfile.b.b.a locala = com.tencent.mm.plugin.choosemsgfile.b.d.c.a(f.this.tNk, (ca)localObject4, f.this.iSn, paramString1, paramString2);
               if (locala == null) {
                 continue;
               }
-              Date localDate = new Date(((eo)localObject4).field_createTime);
-              l2 = com.tencent.mm.ui.gridviewheaders.a.gWr().b(localDate);
-              if ((l1 != l2) && (com.tencent.mm.ui.gridviewheaders.a.gWr().b((Date)localObject3) != l2))
+              Date localDate = new Date(((et)localObject4).field_createTime);
+              l2 = com.tencent.mm.ui.gridviewheaders.a.hWZ().b(localDate);
+              if ((l1 != l2) && (com.tencent.mm.ui.gridviewheaders.a.hWZ().b((Date)localObject3) != l2))
               {
-                ((LinkedList)localObject2).add(new com.tencent.mm.plugin.choosemsgfile.b.b.c(f.this.qoB, ((eo)localObject4).field_createTime));
+                ((LinkedList)localObject2).add(new com.tencent.mm.plugin.choosemsgfile.b.b.c(f.this.tNk, ((et)localObject4).field_createTime));
                 f.c(f.this);
                 ((LinkedList)localObject2).add(locala);
                 l1 = l2;
@@ -166,15 +302,15 @@ public final class f
               f.this.mDataList.addAll(((LinkedList)localObject2).size(), localCollection);
               localCollection.clear();
               ((LinkedList)localObject2).clear();
-              f.this.qoE = 0;
+              f.this.tNn = 0;
               Log.i("MicroMsg.ChooseMsgFileUIController", "[loadData] %s", new Object[] { Integer.valueOf(f.this.mDataList.size()) });
               MMHandlerThread.postToMainThread(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(123337);
-                  f.this.qoB.qor = false;
-                  f.this.qon.D(f.5.this.qoy, this.qoI);
+                  f.this.tNk.tMZ = false;
+                  f.this.tMV.H(f.5.this.tNh, this.tNr);
                   AppMethodBeat.o(123337);
                 }
               });
@@ -188,143 +324,15 @@ public final class f
     AppMethodBeat.o(123346);
   }
   
-  public final RecyclerView.a cyF()
+  public final <T extends RecyclerView.LayoutManager> T eW(Context paramContext)
   {
-    AppMethodBeat.i(123344);
-    this.qoB = new c(this.qon, this.mDataList);
-    this.qoB.qop = new g.a()
+    AppMethodBeat.i(243390);
+    if (this.tNm == null)
     {
-      public final void a(boolean paramAnonymousBoolean, final com.tencent.mm.plugin.choosemsgfile.b.b.a paramAnonymousa, final RecyclerView.v paramAnonymousv)
+      this.tNm = new GridLayoutManager(4);
+      this.tNm.ahK = new GridLayoutManager.b()
       {
-        AppMethodBeat.i(123334);
-        if (paramAnonymousa == null)
-        {
-          Log.e("MicroMsg.ChooseMsgFileUIController", "[onCheck] item is null, err");
-          AppMethodBeat.o(123334);
-          return;
-        }
-        Log.i("MicroMsg.ChooseMsgFileUIController", "[onCheck] isChecked:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
-        if (paramAnonymousBoolean)
-        {
-          paramAnonymousa.cyu();
-          f.a(f.this).BZ(paramAnonymousa.qnv.field_msgId);
-          com.tencent.mm.plugin.choosemsgfile.b.a.b.a(paramAnonymousa, new com.tencent.mm.plugin.choosemsgfile.b.a.a()
-          {
-            public final void a(MsgFile paramAnonymous2MsgFile)
-            {
-              AppMethodBeat.i(123328);
-              Log.i("MicroMsg.ChooseMsgFileUIController", "item:%s onDownloadSuccess msgFile:%s", new Object[] { paramAnonymousa, paramAnonymous2MsgFile });
-              f.a(f.this).Ca(paramAnonymousa.qnv.field_msgId);
-              f.a(f.this).a(paramAnonymousa.qnv.field_msgId, paramAnonymous2MsgFile);
-              if (f.a(f.this).cyG()) {
-                MMHandlerThread.postToMainThread(new Runnable()
-                {
-                  public final void run()
-                  {
-                    AppMethodBeat.i(123327);
-                    f.this.qoB.atj.notifyChanged();
-                    AppMethodBeat.o(123327);
-                  }
-                });
-              }
-              f.this.qon.cyJ();
-              paramAnonymousa.cyv();
-              paramAnonymous2MsgFile = (com.tencent.mm.plugin.choosemsgfile.b.b.a)((m)paramAnonymousv).puw.getTag();
-              if (paramAnonymous2MsgFile.equals(paramAnonymousa)) {
-                paramAnonymous2MsgFile.V(paramAnonymousv);
-              }
-              AppMethodBeat.o(123328);
-            }
-            
-            public final void cyk()
-            {
-              AppMethodBeat.i(123329);
-              Log.e("MicroMsg.ChooseMsgFileUIController", "item:%s onDownloadFails", new Object[] { paramAnonymousa });
-              f.a(f.this).Ca(paramAnonymousa.qnv.field_msgId);
-              paramAnonymousa.cyx();
-              com.tencent.mm.plugin.choosemsgfile.b.b.a locala = (com.tencent.mm.plugin.choosemsgfile.b.b.a)((m)paramAnonymousv).puw.getTag();
-              if (locala.equals(paramAnonymousa)) {
-                locala.V(paramAnonymousv);
-              }
-              AppMethodBeat.o(123329);
-            }
-            
-            public final void cyl()
-            {
-              AppMethodBeat.i(123330);
-              Log.i("MicroMsg.ChooseMsgFileUIController", "item:%s onDownloadPause", new Object[] { paramAnonymousa });
-              f.a(f.this).Ca(paramAnonymousa.qnv.field_msgId);
-              paramAnonymousa.cyy();
-              com.tencent.mm.plugin.choosemsgfile.b.b.a locala = (com.tencent.mm.plugin.choosemsgfile.b.b.a)((m)paramAnonymousv).puw.getTag();
-              if (locala.equals(paramAnonymousa)) {
-                locala.V(paramAnonymousv);
-              }
-              AppMethodBeat.o(123330);
-            }
-            
-            public final void cym()
-            {
-              AppMethodBeat.i(123331);
-              Log.e("MicroMsg.ChooseMsgFileUIController", "item:%s onExpireFail", new Object[] { paramAnonymousa });
-              f.a(f.this).Ca(paramAnonymousa.qnv.field_msgId);
-              paramAnonymousa.cyw();
-              com.tencent.mm.plugin.choosemsgfile.b.b.a locala = (com.tencent.mm.plugin.choosemsgfile.b.b.a)((m)paramAnonymousv).puw.getTag();
-              if (locala.equals(paramAnonymousa)) {
-                locala.V(paramAnonymousv);
-              }
-              AppMethodBeat.o(123331);
-            }
-            
-            public final void fk(int paramAnonymous2Int1, int paramAnonymous2Int2)
-            {
-              AppMethodBeat.i(123332);
-              Log.e("MicroMsg.ChooseMsgFileUIController", "item:%s onDownloadProgress offset:%d totalLen:%d", new Object[] { paramAnonymousa, Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
-              paramAnonymousa.fm(paramAnonymous2Int1, paramAnonymous2Int2);
-              com.tencent.mm.plugin.choosemsgfile.b.b.a locala = (com.tencent.mm.plugin.choosemsgfile.b.b.a)((m)paramAnonymousv).puw.getTag();
-              if (locala.equals(paramAnonymousa)) {
-                locala.V(paramAnonymousv);
-              }
-              AppMethodBeat.o(123332);
-            }
-          }, f.this.cyE());
-        }
-        for (;;)
-        {
-          paramAnonymousa.V(paramAnonymousv);
-          AppMethodBeat.o(123334);
-          return;
-          paramAnonymousa.cyy();
-          f.a(f.this).Ca(paramAnonymousa.qnv.field_msgId);
-          f.a(f.this).BX(paramAnonymousa.qnv.field_msgId);
-          if (f.a(f.this).cyG()) {
-            MMHandlerThread.postToMainThread(new Runnable()
-            {
-              public final void run()
-              {
-                AppMethodBeat.i(123333);
-                f.this.qoB.atj.notifyChanged();
-                AppMethodBeat.o(123333);
-              }
-            });
-          }
-          f.this.qon.cyJ();
-        }
-      }
-    };
-    c localc = this.qoB;
-    AppMethodBeat.o(123344);
-    return localc;
-  }
-  
-  public final <T extends RecyclerView.LayoutManager> T eS(Context paramContext)
-  {
-    AppMethodBeat.i(237144);
-    if (this.qoD == null)
-    {
-      this.qoD = new GridLayoutManager(4);
-      this.qoD.apR = new GridLayoutManager.b()
-      {
-        public final int bX(int paramAnonymousInt)
+        public final int cx(int paramAnonymousInt)
         {
           AppMethodBeat.i(123335);
           if (((com.tencent.mm.plugin.choosemsgfile.b.b.a)f.this.mDataList.get(paramAnonymousInt)).getType() == 0)
@@ -337,17 +345,17 @@ public final class f
         }
       };
     }
-    paramContext = this.qoD;
-    AppMethodBeat.o(237144);
+    paramContext = this.tNm;
+    AppMethodBeat.o(243390);
     return paramContext;
   }
   
-  public final void fC(String paramString1, String paramString2)
+  public final void fQ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(123340);
     Log.i("MicroMsg.ChooseMsgFileUIController", "onCreate");
-    this.qoC.alive();
-    c(true, paramString1, paramString2);
+    this.tNl.alive();
+    d(true, paramString1, paramString2);
     AppMethodBeat.o(123340);
   }
   
@@ -355,7 +363,7 @@ public final class f
   {
     AppMethodBeat.i(123343);
     Log.i("MicroMsg.ChooseMsgFileUIController", "onDestroy");
-    this.qoC.dead();
+    this.tNl.dead();
     AppMethodBeat.o(123343);
   }
   
@@ -370,13 +378,13 @@ public final class f
   {
     AppMethodBeat.i(123341);
     Log.i("MicroMsg.ChooseMsgFileUIController", "onResume");
-    this.qoB.atj.notifyChanged();
+    this.tNk.alc.notifyChanged();
     AppMethodBeat.o(123341);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.c.f
  * JD-Core Version:    0.7.0.1
  */

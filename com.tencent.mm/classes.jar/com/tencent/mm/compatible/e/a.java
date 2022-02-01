@@ -8,7 +8,7 @@ import java.util.Locale;
 
 public final class a
 {
-  public static Boolean gKU;
+  public static Boolean jvj;
   
   /* Error */
   public static void a(String paramString, java.util.List<b> paramList, java.util.List<a> paramList1)
@@ -17,7 +17,7 @@ public final class a
     //   0: ldc 18
     //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokestatic 30	com/tencent/mm/vfs/s:YS	(Ljava/lang/String;)Z
+    //   6: invokestatic 30	com/tencent/mm/vfs/u:agG	(Ljava/lang/String;)Z
     //   9: ifne +16 -> 25
     //   12: ldc 32
     //   14: ldc 34
@@ -35,10 +35,10 @@ public final class a
     //   40: astore 4
     //   42: new 58	java/io/BufferedReader
     //   45: dup
-    //   46: new 60	com/tencent/mm/vfs/u
+    //   46: new 60	com/tencent/mm/vfs/x
     //   49: dup
     //   50: aload_0
-    //   51: invokespecial 64	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
+    //   51: invokespecial 64	com/tencent/mm/vfs/x:<init>	(Ljava/lang/String;)V
     //   54: invokespecial 67	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   57: astore_3
     //   58: aload_3
@@ -167,7 +167,7 @@ public final class a
     //   312: new 142	android/util/SparseArray
     //   315: dup
     //   316: invokespecial 143	android/util/SparseArray:<init>	()V
-    //   319: putfield 147	com/tencent/mm/compatible/e/a$b:gKY	Landroid/util/SparseArray;
+    //   319: putfield 147	com/tencent/mm/compatible/e/a$b:jvn	Landroid/util/SparseArray;
     //   322: aload_3
     //   323: astore_0
     //   324: aload 6
@@ -175,7 +175,7 @@ public final class a
     //   328: ldc 149
     //   330: invokeinterface 131 2 0
     //   335: checkcast 52	java/lang/String
-    //   338: putfield 153	com/tencent/mm/compatible/e/a$b:gKZ	Ljava/lang/String;
+    //   338: putfield 153	com/tencent/mm/compatible/e/a$b:jvo	Ljava/lang/String;
     //   341: aload_3
     //   342: astore_0
     //   343: aload 6
@@ -195,7 +195,7 @@ public final class a
     //   379: aload_3
     //   380: astore_0
     //   381: aload 6
-    //   383: getfield 147	com/tencent/mm/compatible/e/a$b:gKY	Landroid/util/SparseArray;
+    //   383: getfield 147	com/tencent/mm/compatible/e/a$b:jvn	Landroid/util/SparseArray;
     //   386: iconst_1
     //   387: aload 5
     //   389: new 110	java/lang/StringBuilder
@@ -211,7 +211,7 @@ public final class a
     //   417: aload_3
     //   418: astore_0
     //   419: aload 6
-    //   421: getfield 147	com/tencent/mm/compatible/e/a$b:gKY	Landroid/util/SparseArray;
+    //   421: getfield 147	com/tencent/mm/compatible/e/a$b:jvn	Landroid/util/SparseArray;
     //   424: iconst_2
     //   425: aload 5
     //   427: new 110	java/lang/StringBuilder
@@ -234,7 +234,7 @@ public final class a
     //   468: invokeinterface 131 2 0
     //   473: checkcast 52	java/lang/String
     //   476: invokestatic 178	com/tencent/mm/sdk/platformtools/Util:safeParseInt	(Ljava/lang/String;)I
-    //   479: putfield 182	com/tencent/mm/compatible/e/a$b:gKX	I
+    //   479: putfield 182	com/tencent/mm/compatible/e/a$b:jvm	I
     //   482: aload_3
     //   483: astore_0
     //   484: aload_1
@@ -274,7 +274,7 @@ public final class a
     //   544: new 142	android/util/SparseArray
     //   547: dup
     //   548: invokespecial 143	android/util/SparseArray:<init>	()V
-    //   551: putfield 191	com/tencent/mm/compatible/e/a$a:gKY	Landroid/util/SparseArray;
+    //   551: putfield 191	com/tencent/mm/compatible/e/a$a:jvn	Landroid/util/SparseArray;
     //   554: aload_3
     //   555: astore_0
     //   556: aload 6
@@ -291,7 +291,7 @@ public final class a
     //   581: invokeinterface 131 2 0
     //   586: checkcast 52	java/lang/String
     //   589: invokestatic 178	com/tencent/mm/sdk/platformtools/Util:safeParseInt	(Ljava/lang/String;)I
-    //   592: putfield 201	com/tencent/mm/compatible/e/a$a:gKV	I
+    //   592: putfield 201	com/tencent/mm/compatible/e/a$a:jvk	I
     //   595: aload_3
     //   596: astore_0
     //   597: aload 6
@@ -300,11 +300,11 @@ public final class a
     //   603: invokeinterface 131 2 0
     //   608: checkcast 52	java/lang/String
     //   611: invokestatic 178	com/tencent/mm/sdk/platformtools/Util:safeParseInt	(Ljava/lang/String;)I
-    //   614: putfield 206	com/tencent/mm/compatible/e/a$a:gKW	I
+    //   614: putfield 206	com/tencent/mm/compatible/e/a$a:jvl	I
     //   617: aload_3
     //   618: astore_0
     //   619: aload 6
-    //   621: getfield 191	com/tencent/mm/compatible/e/a$a:gKY	Landroid/util/SparseArray;
+    //   621: getfield 191	com/tencent/mm/compatible/e/a$a:jvn	Landroid/util/SparseArray;
     //   624: iconst_1
     //   625: aload 5
     //   627: new 110	java/lang/StringBuilder
@@ -320,7 +320,7 @@ public final class a
     //   655: aload_3
     //   656: astore_0
     //   657: aload 6
-    //   659: getfield 191	com/tencent/mm/compatible/e/a$a:gKY	Landroid/util/SparseArray;
+    //   659: getfield 191	com/tencent/mm/compatible/e/a$a:jvn	Landroid/util/SparseArray;
     //   662: iconst_2
     //   663: aload 5
     //   665: new 110	java/lang/StringBuilder
@@ -343,7 +343,7 @@ public final class a
     //   706: invokeinterface 131 2 0
     //   711: checkcast 52	java/lang/String
     //   714: invokestatic 178	com/tencent/mm/sdk/platformtools/Util:safeParseInt	(Ljava/lang/String;)I
-    //   717: putfield 207	com/tencent/mm/compatible/e/a$a:gKX	I
+    //   717: putfield 207	com/tencent/mm/compatible/e/a$a:jvm	I
     //   720: aload_3
     //   721: astore_0
     //   722: aload_2
@@ -524,16 +524,16 @@ public final class a
   
   static final class a
   {
-    int gKV;
-    int gKW;
-    int gKX;
-    SparseArray<String> gKY;
+    int jvk;
+    int jvl;
+    int jvm;
+    SparseArray<String> jvn;
     String pkgName;
     
     public final String toString()
     {
       AppMethodBeat.i(155844);
-      String str = String.format(Locale.US, "pkgname: %s, minCode:%d, maxCode: %d, value: %s, chkExp: %d", new Object[] { this.pkgName, Integer.valueOf(this.gKV), Integer.valueOf(this.gKW), this.gKY, Integer.valueOf(this.gKX) });
+      String str = String.format(Locale.US, "pkgname: %s, minCode:%d, maxCode: %d, value: %s, chkExp: %d", new Object[] { this.pkgName, Integer.valueOf(this.jvk), Integer.valueOf(this.jvl), this.jvn, Integer.valueOf(this.jvm) });
       AppMethodBeat.o(155844);
       return str;
     }
@@ -541,16 +541,16 @@ public final class a
   
   public static final class b
   {
-    public int gKX;
-    SparseArray<String> gKY;
-    public String gKZ;
+    public int jvm;
+    SparseArray<String> jvn;
+    public String jvo;
     public String model;
     public String version;
     
     public final String toString()
     {
       AppMethodBeat.i(155845);
-      String str = String.format(Locale.US, "manufacture: %s, model: %s, version: %s, value: %s, chkExp: %d", new Object[] { this.gKZ, this.model, this.version, this.gKY, Integer.valueOf(this.gKX) });
+      String str = String.format(Locale.US, "manufacture: %s, model: %s, version: %s, value: %s, chkExp: %d", new Object[] { this.jvo, this.model, this.version, this.jvn, Integer.valueOf(this.jvm) });
       AppMethodBeat.o(155845);
       return str;
     }
@@ -558,7 +558,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.compatible.e.a
  * JD-Core Version:    0.7.0.1
  */

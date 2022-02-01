@@ -3,34 +3,42 @@ package com.tencent.mm.live.core.core;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$AudienceMode;", "", "()V", "CDN_MODE", "", "getCDN_MODE", "()I", "TRTC_MODE", "getTRTC_MODE", "plugin-core_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$AnchorStatus;", "", "()V", "userStatusAudioMode", "", "getUserStatusAudioMode", "()I", "userStatusNotTalking", "getUserStatusNotTalking", "userStatusScreenSharing", "getUserStatusScreenSharing", "plugin-core_release"})
 public final class e$a
 {
-  private static final int hxa = 0;
-  private static final int hxb = 1;
-  public static final a hxc;
+  private static final int kjt = 1;
+  private static final int kju = 2;
+  private static final int kjv = 4;
+  public static final a kjw;
   
   static
   {
-    AppMethodBeat.i(196402);
-    hxc = new a();
-    hxb = 1;
-    AppMethodBeat.o(196402);
+    AppMethodBeat.i(199430);
+    kjw = new a();
+    kjt = 1;
+    kju = 2;
+    kjv = 4;
+    AppMethodBeat.o(199430);
   }
   
-  public static int aCe()
+  public static int aJG()
   {
-    return hxa;
+    return kjt;
   }
   
-  public static int aCf()
+  public static int aJH()
   {
-    return hxb;
+    return kju;
+  }
+  
+  public static int aJI()
+  {
+    return kjv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.core.core.e.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,19 @@
 package com.tencent.mm.b;
 
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 
 public final class r
 {
-  public static String a(o paramo, boolean paramBoolean, String paramString)
+  public static String a(q paramq, String paramString)
   {
-    s.nz(aa.z(paramo.mUri), paramString);
-    if (paramBoolean) {
-      s.dy(aa.z(paramo.mUri), true);
-    }
+    u.os(paramq.getPath(), paramString);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.b.r
  * JD-Core Version:    0.7.0.1
  */

@@ -8,17 +8,17 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Xfermode;
-import android.support.v7.widget.AppCompatEditText;
 import android.text.Layout;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.TextView;
+import androidx.appcompat.widget.AppCompatEditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class PhotoEditText
   extends AppCompatEditText
 {
-  private Xfermode Rkg;
+  private Xfermode YLL;
   private int mBgColor;
   private Paint mPaint;
   
@@ -44,7 +44,7 @@ public class PhotoEditText
   {
     AppMethodBeat.i(9367);
     new TextView(getContext()).setTextSize(getTextSize());
-    this.Rkg = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+    this.YLL = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
     AppMethodBeat.o(9367);
   }
   
@@ -104,14 +104,14 @@ public class PhotoEditText
       paramCanvas.drawRoundRect(new RectF(localRect), 12.0F, 12.0F, this.mPaint);
       if (getLayout().getLineWidth(getLineCount() - 1) < getLayout().getLineWidth(getLineCount() - 2))
       {
-        this.mPaint.setXfermode(this.Rkg);
+        this.mPaint.setXfermode(this.YLL);
         RectF localRectF = new RectF();
         localRectF.left = (localRect.left + 36.0F + getLayout().getLineWidth(getLineCount() - 1));
         localRectF.top = (localRect.bottom - getLineHeight());
         localRectF.right = (localRect.right + 18.0F);
         localRectF.bottom = (localRect.bottom + 18.0F);
         paramCanvas.drawRoundRect(localRectF, 12.0F, 12.0F, this.mPaint);
-        this.mPaint.setXfermode(this.Rkg);
+        this.mPaint.setXfermode(this.YLL);
         paramCanvas.drawRect(new Rect((int)(localRectF.left - getTextSize() / 2.0F), (int)(localRectF.bottom - getTextSize() / 2.0F), (int)localRectF.left, (int)localRectF.bottom), this.mPaint);
         paramCanvas.drawRect(new Rect((int)(localRect.right - getTextSize() / 2.0F), (int)(localRect.top + getLayout().getLineBottom(getLineCount() - 2) - getTextSize() / 2.0F), localRect.right, localRect.top + getLayout().getLineBottom(getLineCount() - 2) + 3), this.mPaint);
         this.mPaint.setXfermode(null);
@@ -136,7 +136,7 @@ public class PhotoEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.view.PhotoEditText
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package kotlin.m;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"asSequence", "Lkotlin/sequences/Sequence;", "T", "Ljava/util/Enumeration;", "kotlin-stdlib"}, hxG=1)
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"asSequence", "Lkotlin/sequences/Sequence;", "T", "Ljava/util/Enumeration;", "kotlin-stdlib"}, iBN=1)
 class k
   extends j
 {}

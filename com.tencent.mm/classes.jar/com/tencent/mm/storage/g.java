@@ -12,29 +12,29 @@ import java.util.Iterator;
 import java.util.List;
 
 public final class g
-  extends MAutoStorage<com.tencent.mm.g.c.g>
+  extends MAutoStorage<com.tencent.mm.f.c.g>
 {
   public static final String[] SQL_CREATE;
-  SparseArray<String> NOO;
-  private h iFy;
+  SparseArray<String> Vcx;
+  private h lvy;
   
   static
   {
     AppMethodBeat.i(152799);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(com.tencent.mm.g.c.g.ajs(), "AddContactAntispamTicket") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(com.tencent.mm.f.c.g.aoY(), "AddContactAntispamTicket") };
     AppMethodBeat.o(152799);
   }
   
   public g(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, com.tencent.mm.g.c.g.ajs(), "AddContactAntispamTicket", null);
+    super(paramISQLiteDatabase, com.tencent.mm.f.c.g.aoY(), "AddContactAntispamTicket", null);
     AppMethodBeat.i(152794);
-    this.NOO = new SparseArray();
-    this.iFy = ((h)paramISQLiteDatabase);
+    this.Vcx = new SparseArray();
+    this.lvy = ((h)paramISQLiteDatabase);
     AppMethodBeat.o(152794);
   }
   
-  public final void O(String paramString1, int paramInt, String paramString2)
+  public final void T(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(152795);
     if (Util.isNullOrNil(paramString1))
@@ -47,11 +47,11 @@ public final class g
     locala.field_scene = paramInt;
     locala.field_ticket = paramString2;
     replace(locala);
-    mP(paramString1, paramString2);
+    nG(paramString1, paramString2);
     AppMethodBeat.o(152795);
   }
   
-  public final String biD(String paramString)
+  public final String buW(String paramString)
   {
     AppMethodBeat.i(152798);
     if (Util.isNullOrNil(paramString))
@@ -59,7 +59,7 @@ public final class g
       AppMethodBeat.o(152798);
       return null;
     }
-    Object localObject = (String)this.NOO.get(paramString.hashCode());
+    Object localObject = (String)this.Vcx.get(paramString.hashCode());
     if (!Util.isNullOrNil((String)localObject))
     {
       AppMethodBeat.o(152798);
@@ -69,7 +69,7 @@ public final class g
     ((a)localObject).field_userName = paramString;
     if (get((IAutoDBItem)localObject, new String[] { "userName" }))
     {
-      mP(((a)localObject).field_userName, ((a)localObject).field_ticket);
+      nG(((a)localObject).field_userName, ((a)localObject).field_ticket);
       paramString = ((a)localObject).field_ticket;
       AppMethodBeat.o(152798);
       return paramString;
@@ -78,7 +78,7 @@ public final class g
     return null;
   }
   
-  public final void iB(List<com.tencent.mm.g.c.g> paramList)
+  public final void jt(List<com.tencent.mm.f.c.g> paramList)
   {
     AppMethodBeat.i(152796);
     if (paramList.size() == 0)
@@ -86,16 +86,16 @@ public final class g
       AppMethodBeat.o(152796);
       return;
     }
-    long l = this.iFy.beginTransaction(Thread.currentThread().getId());
+    long l = this.lvy.beginTransaction(Thread.currentThread().getId());
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      replace((com.tencent.mm.g.c.g)paramList.next());
+      replace((com.tencent.mm.f.c.g)paramList.next());
     }
-    this.iFy.endTransaction(l);
+    this.lvy.endTransaction(l);
     AppMethodBeat.o(152796);
   }
   
-  public final void mP(String paramString1, String paramString2)
+  public final void nG(String paramString1, String paramString2)
   {
     AppMethodBeat.i(152797);
     if (Util.isNullOrNil(paramString1))
@@ -103,17 +103,17 @@ public final class g
       AppMethodBeat.o(152797);
       return;
     }
-    this.NOO.put(paramString1.hashCode(), paramString2);
+    this.Vcx.put(paramString1.hashCode(), paramString2);
     AppMethodBeat.o(152797);
   }
   
   public static final class a
-    extends com.tencent.mm.g.c.g
+    extends com.tencent.mm.f.c.g
   {
     public final IAutoDBItem.MAutoDBInfo getDBInfo()
     {
       AppMethodBeat.i(152793);
-      IAutoDBItem.MAutoDBInfo localMAutoDBInfo = com.tencent.mm.g.c.g.ajs();
+      IAutoDBItem.MAutoDBInfo localMAutoDBInfo = com.tencent.mm.f.c.g.aoY();
       AppMethodBeat.o(152793);
       return localMAutoDBInfo;
     }
@@ -121,7 +121,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.storage.g
  * JD-Core Version:    0.7.0.1
  */

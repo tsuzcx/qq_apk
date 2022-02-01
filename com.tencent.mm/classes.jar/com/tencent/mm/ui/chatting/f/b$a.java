@@ -1,35 +1,35 @@
 package com.tencent.mm.ui.chatting.f;
 
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.h;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.h;
 import com.tencent.mm.ui.chatting.a.c.e;
-import com.tencent.mm.ui.chatting.k.c;
+import com.tencent.mm.ui.chatting.l.c;
 
 public abstract interface b$a
   extends c<b.b>
 {
-  public abstract String bmB();
+  public abstract String bwJ();
   
-  public abstract RecyclerView.a bmS(String paramString);
-  
-  public abstract <T extends RecyclerView.LayoutManager> T gRW();
-  
-  public abstract RecyclerView.h gRX();
-  
-  public abstract void gRY();
-  
-  public abstract c.e gRZ();
-  
-  public abstract com.tencent.mm.modelvoiceaddr.ui.b.a gSa();
-  
-  public abstract String gSb();
+  public abstract RecyclerView.a bzt(String paramString);
   
   public abstract int getType();
+  
+  public abstract <T extends RecyclerView.LayoutManager> T hRs();
+  
+  public abstract RecyclerView.h hRt();
+  
+  public abstract void hRu();
+  
+  public abstract c.e hRv();
+  
+  public abstract com.tencent.mm.modelvoiceaddr.ui.b.a hRw();
+  
+  public abstract String hRx();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.f.b.a
  * JD-Core Version:    0.7.0.1
  */

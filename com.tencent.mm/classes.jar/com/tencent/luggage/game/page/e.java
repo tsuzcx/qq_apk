@@ -4,66 +4,74 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.g;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.page.t;
-import com.tencent.mm.plugin.appbrand.page.w;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.ca;
+import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.plugin.appbrand.page.x;
 import com.tencent.mm.sdk.platformtools.Log;
 
 @SuppressLint({"ViewConstructor"})
 public final class e
-  extends t
+  extends u
 {
-  private ac cwK;
+  private ad cvo;
   private String mURL;
   
-  public e(Context paramContext, w paramw)
+  public e(Context paramContext, x paramx)
   {
-    super(paramContext, paramw);
+    super(paramContext, paramx);
     AppMethodBeat.i(130628);
     Log.i("MicroMsg.WAGamePage", "hy: WAGamePage on create");
     AppMethodBeat.o(130628);
   }
   
-  public final View MT()
+  public final View PL()
   {
     AppMethodBeat.i(130629);
-    Object localObject = getContainer().bQT();
-    this.cwK = ((ac)localObject);
-    localObject = ((ac)localObject).getContentView();
+    Object localObject = getContainer().cdJ();
+    this.cvo = ((ad)localObject);
+    localObject = ((ad)localObject).getContentView();
     AppMethodBeat.o(130629);
     return localObject;
   }
   
-  public final void MU()
+  public final void PM()
   {
     AppMethodBeat.i(130633);
-    super.MU();
-    this.cwK.onDestroy();
+    super.PM();
+    this.cvo.onDestroy();
     AppMethodBeat.o(130633);
   }
   
-  public final void MV()
+  public final void PN()
   {
     AppMethodBeat.i(130634);
-    super.MV();
+    super.PN();
     setEnableGesture(false);
-    this.cwK.onForeground();
+    this.cvo.onForeground();
     AppMethodBeat.o(130634);
   }
   
-  public final void MW()
+  public final void PO()
   {
     AppMethodBeat.i(130635);
-    super.MW();
-    this.cwK.onBackground();
+    super.PO();
+    this.cvo.onBackground();
     AppMethodBeat.o(130635);
+  }
+  
+  public final void a(String paramString, ca paramca)
+  {
+    AppMethodBeat.i(247322);
+    this.mURL = paramString;
+    this.cvo.c(paramString, paramca);
+    AppMethodBeat.o(247322);
   }
   
   public final void a(String paramString1, String paramString2, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(130631);
-    this.cwK.c(paramString1, paramString2, 0);
+    this.cvo.ct(paramString1, paramString2);
     AppMethodBeat.o(130631);
   }
   
@@ -71,18 +79,18 @@ public final class e
   {
     AppMethodBeat.i(130632);
     super.cleanup();
-    this.cwK.cleanup();
+    this.cvo.cleanup();
     AppMethodBeat.o(130632);
   }
   
-  public final boolean dw(String paramString)
+  public final boolean dP(String paramString)
   {
     return true;
   }
   
-  public final ac getCurrentPageView()
+  public final ad getCurrentPageView()
   {
-    return this.cwK;
+    return this.cvo;
   }
   
   public final String getCurrentUrl()
@@ -90,25 +98,17 @@ public final class e
     return this.mURL;
   }
   
-  public final ac hL(int paramInt)
+  public final ad iL(int paramInt)
   {
-    AppMethodBeat.i(222887);
-    if (this.cwK.getComponentId() == paramInt)
+    AppMethodBeat.i(247328);
+    if (this.cvo.getComponentId() == paramInt)
     {
-      ac localac = this.cwK;
-      AppMethodBeat.o(222887);
-      return localac;
+      ad localad = this.cvo;
+      AppMethodBeat.o(247328);
+      return localad;
     }
-    AppMethodBeat.o(222887);
+    AppMethodBeat.o(247328);
     return null;
-  }
-  
-  public final void loadUrl(String paramString)
-  {
-    AppMethodBeat.i(130630);
-    this.mURL = paramString;
-    this.cwK.dE(paramString);
-    AppMethodBeat.o(130630);
   }
   
   public final void setCurrentUrl(String paramString)
@@ -118,7 +118,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.game.page.e
  * JD-Core Version:    0.7.0.1
  */

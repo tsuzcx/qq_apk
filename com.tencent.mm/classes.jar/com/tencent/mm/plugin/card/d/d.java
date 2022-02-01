@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.card.a.d;
+import com.tencent.mm.plugin.card.a.e;
+import com.tencent.mm.plugin.card.a.g;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 
@@ -20,28 +23,28 @@ public final class d
     View localView = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(paramInt, null);
     TextView localTextView;
     String str;
-    if (paramInt == 2131493440)
+    if (paramInt == a.e.tjj)
     {
-      localTextView = (TextView)localView.findViewById(2131298215);
+      localTextView = (TextView)localView.findViewById(a.d.tdw);
       str = paramString2;
       if (TextUtils.isEmpty(paramString2)) {
-        str = paramContext.getResources().getString(2131756989);
+        str = paramContext.getResources().getString(a.g.thV);
       }
-      localTextView.setText(paramContext.getResources().getString(2131756962, new Object[] { str }));
+      localTextView.setText(paramContext.getResources().getString(a.g.tjE, new Object[] { str }));
     }
     for (;;)
     {
       paramContext = h.a(paramContext, paramString1, paramString3, localView, paramOnClickListener);
       AppMethodBeat.o(113770);
       return paramContext;
-      if (paramInt == 2131493439)
+      if (paramInt == a.e.tji)
       {
-        localTextView = (TextView)localView.findViewById(2131298215);
+        localTextView = (TextView)localView.findViewById(a.d.tdw);
         str = paramString2;
         if (TextUtils.isEmpty(paramString2)) {
-          str = paramContext.getResources().getString(2131756989);
+          str = paramContext.getResources().getString(a.g.thV);
         }
-        localTextView.setText(paramContext.getResources().getString(2131756961, new Object[] { str }));
+        localTextView.setText(paramContext.getResources().getString(a.g.tjD, new Object[] { str }));
       }
     }
   }
@@ -52,28 +55,28 @@ public final class d
     View localView = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(paramInt, null);
     TextView localTextView;
     String str;
-    if (paramInt == 2131493440)
+    if (paramInt == a.e.tjj)
     {
-      localTextView = (TextView)localView.findViewById(2131298215);
+      localTextView = (TextView)localView.findViewById(a.d.tdw);
       str = paramString2;
       if (TextUtils.isEmpty(paramString2)) {
-        str = paramContext.getResources().getString(2131756989);
+        str = paramContext.getResources().getString(a.g.thV);
       }
-      localTextView.setText(paramContext.getResources().getString(2131756962, new Object[] { str }));
+      localTextView.setText(paramContext.getResources().getString(a.g.tjE, new Object[] { str }));
     }
     for (;;)
     {
       paramContext = h.a(paramContext, paramString1, localView, paramString3, paramString4, paramOnClickListener1, paramOnClickListener2);
       AppMethodBeat.o(113771);
       return paramContext;
-      if (paramInt == 2131493439)
+      if (paramInt == a.e.tji)
       {
-        localTextView = (TextView)localView.findViewById(2131298215);
+        localTextView = (TextView)localView.findViewById(a.d.tdw);
         str = paramString2;
         if (TextUtils.isEmpty(paramString2)) {
-          str = paramContext.getResources().getString(2131756989);
+          str = paramContext.getResources().getString(a.g.thV);
         }
-        localTextView.setText(paramContext.getResources().getString(2131756961, new Object[] { str }));
+        localTextView.setText(paramContext.getResources().getString(a.g.tjD, new Object[] { str }));
       }
     }
   }
@@ -81,13 +84,13 @@ public final class d
   public static void a(MMActivity paramMMActivity, b paramb)
   {
     AppMethodBeat.i(113764);
-    h.a(paramMMActivity, true, paramMMActivity.getString(2131756974), "", paramMMActivity.getString(2131755921), paramMMActivity.getString(2131755761), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    h.a(paramMMActivity, true, paramMMActivity.getString(a.g.tjN), "", paramMMActivity.getString(a.g.app_ok), paramMMActivity.getString(a.g.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(113757);
         paramAnonymousDialogInterface.dismiss();
-        this.qkX.cwc();
+        this.tGT.cJE();
         AppMethodBeat.o(113757);
       }
     }, new DialogInterface.OnClickListener()
@@ -106,17 +109,17 @@ public final class d
   {
     AppMethodBeat.i(113763);
     if (TextUtils.isEmpty(paramString2)) {
-      paramString2 = paramMMActivity.getString(2131755780);
+      paramString2 = paramMMActivity.getString(a.g.app_delete_tips);
     }
     for (;;)
     {
-      h.a(paramMMActivity, true, paramString2, paramMMActivity.getString(2131755998), paramMMActivity.getString(2131755921), paramMMActivity.getString(2131755761), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      h.a(paramMMActivity, true, paramString2, paramMMActivity.getString(a.g.app_tip), paramMMActivity.getString(a.g.app_ok), paramMMActivity.getString(a.g.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(113754);
           paramAnonymousDialogInterface.dismiss();
-          this.qkX.csu();
+          this.tGT.cFV();
           AppMethodBeat.o(113754);
         }
       }, new DialogInterface.OnClickListener()
@@ -138,7 +141,7 @@ public final class d
     AppMethodBeat.i(113767);
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = paramMMActivity.getString(2131757197);
+      str = paramMMActivity.getString(a.g.tmj);
     }
     h.a(paramMMActivity, str, null, false, new d.6(paramBoolean, paramMMActivity));
     AppMethodBeat.o(113767);
@@ -163,8 +166,8 @@ public final class d
       AppMethodBeat.o(113769);
       return;
     }
-    if (paramInt1 == 2131493441) {}
-    for (paramContext = a(paramContext, paramInt1, paramContext.getResources().getString(paramInt2), paramString, paramContext.getResources().getString(2131757064), new d.9());; paramContext = a(paramContext, paramInt1, paramContext.getResources().getString(paramInt2), paramString, paramContext.getResources().getString(2131757080), paramContext.getResources().getString(2131757064), new d.10(paramContext), new d.2()))
+    if (paramInt1 == a.e.tjk) {}
+    for (paramContext = a(paramContext, paramInt1, paramContext.getResources().getString(paramInt2), paramString, paramContext.getResources().getString(a.g.tkB), new d.9());; paramContext = a(paramContext, paramInt1, paramContext.getResources().getString(paramInt2), paramString, paramContext.getResources().getString(a.g.tkJ), paramContext.getResources().getString(a.g.tkB), new d.10(paramContext), new d.2()))
     {
       if (paramContext != null) {
         paramContext.show();
@@ -174,34 +177,42 @@ public final class d
     }
   }
   
-  public static void c(MMActivity paramMMActivity)
-  {
-    AppMethodBeat.i(113768);
-    h.a(paramMMActivity, paramMMActivity.getString(2131757127, new Object[] { paramMMActivity.getString(2131756965) }), paramMMActivity.getString(2131755998), new d.7(paramMMActivity), new d.8());
-    AppMethodBeat.o(113768);
-  }
-  
   public static void c(MMActivity paramMMActivity, String paramString)
   {
     AppMethodBeat.i(113765);
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = paramMMActivity.getString(2131757197);
+      str = paramMMActivity.getString(a.g.tmj);
     }
     a(paramMMActivity, str, false);
     AppMethodBeat.o(113765);
   }
   
+  public static void d(MMActivity paramMMActivity)
+  {
+    AppMethodBeat.i(113768);
+    h.a(paramMMActivity, paramMMActivity.getString(a.g.tln, new Object[] { paramMMActivity.getString(a.g.tjH) }), paramMMActivity.getString(a.g.app_tip), new d.7(paramMMActivity), new d.8());
+    AppMethodBeat.o(113768);
+  }
+  
+  public static class a
+    implements d.b
+  {
+    public void cFV() {}
+    
+    public void cJE() {}
+  }
+  
   public static abstract interface b
   {
-    public abstract void csu();
+    public abstract void cFV();
     
-    public abstract void cwc();
+    public abstract void cJE();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.d
  * JD-Core Version:    0.7.0.1
  */

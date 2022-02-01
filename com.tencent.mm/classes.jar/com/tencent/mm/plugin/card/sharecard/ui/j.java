@@ -15,14 +15,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.card.a.a;
+import com.tencent.mm.plugin.card.a.b;
+import com.tencent.mm.plugin.card.a.c;
+import com.tencent.mm.plugin.card.a.d;
+import com.tencent.mm.plugin.card.a.e;
+import com.tencent.mm.plugin.card.a.g;
 import com.tencent.mm.plugin.card.base.c;
 import com.tencent.mm.plugin.card.d.n;
 import com.tencent.mm.plugin.card.widget.CardTagTextView;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.abz;
-import com.tencent.mm.protocal.protobuf.egi;
-import com.tencent.mm.protocal.protobuf.eol;
-import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.protocal.protobuf.acg;
+import com.tencent.mm.protocal.protobuf.eqk;
+import com.tencent.mm.protocal.protobuf.eyt;
+import com.tencent.mm.protocal.protobuf.vb;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -32,52 +38,48 @@ public final class j
   implements c
 {
   private Context mContext;
-  private BaseAdapter pXY;
-  private long pXZ;
-  private long pYa;
-  private int pYb;
-  private int pYc;
-  private ArrayList<Integer> pYd;
-  private ArrayList<String> pYe;
-  private ArrayList<String> pYf;
-  protected LinkedList<CardTagTextView> pYg;
+  private int shP;
+  private BaseAdapter ttU;
+  private long ttV;
+  private long ttW;
+  private int ttX;
+  private ArrayList<Integer> ttY;
+  private ArrayList<String> ttZ;
+  private ArrayList<String> tua;
+  protected LinkedList<CardTagTextView> tub;
   
   public j(Context paramContext, BaseAdapter paramBaseAdapter)
   {
     AppMethodBeat.i(113141);
-    this.pXZ = 0L;
-    this.pYa = 0L;
-    this.pYd = new ArrayList();
-    this.pYe = new ArrayList();
-    this.pYf = new ArrayList();
-    this.pYg = new LinkedList();
+    this.ttV = 0L;
+    this.ttW = 0L;
+    this.ttY = new ArrayList();
+    this.ttZ = new ArrayList();
+    this.tua = new ArrayList();
+    this.tub = new LinkedList();
     this.mContext = paramContext;
-    this.pXY = paramBaseAdapter;
-    this.pYb = this.mContext.getResources().getDimensionPixelSize(2131165537);
-    this.pYc = this.mContext.getResources().getDimensionPixelSize(2131165518);
-    this.pYd.clear();
-    this.pYe.clear();
-    this.pYf.clear();
+    this.ttU = paramBaseAdapter;
+    this.shP = this.mContext.getResources().getDimensionPixelSize(a.b.OneDPPadding);
+    this.ttX = this.mContext.getResources().getDimensionPixelSize(a.b.MiddlePadding);
+    this.ttY.clear();
+    this.ttZ.clear();
+    this.tua.clear();
     AppMethodBeat.o(113141);
   }
   
-  private CardTagTextView cuY()
+  private CardTagTextView cIA()
   {
     AppMethodBeat.i(113144);
-    if (this.pYg.size() == 0)
+    if (this.tub.size() == 0)
     {
       localCardTagTextView = new CardTagTextView(this.mContext);
       AppMethodBeat.o(113144);
       return localCardTagTextView;
     }
-    CardTagTextView localCardTagTextView = (CardTagTextView)this.pYg.removeFirst();
+    CardTagTextView localCardTagTextView = (CardTagTextView)this.tub.removeFirst();
     AppMethodBeat.o(113144);
     return localCardTagTextView;
   }
-  
-  public final void Y(View paramView, int paramInt) {}
-  
-  public final void Z(View paramView, int paramInt) {}
   
   public final View a(int paramInt, View paramView, com.tencent.mm.plugin.card.base.b paramb)
   {
@@ -89,245 +91,249 @@ public final class j
     int i;
     if (paramView == null)
     {
-      paramView = View.inflate(this.mContext, 2131493432, null);
+      paramView = View.inflate(this.mContext, a.e.tje, null);
       locala = new a();
-      locala.pYh = ((LinearLayout)paramView.findViewById(2131298222));
-      locala.pYi = ((TextView)paramView.findViewById(2131298150));
-      locala.pYj = ((TextView)paramView.findViewById(2131298154));
-      locala.pYk = ((RelativeLayout)paramView.findViewById(2131298086));
-      locala.pYl = ((ImageView)paramView.findViewById(2131298144));
-      locala.pYm = ((TextView)paramView.findViewById(2131298056));
-      locala.pYn = ((TextView)paramView.findViewById(2131298179));
-      locala.pYr = paramView.findViewById(2131298156);
-      locala.pYo = ((TextView)paramView.findViewById(2131308746));
-      locala.pYp = ((TextView)paramView.findViewById(2131298036));
-      locala.pYq = ((TextView)paramView.findViewById(2131298180));
-      locala.pYs = ((TextView)paramView.findViewById(2131298089));
-      locala.pYo.setEllipsize(TextUtils.TruncateAt.MIDDLE);
+      locala.tuc = ((LinearLayout)paramView.findViewById(a.d.tdB));
+      locala.tud = ((TextView)paramView.findViewById(a.d.tcA));
+      locala.tue = ((TextView)paramView.findViewById(a.d.tcB));
+      locala.tuf = ((RelativeLayout)paramView.findViewById(a.d.tbI));
+      locala.tug = ((ImageView)paramView.findViewById(a.d.tcw));
+      locala.tuh = ((TextView)paramView.findViewById(a.d.duY));
+      locala.tui = ((TextView)paramView.findViewById(a.d.tcV));
+      locala.tum = paramView.findViewById(a.d.tcD);
+      locala.tuj = ((TextView)paramView.findViewById(a.d.subtitle));
+      locala.tuk = ((TextView)paramView.findViewById(a.d.tbg));
+      locala.tul = ((TextView)paramView.findViewById(a.d.tcW));
+      locala.tun = ((TextView)paramView.findViewById(a.d.tbK));
+      locala.tuj.setEllipsize(TextUtils.TruncateAt.MIDDLE);
       paramView.setTag(locala);
-      localObject1 = (com.tencent.mm.plugin.card.base.b)this.pXY.getItem(paramInt);
-      j = ((com.tencent.mm.plugin.card.base.b)localObject1).csZ();
-      if (!com.tencent.mm.plugin.card.sharecard.a.b.Ej(((com.tencent.mm.plugin.card.base.b)localObject1).csZ())) {
-        break label1794;
+      localObject1 = (com.tencent.mm.plugin.card.base.b)this.ttU.getItem(paramInt);
+      j = ((com.tencent.mm.plugin.card.base.b)localObject1).cGB();
+      if (!com.tencent.mm.plugin.card.sharecard.a.b.HK(((com.tencent.mm.plugin.card.base.b)localObject1).cGB())) {
+        break label1807;
       }
       if (paramInt != 0) {
-        break label830;
+        break label843;
       }
-      if (TextUtils.isEmpty(((com.tencent.mm.plugin.card.base.b)localObject1).Ee(j))) {
-        break label1794;
+      if (TextUtils.isEmpty(((com.tencent.mm.plugin.card.base.b)localObject1).HF(j))) {
+        break label1807;
       }
       i = 1;
     }
     for (;;)
     {
-      label274:
+      label287:
       if (i != 0)
       {
-        locala.pYi.setVisibility(0);
-        locala.pYi.setText(((com.tencent.mm.plugin.card.base.b)localObject1).Ee(j));
-        if (!TextUtils.isEmpty(((com.tencent.mm.plugin.card.base.b)localObject1).csY()))
+        locala.tud.setVisibility(0);
+        locala.tud.setText(((com.tencent.mm.plugin.card.base.b)localObject1).HF(j));
+        if (!TextUtils.isEmpty(((com.tencent.mm.plugin.card.base.b)localObject1).cGA()))
         {
-          locala.pYj.setVisibility(0);
-          locala.pYj.setText(((com.tencent.mm.plugin.card.base.b)localObject1).csY());
-          label342:
-          if (!paramb.csC()) {
-            break label1633;
+          locala.tue.setVisibility(0);
+          locala.tue.setText(((com.tencent.mm.plugin.card.base.b)localObject1).cGA());
+          label355:
+          if (!paramb.cGd()) {
+            break label1646;
           }
-          locala.pYl.setVisibility(0);
-          locala.pYm.setVisibility(0);
-          locala.pYh.setVisibility(0);
-          locala.pYn.setVisibility(0);
-          locala.pYs.setVisibility(0);
-          locala.pYr.setVisibility(0);
-          locala.pYo.setVisibility(0);
-          locala.pYp.setVisibility(0);
-          locala.pYq.setVisibility(8);
-          locala.pYm.setText(paramb.csQ().gTG);
-          if (!paramb.csz()) {
-            break label1018;
+          locala.tug.setVisibility(0);
+          locala.tuh.setVisibility(0);
+          locala.tuc.setVisibility(0);
+          locala.tui.setVisibility(0);
+          locala.tun.setVisibility(0);
+          locala.tum.setVisibility(0);
+          locala.tuj.setVisibility(0);
+          locala.tuk.setVisibility(0);
+          locala.tul.setVisibility(8);
+          locala.tuh.setText(paramb.cGs().jEi);
+          if (!paramb.cGa()) {
+            break label1031;
           }
-          if ((paramb.csQ().LeC == null) || (paramb.csQ().LeC.size() != 1)) {
-            break label906;
+          if ((paramb.cGs().SfP == null) || (paramb.cGs().SfP.size() != 1)) {
+            break label919;
           }
-          locala.pYn.setText(((abz)paramb.csQ().LeC.get(0)).title);
-          i = this.mContext.getResources().getDimensionPixelSize(2131166011);
-          n.a(locala.pYl, paramb.csQ().iwv, i, 2131234198, true);
-          locala.pYm.setTextColor(this.mContext.getResources().getColor(2131100116));
-          localObject1 = com.tencent.mm.plugin.card.sharecard.a.b.ajr(paramb.csV());
+          locala.tui.setText(((acg)paramb.cGs().SfP.get(0)).title);
+          i = this.mContext.getResources().getDimensionPixelSize(a.b.sZN);
+          n.a(locala.tug, paramb.cGs().llI, i, a.c.my_card_package_defaultlogo, true);
+          locala.tuh.setTextColor(this.mContext.getResources().getColor(a.a.sZt));
+          localObject1 = com.tencent.mm.plugin.card.sharecard.a.b.are(paramb.cGx());
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label1038;
+            break label1051;
           }
-          locala.pYp.setText((CharSequence)localObject1);
-          label602:
-          localObject1 = com.tencent.mm.plugin.card.sharecard.a.b.NH(paramb.csV());
-          boolean bool = com.tencent.mm.plugin.card.sharecard.a.b.Ej(paramb.csZ());
+          locala.tuk.setText((CharSequence)localObject1);
+          label615:
+          localObject1 = com.tencent.mm.plugin.card.sharecard.a.b.Vd(paramb.cGx());
+          boolean bool = com.tencent.mm.plugin.card.sharecard.a.b.HK(paramb.cGB());
           if ((TextUtils.isEmpty((CharSequence)localObject1)) || (!bool)) {
-            break label1052;
+            break label1065;
           }
-          locala.pYo.setText(com.tencent.mm.pluginsdk.ui.span.l.e(this.mContext, (CharSequence)localObject1, this.mContext.getResources().getDimensionPixelOffset(2131165592)));
-          label667:
-          i = com.tencent.mm.plugin.card.sharecard.a.b.ajs(paramb.csV());
+          locala.tuj.setText(com.tencent.mm.pluginsdk.ui.span.l.d(this.mContext, (CharSequence)localObject1, this.mContext.getResources().getDimensionPixelOffset(a.b.SmallerTextSize)));
+          label680:
+          i = com.tencent.mm.plugin.card.sharecard.a.b.arf(paramb.cGx());
           if ((i <= 1) || (!bool)) {
-            break label1168;
+            break label1181;
           }
-          locala.pYs.setText("X".concat(String.valueOf(i)));
-          locala.pYs.setVisibility(0);
+          locala.tun.setText("X".concat(String.valueOf(i)));
+          locala.tun.setVisibility(0);
         }
       }
-      label514:
-      label717:
-      label1018:
+      label527:
+      label730:
       Object localObject2;
       for (;;)
       {
-        if (((paramb.csQ().LeT != null) && (!Util.isNullOrNil(paramb.csQ().LeT.Nmk))) || (com.tencent.mm.plugin.card.sharecard.a.b.aju(paramb.csV())))
+        if (((paramb.cGs().Sgh != null) && (!Util.isNullOrNil(paramb.cGs().Sgh.UyW))) || (com.tencent.mm.plugin.card.sharecard.a.b.arh(paramb.cGx())))
         {
-          locala.pYh.setVisibility(0);
+          locala.tuc.setVisibility(0);
           i = 0;
           for (;;)
           {
-            if (i < locala.pYh.getChildCount())
+            if (i < locala.tuc.getChildCount())
             {
-              localObject1 = (CardTagTextView)locala.pYh.getChildAt(i);
-              this.pYg.add(localObject1);
+              localObject1 = (CardTagTextView)locala.tuc.getChildAt(i);
+              this.tub.add(localObject1);
               i += 1;
               continue;
               locala = (a)paramView.getTag();
               break;
-              label830:
-              if (j == ((com.tencent.mm.plugin.card.base.b)this.pXY.getItem(paramInt - 1)).csZ()) {
-                break label1794;
+              label843:
+              if (j == ((com.tencent.mm.plugin.card.base.b)this.ttU.getItem(paramInt - 1)).cGB()) {
+                break label1807;
               }
               i = 1;
-              break label274;
-              locala.pYj.setVisibility(8);
-              break label342;
-              locala.pYi.setVisibility(8);
-              locala.pYj.setVisibility(8);
-              locala.pYi.setText("");
-              break label342;
-              label906:
-              if ((paramb.csQ().LeC == null) || (paramb.csQ().LeC.size() != 2)) {
-                break label514;
+              break label287;
+              locala.tue.setVisibility(8);
+              break label355;
+              locala.tud.setVisibility(8);
+              locala.tue.setVisibility(8);
+              locala.tud.setText("");
+              break label355;
+              label919:
+              if ((paramb.cGs().SfP == null) || (paramb.cGs().SfP.size() != 2)) {
+                break label527;
               }
               localObject1 = new StringBuilder();
-              ((StringBuilder)localObject1).append(((abz)paramb.csQ().LeC.get(0)).title);
+              ((StringBuilder)localObject1).append(((acg)paramb.cGs().SfP.get(0)).title);
               ((StringBuilder)localObject1).append("-");
-              ((StringBuilder)localObject1).append(((abz)paramb.csQ().LeC.get(1)).title);
-              locala.pYn.setText(((StringBuilder)localObject1).toString());
-              break label514;
-              locala.pYn.setText(paramb.csQ().title);
-              break label514;
-              label1038:
-              locala.pYp.setText("");
-              break label602;
-              label1052:
-              if (!TextUtils.isEmpty(paramb.csW()))
+              ((StringBuilder)localObject1).append(((acg)paramb.cGs().SfP.get(1)).title);
+              locala.tui.setText(((StringBuilder)localObject1).toString());
+              break label527;
+              label1031:
+              locala.tui.setText(paramb.cGs().title);
+              break label527;
+              label1051:
+              locala.tuk.setText("");
+              break label615;
+              label1065:
+              if (!TextUtils.isEmpty(paramb.cGy()))
               {
-                localObject1 = com.tencent.mm.plugin.card.d.l.akg(paramb.csW());
+                localObject1 = com.tencent.mm.plugin.card.d.l.arT(paramb.cGy());
                 if (!TextUtils.isEmpty((CharSequence)localObject1))
                 {
-                  localObject1 = this.mContext.getResources().getString(2131757148, new Object[] { localObject1 });
-                  locala.pYo.setText(com.tencent.mm.pluginsdk.ui.span.l.e(this.mContext, (CharSequence)localObject1, this.mContext.getResources().getDimensionPixelOffset(2131165592)));
-                  break label667;
+                  localObject1 = this.mContext.getResources().getString(a.g.tlz, new Object[] { localObject1 });
+                  locala.tuj.setText(com.tencent.mm.pluginsdk.ui.span.l.d(this.mContext, (CharSequence)localObject1, this.mContext.getResources().getDimensionPixelOffset(a.b.SmallerTextSize)));
+                  break label680;
                 }
-                locala.pYo.setText("");
-                break label667;
+                locala.tuj.setText("");
+                break label680;
               }
-              locala.pYo.setText("");
-              break label667;
-              label1168:
-              locala.pYs.setVisibility(8);
-              break label717;
+              locala.tuj.setText("");
+              break label680;
+              label1181:
+              locala.tun.setVisibility(8);
+              break label730;
             }
           }
-          locala.pYh.removeAllViews();
-          if (com.tencent.mm.plugin.card.sharecard.a.b.aju(paramb.csV()))
+          locala.tuc.removeAllViews();
+          if (com.tencent.mm.plugin.card.sharecard.a.b.arh(paramb.cGx()))
           {
-            localObject1 = cuY();
-            ((CardTagTextView)localObject1).setPadding(this.pYc, this.pYb, this.pYc, this.pYb);
-            ((CardTagTextView)localObject1).setTextColor(this.mContext.getResources().getColor(2131100994));
-            ((CardTagTextView)localObject1).setText(this.mContext.getString(2131757159));
+            localObject1 = cIA();
+            ((CardTagTextView)localObject1).setPadding(this.ttX, this.shP, this.ttX, this.shP);
+            ((CardTagTextView)localObject1).setTextColor(this.mContext.getResources().getColor(a.a.red));
+            ((CardTagTextView)localObject1).setText(this.mContext.getString(a.g.tlH));
             ((CardTagTextView)localObject1).setTextSize(12.0F);
             localObject2 = new LinearLayout.LayoutParams(-2, -2);
-            ((LinearLayout.LayoutParams)localObject2).rightMargin = this.mContext.getResources().getDimensionPixelOffset(2131165508);
-            locala.pYh.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+            ((LinearLayout.LayoutParams)localObject2).rightMargin = this.mContext.getResources().getDimensionPixelOffset(a.b.LittlePadding);
+            locala.tuc.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
           }
-          if ((paramb.csQ().LeT == null) || (Util.isNullOrNil(paramb.csQ().LeT.Nmk))) {
-            break label1462;
+          if ((paramb.cGs().Sgh == null) || (Util.isNullOrNil(paramb.cGs().Sgh.UyW))) {
+            break label1475;
           }
-          localObject1 = paramb.csQ().LeT.Nmk.iterator();
+          localObject1 = paramb.cGs().Sgh.UyW.iterator();
         }
       }
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (egi)((Iterator)localObject1).next();
-        CardTagTextView localCardTagTextView = cuY();
-        localCardTagTextView.setPadding(this.pYc, this.pYb, this.pYc, this.pYb);
-        localCardTagTextView.setTextColor(com.tencent.mm.plugin.card.d.l.ake(((egi)localObject2).ixw));
-        localCardTagTextView.setText(((egi)localObject2).tag);
+        localObject2 = (eqk)((Iterator)localObject1).next();
+        CardTagTextView localCardTagTextView = cIA();
+        localCardTagTextView.setPadding(this.ttX, this.shP, this.ttX, this.shP);
+        localCardTagTextView.setTextColor(com.tencent.mm.plugin.card.d.l.arR(((eqk)localObject2).lmL));
+        localCardTagTextView.setText(((eqk)localObject2).tag);
         localCardTagTextView.setTextSize(12.0F);
-        locala.pYh.addView(localCardTagTextView);
+        locala.tuc.addView(localCardTagTextView);
         continue;
-        locala.pYh.setVisibility(8);
+        locala.tuc.setVisibility(8);
       }
-      label1462:
-      if ((paramInt == this.pXY.getCount() - 1) && (locala.pYk != null))
+      label1475:
+      if ((paramInt == this.ttU.getCount() - 1) && (locala.tuf != null))
       {
-        localObject1 = (LinearLayout.LayoutParams)locala.pYk.getLayoutParams();
-        if (((LinearLayout.LayoutParams)localObject1).bottomMargin != this.mContext.getResources().getDimensionPixelOffset(2131165508))
+        localObject1 = (LinearLayout.LayoutParams)locala.tuf.getLayoutParams();
+        if (((LinearLayout.LayoutParams)localObject1).bottomMargin != this.mContext.getResources().getDimensionPixelOffset(a.b.LittlePadding))
         {
-          ((LinearLayout.LayoutParams)localObject1).bottomMargin = this.mContext.getResources().getDimensionPixelOffset(2131165508);
-          locala.pYk.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          ((LinearLayout.LayoutParams)localObject1).bottomMargin = this.mContext.getResources().getDimensionPixelOffset(a.b.LittlePadding);
+          locala.tuf.setLayoutParams((ViewGroup.LayoutParams)localObject1);
         }
       }
       for (;;)
       {
-        this.pXZ = (System.currentTimeMillis() - l + this.pXZ);
-        this.pYa += 1L;
-        if (!this.pYe.contains(paramb.csU()))
+        this.ttV = (System.currentTimeMillis() - l + this.ttV);
+        this.ttW += 1L;
+        if (!this.ttZ.contains(paramb.cGw()))
         {
-          this.pYe.add(paramb.csU());
-          this.pYf.add(paramb.csV());
-          this.pYd.add(Integer.valueOf(paramInt));
+          this.ttZ.add(paramb.cGw());
+          this.tua.add(paramb.cGx());
+          this.ttY.add(Integer.valueOf(paramInt));
         }
         AppMethodBeat.o(113143);
         return paramView;
-        label1633:
-        locala.pYl.setVisibility(8);
-        locala.pYm.setVisibility(8);
-        locala.pYh.setVisibility(8);
-        locala.pYn.setVisibility(8);
-        locala.pYs.setVisibility(8);
-        locala.pYr.setVisibility(8);
-        locala.pYo.setVisibility(8);
-        locala.pYp.setVisibility(8);
-        locala.pYq.setVisibility(0);
-        locala.pYq.setText(this.mContext.getResources().getString(2131757117));
+        label1646:
+        locala.tug.setVisibility(8);
+        locala.tuh.setVisibility(8);
+        locala.tuc.setVisibility(8);
+        locala.tui.setVisibility(8);
+        locala.tun.setVisibility(8);
+        locala.tum.setVisibility(8);
+        locala.tuj.setVisibility(8);
+        locala.tuk.setVisibility(8);
+        locala.tul.setVisibility(0);
+        locala.tul.setText(this.mContext.getResources().getString(a.g.card_not_support_card_type));
         break;
-        if (locala.pYk != null)
+        if (locala.tuf != null)
         {
-          localObject1 = (LinearLayout.LayoutParams)locala.pYk.getLayoutParams();
+          localObject1 = (LinearLayout.LayoutParams)locala.tuf.getLayoutParams();
           if (((LinearLayout.LayoutParams)localObject1).bottomMargin != 0)
           {
             ((LinearLayout.LayoutParams)localObject1).bottomMargin = 0;
-            locala.pYk.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+            locala.tuf.setLayoutParams((ViewGroup.LayoutParams)localObject1);
           }
         }
       }
-      label1794:
+      label1807:
       i = 0;
     }
   }
   
   public final void a(View paramView, int paramInt, View.OnClickListener paramOnClickListener) {}
   
+  public final void aa(View paramView, int paramInt) {}
+  
+  public final void ab(View paramView, int paramInt) {}
+  
   public final void release()
   {
     AppMethodBeat.i(113142);
     this.mContext = null;
-    this.pXY = null;
-    if (this.pYa > 0L)
+    this.ttU = null;
+    if (this.ttW > 0L)
     {
       ArrayList localArrayList = new ArrayList();
       IDKey localIDKey1 = new IDKey();
@@ -337,44 +343,44 @@ public final class j
       IDKey localIDKey2 = new IDKey();
       localIDKey2.SetID(281);
       localIDKey2.SetKey(6);
-      localIDKey2.SetValue((int)(this.pXZ / this.pYa));
+      localIDKey2.SetValue((int)(this.ttV / this.ttW));
       localArrayList.add(localIDKey1);
       localArrayList.add(localIDKey2);
-      h.CyF.b(localArrayList, true);
+      h.IzE.b(localArrayList, true);
     }
-    if ((this.pYd.size() == this.pYe.size()) && (this.pYe.size() == this.pYf.size()) && (this.pYd.size() > 0))
+    if ((this.ttY.size() == this.ttZ.size()) && (this.ttZ.size() == this.tua.size()) && (this.ttY.size() > 0))
     {
       long l = System.currentTimeMillis();
       int i = 0;
-      while (i < this.pYd.size())
+      while (i < this.ttY.size())
       {
-        h.CyF.a(13220, new Object[] { this.pYf.get(i), this.pYe.get(i), this.pYd.get(i), Long.valueOf(l) });
+        h.IzE.a(13220, new Object[] { this.tua.get(i), this.ttZ.get(i), this.ttY.get(i), Long.valueOf(l) });
         i += 1;
       }
     }
-    this.pYd.clear();
-    this.pYe.clear();
-    this.pYf.clear();
-    if (this.pYg != null) {
-      this.pYg.clear();
+    this.ttY.clear();
+    this.ttZ.clear();
+    this.tua.clear();
+    if (this.tub != null) {
+      this.tub.clear();
     }
     AppMethodBeat.o(113142);
   }
   
   public final class a
   {
-    public LinearLayout pYh;
-    public TextView pYi;
-    public TextView pYj;
-    public RelativeLayout pYk;
-    public ImageView pYl;
-    public TextView pYm;
-    public TextView pYn;
-    public TextView pYo;
-    public TextView pYp;
-    public TextView pYq;
-    public View pYr;
-    public TextView pYs;
+    public LinearLayout tuc;
+    public TextView tud;
+    public TextView tue;
+    public RelativeLayout tuf;
+    public ImageView tug;
+    public TextView tuh;
+    public TextView tui;
+    public TextView tuj;
+    public TextView tuk;
+    public TextView tul;
+    public View tum;
+    public TextView tun;
     
     public a() {}
   }

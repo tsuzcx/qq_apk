@@ -1,13 +1,13 @@
 package com.tencent.liteav.beauty.b.a;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.c.h;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.j;
 import com.tencent.liteav.beauty.NativeLoad;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class d
-  extends h
+  extends j
 {
   private int r = -1;
   private int s = -1;
@@ -48,7 +48,6 @@ public class d
   public boolean a()
   {
     AppMethodBeat.i(14997);
-    NativeLoad.getInstance();
     this.a = NativeLoad.nativeLoadGLProgram(13);
     if ((this.a != 0) && (b())) {}
     for (this.g = true;; this.g = false)
@@ -64,22 +63,22 @@ public class d
   {
     AppMethodBeat.i(14998);
     super.b();
-    q();
+    r();
     AppMethodBeat.o(14998);
     return true;
   }
   
-  public void q()
+  public void r()
   {
-    AppMethodBeat.i(14999);
-    this.r = GLES20.glGetUniformLocation(p(), "texelWidthOffset");
-    this.s = GLES20.glGetUniformLocation(p(), "texelHeightOffset");
-    AppMethodBeat.o(14999);
+    AppMethodBeat.i(233307);
+    this.r = GLES20.glGetUniformLocation(q(), "texelWidthOffset");
+    this.s = GLES20.glGetUniformLocation(q(), "texelHeightOffset");
+    AppMethodBeat.o(233307);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.a.d
  * JD-Core Version:    0.7.0.1
  */

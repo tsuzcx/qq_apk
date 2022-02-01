@@ -9,7 +9,7 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -27,11 +27,11 @@ public class d
   public final void b(final b<g>.a paramb)
   {
     AppMethodBeat.i(175740);
-    String str1 = paramb.ctb.csi.optString("card_list");
-    String str2 = ((g)paramb.cta).mParams.getString("srcUsername");
-    String str3 = ((g)paramb.cta).getUrl();
-    String str4 = paramb.ctb.csi.optString("consumedCardId");
-    ((g)paramb.cta).mParams.getString("KTemplateId");
+    String str1 = paramb.crh.cqn.optString("card_list");
+    String str2 = ((g)paramb.crg).mParams.getString("srcUsername");
+    String str3 = ((g)paramb.crg).getUrl();
+    String str4 = paramb.crh.cqn.optString("consumedCardId");
+    ((g)paramb.crg).mParams.getString("KTemplateId");
     Log.i("MicroMsg.JsApiBatchAddCard", "doBatchAddCard consumedCardId %s", new Object[] { str4 });
     Intent localIntent = new Intent();
     localIntent.putExtra("key_in_card_list", str1);
@@ -39,7 +39,7 @@ public class d
     localIntent.putExtra("src_username", str2);
     localIntent.putExtra("js_url", str3);
     localIntent.putExtra("key_consumed_card_id", str4);
-    ((MMActivity)((g)paramb.cta).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
+    ((MMActivity)((g)paramb.crg).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
     {
       public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
@@ -53,7 +53,7 @@ public class d
           }
           if (paramAnonymousInt2 == -1)
           {
-            paramb.e("", localHashMap);
+            paramb.d("", localHashMap);
             AppMethodBeat.o(175739);
             return;
           }
@@ -66,21 +66,21 @@ public class d
         {
           if (paramAnonymousInt1 == 2)
           {
-            paramb.e("fail", localHashMap);
+            paramb.d("fail", localHashMap);
             AppMethodBeat.o(175739);
             return;
           }
-          paramb.e("cancel", localHashMap);
+          paramb.d("cancel", localHashMap);
           AppMethodBeat.o(175739);
           return;
         }
       }
     });
-    c.a(((g)paramb.cta).mContext, "card", ".ui.CardAddEntranceUI", localIntent, hashCode() & 0xFFFF, false);
+    c.a(((g)paramb.crg).mContext, "card", ".ui.CardAddEntranceUI", localIntent, hashCode() & 0xFFFF, false);
     AppMethodBeat.o(175740);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

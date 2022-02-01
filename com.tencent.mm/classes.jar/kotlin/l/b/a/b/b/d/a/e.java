@@ -8,8 +8,8 @@ public final class e
   public static final Class<?> a(ClassLoader paramClassLoader, String paramString)
   {
     AppMethodBeat.i(57363);
-    p.h(paramClassLoader, "$this$tryLoadClass");
-    p.h(paramString, "fqName");
+    p.k(paramClassLoader, "$this$tryLoadClass");
+    p.k(paramString, "fqName");
     try
     {
       paramClassLoader = Class.forName(paramString, false, paramClassLoader);

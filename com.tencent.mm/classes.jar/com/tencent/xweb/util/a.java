@@ -13,7 +13,7 @@ public final class a
   public static String a(String paramString, SecretKey paramSecretKey)
   {
     AppMethodBeat.i(156985);
-    paramString = a(bsA(paramString), paramSecretKey);
+    paramString = a(bFz(paramString), paramSecretKey);
     if (paramString == null)
     {
       AppMethodBeat.o(156985);
@@ -44,7 +44,24 @@ public final class a
     return null;
   }
   
-  public static byte[] bsA(String paramString)
+  public static SecretKey bFy(String paramString)
+  {
+    AppMethodBeat.i(156983);
+    try
+    {
+      paramString = new SecretKeySpec(bFz(paramString), "AES");
+      AppMethodBeat.o(156983);
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      Log.e(TAG, "makekey exp:" + paramString.getMessage());
+      AppMethodBeat.o(156983);
+    }
+    return null;
+  }
+  
+  public static byte[] bFz(String paramString)
   {
     AppMethodBeat.i(156986);
     int j = paramString.length();
@@ -58,27 +75,10 @@ public final class a
     AppMethodBeat.o(156986);
     return arrayOfByte;
   }
-  
-  public static SecretKey bsz(String paramString)
-  {
-    AppMethodBeat.i(156983);
-    try
-    {
-      paramString = new SecretKeySpec(bsA(paramString), "AES");
-      AppMethodBeat.o(156983);
-      return paramString;
-    }
-    catch (Throwable paramString)
-    {
-      Log.e(TAG, "makekey exp:" + paramString.getMessage());
-      AppMethodBeat.o(156983);
-    }
-    return null;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.util.a
  * JD-Core Version:    0.7.0.1
  */

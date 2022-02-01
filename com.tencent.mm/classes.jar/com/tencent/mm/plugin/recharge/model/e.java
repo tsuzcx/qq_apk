@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.recharge.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bse;
-import com.tencent.mm.protocal.protobuf.bsf;
+import com.tencent.mm.protocal.protobuf.caa;
+import com.tencent.mm.protocal.protobuf.cab;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
@@ -22,30 +22,30 @@ public final class e
   extends q
   implements m
 {
-  public ArrayList<MallRechargeProduct> BDk;
-  public String BDl;
-  public String BDm;
-  public String BDn;
-  public String BDo;
+  public ArrayList<MallRechargeProduct> Hzo;
+  public String Hzp;
+  public String Hzq;
+  public String Hzr;
+  public String Hzs;
   private i callback;
-  public String kHR;
+  public String nBK;
   private d rr;
   
   public e(String paramString)
   {
     AppMethodBeat.i(67107);
-    this.BDk = null;
+    this.Hzo = null;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bse();
-    ((d.a)localObject).iLO = new bsf();
+    ((d.a)localObject).lBU = new caa();
+    ((d.a)localObject).lBV = new cab();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getpayfunctionproductlist";
     ((d.a)localObject).funcId = 496;
-    ((d.a)localObject).iLP = 228;
+    ((d.a)localObject).lBW = 228;
     ((d.a)localObject).respCmdId = 1000000228;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (bse)this.rr.iLK.iLR;
-    this.kHR = paramString;
-    ((bse)localObject).LOs = paramString;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (caa)d.b.b(this.rr.lBR);
+    this.nBK = paramString;
+    ((caa)localObject).SWQ = paramString;
     AppMethodBeat.o(67107);
   }
   
@@ -69,26 +69,26 @@ public final class e
     Log.d("MicroMsg.NetSceneGetPayFunctionProductList", "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (bsf)((d)params).iLL.iLR;
-      paramArrayOfByte = params.LXe;
+      params = (cab)d.c.b(((d)params).lBS);
+      paramArrayOfByte = params.TgC;
       Log.d("MicroMsg.NetSceneGetPayFunctionProductList", "resp.ProductList ".concat(String.valueOf(paramArrayOfByte)));
       if (Util.isNullOrNil(paramArrayOfByte)) {}
     }
     try
     {
       paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.BDk = b.a(this.kHR, paramArrayOfByte.getJSONArray("pay_product_list"));
-      if (Util.isNullOrNil(params.LZm)) {}
+      this.Hzo = b.a(this.nBK, paramArrayOfByte.getJSONArray("pay_product_list"));
+      if (Util.isNullOrNil(params.TiG)) {}
     }
     catch (JSONException paramArrayOfByte)
     {
       try
       {
-        params = new JSONObject(params.LZm);
-        this.BDl = params.optString("balance_link");
-        this.BDn = params.optString("recharge_link");
-        this.BDm = params.optString("balance_wording");
-        this.BDo = params.optString("recharge_wording");
+        params = new JSONObject(params.TiG);
+        this.Hzp = params.optString("balance_link");
+        this.Hzr = params.optString("recharge_link");
+        this.Hzq = params.optString("balance_wording");
+        this.Hzs = params.optString("recharge_wording");
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
         AppMethodBeat.o(67108);
         return;

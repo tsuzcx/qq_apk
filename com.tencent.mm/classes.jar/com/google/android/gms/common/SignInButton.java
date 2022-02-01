@@ -47,8 +47,8 @@ public final class SignInButton
     paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.SignInButton, 0, 0);
     try
     {
-      this.mSize = paramContext.getInt(0, 0);
-      this.mColor = paramContext.getInt(1, 2);
+      this.mSize = paramContext.getInt(R.styleable.SignInButton_buttonSize, 0);
+      this.mColor = paramContext.getInt(R.styleable.SignInButton_colorScheme, 2);
       paramContext.recycle();
       setStyle(this.mSize, this.mColor);
       AppMethodBeat.o(10955);
@@ -151,7 +151,7 @@ public final class SignInButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.gms.common.SignInButton
  * JD-Core Version:    0.7.0.1
  */

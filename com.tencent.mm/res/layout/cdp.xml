@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:gravity="center_horizontal" android:id="@id/jvl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/jq2" android:layout_marginStart="@dimen/cn" android:layout_marginEnd="@dimen/cn" app:layout_constraintBottom_toTopOf="@id/jvm" app:layout_constraintTop_toTopOf="g8m" app:layout_constraintVertical_chainStyle="g8_" />
+    <LinearLayout android:gravity="center_horizontal" android:id="@id/jvm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="@id/jvl" app:layout_constraintStart_toStartOf="@id/jvl" app:layout_constraintTop_toBottomOf="@id/jvl">
+        <TextView android:textSize="@dimen/k6" android:textColor="@color/x3" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/jq3" android:maxLines="1" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="@dimen/ct" android:layout_height="@dimen/cb" android:src="@raw/icons_filled_arrow" android:layout_marginStart="6.0dip" app:iconColor="@color/x3" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:id="@id/jvn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jq1" />
+        <ProgressBar android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginStart="@dimen/ct" style="@style/a71" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.webview.f;
 
-import com.tencent.luggage.h.c;
+import com.tencent.luggage.k.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
@@ -13,61 +13,61 @@ import kotlin.g.b.p;
 import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/permission/GetA8KeyReasonManager;", "", "()V", "TAG", "", "forceGetA8keyPaths", "", "getForceGetA8keyPaths", "()Ljava/util/List;", "forceGetA8keyPaths$delegate", "Lkotlin/Lazy;", "hasForceGetA8keyList", "Ljava/util/LinkedList;", "shouldForceGetA8key", "", "url", "webview-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/permission/GetA8KeyReasonManager;", "", "()V", "TAG", "", "forceGetA8keyPaths", "", "getForceGetA8keyPaths", "()Ljava/util/List;", "forceGetA8keyPaths$delegate", "Lkotlin/Lazy;", "hasForceGetA8keyList", "Ljava/util/LinkedList;", "shouldForceGetA8key", "", "url", "webview-sdk_release"})
 public final class b
 {
-  private static final LinkedList<String> JbF;
-  private static final f JbG;
-  public static final b JbH;
+  private static final LinkedList<String> PYl;
+  private static final f PYm;
+  public static final b PYn;
   private static final String TAG = "MicroMsg.GetA8KeyReasonManager";
   
   static
   {
-    AppMethodBeat.i(225127);
-    JbH = new b();
+    AppMethodBeat.i(206987);
+    PYn = new b();
     TAG = "MicroMsg.GetA8KeyReasonManager";
-    JbF = new LinkedList();
-    JbG = g.ah((a)a.JbI);
-    AppMethodBeat.o(225127);
+    PYl = new LinkedList();
+    PYm = g.ar((a)a.PYo);
+    AppMethodBeat.o(206987);
   }
   
-  public static final boolean aZA(String paramString)
+  public static final boolean blt(String paramString)
   {
-    AppMethodBeat.i(225126);
-    p.h(paramString, "url");
-    if (JbF.contains(paramString))
+    AppMethodBeat.i(206986);
+    p.k(paramString, "url");
+    if (PYl.contains(paramString))
     {
-      AppMethodBeat.o(225126);
+      AppMethodBeat.o(206986);
       return true;
     }
-    Iterator localIterator = ((Iterable)JbG.getValue()).iterator();
+    Iterator localIterator = ((Iterable)PYm.getValue()).iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
       Log.i(TAG, "force geta8key path = %s", new Object[] { str });
       if (c.a(paramString, str, false))
       {
-        JbF.add(paramString);
-        AppMethodBeat.o(225126);
+        PYl.add(paramString);
+        AppMethodBeat.o(206986);
         return true;
       }
     }
-    AppMethodBeat.o(225126);
+    AppMethodBeat.o(206986);
     return false;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "", "invoke"})
   static final class a
     extends q
     implements a<List<? extends String>>
   {
-    public static final a JbI;
+    public static final a PYo;
     
     static
     {
-      AppMethodBeat.i(225125);
-      JbI = new a();
-      AppMethodBeat.o(225125);
+      AppMethodBeat.i(205657);
+      PYo = new a();
+      AppMethodBeat.o(205657);
     }
     
     a()

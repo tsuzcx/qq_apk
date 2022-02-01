@@ -2,6 +2,7 @@ package com.tencent.matrix.resource;
 
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.matrix.report.f;
 import org.json.JSONObject;
 
 public class CanaryResultService
@@ -16,41 +17,48 @@ public class CanaryResultService
     a(paramContext, CanaryResultService.class, -84148994, localIntent);
   }
   
-  protected final void l(Intent paramIntent)
+  protected final void n(Intent paramIntent)
   {
     Object localObject;
     String str;
+    JSONObject localJSONObject;
     if ((paramIntent != null) && ("com.tencent.matrix.resource.result.action.REPORT_HPROF_RESULT".equals(paramIntent.getAction())))
     {
       localObject = paramIntent.getStringExtra("RESULT_PATH");
       str = paramIntent.getStringExtra("RESULT_ACTIVITY");
-      if ((localObject == null) || (((String)localObject).isEmpty()) || (str == null) || (str.isEmpty())) {}
+      if ((localObject != null) && (!((String)localObject).isEmpty()) && (str != null) && (!str.isEmpty()))
+      {
+        paramIntent = new f(0);
+        localJSONObject = new JSONObject();
+      }
     }
     else
     {
       try
       {
-        paramIntent = new JSONObject();
-        paramIntent.put("resultZipPath", localObject);
-        paramIntent.put("activity", str);
-        localObject = com.tencent.matrix.b.RG().Y(b.class);
+        localJSONObject.put("resultZipPath", localObject);
+        localJSONObject.put("activity", str);
+        paramIntent.cZZ = localJSONObject;
+        localObject = com.tencent.matrix.b.Vu().Y(c.class);
         if (localObject != null) {
-          ((com.tencent.matrix.e.b)localObject).onDetectIssue(new com.tencent.matrix.report.c(paramIntent));
+          ((com.tencent.matrix.d.b)localObject).onDetectIssue(paramIntent);
         }
         return;
       }
-      catch (Throwable paramIntent)
+      catch (Throwable localThrowable)
       {
-        com.tencent.matrix.g.c.printErrStackTrace("Matrix.CanaryResultService", paramIntent, "unexpected exception, skip reporting.", new Object[0]);
-        return;
+        for (;;)
+        {
+          com.tencent.matrix.e.c.printErrStackTrace("Matrix.CanaryResultService", localThrowable, "unexpected exception, skip reporting.", new Object[0]);
+        }
       }
     }
-    com.tencent.matrix.g.c.e("Matrix.CanaryResultService", "resultPath or activityName is null or empty, skip reporting.", new Object[0]);
+    com.tencent.matrix.e.c.e("Matrix.CanaryResultService", "resultPath or activityName is null or empty, skip reporting.", new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.resource.CanaryResultService
  * JD-Core Version:    0.7.0.1
  */

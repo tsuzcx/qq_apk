@@ -9,27 +9,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 @SuppressLint({"LongLogTag"})
 public class e
 {
-  private static volatile e baJ = null;
-  b baK;
+  private static volatile e aKh = null;
+  b aKi;
   
   private e()
   {
     AppMethodBeat.i(127355);
-    this.baK = new a((byte)0);
-    this.baK.init();
+    this.aKi = new a((byte)0);
+    this.aKi.init();
     AppMethodBeat.o(127355);
   }
   
-  public static e sR()
+  public static e qF()
   {
     AppMethodBeat.i(127354);
-    if (baJ == null) {
+    if (aKh == null) {
       try
       {
-        if (baJ == null) {
-          baJ = new e();
+        if (aKh == null) {
+          aKh = new e();
         }
-        e locale1 = baJ;
+        e locale1 = aKh;
         return locale1;
       }
       finally
@@ -37,7 +37,7 @@ public class e
         AppMethodBeat.o(127354);
       }
     }
-    e locale2 = baJ;
+    e locale2 = aKh;
     AppMethodBeat.o(127354);
     return locale2;
   }
@@ -47,7 +47,7 @@ public class e
   {
     private a() {}
     
-    public final Bitmap aX(int paramInt1, int paramInt2)
+    public final Bitmap bd(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(127353);
       b.i("MiroMsg.MBBitmapPool", "hy: dummy getTask", new Object[0]);
@@ -66,14 +66,14 @@ public class e
   
   public static abstract interface b
   {
-    public abstract Bitmap aX(int paramInt1, int paramInt2);
+    public abstract Bitmap bd(int paramInt1, int paramInt2);
     
     public abstract void init();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.github.henryye.nativeiv.e
  * JD-Core Version:    0.7.0.1
  */

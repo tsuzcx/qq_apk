@@ -30,7 +30,7 @@ public final class b
   }
   
   /* Error */
-  public final int arf(String paramString)
+  public final int azg(String paramString)
   {
     // Byte code:
     //   0: ldc 53
@@ -147,7 +147,7 @@ public final class b
   }
   
   /* Error */
-  public final a ark(String paramString)
+  public final a azl(String paramString)
   {
     // Byte code:
     //   0: ldc 95
@@ -276,27 +276,7 @@ public final class b
     //   66	71	182	java/lang/Exception
   }
   
-  public final int cRZ()
-  {
-    int i = 0;
-    AppMethodBeat.i(122451);
-    try
-    {
-      int j = this.db.delete("ExptKeyMapId", null, null);
-      i = j;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Log.e("MicroMsg.ExptKeyMapIdStorage", "delete all expt error[%s]", new Object[] { localException.toString() });
-      }
-    }
-    AppMethodBeat.o(122451);
-    return i;
-  }
-  
-  public final int dw(List<a> paramList)
+  public final int dC(List<a> paramList)
   {
     long l = -1L;
     AppMethodBeat.i(122448);
@@ -343,7 +323,7 @@ public final class b
     }
   }
   
-  public final int dx(List<a> paramList)
+  public final int dD(List<a> paramList)
   {
     long l = -1L;
     AppMethodBeat.i(122449);
@@ -391,7 +371,7 @@ public final class b
     }
   }
   
-  public final int dy(List<Integer> paramList)
+  public final int dE(List<Integer> paramList)
   {
     AppMethodBeat.i(122450);
     if ((paramList == null) || (paramList.size() <= 0))
@@ -459,10 +439,30 @@ public final class b
       localh = null;
     }
   }
+  
+  public final int dgY()
+  {
+    int i = 0;
+    AppMethodBeat.i(122451);
+    try
+    {
+      int j = this.db.delete("ExptKeyMapId", null, null);
+      i = j;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.ExptKeyMapIdStorage", "delete all expt error[%s]", new Object[] { localException.toString() });
+      }
+    }
+    AppMethodBeat.o(122451);
+    return i;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.i.b
  * JD-Core Version:    0.7.0.1
  */

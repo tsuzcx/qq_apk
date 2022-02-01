@@ -10,7 +10,6 @@ import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.recordvideo.b.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.nio.Buffer;
@@ -25,31 +24,31 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/background/image2video/MediaCodecFakeDecoder;", "Lcom/tencent/mm/media/decoder/IMediaCodecTransDecoder;", "imageList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "startTimeMs", "", "endTimeMs", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "surface", "Landroid/view/Surface;", "width", "", "height", "enableOutputBuffer", "", "outputFps", "init", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "succ", "", "Lkotlin/ExtensionFunctionType;", "(Ljava/util/ArrayList;JJLcom/tencent/mm/media/extractor/MediaExtractorWrapper;Landroid/view/Surface;IIZILkotlin/jvm/functions/Function2;)V", "blendProvider", "Lkotlin/Function1;", "Landroid/graphics/Bitmap;", "getBlendProvider", "()Lkotlin/jvm/functions/Function1;", "setBlendProvider", "(Lkotlin/jvm/functions/Function1;)V", "decodeFinish", "getDecodeFinish", "()Z", "setDecodeFinish", "(Z)V", "drawCallback", "Ljava/nio/Buffer;", "getDrawCallback", "()Lkotlin/jvm/functions/Function2;", "setDrawCallback", "(Lkotlin/jvm/functions/Function2;)V", "getEnableOutputBuffer", "glThread", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/GLThread;", "getGlThread", "()Lcom/tencent/mm/plugin/recordvideo/background/image2video/GLThread;", "setGlThread", "(Lcom/tencent/mm/plugin/recordvideo/background/image2video/GLThread;)V", "getHeight", "()I", "getImageList", "()Ljava/util/ArrayList;", "setImageList", "(Ljava/util/ArrayList;)V", "imageReader", "Landroid/media/ImageReader;", "getImageReader", "()Landroid/media/ImageReader;", "setImageReader", "(Landroid/media/ImageReader;)V", "getInit", "pts", "getPts", "()J", "setPts", "(J)V", "render", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImageVideoRender;", "getRender", "()Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImageVideoRender;", "renderOutputBuffer", "Ljava/nio/ByteBuffer;", "getRenderOutputBuffer", "()Ljava/nio/ByteBuffer;", "setRenderOutputBuffer", "(Ljava/nio/ByteBuffer;)V", "stepTime", "getStepTime", "setStepTime", "getWidth", "checkInitRenderOutputBuffer", "releaseDecoder", "requestRender", "setPauseDecoder", "pause", "setVideoBlendBitmapProvider", "blendBitmapProvider", "startDecode", "Companion", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/background/image2video/MediaCodecFakeDecoder;", "Lcom/tencent/mm/media/decoder/IMediaCodecTransDecoder;", "imageList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "startTimeMs", "", "endTimeMs", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "surface", "Landroid/view/Surface;", "width", "", "height", "enableOutputBuffer", "", "outputFps", "init", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "succ", "", "Lkotlin/ExtensionFunctionType;", "(Ljava/util/ArrayList;JJLcom/tencent/mm/media/extractor/MediaExtractorWrapper;Landroid/view/Surface;IIZILkotlin/jvm/functions/Function2;)V", "blendProvider", "Lkotlin/Function1;", "Landroid/graphics/Bitmap;", "getBlendProvider", "()Lkotlin/jvm/functions/Function1;", "setBlendProvider", "(Lkotlin/jvm/functions/Function1;)V", "decodeFinish", "getDecodeFinish", "()Z", "setDecodeFinish", "(Z)V", "drawCallback", "Ljava/nio/Buffer;", "getDrawCallback", "()Lkotlin/jvm/functions/Function2;", "setDrawCallback", "(Lkotlin/jvm/functions/Function2;)V", "getEnableOutputBuffer", "glThread", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/GLThread;", "getGlThread", "()Lcom/tencent/mm/plugin/recordvideo/background/image2video/GLThread;", "setGlThread", "(Lcom/tencent/mm/plugin/recordvideo/background/image2video/GLThread;)V", "getHeight", "()I", "getImageList", "()Ljava/util/ArrayList;", "setImageList", "(Ljava/util/ArrayList;)V", "imageReader", "Landroid/media/ImageReader;", "getImageReader", "()Landroid/media/ImageReader;", "setImageReader", "(Landroid/media/ImageReader;)V", "getInit", "pts", "getPts", "()J", "setPts", "(J)V", "render", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImageVideoRender;", "getRender", "()Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImageVideoRender;", "renderOutputBuffer", "Ljava/nio/ByteBuffer;", "getRenderOutputBuffer", "()Ljava/nio/ByteBuffer;", "setRenderOutputBuffer", "(Ljava/nio/ByteBuffer;)V", "stepTime", "getStepTime", "setStepTime", "getWidth", "checkInitRenderOutputBuffer", "releaseDecoder", "requestRender", "setPauseDecoder", "pause", "setVideoBlendBitmapProvider", "blendBitmapProvider", "startDecode", "Companion", "plugin-recordvideo_release"})
 public final class d
   extends com.tencent.mm.media.d.f
 {
-  public static final d.a BLB;
+  public static final d.a HHM;
   private static final String TAG = "MicroMsg.MediaCodecFakeDecoder";
-  final m<d, Boolean, x> BLA;
-  final h BLs;
-  c BLt;
-  long BLu;
-  boolean BLv;
-  b<? super Long, Bitmap> BLw;
-  m<? super Boolean, ? super Buffer, x> BLx;
-  ArrayList<String> BLy;
-  final boolean BLz;
+  final h HHD;
+  c HHE;
+  long HHF;
+  boolean HHG;
+  b<? super Long, Bitmap> HHH;
+  m<? super Boolean, ? super Buffer, x> HHI;
+  ArrayList<String> HHJ;
+  final boolean HHK;
+  final m<d, Boolean, x> HHL;
   private final int height;
-  private ImageReader hiC;
-  ByteBuffer ijF;
+  private ImageReader jUA;
+  ByteBuffer kYz;
   long pts;
   private final int width;
   
   static
   {
     AppMethodBeat.i(75276);
-    BLB = new d.a((byte)0);
+    HHM = new d.a((byte)0);
     TAG = "MicroMsg.MediaCodecFakeDecoder";
     AppMethodBeat.o(75276);
   }
@@ -58,21 +57,21 @@ public final class d
   {
     super(paramLong1, paramLong2, paramSurface, paramInt3);
     AppMethodBeat.i(75275);
-    this.BLy = paramArrayList;
+    this.HHJ = paramArrayList;
     this.width = paramInt1;
     this.height = paramInt2;
-    this.BLz = paramBoolean;
-    this.BLA = paramm;
-    this.BLs = new h();
-    paramArrayList = e.BNm;
-    this.BLu = (1000L / e.getFrameRate());
-    this.BLs.BMh = this.BLu;
-    if ((this.ieD == null) && (this.BLz))
+    this.HHK = paramBoolean;
+    this.HHL = paramm;
+    this.HHD = new h();
+    paramArrayList = com.tencent.mm.plugin.recordvideo.b.f.HJU;
+    this.HHF = (1000L / com.tencent.mm.plugin.recordvideo.b.f.getFrameRate());
+    this.HHD.HIt = this.HHF;
+    if ((aUr() == null) && (this.HHK))
     {
-      this.hiC = ImageReader.newInstance(this.width, this.height, 1, 3);
-      paramArrayList = this.hiC;
+      this.jUA = ImageReader.newInstance(this.width, this.height, 1, 3);
+      paramArrayList = this.jUA;
       if (paramArrayList == null) {
-        p.hyc();
+        p.iCn();
       }
       paramArrayList.setOnImageAvailableListener((ImageReader.OnImageAvailableListener)new ImageReader.OnImageAvailableListener()
       {
@@ -80,33 +79,33 @@ public final class d
         {
           AppMethodBeat.i(75266);
           if (paramAnonymousImageReader == null) {
-            p.hyc();
+            p.iCn();
           }
           paramAnonymousImageReader = paramAnonymousImageReader.acquireNextImage();
-          p.g(paramAnonymousImageReader, "image");
+          p.j(paramAnonymousImageReader, "image");
           Object localObject1 = paramAnonymousImageReader.getPlanes();
           int k = paramAnonymousImageReader.getWidth();
           int m = paramAnonymousImageReader.getHeight();
           Object localObject2 = localObject1[0];
-          p.g(localObject2, "planes[0]");
+          p.j(localObject2, "planes[0]");
           int i = ((Image.Plane)localObject2).getRowStride();
           localObject2 = localObject1[0];
-          p.g(localObject2, "planes[0]");
+          p.j(localObject2, "planes[0]");
           int n = i - ((Image.Plane)localObject2).getPixelStride() * k;
           localObject1 = localObject1[0];
-          p.g(localObject1, "planes[0]");
+          p.j(localObject1, "planes[0]");
           localObject1 = ((Image.Plane)localObject1).getBuffer();
-          p.g(localObject1, "planes[0].buffer");
+          p.j(localObject1, "planes[0].buffer");
           long l = Util.currentTicks();
-          this.BLC.aMQ();
-          localObject2 = this.BLC.ijF;
+          this.HHN.aVq();
+          localObject2 = this.HHN.kYz;
           if (localObject2 == null) {
-            p.hyc();
+            p.iCn();
           }
           ((ByteBuffer)localObject2).clear();
-          localObject2 = this.BLC.ijF;
+          localObject2 = this.HHN.kYz;
           if (localObject2 == null) {
-            p.hyc();
+            p.iCn();
           }
           ((ByteBuffer)localObject2).order(((ByteBuffer)localObject1).order());
           int j = 0;
@@ -114,50 +113,50 @@ public final class d
           {
             ((ByteBuffer)localObject1).limit(j * n + i + k * 4);
             ((ByteBuffer)localObject1).position(j * n + i);
-            localObject2 = this.BLC.ijF;
+            localObject2 = this.HHN.kYz;
             if (localObject2 == null) {
-              p.hyc();
+              p.iCn();
             }
             ((ByteBuffer)localObject2).put((ByteBuffer)localObject1);
             j += 1;
           }
-          localObject1 = d.BLB;
+          localObject1 = d.HHM;
           Log.i(d.access$getTAG$cp(), "copyToByteArray cost: " + Util.ticksToNow(l));
           paramAnonymousImageReader.close();
-          paramAnonymousImageReader = this.BLC.BLx;
+          paramAnonymousImageReader = this.HHN.HHI;
           if (paramAnonymousImageReader != null)
           {
-            paramAnonymousImageReader.invoke(Boolean.TRUE, this.BLC.ijF);
+            paramAnonymousImageReader.invoke(Boolean.TRUE, this.HHN.kYz);
             AppMethodBeat.o(75266);
             return;
           }
           AppMethodBeat.o(75266);
         }
       }, null);
-      paramArrayList = this.hiC;
+      paramArrayList = this.jUA;
       if (paramArrayList == null) {
-        p.hyc();
+        p.iCn();
       }
-      this.ieD = paramArrayList.getSurface();
+      g(paramArrayList.getSurface());
     }
-    this.BLt = new c(this.ieD, this.BLs);
-    this.BLt.dL(this.width, this.height);
-    if (this.BLz)
+    this.HHE = new c(aUr(), this.HHD);
+    this.HHE.ej(this.width, this.height);
+    if (this.HHK)
     {
       Log.i(TAG, "init useX264Encoder width:%s, height:%s", new Object[] { Integer.valueOf(this.width), Integer.valueOf(this.height) });
-      aMQ();
-      this.BLt.BLq = true;
+      aVq();
+      this.HHE.HHB = true;
     }
-    this.BLt.start();
-    this.BLt.ax((Runnable)new Runnable()
+    this.HHE.start();
+    this.HHE.aD((Runnable)new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(75267);
-        m localm = this.BLC.BLA;
+        m localm = this.HHN.HHL;
         if (localm != null)
         {
-          localm.invoke(this.BLC, Boolean.TRUE);
+          localm.invoke(this.HHN, Boolean.TRUE);
           AppMethodBeat.o(75267);
           return;
         }
@@ -171,29 +170,29 @@ public final class d
   {
     AppMethodBeat.i(75271);
     Log.i(TAG, "requestRender");
-    if (this.BLv)
+    if (this.HHG)
     {
       AppMethodBeat.o(75271);
       return;
     }
-    this.BLt.ax((Runnable)new b(this));
+    this.HHE.aD((Runnable)new b(this));
     AppMethodBeat.o(75271);
   }
   
-  public final void aMQ()
+  public final void aVq()
   {
     AppMethodBeat.i(75272);
-    if ((this.width > 0) && (this.height > 0) && (this.ijF == null)) {
-      this.ijF = ByteBuffer.allocateDirect(this.width * this.height * 4);
+    if ((this.width > 0) && (this.height > 0) && (this.kYz == null)) {
+      this.kYz = ByteBuffer.allocateDirect(this.width * this.height * 4);
     }
     AppMethodBeat.o(75272);
   }
   
-  public final void eU(boolean paramBoolean)
+  public final void fB(boolean paramBoolean)
   {
     AppMethodBeat.i(75273);
     Log.d(TAG, "setPauseDecoder ".concat(String.valueOf(paramBoolean)));
-    this.dLD = paramBoolean;
+    setPause(paramBoolean);
     if (!paramBoolean) {
       requestRender();
     }
@@ -204,19 +203,19 @@ public final class d
   {
     AppMethodBeat.i(75274);
     super.releaseDecoder();
-    this.BLt.stop();
+    this.HHE.stop();
     AppMethodBeat.o(75274);
   }
   
   public final void startDecode()
   {
     AppMethodBeat.i(75270);
-    this.BLt.ax((Runnable)new c(this));
+    this.HHE.aD((Runnable)new c(this));
     requestRender();
     AppMethodBeat.o(75270);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -225,49 +224,49 @@ public final class d
     public final void run()
     {
       AppMethodBeat.i(75268);
-      Object localObject = this.BLC;
-      ((d)localObject).pts += this.BLC.BLu;
-      this.BLC.BLs.onDrawFrame();
-      localObject = this.BLC.BLw;
+      Object localObject = this.HHN;
+      ((d)localObject).pts += this.HHN.HHF;
+      this.HHN.HHD.onDrawFrame();
+      localObject = this.HHN.HHH;
       if (localObject != null) {}
-      for (localObject = (Bitmap)((b)localObject).invoke(Long.valueOf(this.BLC.pts * 1000L));; localObject = null)
+      for (localObject = (Bitmap)((b)localObject).invoke(Long.valueOf(this.HHN.pts * 1000L));; localObject = null)
       {
         if (localObject != null)
         {
-          h localh = this.BLC.BLs;
-          p.h(localObject, "bitmap");
-          localh.BMj.eJh();
-          localh.BMj.a(a.a.BLe, localh.mWidth, localh.mHeight, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+          h localh = this.HHN.HHD;
+          p.k(localObject, "bitmap");
+          localh.HIv.fvk();
+          localh.HIv.a(a.a.HHp, localh.mWidth, localh.mHeight, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
           GLES20.glActiveTexture(33984);
-          localh.BMl = f.i((Bitmap)localObject, localh.BMl);
-          localh.BMj.Vz(localh.BMl);
-          localObject = localh.BMj.BLK;
-          if (localh.BMk) {
+          localh.HIx = f.j((Bitmap)localObject, localh.HIx);
+          localh.HIv.ach(localh.HIx);
+          localObject = localh.HIv.HHV;
+          if (localh.HIw) {
             Matrix.scaleM((float[])localObject, 0, 1.0F, -1.0F, 1.0F);
           }
-          localh.BMj.m((float[])localObject);
-          f.eJj();
+          localh.HIv.n((float[])localObject);
+          f.fvm();
         }
-        this.BLC.BLt.setPresentationTime(this.BLC.pts * 1000000L);
-        this.BLC.BLt.eJk();
-        localObject = d.a(this.BLC);
+        this.HHN.HHE.setPresentationTime(this.HHN.pts * 1000000L);
+        this.HHN.HHE.fvn();
+        localObject = d.a(this.HHN);
         if (localObject != null) {
-          ((r)localObject).invoke(null, Long.valueOf(this.BLC.pts * 1000L), new MediaCodec.BufferInfo(), Boolean.FALSE);
+          ((r)localObject).a(null, Long.valueOf(this.HHN.pts * 1000L), new MediaCodec.BufferInfo(), Boolean.FALSE);
         }
-        if (!this.BLC.BLz)
+        if (!this.HHN.HHK)
         {
-          localObject = this.BLC.BLx;
+          localObject = this.HHN.HHI;
           if (localObject != null) {
-            ((m)localObject).invoke(Boolean.TRUE, this.BLC.ijF);
+            ((m)localObject).invoke(Boolean.TRUE, this.HHN.kYz);
           }
         }
-        long l = this.BLC.pts;
-        localObject = e.BNm;
-        if (l < e.eJs()) {
+        long l = this.HHN.pts;
+        localObject = com.tencent.mm.plugin.recordvideo.b.f.HJU;
+        if (l < com.tencent.mm.plugin.recordvideo.b.f.fvB()) {
           break;
         }
-        this.BLC.BLv = true;
-        localObject = d.b(this.BLC);
+        this.HHN.HHG = true;
+        localObject = d.b(this.HHN);
         if (localObject == null) {
           break;
         }
@@ -279,7 +278,7 @@ public final class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -288,14 +287,14 @@ public final class d
     public final void run()
     {
       AppMethodBeat.i(75269);
-      this.BLC.BLs.ge((List)this.BLC.BLy);
+      this.HHN.HHD.gI((List)this.HHN.HHJ);
       AppMethodBeat.o(75269);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.background.b.d
  * JD-Core Version:    0.7.0.1
  */

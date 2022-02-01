@@ -1,59 +1,64 @@
 package com.tencent.mm.plugin.finder.live.model;
 
-import android.content.Context;
-import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.view.d;
-import kotlin.g.b.p;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.plugin.finder.live.utils.a;
+import com.tencent.mm.protocal.protobuf.axe;
+import com.tencent.mm.protocal.protobuf.axt;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveRoundImageSpanConfig;", "", "text", "", "leftPading", "", "rightPading", "bgColor", "", "bgHeight", "textColor", "textSize", "radius", "(Ljava/lang/CharSequence;FFIIIIF)V", "getBgColor", "()I", "setBgColor", "(I)V", "getBgHeight", "setBgHeight", "getLeftPading", "()F", "getRadius", "getRightPading", "getText", "()Ljava/lang/CharSequence;", "setText", "(Ljava/lang/CharSequence;)V", "getTextColor", "getTextSize", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveGlobalLevelUpgradeMsg;", "Lcom/tencent/mm/plugin/finder/live/model/FinderLiveBaseMsg;", "msg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;)V", "getPayLoadContent", "", "toString", "", "plugin-finder_release"})
 public final class n
+  extends g
 {
-  private static final int ujn;
-  private static final int ujo;
-  private static final float ujp;
-  private static final float ujq = -1.0F;
-  public static final a ujr;
-  int bgColor;
-  int kcc;
-  final float radius;
-  CharSequence text;
-  final int textColor;
-  final int textSize;
-  final float ujl;
-  final float ujm;
-  
-  static
+  public n(axe paramaxe)
   {
-    AppMethodBeat.i(246184);
-    ujr = new a((byte)0);
-    ujn = d.e(MMApplicationContext.getContext(), 18.0F);
-    ujo = d.e(MMApplicationContext.getContext(), 12.0F);
-    Context localContext = MMApplicationContext.getContext();
-    p.g(localContext, "MMApplicationContext.getContext()");
-    ujp = localContext.getResources().getDimension(2131165277);
-    ujq = -1.0F;
-    AppMethodBeat.o(246184);
+    super(paramaxe);
+    AppMethodBeat.i(228218);
+    AppMethodBeat.o(228218);
   }
   
-  private n(CharSequence paramCharSequence, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat3)
+  public final Object dyn()
   {
-    AppMethodBeat.i(246182);
-    this.text = paramCharSequence;
-    this.ujl = paramFloat1;
-    this.ujm = paramFloat2;
-    this.bgColor = paramInt1;
-    this.kcc = paramInt2;
-    this.textColor = paramInt3;
-    this.textSize = paramInt4;
-    this.radius = paramFloat3;
-    AppMethodBeat.o(246182);
+    AppMethodBeat.i(228212);
+    switch (getType())
+    {
+    default: 
+      AppMethodBeat.o(228212);
+      return null;
+    }
+    axt localaxt = new axt();
+    Object localObject = dyj().SJE;
+    if (localObject != null) {}
+    for (localObject = ((b)localObject).toByteArray();; localObject = null)
+    {
+      localaxt.parseFrom((byte[])localObject);
+      localObject = a.yRm;
+      a.ha("FinderLiveGlobalLevelUpgradeMsg", "userlevelTest," + localaxt.toString());
+      if (localaxt.type != 1) {
+        break;
+      }
+      AppMethodBeat.o(228212);
+      return localaxt;
+    }
+    AppMethodBeat.o(228212);
+    return null;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveRoundImageSpanConfig$Companion;", "", "()V", "DEFAULT_SPAN_HEIGHT", "", "getDEFAULT_SPAN_HEIGHT", "()I", "DEFAULT_TEXT_PADING", "", "getDEFAULT_TEXT_PADING", "()F", "DEFAULT_TEXT_SIZE", "getDEFAULT_TEXT_SIZE", "INVALID_RADIUS", "getINVALID_RADIUS", "plugin-finder_release"})
-  public static final class a {}
+  public final String toString()
+  {
+    AppMethodBeat.i(228216);
+    Object localObject = dyn();
+    if ((localObject instanceof axt))
+    {
+      localObject = "nickNake:" + dyd() + '-' + dyh() + ",type:" + ((axt)localObject).type + ",level:" + ((axt)localObject).SKm + '-' + ((axt)localObject).SKn;
+      AppMethodBeat.o(228216);
+      return localObject;
+    }
+    localObject = super.toString();
+    AppMethodBeat.o(228216);
+    return localObject;
+  }
 }
 
 

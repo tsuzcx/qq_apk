@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.sns.model;
 
-import com.tencent.mm.plugin.sns.k.b;
+import com.tencent.mm.plugin.sns.k.d;
 
 public abstract interface ai
 {
-  public abstract b fat();
+  public abstract d fOn();
   
   public abstract int getScene();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.ai
  * JD-Core Version:    0.7.0.1
  */

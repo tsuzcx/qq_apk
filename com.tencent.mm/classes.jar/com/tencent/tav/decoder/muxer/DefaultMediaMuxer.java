@@ -20,18 +20,18 @@ public class DefaultMediaMuxer
   
   public DefaultMediaMuxer(String paramString, int paramInt)
   {
-    AppMethodBeat.i(218459);
+    AppMethodBeat.i(192149);
     this.TAG = "DefaultMediaMuxer";
     this.isStarted = false;
     this.videoTrackIndex = -1;
     this.audioTrackIndex = -1;
     this.muxer = new MediaMuxer(paramString, paramInt);
-    AppMethodBeat.o(218459);
+    AppMethodBeat.o(192149);
   }
   
   public int addTrack(MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(218461);
+    AppMethodBeat.i(192162);
     int i = this.muxer.addTrack(paramMediaFormat);
     if (paramMediaFormat.containsKey("mime"))
     {
@@ -44,7 +44,7 @@ public class DefaultMediaMuxer
     }
     for (;;)
     {
-      AppMethodBeat.o(218461);
+      AppMethodBeat.o(192162);
       return i;
       label65:
       if (paramMediaFormat.contains("audio")) {
@@ -70,30 +70,30 @@ public class DefaultMediaMuxer
   
   public void release()
   {
-    AppMethodBeat.i(218464);
+    AppMethodBeat.i(192185);
     this.muxer.release();
     this.isStarted = false;
     Logger.i("DefaultMediaMuxer", "release muxer");
-    AppMethodBeat.o(218464);
+    AppMethodBeat.o(192185);
   }
   
   public void setExportConfig(ExportConfig paramExportConfig) {}
   
   public void start()
   {
-    AppMethodBeat.i(218460);
+    AppMethodBeat.i(192155);
     this.muxer.start();
     this.isStarted = true;
-    AppMethodBeat.o(218460);
+    AppMethodBeat.o(192155);
   }
   
   public void stop()
   {
-    AppMethodBeat.i(218463);
+    AppMethodBeat.i(192181);
     this.muxer.stop();
     this.isStarted = false;
     Logger.i("DefaultMediaMuxer", "stop muxer");
-    AppMethodBeat.o(218463);
+    AppMethodBeat.o(192181);
   }
   
   public int videoTrackIndex()
@@ -103,16 +103,16 @@ public class DefaultMediaMuxer
   
   public void writeSampleData(int paramInt, ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
   {
-    AppMethodBeat.i(218462);
+    AppMethodBeat.i(192168);
     this.muxer.writeSampleData(paramInt, paramByteBuffer, paramBufferInfo);
-    AppMethodBeat.o(218462);
+    AppMethodBeat.o(192168);
   }
   
   public void writeSampleDataTime(boolean paramBoolean, CMTime paramCMTime) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.tav.decoder.muxer.DefaultMediaMuxer
  * JD-Core Version:    0.7.0.1
  */

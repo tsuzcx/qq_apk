@@ -4,30 +4,30 @@ import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.i.c;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/model/EmojiCaptureUtil;", "", "()V", "TAG", "", "checkVideoValid", "", "videoPath", "plugin-emojicapture_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/model/EmojiCaptureUtil;", "", "()V", "TAG", "", "checkVideoValid", "", "videoPath", "plugin-emojicapture_release"})
 public final class f
 {
   private static final String TAG = "MicroMsg.EmojiCaptureUtil";
-  public static final f roC;
+  public static final f uUi;
   
   static
   {
     AppMethodBeat.i(190);
-    roC = new f();
+    uUi = new f();
     TAG = "MicroMsg.EmojiCaptureUtil";
     AppMethodBeat.o(190);
   }
   
-  public static boolean anm(String paramString)
+  public static boolean avk(String paramString)
   {
     AppMethodBeat.i(189);
-    p.h(paramString, "videoPath");
-    if (s.boW(paramString) <= 0L)
+    p.k(paramString, "videoPath");
+    if (u.bBQ(paramString) <= 0L)
     {
       AppMethodBeat.o(189);
       return false;
@@ -57,7 +57,7 @@ public final class f
         if (i < j)
         {
           paramString = localc.getTrackFormat(i);
-          p.g(paramString, "extractor.getTrackFormat(i)");
+          p.j(paramString, "extractor.getTrackFormat(i)");
           if ((paramString != null) && (paramString.containsKey("mime")))
           {
             paramString = paramString.getString("mime");
@@ -126,7 +126,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.f
  * JD-Core Version:    0.7.0.1
  */

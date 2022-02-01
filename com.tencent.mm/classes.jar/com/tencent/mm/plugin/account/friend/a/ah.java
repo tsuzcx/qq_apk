@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cdn;
-import com.tencent.mm.protocal.protobuf.cdo;
-import com.tencent.mm.protocal.protobuf.cdp;
+import com.tencent.mm.protocal.protobuf.cmh;
+import com.tencent.mm.protocal.protobuf.cmi;
+import com.tencent.mm.protocal.protobuf.cmj;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -22,39 +22,42 @@ public final class ah
   implements m
 {
   private i callback;
-  private LinkedList<cdn> kft;
-  public String kfu;
+  public LinkedList<cmh> mWS;
+  public String mWT;
   private final d rr;
   
   public ah(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(131123);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new cdo();
-    ((d.a)localObject).iLO = new cdp();
+    ((d.a)localObject).lBU = new cmi();
+    ((d.a)localObject).lBV = new cmj();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/invitegooglecontact";
     ((d.a)localObject).funcId = 489;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    this.kft = new LinkedList();
+    this.rr = ((d.a)localObject).bgN();
+    this.mWS = new LinkedList();
     if (paramArrayList.size() > 0)
     {
       int i = 0;
       while (i < paramArrayList.size())
       {
-        localObject = new cdn();
-        ((cdn)localObject).KPA = ((String)paramArrayList.get(i));
-        this.kft.add(localObject);
+        localObject = new cmh();
+        ((cmh)localObject).RQy = ((String)paramArrayList.get(i));
+        this.mWS.add(localObject);
         i += 1;
       }
     }
     AppMethodBeat.o(131123);
   }
   
-  public final cdp bop()
+  public final cmj byy()
   {
-    return (cdp)this.rr.iLL.iLR;
+    AppMethodBeat.i(193736);
+    cmj localcmj = (cmj)d.c.b(this.rr.lBS);
+    AppMethodBeat.o(193736);
+    return localcmj;
   }
   
   public final int doScene(g paramg, i parami)
@@ -62,9 +65,9 @@ public final class ah
     AppMethodBeat.i(131124);
     Log.i("MicroMsg.GoogleContact.NetSceneInviteGoogleContact", "doScene");
     this.callback = parami;
-    parami = (cdo)this.rr.iLK.iLR;
-    parami.oTz = this.kft.size();
-    parami.oTA = this.kft;
+    parami = (cmi)d.b.b(this.rr.lBR);
+    parami.rVx = this.mWS.size();
+    parami.rVy = this.mWS;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(131124);
     return i;

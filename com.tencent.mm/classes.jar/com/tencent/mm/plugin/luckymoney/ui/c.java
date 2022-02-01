@@ -8,30 +8,30 @@ import java.util.List;
 
 public final class c
 {
-  private boolean zeA;
-  private boolean zeB;
-  private TextView zeC;
-  private List<d> zez;
+  private List<d> EJC;
+  boolean EJD;
+  private boolean EJE;
+  private TextView EJF;
   
   public c()
   {
     AppMethodBeat.i(65609);
-    this.zez = new LinkedList();
-    this.zeA = false;
-    this.zeB = false;
+    this.EJC = new LinkedList();
+    this.EJD = false;
+    this.EJE = false;
     AppMethodBeat.o(65609);
   }
   
-  private void aDD(String paramString)
+  private void aNN(String paramString)
   {
     AppMethodBeat.i(65614);
-    if ((this.zeC != null) && (!Util.isNullOrNil(paramString)))
+    if ((this.EJF != null) && (!Util.isNullOrNil(paramString)))
     {
-      if (!this.zeA) {
-        this.zeC.setText(paramString);
+      if (!this.EJD) {
+        this.EJF.setText(paramString);
       }
-      this.zeC.setVisibility(0);
-      this.zeA = true;
+      this.EJF.setVisibility(0);
+      this.EJD = true;
     }
     AppMethodBeat.o(65614);
   }
@@ -44,73 +44,73 @@ public final class c
       AppMethodBeat.o(65610);
       return;
     }
-    if (!this.zez.contains(paramd)) {
-      this.zez.add(paramd);
+    if (!this.EJC.contains(paramd)) {
+      this.EJC.add(paramd);
     }
     AppMethodBeat.o(65610);
   }
   
-  public final void aeu(String paramString)
+  public final void amo(String paramString)
   {
     AppMethodBeat.i(65615);
-    if ((this.zeC != null) && (!Util.isNullOrNil(paramString)))
+    if ((this.EJF != null) && (!Util.isNullOrNil(paramString)))
     {
-      this.zeC.setText(paramString);
-      this.zeC.setVisibility(0);
-      this.zeA = true;
+      this.EJF.setText(paramString);
+      this.EJF.setVisibility(0);
+      this.EJD = true;
       AppMethodBeat.o(65615);
       return;
     }
-    if (this.zeC != null)
+    if (this.EJF != null)
     {
-      this.zeC.setVisibility(8);
-      this.zeA = false;
+      this.EJF.setVisibility(8);
+      this.EJD = false;
     }
     AppMethodBeat.o(65615);
   }
   
   public final void b(d paramd)
   {
-    AppMethodBeat.i(213410);
+    AppMethodBeat.i(278029);
     if (paramd == null)
     {
-      AppMethodBeat.o(213410);
+      AppMethodBeat.o(278029);
       return;
     }
     int i = 0;
-    while (i < this.zez.size())
+    while (i < this.EJC.size())
     {
-      if (((d)this.zez.get(i)).getInputViewId() == paramd.getInputViewId()) {
-        this.zez.remove(i);
+      if (((d)this.EJC.get(i)).getInputViewId() == paramd.getInputViewId()) {
+        this.EJC.remove(i);
       }
       i += 1;
     }
-    AppMethodBeat.o(213410);
+    AppMethodBeat.o(278029);
   }
   
   public final void clear()
   {
     AppMethodBeat.i(65611);
-    this.zez.clear();
-    this.zeC = null;
+    this.EJC.clear();
+    this.EJF = null;
     AppMethodBeat.o(65611);
   }
   
-  public final boolean egj()
+  public final boolean ePM()
   {
     AppMethodBeat.i(65612);
-    this.zeB = false;
-    this.zeA = false;
+    this.EJE = false;
+    this.EJD = false;
     int i = 0;
-    if (i < this.zez.size())
+    if (i < this.EJC.size())
     {
-      d locald = (d)this.zez.get(i);
-      int j = locald.eeH();
+      d locald = (d)this.EJC.get(i);
+      int j = locald.eOc();
       if (j != 0)
       {
         locald.onError();
-        aDD(locald.PA(j));
-        this.zeB = true;
+        aNN(locald.VJ(j));
+        this.EJE = true;
       }
       for (;;)
       {
@@ -119,23 +119,23 @@ public final class c
         locald.restore();
       }
     }
-    if ((!this.zeB) && (this.zeC != null))
+    if ((!this.EJE) && (this.EJF != null))
     {
-      this.zeC.setVisibility(8);
-      this.zeA = false;
+      this.EJF.setVisibility(8);
+      this.EJD = false;
     }
-    boolean bool = this.zeB;
+    boolean bool = this.EJE;
     AppMethodBeat.o(65612);
     return bool;
   }
   
-  public final boolean egk()
+  public final boolean ePN()
   {
     AppMethodBeat.i(65613);
     int i = 0;
-    while (i < this.zez.size())
+    while (i < this.EJC.size())
     {
-      if (((d)this.zez.get(i)).eeH() != 0)
+      if (((d)this.EJC.get(i)).eOc() != 0)
       {
         AppMethodBeat.o(65613);
         return true;
@@ -146,16 +146,16 @@ public final class c
     return false;
   }
   
-  public final void t(TextView paramTextView)
+  public final void z(TextView paramTextView)
   {
     if (paramTextView != null) {
-      this.zeC = paramTextView;
+      this.EJF = paramTextView;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.c
  * JD-Core Version:    0.7.0.1
  */

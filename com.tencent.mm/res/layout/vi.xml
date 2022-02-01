@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView android:layout_width="wrap_content" android:layout_height="wrap_content" app:cardBackgroundColor="@android:color/transparent" app:cardElevation="10.0dip"
+<androidx.cardview.widget.CardView android:layout_width="wrap_content" android:layout_height="wrap_content" app:cardBackgroundColor="@android:color/transparent" app:cardElevation="10.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/q0" android:layout_width="600.0dip" android:layout_height="wrap_content">
         <RelativeLayout android:orientation="horizontal" android:background="@drawable/q2" android:layout_width="fill_parent" android:layout_height="110.0dip">
             <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <android.support.v7.widget.AppCompatImageView android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="11.0dip" android:layout_marginBottom="11.0dip" android:scaleType="fitXY" android:adjustViewBounds="false" android:layout_marginStart="12.0dip" app:srcCompat="@drawable/q9" />
+                <androidx.appcompat.widget.AppCompatImageView android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="11.0dip" android:layout_marginBottom="11.0dip" android:scaleType="fitXY" android:adjustViewBounds="false" android:layout_marginStart="12.0dip" app:srcCompat="@drawable/q9" />
             </FrameLayout>
             <TextView android:textSize="52.0sp" android:typeface="sans" android:textColor="@color/k7" android:gravity="center" android:id="@id/b_o" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:fontFamily="sans-serif-light" />
             <ProgressBar android:id="@id/gl_" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_alignTop="@id/b_o" android:layout_alignBottom="@id/b_o" android:layout_centerInParent="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
@@ -16,4 +16,4 @@
             <Button android:textSize="18.0sp" android:typeface="sans" android:textStyle="bold" android:textColor="@color/k3" android:layout_gravity="center_horizontal" android:id="@id/aic" android:background="@drawable/q1" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="200.0dip" android:text="@android:string/cancel" android:textAllCaps="true" android:fontFamily="sans-serif-medium" />
         </FrameLayout>
     </LinearLayout>
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>

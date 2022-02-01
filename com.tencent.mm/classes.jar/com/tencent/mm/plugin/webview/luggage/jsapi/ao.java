@@ -1,11 +1,13 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
+import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.g.a.wq;
-import com.tencent.mm.g.a.wq.a;
-import com.tencent.mm.g.a.wq.b;
+import com.tencent.mm.f.a.xw;
+import com.tencent.mm.f.a.xw.a;
+import com.tencent.mm.f.a.xw.b;
+import com.tencent.mm.plugin.webview.luggage.c.c;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -19,7 +21,7 @@ public class ao
   {
     AppMethodBeat.i(78591);
     Log.i("MicroMsg.JsApiOpenWeApp", "invokeInMM");
-    paramString = com.tencent.mm.plugin.webview.luggage.c.b.Zc(paramString);
+    paramString = c.agO(paramString);
     if (paramString == null)
     {
       parama.i("fail_invalid_data", null);
@@ -28,42 +30,42 @@ public class ao
     }
     String str1 = paramString.optString("currentUrl");
     String str2 = paramString.optString("preVerifyAppId");
-    wq localwq = new wq();
-    localwq.ecI.context = paramContext;
-    localwq.ecI.userName = paramString.optString("userName");
-    localwq.ecI.appId = paramString.optString("appId");
-    localwq.ecI.ecK = paramString.optString("relativeURL");
-    localwq.ecI.appVersion = paramString.optInt("appVersion", 0);
-    localwq.ecI.scene = paramString.optInt("scene", 1018);
-    localwq.ecI.dCw = paramString.optString("sceneNote");
-    if (Util.isNullOrNil(localwq.ecI.dCw)) {
-      localwq.ecI.dCw = q.encode(Util.nullAsNil(str1));
+    xw localxw = new xw();
+    localxw.fWN.context = paramContext;
+    localxw.fWN.userName = paramString.optString("userName");
+    localxw.fWN.appId = paramString.optString("appId");
+    localxw.fWN.fWP = paramString.optString("relativeURL");
+    localxw.fWN.appVersion = paramString.optInt("appVersion", 0);
+    localxw.fWN.scene = paramString.optInt("scene", 1018);
+    localxw.fWN.fvd = paramString.optString("sceneNote");
+    if (Util.isNullOrNil(localxw.fWN.fvd)) {
+      localxw.fWN.fvd = q.aT(Util.nullAsNil(str1));
     }
-    localwq.ecI.ecN = paramString.optString("downloadURL");
-    localwq.ecI.ecL = paramString.optInt("openType", 0);
-    localwq.ecI.ecO = paramString.optString("checkSumMd5");
-    localwq.ecI.ecQ = false;
-    localwq.ecI.ecR.iIt = paramString.optString("extJsonInfo");
-    localwq.ecI.ecW = str2;
-    if (Util.isNullOrNil(localwq.ecI.ecW)) {
-      localwq.ecI.ecW = paramString.optString("sourceAppId");
+    localxw.fWN.fWS = paramString.optString("downloadURL");
+    localxw.fWN.fWQ = paramString.optInt("openType", 0);
+    localxw.fWN.fWT = paramString.optString("checkSumMd5");
+    localxw.fWN.fWV = false;
+    localxw.fWN.fWW.lyv = paramString.optString("extJsonInfo");
+    localxw.fWN.fXc = str2;
+    if (Util.isNullOrNil(localxw.fWN.fXc)) {
+      localxw.fWN.fXc = paramString.optString("sourceAppId");
     }
-    localwq.ecI.ecX = str1;
-    localwq.ecI.ecY = paramString.optString("privateExtraData");
-    EventCenter.instance.publish(localwq);
-    if (localwq.ecJ.edc)
+    localxw.fWN.fXd = str1;
+    localxw.fWN.fXe = paramString.optString("privateExtraData");
+    EventCenter.instance.publish(localxw);
+    if (localxw.fWO.fXi)
     {
       parama.i(null, null);
       AppMethodBeat.o(78591);
       return;
     }
-    parama.i(Util.nullAsNil(localwq.ecJ.edd), null);
+    parama.i(Util.nullAsNil(localxw.fWO.fXj), null);
     AppMethodBeat.o(78591);
   }
   
-  public final void b(com.tencent.luggage.d.b<g>.a paramb) {}
+  public final void b(b<g>.a paramb) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 1;
   }

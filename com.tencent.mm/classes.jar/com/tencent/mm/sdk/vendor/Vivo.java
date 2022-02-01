@@ -12,13 +12,13 @@ public class Vivo
   
   public static boolean vivoSupportDarkMode()
   {
-    AppMethodBeat.i(214376);
+    AppMethodBeat.i(210096);
     try
     {
       Class localClass = Class.forName("android.util.FtFeature");
       bool = ((Boolean)localClass.getDeclaredMethod("isFeatureSupport", new Class[] { String.class }).invoke(localClass, new Object[] { "vivo.software.nightmode" })).booleanValue();
       Log.d("MicroMsg.Vendor.Vivo", "vivo supportDarkMode: %s", new Object[] { Boolean.valueOf(bool) });
-      AppMethodBeat.o(214376);
+      AppMethodBeat.o(210096);
       return bool;
     }
     catch (Exception localException)

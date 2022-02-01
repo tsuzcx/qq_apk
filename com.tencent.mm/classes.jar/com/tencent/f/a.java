@@ -1,90 +1,45 @@
 package com.tencent.f;
 
-import com.tencent.f.b.d;
-import com.tencent.f.g.a.b;
-import com.tencent.f.g.h.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.HashMap;
 
 public final class a
+  implements com.tencent.f.b.a
 {
-  public static g.b RSx;
-  public static boolean cWq;
-  public int RSq;
-  public int RSr;
-  public int RSs;
-  public b RSt;
-  public h.a RSu;
-  public d RSv;
-  public boolean RSw = true;
-  public long zrg;
+  private g ZQt;
+  private boolean aji = true;
   
-  static
+  protected a(g paramg)
   {
-    AppMethodBeat.i(256656);
-    cWq = false;
-    RSx = new g.b()
-    {
-      public final void a(Thread paramAnonymousThread, String paramAnonymousString) {}
-      
-      public final boolean eCC()
-      {
-        return false;
-      }
-      
-      public final boolean eCD()
-      {
-        return false;
-      }
-    };
-    AppMethodBeat.o(256656);
+    this.ZQt = paramg;
   }
   
-  public static final class a
+  public final void F(String paramString, Object paramObject)
   {
-    public a RSy;
-    
-    public a()
+    AppMethodBeat.i(62811);
+    if (!this.aji)
     {
-      AppMethodBeat.i(183098);
-      this.RSy = new a((byte)0);
-      AppMethodBeat.o(183098);
+      AppMethodBeat.o(62811);
+      return;
     }
-    
-    public final a a(h.a parama)
+    f localf = f.itv();
+    if (paramObject == null)
     {
-      this.RSy.RSu = parama;
-      return this;
+      paramString = new h("TpfServiceCenter|registerService|name or service should not be null");
+      AppMethodBeat.o(62811);
+      throw paramString;
     }
-    
-    public final a aqO(int paramInt)
+    synchronized (localf.ZQz)
     {
-      this.RSy.RSs = paramInt;
-      return this;
-    }
-    
-    public final a hlX()
-    {
-      this.RSy.zrg = 259200000L;
-      return this;
-    }
-    
-    public final a hlY()
-    {
-      this.RSy.RSw = true;
-      return this;
-    }
-    
-    public final a mv(int paramInt1, int paramInt2)
-    {
-      this.RSy.RSr = paramInt1;
-      this.RSy.RSq = paramInt2;
-      return this;
+      localf.ZQx.put(paramString, paramObject);
+      AppMethodBeat.o(62811);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.f.a
  * JD-Core Version:    0.7.0.1
  */

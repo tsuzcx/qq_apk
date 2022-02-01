@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
-import com.tencent.mm.protocal.protobuf.ahm;
-import com.tencent.mm.protocal.protobuf.ahn;
-import com.tencent.mm.protocal.protobuf.cpp;
+import com.tencent.mm.protocal.protobuf.ahx;
+import com.tencent.mm.protocal.protobuf.ahy;
+import com.tencent.mm.protocal.protobuf.cyf;
 
 public final class n
   extends k.b
 {
-  private cpp CXR;
+  private cyf Jdx;
   
   public n()
   {
@@ -20,26 +20,26 @@ public final class n
   {
     super(31);
     AppMethodBeat.i(73783);
-    this.CXR = new cpp();
-    ahm localahm = new ahm();
+    this.Jdx = new cyf();
+    ahx localahx = new ahx();
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      localahm.Lrk = i;
+      localahx.SsH = i;
       i = j;
       if (paramBoolean) {
         i = 0;
       }
-      localahm.Lrm = i;
-      ahn localahn = new ahn();
-      localahn.Lro = paramInt1;
-      localahn.Lrp = paramInt2;
-      localahm.Lrl = localahn;
-      localahn.Lro = 0;
-      localahn.Lrp = 0;
-      localahm.Lrn = localahn;
-      this.CXR.MvH = localahm;
-      this.zqv = this.CXR;
+      localahx.SsJ = i;
+      ahy localahy = new ahy();
+      localahy.SsL = paramInt1;
+      localahy.SsM = paramInt2;
+      localahx.SsI = localahy;
+      localahy.SsL = 0;
+      localahy.SsM = 0;
+      localahx.SsK = localahy;
+      this.Jdx.TGF = localahx;
+      this.EVU = this.Jdx;
       AppMethodBeat.o(73783);
       return;
     }
@@ -47,7 +47,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.model.n
  * JD-Core Version:    0.7.0.1
  */

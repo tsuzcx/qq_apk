@@ -40,7 +40,7 @@ final class VFSNativeAPI
       localObject1 = null;
       try
       {
-        localObject3 = s.nv(paramString, (String)localObject3);
+        localObject3 = u.om(paramString, (String)localObject3);
         if (localObject3 != null)
         {
           localObject1 = localObject3;
@@ -53,7 +53,7 @@ final class VFSNativeAPI
         }
         else
         {
-          aa.closeQuietly((Closeable)localObject3);
+          ad.closeQuietly((Closeable)localObject3);
         }
       }
       catch (IOException localIOException)
@@ -62,12 +62,12 @@ final class VFSNativeAPI
         {
           localObject2 = localObject1;
           Log.e("VFS.VFSNativeAPI", localIOException, "Failed to open file descriptor for file: ".concat(String.valueOf(paramString)));
-          aa.closeQuietly((Closeable)localObject1);
+          ad.closeQuietly((Closeable)localObject1);
         }
       }
       finally
       {
-        aa.closeQuietly((Closeable)localObject2);
+        ad.closeQuietly((Closeable)localObject2);
         AppMethodBeat.o(13321);
       }
     }
@@ -77,7 +77,7 @@ final class VFSNativeAPI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vfs.VFSNativeAPI
  * JD-Core Version:    0.7.0.1
  */

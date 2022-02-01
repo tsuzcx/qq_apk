@@ -7,7 +7,7 @@ import com.tencent.kinda.gen.KContactService;
 import com.tencent.kinda.gen.KImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.g;
 
 public class ContactServiceImpl
   implements KContactService
@@ -35,7 +35,7 @@ public class ContactServiceImpl
   public String getUserName()
   {
     AppMethodBeat.i(18624);
-    String str = f.getUsername();
+    String str = g.getUsername();
     AppMethodBeat.o(18624);
     return str;
   }
@@ -47,7 +47,7 @@ public class ContactServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.ContactServiceImpl
  * JD-Core Version:    0.7.0.1
  */

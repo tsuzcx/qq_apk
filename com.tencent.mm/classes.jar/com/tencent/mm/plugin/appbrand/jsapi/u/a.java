@@ -1,29 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi.u;
 
-import com.tencent.luggage.a.b;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import kotlin.l;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.x;
+import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.widget.g.b;
+import com.tencent.mm.plugin.appbrand.widget.g.b.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.LinkedList;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/IReferrerHelper;", "Lcom/tencent/luggage/base/ICustomize;", "defaultReferrerPolicy", "Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "getDefaultReferrerPolicy", "()Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "parseReferrerPolicy", "referrerPolicyStr", "", "parseReferrerPolicyFallback", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "parseReferrerPolicyOrFallback", "data", "Lorg/json/JSONObject;", "parseReferrerPolicyStr", "provideReferrer", "luggage-commons_release"})
-public abstract interface a
-  extends b
+public final class a
+  extends c<v>
 {
-  public abstract c a(JSONObject paramJSONObject, f paramf);
-  
-  public abstract c aaF(String paramString);
-  
-  public abstract String af(JSONObject paramJSONObject);
-  
-  public abstract c bIw();
-  
-  public abstract c x(f paramf);
-  
-  public abstract String y(f paramf);
+  private static final int CTRL_INDEX = 106;
+  private static final String NAME = "hideToast";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.u.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,15 @@
 package com.tencent.mm.plugin.collect.reward.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.wu;
-import com.tencent.mm.protocal.protobuf.wv;
+import com.tencent.mm.protocal.protobuf.wy;
+import com.tencent.mm.protocal.protobuf.wz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
@@ -25,26 +24,26 @@ public final class g
 {
   private final String TAG;
   private i callback;
-  public wv qxG;
   private d rr;
+  public wz tWG;
   
   public g(LinkedList<Integer> paramLinkedList, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(63908);
     this.TAG = "MicroMsg.NetSceneQrRewardSetCode";
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new wu();
-    ((d.a)localObject).iLO = new wv();
+    ((d.a)localObject).lBU = new wy();
+    ((d.a)localObject).lBV = new wz();
     ((d.a)localObject).funcId = 1562;
     ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/setrewardqrcode";
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (wu)this.rr.iLK.iLR;
-    ((wu)localObject).Lhn = paramLinkedList;
-    ((wu)localObject).desc = paramString;
-    ((wu)localObject).LhR = paramBoolean1;
-    ((wu)localObject).LhS = paramBoolean2;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (wy)d.b.b(this.rr.lBR);
+    ((wy)localObject).SiB = paramLinkedList;
+    ((wy)localObject).desc = paramString;
+    ((wy)localObject).Sjf = paramBoolean1;
+    ((wy)localObject).Sjg = paramBoolean2;
     Log.i("MicroMsg.NetSceneQrRewardSetCode", "desc: %s, flag: %s, default: %s", new Object[] { paramString, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
     AppMethodBeat.o(63908);
   }
@@ -53,24 +52,24 @@ public final class g
   {
     AppMethodBeat.i(63910);
     Log.i("MicroMsg.NetSceneQrRewardSetCode", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.qxG = ((wv)((d)params).iLL.iLR);
-    Log.i("MicroMsg.NetSceneQrRewardSetCode", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.qxG.dDN), this.qxG.qwn });
-    if ((!this.qxx) && (this.qxG.dDN != 0)) {
-      this.qxy = true;
+    this.tWG = ((wz)d.c.b(((d)params).lBS));
+    Log.i("MicroMsg.NetSceneQrRewardSetCode", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.tWG.fwx), this.tWG.tVo });
+    if ((!this.tWx) && (this.tWG.fwx != 0)) {
+      this.tWy = true;
     }
-    if ((!this.qxx) && (!this.qxy))
+    if ((!this.tWx) && (!this.tWy))
     {
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Oej, Integer.valueOf(this.qxG.Lhq));
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Oek, Integer.valueOf(this.qxG.Lhm));
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Oem, this.qxG.desc);
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Oes, this.qxG.Cog);
+      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vsu, Integer.valueOf(this.tWG.SiE));
+      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vsv, Integer.valueOf(this.tWG.SiA));
+      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vsx, this.tWG.desc);
+      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VsD, this.tWG.IkZ);
       params = new ArrayList();
-      Iterator localIterator = this.qxG.Lhn.iterator();
+      Iterator localIterator = this.tWG.SiB.iterator();
       while (localIterator.hasNext()) {
         params.add(String.valueOf(((Integer)localIterator.next()).intValue()));
       }
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Oep, Util.listToString(params, ","));
-      h.CyF.idkeyStat(724L, 5L, 1L, false);
+      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VsA, Util.listToString(params, ","));
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(724L, 5L, 1L, false);
     }
     for (;;)
     {
@@ -79,10 +78,10 @@ public final class g
       }
       AppMethodBeat.o(63910);
       return;
-      if (this.qxx) {
-        h.CyF.idkeyStat(724L, 7L, 1L, false);
+      if (this.tWx) {
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(724L, 7L, 1L, false);
       } else {
-        h.CyF.idkeyStat(724L, 6L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(724L, 6L, 1L, false);
       }
     }
   }

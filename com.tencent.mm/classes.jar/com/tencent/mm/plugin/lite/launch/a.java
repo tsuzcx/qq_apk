@@ -6,7 +6,7 @@ public abstract interface a
 {
   public abstract void a(WxaLiteAppInfo paramWxaLiteAppInfo);
   
-  public abstract void dTu();
+  public abstract void ewD();
 }
 
 

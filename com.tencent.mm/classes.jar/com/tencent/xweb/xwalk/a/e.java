@@ -5,15 +5,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class e
   extends m
 {
-  public final String ata(int paramInt)
+  public final String aCW(int paramInt)
   {
     AppMethodBeat.i(157180);
-    String str = dA(paramInt, "pdfreader.apk");
+    String str = dC(paramInt, "pdfreader.apk");
     AppMethodBeat.o(157180);
     return str;
   }
   
-  public final int atb(int paramInt)
+  public final int aCX(int paramInt)
   {
     if (paramInt == 1) {
       return 250;
@@ -26,19 +26,19 @@ public final class e
     return "XFilesPDFReader";
   }
   
-  public final String hvg()
+  public final String iyZ()
   {
     return "com.tencent.xweb.xfiles.pdf.PDFReader";
   }
   
-  public final String hvh()
+  public final String iza()
   {
     return "com.tencent.xweb.xfiles.pdf.PDFReaderEnvironment";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.xwalk.a.e
  * JD-Core Version:    0.7.0.1
  */

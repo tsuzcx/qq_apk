@@ -8,22 +8,22 @@ import org.json.JSONObject;
 
 final class q
 {
-  private static final long bLT;
-  final String bLU;
-  private final String bLV;
+  private static final long bJy;
+  private final String bJA;
+  final String bJz;
   private final long timestamp;
   
   static
   {
     AppMethodBeat.i(4200);
-    bLT = TimeUnit.DAYS.toMillis(7L);
+    bJy = TimeUnit.DAYS.toMillis(7L);
     AppMethodBeat.o(4200);
   }
   
   private q(String paramString1, String paramString2, long paramLong)
   {
-    this.bLU = paramString1;
-    this.bLV = paramString2;
+    this.bJz = paramString1;
+    this.bJA = paramString2;
     this.timestamp = paramLong;
   }
   
@@ -49,7 +49,7 @@ final class q
     return null;
   }
   
-  static q bR(String paramString)
+  static q cd(String paramString)
   {
     AppMethodBeat.i(4197);
     if (TextUtils.isEmpty(paramString))
@@ -78,10 +78,10 @@ final class q
     return paramString;
   }
   
-  final boolean bS(String paramString)
+  final boolean ce(String paramString)
   {
     AppMethodBeat.i(4199);
-    if ((System.currentTimeMillis() > this.timestamp + bLT) || (!paramString.equals(this.bLV)))
+    if ((System.currentTimeMillis() > this.timestamp + bJy) || (!paramString.equals(this.bJA)))
     {
       AppMethodBeat.o(4199);
       return true;
@@ -92,7 +92,7 @@ final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.firebase.iid.q
  * JD-Core Version:    0.7.0.1
  */

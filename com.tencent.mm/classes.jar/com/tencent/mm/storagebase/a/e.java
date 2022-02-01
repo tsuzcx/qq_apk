@@ -12,50 +12,35 @@ public final class e
   extends AbstractCursor
   implements d
 {
-  private d OtU;
-  public d[] OtV;
+  private d VJS;
+  public d[] VJT;
   private DataSetObserver mObserver;
   
   public e(d[] paramArrayOfd)
   {
     AppMethodBeat.i(133446);
-    this.mObserver = new DataSetObserver()
+    this.mObserver = new e.1(this);
+    this.VJT = paramArrayOfd;
+    this.VJS = paramArrayOfd[0];
+    while (i < this.VJT.length)
     {
-      public final void onChanged()
-      {
-        AppMethodBeat.i(133444);
-        e.a(e.this);
-        AppMethodBeat.o(133444);
-      }
-      
-      public final void onInvalidated()
-      {
-        AppMethodBeat.i(133445);
-        e.b(e.this);
-        AppMethodBeat.o(133445);
-      }
-    };
-    this.OtV = paramArrayOfd;
-    this.OtU = paramArrayOfd[0];
-    while (i < this.OtV.length)
-    {
-      if (this.OtV[i] != null) {
-        this.OtV[i].registerDataSetObserver(this.mObserver);
+      if (this.VJT[i] != null) {
+        this.VJT[i].registerDataSetObserver(this.mObserver);
       }
       i += 1;
     }
     AppMethodBeat.o(133446);
   }
   
-  public final void AO(boolean paramBoolean)
+  public final void EV(boolean paramBoolean)
   {
     AppMethodBeat.i(133466);
-    int j = this.OtV.length;
+    int j = this.VJT.length;
     int i = 0;
     while (i < j)
     {
-      if (this.OtV[i] != null) {
-        this.OtV[i].AO(paramBoolean);
+      if (this.VJT[i] != null) {
+        this.VJT[i].EV(paramBoolean);
       }
       i += 1;
     }
@@ -65,12 +50,12 @@ public final class e
   public final void a(f.a parama)
   {
     AppMethodBeat.i(133465);
-    int j = this.OtV.length;
+    int j = this.VJT.length;
     int i = 0;
     while (i < j)
     {
-      if (this.OtV[i] != null) {
-        this.OtV[i].a(parama);
+      if (this.VJT[i] != null) {
+        this.VJT[i].a(parama);
       }
       i += 1;
     }
@@ -80,16 +65,16 @@ public final class e
   public final boolean a(Object paramObject, a parama)
   {
     AppMethodBeat.i(133469);
-    int j = this.OtV.length;
+    int j = this.VJT.length;
     int i = 0;
     boolean bool2;
     for (boolean bool1 = false; i < j; bool1 = bool2)
     {
       bool2 = bool1;
-      if (this.OtV[i] != null)
+      if (this.VJT[i] != null)
       {
         bool2 = bool1;
-        if (this.OtV[i].a(paramObject, parama)) {
+        if (this.VJT[i].a(paramObject, parama)) {
           bool2 = true;
         }
       }
@@ -99,34 +84,19 @@ public final class e
     return bool1;
   }
   
-  public final void akA(int paramInt)
-  {
-    AppMethodBeat.i(133474);
-    int j = this.OtV.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (this.OtV[i] != null) {
-        this.OtV[i].akA(paramInt);
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(133474);
-  }
-  
-  public final boolean aky(int paramInt)
+  public final boolean asV(int paramInt)
   {
     AppMethodBeat.i(133471);
-    int j = this.OtV.length;
+    int j = this.VJT.length;
     boolean bool1 = true;
     int i = 0;
     while (i < j)
     {
       boolean bool2 = bool1;
-      if (this.OtV[i] != null)
+      if (this.VJT[i] != null)
       {
         bool2 = bool1;
-        if (!this.OtV[i].aky(paramInt)) {
+        if (!this.VJT[i].asV(paramInt)) {
           bool2 = false;
         }
       }
@@ -137,19 +107,19 @@ public final class e
     return bool1;
   }
   
-  public final a akz(int paramInt)
+  public final a asW(int paramInt)
   {
     AppMethodBeat.i(133468);
-    int k = this.OtV.length;
+    int k = this.VJT.length;
     int j = 0;
     int i = paramInt;
     paramInt = j;
     while (paramInt < k)
     {
-      j = this.OtV[paramInt].getCount();
+      j = this.VJT[paramInt].getCount();
       if (i < j)
       {
-        a locala = this.OtV[paramInt].akz(i);
+        a locala = this.VJT[paramInt].asW(i);
         AppMethodBeat.o(133468);
         return locala;
       }
@@ -160,15 +130,30 @@ public final class e
     return null;
   }
   
-  public final void close()
+  public final void asX(int paramInt)
   {
-    AppMethodBeat.i(133459);
-    int j = this.OtV.length;
+    AppMethodBeat.i(133474);
+    int j = this.VJT.length;
     int i = 0;
     while (i < j)
     {
-      if (this.OtV[i] != null) {
-        this.OtV[i].close();
+      if (this.VJT[i] != null) {
+        this.VJT[i].asX(paramInt);
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(133474);
+  }
+  
+  public final void close()
+  {
+    AppMethodBeat.i(133459);
+    int j = this.VJT.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (this.VJT[i] != null) {
+        this.VJT[i].close();
       }
       i += 1;
     }
@@ -181,12 +166,12 @@ public final class e
   public final void deactivate()
   {
     AppMethodBeat.i(133458);
-    int j = this.OtV.length;
+    int j = this.VJT.length;
     int i = 0;
     while (i < j)
     {
-      if (this.OtV[i] != null) {
-        this.OtV[i].deactivate();
+      if (this.VJT[i] != null) {
+        this.VJT[i].deactivate();
       }
       i += 1;
     }
@@ -194,19 +179,19 @@ public final class e
     AppMethodBeat.o(133458);
   }
   
-  public final boolean ed(Object paramObject)
+  public final boolean eh(Object paramObject)
   {
     AppMethodBeat.i(133472);
-    int j = this.OtV.length;
+    int j = this.VJT.length;
     int i = 0;
     boolean bool2;
     for (boolean bool1 = false; i < j; bool1 = bool2)
     {
       bool2 = bool1;
-      if (this.OtV[i] != null)
+      if (this.VJT[i] != null)
       {
         bool2 = bool1;
-        if (this.OtV[i].ed(paramObject)) {
+        if (this.VJT[i].eh(paramObject)) {
           bool2 = true;
         }
       }
@@ -216,23 +201,110 @@ public final class e
     return bool1;
   }
   
-  public final a ee(Object paramObject)
+  public final a ei(Object paramObject)
   {
     AppMethodBeat.i(133473);
-    paramObject = this.OtU.ee(paramObject);
+    paramObject = this.VJS.ei(paramObject);
     AppMethodBeat.o(133473);
     return paramObject;
   }
   
-  public final SparseArray<Object>[] gFv()
+  public final byte[] getBlob(int paramInt)
+  {
+    AppMethodBeat.i(133456);
+    byte[] arrayOfByte = this.VJS.getBlob(paramInt);
+    AppMethodBeat.o(133456);
+    return arrayOfByte;
+  }
+  
+  public final String[] getColumnNames()
+  {
+    AppMethodBeat.i(133457);
+    if (this.VJS != null)
+    {
+      String[] arrayOfString = this.VJS.getColumnNames();
+      AppMethodBeat.o(133457);
+      return arrayOfString;
+    }
+    AppMethodBeat.o(133457);
+    return new String[0];
+  }
+  
+  public final int getCount()
+  {
+    AppMethodBeat.i(133447);
+    int m = this.VJT.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
+    {
+      k = j;
+      if (this.VJT[i] != null) {
+        k = j + this.VJT[i].getCount();
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(133447);
+    return j;
+  }
+  
+  public final double getDouble(int paramInt)
+  {
+    AppMethodBeat.i(133454);
+    double d = this.VJS.getDouble(paramInt);
+    AppMethodBeat.o(133454);
+    return d;
+  }
+  
+  public final float getFloat(int paramInt)
+  {
+    AppMethodBeat.i(133453);
+    float f = this.VJS.getFloat(paramInt);
+    AppMethodBeat.o(133453);
+    return f;
+  }
+  
+  public final int getInt(int paramInt)
+  {
+    AppMethodBeat.i(133451);
+    paramInt = this.VJS.getInt(paramInt);
+    AppMethodBeat.o(133451);
+    return paramInt;
+  }
+  
+  public final long getLong(int paramInt)
+  {
+    AppMethodBeat.i(133452);
+    long l = this.VJS.getLong(paramInt);
+    AppMethodBeat.o(133452);
+    return l;
+  }
+  
+  public final short getShort(int paramInt)
+  {
+    AppMethodBeat.i(133450);
+    short s = this.VJS.getShort(paramInt);
+    AppMethodBeat.o(133450);
+    return s;
+  }
+  
+  public final String getString(int paramInt)
+  {
+    AppMethodBeat.i(133449);
+    String str = this.VJS.getString(paramInt);
+    AppMethodBeat.o(133449);
+    return str;
+  }
+  
+  public final SparseArray<Object>[] hBN()
   {
     AppMethodBeat.i(133470);
-    int j = this.OtV.length;
+    int j = this.VJT.length;
     SparseArray[] arrayOfSparseArray = new SparseArray[j];
     int i = 0;
     if (i < j)
     {
-      Object localObject = this.OtV[i].gFv();
+      Object localObject = this.VJT[i].hBN();
       if (localObject != null) {}
       for (localObject = localObject[0];; localObject = null)
       {
@@ -245,24 +317,24 @@ public final class e
     return arrayOfSparseArray;
   }
   
-  public final HashMap gFw()
+  public final HashMap hBO()
   {
     return null;
   }
   
-  public final boolean gFx()
+  public final boolean hBP()
   {
     AppMethodBeat.i(133467);
-    int j = this.OtV.length;
+    int j = this.VJT.length;
     boolean bool1 = true;
     int i = 0;
     while (i < j)
     {
       boolean bool2 = bool1;
-      if (this.OtV[i] != null)
+      if (this.VJT[i] != null)
       {
         bool2 = bool1;
-        if (!this.OtV[i].gFx()) {
+        if (!this.VJT[i].hBP()) {
           bool2 = false;
         }
       }
@@ -273,97 +345,10 @@ public final class e
     return bool1;
   }
   
-  public final byte[] getBlob(int paramInt)
-  {
-    AppMethodBeat.i(133456);
-    byte[] arrayOfByte = this.OtU.getBlob(paramInt);
-    AppMethodBeat.o(133456);
-    return arrayOfByte;
-  }
-  
-  public final String[] getColumnNames()
-  {
-    AppMethodBeat.i(133457);
-    if (this.OtU != null)
-    {
-      String[] arrayOfString = this.OtU.getColumnNames();
-      AppMethodBeat.o(133457);
-      return arrayOfString;
-    }
-    AppMethodBeat.o(133457);
-    return new String[0];
-  }
-  
-  public final int getCount()
-  {
-    AppMethodBeat.i(133447);
-    int m = this.OtV.length;
-    int i = 0;
-    int k;
-    for (int j = 0; i < m; j = k)
-    {
-      k = j;
-      if (this.OtV[i] != null) {
-        k = j + this.OtV[i].getCount();
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(133447);
-    return j;
-  }
-  
-  public final double getDouble(int paramInt)
-  {
-    AppMethodBeat.i(133454);
-    double d = this.OtU.getDouble(paramInt);
-    AppMethodBeat.o(133454);
-    return d;
-  }
-  
-  public final float getFloat(int paramInt)
-  {
-    AppMethodBeat.i(133453);
-    float f = this.OtU.getFloat(paramInt);
-    AppMethodBeat.o(133453);
-    return f;
-  }
-  
-  public final int getInt(int paramInt)
-  {
-    AppMethodBeat.i(133451);
-    paramInt = this.OtU.getInt(paramInt);
-    AppMethodBeat.o(133451);
-    return paramInt;
-  }
-  
-  public final long getLong(int paramInt)
-  {
-    AppMethodBeat.i(133452);
-    long l = this.OtU.getLong(paramInt);
-    AppMethodBeat.o(133452);
-    return l;
-  }
-  
-  public final short getShort(int paramInt)
-  {
-    AppMethodBeat.i(133450);
-    short s = this.OtU.getShort(paramInt);
-    AppMethodBeat.o(133450);
-    return s;
-  }
-  
-  public final String getString(int paramInt)
-  {
-    AppMethodBeat.i(133449);
-    String str = this.OtU.getString(paramInt);
-    AppMethodBeat.o(133449);
-    return str;
-  }
-  
   public final boolean isNull(int paramInt)
   {
     AppMethodBeat.i(133455);
-    boolean bool = this.OtU.isNull(paramInt);
+    boolean bool = this.VJS.isNull(paramInt);
     AppMethodBeat.o(133455);
     return bool;
   }
@@ -371,8 +356,8 @@ public final class e
   public final boolean onMove(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(133448);
-    this.OtU = null;
-    int k = this.OtV.length;
+    this.VJS = null;
+    int k = this.VJT.length;
     paramInt1 = 0;
     int j;
     for (int i = 0;; i = j)
@@ -380,23 +365,23 @@ public final class e
       if (paramInt1 < k)
       {
         j = i;
-        if (this.OtV[paramInt1] == null) {
+        if (this.VJT[paramInt1] == null) {
           break label110;
         }
-        if (paramInt2 < this.OtV[paramInt1].getCount() + i) {
-          this.OtU = this.OtV[paramInt1];
+        if (paramInt2 < this.VJT[paramInt1].getCount() + i) {
+          this.VJS = this.VJT[paramInt1];
         }
       }
       else
       {
-        if (this.OtU == null) {
+        if (this.VJS == null) {
           break;
         }
-        boolean bool = this.OtU.moveToPosition(paramInt2 - i);
+        boolean bool = this.VJS.moveToPosition(paramInt2 - i);
         AppMethodBeat.o(133448);
         return bool;
       }
-      j = i + this.OtV[paramInt1].getCount();
+      j = i + this.VJT[paramInt1].getCount();
       label110:
       paramInt1 += 1;
     }
@@ -407,12 +392,12 @@ public final class e
   public final void registerContentObserver(ContentObserver paramContentObserver)
   {
     AppMethodBeat.i(133460);
-    int j = this.OtV.length;
+    int j = this.VJT.length;
     int i = 0;
     while (i < j)
     {
-      if (this.OtV[i] != null) {
-        this.OtV[i].registerContentObserver(paramContentObserver);
+      if (this.VJT[i] != null) {
+        this.VJT[i].registerContentObserver(paramContentObserver);
       }
       i += 1;
     }
@@ -422,12 +407,12 @@ public final class e
   public final void registerDataSetObserver(DataSetObserver paramDataSetObserver)
   {
     AppMethodBeat.i(133462);
-    int j = this.OtV.length;
+    int j = this.VJT.length;
     int i = 0;
     while (i < j)
     {
-      if (this.OtV[i] != null) {
-        this.OtV[i].registerDataSetObserver(paramDataSetObserver);
+      if (this.VJT[i] != null) {
+        this.VJT[i].registerDataSetObserver(paramDataSetObserver);
       }
       i += 1;
     }
@@ -437,11 +422,11 @@ public final class e
   public final boolean requery()
   {
     AppMethodBeat.i(133464);
-    int j = this.OtV.length;
+    int j = this.VJT.length;
     int i = 0;
     while (i < j)
     {
-      if ((this.OtV[i] != null) && (!this.OtV[i].requery()))
+      if ((this.VJT[i] != null) && (!this.VJT[i].requery()))
       {
         AppMethodBeat.o(133464);
         return false;
@@ -455,12 +440,12 @@ public final class e
   public final void unregisterContentObserver(ContentObserver paramContentObserver)
   {
     AppMethodBeat.i(133461);
-    int j = this.OtV.length;
+    int j = this.VJT.length;
     int i = 0;
     while (i < j)
     {
-      if (this.OtV[i] != null) {
-        this.OtV[i].unregisterContentObserver(paramContentObserver);
+      if (this.VJT[i] != null) {
+        this.VJT[i].unregisterContentObserver(paramContentObserver);
       }
       i += 1;
     }
@@ -470,12 +455,12 @@ public final class e
   public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
   {
     AppMethodBeat.i(133463);
-    int j = this.OtV.length;
+    int j = this.VJT.length;
     int i = 0;
     while (i < j)
     {
-      if (this.OtV[i] != null) {
-        this.OtV[i].unregisterDataSetObserver(paramDataSetObserver);
+      if (this.VJT[i] != null) {
+        this.VJT[i].unregisterDataSetObserver(paramDataSetObserver);
       }
       i += 1;
     }
@@ -484,7 +469,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.storagebase.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.le;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.a.lv;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.ui.WalletOrderInfoNewUI;
 import com.tencent.mm.sdk.event.EventCenter;
@@ -18,21 +18,21 @@ import java.util.Set;
 public class WalletIbgOrderInfoNewUI
   extends WalletOrderInfoNewUI
 {
-  private Orders HFH;
+  private Orders OxA;
   
   public final void done()
   {
     AppMethodBeat.i(71445);
     Log.i("MicroMsg.WalletIbgOrderInfoNewUI", "hy: result is not set manly. set to OK");
-    Iterator localIterator = this.Ihn.iterator();
+    Iterator localIterator = this.OZt.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
       if (!Util.isNullOrNil(str))
       {
         Log.d("MicroMsg.WalletIbgOrderInfoNewUI", "hy: doing netscene subscribe...appName: %s", new Object[] { str });
-        g.aAi();
-        g.aAg().hqi.a(new com.tencent.mm.wallet_core.c.t(str), 0);
+        h.aHH();
+        h.aHF().kcd.a(new com.tencent.mm.wallet_core.c.t(str), 0);
       }
     }
     setResult(-1);
@@ -40,22 +40,22 @@ public class WalletIbgOrderInfoNewUI
     AppMethodBeat.o(71445);
   }
   
-  public final void fSE() {}
+  public final void gLk() {}
   
-  public final Orders fSS()
+  public final Orders gLy()
   {
-    return this.HFH;
+    return this.OxA;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(71444);
-    this.HFH = WalletIbgOrderInfoUI.HFH;
+    this.OxA = WalletIbgOrderInfoUI.OxA;
     super.onCreate(paramBundle);
-    paramBundle = new le();
-    paramBundle.dQr.requestCode = 25;
-    paramBundle.dQr.resultCode = -1;
-    paramBundle.dQr.dQs = new Intent();
+    paramBundle = new lv();
+    paramBundle.fJI.requestCode = 25;
+    paramBundle.fJI.resultCode = -1;
+    paramBundle.fJI.fJJ = new Intent();
     EventCenter.instance.publish(paramBundle);
     AppMethodBeat.o(71444);
   }

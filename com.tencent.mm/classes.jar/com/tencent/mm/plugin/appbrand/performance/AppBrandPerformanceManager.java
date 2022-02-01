@@ -7,34 +7,36 @@ import android.os.Parcelable.Creator;
 import android.os.Process;
 import android.util.SparseArray;
 import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
-import com.tencent.luggage.sdk.d.d;
+import com.tencent.luggage.sdk.e.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ad;
 import com.tencent.mm.model.ad.b;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.ac.m;
 import com.tencent.mm.plugin.appbrand.ac.m.a;
-import com.tencent.mm.plugin.appbrand.h.c;
-import com.tencent.mm.plugin.appbrand.h.d;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
+import com.tencent.mm.plugin.appbrand.appstorage.g;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.storage.GetStorageSizeTask;
-import com.tencent.mm.plugin.appbrand.ui.v;
+import com.tencent.mm.plugin.appbrand.k;
+import com.tencent.mm.plugin.appbrand.k.c;
+import com.tencent.mm.plugin.appbrand.k.d;
+import com.tencent.mm.plugin.appbrand.ui.u;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @SuppressLint({"DefaultLocale"})
 public class AppBrandPerformanceManager
 {
-  protected static final SparseArray<a> nwB;
+  protected static final SparseArray<a> qyE;
   
   static
   {
     AppMethodBeat.i(147593);
-    nwB = new SparseArray();
+    qyE = new SparseArray();
     AppMethodBeat.o(147593);
   }
   
@@ -49,14 +51,14 @@ public class AppBrandPerformanceManager
   {
     AppMethodBeat.i(147587);
     String str = paramd.mAppId;
-    paramd = paramd.cCl;
+    paramd = paramd.cCO;
     if (paramd == null)
     {
-      ad.aVe().G(str.hashCode() + "performance_data", true).l(String.valueOf(paramInt), paramString);
+      ad.beh().I(str.hashCode() + "performance_data", true).k(String.valueOf(paramInt), paramString);
       AppMethodBeat.o(147587);
       return;
     }
-    paramd.aw(paramInt, paramString);
+    paramd.ay(paramInt, paramString);
     AppMethodBeat.o(147587);
   }
   
@@ -71,74 +73,74 @@ public class AppBrandPerformanceManager
   {
     AppMethodBeat.i(147588);
     String str = paramd.mAppId;
-    paramd = paramd.cCl;
+    paramd = paramd.cCO;
     if (paramd == null)
     {
-      ad.aVe().G(str.hashCode() + "performance_custom_data", true).l(paramString1, paramString2);
+      ad.beh().I(str.hashCode() + "performance_custom_data", true).k(paramString1, paramString2);
       AppMethodBeat.o(147588);
       return;
     }
-    paramd.eL(paramString1, paramString2);
+    paramd.eZ(paramString1, paramString2);
     AppMethodBeat.o(147588);
   }
   
-  public static void aei(String paramString)
+  public static void amc(String paramString)
   {
     AppMethodBeat.i(147582);
     Log.d("MicroMsg.AppBrandPerformanceManager", "stopMonitoring, appId: %s", new Object[] { paramString });
     int i = paramString.hashCode();
-    paramString = (a)nwB.get(i);
+    paramString = (a)qyE.get(i);
     if (paramString != null)
     {
-      nwB.remove(i);
+      qyE.remove(i);
       paramString.stop();
     }
     AppMethodBeat.o(147582);
   }
   
-  public static void aej(String paramString)
+  public static void amd(String paramString)
   {
     AppMethodBeat.i(147583);
     Log.d("MicroMsg.AppBrandPerformanceManager", "enablePanel for AppId %s", new Object[] { paramString });
     SetAppPerformanceModeTask localSetAppPerformanceModeTask = new SetAppPerformanceModeTask((byte)0);
     SetAppPerformanceModeTask.a(localSetAppPerformanceModeTask, paramString);
     SetAppPerformanceModeTask.a(localSetAppPerformanceModeTask, true);
-    AppBrandMainProcessService.a(localSetAppPerformanceModeTask);
+    localSetAppPerformanceModeTask.bsM();
     AppMethodBeat.o(147583);
   }
   
-  public static void aek(String paramString)
+  public static void ame(String paramString)
   {
     AppMethodBeat.i(147584);
     Log.d("MicroMsg.AppBrandPerformanceManager", "disablePanel for AppId %s", new Object[] { paramString });
     SetAppPerformanceModeTask localSetAppPerformanceModeTask = new SetAppPerformanceModeTask((byte)0);
     SetAppPerformanceModeTask.a(localSetAppPerformanceModeTask, paramString);
     SetAppPerformanceModeTask.a(localSetAppPerformanceModeTask, false);
-    AppBrandMainProcessService.a(localSetAppPerformanceModeTask);
+    localSetAppPerformanceModeTask.bsM();
     AppMethodBeat.o(147584);
   }
   
-  public static void d(d paramd)
+  public static void j(d paramd)
   {
     AppMethodBeat.i(147581);
     String str = paramd.mAppId;
     Log.d("MicroMsg.AppBrandPerformanceManager", "startMonitoring, appId: %s", new Object[] { str });
-    a locala2 = (a)nwB.get(str.hashCode());
+    a locala2 = (a)qyE.get(str.hashCode());
     a locala1 = locala2;
     if (locala2 == null)
     {
       locala1 = new a(paramd);
-      nwB.put(str.hashCode(), locala1);
+      qyE.put(str.hashCode(), locala1);
     }
     locala1.start();
     AppMethodBeat.o(147581);
   }
   
-  public static boolean e(d paramd)
+  public static boolean k(d paramd)
   {
     AppMethodBeat.i(147585);
-    paramd = (a)paramd.av(a.class);
-    if ((paramd != null) && (paramd.nwy))
+    paramd = (a)paramd.au(a.class);
+    if ((paramd != null) && (paramd.qyB))
     {
       AppMethodBeat.o(147585);
       return true;
@@ -147,18 +149,18 @@ public class AppBrandPerformanceManager
     return false;
   }
   
-  public static void f(d paramd)
+  public static void l(d paramd)
   {
     AppMethodBeat.i(147589);
     Object localObject = paramd.mAppId;
-    v localv = paramd.cCl;
-    localObject = ad.aVe().JW(((String)localObject).hashCode() + "performance_data");
-    if (localv == null) {
+    u localu = paramd.cCO;
+    localObject = ad.beh().Ro(((String)localObject).hashCode() + "performance_data");
+    if (localu == null) {
       Log.e("MicroMsg.AppBrandPerformanceManager", "insertCachedPerformanceData panel is not ready.");
     }
     for (;;)
     {
-      g(paramd);
+      m(paramd);
       AppMethodBeat.o(147589);
       return;
       if (localObject == null)
@@ -173,19 +175,19 @@ public class AppBrandPerformanceManager
           String str1 = (String)localIterator.next();
           String str2 = (String)((ad.b)localObject).get(str1);
           if (str2 != null) {
-            localv.aw(Util.getInt(str1, 0), str2);
+            localu.ay(Util.getInt(str1, 0), str2);
           }
         }
       }
     }
   }
   
-  private static void g(d paramd)
+  private static void m(d paramd)
   {
     AppMethodBeat.i(147590);
     Object localObject = paramd.mAppId;
-    paramd = paramd.cCl;
-    localObject = ad.aVe().JW(((String)localObject).hashCode() + "performance_custom_data");
+    paramd = paramd.cCO;
+    localObject = ad.beh().Ro(((String)localObject).hashCode() + "performance_custom_data");
     if (paramd == null)
     {
       Log.e("MicroMsg.AppBrandPerformanceManager", "insertCachedCustomData panel is not ready.");
@@ -204,21 +206,21 @@ public class AppBrandPerformanceManager
       String str1 = (String)localIterator.next();
       String str2 = (String)((ad.b)localObject).get(str1);
       if (str2 != null) {
-        paramd.eL(str1, str2);
+        paramd.eZ(str1, str2);
       }
     }
     AppMethodBeat.o(147590);
   }
   
-  public static boolean h(d paramd)
+  public static boolean n(d paramd)
   {
     AppMethodBeat.i(147592);
-    if (!e(paramd))
+    if (!k(paramd))
     {
       AppMethodBeat.o(147592);
       return false;
     }
-    boolean bool = c.ael(paramd.mAppId);
+    boolean bool = c.amf(paramd.mAppId);
     AppMethodBeat.o(147592);
     return bool;
   }
@@ -237,15 +239,15 @@ public class AppBrandPerformanceManager
       AppMethodBeat.o(147580);
     }
     
-    public final void bjj()
+    public final void RW()
     {
       AppMethodBeat.i(147577);
-      com.tencent.mm.plugin.appbrand.config.e locale = ((com.tencent.luggage.sdk.customize.a)com.tencent.luggage.a.e.M(com.tencent.luggage.sdk.customize.a.class)).NL();
+      com.tencent.mm.plugin.appbrand.config.e locale = ((com.tencent.luggage.sdk.customize.a)com.tencent.luggage.a.e.K(com.tencent.luggage.sdk.customize.a.class)).QG();
       String str2 = this.mAppId + "_PerformancePanelEnabled";
       if (this.mEnable) {}
       for (String str1 = "1";; str1 = "0")
       {
-        locale.cN(str2, str1);
+        locale.cW(str2, str1);
         AppMethodBeat.o(147577);
         return;
       }
@@ -281,53 +283,37 @@ public class AppBrandPerformanceManager
   protected static class a
     implements Runnable
   {
-    volatile boolean CA;
-    protected final d cBE;
+    volatile boolean arU;
+    protected final d cBh;
     protected final String mAppId;
     private volatile boolean mEnabled;
-    private volatile double nwC;
-    private volatile int nwD;
-    private volatile boolean nwE;
-    protected volatile boolean nwF;
-    private e nwG;
-    f nwH;
-    f.a nwI;
-    private h.c nwJ;
+    private volatile double qyF;
+    private volatile int qyG;
+    private volatile boolean qyH;
+    protected volatile boolean qyI;
+    private e qyJ;
+    f qyK;
+    private k.c qyL;
     
     public a(d paramd)
     {
       AppMethodBeat.i(147570);
-      this.nwC = 0.0D;
-      this.nwD = 4;
+      this.qyF = 0.0D;
+      this.qyG = 4;
       this.mEnabled = true;
-      this.CA = false;
-      this.nwE = false;
-      this.nwF = false;
-      this.nwI = new f.a()
+      this.arU = false;
+      this.qyH = false;
+      this.qyI = false;
+      this.qyL = new k.c()
       {
-        public final void t(double paramAnonymousDouble)
-        {
-          AppMethodBeat.i(147566);
-          if (Math.round(AppBrandPerformanceManager.a.a(AppBrandPerformanceManager.a.this)) != Math.round(paramAnonymousDouble))
-          {
-            AppBrandPerformanceManager.a.a(AppBrandPerformanceManager.a.this, paramAnonymousDouble);
-            String str = Math.round(AppBrandPerformanceManager.a.a(AppBrandPerformanceManager.a.this)) + " fps";
-            AppBrandPerformanceManager.a(AppBrandPerformanceManager.a.this.cBE, 303, str);
-            c.a(AppBrandPerformanceManager.a.this.mAppId, "Hardware", "FPS", AppBrandPerformanceManager.a.a(AppBrandPerformanceManager.a.this));
-          }
-          AppMethodBeat.o(147566);
-        }
-      };
-      this.nwJ = new h.c()
-      {
-        public final void a(h.d paramAnonymousd)
+        public final void a(k.d paramAnonymousd)
         {
           AppMethodBeat.i(147568);
           super.a(paramAnonymousd);
           paramAnonymousd = AppBrandPerformanceManager.a.this;
-          paramAnonymousd.CA = true;
-          if ((AppBrandPerformanceManager.a.bSJ()) && (paramAnonymousd.nwH != null)) {
-            paramAnonymousd.nwH.stop();
+          paramAnonymousd.arU = true;
+          if ((AppBrandPerformanceManager.a.cfM()) && (paramAnonymousd.qyK != null)) {
+            paramAnonymousd.qyK.stop();
           }
           AppMethodBeat.o(147568);
         }
@@ -345,116 +331,109 @@ public class AppBrandPerformanceManager
           AppMethodBeat.i(147569);
           super.onResume();
           AppBrandPerformanceManager.a locala = AppBrandPerformanceManager.a.this;
-          locala.CA = false;
-          if ((AppBrandPerformanceManager.a.bSJ()) && (locala.nwH != null)) {
-            locala.nwH.start();
+          locala.arU = false;
+          if ((AppBrandPerformanceManager.a.cfM()) && (locala.qyK != null)) {
+            locala.qyK.start();
           }
           AppMethodBeat.o(147569);
         }
       };
-      this.cBE = paramd;
+      this.cBh = paramd;
       this.mAppId = paramd.mAppId;
-      this.nwG = new e(Process.myPid());
-      this.nwF = false;
-      if (bSJ())
-      {
-        this.nwH = new f();
-        this.nwH.mInterval = 100L;
-        this.nwH.nwI = this.nwI;
-      }
+      this.qyJ = new e(Process.myPid());
+      this.qyI = false;
       AppMethodBeat.o(147570);
     }
     
-    static boolean bSJ()
+    static boolean cfM()
     {
       return Build.VERSION.SDK_INT >= 16;
     }
     
-    private void bSQ()
+    private void cfT()
     {
       AppMethodBeat.i(147574);
-      Object localObject = this.cBE.OM();
+      Object localObject = this.cBh.Sj();
       if (localObject == null)
       {
         AppMethodBeat.o(147574);
         return;
       }
-      if (((AppBrandSysConfigLU)localObject).leF == 1)
+      if (((AppBrandSysConfigLU)localObject).nYS == 1)
       {
         localObject = new GetStorageSizeTask();
         ((GetStorageSizeTask)localObject).appId = this.mAppId;
-        ((GetStorageSizeTask)localObject).lyv = new Runnable()
+        ((GetStorageSizeTask)localObject).otv = new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(147565);
-            AppBrandPerformanceManager.a(AppBrandPerformanceManager.a.this.cBE, 401, Util.getSizeKB(this.nwK.size));
-            this.nwK.bDK();
-            AppMethodBeat.o(147565);
+            AppMethodBeat.i(247029);
+            AppBrandPerformanceManager.a(AppBrandPerformanceManager.a.this.cBh, 401, Util.getSizeKB(this.qyN.size));
+            this.qyN.bPk();
+            AppMethodBeat.o(247029);
           }
         };
-        ((GetStorageSizeTask)localObject).bDJ();
-        AppBrandMainProcessService.a((MainProcessTask)localObject);
+        ((GetStorageSizeTask)localObject).bsM();
         AppMethodBeat.o(147574);
         return;
       }
-      AppBrandPerformanceManager.a(this.cBE, 401, Util.getSizeKB(((com.tencent.luggage.sdk.customize.a)com.tencent.luggage.a.e.M(com.tencent.luggage.sdk.customize.a.class)).dD(this.mAppId).VL(this.mAppId)));
+      AppBrandPerformanceManager.a(this.cBh, 401, Util.getSizeKB(((com.tencent.luggage.sdk.customize.a)com.tencent.luggage.a.e.K(com.tencent.luggage.sdk.customize.a.class)).dX(this.mAppId).adw(this.mAppId)));
       AppMethodBeat.o(147574);
     }
     
-    protected void bSK()
+    protected void cfN()
     {
       AppMethodBeat.i(147573);
       int i = Util.getSelfMemInMB(MMApplicationContext.getContext());
-      AppBrandPerformanceManager.a(this.cBE, 102, i + "m");
+      AppBrandPerformanceManager.a(this.cBh, 102, i + "m");
       c.a(this.mAppId, "Hardware", "MEMORY", i);
       AppMethodBeat.o(147573);
     }
     
-    protected void bSL()
+    protected void cfO()
     {
-      if (!this.nwF) {}
+      if (!this.qyI) {}
     }
     
-    protected void bSM()
+    protected void cfP()
     {
-      if (!this.nwF) {}
+      if (!this.qyI) {}
     }
     
-    protected void bSN() {}
+    protected void cfQ() {}
     
-    protected void bSO() {}
+    protected void cfR() {}
     
-    protected void bSP() {}
+    protected void cfS() {}
     
     public void run()
     {
       AppMethodBeat.i(147575);
-      if (this.cBE.isDestroyed())
+      if (this.cBh.ntU.get())
       {
         AppMethodBeat.o(147575);
         return;
       }
-      if ((this.mEnabled) && (!this.CA))
+      if ((this.mEnabled) && (!this.arU))
       {
-        double d = this.nwG.bSU();
-        AppBrandPerformanceManager.a(this.cBE, 101, (int)d + "%");
+        double d = this.qyJ.cfX();
+        AppBrandPerformanceManager.a(this.cBh, 101, (int)d + "%");
         c.a(this.mAppId, "Hardware", "CPU", d);
-        bSK();
-        bSL();
-        bSM();
-        bSN();
-        bSO();
-        bSP();
-        this.nwD += 1;
-        if (this.nwD >= 4)
+        cfN();
+        cfO();
+        cfP();
+        cfQ();
+        cfR();
+        cfS();
+        this.qyG += 1;
+        if (this.qyG >= 4)
         {
-          this.nwD = 0;
-          bSQ();
+          this.qyG = 0;
+          cfT();
         }
       }
       if (this.mEnabled) {
-        m.bZn().j(this, 1000L);
+        m.clV().i(this, 1000L);
       }
       AppMethodBeat.o(147575);
     }
@@ -462,11 +441,32 @@ public class AppBrandPerformanceManager
     public final void start()
     {
       AppMethodBeat.i(147571);
+      if ((!this.qyI) && (cfM()))
+      {
+        f.a local1 = new f.a()
+        {
+          public final void t(double paramAnonymousDouble)
+          {
+            AppMethodBeat.i(244069);
+            if (Math.round(AppBrandPerformanceManager.a.a(AppBrandPerformanceManager.a.this)) != Math.round(paramAnonymousDouble))
+            {
+              AppBrandPerformanceManager.a.a(AppBrandPerformanceManager.a.this, paramAnonymousDouble);
+              String str = Math.round(AppBrandPerformanceManager.a.a(AppBrandPerformanceManager.a.this)) + " fps";
+              AppBrandPerformanceManager.a(AppBrandPerformanceManager.a.this.cBh, 303, str);
+              c.a(AppBrandPerformanceManager.a.this.mAppId, "Hardware", "FPS", AppBrandPerformanceManager.a.a(AppBrandPerformanceManager.a.this));
+            }
+            AppMethodBeat.o(244069);
+          }
+        };
+        this.qyK = new f();
+        this.qyK.mInterval = 100L;
+        this.qyK.qzc = local1;
+      }
       this.mEnabled = true;
-      m.bZn().postToWorker(this);
-      com.tencent.mm.plugin.appbrand.h.a(this.mAppId, this.nwJ);
-      if ((bSJ()) && (this.nwH != null)) {
-        this.nwH.start();
+      m.clV().postToWorker(this);
+      k.a(this.mAppId, this.qyL);
+      if ((cfM()) && (this.qyK != null)) {
+        this.qyK.start();
       }
       AppMethodBeat.o(147571);
     }
@@ -475,12 +475,12 @@ public class AppBrandPerformanceManager
     {
       AppMethodBeat.i(147572);
       this.mEnabled = false;
-      com.tencent.mm.plugin.appbrand.h.b(this.mAppId, this.nwJ);
-      if ((bSJ()) && (this.nwH != null)) {
-        this.nwH.stop();
+      k.b(this.mAppId, this.qyL);
+      if ((cfM()) && (this.qyK != null)) {
+        this.qyK.stop();
       }
-      if (this.nwG != null) {
-        this.nwG.close();
+      if (this.qyJ != null) {
+        this.qyJ.close();
       }
       AppMethodBeat.o(147572);
     }
@@ -488,7 +488,7 @@ public class AppBrandPerformanceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.performance.AppBrandPerformanceManager
  * JD-Core Version:    0.7.0.1
  */

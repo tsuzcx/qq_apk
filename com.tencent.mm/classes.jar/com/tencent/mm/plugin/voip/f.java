@@ -6,19 +6,19 @@ import com.tencent.mm.q.a;
 
 public final class f
 {
-  public static boolean cC(Context paramContext)
+  public static boolean cy(Context paramContext)
   {
-    AppMethodBeat.i(258653);
-    boolean bool = a.cC(paramContext);
-    AppMethodBeat.o(258653);
+    AppMethodBeat.i(292765);
+    boolean bool = a.cy(paramContext);
+    AppMethodBeat.o(292765);
     return bool;
   }
   
-  public static boolean hy(Context paramContext)
+  public static boolean iE(Context paramContext)
   {
-    AppMethodBeat.i(258652);
-    boolean bool = a.o(paramContext, true);
-    AppMethodBeat.o(258652);
+    AppMethodBeat.i(292764);
+    boolean bool = a.p(paramContext, true);
+    AppMethodBeat.o(292764);
     return bool;
   }
 }

@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="arx">2.0dip</dimen>
+    <dimen name="ary">24.0dip</dimen>
+    <dimen name="arz">2.0dip</dimen>
+    <dimen name="as0">2.0dip</dimen>
+    <dimen name="as1">2.0dip</dimen>
+    <dimen name="as3">14.0dip</dimen>
+    <dimen name="as5">1.0dip</dimen>
+    <dimen name="as6">10.0dip</dimen>
+    <dimen name="as8">24.0dip</dimen>
+    <dimen name="as9">20.0dip</dimen>
+    <dimen name="as_">2.0dip</dimen>
+    <dimen name="asa">17.0dip</dimen>
+    <dimen name="asb">14.0dip</dimen>
+    <dimen name="asc">14.0dip</dimen>
+    <dimen name="asd">8.0dip</dimen>
+    <dimen name="ash">2.0dip</dimen>
+    <dimen name="asi">2.0dip</dimen>
+    <dimen name="asj">14.0dip</dimen>
+    <dimen name="asn">24.0dip</dimen>
+    <dimen name="aso">17.0dip</dimen>
+    <item type="dimen" name="asv">@dimen/cl</item>
     <dimen name="lx">48.0dip</dimen>
     <dimen name="nt">12.0dip</dimen>
     <dimen name="nv">14.0dip</dimen>
@@ -7,6 +28,29 @@
     <dimen name="or">52.0dip</dimen>
     <item type="dimen" name="ot">@dimen/ow</item>
     <dimen name="ow">24.0dip</dimen>
+    <item type="dimen" name="atv">@dimen/co</item>
+    <dimen name="atw">72.0dip</dimen>
+    <dimen name="arm">40.0dip</dimen>
+    <dimen name="arn">28.0dip</dimen>
+    <item type="dimen" name="arp">@dimen/cf</item>
+    <dimen name="aud">32.0dip</dimen>
+    <dimen name="aui">53.0dip</dimen>
+    <dimen name="aul">53.0dip</dimen>
+    <dimen name="aup">212.0dip</dimen>
+    <dimen name="arq">160.0dip</dimen>
+    <item type="dimen" name="aut">@dimen/cf</item>
+    <item type="dimen" name="auu">@dimen/c5</item>
+    <dimen name="avb">39.5dip</dimen>
+    <dimen name="avd">30.0dip</dimen>
+    <dimen name="ave">14.0dip</dimen>
+    <dimen name="avf">2.0dip</dimen>
+    <dimen name="avu">58.0dip</dimen>
+    <item type="dimen" name="avv">@dimen/c5</item>
+    <item type="dimen" name="aw0">@dimen/ci</item>
+    <item type="dimen" name="aw1">@dimen/cc</item>
+    <item type="dimen" name="aw5">@dimen/cc</item>
+    <dimen name="aw6">10.0dip</dimen>
+    <item type="dimen" name="aw7">@dimen/c5</item>
     <item type="dimen" name="a_r">@dimen/ci</item>
     <item type="dimen" name="apf">@dimen/b8</item>
 </resources>

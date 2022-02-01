@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.gallery;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.model.be;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.n;
@@ -26,10 +26,10 @@ public class Plugin
     return local1;
   }
   
-  public bd createSubCore()
+  public be createSubCore()
   {
     AppMethodBeat.i(111229);
-    bd local2 = new bd()
+    be local2 = new be()
     {
       public final void clearPluginData(int paramAnonymousInt) {}
       
@@ -55,7 +55,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.Plugin
  * JD-Core Version:    0.7.0.1
  */

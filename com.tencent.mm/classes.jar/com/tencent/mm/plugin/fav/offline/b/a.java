@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.fav.offline.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bz;
+import com.tencent.mm.f.c.bz;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -10,7 +10,7 @@ public final class a
   extends bz
 {
   protected static IAutoDBItem.MAutoDBInfo info;
-  public boolean tcL = true;
+  public boolean wIW = true;
   
   static
   {
@@ -72,7 +72,7 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(73564);
-    String str = "FavOffline{isMustWifi=" + this.tcL + ", field_url='" + this.field_url + '\'' + ", field_size=" + this.field_size + ", field_path='" + this.field_path + '\'' + ", field_imgDirPath='" + this.field_imgDirPath + '\'' + ", field_imgPaths='" + this.field_imgPaths + '\'' + ", field_favTime=" + this.field_favTime + ", field_updateTime=" + this.field_updateTime + ", field_status=" + this.field_status + ", field_failNum=" + this.field_failNum + ", field_isReport=" + this.field_isReport + ", systemRowid=" + this.systemRowid + '}';
+    String str = "FavOffline{isMustWifi=" + this.wIW + ", field_url='" + this.field_url + '\'' + ", field_size=" + this.field_size + ", field_path='" + this.field_path + '\'' + ", field_imgDirPath='" + this.field_imgDirPath + '\'' + ", field_imgPaths='" + this.field_imgPaths + '\'' + ", field_favTime=" + this.field_favTime + ", field_updateTime=" + this.field_updateTime + ", field_status=" + this.field_status + ", field_failNum=" + this.field_failNum + ", field_isReport=" + this.field_isReport + ", systemRowid=" + this.systemRowid + '}';
     AppMethodBeat.o(73564);
     return str;
   }

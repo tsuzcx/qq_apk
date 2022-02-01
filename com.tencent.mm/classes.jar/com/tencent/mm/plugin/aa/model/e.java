@@ -1,127 +1,126 @@
 package com.tencent.mm.plugin.aa.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.n;
-import com.tencent.mm.protocal.protobuf.p;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.protocal.protobuf.o;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.vending.g.b;
+import com.tencent.mm.vending.g.g;
 
 public final class e
-  implements com.tencent.mm.ak.i
+  implements com.tencent.mm.an.i
 {
-  private static int jSq = 20;
-  private static int jSr = 20;
-  private static int jSs = 20;
-  private static long jSt = 4000000L;
-  private static long jSu = 200000L;
-  b jSi;
-  public String jSv = "";
-  public String jSw = "";
+  private static int mJD = 20;
+  private static int mJE = 20;
+  private static int mJF = 20;
+  private static long mJG = 4000000L;
+  private static long mJH = 200000L;
+  public String mJI = "";
+  public String mJJ = "";
+  b mJv;
   
   public e() {}
   
   public e(String paramString1, String paramString2)
   {
-    this.jSv = paramString1;
-    this.jSw = paramString2;
+    this.mJI = paramString1;
+    this.mJJ = paramString2;
   }
   
-  public static void a(n paramn)
+  public static void a(o paramo)
   {
     AppMethodBeat.i(63330);
-    com.tencent.mm.kernel.g.aAi();
-    com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NYL, Integer.valueOf(paramn.jTs));
-    com.tencent.mm.kernel.g.aAi();
-    com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NYM, Integer.valueOf(paramn.jTt));
-    com.tencent.mm.kernel.g.aAi();
-    com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NYN, Integer.valueOf(paramn.jTu));
-    com.tencent.mm.kernel.g.aAi();
-    com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NYO, Long.valueOf(paramn.jTv));
-    com.tencent.mm.kernel.g.aAi();
-    com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NYP, Long.valueOf(paramn.jTw));
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmL, Integer.valueOf(paramo.mKG));
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmM, Integer.valueOf(paramo.mKH));
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmN, Integer.valueOf(paramo.mKI));
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmO, Long.valueOf(paramo.mKJ));
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmP, Long.valueOf(paramo.mKK));
     AppMethodBeat.o(63330);
   }
   
-  public static int bmf()
+  public static int bwn()
   {
     AppMethodBeat.i(63326);
-    com.tencent.mm.kernel.g.aAi();
-    int i = ((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.NYL, Integer.valueOf(jSq))).intValue();
+    com.tencent.mm.kernel.h.aHH();
+    int i = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VmL, Integer.valueOf(mJD))).intValue();
     AppMethodBeat.o(63326);
     return i;
   }
   
-  public static int bmg()
+  public static int bwo()
   {
     AppMethodBeat.i(63327);
-    com.tencent.mm.kernel.g.aAi();
-    int i = ((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.NYN, Integer.valueOf(jSs))).intValue();
+    com.tencent.mm.kernel.h.aHH();
+    int i = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VmN, Integer.valueOf(mJF))).intValue();
     AppMethodBeat.o(63327);
     return i;
   }
   
-  public static long bmh()
+  public static long bwp()
   {
     AppMethodBeat.i(63328);
-    com.tencent.mm.kernel.g.aAi();
-    long l = ((Long)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.NYP, Long.valueOf(jSu))).longValue();
+    com.tencent.mm.kernel.h.aHH();
+    long l = ((Long)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VmP, Long.valueOf(mJH))).longValue();
     AppMethodBeat.o(63328);
     return l;
   }
   
-  public static int bmi()
+  public static int bwq()
   {
-    AppMethodBeat.i(212940);
-    com.tencent.mm.kernel.g.aAi();
-    int i = ((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.NYQ, Integer.valueOf(2))).intValue();
-    AppMethodBeat.o(212940);
+    AppMethodBeat.i(271042);
+    com.tencent.mm.kernel.h.aHH();
+    int i = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VmQ, Integer.valueOf(2))).intValue();
+    AppMethodBeat.o(271042);
     return i;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
   {
     AppMethodBeat.i(63329);
     Log.i("MicroMsg.AAOperationData", "get AAOperation, onSceneEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = ((com.tencent.mm.plugin.aa.model.cgi.i)paramq).jTl;
-      Log.i("MicroMsg.AAOperationData", "get AAOperation data, retCode: %s, retMsg: %s, max_payer_num: %s, max_receiver_num: %s, max_total_num: %s, max_total_amount: %s, max_per_amount: %s, notice: %s, notice_url: %s,response.default_mod:%s", new Object[] { Integer.valueOf(paramString.dDN), paramString.qwn, Integer.valueOf(paramString.jTs), Integer.valueOf(paramString.jTt), Integer.valueOf(paramString.jTu), Long.valueOf(paramString.jTv), Long.valueOf(paramString.jTw), paramString.jTx, paramString.jTy, Integer.valueOf(paramString.KBJ) });
-      if (paramString.dDN == 0)
+      paramString = ((com.tencent.mm.plugin.aa.model.cgi.i)paramq).mKz;
+      Log.i("MicroMsg.AAOperationData", "get AAOperation data, retCode: %s, retMsg: %s, max_payer_num: %s, max_receiver_num: %s, max_total_num: %s, max_total_amount: %s, max_per_amount: %s, notice: %s, notice_url: %s,response.default_mod:%s", new Object[] { Integer.valueOf(paramString.fwx), paramString.tVo, Integer.valueOf(paramString.mKG), Integer.valueOf(paramString.mKH), Integer.valueOf(paramString.mKI), Long.valueOf(paramString.mKJ), Long.valueOf(paramString.mKK), paramString.mKL, paramString.mKM, Integer.valueOf(paramString.RDA) });
+      if (paramString.fwx == 0)
       {
-        com.tencent.mm.kernel.g.aAi();
-        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NYL, Integer.valueOf(paramString.jTs));
-        com.tencent.mm.kernel.g.aAi();
-        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NYM, Integer.valueOf(paramString.jTt));
-        com.tencent.mm.kernel.g.aAi();
-        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NYN, Integer.valueOf(paramString.jTu));
-        com.tencent.mm.kernel.g.aAi();
-        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NYO, Long.valueOf(paramString.jTv));
-        com.tencent.mm.kernel.g.aAi();
-        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NYP, Long.valueOf(paramString.jTw));
-        com.tencent.mm.kernel.g.aAi();
-        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NYQ, Integer.valueOf(paramString.KBJ));
-        h.CyF.idkeyStat(407L, 33L, 1L, false);
-        com.tencent.mm.vending.g.g.a(this.jSi, new Object[] { new e(paramString.jTy, paramString.jTx) });
+        com.tencent.mm.kernel.h.aHH();
+        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmL, Integer.valueOf(paramString.mKG));
+        com.tencent.mm.kernel.h.aHH();
+        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmM, Integer.valueOf(paramString.mKH));
+        com.tencent.mm.kernel.h.aHH();
+        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmN, Integer.valueOf(paramString.mKI));
+        com.tencent.mm.kernel.h.aHH();
+        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmO, Long.valueOf(paramString.mKJ));
+        com.tencent.mm.kernel.h.aHH();
+        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmP, Long.valueOf(paramString.mKK));
+        com.tencent.mm.kernel.h.aHH();
+        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmQ, Integer.valueOf(paramString.RDA));
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(407L, 33L, 1L, false);
+        g.a(this.mJv, new Object[] { new e(paramString.mKM, paramString.mKL) });
         AppMethodBeat.o(63329);
         return;
       }
-      com.tencent.mm.vending.g.g.hdx().ej(Boolean.FALSE);
-      h.CyF.idkeyStat(407L, 35L, 1L, false);
+      g.ieE().eo(Boolean.FALSE);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(407L, 35L, 1L, false);
       AppMethodBeat.o(63329);
       return;
     }
-    com.tencent.mm.vending.g.g.hdx().ej(Boolean.FALSE);
-    h.CyF.idkeyStat(407L, 34L, 1L, false);
+    g.ieE().eo(Boolean.FALSE);
+    com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(407L, 34L, 1L, false);
     AppMethodBeat.o(63329);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.e
  * JD-Core Version:    0.7.0.1
  */

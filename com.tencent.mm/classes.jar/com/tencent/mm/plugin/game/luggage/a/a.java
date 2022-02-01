@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.game.luggage.a;
 
+import java.util.LinkedList;
 import java.util.Map;
 
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract boolean azA(String paramString);
+  public abstract String aJj(String paramString);
   
-  public abstract String azz(String paramString);
+  public abstract boolean aJk(String paramString);
   
-  public abstract Map<String, Class> dTm();
+  public abstract Map<String, Class> ewv();
+  
+  public abstract LinkedList<Class> eww();
 }
 
 

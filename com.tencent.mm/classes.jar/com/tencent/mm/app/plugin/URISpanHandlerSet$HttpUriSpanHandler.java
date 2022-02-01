@@ -5,9 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.l;
-import com.tencent.mm.br.c;
+import com.tencent.mm.R.l;
+import com.tencent.mm.ao.g;
+import com.tencent.mm.ao.l;
+import com.tencent.mm.by.c;
 import com.tencent.mm.model.ac;
 import com.tencent.mm.model.ad;
 import com.tencent.mm.model.ad.b;
@@ -26,56 +27,51 @@ import com.tencent.mm.sdk.platformtools.WeChatHosts;
 class URISpanHandlerSet$HttpUriSpanHandler
   extends URISpanHandlerSet.BaseUriSpanHandler
 {
-  private final String doh;
+  private final String fgM;
   
   URISpanHandlerSet$HttpUriSpanHandler(URISpanHandlerSet paramURISpanHandlerSet)
   {
     super(paramURISpanHandlerSet);
-    AppMethodBeat.i(231434);
-    this.doh = ("https://" + WeChatHosts.domainString(2131761726) + "/mp/newsubscribemsg?action=subscribepage");
-    AppMethodBeat.o(231434);
-  }
-  
-  final int[] Xp()
-  {
-    return new int[] { 1 };
+    AppMethodBeat.i(286407);
+    this.fgM = ("https://" + WeChatHosts.domainString(R.l.host_mp_weixin_qq_com) + "/mp/newsubscribemsg?action=subscribepage");
+    AppMethodBeat.o(286407);
   }
   
   final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
   {
-    AppMethodBeat.i(231435);
+    AppMethodBeat.i(286409);
     Object localObject2;
     Object localObject3;
     Object localObject4;
     int i;
     if (paramu.type == 1)
     {
-      if ((paramu != null) && (paramu.url.trim().startsWith(this.doh)))
+      if ((paramu != null) && (paramu.url.trim().startsWith(this.fgM)))
       {
         Log.i("MicroMsg.URISpanHandlerSet", "alvinluo processHttpLink subscribeMsgLink onClick url: %s", new Object[] { paramu.url });
         if (parami != null)
         {
-          if (!Util.isNullOrNil(paramu.tOw)) {
+          if (!Util.isNullOrNil(paramu.xyW)) {
             break label210;
           }
           localObject1 = paramu.username;
-          if (!g.Nb((String)localObject1)) {
+          if (!g.Ux((String)localObject1)) {
             break label210;
           }
           localObject2 = paramu.url;
           paramView = null;
-          if ((paramu.tXF instanceof String)) {
-            paramView = (String)paramu.tXF;
+          if ((paramu.xJA instanceof String)) {
+            paramView = (String)paramu.xJA;
           }
           if ((localObject1 != null) && (localObject2 != null))
           {
             Log.i("MicroMsg.URISpanHandlerSet", "alvinluo clickSubscribeMsgSpan bizUsername: %s, url: %s, content: %s", new Object[] { localObject1, localObject2, paramView });
-            localObject3 = b.jza;
-            localObject3 = b.Ru("name_biz");
+            localObject3 = b.moG;
+            localObject3 = b.YR("name_biz");
             localObject4 = new Bundle();
             ((Bundle)localObject4).putString("key_extra_content", paramView);
             if (localObject3 != null) {
-              ((ISubscribeMsgService)localObject3).a(URISpanHandlerSet.a(this.dnW), (String)localObject1, (String)localObject2, (Bundle)localObject4);
+              ((ISubscribeMsgService)localObject3).a(URISpanHandlerSet.a(this.fgB), (String)localObject1, (String)localObject2, (Bundle)localObject4);
             }
           }
         }
@@ -83,33 +79,33 @@ class URISpanHandlerSet$HttpUriSpanHandler
       label210:
       for (i = 1; i != 0; i = 0)
       {
-        AppMethodBeat.o(231435);
+        AppMethodBeat.o(286409);
         return true;
       }
-      if ((URISpanHandlerSet.a(this.dnW) != null) && ((URISpanHandlerSet.a(this.dnW) instanceof WebViewUI)))
+      if ((URISpanHandlerSet.a(this.fgB) != null) && ((URISpanHandlerSet.a(this.fgB) instanceof WebViewUI)))
       {
         i = 1;
-        paramu.ba(ah.class);
-        if ((URISpanHandlerSet.a(this.dnW) == null) || ((i != 0) && (!MMApplicationContext.isMMProcess()))) {
-          break label908;
+        paramu.bv(ah.class);
+        if ((URISpanHandlerSet.a(this.fgB) == null) || ((i != 0) && (!MMApplicationContext.isMMProcess()))) {
+          break label909;
         }
       }
     }
-    label900:
-    label908:
-    for (Object localObject1 = ai.aN("@" + paramu.url, URISpanHandlerSet.a(this.dnW).getString(2131761464));; localObject1 = null)
+    label901:
+    label909:
+    for (Object localObject1 = ai.aR("@" + paramu.url, URISpanHandlerSet.a(this.fgB).getString(R.l.eGk));; localObject1 = null)
     {
       if (parami != null) {}
       for (paramView = (String)parami.a(paramu);; paramView = null)
       {
-        if ((paramu.fromScene == 1) && (paramu.dTX != null)) {
-          l.S(paramu.dTX);
+        if ((paramu.fromScene == 1) && (paramu.fNz != null)) {
+          l.Y(paramu.fNz);
         }
         if ((localObject1 == null) || (!((ah)localObject1).enable))
         {
           localObject4 = paramu.url;
           if (((String)localObject4).toLowerCase().startsWith("http")) {
-            break label900;
+            break label901;
           }
           localObject4 = "http://".concat(String.valueOf(localObject4));
         }
@@ -121,24 +117,24 @@ class URISpanHandlerSet$HttpUriSpanHandler
           Object localObject5 = localObject1;
           localObject2 = localObject3;
           Bundle localBundle;
-          if (paramu.data != null)
+          if (paramu.bnW != null)
           {
             localObject5 = localObject1;
             localObject2 = localObject3;
-            if ((paramu.data instanceof Bundle))
+            if ((paramu.bnW instanceof Bundle))
             {
-              localBundle = (Bundle)paramu.data;
+              localBundle = (Bundle)paramu.bnW;
               long l = localBundle.getLong("msgSvrId", 0L);
               if (l == 0L) {
-                break label860;
+                break label861;
               }
               localObject1 = String.valueOf(l);
-              label470:
-              if (!Util.isNullOrNil(paramu.tOw)) {
-                break label872;
+              label471:
+              if (!Util.isNullOrNil(paramu.xyW)) {
+                break label873;
               }
               localObject3 = paramu.username;
-              label486:
+              label487:
               localObject5 = localObject1;
               localObject2 = localObject3;
               if (Util.isNullOrNil((String)localObject3))
@@ -151,13 +147,13 @@ class URISpanHandlerSet$HttpUriSpanHandler
           localIntent.putExtra("serverMsgID", localObject5);
           localIntent.putExtra("msgUsername", (String)localObject2);
           localIntent.putExtra("rawUrl", (String)localObject4);
-          if ((paramu.data != null) && ((paramu.data instanceof Bundle))) {
-            localIntent.putExtra("geta8key_scene", ((Bundle)paramu.data).getInt("geta8key_scene"));
+          if ((paramu.bnW != null) && ((paramu.bnW instanceof Bundle))) {
+            localIntent.putExtra("geta8key_scene", ((Bundle)paramu.bnW).getInt("geta8key_scene"));
           }
           localObject1 = paramu.mSessionId;
           if (!Util.isNullOrNil((String)localObject1))
           {
-            localObject4 = ad.aVe().JV((String)localObject1);
+            localObject4 = ad.beh().Rn((String)localObject1);
             if (localObject4 != null)
             {
               localObject2 = ((ad.b)localObject4).getString("prePublishId", null);
@@ -170,7 +166,7 @@ class URISpanHandlerSet$HttpUriSpanHandler
               localIntent.putExtra("prePublishId", (String)localObject2);
               localIntent.putExtra("preUsername", (String)localObject3);
               localIntent.putExtra("preChatName", (String)localObject4);
-              localIntent.putExtra("preChatTYPE", ac.aJ((String)localObject3, (String)localObject4));
+              localIntent.putExtra("preChatTYPE", ac.aN((String)localObject3, (String)localObject4));
             }
           }
           localObject1 = paramView;
@@ -186,23 +182,23 @@ class URISpanHandlerSet$HttpUriSpanHandler
           }
           for (;;)
           {
-            c.b(URISpanHandlerSet.a(this.dnW), "webview", ".ui.tools.WebViewUI", localIntent);
+            c.b(URISpanHandlerSet.a(this.fgB), "webview", ".ui.tools.WebViewUI", localIntent);
             if (parami != null) {
               parami.b(paramu);
             }
-            AppMethodBeat.o(231435);
+            AppMethodBeat.o(286409);
             return true;
             i = 0;
             break;
-            label860:
+            label861:
             localObject1 = localBundle.getString("serverMsgID");
-            break label470;
-            label872:
-            localObject3 = paramu.tOw;
-            break label486;
+            break label471;
+            label873:
+            localObject3 = paramu.xyW;
+            break label487;
             localIntent.addFlags(536870912);
           }
-          AppMethodBeat.o(231435);
+          AppMethodBeat.o(286409);
           return false;
         }
       }
@@ -214,7 +210,12 @@ class URISpanHandlerSet$HttpUriSpanHandler
     return false;
   }
   
-  final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
+  final int[] abR()
+  {
+    return new int[] { 1 };
+  }
+  
+  final com.tencent.mm.pluginsdk.ui.applet.u hi(String paramString)
   {
     AppMethodBeat.i(19719);
     if (paramString.trim().toLowerCase().startsWith("http")) {}

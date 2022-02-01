@@ -1,133 +1,138 @@
 package com.tencent.mm.plugin.finder.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.mix.i.b;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.storage.x;
-import com.tencent.mm.plugin.finder.utils.al;
-import com.tencent.mm.protocal.protobuf.cjl;
-import com.tencent.mm.sdk.platformtools.MD5Util;
+import com.tencent.mm.loader.d.b.b;
+import com.tencent.mm.loader.e.e;
+import com.tencent.mm.loader.f.g;
+import com.tencent.mm.loader.h.a.a;
+import com.tencent.mm.loader.h.f;
+import com.tencent.mm.plugin.finder.storage.u;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
+import javax.net.ssl.SSLHandshakeException;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/loader/FinderVideoCover;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "mediaObj", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "type", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "username", "", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;Ljava/lang/String;)V", "getDecodeKey", "getMediaType", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "uniqueValue", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/loader/FinderImageDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "()V", "loadDataImp", "", "item", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "Companion", "DefaultHttpClientFactory", "plugin-finder_release"})
 public final class q
-  implements o
+  extends com.tencent.mm.loader.d.b<w>
 {
-  public static final a uJo;
-  private cjl uIw;
-  private x uIx;
-  private String username;
+  public static final a ztM;
   
   static
   {
-    AppMethodBeat.i(248232);
-    uJo = new a((byte)0);
-    AppMethodBeat.o(248232);
+    AppMethodBeat.i(166323);
+    ztM = new a((byte)0);
+    AppMethodBeat.o(166323);
   }
   
-  private q(cjl paramcjl, x paramx, String paramString)
+  public final void a(a<w> parama, g paramg, b.b paramb)
   {
-    AppMethodBeat.i(248230);
-    String str = z.aTY();
-    p.g(str, "ConfigStorageLogic.getUsernameFromUserInfo()");
-    this.username = str;
-    this.uIw = paramcjl;
-    this.uIx = paramx;
-    this.username = paramString;
-    if (paramcjl.url == null) {
-      b.e("FinderVideoCover", "mediaObj.url == null " + Util.getStack());
-    }
-    AppMethodBeat.o(248230);
-  }
-  
-  public final String aBE()
-  {
-    AppMethodBeat.i(248229);
-    String str2 = this.uIw.coverUrl;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    p.g(str1, "mediaObj.coverUrl ?: \"\"");
-    AppMethodBeat.o(248229);
-    return str1;
-  }
-  
-  public final String auA()
-  {
-    AppMethodBeat.i(248228);
-    StringBuilder localStringBuilder = new StringBuilder("finder_video_cover_").append(this.uIx.detail).append('_');
-    if (Util.isNullOrNil(this.uIw.mediaId)) {}
-    for (String str = MD5Util.getMD5String(Util.nullAs(this.uIw.url, ""));; str = this.uIw.mediaId)
+    AppMethodBeat.i(166322);
+    p.k(parama, "item");
+    p.k(paramg, "fileNameCreator");
+    p.k(paramb, "callback");
+    try
     {
-      str = str;
-      AppMethodBeat.o(248228);
-      return str;
+      paramg = (w)parama.aSr();
+      if (paramg.dIX() == u.Aly)
+      {
+        parama = paramg.getUrl();
+        Log.i("Finder.ImageDownloader", "loadDataImp http " + paramg.dIX() + " thumbUrl " + paramg.aJi() + " url " + paramg.getUrl());
+        paramg = q.b.ztN;
+        p.k(parama, "url");
+        parama = q.b.aDp(parama);
+        if (parama.getResponseCode() < 300) {
+          break label172;
+        }
+        parama.disconnect();
+        Log.w("Finder.ImageDownloader", "dz[httpURLConnectionGet 300]");
+      }
+      label172:
+      Object localObject;
+      for (parama = null;; parama = com.tencent.mm.loader.h.b.d((byte[])localObject, paramg))
+      {
+        if (parama == null) {
+          break label204;
+        }
+        paramb.a((f)parama);
+        AppMethodBeat.o(166322);
+        return;
+        parama = paramg.aJi();
+        break;
+        localObject = parama.getInputStream();
+        paramg = parama.getContentType();
+        localObject = e.p((InputStream)localObject);
+        parama.disconnect();
+      }
+      label204:
+      paramb.onError();
+      AppMethodBeat.o(166322);
+      return;
+    }
+    catch (InterruptedException parama)
+    {
+      Log.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { Util.stackTraceToString((Throwable)parama) });
+      paramb.onError();
+      AppMethodBeat.o(166322);
+      return;
+    }
+    catch (UnknownHostException parama)
+    {
+      for (;;)
+      {
+        Log.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { Util.stackTraceToString((Throwable)parama) });
+      }
+    }
+    catch (SSLHandshakeException parama)
+    {
+      for (;;)
+      {
+        Log.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { Util.stackTraceToString((Throwable)parama) });
+      }
+    }
+    catch (SocketException parama)
+    {
+      for (;;)
+      {
+        Log.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { Util.stackTraceToString((Throwable)parama) });
+      }
+    }
+    catch (SocketTimeoutException parama)
+    {
+      for (;;)
+      {
+        Log.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { Util.stackTraceToString((Throwable)parama) });
+      }
+    }
+    catch (IOException parama)
+    {
+      for (;;)
+      {
+        Log.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { Util.stackTraceToString((Throwable)parama) });
+      }
+    }
+    catch (Exception parama)
+    {
+      for (;;)
+      {
+        Log.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { Util.stackTraceToString((Throwable)parama) });
+      }
     }
   }
   
-  public final x djU()
-  {
-    return this.uIx;
-  }
-  
-  public final String djV()
-  {
-    String str2 = this.uIw.decodeKey;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    return str1;
-  }
-  
-  public final String djW()
-  {
-    String str2 = this.uIw.cover_url_token;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    return str1;
-  }
-  
-  public final String djX()
-  {
-    String str2 = this.uIw.cover_url_token;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    return str1;
-  }
-  
-  public final String getPath()
-  {
-    AppMethodBeat.i(248227);
-    Object localObject = al.waC;
-    localObject = al.a(this);
-    AppMethodBeat.o(248227);
-    return localObject;
-  }
-  
-  public final String getUrl()
-  {
-    String str2 = this.uIw.coverUrl;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    return str1;
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/loader/FinderVideoCover$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/loader/FinderImageDownloader$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.loader.q
  * JD-Core Version:    0.7.0.1
  */

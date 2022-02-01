@@ -19,27 +19,27 @@ import com.tencent.mm.plugin.facedetect.model.q;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.service.MMService;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 
 public class FaceDetectProcessService
   extends MMService
 {
-  private a sSN;
-  public g sSO;
-  private Messenger sSP;
-  private a sSQ;
+  private a wyJ;
+  public g wyK;
+  private Messenger wyL;
+  private a wyM;
   
   public FaceDetectProcessService()
   {
     AppMethodBeat.i(103859);
-    this.sSN = new a();
-    this.sSO = null;
-    this.sSP = null;
-    this.sSQ = null;
+    this.wyJ = new a();
+    this.wyK = null;
+    this.wyL = null;
+    this.wyM = null;
     AppMethodBeat.o(103859);
   }
   
-  private void fR(int paramInt1, int paramInt2)
+  private void go(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(103866);
     Log.i("MicroMsg.FaceDetectProcessService", "alvinluo replyToClient requestCode: %d, resultCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
@@ -55,10 +55,10 @@ public class FaceDetectProcessService
     AppMethodBeat.i(103865);
     try
     {
-      if (this.sSP != null)
+      if (this.wyL != null)
       {
-        Log.i("MicroMsg.FaceDetectProcessService", "alvinluo serivce send msg to client: %d, msg: %s, client hashCode: %d", new Object[] { Integer.valueOf(paramMessage.what), paramMessage.toString(), Integer.valueOf(this.sSP.hashCode()) });
-        this.sSP.send(paramMessage);
+        Log.i("MicroMsg.FaceDetectProcessService", "alvinluo serivce send msg to client: %d, msg: %s, client hashCode: %d", new Object[] { Integer.valueOf(paramMessage.what), paramMessage.toString(), Integer.valueOf(this.wyL.hashCode()) });
+        this.wyL.send(paramMessage);
       }
       AppMethodBeat.o(103865);
       return;
@@ -70,7 +70,7 @@ public class FaceDetectProcessService
     }
   }
   
-  private void o(int paramInt, Bundle paramBundle)
+  private void q(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(103867);
     Message localMessage = Message.obtain();
@@ -82,12 +82,12 @@ public class FaceDetectProcessService
     AppMethodBeat.o(103867);
   }
   
-  public final IBinder akL()
+  public final IBinder aqH()
   {
     AppMethodBeat.i(103862);
     Log.i("MicroMsg.FaceDetectProcessService", "alvinluo service onBind hashCode: %d", new Object[] { Integer.valueOf(hashCode()) });
-    this.sSN = new a();
-    a locala = this.sSN;
+    this.wyJ = new a();
+    a locala = this.wyJ;
     AppMethodBeat.o(103862);
     return locala;
   }
@@ -102,7 +102,7 @@ public class FaceDetectProcessService
     AppMethodBeat.i(103860);
     Log.i("MicroMsg.FaceDetectProcessService", "alvinluo service onCreate hashCode: %d", new Object[] { Integer.valueOf(hashCode()) });
     super.onCreate();
-    this.sSO = new g();
+    this.wyK = new g();
     AppMethodBeat.o(103860);
   }
   
@@ -128,7 +128,7 @@ public class FaceDetectProcessService
     Object localObject1 = (Messenger)paramIntent.getParcelableExtra("k_messenger");
     if (localObject1 != null)
     {
-      this.sSP = ((Messenger)localObject1);
+      this.wyL = ((Messenger)localObject1);
       paramInt1 = super.onStartCommand(paramIntent, paramInt1, paramInt2);
       AppMethodBeat.o(103861);
       return paramInt1;
@@ -157,14 +157,14 @@ public class FaceDetectProcessService
       default: 
         localObject1 = null;
         label247:
-        this.sSQ = ((a)localObject1);
-        localObject1 = this.sSO;
-        if (((g)localObject1).sQQ != null)
+        this.wyM = ((a)localObject1);
+        localObject1 = this.wyK;
+        if (((g)localObject1).wwM != null)
         {
           Log.w("MicroMsg.FaceDetectNativeManager", "hy: last detection not destroyed");
-          ((g)localObject1).cTc();
+          ((g)localObject1).dig();
         }
-        if (!p.cTg())
+        if (!p.dil())
         {
           Log.w("MicroMsg.FaceDetectNativeManager", "hy: model file not valid");
           i = -4;
@@ -173,7 +173,7 @@ public class FaceDetectProcessService
       }
       for (;;)
       {
-        fR(0, i);
+        go(0, i);
         break;
         localObject1 = null;
         break label247;
@@ -186,12 +186,12 @@ public class FaceDetectProcessService
         }
         else
         {
-          ((g)localObject1).sQQ = new FaceProNative();
-          i = ((g)localObject1).sQQ.engineInit((String)localObject2, arrayOfByte, s.k(p.cTl(), true), p.cTm());
+          ((g)localObject1).wwM = new FaceProNative();
+          i = ((g)localObject1).wwM.engineInit((String)localObject2, arrayOfByte, u.n(p.diq(), true), p.dir());
           Log.i("MicroMsg.FaceDetectNativeManager", "hy: init result : %d", new Object[] { Integer.valueOf(i) });
         }
       }
-      f.ao(new Runnable()
+      f.at(new Runnable()
       {
         public final void b(final FaceProNative.FaceResult paramAnonymousFaceResult)
         {
@@ -224,7 +224,7 @@ public class FaceDetectProcessService
             break;
           }
           label103:
-          f.ao(new Runnable()
+          f.at(new Runnable()
           {
             public final void run()
             {
@@ -250,7 +250,7 @@ public class FaceDetectProcessService
             public final void run()
             {
               AppMethodBeat.i(103857);
-              FaceDetectProcessService.2.this.sSU.b(this.sSV);
+              FaceDetectProcessService.2.this.wyQ.b(this.wyR);
               AppMethodBeat.o(103857);
             }
           });
@@ -259,16 +259,16 @@ public class FaceDetectProcessService
       });
       continue;
       boolean bool = paramIntent.getBooleanExtra("needVideo", false);
-      com.tencent.mm.plugin.facedetect.e.a.cTF().sUx = bool;
+      com.tencent.mm.plugin.facedetect.e.a.diK().wAu = bool;
       continue;
-      if (this.sSQ != null)
+      if (this.wyM != null)
       {
-        this.sSQ.aj(paramIntent);
+        this.wyM.ag(paramIntent);
         continue;
         localObject1 = paramIntent.getStringExtra("key_bio_buffer_path");
         localObject2 = new Bundle();
         ((Bundle)localObject2).putString("key_bio_buffer_path", (String)localObject1);
-        o(6, (Bundle)localObject2);
+        q(6, (Bundle)localObject2);
       }
     }
   }

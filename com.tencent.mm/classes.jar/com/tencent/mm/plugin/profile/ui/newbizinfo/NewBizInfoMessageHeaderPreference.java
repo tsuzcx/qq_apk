@@ -7,17 +7,17 @@ import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoMessageHeaderPreference;", "Lcom/tencent/mm/ui/base/preference/Preference;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "Lcom/tencent/mm/ui/MMActivity;", "getContext", "()Lcom/tencent/mm/ui/MMActivity;", "setContext", "(Lcom/tencent/mm/ui/MMActivity;)V", "init", "", "app_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoMessageHeaderPreference;", "Lcom/tencent/mm/ui/base/preference/Preference;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "Lcom/tencent/mm/ui/MMActivity;", "getContext", "()Lcom/tencent/mm/ui/MMActivity;", "setContext", "(Lcom/tencent/mm/ui/MMActivity;)V", "init", "", "app_release"})
 public final class NewBizInfoMessageHeaderPreference
   extends Preference
 {
-  public MMActivity gte;
+  public MMActivity iXq;
   
   public NewBizInfoMessageHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(39611);
-    this.gte = ((MMActivity)paramContext);
+    this.iXq = ((MMActivity)paramContext);
     AppMethodBeat.o(39611);
   }
   
@@ -25,7 +25,7 @@ public final class NewBizInfoMessageHeaderPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(39612);
-    this.gte = ((MMActivity)paramContext);
+    this.iXq = ((MMActivity)paramContext);
     AppMethodBeat.o(39612);
   }
 }

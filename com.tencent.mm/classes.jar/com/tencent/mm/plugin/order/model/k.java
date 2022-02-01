@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.order.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class k
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String APy;
+  public String GIM;
   public String ThumbUrl;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -15,10 +15,10 @@ public final class k
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.ThumbUrl != null) {
-        paramVarArgs.e(1, this.ThumbUrl);
+        paramVarArgs.f(1, this.ThumbUrl);
       }
-      if (this.APy != null) {
-        paramVarArgs.e(2, this.APy);
+      if (this.GIM != null) {
+        paramVarArgs.f(2, this.GIM);
       }
       AppMethodBeat.o(91263);
       return 0;
@@ -29,20 +29,20 @@ public final class k
       }
     }
     label274:
-    for (paramInt = g.a.a.b.b.a.f(1, this.ThumbUrl) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.ThumbUrl) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.APy != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.APy);
+      if (this.GIM != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.GIM);
       }
       AppMethodBeat.o(91263);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         AppMethodBeat.o(91263);
@@ -58,11 +58,11 @@ public final class k
           AppMethodBeat.o(91263);
           return -1;
         case 1: 
-          localk.ThumbUrl = locala.UbS.readString();
+          localk.ThumbUrl = locala.abFh.readString();
           AppMethodBeat.o(91263);
           return 0;
         }
-        localk.APy = locala.UbS.readString();
+        localk.GIM = locala.abFh.readString();
         AppMethodBeat.o(91263);
         return 0;
       }

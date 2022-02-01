@@ -9,7 +9,7 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/collections/AbstractCollection;", "E", "", "()V", "size", "", "getSize", "()I", "contains", "", "element", "(Ljava/lang/Object;)Z", "containsAll", "elements", "isEmpty", "iterator", "", "toArray", "", "", "()[Ljava/lang/Object;", "T", "array", "([Ljava/lang/Object;)[Ljava/lang/Object;", "toString", "", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/collections/AbstractCollection;", "E", "", "()V", "size", "", "getSize", "()I", "contains", "", "element", "(Ljava/lang/Object;)Z", "containsAll", "elements", "isEmpty", "iterator", "", "toArray", "", "", "()[Ljava/lang/Object;", "T", "array", "([Ljava/lang/Object;)[Ljava/lang/Object;", "toString", "", "kotlin-stdlib"})
 public abstract class a<E>
   implements Collection<E>, kotlin.g.b.a.a
 {
@@ -34,7 +34,7 @@ public abstract class a<E>
     {
       Iterator localIterator = iterator();
       while (localIterator.hasNext()) {
-        if (p.j(localIterator.next(), paramObject)) {
+        if (p.h(localIterator.next(), paramObject)) {
           return true;
         }
       }
@@ -44,7 +44,7 @@ public abstract class a<E>
   
   public boolean containsAll(Collection<? extends Object> paramCollection)
   {
-    p.h(paramCollection, "elements");
+    p.k(paramCollection, "elements");
     paramCollection = (Iterable)paramCollection;
     if (!((Collection)paramCollection).isEmpty())
     {
@@ -87,13 +87,13 @@ public abstract class a<E>
   
   public Object[] toArray()
   {
-    return i.w((Collection)this);
+    return i.u((Collection)this);
   }
   
   public <T> T[] toArray(T[] paramArrayOfT)
   {
-    p.h(paramArrayOfT, "array");
-    paramArrayOfT = i.a((Collection)this, paramArrayOfT);
+    p.k(paramArrayOfT, "array");
+    paramArrayOfT = i.b((Collection)this, paramArrayOfT);
     if (paramArrayOfT == null) {
       throw new t("null cannot be cast to non-null type kotlin.Array<T>");
     }
@@ -105,7 +105,7 @@ public abstract class a<E>
     return j.a(this, (CharSequence)", ", (CharSequence)"[", (CharSequence)"]", 0, null, (b)new a(this), 24);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "E", "it", "invoke", "(Ljava/lang/Object;)Ljava/lang/CharSequence;"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "E", "it", "invoke", "(Ljava/lang/Object;)Ljava/lang/CharSequence;"})
   static final class a
     extends q
     implements b<E, CharSequence>

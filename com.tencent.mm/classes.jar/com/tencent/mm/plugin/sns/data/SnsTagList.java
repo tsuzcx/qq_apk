@@ -12,8 +12,8 @@ public class SnsTagList
   implements Parcelable
 {
   public static final Parcelable.Creator<SnsTagList> CREATOR;
-  private int DEx;
-  private List<Long> DEy;
+  private int JRs;
+  private List<Long> JRt;
   
   static
   {
@@ -25,8 +25,8 @@ public class SnsTagList
   public SnsTagList()
   {
     AppMethodBeat.i(95091);
-    this.DEx = 0;
-    this.DEy = new LinkedList();
+    this.JRs = 0;
+    this.JRt = new LinkedList();
     AppMethodBeat.o(95091);
   }
   
@@ -38,9 +38,9 @@ public class SnsTagList
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(95092);
-    this.DEx = this.DEy.size();
-    paramParcel.writeInt(this.DEx);
-    Iterator localIterator = this.DEy.iterator();
+    this.JRs = this.JRt.size();
+    paramParcel.writeInt(this.JRs);
+    Iterator localIterator = this.JRt.iterator();
     while (localIterator.hasNext()) {
       paramParcel.writeLong(((Long)localIterator.next()).longValue());
     }
@@ -49,7 +49,7 @@ public class SnsTagList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.data.SnsTagList
  * JD-Core Version:    0.7.0.1
  */

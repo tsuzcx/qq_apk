@@ -12,34 +12,34 @@ import com.tencent.mm.storagebase.h;
 import java.util.HashMap;
 import junit.framework.Assert;
 
-public final class aa
+public class aa
   extends MStorageEx
 {
-  private static final Object NRT;
   public static final String[] SQL_CREATE;
-  private HashMap<Integer, b> NRW;
-  private HashMap<String, b> NRX;
-  private volatile boolean NRY;
-  private final Runnable NRZ;
-  private a<String> Ruh;
-  private h iFy;
+  private static final Object VfQ;
+  private HashMap<Integer, b> VfT;
+  private HashMap<String, b> VfU;
+  private volatile boolean VfV;
+  private final Runnable VfW;
+  private a<String> YVG;
+  private h lvy;
   private MMHandler mHandler;
   
   static
   {
     AppMethodBeat.i(130945);
     SQL_CREATE = new String[] { "CREATE TABLE IF NOT EXISTS walletcache ( sid TEXT PRIMARY KEY, type INT, value TEXT )" };
-    NRT = new Object();
+    VfQ = new Object();
     AppMethodBeat.o(130945);
   }
   
   public aa(h paramh)
   {
     AppMethodBeat.i(130938);
-    this.Ruh = new a("walletcache", "sid");
-    this.NRW = new HashMap();
-    this.NRX = new HashMap();
-    this.NRZ = new Runnable()
+    this.YVG = new a("walletcache", "sid");
+    this.VfT = new HashMap();
+    this.VfU = new HashMap();
+    this.VfW = new Runnable()
     {
       /* Error */
       public final void run()
@@ -56,9 +56,9 @@ public final class aa
         //   11: ldc 22
         //   13: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
         //   16: aload_0
-        //   17: getfield 14	com/tencent/mm/wallet_core/c/aa$1:Rui	Lcom/tencent/mm/wallet_core/c/aa;
+        //   17: getfield 14	com/tencent/mm/wallet_core/c/aa$1:YVH	Lcom/tencent/mm/wallet_core/c/aa;
         //   20: invokestatic 32	com/tencent/mm/wallet_core/c/aa:a	(Lcom/tencent/mm/wallet_core/c/aa;)Lcom/tencent/mm/storagebase/h;
-        //   23: invokevirtual 38	com/tencent/mm/storagebase/h:gFH	()Lcom/tencent/wcdb/database/SQLiteDatabase;
+        //   23: invokevirtual 38	com/tencent/mm/storagebase/h:hBZ	()Lcom/tencent/wcdb/database/SQLiteDatabase;
         //   26: astore 8
         //   28: aload 8
         //   30: ifnull +11 -> 41
@@ -94,7 +94,7 @@ public final class aa
         //   91: iload 6
         //   93: istore_3
         //   94: aload_0
-        //   95: getfield 14	com/tencent/mm/wallet_core/c/aa$1:Rui	Lcom/tencent/mm/wallet_core/c/aa;
+        //   95: getfield 14	com/tencent/mm/wallet_core/c/aa$1:YVH	Lcom/tencent/mm/wallet_core/c/aa;
         //   98: astore 11
         //   100: iload 5
         //   102: istore_2
@@ -103,29 +103,29 @@ public final class aa
         //   106: aload 11
         //   108: monitorenter
         //   109: aload_0
-        //   110: getfield 14	com/tencent/mm/wallet_core/c/aa$1:Rui	Lcom/tencent/mm/wallet_core/c/aa;
+        //   110: getfield 14	com/tencent/mm/wallet_core/c/aa$1:YVH	Lcom/tencent/mm/wallet_core/c/aa;
         //   113: invokestatic 67	com/tencent/mm/wallet_core/c/aa:b	(Lcom/tencent/mm/wallet_core/c/aa;)Ljava/util/HashMap;
         //   116: astore 12
         //   118: aload_0
-        //   119: getfield 14	com/tencent/mm/wallet_core/c/aa$1:Rui	Lcom/tencent/mm/wallet_core/c/aa;
+        //   119: getfield 14	com/tencent/mm/wallet_core/c/aa$1:YVH	Lcom/tencent/mm/wallet_core/c/aa;
         //   122: invokestatic 70	com/tencent/mm/wallet_core/c/aa:c	(Lcom/tencent/mm/wallet_core/c/aa;)Ljava/util/HashMap;
         //   125: astore 10
         //   127: aload_0
-        //   128: getfield 14	com/tencent/mm/wallet_core/c/aa$1:Rui	Lcom/tencent/mm/wallet_core/c/aa;
+        //   128: getfield 14	com/tencent/mm/wallet_core/c/aa$1:YVH	Lcom/tencent/mm/wallet_core/c/aa;
         //   131: new 72	java/util/HashMap
         //   134: dup
         //   135: invokespecial 73	java/util/HashMap:<init>	()V
         //   138: invokestatic 76	com/tencent/mm/wallet_core/c/aa:a	(Lcom/tencent/mm/wallet_core/c/aa;Ljava/util/HashMap;)Ljava/util/HashMap;
         //   141: pop
         //   142: aload_0
-        //   143: getfield 14	com/tencent/mm/wallet_core/c/aa$1:Rui	Lcom/tencent/mm/wallet_core/c/aa;
+        //   143: getfield 14	com/tencent/mm/wallet_core/c/aa$1:YVH	Lcom/tencent/mm/wallet_core/c/aa;
         //   146: new 72	java/util/HashMap
         //   149: dup
         //   150: invokespecial 73	java/util/HashMap:<init>	()V
         //   153: invokestatic 78	com/tencent/mm/wallet_core/c/aa:b	(Lcom/tencent/mm/wallet_core/c/aa;Ljava/util/HashMap;)Ljava/util/HashMap;
         //   156: pop
         //   157: aload_0
-        //   158: getfield 14	com/tencent/mm/wallet_core/c/aa$1:Rui	Lcom/tencent/mm/wallet_core/c/aa;
+        //   158: getfield 14	com/tencent/mm/wallet_core/c/aa$1:YVH	Lcom/tencent/mm/wallet_core/c/aa;
         //   161: invokestatic 82	com/tencent/mm/wallet_core/c/aa:d	(Lcom/tencent/mm/wallet_core/c/aa;)Z
         //   164: pop
         //   165: aload 11
@@ -144,7 +144,7 @@ public final class aa
         //   189: istore_3
         //   190: aload 11
         //   192: invokeinterface 97 1 0
-        //   197: ifeq +282 -> 479
+        //   197: ifeq +284 -> 481
         //   200: iload_1
         //   201: istore_2
         //   202: iload_1
@@ -162,7 +162,7 @@ public final class aa
         //   227: checkcast 108	com/tencent/mm/wallet_core/c/aa$b
         //   230: astore 13
         //   232: aload 13
-        //   234: ifnonnull +130 -> 364
+        //   234: ifnonnull +132 -> 366
         //   237: iload_1
         //   238: istore_2
         //   239: iload_1
@@ -180,339 +180,345 @@ public final class aa
         //   258: ldc 113
         //   260: aload 9
         //   262: invokevirtual 117	com/tencent/wcdb/database/SQLiteDatabase:execSQL	(Ljava/lang/String;[Ljava/lang/Object;)V
-        //   265: iload_1
-        //   266: iconst_1
-        //   267: iadd
-        //   268: istore_1
-        //   269: goto -83 -> 186
-        //   272: astore 7
-        //   274: aload 11
-        //   276: monitorexit
-        //   277: iload 5
-        //   279: istore_2
-        //   280: iload 6
-        //   282: istore_3
-        //   283: ldc 22
-        //   285: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   288: iload 5
-        //   290: istore_2
-        //   291: iload 6
-        //   293: istore_3
-        //   294: aload 7
-        //   296: athrow
-        //   297: astore 7
-        //   299: iconst_1
-        //   300: istore_3
-        //   301: iload_2
-        //   302: istore_1
-        //   303: iload_3
-        //   304: istore_2
-        //   305: ldc 46
-        //   307: aload 7
-        //   309: ldc 119
-        //   311: iconst_0
-        //   312: anewarray 4	java/lang/Object
-        //   315: invokestatic 123	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-        //   318: iload_2
-        //   319: ifeq +8 -> 327
-        //   322: aload 8
-        //   324: invokevirtual 126	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
-        //   327: aload 8
-        //   329: invokevirtual 129	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
-        //   332: ldc 46
-        //   334: new 131	java/lang/StringBuilder
-        //   337: dup
-        //   338: ldc 133
-        //   340: invokespecial 136	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-        //   343: iload_1
-        //   344: invokevirtual 140	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-        //   347: ldc 142
-        //   349: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   352: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   355: invokestatic 151	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-        //   358: ldc 22
-        //   360: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   363: return
-        //   364: iload_1
-        //   365: istore_2
+        //   265: goto +448 -> 713
+        //   268: astore 7
+        //   270: iload 5
+        //   272: istore_2
+        //   273: iload 6
+        //   275: istore_3
+        //   276: aload 11
+        //   278: monitorexit
+        //   279: iload 5
+        //   281: istore_2
+        //   282: iload 6
+        //   284: istore_3
+        //   285: ldc 22
+        //   287: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   290: iload 5
+        //   292: istore_2
+        //   293: iload 6
+        //   295: istore_3
+        //   296: aload 7
+        //   298: athrow
+        //   299: astore 7
+        //   301: iconst_1
+        //   302: istore_3
+        //   303: iload_2
+        //   304: istore_1
+        //   305: iload_3
+        //   306: istore_2
+        //   307: ldc 46
+        //   309: aload 7
+        //   311: ldc 119
+        //   313: iconst_0
+        //   314: anewarray 4	java/lang/Object
+        //   317: invokestatic 123	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   320: iload_2
+        //   321: ifeq +8 -> 329
+        //   324: aload 8
+        //   326: invokevirtual 126	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
+        //   329: aload 8
+        //   331: invokevirtual 129	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+        //   334: ldc 46
+        //   336: new 131	java/lang/StringBuilder
+        //   339: dup
+        //   340: ldc 133
+        //   342: invokespecial 136	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+        //   345: iload_1
+        //   346: invokevirtual 140	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+        //   349: ldc 142
+        //   351: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   354: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+        //   357: invokestatic 151	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   360: ldc 22
+        //   362: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   365: return
         //   366: iload_1
-        //   367: istore_3
-        //   368: aload 7
-        //   370: iconst_0
-        //   371: aload 12
-        //   373: invokeinterface 111 1 0
-        //   378: aastore
-        //   379: iload_1
-        //   380: istore_2
+        //   367: istore_2
+        //   368: iload_1
+        //   369: istore_3
+        //   370: aload 7
+        //   372: iconst_0
+        //   373: aload 12
+        //   375: invokeinterface 111 1 0
+        //   380: aastore
         //   381: iload_1
-        //   382: istore_3
-        //   383: aload 7
-        //   385: iconst_1
-        //   386: aload 13
-        //   388: getfield 155	com/tencent/mm/wallet_core/c/aa$b:type	I
-        //   391: invokestatic 161	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-        //   394: aastore
-        //   395: iload_1
-        //   396: istore_2
+        //   382: istore_2
+        //   383: iload_1
+        //   384: istore_3
+        //   385: aload 7
+        //   387: iconst_1
+        //   388: aload 13
+        //   390: getfield 155	com/tencent/mm/wallet_core/c/aa$b:type	I
+        //   393: invokestatic 161	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+        //   396: aastore
         //   397: iload_1
-        //   398: istore_3
-        //   399: aload 7
-        //   401: iconst_2
-        //   402: aload 13
-        //   404: getfield 165	com/tencent/mm/wallet_core/c/aa$b:iFF	Ljava/lang/String;
-        //   407: aastore
-        //   408: iload_1
-        //   409: istore_2
+        //   398: istore_2
+        //   399: iload_1
+        //   400: istore_3
+        //   401: aload 7
+        //   403: iconst_2
+        //   404: aload 13
+        //   406: getfield 165	com/tencent/mm/wallet_core/c/aa$b:lvH	Ljava/lang/String;
+        //   409: aastore
         //   410: iload_1
-        //   411: istore_3
-        //   412: aload 8
-        //   414: ldc 167
-        //   416: aload 7
-        //   418: invokevirtual 117	com/tencent/wcdb/database/SQLiteDatabase:execSQL	(Ljava/lang/String;[Ljava/lang/Object;)V
-        //   421: goto -156 -> 265
-        //   424: astore 7
-        //   426: iload_3
-        //   427: istore_1
-        //   428: iload 4
-        //   430: istore_2
-        //   431: iload_2
-        //   432: ifeq +8 -> 440
-        //   435: aload 8
-        //   437: invokevirtual 126	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
-        //   440: aload 8
-        //   442: invokevirtual 129	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
-        //   445: ldc 46
-        //   447: new 131	java/lang/StringBuilder
-        //   450: dup
-        //   451: ldc 133
-        //   453: invokespecial 136	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-        //   456: iload_1
-        //   457: invokevirtual 140	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-        //   460: ldc 142
-        //   462: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   465: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   468: invokestatic 151	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-        //   471: ldc 22
-        //   473: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   476: aload 7
-        //   478: athrow
-        //   479: iload_1
-        //   480: istore_2
+        //   411: istore_2
+        //   412: iload_1
+        //   413: istore_3
+        //   414: aload 8
+        //   416: ldc 167
+        //   418: aload 7
+        //   420: invokevirtual 117	com/tencent/wcdb/database/SQLiteDatabase:execSQL	(Ljava/lang/String;[Ljava/lang/Object;)V
+        //   423: goto +290 -> 713
+        //   426: astore 7
+        //   428: iload_3
+        //   429: istore_1
+        //   430: iload 4
+        //   432: istore_2
+        //   433: iload_2
+        //   434: ifeq +8 -> 442
+        //   437: aload 8
+        //   439: invokevirtual 126	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
+        //   442: aload 8
+        //   444: invokevirtual 129	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+        //   447: ldc 46
+        //   449: new 131	java/lang/StringBuilder
+        //   452: dup
+        //   453: ldc 133
+        //   455: invokespecial 136	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+        //   458: iload_1
+        //   459: invokevirtual 140	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+        //   462: ldc 142
+        //   464: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   467: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+        //   470: invokestatic 151	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   473: ldc 22
+        //   475: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   478: aload 7
+        //   480: athrow
         //   481: iload_1
-        //   482: istore_3
-        //   483: aload 10
-        //   485: invokevirtual 86	java/util/HashMap:entrySet	()Ljava/util/Set;
-        //   488: invokeinterface 92 1 0
-        //   493: astore 10
-        //   495: iload_1
-        //   496: istore_2
+        //   482: istore_2
+        //   483: iload_1
+        //   484: istore_3
+        //   485: aload 10
+        //   487: invokevirtual 86	java/util/HashMap:entrySet	()Ljava/util/Set;
+        //   490: invokeinterface 92 1 0
+        //   495: astore 10
         //   497: iload_1
-        //   498: istore_3
-        //   499: aload 10
-        //   501: invokeinterface 97 1 0
-        //   506: ifeq +131 -> 637
-        //   509: iload_1
-        //   510: istore_2
+        //   498: istore_2
+        //   499: iload_1
+        //   500: istore_3
+        //   501: aload 10
+        //   503: invokeinterface 97 1 0
+        //   508: ifeq +131 -> 639
         //   511: iload_1
-        //   512: istore_3
-        //   513: aload 10
-        //   515: invokeinterface 101 1 0
-        //   520: checkcast 103	java/util/Map$Entry
-        //   523: astore 11
-        //   525: iload_1
-        //   526: istore_2
+        //   512: istore_2
+        //   513: iload_1
+        //   514: istore_3
+        //   515: aload 10
+        //   517: invokeinterface 101 1 0
+        //   522: checkcast 103	java/util/Map$Entry
+        //   525: astore 11
         //   527: iload_1
-        //   528: istore_3
-        //   529: aload 11
-        //   531: invokeinterface 106 1 0
-        //   536: checkcast 108	com/tencent/mm/wallet_core/c/aa$b
-        //   539: astore 12
-        //   541: aload 12
-        //   543: ifnonnull +34 -> 577
-        //   546: iload_1
-        //   547: istore_2
+        //   528: istore_2
+        //   529: iload_1
+        //   530: istore_3
+        //   531: aload 11
+        //   533: invokeinterface 106 1 0
+        //   538: checkcast 108	com/tencent/mm/wallet_core/c/aa$b
+        //   541: astore 12
+        //   543: aload 12
+        //   545: ifnonnull +34 -> 579
         //   548: iload_1
-        //   549: istore_3
-        //   550: aload 9
-        //   552: iconst_0
-        //   553: aload 11
-        //   555: invokeinterface 111 1 0
-        //   560: aastore
-        //   561: iload_1
-        //   562: istore_2
+        //   549: istore_2
+        //   550: iload_1
+        //   551: istore_3
+        //   552: aload 9
+        //   554: iconst_0
+        //   555: aload 11
+        //   557: invokeinterface 111 1 0
+        //   562: aastore
         //   563: iload_1
-        //   564: istore_3
-        //   565: aload 8
-        //   567: ldc 169
-        //   569: aload 9
-        //   571: invokevirtual 117	com/tencent/wcdb/database/SQLiteDatabase:execSQL	(Ljava/lang/String;[Ljava/lang/Object;)V
-        //   574: goto +137 -> 711
-        //   577: iload_1
-        //   578: istore_2
+        //   564: istore_2
+        //   565: iload_1
+        //   566: istore_3
+        //   567: aload 8
+        //   569: ldc 169
+        //   571: aload 9
+        //   573: invokevirtual 117	com/tencent/wcdb/database/SQLiteDatabase:execSQL	(Ljava/lang/String;[Ljava/lang/Object;)V
+        //   576: goto +144 -> 720
         //   579: iload_1
-        //   580: istore_3
-        //   581: aload 7
-        //   583: iconst_0
-        //   584: aload 11
-        //   586: invokeinterface 111 1 0
-        //   591: aastore
-        //   592: iload_1
-        //   593: istore_2
+        //   580: istore_2
+        //   581: iload_1
+        //   582: istore_3
+        //   583: aload 7
+        //   585: iconst_0
+        //   586: aload 11
+        //   588: invokeinterface 111 1 0
+        //   593: aastore
         //   594: iload_1
-        //   595: istore_3
-        //   596: aload 7
-        //   598: iconst_1
-        //   599: aload 12
-        //   601: getfield 155	com/tencent/mm/wallet_core/c/aa$b:type	I
-        //   604: invokestatic 161	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-        //   607: aastore
-        //   608: iload_1
-        //   609: istore_2
+        //   595: istore_2
+        //   596: iload_1
+        //   597: istore_3
+        //   598: aload 7
+        //   600: iconst_1
+        //   601: aload 12
+        //   603: getfield 155	com/tencent/mm/wallet_core/c/aa$b:type	I
+        //   606: invokestatic 161	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+        //   609: aastore
         //   610: iload_1
-        //   611: istore_3
-        //   612: aload 7
-        //   614: iconst_2
-        //   615: aload 12
-        //   617: getfield 165	com/tencent/mm/wallet_core/c/aa$b:iFF	Ljava/lang/String;
-        //   620: aastore
-        //   621: iload_1
-        //   622: istore_2
+        //   611: istore_2
+        //   612: iload_1
+        //   613: istore_3
+        //   614: aload 7
+        //   616: iconst_2
+        //   617: aload 12
+        //   619: getfield 165	com/tencent/mm/wallet_core/c/aa$b:lvH	Ljava/lang/String;
+        //   622: aastore
         //   623: iload_1
-        //   624: istore_3
-        //   625: aload 8
-        //   627: ldc 167
-        //   629: aload 7
-        //   631: invokevirtual 117	com/tencent/wcdb/database/SQLiteDatabase:execSQL	(Ljava/lang/String;[Ljava/lang/Object;)V
-        //   634: goto +77 -> 711
-        //   637: iload_1
-        //   638: istore_2
+        //   624: istore_2
+        //   625: iload_1
+        //   626: istore_3
+        //   627: aload 8
+        //   629: ldc 167
+        //   631: aload 7
+        //   633: invokevirtual 117	com/tencent/wcdb/database/SQLiteDatabase:execSQL	(Ljava/lang/String;[Ljava/lang/Object;)V
+        //   636: goto +84 -> 720
         //   639: iload_1
-        //   640: istore_3
-        //   641: aload 8
-        //   643: invokevirtual 172	com/tencent/wcdb/database/SQLiteDatabase:setTransactionSuccessful	()V
-        //   646: aload 8
-        //   648: invokevirtual 126	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
-        //   651: aload 8
-        //   653: invokevirtual 129	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
-        //   656: ldc 46
-        //   658: new 131	java/lang/StringBuilder
-        //   661: dup
-        //   662: ldc 133
-        //   664: invokespecial 136	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-        //   667: iload_1
-        //   668: invokevirtual 140	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-        //   671: ldc 142
-        //   673: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   676: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   679: invokestatic 151	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-        //   682: ldc 22
-        //   684: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   687: return
-        //   688: astore 7
-        //   690: iconst_0
-        //   691: istore_2
+        //   640: istore_2
+        //   641: iload_1
+        //   642: istore_3
+        //   643: aload 8
+        //   645: invokevirtual 172	com/tencent/wcdb/database/SQLiteDatabase:setTransactionSuccessful	()V
+        //   648: aload 8
+        //   650: invokevirtual 126	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
+        //   653: aload 8
+        //   655: invokevirtual 129	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+        //   658: ldc 46
+        //   660: new 131	java/lang/StringBuilder
+        //   663: dup
+        //   664: ldc 133
+        //   666: invokespecial 136	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+        //   669: iload_1
+        //   670: invokevirtual 140	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+        //   673: ldc 142
+        //   675: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   678: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+        //   681: invokestatic 151	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   684: ldc 22
+        //   686: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   689: return
+        //   690: astore 7
         //   692: iconst_0
-        //   693: istore_1
-        //   694: goto -263 -> 431
-        //   697: astore 7
-        //   699: goto -268 -> 431
-        //   702: astore 7
-        //   704: iconst_0
-        //   705: istore_2
+        //   693: istore_2
+        //   694: iconst_0
+        //   695: istore_1
+        //   696: goto -263 -> 433
+        //   699: astore 7
+        //   701: goto -268 -> 433
+        //   704: astore 7
         //   706: iconst_0
-        //   707: istore_1
-        //   708: goto -403 -> 305
-        //   711: iload_1
-        //   712: iconst_1
-        //   713: iadd
-        //   714: istore_1
-        //   715: goto -220 -> 495
+        //   707: istore_2
+        //   708: iconst_0
+        //   709: istore_1
+        //   710: goto -403 -> 307
+        //   713: iload_1
+        //   714: iconst_1
+        //   715: iadd
+        //   716: istore_1
+        //   717: goto -531 -> 186
+        //   720: iload_1
+        //   721: iconst_1
+        //   722: iadd
+        //   723: istore_1
+        //   724: goto -227 -> 497
         // Local variable table:
         //   start	length	slot	name	signature
-        //   0	718	0	this	1
-        //   10	705	1	i	int
-        //   66	640	2	j	int
-        //   69	572	3	k	int
-        //   1	428	4	m	int
-        //   4	285	5	n	int
-        //   7	285	6	i1	int
+        //   0	727	0	this	1
+        //   10	714	1	i	int
+        //   66	642	2	j	int
+        //   69	574	3	k	int
+        //   1	430	4	m	int
+        //   4	287	5	n	int
+        //   7	287	6	i1	int
         //   74	1	7	arrayOfObject1	Object[]
-        //   272	23	7	localObject1	Object
-        //   297	120	7	localRuntimeException1	java.lang.RuntimeException
-        //   424	206	7	arrayOfObject2	Object[]
-        //   688	1	7	localObject2	Object
-        //   697	1	7	localObject3	Object
-        //   702	1	7	localRuntimeException2	java.lang.RuntimeException
-        //   26	626	8	localSQLiteDatabase	com.tencent.wcdb.database.SQLiteDatabase
-        //   86	484	9	arrayOfObject3	Object[]
-        //   125	389	10	localObject4	Object
-        //   98	487	11	localObject5	Object
-        //   116	500	12	localObject6	Object
-        //   230	173	13	localb	aa.b
+        //   268	29	7	localObject1	Object
+        //   299	120	7	localRuntimeException1	java.lang.RuntimeException
+        //   426	206	7	arrayOfObject2	Object[]
+        //   690	1	7	localObject2	Object
+        //   699	1	7	localObject3	Object
+        //   704	1	7	localRuntimeException2	java.lang.RuntimeException
+        //   26	628	8	localSQLiteDatabase	com.tencent.wcdb.database.SQLiteDatabase
+        //   86	486	9	arrayOfObject3	Object[]
+        //   125	391	10	localObject4	Object
+        //   98	489	11	localObject5	Object
+        //   116	502	12	localObject6	Object
+        //   230	175	13	localb	aa.b
         // Exception table:
         //   from	to	target	type
-        //   109	168	272	finally
-        //   274	277	272	finally
-        //   70	76	297	java/lang/RuntimeException
-        //   82	88	297	java/lang/RuntimeException
-        //   94	100	297	java/lang/RuntimeException
-        //   106	109	297	java/lang/RuntimeException
-        //   174	186	297	java/lang/RuntimeException
-        //   190	200	297	java/lang/RuntimeException
-        //   204	216	297	java/lang/RuntimeException
-        //   220	232	297	java/lang/RuntimeException
-        //   241	252	297	java/lang/RuntimeException
-        //   256	265	297	java/lang/RuntimeException
-        //   283	288	297	java/lang/RuntimeException
-        //   294	297	297	java/lang/RuntimeException
-        //   368	379	297	java/lang/RuntimeException
-        //   383	395	297	java/lang/RuntimeException
-        //   399	408	297	java/lang/RuntimeException
-        //   412	421	297	java/lang/RuntimeException
-        //   483	495	297	java/lang/RuntimeException
-        //   499	509	297	java/lang/RuntimeException
-        //   513	525	297	java/lang/RuntimeException
-        //   529	541	297	java/lang/RuntimeException
-        //   550	561	297	java/lang/RuntimeException
-        //   565	574	297	java/lang/RuntimeException
-        //   581	592	297	java/lang/RuntimeException
-        //   596	608	297	java/lang/RuntimeException
-        //   612	621	297	java/lang/RuntimeException
-        //   625	634	297	java/lang/RuntimeException
-        //   641	646	297	java/lang/RuntimeException
-        //   70	76	424	finally
-        //   82	88	424	finally
-        //   94	100	424	finally
-        //   106	109	424	finally
-        //   174	186	424	finally
-        //   190	200	424	finally
-        //   204	216	424	finally
-        //   220	232	424	finally
-        //   241	252	424	finally
-        //   256	265	424	finally
-        //   283	288	424	finally
-        //   294	297	424	finally
-        //   368	379	424	finally
-        //   383	395	424	finally
-        //   399	408	424	finally
-        //   412	421	424	finally
-        //   483	495	424	finally
-        //   499	509	424	finally
-        //   513	525	424	finally
-        //   529	541	424	finally
-        //   550	561	424	finally
-        //   565	574	424	finally
-        //   581	592	424	finally
-        //   596	608	424	finally
-        //   612	621	424	finally
-        //   625	634	424	finally
-        //   641	646	424	finally
-        //   54	64	688	finally
-        //   305	318	697	finally
-        //   54	64	702	java/lang/RuntimeException
+        //   109	168	268	finally
+        //   70	76	299	java/lang/RuntimeException
+        //   82	88	299	java/lang/RuntimeException
+        //   94	100	299	java/lang/RuntimeException
+        //   106	109	299	java/lang/RuntimeException
+        //   174	186	299	java/lang/RuntimeException
+        //   190	200	299	java/lang/RuntimeException
+        //   204	216	299	java/lang/RuntimeException
+        //   220	232	299	java/lang/RuntimeException
+        //   241	252	299	java/lang/RuntimeException
+        //   256	265	299	java/lang/RuntimeException
+        //   276	279	299	java/lang/RuntimeException
+        //   285	290	299	java/lang/RuntimeException
+        //   296	299	299	java/lang/RuntimeException
+        //   370	381	299	java/lang/RuntimeException
+        //   385	397	299	java/lang/RuntimeException
+        //   401	410	299	java/lang/RuntimeException
+        //   414	423	299	java/lang/RuntimeException
+        //   485	497	299	java/lang/RuntimeException
+        //   501	511	299	java/lang/RuntimeException
+        //   515	527	299	java/lang/RuntimeException
+        //   531	543	299	java/lang/RuntimeException
+        //   552	563	299	java/lang/RuntimeException
+        //   567	576	299	java/lang/RuntimeException
+        //   583	594	299	java/lang/RuntimeException
+        //   598	610	299	java/lang/RuntimeException
+        //   614	623	299	java/lang/RuntimeException
+        //   627	636	299	java/lang/RuntimeException
+        //   643	648	299	java/lang/RuntimeException
+        //   70	76	426	finally
+        //   82	88	426	finally
+        //   94	100	426	finally
+        //   106	109	426	finally
+        //   174	186	426	finally
+        //   190	200	426	finally
+        //   204	216	426	finally
+        //   220	232	426	finally
+        //   241	252	426	finally
+        //   256	265	426	finally
+        //   276	279	426	finally
+        //   285	290	426	finally
+        //   296	299	426	finally
+        //   370	381	426	finally
+        //   385	397	426	finally
+        //   401	410	426	finally
+        //   414	423	426	finally
+        //   485	497	426	finally
+        //   501	511	426	finally
+        //   515	527	426	finally
+        //   531	543	426	finally
+        //   552	563	426	finally
+        //   567	576	426	finally
+        //   583	594	426	finally
+        //   598	610	426	finally
+        //   614	623	426	finally
+        //   627	636	426	finally
+        //   643	648	426	finally
+        //   54	64	690	finally
+        //   307	320	699	finally
+        //   54	64	704	java/lang/RuntimeException
       }
     };
-    this.iFy = paramh;
+    this.lvy = paramh;
     this.mHandler = new MMHandler("WalletCacheStorage");
     AppMethodBeat.o(130938);
   }
@@ -568,33 +574,15 @@ public final class aa
   private Object get(String paramString, Object paramObject)
   {
     AppMethodBeat.i(130940);
-    Assert.assertNotNull("db is null", this.iFy);
-    paramString = this.Ruh.get(paramString);
-    if ((paramString == null) || (paramString == NRT))
+    Assert.assertNotNull("db is null", this.lvy);
+    paramString = this.YVG.get(paramString);
+    if ((paramString == null) || (paramString == VfQ))
     {
       AppMethodBeat.o(130940);
       return paramObject;
     }
     AppMethodBeat.o(130940);
     return paramString;
-  }
-  
-  public final void gBI()
-  {
-    AppMethodBeat.i(130944);
-    try
-    {
-      this.mHandler.removeCallbacks(this.NRZ);
-      this.mHandler.post(this.NRZ);
-      this.NRY = true;
-      Log.i("MicroMsg.WalletCacheStorage", "Posted appendAllToDisk");
-      AppMethodBeat.o(130944);
-      return;
-    }
-    finally
-    {
-      AppMethodBeat.o(130944);
-    }
   }
   
   public final Object get(ar.a parama, Object paramObject)
@@ -627,6 +615,24 @@ public final class aa
     return localObject;
   }
   
+  public final void hxT()
+  {
+    AppMethodBeat.i(130944);
+    try
+    {
+      this.mHandler.removeCallbacks(this.VfW);
+      this.mHandler.post(this.VfW);
+      this.VfV = true;
+      Log.i("MicroMsg.WalletCacheStorage", "Posted appendAllToDisk");
+      AppMethodBeat.o(130944);
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(130944);
+    }
+  }
+  
   public final void set(ar.a parama, Object paramObject)
   {
     AppMethodBeat.i(130941);
@@ -657,11 +663,11 @@ public final class aa
       localObject2 = ((String)localObject1).substring(0, parama.length() + j);
       parama = paramObject;
       if (paramObject == null) {
-        parama = NRT;
+        parama = VfQ;
       }
-      if (!parama.equals(this.Ruh.put(localObject2, parama)))
+      if (!parama.equals(this.YVG.put(localObject2, parama)))
       {
-        if (parama != NRT) {
+        if (parama != VfQ) {
           break label238;
         }
         paramObject = null;
@@ -670,17 +676,17 @@ public final class aa
       {
         try
         {
-          this.NRX.put(localObject2, paramObject);
+          this.VfU.put(localObject2, paramObject);
           if (i != 0)
           {
-            gBI();
-            if (parama != NRT) {
+            hxT();
+            if (parama != VfQ) {
               break label298;
             }
             i = 5;
             doNotify(i, this, localObject2);
             paramObject = new StringBuilder("SET: ").append((String)localObject2).append(" => ");
-            if (parama != NRT) {
+            if (parama != VfQ) {
               break label303;
             }
             parama = "(DELETED)";
@@ -688,7 +694,7 @@ public final class aa
             AppMethodBeat.o(130941);
             return;
             label238:
-            localObject1 = b.ev(parama);
+            localObject1 = b.eB(parama);
             paramObject = localObject1;
             if (localObject1 != null) {
               break;
@@ -696,11 +702,11 @@ public final class aa
             AppMethodBeat.o(130941);
             return;
           }
-          if (this.NRY) {
+          if (this.VfV) {
             continue;
           }
-          this.NRY = true;
-          this.mHandler.postDelayed(this.NRZ, 30000L);
+          this.VfV = true;
+          this.mHandler.postDelayed(this.VfW, 30000L);
           continue;
           i = 4;
         }
@@ -716,13 +722,13 @@ public final class aa
     }
   }
   
-  public final boolean shouldProcessEvent()
+  public boolean shouldProcessEvent()
   {
     AppMethodBeat.i(130943);
-    if ((this.iFy == null) || (this.iFy.isClose()))
+    if ((this.lvy == null) || (this.lvy.isClose()))
     {
-      if (this.iFy == null) {}
-      for (Object localObject = "null";; localObject = Boolean.valueOf(this.iFy.isClose()))
+      if (this.lvy == null) {}
+      for (Object localObject = "null";; localObject = Boolean.valueOf(this.lvy.isClose()))
       {
         Log.w("MicroMsg.WalletCacheStorage", "shouldProcessEvent db is close :%s", new Object[] { localObject });
         AppMethodBeat.o(130943);
@@ -736,13 +742,13 @@ public final class aa
   final class a<K>
     extends LruCache<K, Object>
   {
-    private final String NSb;
+    private final String VfY;
     
     a(String paramString1, String paramString2)
     {
       super();
       AppMethodBeat.i(130933);
-      this.NSb = ("SELECT * FROM " + paramString1 + " WHERE " + paramString2 + "=?;");
+      this.VfY = ("SELECT * FROM " + paramString1 + " WHERE " + paramString2 + "=?;");
       AppMethodBeat.o(130933);
     }
     
@@ -753,10 +759,10 @@ public final class aa
       //   0: ldc 57
       //   2: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
-      //   6: getfield 16	com/tencent/mm/wallet_core/c/aa$a:Rui	Lcom/tencent/mm/wallet_core/c/aa;
+      //   6: getfield 16	com/tencent/mm/wallet_core/c/aa$a:YVH	Lcom/tencent/mm/wallet_core/c/aa;
       //   9: invokestatic 60	com/tencent/mm/wallet_core/c/aa:a	(Lcom/tencent/mm/wallet_core/c/aa;)Lcom/tencent/mm/storagebase/h;
       //   12: aload_0
-      //   13: getfield 46	com/tencent/mm/wallet_core/c/aa$a:NSb	Ljava/lang/String;
+      //   13: getfield 46	com/tencent/mm/wallet_core/c/aa$a:VfY	Ljava/lang/String;
       //   16: iconst_1
       //   17: anewarray 62	java/lang/String
       //   20: dup
@@ -791,12 +797,12 @@ public final class aa
       //   85: ldc 96
       //   87: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   90: aload_2
-      //   91: getfield 99	com/tencent/mm/wallet_core/c/aa$b:iFF	Ljava/lang/String;
+      //   91: getfield 99	com/tencent/mm/wallet_core/c/aa$b:lvH	Ljava/lang/String;
       //   94: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   97: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
       //   100: invokestatic 104	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
       //   103: aload_2
-      //   104: invokevirtual 108	com/tencent/mm/wallet_core/c/aa$b:bmp	()Ljava/lang/Object;
+      //   104: invokevirtual 108	com/tencent/mm/wallet_core/c/aa$b:bwx	()Ljava/lang/Object;
       //   107: astore_2
       //   108: aload 4
       //   110: ifnull +10 -> 120
@@ -818,7 +824,7 @@ public final class aa
       //   147: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   150: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
       //   153: invokestatic 104	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-      //   156: invokestatic 117	com/tencent/mm/wallet_core/c/aa:fKQ	()Ljava/lang/Object;
+      //   156: invokestatic 117	com/tencent/mm/wallet_core/c/aa:gDq	()Ljava/lang/Object;
       //   159: astore_2
       //   160: aload 4
       //   162: ifnull +10 -> 172
@@ -902,16 +908,16 @@ public final class aa
   
   static final class b
   {
-    final String iFF;
+    final String lvH;
     final int type;
     
     b(int paramInt, String paramString)
     {
       this.type = paramInt;
-      this.iFF = paramString;
+      this.lvH = paramString;
     }
     
-    static b ev(Object paramObject)
+    static b eB(Object paramObject)
     {
       AppMethodBeat.i(130935);
       int i;
@@ -952,10 +958,10 @@ public final class aa
       return null;
     }
     
-    final Object bmp()
+    final Object bwx()
     {
       AppMethodBeat.i(130937);
-      if (this.iFF == aa.fKQ())
+      if (this.lvH == aa.gDq())
       {
         AppMethodBeat.o(130937);
         return null;
@@ -977,22 +983,22 @@ public final class aa
       }
       AppMethodBeat.o(130937);
       return null;
-      localObject = Integer.valueOf(this.iFF);
+      localObject = Integer.valueOf(this.lvH);
       AppMethodBeat.o(130937);
       return localObject;
-      localObject = Long.valueOf(this.iFF);
+      localObject = Long.valueOf(this.lvH);
       AppMethodBeat.o(130937);
       return localObject;
-      localObject = this.iFF;
+      localObject = this.lvH;
       AppMethodBeat.o(130937);
       return localObject;
-      localObject = Boolean.valueOf(this.iFF);
+      localObject = Boolean.valueOf(this.lvH);
       AppMethodBeat.o(130937);
       return localObject;
-      localObject = Float.valueOf(this.iFF);
+      localObject = Float.valueOf(this.lvH);
       AppMethodBeat.o(130937);
       return localObject;
-      localObject = Double.valueOf(this.iFF);
+      localObject = Double.valueOf(this.lvH);
       AppMethodBeat.o(130937);
       return localObject;
     }
@@ -1016,9 +1022,9 @@ public final class aa
         AppMethodBeat.o(130936);
         return false;
       }
-      if (this.iFF == null)
+      if (this.lvH == null)
       {
-        if (paramObject.iFF == null)
+        if (paramObject.lvH == null)
         {
           AppMethodBeat.o(130936);
           return true;
@@ -1026,7 +1032,7 @@ public final class aa
         AppMethodBeat.o(130936);
         return false;
       }
-      boolean bool = this.iFF.equals(paramObject.iFF);
+      boolean bool = this.lvH.equals(paramObject.lvH);
       AppMethodBeat.o(130936);
       return bool;
     }
@@ -1034,7 +1040,7 @@ public final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.aa
  * JD-Core Version:    0.7.0.1
  */

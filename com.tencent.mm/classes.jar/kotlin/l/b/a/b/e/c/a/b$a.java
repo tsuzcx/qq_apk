@@ -16,12 +16,12 @@ final class b$a
     super(2);
   }
   
-  public final void ow(String paramString1, String paramString2)
+  public final void pr(String paramString1, String paramString2)
   {
     AppMethodBeat.i(59227);
-    p.h(paramString1, "kotlinSimpleName");
-    p.h(paramString2, "javaInternalName");
-    this.TCx.put("kotlin/".concat(String.valueOf(paramString1)), "L" + paramString2 + ';');
+    p.k(paramString1, "kotlinSimpleName");
+    p.k(paramString2, "javaInternalName");
+    this.abfl.put("kotlin/".concat(String.valueOf(paramString1)), "L" + paramString2 + ';');
     AppMethodBeat.o(59227);
   }
 }

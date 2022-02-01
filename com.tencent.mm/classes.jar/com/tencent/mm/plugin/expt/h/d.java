@@ -4,10 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.f;
 import com.tencent.mm.b.h;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.plugin.report.e;
 import com.tencent.mm.pointers.PString;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -18,28 +16,28 @@ import java.util.HashMap;
 public final class d
 {
   private static String TAG;
-  private static d sLo;
-  private static final f<Integer, Long> sLp;
+  private static d wrk;
+  private static final com.tencent.mm.b.f<Integer, Long> wrl;
   private String name;
-  private f<Integer, c> sJZ;
+  private com.tencent.mm.b.f<Integer, c> wpX;
   
   static
   {
-    AppMethodBeat.i(215270);
+    AppMethodBeat.i(262882);
     TAG = "MicroMsg.ExptManager";
-    sLp = new h(50);
-    AppMethodBeat.o(215270);
+    wrl = new h(50);
+    AppMethodBeat.o(262882);
   }
   
   protected d()
   {
     AppMethodBeat.i(156049);
-    this.sJZ = new h(50);
+    this.wpX = new h(50);
     this.name = null;
     AppMethodBeat.o(156049);
   }
   
-  public static boolean HB(int paramInt)
+  public static boolean Ll(int paramInt)
   {
     AppMethodBeat.i(182039);
     MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("WxExptConfig");
@@ -53,7 +51,7 @@ public final class d
     return false;
   }
   
-  private c HC(int paramInt)
+  private c Lm(int paramInt)
   {
     AppMethodBeat.i(156052);
     if (paramInt <= 0)
@@ -61,7 +59,7 @@ public final class d
       AppMethodBeat.o(156052);
       return null;
     }
-    Object localObject = aTI();
+    Object localObject = bcJ();
     if (localObject == null)
     {
       AppMethodBeat.o(156052);
@@ -73,7 +71,7 @@ public final class d
       AppMethodBeat.o(156052);
       return null;
     }
-    localObject = (c)this.sJZ.get(Integer.valueOf(paramInt));
+    localObject = (c)this.wpX.get(Integer.valueOf(paramInt));
     if (localObject != null)
     {
       if (Util.isEqual(str, ((c)localObject).field_exptContent))
@@ -81,11 +79,11 @@ public final class d
         AppMethodBeat.o(156052);
         return localObject;
       }
-      this.sJZ.remove(Integer.valueOf(paramInt));
+      this.wpX.remove(Integer.valueOf(paramInt));
     }
     localObject = new c();
-    if (((c)localObject).TN(str)) {
-      this.sJZ.put(Integer.valueOf(paramInt), localObject);
+    if (((c)localObject).abx(str)) {
+      this.wpX.put(Integer.valueOf(paramInt), localObject);
     }
     for (;;)
     {
@@ -97,30 +95,30 @@ public final class d
   
   private static boolean a(c paramc, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(215269);
+    AppMethodBeat.i(262881);
     String str = String.format("%d,%d,%d,%d,%d,%s,%s", new Object[] { Integer.valueOf(paramc.field_exptId), Integer.valueOf(paramc.field_groupId), Integer.valueOf(paramc.field_exptSeq), Long.valueOf(paramc.field_startTime), Long.valueOf(paramc.field_endTime), paramString1, paramString2 });
     int i = str.hashCode();
-    Long localLong = (Long)sLp.get(Integer.valueOf(i));
+    Long localLong = (Long)wrl.get(Integer.valueOf(i));
     if (localLong != null) {}
     for (long l = localLong.longValue();; l = 0L)
     {
       if (Util.milliSecondsToNow(l) < 300000L)
       {
         Log.v(TAG, "clock report [%s] less than 5 min, don't report", new Object[] { str });
-        AppMethodBeat.o(215269);
+        AppMethodBeat.o(262881);
         return false;
       }
-      sLp.put(Integer.valueOf(i), Long.valueOf(Util.nowMilliSecond()));
-      e.Cxv.a(15452, new Object[] { Integer.valueOf(paramc.field_exptId), Integer.valueOf(paramc.field_groupId), Integer.valueOf(paramc.field_exptSeq), Long.valueOf(paramc.field_startTime), Long.valueOf(paramc.field_endTime), paramString1, paramString2 });
-      AppMethodBeat.o(215269);
+      wrl.put(Integer.valueOf(i), Long.valueOf(Util.nowMilliSecond()));
+      com.tencent.mm.plugin.report.f.Iyx.a(15452, new Object[] { Integer.valueOf(paramc.field_exptId), Integer.valueOf(paramc.field_groupId), Integer.valueOf(paramc.field_exptSeq), Long.valueOf(paramc.field_startTime), Long.valueOf(paramc.field_endTime), paramString1, paramString2 });
+      AppMethodBeat.o(262881);
       return true;
     }
   }
   
-  private int ari(String paramString)
+  private int azj(String paramString)
   {
     AppMethodBeat.i(156051);
-    MultiProcessMMKV localMultiProcessMMKV = aTI();
+    MultiProcessMMKV localMultiProcessMMKV = bcJ();
     if (localMultiProcessMMKV == null)
     {
       AppMethodBeat.o(156051);
@@ -131,13 +129,13 @@ public final class d
     return i;
   }
   
-  public static d cRY()
+  public static d dgX()
   {
     AppMethodBeat.i(156048);
-    if (sLo == null) {
-      sLo = new d();
+    if (wrk == null) {
+      wrk = new d();
     }
-    d locald = sLo;
+    d locald = wrk;
     AppMethodBeat.o(156048);
     return locald;
   }
@@ -145,21 +143,16 @@ public final class d
   public static int getUin()
   {
     AppMethodBeat.i(182040);
-    int i = MMApplicationContext.getContext().getSharedPreferences("system_config_prefs", g.aps()).getInt("default_uin", 0);
-    if (i != 0)
-    {
-      AppMethodBeat.o(182040);
-      return i;
-    }
     MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("WxExptConfig");
-    if (localMultiProcessMMKV != null)
+    if (localMultiProcessMMKV != null) {}
+    for (int i = localMultiProcessMMKV.getInt("expt_uin", 0); i != 0; i = 0)
     {
-      i = localMultiProcessMMKV.getInt("expt_uin", 0);
       AppMethodBeat.o(182040);
       return i;
     }
+    i = MMApplicationContext.getContext().getSharedPreferences("system_config_prefs", g.avK()).getInt("default_uin", 0);
     AppMethodBeat.o(182040);
-    return 0;
+    return i;
   }
   
   private String info()
@@ -170,52 +163,32 @@ public final class d
     return str;
   }
   
-  public final MultiProcessMMKV aTI()
-  {
-    AppMethodBeat.i(156050);
-    int i = getUin();
-    if (i == 0)
-    {
-      AppMethodBeat.o(156050);
-      return null;
-    }
-    Object localObject = i + "_WxExptmmkv";
-    if (!Util.isEqual(this.name, (String)localObject))
-    {
-      Log.i(TAG, "%s get mmkv change uin old[%s] new[%s]", new Object[] { info(), this.name, localObject });
-      this.name = ((String)localObject);
-    }
-    localObject = MultiProcessMMKV.getMMKV(this.name);
-    AppMethodBeat.o(156050);
-    return localObject;
-  }
-  
-  public final String b(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
+  public final String a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(156054);
     Object localObject1 = new PString();
-    if (b.cRI().a(paramString1, paramString2, (PString)localObject1) > 0)
+    if (b.dgG().a(paramString1, paramString2, (PString)localObject1) > 0)
     {
       paramString1 = ((PString)localObject1).value;
       AppMethodBeat.o(156054);
       return paramString1;
     }
     long l = Util.currentTicks();
-    int i = ari(paramString1);
+    int i = azj(paramString1);
     Object localObject2;
     if (i > 0)
     {
-      c localc = HC(i);
+      c localc = Lm(i);
       if ((localc != null) && (localc.isReady()))
       {
-        localObject1 = localc.cRH();
+        localObject1 = localc.dgD();
         if ((localObject1 != null) && (!((HashMap)localObject1).isEmpty()))
         {
           localObject2 = (String)((HashMap)localObject1).get(paramString1);
           if (!paramBoolean1)
           {
             localObject1 = localObject2;
-            if (!localc.cRU()) {}
+            if (!localc.dgT()) {}
           }
           else
           {
@@ -238,17 +211,37 @@ public final class d
     }
   }
   
-  public final String gA(String paramString1, String paramString2)
+  public final MultiProcessMMKV bcJ()
+  {
+    AppMethodBeat.i(156050);
+    int i = getUin();
+    if (i == 0)
+    {
+      AppMethodBeat.o(156050);
+      return null;
+    }
+    Object localObject = i + "_WxExptmmkv";
+    if (!Util.isEqual(this.name, (String)localObject))
+    {
+      Log.i(TAG, "%s get mmkv change uin old[%s] new[%s]", new Object[] { info(), this.name, localObject });
+      this.name = ((String)localObject);
+    }
+    localObject = MultiProcessMMKV.getMMKV(this.name);
+    AppMethodBeat.o(156050);
+    return localObject;
+  }
+  
+  public final String gO(String paramString1, String paramString2)
   {
     AppMethodBeat.i(156053);
-    paramString1 = b(paramString1, paramString2, false, true);
+    paramString1 = a(paramString1, paramString2, false, true);
     AppMethodBeat.o(156053);
     return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.h.d
  * JD-Core Version:    0.7.0.1
  */

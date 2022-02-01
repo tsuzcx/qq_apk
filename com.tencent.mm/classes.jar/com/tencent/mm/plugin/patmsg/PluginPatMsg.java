@@ -3,20 +3,24 @@ package com.tencent.mm.plugin.patmsg;
 import android.util.Pair;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.t;
 import com.tencent.mm.kernel.api.c;
-import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.model.aa;
-import com.tencent.mm.model.cj;
+import com.tencent.mm.model.ck;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.messenger.a.h.a;
-import com.tencent.mm.protocal.protobuf.czh;
-import com.tencent.mm.protocal.protobuf.czi;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
+import com.tencent.mm.plugin.patmsg.a.e;
+import com.tencent.mm.protocal.protobuf.diu;
+import com.tencent.mm.protocal.protobuf.div;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.vfs.u;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -25,193 +29,193 @@ import java.util.Map;
 
 public class PluginPatMsg
   extends com.tencent.mm.kernel.b.f
-  implements c, com.tencent.mm.plugin.patmsg.a.e
+  implements c, e
 {
-  private a ARg;
-  private Map<String, com.tencent.mm.plugin.patmsg.a.f> ARh;
-  private b ARi;
-  LinkedList<czi> ARj;
+  private a GKr;
+  private Map<String, com.tencent.mm.plugin.patmsg.a.f> GKs;
+  private b GKt;
+  LinkedList<div> GKu;
   
   public PluginPatMsg()
   {
-    AppMethodBeat.i(206947);
-    this.ARg = new a();
-    this.ARh = new HashMap();
-    this.ARi = null;
-    this.ARj = null;
-    AppMethodBeat.o(206947);
+    AppMethodBeat.i(186562);
+    this.GKr = new a();
+    this.GKs = new HashMap();
+    this.GKt = null;
+    this.GKu = null;
+    AppMethodBeat.o(186562);
   }
   
   private void syncRecvRecord()
   {
-    AppMethodBeat.i(206961);
-    com.tencent.f.h.RTc.b(new Runnable()
+    AppMethodBeat.i(186580);
+    com.tencent.e.h.ZvG.d(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(206946);
-        if (PluginPatMsg.this.ARi != null)
+        AppMethodBeat.i(186554);
+        if (PluginPatMsg.this.GKt != null)
         {
           LinkedList localLinkedList = new LinkedList();
           int i = 0;
-          while ((i < 100) && (i < PluginPatMsg.this.ARj.size()))
+          while ((i < 100) && (i < PluginPatMsg.this.GKu.size()))
           {
-            localLinkedList.add(PluginPatMsg.this.ARj.get(i));
+            localLinkedList.add(PluginPatMsg.this.GKu.get(i));
             i += 1;
           }
-          PluginPatMsg.this.ARi.r(localLinkedList);
+          PluginPatMsg.this.GKt.r(localLinkedList);
         }
-        AppMethodBeat.o(206946);
+        AppMethodBeat.o(186554);
       }
     }, "sync_pat_recv_record_thread");
-    AppMethodBeat.o(206961);
+    AppMethodBeat.o(186580);
   }
   
-  public void addRecvRecord(long paramLong, czh paramczh)
+  public void addRecvRecord(long paramLong, diu paramdiu)
   {
-    AppMethodBeat.i(206958);
-    synchronized (this.ARj)
+    AppMethodBeat.i(186577);
+    synchronized (this.GKu)
     {
-      czi localczi = new czi();
-      localczi.MED = paramLong;
-      localczi.MEE = paramczh;
-      this.ARj.addFirst(localczi);
+      div localdiv = new div();
+      localdiv.TQn = paramLong;
+      localdiv.TQo = paramdiu;
+      this.GKu.addFirst(localdiv);
       syncRecvRecord();
-      AppMethodBeat.o(206958);
+      AppMethodBeat.o(186577);
       return;
     }
   }
   
   public void clearTemplate()
   {
-    AppMethodBeat.i(206956);
-    this.ARh.clear();
-    AppMethodBeat.o(206956);
+    AppMethodBeat.i(186575);
+    this.GKs.clear();
+    AppMethodBeat.o(186575);
   }
   
   public void deleteRecvRecord(long paramLong)
   {
-    AppMethodBeat.i(206959);
+    AppMethodBeat.i(186578);
     syncRecvRecord();
-    AppMethodBeat.o(206959);
+    AppMethodBeat.o(186578);
   }
   
-  public void execute(com.tencent.mm.kernel.b.g paramg) {}
+  public void execute(g paramg) {}
   
   public String getAccPatMsgPath()
   {
-    AppMethodBeat.i(206957);
-    String str = com.tencent.mm.kernel.g.aAh().cachePath + "patmsg/";
-    AppMethodBeat.o(206957);
+    AppMethodBeat.i(186576);
+    String str = com.tencent.mm.kernel.h.aHG().cachePath + "patmsg/";
+    AppMethodBeat.o(186576);
     return str;
   }
   
-  public czi getRecvRecord(long paramLong)
+  public div getRecvRecord(long paramLong)
   {
-    AppMethodBeat.i(206960);
-    synchronized (this.ARj)
+    AppMethodBeat.i(186579);
+    synchronized (this.GKu)
     {
-      Iterator localIterator = this.ARj.iterator();
+      Iterator localIterator = this.GKu.iterator();
       while (localIterator.hasNext())
       {
-        czi localczi = (czi)localIterator.next();
-        if ((localczi.MEE != null) && (localczi.MEE.oNJ == paramLong))
+        div localdiv = (div)localIterator.next();
+        if ((localdiv.TQo != null) && (localdiv.TQo.rPF == paramLong))
         {
-          AppMethodBeat.o(206960);
-          return localczi;
+          AppMethodBeat.o(186579);
+          return localdiv;
         }
       }
-      AppMethodBeat.o(206960);
+      AppMethodBeat.o(186579);
       return null;
     }
   }
   
   public boolean isNickClickable()
   {
-    AppMethodBeat.i(206953);
-    if (((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getInt("SendPatUserShowBitVal", 0) != 0)
+    AppMethodBeat.i(186572);
+    if (((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.zero.b.a.class)).axc().getInt("SendPatUserShowBitVal", 0) != 0)
     {
-      AppMethodBeat.o(206953);
+      AppMethodBeat.o(186572);
       return true;
     }
-    AppMethodBeat.o(206953);
+    AppMethodBeat.o(186572);
     return false;
   }
   
   public boolean isPatEnable()
   {
-    AppMethodBeat.i(206952);
-    int i = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getInt("DisableSendPat", 1);
+    AppMethodBeat.i(186571);
+    int i = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.zero.b.a.class)).axc().getInt("DisableSendPat", 1);
     Log.i("MicroMsg.PluginPatMsg", "disable sendPat %d", new Object[] { Integer.valueOf(i) });
     if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.DEBUG))
     {
-      AppMethodBeat.o(206952);
+      AppMethodBeat.o(186571);
       return true;
     }
     if (i == 0)
     {
-      AppMethodBeat.o(206952);
+      AppMethodBeat.o(186571);
       return true;
     }
-    AppMethodBeat.o(206952);
+    AppMethodBeat.o(186571);
     return false;
   }
   
   public boolean isRevokePatMsgEnable()
   {
-    AppMethodBeat.i(206954);
-    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.snb, 1) == 1)
+    AppMethodBeat.i(186573);
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vYd, 1) == 1)
     {
-      AppMethodBeat.o(206954);
+      AppMethodBeat.o(186573);
       return true;
     }
-    AppMethodBeat.o(206954);
+    AppMethodBeat.o(186573);
     return false;
   }
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(f.c paramc)
   {
-    AppMethodBeat.i(206948);
-    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.patmsg.a.b.class, this.ARg);
-    com.tencent.mm.kernel.g.azz().a(849, this.ARg);
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().a("pat", this.ARg.ARa);
-    if (paramc.hrc) {
-      com.tencent.mm.vfs.s.dy(com.tencent.mm.kernel.g.aAh().hqG + "patmsg/", true);
+    AppMethodBeat.i(186564);
+    com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.patmsg.a.b.class, this.GKr);
+    com.tencent.mm.kernel.h.aGY().a(849, this.GKr);
+    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().a("pat", this.GKr.GKl);
+    if (paramc.kcX) {
+      u.deleteDir(com.tencent.mm.kernel.h.aHG().kcB + "patmsg/");
     }
-    this.ARi = new b(((PluginPatMsg)com.tencent.mm.kernel.g.ah(PluginPatMsg.class)).getAccPatMsgPath() + "pat_recv_record");
-    com.tencent.f.h.RTc.aX(new Runnable()
+    this.GKt = new b(((PluginPatMsg)com.tencent.mm.kernel.h.ag(PluginPatMsg.class)).getAccPatMsgPath() + "pat_recv_record");
+    com.tencent.e.h.ZvG.be(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(206945);
-        PluginPatMsg.this.ARj = PluginPatMsg.this.ARi.blq();
-        if (PluginPatMsg.this.ARj == null) {
-          PluginPatMsg.this.ARj = new LinkedList();
+        AppMethodBeat.i(186607);
+        PluginPatMsg.this.GKu = PluginPatMsg.this.GKt.bvg();
+        if (PluginPatMsg.this.GKu == null) {
+          PluginPatMsg.this.GKu = new LinkedList();
         }
-        AppMethodBeat.o(206945);
+        AppMethodBeat.o(186607);
       }
     });
-    AppMethodBeat.o(206948);
+    AppMethodBeat.o(186564);
   }
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(206949);
-    com.tencent.mm.kernel.g.ag(com.tencent.mm.plugin.patmsg.a.b.class);
-    com.tencent.mm.kernel.g.azz().b(849, this.ARg);
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().b("pat", this.ARg.ARa);
-    AppMethodBeat.o(206949);
+    AppMethodBeat.i(186566);
+    com.tencent.mm.kernel.h.af(com.tencent.mm.plugin.patmsg.a.b.class);
+    com.tencent.mm.kernel.h.aGY().b(849, this.GKr);
+    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().b("pat", this.GKr.GKl);
+    AppMethodBeat.o(186566);
   }
   
   public com.tencent.mm.plugin.patmsg.a.f parseDisplayTemplate(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(206955);
-    Object localObject = com.tencent.mm.plugin.messenger.a.h.aDX(paramString1);
-    if (this.ARh.containsKey(paramString1))
+    AppMethodBeat.i(186574);
+    Object localObject = com.tencent.mm.plugin.messenger.a.h.aOh(paramString1);
+    if (this.GKs.containsKey(paramString1))
     {
-      Log.i("MicroMsg.PluginPatMsg", "find %s (%s) in cache", new Object[] { paramString1, this.ARh.get(paramString1) });
-      paramString1 = (com.tencent.mm.plugin.patmsg.a.f)this.ARh.get(paramString1);
-      AppMethodBeat.o(206955);
+      Log.i("MicroMsg.PluginPatMsg", "find %s (%s) in cache", new Object[] { paramString1, this.GKs.get(paramString1) });
+      paramString1 = (com.tencent.mm.plugin.patmsg.a.f)this.GKs.get(paramString1);
+      AppMethodBeat.o(186574);
       return paramString1;
     }
     com.tencent.mm.plugin.patmsg.a.f localf = new com.tencent.mm.plugin.patmsg.a.f();
@@ -221,40 +225,40 @@ public class PluginPatMsg
     for (localObject = paramString1; localIterator.hasNext(); localObject = ((String)localObject).replace(locala.group, str))
     {
       locala = (h.a)localIterator.next();
-      str = aa.getDisplayName(locala.value, paramString2);
+      str = aa.aL(locala.value, paramString2);
       int i = ((String)localObject).indexOf(locala.group);
-      localf.ARm.add(Pair.create(Integer.valueOf(i), Integer.valueOf(i + str.length())));
-      localf.iPH.add(locala.value);
+      localf.GKx.add(Pair.create(Integer.valueOf(i), Integer.valueOf(i + str.length())));
+      localf.lFX.add(locala.value);
     }
     localf.result = ((String)localObject);
-    this.ARh.put(paramString1, localf);
-    AppMethodBeat.o(206955);
+    this.GKs.put(paramString1, localf);
+    AppMethodBeat.o(186574);
     return localf;
   }
   
   public void playPatAnimation(View paramView)
   {
-    AppMethodBeat.i(206950);
-    paramView.startAnimation(AnimationUtils.loadAnimation(MMApplicationContext.getContext(), 2130771994));
-    AppMethodBeat.o(206950);
+    AppMethodBeat.i(186568);
+    paramView.startAnimation(AnimationUtils.loadAnimation(MMApplicationContext.getContext(), d.a.anim_shake_avatar));
+    AppMethodBeat.o(186568);
   }
   
   public void playRevokePatAnimation(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(206951);
+    AppMethodBeat.i(186570);
     if (paramBoolean)
     {
-      paramView.startAnimation(AnimationUtils.loadAnimation(MMApplicationContext.getContext(), 2130771991));
-      AppMethodBeat.o(206951);
+      paramView.startAnimation(AnimationUtils.loadAnimation(MMApplicationContext.getContext(), d.a.anim_rotate_avatar_right));
+      AppMethodBeat.o(186570);
       return;
     }
-    paramView.startAnimation(AnimationUtils.loadAnimation(MMApplicationContext.getContext(), 2130771990));
-    AppMethodBeat.o(206951);
+    paramView.startAnimation(AnimationUtils.loadAnimation(MMApplicationContext.getContext(), d.a.anim_rotate_avatar_left));
+    AppMethodBeat.o(186570);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.patmsg.PluginPatMsg
  * JD-Core Version:    0.7.0.1
  */

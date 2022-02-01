@@ -3,14 +3,14 @@ package e.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String Bah;
-  public String UbK;
-  public String UbL;
-  public String UbM;
-  public String UbN;
-  public String UbO;
+  public String GUf;
+  public String abEZ;
+  public String abFa;
+  public String abFb;
+  public String abFc;
+  public String abFd;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -18,63 +18,63 @@ public final class i
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Bah != null) {
-        paramVarArgs.e(1, this.Bah);
+      if (this.GUf != null) {
+        paramVarArgs.f(1, this.GUf);
       }
-      if (this.UbK != null) {
-        paramVarArgs.e(2, this.UbK);
+      if (this.abEZ != null) {
+        paramVarArgs.f(2, this.abEZ);
       }
-      if (this.UbL != null) {
-        paramVarArgs.e(3, this.UbL);
+      if (this.abFa != null) {
+        paramVarArgs.f(3, this.abFa);
       }
-      if (this.UbM != null) {
-        paramVarArgs.e(4, this.UbM);
+      if (this.abFb != null) {
+        paramVarArgs.f(4, this.abFb);
       }
-      if (this.UbN != null) {
-        paramVarArgs.e(5, this.UbN);
+      if (this.abFc != null) {
+        paramVarArgs.f(5, this.abFc);
       }
-      if (this.UbO != null) {
-        paramVarArgs.e(6, this.UbO);
+      if (this.abFd != null) {
+        paramVarArgs.f(6, this.abFd);
       }
       AppMethodBeat.o(91747);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Bah == null) {
+      if (this.GUf == null) {
         break label518;
       }
     }
     label518:
-    for (int i = g.a.a.b.b.a.f(1, this.Bah) + 0;; i = 0)
+    for (int i = g.a.a.b.b.a.g(1, this.GUf) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.UbK != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.UbK);
+      if (this.abEZ != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.abEZ);
       }
       i = paramInt;
-      if (this.UbL != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.UbL);
+      if (this.abFa != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.abFa);
       }
       paramInt = i;
-      if (this.UbM != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.UbM);
+      if (this.abFb != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.abFb);
       }
       i = paramInt;
-      if (this.UbN != null) {
-        i = paramInt + g.a.a.b.b.a.f(5, this.UbN);
+      if (this.abFc != null) {
+        i = paramInt + g.a.a.b.b.a.g(5, this.abFc);
       }
       paramInt = i;
-      if (this.UbO != null) {
-        paramInt = i + g.a.a.b.b.a.f(6, this.UbO);
+      if (this.abFd != null) {
+        paramInt = i + g.a.a.b.b.a.g(6, this.abFd);
       }
       AppMethodBeat.o(91747);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         AppMethodBeat.o(91747);
@@ -90,27 +90,27 @@ public final class i
           AppMethodBeat.o(91747);
           return -1;
         case 1: 
-          locali.Bah = locala.UbS.readString();
+          locali.GUf = locala.abFh.readString();
           AppMethodBeat.o(91747);
           return 0;
         case 2: 
-          locali.UbK = locala.UbS.readString();
+          locali.abEZ = locala.abFh.readString();
           AppMethodBeat.o(91747);
           return 0;
         case 3: 
-          locali.UbL = locala.UbS.readString();
+          locali.abFa = locala.abFh.readString();
           AppMethodBeat.o(91747);
           return 0;
         case 4: 
-          locali.UbM = locala.UbS.readString();
+          locali.abFb = locala.abFh.readString();
           AppMethodBeat.o(91747);
           return 0;
         case 5: 
-          locali.UbN = locala.UbS.readString();
+          locali.abFc = locala.abFh.readString();
           AppMethodBeat.o(91747);
           return 0;
         }
-        locali.UbO = locala.UbS.readString();
+        locali.abFd = locala.abFh.readString();
         AppMethodBeat.o(91747);
         return 0;
       }

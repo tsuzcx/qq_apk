@@ -9,7 +9,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureReceiver;", "Landroid/content/BroadcastReceiver;", "()V", "TAG", "", "onReceive", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "plugin-emojicapture_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureReceiver;", "Landroid/content/BroadcastReceiver;", "()V", "TAG", "", "onReceive", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "plugin-emojicapture_release"})
 public final class EmojiCaptureReceiver
   extends BroadcastReceiver
 {
@@ -18,8 +18,8 @@ public final class EmojiCaptureReceiver
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(415);
-    p.h(paramContext, "context");
-    p.h(paramIntent, "intent");
+    p.k(paramContext, "context");
+    p.k(paramIntent, "intent");
     paramContext = paramIntent.getAction();
     Log.i(this.TAG, "onReceive: ".concat(String.valueOf(paramContext)));
     if (paramContext == null)
@@ -46,7 +46,7 @@ public final class EmojiCaptureReceiver
           long l = paramIntent.getLongExtra("upload_time_enter", 0L);
           bool = paramIntent.getBooleanExtra("upload_success", false);
           paramContext = paramIntent.getStringExtra("upload_md5");
-          paramIntent = b.hdv;
+          paramIntent = b.jPc;
           b.b(l, bool, paramContext);
           Log.i(this.TAG, "onReceive: upload " + l + ", " + bool + ", " + paramContext);
         }

@@ -1,52 +1,17 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
-
 public final class n
-  extends MAutoStorage<m>
 {
-  public static final String[] iBh;
-  public static final String[] iBi;
-  
-  static
+  public static final class d
   {
-    AppMethodBeat.i(76413);
-    iBh = new String[] { MAutoStorage.getCreateSQLs(m.iBg, "WxaWidgetInfo") };
-    iBi = new String[0];
-    AppMethodBeat.o(76413);
-  }
-  
-  public n(ISQLiteDatabase paramISQLiteDatabase)
-  {
-    super(paramISQLiteDatabase, m.iBg, "WxaWidgetInfo", iBi);
-  }
-  
-  public final m afV(String paramString)
-  {
-    AppMethodBeat.i(76412);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(76412);
-      return null;
-    }
-    m localm = new m();
-    localm.field_appId = paramString;
-    localm.field_appIdHash = paramString.hashCode();
-    if (!get(localm, new String[] { "appIdHash" }))
-    {
-      AppMethodBeat.o(76412);
-      return null;
-    }
-    AppMethodBeat.o(76412);
-    return localm;
+    public static final int app_brand_empty = 2131493029;
+    public static final int layout_three_dots_loading_view = 2131495296;
+    public static final int support_footer_recycler_view_container = 2131496766;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.n
  * JD-Core Version:    0.7.0.1
  */

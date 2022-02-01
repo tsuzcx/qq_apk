@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/cms" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:id="@id/cms" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout android:id="@id/eeu" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <ImageView android:id="@id/xx" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/cr" android:layout_alignParentTop="true" android:layout_marginStart="@dimen/cb" android:layout_alignParentStart="true" />
@@ -18,7 +18,7 @@
                     <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/eey" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c5" />
                     <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
                         <TextView android:textSize="14.0dip" android:textColor="@color/ua" android:id="@id/eex" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cqk" />
-                        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="bottom" android:layout_width="@dimen/ct" android:layout_height="@dimen/cb" android:src="@raw/icons_filled_back" android:rotation="180.0" android:layout_marginStart="2.5dip" app:iconColor="@color/ua" />
+                        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="bottom" android:id="@id/k06" android:layout_width="@dimen/ct" android:layout_height="@dimen/cb" android:src="@raw/icons_filled_back" android:rotation="180.0" android:layout_marginStart="2.5dip" app:iconColor="@color/ua" />
                     </LinearLayout>
                 </LinearLayout>
             </RelativeLayout>
@@ -40,6 +40,7 @@
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
-        <Button android:textSize="17.0dip" android:textColor="@color/ae" android:id="@id/eda" android:background="@drawable/a03" android:layout_width="@dimen/c8" android:layout_height="40.0dip" android:layout_marginBottom="@dimen/bx" android:text="@string/vl" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <Button android:textSize="17.0dip" android:textColor="@color/UN_BW_0_Alpha_0_9" android:id="@id/eda" android:background="@drawable/a03" android:layout_width="@dimen/c8" android:layout_height="40.0dip" android:layout_marginBottom="@dimen/bx" android:text="@string/vl" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
     </RelativeLayout>
+    <TextView android:textSize="@dimen/t" android:textColor="@color/am" android:id="@id/kfk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cr" android:layout_marginRight="@dimen/cb" android:layout_marginBottom="@dimen/cl" android:text="@string/jsj" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
 </RelativeLayout>

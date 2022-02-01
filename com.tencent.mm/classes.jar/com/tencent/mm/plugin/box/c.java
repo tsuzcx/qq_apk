@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.box;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.model.cm;
 import com.tencent.mm.plugin.websearch.api.ai;
 import com.tencent.mm.plugin.websearch.api.ar;
 import com.tencent.mm.plugin.websearch.api.at;
-import com.tencent.mm.protocal.protobuf.dkb;
-import com.tencent.mm.protocal.protobuf.fbs;
+import com.tencent.mm.protocal.protobuf.dtq;
+import com.tencent.mm.protocal.protobuf.fml;
+import com.tencent.mm.protocal.protobuf.fmm;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.ad;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.Closeable;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
@@ -31,169 +31,130 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class c
 {
-  private static HashSet<String> plA;
-  private static HashSet<String> plB;
-  public static final Runnable plC;
-  private static int plD;
-  private static int plE;
-  private static AtomicBoolean plr;
-  private static AtomicBoolean pls;
-  private static short[][] plt;
-  private static int[][] plu;
-  private static final HashMap<Integer, LinkedList<Integer>> plv;
-  private static int plw;
-  private static int plx;
-  private static int ply;
-  private static int plz;
+  private static AtomicBoolean snA;
+  private static AtomicBoolean snB;
+  private static short[][] snC;
+  private static int[][] snD;
+  private static int[][] snE;
+  private static final HashMap<Integer, LinkedList<Integer>> snF;
+  private static int snG;
+  private static int snH;
+  private static int snI;
+  private static int snJ;
+  private static HashSet<String> snK;
+  private static HashSet<fml> snL;
+  public static final Runnable snM;
+  private static int snN;
+  private static int snO;
   
   static
   {
-    AppMethodBeat.i(196200);
-    plr = new AtomicBoolean(false);
-    pls = new AtomicBoolean(false);
-    plv = new HashMap();
-    plw = 0;
-    plx = 2;
-    ply = 400;
-    plz = 0;
-    plA = new HashSet();
-    plB = new HashSet();
-    plC = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(196184);
-        try
-        {
-          String str = c.ki(false);
-          int i = 0;
-          if (i < 3)
-          {
-            int j = c.aho(str);
-            if (j == 0)
-            {
-              AppMethodBeat.o(196184);
-              return;
-            }
-            switch (j)
-            {
-            }
-            do
-            {
-              i += 1;
-              break;
-              Log.e("MicroMsg.HotWordSearchUtil", "[loadTask] wordBank file empty");
-              s.deleteFile(str);
-              Log.e("MicroMsg.HotWordSearchUtil", "[loadTask] wordBank file broken, reCreate Model");
-            } while (-1 != c.kh(true));
-            Log.e("MicroMsg.HotWordSearchUtil", "[loadTask] wordBank file broken, and raw file not exist");
-            AppMethodBeat.o(196184);
-            return;
-          }
-          AppMethodBeat.o(196184);
-          return;
-        }
-        catch (Exception localException)
-        {
-          Log.printErrStackTrace("MicroMsg.HotWordSearchUtil", localException, "[loadTask]", new Object[0]);
-          AppMethodBeat.o(196184);
-        }
-      }
-    };
-    plD = 1;
-    plE = 0;
-    AppMethodBeat.o(196200);
+    AppMethodBeat.i(250375);
+    snA = new AtomicBoolean(false);
+    snB = new AtomicBoolean(false);
+    snF = new HashMap();
+    snG = 0;
+    snH = 2;
+    snI = 400;
+    snJ = 0;
+    snK = new HashSet();
+    snL = new HashSet();
+    snM = new c.1();
+    snN = 1;
+    snO = 0;
+    AppMethodBeat.o(250375);
   }
   
-  public static int aho(String paramString)
+  public static int aoU(String paramString)
   {
-    AppMethodBeat.i(196187);
-    if ((!((com.tencent.mm.plugin.websearch.api.c)g.ah(com.tencent.mm.plugin.websearch.api.c.class)).isOpenFingerSearch()) || (!((com.tencent.mm.plugin.websearch.api.c)g.ah(com.tencent.mm.plugin.websearch.api.c.class)).isOpenHotWordSearch()))
-    {
-      Log.i("MicroMsg.HotWordSearchUtil", "[loadFromCustomProtocolFile] finger search not open");
-      AppMethodBeat.o(196187);
-      return 0;
-    }
-    if (!s.YS(paramString))
+    AppMethodBeat.i(250351);
+    if (!u.agG(paramString))
     {
       Log.e("MicroMsg.HotWordSearchUtil", "[loadFromCustomProtocolFile] wordBank file do NOT exist, path: %s", new Object[] { paramString });
-      AppMethodBeat.o(196187);
+      AppMethodBeat.o(250351);
       return -2;
     }
-    pls.set(true);
-    plr.set(false);
-    long l = cl.aWA();
-    paramString = s.aW(paramString, 0, -1);
-    plE = 0;
+    Log.i("MicroMsg.HotWordSearchUtil", "[loadFromCustomProtocolFile] wordBank file %s %s", new Object[] { paramString, Long.valueOf(u.bBQ(paramString)) });
+    snB.set(true);
+    snA.set(false);
+    long l = cm.bfE();
+    paramString = u.aY(paramString, 0, -1);
+    snO = 0;
     if (paramString.length < 24)
     {
       Log.e("MicroMsg.HotWordSearchUtil", "[loadFromCustomProtocolFile] bytes.length(%s) < 24", new Object[] { Integer.valueOf(paramString.length) });
       if (paramString.length == 0)
       {
-        AppMethodBeat.o(196187);
+        AppMethodBeat.o(250351);
         return -4;
       }
-      AppMethodBeat.o(196187);
+      AppMethodBeat.o(250351);
       return -3;
     }
-    plw = bb(paramString);
-    plx = bb(paramString);
-    ply = bb(paramString);
-    plz = bb(paramString);
-    int i1 = bb(paramString);
+    snG = bo(paramString);
+    snH = bo(paramString);
+    snI = bo(paramString);
+    snJ = bo(paramString);
+    int i1 = bo(paramString);
     if (i1 != 20003)
     {
       Log.e("MicroMsg.HotWordSearchUtil", "[loadFromCustomProtocolFile] wordBank file broken, wordGroupC: %s, reCreate model", new Object[] { Integer.valueOf(i1) });
-      AppMethodBeat.o(196187);
+      AppMethodBeat.o(250351);
       return -3;
     }
-    int i2 = (paramString.length - 20 - i1 * 4) / 6;
+    int i2 = (paramString.length - 20 - i1 * 4) / 7;
     Log.i("MicroMsg.HotWordSearchUtil", "[loadFromCustomProtocolFile] wordCntAvailable = %s", new Object[] { Integer.valueOf(i2) });
-    plt = new short[i1][];
-    plu = new int[i1][];
+    snC = new short[i1][];
+    snD = new int[i1][];
+    snE = new int[i1][];
     int j = 0;
     int n;
     for (int i = 0; j < i1; i = n)
     {
-      int i3 = bb(paramString);
+      int i3 = bo(paramString);
       n = i + i3;
       if (n > i2)
       {
         Log.e("MicroMsg.HotWordSearchUtil", "[loadFromCustomProtocolFile] currCnt(%s) > wordCntAvailable%(%s)", new Object[] { Integer.valueOf(n), Integer.valueOf(i2) });
-        AppMethodBeat.o(196187);
+        AppMethodBeat.o(250351);
         return -3;
       }
-      plt[j] = new short[i3];
-      plu[j] = new int[i3];
+      snC[j] = new short[i3];
+      snD[j] = new int[i3];
+      snE[j] = new int[i3];
       i = 0;
       Object localObject;
       int k;
       int m;
       while (i < i3)
       {
-        localObject = plt[j];
-        k = plE;
-        plE = k + 1;
+        localObject = snC[j];
+        k = snO;
+        snO = k + 1;
         k = paramString[k];
-        m = plE;
-        plE = m + 1;
+        m = snO;
+        snO = m + 1;
         localObject[i] = ((short)((k << 8 & 0xFF) + (paramString[m] & 0xFF)));
-        plu[j][i] = bb(paramString);
+        snD[j][i] = bo(paramString);
+        localObject = snE[j];
+        k = snO;
+        snO = k + 1;
+        paramString[k] &= 0xFF;
         i += 1;
       }
       if (i3 > 200)
       {
         localObject = new LinkedList();
-        m = plt[j][0];
+        m = snC[j][0];
         i = 1;
         k = 1;
         if (k < i3)
         {
-          if (plt[j][k] != m)
+          if (snC[j][k] != m)
           {
             ((LinkedList)localObject).addLast(Integer.valueOf(i));
             i = 1;
-            m = plt[j][k];
+            m = snC[j][k];
           }
           for (;;)
           {
@@ -203,57 +164,57 @@ public final class c
           }
         }
         ((LinkedList)localObject).addLast(Integer.valueOf(i));
-        plv.put(Integer.valueOf(j), localObject);
+        snF.put(Integer.valueOf(j), localObject);
       }
       j += 1;
     }
-    plr.set(true);
-    pls.set(false);
-    l = Math.ceil(cl.aWA() - l);
-    ar.o(i, l, 2L);
+    snA.set(true);
+    snB.set(false);
+    l = Math.ceil(cm.bfE() - l);
+    ar.q(i, l, 2L);
     Log.i("MicroMsg.HotWordSearchUtil", "[loadFromCustomProtocolFile] load model from disk use %s ms, total cnt = %s", new Object[] { Long.valueOf(l), Integer.valueOf(i) });
-    AppMethodBeat.o(196187);
+    AppMethodBeat.o(250351);
     return 0;
   }
   
-  public static boolean ahp(String paramString)
+  public static boolean aoV(String paramString)
   {
-    AppMethodBeat.i(196188);
-    if (pls.get())
+    AppMethodBeat.i(250353);
+    if (snB.get())
     {
       Log.i("MicroMsg.HotWordSearchUtil", "[hashSearch] wordBank is loading, Give UP searching");
-      AppMethodBeat.o(196188);
+      AppMethodBeat.o(250353);
       return false;
     }
-    if ((!plr.get()) || (plt == null) || (plu == null))
+    if ((!snA.get()) || (snC == null) || (snD == null))
     {
       Log.w("MicroMsg.HotWordSearchUtil", "[hashSearch] wordBank has NOT init");
-      AppMethodBeat.o(196188);
+      AppMethodBeat.o(250353);
       return false;
     }
-    if ((paramString.length() < plx) || (paramString.length() > ply))
+    if ((paramString.length() < snH) || (paramString.length() > snI))
     {
-      Log.i("MicroMsg.HotWordSearchUtil", "[hashSearch] text.length(%s) is NOT in range [%s, %s]", new Object[] { Integer.valueOf(paramString.length()), Integer.valueOf(plx), Integer.valueOf(ply) });
-      AppMethodBeat.o(196188);
+      Log.i("MicroMsg.HotWordSearchUtil", "[hashSearch] text.length(%s) is NOT in range [%s, %s]", new Object[] { Integer.valueOf(paramString.length()), Integer.valueOf(snH), Integer.valueOf(snI) });
+      AppMethodBeat.o(250353);
       return false;
     }
-    long l = cl.aWA();
+    long l = cm.bfE();
     int n = paramString.length();
     int j = 0;
     while (j < paramString.length() - 1)
     {
       int i = paramString.substring(j, j + 2).hashCode();
-      int m = plt.length;
-      short[] arrayOfShort = plt[(i % m)];
-      int[] arrayOfInt = plu[(i % m)];
+      int m = snC.length;
+      short[] arrayOfShort = snC[(i % m)];
+      int[] arrayOfInt = snD[(i % m)];
       int k = arrayOfShort.length;
       if (k > 200)
       {
-        Object localObject = (LinkedList)plv.get(Integer.valueOf(i % m));
+        Object localObject = (LinkedList)snF.get(Integer.valueOf(i % m));
         if (localObject == null)
         {
           Log.e("MicroMsg.HotWordSearchUtil", "[hashSearch] hashConflictHandler.get(%d) == null", new Object[] { Integer.valueOf(i % m) });
-          AppMethodBeat.o(196188);
+          AppMethodBeat.o(250353);
           return false;
         }
         i = 0;
@@ -264,7 +225,7 @@ public final class c
           if (arrayOfShort[i] + j > n) {
             break;
           }
-          int i2 = ahu(paramString.substring(j, arrayOfShort[i] + j));
+          int i2 = apa(paramString.substring(j, arrayOfShort[i] + j));
           m = i + i1 - 1;
           k = i;
           while (k <= m)
@@ -273,9 +234,9 @@ public final class c
             if (i2 == arrayOfInt[i3])
             {
               paramString = paramString.substring(j, arrayOfShort[i] + j);
-              plD = Math.max((int)Math.ceil(cl.aWA() - l), 1);
-              Log.i("MicroMsg.HotWordSearchUtil", "[hashSearch] found hot word: %s, use %s ms", new Object[] { paramString, Integer.valueOf(plD) });
-              AppMethodBeat.o(196188);
+              snN = Math.max((int)Math.ceil(cm.bfE() - l), 1);
+              Log.i("MicroMsg.HotWordSearchUtil", "[hashSearch] found hot word: %s, use %s ms", new Object[] { paramString, Integer.valueOf(snN) });
+              AppMethodBeat.o(250353);
               return true;
             }
             if (i2 < arrayOfInt[i3]) {
@@ -290,156 +251,90 @@ public final class c
       i = 0;
       while ((i < k) && (arrayOfShort[i] + j <= n))
       {
-        if (ahu(paramString.substring(j, arrayOfShort[i] + j)) == arrayOfInt[i])
+        if (apa(paramString.substring(j, arrayOfShort[i] + j)) == arrayOfInt[i])
         {
-          plD = Math.max((int)Math.ceil(cl.aWA() - l), 1);
-          Log.i("MicroMsg.HotWordSearchUtil", "[hashSearch] found hot word: %s, use %s ms", new Object[] { paramString.substring(j, arrayOfShort[i] + j), Integer.valueOf(plD) });
-          AppMethodBeat.o(196188);
+          snN = Math.max((int)Math.ceil(cm.bfE() - l), 1);
+          Log.i("MicroMsg.HotWordSearchUtil", "[hashSearch] found hot word: %s, use %s ms", new Object[] { paramString.substring(j, arrayOfShort[i] + j), Integer.valueOf(snN) });
+          AppMethodBeat.o(250353);
           return true;
         }
         i += 1;
       }
       j += 1;
     }
-    plD = Math.max((int)Math.ceil(cl.aWA() - l), 1);
+    snN = Math.max((int)Math.ceil(cm.bfE() - l), 1);
     Log.i("MicroMsg.HotWordSearchUtil", "[hashSearch] NO hot word found");
-    AppMethodBeat.o(196188);
+    AppMethodBeat.o(250353);
     return false;
   }
   
-  public static String ahq(String paramString)
+  public static String aoW(String paramString)
   {
-    AppMethodBeat.i(196189);
-    if (pls.get())
+    AppMethodBeat.i(250354);
+    paramString = aoX(paramString);
+    Collections.sort(paramString, new Comparator() {});
+    if (paramString.size() > 0)
     {
-      Log.i("MicroMsg.HotWordSearchUtil", "[hashSearchFullStr] wordBank is loading, Give UP searching");
-      AppMethodBeat.o(196189);
-      return "";
+      paramString = ((fml)paramString.get(0)).szv;
+      AppMethodBeat.o(250354);
+      return paramString;
     }
-    if ((!plr.get()) || (plt == null) || (plu == null))
-    {
-      Log.w("MicroMsg.HotWordSearchUtil", "[hashSearchFullStr] wordBank has NOT init");
-      AppMethodBeat.o(196189);
-      return "";
-    }
-    if ((paramString.length() < plx) || (paramString.length() > ply))
-    {
-      Log.i("MicroMsg.HotWordSearchUtil", "[hashSearchFullStr] text.length(%s) is NOT in range [%s, %s]", new Object[] { Integer.valueOf(paramString.length()), Integer.valueOf(plx), Integer.valueOf(ply) });
-      AppMethodBeat.o(196189);
-      return "";
-    }
-    int n = paramString.length();
-    int j = 0;
-    while (j < paramString.length() - 1)
-    {
-      int i = paramString.substring(j, j + 2).hashCode();
-      int m = plt.length;
-      short[] arrayOfShort = plt[(i % m)];
-      int[] arrayOfInt = plu[(i % m)];
-      int k = arrayOfShort.length;
-      if (k > 200)
-      {
-        Object localObject = (LinkedList)plv.get(Integer.valueOf(i % m));
-        if (localObject == null)
-        {
-          Log.e("MicroMsg.HotWordSearchUtil", "[hashSearchFullStr] hashConflictHandler.get(%d) == null", new Object[] { Integer.valueOf(i % m) });
-          AppMethodBeat.o(196189);
-          return "";
-        }
-        localObject = ((LinkedList)localObject).iterator();
-        i = 0;
-        while (((Iterator)localObject).hasNext())
-        {
-          int i1 = ((Integer)((Iterator)localObject).next()).intValue();
-          if (arrayOfShort[i] + j > n) {
-            break;
-          }
-          int i2 = ahu(paramString.substring(j, arrayOfShort[i] + j));
-          m = i + i1 - 1;
-          k = i;
-          while (k <= m)
-          {
-            int i3 = (k + m) / 2;
-            if (i2 == arrayOfInt[i3])
-            {
-              paramString = paramString.substring(j, arrayOfShort[i] + j);
-              AppMethodBeat.o(196189);
-              return paramString;
-            }
-            if (i2 < arrayOfInt[i3]) {
-              m = i3 - 1;
-            } else {
-              k = i3 + 1;
-            }
-          }
-          i += i1;
-        }
-      }
-      i = 0;
-      while ((i < k) && (arrayOfShort[i] + j <= n))
-      {
-        if (ahu(paramString.substring(j, arrayOfShort[i] + j)) == arrayOfInt[i])
-        {
-          paramString = paramString.substring(j, arrayOfShort[i] + j);
-          AppMethodBeat.o(196189);
-          return paramString;
-        }
-        i += 1;
-      }
-      j += 1;
-    }
-    AppMethodBeat.o(196189);
+    AppMethodBeat.o(250354);
     return "";
   }
   
-  public static HashSet<String> ahr(String paramString)
+  public static LinkedList<fml> aoX(String paramString)
   {
-    AppMethodBeat.i(196190);
-    HashSet localHashSet = new HashSet();
-    if (pls.get())
+    AppMethodBeat.i(250355);
+    LinkedList localLinkedList = new LinkedList();
+    if (snB.get())
     {
       Log.i("MicroMsg.HotWordSearchUtil", "[hashSearchFullStr] wordBank is loading, Give UP searching");
-      AppMethodBeat.o(196190);
-      return localHashSet;
+      AppMethodBeat.o(250355);
+      return localLinkedList;
     }
-    if ((!plr.get()) || (plt == null) || (plu == null))
+    if ((!snA.get()) || (snC == null) || (snD == null))
     {
       Log.w("MicroMsg.HotWordSearchUtil", "[hashSearchFullStr] wordBank has NOT init");
-      AppMethodBeat.o(196190);
-      return localHashSet;
+      AppMethodBeat.o(250355);
+      return localLinkedList;
     }
-    if ((paramString.length() < plx) || (paramString.length() > ply))
+    if ((paramString.length() < snH) || (paramString.length() > snI))
     {
-      Log.i("MicroMsg.HotWordSearchUtil", "[hashSearchFullStr] text.length(%s) is NOT in range [%s, %s]", new Object[] { Integer.valueOf(paramString.length()), Integer.valueOf(plx), Integer.valueOf(ply) });
-      AppMethodBeat.o(196190);
-      return localHashSet;
+      Log.i("MicroMsg.HotWordSearchUtil", "[hashSearchFullStr] text.length(%s) is NOT in range [%s, %s]", new Object[] { Integer.valueOf(paramString.length()), Integer.valueOf(snH), Integer.valueOf(snI) });
+      AppMethodBeat.o(250355);
+      return localLinkedList;
     }
     int n = paramString.length();
     int j = 0;
     while (j < paramString.length() - 1)
     {
       int i = paramString.substring(j, j + 2).hashCode();
-      int m = plt.length;
-      short[] arrayOfShort = plt[(i % m)];
-      int[] arrayOfInt = plu[(i % m)];
+      int m = snC.length;
+      short[] arrayOfShort = snC[(i % m)];
+      int[] arrayOfInt1 = snD[(i % m)];
+      int[] arrayOfInt2 = snE[(i % m)];
       int k = arrayOfShort.length;
+      Object localObject1;
+      Object localObject2;
       if (k > 200)
       {
-        Object localObject = (LinkedList)plv.get(Integer.valueOf(i % m));
-        if (localObject == null)
+        localObject1 = (LinkedList)snF.get(Integer.valueOf(i % m));
+        if (localObject1 == null)
         {
           Log.e("MicroMsg.HotWordSearchUtil", "[hashSearchFullStr] hashConflictHandler.get(%d) == null", new Object[] { Integer.valueOf(i % m) });
-          AppMethodBeat.o(196190);
+          AppMethodBeat.o(250355);
           return null;
         }
         i = 0;
-        localObject = ((LinkedList)localObject).iterator();
-        if (((Iterator)localObject).hasNext())
+        localObject1 = ((LinkedList)localObject1).iterator();
+        if (((Iterator)localObject1).hasNext())
         {
-          int i1 = ((Integer)((Iterator)localObject).next()).intValue();
+          int i1 = ((Integer)((Iterator)localObject1).next()).intValue();
           if (arrayOfShort[i] + j <= n)
           {
-            int i2 = ahu(paramString.substring(j, arrayOfShort[i] + j));
+            localObject2 = paramString.substring(j, arrayOfShort[i] + j);
+            int i2 = apa((String)localObject2);
             m = i + i1 - 1;
             k = i;
             for (;;)
@@ -448,8 +343,12 @@ public final class c
               if (k <= m)
               {
                 i3 = (k + m) / 2;
-                if (i2 == arrayOfInt[i3]) {
-                  localHashSet.add(paramString.substring(j, arrayOfShort[i] + j));
+                if (i2 == arrayOfInt1[i3])
+                {
+                  fml localfml = new fml();
+                  localfml.szv = ((String)localObject2);
+                  localfml.weight = arrayOfInt2[i3];
+                  localLinkedList.add(localfml);
                 }
               }
               else
@@ -457,7 +356,7 @@ public final class c
                 i += i1;
                 break;
               }
-              if (i2 < arrayOfInt[i3]) {
+              if (i2 < arrayOfInt1[i3]) {
                 m = i3 - 1;
               } else {
                 k = i3 + 1;
@@ -471,44 +370,49 @@ public final class c
         i = 0;
         while ((i < k) && (arrayOfShort[i] + j <= n))
         {
-          if (ahu(paramString.substring(j, arrayOfShort[i] + j)) == arrayOfInt[i]) {
-            localHashSet.add(paramString.substring(j, arrayOfShort[i] + j));
+          localObject1 = paramString.substring(j, arrayOfShort[i] + j);
+          if (apa((String)localObject1) == arrayOfInt1[i])
+          {
+            localObject2 = new fml();
+            ((fml)localObject2).szv = ((String)localObject1);
+            ((fml)localObject2).weight = arrayOfInt2[i];
+            localLinkedList.add(localObject2);
           }
           i += 1;
         }
       }
       j += 1;
     }
-    AppMethodBeat.o(196190);
-    return localHashSet;
+    AppMethodBeat.o(250355);
+    return localLinkedList;
   }
   
-  public static int ahs(String paramString)
+  public static int aoY(String paramString)
   {
-    AppMethodBeat.i(196191);
-    localObject1 = new o(MMApplicationContext.getContext().getCacheDir(), "wordBank/temp");
-    if (((o)localObject1).exists()) {
-      s.dy(aa.z(((o)localObject1).her()), true);
+    AppMethodBeat.i(250358);
+    localObject1 = new q(MMApplicationContext.getContext().getCacheDir(), "wordBank/temp");
+    if (((q)localObject1).ifE()) {
+      u.deleteDir(((q)localObject1).bOF());
     }
-    ((o)localObject1).mkdirs();
-    int i = s.fW(paramString, aa.z(((o)localObject1).her()));
+    ((q)localObject1).ifL();
+    int i = u.gj(paramString, ((q)localObject1).bOF());
     if (i < 0)
     {
-      Log.e("MicroMsg.HotWordSearchUtil", "unzip fail, ret = " + i + ", zipFilePath = " + paramString + ", unzipPath = " + aa.z(((o)localObject1).her()));
-      AppMethodBeat.o(196191);
+      Log.e("MicroMsg.HotWordSearchUtil", "unzip fail, ret = " + i + ", zipFilePath = " + paramString + ", unzipPath = " + ((q)localObject1).bOF());
+      AppMethodBeat.o(250358);
       return -1;
     }
-    Object localObject3 = new o((o)localObject1, "config.conf");
+    Object localObject3 = new q((q)localObject1, "config.conf");
     Properties localProperties = new Properties();
     localObject2 = null;
     localObject1 = null;
     try
     {
-      localObject3 = s.ao((o)localObject3);
+      localObject3 = u.al((q)localObject3);
       localObject1 = localObject3;
       localObject2 = localObject3;
       localProperties.load((InputStream)localObject3);
-      aa.closeQuietly((Closeable)localObject3);
+      ad.closeQuietly((Closeable)localObject3);
     }
     catch (Exception localException)
     {
@@ -516,42 +420,42 @@ public final class c
       {
         localObject2 = localObject1;
         Log.printErrStackTrace("MicroMsg.HotWordSearchUtil", localException, "[getWordBankVersionFromZip] %s", new Object[] { paramString });
-        aa.closeQuietly((Closeable)localObject1);
+        ad.closeQuietly((Closeable)localObject1);
       }
     }
     finally
     {
-      aa.closeQuietly(localObject2);
-      AppMethodBeat.o(196191);
+      ad.closeQuietly(localObject2);
+      AppMethodBeat.o(250358);
     }
     i = Integer.parseInt(localProperties.getProperty("version", "1").trim());
-    AppMethodBeat.o(196191);
+    AppMethodBeat.o(250358);
     return i;
   }
   
-  public static int aht(String paramString)
+  public static int aoZ(String paramString)
   {
-    AppMethodBeat.i(196194);
-    String str = ckX();
-    if (s.YS(str)) {
-      s.dy(str, true);
+    AppMethodBeat.i(250362);
+    String str = cyt();
+    if (u.agG(str)) {
+      u.deleteDir(str);
     }
-    s.boN(str);
-    int i = s.fW(paramString, str);
+    u.bBD(str);
+    int i = u.gj(paramString, str);
     if (i < 0)
     {
       Log.e("MicroMsg.HotWordSearchUtil", "[updateWordBank] unzip fail, ret = " + i + ", zipFilePath = " + paramString + ", unzipPath = " + str);
-      AppMethodBeat.o(196194);
+      AppMethodBeat.o(250362);
       return -1;
     }
     Log.i("MicroMsg.HotWordSearchUtil", "[updateWordBank] unzip success, path: %s", new Object[] { str });
-    AppMethodBeat.o(196194);
+    AppMethodBeat.o(250362);
     return 0;
   }
   
-  private static int ahu(String paramString)
+  private static int apa(String paramString)
   {
-    AppMethodBeat.i(196199);
+    AppMethodBeat.i(250373);
     int j = 0;
     int k;
     for (int i = 0; j < paramString.length(); i = i * 131 + k)
@@ -559,79 +463,102 @@ public final class c
       k = (short)paramString.charAt(j);
       j += 1;
     }
-    AppMethodBeat.o(196199);
+    AppMethodBeat.o(250373);
     return 0x7FFFFFFF & i;
   }
   
-  public static void ba(byte[] paramArrayOfByte)
+  public static void bn(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(196186);
-    try
+    AppMethodBeat.i(250350);
+    int i;
+    int j;
+    for (;;)
     {
-      paramArrayOfByte = (dkb)new dkb().parseFrom(paramArrayOfByte);
-      plw = paramArrayOfByte.version;
-      fbs localfbs = paramArrayOfByte.MNY;
-      plA.clear();
-      plA.addAll(localfbs.NxQ);
-      paramArrayOfByte = paramArrayOfByte.MNX;
-      plB.clear();
-      plB.addAll(paramArrayOfByte.NxQ);
-      paramArrayOfByte = plB.iterator();
-      while (paramArrayOfByte.hasNext()) {
-        Log.i("MicroMsg.HotWordSearchUtil", "[white word]: %s", new Object[] { (String)paramArrayOfByte.next() });
+      Object localObject;
+      try
+      {
+        paramArrayOfByte = (dtq)new dtq().parseFrom(paramArrayOfByte);
+        snG = paramArrayOfByte.version;
+        localObject = paramArrayOfByte.TZR;
+        i = ((fmm)localObject).version;
+        snK.clear();
+        snK.addAll(((fmm)localObject).ULh);
+        paramArrayOfByte = paramArrayOfByte.TZQ;
+        j = paramArrayOfByte.version;
+        snL.clear();
+        if (paramArrayOfByte.ULi.size() > 0)
+        {
+          snL.addAll(paramArrayOfByte.ULi);
+          paramArrayOfByte = snL.iterator();
+          if (!paramArrayOfByte.hasNext()) {
+            break;
+          }
+          localObject = (fml)paramArrayOfByte.next();
+          Log.i("MicroMsg.HotWordSearchUtil", "[white word]: %s %s", new Object[] { ((fml)localObject).szv, Integer.valueOf(((fml)localObject).weight) });
+          continue;
+        }
+        paramArrayOfByte = paramArrayOfByte.ULh.iterator();
       }
-      paramArrayOfByte = plA.iterator();
+      catch (Exception paramArrayOfByte)
+      {
+        Log.printErrStackTrace("MicroMsg.HotWordSearchUtil", paramArrayOfByte, "[resolveRealTimeWordBankFile]", new Object[0]);
+        AppMethodBeat.o(250350);
+        return;
+      }
+      while (paramArrayOfByte.hasNext())
+      {
+        localObject = (String)paramArrayOfByte.next();
+        fml localfml = new fml();
+        localfml.szv = ((String)localObject);
+        localfml.weight = 255;
+        snL.add(localfml);
+      }
     }
-    catch (Exception paramArrayOfByte)
-    {
-      Log.printErrStackTrace("MicroMsg.HotWordSearchUtil", paramArrayOfByte, "[resolveRealTimeWordBankFile]", new Object[0]);
-      AppMethodBeat.o(196186);
-      return;
-    }
+    paramArrayOfByte = snK.iterator();
     while (paramArrayOfByte.hasNext()) {
       Log.i("MicroMsg.HotWordSearchUtil", "[black word]: %s", new Object[] { (String)paramArrayOfByte.next() });
     }
-    Log.i("MicroMsg.HotWordSearchUtil", "realTimeWordsVersion: %s, minMatchLen: %s, maxMatchLen: %s, disable: %s, blackList.size: %s, whiteList.size: %s", new Object[] { Integer.valueOf(plw), Integer.valueOf(plx), Integer.valueOf(ply), Integer.valueOf(plz), Integer.valueOf(plA.size()), Integer.valueOf(plB.size()) });
-    AppMethodBeat.o(196186);
+    Log.i("MicroMsg.HotWordSearchUtil", "realTimeWordsVersion: %s, blackVer: %s whiteVer: %s minMatchLen: %s, maxMatchLen: %s, disable: %s, blackList.size: %s, whiteList.size: %s", new Object[] { Integer.valueOf(snG), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(snH), Integer.valueOf(snI), Integer.valueOf(snJ), Integer.valueOf(snK.size()), Integer.valueOf(snL.size()) });
+    AppMethodBeat.o(250350);
   }
   
-  private static int bb(byte[] paramArrayOfByte)
+  private static int bo(byte[] paramArrayOfByte)
   {
-    int i = plE;
-    plE = i + 1;
+    int i = snO;
+    snO = i + 1;
     i = paramArrayOfByte[i];
-    int j = plE;
-    plE = j + 1;
+    int j = snO;
+    snO = j + 1;
     j = paramArrayOfByte[j];
-    int k = plE;
-    plE = k + 1;
+    int k = snO;
+    snO = k + 1;
     k = paramArrayOfByte[k];
-    int m = plE;
-    plE = m + 1;
+    int m = snO;
+    snO = m + 1;
     return ((i & 0xFF) << 24) + ((j & 0xFF) << 16) + ((k & 0xFF) << 8) + (paramArrayOfByte[m] & 0xFF);
   }
   
-  public static int ckV()
+  public static int cyr()
   {
-    AppMethodBeat.i(196192);
-    localObject1 = ckX();
-    if (!s.YS((String)localObject1 + "/config.conf"))
+    AppMethodBeat.i(250359);
+    localObject1 = cyt();
+    if (!u.agG((String)localObject1 + "/config.conf"))
     {
       Log.i("MicroMsg.HotWordSearchUtil", "[getCurrentWordBankVersion] config.conf NOT exist, path: %s", new Object[] { (String)localObject1 + "/config.conf" });
-      AppMethodBeat.o(196192);
+      AppMethodBeat.o(250359);
       return 1;
     }
-    Object localObject4 = new o((String)localObject1, "config.conf");
+    Object localObject4 = new q((String)localObject1, "config.conf");
     Properties localProperties = new Properties();
     localObject3 = null;
     localObject1 = null;
     try
     {
-      localObject4 = s.ao((o)localObject4);
+      localObject4 = u.al((q)localObject4);
       localObject1 = localObject4;
       localObject3 = localObject4;
       localProperties.load((InputStream)localObject4);
-      aa.closeQuietly((Closeable)localObject4);
+      ad.closeQuietly((Closeable)localObject4);
     }
     catch (Exception localException)
     {
@@ -640,83 +567,79 @@ public final class c
         int i;
         localObject3 = localObject1;
         Log.printErrStackTrace("MicroMsg.HotWordSearchUtil", localException, "[getCurrentWordBankVersion]", new Object[0]);
-        aa.closeQuietly((Closeable)localObject1);
+        ad.closeQuietly((Closeable)localObject1);
       }
     }
     finally
     {
-      aa.closeQuietly(localObject3);
-      AppMethodBeat.o(196192);
+      ad.closeQuietly(localObject3);
+      AppMethodBeat.o(250359);
     }
     i = Integer.parseInt(localProperties.getProperty("version", "1").trim());
-    AppMethodBeat.o(196192);
+    AppMethodBeat.o(250359);
     return i;
   }
   
-  public static String ckW()
+  public static String cys()
   {
-    AppMethodBeat.i(196196);
-    String str = aa.z(new o(new o(ckX()), "blackWhite").her());
-    AppMethodBeat.o(196196);
+    AppMethodBeat.i(250366);
+    String str = new q(new q(cyt()), "blackWhite").bOF();
+    AppMethodBeat.o(250366);
     return str;
   }
   
-  private static String ckX()
+  private static String cyt()
   {
-    AppMethodBeat.i(196197);
-    String str = ai.afr(2).fYs() + "/wordBankDir";
-    AppMethodBeat.o(196197);
+    AppMethodBeat.i(250367);
+    String str = ai.anf(2).gRd() + "/wordBankDir";
+    AppMethodBeat.o(250367);
     return str;
   }
   
   public static int getSearchDuration()
   {
-    AppMethodBeat.i(196198);
-    int i = Math.max(plD, 1);
-    AppMethodBeat.o(196198);
+    AppMethodBeat.i(250370);
+    int i = Math.max(snN, 1);
+    AppMethodBeat.o(250370);
     return i;
   }
   
   public static String getWordBankVersionForStat()
   {
-    AppMethodBeat.i(196193);
-    String str = ckV() + "_" + plw;
-    AppMethodBeat.o(196193);
+    AppMethodBeat.i(250360);
+    String str = cyr() + "_" + snG;
+    AppMethodBeat.o(250360);
     return str;
   }
   
-  public static int kh(boolean paramBoolean)
+  public static int ls(boolean paramBoolean)
   {
-    AppMethodBeat.i(196185);
-    if ((!((com.tencent.mm.plugin.websearch.api.c)g.ah(com.tencent.mm.plugin.websearch.api.c.class)).isOpenFingerSearch()) || (!((com.tencent.mm.plugin.websearch.api.c)g.ah(com.tencent.mm.plugin.websearch.api.c.class)).isOpenHotWordSearch()))
+    AppMethodBeat.i(250348);
+    String str = lt(true);
+    if (!u.agG(str))
     {
-      Log.i("MicroMsg.HotWordSearchUtil", "[createModelFromRawFileAndSave] finger search not open");
-      AppMethodBeat.o(196185);
-      return 0;
-    }
-    Object localObject1 = ki(true);
-    if (!s.YS((String)localObject1))
-    {
-      Log.i("MicroMsg.HotWordSearchUtil", "[createModelFromRawFileAndSave] rawFile NOT exists, path = %s", new Object[] { localObject1 });
-      AppMethodBeat.o(196185);
+      Log.i("MicroMsg.HotWordSearchUtil", "[createModelFromRawFileAndSave] rawFile NOT exists, path = %s", new Object[] { str });
+      AppMethodBeat.o(250348);
       return -1;
     }
     Object localObject3;
     if (paramBoolean)
     {
-      localObject3 = ckW();
-      if (s.YS((String)localObject3))
+      localObject3 = cys();
+      if (u.agG((String)localObject3))
       {
-        localObject3 = s.aW((String)localObject3, 0, -1);
+        localObject3 = u.aY((String)localObject3, 0, -1);
         if (localObject3.length <= 0) {
-          break label170;
+          break label125;
         }
-        ba((byte[])localObject3);
+        bn((byte[])localObject3);
       }
     }
+    int k;
     for (;;)
     {
-      l = cl.aWA();
+      l = cm.bfE();
+      k = 0;
       localObject3 = new LinkedList[20003];
       i = 0;
       while (i < 20003)
@@ -724,176 +647,211 @@ public final class c
         localObject3[i] = new LinkedList();
         i += 1;
       }
-      label170:
+      label125:
       Log.e("MicroMsg.HotWordSearchUtil", "[resolveRealTimeWordBank] Length of real time word bank file = 0");
     }
-    for (;;)
+    int j = k;
+    Object localObject4;
+    int n;
+    Object localObject5;
+    label248:
+    int m;
+    short s;
+    try
     {
-      try
-      {
-        localObject1 = new String(s.aW((String)localObject1, 0, -1)).split("\n");
-        i = localObject1.length;
-        i -= 1;
-        k = 1;
+      localObject4 = new String(u.aY(str, 0, -1)).split("\n");
+      j = k;
+      i = localObject4.length - 1;
+      j = i;
+      int i1 = Util.getInt(localObject4[0], 0);
+      n = 1;
+      j = i;
+      if (n >= localObject4.length) {
+        break label422;
       }
-      catch (Exception localException3)
-      {
-        int k;
-        String str;
-        short s;
-        i = 0;
-        continue;
-        continue;
-        k += 1;
-        i = j;
-        continue;
-        int j = i - 1;
-        continue;
-        i += 1;
-        continue;
+      k = 0;
+      if (i1 < 200000) {
+        break label905;
       }
-      try
+      j = i;
+      localObject5 = localObject4[n].split(" ");
+      j = i;
+      if (localObject5.length <= 1) {
+        break label893;
+      }
+      str = localObject5[0];
+      j = i;
+      k = Util.getInt(localObject5[1], 0);
+      j = i;
+      m = i;
+      if (Util.isNullOrNil(str)) {
+        break label881;
+      }
+      j = i;
+      if (snK.contains(str))
       {
-        if (k >= localObject1.length) {
-          continue;
-        }
-        str = localObject1[k];
+        m = i - 1;
+      }
+      else
+      {
         j = i;
-        if (Util.isNullOrNil(str)) {
-          continue;
+        if (str.length() < 2) {
+          break label915;
         }
-        if (plA.contains(str))
-        {
-          j = i - 1;
+        j = i;
+        if (str.contains(",")) {
+          break label915;
         }
-        else
-        {
-          if ((str.length() < 2) || (str.contains(","))) {
-            continue;
-          }
-          j = str.substring(0, 2).hashCode();
-          int m = ahu(str);
-          s = (short)str.length();
-          localObject3[(j % 20003)].add(new a(s, m));
-          j = i;
-        }
+        j = i;
+        m = str.substring(0, 2).hashCode();
+        j = i;
+        int i2 = apa(str);
+        j = i;
+        s = (short)str.length();
+        j = i;
+        localObject3[(m % 20003)].add(new a(s, i2, k));
+        m = i;
       }
-      catch (Exception localException1) {}
     }
+    catch (Exception localException1) {}
+    label376:
     Log.printErrStackTrace("MicroMsg.HotWordSearchUtil", localException1, "[createModelFromRawFileAndSave]", new Object[0]);
+    int i = j;
     for (;;)
     {
       j = 0;
-      Object localObject2;
-      for (;;)
+      label422:
+      Object localObject1;
+      while (j < 20003)
       {
-        if (j < 20003)
-        {
-          Collections.sort(localObject3[j], new Comparator() {});
-          j += 1;
-          continue;
-          j = i;
-          if (plB != null) {
-            localObject2 = plB.iterator();
-          }
-        }
+        Collections.sort(localObject3[j], new Comparator() {});
+        j += 1;
+        continue;
+        j = i;
+        localObject1 = snL.iterator();
       }
       try
       {
-        while (((Iterator)localObject2).hasNext())
+        while (((Iterator)localObject1).hasNext())
         {
-          str = (String)((Iterator)localObject2).next();
-          if ((str.length() >= 2) && (!str.contains(",")))
+          localObject4 = (fml)((Iterator)localObject1).next();
+          if ((((fml)localObject4).szv.length() >= 2) && (!((fml)localObject4).szv.contains(",")))
           {
-            j = str.substring(0, 2).hashCode();
-            k = ahu(str);
-            s = (short)str.length();
-            localObject3[(j % 20003)].add(new a(s, k));
+            j = ((fml)localObject4).szv.substring(0, 2).hashCode();
+            k = apa(((fml)localObject4).szv);
+            s = (short)((fml)localObject4).szv.length();
+            localObject3[(j % 20003)].add(new a(s, k, ((fml)localObject4).weight));
             i += 1;
           }
         }
-        j = i;
-        i = j;
       }
-      catch (Exception localException4) {}
-    }
-    long l = cl.aWA() - l;
-    ar.o(i, l, 1L);
-    Log.i("MicroMsg.HotWordSearchUtil", "[createModelFromRawFileAndSave] Create model use %s ms, word cnt: %s", new Object[] { Long.valueOf(l), Integer.valueOf(i) });
-    l = cl.aWA();
-    try
-    {
-      str = ki(false);
-      if (s.YS(str)) {
-        s.deleteFile(str);
-      }
-      s.bpa(str);
-      localObject2 = ByteBuffer.allocate(80012 + i * 6 + 50);
-      ((ByteBuffer)localObject2).order(ByteOrder.BIG_ENDIAN);
-      ((ByteBuffer)localObject2).clear();
-      ((ByteBuffer)localObject2).putInt(plw);
-      ((ByteBuffer)localObject2).putInt(plx);
-      ((ByteBuffer)localObject2).putInt(ply);
-      ((ByteBuffer)localObject2).putInt(plz);
-      ((ByteBuffer)localObject2).putInt(20003);
-      i = 0;
-      if (i < 20003)
+      catch (Exception localException3)
       {
-        k = localObject3[i].size();
-        ((ByteBuffer)localObject2).putInt(k);
-        j = 0;
-        while (j < k)
-        {
-          ((ByteBuffer)localObject2).putShort(((a)localObject3[i].get(j)).plF);
-          ((ByteBuffer)localObject2).putInt(((a)localObject3[i].get(j)).plG);
-          j += 1;
-        }
+        j = i;
       }
-      ((ByteBuffer)localObject2).flip();
-      localObject3 = s.d(aa.parseUri(str), null);
-      ((WritableByteChannel)localObject3).write((ByteBuffer)localObject2);
-      ((WritableByteChannel)localObject3).close();
     }
-    catch (Exception localException2)
+    long l = cm.bfE() - l;
+    ar.q(i, l, 1L);
+    Log.i("MicroMsg.HotWordSearchUtil", "[createModelFromRawFileAndSave] Create model use %s ms, word cnt: %s", new Object[] { Long.valueOf(l), Integer.valueOf(i) });
+    l = cm.bfE();
+    for (;;)
     {
-      for (;;)
+      try
+      {
+        localObject4 = lt(false);
+        if (u.agG((String)localObject4)) {
+          u.deleteFile((String)localObject4);
+        }
+        u.bBV((String)localObject4);
+        localObject1 = ByteBuffer.allocate(80012 + i * 7 + 50);
+        ((ByteBuffer)localObject1).order(ByteOrder.BIG_ENDIAN);
+        ((ByteBuffer)localObject1).clear();
+        ((ByteBuffer)localObject1).putInt(snG);
+        ((ByteBuffer)localObject1).putInt(snH);
+        ((ByteBuffer)localObject1).putInt(snI);
+        ((ByteBuffer)localObject1).putInt(snJ);
+        ((ByteBuffer)localObject1).putInt(20003);
+        i = 0;
+        if (i < 20003)
+        {
+          k = localObject3[i].size();
+          ((ByteBuffer)localObject1).putInt(k);
+          j = 0;
+          if (j >= k) {
+            break label923;
+          }
+          localObject5 = (a)localObject3[i].get(j);
+          ((ByteBuffer)localObject1).putShort(((a)localObject5).snP);
+          ((ByteBuffer)localObject1).putInt(((a)localObject5).snQ);
+          ((ByteBuffer)localObject1).put((byte)(((a)localObject5).weight & 0xFF));
+          j += 1;
+          continue;
+        }
+        ((ByteBuffer)localObject1).flip();
+        localObject3 = u.bBP((String)localObject4);
+        ((WritableByteChannel)localObject3).write((ByteBuffer)localObject1);
+        ((WritableByteChannel)localObject3).close();
+      }
+      catch (Exception localException2)
       {
         Log.printErrStackTrace("MicroMsg.HotWordSearchUtil", localException2, "[createModelFromTXTFileAndSave save]", new Object[0]);
+        continue;
       }
+      Log.i("MicroMsg.HotWordSearchUtil", "[createModelFromTXTFileAndSave] Write model to disk use %s ms", new Object[] { Long.valueOf(cm.bfE() - l) });
+      AppMethodBeat.o(250348);
+      return 0;
+      break label376;
+      for (;;)
+      {
+        label881:
+        n += 1;
+        i = m;
+        break;
+        label893:
+        Object localObject2 = localObject5[0];
+        k = 0;
+        break label248;
+        label905:
+        localObject2 = localObject4[n];
+        break label248;
+        label915:
+        m = i - 1;
+      }
+      label923:
+      i += 1;
     }
-    Log.i("MicroMsg.HotWordSearchUtil", "[createModelFromTXTFileAndSave] Write model to disk use %s ms", new Object[] { Long.valueOf(cl.aWA() - l) });
-    AppMethodBeat.o(196185);
-    return 0;
   }
   
-  public static String ki(boolean paramBoolean)
+  public static String lt(boolean paramBoolean)
   {
-    AppMethodBeat.i(196195);
-    o localo = new o(ckX());
+    AppMethodBeat.i(250363);
+    q localq = new q(cyt());
     if (paramBoolean) {}
-    for (String str = "fs_kw_main.txt";; str = "wordBank")
+    for (String str = "fs_kw_main.txt";; str = "wordBank_Weight_1")
     {
-      str = aa.z(new o(localo, str).her());
-      AppMethodBeat.o(196195);
+      str = new q(localq, str).bOF();
+      AppMethodBeat.o(250363);
       return str;
     }
   }
   
   static final class a
   {
-    short plF;
-    int plG;
+    short snP;
+    int snQ;
+    int weight;
     
-    a(short paramShort, int paramInt)
+    a(short paramShort, int paramInt1, int paramInt2)
     {
-      this.plF = paramShort;
-      this.plG = paramInt;
+      this.snP = paramShort;
+      this.snQ = paramInt1;
+      this.weight = paramInt2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.box.c
  * JD-Core Version:    0.7.0.1
  */

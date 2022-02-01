@@ -16,18 +16,18 @@ public class TPTrackInfo
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(189049);
+    AppMethodBeat.i(219917);
     if ((paramObject == null) || (!(paramObject instanceof TPTrackInfo)))
     {
-      AppMethodBeat.o(189049);
+      AppMethodBeat.o(219917);
       return false;
     }
     if ((this.name.equals(((TPTrackInfo)paramObject).name)) && (this.trackType == ((TPTrackInfo)paramObject).trackType))
     {
-      AppMethodBeat.o(189049);
+      AppMethodBeat.o(219917);
       return true;
     }
-    AppMethodBeat.o(189049);
+    AppMethodBeat.o(219917);
     return false;
   }
   

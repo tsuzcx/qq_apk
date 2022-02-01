@@ -2,17 +2,17 @@ package com.tencent.mm.pluginsdk;
 
 public abstract interface o$b
 {
-  public abstract int eUf();
+  public abstract int fHh();
   
-  public abstract void eUg();
+  public abstract void fHi();
   
-  public abstract boolean eUh();
+  public abstract boolean fHj();
   
-  public abstract void eUi();
+  public abstract void fHk();
   
-  public abstract void eUj();
+  public abstract void fHl();
   
-  public abstract boolean eUk();
+  public abstract boolean fHm();
 }
 
 

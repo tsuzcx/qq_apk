@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Message;
+import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tav.asset.Asset;
 import com.tencent.tav.core.compositing.VideoCompositing;
@@ -20,6 +21,7 @@ import com.tencent.tav.decoder.DecoderUtils;
 import com.tencent.tav.decoder.Filter;
 import com.tencent.tav.decoder.RenderContextParams;
 import com.tencent.tav.decoder.logger.Logger;
+import com.tencent.tav.report.AverageTimeReporter;
 import com.tencent.tav.report.ExportReportSession;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +31,7 @@ class AssetExportThread
   extends HandlerThread
   implements Handler.Callback
 {
+  public static final int FRAME_OPERATE_TIMEOUT = 20000;
   private static final String TAG = "AssetExportThread";
   private static final int msg_done_a = 2;
   private static final int msg_done_v = 1;
@@ -41,6 +44,8 @@ class AssetExportThread
   private boolean audioReadFinish;
   private AssetReaderOutput audioReader;
   private long audioTime;
+  private volatile boolean audioTimeout;
+  private AudioFrameOperateTimeoutCallback audioTimeoutCallback;
   private AssetWriterInput audioWriter;
   private volatile boolean audioWriterDone;
   private AssetExportSession.ExportCallbackHandler callbackHandler;
@@ -48,7 +53,9 @@ class AssetExportThread
   private final ExportConfig encodeOption;
   private Handler exportHandler;
   private AssetExportSession exportSession;
-  private boolean isFinishing;
+  private volatile boolean isFinishing;
+  private long lastHandleAudioTimeStamp;
+  private long lastHandleVideoTimeStamp;
   private RenderContextParams renderContextParams;
   private ExportReportSession reportSession;
   private AssetWriterVideoEncoder videoEncoder;
@@ -57,13 +64,15 @@ class AssetExportThread
   private boolean videoReadFinish;
   private AssetReaderOutput videoReader;
   private long videoTime;
+  private volatile boolean videoTimeout;
+  private VideoFrameOperateTimeoutCallback videoTimeoutCallback;
   private AssetWriterInput videoWriter;
   private volatile boolean videoWriterDone;
   
   AssetExportThread(AssetExportSession paramAssetExportSession, AssetExportSession.ExportCallbackHandler paramExportCallbackHandler, AudioMix paramAudioMix, ExportConfig paramExportConfig)
   {
     super("ExportThread");
-    AppMethodBeat.i(217709);
+    AppMethodBeat.i(188522);
     this.videoWriterDone = false;
     this.audioWriterDone = false;
     this.videoReadFinish = false;
@@ -71,43 +80,49 @@ class AssetExportThread
     this.videoTime = 0L;
     this.audioTime = 0L;
     this.cancel = false;
+    this.videoTimeout = false;
+    this.audioTimeout = false;
     this.reportSession = new ExportReportSession();
+    this.videoTimeoutCallback = new VideoFrameOperateTimeoutCallback(null);
+    this.audioTimeoutCallback = new AudioFrameOperateTimeoutCallback(null);
+    this.lastHandleVideoTimeStamp = SystemClock.uptimeMillis();
+    this.lastHandleAudioTimeStamp = SystemClock.uptimeMillis();
     this.exportSession = paramAssetExportSession;
     this.callbackHandler = paramExportCallbackHandler;
     this.audioMix = paramAudioMix;
     this.audioInfo = new AudioInfo(paramExportConfig.getAudioSampleRateHz(), paramExportConfig.getAudioChannelCount(), 2);
     this.encodeOption = paramExportConfig;
-    AppMethodBeat.o(217709);
+    AppMethodBeat.o(188522);
   }
   
   private AssetReaderOutput createAudioTrackOutput()
   {
-    AppMethodBeat.i(217721);
+    AppMethodBeat.i(188546);
     Object localObject = (ArrayList)this.exportSession.asset.tracksWithMediaType(2);
     if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
       localObject = new AssetReaderAudioMixOutput((ArrayList)localObject, null);
       ((AssetReaderAudioMixOutput)localObject).setAudioMix(this.audioMix);
       ((AssetReaderAudioMixOutput)localObject).setAudioInfo(this.audioInfo);
-      AppMethodBeat.o(217721);
+      AppMethodBeat.o(188546);
       return localObject;
     }
     localObject = new EmptyReaderOutput();
-    AppMethodBeat.o(217721);
+    AppMethodBeat.o(188546);
     return localObject;
   }
   
   private AssetWriterInput createAudioWriterInput()
   {
-    AppMethodBeat.i(217719);
+    AppMethodBeat.i(188538);
     AssetWriterInput localAssetWriterInput = new AssetWriterInput(2);
-    AppMethodBeat.o(217719);
+    AppMethodBeat.o(188538);
     return localAssetWriterInput;
   }
   
   private AssetReaderOutput createVideoTrackOutput()
   {
-    AppMethodBeat.i(217720);
+    AppMethodBeat.i(188544);
     Object localObject = this.exportSession.asset.tracksWithMediaType(1);
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
@@ -117,22 +132,22 @@ class AssetExportThread
       ((AssetReaderVideoCompositionOutput)localObject).setVideoComposition(this.exportSession.videoComposition);
       ((AssetReaderVideoCompositionOutput)localObject).setVideoCompositing(this.exportSession.videoCompositing);
       ((AssetReaderVideoCompositionOutput)localObject).setVideoRevertMode(this.exportSession.isRevertMode());
-      AppMethodBeat.o(217720);
+      AppMethodBeat.o(188544);
       return localObject;
     }
     localObject = new EmptyReaderOutput();
-    AppMethodBeat.o(217720);
+    AppMethodBeat.o(188544);
     return localObject;
   }
   
   private AssetWriterInput createVideoWriterInput()
   {
-    AppMethodBeat.i(217718);
+    AppMethodBeat.i(188536);
     if (this.reportSession != null) {
       this.reportSession.setFramePerSecond(this.encodeOption.getVideoFrameRate());
     }
     AssetWriterInput localAssetWriterInput = new AssetWriterInput(1);
-    AppMethodBeat.o(217718);
+    AppMethodBeat.o(188536);
     return localAssetWriterInput;
   }
   
@@ -140,9 +155,9 @@ class AssetExportThread
   {
     try
     {
-      AppMethodBeat.i(217712);
+      AppMethodBeat.i(188528);
       exportError(new ExportErrorStatus(paramInt, paramThrowable));
-      AppMethodBeat.o(217712);
+      AppMethodBeat.o(188528);
       return;
     }
     finally
@@ -154,7 +169,7 @@ class AssetExportThread
   
   private void exportError(ExportErrorStatus paramExportErrorStatus)
   {
-    AppMethodBeat.i(217713);
+    AppMethodBeat.i(188529);
     if (this.exportSession.status != AssetExportSession.AssetExportSessionStatus.AssetExportSessionStatusFailed)
     {
       this.cancel = true;
@@ -167,7 +182,7 @@ class AssetExportThread
         this.callbackHandler.handlerCallback(this.exportSession);
       }
     }
-    AppMethodBeat.o(217713);
+    AppMethodBeat.o(188529);
   }
   
   /* Error */
@@ -176,48 +191,48 @@ class AssetExportThread
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 372
-    //   5: invokestatic 89	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 428
+    //   5: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: monitorenter
     //   10: aload_0
-    //   11: getfield 112	com/tencent/tav/core/AssetExportThread:exportSession	Lcom/tencent/tav/core/AssetExportSession;
-    //   14: getfield 353	com/tencent/tav/core/AssetExportSession:status	Lcom/tencent/tav/core/AssetExportSession$AssetExportSessionStatus;
-    //   17: getstatic 375	com/tencent/tav/core/AssetExportSession$AssetExportSessionStatus:AssetExportSessionStatusCompleted	Lcom/tencent/tav/core/AssetExportSession$AssetExportSessionStatus;
+    //   11: getfield 152	com/tencent/tav/core/AssetExportThread:exportSession	Lcom/tencent/tav/core/AssetExportSession;
+    //   14: getfield 409	com/tencent/tav/core/AssetExportSession:status	Lcom/tencent/tav/core/AssetExportSession$AssetExportSessionStatus;
+    //   17: getstatic 431	com/tencent/tav/core/AssetExportSession$AssetExportSessionStatus:AssetExportSessionStatusCompleted	Lcom/tencent/tav/core/AssetExportSession$AssetExportSessionStatus;
     //   20: if_acmpne +14 -> 34
     //   23: aload_0
     //   24: monitorexit
-    //   25: ldc_w 372
-    //   28: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   25: ldc_w 428
+    //   28: invokestatic 177	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   31: aload_0
     //   32: monitorexit
     //   33: return
     //   34: aload_0
-    //   35: getfield 112	com/tencent/tav/core/AssetExportThread:exportSession	Lcom/tencent/tav/core/AssetExportSession;
+    //   35: getfield 152	com/tencent/tav/core/AssetExportThread:exportSession	Lcom/tencent/tav/core/AssetExportSession;
     //   38: fconst_1
-    //   39: putfield 378	com/tencent/tav/core/AssetExportSession:progress	F
+    //   39: putfield 434	com/tencent/tav/core/AssetExportSession:progress	F
     //   42: aload_0
-    //   43: getfield 112	com/tencent/tav/core/AssetExportThread:exportSession	Lcom/tencent/tav/core/AssetExportSession;
-    //   46: getstatic 375	com/tencent/tav/core/AssetExportSession$AssetExportSessionStatus:AssetExportSessionStatusCompleted	Lcom/tencent/tav/core/AssetExportSession$AssetExportSessionStatus;
-    //   49: putfield 353	com/tencent/tav/core/AssetExportSession:status	Lcom/tencent/tav/core/AssetExportSession$AssetExportSessionStatus;
+    //   43: getfield 152	com/tencent/tav/core/AssetExportThread:exportSession	Lcom/tencent/tav/core/AssetExportSession;
+    //   46: getstatic 431	com/tencent/tav/core/AssetExportSession$AssetExportSessionStatus:AssetExportSessionStatusCompleted	Lcom/tencent/tav/core/AssetExportSession$AssetExportSessionStatus;
+    //   49: putfield 409	com/tencent/tav/core/AssetExportSession:status	Lcom/tencent/tav/core/AssetExportSession$AssetExportSessionStatus;
     //   52: aload_0
     //   53: monitorexit
     //   54: aload_0
-    //   55: getfield 110	com/tencent/tav/core/AssetExportThread:reportSession	Lcom/tencent/tav/report/ExportReportSession;
+    //   55: getfield 132	com/tencent/tav/core/AssetExportThread:reportSession	Lcom/tencent/tav/report/ExportReportSession;
     //   58: ifnull +10 -> 68
     //   61: aload_0
-    //   62: getfield 110	com/tencent/tav/core/AssetExportThread:reportSession	Lcom/tencent/tav/report/ExportReportSession;
-    //   65: invokevirtual 381	com/tencent/tav/report/ExportReportSession:onExportSuccess	()V
+    //   62: getfield 132	com/tencent/tav/core/AssetExportThread:reportSession	Lcom/tencent/tav/report/ExportReportSession;
+    //   65: invokevirtual 437	com/tencent/tav/report/ExportReportSession:onExportSuccess	()V
     //   68: aload_0
-    //   69: getfield 114	com/tencent/tav/core/AssetExportThread:callbackHandler	Lcom/tencent/tav/core/AssetExportSession$ExportCallbackHandler;
+    //   69: getfield 154	com/tencent/tav/core/AssetExportThread:callbackHandler	Lcom/tencent/tav/core/AssetExportSession$ExportCallbackHandler;
     //   72: ifnull +16 -> 88
     //   75: aload_0
-    //   76: getfield 114	com/tencent/tav/core/AssetExportThread:callbackHandler	Lcom/tencent/tav/core/AssetExportSession$ExportCallbackHandler;
+    //   76: getfield 154	com/tencent/tav/core/AssetExportThread:callbackHandler	Lcom/tencent/tav/core/AssetExportSession$ExportCallbackHandler;
     //   79: aload_0
-    //   80: getfield 112	com/tencent/tav/core/AssetExportThread:exportSession	Lcom/tencent/tav/core/AssetExportSession;
-    //   83: invokeinterface 371 2 0
-    //   88: ldc_w 372
-    //   91: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   80: getfield 152	com/tencent/tav/core/AssetExportThread:exportSession	Lcom/tencent/tav/core/AssetExportSession;
+    //   83: invokeinterface 427 2 0
+    //   88: ldc_w 428
+    //   91: invokestatic 177	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   94: goto -63 -> 31
     //   97: astore_1
     //   98: aload_0
@@ -227,8 +242,8 @@ class AssetExportThread
     //   102: astore_1
     //   103: aload_0
     //   104: monitorexit
-    //   105: ldc_w 372
-    //   108: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   105: ldc_w 428
+    //   108: invokestatic 177	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   111: aload_1
     //   112: athrow
     // Local variable table:
@@ -243,15 +258,14 @@ class AssetExportThread
     //   54	68	97	finally
     //   68	88	97	finally
     //   88	94	97	finally
-    //   105	113	97	finally
+    //   103	113	97	finally
     //   10	25	102	finally
     //   34	54	102	finally
-    //   103	105	102	finally
   }
   
   private void exporting()
   {
-    AppMethodBeat.i(217716);
+    AppMethodBeat.i(188533);
     initReaderAndWriter();
     this.exportSession.status = AssetExportSession.AssetExportSessionStatus.AssetExportSessionStatusExporting;
     this.videoExportThread = new HandlerThread("VideoWriter");
@@ -262,45 +276,85 @@ class AssetExportThread
       this.audioExportThread = new HandlerThread("AudioWriter");
       this.audioWriter.setWriterProgressListener(new AudioWriterProgressListener(null));
       this.audioWriter.requestMediaDataWhenReadyOnQueue(this.audioExportThread, new AudioRequestMediaDataCallback(null));
-      AppMethodBeat.o(217716);
+      AppMethodBeat.o(188533);
       return;
     }
     this.audioReadFinish = true;
     this.audioWriterDone = true;
-    AppMethodBeat.o(217716);
+    AppMethodBeat.o(188533);
   }
   
   private void finish()
   {
-    AppMethodBeat.i(217710);
+    AppMethodBeat.i(188526);
+    Logger.i("AssetExportThread", "finish");
+    if (this.videoExportThread == null)
+    {
+      Logger.w("AssetExportThread", "videoExportThread is null");
+      AppMethodBeat.o(188526);
+      return;
+    }
+    if (this.isFinishing)
+    {
+      Logger.w("AssetExportThread", "already finished");
+      AppMethodBeat.o(188526);
+      return;
+    }
+    this.isFinishing = true;
     new Handler(this.videoExportThread.getLooper()).post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(217699);
+        long l2 = 0L;
+        AppMethodBeat.i(188494);
+        label75:
+        ExportReportSession localExportReportSession;
         if (AssetExportThread.this.videoExportThread != null)
         {
           if (Build.VERSION.SDK_INT >= 18)
           {
             AssetExportThread.this.videoExportThread.quitSafely();
-            AssetExportThread.access$002(AssetExportThread.this, null);
+            AssetExportThread.access$202(AssetExportThread.this, null);
           }
         }
-        else if (AssetExportThread.this.audioExportThread != null)
+        else
         {
-          if (Build.VERSION.SDK_INT < 18) {
-            break label283;
+          if (AssetExportThread.this.audioExportThread != null)
+          {
+            if (Build.VERSION.SDK_INT < 18) {
+              break label448;
+            }
+            AssetExportThread.this.audioExportThread.quitSafely();
+            AssetExportThread.access$302(AssetExportThread.this, null);
           }
-          AssetExportThread.this.audioExportThread.quitSafely();
-        }
-        for (;;)
-        {
-          AssetExportThread.access$102(AssetExportThread.this, null);
           if (AssetExportThread.this.assetReader != null)
           {
             AssetExportThread.this.assetReader.cancelReading();
-            AssetExportThread.access$202(AssetExportThread.this, null);
+            AssetExportThread.access$402(AssetExportThread.this, null);
           }
+          if (AssetExportThread.this.reportSession != null)
+          {
+            localExportReportSession = AssetExportThread.this.reportSession;
+            if ((AssetExportThread.this.videoReader == null) || (AssetExportThread.this.videoReader.getDecodePerformance() == null)) {
+              break label462;
+            }
+          }
+        }
+        label448:
+        label462:
+        for (long l1 = AssetExportThread.this.videoReader.getDecodePerformance().getTotal() * 1000L;; l1 = 0L)
+        {
+          localExportReportSession.setTotalRealDecodeUs(l1);
+          localExportReportSession = AssetExportThread.this.reportSession;
+          l1 = l2;
+          if (AssetExportThread.this.assetWriter != null)
+          {
+            l1 = l2;
+            if (AssetExportThread.this.assetWriter.getEncodePerformance() != null) {
+              l1 = AssetExportThread.this.assetWriter.getEncodePerformance().getTotal() * 1000L;
+            }
+          }
+          localExportReportSession.setTotalEncodeUs(l1);
           i = 0;
           j = 0;
           if (AssetExportThread.this.assetWriter != null) {}
@@ -314,49 +368,74 @@ class AssetExportThread
             for (;;)
             {
               Logger.e("AssetExportSession", "code = -10 run: finishWriting error", localException);
-              AssetExportThread.access$400(AssetExportThread.this, -10, localException);
+              AssetExportThread.access$800(AssetExportThread.this, -10, localException);
               i = j;
               continue;
-              AssetExportThread.this.quit();
+              if (AssetExportThread.this.videoTimeout)
+              {
+                AssetExportThread.this.exportSession.status = AssetExportSession.AssetExportSessionStatus.AssetExportSessionStatusTimeout;
+                AssetExportThread.this.exportSession.exportErrorStatus = new ExportErrorStatus(-203, null, "handle video timeout");
+                if (AssetExportThread.this.callbackHandler != null) {
+                  AssetExportThread.this.callbackHandler.handlerCallback(AssetExportThread.this.exportSession);
+                }
+              }
+              else if ((AssetExportThread.this.cancel) && (AssetExportThread.this.exportSession.status != AssetExportSession.AssetExportSessionStatus.AssetExportSessionStatusFailed))
+              {
+                AssetExportThread.this.exportSession.status = AssetExportSession.AssetExportSessionStatus.AssetExportSessionStatusCancelled;
+                if (AssetExportThread.this.callbackHandler != null) {
+                  AssetExportThread.this.callbackHandler.handlerCallback(AssetExportThread.this.exportSession);
+                }
+              }
+              else if ((AssetExportThread.this.videoWriterDone) && (AssetExportThread.this.audioWriterDone) && (i != 0) && (!AssetExportThread.this.cancel))
+              {
+                AssetExportThread.access$1800(AssetExportThread.this);
+                continue;
+                AssetExportThread.this.quit();
+              }
             }
           }
-          AssetExportThread.access$302(AssetExportThread.this, null);
+          AssetExportThread.access$702(AssetExportThread.this, null);
           if (AssetExportThread.this.videoWriter != null) {
             AssetExportThread.this.videoWriter.close();
           }
           if (AssetExportThread.this.audioWriter != null) {
             AssetExportThread.this.audioWriter.close();
           }
-          if ((AssetExportThread.this.videoWriterDone) && (AssetExportThread.this.audioWriterDone) && (i != 0) && (!AssetExportThread.this.cancel)) {
-            AssetExportThread.access$1000(AssetExportThread.this);
+          if (!AssetExportThread.this.audioTimeout) {
+            break label494;
+          }
+          AssetExportThread.this.exportSession.status = AssetExportSession.AssetExportSessionStatus.AssetExportSessionStatusTimeout;
+          AssetExportThread.this.exportSession.exportErrorStatus = new ExportErrorStatus(-204, null, "handle audio timeout");
+          if (AssetExportThread.this.callbackHandler != null) {
+            AssetExportThread.this.callbackHandler.handlerCallback(AssetExportThread.this.exportSession);
           }
           if (Build.VERSION.SDK_INT < 18) {
-            break label321;
+            break label687;
           }
           AssetExportThread.this.quitSafely();
           if (AssetExportThread.this.exportSession != null) {
             AssetExportThread.this.exportSession.release();
           }
-          AppMethodBeat.o(217699);
+          AppMethodBeat.o(188494);
           return;
           AssetExportThread.this.videoExportThread.quit();
           break;
-          label283:
           AssetExportThread.this.audioExportThread.quit();
+          break label75;
         }
       }
     });
-    AppMethodBeat.o(217710);
+    AppMethodBeat.o(188526);
   }
   
   private long getDuration()
   {
     long l2 = 0L;
-    AppMethodBeat.i(217722);
+    AppMethodBeat.i(188557);
     if ((this.exportSession != null) && (this.exportSession.timeRange != null))
     {
       l1 = this.exportSession.timeRange.getDuration().getTimeUs();
-      AppMethodBeat.o(217722);
+      AppMethodBeat.o(188557);
       return l1 * 2L;
     }
     if (this.audioReader != null) {}
@@ -365,14 +444,14 @@ class AssetExportThread
       if (this.videoReader != null) {
         l2 = this.videoReader.duration();
       }
-      AppMethodBeat.o(217722);
+      AppMethodBeat.o(188557);
       return l1 + l2;
     }
   }
   
   private void initReaderAndWriter()
   {
-    AppMethodBeat.i(217717);
+    AppMethodBeat.i(188534);
     this.assetReader = new AssetReader(this.exportSession.asset);
     this.assetReader.setTimeRange(this.exportSession.timeRange);
     this.videoReader = createVideoTrackOutput();
@@ -412,47 +491,58 @@ class AssetExportThread
     }
     this.assetWriter.startWriting(this.videoEncoder);
     this.assetReader.startReading(this.assetWriter);
-    AppMethodBeat.o(217717);
+    AppMethodBeat.o(188534);
   }
   
   void cancel()
   {
     try
     {
-      AppMethodBeat.i(217711);
+      AppMethodBeat.i(188527);
       this.cancel = true;
-      this.exportSession.status = AssetExportSession.AssetExportSessionStatus.AssetExportSessionStatusCancelled;
       if (this.reportSession != null)
       {
         this.reportSession.reset();
         this.reportSession = null;
       }
-      AppMethodBeat.o(217711);
+      if (this.exportHandler != null) {
+        this.exportHandler.post(new Runnable()
+        {
+          public void run()
+          {
+            AppMethodBeat.i(188495);
+            AssetExportThread.access$1900(AssetExportThread.this);
+            AppMethodBeat.o(188495);
+          }
+        });
+      }
+      AppMethodBeat.o(188527);
       return;
     }
     finally {}
   }
   
+  public ExportReportSession getReportSession()
+  {
+    return this.reportSession;
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(217723);
+    AppMethodBeat.i(188559);
     switch (paramMessage.what)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(217723);
+      AppMethodBeat.o(188559);
       return true;
       if (!this.isFinishing)
       {
-        if (this.cancel)
-        {
-          this.isFinishing = true;
+        if (this.cancel) {
           finish();
         }
-        if ((this.videoWriterDone) && (this.audioWriterDone) && (this.audioReadFinish) && (this.videoReadFinish))
-        {
-          this.isFinishing = true;
+        if ((this.videoWriterDone) && (this.audioWriterDone) && (this.audioReadFinish) && (this.videoReadFinish)) {
           finish();
         }
       }
@@ -461,12 +551,12 @@ class AssetExportThread
   
   void setRenderContextParams(RenderContextParams paramRenderContextParams)
   {
-    AppMethodBeat.i(217724);
+    AppMethodBeat.i(188561);
     this.renderContextParams = paramRenderContextParams;
     if (this.assetWriter != null) {
       this.assetWriter.setRenderContextParams(paramRenderContextParams);
     }
-    AppMethodBeat.o(217724);
+    AppMethodBeat.o(188561);
   }
   
   public void setVideoEncoder(AssetWriterVideoEncoder paramAssetWriterVideoEncoder)
@@ -476,7 +566,7 @@ class AssetExportThread
   
   void startExport()
   {
-    AppMethodBeat.i(217715);
+    AppMethodBeat.i(188532);
     start();
     this.cancel = false;
     if (this.reportSession != null) {
@@ -487,12 +577,33 @@ class AssetExportThread
     {
       public void run()
       {
-        AppMethodBeat.i(217700);
-        AssetExportThread.access$1200(AssetExportThread.this);
-        AppMethodBeat.o(217700);
+        AppMethodBeat.i(188499);
+        AssetExportThread.access$2000(AssetExportThread.this);
+        AppMethodBeat.o(188499);
       }
     });
-    AppMethodBeat.o(217715);
+    AppMethodBeat.o(188532);
+  }
+  
+  class AudioFrameOperateTimeoutCallback
+    implements Runnable
+  {
+    private AudioFrameOperateTimeoutCallback() {}
+    
+    public void run()
+    {
+      AppMethodBeat.i(188503);
+      if (SystemClock.uptimeMillis() - AssetExportThread.this.lastHandleAudioTimeStamp >= 10000L)
+      {
+        Logger.i("AssetExportThread", "audioTimeout");
+        AssetExportThread.access$1102(AssetExportThread.this, true);
+        AssetExportThread.access$1900(AssetExportThread.this);
+        AppMethodBeat.o(188503);
+        return;
+      }
+      Logger.i("AssetExportThread", "Maybe app into background audio");
+      AppMethodBeat.o(188503);
+    }
   }
   
   class AudioRequestMediaDataCallback
@@ -502,63 +613,68 @@ class AssetExportThread
     
     private void onAudioRequestMediaData()
     {
-      AppMethodBeat.i(217702);
+      AppMethodBeat.i(188506);
       Object localObject2;
-      while ((!AssetExportThread.this.audioWriterDone) && (!AssetExportThread.this.cancel) && (AssetExportThread.this.audioWriter != null)) {
+      while ((!AssetExportThread.this.audioWriterDone) && (!AssetExportThread.this.cancel) && (AssetExportThread.this.audioWriter != null))
+      {
+        AssetExportThread.access$3602(AssetExportThread.this, SystemClock.uptimeMillis());
+        AssetExportThread.this.exportHandler.removeCallbacks(AssetExportThread.this.audioTimeoutCallback);
+        AssetExportThread.this.exportHandler.postDelayed(AssetExportThread.this.audioTimeoutCallback, 20000L);
         if ((AssetExportThread.this.audioReader != null) && (AssetExportThread.this.audioWriter.isReadyForMoreMediaData()))
         {
           AssetExportThread.this.audioReader.duration();
           localObject1 = AssetExportThread.this.audioReader.copyNextSampleBuffer();
           localObject2 = ((CMSampleBuffer)localObject1).getState();
           if (((CMSampleState)localObject2).getStateCode() < 0L) {
-            break label196;
+            break label262;
           }
           localObject2 = AssetExportThread.this.audioWriter.appendSampleBuffer((CMSampleBuffer)localObject1);
           if (localObject2 != null) {
-            AssetExportThread.access$2400(AssetExportThread.this, (ExportErrorStatus)localObject2);
+            AssetExportThread.access$3000(AssetExportThread.this, (ExportErrorStatus)localObject2);
           }
           if (((CMSampleBuffer)localObject1).getTime().getTimeUs() >= AssetExportThread.this.exportSession.timeRange.getDuration().getTimeUs()) {
             AssetExportThread.this.audioWriter.markAsFinished();
           }
         }
       }
-      label155:
+      label204:
       Object localObject1 = AssetExportThread.this;
       if (!AssetExportThread.this.cancel) {}
       for (boolean bool = true;; bool = false)
       {
-        AssetExportThread.access$2902((AssetExportThread)localObject1, bool);
+        AssetExportThread.access$3802((AssetExportThread)localObject1, bool);
+        AssetExportThread.this.exportHandler.removeCallbacks(AssetExportThread.this.audioTimeoutCallback);
         AssetExportThread.this.exportHandler.sendEmptyMessage(2);
-        AppMethodBeat.o(217702);
+        AppMethodBeat.o(188506);
         return;
-        label196:
+        label262:
         if (((CMSampleState)localObject2).getStateCode() == -1L)
         {
           AssetExportThread.this.audioWriter.markAsFinished();
-          break label155;
+          break label204;
         }
         if (((CMSampleState)localObject2).getStateCode() == -4L) {
           break;
         }
-        AssetExportThread.access$2400(AssetExportThread.this, new ExportErrorStatus((CMSampleState)localObject2));
-        break label155;
+        AssetExportThread.access$3000(AssetExportThread.this, new ExportErrorStatus((CMSampleState)localObject2));
+        break label204;
       }
     }
     
     public void run()
     {
-      AppMethodBeat.i(217701);
+      AppMethodBeat.i(188505);
       try
       {
         onAudioRequestMediaData();
-        AppMethodBeat.o(217701);
+        AppMethodBeat.o(188505);
         return;
       }
       catch (Throwable localThrowable)
       {
         Logger.e("AssetExportThread", "AudioRequestMediaDateCallback run: ", localThrowable);
-        AssetExportThread.access$400(AssetExportThread.this, -15, localThrowable);
-        AppMethodBeat.o(217701);
+        AssetExportThread.access$800(AssetExportThread.this, -15, localThrowable);
+        AppMethodBeat.o(188505);
       }
     }
   }
@@ -570,33 +686,33 @@ class AssetExportThread
     
     public void onError(ExportErrorStatus paramExportErrorStatus)
     {
-      AppMethodBeat.i(217704);
+      AppMethodBeat.i(188508);
       Logger.e("AssetExportThread", "AudioWriterProgressListener onError: ", paramExportErrorStatus.throwable);
-      AssetExportThread.access$2400(AssetExportThread.this, paramExportErrorStatus);
-      AppMethodBeat.o(217704);
+      AssetExportThread.access$3000(AssetExportThread.this, paramExportErrorStatus);
+      AppMethodBeat.o(188508);
     }
     
     public void onProgressChanged(AssetWriterInput paramAssetWriterInput, long paramLong)
     {
-      AppMethodBeat.i(217703);
-      Logger.i("AssetExportSession", "onProgressChanged: audioWriter " + paramLong + "  / " + AssetExportThread.access$1700(AssetExportThread.this));
+      AppMethodBeat.i(188507);
+      Logger.i("AssetExportSession", "onProgressChanged: audioWriter " + paramLong + "  / " + AssetExportThread.access$2500(AssetExportThread.this));
       if (paramLong == -1L)
       {
-        AssetExportThread.access$2702(AssetExportThread.this, AssetExportThread.this.exportSession.timeRange.getDuration().getTimeUs());
-        AssetExportThread.access$2202(AssetExportThread.this, 1.0F);
-        AssetExportThread.access$802(AssetExportThread.this, true);
+        AssetExportThread.access$3402(AssetExportThread.this, AssetExportThread.this.exportSession.timeRange.getDuration().getTimeUs());
+        AssetExportThread.access$2902(AssetExportThread.this, 1.0F);
+        AssetExportThread.access$1702(AssetExportThread.this, true);
         AssetExportThread.this.exportHandler.sendEmptyMessage(2);
-        AppMethodBeat.o(217703);
+        AppMethodBeat.o(188507);
         return;
       }
-      AssetExportThread.access$2702(AssetExportThread.this, paramLong);
+      AssetExportThread.access$3402(AssetExportThread.this, paramLong);
       if (AssetExportThread.this.exportSession.timeRange != null) {
         paramLong = AssetExportThread.this.exportSession.timeRange.getDuration().getTimeUs();
       }
       for (;;)
       {
         if (paramLong != 0L) {
-          AssetExportThread.access$2202(AssetExportThread.this, (float)AssetExportThread.this.videoTime * 1.0F / (float)paramLong);
+          AssetExportThread.access$2902(AssetExportThread.this, (float)AssetExportThread.this.videoTime * 1.0F / (float)paramLong);
         }
         for (;;)
         {
@@ -606,22 +722,43 @@ class AssetExportThread
           }
           if (((AssetExportThread.this.audioTime > AssetExportThread.this.videoTime) && (AssetExportThread.this.videoWriterDone)) || (AssetExportThread.this.audioTime >= AssetExportThread.this.exportSession.timeRange.getDuration().getTimeUs()))
           {
-            AssetExportThread.access$2702(AssetExportThread.this, AssetExportThread.this.exportSession.timeRange.getDuration().getTimeUs());
-            AssetExportThread.access$802(AssetExportThread.this, true);
+            AssetExportThread.access$3402(AssetExportThread.this, AssetExportThread.this.exportSession.timeRange.getDuration().getTimeUs());
+            AssetExportThread.access$1702(AssetExportThread.this, true);
             AssetExportThread.this.exportHandler.sendEmptyMessage(2);
           }
-          AppMethodBeat.o(217703);
+          AppMethodBeat.o(188507);
           return;
           if (AssetExportThread.this.audioReader == null) {
             break label373;
           }
           paramLong = AssetExportThread.this.audioReader.duration();
           break;
-          AssetExportThread.access$2202(AssetExportThread.this, 1.0F);
+          AssetExportThread.access$2902(AssetExportThread.this, 1.0F);
         }
         label373:
         paramLong = 0L;
       }
+    }
+  }
+  
+  class VideoFrameOperateTimeoutCallback
+    implements Runnable
+  {
+    private VideoFrameOperateTimeoutCallback() {}
+    
+    public void run()
+    {
+      AppMethodBeat.i(188510);
+      if (SystemClock.uptimeMillis() - AssetExportThread.this.lastHandleVideoTimeStamp >= 10000L)
+      {
+        AssetExportThread.access$1402(AssetExportThread.this, true);
+        Logger.i("AssetExportThread", "videoTimeout");
+        AssetExportThread.access$1900(AssetExportThread.this);
+        AppMethodBeat.o(188510);
+        return;
+      }
+      Logger.i("AssetExportThread", "Maybe app into background video");
+      AppMethodBeat.o(188510);
     }
   }
   
@@ -633,21 +770,28 @@ class AssetExportThread
     private void onRequestMediaData()
     {
       boolean bool = false;
-      AppMethodBeat.i(217706);
+      AppMethodBeat.i(188512);
       Object localObject;
       CMSampleState localCMSampleState;
-      while ((!AssetExportThread.this.videoWriterDone) && (!AssetExportThread.this.cancel)) {
+      while ((!AssetExportThread.this.videoWriterDone) && (!AssetExportThread.this.cancel))
+      {
+        AssetExportThread.access$3102(AssetExportThread.this, SystemClock.uptimeMillis());
+        AssetExportThread.this.exportHandler.removeCallbacks(AssetExportThread.this.videoTimeoutCallback);
+        AssetExportThread.this.exportHandler.postDelayed(AssetExportThread.this.videoTimeoutCallback, 20000L);
         if ((AssetExportThread.this.videoReader != null) && (AssetExportThread.this.videoWriter.isReadyForMoreMediaData()))
         {
           long l = System.nanoTime();
           localObject = AssetExportThread.this.videoReader.copyNextSampleBuffer();
+          if (AssetExportThread.this.reportSession != null) {
+            AssetExportThread.this.reportSession.tickDecode(System.nanoTime() - l);
+          }
           localCMSampleState = ((CMSampleBuffer)localObject).getState();
           Logger.i("AssetExportThread", "onRequestMediaData stateCode: " + localCMSampleState.getStateCode());
           if (localCMSampleState.getStateCode() >= 0L)
           {
             localObject = AssetExportThread.this.videoWriter.appendSampleBuffer((CMSampleBuffer)localObject);
             if (localObject != null) {
-              AssetExportThread.access$2400(AssetExportThread.this, (ExportErrorStatus)localObject);
+              AssetExportThread.access$3000(AssetExportThread.this, (ExportErrorStatus)localObject);
             }
             if (AssetExportThread.this.reportSession != null) {
               AssetExportThread.this.reportSession.tickExport(System.nanoTime() - l);
@@ -656,7 +800,7 @@ class AssetExportThread
           else
           {
             if (!localCMSampleState.stateMatchingTo(new long[] { -1L })) {
-              break label288;
+              break label379;
             }
             AssetExportThread.this.videoWriter.markAsFinished();
           }
@@ -674,32 +818,33 @@ class AssetExportThread
         if (!AssetExportThread.this.cancel) {
           bool = true;
         }
-        AssetExportThread.access$2602((AssetExportThread)localObject, bool);
+        AssetExportThread.access$3302((AssetExportThread)localObject, bool);
+        AssetExportThread.this.exportHandler.removeCallbacks(AssetExportThread.this.videoTimeoutCallback);
         AssetExportThread.this.exportHandler.sendEmptyMessage(1);
-        AppMethodBeat.o(217706);
+        AppMethodBeat.o(188512);
         return;
-        label288:
+        label379:
         if (localCMSampleState.getStateCode() == -4L) {
           break;
         }
-        AssetExportThread.access$2400(AssetExportThread.this, new ExportErrorStatus(localCMSampleState));
+        AssetExportThread.access$3000(AssetExportThread.this, new ExportErrorStatus(localCMSampleState));
       }
     }
     
     public void run()
     {
-      AppMethodBeat.i(217705);
+      AppMethodBeat.i(188511);
       try
       {
         onRequestMediaData();
-        AppMethodBeat.o(217705);
+        AppMethodBeat.o(188511);
         return;
       }
       catch (Throwable localThrowable)
       {
         Logger.e("AssetExportThread", "VideoRequestMediaDateCallback run: ", localThrowable);
-        AssetExportThread.access$400(AssetExportThread.this, -14, localThrowable);
-        AppMethodBeat.o(217705);
+        AssetExportThread.access$800(AssetExportThread.this, -14, localThrowable);
+        AppMethodBeat.o(188511);
       }
     }
   }
@@ -711,33 +856,33 @@ class AssetExportThread
     
     public void onError(ExportErrorStatus paramExportErrorStatus)
     {
-      AppMethodBeat.i(217708);
+      AppMethodBeat.i(188514);
       Logger.e("AssetExportThread", "VideoWriterProgressListener onError: ", paramExportErrorStatus.throwable);
-      AssetExportThread.access$2400(AssetExportThread.this, paramExportErrorStatus);
-      AppMethodBeat.o(217708);
+      AssetExportThread.access$3000(AssetExportThread.this, paramExportErrorStatus);
+      AppMethodBeat.o(188514);
     }
     
     public void onProgressChanged(AssetWriterInput paramAssetWriterInput, long paramLong)
     {
-      AppMethodBeat.i(217707);
-      Logger.i("AssetExportSession", "onProgressChanged: videoWriter " + paramLong + "  / " + AssetExportThread.access$1700(AssetExportThread.this));
+      AppMethodBeat.i(188513);
+      Logger.i("AssetExportSession", "onProgressChanged: videoWriter " + paramLong + "  / " + AssetExportThread.access$2500(AssetExportThread.this));
       if (paramLong == -1L)
       {
-        AssetExportThread.access$1802(AssetExportThread.this, AssetExportThread.this.exportSession.timeRange.getDuration().getTimeUs());
-        AssetExportThread.access$1902(AssetExportThread.this, 1.0F);
-        AssetExportThread.access$702(AssetExportThread.this, true);
+        AssetExportThread.access$2602(AssetExportThread.this, AssetExportThread.this.exportSession.timeRange.getDuration().getTimeUs());
+        AssetExportThread.access$2702(AssetExportThread.this, 1.0F);
+        AssetExportThread.access$1602(AssetExportThread.this, true);
         AssetExportThread.this.exportHandler.sendEmptyMessage(1);
-        AppMethodBeat.o(217707);
+        AppMethodBeat.o(188513);
         return;
       }
-      AssetExportThread.access$1802(AssetExportThread.this, paramLong);
+      AssetExportThread.access$2602(AssetExportThread.this, paramLong);
       if (AssetExportThread.this.exportSession.timeRange != null) {
         paramLong = AssetExportThread.this.exportSession.timeRange.getDuration().getTimeUs();
       }
       for (;;)
       {
         if (paramLong != 0L) {
-          AssetExportThread.access$1902(AssetExportThread.this, (float)AssetExportThread.this.videoTime * 1.0F / (float)paramLong);
+          AssetExportThread.access$2702(AssetExportThread.this, (float)AssetExportThread.this.videoTime * 1.0F / (float)paramLong);
         }
         for (;;)
         {
@@ -745,14 +890,14 @@ class AssetExportThread
           if (AssetExportThread.this.callbackHandler != null) {
             AssetExportThread.this.callbackHandler.handlerCallback(AssetExportThread.this.exportSession);
           }
-          AppMethodBeat.o(217707);
+          AppMethodBeat.o(188513);
           return;
           if (AssetExportThread.this.videoReader == null) {
             break label273;
           }
           paramLong = AssetExportThread.this.videoReader.duration();
           break;
-          AssetExportThread.access$1902(AssetExportThread.this, 1.0F);
+          AssetExportThread.access$2702(AssetExportThread.this, 1.0F);
         }
         label273:
         paramLong = 0L;
@@ -762,7 +907,7 @@ class AssetExportThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.core.AssetExportThread
  * JD-Core Version:    0.7.0.1
  */

@@ -1,466 +1,377 @@
 package com.tencent.mm.vfs;
 
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.os.Parcel;
+import android.os.StatFs;
+import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.stubs.logger.Log;
-import java.io.Closeable;
+import com.tencent.mm.compatible.util.g;
+import com.tencent.mm.loader.j.b;
+import com.tencent.mm.plugin.report.f;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.LinkedList;
 import java.util.Map;
-import java.util.StringTokenizer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Set;
 
 public final class aa
 {
-  private static final Pattern ReO;
+  private static a YEE;
+  private static int YEF;
+  private static int YEG;
+  private static int YEH;
+  private static int YEI;
+  private static int YEJ;
+  private static int YEK;
+  private static int YEL;
+  private static int YEM;
+  private static int YEN;
+  private static int YEO;
+  private static int YEP;
+  private static ArrayList<IDKey> YEQ;
+  private static int YER;
+  private static int YES;
+  private static int YET;
+  private static int YEU;
+  private static HashMap<String, Long> YEV;
+  private static HashMap<String, Long> YEW;
+  private static int YEX;
+  private static float YEY;
+  private static int YEZ;
+  private static float YFa;
+  private static long YFb;
+  private static long YFc;
+  private static long YFd;
+  private static long YFe;
+  private static long YFf;
+  private static int YFg;
+  private static int YFh;
+  private static long YFi;
+  private static long YFj;
+  private static long YFk;
+  private static long YFl;
+  private static long YFm;
+  private static long YFn;
+  private static long YFo;
+  private static long YFp;
+  private static LinkedList<String> odL;
+  private static long tOn;
   
   static
   {
-    AppMethodBeat.i(13334);
-    ReO = Pattern.compile("\\$\\{([A-Za-z0-9_]+)\\}");
-    AppMethodBeat.o(13334);
+    AppMethodBeat.i(194331);
+    YEF = 1401;
+    YEG = 0;
+    YEH = 1;
+    YEI = 2;
+    YEJ = 3;
+    YEK = 4;
+    YEL = 5;
+    YEM = 6;
+    YEN = 7;
+    YEO = 8;
+    YEP = 9;
+    YEQ = new ArrayList();
+    YER = 20047;
+    YES = 1;
+    YET = 2;
+    YEU = 3;
+    YEV = new HashMap();
+    YEW = new HashMap();
+    odL = new LinkedList();
+    YEX = 0;
+    YEY = -1.0F;
+    YEZ = 0;
+    YFa = -1.0F;
+    YFb = 0L;
+    YFc = 0L;
+    tOn = 0L;
+    YFd = -1L;
+    YFe = -1L;
+    YFf = -1L;
+    YFg = -1;
+    YFh = -1;
+    YFi = -1L;
+    YFj = -1L;
+    YFk = 0L;
+    YEV.put("sns", Long.valueOf(0L));
+    YEV.put("sns_ad_landingpages", Long.valueOf(0L));
+    YEV.put("finder", Long.valueOf(0L));
+    YEV.put("brandicon", Long.valueOf(0L));
+    YEV.put("bizcache", Long.valueOf(0L));
+    YEV.put("openapi_cache", Long.valueOf(0L));
+    YEV.put("CDNTemp", Long.valueOf(0L));
+    YEV.put("vproxy", Long.valueOf(0L));
+    YEV.put("backupRecover", Long.valueOf(0L));
+    YEV.put("msgsynchronize", Long.valueOf(0L));
+    YEW.put("oneday", Long.valueOf(0L));
+    YEW.put("bizimg", Long.valueOf(0L));
+    YEW.put("openim", Long.valueOf(0L));
+    YEW.put("avatar", Long.valueOf(0L));
+    YEW.put("wallet_images", Long.valueOf(0L));
+    YEW.put("emoji", Long.valueOf(0L));
+    YFl = -1L;
+    YFm = 0L;
+    YFn = 0L;
+    YFo = -1L;
+    YFp = -1L;
+    AppMethodBeat.o(194331);
   }
   
-  public static long a(FileSystem.b paramb1, String paramString1, FileSystem.b paramb2, String paramString2)
+  public static a ifO()
   {
-    AppMethodBeat.i(187766);
-    long l = 0L;
-    try
+    AppMethodBeat.i(194282);
+    if (YEE == null)
     {
-      InputStream localInputStream = paramb1.openRead(paramString1);
-      label32:
-      int i;
-      closeQuietly(localInputStream);
+      YEE = new a((byte)0);
+      i.YCR.b(YEE);
     }
-    finally
+    a locala = YEE;
+    AppMethodBeat.o(194282);
+    return locala;
+  }
+  
+  public static void resetParams()
+  {
+    AppMethodBeat.i(194284);
+    YEQ.clear();
+    YEV.clear();
+    YEW.clear();
+    odL.clear();
+    YFl = -1L;
+    YFm = 0L;
+    YFn = 0L;
+    YFo = -1L;
+    YFp = -1L;
+    YEX = 0;
+    YEY = -1.0F;
+    YEZ = 0;
+    YFa = -1.0F;
+    YFb = 0L;
+    YFc = 0L;
+    tOn = 0L;
+    YFd = -1L;
+    YFd = -1L;
+    YFe = -1L;
+    YFf = -1L;
+    YFg = -1;
+    YFh = -1;
+    YFi = -1L;
+    YFj = -1L;
+    YFk = 0L;
+    AppMethodBeat.o(194284);
+  }
+  
+  static final class a
+    implements h.d, o.a
+  {
+    public final void a(String paramString, FileSystem paramFileSystem, int paramInt, Map<String, Object> paramMap)
     {
-      try
+      AppMethodBeat.i(193831);
+      Log.d("MicroMsg.VFSStatistics", "VFS statistics name:%s, fs:%s, phase:%s, params:%s", new Object[] { paramString, paramFileSystem.toString(), Integer.valueOf(paramInt), paramMap });
+      long l;
+      if ((paramFileSystem instanceof ExpireFileSystem))
       {
-        paramString1 = paramb2.dw(paramString2, false);
-      }
-      finally
-      {
-        paramString1 = null;
-      }
-      try
-      {
-        paramb1 = new byte[2048];
-        i = localInputStream.read(paramb1);
-        if (i != -1)
+        if (paramInt == 3)
         {
-          paramString1.write(paramb1, 0, i);
-          l += i;
-          break label32;
-        }
-        closeQuietly(localInputStream);
-        closeQuietly(paramString1);
-        AppMethodBeat.o(187766);
-        return l;
-      }
-      finally
-      {
-        break label88;
-      }
-      paramb1 = finally;
-      paramString1 = null;
-      localInputStream = null;
-    }
-    label88:
-    closeQuietly(paramString1);
-    AppMethodBeat.o(187766);
-    throw paramb1;
-  }
-  
-  public static void a(Parcel paramParcel, Class<? extends FileSystem> paramClass, int paramInt)
-  {
-    AppMethodBeat.i(13331);
-    paramInt = paramClass.getName().hashCode() ^ paramInt;
-    int i = paramParcel.readInt();
-    if (i != paramInt)
-    {
-      paramParcel = new a(paramClass, i, paramInt);
-      AppMethodBeat.o(13331);
-      throw paramParcel;
-    }
-    AppMethodBeat.o(13331);
-  }
-  
-  public static void a(FileSystem.b paramb, b paramb1)
-  {
-    AppMethodBeat.i(187767);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramb);
-    do
-    {
-      paramb = (FileSystem.b)localArrayList.remove(localArrayList.size() - 1);
-      if (paramb != null)
-      {
-        paramb1.a(paramb);
-        if ((paramb instanceof c))
-        {
-          paramb = ((c)paramb).hdS();
-          int i = paramb.size() - 1;
-          while (i >= 0)
-          {
-            localArrayList.add(paramb.get(i));
-            i -= 1;
+          l = ((Long)paramMap.get("deleteSize")).longValue();
+          if (aa.YEV.containsKey(paramString)) {
+            aa.YEV.put(paramString, Long.valueOf(((Long)aa.YEV.get(paramString)).longValue() + l));
           }
-        }
-      }
-    } while (!localArrayList.isEmpty());
-    AppMethodBeat.o(187767);
-  }
-  
-  static String aa(String paramString, Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(13325);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(13325);
-      return null;
-    }
-    Matcher localMatcher = ReO.matcher(paramString);
-    StringBuilder localStringBuilder;
-    int i;
-    if (localMatcher.find())
-    {
-      localStringBuilder = new StringBuilder(paramString.length());
-      i = 0;
-    }
-    for (;;)
-    {
-      String str1 = localMatcher.group(1);
-      String str2 = (String)paramMap.get(str1);
-      if (str2 == null)
-      {
-        Log.d("VFS.Utils", "Macro resolve: " + paramString + " cannot resolve ${" + str1 + "}.");
-        AppMethodBeat.o(13325);
-        return null;
-      }
-      localStringBuilder.append(paramString.substring(i, localMatcher.start())).append(str2);
-      i = localMatcher.end();
-      if (!localMatcher.find())
-      {
-        paramMap = paramString.substring(i);
-        Log.d("VFS.Utils", "Macro resolve: " + paramString + " => " + paramMap);
-        AppMethodBeat.o(13325);
-        return paramMap;
-        Log.d("VFS.Utils", "Macro resolve: " + paramString + " contains no macros.");
-        AppMethodBeat.o(13325);
-        return paramString;
-      }
-    }
-  }
-  
-  static String b(Uri paramUri, boolean paramBoolean)
-  {
-    AppMethodBeat.i(13328);
-    paramUri = g.hRR().a(paramUri, null);
-    if (!paramUri.valid())
-    {
-      AppMethodBeat.o(13328);
-      return null;
-    }
-    if ((paramUri.Rcl.hdR() & 0x2) != 0)
-    {
-      paramUri = paramUri.Rcl.dz(paramUri.path, paramBoolean);
-      AppMethodBeat.o(13328);
-      return paramUri;
-    }
-    AppMethodBeat.o(13328);
-    return null;
-  }
-  
-  public static void b(Parcel paramParcel, Class<? extends FileSystem> paramClass, int paramInt)
-  {
-    AppMethodBeat.i(13332);
-    paramParcel.writeInt(paramClass.getName().hashCode() ^ paramInt);
-    AppMethodBeat.o(13332);
-  }
-  
-  static String bpf(String paramString)
-  {
-    AppMethodBeat.i(187763);
-    paramString = new File(paramString);
-    try
-    {
-      String str = paramString.getCanonicalPath();
-      AppMethodBeat.o(187763);
-      return str;
-    }
-    catch (IOException localIOException)
-    {
-      paramString = paramString.getAbsolutePath();
-      AppMethodBeat.o(187763);
-    }
-    return paramString;
-  }
-  
-  static String bpg(String paramString)
-  {
-    AppMethodBeat.i(13327);
-    int i = paramString.lastIndexOf('/');
-    if (i <= 0)
-    {
-      AppMethodBeat.o(13327);
-      return null;
-    }
-    paramString = paramString.substring(0, i);
-    AppMethodBeat.o(13327);
-    return paramString;
-  }
-  
-  public static void bph(String paramString)
-  {
-    AppMethodBeat.i(187764);
-    if (paramString.isEmpty())
-    {
-      AppMethodBeat.o(187764);
-      return;
-    }
-    File localFile = new File(g.hRR().Uvi, paramString + ".timestamp");
-    try
-    {
-      localFile.createNewFile();
-      localFile.setLastModified(System.currentTimeMillis());
-      AppMethodBeat.o(187764);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      Log.w("VFS.Utils", localIOException, "Unable to update timestamp: ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(187764);
-    }
-  }
-  
-  public static long bpi(String paramString)
-  {
-    AppMethodBeat.i(187765);
-    if (paramString.isEmpty())
-    {
-      AppMethodBeat.o(187765);
-      return 0L;
-    }
-    paramString = new File(g.hRR().Uvi, paramString + ".timestamp");
-    long l1 = System.currentTimeMillis();
-    long l2 = paramString.lastModified();
-    AppMethodBeat.o(187765);
-    return l1 - l2;
-  }
-  
-  public static <T> List<T> c(Iterable<? extends T> paramIterable)
-  {
-    AppMethodBeat.i(13333);
-    if (paramIterable == null)
-    {
-      AppMethodBeat.o(13333);
-      return null;
-    }
-    if ((paramIterable instanceof List))
-    {
-      paramIterable = (List)paramIterable;
-      AppMethodBeat.o(13333);
-      return paramIterable;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramIterable = paramIterable.iterator();
-    while (paramIterable.hasNext()) {
-      localArrayList.add(paramIterable.next());
-    }
-    AppMethodBeat.o(13333);
-    return localArrayList;
-  }
-  
-  public static void closeQuietly(Closeable paramCloseable)
-  {
-    AppMethodBeat.i(13329);
-    if (paramCloseable == null)
-    {
-      AppMethodBeat.o(13329);
-      return;
-    }
-    try
-    {
-      paramCloseable.close();
-      AppMethodBeat.o(13329);
-      return;
-    }
-    catch (IOException paramCloseable)
-    {
-      Log.w("VFS.Utils", "Failed to close object: " + paramCloseable.toString());
-      AppMethodBeat.o(13329);
-    }
-  }
-  
-  public static Uri parseUri(String paramString)
-  {
-    AppMethodBeat.i(13323);
-    Uri.Builder localBuilder = new Uri.Builder();
-    if ((paramString.isEmpty()) || (paramString.charAt(0) == '/'))
-    {
-      paramString = localBuilder.path(paramString).build();
-      AppMethodBeat.o(13323);
-      return paramString;
-    }
-    int j = paramString.indexOf(':');
-    if (j < 0) {
-      localBuilder.path(paramString);
-    }
-    for (;;)
-    {
-      paramString = localBuilder.build();
-      AppMethodBeat.o(13323);
-      return paramString;
-      localBuilder.scheme(paramString.substring(0, j));
-      int k = paramString.length();
-      if ((k > j + 2) && (paramString.charAt(j + 1) == '/') && (paramString.charAt(j + 2) == '/'))
-      {
-        int i = j + 3;
-        while (i < k) {
-          switch (paramString.charAt(i))
+          for (;;)
           {
-          default: 
-            i += 1;
+            aa.Wq(aa.YFm + l);
+            AppMethodBeat.o(193831);
+            return;
+            aa.YEV.put(paramString, Long.valueOf(l));
           }
-        }
-        localBuilder.authority(paramString.substring(j + 3, i));
-        if (i < k) {
-          localBuilder.path(paramString.substring(i + 1));
         }
       }
       else
       {
-        localBuilder.path(paramString.substring(j + 1));
-      }
-    }
-  }
-  
-  static String q(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i = 1;
-    AppMethodBeat.i(13326);
-    if (paramString.isEmpty())
-    {
-      AppMethodBeat.o(13326);
-      return paramString;
-    }
-    int j;
-    StringTokenizer localStringTokenizer;
-    if (paramString.startsWith("/"))
-    {
-      j = 1;
-      localObject = paramString;
-      if (paramString.endsWith("/"))
-      {
-        localObject = paramString;
-        if (paramString.length() > 1) {
-          localObject = paramString.substring(0, paramString.length() - 1);
+        if ((paramFileSystem instanceof QuotaFileSystem))
+        {
+          switch (paramInt)
+          {
+          default: 
+            AppMethodBeat.o(193831);
+            return;
+          case 2: 
+            aa.access$302(((Long)paramMap.get("totalSize")).longValue());
+            AppMethodBeat.o(193831);
+            return;
+          }
+          if (aa.YFl < 0L)
+          {
+            Log.e("MicroMsg.VFSStatistics", "quotaBeginSize is not initialize");
+            aa.ifP().add(paramString);
+            AppMethodBeat.o(193831);
+            return;
+          }
+          l = aa.YFl - ((Long)paramMap.get("totalSize")).longValue();
+          if (l <= 0L)
+          {
+            Log.e("MicroMsg.VFSStatistics", "deleteSize <= 0!, deleteSize:%d, quotaBeginSize:%d", new Object[] { Long.valueOf(l), Long.valueOf(aa.YFl) });
+            aa.ifP().add(paramString);
+          }
+          for (;;)
+          {
+            aa.Wi(aa.YFn + l);
+            aa.access$302(-1L);
+            break;
+            if (aa.fdD().containsKey(paramString)) {
+              aa.fdD().put(paramString, Long.valueOf(((Long)aa.fdD().get(paramString)).longValue() + l));
+            } else {
+              aa.fdD().put(paramString, Long.valueOf(l));
+            }
+          }
+        }
+        if (((paramFileSystem instanceof CleanExpireFileSystem)) && (paramString.equals("sns"))) {
+          switch (paramInt)
+          {
+          }
         }
       }
-      localStringTokenizer = new StringTokenizer(((String)localObject).substring(j), "/");
-      paramString = new ArrayList();
-    }
-    for (;;)
-    {
-      if (!localStringTokenizer.hasMoreTokens()) {
-        break label200;
-      }
-      String str = localStringTokenizer.nextToken();
-      if ((paramBoolean1) && ("..".equals(str)))
+      for (;;)
       {
-        if (!paramString.isEmpty()) {
-          paramString.remove(paramString.size() - 1);
+        AppMethodBeat.o(193831);
+        return;
+        aa.Ws(System.currentTimeMillis());
+        aa.Wt(-1L);
+        aa.Wu(0L);
+        AppMethodBeat.o(193831);
+        return;
+        if (aa.cfW() > 0L)
+        {
+          aa.Wt(System.currentTimeMillis() - aa.cfW());
+          aa.Ws(-1L);
         }
-        i = 0;
-        continue;
-        j = 0;
+        aa.azb(((Integer)paramMap.get("cleanStorageCount")).intValue());
+        aa.da(((Float)paramMap.get("cleanRepetitionRatio")).floatValue());
+        aa.azc(((Integer)paramMap.get("cleanRepetitionRatioCount")).intValue());
+        aa.db(((Float)paramMap.get("cleanStorageRepetitionRatio")).floatValue());
+        aa.Wv(((Long)paramMap.get("cleanStorageDeleteSize")).longValue());
+        aa.Ww(((Long)paramMap.get("cleanStorageFreeSize")).longValue());
+        aa.Wx(((Long)paramMap.get("deleteSize")).longValue());
+        aa.Wy(((Long)paramMap.get("cleanOriginExpireTime")).longValue());
+        aa.Wz(((Long)paramMap.get("cleanNewExpireTime")).longValue());
+        aa.WA(((Long)paramMap.get("cleanExtraCostTime")).longValue());
+        aa.azd(((Integer)paramMap.get("cleanTrend")).intValue());
+        aa.aze(((Integer)paramMap.get("changeSwitch")).intValue());
+        aa.Wu(aa.YFk + aa.ifQ());
+        aa.Wq(aa.YFm + aa.ifQ());
+      }
+    }
+    
+    public final void br(boolean paramBoolean1, boolean paramBoolean2)
+    {
+      AppMethodBeat.i(193835);
+      Log.i("MicroMsg.VFSStatistics", "onMaintenanceEnd");
+      aa.ifT().add(new IDKey(aa.ifR(), aa.ifU(), 1));
+      long l2 = aa.YFm + aa.YFn;
+      int i;
+      if (l2 / 1024L == 0L)
+      {
+        l1 = 1L;
+        aa.ifT().add(new IDKey(aa.ifR(), aa.ifV(), l1));
+        if (!paramBoolean1) {
+          break label304;
+        }
+        i = aa.ifW();
+        aa.ifT().add(new IDKey(aa.ifR(), aa.ifX(), 1));
+        aa.ifT().add(new IDKey(aa.ifR(), aa.ifY(), l1));
+      }
+      StringBuilder localStringBuilder;
+      for (;;)
+      {
+        if (aa.igd() > 0L)
+        {
+          aa.WC(System.currentTimeMillis() - aa.igd());
+          aa.ifT().add(new IDKey(aa.ifR(), aa.flI(), aa.ige()));
+        }
+        f.Iyx.b(aa.ifT(), true);
+        localStringBuilder = new StringBuilder();
+        localObject1 = aa.YEV.keySet().iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (String)((Iterator)localObject1).next();
+          Log.d("MicroMsg.VFSStatistics", "name:%s, size:%d", new Object[] { localObject2, aa.YEV.get(localObject2) });
+          localStringBuilder.append((String)localObject2).append(":").append(aa.YEV.get(localObject2)).append(";");
+        }
+        l1 = l2 / 1024L;
         break;
+        label304:
+        if (paramBoolean2)
+        {
+          i = aa.ifZ();
+          aa.ifT().add(new IDKey(aa.ifR(), aa.epy(), 1));
+          aa.ifT().add(new IDKey(aa.ifR(), aa.eUB(), l1));
+        }
+        else
+        {
+          i = aa.iga();
+          aa.ifT().add(new IDKey(aa.ifR(), aa.igb(), 1));
+          aa.ifT().add(new IDKey(aa.ifR(), aa.igc(), l1));
+        }
       }
-      if (((paramBoolean1) && (".".equals(str))) || ("".equals(str))) {
-        i = 0;
-      } else {
-        paramString.add(str);
-      }
-    }
-    label200:
-    if (i != 0)
-    {
-      if (paramBoolean2)
+      Object localObject1 = aa.fdD().keySet().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        paramString = ((String)localObject).substring(j);
-        AppMethodBeat.o(13326);
-        return paramString;
+        localObject2 = (String)((Iterator)localObject1).next();
+        Log.d("MicroMsg.VFSStatistics", "name:%s, size:%d", new Object[] { localObject2, aa.fdD().get(localObject2) });
+        localStringBuilder.append((String)localObject2).append(":").append(aa.fdD().get(localObject2)).append(";");
       }
-      AppMethodBeat.o(13326);
-      return localObject;
-    }
-    Object localObject = new StringBuilder();
-    if ((!paramBoolean2) && (j > 0)) {
-      ((StringBuilder)localObject).append('/');
-    }
-    paramString = paramString.iterator();
-    if (paramString.hasNext())
-    {
-      ((StringBuilder)localObject).append(paramString.next());
-      while (paramString.hasNext())
+      localObject1 = new StringBuilder();
+      Object localObject2 = aa.ifP().iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        ((StringBuilder)localObject1).append((String)((Iterator)localObject2).next()).append(";");
+      }
+      localObject2 = g.avF().getPath();
+      paramBoolean1 = b.aSG().equals(localObject2);
+      long l1 = 0L;
+      if (paramBoolean1) {}
+      for (;;)
       {
-        ((StringBuilder)localObject).append('/');
-        ((StringBuilder)localObject).append(paramString.next());
+        try
+        {
+          localObject2 = new StatFs((String)localObject2);
+          j = ((StatFs)localObject2).getBlockSize();
+          k = ((StatFs)localObject2).getAvailableBlocks();
+          l1 = k * j;
+        }
+        catch (Exception localException)
+        {
+          int j;
+          int k;
+          Log.printErrStackTrace("MicroMsg.VFSStatistics", localException, "Unable to get FS size.", new Object[0]);
+          continue;
+        }
+        f.Iyx.a(aa.igf(), new Object[] { Integer.valueOf(i), Long.valueOf(aa.ige()), Long.valueOf(l2), Long.valueOf(aa.YFm), Long.valueOf(aa.YFn), localStringBuilder.toString(), ((StringBuilder)localObject1).toString(), Integer.valueOf(aa.bKi()), Integer.valueOf((int)aa.igg()), Integer.valueOf((int)aa.igh()), Long.valueOf(aa.dlI()), Long.valueOf(aa.igi()), Long.valueOf(aa.YFk), Long.valueOf(aa.igj()), Long.valueOf(aa.igk()), Long.valueOf(aa.igl()), Integer.valueOf(aa.csA()), Integer.valueOf(aa.igm()), Long.valueOf(aa.ign()), Integer.valueOf(aa.gyr()), Integer.valueOf(1), Long.valueOf(l1) });
+        Log.i("MicroMsg.VFSStatistics", "onMaintenanceEnd report finish code:%d, costTime:%d, deleteSize:%d, result:%s, errList:%s, storageCount:%d, repetitionRatio:%s, storageRepetitionRatio:%s, storageDeleteSize:%d, storageFreeSize:%d, vfsCleanExpireDeleteSize:%d, newExpireTime:%d, cleanExtraCostTime:%d, vfsCleanExpireCostTime:%d, cleanTrend:%d, changeSwitch:%d, originExpireTime:%d, repetitionRatioCount:%d, isVFSOpened:%d, availableSize:%d", new Object[] { Integer.valueOf(i), Long.valueOf(aa.ige()), Long.valueOf(l2), localStringBuilder.toString(), ((StringBuilder)localObject1).toString(), Integer.valueOf(aa.bKi()), Float.valueOf(aa.igg()), Float.valueOf(aa.igh()), Long.valueOf(aa.dlI()), Long.valueOf(aa.igi()), Long.valueOf(aa.YFk), Long.valueOf(aa.igj()), Long.valueOf(aa.igk()), Long.valueOf(aa.igl()), Integer.valueOf(aa.csA()), Integer.valueOf(aa.igm()), Long.valueOf(aa.ign()), Integer.valueOf(aa.gyr()), Integer.valueOf(1), Long.valueOf(l1) });
+        AppMethodBeat.o(193835);
+        return;
+        localObject2 = new StatFs(b.aSG());
+        j = ((StatFs)localObject2).getBlockSize();
+        k = ((StatFs)localObject2).getAvailableBlocks();
+        l1 = k * j;
       }
     }
-    paramString = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(13326);
-    return paramString;
-  }
-  
-  public static String z(Uri paramUri)
-  {
-    AppMethodBeat.i(13324);
-    StringBuilder localStringBuilder = new StringBuilder();
-    String str = paramUri.getScheme();
-    if ((str != null) && (!str.isEmpty())) {
-      localStringBuilder.append(str).append(':');
-    }
-    str = paramUri.getAuthority();
-    if ((str != null) && (!str.isEmpty())) {
-      localStringBuilder.append("//").append(str);
-    }
-    paramUri = paramUri.getPath();
-    if (paramUri != null) {
-      localStringBuilder.append(paramUri);
-    }
-    paramUri = localStringBuilder.toString();
-    AppMethodBeat.o(13324);
-    return paramUri;
-  }
-  
-  static final class a
-    extends RuntimeException
-  {
-    a(Class<?> paramClass, int paramInt1, int paramInt2)
+    
+    public final void ife()
     {
-      super();
-      AppMethodBeat.i(13322);
-      AppMethodBeat.o(13322);
+      AppMethodBeat.i(193832);
+      Log.i("MicroMsg.VFSStatistics", "onMaintenanceBegin");
+      aa.resetParams();
+      aa.WB(System.currentTimeMillis());
+      aa.ifT().add(new IDKey(aa.ifR(), aa.ifS(), 1));
+      AppMethodBeat.o(193832);
     }
-  }
-  
-  public static abstract interface b
-  {
-    public abstract boolean a(FileSystem.b paramb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.vfs.aa
  * JD-Core Version:    0.7.0.1
  */

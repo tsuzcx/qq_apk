@@ -6,18 +6,18 @@ import java.util.Arrays;
 
 public final class k
 {
-  public static final byte[] bGT;
-  public static final float[] bHg;
-  private static final Object bHh;
-  private static int[] bHi;
+  public static final byte[] bqC;
+  public static final float[] bqP;
+  private static final Object bqQ;
+  private static int[] bqR;
   
   static
   {
     AppMethodBeat.i(93154);
-    bGT = new byte[] { 0, 0, 0, 1 };
-    bHg = new float[] { 1.0F, 1.0F, 1.090909F, 0.9090909F, 1.454546F, 1.212121F, 2.181818F, 1.818182F, 2.909091F, 2.424243F, 1.636364F, 1.363636F, 1.939394F, 1.616162F, 1.333333F, 1.5F, 2.0F };
-    bHh = new Object();
-    bHi = new int[10];
+    bqC = new byte[] { 0, 0, 0, 1 };
+    bqP = new float[] { 1.0F, 1.0F, 1.090909F, 0.9090909F, 1.454546F, 1.212121F, 2.181818F, 1.818182F, 2.909091F, 2.424243F, 1.636364F, 1.363636F, 1.939394F, 1.616162F, 1.333333F, 1.5F, 2.0F };
+    bqQ = new Object();
+    bqR = new int[10];
     AppMethodBeat.o(93154);
   }
   
@@ -40,19 +40,19 @@ public final class k
     {
       if (paramArrayOfBoolean[0] != 0)
       {
-        a(paramArrayOfBoolean);
+        b(paramArrayOfBoolean);
         AppMethodBeat.o(93153);
         return paramInt1 - 3;
       }
       if ((j > 1) && (paramArrayOfBoolean[1] != 0) && (paramArrayOfByte[paramInt1] == 1))
       {
-        a(paramArrayOfBoolean);
+        b(paramArrayOfBoolean);
         AppMethodBeat.o(93153);
         return paramInt1 - 2;
       }
       if ((j > 2) && (paramArrayOfBoolean[2] != 0) && (paramArrayOfByte[paramInt1] == 0) && (paramArrayOfByte[(paramInt1 + 1)] == 1))
       {
-        a(paramArrayOfBoolean);
+        b(paramArrayOfBoolean);
         AppMethodBeat.o(93153);
         return paramInt1 - 1;
       }
@@ -66,7 +66,7 @@ public final class k
         if ((paramArrayOfByte[(paramInt1 - 2)] == 0) && (paramArrayOfByte[(paramInt1 - 1)] == 0) && (paramArrayOfByte[paramInt1] == 1))
         {
           if (paramArrayOfBoolean != null) {
-            a(paramArrayOfBoolean);
+            b(paramArrayOfBoolean);
           }
           AppMethodBeat.o(93153);
           return paramInt1 - 2;
@@ -139,7 +139,7 @@ public final class k
     }
   }
   
-  public static void a(boolean[] paramArrayOfBoolean)
+  public static void b(boolean[] paramArrayOfBoolean)
   {
     paramArrayOfBoolean[0] = false;
     paramArrayOfBoolean[1] = false;
@@ -158,7 +158,7 @@ public final class k
     return false;
   }
   
-  public static void h(ByteBuffer paramByteBuffer)
+  public static void e(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(93149);
     int m = paramByteBuffer.position();
@@ -205,7 +205,7 @@ public final class k
   public static int j(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(93148);
-    Object localObject = bHh;
+    Object localObject = bqQ;
     int k = 0;
     int i = 0;
     label23:
@@ -229,12 +229,12 @@ public final class k
     {
       try
       {
-        if (bHi.length <= k)
+        if (bqR.length <= k)
         {
-          int[] arrayOfInt = bHi;
-          bHi = Arrays.copyOf(arrayOfInt, arrayOfInt.length * 2);
+          int[] arrayOfInt = bqR;
+          bqR = Arrays.copyOf(arrayOfInt, arrayOfInt.length * 2);
         }
-        bHi[k] = j;
+        bqR[k] = j;
         i = j + 3;
         k += 1;
         break;
@@ -247,7 +247,7 @@ public final class k
       }
       if (paramInt < k)
       {
-        n = bHi[paramInt] - j;
+        n = bqR[paramInt] - j;
         System.arraycopy(paramArrayOfByte, j, paramArrayOfByte, i, n);
         i += n;
         i1 = i + 1;
@@ -285,10 +285,10 @@ public final class k
   {
     AppMethodBeat.i(93151);
     paramArrayOfByte = new n(paramArrayOfByte, paramInt1, paramInt2);
-    paramArrayOfByte.en(8);
-    paramInt1 = paramArrayOfByte.em(8);
-    paramArrayOfByte.en(16);
-    int i2 = paramArrayOfByte.xq();
+    paramArrayOfByte.eB(8);
+    paramInt1 = paramArrayOfByte.eA(8);
+    paramArrayOfByte.eB(16);
+    int i2 = paramArrayOfByte.vu();
     int i = 1;
     boolean bool1 = false;
     int i1;
@@ -299,14 +299,14 @@ public final class k
     int k;
     if ((paramInt1 == 100) || (paramInt1 == 110) || (paramInt1 == 122) || (paramInt1 == 244) || (paramInt1 == 44) || (paramInt1 == 83) || (paramInt1 == 86) || (paramInt1 == 118) || (paramInt1 == 128) || (paramInt1 == 138))
     {
-      i1 = paramArrayOfByte.xq();
+      i1 = paramArrayOfByte.vu();
       if (i1 == 3) {
-        bool1 = paramArrayOfByte.uI();
+        bool1 = paramArrayOfByte.sD();
       }
-      paramArrayOfByte.xq();
-      paramArrayOfByte.xq();
-      paramArrayOfByte.xb();
-      if (paramArrayOfByte.uI())
+      paramArrayOfByte.vu();
+      paramArrayOfByte.vu();
+      paramArrayOfByte.ve();
+      if (paramArrayOfByte.sD())
       {
         if (i1 != 3)
         {
@@ -318,7 +318,7 @@ public final class k
           if (i >= paramInt2) {
             break label271;
           }
-          if (paramArrayOfByte.uI())
+          if (paramArrayOfByte.sD())
           {
             if (i < 6)
             {
@@ -332,7 +332,7 @@ public final class k
               }
               paramInt1 = n;
               if (n != 0) {
-                paramInt1 = (paramArrayOfByte.xp() + m + 256) % 256;
+                paramInt1 = (paramArrayOfByte.vt() + m + 256) % 256;
               }
               if (paramInt1 != 0) {
                 break label256;
@@ -360,37 +360,37 @@ public final class k
     }
     for (;;)
     {
-      n = paramArrayOfByte.xq();
-      i1 = paramArrayOfByte.xq();
+      n = paramArrayOfByte.vu();
+      i1 = paramArrayOfByte.vu();
       j = 0;
       boolean bool2 = false;
       boolean bool3;
       if (i1 == 0)
       {
-        paramInt2 = paramArrayOfByte.xq() + 4;
-        paramArrayOfByte.xq();
-        paramArrayOfByte.xb();
-        k = paramArrayOfByte.xq();
-        j = paramArrayOfByte.xq();
-        bool3 = paramArrayOfByte.uI();
+        paramInt2 = paramArrayOfByte.vu() + 4;
+        paramArrayOfByte.vu();
+        paramArrayOfByte.ve();
+        k = paramArrayOfByte.vu();
+        j = paramArrayOfByte.vu();
+        bool3 = paramArrayOfByte.sD();
         if (!bool3) {
           break label620;
         }
         paramInt1 = 1;
         label339:
         if (!bool3) {
-          paramArrayOfByte.xb();
+          paramArrayOfByte.ve();
         }
-        paramArrayOfByte.xb();
+        paramArrayOfByte.ve();
         k = (k + 1) * 16;
         m = (2 - paramInt1) * (j + 1) * 16;
-        if (!paramArrayOfByte.uI()) {
+        if (!paramArrayOfByte.sD()) {
           break label714;
         }
-        int i5 = paramArrayOfByte.xq();
-        int i6 = paramArrayOfByte.xq();
-        int i3 = paramArrayOfByte.xq();
-        int i4 = paramArrayOfByte.xq();
+        int i5 = paramArrayOfByte.vu();
+        int i6 = paramArrayOfByte.vu();
+        int i3 = paramArrayOfByte.vu();
+        int i4 = paramArrayOfByte.vu();
         if (i != 0) {
           break label630;
         }
@@ -409,13 +409,13 @@ public final class k
       {
         float f2 = 1.0F;
         float f1;
-        if ((paramArrayOfByte.uI()) && (paramArrayOfByte.uI()))
+        if ((paramArrayOfByte.sD()) && (paramArrayOfByte.sD()))
         {
-          j = paramArrayOfByte.em(8);
+          j = paramArrayOfByte.eA(8);
           if (j == 255)
           {
-            j = paramArrayOfByte.em(16);
-            k = paramArrayOfByte.em(16);
+            j = paramArrayOfByte.eA(16);
+            k = paramArrayOfByte.eA(16);
             f1 = f2;
             if (j != 0)
             {
@@ -435,10 +435,10 @@ public final class k
           if (i1 != 1) {
             break;
           }
-          bool3 = paramArrayOfByte.uI();
-          paramArrayOfByte.xp();
-          paramArrayOfByte.xp();
-          long l = paramArrayOfByte.xq();
+          bool3 = paramArrayOfByte.sD();
+          paramArrayOfByte.vt();
+          paramArrayOfByte.vt();
+          long l = paramArrayOfByte.vu();
           paramInt1 = 0;
           for (;;)
           {
@@ -447,7 +447,7 @@ public final class k
             if (paramInt1 >= l) {
               break;
             }
-            paramArrayOfByte.xq();
+            paramArrayOfByte.vu();
             paramInt1 += 1;
           }
           label620:
@@ -483,8 +483,8 @@ public final class k
             i = 1;
             break label647;
           }
-          if (j < bHg.length) {
-            f1 = bHg[j];
+          if (j < bqP.length) {
+            f1 = bqP[j];
           } else {
             f1 = 1.0F;
           }
@@ -506,60 +506,60 @@ public final class k
   {
     AppMethodBeat.i(93152);
     paramArrayOfByte = new n(paramArrayOfByte, 3, paramInt);
-    paramArrayOfByte.en(8);
-    paramInt = paramArrayOfByte.xq();
-    int i = paramArrayOfByte.xq();
-    paramArrayOfByte.xb();
-    paramArrayOfByte = new a(paramInt, i, paramArrayOfByte.uI());
+    paramArrayOfByte.eB(8);
+    paramInt = paramArrayOfByte.vu();
+    int i = paramArrayOfByte.vu();
+    paramArrayOfByte.ve();
+    paramArrayOfByte = new a(paramInt, i, paramArrayOfByte.sD());
     AppMethodBeat.o(93152);
     return paramArrayOfByte;
   }
   
   public static final class a
   {
-    public final int bHj;
-    public final boolean bHk;
-    public final int brw;
+    public final int baY;
+    public final int bqS;
+    public final boolean bqT;
     
     public a(int paramInt1, int paramInt2, boolean paramBoolean)
     {
-      this.brw = paramInt1;
-      this.bHj = paramInt2;
-      this.bHk = paramBoolean;
+      this.baY = paramInt1;
+      this.bqS = paramInt2;
+      this.bqT = paramBoolean;
     }
   }
   
   public static final class b
   {
-    public final int bHj;
-    public final float bHl;
-    public final boolean bHm;
-    public final boolean bHn;
-    public final int bHo;
-    public final int bHp;
-    public final int bHq;
-    public final boolean bHr;
+    public final int bqS;
+    public final float bqU;
+    public final boolean bqV;
+    public final boolean bqW;
+    public final int bqX;
+    public final int bqY;
+    public final int bqZ;
+    public final boolean bra;
     public final int height;
     public final int width;
     
     public b(int paramInt1, int paramInt2, int paramInt3, float paramFloat, boolean paramBoolean1, boolean paramBoolean2, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean3)
     {
-      this.bHj = paramInt1;
+      this.bqS = paramInt1;
       this.width = paramInt2;
       this.height = paramInt3;
-      this.bHl = paramFloat;
-      this.bHm = paramBoolean1;
-      this.bHn = paramBoolean2;
-      this.bHo = paramInt4;
-      this.bHp = paramInt5;
-      this.bHq = paramInt6;
-      this.bHr = paramBoolean3;
+      this.bqU = paramFloat;
+      this.bqV = paramBoolean1;
+      this.bqW = paramBoolean2;
+      this.bqX = paramInt4;
+      this.bqY = paramInt5;
+      this.bqZ = paramInt6;
+      this.bra = paramBoolean3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.i.k
  * JD-Core Version:    0.7.0.1
  */

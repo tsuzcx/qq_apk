@@ -10,10 +10,10 @@ public class WxaLiteAppInfo
 {
   public static final Parcelable.Creator<WxaLiteAppInfo> CREATOR;
   public String appId;
-  public String crh;
-  public String cri;
-  public long crj;
-  public long crk;
+  public String coX;
+  public String coY;
+  public long coZ;
+  public long cpa;
   public String groupId;
   public String md5;
   public String path;
@@ -22,16 +22,16 @@ public class WxaLiteAppInfo
   
   static
   {
-    AppMethodBeat.i(197718);
+    AppMethodBeat.i(258548);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(197718);
+    AppMethodBeat.o(258548);
   }
   
-  public final boolean KB()
+  public final boolean No()
   {
-    AppMethodBeat.i(197715);
+    AppMethodBeat.i(258540);
     boolean bool = "debug".equalsIgnoreCase(this.type);
-    AppMethodBeat.o(197715);
+    AppMethodBeat.o(258540);
     return bool;
   }
   
@@ -42,26 +42,26 @@ public class WxaLiteAppInfo
   
   public String toString()
   {
-    AppMethodBeat.i(197717);
-    String str = "WxaLiteAppInfo{appId='" + this.appId + '\'' + ", groupId='" + this.groupId + '\'' + ", url='" + this.url + '\'' + ", md5='" + this.md5 + '\'' + ", signatureKey='" + this.crh + '\'' + ", path='" + this.path + '\'' + ", type='" + this.type + '\'' + ", patchId='" + this.cri + '\'' + ", updateTime=" + this.crj + ", lastUseTime=" + this.crk + '}';
-    AppMethodBeat.o(197717);
+    AppMethodBeat.i(258546);
+    String str = "WxaLiteAppInfo{appId='" + this.appId + '\'' + ", groupId='" + this.groupId + '\'' + ", url='" + this.url + '\'' + ", md5='" + this.md5 + '\'' + ", signatureKey='" + this.coX + '\'' + ", path='" + this.path + '\'' + ", type='" + this.type + '\'' + ", patchId='" + this.coY + '\'' + ", updateTime=" + this.coZ + ", lastUseTime=" + this.cpa + '}';
+    AppMethodBeat.o(258546);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(197716);
+    AppMethodBeat.i(258542);
     paramParcel.writeString(this.appId);
     paramParcel.writeString(this.groupId);
     paramParcel.writeString(this.url);
     paramParcel.writeString(this.md5);
-    paramParcel.writeString(this.crh);
+    paramParcel.writeString(this.coX);
     paramParcel.writeString(this.path);
     paramParcel.writeString(this.type);
-    paramParcel.writeString(this.cri);
-    paramParcel.writeLong(this.crj);
-    paramParcel.writeLong(this.crk);
-    AppMethodBeat.o(197716);
+    paramParcel.writeString(this.coY);
+    paramParcel.writeLong(this.coZ);
+    paramParcel.writeLong(this.cpa);
+    AppMethodBeat.o(258542);
   }
 }
 

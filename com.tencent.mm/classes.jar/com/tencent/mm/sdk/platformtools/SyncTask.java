@@ -89,7 +89,7 @@ public abstract class SyncTask<R>
     //   70: goto -18 -> 52
     //   73: aload_1
     //   74: invokevirtual 106	com/tencent/mm/sdk/platformtools/MMHandler:getSerialTag	()Ljava/lang/String;
-    //   77: invokestatic 111	com/tencent/f/j/a:hmF	()Ljava/lang/String;
+    //   77: invokestatic 111	com/tencent/e/j/a:iqg	()Ljava/lang/String;
     //   80: invokevirtual 117	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   83: istore_2
     //   84: goto -32 -> 52
@@ -179,9 +179,8 @@ public abstract class SyncTask<R>
     // Exception table:
     //   from	to	target	type
     //   103	133	206	finally
-    //   207	210	206	finally
     //   94	103	212	java/lang/InterruptedException
-    //   210	212	212	java/lang/InterruptedException
+    //   207	212	212	java/lang/InterruptedException
   }
   
   protected abstract R run();
@@ -200,7 +199,7 @@ public abstract class SyncTask<R>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.SyncTask
  * JD-Core Version:    0.7.0.1
  */

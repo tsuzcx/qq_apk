@@ -2,7 +2,7 @@
 <ScrollView android:background="@color/a2h" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="vertical" android:id="@id/h9a" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/ih" android:paddingRight="@dimen/ir" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/d">
+        <LinearLayout android:orientation="vertical" android:id="@id/h9a" android:paddingLeft="0.0dip" android:paddingTop="@dimen/ih" android:paddingRight="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/d">
             <com.tencent.mm.ui.base.MaxListView android:id="@id/hmr" android:background="@null" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:divider="#00000000" android:dividerHeight="0.0dip" android:choiceMode="singleChoice" />
             <include android:id="@id/gt" android:visibility="gone" layout="@layout/c7e" />
             <TextView android:textSize="@dimen/bj" android:textColor="@color/wu" android:gravity="center|left" android:id="@id/dxo" android:background="@drawable/qa" android:paddingLeft="@dimen/k5" android:paddingRight="@dimen/k5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/iq" android:text="@string/gn8" />

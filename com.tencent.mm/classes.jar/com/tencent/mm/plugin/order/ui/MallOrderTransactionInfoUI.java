@@ -5,15 +5,18 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.order.model.MallOrderDetailObject;
 import com.tencent.mm.plugin.order.model.MallTransactionObject;
 import com.tencent.mm.plugin.order.model.a.a;
 import com.tencent.mm.plugin.order.ui.a.b;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.plugin.wxpay.a.m;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -26,15 +29,15 @@ import java.util.List;
 public class MallOrderTransactionInfoUI
   extends WalletPreferenceUI
 {
-  private int AQo;
-  private MallTransactionObject AQp = null;
-  private c AQq;
-  protected f nRm;
+  private MallTransactionObject GJA = null;
+  private c GJB;
+  private int GJz;
+  protected f mrf;
   
   private Bundle getInput()
   {
     AppMethodBeat.i(66790);
-    Bundle localBundle2 = com.tencent.mm.wallet_core.a.bx(this);
+    Bundle localBundle2 = com.tencent.mm.wallet_core.a.bE(this);
     Bundle localBundle1 = localBundle2;
     if (localBundle2 == null) {
       localBundle1 = new Bundle();
@@ -43,23 +46,23 @@ public class MallOrderTransactionInfoUI
     return localBundle1;
   }
   
-  public final boolean e(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final boolean f(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(66789);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       if ((paramq instanceof com.tencent.mm.plugin.order.model.h))
       {
-        paramString = ((com.tencent.mm.plugin.order.model.h)paramq).AOR;
+        paramString = ((com.tencent.mm.plugin.order.model.h)paramq).GIf;
         if (paramString != null)
         {
-          this.AQp = paramString.ANI;
-          this.nRm.removeAll();
+          this.GJA = paramString.GGW;
+          this.mrf.removeAll();
           AppCompatActivity localAppCompatActivity = getContext();
-          f localf = this.nRm;
-          MallTransactionObject localMallTransactionObject = this.AQp;
+          f localf = this.mrf;
+          MallTransactionObject localMallTransactionObject = this.GJA;
           Object[] arrayOfObject = new Object[1];
-          arrayOfObject[0] = this.AQq;
+          arrayOfObject[0] = this.GJB;
           if (localMallTransactionObject == null)
           {
             paramString = null;
@@ -69,20 +72,20 @@ public class MallOrderTransactionInfoUI
               while (paramInt1 < paramString.size())
               {
                 paramq = (Preference)paramString.get(paramInt1);
-                this.nRm.c(paramq);
+                this.mrf.b(paramq);
                 paramInt1 += 1;
               }
             }
           }
           else
           {
-            switch (localMallTransactionObject.efQ)
+            switch (localMallTransactionObject.gag)
             {
             default: 
               paramq = new com.tencent.mm.plugin.order.ui.a.a();
               paramString = paramq;
               if ((arrayOfObject[0] instanceof c)) {
-                ((com.tencent.mm.plugin.order.ui.a.a)paramq).AQq = ((c)arrayOfObject[0]);
+                ((com.tencent.mm.plugin.order.ui.a.a)paramq).GJB = ((c)arrayOfObject[0]);
               }
               break;
             }
@@ -92,7 +95,7 @@ public class MallOrderTransactionInfoUI
               break;
             }
           }
-          this.nRm.notifyDataSetChanged();
+          this.mrf.notifyDataSetChanged();
         }
       }
       AppMethodBeat.o(66789);
@@ -104,18 +107,18 @@ public class MallOrderTransactionInfoUI
   
   public int getLayoutId()
   {
-    return 2131495455;
+    return a.g.mall_order_ui;
   }
   
   public int getResourceId()
   {
-    return 2132017234;
+    return a.m.mall_order_preference;
   }
   
   public void initView()
   {
     AppMethodBeat.i(66787);
-    setMMTitle(2131762892);
+    setMMTitle(a.i.mall_order_detail_ui_title);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -126,9 +129,9 @@ public class MallOrderTransactionInfoUI
         return false;
       }
     });
-    this.nRm = getPreferenceScreen();
-    this.AQq = new c(this);
-    this.AQq.hhP();
+    this.mrf = getPreferenceScreen();
+    this.GJB = new c(this);
+    this.GJB.ijq();
     AppMethodBeat.o(66787);
   }
   
@@ -136,7 +139,7 @@ public class MallOrderTransactionInfoUI
   {
     AppMethodBeat.i(66786);
     super.onCreate(paramBundle);
-    paramBundle = com.tencent.mm.wallet_core.a.by(this);
+    paramBundle = com.tencent.mm.wallet_core.a.bF(this);
     String str;
     if ((paramBundle != null) && ((paramBundle instanceof com.tencent.mm.plugin.order.a.a)))
     {
@@ -148,7 +151,7 @@ public class MallOrderTransactionInfoUI
       if (Util.isNullOrNil(str))
       {
         Log.w("MicroMsg.mmui.MMPreference", "mOrders info is Illegal!");
-        com.tencent.mm.ui.base.h.a(getContext(), 2131767999, 0, new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.a(getContext(), a.i.wallet_order_info_err, 0, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -158,9 +161,9 @@ public class MallOrderTransactionInfoUI
           }
         });
       }
-      this.AQo = getInput().getInt("key_pay_type");
+      this.GJz = getInput().getInt("key_pay_type");
       initView();
-      hhW().a(new com.tencent.mm.plugin.order.model.h(str, paramBundle), true, 1);
+      ijz().a(new com.tencent.mm.plugin.order.model.h(str, paramBundle), true, 1);
       AppMethodBeat.o(66786);
       return;
       if ((getIntent().getIntExtra("scene", 0) == 1) || (getIntent().getIntExtra("scene", 0) == 2))
@@ -180,8 +183,8 @@ public class MallOrderTransactionInfoUI
   {
     AppMethodBeat.i(66788);
     super.onDestroy();
-    if (this.AQq != null) {
-      this.AQq.release();
+    if (this.GJB != null) {
+      this.GJB.release();
     }
     AppMethodBeat.o(66788);
   }

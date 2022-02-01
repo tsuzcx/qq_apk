@@ -15,38 +15,12 @@ public final class a
   public static String SVNPATH;
   public static String TIME;
   public static String TINKER_ID;
-  public static String icr;
-  public static String ics = "android-" + Build.VERSION.SDK_INT;
-  public static String ict;
-  public static String icu;
+  public static String kQY;
+  public static String kQZ = "android-" + Build.VERSION.SDK_INT;
+  public static String kRa;
+  public static String kRb;
   
-  public static String aKv()
-  {
-    if (ict == null) {
-      return REV;
-    }
-    return REV + "." + ict;
-  }
-  
-  public static String aKw()
-  {
-    return TINKER_ID;
-  }
-  
-  public static String aKx()
-  {
-    if (icu == null) {
-      return "";
-    }
-    return icu;
-  }
-  
-  public static boolean aKy()
-  {
-    return !"false".equalsIgnoreCase(icr);
-  }
-  
-  public static void y(Bundle paramBundle)
+  public static void F(Bundle paramBundle)
   {
     if (paramBundle == null) {
       return;
@@ -54,7 +28,7 @@ public final class a
     if (paramBundle.getBoolean("com.tencent.mm.BuildInfo.PATCH_ENABLED")) {}
     for (String str = "true";; str = "false")
     {
-      icr = str;
+      kQY = str;
       REV = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_REV");
       CLIENT_VERSION = "0x" + Integer.toHexString(paramBundle.getInt("com.tencent.mm.BuildInfo.CLIENT_VERSION"));
       TIME = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_TIME");
@@ -68,10 +42,36 @@ public final class a
       return;
     }
   }
+  
+  public static boolean aSA()
+  {
+    return !"false".equalsIgnoreCase(kQY);
+  }
+  
+  public static String aSx()
+  {
+    if (kRa == null) {
+      return REV;
+    }
+    return REV + "." + kRa;
+  }
+  
+  public static String aSy()
+  {
+    return TINKER_ID;
+  }
+  
+  public static String aSz()
+  {
+    if (kRb == null) {
+      return "";
+    }
+    return kRb;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.loader.j.a
  * JD-Core Version:    0.7.0.1
  */

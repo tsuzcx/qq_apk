@@ -9,26 +9,26 @@ public class ParcelableParcel
   implements Parcelable
 {
   public static final Parcelable.ClassLoaderCreator<ParcelableParcel> CREATOR;
-  public final Parcel aBu;
+  public final Parcel ave;
   final ClassLoader mClassLoader;
   
   static
   {
-    AppMethodBeat.i(206124);
+    AppMethodBeat.i(189012);
     CREATOR = new Parcelable.ClassLoaderCreator() {};
-    AppMethodBeat.o(206124);
+    AppMethodBeat.o(189012);
   }
   
   public ParcelableParcel(Parcel paramParcel, ClassLoader paramClassLoader)
   {
-    AppMethodBeat.i(206122);
-    this.aBu = Parcel.obtain();
+    AppMethodBeat.i(188991);
+    this.ave = Parcel.obtain();
     this.mClassLoader = paramClassLoader;
     int k = paramParcel.readInt();
     if (k < 0)
     {
       paramParcel = new IllegalArgumentException("Negative size read from parcel");
-      AppMethodBeat.o(206122);
+      AppMethodBeat.o(188991);
       throw paramParcel;
     }
     int j = paramParcel.dataPosition();
@@ -39,8 +39,8 @@ public class ParcelableParcel
     for (;;)
     {
       paramParcel.setDataPosition(i);
-      this.aBu.appendFrom(paramParcel, j, k);
-      AppMethodBeat.o(206122);
+      this.ave.appendFrom(paramParcel, j, k);
+      AppMethodBeat.o(188991);
       return;
       if ((k > 0) && (j <= 2147483647 - k))
       {
@@ -55,7 +55,7 @@ public class ParcelableParcel
       }
     }
     paramParcel = new IllegalArgumentException("Addition overflow: " + j + " + " + k);
-    AppMethodBeat.o(206122);
+    AppMethodBeat.o(188991);
     throw paramParcel;
   }
   
@@ -66,15 +66,15 @@ public class ParcelableParcel
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(206123);
-    paramParcel.writeInt(this.aBu.dataSize());
-    paramParcel.appendFrom(this.aBu, 0, this.aBu.dataSize());
-    AppMethodBeat.o(206123);
+    AppMethodBeat.i(189005);
+    paramParcel.writeInt(this.ave.dataSize());
+    paramParcel.appendFrom(this.ave, 0, this.ave.dataSize());
+    AppMethodBeat.o(189005);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cedit.util.ParcelableParcel
  * JD-Core Version:    0.7.0.1
  */

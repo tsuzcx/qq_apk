@@ -9,37 +9,37 @@ public class KidsWatchAcctInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<KidsWatchAcctInfo> CREATOR;
+  public int EbN;
   public String deviceName;
-  public String iAR;
+  public String lqp;
   public String nickName;
   public String userName;
-  public int yAy;
   
   static
   {
-    AppMethodBeat.i(256397);
+    AppMethodBeat.i(251586);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(256397);
+    AppMethodBeat.o(251586);
   }
   
   protected KidsWatchAcctInfo(Parcel paramParcel)
   {
-    AppMethodBeat.i(256396);
-    this.yAy = paramParcel.readInt();
+    AppMethodBeat.i(251585);
+    this.EbN = paramParcel.readInt();
     this.userName = paramParcel.readString();
     this.nickName = paramParcel.readString();
     this.deviceName = paramParcel.readString();
-    this.iAR = paramParcel.readString();
-    AppMethodBeat.o(256396);
+    this.lqp = paramParcel.readString();
+    AppMethodBeat.o(251585);
   }
   
   public KidsWatchAcctInfo(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
-    this.yAy = paramInt;
+    this.EbN = paramInt;
     this.userName = paramString1;
     this.nickName = paramString2;
     this.deviceName = paramString4;
-    this.iAR = paramString3;
+    this.lqp = paramString3;
   }
   
   public int describeContents()
@@ -49,18 +49,18 @@ public class KidsWatchAcctInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(256395);
-    paramParcel.writeInt(this.yAy);
+    AppMethodBeat.i(251584);
+    paramParcel.writeInt(this.EbN);
     paramParcel.writeString(this.userName);
     paramParcel.writeString(this.nickName);
     paramParcel.writeString(this.deviceName);
-    paramParcel.writeString(this.iAR);
-    AppMethodBeat.o(256395);
+    paramParcel.writeString(this.lqp);
+    AppMethodBeat.o(251584);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.kidswatch.model.KidsWatchAcctInfo
  * JD-Core Version:    0.7.0.1
  */

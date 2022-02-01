@@ -12,11 +12,11 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint.FontMetrics;
 import android.os.Bundle;
-import android.support.v7.c.a.a;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
+import androidx.appcompat.a.a.a;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
@@ -25,6 +25,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookSdk;
 import com.facebook.Profile;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.common.R.color;
 import com.facebook.internal.CallbackManagerImpl.RequestCodeOffset;
 import com.facebook.internal.FetchedAppSettings;
 import com.facebook.internal.FetchedAppSettingsManager;
@@ -34,6 +35,9 @@ import com.facebook.login.DefaultAudience;
 import com.facebook.login.LoginBehavior;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.facebook.login.R.drawable;
+import com.facebook.login.R.string;
+import com.facebook.login.R.style;
 import com.facebook.login.R.styleable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
@@ -129,7 +133,7 @@ public class LoginButton
       });
       AppMethodBeat.o(40435);
       return;
-      displayToolTip(getResources().getString(2131757744));
+      displayToolTip(getResources().getString(R.string.com_facebook_tooltip_default));
     }
   }
   
@@ -161,10 +165,10 @@ public class LoginButton
     paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.com_facebook_login_view, paramInt1, paramInt2);
     try
     {
-      this.confirmLogout = paramContext.getBoolean(0, true);
-      this.loginText = paramContext.getString(1);
-      this.logoutText = paramContext.getString(2);
-      this.toolTipMode = ToolTipMode.fromInt(paramContext.getInt(3, ToolTipMode.DEFAULT.getValue()));
+      this.confirmLogout = paramContext.getBoolean(R.styleable.com_facebook_login_view_com_facebook_confirm_logout, true);
+      this.loginText = paramContext.getString(R.styleable.com_facebook_login_view_com_facebook_login_text);
+      this.logoutText = paramContext.getString(R.styleable.com_facebook_login_view_com_facebook_logout_text);
+      this.toolTipMode = ToolTipMode.fromInt(paramContext.getInt(R.styleable.com_facebook_login_view_com_facebook_tooltip_mode, ToolTipMode.DEFAULT.getValue()));
       return;
     }
     finally
@@ -181,7 +185,7 @@ public class LoginButton
     if ((!isInEditMode()) && (AccessToken.isCurrentAccessTokenActive()))
     {
       if (this.logoutText != null) {}
-      for (localObject = this.logoutText;; localObject = localResources.getString(2131757734))
+      for (localObject = this.logoutText;; localObject = localResources.getString(R.string.com_facebook_loginview_log_out_button))
       {
         setText((CharSequence)localObject);
         AppMethodBeat.o(40445);
@@ -194,14 +198,14 @@ public class LoginButton
       AppMethodBeat.o(40445);
       return;
     }
-    String str = localResources.getString(2131757731);
+    String str = localResources.getString(R.string.com_facebook_loginview_log_in_button_continue);
     int i = getWidth();
     Object localObject = str;
     if (i != 0)
     {
       localObject = str;
       if (measureButtonWidth(str) > i) {
-        localObject = localResources.getString(2131757730);
+        localObject = localResources.getString(R.string.com_facebook_loginview_log_in_button);
       }
     }
     setText((CharSequence)localObject);
@@ -232,13 +236,13 @@ public class LoginButton
     parseLoginButtonAttributes(paramContext, paramAttributeSet, paramInt1, paramInt2);
     if (isInEditMode())
     {
-      setBackgroundColor(getResources().getColor(2131100195));
+      setBackgroundColor(getResources().getColor(R.color.com_facebook_blue));
       this.loginText = "Continue with Facebook";
     }
     for (;;)
     {
       setButtonText();
-      setCompoundDrawablesWithIntrinsicBounds(a.l(getContext(), 2131231883), null, null, null);
+      setCompoundDrawablesWithIntrinsicBounds(a.m(getContext(), R.drawable.com_facebook_button_login_logo), null, null, null);
       AppMethodBeat.o(40440);
       return;
       this.accessTokenTracker = new AccessTokenTracker()
@@ -290,7 +294,7 @@ public class LoginButton
   
   public int getDefaultStyleResource()
   {
-    return 2131821747;
+    return R.style.com_facebook_loginview_default_style;
   }
   
   public LoginBehavior getLoginBehavior()
@@ -394,17 +398,17 @@ public class LoginButton
     localObject = str;
     if (str == null)
     {
-      localObject = localResources.getString(2131757731);
+      localObject = localResources.getString(R.string.com_facebook_loginview_log_in_button_continue);
       k = measureButtonWidth((String)localObject);
       if (resolveSize(k, paramInt1) < k) {
-        localObject = localResources.getString(2131757730);
+        localObject = localResources.getString(R.string.com_facebook_loginview_log_in_button);
       }
     }
     int k = measureButtonWidth((String)localObject);
     str = this.logoutText;
     localObject = str;
     if (str == null) {
-      localObject = localResources.getString(2131757734);
+      localObject = localResources.getString(R.string.com_facebook_loginview_log_out_button);
     }
     setMeasuredDimension(resolveSize(Math.max(k, measureButtonWidth((String)localObject)), paramInt1), j + (i + paramInt2));
     AppMethodBeat.o(40443);
@@ -701,11 +705,11 @@ public class LoginButton
       final LoginManager localLoginManager = getLoginManager();
       if (LoginButton.this.confirmLogout)
       {
-        String str1 = LoginButton.this.getResources().getString(2131757733);
-        String str2 = LoginButton.this.getResources().getString(2131757729);
+        String str1 = LoginButton.this.getResources().getString(R.string.com_facebook_loginview_log_out_action);
+        String str2 = LoginButton.this.getResources().getString(R.string.com_facebook_loginview_cancel_action);
         Object localObject = Profile.getCurrentProfile();
         if ((localObject != null) && (((Profile)localObject).getName() != null)) {}
-        for (localObject = String.format(LoginButton.this.getResources().getString(2131757735), new Object[] { ((Profile)localObject).getName() });; localObject = LoginButton.this.getResources().getString(2131757736))
+        for (localObject = String.format(LoginButton.this.getResources().getString(R.string.com_facebook_loginview_logged_in_as), new Object[] { ((Profile)localObject).getName() });; localObject = LoginButton.this.getResources().getString(R.string.com_facebook_loginview_logged_in_using_facebook))
         {
           paramContext = new AlertDialog.Builder(paramContext);
           paramContext.setMessage((CharSequence)localObject).setCancelable(true).setPositiveButton(str1, new DialogInterface.OnClickListener()
@@ -783,7 +787,7 @@ public class LoginButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.login.widget.LoginButton
  * JD-Core Version:    0.7.0.1
  */

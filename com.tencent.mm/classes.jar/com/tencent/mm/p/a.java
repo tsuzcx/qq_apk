@@ -12,11 +12,11 @@ import java.io.File;
 
 public final class a
 {
-  public static int gRa = -1;
-  public static final long[] gRb = { 17179869184L, 34359738368L, 68719476736L, 137438953472L, 274877906944L };
-  public static final long[] gRc = { 104857600L, 314572800L, 314572800L, 314572800L, 314572800L };
+  public static int jBt = -1;
+  public static final long[] jBu = { 17179869184L, 34359738368L, 68719476736L, 137438953472L, 274877906944L };
+  public static final long[] jBv = { 104857600L, 314572800L, 314572800L, 314572800L, 314572800L };
   
-  public static int ats()
+  public static int aAi()
   {
     AppMethodBeat.i(150029);
     long l2 = 0L;
@@ -25,7 +25,7 @@ public final class a
     l1 = l2;
     try
     {
-      StatFs localStatFs = new StatFs(g.getDataDirectory().getPath());
+      StatFs localStatFs = new StatFs(g.avG().getPath());
       l1 = l2;
       l3 = localStatFs.getAvailableBlocks();
       l1 = l2;
@@ -47,22 +47,22 @@ public final class a
         long l3 = 0L;
         Log.e("MicroMsg.DbChecker", "get db spare space error");
         continue;
-        if (gRa < 0)
+        if (jBt < 0)
         {
-          gRa = gRb.length - 1;
+          jBt = jBu.length - 1;
           i = 0;
         }
         for (;;)
         {
-          if (i < gRb.length)
+          if (i < jBu.length)
           {
-            if (l3 < gRb[i]) {
-              gRa = i;
+            if (l3 < jBu[i]) {
+              jBt = i;
             }
           }
           else
           {
-            if (l1 >= gRc[gRa]) {
+            if (l1 >= jBv[jBt]) {
               break label273;
             }
             i = 1;
@@ -77,7 +77,7 @@ public final class a
       if (l1 < 52428800L)
       {
         i = 2;
-        Log.i("MicroMsg.DbChecker", "checkRomSparespace[%d] available:%d all:%d freeSize :%d availPercent %f mobileSizeIndex %d", new Object[] { Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(l4), Double.valueOf(d), Integer.valueOf(gRa) });
+        Log.i("MicroMsg.DbChecker", "checkRomSparespace[%d] available:%d all:%d freeSize :%d availPercent %f mobileSizeIndex %d", new Object[] { Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(l4), Double.valueOf(d), Integer.valueOf(jBt) });
         AppMethodBeat.o(150029);
         return i;
       }
@@ -93,7 +93,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.p.a
  * JD-Core Version:    0.7.0.1
  */

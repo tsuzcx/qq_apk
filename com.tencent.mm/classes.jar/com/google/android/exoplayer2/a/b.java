@@ -5,25 +5,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static final b beJ;
-  public final int beK;
-  public final int beL;
-  AudioAttributes beM;
+  public static final b aOk;
+  public final int aOl;
+  public final int aOm;
+  AudioAttributes aOn;
   public final int flags;
   
   static
   {
     AppMethodBeat.i(91755);
     a locala = new a();
-    beJ = new b(locala.beK, locala.flags, locala.beL, (byte)0);
+    aOk = new b(locala.aOl, locala.flags, locala.aOm, (byte)0);
     AppMethodBeat.o(91755);
   }
   
   private b(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.beK = paramInt1;
+    this.aOl = paramInt1;
     this.flags = paramInt2;
-    this.beL = paramInt3;
+    this.aOm = paramInt3;
   }
   
   public final boolean equals(Object paramObject)
@@ -40,7 +40,7 @@ public final class b
       return false;
     }
     paramObject = (b)paramObject;
-    if ((this.beK == paramObject.beK) && (this.flags == paramObject.flags) && (this.beL == paramObject.beL))
+    if ((this.aOl == paramObject.aOl) && (this.flags == paramObject.flags) && (this.aOm == paramObject.aOm))
     {
       AppMethodBeat.o(91754);
       return true;
@@ -51,19 +51,19 @@ public final class b
   
   public final int hashCode()
   {
-    return ((this.beK + 527) * 31 + this.flags) * 31 + this.beL;
+    return ((this.aOl + 527) * 31 + this.flags) * 31 + this.aOm;
   }
   
   public static final class a
   {
-    int beK = 0;
-    int beL = 1;
+    int aOl = 0;
+    int aOm = 1;
     int flags = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.a.b
  * JD-Core Version:    0.7.0.1
  */

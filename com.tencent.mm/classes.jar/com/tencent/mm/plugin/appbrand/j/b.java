@@ -2,10 +2,8 @@ package com.tencent.mm.plugin.appbrand.j;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.appusage.AppBrandRecentTaskInfo;
 import com.tencent.mm.plugin.fts.a.a.a;
-import com.tencent.mm.plugin.fts.a.a.h;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.d;
@@ -23,14 +21,14 @@ import java.util.List;
 public final class b
   extends com.tencent.mm.plugin.fts.a.b
 {
-  m hgI;
-  c lqS;
-  private MStorage.IOnStorageChange lqT;
+  private m jSC;
+  private c olC;
+  private MStorage.IOnStorageChange olD;
   
   public b()
   {
     AppMethodBeat.i(45018);
-    this.lqT = new MStorage.IOnStorageChange()
+    this.olD = new MStorage.IOnStorageChange()
     {
       public final void onNotifyChange(String paramAnonymousString, MStorageEventData paramAnonymousMStorageEventData)
       {
@@ -51,14 +49,14 @@ public final class b
               while (paramAnonymousString.hasNext())
               {
                 paramAnonymousMStorageEventData = (String)paramAnonymousString.next();
-                b.this.hgI.a(65616, new b.b(b.this, paramAnonymousMStorageEventData));
+                b.b(b.this).a(65616, new b.b(b.this, paramAnonymousMStorageEventData));
               }
               AppMethodBeat.o(45010);
             }
           }
           else
           {
-            b.this.hgI.a(65616, new b.b(b.this, paramAnonymousMStorageEventData.obj.toString()));
+            b.b(b.this).a(65616, new b.b(b.this, paramAnonymousMStorageEventData.obj.toString()));
             AppMethodBeat.o(45010);
             return;
             if ("batch".equals(paramAnonymousString))
@@ -69,13 +67,13 @@ public final class b
                 while (paramAnonymousString.hasNext())
                 {
                   paramAnonymousMStorageEventData = (String)paramAnonymousString.next();
-                  b.this.hgI.a(65616, new b.a(b.this, paramAnonymousMStorageEventData));
+                  b.b(b.this).a(65616, new b.a(b.this, paramAnonymousMStorageEventData));
                 }
                 AppMethodBeat.o(45010);
               }
             }
             else {
-              b.this.hgI.a(65616, new b.a(b.this, paramAnonymousMStorageEventData.obj.toString()));
+              b.b(b.this).a(65616, new b.a(b.this, paramAnonymousMStorageEventData.obj.toString()));
             }
           }
         }
@@ -88,18 +86,18 @@ public final class b
   {
     AppMethodBeat.i(45019);
     paramj = new c(paramj);
-    paramj = this.hgI.a(-65536, paramj);
+    paramj = this.jSC.a(-65536, paramj);
     AppMethodBeat.o(45019);
     return paramj;
   }
   
-  public final boolean axa()
+  public final boolean aEt()
   {
     AppMethodBeat.i(45021);
     i.onDestroy();
-    i.d(this.lqT);
-    this.lqS = null;
-    this.hgI = null;
+    i.d(this.olD);
+    this.olC = null;
+    this.jSC = null;
     AppMethodBeat.o(45021);
     return true;
   }
@@ -112,18 +110,18 @@ public final class b
   public final boolean onCreate()
   {
     AppMethodBeat.i(45020);
-    if (!((com.tencent.mm.plugin.fts.a.n)g.ah(com.tencent.mm.plugin.fts.a.n.class)).isFTSContextReady())
+    if (!((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.fts.a.n.class)).isFTSContextReady())
     {
       Log.i("MicroMsg.FTS.FTS5SearchWeAppLogic", "Create Fail!");
       AppMethodBeat.o(45020);
       return false;
     }
     Log.i("MicroMsg.FTS.FTS5SearchWeAppLogic", "Create Success!");
-    this.lqS = ((c)((com.tencent.mm.plugin.fts.a.n)g.ah(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(512));
-    this.hgI = ((com.tencent.mm.plugin.fts.a.n)g.ah(com.tencent.mm.plugin.fts.a.n.class)).getFTSTaskDaemon();
-    this.hgI.a(65616, new d());
+    this.olC = ((c)((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(512));
+    this.jSC = ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.fts.a.n.class)).getFTSTaskDaemon();
+    this.jSC.a(65616, new d());
     i.onCreate();
-    i.c(this.lqT);
+    i.c(this.olD);
     AppMethodBeat.o(45020);
     return true;
   }
@@ -138,21 +136,21 @@ public final class b
       this.id = paramString;
     }
     
-    public final String bCQ()
+    public final boolean aEv()
+    {
+      AppMethodBeat.i(45011);
+      Log.i("MicroMsg.FTS.FTS5SearchWeAppLogic", "delete we app info id=%s", new Object[] { this.id });
+      b.a(b.this).a(com.tencent.mm.plugin.fts.a.c.BGC, this.id);
+      AppMethodBeat.o(45011);
+      return true;
+    }
+    
+    public final String bOl()
     {
       AppMethodBeat.i(45012);
       String str = String.format("{id: %s}", new Object[] { this.id });
       AppMethodBeat.o(45012);
       return str;
-    }
-    
-    public final boolean execute()
-    {
-      AppMethodBeat.i(45011);
-      Log.i("MicroMsg.FTS.FTS5SearchWeAppLogic", "delete we app info id=%s", new Object[] { this.id });
-      b.this.lqS.a(com.tencent.mm.plugin.fts.a.c.wUG, this.id);
-      AppMethodBeat.o(45011);
-      return true;
     }
     
     public final String getName()
@@ -172,34 +170,34 @@ public final class b
       this.id = paramString;
     }
     
-    public final String bCQ()
+    public final boolean aEv()
+    {
+      AppMethodBeat.i(45013);
+      b.a(b.this).beginTransaction();
+      b.a(b.this).a(com.tencent.mm.plugin.fts.a.c.BGC, this.id);
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo = i.agu(this.id);
+      if (localAppBrandRecentTaskInfo != null)
+      {
+        long l = System.currentTimeMillis();
+        String str = Util.nullAsNil(localAppBrandRecentTaskInfo.jvr);
+        int i = str.hashCode();
+        b.a(b.this).a(393216, 1, i, str, l, localAppBrandRecentTaskInfo.appName);
+        b.a(b.this).a(393216, 2, i, str, l, d.bG(localAppBrandRecentTaskInfo.appName, false));
+        b.a(b.this).a(393216, 3, i, str, l, d.bG(localAppBrandRecentTaskInfo.appName, true));
+        this.name = localAppBrandRecentTaskInfo.appName;
+        Log.i("MicroMsg.FTS.FTS5SearchWeAppLogic", "inserted we app info id = %s", new Object[] { str });
+      }
+      b.a(b.this).commit();
+      AppMethodBeat.o(45013);
+      return true;
+    }
+    
+    public final String bOl()
     {
       AppMethodBeat.i(45014);
       String str = String.format("{name: %s id: %s}", new Object[] { this.name, this.id });
       AppMethodBeat.o(45014);
       return str;
-    }
-    
-    public final boolean execute()
-    {
-      AppMethodBeat.i(45013);
-      b.this.lqS.beginTransaction();
-      b.this.lqS.a(com.tencent.mm.plugin.fts.a.c.wUG, this.id);
-      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo = i.YG(this.id);
-      if (localAppBrandRecentTaskInfo != null)
-      {
-        long l = System.currentTimeMillis();
-        String str = Util.nullAsNil(localAppBrandRecentTaskInfo.gLc);
-        int i = str.hashCode();
-        b.this.lqS.a(393216, 1, i, str, l, localAppBrandRecentTaskInfo.appName);
-        b.this.lqS.a(393216, 2, i, str, l, d.bB(localAppBrandRecentTaskInfo.appName, false));
-        b.this.lqS.a(393216, 3, i, str, l, d.bB(localAppBrandRecentTaskInfo.appName, true));
-        this.name = localAppBrandRecentTaskInfo.appName;
-        Log.i("MicroMsg.FTS.FTS5SearchWeAppLogic", "inserted we app info id = %s", new Object[] { str });
-      }
-      b.this.lqS.commit();
-      AppMethodBeat.o(45013);
-      return true;
     }
     
     public final String getName()
@@ -219,21 +217,21 @@ public final class b
     public final void a(k paramk)
     {
       AppMethodBeat.i(45015);
-      paramk.wWd = h.bE(this.wWO.query, true);
-      paramk.wXb = new ArrayList();
+      paramk.BHY = com.tencent.mm.plugin.fts.a.a.h.bJ(this.BIJ.query, true);
+      paramk.BIW = new ArrayList();
       HashSet localHashSet = new HashSet();
-      Cursor localCursor = b.this.lqS.a(paramk.wWd, com.tencent.mm.plugin.fts.a.c.wUG, this.wWO.wWV, true, true);
+      Cursor localCursor = b.a(b.this).a(paramk.BHY, com.tencent.mm.plugin.fts.a.c.BGC, this.BIJ.BIQ, true, true);
       try
       {
         while (localCursor.moveToNext())
         {
           com.tencent.mm.plugin.fts.a.a.n localn = new com.tencent.mm.plugin.fts.a.a.n();
-          localn.i(localCursor);
-          if ((!localHashSet.contains(Long.valueOf(localn.wXe))) && (!this.wWO.wWX.contains(localn.wVX)))
+          localn.k(localCursor);
+          if ((!localHashSet.contains(Long.valueOf(localn.BIZ))) && (!this.BIJ.BIS.contains(localn.BHS)))
           {
-            localn.dOC();
-            paramk.wXb.add(localn);
-            localHashSet.add(Long.valueOf(localn.wXe));
+            localn.eqT();
+            paramk.BIW.add(localn);
+            localHashSet.add(Long.valueOf(localn.BIZ));
           }
         }
         if (localCursor == null) {
@@ -260,8 +258,8 @@ public final class b
         AppMethodBeat.o(45015);
         throw paramk;
       }
-      if (this.wWO.wWY != null) {
-        Collections.sort(paramk.wXb, this.wWO.wWY);
+      if (this.BIJ.BIT != null) {
+        Collections.sort(paramk.BIW, this.BIJ.BIT);
       }
       AppMethodBeat.o(45015);
     }
@@ -280,45 +278,45 @@ public final class b
   final class d
     extends a
   {
-    private int lqV;
+    private int olF;
     
     d() {}
     
-    public final String bCQ()
-    {
-      AppMethodBeat.i(45017);
-      String str = String.format("{updateSize: %d}", new Object[] { Integer.valueOf(this.lqV) });
-      AppMethodBeat.o(45017);
-      return str;
-    }
-    
-    public final boolean execute()
+    public final boolean aEv()
     {
       AppMethodBeat.i(45016);
-      Object localObject = i.bCT();
+      Object localObject = i.bOo();
       if (((List)localObject).isEmpty())
       {
         Log.i("MicroMsg.FTS.FTS5SearchWeAppLogic", "WeApp recent usage list is nil.");
         AppMethodBeat.o(45016);
         return true;
       }
-      this.lqV = ((List)localObject).size();
-      b.this.lqS.beginTransaction();
-      b.this.lqS.B(com.tencent.mm.plugin.fts.a.c.wUG);
+      this.olF = ((List)localObject).size();
+      b.a(b.this).beginTransaction();
+      b.a(b.this).B(com.tencent.mm.plugin.fts.a.c.BGC);
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         AppBrandRecentTaskInfo localAppBrandRecentTaskInfo = (AppBrandRecentTaskInfo)((Iterator)localObject).next();
-        String str = Util.nullAsNil(localAppBrandRecentTaskInfo.gLc);
+        String str = Util.nullAsNil(localAppBrandRecentTaskInfo.jvr);
         int i = str.hashCode();
         long l = System.currentTimeMillis();
-        b.this.lqS.a(393216, 1, i, str, l, localAppBrandRecentTaskInfo.appName);
-        b.this.lqS.a(393216, 2, i, str, l, d.bB(localAppBrandRecentTaskInfo.appName, false));
-        b.this.lqS.a(393216, 3, i, str, l, d.bB(localAppBrandRecentTaskInfo.appName, true));
+        b.a(b.this).a(393216, 1, i, str, l, localAppBrandRecentTaskInfo.appName);
+        b.a(b.this).a(393216, 2, i, str, l, d.bG(localAppBrandRecentTaskInfo.appName, false));
+        b.a(b.this).a(393216, 3, i, str, l, d.bG(localAppBrandRecentTaskInfo.appName, true));
       }
-      b.this.lqS.commit();
+      b.a(b.this).commit();
       AppMethodBeat.o(45016);
       return true;
+    }
+    
+    public final String bOl()
+    {
+      AppMethodBeat.i(45017);
+      String str = String.format("{updateSize: %d}", new Object[] { Integer.valueOf(this.olF) });
+      AppMethodBeat.o(45017);
+      return str;
     }
     
     public final String getName()
@@ -329,7 +327,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.j.b
  * JD-Core Version:    0.7.0.1
  */

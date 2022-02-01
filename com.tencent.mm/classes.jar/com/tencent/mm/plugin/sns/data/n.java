@@ -1,42 +1,48 @@
 package com.tencent.mm.plugin.sns.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cnb;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.protocal.protobuf.ejo;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class n
 {
-  public int DEs;
-  public String dPI;
-  public List<cnb> list;
+  public ConcurrentHashMap<String, CharSequence> JRi;
+  public ConcurrentHashMap<String, String> JRj;
+  public ConcurrentHashMap<String, CharSequence> JRk;
   
   public n()
   {
-    AppMethodBeat.i(95086);
-    this.list = new LinkedList();
-    AppMethodBeat.o(95086);
+    AppMethodBeat.i(95082);
+    this.JRi = new ConcurrentHashMap();
+    this.JRj = new ConcurrentHashMap();
+    this.JRk = new ConcurrentHashMap();
+    AppMethodBeat.o(95082);
   }
   
-  public n(cnb paramcnb)
+  public final void a(ejo paramejo, CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(95087);
-    this.list = new LinkedList();
-    this.list.add(paramcnb);
-    AppMethodBeat.o(95087);
+    AppMethodBeat.i(95083);
+    this.JRi.put(paramejo.Uln + "-" + paramejo.Ulp + "-" + paramejo.lpy, paramCharSequence);
+    AppMethodBeat.o(95083);
   }
   
-  public n(List<cnb> paramList)
+  public final void a(ejo paramejo, String paramString)
   {
-    AppMethodBeat.i(95088);
-    this.list = new LinkedList();
-    this.list = paramList;
-    AppMethodBeat.o(95088);
+    AppMethodBeat.i(95084);
+    this.JRj.put(paramejo.Uln + "-" + paramejo.Ulp + "-" + paramejo.lpy, paramString);
+    AppMethodBeat.o(95084);
+  }
+  
+  public final void b(ejo paramejo, CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(198533);
+    this.JRk.put(paramejo.Uln + "-" + paramejo.Ulp + "-" + paramejo.lpy, paramCharSequence);
+    AppMethodBeat.o(198533);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.data.n
  * JD-Core Version:    0.7.0.1
  */

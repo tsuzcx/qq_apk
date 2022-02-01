@@ -3,36 +3,36 @@ package com.tencent.mm.plugin.appbrand.jsapi.media;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/MediaConstants$MediaType;", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/MediaConstants$MediaEnum;", "flag", "", "(Ljava/lang/String;II)V", "getFlag", "()I", "IMAGE", "VIDEO", "Companion", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/MediaConstants$MediaType;", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/MediaConstants$MediaEnum;", "flag", "", "(Ljava/lang/String;II)V", "getFlag", "()I", "IMAGE", "VIDEO", "Companion", "plugin-appbrand-integration_release"})
 public enum q$c
   implements q.b
 {
-  public static final a meA;
-  final int cSx;
+  public static final a pcs;
+  final int cUP;
   
   static
   {
     AppMethodBeat.i(50572);
     c localc1 = new c("IMAGE", 0, 1);
-    mex = localc1;
+    pcp = localc1;
     c localc2 = new c("VIDEO", 1, 2);
-    mey = localc2;
-    mez = new c[] { localc1, localc2 };
-    meA = new a((byte)0);
+    pcq = localc2;
+    pcr = new c[] { localc1, localc2 };
+    pcs = new a((byte)0);
     AppMethodBeat.o(50572);
   }
   
   private q$c(int paramInt)
   {
-    this.cSx = paramInt;
+    this.cUP = paramInt;
   }
   
   public final int getFlag()
   {
-    return this.cSx;
+    return this.cUP;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/MediaConstants$MediaType$Companion;", "", "()V", "parse", "", "json", "Lorg/json/JSONObject;", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/MediaConstants$MediaType$Companion;", "", "()V", "parse", "", "json", "Lorg/json/JSONObject;", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 

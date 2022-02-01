@@ -2,8 +2,9 @@ package com.tencent.mm.app.plugin.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.b.c;
-import com.tencent.mm.g.a.gb;
-import com.tencent.mm.g.a.gc;
+import com.tencent.mm.f.a.gg;
+import com.tencent.mm.f.a.gi;
+import com.tencent.mm.f.a.gj;
 import com.tencent.mm.modelvoice.m;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -12,14 +13,28 @@ import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 
 public final class a
 {
-  public static final class f
-    extends IListener<gc>
+  public static final class d
+    extends IListener<gg>
   {
-    m doF;
-    boolean doG;
-    boolean doH;
-    gc doI;
-    Runnable doJ;
+    com.tencent.mm.audio.a.a fhh;
+    String fileName;
+    
+    public d()
+    {
+      AppMethodBeat.i(161263);
+      this.__eventId = gg.class.getName().hashCode();
+      AppMethodBeat.o(161263);
+    }
+  }
+  
+  public static final class f
+    extends IListener<gj>
+  {
+    m fhj;
+    boolean fhk;
+    boolean fhl;
+    gj fhm;
+    Runnable fhn;
     String fileName;
     boolean isTimeout;
     MTimerHandler timer;
@@ -28,41 +43,41 @@ public final class a
     {
       AppMethodBeat.i(161265);
       this.fileName = "";
-      this.__eventId = gc.class.getName().hashCode();
+      this.__eventId = gj.class.getName().hashCode();
       AppMethodBeat.o(161265);
     }
     
     private void stopRecord()
     {
       AppMethodBeat.i(19781);
-      if (this.doF != null)
+      if (this.fhj != null)
       {
-        this.doH = this.doF.ZZ();
-        if (this.doJ != null)
+        this.fhl = this.fhj.aeJ();
+        if (this.fhn != null)
         {
-          if (this.doI != null)
+          if (this.fhm != null)
           {
-            this.doI.dJI.dJJ = this.doF.dyI.dzA;
-            this.doI = null;
+            this.fhm.fCx.fCy = this.fhj.frx.fsp;
+            this.fhm = null;
           }
           if (this.isTimeout) {
-            this.doJ.run();
+            this.fhn.run();
           }
-          this.doJ = null;
+          this.fhn = null;
         }
-        this.doG = true;
+        this.fhk = true;
       }
       AppMethodBeat.o(19781);
     }
   }
   
   public static final class i
-    extends IListener<gb>
+    extends IListener<gi>
   {
     public i()
     {
       AppMethodBeat.i(161268);
-      this.__eventId = gb.class.getName().hashCode();
+      this.__eventId = gi.class.getName().hashCode();
       AppMethodBeat.o(161268);
     }
   }

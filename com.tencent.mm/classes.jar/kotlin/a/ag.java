@@ -10,11 +10,11 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.o;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"INT_MAX_POWER_OF_TWO", "", "checkBuilderCapacity", "", "capacity", "mapCapacity", "expectedSize", "mapOf", "", "K", "V", "pair", "Lkotlin/Pair;", "sortedMapOf", "Ljava/util/SortedMap;", "", "pairs", "", "([Lkotlin/Pair;)Ljava/util/SortedMap;", "getOrPut", "Ljava/util/concurrent/ConcurrentMap;", "key", "defaultValue", "Lkotlin/Function0;", "(Ljava/util/concurrent/ConcurrentMap;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "toProperties", "Ljava/util/Properties;", "", "toSingletonMap", "toSingletonMapOrSelf", "toSortedMap", "comparator", "Ljava/util/Comparator;", "kotlin-stdlib"}, hxG=1)
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"INT_MAX_POWER_OF_TWO", "", "checkBuilderCapacity", "", "capacity", "mapCapacity", "expectedSize", "mapOf", "", "K", "V", "pair", "Lkotlin/Pair;", "sortedMapOf", "Ljava/util/SortedMap;", "", "pairs", "", "([Lkotlin/Pair;)Ljava/util/SortedMap;", "getOrPut", "Ljava/util/concurrent/ConcurrentMap;", "key", "defaultValue", "Lkotlin/Function0;", "(Ljava/util/concurrent/ConcurrentMap;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "toProperties", "Ljava/util/Properties;", "", "toSingletonMap", "toSingletonMapOrSelf", "toSortedMap", "comparator", "Ljava/util/Comparator;", "kotlin-stdlib"}, iBN=1)
 public class ag
   extends af
 {
-  public static final int atJ(int paramInt)
+  public static final int aDD(int paramInt)
   {
     if (paramInt < 0) {
       return paramInt;
@@ -28,26 +28,26 @@ public class ag
     return 2147483647;
   }
   
-  public static final <K, V> Map<K, V> b(o<? extends K, ? extends V> paramo)
-  {
-    AppMethodBeat.i(129008);
-    p.h(paramo, "pair");
-    paramo = Collections.singletonMap(paramo.first, paramo.second);
-    p.g(paramo, "java.util.Collections.si…(pair.first, pair.second)");
-    AppMethodBeat.o(129008);
-    return paramo;
-  }
-  
-  public static final <K, V> Map<K, V> ct(Map<? extends K, ? extends V> paramMap)
+  public static final <K, V> Map<K, V> cz(Map<? extends K, ? extends V> paramMap)
   {
     AppMethodBeat.i(129009);
-    p.h(paramMap, "$this$toSingletonMap");
+    p.k(paramMap, "$this$toSingletonMap");
     paramMap = (Map.Entry)paramMap.entrySet().iterator().next();
     paramMap = Collections.singletonMap(paramMap.getKey(), paramMap.getValue());
-    p.g(paramMap, "java.util.Collections.singletonMap(key, value)");
-    p.g(paramMap, "with(entries.iterator().…ingletonMap(key, value) }");
+    p.j(paramMap, "java.util.Collections.singletonMap(key, value)");
+    p.j(paramMap, "with(entries.iterator().…ingletonMap(key, value) }");
     AppMethodBeat.o(129009);
     return paramMap;
+  }
+  
+  public static final <K, V> Map<K, V> d(o<? extends K, ? extends V> paramo)
+  {
+    AppMethodBeat.i(129008);
+    p.k(paramo, "pair");
+    paramo = Collections.singletonMap(paramo.Mx, paramo.My);
+    p.j(paramo, "java.util.Collections.si…(pair.first, pair.second)");
+    AppMethodBeat.o(129008);
+    return paramo;
   }
 }
 

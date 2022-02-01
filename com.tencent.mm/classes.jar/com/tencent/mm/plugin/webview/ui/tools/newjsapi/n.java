@@ -1,172 +1,87 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
-import com.tencent.luggage.xweb_ext.extendplugin.b.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.d.h;
-import com.tencent.mm.pluginsdk.ui.tools.z;
+import com.tencent.mm.plugin.webview.d.c.a;
+import com.tencent.mm.plugin.webview.d.f;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMKVSlotManager;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.widget.MMWebView;
-import java.util.HashMap;
 import java.util.Map;
 import kotlin.g.b.p;
 import kotlin.l;
 import org.json.JSONObject;
-import org.xwalk.core.XWalkEnvironment;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleVideoAction;", "Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/BasePluginJsApi;", "()V", "TAG", "", "actionInsertSameLayerVideo", "actionOperateSameLayerVideo", "actionRemoveSameLayerVideo", "actionUpdateSameLayerVideo", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "getPluginType", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleAdAction;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "ACTION_REPORT", "", "KEY_ACTION", "KEY_DATA", "TAG", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "doReport", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "data", "handleMsg", "plugin-webview_release"})
 public final class n
   extends a
 {
-  private static final int CDJ = 371;
-  public static final n Jxy;
-  private static final String edq = "handleVideoAction";
+  private static final int IIl = 367;
+  public static final n Qvg;
+  private static final String fXz = "handleAdAction";
   
   static
   {
-    AppMethodBeat.i(210625);
-    Jxy = new n();
-    CDJ = 371;
-    edq = "handleVideoAction";
-    AppMethodBeat.o(210625);
+    AppMethodBeat.i(182677);
+    Qvg = new n();
+    IIl = 367;
+    fXz = "handleAdAction";
+    AppMethodBeat.o(182677);
   }
   
-  public final boolean a(com.tencent.mm.plugin.webview.d.f paramf, com.tencent.mm.plugin.webview.d.n paramn)
+  public final boolean a(f paramf, com.tencent.mm.plugin.webview.d.n paramn)
   {
-    boolean bool = false;
-    AppMethodBeat.i(210624);
-    p.h(paramf, "env");
-    p.h(paramn, "msg");
-    Object localObject1 = (String)paramn.params.get("action");
-    Log.i("MicroMsg.JsApiHandleVideoAction", "HandleVideoAction action=%s", new Object[] { localObject1 });
-    if (Util.isNullOrNil((String)localObject1))
+    int j = 0;
+    AppMethodBeat.i(223577);
+    p.k(paramf, "env");
+    p.k(paramn, "msg");
+    Object localObject = (String)paramn.params.get("action");
+    Log.i("MicroMsg.JsApiHandleMPPageAction", "alvinfluo handleAdAction action: %s", new Object[] { localObject });
+    CharSequence localCharSequence = (CharSequence)localObject;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail action is empty", null);
-      AppMethodBeat.o(210624);
+      paramf.PNo.h(paramn.POu, paramn.function + ":fail action is empty", null);
+      AppMethodBeat.o(223577);
       return true;
     }
-    Object localObject3;
-    if ((p.j("insertSameLayerVideo", localObject1)) || (p.j("updateSameLayerVideo", localObject1)) || (p.j("operateSameLayerVideo", localObject1)) || (p.j("removeSameLayerVideo", localObject1)))
+    if (p.h(localObject, "report"))
     {
-      if (!z.gsK())
+      localObject = (String)paramn.params.get("data");
+      localCharSequence = (CharSequence)localObject;
+      if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+      for (i = 1; i != 0; i = 0)
       {
-        Log.e("MicroMsg.JsApiHandleVideoAction", "handleVideoAction not useSameLayerForVideo");
-        paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail not support", null);
-        AppMethodBeat.o(210624);
+        paramf.PNo.h(paramn.POu, paramn.function + ":fail data is empty", null);
+        AppMethodBeat.o(223577);
         return true;
       }
-      p.h(paramf, "env");
-      p.h(paramn, "msg");
-      localObject3 = paramn.ISf;
-      if ((localObject3 == null) || (!((JSONObject)localObject3).has("viewId")))
-      {
-        Log.w(this.TAG, "no viewId in data");
-        paramf.IQZ.h(paramn.ISe, paramn.mhO + "fail:no viewId in data", null);
+      localObject = new JSONObject((String)localObject);
+      int k = Util.safeParseInt(((JSONObject)localObject).optString("logid"));
+      localObject = ((JSONObject)localObject).optString("logstr");
+      Log.v("MicroMsg.JsApiHandleMPPageAction", "alvinluo handleAdAction doReport logId: %s, logStr: %s", new Object[] { Integer.valueOf(k), localObject });
+      p.j(localObject, "logStr");
+      i = j;
+      if (((CharSequence)localObject).length() > 0) {
+        i = 1;
       }
-      for (;;)
-      {
-        if ((p.j("removeSameLayerVideo", localObject1)) && (paramn.ISf != null) && (paramn.ISf.has("viewId")))
-        {
-          paramf = c(paramf);
-          if (paramf != null) {
-            paramf.p("video", paramn.ISf.optInt("viewId"));
-          }
-        }
-        AppMethodBeat.o(210624);
-        return bool;
-        localObject2 = a.c(paramf);
-        if (localObject2 == null)
-        {
-          Log.w(this.TAG, "webview has no plugin client");
-          paramf.IQZ.h(paramn.ISe, paramn.mhO + "fail:webview has no plugin client", null);
-        }
-        else
-        {
-          int i = ((JSONObject)localObject3).optInt("viewId");
-          localObject3 = new com.tencent.mm.plugin.webview.ui.tools.video.samelayer.f(paramf, paramn);
-          ((c)localObject2).a(bCy(), i, (com.tencent.luggage.xweb_ext.extendplugin.a)localObject3);
-          bool = true;
-        }
+      if (i != 0) {
+        com.tencent.mm.plugin.report.service.h.IzE.kvStat(k, (String)localObject);
       }
+      paramf.PNo.h(paramn.POu, paramn.function + ":ok", null);
+      AppMethodBeat.o(223577);
+      return true;
     }
-    if (p.j("supportIFrameSameLayer", localObject1))
-    {
-      localObject1 = paramf.IRa;
-      if (localObject1 == null) {
-        p.hyc();
-      }
-      if ((((MMWebView)localObject1).isXWalkKernel()) && (XWalkEnvironment.isCurrentVersionSupportNativeView())) {
-        paramf.IQZ.h(paramn.ISe, paramn.mhO + ":ok", null);
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(210624);
-        return true;
-        paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail", null);
-      }
-    }
-    Object localObject2 = com.tencent.mm.plugin.webview.ui.tools.video.a.JxN;
-    if ((com.tencent.mm.plugin.webview.ui.tools.video.a.gic()) && (p.j("getInitialParams", localObject1)))
-    {
-      localObject1 = com.tencent.mm.plugin.webview.ui.tools.video.a.JxN;
-      localObject3 = new HashMap();
-      String str = ((MultiProcessMMKV)com.tencent.mm.plugin.webview.ui.tools.video.a.JxM.getSlot()).getString("MicroMsg.MPVideoPreviewDataMgr_prepareOnReceivePageData_vid", "");
-      if (Util.isNullOrNil(str)) {
-        Log.i("MicroMsg.MPVideoPreviewDataMgr", "getInitialParams vid null");
-      }
-      for (localObject1 = null;; localObject1 = (Map)localObject3)
-      {
-        paramf.IQZ.h(paramn.ISe, paramn.mhO + ":ok", (Map)localObject1);
-        AppMethodBeat.o(210624);
-        return true;
-        Map localMap1 = com.tencent.mm.plugin.webview.ui.tools.video.a.bbj(str);
-        Map localMap2 = (Map)localObject3;
-        if (localMap1 != null)
-        {
-          localObject2 = localMap1.get("videoInitialTime");
-          localObject1 = localObject2;
-          if (localObject2 != null) {}
-        }
-        else
-        {
-          localObject1 = new Object();
-        }
-        localMap2.put("videoInitialTime", localObject1);
-        localMap2 = (Map)localObject3;
-        if (localMap1 != null)
-        {
-          localObject2 = localMap1.get("videoInitialSnapshot");
-          localObject1 = localObject2;
-          if (localObject2 != null) {}
-        }
-        else
-        {
-          localObject1 = new Object();
-        }
-        localMap2.put("videoInitialSnapshot", localObject1);
-        ((MultiProcessMMKV)com.tencent.mm.plugin.webview.ui.tools.video.a.JxM.getSlot()).encode("MicroMsg.MPVideoPreviewDataMgr_prepareOnReceivePageData_vid", "");
-        Log.i("MicroMsg.MPVideoPreviewDataMgr", "getInitialParams vid = " + str + ", time = " + ((HashMap)localObject3).get("videoInitialTime"));
-      }
-    }
-    AppMethodBeat.o(210624);
+    AppMethodBeat.o(223577);
     return false;
   }
   
-  public final String bCy()
+  public final String fCm()
   {
-    return "video";
+    return fXz;
   }
   
-  public final int ePA()
+  public final int fCn()
   {
-    return CDJ;
-  }
-  
-  public final String ePz()
-  {
-    return edq;
+    return IIl;
   }
 }
 

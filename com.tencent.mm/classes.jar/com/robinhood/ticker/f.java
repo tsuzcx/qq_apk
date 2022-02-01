@@ -8,18 +8,18 @@ import java.util.Map;
 
 final class f
 {
-  float cgK;
-  private final Paint cgU;
-  private final Map<Character, Float> cgV;
-  float cgW;
-  TickerView.a cgX;
+  float ciL;
+  private final Paint ciV;
+  private final Map<Character, Float> ciW;
+  float ciX;
+  TickerView.a ciY;
   
   f(Paint paramPaint)
   {
     AppMethodBeat.i(39856);
-    this.cgV = new HashMap(256);
-    this.cgX = TickerView.a.chj;
-    this.cgU = paramPaint;
+    this.ciW = new HashMap(256);
+    this.ciY = TickerView.a.cjk;
+    this.ciV = paramPaint;
     invalidate();
     AppMethodBeat.o(39856);
   }
@@ -27,14 +27,14 @@ final class f
   final void invalidate()
   {
     AppMethodBeat.i(39857);
-    this.cgV.clear();
-    Paint.FontMetrics localFontMetrics = this.cgU.getFontMetrics();
-    this.cgK = (localFontMetrics.bottom - localFontMetrics.top);
-    this.cgW = (-localFontMetrics.top);
+    this.ciW.clear();
+    Paint.FontMetrics localFontMetrics = this.ciV.getFontMetrics();
+    this.ciL = (localFontMetrics.bottom - localFontMetrics.top);
+    this.ciX = (-localFontMetrics.top);
     AppMethodBeat.o(39857);
   }
   
-  final float r(char paramChar)
+  final float w(char paramChar)
   {
     AppMethodBeat.i(39858);
     if (paramChar == 0)
@@ -42,22 +42,22 @@ final class f
       AppMethodBeat.o(39858);
       return 0.0F;
     }
-    Float localFloat = (Float)this.cgV.get(Character.valueOf(paramChar));
+    Float localFloat = (Float)this.ciW.get(Character.valueOf(paramChar));
     if (localFloat != null)
     {
       f = localFloat.floatValue();
       AppMethodBeat.o(39858);
       return f;
     }
-    float f = this.cgU.measureText(Character.toString(paramChar));
-    this.cgV.put(Character.valueOf(paramChar), Float.valueOf(f));
+    float f = this.ciV.measureText(Character.toString(paramChar));
+    this.ciW.put(Character.valueOf(paramChar), Float.valueOf(f));
     AppMethodBeat.o(39858);
     return f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.robinhood.ticker.f
  * JD-Core Version:    0.7.0.1
  */

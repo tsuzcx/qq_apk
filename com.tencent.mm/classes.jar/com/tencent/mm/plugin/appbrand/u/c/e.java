@@ -1,55 +1,77 @@
 package com.tencent.mm.plugin.appbrand.u.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.g;
-import com.tencent.mm.ab.i;
-import com.tencent.mm.plugin.appbrand.u.a.b;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.appstorage.p;
+import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.appstorage.x;
 import com.tencent.mm.plugin.appbrand.u.a.c;
+import com.tencent.mm.plugin.appbrand.u.a.d;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.sdk.platformtools.Log;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public final class e
-  extends b
+  extends d
 {
-  public static a nkj;
+  private p qlF = null;
   
-  public final void a(i parami, c paramc)
+  public final String b(i parami, c paramc)
   {
-    AppMethodBeat.i(147396);
-    if (nkj == null)
+    AppMethodBeat.i(147393);
+    Object localObject1 = paramc.czP;
+    int i;
+    if (this.qlF == null)
     {
-      Log.d("MicroMsg.NodeReportKV", "sDelegate null");
-      AppMethodBeat.o(147396);
-      return;
+      localObject2 = ((v)localObject1).getRuntime();
+      if (!(((v)localObject1).getRuntime().getFileSystem() instanceof x))
+      {
+        parami = new IllegalStateException("getFlattenFileSystem not LuggageFileSystemRegistry");
+        AppMethodBeat.o(147393);
+        throw parami;
+      }
+      localObject1 = ((x)((AppBrandRuntime)localObject2).getFileSystem()).nNC;
+      i = 0;
+      if (i < ((List)localObject1).size())
+      {
+        localObject2 = (r)((List)localObject1).get(i);
+        if (!(localObject2 instanceof p)) {
+          break label196;
+        }
+        this.qlF = ((p)localObject2);
+      }
     }
-    try
-    {
-      int i = parami.getInt("id");
-      parami = parami.optString("val");
-      nkj.kvStat(i, parami);
-      AppMethodBeat.o(147396);
-      return;
+    Object localObject2 = this.qlF;
+    localObject1 = null;
+    if (localObject2 != null) {
+      localObject1 = ((p)localObject2).adW(parami.optString("path"));
     }
-    catch (g parami)
+    for (;;)
     {
-      Log.e("MicroMsg.NodeReportKV", "execute exception : %s", new Object[] { parami });
-      paramc.bPU();
-      AppMethodBeat.o(147396);
+      Log.d("MicroMsg.GetFullPathOfFlatFSSync", "path:%s fullPath:%s", new Object[] { parami.optString("path"), localObject1 });
+      parami = new HashMap();
+      parami.put("fullPath", localObject1);
+      parami = paramc.R(parami);
+      AppMethodBeat.o(147393);
+      return parami;
+      label196:
+      i += 1;
+      break;
+      Log.e("MicroMsg.GetFullPathOfFlatFSSync", "getFlattenFileSystem null");
     }
   }
   
-  public final int bPT()
+  public final int ccB()
   {
-    return 8;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void kvStat(int paramInt, String paramString);
+    return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.u.c.e
  * JD-Core Version:    0.7.0.1
  */

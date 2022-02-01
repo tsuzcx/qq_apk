@@ -16,36 +16,36 @@ public class TPNativeLibraryLoader
   
   static
   {
-    AppMethodBeat.i(189776);
+    AppMethodBeat.i(222968);
     mIsLibLoadedLock = new Object();
     mIsLibLoaded = false;
     mLibLoader = null;
-    AppMethodBeat.o(189776);
+    AppMethodBeat.o(222968);
   }
   
   private static native String _getPlayerCoreVersion();
   
   public static String getLibVersion()
   {
-    AppMethodBeat.i(189769);
+    AppMethodBeat.i(222933);
     String str = getPlayerCoreVersion();
-    AppMethodBeat.o(189769);
+    AppMethodBeat.o(222933);
     return str;
   }
   
   public static String getPlayerCoreVersion()
   {
-    AppMethodBeat.i(189772);
+    AppMethodBeat.i(222945);
     try
     {
       String str = _getPlayerCoreVersion();
-      AppMethodBeat.o(189772);
+      AppMethodBeat.o(222945);
       return str;
     }
     catch (Throwable localThrowable)
     {
       TPNativeLog.printLog(2, "getPlayerCoreVersion: *.so is not loaded yet, return the hard-coded version number:2.10.0.1072.wechat");
-      AppMethodBeat.o(189772);
+      AppMethodBeat.o(222945);
     }
     return "2.10.0.1072.wechat";
   }
@@ -98,13 +98,12 @@ public class TPNativeLibraryLoader
     //   from	to	target	type
     //   5	9	28	java/lang/Throwable
     //   15	21	55	finally
-    //   56	58	55	finally
   }
   
   private static boolean isMatchJavaAndPlayerCore(String paramString1, String paramString2)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(189775);
+    AppMethodBeat.i(222965);
     TPNativeLog.printLog(2, "javaVersion:" + paramString1 + ", coreVersion:" + paramString2);
     boolean bool1 = bool2;
     if (!TextUtils.isEmpty(paramString1))
@@ -116,7 +115,7 @@ public class TPNativeLibraryLoader
     }
     for (;;)
     {
-      AppMethodBeat.o(189775);
+      AppMethodBeat.o(222965);
       return bool1;
       label64:
       paramString1 = paramString1.split("\\.");
@@ -148,11 +147,11 @@ public class TPNativeLibraryLoader
   
   private static boolean loadLib(Context paramContext)
   {
-    AppMethodBeat.i(189773);
+    AppMethodBeat.i(222949);
     TPNativeLog.printLog(2, "loadLib cpu arch:" + TPSystemInfo.getCpuArchitecture());
     if ((TPSystemInfo.getCpuArchitecture() == 3) || (TPSystemInfo.getCpuArchitecture() == 4) || (TPSystemInfo.getCpuArchitecture() == 0))
     {
-      AppMethodBeat.o(189773);
+      AppMethodBeat.o(222949);
       return false;
     }
     String str = "TPCore-master".concat(String.valueOf(""));
@@ -180,7 +179,7 @@ public class TPNativeLibraryLoader
     }
     for (;;)
     {
-      AppMethodBeat.o(189773);
+      AppMethodBeat.o(222949);
       return bool2;
       bool1 = loadLibDefault(str, paramContext);
       break;
@@ -191,7 +190,7 @@ public class TPNativeLibraryLoader
   
   private static boolean loadLibDefault(String paramString, Context paramContext)
   {
-    AppMethodBeat.i(189774);
+    AppMethodBeat.i(222962);
     bool2 = false;
     bool1 = bool2;
     try
@@ -245,13 +244,13 @@ public class TPNativeLibraryLoader
         TPNativeLog.printLog(4, "loadLibDefault loaded " + paramString + " from APK failed," + paramContext.getMessage());
       }
     }
-    AppMethodBeat.o(189774);
+    AppMethodBeat.o(222962);
     return bool2;
   }
   
   public static void loadLibIfNeeded(Context paramContext)
   {
-    AppMethodBeat.i(189770);
+    AppMethodBeat.i(222937);
     for (;;)
     {
       synchronized (mIsLibLoadedLock)
@@ -270,13 +269,13 @@ public class TPNativeLibraryLoader
             break;
           }
           paramContext = new UnsupportedOperationException("Failed to load native library");
-          AppMethodBeat.o(189770);
+          AppMethodBeat.o(222937);
           throw paramContext;
         }
       }
       TPNativeLog.printLog(2, "TPNativeLibraryLoader load lib failed");
     }
-    AppMethodBeat.o(189770);
+    AppMethodBeat.o(222937);
   }
   
   public static void setLibLoader(ITPNativeLibraryExternalLoader paramITPNativeLibraryExternalLoader)
@@ -286,7 +285,7 @@ public class TPNativeLibraryLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPNativeLibraryLoader
  * JD-Core Version:    0.7.0.1
  */

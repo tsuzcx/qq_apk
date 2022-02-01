@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import kotlin.a.ae;
 import kotlin.a.v;
+import kotlin.g.b.q;
 import kotlin.l.b.a.b.b.ah;
 import kotlin.l.b.a.b.b.ak;
 import kotlin.l.b.a.b.b.am;
@@ -17,7 +18,6 @@ import kotlin.l.b.a.b.b.as;
 import kotlin.l.b.a.b.b.av;
 import kotlin.l.b.a.b.b.ba;
 import kotlin.l.b.a.b.b.c.o;
-import kotlin.l.b.a.b.b.r;
 import kotlin.l.b.a.b.e.a.c;
 import kotlin.l.b.a.b.e.a.h;
 import kotlin.l.b.a.b.e.a.i;
@@ -33,14 +33,14 @@ import kotlin.l.b.a.b.e.b.i;
 
 public final class w
 {
-  private final n TLm;
-  private final f Tvk;
+  private final f aaYd;
+  private final n abnP;
   
   public w(n paramn)
   {
     AppMethodBeat.i(60340);
-    this.TLm = paramn;
-    this.Tvk = new f(this.TLm.Tvt.Tge, this.TLm.Tvt.TeR);
+    this.abnP = paramn;
+    this.aaYd = new f(this.abnP.aaYm.aaIY, this.abnP.aaYm.aaHL);
     AppMethodBeat.o(60340);
   }
   
@@ -49,13 +49,13 @@ public final class w
     AppMethodBeat.i(60339);
     if ((paraml instanceof kotlin.l.b.a.b.b.ab))
     {
-      paraml = (z)new z.b(((kotlin.l.b.a.b.b.ab)paraml).hBk(), this.TLm.SZH, this.TLm.SZI, (an)this.TLm.TLb);
+      paraml = (z)new z.b(((kotlin.l.b.a.b.b.ab)paraml).iFy(), this.abnP.aaCB, this.abnP.aaCC, (an)this.abnP.abnE);
       AppMethodBeat.o(60339);
       return paraml;
     }
     if ((paraml instanceof kotlin.l.b.a.b.k.a.b.e))
     {
-      paraml = (z)((kotlin.l.b.a.b.k.a.b.e)paraml).TMd;
+      paraml = (z)((kotlin.l.b.a.b.k.a.b.e)paraml).aboF;
       AppMethodBeat.o(60339);
       return paraml;
     }
@@ -63,10 +63,10 @@ public final class w
     return null;
   }
   
-  private final List<av> a(List<a.t> paramList, final kotlin.l.b.a.b.h.q paramq, final b paramb)
+  private final List<av> a(List<a.t> paramList, final kotlin.l.b.a.b.h.r paramr, final b paramb)
   {
     AppMethodBeat.i(60338);
-    Object localObject1 = this.TLm.Tko;
+    Object localObject1 = this.abnP.aaNi;
     if (localObject1 == null)
     {
       paramList = new kotlin.t("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.CallableDescriptor");
@@ -74,8 +74,8 @@ public final class w
       throw paramList;
     }
     final kotlin.l.b.a.b.b.a locala = (kotlin.l.b.a.b.b.a)localObject1;
-    localObject1 = locala.hzx();
-    kotlin.g.b.p.g(localObject1, "callableDescriptor.containingDeclaration");
+    localObject1 = locala.iDJ();
+    kotlin.g.b.p.j(localObject1, "callableDescriptor.containingDeclaration");
     final z localz = K((kotlin.l.b.a.b.b.l)localObject1);
     paramList = (Iterable)paramList;
     Collection localCollection = (Collection)new ArrayList(kotlin.a.j.a(paramList, 10));
@@ -85,7 +85,7 @@ public final class w
     {
       paramList = localIterator.next();
       if (i < 0) {
-        kotlin.a.j.hxH();
+        kotlin.a.j.iBO();
       }
       localObject1 = (a.t)paramList;
       int j;
@@ -97,47 +97,47 @@ public final class w
       boolean bool1;
       boolean bool2;
       boolean bool3;
-      if (((a.t)localObject1).hEP())
+      if (((a.t)localObject1).iJj())
       {
-        j = ((a.t)localObject1).Txb;
+        j = ((a.t)localObject1).aaZS;
         if (localz == null) {
           break label425;
         }
-        paramList = kotlin.l.b.a.b.e.b.b.TAU.avk(j);
-        kotlin.g.b.p.g(paramList, "Flags.HAS_ANNOTATIONS.get(flags)");
+        paramList = kotlin.l.b.a.b.e.b.b.abdJ.aFe(j);
+        kotlin.g.b.p.j(paramList, "Flags.HAS_ANNOTATIONS.get(flags)");
         if (!paramList.booleanValue()) {
           break label425;
         }
-        paramList = (kotlin.l.b.a.b.b.a.g)new kotlin.l.b.a.b.k.a.b.n(this.TLm.Tvt.TcN, (kotlin.g.a.a)new e(i, (a.t)localObject1, this, localz, paramq, paramb, locala));
-        localf = x.b(this.TLm.SZH, ((a.t)localObject1).Tyk);
-        localab = this.TLm.TKY.r(kotlin.l.b.a.b.e.b.g.a((a.t)localObject1, this.TLm.SZI));
-        localObject2 = kotlin.l.b.a.b.e.b.b.TBw.avk(j);
-        kotlin.g.b.p.g(localObject2, "Flags.DECLARES_DEFAULT_VALUE.get(flags)");
+        paramList = (kotlin.l.b.a.b.b.a.g)new kotlin.l.b.a.b.k.a.b.n(this.abnP.aaYm.aaFH, (kotlin.g.a.a)new e(i, (a.t)localObject1, this, localz, paramr, paramb, locala));
+        localf = x.b(this.abnP.aaCB, ((a.t)localObject1).abbb);
+        localab = this.abnP.abnB.r(kotlin.l.b.a.b.e.b.g.a((a.t)localObject1, this.abnP.aaCC));
+        localObject2 = kotlin.l.b.a.b.e.b.b.abek.aFe(j);
+        kotlin.g.b.p.j(localObject2, "Flags.DECLARES_DEFAULT_VALUE.get(flags)");
         bool1 = ((Boolean)localObject2).booleanValue();
-        localObject2 = kotlin.l.b.a.b.e.b.b.TBx.avk(j);
-        kotlin.g.b.p.g(localObject2, "Flags.IS_CROSSINLINE.get(flags)");
+        localObject2 = kotlin.l.b.a.b.e.b.b.abel.aFe(j);
+        kotlin.g.b.p.j(localObject2, "Flags.IS_CROSSINLINE.get(flags)");
         bool2 = ((Boolean)localObject2).booleanValue();
-        localObject2 = kotlin.l.b.a.b.e.b.b.TBy.avk(j);
-        kotlin.g.b.p.g(localObject2, "Flags.IS_NOINLINE.get(flags)");
+        localObject2 = kotlin.l.b.a.b.e.b.b.abem.aFe(j);
+        kotlin.g.b.p.j(localObject2, "Flags.IS_NOINLINE.get(flags)");
         bool3 = ((Boolean)localObject2).booleanValue();
-        localObject1 = kotlin.l.b.a.b.e.b.g.b((a.t)localObject1, this.TLm.SZI);
+        localObject1 = kotlin.l.b.a.b.e.b.g.b((a.t)localObject1, this.abnP.aaCC);
         if (localObject1 == null) {
           break label436;
         }
       }
       label425:
       label436:
-      for (localObject1 = this.TLm.TKY.r((a.p)localObject1);; localObject1 = null)
+      for (localObject1 = this.abnP.abnB.r((a.p)localObject1);; localObject1 = null)
       {
-        localObject2 = an.ThK;
-        kotlin.g.b.p.g(localObject2, "SourceElement.NO_SOURCE");
+        localObject2 = an.aaKE;
+        kotlin.g.b.p.j(localObject2, "SourceElement.NO_SOURCE");
         localCollection.add(new kotlin.l.b.a.b.b.c.aj(locala, null, i, paramList, localf, localab, bool1, bool2, bool3, (kotlin.l.b.a.b.m.ab)localObject1, (an)localObject2));
         i += 1;
         break;
         j = 0;
         break label148;
-        paramList = kotlin.l.b.a.b.b.a.g.TiC;
-        paramList = kotlin.l.b.a.b.b.a.g.a.hBP();
+        paramList = kotlin.l.b.a.b.b.a.g.aaLw;
+        paramList = kotlin.l.b.a.b.b.a.g.a.iGe();
         break label217;
       }
     }
@@ -149,58 +149,58 @@ public final class w
   private final kotlin.l.b.a.b.b.a.g a(final a.m paramm, final boolean paramBoolean)
   {
     AppMethodBeat.i(60336);
-    if (!kotlin.l.b.a.b.e.b.b.TAU.avk(paramm.Txb).booleanValue())
+    if (!kotlin.l.b.a.b.e.b.b.abdJ.aFe(paramm.aaZS).booleanValue())
     {
-      paramm = kotlin.l.b.a.b.b.a.g.TiC;
-      paramm = kotlin.l.b.a.b.b.a.g.a.hBP();
+      paramm = kotlin.l.b.a.b.b.a.g.aaLw;
+      paramm = kotlin.l.b.a.b.b.a.g.a.iGe();
       AppMethodBeat.o(60336);
       return paramm;
     }
-    paramm = (kotlin.l.b.a.b.b.a.g)new kotlin.l.b.a.b.k.a.b.n(this.TLm.Tvt.TcN, (kotlin.g.a.a)new b(this, paramBoolean, paramm));
+    paramm = (kotlin.l.b.a.b.b.a.g)new kotlin.l.b.a.b.k.a.b.n(this.abnP.aaYm.aaFH, (kotlin.g.a.a)new b(this, paramBoolean, paramm));
     AppMethodBeat.o(60336);
     return paramm;
   }
   
-  private final kotlin.l.b.a.b.b.a.g a(final kotlin.l.b.a.b.h.q paramq, int paramInt, final b paramb)
+  private final kotlin.l.b.a.b.b.a.g a(final kotlin.l.b.a.b.h.r paramr, int paramInt, final b paramb)
   {
     AppMethodBeat.i(60335);
-    if (!kotlin.l.b.a.b.e.b.b.TAU.avk(paramInt).booleanValue())
+    if (!kotlin.l.b.a.b.e.b.b.abdJ.aFe(paramInt).booleanValue())
     {
-      paramq = kotlin.l.b.a.b.b.a.g.TiC;
-      paramq = kotlin.l.b.a.b.b.a.g.a.hBP();
+      paramr = kotlin.l.b.a.b.b.a.g.aaLw;
+      paramr = kotlin.l.b.a.b.b.a.g.a.iGe();
       AppMethodBeat.o(60335);
-      return paramq;
+      return paramr;
     }
-    paramq = (kotlin.l.b.a.b.b.a.g)new kotlin.l.b.a.b.k.a.b.n(this.TLm.Tvt.TcN, (kotlin.g.a.a)new a(this, paramq, paramb));
+    paramr = (kotlin.l.b.a.b.b.a.g)new kotlin.l.b.a.b.k.a.b.n(this.abnP.aaYm.aaFH, (kotlin.g.a.a)new a(this, paramr, paramb));
     AppMethodBeat.o(60335);
-    return paramq;
+    return paramr;
   }
   
-  private final kotlin.l.b.a.b.b.a.g a(final kotlin.l.b.a.b.h.q paramq, final b paramb)
+  private final kotlin.l.b.a.b.b.a.g a(final kotlin.l.b.a.b.h.r paramr, final b paramb)
   {
     AppMethodBeat.i(60337);
-    paramq = (kotlin.l.b.a.b.b.a.g)new kotlin.l.b.a.b.k.a.b.b(this.TLm.Tvt.TcN, (kotlin.g.a.a)new c(this, paramq, paramb));
+    paramr = (kotlin.l.b.a.b.b.a.g)new kotlin.l.b.a.b.k.a.b.b(this.abnP.aaYm.aaFH, (kotlin.g.a.a)new c(this, paramr, paramb));
     AppMethodBeat.o(60337);
-    return paramq;
+    return paramr;
   }
   
   private final void a(kotlin.l.b.a.b.k.a.b.k paramk, ak paramak1, ak paramak2, List<? extends as> paramList, List<? extends av> paramList1, kotlin.l.b.a.b.m.ab paramab, kotlin.l.b.a.b.b.w paramw, ba paramba, Map<? extends kotlin.l.b.a.b.b.a.a<?>, ?> paramMap, boolean paramBoolean)
   {
-    AppMethodBeat.i(186259);
+    AppMethodBeat.i(269281);
     kotlin.l.b.a.b.k.a.b.c localc = (kotlin.l.b.a.b.k.a.b.c)paramk;
-    paramk.a(paramak1, paramak2, paramList, paramList1, paramab, paramw, paramba, paramMap, kotlin.l.b.a.b.k.a.b.g.a.TMp);
-    AppMethodBeat.o(186259);
+    paramk.a(paramak1, paramak2, paramList, paramList1, paramab, paramw, paramba, paramMap, kotlin.l.b.a.b.k.a.b.g.a.aboR);
+    AppMethodBeat.o(269281);
   }
   
-  private static int avH(int paramInt)
+  private static int aFB(int paramInt)
   {
     return (paramInt & 0x3F) + (paramInt >> 8 << 6);
   }
   
-  private final ak hAs()
+  private final ak iEF()
   {
     AppMethodBeat.i(60333);
-    kotlin.l.b.a.b.b.l locall = this.TLm.Tko;
+    kotlin.l.b.a.b.b.l locall = this.abnP.aaNi;
     Object localObject = locall;
     if (!(locall instanceof kotlin.l.b.a.b.b.e)) {
       localObject = null;
@@ -208,7 +208,7 @@ public final class w
     localObject = (kotlin.l.b.a.b.b.e)localObject;
     if (localObject != null)
     {
-      localObject = ((kotlin.l.b.a.b.b.e)localObject).hAO();
+      localObject = ((kotlin.l.b.a.b.b.e)localObject).iFb();
       AppMethodBeat.o(60333);
       return localObject;
     }
@@ -219,8 +219,8 @@ public final class w
   public final kotlin.l.b.a.b.b.d a(a.c paramc, boolean paramBoolean)
   {
     AppMethodBeat.i(60334);
-    kotlin.g.b.p.h(paramc, "proto");
-    Object localObject1 = this.TLm.Tko;
+    kotlin.g.b.p.k(paramc, "proto");
+    Object localObject1 = this.abnP.aaNi;
     if (localObject1 == null)
     {
       paramc = new kotlin.t("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.ClassDescriptor");
@@ -228,19 +228,19 @@ public final class w
       throw paramc;
     }
     kotlin.l.b.a.b.b.e locale = (kotlin.l.b.a.b.b.e)localObject1;
-    localObject1 = new kotlin.l.b.a.b.k.a.b.d(locale, a((kotlin.l.b.a.b.h.q)paramc, paramc.Txb, b.TKt), paramBoolean, kotlin.l.b.a.b.b.b.a.TgW, paramc, this.TLm.SZH, this.TLm.SZI, this.TLm.TLa, this.TLm.TLb);
-    Object localObject2 = n.a(this.TLm, (kotlin.l.b.a.b.b.l)localObject1, (List)v.SXr).TKZ;
-    Object localObject3 = paramc.TxT;
-    kotlin.g.b.p.g(localObject3, "proto.valueParameterList");
-    localObject2 = ((w)localObject2).a((List)localObject3, (kotlin.l.b.a.b.h.q)paramc, b.TKt);
-    localObject3 = aa.TLC;
-    ((kotlin.l.b.a.b.k.a.b.d)localObject1).a((List)localObject2, aa.a((a.w)kotlin.l.b.a.b.e.b.b.TAV.get(paramc.Txb)));
-    ((kotlin.l.b.a.b.k.a.b.d)localObject1).I((kotlin.l.b.a.b.m.ab)locale.hAG());
+    localObject1 = new kotlin.l.b.a.b.k.a.b.d(locale, a((kotlin.l.b.a.b.h.r)paramc, paramc.aaZS, b.abmW), paramBoolean, kotlin.l.b.a.b.b.b.a.aaJQ, paramc, this.abnP.aaCB, this.abnP.aaCC, this.abnP.abnD, this.abnP.abnE);
+    Object localObject2 = n.a(this.abnP, (kotlin.l.b.a.b.b.l)localObject1, (List)v.aaAd).abnC;
+    Object localObject3 = paramc.abaK;
+    kotlin.g.b.p.j(localObject3, "proto.valueParameterList");
+    localObject2 = ((w)localObject2).a((List)localObject3, (kotlin.l.b.a.b.h.r)paramc, b.abmW);
+    localObject3 = aa.abof;
+    ((kotlin.l.b.a.b.k.a.b.d)localObject1).a((List)localObject2, aa.a((a.w)kotlin.l.b.a.b.e.b.b.abdK.get(paramc.aaZS)));
+    ((kotlin.l.b.a.b.k.a.b.d)localObject1).I((kotlin.l.b.a.b.m.ab)locale.iET());
     paramc = (kotlin.l.b.a.b.k.a.b.c)localObject1;
-    kotlin.g.b.p.g(((kotlin.l.b.a.b.k.a.b.d)localObject1).hAw(), "descriptor.valueParameters");
-    kotlin.g.b.p.g(((kotlin.l.b.a.b.k.a.b.d)localObject1).hAt(), "descriptor.typeParameters");
-    ((kotlin.l.b.a.b.k.a.b.d)localObject1).hAu();
-    ((kotlin.l.b.a.b.k.a.b.d)localObject1).a(kotlin.l.b.a.b.k.a.b.g.a.TMp);
+    kotlin.g.b.p.j(((kotlin.l.b.a.b.k.a.b.d)localObject1).iEJ(), "descriptor.valueParameters");
+    kotlin.g.b.p.j(((kotlin.l.b.a.b.k.a.b.d)localObject1).iEG(), "descriptor.typeParameters");
+    ((kotlin.l.b.a.b.k.a.b.d)localObject1).iEH();
+    ((kotlin.l.b.a.b.k.a.b.d)localObject1).a(kotlin.l.b.a.b.k.a.b.g.a.aboR);
     paramc = (kotlin.l.b.a.b.b.d)localObject1;
     AppMethodBeat.o(60334);
     return paramc;
@@ -249,70 +249,70 @@ public final class w
   public final ar f(a.q paramq)
   {
     AppMethodBeat.i(60332);
-    kotlin.g.b.p.h(paramq, "proto");
-    Object localObject1 = kotlin.l.b.a.b.b.a.g.TiC;
-    localObject1 = paramq.TzK;
-    kotlin.g.b.p.g(localObject1, "proto.annotationList");
+    kotlin.g.b.p.k(paramq, "proto");
+    Object localObject1 = kotlin.l.b.a.b.b.a.g.aaLw;
+    localObject1 = paramq.abcB;
+    kotlin.g.b.p.j(localObject1, "proto.annotationList");
     Object localObject2 = (Iterable)localObject1;
     localObject1 = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (kotlin.l.b.a.b.e.a.a)((Iterator)localObject2).next();
-      localObject4 = this.Tvk;
-      kotlin.g.b.p.g(localObject3, "it");
-      ((Collection)localObject1).add(((f)localObject4).b((kotlin.l.b.a.b.e.a.a)localObject3, this.TLm.SZH));
+      localObject4 = this.aaYd;
+      kotlin.g.b.p.j(localObject3, "it");
+      ((Collection)localObject1).add(((f)localObject4).b((kotlin.l.b.a.b.e.a.a)localObject3, this.abnP.aaCB));
     }
-    localObject1 = kotlin.l.b.a.b.b.a.g.a.kA((List)localObject1);
-    localObject2 = aa.TLC;
-    localObject2 = aa.a((a.w)kotlin.l.b.a.b.e.b.b.TAV.get(paramq.Txb));
-    localObject2 = new kotlin.l.b.a.b.k.a.b.l(this.TLm.Tvt.TcN, this.TLm.Tko, (kotlin.l.b.a.b.b.a.g)localObject1, x.b(this.TLm.SZH, paramq.Tyk), (ba)localObject2, paramq, this.TLm.SZH, this.TLm.SZI, this.TLm.TLa, this.TLm.TLb);
-    localObject1 = this.TLm;
+    localObject1 = kotlin.l.b.a.b.b.a.g.a.lw((List)localObject1);
+    localObject2 = aa.abof;
+    localObject2 = aa.a((a.w)kotlin.l.b.a.b.e.b.b.abdK.get(paramq.aaZS));
+    localObject2 = new kotlin.l.b.a.b.k.a.b.l(this.abnP.aaYm.aaFH, this.abnP.aaNi, (kotlin.l.b.a.b.b.a.g)localObject1, x.b(this.abnP.aaCB, paramq.abbb), (ba)localObject2, paramq, this.abnP.aaCB, this.abnP.aaCC, this.abnP.abnD, this.abnP.abnE);
+    localObject1 = this.abnP;
     Object localObject3 = (kotlin.l.b.a.b.b.l)localObject2;
-    Object localObject4 = paramq.Txu;
-    kotlin.g.b.p.g(localObject4, "proto.typeParameterList");
+    Object localObject4 = paramq.abal;
+    kotlin.g.b.p.j(localObject4, "proto.typeParameterList");
     localObject4 = n.a((n)localObject1, (kotlin.l.b.a.b.b.l)localObject3, (List)localObject4);
-    localObject3 = ((n)localObject4).TKY.hLg();
-    Object localObject5 = ((n)localObject4).TKY;
-    localObject1 = this.TLm.SZI;
-    kotlin.g.b.p.h(paramq, "$this$underlyingType");
-    kotlin.g.b.p.h(localObject1, "typeTable");
-    if (paramq.hHr())
+    localObject3 = ((n)localObject4).abnB.iPy();
+    Object localObject5 = ((n)localObject4).abnB;
+    localObject1 = this.abnP.aaCC;
+    kotlin.g.b.p.k(paramq, "$this$underlyingType");
+    kotlin.g.b.p.k(localObject1, "typeTable");
+    if (paramq.iLL())
     {
-      localObject1 = paramq.TzG;
-      kotlin.g.b.p.g(localObject1, "underlyingType");
+      localObject1 = paramq.abcx;
+      kotlin.g.b.p.j(localObject1, "underlyingType");
       localObject1 = ((ad)localObject5).s((a.p)localObject1);
-      localObject4 = ((n)localObject4).TKY;
-      localObject5 = this.TLm.SZI;
-      kotlin.g.b.p.h(paramq, "$this$expandedType");
-      kotlin.g.b.p.h(localObject5, "typeTable");
-      if (!paramq.hHt()) {
+      localObject4 = ((n)localObject4).abnB;
+      localObject5 = this.abnP.aaCC;
+      kotlin.g.b.p.k(paramq, "$this$expandedType");
+      kotlin.g.b.p.k(localObject5, "typeTable");
+      if (!paramq.iLN()) {
         break label446;
       }
-      paramq = paramq.TzI;
-      kotlin.g.b.p.g(paramq, "expandedType");
+      paramq = paramq.abcz;
+      kotlin.g.b.p.j(paramq, "expandedType");
     }
     for (;;)
     {
       paramq = ((ad)localObject4).s(paramq);
       localObject4 = (kotlin.l.b.a.b.k.a.b.g)localObject2;
-      ((kotlin.l.b.a.b.k.a.b.l)localObject2).a((List)localObject3, (kotlin.l.b.a.b.m.aj)localObject1, paramq, kotlin.l.b.a.b.k.a.b.g.a.TMp);
+      ((kotlin.l.b.a.b.k.a.b.l)localObject2).a((List)localObject3, (kotlin.l.b.a.b.m.aj)localObject1, paramq, kotlin.l.b.a.b.k.a.b.g.a.aboR);
       paramq = (ar)localObject2;
       AppMethodBeat.o(60332);
       return paramq;
-      if (paramq.hHs())
+      if (paramq.iLM())
       {
-        localObject1 = ((h)localObject1).avo(paramq.TzH);
+        localObject1 = ((h)localObject1).aFi(paramq.abcy);
         break;
       }
       paramq = (Throwable)new IllegalStateException("No underlyingType in ProtoBuf.TypeAlias".toString());
       AppMethodBeat.o(60332);
       throw paramq;
       label446:
-      if (!paramq.hHu()) {
+      if (!paramq.iLO()) {
         break label466;
       }
-      paramq = ((h)localObject5).avo(paramq.TzJ);
+      paramq = ((h)localObject5).aFi(paramq.abcA);
     }
     label466:
     paramq = (Throwable)new IllegalStateException("No expandedType in ProtoBuf.TypeAlias".toString());
@@ -323,7 +323,7 @@ public final class w
   public final ah g(final a.m paramm)
   {
     AppMethodBeat.i(60329);
-    kotlin.g.b.p.h(paramm, "proto");
+    kotlin.g.b.p.k(paramm, "proto");
     int i;
     Object localObject1;
     Object localObject2;
@@ -335,154 +335,154 @@ public final class w
     label500:
     int j;
     int k;
-    if (paramm.hEP())
+    if (paramm.iJj())
     {
-      i = paramm.Txb;
-      localObject1 = this.TLm.Tko;
-      localObject2 = a((kotlin.l.b.a.b.h.q)paramm, i, b.TKu);
-      localObject3 = aa.TLC;
-      localObject3 = aa.a((a.j)kotlin.l.b.a.b.e.b.b.TAW.get(i));
-      localObject4 = aa.TLC;
-      localObject4 = aa.a((a.w)kotlin.l.b.a.b.e.b.b.TAV.get(i));
-      localObject5 = kotlin.l.b.a.b.e.b.b.TBn.avk(i);
-      kotlin.g.b.p.g(localObject5, "Flags.IS_VAR.get(flags)");
+      i = paramm.aaZS;
+      localObject1 = this.abnP.aaNi;
+      localObject2 = a((kotlin.l.b.a.b.h.r)paramm, i, b.abmX);
+      localObject3 = aa.abof;
+      localObject3 = aa.a((a.j)kotlin.l.b.a.b.e.b.b.abdL.get(i));
+      localObject4 = aa.abof;
+      localObject4 = aa.a((a.w)kotlin.l.b.a.b.e.b.b.abdK.get(i));
+      localObject5 = kotlin.l.b.a.b.e.b.b.abeb.aFe(i);
+      kotlin.g.b.p.j(localObject5, "Flags.IS_VAR.get(flags)");
       bool1 = ((Boolean)localObject5).booleanValue();
-      localObject5 = x.b(this.TLm.SZH, paramm.Tyk);
-      Object localObject6 = aa.TLC;
-      localObject6 = aa.a((a.i)kotlin.l.b.a.b.e.b.b.TBf.get(i));
-      Object localObject7 = kotlin.l.b.a.b.e.b.b.TBr.avk(i);
-      kotlin.g.b.p.g(localObject7, "Flags.IS_LATEINIT.get(flags)");
+      localObject5 = x.b(this.abnP.aaCB, paramm.abbb);
+      Object localObject6 = aa.abof;
+      localObject6 = aa.a((a.i)kotlin.l.b.a.b.e.b.b.abdT.get(i));
+      Object localObject7 = kotlin.l.b.a.b.e.b.b.abef.aFe(i);
+      kotlin.g.b.p.j(localObject7, "Flags.IS_LATEINIT.get(flags)");
       boolean bool2 = ((Boolean)localObject7).booleanValue();
-      localObject7 = kotlin.l.b.a.b.e.b.b.TBq.avk(i);
-      kotlin.g.b.p.g(localObject7, "Flags.IS_CONST.get(flags)");
+      localObject7 = kotlin.l.b.a.b.e.b.b.abee.aFe(i);
+      kotlin.g.b.p.j(localObject7, "Flags.IS_CONST.get(flags)");
       boolean bool3 = ((Boolean)localObject7).booleanValue();
-      localObject7 = kotlin.l.b.a.b.e.b.b.TBt.avk(i);
-      kotlin.g.b.p.g(localObject7, "Flags.IS_EXTERNAL_PROPERTY.get(flags)");
+      localObject7 = kotlin.l.b.a.b.e.b.b.abeh.aFe(i);
+      kotlin.g.b.p.j(localObject7, "Flags.IS_EXTERNAL_PROPERTY.get(flags)");
       boolean bool4 = ((Boolean)localObject7).booleanValue();
-      localObject7 = kotlin.l.b.a.b.e.b.b.TBu.avk(i);
-      kotlin.g.b.p.g(localObject7, "Flags.IS_DELEGATED.get(flags)");
+      localObject7 = kotlin.l.b.a.b.e.b.b.abei.aFe(i);
+      kotlin.g.b.p.j(localObject7, "Flags.IS_DELEGATED.get(flags)");
       boolean bool5 = ((Boolean)localObject7).booleanValue();
-      localObject7 = kotlin.l.b.a.b.e.b.b.TBv.avk(i);
-      kotlin.g.b.p.g(localObject7, "Flags.IS_EXPECT_PROPERTY.get(flags)");
-      localObject3 = new kotlin.l.b.a.b.k.a.b.j((kotlin.l.b.a.b.b.l)localObject1, null, (kotlin.l.b.a.b.b.a.g)localObject2, (kotlin.l.b.a.b.b.w)localObject3, (ba)localObject4, bool1, (kotlin.l.b.a.b.f.f)localObject5, (kotlin.l.b.a.b.b.b.a)localObject6, bool2, bool3, bool4, bool5, ((Boolean)localObject7).booleanValue(), paramm, this.TLm.SZH, this.TLm.SZI, this.TLm.TLa, this.TLm.TLb);
-      localObject1 = this.TLm;
+      localObject7 = kotlin.l.b.a.b.e.b.b.abej.aFe(i);
+      kotlin.g.b.p.j(localObject7, "Flags.IS_EXPECT_PROPERTY.get(flags)");
+      localObject3 = new kotlin.l.b.a.b.k.a.b.j((kotlin.l.b.a.b.b.l)localObject1, null, (kotlin.l.b.a.b.b.a.g)localObject2, (kotlin.l.b.a.b.b.w)localObject3, (ba)localObject4, bool1, (kotlin.l.b.a.b.f.f)localObject5, (kotlin.l.b.a.b.b.b.a)localObject6, bool2, bool3, bool4, bool5, ((Boolean)localObject7).booleanValue(), paramm, this.abnP.aaCB, this.abnP.aaCC, this.abnP.abnD, this.abnP.abnE);
+      localObject1 = this.abnP;
       localObject2 = (kotlin.l.b.a.b.b.l)localObject3;
-      localObject4 = paramm.Txu;
-      kotlin.g.b.p.g(localObject4, "proto.typeParameterList");
+      localObject4 = paramm.abal;
+      kotlin.g.b.p.j(localObject4, "proto.typeParameterList");
       localObject4 = n.a((n)localObject1, (kotlin.l.b.a.b.b.l)localObject2, (List)localObject4);
-      localObject1 = kotlin.l.b.a.b.e.b.b.TBo.avk(i);
-      kotlin.g.b.p.g(localObject1, "Flags.HAS_GETTER.get(flags)");
+      localObject1 = kotlin.l.b.a.b.e.b.b.abec.aFe(i);
+      kotlin.g.b.p.j(localObject1, "Flags.HAS_GETTER.get(flags)");
       bool1 = ((Boolean)localObject1).booleanValue();
       if ((!bool1) || (!kotlin.l.b.a.b.e.b.g.e(paramm))) {
         break label1194;
       }
-      localObject1 = a((kotlin.l.b.a.b.h.q)paramm, b.TKv);
-      localObject2 = ((n)localObject4).TKY.r(kotlin.l.b.a.b.e.b.g.a(paramm, this.TLm.SZI));
-      localObject5 = ((n)localObject4).TKY.hLg();
-      localObject6 = hAs();
-      localObject7 = kotlin.l.b.a.b.e.b.g.b(paramm, this.TLm.SZI);
+      localObject1 = a((kotlin.l.b.a.b.h.r)paramm, b.abmY);
+      localObject2 = ((n)localObject4).abnB.r(kotlin.l.b.a.b.e.b.g.a(paramm, this.abnP.aaCC));
+      localObject5 = ((n)localObject4).abnB.iPy();
+      localObject6 = iEF();
+      localObject7 = kotlin.l.b.a.b.e.b.g.b(paramm, this.abnP.aaCC);
       if (localObject7 == null) {
         break label1207;
       }
-      localObject7 = ((n)localObject4).TKY.r((a.p)localObject7);
+      localObject7 = ((n)localObject4).abnB.r((a.p)localObject7);
       if (localObject7 == null) {
         break label1207;
       }
       localObject1 = kotlin.l.b.a.b.j.b.a((kotlin.l.b.a.b.b.a)localObject3, (kotlin.l.b.a.b.m.ab)localObject7, (kotlin.l.b.a.b.b.a.g)localObject1);
       ((kotlin.l.b.a.b.k.a.b.j)localObject3).a((kotlin.l.b.a.b.m.ab)localObject2, (List)localObject5, (ak)localObject6, (ak)localObject1);
-      localObject1 = kotlin.l.b.a.b.e.b.b.TAU.avk(i);
-      kotlin.g.b.p.g(localObject1, "Flags.HAS_ANNOTATIONS.get(flags)");
-      j = kotlin.l.b.a.b.e.b.b.a(((Boolean)localObject1).booleanValue(), (a.w)kotlin.l.b.a.b.e.b.b.TAV.get(i), (a.j)kotlin.l.b.a.b.e.b.b.TAW.get(i));
+      localObject1 = kotlin.l.b.a.b.e.b.b.abdJ.aFe(i);
+      kotlin.g.b.p.j(localObject1, "Flags.HAS_ANNOTATIONS.get(flags)");
+      j = kotlin.l.b.a.b.e.b.b.a(((Boolean)localObject1).booleanValue(), (a.w)kotlin.l.b.a.b.e.b.b.abdK.get(i), (a.j)kotlin.l.b.a.b.e.b.b.abdL.get(i));
       if (!bool1) {
         break label1248;
       }
-      if (!paramm.hGx()) {
+      if (!paramm.iKR()) {
         break label1213;
       }
-      k = paramm.TyV;
+      k = paramm.abbM;
       label576:
-      localObject1 = kotlin.l.b.a.b.e.b.b.TBz.avk(k);
-      kotlin.g.b.p.g(localObject1, "Flags.IS_NOT_DEFAULT.get(getterFlags)");
+      localObject1 = kotlin.l.b.a.b.e.b.b.aben.aFe(k);
+      kotlin.g.b.p.j(localObject1, "Flags.IS_NOT_DEFAULT.get(getterFlags)");
       bool1 = ((Boolean)localObject1).booleanValue();
-      localObject1 = kotlin.l.b.a.b.e.b.b.TBA.avk(k);
-      kotlin.g.b.p.g(localObject1, "Flags.IS_EXTERNAL_ACCESSOR.get(getterFlags)");
+      localObject1 = kotlin.l.b.a.b.e.b.b.abeo.aFe(k);
+      kotlin.g.b.p.j(localObject1, "Flags.IS_EXTERNAL_ACCESSOR.get(getterFlags)");
       bool2 = ((Boolean)localObject1).booleanValue();
-      localObject1 = kotlin.l.b.a.b.e.b.b.TBB.avk(k);
-      kotlin.g.b.p.g(localObject1, "Flags.IS_INLINE_ACCESSOR.get(getterFlags)");
+      localObject1 = kotlin.l.b.a.b.e.b.b.abep.aFe(k);
+      kotlin.g.b.p.j(localObject1, "Flags.IS_INLINE_ACCESSOR.get(getterFlags)");
       bool3 = ((Boolean)localObject1).booleanValue();
-      localObject1 = a((kotlin.l.b.a.b.h.q)paramm, k, b.TKv);
+      localObject1 = a((kotlin.l.b.a.b.h.r)paramm, k, b.abmY);
       if (!bool1) {
         break label1225;
       }
       localObject2 = (ah)localObject3;
-      localObject5 = aa.TLC;
-      localObject5 = aa.a((a.j)kotlin.l.b.a.b.e.b.b.TAW.get(k));
-      localObject6 = aa.TLC;
-      localObject6 = aa.a((a.w)kotlin.l.b.a.b.e.b.b.TAV.get(k));
+      localObject5 = aa.abof;
+      localObject5 = aa.a((a.j)kotlin.l.b.a.b.e.b.b.abdL.get(k));
+      localObject6 = aa.abof;
+      localObject6 = aa.a((a.w)kotlin.l.b.a.b.e.b.b.abdK.get(k));
       if (bool1) {
         break label1219;
       }
       bool1 = true;
       label728:
-      localObject1 = new kotlin.l.b.a.b.b.c.ab((ah)localObject2, (kotlin.l.b.a.b.b.a.g)localObject1, (kotlin.l.b.a.b.b.w)localObject5, (ba)localObject6, bool1, bool2, bool3, ((kotlin.l.b.a.b.k.a.b.j)localObject3).hAA(), null, an.ThK);
+      localObject1 = new kotlin.l.b.a.b.b.c.ab((ah)localObject2, (kotlin.l.b.a.b.b.a.g)localObject1, (kotlin.l.b.a.b.b.w)localObject5, (ba)localObject6, bool1, bool2, bool3, ((kotlin.l.b.a.b.k.a.b.j)localObject3).iEN(), null, an.aaKE);
       label760:
-      ((kotlin.l.b.a.b.b.c.ab)localObject1).J(((kotlin.l.b.a.b.k.a.b.j)localObject3).hAu());
+      ((kotlin.l.b.a.b.b.c.ab)localObject1).J(((kotlin.l.b.a.b.k.a.b.j)localObject3).iEH());
       localObject2 = localObject1;
       label774:
-      localObject1 = kotlin.l.b.a.b.e.b.b.TBp.avk(i);
-      kotlin.g.b.p.g(localObject1, "Flags.HAS_SETTER.get(flags)");
+      localObject1 = kotlin.l.b.a.b.e.b.b.abed.aFe(i);
+      kotlin.g.b.p.j(localObject1, "Flags.HAS_SETTER.get(flags)");
       if (!((Boolean)localObject1).booleanValue()) {
         break label1295;
       }
-      if (paramm.hGy()) {
-        j = paramm.TyW;
+      if (paramm.iKS()) {
+        j = paramm.abbN;
       }
-      localObject1 = kotlin.l.b.a.b.e.b.b.TBz.avk(j);
-      kotlin.g.b.p.g(localObject1, "Flags.IS_NOT_DEFAULT.get(setterFlags)");
+      localObject1 = kotlin.l.b.a.b.e.b.b.aben.aFe(j);
+      kotlin.g.b.p.j(localObject1, "Flags.IS_NOT_DEFAULT.get(setterFlags)");
       bool1 = ((Boolean)localObject1).booleanValue();
-      localObject1 = kotlin.l.b.a.b.e.b.b.TBA.avk(j);
-      kotlin.g.b.p.g(localObject1, "Flags.IS_EXTERNAL_ACCESSOR.get(setterFlags)");
+      localObject1 = kotlin.l.b.a.b.e.b.b.abeo.aFe(j);
+      kotlin.g.b.p.j(localObject1, "Flags.IS_EXTERNAL_ACCESSOR.get(setterFlags)");
       bool2 = ((Boolean)localObject1).booleanValue();
-      localObject1 = kotlin.l.b.a.b.e.b.b.TBB.avk(j);
-      kotlin.g.b.p.g(localObject1, "Flags.IS_INLINE_ACCESSOR.get(setterFlags)");
+      localObject1 = kotlin.l.b.a.b.e.b.b.abep.aFe(j);
+      kotlin.g.b.p.j(localObject1, "Flags.IS_INLINE_ACCESSOR.get(setterFlags)");
       bool3 = ((Boolean)localObject1).booleanValue();
-      localObject1 = a((kotlin.l.b.a.b.h.q)paramm, j, b.TKw);
+      localObject1 = a((kotlin.l.b.a.b.h.r)paramm, j, b.abmZ);
       if (!bool1) {
         break label1260;
       }
       localObject5 = (ah)localObject3;
-      localObject6 = aa.TLC;
-      localObject6 = aa.a((a.j)kotlin.l.b.a.b.e.b.b.TAW.get(j));
-      localObject7 = aa.TLC;
-      localObject7 = aa.a((a.w)kotlin.l.b.a.b.e.b.b.TAV.get(j));
+      localObject6 = aa.abof;
+      localObject6 = aa.a((a.j)kotlin.l.b.a.b.e.b.b.abdL.get(j));
+      localObject7 = aa.abof;
+      localObject7 = aa.a((a.w)kotlin.l.b.a.b.e.b.b.abdK.get(j));
       if (bool1) {
         break label1254;
       }
       bool1 = true;
       label957:
-      localObject1 = new kotlin.l.b.a.b.b.c.ac((ah)localObject5, (kotlin.l.b.a.b.b.a.g)localObject1, (kotlin.l.b.a.b.b.w)localObject6, (ba)localObject7, bool1, bool2, bool3, ((kotlin.l.b.a.b.k.a.b.j)localObject3).hAA(), null, an.ThK);
-      ((kotlin.l.b.a.b.b.c.ac)localObject1).a((av)kotlin.a.j.kw(n.a((n)localObject4, (kotlin.l.b.a.b.b.l)localObject1, (List)v.SXr).TKZ.a(kotlin.a.j.listOf(paramm.TyU), (kotlin.l.b.a.b.h.q)paramm, b.TKw)));
+      localObject1 = new kotlin.l.b.a.b.b.c.ac((ah)localObject5, (kotlin.l.b.a.b.b.a.g)localObject1, (kotlin.l.b.a.b.b.w)localObject6, (ba)localObject7, bool1, bool2, bool3, ((kotlin.l.b.a.b.k.a.b.j)localObject3).iEN(), null, an.aaKE);
+      ((kotlin.l.b.a.b.b.c.ac)localObject1).a((av)kotlin.a.j.ls(n.a((n)localObject4, (kotlin.l.b.a.b.b.l)localObject1, (List)v.aaAd).abnC.a(kotlin.a.j.listOf(paramm.abbL), (kotlin.l.b.a.b.h.r)paramm, b.abmZ)));
     }
     for (;;)
     {
-      localObject4 = kotlin.l.b.a.b.e.b.b.TBs.avk(i);
-      kotlin.g.b.p.g(localObject4, "Flags.HAS_CONSTANT.get(flags)");
+      localObject4 = kotlin.l.b.a.b.e.b.b.abeg.aFe(i);
+      kotlin.g.b.p.j(localObject4, "Flags.HAS_CONSTANT.get(flags)");
       if (((Boolean)localObject4).booleanValue()) {
-        ((kotlin.l.b.a.b.k.a.b.j)localObject3).a(this.TLm.Tvt.TcN.am((kotlin.g.a.a)new d(this, paramm, (kotlin.l.b.a.b.k.a.b.j)localObject3)));
+        ((kotlin.l.b.a.b.k.a.b.j)localObject3).a(this.abnP.aaYm.aaFH.aw((kotlin.g.a.a)new d(this, paramm, (kotlin.l.b.a.b.k.a.b.j)localObject3)));
       }
       localObject1 = (kotlin.l.b.a.b.b.aj)localObject1;
-      localObject4 = (r)new o(a(paramm, false), (ah)localObject3);
-      paramm = (r)new o(a(paramm, true), (ah)localObject3);
+      localObject4 = (kotlin.l.b.a.b.b.r)new o(a(paramm, false), (ah)localObject3);
+      paramm = (kotlin.l.b.a.b.b.r)new o(a(paramm, true), (ah)localObject3);
       localObject5 = (kotlin.l.b.a.b.k.a.b.g)localObject3;
-      ((kotlin.l.b.a.b.k.a.b.j)localObject3).a((kotlin.l.b.a.b.b.c.ab)localObject2, (kotlin.l.b.a.b.b.aj)localObject1, (r)localObject4, paramm, kotlin.l.b.a.b.k.a.b.g.a.TMp);
+      ((kotlin.l.b.a.b.k.a.b.j)localObject3).a((kotlin.l.b.a.b.b.c.ab)localObject2, (kotlin.l.b.a.b.b.aj)localObject1, (kotlin.l.b.a.b.b.r)localObject4, paramm, kotlin.l.b.a.b.k.a.b.g.a.aboR);
       paramm = (ah)localObject3;
       AppMethodBeat.o(60329);
       return paramm;
-      i = avH(paramm.Tyx);
+      i = aFB(paramm.abbo);
       break;
       label1194:
-      localObject1 = kotlin.l.b.a.b.b.a.g.TiC;
-      localObject1 = kotlin.l.b.a.b.b.a.g.a.hBP();
+      localObject1 = kotlin.l.b.a.b.b.a.g.aaLw;
+      localObject1 = kotlin.l.b.a.b.b.a.g.a.iGe();
       break label414;
       label1207:
       localObject1 = null;
@@ -495,7 +495,7 @@ public final class w
       break label728;
       label1225:
       localObject1 = kotlin.l.b.a.b.j.b.a((ah)localObject3, (kotlin.l.b.a.b.b.a.g)localObject1);
-      kotlin.g.b.p.g(localObject1, "DescriptorFactory.create…er(property, annotations)");
+      kotlin.g.b.p.j(localObject1, "DescriptorFactory.create…er(property, annotations)");
       break label760;
       label1248:
       localObject2 = null;
@@ -505,9 +505,9 @@ public final class w
       break label957;
       label1260:
       localObject4 = (ah)localObject3;
-      localObject5 = kotlin.l.b.a.b.b.a.g.TiC;
-      localObject1 = kotlin.l.b.a.b.j.b.a((ah)localObject4, (kotlin.l.b.a.b.b.a.g)localObject1, kotlin.l.b.a.b.b.a.g.a.hBP());
-      kotlin.g.b.p.g(localObject1, "DescriptorFactory.create…ptor */\n                )");
+      localObject5 = kotlin.l.b.a.b.b.a.g.aaLw;
+      localObject1 = kotlin.l.b.a.b.j.b.a((ah)localObject4, (kotlin.l.b.a.b.b.a.g)localObject1, kotlin.l.b.a.b.b.a.g.a.iGe());
+      kotlin.g.b.p.j(localObject1, "DescriptorFactory.create…ptor */\n                )");
       continue;
       label1295:
       localObject1 = null;
@@ -517,7 +517,7 @@ public final class w
   public final am g(a.h paramh)
   {
     AppMethodBeat.i(60331);
-    kotlin.g.b.p.h(paramh, "proto");
+    kotlin.g.b.p.k(paramh, "proto");
     int i;
     Object localObject3;
     label58:
@@ -526,33 +526,33 @@ public final class w
     Object localObject4;
     Object localObject5;
     Object localObject6;
-    if (paramh.hEP())
+    if (paramh.iJj())
     {
-      i = paramh.Txb;
-      localObject3 = a((kotlin.l.b.a.b.h.q)paramh, i, b.TKt);
+      i = paramh.aaZS;
+      localObject3 = a((kotlin.l.b.a.b.h.r)paramh, i, b.abmW);
       if (!kotlin.l.b.a.b.e.b.g.f(paramh)) {
         break label662;
       }
-      localObject1 = a((kotlin.l.b.a.b.h.q)paramh, b.TKt);
-      if (!kotlin.g.b.p.j(kotlin.l.b.a.b.j.d.a.o(this.TLm.Tko).p(x.b(this.TLm.SZH, paramh.Tyk)), ac.TLE)) {
+      localObject1 = a((kotlin.l.b.a.b.h.r)paramh, b.abmW);
+      if (!kotlin.g.b.p.h(kotlin.l.b.a.b.j.d.a.o(this.abnP.aaNi).p(x.b(this.abnP.aaCB, paramh.abbb)), ac.abog)) {
         break label673;
       }
-      localObject2 = i.TBK;
-      localObject2 = i.hIl();
-      localObject4 = this.TLm.Tko;
-      localObject5 = x.b(this.TLm.SZH, paramh.Tyk);
-      localObject6 = aa.TLC;
-      localObject2 = new kotlin.l.b.a.b.k.a.b.k((kotlin.l.b.a.b.b.l)localObject4, (kotlin.l.b.a.b.b.a.g)localObject3, (kotlin.l.b.a.b.f.f)localObject5, aa.a((a.i)kotlin.l.b.a.b.e.b.b.TBf.get(i)), paramh, this.TLm.SZH, this.TLm.SZI, (i)localObject2, this.TLm.TLb);
-      localObject3 = this.TLm;
+      localObject2 = i.abey;
+      localObject2 = i.iMF();
+      localObject4 = this.abnP.aaNi;
+      localObject5 = x.b(this.abnP.aaCB, paramh.abbb);
+      localObject6 = aa.abof;
+      localObject2 = new kotlin.l.b.a.b.k.a.b.k((kotlin.l.b.a.b.b.l)localObject4, (kotlin.l.b.a.b.b.a.g)localObject3, (kotlin.l.b.a.b.f.f)localObject5, aa.a((a.i)kotlin.l.b.a.b.e.b.b.abdT.get(i)), paramh, this.abnP.aaCB, this.abnP.aaCC, (i)localObject2, this.abnP.abnE);
+      localObject3 = this.abnP;
       localObject4 = (kotlin.l.b.a.b.b.l)localObject2;
-      localObject5 = paramh.Txu;
-      kotlin.g.b.p.g(localObject5, "proto.typeParameterList");
+      localObject5 = paramh.abal;
+      kotlin.g.b.p.j(localObject5, "proto.typeParameterList");
       localObject5 = n.a((n)localObject3, (kotlin.l.b.a.b.b.l)localObject4, (List)localObject5);
-      localObject3 = kotlin.l.b.a.b.e.b.g.b(paramh, this.TLm.SZI);
+      localObject3 = kotlin.l.b.a.b.e.b.g.b(paramh, this.abnP.aaCC);
       if (localObject3 == null) {
         break label685;
       }
-      localObject3 = ((n)localObject5).TKY.r((a.p)localObject3);
+      localObject3 = ((n)localObject5).abnB.r((a.p)localObject3);
       if (localObject3 == null) {
         break label685;
       }
@@ -562,68 +562,68 @@ public final class w
     label685:
     for (Object localObject1 = kotlin.l.b.a.b.j.b.a((kotlin.l.b.a.b.b.a)localObject2, (kotlin.l.b.a.b.m.ab)localObject3, (kotlin.l.b.a.b.b.a.g)localObject1);; localObject1 = null)
     {
-      localObject3 = hAs();
-      localObject4 = ((n)localObject5).TKY.hLg();
-      localObject6 = ((n)localObject5).TKZ;
-      Object localObject7 = paramh.TxT;
-      kotlin.g.b.p.g(localObject7, "proto.valueParameterList");
-      localObject6 = ((w)localObject6).a((List)localObject7, (kotlin.l.b.a.b.h.q)paramh, b.TKt);
-      localObject5 = ((n)localObject5).TKY.r(kotlin.l.b.a.b.e.b.g.a(paramh, this.TLm.SZI));
-      localObject7 = aa.TLC;
-      localObject7 = aa.a((a.j)kotlin.l.b.a.b.e.b.b.TAW.get(i));
-      Object localObject8 = aa.TLC;
-      localObject8 = aa.a((a.w)kotlin.l.b.a.b.e.b.b.TAV.get(i));
-      Map localMap = ae.emptyMap();
-      Boolean localBoolean = kotlin.l.b.a.b.e.b.b.TBl.avk(i);
-      kotlin.g.b.p.g(localBoolean, "Flags.IS_SUSPEND.get(flags)");
+      localObject3 = iEF();
+      localObject4 = ((n)localObject5).abnB.iPy();
+      localObject6 = ((n)localObject5).abnC;
+      Object localObject7 = paramh.abaK;
+      kotlin.g.b.p.j(localObject7, "proto.valueParameterList");
+      localObject6 = ((w)localObject6).a((List)localObject7, (kotlin.l.b.a.b.h.r)paramh, b.abmW);
+      localObject5 = ((n)localObject5).abnB.r(kotlin.l.b.a.b.e.b.g.a(paramh, this.abnP.aaCC));
+      localObject7 = aa.abof;
+      localObject7 = aa.a((a.j)kotlin.l.b.a.b.e.b.b.abdL.get(i));
+      Object localObject8 = aa.abof;
+      localObject8 = aa.a((a.w)kotlin.l.b.a.b.e.b.b.abdK.get(i));
+      Map localMap = ae.iBR();
+      Boolean localBoolean = kotlin.l.b.a.b.e.b.b.abdZ.aFe(i);
+      kotlin.g.b.p.j(localBoolean, "Flags.IS_SUSPEND.get(flags)");
       a((kotlin.l.b.a.b.k.a.b.k)localObject2, (ak)localObject1, (ak)localObject3, (List)localObject4, (List)localObject6, (kotlin.l.b.a.b.m.ab)localObject5, (kotlin.l.b.a.b.b.w)localObject7, (ba)localObject8, localMap, localBoolean.booleanValue());
-      localObject1 = kotlin.l.b.a.b.e.b.b.TBg.avk(i);
-      kotlin.g.b.p.g(localObject1, "Flags.IS_OPERATOR.get(flags)");
-      ((kotlin.l.b.a.b.b.c.p)localObject2).TkM = ((Boolean)localObject1).booleanValue();
-      localObject1 = kotlin.l.b.a.b.e.b.b.TBh.avk(i);
-      kotlin.g.b.p.g(localObject1, "Flags.IS_INFIX.get(flags)");
-      ((kotlin.l.b.a.b.b.c.p)localObject2).TkN = ((Boolean)localObject1).booleanValue();
-      localObject1 = kotlin.l.b.a.b.e.b.b.TBk.avk(i);
-      kotlin.g.b.p.g(localObject1, "Flags.IS_EXTERNAL_FUNCTION.get(flags)");
-      ((kotlin.l.b.a.b.b.c.p)localObject2).Tkp = ((Boolean)localObject1).booleanValue();
-      localObject1 = kotlin.l.b.a.b.e.b.b.TBi.avk(i);
-      kotlin.g.b.p.g(localObject1, "Flags.IS_INLINE.get(flags)");
-      ((kotlin.l.b.a.b.b.c.p)localObject2).TkO = ((Boolean)localObject1).booleanValue();
-      localObject1 = kotlin.l.b.a.b.e.b.b.TBj.avk(i);
-      kotlin.g.b.p.g(localObject1, "Flags.IS_TAILREC.get(flags)");
-      ((kotlin.l.b.a.b.b.c.p)localObject2).TkP = ((Boolean)localObject1).booleanValue();
-      localObject1 = kotlin.l.b.a.b.e.b.b.TBl.avk(i);
-      kotlin.g.b.p.g(localObject1, "Flags.IS_SUSPEND.get(flags)");
-      ((kotlin.l.b.a.b.b.c.p)localObject2).TkU = ((Boolean)localObject1).booleanValue();
-      localObject1 = kotlin.l.b.a.b.e.b.b.TBm.avk(i);
-      kotlin.g.b.p.g(localObject1, "Flags.IS_EXPECT_FUNCTION.get(flags)");
-      ((kotlin.l.b.a.b.b.c.p)localObject2).TkQ = ((Boolean)localObject1).booleanValue();
-      this.TLm.Tvt.TKT.a(paramh, (kotlin.l.b.a.b.b.t)localObject2, this.TLm.SZI, this.TLm.TKY);
+      localObject1 = kotlin.l.b.a.b.e.b.b.abdU.aFe(i);
+      kotlin.g.b.p.j(localObject1, "Flags.IS_OPERATOR.get(flags)");
+      ((kotlin.l.b.a.b.b.c.p)localObject2).aaNG = ((Boolean)localObject1).booleanValue();
+      localObject1 = kotlin.l.b.a.b.e.b.b.abdV.aFe(i);
+      kotlin.g.b.p.j(localObject1, "Flags.IS_INFIX.get(flags)");
+      ((kotlin.l.b.a.b.b.c.p)localObject2).aaNH = ((Boolean)localObject1).booleanValue();
+      localObject1 = kotlin.l.b.a.b.e.b.b.abdY.aFe(i);
+      kotlin.g.b.p.j(localObject1, "Flags.IS_EXTERNAL_FUNCTION.get(flags)");
+      ((kotlin.l.b.a.b.b.c.p)localObject2).aaNj = ((Boolean)localObject1).booleanValue();
+      localObject1 = kotlin.l.b.a.b.e.b.b.abdW.aFe(i);
+      kotlin.g.b.p.j(localObject1, "Flags.IS_INLINE.get(flags)");
+      ((kotlin.l.b.a.b.b.c.p)localObject2).aaNI = ((Boolean)localObject1).booleanValue();
+      localObject1 = kotlin.l.b.a.b.e.b.b.abdX.aFe(i);
+      kotlin.g.b.p.j(localObject1, "Flags.IS_TAILREC.get(flags)");
+      ((kotlin.l.b.a.b.b.c.p)localObject2).aaNJ = ((Boolean)localObject1).booleanValue();
+      localObject1 = kotlin.l.b.a.b.e.b.b.abdZ.aFe(i);
+      kotlin.g.b.p.j(localObject1, "Flags.IS_SUSPEND.get(flags)");
+      ((kotlin.l.b.a.b.b.c.p)localObject2).aaNO = ((Boolean)localObject1).booleanValue();
+      localObject1 = kotlin.l.b.a.b.e.b.b.abea.aFe(i);
+      kotlin.g.b.p.j(localObject1, "Flags.IS_EXPECT_FUNCTION.get(flags)");
+      ((kotlin.l.b.a.b.b.c.p)localObject2).aaNK = ((Boolean)localObject1).booleanValue();
+      this.abnP.aaYm.abnw.a(paramh, (kotlin.l.b.a.b.b.t)localObject2, this.abnP.aaCC, this.abnP.abnB);
       paramh = (am)localObject2;
       AppMethodBeat.o(60331);
       return paramh;
-      i = avH(paramh.Tyx);
+      i = aFB(paramh.abbo);
       break;
-      localObject1 = kotlin.l.b.a.b.b.a.g.TiC;
-      localObject1 = kotlin.l.b.a.b.b.a.g.a.hBP();
+      localObject1 = kotlin.l.b.a.b.b.a.g.aaLw;
+      localObject1 = kotlin.l.b.a.b.b.a.g.a.iGe();
       break label58;
-      localObject2 = this.TLm.TLa;
+      localObject2 = this.abnP.abnD;
       break label104;
     }
   }
   
   static final class a
-    extends kotlin.g.b.q
+    extends q
     implements kotlin.g.a.a<List<? extends kotlin.l.b.a.b.b.a.c>>
   {
-    a(w paramw, kotlin.l.b.a.b.h.q paramq, b paramb)
+    a(w paramw, kotlin.l.b.a.b.h.r paramr, b paramb)
     {
       super();
     }
   }
   
   static final class b
-    extends kotlin.g.b.q
+    extends q
     implements kotlin.g.a.a<List<? extends kotlin.l.b.a.b.b.a.c>>
   {
     b(w paramw, boolean paramBoolean, a.m paramm)
@@ -633,17 +633,17 @@ public final class w
   }
   
   static final class c
-    extends kotlin.g.b.q
+    extends q
     implements kotlin.g.a.a<List<? extends kotlin.l.b.a.b.b.a.c>>
   {
-    c(w paramw, kotlin.l.b.a.b.h.q paramq, b paramb)
+    c(w paramw, kotlin.l.b.a.b.h.r paramr, b paramb)
     {
       super();
     }
   }
   
   static final class d
-    extends kotlin.g.b.q
+    extends q
     implements kotlin.g.a.a<kotlin.l.b.a.b.j.b.g<?>>
   {
     d(w paramw, a.m paramm, kotlin.l.b.a.b.k.a.b.j paramj)
@@ -653,10 +653,10 @@ public final class w
   }
   
   static final class e
-    extends kotlin.g.b.q
+    extends q
     implements kotlin.g.a.a<List<? extends kotlin.l.b.a.b.b.a.c>>
   {
-    e(int paramInt, a.t paramt, w paramw, z paramz, kotlin.l.b.a.b.h.q paramq, b paramb, kotlin.l.b.a.b.b.a parama)
+    e(int paramInt, a.t paramt, w paramw, z paramz, kotlin.l.b.a.b.h.r paramr, b paramb, kotlin.l.b.a.b.b.a parama)
     {
       super();
     }
@@ -664,7 +664,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.w
  * JD-Core Version:    0.7.0.1
  */

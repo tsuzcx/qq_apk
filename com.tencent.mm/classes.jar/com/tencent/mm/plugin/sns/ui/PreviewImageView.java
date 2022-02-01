@@ -16,7 +16,11 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TableRow.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.plugin.sns.i.e;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.i.j;
 import com.tencent.mm.plugin.sns.model.aj;
 import com.tencent.mm.plugin.sns.model.h;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -30,16 +34,16 @@ import java.util.concurrent.ExecutorService;
 
 public class PreviewImageView
   extends LinearLayout
-  implements z
+  implements ab
 {
-  private TableLayout EuT;
-  private final Map<Integer, View> EuU;
-  private final Map<Integer, TableRow> EuV;
-  private final int EuW;
-  private HashMap<String, Bitmap> EuX;
-  private z.a EuY;
-  private boolean EuZ;
-  private boolean Eva;
+  private TableLayout KIK;
+  private final Map<Integer, View> KIL;
+  private final Map<Integer, TableRow> KIM;
+  private final int KIN;
+  private HashMap<String, Bitmap> KIO;
+  private ab.a KIP;
+  private boolean KIQ;
+  private boolean KIR;
   private final Context context;
   private List<String> list;
   
@@ -48,12 +52,12 @@ public class PreviewImageView
     super(paramContext);
     AppMethodBeat.i(98198);
     this.list = new ArrayList();
-    this.EuU = new HashMap();
-    this.EuV = new HashMap();
-    this.EuX = new HashMap();
-    this.EuW = 4;
-    this.EuZ = true;
-    this.Eva = false;
+    this.KIL = new HashMap();
+    this.KIM = new HashMap();
+    this.KIO = new HashMap();
+    this.KIN = 4;
+    this.KIQ = true;
+    this.KIR = false;
     this.context = paramContext;
     init();
     AppMethodBeat.o(98198);
@@ -64,18 +68,18 @@ public class PreviewImageView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98197);
     this.list = new ArrayList();
-    this.EuU = new HashMap();
-    this.EuV = new HashMap();
-    this.EuX = new HashMap();
-    this.EuW = 4;
-    this.EuZ = true;
-    this.Eva = false;
+    this.KIL = new HashMap();
+    this.KIM = new HashMap();
+    this.KIO = new HashMap();
+    this.KIN = 4;
+    this.KIQ = true;
+    this.KIR = false;
     this.context = paramContext;
     init();
     AppMethodBeat.o(98197);
   }
   
-  private void fgJ()
+  private void fUQ()
   {
     AppMethodBeat.i(98200);
     if ((this.context instanceof Activity))
@@ -93,20 +97,20 @@ public class PreviewImageView
   private void init()
   {
     AppMethodBeat.i(98199);
-    this.EuT = ((TableLayout)LayoutInflater.from(this.context).inflate(2131496477, this, true).findViewById(2131299180));
-    fgJ();
+    this.KIK = ((TableLayout)LayoutInflater.from(this.context).inflate(i.g.sns_preview_view, this, true).findViewById(i.f.content));
+    fUQ();
     AppMethodBeat.o(98199);
   }
   
   public final void clean()
   {
     AppMethodBeat.i(98202);
-    this.Eva = true;
-    Iterator localIterator = this.EuX.values().iterator();
+    this.KIR = true;
+    Iterator localIterator = this.KIO.values().iterator();
     while (localIterator.hasNext())
     {
       Bitmap localBitmap = (Bitmap)localIterator.next();
-      if (r.M(localBitmap)) {
+      if (t.K(localBitmap)) {
         localBitmap.recycle();
       }
     }
@@ -116,7 +120,7 @@ public class PreviewImageView
   public int getCount()
   {
     AppMethodBeat.i(98201);
-    int i = this.EuU.size();
+    int i = this.KIL.size();
     AppMethodBeat.o(98201);
     return i;
   }
@@ -126,17 +130,7 @@ public class PreviewImageView
     return this;
   }
   
-  public void setImageClick(z.a parama)
-  {
-    this.EuY = parama;
-  }
-  
-  public void setIsShowAddImage(boolean paramBoolean)
-  {
-    this.EuZ = paramBoolean;
-  }
-  
-  public final void setList$22875ea3(List<String> paramList)
+  public final void hJ(List<String> paramList)
   {
     AppMethodBeat.i(98203);
     long l = System.currentTimeMillis();
@@ -147,18 +141,18 @@ public class PreviewImageView
     }
     this.list = paramList;
     int i = 0;
-    this.EuT.removeAllViews();
+    this.KIK.removeAllViews();
     int m = paramList.size() + 1;
     int j = 0;
     TableRow localTableRow;
     if (i < m)
     {
-      localTableRow = (TableRow)this.EuV.get(Integer.valueOf(j));
+      localTableRow = (TableRow)this.KIM.get(Integer.valueOf(j));
       if (localTableRow != null) {
         break label539;
       }
       localTableRow = new TableRow(this.context);
-      this.EuV.put(Integer.valueOf(j), localTableRow);
+      this.KIM.put(Integer.valueOf(j), localTableRow);
     }
     label403:
     label539:
@@ -174,40 +168,40 @@ public class PreviewImageView
       for (;;)
       {
         if (localTableRow.getChildCount() > 0) {
-          this.EuT.addView(localTableRow);
+          this.KIK.addView(localTableRow);
         }
         Log.d("MicroMsg.PreviewImageView", "initlist time : " + (System.currentTimeMillis() - l));
         j += 1;
         break;
-        Object localObject2 = (View)this.EuU.get(Integer.valueOf(i));
+        Object localObject2 = (View)this.KIL.get(Integer.valueOf(i));
         Object localObject1 = localObject2;
         if (localObject2 == null)
         {
-          localObject1 = View.inflate(this.context, 2131496478, null);
-          this.EuU.put(Integer.valueOf(i), localObject1);
+          localObject1 = View.inflate(this.context, i.g.sns_preview_view_item, null);
+          this.KIL.put(Integer.valueOf(i), localObject1);
         }
         label253:
         ImageView localImageView;
         if (i == m - 1)
         {
           localObject2 = "";
-          localImageView = (ImageView)((View)localObject1).findViewById(2131302874);
+          localImageView = (ImageView)((View)localObject1).findViewById(i.f.iv);
           if (i != m - 1) {
             break label403;
           }
-          if (this.EuZ)
+          if (this.KIQ)
           {
-            localImageView.setBackgroundResource(2131234957);
-            localImageView.setContentDescription(getContext().getString(2131765995));
+            localImageView.setBackgroundResource(i.e.sns_add_item);
+            localImageView.setContentDescription(getContext().getString(i.j.sns_add_photo));
             localImageView.setImageDrawable(null);
             label310:
-            if (this.EuY != null)
+            if (this.KIP != null)
             {
               if (i != m - 1) {
                 break label500;
               }
               ((View)localObject1).setTag(Integer.valueOf(-1));
-              ((View)localObject1).setOnClickListener(this.EuY.Erh);
+              ((View)localObject1).setOnClickListener(this.KIP.KEA);
               ((View)localObject1).setClickable(true);
             }
           }
@@ -223,9 +217,9 @@ public class PreviewImageView
           break label253;
           localImageView.setBackgroundDrawable(null);
           localImageView.setTag(localObject2);
-          localImageView.setContentDescription(getContext().getString(2131766075));
-          Bitmap localBitmap = (Bitmap)this.EuX.get(localObject2);
-          if (!r.M(localBitmap))
+          localImageView.setContentDescription(getContext().getString(i.j.sns_img));
+          Bitmap localBitmap = (Bitmap)this.KIO.get(localObject2);
+          if (!t.K(localBitmap))
           {
             Log.d("MicroMsg.PreviewImageView", "bm is null");
             new a(localImageView, (String)localObject2).y(new String[] { "" });
@@ -235,7 +229,7 @@ public class PreviewImageView
           break label310;
           label500:
           ((View)localObject1).setTag(Integer.valueOf(i));
-          ((View)localObject1).setOnClickListener(this.EuY.Erh);
+          ((View)localObject1).setOnClickListener(this.KIP.KEA);
           ((View)localObject1).setClickable(true);
         }
         AppMethodBeat.o(98203);
@@ -244,23 +238,33 @@ public class PreviewImageView
     }
   }
   
+  public void setImageClick(ab.a parama)
+  {
+    this.KIP = parama;
+  }
+  
+  public void setIsShowAddImage(boolean paramBoolean)
+  {
+    this.KIQ = paramBoolean;
+  }
+  
   final class a
     extends h<String, Integer, Boolean>
   {
-    private ImageView dPk;
-    private Bitmap iKs;
+    private ImageView fIv;
+    private Bitmap lAx;
     private String path;
     
     public a(ImageView paramImageView, String paramString)
     {
-      this.dPk = paramImageView;
+      this.fIv = paramImageView;
       this.path = paramString;
     }
     
-    public final ExecutorService eGk()
+    public final ExecutorService fsl()
     {
       AppMethodBeat.i(179158);
-      ExecutorService localExecutorService = aj.fay();
+      ExecutorService localExecutorService = aj.fOs();
       AppMethodBeat.o(179158);
       return localExecutorService;
     }
@@ -268,7 +272,7 @@ public class PreviewImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.PreviewImageView
  * JD-Core Version:    0.7.0.1
  */

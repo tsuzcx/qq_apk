@@ -9,23 +9,23 @@ import com.tencent.mm.plugin.appbrand.dynamic.launching.WidgetSysConfig;
 public abstract interface WxaWidgetContext
   extends Parcelable
 {
-  public abstract WxaPkgWrappingInfo bBO();
+  public abstract int bGn();
   
-  public abstract WxaPkgWrappingInfo bBP();
+  public abstract WxaPkgWrappingInfo bNk();
   
-  public abstract int bBQ();
+  public abstract WxaPkgWrappingInfo bNl();
   
-  public abstract byte[] bBR();
+  public abstract int bNm();
   
-  public abstract int bBS();
+  public abstract byte[] bNn();
   
-  public abstract DebuggerInfo bBT();
+  public abstract int bNo();
   
-  public abstract WidgetSysConfig bBU();
+  public abstract DebuggerInfo bNp();
   
-  public abstract WidgetRuntimeConfig bBV();
+  public abstract WidgetSysConfig bNq();
   
-  public abstract int bvh();
+  public abstract WidgetRuntimeConfig bNr();
   
   public abstract String getAppId();
   
@@ -33,7 +33,7 @@ public abstract interface WxaWidgetContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.WxaWidgetContext
  * JD-Core Version:    0.7.0.1
  */

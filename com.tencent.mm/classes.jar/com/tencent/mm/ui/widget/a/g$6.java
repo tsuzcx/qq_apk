@@ -13,13 +13,13 @@ final class g$6
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(198254);
+    AppMethodBeat.i(250546);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    this.QOU.bMo();
+    localb.bn(paramView);
+    a.c("com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    this.YnI.bYF();
     a.a(this, "com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(198254);
+    AppMethodBeat.o(250546);
   }
 }
 

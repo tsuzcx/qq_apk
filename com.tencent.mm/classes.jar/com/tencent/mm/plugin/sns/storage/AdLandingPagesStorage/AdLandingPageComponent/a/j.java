@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bnu;
-import com.tencent.mm.protocal.protobuf.bnv;
-import com.tencent.mm.protocal.protobuf.cuj;
-import com.tencent.mm.protocal.protobuf.cuk;
+import com.tencent.mm.protocal.protobuf.bvk;
+import com.tencent.mm.protocal.protobuf.bvl;
+import com.tencent.mm.protocal.protobuf.ddr;
+import com.tencent.mm.protocal.protobuf.dds;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class j
@@ -28,12 +28,12 @@ public final class j
   {
     AppMethodBeat.i(97154);
     d.a locala = new d.a();
-    locala.iLN = new cuj();
-    locala.iLO = new cuk();
+    locala.lBU = new ddr();
+    locala.lBV = new dds();
     locala.uri = "/cgi-bin/mmux-bin/wxaapp/mmuxwxa_officialsync";
     locala.funcId = 2721;
-    this.rr = locala.aXF();
-    ((cuj)this.rr.iLK.iLR).MzD = paramString;
+    this.rr = locala.bgN();
+    ((ddr)d.b.b(this.rr.lBR)).TLj = paramString;
     Log.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "Req: syncBuffer:".concat(String.valueOf(paramString)));
     AppMethodBeat.o(97154);
   }
@@ -42,15 +42,15 @@ public final class j
   {
     AppMethodBeat.i(97153);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bnu();
-    ((d.a)localObject).iLO = new bnv();
+    ((d.a)localObject).lBU = new bvk();
+    ((d.a)localObject).lBV = new bvl();
     ((d.a)localObject).uri = "/cgi-bin/mmgame-bin/getgamecanvasinfo";
     ((d.a)localObject).funcId = 1337;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (bnu)this.rr.iLK.iLR;
-    ((bnu)localObject).jfi = paramString1;
-    ((bnu)localObject).LWj = paramString2;
-    ((bnu)localObject).LWk = paramString3;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (bvk)d.b.b(this.rr.lBR);
+    ((bvk)localObject).lVG = paramString1;
+    ((bvk)localObject).Tfr = paramString2;
+    ((bvk)localObject).Tfs = paramString3;
     Log.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "Req: shareType:" + paramString2 + " sharedAppId :" + paramString1);
     AppMethodBeat.o(97153);
   }
@@ -77,7 +77,7 @@ public final class j
     AppMethodBeat.i(97157);
     Log.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString + " sceneType: " + getType());
     if (getType() == 1337) {
-      this.jsonString = ((bnv)((d)params).iLL.iLR).LSg;
+      this.jsonString = ((bvl)d.c.b(((d)params).lBS)).SZs;
     }
     for (;;)
     {
@@ -85,7 +85,7 @@ public final class j
       AppMethodBeat.o(97157);
       return;
       if (getType() == 2721) {
-        this.jsonString = ((cuk)((d)params).iLL.iLR).MzE;
+        this.jsonString = ((dds)d.c.b(((d)params).lBS)).TLk;
       }
     }
   }

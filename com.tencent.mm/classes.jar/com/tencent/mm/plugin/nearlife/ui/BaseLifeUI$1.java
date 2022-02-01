@@ -15,16 +15,16 @@ final class BaseLifeUI$1
   {
     AppMethodBeat.i(26560);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/nearlife/ui/BaseLifeUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    BaseLifeUI.a(this.ABJ);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/nearlife/ui/BaseLifeUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    BaseLifeUI.a(this.GuL);
     a.a(this, "com/tencent/mm/plugin/nearlife/ui/BaseLifeUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(26560);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.BaseLifeUI.1
  * JD-Core Version:    0.7.0.1
  */

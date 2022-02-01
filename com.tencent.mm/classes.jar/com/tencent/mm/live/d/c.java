@@ -5,149 +5,149 @@ import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/report/LiveLinkMicIDKeyStat;", "", "()V", "ID", "", "TAG", "", "markAnchorAllowLinkMic", "", "markAnchorForbidLinkMic", "markAnchorHangUpInAudioLink", "markAnchorHangUpInVideoLink", "markLinkMicFailed", "markVisitorChangeToAudioAfterLinkVideo", "markVisitorForgiveLinkBeforeConnect", "markVisitorForgiveLinkVideoBeforeConnect", "markVisitorHangUpInAudioLink", "markVisitorHangUpInVideoLink", "markVisitorHangUpLinkMicAfterLinkVideo", "markVisitorLinVideoMic", "markVisitorLinkMicSuccess", "markVisitorRequestLinkMic", "markVisitorSwitchCameraConnecting", "markVisitorSwitchCameraWhileWaitingConnect", "plugin-logic_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/report/LiveLinkMicIDKeyStat;", "", "()V", "ID", "", "TAG", "", "markAnchorAllowLinkMic", "", "markAnchorForbidLinkMic", "markAnchorHangUpInAudioLink", "markAnchorHangUpInVideoLink", "markLinkMicFailed", "markVisitorChangeToAudioAfterLinkVideo", "markVisitorForgiveLinkBeforeConnect", "markVisitorForgiveLinkVideoBeforeConnect", "markVisitorHangUpInAudioLink", "markVisitorHangUpInVideoLink", "markVisitorHangUpLinkMicAfterLinkVideo", "markVisitorLinVideoMic", "markVisitorLinkMicSuccess", "markVisitorRequestLinkMic", "markVisitorSwitchCameraConnecting", "markVisitorSwitchCameraWhileWaitingConnect", "plugin-logic_release"})
 public final class c
 {
-  public static final c hTL;
+  public static final c kIi;
   
   static
   {
-    AppMethodBeat.i(208322);
-    hTL = new c();
-    AppMethodBeat.o(208322);
+    AppMethodBeat.i(193386);
+    kIi = new c();
+    AppMethodBeat.o(193386);
   }
   
-  public static final void aIh()
+  public static final void aQf()
   {
-    AppMethodBeat.i(208306);
+    AppMethodBeat.i(193339);
     Log.i("MicroMsg.LiveLinkMicIDKeyStat", "markAnchorForbidLinkMic");
-    h.CyF.n(1386L, 0L, 1L);
-    AppMethodBeat.o(208306);
+    h.IzE.p(1386L, 0L, 1L);
+    AppMethodBeat.o(193339);
   }
   
-  public static final void aIi()
+  public static final void aQg()
   {
-    AppMethodBeat.i(208307);
+    AppMethodBeat.i(193343);
     Log.i("MicroMsg.LiveLinkMicIDKeyStat", "markAnchorAllowLinkMic");
-    h.CyF.n(1386L, 1L, 1L);
-    AppMethodBeat.o(208307);
+    h.IzE.p(1386L, 1L, 1L);
+    AppMethodBeat.o(193343);
   }
   
-  public static final void aIj()
+  public static final void aQh()
   {
-    AppMethodBeat.i(208308);
+    AppMethodBeat.i(193348);
     Log.i("MicroMsg.LiveLinkMicIDKeyStat", "markVisitorRequestLinkMic");
-    h.CyF.n(1386L, 2L, 1L);
-    AppMethodBeat.o(208308);
+    h.IzE.p(1386L, 2L, 1L);
+    AppMethodBeat.o(193348);
   }
   
-  public static final void aIk()
+  public static final void aQi()
   {
-    AppMethodBeat.i(208309);
+    AppMethodBeat.i(193350);
     Log.i("MicroMsg.LiveLinkMicIDKeyStat", "markVisitorForgiveLinkBeforeConnect");
-    h.CyF.n(1386L, 3L, 1L);
-    AppMethodBeat.o(208309);
+    h.IzE.p(1386L, 3L, 1L);
+    AppMethodBeat.o(193350);
   }
   
-  public static final void aIl()
+  public static final void aQj()
   {
-    AppMethodBeat.i(208310);
+    AppMethodBeat.i(193352);
     Log.i("MicroMsg.LiveLinkMicIDKeyStat", "markVisitorForgiveLinkVideoBeforeConnect");
-    h.CyF.n(1386L, 4L, 1L);
-    AppMethodBeat.o(208310);
+    h.IzE.p(1386L, 4L, 1L);
+    AppMethodBeat.o(193352);
   }
   
-  public static final void aIm()
+  public static final void aQk()
   {
-    AppMethodBeat.i(208311);
+    AppMethodBeat.i(193355);
     Log.i("MicroMsg.LiveLinkMicIDKeyStat", "markVisitorSwitchCameraWhileWaitingConnect");
-    h.CyF.n(1386L, 5L, 1L);
-    AppMethodBeat.o(208311);
+    h.IzE.p(1386L, 5L, 1L);
+    AppMethodBeat.o(193355);
   }
   
-  public static final void aIn()
+  public static final void aQl()
   {
-    AppMethodBeat.i(208312);
+    AppMethodBeat.i(193360);
     Log.i("MicroMsg.LiveLinkMicIDKeyStat", "markVisitorSwitchCameraWhileWaitingConnect");
-    h.CyF.n(1386L, 6L, 1L);
-    AppMethodBeat.o(208312);
+    h.IzE.p(1386L, 6L, 1L);
+    AppMethodBeat.o(193360);
   }
   
-  public static final void aIo()
+  public static final void aQm()
   {
-    AppMethodBeat.i(208313);
+    AppMethodBeat.i(193366);
     Log.i("MicroMsg.LiveLinkMicIDKeyStat", "markVisitorLinkMicSuccess");
-    h.CyF.n(1386L, 7L, 1L);
-    AppMethodBeat.o(208313);
+    h.IzE.p(1386L, 7L, 1L);
+    AppMethodBeat.o(193366);
   }
   
-  public static final void aIp()
+  public static final void aQn()
   {
-    AppMethodBeat.i(208314);
+    AppMethodBeat.i(193369);
     Log.i("MicroMsg.LiveLinkMicIDKeyStat", "markVisitorLinVideoMic");
-    h.CyF.n(1386L, 8L, 1L);
-    AppMethodBeat.o(208314);
+    h.IzE.p(1386L, 8L, 1L);
+    AppMethodBeat.o(193369);
   }
   
-  public static final void aIq()
+  public static final void aQo()
   {
-    AppMethodBeat.i(208315);
+    AppMethodBeat.i(193371);
     Log.i("MicroMsg.LiveLinkMicIDKeyStat", "markVisitorHangUpLinkMicAfterLinkVideo");
-    h.CyF.n(1386L, 9L, 1L);
-    AppMethodBeat.o(208315);
+    h.IzE.p(1386L, 9L, 1L);
+    AppMethodBeat.o(193371);
   }
   
-  public static final void aIr()
+  public static final void aQp()
   {
-    AppMethodBeat.i(208316);
+    AppMethodBeat.i(193373);
     Log.i("MicroMsg.LiveLinkMicIDKeyStat", "markVisitorChangeToAudioAfterLinkVideo");
-    h.CyF.n(1386L, 10L, 1L);
-    AppMethodBeat.o(208316);
+    h.IzE.p(1386L, 10L, 1L);
+    AppMethodBeat.o(193373);
   }
   
-  public static final void aIs()
+  public static final void aQq()
   {
-    AppMethodBeat.i(208317);
+    AppMethodBeat.i(193374);
     Log.i("MicroMsg.LiveLinkMicIDKeyStat", "markVisitorHangUpInAudioLink");
-    h.CyF.n(1386L, 11L, 1L);
-    AppMethodBeat.o(208317);
+    h.IzE.p(1386L, 11L, 1L);
+    AppMethodBeat.o(193374);
   }
   
-  public static final void aIt()
+  public static final void aQr()
   {
-    AppMethodBeat.i(208318);
+    AppMethodBeat.i(193375);
     Log.i("MicroMsg.LiveLinkMicIDKeyStat", "markVisitorHangUpInVideoLink");
-    h.CyF.n(1386L, 12L, 1L);
-    AppMethodBeat.o(208318);
+    h.IzE.p(1386L, 12L, 1L);
+    AppMethodBeat.o(193375);
   }
   
-  public static final void aIu()
+  public static final void aQs()
   {
-    AppMethodBeat.i(208319);
+    AppMethodBeat.i(193377);
     Log.i("MicroMsg.LiveLinkMicIDKeyStat", "markAnchorHangUpInAudioLink");
-    h.CyF.n(1386L, 13L, 1L);
-    AppMethodBeat.o(208319);
+    h.IzE.p(1386L, 13L, 1L);
+    AppMethodBeat.o(193377);
   }
   
-  public static final void aIv()
+  public static final void aQt()
   {
-    AppMethodBeat.i(208320);
+    AppMethodBeat.i(193379);
     Log.i("MicroMsg.LiveLinkMicIDKeyStat", "markAnchorHangUpInVideoLink");
-    h.CyF.n(1386L, 14L, 1L);
-    AppMethodBeat.o(208320);
+    h.IzE.p(1386L, 14L, 1L);
+    AppMethodBeat.o(193379);
   }
   
-  public static final void aIw()
+  public static final void aQu()
   {
-    AppMethodBeat.i(208321);
+    AppMethodBeat.i(193381);
     Log.i("MicroMsg.LiveLinkMicIDKeyStat", "markLinkMicFailed");
-    h.CyF.n(1386L, 15L, 1L);
-    AppMethodBeat.o(208321);
+    h.IzE.p(1386L, 15L, 1L);
+    AppMethodBeat.o(193381);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.d.c
  * JD-Core Version:    0.7.0.1
  */

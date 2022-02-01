@@ -6,7 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.scanner.l.c;
 import com.tencent.mm.ui.base.preference.KeyValuePreference;
 import com.tencent.mm.ui.base.preference.Preference;
 
@@ -32,7 +33,7 @@ public class VcardContactLinkPreference
   {
     AppMethodBeat.i(52001);
     super.onBindView(paramView);
-    ((TextView)paramView.findViewById(16908304)).setTextColor(a.n(this.mContext, 2131100225));
+    ((TextView)paramView.findViewById(16908304)).setTextColor(a.w(this.mContext, l.c.conatct_info_weibo_link_color));
     AppMethodBeat.o(52001);
   }
   

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceSmallCategory />
+    <PreferenceSmallCategory android:key="unlike_empty" />
     <IconPreference android:key="unlike" android:title="@string/h57" />
     <Preference android:key="unlike_desc" android:layout="@layout/b_7" android:title="@string/hqo" />
-    <PreferenceSmallCategory />
+    <PreferenceSmallCategory android:key="black_empty" />
     <IconPreference android:key="black" android:title="@string/h97" />
     <Preference android:key="not_be_seen_desc" android:layout="@layout/b_7" android:title="@string/hqd" />
     <PreferenceSmallCategory />

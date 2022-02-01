@@ -2,5 +2,6 @@
 <RelativeLayout android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <include android:id="@id/cwh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/adk" />
+    <include android:id="@id/k57" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cgj" />
     <ProgressBar android:id="@id/cr7" android:visibility="gone" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:indeterminateDrawable="@drawable/apb" android:layout_centerInParent="true" />
 </RelativeLayout>

@@ -5,19 +5,19 @@ import java.util.Map;
 
 public abstract interface b
 {
-  public abstract String KQ();
+  public abstract String NE();
   
-  public abstract String KR();
+  public abstract String NF();
   
-  public abstract Map KS();
+  public abstract Map NG();
   
-  public abstract void bP(boolean paramBoolean);
+  public abstract void bZ(boolean paramBoolean);
   
   public abstract Activity getActivity();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wxa.b.b
  * JD-Core Version:    0.7.0.1
  */

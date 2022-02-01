@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.e.d;
-import com.tencent.mm.plugin.r.a;
+import com.tencent.mm.plugin.ab.a;
+import com.tencent.mm.plugin.game.d.d;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.j;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -18,7 +18,7 @@ public final class i
     super(paramString);
   }
   
-  public final void dVh()
+  public final void eyo()
   {
     AppMethodBeat.i(41408);
     LinkedList localLinkedList = z(optJSONArray("items"));
@@ -26,15 +26,23 @@ public final class i
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      localc.Bm(localc.xDV);
+      localc.Ia(localc.CHW);
     }
-    d.aZ(localLinkedList);
+    d.bs(localLinkedList);
     AppMethodBeat.o(41408);
+  }
+  
+  public final int eyp()
+  {
+    AppMethodBeat.i(198447);
+    int i = optInt("remainingCount");
+    AppMethodBeat.o(198447);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.i
  * JD-Core Version:    0.7.0.1
  */

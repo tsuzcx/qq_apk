@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.story.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
-import com.tencent.mm.g.b.a.jo;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.f.b.a.lx;
+import com.tencent.mm.model.cm;
 import com.tencent.mm.plugin.story.h.h;
 import com.tencent.mm.plugin.story.i.f;
 import com.tencent.mm.plugin.story.i.g;
-import com.tencent.mm.protocal.protobuf.edk;
-import com.tencent.mm.protocal.protobuf.edt;
-import com.tencent.mm.protocal.protobuf.eek;
+import com.tencent.mm.protocal.protobuf.enl;
+import com.tencent.mm.protocal.protobuf.enu;
+import com.tencent.mm.protocal.protobuf.eol;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,16 +22,16 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/StoryExtInfoStorageLogic;", "", "()V", "TAG", "", "get", "Lcom/tencent/mm/plugin/story/storage/StoryExtInfo;", "userName", "getWithNotify", "", "username", "reportWaitPlayList", "", "srcuserList", "", "scene", "", "set", "info", "updateUserReadId", "storyId", "updateUserSyncId", "story", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "syncId", "postTime", "", "thumb", "videoUrl", "duration", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/model/StoryExtInfoStorageLogic;", "", "()V", "TAG", "", "get", "Lcom/tencent/mm/plugin/story/storage/StoryExtInfo;", "userName", "getWithNotify", "", "username", "reportWaitPlayList", "", "srcuserList", "", "scene", "", "set", "info", "updateUserReadId", "storyId", "updateUserSyncId", "story", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "syncId", "postTime", "", "thumb", "videoUrl", "duration", "plugin-story_release"})
 public final class k
 {
-  public static final k FmH;
+  public static final k LGJ;
   private static final String TAG = "MicroMsg.StoryExtInfoStorageLogic";
   
   static
   {
     AppMethodBeat.i(118723);
-    FmH = new k();
+    LGJ = new k();
     TAG = "MicroMsg.StoryExtInfoStorageLogic";
     AppMethodBeat.o(118723);
   }
@@ -39,9 +39,9 @@ public final class k
   public static void a(String paramString1, long paramLong1, int paramInt, String paramString2, String paramString3, long paramLong2)
   {
     AppMethodBeat.i(118716);
-    p.h(paramString1, "username");
-    Object localObject = j.Fmy;
-    g localg = j.b.fod();
+    p.k(paramString1, "username");
+    Object localObject = j.LGA;
+    g localg = j.b.gcx();
     localObject = paramString2;
     if (paramString2 == null) {
       localObject = "";
@@ -50,34 +50,34 @@ public final class k
     if (paramString3 == null) {
       paramString2 = "";
     }
-    p.h(paramString1, "userName");
-    p.h(localObject, "thumb");
-    p.h(paramString2, "videoUrl");
-    paramString3 = localg.aSv(paramString1);
+    p.k(paramString1, "userName");
+    p.k(localObject, "thumb");
+    p.k(paramString2, "videoUrl");
+    paramString3 = localg.bdz(paramString1);
     if (paramString3 == null) {}
-    for (paramString1 = localg.aSt(paramString1);; paramString1 = paramString3)
+    for (paramString1 = localg.bdx(paramString1);; paramString1 = paramString3)
     {
-      boolean bool1 = paramString1.frA();
+      boolean bool1 = paramString1.gfW();
       boolean bool2 = paramString1.isValid();
-      paramString3 = f.Fwe;
-      if (((Boolean)f.frB().invoke(Long.valueOf(paramString1.field_syncId), Long.valueOf(paramLong1))).booleanValue()) {
+      paramString3 = f.LQh;
+      if (((Boolean)f.gfX().invoke(Long.valueOf(paramString1.field_syncId), Long.valueOf(paramLong1))).booleanValue()) {
         paramString1.field_updateTime = (paramInt * 1000L);
       }
       paramString1.field_syncId = paramLong1;
       if (paramString1.field_preloadStoryId != paramString1.field_syncId)
       {
         paramString1.field_preloadStoryId = 0L;
-        paramString1.aSs("");
+        paramString1.bdw("");
         paramString1.field_preLoadResource = 0L;
       }
       paramString1.field_storyPostTime = paramInt;
-      p.h(localObject, "value");
+      p.k(localObject, "value");
       paramString1.field_newThumbUrl = ((String)localObject);
-      p.h(paramString2, "value");
+      p.k(paramString2, "value");
       paramString1.field_newVideoUrl = paramString2;
       paramString1.field_duration = paramLong2;
       boolean bool3 = localg.b(paramString1);
-      boolean bool4 = paramString1.frA();
+      boolean bool4 = paramString1.gfW();
       boolean bool5 = paramString1.isValid();
       if ((bool3) && (bool2) && (!bool5))
       {
@@ -114,12 +114,12 @@ public final class k
   public static void a(String paramString, com.tencent.mm.plugin.story.i.j paramj)
   {
     AppMethodBeat.i(118718);
-    p.h(paramString, "username");
+    p.k(paramString, "username");
     if (paramj != null)
     {
-      eek localeek = paramj.frG();
-      if ((localeek != null) && (localeek.NeB.LoV.size() > 0) && (((edt)localeek.NeB.LoV.get(0)).Msz != null) && (((edt)localeek.NeB.LoV.get(0)).Url != null)) {
-        a(paramString, paramj.field_storyID, paramj.field_createTime, ((edt)localeek.NeB.LoV.get(0)).Msz, ((edt)localeek.NeB.LoV.get(0)).Url, (((edt)localeek.NeB.LoV.get(0)).Ned * 1000.0F));
+      eol localeol = paramj.ggc();
+      if ((localeol != null) && (localeol.Ura.Sqr.size() > 0) && (((enu)localeol.Ura.Sqr.get(0)).TDF != null) && (((enu)localeol.Ura.Sqr.get(0)).Url != null)) {
+        a(paramString, paramj.field_storyID, paramj.field_createTime, ((enu)localeol.Ura.Sqr.get(0)).TDF, ((enu)localeol.Ura.Sqr.get(0)).Url, (((enu)localeol.Ura.Sqr.get(0)).UqC * 1000.0F));
       }
       AppMethodBeat.o(118718);
       return;
@@ -127,21 +127,21 @@ public final class k
     AppMethodBeat.o(118718);
   }
   
-  public static void aRR(String paramString)
+  public static void bcV(String paramString)
   {
     AppMethodBeat.i(118719);
-    p.h(paramString, "username");
-    Object localObject = j.Fmy;
-    localObject = j.b.fod();
-    p.h(paramString, "username");
-    paramString = ((g)localObject).aSt(paramString);
-    boolean bool1 = paramString.frA();
+    p.k(paramString, "username");
+    Object localObject = j.LGA;
+    localObject = j.b.gcx();
+    p.k(paramString, "username");
+    paramString = ((g)localObject).bdx(paramString);
+    boolean bool1 = paramString.gfW();
     if (paramString.field_readId != paramString.field_syncId)
     {
       paramString.field_readId = paramString.field_syncId;
-      paramString.field_readTime = cl.aWz();
+      paramString.field_readTime = cm.bfD();
       boolean bool2 = ((g)localObject).b(paramString);
-      boolean bool3 = paramString.frA();
+      boolean bool3 = paramString.gfW();
       if ((bool2) && (bool1) && (!bool3)) {
         ((g)localObject).doNotify("notify_story_read", 1, paramString);
       }
@@ -149,24 +149,24 @@ public final class k
     AppMethodBeat.o(118719);
   }
   
-  public static f aRS(String paramString)
+  public static f bcW(String paramString)
   {
     AppMethodBeat.i(118720);
-    p.h(paramString, "userName");
-    j.b localb = j.Fmy;
-    paramString = j.b.fod().aRS(paramString);
+    p.k(paramString, "userName");
+    j.b localb = j.LGA;
+    paramString = j.b.gcx().bcW(paramString);
     AppMethodBeat.o(118720);
     return paramString;
   }
   
-  public static boolean aRT(String paramString)
+  public static boolean bcX(String paramString)
   {
     AppMethodBeat.i(118721);
     if (paramString != null)
     {
-      j.b localb = j.Fmy;
-      paramString = j.b.fod().aSw(paramString);
-      if ((paramString == null) || (!paramString.frA())) {}
+      j.b localb = j.LGA;
+      paramString = j.b.gcx().bdA(paramString);
+      if ((paramString == null) || (!paramString.gfW())) {}
     }
     for (boolean bool = true;; bool = false)
     {
@@ -179,9 +179,9 @@ public final class k
   public static void reportWaitPlayList(List<String> arg0, long paramLong)
   {
     AppMethodBeat.i(118722);
-    p.h(???, "srcuserList");
-    Object localObject1 = h.FuH;
-    long l = h.fqi().ahy();
+    p.k(???, "srcuserList");
+    Object localObject1 = h.LOJ;
+    long l = h.geE().amU();
     localObject1 = new ArrayList();
     synchronized ((Iterable)???)
     {
@@ -190,12 +190,12 @@ public final class k
         ((ArrayList)localObject1).add((String)((Iterator)localObject2).next());
       }
     }
-    Object localObject2 = x.SXb;
+    Object localObject2 = x.aazN;
     d.b("reportWaitPlayList", (a)new a(l, paramLong, localArrayList));
     AppMethodBeat.o(118722);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class a
     extends q
     implements a<x>

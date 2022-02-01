@@ -1,56 +1,96 @@
 package com.tencent.mm.compatible.deviceinfo;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MultiProcessSharedPreferences;
-import java.util.Map;
 
 public final class y
 {
-  public static boolean gJA = false;
-  public String gJB = "";
-  Map<String, String> gJC = null;
-  private int gJD = 0;
+  public int jtA;
+  public int jtB;
+  public int jtC;
+  public int jtD;
+  public int jtE;
+  public int jtF;
+  public int jtG;
+  public int jtH;
+  public int jtI;
+  public int jtJ;
+  public int jtK;
+  public int jtL;
+  public int jtM;
+  public int jtN;
+  public int jth;
+  public int jti;
+  public int jtj;
+  public int jtk;
+  public int jtl;
+  public int jtm;
+  public int jtn;
+  public int jto;
+  public int jtp;
+  public int jtq;
+  public int jtr;
+  public int jts;
+  public int jtt;
+  public int jtu;
+  public int jtv;
+  public int jtw;
+  public int jtx;
+  public int jty;
+  public int jtz;
   
-  public static boolean aoW()
+  public y()
   {
-    boolean bool = false;
-    if (gJA)
-    {
-      gJA = false;
-      bool = true;
-    }
-    return bool;
+    AppMethodBeat.i(155765);
+    this.jtI = -1;
+    this.jtJ = -1;
+    this.jtK = -1;
+    this.jtL = -1;
+    this.jtM = -1;
+    this.jtN = -1;
+    reset();
+    AppMethodBeat.o(155765);
   }
   
-  public final void DY(String paramString)
+  public final void reset()
   {
-    this.gJB = paramString;
+    this.jth = -1;
+    this.jti = -1;
+    this.jtj = -1;
+    this.jtk = -1;
+    this.jtl = -1;
+    this.jtm = -1;
+    this.jtn = -1;
+    this.jto = -1;
+    this.jtp = -1;
+    this.jtq = -1;
+    this.jtr = -1;
+    this.jts = -1;
+    this.jtt = -1;
+    this.jtu = -1;
+    this.jtv = -1;
+    this.jtw = -1;
+    this.jtx = -1;
+    this.jtF = -1;
+    this.jtG = -1;
+    this.jtI = -1;
+    this.jtH = -1;
+    this.jtK = -1;
+    this.jtL = -1;
+    this.jtM = -1;
+    this.jtN = -1;
   }
   
-  public final void oy(int paramInt)
+  public final String toString()
   {
-    AppMethodBeat.i(155767);
-    this.gJD = paramInt;
-    gJA = true;
-    SharedPreferences.Editor localEditor = MultiProcessSharedPreferences.getSharedPreferences(MMApplicationContext.getContext(), "system_config_prefs", 4).edit();
-    localEditor.putInt("update_swip_back_status", paramInt);
-    localEditor.commit();
-    Log.v("MicroMsg.ManuFacturerInfo", "update mSwipBackStatus(%s)", new Object[] { Integer.valueOf(this.gJD) });
-    AppMethodBeat.o(155767);
-  }
-  
-  public final void r(Map<String, String> paramMap)
-  {
-    this.gJC = paramMap;
+    AppMethodBeat.i(155766);
+    String str = "MMSightRecorderInfo{recorderType=" + this.jth + ", needRotateEachFrame=" + this.jti + ", enableHighResolutionRecord=" + this.jtj + ", landscapeRecordModeEnable=" + this.jtk + ", transcodeDecoderType=" + this.jtl + ", mediaPlayerType=" + this.jtm + ", strategyMask=" + this.jtn + ", recorderOption=" + this.jto + ", useMetering=" + this.jtp + ", transcodeEncoderType=" + this.jtq + ", checkSendVideoBitrate=" + this.jtr + ", cpuCrop=" + this.jts + ", backgroundRemux=" + this.jtt + ", emojiPreviewSize=" + this.jtu + ", emojiStickerSampleSize=" + this.jtv + ", emojiUseSmallModel=" + this.jtw + ", emojiUseGpuSegment=" + this.jtx + ", c2cRemuxUseSoftEncode=" + this.jtF + ", snsRemuxUseSoftEncode=" + this.jtG + ", sideAlignType=" + this.jtI + ", nativeToThumb=" + this.jtJ + ", captureHwHevcEncodeEnable=" + this.jtK + ", captureSwHevcEncodeEnable=" + this.jtL + ", remuxHwHevcEncodeEnable=" + this.jtM + ", remuxSwHevcEncodeEnable=" + this.jtN + '}';
+    AppMethodBeat.o(155766);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.y
  * JD-Core Version:    0.7.0.1
  */

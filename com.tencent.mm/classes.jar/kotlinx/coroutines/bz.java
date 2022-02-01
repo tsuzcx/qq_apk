@@ -1,55 +1,84 @@
 package kotlinx.coroutines;
 
-import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.concurrent.CancellationException;
+import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/JobNode;", "J", "Lkotlinx/coroutines/Job;", "Lkotlinx/coroutines/CompletionHandlerBase;", "Lkotlinx/coroutines/DisposableHandle;", "Lkotlinx/coroutines/Incomplete;", "job", "(Lkotlinx/coroutines/Job;)V", "isActive", "", "()Z", "Lkotlinx/coroutines/Job;", "list", "Lkotlinx/coroutines/NodeList;", "getList", "()Lkotlinx/coroutines/NodeList;", "dispose", "", "kotlinx-coroutines-core"})
-public abstract class bz<J extends bu>
-  extends z
-  implements bc, bp
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/JobCancellationException;", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "Lkotlinx/coroutines/CopyableThrowable;", "message", "", "cause", "", "job", "Lkotlinx/coroutines/Job;", "(Ljava/lang/String;Ljava/lang/Throwable;Lkotlinx/coroutines/Job;)V", "createCopy", "equals", "", "other", "", "fillInStackTrace", "hashCode", "", "toString", "kotlinx-coroutines-core"})
+public final class bz
+  extends CancellationException
+  implements ad<bz>
 {
-  public final J TUQ;
+  public final by Gib;
   
-  public bz(J paramJ)
+  public bz(String paramString, Throwable paramThrowable, by paramby)
   {
-    this.TUQ = paramJ;
+    super(paramString);
+    AppMethodBeat.i(118151);
+    this.Gib = paramby;
+    if (paramThrowable != null) {
+      initCause(paramThrowable);
+    }
+    AppMethodBeat.o(118151);
   }
   
-  public final void dispose()
+  public final boolean equals(Object paramObject)
   {
-    Object localObject1 = this.TUQ;
-    if (localObject1 == null) {
-      throw new t("null cannot be cast to non-null type kotlinx.coroutines.JobSupport");
-    }
-    localObject1 = (ca)localObject1;
-    Object localObject2;
-    do
+    AppMethodBeat.i(118149);
+    if ((paramObject == (bz)this) || (((paramObject instanceof bz)) && (p.h(((bz)paramObject).getMessage(), getMessage())) && (p.h(((bz)paramObject).Gib, this.Gib)) && (p.h(((bz)paramObject).getCause(), getCause()))))
     {
-      localObject2 = ((ca)localObject1).hNm();
-      if (!(localObject2 instanceof bz)) {
-        break;
-      }
-    } while ((localObject2 == this) && (!ca.TTD.compareAndSet(localObject1, localObject2, cb.hNt())));
-    while ((!(localObject2 instanceof bp)) || (((bp)localObject2).hMX() == null)) {
-      return;
+      AppMethodBeat.o(118149);
+      return true;
     }
-    remove();
+    AppMethodBeat.o(118149);
+    return false;
   }
   
-  public final cf hMX()
+  public final Throwable fillInStackTrace()
   {
-    return null;
+    AppMethodBeat.i(118147);
+    if (ap.getDEBUG())
+    {
+      localThrowable = super.fillInStackTrace();
+      AppMethodBeat.o(118147);
+      return localThrowable;
+    }
+    setStackTrace(new StackTraceElement[0]);
+    Throwable localThrowable = (Throwable)this;
+    AppMethodBeat.o(118147);
+    return localThrowable;
   }
   
-  public final boolean isActive()
+  public final int hashCode()
   {
-    return true;
+    AppMethodBeat.i(118150);
+    Object localObject = getMessage();
+    if (localObject == null) {
+      p.iCn();
+    }
+    int j = ((String)localObject).hashCode();
+    int k = this.Gib.hashCode();
+    localObject = getCause();
+    if (localObject != null) {}
+    for (int i = ((Throwable)localObject).hashCode();; i = 0)
+    {
+      AppMethodBeat.o(118150);
+      return i + (j * 31 + k) * 31;
+    }
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(118148);
+    String str = super.toString() + "; job=" + this.Gib;
+    AppMethodBeat.o(118148);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlinx.coroutines.bz
  * JD-Core Version:    0.7.0.1
  */

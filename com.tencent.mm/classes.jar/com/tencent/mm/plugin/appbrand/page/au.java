@@ -1,23 +1,14 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
+import android.view.View;
 
-public class au
+public abstract interface au
 {
-  public h bRH()
-  {
-    return null;
-  }
-  
-  public f bxr()
-  {
-    return null;
-  }
+  public abstract void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.au
  * JD-Core Version:    0.7.0.1
  */

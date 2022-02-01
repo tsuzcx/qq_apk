@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.MMWebView android:id="@id/jkk" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/cb" android:layout_above="@id/k71" />
+    <FrameLayout android:background="@drawable/cwj" android:layout_width="fill_parent" android:layout_height="@dimen/c6" android:layout_alignParentBottom="true" />
+    <Button android:textSize="17.0dip" android:id="@id/k71" android:layout_width="@dimen/c8" android:layout_height="@dimen/cl" android:layout_marginBottom="@dimen/cn" android:text="@string/jh_" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/ov" />
+</RelativeLayout>

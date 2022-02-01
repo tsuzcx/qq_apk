@@ -7,7 +7,7 @@
             <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/jq4" android:background="@color/f" android:paddingLeft="8.0dip" android:paddingRight="0.0dip" wallet:contentHint="@string/ixo" wallet:contentHintTextColor="@color/fp" wallet:contentTextColor="@color/fq" wallet:infoIvColorRes="@color/FG_2" wallet:infoIvRes="@raw/icons_filled_arrow" wallet:infoIvVisibility="j8m" wallet:layoutRes="@layout/cay" wallet:longTitleLayoutRes="@layout/cay" wallet:titleText="@string/ixp" wallet:titleWidth="@dimen/aoz" style="@style/ha" />
             <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="center|right" android:id="@id/jq0" android:paddingLeft="8.0dip" android:clickable="false" wallet:contentFocusable="false" wallet:contentHint="@string/ixj" wallet:contentHintTextColor="@color/fp" wallet:contentTextColor="@color/fq" wallet:layoutRes="@layout/cay" wallet:longTitleLayoutRes="@layout/cay" wallet:titleText="@string/ixl" wallet:titleWidth="@dimen/aoz" style="@style/sj" />
         </LinearLayout>
-        <android.support.v4.widget.Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
         <Button android:enabled="false" android:id="@id/jq1" android:layout_marginBottom="96.0dip" android:text="@string/x_" style="@style/ov" />
     </com.tencent.mm.ui.widget.InputPanelLinearLayout>
 </ScrollView>

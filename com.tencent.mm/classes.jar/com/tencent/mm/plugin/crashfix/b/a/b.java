@@ -9,11 +9,11 @@ import java.lang.reflect.Method;
 public final class b
   implements InvocationHandler
 {
-  protected Object qCx;
+  protected Object ubx;
   
   public b(WindowManager paramWindowManager)
   {
-    this.qCx = paramWindowManager;
+    this.ubx = paramWindowManager;
   }
   
   public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
@@ -50,7 +50,7 @@ public final class b
       try
       {
         Log.i("MicroMsg.WindowManagerInvocationHandler", "removeViewImmediate");
-        paramObject = paramMethod.invoke(this.qCx, paramArrayOfObject);
+        paramObject = paramMethod.invoke(this.ubx, paramArrayOfObject);
         AppMethodBeat.o(145623);
         return paramObject;
       }
@@ -62,14 +62,14 @@ public final class b
       }
       i += 1;
     }
-    paramObject = paramMethod.invoke(this.qCx, paramArrayOfObject);
+    paramObject = paramMethod.invoke(this.ubx, paramArrayOfObject);
     AppMethodBeat.o(145623);
     return paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.crashfix.b.a.b
  * JD-Core Version:    0.7.0.1
  */

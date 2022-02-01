@@ -9,11 +9,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface k
   extends IInterface
 {
-  public abstract int bjC();
+  public abstract int btg();
   
-  public abstract void bjD();
+  public abstract void bth();
   
-  public abstract long bjE();
+  public abstract long bti();
   
   public abstract boolean c(p paramp);
   
@@ -28,12 +28,12 @@ public abstract interface k
       attachInterface(this, "com.tencent.mm.network.INetworkEvent_AIDL");
     }
     
-    public static k bjF()
+    public static k btj()
     {
-      return a.jDU;
+      return a.mux;
     }
     
-    public static k o(IBinder paramIBinder)
+    public static k q(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -64,7 +64,7 @@ public abstract interface k
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.network.INetworkEvent_AIDL");
-        paramInt1 = bjC();
+        paramInt1 = btg();
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
@@ -90,12 +90,12 @@ public abstract interface k
         return true;
       case 4: 
         paramParcel1.enforceInterface("com.tencent.mm.network.INetworkEvent_AIDL");
-        bjD();
+        bth();
         paramParcel2.writeNoException();
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.network.INetworkEvent_AIDL");
-      long l = bjE();
+      long l = bti();
       paramParcel2.writeNoException();
       paramParcel2.writeLong(l);
       return true;
@@ -104,7 +104,7 @@ public abstract interface k
     static final class a
       implements k
     {
-      public static k jDU;
+      public static k mux;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -117,7 +117,7 @@ public abstract interface k
         return this.mRemote;
       }
       
-      public final int bjC()
+      public final int btg()
       {
         AppMethodBeat.i(132740);
         Parcel localParcel1 = Parcel.obtain();
@@ -125,9 +125,9 @@ public abstract interface k
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.network.INetworkEvent_AIDL");
-          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (k.a.bjF() != null))
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (k.a.btj() != null))
           {
-            i = k.a.bjF().bjC();
+            i = k.a.btj().btg();
             return i;
           }
           localParcel2.readException();
@@ -142,7 +142,7 @@ public abstract interface k
         }
       }
       
-      public final void bjD()
+      public final void bth()
       {
         AppMethodBeat.i(132743);
         Parcel localParcel1 = Parcel.obtain();
@@ -150,9 +150,9 @@ public abstract interface k
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.network.INetworkEvent_AIDL");
-          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (k.a.bjF() != null))
+          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (k.a.btj() != null))
           {
-            k.a.bjF().bjD();
+            k.a.btj().bth();
             return;
           }
           localParcel2.readException();
@@ -166,7 +166,7 @@ public abstract interface k
         }
       }
       
-      public final long bjE()
+      public final long bti()
       {
         AppMethodBeat.i(132744);
         Parcel localParcel1 = Parcel.obtain();
@@ -174,9 +174,9 @@ public abstract interface k
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.network.INetworkEvent_AIDL");
-          if ((!this.mRemote.transact(5, localParcel1, localParcel2, 0)) && (k.a.bjF() != null))
+          if ((!this.mRemote.transact(5, localParcel1, localParcel2, 0)) && (k.a.btj() != null))
           {
-            l = k.a.bjF().bjE();
+            l = k.a.btj().bti();
             return l;
           }
           localParcel2.readException();
@@ -204,10 +204,10 @@ public abstract interface k
           for (IBinder localIBinder = paramp.asBinder();; localIBinder = null)
           {
             localParcel1.writeStrongBinder(localIBinder);
-            if ((this.mRemote.transact(2, localParcel1, localParcel2, 0)) || (k.a.bjF() == null)) {
+            if ((this.mRemote.transact(2, localParcel1, localParcel2, 0)) || (k.a.btj() == null)) {
               break;
             }
-            bool = k.a.bjF().c(paramp);
+            bool = k.a.btj().c(paramp);
             return bool;
           }
           localParcel2.readException();
@@ -238,10 +238,10 @@ public abstract interface k
           for (IBinder localIBinder = paramp.asBinder();; localIBinder = null)
           {
             localParcel1.writeStrongBinder(localIBinder);
-            if ((this.mRemote.transact(3, localParcel1, localParcel2, 0)) || (k.a.bjF() == null)) {
+            if ((this.mRemote.transact(3, localParcel1, localParcel2, 0)) || (k.a.btj() == null)) {
               break;
             }
-            bool = k.a.bjF().d(paramp);
+            bool = k.a.btj().d(paramp);
             return bool;
           }
           localParcel2.readException();
@@ -263,7 +263,7 @@ public abstract interface k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.network.k
  * JD-Core Version:    0.7.0.1
  */

@@ -1,125 +1,183 @@
 package com.tencent.mm.plugin.finder.live.plugin;
 
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Rect;
 import android.view.ViewGroup;
-import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.c.b.b;
-import com.tencent.mm.live.c.b.c;
-import com.tencent.mm.plugin.finder.report.live.s.at;
-import com.tencent.mm.ui.at;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.live.c.b;
+import com.tencent.mm.plugin.finder.live.view.FinderLiveShadeView;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.f;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.h;
+import com.tencent.mm.plugin.finder.live.widget.ac;
+import com.tencent.mm.plugin.finder.live.widget.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import kotlin.g.a.a;
 import kotlin.g.b.p;
+import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.t;
+import kotlin.x;
+import org.libpag.PAGView;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveVisitorClosePlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statueMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "closeBtn", "Landroid/view/View;", "kotlin.jvm.PlatformType", "value", "", "mNavigatorHeight", "getMNavigatorHeight", "()I", "setMNavigatorHeight", "(I)V", "canClearScreen", "", "resume", "", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveMicAudioPreviewPlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "shadeView", "Lcom/tencent/mm/plugin/finder/live/view/FinderLiveShadeView;", "reportObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;Lcom/tencent/mm/plugin/finder/live/view/FinderLiveShadeView;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getStatusMonitor", "()Lcom/tencent/mm/live/plugin/ILiveStatus;", "widgetsMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveMicStateWidget;", "Lkotlin/collections/HashMap;", "hideLinkMicBottomBar", "", "onMicUserChanged", "micUserMap", "Ljava/util/LinkedHashMap;", "Landroid/graphics/Rect;", "Lkotlin/collections/LinkedHashMap;", "isPkAnchor", "", "onNotifyMicUserVolume", "showLinkMicBottomBar", "Companion", "plugin-finder_release"})
 public final class br
   extends d
 {
-  private int hOw;
-  final com.tencent.mm.live.c.b hOy;
-  private final View hRd;
+  private static final String TAG = "Finder.FinderLiveMicAudioPreviewPlugin";
+  public static final a yuU;
+  private final b kCL;
+  private final HashMap<String, ac> yuS;
+  private final FinderLiveShadeView yuT;
   
-  public br(ViewGroup paramViewGroup, com.tencent.mm.live.c.b paramb)
+  static
   {
-    super(paramViewGroup, paramb);
-    AppMethodBeat.i(247134);
-    this.hOy = paramb;
-    this.hRd = paramViewGroup.findViewById(2131303624);
-    this.hOw = au.aD(paramViewGroup.getContext());
-    this.hRd.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    AppMethodBeat.i(272906);
+    yuU = new a((byte)0);
+    TAG = "Finder.FinderLiveMicAudioPreviewPlugin";
+    AppMethodBeat.o(272906);
+  }
+  
+  private br(ViewGroup paramViewGroup, b paramb, FinderLiveShadeView paramFinderLiveShadeView)
+  {
+    super(paramViewGroup, paramb, null);
+    AppMethodBeat.i(272905);
+    this.kCL = paramb;
+    this.yuT = paramFinderLiveShadeView;
+    this.yuS = new HashMap();
+    AppMethodBeat.o(272905);
+  }
+  
+  public final void a(final LinkedHashMap<String, Rect> paramLinkedHashMap, final boolean paramBoolean)
+  {
+    AppMethodBeat.i(272904);
+    p.k(paramLinkedHashMap, "micUserMap");
+    Log.i(TAG, "onMicUserChanged widegtMap.size:" + this.yuS.size() + " audienceLinkMicUserList.size:" + ((f)business(f.class)).zhm.size() + " micUserMap:" + paramLinkedHashMap);
+    com.tencent.mm.ae.d.uiThread((a)new c(this, paramBoolean, paramLinkedHashMap));
+    AppMethodBeat.o(272904);
+  }
+  
+  public final void dCa()
+  {
+    AppMethodBeat.i(272900);
+    com.tencent.mm.ae.d.uiThread((a)new d(this));
+    AppMethodBeat.o(272900);
+  }
+  
+  public final void dCb()
+  {
+    AppMethodBeat.i(272901);
+    com.tencent.mm.ae.d.uiThread((a)new b(this));
+    AppMethodBeat.o(272901);
+  }
+  
+  public final void dCc()
+  {
+    AppMethodBeat.i(272903);
+    Iterator localIterator1 = ((Map)this.yuS).entrySet().iterator();
+    while (localIterator1.hasNext())
     {
-      public final void onClick(View paramAnonymousView)
+      Object localObject3 = (Map.Entry)localIterator1.next();
+      if ((((Map.Entry)localObject3).getValue() instanceof z))
       {
-        AppMethodBeat.i(247130);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/live/plugin/FinderLiveVisitorClosePlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        b.b.a(this.uve.hOy, b.c.hLC);
-        com.tencent.mm.plugin.finder.report.live.m.vli.a(s.at.vrK);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/plugin/FinderLiveVisitorClosePlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(247130);
-      }
-    });
-    if ((paramViewGroup.getLayoutParams() != null) && ((paramViewGroup.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)) && (isLandscape())) {
-      switch (getCurrentOrientation())
-      {
+        Object localObject1 = ((f)business(f.class)).zhm;
+        p.j(localObject1, "business(LiveLinkMicSlic…).audienceLinkMicUserList");
+        synchronized ((Iterable)localObject1)
+        {
+          Iterator localIterator2 = ((Iterable)???).iterator();
+          for (;;)
+          {
+            if (localIterator2.hasNext())
+            {
+              localObject1 = localIterator2.next();
+              bool = Util.isEqual(((h)localObject1).ktR, (String)((Map.Entry)localObject3).getKey());
+              if (bool)
+              {
+                localObject1 = (h)localObject1;
+                if (localObject1 == null) {
+                  break;
+                }
+                ??? = ((Map.Entry)localObject3).getValue();
+                if (??? != null) {
+                  break label195;
+                }
+                localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.live.widget.FinderLiveMicAudioPreviewWidget");
+                AppMethodBeat.o(272903);
+                throw ((Throwable)localObject1);
+              }
+            }
+          }
+          localObject1 = null;
+        }
+        label195:
+        ??? = (z)???;
+        localObject3 = (String)((Map.Entry)localObject3).getKey();
+        boolean bool = localObject2.zeI;
+        if (((z)???).zpC != bool)
+        {
+          Log.i(((z)???).TAG, "sdkUserId:" + (String)localObject3 + " notTalking:" + bool);
+          ((z)???).zpC = bool;
+          if (bool)
+          {
+            ((z)???).ymH.stop();
+            ((z)???).ymH.setVisibility(8);
+          }
+          else
+          {
+            ((z)???).ymH.setVisibility(0);
+            ((z)???).ymH.play();
+          }
+        }
       }
     }
-    for (;;)
+    AppMethodBeat.o(272903);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveMicAudioPreviewPlugin$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class b
+    extends q
+    implements a<x>
+  {
+    b(br parambr)
     {
-      paramViewGroup = com.tencent.mm.plugin.finder.utils.m.vVH;
-      com.tencent.mm.plugin.finder.utils.m.a((d)this, false);
-      paramViewGroup = com.tencent.mm.plugin.finder.utils.m.vVH;
-      com.tencent.mm.plugin.finder.utils.m.a((d)this);
-      AppMethodBeat.o(247134);
-      return;
-      paramb = paramViewGroup.getLayoutParams();
-      if (paramb == null)
-      {
-        paramViewGroup = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-        AppMethodBeat.o(247134);
-        throw paramViewGroup;
-      }
-      ((ViewGroup.MarginLayoutParams)paramb).setMarginEnd(au.aD(paramViewGroup.getContext()));
-      continue;
-      paramb = paramViewGroup.getLayoutParams();
-      if (paramb == null)
-      {
-        paramViewGroup = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-        AppMethodBeat.o(247134);
-        throw paramViewGroup;
-      }
-      ((ViewGroup.MarginLayoutParams)paramb).setMarginEnd(at.fromDPToPix(paramViewGroup.getContext(), 16));
+      super();
     }
   }
   
-  public final boolean dgK()
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class c
+    extends q
+    implements a<x>
   {
-    return true;
+    c(br parambr, boolean paramBoolean, LinkedHashMap paramLinkedHashMap)
+    {
+      super();
+    }
   }
   
-  public final void resume()
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class d
+    extends q
+    implements a<x>
   {
-    AppMethodBeat.i(247132);
-    super.resume();
-    int j = au.aD(this.hwr.getContext());
-    int i = j;
-    if (j == 0) {
-      i = at.fromDPToPix(this.hwr.getContext(), 16);
-    }
-    this.hOw = i;
-    AppMethodBeat.o(247132);
-  }
-  
-  public final void statusChange(b.c paramc, Bundle paramBundle)
-  {
-    AppMethodBeat.i(247133);
-    p.h(paramc, "status");
-    switch (bs.$EnumSwitchMapping$0[paramc.ordinal()])
+    d(br parambr)
     {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(247133);
-      return;
-      rg(8);
-      AppMethodBeat.o(247133);
-      return;
-      rg(0);
-      AppMethodBeat.o(247133);
-      return;
-      paramc = com.tencent.mm.plugin.finder.utils.m.vVH;
-      com.tencent.mm.plugin.finder.utils.m.a((d)this, false);
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.plugin.br
  * JD-Core Version:    0.7.0.1
  */

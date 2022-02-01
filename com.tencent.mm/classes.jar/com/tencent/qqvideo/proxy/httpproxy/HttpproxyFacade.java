@@ -5,6 +5,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.qqvideo.proxy.api.IUtils;
 import com.tencent.qqvideo.proxy.common.ConfigStorage;
 import com.tencent.qqvideo.proxy.common.VcSystemInfo;
@@ -126,9 +127,9 @@ public class HttpproxyFacade
         str1 = VcSystemInfo.getDeviceID(mContext);
         String str2 = VcSystemInfo.getOsVersion();
         int i = VcSystemInfo.getNetWorkType(mContext);
-        localObject = ((WifiManager)mContext.getSystemService("wifi")).getConnectionInfo();
+        localObject = (WifiInfo)a.a((WifiManager)mContext.getSystemService("wifi"), "com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade", "jsonReport", "(Ljava/lang/String;)V", "android/net/wifi/WifiManager", "getConnectionInfo", "()Landroid/net/wifi/WifiInfo;");
         if (((WifiInfo)localObject).getBSSID() == null) {
-          break label320;
+          break label335;
         }
         localObject = String.valueOf(WifiManager.calculateSignalLevel(((WifiInfo)localObject).getRssi(), 5));
         String str3 = ConfigStorage.getHttpProxyVersion();
@@ -148,7 +149,7 @@ public class HttpproxyFacade
         {
           paramString = instance();
           if (paramString.mUtils == null) {
-            break label303;
+            break label318;
           }
           if (str1.length() <= 1000)
           {
@@ -173,11 +174,11 @@ public class HttpproxyFacade
         AppMethodBeat.o(89679);
         return;
       }
-      label303:
+      label318:
       "IUtils.MTA_Report:".concat(String.valueOf(str1));
       AppMethodBeat.o(89679);
       return;
-      label320:
+      label335:
       Object localObject = "";
     }
   }
@@ -275,7 +276,7 @@ public class HttpproxyFacade
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqvideo.proxy.httpproxy.HttpproxyFacade
  * JD-Core Version:    0.7.0.1
  */

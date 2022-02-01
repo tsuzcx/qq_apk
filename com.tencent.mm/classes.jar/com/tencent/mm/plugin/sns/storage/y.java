@@ -5,171 +5,19 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class y
 {
-  public static boolean aNz(String paramString)
-  {
-    AppMethodBeat.i(97639);
-    if ((paramString != null) && (paramString.startsWith("sns_table_")))
-    {
-      AppMethodBeat.o(97639);
-      return true;
-    }
-    AppMethodBeat.o(97639);
-    return false;
-  }
-  
-  public static long aOa(String paramString)
-  {
-    AppMethodBeat.i(97640);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(97640);
-      return 0L;
-    }
-    if (paramString.startsWith("ad_table_"))
-    {
-      l = Util.safeParseLong(paramString.substring(9));
-      AppMethodBeat.o(97640);
-      return l;
-    }
-    if (paramString.startsWith("sns_table_"))
-    {
-      l = Util.safeParseLong(paramString.substring(10));
-      AppMethodBeat.o(97640);
-      return l;
-    }
-    long l = Util.safeParseLong(paramString);
-    AppMethodBeat.o(97640);
-    return l;
-  }
-  
-  public static boolean aQH(String paramString)
-  {
-    AppMethodBeat.i(97638);
-    if ((paramString != null) && (paramString.startsWith("ad_table_")))
-    {
-      AppMethodBeat.o(97638);
-      return true;
-    }
-    AppMethodBeat.o(97638);
-    return false;
-  }
-  
-  public static int aQI(String paramString)
-  {
-    AppMethodBeat.i(97641);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(97641);
-      return 0;
-    }
-    if (paramString.startsWith("ad_table_"))
-    {
-      i = Util.safeParseInt(paramString.substring(9));
-      AppMethodBeat.o(97641);
-      return i;
-    }
-    int i = Util.safeParseInt(paramString.substring(10));
-    AppMethodBeat.o(97641);
-    return i;
-  }
-  
-  public static boolean aQJ(String paramString)
-  {
-    AppMethodBeat.i(97642);
-    if (paramString.startsWith("ad_table_"))
-    {
-      if (Util.safeParseLong(paramString.substring(9)) != 0L)
-      {
-        AppMethodBeat.o(97642);
-        return true;
-      }
-      AppMethodBeat.o(97642);
-      return false;
-    }
-    if (Util.safeParseLong(paramString.substring(10)) != 0L)
-    {
-      AppMethodBeat.o(97642);
-      return true;
-    }
-    AppMethodBeat.o(97642);
-    return false;
-  }
-  
-  public static boolean aQK(String paramString)
-  {
-    AppMethodBeat.i(97643);
-    if (!aQJ(paramString))
-    {
-      AppMethodBeat.o(97643);
-      return true;
-    }
-    AppMethodBeat.o(97643);
-    return false;
-  }
-  
-  public static String aQL(String paramString)
-  {
-    AppMethodBeat.i(179142);
-    str1 = "";
-    for (;;)
-    {
-      try
-      {
-        g.aAf();
-        String str2 = a.ayV();
-        if (Util.isNullOrNil(new String[] { paramString, str2 }))
-        {
-          Log.e("StorageHelper", "HalfScreenSubscribe, snsId or uin is empty");
-          AppMethodBeat.o(179142);
-          return "";
-        }
-        localStringBuilder = new StringBuilder();
-        if (Util.isNullOrNil(paramString)) {
-          continue;
-        }
-        localStringBuilder.append(paramString);
-        if (Util.isNullOrNil(str2)) {
-          continue;
-        }
-        paramString = str2;
-      }
-      catch (Throwable paramString)
-      {
-        StringBuilder localStringBuilder;
-        Log.e("StorageHelper", paramString.toString());
-        paramString = str1;
-        continue;
-        paramString = "";
-        continue;
-      }
-      localStringBuilder.append(paramString);
-      if (localStringBuilder.length() > 0) {
-        continue;
-      }
-      Log.e("StorageHelper", "HalfScreenSubscribe, key is empty");
-      AppMethodBeat.o(179142);
-      return "";
-      paramString = "";
-    }
-    paramString = localStringBuilder.toString();
-    paramString = MMApplicationContext.getContext().getSharedPreferences("SnsAdVoteSubscribe", 0).getString(paramString, "");
-    AppMethodBeat.o(179142);
-    return paramString;
-  }
-  
-  public static int aS(String paramString1, String paramString2, String paramString3)
+  public static int aM(String paramString1, String paramString2, String paramString3)
   {
     int k = 0;
     AppMethodBeat.i(97645);
-    paramString1 = aT(paramString1, paramString2, paramString3);
+    paramString1 = aN(paramString1, paramString2, paramString3);
     int j = k;
     int i;
     if (!Util.isNullOrNil(paramString1))
@@ -196,7 +44,7 @@ public final class y
     }
   }
   
-  public static String aT(String paramString1, String paramString2, String paramString3)
+  public static String aN(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(97646);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -230,6 +78,43 @@ public final class y
       label107:
       paramString3 = "";
     }
+  }
+  
+  public static long aYS(String paramString)
+  {
+    AppMethodBeat.i(97640);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(97640);
+      return 0L;
+    }
+    if (paramString.startsWith("ad_table_"))
+    {
+      l = Util.safeParseLong(paramString.substring(9));
+      AppMethodBeat.o(97640);
+      return l;
+    }
+    if (paramString.startsWith("sns_table_"))
+    {
+      l = Util.safeParseLong(paramString.substring(10));
+      AppMethodBeat.o(97640);
+      return l;
+    }
+    long l = Util.safeParseLong(paramString);
+    AppMethodBeat.o(97640);
+    return l;
+  }
+  
+  public static boolean aYj(String paramString)
+  {
+    AppMethodBeat.i(97639);
+    if ((paramString != null) && (paramString.startsWith("sns_table_")))
+    {
+      AppMethodBeat.o(97639);
+      return true;
+    }
+    AppMethodBeat.o(97639);
+    return false;
   }
   
   public static void b(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4)
@@ -281,7 +166,122 @@ public final class y
     AppMethodBeat.o(97647);
   }
   
-  public static String bp(String paramString, long paramLong)
+  public static boolean bbH(String paramString)
+  {
+    AppMethodBeat.i(97638);
+    if ((paramString != null) && (paramString.startsWith("ad_table_")))
+    {
+      AppMethodBeat.o(97638);
+      return true;
+    }
+    AppMethodBeat.o(97638);
+    return false;
+  }
+  
+  public static int bbI(String paramString)
+  {
+    AppMethodBeat.i(97641);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(97641);
+      return 0;
+    }
+    if (paramString.startsWith("ad_table_"))
+    {
+      i = Util.safeParseInt(paramString.substring(9));
+      AppMethodBeat.o(97641);
+      return i;
+    }
+    int i = Util.safeParseInt(paramString.substring(10));
+    AppMethodBeat.o(97641);
+    return i;
+  }
+  
+  public static boolean bbJ(String paramString)
+  {
+    AppMethodBeat.i(97642);
+    if (paramString.startsWith("ad_table_"))
+    {
+      if (Util.safeParseLong(paramString.substring(9)) != 0L)
+      {
+        AppMethodBeat.o(97642);
+        return true;
+      }
+      AppMethodBeat.o(97642);
+      return false;
+    }
+    if (Util.safeParseLong(paramString.substring(10)) != 0L)
+    {
+      AppMethodBeat.o(97642);
+      return true;
+    }
+    AppMethodBeat.o(97642);
+    return false;
+  }
+  
+  public static boolean bbK(String paramString)
+  {
+    AppMethodBeat.i(97643);
+    if (!bbJ(paramString))
+    {
+      AppMethodBeat.o(97643);
+      return true;
+    }
+    AppMethodBeat.o(97643);
+    return false;
+  }
+  
+  public static String bbL(String paramString)
+  {
+    AppMethodBeat.i(179142);
+    str1 = "";
+    for (;;)
+    {
+      try
+      {
+        h.aHE();
+        String str2 = b.aGq();
+        if (Util.isNullOrNil(new String[] { paramString, str2 }))
+        {
+          Log.e("StorageHelper", "HalfScreenSubscribe, snsId or uin is empty");
+          AppMethodBeat.o(179142);
+          return "";
+        }
+        localStringBuilder = new StringBuilder();
+        if (Util.isNullOrNil(paramString)) {
+          continue;
+        }
+        localStringBuilder.append(paramString);
+        if (Util.isNullOrNil(str2)) {
+          continue;
+        }
+        paramString = str2;
+      }
+      catch (Throwable paramString)
+      {
+        StringBuilder localStringBuilder;
+        Log.e("StorageHelper", paramString.toString());
+        paramString = str1;
+        continue;
+        paramString = "";
+        continue;
+      }
+      localStringBuilder.append(paramString);
+      if (localStringBuilder.length() > 0) {
+        continue;
+      }
+      Log.e("StorageHelper", "HalfScreenSubscribe, key is empty");
+      AppMethodBeat.o(179142);
+      return "";
+      paramString = "";
+    }
+    paramString = localStringBuilder.toString();
+    paramString = MMApplicationContext.getContext().getSharedPreferences("SnsAdVoteSubscribe", 0).getString(paramString, "");
+    AppMethodBeat.o(179142);
+    return paramString;
+  }
+  
+  public static String bs(String paramString, long paramLong)
   {
     AppMethodBeat.i(97636);
     paramString = paramString + paramLong;
@@ -289,7 +289,7 @@ public final class y
     return paramString;
   }
   
-  public static String bq(String paramString, long paramLong)
+  public static String bt(String paramString, long paramLong)
   {
     AppMethodBeat.i(97637);
     paramString = paramString + paramLong;
@@ -297,18 +297,18 @@ public final class y
     return paramString;
   }
   
-  public static int kN(String paramString1, String paramString2)
+  public static int lj(String paramString1, String paramString2)
   {
     AppMethodBeat.i(97644);
-    g.aAf();
-    int i = aS(paramString1, paramString2, a.ayV());
+    h.aHE();
+    int i = aM(paramString1, paramString2, b.aGq());
     AppMethodBeat.o(97644);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.y
  * JD-Core Version:    0.7.0.1
  */

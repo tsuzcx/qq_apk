@@ -1,49 +1,58 @@
 package com.tencent.mm.ui.tools;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ah.a.d;
+import com.tencent.mm.ci.a;
+import junit.framework.Assert;
 
 public final class v
 {
-  public static int aQ(Context paramContext, int paramInt)
+  private static v XVi = null;
+  private ColorStateList[] WtI;
+  private boolean XVj;
+  
+  private v(Context paramContext)
   {
-    AppMethodBeat.i(177648);
-    if (Float.compare(a.ez(paramContext), a.iZ(paramContext)) > 0)
-    {
-      if (paramInt < 10)
-      {
-        AppMethodBeat.o(177648);
-        return 2131235383;
-      }
-      AppMethodBeat.o(177648);
-      return 2131235382;
-    }
-    if (paramInt < 10)
-    {
-      AppMethodBeat.o(177648);
-      return 2131235381;
-    }
-    AppMethodBeat.o(177648);
-    return 2131235380;
+    AppMethodBeat.i(143278);
+    this.WtI = new ColorStateList[2];
+    this.XVj = false;
+    this.WtI[0] = a.l(paramContext, a.d.mm_open_status);
+    this.WtI[1] = a.l(paramContext, a.d.mm_pref_summary);
+    AppMethodBeat.o(143278);
   }
   
-  public static int kH(Context paramContext)
+  private static v lB(Context paramContext)
   {
-    AppMethodBeat.i(143282);
-    float f = a.ez(paramContext);
-    if (Float.compare(f, a.iZ(paramContext)) > 0)
+    AppMethodBeat.i(143279);
+    if (paramContext != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.o(143282);
-      return 2131235382;
+      Assert.assertTrue(bool);
+      if ((XVi == null) || (!XVi.XVj)) {
+        XVi = new v(paramContext);
+      }
+      paramContext = XVi;
+      AppMethodBeat.o(143279);
+      return paramContext;
     }
-    if (Float.compare(f, a.iX(paramContext)) > 0)
-    {
-      AppMethodBeat.o(143282);
-      return 2131235384;
-    }
-    AppMethodBeat.o(143282);
-    return 2131235380;
+  }
+  
+  public static ColorStateList lC(Context paramContext)
+  {
+    AppMethodBeat.i(143280);
+    paramContext = lB(paramContext).WtI[0];
+    AppMethodBeat.o(143280);
+    return paramContext;
+  }
+  
+  public static ColorStateList lD(Context paramContext)
+  {
+    AppMethodBeat.i(143281);
+    paramContext = lB(paramContext).WtI[1];
+    AppMethodBeat.o(143281);
+    return paramContext;
   }
 }
 

@@ -17,13 +17,13 @@ public final class MMNativeWebP
     // Byte code:
     //   0: ldc 25
     //   2: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 33	com/tencent/mm/vfs/o
+    //   5: new 33	com/tencent/mm/vfs/q
     //   8: dup
     //   9: aload_0
-    //   10: invokespecial 36	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   10: invokespecial 36	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   13: astore_2
     //   14: aload_2
-    //   15: invokevirtual 40	com/tencent/mm/vfs/o:exists	()Z
+    //   15: invokevirtual 40	com/tencent/mm/vfs/q:ifE	()Z
     //   18: ifne +25 -> 43
     //   21: ldc 8
     //   23: ldc 42
@@ -39,7 +39,7 @@ public final class MMNativeWebP
     //   41: aconst_null
     //   42: areturn
     //   43: aload_2
-    //   44: invokevirtual 55	com/tencent/mm/vfs/o:length	()J
+    //   44: invokevirtual 55	com/tencent/mm/vfs/q:length	()J
     //   47: ldc2_w 56
     //   50: lcmp
     //   51: ifgt +25 -> 76
@@ -59,14 +59,14 @@ public final class MMNativeWebP
     //   76: new 61	java/io/ByteArrayOutputStream
     //   79: dup
     //   80: aload_2
-    //   81: invokevirtual 55	com/tencent/mm/vfs/o:length	()J
+    //   81: invokevirtual 55	com/tencent/mm/vfs/q:length	()J
     //   84: l2i
     //   85: invokespecial 63	java/io/ByteArrayOutputStream:<init>	(I)V
     //   88: astore_0
     //   89: new 65	java/io/BufferedInputStream
     //   92: dup
     //   93: aload_2
-    //   94: invokestatic 71	com/tencent/mm/vfs/s:ao	(Lcom/tencent/mm/vfs/o;)Ljava/io/InputStream;
+    //   94: invokestatic 71	com/tencent/mm/vfs/u:al	(Lcom/tencent/mm/vfs/q;)Ljava/io/InputStream;
     //   97: invokespecial 74	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   100: astore 4
     //   102: aload 4
@@ -336,13 +336,13 @@ public final class MMNativeWebP
     // Byte code:
     //   0: ldc 105
     //   2: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 33	com/tencent/mm/vfs/o
+    //   5: new 33	com/tencent/mm/vfs/q
     //   8: dup
     //   9: aload_0
-    //   10: invokespecial 36	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   10: invokespecial 36	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   13: astore_3
     //   14: aload_3
-    //   15: invokevirtual 40	com/tencent/mm/vfs/o:exists	()Z
+    //   15: invokevirtual 40	com/tencent/mm/vfs/q:ifE	()Z
     //   18: ifne +25 -> 43
     //   21: ldc 8
     //   23: ldc 42
@@ -358,7 +358,7 @@ public final class MMNativeWebP
     //   41: iconst_0
     //   42: ireturn
     //   43: aload_3
-    //   44: invokevirtual 55	com/tencent/mm/vfs/o:length	()J
+    //   44: invokevirtual 55	com/tencent/mm/vfs/q:length	()J
     //   47: ldc2_w 56
     //   50: lcmp
     //   51: ifgt +25 -> 76
@@ -380,7 +380,7 @@ public final class MMNativeWebP
     //   78: aconst_null
     //   79: astore_0
     //   80: aload_3
-    //   81: invokestatic 71	com/tencent/mm/vfs/s:ao	(Lcom/tencent/mm/vfs/o;)Ljava/io/InputStream;
+    //   81: invokestatic 71	com/tencent/mm/vfs/u:al	(Lcom/tencent/mm/vfs/q;)Ljava/io/InputStream;
     //   84: astore_3
     //   85: aload_3
     //   86: astore_0
@@ -538,11 +538,11 @@ public final class MMNativeWebP
     //   72: astore 6
     //   74: aload 10
     //   76: astore_3
-    //   77: new 33	com/tencent/mm/vfs/o
+    //   77: new 33	com/tencent/mm/vfs/q
     //   80: dup
     //   81: aload_2
-    //   82: invokespecial 36	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
-    //   85: invokestatic 135	com/tencent/mm/vfs/s:ap	(Lcom/tencent/mm/vfs/o;)Ljava/io/OutputStream;
+    //   82: invokespecial 36	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
+    //   85: invokestatic 135	com/tencent/mm/vfs/u:an	(Lcom/tencent/mm/vfs/q;)Ljava/io/OutputStream;
     //   88: astore_0
     //   89: aload_0
     //   90: astore 4
@@ -685,11 +685,11 @@ public final class MMNativeWebP
   
   private static String exception2String(Exception paramException)
   {
-    AppMethodBeat.i(215384);
+    AppMethodBeat.i(261975);
     StringWriter localStringWriter = new StringWriter();
     paramException.printStackTrace(new PrintWriter(localStringWriter));
     paramException = localStringWriter.toString();
-    AppMethodBeat.o(215384);
+    AppMethodBeat.o(261975);
     return paramException;
   }
   
@@ -701,7 +701,7 @@ public final class MMNativeWebP
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MMNativeWebP
  * JD-Core Version:    0.7.0.1
  */

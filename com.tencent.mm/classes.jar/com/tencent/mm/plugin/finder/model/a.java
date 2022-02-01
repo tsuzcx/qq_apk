@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.finder.model;
 
-import com.tencent.mm.plugin.finder.feed.model.internal.i;
-import com.tencent.mm.plugin.finder.storage.ao;
+import com.tencent.mm.plugin.finder.feed.model.internal.k;
+import com.tencent.mm.plugin.finder.storage.an;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;)V", "finderMention", "getFinderMention", "()Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "showBeforeSplitView", "", "getShowBeforeSplitView", "()Z", "setShowBeforeSplitView", "(Z)V", "getItemId", "", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;)V", "finderMention", "getFinderMention", "()Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "showBeforeSplitView", "", "getShowBeforeSplitView", "()Z", "setShowBeforeSplitView", "(Z)V", "getItemId", "", "plugin-finder_release"})
 public abstract class a
-  implements i, com.tencent.mm.view.recyclerview.a
+  implements k, com.tencent.mm.view.recyclerview.a
 {
-  public final ao uNF;
-  public boolean uNG;
+  public final an zzT;
+  public boolean zzU;
   
-  public a(ao paramao)
+  public a(an paraman)
   {
-    this.uNF = paramao;
+    this.zzT = paraman;
   }
   
-  public final long lT()
+  public final long mf()
   {
-    return this.uNF.field_id;
+    return this.zzT.field_id;
   }
 }
 

@@ -13,15 +13,15 @@ final class e$1
   public final void run()
   {
     AppMethodBeat.i(36751);
-    TextPaint localTextPaint = this.gym.getPaint();
-    float f = this.gym.getMeasuredWidth() - this.gym.getPaddingLeft() - this.gym.getPaddingRight();
+    TextPaint localTextPaint = this.jip.getPaint();
+    float f = this.jip.getMeasuredWidth() - this.jip.getPaddingLeft() - this.jip.getPaddingRight();
     if (localTextPaint.measureText(this.val$content) > f)
     {
-      this.gym.setMinLines(2);
+      this.jip.setMinLines(2);
       AppMethodBeat.o(36751);
       return;
     }
-    this.gym.setMinLines(0);
+    this.jip.setMinLines(0);
     AppMethodBeat.o(36751);
   }
 }

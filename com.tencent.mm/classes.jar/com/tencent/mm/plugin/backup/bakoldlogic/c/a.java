@@ -11,55 +11,55 @@ public final class a
   extends com.tencent.mm.plugin.backup.g.b
 {
   final byte[] key;
-  final int oIY;
-  private v oPh;
-  private w oPi;
-  final String oSl;
-  final String oSm;
-  private boolean oSn;
+  final int rKO;
+  private v rRe;
+  private w rRf;
+  final String rUk;
+  final String rUl;
+  private boolean rUm;
   
   public a(String paramString1, String paramString2, byte[] paramArrayOfByte, String paramString3)
   {
     AppMethodBeat.i(21936);
-    this.oPh = new v();
-    this.oPi = new w();
-    this.oSn = false;
+    this.rRe = new v();
+    this.rRf = new w();
+    this.rUm = false;
     Log.i("MicroMsg.BakOldAuthScene", "summerbak init id:%s,  hello:%s, ok:%s, stack[%s]", new Object[] { paramString3, paramString1, paramString2, Util.getStack() });
-    this.oPh.oTm = new com.tencent.mm.bw.b(l.e(paramString1.getBytes(), paramArrayOfByte));
-    this.oPh.oUu = 0;
-    this.oPh.ID = paramString3;
-    this.oPh.Version = 0;
-    this.oSl = paramString2;
-    this.oSm = paramString3;
+    this.rRe.rVk = new com.tencent.mm.cd.b(l.e(paramString1.getBytes(), paramArrayOfByte));
+    this.rRe.rWs = 0;
+    this.rRe.ID = paramString3;
+    this.rRe.rWt = 0;
+    this.rUk = paramString2;
+    this.rUl = paramString3;
     this.key = paramArrayOfByte;
-    this.oIY = -1;
+    this.rKO = -1;
     AppMethodBeat.o(21936);
   }
   
-  public final void Bm(int paramInt)
+  public final void EN(int paramInt)
   {
     AppMethodBeat.i(21937);
-    if (this.oPi.oTW == 0)
+    if (this.rRf.rVU == 0)
     {
-      if (this.oSm.equals(this.oPi.ID))
+      if (this.rUl.equals(this.rRf.ID))
       {
-        String str = new String(l.d(this.oPi.oTm.zy, this.key));
-        if (str.length() != this.oSl.length()) {}
-        for (boolean bool = false;; bool = str.equals(this.oSl))
+        String str = new String(l.d(this.rRf.rVk.UH, this.key));
+        if (str.length() != this.rUk.length()) {}
+        for (boolean bool = false;; bool = str.equals(this.rUk))
         {
-          this.oSn = bool;
-          Log.i("MicroMsg.BakOldAuthScene", "check ok result:%b", new Object[] { Boolean.valueOf(this.oSn) });
-          if (!this.oSn) {
+          this.rUm = bool;
+          Log.i("MicroMsg.BakOldAuthScene", "check ok result:%b", new Object[] { Boolean.valueOf(this.rUm) });
+          if (!this.rUm) {
             break;
           }
-          q(0, 0, "auth ok");
-          this.oPh.oTm = new com.tencent.mm.bw.b(l.e(this.oSl.getBytes(), this.key));
-          this.oPh.oUu = 1;
-          this.oPh.ID = this.oSm;
+          r(0, 0, "auth ok");
+          this.rRe.rVk = new com.tencent.mm.cd.b(l.e(this.rUk.getBytes(), this.key));
+          this.rRe.rWs = 1;
+          this.rRe.ID = this.rUl;
           try
           {
             Log.i("MicroMsg.BakOldAuthScene", "directSendAuthOk");
-            com.tencent.mm.plugin.backup.g.b.D(this.oPh.toByteArray(), getType(), paramInt);
+            com.tencent.mm.plugin.backup.g.b.F(this.rRe.toByteArray(), getType(), paramInt);
             AppMethodBeat.o(21937);
             return;
           }
@@ -71,28 +71,28 @@ public final class a
           }
         }
         Log.e("MicroMsg.BakOldAuthScene", "check ok failed");
-        q(4, 1, "not ok packet");
+        r(4, 1, "not ok packet");
         AppMethodBeat.o(21937);
         return;
       }
       Log.e("MicroMsg.BakOldAuthScene", "not the same id");
-      q(4, -1, "not the same id");
+      r(4, -1, "not the same id");
       AppMethodBeat.o(21937);
       return;
     }
-    Log.e("MicroMsg.BakOldAuthScene", "errType %d", new Object[] { Integer.valueOf(this.oPi.oTW) });
-    q(4, this.oPi.oTW, "not not success");
+    Log.e("MicroMsg.BakOldAuthScene", "errType %d", new Object[] { Integer.valueOf(this.rRf.rVU) });
+    r(4, this.rRf.rVU, "not not success");
     AppMethodBeat.o(21937);
   }
   
-  public final com.tencent.mm.bw.a cgq()
+  public final com.tencent.mm.cd.a ctC()
   {
-    return this.oPi;
+    return this.rRf;
   }
   
-  public final com.tencent.mm.bw.a cgr()
+  public final com.tencent.mm.cd.a ctD()
   {
-    return this.oPh;
+    return this.rRe;
   }
   
   public final int getType()

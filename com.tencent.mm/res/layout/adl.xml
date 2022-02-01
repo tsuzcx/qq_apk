@@ -3,12 +3,12 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <View android:id="@id/clc" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
     <com.tencent.mm.live.view.LiveBottomSheetPanel android:orientation="vertical" android:id="@id/cle" android:background="@drawable/a_h" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <android.support.v4.widget.NestedScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <androidx.core.widget.NestedScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
             <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <TextView android:textSize="14.0dip" android:textColor="@color/ag2" android:id="@id/clg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:text="@string/d0c" android:layout_marginStart="@dimen/ce" />
                 <TextView android:textSize="14.0dip" android:textColor="@color/ag2" android:id="@id/clf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce" android:text="@string/d0b" android:layout_below="@id/clg" android:layout_marginStart="@dimen/ce" />
                 <TextView android:textColor="@color/ag2" android:id="@id/cld" android:layout_marginTop="@dimen/cs" android:layout_marginBottom="@dimen/ci" android:text="@string/w0" android:layout_below="@id/clf" android:layout_centerHorizontal="true" style="@style/p3" />
             </RelativeLayout>
-        </android.support.v4.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
     </com.tencent.mm.live.view.LiveBottomSheetPanel>
 </LinearLayout>

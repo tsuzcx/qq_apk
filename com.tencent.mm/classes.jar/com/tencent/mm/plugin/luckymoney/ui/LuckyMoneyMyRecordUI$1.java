@@ -12,14 +12,14 @@ final class LuckyMoneyMyRecordUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(65633);
-    this.zeQ.finish();
+    this.EJT.finish();
     AppMethodBeat.o(65633);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyMyRecordUI.1
  * JD-Core Version:    0.7.0.1
  */

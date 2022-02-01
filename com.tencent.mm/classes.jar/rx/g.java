@@ -9,7 +9,7 @@ import rx.internal.c.k;
 
 public abstract class g
 {
-  static final long UjX = TimeUnit.MINUTES.toNanos(Long.getLong("rx.scheduler.drift-tolerance", 15L).longValue());
+  static final long abNs = TimeUnit.MINUTES.toNanos(Long.getLong("rx.scheduler.drift-tolerance", 15L).longValue());
   
   public abstract a createWorker();
   
@@ -38,7 +38,7 @@ public abstract class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.g
  * JD-Core Version:    0.7.0.1
  */

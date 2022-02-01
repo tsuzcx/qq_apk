@@ -3,11 +3,11 @@ package com.tencent.kinda.framework.app;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ea;
+import com.tencent.mm.f.c.ee;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public class KindaConfigCacheItem
-  extends ea
+  extends ee
 {
   private static final String TAG = "MicroMsg.KindaConfigCacheItem";
   public static final int TYPE_BOOLEAN = 4;
@@ -22,7 +22,7 @@ public class KindaConfigCacheItem
   static
   {
     AppMethodBeat.i(18392);
-    info = ea.initAutoDBInfo(ea.class);
+    info = ee.initAutoDBInfo(ee.class);
     AppMethodBeat.o(18392);
   }
   
@@ -48,7 +48,7 @@ public class KindaConfigCacheItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaConfigCacheItem
  * JD-Core Version:    0.7.0.1
  */

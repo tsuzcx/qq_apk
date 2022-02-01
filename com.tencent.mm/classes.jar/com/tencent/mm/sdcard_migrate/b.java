@@ -10,9 +10,9 @@ import java.io.File;
 
 public final class b
 {
-  private static final Boolean[] NHz = { null };
+  private static final Boolean[] UVa = { null };
   
-  private static String Wr(String paramString)
+  private static String bug(String paramString)
   {
     AppMethodBeat.i(176869);
     File localFile = new File(paramString);
@@ -24,31 +24,31 @@ public final class b
     }
     catch (Throwable localThrowable)
     {
-      ExtStorageMigrateMonitor.gwK().printErrStackTrace("MicroMsg.ExtStorageMigrateStatus", localThrowable, "[-] Fail to get canonical path for: %s", new Object[] { paramString });
+      ExtStorageMigrateMonitor.hsJ().printErrStackTrace("MicroMsg.ExtStorageMigrateStatus", localThrowable, "[-] Fail to get canonical path for: %s", new Object[] { paramString });
       paramString = localFile.getAbsolutePath();
       AppMethodBeat.o(176869);
     }
     return paramString;
   }
   
-  public static boolean bhQ(String paramString)
+  public static boolean buj(String paramString)
   {
     AppMethodBeat.i(176862);
-    paramString = "key_is_migrated_" + Wr(paramString);
+    paramString = "key_is_migrated_" + bug(paramString);
     boolean bool = MultiProcessMMKV.getMMKV("extmig_status_memo_storage").getBoolean(paramString, false);
     AppMethodBeat.o(176862);
     return bool;
   }
   
-  static void bhR(String paramString)
+  static void buk(String paramString)
   {
     AppMethodBeat.i(176863);
-    paramString = "key_is_migrated_" + Wr(paramString);
+    paramString = "key_is_migrated_" + bug(paramString);
     MultiProcessMMKV.getMMKV("extmig_status_memo_storage").encode(paramString, true);
     AppMethodBeat.o(176863);
   }
   
-  public static boolean gwY()
+  public static boolean hsX()
   {
     AppMethodBeat.i(176864);
     boolean bool = MultiProcessMMKV.getMMKV("extmig_status_memo_storage").getBoolean("key_is_olddata_ignored_v2", false);
@@ -56,85 +56,85 @@ public final class b
     return bool;
   }
   
-  public static boolean gwZ()
+  public static boolean hsY()
   {
-    AppMethodBeat.i(197161);
+    AppMethodBeat.i(199985);
     boolean bool = MultiProcessMMKV.getMMKV("extmig_status_memo_storage").getBoolean("key_indicate_goon_by_migrate_routine", false);
-    AppMethodBeat.o(197161);
+    AppMethodBeat.o(199985);
     return bool;
   }
   
-  static void gxa()
+  static void hsZ()
   {
-    AppMethodBeat.i(197162);
+    AppMethodBeat.i(199986);
     MultiProcessMMKV.getMMKV("extmig_status_memo_storage").encode("key_indicate_goon_by_migrate_routine", true);
-    AppMethodBeat.o(197162);
+    AppMethodBeat.o(199986);
   }
   
-  static void gxb()
+  static void hta()
   {
-    AppMethodBeat.i(197163);
+    AppMethodBeat.i(199987);
     MultiProcessMMKV.getMMKV("extmig_status_memo_storage").encode("key_indicate_goon_by_migrate_routine", false);
-    AppMethodBeat.o(197163);
+    AppMethodBeat.o(199987);
   }
   
-  static void gxc()
+  static void htb()
   {
-    AppMethodBeat.i(197164);
+    AppMethodBeat.i(199989);
     MultiProcessMMKV.getMMKV("extmig_status_memo_storage").encode("key_indicate_migrating_by_migrate_routine", true);
-    AppMethodBeat.o(197164);
+    AppMethodBeat.o(199989);
   }
   
-  static void gxd()
+  static void htc()
   {
-    AppMethodBeat.i(197165);
+    AppMethodBeat.i(199991);
     MultiProcessMMKV.getMMKV("extmig_status_memo_storage").encode("key_indicate_migrating_by_migrate_routine", false);
-    AppMethodBeat.o(197165);
+    AppMethodBeat.o(199991);
   }
   
-  public static boolean gxe()
+  public static boolean htd()
   {
-    AppMethodBeat.i(197166);
+    AppMethodBeat.i(199995);
     boolean bool = MultiProcessMMKV.getMMKV("extmig_status_memo_storage").getBoolean("key_indicate_rescan_needed_by_migrate_routine", false);
-    AppMethodBeat.o(197166);
+    AppMethodBeat.o(199995);
     return bool;
   }
   
-  static void gxf()
+  static void hte()
   {
-    AppMethodBeat.i(197167);
+    AppMethodBeat.i(199996);
     MultiProcessMMKV.getMMKV("extmig_status_memo_storage").encode("key_indicate_rescan_needed_by_migrate_routine", true);
-    AppMethodBeat.o(197167);
+    AppMethodBeat.o(199996);
   }
   
-  static void gxg()
+  static void htf()
   {
-    AppMethodBeat.i(197168);
+    AppMethodBeat.i(199998);
     MultiProcessMMKV.getMMKV("extmig_status_memo_storage").encode("key_indicate_rescan_needed_by_migrate_routine", false);
-    AppMethodBeat.o(197168);
+    AppMethodBeat.o(199998);
   }
   
-  public static void gxh()
+  public static void htg()
   {
     AppMethodBeat.i(176868);
     AppMethodBeat.o(176868);
   }
   
-  static void ju(Context paramContext)
+  static void ky(Context paramContext)
   {
     AppMethodBeat.i(176865);
-    if (jv(paramContext))
+    if (kz(paramContext))
     {
-      ExtStorageMigrateMonitor.gwK().i("MicroMsg.ExtStorageMigrateStatus", "[+] Mark newly installed in process: %s", new Object[] { d.cQi });
+      ExtStorageMigrateMonitor.hsJ().i("MicroMsg.ExtStorageMigrateStatus", "[+] Mark newly installed in process: %s", new Object[] { d.cQP });
       MultiProcessMMKV.getMMKV("extmig_status_memo_storage").encode("key_is_olddata_ignored_v2", true);
     }
     AppMethodBeat.o(176865);
   }
   
-  private static boolean jv(Context paramContext)
+  private static boolean kz(Context paramContext)
   {
     AppMethodBeat.i(176866);
-    if (new File(com.tencent.mm.loader.j.b.aKB(), "version_history.cfg").exists())
+    if (new File(com.tencent.mm.loader.j.b.aSD(), "version_history.cfg").exists())
     {
       AppMethodBeat.o(176866);
       return false;
@@ -160,7 +160,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdcard_migrate.b
  * JD-Core Version:    0.7.0.1
  */

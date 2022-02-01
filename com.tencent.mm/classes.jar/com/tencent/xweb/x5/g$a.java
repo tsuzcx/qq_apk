@@ -7,30 +7,30 @@ import com.tencent.xweb.r;
 public final class g$a
   implements r
 {
-  SslErrorHandler SFc;
+  SslErrorHandler aagn;
   
   public g$a(SslErrorHandler paramSslErrorHandler)
   {
-    this.SFc = paramSslErrorHandler;
+    this.aagn = paramSslErrorHandler;
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(153847);
-    this.SFc.cancel();
+    this.aagn.cancel();
     AppMethodBeat.o(153847);
   }
   
   public final void proceed()
   {
     AppMethodBeat.i(153846);
-    this.SFc.proceed();
+    this.aagn.proceed();
     AppMethodBeat.o(153846);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.x5.g.a
  * JD-Core Version:    0.7.0.1
  */

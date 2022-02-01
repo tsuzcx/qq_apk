@@ -1,94 +1,128 @@
 package com.tencent.mm.plugin.finder.nearby;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.extension.reddot.f;
-import com.tencent.mm.plugin.finder.extension.reddot.k;
-import com.tencent.mm.protocal.protobuf.bbi;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.plugin.finder.feed.ui.FinderLiveOperationUI;
+import com.tencent.mm.plugin.finder.nearby.live.square.find.FinderLiveFindPageUI;
+import com.tencent.mm.plugin.finder.nearby.live.square.more.NearbyLiveMoreUI;
+import com.tencent.mm.plugin.finder.nearby.trace.c;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/nearby/NearbyConfig;", "", "()V", "TAG", "", "get3TabTargetTabCommentScene", "", "get3TabTargetTabType", "saveExitTabType", "", "tabType", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/FinderNearByActivityRouter;", "", "()V", "enterFinderLbsLiveFriendsUI", "", "context", "Landroid/content/Context;", "i", "Landroid/content/Intent;", "enterFinderLiveFindPageUI", "enterFinderLiveOperationUI", "enterNearbyLiveMoreUI", "plugin-finder-nearby_release"})
 public final class a
 {
-  public static final a uQd;
+  public static final a zCs;
   
   static
   {
-    AppMethodBeat.i(248996);
-    uQd = new a();
-    AppMethodBeat.o(248996);
+    AppMethodBeat.i(199366);
+    zCs = new a();
+    AppMethodBeat.o(199366);
   }
   
-  public static void Jy(int paramInt)
+  public static void enterFinderLbsLiveFriendsUI(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(248995);
-    e locale = g.aAh();
-    p.g(locale, "MMKernel.storage()");
-    locale.azQ().set(ar.a.Okp, Integer.valueOf(paramInt));
-    AppMethodBeat.o(248995);
-  }
-  
-  public static int dlh()
-  {
-    AppMethodBeat.i(248993);
-    Object localObject = g.aAh();
-    p.g(localObject, "MMKernel.storage()");
-    int j = ((e)localObject).azQ().getInt(ar.a.Okp, -1);
-    localObject = g.ah(PluginFinder.class);
-    p.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-    localObject = ((PluginFinder)localObject).getRedDotManager().asX("NearbyEntrance");
-    int i;
-    if (localObject != null) {
-      if (((k)localObject).field_ctrInfo.type == 1014)
-      {
-        Log.i("Finder.RedDotManager", "[getNearbyAliveTabType] entrance red dot is foot print, jump to default tab");
-        i = -1;
+    AppMethodBeat.i(199356);
+    p.k(paramContext, "context");
+    Object localObject = c.zJD;
+    c.dMD().fo("clickEnter");
+    localObject = paramIntent;
+    if (paramIntent == null) {
+      localObject = new Intent();
+    }
+    paramIntent = com.tencent.mm.plugin.finder.nearby.preload.a.zIv;
+    com.tencent.mm.plugin.finder.nearby.preload.a.al((Intent)localObject);
+    if (!(paramContext instanceof Activity)) {}
+    for (paramIntent = (Intent)localObject;; paramIntent = null)
+    {
+      if (paramIntent != null) {
+        paramIntent.addFlags(268435456);
       }
+      ((Intent)localObject).setClass(paramContext, NearbyUI.class);
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramIntent.aFh(), "com/tencent/mm/plugin/finder/nearby/FinderNearByActivityRouter", "enterFinderLbsLiveFriendsUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/finder/nearby/FinderNearByActivityRouter", "enterFinderLbsLiveFriendsUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(199356);
+      return;
     }
-    for (;;)
-    {
-      Log.i("NearbyConfig", "get3TabTargetTabType defaultType=1001, lastExitType:" + j + " aliveType=" + i);
-      if (i == -1) {
-        break;
-      }
-      AppMethodBeat.o(248993);
-      return i;
-      i = f.a((k)localObject);
-      continue;
-      i = -1;
-    }
-    if ((j != -1) && (j != 1003))
-    {
-      AppMethodBeat.o(248993);
-      return j;
-    }
-    AppMethodBeat.o(248993);
-    return 1001;
   }
   
-  public static int dli()
+  public static void enterFinderLiveOperationUI(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(248994);
-    switch (dlh())
-    {
-    default: 
-      AppMethodBeat.o(248994);
-      return 94;
-    case 1002: 
-      AppMethodBeat.o(248994);
-      return 15;
-    case 1001: 
-      AppMethodBeat.o(248994);
-      return 94;
+    AppMethodBeat.i(199364);
+    p.k(paramContext, "context");
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
     }
-    AppMethodBeat.o(248994);
-    return 77;
+    if (!(paramContext instanceof Activity)) {}
+    for (paramIntent = localIntent;; paramIntent = null)
+    {
+      if (paramIntent != null) {
+        paramIntent.addFlags(268435456);
+      }
+      localIntent.setClass(paramContext, FinderLiveOperationUI.class);
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramIntent.aFh(), "com/tencent/mm/plugin/finder/nearby/FinderNearByActivityRouter", "enterFinderLiveOperationUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/finder/nearby/FinderNearByActivityRouter", "enterFinderLiveOperationUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(199364);
+      return;
+    }
+  }
+  
+  public static void enterNearbyLiveMoreUI(Context paramContext, Intent paramIntent)
+  {
+    AppMethodBeat.i(199360);
+    p.k(paramContext, "context");
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    if (!(paramContext instanceof Activity)) {}
+    for (paramIntent = localIntent;; paramIntent = null)
+    {
+      if (paramIntent != null) {
+        paramIntent.addFlags(268435456);
+      }
+      localIntent.setClass(paramContext, NearbyLiveMoreUI.class);
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramIntent.aFh(), "com/tencent/mm/plugin/finder/nearby/FinderNearByActivityRouter", "enterNearbyLiveMoreUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/finder/nearby/FinderNearByActivityRouter", "enterNearbyLiveMoreUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(199360);
+      return;
+    }
+  }
+  
+  public static void u(Context paramContext, Intent paramIntent)
+  {
+    AppMethodBeat.i(199361);
+    p.k(paramContext, "context");
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    paramIntent = com.tencent.mm.plugin.finder.nearby.preload.a.zIv;
+    com.tencent.mm.plugin.finder.nearby.preload.a.al(localIntent);
+    if (!(paramContext instanceof Activity)) {}
+    for (paramIntent = localIntent;; paramIntent = null)
+    {
+      if (paramIntent != null) {
+        paramIntent.addFlags(268435456);
+      }
+      localIntent.setClass(paramContext, FinderLiveFindPageUI.class);
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramIntent.aFh(), "com/tencent/mm/plugin/finder/nearby/FinderNearByActivityRouter", "enterFinderLiveFindPageUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/finder/nearby/FinderNearByActivityRouter", "enterFinderLiveFindPageUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(199361);
+      return;
+    }
   }
 }
 

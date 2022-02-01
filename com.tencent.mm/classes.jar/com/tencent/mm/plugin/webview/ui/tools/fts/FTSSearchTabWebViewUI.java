@@ -5,112 +5,134 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.websearch.api.ar;
+import com.tencent.mm.plugin.webview.c.c;
+import com.tencent.mm.plugin.webview.c.h;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.vendor.MIUI;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.e.p;
+import com.tencent.mm.ui.f.r;
 import com.tencent.mm.ui.search.FTSEditTextView;
 import com.tencent.mm.ui.search.WebSearchView;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.xweb.z;
+import com.tencent.xweb.aa;
 import java.util.ArrayList;
 
 public class FTSSearchTabWebViewUI
   extends FTSBaseWebViewUI
 {
-  public final void agP(int paramInt)
+  public boolean aDV()
+  {
+    AppMethodBeat.i(80701);
+    if (hak() != null) {
+      hak().getFtsEditText().bGw.clearFocus();
+    }
+    int i = getIntent().getIntExtra(f.r.VST, 0);
+    if (i != 0)
+    {
+      ArrayList localArrayList = getIntent().getStringArrayListExtra(f.r.VSU);
+      if (localArrayList != null) {
+        h.IzE.a(i, new Object[] { localArrayList });
+      }
+    }
+    boolean bool = super.aDV();
+    AppMethodBeat.o(80701);
+    return bool;
+  }
+  
+  public final void aoF(int paramInt)
   {
     AppMethodBeat.i(80705);
-    if ((this.pGj == null) || (this.pGj.getSettings() == null))
+    if ((this.pHS == null) || (this.pHS.getSettings() == null))
     {
       AppMethodBeat.o(80705);
       return;
     }
-    float f = getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).getFloat("current_text_size_scale_key", a.iX(getContext()));
-    if (f >= a.jd(getContext()))
+    float f = getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).getFloat("current_text_size_scale_key", a.kb(getContext()));
+    if (f >= a.kh(getContext()))
     {
-      this.pGj.getSettings().setTextZoom(160);
+      this.pHS.getSettings().setTextZoom(160);
       AppMethodBeat.o(80705);
       return;
     }
-    if (f >= a.jc(getContext()))
+    if (f >= a.kg(getContext()))
     {
-      this.pGj.getSettings().setTextZoom(150);
+      this.pHS.getSettings().setTextZoom(150);
       AppMethodBeat.o(80705);
       return;
     }
-    if (f >= a.jb(getContext()))
+    if (f >= a.kf(getContext()))
     {
-      this.pGj.getSettings().setTextZoom(140);
+      this.pHS.getSettings().setTextZoom(140);
       AppMethodBeat.o(80705);
       return;
     }
-    if (f >= a.ja(getContext()))
+    if (f >= a.ke(getContext()))
     {
-      this.pGj.getSettings().setTextZoom(130);
+      this.pHS.getSettings().setTextZoom(130);
       AppMethodBeat.o(80705);
       return;
     }
-    if (f >= a.iZ(getContext()))
+    if (f >= a.kd(getContext()))
     {
-      this.pGj.getSettings().setTextZoom(120);
+      this.pHS.getSettings().setTextZoom(120);
       AppMethodBeat.o(80705);
       return;
     }
-    if (f >= a.iY(getContext()))
+    if (f >= a.kc(getContext()))
     {
-      this.pGj.getSettings().setTextZoom(110);
+      this.pHS.getSettings().setTextZoom(110);
       AppMethodBeat.o(80705);
       return;
     }
-    if (f >= a.iX(getContext()))
+    if (f >= a.kb(getContext()))
     {
-      this.pGj.getSettings().setTextZoom(100);
+      this.pHS.getSettings().setTextZoom(100);
       AppMethodBeat.o(80705);
       return;
     }
-    if (f >= a.iW(getContext()))
+    if (f >= a.ka(getContext()))
     {
-      this.pGj.getSettings().setTextZoom(90);
+      this.pHS.getSettings().setTextZoom(90);
       AppMethodBeat.o(80705);
       return;
     }
-    this.pGj.getSettings().setTextZoom(80);
+    this.pHS.getSettings().setTextZoom(80);
     AppMethodBeat.o(80705);
   }
   
-  public boolean awE()
+  protected final Drawable aoJ(int paramInt)
   {
-    AppMethodBeat.i(80701);
-    if (this.JnL != null) {
-      this.JnL.getFtsEditText().vy.clearFocus();
-    }
-    int i = getIntent().getIntExtra(e.p.OzF, 0);
-    if (i != 0)
+    AppMethodBeat.i(214521);
+    if (this.QkX)
     {
-      ArrayList localArrayList = getIntent().getStringArrayListExtra(e.p.OzG);
-      if (localArrayList != null) {
-        h.CyF.a(i, new Object[] { localArrayList });
-      }
+      localDrawable = getResources().getDrawable(c.h.icons_outlined_wechat_search_one_search);
+      AppMethodBeat.o(214521);
+      return localDrawable;
     }
-    boolean bool = super.awE();
-    AppMethodBeat.o(80701);
-    return bool;
+    Drawable localDrawable = super.aoJ(paramInt);
+    AppMethodBeat.o(214521);
+    return localDrawable;
   }
   
   protected String getHint()
   {
     AppMethodBeat.i(80700);
+    if (this.QkX)
+    {
+      str = MMApplicationContext.getContext().getResources().getString(c.i.app_search);
+      AppMethodBeat.o(80700);
+      return str;
+    }
     String str = getIntent().getStringExtra("key_search_input_hint");
     if (!TextUtils.isEmpty(str))
     {
@@ -118,39 +140,39 @@ public class FTSSearchTabWebViewUI
       return str;
     }
     int i = -1;
-    switch (this.type)
+    switch (getType())
     {
     }
     for (;;)
     {
-      if (this.scene == 56) {
-        i = 2131765100;
+      if (getScene() == 56) {
+        i = c.i.search_recommend_hint_history;
       }
       if (i >= 0) {
         break;
       }
-      str = MMApplicationContext.getContext().getResources().getString(2131755972);
+      str = MMApplicationContext.getContext().getResources().getString(c.i.app_search);
       AppMethodBeat.o(80700);
       return str;
-      i = 2131765075;
+      i = c.i.search_education_biz_contact;
       continue;
-      i = 2131761017;
+      i = c.i.fts_header_timeline;
       continue;
-      i = 2131765074;
+      i = c.i.search_education_article;
       continue;
-      i = 2131761015;
+      i = c.i.fts_header_poi;
       continue;
-      i = 2131755440;
+      i = c.i.app_brand_entrance;
       continue;
-      i = 2131761004;
+      i = c.i.fts_header_emoji;
       continue;
-      i = 2131761005;
+      i = c.i.fts_header_emoji_product;
       continue;
-      i = 2131761013;
+      i = c.i.fts_header_music;
       continue;
-      i = 2131761014;
+      i = c.i.fts_header_novel;
     }
-    str = MMApplicationContext.getContext().getResources().getString(2131765073, new Object[] { MMApplicationContext.getContext().getResources().getString(i) });
+    str = MMApplicationContext.getContext().getResources().getString(c.i.search_detail_page_hint, new Object[] { MMApplicationContext.getContext().getResources().getString(i) });
     AppMethodBeat.o(80700);
     return str;
   }
@@ -168,17 +190,17 @@ public class FTSSearchTabWebViewUI
     AppMethodBeat.i(80699);
     super.onCreate(paramBundle);
     int i;
-    if ((d.oD(23)) && (!MIUI.isMIUIV8()))
+    if ((d.qV(23)) && (!MIUI.isMIUIV8()))
     {
-      i = getResources().getColor(2131101424);
-      if (ao.isDarkMode()) {
-        break label54;
+      i = getResources().getColor(c.c.white);
+      if (com.tencent.mm.ui.ar.isDarkMode()) {
+        break label55;
       }
     }
-    label54:
+    label55:
     for (boolean bool = true;; bool = false)
     {
-      bt(i, bool);
+      bF(i, bool);
       AppMethodBeat.o(80699);
       return;
     }
@@ -188,7 +210,7 @@ public class FTSSearchTabWebViewUI
   {
     AppMethodBeat.i(80703);
     super.onPause();
-    ar.fYn();
+    com.tencent.mm.plugin.websearch.api.ar.gQY();
     AppMethodBeat.o(80703);
   }
   
@@ -196,7 +218,7 @@ public class FTSSearchTabWebViewUI
   {
     AppMethodBeat.i(80702);
     super.onResume();
-    ar.fYm();
+    com.tencent.mm.plugin.websearch.api.ar.gQX();
     AppMethodBeat.o(80702);
   }
   
@@ -208,7 +230,7 @@ public class FTSSearchTabWebViewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.FTSSearchTabWebViewUI
  * JD-Core Version:    0.7.0.1
  */

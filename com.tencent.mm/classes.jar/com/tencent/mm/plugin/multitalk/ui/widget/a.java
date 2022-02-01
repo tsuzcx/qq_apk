@@ -1,12 +1,15 @@
 package com.tencent.mm.plugin.multitalk.ui.widget;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView.a;
+import android.graphics.Point;
 import android.view.View.OnClickListener;
+import androidx.recyclerview.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
+import com.tencent.mm.ui.ar;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroupMember;
 import java.util.ArrayList;
 import java.util.ArrayList<Lcom.tencent.pb.talkroom.sdk.MultiTalkGroupMember;>;
@@ -17,34 +20,35 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import kotlin.a.j;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
+import kotlin.l;
 import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarLayoutAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarLayoutHolder;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "avatarItems", "Ljava/util/concurrent/CopyOnWriteArrayList;", "Lcom/tencent/mm/plugin/multitalk/data/MultitalkAvatarViewData;", "avatarViewManager", "Lcom/tencent/mm/plugin/multitalk/model/AvatarViewManager;", "getContext", "()Landroid/content/Context;", "setContext", "footerCount", "", "headerCount", "isFooterShow", "", "mAvatarItemHasBeenShow", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "mCurrentScreenSize", "Ljava/util/ArrayList;", "mCurrentVideoSize", "mIs2GOr3G", "addMember", "", "members", "Lcom/tencent/pb/talkroom/sdk/MultiTalkGroupMember;", "clickListener", "Landroid/view/View$OnClickListener;", "checkIsAvatarContent", "position", "findChildIndexByUsername", "userName", "getAvatarCount", "getAvatarWidth", "getItemCount", "getItemViewType", "getMarginWidth", "onBindViewHolder", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "index", "registerAvatarManager", "manager", "setCurrentScreenSet", "currentScreenSet", "setCurrentVideoSet", "currentVideoSet", "setIs2GOr3G", "is2GOr3G", "Companion", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarLayoutAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarLayoutHolder;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "avatarItems", "Ljava/util/concurrent/CopyOnWriteArrayList;", "Lcom/tencent/mm/plugin/multitalk/data/MultitalkAvatarViewData;", "avatarViewManager", "Lcom/tencent/mm/plugin/multitalk/model/AvatarViewManager;", "getContext", "()Landroid/content/Context;", "setContext", "footerCount", "", "headerCount", "isFooterShow", "", "mAvatarItemHasBeenShow", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "mCurrentScreenSize", "Ljava/util/ArrayList;", "mCurrentVideoSize", "mIs2GOr3G", "addMember", "", "members", "Lcom/tencent/pb/talkroom/sdk/MultiTalkGroupMember;", "clickListener", "Landroid/view/View$OnClickListener;", "checkIsAvatarContent", "position", "findChildIndexByUsername", "userName", "getAvatarCount", "getAvatarWidth", "getItemCount", "getItemViewType", "getMarginWidth", "onBindViewHolder", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "index", "registerAvatarManager", "manager", "setCurrentScreenSet", "currentScreenSet", "setCurrentVideoSet", "currentVideoSet", "setIs2GOr3G", "is2GOr3G", "Companion", "plugin-multitalk_release"})
 public final class a
   extends RecyclerView.a<b>
 {
-  private static final int tMh = 2;
-  private static final int tMi = 3;
-  private static final int zQQ = 1;
-  public static final a.a zQR;
+  private static final int Fwt = 1;
+  public static final a.a Fwu;
+  private static final int xvY = 2;
+  private static final int xvZ = 3;
+  public final int BcO;
+  public CopyOnWriteArrayList<com.tencent.mm.plugin.multitalk.data.a> Fwl;
+  public boolean Fwm;
+  public HashSet<String> Fwn;
+  public ArrayList<String> Fwo;
+  private HashSet<String> Fwp;
+  private boolean Fwq;
+  int Fwr;
+  public com.tencent.mm.plugin.multitalk.model.a Fws;
   private Context context;
-  public final int wqJ;
-  public CopyOnWriteArrayList<com.tencent.mm.plugin.multitalk.data.a> zQI;
-  public boolean zQJ;
-  public HashSet<String> zQK;
-  public ArrayList<String> zQL;
-  private HashSet<String> zQM;
-  private boolean zQN;
-  int zQO;
-  public com.tencent.mm.plugin.multitalk.model.a zQP;
   
   static
   {
     AppMethodBeat.i(178965);
-    zQR = new a.a((byte)0);
-    zQQ = 1;
-    tMh = 2;
-    tMi = 3;
+    Fwu = new a.a((byte)0);
+    Fwt = 1;
+    xvY = 2;
+    xvZ = 3;
     AppMethodBeat.o(178965);
   }
   
@@ -52,49 +56,49 @@ public final class a
   {
     AppMethodBeat.i(178964);
     this.context = paramContext;
-    this.zQI = new CopyOnWriteArrayList();
-    this.wqJ = 1;
-    this.zQO = 1;
+    this.Fwl = new CopyOnWriteArrayList();
+    this.BcO = 1;
+    this.Fwr = 1;
     AppMethodBeat.o(178964);
   }
   
-  private final int Ro(int paramInt)
+  private final int XD(int paramInt)
   {
-    AppMethodBeat.i(239761);
-    switch (eoy())
+    AppMethodBeat.i(205020);
+    switch (eYq())
     {
     default: 
-      AppMethodBeat.o(239761);
+      AppMethodBeat.o(205020);
       return 0;
     }
     if (paramInt == 2)
     {
-      paramInt = eoz() / 2;
-      AppMethodBeat.o(239761);
+      paramInt = eYr() / 2;
+      AppMethodBeat.o(205020);
       return paramInt;
     }
-    AppMethodBeat.o(239761);
+    AppMethodBeat.o(205020);
     return 0;
   }
   
-  private int eoy()
+  private int eYq()
   {
     AppMethodBeat.i(178961);
     int i = getItemCount();
-    int j = this.wqJ;
-    int k = this.zQO;
+    int j = this.BcO;
+    int k = this.Fwr;
     AppMethodBeat.o(178961);
     return i - j - k;
   }
   
-  private final int eoz()
+  private final int eYr()
   {
     AppMethodBeat.i(178962);
-    int i = com.tencent.mm.cb.a.jo(this.context) - com.tencent.mm.cb.a.fromDPToPix(this.context, 285);
-    int j = com.tencent.mm.cb.a.jn(this.context);
+    int i = com.tencent.mm.ci.a.ks(this.context) - com.tencent.mm.ci.a.fromDPToPix(this.context, 285);
+    int j = ar.au(this.context).x;
     if (i > j)
     {
-      if (eoy() < 5)
+      if (eYq() < 5)
       {
         i = j / 2;
         AppMethodBeat.o(178962);
@@ -104,7 +108,7 @@ public final class a
       AppMethodBeat.o(178962);
       return i;
     }
-    if (eoy() < 5)
+    if (eYq() < 5)
     {
       i /= 2;
       AppMethodBeat.o(178962);
@@ -115,10 +119,10 @@ public final class a
     return i;
   }
   
-  public final boolean Rn(int paramInt)
+  public final boolean XC(int paramInt)
   {
     AppMethodBeat.i(178960);
-    if ((paramInt < this.wqJ) || (paramInt > getItemCount() - this.zQO - 1))
+    if ((paramInt < this.BcO) || (paramInt > getItemCount() - this.Fwr - 1))
     {
       AppMethodBeat.o(178960);
       return true;
@@ -134,8 +138,8 @@ public final class a
     try
     {
       AppMethodBeat.i(178954);
-      p.h(???, "members");
-      p.h(paramOnClickListener, "clickListener");
+      p.k(???, "members");
+      p.k(paramOnClickListener, "clickListener");
       localCopyOnWriteArrayList = new CopyOnWriteArrayList();
       HashSet localHashSet = new HashSet();
       Iterator localIterator = ((Iterable)???).iterator();
@@ -143,105 +147,105 @@ public final class a
       {
         ??? = localIterator.next();
         if (i < 0) {
-          j.hxH();
+          j.iBO();
         }
         MultiTalkGroupMember localMultiTalkGroupMember = (MultiTalkGroupMember)???;
-        ??? = this.zQK;
+        ??? = this.Fwn;
         Object localObject;
-        if ((??? == null) || (???.contains(localMultiTalkGroupMember.RHb) != true))
+        if ((??? == null) || (???.contains(localMultiTalkGroupMember.ZiH) != true))
         {
-          ??? = this.zQL;
-          if ((??? == null) || (???.contains(localMultiTalkGroupMember.RHb) != true)) {}
+          ??? = this.Fwo;
+          if ((??? == null) || (???.contains(localMultiTalkGroupMember.ZiH) != true)) {}
         }
-        else if (!this.zQJ)
+        else if (!this.Fwm)
         {
-          ??? = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-          p.g(???, "MMKernel.service(IMessengerStorage::class.java)");
-          ??? = ((com.tencent.mm.plugin.messenger.foundation.a.l)???).aSN().Kn(localMultiTalkGroupMember.RHb);
+          ??? = h.ae(n.class);
+          p.j(???, "MMKernel.service(IMessengerStorage::class.java)");
+          ??? = ((n)???).bbL().RG(localMultiTalkGroupMember.ZiH);
           if (??? != null)
           {
-            localObject = ???.arI();
+            localObject = ???.ayr();
             ??? = (ArrayList<MultiTalkGroupMember>)localObject;
             if (localObject != null) {}
           }
           else
           {
-            ??? = localMultiTalkGroupMember.RHb;
-            p.g(???, "member.usrName");
+            ??? = localMultiTalkGroupMember.ZiH;
+            p.j(???, "member.usrName");
           }
         }
         for (??? = new com.tencent.mm.plugin.multitalk.data.a(localMultiTalkGroupMember, paramOnClickListener, i, true, ???);; ??? = new com.tencent.mm.plugin.multitalk.data.a(localMultiTalkGroupMember, paramOnClickListener, i, false, ???))
         {
-          localObject = this.zQM;
-          if ((localObject != null) && (((HashSet)localObject).contains(localMultiTalkGroupMember.RHb) == true)) {
-            localHashSet.add(localMultiTalkGroupMember.RHb);
+          localObject = this.Fwp;
+          if ((localObject != null) && (((HashSet)localObject).contains(localMultiTalkGroupMember.ZiH) == true)) {
+            localHashSet.add(localMultiTalkGroupMember.ZiH);
           }
           localCopyOnWriteArrayList.add(???);
           i += 1;
           break;
-          ??? = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-          p.g(???, "MMKernel.service(IMessengerStorage::class.java)");
-          ??? = ((com.tencent.mm.plugin.messenger.foundation.a.l)???).aSN().Kn(localMultiTalkGroupMember.RHb);
+          ??? = h.ae(n.class);
+          p.j(???, "MMKernel.service(IMessengerStorage::class.java)");
+          ??? = ((n)???).bbL().RG(localMultiTalkGroupMember.ZiH);
           if (??? != null)
           {
-            localObject = ???.arI();
+            localObject = ???.ayr();
             ??? = (ArrayList<MultiTalkGroupMember>)localObject;
             if (localObject != null) {}
           }
           else
           {
-            ??? = localMultiTalkGroupMember.RHb;
-            p.g(???, "member.usrName");
+            ??? = localMultiTalkGroupMember.ZiH;
+            p.j(???, "member.usrName");
           }
         }
       }
-      this.zQM = localHashSet;
+      this.Fwp = localHashSet;
     }
     finally {}
-    synchronized (this.zQI)
+    synchronized (this.Fwl)
     {
-      this.zQI.clear();
-      this.zQI.addAll((Collection)localCopyOnWriteArrayList);
+      this.Fwl.clear();
+      this.Fwl.addAll((Collection)localCopyOnWriteArrayList);
       notifyDataSetChanged();
-      paramOnClickListener = x.SXb;
+      paramOnClickListener = x.aazN;
       AppMethodBeat.o(178954);
       return;
     }
   }
   
-  public final void aA(ArrayList<String> paramArrayList)
+  public final void aH(ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(239760);
-    p.h(paramArrayList, "currentScreenSet");
-    this.zQL = paramArrayList;
-    AppMethodBeat.o(239760);
+    AppMethodBeat.i(205010);
+    p.k(paramArrayList, "currentScreenSet");
+    this.Fwo = paramArrayList;
+    AppMethodBeat.o(205010);
   }
   
   public final void c(HashSet<String> paramHashSet)
   {
     AppMethodBeat.i(178956);
-    p.h(paramHashSet, "currentVideoSet");
-    this.zQK = paramHashSet;
+    p.k(paramHashSet, "currentVideoSet");
+    this.Fwn = paramHashSet;
     AppMethodBeat.o(178956);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(178959);
-    if (this.zQI.size() > 12)
+    if (this.Fwl.size() > 12)
     {
-      this.zQN = true;
-      this.zQO = 1;
-      i = this.zQI.size();
-      j = this.wqJ;
-      int k = this.zQO;
+      this.Fwq = true;
+      this.Fwr = 1;
+      i = this.Fwl.size();
+      j = this.BcO;
+      int k = this.Fwr;
       AppMethodBeat.o(178959);
       return i + j + k;
     }
-    this.zQN = false;
-    this.zQO = 0;
-    int i = this.zQI.size();
-    int j = this.wqJ;
+    this.Fwq = false;
+    this.Fwr = 0;
+    int i = this.Fwl.size();
+    int j = this.BcO;
     AppMethodBeat.o(178959);
     return i + j;
   }
@@ -251,28 +255,28 @@ public final class a
     AppMethodBeat.i(178958);
     if (paramInt == 0)
     {
-      paramInt = tMh;
+      paramInt = xvY;
       AppMethodBeat.o(178958);
       return paramInt;
     }
     if (paramInt == getItemCount() - 1)
     {
-      if (this.zQN)
+      if (this.Fwq)
       {
-        paramInt = tMi;
+        paramInt = xvZ;
         AppMethodBeat.o(178958);
         return paramInt;
       }
-      paramInt = zQQ;
+      paramInt = Fwt;
       AppMethodBeat.o(178958);
       return paramInt;
     }
-    paramInt = zQQ;
+    paramInt = Fwt;
     AppMethodBeat.o(178958);
     return paramInt;
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "usrName", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "usrName", "", "invoke"})
   static final class b
     extends q
     implements kotlin.g.a.b<String, x>
@@ -283,7 +287,7 @@ public final class a
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "usrName", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "usrName", "", "invoke"})
   static final class c
     extends q
     implements kotlin.g.a.b<String, x>
@@ -294,7 +298,7 @@ public final class a
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "usrName", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "usrName", "", "invoke"})
   static final class d
     extends q
     implements kotlin.g.a.b<String, x>
@@ -307,7 +311,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.a
  * JD-Core Version:    0.7.0.1
  */

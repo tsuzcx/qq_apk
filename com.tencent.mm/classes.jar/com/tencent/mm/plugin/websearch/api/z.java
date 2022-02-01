@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.websearch.api;
 
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.aca;
-import com.tencent.mm.protocal.protobuf.fal;
-import com.tencent.mm.protocal.protobuf.fam;
+import com.tencent.mm.protocal.protobuf.aci;
+import com.tencent.mm.protocal.protobuf.fle;
+import com.tencent.mm.protocal.protobuf.flf;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
@@ -20,62 +20,62 @@ public final class z
   extends a
   implements m
 {
-  private v IDt;
+  private v PxJ;
   private i callback;
   private d rr;
   
   public z(v paramv)
   {
     AppMethodBeat.i(117630);
-    this.IDt = paramv;
-    this.xsj = paramv.dDv;
-    this.fs = paramv.offset;
+    this.PxJ = paramv;
+    this.CeE = paramv.fwe;
+    this.zP = paramv.offset;
     this.mScene = paramv.scene;
-    this.IDq = paramv.dVL;
-    this.IDt = paramv;
-    this.IDr = paramv.CAJ;
+    this.PxG = paramv.fPp;
+    this.PxJ = paramv;
+    this.PxH = paramv.IGp;
     Object localObject1 = new d.a();
     ((d.a)localObject1).funcId = getType();
     ((d.a)localObject1).uri = "/cgi-bin/mmsearch-bin/mmwebrecommend";
-    ((d.a)localObject1).iLN = new fal();
-    ((d.a)localObject1).iLO = new fam();
-    this.rr = ((d.a)localObject1).aXF();
-    localObject1 = (fal)this.rr.iLK.iLR;
-    ((fal)localObject1).KZk = paramv.offset;
-    ((fal)localObject1).MaY = ai.aft(1);
-    ((fal)localObject1).MRb = paramv.IDE;
-    ((fal)localObject1).LPT = paramv.dDv;
-    ((fal)localObject1).MlQ = ai.clJ();
-    ((fal)localObject1).Scene = paramv.scene;
-    ((fal)localObject1).KZj = paramv.rjq;
-    ((fal)localObject1).MRf = paramv.dVS;
-    ((fal)localObject1).NwG = paramv.IDK;
-    ((fal)localObject1).NgA = paramv.channelId;
-    ((fal)localObject1).NwI = paramv.IDW;
-    Object localObject2 = new aca();
-    ((aca)localObject2).key = "client_system_version";
-    ((aca)localObject2).LmC = Build.VERSION.SDK_INT;
-    paramv.IDO.add(localObject2);
-    ((fal)localObject1).Nva = paramv.IDO;
-    ((fal)localObject1).NwH = paramv.sessionId;
-    this.dVP = paramv.dPI;
+    ((d.a)localObject1).lBU = new fle();
+    ((d.a)localObject1).lBV = new flf();
+    this.rr = ((d.a)localObject1).bgN();
+    localObject1 = (fle)d.b.b(this.rr.lBR);
+    ((fle)localObject1).Sat = paramv.offset;
+    ((fle)localObject1).Tkv = ai.anh(1);
+    ((fle)localObject1).Udh = paramv.PxU;
+    ((fle)localObject1).SYn = paramv.fwe;
+    ((fle)localObject1).TwK = ai.czn();
+    ((fle)localObject1).CPw = paramv.scene;
+    ((fle)localObject1).Sas = paramv.uMC;
+    ((fle)localObject1).Udl = paramv.fPw;
+    ((fle)localObject1).UJW = paramv.Pya;
+    ((fle)localObject1).Ute = paramv.channelId;
+    ((fle)localObject1).UJY = paramv.Pym;
+    Object localObject2 = new aci();
+    ((aci)localObject2).key = "client_system_version";
+    ((aci)localObject2).SnV = Build.VERSION.SDK_INT;
+    paramv.Pye.add(localObject2);
+    ((fle)localObject1).UIj = paramv.Pye;
+    ((fle)localObject1).UJX = paramv.sessionId;
+    this.fPt = paramv.fIY;
     int i;
     String str;
     int j;
-    if (paramv.IEa)
+    if (paramv.Pyq)
     {
       i = paramv.scene;
       localObject1 = paramv.sessionId;
-      localObject2 = paramv.dVO;
-      str = paramv.rjq;
+      localObject2 = paramv.fPs;
+      str = paramv.uMC;
       j = paramv.offset;
-      if (paramv.IDE != 1) {
+      if (paramv.PxU != 1) {
         break label372;
       }
     }
     for (;;)
     {
-      ah.a(i, (String)localObject1, (String)localObject2, str, j, bool, paramv.dPI, paramv.dDv, paramv.businessType, paramv.IDU);
+      ah.a(i, (String)localObject1, (String)localObject2, str, j, bool, paramv.fIY, paramv.fwe, paramv.businessType, paramv.Pyk);
       AppMethodBeat.o(117630);
       return;
       label372:
@@ -83,27 +83,30 @@ public final class z
     }
   }
   
-  private fam fXR()
+  private flf gQC()
   {
-    return (fam)this.rr.iLL.iLR;
+    AppMethodBeat.i(212234);
+    flf localflf = (flf)d.c.b(this.rr.lBS);
+    AppMethodBeat.o(212234);
+    return localflf;
   }
   
   public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(117631);
-    ar.kb(this.mScene, 2);
+    ar.lr(this.mScene, 2);
     this.callback = parami;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(117631);
     return i;
   }
   
-  public final String fXC()
+  public final String gQp()
   {
     AppMethodBeat.i(117633);
-    if (fXR() != null)
+    if (gQC() != null)
     {
-      String str = fXR().MaZ;
+      String str = gQC().Tkw;
       AppMethodBeat.o(117633);
       return str;
     }
@@ -111,12 +114,12 @@ public final class z
     return "";
   }
   
-  public final int fXD()
+  public final int gQq()
   {
     AppMethodBeat.i(117634);
-    if (fXR() != null)
+    if (gQC() != null)
     {
-      int i = fXR().NwM;
+      int i = gQC().UKc;
       AppMethodBeat.o(117634);
       return i;
     }
@@ -138,24 +141,24 @@ public final class z
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
       bool1 = true;
-      if (this.IDt.IEa)
+      if (this.PxJ.Pyq)
       {
-        paramInt1 = this.IDt.scene;
-        params = this.IDt.sessionId;
-        paramArrayOfByte = this.IDt.dVO;
-        String str = this.IDt.rjq;
-        int i = this.IDt.offset;
-        if (this.IDt.IDE != 1) {
+        paramInt1 = this.PxJ.scene;
+        params = this.PxJ.sessionId;
+        paramArrayOfByte = this.PxJ.fPs;
+        String str = this.PxJ.uMC;
+        int i = this.PxJ.offset;
+        if (this.PxJ.PxU != 1) {
           break label208;
         }
         bool2 = true;
         label124:
-        ah.a(paramInt1, params, paramArrayOfByte, str, i, bool2, this.IDt.dPI, bool1, this.IDt.dDv, this.IDt.businessType, this.IDt.IDU);
+        ah.a(paramInt1, params, paramArrayOfByte, str, i, bool2, this.PxJ.fIY, bool1, this.PxJ.fwe, this.PxJ.businessType, this.PxJ.Pyk);
       }
       if (paramInt3 != -1) {
         break label214;
       }
-      ar.kb(this.mScene, 4);
+      ar.lr(this.mScene, 4);
     }
     for (;;)
     {
@@ -169,16 +172,16 @@ public final class z
       break label124;
       label214:
       if ((paramInt2 != 0) || (paramInt3 != 0)) {
-        ar.kb(this.mScene, 8);
+        ar.lr(this.mScene, 8);
       } else {
-        ar.kb(this.mScene, 3);
+        ar.lr(this.mScene, 3);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.z
  * JD-Core Version:    0.7.0.1
  */

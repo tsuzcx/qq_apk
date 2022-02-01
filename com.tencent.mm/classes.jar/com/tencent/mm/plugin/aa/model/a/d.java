@@ -13,16 +13,16 @@ public final class d
   extends MAutoStorage<c>
 {
   public static final String[] SQL_CREATE;
-  private static final String[] jTH;
-  public static Map<String, c> jTI;
+  private static final String[] mKU;
+  public static Map<String, c> mKV;
   private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(63431);
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(c.info, "AARecord") };
-    jTH = new String[] { "*", "rowid" };
-    jTI = new HashMap();
+    mKU = new String[] { "*", "rowid" };
+    mKV = new HashMap();
     AppMethodBeat.o(63431);
   }
   
@@ -32,7 +32,29 @@ public final class d
     this.db = paramISQLiteDatabase;
   }
   
-  public final c SD(String paramString)
+  public final boolean a(c paramc)
+  {
+    AppMethodBeat.i(63425);
+    if ((paramc != null) && (mKV.containsKey(paramc.field_billNo))) {
+      mKV.put(paramc.field_billNo, paramc);
+    }
+    boolean bool = super.insert(paramc);
+    AppMethodBeat.o(63425);
+    return bool;
+  }
+  
+  public final boolean a(c paramc, String... paramVarArgs)
+  {
+    AppMethodBeat.i(63426);
+    if ((paramc != null) && (mKV.containsKey(paramc.field_billNo))) {
+      mKV.remove(paramc.field_billNo);
+    }
+    boolean bool = super.delete(paramc, paramVarArgs);
+    AppMethodBeat.o(63426);
+    return bool;
+  }
+  
+  public final c aaj(String paramString)
   {
     AppMethodBeat.i(63424);
     if (Util.isNullOrNil(paramString))
@@ -40,7 +62,7 @@ public final class d
       AppMethodBeat.o(63424);
       return null;
     }
-    paramString = this.db.query("AARecord", jTH, "billNo=?", new String[] { paramString }, null, null, null, 2);
+    paramString = this.db.query("AARecord", mKU, "billNo=?", new String[] { paramString }, null, null, null, 2);
     try
     {
       if (paramString.moveToFirst())
@@ -75,33 +97,11 @@ public final class d
     return null;
   }
   
-  public final boolean a(c paramc)
-  {
-    AppMethodBeat.i(63425);
-    if ((paramc != null) && (jTI.containsKey(paramc.field_billNo))) {
-      jTI.put(paramc.field_billNo, paramc);
-    }
-    boolean bool = super.insert(paramc);
-    AppMethodBeat.o(63425);
-    return bool;
-  }
-  
-  public final boolean a(c paramc, String... paramVarArgs)
-  {
-    AppMethodBeat.i(63426);
-    if ((paramc != null) && (jTI.containsKey(paramc.field_billNo))) {
-      jTI.remove(paramc.field_billNo);
-    }
-    boolean bool = super.delete(paramc, paramVarArgs);
-    AppMethodBeat.o(63426);
-    return bool;
-  }
-  
   public final boolean b(c paramc)
   {
     AppMethodBeat.i(63427);
-    if ((paramc != null) && (jTI.containsKey(paramc.field_billNo))) {
-      jTI.put(paramc.field_billNo, paramc);
+    if ((paramc != null) && (mKV.containsKey(paramc.field_billNo))) {
+      mKV.put(paramc.field_billNo, paramc);
     }
     boolean bool = super.replace(paramc);
     AppMethodBeat.o(63427);
@@ -110,7 +110,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.a.d
  * JD-Core Version:    0.7.0.1
  */

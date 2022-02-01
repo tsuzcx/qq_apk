@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sns.ad.landingpage.component.a;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +9,11 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.ad.landingpage.component.b.f;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.z;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.l;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
@@ -20,132 +23,167 @@ import java.util.List;
 public final class b
   extends a
 {
-  public com.tencent.mm.plugin.sns.ad.landingpage.component.b.b Dto;
-  public List<m> Dtp;
-  public l Dtq;
-  private int Dtr;
+  public com.tencent.mm.plugin.sns.ad.landingpage.component.b.b JAf;
+  private List<m> JAg;
+  private l JAh;
+  private int JAi;
   
   public b(Context paramContext, com.tencent.mm.plugin.sns.ad.landingpage.component.b.b paramb, ViewGroup paramViewGroup)
   {
     super(paramContext, paramb, paramViewGroup);
-    AppMethodBeat.i(201959);
-    this.Dtr = 0;
-    this.Dto = paramb;
-    this.Dtp = new ArrayList();
-    AppMethodBeat.o(201959);
+    AppMethodBeat.i(268056);
+    this.JAi = 0;
+    this.JAf = paramb;
+    this.JAg = new ArrayList();
+    AppMethodBeat.o(268056);
   }
   
   public static View a(m paramm)
   {
-    AppMethodBeat.i(201963);
-    if (paramm.fdk().DZs)
+    AppMethodBeat.i(268071);
+    if ((paramm.KqB.KmL) || (paramm.KqB.KmO))
     {
-      paramm = paramm.contentView;
-      AppMethodBeat.o(201963);
+      paramm = paramm.getContentView();
+      AppMethodBeat.o(268071);
       return paramm;
     }
     if ((paramm instanceof a))
     {
-      paramm = ((a)paramm).eWU().iterator();
+      paramm = ((a)paramm).fKf().iterator();
       while (paramm.hasNext())
       {
         View localView = a((m)paramm.next());
         if (localView != null)
         {
-          AppMethodBeat.o(201963);
+          AppMethodBeat.o(268071);
           return localView;
         }
       }
     }
-    AppMethodBeat.o(201963);
+    AppMethodBeat.o(268071);
     return null;
   }
   
   public static b b(m paramm)
   {
-    AppMethodBeat.i(201964);
+    AppMethodBeat.i(268072);
     if ((paramm instanceof b))
     {
       paramm = (b)paramm;
-      AppMethodBeat.o(201964);
+      AppMethodBeat.o(268072);
       return paramm;
     }
     if ((paramm instanceof a))
     {
-      paramm = ((a)paramm).eWU().iterator();
+      paramm = ((a)paramm).fKf().iterator();
       while (paramm.hasNext())
       {
         b localb = b((m)paramm.next());
         if (localb != null)
         {
-          AppMethodBeat.o(201964);
+          AppMethodBeat.o(268072);
           return localb;
         }
       }
     }
-    AppMethodBeat.o(201964);
+    AppMethodBeat.o(268072);
     return null;
   }
   
-  public final void b(z paramz)
+  private f b(aa paramaa)
   {
-    AppMethodBeat.i(201972);
-    if ((paramz instanceof com.tencent.mm.plugin.sns.ad.landingpage.component.b.b)) {
-      this.Dto = ((com.tencent.mm.plugin.sns.ad.landingpage.component.b.b)paramz);
+    AppMethodBeat.i(268064);
+    if (paramaa == null)
+    {
+      AppMethodBeat.o(268064);
+      return null;
     }
-    super.b(paramz);
-    AppMethodBeat.o(201972);
+    if ((paramaa instanceof f))
+    {
+      paramaa = (f)paramaa;
+      AppMethodBeat.o(268064);
+      return paramaa;
+    }
+    if (i.agz(paramaa.type))
+    {
+      paramaa = paramaa.fKw();
+      if (paramaa != null)
+      {
+        paramaa = paramaa.iterator();
+        while (paramaa.hasNext())
+        {
+          f localf = b((aa)paramaa.next());
+          if (localf != null)
+          {
+            AppMethodBeat.o(268064);
+            return localf;
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(268064);
+    return null;
   }
   
-  public final void eWT() {}
-  
-  public final List<m> eWU()
+  private aa fKg()
   {
-    AppMethodBeat.i(201960);
-    if (this.Dtq != null)
+    AppMethodBeat.i(268069);
+    Object localObject = this.JAf.ayS.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      localArrayList = new ArrayList(this.Dtq.fdY());
-      AppMethodBeat.o(201960);
+      aa localaa = (aa)((Iterator)localObject).next();
+      if (localaa.KmM)
+      {
+        AppMethodBeat.o(268069);
+        return localaa;
+      }
+    }
+    if (this.JAf.ayS.size() > 0)
+    {
+      localObject = (aa)this.JAf.ayS.get(0);
+      AppMethodBeat.o(268069);
+      return localObject;
+    }
+    AppMethodBeat.o(268069);
+    return null;
+  }
+  
+  public final void c(aa paramaa)
+  {
+    AppMethodBeat.i(268080);
+    if ((paramaa instanceof com.tencent.mm.plugin.sns.ad.landingpage.component.b.b)) {
+      this.JAf = ((com.tencent.mm.plugin.sns.ad.landingpage.component.b.b)paramaa);
+    }
+    super.c(paramaa);
+    AppMethodBeat.o(268080);
+  }
+  
+  public final void fKe() {}
+  
+  public final List<m> fKf()
+  {
+    AppMethodBeat.i(268066);
+    if (this.JAh != null)
+    {
+      localArrayList = new ArrayList(this.JAh.fRQ());
+      AppMethodBeat.o(268066);
       return localArrayList;
     }
     ArrayList localArrayList = new ArrayList();
-    AppMethodBeat.o(201960);
+    AppMethodBeat.o(268066);
     return localArrayList;
   }
   
-  public z eWV()
+  public final Pair<Integer, Integer> fKh()
   {
-    AppMethodBeat.i(201961);
-    Object localObject = this.Dto.aQz.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      z localz = (z)((Iterator)localObject).next();
-      if (localz.DZt)
-      {
-        AppMethodBeat.o(201961);
-        return localz;
-      }
-    }
-    if (this.Dto.aQz.size() > 0)
-    {
-      localObject = (z)this.Dto.aQz.get(0);
-      AppMethodBeat.o(201961);
-      return localObject;
-    }
-    AppMethodBeat.o(201961);
-    return null;
-  }
-  
-  public final Pair<Integer, Integer> eWW()
-  {
-    AppMethodBeat.i(201962);
-    Object localObject = eWV();
+    AppMethodBeat.i(268070);
+    Object localObject = fKg();
     float f2;
     float f1;
     if (localObject != null)
     {
-      f2 = ((z)localObject).DZk;
-      f1 = ((z)localObject).DZl;
+      f2 = ((aa)localObject).KmD;
+      f1 = ((aa)localObject).KmE;
     }
     for (;;)
     {
@@ -153,107 +191,161 @@ public final class b
         Log.e("AdLandingEggCardComponent", "default card size is 0, w=" + f2 + ", h=" + f1);
       }
       localObject = new Pair(Integer.valueOf((int)f2), Integer.valueOf((int)f1));
-      AppMethodBeat.o(201962);
+      AppMethodBeat.o(268070);
       return localObject;
       f1 = 0.0F;
       f2 = 0.0F;
     }
   }
   
-  public final void eWX()
+  public final void fKi()
   {
-    AppMethodBeat.i(201965);
+    AppMethodBeat.i(268073);
     ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
     if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.EcX.paddingLeft, (int)this.EcX.paddingTop, (int)this.EcX.paddingRight, (int)this.EcX.paddingBottom);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.KqB.paddingLeft, (int)this.KqB.paddingTop, (int)this.KqB.paddingRight, (int)this.KqB.paddingBottom);
     }
     this.contentView.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(201965);
+    AppMethodBeat.o(268073);
   }
   
-  public final View eWY()
+  public final View fKj()
   {
-    AppMethodBeat.i(201966);
+    AppMethodBeat.i(268074);
     FrameLayout localFrameLayout = new FrameLayout(this.context);
-    AppMethodBeat.o(201966);
+    AppMethodBeat.o(268074);
     return localFrameLayout;
   }
   
-  public final void eWZ()
+  public final void fKk()
   {
-    AppMethodBeat.i(201967);
-    Iterator localIterator = this.Dtp.iterator();
+    AppMethodBeat.i(268075);
+    Iterator localIterator = this.JAg.iterator();
     while (localIterator.hasNext())
     {
       m localm = (m)localIterator.next();
-      if (localm.fdm()) {
-        localm.eWZ();
+      if (localm.fRj()) {
+        localm.fKk();
       }
     }
-    super.eWZ();
-    AppMethodBeat.o(201967);
+    super.fKk();
+    AppMethodBeat.o(268075);
   }
   
-  public final void eXa()
+  public final void fKl()
   {
-    AppMethodBeat.i(201968);
-    Iterator localIterator = this.Dtp.iterator();
+    AppMethodBeat.i(268076);
+    Iterator localIterator = this.JAg.iterator();
     while (localIterator.hasNext()) {
-      ((m)localIterator.next()).eXa();
+      ((m)localIterator.next()).fKl();
     }
-    super.eXa();
-    AppMethodBeat.o(201968);
+    super.fKl();
+    AppMethodBeat.o(268076);
   }
   
-  public final void eXb()
+  public final void fKm()
   {
-    AppMethodBeat.i(201969);
-    Iterator localIterator = this.Dtp.iterator();
+    AppMethodBeat.i(268077);
+    Iterator localIterator = this.JAg.iterator();
     while (localIterator.hasNext())
     {
       m localm = (m)localIterator.next();
-      if (localm.fdm()) {
-        localm.eXb();
+      if (localm.fRj()) {
+        localm.fKm();
       }
     }
-    super.eXb();
-    AppMethodBeat.o(201969);
+    super.fKm();
+    AppMethodBeat.o(268077);
   }
   
-  public final void eXc()
+  public final void fKn()
   {
-    AppMethodBeat.i(201970);
-    Iterator localIterator = this.Dtp.iterator();
+    AppMethodBeat.i(268078);
+    Iterator localIterator = this.JAg.iterator();
     while (localIterator.hasNext())
     {
       m localm = (m)localIterator.next();
-      if (localm.fdm())
+      if (localm.fRj())
       {
-        localm.eWZ();
-        localm.eXb();
+        localm.fKk();
+        localm.fKm();
       }
       else
       {
-        localm.eXa();
+        localm.fKl();
       }
     }
-    AppMethodBeat.o(201970);
+    AppMethodBeat.o(268078);
   }
   
-  public final void eXd()
+  public final void fKo()
   {
-    AppMethodBeat.i(201971);
-    super.eXd();
-    Iterator localIterator = this.Dtp.iterator();
+    AppMethodBeat.i(268079);
+    super.fKo();
+    Iterator localIterator = this.JAg.iterator();
     while (localIterator.hasNext()) {
-      ((m)localIterator.next()).eXd();
+      ((m)localIterator.next()).fKo();
     }
-    AppMethodBeat.o(201971);
+    AppMethodBeat.o(268079);
+  }
+  
+  public final void km(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(268061);
+    long l = System.currentTimeMillis();
+    Object localObject1;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      Object localObject2 = this.JAf.ayS.iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject1 = (aa)((Iterator)localObject2).next();
+        if (paramString1.equals(((aa)localObject1).KmN))
+        {
+          localObject2 = localObject1;
+          if (localObject1 == null)
+          {
+            localObject2 = fKg();
+            Log.i("AdLandingEggCardComponent", "selectShowCard, useDefaultCard, cardId=".concat(String.valueOf(paramString1)));
+          }
+          localObject1 = new ArrayList();
+          if (localObject2 == null) {
+            break label238;
+          }
+          f localf = b((aa)localObject2);
+          if (localf != null)
+          {
+            Log.i("AdLandingEggCardComponent", "selectShowCard, show socialCard, cardId=".concat(String.valueOf(paramString1)));
+            localf.aYx(paramString2);
+          }
+          ((List)localObject1).add(localObject2);
+        }
+      }
+    }
+    for (;;)
+    {
+      Log.i("AdLandingEggCardComponent", "selectShowCard, cost=" + (System.currentTimeMillis() - l));
+      if (this.JAh != null) {
+        break label249;
+      }
+      this.JAh = new l((List)localObject1, this.context, (FrameLayout)this.contentView);
+      this.JAh.fP();
+      this.JAg = fKf();
+      AppMethodBeat.o(268061);
+      return;
+      localObject1 = null;
+      break;
+      label238:
+      Log.e("AdLandingEggCardComponent", "selectShowCard, showCardInfo==null");
+    }
+    label249:
+    this.JAh.notify((List)localObject1);
+    AppMethodBeat.o(268061);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.landingpage.component.a.b
  * JD-Core Version:    0.7.0.1
  */

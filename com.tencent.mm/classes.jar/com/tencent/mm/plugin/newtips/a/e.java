@@ -6,7 +6,7 @@ import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.newtips.b.b;
 import com.tencent.mm.plugin.newtips.b.c;
-import com.tencent.mm.protocal.protobuf.ehx;
+import com.tencent.mm.protocal.protobuf.erz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -18,10 +18,43 @@ import java.util.Map;
 
 public final class e
 {
-  public static boolean Ty(int paramInt)
+  public static boolean a(com.tencent.mm.plugin.newtips.b.a parama)
+  {
+    AppMethodBeat.i(127212);
+    if (parama == null)
+    {
+      Log.e("MicroMsg.NewTipsManager", "check time, tipsInfo is null!!!");
+      AppMethodBeat.o(127212);
+      return false;
+    }
+    long l1 = Util.nowSecond();
+    boolean bool2;
+    if ((parama.field_overdueTime == 0L) && (parama.field_disappearTime == 0L))
+    {
+      bool2 = true;
+      Log.i("MicroMsg.NewTipsManager", "timeEffective current: %s, overdueTime: %s, disappearTime: %s, show:%s", new Object[] { Long.valueOf(l1), Long.valueOf(parama.field_overdueTime), Long.valueOf(parama.field_disappearTime), Boolean.valueOf(bool2) });
+      AppMethodBeat.o(127212);
+      return bool2;
+    }
+    Long localLong = Long.valueOf(Math.min(parama.field_beginShowTime + parama.field_overdueTime, parama.field_disappearTime));
+    if ((l1 >= parama.field_beginShowTime) && (l1 <= localLong.longValue())) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      bool2 = bool1;
+      if (l1 <= localLong.longValue()) {
+        break;
+      }
+      long l2 = Util.nowMilliSecond();
+      MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_newtips_report", 0).edit().putLong("newtips_makeread_time", l2).commit();
+      bool2 = bool1;
+      break;
+    }
+  }
+  
+  public static boolean aal(int paramInt)
   {
     AppMethodBeat.i(127216);
-    com.tencent.mm.plugin.newtips.b.a locala = com.tencent.mm.plugin.newtips.a.exm().TF(paramInt);
+    com.tencent.mm.plugin.newtips.b.a locala = com.tencent.mm.plugin.newtips.a.fiP().aas(paramInt);
     if (locala == null)
     {
       Log.e("MicroMsg.NewTipsManager", "showDot, newTipsInfo is null !!");
@@ -33,7 +66,7 @@ public final class e
     Object localObject;
     label303:
     String str1;
-    if ((d(com.tencent.mm.plugin.newtips.a.exm().TF(paramInt))) && (locala.field_tipsShowInfo != null) && (locala.field_tipsShowInfo.dDG == d.ADj))
+    if ((d(com.tencent.mm.plugin.newtips.a.fiP().aas(paramInt))) && (locala.field_tipsShowInfo != null) && (locala.field_tipsShowInfo.fwp == d.Gwn))
     {
       if (locala == null) {
         Log.e("MicroMsg.NewTipsManager", "reportShowNewTips, newTipsInfo is null !!");
@@ -52,7 +85,7 @@ public final class e
       MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_newtips_report", 0).edit().putLong("newtips_realshow_time", l2).commit();
       if (locala.field_tipsShowInfo != null)
       {
-        paramInt = locala.field_tipsShowInfo.dDG;
+        paramInt = locala.field_tipsShowInfo.fwp;
         if (locala.field_tipsShowInfo == null) {
           break label528;
         }
@@ -60,7 +93,7 @@ public final class e
         if (locala.field_tipsShowInfo == null) {
           break label535;
         }
-        str1 = locala.field_tipsShowInfo.qGB;
+        str1 = locala.field_tipsShowInfo.ufC;
         label321:
         if (locala.field_tipsShowInfo == null) {
           break label542;
@@ -71,7 +104,7 @@ public final class e
       label542:
       for (str2 = locala.field_tipsShowInfo.path;; str2 = "")
       {
-        com.tencent.mm.plugin.report.service.h.CyF.a(14995, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l1), "", "", "", Long.valueOf(l2), "", "", "", Integer.valueOf(paramInt), localObject, str1, str2, "", Integer.valueOf(d.ADp), "" });
+        com.tencent.mm.plugin.report.service.h.IzE.a(14995, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l1), "", "", "", Long.valueOf(l2), "", "", "", Integer.valueOf(paramInt), localObject, str1, str2, "", Integer.valueOf(d.Gwt), "" });
         MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_newtips_report", 0).edit().putBoolean(str3, true).commit();
         break;
         paramInt = 0;
@@ -107,35 +140,35 @@ public final class e
       paramInt = 1;
       label819:
       if (locala.field_tipsShowInfo == null) {
-        break label1299;
+        break label1300;
       }
-      i = locala.field_tipsShowInfo.dDG;
+      i = locala.field_tipsShowInfo.fwp;
       label836:
       if (locala.field_tipsShowInfo == null) {
-        break label1304;
+        break label1305;
       }
       localObject = locala.field_tipsShowInfo.title;
       label854:
       if (locala.field_tipsShowInfo == null) {
-        break label1311;
+        break label1312;
       }
-      str1 = locala.field_tipsShowInfo.qGB;
+      str1 = locala.field_tipsShowInfo.ufC;
       label872:
       if (locala.field_tipsShowInfo == null) {
-        break label1318;
+        break label1319;
       }
     }
-    label1299:
-    label1304:
-    label1311:
-    label1318:
+    label1300:
+    label1305:
+    label1312:
+    label1319:
     for (String str2 = locala.field_tipsShowInfo.path;; str2 = "")
     {
       l7 = locala.field_pagestaytime;
-      com.tencent.mm.plugin.report.service.h.CyF.a(14995, new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4), Long.valueOf(l5), Long.valueOf(l6), Long.valueOf(l6 - l5), Integer.valueOf(paramInt), Integer.valueOf(i), localObject, str1, str2, "", Integer.valueOf(d.ADq), Long.valueOf(l7) });
-      if (m == d.ADa)
+      com.tencent.mm.plugin.report.service.h.IzE.a(14995, new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4), Long.valueOf(l5), Long.valueOf(l6), Long.valueOf(l6 - l5), Integer.valueOf(paramInt), Integer.valueOf(i), localObject, str1, str2, "", Integer.valueOf(d.Gwu), Long.valueOf(l7) });
+      if (m == d.Gwe)
       {
-        localObject = com.tencent.mm.plugin.newtips.a.exm();
+        localObject = com.tencent.mm.plugin.newtips.a.fiP();
         str1 = "delete from NewTipsInfo where tipId = " + locala.field_tipId;
         Log.i("MicroMsg.NewTipsCompatInfoStorage", "delete sql: ".concat(String.valueOf(str1)));
         ((b)localObject).db.execSQL("NewTipsInfo", str1);
@@ -176,39 +209,6 @@ public final class e
     }
   }
   
-  public static boolean a(com.tencent.mm.plugin.newtips.b.a parama)
-  {
-    AppMethodBeat.i(127212);
-    if (parama == null)
-    {
-      Log.e("MicroMsg.NewTipsManager", "check time, tipsInfo is null!!!");
-      AppMethodBeat.o(127212);
-      return false;
-    }
-    long l1 = Util.nowSecond();
-    boolean bool2;
-    if ((parama.field_overdueTime == 0L) && (parama.field_disappearTime == 0L))
-    {
-      bool2 = true;
-      Log.i("MicroMsg.NewTipsManager", "timeEffective current: %s, overdueTime: %s, disappearTime: %s, show:%s", new Object[] { Long.valueOf(l1), Long.valueOf(parama.field_overdueTime), Long.valueOf(parama.field_disappearTime), Boolean.valueOf(bool2) });
-      AppMethodBeat.o(127212);
-      return bool2;
-    }
-    Long localLong = Long.valueOf(Math.min(parama.field_beginShowTime + parama.field_overdueTime, parama.field_disappearTime));
-    if ((l1 >= parama.field_beginShowTime) && (l1 <= localLong.longValue())) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      bool2 = bool1;
-      if (l1 <= localLong.longValue()) {
-        break;
-      }
-      long l2 = Util.nowMilliSecond();
-      MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_newtips_report", 0).edit().putLong("newtips_makeread_time", l2).commit();
-      bool2 = bool1;
-      break;
-    }
-  }
-  
   public static boolean b(com.tencent.mm.plugin.newtips.b.a parama)
   {
     AppMethodBeat.i(127213);
@@ -218,7 +218,7 @@ public final class e
       AppMethodBeat.o(127213);
       return false;
     }
-    Object localObject = com.tencent.mm.plugin.newtips.a.exm().TF(parama.field_tipId);
+    Object localObject = com.tencent.mm.plugin.newtips.a.fiP().aas(parama.field_tipId);
     if ((localObject != null) && (((com.tencent.mm.plugin.newtips.b.a)localObject).field_tipsShowInfo != null) && (parama.field_tipsShowInfo != null))
     {
       localObject = ((com.tencent.mm.plugin.newtips.b.a)localObject).field_tipsShowInfo.path;
@@ -243,7 +243,7 @@ public final class e
       AppMethodBeat.o(127214);
       return false;
     }
-    com.tencent.mm.plugin.newtips.b.a locala = com.tencent.mm.plugin.newtips.a.exm().TF(parama.field_tipId);
+    com.tencent.mm.plugin.newtips.b.a locala = com.tencent.mm.plugin.newtips.a.fiP().aas(parama.field_tipId);
     if ((locala != null) && ((parama.field_tipVersion > locala.field_tipVersion) || ((!parama.field_hadRead) && (parama.field_tipVersion == locala.field_tipVersion))))
     {
       AppMethodBeat.o(127214);
@@ -272,7 +272,7 @@ public final class e
     return false;
   }
   
-  public static List<c> fG(List<c> paramList)
+  public static List<c> gk(List<c> paramList)
   {
     AppMethodBeat.i(127217);
     ArrayList localArrayList = new ArrayList();
@@ -298,11 +298,11 @@ public final class e
         localArrayList.add(localc);
         break;
         int i = localc.field_tipId;
-        f.exq();
-        h localh = f.Tz(i);
+        f.fiT();
+        h localh = f.aam(i);
         i = localc.field_path;
-        f.exq();
-        j localj = (j)f.ADu.get(Integer.valueOf(i));
+        f.fiT();
+        j localj = (j)f.Gwz.get(Integer.valueOf(i));
         paramList = localj;
         if (localj == null)
         {
@@ -313,16 +313,16 @@ public final class e
           bool = true;
         } else if ((localh != null) && (paramList != null))
         {
-          if ((localh.exs()) && (paramList.exs())) {
+          if ((localh.fiV()) && (paramList.fiV())) {
             bool = true;
           } else {
             bool = false;
           }
         }
         else if (localh != null) {
-          bool = localh.exs();
+          bool = localh.fiV();
         } else {
-          bool = paramList.exs();
+          bool = paramList.fiV();
         }
       }
     }
@@ -332,7 +332,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.a.e
  * JD-Core Version:    0.7.0.1
  */

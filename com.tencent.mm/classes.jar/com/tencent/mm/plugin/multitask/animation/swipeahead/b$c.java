@@ -7,7 +7,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
 public final class b$c
   implements Runnable
 {
@@ -16,22 +16,22 @@ public final class b$c
   public final void run()
   {
     Object localObject3 = null;
-    AppMethodBeat.i(200429);
-    if (this.Aan.Aaj != null) {}
+    AppMethodBeat.i(248771);
+    if (this.FGe.FFZ != null) {}
     label104:
     Object localObject2;
     for (;;)
     {
       try
       {
-        Object localObject1 = this.Aan.Aaj;
+        Object localObject1 = this.FGe.FFZ;
         if (localObject1 == null) {
           break label104;
         }
         localObject1 = ((FloatMultiTaskIndicatorView)localObject1).getParent();
         if (localObject1 != null)
         {
-          FloatMultiTaskIndicatorView localFloatMultiTaskIndicatorView = this.Aan.Aaj;
+          FloatMultiTaskIndicatorView localFloatMultiTaskIndicatorView = this.FGe.FFZ;
           localObject1 = localObject3;
           if (localFloatMultiTaskIndicatorView != null) {
             localObject1 = localFloatMultiTaskIndicatorView.getParent();
@@ -40,7 +40,7 @@ public final class b$c
             break;
           }
           localObject1 = new t("null cannot be cast to non-null type android.view.ViewGroup");
-          AppMethodBeat.o(200429);
+          AppMethodBeat.o(248771);
           throw ((Throwable)localObject1);
         }
       }
@@ -48,17 +48,17 @@ public final class b$c
       {
         Log.printErrStackTrace("MicroMsg.FloatMultiTaskIndicatorController", (Throwable)localException, "detachFloatIndicatorView exception:%s", new Object[] { localException });
       }
-      AppMethodBeat.o(200429);
+      AppMethodBeat.o(248771);
       return;
       localObject2 = null;
     }
-    ((ViewGroup)localObject2).removeView((View)this.Aan.Aaj);
-    AppMethodBeat.o(200429);
+    ((ViewGroup)localObject2).removeView((View)this.FGe.FFZ);
+    AppMethodBeat.o(248771);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.animation.swipeahead.b.c
  * JD-Core Version:    0.7.0.1
  */

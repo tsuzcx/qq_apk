@@ -14,48 +14,50 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.s;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.plugin.sns.i.c;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.i.j;
 import com.tencent.mm.plugin.sns.model.aj;
-import com.tencent.mm.plugin.sns.model.c;
+import com.tencent.mm.plugin.sns.model.g;
 import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.protocal.protobuf.he;
+import com.tencent.mm.protocal.protobuf.gs;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
 
 public class ArtistUI
   extends MMActivity
   implements i
 {
-  private f Eoc;
-  private ArtistHeader Eod;
-  private com.tencent.mm.ak.q Eoe;
-  com.tencent.mm.plugin.sns.model.g Eof;
-  c Eog;
-  private Runnable Eoh;
-  private Runnable Eoi;
-  MMHandler czp;
-  private ListView krb;
+  private String Ejr;
+  private f KBl;
+  private ArtistHeader KBm;
+  private q KBn;
+  g KBo;
+  com.tencent.mm.plugin.sns.model.c KBp;
+  private Runnable KBq;
+  private Runnable KBr;
+  MMHandler cyl;
+  private ListView niO;
   private SharedPreferences sp;
-  private com.tencent.mm.ui.base.q tipDialog;
-  private String yFy;
+  private com.tencent.mm.ui.base.s tipDialog;
   
   public ArtistUI()
   {
     AppMethodBeat.i(97746);
-    this.yFy = "";
-    this.Eoe = null;
+    this.Ejr = "";
+    this.KBn = null;
     this.tipDialog = null;
-    this.czp = aj.dRd();
-    this.Eof = aj.faL();
-    this.Eog = aj.faJ();
-    this.Eoh = new Runnable()
+    this.cyl = aj.etE();
+    this.KBo = aj.fOF();
+    this.KBp = aj.fOD();
+    this.KBq = new Runnable()
     {
       public final void run()
       {
@@ -66,11 +68,11 @@ public class ArtistUI
           return;
         }
         Log.d("MicroMsg.ArtistUI", "will pause ImageLoader");
-        aj.faL().pause();
+        aj.fOF().pause();
         AppMethodBeat.o(97738);
       }
     };
-    this.Eoi = new Runnable()
+    this.KBr = new Runnable()
     {
       public final void run()
       {
@@ -81,7 +83,7 @@ public class ArtistUI
           return;
         }
         Log.d("MicroMsg.ArtistUI", "will start ImageLoader");
-        aj.faL().start();
+        aj.fOF().start();
         ArtistUI.a(ArtistUI.this).notifyDataSetChanged();
         AppMethodBeat.o(97739);
       }
@@ -91,25 +93,25 @@ public class ArtistUI
   
   public int getLayoutId()
   {
-    return 2131496417;
+    return i.g.sns_artist_ui;
   }
   
   public void initView()
   {
     AppMethodBeat.i(97751);
-    setMMTitle(2131765601);
-    setActionbarColor(getResources().getColor(2131101120));
-    setNavigationbarColor(getResources().getColor(2131101120));
-    getString(2131755998);
-    this.tipDialog = h.a(this, getString(2131755887), true, new DialogInterface.OnCancelListener()
+    setMMTitle(i.j.settings_sns_bg_title);
+    setActionbarColor(getResources().getColor(i.c.sns_artist_background));
+    setNavigationbarColor(getResources().getColor(i.c.sns_artist_background));
+    getString(i.j.app_tip);
+    this.tipDialog = com.tencent.mm.ui.base.h.a(this, getString(i.j.app_loading_data), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
-    this.krb = ((ListView)findViewById(2131308075));
-    com.tencent.mm.plugin.sns.c.a.jRu.cR(false);
-    this.Eoc = new f(this, this.yFy, new f.b()new f.a
+    this.niO = ((ListView)findViewById(i.f.sns_artist_list));
+    com.tencent.mm.plugin.sns.c.a.mIH.jdMethod_do(false);
+    this.KBl = new f(this, this.Ejr, new f.b()new f.a
     {
-      public final void Zt(int paramAnonymousInt)
+      public final void agK(int paramAnonymousInt)
       {
         AppMethodBeat.i(97740);
         Object localObject = new Intent();
@@ -120,24 +122,24 @@ public class ArtistUI
         ((Intent)localObject).putExtra("key_from_scene", 6);
         ((Intent)localObject).setClass(ArtistUI.this, ArtistBrowseUI.class);
         ArtistUI localArtistUI = ArtistUI.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(localArtistUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/sns/ui/ArtistUI$4", "onPhotoClick", "(Ljava/lang/String;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        localArtistUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(localArtistUI, "com/tencent/mm/plugin/sns/ui/ArtistUI$4", "onPhotoClick", "(Ljava/lang/String;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(localArtistUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/sns/ui/ArtistUI$4", "onPhotoClick", "(Ljava/lang/String;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localArtistUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(localArtistUI, "com/tencent/mm/plugin/sns/ui/ArtistUI$4", "onPhotoClick", "(Ljava/lang/String;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(97740);
       }
     }, new f.a()
     {
-      public final void a(he paramAnonymoushe)
+      public final void a(gs paramAnonymousgs)
       {
         AppMethodBeat.i(97741);
         if (ArtistUI.c(ArtistUI.this) != null)
         {
           ArtistUI.c(ArtistUI.this).setVisibility(0);
-          ArtistUI.c(ArtistUI.this).setUserName(paramAnonymoushe);
-          paramAnonymoushe = paramAnonymoushe.Name;
-          if ((paramAnonymoushe != null) && (!paramAnonymoushe.equals(""))) {
-            ArtistUI.d(ArtistUI.this).edit().putString("artist_name", paramAnonymoushe).commit();
+          ArtistUI.c(ArtistUI.this).setUserName(paramAnonymousgs);
+          paramAnonymousgs = paramAnonymousgs.CMP;
+          if ((paramAnonymousgs != null) && (!paramAnonymousgs.equals(""))) {
+            ArtistUI.d(ArtistUI.this).edit().putString("artist_name", paramAnonymousgs).commit();
           }
           if (ArtistUI.a(ArtistUI.this) != null) {
             ArtistUI.a(ArtistUI.this).notifyDataSetChanged();
@@ -147,29 +149,29 @@ public class ArtistUI
         AppMethodBeat.o(97741);
       }
       
-      public final void b(he paramAnonymoushe)
+      public final void b(gs paramAnonymousgs)
       {
         AppMethodBeat.i(97742);
         if (ArtistUI.c(ArtistUI.this) != null)
         {
           ArtistUI.c(ArtistUI.this).setVisibility(0);
-          ArtistUI.c(ArtistUI.this).setUserName(paramAnonymoushe);
+          ArtistUI.c(ArtistUI.this).setUserName(paramAnonymousgs);
         }
         AppMethodBeat.o(97742);
       }
       
-      public final void ffj()
+      public final void fTe()
       {
         AppMethodBeat.i(97743);
         if ((ArtistUI.f(ArtistUI.this) == null) && (ArtistUI.e(ArtistUI.this) != null))
         {
           Log.d("MicroMsg.ArtistUI", "onNothingBgGet");
-          com.tencent.mm.plugin.sns.c.a.jRu.cR(true);
+          com.tencent.mm.plugin.sns.c.a.mIH.jdMethod_do(true);
         }
         AppMethodBeat.o(97743);
       }
     });
-    this.krb.setOnScrollListener(new AbsListView.OnScrollListener()
+    this.niO.setOnScrollListener(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
@@ -178,33 +180,33 @@ public class ArtistUI
         AppMethodBeat.i(97744);
         if (paramAnonymousInt == 2)
         {
-          if ((ArtistUI.this.Eof.DGJ) || (ArtistUI.this.Eog.DGJ))
+          if ((ArtistUI.this.KBo.JTH) || (ArtistUI.this.KBp.JTH))
           {
-            ArtistUI.this.czp.removeCallbacks(ArtistUI.g(ArtistUI.this));
-            ArtistUI.this.czp.removeCallbacks(ArtistUI.h(ArtistUI.this));
-            ArtistUI.this.czp.postDelayed(ArtistUI.g(ArtistUI.this), 0L);
+            ArtistUI.this.cyl.removeCallbacks(ArtistUI.g(ArtistUI.this));
+            ArtistUI.this.cyl.removeCallbacks(ArtistUI.h(ArtistUI.this));
+            ArtistUI.this.cyl.postDelayed(ArtistUI.g(ArtistUI.this), 0L);
             AppMethodBeat.o(97744);
           }
         }
         else
         {
-          if ((ArtistUI.this.Eof.DGJ) && (ArtistUI.this.Eog.DGJ))
+          if ((ArtistUI.this.KBo.JTH) && (ArtistUI.this.KBp.JTH))
           {
             AppMethodBeat.o(97744);
             return;
           }
-          ArtistUI.this.czp.removeCallbacks(ArtistUI.g(ArtistUI.this));
-          ArtistUI.this.czp.removeCallbacks(ArtistUI.h(ArtistUI.this));
-          ArtistUI.this.czp.postDelayed(ArtistUI.h(ArtistUI.this), 0L);
+          ArtistUI.this.cyl.removeCallbacks(ArtistUI.g(ArtistUI.this));
+          ArtistUI.this.cyl.removeCallbacks(ArtistUI.h(ArtistUI.this));
+          ArtistUI.this.cyl.postDelayed(ArtistUI.h(ArtistUI.this), 0L);
         }
         AppMethodBeat.o(97744);
       }
     });
-    this.Eod = new ArtistHeader(this);
-    this.krb.addHeaderView(this.Eod);
-    this.krb.setAdapter(this.Eoc);
-    this.Eoc.notifyDataSetChanged();
-    this.Eod.setVisibility(8);
+    this.KBm = new ArtistHeader(this);
+    this.niO.addHeaderView(this.KBm);
+    this.niO.setAdapter(this.KBl);
+    this.KBl.notifyDataSetChanged();
+    this.KBm.setVisibility(8);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -231,24 +233,24 @@ public class ArtistUI
       if (!str.equals("en"))
       {
         if (!str.equals("zh_TW")) {
-          break label153;
+          break label155;
         }
         paramBundle = str;
       }
     }
     for (;;)
     {
-      this.yFy = paramBundle;
-      Log.d("MicroMsg.ArtistUI", "lan " + this.yFy);
-      com.tencent.mm.kernel.g.aAi();
-      com.tencent.mm.kernel.g.aAg().hqi.a(159, this);
+      this.Ejr = paramBundle;
+      Log.d("MicroMsg.ArtistUI", "lan " + this.Ejr);
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHF().kcd.a(159, this);
       this.sp = getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0);
       initView();
-      paramBundle = this.Eod;
-      aj.faJ().a(paramBundle);
+      paramBundle = this.KBm;
+      aj.fOD().a(paramBundle);
       AppMethodBeat.o(97747);
       return;
-      label153:
+      label155:
       if (str.equals("zh_HK")) {
         paramBundle = "zh_TW";
       } else {
@@ -264,14 +266,14 @@ public class ArtistUI
     if (this.tipDialog != null) {
       this.tipDialog = null;
     }
-    if (this.Eod != null)
+    if (this.KBm != null)
     {
-      ArtistHeader localArtistHeader = this.Eod;
-      aj.faJ().b(localArtistHeader);
+      ArtistHeader localArtistHeader = this.KBm;
+      aj.fOD().b(localArtistHeader);
     }
-    aj.faL().aI(this);
-    com.tencent.mm.kernel.g.aAi();
-    com.tencent.mm.kernel.g.aAg().hqi.b(159, this);
+    aj.fOF().aO(this);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.b(159, this);
     AppMethodBeat.o(97748);
   }
   
@@ -289,10 +291,10 @@ public class ArtistUI
     AppMethodBeat.o(97749);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(97752);
-    if ((!(paramq instanceof s)) || (((s)paramq).aYR() != 4))
+    if ((!(paramq instanceof com.tencent.mm.an.s)) || (((com.tencent.mm.an.s)paramq).big() != 4))
     {
       Log.d("MicroMsg.ArtistUI", "another scene");
       AppMethodBeat.o(97752);
@@ -314,10 +316,10 @@ public class ArtistUI
     {
       AppMethodBeat.o(97752);
       return;
-      if (this.Eoc != null) {
-        this.Eoc.anp();
+      if (this.KBl != null) {
+        this.KBl.atr();
       }
-      this.Eoe = null;
+      this.KBn = null;
     }
   }
   
@@ -329,7 +331,7 @@ public class ArtistUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ArtistUI
  * JD-Core Version:    0.7.0.1
  */

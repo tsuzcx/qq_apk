@@ -7,14 +7,14 @@ import kotlin.g.a.b;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Sequence", "Lkotlin/sequences/Sequence;", "T", "iterator", "Lkotlin/Function0;", "", "emptySequence", "generateSequence", "", "nextFunction", "seedFunction", "Lkotlin/Function1;", "seed", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Lkotlin/sequences/Sequence;", "sequenceOf", "elements", "", "([Ljava/lang/Object;)Lkotlin/sequences/Sequence;", "asSequence", "constrainOnce", "flatten", "R", "flatten$SequencesKt__SequencesKt", "", "flattenSequenceOfIterable", "ifEmpty", "defaultValue", "orEmpty", "unzip", "Lkotlin/Pair;", "", "kotlin-stdlib"}, hxG=1)
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Sequence", "Lkotlin/sequences/Sequence;", "T", "iterator", "Lkotlin/Function0;", "", "emptySequence", "generateSequence", "", "nextFunction", "seedFunction", "Lkotlin/Function1;", "seed", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Lkotlin/sequences/Sequence;", "sequenceOf", "elements", "", "([Ljava/lang/Object;)Lkotlin/sequences/Sequence;", "asSequence", "constrainOnce", "flatten", "R", "flatten$SequencesKt__SequencesKt", "", "flattenSequenceOfIterable", "ifEmpty", "defaultValue", "orEmpty", "unzip", "Lkotlin/Pair;", "", "kotlin-stdlib"}, iBN=1)
 public class l
   extends k
 {
   public static final <T> h<T> a(h<? extends T> paramh)
   {
     AppMethodBeat.i(129531);
-    p.h(paramh, "$this$constrainOnce");
+    p.k(paramh, "$this$constrainOnce");
     if ((paramh instanceof a))
     {
       AppMethodBeat.o(129531);
@@ -25,26 +25,26 @@ public class l
     return paramh;
   }
   
-  public static final <T> h<T> aj(T... paramVarArgs)
+  public static final <T> h<T> an(T... paramVarArgs)
   {
     AppMethodBeat.i(129530);
-    p.h(paramVarArgs, "elements");
+    p.k(paramVarArgs, "elements");
     if (paramVarArgs.length == 0) {}
     for (int i = 1; i != 0; i = 0)
     {
-      paramVarArgs = (h)d.TSv;
+      paramVarArgs = (h)d.abuU;
       AppMethodBeat.o(129530);
       return paramVarArgs;
     }
-    paramVarArgs = e.aa(paramVarArgs);
+    paramVarArgs = e.ae(paramVarArgs);
     AppMethodBeat.o(129530);
     return paramVarArgs;
   }
   
-  public static final <T> h<T> ao(kotlin.g.a.a<? extends T> parama)
+  public static final <T> h<T> ay(kotlin.g.a.a<? extends T> parama)
   {
     AppMethodBeat.i(129532);
-    p.h(parama, "nextFunction");
+    p.k(parama, "nextFunction");
     parama = i.a((h)new g(parama, (b)new d(parama)));
     AppMethodBeat.o(129532);
     return parama;
@@ -53,10 +53,10 @@ public class l
   public static final <T> h<T> b(T paramT, b<? super T, ? extends T> paramb)
   {
     AppMethodBeat.i(129533);
-    p.h(paramb, "nextFunction");
+    p.k(paramb, "nextFunction");
     if (paramT == null)
     {
-      paramT = (h)d.TSv;
+      paramT = (h)d.abuU;
       AppMethodBeat.o(129533);
       return paramT;
     }
@@ -67,14 +67,14 @@ public class l
   
   public static final <T> h<T> d(Iterator<? extends T> paramIterator)
   {
-    AppMethodBeat.i(206259);
-    p.h(paramIterator, "$this$asSequence");
+    AppMethodBeat.i(218471);
+    p.k(paramIterator, "$this$asSequence");
     paramIterator = i.a((h)new a(paramIterator));
-    AppMethodBeat.o(206259);
+    AppMethodBeat.o(218471);
     return paramIterator;
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"kotlin/sequences/SequencesKt__SequencesKt$Sequence$1", "Lkotlin/sequences/Sequence;", "iterator", "", "kotlin-stdlib"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlin/sequences/SequencesKt__SequencesKt$Sequence$1", "Lkotlin/sequences/Sequence;", "iterator", "", "kotlin-stdlib"})
   public static final class a
     implements h<T>
   {
@@ -82,21 +82,41 @@ public class l
     
     public final Iterator<T> iterator()
     {
-      return this.TSI;
+      return this.abvh;
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "T", "R", "it", "invoke", "(Ljava/lang/Object;)Ljava/lang/Object;"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "it", "Lkotlin/sequences/Sequence;", "invoke"})
+  public static final class b
+    extends q
+    implements b<h<? extends T>, Iterator<? extends T>>
+  {
+    public static final b abvi;
+    
+    static
+    {
+      AppMethodBeat.i(129476);
+      abvi = new b();
+      AppMethodBeat.o(129476);
+    }
+    
+    b()
+    {
+      super();
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "T", "R", "it", "invoke", "(Ljava/lang/Object;)Ljava/lang/Object;"})
   public static final class c
     extends q
     implements b<T, T>
   {
-    public static final c TSK;
+    public static final c abvj;
     
     static
     {
       AppMethodBeat.i(129488);
-      TSK = new c();
+      abvj = new c();
       AppMethodBeat.o(129488);
     }
     
@@ -111,7 +131,7 @@ public class l
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "T", "", "it", "invoke", "(Ljava/lang/Object;)Ljava/lang/Object;"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "T", "", "it", "invoke", "(Ljava/lang/Object;)Ljava/lang/Object;"})
   static final class d
     extends q
     implements b<T, T>
@@ -124,14 +144,14 @@ public class l
     public final T invoke(T paramT)
     {
       AppMethodBeat.i(129473);
-      p.h(paramT, "it");
-      paramT = this.TSL.invoke();
+      p.k(paramT, "it");
+      paramT = this.abvk.invoke();
       AppMethodBeat.o(129473);
       return paramT;
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "T", "", "invoke", "()Ljava/lang/Object;"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "T", "", "invoke", "()Ljava/lang/Object;"})
   static final class e
     extends q
     implements kotlin.g.a.a<T>
@@ -143,7 +163,7 @@ public class l
     
     public final T invoke()
     {
-      return this.TSM;
+      return this.abvl;
     }
   }
 }

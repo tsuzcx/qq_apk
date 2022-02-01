@@ -9,29 +9,29 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
 public final class a
-  extends MAutoStorage<com.tencent.mm.bh.f>
+  extends MAutoStorage<com.tencent.mm.bj.f>
 {
+  public static LinkedHashMap<String, Class> Fvg;
   public static final String[] SQL_CREATE;
-  public static LinkedHashMap<String, Class> wQE;
   
   static
   {
     AppMethodBeat.i(114643);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(com.tencent.mm.bh.f.info, "MultiTalkInfo"), "CREATE INDEX IF NOT EXISTS idx_MultiTalkInfo_key  on MultiTalkInfo  (  wxGroupId )" };
-    wQE = new a.1();
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(com.tencent.mm.bj.f.info, "MultiTalkInfo"), "CREATE INDEX IF NOT EXISTS idx_MultiTalkInfo_key  on MultiTalkInfo  (  wxGroupId )" };
+    Fvg = new a.1();
     AppMethodBeat.o(114643);
   }
   
   public a(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, com.tencent.mm.bh.f.info, "MultiTalkInfo", null);
+    super(paramISQLiteDatabase, com.tencent.mm.bj.f.info, "MultiTalkInfo", null);
   }
   
-  public final boolean a(com.tencent.mm.bh.f paramf)
+  public final boolean a(com.tencent.mm.bj.f paramf)
   {
     AppMethodBeat.i(114639);
     String str = paramf.field_wxGroupId;
-    if (com.tencent.pb.common.c.f.eP(str))
+    if (com.tencent.pb.common.c.f.fK(str))
     {
       Log.e("MicroMsg.MultiTalk.storage.MultiTalkInfoStorage", "save. multiTalkInfo wxGroupId is empty!");
       AppMethodBeat.o(114639);
@@ -53,7 +53,7 @@ public final class a
     return false;
   }
   
-  public final com.tencent.mm.bh.f aFI(String paramString)
+  public final com.tencent.mm.bj.f aPU(String paramString)
   {
     AppMethodBeat.i(114641);
     Log.i("MicroMsg.MultiTalk.storage.MultiTalkInfoStorage", "getMultiTaklInfo for wxGroupId = %s", new Object[] { paramString });
@@ -63,7 +63,7 @@ public final class a
     {
       if (paramString.moveToNext())
       {
-        com.tencent.mm.bh.f localf = new com.tencent.mm.bh.f();
+        com.tencent.mm.bj.f localf = new com.tencent.mm.bj.f();
         localf.field_wxGroupId = paramString.getString(0);
         localf.field_groupId = paramString.getString(1);
         localf.field_roomId = paramString.getInt(2);
@@ -93,11 +93,11 @@ public final class a
     }
   }
   
-  public final boolean b(com.tencent.mm.bh.f paramf)
+  public final boolean b(com.tencent.mm.bj.f paramf)
   {
     AppMethodBeat.i(114640);
     String str = paramf.field_wxGroupId;
-    if (com.tencent.pb.common.c.f.eP(str))
+    if (com.tencent.pb.common.c.f.fK(str))
     {
       Log.e("MicroMsg.MultiTalk.storage.MultiTalkInfoStorage", "update. multiTalkInfo wxGroupId is empty!");
       AppMethodBeat.o(114640);
@@ -119,7 +119,7 @@ public final class a
     return false;
   }
   
-  public final LinkedList<com.tencent.mm.bh.f> eot()
+  public final LinkedList<com.tencent.mm.bj.f> eYj()
   {
     AppMethodBeat.i(114638);
     Cursor localCursor = rawQuery("select wxGroupId, groupId, roomId, roomKey, routeId, createTime, ilinkRoomId from MultiTalkInfo", new String[0]);
@@ -131,7 +131,7 @@ public final class a
       {
         if (localCursor.moveToNext())
         {
-          com.tencent.mm.bh.f localf = new com.tencent.mm.bh.f();
+          com.tencent.mm.bj.f localf = new com.tencent.mm.bj.f();
           localf.field_wxGroupId = localCursor.getString(0);
           localf.field_groupId = localCursor.getString(1);
           localf.field_roomId = localCursor.getInt(2);
@@ -165,7 +165,7 @@ public final class a
     }
   }
   
-  public final boolean gC(String paramString)
+  public final boolean ho(String paramString)
   {
     AppMethodBeat.i(114642);
     Log.i("MicroMsg.MultiTalk.storage.MultiTalkInfoStorage", "delete id = %s", new Object[] { paramString });
@@ -185,7 +185,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.c.a
  * JD-Core Version:    0.7.0.1
  */

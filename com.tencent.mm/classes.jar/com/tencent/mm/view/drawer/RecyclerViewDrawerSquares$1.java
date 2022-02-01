@@ -7,27 +7,27 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class RecyclerViewDrawerSquares$1
   implements View.OnClickListener
 {
-  public static final 1 Ros;
+  public static final 1 YPM;
   
   static
   {
-    AppMethodBeat.i(205021);
-    Ros = new 1();
-    AppMethodBeat.o(205021);
+    AppMethodBeat.i(203763);
+    YPM = new 1();
+    AppMethodBeat.o(203763);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(205020);
+    AppMethodBeat.i(203762);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/view/drawer/RecyclerViewDrawerSquares$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    localb.bn(paramView);
+    a.c("com/tencent/mm/view/drawer/RecyclerViewDrawerSquares$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
     a.a(this, "com/tencent/mm/view/drawer/RecyclerViewDrawerSquares$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(205020);
+    AppMethodBeat.o(203762);
   }
 }
 

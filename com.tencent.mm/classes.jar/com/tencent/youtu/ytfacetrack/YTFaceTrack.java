@@ -91,11 +91,11 @@ public class YTFaceTrack
   
   public static void nativeLog(int paramInt, String paramString)
   {
-    AppMethodBeat.i(192714);
+    AppMethodBeat.i(243596);
     if (loggerListener != null) {
       loggerListener.log("[YTFaceTrack.nativeLog]", paramString);
     }
-    AppMethodBeat.o(192714);
+    AppMethodBeat.o(243596);
   }
   
   public static void setLoggerListener(IYtLoggerListener paramIYtLoggerListener)
@@ -156,6 +156,16 @@ public class YTFaceTrack
     public float roll;
     public float[] xys;
     public float[] xys5p;
+    public float yaw;
+  }
+  
+  public static class FaceStatus3d
+  {
+    public float[] denseFaceModel;
+    public float[] expression;
+    public float pitch;
+    public float roll;
+    public float[] transform;
     public float yaw;
   }
   

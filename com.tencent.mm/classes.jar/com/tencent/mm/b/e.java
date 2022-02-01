@@ -1,7 +1,7 @@
 package com.tencent.mm.b;
 
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,21 +9,21 @@ import java.io.OutputStream;
 
 public final class e
 {
-  public static final boolean a(o paramo)
+  public static final boolean a(q paramq)
   {
     int i = 0;
-    if (!paramo.exists()) {}
+    if (!paramq.ifE()) {}
     do
     {
       do
       {
         return false;
-      } while (!paramo.isDirectory());
-      paramo = paramo.het();
-    } while (paramo == null);
-    while (i < paramo.length)
+      } while (!paramq.isDirectory());
+      paramq = paramq.ifJ();
+    } while (paramq == null);
+    while (i < paramq.length)
     {
-      paramo[i].delete();
+      paramq[i].cFq();
       i += 1;
     }
     return true;
@@ -60,14 +60,14 @@ public final class e
     }
   }
   
-  public static void f(String... paramVarArgs)
+  public static void d(String... paramVarArgs)
   {
     int i = 0;
     while (i <= 0)
     {
       String str = paramVarArgs[0];
-      o localo = new o(str);
-      if ((!localo.exists()) && ((!localo.mkdirs()) || (!localo.isDirectory()))) {
+      q localq = new q(str);
+      if ((!localq.ifE()) && ((!localq.ifL()) || (!localq.isDirectory()))) {
         Log.e("MicroMsg.FileOperation", "batchMkDirs mkdir error. %s", new Object[] { str });
       }
       i += 1;

@@ -9,19 +9,19 @@ public final class d$1
 {
   public d$1(e parame, d.a parama) {}
   
-  public final void K(View paramView, int paramInt)
+  public final void L(View paramView, int paramInt)
   {
     AppMethodBeat.i(134921);
-    if (this.gwC.isShowing()) {
-      this.gwC.bMo();
+    if (this.jaP.isShowing()) {
+      this.jaP.bYF();
     }
-    this.nfK.K(paramView, paramInt);
+    this.qgu.L(paramView, paramInt);
     AppMethodBeat.o(134921);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.a.d.1
  * JD-Core Version:    0.7.0.1
  */

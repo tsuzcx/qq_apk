@@ -4,19 +4,19 @@ import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.mx;
+import com.tencent.mm.f.a.np;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import junit.framework.Assert;
 
 public final class b
 {
-  public MMMusicPlayerService AkZ;
-  volatile boolean Ale = false;
-  public IListener lEl;
+  public MMMusicPlayerService FSg;
+  volatile boolean FSm = false;
+  public IListener ozM;
   
   /* Error */
-  final void euJ()
+  final void ffc()
   {
     // Byte code:
     //   0: aload_0
@@ -24,10 +24,10 @@ public final class b
     //   2: ldc 23
     //   4: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 31	com/tencent/mm/plugin/music/model/notification/b:AkZ	Lcom/tencent/mm/plugin/music/model/notification/MMMusicPlayerService;
+    //   8: getfield 31	com/tencent/mm/plugin/music/model/notification/b:FSg	Lcom/tencent/mm/plugin/music/model/notification/MMMusicPlayerService;
     //   11: ifnull +18 -> 29
     //   14: aload_0
-    //   15: getfield 20	com/tencent/mm/plugin/music/model/notification/b:Ale	Z
+    //   15: getfield 20	com/tencent/mm/plugin/music/model/notification/b:FSm	Z
     //   18: ifeq +11 -> 29
     //   21: ldc 23
     //   23: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -36,7 +36,7 @@ public final class b
     //   28: return
     //   29: aload_0
     //   30: iconst_1
-    //   31: putfield 20	com/tencent/mm/plugin/music/model/notification/b:Ale	Z
+    //   31: putfield 20	com/tencent/mm/plugin/music/model/notification/b:FSm	Z
     //   34: new 36	android/content/Intent
     //   37: dup
     //   38: invokespecial 37	android/content/Intent:<init>	()V
@@ -84,7 +84,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.notification.b
  * JD-Core Version:    0.7.0.1
  */

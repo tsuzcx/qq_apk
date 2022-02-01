@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bog;
-import com.tencent.mm.protocal.protobuf.boh;
-import com.tencent.mm.protocal.protobuf.cbg;
+import com.tencent.mm.protocal.protobuf.bvv;
+import com.tencent.mm.protocal.protobuf.bvw;
+import com.tencent.mm.protocal.protobuf.cji;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -24,8 +24,8 @@ public final class f
   extends q
   implements m
 {
-  private boh HHV;
-  private a HHW;
+  private bvw OzP;
+  private a OzQ;
   private i callback;
   private final d rr;
   
@@ -33,11 +33,11 @@ public final class f
   {
     AppMethodBeat.i(69534);
     d.a locala = new d.a();
-    locala.iLN = new bog();
-    locala.iLO = new boh();
+    locala.lBU = new bvv();
+    locala.lBV = new bvw();
     locala.uri = "/cgi-bin/mmpay-bin/ftfhb/gethbrefundconfig";
     locala.funcId = 1477;
-    this.rr = locala.aXF();
+    this.rr = locala.bgN();
     AppMethodBeat.o(69534);
   }
   
@@ -50,31 +50,31 @@ public final class f
     return i;
   }
   
-  public final a fOM()
+  public final a gHr()
   {
     AppMethodBeat.i(69537);
-    if (this.HHW == null)
+    if (this.OzQ == null)
     {
-      this.HHW = new a();
-      this.HHW.dDN = this.HHV.dDN;
-      this.HHW.HHX = this.HHV.HHX;
-      this.HHW.HHY = this.HHV.HHY;
-      this.HHW.HHZ = this.HHV.HHZ;
-      this.HHW.HIa = this.HHV.HIa;
-      this.HHW.HIb = this.HHV.HIb;
-      this.HHW.HIc = this.HHV.HIc;
-      this.HHW.HId = this.HHV.HId;
-      this.HHW.HIe = this.HHV.HIe;
-      this.HHW.HIg = this.HHV.HIg;
-      this.HHW.HIf = new ArrayList();
-      localObject = this.HHV.LWw.iterator();
+      this.OzQ = new a();
+      this.OzQ.fwx = this.OzP.fwx;
+      this.OzQ.OzR = this.OzP.OzR;
+      this.OzQ.fEY = this.OzP.fEY;
+      this.OzQ.OzS = this.OzP.OzS;
+      this.OzQ.OzT = this.OzP.OzT;
+      this.OzQ.OzU = this.OzP.OzU;
+      this.OzQ.OzV = this.OzP.OzV;
+      this.OzQ.OzW = this.OzP.OzW;
+      this.OzQ.OzX = this.OzP.OzX;
+      this.OzQ.Dlq = this.OzP.Dlq;
+      this.OzQ.OzY = new ArrayList();
+      localObject = this.OzP.TfD.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        cbg localcbg = (cbg)((Iterator)localObject).next();
-        this.HHW.HIf.add(new b(localcbg.title, localcbg.desc, localcbg.ivw, localcbg.HIh));
+        cji localcji = (cji)((Iterator)localObject).next();
+        this.OzQ.OzY.add(new b(localcji.title, localcji.desc, localcji.lkF, localcji.OzZ));
       }
     }
-    Object localObject = this.HHW;
+    Object localObject = this.OzQ;
     AppMethodBeat.o(69537);
     return localObject;
   }
@@ -89,7 +89,7 @@ public final class f
     AppMethodBeat.i(69536);
     Log.w("MicroMsg.NetSceneGetHbRefundConfig", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.HHV = ((boh)((d)params).iLL.iLR);
+      this.OzP = ((bvw)d.c.b(((d)params).lBS));
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(69536);
@@ -97,54 +97,54 @@ public final class f
   
   public static final class a
   {
-    public String HHX;
-    public boolean HHY;
-    public String HHZ;
-    public String HIa;
-    public String HIb;
-    public String HIc;
-    public String HId;
-    public String HIe;
-    public ArrayList<f.b> HIf;
-    public boolean HIg;
-    public int dDN;
+    public boolean Dlq;
+    public String OzR;
+    public String OzS;
+    public String OzT;
+    public String OzU;
+    public String OzV;
+    public String OzW;
+    public String OzX;
+    public ArrayList<f.b> OzY;
+    public boolean fEY;
+    public int fwx;
     
     public a()
     {
       AppMethodBeat.i(69528);
-      this.HIf = new ArrayList();
+      this.OzY = new ArrayList();
       AppMethodBeat.o(69528);
     }
     
-    public static a aUZ(String paramString)
+    public static a bgI(String paramString)
     {
       AppMethodBeat.i(69531);
       locala = new a();
       try
       {
         paramString = new JSONObject(paramString);
-        locala.dDN = paramString.optInt("retcode");
-        locala.HIg = paramString.optBoolean("disabled");
-        locala.HHX = paramString.optString("entrance_name");
-        locala.HHY = paramString.optBoolean("reddot");
-        locala.HHZ = paramString.optString("refund_lingqian_title");
-        locala.HIa = paramString.optString("refund_lingqian_desc");
-        locala.HIb = paramString.optString("refund_origin_title");
-        locala.HIc = paramString.optString("refund_origin_desc");
-        locala.HId = paramString.optString("top_tip");
-        locala.HIe = paramString.optString("refund_time_title");
+        locala.fwx = paramString.optInt("retcode");
+        locala.Dlq = paramString.optBoolean("disabled");
+        locala.OzR = paramString.optString("entrance_name");
+        locala.fEY = paramString.optBoolean("reddot");
+        locala.OzS = paramString.optString("refund_lingqian_title");
+        locala.OzT = paramString.optString("refund_lingqian_desc");
+        locala.OzU = paramString.optString("refund_origin_title");
+        locala.OzV = paramString.optString("refund_origin_desc");
+        locala.OzW = paramString.optString("top_tip");
+        locala.OzX = paramString.optString("refund_time_title");
         paramString = paramString.optJSONArray("refund_time");
         int j = paramString.length();
         int i = 0;
         while (i < j)
         {
-          ArrayList localArrayList = locala.HIf;
+          ArrayList localArrayList = locala.OzY;
           JSONObject localJSONObject = paramString.getJSONObject(i);
           f.b localb = new f.b();
           localb.title = localJSONObject.optString("title");
           localb.desc = localJSONObject.optString("desc");
-          localb.ivw = localJSONObject.optString("iconurl");
-          localb.HIh = localJSONObject.optString("iconmd5");
+          localb.lkF = localJSONObject.optString("iconurl");
+          localb.OzZ = localJSONObject.optString("iconmd5");
           localArrayList.add(localb);
           i += 1;
         }
@@ -157,24 +157,24 @@ public final class f
       }
     }
     
-    public final String fON()
+    public final String gHs()
     {
       AppMethodBeat.i(69530);
       JSONObject localJSONObject = new JSONObject();
       try
       {
-        localJSONObject.put("retcode", this.dDN);
-        localJSONObject.put("disabled", this.HIg);
-        localJSONObject.put("entrance_name", this.HHX);
-        localJSONObject.put("reddot", this.HHY);
-        localJSONObject.put("refund_lingqian_title", this.HHZ);
-        localJSONObject.put("refund_lingqian_desc", this.HIa);
-        localJSONObject.put("refund_origin_title", this.HIb);
-        localJSONObject.put("refund_origin_desc", this.HIc);
-        localJSONObject.put("top_tip", this.HId);
-        localJSONObject.put("refund_time_title", this.HIe);
+        localJSONObject.put("retcode", this.fwx);
+        localJSONObject.put("disabled", this.Dlq);
+        localJSONObject.put("entrance_name", this.OzR);
+        localJSONObject.put("reddot", this.fEY);
+        localJSONObject.put("refund_lingqian_title", this.OzS);
+        localJSONObject.put("refund_lingqian_desc", this.OzT);
+        localJSONObject.put("refund_origin_title", this.OzU);
+        localJSONObject.put("refund_origin_desc", this.OzV);
+        localJSONObject.put("top_tip", this.OzW);
+        localJSONObject.put("refund_time_title", this.OzX);
         JSONArray localJSONArray = new JSONArray();
-        Iterator localIterator = this.HIf.iterator();
+        Iterator localIterator = this.OzY.iterator();
         while (localIterator.hasNext()) {
           localJSONArray.put(((f.b)localIterator.next()).getJSONObject());
         }
@@ -194,7 +194,7 @@ public final class f
     public final String toString()
     {
       AppMethodBeat.i(69529);
-      String str = "HbRefundConfig{retcode=" + this.dDN + ", entrance_name='" + this.HHX + '\'' + ", reddot=" + this.HHY + ", refund_lingqian_title='" + this.HHZ + '\'' + ", refund_lingqian_desc='" + this.HIa + '\'' + ", refund_origin_title='" + this.HIb + '\'' + ", refund_origin_desc='" + this.HIc + '\'' + ", top_tip='" + this.HId + '\'' + ", refund_time_title='" + this.HIe + '\'' + ", refund_time=" + this.HIf + ", disabled=" + this.HIg + '}';
+      String str = "HbRefundConfig{retcode=" + this.fwx + ", entrance_name='" + this.OzR + '\'' + ", reddot=" + this.fEY + ", refund_lingqian_title='" + this.OzS + '\'' + ", refund_lingqian_desc='" + this.OzT + '\'' + ", refund_origin_title='" + this.OzU + '\'' + ", refund_origin_desc='" + this.OzV + '\'' + ", top_tip='" + this.OzW + '\'' + ", refund_time_title='" + this.OzX + '\'' + ", refund_time=" + this.OzY + ", disabled=" + this.Dlq + '}';
       AppMethodBeat.o(69529);
       return str;
     }
@@ -202,9 +202,9 @@ public final class f
   
   public static final class b
   {
-    public String HIh;
+    public String OzZ;
     public String desc;
-    public String ivw;
+    public String lkF;
     public String title;
     
     public b() {}
@@ -213,8 +213,8 @@ public final class f
     {
       this.title = paramString1;
       this.desc = paramString2;
-      this.ivw = paramString3;
-      this.HIh = paramString4;
+      this.lkF = paramString3;
+      this.OzZ = paramString4;
     }
     
     public final JSONObject getJSONObject()
@@ -225,8 +225,8 @@ public final class f
       {
         localJSONObject.put("title", this.title);
         localJSONObject.put("desc", this.desc);
-        localJSONObject.put("iconurl", this.ivw);
-        localJSONObject.put("iconmd5", this.HIh);
+        localJSONObject.put("iconurl", this.lkF);
+        localJSONObject.put("iconmd5", this.OzZ);
         AppMethodBeat.o(69533);
         return localJSONObject;
       }
@@ -242,7 +242,7 @@ public final class f
     public final String toString()
     {
       AppMethodBeat.i(69532);
-      String str = "HbRefundTimeParcelable{title='" + this.title + '\'' + ", desc='" + this.desc + '\'' + ", iconurl='" + this.ivw + '\'' + ", iconmd5='" + this.HIh + '\'' + '}';
+      String str = "HbRefundTimeParcelable{title='" + this.title + '\'' + ", desc='" + this.desc + '\'' + ", iconurl='" + this.lkF + '\'' + ", iconmd5='" + this.OzZ + '\'' + '}';
       AppMethodBeat.o(69532);
       return str;
     }
@@ -250,7 +250,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.a.f
  * JD-Core Version:    0.7.0.1
  */

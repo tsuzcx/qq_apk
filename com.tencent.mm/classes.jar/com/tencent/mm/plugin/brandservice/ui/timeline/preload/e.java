@@ -3,336 +3,281 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.r;
-import com.tencent.mm.b.h;
+import com.tencent.mm.ao.r;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.ipcinvoker.wx_extension.service.Appbrand0IPCService;
 import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsMpProcessIPCService;
+import com.tencent.mm.plugin.appbrand.jsapi.video.i;
 import com.tencent.mm.plugin.webview.l.c.b;
-import com.tencent.mm.protocal.protobuf.eic;
+import com.tencent.mm.protocal.protobuf.ese;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
+import com.tencent.thumbplayer.api.proxy.ITPPreloadProxy.IPreloadListener;
 import java.util.LinkedList;
+import java.util.List;
 import kotlin.ResultKt;
-import kotlin.d.d;
-import kotlin.g;
+import kotlin.g.a.b;
 import kotlin.g.a.m;
+import kotlin.g.b.aa.f;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
-import kotlin.g.b.z.f;
 import kotlin.l;
 import kotlin.x;
-import kotlinx.coroutines.ai;
-import kotlinx.coroutines.au;
-import kotlinx.coroutines.ba;
-import kotlinx.coroutines.bn;
+import kotlinx.coroutines.ak;
+import kotlinx.coroutines.aw;
+import kotlinx.coroutines.bc;
+import kotlinx.coroutines.br;
+import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/BizVideoPreloadLogic;", "", "()V", "PRELOAD_MAX_BYTES", "", "PRELOAD_MIN_BYTES", "TAG", "", "abTest", "", "getAbTest", "()Z", "abTest$delegate", "Lkotlin/Lazy;", "doingCache", "getDoingCache", "setDoingCache", "(Z)V", "fetchQueue", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/BizVideoPreloadLogic$FetchData;", "getFetchQueue", "()Ljava/util/LinkedList;", "jsContextStatus", "", "getJsContextStatus", "()I", "setJsContextStatus", "(I)V", "lastManifestId", "getLastManifestId", "()Ljava/lang/String;", "setLastManifestId", "(Ljava/lang/String;)V", "lruList", "Lcom/tencent/mm/algorithm/MMLRUMap;", "Landroid/os/Bundle;", "getLruList", "()Lcom/tencent/mm/algorithm/MMLRUMap;", "preloadLimiter", "Lcom/tencent/mm/modelbiz/MpDataLimiter;", "getPreloadLimiter", "()Lcom/tencent/mm/modelbiz/MpDataLimiter;", "cacheVideo", "", "data", "processName", "url", "position", "length", "cacheVideoInClientProcess", "doCacheVideo", "doFetch", "preloadVideo", "itemShowType", "extInfo", "getLatest", "kotlin.jvm.PlatformType", "FetchData", "JsStatus", "plugin-brandservice_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/BizVideoPreloadLogic;", "", "()V", "PRELOAD_MAX_BYTES", "", "PRELOAD_MIN_BYTES", "TAG", "", "abTest", "", "getAbTest", "()Z", "abTest$delegate", "Lkotlin/Lazy;", "doingCache", "getDoingCache", "setDoingCache", "(Z)V", "fetchQueue", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/BizVideoPreloadLogic$FetchData;", "getFetchQueue", "()Ljava/util/LinkedList;", "jsContextStatus", "", "getJsContextStatus", "()I", "setJsContextStatus", "(I)V", "lastManifestId", "getLastManifestId", "()Ljava/lang/String;", "setLastManifestId", "(Ljava/lang/String;)V", "lruList", "Lcom/tencent/mm/algorithm/MMLRUMap;", "Landroid/os/Bundle;", "getLruList", "()Lcom/tencent/mm/algorithm/MMLRUMap;", "preloadLimiter", "Lcom/tencent/mm/modelbiz/MpDataLimiter;", "getPreloadLimiter", "()Lcom/tencent/mm/modelbiz/MpDataLimiter;", "useThumbPlayer", "getUseThumbPlayer", "useThumbPlayer$delegate", "cacheVideo", "", "data", "processName", "url", "position", "length", "cacheVideoInClientProcess", "doCacheVideo", "doFetch", "preloadTTPlayer", "preloadSize", "preloadVideo", "itemShowType", "extInfo", "getLatest", "kotlin.jvm.PlatformType", "FetchData", "JsStatus", "plugin-brandservice_release"})
 public final class e
 {
-  private static final kotlin.f pAG;
-  private static final r pAH;
-  private static final LinkedList<a> pAI;
-  private static int pAJ;
-  private static String pAK;
-  private static boolean pAL;
-  private static final h<String, Bundle> pAM;
-  public static final e pAN;
+  private static final kotlin.f sKO;
+  private static final kotlin.f sKP;
+  private static final r sKQ;
+  private static final LinkedList<a> sKR;
+  private static int sKS;
+  private static String sKT;
+  private static boolean sKU;
+  private static final com.tencent.mm.b.h<String, Bundle> sKV;
+  public static final e sKW;
   
   static
   {
-    AppMethodBeat.i(195597);
-    pAN = new e();
-    pAG = g.ah((kotlin.g.a.a)e.b.pAR);
+    AppMethodBeat.i(265347);
+    sKW = new e();
+    sKO = kotlin.g.ar((kotlin.g.a.a)b.sLa);
+    sKP = kotlin.g.ar((kotlin.g.a.a)g.sLn);
     if (BuildInfo.DEBUG) {}
     for (int i = 1000;; i = 600000)
     {
-      pAH = new r(i);
-      pAI = new LinkedList();
-      pAJ = 1;
-      pAK = "";
-      com.tencent.mm.plugin.appbrand.jsapi.video.j.bJE().hQ(cnF());
-      String str = ToolsMpProcessIPCService.dkO;
-      p.g(str, "ToolsMpProcessIPCService.PROCESS_NAME");
+      sKQ = new r(i);
+      sKR = new LinkedList();
+      sKS = 1;
+      sKT = "";
+      i.bVn().iG(cBK());
+      String str = ToolsMpProcessIPCService.PROCESS_NAME;
+      p.j(str, "ToolsMpProcessIPCService.PROCESS_NAME");
       Bundle localBundle = new Bundle();
-      localBundle.putBoolean("abTest", cnF());
-      com.tencent.mm.ipcinvoker.a.a(str, (Parcelable)localBundle, (com.tencent.mm.ipcinvoker.b)e.1.pAO, null);
-      str = Appbrand0IPCService.dkO;
-      p.g(str, "Appbrand0IPCService.PROCESS_NAME");
+      localBundle.putBoolean("abTest", cBK());
+      com.tencent.mm.ipcinvoker.a.a(str, (Parcelable)localBundle, (com.tencent.mm.ipcinvoker.d)1.sKX, null);
+      str = Appbrand0IPCService.PROCESS_NAME;
+      p.j(str, "Appbrand0IPCService.PROCESS_NAME");
       localBundle = new Bundle();
-      localBundle.putBoolean("abTest", cnF());
-      com.tencent.mm.ipcinvoker.a.a(str, (Parcelable)localBundle, (com.tencent.mm.ipcinvoker.b)e.2.pAP, null);
-      pAM = new h(10);
-      AppMethodBeat.o(195597);
+      localBundle.putBoolean("abTest", cBK());
+      com.tencent.mm.ipcinvoker.a.a(str, (Parcelable)localBundle, (com.tencent.mm.ipcinvoker.d)2.sKY, null);
+      sKV = new com.tencent.mm.b.h(10);
+      AppMethodBeat.o(265347);
       return;
     }
   }
   
-  public static void Dn(int paramInt)
+  public static void G(String paramString1, final int paramInt, final String paramString2)
   {
-    pAJ = paramInt;
-  }
-  
-  public static void F(String paramString1, final int paramInt, final String paramString2)
-  {
-    AppMethodBeat.i(195593);
-    if (!cnF())
+    AppMethodBeat.i(265343);
+    if (!cBK())
     {
-      AppMethodBeat.o(195593);
+      AppMethodBeat.o(265343);
       return;
     }
     if (paramString1 == null)
     {
-      AppMethodBeat.o(195593);
+      AppMethodBeat.o(265343);
       return;
     }
     if (!UrlExKt.isMpArticleUrl(paramString1))
     {
-      AppMethodBeat.o(195593);
+      AppMethodBeat.o(265343);
       return;
     }
     if ((paramInt < 0) && (Util.isNullOrNil(paramString2)))
     {
-      AppMethodBeat.o(195593);
+      AppMethodBeat.o(265343);
       return;
     }
-    String str = c.ahX(paramString1);
-    if (pAH.contains(str))
+    String str = c.apJ(paramString1);
+    if (sKQ.contains(str))
     {
       Log.i("MicroMsg.BizVideoPreloadLogic", "[TRACE_VIDEO_PRELOAD] preloadLimiter contains id = ".concat(String.valueOf(str)));
-      AppMethodBeat.o(195593);
+      AppMethodBeat.o(265343);
       return;
     }
-    pAH.add(str);
-    kotlinx.coroutines.f.b((ai)bn.TUK, (kotlin.d.f)ba.hMW(), (m)new e(paramString1, paramInt, paramString2, null), 2);
-    AppMethodBeat.o(195593);
+    sKQ.add(str);
+    kotlinx.coroutines.g.b((ak)br.abxo, (kotlin.d.f)bc.iRs(), (m)new f(paramString1, paramInt, paramString2, null), 2);
+    AppMethodBeat.o(265343);
   }
   
-  public static void aig(String paramString)
+  public static void GW(int paramInt)
   {
-    AppMethodBeat.i(195592);
-    p.h(paramString, "<set-?>");
-    pAK = paramString;
-    AppMethodBeat.o(195592);
+    sKS = paramInt;
   }
   
-  private final void aih(String paramString)
+  public static void apS(String paramString)
+  {
+    AppMethodBeat.i(265342);
+    p.k(paramString, "<set-?>");
+    sKT = paramString;
+    AppMethodBeat.o(265342);
+  }
+  
+  private final void apT(String paramString)
   {
     for (;;)
     {
-      final z.f localf;
+      final aa.f localf;
       Object localObject;
       try
       {
-        AppMethodBeat.i(195596);
-        if (pAM.size() <= 0)
+        AppMethodBeat.i(265346);
+        if (sKV.size() <= 0)
         {
           Log.i("MicroMsg.BizVideoPreloadLogic", "[TRACE_VIDEO_PRELOAD] doCacheVideo lruList is empty");
-          pAL = false;
-          AppMethodBeat.o(195596);
+          sKU = false;
+          AppMethodBeat.o(265346);
           return;
         }
-        pAL = true;
-        localf = new z.f();
-        localObject = pAM.keySet();
-        p.g(localObject, "this.keySet()");
+        sKU = true;
+        localf = new aa.f();
+        localObject = sKV.keySet();
+        p.j(localObject, "this.keySet()");
         localObject = (String)kotlin.a.j.g((Iterable)localObject);
         if (localObject == null)
         {
-          AppMethodBeat.o(195596);
+          AppMethodBeat.o(265346);
           continue;
         }
-        localBundle = (Bundle)pAM.get(localObject);
+        localBundle = (Bundle)sKV.get(localObject);
       }
       finally {}
       Bundle localBundle;
       if (localBundle == null)
       {
-        AppMethodBeat.o(195596);
+        AppMethodBeat.o(265346);
       }
       else
       {
-        localf.SYG = localBundle;
-        pAM.remove(localObject);
-        kotlinx.coroutines.f.b((ai)bn.TUK, null, (m)new c(paramString, localf, null), 3);
-        AppMethodBeat.o(195596);
+        localf.aaBC = localBundle;
+        sKV.remove(localObject);
+        kotlinx.coroutines.g.b((ak)br.abxo, null, (m)new c(paramString, localf, null), 3);
+        AppMethodBeat.o(265346);
       }
     }
   }
   
-  private static boolean cnF()
+  private static boolean cBK()
   {
-    AppMethodBeat.i(195591);
-    boolean bool = ((Boolean)pAG.getValue()).booleanValue();
-    AppMethodBeat.o(195591);
+    AppMethodBeat.i(265337);
+    boolean bool = ((Boolean)sKO.getValue()).booleanValue();
+    AppMethodBeat.o(265337);
     return bool;
   }
   
-  public static LinkedList<a> cnG()
+  public static boolean cBL()
   {
-    return pAI;
+    AppMethodBeat.i(265339);
+    boolean bool = ((Boolean)sKP.getValue()).booleanValue();
+    AppMethodBeat.o(265339);
+    return bool;
   }
   
-  public static int cnH()
+  public static LinkedList<a> cBM()
   {
-    return pAJ;
+    return sKR;
   }
   
-  public static String cnI()
+  public static int cBN()
   {
-    return pAK;
+    return sKS;
   }
   
-  /* Error */
-  private final void cnJ()
+  public static String cBO()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc_w 365
-    //   5: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 143	com/tencent/mm/plugin/brandservice/ui/timeline/preload/e:pAI	Ljava/util/LinkedList;
-    //   11: checkcast 367	java/util/List
-    //   14: invokestatic 370	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/util/List;)Z
-    //   17: ifne +10 -> 27
-    //   20: getstatic 145	com/tencent/mm/plugin/brandservice/ui/timeline/preload/e:pAJ	I
-    //   23: iconst_3
-    //   24: if_icmpeq +36 -> 60
-    //   27: ldc 244
-    //   29: new 372	java/lang/StringBuilder
-    //   32: dup
-    //   33: ldc_w 374
-    //   36: invokespecial 376	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   39: getstatic 145	com/tencent/mm/plugin/brandservice/ui/timeline/preload/e:pAJ	I
-    //   42: invokevirtual 380	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   45: invokevirtual 383	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   48: invokestatic 260	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   51: ldc_w 365
-    //   54: invokestatic 215	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   57: aload_0
-    //   58: monitorexit
-    //   59: return
-    //   60: getstatic 143	com/tencent/mm/plugin/brandservice/ui/timeline/preload/e:pAI	Ljava/util/LinkedList;
-    //   63: invokevirtual 386	java/util/LinkedList:poll	()Ljava/lang/Object;
-    //   66: checkcast 6	com/tencent/mm/plugin/brandservice/ui/timeline/preload/e$a
-    //   69: astore_3
-    //   70: aload_3
-    //   71: ifnull +184 -> 255
-    //   74: ldc 244
-    //   76: ldc_w 388
-    //   79: aload_3
-    //   80: invokestatic 252	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   83: invokevirtual 255	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   86: invokestatic 260	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   89: new 390	org/json/JSONObject
-    //   92: dup
-    //   93: invokespecial 391	org/json/JSONObject:<init>	()V
-    //   96: astore_2
-    //   97: aload_2
-    //   98: ldc_w 392
-    //   101: aload_3
-    //   102: getfield 395	com/tencent/mm/plugin/brandservice/ui/timeline/preload/e$a:iwc	I
-    //   105: invokevirtual 399	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   108: pop
-    //   109: aload_2
-    //   110: ldc_w 401
-    //   113: iconst_0
-    //   114: invokevirtual 399	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   117: pop
-    //   118: aload_3
-    //   119: getfield 403	com/tencent/mm/plugin/brandservice/ui/timeline/preload/e$a:extInfo	Ljava/lang/String;
-    //   122: invokestatic 233	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
-    //   125: istore_1
-    //   126: iload_1
-    //   127: ifne +22 -> 149
-    //   130: aload_2
-    //   131: ldc_w 404
-    //   134: new 390	org/json/JSONObject
-    //   137: dup
-    //   138: aload_3
-    //   139: getfield 403	com/tencent/mm/plugin/brandservice/ui/timeline/preload/e$a:extInfo	Ljava/lang/String;
-    //   142: invokespecial 405	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   145: invokevirtual 408	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   148: pop
-    //   149: aload_2
-    //   150: ldc_w 410
-    //   153: bipush 90
-    //   155: invokevirtual 399	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   158: pop
-    //   159: ldc 244
-    //   161: new 372	java/lang/StringBuilder
-    //   164: dup
-    //   165: ldc_w 412
-    //   168: invokespecial 376	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   171: aload_3
-    //   172: getfield 414	com/tencent/mm/plugin/brandservice/ui/timeline/preload/e$a:url	Ljava/lang/String;
-    //   175: invokevirtual 417	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   178: invokevirtual 383	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   181: invokestatic 260	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   184: getstatic 423	com/tencent/mm/plugin/brandservice/ui/timeline/preload/y:pFf	Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/y;
-    //   187: astore 4
-    //   189: aload_3
-    //   190: getfield 427	com/tencent/mm/plugin/brandservice/ui/timeline/preload/e$a:pAQ	Lcom/tencent/mm/plugin/ad/a;
-    //   193: astore 4
-    //   195: aload_3
-    //   196: getfield 414	com/tencent/mm/plugin/brandservice/ui/timeline/preload/e$a:url	Ljava/lang/String;
-    //   199: astore_3
-    //   200: aload_2
-    //   201: invokevirtual 428	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   204: astore_2
-    //   205: aload_2
-    //   206: ldc_w 430
-    //   209: invokestatic 173	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   212: aload 4
-    //   214: ldc_w 432
-    //   217: iconst_2
-    //   218: anewarray 248	java/lang/String
-    //   221: dup
-    //   222: iconst_0
-    //   223: aload_3
-    //   224: aastore
-    //   225: dup
-    //   226: iconst_1
-    //   227: aload_2
-    //   228: aastore
-    //   229: invokestatic 436	kotlin/a/j:listOf	([Ljava/lang/Object;)Ljava/util/List;
-    //   232: getstatic 440	com/tencent/mm/plugin/brandservice/ui/timeline/preload/e$d:pAV	Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/e$d;
-    //   235: checkcast 442	kotlin/g/a/b
-    //   238: invokestatic 445	com/tencent/mm/plugin/brandservice/ui/timeline/preload/y:a	(Lcom/tencent/mm/plugin/ad/a;Ljava/lang/String;Ljava/util/List;Lkotlin/g/a/b;)V
-    //   241: ldc_w 365
-    //   244: invokestatic 215	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   247: goto -190 -> 57
-    //   250: astore_2
-    //   251: aload_0
-    //   252: monitorexit
-    //   253: aload_2
-    //   254: athrow
-    //   255: ldc_w 365
-    //   258: invokestatic 215	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   261: goto -204 -> 57
-    //   264: astore 4
-    //   266: goto -117 -> 149
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	269	0	this	e
-    //   125	2	1	bool	boolean
-    //   96	132	2	localObject1	Object
-    //   250	4	2	localObject2	Object
-    //   69	155	3	localObject3	Object
-    //   187	26	4	localObject4	Object
-    //   264	1	4	localException	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   2	27	250	finally
-    //   27	57	250	finally
-    //   60	70	250	finally
-    //   74	126	250	finally
-    //   130	149	250	finally
-    //   149	247	250	finally
-    //   255	261	250	finally
-    //   130	149	264	java/lang/Exception
+    return sKT;
+  }
+  
+  private final void cBP()
+  {
+    m = 0;
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(265344);
+        if ((Util.isNullOrNil((List)sKR)) || (sKS != 3))
+        {
+          Log.i("MicroMsg.BizVideoPreloadLogic", "doFetch fetchQueue null, jsContextStatus = " + sKS);
+          AppMethodBeat.o(265344);
+          return;
+        }
+        try
+        {
+          localObject4 = (a)sKR.poll();
+          if (localObject4 != null)
+          {
+            Log.i("MicroMsg.BizVideoPreloadLogic", "doFetch fetchData = ".concat(String.valueOf(localObject4)));
+            localObject3 = new JSONObject();
+            j = ((a)localObject4).llp;
+            boolean bool = Util.isNullOrNil(((a)localObject4).extInfo);
+            i = j;
+            k = m;
+            if (!bool) {
+              i = j;
+            }
+          }
+        }
+        catch (Exception localException1)
+        {
+          Object localObject4;
+          Object localObject3;
+          int j;
+          int i;
+          Object localObject1;
+          com.tencent.mm.plugin.ax.a locala;
+          Log.printErrStackTrace("MicroMsg.BizVideoPreloadLogic", (Throwable)localException1, "", new Object[0]);
+          AppMethodBeat.o(265344);
+        }
+      }
+      finally {}
+      try
+      {
+        localObject1 = new JSONObject(((a)localObject4).extInfo);
+        i = j;
+        j = ((JSONObject)localObject1).optInt("itemshowType");
+        i = j;
+        k = ((JSONObject)localObject1).optInt("preloadType");
+        i = j;
+      }
+      catch (Exception localException2)
+      {
+        k = m;
+        continue;
+      }
+      ((JSONObject)localObject3).put("itemShowType", i);
+      ((JSONObject)localObject3).put("preloadType", k);
+      ((JSONObject)localObject3).put("scene", 90);
+      Log.i("MicroMsg.BizVideoPreloadLogic", "[TRACE_VIDEO_PRELOAD] doFetch url = " + ((a)localObject4).url + "   json:" + localObject3);
+      if (cBL()) {
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1379L, 50L, 1L, false);
+      }
+      localObject1 = w.sPP;
+      locala = ((a)localObject4).sKZ;
+      localObject4 = ((a)localObject4).url;
+      localObject3 = ((JSONObject)localObject3).toString();
+      p.j(localObject3, "json.toString()");
+      localObject3 = kotlin.a.j.listOf(new String[] { localObject4, localObject3 });
+      localObject4 = (b)d.sLe;
+      p.k(locala, "manifest");
+      p.k("fetch", "func");
+      p.k(localObject3, "params");
+      p.k(localObject4, "onCallback");
+      ((w)localObject1).cDd().a(locala, "fetch", (List)localObject3, (b)localObject4);
+      AppMethodBeat.o(265344);
+      continue;
+      continue;
+      AppMethodBeat.o(265344);
+    }
   }
   
   final void c(String paramString1, String paramString2, long paramLong1, long paramLong2)
@@ -342,86 +287,87 @@ public final class e
       String str;
       try
       {
-        AppMethodBeat.i(195595);
+        AppMethodBeat.i(265345);
         if (Util.isNullOrNil(paramString2))
         {
           Log.i("MicroMsg.BizVideoPreloadLogic", "[TRACE_VIDEO_PRELOAD] cacheVideo url error");
-          AppMethodBeat.o(195595);
+          AppMethodBeat.o(265345);
           return;
         }
-        str = com.tencent.mm.plugin.appbrand.jsapi.video.j.bJE().aaV(paramString2);
-        if (pAM.get(str) != null)
+        str = i.bVn().aiO(paramString2);
+        if (sKV.get(str) != null)
         {
           Log.i("MicroMsg.BizVideoPreloadLogic", "[TRACE_VIDEO_PRELOAD] cacheVideo lruList contains");
-          AppMethodBeat.o(195595);
+          AppMethodBeat.o(265345);
           continue;
         }
-        localh = pAM;
+        localh = sKV;
       }
       finally {}
-      h localh;
+      com.tencent.mm.b.h localh;
       Bundle localBundle = new Bundle();
       localBundle.putString("url", paramString2);
       localBundle.putLong("position", paramLong1);
       localBundle.putLong("length", paramLong2);
+      localBundle.putBoolean("useThumbPlayer", cBL());
       localh.put(str, localBundle);
-      Log.i("MicroMsg.BizVideoPreloadLogic", "[TRACE_VIDEO_PRELOAD] cacheVideo lruList.size = " + pAM.size() + ", position=" + paramLong1 + ", length=" + paramLong2 + ", url=" + paramString2);
-      if (!pAL) {
-        aih(paramString1);
+      Log.i("MicroMsg.BizVideoPreloadLogic", "[TRACE_VIDEO_PRELOAD] cacheVideo lruList.size = " + sKV.size() + ", position=" + paramLong1 + ", length=" + paramLong2 + ", url=" + paramString2);
+      if (!sKU) {
+        apT(paramString1);
       }
-      AppMethodBeat.o(195595);
+      AppMethodBeat.o(265345);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/BizVideoPreloadLogic$FetchData;", "", "url", "", "itemShowType", "", "extInfo", "manifest", "Lcom/tencent/mm/plugin/webprefetcher/PrefetchManifest;", "(Ljava/lang/String;ILjava/lang/String;Lcom/tencent/mm/plugin/webprefetcher/PrefetchManifest;)V", "getExtInfo", "()Ljava/lang/String;", "setExtInfo", "(Ljava/lang/String;)V", "getItemShowType", "()I", "setItemShowType", "(I)V", "getManifest", "()Lcom/tencent/mm/plugin/webprefetcher/PrefetchManifest;", "setManifest", "(Lcom/tencent/mm/plugin/webprefetcher/PrefetchManifest;)V", "getUrl", "setUrl", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "plugin-brandservice_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/BizVideoPreloadLogic$FetchData;", "", "url", "", "itemShowType", "", "extInfo", "manifest", "Lcom/tencent/mm/plugin/webprefetcher/PrefetchManifest;", "(Ljava/lang/String;ILjava/lang/String;Lcom/tencent/mm/plugin/webprefetcher/PrefetchManifest;)V", "getExtInfo", "()Ljava/lang/String;", "setExtInfo", "(Ljava/lang/String;)V", "getItemShowType", "()I", "setItemShowType", "(I)V", "getManifest", "()Lcom/tencent/mm/plugin/webprefetcher/PrefetchManifest;", "setManifest", "(Lcom/tencent/mm/plugin/webprefetcher/PrefetchManifest;)V", "getUrl", "setUrl", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "plugin-brandservice_release"})
   public static final class a
   {
     String extInfo;
-    int iwc;
-    com.tencent.mm.plugin.ad.a pAQ;
+    int llp;
+    com.tencent.mm.plugin.ax.a sKZ;
     String url;
     
-    public a(String paramString1, int paramInt, String paramString2, com.tencent.mm.plugin.ad.a parama)
+    public a(String paramString1, int paramInt, String paramString2, com.tencent.mm.plugin.ax.a parama)
     {
-      AppMethodBeat.i(195566);
+      AppMethodBeat.i(264341);
       this.url = paramString1;
-      this.iwc = paramInt;
+      this.llp = paramInt;
       this.extInfo = paramString2;
-      this.pAQ = parama;
-      AppMethodBeat.o(195566);
+      this.sKZ = parama;
+      AppMethodBeat.o(264341);
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(195569);
+      AppMethodBeat.i(264344);
       if (this != paramObject)
       {
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((!p.j(this.url, paramObject.url)) || (this.iwc != paramObject.iwc) || (!p.j(this.extInfo, paramObject.extInfo)) || (!p.j(this.pAQ, paramObject.pAQ))) {}
+          if ((!p.h(this.url, paramObject.url)) || (this.llp != paramObject.llp) || (!p.h(this.extInfo, paramObject.extInfo)) || (!p.h(this.sKZ, paramObject.sKZ))) {}
         }
       }
       else
       {
-        AppMethodBeat.o(195569);
+        AppMethodBeat.o(264344);
         return true;
       }
-      AppMethodBeat.o(195569);
+      AppMethodBeat.o(264344);
       return false;
     }
     
     public final int hashCode()
     {
       int k = 0;
-      AppMethodBeat.i(195568);
+      AppMethodBeat.i(264343);
       Object localObject = this.url;
       int i;
       int m;
       if (localObject != null)
       {
         i = localObject.hashCode();
-        m = this.iwc;
+        m = this.llp;
         localObject = this.extInfo;
         if (localObject == null) {
           break label92;
@@ -430,11 +376,11 @@ public final class e
       label92:
       for (int j = localObject.hashCode();; j = 0)
       {
-        localObject = this.pAQ;
+        localObject = this.sKZ;
         if (localObject != null) {
           k = localObject.hashCode();
         }
-        AppMethodBeat.o(195568);
+        AppMethodBeat.o(264343);
         return (j + (i * 31 + m) * 31) * 31 + k;
         i = 0;
         break;
@@ -443,90 +389,109 @@ public final class e
     
     public final String toString()
     {
-      AppMethodBeat.i(195567);
-      String str = "FetchData(url=" + this.url + ", itemShowType=" + this.iwc + ", extInfo=" + this.extInfo + ", manifest=" + this.pAQ + ")";
-      AppMethodBeat.o(195567);
+      AppMethodBeat.i(264342);
+      String str = "FetchData(url=" + this.url + ", itemShowType=" + this.llp + ", extInfo=" + this.extInfo + ", manifest=" + this.sKZ + ")";
+      AppMethodBeat.o(264342);
       return str;
     }
   }
   
-  @kotlin.d.b.a.f(c="com.tencent.mm.plugin.brandservice.ui.timeline.preload.BizVideoPreloadLogic$doCacheVideo$2", f="BizVideoPreloadLogic.kt", hxM={276}, m="invokeSuspend")
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class b
+    extends q
+    implements kotlin.g.a.a<Boolean>
+  {
+    public static final b sLa;
+    
+    static
+    {
+      AppMethodBeat.i(262269);
+      sLa = new b();
+      AppMethodBeat.o(262269);
+    }
+    
+    b()
+    {
+      super();
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
   static final class c
     extends kotlin.d.b.a.j
-    implements m<ai, d<? super x>, Object>
+    implements m<ak, kotlin.d.d<? super x>, Object>
   {
     Object L$0;
     int label;
-    private ai p$;
+    private ak p$;
     
-    c(String paramString, z.f paramf, d paramd)
+    c(String paramString, aa.f paramf, kotlin.d.d paramd)
     {
       super(paramd);
     }
     
-    public final d<x> create(Object paramObject, d<?> paramd)
+    public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
     {
-      AppMethodBeat.i(195575);
-      p.h(paramd, "completion");
-      paramd = new c(this.pAS, localf, paramd);
-      paramd.p$ = ((ai)paramObject);
-      AppMethodBeat.o(195575);
+      AppMethodBeat.i(258057);
+      p.k(paramd, "completion");
+      paramd = new c(this.qUr, localf, paramd);
+      paramd.p$ = ((ak)paramObject);
+      AppMethodBeat.o(258057);
       return paramd;
     }
     
     public final Object invoke(Object paramObject1, Object paramObject2)
     {
-      AppMethodBeat.i(195576);
-      paramObject1 = ((c)create(paramObject1, (d)paramObject2)).invokeSuspend(x.SXb);
-      AppMethodBeat.o(195576);
+      AppMethodBeat.i(258059);
+      paramObject1 = ((c)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.aazN);
+      AppMethodBeat.o(258059);
       return paramObject1;
     }
     
     public final Object invokeSuspend(Object paramObject)
     {
-      AppMethodBeat.i(195574);
-      kotlin.d.a.a locala = kotlin.d.a.a.SXO;
+      AppMethodBeat.i(258056);
+      kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
       switch (this.label)
       {
       default: 
         paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(195574);
+        AppMethodBeat.o(258056);
         throw paramObject;
       case 0: 
         ResultKt.throwOnFailure(paramObject);
         paramObject = this.p$;
-        com.tencent.mm.ipcinvoker.a.a(this.pAS, (Parcelable)localf.SYG, (com.tencent.mm.ipcinvoker.b)1.pAU, null);
+        com.tencent.mm.ipcinvoker.a.a(this.qUr, (Parcelable)localf.aaBC, (com.tencent.mm.ipcinvoker.d)1.sLd, null);
         this.L$0 = paramObject;
         this.label = 1;
-        if (au.a(1000L, this) == locala)
+        if (aw.a(1000L, this) == locala)
         {
-          AppMethodBeat.o(195574);
+          AppMethodBeat.o(258056);
           return locala;
         }
         break;
       case 1: 
         ResultKt.throwOnFailure(paramObject);
       }
-      e.a(e.pAN, this.pAS);
-      paramObject = x.SXb;
-      AppMethodBeat.o(195574);
+      e.a(e.sKW, this.qUr);
+      paramObject = x.aazN;
+      AppMethodBeat.o(258056);
       return paramObject;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
   static final class d
     extends q
-    implements kotlin.g.a.b<String, x>
+    implements b<String, x>
   {
-    public static final d pAV;
+    public static final d sLe;
     
     static
     {
-      AppMethodBeat.i(195578);
-      pAV = new d();
-      AppMethodBeat.o(195578);
+      AppMethodBeat.i(264705);
+      sLe = new d();
+      AppMethodBeat.o(264705);
     }
     
     d()
@@ -535,99 +500,167 @@ public final class e
     }
   }
   
-  @kotlin.d.b.a.f(c="com.tencent.mm.plugin.brandservice.ui.timeline.preload.BizVideoPreloadLogic$preloadVideo$1", f="BizVideoPreloadLogic.kt", hxM={}, m="invokeSuspend")
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
-  static final class e
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/brandservice/ui/timeline/preload/BizVideoPreloadLogic$preloadTTPlayer$1", "Lcom/tencent/thumbplayer/api/proxy/ITPPreloadProxy$IPreloadListener;", "onPrepareDownloadProgressUpdate", "", "playableDurationMS", "", "downloadSpeedKBs", "currentDownloadSizeByte", "", "totalFileSizeByte", "onPrepareError", "onPrepareSuccess", "plugin-brandservice_release"})
+  public static final class e
+    implements ITPPreloadProxy.IPreloadListener
+  {
+    e(String paramString1, String paramString2, long paramLong) {}
+    
+    public final void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
+    {
+      AppMethodBeat.i(258191);
+      Log.d("MicroMsg.BizVideoPreloadLogic", "preloadTTPlayer  onPrepareDownloadProgressUpdate   fileId:" + this.sLf + "   playableDurationMS:" + paramInt1 + "  currentDownloadSizeByte：" + paramLong1 + "   totalFileSizeByte:" + paramLong2);
+      com.tencent.mm.plugin.appbrand.ae.a.a.c localc = com.tencent.mm.plugin.appbrand.ae.a.a.c.rkl;
+      com.tencent.mm.plugin.appbrand.ae.a.a.c.X(this.piM, paramLong1);
+      AppMethodBeat.o(258191);
+    }
+    
+    public final void onPrepareError()
+    {
+      AppMethodBeat.i(258190);
+      Log.e("MicroMsg.BizVideoPreloadLogic", "preloadTTPlayer  onPrepareError  fileId:" + this.sLf);
+      com.tencent.mm.plugin.appbrand.ae.a.a.c localc = com.tencent.mm.plugin.appbrand.ae.a.a.c.rkl;
+      com.tencent.mm.plugin.appbrand.ae.a.a.c.X(this.piM, 0L);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1379L, 53L, 1L, false);
+      AppMethodBeat.o(258190);
+    }
+    
+    public final void onPrepareSuccess()
+    {
+      AppMethodBeat.i(258189);
+      Log.i("MicroMsg.BizVideoPreloadLogic", "preloadTTPlayer  onPrepareSuccess  fileId:" + this.sLf);
+      com.tencent.mm.plugin.appbrand.ae.a.a.c localc = com.tencent.mm.plugin.appbrand.ae.a.a.c.rkl;
+      com.tencent.mm.plugin.appbrand.ae.a.a.c.X(this.piM, this.sLg);
+      localc = com.tencent.mm.plugin.appbrand.ae.a.a.c.rkl;
+      com.tencent.mm.plugin.appbrand.ae.a.a.c.bwi(this.sLf);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1379L, 52L, 1L, false);
+      AppMethodBeat.o(258189);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+  static final class f
     extends kotlin.d.b.a.j
-    implements m<ai, d<? super x>, Object>
+    implements m<ak, kotlin.d.d<? super x>, Object>
   {
     int label;
-    private ai p$;
+    private ak p$;
     
-    e(String paramString1, int paramInt, String paramString2, d paramd)
+    f(String paramString1, int paramInt, String paramString2, kotlin.d.d paramd)
     {
       super(paramd);
     }
     
-    public final d<x> create(Object paramObject, d<?> paramd)
+    public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
     {
-      AppMethodBeat.i(195589);
-      p.h(paramd, "completion");
-      paramd = new e(this.mkH, paramInt, paramString2, paramd);
-      paramd.p$ = ((ai)paramObject);
-      AppMethodBeat.o(195589);
+      AppMethodBeat.i(258648);
+      p.k(paramd, "completion");
+      paramd = new f(this.piM, paramInt, paramString2, paramd);
+      paramd.p$ = ((ak)paramObject);
+      AppMethodBeat.o(258648);
       return paramd;
     }
     
     public final Object invoke(Object paramObject1, Object paramObject2)
     {
-      AppMethodBeat.i(195590);
-      paramObject1 = ((e)create(paramObject1, (d)paramObject2)).invokeSuspend(x.SXb);
-      AppMethodBeat.o(195590);
+      AppMethodBeat.i(258653);
+      paramObject1 = ((f)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.aazN);
+      AppMethodBeat.o(258653);
       return paramObject1;
     }
     
     public final Object invokeSuspend(Object paramObject)
     {
       Object localObject1 = null;
-      AppMethodBeat.i(195588);
-      Object localObject2 = kotlin.d.a.a.SXO;
+      AppMethodBeat.i(258643);
+      Object localObject2 = kotlin.d.a.a.aaAA;
       switch (this.label)
       {
       default: 
         paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(195588);
+        AppMethodBeat.o(258643);
         throw paramObject;
       }
       ResultKt.throwOnFailure(paramObject);
-      paramObject = (kotlin.g.a.a)e.e.d.pBa;
-      localObject2 = new z.f();
-      ((z.f)localObject2).SYG = null;
-      try
+      paramObject = (kotlin.g.a.a)d.sLl;
+      localObject2 = new aa.f();
+      ((aa.f)localObject2).aaBC = null;
+      Object localObject3;
+      for (;;)
       {
-        ((z.f)localObject2).SYG = ((eic)paramObject.invoke());
-        if ((eic)((z.f)localObject2).SYG != null)
-        {
-          paramObject = (eic)((z.f)localObject2).SYG;
-          if (paramObject == null) {
-            break label193;
-          }
-        }
-        Object localObject3;
-        label193:
-        for (paramObject = paramObject.Nhr; !s.YS(paramObject); paramObject = null)
-        {
-          localObject3 = new StringBuilder("[TRACE_VIDEO_PRELOAD] preloadVideo ");
-          localObject2 = (eic)((z.f)localObject2).SYG;
-          paramObject = localObject1;
-          if (localObject2 != null) {
-            paramObject = ((eic)localObject2).Nhr;
-          }
-          Log.i("MicroMsg.BizVideoPreloadLogic", paramObject + " not exist");
-          paramObject = x.SXb;
-          AppMethodBeat.o(195588);
-          return paramObject;
-        }
         try
         {
-          localObject1 = (m)new e.e.e((z.f)localObject2);
-          paramObject = (kotlin.g.a.b)b.pAY;
-          localObject3 = (kotlin.g.a.b)e.e.c.pAZ;
-          localObject1 = (com.tencent.mm.plugin.ad.a)((m)localObject1).invoke(this.mkH, (eic)((z.f)localObject2).SYG);
-          locale = e.pAN;
-          e.cnG().add(new e.a(this.mkH, paramInt, paramString2, (com.tencent.mm.plugin.ad.a)localObject1));
-          locale = e.pAN;
-          e.Dn(((Number)paramObject.invoke(localObject1)).intValue());
-          paramObject = e.pAN;
-          i = e.cnH();
+          ((aa.f)localObject2).aaBC = ((ese)paramObject.invoke());
+          if ((ese)((aa.f)localObject2).aaBC == null)
+          {
+            Log.i("MicroMsg.BizVideoPreloadLogic", "[TRACE_VIDEO_PRELOAD] preloadVideo tmplParams not exist");
+            paramObject = x.aazN;
+            AppMethodBeat.o(258643);
+            return paramObject;
+          }
+          paramObject = e.sKW;
+          if (e.cBL()) {
+            break;
+          }
+          paramObject = (ese)((aa.f)localObject2).aaBC;
+          if (paramObject != null)
+          {
+            paramObject = paramObject.UtX;
+            u.bBD(paramObject);
+            paramObject = (ese)((aa.f)localObject2).aaBC;
+            if (paramObject == null) {
+              break label275;
+            }
+            paramObject = paramObject.UtX;
+            if (u.agG(paramObject)) {
+              break;
+            }
+            localObject3 = new StringBuilder("[TRACE_VIDEO_PRELOAD] preloadVideo ");
+            localObject2 = (ese)((aa.f)localObject2).aaBC;
+            paramObject = localObject1;
+            if (localObject2 != null) {
+              paramObject = ((ese)localObject2).UtX;
+            }
+            Log.i("MicroMsg.BizVideoPreloadLogic", paramObject + " not exist");
+            paramObject = x.aazN;
+            AppMethodBeat.o(258643);
+            return paramObject;
+          }
+        }
+        catch (Exception paramObject)
+        {
+          Log.i("MicroMsg.BizVideoPreloadLogic", "[TRACE_VIDEO_PRELOAD] preloadVideo exception = ".concat(String.valueOf(paramObject)));
+          paramObject = x.aazN;
+          AppMethodBeat.o(258643);
+          return paramObject;
+        }
+        paramObject = null;
+        continue;
+        label275:
+        paramObject = null;
+      }
+      for (;;)
+      {
+        try
+        {
+          localObject1 = (m)new e((aa.f)localObject2);
+          paramObject = (b)b.sLj;
+          localObject3 = (b)c.sLk;
+          localObject1 = (com.tencent.mm.plugin.ax.a)((m)localObject1).invoke(this.piM, (ese)((aa.f)localObject2).aaBC);
+          localObject4 = e.sKW;
+          e.cBM().add(new e.a(this.piM, paramInt, paramString2, (com.tencent.mm.plugin.ax.a)localObject1));
+          localObject4 = e.sKW;
+          e.GW(((Number)paramObject.invoke(localObject1)).intValue());
+          paramObject = e.sKW;
+          int i = e.cBN();
           switch (i)
           {
           default: 
             localObject3 = new StringBuilder("[TRACE_VIDEO_PRELOAD] tmplParams initFilePath = ");
-            paramObject = (eic)((z.f)localObject2).SYG;
+            paramObject = (ese)((aa.f)localObject2).aaBC;
             if (paramObject != null)
             {
-              localObject1 = paramObject.Nhr;
+              localObject1 = paramObject.UtX;
               paramObject = localObject1;
               if (localObject1 != null) {}
             }
@@ -636,65 +669,62 @@ public final class e
               paramObject = "";
             }
             paramObject = ((StringBuilder)localObject3).append(paramObject).append(", WebComponent.info = ");
-            localObject1 = com.tencent.mm.plugin.webview.l.c.JDf;
-            Log.d("MicroMsg.BizVideoPreloadLogic", c.b.ejA());
-            paramObject = x.SXb;
-            AppMethodBeat.o(195588);
+            localObject1 = com.tencent.mm.plugin.webview.l.c.QBP;
+            Log.d("MicroMsg.BizVideoPreloadLogic", c.b.eTh());
+            paramObject = x.aazN;
+            AppMethodBeat.o(258643);
             return paramObject;
           }
         }
         catch (Exception paramObject)
         {
-          paramObject = x.SXb;
-          AppMethodBeat.o(195588);
+          Object localObject4;
+          paramObject = x.aazN;
+          AppMethodBeat.o(258643);
           return paramObject;
         }
-      }
-      catch (Exception paramObject)
-      {
-        Log.i("MicroMsg.BizVideoPreloadLogic", "[TRACE_VIDEO_PRELOAD] preloadVideo exception = ".concat(String.valueOf(paramObject)));
-        paramObject = x.SXb;
-        AppMethodBeat.o(195588);
-        return paramObject;
-      }
-      for (;;)
-      {
-        e locale;
-        int i;
         Log.i("MicroMsg.BizVideoPreloadLogic", "[TRACE_VIDEO_PRELOAD] preloadVideo JsStatus.SHOULD_INIT");
-        paramObject = (eic)((z.f)localObject2).SYG;
-        if (paramObject != null) {}
-        for (paramObject = paramObject.Nhr;; paramObject = null)
+        paramObject = (ese)((aa.f)localObject2).aaBC;
+        if (paramObject != null)
         {
-          p.g(paramObject, "tmplParams?.initFilePath");
-          paramObject = (String)((kotlin.g.a.b)localObject3).invoke(paramObject);
-          if (paramObject == null) {
-            break;
+          paramObject = paramObject.UtX;
+          p.j(paramObject, "tmplParams?.initFilePath");
+          paramObject = (String)((b)localObject3).invoke(paramObject);
+          if (paramObject != null)
+          {
+            localObject3 = e.sKW;
+            e.GW(2);
+            localObject3 = w.sPP;
+            localObject4 = (b)a.sLi;
+            p.k(localObject1, "manifest");
+            p.k(paramObject, "script");
+            p.k(localObject4, "onCallback");
+            ((w)localObject3).cDd().a((com.tencent.mm.plugin.ax.a)localObject1, paramObject, (b)localObject4);
           }
-          localObject3 = e.pAN;
-          e.Dn(2);
-          localObject3 = y.pFf;
-          y.b((com.tencent.mm.plugin.ad.a)localObject1, paramObject, (kotlin.g.a.b)a.pAX);
-          break;
         }
-        e.a(e.pAN);
-        continue;
-        Log.i("MicroMsg.BizVideoPreloadLogic", "[TRACE_VIDEO_PRELOAD] preloadVideo jsStatus.INIT_ING");
+        else
+        {
+          paramObject = null;
+          continue;
+          e.a(e.sKW);
+          continue;
+          Log.i("MicroMsg.BizVideoPreloadLogic", "[TRACE_VIDEO_PRELOAD] preloadVideo jsStatus.INIT_ING");
+        }
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
     static final class a
       extends q
-      implements kotlin.g.a.b<String, x>
+      implements b<String, x>
     {
-      public static final a pAX;
+      public static final a sLi;
       
       static
       {
-        AppMethodBeat.i(195580);
-        pAX = new a();
-        AppMethodBeat.o(195580);
+        AppMethodBeat.i(266502);
+        sLi = new a();
+        AppMethodBeat.o(266502);
       }
       
       a()
@@ -703,18 +733,18 @@ public final class e
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<no name provided>", "", "manifest", "Lcom/tencent/mm/plugin/webprefetcher/PrefetchManifest;", "invoke"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<no name provided>", "", "manifest", "Lcom/tencent/mm/plugin/webprefetcher/PrefetchManifest;", "invoke"})
     static final class b
       extends q
-      implements kotlin.g.a.b<com.tencent.mm.plugin.ad.a, Integer>
+      implements b<com.tencent.mm.plugin.ax.a, Integer>
     {
-      public static final b pAY;
+      public static final b sLj;
       
       static
       {
-        AppMethodBeat.i(195582);
-        pAY = new b();
-        AppMethodBeat.o(195582);
+        AppMethodBeat.i(265289);
+        sLj = new b();
+        AppMethodBeat.o(265289);
       }
       
       b()
@@ -722,11 +752,82 @@ public final class e
         super();
       }
     }
+    
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<no name provided>", "", "path", "invoke"})
+    static final class c
+      extends q
+      implements b<String, String>
+    {
+      public static final c sLk;
+      
+      static
+      {
+        AppMethodBeat.i(265684);
+        sLk = new c();
+        AppMethodBeat.o(265684);
+      }
+      
+      c()
+      {
+        super();
+      }
+    }
+    
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<no name provided>", "Lcom/tencent/mm/protocal/protobuf/TmplParams;", "invoke"})
+    static final class d
+      extends q
+      implements kotlin.g.a.a<ese>
+    {
+      public static final d sLl;
+      
+      static
+      {
+        AppMethodBeat.i(259693);
+        sLl = new d();
+        AppMethodBeat.o(259693);
+      }
+      
+      d()
+      {
+        super();
+      }
+    }
+    
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<no name provided>", "Lcom/tencent/mm/plugin/webprefetcher/PrefetchManifest;", "url", "", "tmpl", "Lcom/tencent/mm/protocal/protobuf/TmplParams;", "invoke"})
+    static final class e
+      extends q
+      implements m<String, ese, com.tencent.mm.plugin.ax.a>
+    {
+      e(aa.f paramf)
+      {
+        super();
+      }
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class g
+    extends q
+    implements kotlin.g.a.a<Boolean>
+  {
+    public static final g sLn;
+    
+    static
+    {
+      AppMethodBeat.i(265186);
+      sLn = new g();
+      AppMethodBeat.o(265186);
+    }
+    
+    g()
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.preload.e
  * JD-Core Version:    0.7.0.1
  */

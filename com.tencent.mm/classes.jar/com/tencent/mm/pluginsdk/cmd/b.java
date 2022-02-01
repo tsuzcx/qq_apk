@@ -10,26 +10,45 @@ import java.util.regex.Pattern;
 
 public final class b
 {
-  private static final HashMap<String, a> JTi;
-  private static final HashMap<String, a> JTj;
-  private static final Pattern JTk;
+  private static final HashMap<String, a> QSn;
+  private static final HashMap<String, a> QSo;
+  private static final Pattern QSp;
   
   static
   {
     AppMethodBeat.i(151624);
-    JTi = new HashMap();
-    JTj = new HashMap();
-    JTk = Pattern.compile(" +");
+    QSn = new HashMap();
+    QSo = new HashMap();
+    QSp = Pattern.compile(" +");
     AppMethodBeat.o(151624);
   }
   
-  public static boolean Q(Context paramContext, String arg1, String paramString2)
+  public static void W(String... paramVarArgs)
+  {
+    int i = 0;
+    AppMethodBeat.i(151621);
+    synchronized (QSn)
+    {
+      int j = paramVarArgs.length;
+      while (i < j)
+      {
+        String str = paramVarArgs[i];
+        QSn.remove(str);
+        Log.i("MicroMsg.UnifiedCommandProcessor", "Unregistered command: %s", new Object[] { str });
+        i += 1;
+      }
+      AppMethodBeat.o(151621);
+      return;
+    }
+  }
+  
+  public static boolean Y(Context paramContext, String arg1, String paramString2)
   {
     AppMethodBeat.i(151622);
-    String[] arrayOfString = JTk.split(???);
-    synchronized (JTi)
+    String[] arrayOfString = QSp.split(???);
+    synchronized (QSn)
     {
-      a locala = (a)JTi.get(arrayOfString[0]);
+      a locala = (a)QSn.get(arrayOfString[0]);
       if (locala != null)
       {
         Log.i("MicroMsg.UnifiedCommandProcessor", "Command: %s", new Object[] { arrayOfString[0] });
@@ -42,36 +61,17 @@ public final class b
     return false;
   }
   
-  public static void V(String... paramVarArgs)
-  {
-    int i = 0;
-    AppMethodBeat.i(151621);
-    synchronized (JTi)
-    {
-      int j = paramVarArgs.length;
-      while (i < j)
-      {
-        String str = paramVarArgs[i];
-        JTi.remove(str);
-        Log.i("MicroMsg.UnifiedCommandProcessor", "Unregistered command: %s", new Object[] { str });
-        i += 1;
-      }
-      AppMethodBeat.o(151621);
-      return;
-    }
-  }
-  
   public static void a(a parama, String... paramVarArgs)
   {
     int i = 0;
     AppMethodBeat.i(151620);
-    synchronized (JTi)
+    synchronized (QSn)
     {
       int j = paramVarArgs.length;
       while (i < j)
       {
         String str = paramVarArgs[i];
-        JTi.put(str, parama);
+        QSn.put(str, parama);
         Log.i("MicroMsg.UnifiedCommandProcessor", "Registered command: %s", new Object[] { str });
         i += 1;
       }
@@ -80,12 +80,12 @@ public final class b
     }
   }
   
-  static List<a> gmb()
+  static List<a> hfS()
   {
     AppMethodBeat.i(151623);
-    synchronized (JTj)
+    synchronized (QSo)
     {
-      ArrayList localArrayList = new ArrayList(JTj.values());
+      ArrayList localArrayList = new ArrayList(QSo.values());
       AppMethodBeat.o(151623);
       return localArrayList;
     }
@@ -93,9 +93,9 @@ public final class b
   
   static final class a
   {
-    a JTl;
-    String ehK;
-    int nBF;
+    a QSq;
+    String gcb;
+    int qDQ;
   }
 }
 

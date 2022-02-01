@@ -2,7 +2,7 @@ package com.tencent.mm.chatroom.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dm;
+import com.tencent.mm.f.c.dq;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
@@ -18,11 +18,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class e
-  extends dm
+  extends dq
 {
   protected static IAutoDBItem.MAutoDBInfo info;
-  public LinkedList<GroupToolItem> gtw;
-  public LinkedList<GroupToolItem> gtx;
+  public LinkedList<GroupToolItem> iXI;
+  public LinkedList<GroupToolItem> iXJ;
   
   static
   {
@@ -56,13 +56,13 @@ public final class e
   public e()
   {
     AppMethodBeat.i(182154);
-    this.gtw = new LinkedList();
-    this.gtx = new LinkedList();
+    this.iXI = new LinkedList();
+    this.iXJ = new LinkedList();
     this.field_queryState = 0;
     AppMethodBeat.o(182154);
   }
   
-  public static String W(List<GroupToolItem> paramList)
+  public static String T(List<GroupToolItem> paramList)
   {
     AppMethodBeat.i(182158);
     JSONArray localJSONArray = new JSONArray();
@@ -75,7 +75,7 @@ public final class e
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("username", localGroupToolItem.username);
         localJSONObject.put("path", localGroupToolItem.path);
-        localJSONObject.put("updateTime", localGroupToolItem.crj);
+        localJSONObject.put("updateTime", localGroupToolItem.coZ);
         localJSONArray.put(localJSONObject);
       }
       return paramList;
@@ -90,23 +90,23 @@ public final class e
   
   public final void a(GroupToolItem paramGroupToolItem)
   {
-    AppMethodBeat.i(194060);
-    if (this.gtx.contains(paramGroupToolItem)) {
-      this.gtx.remove(paramGroupToolItem);
+    AppMethodBeat.i(186280);
+    if (this.iXJ.contains(paramGroupToolItem)) {
+      this.iXJ.remove(paramGroupToolItem);
     }
-    this.gtx.add(paramGroupToolItem);
-    Collections.sort(this.gtx, new Comparator() {});
-    if (this.gtx.size() > 20) {
-      this.gtx.remove(this.gtx.size() - 1);
+    this.iXJ.add(paramGroupToolItem);
+    Collections.sort(this.iXJ, new Comparator() {});
+    if (this.iXJ.size() > 20) {
+      this.iXJ.remove(this.iXJ.size() - 1);
     }
-    this.field_recentUseToolList = W(this.gtx);
-    AppMethodBeat.o(194060);
+    this.field_recentUseToolList = T(this.iXJ);
+    AppMethodBeat.o(186280);
   }
   
-  public final boolean amo()
+  public final boolean asp()
   {
     AppMethodBeat.i(182157);
-    if (this.gtw.size() >= 8)
+    if (this.iXI.size() >= 8)
     {
       AppMethodBeat.o(182157);
       return true;
@@ -119,7 +119,7 @@ public final class e
   {
     AppMethodBeat.i(182155);
     super.convertFrom(paramCursor);
-    this.gtw.clear();
+    this.iXI.clear();
     int j;
     int i;
     JSONObject localJSONObject;
@@ -136,10 +136,10 @@ public final class e
           localGroupToolItem = new GroupToolItem();
           localGroupToolItem.username = Util.nullAs(localJSONObject.getString("username"), "");
           localGroupToolItem.path = Util.nullAs(localJSONObject.getString("path"), "");
-          this.gtw.add(localGroupToolItem);
+          this.iXI.add(localGroupToolItem);
           i += 1;
         }
-        this.gtx.clear();
+        this.iXJ.clear();
       }
       catch (Exception paramCursor)
       {
@@ -158,8 +158,8 @@ public final class e
           localGroupToolItem = new GroupToolItem();
           localGroupToolItem.username = Util.nullAs(localJSONObject.getString("username"), "");
           localGroupToolItem.path = Util.nullAs(localJSONObject.getString("path"), "");
-          localGroupToolItem.crj = localJSONObject.getLong("updateTime");
-          this.gtx.add(localGroupToolItem);
+          localGroupToolItem.coZ = localJSONObject.getLong("updateTime");
+          this.iXJ.add(localGroupToolItem);
           i += 1;
         }
         AppMethodBeat.o(182155);
@@ -192,7 +192,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.storage.e
  * JD-Core Version:    0.7.0.1
  */

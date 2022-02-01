@@ -4,44 +4,47 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bh.e;
+import com.tencent.mm.bj.e;
+import com.tencent.mm.plugin.multitalk.a.h;
+import com.tencent.mm.ui.base.w;
 
 public final class u
 {
-  private boolean zNL;
-  private boolean zNM;
+  private boolean Fti;
+  private boolean Ftj;
   
-  public final void as(Activity paramActivity)
+  public final void ay(Activity paramActivity)
   {
     AppMethodBeat.i(114574);
-    if (!this.zNL)
+    if (!this.Fti)
     {
-      this.zNL = true;
-      e.a(paramActivity, 2131763287, null);
+      this.Fti = true;
+      e.a(paramActivity, a.h.multitalk_not_support_video_tip, null);
     }
     AppMethodBeat.o(114574);
   }
   
-  public final void at(Activity paramActivity)
+  public final void az(Activity paramActivity)
   {
     AppMethodBeat.i(114575);
-    if (!this.zNM)
+    if (!this.Ftj)
     {
-      this.zNM = true;
-      com.tencent.mm.ui.base.u.cF(paramActivity, paramActivity.getResources().getText(2131767252).toString());
+      this.Ftj = true;
+      int i = a.h.voip_cellular_cost_tip;
+      w.cQ(paramActivity, paramActivity.getResources().getText(i).toString());
     }
     AppMethodBeat.o(114575);
   }
   
   public final void reset()
   {
-    this.zNM = false;
-    this.zNL = false;
+    this.Ftj = false;
+    this.Fti = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.u
  * JD-Core Version:    0.7.0.1
  */

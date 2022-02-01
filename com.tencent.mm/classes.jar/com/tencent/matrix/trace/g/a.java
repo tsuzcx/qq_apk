@@ -1,6 +1,6 @@
 package com.tencent.matrix.trace.g;
 
-import com.tencent.matrix.g.c;
+import com.tencent.matrix.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collections;
 import java.util.Comparator;
@@ -19,18 +19,18 @@ public final class a
     if (!paramLinkedList.isEmpty()) {}
     for (com.tencent.matrix.trace.d.a locala = (com.tencent.matrix.trace.d.a)paramLinkedList.peek();; locala = null)
     {
-      if ((locala != null) && (locala.dbJ == parama.dbJ) && (locala.bCe == parama.bCe) && (parama.bCe != 0))
+      if ((locala != null) && (locala.dfL == parama.dfL) && (locala.blG == parama.blG) && (parama.blG != 0))
       {
-        if (parama.dbK == 5000) {}
-        for (int i = locala.dbK;; i = parama.dbK)
+        if (parama.dfM == 5000) {}
+        for (int i = locala.dfM;; i = parama.dfM)
         {
-          parama.dbK = i;
-          locala.bi(parama.dbK);
-          return locala.dbK;
+          parama.dfM = i;
+          locala.bu(parama.dfM);
+          return locala.dfM;
         }
       }
       paramLinkedList.push(parama);
-      return parama.dbK;
+      return parama.dfM;
     }
   }
   
@@ -42,12 +42,12 @@ public final class a
     if (localListIterator.hasNext())
     {
       b localb = new b((com.tencent.matrix.trace.d.a)localListIterator.next(), paramLinkedList);
-      if ((paramLinkedList == null) && (localb.TI() != 0))
+      if ((paramLinkedList == null) && (localb.Ym() != 0))
       {
         c.e("Matrix.TraceDataUtils", "[stackToTree] begin error! why the first node'depth is not 0!", new Object[0]);
         return 0;
       }
-      int j = localb.TI();
+      int j = localb.Ym();
       if ((paramLinkedList == null) || (j == 0)) {
         paramb.a(localb);
       }
@@ -56,15 +56,15 @@ public final class a
         i += 1;
         paramLinkedList = localb;
         break;
-        if (paramLinkedList.TI() >= j)
+        if (paramLinkedList.Ym() >= j)
         {
-          while ((paramLinkedList != null) && (paramLinkedList.TI() > j)) {
-            paramLinkedList = paramLinkedList.ddo;
+          while ((paramLinkedList != null) && (paramLinkedList.Ym() > j)) {
+            paramLinkedList = paramLinkedList.dhr;
           }
-          if ((paramLinkedList != null) && (paramLinkedList.ddo != null))
+          if ((paramLinkedList != null) && (paramLinkedList.dhr != null))
           {
-            localb.ddo = paramLinkedList.ddo;
-            paramLinkedList.ddo.a(localb);
+            localb.dhr = paramLinkedList.dhr;
+            paramLinkedList.dhr.a(localb);
           }
         }
         else
@@ -89,16 +89,16 @@ public final class a
       StringBuilder localStringBuilder = paramStringBuilder2.append("|*\t\t");
       StringBuffer localStringBuffer = new StringBuffer();
       int i = 0;
-      while (i < locala.bCe)
+      while (i < locala.blG)
       {
         localStringBuffer.append('.');
         i += 1;
       }
-      localStringBuilder.append(localStringBuffer.toString() + locala.dbJ + " " + locala.count + " " + locala.dbK).append('\n');
-      if (l >= locala.dbK) {
+      localStringBuilder.append(localStringBuffer.toString() + locala.dfL + " " + locala.count + " " + locala.dfM).append('\n');
+      if (l >= locala.dfM) {
         break label189;
       }
-      l = locala.dbK;
+      l = locala.dfM;
     }
     label189:
     for (;;)
@@ -108,18 +108,50 @@ public final class a
     }
   }
   
+  public static String a(List<com.tencent.matrix.trace.d.a> paramList, long paramLong)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    paramLong = ((float)paramLong * 0.3F);
+    LinkedList localLinkedList = new LinkedList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      com.tencent.matrix.trace.d.a locala = (com.tencent.matrix.trace.d.a)localIterator.next();
+      if (locala.dfM >= paramLong) {
+        localLinkedList.add(locala);
+      }
+    }
+    Collections.sort(localLinkedList, new Comparator() {});
+    if ((localLinkedList.isEmpty()) && (!paramList.isEmpty())) {
+      localLinkedList.add((com.tencent.matrix.trace.d.a)paramList.get(0));
+    }
+    for (;;)
+    {
+      paramList = localLinkedList.iterator();
+      if (paramList.hasNext())
+      {
+        paramList = (com.tencent.matrix.trace.d.a)paramList.next();
+        localStringBuilder.append(paramList.dfL + "|");
+      }
+      return localStringBuilder.toString();
+      if ((localLinkedList.size() > 1) && (((com.tencent.matrix.trace.d.a)localLinkedList.peek()).dfL == 1048574)) {
+        localLinkedList.removeFirst();
+      }
+    }
+  }
+  
   private static void a(b paramb, LinkedList<com.tencent.matrix.trace.d.a> paramLinkedList)
   {
     int i = 0;
-    while (i < paramb.ddp.size())
+    while (i < paramb.dhs.size())
     {
-      b localb = (b)paramb.ddp.get(i);
+      b localb = (b)paramb.dhs.get(i);
       if (localb != null)
       {
-        if (localb.ddn != null) {
-          paramLinkedList.add(localb.ddn);
+        if (localb.dhq != null) {
+          paramLinkedList.add(localb.dhq);
         }
-        if (!localb.ddp.isEmpty()) {
+        if (!localb.dhs.isEmpty()) {
           a(localb, paramLinkedList);
         }
       }
@@ -138,7 +170,7 @@ public final class a
       {
         ListIterator localListIterator = paramList.listIterator(paramList.size());
         if (localListIterator.hasPrevious()) {
-          if (parama.b(((com.tencent.matrix.trace.d.a)localListIterator.previous()).dbK, j))
+          if (parama.c(((com.tencent.matrix.trace.d.a)localListIterator.previous()).dfM, j))
           {
             localListIterator.remove();
             int k = i - 1;
@@ -179,21 +211,21 @@ public final class a
       int i1 = paramArrayOfLong.length;
       n = 0;
       if (n >= i1) {
-        break label501;
+        break label503;
       }
       l2 = paramArrayOfLong[n];
       if (0L == l2) {
-        break label711;
+        break label713;
       }
       m = i;
       if (!paramBoolean) {
         break label141;
       }
       j = i;
-      if (bj(l2))
+      if (bv(l2))
       {
         j = i;
-        if (1048574 == bk(l2)) {
+        if (1048574 == bw(l2)) {
           j = 1;
         }
       }
@@ -201,7 +233,7 @@ public final class a
       if (j != 0) {
         break label141;
       }
-      c.d("Matrix.TraceDataUtils", "never begin! pass this method[%s]", new Object[] { Integer.valueOf(bk(l2)) });
+      c.d("Matrix.TraceDataUtils", "never begin! pass this method[%s]", new Object[] { Integer.valueOf(bw(l2)) });
       i = j;
       j = k;
     }
@@ -213,19 +245,19 @@ public final class a
       i = 0;
       break;
       label141:
-      if (bj(l2)) {
-        if (bk(l2) != 1048574L) {
-          break label704;
+      if (bv(l2)) {
+        if (bw(l2) != 1048574L) {
+          break label706;
         }
       }
-      label704:
+      label706:
       for (i = 0;; i = k)
       {
         j = i + 1;
         localLinkedList1.push(Long.valueOf(l2));
         i = m;
         break;
-        j = bk(l2);
+        j = bw(l2);
         long l1;
         if (!localLinkedList1.isEmpty())
         {
@@ -235,7 +267,7 @@ public final class a
           i = k - 1;
           for (;;)
           {
-            k = bk(l1);
+            k = bw(l1);
             if ((k == j) || (localLinkedList1.isEmpty())) {
               break;
             }
@@ -269,12 +301,12 @@ public final class a
         i = m;
         j = k;
         break;
-        label501:
+        label503:
         while ((!localLinkedList1.isEmpty()) && (paramBoolean))
         {
           l1 = ((Long)localLinkedList1.pop()).longValue();
-          i = bk(l1);
-          boolean bool = bj(l1);
+          i = bw(l1);
+          boolean bool = bv(l1);
           l1 = (l1 & 0xFFFFFFFF) + AppMethodBeat.getDiffTime();
           c.w("Matrix.TraceDataUtils", "[structuredDataToStack] has never out method[%s], isIn:%s, inTime:%s, endTime:%s,rawData size:%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), Long.valueOf(l1), Long.valueOf(paramLong), Integer.valueOf(localLinkedList1.size()) });
           if (!bool) {
@@ -289,89 +321,57 @@ public final class a
         a(paramArrayOfLong, paramLinkedList);
         return;
       }
-      label711:
+      label713:
       j = k;
     }
   }
   
-  public static String b(List<com.tencent.matrix.trace.d.a> paramList, long paramLong)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramLong = ((float)paramLong * 0.3F);
-    LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
-    {
-      com.tencent.matrix.trace.d.a locala = (com.tencent.matrix.trace.d.a)localIterator.next();
-      if (locala.dbK >= paramLong) {
-        localLinkedList.add(locala);
-      }
-    }
-    Collections.sort(localLinkedList, new Comparator() {});
-    if ((localLinkedList.isEmpty()) && (!paramList.isEmpty())) {
-      localLinkedList.add((com.tencent.matrix.trace.d.a)paramList.get(0));
-    }
-    for (;;)
-    {
-      paramList = localLinkedList.iterator();
-      if (paramList.hasNext())
-      {
-        paramList = (com.tencent.matrix.trace.d.a)paramList.next();
-        localStringBuilder.append(paramList.dbJ + "|");
-      }
-      return localStringBuilder.toString();
-      if ((localLinkedList.size() > 1) && (((com.tencent.matrix.trace.d.a)localLinkedList.peek()).dbJ == 1048574)) {
-        localLinkedList.removeFirst();
-      }
-    }
-  }
-  
-  private static boolean bj(long paramLong)
+  private static boolean bv(long paramLong)
   {
     return (paramLong >> 63 & 1L) == 1L;
   }
   
-  private static int bk(long paramLong)
+  private static int bw(long paramLong)
   {
     return (int)(paramLong >> 43 & 0xFFFFF);
   }
   
   public static abstract interface a
   {
-    public abstract boolean b(long paramLong, int paramInt);
+    public abstract boolean c(long paramLong, int paramInt);
     
     public abstract void d(List<com.tencent.matrix.trace.d.a> paramList, int paramInt);
   }
   
   public static final class b
   {
-    com.tencent.matrix.trace.d.a ddn;
-    b ddo;
-    LinkedList<b> ddp = new LinkedList();
+    com.tencent.matrix.trace.d.a dhq;
+    b dhr;
+    LinkedList<b> dhs = new LinkedList();
     
     b(com.tencent.matrix.trace.d.a parama, b paramb)
     {
-      this.ddn = parama;
-      this.ddo = paramb;
+      this.dhq = parama;
+      this.dhr = paramb;
     }
     
-    final int TI()
+    final int Ym()
     {
-      if (this.ddn == null) {
+      if (this.dhq == null) {
         return 0;
       }
-      return this.ddn.bCe;
+      return this.dhq.blG;
     }
     
     final void a(b paramb)
     {
-      this.ddp.addFirst(paramb);
+      this.dhs.addFirst(paramb);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.trace.g.a
  * JD-Core Version:    0.7.0.1
  */

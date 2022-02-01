@@ -5,7 +5,7 @@ import com.tencent.mm.msgsubscription.SubscribeMsgRequestResult;
 import com.tencent.mm.msgsubscription.a.b;
 import com.tencent.mm.msgsubscription.a.b.a;
 import com.tencent.mm.msgsubscription.a.b.c;
-import com.tencent.mm.protocal.protobuf.efc;
+import com.tencent.mm.protocal.protobuf.epd;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.util.ArrayList;
@@ -15,49 +15,49 @@ import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/msgsubscription/task/GetSubscribeStatusTask;", "Lcom/tencent/mm/msgsubscription/task/BaseSubscribeMsgTask;", "username", "", "templateIds", "", "storageManager", "Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;", "callback", "Lcom/tencent/mm/msgsubscription/api/SubscribeMsgOpCallback;", "(Ljava/lang/String;Ljava/util/List;Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;Lcom/tencent/mm/msgsubscription/api/SubscribeMsgOpCallback;)V", "bizUsername", "(Ljava/lang/String;)V", "mCallback", "templateIdList", "getType", "", "run", "", "Companion", "plugin-comm_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/task/GetSubscribeStatusTask;", "Lcom/tencent/mm/msgsubscription/task/BaseSubscribeMsgTask;", "username", "", "templateIds", "", "storageManager", "Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;", "callback", "Lcom/tencent/mm/msgsubscription/api/SubscribeMsgOpCallback;", "(Ljava/lang/String;Ljava/util/List;Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;Lcom/tencent/mm/msgsubscription/api/SubscribeMsgOpCallback;)V", "bizUsername", "(Ljava/lang/String;)V", "mCallback", "templateIdList", "getType", "", "run", "", "Companion", "plugin-comm_release"})
 public final class e
   extends a
 {
-  public static final e.a jBg;
-  private com.tencent.mm.msgsubscription.api.a jAX;
-  private List<String> jBf;
-  private com.tencent.mm.msgsubscription.d.a jzv;
+  public static final e.a mqP;
+  private com.tencent.mm.msgsubscription.d.a mpb;
+  private com.tencent.mm.msgsubscription.api.a mqF;
+  private List<String> mqO;
   
   static
   {
-    AppMethodBeat.i(223392);
-    jBg = new e.a((byte)0);
-    AppMethodBeat.o(223392);
+    AppMethodBeat.i(220639);
+    mqP = new e.a((byte)0);
+    AppMethodBeat.o(220639);
   }
   
   private e(String paramString)
   {
     super(paramString);
-    AppMethodBeat.i(223390);
-    this.jBf = ((List)new ArrayList());
-    AppMethodBeat.o(223390);
+    AppMethodBeat.i(220633);
+    this.mqO = ((List)new ArrayList());
+    AppMethodBeat.o(220633);
   }
   
   public e(String paramString, List<String> paramList, com.tencent.mm.msgsubscription.d.a parama, com.tencent.mm.msgsubscription.api.a parama1)
   {
     this(paramString);
-    AppMethodBeat.i(223391);
-    this.jzv = parama;
-    this.jAX = parama1;
-    this.jBf.addAll((Collection)paramList);
-    AppMethodBeat.o(223391);
+    AppMethodBeat.i(220636);
+    this.mpb = parama;
+    this.mqF = parama1;
+    this.mqO.addAll((Collection)paramList);
+    AppMethodBeat.o(220636);
   }
   
   public final void run()
   {
-    AppMethodBeat.i(223389);
-    Object localObject1 = b.a.jzu;
-    localObject1 = this.dVu;
-    Object localObject2 = this.jBf;
+    AppMethodBeat.i(220630);
+    Object localObject1 = b.a.mpa;
+    localObject1 = this.fOX;
+    Object localObject2 = this.mqO;
     Object localObject3 = (b.c)new b(this);
-    p.h(localObject1, "username");
-    p.h(localObject2, "templateIds");
+    p.k(localObject1, "username");
+    p.k(localObject2, "templateIds");
     b localb = new b((String)localObject1, 5);
     b.a(localb, (b.c)localObject3);
     localObject2 = ((List)localObject2).iterator();
@@ -65,29 +65,29 @@ public final class e
     {
       localObject3 = (String)((Iterator)localObject2).next();
       List localList = b.a(localb);
-      efc localefc = new efc();
-      localefc.KSV = ((String)localObject1);
-      localefc.Mqy = ((String)localObject3);
-      localList.add(localefc);
+      epd localepd = new epd();
+      localepd.RTS = ((String)localObject1);
+      localepd.TBB = ((String)localObject3);
+      localList.add(localepd);
     }
     d(localb);
-    AppMethodBeat.o(223389);
+    AppMethodBeat.o(220630);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/msgsubscription/task/GetSubscribeStatusTask$run$netScene$1", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/msgsubscription/task/GetSubscribeStatusTask$run$netScene$1", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
   public static final class b
     implements b.c
   {
     public final void a(final int paramInt1, final int paramInt2, final String paramString, final SubscribeMsgRequestResult paramSubscribeMsgRequestResult)
     {
-      AppMethodBeat.i(223388);
-      p.h(paramString, "errMsg");
+      AppMethodBeat.i(193300);
+      p.k(paramString, "errMsg");
       Log.i("MicroMsg.GetSubscribeMsgUIStatusTask", "alvinluo getSubscribeStatus end errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
       MMHandlerThread.postToMainThread((Runnable)new a(this, paramInt1, paramInt2, paramSubscribeMsgRequestResult, paramString));
-      AppMethodBeat.o(223388);
+      AppMethodBeat.o(193300);
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -95,32 +95,32 @@ public final class e
       
       public final void run()
       {
-        AppMethodBeat.i(223387);
+        AppMethodBeat.i(240709);
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          locala = e.a(this.jBi.jBh);
+          locala = e.a(this.mqR.mqQ);
           if (locala != null)
           {
-            String str = this.jBi.jBh.dVu;
+            String str = this.mqR.mqQ.fOX;
             SubscribeMsgRequestResult localSubscribeMsgRequestResult = paramSubscribeMsgRequestResult;
             if (localSubscribeMsgRequestResult == null) {
-              p.hyc();
+              p.iCn();
             }
             locala.a(str, localSubscribeMsgRequestResult);
-            AppMethodBeat.o(223387);
+            AppMethodBeat.o(240709);
             return;
           }
-          AppMethodBeat.o(223387);
+          AppMethodBeat.o(240709);
           return;
         }
-        com.tencent.mm.msgsubscription.api.a locala = e.a(this.jBi.jBh);
+        com.tencent.mm.msgsubscription.api.a locala = e.a(this.mqR.mqQ);
         if (locala != null)
         {
           locala.i(paramInt1, paramInt2, paramString);
-          AppMethodBeat.o(223387);
+          AppMethodBeat.o(240709);
           return;
         }
-        AppMethodBeat.o(223387);
+        AppMethodBeat.o(240709);
       }
     }
   }

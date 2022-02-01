@@ -10,10 +10,16 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.game.report.g;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.game.e.c;
-import com.tencent.mm.plugin.game.e.e;
-import com.tencent.mm.plugin.game.protobuf.ar;
+import com.tencent.mm.plugin.game.d.c;
+import com.tencent.mm.plugin.game.d.e;
+import com.tencent.mm.plugin.game.g.b;
+import com.tencent.mm.plugin.game.g.d;
+import com.tencent.mm.plugin.game.g.e;
+import com.tencent.mm.plugin.game.g.f;
+import com.tencent.mm.plugin.game.g.i;
+import com.tencent.mm.plugin.game.protobuf.as;
 import com.tencent.mm.plugin.game.protobuf.o;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -24,10 +30,10 @@ public final class f
   extends LinearLayout
   implements View.OnClickListener
 {
+  private int CKU;
   private String mAppId;
   private Context mContext;
   private LayoutInflater mInflater;
-  private int xGR;
   
   public f(Context paramContext)
   {
@@ -39,19 +45,19 @@ public final class f
     AppMethodBeat.o(41905);
   }
   
-  public final void a(ar paramar, String paramString, int paramInt1, int paramInt2)
+  public final void a(as paramas, String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(41906);
-    if ((paramar == null) || (Util.isNullOrNil(paramar.xKD)))
+    if ((paramas == null) || (Util.isNullOrNil(paramas.COK)))
     {
       setVisibility(8);
       AppMethodBeat.o(41906);
       return;
     }
-    if (paramar.xKD.size() == 1)
+    if (paramas.COK.size() == 1)
     {
-      paramar.xKD.add(null);
-      paramar.xKD.add(null);
+      paramas.COK.add(null);
+      paramas.COK.add(null);
     }
     o localo;
     LinearLayout localLinearLayout;
@@ -61,36 +67,36 @@ public final class f
     for (;;)
     {
       this.mAppId = paramString;
-      this.xGR = paramInt2;
-      paramar = paramar.xKD.iterator();
+      this.CKU = paramInt2;
+      paramas = paramas.COK.iterator();
       for (;;)
       {
-        if (!paramar.hasNext()) {
-          break label340;
+        if (!paramas.hasNext()) {
+          break label347;
         }
-        localo = (o)paramar.next();
-        localLinearLayout = (LinearLayout)this.mInflater.inflate(2131494811, this, false);
+        localo = (o)paramas.next();
+        localLinearLayout = (LinearLayout)this.mInflater.inflate(g.f.Cmu, this, false);
         addView(localLinearLayout, new LinearLayout.LayoutParams(-2, -2, 1.0F));
-        localImageView = (ImageView)localLinearLayout.findViewById(2131300145);
-        localTextView1 = (TextView)localLinearLayout.findViewById(2131300146);
-        localTextView2 = (TextView)localLinearLayout.findViewById(2131300144);
+        localImageView = (ImageView)localLinearLayout.findViewById(g.e.ChG);
+        localTextView1 = (TextView)localLinearLayout.findViewById(g.e.ChH);
+        localTextView2 = (TextView)localLinearLayout.findViewById(g.e.ChF);
         if (localo != null) {
           break;
         }
-        localImageView.setImageResource(2131232980);
-        localTextView1.setText(2131761375);
-        localTextView1.setTextColor(this.mContext.getResources().getColor(2131100535));
+        localImageView.setImageResource(g.d.Chm);
+        localTextView1.setText(g.i.Chm);
+        localTextView1.setTextColor(this.mContext.getResources().getColor(g.b.CgH));
       }
-      if (paramar.xKD.size() == 2) {
-        paramar.xKD.add(null);
+      if (paramas.COK.size() == 2) {
+        paramas.COK.add(null);
       }
     }
     localLinearLayout.setOnClickListener(this);
-    e.dWR().o(localImageView, localo.IconUrl);
-    localTextView1.setText(localo.Title);
-    if (!Util.isNullOrNil(localo.Desc))
+    e.eAa().o(localImageView, localo.CNj);
+    localTextView1.setText(localo.fwr);
+    if (!Util.isNullOrNil(localo.CMB))
     {
-      localTextView2.setText(localo.Desc);
+      localTextView2.setText(localo.CMB);
       localTextView2.setVisibility(0);
     }
     for (;;)
@@ -99,11 +105,11 @@ public final class f
       if (paramInt1 != 2) {
         break;
       }
-      com.tencent.mm.plugin.game.d.a.b(this.mContext, 10, 1002, localo.xJv, paramString, paramInt2, com.tencent.mm.plugin.game.d.a.Fh(localo.xJt));
+      com.tencent.mm.plugin.game.c.a.b(this.mContext, 10, 1002, localo.CNC, paramString, paramInt2, com.tencent.mm.plugin.game.c.a.Md(localo.CNA));
       break;
       localTextView2.setVisibility(8);
     }
-    label340:
+    label347:
     AppMethodBeat.o(41906);
   }
   
@@ -111,8 +117,8 @@ public final class f
   {
     AppMethodBeat.i(41907);
     b localb = new b();
-    localb.bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameBlockEntranceView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    localb.bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/GameBlockEntranceView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
     if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof o)))
     {
       Log.w("MicroMsg.GameBlockEntranceView", "getTag is null");
@@ -121,22 +127,22 @@ public final class f
       return;
     }
     paramView = (o)paramView.getTag();
-    if (Util.isNullOrNil(paramView.xIy))
+    if (Util.isNullOrNil(paramView.CMD))
     {
       Log.w("MicroMsg.GameBlockEntranceView", "jumpUrl is null");
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameBlockEntranceView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(41907);
       return;
     }
-    int i = c.D(this.mContext, paramView.xIy, "game_center_mygame_comm");
-    com.tencent.mm.game.report.f.a(this.mContext, 10, 1002, paramView.xJv, i, this.mAppId, this.xGR, com.tencent.mm.plugin.game.d.a.Fh(paramView.xJt));
+    int i = c.I(this.mContext, paramView.CMD, "game_center_mygame_comm");
+    g.a(this.mContext, 10, 1002, paramView.CNC, i, this.mAppId, this.CKU, com.tencent.mm.plugin.game.c.a.Md(paramView.CNA));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameBlockEntranceView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(41907);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.f
  * JD-Core Version:    0.7.0.1
  */

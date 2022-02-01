@@ -9,30 +9,43 @@ import com.tencent.mm.sdk.storage.MAutoStorage;
 public final class e
   extends MAutoStorage<d>
 {
-  public static final String[] iBh;
-  public final ISQLiteDatabase kLX;
+  public static final String[] lqL;
+  public final ISQLiteDatabase nFQ;
   
   static
   {
     AppMethodBeat.i(146960);
-    iBh = new String[] { MAutoStorage.getCreateSQLs(d.iBg, "AppBrandCommonKVData") };
+    lqL = new String[] { MAutoStorage.getCreateSQLs(d.lqK, "AppBrandCommonKVData") };
     AppMethodBeat.o(146960);
   }
   
   public e(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, d.iBg, "AppBrandCommonKVData", null);
-    this.kLX = paramISQLiteDatabase;
+    super(paramISQLiteDatabase, d.lqK, "AppBrandCommonKVData", null);
+    this.nFQ = paramISQLiteDatabase;
   }
   
-  public final void WY(String paramString)
+  public final String L(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(146959);
-    super.execSQL("AppBrandCommonKVData", String.format("delete from %s where %s like '%s%%'", new Object[] { "AppBrandCommonKVData", "key", paramString }));
-    AppMethodBeat.o(146959);
+    AppMethodBeat.i(146957);
+    if (Util.isNullOrNil(paramString1))
+    {
+      AppMethodBeat.o(146957);
+      return paramString2;
+    }
+    d locald = new d();
+    locald.field_key = paramString1;
+    if (super.get(locald, new String[0]))
+    {
+      paramString1 = locald.field_value;
+      AppMethodBeat.o(146957);
+      return paramString1;
+    }
+    AppMethodBeat.o(146957);
+    return paramString2;
   }
   
-  public final boolean cN(String paramString1, String paramString2)
+  public final boolean cW(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146956);
     if (Util.isNullOrNil(paramString1))
@@ -58,7 +71,14 @@ public final class e
     return bool;
   }
   
-  public final boolean gC(String paramString)
+  public final void dU(String paramString)
+  {
+    AppMethodBeat.i(146959);
+    super.execSQL("AppBrandCommonKVData", String.format("delete from %s where %s like '%s%%'", new Object[] { "AppBrandCommonKVData", "key", paramString }));
+    AppMethodBeat.o(146959);
+  }
+  
+  public final boolean ho(String paramString)
   {
     AppMethodBeat.i(146958);
     if (Util.isNullOrNil(paramString))
@@ -68,7 +88,7 @@ public final class e
     }
     d locald = new d();
     locald.field_key = paramString;
-    locald.field_value = get(paramString, "");
+    locald.field_value = L(paramString, "");
     if ((TextUtils.isEmpty(locald.field_value)) || (super.delete(locald, new String[0])))
     {
       AppMethodBeat.o(146958);
@@ -77,30 +97,10 @@ public final class e
     AppMethodBeat.o(146958);
     return false;
   }
-  
-  public final String get(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(146957);
-    if (Util.isNullOrNil(paramString1))
-    {
-      AppMethodBeat.o(146957);
-      return paramString2;
-    }
-    d locald = new d();
-    locald.field_key = paramString1;
-    if (super.get(locald, new String[0]))
-    {
-      paramString1 = locald.field_value;
-      AppMethodBeat.o(146957);
-      return paramString1;
-    }
-    AppMethodBeat.o(146957);
-    return paramString2;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.e
  * JD-Core Version:    0.7.0.1
  */

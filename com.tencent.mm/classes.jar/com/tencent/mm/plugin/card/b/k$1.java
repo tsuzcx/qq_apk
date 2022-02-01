@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.card.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.aa.a;
+import com.tencent.mm.aa.c;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.y.a;
-import com.tencent.mm.y.c;
 
 final class k$1
   implements Runnable
@@ -16,24 +16,24 @@ final class k$1
   {
     AppMethodBeat.i(112683);
     Log.i("MicroMsg.CardMsgManager", "begin to clearRedDotAndWording()");
-    g.aAh().azQ().set(ar.a.NTT, "");
-    g.aAh().azQ().set(ar.a.NTZ, Integer.valueOf(0));
-    g.aAh().azQ().set(ar.a.NTW, "");
-    g.aAh().azQ().set(ar.a.NTX, "");
-    g.aAh().azQ().set(ar.a.NTY, "");
-    g.aAh().azQ().set(ar.a.NUk, "");
-    g.aAh().azQ().set(ar.a.NUl, Boolean.FALSE);
-    if (c.axV().cP(262152, 266256)) {
-      c.axV().B(262152, false);
+    h.aHG().aHp().set(ar.a.VhT, "");
+    h.aHG().aHp().set(ar.a.VhZ, Integer.valueOf(0));
+    h.aHG().aHp().set(ar.a.VhW, "");
+    h.aHG().aHp().set(ar.a.VhX, "");
+    h.aHG().aHp().set(ar.a.VhY, "");
+    h.aHG().aHp().set(ar.a.Vik, "");
+    h.aHG().aHp().set(ar.a.Vil, Boolean.FALSE);
+    if (c.aFn().dk(262152, 266256)) {
+      c.aFn().D(262152, false);
     }
-    if (c.axV().cO(262152, 266256)) {
-      c.axV().A(262152, false);
+    if (c.aFn().dj(262152, 266256)) {
+      c.aFn().C(262152, false);
     }
-    if (c.axV().a(ar.a.NTN, ar.a.NTP)) {
-      c.axV().a(ar.a.NTN, false);
+    if (c.aFn().a(ar.a.VhN, ar.a.VhP)) {
+      c.aFn().a(ar.a.VhN, false);
     }
-    if (c.axV().a(ar.a.NTO, ar.a.NTQ)) {
-      c.axV().a(ar.a.NTO, false);
+    if (c.aFn().a(ar.a.VhO, ar.a.VhQ)) {
+      c.aFn().a(ar.a.VhO, false);
     }
     Log.i("MicroMsg.CardMsgManager", "end to clearRedDotAndWording()");
     AppMethodBeat.o(112683);

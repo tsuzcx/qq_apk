@@ -1,14 +1,20 @@
 package com.tencent.mm.ui.widget;
 
-import com.tencent.xweb.WebView;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public class i
+public abstract class i
+  implements TextWatcher
 {
-  public void a(WebView paramWebView, int paramInt) {}
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.i
  * JD-Core Version:    0.7.0.1
  */

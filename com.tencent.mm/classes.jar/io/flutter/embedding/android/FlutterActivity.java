@@ -1,10 +1,6 @@
 package io.flutter.embedding.android;
 
 import android.app.Activity;
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.Lifecycle.Event;
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.LifecycleRegistry;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -18,37 +14,50 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import androidx.lifecycle.h;
+import androidx.lifecycle.h.a;
+import androidx.lifecycle.m;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import io.flutter.embedding.engine.d;
-import io.flutter.plugin.platform.b;
-import io.flutter.view.FlutterMain;
-import java.lang.reflect.Method;
 
 public class FlutterActivity
   extends HellActivity
-  implements LifecycleOwner, c.a
+  implements androidx.lifecycle.l, d.a
 {
-  protected c SMA;
-  private LifecycleRegistry crq;
+  private m BCL;
+  protected d aaoB;
   
   public FlutterActivity()
   {
     AppMethodBeat.i(10028);
-    this.crq = new LifecycleRegistry(this);
+    this.BCL = new m(this);
     AppMethodBeat.o(10028);
   }
   
-  private Drawable KG()
+  private e.a Ns()
+  {
+    AppMethodBeat.i(255703);
+    if (getIntent().hasExtra("background_mode"))
+    {
+      locala = e.a.valueOf(getIntent().getStringExtra("background_mode"));
+      AppMethodBeat.o(255703);
+      return locala;
+    }
+    e.a locala = e.a.aaoG;
+    AppMethodBeat.o(255703);
+    return locala;
+  }
+  
+  private Drawable Nt()
   {
     AppMethodBeat.i(10031);
     for (;;)
     {
       try
       {
-        Object localObject = getPackageManager().getActivityInfo(getComponentName(), 128).metaData;
+        Object localObject = iAs();
         if (localObject == null) {
-          break label102;
+          break label89;
         }
         i = ((Bundle)localObject).getInt("io.flutter.embedding.android.SplashScreenDrawable");
         if (i != 0)
@@ -71,29 +80,47 @@ public class FlutterActivity
       }
       AppMethodBeat.o(10031);
       return null;
-      label102:
+      label89:
       int i = 0;
     }
   }
   
-  private d.a KH()
+  private boolean bGa(String paramString)
   {
-    AppMethodBeat.i(215113);
-    if (getIntent().hasExtra("background_mode"))
+    AppMethodBeat.i(255715);
+    if (this.aaoB == null)
     {
-      locala = d.a.valueOf(getIntent().getStringExtra("background_mode"));
-      AppMethodBeat.o(215113);
-      return locala;
+      new StringBuilder("FlutterActivity ").append(hashCode()).append(" ").append(paramString).append(" called after release.");
+      io.flutter.b.iAd();
+      AppMethodBeat.o(255715);
+      return false;
     }
-    d.a locala = d.a.SMF;
-    AppMethodBeat.o(215113);
-    return locala;
+    AppMethodBeat.o(255715);
+    return true;
   }
   
-  public final j KF()
+  private Bundle iAs()
+  {
+    AppMethodBeat.i(255706);
+    Bundle localBundle = getPackageManager().getActivityInfo(getComponentName(), 128).metaData;
+    AppMethodBeat.o(255706);
+    return localBundle;
+  }
+  
+  private void release()
+  {
+    AppMethodBeat.i(255694);
+    this.aaoB.onDestroyView();
+    this.aaoB.onDetach();
+    this.aaoB.release();
+    this.aaoB = null;
+    AppMethodBeat.o(255694);
+  }
+  
+  public final j NC()
   {
     AppMethodBeat.i(10030);
-    Object localObject = KG();
+    Object localObject = Nt();
     if (localObject != null)
     {
       localObject = new DrawableSplashScreen((Drawable)localObject);
@@ -104,7 +131,12 @@ public class FlutterActivity
     return null;
   }
   
-  public final String KJ()
+  public final io.flutter.embedding.engine.a ND()
+  {
+    return null;
+  }
+  
+  public final String Nw()
   {
     AppMethodBeat.i(10045);
     String str = getIntent().getStringExtra("cached_engine_id");
@@ -112,14 +144,14 @@ public class FlutterActivity
     return str;
   }
   
-  public final String KK()
+  public final String Nx()
   {
     AppMethodBeat.i(10047);
     for (;;)
     {
       try
       {
-        Object localObject1 = getPackageManager().getActivityInfo(getComponentName(), 128).metaData;
+        Object localObject1 = iAs();
         if (localObject1 != null)
         {
           localObject1 = ((Bundle)localObject1).getString("io.flutter.Entrypoint");
@@ -141,107 +173,79 @@ public class FlutterActivity
     }
   }
   
-  public final String KL()
+  public final String Ny()
   {
     AppMethodBeat.i(10049);
     if ((getApplicationInfo().flags & 0x2) != 0) {}
     for (int i = 1; (i != 0) && ("android.intent.action.RUN".equals(getIntent().getAction())); i = 0)
     {
-      str = getIntent().getDataString();
+      String str = getIntent().getDataString();
       if (str == null) {
         break;
       }
       AppMethodBeat.o(10049);
       return str;
     }
-    String str = FlutterMain.findAppBundlePath();
     AppMethodBeat.o(10049);
-    return str;
+    return null;
   }
   
-  public final String KM()
+  public final String Nz()
   {
     AppMethodBeat.i(10048);
-    Object localObject1;
+    Object localObject;
     if (getIntent().hasExtra("route"))
     {
-      localObject1 = getIntent().getStringExtra("route");
+      localObject = getIntent().getStringExtra("route");
       AppMethodBeat.o(10048);
-      return localObject1;
+      return localObject;
     }
-    for (;;)
-    {
-      try
-      {
-        localObject1 = getPackageManager().getActivityInfo(getComponentName(), 128).metaData;
-        if (localObject1 != null)
-        {
-          localObject1 = ((Bundle)localObject1).getString("io.flutter.InitialRoute");
-          if (localObject1 == null) {
-            break;
-          }
-          AppMethodBeat.o(10048);
-          return localObject1;
-        }
-      }
-      catch (PackageManager.NameNotFoundException localNameNotFoundException)
-      {
-        AppMethodBeat.o(10048);
-        return "/";
-      }
-      Object localObject2 = null;
-    }
-    AppMethodBeat.o(10048);
-    return "/";
-  }
-  
-  public final io.flutter.embedding.engine.a KP()
-  {
-    return null;
-  }
-  
-  public final b a(Activity paramActivity, io.flutter.embedding.engine.a parama)
-  {
-    AppMethodBeat.i(10053);
-    if (paramActivity != null)
-    {
-      paramActivity = new b(this, parama.SOe);
-      AppMethodBeat.o(10053);
-      return paramActivity;
-    }
-    AppMethodBeat.o(10053);
-    return null;
-  }
-  
-  public final void b(io.flutter.embedding.engine.a parama)
-  {
-    AppMethodBeat.i(215114);
     try
     {
-      Class.forName("io.flutter.plugins.GeneratedPluginRegistrant").getDeclaredMethod("registerWith", new Class[] { io.flutter.embedding.engine.a.class }).invoke(null, new Object[] { parama });
-      AppMethodBeat.o(215114);
-      return;
+      localObject = iAs();
+      if (localObject != null)
+      {
+        localObject = ((Bundle)localObject).getString("io.flutter.InitialRoute");
+        AppMethodBeat.o(10048);
+        return localObject;
+      }
     }
-    catch (Exception localException)
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
-      new StringBuilder("Tried to automatically register plugins with FlutterEngine (").append(parama).append(") but could not find and invoke the GeneratedPluginRegistrant.");
-      io.flutter.a.hwf();
-      AppMethodBeat.o(215114);
+      AppMethodBeat.o(10048);
+      return null;
     }
+    AppMethodBeat.o(10048);
+    return null;
   }
   
-  public final void c(io.flutter.embedding.engine.a parama) {}
-  
-  public final void dLt()
+  public final io.flutter.plugin.platform.b a(Activity paramActivity, io.flutter.embedding.engine.a parama)
   {
-    AppMethodBeat.i(215115);
+    AppMethodBeat.i(10053);
+    paramActivity = new io.flutter.plugin.platform.b(this, parama.aaqd, this);
+    AppMethodBeat.o(10053);
+    return paramActivity;
+  }
+  
+  public final void a(io.flutter.embedding.engine.a parama)
+  {
+    AppMethodBeat.i(255711);
+    io.flutter.embedding.engine.plugins.e.a.h(parama);
+    AppMethodBeat.o(255711);
+  }
+  
+  public final void b(io.flutter.embedding.engine.a parama) {}
+  
+  public final void epX()
+  {
+    AppMethodBeat.i(255713);
     if (Build.VERSION.SDK_INT >= 21) {
       reportFullyDrawn();
     }
-    AppMethodBeat.o(215115);
+    AppMethodBeat.o(255713);
   }
   
-  public final void dLu() {}
+  public final void epY() {}
   
   public final Activity getActivity()
   {
@@ -253,24 +257,33 @@ public class FlutterActivity
     return this;
   }
   
-  public Lifecycle getLifecycle()
+  public h getLifecycle()
   {
-    return this.crq;
+    return this.BCL;
   }
   
-  public final d hwl()
+  public final void iAm()
+  {
+    AppMethodBeat.i(255695);
+    new StringBuilder("FlutterActivity ").append(this).append(" connection to the engine ").append(this.aaoB.BCx).append(" evicted by another attaching activity");
+    io.flutter.b.iAd();
+    release();
+    AppMethodBeat.o(255695);
+  }
+  
+  public final io.flutter.embedding.engine.d iAo()
   {
     AppMethodBeat.i(10044);
-    d locald = d.bO(getIntent());
+    io.flutter.embedding.engine.d locald = io.flutter.embedding.engine.d.bT(getIntent());
     AppMethodBeat.o(10044);
     return locald;
   }
   
-  public final boolean hwm()
+  public final boolean iAp()
   {
     AppMethodBeat.i(10046);
     boolean bool = getIntent().getBooleanExtra("destroy_engine_with_activity", false);
-    if ((KJ() != null) || (this.SMA.Syd))
+    if ((Nw() != null) || (this.aaoB.ZZk))
     {
       AppMethodBeat.o(10046);
       return bool;
@@ -280,68 +293,94 @@ public class FlutterActivity
     return bool;
   }
   
-  public final i hwn()
+  public final i iAq()
   {
-    AppMethodBeat.i(215111);
-    if (KH() == d.a.SMF)
+    AppMethodBeat.i(255700);
+    if (Ns() == e.a.aaoG)
     {
-      locali = i.SNO;
-      AppMethodBeat.o(215111);
+      locali = i.aapM;
+      AppMethodBeat.o(255700);
       return locali;
     }
-    i locali = i.SNP;
-    AppMethodBeat.o(215111);
+    i locali = i.aapN;
+    AppMethodBeat.o(255700);
     return locali;
   }
   
-  public final l hwo()
+  public final l iAr()
   {
-    AppMethodBeat.i(215112);
-    if (KH() == d.a.SMF)
+    AppMethodBeat.i(255702);
+    if (Ns() == e.a.aaoG)
     {
-      locall = l.SNS;
-      AppMethodBeat.o(215112);
+      locall = l.aapQ;
+      AppMethodBeat.o(255702);
       return locall;
     }
-    l locall = l.SNT;
-    AppMethodBeat.o(215112);
+    l locall = l.aapR;
+    AppMethodBeat.o(255702);
     return locall;
   }
   
-  public final boolean hwp()
+  public final boolean iAt()
   {
     return true;
   }
   
-  public final boolean hwq()
+  public final boolean iAu()
   {
-    AppMethodBeat.i(215116);
+    AppMethodBeat.i(255712);
+    try
+    {
+      Bundle localBundle = iAs();
+      if (localBundle != null)
+      {
+        boolean bool = localBundle.getBoolean("flutter_deeplinking_enabled");
+        AppMethodBeat.o(255712);
+        return bool;
+      }
+      AppMethodBeat.o(255712);
+      return false;
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      AppMethodBeat.o(255712);
+    }
+    return false;
+  }
+  
+  public final boolean iAv()
+  {
+    AppMethodBeat.i(255714);
     if (getIntent().hasExtra("enable_state_restoration"))
     {
       boolean bool = getIntent().getBooleanExtra("enable_state_restoration", false);
-      AppMethodBeat.o(215116);
+      AppMethodBeat.o(255714);
       return bool;
     }
-    if (KJ() != null)
+    if (Nw() != null)
     {
-      AppMethodBeat.o(215116);
+      AppMethodBeat.o(255714);
       return false;
     }
-    AppMethodBeat.o(215116);
+    AppMethodBeat.o(255714);
     return true;
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(10038);
-    this.SMA.onActivityResult(paramInt1, paramInt2, paramIntent);
+    if (bGa("onActivityResult")) {
+      this.aaoB.onActivityResult(paramInt1, paramInt2, paramIntent);
+    }
     AppMethodBeat.o(10038);
   }
   
   public void onBackPressed()
   {
     AppMethodBeat.i(10040);
-    this.SMA.onBackPressed();
+    if (bGa("onBackPressed")) {
+      this.aaoB.onBackPressed();
+    }
     AppMethodBeat.o(10040);
   }
   
@@ -352,29 +391,29 @@ public class FlutterActivity
     {
       try
       {
-        ActivityInfo localActivityInfo = getPackageManager().getActivityInfo(getComponentName(), 128);
-        if (localActivityInfo.metaData == null) {
+        Bundle localBundle = iAs();
+        if (localBundle == null) {
           continue;
         }
-        int i = localActivityInfo.metaData.getInt("io.flutter.embedding.android.NormalTheme", -1);
+        int i = localBundle.getInt("io.flutter.embedding.android.NormalTheme", -1);
         if (i != -1) {
           setTheme(i);
         }
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException)
       {
-        io.flutter.a.hwg();
+        io.flutter.b.iAh();
         continue;
       }
       super.onCreate(paramBundle);
-      this.crq.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
-      this.SMA = new c(this);
-      this.SMA.hrO();
-      this.SMA.onActivityCreated(paramBundle);
-      if (KH() == d.a.SMG) {
+      this.aaoB = new d(this);
+      this.aaoB.ivA();
+      this.aaoB.onRestoreInstanceState(paramBundle);
+      this.BCL.a(h.a.ON_CREATE);
+      if (Ns() == e.a.aaoH) {
         getWindow().setBackgroundDrawable(new ColorDrawable(0));
       }
-      setContentView(this.SMA.hrQ());
+      setContentView(this.aaoB.ivC());
       if (Build.VERSION.SDK_INT >= 21)
       {
         paramBundle = getWindow();
@@ -384,7 +423,7 @@ public class FlutterActivity
       }
       AppMethodBeat.o(10029);
       return;
-      io.flutter.a.hwd();
+      io.flutter.b.iAd();
     }
   }
   
@@ -392,9 +431,10 @@ public class FlutterActivity
   {
     AppMethodBeat.i(10037);
     super.onDestroy();
-    this.SMA.onDestroyView();
-    this.SMA.onDetach();
-    this.crq.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
+    if (bGa("onDestroy")) {
+      release();
+    }
+    this.BCL.a(h.a.ON_DESTROY);
     AppMethodBeat.o(10037);
   }
   
@@ -402,7 +442,9 @@ public class FlutterActivity
   {
     AppMethodBeat.i(10039);
     super.onNewIntent(paramIntent);
-    this.SMA.onNewIntent(paramIntent);
+    if (bGa("onNewIntent")) {
+      this.aaoB.onNewIntent(paramIntent);
+    }
     AppMethodBeat.o(10039);
   }
   
@@ -410,8 +452,8 @@ public class FlutterActivity
   {
     AppMethodBeat.i(10035);
     super.onPause();
-    this.SMA.onPause();
-    this.crq.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
+    this.aaoB.onPause();
+    this.BCL.a(h.a.ON_PAUSE);
     AppMethodBeat.o(10035);
   }
   
@@ -419,14 +461,16 @@ public class FlutterActivity
   {
     AppMethodBeat.i(10034);
     super.onPostResume();
-    this.SMA.onPostResume();
+    this.aaoB.onPostResume();
     AppMethodBeat.o(10034);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(10041);
-    this.SMA.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    if (bGa("onRequestPermissionsResult")) {
+      this.aaoB.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    }
     AppMethodBeat.o(10041);
   }
   
@@ -434,25 +478,27 @@ public class FlutterActivity
   {
     AppMethodBeat.i(10033);
     super.onResume();
-    this.crq.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
-    this.SMA.onResume();
+    this.BCL.a(h.a.ON_RESUME);
+    this.aaoB.onResume();
     AppMethodBeat.o(10033);
   }
   
   protected void onSaveInstanceState(Bundle paramBundle)
   {
-    AppMethodBeat.i(215110);
+    AppMethodBeat.i(255693);
     super.onSaveInstanceState(paramBundle);
-    this.SMA.onSaveInstanceState(paramBundle);
-    AppMethodBeat.o(215110);
+    if (bGa("onSaveInstanceState")) {
+      this.aaoB.onSaveInstanceState(paramBundle);
+    }
+    AppMethodBeat.o(255693);
   }
   
   protected void onStart()
   {
     AppMethodBeat.i(10032);
     super.onStart();
-    this.crq.handleLifecycleEvent(Lifecycle.Event.ON_START);
-    this.SMA.onStart();
+    this.BCL.a(h.a.ON_START);
+    this.aaoB.onStart();
     AppMethodBeat.o(10032);
   }
   
@@ -460,8 +506,10 @@ public class FlutterActivity
   {
     AppMethodBeat.i(10036);
     super.onStop();
-    this.SMA.onStop();
-    this.crq.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
+    if (bGa("onStop")) {
+      this.aaoB.onStop();
+    }
+    this.BCL.a(h.a.ON_STOP);
     AppMethodBeat.o(10036);
   }
   
@@ -469,14 +517,18 @@ public class FlutterActivity
   {
     AppMethodBeat.i(10043);
     super.onTrimMemory(paramInt);
-    this.SMA.onTrimMemory(paramInt);
+    if (bGa("onTrimMemory")) {
+      this.aaoB.onTrimMemory(paramInt);
+    }
     AppMethodBeat.o(10043);
   }
   
   public void onUserLeaveHint()
   {
     AppMethodBeat.i(10042);
-    this.SMA.onUserLeaveHint();
+    if (bGa("onUserLeaveHint")) {
+      this.aaoB.onUserLeaveHint();
+    }
     AppMethodBeat.o(10042);
   }
   

@@ -85,7 +85,7 @@ public final class MP4MuxerJNI
   public static int ffmpegOpenAndSeekFileVFS(String paramString, double paramDouble1, double paramDouble2)
   {
     AppMethodBeat.i(133584);
-    int i = ffmpegOpenAndSeekFile(q.k(paramString, false), paramDouble1, paramDouble2);
+    int i = ffmpegOpenAndSeekFile(q.n(paramString, false), paramDouble1, paramDouble2);
     AppMethodBeat.o(133584);
     return i;
   }
@@ -95,7 +95,7 @@ public final class MP4MuxerJNI
   public static byte[] getVideoThumbVFS(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(133590);
-    paramString = getVideoThumb(q.k(paramString, false), paramInt1, paramInt2);
+    paramString = getVideoThumb(q.n(paramString, false), paramInt1, paramInt2);
     AppMethodBeat.o(133590);
     return paramString;
   }
@@ -144,7 +144,7 @@ public final class MP4MuxerJNI
   public static int muxingForX264VFS(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, float paramFloat, int paramInt5, byte[] paramArrayOfByte, int paramInt6)
   {
     AppMethodBeat.i(133579);
-    paramInt1 = muxingForX264(paramInt1, paramInt2, paramInt3, paramInt4, q.k(paramString, false), paramFloat, paramInt5, paramArrayOfByte, paramInt6);
+    paramInt1 = muxingForX264(paramInt1, paramInt2, paramInt3, paramInt4, q.n(paramString, false), paramFloat, paramInt5, paramArrayOfByte, paramInt6);
     AppMethodBeat.o(133579);
     return paramInt1;
   }
@@ -163,7 +163,7 @@ public final class MP4MuxerJNI
   public static int muxingVFS(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString, float paramFloat, byte[] paramArrayOfByte, int paramInt6)
   {
     AppMethodBeat.i(133576);
-    paramInt1 = muxing(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, q.k(paramString, false), paramFloat, paramArrayOfByte, paramInt6);
+    paramInt1 = muxing(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, q.n(paramString, false), paramFloat, paramArrayOfByte, paramInt6);
     AppMethodBeat.o(133576);
     return paramInt1;
   }
@@ -248,7 +248,7 @@ public final class MP4MuxerJNI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.MP4MuxerJNI
  * JD-Core Version:    0.7.0.1
  */

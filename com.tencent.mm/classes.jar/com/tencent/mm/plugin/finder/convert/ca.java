@@ -1,522 +1,214 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.arch.lifecycle.ViewModelProvider;
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import androidx.lifecycle.r;
+import androidx.lifecycle.s;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.f;
-import com.tencent.mm.g.a.hg;
-import com.tencent.mm.plugin.finder.loader.k;
-import com.tencent.mm.plugin.finder.loader.m;
-import com.tencent.mm.plugin.finder.loader.m.a;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.bf;
-import com.tencent.mm.plugin.finder.profile.uic.FinderProfileEduUIC;
-import com.tencent.mm.plugin.finder.profile.uic.FinderProfileFloatBallUIC;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.ac;
-import com.tencent.mm.plugin.finder.storage.logic.c;
-import com.tencent.mm.plugin.finder.storage.logic.c.a;
-import com.tencent.mm.plugin.finder.storage.x;
-import com.tencent.mm.plugin.finder.view.FinderPostProgressView;
-import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.axw;
-import com.tencent.mm.protocal.protobuf.axx;
-import com.tencent.mm.protocal.protobuf.axy;
-import com.tencent.mm.protocal.protobuf.cjl;
-import com.tencent.mm.protocal.protobuf.css;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.model.az.a;
+import com.tencent.mm.model.az.b;
+import com.tencent.mm.model.az.b.a;
+import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.extension.reddot.f;
+import com.tencent.mm.plugin.finder.extension.reddot.h.a;
+import com.tencent.mm.plugin.finder.model.bm;
+import com.tencent.mm.plugin.finder.viewmodel.component.aj;
+import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
+import com.tencent.mm.plugin.findersdk.a.ab;
+import com.tencent.mm.protocal.protobuf.bkn;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.widget.imageview.WeImageView;
+import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.h;
-import java.util.List;
-import kotlin.a.j;
+import com.tencent.mm.view.recyclerview.i;
 import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderProfileMusicConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMusicInfoData;", "()V", "isSelfFlag", "", "()Ljava/lang/Boolean;", "setSelfFlag", "(Ljava/lang/Boolean;)V", "Ljava/lang/Boolean;", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "getRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "setRecyclerView", "(Landroid/support/v7/widget/RecyclerView;)V", "getLayoutId", "", "isSelf", "item", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "position", "type", "isHotPatch", "payloads", "", "", "onCreateViewHolder", "refreshProgress", "setImage", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setLikeArea", "setOrigin", "mvInfo", "Lcom/tencent/mm/protocal/protobuf/FinderMVInfo;", "playIcon", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setPostFailed", "context", "Landroid/content/Context;", "setPosting", "Companion", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderPrivateMsgNotifyConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderPrivateMsgNotifyData;", "()V", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "item", "itemPosition", "", "observer", "Landroidx/lifecycle/Observer;", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "getLayoutId", "onAttachedToRecyclerView", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "onBindViewHolder", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "onDetachedFromRecyclerView", "Companion", "plugin-finder_release"})
 public final class ca
-  extends e<bf>
+  extends e<bm>
 {
-  public static final a tFQ;
-  private RecyclerView hak;
-  public Boolean tFI;
+  public static final a xnT;
+  private int bwM;
+  private final s<h.a> xnQ;
+  private WxRecyclerAdapter<?> xnR;
+  private bm xnS;
   
   static
   {
-    AppMethodBeat.i(243262);
-    tFQ = new a((byte)0);
-    AppMethodBeat.o(243262);
+    AppMethodBeat.i(280482);
+    xnT = new a((byte)0);
+    AppMethodBeat.o(280482);
   }
   
-  private static void a(Context paramContext, h paramh, WeImageView paramWeImageView)
+  public ca()
   {
-    AppMethodBeat.i(243259);
-    View localView = paramh.Mn(2131306230);
-    p.g(localView, "holder.getView<LinearLay…ile_music_post_container)");
-    ((LinearLayout)localView).setVisibility(0);
-    localView = paramh.Mn(2131306224);
-    p.g(localView, "holder.getView<View>(R.id.profile_music_fail_icon)");
-    localView.setVisibility(0);
-    localView = paramh.Mn(2131306231);
-    p.g(localView, "holder.getView<TextView>…ofile_music_posting_text)");
-    ((TextView)localView).setText((CharSequence)paramContext.getString(2131760419));
-    paramContext = paramh.Mn(2131306236);
-    p.g(paramContext, "holder.getView<FinderPos…le_music_upload_progress)");
-    ((FinderPostProgressView)paramContext).setVisibility(8);
-    paramContext = paramh.Mn(2131306232);
-    p.g(paramContext, "holder.getView<View>(R.i…le_music_retry_container)");
-    paramContext.setVisibility(0);
-    paramContext = paramh.Mn(2131306227);
-    p.g(paramContext, "holder.getView<TextView>…rofile_music_origin_text)");
-    ((TextView)paramContext).setVisibility(8);
-    paramWeImageView.setVisibility(8);
-    AppMethodBeat.o(243259);
+    AppMethodBeat.i(280481);
+    this.xnQ = ((s)new b(this));
+    this.bwM = -1;
+    AppMethodBeat.o(280481);
   }
   
-  private final void a(final bf parambf, final h paramh)
+  public final void a(RecyclerView paramRecyclerView, WxRecyclerAdapter<?> paramWxRecyclerAdapter)
   {
-    AppMethodBeat.i(243258);
-    Object localObject1 = (WeImageView)paramh.Mn(2131306229);
-    Object localObject2 = paramh.getContext();
-    p.g(localObject2, "holder.context");
-    p.g(localObject1, "playIcon");
-    b((Context)localObject2, paramh, (WeImageView)localObject1);
-    if (parambf.uOO.getFeedObject() != null)
+    AppMethodBeat.i(280476);
+    p.k(paramRecyclerView, "recyclerView");
+    p.k(paramWxRecyclerAdapter, "adapter");
+    super.a(paramRecyclerView, paramWxRecyclerAdapter);
+    this.xnR = paramWxRecyclerAdapter;
+    paramRecyclerView = com.tencent.mm.plugin.finder.extension.reddot.h.xup;
+    com.tencent.mm.plugin.finder.extension.reddot.h.drb().a(this.xnQ);
+    AppMethodBeat.o(280476);
+  }
+  
+  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
+  {
+    AppMethodBeat.i(280480);
+    p.k(paramRecyclerView, "recyclerView");
+    p.k(parami, "holder");
+    AppMethodBeat.o(280480);
+  }
+  
+  public final void a(final i parami, final bm parambm, int paramInt)
+  {
+    AppMethodBeat.i(280478);
+    p.k(parami, "holder");
+    p.k(parambm, "item");
+    this.xnS = parambm;
+    this.bwM = paramInt;
+    parambm = com.tencent.mm.plugin.finder.extension.reddot.h.xup;
+    parambm = (h.a)com.tencent.mm.plugin.finder.extension.reddot.h.drb().getValue();
+    if ((parambm != null) && (parambm.fxt == true))
     {
-      if (parambf.uOO.isPostFailed())
+      parambm = parami.RD(b.f.msg_layout);
+      p.j(parambm, "holder.getView<View>(R.id.msg_layout)");
+      parambm.setVisibility(0);
+      parambm = com.tencent.mm.plugin.finder.extension.reddot.h.xup;
+      parambm = (h.a)com.tencent.mm.plugin.finder.extension.reddot.h.drb().getValue();
+      final com.tencent.mm.plugin.finder.extension.reddot.l locall;
+      if (parambm != null)
       {
-        parambf = paramh.getContext();
-        p.g(parambf, "holder.context");
-        a(parambf, paramh, (WeImageView)localObject1);
-        AppMethodBeat.o(243258);
-        return;
-      }
-      if (parambf.dkT())
-      {
-        localObject2 = ValueAnimator.ofInt(new int[] { ((FinderPostProgressView)paramh.Mn(2131306236)).getProgress(), parambf.dkU() });
-        ((ValueAnimator)localObject2).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new f(this, parambf, paramh, (WeImageView)localObject1));
-        localObject1 = ((ValueAnimator)localObject2).setDuration(400L);
-        if (localObject1 != null) {
-          ((ValueAnimator)localObject1).start();
+        parambm = parambm.xur;
+        if (parambm != null)
+        {
+          parambm = parambm.aBy("TLWxPrivateMsgBubble");
+          localObject = com.tencent.mm.kernel.h.ag(PluginFinder.class);
+          p.j(localObject, "MMKernel.plugin(PluginFinder::class.java)");
+          locall = ((PluginFinder)localObject).getRedDotManager().aBf("TLWxPrivateMsgBubble");
+          if (parambm == null) {
+            break label229;
+          }
         }
-        paramh.setTag(localObject2);
-        Log.i("Finder.ProfileMusicConvert", "progress animate: " + ((FinderPostProgressView)paramh.Mn(2131306236)).getProgress() + ", " + parambf.dkU());
-        AppMethodBeat.o(243258);
-        return;
       }
-      a(parambf.dkQ(), paramh, (WeImageView)localObject1);
-    }
-    AppMethodBeat.o(243258);
-  }
-  
-  private static void a(FinderItem paramFinderItem, h paramh)
-  {
-    AppMethodBeat.i(243257);
-    Object localObject = (cjl)j.kt((List)paramFinderItem.getMediaList());
-    if (localObject != null)
-    {
-      paramFinderItem = m.uJa;
-      paramFinderItem = m.djY();
-      localObject = new k((cjl)localObject, x.vEo, null, null, 12);
-      paramh = paramh.Mn(2131301449);
-      p.g(paramh, "holder.getView<ImageView…inder_profile_item_image)");
-      paramh = (ImageView)paramh;
-      m localm = m.uJa;
-      paramFinderItem.a(localObject, paramh, m.a(m.a.uJb));
-      AppMethodBeat.o(243257);
+      label229:
+      for (Object localObject = parambm.ufC;; localObject = null)
+      {
+        localObject = ((ab)com.tencent.mm.kernel.h.ae(ab.class)).aED((String)localObject);
+        if (localObject == null) {
+          break label235;
+        }
+        az.a.ber().a((String)localObject, null, (az.b.a)new c((String)localObject, parami, locall, parambm));
+        parami.RD(b.f.msg_layout).setOnClickListener((View.OnClickListener)new d(parami, locall, parambm));
+        AppMethodBeat.o(280478);
+        return;
+        parambm = null;
+        break;
+      }
+      label235:
+      AppMethodBeat.o(280478);
       return;
     }
-    AppMethodBeat.o(243257);
-  }
-  
-  private static void a(axw paramaxw, h paramh, WeImageView paramWeImageView)
-  {
-    AppMethodBeat.i(243261);
-    View localView = paramh.Mn(2131306230);
-    p.g(localView, "holder.getView<LinearLay…ile_music_post_container)");
-    ((LinearLayout)localView).setVisibility(8);
-    localView = paramh.Mn(2131306227);
-    p.g(localView, "holder.getView<TextView>…rofile_music_origin_text)");
-    ((TextView)localView).setVisibility(0);
-    localView = paramh.Mn(2131306227);
-    p.g(localView, "holder.getView<TextView>…rofile_music_origin_text)");
-    ((TextView)localView).setText((CharSequence)"");
-    paramWeImageView.setVisibility(0);
-    if (paramaxw != null)
+    parami = parami.RD(b.f.msg_layout);
+    if (parami != null)
     {
-      paramaxw = paramaxw.ApI;
-      if (paramaxw != null)
-      {
-        Log.i("Finder.ProfileMusicConvert", "setOrigin :" + paramaxw.LIe);
-        paramWeImageView = paramh.getContext();
-        p.g(paramWeImageView, "holder.context");
-        paramaxw = paramWeImageView.getResources().getString(2131760471, new Object[] { Integer.valueOf((int)(paramaxw.LIe * 100.0F)) });
-        p.g(paramaxw, "holder.context.resources…iginality * 100).toInt())");
-        paramh = paramh.Mn(2131306227);
-        p.g(paramh, "holder.getView<TextView>…rofile_music_origin_text)");
-        ((TextView)paramh).setText((CharSequence)paramaxw);
-        AppMethodBeat.o(243261);
-        return;
-      }
+      parami.setVisibility(8);
+      AppMethodBeat.o(280478);
+      return;
     }
-    AppMethodBeat.o(243261);
+    AppMethodBeat.o(280478);
   }
   
-  private static void b(Context paramContext, h paramh, WeImageView paramWeImageView)
+  public final void e(RecyclerView paramRecyclerView)
   {
-    AppMethodBeat.i(243260);
-    View localView = paramh.Mn(2131306230);
-    p.g(localView, "holder.getView<LinearLay…ile_music_post_container)");
-    ((LinearLayout)localView).setVisibility(0);
-    localView = paramh.Mn(2131306224);
-    p.g(localView, "holder.getView<View>(R.id.profile_music_fail_icon)");
-    localView.setVisibility(8);
-    localView = paramh.Mn(2131306231);
-    p.g(localView, "holder.getView<TextView>…ofile_music_posting_text)");
-    ((TextView)localView).setText((CharSequence)paramContext.getString(2131760466));
-    paramContext = paramh.Mn(2131306236);
-    p.g(paramContext, "holder.getView<FinderPos…le_music_upload_progress)");
-    ((FinderPostProgressView)paramContext).setVisibility(0);
-    paramContext = paramh.Mn(2131306232);
-    p.g(paramContext, "holder.getView<View>(R.i…le_music_retry_container)");
-    paramContext.setVisibility(8);
-    paramContext = paramh.Mn(2131306227);
-    p.g(paramContext, "holder.getView<TextView>…rofile_music_origin_text)");
-    ((TextView)paramContext).setVisibility(8);
-    paramWeImageView.setVisibility(8);
-    AppMethodBeat.o(243260);
-  }
-  
-  public final void a(RecyclerView paramRecyclerView, h paramh, int paramInt)
-  {
-    AppMethodBeat.i(243255);
-    p.h(paramRecyclerView, "recyclerView");
-    p.h(paramh, "holder");
-    this.hak = paramRecyclerView;
-    AppMethodBeat.o(243255);
+    AppMethodBeat.i(280477);
+    p.k(paramRecyclerView, "recyclerView");
+    super.e(paramRecyclerView);
+    paramRecyclerView = com.tencent.mm.plugin.finder.extension.reddot.h.xup;
+    com.tencent.mm.plugin.finder.extension.reddot.h.drb().b(this.xnQ);
+    AppMethodBeat.o(280477);
   }
   
   public final int getLayoutId()
   {
-    return 2131494591;
+    return b.g._feed_header_private_msg_notify_item;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderProfileMusicConvert$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderPrivateMsgNotifyConvert$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "kotlin.jvm.PlatformType", "onChanged"})
+  static final class b<T>
+    implements s<h.a>
   {
-    b(bf parambf) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(243250);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/convert/FinderProfileMusicConvert$onBindViewHolder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-      paramView = this.tFR.uOO;
-      localObject = c.vGN;
-      c.a.FS(this.tFR.uOO.getLocalId());
-      localObject = c.vGN;
-      c.a.FV(paramView.getLocalId());
-      localObject = new hg();
-      ((hg)localObject).dLJ.localId = paramView.getLocalId();
-      EventCenter.instance.publish((IEvent)localObject);
-      Log.i("Finder.ProfileMusicConvert", "deleteItem by localId " + paramView.getLocalId());
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/convert/FinderProfileMusicConvert$onBindViewHolder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(243250);
-    }
+    b(ca paramca) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "username", "", "kotlin.jvm.PlatformType", "succ", "", "getContactCallBack", "com/tencent/mm/plugin/finder/convert/FinderPrivateMsgNotifyConvert$onBindViewHolder$1$1"})
   static final class c
-    implements View.OnClickListener
+    implements az.b.a
   {
-    c(bf parambf) {}
+    c(String paramString, i parami, com.tencent.mm.plugin.finder.extension.reddot.l paraml, bkn parambkn) {}
     
-    public final void onClick(View paramView)
+    public final void s(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(243251);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/convert/FinderProfileMusicConvert$onBindViewHolder$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      paramView = com.tencent.mm.plugin.finder.upload.g.vSJ;
-      com.tencent.mm.plugin.finder.upload.g.dBa().t(this.tFR.uOO);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/convert/FinderProfileMusicConvert$onBindViewHolder$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(243251);
+      AppMethodBeat.i(286292);
+      Log.i("Finder.PrivateMsgNotifyConvert", "[getNow] username=" + paramString + " succ=" + paramBoolean);
+      com.tencent.mm.ui.h.a.a.d((ImageView)parami.RD(b.f.msg_avatar), this.qbm);
+      AppMethodBeat.o(286292);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/convert/FinderPrivateMsgNotifyConvert$onBindViewHolder$1$2"})
   static final class d
     implements View.OnClickListener
   {
-    d(bf parambf, String paramString1, axw paramaxw, h paramh, String paramString2) {}
+    d(i parami, com.tencent.mm.plugin.finder.extension.reddot.l paraml, bkn parambkn) {}
     
     public final void onClick(View paramView)
     {
-      Object localObject1 = null;
-      AppMethodBeat.i(243252);
-      Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject2).bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/convert/FinderProfileMusicConvert$onBindViewHolder$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject2).axR());
-      localObject2 = new css();
-      ((css)localObject2).Ktn = com.tencent.mm.ac.d.zs(this.tFR.feedObject.getFinderObject().id);
-      ((css)localObject2).Kto = this.tFR.feedObject.getFinderObject().objectNonceId;
-      ((css)localObject2).Ktp = this.tra;
-      paramView = this.tFR.feedObject.getFinderObject().contact;
+      AppMethodBeat.i(278596);
+      Object localObject = new b();
+      ((b)localObject).bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/convert/FinderPrivateMsgNotifyConvert$onBindViewHolder$$inlined$let$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+      bkn localbkn;
+      if ((locall != null) && (parambm != null))
+      {
+        paramView = com.tencent.mm.plugin.finder.report.l.zWx;
+        localObject = locall;
+        localbkn = parambm;
+        paramView = aj.Bnu;
+        paramView = this.xhb.getContext();
+        p.j(paramView, "holder.context");
+        paramView = aj.a.fZ(paramView);
+        if (paramView == null) {
+          break label149;
+        }
+      }
       label149:
-      label178:
-      label207:
-      label236:
-      long l;
-      label265:
-      label294:
-      int i;
-      label323:
-      label352:
-      label381:
-      axy localaxy;
-      label410:
-      String str;
-      if (paramView != null)
+      for (paramView = paramView.ekY();; paramView = null)
       {
-        paramView = paramView.nickname;
-        ((css)localObject2).Ktq = paramView;
-        paramView = this.tFS;
-        if (paramView == null) {
-          break label601;
-        }
-        paramView = paramView.Aqo;
-        if (paramView == null) {
-          break label601;
-        }
-        paramView = paramView.lDR;
-        ((css)localObject2).singerName = paramView;
-        paramView = this.tFS;
-        if (paramView == null) {
-          break label606;
-        }
-        paramView = paramView.Aqo;
-        if (paramView == null) {
-          break label606;
-        }
-        paramView = paramView.albumName;
-        ((css)localObject2).albumName = paramView;
-        paramView = this.tFS;
-        if (paramView == null) {
-          break label611;
-        }
-        paramView = paramView.Aqo;
-        if (paramView == null) {
-          break label611;
-        }
-        paramView = paramView.extraInfo;
-        ((css)localObject2).extraInfo = paramView;
-        paramView = this.tFS;
-        if (paramView == null) {
-          break label616;
-        }
-        paramView = paramView.Aqo;
-        if (paramView == null) {
-          break label616;
-        }
-        paramView = paramView.LIi;
-        ((css)localObject2).musicGenre = paramView;
-        paramView = this.tFS;
-        if (paramView == null) {
-          break label621;
-        }
-        paramView = paramView.Aqo;
-        if (paramView == null) {
-          break label621;
-        }
-        l = paramView.LIk;
-        ((css)localObject2).issueDate = l;
-        paramView = this.tFS;
-        if (paramView == null) {
-          break label626;
-        }
-        paramView = paramView.Aqo;
-        if (paramView == null) {
-          break label626;
-        }
-        paramView = paramView.lDR;
-        ((css)localObject2).identification = paramView;
-        paramView = this.tFS;
-        if (paramView == null) {
-          break label631;
-        }
-        paramView = paramView.Aqo;
-        if (paramView == null) {
-          break label631;
-        }
-        i = paramView.duration;
-        ((css)localObject2).Alz = i;
-        paramView = this.tFS;
-        if (paramView == null) {
-          break label636;
-        }
-        paramView = paramView.Aqo;
-        if (paramView == null) {
-          break label636;
-        }
-        paramView = paramView.BPc;
-        ((css)localObject2).BPc = paramView;
-        paramView = this.tFS;
-        if (paramView == null) {
-          break label641;
-        }
-        paramView = paramView.Aqo;
-        if (paramView == null) {
-          break label641;
-        }
-        paramView = paramView.LIh;
-        ((css)localObject2).songLyric = paramView;
-        paramView = this.tFS;
-        if (paramView == null) {
-          break label646;
-        }
-        paramView = paramView.Aqo;
-        if (paramView == null) {
-          break label646;
-        }
-        paramView = paramView.Djf;
-        ((css)localObject2).EsK = paramView;
-        ((css)localObject2).jfz = this.tra;
-        paramView = this.tFS;
-        if (paramView != null)
-        {
-          localaxy = paramView.Aqo;
-          if (localaxy != null)
-          {
-            Log.i("Finder.ProfileMusicConvert", "playOrPauseMusic");
-            paramView = com.tencent.mm.ui.component.a.PRN;
-            paramView = this.qhp.getContext();
-            p.g(paramView, "holder.context");
-            ((FinderProfileFloatBallUIC)com.tencent.mm.ui.component.a.ko(paramView).get(FinderProfileFloatBallUIC.class)).UpW = false;
-            ((com.tencent.mm.plugin.ball.c.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class)).jS(false);
-            paramView = ac.vER;
-            p.g(localaxy, "it");
-            str = this.tFT;
-            p.h(localaxy, "musicSongInfo");
-            p.h(str, "musicId");
-            f localf = com.tencent.mm.ay.a.bef();
-            paramView = localObject1;
-            if (localf != null) {
-              paramView = localf.jeV;
-            }
-            if ((paramView == null) || (!Util.isEqual(localf.jeV, str))) {
-              break label663;
-            }
-            if (!com.tencent.mm.ay.a.bec()) {
-              break label651;
-            }
-            com.tencent.mm.ay.a.bea();
-          }
-        }
-      }
-      for (;;)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/convert/FinderProfileMusicConvert$onBindViewHolder$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(243252);
+        com.tencent.mm.plugin.finder.report.l.a("7", (com.tencent.mm.plugin.finder.extension.reddot.l)localObject, localbkn, 2, paramView, 0, 0, null, 224);
+        paramView = com.tencent.mm.plugin.finder.utils.a.ACH;
+        paramView = this.xhb.getContext();
+        p.j(paramView, "holder.context");
+        com.tencent.mm.plugin.finder.utils.a.fN(paramView);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/convert/FinderPrivateMsgNotifyConvert$onBindViewHolder$$inlined$let$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(278596);
         return;
-        paramView = null;
-        break;
-        label601:
-        paramView = null;
-        break label149;
-        label606:
-        paramView = null;
-        break label178;
-        label611:
-        paramView = null;
-        break label207;
-        label616:
-        paramView = null;
-        break label236;
-        label621:
-        l = 0L;
-        break label265;
-        label626:
-        paramView = null;
-        break label294;
-        label631:
-        i = 0;
-        break label323;
-        label636:
-        paramView = null;
-        break label352;
-        label641:
-        paramView = null;
-        break label381;
-        label646:
-        paramView = null;
-        break label410;
-        label651:
-        ac.b(localaxy, str, (css)localObject2);
-        continue;
-        label663:
-        Log.i("FinderMvLogic", "playMusic");
-        ac.b(localaxy, str, (css)localObject2);
       }
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  static final class e
-    implements Runnable
-  {
-    e(h paramh, String paramString) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(243253);
-      Object localObject = com.tencent.mm.ui.component.a.PRN;
-      localObject = this.qhp.getContext();
-      p.g(localObject, "holder.context");
-      ((FinderProfileEduUIC)com.tencent.mm.ui.component.a.ko((Context)localObject).get(FinderProfileEduUIC.class)).gP("mv", this.tzi);
-      AppMethodBeat.o(243253);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/finder/convert/FinderProfileMusicConvert$refreshProgress$1$1"})
-  static final class f
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    f(ca paramca, bf parambf, h paramh, WeImageView paramWeImageView) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(243254);
-      FinderPostProgressView localFinderPostProgressView = (FinderPostProgressView)paramh.Mn(2131306236);
-      p.g(paramValueAnimator, "it");
-      paramValueAnimator = paramValueAnimator.getAnimatedValue();
-      if (paramValueAnimator == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Int");
-        AppMethodBeat.o(243254);
-        throw paramValueAnimator;
-      }
-      localFinderPostProgressView.setProgress(((Integer)paramValueAnimator).intValue());
-      ((FinderPostProgressView)paramh.Mn(2131306236)).invalidate();
-      AppMethodBeat.o(243254);
     }
   }
 }

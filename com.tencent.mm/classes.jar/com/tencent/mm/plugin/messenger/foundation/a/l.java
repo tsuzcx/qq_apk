@@ -1,57 +1,25 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.b;
-import com.tencent.mm.plugin.messenger.foundation.a.a.c;
-import com.tencent.mm.plugin.messenger.foundation.a.a.d;
-import com.tencent.mm.plugin.messenger.foundation.a.a.e;
-import com.tencent.mm.plugin.messenger.foundation.a.a.f;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m;
-import com.tencent.mm.plugin.messenger.foundation.a.a.n;
-import com.tencent.mm.plugin.messenger.foundation.a.a.o;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.bw;
 
 public abstract interface l
   extends a
 {
-  public abstract j aSM();
+  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong);
   
-  public abstract bv aSN();
+  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2);
   
-  public abstract n aSO();
+  public abstract void a(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2);
   
-  public abstract f aSP();
+  public abstract boolean aKT(String paramString);
   
-  public abstract bw aST();
+  public abstract boolean aKU(String paramString);
   
-  public abstract com.tencent.mm.plugin.messenger.foundation.a.a.l aSW();
-  
-  public abstract c aTq();
-  
-  public abstract o bdR();
-  
-  public abstract h eis();
-  
-  public abstract b eit();
-  
-  public abstract m eiu();
-  
-  public abstract g eiv();
-  
-  public abstract d eiw();
-  
-  public abstract e eix();
-  
-  public abstract i eiy();
+  public abstract void b(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a.l
  * JD-Core Version:    0.7.0.1
  */

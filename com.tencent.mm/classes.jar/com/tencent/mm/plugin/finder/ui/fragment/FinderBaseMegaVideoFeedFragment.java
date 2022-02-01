@@ -5,7 +5,7 @@ import android.view.View;
 import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
 import com.tencent.mm.plugin.finder.megavideo.ui.a.a;
 import com.tencent.mm.plugin.finder.megavideo.ui.a.b;
-import com.tencent.mm.plugin.finder.model.bo;
+import com.tencent.mm.plugin.finder.model.bu;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
 import com.tencent.mm.ui.component.UIComponent;
 import java.util.HashMap;
@@ -17,12 +17,12 @@ import kotlin.g.b.p;
 import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderBaseMegaVideoFeedFragment;", "M", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "V", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "activity", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "getActivity", "()Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "activity$delegate", "Lkotlin/Lazy;", "getLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$Presenter;", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "initOnCreate", "", "onBackPressed", "", "onDestroy", "onPause", "onResume", "onViewCreated", "view", "Landroid/view/View;", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"})
-public abstract class FinderBaseMegaVideoFeedFragment<M extends BaseFeedLoader<bo>, V extends a.b, P extends a.a>
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderBaseMegaVideoFeedFragment;", "M", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "V", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "activity", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "getActivity", "()Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "activity$delegate", "Lkotlin/Lazy;", "getLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$Presenter;", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "initOnCreate", "", "onBackPressed", "", "onDestroy", "onPause", "onResume", "onViewCreated", "view", "Landroid/view/View;", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"})
+public abstract class FinderBaseMegaVideoFeedFragment<M extends BaseFeedLoader<bu>, V extends a.b, P extends a.a>
   extends FinderHomeTabFragment
 {
+  private final f Ayb = g.ar((a)new a(this));
   private HashMap _$_findViewCache;
-  private final f vQp = g.ah((a)new a(this));
   
   public void _$_clearFindViewByIdCache()
   {
@@ -31,14 +31,14 @@ public abstract class FinderBaseMegaVideoFeedFragment<M extends BaseFeedLoader<b
     }
   }
   
-  public final MMFinderUI dAq()
+  public abstract P dJS();
+  
+  public abstract V dNf();
+  
+  public final MMFinderUI ebI()
   {
-    return (MMFinderUI)this.vQp.getValue();
+    return (MMFinderUI)this.Ayb.getValue();
   }
-  
-  public abstract P dkn();
-  
-  public abstract V dma();
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
@@ -49,36 +49,37 @@ public abstract class FinderBaseMegaVideoFeedFragment<M extends BaseFeedLoader<b
   
   public final boolean onBackPressed()
   {
-    dkn();
+    dJS();
     return false;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    dkn().onDetach();
+    dJS().onDetach();
   }
   
   public void onPause()
   {
     super.onPause();
-    dkn();
+    dJS();
   }
   
   public void onResume()
   {
     super.onResume();
-    dkn();
+    dJS();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    p.h(paramView, "view");
+    p.k(paramView, "view");
+    super.onViewCreated(paramView, paramBundle);
     initOnCreate();
-    dkn().a(dma());
+    dJS().a(dNf());
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "M", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "V", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$Presenter;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "M", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "V", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$Presenter;", "invoke"})
   static final class a
     extends q
     implements a<MMFinderUI>

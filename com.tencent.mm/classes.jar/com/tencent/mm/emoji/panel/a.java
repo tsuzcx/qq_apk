@@ -10,18 +10,18 @@ import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/panel/TouchToClick;", "Landroid/view/View$OnTouchListener;", "()V", "clickHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "clicked", "", "cancel", "", "onTouch", "v", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/panel/TouchToClick;", "Landroid/view/View$OnTouchListener;", "()V", "clickHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "clicked", "", "cancel", "", "onTouch", "v", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-emojisdk_release"})
 public final class a
   implements View.OnTouchListener
 {
-  MTimerHandler hat;
-  private boolean hau;
+  MTimerHandler jLu;
+  private boolean jLv;
   
   public final boolean onTouch(final View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(105625);
-    p.h(paramView, "v");
-    p.h(paramMotionEvent, "event");
+    p.k(paramView, "v");
+    p.k(paramMotionEvent, "event");
     switch (paramMotionEvent.getActionMasked())
     {
     }
@@ -29,26 +29,26 @@ public final class a
     {
       AppMethodBeat.o(105625);
       return true;
-      this.hau = false;
-      this.hat = new MTimerHandler((MTimerHandler.CallBack)new a(this, paramView), true);
-      paramView = this.hat;
+      this.jLv = false;
+      this.jLu = new MTimerHandler((MTimerHandler.CallBack)new a(this, paramView), true);
+      paramView = this.jLu;
       if (paramView != null)
       {
         paramView.startTimer(ViewConfiguration.getKeyRepeatTimeout(), ViewConfiguration.getKeyRepeatDelay());
         continue;
-        MTimerHandler localMTimerHandler = this.hat;
+        MTimerHandler localMTimerHandler = this.jLu;
         if (localMTimerHandler != null) {
           localMTimerHandler.stopTimer();
         }
-        this.hat = null;
-        if ((!this.hau) && (paramMotionEvent.getActionMasked() == 1)) {
+        this.jLu = null;
+        if ((!this.jLv) && (paramMotionEvent.getActionMasked() == 1)) {
           paramView.performClick();
         }
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onTimerExpired"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onTimerExpired"})
   static final class a
     implements MTimerHandler.CallBack
   {
@@ -57,7 +57,7 @@ public final class a
     public final boolean onTimerExpired()
     {
       AppMethodBeat.i(105624);
-      a.a(this.hav);
+      a.a(this.jLw);
       boolean bool = paramView.performClick();
       AppMethodBeat.o(105624);
       return bool;

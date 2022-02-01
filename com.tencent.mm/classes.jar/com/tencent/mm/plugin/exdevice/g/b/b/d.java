@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.exdevice.g.b.b;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.g.b.a;
-import com.tencent.mm.plugin.exdevice.model.ad;
+import com.tencent.mm.plugin.exdevice.model.ae;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -43,7 +43,7 @@ public final class d
       insert(paramd);
       Log.d("MicroMsg.ExdeviceRankInfoStg", "hy: insert success");
       if (paramBoolean) {
-        ad.cKU().a("HardDeviceRankInfo", new com.tencent.mm.plugin.exdevice.g.b.d(paramd.field_rankID, paramd.field_appusername, paramd.field_username));
+        ae.cZH().a("HardDeviceRankInfo", new com.tencent.mm.plugin.exdevice.g.b.d(paramd.field_rankID, paramd.field_appusername, paramd.field_username));
       }
       AppMethodBeat.o(23581);
       return true;
@@ -55,7 +55,7 @@ public final class d
     Object localObject1 = null;
     AppMethodBeat.i(23577);
     Object localObject2 = String.format("select *, rowid from %s where %s = ? and %s = ? limit 1", new Object[] { "HardDeviceRankInfo", "rankID", "username" });
-    localObject2 = this.db.rawQuery((String)localObject2, new String[] { Util.nullAs(paramd.rCB, ""), Util.nullAs(paramd.username, "") }, 2);
+    localObject2 = this.db.rawQuery((String)localObject2, new String[] { Util.nullAs(paramd.vil, ""), Util.nullAs(paramd.username, "") }, 2);
     if (localObject2 == null)
     {
       Log.e("MicroMsg.ExdeviceRankInfoStg", "Get no rank in DB");
@@ -106,7 +106,7 @@ public final class d
       update(locald, new String[] { "rankID", "username" });
       Log.d("MicroMsg.ExdeviceRankInfoStg", "hy: update success");
       if (paramBoolean) {
-        ad.cKU().a("HardDeviceRankInfo", new com.tencent.mm.plugin.exdevice.g.b.d(paramd.field_rankID, paramd.field_appusername, paramd.field_username));
+        ae.cZH().a("HardDeviceRankInfo", new com.tencent.mm.plugin.exdevice.g.b.d(paramd.field_rankID, paramd.field_appusername, paramd.field_username));
       }
       AppMethodBeat.o(23580);
       return true;
@@ -131,13 +131,13 @@ public final class d
       a((com.tencent.mm.plugin.exdevice.g.b.a.d)paramArrayList.get(i), false);
       i += 1;
     }
-    ad.cKU().a("HardDeviceRankInfo", new com.tencent.mm.plugin.exdevice.g.b.d(paramString, null, null));
+    ae.cZH().a("HardDeviceRankInfo", new com.tencent.mm.plugin.exdevice.g.b.d(paramString, null, null));
     AppMethodBeat.o(23578);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.b.b.d
  * JD-Core Version:    0.7.0.1
  */

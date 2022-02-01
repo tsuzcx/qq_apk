@@ -2,67 +2,66 @@ package com.tencent.mm.plugin.zero;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.api.bucket.c;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.loader.j.b;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.n.d;
 import com.tencent.mm.n.f;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 
 public final class a
   implements c, com.tencent.mm.plugin.zero.b.a
 {
-  private f JRJ;
-  private d JRK;
+  private f QQM;
+  private d QQN;
   
   public a()
   {
     AppMethodBeat.i(132988);
-    this.JRJ = new f();
-    this.JRK = new d();
+    this.QQM = new f();
+    this.QQN = new d();
     AppMethodBeat.o(132988);
   }
   
-  public final f aqJ()
+  public final f axc()
   {
     AppMethodBeat.i(132989);
-    g.aAi();
-    g.aAf().azk();
-    f localf = this.JRJ;
+    h.aHH();
+    h.aHE().aGH();
+    f localf = this.QQM;
     AppMethodBeat.o(132989);
     return localf;
   }
   
-  public final d aqK()
+  public final d axd()
   {
     AppMethodBeat.i(132990);
-    g.aAi();
-    g.aAf().azk();
-    d locald = this.JRK;
+    h.aHH();
+    h.aHE().aGH();
+    d locald = this.QQN;
     AppMethodBeat.o(132990);
     return locald;
   }
   
-  public final void onAccountInitialized(e.c paramc)
+  public final void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(132991);
-    if (paramc.hrc)
+    if (paramc.kcX)
     {
-      paramc = this.JRK;
-      o localo1 = new o(b.aKJ() + "configlist/");
-      if (localo1.exists())
+      paramc = this.QQN;
+      q localq1 = new q(com.tencent.mm.loader.j.b.aSL() + "configlist/");
+      if (localq1.ifE())
       {
-        o localo2 = new o(d.gMf);
-        if (!localo2.exists())
+        q localq2 = new q(d.jwu);
+        if (!localq2.ifE())
         {
           Log.d("MicroMsg.ConfigListDecoder", "bugfix");
-          paramc.a(localo1, localo2);
+          paramc.a(localq1, localq2);
         }
       }
     }
-    this.JRJ.vC();
-    this.JRK.init();
+    this.QQM.tA();
+    this.QQN.init();
     AppMethodBeat.o(132991);
   }
   
@@ -70,7 +69,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.zero.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 
@@ -17,10 +18,10 @@ final class BaseVoicePrintUI$4
   public final boolean onTimerExpired()
   {
     AppMethodBeat.i(29814);
-    Object localObject2 = BaseVoicePrintUI.c(this.GRJ);
-    if (((VoiceTipInfoView)localObject2).BgP.getAnimation() == null)
+    Object localObject2 = BaseVoicePrintUI.c(this.NHU);
+    if (((VoiceTipInfoView)localObject2).Haz.getAnimation() == null)
     {
-      TextView localTextView = ((VoiceTipInfoView)localObject2).BgP;
+      TextView localTextView = ((VoiceTipInfoView)localObject2).Haz;
       Object localObject1 = ((VoiceTipInfoView)localObject2).getContext();
       localObject2 = new VoiceTipInfoView.1((VoiceTipInfoView)localObject2);
       float f = localTextView.getWidth();
@@ -29,7 +30,7 @@ final class BaseVoicePrintUI$4
       localTextView.getLocationInWindow(arrayOfInt);
       int i = (int)(f + arrayOfInt[0]);
       Log.d("MicroMsg.VoiceViewAnimationHelper", "location %d %d preX=%d", new Object[] { Integer.valueOf(arrayOfInt[0]), Integer.valueOf(arrayOfInt[1]), Integer.valueOf(i) });
-      localObject1 = AnimationUtils.loadAnimation((Context)localObject1, 2130772187);
+      localObject1 = AnimationUtils.loadAnimation((Context)localObject1, R.a.djJ);
       ((Animation)localObject1).setDuration(200L);
       ((Animation)localObject1).setStartOffset(0L);
       ((Animation)localObject1).setRepeatCount(0);

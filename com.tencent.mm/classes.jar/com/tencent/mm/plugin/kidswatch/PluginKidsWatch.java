@@ -5,9 +5,9 @@ import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.api.bucket.d;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.plugin.kidswatch.a.a;
-import com.tencent.mm.plugin.messenger.foundation.a.s;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storagebase.h;
 
@@ -17,44 +17,44 @@ public class PluginKidsWatch
 {
   public void configure(g paramg)
   {
-    AppMethodBeat.i(256391);
-    if (!paramg.aBb())
+    AppMethodBeat.i(251951);
+    if (!paramg.aIE())
     {
-      AppMethodBeat.o(256391);
+      AppMethodBeat.o(251951);
       return;
     }
     Log.v("PluginKidsWatch", "configure");
-    AppMethodBeat.o(256391);
+    AppMethodBeat.o(251951);
   }
   
   public void dependency()
   {
-    AppMethodBeat.i(256390);
-    dependsOn(s.class);
-    AppMethodBeat.o(256390);
+    AppMethodBeat.i(251950);
+    dependsOn(v.class);
+    AppMethodBeat.o(251950);
   }
   
   public void execute(g paramg)
   {
-    AppMethodBeat.i(256392);
+    AppMethodBeat.i(251952);
     Log.v("PluginKidsWatch", "execute");
-    AppMethodBeat.o(256392);
+    AppMethodBeat.o(251952);
   }
   
   public void installed()
   {
-    AppMethodBeat.i(256389);
+    AppMethodBeat.i(251949);
     alias(a.class);
-    AppMethodBeat.o(256389);
+    AppMethodBeat.o(251949);
   }
   
-  public void onAccountInitialized(e.c paramc) {}
+  public void onAccountInitialized(f.c paramc) {}
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(256393);
+    AppMethodBeat.i(251956);
     Log.v("PluginKidsWatch", "onAccountRelease");
-    AppMethodBeat.o(256393);
+    AppMethodBeat.o(251956);
   }
   
   public void onDataBaseClosed(h paramh1, h paramh2) {}

@@ -14,15 +14,15 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class a
   implements com.tencent.xweb.downloader.a
 {
-  private static a qmY = null;
-  private g.a qmQ;
-  private Map<String, a> qmU;
+  private static a tLP = null;
+  private g.a tLH;
+  private Map<String, a> tLL;
   
   public a()
   {
     AppMethodBeat.i(120825);
-    this.qmU = new ConcurrentHashMap();
-    this.qmQ = new g.a()
+    this.tLL = new ConcurrentHashMap();
+    this.tLH = new g.a()
     {
       public final int a(String paramAnonymousString, int paramAnonymousInt, c paramAnonymousc, d paramAnonymousd, boolean paramAnonymousBoolean)
       {
@@ -90,16 +90,16 @@ public final class a
     AppMethodBeat.o(120825);
   }
   
-  public static a cyj()
+  public static a cME()
   {
     try
     {
       AppMethodBeat.i(120826);
-      if (qmY == null) {
-        qmY = new a();
+      if (tLP == null) {
+        tLP = new a();
       }
-      com.tencent.mm.plugin.cdndownloader.c.a.cxZ();
-      a locala = qmY;
+      com.tencent.mm.plugin.cdndownloader.c.a.cMu();
+      a locala = tLP;
       AppMethodBeat.o(120826);
       return locala;
     }
@@ -114,17 +114,17 @@ public final class a
     localg.taskName = "task_FileDownloaderXWEBProxy";
     localg.field_mediaId = paramString1;
     localg.field_fullpath = paramString2;
-    localg.gqB = paramString1;
-    localg.field_fileType = com.tencent.mm.i.a.gqd;
-    localg.gqy = this.qmQ;
-    localg.gqC = 60;
-    localg.gqD = 600;
-    localg.gqF = false;
+    localg.iUJ = paramString1;
+    localg.field_fileType = com.tencent.mm.i.a.iUl;
+    localg.iUG = this.tLH;
+    localg.iUK = 60;
+    localg.iUL = 600;
+    localg.iUN = false;
     a locala = new a((byte)0);
-    locala.qna = paramb;
-    locala.qmX = paramString2;
-    this.qmU.put(paramString1, locala);
-    int i = com.tencent.mm.plugin.cdndownloader.c.a.cxZ().h(localg);
+    locala.tLR = paramb;
+    locala.tLO = paramString2;
+    this.tLL.put(paramString1, locala);
+    int i = com.tencent.mm.plugin.cdndownloader.c.a.cMu().h(localg);
     Log.i("FileDownloaderXWEBProxy", "addDownloadTask: ".concat(String.valueOf(i)));
     AppMethodBeat.o(120827);
     return i;
@@ -132,15 +132,15 @@ public final class a
   
   final class a
   {
-    public String qmX = null;
-    public b qna = null;
+    public String tLO = null;
+    public b tLR = null;
     
     private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.i.a
  * JD-Core Version:    0.7.0.1
  */

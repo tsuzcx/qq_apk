@@ -1,48 +1,121 @@
 package com.tencent.mm.plugin.finder.video;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.view.ViewParent;
+import android.view.ViewPropertyAnimator;
+import com.tencent.mm.modelvideo.f;
+import com.tencent.mm.plugin.finder.loader.ac;
 import com.tencent.mm.plugin.finder.storage.FeedData;
-import com.tencent.mm.protocal.protobuf.cjl;
+import com.tencent.mm.plugin.findersdk.f.a;
+import com.tencent.mm.pluginsdk.ui.i.b;
+import com.tencent.mm.pluginsdk.ui.i.e;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "", "downloadUrl", "", "path", "mediaId", "localFinderMedia", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "video", "Lcom/tencent/mm/plugin/finder/loader/FinderVideoLoadData;", "feedData", "Lcom/tencent/mm/plugin/finder/storage/FeedData;", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;Lcom/tencent/mm/plugin/finder/loader/FinderVideoLoadData;Lcom/tencent/mm/plugin/finder/storage/FeedData;)V", "getDownloadUrl", "()Ljava/lang/String;", "getFeedData", "()Lcom/tencent/mm/plugin/finder/storage/FeedData;", "getLocalFinderMedia", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "getMediaId", "getPath", "getVideo", "()Lcom/tencent/mm/plugin/finder/loader/FinderVideoLoadData;", "toString", "plugin-finder_release"})
-public class s
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "", "animate", "Landroid/view/ViewPropertyAnimator;", "getAlpha", "", "getBitmap", "Landroid/graphics/Bitmap;", "getCurrentPlayMs", "", "getCurrentPlaySecond", "", "getHeight", "getIsNeverStart", "", "getIsShouldPlayResume", "getParentView", "Landroid/view/ViewParent;", "getTag", "id", "getVideoDuration", "getVideoDurationMs", "getVideoMediaId", "", "getVideoMediaInfo", "Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "getVideoView", "Landroid/view/View;", "getVideoViewFocused", "getWidth", "isFullScreenEnjoy", "isPlaying", "isPreviewing", "onRelease", "", "onUIDestroy", "pause", "pauseWithCancel", "play", "prepareToPlay", "removeVideoFooterView", "seekTo", "timestamp", "", "afterSeekPlay", "mode", "setAlpha", "alpha", "setFinderVideoPlayTrace", "videoPlayTrace", "Lcom/tencent/mm/plugin/findersdk/trace/FinderVideoPlayTrace;", "setFullScreenEnjoy", "isFull", "setIMMVideoViewCallback", "_callback", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMVideoViewCallback;", "setIOnlineVideoProxy", "_proxy", "Lcom/tencent/mm/modelvideo/IOnlineVideoProxy;", "setInterceptDetach", "isInterceptDetach", "setIsShouldPlayResume", "shouldPlayResume", "setIsShowBasicControls", "isShow", "setKeepScreenOn", "keepScreenOn", "setLoop", "loop", "setMute", "isMute", "setPreview", "isPreview", "setScaleType", "scaleType", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$ScaleType;", "setTag", "tag", "setVideoMediaInfo", "video", "Lcom/tencent/mm/plugin/finder/loader/IFinderMediaLoaderData;", "isLocal", "feedData", "Lcom/tencent/mm/plugin/finder/storage/FeedData;", "setVideoMuteListener", "muteListener", "Lcom/tencent/mm/plugin/finder/video/OnMuteListener;", "setVideoPlayLifecycle", "lifecycle", "Lcom/tencent/mm/plugin/finder/video/VideoPlayLifecycle;", "setVideoViewFocused", "focused", "startOrPlay", "stop", "plugin-finder-base_release"})
+public abstract interface s
 {
-  final String downloadUrl;
-  public final String mediaId;
-  public final String path;
-  public final com.tencent.mm.plugin.finder.loader.s tHN;
-  final cjl wgl;
-  public final FeedData wgm;
+  public abstract void a(ac paramac, boolean paramBoolean, FeedData paramFeedData);
   
-  public s(String paramString1, String paramString2, String paramString3, cjl paramcjl, com.tencent.mm.plugin.finder.loader.s params, FeedData paramFeedData)
-  {
-    AppMethodBeat.i(254405);
-    this.downloadUrl = paramString1;
-    this.path = paramString2;
-    this.mediaId = paramString3;
-    this.wgl = paramcjl;
-    this.tHN = params;
-    this.wgm = paramFeedData;
-    AppMethodBeat.o(254405);
-  }
+  public abstract boolean a(double paramDouble, boolean paramBoolean);
   
-  public String toString()
-  {
-    AppMethodBeat.i(254404);
-    Object localObject = new StringBuilder(" downloadUrl='").append(this.downloadUrl).append("', path='").append(this.path).append("', mediaId='").append(this.mediaId).append("' localFinderMedia is null? ");
-    if (this.wgl == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localObject = bool + ' ';
-      AppMethodBeat.o(254404);
-      return localObject;
-    }
-  }
+  public abstract boolean a(double paramDouble, boolean paramBoolean, int paramInt);
+  
+  public abstract ViewPropertyAnimator animate();
+  
+  public abstract boolean bqo();
+  
+  public abstract boolean egV();
+  
+  public abstract int egW();
+  
+  public abstract void egX();
+  
+  public abstract boolean egw();
+  
+  public abstract boolean egx();
+  
+  public abstract float getAlpha();
+  
+  public abstract Bitmap getBitmap();
+  
+  public abstract long getCurrentPlayMs();
+  
+  public abstract int getCurrentPlaySecond();
+  
+  public abstract int getHeight();
+  
+  public abstract boolean getIsNeverStart();
+  
+  public abstract boolean getIsShouldPlayResume();
+  
+  public abstract ViewParent getParentView();
+  
+  public abstract Object getTag(int paramInt);
+  
+  public abstract int getVideoDuration();
+  
+  public abstract long getVideoDurationMs();
+  
+  public abstract String getVideoMediaId();
+  
+  public abstract t getVideoMediaInfo();
+  
+  public abstract View getVideoView();
+  
+  public abstract boolean getVideoViewFocused();
+  
+  public abstract int getWidth();
+  
+  public abstract boolean isPlaying();
+  
+  public abstract void onRelease();
+  
+  public abstract void onUIDestroy();
+  
+  public abstract boolean pause();
+  
+  public abstract void setAlpha(float paramFloat);
+  
+  public abstract void setFinderVideoPlayTrace(a parama);
+  
+  public abstract void setFullScreenEnjoy(boolean paramBoolean);
+  
+  public abstract void setIMMVideoViewCallback(i.b paramb);
+  
+  public abstract void setIOnlineVideoProxy(f paramf);
+  
+  public abstract void setInterceptDetach(boolean paramBoolean);
+  
+  public abstract void setIsShouldPlayResume(boolean paramBoolean);
+  
+  public abstract void setIsShowBasicControls(boolean paramBoolean);
+  
+  public abstract void setKeepScreenOn(boolean paramBoolean);
+  
+  public abstract void setLoop(boolean paramBoolean);
+  
+  public abstract void setMute(boolean paramBoolean);
+  
+  public abstract void setPreview(boolean paramBoolean);
+  
+  public abstract void setScaleType(i.e parame);
+  
+  public abstract void setTag(int paramInt, Object paramObject);
+  
+  public abstract void setTag(Object paramObject);
+  
+  public abstract void setVideoMuteListener(u paramu);
+  
+  public abstract void setVideoPlayLifecycle(z paramz);
+  
+  public abstract void setVideoViewFocused(boolean paramBoolean);
+  
+  public abstract void stop();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.s
  * JD-Core Version:    0.7.0.1
  */

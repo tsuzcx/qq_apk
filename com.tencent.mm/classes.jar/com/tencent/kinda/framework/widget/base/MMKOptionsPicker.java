@@ -4,13 +4,13 @@ import com.tencent.kinda.gen.KOptionPicker;
 import com.tencent.kinda.gen.Option;
 import com.tencent.kinda.gen.VoidBoolOptionCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.widget.picker.c;
+import com.tencent.mm.ui.widget.picker.b;
 import java.util.ArrayList;
 
 public class MMKOptionsPicker
   implements KOptionPicker
 {
-  private c optionPicker;
+  private b optionPicker;
   
   public void hide()
   {
@@ -25,7 +25,7 @@ public class MMKOptionsPicker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKOptionsPicker
  * JD-Core Version:    0.7.0.1
  */

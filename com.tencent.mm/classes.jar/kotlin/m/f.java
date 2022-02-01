@@ -8,20 +8,20 @@ import kotlin.g.b.a.a;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/sequences/FlatteningSequence;", "T", "R", "E", "Lkotlin/sequences/Sequence;", "sequence", "transformer", "Lkotlin/Function1;", "iterator", "", "(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)V", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/sequences/FlatteningSequence;", "T", "R", "E", "Lkotlin/sequences/Sequence;", "sequence", "transformer", "Lkotlin/Function1;", "iterator", "", "(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)V", "kotlin-stdlib"})
 public final class f<T, R, E>
   implements h<E>
 {
-  final b<T, R> TSB;
-  final b<R, Iterator<E>> TSC;
-  final h<T> TSt;
+  final h<T> abuS;
+  final b<T, R> abva;
+  final b<R, Iterator<E>> abvb;
   
   public f(h<? extends T> paramh, b<? super T, ? extends R> paramb, b<? super R, ? extends Iterator<? extends E>> paramb1)
   {
     AppMethodBeat.i(129490);
-    this.TSt = paramh;
-    this.TSB = paramb;
-    this.TSC = paramb1;
+    this.abuS = paramh;
+    this.abva = paramb;
+    this.abvb = paramb1;
     AppMethodBeat.o(129490);
   }
   
@@ -33,39 +33,39 @@ public final class f<T, R, E>
     return localIterator;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"kotlin/sequences/FlatteningSequence$iterator$1", "", "itemIterator", "getItemIterator", "()Ljava/util/Iterator;", "setItemIterator", "(Ljava/util/Iterator;)V", "iterator", "getIterator", "ensureItemIterator", "", "hasNext", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlin/sequences/FlatteningSequence$iterator$1", "", "itemIterator", "getItemIterator", "()Ljava/util/Iterator;", "setItemIterator", "(Ljava/util/Iterator;)V", "iterator", "getIterator", "ensureItemIterator", "", "hasNext", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
   public static final class a
     implements Iterator<E>, a
   {
-    private Iterator<? extends E> TSD;
-    private final Iterator<T> bXG;
+    private Iterator<? extends E> abvc;
+    private final Iterator<T> bZx;
     
     a()
     {
       AppMethodBeat.i(129499);
-      this.bXG = localObject.TSt.iterator();
+      this.bZx = localObject.abuS.iterator();
       AppMethodBeat.o(129499);
     }
     
-    private final boolean hMf()
+    private final boolean iQx()
     {
       AppMethodBeat.i(129498);
-      Object localObject = this.TSD;
+      Object localObject = this.abvc;
       if ((localObject != null) && (!((Iterator)localObject).hasNext())) {
-        this.TSD = null;
+        this.abvc = null;
       }
-      while (this.TSD == null)
+      while (this.abvc == null)
       {
-        if (!this.bXG.hasNext())
+        if (!this.bZx.hasNext())
         {
           AppMethodBeat.o(129498);
           return false;
         }
-        localObject = this.bXG.next();
-        localObject = (Iterator)this.TSE.TSC.invoke(this.TSE.TSB.invoke(localObject));
+        localObject = this.bZx.next();
+        localObject = (Iterator)this.abvd.abvb.invoke(this.abvd.abva.invoke(localObject));
         if (((Iterator)localObject).hasNext())
         {
-          this.TSD = ((Iterator)localObject);
+          this.abvc = ((Iterator)localObject);
           AppMethodBeat.o(129498);
           return true;
         }
@@ -77,7 +77,7 @@ public final class f<T, R, E>
     public final boolean hasNext()
     {
       AppMethodBeat.i(129497);
-      boolean bool = hMf();
+      boolean bool = iQx();
       AppMethodBeat.o(129497);
       return bool;
     }
@@ -85,15 +85,15 @@ public final class f<T, R, E>
     public final E next()
     {
       AppMethodBeat.i(129496);
-      if (!hMf())
+      if (!iQx())
       {
         localObject = (Throwable)new NoSuchElementException();
         AppMethodBeat.o(129496);
         throw ((Throwable)localObject);
       }
-      Object localObject = this.TSD;
+      Object localObject = this.abvc;
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
       localObject = ((Iterator)localObject).next();
       AppMethodBeat.o(129496);

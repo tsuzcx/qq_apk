@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.expt.hellhound.a.e;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/permission/PermissionMonitor$Companion;", "", "()V", "TAG", "", "isOnPauseEvent", "", "isOnPauseEvent$annotations", "()Z", "setOnPauseEvent", "(Z)V", "isRequestPermission", "isRequestPermission$annotations", "setRequestPermission", "mListener", "Lcom/tencent/mm/plugin/expt/hellhound/ext/permission/PermissionMonitor$PermissionListener;", "permissionRequestCode", "", "permissionRequestCode$annotations", "getPermissionRequestCode", "()I", "setPermissionRequestCode", "(I)V", "monitor", "", "plugin-expt_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/permission/PermissionMonitor$Companion;", "", "()V", "TAG", "", "isOnPauseEvent", "", "isOnPauseEvent$annotations", "()Z", "setOnPauseEvent", "(Z)V", "isRequestPermission", "isRequestPermission$annotations", "setRequestPermission", "mListener", "Lcom/tencent/mm/plugin/expt/hellhound/ext/permission/PermissionMonitor$PermissionListener;", "permissionRequestCode", "", "permissionRequestCode$annotations", "getPermissionRequestCode", "()I", "setPermissionRequestCode", "(I)V", "monitor", "", "plugin-expt_release"})
 public final class a$a {}
 
 

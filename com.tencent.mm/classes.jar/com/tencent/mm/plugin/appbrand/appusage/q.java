@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.bza;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.protocal.protobuf.cgu;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
@@ -15,26 +15,26 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public enum q
 {
-  private static volatile bza kUT;
-  private static final Set<Object> kUU;
+  private static volatile cgu nPg;
+  private static final Set<Object> nPh;
   
   static
   {
     AppMethodBeat.i(44546);
-    kUV = new q[0];
-    kUU = Collections.newSetFromMap(new ConcurrentHashMap());
+    nPi = new q[0];
+    nPh = Collections.newSetFromMap(new ConcurrentHashMap());
     AppMethodBeat.o(44546);
   }
   
-  public static boolean bxV()
+  public static boolean bJk()
   {
     return true;
   }
   
-  public static boolean bxW()
+  public static boolean bJl()
   {
     AppMethodBeat.i(44539);
-    switch (1.kUW[bxX().ordinal()])
+    switch (1.nPj[bJm().ordinal()])
     {
     }
     do
@@ -45,13 +45,13 @@ public enum q
       return false;
       AppMethodBeat.o(44539);
       return true;
-      if (bxY())
+      if (bJn())
       {
         AppMethodBeat.o(44539);
         return true;
       }
-    } while (kUT == null);
-    if (kUT.oKX >= kUT.Mez)
+    } while (nPg == null);
+    if (nPg.rMN >= nPg.Tob)
     {
       AppMethodBeat.o(44539);
       return true;
@@ -60,20 +60,20 @@ public enum q
     return false;
   }
   
-  static a bxX()
+  static a bJm()
   {
     int i = 0;
     AppMethodBeat.i(44541);
-    if (!g.aAc())
+    if (!h.aHB())
     {
-      localObject = a.kUX;
+      localObject = a.nPk;
       AppMethodBeat.o(44541);
       return localObject;
     }
-    Object localObject = com.tencent.mm.model.c.d.aXu().Fu("100215");
+    Object localObject = com.tencent.mm.model.c.d.bgB().Mu("100215");
     if (((c)localObject).isValid())
     {
-      int j = Util.getInt((String)((c)localObject).gzz().get("isOpenNewNearEntry"), 0);
+      int j = Util.getInt((String)((c)localObject).hvz().get("isOpenNewNearEntry"), 0);
       localObject = a.values();
       int k = localObject.length;
       while (i < k)
@@ -87,34 +87,34 @@ public enum q
         i += 1;
       }
     }
-    localObject = a.kUY;
+    localObject = a.nPl;
     AppMethodBeat.o(44541);
     return localObject;
   }
   
-  static boolean bxY()
+  static boolean bJn()
   {
     AppMethodBeat.i(44542);
-    boolean bool = g.aAh().azQ().getBoolean(ar.a.NYg, false);
+    boolean bool = h.aHG().aHp().getBoolean(ar.a.Vmg, false);
     AppMethodBeat.o(44542);
     return bool;
   }
   
-  static void bxZ()
+  static void bJo()
   {
     AppMethodBeat.i(44543);
-    g.aAh().azQ().set(ar.a.NYg, Boolean.TRUE);
+    h.aHG().aHp().set(ar.a.Vmg, Boolean.TRUE);
     AppMethodBeat.o(44543);
   }
   
-  public static bza bya()
+  public static cgu bJp()
   {
-    return kUT;
+    return nPg;
   }
   
   public static void clearData()
   {
-    kUT = null;
+    nPg = null;
   }
   
   static enum a
@@ -124,10 +124,10 @@ public enum q
     static
     {
       AppMethodBeat.i(44534);
-      kUX = new a("FORCE_OFF", 0, 0);
-      kUY = new a("FORCE_ON", 1, 1);
-      kUZ = new a("DYNAMIC_THRESHOLD", 2, 2);
-      kVa = new a[] { kUX, kUY, kUZ };
+      nPk = new a("FORCE_OFF", 0, 0);
+      nPl = new a("FORCE_ON", 1, 1);
+      nPm = new a("DYNAMIC_THRESHOLD", 2, 2);
+      nPn = new a[] { nPk, nPl, nPm };
       AppMethodBeat.o(44534);
     }
     
@@ -139,7 +139,7 @@ public enum q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.q
  * JD-Core Version:    0.7.0.1
  */

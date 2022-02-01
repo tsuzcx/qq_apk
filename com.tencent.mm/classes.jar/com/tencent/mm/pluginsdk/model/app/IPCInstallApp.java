@@ -5,19 +5,19 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.pluginsdk.permission.a;
 
 public class IPCInstallApp
-  implements b<IPCInstallAppParam, IPCBoolean>
+  implements d<IPCInstallAppParam, IPCBoolean>
 {
   public static final class IPCInstallAppParam
     implements Parcelable
   {
     public static final Parcelable.Creator<IPCInstallAppParam> CREATOR;
-    private boolean JWt;
+    private boolean QWM;
     private String filePath;
     private int type;
     private Uri uri;
@@ -34,7 +34,7 @@ public class IPCInstallApp
       this.type = paramInt;
       this.filePath = paramString;
       this.uri = paramUri;
-      this.JWt = paramBoolean;
+      this.QWM = paramBoolean;
     }
     
     protected IPCInstallAppParam(Parcel paramParcel)
@@ -46,7 +46,7 @@ public class IPCInstallApp
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.JWt = bool;
+        this.QWM = bool;
         AppMethodBeat.o(151798);
         return;
       }
@@ -63,7 +63,7 @@ public class IPCInstallApp
       paramParcel.writeInt(this.type);
       paramParcel.writeString(this.filePath);
       paramParcel.writeParcelable(this.uri, paramInt);
-      if (this.JWt) {}
+      if (this.QWM) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);

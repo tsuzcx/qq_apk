@@ -5,7 +5,6 @@ import android.net.Uri;
 import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
-import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
 import com.tencent.mm.plugin.appbrand.service.r;
@@ -21,9 +20,9 @@ public class ap
   public final void b(b<com.tencent.mm.plugin.webview.luggage.g>.a paramb)
   {
     AppMethodBeat.i(78592);
-    Log.i("MicroMsg.JsApiOpenWeAppPage", "invokeInOwn %s", new Object[] { paramb.ctb.csi });
-    String str3 = paramb.ctb.csi.optString("userName");
-    String str2 = paramb.ctb.csi.optString("relativeURL");
+    Log.i("MicroMsg.JsApiOpenWeAppPage", "invokeInOwn %s", new Object[] { paramb.crh.cqn });
+    String str3 = paramb.crh.cqn.optString("userName");
+    String str2 = paramb.crh.cqn.optString("relativeURL");
     String str1 = str2;
     if (str2.contains("render_data")) {
       str1 = str2;
@@ -67,33 +66,33 @@ public class ap
         }
       }
     }
-    i = paramb.ctb.csi.optInt("appVersion", 0);
-    str2 = paramb.ctb.csi.optString("searchId");
-    localObject = paramb.ctb.csi.optString("docId");
-    j = paramb.ctb.csi.optInt("position", 1);
-    k = paramb.ctb.csi.optInt("scene", 1000);
-    str4 = paramb.ctb.csi.optString("privateExtraData");
+    i = paramb.crh.cqn.optInt("appVersion", 0);
+    str2 = paramb.crh.cqn.optString("searchId");
+    localObject = paramb.crh.cqn.optString("docId");
+    j = paramb.crh.cqn.optInt("position", 1);
+    k = paramb.crh.cqn.optInt("scene", 1000);
+    str4 = paramb.crh.cqn.optString("privateExtraData");
     localg = new com.tencent.mm.plugin.appbrand.api.g();
     if ((k == 201) || (k == 14) || (k == 22))
     {
       localg.scene = 1006;
-      str5 = paramb.ctb.csi.optString("statSessionId");
-      str6 = paramb.ctb.csi.optString("statKeywordId");
-      str7 = paramb.ctb.csi.optString("subScene");
-      localg.dCw = (str5 + ":" + str6 + ":" + str2 + ":" + (String)localObject + ":" + j + ":" + str7);
-      localg.kHF = new AppBrandLaunchReferrer();
-      localg.kHF.lep = str4;
+      str5 = paramb.crh.cqn.optString("statSessionId");
+      str6 = paramb.crh.cqn.optString("statKeywordId");
+      str7 = paramb.crh.cqn.optString("subScene");
+      localg.fvd = (str5 + ":" + str6 + ":" + str2 + ":" + (String)localObject + ":" + j + ":" + str7);
+      localg.nBz = new AppBrandLaunchReferrer();
+      localg.nBz.nYC = str4;
       localg.username = str3;
       localg.version = i;
-      localg.kHw = str1;
-      ((r)com.tencent.mm.kernel.g.af(r.class)).a(((com.tencent.mm.plugin.webview.luggage.g)paramb.cta).mContext, localg);
-      paramb.c("", null);
+      localg.nBq = str1;
+      ((r)com.tencent.mm.kernel.h.ae(r.class)).a(((com.tencent.mm.plugin.webview.luggage.g)paramb.crg).mContext, localg);
+      paramb.a("", null);
       AppMethodBeat.o(78592);
       return;
     }
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }
@@ -105,7 +104,7 @@ public class ap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.ap
  * JD-Core Version:    0.7.0.1
  */

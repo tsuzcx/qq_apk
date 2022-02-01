@@ -1,12 +1,11 @@
 package com.tencent.mm.plugin.profile.a;
 
-import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.Preference.b;
 
 public final class a$1
   implements Preference.b
 {
-  public final boolean a(Preference paramPreference)
+  public final boolean fpI()
   {
     return false;
   }

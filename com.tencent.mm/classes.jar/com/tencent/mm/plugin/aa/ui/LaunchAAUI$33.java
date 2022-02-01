@@ -14,18 +14,18 @@ final class LaunchAAUI$33
   
   public final void run()
   {
-    AppMethodBeat.i(213062);
-    Bitmap localBitmap = BitmapUtil.decodeFileWithSample(LaunchAAUI.o(this.jXQ), LaunchAAUI.p(this.jXQ).getWidth(), LaunchAAUI.p(this.jXQ).getHeight());
-    int i = Exif.fromFile(LaunchAAUI.o(this.jXQ)).getOrientationInDegree();
+    AppMethodBeat.i(251308);
+    Bitmap localBitmap = BitmapUtil.decodeFileWithSample(LaunchAAUI.p(this.mPg), LaunchAAUI.q(this.mPg).getWidth(), LaunchAAUI.q(this.mPg).getHeight());
+    int i = Exif.fromFile(LaunchAAUI.p(this.mPg)).getOrientationInDegree();
     localBitmap = BitmapUtil.rotate(localBitmap, i);
-    Log.i("MicroMsg.Aa.LaunchAAUI", "exifPath : %s degree : %d", new Object[] { LaunchAAUI.o(this.jXQ), Integer.valueOf(i) });
-    LaunchAAUI.p(this.jXQ).setImageBitmap(localBitmap);
-    AppMethodBeat.o(213062);
+    Log.i("MicroMsg.Aa.LaunchAAUI", "exifPath : %s degree : %d", new Object[] { LaunchAAUI.p(this.mPg), Integer.valueOf(i) });
+    LaunchAAUI.q(this.mPg).setImageBitmap(localBitmap);
+    AppMethodBeat.o(251308);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAAUI.33
  * JD-Core Version:    0.7.0.1
  */

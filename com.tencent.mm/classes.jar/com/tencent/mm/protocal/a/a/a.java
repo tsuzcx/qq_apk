@@ -3,9 +3,9 @@ package com.tencent.mm.protocal.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int KAy;
+  public int RCo;
   public int count;
   public int value;
   
@@ -15,26 +15,26 @@ public final class a
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.KAy);
-      paramVarArgs.aM(2, this.value);
-      paramVarArgs.aM(3, this.count);
+      paramVarArgs.aY(1, this.RCo);
+      paramVarArgs.aY(2, this.value);
+      paramVarArgs.aY(3, this.count);
       AppMethodBeat.o(143939);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bu(1, this.KAy);
-      int i = g.a.a.b.b.a.bu(2, this.value);
-      int j = g.a.a.b.b.a.bu(3, this.count);
+      paramInt = g.a.a.b.b.a.bM(1, this.RCo);
+      int i = g.a.a.b.b.a.bM(2, this.value);
+      int j = g.a.a.b.b.a.bM(3, this.count);
       AppMethodBeat.o(143939);
       return paramInt + 0 + i + j;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
       AppMethodBeat.o(143939);
@@ -50,15 +50,15 @@ public final class a
         AppMethodBeat.o(143939);
         return -1;
       case 1: 
-        locala1.KAy = locala.UbS.zi();
+        locala1.RCo = locala.abFh.AK();
         AppMethodBeat.o(143939);
         return 0;
       case 2: 
-        locala1.value = locala.UbS.zi();
+        locala1.value = locala.abFh.AK();
         AppMethodBeat.o(143939);
         return 0;
       }
-      locala1.count = locala.UbS.zi();
+      locala1.count = locala.abFh.AK();
       AppMethodBeat.o(143939);
       return 0;
     }
@@ -68,7 +68,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.a.a.a
  * JD-Core Version:    0.7.0.1
  */

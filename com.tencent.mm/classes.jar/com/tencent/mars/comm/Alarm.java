@@ -10,7 +10,7 @@ import android.os.Build.VERSION;
 import android.os.Process;
 import android.os.SystemClock;
 import com.tencent.mm.a.a;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Collection;
 import java.util.Iterator;
@@ -191,8 +191,8 @@ public class Alarm
         if (l3 <= 30000L)
         {
           l1 = 0L;
-          e.Cxv.idkeyStat(1256L, l1, 1L, false);
-          e.Cxv.a(18860, new Object[] { Long.valueOf(l3) });
+          f.Iyx.idkeyStat(1256L, l1, 1L, false);
+          f.Iyx.a(18860, new Object[] { Long.valueOf(l3) });
           if (wakerlock != null) {
             wakerlock.lock(200L, "Alarm.onReceive");
           }
@@ -244,7 +244,7 @@ public class Alarm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mars.comm.Alarm
  * JD-Core Version:    0.7.0.1
  */

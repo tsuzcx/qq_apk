@@ -2,21 +2,21 @@ package kotlin.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.annotation.Annotation;
-import kotlin.g.b.aa;
+import kotlin.g.b.ab;
 import kotlin.g.b.g;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.l.b;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"annotationClass", "Lkotlin/reflect/KClass;", "T", "", "getAnnotationClass", "(Ljava/lang/annotation/Annotation;)Lkotlin/reflect/KClass;", "java", "Ljava/lang/Class;", "java$annotations", "(Lkotlin/reflect/KClass;)V", "getJavaClass", "(Lkotlin/reflect/KClass;)Ljava/lang/Class;", "javaClass", "", "(Ljava/lang/Object;)Ljava/lang/Class;", "javaClass$annotations", "getRuntimeClassOfKClassInstance", "javaObjectType", "getJavaObjectType", "javaPrimitiveType", "getJavaPrimitiveType", "kotlin", "getKotlinClass", "(Ljava/lang/Class;)Lkotlin/reflect/KClass;", "isArrayOf", "", "", "([Ljava/lang/Object;)Z", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"annotationClass", "Lkotlin/reflect/KClass;", "T", "", "getAnnotationClass", "(Ljava/lang/annotation/Annotation;)Lkotlin/reflect/KClass;", "java", "Ljava/lang/Class;", "java$annotations", "(Lkotlin/reflect/KClass;)V", "getJavaClass", "(Lkotlin/reflect/KClass;)Ljava/lang/Class;", "javaClass", "", "(Ljava/lang/Object;)Ljava/lang/Class;", "javaClass$annotations", "getRuntimeClassOfKClassInstance", "javaObjectType", "getJavaObjectType", "javaPrimitiveType", "getJavaPrimitiveType", "kotlin", "getKotlinClass", "(Ljava/lang/Class;)Lkotlin/reflect/KClass;", "isArrayOf", "", "", "([Ljava/lang/Object;)Z", "kotlin-stdlib"})
 public final class a
 {
   public static final <T> Class<T> a(b<T> paramb)
   {
     AppMethodBeat.i(129345);
-    p.h(paramb, "$this$java");
-    paramb = ((g)paramb).hxU();
+    p.k(paramb, "$this$java");
+    paramb = ((g)paramb).iCd();
     if (paramb == null)
     {
       paramb = new t("null cannot be cast to non-null type java.lang.Class<T>");
@@ -30,10 +30,10 @@ public final class a
   public static final <T extends Annotation> b<? extends T> a(T paramT)
   {
     AppMethodBeat.i(129349);
-    p.h(paramT, "$this$annotationClass");
+    p.k(paramT, "$this$annotationClass");
     paramT = paramT.annotationType();
-    p.g(paramT, "(this as java.lang.annot…otation).annotationType()");
-    paramT = bo(paramT);
+    p.j(paramT, "(this as java.lang.annot…otation).annotationType()");
+    paramT = bN(paramT);
     if (paramT == null)
     {
       paramT = new t("null cannot be cast to non-null type kotlin.reflect.KClass<out T>");
@@ -47,8 +47,8 @@ public final class a
   public static final <T> Class<T> b(b<T> paramb)
   {
     AppMethodBeat.i(129346);
-    p.h(paramb, "$this$javaPrimitiveType");
-    paramb = ((g)paramb).hxU();
+    p.k(paramb, "$this$javaPrimitiveType");
+    paramb = ((g)paramb).iCd();
     if (paramb.isPrimitive())
     {
       if (paramb == null)
@@ -126,11 +126,11 @@ public final class a
     return paramb;
   }
   
-  public static final <T> b<T> bo(Class<T> paramClass)
+  public static final <T> b<T> bN(Class<T> paramClass)
   {
     AppMethodBeat.i(129348);
-    p.h(paramClass, "$this$kotlin");
-    paramClass = aa.bp(paramClass);
+    p.k(paramClass, "$this$kotlin");
+    paramClass = ab.bO(paramClass);
     AppMethodBeat.o(129348);
     return paramClass;
   }
@@ -138,8 +138,8 @@ public final class a
   public static final <T> Class<T> c(b<T> paramb)
   {
     AppMethodBeat.i(129347);
-    p.h(paramb, "$this$javaObjectType");
-    paramb = ((g)paramb).hxU();
+    p.k(paramb, "$this$javaObjectType");
+    paramb = ((g)paramb).iCd();
     if (!paramb.isPrimitive())
     {
       if (paramb == null)
@@ -215,7 +215,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.g.a
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mm.ui.widget.MMEditText;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$7", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$7", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-webview_release"})
 public final class n$7
   implements TextWatcher
 {
@@ -19,9 +19,9 @@ public final class n$7
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(82698);
-    paramCharSequence = n.l(this.JzC);
-    Editable localEditable = n.b(this.JzC).getText();
-    p.g(localEditable, "contentEt.text");
+    paramCharSequence = n.l(this.QxO);
+    Editable localEditable = n.b(this.QxO).getText();
+    p.j(localEditable, "contentEt.text");
     if (((CharSequence)localEditable).length() > 0) {}
     for (boolean bool = true;; bool = false)
     {
@@ -33,7 +33,7 @@ public final class n$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.n.7
  * JD-Core Version:    0.7.0.1
  */

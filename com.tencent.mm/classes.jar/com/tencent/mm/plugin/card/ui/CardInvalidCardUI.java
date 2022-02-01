@@ -7,7 +7,9 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.BaseAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
+import com.tencent.mm.plugin.card.a.e;
+import com.tencent.mm.plugin.card.a.g;
 import com.tencent.mm.plugin.card.base.CardBaseUI;
 import com.tencent.mm.plugin.card.d.d.a;
 import com.tencent.mm.plugin.card.model.n.a;
@@ -17,11 +19,11 @@ import com.tencent.mm.ui.base.h;
 public class CardInvalidCardUI
   extends CardBaseUI
 {
-  public final void csj()
+  public final void cFJ()
   {
     AppMethodBeat.i(113467);
-    setMMTitle(2131757066);
-    addTextOptionMenu(0, getString(2131756973), new MenuItem.OnMenuItemClickListener()
+    setMMTitle(a.g.tkD);
+    addTextOptionMenu(0, getString(a.g.card_clear), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
@@ -31,7 +33,7 @@ public class CardInvalidCardUI
         return true;
       }
     });
-    if (this.pQr.getCount() > 0)
+    if (this.tmr.getCount() > 0)
     {
       enableOptionMenu(true);
       AppMethodBeat.o(113467);
@@ -41,14 +43,14 @@ public class CardInvalidCardUI
     AppMethodBeat.o(113467);
   }
   
-  public final n.a csk()
+  public final n.a cFK()
   {
-    return n.a.pTR;
+    return n.a.tpS;
   }
   
   public int getLayoutId()
   {
-    return 2131493400;
+    return a.e.tiI;
   }
   
   public void initView()
@@ -72,18 +74,18 @@ public class CardInvalidCardUI
     super.onSceneEnd(paramInt1, paramInt2, paramString, paramq);
     if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramq instanceof r)))
     {
-      if (!this.pQv) {
-        break label62;
+      if (!this.tmv) {
+        break label63;
       }
-      h.cD(this, getResources().getString(2131756975));
+      h.cO(this, getResources().getString(a.g.tjO));
     }
     for (;;)
     {
-      this.pQv = false;
+      this.tmv = false;
       AppMethodBeat.o(113468);
       return;
-      label62:
-      h.cD(this, getResources().getString(2131756993));
+      label63:
+      h.cO(this, getResources().getString(a.g.tjZ));
     }
   }
   

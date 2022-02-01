@@ -38,7 +38,7 @@ public final class e
     for (;;)
     {
       str = String.format("\\u%04X ('%s')", Arrays.copyOf(new Object[] { Integer.valueOf(j), str }, 2));
-      kotlin.g.b.p.g(str, "java.lang.String.format(this, *args)");
+      kotlin.g.b.p.j(str, "java.lang.String.format(this, *args)");
       AppMethodBeat.o(60048);
       return str;
       str = "\\b";
@@ -60,7 +60,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.j.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -6,24 +6,24 @@ import java.io.StringReader;
 
 final class f
 {
-  private final Reader aZR;
-  private final char[] aZS;
-  private int aZT;
-  private int aZU;
-  private int aZV;
-  private int aZW;
-  private StringBuilder aZX;
-  private int aZY;
+  private final Reader aJo;
+  private final char[] aJp;
+  private int aJq;
+  private int aJr;
+  private int aJs;
+  private StringBuilder aJt;
+  private int aJu;
+  private int fill;
   private int index;
   private int line;
   
   private f(Reader paramReader, int paramInt)
   {
     AppMethodBeat.i(74743);
-    this.aZR = paramReader;
-    this.aZS = new char[paramInt];
+    this.aJo = paramReader;
+    this.aJp = new char[paramInt];
     this.line = 1;
-    this.aZY = -1;
+    this.aJu = -1;
     AppMethodBeat.o(74743);
   }
   
@@ -34,16 +34,16 @@ final class f
     AppMethodBeat.o(74742);
   }
   
-  private j aV(String paramString)
+  private j bg(String paramString)
   {
     AppMethodBeat.i(74765);
-    if (sF())
+    if (qt())
     {
-      paramString = aW("Unexpected end of input");
+      paramString = bh("Unexpected end of input");
       AppMethodBeat.o(74765);
       return paramString;
     }
-    paramString = aW("Expected ".concat(String.valueOf(paramString)));
+    paramString = bh("Expected ".concat(String.valueOf(paramString)));
     AppMethodBeat.o(74765);
     return paramString;
   }
@@ -53,7 +53,7 @@ final class f
     AppMethodBeat.i(74751);
     if (!e(paramChar))
     {
-      j localj = aV("'" + paramChar + "'");
+      j localj = bg("'" + paramChar + "'");
       AppMethodBeat.o(74751);
       throw localj;
     }
@@ -63,83 +63,22 @@ final class f
   private boolean e(char paramChar)
   {
     AppMethodBeat.i(74758);
-    if (this.aZW != paramChar)
+    if (this.aJs != paramChar)
     {
       AppMethodBeat.o(74758);
       return false;
     }
-    sy();
+    qm();
     AppMethodBeat.o(74758);
     return true;
   }
   
-  private void sA()
-  {
-    AppMethodBeat.i(74763);
-    if (this.aZW == -1) {}
-    for (int i = this.index;; i = this.index - 1)
-    {
-      StringBuilder localStringBuilder = this.aZX;
-      char[] arrayOfChar = this.aZS;
-      int j = this.aZY;
-      localStringBuilder.append(arrayOfChar, j, i - j);
-      this.aZY = -1;
-      AppMethodBeat.o(74763);
-      return;
-    }
-  }
-  
-  private String sB()
-  {
-    AppMethodBeat.i(74764);
-    int i;
-    Object localObject;
-    if (this.aZW == -1)
-    {
-      i = this.index;
-      if (this.aZX.length() <= 0) {
-        break label93;
-      }
-      localObject = this.aZX;
-      char[] arrayOfChar = this.aZS;
-      int j = this.aZY;
-      ((StringBuilder)localObject).append(arrayOfChar, j, i - j);
-      localObject = this.aZX.toString();
-      this.aZX.setLength(0);
-    }
-    for (;;)
-    {
-      this.aZY = -1;
-      AppMethodBeat.o(74764);
-      return localObject;
-      i = this.index - 1;
-      break;
-      label93:
-      localObject = new String(this.aZS, this.aZY, i - this.aZY);
-    }
-  }
-  
-  private boolean sC()
-  {
-    return (this.aZW == 32) || (this.aZW == 9) || (this.aZW == 10) || (this.aZW == 13);
-  }
-  
-  private boolean sD()
-  {
-    return (this.aZW >= 48) && (this.aZW <= 57);
-  }
-  
-  private boolean sE()
-  {
-    return ((this.aZW >= 48) && (this.aZW <= 57)) || ((this.aZW >= 97) && (this.aZW <= 102)) || ((this.aZW >= 65) && (this.aZW <= 70));
-  }
-  
-  private b sk()
+  private b pY()
   {
     AppMethodBeat.i(74745);
-    sy();
+    qm();
     Object localObject = new b();
-    sx();
+    ql();
     if (e(']'))
     {
       AppMethodBeat.o(74745);
@@ -147,13 +86,13 @@ final class f
     }
     do
     {
-      sx();
-      ((b)localObject).a(sj());
-      sx();
+      ql();
+      ((b)localObject).a(pX());
+      ql();
     } while (e(','));
     if (!e(']'))
     {
-      localObject = aV("',' or ']'");
+      localObject = bg("',' or ']'");
       AppMethodBeat.o(74745);
       throw ((Throwable)localObject);
     }
@@ -161,12 +100,12 @@ final class f
     return localObject;
   }
   
-  private e sl()
+  private e pZ()
   {
     AppMethodBeat.i(74746);
-    sy();
+    qm();
     Object localObject = new e();
-    sx();
+    ql();
     if (e('}'))
     {
       AppMethodBeat.o(74746);
@@ -174,22 +113,22 @@ final class f
     }
     do
     {
-      sx();
-      String str = sm();
-      sx();
+      ql();
+      String str = qa();
+      ql();
       if (!e(':'))
       {
-        localObject = aV("':'");
+        localObject = bg("':'");
         AppMethodBeat.o(74746);
         throw ((Throwable)localObject);
       }
-      sx();
-      ((e)localObject).a(str, sj());
-      sx();
+      ql();
+      ((e)localObject).a(str, pX());
+      ql();
     } while (e(','));
     if (!e('}'))
     {
-      localObject = aV("',' or '}'");
+      localObject = bg("',' or '}'");
       AppMethodBeat.o(74746);
       throw ((Throwable)localObject);
     }
@@ -197,164 +136,164 @@ final class f
     return localObject;
   }
   
-  private String sm()
+  private String qa()
   {
     AppMethodBeat.i(74747);
-    if (this.aZW != 34)
+    if (this.aJs != 34)
     {
-      localObject = aV("name");
+      localObject = bg("name");
       AppMethodBeat.o(74747);
       throw ((Throwable)localObject);
     }
-    Object localObject = sr();
+    Object localObject = qf();
     AppMethodBeat.o(74747);
     return localObject;
   }
   
-  private h sn()
+  private h qb()
   {
     AppMethodBeat.i(74748);
-    sy();
+    qm();
     d('u');
     d('l');
     d('l');
-    h localh = a.aZC;
+    h localh = a.aIY;
     AppMethodBeat.o(74748);
     return localh;
   }
   
-  private h so()
+  private h qc()
   {
     AppMethodBeat.i(74749);
-    sy();
+    qm();
     d('r');
     d('u');
     d('e');
-    h localh = a.aZD;
+    h localh = a.aIZ;
     AppMethodBeat.o(74749);
     return localh;
   }
   
-  private h sp()
+  private h qd()
   {
     AppMethodBeat.i(74750);
-    sy();
+    qm();
     d('a');
     d('l');
     d('s');
     d('e');
-    h localh = a.aZE;
+    h localh = a.aJa;
     AppMethodBeat.o(74750);
     return localh;
   }
   
-  private h sq()
+  private h qe()
   {
     AppMethodBeat.i(74752);
-    g localg = new g(sr());
+    g localg = new g(qf());
     AppMethodBeat.o(74752);
     return localg;
   }
   
-  private String sr()
+  private String qf()
   {
     AppMethodBeat.i(74753);
-    sy();
-    sz();
-    while (this.aZW != 34) {
-      if (this.aZW == 92)
+    qm();
+    qn();
+    while (this.aJs != 34) {
+      if (this.aJs == 92)
       {
-        sA();
-        ss();
-        sz();
+        qo();
+        qg();
+        qn();
       }
       else
       {
-        if (this.aZW < 32)
+        if (this.aJs < 32)
         {
-          localObject = aV("valid string character");
+          localObject = bg("valid string character");
           AppMethodBeat.o(74753);
           throw ((Throwable)localObject);
         }
-        sy();
+        qm();
       }
     }
-    Object localObject = sB();
-    sy();
+    Object localObject = qp();
+    qm();
     AppMethodBeat.o(74753);
     return localObject;
   }
   
-  private void ss()
+  private void qg()
   {
     AppMethodBeat.i(74754);
-    sy();
+    qm();
     Object localObject;
-    switch (this.aZW)
+    switch (this.aJs)
     {
     default: 
-      localObject = aV("valid escape sequence");
+      localObject = bg("valid escape sequence");
       AppMethodBeat.o(74754);
       throw ((Throwable)localObject);
     case 34: 
     case 47: 
     case 92: 
-      this.aZX.append((char)this.aZW);
+      this.aJt.append((char)this.aJs);
     }
     for (;;)
     {
-      sy();
+      qm();
       AppMethodBeat.o(74754);
       return;
-      this.aZX.append('\b');
+      this.aJt.append('\b');
       continue;
-      this.aZX.append('\f');
+      this.aJt.append('\f');
       continue;
-      this.aZX.append('\n');
+      this.aJt.append('\n');
       continue;
-      this.aZX.append('\r');
+      this.aJt.append('\r');
       continue;
-      this.aZX.append('\t');
+      this.aJt.append('\t');
       continue;
       localObject = new char[4];
       int i = 0;
       while (i < 4)
       {
-        sy();
-        if (!sE())
+        qm();
+        if (!qs())
         {
-          localObject = aV("hexadecimal digit");
+          localObject = bg("hexadecimal digit");
           AppMethodBeat.o(74754);
           throw ((Throwable)localObject);
         }
-        localObject[i] = ((char)this.aZW);
+        localObject[i] = ((char)this.aJs);
         i += 1;
       }
-      this.aZX.append((char)Integer.parseInt(new String((char[])localObject), 16));
+      this.aJt.append((char)Integer.parseInt(new String((char[])localObject), 16));
     }
   }
   
-  private h st()
+  private h qh()
   {
     AppMethodBeat.i(74755);
-    sz();
+    qn();
     e('-');
-    int i = this.aZW;
-    if (!sw())
+    int i = this.aJs;
+    if (!qk())
     {
-      localObject = aV("digit");
+      localObject = bg("digit");
       AppMethodBeat.o(74755);
       throw ((Throwable)localObject);
     }
-    while ((i != 48) && (sw())) {}
-    su();
-    sv();
-    Object localObject = new d(sB());
+    while ((i != 48) && (qk())) {}
+    qi();
+    qj();
+    Object localObject = new d(qp());
     AppMethodBeat.o(74755);
     return localObject;
   }
   
-  private boolean su()
+  private boolean qi()
   {
     AppMethodBeat.i(74756);
     if (!e('.'))
@@ -362,18 +301,18 @@ final class f
       AppMethodBeat.o(74756);
       return false;
     }
-    if (!sw())
+    if (!qk())
     {
-      j localj = aV("digit");
+      j localj = bg("digit");
       AppMethodBeat.o(74756);
       throw localj;
     }
-    while (sw()) {}
+    while (qk()) {}
     AppMethodBeat.o(74756);
     return true;
   }
   
-  private boolean sv()
+  private boolean qj()
   {
     AppMethodBeat.i(74757);
     if ((!e('e')) && (!e('E')))
@@ -384,46 +323,107 @@ final class f
     if (!e('+')) {
       e('-');
     }
-    if (!sw())
+    if (!qk())
     {
-      j localj = aV("digit");
+      j localj = bg("digit");
       AppMethodBeat.o(74757);
       throw localj;
     }
-    while (sw()) {}
+    while (qk()) {}
     AppMethodBeat.o(74757);
     return true;
   }
   
-  private boolean sw()
+  private boolean qk()
   {
     AppMethodBeat.i(74759);
-    if (!sD())
+    if (!qr())
     {
       AppMethodBeat.o(74759);
       return false;
     }
-    sy();
+    qm();
     AppMethodBeat.o(74759);
     return true;
   }
   
-  private void sz()
+  private void qn()
   {
     AppMethodBeat.i(74762);
-    if (this.aZX == null) {
-      this.aZX = new StringBuilder();
+    if (this.aJt == null) {
+      this.aJt = new StringBuilder();
     }
-    this.aZY = (this.index - 1);
+    this.aJu = (this.index - 1);
     AppMethodBeat.o(74762);
   }
   
-  final j aW(String paramString)
+  private void qo()
+  {
+    AppMethodBeat.i(74763);
+    if (this.aJs == -1) {}
+    for (int i = this.index;; i = this.index - 1)
+    {
+      StringBuilder localStringBuilder = this.aJt;
+      char[] arrayOfChar = this.aJp;
+      int j = this.aJu;
+      localStringBuilder.append(arrayOfChar, j, i - j);
+      this.aJu = -1;
+      AppMethodBeat.o(74763);
+      return;
+    }
+  }
+  
+  private String qp()
+  {
+    AppMethodBeat.i(74764);
+    int i;
+    Object localObject;
+    if (this.aJs == -1)
+    {
+      i = this.index;
+      if (this.aJt.length() <= 0) {
+        break label93;
+      }
+      localObject = this.aJt;
+      char[] arrayOfChar = this.aJp;
+      int j = this.aJu;
+      ((StringBuilder)localObject).append(arrayOfChar, j, i - j);
+      localObject = this.aJt.toString();
+      this.aJt.setLength(0);
+    }
+    for (;;)
+    {
+      this.aJu = -1;
+      AppMethodBeat.o(74764);
+      return localObject;
+      i = this.index - 1;
+      break;
+      label93:
+      localObject = new String(this.aJp, this.aJu, i - this.aJu);
+    }
+  }
+  
+  private boolean qq()
+  {
+    return (this.aJs == 32) || (this.aJs == 9) || (this.aJs == 10) || (this.aJs == 13);
+  }
+  
+  private boolean qr()
+  {
+    return (this.aJs >= 48) && (this.aJs <= 57);
+  }
+  
+  private boolean qs()
+  {
+    return ((this.aJs >= 48) && (this.aJs <= 57)) || ((this.aJs >= 97) && (this.aJs <= 102)) || ((this.aJs >= 65) && (this.aJs <= 70));
+  }
+  
+  final j bh(String paramString)
   {
     AppMethodBeat.i(74766);
-    int j = this.aZT + this.index;
-    int k = this.aZV;
-    if (sF()) {}
+    int j = this.aJq + this.index;
+    int k = this.aJr;
+    if (qt()) {}
     for (int i = j;; i = j - 1)
     {
       paramString = new j(paramString, i, this.line, j - k - 1);
@@ -432,94 +432,94 @@ final class f
     }
   }
   
-  final boolean sF()
-  {
-    return this.aZW == -1;
-  }
-  
-  final h sj()
+  final h pX()
   {
     AppMethodBeat.i(74744);
-    switch (this.aZW)
+    switch (this.aJs)
     {
     default: 
-      localObject = aV("value");
+      localObject = bg("value");
       AppMethodBeat.o(74744);
       throw ((Throwable)localObject);
     case 110: 
-      localObject = sn();
+      localObject = qb();
       AppMethodBeat.o(74744);
       return localObject;
     case 116: 
-      localObject = so();
+      localObject = qc();
       AppMethodBeat.o(74744);
       return localObject;
     case 102: 
-      localObject = sp();
+      localObject = qd();
       AppMethodBeat.o(74744);
       return localObject;
     case 34: 
-      localObject = sq();
+      localObject = qe();
       AppMethodBeat.o(74744);
       return localObject;
     case 91: 
-      localObject = sk();
+      localObject = pY();
       AppMethodBeat.o(74744);
       return localObject;
     case 123: 
-      localObject = sl();
+      localObject = pZ();
       AppMethodBeat.o(74744);
       return localObject;
     }
-    Object localObject = st();
+    Object localObject = qh();
     AppMethodBeat.o(74744);
     return localObject;
   }
   
-  final void sx()
+  final void ql()
   {
     AppMethodBeat.i(74760);
-    while (sC()) {
-      sy();
+    while (qq()) {
+      qm();
     }
     AppMethodBeat.o(74760);
   }
   
-  final void sy()
+  final void qm()
   {
     AppMethodBeat.i(74761);
-    if (this.index == this.aZU)
+    if (this.index == this.fill)
     {
-      if (this.aZY != -1)
+      if (this.aJu != -1)
       {
-        this.aZX.append(this.aZS, this.aZY, this.aZU - this.aZY);
-        this.aZY = 0;
+        this.aJt.append(this.aJp, this.aJu, this.fill - this.aJu);
+        this.aJu = 0;
       }
-      this.aZT += this.aZU;
-      this.aZU = this.aZR.read(this.aZS, 0, this.aZS.length);
+      this.aJq += this.fill;
+      this.fill = this.aJo.read(this.aJp, 0, this.aJp.length);
       this.index = 0;
-      if (this.aZU == -1)
+      if (this.fill == -1)
       {
-        this.aZW = -1;
+        this.aJs = -1;
         AppMethodBeat.o(74761);
         return;
       }
     }
-    if (this.aZW == 10)
+    if (this.aJs == 10)
     {
       this.line += 1;
-      this.aZV = (this.aZT + this.index);
+      this.aJr = (this.aJq + this.index);
     }
-    char[] arrayOfChar = this.aZS;
+    char[] arrayOfChar = this.aJp;
     int i = this.index;
     this.index = (i + 1);
-    this.aZW = arrayOfChar[i];
+    this.aJs = arrayOfChar[i];
     AppMethodBeat.o(74761);
+  }
+  
+  final boolean qt()
+  {
+    return this.aJs == -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.eclipsesource.a.f
  * JD-Core Version:    0.7.0.1
  */

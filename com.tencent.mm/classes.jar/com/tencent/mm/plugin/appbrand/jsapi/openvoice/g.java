@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.openvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.service.c;
 import com.tencent.mm.plugin.ball.c.b;
 import com.tencent.mm.plugin.ball.model.BallInfo;
@@ -20,32 +21,32 @@ public final class g
   
   final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(226930);
+    AppMethodBeat.i(272397);
     Log.i(TAG, "hasJoinVoIPChat");
-    paramJSONObject = (b)com.tencent.mm.kernel.g.af(b.class);
+    paramJSONObject = (b)h.ae(b.class);
     if (paramJSONObject != null)
     {
       paramJSONObject.a(new com.tencent.mm.plugin.ball.c.i()
       {
-        public final void bH(List<BallInfo> paramAnonymousList)
+        public final void bG(List<BallInfo> paramAnonymousList)
         {
-          AppMethodBeat.i(226929);
+          AppMethodBeat.i(282472);
           HashMap localHashMap = new HashMap();
-          boolean bool = q.qta.qtB;
+          boolean bool = q.tRM.tSn;
           if (bool)
           {
             localHashMap.put("join", Boolean.TRUE);
-            paramc.i(paramInt, g.this.n("ok", localHashMap));
+            paramc.j(paramInt, g.this.m("ok", localHashMap));
             Log.i(g.TAG, "hasVoIPChat:%b, now is voip talking", new Object[] { Boolean.valueOf(bool) });
-            AppMethodBeat.o(226929);
+            AppMethodBeat.o(282472);
             return;
           }
           if ((paramAnonymousList == null) || (paramAnonymousList.size() == 0))
           {
             localHashMap.put("join", Boolean.FALSE);
-            paramc.i(paramInt, g.this.n("ok", localHashMap));
+            paramc.j(paramInt, g.this.m("ok", localHashMap));
             Log.i(g.TAG, "ballInfoList is empty, hasVoIPChat false!");
-            AppMethodBeat.o(226929);
+            AppMethodBeat.o(282472);
             return;
           }
           paramAnonymousList = paramAnonymousList.iterator();
@@ -62,20 +63,20 @@ public final class g
           {
             Log.i(g.TAG, "hasVoIPChat:%b", new Object[] { Boolean.valueOf(bool) });
             localHashMap.put("join", Boolean.valueOf(bool));
-            paramc.i(paramInt, g.this.n("ok", localHashMap));
-            AppMethodBeat.o(226929);
+            paramc.j(paramInt, g.this.m("ok", localHashMap));
+            AppMethodBeat.o(282472);
             return;
           }
         }
       });
-      AppMethodBeat.o(226930);
+      AppMethodBeat.o(272397);
       return;
     }
     Log.e(TAG, "IFloatBallService is null");
     paramJSONObject = new HashMap();
     paramJSONObject.put("join", Boolean.FALSE);
-    paramc.i(paramInt, n("ok", paramJSONObject));
-    AppMethodBeat.o(226930);
+    paramc.j(paramInt, m("ok", paramJSONObject));
+    AppMethodBeat.o(272397);
   }
 }
 

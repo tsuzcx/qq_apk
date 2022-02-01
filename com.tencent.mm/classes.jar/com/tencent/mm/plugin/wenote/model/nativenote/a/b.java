@@ -39,14 +39,14 @@ public final class b
     if (!paramStack.isEmpty())
     {
       paramStack = (a)paramStack.pop();
-      String str = paramStack.JIU.qTt;
-      int j = paramStack.qTa;
+      String str = paramStack.QIm.uvz;
+      int j = paramStack.uvg;
       while (i < j)
       {
         paramStringBuilder.append(str);
         i += 1;
       }
-      i = paramStack.qTa;
+      i = paramStack.uvg;
       AppMethodBeat.o(30390);
       return i;
     }
@@ -73,7 +73,7 @@ public final class b
   {
     AppMethodBeat.i(30388);
     HashSet localHashSet = new HashSet();
-    paramSpanned = (ParagraphStyle[])paramSpanned.getSpans(parame.avh, parame.Pc, ParagraphStyle.class);
+    paramSpanned = (ParagraphStyle[])paramSpanned.getSpans(parame.tH, parame.tI, ParagraphStyle.class);
     int j = paramSpanned.length;
     int i = 0;
     while (i < j)
@@ -92,7 +92,7 @@ public final class b
   private static void a(Spanned paramSpanned, StringBuilder paramStringBuilder)
   {
     AppMethodBeat.i(30384);
-    ArrayList localArrayList = new j(paramSpanned).qRJ;
+    ArrayList localArrayList = new j(paramSpanned).utP;
     Stack localStack = new Stack();
     int m = localArrayList.size();
     int i = 0;
@@ -109,10 +109,10 @@ public final class b
           break;
         }
         localObject1 = (r)((Iterator)localObject3).next();
-      } while (!((r)localObject1).JIU.qTu);
-      Object localObject1 = ((r)localObject1).JIU;
+      } while (!((r)localObject1).QIm.uvA);
+      Object localObject1 = ((r)localObject1).QIm;
       int j = 0;
-      localq = q.JIZ;
+      localq = q.QIr;
       localObject2 = ((Set)localObject2).iterator();
       int k;
       label192:
@@ -121,20 +121,20 @@ public final class b
       {
         localObject3 = (r)((Iterator)localObject2).next();
         boolean bool;
-        if ((((r)localObject3).JIU.cEw()) || (((r)localObject3).JIU.cEx()) || (((r)localObject3).JIU.cEy()))
+        if ((((r)localObject3).QIm.cTc()) || (((r)localObject3).QIm.cTd()) || (((r)localObject3).QIm.cTe()))
         {
           k = 1;
           j += k;
-          localObject4 = ((r)localObject3).JIU;
-          if (!((r)localObject3).JIU.cEw()) {
+          localObject4 = ((r)localObject3).QIm;
+          if (!((r)localObject3).QIm.cTc()) {
             break label247;
           }
-          bool = ((d)((r)localObject3).qTA).qTe;
+          bool = ((d)((r)localObject3).uvG).uvk;
           label228:
           if (!bool) {
             break label307;
           }
-          localq = q.JIZ;
+          localq = q.QIr;
         }
         for (;;)
         {
@@ -142,52 +142,52 @@ public final class b
           k = 0;
           break label192;
           label247:
-          if (((r)localObject3).JIU.cEx())
+          if (((r)localObject3).QIm.cTd())
           {
-            bool = ((m)((r)localObject3).qTA).qTe;
+            bool = ((m)((r)localObject3).uvG).uvk;
             break label228;
           }
-          if (((r)localObject3).JIU.cEy())
+          if (((r)localObject3).QIm.cTe())
           {
-            bool = ((k)((r)localObject3).qTA).qTe;
+            bool = ((k)((r)localObject3).uvG).uvk;
             break label228;
           }
           bool = true;
           break label228;
           label307:
-          if (((q)localObject4).cEw()) {
-            localq = q.JJa;
-          } else if (((q)localObject4).cEx()) {
-            localq = q.JJb;
-          } else if (((q)localObject4).cEy()) {
-            localq = q.JJc;
+          if (((q)localObject4).cTc()) {
+            localq = q.QIs;
+          } else if (((q)localObject4).cTd()) {
+            localq = q.QIt;
+          } else if (((q)localObject4).cTe()) {
+            localq = q.QIu;
           }
         }
       }
       a(localStack, paramStringBuilder, new a(localq, j, 0));
-      if (localq.cEy())
+      if (localq.cTe())
       {
-        localObject2 = (k[])paramSpanned.getSpans(localn.avh, localn.Pc, k.class);
+        localObject2 = (k[])paramSpanned.getSpans(localn.tH, localn.tI, k.class);
         if (localObject2.length > 0)
         {
-          localq.qTy = localObject2[0].qTF;
-          j = localq.qTv.indexOf("\"") + 1;
-          k = localq.qTv.lastIndexOf("\"");
+          localq.uvE = localObject2[0].uvL;
+          j = localq.uvB.indexOf("\"") + 1;
+          k = localq.uvB.lastIndexOf("\"");
           if (j < k)
           {
-            localObject3 = localq.qTv.substring(j, k);
+            localObject3 = localq.uvB.substring(j, k);
             if (!Util.isNullOrNil((String)localObject3))
             {
               localObject4 = ((String)localObject3).trim();
-              if (!localq.qTy) {
+              if (!localq.uvE) {
                 break label669;
               }
               localObject2 = "1";
               label495:
               if (!((String)localObject4).equals(localObject2))
               {
-                localObject4 = localq.qTv;
-                if (!localq.qTy) {
+                localObject4 = localq.uvB;
+                if (!localq.uvE) {
                   break label677;
                 }
               }
@@ -199,23 +199,23 @@ public final class b
       label677:
       for (localObject2 = "1";; localObject2 = "0")
       {
-        localq.qTv = ((String)localObject4).replaceAll((String)localObject3, (String)localObject2);
-        paramStringBuilder.append(localq.qTv);
+        localq.uvB = ((String)localObject4).replaceAll((String)localObject3, (String)localObject2);
+        paramStringBuilder.append(localq.uvB);
         if (localObject1 != null) {
           paramStringBuilder.append(((q)localObject1).mStartTag);
         }
-        j = localn.avh;
-        k = localn.Pc;
+        j = localn.tH;
+        k = localn.tI;
         localObject2 = new TreeSet(new b.1(paramSpanned));
         ((SortedSet)localObject2).addAll(Arrays.asList(paramSpanned.getSpans(j, k, CharacterStyle.class)));
         a(paramSpanned, paramStringBuilder, j, k, (SortedSet)localObject2);
         if (localObject1 != null)
         {
           a(paramStringBuilder, (q)localObject1);
-          paramStringBuilder.append(((q)localObject1).qTt);
+          paramStringBuilder.append(((q)localObject1).uvz);
         }
         a(paramStringBuilder, localq);
-        paramStringBuilder.append(localq.qTw);
+        paramStringBuilder.append(localq.uvC);
         i += 1;
         break;
         localObject2 = "0";
@@ -297,14 +297,14 @@ public final class b
         if ((localCharacterStyle instanceof RelativeSizeSpan))
         {
           paramStringBuilder.append("<wx-font style=\"font-size:");
-          paramStringBuilder.append(com.tencent.mm.plugin.wenote.model.nativenote.manager.b.FA((int)(((RelativeSizeSpan)localCharacterStyle).getSizeChange() * com.tencent.mm.plugin.wenote.model.nativenote.manager.b.getTextSize())));
+          paramStringBuilder.append(com.tencent.mm.plugin.wenote.model.nativenote.manager.b.Jh((int)(((RelativeSizeSpan)localCharacterStyle).getSizeChange() * com.tencent.mm.plugin.wenote.model.nativenote.manager.b.getTextSize())));
           paramStringBuilder.append("px\">");
           break label135;
         }
         if ((localCharacterStyle instanceof AbsoluteSizeSpan))
         {
           paramStringBuilder.append("<wx-font style=\"font-size:");
-          paramStringBuilder.append(com.tencent.mm.plugin.wenote.model.nativenote.manager.b.FA(((AbsoluteSizeSpan)localCharacterStyle).getSize()));
+          paramStringBuilder.append(com.tencent.mm.plugin.wenote.model.nativenote.manager.b.Jh(((AbsoluteSizeSpan)localCharacterStyle).getSize()));
           paramStringBuilder.append("px\">");
           break label135;
         }
@@ -395,7 +395,7 @@ public final class b
   private static void a(StringBuilder paramStringBuilder, q paramq)
   {
     AppMethodBeat.i(30387);
-    if ((paramq.qTx) && (paramStringBuilder.length() >= 5))
+    if ((paramq.uvD) && (paramStringBuilder.length() >= 5))
     {
       int i = paramStringBuilder.length() - 5;
       int j = paramStringBuilder.length();
@@ -413,28 +413,28 @@ public final class b
     for (;;)
     {
       int i = 0;
-      localObject = q.JIZ;
+      localObject = q.QIr;
       if (!paramStack.isEmpty())
       {
         localObject = (a)paramStack.peek();
-        i = ((a)localObject).qSZ;
-        localObject = ((a)localObject).JIU;
+        i = ((a)localObject).uvf;
+        localObject = ((a)localObject).QIm;
       }
-      if (parama.qSZ > i)
+      if (parama.uvf > i)
       {
-        parama.qTa = (parama.qSZ - i);
+        parama.uvg = (parama.uvf - i);
         b(paramStack, paramStringBuilder, parama);
         AppMethodBeat.o(30389);
         return;
       }
-      if (parama.qSZ >= i) {
+      if (parama.uvf >= i) {
         break;
       }
       a(paramStack, paramStringBuilder);
     }
-    if (parama.JIU != localObject)
+    if (parama.QIm != localObject)
     {
-      parama.qTa = a(paramStack, paramStringBuilder);
+      parama.uvg = a(paramStack, paramStringBuilder);
       b(paramStack, paramStringBuilder, parama);
     }
     AppMethodBeat.o(30389);
@@ -443,8 +443,8 @@ public final class b
   private static void b(Stack<a> paramStack, StringBuilder paramStringBuilder, a parama)
   {
     AppMethodBeat.i(30391);
-    String str = parama.JIU.mStartTag;
-    int j = parama.qTa;
+    String str = parama.QIm.mStartTag;
+    int j = parama.uvg;
     int i = 0;
     while (i < j)
     {

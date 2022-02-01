@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.address.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.agv;
-import com.tencent.mm.protocal.protobuf.agw;
+import com.tencent.mm.protocal.protobuf.ahe;
+import com.tencent.mm.protocal.protobuf.ahf;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
@@ -24,15 +24,15 @@ public final class a
   {
     AppMethodBeat.i(20765);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new agv();
-    ((d.a)localObject).iLO = new agw();
+    ((d.a)localObject).lBU = new ahe();
+    ((d.a)localObject).lBV = new ahf();
     ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaapp/autofill/deleteinfo";
     ((d.a)localObject).funcId = 1194;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (agv)this.rr.iLK.iLR;
-    ((agv)localObject).Lqy = "invoice_info";
-    ((agv)localObject).Lqz = paramInt;
-    ((agv)localObject).source = 2;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (ahe)d.b.b(this.rr.lBR);
+    ((ahe)localObject).SrV = "invoice_info";
+    ((ahe)localObject).group_id = paramInt;
+    ((ahe)localObject).source = 2;
     AppMethodBeat.o(20765);
   }
   

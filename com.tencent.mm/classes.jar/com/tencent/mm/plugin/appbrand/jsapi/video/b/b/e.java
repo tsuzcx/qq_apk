@@ -8,7 +8,7 @@ public abstract interface e
   
   public abstract long available();
   
-  public abstract c bJP();
+  public abstract c bVy();
   
   public abstract void close();
   
@@ -20,7 +20,7 @@ public abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.b.e
  * JD-Core Version:    0.7.0.1
  */

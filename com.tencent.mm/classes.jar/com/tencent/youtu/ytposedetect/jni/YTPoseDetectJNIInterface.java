@@ -42,20 +42,20 @@ public class YTPoseDetectJNIInterface
   
   public static void nativeLog(int paramInt, String paramString)
   {
-    AppMethodBeat.i(192533);
+    AppMethodBeat.i(217528);
     if (loggerListener != null) {
       loggerListener.log("[YTPoseDetectJNIInterface.nativeLog]", paramString);
     }
-    AppMethodBeat.o(192533);
+    AppMethodBeat.o(217528);
   }
   
   public static void nativeLog(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192532);
+    AppMethodBeat.i(217526);
     if (loggerListener != null) {
       loggerListener.log(paramString1, paramString2);
     }
-    AppMethodBeat.o(192532);
+    AppMethodBeat.o(217526);
   }
   
   public static native int poseDetect(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt5);

@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/lz">
-        <com.tencent.mm.plugin.freewifi.ui.FreeWifiStateView android:id="@id/d_4" style="@style/jx" />
-        <TextView android:id="@id/d_5" style="@style/jy" />
-        <TextView android:id="@id/d_6" style="@style/jz" />
-        <Button android:id="@id/gs5" android:visibility="gone" android:text="@string/dil" style="@style/js" />
-    </LinearLayout>
-    <Button android:id="@id/dp6" android:text="@string/di7" style="@style/k1" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.widget.record.EdgeTransparentView android:layout_width="fill_parent" android:layout_height="wrap_content" app:edge_position="ea3" app:edge_width="50.0dip">
+        <com.tencent.mm.plugin.game.chatroom.view.ChatMemberListView android:id="@id/kkg" android:scrollbars="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="@dimen/ct" android:layout_marginTop="12.0dip" android:overScrollMode="never" />
+    </com.tencent.mm.plugin.finder.widget.record.EdgeTransparentView>
 </LinearLayout>

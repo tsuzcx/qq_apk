@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 public final class h
 {
-  public static Object wrap(Object paramObject)
+  public static Object eW(Object paramObject)
   {
     AppMethodBeat.i(9836);
     if (paramObject == null)
@@ -43,7 +43,7 @@ public final class h
         localObject = new JSONArray();
         paramObject = ((Collection)paramObject).iterator();
         while (paramObject.hasNext()) {
-          ((JSONArray)localObject).put(wrap(paramObject.next()));
+          ((JSONArray)localObject).put(eW(paramObject.next()));
         }
         AppMethodBeat.o(9836);
       }
@@ -60,7 +60,7 @@ public final class h
         int i = 0;
         while (i < j)
         {
-          ((JSONArray)localObject).put(wrap(Array.get(paramObject, i)));
+          ((JSONArray)localObject).put(eW(Array.get(paramObject, i)));
           i += 1;
         }
         AppMethodBeat.o(9836);
@@ -73,7 +73,7 @@ public final class h
         while (paramObject.hasNext())
         {
           Map.Entry localEntry = (Map.Entry)paramObject.next();
-          ((JSONObject)localObject).put((String)localEntry.getKey(), wrap(localEntry.getValue()));
+          ((JSONObject)localObject).put((String)localEntry.getKey(), eW(localEntry.getValue()));
         }
         AppMethodBeat.o(9836);
         return localObject;
@@ -91,7 +91,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.plugin.a.h
  * JD-Core Version:    0.7.0.1
  */

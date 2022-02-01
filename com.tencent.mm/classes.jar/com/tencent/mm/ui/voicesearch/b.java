@@ -15,36 +15,40 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.e;
-import com.tencent.mm.aj.p;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.al.o;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.am.d;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.ao.o;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.aa;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.ay.a;
-import com.tencent.mm.model.ay.c;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.ca;
-import com.tencent.mm.platformtools.z;
+import com.tencent.mm.model.az.a;
+import com.tencent.mm.model.az.c;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.c;
+import com.tencent.mm.model.cb;
 import com.tencent.mm.plugin.messenger.a.f;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.drr;
-import com.tencent.mm.protocal.protobuf.drt;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.ebn;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
+import com.tencent.mm.ui.ac.a;
+import com.tencent.mm.ui.ad;
 import com.tencent.mm.ui.applet.b.b;
 import com.tencent.mm.ui.base.MaskLayout;
 import com.tencent.mm.ui.base.MaskLayout.a;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.z.a;
+import com.tencent.mm.ui.v;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -52,59 +56,59 @@ import java.util.List;
 
 @SuppressLint({"DefaultLocale"})
 public final class b
-  extends s<as>
+  extends v<as>
   implements i
 {
-  public String BZP;
-  public String PSf;
-  public String[] Paj;
-  private boolean QBi;
-  private as QBj;
-  private boolean QBk;
-  public boolean QBl;
-  private boolean QBm;
+  public String HWE;
+  public String[] Wtw;
+  private boolean XZH;
+  private as XZI;
+  private boolean XZJ;
+  public boolean XZK;
+  private boolean XZL;
+  public String XoS;
   private Context context;
-  private int dDG;
-  private ProgressDialog gtM;
-  private List<String> gzY;
-  private LinkedList<drr> iAd;
-  public com.tencent.mm.ui.applet.b kex;
-  private b.b kez;
+  private int fwp;
+  private ProgressDialog iXX;
+  private List<String> jkb;
+  private LinkedList<ebn> lpz;
+  public com.tencent.mm.ui.applet.b mVX;
+  private b.b mVY;
   
   public b(Context paramContext, int paramInt)
   {
     super(paramContext, new as());
     AppMethodBeat.i(39544);
-    this.QBi = false;
-    this.QBj = null;
-    this.iAd = new LinkedList();
-    this.gzY = null;
-    this.QBk = true;
-    this.gtM = null;
-    this.QBl = false;
-    this.dDG = 1;
-    this.kex = new com.tencent.mm.ui.applet.b(new com.tencent.mm.ui.applet.b.a()
+    this.XZH = false;
+    this.XZI = null;
+    this.lpz = new LinkedList();
+    this.jkb = null;
+    this.XZJ = true;
+    this.iXX = null;
+    this.XZK = false;
+    this.fwp = 1;
+    this.mVX = new com.tencent.mm.ui.applet.b(new com.tencent.mm.ui.applet.b.a()
     {
-      public final Bitmap Ta(String paramAnonymousString)
+      public final Bitmap aaG(String paramAnonymousString)
       {
         AppMethodBeat.i(39532);
-        paramAnonymousString = com.tencent.mm.aj.c.a(paramAnonymousString, false, -1, null);
+        paramAnonymousString = d.a(paramAnonymousString, false, -1, null);
         AppMethodBeat.o(39532);
         return paramAnonymousString;
       }
     });
-    this.kez = null;
-    this.QBm = false;
+    this.mVY = null;
+    this.XZL = false;
     this.context = paramContext;
-    this.dDG = paramInt;
-    this.QBj = new as();
-    this.QBj.setUsername("_find_more_public_contact_");
-    this.QBj.aqZ();
-    this.PSf = "@micromsg.with.all.biz.qq.com";
+    this.fwp = paramInt;
+    this.XZI = new as();
+    this.XZI.setUsername("_find_more_public_contact_");
+    this.XZI.axx();
+    this.XoS = "@micromsg.with.all.biz.qq.com";
     AppMethodBeat.o(39544);
   }
   
-  public static String boi(String paramString)
+  public static String bAX(String paramString)
   {
     AppMethodBeat.i(39562);
     String str = paramString.trim();
@@ -117,20 +121,20 @@ public final class b
     return paramString;
   }
   
-  public final void CQ(boolean paramBoolean)
+  public final void Hk(boolean paramBoolean)
   {
     AppMethodBeat.i(39546);
-    this.QBl = paramBoolean;
+    this.XZK = paramBoolean;
     if (paramBoolean) {
-      this.QBj.aqZ();
+      this.XZI.axx();
     }
     AppMethodBeat.o(39546);
   }
   
-  public final void CR(final boolean paramBoolean)
+  public final void Hl(final boolean paramBoolean)
   {
     AppMethodBeat.i(39552);
-    aO(new Runnable()
+    aV(new Runnable()
     {
       public final void run()
       {
@@ -142,12 +146,12 @@ public final class b
     AppMethodBeat.o(39552);
   }
   
-  public final as Ln(int paramInt)
+  public final as Qx(int paramInt)
   {
     AppMethodBeat.i(39551);
-    if (Ox(paramInt))
+    if (TR(paramInt))
     {
-      localas = (as)dWw();
+      localas = (as)ezC();
       AppMethodBeat.o(39551);
       return localas;
     }
@@ -156,7 +160,7 @@ public final class b
     return localas;
   }
   
-  public final void aO(final Runnable paramRunnable)
+  public final void aV(final Runnable paramRunnable)
   {
     AppMethodBeat.i(39564);
     if (Looper.myLooper() == Looper.getMainLooper())
@@ -179,30 +183,30 @@ public final class b
     AppMethodBeat.o(39564);
   }
   
-  public final void anp()
+  public final void atr()
   {
     AppMethodBeat.i(39557);
-    vw(false);
+    za(false);
     AppMethodBeat.o(39557);
   }
   
-  public final void anq()
+  public final void ats()
   {
     AppMethodBeat.i(39559);
-    ebf();
-    vw(false);
+    eKd();
+    za(false);
     AppMethodBeat.o(39559);
   }
   
-  public final drr aos(int paramInt)
+  public final ebn axA(int paramInt)
   {
     AppMethodBeat.i(39550);
     try
     {
-      Log.d("MicroMsg.SearchResultAdapter", "position " + paramInt + " size " + this.iAd.size() + "  " + (paramInt - getRealCount()));
-      drr localdrr = (drr)this.iAd.get(paramInt - getRealCount() - 1);
+      Log.d("MicroMsg.SearchResultAdapter", "position " + paramInt + " size " + this.lpz.size() + "  " + (paramInt - getRealCount()));
+      ebn localebn = (ebn)this.lpz.get(paramInt - getRealCount() - 1);
       AppMethodBeat.o(39550);
-      return localdrr;
+      return localebn;
     }
     catch (Exception localException)
     {
@@ -212,13 +216,13 @@ public final class b
     return null;
   }
   
-  public final boolean aot(int paramInt)
+  public final boolean axB(int paramInt)
   {
     AppMethodBeat.i(39554);
-    if (this.QBi)
+    if (this.XZH)
     {
       int i = getRealCount();
-      if ((paramInt == i) && (paramInt < i + dWu()))
+      if ((paramInt == i) && (paramInt < i + ezA()))
       {
         AppMethodBeat.o(39554);
         return true;
@@ -228,28 +232,28 @@ public final class b
     return false;
   }
   
-  public final void boh(final String paramString)
+  public final void bAW(final String paramString)
   {
     AppMethodBeat.i(39553);
-    aO(new Runnable()
+    aV(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(39538);
         if (b.b(b.this).isHidden())
         {
-          b.b(b.this).ara();
+          b.b(b.this).axy();
           if (b.c(b.this))
           {
             f localf = new f(paramString, 3);
-            bg.azz().a(localf, 0);
+            bh.aGY().a(localf, 0);
             b.d(b.this);
             AppMethodBeat.o(39538);
           }
         }
         else
         {
-          b.b(b.this).aqZ();
+          b.b(b.this).axx();
         }
         AppMethodBeat.o(39538);
       }
@@ -257,12 +261,12 @@ public final class b
     AppMethodBeat.o(39553);
   }
   
-  public final boolean boj(String paramString)
+  public final boolean bAY(String paramString)
   {
     AppMethodBeat.i(39565);
-    if ((this.gzY != null) && (paramString != null))
+    if ((this.jkb != null) && (paramString != null))
     {
-      Iterator localIterator = this.gzY.iterator();
+      Iterator localIterator = this.jkb.iterator();
       while (localIterator.hasNext()) {
         if (((String)localIterator.next()).equals(paramString))
         {
@@ -275,44 +279,44 @@ public final class b
     return true;
   }
   
-  public final int dWu()
+  public final void detach()
+  {
+    AppMethodBeat.i(39547);
+    if (this.mVX != null)
+    {
+      this.mVX.detach();
+      this.mVX = null;
+    }
+    AppMethodBeat.o(39547);
+  }
+  
+  public final int ezA()
   {
     int i = 0;
     AppMethodBeat.i(39549);
-    if (this.QBi)
+    if (this.XZH)
     {
-      if (this.QBj.isHidden()) {}
+      if (this.XZI.isHidden()) {}
       for (;;)
       {
         AppMethodBeat.o(39549);
         return i + 1;
-        i = this.iAd.size();
+        i = this.lpz.size();
       }
     }
     AppMethodBeat.o(39549);
     return 0;
   }
   
-  public final void detach()
-  {
-    AppMethodBeat.i(39547);
-    if (this.kex != null)
-    {
-      this.kex.detach();
-      this.kex = null;
-    }
-    AppMethodBeat.o(39547);
-  }
-  
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(39548);
-    if (this.dDG == 2)
+    if (this.fwp == 2)
     {
       AppMethodBeat.o(39548);
       return 2;
     }
-    if (aot(paramInt))
+    if (axB(paramInt))
     {
       AppMethodBeat.o(39548);
       return 1;
@@ -324,10 +328,10 @@ public final class b
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(39556);
-    boolean bool1 = Ox(paramInt);
-    boolean bool2 = aot(paramInt);
+    boolean bool1 = TR(paramInt);
+    boolean bool2 = axB(paramInt);
     Object localObject4;
-    if ((this.QBi) && (bool1))
+    if ((this.XZH) && (bool1))
     {
       paramViewGroup = paramView;
       Object localObject1;
@@ -338,7 +342,7 @@ public final class b
         if (bool2)
         {
           paramViewGroup = paramView;
-          if (((a)localObject1).QBq == null) {
+          if (((a)localObject1).XZP == null) {
             paramViewGroup = null;
           }
         }
@@ -346,10 +350,10 @@ public final class b
       if (paramViewGroup == null) {
         if (bool2)
         {
-          paramViewGroup = View.inflate(this.context, 2131493716, null);
+          paramViewGroup = View.inflate(this.context, R.i.eeR, null);
           paramView = new a();
-          paramView.gwR = ((TextView)paramViewGroup.findViewById(2131299167));
-          paramView.QBq = ((ProgressBar)paramViewGroup.findViewById(2131307414));
+          paramView.jbe = ((TextView)paramViewGroup.findViewById(R.h.dCB));
+          paramView.XZP = ((ProgressBar)paramViewGroup.findViewById(R.h.search_progress));
           paramViewGroup.setTag(paramView);
         }
       }
@@ -357,10 +361,10 @@ public final class b
       {
         if (!bool2)
         {
-          if (this.kez == null) {
-            this.kez = new b.b()
+          if (this.mVY == null) {
+            this.mVY = new b.b()
             {
-              public final int bnW()
+              public final int byf()
               {
                 AppMethodBeat.i(39540);
                 if (b.f(b.this) == null)
@@ -373,7 +377,7 @@ public final class b
                 return i;
               }
               
-              public final String vg(int paramAnonymousInt)
+              public final String yk(int paramAnonymousInt)
               {
                 AppMethodBeat.i(39539);
                 if (paramAnonymousInt < 0)
@@ -383,51 +387,51 @@ public final class b
                   return null;
                 }
                 Object localObject = b.this;
-                localObject = ((b)localObject).aos(b.e((b)localObject) + paramAnonymousInt + 1);
+                localObject = ((b)localObject).axA(b.e((b)localObject) + paramAnonymousInt + 1);
                 if (localObject == null)
                 {
                   AppMethodBeat.o(39539);
                   return null;
                 }
-                localObject = ((drr)localObject).Lqk.MTo;
+                localObject = ((ebn)localObject).SrH.Ufy;
                 AppMethodBeat.o(39539);
                 return localObject;
               }
             };
           }
-          if (this.kex != null) {
-            this.kex.a(paramInt - getRealCount() - 1, this.kez);
+          if (this.mVX != null) {
+            this.mVX.a(paramInt - getRealCount() - 1, this.mVY);
           }
-          localObject1 = aos(paramInt);
-          paramView.yuS.setVisibility(8);
+          localObject1 = axA(paramInt);
+          paramView.DUW.setVisibility(8);
           if (localObject1 == null)
           {
             AppMethodBeat.o(39556);
             return paramViewGroup;
-            paramViewGroup = View.inflate(this.context, 2131493774, null);
+            paramViewGroup = View.inflate(this.context, R.i.efr, null);
             paramView = new a();
-            paramView.yuS = ((TextView)paramViewGroup.findViewById(2131299162));
-            paramView.gAN = ((MaskLayout)paramViewGroup.findViewById(2131299159));
-            paramView.gwR = ((TextView)paramViewGroup.findViewById(2131299167));
-            paramView.jVQ = ((CheckBox)paramViewGroup.findViewById(2131299169));
-            paramView.Fxp = ((TextView)paramViewGroup.findViewById(2131299157));
+            paramView.DUW = ((TextView)paramViewGroup.findViewById(R.h.dCx));
+            paramView.jkT = ((MaskLayout)paramViewGroup.findViewById(R.h.dCv));
+            paramView.jbe = ((TextView)paramViewGroup.findViewById(R.h.dCB));
+            paramView.mNd = ((CheckBox)paramViewGroup.findViewById(R.h.dCC));
+            paramView.LRr = ((TextView)paramViewGroup.findViewById(R.h.dCt));
             paramViewGroup.setTag(paramView);
             continue;
             paramView = (a)paramViewGroup.getTag();
           }
           else
           {
-            paramView.Fxp.setVisibility(8);
-            a.b.c((ImageView)paramView.gAN.getContentView(), ((drr)localObject1).Lqk.MTo);
-            if (((drr)localObject1).MmK != 0) {
-              if (ay.a.iDs != null)
+            paramView.LRr.setVisibility(8);
+            a.b.c((ImageView)paramView.jkT.getContentView(), ((ebn)localObject1).SrH.Ufy);
+            if (((ebn)localObject1).TxF != 0) {
+              if (az.a.ltt != null)
               {
-                localObject4 = ay.a.iDs.rW(((drr)localObject1).MmK);
+                localObject4 = az.a.ltt.uT(((ebn)localObject1).TxF);
                 if (localObject4 != null)
                 {
-                  localObject4 = o.Nw((String)localObject4);
-                  paramView.gAN.a((Bitmap)localObject4, MaskLayout.a.OUJ);
-                  localObject1 = Util.nullAsNil(((drr)localObject1).Mjj.MTo);
+                  localObject4 = o.US((String)localObject4);
+                  paramView.jkT.a((Bitmap)localObject4, MaskLayout.a.WnW);
+                  localObject1 = Util.nullAsNil(((ebn)localObject1).TtX.Ufy);
                 }
               }
             }
@@ -438,58 +442,58 @@ public final class b
       {
         try
         {
-          paramView.gwR.setText(l.b(this.context, (CharSequence)localObject1, paramView.gwR.getTextSize()));
+          paramView.jbe.setText(l.b(this.context, (CharSequence)localObject1, paramView.jbe.getTextSize()));
           AppMethodBeat.o(39556);
           return paramViewGroup;
-          paramView.gAN.setMaskDrawable(null);
+          paramView.jkT.setMaskDrawable(null);
           break;
-          paramView.gAN.setMaskDrawable(null);
+          paramView.jkT.setMaskDrawable(null);
           break;
-          paramView.gAN.setMaskDrawable(null);
+          paramView.jkT.setMaskDrawable(null);
         }
         catch (Exception localException1)
         {
           Log.printErrStackTrace("MicroMsg.SearchResultAdapter", localException1, "", new Object[0]);
-          paramView.gwR.setText("");
+          paramView.jbe.setText("");
           continue;
         }
-        if (this.QBm) {
-          paramView.QBq.setVisibility(0);
+        if (this.XZL) {
+          paramView.XZP.setVisibility(0);
         }
         for (;;)
         {
-          Log.d("MicroMsg.SearchResultAdapter", "refresh  " + this.QBk);
-          if (((this.iAd != null) && (this.iAd.size() != 0)) || (this.QBk)) {
+          Log.d("MicroMsg.SearchResultAdapter", "refresh  " + this.XZJ);
+          if (((this.lpz != null) && (this.lpz.size() != 0)) || (this.XZJ)) {
             break label621;
           }
-          paramView.gwR.setText(this.context.getString(2131755246));
-          paramView.gwR.setTextColor(this.context.getResources().getColor(2131100682));
+          paramView.jbe.setText(this.context.getString(R.l.enI));
+          paramView.jbe.setTextColor(this.context.getResources().getColor(R.e.lightgrey));
           break;
-          paramView.QBq.setVisibility(8);
+          paramView.XZP.setVisibility(8);
         }
         label621:
-        paramView.gwR.setText(this.context.getString(2131755247));
-        paramView.gwR.setTextColor(com.tencent.mm.cb.a.m(this.context, 2131100808));
+        paramView.jbe.setText(this.context.getString(R.l.enJ));
+        paramView.jbe.setTextColor(com.tencent.mm.ci.a.l(this.context, R.e.mm_list_textcolor_one));
       }
     }
-    if (this.dDG == 2)
+    if (this.fwp == 2)
     {
       if (paramView == null)
       {
-        paramView = View.inflate(this.context, 2131496837, null);
+        paramView = View.inflate(this.context, R.i.elL, null);
         paramViewGroup = new a();
-        paramViewGroup.gwR = ((TextView)paramView.findViewById(2131299167));
+        paramViewGroup.jbe = ((TextView)paramView.findViewById(R.h.dCB));
         paramView.setTag(paramViewGroup);
       }
       for (;;)
       {
-        Object localObject2 = Ln(paramInt);
-        paramViewGroup.gwR.setTextColor(com.tencent.mm.cb.a.m(this.context, 2131100808));
+        Object localObject2 = Qx(paramInt);
+        paramViewGroup.jbe.setTextColor(com.tencent.mm.ci.a.l(this.context, R.e.mm_list_textcolor_one));
         try
         {
-          localObject2 = this.context.getString(2131767199, new Object[] { com.tencent.mm.model.aa.b((as)localObject2, ((ax)localObject2).field_username) });
-          paramViewGroup.gwR.setText(l.b(this.context, (CharSequence)localObject2, paramViewGroup.gwR.getTextSize()));
-          paramViewGroup.gwR.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+          localObject2 = this.context.getString(R.l.eVo, new Object[] { aa.b((as)localObject2, ((ax)localObject2).field_username) });
+          paramViewGroup.jbe.setText(l.b(this.context, (CharSequence)localObject2, paramViewGroup.jbe.getTextSize()));
+          paramViewGroup.jbe.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
           AppMethodBeat.o(39556);
           return paramView;
           paramViewGroup = (a)paramView.getTag();
@@ -498,7 +502,7 @@ public final class b
         {
           for (;;)
           {
-            paramViewGroup.gwR.setText("");
+            paramViewGroup.jbe.setText("");
           }
         }
       }
@@ -514,71 +518,71 @@ public final class b
     {
       if (paramView == null)
       {
-        paramView = com.tencent.mm.ui.aa.jQ(this.context).inflate(2131493774, null);
+        paramView = ad.kS(this.context).inflate(R.i.efr, null);
         paramViewGroup = new a();
-        paramViewGroup.yuS = ((TextView)paramView.findViewById(2131299162));
-        paramViewGroup.gAN = ((MaskLayout)paramView.findViewById(2131299159));
-        paramViewGroup.gwR = ((TextView)paramView.findViewById(2131299167));
-        paramViewGroup.jVQ = ((CheckBox)paramView.findViewById(2131299169));
-        paramViewGroup.Fxp = ((TextView)paramView.findViewById(2131299157));
+        paramViewGroup.DUW = ((TextView)paramView.findViewById(R.h.dCx));
+        paramViewGroup.jkT = ((MaskLayout)paramView.findViewById(R.h.dCv));
+        paramViewGroup.jbe = ((TextView)paramView.findViewById(R.h.dCB));
+        paramViewGroup.mNd = ((CheckBox)paramView.findViewById(R.h.dCC));
+        paramViewGroup.LRr = ((TextView)paramView.findViewById(R.h.dCt));
         paramView.setTag(paramViewGroup);
       }
       for (;;)
       {
-        Object localObject3 = Ln(paramInt);
-        if (paramViewGroup.yuS != null) {
-          paramViewGroup.yuS.setVisibility(8);
+        Object localObject3 = Qx(paramInt);
+        if (paramViewGroup.DUW != null) {
+          paramViewGroup.DUW.setVisibility(8);
         }
-        localObject4 = paramViewGroup.gwR;
+        localObject4 = paramViewGroup.jbe;
         Context localContext = this.context;
-        if (!ab.JE(((ax)localObject3).field_username)) {
-          paramInt = 2131100808;
+        if (!ab.QX(((ax)localObject3).field_username)) {
+          paramInt = R.e.mm_list_textcolor_one;
         }
         for (;;)
         {
-          ((TextView)localObject4).setTextColor(com.tencent.mm.cb.a.m(localContext, paramInt));
-          a.b.c((ImageView)paramViewGroup.gAN.getContentView(), ((ax)localObject3).field_username);
-          paramViewGroup.Fxp.setVisibility(8);
+          ((TextView)localObject4).setTextColor(com.tencent.mm.ci.a.l(localContext, paramInt));
+          a.b.c((ImageView)paramViewGroup.jkT.getContentView(), ((ax)localObject3).field_username);
+          paramViewGroup.LRr.setVisibility(8);
           if (((ax)localObject3).field_verifyFlag != 0) {
-            if (ay.a.iDs != null)
+            if (az.a.ltt != null)
             {
-              localObject4 = ay.a.iDs.rW(((ax)localObject3).field_verifyFlag);
+              localObject4 = az.a.ltt.uT(((ax)localObject3).field_verifyFlag);
               if (localObject4 != null)
               {
-                localObject4 = o.Nw((String)localObject4);
-                paramViewGroup.gAN.a((Bitmap)localObject4, MaskLayout.a.OUJ);
+                localObject4 = o.US((String)localObject4);
+                paramViewGroup.jkT.a((Bitmap)localObject4, MaskLayout.a.WnW);
               }
             }
           }
           try
           {
             label1091:
-            localObject4 = l.e(this.context, com.tencent.mm.model.aa.getDisplayName(((ax)localObject3).field_username), (int)paramViewGroup.gwR.getTextSize());
-            if (ab.Iz(((ax)localObject3).field_username))
+            localObject4 = l.d(this.context, aa.PJ(((ax)localObject3).field_username), (int)paramViewGroup.jbe.getTextSize());
+            if (ab.PR(((ax)localObject3).field_username))
             {
-              localObject3 = ((com.tencent.mm.openim.a.a)g.af(com.tencent.mm.openim.a.a.class)).a(this.context, (CharSequence)localObject4);
-              paramViewGroup.gwR.setText((CharSequence)localObject3);
+              localObject3 = ((com.tencent.mm.openim.a.a)h.ae(com.tencent.mm.openim.a.a.class)).a(this.context, (CharSequence)localObject4);
+              paramViewGroup.jbe.setText((CharSequence)localObject3);
             }
             for (;;)
             {
               AppMethodBeat.o(39556);
               return paramView;
-              paramInt = 2131100809;
+              paramInt = R.e.mm_list_textcolor_spuser;
               break;
-              paramViewGroup.gAN.setMaskDrawable(null);
+              paramViewGroup.jkT.setMaskDrawable(null);
               break label1091;
-              paramViewGroup.gAN.setMaskDrawable(null);
+              paramViewGroup.jkT.setMaskDrawable(null);
               break label1091;
-              paramViewGroup.gAN.setMaskDrawable(null);
+              paramViewGroup.jkT.setMaskDrawable(null);
               break label1091;
-              paramViewGroup.gwR.setText((CharSequence)localObject4);
+              paramViewGroup.jbe.setText((CharSequence)localObject4);
             }
           }
           catch (Exception localException3)
           {
             for (;;)
             {
-              paramViewGroup.gwR.setText("");
+              paramViewGroup.jbe.setText("");
             }
           }
         }
@@ -596,7 +600,7 @@ public final class b
   public final boolean isEnabled(int paramInt)
   {
     AppMethodBeat.i(39555);
-    if ((aot(paramInt)) && ((this.iAd == null) || (this.iAd.size() == 0)) && (!this.QBk))
+    if ((axB(paramInt)) && ((this.lpz == null) || (this.lpz.size() == 0)) && (!this.XZJ))
     {
       AppMethodBeat.o(39555);
       return false;
@@ -605,10 +609,10 @@ public final class b
     return true;
   }
   
-  public final void jB(final List<String> paramList)
+  public final void kw(final List<String> paramList)
   {
     AppMethodBeat.i(39545);
-    aO(new Runnable()
+    aV(new Runnable()
     {
       public final void run()
       {
@@ -629,18 +633,18 @@ public final class b
   public final void onPause()
   {
     AppMethodBeat.i(39561);
-    bg.azz().b(106, this);
+    bh.aGY().b(106, this);
     AppMethodBeat.o(39561);
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(39560);
-    bg.azz().a(106, this);
+    bh.aGY().a(106, this);
     AppMethodBeat.o(39560);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(39563);
     Log.d("MicroMsg.SearchResultAdapter", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
@@ -650,108 +654,38 @@ public final class b
       AppMethodBeat.o(39563);
       return;
     }
-    if (this.gtM != null)
+    if (this.iXX != null)
     {
-      this.gtM.dismiss();
-      this.gtM = null;
+      this.iXX.dismiss();
+      this.iXX = null;
     }
-    this.QBm = false;
-    if (z.a.a(this.context, paramInt1, paramInt2, paramString, 7))
+    this.XZL = false;
+    if (ac.a.a(this.context, paramInt1, paramInt2, paramString, 7))
     {
-      this.QBk = false;
+      this.XZJ = false;
       AppMethodBeat.o(39563);
       return;
     }
     if ((paramInt1 == 4) && (paramInt2 == -4))
     {
-      aO(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(39543);
-          b.b(b.this, false);
-          AppMethodBeat.o(39543);
-        }
-      });
+      aV(new b.11(this));
       AppMethodBeat.o(39563);
       return;
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      aO(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(39533);
-          b.b(b.this, false);
-          AppMethodBeat.o(39533);
-        }
-      });
+      aV(new b.2(this));
       AppMethodBeat.o(39563);
       return;
     }
-    aO(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(39534);
-        Object localObject1 = ((f)paramq).eiq();
-        Log.d("MicroMsg.SearchResultAdapter", "count " + ((drt)localObject1).LUB);
-        if (((drt)localObject1).LUB > 0)
-        {
-          localObject1 = ((drt)localObject1).LUC.iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (drr)((Iterator)localObject1).next();
-            if (ab.rR(((drr)localObject2).MmK))
-            {
-              if (b.f(b.this) == null) {
-                b.a(b.this, new LinkedList());
-              }
-              b.f(b.this).add(localObject2);
-            }
-          }
-        }
-        Object localObject2 = z.a(((drt)localObject1).Lqk);
-        Log.d("MicroMsg.SearchResultAdapter", "user ".concat(String.valueOf(localObject2)));
-        if (Util.nullAsNil((String)localObject2).length() > 0)
-        {
-          drr localdrr = new drr();
-          localdrr.Lqk = ((drt)localObject1).Lqk;
-          localdrr.MmK = ((drt)localObject1).MmK;
-          localdrr.keb = ((drt)localObject1).keb;
-          localdrr.Mjj = ((drt)localObject1).Mjj;
-          localdrr.ked = ((drt)localObject1).ked;
-          localdrr.keh = ((drt)localObject1).keh;
-          localdrr.kea = ((drt)localObject1).kea;
-          localdrr.kdZ = ((drt)localObject1).kdZ;
-          localdrr.kdY = ((drt)localObject1).kdY;
-          localdrr.MmL = ((drt)localObject1).MmL;
-          localdrr.MmO = ((drt)localObject1).MmO;
-          localdrr.MmM = ((drt)localObject1).MmM;
-          localdrr.MmN = ((drt)localObject1).MmN;
-          localdrr.MmQ = ((drt)localObject1).MmQ;
-          p.aYn().h((String)localObject2, z.a(((drt)localObject1).KHp));
-          if (b.f(b.this) == null) {
-            b.a(b.this, new LinkedList());
-          }
-          b.f(b.this).clear();
-          if (ab.rR(localdrr.MmK)) {
-            b.f(b.this).add(localdrr);
-          }
-          Log.d("MicroMsg.SearchResultAdapter", "count " + b.f(b.this).size());
-        }
-        b.b(b.this, false);
-        AppMethodBeat.o(39534);
-      }
-    });
+    aV(new b.3(this, paramq));
     AppMethodBeat.o(39563);
   }
   
-  public final void vw(final boolean paramBoolean)
+  public final void za(final boolean paramBoolean)
   {
     AppMethodBeat.i(39558);
-    aO(new Runnable()
+    aV(new Runnable()
     {
       public final void run()
       {
@@ -767,7 +701,7 @@ public final class b
           while (i < j)
           {
             localObject3 = localObject2[i];
-            if (b.this.boj((String)localObject3)) {
+            if (b.this.bAY((String)localObject3)) {
               ((List)localObject1).add(localObject3);
             }
             i += 1;
@@ -775,14 +709,14 @@ public final class b
           if (((List)localObject1).size() > 0)
           {
             localObject2 = b.this;
-            bg.aVF();
-            b.a((b)localObject2, com.tencent.mm.model.c.aSN().a((String[])((List)localObject1).toArray(new String[((List)localObject1).size()]), b.h(b.this), b.a(b.this)));
+            bh.beI();
+            b.a((b)localObject2, c.bbL().a((String[])((List)localObject1).toArray(new String[((List)localObject1).size()]), b.h(b.this), b.a(b.this)));
             AppMethodBeat.o(39541);
             return;
           }
           localObject1 = b.this;
-          bg.aVF();
-          b.b((b)localObject1, com.tencent.mm.model.c.aSN().gCo());
+          bh.beI();
+          b.b((b)localObject1, c.bbL().hyA());
           AppMethodBeat.o(39541);
           return;
         }
@@ -790,14 +724,14 @@ public final class b
         {
           if (!b.h(b.this).equals("@all.chatroom.contact"))
           {
-            localObject1 = bg.aVF().iBp.a(b.i(b.this), b.h(b.this), b.a(b.this), true);
+            localObject1 = bh.beI().lqT.a(b.i(b.this), b.h(b.this), b.a(b.this), true);
             b.c(b.this, (Cursor)localObject1);
             AppMethodBeat.o(39541);
             return;
           }
           if (paramBoolean)
           {
-            localObject1 = bg.aVF().iBp.a(b.i(b.this), "@micromsg.with.all.biz.qq.com.openim", b.a(b.this), false);
+            localObject1 = bh.beI().lqT.a(b.i(b.this), "@micromsg.with.all.biz.qq.com.openim", b.a(b.this), false);
             localObject2 = new ArrayList();
             localObject3 = new ArrayList();
           }
@@ -807,11 +741,11 @@ public final class b
               break label393;
             }
             String str = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("username"));
-            if (!ab.Iw(str))
+            if (!ab.PO(str))
             {
               ((ArrayList)localObject2).add(str);
               continue;
-              localObject1 = bg.aVF().iBp.a(b.i(b.this), "@micromsg.with.all.biz.qq.com", b.a(b.this), false);
+              localObject1 = bh.beI().lqT.a(b.i(b.this), "@micromsg.with.all.biz.qq.com", b.a(b.this), false);
               break;
             }
             ((ArrayList)localObject3).add(str);
@@ -821,17 +755,17 @@ public final class b
             ((Cursor)localObject1).close();
           }
           if ((((ArrayList)localObject2).size() != 0) || (((ArrayList)localObject3).size() != 0)) {}
-          for (localObject1 = bg.aVF().iBp.a(b.i(b.this), (ArrayList)localObject2, null, (ArrayList)localObject3, b.a(b.this));; localObject1 = com.tencent.mm.model.c.aSN().gCo())
+          for (localObject1 = bh.beI().lqT.a(b.i(b.this), (ArrayList)localObject2, null, (ArrayList)localObject3, b.a(b.this));; localObject1 = c.bbL().hyA())
           {
             b.d(b.this, (Cursor)localObject1);
             AppMethodBeat.o(39541);
             return;
-            bg.aVF();
+            bh.beI();
           }
         }
         Object localObject1 = b.this;
-        bg.aVF();
-        b.e((b)localObject1, com.tencent.mm.model.c.aSN().gCo());
+        bh.beI();
+        b.e((b)localObject1, c.bbL().hyA());
         AppMethodBeat.o(39541);
       }
     });
@@ -840,17 +774,17 @@ public final class b
   
   protected static final class a
   {
-    public TextView Fxp;
-    public ProgressBar QBq;
-    public MaskLayout gAN;
-    public TextView gwR;
-    public CheckBox jVQ;
-    public TextView yuS;
+    public TextView DUW;
+    public TextView LRr;
+    public ProgressBar XZP;
+    public TextView jbe;
+    public MaskLayout jkT;
+    public CheckBox mNd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.voicesearch.b
  * JD-Core Version:    0.7.0.1
  */

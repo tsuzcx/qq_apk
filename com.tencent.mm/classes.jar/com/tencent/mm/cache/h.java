@@ -10,13 +10,13 @@ import android.os.Parcelable.Creator;
 public abstract interface h
   extends IInterface
 {
-  public abstract MCacheItem CV(String paramString);
+  public abstract Bitmap JL(String paramString);
   
-  public abstract void CW(String paramString);
+  public abstract MCacheItem JM(String paramString);
+  
+  public abstract void JN(String paramString);
   
   public abstract void b(String paramString, Bitmap paramBitmap);
-  
-  public abstract Bitmap getBitmap(String paramString);
   
   public static abstract class a
     extends Binder
@@ -43,7 +43,7 @@ public abstract interface h
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.cache.IMMCache_AIDL");
-        CV(paramParcel1.readString());
+        JM(paramParcel1.readString());
         paramParcel2.writeNoException();
         paramParcel2.writeInt(0);
         return true;
@@ -53,12 +53,12 @@ public abstract interface h
         if (paramParcel1.readInt() != 0) {
           MCacheItem.CREATOR.createFromParcel(paramParcel1);
         }
-        CW(str);
+        JN(str);
         paramParcel2.writeNoException();
         return true;
       case 3: 
         paramParcel1.enforceInterface("com.tencent.mm.cache.IMMCache_AIDL");
-        paramParcel1 = getBitmap(paramParcel1.readString());
+        paramParcel1 = JL(paramParcel1.readString());
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -85,7 +85,7 @@ public abstract interface h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.cache.h
  * JD-Core Version:    0.7.0.1
  */

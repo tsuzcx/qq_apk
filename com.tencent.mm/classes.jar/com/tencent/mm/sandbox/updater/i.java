@@ -1,16 +1,16 @@
 package com.tencent.mm.sandbox.updater;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.yv;
+import com.tencent.mm.f.a.aac;
 import com.tencent.mm.sdk.event.IListener;
 
 public final class i
-  extends IListener<yv>
+  extends IListener<aac>
 {
   public i()
   {
     AppMethodBeat.i(161486);
-    this.__eventId = yv.class.getName().hashCode();
+    this.__eventId = aac.class.getName().hashCode();
     AppMethodBeat.o(161486);
   }
 }

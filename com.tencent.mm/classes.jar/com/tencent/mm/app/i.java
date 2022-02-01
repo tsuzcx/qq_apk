@@ -3,15 +3,20 @@ package com.tencent.mm.app;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.matrix.jectl.JeCtl;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.co.k;
-import com.tencent.mm.kernel.j;
+import com.tencent.mm.boot.R.raw;
+import com.tencent.mm.cw.k;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.l;
+import com.tencent.mm.l.a.a;
 import com.tencent.mm.modelrecovery.PluginRecovery;
 import com.tencent.mm.plugin.auth.PluginAuth;
 import com.tencent.mm.plugin.bbom.PluginBigBallOfMud;
+import com.tencent.mm.plugin.cast.PluginCast;
 import com.tencent.mm.plugin.messenger.foundation.PluginMessengerFoundation;
-import com.tencent.mm.plugin.messenger.foundation.a.s;
-import com.tencent.mm.plugin.recordvideo.background.c.b;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
 import com.tencent.mm.plugin.recordvideo.background.c.b.a;
 import com.tencent.mm.plugin.recordvideo.res.PluginVideoRes;
 import com.tencent.mm.plugin.report.PluginReport;
@@ -22,8 +27,8 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.SyncTask;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.vfs.y;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.vfs.ab;
 import com.tencent.xweb.WebView.c;
 import java.util.ArrayList;
 import java.util.Map;
@@ -33,23 +38,23 @@ import org.xwalk.core.XWalkEnvironment.ForceDarkBehavior;
 public class i
   extends com.tencent.mm.kernel.a.d
 {
-  private static boolean dkL = true;
-  private k dkJ;
-  private volatile boolean dkK;
+  private static boolean fcu = true;
+  private k fcs;
+  private volatile boolean fct;
   
   public i()
   {
     AppMethodBeat.i(160118);
-    this.dkJ = new k();
-    this.dkK = false;
+    this.fcs = new k();
+    this.fct = false;
     AppMethodBeat.o(160118);
   }
   
-  private static void Wl()
+  private static void aaH()
   {
     AppMethodBeat.i(160122);
     long l = System.currentTimeMillis();
-    ab.WH();
+    ac.abg();
     l = System.currentTimeMillis() - l;
     com.tencent.mm.blink.a.t(4L, l);
     com.tencent.mm.blink.a.t(5L, 1L);
@@ -57,224 +62,12 @@ public class i
     AppMethodBeat.o(160122);
   }
   
-  public void VZ()
-  {
-    AppMethodBeat.i(160119);
-    super.VZ();
-    com.tencent.mm.kernel.a.a.k("Hello WeChat, DefaultBootStep load debugger and newInstance xlog...", new Object[0]);
-    MMApplicationContext.getContext().getSystemService("audio");
-    t.d(true, ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.aAe().azG()).mProcessName);
-    ab.ab(com.tencent.mm.boot.a.a.class);
-    ab.gm("com.tencent.mm.boot");
-    ab.a(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.aAe().azG()).ca, ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.aAe().azG()).ca.getResources());
-    XWalkEnvironment.setForceDarkMode(ao.isDarkMode());
-    if (MMApplicationContext.isAppBrandProcess()) {
-      com.tencent.mm.l.a.a.a(new com.tencent.mm.l.a()
-      {
-        public final boolean Wo()
-        {
-          AppMethodBeat.i(160132);
-          com.tencent.mm.cr.d.a(WebView.c.SAt);
-          boolean bool = com.tencent.mm.cr.d.hiB();
-          AppMethodBeat.o(160132);
-          return bool;
-        }
-      });
-    }
-    XWalkEnvironment.setForceDarkBehavior(XWalkEnvironment.ForceDarkBehavior.MEDIA_QUERY_ONLY);
-    AppMethodBeat.o(160119);
-  }
-  
-  public void Wa()
-  {
-    AppMethodBeat.i(160120);
-    com.tencent.mm.kernel.g.aAd().hqx = com.tencent.mm.plugin.zero.a.d.class;
-    al(PluginZero.class);
-    al(PluginMessengerFoundation.class);
-    al(PluginReport.class);
-    al(PluginAuth.class);
-    al(PluginBigBallOfMud.class);
-    al(PluginRecovery.class);
-    FW("com.tencent.mm.plugin.bbom.PluginCompatOldStructure");
-    FW("com.tencent.mm.plugin.bbom.PluginBigBallOfMudAsync");
-    FW("com.tencent.mm.plugin.avatar.PluginAvatar");
-    FW("com.tencent.mm.plugin.image.PluginImageBase");
-    FW("com.tencent.mm.plugin.comm.PluginComm");
-    FW("com.tencent.mm.plugin.audio.PluginVoice");
-    FW("com.tencent.mm.plugin.biz.PluginBiz");
-    FX("com.tencent.mm.plugin.bizui.PluginBIZUI");
-    FW("com.tencent.mm.plugin.brandservice.PluginBrandService");
-    FW("com.tencent.mm.plugin.readerapp.PluginReaderApp");
-    FW("com.tencent.mm.plugin.notification.PluginNotification");
-    FW("com.tencent.mm.plugin.messenger.PluginMessenger");
-    FW("com.tencent.mm.plugin.notification.PluginPNotification");
-    FW("com.tencent.mm.plugin.welab.PluginWelab");
-    FW("com.tencent.mm.plugin.sport.PluginSport");
-    FW("com.tencent.mm.plugin.fts.PluginFTS");
-    FW("com.tencent.mm.plugin.multitask.PluginMultiTask");
-    FW("com.tencent.mm.plugin.taskbar.PluginTaskBar");
-    FW("com.tencent.mm.plugin.updater.PluginUpdater");
-    FW("com.tencent.mm.openim.PluginOpenIM");
-    FX("com.tencent.mm.plugin.misc.PluginMisc");
-    FW("com.tencent.mm.openim.room.PluginOpenIMRoom");
-    FW("com.tencent.mm.roomsdk.PluginRoomSdk");
-    FW("com.tencent.mm.ipcinvoker.wx_extension.PluginIPC");
-    FW("com.tencent.mm.plugin.abtest.PluginABTest");
-    FW("com.tencent.mm.plugin.expt.PluginExpt");
-    FW("com.tencent.mm.plugin.ai.PluginAi");
-    FW("com.tencent.mm.plugin.backup.PluginBackup");
-    FW("com.tencent.mm.pluginsdk.model.app.PluginAppMsg");
-    FW("com.tencent.mm.plugin.hardcoder.PluginHardcoder");
-    FW("com.tencent.mm.plugin.teenmode.PluginTeenMode");
-    FX("com.tencent.mm.plugin.secdata.PluginSecData");
-    FX("com.tencent.mm.plugin.performance.PluginPerformance");
-    FX("com.tencent.mm.plugin.chatroom.PluginChatroom");
-    FX("com.tencent.mm.PluginFunctionMsg");
-    FX("com.tencent.mm.insane_statistic.PluginInsaneStatistic");
-    FX("com.tencent.mm.plugin.appbrand.app.PluginAppBrand");
-    FX("com.tencent.mm.plugin.handoff.PluginHandOff");
-    FX("com.tencent.mm.plugin.choosemsgfile.PluginChooseMsgFile");
-    FX("com.tencent.mm.plugin.ball.PluginBall");
-    FX("com.tencent.mm.plugin.uishow.PluginUIShow");
-    FX("com.tencent.mm.plugin.emoji.PluginEmoji");
-    FX("com.tencent.mm.plugin.eggspring.PluginEggSpring");
-    FX("com.tencent.mm.chatroom.plugin.PluginChatroomUI");
-    FX("com.tencent.mm.plugin.patmsg.PluginPatMsg");
-    FX("com.tencent.mm.plugin.game.PluginGame");
-    FX("com.tencent.mm.game.report.PluginGameReport");
-    FX("com.tencent.mm.plugin.wepkg.PluginWePkg");
-    FX("com.tencent.mm.plugin.game.commlib.PluginCommLib");
-    FX("com.tencent.mm.plugin.gamelife.PluginGameLife");
-    FX("com.tencent.mm.plugin.recordvideo.PluginVideoEditor");
-    FX("com.tencent.mm.plugin.video.PluginVideo");
-    FX("com.tencent.mm.plugin.hardwareopt.PluginHardwareOpt");
-    FX("com.tencent.mm.plugin.sns.PluginSns");
-    FX("com.tencent.mm.plugin.downloader.PluginDownloader");
-    FX("com.tencent.mm.plugin.fav.PluginFav");
-    FX("com.tencent.mm.plugin.fav.ui.PluginFavUI");
-    FX("com.tencent.mm.plugin.record.PluginRecord");
-    FX("com.tencent.mm.plugin.music.PluginMusic");
-    FX("com.tencent.mm.plugin.MMPhotoEditPlugin");
-    FX("com.tencent.mm.plugin.account.PluginAccount");
-    Object localObject = b.BMn;
-    FX(b.a.getCLASS());
-    FX("com.tencent.mm.plugin.facedetect.PluginFace");
-    FX("com.tencent.mm.plugin.soter.PluginSoter");
-    FX("com.tencent.mm.plugin.walletlock.PluginWalletLock");
-    FX("com.tencent.mm.plugin.wxpay.PluginWxPay");
-    FX("com.tencent.mm.plugin.wxpaysdk.PluginWxPaySdk");
-    FX("com.tencent.mm.plugin.wxpayapi.PluginWxPayApi");
-    FX("com.tencent.kinda.framework.PluginWxKindaApi");
-    if (BuildInfo.ENABLE_PAYTEST) {
-      FX("com.tencent.mm.plugin.paytest.api.PluginPayTestHeaderApi");
-    }
-    FX("com.tencent.mm.plugin.radar.PluginRadar");
-    FX("com.tencent.mm.plugin.topstory.PluginTopStory");
-    FX("com.tencent.mm.plugin.topstory.ui.PluginTopStoryUI");
-    FX("com.tencent.mm.plugin.websearch.PluginWebSearch");
-    FX("com.tencent.mm.plugin.textstatus.PluginTextStatus");
-    FX("com.tencent.mm.plugin.fts.ui.PluginFTSUI");
-    FX("com.tencent.mm.plugin.card.PluginCard");
-    FX("com.tencent.mm.plugin.card.compat.PluginCardCompat");
-    FX("com.tencent.mm.plugin.forcenotify.PluginForceNotify");
-    FX("com.tencent.mm.plugin.monitor.PluginMonitor");
-    FW("com.tencent.mm.plugin.expansions.PluginExpansions");
-    FX("com.tencent.mm.plugin.fcm.PluginFCM");
-    FX("com.tencent.mm.plugin.emojicapture.model.PluginEmojiCapture");
-    FX("com.tencent.mm.plugin.selectcontact.PluginSelectContact");
-    FX("com.tencent.mm.plugin.cloudvoip.cloudvoice.PluginCloudVoice");
-    FX("com.tencent.mm.plugin.webview.PluginWebView");
-    FX("com.tencent.mm.plugin.priority.PluginPriority");
-    FX("com.tencent.mm.plugin.qqmail.PluginQQMail");
-    FX("com.tencent.mm.plugin.scanner.PluginScanTranslation");
-    FX("com.tencent.mm.plugin.scanner.PluginScanner");
-    FX("com.tencent.mm.plugin.newtips.PluginNewTips");
-    FX("com.tencent.mm.plugin.groupsolitaire.PluginGroupSolitaire");
-    FX("com.tencent.mm.plugin.groupcollect.PluginGroupCollect");
-    FX("com.tencent.mm.plugin.editor.PluginEditor");
-    FX("com.tencent.mm.plugin.fav.offline.PluginFavOffline");
-    FX("com.tencent.mm.plugin.msgquote.PluginMsgQuote");
-    FX("com.tencent.mm.plugin.selectrecord.PluginSelectRecord");
-    FX("com.tencent.mm.contact.PluginContact");
-    FX("com.tencent.mm.plugin.kidswatch.PluginKidsWatch");
-    FX("com.tencent.mm.plugin.hld.PluginHld");
-    FX("com.tencent.mm.plugin.mv.PluginMv");
-    FX("com.tencent.mm.plugin.recordvideo.appcamera.PluginMMSight");
-    FX("com.tencent.mm.plugin.secinforeport.PluginSecInfoReport");
-    FX("com.tencent.mm.plugin.multimediareport.PluginMultiMediaReport");
-    FX("com.tencent.mm.plugin.normsg.PluginNormsg");
-    FX("com.tencent.mm.plugin.netmock.PluginNetMock");
-    FX("com.tencent.kinda.debug.PluginKindaReload");
-    FX("com.tencent.mm.plugin.rubbishbin.PluginRubbishbin");
-    if (BuildInfo.ext.getBoolean("ENABLE_STETHO")) {
-      FX("com.tencent.mm.plugin.stetho.PluginStetho");
-    }
-    FX("com.tencent.mm.plugin.notifymessage.PluginNotifyMessage");
-    FX("com.tencent.mm.plugin.boots.PluginBoots");
-    FX("com.tencent.mm.plugin.downloader_app.PluginDownloaderApp");
-    FX("com.tencent.mm.plugin.game.luggage.PluginLuggageGame");
-    FX("com.tencent.mm.plugin.trafficmonitor.PluginTrafficMonitor");
-    FX("com.tencent.mm.plugin.story.PluginStory");
-    FX("com.tencent.mm.plugin.finder.PluginFinder");
-    FX("com.tencent.mm.plugin.byp.PluginByp");
-    FX("com.tencent.mm.plugin.thumbplayer.PluginThumbPlayer");
-    FX("com.tencent.mm.plugin.audio.PluginAudio");
-    FX("com.tencent.mm.plugin.crashfix.PluginSystemCrashFix");
-    FX("com.tencent.mm.plugin.flutter.PluginFlutter");
-    FX("com.tencent.mm.plugin.box.PluginBox");
-    FX("com.tencent.mm.plugin.lite.PluginLiteApp");
-    FX("com.tencent.mm.plugin.mobile.verify.PluginMobileVerify");
-    FX("com.tencent.mm.gpu.PluginGpuRes");
-    FX("com.tencent.mm.live.PluginLive");
-    FX(PluginVideoRes.class.getCanonicalName());
-    FX("com.tencent.mm.wlogcat.PluginLogcat");
-    FX("com.tencent.mm.plugin.emoji.magicemoji.PluginMagicEmoji");
-    FX("com.tencent.mm.plugin.emoji.magicemoji.PluginMagicEmoji");
-    localObject = com.tencent.mm.kernel.a.c.aAu().hrT;
-    com.tencent.mm.kernel.b.a locala = com.tencent.mm.kernel.g.ah(s.class);
-    ((com.tencent.mm.kernel.a.b.g)localObject).hti.put(com.tencent.mm.kernel.api.c.class, locala);
-    AppMethodBeat.o(160120);
-  }
-  
-  public final boolean Wm()
-  {
-    AppMethodBeat.i(160124);
-    if (dkL)
-    {
-      AppMethodBeat.o(160124);
-      return true;
-    }
-    if (!((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.aAe().azG()).aBb())
-    {
-      AppMethodBeat.o(160124);
-      return true;
-    }
-    com.tencent.mm.kernel.g.aAf();
-    if ((!com.tencent.mm.kernel.a.azo()) || (!com.tencent.mm.kernel.g.aAf().azp()))
-    {
-      AppMethodBeat.o(160124);
-      return true;
-    }
-    if (com.tencent.mm.splash.h.NLB.size() == 1)
-    {
-      Activity localActivity = (Activity)com.tencent.mm.splash.h.NLB.get(0);
-      if (MMApplicationContext.getLaunchName().equals(com.tencent.mm.splash.h.bb(localActivity)))
-      {
-        Log.i("MicroMsg.DefaultBootStep", "Found LauncherUI only.");
-        AppMethodBeat.o(160124);
-        return false;
-      }
-    }
-    AppMethodBeat.o(160124);
-    return true;
-  }
-  
   public final void a(final com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(160121);
-    y.g(paramg);
-    Wl();
-    if (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.aAe().azG()).aBb()) {
+    ab.i(paramg);
+    aaH();
+    if (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).aIE()) {
       new MMHandler("Startup-SideWork").post(new Runnable()
       {
         /* Error */
@@ -284,16 +77,16 @@ public class i
           //   0: ldc 29
           //   2: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
           //   5: aload_0
-          //   6: getfield 19	com/tencent/mm/app/i$2:dkM	Lcom/tencent/mm/app/i;
-          //   9: invokestatic 38	com/tencent/mm/app/i:a	(Lcom/tencent/mm/app/i;)Lcom/tencent/mm/co/k;
+          //   6: getfield 19	com/tencent/mm/app/i$3:fcv	Lcom/tencent/mm/app/i;
+          //   9: invokestatic 38	com/tencent/mm/app/i:a	(Lcom/tencent/mm/app/i;)Lcom/tencent/mm/cw/k;
           //   12: astore_2
           //   13: aload_2
-          //   14: getfield 44	com/tencent/mm/co/k:mLock	[B
+          //   14: getfield 44	com/tencent/mm/cw/k:mLock	[B
           //   17: astore_1
           //   18: aload_1
           //   19: monitorenter
           //   20: aload_2
-          //   21: getfield 44	com/tencent/mm/co/k:mLock	[B
+          //   21: getfield 44	com/tencent/mm/cw/k:mLock	[B
           //   24: iconst_0
           //   25: iconst_m1
           //   26: bastore
@@ -305,28 +98,28 @@ public class i
           //   36: iconst_0
           //   37: aload_2
           //   38: aastore
-          //   39: invokestatic 53	com/tencent/mm/kernel/j:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   39: invokestatic 53	com/tencent/mm/kernel/l:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
           //   42: aload_1
           //   43: monitorexit
           //   44: aload_0
-          //   45: getfield 19	com/tencent/mm/app/i$2:dkM	Lcom/tencent/mm/app/i;
-          //   48: invokestatic 38	com/tencent/mm/app/i:a	(Lcom/tencent/mm/app/i;)Lcom/tencent/mm/co/k;
-          //   51: invokevirtual 56	com/tencent/mm/co/k:done	()V
+          //   45: getfield 19	com/tencent/mm/app/i$3:fcv	Lcom/tencent/mm/app/i;
+          //   48: invokestatic 38	com/tencent/mm/app/i:a	(Lcom/tencent/mm/app/i;)Lcom/tencent/mm/cw/k;
+          //   51: invokevirtual 56	com/tencent/mm/cw/k:done	()V
           //   54: new 58	android/content/ContextWrapper
           //   57: dup
           //   58: aload_0
-          //   59: getfield 21	com/tencent/mm/app/i$2:dkN	Lcom/tencent/mm/kernel/b/g;
-          //   62: getfield 64	com/tencent/mm/kernel/b/g:ca	Landroid/app/Application;
+          //   59: getfield 21	com/tencent/mm/app/i$3:fcw	Lcom/tencent/mm/kernel/b/g;
+          //   62: getfield 64	com/tencent/mm/kernel/b/g:Zw	Landroid/app/Application;
           //   65: invokespecial 67	android/content/ContextWrapper:<init>	(Landroid/content/Context;)V
           //   68: astore_3
-          //   69: invokestatic 73	com/tencent/mm/kiss/a/b:aBh	()Lcom/tencent/mm/kiss/a/b;
+          //   69: invokestatic 73	com/tencent/mm/kiss/a/b:aIK	()Lcom/tencent/mm/kiss/a/b;
           //   72: astore_1
-          //   73: invokestatic 79	com/tencent/mm/kiss/a/a:aBg	()Lcom/tencent/mm/kiss/a/a;
+          //   73: invokestatic 79	com/tencent/mm/kiss/a/a:aIJ	()Lcom/tencent/mm/kiss/a/a;
           //   76: getfield 83	com/tencent/mm/kiss/a/a:mHandler	Lcom/tencent/mm/sdk/platformtools/MMHandler;
           //   79: invokevirtual 89	com/tencent/mm/sdk/platformtools/MMHandler:getSerialTag	()Ljava/lang/String;
           //   82: astore_2
           //   83: aload_3
-          //   84: invokestatic 95	com/tencent/mm/ui/aa:jQ	(Landroid/content/Context;)Landroid/view/LayoutInflater;
+          //   84: invokestatic 95	com/tencent/mm/ui/ad:kS	(Landroid/content/Context;)Landroid/view/LayoutInflater;
           //   87: astore_3
           //   88: aload_1
           //   89: getfield 99	com/tencent/mm/kiss/a/b:mInitialized	Z
@@ -339,7 +132,7 @@ public class i
           //   102: putfield 103	com/tencent/mm/kiss/a/b:mInflater	Landroid/view/LayoutInflater;
           //   105: aload_1
           //   106: aload_2
-          //   107: putfield 107	com/tencent/mm/kiss/a/b:htL	Ljava/lang/String;
+          //   107: putfield 107	com/tencent/mm/kiss/a/b:kfI	Ljava/lang/String;
           //   110: aload_1
           //   111: iconst_2
           //   112: putfield 111	com/tencent/mm/kiss/a/b:mMode	I
@@ -348,21 +141,21 @@ public class i
           //   119: dup
           //   120: aload_1
           //   121: aload_1
-          //   122: getfield 107	com/tencent/mm/kiss/a/b:htL	Ljava/lang/String;
+          //   122: getfield 107	com/tencent/mm/kiss/a/b:kfI	Ljava/lang/String;
           //   125: invokespecial 116	com/tencent/mm/kiss/a/b$1:<init>	(Lcom/tencent/mm/kiss/a/b;Ljava/lang/String;)V
-          //   128: putfield 119	com/tencent/mm/kiss/a/b:htM	Lcom/tencent/mm/sdk/platformtools/MMHandler;
+          //   128: putfield 119	com/tencent/mm/kiss/a/b:kfJ	Lcom/tencent/mm/sdk/platformtools/MMHandler;
           //   131: bipush 26
-          //   133: invokestatic 125	com/tencent/mm/compatible/util/d:oE	(I)Z
+          //   133: invokestatic 125	com/tencent/mm/compatible/util/d:qW	(I)Z
           //   136: ifeq +14 -> 150
           //   139: new 127	com/tencent/mm/kiss/a/b$a
           //   142: dup
           //   143: aload_2
           //   144: invokespecial 130	com/tencent/mm/kiss/a/b$a:<init>	(Ljava/lang/String;)V
-          //   147: putstatic 134	com/tencent/mm/kiss/a/b:htO	Lcom/tencent/mm/kiss/a/b$a;
+          //   147: putstatic 134	com/tencent/mm/kiss/a/b:kfL	Lcom/tencent/mm/kiss/a/b$a;
           //   150: aload_0
-          //   151: getfield 19	com/tencent/mm/app/i$2:dkM	Lcom/tencent/mm/app/i;
-          //   154: invokestatic 38	com/tencent/mm/app/i:a	(Lcom/tencent/mm/app/i;)Lcom/tencent/mm/co/k;
-          //   157: invokevirtual 56	com/tencent/mm/co/k:done	()V
+          //   151: getfield 19	com/tencent/mm/app/i$3:fcv	Lcom/tencent/mm/app/i;
+          //   154: invokestatic 38	com/tencent/mm/app/i:a	(Lcom/tencent/mm/app/i;)Lcom/tencent/mm/cw/k;
+          //   157: invokevirtual 56	com/tencent/mm/cw/k:done	()V
           //   160: ldc 29
           //   162: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
           //   165: return
@@ -394,47 +187,47 @@ public class i
           //   210: dup
           //   211: iconst_1
           //   212: aload_0
-          //   213: getfield 21	com/tencent/mm/app/i$2:dkN	Lcom/tencent/mm/kernel/b/g;
-          //   216: getfield 64	com/tencent/mm/kernel/b/g:ca	Landroid/app/Application;
+          //   213: getfield 21	com/tencent/mm/app/i$3:fcw	Lcom/tencent/mm/kernel/b/g;
+          //   216: getfield 64	com/tencent/mm/kernel/b/g:Zw	Landroid/app/Application;
           //   219: invokevirtual 166	android/app/Application:getResources	()Landroid/content/res/Resources;
           //   222: aastore
           //   223: dup
           //   224: iconst_2
           //   225: aload_0
-          //   226: getfield 21	com/tencent/mm/app/i$2:dkN	Lcom/tencent/mm/kernel/b/g;
-          //   229: getfield 64	com/tencent/mm/kernel/b/g:ca	Landroid/app/Application;
+          //   226: getfield 21	com/tencent/mm/app/i$3:fcw	Lcom/tencent/mm/kernel/b/g;
+          //   229: getfield 64	com/tencent/mm/kernel/b/g:Zw	Landroid/app/Application;
           //   232: invokevirtual 166	android/app/Application:getResources	()Landroid/content/res/Resources;
           //   235: invokevirtual 172	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
           //   238: aastore
           //   239: invokestatic 173	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
           //   242: aload_0
-          //   243: getfield 19	com/tencent/mm/app/i$2:dkM	Lcom/tencent/mm/app/i;
+          //   243: getfield 19	com/tencent/mm/app/i$3:fcv	Lcom/tencent/mm/app/i;
           //   246: aload_0
-          //   247: getfield 21	com/tencent/mm/app/i$2:dkN	Lcom/tencent/mm/kernel/b/g;
+          //   247: getfield 21	com/tencent/mm/app/i$3:fcw	Lcom/tencent/mm/kernel/b/g;
           //   250: invokestatic 175	com/tencent/mm/app/i:a	(Lcom/tencent/mm/app/i;Lcom/tencent/mm/kernel/b/g;)V
           //   253: aload_0
-          //   254: getfield 19	com/tencent/mm/app/i$2:dkM	Lcom/tencent/mm/app/i;
+          //   254: getfield 19	com/tencent/mm/app/i$3:fcv	Lcom/tencent/mm/app/i;
           //   257: invokestatic 179	com/tencent/mm/app/i:b	(Lcom/tencent/mm/app/i;)Z
           //   260: pop
           //   261: aload_0
-          //   262: getfield 19	com/tencent/mm/app/i$2:dkM	Lcom/tencent/mm/app/i;
-          //   265: invokestatic 38	com/tencent/mm/app/i:a	(Lcom/tencent/mm/app/i;)Lcom/tencent/mm/co/k;
-          //   268: invokevirtual 56	com/tencent/mm/co/k:done	()V
+          //   262: getfield 19	com/tencent/mm/app/i$3:fcv	Lcom/tencent/mm/app/i;
+          //   265: invokestatic 38	com/tencent/mm/app/i:a	(Lcom/tencent/mm/app/i;)Lcom/tencent/mm/cw/k;
+          //   268: invokevirtual 56	com/tencent/mm/cw/k:done	()V
           //   271: ldc 29
           //   273: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
           //   276: return
           //   277: astore_1
           //   278: aload_0
-          //   279: getfield 19	com/tencent/mm/app/i$2:dkM	Lcom/tencent/mm/app/i;
-          //   282: invokestatic 38	com/tencent/mm/app/i:a	(Lcom/tencent/mm/app/i;)Lcom/tencent/mm/co/k;
-          //   285: invokevirtual 56	com/tencent/mm/co/k:done	()V
+          //   279: getfield 19	com/tencent/mm/app/i$3:fcv	Lcom/tencent/mm/app/i;
+          //   282: invokestatic 38	com/tencent/mm/app/i:a	(Lcom/tencent/mm/app/i;)Lcom/tencent/mm/cw/k;
+          //   285: invokevirtual 56	com/tencent/mm/cw/k:done	()V
           //   288: ldc 29
           //   290: invokestatic 137	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
           //   293: aload_1
           //   294: athrow
           // Local variable table:
           //   start	length	slot	name	signature
-          //   0	295	0	this	2
+          //   0	295	0	this	3
           //   176	4	1	localException	java.lang.Exception
           //   277	17	1	localObject2	Object
           //   12	132	2	localObject3	Object
@@ -443,13 +236,12 @@ public class i
           // Exception table:
           //   from	to	target	type
           //   20	44	166	finally
-          //   167	169	166	finally
           //   5	20	176	java/lang/Exception
           //   44	150	176	java/lang/Exception
-          //   169	176	176	java/lang/Exception
+          //   167	176	176	java/lang/Exception
           //   5	20	277	finally
           //   44	150	277	finally
-          //   169	176	277	finally
+          //   167	176	277	finally
           //   177	261	277	finally
         }
       });
@@ -458,12 +250,269 @@ public class i
     AppMethodBeat.o(160121);
   }
   
+  public final boolean aaI()
+  {
+    AppMethodBeat.i(160124);
+    if (fcu)
+    {
+      AppMethodBeat.o(160124);
+      return true;
+    }
+    if (!((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).aIE())
+    {
+      AppMethodBeat.o(160124);
+      return true;
+    }
+    com.tencent.mm.kernel.h.aHE();
+    if ((!com.tencent.mm.kernel.b.aGL()) || (!com.tencent.mm.kernel.h.aHE().aGM()))
+    {
+      AppMethodBeat.o(160124);
+      return true;
+    }
+    if (com.tencent.mm.splash.i.UZl.size() == 1)
+    {
+      Activity localActivity = (Activity)com.tencent.mm.splash.i.UZl.get(0);
+      if (MMApplicationContext.getLaunchName().equals(com.tencent.mm.splash.i.bg(localActivity)))
+      {
+        Log.i("MicroMsg.DefaultBootStep", "Found LauncherUI only.");
+        AppMethodBeat.o(160124);
+        return false;
+      }
+    }
+    AppMethodBeat.o(160124);
+    return true;
+  }
+  
+  public void aau()
+  {
+    AppMethodBeat.i(160119);
+    super.aau();
+    com.tencent.mm.kernel.a.a.j("Hello WeChat, DefaultBootStep load debugger and newInstance xlog...", new Object[0]);
+    MMApplicationContext.getContext().getSystemService("audio");
+    t.f(true, ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).mProcessName);
+    ac.ab(R.raw.class);
+    ac.setPackageName("com.tencent.mm.boot");
+    ac.a(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).Zw, ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).Zw.getResources());
+    XWalkEnvironment.setForceDarkMode(ar.isDarkMode());
+    if (MMApplicationContext.isAppBrandProcess()) {
+      a.a.a(new com.tencent.mm.l.a()
+      {
+        public final boolean aaJ()
+        {
+          AppMethodBeat.i(160132);
+          com.tencent.mm.xwebutil.c.a(WebView.c.aabm);
+          boolean bool = com.tencent.mm.xwebutil.c.ikm();
+          AppMethodBeat.o(160132);
+          return bool;
+        }
+      });
+    }
+    XWalkEnvironment.setForceDarkBehavior(XWalkEnvironment.ForceDarkBehavior.MEDIA_QUERY_ONLY);
+    com.tencent.mm.picker.c.a.mBV = new com.tencent.mm.l.b();
+    com.tencent.e.i locali = com.tencent.e.h.ZvG;
+    Runnable local2 = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(160137);
+        if (!com.tencent.mm.kernel.h.aHH().kdc.kdw)
+        {
+          Log.e("MicroMsg.DefaultBootStep", "Kernel has not startup done!");
+          try
+          {
+            com.tencent.mm.rabbiteye.a.hpL();
+            AppMethodBeat.o(160137);
+            return;
+          }
+          catch (Throwable localThrowable)
+          {
+            Log.e("MicroMsg.DefaultBootStep", "printTrace error, message = %s", new Object[] { localThrowable.getMessage() });
+          }
+        }
+        AppMethodBeat.o(160137);
+      }
+    };
+    if (MMApplicationContext.isMainProcess()) {}
+    for (long l = 180000L;; l = 360000L)
+    {
+      locali.o(local2, l);
+      AppMethodBeat.o(160119);
+      return;
+    }
+  }
+  
+  public void aav()
+  {
+    AppMethodBeat.i(160120);
+    if ((!BuildInfo.IS_ARM64) && (Build.VERSION.SDK_INT >= 30))
+    {
+      Log.i("MicroMsg.DefaultBootStep", "origin retain = %s", new Object[] { Boolean.valueOf(JeCtl.setRetain(true)) });
+      Log.i("MicroMsg.DefaultBootStep", "now retain = %s", new Object[] { Boolean.valueOf(JeCtl.setRetain(true)) });
+    }
+    com.tencent.mm.kernel.h.aHC().kcs = com.tencent.mm.plugin.zero.a.d.class;
+    ak(PluginZero.class);
+    ak(PluginMessengerFoundation.class);
+    ak(PluginReport.class);
+    ak(PluginAuth.class);
+    ak(PluginBigBallOfMud.class);
+    ak(PluginRecovery.class);
+    MW("com.tencent.mm.plugin.bbom.PluginCompatOldStructure");
+    MW("com.tencent.mm.plugin.bbom.PluginBigBallOfMudAsync");
+    MW("com.tencent.mm.plugin.avatar.PluginAvatar");
+    MW("com.tencent.mm.plugin.image.PluginImageBase");
+    MW("com.tencent.mm.plugin.comm.PluginComm");
+    MW("com.tencent.mm.plugin.audio.PluginVoice");
+    MW("com.tencent.mm.plugin.biz.PluginBiz");
+    MX("com.tencent.mm.plugin.bizui.PluginBIZUI");
+    MW("com.tencent.mm.plugin.brandservice.PluginBrandService");
+    MW("com.tencent.mm.plugin.readerapp.PluginReaderApp");
+    MW("com.tencent.mm.plugin.notification.PluginNotification");
+    MW("com.tencent.mm.plugin.messenger.PluginMessenger");
+    MW("com.tencent.mm.plugin.notification.PluginPNotification");
+    MW("com.tencent.mm.plugin.welab.PluginWelab");
+    MW("com.tencent.mm.plugin.sport.PluginSport");
+    MW("com.tencent.mm.plugin.fts.PluginFTS");
+    MW("com.tencent.mm.plugin.multitask.PluginMultiTask");
+    MW("com.tencent.mm.plugin.taskbar.PluginTaskBar");
+    MW("com.tencent.mm.plugin.updater.PluginUpdater");
+    MW("com.tencent.mm.openim.PluginOpenIM");
+    MX("com.tencent.mm.plugin.misc.PluginMisc");
+    MW("com.tencent.mm.openim.room.PluginOpenIMRoom");
+    MW("com.tencent.mm.roomsdk.PluginRoomSdk");
+    MW("com.tencent.mm.ipcinvoker.wx_extension.PluginIPC");
+    MW("com.tencent.mm.plugin.abtest.PluginABTest");
+    MW("com.tencent.mm.plugin.hook.PluginHook");
+    MW("com.tencent.mm.plugin.sensitive_api_check.Plugin");
+    MW("com.tencent.mm.plugin.expt.PluginExpt");
+    MW("com.tencent.mm.plugin.ai.PluginAi");
+    MW("com.tencent.mm.plugin.backup.PluginBackup");
+    MW("com.tencent.mm.pluginsdk.model.app.PluginAppMsg");
+    MW("com.tencent.mm.plugin.hardcoder.PluginHardcoder");
+    MW("com.tencent.mm.plugin.teenmode.PluginTeenMode");
+    MX("com.tencent.mm.plugin.secdata.PluginSecData");
+    MX("com.tencent.mm.plugin.repairer.PluginRepairer");
+    MX("com.tencent.mm.plugin.performance.PluginPerformance");
+    MX("com.tencent.mm.plugin.chatroom.PluginChatroom");
+    MX("com.tencent.mm.PluginFunctionMsg");
+    MX("com.tencent.mm.insane_statistic.PluginInsaneStatistic");
+    MX("com.tencent.mm.plugin.appbrand.app.PluginAppBrand");
+    MX("com.tencent.mm.plugin.handoff.PluginHandOff");
+    MX("com.tencent.mm.plugin.choosemsgfile.PluginChooseMsgFile");
+    MX("com.tencent.mm.plugin.ball.PluginBall");
+    MX("com.tencent.mm.plugin.uishow.PluginUIShow");
+    MX("com.tencent.mm.plugin.emoji.PluginEmoji");
+    MX("com.tencent.mm.plugin.eggspring.PluginEggSpring");
+    MX("com.tencent.mm.chatroom.plugin.PluginChatroomUI");
+    MX("com.tencent.mm.plugin.patmsg.PluginPatMsg");
+    MX("com.tencent.mm.plugin.game.PluginGame");
+    MX("com.tencent.mm.game.report.PluginGameReport");
+    MX("com.tencent.mm.plugin.wepkg.PluginWePkg");
+    MX("com.tencent.mm.plugin.game.commlib.PluginCommLib");
+    MX("com.tencent.mm.plugin.gamelife.PluginGameLife");
+    MX("com.tencent.mm.plugin.game.chatroom.PluginGameChatRoom");
+    MX("com.tencent.mm.plugin.recordvideo.PluginVideoEditor");
+    MX("com.tencent.mm.plugin.video.PluginVideo");
+    MX("com.tencent.mm.plugin.hardwareopt.PluginHardwareOpt");
+    MX("com.tencent.mm.plugin.sns.PluginSns");
+    MX("com.tencent.mm.plugin.downloader.PluginDownloader");
+    MX("com.tencent.mm.plugin.fav.PluginFav");
+    MX("com.tencent.mm.plugin.fav.ui.PluginFavUI");
+    MX("com.tencent.mm.plugin.record.PluginRecord");
+    MX("com.tencent.mm.plugin.music.PluginMusic");
+    MX("com.tencent.mm.plugin.MMPhotoEditPlugin");
+    MX("com.tencent.mm.plugin.account.PluginAccount");
+    Object localObject = com.tencent.mm.plugin.recordvideo.background.c.b.HIz;
+    MX(b.a.getCLASS());
+    MX("com.tencent.mm.plugin.facedetect.PluginFace");
+    MX("com.tencent.mm.plugin.soter.PluginSoter");
+    MX("com.tencent.mm.plugin.walletlock.PluginWalletLock");
+    MX("com.tencent.mm.plugin.wxpay.PluginWxPay");
+    MX("com.tencent.mm.plugin.wxpaysdk.PluginWxPaySdk");
+    MX("com.tencent.mm.plugin.wxpayapi.PluginWxPayApi");
+    MX("com.tencent.kinda.framework.PluginWxKindaApi");
+    MX("com.tencent.mm.plugin.festival.PluginFestival");
+    if (BuildInfo.ENABLE_PAYTEST) {
+      MX("com.tencent.mm.plugin.paytest.api.PluginPayTestHeaderApi");
+    }
+    MX("com.tencent.mm.plugin.radar.PluginRadar");
+    MX("com.tencent.mm.plugin.topstory.PluginTopStory");
+    MX("com.tencent.mm.plugin.topstory.ui.PluginTopStoryUI");
+    MX("com.tencent.mm.plugin.websearch.PluginWebSearch");
+    MX("com.tencent.mm.plugin.textstatus.PluginTextStatus");
+    MX("com.tencent.mm.plugin.fts.ui.PluginFTSUI");
+    MX("com.tencent.mm.plugin.card.PluginCard");
+    MX("com.tencent.mm.plugin.card.compat.PluginCardCompat");
+    MX("com.tencent.mm.plugin.forcenotify.PluginForceNotify");
+    MX("com.tencent.mm.plugin.monitor.PluginMonitor");
+    MW("com.tencent.mm.plugin.expansions.PluginExpansions");
+    MX("com.tencent.mm.plugin.fcm.PluginFCM");
+    MX("com.tencent.mm.plugin.emojicapture.model.PluginEmojiCapture");
+    MX("com.tencent.mm.plugin.selectcontact.PluginSelectContact");
+    MX("com.tencent.mm.plugin.cloudvoip.cloudvoice.PluginCloudVoice");
+    MX("com.tencent.mm.plugin.webview.PluginWebView");
+    MX("com.tencent.mm.plugin.priority.PluginPriority");
+    MX("com.tencent.mm.plugin.qqmail.PluginQQMail");
+    MX("com.tencent.mm.plugin.scanner.PluginScanTranslation");
+    MX("com.tencent.mm.plugin.scanner.PluginScanner");
+    MX("com.tencent.mm.plugin.newtips.PluginNewTips");
+    MX("com.tencent.mm.plugin.groupsolitaire.PluginGroupSolitaire");
+    MX("com.tencent.mm.plugin.groupcollect.PluginGroupCollect");
+    MX("com.tencent.mm.plugin.editor.PluginEditor");
+    MX("com.tencent.mm.plugin.fav.offline.PluginFavOffline");
+    MX("com.tencent.mm.plugin.msgquote.PluginMsgQuote");
+    MX("com.tencent.mm.plugin.selectrecord.PluginSelectRecord");
+    MX("com.tencent.mm.contact.PluginContact");
+    MX("com.tencent.mm.plugin.kidswatch.PluginKidsWatch");
+    MX("com.tencent.mm.plugin.hld.PluginHld");
+    MX("com.tencent.mm.plugin.mv.PluginMv");
+    MX("com.tencent.mm.plugin.finder.live.PluginFinderLive");
+    MX("com.tencent.mm.plugin.finder.nearby.PluginFinderNearby");
+    MX("com.tencent.mm.plugin.finder.nearby.live.square.PluginFinderLiveSquare");
+    MX("com.tencent.mm.plugin.recordvideo.appcamera.PluginMMSight");
+    MX("com.tencent.mm.plugin.secinforeport.PluginSecInfoReport");
+    MX("com.tencent.mm.plugin.multimediareport.PluginMultiMediaReport");
+    MX("com.tencent.mm.plugin.normsg.PluginNormsg");
+    MX("com.tencent.mm.plugin.netmock.PluginNetMock");
+    MX("com.tencent.kinda.debug.PluginKindaReload");
+    MX("com.tencent.mm.plugin.rubbishbin.PluginRubbishbin");
+    if (BuildInfo.ext.getBoolean("ENABLE_STETHO")) {
+      MX("com.tencent.mm.plugin.stetho.PluginStetho");
+    }
+    MX("com.tencent.mm.plugin.notifymessage.PluginNotifyMessage");
+    MX("com.tencent.mm.plugin.boots.PluginBoots");
+    MX("com.tencent.mm.plugin.downloader_app.PluginDownloaderApp");
+    MX("com.tencent.mm.plugin.game.luggage.PluginLuggageGame");
+    MX("com.tencent.mm.plugin.trafficmonitor.PluginTrafficMonitor");
+    MX("com.tencent.mm.plugin.story.PluginStory");
+    MX("com.tencent.mm.plugin.finder.PluginFinder");
+    MX("com.tencent.mm.plugin.byp.PluginByp");
+    MX("com.tencent.mm.plugin.thumbplayer.PluginThumbPlayer");
+    MX("com.tencent.mm.plugin.audio.PluginAudio");
+    MX("com.tencent.mm.plugin.crashfix.PluginSystemCrashFix");
+    MX("com.tencent.mm.plugin.flutter.PluginFlutter");
+    MX("com.tencent.mm.plugin.box.PluginBox");
+    MX("com.tencent.mm.plugin.lite.PluginLiteApp");
+    MX("com.tencent.mm.plugin.mobile.verify.PluginMobileVerify");
+    MX("com.tencent.mm.gpu.PluginGpuRes");
+    MX("com.tencent.mm.live.PluginLive");
+    MX("com.tencent.mm.plugin.gamelive.PluginGameLive");
+    MX(PluginCast.class.getCanonicalName());
+    MX(PluginVideoRes.class.getCanonicalName());
+    MX("com.tencent.mm.wlogcat.PluginLogcat");
+    MX("com.tencent.mm.plugin.emoji.magicemoji.PluginMagicEmoji");
+    MX("com.tencent.mm.plugin.emoji.magicemoji.PluginMagicEmoji");
+    localObject = com.tencent.mm.kernel.a.c.aHV().kdO;
+    com.tencent.mm.kernel.b.a locala = com.tencent.mm.kernel.h.ag(v.class);
+    ((com.tencent.mm.kernel.a.b.g)localObject).kfd.put(com.tencent.mm.kernel.api.c.class, locala);
+    AppMethodBeat.o(160120);
+  }
+  
   public final void b(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(160123);
     k localk;
-    if (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.aAe().azG()).aBb()) {
-      localk = this.dkJ;
+    if (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).aIE()) {
+      localk = this.fcs;
     }
     synchronized (localk.mLock)
     {
@@ -471,11 +520,11 @@ public class i
       {
         if (localk.mLock[0] == -1)
         {
-          j.i("MicroMsg.WxWaitingLock", "waiting %s", new Object[] { localk });
+          l.i("MicroMsg.WxWaitingLock", "waiting %s", new Object[] { localk });
           localk.mLock.wait();
-          j.i("MicroMsg.WxWaitingLock", "after waiting %s", new Object[] { localk });
+          l.i("MicroMsg.WxWaitingLock", "after waiting %s", new Object[] { localk });
         }
-        if (this.dkK) {
+        if (this.fct) {
           Log.e("MicroMsg.DefaultBootStep", "SVG still failed!");
         }
         super.b(paramg);
@@ -494,7 +543,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.app.i
  * JD-Core Version:    0.7.0.1
  */

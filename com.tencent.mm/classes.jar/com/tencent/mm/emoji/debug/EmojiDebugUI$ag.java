@@ -6,18 +6,18 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
 final class EmojiDebugUI$ag
   extends q
   implements a<x>
 {
-  public static final ag gUD;
+  public static final ag jFq;
   
   static
   {
-    AppMethodBeat.i(105355);
-    gUD = new ag();
-    AppMethodBeat.o(105355);
+    AppMethodBeat.i(223957);
+    jFq = new ag();
+    AppMethodBeat.o(223957);
   }
   
   EmojiDebugUI$ag()

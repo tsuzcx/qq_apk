@@ -11,6 +11,10 @@
         </LinearLayout>
         <TextView android:textSize="@dimen/hc" android:textColor="@color/l4" android:id="@id/ipf" android:background="@drawable/asu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/r" android:text="@string/fh6" />
     </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/kjy" android:paddingTop="@dimen/ir" android:paddingRight="@dimen/br" android:paddingBottom="@dimen/ir" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs" android:minHeight="@dimen/k4" style="@style/mz">
+        <TextView android:id="@android:id/title" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/ju7" android:maxLines="2" android:singleLine="false" android:layout_weight="1.0" style="@style/mi" />
+        <com.tencent.mm.ui.widget.MMSwitchBtn android:layout_gravity="center|right" android:id="@id/kjx" android:focusable="false" android:focusableInTouchMode="true" android:clickable="false" android:layout_width="@dimen/kj" android:layout_height="fill_parent" android:layout_marginRight="@dimen/ih" />
+    </LinearLayout>
     <TextView android:textSize="@dimen/hc" android:textColor="@color/l4" android:id="@id/eco" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/r" android:layout_marginTop="@dimen/hw" android:layout_marginRight="@dimen/r" android:text="@string/fgw" />
     <ListView android:id="@id/ed2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" />
 </LinearLayout>

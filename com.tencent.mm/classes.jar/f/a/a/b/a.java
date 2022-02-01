@@ -9,31 +9,31 @@ import javax.crypto.spec.IvParameterSpec;
 public final class a
   implements b
 {
-  private String UbR = null;
+  private String abFg = null;
   
-  public final void buV(String paramString)
+  public final void bHY(String paramString)
   {
-    this.UbR = paramString;
+    this.abFg = paramString;
   }
   
-  public final byte[] encode(byte[] paramArrayOfByte)
+  public final byte[] dI(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(214851);
-    if ((this.UbR == null) || (paramArrayOfByte == null))
+    AppMethodBeat.i(207933);
+    if ((this.abFg == null) || (paramArrayOfByte == null))
     {
-      AppMethodBeat.o(214851);
+      AppMethodBeat.o(207933);
       return null;
     }
     Cipher localCipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
-    localCipher.init(1, SecretKeyFactory.getInstance("DES").generateSecret(new DESKeySpec(this.UbR.getBytes("UTF-8"))), new IvParameterSpec(this.UbR.getBytes("UTF-8")));
+    localCipher.init(1, SecretKeyFactory.getInstance("DES").generateSecret(new DESKeySpec(this.abFg.getBytes("UTF-8"))), new IvParameterSpec(this.abFg.getBytes("UTF-8")));
     paramArrayOfByte = localCipher.doFinal(paramArrayOfByte);
-    AppMethodBeat.o(214851);
+    AppMethodBeat.o(207933);
     return paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     f.a.a.b.a
  * JD-Core Version:    0.7.0.1
  */

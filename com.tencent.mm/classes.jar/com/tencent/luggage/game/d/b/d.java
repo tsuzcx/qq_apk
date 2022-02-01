@@ -1,15 +1,31 @@
 package com.tencent.luggage.game.d.b;
 
-import com.tencent.luggage.game.widget.input.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.jsapi.r;
+import com.tencent.mm.plugin.appbrand.v;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class d
-  extends com.tencent.mm.plugin.appbrand.jsapi.d<s>
+  extends r
 {
-  private static final int CTRL_INDEX = 70;
-  private static final String NAME = "hideKeyboard";
+  static final int CTRL_INDEX = 78;
+  static final String NAME = "onKeyboardInput";
+  
+  public final void a(String paramString, v paramv)
+  {
+    AppMethodBeat.i(130608);
+    if (!paramv.isRunning())
+    {
+      AppMethodBeat.o(130608);
+      return;
+    }
+    HashMap localHashMap = new HashMap(2);
+    localHashMap.put("errMsg", "ok");
+    localHashMap.put("value", paramString);
+    D(localHashMap).i(paramv).bPO();
+    AppMethodBeat.o(130608);
+  }
 }
 
 

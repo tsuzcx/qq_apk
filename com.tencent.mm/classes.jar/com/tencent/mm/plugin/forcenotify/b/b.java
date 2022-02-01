@@ -1,105 +1,55 @@
 package com.tencent.mm.plugin.forcenotify.b;
 
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.forcenotify.c.d;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.IAutoDBItem;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.plugin.forcenotify.a.e;
+import com.tencent.mm.plugin.forcenotify.a.f;
+import com.tencent.mm.plugin.forcenotify.a.h;
+import com.tencent.mm.plugin.forcenotify.d.e;
+import com.tencent.mm.plugin.forcenotify.d.g;
+import com.tencent.mm.view.recyclerview.i;
+import java.util.List;
 import kotlin.g.b.p;
-import kotlin.n.n;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/forcenotify/core/ForceNotifyReport;", "Lcom/tencent/mm/plugin/forcenotify/api/IForceNotifyReport;", "()V", "TAG", "", "_16505", "", "forcePushId", "clickType", "", "clickTime", "", "sessionId", "_16506", "toUsername", "_16507", "noticeState", "receiveTime", "plugin-force-notify_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/forcenotify/convert/ForceNotifyLiveConvert;", "Lcom/tencent/mm/plugin/forcenotify/convert/ForceNotifyBaseConvert;", "Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyLiveItem;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "plugin-force-notify_release"})
 public final class b
-  implements com.tencent.mm.plugin.forcenotify.a.a
+  extends a<g>
 {
-  public static final b wLO;
-  
-  static
+  private void a(i parami, g paramg, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
   {
-    AppMethodBeat.i(149158);
-    wLO = new b();
-    AppMethodBeat.o(149158);
-  }
-  
-  public final void A(String paramString, int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(149157);
-    h.CyF.a(16507, new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
-    AppMethodBeat.o(149157);
-  }
-  
-  public final void B(String paramString, int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(149156);
-    h.CyF.a(16506, new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
-    AppMethodBeat.o(149156);
-  }
-  
-  public final void C(String paramString, int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(149155);
-    d locald = new d();
-    locald.field_ForcePushId = paramString;
-    if (com.tencent.mm.plugin.forcenotify.d.a.wLU.get((IAutoDBItem)locald, new String[0])) {
-      f(paramString, String.valueOf(locald.field_CreateTime / 1000L) + locald.field_UserName, paramInt, paramLong);
-    }
-    AppMethodBeat.o(149155);
-  }
-  
-  public final void f(String paramString1, String paramString2, int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(149154);
-    p.h(paramString2, "sessionId");
-    if (paramString1 == null) {}
-    label206:
-    for (;;)
+    AppMethodBeat.i(253976);
+    p.k(parami, "holder");
+    p.k(paramg, "item");
+    super.a(parami, (e)paramg, paramInt1, paramInt2, paramBoolean, paramList);
+    paramList = (TextView)parami.amk.findViewById(a.e.title_tv);
+    p.j(paramList, "titleTv");
+    paramList.setText((CharSequence)paramList.getResources().getString(a.h.force_notify_live_tip, new Object[] { paramg.nickname }));
+    parami = (TextView)parami.amk.findViewById(a.e.force_notify_desc);
+    paramList = (CharSequence)paramg.BDX;
+    if ((paramList == null) || (paramList.length() == 0)) {}
+    for (paramInt1 = 1; paramInt1 != 0; paramInt1 = 0)
     {
-      try
-      {
-        p.hyc();
-        paramString1 = n.j(paramString1, "@wxcontact", "", false);
-        Object localObject = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-        p.g(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).eiy().aEx(paramString1);
-        h localh = h.CyF;
-        p.g(localObject, "msgInfo");
-        long l = ((ca)localObject).getCreateTime() / 1000L;
-        if (!((ca)localObject).isSystem()) {
-          if (((ca)localObject).gDk())
-          {
-            break label206;
-            localh.a(16505, new Object[] { paramString1, Integer.valueOf(paramInt), Long.valueOf(l), Integer.valueOf(i), paramString2, Long.valueOf(paramLong) });
-            AppMethodBeat.o(149154);
-          }
-          else
-          {
-            i = ((ca)localObject).ajN();
-            if (i == 1)
-            {
-              i = 1;
-              continue;
-            }
-            i = 2;
-            continue;
-          }
-        }
-        int i = 0;
-      }
-      catch (Exception paramString1)
-      {
-        Log.e("ForceNotifyReport", "[_16505] ".concat(String.valueOf(paramString1)));
-        AppMethodBeat.o(149154);
-        return;
-      }
+      p.j(parami, "descTv");
+      parami.setVisibility(8);
+      AppMethodBeat.o(253976);
+      return;
     }
+    p.j(parami, "descTv");
+    parami.setVisibility(0);
+    parami.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.b(parami.getContext(), (CharSequence)paramg.BDX, parami.getTextSize()));
+    AppMethodBeat.o(253976);
+  }
+  
+  public final int getLayoutId()
+  {
+    return a.f.force_notify_popup_item_live;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.b.b
  * JD-Core Version:    0.7.0.1
  */

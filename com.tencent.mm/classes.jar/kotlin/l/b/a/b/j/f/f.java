@@ -10,21 +10,21 @@ import kotlin.l.b.a.b.c.a.a;
 public final class f
   extends i
 {
-  private final h TJU;
+  private final h abmw;
   
   public f(h paramh)
   {
     AppMethodBeat.i(60210);
-    this.TJU = paramh;
+    this.abmw = paramh;
     AppMethodBeat.o(60210);
   }
   
   public final kotlin.l.b.a.b.b.h c(kotlin.l.b.a.b.f.f paramf, a parama)
   {
     AppMethodBeat.i(60205);
-    p.h(paramf, "name");
-    p.h(parama, "location");
-    paramf = this.TJU.c(paramf, parama);
+    p.k(paramf, "name");
+    p.k(parama, "location");
+    paramf = this.abmw.c(paramf, parama);
     if (paramf != null) {
       if ((paramf instanceof e)) {
         break label97;
@@ -54,18 +54,18 @@ public final class f
     }
   }
   
-  public final Set<kotlin.l.b.a.b.f.f> hCa()
+  public final Set<kotlin.l.b.a.b.f.f> iGp()
   {
     AppMethodBeat.i(60207);
-    Set localSet = this.TJU.hCa();
+    Set localSet = this.abmw.iGp();
     AppMethodBeat.o(60207);
     return localSet;
   }
   
-  public final Set<kotlin.l.b.a.b.f.f> hCb()
+  public final Set<kotlin.l.b.a.b.f.f> iGq()
   {
     AppMethodBeat.i(60208);
-    Set localSet = this.TJU.hCb();
+    Set localSet = this.abmw.iGq();
     AppMethodBeat.o(60208);
     return localSet;
   }
@@ -73,14 +73,14 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(60209);
-    String str = "Classes from " + this.TJU;
+    String str = "Classes from " + this.abmw;
     AppMethodBeat.o(60209);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.j.f.f
  * JD-Core Version:    0.7.0.1
  */

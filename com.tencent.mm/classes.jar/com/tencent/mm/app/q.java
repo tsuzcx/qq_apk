@@ -9,28 +9,28 @@ import com.tencent.mm.vending.h.h;
 
 public final class q
 {
-  private static q dlh;
-  HandlerThread dli;
+  private static q fcN;
+  HandlerThread fcO;
   MMHandler handler;
   com.tencent.mm.vending.h.d mScheduler;
   
   private q(String paramString)
   {
     AppMethodBeat.i(19444);
-    this.dli = new HandlerThread(paramString, 10);
-    this.dli.start();
-    this.handler = new MMHandler(this.dli.getLooper());
-    this.mScheduler = new h(com.tencent.mm.co.d.b(this.handler), paramString);
+    this.fcO = new HandlerThread(paramString, 10);
+    this.fcO.start();
+    this.handler = new MMHandler(this.fcO.getLooper());
+    this.mScheduler = new h(com.tencent.mm.cw.d.b(this.handler), paramString);
     AppMethodBeat.o(19444);
   }
   
-  public static q Ws()
+  public static q aaN()
   {
     AppMethodBeat.i(19443);
-    if (dlh == null) {
-      dlh = new q("initThread");
+    if (fcN == null) {
+      fcN = new q("initThread");
     }
-    q localq = dlh;
+    q localq = fcN;
     AppMethodBeat.o(19443);
     return localq;
   }
@@ -38,13 +38,13 @@ public final class q
   public final void setHighPriority()
   {
     AppMethodBeat.i(19445);
-    if ((this.dli == null) || (!this.dli.isAlive()))
+    if ((this.fcO == null) || (!this.fcO.isAlive()))
     {
       Log.e("MicroMsg.InitThreadController", "setHighPriority failed thread is dead");
       AppMethodBeat.o(19445);
       return;
     }
-    int i = this.dli.getThreadId();
+    int i = this.fcO.getThreadId();
     try
     {
       if (-8 == Process.getThreadPriority(i))
@@ -68,7 +68,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.app.q
  * JD-Core Version:    0.7.0.1
  */

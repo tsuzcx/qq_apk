@@ -1,88 +1,47 @@
 package com.tencent.mm.plugin.appbrand.jsapi.x;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.game.g.b.3;
-import com.tencent.mm.plugin.appbrand.game.g.b.8;
-import com.tencent.mm.plugin.appbrand.game.g.b.9;
-import com.tencent.mm.plugin.appbrand.game.g.d;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.sdk.platformtools.Util;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.g;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "Event_onRealtimeDataResponse", "Priority", "plugin-appbrand-integration_release"})
 public final class c
-  extends b
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<g>
 {
-  public static final int CTRL_INDEX = 686;
-  public static final String NAME = "operateMediaContainer";
+  private static final int CTRL_INDEX = 652;
+  private static final String NAME = "operateRealtimeData";
+  @Deprecated
+  public static final c.a pni;
   
-  public final void a(final com.tencent.mm.plugin.appbrand.service.c paramc, JSONObject paramJSONObject, final int paramInt)
+  static
   {
-    AppMethodBeat.i(46755);
-    Log.i("MicroMsg.GameRecord.JsApiScreenRecorderOperateMediaContainer", "hy: %s %s", new Object[] { "operateMediaContainer", paramJSONObject.toString() });
-    Object localObject1 = paramJSONObject.optString("operationType");
-    if (((String)localObject1).equalsIgnoreCase("create"))
+    AppMethodBeat.i(50672);
+    pni = new c.a((byte)0);
+    CTRL_INDEX = 652;
+    NAME = "operateRealtimeData";
+    AppMethodBeat.o(50672);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Priority;", "", "(Ljava/lang/String;I)V", "HIGH", "LOW", "IMMEDIATE", "Companion", "plugin-appbrand-integration_release"})
+  public static enum c
+  {
+    public static final c.c.a pno;
+    
+    static
     {
-      localObject1 = d(paramc);
-      paramc = new d() {};
-      Log.i("MicroMsg.GameRecorderMgr", "hy: trigger createMediaContainer");
-      ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).luO.postToWorker(new b.3((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, paramc));
-      AppMethodBeat.o(46755);
-      return;
+      AppMethodBeat.i(50668);
+      c localc1 = new c("HIGH", 0);
+      pnk = localc1;
+      c localc2 = new c("LOW", 1);
+      pnl = localc2;
+      c localc3 = new c("IMMEDIATE", 2);
+      pnm = localc3;
+      pnn = new c[] { localc1, localc2, localc3 };
+      pno = new c.c.a((byte)0);
+      AppMethodBeat.o(50668);
     }
-    if (((String)localObject1).equalsIgnoreCase("export"))
-    {
-      int i = paramJSONObject.optInt("containerId");
-      localObject1 = paramJSONObject.optString("mimeType");
-      if (Util.isNullOrNil((String)localObject1))
-      {
-        paramc.i(paramInt, h(String.format("fail: parmas error %s", new Object[] { paramJSONObject.toString() }), null));
-        AppMethodBeat.o(46755);
-        return;
-      }
-      Object localObject2 = d(paramc, i + "." + (String)localObject1);
-      if ((localObject2 == null) || (Util.isNullOrNil(((b.a)localObject2).lsB)) || (Util.isNullOrNil(((b.a)localObject2).lsC)))
-      {
-        Log.e("MicroMsg.GameRecord.JsApiScreenRecorderOperateMediaContainer", "hy: %s, alloc file failed", new Object[] { "operateMediaContainer" });
-        paramc.i(paramInt, h(String.format("fail: internal create file failed", new Object[0]), null));
-        AppMethodBeat.o(46755);
-        return;
-      }
-      try
-      {
-        paramJSONObject.put("filePath", ((b.a)localObject2).lsB);
-        localObject1 = d(paramc);
-        localObject2 = new d() {};
-        ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).luO.postToWorker(new b.8((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, (d)localObject2));
-        AppMethodBeat.o(46755);
-        return;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramc.i(paramInt, h(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() }), null));
-        AppMethodBeat.o(46755);
-        return;
-      }
-      catch (Exception paramJSONObject)
-      {
-        paramc.i(paramInt, h(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() }), null));
-        AppMethodBeat.o(46755);
-        return;
-      }
-    }
-    if (((String)localObject1).equalsIgnoreCase("remove"))
-    {
-      localObject1 = d(paramc);
-      paramc = new d() {};
-      ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).luO.postToWorker(new b.9((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, paramc));
-      AppMethodBeat.o(46755);
-      return;
-    }
-    Log.e("MicroMsg.GameRecord.JsApiScreenRecorderOperateMediaContainer", "hy: invalid operate type: %s", new Object[] { localObject1 });
-    paramc.i(paramInt, h(String.format("fail: not valid operate type: %s", new Object[] { localObject1 }), null));
-    AppMethodBeat.o(46755);
+    
+    private c() {}
   }
 }
 

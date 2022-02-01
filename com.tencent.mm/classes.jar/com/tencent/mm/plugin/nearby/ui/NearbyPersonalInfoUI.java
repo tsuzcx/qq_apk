@@ -8,13 +8,17 @@ import android.text.Html;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.aa;
-import com.tencent.mm.model.bz;
+import com.tencent.mm.model.ca;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.nearby.b.a;
+import com.tencent.mm.plugin.nearby.b.g;
+import com.tencent.mm.plugin.nearby.b.h;
 import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.base.preference.ChoicePreference;
@@ -22,25 +26,24 @@ import com.tencent.mm.ui.base.preference.KeyValuePreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.Preference.a;
-import com.tencent.mm.ui.base.preference.f;
 
 public class NearbyPersonalInfoUI
   extends MMPreference
 {
-  private int fuA = -1;
-  private f screen;
+  private com.tencent.mm.ui.base.preference.f screen;
+  private int sex = -1;
   
   public int getResourceId()
   {
-    return 2132017238;
+    return b.h.nearby_personal_info;
   }
   
   public void initView()
   {
     AppMethodBeat.i(89888);
-    setMMTitle(2131763484);
+    setMMTitle(b.g.nearby_personal_info);
     this.screen = getPreferenceScreen();
-    ((KeyValuePreference)this.screen.bmg("settings_signature")).OYB = false;
+    ((KeyValuePreference)this.screen.byG("settings_signature")).WrK = false;
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -51,18 +54,18 @@ public class NearbyPersonalInfoUI
         return true;
       }
     });
-    addTextOptionMenu(0, getString(2131755916), new MenuItem.OnMenuItemClickListener()
+    addTextOptionMenu(0, getString(b.g.app_nextstep), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(89884);
         if (NearbyPersonalInfoUI.a(NearbyPersonalInfoUI.this) != -1)
         {
-          paramAnonymousMenuItem = bz.aWj();
-          paramAnonymousMenuItem.fuA = NearbyPersonalInfoUI.a(NearbyPersonalInfoUI.this);
-          bz.a(paramAnonymousMenuItem);
+          paramAnonymousMenuItem = ca.bfn();
+          paramAnonymousMenuItem.sex = NearbyPersonalInfoUI.a(NearbyPersonalInfoUI.this);
+          ca.a(paramAnonymousMenuItem);
         }
-        paramAnonymousMenuItem = bz.aWk();
+        paramAnonymousMenuItem = ca.bfo();
         if (paramAnonymousMenuItem == null) {
           NearbyPersonalInfoUI.b(NearbyPersonalInfoUI.this);
         }
@@ -72,25 +75,25 @@ public class NearbyPersonalInfoUI
           return true;
           String str = Util.nullAsNil(paramAnonymousMenuItem.getProvince());
           Util.nullAsNil(paramAnonymousMenuItem.getCity());
-          int i = paramAnonymousMenuItem.fuA;
+          int i = paramAnonymousMenuItem.sex;
           if ((Util.isNullOrNil(str)) || (i == 0))
           {
             NearbyPersonalInfoUI.b(NearbyPersonalInfoUI.this);
           }
           else
           {
-            com.tencent.mm.bp.a.ih(NearbyPersonalInfoUI.this.getContext());
-            paramAnonymousMenuItem = bz.aWj();
+            com.tencent.mm.bw.a.jk(NearbyPersonalInfoUI.this.getContext());
+            paramAnonymousMenuItem = ca.bfn();
             if (i != -1) {
-              paramAnonymousMenuItem.fuA = i;
+              paramAnonymousMenuItem.sex = i;
             }
-            ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new k.a(1, bz.a(paramAnonymousMenuItem)));
+            ((n)h.ae(n.class)).bbK().d(new k.a(1, ca.a(paramAnonymousMenuItem)));
             NearbyPersonalInfoUI.this.finish();
           }
         }
       }
     });
-    ((ChoicePreference)this.screen.bmg("settings_sex")).OXy = new Preference.a()
+    ((ChoicePreference)this.screen.byG("settings_sex")).WqI = new Preference.a()
     {
       public final boolean a(Preference paramAnonymousPreference, Object paramAnonymousObject)
       {
@@ -109,9 +112,9 @@ public class NearbyPersonalInfoUI
         }
       }
     };
-    int i = Util.nullAs((Integer)g.aAh().azQ().get(12290, null), 0);
-    ChoicePreference localChoicePreference = (ChoicePreference)this.screen.bmg("settings_sex");
-    localChoicePreference.setTitle(Html.fromHtml(getString(2131765582) + "<font color='red'>*</font>"));
+    int i = Util.nullAs((Integer)h.aHG().aHp().b(12290, null), 0);
+    ChoicePreference localChoicePreference = (ChoicePreference)this.screen.byG("settings_sex");
+    localChoicePreference.setTitle(Html.fromHtml(getString(b.g.settings_sex) + "<font color='red'>*</font>"));
     switch (i)
     {
     default: 
@@ -142,20 +145,20 @@ public class NearbyPersonalInfoUI
     AppMethodBeat.o(89887);
   }
   
-  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(89890);
     paramf = paramPreference.mKey;
     if ("settings_district".equals(paramf))
     {
-      com.tencent.mm.plugin.nearby.a.jRt.b(null, this);
+      com.tencent.mm.plugin.nearby.a.mIG.b(null, this);
       AppMethodBeat.o(89890);
       return true;
     }
     if ("settings_signature".equals(paramf))
     {
-      com.tencent.mm.plugin.nearby.a.jRt.bX(this);
-      overridePendingTransition(2130772132, 2130772131);
+      com.tencent.mm.plugin.nearby.a.mIG.bV(this);
+      overridePendingTransition(b.a.push_up_in, b.a.push_empty_out);
       AppMethodBeat.o(89890);
       return true;
     }
@@ -166,19 +169,19 @@ public class NearbyPersonalInfoUI
   public void onResume()
   {
     AppMethodBeat.i(89889);
-    Object localObject2 = bz.aWj();
-    Object localObject1 = ((bz)localObject2).getProvince();
-    localObject2 = ((bz)localObject2).getCity();
-    Preference localPreference = this.screen.bmg("settings_district");
-    localPreference.setSummary(aa.It((String)localObject1) + " " + (String)localObject2);
-    localPreference.setTitle(Html.fromHtml(getString(2131765375) + "<font color='red'>*</font>"));
-    localPreference = this.screen.bmg("settings_signature");
-    localObject2 = Util.nullAsNil((String)g.aAh().azQ().get(12291, null));
+    Object localObject2 = ca.bfn();
+    Object localObject1 = ((ca)localObject2).getProvince();
+    localObject2 = ((ca)localObject2).getCity();
+    Preference localPreference = this.screen.byG("settings_district");
+    localPreference.aF(aa.PL((String)localObject1) + " " + (String)localObject2);
+    localPreference.setTitle(Html.fromHtml(getString(b.g.settings_district) + "<font color='red'>*</font>"));
+    localPreference = this.screen.byG("settings_signature");
+    localObject2 = Util.nullAsNil((String)h.aHG().aHp().b(12291, null));
     localObject1 = localObject2;
     if (((String)localObject2).length() <= 0) {
-      localObject1 = getString(2131765591);
+      localObject1 = getString(b.g.settings_signature_empty);
     }
-    localPreference.setSummary(com.tencent.mm.pluginsdk.ui.span.l.c(this, (CharSequence)localObject1));
+    localPreference.aF(l.c(this, (CharSequence)localObject1));
     super.onResume();
     AppMethodBeat.o(89889);
   }
@@ -191,7 +194,7 @@ public class NearbyPersonalInfoUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.ui.NearbyPersonalInfoUI
  * JD-Core Version:    0.7.0.1
  */

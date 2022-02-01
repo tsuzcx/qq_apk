@@ -11,15 +11,15 @@ final class ManageChatroomUI$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(194129);
-    this.gwA.finish();
-    AppMethodBeat.o(194129);
+    AppMethodBeat.i(187317);
+    this.jaN.finish();
+    AppMethodBeat.o(187317);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.ManageChatroomUI.3
  * JD-Core Version:    0.7.0.1
  */

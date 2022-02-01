@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.exdevice.model;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.eo;
+import com.tencent.mm.f.a.ev;
 import com.tencent.mm.plugin.exdevice.service.n.a;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -10,21 +10,21 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class a
   extends n.a
 {
-  private static final a rxR;
+  private static final a vdx;
   
   static
   {
     AppMethodBeat.i(23196);
-    rxR = new a();
+    vdx = new a();
     AppMethodBeat.o(23196);
   }
   
-  public static a cKp()
+  public static a cYZ()
   {
-    return rxR;
+    return vdx;
   }
   
-  public final Bundle n(int paramInt, Bundle paramBundle)
+  public final Bundle p(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(23195);
     Log.i("MicroMsg.exdevice.ExDeviceInvokerHandler", "onExdeviceInvoke, action code = %d", new Object[] { Integer.valueOf(paramInt) });
@@ -55,8 +55,8 @@ public final class a
       }
       else
       {
-        paramBundle = new eo();
-        paramBundle.dHV.dHW = paramInt;
+        paramBundle = new ev();
+        paramBundle.fAM.fAN = paramInt;
         if (!EventCenter.instance.publish(paramBundle)) {
           Log.e("MicroMsg.exdevice.ExDeviceInvokerHandler", "EventCenter.instance.publish failed!!!");
         }

@@ -9,38 +9,38 @@ import java.util.Map;
 public final class k
   extends a
 {
-  private static String END = "img";
-  private static String oNQ = "icon_";
-  private static String oNR = "iphone";
-  private static String oNS = "android";
-  private static String oNT = "s60v3";
-  private static String oNU = "s60v5";
-  private static k oNV;
-  private Map<String, a> oNW;
+  private static String rPM = "icon_";
+  private static String rPN = "img";
+  private static String rPO = "iphone";
+  private static String rPP = "android";
+  private static String rPQ = "s60v3";
+  private static String rPR = "s60v5";
+  private static k rPS;
+  private Map<String, a> rPT;
   
   public k()
   {
     AppMethodBeat.i(21534);
-    this.oNW = null;
-    cfY();
+    this.rPT = null;
+    ctk();
     AppMethodBeat.o(21534);
   }
   
-  public static a agG(String paramString)
+  public static a aok(String paramString)
   {
     AppMethodBeat.i(21532);
-    if (oNV == null) {
-      oNV = new k();
+    if (rPS == null) {
+      rPS = new k();
     }
-    Object localObject = oNV;
-    if (((k)localObject).oNW == null) {
-      ((k)localObject).cfY();
+    Object localObject = rPS;
+    if (((k)localObject).rPT == null) {
+      ((k)localObject).ctk();
     }
-    localObject = ((k)localObject).oNW.values().iterator();
+    localObject = ((k)localObject).rPT.values().iterator();
     while (((Iterator)localObject).hasNext())
     {
       a locala = (a)((Iterator)localObject).next();
-      if ((locala.oNY != null) && (locala.oNY.equals(paramString)))
+      if ((locala.rPV != null) && (locala.rPV.equals(paramString)))
       {
         AppMethodBeat.o(21532);
         return locala;
@@ -50,26 +50,26 @@ public final class k
     return null;
   }
   
-  public static a agH(String paramString)
+  public static a aol(String paramString)
   {
     AppMethodBeat.i(21533);
-    if (oNV == null)
+    if (rPS == null)
     {
       localk = new k();
-      oNV = localk;
+      rPS = localk;
       a(localk);
     }
-    k localk = oNV;
-    if (localk.oNW == null) {
-      localk.cfY();
+    k localk = rPS;
+    if (localk.rPT == null) {
+      localk.ctk();
     }
-    paramString = (a)localk.oNW.get(paramString);
+    paramString = (a)localk.rPT.get(paramString);
     AppMethodBeat.o(21533);
     return paramString;
   }
   
   /* Error */
-  private void cfY()
+  private void ctk()
   {
     // Byte code:
     //   0: iconst_0
@@ -82,7 +82,7 @@ public final class k
     //   11: new 113	java/util/HashMap
     //   14: dup
     //   15: invokespecial 114	java/util/HashMap:<init>	()V
-    //   18: putfield 57	com/tencent/mm/plugin/backup/f/k:oNW	Ljava/util/Map;
+    //   18: putfield 57	com/tencent/mm/plugin/backup/f/k:rPT	Ljava/util/Map;
     //   21: invokestatic 120	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
     //   24: invokevirtual 126	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   27: astore_3
@@ -113,7 +113,7 @@ public final class k
     //   77: aload_3
     //   78: astore 6
     //   80: aload 7
-    //   82: getstatic 25	com/tencent/mm/plugin/backup/f/k:oNQ	Ljava/lang/String;
+    //   82: getstatic 25	com/tencent/mm/plugin/backup/f/k:rPM	Ljava/lang/String;
     //   85: invokevirtual 154	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   88: ifeq -34 -> 54
     //   91: aload 4
@@ -138,7 +138,7 @@ public final class k
     //   130: aload_3
     //   131: astore 6
     //   133: aload 8
-    //   135: getstatic 29	com/tencent/mm/plugin/backup/f/k:END	Ljava/lang/String;
+    //   135: getstatic 29	com/tencent/mm/plugin/backup/f/k:rPN	Ljava/lang/String;
     //   138: invokevirtual 154	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   141: ifne +314 -> 455
     //   144: aload 4
@@ -174,7 +174,7 @@ public final class k
     //   198: aload_3
     //   199: astore 6
     //   201: aload 8
-    //   203: getstatic 33	com/tencent/mm/plugin/backup/f/k:oNR	Ljava/lang/String;
+    //   203: getstatic 33	com/tencent/mm/plugin/backup/f/k:rPO	Ljava/lang/String;
     //   206: invokevirtual 173	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   209: ifeq +109 -> 318
     //   212: aload 4
@@ -183,15 +183,15 @@ public final class k
     //   217: astore 6
     //   219: aload 7
     //   221: aload 9
-    //   223: putfield 93	com/tencent/mm/plugin/backup/f/k$a:oNY	Ljava/lang/String;
+    //   223: putfield 93	com/tencent/mm/plugin/backup/f/k$a:rPV	Ljava/lang/String;
     //   226: aload 4
     //   228: astore 5
     //   230: aload_3
     //   231: astore 6
     //   233: aload_0
-    //   234: getfield 57	com/tencent/mm/plugin/backup/f/k:oNW	Ljava/util/Map;
+    //   234: getfield 57	com/tencent/mm/plugin/backup/f/k:rPT	Ljava/util/Map;
     //   237: aload 7
-    //   239: getfield 176	com/tencent/mm/plugin/backup/f/k$a:oNX	Ljava/lang/String;
+    //   239: getfield 176	com/tencent/mm/plugin/backup/f/k$a:rPU	Ljava/lang/String;
     //   242: aload 7
     //   244: invokeinterface 180 3 0
     //   249: pop
@@ -233,7 +233,7 @@ public final class k
     //   322: aload_3
     //   323: astore 6
     //   325: aload 8
-    //   327: getstatic 37	com/tencent/mm/plugin/backup/f/k:oNS	Ljava/lang/String;
+    //   327: getstatic 37	com/tencent/mm/plugin/backup/f/k:rPP	Ljava/lang/String;
     //   330: invokevirtual 173	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   333: ifeq +52 -> 385
     //   336: aload 4
@@ -242,7 +242,7 @@ public final class k
     //   341: astore 6
     //   343: aload 7
     //   345: aload 9
-    //   347: putfield 176	com/tencent/mm/plugin/backup/f/k$a:oNX	Ljava/lang/String;
+    //   347: putfield 176	com/tencent/mm/plugin/backup/f/k$a:rPU	Ljava/lang/String;
     //   350: goto -124 -> 226
     //   353: astore 4
     //   355: aload 6
@@ -264,7 +264,7 @@ public final class k
     //   389: aload_3
     //   390: astore 6
     //   392: aload 8
-    //   394: getstatic 41	com/tencent/mm/plugin/backup/f/k:oNT	Ljava/lang/String;
+    //   394: getstatic 41	com/tencent/mm/plugin/backup/f/k:rPQ	Ljava/lang/String;
     //   397: invokevirtual 173	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   400: ifeq +20 -> 420
     //   403: aload 4
@@ -273,14 +273,14 @@ public final class k
     //   408: astore 6
     //   410: aload 7
     //   412: aload 9
-    //   414: putfield 214	com/tencent/mm/plugin/backup/f/k$a:oNZ	Ljava/lang/String;
+    //   414: putfield 214	com/tencent/mm/plugin/backup/f/k$a:rPW	Ljava/lang/String;
     //   417: goto -191 -> 226
     //   420: aload 4
     //   422: astore 5
     //   424: aload_3
     //   425: astore 6
     //   427: aload 8
-    //   429: getstatic 45	com/tencent/mm/plugin/backup/f/k:oNU	Ljava/lang/String;
+    //   429: getstatic 45	com/tencent/mm/plugin/backup/f/k:rPR	Ljava/lang/String;
     //   432: invokevirtual 173	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   435: ifeq -209 -> 226
     //   438: aload 4
@@ -289,7 +289,7 @@ public final class k
     //   443: astore 6
     //   445: aload 7
     //   447: aload 9
-    //   449: putfield 217	com/tencent/mm/plugin/backup/f/k$a:oOa	Ljava/lang/String;
+    //   449: putfield 217	com/tencent/mm/plugin/backup/f/k$a:rPX	Ljava/lang/String;
     //   452: goto -226 -> 226
     //   455: aload 4
     //   457: astore 5
@@ -430,32 +430,32 @@ public final class k
     //   35	54	554	java/io/IOException
   }
   
-  public final void ceH()
+  public final void crU()
   {
-    oNV = null;
+    rPS = null;
   }
   
   public static final class a
   {
-    public String oNX = "";
-    public String oNY = "";
-    public String oNZ = "";
-    public String oOa = "";
+    public String rPU = "";
+    public String rPV = "";
+    public String rPW = "";
+    public String rPX = "";
     
     public a() {}
     
     public a(String paramString1, String paramString2, String paramString3, String paramString4)
     {
-      this.oNX = paramString1;
-      this.oNY = paramString2;
-      this.oNZ = paramString3;
-      this.oOa = paramString4;
+      this.rPU = paramString1;
+      this.rPV = paramString2;
+      this.rPW = paramString3;
+      this.rPX = paramString4;
     }
     
     public final String toString()
     {
       AppMethodBeat.i(21531);
-      String str = this.oNX + " " + this.oNY + " " + this.oNZ + " " + this.oOa;
+      String str = this.rPU + " " + this.rPV + " " + this.rPW + " " + this.rPX;
       AppMethodBeat.o(21531);
       return str;
     }
@@ -463,7 +463,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.f.k
  * JD-Core Version:    0.7.0.1
  */

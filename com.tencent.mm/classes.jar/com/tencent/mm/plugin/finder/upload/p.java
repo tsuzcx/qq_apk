@@ -1,77 +1,77 @@
 package com.tencent.mm.plugin.finder.upload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aqp;
-import com.tencent.mm.protocal.protobuf.arm;
-import com.tencent.mm.protocal.protobuf.axt;
-import com.tencent.mm.protocal.protobuf.azs;
-import com.tencent.mm.protocal.protobuf.azy;
-import com.tencent.mm.protocal.protobuf.cjj;
-import com.tencent.mm.protocal.protobuf.cjk;
+import com.tencent.mm.protocal.protobuf.asl;
+import com.tencent.mm.protocal.protobuf.ati;
+import com.tencent.mm.protocal.protobuf.bdm;
+import com.tencent.mm.protocal.protobuf.bfv;
+import com.tencent.mm.protocal.protobuf.bge;
+import com.tencent.mm.protocal.protobuf.cse;
+import com.tencent.mm.protocal.protobuf.csf;
 import java.util.ArrayList;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/upload/HoldingPostData;", "", "mediaType", "", "description", "", "localContent", "Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;", "location", "Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "extendedReading", "Lcom/tencent/mm/protocal/protobuf/FinderExtendedReading;", "originalFlag", "refFeed", "Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "isFromCamera", "", "videoPathBeforeCut", "atContactList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/LocalFinderAtContact;", "isLongVideo", "isNewsFeed", "fromAppInfo", "Lcom/tencent/mm/protocal/protobuf/FinderFromAppInfo;", "remoteUrl", "paramsJson", "sdkShareType", "activityEvent", "Lcom/tencent/mm/protocal/protobuf/FinderObjectEventDesc;", "(ILjava/lang/String;Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;Lcom/tencent/mm/protocal/protobuf/FinderLocation;Lcom/tencent/mm/protocal/protobuf/FinderExtendedReading;ILcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;ZLjava/lang/String;Ljava/util/ArrayList;ZZLcom/tencent/mm/protocal/protobuf/FinderFromAppInfo;Ljava/lang/String;Ljava/lang/String;ILcom/tencent/mm/protocal/protobuf/FinderObjectEventDesc;)V", "getActivityEvent", "()Lcom/tencent/mm/protocal/protobuf/FinderObjectEventDesc;", "getAtContactList", "()Ljava/util/ArrayList;", "getDescription", "()Ljava/lang/String;", "getExtendedReading", "()Lcom/tencent/mm/protocal/protobuf/FinderExtendedReading;", "getFromAppInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderFromAppInfo;", "()Z", "getLocalContent", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;", "getLocation", "()Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "getMediaType", "()I", "getOriginalFlag", "getParamsJson", "getRefFeed", "()Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "getRemoteUrl", "getSdkShareType", "getVideoPathBeforeCut", "component1", "component10", "component11", "component12", "component13", "component14", "component15", "component16", "component17", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/upload/HoldingPostData;", "", "mediaType", "", "description", "", "localContent", "Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;", "location", "Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "extendedReading", "Lcom/tencent/mm/protocal/protobuf/FinderExtendedReading;", "originalFlag", "refFeed", "Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "isFromCamera", "", "videoPathBeforeCut", "atContactList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/LocalFinderAtContact;", "isLongVideo", "isNewsFeed", "fromAppInfo", "Lcom/tencent/mm/protocal/protobuf/FinderFromAppInfo;", "remoteUrl", "paramsJson", "sdkShareType", "activityEvent", "Lcom/tencent/mm/protocal/protobuf/FinderObjectEventDesc;", "(ILjava/lang/String;Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;Lcom/tencent/mm/protocal/protobuf/FinderLocation;Lcom/tencent/mm/protocal/protobuf/FinderExtendedReading;ILcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;ZLjava/lang/String;Ljava/util/ArrayList;ZZLcom/tencent/mm/protocal/protobuf/FinderFromAppInfo;Ljava/lang/String;Ljava/lang/String;ILcom/tencent/mm/protocal/protobuf/FinderObjectEventDesc;)V", "getActivityEvent", "()Lcom/tencent/mm/protocal/protobuf/FinderObjectEventDesc;", "getAtContactList", "()Ljava/util/ArrayList;", "getDescription", "()Ljava/lang/String;", "getExtendedReading", "()Lcom/tencent/mm/protocal/protobuf/FinderExtendedReading;", "getFromAppInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderFromAppInfo;", "()Z", "getLocalContent", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;", "getLocation", "()Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "getMediaType", "()I", "getOriginalFlag", "getParamsJson", "getRefFeed", "()Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "getRemoteUrl", "getSdkShareType", "getVideoPathBeforeCut", "component1", "component10", "component11", "component12", "component13", "component14", "component15", "component16", "component17", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "plugin-finder_release"})
 public final class p
 {
+  final csf ABa;
+  final asl ABb;
+  final bge ABc;
+  final boolean ABd;
+  final String ABe;
+  final ArrayList<cse> ABf;
+  final boolean ABg;
+  final ati ABh;
+  final bfv ABi;
   final String description;
   public final boolean isLongVideo;
-  final axt location;
+  final bdm location;
   public final int mediaType;
   final int originalFlag;
   public final int sdkShareType;
-  final String tsW;
-  final String tsX;
-  final boolean vTA;
-  final String vTB;
-  final ArrayList<cjj> vTC;
-  final boolean vTD;
-  final arm vTE;
-  final azs vTF;
-  final cjk vTx;
-  final aqp vTy;
-  final azy vTz;
+  final String xaL;
+  final String xaM;
   
-  public p(int paramInt1, String paramString1, cjk paramcjk, axt paramaxt, aqp paramaqp, int paramInt2, azy paramazy, boolean paramBoolean1, String paramString2, ArrayList<cjj> paramArrayList, boolean paramBoolean2, boolean paramBoolean3, arm paramarm, String paramString3, String paramString4, int paramInt3, azs paramazs)
+  public p(int paramInt1, String paramString1, csf paramcsf, bdm parambdm, asl paramasl, int paramInt2, bge parambge, boolean paramBoolean1, String paramString2, ArrayList<cse> paramArrayList, boolean paramBoolean2, boolean paramBoolean3, ati paramati, String paramString3, String paramString4, int paramInt3, bfv parambfv)
   {
-    AppMethodBeat.i(253135);
+    AppMethodBeat.i(278760);
     this.mediaType = paramInt1;
     this.description = paramString1;
-    this.vTx = paramcjk;
-    this.location = paramaxt;
-    this.vTy = paramaqp;
+    this.ABa = paramcsf;
+    this.location = parambdm;
+    this.ABb = paramasl;
     this.originalFlag = paramInt2;
-    this.vTz = paramazy;
-    this.vTA = paramBoolean1;
-    this.vTB = paramString2;
-    this.vTC = paramArrayList;
+    this.ABc = parambge;
+    this.ABd = paramBoolean1;
+    this.ABe = paramString2;
+    this.ABf = paramArrayList;
     this.isLongVideo = paramBoolean2;
-    this.vTD = paramBoolean3;
-    this.vTE = paramarm;
-    this.tsW = paramString3;
-    this.tsX = paramString4;
+    this.ABg = paramBoolean3;
+    this.ABh = paramati;
+    this.xaL = paramString3;
+    this.xaM = paramString4;
     this.sdkShareType = paramInt3;
-    this.vTF = paramazs;
-    AppMethodBeat.o(253135);
+    this.ABi = parambfv;
+    AppMethodBeat.o(278760);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(253138);
+    AppMethodBeat.i(278764);
     if (this != paramObject)
     {
       if ((paramObject instanceof p))
       {
         paramObject = (p)paramObject;
-        if ((this.mediaType != paramObject.mediaType) || (!kotlin.g.b.p.j(this.description, paramObject.description)) || (!kotlin.g.b.p.j(this.vTx, paramObject.vTx)) || (!kotlin.g.b.p.j(this.location, paramObject.location)) || (!kotlin.g.b.p.j(this.vTy, paramObject.vTy)) || (this.originalFlag != paramObject.originalFlag) || (!kotlin.g.b.p.j(this.vTz, paramObject.vTz)) || (this.vTA != paramObject.vTA) || (!kotlin.g.b.p.j(this.vTB, paramObject.vTB)) || (!kotlin.g.b.p.j(this.vTC, paramObject.vTC)) || (this.isLongVideo != paramObject.isLongVideo) || (this.vTD != paramObject.vTD) || (!kotlin.g.b.p.j(this.vTE, paramObject.vTE)) || (!kotlin.g.b.p.j(this.tsW, paramObject.tsW)) || (!kotlin.g.b.p.j(this.tsX, paramObject.tsX)) || (this.sdkShareType != paramObject.sdkShareType) || (!kotlin.g.b.p.j(this.vTF, paramObject.vTF))) {}
+        if ((this.mediaType != paramObject.mediaType) || (!kotlin.g.b.p.h(this.description, paramObject.description)) || (!kotlin.g.b.p.h(this.ABa, paramObject.ABa)) || (!kotlin.g.b.p.h(this.location, paramObject.location)) || (!kotlin.g.b.p.h(this.ABb, paramObject.ABb)) || (this.originalFlag != paramObject.originalFlag) || (!kotlin.g.b.p.h(this.ABc, paramObject.ABc)) || (this.ABd != paramObject.ABd) || (!kotlin.g.b.p.h(this.ABe, paramObject.ABe)) || (!kotlin.g.b.p.h(this.ABf, paramObject.ABf)) || (this.isLongVideo != paramObject.isLongVideo) || (this.ABg != paramObject.ABg) || (!kotlin.g.b.p.h(this.ABh, paramObject.ABh)) || (!kotlin.g.b.p.h(this.xaL, paramObject.xaL)) || (!kotlin.g.b.p.h(this.xaM, paramObject.xaM)) || (this.sdkShareType != paramObject.sdkShareType) || (!kotlin.g.b.p.h(this.ABi, paramObject.ABi))) {}
       }
     }
     else
     {
-      AppMethodBeat.o(253138);
+      AppMethodBeat.o(278764);
       return true;
     }
-    AppMethodBeat.o(253138);
+    AppMethodBeat.o(278764);
     return false;
   }
   
@@ -82,15 +82,15 @@ public final class p
   
   public final String toString()
   {
-    AppMethodBeat.i(253136);
-    String str = "HoldingPostData(mediaType=" + this.mediaType + ", description=" + this.description + ", localContent=" + this.vTx + ", location=" + this.location + ", extendedReading=" + this.vTy + ", originalFlag=" + this.originalFlag + ", refFeed=" + this.vTz + ", isFromCamera=" + this.vTA + ", videoPathBeforeCut=" + this.vTB + ", atContactList=" + this.vTC + ", isLongVideo=" + this.isLongVideo + ", isNewsFeed=" + this.vTD + ", fromAppInfo=" + this.vTE + ", remoteUrl=" + this.tsW + ", paramsJson=" + this.tsX + ", sdkShareType=" + this.sdkShareType + ", activityEvent=" + this.vTF + ")";
-    AppMethodBeat.o(253136);
+    AppMethodBeat.i(278762);
+    String str = "HoldingPostData(mediaType=" + this.mediaType + ", description=" + this.description + ", localContent=" + this.ABa + ", location=" + this.location + ", extendedReading=" + this.ABb + ", originalFlag=" + this.originalFlag + ", refFeed=" + this.ABc + ", isFromCamera=" + this.ABd + ", videoPathBeforeCut=" + this.ABe + ", atContactList=" + this.ABf + ", isLongVideo=" + this.isLongVideo + ", isNewsFeed=" + this.ABg + ", fromAppInfo=" + this.ABh + ", remoteUrl=" + this.xaL + ", paramsJson=" + this.xaM + ", sdkShareType=" + this.sdkShareType + ", activityEvent=" + this.ABi + ")";
+    AppMethodBeat.o(278762);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.upload.p
  * JD-Core Version:    0.7.0.1
  */

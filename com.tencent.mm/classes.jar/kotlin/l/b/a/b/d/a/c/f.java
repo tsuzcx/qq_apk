@@ -10,8 +10,8 @@ public final class f
   public static final g a(h paramh, d paramd)
   {
     AppMethodBeat.i(57753);
-    p.h(paramh, "$this$resolveAnnotations");
-    p.h(paramd, "annotationsOwner");
+    p.k(paramh, "$this$resolveAnnotations");
+    p.k(paramd, "annotationsOwner");
     paramh = (g)new e(paramh, paramd);
     AppMethodBeat.o(57753);
     return paramh;
@@ -19,7 +19,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.c.f
  * JD-Core Version:    0.7.0.1
  */

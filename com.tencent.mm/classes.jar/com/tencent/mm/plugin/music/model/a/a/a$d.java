@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.music.model.a.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.m;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.plugin.music.model.e.c;
 import com.tencent.mm.plugin.music.model.e.d;
@@ -10,7 +10,7 @@ import com.tencent.mm.plugin.music.model.o;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a$d
-  implements k<IPCString, IPCString>
+  implements m<IPCString, IPCString>
 {
   private static IPCString d(IPCString paramIPCString)
   {
@@ -19,7 +19,7 @@ public final class a$d
     {
       Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getMusicMIMETypeByMusicId Task, musicId:%s", new Object[] { paramIPCString });
       paramIPCString = paramIPCString.value;
-      paramIPCString = o.euE().aHX(paramIPCString);
+      paramIPCString = o.feX().aSn(paramIPCString);
       if (paramIPCString == null)
       {
         Log.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "getMusicMIMETypeByMusicId pMusic is null!'");
@@ -53,7 +53,7 @@ public final class a$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.a.a.a.d
  * JD-Core Version:    0.7.0.1
  */

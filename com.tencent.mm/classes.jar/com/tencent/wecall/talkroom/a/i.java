@@ -1,6 +1,6 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.a.a.e;
+import com.google.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.b.a.a.a.af;
 import com.tencent.pb.common.b.a.a.a.g;
@@ -19,11 +19,11 @@ public final class i
     try
     {
       localg.groupId = paramString;
-      localg.GXO = paramInt1;
-      localg.GXP = paramLong;
-      localg.bDZ = paramInt2;
-      this.mNetType = 3;
-      this.RCJ = c.hqY().brj(paramString);
+      localg.NOc = paramInt1;
+      localg.NOd = paramLong;
+      localg.bnA = paramInt2;
+      aAc(3);
+      aAd(c.iuI().bEi(paramString));
       c(181, localg);
       AppMethodBeat.o(62526);
       return;
@@ -37,7 +37,7 @@ public final class i
     }
   }
   
-  public final Object cO(byte[] paramArrayOfByte)
+  public final Object dn(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62527);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -65,7 +65,7 @@ public final class i
     return 207;
   }
   
-  public final String hiV()
+  public final String ikF()
   {
     return "CsCmd.Cmd_V_CSRejectEnterVoiceRoomReq";
   }

@@ -28,7 +28,7 @@ public class MutableCompositionTrack
   private int findSegmentIndexAt(CMTime paramCMTime, boolean paramBoolean)
   {
     int k = 0;
-    AppMethodBeat.i(217684);
+    AppMethodBeat.i(188467);
     CMTime localCMTime = CMTime.CMTimeZero;
     Iterator localIterator = this.segments.iterator();
     int i = 0;
@@ -54,20 +54,20 @@ public class MutableCompositionTrack
     {
       if (j != 0)
       {
-        AppMethodBeat.o(217684);
+        AppMethodBeat.o(188467);
         return i;
         localCMTime = localCompositionTrackSegment.timeRange.getEnd();
         i += 1;
         break;
       }
-      AppMethodBeat.o(217684);
+      AppMethodBeat.o(188467);
       return -1;
     }
   }
   
   private CMTime getSegmentStartCMTime(int paramInt)
   {
-    AppMethodBeat.i(217686);
+    AppMethodBeat.i(188469);
     CMTime localCMTime = CMTime.CMTimeZero;
     int i = 0;
     while ((i < paramInt) && (i < this.segments.size()))
@@ -75,13 +75,13 @@ public class MutableCompositionTrack
       localCMTime = localCMTime.add(((CompositionTrackSegment)this.segments.get(i)).getScaleDuration());
       i += 1;
     }
-    AppMethodBeat.o(217686);
+    AppMethodBeat.o(188469);
     return localCMTime;
   }
   
   private long getSegmentStartTime(int paramInt)
   {
-    AppMethodBeat.i(217685);
+    AppMethodBeat.i(188468);
     CMTime localCMTime = CMTime.CMTimeZero;
     int i = 0;
     while ((i < paramInt) && (i < this.segments.size()))
@@ -90,20 +90,20 @@ public class MutableCompositionTrack
       i += 1;
     }
     long l = localCMTime.getTimeUs();
-    AppMethodBeat.o(217685);
+    AppMethodBeat.o(188468);
     return l;
   }
   
   private void insertSegment(CompositionTrackSegment paramCompositionTrackSegment, int paramInt)
   {
-    AppMethodBeat.i(217680);
+    AppMethodBeat.i(188463);
     if (paramInt >= 0) {
       this.segments.add(paramInt, paramCompositionTrackSegment);
     }
     for (;;)
     {
       updateTimeRange();
-      AppMethodBeat.o(217680);
+      AppMethodBeat.o(188463);
       return;
       this.segments.add(paramCompositionTrackSegment);
     }
@@ -111,11 +111,11 @@ public class MutableCompositionTrack
   
   private void insertTimeRange(CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2, AssetTrack paramAssetTrack, int paramInt)
   {
-    AppMethodBeat.i(217679);
+    AppMethodBeat.i(188462);
     if ((paramAssetTrack instanceof CompositionTrack))
     {
       insertTimeRange(paramCMTimeRange1, paramCMTimeRange2, (CompositionTrack)paramAssetTrack, paramInt);
-      AppMethodBeat.o(217679);
+      AppMethodBeat.o(188462);
       return;
     }
     if (paramAssetTrack != null)
@@ -129,7 +129,7 @@ public class MutableCompositionTrack
     for (;;)
     {
       updateTimeRange();
-      AppMethodBeat.o(217679);
+      AppMethodBeat.o(188462);
       return;
       paramCMTimeRange1 = new CompositionTrackSegment(paramCMTimeRange2);
       break;
@@ -140,7 +140,7 @@ public class MutableCompositionTrack
   
   private void insertTimeRange(CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2, CompositionTrack paramCompositionTrack, int paramInt)
   {
-    AppMethodBeat.i(217681);
+    AppMethodBeat.i(188464);
     CMTime localCMTime2 = paramCMTimeRange1.getStart();
     CMTime localCMTime1 = paramCMTimeRange1.getEnd();
     Object localObject1 = paramCMTimeRange2.getStart();
@@ -198,12 +198,12 @@ public class MutableCompositionTrack
       this.segments.add(paramCompositionTrack);
     }
     updateTimeRange();
-    AppMethodBeat.o(217681);
+    AppMethodBeat.o(188464);
   }
   
   private CompositionTrackSegment[] split(CompositionTrackSegment paramCompositionTrackSegment, CMTime paramCMTime)
   {
-    AppMethodBeat.i(217687);
+    AppMethodBeat.i(188470);
     if ((paramCompositionTrackSegment != null) && (!paramCompositionTrackSegment.timeRange.getDuration().smallThan(paramCMTime)))
     {
       float f = (float)paramCMTime.getTimeUs() * 1.0F / (float)paramCompositionTrackSegment.timeRange.getDurationUs();
@@ -215,17 +215,17 @@ public class MutableCompositionTrack
         localObject = new CompositionTrackSegment(paramCompositionTrackSegment.getSourcePath(), paramCompositionTrackSegment.getSourceTrackID(), arrayOfCMTimeRange[1], localObject[1], paramCompositionTrackSegment.getSourceType());
         localCompositionTrackSegment.scaleDuration = paramCMTime;
         ((CompositionTrackSegment)localObject).scaleDuration = paramCompositionTrackSegment.scaleDuration.sub(paramCMTime);
-        AppMethodBeat.o(217687);
+        AppMethodBeat.o(188470);
         return new CompositionTrackSegment[] { localCompositionTrackSegment, localObject };
       }
     }
-    AppMethodBeat.o(217687);
+    AppMethodBeat.o(188470);
     return null;
   }
   
   private void updateSegmentStartTimeAfterInserted(CMTime paramCMTime, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(217682);
+    AppMethodBeat.i(188465);
     int i = findSegmentIndexAt(paramCMTime, false);
     if ((i >= 0) && (i < this.segments.size()))
     {
@@ -238,12 +238,12 @@ public class MutableCompositionTrack
         i += 1;
       }
     }
-    AppMethodBeat.o(217682);
+    AppMethodBeat.o(188465);
   }
   
   private void updateSegmentsStartTimeAfterRemoved(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(217683);
+    AppMethodBeat.i(188466);
     int i = findSegmentIndexAt(paramCMTimeRange.getStart(), false);
     if ((i >= 0) && (i < this.segments.size())) {
       while (i < this.segments.size())
@@ -254,29 +254,29 @@ public class MutableCompositionTrack
         i += 1;
       }
     }
-    AppMethodBeat.o(217683);
+    AppMethodBeat.o(188466);
   }
   
   private void updateTimeRange()
   {
-    AppMethodBeat.i(217678);
+    AppMethodBeat.i(188461);
     if ((this.segments != null) && (this.segments.size() > 0))
     {
       this.timeRange = new CMTimeRange(((CompositionTrackSegment)this.segments.get(0)).timeRange.getStart(), getDuration());
-      AppMethodBeat.o(217678);
+      AppMethodBeat.o(188461);
       return;
     }
     CMTime localCMTime = CMTime.CMTimeZero;
     this.timeRange = new CMTimeRange(localCMTime, localCMTime);
-    AppMethodBeat.o(217678);
+    AppMethodBeat.o(188461);
   }
   
   public void clipRangeAndRemoveOutRange(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(217677);
+    AppMethodBeat.i(188460);
     if ((paramCMTimeRange == null) || (paramCMTimeRange.getDuration().getTimeUs() <= 0L) || (this.segments == null) || (this.segments.size() == 0))
     {
-      AppMethodBeat.o(217677);
+      AppMethodBeat.o(188460);
       return;
     }
     Object localObject1 = paramCMTimeRange.getStart();
@@ -284,7 +284,7 @@ public class MutableCompositionTrack
     int k = findSegmentIndexAt((CMTime)localObject1, false);
     if (k == -1)
     {
-      AppMethodBeat.o(217677);
+      AppMethodBeat.o(188460);
       return;
     }
     int i = findSegmentIndexAt((CMTime)localObject2, false);
@@ -324,14 +324,14 @@ public class MutableCompositionTrack
           break;
         }
       }
-      AppMethodBeat.o(217677);
+      AppMethodBeat.o(188460);
       return;
     }
   }
   
   public CMTime getDuration()
   {
-    AppMethodBeat.i(217671);
+    AppMethodBeat.i(188454);
     CMTime localCMTime = CMTime.CMTimeZero;
     int i = 0;
     while (i < this.segments.size())
@@ -339,7 +339,7 @@ public class MutableCompositionTrack
       localCMTime = localCMTime.add(((CompositionTrackSegment)this.segments.get(i)).getScaleDuration());
       i += 1;
     }
-    AppMethodBeat.o(217671);
+    AppMethodBeat.o(188454);
     return localCMTime;
   }
   
@@ -355,7 +355,7 @@ public class MutableCompositionTrack
   
   public void insertCompositionTrackSegment(CompositionTrackSegment paramCompositionTrackSegment)
   {
-    AppMethodBeat.i(217673);
+    AppMethodBeat.i(188456);
     if (((this.naturalSize == null) || (this.naturalSize.equals(CGSize.CGSizeZero))) && (paramCompositionTrackSegment.getSourceType() == 3) && (!TextUtils.isEmpty(paramCompositionTrackSegment.getSourcePath()))) {
       this.naturalSize = ImageDecoder.getDefaultOutputImageSize(paramCompositionTrackSegment.getSourcePath());
     }
@@ -367,7 +367,7 @@ public class MutableCompositionTrack
         this.segments.add(new CompositionTrackSegment(new CMTimeRange(CMTime.CMTimeZero, ((CMTimeRange)localObject2).getStart())));
       }
       insertSegment(paramCompositionTrackSegment, -1);
-      AppMethodBeat.o(217673);
+      AppMethodBeat.o(188456);
       return;
     }
     int i = findSegmentIndexAt((CMTime)localObject1, false);
@@ -405,19 +405,19 @@ public class MutableCompositionTrack
       }
     }
     updateTimeRange();
-    AppMethodBeat.o(217673);
+    AppMethodBeat.o(188456);
   }
   
   public void insertEmptyTimeRange(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(217674);
+    AppMethodBeat.i(188457);
     insertTimeRange(paramCMTimeRange, null, paramCMTimeRange.getStart());
-    AppMethodBeat.o(217674);
+    AppMethodBeat.o(188457);
   }
   
   public boolean insertTimeRange(CMTimeRange paramCMTimeRange, AssetTrack paramAssetTrack, CMTime paramCMTime)
   {
-    AppMethodBeat.i(217672);
+    AppMethodBeat.i(188455);
     if (this.timeRange == null)
     {
       localObject = CMTime.CMTimeZero;
@@ -432,12 +432,12 @@ public class MutableCompositionTrack
     if ((paramCMTime == CMTime.CMTimeInvalid) || (paramCMTime.getValue() < 0L))
     {
       insertTimeRange(paramCMTimeRange, new CMTimeRange(this.timeRange.getDuration(), paramCMTimeRange.getDuration()), paramAssetTrack, -1);
-      AppMethodBeat.o(217672);
+      AppMethodBeat.o(188455);
       return true;
     }
     if (paramCMTimeRange.getDuration().value <= 0L)
     {
-      AppMethodBeat.o(217672);
+      AppMethodBeat.o(188455);
       return false;
     }
     Object localObject = new CMTimeRange(paramCMTime, paramCMTimeRange.getDuration());
@@ -447,7 +447,7 @@ public class MutableCompositionTrack
         this.segments.add(new CompositionTrackSegment(new CMTimeRange(CMTime.CMTimeZero, paramCMTime)));
       }
       insertTimeRange(paramCMTimeRange, (CMTimeRange)localObject, paramAssetTrack, -1);
-      AppMethodBeat.o(217672);
+      AppMethodBeat.o(188455);
       return true;
     }
     int i = findSegmentIndexAt(paramCMTime, false);
@@ -462,7 +462,7 @@ public class MutableCompositionTrack
     for (;;)
     {
       updateTimeRange();
-      AppMethodBeat.o(217672);
+      AppMethodBeat.o(188455);
       return true;
       paramCMTime = split((CompositionTrackSegment)this.segments.remove(i), paramCMTime.sub(localCMTime));
       if (paramCMTime[1].scaleDuration.getTimeUs() > 0L) {
@@ -485,10 +485,10 @@ public class MutableCompositionTrack
   public void removeTimeRange(CMTimeRange paramCMTimeRange)
   {
     int i = 0;
-    AppMethodBeat.i(217675);
+    AppMethodBeat.i(188458);
     if ((paramCMTimeRange == null) || (!paramCMTimeRange.isLegal()))
     {
-      AppMethodBeat.o(217675);
+      AppMethodBeat.o(188458);
       return;
     }
     insertEmptyTimeRange(new CMTimeRange(paramCMTimeRange.getStart(), CMTime.CMTimeOne));
@@ -506,23 +506,23 @@ public class MutableCompositionTrack
     this.segments = localArrayList;
     updateTimeRange();
     updateSegmentsStartTimeAfterRemoved(paramCMTimeRange);
-    AppMethodBeat.o(217675);
+    AppMethodBeat.o(188458);
   }
   
   public void scaleTimeRange(CMTimeRange paramCMTimeRange, CMTime paramCMTime)
   {
-    AppMethodBeat.i(217676);
+    AppMethodBeat.i(188459);
     Object localObject3 = paramCMTimeRange.getStart();
     Object localObject2 = paramCMTimeRange.getEnd();
     if ((paramCMTimeRange.getDuration().getTimeUs() <= 0L) || (this.segments == null) || (this.segments.size() == 0))
     {
-      AppMethodBeat.o(217676);
+      AppMethodBeat.o(188459);
       return;
     }
     int j = findSegmentIndexAt(paramCMTimeRange.getStart(), false);
     if (j == -1)
     {
-      AppMethodBeat.o(217676);
+      AppMethodBeat.o(188459);
       return;
     }
     int i = findSegmentIndexAt(paramCMTimeRange.getEnd(), false);
@@ -626,7 +626,7 @@ public class MutableCompositionTrack
         }
       }
       updateTimeRange();
-      AppMethodBeat.o(217676);
+      AppMethodBeat.o(188459);
       return;
     }
   }
@@ -673,7 +673,7 @@ public class MutableCompositionTrack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.asset.MutableCompositionTrack
  * JD-Core Version:    0.7.0.1
  */

@@ -1,96 +1,91 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class eak
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public dck MZM;
-  public int MZN;
-  public int MZO;
-  public int MZP;
+  public String TVK;
+  public String TVL;
+  public String TiR;
+  public int rVx;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209816);
+    AppMethodBeat.i(91678);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.MZM != null)
-      {
-        paramVarArgs.ni(1, this.MZM.computeSize());
-        this.MZM.writeFields(paramVarArgs);
+      if (this.TiR != null) {
+        paramVarArgs.f(1, this.TiR);
       }
-      paramVarArgs.aM(2, this.MZN);
-      paramVarArgs.aM(3, this.MZO);
-      paramVarArgs.aM(4, this.MZP);
-      AppMethodBeat.o(209816);
+      if (this.TVL != null) {
+        paramVarArgs.f(2, this.TVL);
+      }
+      paramVarArgs.aY(3, this.rVx);
+      if (this.TVK != null) {
+        paramVarArgs.f(4, this.TVK);
+      }
+      AppMethodBeat.o(91678);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.MZM == null) {
-        break label446;
+      if (this.TiR == null) {
+        break label378;
       }
     }
-    label446:
-    for (paramInt = g.a.a.a.nh(1, this.MZM.computeSize()) + 0;; paramInt = 0)
+    label378:
+    for (paramInt = g.a.a.b.b.a.g(1, this.TiR) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bu(2, this.MZN);
-      int j = g.a.a.b.b.a.bu(3, this.MZO);
-      int k = g.a.a.b.b.a.bu(4, this.MZP);
-      AppMethodBeat.o(209816);
-      return paramInt + i + j + k;
+      int i = paramInt;
+      if (this.TVL != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.TVL);
+      }
+      i += g.a.a.b.b.a.bM(3, this.rVx);
+      paramInt = i;
+      if (this.TVK != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.TVK);
+      }
+      AppMethodBeat.o(91678);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(209816);
+        AppMethodBeat.o(91678);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         eak localeak = (eak)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(209816);
+          AppMethodBeat.o(91678);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new dck();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((dck)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localeak.MZM = ((dck)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(209816);
+          localeak.TiR = locala.abFh.readString();
+          AppMethodBeat.o(91678);
           return 0;
         case 2: 
-          localeak.MZN = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(209816);
+          localeak.TVL = locala.abFh.readString();
+          AppMethodBeat.o(91678);
           return 0;
         case 3: 
-          localeak.MZO = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(209816);
+          localeak.rVx = locala.abFh.AK();
+          AppMethodBeat.o(91678);
           return 0;
         }
-        localeak.MZP = ((g.a.a.a.a)localObject1).UbS.zi();
-        AppMethodBeat.o(209816);
+        localeak.TVK = locala.abFh.readString();
+        AppMethodBeat.o(91678);
         return 0;
       }
-      AppMethodBeat.o(209816);
+      AppMethodBeat.o(91678);
       return -1;
     }
   }

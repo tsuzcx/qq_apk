@@ -1,117 +1,153 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
+import java.util.LinkedList;
 
 public final class ezp
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public com.tencent.mm.bw.b KKz;
-  public String MRZ;
-  public long NvN;
-  public int Scene;
+  public String CMB;
+  public eae UzR;
+  public eae UzS;
+  public int ffF;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32559);
+    AppMethodBeat.i(32492);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.MRZ == null)
+      if (this.UzR == null)
       {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: Talker");
-        AppMethodBeat.o(32559);
+        paramVarArgs = new b("Not all required fields were included: Icon");
+        AppMethodBeat.o(32492);
         throw paramVarArgs;
       }
-      if (this.KKz == null)
+      if (this.UzS == null)
       {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: VoiceData");
-        AppMethodBeat.o(32559);
+        paramVarArgs = new b("Not all required fields were included: HDIcon");
+        AppMethodBeat.o(32492);
         throw paramVarArgs;
       }
-      if (this.MRZ != null) {
-        paramVarArgs.e(1, this.MRZ);
+      paramVarArgs.aY(1, this.ffF);
+      if (this.CMB != null) {
+        paramVarArgs.f(2, this.CMB);
       }
-      paramVarArgs.bb(2, this.NvN);
-      if (this.KKz != null) {
-        paramVarArgs.c(3, this.KKz);
+      if (this.UzR != null)
+      {
+        paramVarArgs.oE(3, this.UzR.computeSize());
+        this.UzR.writeFields(paramVarArgs);
       }
-      paramVarArgs.aM(4, this.Scene);
-      AppMethodBeat.o(32559);
+      if (this.UzS != null)
+      {
+        paramVarArgs.oE(4, this.UzS.computeSize());
+        this.UzS.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(32492);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.MRZ == null) {
-        break label472;
-      }
-    }
-    label472:
-    for (paramInt = g.a.a.b.b.a.f(1, this.MRZ) + 0;; paramInt = 0)
+    int i;
+    if (paramInt == 1)
     {
-      int i = paramInt + g.a.a.b.b.a.r(2, this.NvN);
+      i = g.a.a.b.b.a.bM(1, this.ffF) + 0;
       paramInt = i;
-      if (this.KKz != null) {
-        paramInt = i + g.a.a.b.b.a.b(3, this.KKz);
+      if (this.CMB != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.CMB);
       }
-      i = g.a.a.b.b.a.bu(4, this.Scene);
-      AppMethodBeat.o(32559);
-      return paramInt + i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
-          }
-        }
-        if (this.MRZ == null)
-        {
-          paramVarArgs = new g.a.a.b("Not all required fields were included: Talker");
-          AppMethodBeat.o(32559);
-          throw paramVarArgs;
-        }
-        if (this.KKz == null)
-        {
-          paramVarArgs = new g.a.a.b("Not all required fields were included: VoiceData");
-          AppMethodBeat.o(32559);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(32559);
-        return 0;
+      i = paramInt;
+      if (this.UzR != null) {
+        i = paramInt + g.a.a.a.oD(3, this.UzR.computeSize());
       }
-      if (paramInt == 3)
-      {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-        ezp localezp = (ezp)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(32559);
-          return -1;
-        case 1: 
-          localezp.MRZ = locala.UbS.readString();
-          AppMethodBeat.o(32559);
-          return 0;
-        case 2: 
-          localezp.NvN = locala.UbS.zl();
-          AppMethodBeat.o(32559);
-          return 0;
-        case 3: 
-          localezp.KKz = locala.UbS.hPo();
-          AppMethodBeat.o(32559);
-          return 0;
-        }
-        localezp.Scene = locala.UbS.zi();
-        AppMethodBeat.o(32559);
-        return 0;
+      paramInt = i;
+      if (this.UzS != null) {
+        paramInt = i + g.a.a.a.oD(4, this.UzS.computeSize());
       }
-      AppMethodBeat.o(32559);
-      return -1;
+      AppMethodBeat.o(32492);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.iUs();
+        }
+      }
+      if (this.UzR == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Icon");
+        AppMethodBeat.o(32492);
+        throw paramVarArgs;
+      }
+      if (this.UzS == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: HDIcon");
+        AppMethodBeat.o(32492);
+        throw paramVarArgs;
+      }
+      AppMethodBeat.o(32492);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      ezp localezp = (ezp)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      eae localeae;
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(32492);
+        return -1;
+      case 1: 
+        localezp.ffF = ((g.a.a.a.a)localObject).abFh.AK();
+        AppMethodBeat.o(32492);
+        return 0;
+      case 2: 
+        localezp.CMB = ((g.a.a.a.a)localObject).abFh.readString();
+        AppMethodBeat.o(32492);
+        return 0;
+      case 3: 
+        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          localeae = new eae();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localeae.dd((byte[])localObject);
+          }
+          localezp.UzR = localeae;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(32492);
+        return 0;
+      }
+      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject = (byte[])paramVarArgs.get(paramInt);
+        localeae = new eae();
+        if ((localObject != null) && (localObject.length > 0)) {
+          localeae.dd((byte[])localObject);
+        }
+        localezp.UzS = localeae;
+        paramInt += 1;
+      }
+      AppMethodBeat.o(32492);
+      return 0;
+    }
+    AppMethodBeat.o(32492);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ezp
  * JD-Core Version:    0.7.0.1
  */

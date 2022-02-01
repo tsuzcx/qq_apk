@@ -9,7 +9,7 @@ import kotlin.g.a.b;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/proxy/CgiEmojiTextSpamProxy;", "Lcom/tencent/mm/remoteservice/BaseClientRequest;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "(Lcom/tencent/mm/remoteservice/RemoteServiceProxy;)V", "TAG", "", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "shouldBlock", "", "getCallback", "()Lkotlin/jvm/functions/Function1;", "setCallback", "(Lkotlin/jvm/functions/Function1;)V", "cgiEmojiTextSpam", "text", "cgiEmojiTextSpamCallback", "cgiEmojiTextSpamRemote", "plugin-emojicapture_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/proxy/CgiEmojiTextSpamProxy;", "Lcom/tencent/mm/remoteservice/BaseClientRequest;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "(Lcom/tencent/mm/remoteservice/RemoteServiceProxy;)V", "TAG", "", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "shouldBlock", "", "getCallback", "()Lkotlin/jvm/functions/Function1;", "setCallback", "(Lkotlin/jvm/functions/Function1;)V", "cgiEmojiTextSpam", "text", "cgiEmojiTextSpamCallback", "cgiEmojiTextSpamRemote", "plugin-emojicapture_release"})
 public final class CgiEmojiTextSpamProxy
   extends com.tencent.mm.remoteservice.a
 {
@@ -63,7 +63,7 @@ public final class CgiEmojiTextSpamProxy
     this.callback = paramb;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -72,7 +72,7 @@ public final class CgiEmojiTextSpamProxy
     public final void run()
     {
       AppMethodBeat.i(377);
-      new com.tencent.mm.plugin.emojicapture.a.a(paramString).aYI().g((com.tencent.mm.vending.c.a)new com.tencent.mm.vending.c.a() {});
+      new com.tencent.mm.plugin.emojicapture.a.a(paramString).bhW().g((com.tencent.mm.vending.c.a)new com.tencent.mm.vending.c.a() {});
       AppMethodBeat.o(377);
     }
   }

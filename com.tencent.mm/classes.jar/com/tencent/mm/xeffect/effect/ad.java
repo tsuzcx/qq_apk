@@ -1,43 +1,40 @@
 package com.tencent.mm.xeffect.effect;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/mm/xeffect/effect/VLogEffect;", "", "ptr", "", "(J)V", "<set-?>", "id", "getId", "()J", "setId$renderlib_release", "getPtr", "setPtr", "timeRange", "Lcom/tencent/mm/xeffect/effect/EffectTimeRange;", "duration", "finalize", "", "getTimeRange", "setTimeRange", "start", "end", "type", "Lcom/tencent/mm/xeffect/effect/EffectType;", "renderlib_release"})
-public abstract class ad
+@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/effect/TextInfoEffect;", "", "getTextInfo", "Lcom/tencent/mm/xeffect/effect/EffectTextInfo;", "setTextInfo", "", "textInfo", "Default", "renderlib_release"})
+public abstract interface ad
 {
-  public i RyZ;
-  public long id;
-  public long ptr;
-  
-  public ad(long paramLong)
+  @l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/effect/TextInfoEffect$Default;", "Lcom/tencent/mm/xeffect/effect/TextInfoEffect;", "effect", "Lcom/tencent/mm/xeffect/effect/VLogEffect;", "(Lcom/tencent/mm/xeffect/effect/VLogEffect;)V", "getEffect", "()Lcom/tencent/mm/xeffect/effect/VLogEffect;", "textInfo", "Lcom/tencent/mm/xeffect/effect/EffectTextInfo;", "getTextInfo", "setTextInfo", "", "renderlib_release"})
+  public static final class a
+    implements ad
   {
-    this.ptr = paramLong;
-    this.RyZ = new i();
+    private final af NnT;
+    private h ZaG;
+    
+    public a(af paramaf)
+    {
+      AppMethodBeat.i(195897);
+      this.NnT = paramaf;
+      this.ZaG = new h(null, null, 31);
+      AppMethodBeat.o(195897);
+    }
+    
+    public final void a(h paramh)
+    {
+      AppMethodBeat.i(195895);
+      p.k(paramh, "textInfo");
+      this.ZaG = paramh;
+      VLogEffectJNI.INSTANCE.setEffectText$renderlib_release(this.NnT.ptr, paramh);
+      AppMethodBeat.o(195895);
+    }
   }
-  
-  private void a(i parami)
-  {
-    p.h(parami, "timeRange");
-    this.RyZ = parami;
-    VLogEffectJNI.INSTANCE.setEffectTime$renderlib_release(this.ptr, parami);
-  }
-  
-  public final void aH(long paramLong1, long paramLong2)
-  {
-    a(new i(paramLong1, paramLong2));
-  }
-  
-  protected final void finalize()
-  {
-    VLogEffectJNI.INSTANCE.destroyEffect(this);
-  }
-  
-  public abstract j hiu();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.xeffect.effect.ad
  * JD-Core Version:    0.7.0.1
  */

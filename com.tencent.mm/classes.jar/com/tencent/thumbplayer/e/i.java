@@ -9,18 +9,18 @@ import com.tencent.thumbplayer.utils.g;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public final class i
 {
   static TPDownloadParam b(String paramString, TPDownloadParamData paramTPDownloadParamData)
   {
-    AppMethodBeat.i(189241);
+    AppMethodBeat.i(220581);
     Object localObject1;
     if (paramTPDownloadParamData != null)
     {
       localObject1 = new ArrayList();
-      Object localObject2;
       if ((paramTPDownloadParamData.getUrlCdnidList() == null) || (paramTPDownloadParamData.getUrlCdnidList().isEmpty()))
       {
         if (!TextUtils.isEmpty(paramString)) {
@@ -182,10 +182,14 @@ public final class i
         }
         ((Map)localObject1).put("dl_param_pcdn_vts", ((StringBuilder)localObject2).toString());
       }
+      Object localObject2 = paramTPDownloadParamData.getHeadersList();
+      if ((localObject2 != null) && (!((List)localObject2).isEmpty())) {
+        ((Map)localObject1).put("dl_param_url_header", localObject2);
+      }
     }
-    for (paramString = new TPDownloadParam(paramString, f.art(paramTPDownloadParamData.getDlType()), (Map)localObject1);; paramString = new TPDownloadParam(paramTPDownloadParamData, 0, null))
+    for (paramString = new TPDownloadParam(paramString, f.aBg(paramTPDownloadParamData.getDlType()), (Map)localObject1);; paramString = new TPDownloadParam(paramTPDownloadParamData, 0, null))
     {
-      AppMethodBeat.o(189241);
+      AppMethodBeat.o(220581);
       return paramString;
       paramTPDownloadParamData = new ArrayList(1);
       paramTPDownloadParamData.add(paramString);
@@ -194,7 +198,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.e.i
  * JD-Core Version:    0.7.0.1
  */

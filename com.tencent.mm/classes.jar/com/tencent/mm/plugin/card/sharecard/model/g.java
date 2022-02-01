@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.card.sharecard.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dxe;
-import com.tencent.mm.protocal.protobuf.dxf;
-import com.tencent.mm.protocal.protobuf.dxg;
-import com.tencent.mm.protocal.protobuf.dxy;
-import com.tencent.mm.protocal.protobuf.eck;
+import com.tencent.mm.protocal.protobuf.ehf;
+import com.tencent.mm.protocal.protobuf.ehg;
+import com.tencent.mm.protocal.protobuf.ehh;
+import com.tencent.mm.protocal.protobuf.ehz;
+import com.tencent.mm.protocal.protobuf.eml;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
@@ -22,31 +22,31 @@ public final class g
   implements m
 {
   private i callback;
-  public String pTY;
-  public int pTZ;
-  public String pUa;
   private final d rr;
+  public String tpZ;
+  public int tqa;
+  public String tqb;
   
-  public g(int paramInt1, LinkedList<dxg> paramLinkedList, String paramString1, String paramString2, dxy paramdxy, int paramInt2, eck parameck)
+  public g(int paramInt1, LinkedList<ehh> paramLinkedList, String paramString1, String paramString2, ehz paramehz, int paramInt2, eml parameml)
   {
     AppMethodBeat.i(112972);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new dxe();
-    ((d.a)localObject).iLO = new dxf();
+    ((d.a)localObject).lBU = new ehf();
+    ((d.a)localObject).lBV = new ehg();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/sharecarditem";
     ((d.a)localObject).funcId = 902;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (dxe)this.rr.iLK.iLR;
-    ((dxe)localObject).MXj = paramInt1;
-    ((dxe)localObject).iAd = paramLinkedList;
-    ((dxe)localObject).gTT = paramString1;
-    ((dxe)localObject).LTz = paramString2;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (ehf)d.b.b(this.rr.lBR);
+    ((ehf)localObject).UjE = paramInt1;
+    ((ehf)localObject).lpz = paramLinkedList;
+    ((ehf)localObject).jEx = paramString1;
+    ((ehf)localObject).Tcj = paramString2;
     Log.i("MicroMsg.NetSceneShareCardItem", "list length is " + paramLinkedList.size());
-    ((dxe)localObject).MXk = paramdxy;
-    ((dxe)localObject).eaQ = paramInt2;
-    ((dxe)localObject).KDj = parameck;
+    ((ehf)localObject).UjF = paramehz;
+    ((ehf)localObject).fUN = paramInt2;
+    ((ehf)localObject).REA = parameml;
     AppMethodBeat.o(112972);
   }
   
@@ -71,12 +71,12 @@ public final class g
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
       Log.i("MicroMsg.NetSceneShareCardItem", "do ShareCardItem netscene success!");
-      params = (dxf)this.rr.iLL.iLR;
+      params = (ehg)d.c.b(this.rr.lBS);
       if (params != null)
       {
-        this.pTY = params.pTY;
-        this.pTZ = params.pTZ;
-        this.pUa = params.pUa;
+        this.tpZ = params.tpZ;
+        this.tqa = params.tqa;
+        this.tqb = params.tqb;
       }
     }
     for (;;)
@@ -84,12 +84,12 @@ public final class g
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(112973);
       return;
-      params = (dxf)this.rr.iLL.iLR;
+      params = (ehg)d.c.b(this.rr.lBS);
       if (params != null)
       {
-        this.pTY = params.pTY;
-        this.pTZ = params.pTZ;
-        this.pUa = params.pUa;
+        this.tpZ = params.tpZ;
+        this.tqa = params.tqa;
+        this.tqb = params.tqb;
       }
     }
   }

@@ -4,13 +4,12 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.e;
-import com.tencent.mm.aj.e.a;
-import com.tencent.mm.aj.p;
-import com.tencent.mm.b.f;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.am.d;
+import com.tencent.mm.am.f.a;
+import com.tencent.mm.am.q;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.memory.a.b;
-import com.tencent.mm.model.bd;
+import com.tencent.mm.model.be;
 import com.tencent.mm.pluginsdk.ui.j;
 import com.tencent.mm.pluginsdk.ui.j.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
@@ -22,7 +21,7 @@ import java.lang.ref.WeakReference;
 import java.util.HashMap;
 
 public final class c
-  implements bd
+  implements be
 {
   public final void clearPluginData(int paramInt) {}
   
@@ -34,43 +33,43 @@ public final class c
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(27618);
-    b.a.Boe = new j.a()
+    b.a.Hix = new j.a()
     {
-      private f<String, WeakReference<Bitmap>> Bof;
-      private Bitmap dku;
-      
-      public final Bitmap Wg()
-      {
-        return this.dku;
-      }
-      
-      public final Bitmap a(String paramAnonymousString, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
-      {
-        return null;
-      }
+      private com.tencent.mm.b.f<String, WeakReference<Bitmap>> Hiy;
+      private Bitmap fcd;
       
       public final void a(j paramAnonymousj)
       {
         AppMethodBeat.i(27616);
-        if ((paramAnonymousj instanceof e.a)) {
-          p.aYn().a((e.a)paramAnonymousj);
+        if ((paramAnonymousj instanceof f.a)) {
+          q.bhz().a((f.a)paramAnonymousj);
         }
         AppMethodBeat.o(27616);
       }
       
-      public final Bitmap fZ(String paramAnonymousString)
+      public final Bitmap aaC()
+      {
+        return this.fcd;
+      }
+      
+      public final Bitmap b(String paramAnonymousString, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+      {
+        return null;
+      }
+      
+      public final Bitmap gJ(String paramAnonymousString)
       {
         AppMethodBeat.i(27617);
-        Object localObject = (WeakReference)this.Bof.get(paramAnonymousString);
-        if ((localObject == null) || (((WeakReference)localObject).get() == null) || (((Bitmap)((WeakReference)localObject).get()).isRecycled()) || (((WeakReference)localObject).get() != Wg()))
+        Object localObject = (WeakReference)this.Hiy.get(paramAnonymousString);
+        if ((localObject == null) || (((WeakReference)localObject).get() == null) || (((Bitmap)((WeakReference)localObject).get()).isRecycled()) || (((WeakReference)localObject).get() != aaC()))
         {
-          localObject = com.tencent.mm.aj.c.a(paramAnonymousString, false, -1, null);
+          localObject = d.a(paramAnonymousString, false, -1, null);
           if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {}
-          for (paramAnonymousString = this.dku;; paramAnonymousString = (String)localObject)
+          for (paramAnonymousString = this.fcd;; paramAnonymousString = (String)localObject)
           {
             AppMethodBeat.o(27617);
             return paramAnonymousString;
-            this.Bof.x(paramAnonymousString, new WeakReference(localObject));
+            this.Hiy.q(paramAnonymousString, new WeakReference(localObject));
           }
         }
         paramAnonymousString = (Bitmap)((WeakReference)localObject).get();
@@ -78,7 +77,7 @@ public final class c
         return paramAnonymousString;
       }
       
-      public final Bitmap ga(String paramAnonymousString)
+      public final Bitmap gK(String paramAnonymousString)
       {
         return null;
       }
@@ -92,7 +91,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.c
  * JD-Core Version:    0.7.0.1
  */

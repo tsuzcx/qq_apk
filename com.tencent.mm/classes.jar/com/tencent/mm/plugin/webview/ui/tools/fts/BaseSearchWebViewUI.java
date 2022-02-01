@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.webview.ui.tools.fts;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.RemoteException;
@@ -19,20 +21,29 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.api.SmileyPanel;
 import com.tencent.mm.api.ac;
+import com.tencent.mm.api.ac.a;
 import com.tencent.mm.api.ad;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.api.r;
+import com.tencent.mm.emoji.loader.d.i.a;
+import com.tencent.mm.plugin.websearch.api.ae;
 import com.tencent.mm.plugin.websearch.api.af;
 import com.tencent.mm.plugin.websearch.api.ah;
 import com.tencent.mm.plugin.websearch.api.ai;
-import com.tencent.mm.plugin.webview.d.h;
+import com.tencent.mm.plugin.webview.c.c;
+import com.tencent.mm.plugin.webview.c.d;
+import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.plugin.webview.c.g;
+import com.tencent.mm.plugin.webview.c.h;
+import com.tencent.mm.plugin.webview.c.i;
+import com.tencent.mm.plugin.webview.d.h.36;
 import com.tencent.mm.plugin.webview.d.h.38;
+import com.tencent.mm.plugin.webview.d.h.41;
 import com.tencent.mm.plugin.webview.d.h.47;
 import com.tencent.mm.plugin.webview.d.n.a;
-import com.tencent.mm.plugin.webview.fts.c.b;
 import com.tencent.mm.plugin.webview.fts.c.b.a;
 import com.tencent.mm.plugin.webview.fts.c.b.b;
-import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -40,6 +51,8 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.au;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -55,23 +68,25 @@ public abstract class BaseSearchWebViewUI
   extends PreLoadWebViewUI
   implements b.b
 {
-  private b JnA;
-  private Set<b.a> JnB = new HashSet();
-  RelativeLayout JnC;
-  protected int JnD;
-  protected int JnE;
-  protected String JnF;
-  private Runnable JnG;
-  protected boolean Jnz;
-  protected View gAy;
-  private SmileyPanel hQS;
-  protected String hes;
-  private View nEb;
+  protected boolean QjP;
+  protected boolean QkQ;
+  private com.tencent.mm.plugin.webview.fts.c.b QkR;
+  private Set<b.a> QkS = new HashSet();
+  RelativeLayout QkT;
+  protected int QkU;
+  protected int QkV;
+  protected String QkW;
+  protected boolean QkX;
+  private Runnable QkY;
+  protected String jQi;
+  protected View jkB;
+  private SmileyPanel kFp;
+  private View qGl;
   protected String query;
   protected int scene;
   protected int type;
   
-  private String C(EmojiInfo paramEmojiInfo)
+  private String D(EmojiInfo paramEmojiInfo)
   {
     Object localObject1 = new Bundle();
     ((Bundle)localObject1).putString("md5", paramEmojiInfo.field_md5);
@@ -83,7 +98,7 @@ public abstract class BaseSearchWebViewUI
     ((Bundle)localObject1).putString("thumbUrl", paramEmojiInfo.field_thumbUrl);
     try
     {
-      localObject2 = this.mHh.w(7, (Bundle)localObject1);
+      localObject2 = this.pGC.y(7, (Bundle)localObject1);
       localObject1 = localObject2;
     }
     catch (Exception localException)
@@ -93,10 +108,10 @@ public abstract class BaseSearchWebViewUI
       break label93;
     }
     localObject2 = ((Bundle)localObject1).getString("emojiPath");
-    if (!paramEmojiInfo.NA())
+    if (!paramEmojiInfo.Qv())
     {
       localObject1 = localObject2;
-      if (paramEmojiInfo.field_catalog != EmojiGroupInfo.Uun) {}
+      if (paramEmojiInfo.field_catalog != EmojiGroupInfo.YCv) {}
     }
     else
     {
@@ -105,12 +120,12 @@ public abstract class BaseSearchWebViewUI
     return localObject1;
   }
   
-  private static int bf(Bundle paramBundle)
+  private static int bd(Bundle paramBundle)
   {
     return Util.safeParseInt(paramBundle.getString("playerId"));
   }
   
-  private void bg(Bundle paramBundle)
+  private void be(Bundle paramBundle)
   {
     ArrayList localArrayList = new ArrayList();
     String str1 = paramBundle.getString("title");
@@ -150,32 +165,54 @@ public abstract class BaseSearchWebViewUI
       Log.e("MicroMsg.WebSearch.BaseSearchWebViewUI", Util.stackTraceToString(localJSONException));
       Log.v("MicroMsg.WebSearch.BaseSearchWebViewUI", "doShowSearchActionSheet args: title %s,subTitle %s,items %s", new Object[] { str1, str2, str3 });
       if (!localArrayList.isEmpty()) {
-        paramBundle.putInt("actionSheetId", ((com.tencent.mm.plugin.websearch.api.f)g.af(com.tencent.mm.plugin.websearch.api.f.class)).a(this, str1, str2, localArrayList, new BaseSearchWebViewUI.7(this)));
+        paramBundle.putInt("actionSheetId", ((com.tencent.mm.plugin.websearch.api.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.websearch.api.f.class)).a(this, str1, str2, localArrayList, new ae()
+        {
+          public final void lq(int paramAnonymousInt1, int paramAnonymousInt2)
+          {
+            AppMethodBeat.i(80579);
+            if (BaseSearchWebViewUI.this.getJsapi() != null)
+            {
+              com.tencent.mm.plugin.webview.d.h localh = BaseSearchWebViewUI.this.getJsapi();
+              if (!localh.NoX)
+              {
+                Log.e("MicroMsg.JsApiHandler", "onSearchActionSheetClick fail, not ready");
+                AppMethodBeat.o(80579);
+                return;
+              }
+              Log.i("MicroMsg.JsApiHandler", "onSearchActionSheetClick success, ready");
+              HashMap localHashMap = new HashMap();
+              localHashMap.put("index", Integer.valueOf(paramAnonymousInt1));
+              localHashMap.put("actionSheetId", Integer.valueOf(paramAnonymousInt2));
+              MMHandlerThread.postToMainThread(new h.36(localh, n.a.b("onSearchActionSheetClick", localHashMap, localh.PNx, localh.EVx)));
+            }
+            AppMethodBeat.o(80579);
+          }
+        }));
       }
     }
   }
   
-  private void dTO()
+  private void ewK()
   {
-    if (this.gAy != null)
+    if (this.jkB != null)
     {
-      this.gAy.setVisibility(8);
-      if (this.JnG != null)
+      this.jkB.setVisibility(8);
+      if (this.QkY != null)
       {
-        this.handler.removeCallbacks(this.JnG);
-        this.JnG = null;
+        btS().removeCallbacks(this.QkY);
+        this.QkY = null;
       }
     }
   }
   
   public final void a(b.a parama)
   {
-    this.JnB.add(parama);
+    this.QkS.add(parama);
   }
   
-  protected final Drawable agS(int paramInt)
+  protected Drawable aoJ(int paramInt)
   {
-    int i = 2131690938;
+    int i = c.h.icons_outlined_wechat_search_one_search;
     switch (paramInt)
     {
     default: 
@@ -183,44 +220,53 @@ public abstract class BaseSearchWebViewUI
     }
     for (;;)
     {
-      return getResources().getDrawable(paramInt);
-      paramInt = 2131691756;
+      return au.e(getResources().getDrawable(paramInt), c.c.FG_2);
+      paramInt = c.h.websearch_icon_baike;
       continue;
-      paramInt = 2131691763;
+      paramInt = c.h.websearch_icon_question;
       continue;
-      paramInt = 2131691759;
+      paramInt = c.h.websearch_icon_movie;
       continue;
-      paramInt = 2131691754;
+      paramInt = c.h.websearch_icon_acount;
       continue;
-      paramInt = 2131691758;
+      paramInt = c.h.websearch_icon_moment;
       continue;
-      paramInt = 2131691755;
+      paramInt = c.h.websearch_icon_article;
       continue;
-      paramInt = 2131691765;
+      paramInt = c.h.websearch_icon_weapp;
       continue;
-      paramInt = 2131691757;
+      paramInt = c.h.websearch_icon_emoji;
       continue;
-      paramInt = 2131691762;
+      paramInt = c.h.websearch_icon_product;
       continue;
-      paramInt = 2131691760;
+      paramInt = c.h.websearch_icon_music;
       continue;
-      paramInt = 2131691761;
+      paramInt = c.h.websearch_icon_novel;
       continue;
-      paramInt = 2131691766;
+      paramInt = c.h.websearch_icon_webpage;
     }
   }
   
-  public void bXg()
+  protected final void bXI()
   {
-    super.bXg();
-    if (this.JnA == null) {
-      this.JnA = new b(getContext(), this.pGj, this);
+    super.bXI();
+    Log.i("MicroMsg.WebSearch.BaseSearchWebViewUI", "jsapi ready");
+    ah.gQE();
+  }
+  
+  protected void c(int paramInt, String paramString, Map<String, Object> paramMap) {}
+  
+  public void cjK()
+  {
+    super.cjK();
+    if (this.QkR == null) {
+      this.QkR = new com.tencent.mm.plugin.webview.fts.c.b(getContext(), this.pHS, this);
     }
-    this.JnA.IBw = getJsapi();
-    if (this.mHh != null) {
+    this.QkR.PvJ = getJsapi();
+    if (this.pGC != null) {
       try
       {
-        this.mHh.j(51, new Bundle());
+        this.pGC.l(51, new Bundle());
         return;
       }
       catch (RemoteException localRemoteException)
@@ -232,71 +278,69 @@ public abstract class BaseSearchWebViewUI
     Log.i("MicroMsg.WebSearch.BaseSearchWebViewUI", "invoker is null, fail to invoke get geo");
   }
   
-  public final boolean bXi()
+  public final boolean cjM()
   {
     return true;
   }
   
-  protected void c(int paramInt, String paramString, Map<String, Object> paramMap) {}
-  
-  protected final void cpR()
+  public final void gTG()
   {
-    super.cpR();
-    Log.i("MicroMsg.WebSearch.BaseSearchWebViewUI", "jsapi ready");
-    ah.fXT();
-  }
-  
-  public final void gaO()
-  {
-    if (this.nEb == null) {}
+    if (this.qGl == null) {}
     for (;;)
     {
       return;
       Object localObject = (ViewGroup)getWindow().getDecorView();
       ((ViewGroup)localObject).setSystemUiVisibility(0);
-      ((ViewGroup)localObject).removeView(this.nEb);
+      ((ViewGroup)localObject).removeView(this.qGl);
       getWindow().clearFlags(1024);
       if (getRequestedOrientation() == 0) {
         setRequestedOrientation(1);
       }
-      this.nEb = null;
-      localObject = this.JnB.iterator();
+      this.qGl = null;
+      localObject = this.QkS.iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((b.a)((Iterator)localObject).next()).Na();
+        ((b.a)((Iterator)localObject).next()).PS();
       }
     }
   }
   
-  protected e ggM()
+  protected e hac()
   {
     return null;
   }
   
-  protected final void ggQ()
+  protected final void hag()
   {
-    super.ggQ();
+    super.hag();
     int i = this.scene;
     String str1 = this.sessionId;
-    String str2 = this.dVO;
+    String str2 = this.fPs;
     if (this.type == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ah.a(i, str1, str2, bool, this.query, this.type, this.JnF, this.IRT);
+      ah.a(i, str1, str2, bool, this.query, this.type, this.QkW, this.POj);
       return;
     }
   }
   
-  public final void ggR()
+  public final void hah()
   {
-    if (this.JnC != null) {
-      this.JnC.setVisibility(8);
-    }
-    if (this.hQS != null) {
-      this.hQS.goF();
+    if ((this.QfI) || (!this.QjP)) {
+      super.hideVKB();
     }
   }
   
-  public void m(final int paramInt, Bundle paramBundle)
+  public final void hai()
+  {
+    if (this.QkT != null) {
+      this.QkT.setVisibility(8);
+    }
+    if (this.kFp != null) {
+      this.kFp.hjr();
+    }
+  }
+  
+  public void o(final int paramInt, final Bundle paramBundle)
   {
     boolean bool2 = true;
     final boolean bool1 = true;
@@ -305,7 +349,7 @@ public abstract class BaseSearchWebViewUI
     switch (paramInt)
     {
     default: 
-      super.m(paramInt, paramBundle);
+      super.o(paramInt, paramBundle);
     case 135: 
     case 137: 
     case 133: 
@@ -336,7 +380,7 @@ public abstract class BaseSearchWebViewUI
                 {
                   paramBundle = getJsapi();
                   localObject1 = new JSONObject((String)localObject1);
-                  if (!paramBundle.GBl)
+                  if (!paramBundle.NoX)
                   {
                     Log.e("MicroMsg.JsApiHandler", "not ready");
                     return;
@@ -347,48 +391,48 @@ public abstract class BaseSearchWebViewUI
                   Log.printErrStackTrace("MicroMsg.WebSearch.BaseSearchWebViewUI", paramBundle, "", new Object[0]);
                   return;
                 }
-                MMHandlerThread.postToMainThread(new h.38(paramBundle, n.a.a("onGetMatchContactList", (JSONObject)localObject1, paramBundle.IRj, paramBundle.zpY)));
+                MMHandlerThread.postToMainThread(new h.38(paramBundle, n.a.a("onGetMatchContactList", (JSONObject)localObject1, paramBundle.PNx, paramBundle.EVx)));
                 return;
-                bg(paramBundle);
+                be(paramBundle);
                 return;
-                localObject1 = com.tencent.mm.plugin.websearch.widget.view.a.fYZ();
+                localObject1 = com.tencent.mm.plugin.websearch.widget.view.a.gRO();
                 paramInt = paramBundle.getInt("actionSheetId");
-                paramBundle = (com.tencent.mm.ui.widget.a.e)((com.tencent.mm.plugin.websearch.widget.view.a)localObject1).IIt.remove(Integer.valueOf(paramInt));
+                paramBundle = (com.tencent.mm.ui.widget.a.e)((com.tencent.mm.plugin.websearch.widget.view.a)localObject1).PCO.remove(Integer.valueOf(paramInt));
               } while (paramBundle == null);
-              paramBundle.bMo();
+              paramBundle.bYF();
               return;
-              localObject1 = ggM();
+              localObject1 = hac();
               if (localObject1 != null)
               {
                 paramInt = paramBundle.getInt("x", -1);
                 int i = paramBundle.getInt("y", -1);
                 localObject2 = paramBundle.getString("widgetId");
                 paramBundle = paramBundle.getString("eventId");
-                ((e)localObject1).IIH.g(paramInt, i, (String)localObject2, paramBundle);
+                ((e)localObject1).PCW.h(paramInt, i, (String)localObject2, paramBundle);
                 return;
               }
               Log.e("MicroMsg.WebSearch.BaseSearchWebViewUI", "can not find FTSSearchWidgetMgr to handle tapSearchWAWidgetView");
               getJsapi().b(paramBundle.getString(""), false, "can not find FTSSearchWidgetMgr to handle tapSearchWAWidgetView", paramBundle.getString("widgetId"));
               return;
-              localObject1 = this.JnA;
+              localObject1 = this.QkR;
             } while (localObject1 == null);
-            ((com.tencent.mm.plugin.webview.fts.c.e)localObject1).Q(bf(paramBundle), paramBundle.getString("viewProps"), paramBundle.getString("videoProps"));
+            ((com.tencent.mm.plugin.webview.fts.c.e)localObject1).U(bd(paramBundle), paramBundle.getString("viewProps"), paramBundle.getString("videoProps"));
             return;
-            localObject1 = this.JnA;
+            localObject1 = this.QkR;
           } while (localObject1 == null);
-          ((com.tencent.mm.plugin.webview.fts.c.e)localObject1).R(bf(paramBundle), paramBundle.getString("viewProps"), paramBundle.getString("videoProps"));
+          ((com.tencent.mm.plugin.webview.fts.c.e)localObject1).V(bd(paramBundle), paramBundle.getString("viewProps"), paramBundle.getString("videoProps"));
           return;
-          localObject1 = this.JnA;
+          localObject1 = this.QkR;
         } while (localObject1 == null);
-        ((com.tencent.mm.plugin.webview.fts.c.e)localObject1).afS(bf(paramBundle));
+        ((com.tencent.mm.plugin.webview.fts.c.e)localObject1).anG(bd(paramBundle));
         return;
-        localObject1 = this.JnA;
+        localObject1 = this.QkR;
       } while (localObject1 == null);
-      ((com.tencent.mm.plugin.webview.fts.c.e)localObject1).cS(bf(paramBundle), paramBundle.getString("type"));
+      ((com.tencent.mm.plugin.webview.fts.c.e)localObject1).cS(bd(paramBundle), paramBundle.getString("type"));
       return;
     case 145: 
       localObject1 = getJsapi();
-      if (!((h)localObject1).GBl)
+      if (!((com.tencent.mm.plugin.webview.d.h)localObject1).NoX)
       {
         Log.e("MicroMsg.JsApiHandler", "onGetPoiInfo fail, not ready");
         return;
@@ -398,7 +442,7 @@ public abstract class BaseSearchWebViewUI
       ((Map)localObject2).put("json", paramBundle.getString("json"));
       ((Map)localObject2).put("searchId", paramBundle.getString("searchId"));
       ((Map)localObject2).put("poiId", paramBundle.getString("poiId"));
-      MMHandlerThread.postToMainThread(new h.47((h)localObject1, n.a.b("onGetPoiInfoReturn", (Map)localObject2, ((h)localObject1).IRj, ((h)localObject1).zpY)));
+      MMHandlerThread.postToMainThread(new h.47((com.tencent.mm.plugin.webview.d.h)localObject1, n.a.b("onGetPoiInfoReturn", (Map)localObject2, ((com.tencent.mm.plugin.webview.d.h)localObject1).PNx, ((com.tencent.mm.plugin.webview.d.h)localObject1).EVx)));
       return;
     case 148: 
       localObject1 = paramBundle.getString("title", "");
@@ -407,13 +451,13 @@ public abstract class BaseSearchWebViewUI
       if (paramBundle.getInt("mask", 0) > 0) {}
       for (;;)
       {
-        this.handler.post(new Runnable()
+        btS().post(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(211224);
-            BaseSearchWebViewUI.a(BaseSearchWebViewUI.this, this.dqb, this.mok, paramInt, bool1);
-            AppMethodBeat.o(211224);
+            AppMethodBeat.i(214598);
+            BaseSearchWebViewUI.a(BaseSearchWebViewUI.this, this.cWz, this.pmp, paramInt, bool1);
+            AppMethodBeat.o(214598);
           }
         });
         return;
@@ -424,73 +468,210 @@ public abstract class BaseSearchWebViewUI
       if (paramBundle.getInt("mask", 0) > 0) {}
       for (bool1 = bool2;; bool1 = false)
       {
-        this.handler.post(new Runnable()
+        btS().post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(80573);
-            BaseSearchWebViewUI.a(BaseSearchWebViewUI.this, this.dqb, "loading", -1, bool1);
+            BaseSearchWebViewUI.a(BaseSearchWebViewUI.this, this.cWz, "loading", -1, bool1);
             AppMethodBeat.o(80573);
           }
         });
         return;
       }
     case 150: 
-      dTO();
+      ewK();
       return;
     case 151: 
       Log.i("MicroMsg.WebSearch.BaseSearchWebViewUI", "GOTO_EMOTICON");
       hideVKB();
       paramBundle = paramBundle.getString("requestId");
-      if (this.hQS == null)
+      if (this.kFp == null)
       {
-        this.hQS = ad.bC(this);
-        this.hQS.setEntranceScene(ChatFooterPanel.KbF);
-        this.hQS.setVisibility(0);
-        this.hQS.setShowSmiley(false);
-        this.hQS.onResume();
-        localObject1 = new RelativeLayout.LayoutParams(-1, ad.bD(this));
+        this.kFp = ad.bB(this);
+        this.kFp.setEntranceScene(ChatFooterPanel.Rck);
+        this.kFp.setVisibility(0);
+        this.kFp.setShowSmiley(false);
+        this.kFp.onResume();
+        localObject1 = new RelativeLayout.LayoutParams(-1, ad.bC(this));
         ((RelativeLayout.LayoutParams)localObject1).addRule(12);
-        this.JnC.addView(this.hQS, (ViewGroup.LayoutParams)localObject1);
+        this.QkT.addView(this.kFp, (ViewGroup.LayoutParams)localObject1);
         localObject1 = new TextView(getApplicationContext());
-        ((TextView)localObject1).setBackgroundColor(com.tencent.mm.cb.a.n(this, 2131099689));
-        ((TextView)localObject1).setPadding(0, com.tencent.mm.cb.a.aH(this, 2131165296), 0, com.tencent.mm.cb.a.aH(this, 2131165296));
-        ((TextView)localObject1).setTextColor(com.tencent.mm.cb.a.n(this, 2131100594));
+        ((TextView)localObject1).setBackgroundColor(com.tencent.mm.ci.a.w(this, c.c.BW_93));
+        ((TextView)localObject1).setPadding(0, com.tencent.mm.ci.a.aZ(this, c.d.Edge_2A), 0, com.tencent.mm.ci.a.aZ(this, c.d.Edge_2A));
+        ((TextView)localObject1).setTextColor(com.tencent.mm.ci.a.w(this, c.c.hint_text_color));
         ((TextView)localObject1).setTextSize(15.0F);
-        ((TextView)localObject1).setText(2131765079);
+        ((TextView)localObject1).setText(c.i.search_emoji_header);
         ((TextView)localObject1).setGravity(17);
         localObject2 = new RelativeLayout.LayoutParams(-1, -2);
         ((RelativeLayout.LayoutParams)localObject2).addRule(12);
-        ((RelativeLayout.LayoutParams)localObject2).bottomMargin = ad.bD(this);
-        this.JnC.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-        localObject1 = ad.VK();
-        ((ac)localObject1).djc = new BaseSearchWebViewUI.3(this, paramBundle);
-        this.hQS.setCallback((com.tencent.mm.pluginsdk.ui.chat.f)localObject1);
+        ((RelativeLayout.LayoutParams)localObject2).bottomMargin = ad.bC(this);
+        this.QkT.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+        localObject1 = ad.aaf();
+        ((ac)localObject1).faJ = new ac.a()
+        {
+          public final void a(final r paramAnonymousr)
+          {
+            AppMethodBeat.i(219352);
+            final String str1 = BaseSearchWebViewUI.this.QkU + ";" + BaseSearchWebViewUI.this.sessionId + ";" + paramBundle;
+            BaseSearchWebViewUI.a(BaseSearchWebViewUI.this).set16029ExtraInfo(str1);
+            paramAnonymousr = (EmojiInfo)paramAnonymousr;
+            str1 = BaseSearchWebViewUI.a(BaseSearchWebViewUI.this, paramAnonymousr);
+            Object localObject1;
+            if ((paramAnonymousr.Qv()) || (paramAnonymousr.field_catalog == EmojiGroupInfo.YCv))
+            {
+              Log.i("MicroMsg.WebSearch.BaseSearchWebViewUI", "emoji is system emoji %s", new Object[] { Integer.valueOf(paramAnonymousr.field_catalog) });
+              if (!u.agG(str1))
+              {
+                localObject1 = paramAnonymousr.C(BaseSearchWebViewUI.this, 480);
+                if (localObject1 == null) {}
+              }
+            }
+            try
+            {
+              BitmapUtil.saveBitmapToImage((Bitmap)localObject1, 80, Bitmap.CompressFormat.PNG, str1, false);
+              Log.i("MicroMsg.WebSearch.BaseSearchWebViewUI", "save emoji bitmap %d %s", new Object[] { Long.valueOf(u.bBQ(str1)), str1 });
+              str1 = "weixin://fts/emoji?path=".concat(String.valueOf(str1));
+              localObject1 = paramAnonymousr.field_md5;
+              final String str2 = paramAnonymousr.field_aeskey;
+              final String str3 = paramAnonymousr.field_encrypturl;
+              boolean bool = paramAnonymousr.hBp();
+              i = 0;
+              if (com.tencent.mm.plugin.emoji.i.b.y(paramAnonymousr))
+              {
+                i = 1;
+                Log.i("MicroMsg.WebSearch.BaseSearchWebViewUI", "onSelectedEmoji %s %s %b", new Object[] { localObject1, str1, Boolean.valueOf(bool) });
+                Object localObject2 = BaseSearchWebViewUI.this.getJsapi();
+                if (!bool) {
+                  break label386;
+                }
+                j = 0;
+                ((com.tencent.mm.plugin.webview.d.h)localObject2).a((String)localObject1, str1, i, j, str3, str2);
+                if (!bool)
+                {
+                  localObject2 = com.tencent.mm.emoji.loader.e.jGI;
+                  com.tencent.mm.emoji.loader.e.a(paramAnonymousr, new i.a()
+                  {
+                    public final void ep(boolean paramAnonymous2Boolean)
+                    {
+                      int i = 0;
+                      AppMethodBeat.i(261995);
+                      if (paramAnonymous2Boolean)
+                      {
+                        Object localObject = BaseSearchWebViewUI.a(BaseSearchWebViewUI.this, paramAnonymousr);
+                        Log.i("MicroMsg.WebSearch.BaseSearchWebViewUI", "loadFile %s %s emojiPath %s exist %b", new Object[] { this.lQU, str1, localObject, Boolean.valueOf(u.agG((String)localObject)) });
+                        localObject = BaseSearchWebViewUI.this.getJsapi();
+                        String str1 = this.lQU;
+                        String str2 = str1;
+                        int j = i;
+                        if (paramAnonymous2Boolean) {}
+                        for (;;)
+                        {
+                          ((com.tencent.mm.plugin.webview.d.h)localObject).a(str1, str2, j, i, str3, str2);
+                          AppMethodBeat.o(261995);
+                          return;
+                          i = 1;
+                        }
+                      }
+                      Log.i("MicroMsg.WebSearch.BaseSearchWebViewUI", "loadFile %s %s fail", new Object[] { this.lQU, str1 });
+                      AppMethodBeat.o(261995);
+                    }
+                  });
+                }
+                BaseSearchWebViewUI.this.QkT.setVisibility(8);
+                AppMethodBeat.o(219352);
+              }
+            }
+            catch (Exception localException)
+            {
+              for (;;)
+              {
+                final int i;
+                int j;
+                Log.printErrStackTrace("MicroMsg.WebSearch.BaseSearchWebViewUI", localException, "SaveEmojiBitmap", new Object[0]);
+                continue;
+                if (com.tencent.mm.plugin.emoji.i.b.z(paramAnonymousr))
+                {
+                  i = 2;
+                }
+                else if (com.tencent.mm.plugin.emoji.i.b.x(paramAnonymousr))
+                {
+                  i = 3;
+                  continue;
+                  label386:
+                  j = 1;
+                }
+              }
+            }
+          }
+          
+          public final void onHide() {}
+        };
+        this.kFp.setCallback((com.tencent.mm.pluginsdk.ui.chat.f)localObject1);
       }
-      this.JnC.setVisibility(0);
+      this.QkT.setVisibility(0);
       return;
     case 152: 
       paramInt = paramBundle.getInt("fts_key_ret_code");
       localObject1 = paramBundle.getString("fts_key_err_msg");
       paramBundle = paramBundle.getString("fts_key_json_data", "");
-      this.handler.post(new BaseSearchWebViewUI.4(this, paramInt, (String)localObject1, paramBundle));
+      btS().post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(221424);
+          BaseSearchWebViewUI.this.getJsapi().i(paramInt, this.val$errMsg, paramBundle, "", "onSimilarEmoticonReady");
+          Log.i("MicroMsg.WebSearch.BaseSearchWebViewUI", "wxaapp_opsearch resp, ret = %d, errMsg = %s, json = %s", new Object[] { Integer.valueOf(paramInt), this.val$errMsg, paramBundle });
+          AppMethodBeat.o(221424);
+        }
+      });
       return;
     case 153: 
       paramInt = paramBundle.getInt("fts_key_ret_code");
       localObject1 = paramBundle.getString("fts_key_err_msg");
       localObject2 = paramBundle.getString("fts_key_json_data", "");
       paramBundle = paramBundle.getString("fts_key_id", "");
-      this.handler.post(new BaseSearchWebViewUI.5(this, paramInt, (String)localObject1, (String)localObject2, paramBundle));
+      btS().post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(80577);
+          BaseSearchWebViewUI.this.getJsapi().i(paramInt, this.val$errMsg, this.tvn, paramBundle, "onSearchWebQueryReady");
+          Log.i("MicroMsg.WebSearch.BaseSearchWebViewUI", "onSearchWebQueryReady, ret = %d, errMsg = %s, json = %s", new Object[] { Integer.valueOf(paramInt), this.val$errMsg, this.tvn });
+          AppMethodBeat.o(80577);
+        }
+      });
       return;
     }
     paramBundle = paramBundle.getString("fts_key_json_data", "");
-    this.handler.post(new BaseSearchWebViewUI.6(this, paramBundle));
+    btS().post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(80578);
+        com.tencent.mm.plugin.webview.d.h localh = BaseSearchWebViewUI.this.getJsapi();
+        String str = paramBundle;
+        if (!localh.NoX) {
+          Log.e("MicroMsg.JsApiHandler", "onCurrentLocationReady fail, not ready");
+        }
+        for (;;)
+        {
+          Log.i("MicroMsg.WebSearch.BaseSearchWebViewUI", "onCurrentLocationReady, json = %s", new Object[] { paramBundle });
+          AppMethodBeat.o(80578);
+          return;
+          Log.i("MicroMsg.JsApiHandler", "onCurrentLocationReady success, ready");
+          HashMap localHashMap = new HashMap();
+          localHashMap.put("json", str);
+          MMHandlerThread.postToMainThread(new h.41(localh, n.a.b("onCurrentLocationReady", localHashMap, localh.PNx, localh.EVx)));
+        }
+      }
+    });
   }
   
   public void onBackPressed()
   {
-    ggR();
-    Iterator localIterator = this.JnB.iterator();
+    hai();
+    Iterator localIterator = this.QkS.iterator();
     for (boolean bool = false; localIterator.hasNext(); bool = ((b.a)localIterator.next()).onBackPressed() | bool) {}
     if (!bool) {
       super.onBackPressed();
@@ -502,39 +683,41 @@ public abstract class BaseSearchWebViewUI
     boolean bool = false;
     super.onCreate(paramBundle);
     if (getIntent() != null) {
-      this.Jnz = getIntent().getBooleanExtra("jumpto_sns_contact_page", false);
+      this.QkQ = getIntent().getBooleanExtra("jumpto_sns_contact_page", false);
     }
-    if (this.JnA == null) {
-      this.JnA = new b(getContext(), this.pGj, this);
+    if (this.QkR == null) {
+      this.QkR = new com.tencent.mm.plugin.webview.fts.c.b(getContext(), this.pHS, this);
     }
+    this.QjP = getIntent().getBooleanExtra("ftsneedkeyboard", false);
     this.scene = getIntent().getIntExtra("ftsbizscene", 0);
-    this.JnD = this.scene;
+    this.QkU = this.scene;
+    this.QkX = getIntent().getBooleanExtra("key_search_icon_and_hint_fix_default", false);
     this.type = getIntent().getIntExtra("ftsType", 0);
     this.query = getIntent().getStringExtra("ftsQuery");
-    this.JnF = getIntent().getStringExtra("tabId");
-    this.hes = getIntent().getStringExtra("searchId");
-    this.JnE = this.type;
+    this.QkW = getIntent().getStringExtra("tabId");
+    this.jQi = getIntent().getStringExtra("searchId");
+    this.QkV = this.type;
     int i = this.scene;
     paramBundle = this.sessionId;
-    String str = this.dVO;
+    String str = this.fPs;
     if (this.type == 0) {
       bool = true;
     }
-    ah.a(i, paramBundle, str, bool, this.query, this.type, this.JnF, this.IRT, this.hes);
-    if (!ai.n(this, this.scene)) {
+    ah.a(i, paramBundle, str, bool, this.query, this.type, this.QkW, this.POj, this.jQi);
+    if (!ai.o(this, this.scene)) {
       Log.i("MicroMsg.WebSearch.BaseSearchWebViewUI", "request for grant location permission");
     }
     for (;;)
     {
-      paramBundle = View.inflate(this, 2131496185, null);
-      paramBundle.setBackgroundResource(2131101287);
+      paramBundle = View.inflate(this, c.g.search_loading_dialog_layout, null);
+      paramBundle.setBackgroundResource(c.c.transparent);
       paramBundle.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-      this.gAy = paramBundle;
-      if ((this.gAy != null) && ((getContentView() instanceof ViewGroup))) {
-        ((ViewGroup)getContentView()).addView(this.gAy);
+      this.jkB = paramBundle;
+      if ((this.jkB != null) && ((getContentView() instanceof ViewGroup))) {
+        ((ViewGroup)getContentView()).addView(this.jkB);
       }
-      dTO();
-      this.JnC = ((RelativeLayout)findViewById(2131300014));
+      ewK();
+      this.QkT = ((RelativeLayout)findViewById(c.f.emoji_panel_layout));
       return;
       Log.i("MicroMsg.WebSearch.BaseSearchWebViewUI", "has location permission");
     }
@@ -543,18 +726,18 @@ public abstract class BaseSearchWebViewUI
   public void onDestroy()
   {
     super.onDestroy();
-    Object localObject = this.JnB.iterator();
+    Object localObject = this.QkS.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((b.a)((Iterator)localObject).next()).onDestroy();
     }
-    this.JnB.clear();
+    this.QkS.clear();
     int i = this.scene;
     localObject = this.sessionId;
-    String str = this.dVO;
+    String str = this.fPs;
     if (this.type == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ah.a(i, (String)localObject, str, bool, this.query, this.type, this.IRT);
+      ah.a(i, (String)localObject, str, bool, this.query, this.type, this.POj);
       Log.d("MicroMsg.WebSearch.BaseSearchWebViewUI", "onDestroy");
       return;
     }
@@ -565,16 +748,16 @@ public abstract class BaseSearchWebViewUI
     Iterator localIterator;
     if (paramInt == 25)
     {
-      localIterator = this.JnB.iterator();
+      localIterator = this.QkS.iterator();
       while (localIterator.hasNext()) {
-        ((b.a)localIterator.next()).gaM();
+        ((b.a)localIterator.next()).gTE();
       }
     }
     if (paramInt == 24)
     {
-      localIterator = this.JnB.iterator();
+      localIterator = this.QkS.iterator();
       while (localIterator.hasNext()) {
-        ((b.a)localIterator.next()).gaN();
+        ((b.a)localIterator.next()).gTF();
       }
     }
     return super.onKeyDown(paramInt, paramKeyEvent);
@@ -583,7 +766,7 @@ public abstract class BaseSearchWebViewUI
   public void onPause()
   {
     super.onPause();
-    Iterator localIterator = this.JnB.iterator();
+    Iterator localIterator = this.QkS.iterator();
     while (localIterator.hasNext()) {
       ((b.a)localIterator.next()).onBackground();
     }
@@ -602,7 +785,7 @@ public abstract class BaseSearchWebViewUI
   public void onResume()
   {
     super.onResume();
-    Iterator localIterator = this.JnB.iterator();
+    Iterator localIterator = this.QkS.iterator();
     while (localIterator.hasNext()) {
       ((b.a)localIterator.next()).onForeground();
     }
@@ -614,16 +797,16 @@ public abstract class BaseSearchWebViewUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void w(View paramView, boolean paramBoolean)
+  public final void y(View paramView, boolean paramBoolean)
   {
-    gaO();
-    this.nEb = paramView;
+    gTG();
+    this.qGl = paramView;
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
     ViewGroup localViewGroup = (ViewGroup)getWindow().getDecorView();
     localViewGroup.addView(paramView, localLayoutParams);
     paramView.setX(0.0F);
     paramView.setY(0.0F);
-    if (com.tencent.mm.compatible.util.d.oE(19)) {
+    if (com.tencent.mm.compatible.util.d.qW(19)) {
       localViewGroup.setSystemUiVisibility(2);
     }
     for (;;)
@@ -639,7 +822,7 @@ public abstract class BaseSearchWebViewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.BaseSearchWebViewUI
  * JD-Core Version:    0.7.0.1
  */

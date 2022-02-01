@@ -8,7 +8,7 @@ import java.util.List;
 public final class c
   implements AutoCloseable
 {
-  public NativeInterpreterWrapper UiX;
+  public NativeInterpreterWrapper abMs;
   
   public c(ByteBuffer paramByteBuffer)
   {
@@ -17,25 +17,25 @@ public final class c
   
   private c(ByteBuffer paramByteBuffer, byte paramByte)
   {
-    AppMethodBeat.i(238965);
-    this.UiX = new NativeInterpreterWrapper(paramByteBuffer);
-    AppMethodBeat.o(238965);
+    AppMethodBeat.i(239985);
+    this.abMs = new NativeInterpreterWrapper(paramByteBuffer);
+    AppMethodBeat.o(239985);
   }
   
   public final void close()
   {
-    AppMethodBeat.i(238966);
-    if (this.UiX != null)
+    AppMethodBeat.i(239987);
+    if (this.abMs != null)
     {
-      this.UiX.close();
-      this.UiX = null;
+      this.abMs.close();
+      this.abMs = null;
     }
-    AppMethodBeat.o(238966);
+    AppMethodBeat.o(239987);
   }
   
   protected final void finalize()
   {
-    AppMethodBeat.i(238967);
+    AppMethodBeat.i(239989);
     try
     {
       close();
@@ -44,44 +44,44 @@ public final class c
     finally
     {
       super.finalize();
-      AppMethodBeat.o(238967);
+      AppMethodBeat.o(239989);
     }
   }
   
-  public final void oa()
+  public final void isP()
   {
-    AppMethodBeat.i(238968);
-    if (this.UiX == null)
+    AppMethodBeat.i(239990);
+    if (this.abMs == null)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("Internal error: The Interpreter has already been closed.");
-      AppMethodBeat.o(238968);
+      AppMethodBeat.o(239990);
       throw localIllegalStateException;
     }
-    AppMethodBeat.o(238968);
+    AppMethodBeat.o(239990);
   }
   
   public static final class a
   {
-    final List<b> TiL;
-    int UiY;
-    Boolean UiZ;
-    Boolean Uja;
-    Boolean Ujb;
-    Boolean Ujc;
-    Boolean Ujd;
+    final List<b> aaLF;
+    int abMt;
+    Boolean abMu;
+    Boolean abMv;
+    Boolean abMw;
+    Boolean abMx;
+    Boolean abMy;
     
     public a()
     {
-      AppMethodBeat.i(238964);
-      this.UiY = -1;
-      this.TiL = new ArrayList();
-      AppMethodBeat.o(238964);
+      AppMethodBeat.i(239126);
+      this.abMt = -1;
+      this.aaLF = new ArrayList();
+      AppMethodBeat.o(239126);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     org.tensorflow.lite.c
  * JD-Core Version:    0.7.0.1
  */

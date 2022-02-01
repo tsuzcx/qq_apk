@@ -1,803 +1,825 @@
 package com.tencent.mm.model;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.ac;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.b.p;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.network.aj;
-import com.tencent.mm.network.c;
-import com.tencent.mm.network.s;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.protocal.MMProtocalJni;
-import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.f;
-import com.tencent.mm.protocal.j.a;
-import com.tencent.mm.protocal.j.b;
-import com.tencent.mm.protocal.j.e;
-import com.tencent.mm.protocal.j.f;
-import com.tencent.mm.protocal.j.g;
-import com.tencent.mm.protocal.j.h;
-import com.tencent.mm.protocal.j.i;
-import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.o.a;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.aif;
-import com.tencent.mm.protocal.protobuf.ba;
-import com.tencent.mm.protocal.protobuf.cca;
-import com.tencent.mm.protocal.protobuf.ccb;
-import com.tencent.mm.protocal.protobuf.cme;
-import com.tencent.mm.protocal.protobuf.cmg;
-import com.tencent.mm.protocal.protobuf.ctb;
-import com.tencent.mm.protocal.protobuf.ctc;
-import com.tencent.mm.protocal.protobuf.ell;
-import com.tencent.mm.protocal.protobuf.ewr;
-import com.tencent.mm.protocal.protobuf.fca;
-import com.tencent.mm.protocal.protobuf.hk;
-import com.tencent.mm.protocal.protobuf.hx;
-import com.tencent.mm.protocal.protobuf.hy;
-import com.tencent.mm.protocal.protobuf.ia;
-import com.tencent.mm.protocal.protobuf.jk;
-import com.tencent.mm.protocal.protobuf.qx;
-import com.tencent.mm.protocal.protobuf.qy;
+import com.tencent.mm.an.t;
+import com.tencent.mm.an.t.a;
+import com.tencent.mm.an.x;
+import com.tencent.mm.ao.q;
+import com.tencent.mm.f.a.af;
+import com.tencent.mm.f.c.bb;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.kernel.a.b.a.a;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
+import com.tencent.mm.pointers.PInt;
+import com.tencent.mm.pointers.PString;
+import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.ao;
-import java.io.IOException;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.az;
+import com.tencent.mm.storage.bk;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bv.a;
+import com.tencent.mm.storage.bw;
+import com.tencent.mm.storage.bw.a;
+import com.tencent.mm.storage.bw.b;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.k;
+import com.tencent.mm.storage.m;
+import com.tencent.mm.storage.o;
+import com.tencent.mm.storage.u;
+import com.tencent.mm.storagebase.h.b;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import junit.framework.Assert;
 
 public final class bh
-  extends com.tencent.mm.ak.o
-  implements j.e
 {
-  private static a iDP = null;
-  private final int iDM;
-  private final j.h iDN;
-  private final j.i iDO;
+  private static final ch ltA;
+  private static bh lty;
+  private final int ltB;
+  final c.a ltC;
+  private cl ltD;
+  private cd ltE;
+  private e ltF;
+  private co ltG;
+  private ae ltH;
+  private bv.a ltI;
+  private bw.a ltJ;
+  private bw.a ltK;
+  private f ltL;
+  private final c ltn;
+  private final ax ltx;
+  private com.tencent.mm.compatible.b.g ltz;
   
-  public bh(int paramInt)
+  static
   {
-    AppMethodBeat.i(132239);
-    if ((paramInt == 702) || (paramInt == 701) || (paramInt == 252) || (paramInt == 763)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      this.iDM = paramInt;
-      if ((paramInt != 702) && (paramInt != 763)) {
-        break;
-      }
-      this.iDN = new j.a();
-      this.iDO = new j.b();
-      AppMethodBeat.o(132239);
-      return;
-    }
-    this.iDN = new j.f();
-    this.iDO = new j.g();
-    AppMethodBeat.o(132239);
+    AppMethodBeat.i(20360);
+    lty = null;
+    ltA = new ch();
+    AppMethodBeat.o(20360);
   }
   
-  public static int a(s params)
+  private bh(ax paramax, t.a parama)
   {
-    AppMethodBeat.i(132248);
-    Object localObject2 = (j.h)params.getReqObj();
-    j.i locali = (j.i)params.getRespObj();
-    Log.i("MicroMsg.MMReqRespAuth", "summerauth decodeAndRetriveAccInfo type:%d, hashcode:%d, ret:%d, stack[%s]", new Object[] { Integer.valueOf(((j.h)localObject2).getFuncId()), Integer.valueOf(params.hashCode()), Integer.valueOf(locali.hku), Util.getStack() });
-    int i;
-    if (locali.hku != 0)
+    AppMethodBeat.i(20341);
+    this.ltz = null;
+    this.ltB = 1;
+    this.ltD = new cl();
+    this.ltE = new cd();
+    this.ltF = new e();
+    this.ltG = new co();
+    this.ltH = new ae();
+    this.ltI = new bv.a()
     {
-      Log.d("MicroMsg.MMReqRespAuth", "summerauth decodeAndRetriveAccInfo resp just decoded and ret result:%d", new Object[] { Integer.valueOf(locali.hku) });
-      i = locali.hku;
-      AppMethodBeat.o(132248);
-      return i;
-    }
-    ell localell = locali.Kzw;
-    int k = localell.Nkx;
-    Object localObject1;
-    int j;
-    byte[] arrayOfByte1;
-    byte[] arrayOfByte2;
-    byte[] arrayOfByte3;
-    if ((k & 0x1) != 0)
-    {
-      localObject1 = localell.Nky;
-      j = ((hk)localObject1).KLn;
-      Log.i("MicroMsg.MMReqRespAuth", "decodeAndRetriveAccInfo authResultFlag:%d UpdateFlag:%d ", new Object[] { Integer.valueOf(j), Integer.valueOf(((hk)localObject1).KLm) });
-      arrayOfByte1 = z.a(((hk)localObject1).KLq);
-      arrayOfByte2 = z.a(((hk)localObject1).KLr);
-      params = ((hk)localObject1).KKX;
-      arrayOfByte3 = z.a(((hk)localObject1).KKY);
-      int m = params.KLU.getILen();
-      int n = params.LrO;
-      if (arrayOfByte3 == null)
+      public final as RG(String paramAnonymousString)
       {
-        i = -1;
-        Log.d("MicroMsg.MMReqRespAuth", "summerauth svr ecdh key len:%d, nid:%d sessionKey len:%d, sessionKey：%s, clientSession[%s], serverSession[%s]", new Object[] { Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i), Util.secPrint(Util.dumpHex(arrayOfByte3)), Util.secPrint(Util.dumpHex(arrayOfByte1)), Util.secPrint(Util.dumpHex(arrayOfByte2)) });
-        localObject1 = z.a(params.KLU);
-        localObject2 = ((j.h)localObject2).Kzv;
-        if (Util.isNullOrNil((byte[])localObject1)) {
-          break label667;
-        }
-        m = localObject1.length;
-        Object localObject3 = Util.secPrint(Util.dumpHex((byte[])localObject1));
-        if (localObject2 != null) {
-          break label654;
-        }
-        i = -1;
-        label352:
-        Log.d("MicroMsg.MMReqRespAuth", "summerauth svrPubKey len:%d value:%s prikey len:%d, values:%s", new Object[] { Integer.valueOf(m), localObject3, Integer.valueOf(i), Util.secPrint(Util.dumpHex((byte[])localObject2)) });
-        localObject3 = new PByteArray();
-        m = MMProtocalJni.computerKeyWithAllStr(params.LrO, (byte[])localObject1, (byte[])localObject2, (PByteArray)localObject3, 0);
-        params = ((PByteArray)localObject3).value;
-        if (params != null) {
-          break label661;
-        }
-        i = -1;
-        label431:
-        Log.i("MicroMsg.MMReqRespAuth", "summerauth ComputerKeyWithAllStr ret:%d, agreedECDHKey len: %d, values:%s", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Util.secPrint(Util.dumpHex(params)) });
-        label467:
-        if (params == null) {
-          break label693;
-        }
-        localObject1 = params;
-        label474:
-        locali.KzA = ((byte[])localObject1);
-        if ((j & 0x4) == 0) {
-          break label800;
-        }
-        Log.d("MicroMsg.MMReqRespAuth", "summerauth must decode session key");
-        if (Util.isNullOrNil(params)) {
-          break label757;
-        }
-        params = MMProtocalJni.aesDecrypt(arrayOfByte3, params);
-        if (arrayOfByte3 != null) {
-          break label701;
-        }
-        i = -1;
-        label515:
-        localObject1 = Util.secPrint(Util.dumpHex(arrayOfByte3));
-        if (params != null) {
-          break label708;
-        }
-        j = -1;
-        label531:
-        Log.d("MicroMsg.MMReqRespAuth", "summerauth aesDecrypt sessionKey len:%d, value:%s, session len:%d, value:%s", new Object[] { Integer.valueOf(i), localObject1, Integer.valueOf(j), Util.secPrint(Util.dumpHex(params)) });
-        if (Util.isNullOrNil(params)) {
-          break label714;
-        }
-        Log.d("MicroMsg.MMReqRespAuth", "summerauth decode session key succ session:%s", new Object[] { Util.secPrint(Util.dumpHex(params)) });
-        locali.b(params, arrayOfByte1, arrayOfByte2);
-        locali.hku = 1;
-        label615:
-        if ((k & 0x2) == 0) {
-          break label885;
-        }
-        locali.dMW = localell.Nkz.UserName;
-      }
-    }
-    for (;;)
-    {
-      i = locali.hku;
-      AppMethodBeat.o(132248);
-      return i;
-      i = arrayOfByte3.length;
-      break;
-      label654:
-      i = localObject2.length;
-      break label352;
-      label661:
-      i = params.length;
-      break label431;
-      label667:
-      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 24L, 1L, false);
-      Log.w("MicroMsg.MMReqRespAuth", "summerauth svr ecdh key is null!");
-      params = null;
-      break label467;
-      label693:
-      localObject1 = new byte[0];
-      break label474;
-      label701:
-      i = arrayOfByte3.length;
-      break label515;
-      label708:
-      j = params.length;
-      break label531;
-      label714:
-      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 25L, 1L, false);
-      Log.d("MicroMsg.MMReqRespAuth", "summerauth decode session key failed ret null!");
-      locali.b(new byte[0], arrayOfByte1, arrayOfByte2);
-      locali.hku = 2;
-      break label615;
-      label757:
-      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 26L, 1L, false);
-      Log.d("MicroMsg.MMReqRespAuth", "summerauth decode session key failed as agreedECDHKey is null!");
-      locali.b(new byte[0], arrayOfByte1, arrayOfByte2);
-      locali.hku = 2;
-      break label615;
-      label800:
-      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 27L, 1L, false);
-      Log.d("MicroMsg.MMReqRespAuth", "summerauth not need decode session key");
-      locali.b(arrayOfByte3, arrayOfByte1, arrayOfByte2);
-      locali.hku = 1;
-      break label615;
-      Log.d("MicroMsg.MMReqRespAuth", "summerauth auth sect not set so ret failed AuthSectResp[%s]", new Object[] { localell.Nky });
-      locali.b(new byte[0], new byte[0], new byte[0]);
-      locali.hku = 2;
-      break label615;
-      label885:
-      Log.d("MicroMsg.MMReqRespAuth", "summerauth acct sect not set!");
-    }
-  }
-  
-  public static void a(a parama)
-  {
-    iDP = parama;
-  }
-  
-  public static void a(boolean paramBoolean, qy paramqy, ctb paramctb, ccb paramccb)
-  {
-    AppMethodBeat.i(132244);
-    int i;
-    int j;
-    label20:
-    int k;
-    label27:
-    int m;
-    label34:
-    int n;
-    label41:
-    int i1;
-    if (paramqy == null)
-    {
-      i = -1;
-      if (paramqy != null) {
-        break label202;
-      }
-      j = -1;
-      if (paramccb != null) {
-        break label211;
-      }
-      k = -1;
-      if (paramctb != null) {
-        break label220;
-      }
-      m = -1;
-      if (paramctb != null) {
-        break label229;
-      }
-      n = -1;
-      if (paramctb != null) {
-        break label238;
-      }
-      i1 = -1;
-      label48:
-      if (paramctb != null) {
-        break label247;
-      }
-      localObject1 = "null";
-      label57:
-      if (paramctb != null) {
-        break label256;
-      }
-    }
-    label256:
-    for (Object localObject2 = "null";; localObject2 = paramctb.MxZ)
-    {
-      Log.i("MicroMsg.MMReqRespAuth", "dkidc updateMultiIDCInfo resetnewwork:%b iplist[l:%d s:%d] hostList[%d] noop[%d %d] typing[%d] port[%s] timeout[%s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), localObject1, localObject2 });
-      if ((paramccb != null) && (paramccb.oTA != null) && (paramccb.oTA.size() > 0)) {
-        break label265;
-      }
-      Log.f("MicroMsg.MMReqRespAuth", "dkidc updateMultiIDCInfo give empty host request! stack:[%s]", new Object[] { Util.getStack() });
-      AppMethodBeat.o(132244);
-      return;
-      i = paramqy.KXN;
-      break;
-      label202:
-      j = paramqy.KXO;
-      break label20;
-      label211:
-      k = paramccb.oTz;
-      break label27;
-      label220:
-      m = paramctb.Mya;
-      break label34;
-      label229:
-      n = paramctb.Myb;
-      break label41;
-      label238:
-      i1 = paramctb.Myc;
-      break label48;
-      label247:
-      localObject1 = paramctb.MxY;
-      break label57;
-    }
-    label265:
-    localObject2 = new LinkedList();
-    ((List)localObject2).clear();
-    if (paramqy != null)
-    {
-      localObject3 = paramqy.KXR.iterator();
-      while (((Iterator)localObject3).hasNext())
-      {
-        localObject4 = (qx)((Iterator)localObject3).next();
-        localObject1 = "";
-        if (((qx)localObject4).KXM != null) {
-          localObject1 = ((qx)localObject4).KXM.yO();
-        }
-        ((List)localObject2).add(new com.tencent.mm.protocal.o(((qx)localObject4).type, ((qx)localObject4).KXL.yO(), ((qx)localObject4).port, (String)localObject1));
-        Log.d("MicroMsg.MMReqRespAuth", "dkidc updateMultiIDCInfo short type:%d port:%d ip:%s", new Object[] { Integer.valueOf(((qx)localObject4).type), Integer.valueOf(((qx)localObject4).port), ((qx)localObject4).KXL.yO() });
-      }
-    }
-    localObject2 = com.tencent.mm.protocal.o.iz((List)localObject2);
-    Object localObject1 = new LinkedList();
-    if (paramqy != null)
-    {
-      localObject3 = paramqy.KXQ.iterator();
-      while (((Iterator)localObject3).hasNext())
-      {
-        localObject4 = (qx)((Iterator)localObject3).next();
-        paramqy = "";
-        if (((qx)localObject4).KXM != null) {
-          paramqy = ((qx)localObject4).KXM.yO();
-        }
-        ((List)localObject1).add(new com.tencent.mm.protocal.o(((qx)localObject4).type, ((qx)localObject4).KXL.yO(), ((qx)localObject4).port, paramqy));
-        Log.d("MicroMsg.MMReqRespAuth", "dkidc updateMultiIDCInfo long type:%d port:%d ip:%s", new Object[] { Integer.valueOf(((qx)localObject4).type), Integer.valueOf(((qx)localObject4).port), ((qx)localObject4).KXL.yO() });
-      }
-    }
-    Object localObject3 = com.tencent.mm.protocal.o.iz((List)localObject1);
-    Log.d("MicroMsg.MMReqRespAuth", "dkidc updateMultiIDCInfo builtin ip long[%s] short[%s]", new Object[] { localObject3, localObject2 });
-    com.tencent.mm.kernel.g.aAi();
-    com.tencent.mm.kernel.g.aAh().hqB.set(2, localObject2);
-    Object localObject4 = MMApplicationContext.getContext().getSharedPreferences("system_config_prefs", 0);
-    ((SharedPreferences)localObject4).edit().putString("builtin_short_ips", (String)localObject2).commit();
-    com.tencent.mm.kernel.g.aAi();
-    com.tencent.mm.kernel.g.aAh().hqB.set(3, localObject3);
-    if (paramctb != null)
-    {
-      com.tencent.mm.kernel.g.aAi();
-      com.tencent.mm.kernel.g.aAh().hqB.set(6, paramctb.MxY);
-      com.tencent.mm.kernel.g.aAi();
-      com.tencent.mm.kernel.g.aAh().hqB.set(7, paramctb.MxZ);
-      if (paramctb.Myc != 0)
-      {
-        com.tencent.mm.kernel.g.aAi();
-        paramqy = com.tencent.mm.kernel.g.aAh().hqB;
-        if (paramctb.Myc > 60)
-        {
-          i = 60;
-          paramqy.set(35, Integer.valueOf(i));
-        }
-      }
-      else
-      {
-        aj.E(paramctb.Mya, paramctb.Myd);
-      }
-    }
-    for (paramqy = com.tencent.mm.protocal.o.mJ(paramctb.MxY, paramctb.MxZ);; paramqy = null)
-    {
-      paramctb = "";
-      localObject1 = "";
-      String[] arrayOfString1 = new String[paramccb.oTA.size()];
-      String[] arrayOfString2 = new String[paramccb.oTA.size()];
-      int[] arrayOfInt = new int[paramccb.oTA.size()];
-      Log.d("MicroMsg.MMReqRespAuth", "hostlist.Count=%d", new Object[] { Integer.valueOf(paramccb.oTz) });
-      Iterator localIterator = paramccb.oTA.iterator();
-      i = 0;
-      paramccb = (ccb)localObject1;
-      for (;;)
-      {
-        if (!localIterator.hasNext()) {
-          break label1147;
-        }
-        localObject1 = (cca)localIterator.next();
-        Log.d("MicroMsg.MMReqRespAuth", "dkidc host org:%s sub:%s", new Object[] { ((cca)localObject1).MhX, ((cca)localObject1).MhY });
-        arrayOfString1[i] = ((cca)localObject1).MhX;
-        arrayOfString2[i] = ((cca)localObject1).MhY;
-        arrayOfInt[i] = ((cca)localObject1).MhZ;
-        j = i + 1;
-        i = j;
-        if (!Util.isNullOrNil(((cca)localObject1).MhX))
-        {
-          i = j;
-          if (!Util.isNullOrNil(((cca)localObject1).MhY))
-          {
-            if (((cca)localObject1).MhX.equals(c.jDI))
-            {
-              com.tencent.mm.kernel.g.aAi();
-              com.tencent.mm.kernel.g.aAh().hqB.set(24, ((cca)localObject1).MhY);
-              paramccb = ((cca)localObject1).MhY;
-              i = j;
-              continue;
-              i = paramctb.Myc;
-              break;
-            }
-            if (((cca)localObject1).MhX.equals(c.jDG))
-            {
-              com.tencent.mm.kernel.g.aAi();
-              com.tencent.mm.kernel.g.aAh().hqB.set(25, ((cca)localObject1).MhY);
-              paramctb = ((cca)localObject1).MhY;
-              i = j;
-            }
-            else
-            {
-              i = j;
-              if (((cca)localObject1).MhX.equals(c.icB))
-              {
-                i = j;
-                if (!Util.isNullOrNil(((cca)localObject1).MhY))
-                {
-                  ((SharedPreferences)localObject4).edit().putString(c.icB, ((cca)localObject1).MhY).commit();
-                  i = j;
-                }
-              }
-            }
-          }
-        }
-      }
-      label1147:
-      com.tencent.mm.kernel.g.aAi();
-      localObject1 = com.tencent.mm.kernel.g.aAg().hqi.iMw;
-      if ((arrayOfString1.length > 0) && (localObject1 != null)) {
-        ((com.tencent.mm.network.g)localObject1).setHostInfo(arrayOfString1, arrayOfString2, arrayOfInt);
-      }
-      if (!Util.isNullOrNil(paramctb))
-      {
-        com.tencent.mm.kernel.g.aAi();
-        com.tencent.mm.kernel.g.aAh().hqB.set(25, paramctb);
-      }
-      if (!Util.isNullOrNil(paramccb))
-      {
-        com.tencent.mm.kernel.g.aAi();
-        com.tencent.mm.kernel.g.aAh().hqB.set(24, paramccb);
-      }
-      if ((localObject1 != null) && (paramqy != null)) {
-        ((com.tencent.mm.network.g)localObject1).a(paramBoolean, (String)localObject2, (String)localObject3, paramqy.KzK, paramqy.KzL, paramqy.KzM, paramqy.KzN, paramccb, paramctb);
-      }
-      AppMethodBeat.o(132244);
-      return;
-    }
-  }
-  
-  public static SharedPreferences aVK()
-  {
-    AppMethodBeat.i(258483);
-    SharedPreferences localSharedPreferences = bi.aVK();
-    AppMethodBeat.o(258483);
-    return localSharedPreferences;
-  }
-  
-  private s sa(int paramInt)
-  {
-    AppMethodBeat.i(132240);
-    Log.i("MicroMsg.MMReqRespAuth", "summerauth autoAuthReq authReqFlag:%d, this:%d, stack:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(hashCode()), Util.getStack() });
-    Object localObject6 = (j.h)getReqObj();
-    Object localObject5 = (j.i)getRespObj();
-    Object localObject4 = bi.aVK();
-    int i = ((SharedPreferences)localObject4).getInt("key_auth_update_version", 0);
-    Log.d("MicroMsg.MMReqRespAuth", "summerauth updateVersion:%d, clientVersion:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(d.KyO) });
-    long l;
-    jk localjk;
-    if (i < d.KyO)
-    {
-      if ((this.iDM == 702) || (this.iDM == 763))
-      {
-        i = 12;
-        ((j.h)localObject6).setSceneStatus(i);
-        localObject1 = com.tencent.mm.plugin.report.e.Cxv;
-        if (this.iDM != 702) {
-          break label321;
-        }
-      }
-      label321:
-      for (l = 14L;; l = 13L)
-      {
-        ((com.tencent.mm.plugin.report.e)localObject1).idkeyStat(148L, l, 1L, false);
-        localjk = new jk();
-        localjk.KOa = paramInt;
-        localjk.KLf = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
-        localjk.KLe = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
-        localObject1 = new ewr();
-        localjk.KNY = ((ewr)localObject1);
-        ((ewr)localObject1).KQx = "";
-        ((ewr)localObject1).KQw = "";
-        ((ewr)localObject1).Num = "";
-        localObject1 = new fca();
-        localjk.KNZ = ((fca)localObject1);
-        ((fca)localObject1).MbK = "";
-        ((fca)localObject1).MbJ = "";
-        if (com.tencent.mm.kernel.g.aAc()) {
-          break label364;
-        }
-        Log.e("MicroMsg.MMReqRespAuth", "autoAuthReq build autoauth Req  , failed  acc not ready");
-        AppMethodBeat.o(132240);
         return null;
-        i = 16;
-        break;
       }
-    }
-    if ((this.iDM == 702) || (this.iDM == 763)) {}
-    for (i = 2;; i = 1)
-    {
-      ((j.h)localObject6).setSceneStatus(i);
-      break;
-    }
-    label364:
-    com.tencent.mm.kernel.g.aAi();
-    Object localObject1 = Util.nullAsNil((String)com.tencent.mm.kernel.g.aAh().azQ().get(2, null));
-    com.tencent.mm.kernel.g.aAi();
-    Object localObject7 = new p(Util.nullAs((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(9, null), 0));
-    if (Util.isNullOrNil((String)localObject1)) {
-      localObject1 = ((p)localObject7).toString();
-    }
-    for (;;)
-    {
-      com.tencent.mm.kernel.g.aAi();
-      Object localObject2 = com.tencent.mm.kernel.g.aAf().azh();
-      l = ((p)localObject7).longValue();
-      boolean bool;
-      Object localObject3;
-      if ((this.iDM == 252) || (this.iDM == 701))
+      
+      public final void a(bv paramAnonymousbv, as paramAnonymousas)
       {
-        bool = true;
-        localObject3 = ((ac)localObject2).a(l, "", bool);
-        if (localObject3 != null) {
-          break label902;
+        AppMethodBeat.i(20325);
+        String str = paramAnonymousas.field_username;
+        if (as.PY(paramAnonymousas.field_username)) {
+          paramAnonymousas.setUsername(as.bvW(paramAnonymousas.field_username));
         }
-        paramInt = -1;
-        label495:
-        if (localObject3 != null) {
-          break label909;
+        if (Util.isNullOrNil(paramAnonymousas.aph())) {
+          paramAnonymousas.It(com.tencent.mm.platformtools.f.ZK(paramAnonymousas.field_nickname));
         }
-        localObject2 = "null";
-        label505:
-        Log.i("MicroMsg.MMReqRespAuth", "summerauth loginbuf username:%s, qq:%s, len:%d, content:[%s]", new Object[] { localObject1, localObject7, Integer.valueOf(paramInt), localObject2 });
-        localObject7 = new SKBuiltinBuffer_t();
-        if (!Util.isNullOrNil((byte[])localObject3)) {
-          break label922;
+        if (Util.isNullOrNil(paramAnonymousas.api())) {
+          paramAnonymousas.Iu(com.tencent.mm.platformtools.f.ZJ(paramAnonymousas.field_nickname));
         }
-        localObject2 = new byte[0];
-        label561:
-        localjk.KNX = ((SKBuiltinBuffer_t)localObject7).setBuffer((byte[])localObject2);
-        if ((this.iDM != 702) && (this.iDM != 763)) {
-          break label1049;
+        if (Util.isNullOrNil(paramAnonymousas.field_conRemarkPYShort)) {
+          paramAnonymousas.Ix(com.tencent.mm.platformtools.f.ZK(paramAnonymousas.field_conRemark));
         }
-        localObject2 = (j.a)localObject6;
-        localObject3 = (j.b)localObject5;
-        localObject5 = new hx();
-        localObject6 = new ia();
-        ((j.a)localObject2).Kzu.KLV = ((ia)localObject6);
-        ((j.a)localObject2).Kzu.KLW = ((hx)localObject5);
-        localObject4 = ((SharedPreferences)localObject4).getString("_auth_key", "");
-        if (localObject4 != null) {
-          break label929;
+        if (Util.isNullOrNil(paramAnonymousas.field_conRemarkPYFull)) {
+          paramAnonymousas.Iw(com.tencent.mm.platformtools.f.ZJ(paramAnonymousas.field_conRemark));
         }
-        paramInt = -1;
-        Log.i("MicroMsg.MMReqRespAuth", "summerauths KEY_SP_SUFFIX keyStr[%s]", new Object[] { Integer.valueOf(paramInt) });
-        localObject7 = Util.decodeHexString((String)localObject4);
-        localObject4 = new hy();
-        if (Util.isNullOrNil((byte[])localObject7)) {
-          break label971;
-        }
-        ((hx)localObject5).KKZ = new SKBuiltinBuffer_t().setBuffer((byte[])localObject7);
-        Log.i("MicroMsg.MMReqRespAuth", "summerauths keyBuf[%s, %s]", new Object[] { Integer.valueOf(((hx)localObject5).KKZ.getBuffer().zy.length), Integer.valueOf(localObject7.length) });
-      }
-      for (;;)
-      {
-        try
+        if (ab.p(paramAnonymousas))
         {
-          ((hy)localObject4).parseFrom((byte[])localObject7);
-          if (((hy)localObject4).KLT == null) {
-            break label1006;
+          paramAnonymousas.pq(43);
+          paramAnonymousas.It(com.tencent.mm.platformtools.f.ZK(paramAnonymousas.ayr()));
+          paramAnonymousas.Iu(com.tencent.mm.platformtools.f.ZJ(paramAnonymousas.ayr()));
+          paramAnonymousas.Iw(com.tencent.mm.platformtools.f.ZJ(paramAnonymousas.ays()));
+          paramAnonymousas.Ix(paramAnonymousas.ays());
+          AppMethodBeat.o(20325);
+          return;
+        }
+        if (ab.QX(str))
+        {
+          paramAnonymousas.axk();
+          paramAnonymousas.pv(4);
+          paramAnonymousas.pq(33);
+          if (paramAnonymousas != null) {
+            break label336;
           }
-          ((ia)localObject6).KLX = ((hy)localObject4).KLT;
-          Log.w("MicroMsg.MMReqRespAuth", "summerauthkey AesEncryptKey [%s][%s]", new Object[] { Integer.valueOf(((hy)localObject4).KLT.getBuffer().zy.length), Util.dumpHex(((hy)localObject4).KLT.getBuffer().zy) });
-          ((hx)localObject5).KLK = localjk;
-          ((hx)localObject5).KFu = MMApplicationContext.getApplicationId();
-          Log.i("MicroMsg.MMReqRespAuth", "aesReq.AndroidPackageName [%s]", new Object[] { ((hx)localObject5).KFu });
-          ((j.a)localObject2).username = ((String)localObject1);
-          ((j.i)localObject3).dMW = ((String)localObject1);
-          AppMethodBeat.o(132240);
-          return this;
-          bool = false;
-          break;
-          label902:
-          paramInt = localObject3.length;
-          break label495;
-          label909:
-          localObject2 = Util.secPrint(Util.dumpHex((byte[])localObject3));
-          break label505;
-          label922:
-          localObject2 = localObject3;
-          break label561;
-          label929:
-          paramInt = ((String)localObject4).length();
         }
-        catch (IOException localIOException)
+        label336:
+        for (paramAnonymousbv = new as();; paramAnonymousbv = paramAnonymousas)
         {
-          com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 15L, 1L, false);
-          Log.printErrStackTrace("MicroMsg.MMReqRespAuth", localIOException, "summerauthkey Failed parse autoauthkey buf", new Object[0]);
-          continue;
+          paramAnonymousbv.setUsername(str);
+          paramAnonymousbv.axk();
+          ak.T(paramAnonymousbv);
+          paramAnonymousbv.axx();
+          if (paramAnonymousas.ayh()) {
+            paramAnonymousas.pq(paramAnonymousas.axh());
+          }
+          if (ab.QL(str))
+          {
+            Log.i("MicroMsg.MMCore", "update official account helper showhead %d", new Object[] { Integer.valueOf(31) });
+            paramAnonymousas.pq(31);
+          }
+          if (paramAnonymousas.ayc())
+          {
+            bh.beI();
+            c.bbR().c(new String[] { str }, "@blacklist");
+          }
+          Log.d("MicroMsg.MMCore", "onPreInsertContact2: %s, %s", new Object[] { paramAnonymousas.field_username, paramAnonymousas.aph() });
+          AppMethodBeat.o(20325);
+          return;
         }
-        label971:
-        com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 16L, 1L, false);
-        ((hx)localObject5).KKZ = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
-        continue;
-        label1006:
-        com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 17L, 1L, false);
-        ((ia)localObject6).KLX = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
-        Log.w("MicroMsg.MMReqRespAuth", "summerauthkey AesEncryptKey null!");
-        continue;
-        label1049:
-        localObject3 = (j.f)localObject6;
-        localObject2 = new cmg();
-        localObject4 = new cme();
-        ((j.f)localObject3).Kzy.MrA = ((cmg)localObject2);
-        ((j.f)localObject3).Kzy.MrB = ((cme)localObject4);
-        ((cme)localObject4).Mrz = 2;
-        ((cme)localObject4).KLK = localjk;
-        ((cmg)localObject2).UserName = ((String)localObject1);
-        com.tencent.mm.kernel.g.aAi();
-        localObject1 = Util.nullAsNil((String)com.tencent.mm.kernel.g.aAh().azQ().get(3, null));
-        com.tencent.mm.kernel.g.aAi();
-        ((cmg)localObject2).KQi = Util.nullAsNil((String)com.tencent.mm.kernel.g.aAh().azQ().get(19, null));
-        ((cmg)localObject2).KQv = ((String)localObject1);
       }
-    }
-  }
-  
-  public final void a(j.h paramh, j.i parami, int paramInt1, int paramInt2, String paramString)
-  {
-    AppMethodBeat.i(132243);
-    if (!com.tencent.mm.kernel.g.aAc())
-    {
-      Log.e("MicroMsg.MMReqRespAuth", "summerauth onAutoAuthEnd but account not ready");
-      AppMethodBeat.o(132243);
-      return;
-    }
-    ell localell = parami.Kzw;
-    boolean bool;
-    if ((localell != null) && (localell.Nky != null))
-    {
-      int i = parami.Kzw.Nky.KLo;
-      Log.i("MicroMsg.MMReqRespAuth", "summerauth mmtls auto:%s", new Object[] { Integer.valueOf(i) });
-      com.tencent.mm.kernel.g.aAi();
-      com.tencent.mm.kernel.g.aAh().hqB.set(47, Integer.valueOf(i));
-      com.tencent.mm.network.g localg = com.tencent.mm.kernel.g.aAg().hqi.iMw;
-      if (localg != null)
+      
+      public final int b(as paramAnonymousas, boolean paramAnonymousBoolean)
       {
-        if ((i & 0x1) != 0) {
-          break label263;
+        return 0;
+      }
+    };
+    this.ltJ = new bw.a()
+    {
+      public final void a(az paramAnonymousaz, bw paramAnonymousbw)
+      {
+        AppMethodBeat.i(20326);
+        if (paramAnonymousaz == null)
+        {
+          AppMethodBeat.o(20326);
+          return;
         }
-        bool = true;
-        localg.fB(bool);
+        if ((!as.bvH(paramAnonymousaz.field_username)) && (!as.bvJ(paramAnonymousaz.field_username)) && (!as.PY(paramAnonymousaz.field_username)) && (!ab.Qm(paramAnonymousaz.field_username)) && (!as.bvK(paramAnonymousaz.field_username)))
+        {
+          AppMethodBeat.o(20326);
+          return;
+        }
+        if (as.PY(paramAnonymousaz.field_username))
+        {
+          paramAnonymousaz = paramAnonymousbw.bwx("floatbottle");
+          if (paramAnonymousaz != null) {
+            break label480;
+          }
+          paramAnonymousaz = new az("floatbottle");
+        }
+        label480:
+        for (int i = 1;; i = 0)
+        {
+          paramAnonymousaz.pI(1);
+          paramAnonymousaz.pH(s.bcR());
+          bh.beI();
+          ca localca = c.bbO().aOK(" and not ( type = 10000 and isSend != 2 ) ");
+          if ((localca != null) && (localca.field_msgId > 0L))
+          {
+            paramAnonymousaz.bq(localca);
+            paramAnonymousaz.setContent(as.bvW(localca.field_talker) + ":" + localca.field_content);
+            paramAnonymousaz.IZ(Integer.toString(localca.getType()));
+            bw.b localb = paramAnonymousbw.abK();
+            if (localb != null)
+            {
+              PString localPString1 = new PString();
+              PString localPString2 = new PString();
+              PInt localPInt = new PInt();
+              localca.Jm("floatbottle");
+              localca.setContent(paramAnonymousaz.field_content);
+              localb.a(localca, localPString1, localPString2, localPInt, false);
+              paramAnonymousaz.Ja(localPString1.value);
+              paramAnonymousaz.Jb(localPString2.value);
+              paramAnonymousaz.pK(localPInt.value);
+            }
+          }
+          while (i != 0)
+          {
+            paramAnonymousbw.e(paramAnonymousaz);
+            AppMethodBeat.o(20326);
+            return;
+            paramAnonymousaz.hyE();
+          }
+          paramAnonymousbw.a(paramAnonymousaz, paramAnonymousaz.field_username);
+          AppMethodBeat.o(20326);
+          return;
+          if ((as.bvH(paramAnonymousaz.field_username)) || (as.bvJ(paramAnonymousaz.field_username)))
+          {
+            AppMethodBeat.o(20326);
+            return;
+          }
+          ((q)com.tencent.mm.kernel.h.ae(q.class)).bbQ();
+          u.b(paramAnonymousaz, paramAnonymousbw);
+          if ("@blacklist".equals(paramAnonymousaz.field_parentRef))
+          {
+            bh.beI();
+            paramAnonymousbw = c.bbL().RG(paramAnonymousaz.field_username);
+            if ((paramAnonymousbw != null) && (!Util.isNullOrNil(paramAnonymousbw.field_username)) && (!paramAnonymousbw.ayc()))
+            {
+              bh.beI();
+              c.bbR().c(new String[] { paramAnonymousaz.field_username }, "");
+            }
+          }
+          AppMethodBeat.o(20326);
+          return;
+        }
       }
-    }
-    for (;;)
+    };
+    this.ltK = new bw.a()
     {
-      Log.i("MicroMsg.MMReqRespAuth", "summerauth onAutoAuthEnd errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-      if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        break label384;
+      public final void a(az paramAnonymousaz, bw paramAnonymousbw)
+      {
+        if (paramAnonymousaz == null) {}
       }
-      if ((paramInt1 != 4) || (paramInt2 != -301)) {
-        break label309;
+    };
+    this.ltL = new f();
+    this.ltx = paramax;
+    this.ltC = new c.a()
+    {
+      public final void fY(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(20322);
+        Log.i("MicroMsg.MMCore", "summeranrt2 onAccountPostReset tid:%d stack[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), Util.getStack() });
+        bh.b(bh.this);
+        long l1 = System.currentTimeMillis();
+        bh.beI();
+        long l2 = c.getDataDB().beginTransaction(Thread.currentThread().getId());
+        bh.a(bh.this);
+        as localas1;
+        as localas2;
+        if (paramAnonymousBoolean)
+        {
+          Log.i("MicroMsg.MMCore", "[doAccountPostReset] updated is true");
+          c.bbL().bwp("readerapp");
+          c.aHp().i(256, Boolean.TRUE);
+          Log.i("MicroMsg.MMCore", "[doAccountPostReset] begin to updated HardCodeUpdate");
+          localObject = ab.bec();
+          Log.i("MicroMsg.HardCodeUpdateTask", "[updateHelperIndexFor50] size:%s", new Object[] { Integer.valueOf(((List)localObject).size()) });
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            localas1 = (as)((Iterator)localObject).next();
+            if ((localas1 != null) && ((int)localas1.jxt != 0) && (localas1.field_showHead == 32))
+            {
+              localas1.pq(localas1.axh());
+              Log.d("MicroMsg.HardCodeUpdateTask", "contact to updatefavour " + localas1.field_username);
+              bh.beI();
+              c.bbL().c(localas1.field_username, localas1);
+            }
+          }
+          localObject = ab.lsO;
+          int j = localObject.length;
+          int i = 0;
+          while (i < j)
+          {
+            localas1 = localObject[i];
+            localas2 = c.bbL().RG(localas1);
+            if ((localas2 != null) && (((int)localas2.jxt != 0) || (com.tencent.mm.contact.d.rk(localas2.field_type))))
+            {
+              localas2.axx();
+              c.bbL().c(localas1, localas2);
+            }
+            i += 1;
+          }
+          al.ben();
+          bs.RT("ver" + com.tencent.mm.protocal.d.RAD);
+        }
+        bs.b(((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vZD, 1), ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vZE, 0.75F), ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vZF, 0.4F), ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vZF, 0.4F));
+        Object localObject = com.tencent.mm.contact.b.jxn;
+        boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vZX, true);
+        Log.i("MicroMsg.ContactUpgradeHelper", "setDefalutOptOpen:%b", new Object[] { Boolean.valueOf(bool) });
+        ((com.tencent.mm.contact.b)localObject).jxq = bool;
+        new ak(bh.a(bh.this));
+        if (paramAnonymousBoolean)
+        {
+          ak.S(c.bbL().RG("filehelper"));
+          localObject = z.bcZ();
+          if (!Util.isNullOrNil((String)localObject))
+          {
+            localas1 = c.bbL().RG((String)localObject);
+            if ((int)localas1.jxt != 0) {
+              break label1565;
+            }
+            localas1.setUsername((String)localObject);
+            localas1.axk();
+            bh.beI();
+            c.bbL().av(localas1);
+          }
+          ak.a(paramAnonymousBoolean, "qqmail", false);
+          ak.a(paramAnonymousBoolean, "floatbottle", false);
+          ak.a(paramAnonymousBoolean, "shakeapp", false);
+          ak.a(paramAnonymousBoolean, "lbsapp", false);
+          ak.a(paramAnonymousBoolean, "medianote", false);
+          ak.a(paramAnonymousBoolean, "newsapp", true);
+          c.bbR().bwv("blogapp");
+          c.bbO().aOO("blogapp");
+          c.bbL().bwp("blogapp");
+          ak.a(paramAnonymousBoolean, "facebookapp", true);
+          ak.a(paramAnonymousBoolean, "qqfriend", false);
+          ak.a(paramAnonymousBoolean, "masssendapp", true);
+          ak.a(paramAnonymousBoolean, "feedsapp", true);
+          c.bbR().bwv("tmessage");
+          c.bbL().bwp("tmessage");
+          localas2 = c.bbL().RG("voip");
+          localas1 = c.bbL().RG("voipapp");
+          localObject = localas1;
+          if (localas1 == null) {
+            localObject = new as();
+          }
+          if ((localas2 != null) && ((int)localas2.jxt != 0)) {
+            c.bbL().bwp("voip");
+          }
+          if ((int)((com.tencent.mm.contact.d)localObject).jxt != 0) {
+            break label1601;
+          }
+          ((as)localObject).setUsername("voipapp");
+          ((as)localObject).axk();
+          ak.T((as)localObject);
+          ((as)localObject).pv(4);
+          ((as)localObject).axx();
+          c.bbL().aw((as)localObject);
+          label854:
+          localas1 = c.bbL().RG("officialaccounts");
+          localObject = localas1;
+          if (localas1 == null) {
+            localObject = new as();
+          }
+          Log.i("MicroMsg.HardCodeHelper", "hardcodeOfficialAccounts:update[%B], contactID[%d]", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Integer.valueOf((int)((com.tencent.mm.contact.d)localObject).jxt) });
+          if ((int)((com.tencent.mm.contact.d)localObject).jxt != 0) {
+            break label1627;
+          }
+          ((as)localObject).setUsername("officialaccounts");
+          ((as)localObject).axl();
+          ak.T((as)localObject);
+          ((as)localObject).pv(3);
+          c.bbL().aw((as)localObject);
+          label961:
+          localas2 = c.bbL().RG("voipaudio");
+          localas1 = c.bbL().RG("voicevoipapp");
+          localObject = localas1;
+          if (localas1 == null) {
+            localObject = new as();
+          }
+          if ((localas2 != null) && ((int)localas2.jxt != 0)) {
+            c.bbL().bwp("voipaudio");
+          }
+          if ((int)((com.tencent.mm.contact.d)localObject).jxt != 0) {
+            break label1662;
+          }
+          ((as)localObject).setUsername("voicevoipapp");
+          ((as)localObject).axk();
+          ak.T((as)localObject);
+          ((as)localObject).pv(4);
+          ((as)localObject).axx();
+          c.bbL().aw((as)localObject);
+          label1080:
+          ak.a(paramAnonymousBoolean, "voiceinputapp", false);
+          ak.a(paramAnonymousBoolean, "linkedinplugin", false);
+          localas1 = c.bbL().RG("notifymessage");
+          localObject = localas1;
+          if (localas1 == null) {
+            localObject = new as();
+          }
+          Log.i("MicroMsg.HardCodeHelper", "hardcodeOfficialAccounts:update[%B], contactID[%d]", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Integer.valueOf((int)((com.tencent.mm.contact.d)localObject).jxt) });
+          if ((int)((com.tencent.mm.contact.d)localObject).jxt != 0) {
+            break label1688;
+          }
+          ((as)localObject).setUsername("notifymessage");
+          ((as)localObject).axl();
+          ak.T((as)localObject);
+          ((as)localObject).pv(3);
+          c.bbL().aw((as)localObject);
+          label1205:
+          localas1 = c.bbL().RG("appbrandcustomerservicemsg");
+          localObject = localas1;
+          if (localas1 == null) {
+            localObject = new as();
+          }
+          Log.i("MicroMsg.HardCodeHelper", "hardcodeAppBrandServiceMessage:update[%B], contactID[%d]", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Integer.valueOf((int)((com.tencent.mm.contact.d)localObject).jxt) });
+          if ((int)((com.tencent.mm.contact.d)localObject).jxt != 0) {
+            break label1723;
+          }
+          ((as)localObject).setUsername("appbrandcustomerservicemsg");
+          ((as)localObject).axl();
+          ak.T((as)localObject);
+          ((as)localObject).rm(0);
+          ((as)localObject).pv(3);
+          c.bbL().aw((as)localObject);
+          label1318:
+          localas1 = c.bbL().RG("appbrand_notify_message");
+          localObject = localas1;
+          if (localas1 == null) {
+            localObject = new as();
+          }
+          Log.i("MicroMsg.HardCodeHelper", "hardcodeAppBrandNotifyMessage:update[%B], contactID[%d]", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Integer.valueOf((int)((com.tencent.mm.contact.d)localObject).jxt) });
+          if ((int)((com.tencent.mm.contact.d)localObject).jxt != 0) {
+            break label1758;
+          }
+          ((as)localObject).setUsername("appbrand_notify_message");
+          ((as)localObject).axl();
+          ak.T((as)localObject);
+          ((as)localObject).pv(3);
+          c.bbL().aw((as)localObject);
+        }
+        for (;;)
+        {
+          ak.a(paramAnonymousBoolean, "downloaderapp", true);
+          if (paramAnonymousBoolean)
+          {
+            bh.beI();
+            c.bbR().bwv("Weixin");
+            bh.beI();
+            c.bbL().bwp("Weixin");
+          }
+          bh.beI();
+          c.getDataDB().endTransaction(l2);
+          Log.i("MicroMsg.MMCore", "summeranrt dkwt set forceManual :%b, tid[%d], take[%s]ms, stack[%s]", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Long.valueOf(Thread.currentThread().getId()), Long.valueOf(System.currentTimeMillis() - l1), Util.getStack() });
+          bh.a(bh.this);
+          c.bbR().a(bh.c(bh.beL()).abK());
+          AppMethodBeat.o(20322);
+          return;
+          label1565:
+          if (com.tencent.mm.contact.d.rk(localas1.field_type)) {
+            break;
+          }
+          localas1.axk();
+          bh.beI();
+          c.bbL().c((String)localObject, localas1);
+          break;
+          label1601:
+          if (!paramAnonymousBoolean) {
+            break label854;
+          }
+          ((as)localObject).axx();
+          c.bbL().c("voipapp", (as)localObject);
+          break label854;
+          label1627:
+          if (!paramAnonymousBoolean) {
+            break label961;
+          }
+          Log.i("MicroMsg.HardCodeHelper", "do update hardcode official accounts");
+          ((as)localObject).axl();
+          c.bbL().c("officialaccounts", (as)localObject);
+          break label961;
+          label1662:
+          if (!paramAnonymousBoolean) {
+            break label1080;
+          }
+          ((as)localObject).axx();
+          c.bbL().c("voicevoipapp", (as)localObject);
+          break label1080;
+          label1688:
+          if (!paramAnonymousBoolean) {
+            break label1205;
+          }
+          Log.i("MicroMsg.HardCodeHelper", "do update hardcode official accounts");
+          ((as)localObject).axl();
+          c.bbL().c("notifymessage", (as)localObject);
+          break label1205;
+          label1723:
+          if (!paramAnonymousBoolean) {
+            break label1318;
+          }
+          Log.i("MicroMsg.HardCodeHelper", "do update app brand service message accunt");
+          ((as)localObject).axl();
+          c.bbL().c("appbrandcustomerservicemsg", (as)localObject);
+          break label1318;
+          label1758:
+          if (paramAnonymousBoolean)
+          {
+            Log.i("MicroMsg.HardCodeHelper", "do update app brand service message accunt");
+            ((as)localObject).axl();
+            c.bbL().c("appbrand_notify_message", (as)localObject);
+          }
+        }
       }
-      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 18L, 1L, false);
-      Log.i("MicroMsg.MMReqRespAuth", "dkidc onAutoAuthEnd RedirectIDC");
-      if ((localell == null) || (localell.NkA == null)) {
-        break label294;
+    };
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.b(a.class, new a());
+    com.tencent.mm.kernel.h.aHH().kdj.add(parama);
+    this.ltn = new c();
+    com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(99L, 142L, 1L, false);
+    x.a(new bh.2(this));
+    com.tencent.mm.kernel.h.aHH();
+    paramax = com.tencent.mm.kernel.h.aHF();
+    parama = new com.tencent.mm.kernel.api.d()
+    {
+      public final void b(com.tencent.mm.network.g paramAnonymousg)
+      {
+        AppMethodBeat.i(20324);
+        com.tencent.mm.modelstat.p.d(paramAnonymousg);
+        com.tencent.mm.modelstat.p.e(paramAnonymousg);
+        AppMethodBeat.o(20324);
       }
-      a(true, parami.Kzw.NkA.KQk, parami.Kzw.NkA.KQl, parami.Kzw.NkA.KQj);
-      AppMethodBeat.o(132243);
-      return;
-      label263:
-      bool = false;
-      break;
-      Log.i("MicroMsg.MMReqRespAuth", "summerauth mmtls auto not set as ret:%s", new Object[] { Integer.valueOf(parami.getRetCode()) });
-    }
-    label294:
-    Log.w("MicroMsg.MMReqRespAuth", "dkidc onAutoAuthEnd RedirectIDC but NetworkSectResp is null");
-    AppMethodBeat.o(132243);
-    return;
-    label309:
-    paramh = com.tencent.mm.plugin.report.e.Cxv;
-    if (f.KyZ)
-    {
-      l = 119L;
-      paramh.idkeyStat(148L, l, 1L, false);
-      paramh = com.tencent.mm.plugin.report.e.Cxv;
-      if (!f.Kza) {
-        break label376;
-      }
-    }
-    label376:
-    for (long l = 121L;; l = 122L)
-    {
-      paramh.idkeyStat(148L, l, 1L, false);
-      AppMethodBeat.o(132243);
-      return;
-      l = 120L;
-      break;
-    }
-    label384:
-    if (localell.Nkz != null)
-    {
-      cr.sk(localell.Nkz.KEl);
-      cr.a(localell.Nkz.KEm);
-      cr.a(localell.Nkz.KEn);
-    }
-    if (iDP != null) {
-      iDP.a(paramh, parami);
-    }
-    AppMethodBeat.o(132243);
+    };
+    paramax.kcc.add(parama);
+    AppMethodBeat.o(20341);
   }
   
-  public final int aVJ()
+  public static void MM(String paramString)
   {
-    AppMethodBeat.i(132241);
-    if (com.tencent.mm.kernel.g.aAc())
-    {
-      com.tencent.mm.kernel.g.aAi();
-      com.tencent.mm.kernel.g.aAf();
-      int i = a.getUin();
-      AppMethodBeat.o(132241);
-      return i;
-    }
-    Log.e("MicroMsg.MMReqRespAuth", "dkwt acc NOT Ready , the fucking MMReqRespBase need the fucking uin ???  if u find this log , fuck dk. %s", new Object[] { Util.getStack() });
-    AppMethodBeat.o(132241);
-    return 0;
+    AppMethodBeat.i(20334);
+    com.tencent.mm.kernel.b.MM(paramString);
+    AppMethodBeat.o(20334);
   }
   
-  public final s dm(int paramInt1, int paramInt2)
+  public static void a(aw paramaw)
   {
-    AppMethodBeat.i(132242);
-    s locals = new bh(paramInt1).sa(paramInt2);
-    AppMethodBeat.o(132242);
-    return locals;
+    AppMethodBeat.i(20333);
+    com.tencent.mm.kernel.c.a(paramaw);
+    AppMethodBeat.o(20333);
   }
   
-  public final l.d getReqObjImp()
+  public static void a(ax paramax, t.a parama)
   {
-    return this.iDN;
+    AppMethodBeat.i(20338);
+    lty = new bh(paramax, parama);
+    com.tencent.mm.modelstat.n.de(MMApplicationContext.getContext());
+    AppMethodBeat.o(20338);
   }
   
-  public final l.e getRespObj()
+  public static void a(com.tencent.mm.network.p paramp)
   {
-    return this.iDO;
+    AppMethodBeat.i(20331);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().a(paramp);
+    AppMethodBeat.o(20331);
   }
   
-  public final int getType()
+  public static boolean aGE()
   {
-    AppMethodBeat.i(132246);
-    int i = this.iDN.getFuncId();
-    AppMethodBeat.o(132246);
-    return i;
+    AppMethodBeat.i(20353);
+    boolean bool = com.tencent.mm.kernel.b.aGE();
+    AppMethodBeat.o(20353);
+    return bool;
   }
   
-  public final String getUri()
+  public static void aGF()
   {
-    AppMethodBeat.i(132247);
-    String str = this.iDN.getUri();
-    AppMethodBeat.o(132247);
+    AppMethodBeat.i(20354);
+    com.tencent.mm.kernel.b.aGF();
+    AppMethodBeat.o(20354);
+  }
+  
+  public static void aGG()
+  {
+    AppMethodBeat.i(20355);
+    com.tencent.mm.kernel.b.aGG();
+    AppMethodBeat.o(20355);
+  }
+  
+  public static String aGR()
+  {
+    AppMethodBeat.i(20346);
+    String str = com.tencent.mm.kernel.b.aGR();
+    AppMethodBeat.o(20346);
     return str;
   }
   
-  public static abstract interface a
+  public static t aGY()
   {
-    public abstract void a(j.h paramh, j.i parami);
+    AppMethodBeat.i(20349);
+    com.tencent.mm.kernel.h.aHH();
+    t localt = com.tencent.mm.kernel.h.aHF().kcd;
+    AppMethodBeat.o(20349);
+    return localt;
+  }
+  
+  public static String aGs()
+  {
+    AppMethodBeat.i(20356);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHE();
+    String str = com.tencent.mm.kernel.b.aGs();
+    AppMethodBeat.o(20356);
+    return str;
+  }
+  
+  public static boolean aHB()
+  {
+    AppMethodBeat.i(20352);
+    if (!MMApplicationContext.isMMProcess())
+    {
+      AppMethodBeat.o(20352);
+      return false;
+    }
+    boolean bool = com.tencent.mm.kernel.h.aHB();
+    AppMethodBeat.o(20352);
+    return bool;
+  }
+  
+  @Deprecated
+  public static MMHandlerThread aHJ()
+  {
+    AppMethodBeat.i(20344);
+    MMHandlerThread localMMHandlerThread = com.tencent.mm.kernel.h.aHJ();
+    AppMethodBeat.o(20344);
+    return localMMHandlerThread;
+  }
+  
+  public static ao abL()
+  {
+    AppMethodBeat.i(20340);
+    ao localao = beF().ltx.abL();
+    AppMethodBeat.o(20340);
+    return localao;
+  }
+  
+  public static void b(com.tencent.mm.network.p paramp)
+  {
+    AppMethodBeat.i(20332);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().b(paramp);
+    AppMethodBeat.o(20332);
+  }
+  
+  public static boolean beB()
+  {
+    return lty == null;
+  }
+  
+  public static ch beC()
+  {
+    AppMethodBeat.i(20335);
+    beF();
+    ch localch = ltA;
+    AppMethodBeat.o(20335);
+    return localch;
+  }
+  
+  public static boolean beD()
+  {
+    AppMethodBeat.i(20336);
+    boolean bool = com.tencent.mm.kernel.b.aGD();
+    AppMethodBeat.o(20336);
+    return bool;
+  }
+  
+  public static void beE()
+  {
+    AppMethodBeat.i(20337);
+    com.tencent.mm.kernel.b.eQ(false);
+    AppMethodBeat.o(20337);
+  }
+  
+  private static bh beF()
+  {
+    AppMethodBeat.i(20342);
+    Assert.assertNotNull("MMCore not initialized by MMApplication", lty);
+    bh localbh = lty;
+    AppMethodBeat.o(20342);
+    return localbh;
+  }
+  
+  public static an beG()
+  {
+    AppMethodBeat.i(20343);
+    com.tencent.mm.kernel.h.aHH();
+    an localan = com.tencent.mm.kernel.h.aHG().kcw;
+    AppMethodBeat.o(20343);
+    return localan;
+  }
+  
+  public static void beH()
+  {
+    AppMethodBeat.i(20347);
+    af localaf = new af();
+    EventCenter.instance.publish(localaf);
+    AppMethodBeat.o(20347);
+  }
+  
+  public static c beI()
+  {
+    AppMethodBeat.i(20348);
+    c localc = beF().ltn;
+    if (localc != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Assert.assertTrue("MMCore has not been initialize ?", bool);
+      AppMethodBeat.o(20348);
+      return localc;
+    }
+  }
+  
+  public static boolean beJ()
+  {
+    AppMethodBeat.i(20351);
+    com.tencent.mm.kernel.h.aHE();
+    boolean bool = com.tencent.mm.kernel.b.aGL();
+    AppMethodBeat.o(20351);
+    return bool;
+  }
+  
+  public static f beK()
+  {
+    AppMethodBeat.i(20357);
+    f localf = beF().ltL;
+    AppMethodBeat.o(20357);
+    return localf;
+  }
+  
+  public static ay getNotification()
+  {
+    AppMethodBeat.i(20339);
+    ay localay = beF().ltx.getNotification();
+    AppMethodBeat.o(20339);
+    return localay;
+  }
+  
+  public static ck getSysCmdMsgExtension()
+  {
+    AppMethodBeat.i(20345);
+    ck localck = ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension();
+    AppMethodBeat.o(20345);
+    return localck;
+  }
+  
+  class a
+    implements com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.a, com.tencent.mm.kernel.api.c, com.tencent.mm.kernel.api.e, com.tencent.mm.kernel.c.a
+  {
+    a() {}
+    
+    public HashMap<Integer, h.b> collectDatabaseFactory()
+    {
+      AppMethodBeat.i(20330);
+      Log.i("MicroMsg.MMCore", "collectDatabaseFactory ");
+      HashMap localHashMap = new HashMap();
+      localHashMap.putAll(c.baseDBFactories);
+      AppMethodBeat.o(20330);
+      return localHashMap;
+    }
+    
+    public void onAccountInitialized(f.c paramc)
+    {
+      AppMethodBeat.i(20327);
+      if (paramc.kcX) {
+        com.tencent.mm.aa.c.aFn().C(262145, false);
+      }
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(598L, 13L, 1L, false);
+      long l = System.currentTimeMillis();
+      Log.i("MicroMsg.MMCore", "summerasyncinit onAccountInitialized start tid[%d]", new Object[] { Long.valueOf(Thread.currentThread().getId()) });
+      Object localObject1 = bh.a(bh.this);
+      com.tencent.mm.storagebase.h localh = com.tencent.mm.kernel.h.aHG().kcF;
+      com.tencent.mm.kernel.h.aHG();
+      com.tencent.mm.plugin.messenger.foundation.a.a.i locali = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).eSe();
+      locali.a(new bk(locali));
+      Object localObject2 = new com.tencent.mm.storage.h(locali);
+      ((c)localObject1).lqU = ((com.tencent.mm.storage.h)localObject2);
+      locali.a((com.tencent.mm.storage.e)localObject2);
+      localObject2 = new com.tencent.mm.storage.i(locali);
+      ((c)localObject1).lqV = ((com.tencent.mm.storage.i)localObject2);
+      locali.a((com.tencent.mm.storage.e)localObject2);
+      ((c)localObject1).lqS = new cc(localh, ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbR());
+      ((c)localObject1).lqT = new cb(localh, ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL());
+      ((c)localObject1).lqW = new com.tencent.mm.model.b.c();
+      ((c)localObject1).lqX = new com.tencent.mm.model.b.d();
+      ((c)localObject1).lrb = new com.tencent.mm.model.b.b();
+      ((c)localObject1).lqY = new k(localh);
+      ((c)localObject1).lqZ = new o(localh);
+      ((c)localObject1).lra = new m(localh);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(598L, 14L, 1L, false);
+      Log.i("MicroMsg.MMCore", "summerasyncinit onAccountInitialized done initDB take[%d]ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      localObject1 = bh.this.ltC;
+      bh.a(bh.this);
+      ((c.a)localObject1).fY(paramc.kcX);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(598L, 15L, 1L, false);
+      Log.i("MicroMsg.MMCore", "summerasyncinit onAccountInitialized done onAccountPostReset take[%d]ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      com.tencent.mm.compatible.util.e.avA();
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(598L, 16L, 1L, false);
+      Log.i("MicroMsg.MMCore", "summerasyncinit onAccountInitialized done all take[%d]ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      AppMethodBeat.o(20327);
+    }
+    
+    public void onAccountRelease() {}
+    
+    public void onDataBaseClosed(com.tencent.mm.storagebase.h paramh1, com.tencent.mm.storagebase.h paramh2) {}
+    
+    public void onDataBaseOpened(com.tencent.mm.storagebase.h paramh1, com.tencent.mm.storagebase.h paramh2)
+    {
+      AppMethodBeat.i(20329);
+      bh.a(bh.this);
+      AppMethodBeat.o(20329);
+    }
+    
+    public void parallelsDependency()
+    {
+      AppMethodBeat.i(20328);
+      com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).bI(com.tencent.mm.kernel.h.ag(v.class));
+      AppMethodBeat.o(20328);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.bh
  * JD-Core Version:    0.7.0.1
  */

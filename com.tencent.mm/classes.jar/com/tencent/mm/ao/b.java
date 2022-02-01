@@ -1,121 +1,272 @@
 package com.tencent.mm.ao;
 
-import android.database.Cursor;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.as;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.c;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.aj.u;
+import com.tencent.mm.aj.v;
+import com.tencent.mm.b.f;
+import com.tencent.mm.model.bq;
+import com.tencent.mm.model.bq.b;
+import com.tencent.mm.plugin.biz.a.a;
+import com.tencent.mm.pluginsdk.ui.tools.ab;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.ca;
+import java.util.LinkedList;
+import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/modelbiz/BizChattingItemReportHelper;", "", "()V", "TAG", "", "reportCache", "Lcom/tencent/mm/algorithm/LRUMap;", "", "doReportBizServiceMsgClick", "", "msg", "Lcom/tencent/mm/storage/MsgInfo;", "enterTime", "doReportServiceMsgExpose", "talker", "Lcom/tencent/mm/storage/Contact;", "position", "", "msgCount", "fillReportMsgSendType", "reportInfo", "Lcom/tencent/mm/modelbiz/BizChattingItemReportHelper$BizServiceMsgReportInfo;", "fillReportMsgType", "reportBizServiceMsgClick", "reportServiceMsgExpose", "BizServiceMsgReportInfo", "BizServiceMsgSendType", "BizServiceMsgType", "plugin-biz_release"})
 public final class b
-  extends as
 {
-  public final String getTag()
+  private static final f<Long, Long> lDY;
+  public static final b lDZ;
+  
+  static
   {
-    return "MicroMsg.App.BizPlaceTopDataTransfer";
+    AppMethodBeat.i(208041);
+    lDZ = new b();
+    lDY = (f)new com.tencent.mm.b.h(20);
+    AppMethodBeat.o(208041);
   }
   
-  public final boolean rT(int paramInt)
+  public static final void a(as paramas, final ca paramca, final int paramInt1, final int paramInt2, final long paramLong)
   {
-    return (paramInt != 0) && (paramInt < 637735215);
-  }
-  
-  public final void transfer(int paramInt)
-  {
-    AppMethodBeat.i(20476);
-    Log.d("MicroMsg.App.BizPlaceTopDataTransfer", "the previous version is %d", new Object[] { Integer.valueOf(paramInt) });
-    long l1;
-    long l2;
-    if (rT(paramInt))
+    AppMethodBeat.i(208028);
+    p.k(paramas, "talker");
+    p.k(paramca, "msg");
+    try
     {
-      Log.i("MicroMsg.App.BizPlaceTopDataTransfer", "begin biz place to top data transfer.");
-      l1 = System.currentTimeMillis();
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(336L, 0L, 1L, true);
-      bg.aVF();
-      com.tencent.mm.storagebase.h localh = c.getDataDB();
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("select conv.username");
-      ((StringBuilder)localObject).append(" from ");
-      ((StringBuilder)localObject).append("rconversation");
-      ((StringBuilder)localObject).append(" as conv, ");
-      ((StringBuilder)localObject).append("rcontact");
-      ((StringBuilder)localObject).append(" as ct ");
-      ((StringBuilder)localObject).append(" where conv.");
-      ((StringBuilder)localObject).append("parentRef");
-      ((StringBuilder)localObject).append("='");
-      ((StringBuilder)localObject).append("officialaccounts");
-      ((StringBuilder)localObject).append("' and conv.");
-      ((StringBuilder)localObject).append("username");
-      ((StringBuilder)localObject).append(" = ct.");
-      ((StringBuilder)localObject).append("username");
-      ((StringBuilder)localObject).append(" and ct.");
-      ((StringBuilder)localObject).append("verifyFlag");
-      ((StringBuilder)localObject).append(" & ");
-      ((StringBuilder)localObject).append(8);
-      ((StringBuilder)localObject).append(" = 0");
-      localObject = ((StringBuilder)localObject).toString();
-      Log.v("MicroMsg.App.BizPlaceTopDataTransfer", "transfer query sql(%s)", new Object[] { localObject });
-      localObject = localh.rawQuery((String)localObject, null, 2);
-      if (localObject == null)
+      long l = System.currentTimeMillis();
+      if (lDY.get(Long.valueOf(paramca.apG())) != null)
       {
-        Log.i("MicroMsg.App.BizPlaceTopDataTransfer", "cursor is null.");
-        AppMethodBeat.o(20476);
-        return;
-      }
-      l2 = System.currentTimeMillis();
-      Log.i("MicroMsg.App.BizPlaceTopDataTransfer", "do biz place to top data transfer, query cost : %s msec.", new Object[] { Long.valueOf(l2 - l1) });
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("update ");
-      localStringBuilder.append("rconversation");
-      localStringBuilder.append(" set ");
-      localStringBuilder.append("parentRef");
-      localStringBuilder.append("='' where ");
-      localStringBuilder.append("username");
-      localStringBuilder.append(" in (");
-      if (((Cursor)localObject).moveToFirst())
-      {
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(336L, 1L, 1L, true);
-        localStringBuilder.append("'");
-        localStringBuilder.append(((Cursor)localObject).getString(0));
-        localStringBuilder.append("'");
-        paramInt = 1;
-        while (((Cursor)localObject).moveToNext())
+        Object localObject = lDY.get(Long.valueOf(paramca.apG()));
+        p.j(localObject, "reportCache[msg.msgId]");
+        if (l - ((Number)localObject).longValue() < 1000L)
         {
-          localStringBuilder.append(",");
-          localStringBuilder.append("'");
-          localStringBuilder.append(((Cursor)localObject).getString(0));
-          localStringBuilder.append("'");
-          paramInt += 1;
+          AppMethodBeat.o(208028);
+          return;
         }
       }
-      ((Cursor)localObject).close();
-      Log.i("MicroMsg.App.BizPlaceTopDataTransfer", "cursor count is 0.");
-      AppMethodBeat.o(20476);
+      lDY.put(Long.valueOf(paramca.apG()), Long.valueOf(l));
+      com.tencent.e.h.ZvG.d((Runnable)new c(paramas, paramca, paramInt1, paramInt2, paramLong), "BizServicesReportThread");
+      AppMethodBeat.o(208028);
       return;
-      localStringBuilder.append(")");
-      String str = localStringBuilder.toString();
-      Log.i("MicroMsg.App.BizPlaceTopDataTransfer", "transfer update count(%d)", new Object[] { Integer.valueOf(paramInt) });
-      Log.v("MicroMsg.App.BizPlaceTopDataTransfer", "transfer update sql(%s)", new Object[] { str });
-      ((Cursor)localObject).close();
-      if (!localh.execSQL("rconversation", localStringBuilder.toString())) {
-        break label628;
-      }
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(336L, 2L, 1L, true);
     }
-    for (;;)
+    catch (Exception paramas)
     {
-      long l3 = System.currentTimeMillis();
-      Log.i("MicroMsg.App.BizPlaceTopDataTransfer", "do biz place to top data transfer, update cost : %s msec,  total cost : %s msec.", new Object[] { Long.valueOf(l3 - l2), Long.valueOf(l3 - l1) });
-      AppMethodBeat.o(20476);
+      Log.printErrStackTrace("MicroMsg.BizChattingItemReportHelper", (Throwable)paramas, "reportServiceMsgExpose exception", new Object[0]);
+      AppMethodBeat.o(208028);
+    }
+  }
+  
+  public static final void a(ca paramca, final long paramLong)
+  {
+    AppMethodBeat.i(208031);
+    if (paramca == null)
+    {
+      AppMethodBeat.o(208031);
       return;
-      label628:
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(336L, 3L, 1L, true);
+    }
+    if (paramca.apA() == 1)
+    {
+      AppMethodBeat.o(208031);
+      return;
+    }
+    com.tencent.e.h.ZvG.bg((Runnable)new b(paramca, paramLong));
+    AppMethodBeat.o(208031);
+  }
+  
+  private static void a(ca paramca, a parama)
+  {
+    AppMethodBeat.i(208036);
+    parama.luu = paramca.apR();
+    String str2 = paramca.apP();
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    p.k(str1, "<set-?>");
+    parama.lut = str1;
+    if (paramca.hwH())
+    {
+      parama.lEa = 1;
+      parama.lEc = true;
+      if (((CharSequence)parama.url).length() <= 0) {
+        break label414;
+      }
+    }
+    label414:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        paramca = ab.aXb(parama.url);
+        p.j(paramca, "WebViewUtil.doUrlEncode(reportInfo.url)");
+        parama.setUrl(paramca);
+      }
+      AppMethodBeat.o(208036);
+      return;
+      if (paramca.hwF())
+      {
+        parama.lEa = 9;
+        parama.lEc = true;
+        break;
+      }
+      if (paramca.hwG())
+      {
+        parama.lEa = 2;
+        parama.lEc = true;
+        break;
+      }
+      if (paramca.dlR())
+      {
+        parama.lEa = 5;
+        parama.lEc = true;
+        break;
+      }
+      if ((paramca.getType() == 452984881) || (paramca.getType() == 520093745))
+      {
+        parama.lEa = 6;
+        parama.lEc = false;
+        break;
+      }
+      if (paramca.hwA())
+      {
+        parama.lEa = 3;
+        parama.lEc = false;
+        paramca = ((a)com.tencent.mm.kernel.h.ae(a.class)).b(paramca.apG(), paramca.getContent());
+        if ((paramca == null) || (Util.isNullOrNil((List)paramca.lpz))) {
+          break;
+        }
+        paramca = ((v)paramca.lpz.get(0)).url;
+        p.j(paramca, "reader.items[0].url");
+        parama.setUrl(paramca);
+        break;
+      }
+      if ((!paramca.erk()) || (paramca.getContent() == null)) {
+        break;
+      }
+      parama.lEc = false;
+      paramca = k.b.OQ(paramca.getContent());
+      if (paramca == null) {
+        break;
+      }
+      if ((paramca.type == 33) || (paramca.type == 36))
+      {
+        parama.lEa = 4;
+        str1 = paramca.url;
+        p.j(str1, "content.url");
+        parama.setUrl(str1);
+        paramca = paramca.loB;
+        p.j(paramca, "content.appbrandAppId");
+        p.k(paramca, "<set-?>");
+        parama.extraInfo = paramca;
+        break;
+      }
+      if (paramca.type == 5)
+      {
+        parama.lEa = 7;
+        break;
+      }
+      if (paramca.type != 3) {
+        break;
+      }
+      parama.lEa = 8;
+      break;
+    }
+  }
+  
+  private static void b(ca paramca, a parama)
+  {
+    AppMethodBeat.i(208040);
+    if (Util.isNullOrNil(paramca.apc()))
+    {
+      Log.i("MicroMsg.BizChattingItemReportHelper", "fillReportMsgSendType msg source null");
+      AppMethodBeat.o(208040);
+      return;
+    }
+    if (paramca.getType() == 318767153) {
+      parama.lEb = 2;
+    }
+    bq.b localb = bq.RR(paramca.apc());
+    if (localb == null)
+    {
+      Log.i("MicroMsg.BizChattingItemReportHelper", "fillReportMsgSendType msg source value null");
+      AppMethodBeat.o(208040);
+      return;
+    }
+    if (localb.luq == 3) {
+      parama.lEb = 1;
+    }
+    if ((localb.scene >= 4) && (localb.scene <= 6)) {
+      parama.lEb = 5;
+    }
+    if (h.X(paramca)) {
+      parama.lEb = 4;
+    }
+    if (!Util.isNullOrNil(paramca.apP())) {
+      parama.lEb = 3;
+    }
+    AppMethodBeat.o(208040);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/modelbiz/BizChattingItemReportHelper$BizServiceMsgReportInfo;", "", "()V", "extraInfo", "", "getExtraInfo", "()Ljava/lang/String;", "setExtraInfo", "(Ljava/lang/String;)V", "kfType", "", "getKfType", "()I", "setKfType", "(I)V", "kfWorker", "getKfWorker", "setKfWorker", "needCheckKF", "", "getNeedCheckKF", "()Z", "setNeedCheckKF", "(Z)V", "reportMsgType", "getReportMsgType", "setReportMsgType", "sendType", "getSendType", "setSendType", "url", "getUrl", "setUrl", "plugin-biz_release"})
+  static final class a
+  {
+    String extraInfo = "";
+    int lEa;
+    int lEb;
+    boolean lEc = true;
+    String lut = "";
+    int luu;
+    String url = "";
+    
+    public final void setUrl(String paramString)
+    {
+      AppMethodBeat.i(206244);
+      p.k(paramString, "<set-?>");
+      this.url = paramString;
+      AppMethodBeat.o(206244);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  static final class b
+    implements Runnable
+  {
+    b(ca paramca, long paramLong) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(206495);
+      b localb = b.lDZ;
+      b.b(this.lEd, paramLong);
+      AppMethodBeat.o(206495);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  static final class c
+    implements Runnable
+  {
+    c(as paramas, ca paramca, int paramInt1, int paramInt2, long paramLong) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(206126);
+      b localb = b.lDZ;
+      b.b(this.lEf, paramca, paramInt1, paramInt2, paramLong);
+      AppMethodBeat.o(206126);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ao.b
  * JD-Core Version:    0.7.0.1
  */

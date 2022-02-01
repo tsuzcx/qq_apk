@@ -3,100 +3,84 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class nl
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int KJN;
-  public int KSQ;
-  public int KSR;
-  public int KSS;
-  public int KST;
-  public int KSU;
-  public int enabled;
+  public String RUq;
+  public String tsk;
+  public int ver;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(103202);
+    AppMethodBeat.i(124418);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.enabled);
-      paramVarArgs.aM(2, this.KSQ);
-      paramVarArgs.aM(3, this.KSR);
-      paramVarArgs.aM(4, this.KSS);
-      paramVarArgs.aM(5, this.KST);
-      paramVarArgs.aM(6, this.KSU);
-      paramVarArgs.aM(7, this.KJN);
-      AppMethodBeat.o(103202);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.b.b.a.bu(1, this.enabled);
-      int i = g.a.a.b.b.a.bu(2, this.KSQ);
-      int j = g.a.a.b.b.a.bu(3, this.KSR);
-      int k = g.a.a.b.b.a.bu(4, this.KSS);
-      int m = g.a.a.b.b.a.bu(5, this.KST);
-      int n = g.a.a.b.b.a.bu(6, this.KSU);
-      int i1 = g.a.a.b.b.a.bu(7, this.KJN);
-      AppMethodBeat.o(103202);
-      return paramInt + 0 + i + j + k + m + n + i1;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
+      if (this.RUq != null) {
+        paramVarArgs.f(1, this.RUq);
       }
-      AppMethodBeat.o(103202);
+      if (this.tsk != null) {
+        paramVarArgs.f(2, this.tsk);
+      }
+      paramVarArgs.aY(3, this.ver);
+      AppMethodBeat.o(124418);
       return 0;
     }
-    if (paramInt == 3)
+    if (paramInt == 1) {
+      if (this.RUq == null) {
+        break label318;
+      }
+    }
+    label318:
+    for (paramInt = g.a.a.b.b.a.g(1, this.RUq) + 0;; paramInt = 0)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      nl localnl = (nl)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      int i = paramInt;
+      if (this.tsk != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.tsk);
+      }
+      paramInt = g.a.a.b.b.a.bM(3, this.ver);
+      AppMethodBeat.o(124418);
+      return i + paramInt;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(103202);
-        return -1;
-      case 1: 
-        localnl.enabled = locala.UbS.zi();
-        AppMethodBeat.o(103202);
-        return 0;
-      case 2: 
-        localnl.KSQ = locala.UbS.zi();
-        AppMethodBeat.o(103202);
-        return 0;
-      case 3: 
-        localnl.KSR = locala.UbS.zi();
-        AppMethodBeat.o(103202);
-        return 0;
-      case 4: 
-        localnl.KSS = locala.UbS.zi();
-        AppMethodBeat.o(103202);
-        return 0;
-      case 5: 
-        localnl.KST = locala.UbS.zi();
-        AppMethodBeat.o(103202);
-        return 0;
-      case 6: 
-        localnl.KSU = locala.UbS.zi();
-        AppMethodBeat.o(103202);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
+        }
+        AppMethodBeat.o(124418);
         return 0;
       }
-      localnl.KJN = locala.UbS.zi();
-      AppMethodBeat.o(103202);
-      return 0;
+      if (paramInt == 3)
+      {
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        nl localnl = (nl)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(124418);
+          return -1;
+        case 1: 
+          localnl.RUq = locala.abFh.readString();
+          AppMethodBeat.o(124418);
+          return 0;
+        case 2: 
+          localnl.tsk = locala.abFh.readString();
+          AppMethodBeat.o(124418);
+          return 0;
+        }
+        localnl.ver = locala.abFh.AK();
+        AppMethodBeat.o(124418);
+        return 0;
+      }
+      AppMethodBeat.o(124418);
+      return -1;
     }
-    AppMethodBeat.o(103202);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.nl
  * JD-Core Version:    0.7.0.1
  */

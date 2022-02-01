@@ -18,7 +18,7 @@ public class APApkFileParser
 {
   public static Drawable getAPKIcon(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(193213);
+    AppMethodBeat.i(252759);
     try
     {
       Object localObject1 = paramContext.getPackageManager().getPackageArchiveInfo(paramString, 1);
@@ -29,7 +29,7 @@ public class APApkFileParser
       }
       else
       {
-        AppMethodBeat.o(193213);
+        AppMethodBeat.o(252759);
         return null;
       }
       localObject1 = ((PackageInfo)localObject1).applicationInfo;
@@ -42,25 +42,25 @@ public class APApkFileParser
       if (((ApplicationInfo)localObject1).icon != 0)
       {
         paramContext = paramContext.getDrawable(((ApplicationInfo)localObject1).icon);
-        AppMethodBeat.o(193213);
+        AppMethodBeat.o(252759);
         return paramContext;
       }
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(193213);
+      AppMethodBeat.o(252759);
     }
     return null;
   }
   
   public static PackageInfo getPackageInfo(Context paramContext, String paramString, int paramInt)
   {
-    AppMethodBeat.i(193212);
+    AppMethodBeat.i(252758);
     Object localObject = null;
     try
     {
       paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramString, paramInt);
-      AppMethodBeat.o(193212);
+      AppMethodBeat.o(252758);
       return paramContext;
     }
     catch (Exception paramContext)
@@ -74,28 +74,28 @@ public class APApkFileParser
   
   public static boolean isApkFileBroken(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(193214);
+    AppMethodBeat.i(252761);
     paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramString, 64);
     if ((paramContext == null) || (paramContext.applicationInfo == null))
     {
-      AppMethodBeat.o(193214);
+      AppMethodBeat.o(252761);
       return true;
     }
-    AppMethodBeat.o(193214);
+    AppMethodBeat.o(252761);
     return false;
   }
   
   public static boolean isSignaturesSame(Signature[] paramArrayOfSignature1, Signature[] paramArrayOfSignature2)
   {
-    AppMethodBeat.i(193211);
+    AppMethodBeat.i(252756);
     if (paramArrayOfSignature1 == null)
     {
-      AppMethodBeat.o(193211);
+      AppMethodBeat.o(252756);
       return true;
     }
     if (paramArrayOfSignature2 == null)
     {
-      AppMethodBeat.o(193211);
+      AppMethodBeat.o(252756);
       return true;
     }
     HashSet localHashSet = new HashSet();
@@ -115,13 +115,13 @@ public class APApkFileParser
       i += 1;
     }
     boolean bool = localHashSet.equals(paramArrayOfSignature1);
-    AppMethodBeat.o(193211);
+    AppMethodBeat.o(252756);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.plugin.APApkFileParser
  * JD-Core Version:    0.7.0.1
  */

@@ -10,42 +10,42 @@ public final class o
   extends d
   implements m
 {
-  private final Enum<?> Tnq;
+  private final Enum<?> aaQk;
   
   public o(f paramf, Enum<?> paramEnum)
   {
     super(paramf);
     AppMethodBeat.i(57481);
-    this.Tnq = paramEnum;
+    this.aaQk = paramEnum;
     AppMethodBeat.o(57481);
   }
   
-  public final a hCY()
+  public final a iHs()
   {
     AppMethodBeat.i(57479);
-    Object localObject = this.Tnq.getClass();
+    Object localObject = this.aaQk.getClass();
     if (((Class)localObject).isEnum()) {}
     for (;;)
     {
-      p.g(localObject, "enumClass");
-      localObject = b.bB((Class)localObject);
+      p.j(localObject, "enumClass");
+      localObject = b.ca((Class)localObject);
       AppMethodBeat.o(57479);
       return localObject;
       localObject = ((Class)localObject).getEnclosingClass();
     }
   }
   
-  public final f hCZ()
+  public final f iHt()
   {
     AppMethodBeat.i(57480);
-    f localf = f.btY(this.Tnq.name());
+    f localf = f.bHb(this.aaQk.name());
     AppMethodBeat.o(57480);
     return localf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d.b.o
  * JD-Core Version:    0.7.0.1
  */

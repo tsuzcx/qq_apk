@@ -8,6 +8,8 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cr.a.f;
+import com.tencent.mm.cr.a.g;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
@@ -15,16 +17,16 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 public class AlbumChooserView
   extends LinearLayout
 {
-  public TextView QBA;
-  public WeImageView QBB;
-  public boolean QBC;
-  private a QBD;
+  public TextView XZZ;
+  public WeImageView Yaa;
+  public boolean Yab;
+  private a Yac;
   
   public AlbumChooserView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159261);
-    this.QBC = false;
+    this.Yab = false;
     init(paramContext);
     AppMethodBeat.o(159261);
   }
@@ -33,7 +35,7 @@ public class AlbumChooserView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159262);
-    this.QBC = false;
+    this.Yab = false;
     init(paramContext);
     AppMethodBeat.o(159262);
   }
@@ -41,20 +43,20 @@ public class AlbumChooserView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(159263);
-    paramContext = LayoutInflater.from(paramContext).inflate(2131492987, this, true);
-    this.QBA = ((TextView)paramContext.findViewById(2131296621));
-    this.QBB = ((WeImageView)paramContext.findViewById(2131296620));
-    this.QBB.setRotation(90.0F);
+    paramContext = LayoutInflater.from(paramContext).inflate(a.g.album_chooser, this, true);
+    this.XZZ = ((TextView)paramContext.findViewById(a.f.album_chooser_txt));
+    this.Yaa = ((WeImageView)paramContext.findViewById(a.f.album_chooser_icon));
+    this.Yaa.setRotation(90.0F);
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(159258);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/ui/widget/AlbumChooserView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/ui/widget/AlbumChooserView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (AlbumChooserView.a(AlbumChooserView.this) != null) {
-          AlbumChooserView.a(AlbumChooserView.this).dSb();
+          AlbumChooserView.a(AlbumChooserView.this).euC();
         }
         a.a(this, "com/tencent/mm/ui/widget/AlbumChooserView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(159258);
@@ -65,17 +67,17 @@ public class AlbumChooserView
   
   public void setOnAlbumChooserViewClick(a parama)
   {
-    this.QBD = parama;
+    this.Yac = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void dSb();
+    public abstract void euC();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.AlbumChooserView
  * JD-Core Version:    0.7.0.1
  */

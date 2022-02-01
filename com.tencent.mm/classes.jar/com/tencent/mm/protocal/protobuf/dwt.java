@@ -4,57 +4,54 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class dwt
-  extends dop
+  extends dyl
 {
-  public String MWO;
-  public float dTj;
-  public float latitude;
-  public int scene;
+  public LinkedList<dws> Sna;
+  
+  public dwt()
+  {
+    AppMethodBeat.i(124547);
+    this.Sna = new LinkedList();
+    AppMethodBeat.o(124547);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32438);
+    AppMethodBeat.i(124548);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.E(2, this.dTj);
-      paramVarArgs.E(3, this.latitude);
-      paramVarArgs.aM(4, this.scene);
-      if (this.MWO != null) {
-        paramVarArgs.e(5, this.MWO);
-      }
-      AppMethodBeat.o(32438);
+      paramVarArgs.e(5, 8, this.Sna);
+      AppMethodBeat.o(124548);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label511;
+        break label410;
       }
     }
-    label511:
-    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label410:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + (g.a.a.b.b.a.fS(2) + 4) + (g.a.a.b.b.a.fS(3) + 4) + g.a.a.b.b.a.bu(4, this.scene);
-      paramInt = i;
-      if (this.MWO != null) {
-        paramInt = i + g.a.a.b.b.a.f(5, this.MWO);
-      }
-      AppMethodBeat.o(32438);
-      return paramInt;
+      int i = g.a.a.a.c(5, 8, this.Sna);
+      AppMethodBeat.o(124548);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.Sna.clear();
+        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(32438);
+        AppMethodBeat.o(124548);
         return 0;
       }
       if (paramInt == 3)
@@ -62,51 +59,53 @@ public final class dwt
         Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         dwt localdwt = (dwt)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32438);
+          AppMethodBeat.o(124548);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localdwt.BaseRequest = ((jr)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new jg();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((jg)localObject2).parseFrom((byte[])localObject1);
+            }
+            localdwt.BaseRequest = ((jg)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(32438);
-          return 0;
-        case 2: 
-          localdwt.dTj = Float.intBitsToFloat(((g.a.a.a.a)localObject1).UbS.zm());
-          AppMethodBeat.o(32438);
-          return 0;
-        case 3: 
-          localdwt.latitude = Float.intBitsToFloat(((g.a.a.a.a)localObject1).UbS.zm());
-          AppMethodBeat.o(32438);
-          return 0;
-        case 4: 
-          localdwt.scene = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(32438);
+          AppMethodBeat.o(124548);
           return 0;
         }
-        localdwt.MWO = ((g.a.a.a.a)localObject1).UbS.readString();
-        AppMethodBeat.o(32438);
+        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new dws();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((dws)localObject2).parseFrom((byte[])localObject1);
+          }
+          localdwt.Sna.add(localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(124548);
         return 0;
       }
-      AppMethodBeat.o(32438);
+      AppMethodBeat.o(124548);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dwt
  * JD-Core Version:    0.7.0.1
  */

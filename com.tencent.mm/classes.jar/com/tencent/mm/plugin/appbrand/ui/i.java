@@ -1,157 +1,254 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.view.MenuItem;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.ImageView;
+import com.tencent.luggage.k.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.api.d;
-import com.tencent.mm.plugin.appbrand.api.f;
-import com.tencent.mm.plugin.appbrand.api.g;
-import com.tencent.mm.plugin.appbrand.j;
-import com.tencent.mm.plugin.appbrand.ui.recommend.k;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.o.f;
-import com.tencent.mm.ui.base.o.g;
-import com.tencent.mm.ui.widget.a.e;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.ag.g;
+import com.tencent.mm.plugin.appbrand.au.f;
+import com.tencent.mm.plugin.appbrand.au.g;
+import com.tencent.mm.plugin.appbrand.au.h;
+import com.tencent.mm.plugin.appbrand.bd;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.config.HalfScreenConfig;
+import com.tencent.mm.plugin.appbrand.config.HalfScreenConfig.f;
+import com.tencent.mm.plugin.appbrand.page.capsulebar.AppBrandSingleCloseCapsuleBar;
+import com.tencent.mm.plugin.appbrand.t;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.vfs.u;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandLauncherUIForceEntryConfig;", "", "()V", "KEY_FORCE_NATIVE_LAUNCHER", "", "KEY_FORCE_WE_USE_FAKE_NATIVE", "KEY_FORCE_WE_USE_FAKE_NATIVE_APPID", "MMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getMMKV", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getForceWeUseFakeNativeAppIdOrDefault", "isForceOpenNativeLauncher", "", "isForceOpenWeUseFakeNative", "showChooseSheet", "", "context", "Landroid/content/Context;", "plugin-appbrand-integration_release"})
 public final class i
 {
-  public static final i nTZ;
+  private static final androidx.b.a<AppBrandRuntime, Bitmap> qVC;
   
   static
   {
-    AppMethodBeat.i(180659);
-    nTZ = new i();
-    AppMethodBeat.o(180659);
+    AppMethodBeat.i(48662);
+    qVC = new androidx.b.a();
+    AppMethodBeat.o(48662);
   }
   
-  static MultiProcessMMKV VQ()
+  private static AppBrandUILoadingSplash a(Context paramContext, t paramt, boolean paramBoolean)
   {
-    AppMethodBeat.i(180656);
-    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getSingleMMKV("AppBrandLauncherUIForceEntryConfig");
-    p.g(localMultiProcessMMKV, "MultiProcessMMKV.getSing…ncherUIForceEntryConfig\")");
-    AppMethodBeat.o(180656);
-    return localMultiProcessMMKV;
-  }
-  
-  public static String bXd()
-  {
-    AppMethodBeat.i(180658);
-    String str2 = VQ().getString("KEY_FORCE_WE_USE_FAKE_NATIVE_APPID", null);
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "wxb6d22f922f37b35a";
-    }
-    AppMethodBeat.o(180658);
-    return str1;
-  }
-  
-  public static void em(Context paramContext)
-  {
-    AppMethodBeat.i(180657);
-    p.h(paramContext, "context");
-    paramContext = new e(paramContext, 1, false);
-    paramContext.a((o.f)a.nUa);
-    paramContext.a((o.g)b.nUb);
-    paramContext.dGm();
-    AppMethodBeat.o(180657);
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
-  static final class a
-    implements o.f
-  {
-    public static final a nUa;
-    
-    static
+    AppMethodBeat.i(266790);
+    AppBrandUILoadingSplash localAppBrandUILoadingSplash = (AppBrandUILoadingSplash)paramt.bDh().a(AppBrandUILoadingSplash.class, paramContext);
+    if (localAppBrandUILoadingSplash != null)
     {
-      AppMethodBeat.i(180653);
-      nUa = new a();
-      AppMethodBeat.o(180653);
+      localAppBrandUILoadingSplash.jM(paramBoolean);
+      localAppBrandUILoadingSplash.ao(paramt);
+      paramContext = localAppBrandUILoadingSplash;
     }
-    
-    public final void onCreateMMMenu(m paramm)
+    for (;;)
     {
-      AppMethodBeat.i(180652);
-      paramm.kV(0, 2131755461);
-      paramm.kV(1, 2131755459);
-      paramm.kV(2, 2131755460);
-      paramm.kV(10, 2131755458);
-      paramm.kV(20, 2131755462);
-      AppMethodBeat.o(180652);
+      AppMethodBeat.o(266790);
+      return paramContext;
+      paramContext = new AppBrandUILoadingSplash(em(paramContext), paramt);
+      paramContext.jM(paramBoolean);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
-  static final class b
-    implements o.g
+  public static aa a(Context paramContext, t paramt)
   {
-    public static final b nUb;
-    
-    static
+    AppMethodBeat.i(48659);
+    Object localObject = (Bitmap)qVC.remove(paramt);
+    if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
     {
-      AppMethodBeat.i(180655);
-      nUb = new b();
-      AppMethodBeat.o(180655);
+      paramContext = new m(paramContext, (Bitmap)localObject);
+      AppMethodBeat.o(48659);
+      return paramContext;
     }
-    
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+    localObject = a(paramContext, paramt.bDy());
+    if (localObject != null)
     {
-      AppMethodBeat.i(180654);
-      p.g(paramMenuItem, "menuItem");
-      if (20 == paramMenuItem.getItemId())
+      ((z)localObject).setRuntime(paramt);
+      AppMethodBeat.o(48659);
+      return localObject;
+    }
+    if (g.ap(paramt))
+    {
+      paramContext = new com.tencent.mm.plugin.appbrand.ag.b(em(paramContext), paramt);
+      AppMethodBeat.o(48659);
+      return paramContext;
+    }
+    if ((p.an(paramt)) || (bd.s(paramt)) || (paramt.bDK()))
+    {
+      if (paramt.Qv()) {
+        localObject = new e(em(paramContext), paramt, paramt.bDy().cwY);
+      }
+      while (paramt.bDK())
       {
-        paramMenuItem = j.kAc;
-        paramMenuItem = new g();
-        localObject = i.nTZ;
-        paramMenuItem.appId = i.bXd();
-        paramMenuItem.scene = 1112;
-        paramMenuItem.kHx = ((d)new k());
-        j.a(paramMenuItem, (f)new f()
+        HalfScreenConfig localHalfScreenConfig = paramt.bDy().nBE;
+        if (localHalfScreenConfig.nZH == HalfScreenConfig.f.oac)
         {
-          public final void onError(int paramAnonymousInt, String paramAnonymousString) {}
-          
-          public final void onSuccess() {}
-        });
-        AppMethodBeat.o(180654);
-        return;
-      }
-      Object localObject = i.nTZ;
-      i.bXe().clearAll();
-      paramInt = paramMenuItem.getItemId();
-      if (paramInt == 0)
-      {
-        paramMenuItem = i.nTZ;
-        i.bXe().putBoolean("KEY_FORCE_NATIVE_LAUNCHER", true);
-        AppMethodBeat.o(180654);
-        return;
-      }
-      if ((paramInt == 1) || (paramInt == 2))
-      {
-        paramMenuItem = i.nTZ;
-        i.bXe().putBoolean("KEY_FORCE_WE_USE_FAKE_NATIVE", true);
-        paramMenuItem = i.nTZ;
-        localObject = i.bXe();
-        if (paramInt != 2) {
-          break label181;
+          localObject = a(paramContext, paramt, localHalfScreenConfig.nnk);
+          paramContext = new AppBrandSingleCloseCapsuleBar(em(paramContext));
+          paramContext.setTitle(paramt.bDy().fzM);
+          paramContext.setWxaIconUrl(paramt.bDy().iconUrl);
+          ((AppBrandUILoadingSplash)localObject).setActionBar(paramContext);
+          ((AppBrandUILoadingSplash)localObject).GZ(true);
+          AppMethodBeat.o(48659);
+          return localObject;
+          localObject = new k(em(paramContext), paramt, paramt.bDy().cwY);
+        }
+        else
+        {
+          ((k)localObject).GZ(true);
         }
       }
-      label181:
-      for (paramMenuItem = "wx6bd2fb149a93a9c5";; paramMenuItem = null)
-      {
-        ((MultiProcessMMKV)localObject).putString("KEY_FORCE_WE_USE_FAKE_NATIVE_APPID", paramMenuItem);
-        AppMethodBeat.o(180654);
-        return;
-      }
+      AppMethodBeat.o(48659);
+      return localObject;
     }
+    if (paramt.Qv())
+    {
+      localObject = new f(em(paramContext), paramt);
+      if (paramt.bCA())
+      {
+        paramContext = new a(em(paramContext), paramt, (aa)localObject, paramt.nwE);
+        AppMethodBeat.o(48659);
+        return paramContext;
+      }
+      AppMethodBeat.o(48659);
+      return localObject;
+    }
+    localObject = a(paramContext, paramt, false);
+    ((AppBrandUILoadingSplash)localObject).setLabelInjector(new AppBrandUILoadingSplash.a()
+    {
+      public final void a(ViewStub paramAnonymousViewStub)
+      {
+        AppMethodBeat.i(258318);
+        if ((com.tencent.luggage.sdk.config.e.iO(this.nsw.bDy().nYq)) && (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vXL, 0) == 1))
+        {
+          paramAnonymousViewStub.setLayoutResource(au.g.app_brand_splash_brand_official_label);
+          paramAnonymousViewStub.inflate();
+        }
+        AppMethodBeat.o(258318);
+      }
+      
+      @SuppressLint({"ResourceType"})
+      public final void b(ViewStub paramAnonymousViewStub)
+      {
+        AppMethodBeat.i(258320);
+        if ((com.tencent.luggage.sdk.config.e.iP(this.nsw.bDy().nYp)) && (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vUA, 0) == 1))
+        {
+          paramAnonymousViewStub.setLayoutResource(au.g.app_brand_splash_trading_guarantee_label);
+          paramAnonymousViewStub = (ImageView)paramAnonymousViewStub.inflate().findViewById(au.f.icon);
+          if (!ar.isDarkMode()) {
+            break label84;
+          }
+        }
+        label84:
+        for (int i = au.h.appbrand_trading_guarantee_icon_white;; i = au.h.appbrand_trading_guarantee_icon_gray)
+        {
+          paramAnonymousViewStub.setImageResource(i);
+          AppMethodBeat.o(258320);
+          return;
+        }
+      }
+    });
+    if (paramt.bCA())
+    {
+      paramContext = new a(em(paramContext), paramt, (aa)localObject, paramt.nwE);
+      AppMethodBeat.o(48659);
+      return paramContext;
+    }
+    AppMethodBeat.o(48659);
+    return localObject;
+  }
+  
+  public static z a(Context paramContext, AppBrandInitConfigWC paramAppBrandInitConfigWC)
+  {
+    AppMethodBeat.i(266783);
+    if (paramAppBrandInitConfigWC.nYb)
+    {
+      if (!TextUtils.isEmpty(l.eo(paramAppBrandInitConfigWC.nBq)))
+      {
+        AppMethodBeat.o(266783);
+        return null;
+      }
+      if (!com.tencent.mm.plugin.appbrand.ui.c.a.b.clP())
+      {
+        Log.i("MicroMsg.AppBrandLoadingSplashFactory", "createSnapshotDisplayLoadingSplash but switch off, appId:%s", new Object[] { paramAppBrandInitConfigWC.appId });
+        AppMethodBeat.o(266783);
+        return null;
+      }
+      String str = paramAppBrandInitConfigWC.nYo;
+      if (u.agG(str))
+      {
+        Log.i("MicroMsg.AppBrandLoadingSplashFactory", "createScreenshotSplash with appId:%s, path:%s", new Object[] { paramAppBrandInitConfigWC.appId, str });
+        paramAppBrandInitConfigWC = BitmapUtil.decodeFile(str);
+        if ((paramAppBrandInitConfigWC != null) && (!paramAppBrandInitConfigWC.isRecycled()))
+        {
+          paramContext = new z(paramContext, paramAppBrandInitConfigWC);
+          AppMethodBeat.o(266783);
+          return paramContext;
+        }
+      }
+      AppMethodBeat.o(266783);
+      return null;
+    }
+    AppMethodBeat.o(266783);
+    return null;
+  }
+  
+  public static void a(AppBrandRuntime paramAppBrandRuntime, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(48661);
+    if ((paramAppBrandRuntime == null) || (paramBitmap == null) || (paramBitmap.isRecycled()))
+    {
+      AppMethodBeat.o(48661);
+      return;
+    }
+    qVC.put(paramAppBrandRuntime, paramBitmap);
+    AppMethodBeat.o(48661);
+  }
+  
+  public static boolean cjJ()
+  {
+    AppMethodBeat.i(161867);
+    if (MMApplicationContext.isMainProcess())
+    {
+      AppMethodBeat.o(161867);
+      return false;
+    }
+    if ((!com.tencent.mm.cj.a.hrp()) && (com.tencent.mm.cj.a.hrh())) {}
+    for (int i = 1; (i != 0) && (!com.tencent.mm.cj.a.hro()); i = 0)
+    {
+      AppMethodBeat.o(161867);
+      return true;
+    }
+    AppMethodBeat.o(161867);
+    return false;
+  }
+  
+  private static Context em(Context paramContext)
+  {
+    AppMethodBeat.i(48660);
+    Context localContext = paramContext;
+    if (paramContext == null) {
+      localContext = MMApplicationContext.getContext();
+    }
+    paramContext = localContext;
+    if (cjJ()) {
+      paramContext = com.tencent.mm.plugin.appbrand.page.f.eg(localContext);
+    }
+    AppMethodBeat.o(48660);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.i
  * JD-Core Version:    0.7.0.1
  */

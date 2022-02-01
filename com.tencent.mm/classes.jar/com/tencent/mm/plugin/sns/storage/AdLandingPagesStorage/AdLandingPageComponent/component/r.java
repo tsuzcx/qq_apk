@@ -7,9 +7,9 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.u;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.widget.CircularImageView;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.z;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
@@ -19,30 +19,30 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class r
   extends m
 {
-  CircularImageView Edy;
+  CircularImageView Krb;
   
-  public r(Context paramContext, t paramt, ViewGroup paramViewGroup)
+  public r(Context paramContext, u paramu, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramt, paramViewGroup);
+    super(paramContext, paramu, paramViewGroup);
   }
   
-  protected final void eWT()
+  protected final void fKe()
   {
     AppMethodBeat.i(96504);
-    if ((this.contentView == null) || (this.Edy == null))
+    if ((this.contentView == null) || (this.Krb == null))
     {
       AppMethodBeat.o(96504);
       return;
     }
-    t localt = (t)this.EcX;
-    if (localt == null)
+    u localu = (u)this.KqB;
+    if (localu == null)
     {
       AppMethodBeat.o(96504);
       return;
     }
-    h.a(localt.DYK, localt.DZj, new f.a()
+    h.a("adId", localu.Kmf, new f.a()
     {
-      public final void aNH(String paramAnonymousString)
+      public final void aYs(String paramAnonymousString)
       {
         AppMethodBeat.i(96501);
         r localr;
@@ -56,7 +56,7 @@ public final class r
             AppMethodBeat.o(96501);
             return;
           }
-          if (localr.Edy == null)
+          if (localr.Krb == null)
           {
             Log.e("AdLandingPageCircleImgComp", "when set image the img is null!");
             AppMethodBeat.o(96501);
@@ -75,29 +75,29 @@ public final class r
           AppMethodBeat.o(96501);
           return;
         }
-        localr.Edy.setImageBitmap(paramAnonymousString);
+        localr.Krb.setImageBitmap(paramAnonymousString);
         AppMethodBeat.o(96501);
       }
       
-      public final void eWN() {}
+      public final void fJU() {}
       
-      public final void eWO() {}
+      public final void fJV() {}
     });
     AppMethodBeat.o(96504);
   }
   
-  protected final void eWX()
+  protected final void fKi()
   {
     AppMethodBeat.i(96502);
     ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
     if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.EcX.paddingLeft, (int)this.EcX.paddingTop, (int)this.EcX.paddingRight, (int)this.EcX.paddingBottom);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.KqB.paddingLeft, (int)this.KqB.paddingTop, (int)this.KqB.paddingRight, (int)this.KqB.paddingBottom);
     }
     this.contentView.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(96502);
   }
   
-  protected final View eWY()
+  protected final View fKj()
   {
     AppMethodBeat.i(96503);
     CircularImageView localCircularImageView = new CircularImageView(this.context);
@@ -105,14 +105,14 @@ public final class r
     return localCircularImageView;
   }
   
-  public final void eXe()
+  public final void fKp()
   {
-    this.Edy = ((CircularImageView)this.contentView);
+    this.Krb = ((CircularImageView)this.contentView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.r
  * JD-Core Version:    0.7.0.1
  */

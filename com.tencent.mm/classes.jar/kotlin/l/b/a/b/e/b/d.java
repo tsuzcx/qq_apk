@@ -14,18 +14,18 @@ import kotlin.r;
 public final class d
   implements c
 {
-  private final a.o TBH;
-  private final a.n TBI;
+  private final a.o abev;
+  private final a.n abew;
   
   public d(a.o paramo, a.n paramn)
   {
     AppMethodBeat.i(59068);
-    this.TBH = paramo;
-    this.TBI = paramn;
+    this.abev = paramo;
+    this.abew = paramn;
     AppMethodBeat.o(59068);
   }
   
-  private final r<List<String>, List<String>, Boolean> avn(int paramInt)
+  private final r<List<String>, List<String>, Boolean> aFh(int paramInt)
   {
     AppMethodBeat.i(59067);
     Object localObject1 = new LinkedList();
@@ -33,20 +33,20 @@ public final class d
     boolean bool = false;
     if (paramInt != -1)
     {
-      a.n.b localb = this.TBI.auC(paramInt);
-      Object localObject2 = this.TBH;
-      p.g(localb, "proto");
-      localObject2 = ((a.o)localObject2).getString(localb.Tzb);
-      a.n.b.b localb1 = localb.Tzc;
+      a.n.b localb = this.abew.aEw(paramInt);
+      Object localObject2 = this.abev;
+      p.j(localb, "proto");
+      localObject2 = ((a.o)localObject2).getString(localb.abbS);
+      a.n.b.b localb1 = localb.abbT;
       if (localb1 == null) {
-        p.hyc();
+        p.iCn();
       }
       switch (e.$EnumSwitchMapping$0[localb1.ordinal()])
       {
       }
       for (;;)
       {
-        paramInt = localb.Tza;
+        paramInt = localb.abbR;
         break;
         localLinkedList.addFirst(localObject2);
         continue;
@@ -61,12 +61,12 @@ public final class d
     return localObject1;
   }
   
-  public final String avl(int paramInt)
+  public final String aFf(int paramInt)
   {
     AppMethodBeat.i(59065);
-    Object localObject2 = avn(paramInt);
-    Object localObject1 = (List)((r)localObject2).first;
-    localObject2 = j.a((Iterable)((r)localObject2).second, (CharSequence)".", null, null, 0, null, null, 62);
+    Object localObject2 = aFh(paramInt);
+    Object localObject1 = (List)((r)localObject2).Mx;
+    localObject2 = j.a((Iterable)((r)localObject2).My, (CharSequence)".", null, null, 0, null, null, 62);
     if (((List)localObject1).isEmpty())
     {
       AppMethodBeat.o(59065);
@@ -77,10 +77,10 @@ public final class d
     return localObject1;
   }
   
-  public final boolean avm(int paramInt)
+  public final boolean aFg(int paramInt)
   {
     AppMethodBeat.i(59066);
-    boolean bool = ((Boolean)avn(paramInt).SWY).booleanValue();
+    boolean bool = ((Boolean)aFh(paramInt).aazK).booleanValue();
     AppMethodBeat.o(59066);
     return bool;
   }
@@ -88,15 +88,15 @@ public final class d
   public final String getString(int paramInt)
   {
     AppMethodBeat.i(59064);
-    String str = this.TBH.getString(paramInt);
-    p.g(str, "strings.getString(index)");
+    String str = this.abev.getString(paramInt);
+    p.j(str, "strings.getString(index)");
     AppMethodBeat.o(59064);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.e.b.d
  * JD-Core Version:    0.7.0.1
  */

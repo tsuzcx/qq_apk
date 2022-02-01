@@ -1,110 +1,110 @@
 package com.tencent.mm.plugin.selectrecord.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.id;
+import com.tencent.mm.f.b.a.kk;
 
 public final class a
 {
-  public static a CWN = null;
-  public id CWO;
-  public int CWP;
-  public int CWQ;
-  public int CWR;
-  public int CWS;
-  public int CWT;
-  public int CWU;
-  public int CWV;
-  public long CWW;
-  public int CWX;
-  public int CWY;
-  public int CWZ;
-  public int CXa;
-  public int CXb;
-  public long CXc;
-  public long CXd;
+  public static a Jct = null;
+  public int JcA;
+  public int JcB;
+  public long JcC;
+  public int JcD;
+  public int JcE;
+  public int JcF;
+  public int JcG;
+  public int JcH;
+  public long JcI;
+  public long JcJ;
+  public kk Jcu;
+  public int Jcv;
+  public int Jcw;
+  public int Jcx;
+  public int Jcy;
+  public int Jcz;
   
   public a()
   {
-    AppMethodBeat.i(187913);
-    this.CWO = null;
-    this.CWP = 0;
-    this.CWQ = 0;
-    this.CWR = 0;
-    this.CWS = 0;
-    this.CWT = 0;
-    this.CWU = 0;
-    this.CWV = 0;
-    this.CWW = 0L;
-    this.CWX = 0;
-    this.CWY = 0;
-    this.CWZ = 0;
-    this.CXa = 0;
-    this.CXb = 0;
-    this.CXc = 0L;
-    this.CXd = 0L;
-    this.CWO = new id();
-    AppMethodBeat.o(187913);
+    AppMethodBeat.i(255121);
+    this.Jcu = null;
+    this.Jcv = 0;
+    this.Jcw = 0;
+    this.Jcx = 0;
+    this.Jcy = 0;
+    this.Jcz = 0;
+    this.JcA = 0;
+    this.JcB = 0;
+    this.JcC = 0L;
+    this.JcD = 0;
+    this.JcE = 0;
+    this.JcF = 0;
+    this.JcG = 0;
+    this.JcH = 0;
+    this.JcI = 0L;
+    this.JcJ = 0L;
+    this.Jcu = new kk();
+    AppMethodBeat.o(255121);
   }
   
-  public static a eSu()
+  public static a fFx()
   {
-    AppMethodBeat.i(187911);
-    if (CWN == null) {
-      eSv();
+    AppMethodBeat.i(255119);
+    if (Jct == null) {
+      fFy();
     }
-    a locala = CWN;
-    AppMethodBeat.o(187911);
+    a locala = Jct;
+    AppMethodBeat.o(255119);
     return locala;
   }
   
-  public static void eSv()
+  public static void fFy()
   {
-    AppMethodBeat.i(187912);
-    CWN = new a();
-    AppMethodBeat.o(187912);
+    AppMethodBeat.i(255120);
+    Jct = new a();
+    AppMethodBeat.o(255120);
   }
   
-  public final void IF(long paramLong)
+  public final void PZ(long paramLong)
   {
-    this.CWO.eMZ = paramLong;
+    this.Jcu.gNd = paramLong;
   }
   
-  public final void IG(long paramLong)
+  public final void Qa(long paramLong)
   {
-    if (paramLong > this.CWW) {
-      this.CWO.eNi = (paramLong - this.CWW);
+    if (paramLong > this.JcC) {
+      this.Jcu.gNm = (paramLong - this.JcC);
     }
   }
   
-  public final void eSw()
+  public final void fFA()
   {
-    this.CWS += 1;
+    this.Jcz += 1;
   }
   
-  public final void eSx()
+  public final void fFB()
   {
-    this.CWT += 1;
+    this.JcF += 1;
   }
   
-  public final void eSy()
+  public final void fFz()
   {
-    this.CWZ += 1;
+    this.Jcy += 1;
   }
   
-  public final void un(boolean paramBoolean)
+  public final void xL(boolean paramBoolean)
   {
-    id localid = this.CWO;
+    kk localkk = this.Jcu;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      localid.eMW = i;
+      localkk.gNa = i;
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.selectrecord.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -28,11 +28,11 @@ public class WWMediaLink
   
   public final void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(199007);
+    AppMethodBeat.i(233394);
     this.thumbUrl = paramBundle.getString("_wwwebpageobject_thumbUrl");
     this.webpageUrl = paramBundle.getString("_wwwebpageobject_webpageUrl");
     super.fromBundle(paramBundle);
-    AppMethodBeat.o(199007);
+    AppMethodBeat.o(233394);
   }
   
   public final void toBundle(Bundle paramBundle)
@@ -46,7 +46,7 @@ public class WWMediaLink
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wework.api.model.WWMediaLink
  * JD-Core Version:    0.7.0.1
  */

@@ -24,11 +24,19 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.a;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.R.m;
 import com.tencent.mm.plugin.ipcall.a.c;
 import com.tencent.mm.plugin.ipcall.model.f.d;
 import com.tencent.mm.plugin.ipcall.model.h.f;
-import com.tencent.mm.protocal.protobuf.byf;
-import com.tencent.mm.protocal.protobuf.ewh;
+import com.tencent.mm.protocal.protobuf.cfz;
+import com.tencent.mm.protocal.protobuf.fgt;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -37,7 +45,7 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.FlowLayout;
 import com.tencent.mm.ui.base.i;
 import com.tencent.mm.ui.widget.edittext.PasterEditText;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -46,142 +54,119 @@ import java.util.Locale;
 public final class g
   extends i
 {
-  private CharSequence Hn;
-  View jBN;
-  private ScrollView lTw;
+  private int DVN;
+  private int DVO;
+  private long DVP;
+  private LinearLayout DVQ;
+  private LinearLayout DVR;
+  private RelativeLayout DVS;
+  private RelativeLayout DVT;
+  private RelativeLayout DVU;
+  private ImageView DVV;
+  private ImageView DVW;
+  private ImageView DVX;
+  private int DVY;
+  private FrameLayout DVZ;
+  private FlowLayout DWa;
+  private Button DWb;
+  private Button DWc;
+  private PasterEditText DWd;
+  private Button DWe;
+  private Button DWf;
+  private TextView DWg;
+  private Animation DWh;
+  private int DWi;
+  private int DWj;
+  private CharSequence cZ;
   private Activity mActivity;
   private Context mContext;
   private MMHandler mHandler;
   private ArrayList<a> mItemList;
   private View.OnClickListener mOnClickListener;
-  private int thx;
-  private int thy;
-  private int yvJ;
-  private int yvK;
-  private long yvL;
-  private LinearLayout yvM;
-  private LinearLayout yvN;
-  private RelativeLayout yvO;
-  private RelativeLayout yvP;
-  private RelativeLayout yvQ;
-  private ImageView yvR;
-  private ImageView yvS;
-  private ImageView yvT;
-  private int yvU;
-  private FrameLayout yvV;
-  private FlowLayout yvW;
-  private Button yvX;
-  private Button yvY;
-  private PasterEditText yvZ;
-  private Button ywa;
-  private Button ywb;
-  private TextView ywc;
-  private Animation ywd;
-  private int ywe;
-  private int ywf;
+  private ScrollView mPe;
+  View mrI;
+  private int wNO;
+  private int wNP;
   
   public g(Activity paramActivity, Context paramContext, int paramInt, long paramLong)
   {
-    super(paramContext, 2131821772);
+    super(paramContext, R.m.mmalertdialog);
     AppMethodBeat.i(25778);
-    this.yvJ = 0;
+    this.DVN = 0;
     this.mHandler = new MMHandler();
-    this.mOnClickListener = new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(25771);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ipcall/ui/IPCallFeedbackDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        if (paramAnonymousView == g.b(g.this)) {
-          g.a(g.this, 1);
-        }
-        for (;;)
-        {
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ipcall/ui/IPCallFeedbackDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(25771);
-          return;
-          if (paramAnonymousView == g.c(g.this)) {
-            g.a(g.this, 2);
-          } else if (paramAnonymousView == g.d(g.this)) {
-            g.a(g.this, 3);
-          }
-        }
-      }
-    };
-    this.thy = 2131232434;
-    this.thx = 2131100402;
-    this.ywe = 2131232431;
-    this.ywf = 2131101427;
+    this.mOnClickListener = new g.3(this);
+    this.wNP = R.g.dnw;
+    this.wNO = R.e.dkv;
+    this.DWi = R.g.dnv;
+    this.DWj = R.e.white_text_color;
     setCancelable(false);
     this.mContext = paramContext;
-    this.yvK = paramInt;
-    this.yvL = paramLong;
+    this.DVO = paramInt;
+    this.DVP = paramLong;
     this.mActivity = paramActivity;
-    this.jBN = View.inflate(this.mContext, 2131495106, null);
-    this.yvM = ((LinearLayout)this.jBN.findViewById(2131303067));
-    this.yvN = ((LinearLayout)this.jBN.findViewById(2131303068));
-    this.ywd = AnimationUtils.loadAnimation(MMApplicationContext.getContext(), 2130771981);
-    this.ywd.setDuration(200L);
-    this.ywd.setStartOffset(100L);
-    this.yvV = ((FrameLayout)this.jBN.findViewById(2131301592));
-    this.yvW = ((FlowLayout)this.jBN.findViewById(2131301591));
-    this.yvX = ((Button)this.jBN.findViewById(2131298994));
-    this.yvY = ((Button)this.jBN.findViewById(2131298995));
-    this.yvZ = ((PasterEditText)this.jBN.findViewById(2131299004));
-    this.yvX.setOnClickListener(new View.OnClickListener()
+    this.mrI = View.inflate(this.mContext, R.i.ehZ, null);
+    this.DVQ = ((LinearLayout)this.mrI.findViewById(R.h.dKS));
+    this.DVR = ((LinearLayout)this.mrI.findViewById(R.h.dKT));
+    this.DWh = AnimationUtils.loadAnimation(MMApplicationContext.getContext(), R.a.alpha_in);
+    this.DWh.setDuration(200L);
+    this.DWh.setStartOffset(100L);
+    this.DVZ = ((FrameLayout)this.mrI.findViewById(R.h.dHf));
+    this.DWa = ((FlowLayout)this.mrI.findViewById(R.h.dHe));
+    this.DWb = ((Button)this.mrI.findViewById(R.h.dAz));
+    this.DWc = ((Button)this.mrI.findViewById(R.h.dAA));
+    this.DWd = ((PasterEditText)this.mrI.findViewById(R.h.confirm_dialog_text_et));
+    this.DWb.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(25772);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ipcall/ui/IPCallFeedbackDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/ipcall/ui/IPCallFeedbackDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         g.this.dismiss();
         d.a(-1, 1, -1, "", 0, -1, -1, g.e(g.this), g.f(g.this));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ipcall/ui/IPCallFeedbackDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(25772);
       }
     });
-    this.yvY.setOnClickListener(new g.5(this));
-    Object localObject1 = com.tencent.mm.plugin.ipcall.model.e.eak();
-    if (((com.tencent.mm.plugin.ipcall.model.e)localObject1).yoE == null)
+    this.DWc.setOnClickListener(new g.5(this));
+    Object localObject1 = com.tencent.mm.plugin.ipcall.model.e.eJi();
+    if (((com.tencent.mm.plugin.ipcall.model.e)localObject1).DOG == null)
     {
       Log.i("MicroMsg.IPCallFeedbackConfigUpdater", "getCurrentLanugageResource try get cacheResUpdate");
-      com.tencent.mm.pluginsdk.j.a.a.b.gnC();
-      paramActivity = com.tencent.mm.pluginsdk.j.a.a.b.kC(39, 1);
+      com.tencent.mm.pluginsdk.k.a.a.b.hii();
+      paramActivity = com.tencent.mm.pluginsdk.k.a.a.b.lV(39, 1);
       if (Util.isNullOrNil(paramActivity)) {
-        break label555;
+        break label569;
       }
-      paramActivity = s.aW(paramActivity, 0, -1);
+      paramActivity = u.aY(paramActivity, 0, -1);
       if (paramActivity != null) {
-        ((com.tencent.mm.plugin.ipcall.model.e)localObject1).bG(paramActivity);
+        ((com.tencent.mm.plugin.ipcall.model.e)localObject1).bV(paramActivity);
       }
     }
     else
     {
-      if (((com.tencent.mm.plugin.ipcall.model.e)localObject1).yoE == null) {
-        break label596;
+      if (((com.tencent.mm.plugin.ipcall.model.e)localObject1).DOG == null) {
+        break label610;
       }
       paramActivity = LocaleUtil.loadApplicationLanguageSettings(MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0), MMApplicationContext.getContext());
       if ((!"language_default".equalsIgnoreCase(paramActivity)) || (Locale.getDefault() == null)) {
-        break label1124;
+        break label1138;
       }
       paramActivity = Locale.getDefault().toString();
     }
-    label457:
-    label596:
-    label1124:
+    label471:
+    label610:
+    label1138:
     for (;;)
     {
-      Object localObject2 = ((com.tencent.mm.plugin.ipcall.model.e)localObject1).yoE.iterator();
+      Object localObject2 = ((com.tencent.mm.plugin.ipcall.model.e)localObject1).DOG.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         paramContext = (f)((Iterator)localObject2).next();
-        if (paramActivity.equalsIgnoreCase(paramContext.ysG))
+        if (paramActivity.equalsIgnoreCase(paramContext.DSK))
         {
-          Log.i("MicroMsg.IPCallFeedbackConfigUpdater", "curLang: %s,resListCount: %s", new Object[] { paramActivity, Integer.valueOf(((com.tencent.mm.plugin.ipcall.model.e)localObject1).yoE.size()) });
+          Log.i("MicroMsg.IPCallFeedbackConfigUpdater", "curLang: %s,resListCount: %s", new Object[] { paramActivity, Integer.valueOf(((com.tencent.mm.plugin.ipcall.model.e)localObject1).DOG.size()) });
           paramActivity = paramContext;
         }
       }
@@ -189,7 +174,7 @@ public final class g
       {
         if (paramActivity != null)
         {
-          paramContext = paramActivity.ysH;
+          paramContext = paramActivity.DSL;
           paramActivity = new ArrayList();
           paramContext = paramContext.iterator();
           for (;;)
@@ -199,17 +184,17 @@ public final class g
               localObject1 = (com.tencent.mm.plugin.ipcall.model.h.e)paramContext.next();
               localObject2 = new a();
               ((a)localObject2).Id = ((com.tencent.mm.plugin.ipcall.model.h.e)localObject1).Id;
-              ((a)localObject2).xJH = ((com.tencent.mm.plugin.ipcall.model.h.e)localObject1).xJH;
-              ((a)localObject2).ywh = false;
+              ((a)localObject2).CNP = ((com.tencent.mm.plugin.ipcall.model.h.e)localObject1).CNP;
+              ((a)localObject2).DWl = false;
               paramActivity.add(localObject2);
               continue;
               Log.e("MicroMsg.IPCallFeedbackConfigUpdater", "getCurrentLanugageResource file not exist");
               break;
               Log.i("MicroMsg.IPCallFeedbackConfigUpdater", "getCurrentLanugageResource get cacheResUpdate no filePath");
               break;
-              Log.e("MicroMsg.IPCallFeedbackConfigUpdater", "no lanuage equal curLang, curLang: %s,resListCount: %s", new Object[] { paramActivity, Integer.valueOf(((com.tencent.mm.plugin.ipcall.model.e)localObject1).yoE.size()) });
+              Log.e("MicroMsg.IPCallFeedbackConfigUpdater", "no lanuage equal curLang, curLang: %s,resListCount: %s", new Object[] { paramActivity, Integer.valueOf(((com.tencent.mm.plugin.ipcall.model.e)localObject1).DOG.size()) });
               paramActivity = null;
-              break label457;
+              break label471;
             }
           }
           this.mItemList = paramActivity;
@@ -217,138 +202,138 @@ public final class g
           while (paramActivity.hasNext())
           {
             paramContext = (a)paramActivity.next();
-            localObject1 = this.yvW;
+            localObject1 = this.DWa;
             localObject2 = new TextView(getContext());
-            ((TextView)localObject2).setTextSize(0, getContext().getResources().getDimension(2131166342) * com.tencent.mm.cb.a.ez(getContext()));
-            ((TextView)localObject2).setBackgroundResource(this.thy);
-            ((TextView)localObject2).setTextColor(this.mContext.getResources().getColor(this.thx));
+            ((TextView)localObject2).setTextSize(0, getContext().getResources().getDimension(R.f.dlq) * com.tencent.mm.ci.a.ez(getContext()));
+            ((TextView)localObject2).setBackgroundResource(this.wNP);
+            ((TextView)localObject2).setTextColor(this.mContext.getResources().getColor(this.wNO));
             ((TextView)localObject2).setTag(paramContext);
             ((TextView)localObject2).setGravity(17);
             ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
             ((TextView)localObject2).setSingleLine();
-            ((TextView)localObject2).setText(paramContext.xJH);
+            ((TextView)localObject2).setText(paramContext.CNP);
             ((TextView)localObject2).setOnClickListener(new g.6(this));
             ((FlowLayout)localObject1).addView((View)localObject2);
           }
         }
       }
-      this.yvO = ((RelativeLayout)this.jBN.findViewById(2131303072));
-      this.yvP = ((RelativeLayout)this.jBN.findViewById(2131303073));
-      this.yvQ = ((RelativeLayout)this.jBN.findViewById(2131303074));
-      this.yvO.setOnClickListener(this.mOnClickListener);
-      this.yvP.setOnClickListener(this.mOnClickListener);
-      this.yvQ.setOnClickListener(this.mOnClickListener);
-      this.yvR = ((ImageView)this.jBN.findViewById(2131302618));
-      this.yvS = ((ImageView)this.jBN.findViewById(2131302619));
-      this.yvT = ((ImageView)this.jBN.findViewById(2131302620));
-      this.yvU = 0;
-      Pi(this.yvU);
-      this.ywa = ((Button)this.jBN.findViewById(2131302703));
-      this.ywb = ((Button)this.jBN.findViewById(2131302704));
-      this.ywc = ((TextView)this.jBN.findViewById(2131302706));
-      paramActivity = c.ebR();
+      this.DVS = ((RelativeLayout)this.mrI.findViewById(R.h.dKW));
+      this.DVT = ((RelativeLayout)this.mrI.findViewById(R.h.dKX));
+      this.DVU = ((RelativeLayout)this.mrI.findViewById(R.h.dKY));
+      this.DVS.setOnClickListener(this.mOnClickListener);
+      this.DVT.setOnClickListener(this.mOnClickListener);
+      this.DVU.setOnClickListener(this.mOnClickListener);
+      this.DVV = ((ImageView)this.mrI.findViewById(R.h.dJa));
+      this.DVW = ((ImageView)this.mrI.findViewById(R.h.dJb));
+      this.DVX = ((ImageView)this.mrI.findViewById(R.h.dJc));
+      this.DVY = 0;
+      Vr(this.DVY);
+      this.DWe = ((Button)this.mrI.findViewById(R.h.dJk));
+      this.DWf = ((Button)this.mrI.findViewById(R.h.dJl));
+      this.DWg = ((TextView)this.mrI.findViewById(R.h.dJm));
+      paramActivity = c.eKP();
       if (paramActivity != null) {}
-      for (paramActivity = String.format(this.mContext.getString(2131761997), new Object[] { paramActivity.MdN });; paramActivity = null)
+      for (paramActivity = String.format(this.mContext.getString(R.l.eKe), new Object[] { paramActivity.Tno });; paramActivity = null)
       {
         if (Util.isNullOrNil(paramActivity)) {
-          this.ywc.setVisibility(4);
+          this.DWg.setVisibility(4);
         }
         for (;;)
         {
-          this.ywa.setOnClickListener(new View.OnClickListener()
+          this.DWe.setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
               AppMethodBeat.i(25775);
               com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-              localb.bm(paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ipcall/ui/IPCallFeedbackDialog$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+              localb.bn(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/ipcall/ui/IPCallFeedbackDialog$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
               g.this.dismiss();
               d.a(1, -1, g.h(g.this), g.b(g.this, g.h(g.this)), 1, -1, 1, g.e(g.this), g.f(g.this));
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ipcall/ui/IPCallFeedbackDialog$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(25775);
             }
           });
-          this.ywb.setOnClickListener(new View.OnClickListener()
+          this.DWf.setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
               AppMethodBeat.i(25776);
               Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-              ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ipcall/ui/IPCallFeedbackDialog$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+              ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/ipcall/ui/IPCallFeedbackDialog$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
               g.this.dismiss();
               localObject = new Intent();
               ((Intent)localObject).putExtra("IPCallShareCouponCardUI_KFrom", 2);
               ((Intent)localObject).setClass(g.i(g.this), IPCallShareCouponCardUI.class);
               paramAnonymousView = g.i(g.this);
-              localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/ipcall/ui/IPCallFeedbackDialog$8", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/ipcall/ui/IPCallFeedbackDialog$8", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+              com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/ipcall/ui/IPCallFeedbackDialog$8", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+              com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/ipcall/ui/IPCallFeedbackDialog$8", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
               d.a(1, -1, g.h(g.this), g.b(g.this, g.h(g.this)), 1, 1, -1, g.e(g.this), g.f(g.this));
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ipcall/ui/IPCallFeedbackDialog$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(25776);
             }
           });
-          this.lTw = ((ScrollView)this.jBN.findViewById(2131300590));
+          this.mPe = ((ScrollView)this.mrI.findViewById(R.h.dGG));
           paramActivity = ((ViewGroup)this.mActivity.findViewById(16908290)).getChildAt(0);
           paramActivity.getViewTreeObserver().addOnGlobalLayoutListener(new g.1(this, paramActivity));
           AppMethodBeat.o(25778);
           return;
-          this.ywc.setVisibility(0);
-          this.ywc.setText(paramActivity);
+          this.DWg.setVisibility(0);
+          this.DWg.setText(paramActivity);
         }
       }
     }
   }
   
-  private void Pi(int paramInt)
+  private void Vr(int paramInt)
   {
     AppMethodBeat.i(25780);
-    this.yvU = paramInt;
+    this.DVY = paramInt;
     if (paramInt == 0)
     {
-      this.yvR.setVisibility(4);
-      this.yvS.setVisibility(4);
-      this.yvT.setVisibility(4);
-      this.yvY.setEnabled(false);
-      Pl(0);
+      this.DVV.setVisibility(4);
+      this.DVW.setVisibility(4);
+      this.DVX.setVisibility(4);
+      this.DWc.setEnabled(false);
+      Vu(0);
       AppMethodBeat.o(25780);
       return;
     }
     if (paramInt == 1)
     {
-      this.yvR.setVisibility(0);
-      this.yvS.setVisibility(4);
-      this.yvT.setVisibility(4);
-      this.yvY.setEnabled(true);
-      Pl(1);
+      this.DVV.setVisibility(0);
+      this.DVW.setVisibility(4);
+      this.DVX.setVisibility(4);
+      this.DWc.setEnabled(true);
+      Vu(1);
       AppMethodBeat.o(25780);
       return;
     }
     if (paramInt == 2)
     {
-      this.yvR.setVisibility(0);
-      this.yvS.setVisibility(0);
-      this.yvT.setVisibility(4);
-      this.yvY.setEnabled(true);
-      Pl(1);
+      this.DVV.setVisibility(0);
+      this.DVW.setVisibility(0);
+      this.DVX.setVisibility(4);
+      this.DWc.setEnabled(true);
+      Vu(1);
       AppMethodBeat.o(25780);
       return;
     }
     if (paramInt == 3)
     {
-      this.yvR.setVisibility(0);
-      this.yvS.setVisibility(0);
-      this.yvT.setVisibility(0);
-      this.yvY.setEnabled(true);
-      Pl(0);
+      this.DVV.setVisibility(0);
+      this.DVW.setVisibility(0);
+      this.DVX.setVisibility(0);
+      this.DWc.setEnabled(true);
+      Vu(0);
     }
     AppMethodBeat.o(25780);
   }
   
-  private String Pj(int paramInt)
+  private String Vs(int paramInt)
   {
     AppMethodBeat.i(25781);
     String str = "";
@@ -357,7 +342,7 @@ public final class g
       AppMethodBeat.o(25781);
       return "";
     }
-    if (!Util.isNullOrNil(this.yvZ.getText().toString().trim())) {
+    if (!Util.isNullOrNil(this.DWd.getText().toString().trim())) {
       str = "0";
     }
     Object localObject;
@@ -371,7 +356,7 @@ public final class g
           break label145;
         }
         localObject = (a)localIterator.next();
-        if (!((a)localObject).ywh) {
+        if (!((a)localObject).DWl) {
           break label153;
         }
         if (!str.equals("")) {
@@ -392,7 +377,7 @@ public final class g
     }
   }
   
-  private LinkedList<ewh> Pk(int paramInt)
+  private LinkedList<fgt> Vt(int paramInt)
   {
     AppMethodBeat.i(25782);
     LinkedList localLinkedList = new LinkedList();
@@ -401,13 +386,13 @@ public final class g
       AppMethodBeat.o(25782);
       return localLinkedList;
     }
-    Object localObject1 = this.yvZ.getText().toString().trim();
+    Object localObject1 = this.DWd.getText().toString().trim();
     Object localObject2;
     if (!Util.isNullOrNil((String)localObject1))
     {
-      localObject2 = new ewh();
-      ((ewh)localObject2).ID = 0;
-      ((ewh)localObject2).iAc = ((String)localObject1);
+      localObject2 = new fgt();
+      ((fgt)localObject2).ffF = 0;
+      ((fgt)localObject2).lpy = ((String)localObject1);
       localLinkedList.add(localObject2);
     }
     if (this.mItemList != null)
@@ -416,13 +401,13 @@ public final class g
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (a)((Iterator)localObject1).next();
-        if (((a)localObject2).ywh)
+        if (((a)localObject2).DWl)
         {
-          ewh localewh = new ewh();
+          fgt localfgt = new fgt();
           try
           {
-            localewh.ID = Util.getInt(((a)localObject2).Id, 0);
-            localLinkedList.add(localewh);
+            localfgt.ffF = Util.getInt(((a)localObject2).Id, 0);
+            localLinkedList.add(localfgt);
           }
           catch (NumberFormatException localNumberFormatException)
           {
@@ -435,41 +420,41 @@ public final class g
     return localLinkedList;
   }
   
-  private void Pl(int paramInt)
+  private void Vu(int paramInt)
   {
     AppMethodBeat.i(25785);
     if (paramInt == 0)
     {
-      this.yvM.setVisibility(0);
-      this.yvN.setVisibility(4);
-      if (this.yvJ == 1)
+      this.DVQ.setVisibility(0);
+      this.DVR.setVisibility(4);
+      if (this.DVN == 1)
       {
-        ((LinearLayout.LayoutParams)this.yvV.getLayoutParams()).height = 0;
-        this.yvV.requestLayout();
+        ((LinearLayout.LayoutParams)this.DVZ.getLayoutParams()).height = 0;
+        this.DVZ.requestLayout();
       }
-      Util.hideVKB(this.jBN);
+      Util.hideVKB(this.mrI);
     }
     for (;;)
     {
-      this.yvJ = paramInt;
+      this.DVN = paramInt;
       AppMethodBeat.o(25785);
       return;
       if (paramInt == 1)
       {
-        this.yvM.setVisibility(0);
-        this.yvN.setVisibility(4);
-        if (this.yvJ == 0)
+        this.DVQ.setVisibility(0);
+        this.DVR.setVisibility(4);
+        if (this.DVN == 0)
         {
-          ((LinearLayout.LayoutParams)this.yvV.getLayoutParams()).height = -2;
-          this.yvV.requestLayout();
-          this.yvV.startAnimation(this.ywd);
+          ((LinearLayout.LayoutParams)this.DVZ.getLayoutParams()).height = -2;
+          this.DVZ.requestLayout();
+          this.DVZ.startAnimation(this.DWh);
         }
       }
       else if (paramInt == 2)
       {
-        this.yvM.setVisibility(4);
-        this.yvN.setVisibility(0);
-        Util.hideVKB(this.jBN);
+        this.DVQ.setVisibility(4);
+        this.DVR.setVisibility(0);
+        Util.hideVKB(this.mrI);
       }
     }
   }
@@ -494,10 +479,10 @@ public final class g
   {
     AppMethodBeat.i(25779);
     super.onCreate(paramBundle);
-    setContentView(this.jBN);
+    setContentView(this.mrI);
     getWindow().getAttributes().width = getWindow().getWindowManager().getDefaultDisplay().getWidth();
     getWindow().getDecorView().setPadding(0, 0, 0, 0);
-    Pl(0);
+    Vu(0);
     AppMethodBeat.o(25779);
   }
   
@@ -505,10 +490,10 @@ public final class g
   {
     if (paramCharSequence != null)
     {
-      this.Hn = paramCharSequence;
+      this.cZ = paramCharSequence;
       return;
     }
-    this.Hn = null;
+    this.cZ = null;
   }
   
   public final void show()
@@ -520,14 +505,14 @@ public final class g
   
   public static final class a
   {
+    public String CNP;
+    public boolean DWl;
     public String Id;
-    public String xJH;
-    public boolean ywh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.g
  * JD-Core Version:    0.7.0.1
  */

@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.appbrand.page.a;
 
 public abstract interface g
 {
-  public abstract void bRA();
+  public abstract boolean bDV();
   
-  public abstract boolean bSg();
+  public abstract void cer();
   
-  public abstract boolean bsX();
+  public abstract boolean cfg();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.a.g
  * JD-Core Version:    0.7.0.1
  */

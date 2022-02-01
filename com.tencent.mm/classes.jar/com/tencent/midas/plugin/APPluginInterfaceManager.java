@@ -81,7 +81,7 @@ public class APPluginInterfaceManager
   
   private static Class<?>[] getParamsType(Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(193207);
+    AppMethodBeat.i(252421);
     Object localObject = null;
     if (paramArrayOfObject != null)
     {
@@ -107,18 +107,18 @@ public class APPluginInterfaceManager
         }
       }
     }
-    AppMethodBeat.o(193207);
+    AppMethodBeat.o(252421);
     return localObject;
   }
   
   public static Object initPluginInterface(Context paramContext, String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(193206);
+    AppMethodBeat.i(252418);
     APLog.d("APPluginInterfaceManager", "Call into initPluginInterface  plugin = " + paramString1 + " interfaceClass = " + paramString2 + " methodName = " + paramString3 + " " + java.lang.Thread.currentThread().getStackTrace()[3].toString());
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)))
     {
       APLog.i("APPLuginProxyActivity", "initPluginInterface objClass param is null");
-      AppMethodBeat.o(193206);
+      AppMethodBeat.o(252418);
       return null;
     }
     paramString2 = getObjectClass(paramContext, paramString1, paramString2, paramString3);
@@ -134,7 +134,7 @@ public class APPluginInterfaceManager
       {
         APPluginStatic.removeAll();
         APPluginInstallerAndUpdater.unInstallPlugin(paramContext);
-        AppMethodBeat.o(193206);
+        AppMethodBeat.o(252418);
         return null;
         APLog.d("APPluginInterfaceManager", "initPluginInterface objClass is null, current method name = " + paramString3 + " no need to jump to pure h5 pay!");
         APPluginUtils.showLaunchPluginFail(paramContext.getApplicationContext(), "", false);
@@ -146,21 +146,21 @@ public class APPluginInterfaceManager
     paramString1 = paramContext.invoke(paramString2, paramArrayOfObject);
     long l2 = System.currentTimeMillis();
     APLog.i("APPLuginProxyActivity", "initPluginInterface method=" + paramContext + " obj=" + paramString1 + " time=" + (l2 - l1));
-    AppMethodBeat.o(193206);
+    AppMethodBeat.o(252418);
     return paramString1;
   }
   
   public static Object initPluginInterface(Context paramContext, String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject, Class<?>[] paramArrayOfClass)
   {
     int i = 0;
-    AppMethodBeat.i(193209);
+    AppMethodBeat.i(252423);
     APLog.i("APPLuginProxyActivity", "initPluginInterface2 pluginName=".concat(String.valueOf(paramString1)));
     APLog.i("APPLuginProxyActivity", "initPluginInterface2 interfaceClass=".concat(String.valueOf(paramString2)));
     APLog.i("APPLuginProxyActivity", "initPluginInterface2 methodName=".concat(String.valueOf(paramString3)));
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)))
     {
       APLog.i("APPLuginProxyActivity", "initPluginInterface2 objClass param is null");
-      AppMethodBeat.o(193209);
+      AppMethodBeat.o(252423);
       return null;
     }
     paramString2 = getObjectClass(paramContext, paramString1, paramString2, paramString3);
@@ -171,7 +171,7 @@ public class APPluginInterfaceManager
       APPluginUtils.showLaunchPluginFail(paramContext.getApplicationContext(), "", false);
       APPluginStatic.removeAll();
       APPluginInstallerAndUpdater.unInstallPlugin(paramContext);
-      AppMethodBeat.o(193209);
+      AppMethodBeat.o(252423);
       return null;
     }
     APLog.i("APPLuginProxyActivity", "initPluginInterface2 getMethod Name:".concat(String.valueOf(paramString3)));
@@ -186,21 +186,21 @@ public class APPluginInterfaceManager
     paramContext.setAccessible(true);
     paramContext = paramContext.invoke(paramString2, paramArrayOfObject);
     APLog.i("APPLuginProxyActivity", "initPluginInterface2 obj=".concat(String.valueOf(paramContext)));
-    AppMethodBeat.o(193209);
+    AppMethodBeat.o(252423);
     return paramContext;
   }
   
   public static Object initPluginInterface2(Context paramContext, String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
   {
     int i = 0;
-    AppMethodBeat.i(193208);
+    AppMethodBeat.i(252422);
     APLog.i("APPLuginProxyActivity", "initPluginInterface2 pluginName=".concat(String.valueOf(paramString1)));
     APLog.i("APPLuginProxyActivity", "initPluginInterface2 interfaceClass=".concat(String.valueOf(paramString2)));
     APLog.i("APPLuginProxyActivity", "initPluginInterface2 methodName=".concat(String.valueOf(paramString3)));
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)))
     {
       APLog.i("APPLuginProxyActivity", "initPluginInterface2 objClass param is null");
-      AppMethodBeat.o(193208);
+      AppMethodBeat.o(252422);
       return null;
     }
     paramString2 = getObjectClass(paramContext, paramString1, paramString2, paramString3);
@@ -211,7 +211,7 @@ public class APPluginInterfaceManager
       APPluginUtils.showLaunchPluginFail(paramContext.getApplicationContext(), "", false);
       APPluginStatic.removeAll();
       APPluginInstallerAndUpdater.unInstallPlugin(paramContext);
-      AppMethodBeat.o(193208);
+      AppMethodBeat.o(252422);
       return null;
     }
     paramContext = new Class[3];
@@ -230,13 +230,13 @@ public class APPluginInterfaceManager
     paramContext.setAccessible(true);
     paramContext = paramContext.invoke(paramString2, paramArrayOfObject);
     APLog.i("APPLuginProxyActivity", "initPluginInterface2 obj=".concat(String.valueOf(paramContext)));
-    AppMethodBeat.o(193208);
+    AppMethodBeat.o(252422);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.plugin.APPluginInterfaceManager
  * JD-Core Version:    0.7.0.1
  */

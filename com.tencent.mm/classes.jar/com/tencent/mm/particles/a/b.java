@@ -9,40 +9,40 @@ import android.view.animation.Interpolator;
 
 public abstract class b
 {
+  private final Matrix aHZ = new Matrix();
   public int alpha;
-  private final Matrix gT = new Matrix();
-  public float jIE;
-  public float jIG;
-  public Float jII;
-  public Float jIK;
-  public float jIQ;
-  public Float jIS;
-  public long jIU;
-  public Interpolator jIy;
-  public Rect jIz;
-  public float jJA;
-  public float jJB;
-  public float jJC;
-  public float jJD;
-  private final Paint jJi = new Paint(1);
-  public long jJj;
-  public float jJk;
-  public float jJl;
-  public float jJm;
-  public float jJn;
-  public Long jJo;
-  public Long jJp;
-  public float jJq;
-  public float jJr;
-  public Long jJs;
-  public float jJt;
-  public float jJu;
-  public float jJv;
-  public float jJw;
-  public float jJx;
-  public boolean jJy;
-  public boolean jJz;
-  public VelocityTracker ol;
+  public VelocityTracker bvI;
+  public float mAA;
+  public float mAB;
+  public float mAC;
+  public boolean mAD;
+  public boolean mAE;
+  public float mAF;
+  public float mAG;
+  public float mAH;
+  public float mAI;
+  private final Paint mAn = new Paint(1);
+  public long mAo;
+  public float mAp;
+  public float mAq;
+  public float mAr;
+  public float mAs;
+  public Long mAt;
+  public Long mAu;
+  public float mAv;
+  public float mAw;
+  public Long mAx;
+  public float mAy;
+  public float mAz;
+  public Interpolator mzD;
+  public Rect mzE;
+  public float mzJ;
+  public float mzL;
+  public Float mzN;
+  public Float mzP;
+  public float mzV;
+  public Float mzX;
+  public long mzZ;
   public boolean terminated;
   
   public static float a(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3, Long paramLong1, Float paramFloat)
@@ -139,84 +139,84 @@ public abstract class b
   public final void a(Canvas paramCanvas, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     paramCanvas.save();
-    paramCanvas.clipRect(this.jIz);
-    this.gT.reset();
-    this.jJi.setAlpha(this.alpha);
-    a(paramCanvas, this.gT, this.jJi, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+    paramCanvas.clipRect(this.mzE);
+    this.aHZ.reset();
+    this.mAn.setAlpha(this.alpha);
+    a(paramCanvas, this.aHZ, this.mAn, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
     paramCanvas.restore();
   }
   
   protected abstract void a(Canvas paramCanvas, Matrix paramMatrix, Paint paramPaint, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
   
-  public final float bkP()
+  public final float buD()
   {
-    return this.jJk;
+    return this.mAp;
   }
   
-  public final float bkQ()
+  public final float buE()
   {
-    return this.jJl;
+    return this.mAq;
   }
   
   public abstract int getHeight();
   
   public abstract int getWidth();
   
-  public final void k(Rect paramRect)
+  public final void p(Rect paramRect)
   {
-    this.jIz = paramRect;
-    this.jJo = a(this.jII, this.jJm, this.jIE);
-    this.jJp = a(this.jIK, this.jJn, this.jIG);
-    this.jJs = a(this.jIS, this.jJr, this.jIQ);
-    if (this.jJt == 0.0F) {
-      if (this.jIU < 0L) {
+    this.mzE = paramRect;
+    this.mAt = a(this.mzN, this.mAr, this.mzJ);
+    this.mAu = a(this.mzP, this.mAs, this.mzL);
+    this.mAx = a(this.mzX, this.mAw, this.mzV);
+    if (this.mAy == 0.0F) {
+      if (this.mzZ < 0L) {
         break label199;
       }
     }
     label199:
-    for (float f = (float)this.jIU;; f = 9.223372E+018F)
+    for (float f = (float)this.mzZ;; f = 9.223372E+018F)
     {
-      this.jJt = f;
-      this.jJt = Math.min((float)a(this.jJk, this.jJm, this.jIE, this.jJo, this.jII, paramRect.left - getWidth(), paramRect.right), this.jJt);
-      this.jJt = Math.min((float)a(this.jJl, this.jJn, this.jIG, this.jJp, this.jIK, paramRect.top - getHeight(), paramRect.bottom), this.jJt);
-      this.jJi.setAlpha(this.alpha);
+      this.mAy = f;
+      this.mAy = Math.min((float)a(this.mAp, this.mAr, this.mzJ, this.mAt, this.mzN, paramRect.left - getWidth(), paramRect.right), this.mAy);
+      this.mAy = Math.min((float)a(this.mAq, this.mAs, this.mzL, this.mAu, this.mzP, paramRect.top - getHeight(), paramRect.bottom), this.mAy);
+      this.mAn.setAlpha(this.alpha);
       return;
     }
   }
   
   public void reset()
   {
-    this.jJj = 0L;
-    this.jJl = 0.0F;
-    this.jJk = 0.0F;
-    this.jJn = 0.0F;
-    this.jJm = 0.0F;
-    this.jIG = 0.0F;
-    this.jIE = 0.0F;
-    this.jIK = null;
-    this.jII = null;
-    this.jJp = null;
-    this.jJo = null;
-    this.jJq = 0.0F;
-    this.jJr = 0.0F;
-    this.jIQ = 0.0F;
-    this.jIS = null;
-    this.jJs = null;
-    this.jIU = 0L;
-    this.jJt = 0.0F;
-    this.jJu = 0.0F;
-    this.jIy = null;
-    this.jJw = 0.0F;
-    this.jJv = 0.0F;
-    this.jJx = 0.0F;
+    this.mAo = 0L;
+    this.mAq = 0.0F;
+    this.mAp = 0.0F;
+    this.mAs = 0.0F;
+    this.mAr = 0.0F;
+    this.mzL = 0.0F;
+    this.mzJ = 0.0F;
+    this.mzP = null;
+    this.mzN = null;
+    this.mAu = null;
+    this.mAt = null;
+    this.mAv = 0.0F;
+    this.mAw = 0.0F;
+    this.mzV = 0.0F;
+    this.mzX = null;
+    this.mAx = null;
+    this.mzZ = 0L;
+    this.mAy = 0.0F;
+    this.mAz = 0.0F;
+    this.mzD = null;
+    this.mAB = 0.0F;
+    this.mAA = 0.0F;
+    this.mAC = 0.0F;
     this.alpha = 255;
-    this.jJy = false;
+    this.mAD = false;
     this.terminated = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.particles.a.b
  * JD-Core Version:    0.7.0.1
  */

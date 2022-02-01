@@ -19,16 +19,16 @@ public class MultiTalkMainUI$ScreenActionReceiver
     if ((paramContext != null) && (paramContext.equals("android.intent.action.SCREEN_OFF")))
     {
       Log.i("MicroMsg.MT.MultiTalkMainUI", "receive action screen off");
-      paramContext = this.zPW;
-      paramContext.zPV.removeCallbacksAndMessages(null);
-      paramContext.zPV.sendEmptyMessage(0);
+      paramContext = this.Fvz;
+      paramContext.Fvy.removeCallbacksAndMessages(null);
+      paramContext.Fvy.sendEmptyMessage(0);
     }
     AppMethodBeat.o(114662);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.MultiTalkMainUI.ScreenActionReceiver
  * JD-Core Version:    0.7.0.1
  */

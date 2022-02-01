@@ -2,25 +2,27 @@ package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.ad.e;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.config.l;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.r.f;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.s;
-import com.tencent.mm.protocal.protobuf.cdz;
-import com.tencent.mm.protocal.protobuf.ceu;
-import com.tencent.mm.protocal.protobuf.cev;
-import com.tencent.mm.protocal.protobuf.fdg;
+import com.tencent.mm.plugin.appbrand.t;
+import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.protocal.protobuf.cmt;
+import com.tencent.mm.protocal.protobuf.cno;
+import com.tencent.mm.protocal.protobuf.cnp;
+import com.tencent.mm.protocal.protobuf.foh;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
@@ -28,121 +30,127 @@ import java.util.Map;
 import org.json.JSONObject;
 
 public final class j
-  extends i
+  extends c<g>
 {
   public static final int CTRL_INDEX = 874;
   public static final String NAME = "adOperateWXData";
   
-  public final void a(final com.tencent.mm.plugin.appbrand.d paramd, JSONObject paramJSONObject, final int paramInt, e parame)
+  private void a(final g paramg, JSONObject paramJSONObject, final int paramInt, final com.tencent.mm.plugin.appbrand.m.o paramo)
   {
-    AppMethodBeat.i(226688);
-    parame = paramd.getAppId();
-    if (parame == null)
+    AppMethodBeat.i(272589);
+    boolean bool = paramJSONObject.optBoolean("keepAlive", false);
+    Object localObject = paramg.getAppId();
+    if (localObject == null)
     {
       Log.e("MicroMsg.AppBrand.JsApiAdOperateWXData[AppBrandSplashAd]", "appId is null");
-      paramd.i(paramInt, h("fail:internal error", null));
-      AppMethodBeat.o(226688);
+      paramg.a(paramInt, h("fail:internal error", null), paramo);
+      AppMethodBeat.o(272589);
       return;
     }
-    com.tencent.mm.plugin.appbrand.ad.e.M(parame, System.currentTimeMillis());
+    e.M((String)localObject, System.currentTimeMillis());
     for (;;)
     {
-      ceu localceu;
+      cno localcno;
       try
       {
         paramJSONObject = paramJSONObject.getString("data");
-        parame = f.id(this.iLM).aXF();
-        localceu = (ceu)parame.iLK.iLR;
-        localceu.jfi = paramd.getAppId();
+        localObject = f.iX(bool).bgN();
+        localcno = (cno)d.b.b(((com.tencent.mm.an.d)localObject).lBR);
+        localcno.lVG = paramg.getAppId();
         if (paramJSONObject.getBytes() == null)
         {
           paramJSONObject = new byte[0];
-          localceu.oTm = new b(paramJSONObject);
-          paramJSONObject = paramd.getRuntime();
+          localcno.rVk = new b(paramJSONObject);
+          paramJSONObject = paramg.getRuntime();
           if (paramJSONObject != null)
           {
-            paramJSONObject = paramJSONObject.OT();
+            paramJSONObject = paramJSONObject.Sp();
             if (paramJSONObject != null) {
-              localceu.MjZ = paramJSONObject.leE.kNW;
+              localcno.TuP = paramJSONObject.nYR.nHY;
             }
           }
-          if (!(paramd instanceof s)) {
-            break label317;
+          if (!(paramg instanceof v)) {
+            break label330;
           }
-          if (localceu.Mka == null) {
-            localceu.Mka = new fdg();
+          if (localcno.TuQ == null) {
+            localcno.TuQ = new foh();
           }
-          localceu.Mka.NyS = 1;
-          if (((paramd.getRuntime() instanceof q)) && (((q)paramd.getRuntime()).ON().cyA != null))
+          localcno.TuQ.UMw = 1;
+          if (((paramg.getRuntime() instanceof t)) && (((t)paramg.getRuntime()).Sk().cxf != null))
           {
-            if (localceu.Mka == null) {
-              localceu.Mka = new fdg();
+            if (localcno.TuQ == null) {
+              localcno.TuQ = new foh();
             }
-            localceu.Mka.scene = ((q)paramd.getRuntime()).ON().cyA.scene;
+            localcno.TuQ.scene = ((t)paramg.getRuntime()).Sk().cxf.scene;
           }
-          IPCRunCgi.a(parame, new IPCRunCgi.a()
+          IPCRunCgi.a((com.tencent.mm.an.d)localObject, new IPCRunCgi.a()
           {
-            public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.d paramAnonymousd)
+            public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.an.d paramAnonymousd)
             {
-              AppMethodBeat.i(226687);
-              if ((!paramd.bsV()) && (!paramd.isRunning()))
+              AppMethodBeat.i(272722);
+              if (!paramg.a(j.this.getName(), paramo))
               {
                 Log.e("MicroMsg.AppBrand.JsApiAdOperateWXData[AppBrandSplashAd]", "cgi callback, callbackId:%s, service not running or preloaded", new Object[] { Integer.valueOf(paramInt) });
-                AppMethodBeat.o(226687);
+                AppMethodBeat.o(272722);
                 return;
               }
-              if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (!(paramAnonymousd.iLL.iLR instanceof cev)))
+              if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (!(d.c.b(paramAnonymousd.lBS) instanceof cnp)))
               {
-                Log.e("MicroMsg.AppBrand.JsApiAdOperateWXData[AppBrandSplashAd]", "cgi fail, errType:%s, errCode:%s, errMsg:%s, response:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, paramAnonymousd.iLL.iLR });
-                paramd.i(paramInt, j.this.h("fail invalid response", null));
-                AppMethodBeat.o(226687);
+                Log.e("MicroMsg.AppBrand.JsApiAdOperateWXData[AppBrandSplashAd]", "cgi fail, errType:%s, errCode:%s, errMsg:%s, response:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, d.c.b(paramAnonymousd.lBS) });
+                paramg.a(paramInt, j.this.h("fail invalid response", null), paramo);
+                AppMethodBeat.o(272722);
                 return;
               }
-              paramAnonymousd = (cev)paramAnonymousd.iLL.iLR;
-              if (paramAnonymousd.Mkb.dIZ == 0)
+              paramAnonymousd = (cnp)d.c.b(paramAnonymousd.lBS);
+              if (paramAnonymousd.TuR.fBP == 0)
               {
-                paramAnonymousString = paramAnonymousd.oTm.yO();
+                paramAnonymousString = paramAnonymousd.rVk.Ap();
                 if (Util.isNullOrNil(paramAnonymousString))
                 {
                   Log.e("MicroMsg.AppBrand.JsApiAdOperateWXData[AppBrandSplashAd]", "cgi success, data is null");
-                  paramd.i(paramInt, j.this.h("fail invalid response", null));
-                  AppMethodBeat.o(226687);
+                  paramg.a(paramInt, j.this.h("fail invalid response", null), paramo);
+                  AppMethodBeat.o(272722);
                   return;
                 }
-                com.tencent.mm.plugin.appbrand.ad.e.N(paramd.getAppId(), System.currentTimeMillis());
-                Log.i("MicroMsg.AppBrand.JsApiAdOperateWXData[AppBrandSplashAd]", "cgi success, callbackId:%s, callback data:%s", new Object[] { Integer.valueOf(paramInt), paramAnonymousd.oTm });
+                e.N(paramg.getAppId(), System.currentTimeMillis());
+                Log.i("MicroMsg.AppBrand.JsApiAdOperateWXData[AppBrandSplashAd]", "cgi success, callbackId:%s, callback data:%s", new Object[] { Integer.valueOf(paramInt), paramAnonymousd.rVk.Ap() });
                 paramAnonymousd = new HashMap();
                 paramAnonymousd.put("data", paramAnonymousString);
-                paramd.i(paramInt, j.this.n("ok", paramAnonymousd));
-                AppMethodBeat.o(226687);
+                paramg.a(paramInt, j.this.m("ok", paramAnonymousd), paramo);
+                AppMethodBeat.o(272722);
                 return;
               }
-              paramd.i(paramInt, j.this.h("fail:errorCode:" + paramAnonymousd.Mkb.dIZ + ",errorMsg:" + paramAnonymousd.Mkb.dJa, null));
-              AppMethodBeat.o(226687);
+              paramg.a(paramInt, j.this.h("fail:errorCode:" + paramAnonymousd.TuR.fBP + ",errorMsg:" + paramAnonymousd.TuR.errmsg, null), paramo);
+              AppMethodBeat.o(272722);
             }
           });
-          AppMethodBeat.o(226688);
+          AppMethodBeat.o(272589);
           return;
         }
       }
       catch (Exception paramJSONObject)
       {
         Log.e("MicroMsg.AppBrand.JsApiAdOperateWXData[AppBrandSplashAd]", "data exception %s", new Object[] { paramJSONObject.getMessage() });
-        paramd.i(paramInt, h("fail:invalid data", null));
-        AppMethodBeat.o(226688);
+        paramg.a(paramInt, h("fail:invalid data", null), paramo);
+        AppMethodBeat.o(272589);
         return;
       }
       paramJSONObject = paramJSONObject.getBytes();
       continue;
-      label317:
-      if ((paramd instanceof ac))
+      label330:
+      if ((paramg instanceof ad))
       {
-        if (localceu.Mka == null) {
-          localceu.Mka = new fdg();
+        if (localcno.TuQ == null) {
+          localcno.TuQ = new foh();
         }
-        localceu.Mka.NyS = 2;
+        localcno.TuQ.UMw = 2;
       }
     }
+  }
+  
+  public final boolean bPG()
+  {
+    return true;
   }
 }
 

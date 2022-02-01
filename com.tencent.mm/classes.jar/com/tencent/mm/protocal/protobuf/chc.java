@@ -1,60 +1,74 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
-public class chc
-  extends com.tencent.mm.bw.a
+public final class chc
+  extends dyl
 {
-  public String Mmm;
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(223888);
+    AppMethodBeat.i(123596);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Mmm != null) {
-        paramVarArgs.e(1, this.Mmm);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(223888);
+      AppMethodBeat.o(123596);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Mmm == null) {
-        break label213;
+      if (this.BaseRequest == null) {
+        break label288;
       }
     }
-    label213:
-    for (paramInt = g.a.a.b.b.a.f(1, this.Mmm) + 0;; paramInt = 0)
+    label288:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(223888);
+      AppMethodBeat.o(123596);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(223888);
+        AppMethodBeat.o(123596);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         chc localchc = (chc)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(223888);
+          AppMethodBeat.o(123596);
           return -1;
         }
-        localchc.Mmm = locala.UbS.readString();
-        AppMethodBeat.o(223888);
+        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          jg localjg = new jg();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localjg.parseFrom((byte[])localObject);
+          }
+          localchc.BaseRequest = localjg;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(123596);
         return 0;
       }
-      AppMethodBeat.o(223888);
+      AppMethodBeat.o(123596);
       return -1;
     }
   }

@@ -8,7 +8,7 @@ import java.util.List;
 public final class n
   extends a
 {
-  public final List<Integer> fWe()
+  public final List<Integer> gON()
   {
     AppMethodBeat.i(30096);
     ArrayList localArrayList = new ArrayList();
@@ -18,7 +18,7 @@ public final class n
     return localArrayList;
   }
   
-  protected final byte[] s(int paramInt, byte[] paramArrayOfByte)
+  protected final byte[] t(int paramInt, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(30097);
     switch (paramInt)
@@ -29,18 +29,18 @@ public final class n
       AppMethodBeat.o(30097);
       return null;
     case 11030: 
-      paramArrayOfByte = h.aWp("wechatvoicesilk");
+      paramArrayOfByte = h.bhW("wechatvoicesilk");
       AppMethodBeat.o(30097);
       return paramArrayOfByte;
     }
-    paramArrayOfByte = h.aWp("stlport_shared");
+    paramArrayOfByte = h.bhW("stlport_shared");
     AppMethodBeat.o(30097);
     return paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e.n
  * JD-Core Version:    0.7.0.1
  */

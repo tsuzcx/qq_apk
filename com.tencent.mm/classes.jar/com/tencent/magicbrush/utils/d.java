@@ -20,7 +20,7 @@ public abstract class d<R>
       }
       for (;;)
       {
-        d.this.wait = h.ticksToNow(d.this.begin);
+        d.this.wait = i.ticksToNow(d.this.begin);
         AppMethodBeat.o(161137);
         return;
         d.this.setResultFinish(d.this.run());
@@ -57,7 +57,7 @@ public abstract class d<R>
     //   25: anewarray 5	java/lang/Object
     //   28: invokestatic 62	com/tencent/magicbrush/a/c$c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   31: aload_0
-    //   32: invokestatic 68	com/tencent/magicbrush/utils/h:currentTicks	()J
+    //   32: invokestatic 68	com/tencent/magicbrush/utils/i:currentTicks	()J
     //   35: putfield 70	com/tencent/magicbrush/utils/d:begin	J
     //   38: aload_0
     //   39: getfield 26	com/tencent/magicbrush/utils/d:lock	Ljava/lang/Object;
@@ -83,7 +83,7 @@ public abstract class d<R>
     //   82: monitorexit
     //   83: aload_0
     //   84: getfield 70	com/tencent/magicbrush/utils/d:begin	J
-    //   87: invokestatic 84	com/tencent/magicbrush/utils/h:ticksToNow	(J)J
+    //   87: invokestatic 84	com/tencent/magicbrush/utils/i:ticksToNow	(J)J
     //   90: lstore_2
     //   91: ldc 45
     //   93: ldc 86
@@ -143,9 +143,8 @@ public abstract class d<R>
     // Exception table:
     //   from	to	target	type
     //   47	83	156	finally
-    //   157	160	156	finally
     //   38	47	162	java/lang/InterruptedException
-    //   160	162	162	java/lang/InterruptedException
+    //   157	162	162	java/lang/InterruptedException
   }
   
   protected abstract R run();
@@ -164,7 +163,7 @@ public abstract class d<R>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.magicbrush.utils.d
  * JD-Core Version:    0.7.0.1
  */

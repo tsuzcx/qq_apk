@@ -1,74 +1,84 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cwv;
-import com.tencent.mm.protocal.protobuf.cww;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.protocal.protobuf.dmu;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.ui.widget.a.d.a;
+import com.tencent.mm.wallet_core.ui.g;
 
 public final class ai
-  extends q
-  implements m
 {
-  private cwv HuU;
-  public cww HuV;
-  private i callback;
-  private d hJu;
-  
-  public ai(String paramString1, String paramString2)
+  public static void a(final Context paramContext, dmu paramdmu)
   {
-    AppMethodBeat.i(68553);
-    d.a locala = new d.a();
-    locala.iLN = new cwv();
-    locala.iLO = new cww();
-    locala.funcId = 2996;
-    locala.uri = "/cgi-bin/mmpay-bin/openlqbaccount";
-    locala.iLP = 0;
-    locala.respCmdId = 0;
-    this.hJu = locala.aXF();
-    this.HuU = ((cwv)this.hJu.iLK.iLR);
-    this.HuU.KPu = paramString1;
-    this.HuU.KUp = paramString2;
-    this.HuU.HuS = ag.fNb();
-    Log.i("MicroMsg.NetSceneOpenLqbAccount", "NetSceneOpenLqbAccount, eCardType: %s, extraData: %s", new Object[] { paramString1, paramString2 });
-    AppMethodBeat.o(68553);
-  }
-  
-  public final int doScene(g paramg, i parami)
-  {
-    AppMethodBeat.i(68554);
-    this.callback = parami;
-    int i = dispatch(paramg, this.hJu, this);
-    AppMethodBeat.o(68554);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 2996;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(68555);
-    Log.i("MicroMsg.NetSceneOpenLqbAccount", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.HuV = ((cww)((d)params).iLL.iLR);
-    Log.i("MicroMsg.NetSceneOpenLqbAccount", "onGYNetEnd, retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.HuV.pTZ), this.HuV.pUa });
-    if (this.HuV.pTZ == 0) {
-      ag.aUH(this.HuV.HuS);
+    AppMethodBeat.i(68552);
+    if (paramdmu == null)
+    {
+      AppMethodBeat.o(68552);
+      return;
     }
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    d.a locala = new d.a(paramContext);
+    locala.bBd(paramdmu.wording);
+    if (!Util.isNullOrNil(paramdmu.TTV)) {
+      locala.bBk(paramdmu.TTV);
     }
-    AppMethodBeat.o(68555);
+    if (!Util.isNullOrNil(paramdmu.Oxw)) {
+      locala.bBj(paramdmu.Oxw);
+    }
+    locala.HG(false);
+    locala.a(true, new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(68550);
+        Log.i("MicroMsg.LqtUtil", "click item, type: %s", new Object[] { Integer.valueOf(this.OmG.type) });
+        if (this.OmG.type != 1)
+        {
+          if (this.OmG.type == 2)
+          {
+            g.p(paramContext, this.OmG.ODt, true);
+            AppMethodBeat.o(68550);
+            return;
+          }
+          if (this.OmG.type == 3) {
+            g.v(this.OmG.Ooe, this.OmG.Oof, 0, 1061);
+          }
+        }
+        AppMethodBeat.o(68550);
+      }
+    });
+    locala.icu().show();
+    AppMethodBeat.o(68552);
+  }
+  
+  public static String amb(int paramInt)
+  {
+    AppMethodBeat.i(271635);
+    Context localContext = MMApplicationContext.getContext();
+    String str = "";
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(271635);
+      return str;
+      str = localContext.getString(a.i.wallet_lqt_plan_salary_checkpwd_add_text);
+      continue;
+      str = localContext.getString(a.i.wallet_lqt_plan_checkpwd_open_text);
+      continue;
+      str = localContext.getString(a.i.wallet_lqt_plan_checkpwd_stop_text);
+      continue;
+      str = localContext.getString(a.i.wallet_lqt_plan_checkpwd_delete_text);
+      continue;
+      str = localContext.getString(a.i.wallet_lqt_plan_checkpwd_modify_text);
+    }
   }
 }
 

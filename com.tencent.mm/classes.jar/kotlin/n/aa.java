@@ -4,21 +4,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/text/SystemProperties;", "", "()V", "LINE_SEPARATOR", "", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/text/SystemProperties;", "", "()V", "LINE_SEPARATOR", "", "kotlin-stdlib"})
 final class aa
 {
-  public static final String TTr;
-  public static final aa TTs;
+  public static final String abvU;
+  public static final aa abvV;
   
   static
   {
     AppMethodBeat.i(129359);
-    TTs = new aa();
+    abvV = new aa();
     String str = System.getProperty("line.separator");
     if (str == null) {
-      p.hyc();
+      p.iCn();
     }
-    TTr = str;
+    abvU = str;
     AppMethodBeat.o(129359);
   }
 }

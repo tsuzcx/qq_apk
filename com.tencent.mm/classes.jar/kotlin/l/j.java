@@ -1,41 +1,25 @@
 package kotlin.l;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.g.a.m;
 import kotlin.l;
+import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/reflect/KParameter;", "Lkotlin/reflect/KAnnotatedElement;", "index", "", "getIndex", "()I", "isOptional", "", "()Z", "isVararg", "isVararg$annotations", "()V", "kind", "Lkotlin/reflect/KParameter$Kind;", "getKind", "()Lkotlin/reflect/KParameter$Kind;", "name", "", "getName", "()Ljava/lang/String;", "type", "Lkotlin/reflect/KType;", "getType", "()Lkotlin/reflect/KType;", "Kind", "kotlin-stdlib"})
-public abstract interface j
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/reflect/KMutableProperty1;", "T", "R", "Lkotlin/reflect/KProperty1;", "Lkotlin/reflect/KMutableProperty;", "setter", "Lkotlin/reflect/KMutableProperty1$Setter;", "getSetter", "()Lkotlin/reflect/KMutableProperty1$Setter;", "set", "", "receiver", "value", "(Ljava/lang/Object;Ljava/lang/Object;)V", "Setter", "kotlin-stdlib"})
+public abstract interface j<T, R>
+  extends f<R>, r<T, R>
 {
-  public abstract boolean FI();
+  public abstract a<T, R> iCq();
   
-  public abstract String getName();
+  public abstract void set(T paramT, R paramR);
   
-  public abstract o hyl();
-  
-  public abstract a hym();
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/reflect/KParameter$Kind;", "", "(Ljava/lang/String;I)V", "INSTANCE", "EXTENSION_RECEIVER", "VALUE", "kotlin-stdlib"})
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(129544);
-      a locala1 = new a("INSTANCE", 0);
-      SZi = locala1;
-      a locala2 = new a("EXTENSION_RECEIVER", 1);
-      SZj = locala2;
-      a locala3 = new a("VALUE", 2);
-      SZk = locala3;
-      SZl = new a[] { locala1, locala2, locala3 };
-      AppMethodBeat.o(129544);
-    }
-    
-    private a() {}
-  }
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/reflect/KMutableProperty1$Setter;", "T", "R", "Lkotlin/reflect/KMutableProperty$Setter;", "Lkotlin/Function2;", "", "kotlin-stdlib"})
+  public static abstract interface a<T, R>
+    extends m<T, R, x>, g<R>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.j
  * JD-Core Version:    0.7.0.1
  */

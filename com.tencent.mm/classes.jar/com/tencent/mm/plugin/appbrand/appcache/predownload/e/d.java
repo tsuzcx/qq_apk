@@ -11,26 +11,26 @@ import java.util.List;
 public final class d
   extends com.tencent.mm.plugin.appbrand.ab.c<c>
 {
-  public static final String[] iBh;
-  private final ISQLiteDatabase kLX;
+  public static final String[] lqL;
+  private final ISQLiteDatabase nFQ;
   
   static
   {
     AppMethodBeat.i(44439);
-    iBh = new String[] { MAutoStorage.getCreateSQLs(c.iBg, "PredownloadCmdGetCodePersistentInfo2"), "DROP TABLE IF EXISTS PredownloadCmdGetCodePersistentInfo" };
+    lqL = new String[] { MAutoStorage.getCreateSQLs(c.lqK, "PredownloadCmdGetCodePersistentInfo2"), "DROP TABLE IF EXISTS PredownloadCmdGetCodePersistentInfo" };
     AppMethodBeat.o(44439);
   }
   
   public d(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, c.iBg, "PredownloadCmdGetCodePersistentInfo2", c.INDEX_CREATE);
-    this.kLX = paramISQLiteDatabase;
+    super(paramISQLiteDatabase, c.lqK, "PredownloadCmdGetCodePersistentInfo2", c.INDEX_CREATE);
+    this.nFQ = paramISQLiteDatabase;
   }
   
-  public final List<c> c(String paramString, String... paramVarArgs)
+  public final List<c> b(String paramString, String... paramVarArgs)
   {
     AppMethodBeat.i(44438);
-    paramString = this.kLX.query("PredownloadCmdGetCodePersistentInfo2", null, paramString, paramVarArgs, null, null, null);
+    paramString = this.nFQ.query("PredownloadCmdGetCodePersistentInfo2", null, paramString, paramVarArgs, null, null, null);
     if ((paramString == null) || (paramString.isClosed()))
     {
       paramString = Collections.emptyList();
@@ -53,7 +53,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.predownload.e.d
  * JD-Core Version:    0.7.0.1
  */

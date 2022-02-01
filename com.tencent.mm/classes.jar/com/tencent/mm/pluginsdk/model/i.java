@@ -1,133 +1,100 @@
 package com.tencent.mm.pluginsdk.model;
 
-import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cz;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.fav.a.ad;
-import com.tencent.mm.protocal.protobuf.aml;
-import com.tencent.mm.protocal.protobuf.amo;
-import com.tencent.mm.protocal.protobuf.anb;
-import com.tencent.mm.protocal.protobuf.anh;
-import com.tencent.mm.protocal.protobuf.anq;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.LinkedList;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.modelstat.a.a;
+import com.tencent.mm.plugin.fav.PluginFav;
+import com.tencent.mm.plugin.fav.a.ag;
+import com.tencent.mm.plugin.fav.a.g;
+import com.tencent.mm.plugin.fav.a.y;
+import com.tencent.mm.plugin.report.f;
+import com.tencent.mm.sdk.platformtools.Log;
 
-public final class i
-  implements ad
+public class i
+  implements a
 {
-  public final boolean a(cz paramcz, int paramInt, String paramString)
+  public final void callback(Bundle paramBundle)
   {
-    AppMethodBeat.i(30966);
-    boolean bool = h.a(paramcz, paramInt, paramString);
-    AppMethodBeat.o(30966);
-    return bool;
-  }
-  
-  public final boolean a(cz paramcz, int paramInt, String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(232144);
-    boolean bool = h.a(paramcz, paramInt, paramString1, paramString2, paramString3, true);
-    AppMethodBeat.o(232144);
-    return bool;
-  }
-  
-  public final boolean a(cz paramcz, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11)
-  {
-    AppMethodBeat.i(30964);
-    anb localanb = new anb();
-    anh localanh = new anh();
-    aml localaml = new aml();
-    localaml.ajd(5);
-    localaml.bgu(paramString7);
-    localaml.bgl(paramString3);
-    localaml.ajc(paramInt);
-    localaml.bgf(paramString1);
-    localaml.bgg(paramString2);
-    localaml.bgD(paramString11);
-    paramString2 = new amo();
-    paramString2.izb = paramString1;
-    paramString2.LxJ = paramInt;
-    paramString2.iyZ = paramString3;
-    paramString2.izd = paramString5;
-    paramString2.izc = paramString4;
-    paramString2.ize = paramString6;
-    paramString2.izf = paramString9;
-    paramString2.izg = paramString10;
-    localaml.a(paramString2);
-    localanh.bhf(paramString8);
-    localanh.bhg(z.aTY());
-    localanh.ajm(0);
-    localanh.MA(Util.nowMilliSecond());
-    localanb.a(localanh);
-    localanb.ppH.add(localaml);
-    paramcz.dFZ.title = localaml.title;
-    paramcz.dFZ.desc = localaml.title;
-    paramcz.dFZ.dGb = localanb;
-    paramcz.dFZ.type = 4;
-    AppMethodBeat.o(30964);
-    return true;
-  }
-  
-  public final boolean a(cz paramcz, long paramLong)
-  {
-    AppMethodBeat.i(30967);
-    boolean bool = h.a(paramcz, paramLong);
-    AppMethodBeat.o(30967);
-    return bool;
-  }
-  
-  public final boolean a(cz paramcz, Intent paramIntent)
-  {
-    AppMethodBeat.i(30965);
-    boolean bool = h.a(paramcz, paramIntent);
-    AppMethodBeat.o(30965);
-    return bool;
-  }
-  
-  public final boolean a(cz paramcz, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
-  {
-    AppMethodBeat.i(232143);
-    boolean bool = h.a(paramcz, 6, paramString1, paramString2, paramInt, paramString3, paramString4, true);
-    AppMethodBeat.o(232143);
-    return bool;
-  }
-  
-  public final boolean a(cz paramcz, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
-  {
-    AppMethodBeat.i(30968);
-    String str = String.format("%s#%s", new Object[] { paramString1, "" });
-    anb localanb = new anb();
-    anh localanh = new anh();
-    localanh.bhf(paramString2);
-    localanh.ajm(2);
-    localanh.MA(System.currentTimeMillis());
-    localanh.bhk(String.valueOf(paramString1));
-    localanh.bhh(str);
-    paramString1 = new aml();
-    paramString1.bgx(str);
-    paramString1.At(true);
-    paramString1.ajd(5);
-    paramString1.bgf(paramString3);
-    paramString1.bgg(paramString4);
-    paramString1.bgE(paramString5);
-    paramString1.As(true);
-    localanb.ppH.add(paramString1);
-    paramString1 = new anq();
-    paramString1.bhv(paramString6);
-    paramString1.bhu(paramString7);
-    localanb.b(paramString1);
-    localanb.a(localanh);
-    paramcz.dFZ.dGb = localanb;
-    paramcz.dFZ.desc = paramString3;
-    paramcz.dFZ.type = 5;
-    AppMethodBeat.o(30968);
-    return true;
+    AppMethodBeat.i(30939);
+    int k = paramBundle.getInt("mm_rpt_fav_id", 0);
+    int m = paramBundle.getInt("key_detail_fav_scene", 0);
+    int n = paramBundle.getInt("key_detail_fav_sub_scene", 0);
+    int i1 = paramBundle.getInt("key_detail_fav_index", 0);
+    long l2 = paramBundle.getLong("key_activity_browse_time", -1L);
+    int i;
+    int i2;
+    int i3;
+    if (paramBundle.getBoolean("mm_scroll_bottom"))
+    {
+      i = 1;
+      i2 = paramBundle.getInt("mm_send_friend_count", 0);
+      i3 = paramBundle.getInt("mm_share_sns_count", 0);
+      if (!paramBundle.getBoolean("mm_del_fav", false)) {
+        break label258;
+      }
+    }
+    int i4;
+    String str1;
+    String str2;
+    g localg;
+    label258:
+    for (int j = 1;; j = 0)
+    {
+      i4 = paramBundle.getInt("mm_edit_fav_count", 0);
+      str1 = paramBundle.getString("key_detail_fav_query", "");
+      str2 = paramBundle.getString("key_detail_fav_sessionid", "");
+      paramBundle = paramBundle.getString("key_detail_fav_tags", "");
+      Log.d("MicroMsg.FavWebRptCallback", "FavWebRptCallback uiBrowseTime[%d] isScrollBottom[%b] sendToFriendCount[%d] shareSnsCount[%d]  isDelFav[%b] clickEditFavTagCount[%d] favId[%s]", new Object[] { Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(j), Integer.valueOf(i4), Integer.valueOf(k) });
+      localg = ((ag)h.ag(ag.class)).getFavItemInfoStorage().Kn(k);
+      if (localg != null) {
+        break label263;
+      }
+      Log.w("MicroMsg.FavWebRptCallback", "fav web rpt but favitem info is null favid[%d]", new Object[] { Integer.valueOf(k) });
+      AppMethodBeat.o(30939);
+      return;
+      i = 0;
+      break;
+    }
+    label263:
+    if (localg.field_sourceCreateTime != 0L) {}
+    for (long l1 = localg.field_sourceCreateTime / 1000L;; l1 = localg.field_updateTime / 1000L)
+    {
+      StringBuffer localStringBuffer = new StringBuffer();
+      localStringBuffer.append(m).append(",");
+      localStringBuffer.append(i1).append(",");
+      localStringBuffer.append(k).append(",");
+      localStringBuffer.append(localg.field_type).append(",");
+      localStringBuffer.append("0,");
+      localStringBuffer.append(localg.field_sourceType).append(",");
+      localStringBuffer.append(l1).append(",");
+      localStringBuffer.append(l2).append(",");
+      localStringBuffer.append("0,");
+      localStringBuffer.append("0,");
+      localStringBuffer.append("0,");
+      localStringBuffer.append(i2).append(",");
+      localStringBuffer.append(i3).append(",");
+      localStringBuffer.append("0,");
+      localStringBuffer.append(i4).append(",");
+      localStringBuffer.append(j).append(",");
+      localStringBuffer.append(i).append(",");
+      localStringBuffer.append(n).append(",");
+      localStringBuffer.append(str2).append(",");
+      i = ((PluginFav)h.ag(PluginFav.class)).getFavItemInfoStorage().LH(k) + 1;
+      localStringBuffer.append(i).append(",");
+      localStringBuffer.append(str1).append(",");
+      localStringBuffer.append(paramBundle);
+      Log.d("MicroMsg.FavWebRptCallback", String.format("lxl, 15098, sid:%s, sourcepos:%s, query:%s, tag:%s", new Object[] { str2, Integer.valueOf(i), str1, paramBundle }));
+      Log.v("MicroMsg.FavWebRptCallback", "FavWebRptCallback rpt id[%d] [%s]", new Object[] { Integer.valueOf(15098), localStringBuffer.toString() });
+      f.Iyx.kvStat(15098, localStringBuffer.toString());
+      AppMethodBeat.o(30939);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.i
  * JD-Core Version:    0.7.0.1
  */

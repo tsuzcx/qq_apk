@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.groupsolitaire;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.ag.w;
-import com.tencent.mm.ag.w.a;
-import com.tencent.mm.g.a.ns;
-import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.aj.w;
+import com.tencent.mm.aj.w.a;
+import com.tencent.mm.f.a.op;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.groupsolitaire.b.d;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -21,14 +21,14 @@ import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class PluginGroupSolitaire
-  extends f
+  extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.c, a
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private IListener<ns> yeU;
-  private com.tencent.mm.plugin.groupsolitaire.b.c yeV;
-  private com.tencent.mm.plugin.groupsolitaire.c.c yeW;
-  private d yeX;
+  private IListener<op> Dob;
+  private com.tencent.mm.plugin.groupsolitaire.b.c Doc;
+  private com.tencent.mm.plugin.groupsolitaire.c.c Dod;
+  private d Doe;
   
   static
   {
@@ -48,10 +48,10 @@ public class PluginGroupSolitaire
   public PluginGroupSolitaire()
   {
     AppMethodBeat.i(110298);
-    this.yeU = new IListener() {};
-    this.yeV = null;
-    this.yeW = null;
-    this.yeX = null;
+    this.Dob = new PluginGroupSolitaire.2(this);
+    this.Doc = null;
+    this.Dod = null;
+    this.Doe = null;
     AppMethodBeat.o(110298);
   }
   
@@ -69,7 +69,7 @@ public class PluginGroupSolitaire
     if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE)) {}
     for (int i = 1;; i = 0)
     {
-      if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.shH, i) == 1)
+      if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vRE, i) == 1)
       {
         AppMethodBeat.o(110302);
         return true;
@@ -85,7 +85,7 @@ public class PluginGroupSolitaire
     if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE)) {}
     for (int i = 1;; i = 0)
     {
-      if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.shI, i) == 1)
+      if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vRF, i) == 1)
       {
         AppMethodBeat.o(110303);
         return true;
@@ -100,11 +100,11 @@ public class PluginGroupSolitaire
     return baseDBFactories;
   }
   
-  public void execute(com.tencent.mm.kernel.b.g paramg)
+  public void execute(g paramg)
   {
     AppMethodBeat.i(110301);
-    if (paramg.aBb()) {
-      com.tencent.mm.kernel.g.b(j.class, new com.tencent.mm.plugin.groupsolitaire.a.a());
+    if (paramg.aIE()) {
+      h.b(l.class, new com.tencent.mm.plugin.groupsolitaire.a.a());
     }
     AppMethodBeat.o(110301);
   }
@@ -112,11 +112,11 @@ public class PluginGroupSolitaire
   public com.tencent.mm.plugin.groupsolitaire.b.c getGroupSolitatireManager()
   {
     AppMethodBeat.i(110304);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (this.yeV == null) {
-      this.yeV = new com.tencent.mm.plugin.groupsolitaire.b.c();
+    h.aHE().aGH();
+    if (this.Doc == null) {
+      this.Doc = new com.tencent.mm.plugin.groupsolitaire.b.c();
     }
-    com.tencent.mm.plugin.groupsolitaire.b.c localc = this.yeV;
+    com.tencent.mm.plugin.groupsolitaire.b.c localc = this.Doc;
     AppMethodBeat.o(110304);
     return localc;
   }
@@ -124,11 +124,11 @@ public class PluginGroupSolitaire
   public d getGroupSolitatireReportManager()
   {
     AppMethodBeat.i(110306);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (this.yeX == null) {
-      this.yeX = new d();
+    h.aHE().aGH();
+    if (this.Doe == null) {
+      this.Doe = new d();
     }
-    d locald = this.yeX;
+    d locald = this.Doe;
     AppMethodBeat.o(110306);
     return locald;
   }
@@ -136,28 +136,28 @@ public class PluginGroupSolitaire
   public com.tencent.mm.plugin.groupsolitaire.c.c getGroupSolitatireStorage()
   {
     AppMethodBeat.i(110305);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (this.yeW == null)
+    h.aHE().aGH();
+    if (this.Dod == null)
     {
-      com.tencent.mm.kernel.g.aAi();
-      this.yeW = new com.tencent.mm.plugin.groupsolitaire.c.c(com.tencent.mm.kernel.g.aAh().hqK);
+      h.aHH();
+      this.Dod = new com.tencent.mm.plugin.groupsolitaire.c.c(h.aHG().kcF);
     }
-    com.tencent.mm.plugin.groupsolitaire.c.c localc = this.yeW;
+    com.tencent.mm.plugin.groupsolitaire.c.c localc = this.Dod;
     AppMethodBeat.o(110305);
     return localc;
   }
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(110299);
-    this.yeU.alive();
+    this.Dob.alive();
     AppMethodBeat.o(110299);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(110300);
-    this.yeU.dead();
+    this.Dob.dead();
     AppMethodBeat.o(110300);
   }
   
@@ -174,13 +174,13 @@ public class PluginGroupSolitaire
     k.b localb = new k.b();
     localb.title = str;
     localb.type = 53;
-    localb.izx = new Pair(parama1.field_key, com.tencent.mm.plugin.groupsolitaire.b.b.a(str, parama1, paramBoolean2));
-    paramString = w.a.aSz().a(localb, "", "", paramString, "", null);
+    localb.loQ = new Pair(parama1.field_key, com.tencent.mm.plugin.groupsolitaire.b.b.a(str, parama1, paramBoolean2));
+    paramString = w.a.bbx().a(localb, "", "", paramString, "", null);
     if ((paramBoolean1) && (paramString != null))
     {
-      ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ah(PluginGroupSolitaire.class)).getGroupSolitatireReportManager().a(((Long)paramString.second).longValue(), parama1, parama2, false, 2);
+      ((PluginGroupSolitaire)h.ag(PluginGroupSolitaire.class)).getGroupSolitatireReportManager().a(((Long)paramString.second).longValue(), parama1, parama2, false, 2);
       if (paramString != null) {
-        com.tencent.mm.plugin.groupsolitaire.b.b.a(((Long)paramString.second).longValue(), z.aTY(), parama1);
+        com.tencent.mm.plugin.groupsolitaire.b.b.a(((Long)paramString.second).longValue(), z.bcZ(), parama1);
       }
       Log.i("MicroMsg.groupsolitaire.PluginGroupSolitaire", "sendGroupSolitatire() ret:%s", new Object[] { paramString });
       if (paramString == null) {
@@ -196,37 +196,37 @@ public class PluginGroupSolitaire
       if (paramBoolean1) {
         break;
       }
-      ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ah(PluginGroupSolitaire.class)).getGroupSolitatireReportManager().a(parama1, parama2, 2);
+      ((PluginGroupSolitaire)h.ag(PluginGroupSolitaire.class)).getGroupSolitatireReportManager().a(parama1, parama2, 2);
       break;
     }
   }
   
   public void sendGroupSolitatire(String paramString1, String paramString2, com.tencent.mm.plugin.groupsolitaire.c.a parama1, com.tencent.mm.plugin.groupsolitaire.c.a parama2, com.tencent.mm.plugin.groupsolitaire.c.a parama3, boolean paramBoolean)
   {
-    AppMethodBeat.i(194418);
+    AppMethodBeat.i(246650);
     if (parama2 == null)
     {
-      AppMethodBeat.o(194418);
+      AppMethodBeat.o(246650);
       return;
     }
     k.b localb = new k.b();
     localb.title = paramString1;
     localb.type = 53;
-    localb.izx = new Pair(parama2.field_key, com.tencent.mm.plugin.groupsolitaire.b.b.b(paramString1, parama2));
-    paramString1 = w.a.aSz().a(localb, "", "", paramString2, "", null);
+    localb.loQ = new Pair(parama2.field_key, com.tencent.mm.plugin.groupsolitaire.b.b.b(paramString1, parama2));
+    paramString1 = w.a.bbx().a(localb, "", "", paramString2, "", null);
     if ((paramBoolean) && (paramString1 != null)) {
-      ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ah(PluginGroupSolitaire.class)).getGroupSolitatireReportManager().a(((Long)paramString1.second).longValue(), parama2, parama3, true, 1);
+      ((PluginGroupSolitaire)h.ag(PluginGroupSolitaire.class)).getGroupSolitatireReportManager().a(((Long)paramString1.second).longValue(), parama2, parama3, true, 1);
     }
     for (;;)
     {
       if (paramString1 != null) {
-        com.tencent.mm.plugin.groupsolitaire.b.b.a(((Long)paramString1.second).longValue(), z.aTY(), parama1);
+        com.tencent.mm.plugin.groupsolitaire.b.b.a(((Long)paramString1.second).longValue(), z.bcZ(), parama1);
       }
       Log.i("MicroMsg.groupsolitaire.PluginGroupSolitaire", "sendGroupSolitatire() content ret:%s", new Object[] { paramString1 });
-      AppMethodBeat.o(194418);
+      AppMethodBeat.o(246650);
       return;
       if (!paramBoolean) {
-        ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ah(PluginGroupSolitaire.class)).getGroupSolitatireReportManager().a(parama2, parama3, 1);
+        ((PluginGroupSolitaire)h.ag(PluginGroupSolitaire.class)).getGroupSolitatireReportManager().a(parama2, parama3, 1);
       }
     }
   }
@@ -244,13 +244,13 @@ public class PluginGroupSolitaire
     k.b localb = new k.b();
     localb.title = parama2;
     localb.type = 53;
-    localb.izx = new Pair(parama1.field_key, com.tencent.mm.plugin.groupsolitaire.b.b.a(parama2, parama1, paramBoolean2));
-    paramString = w.a.aSz().a(localb, "", "", paramString, "", null);
+    localb.loQ = new Pair(parama1.field_key, com.tencent.mm.plugin.groupsolitaire.b.b.a(parama2, parama1, paramBoolean2));
+    paramString = w.a.bbx().a(localb, "", "", paramString, "", null);
     if ((paramBoolean1) && (paramString != null))
     {
-      ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ah(PluginGroupSolitaire.class)).getGroupSolitatireReportManager().a(((Long)paramString.second).longValue(), parama1, parama3, false, 2);
+      ((PluginGroupSolitaire)h.ag(PluginGroupSolitaire.class)).getGroupSolitatireReportManager().a(((Long)paramString.second).longValue(), parama1, parama3, false, 2);
       if (paramString != null) {
-        com.tencent.mm.plugin.groupsolitaire.b.b.a(((Long)paramString.second).longValue(), z.aTY(), parama1);
+        com.tencent.mm.plugin.groupsolitaire.b.b.a(((Long)paramString.second).longValue(), z.bcZ(), parama1);
       }
       Log.i("MicroMsg.groupsolitaire.PluginGroupSolitaire", "sendGroupSolitatire() ret:%s", new Object[] { paramString });
       if (paramString == null) {
@@ -266,14 +266,14 @@ public class PluginGroupSolitaire
       if (paramBoolean1) {
         break;
       }
-      ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ah(PluginGroupSolitaire.class)).getGroupSolitatireReportManager().a(parama1, parama3, 2);
+      ((PluginGroupSolitaire)h.ag(PluginGroupSolitaire.class)).getGroupSolitatireReportManager().a(parama1, parama3, 2);
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.groupsolitaire.PluginGroupSolitaire
  * JD-Core Version:    0.7.0.1
  */

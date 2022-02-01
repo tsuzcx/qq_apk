@@ -33,7 +33,7 @@ public final class f
   
   public static File a(Context paramContext1, Context paramContext2, String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(187999);
+    AppMethodBeat.i(187228);
     if (paramContext1 == paramContext2)
     {
       paramContext1 = paramContext1.getExternalFilesDir("tbs");
@@ -48,7 +48,7 @@ public final class f
         break label141;
       }
       paramContext1 = new File(paramContext1, String.valueOf(paramInt));
-      AppMethodBeat.o(187999);
+      AppMethodBeat.o(187228);
       return paramContext1;
       if (paramContext1.getPackageManager().checkPermission("android.permission.READ_EXTERNAL_STORAGE", paramContext1.getPackageName()) == 0)
       {
@@ -63,7 +63,7 @@ public final class f
       break;
     }
     label141:
-    AppMethodBeat.o(187999);
+    AppMethodBeat.o(187228);
     return null;
   }
   
@@ -204,7 +204,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tbs.one.impl.common.f
  * JD-Core Version:    0.7.0.1
  */

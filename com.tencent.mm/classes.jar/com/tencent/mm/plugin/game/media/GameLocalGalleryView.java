@@ -6,13 +6,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.GridLayoutManager.LayoutParams;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.RecyclerView.v;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,46 +16,64 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager.LayoutParams;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
+import androidx.recyclerview.widget.RecyclerView.h;
+import androidx.recyclerview.widget.RecyclerView.s;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.emoji.b.d;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.ImageMediaItem;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
+import com.tencent.mm.plugin.gallery.model.i.c;
 import com.tencent.mm.plugin.gallery.model.o;
 import com.tencent.mm.plugin.gallery.ui.ImagePreviewUI;
+import com.tencent.mm.plugin.gallery.ui.h.a;
+import com.tencent.mm.plugin.game.api.g;
+import com.tencent.mm.plugin.game.g.b;
+import com.tencent.mm.plugin.game.g.e;
+import com.tencent.mm.plugin.game.g.f;
+import com.tencent.mm.plugin.game.g.g;
+import com.tencent.mm.plugin.game.g.i;
 import com.tencent.mm.plugin.game.widget.GameGridLayoutManager;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.at;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 public class GameLocalGalleryView
   extends FrameLayout
+  implements i.c
 {
-  static final int xAV;
-  static final int xAW;
-  private boolean gOZ;
-  private int xAD;
-  private RecyclerView xAX;
-  c xAY;
-  private TextView xAZ;
-  private Button xBa;
-  private int xBb;
-  private boolean xBc;
-  private boolean xBd;
+  static final int CEW;
+  static final int CEX;
+  private int CEE;
+  private RecyclerView CEY;
+  c CEZ;
+  private TextView CFa;
+  private Button CFb;
+  private int CFc;
+  private boolean CFd;
+  private boolean CFe;
+  private long CaP;
+  private boolean jzt;
   
   static
   {
     AppMethodBeat.i(41027);
-    xAV = "GameLocalGalleryView_REQUEST_CODE_VIDEO".hashCode() & 0xFFFF;
-    xAW = "GameLocalGalleryView_REQUEST_CODE_IMAGE".hashCode() & 0xFFFF;
+    CEW = "GameLocalGalleryView_REQUEST_CODE_VIDEO".hashCode() & 0xFFFF;
+    CEX = "GameLocalGalleryView_REQUEST_CODE_IMAGE".hashCode() & 0xFFFF;
     AppMethodBeat.o(41027);
   }
   
@@ -70,9 +81,10 @@ public class GameLocalGalleryView
   {
     super(paramContext);
     AppMethodBeat.i(41016);
-    this.xBc = false;
-    this.xBd = false;
-    this.xAD = 0;
+    this.CFd = false;
+    this.CFe = false;
+    this.CEE = 0;
+    this.CaP = 0L;
     init();
     AppMethodBeat.o(41016);
   }
@@ -81,9 +93,10 @@ public class GameLocalGalleryView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(41017);
-    this.xBc = false;
-    this.xBd = false;
-    this.xAD = 0;
+    this.CFd = false;
+    this.CFe = false;
+    this.CEE = 0;
+    this.CaP = 0L;
     init();
     AppMethodBeat.o(41017);
   }
@@ -92,61 +105,62 @@ public class GameLocalGalleryView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(41018);
-    this.xBc = false;
-    this.xBd = false;
-    this.xAD = 0;
+    this.CFd = false;
+    this.CFe = false;
+    this.CEE = 0;
+    this.CaP = 0L;
     init();
     AppMethodBeat.o(41018);
   }
   
-  static void dUn()
+  static void exu()
   {
     AppMethodBeat.i(41023);
-    a.Od(2);
+    a.Tw(2);
     AppMethodBeat.o(41023);
   }
   
-  private void gK(int paramInt1, int paramInt2)
+  private void hD(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(41024);
     HashMap localHashMap = new HashMap();
-    com.tencent.mm.game.report.b.a.a(MMApplicationContext.getContext(), 8767, paramInt1, paramInt2, this.xAD, com.tencent.mm.game.report.b.a.c(7, localHashMap));
+    com.tencent.mm.game.report.b.a.a(MMApplicationContext.getContext(), 8767, paramInt1, paramInt2, this.CEE, com.tencent.mm.game.report.b.a.b(7, localHashMap));
     AppMethodBeat.o(41024);
   }
   
   private void init()
   {
     AppMethodBeat.i(41019);
-    View localView = LayoutInflater.from(getContext()).inflate(2131494934, this, false);
-    this.xAX = ((RecyclerView)localView.findViewById(2131302029));
+    View localView = LayoutInflater.from(getContext()).inflate(g.f.CnW, this, false);
+    this.CEY = ((RecyclerView)localView.findViewById(g.e.CjQ));
     GameGridLayoutManager localGameGridLayoutManager = new GameGridLayoutManager(getContext());
-    this.xAX.setLayoutManager(localGameGridLayoutManager);
-    this.xAX.a(new a());
-    this.xAY = new c(getContext());
-    this.xAX.setAdapter(this.xAY);
-    this.xAZ = ((TextView)localView.findViewById(2131302033));
-    this.xAZ.setOnClickListener(new View.OnClickListener()
+    this.CEY.setLayoutManager(localGameGridLayoutManager);
+    this.CEY.a(new a());
+    this.CEZ = new c(getContext());
+    this.CEY.setAdapter(this.CEZ);
+    this.CFa = ((TextView)localView.findViewById(g.e.CjU));
+    this.CFa.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(40997);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/media/GameLocalGalleryView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/media/GameLocalGalleryView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         paramAnonymousView = GameLocalGalleryView.a(GameLocalGalleryView.this);
         int i;
-        if (paramAnonymousView.xnp != null)
+        if (paramAnonymousView.BZH != null)
         {
-          i = paramAnonymousView.xnp.size();
+          i = paramAnonymousView.BZH.size();
           if (i <= 0) {
             break label175;
           }
           paramAnonymousView = new Intent(GameLocalGalleryView.this.getContext(), ImagePreviewUI.class);
-          paramAnonymousView.putStringArrayListExtra("preview_image_list", GameLocalGalleryView.a(GameLocalGalleryView.this).dRL());
+          paramAnonymousView.putStringArrayListExtra("preview_image_list", GameLocalGalleryView.a(GameLocalGalleryView.this).eun());
           paramAnonymousView.putParcelableArrayListExtra("preview_media_item_list", GameLocalGalleryView.c.a(GameLocalGalleryView.a(GameLocalGalleryView.this)));
           paramAnonymousView.putExtra("max_select_count", GameLocalGalleryView.b(GameLocalGalleryView.this));
           paramAnonymousView.putExtra("send_raw_img", false);
-          c.b(GameLocalGalleryView.this.getContext(), "gallery", ".ui.ImagePreviewUI", paramAnonymousView, GameLocalGalleryView.xAW);
+          c.b(GameLocalGalleryView.this.getContext(), "gallery", ".ui.ImagePreviewUI", paramAnonymousView, GameLocalGalleryView.CEX);
         }
         for (;;)
         {
@@ -163,29 +177,29 @@ public class GameLocalGalleryView
         }
       }
     });
-    this.xBa = ((Button)localView.findViewById(2131302031));
-    this.xBa.setOnClickListener(new View.OnClickListener()
+    this.CFb = ((Button)localView.findViewById(g.e.CjS));
+    this.CFb.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(40998);
         Object localObject = new b();
-        ((b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/media/GameLocalGalleryView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
-        localObject = GameLocalGalleryView.a(GameLocalGalleryView.this).xnp;
+        ((b)localObject).bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/media/GameLocalGalleryView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+        localObject = GameLocalGalleryView.a(GameLocalGalleryView.this).BZH;
         paramAnonymousView = new ArrayList();
         localObject = ((ArrayList)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           GalleryItem.MediaItem localMediaItem = (GalleryItem.MediaItem)((Iterator)localObject).next();
-          if ((localMediaItem.mMimeType.equals("edit")) && (!Util.isNullOrNil(localMediaItem.xiY))) {
-            paramAnonymousView.add(localMediaItem.xiY);
+          if ((localMediaItem.mMimeType.equals("edit")) && (!Util.isNullOrNil(localMediaItem.BVk))) {
+            paramAnonymousView.add(localMediaItem.BVk);
           } else {
-            paramAnonymousView.add(localMediaItem.xiW);
+            paramAnonymousView.add(localMediaItem.AAz);
           }
         }
         if (!Util.isNullOrNil(paramAnonymousView)) {
-          GameLocalGalleryView.dUo();
+          GameLocalGalleryView.exv();
         }
         localObject = new Intent();
         ((Intent)localObject).putExtra("CropImage_OutputPath_List", paramAnonymousView);
@@ -195,26 +209,26 @@ public class GameLocalGalleryView
         AppMethodBeat.o(40998);
       }
     });
-    this.xAY.xBf = new b()
+    this.CEZ.CFg = new b()
     {
-      public final void Ir(int paramAnonymousInt)
+      public final void Mc(int paramAnonymousInt)
       {
         AppMethodBeat.i(40999);
         if (paramAnonymousInt > 0)
         {
-          GameLocalGalleryView.c(GameLocalGalleryView.this).setText(GameLocalGalleryView.this.getResources().getString(2131761271, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(GameLocalGalleryView.b(GameLocalGalleryView.this)) }));
+          GameLocalGalleryView.c(GameLocalGalleryView.this).setText(GameLocalGalleryView.this.getResources().getString(g.i.Cph, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(GameLocalGalleryView.b(GameLocalGalleryView.this)) }));
           GameLocalGalleryView.c(GameLocalGalleryView.this).setEnabled(true);
           GameLocalGalleryView.d(GameLocalGalleryView.this).setVisibility(0);
-          GameLocalGalleryView.d(GameLocalGalleryView.this).setText(GameLocalGalleryView.this.getResources().getString(2131761273));
+          GameLocalGalleryView.d(GameLocalGalleryView.this).setText(GameLocalGalleryView.this.getResources().getString(g.i.CjU));
           AppMethodBeat.o(40999);
           return;
         }
-        GameLocalGalleryView.c(GameLocalGalleryView.this).setText(GameLocalGalleryView.this.getResources().getString(2131761270));
+        GameLocalGalleryView.c(GameLocalGalleryView.this).setText(GameLocalGalleryView.this.getResources().getString(g.i.CjS));
         GameLocalGalleryView.c(GameLocalGalleryView.this).setEnabled(false);
         if (!GameLocalGalleryView.e(GameLocalGalleryView.this))
         {
           GameLocalGalleryView.d(GameLocalGalleryView.this).setVisibility(0);
-          GameLocalGalleryView.d(GameLocalGalleryView.this).setText(GameLocalGalleryView.this.getResources().getString(2131761272));
+          GameLocalGalleryView.d(GameLocalGalleryView.this).setText(GameLocalGalleryView.this.getResources().getString(g.i.CjT));
           AppMethodBeat.o(40999);
           return;
         }
@@ -226,52 +240,72 @@ public class GameLocalGalleryView
     AppMethodBeat.o(41019);
   }
   
-  public final void c(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public final void b(LinkedList<GalleryItem.MediaItem> paramLinkedList, long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(204114);
-    this.xBc = paramBoolean1;
-    if ((this.xBc) && (this.xAZ != null)) {
-      this.xAZ.setVisibility(8);
+    AppMethodBeat.i(292933);
+    if (this.CaP == paramLong)
+    {
+      ArrayList localArrayList = new ArrayList();
+      if (paramLinkedList != null) {
+        localArrayList.addAll(paramLinkedList);
+      }
+      if (this.CEZ != null) {
+        MMHandlerThread.postToMainThread(new GameLocalGalleryView.c.3(this.CEZ, localArrayList));
+      }
     }
-    this.xBd = paramBoolean2;
-    this.xAD = paramInt;
-    AppMethodBeat.o(204114);
+    AppMethodBeat.o(292933);
   }
   
-  public final void dUl()
+  public final void c(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    AppMethodBeat.i(200131);
+    this.CFd = paramBoolean1;
+    if ((this.CFd) && (this.CFa != null)) {
+      this.CFa.setVisibility(8);
+    }
+    this.CFe = paramBoolean2;
+    this.CEE = paramInt;
+    AppMethodBeat.o(200131);
+  }
+  
+  public final void exs()
   {
     AppMethodBeat.i(41020);
-    if (!this.gOZ) {
-      gK(0, 1);
+    if (!this.jzt) {
+      hD(0, 1);
     }
-    this.gOZ = true;
+    this.jzt = true;
     AppMethodBeat.o(41020);
   }
   
-  public final void dUm()
+  public final void ext()
   {
     AppMethodBeat.i(41022);
-    c localc = this.xAY;
-    localc.xnp.clear();
-    if (localc.xBf != null) {
-      localc.xBf.Ir(localc.xnp.size());
+    c localc = this.CEZ;
+    localc.BZH.clear();
+    if (localc.CFg != null) {
+      localc.CFg.Mc(localc.BZH.size());
     }
-    localc.xBe.postDelayed(new GameLocalGalleryView.c.4(localc), 500L);
+    localc.CFf.postDelayed(new GameLocalGalleryView.c.4(localc), 500L);
     AppMethodBeat.o(41022);
   }
   
   public void setQueryType(int paramInt)
   {
     AppMethodBeat.i(41021);
-    this.xAY.xjo = paramInt;
-    a.a(paramInt, new GameLocalGalleryView.4(this));
+    this.CEZ.BVD = paramInt;
+    com.tencent.mm.plugin.gallery.model.e.etl().setQueryType(paramInt);
+    com.tencent.mm.plugin.gallery.model.e.etl().pag = 15;
+    com.tencent.mm.plugin.gallery.model.e.etl().a(this);
+    this.CaP = System.currentTimeMillis();
+    com.tencent.mm.plugin.gallery.model.e.etl().ax("", this.CaP);
     AppMethodBeat.o(41021);
   }
   
   public void setSelectLimitCount(int paramInt)
   {
-    this.xAY.xnn = paramInt;
-    this.xBb = paramInt;
+    this.CEZ.BZF = paramInt;
+    this.CFc = paramInt;
   }
   
   final class a
@@ -282,78 +316,78 @@ public class GameLocalGalleryView
     public a()
     {
       AppMethodBeat.i(41001);
-      this.mSize = at.fromDPToPix(MMApplicationContext.getContext(), 3);
+      this.mSize = aw.fromDPToPix(MMApplicationContext.getContext(), 3);
       AppMethodBeat.o(41001);
     }
     
     public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
     {
-      AppMethodBeat.i(41002);
+      AppMethodBeat.i(204998);
       paramRecyclerView = (GridLayoutManager)paramRecyclerView.getLayoutManager();
       params = (GridLayoutManager.LayoutParams)paramView.getLayoutParams();
-      int i = paramRecyclerView.apM;
-      int j = RecyclerView.bw(paramView);
-      int k = params.apT;
-      Log.i("MicroMsg.GameLocalMediaView", "getItemOffsets, spanSize = %d, spanCount = %d, index = %d", new Object[] { Integer.valueOf(params.apU), Integer.valueOf(i), Integer.valueOf(k) });
+      int i = paramRecyclerView.ahF;
+      int j = RecyclerView.bh(paramView);
+      int k = params.ahM;
+      Log.i("MicroMsg.GameLocalMediaView", "getItemOffsets, spanSize = %d, spanCount = %d, index = %d", new Object[] { Integer.valueOf(params.ahN), Integer.valueOf(i), Integer.valueOf(k) });
       if (j < i)
       {
         if (k == 0)
         {
           paramRect.set(0, 0, 0, 0);
-          AppMethodBeat.o(41002);
+          AppMethodBeat.o(204998);
           return;
         }
         paramRect.set(this.mSize, 0, 0, 0);
-        AppMethodBeat.o(41002);
+        AppMethodBeat.o(204998);
         return;
       }
       if (k == 0)
       {
         paramRect.set(0, this.mSize, 0, 0);
-        AppMethodBeat.o(41002);
+        AppMethodBeat.o(204998);
         return;
       }
       paramRect.set(this.mSize, this.mSize, 0, 0);
-      AppMethodBeat.o(41002);
+      AppMethodBeat.o(204998);
     }
   }
   
   static abstract interface b
   {
-    public abstract void Ir(int paramInt);
+    public abstract void Mc(int paramInt);
   }
   
   final class c
     extends RecyclerView.a<GameLocalGalleryView.d>
   {
+    int BVD;
+    int BZF;
+    private ArrayList<GalleryItem.MediaItem> BZG;
+    ArrayList<GalleryItem.MediaItem> BZH;
+    private View.OnClickListener BZN;
+    GameLocalGalleryView.b CFg;
     private Context mContext;
-    GameLocalGalleryView.b xBf;
-    int xjo;
-    int xnn;
-    private ArrayList<GalleryItem.MediaItem> xno;
-    ArrayList<GalleryItem.MediaItem> xnp;
-    private View.OnClickListener xnv;
     
     c(Context paramContext)
     {
       AppMethodBeat.i(41009);
-      this.xno = new ArrayList();
-      this.xnp = new ArrayList();
-      this.xnv = new View.OnClickListener()
+      this.BZG = new ArrayList();
+      this.BZH = new ArrayList();
+      this.BZN = new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(41008);
           Object localObject = new b();
-          ((b)localObject).bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/media/GameLocalGalleryView$RecycleViewAdapter$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
-          if (!(paramAnonymousView.getTag(2131304551) instanceof Integer))
+          ((b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/media/GameLocalGalleryView$RecycleViewAdapter$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+          if (!(paramAnonymousView.getTag(g.e.media_cbx_clickarea) instanceof Integer))
           {
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/media/GameLocalGalleryView$RecycleViewAdapter$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(41008);
             return;
           }
-          localObject = (Integer)paramAnonymousView.getTag(2131304551);
+          localObject = (Integer)paramAnonymousView.getTag(g.e.media_cbx_clickarea);
           if (localObject == null)
           {
             Log.e("MicroMsg.GameLocalMediaView", "[onClick] null == position!");
@@ -362,14 +396,14 @@ public class GameLocalGalleryView
             return;
           }
           localObject = (GalleryItem.MediaItem)GameLocalGalleryView.c.e(GameLocalGalleryView.c.this).get(((Integer)localObject).intValue());
-          if ((localObject == null) || (Util.isNullOrNil(((GalleryItem.MediaItem)localObject).xiW)))
+          if ((localObject == null) || (Util.isNullOrNil(((GalleryItem.MediaItem)localObject).AAz)))
           {
             Log.e("MicroMsg.GameLocalMediaView", "[onClick] null == item!");
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/media/GameLocalGalleryView$RecycleViewAdapter$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(41008);
             return;
           }
-          Log.i("MicroMsg.GameLocalMediaView", "click Image path:" + ((GalleryItem.MediaItem)localObject).xiW);
+          Log.i("MicroMsg.GameLocalMediaView", "click Image path:" + ((GalleryItem.MediaItem)localObject).AAz);
           int i;
           int j;
           if (GameLocalGalleryView.c.b(GameLocalGalleryView.c.this).contains(localObject))
@@ -383,40 +417,40 @@ public class GameLocalGalleryView
             if (j != 0)
             {
               if (GameLocalGalleryView.c.f(GameLocalGalleryView.c.this) == 1) {
-                h.cD(GameLocalGalleryView.c.c(GameLocalGalleryView.c.this), GameLocalGalleryView.c.c(GameLocalGalleryView.c.this).getResources().getQuantityString(2131623950, GameLocalGalleryView.c.d(GameLocalGalleryView.c.this), new Object[] { Integer.valueOf(GameLocalGalleryView.c.d(GameLocalGalleryView.c.this)) }));
+                com.tencent.mm.ui.base.h.cO(GameLocalGalleryView.c.c(GameLocalGalleryView.c.this), GameLocalGalleryView.c.c(GameLocalGalleryView.c.this).getResources().getQuantityString(g.g.gallery_pic_limit, GameLocalGalleryView.c.d(GameLocalGalleryView.c.this), new Object[] { Integer.valueOf(GameLocalGalleryView.c.d(GameLocalGalleryView.c.this)) }));
               }
             }
             else
             {
-              label291:
+              label294:
               if (1 != i) {
-                break label647;
+                break label657;
               }
-              ((CheckBox)paramAnonymousView.getTag(2131304550)).setChecked(false);
-              ((View)paramAnonymousView.getTag(2131304563)).setVisibility(0);
-              ((View)paramAnonymousView.getTag(2131304563)).setBackgroundResource(2131100641);
+              ((CheckBox)paramAnonymousView.getTag(g.e.media_cbx)).setChecked(false);
+              ((View)paramAnonymousView.getTag(g.e.media_mask)).setVisibility(0);
+              ((View)paramAnonymousView.getTag(g.e.media_mask)).setBackgroundResource(g.b.image_gallery_mask);
             }
             for (;;)
             {
               if (GameLocalGalleryView.c.g(GameLocalGalleryView.c.this) != null) {
-                GameLocalGalleryView.c.g(GameLocalGalleryView.c.this).Ir(GameLocalGalleryView.c.b(GameLocalGalleryView.c.this).size());
+                GameLocalGalleryView.c.g(GameLocalGalleryView.c.this).Mc(GameLocalGalleryView.c.b(GameLocalGalleryView.c.this).size());
               }
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/media/GameLocalGalleryView$RecycleViewAdapter$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(41008);
               return;
-              if ((com.tencent.mm.plugin.gallery.model.e.dQK().mcq == 3) && (localObject != null) && (((GalleryItem.MediaItem)localObject).mMimeType.equalsIgnoreCase("image/gif")))
+              if ((com.tencent.mm.plugin.gallery.model.e.etl().pag == 3) && (localObject != null) && (((GalleryItem.MediaItem)localObject).mMimeType.equalsIgnoreCase("image/gif")))
               {
-                s.boW(((GalleryItem.MediaItem)localObject).xiW);
-                if (!((d)com.tencent.mm.kernel.g.ah(d.class)).getProvider().amz(((GalleryItem.MediaItem)localObject).xiW))
+                u.bBQ(((GalleryItem.MediaItem)localObject).AAz);
+                if (!((d)com.tencent.mm.kernel.h.ag(d.class)).getProvider().aus(((GalleryItem.MediaItem)localObject).AAz))
                 {
-                  h.cD(GameLocalGalleryView.c.c(GameLocalGalleryView.c.this), GameLocalGalleryView.c.c(GameLocalGalleryView.c.this).getString(2131761128));
+                  com.tencent.mm.ui.base.h.cO(GameLocalGalleryView.c.c(GameLocalGalleryView.c.this), GameLocalGalleryView.c.c(GameLocalGalleryView.c.this).getString(g.i.gallery_select_gif_to_big));
                   com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/media/GameLocalGalleryView$RecycleViewAdapter$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                   AppMethodBeat.o(41008);
                   return;
                 }
               }
               if (GameLocalGalleryView.c.b(GameLocalGalleryView.c.this).size() >= GameLocalGalleryView.c.d(GameLocalGalleryView.c.this)) {
-                break label701;
+                break label715;
               }
               GameLocalGalleryView.c.b(GameLocalGalleryView.c.this).add(localObject);
               i = 0;
@@ -424,34 +458,34 @@ public class GameLocalGalleryView
               break;
               if (GameLocalGalleryView.c.f(GameLocalGalleryView.c.this) == 2)
               {
-                h.cD(GameLocalGalleryView.c.c(GameLocalGalleryView.c.this), GameLocalGalleryView.c.c(GameLocalGalleryView.c.this).getResources().getQuantityString(2131623952, GameLocalGalleryView.c.d(GameLocalGalleryView.c.this), new Object[] { Integer.valueOf(GameLocalGalleryView.c.d(GameLocalGalleryView.c.this)) }));
-                break label291;
+                com.tencent.mm.ui.base.h.cO(GameLocalGalleryView.c.c(GameLocalGalleryView.c.this), GameLocalGalleryView.c.c(GameLocalGalleryView.c.this).getResources().getQuantityString(g.g.gallery_video_limit, GameLocalGalleryView.c.d(GameLocalGalleryView.c.this), new Object[] { Integer.valueOf(GameLocalGalleryView.c.d(GameLocalGalleryView.c.this)) }));
+                break label294;
               }
-              h.cD(GameLocalGalleryView.c.c(GameLocalGalleryView.c.this), GameLocalGalleryView.c.c(GameLocalGalleryView.c.this).getResources().getQuantityString(2131623951, GameLocalGalleryView.c.d(GameLocalGalleryView.c.this), new Object[] { Integer.valueOf(GameLocalGalleryView.c.d(GameLocalGalleryView.c.this)) }));
-              break label291;
-              label647:
-              ((CheckBox)paramAnonymousView.getTag(2131304550)).setChecked(true);
-              ((View)paramAnonymousView.getTag(2131304563)).setVisibility(0);
-              ((View)paramAnonymousView.getTag(2131304563)).setBackgroundResource(2131099835);
+              com.tencent.mm.ui.base.h.cO(GameLocalGalleryView.c.c(GameLocalGalleryView.c.this), GameLocalGalleryView.c.c(GameLocalGalleryView.c.this).getResources().getQuantityString(g.g.gallery_pic_or_video_limit, GameLocalGalleryView.c.d(GameLocalGalleryView.c.this), new Object[] { Integer.valueOf(GameLocalGalleryView.c.d(GameLocalGalleryView.c.this)) }));
+              break label294;
+              label657:
+              ((CheckBox)paramAnonymousView.getTag(g.e.media_cbx)).setChecked(true);
+              ((View)paramAnonymousView.getTag(g.e.media_mask)).setVisibility(0);
+              ((View)paramAnonymousView.getTag(g.e.media_mask)).setBackgroundResource(g.b.UN_BW_0_Alpha_0_5);
               GameLocalGalleryView.a(GameLocalGalleryView.this, 1);
             }
-            label701:
+            label715:
             i = 1;
             j = 1;
           }
         }
       };
       this.mContext = paramContext;
-      this.xno.add(new GalleryItem.ImageMediaItem());
+      this.BZG.add(new GalleryItem.ImageMediaItem());
       Log.i("MicroMsg.GameLocalMediaView", "RecycleViewAdapter");
       AppMethodBeat.o(41009);
     }
     
-    final ArrayList<GalleryItem.MediaItem> NJ(int paramInt)
+    final ArrayList<GalleryItem.MediaItem> SX(int paramInt)
     {
-      AppMethodBeat.i(204113);
+      AppMethodBeat.i(190346);
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.xno.iterator();
+      Iterator localIterator = this.BZG.iterator();
       while (localIterator.hasNext())
       {
         GalleryItem.MediaItem localMediaItem = (GalleryItem.MediaItem)localIterator.next();
@@ -459,15 +493,15 @@ public class GameLocalGalleryView
           localArrayList.add(localMediaItem);
         }
       }
-      AppMethodBeat.o(204113);
+      AppMethodBeat.o(190346);
       return localArrayList;
     }
     
-    final void aq(ArrayList<String> paramArrayList)
+    final void aw(ArrayList<String> paramArrayList)
     {
       AppMethodBeat.i(41012);
-      Log.d("MicroMsg.GameLocalMediaView", "before set selected paths, selected[%s]", new Object[] { this.xnp });
-      this.xnp.clear();
+      Log.d("MicroMsg.GameLocalMediaView", "before set selected paths, selected[%s]", new Object[] { this.BZH });
+      this.BZH.clear();
       if (paramArrayList != null)
       {
         paramArrayList = paramArrayList.iterator();
@@ -475,38 +509,46 @@ public class GameLocalGalleryView
         {
           String str = (String)paramArrayList.next();
           GalleryItem.MediaItem localMediaItem = GalleryItem.MediaItem.a(0, 0L, str, str, "");
-          if (com.tencent.mm.plugin.gallery.model.e.dQM() != null)
+          if (com.tencent.mm.plugin.gallery.model.e.etn() != null)
           {
-            int i = com.tencent.mm.plugin.gallery.model.e.dQM().indexOf(localMediaItem);
+            int i = com.tencent.mm.plugin.gallery.model.e.etn().indexOf(localMediaItem);
             if (i >= 0)
             {
-              localMediaItem = (GalleryItem.MediaItem)com.tencent.mm.plugin.gallery.model.e.dQM().get(i);
+              localMediaItem = (GalleryItem.MediaItem)com.tencent.mm.plugin.gallery.model.e.etn().get(i);
               if ((localMediaItem != null) && (localMediaItem.getType() == 2))
               {
-                this.xnp.add(GalleryItem.MediaItem.a(2, 0L, str, "", ""));
+                this.BZH.add(GalleryItem.MediaItem.a(2, 0L, str, "", ""));
                 continue;
               }
             }
           }
           Log.d("MicroMsg.GameLocalMediaView", "media item no exist on preview items.");
-          this.xnp.add(GalleryItem.MediaItem.a(1, 0L, str, "", ""));
+          this.BZH.add(GalleryItem.MediaItem.a(1, 0L, str, "", ""));
         }
       }
-      Log.d("MicroMsg.GameLocalMediaView", "after set selected paths, selected[%s]", new Object[] { this.xnp });
-      if (this.xBf != null) {
-        this.xBf.Ir(this.xnp.size());
+      Log.d("MicroMsg.GameLocalMediaView", "after set selected paths, selected[%s]", new Object[] { this.BZH });
+      if (this.CFg != null) {
+        this.CFg.Mc(this.BZH.size());
       }
-      MMHandlerThread.postToMainThread(new GameLocalGalleryView.c.5(this));
+      MMHandlerThread.postToMainThread(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(41007);
+          GameLocalGalleryView.c.this.alc.notifyChanged();
+          AppMethodBeat.o(41007);
+        }
+      });
       AppMethodBeat.o(41012);
     }
     
-    public final ArrayList<String> dRL()
+    public final ArrayList<String> eun()
     {
       AppMethodBeat.i(41011);
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.xnp.iterator();
+      Iterator localIterator = this.BZH.iterator();
       while (localIterator.hasNext()) {
-        localArrayList.add(((GalleryItem.MediaItem)localIterator.next()).xiW);
+        localArrayList.add(((GalleryItem.MediaItem)localIterator.next()).AAz);
       }
       AppMethodBeat.o(41011);
       return localArrayList;
@@ -515,8 +557,8 @@ public class GameLocalGalleryView
     public final int getItemCount()
     {
       AppMethodBeat.i(41010);
-      Log.i("MicroMsg.GameLocalMediaView", "getItemCount, count : %d", new Object[] { Integer.valueOf(this.xno.size()) });
-      int i = this.xno.size();
+      Log.i("MicroMsg.GameLocalMediaView", "getItemCount, count : %d", new Object[] { Integer.valueOf(this.BZG.size()) });
+      int i = this.BZG.size();
       AppMethodBeat.o(41010);
       return i;
     }
@@ -525,36 +567,36 @@ public class GameLocalGalleryView
   final class d
     extends RecyclerView.v
   {
+    ImageView BPW;
+    ImageView BZR;
+    ImageView CdR;
+    RelativeLayout CdS;
+    TextView CdT;
+    ImageView CdV;
     CheckBox checkBox;
-    View tkM;
-    ImageView xdY;
-    ImageView xnz;
-    ImageView xrA;
-    ImageView xrw;
-    RelativeLayout xrx;
-    TextView xry;
+    View wRk;
     
     public d(View paramView)
     {
       super();
       AppMethodBeat.i(41015);
-      this.xrw = ((ImageView)paramView.findViewById(2131304568));
-      this.xdY = ((ImageView)paramView.findViewById(2131304573));
-      this.xrx = ((RelativeLayout)paramView.findViewById(2131309781));
-      this.xry = ((TextView)paramView.findViewById(2131309783));
-      this.checkBox = ((CheckBox)paramView.findViewById(2131304550));
-      this.tkM = paramView.findViewById(2131304551);
-      this.xnz = ((ImageView)paramView.findViewById(2131304563));
-      this.tkM.setTag(2131304550, this.checkBox);
-      this.tkM.setTag(2131304563, this.xnz);
-      this.xrA = ((ImageView)paramView.findViewById(2131299834));
+      this.CdR = ((ImageView)paramView.findViewById(g.e.media_placeholder));
+      this.BPW = ((ImageView)paramView.findViewById(g.e.media_thumb));
+      this.CdS = ((RelativeLayout)paramView.findViewById(g.e.video_mask));
+      this.CdT = ((TextView)paramView.findViewById(g.e.video_mask_tv));
+      this.checkBox = ((CheckBox)paramView.findViewById(g.e.media_cbx));
+      this.wRk = paramView.findViewById(g.e.media_cbx_clickarea);
+      this.BZR = ((ImageView)paramView.findViewById(g.e.media_mask));
+      this.wRk.setTag(g.e.media_cbx, this.checkBox);
+      this.wRk.setTag(g.e.media_mask, this.BZR);
+      this.CdV = ((ImageView)paramView.findViewById(g.e.edit_mark_iv));
       AppMethodBeat.o(41015);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.GameLocalGalleryView
  * JD-Core Version:    0.7.0.1
  */

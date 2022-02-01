@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.expansions;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
@@ -17,21 +17,21 @@ public final class PluginExpansions
   public final void execute(g paramg)
   {
     AppMethodBeat.i(152980);
-    c.cMv();
-    c.cMw();
-    if (paramg.aBb())
+    c.dbj();
+    c.dbk();
+    if (paramg.aIE())
     {
-      a.cMl();
+      a.daZ();
       Log.i("MicroMsg.exp.PluginExpansions", "request Sync at MAIN process");
-      a.cMo();
+      a.dbc();
       AppMethodBeat.o(152980);
       return;
     }
-    if (!paramg.FY(":push"))
+    if (!paramg.MY(":push"))
     {
-      a.cMl();
+      a.daZ();
       Log.i("MicroMsg.exp.PluginExpansions", "request Sync at SUB process");
-      a.cMo();
+      a.dbc();
     }
     Log.i("MicroMsg.exp.PluginExpansions", "execute done");
     AppMethodBeat.o(152980);
@@ -42,14 +42,14 @@ public final class PluginExpansions
     AppMethodBeat.i(152979);
     alias(com.tencent.mm.plugin.expansions.a.a.class);
     MMApplicationContext.getContext();
-    a.cMn();
+    a.dbb();
     a.prepare();
     AppMethodBeat.o(152979);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.expansions.PluginExpansions
  * JD-Core Version:    0.7.0.1
  */

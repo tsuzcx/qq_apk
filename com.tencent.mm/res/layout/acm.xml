@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@id/gy3" app:loadMoreLayout="@layout/b21">
         <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/gy2" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
@@ -9,4 +9,4 @@
         <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/h5w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/c8" android:text="@string/cmj" style="@style/zy" />
         <TextView android:layout_gravity="center_horizontal" android:id="@id/c35" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c8" android:text="@string/cpt" style="@style/zy" />
     </FrameLayout>
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

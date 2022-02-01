@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.backup.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.i;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,9 +15,9 @@ final class b$2
   public final void run()
   {
     AppMethodBeat.i(21698);
-    synchronized (b.apb())
+    synchronized (b.avo())
     {
-      Set localSet = (Set)b.apb().get(Integer.valueOf(this.oPx.getType()));
+      Set localSet = (Set)b.avo().get(Integer.valueOf(this.rRu.getType()));
       if ((localSet != null) && (localSet.size() > 0))
       {
         ??? = new HashSet();
@@ -27,12 +27,11 @@ final class b$2
         {
           i locali = (i)((Iterator)???).next();
           if ((locali != null) && (localSet.contains(locali))) {
-            locali.onSceneEnd(this.val$errType, this.val$errCode, this.val$errMsg, this.oPx);
+            locali.onSceneEnd(this.val$errType, this.val$errCode, this.val$errMsg, this.rRu);
           }
         }
       }
     }
-    AppMethodBeat.o(21698);
   }
 }
 

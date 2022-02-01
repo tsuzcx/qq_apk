@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.game.luggage.d.a;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.downloader_app.api.a.c;
 import com.tencent.mm.plugin.downloader_app.api.c;
 import com.tencent.mm.plugin.lite.jsapi.b;
@@ -12,9 +13,9 @@ import org.json.JSONObject;
 public class g
   extends b
 {
-  public final void a(String paramString, JSONObject paramJSONObject)
+  public final void a(String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(186910);
+    AppMethodBeat.i(231369);
     paramString = "";
     if (paramJSONObject != null) {
       paramString = paramJSONObject.optString("appId");
@@ -23,19 +24,19 @@ public class g
     paramJSONObject.putExtra("appId", paramString);
     paramJSONObject.putExtra("view_task", true);
     paramJSONObject.addFlags(268435456);
-    ((c)com.tencent.mm.kernel.g.af(c.class)).a(MMApplicationContext.getContext(), paramJSONObject, new a.c()
+    ((c)h.ae(c.class)).a(MMApplicationContext.getContext(), paramJSONObject, new a.c()
     {
-      public final void bEx()
+      public final void bPX()
       {
-        AppMethodBeat.i(186909);
-        g.a(g.this).ecz();
-        AppMethodBeat.o(186909);
+        AppMethodBeat.i(231433);
+        g.a(g.this).eLC();
+        AppMethodBeat.o(231433);
       }
     });
-    AppMethodBeat.o(186910);
+    AppMethodBeat.o(231369);
   }
   
-  public final int dTw()
+  public final int ewF()
   {
     return 1;
   }

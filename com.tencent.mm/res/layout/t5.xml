@@ -6,8 +6,8 @@
             <ImageView android:layout_gravity="center_vertical" android:id="@id/uc" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="@dimen/kb" android:layout_centerVertical="true" />
             <RelativeLayout android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i2">
                 <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
-                    <com.tencent.mm.ui.widget.MMTextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="@color/ag2" android:ellipsize="end" android:id="@id/ub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-                    <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/ka" android:textColor="@color/ag2" android:ellipsize="end" android:id="@id/ue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/iv" android:singleLine="true" />
+                    <com.tencent.mm.ui.widget.MMTextView android:textSize="16.0dip" android:textColor="@color/ag2" android:ellipsize="end" android:id="@id/ue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="3" />
+                    <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/ka" android:textColor="@color/ag2" android:ellipsize="end" android:id="@id/ub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/iv" android:singleLine="true" />
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>

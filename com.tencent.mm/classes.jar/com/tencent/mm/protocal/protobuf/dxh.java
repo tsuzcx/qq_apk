@@ -1,88 +1,94 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
+import java.util.LinkedList;
 
 public final class dxh
-  extends com.tencent.mm.bw.a
+  extends dyy
 {
-  public int KWR;
-  public String eaO;
-  public int pVR;
-  public long seq;
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(114074);
+    AppMethodBeat.i(114063);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.eaO != null) {
-        paramVarArgs.e(1, this.eaO);
+      if (this.BaseResponse == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(114063);
+        throw paramVarArgs;
       }
-      paramVarArgs.aM(2, this.pVR);
-      paramVarArgs.aM(3, this.KWR);
-      paramVarArgs.bb(4, this.seq);
-      AppMethodBeat.o(114074);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.oE(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(114063);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.eaO == null) {
-        break label350;
+      if (this.BaseResponse == null) {
+        break label336;
       }
     }
-    label350:
-    for (paramInt = g.a.a.b.b.a.f(1, this.eaO) + 0;; paramInt = 0)
+    label336:
+    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bu(2, this.pVR);
-      int j = g.a.a.b.b.a.bu(3, this.KWR);
-      int k = g.a.a.b.b.a.r(4, this.seq);
-      AppMethodBeat.o(114074);
-      return paramInt + i + j + k;
+      AppMethodBeat.o(114063);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(114074);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(114063);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(114063);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         dxh localdxh = (dxh)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(114074);
+          AppMethodBeat.o(114063);
           return -1;
-        case 1: 
-          localdxh.eaO = locala.UbS.readString();
-          AppMethodBeat.o(114074);
-          return 0;
-        case 2: 
-          localdxh.pVR = locala.UbS.zi();
-          AppMethodBeat.o(114074);
-          return 0;
-        case 3: 
-          localdxh.KWR = locala.UbS.zi();
-          AppMethodBeat.o(114074);
-          return 0;
         }
-        localdxh.seq = locala.UbS.zl();
-        AppMethodBeat.o(114074);
+        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          jh localjh = new jh();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localjh.parseFrom((byte[])localObject);
+          }
+          localdxh.BaseResponse = localjh;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(114063);
         return 0;
       }
-      AppMethodBeat.o(114074);
+      AppMethodBeat.o(114063);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dxh
  * JD-Core Version:    0.7.0.1
  */

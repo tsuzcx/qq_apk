@@ -9,18 +9,18 @@ import java.util.Set;
 
 public final class b
 {
-  private static final Set<Object> hnC;
-  private static final Map<String, Set<c>> hno;
+  private static final Map<String, Set<c>> jZc;
+  private static final Set<Object> jZr;
   
   static
   {
     AppMethodBeat.i(158826);
-    hnC = new HashSet();
-    hno = new HashMap();
+    jZr = new HashSet();
+    jZc = new HashMap();
     AppMethodBeat.o(158826);
   }
   
-  public static void Ft(String paramString)
+  public static void Mt(String paramString)
   {
     AppMethodBeat.i(158825);
     if ((paramString == null) || (paramString.length() == 0))
@@ -29,23 +29,23 @@ public final class b
       return;
     }
     Set localSet;
-    synchronized (hno)
+    synchronized (jZc)
     {
-      localSet = (Set)hno.remove(paramString);
+      localSet = (Set)jZc.remove(paramString);
       if (localSet == null)
       {
         AppMethodBeat.o(158825);
         return;
       }
     }
-    com.tencent.mm.ipcinvoker.h.b.i("IPC.ObjectRecycler", "recycleAll(%s)", new Object[] { paramString });
+    com.tencent.mm.ipcinvoker.h.c.i("IPC.ObjectRecycler", "recycleAll(%s)", new Object[] { paramString });
     try
     {
       paramString = localSet.iterator();
       while (paramString.hasNext())
       {
         ??? = (c)paramString.next();
-        com.tencent.mm.ipcinvoker.h.b.i("IPC.ObjectRecycler", "recycle(%s)", new Object[] { Integer.valueOf(???.hashCode()) });
+        com.tencent.mm.ipcinvoker.h.c.i("IPC.ObjectRecycler", "recycle(%s)", new Object[] { Integer.valueOf(???.hashCode()) });
         ((c)???).recycle();
       }
       localSet.clear();
@@ -69,19 +69,20 @@ public final class b
     label125:
     for (;;)
     {
-      synchronized (hno)
+      synchronized (jZc)
       {
-        localObject = (Set)hno.get(paramString);
+        localObject = (Set)jZc.get(paramString);
         if (localObject != null) {
           break label125;
         }
         localObject = new HashSet();
-        hno.put(paramString, localObject);
-        com.tencent.mm.ipcinvoker.h.b.i("IPC.ObjectRecycler", "addIntoSet(%s)", new Object[] { paramString });
+        jZc.put(paramString, localObject);
+        com.tencent.mm.ipcinvoker.h.c.i("IPC.ObjectRecycler", "addIntoSet(%s)", new Object[] { paramString });
       }
       try
       {
         boolean bool = ((Set)localObject).add(paramc);
+        AppMethodBeat.o(158823);
         return bool;
       }
       finally
@@ -103,16 +104,16 @@ public final class b
       return false;
     }
     Set localSet;
-    synchronized (hno)
+    synchronized (jZc)
     {
-      localSet = (Set)hno.get(paramString);
+      localSet = (Set)jZc.get(paramString);
       if (localSet == null)
       {
         AppMethodBeat.o(158824);
         return false;
       }
     }
-    com.tencent.mm.ipcinvoker.h.b.i("IPC.ObjectRecycler", "removeFromSet(%s)", new Object[] { paramString });
+    com.tencent.mm.ipcinvoker.h.c.i("IPC.ObjectRecycler", "removeFromSet(%s)", new Object[] { paramString });
     try
     {
       boolean bool = localSet.remove(paramc);
@@ -127,14 +128,14 @@ public final class b
   public static void br(Object paramObject)
   {
     AppMethodBeat.i(158821);
-    hnC.add(paramObject);
+    jZr.add(paramObject);
     AppMethodBeat.o(158821);
   }
   
   public static void bs(Object paramObject)
   {
     AppMethodBeat.i(158822);
-    hnC.remove(paramObject);
+    jZr.remove(paramObject);
     AppMethodBeat.o(158822);
   }
 }

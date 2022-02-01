@@ -1,6 +1,6 @@
 package com.tencent.magicbrush.handler.fs;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 
 @Keep
 public abstract interface IMBFileSystem
@@ -9,7 +9,7 @@ public abstract interface IMBFileSystem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.magicbrush.handler.fs.IMBFileSystem
  * JD-Core Version:    0.7.0.1
  */

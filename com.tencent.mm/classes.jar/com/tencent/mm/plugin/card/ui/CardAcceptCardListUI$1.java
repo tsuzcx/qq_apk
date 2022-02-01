@@ -14,14 +14,14 @@ final class CardAcceptCardListUI$1
   {
     AppMethodBeat.i(113150);
     Log.v("MicroMsg.CardAcceptCardListUI", "setBackBtn cancel");
-    CardAcceptCardListUI.a(this.pYO, 1);
+    CardAcceptCardListUI.a(this.tuK, 1);
     AppMethodBeat.o(113150);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardAcceptCardListUI.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,14 +20,14 @@ public final class b
     AppMethodBeat.i(23148);
     Log.i("MicroMsg.exdevice.ExDeviceCmdAuth", "------setAuthResponse------ret = " + paramInt + "errMsg = " + paramString);
     com.tencent.mm.plugin.exdevice.f.b localb = new com.tencent.mm.plugin.exdevice.f.b();
-    localb.rCc = aQ(paramInt, paramString);
-    localb.rBJ = com.tencent.mm.bw.b.cD(paramArrayOfByte);
-    this.rxz = localb;
-    this.rxx = 20001;
+    localb.vhK = aP(paramInt, paramString);
+    localb.vhr = com.tencent.mm.cd.b.cU(paramArrayOfByte);
+    this.vdf = localb;
+    this.vdd = 20001;
     AppMethodBeat.o(23148);
   }
   
-  protected final com.tencent.mm.bw.a bu(byte[] paramArrayOfByte)
+  protected final com.tencent.mm.cd.a bI(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23149);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
@@ -40,8 +40,8 @@ public final class b
     try
     {
       locala.parseFrom(paramArrayOfByte);
-      this.rxA = locala;
-      Log.i("MicroMsg.exdevice.ExDeviceCmdAuth", "------AuthRequest------ ClientVersion = " + locala.rBC + " DeviceName = " + locala.oTI + " Language = " + locala.rBI + " TimeZone = " + locala.rBH);
+      this.vdg = locala;
+      Log.i("MicroMsg.exdevice.ExDeviceCmdAuth", "------AuthRequest------ ClientVersion = " + locala.vhk + " DeviceName = " + locala.rVG + " Language = " + locala.vhq + " TimeZone = " + locala.vhp);
       AppMethodBeat.o(23149);
       return locala;
     }
@@ -56,7 +56,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.c.b
  * JD-Core Version:    0.7.0.1
  */

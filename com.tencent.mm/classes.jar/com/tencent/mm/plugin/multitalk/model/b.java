@@ -2,41 +2,41 @@ package com.tencent.mm.plugin.multitalk.model;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/model/AvatarViewManagerUiCallback;", "", "getStatusBarHeight", "", "getTalkingAvatarContainerSize", "", "hideActionView", "", "hideMiniAction", "", "hideAvatarIcon", "hideScreenCastPageElement", "is2GOr3G", "isCameraOpen", "setToNormal", "setToScreenCast", "showActionView", "showAvatarIcon", "showNickName", "name", "", "autoDismiss", "showScreenCastPageElement", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/model/AvatarViewManagerUiCallback;", "", "getStatusBarHeight", "", "getTalkingAvatarContainerSize", "", "hideActionView", "", "hideMiniAction", "", "hideAvatarIcon", "hideScreenCastPageElement", "is2GOr3G", "isCameraOpen", "setToNormal", "setToScreenCast", "showActionView", "showAvatarIcon", "showNickName", "name", "", "autoDismiss", "showScreenCastPageElement", "plugin-multitalk_release"})
 public abstract interface b
 {
-  public abstract void bQ(String paramString, boolean paramBoolean);
+  public abstract boolean aXN();
   
-  public abstract int deu();
+  public abstract void bX(String paramString, boolean paramBoolean);
   
-  public abstract int[] eme();
+  public abstract int dvN();
   
-  public abstract boolean emf();
+  public abstract int[] eVT();
   
-  public abstract void emg();
+  public abstract boolean eVU();
   
-  public abstract void emh();
+  public abstract void eVV();
   
-  public abstract void emi();
+  public abstract void eVW();
   
-  public abstract void emj();
+  public abstract void eVX();
   
-  public abstract void emk();
+  public abstract void eVY();
   
-  public abstract void eml();
+  public abstract void eVZ();
   
-  public abstract void emm();
+  public abstract void eWa();
   
-  public abstract void emn();
+  public abstract void eWb();
   
-  public abstract boolean emo();
+  public abstract void eWc();
   
-  @l(hxD={1, 1, 16})
+  @l(iBK={1, 1, 16})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.b
  * JD-Core Version:    0.7.0.1
  */

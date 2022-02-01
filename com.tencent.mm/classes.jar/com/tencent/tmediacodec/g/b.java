@@ -4,99 +4,99 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static String SmV;
-  private static boolean SmW;
-  private static a SmX;
   private static String TAG;
+  private static String ZPG;
+  private static boolean ZPH;
+  private static a ZPI;
   private static int mLogLevel;
   
   static
   {
-    AppMethodBeat.i(190190);
+    AppMethodBeat.i(224604);
     TAG = "LogUtils";
-    SmV = "TMediaCodec";
+    ZPG = "TMediaCodec";
     mLogLevel = 2;
-    SmW = true;
-    SmX = new a() {};
-    AppMethodBeat.o(190190);
+    ZPH = true;
+    ZPI = new a() {};
+    AppMethodBeat.o(224604);
   }
   
-  private static boolean asw(int paramInt)
+  private static boolean aCk(int paramInt)
   {
-    return (SmW) && (paramInt >= mLogLevel);
+    return (ZPH) && (paramInt >= mLogLevel);
   }
   
-  public static void bqP(String paramString)
+  public static void bDO(String paramString)
   {
-    AppMethodBeat.i(190183);
-    if (asw(2)) {
-      new StringBuilder().append(SmV).append(".").append(paramString);
+    AppMethodBeat.i(224591);
+    if (aCk(2)) {
+      new StringBuilder().append(ZPG).append(".").append(paramString);
     }
-    AppMethodBeat.o(190183);
+    AppMethodBeat.o(224591);
   }
   
-  public static void bqQ(String paramString)
+  public static void bDP(String paramString)
   {
-    AppMethodBeat.i(190184);
-    if (asw(3)) {
-      new StringBuilder().append(SmV).append(".").append(paramString);
+    AppMethodBeat.i(224592);
+    if (aCk(3)) {
+      new StringBuilder().append(ZPG).append(".").append(paramString);
     }
-    AppMethodBeat.o(190184);
+    AppMethodBeat.o(224592);
   }
   
-  public static void bqR(String paramString)
+  public static void bDQ(String paramString)
   {
-    AppMethodBeat.i(190185);
-    if (asw(4)) {
-      new StringBuilder().append(SmV).append(".").append(paramString);
+    AppMethodBeat.i(224593);
+    if (aCk(4)) {
+      new StringBuilder().append(ZPG).append(".").append(paramString);
     }
-    AppMethodBeat.o(190185);
+    AppMethodBeat.o(224593);
   }
   
-  public static void bqS(String paramString)
+  public static void bDR(String paramString)
   {
-    AppMethodBeat.i(190186);
-    if (asw(5)) {
-      new StringBuilder().append(SmV).append(".").append(paramString);
+    AppMethodBeat.i(224594);
+    if (aCk(5)) {
+      new StringBuilder().append(ZPG).append(".").append(paramString);
     }
-    AppMethodBeat.o(190186);
+    AppMethodBeat.o(224594);
   }
   
-  public static void bqT(String paramString)
+  public static void bDS(String paramString)
   {
-    AppMethodBeat.i(190187);
-    if (asw(5)) {
-      new StringBuilder().append(SmV).append(".").append(paramString);
+    AppMethodBeat.i(224595);
+    if (aCk(5)) {
+      new StringBuilder().append(ZPG).append(".").append(paramString);
     }
-    AppMethodBeat.o(190187);
+    AppMethodBeat.o(224595);
   }
   
-  public static void bqU(String paramString)
+  public static void bDT(String paramString)
   {
-    AppMethodBeat.i(190188);
-    if (asw(6)) {
-      new StringBuilder().append(SmV).append(".").append(paramString);
+    AppMethodBeat.i(224596);
+    if (aCk(6)) {
+      new StringBuilder().append(ZPG).append(".").append(paramString);
     }
-    AppMethodBeat.o(190188);
+    AppMethodBeat.o(224596);
   }
   
-  public static void bqV(String paramString)
+  public static void bDU(String paramString)
   {
-    AppMethodBeat.i(190189);
-    if (asw(6)) {
-      new StringBuilder().append(SmV).append(".").append(paramString);
+    AppMethodBeat.i(224599);
+    if (aCk(6)) {
+      new StringBuilder().append(ZPG).append(".").append(paramString);
     }
-    AppMethodBeat.o(190189);
+    AppMethodBeat.o(224599);
   }
   
   public static boolean isLogEnable()
   {
-    return SmW;
+    return ZPH;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tmediacodec.g.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,94 @@
 package com.tencent.mm.plugin.record.ui;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.widget.BaseAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.g.a.ya;
-import com.tencent.mm.g.a.ya.a;
+import com.tencent.mm.R.l;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.f.a.zh;
+import com.tencent.mm.f.a.zh.a;
+import com.tencent.mm.f.a.zk;
+import com.tencent.mm.f.a.zk.a;
 import com.tencent.mm.plugin.record.b.w;
 import com.tencent.mm.plugin.record.b.x;
-import com.tencent.mm.protocal.protobuf.aml;
+import com.tencent.mm.protocal.protobuf.anm;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.h;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class i
 {
-  public BaseAdapter BIB;
-  a BIC;
-  boolean BID;
-  private IListener BIE;
-  Pattern BIF;
-  Pattern BIG;
+  public BaseAdapter HEJ;
+  a HEK;
+  boolean HEL;
+  private IListener HEM;
+  Pattern HEN;
+  Pattern HEO;
   Context context;
   
   public i(Context paramContext, BaseAdapter paramBaseAdapter, a parama)
   {
     AppMethodBeat.i(27996);
-    this.BIE = new i.1(this);
-    this.BIF = Pattern.compile("[a-zA-z]");
-    this.BIG = Pattern.compile("[一-龥]");
+    this.HEM = new IListener() {};
+    this.HEN = Pattern.compile("[a-zA-z]");
+    this.HEO = Pattern.compile("[一-龥]");
     this.context = paramContext;
-    this.BIB = paramBaseAdapter;
-    this.BIC = parama;
-    EventCenter.instance.addListener(this.BIE);
+    this.HEJ = paramBaseAdapter;
+    this.HEK = parama;
+    EventCenter.instance.addListener(this.HEM);
     AppMethodBeat.o(27996);
   }
   
-  public final w Vx(int paramInt)
+  public final void aR(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(27997);
+    w localw = acf(paramInt);
+    if ((!Util.isNullOrNil(localw.HDx)) && (!paramBoolean))
+    {
+      localw.status = 2;
+      this.HEJ.notifyDataSetChanged();
+      AppMethodBeat.o(27997);
+      return;
+    }
+    if (paramInt >= this.HEK.HDy.size())
+    {
+      AppMethodBeat.o(27997);
+      return;
+    }
+    zh localzh = new zh();
+    localzh.fYE.fYG = false;
+    localzh.fYE.id = String.valueOf(paramInt);
+    localzh.fYE.fYF = ((anm)this.HEK.HDy.get(paramInt)).desc;
+    zh.a locala = localzh.fYE;
+    if (localw.GdC != null) {}
+    for (byte[] arrayOfByte = localw.GdC.UH;; arrayOfByte = null)
+    {
+      locala.fYH = arrayOfByte;
+      localzh.fYE.type = 4;
+      EventCenter.instance.publish(localzh);
+      localw.status = 1;
+      this.HEJ.notifyDataSetChanged();
+      this.HEL = true;
+      AppMethodBeat.o(27997);
+      return;
+    }
+  }
+  
+  public final w acf(int paramInt)
   {
     AppMethodBeat.i(27998);
-    Object localObject = this.BIC.BHt.iAd.iterator();
+    Object localObject = this.HEK.HDz.lpz.iterator();
     while (((Iterator)localObject).hasNext())
     {
       w localw = (w)((Iterator)localObject).next();
@@ -57,64 +101,29 @@ public final class i
     localObject = new w();
     ((w)localObject).id = paramInt;
     ((w)localObject).status = 0;
-    this.BIC.BHt.iAd.add(localObject);
+    this.HEK.HDz.lpz.add(localObject);
     AppMethodBeat.o(27998);
     return localObject;
   }
   
-  public final void aK(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(27997);
-    w localw = Vx(paramInt);
-    if ((!Util.isNullOrNil(localw.BHr)) && (!paramBoolean))
-    {
-      localw.status = 2;
-      this.BIB.notifyDataSetChanged();
-      AppMethodBeat.o(27997);
-      return;
-    }
-    if (paramInt >= this.BIC.BHs.size())
-    {
-      AppMethodBeat.o(27997);
-      return;
-    }
-    ya localya = new ya();
-    localya.eep.eer = false;
-    localya.eep.id = String.valueOf(paramInt);
-    localya.eep.eeq = ((aml)this.BIC.BHs.get(paramInt)).desc;
-    ya.a locala = localya.eep;
-    if (localw.AqP != null) {}
-    for (byte[] arrayOfByte = localw.AqP.zy;; arrayOfByte = null)
-    {
-      locala.ees = arrayOfByte;
-      localya.eep.type = 4;
-      EventCenter.instance.publish(localya);
-      localw.status = 1;
-      this.BIB.notifyDataSetChanged();
-      this.BID = true;
-      AppMethodBeat.o(27997);
-      return;
-    }
-  }
-  
-  public final byte[] eID()
+  public final byte[] fuI()
   {
     AppMethodBeat.i(27999);
-    EventCenter.instance.removeListener(this.BIE);
+    EventCenter.instance.removeListener(this.HEM);
     Object localObject = new x();
-    if ((this.BIC != null) && (this.BIC.BHt != null) && (this.BIC.BHt.iAd != null))
+    if ((this.HEK != null) && (this.HEK.HDz != null) && (this.HEK.HDz.lpz != null))
     {
-      Iterator localIterator = this.BIC.BHt.iAd.iterator();
+      Iterator localIterator = this.HEK.HDz.lpz.iterator();
       while (localIterator.hasNext())
       {
         w localw = (w)localIterator.next();
-        if (!Util.isNullOrNil(localw.BHr)) {
-          ((x)localObject).iAd.add(localw);
+        if (!Util.isNullOrNil(localw.HDx)) {
+          ((x)localObject).lpz.add(localw);
         }
       }
     }
-    this.BIB = null;
-    this.BIC = null;
+    this.HEJ = null;
+    this.HEK = null;
     this.context = null;
     try
     {
@@ -131,7 +140,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.record.ui.i
  * JD-Core Version:    0.7.0.1
  */

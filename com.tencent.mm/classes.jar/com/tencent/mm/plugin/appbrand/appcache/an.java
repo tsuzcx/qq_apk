@@ -1,91 +1,89 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ab.c;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.f.c.ft;
+import com.tencent.mm.plugin.appbrand.ab.b;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.lang.reflect.Field;
+import java.util.Locale;
+import java.util.Map;
 
-public class an
-  extends c<am>
+public final class an
+  extends ft
+  implements b
 {
-  public static final String[] iBh;
-  private final ISQLiteDatabase kLX;
+  static final IAutoDBItem.MAutoDBInfo lqK;
+  static final String[] nDP;
   
   static
   {
-    AppMethodBeat.i(90563);
-    iBh = new String[] { MAutoStorage.getCreateSQLs(am.iBg, "PredownloadEncryptPkgInfo") };
-    AppMethodBeat.o(90563);
+    int i = 0;
+    AppMethodBeat.i(90559);
+    nDP = new String[] { "appId", "type", "version" };
+    Object localObject1 = new IAutoDBItem.MAutoDBInfo();
+    ((IAutoDBItem.MAutoDBInfo)localObject1).fields = new Field[5];
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns = new String[6];
+    Object localObject2 = new StringBuilder();
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[0] = "appId";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("appId", "TEXT");
+    ((StringBuilder)localObject2).append(" appId TEXT");
+    ((StringBuilder)localObject2).append(", ");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[1] = "version";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("version", "INTEGER");
+    ((StringBuilder)localObject2).append(" version INTEGER");
+    ((StringBuilder)localObject2).append(", ");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[2] = "type";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("type", "INTEGER");
+    ((StringBuilder)localObject2).append(" type INTEGER");
+    ((StringBuilder)localObject2).append(", ");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[3] = "pkgMd5";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("pkgMd5", "TEXT");
+    ((StringBuilder)localObject2).append(" pkgMd5 TEXT");
+    ((StringBuilder)localObject2).append(", ");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[4] = "pkgPath";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("pkgPath", "TEXT");
+    ((StringBuilder)localObject2).append(" pkgPath TEXT");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[5] = "rowid";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).sql = ((StringBuilder)localObject2).toString();
+    lqK = (IAutoDBItem.MAutoDBInfo)localObject1;
+    localObject1 = " PRIMARY KEY ( ";
+    localObject2 = nDP;
+    int j = localObject2.length;
+    while (i < j)
+    {
+      localObject3 = localObject2[i];
+      localObject1 = (String)localObject1 + ", " + (String)localObject3;
+      i += 1;
+    }
+    localObject1 = ((String)localObject1).replaceFirst(",", "");
+    localObject1 = (String)localObject1 + " )";
+    localObject2 = new StringBuilder();
+    Object localObject3 = lqK;
+    ((IAutoDBItem.MAutoDBInfo)localObject3).sql = (((IAutoDBItem.MAutoDBInfo)localObject3).sql + "," + (String)localObject1);
+    AppMethodBeat.o(90559);
   }
   
-  public an(ISQLiteDatabase paramISQLiteDatabase)
+  public final String bGo()
   {
-    super(paramISQLiteDatabase, am.iBg, "PredownloadEncryptPkgInfo", am.INDEX_CREATE);
-    this.kLX = paramISQLiteDatabase;
+    AppMethodBeat.i(90558);
+    String str = String.format(Locale.US, "EncryptPkgInfo[%s %d %d]", new Object[] { this.field_appId, Integer.valueOf(this.field_type), Integer.valueOf(this.field_version) });
+    AppMethodBeat.o(90558);
+    return str;
   }
   
-  static boolean a(am paramam)
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(90562);
-    if (Util.isNullOrNil(paramam.field_pkgPath))
-    {
-      Log.i("MicroMsg.AppBrand.PredownloadEncryptPkgStorage", "checkPkgIntegrity, with %s path nil", new Object[] { paramam.toShortString() });
-      AppMethodBeat.o(90562);
-      return false;
-    }
-    if (Util.isNullOrNil(paramam.field_pkgMd5))
-    {
-      Log.i("MicroMsg.AppBrand.PredownloadEncryptPkgStorage", "checkPkgIntegrity, with %s record md5 nil", new Object[] { paramam.toShortString() });
-      AppMethodBeat.o(90562);
-      return false;
-    }
-    String str = s.bhK(paramam.field_pkgPath);
-    Log.i("MicroMsg.AppBrand.PredownloadEncryptPkgStorage", "checkPkgIntegrity with %s, file_md5(%s), record_md5(%s)", new Object[] { paramam.toShortString(), str, paramam.field_pkgMd5 });
-    boolean bool = paramam.field_pkgMd5.equals(str);
-    AppMethodBeat.o(90562);
-    return bool;
+    return lqK;
   }
   
-  public final am A(String paramString, int paramInt1, int paramInt2)
+  public final String[] getKeys()
   {
-    AppMethodBeat.i(90561);
-    paramString = z(paramString, paramInt1, paramInt2);
-    if ((paramString != null) && (a(paramString)))
-    {
-      AppMethodBeat.o(90561);
-      return paramString;
-    }
-    AppMethodBeat.o(90561);
-    return null;
-  }
-  
-  public final am z(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(90560);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(90560);
-      return null;
-    }
-    am localam = new am();
-    localam.field_appId = paramString;
-    localam.field_type = paramInt1;
-    localam.field_version = paramInt2;
-    if (get(localam, am.kJX))
-    {
-      AppMethodBeat.o(90560);
-      return localam;
-    }
-    AppMethodBeat.o(90560);
-    return null;
+    return nDP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.an
  * JD-Core Version:    0.7.0.1
  */

@@ -8,16 +8,16 @@ import kotlin.l.b.a.b.f.a;
 
 public final class j$a
 {
-  public final a Tfj;
-  private final byte[] Tpa;
-  private final g Tpb;
+  public final a aaId;
+  private final byte[] aaRU;
+  private final g aaRV;
   
   private j$a(a parama, byte[] paramArrayOfByte, g paramg)
   {
     AppMethodBeat.i(57580);
-    this.Tfj = parama;
-    this.Tpa = paramArrayOfByte;
-    this.Tpb = paramg;
+    this.aaId = parama;
+    this.aaRU = null;
+    this.aaRV = paramg;
     AppMethodBeat.o(57580);
   }
   
@@ -29,7 +29,7 @@ public final class j$a
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((!p.j(this.Tfj, paramObject.Tfj)) || (!p.j(this.Tpa, paramObject.Tpa)) || (!p.j(this.Tpb, paramObject.Tpb))) {}
+        if ((!p.h(this.aaId, paramObject.aaId)) || (!p.h(this.aaRU, paramObject.aaRU)) || (!p.h(this.aaRV, paramObject.aaRV))) {}
       }
     }
     else
@@ -45,12 +45,12 @@ public final class j$a
   {
     int k = 0;
     AppMethodBeat.i(57583);
-    Object localObject = this.Tfj;
+    Object localObject = this.aaId;
     int i;
     if (localObject != null)
     {
       i = localObject.hashCode();
-      localObject = this.Tpa;
+      localObject = this.aaRU;
       if (localObject == null) {
         break label80;
       }
@@ -58,7 +58,7 @@ public final class j$a
     label80:
     for (int j = Arrays.hashCode((byte[])localObject);; j = 0)
     {
-      localObject = this.Tpb;
+      localObject = this.aaRV;
       if (localObject != null) {
         k = localObject.hashCode();
       }
@@ -72,14 +72,14 @@ public final class j$a
   public final String toString()
   {
     AppMethodBeat.i(57582);
-    String str = "Request(classId=" + this.Tfj + ", previouslyFoundClassFileContent=" + Arrays.toString(this.Tpa) + ", outerClass=" + this.Tpb + ")";
+    String str = "Request(classId=" + this.aaId + ", previouslyFoundClassFileContent=" + Arrays.toString(this.aaRU) + ", outerClass=" + this.aaRV + ")";
     AppMethodBeat.o(57582);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.j.a
  * JD-Core Version:    0.7.0.1
  */

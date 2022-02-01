@@ -14,32 +14,32 @@ import org.xmlpull.v1.XmlSerializer;
 public final class b
   implements ITPMediaComposition
 {
-  private int RYJ;
-  private int RYK;
-  private int RYL;
-  private List<ITPMediaTrack> RYM;
-  private List<ITPMediaTrack> RYN;
-  private List<ITPMediaTrack> RYO;
+  private int ZBt;
+  private int ZBu;
+  private int ZBv;
+  private List<ITPMediaTrack> ZBw;
+  private List<ITPMediaTrack> ZBx;
+  private List<ITPMediaTrack> ZBy;
   
   public b()
   {
-    AppMethodBeat.i(189107);
-    this.RYJ = 0;
-    this.RYK = 0;
-    this.RYL = 0;
-    this.RYM = new ArrayList(1);
-    this.RYN = new ArrayList(1);
-    this.RYO = new ArrayList(1);
-    AppMethodBeat.o(189107);
+    AppMethodBeat.i(220105);
+    this.ZBt = 0;
+    this.ZBu = 0;
+    this.ZBv = 0;
+    this.ZBw = new ArrayList(1);
+    this.ZBx = new ArrayList(1);
+    this.ZBy = new ArrayList(1);
+    AppMethodBeat.o(220105);
   }
   
   private long getAudioDuration()
   {
-    AppMethodBeat.i(189118);
+    AppMethodBeat.i(220131);
     long l2;
-    if (this.RYN != null)
+    if (this.ZBx != null)
     {
-      Iterator localIterator = this.RYN.iterator();
+      Iterator localIterator = this.ZBx.iterator();
       long l1 = 0L;
       l2 = l1;
       if (!localIterator.hasNext()) {
@@ -57,17 +57,17 @@ public final class b
     {
       break;
       l2 = 0L;
-      AppMethodBeat.o(189118);
+      AppMethodBeat.o(220131);
       return l2;
     }
   }
   
-  private int hnf()
+  private int iqG()
   {
     try
     {
-      int i = this.RYJ + 1;
-      this.RYJ = i;
+      int i = this.ZBt + 1;
+      this.ZBt = i;
       return i;
     }
     finally
@@ -77,12 +77,12 @@ public final class b
     }
   }
   
-  private int hng()
+  private int iqH()
   {
     try
     {
-      int i = this.RYK + 1;
-      this.RYK = i;
+      int i = this.ZBu + 1;
+      this.ZBu = i;
       return i;
     }
     finally
@@ -92,12 +92,12 @@ public final class b
     }
   }
   
-  private int hnh()
+  private int iqI()
   {
     try
     {
-      int i = this.RYL + 1;
-      this.RYL = i;
+      int i = this.ZBv + 1;
+      this.ZBv = i;
       return i;
     }
     finally
@@ -107,13 +107,13 @@ public final class b
     }
   }
   
-  private long hni()
+  private long iqJ()
   {
-    AppMethodBeat.i(189117);
+    AppMethodBeat.i(220129);
     long l2;
-    if (this.RYM != null)
+    if (this.ZBw != null)
     {
-      Iterator localIterator = this.RYM.iterator();
+      Iterator localIterator = this.ZBw.iterator();
       long l1 = 0L;
       l2 = l1;
       if (!localIterator.hasNext()) {
@@ -131,7 +131,7 @@ public final class b
     {
       break;
       l2 = 0L;
-      AppMethodBeat.o(189117);
+      AppMethodBeat.o(220129);
       return l2;
     }
   }
@@ -140,10 +140,10 @@ public final class b
   {
     try
     {
-      AppMethodBeat.i(189110);
-      d locald = new d(hnh(), 1);
-      this.RYO.add(locald);
-      AppMethodBeat.o(189110);
+      AppMethodBeat.i(220110);
+      d locald = new d(iqI(), 1);
+      this.ZBy.add(locald);
+      AppMethodBeat.o(220110);
       return locald;
     }
     finally
@@ -157,10 +157,10 @@ public final class b
   {
     try
     {
-      AppMethodBeat.i(189109);
-      d locald = new d(hng(), 3);
-      this.RYN.add(locald);
-      AppMethodBeat.o(189109);
+      AppMethodBeat.i(220109);
+      d locald = new d(iqH(), 3);
+      this.ZBx.add(locald);
+      AppMethodBeat.o(220109);
       return locald;
     }
     finally
@@ -174,10 +174,10 @@ public final class b
   {
     try
     {
-      AppMethodBeat.i(189108);
-      d locald = new d(hnf(), 2);
-      this.RYM.add(locald);
-      AppMethodBeat.o(189108);
+      AppMethodBeat.i(220107);
+      d locald = new d(iqG(), 2);
+      this.ZBw.add(locald);
+      AppMethodBeat.o(220107);
       return locald;
     }
     finally
@@ -189,14 +189,14 @@ public final class b
   
   public final List<ITPMediaTrack> getAllAVTracks()
   {
-    return this.RYO;
+    return this.ZBy;
   }
   
   public final List<ITPMediaTrack> getAllAudioTracks()
   {
     try
     {
-      List localList = this.RYN;
+      List localList = this.ZBx;
       return localList;
     }
     finally
@@ -210,7 +210,7 @@ public final class b
   {
     try
     {
-      List localList = this.RYM;
+      List localList = this.ZBw;
       return localList;
     }
     finally
@@ -222,14 +222,14 @@ public final class b
   
   public final long getDurationMs()
   {
-    AppMethodBeat.i(189114);
+    AppMethodBeat.i(220122);
     Object localObject;
     long l1;
     long l2;
-    if (!com.tencent.thumbplayer.utils.b.isEmpty(this.RYO)) {
-      if (this.RYO != null)
+    if (!com.tencent.thumbplayer.utils.b.isEmpty(this.ZBy)) {
+      if (this.ZBy != null)
       {
-        localObject = this.RYO.iterator();
+        localObject = this.ZBy.iterator();
         l1 = 0L;
         l2 = l1;
         if (!((Iterator)localObject).hasNext()) {
@@ -248,16 +248,16 @@ public final class b
       break;
       l2 = 0L;
       label86:
-      AppMethodBeat.o(189114);
+      AppMethodBeat.o(220122);
       return l2;
       l2 = getAudioDuration();
-      long l4 = hni();
+      long l4 = iqJ();
       long l3;
       int i;
       if (l4 > l2)
       {
         l3 = l4;
-        localObject = c.RYP;
+        localObject = c.ZBz;
         i = -1;
         switch (((String)localObject).hashCode())
         {
@@ -274,7 +274,7 @@ public final class b
       }
       for (;;)
       {
-        AppMethodBeat.o(189114);
+        AppMethodBeat.o(220122);
         return l1;
         l3 = l2;
         break;
@@ -310,7 +310,7 @@ public final class b
   
   public final String getUrl()
   {
-    AppMethodBeat.i(189116);
+    AppMethodBeat.i(220127);
     for (;;)
     {
       List localList1;
@@ -329,24 +329,24 @@ public final class b
           ((XmlSerializer)localObject).endTag("", "assets");
           ((XmlSerializer)localObject).endDocument();
           localObject = localStringWriter.toString();
-          AppMethodBeat.o(189116);
+          AppMethodBeat.o(220127);
           return localObject;
         }
         localList1 = getAllVideoTracks();
         localList2 = getAllAudioTracks();
         if ((com.tencent.thumbplayer.utils.b.isEmpty(localList1)) && (com.tencent.thumbplayer.utils.b.isEmpty(localList2)))
         {
-          AppMethodBeat.o(189116);
+          AppMethodBeat.o(220127);
           return "";
         }
       }
       catch (Exception localException)
       {
         g.e("TPMediaComposition", localException);
-        AppMethodBeat.o(189116);
+        AppMethodBeat.o(220127);
         return null;
       }
-      long l = ((b)this).hni();
+      long l = ((b)this).iqJ();
       f.a(localException, localList1, 2, ((b)this).getAudioDuration());
       f.a(localException, localList2, 3, l);
     }
@@ -354,36 +354,36 @@ public final class b
   
   public final void release()
   {
-    AppMethodBeat.i(189115);
-    if (this.RYM != null)
+    AppMethodBeat.i(220125);
+    if (this.ZBw != null)
     {
-      this.RYM.clear();
-      this.RYM = null;
+      this.ZBw.clear();
+      this.ZBw = null;
     }
-    if (this.RYN != null)
+    if (this.ZBx != null)
     {
-      this.RYN.clear();
-      this.RYN = null;
+      this.ZBx.clear();
+      this.ZBx = null;
     }
-    if (this.RYO != null)
+    if (this.ZBy != null)
     {
-      this.RYO.clear();
-      this.RYO = null;
+      this.ZBy.clear();
+      this.ZBy = null;
     }
-    AppMethodBeat.o(189115);
+    AppMethodBeat.o(220125);
   }
   
   public final boolean removeAVTrack(ITPMediaTrack paramITPMediaTrack)
   {
-    AppMethodBeat.i(189113);
+    AppMethodBeat.i(220115);
     if (paramITPMediaTrack == null)
     {
       paramITPMediaTrack = new IllegalArgumentException("remove audio track , track is null .");
-      AppMethodBeat.o(189113);
+      AppMethodBeat.o(220115);
       throw paramITPMediaTrack;
     }
-    boolean bool = this.RYO.remove(paramITPMediaTrack);
-    AppMethodBeat.o(189113);
+    boolean bool = this.ZBy.remove(paramITPMediaTrack);
+    AppMethodBeat.o(220115);
     return bool;
   }
   
@@ -391,17 +391,17 @@ public final class b
   {
     try
     {
-      AppMethodBeat.i(189112);
+      AppMethodBeat.i(220113);
       if (paramITPMediaTrack == null)
       {
         paramITPMediaTrack = new IllegalArgumentException("remove audio track , track is null .");
-        AppMethodBeat.o(189112);
+        AppMethodBeat.o(220113);
         throw paramITPMediaTrack;
       }
     }
     finally {}
-    boolean bool = this.RYN.remove(paramITPMediaTrack);
-    AppMethodBeat.o(189112);
+    boolean bool = this.ZBx.remove(paramITPMediaTrack);
+    AppMethodBeat.o(220113);
     return bool;
   }
   
@@ -409,23 +409,23 @@ public final class b
   {
     try
     {
-      AppMethodBeat.i(189111);
+      AppMethodBeat.i(220111);
       if (paramITPMediaTrack == null)
       {
         paramITPMediaTrack = new IllegalArgumentException("remove video track , track is null .");
-        AppMethodBeat.o(189111);
+        AppMethodBeat.o(220111);
         throw paramITPMediaTrack;
       }
     }
     finally {}
-    boolean bool = this.RYM.remove(paramITPMediaTrack);
-    AppMethodBeat.o(189111);
+    boolean bool = this.ZBw.remove(paramITPMediaTrack);
+    AppMethodBeat.o(220111);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.c.b
  * JD-Core Version:    0.7.0.1
  */

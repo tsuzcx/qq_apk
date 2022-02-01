@@ -1,57 +1,76 @@
 package com.tencent.mm.modelstat;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bv;
+import com.tencent.mm.protocal.protobuf.bw;
+import com.tencent.mm.protocal.protobuf.ce;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
+import java.util.LinkedList;
 
 public final class h
+  extends q
+  implements m
 {
-  long beginTime;
-  long cCv;
-  boolean ehd;
-  long endTime;
-  long jod;
-  long joe;
-  int rtType;
+  private i jQg;
+  private final d rr;
   
-  public h() {}
-  
-  public h(int paramInt, boolean paramBoolean, long paramLong)
+  public h(int paramInt1, String paramString, int paramInt2)
   {
-    this.rtType = paramInt;
-    this.ehd = paramBoolean;
-    this.jod = paramLong;
-    this.joe = 0L;
+    AppMethodBeat.i(94871);
+    Object localObject = new d.a();
+    ((d.a)localObject).lBU = new bv();
+    ((d.a)localObject).lBV = new bw();
+    ((d.a)localObject).uri = "/cgi-bin/mmoc-bin/ad/addatareport";
+    ((d.a)localObject).funcId = 1295;
+    ((d.a)localObject).lBW = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (bv)d.b.b(this.rr.lBR);
+    ce localce = new ce();
+    localce.RHQ = paramInt1;
+    localce.RHR = new b(paramString.getBytes());
+    localce.Crz = paramInt2;
+    ((bv)localObject).RHr.add(localce);
+    Log.i("MicroMsg.NetSceneAdDataReport", "init logId:%d, logStr:%s", new Object[] { Integer.valueOf(paramInt1), paramString });
+    AppMethodBeat.o(94871);
   }
   
-  public final void AH(long paramLong)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(151080);
-    if (this.jod == 0L) {
-      this.jod = paramLong;
-    }
-    this.cCv = (Util.currentTicks() - this.cCv);
-    this.endTime = Util.nowMilliSecond();
-    Log.d("MicroMsg.MultiSceneStat", "FIN: TIME:" + (this.endTime - this.beginTime) + " datalen:" + this.jod + " Count:" + this.joe + " type:" + this.rtType);
-    WatchDogPushReceiver.a(this);
-    AppMethodBeat.o(151080);
+    AppMethodBeat.i(94873);
+    this.jQg = parami;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(94873);
+    return i;
   }
   
-  public final void bgi()
+  public final int getType()
   {
-    AppMethodBeat.i(151079);
-    if (this.joe == 0L)
-    {
-      this.beginTime = Util.nowMilliSecond();
-      this.cCv = Util.currentTicks();
-    }
-    this.joe += 1L;
-    AppMethodBeat.o(151079);
+    return 1295;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(94872);
+    params = (bw)d.c.b(this.rr.lBS);
+    Log.i("MicroMsg.NetSceneAdDataReport", "onGYNetEnd, errType = %d, errCode = %d, ret=%d, msg=%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(params.ret), params.msg });
+    this.jQg.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(94872);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.modelstat.h
  * JD-Core Version:    0.7.0.1
  */

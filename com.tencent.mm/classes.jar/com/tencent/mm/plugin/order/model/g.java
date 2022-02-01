@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.order.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.wallet_core.model.k;
-import com.tencent.mm.protocal.protobuf.czr;
-import com.tencent.mm.protocal.protobuf.czs;
+import com.tencent.mm.protocal.protobuf.djf;
+import com.tencent.mm.protocal.protobuf.djg;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.c.w;
@@ -23,22 +23,22 @@ public final class g
   {
     AppMethodBeat.i(66686);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new czr();
-    ((d.a)localObject).iLO = new czs();
+    ((d.a)localObject).lBU = new djf();
+    ((d.a)localObject).lBV = new djg();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/paydeluserroll";
     ((d.a)localObject).funcId = 389;
-    ((d.a)localObject).iLP = 187;
+    ((d.a)localObject).lBW = 187;
     ((d.a)localObject).respCmdId = 1000000187;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (czr)this.rr.iLK.iLR;
-    ((czr)localObject).MEV = 1;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (djf)d.b.b(this.rr.lBR);
+    ((djf)localObject).TQH = 1;
     if (!Util.isNullOrNil(paramString1)) {
-      ((czr)localObject).AOT = paramString1;
+      ((djf)localObject).GIh = paramString1;
     }
     if (!Util.isNullOrNil(paramString2)) {
-      ((czr)localObject).APl = paramString2;
+      ((djf)localObject).GIz = paramString2;
     }
-    ((czr)localObject).Lcc = k.fQy();
+    ((djf)localObject).Sdp = k.gJe();
     AppMethodBeat.o(66686);
   }
   
@@ -51,14 +51,20 @@ public final class g
     return i;
   }
   
-  public final int eBi()
+  public final int fmP()
   {
-    return ((czr)this.rr.iLK.iLR).MEV;
+    AppMethodBeat.i(228295);
+    int i = ((djf)d.b.b(this.rr.lBR)).TQH;
+    AppMethodBeat.o(228295);
+    return i;
   }
   
-  public final String eBj()
+  public final String fmQ()
   {
-    return ((czr)this.rr.iLK.iLR).AOT;
+    AppMethodBeat.i(228296);
+    String str = ((djf)d.b.b(this.rr.lBR)).GIh;
+    AppMethodBeat.o(228296);
+    return str;
   }
   
   public final int getType()

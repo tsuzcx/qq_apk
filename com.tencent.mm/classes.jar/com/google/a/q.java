@@ -1,34 +1,8 @@
 package com.google.a;
 
-import java.lang.reflect.Method;
-
-final class q
+public enum q
 {
-  static final Class<?> bUf = ;
-  
-  private static Class<?> FZ()
-  {
-    try
-    {
-      Class localClass = Class.forName("com.google.a.p");
-      return localClass;
-    }
-    catch (ClassNotFoundException localClassNotFoundException) {}
-    return null;
-  }
-  
-  public static r Ga()
-  {
-    if (bUf != null) {
-      try
-      {
-        r localr = (r)bUf.getDeclaredMethod("getEmptyRegistry", new Class[0]).invoke(null, new Object[0]);
-        return localr;
-      }
-      catch (Exception localException) {}
-    }
-    return r.bUj;
-  }
+  private q() {}
 }
 
 

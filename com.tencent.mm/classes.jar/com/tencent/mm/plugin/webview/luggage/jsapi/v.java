@@ -2,10 +2,12 @@ package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
 import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.webview.luggage.g;
@@ -18,24 +20,24 @@ public class v
 {
   public final void a(Context paramContext, String paramString, br.a parama) {}
   
-  public final void b(final com.tencent.luggage.d.b<g>.a paramb)
+  public final void b(final b<g>.a paramb)
   {
-    AppMethodBeat.i(210944);
-    String str = paramb.ctb.csi.optString("localId");
+    AppMethodBeat.i(263970);
+    String str = paramb.crh.cqn.optString("localId");
     if (Util.isNullOrNil(str))
     {
       Log.e("MicroMsg.JsApiGetLocalImgData", "localId is nil");
-      paramb.c("invaild_localid", null);
-      AppMethodBeat.o(210944);
+      paramb.a("invaild_localid", null);
+      AppMethodBeat.o(263970);
       return;
     }
     IPCString localIPCString = new IPCString();
     localIPCString.value = str;
-    h.a(MainProcessIPCService.dkO, localIPCString, a.class, new d() {});
-    AppMethodBeat.o(210944);
+    j.a(MainProcessIPCService.PROCESS_NAME, localIPCString, a.class, new f() {});
+    AppMethodBeat.o(263970);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }
@@ -46,7 +48,7 @@ public class v
   }
   
   static class a
-    implements com.tencent.mm.ipcinvoker.b<IPCString, IPCString>
+    implements d<IPCString, IPCString>
   {}
 }
 

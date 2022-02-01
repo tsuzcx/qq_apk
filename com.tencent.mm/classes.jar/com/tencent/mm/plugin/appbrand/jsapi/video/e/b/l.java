@@ -1,36 +1,35 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.e.b;
 
-import android.net.Uri;
+import android.os.Handler;
+import com.google.android.exoplayer2.c.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/exo/UrlContentTypeInferer;", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/exo/IContentTypeInferer;", "()V", "infer", "", "uri", "Landroid/net/Uri;", "luggage-commons-jsapi-video-ext_release"})
 public final class l
-  implements h
+  extends a
 {
-  public static final l mCK;
-  
-  static
+  public l()
   {
-    AppMethodBeat.i(235246);
-    mCK = new l();
-    AppMethodBeat.o(235246);
+    this((byte)0);
   }
   
-  public final int r(Uri paramUri)
+  private l(byte paramByte) {}
+  
+  public l(Handler paramHandler, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(235245);
-    if ((paramUri != null) && (com.tencent.mm.plugin.appbrand.jsapi.video.l.aaW(paramUri.toString())))
-    {
-      AppMethodBeat.o(235245);
-      return 2;
-    }
-    AppMethodBeat.o(235245);
-    return 3;
+    super(paramHandler, paramInt1, paramInt2, paramInt3);
+  }
+  
+  protected final h bWB()
+  {
+    AppMethodBeat.i(229325);
+    m localm = new m();
+    AppMethodBeat.o(229325);
+    return localm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.e.b.l
  * JD-Core Version:    0.7.0.1
  */

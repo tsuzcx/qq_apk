@@ -1,200 +1,206 @@
 package com.tencent.mm.plugin.finder.live.widget;
 
-import android.os.Bundle;
+import android.content.Context;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.c.b.c;
-import com.tencent.mm.plugin.finder.live.model.o;
-import com.tencent.mm.plugin.finder.live.model.s;
-import com.tencent.mm.plugin.finder.live.plugin.bd;
-import com.tencent.mm.plugin.finder.live.plugin.d;
-import com.tencent.mm.plugin.finder.live.view.FinderLiveVisitorPluginLayout;
-import com.tencent.mm.plugin.finder.live.viewmodel.g;
-import com.tencent.mm.plugin.finder.storage.c;
-import com.tencent.mm.plugin.finder.utils.m;
-import com.tencent.mm.plugin.finder.utils.y;
-import com.tencent.mm.protocal.protobuf.axg;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.k.j;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.live.viewmodel.i.e;
+import com.tencent.mm.ui.MMActivity;
+import java.util.HashSet;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveVisitorShoppingEntranceWidget;", "", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "basePlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;)V", "TAG", "", "getBasePlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "globalLayoutCallbackCount", "", "globalLayoutCallbackFrequency", "getRoot", "()Landroid/view/ViewGroup;", "getStatusMonitor", "()Lcom/tencent/mm/live/plugin/ILiveStatus;", "checkVisible", "", "isVisible", "", "setVisible", "visible", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveGamePostLicenseWidget;", "", "activity", "Lcom/tencent/mm/ui/MMActivity;", "licenseContainer", "Landroid/view/ViewGroup;", "forceShow", "", "callback", "Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderLivePostUIC$WidgetStatusCallback;", "(Lcom/tencent/mm/ui/MMActivity;Landroid/view/ViewGroup;ZLcom/tencent/mm/plugin/finder/live/viewmodel/FinderLivePostUIC$WidgetStatusCallback;)V", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "appId", "", "getCallback", "()Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderLivePostUIC$WidgetStatusCallback;", "checkBox", "Landroid/widget/CheckBox;", "getCheckBox", "()Landroid/widget/CheckBox;", "setCheckBox", "(Landroid/widget/CheckBox;)V", "container", "Landroid/view/View;", "getContainer", "()Landroid/view/View;", "setContainer", "(Landroid/view/View;)V", "getForceShow", "()Z", "isMiniGame", "getLicenseContainer", "()Landroid/view/ViewGroup;", "licenseState", "", "getLicenseState", "()I", "setLicenseState", "(I)V", "licenseTxt", "Landroid/widget/TextView;", "getLicenseTxt", "()Landroid/widget/TextView;", "setLicenseTxt", "(Landroid/widget/TextView;)V", "checkLicenseState", "", "isReady", "refreshGameMode", "saveLicenseState", "setLicenseText", "tv", "Companion", "plugin-finder_release"})
 public final class r
 {
-  private final String TAG;
-  final com.tencent.mm.live.c.b hOp;
-  public final ViewGroup hwr;
-  public final d uFw;
-  int uHO;
-  final int uHP;
+  private static final HashSet<String> zoe;
+  public static final a zof;
+  private final MMActivity activity;
+  private String appId;
+  public CheckBox checkBox;
+  public View fyN;
+  int yzc;
+  final i.e zlm;
+  private boolean znY;
+  private final ViewGroup znZ;
+  private TextView zoc;
+  private final boolean zod;
   
-  public r(ViewGroup paramViewGroup, com.tencent.mm.live.c.b paramb, d paramd)
+  static
   {
-    AppMethodBeat.i(248188);
-    this.hwr = paramViewGroup;
-    this.hOp = paramb;
-    this.uFw = paramd;
-    this.TAG = "Finder.FinderLiveVisitorShoppingEntranceWidget";
-    paramViewGroup = c.vCb;
-    this.uHP = ((Number)c.duY().value()).intValue();
-    this.hwr.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    AppMethodBeat.i(287887);
+    zof = new a((byte)0);
+    zoe = new HashSet();
+    AppMethodBeat.o(287887);
+  }
+  
+  public r(MMActivity paramMMActivity, ViewGroup paramViewGroup, boolean paramBoolean, i.e parame)
+  {
+    AppMethodBeat.i(287886);
+    this.activity = paramMMActivity;
+    this.znZ = paramViewGroup;
+    this.zod = paramBoolean;
+    this.zlm = parame;
+    paramMMActivity = com.tencent.c.a.a.a.a.a.Zlt;
+    this.yzc = com.tencent.c.a.a.a.a.a.ind();
+    this.appId = "";
+    this.fyN = ((View)this.znZ);
+    this.fyN.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(248184);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/live/widget/FinderLiveVisitorShoppingEntranceWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-        paramAnonymousView = new Bundle();
-        localObject = this.uHQ.uFw.getLiveData();
-        if (localObject != null)
+        int i = 1;
+        AppMethodBeat.i(287373);
+        b localb = new b();
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/widget/FinderLiveGamePostLicenseWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        paramAnonymousView = this.zog.getCheckBox();
+        boolean bool;
+        if (!this.zog.getCheckBox().isChecked())
         {
-          localObject = ((g)localObject).uEm;
-          if (localObject == null) {}
+          bool = true;
+          paramAnonymousView.setChecked(bool);
+          paramAnonymousView = this.zog;
+          if (!this.zog.getCheckBox().isChecked()) {
+            break label125;
+          }
         }
-        for (long l = ((axg)localObject).uko;; l = 0L)
+        for (;;)
         {
-          paramAnonymousView.putLong("PARAM_FINDER_LIVE_BUBBLE_PRODUCTID", l);
-          this.uHQ.hOp.statusChange(b.c.hMZ, paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/widget/FinderLiveVisitorShoppingEntranceWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(248184);
+          paramAnonymousView.yzc = i;
+          this.zog.zlm.onChange();
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/widget/FinderLiveGamePostLicenseWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(287373);
+          return;
+          bool = false;
+          break;
+          label125:
+          i = 0;
+        }
+      }
+    });
+    paramMMActivity = this.fyN.findViewById(b.f.post_license_checkbox);
+    kotlin.g.b.p.j(paramMMActivity, "container.findViewById(R.id.post_license_checkbox)");
+    this.checkBox = ((CheckBox)paramMMActivity);
+    paramMMActivity = this.checkBox;
+    if (paramMMActivity == null) {
+      kotlin.g.b.p.bGy("checkBox");
+    }
+    paramMMActivity.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener)new CompoundButton.OnCheckedChangeListener()
+    {
+      public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(285550);
+        paramAnonymousCompoundButton = this.zog;
+        if (this.zog.getCheckBox().isChecked()) {}
+        for (int i = 1;; i = 0)
+        {
+          paramAnonymousCompoundButton.yzc = i;
+          this.zog.zlm.onChange();
+          AppMethodBeat.o(285550);
           return;
         }
       }
     });
-    this.hwr.getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new ViewTreeObserver.OnGlobalLayoutListener()
-    {
-      public final void onGlobalLayout()
-      {
-        Object localObject2 = null;
-        AppMethodBeat.i(248185);
-        Object localObject1 = this.uHQ;
-        int i = ((r)localObject1).uHO;
-        ((r)localObject1).uHO = (i + 1);
-        if (i >= 2147483647) {
-          this.uHQ.uHO = 0;
-        }
-        if (this.uHQ.uHO % this.uHQ.uHP == 0)
-        {
-          Object localObject3 = this.uHQ.hOp;
-          localObject1 = localObject3;
-          if (!(localObject3 instanceof FinderLiveVisitorPluginLayout)) {
-            localObject1 = null;
-          }
-          localObject1 = (FinderLiveVisitorPluginLayout)localObject1;
-          if (localObject1 != null)
-          {
-            localObject1 = ((FinderLiveVisitorPluginLayout)localObject1).getShoppingBubblePlugin();
-            if (localObject1 != null)
-            {
-              localObject3 = m.vVH;
-              Object localObject4;
-              View localView;
-              Object localObject5;
-              Object localObject6;
-              if ((!m.dBP()) && (((com.tencent.mm.live.c.a)localObject1).hwr.getVisibility() == 0))
-              {
-                localObject3 = ((bd)localObject1).utB;
-                localObject4 = new int[2];
-                ((l)localObject3).uHq.getLocationInWindow((int[])localObject4);
-                localObject1 = y.vXH;
-                localView = ((l)localObject3).uHi;
-                localObject1 = ((l)localObject3).ulG;
-                if ((localView != null) && (localObject1 != null))
-                {
-                  localObject5 = new int[2];
-                  ((ViewGroup)localObject1).getLocationInWindow((int[])localObject5);
-                  i = localObject5[0];
-                  localObject1 = ((l)localObject3).ulG;
-                  if (localObject1 == null) {
-                    p.hyc();
-                  }
-                  int j = ((ViewGroup)localObject1).getWidth();
-                  int k = localObject4[0];
-                  localObject1 = ((l)localObject3).uHi;
-                  if (localObject1 == null) {
-                    p.hyc();
-                  }
-                  i = j.mZ(i + j - k - ((View)localObject1).getWidth() / 2 - ((l)localObject3).uHq.getWidth() / 2, 0);
-                  float f = -i;
-                  localObject1 = ((l)localObject3).uHi;
-                  if (localObject1 == null) {
-                    p.hyc();
-                  }
-                  if (f != ((View)localObject1).getTranslationX())
-                  {
-                    localObject5 = ((l)localObject3).TAG;
-                    localObject6 = new StringBuilder("[visitor add shopping bubble] arrow:").append(((l)localObject3).uHi).append(" container:").append(((l)localObject3).ulG).append(" container.right:");
-                    localObject1 = ((l)localObject3).ulG;
-                    if (localObject1 == null) {
-                      break label483;
-                    }
-                  }
-                }
-              }
-              label483:
-              for (localObject1 = Integer.valueOf(((ViewGroup)localObject1).getRight());; localObject1 = null)
-              {
-                localObject4 = ((StringBuilder)localObject6).append(localObject1).append(" loc:").append(localObject4[0]).append(',').append(localObject4[1]).append(" arrow.width:");
-                localObject6 = ((l)localObject3).uHi;
-                localObject1 = localObject2;
-                if (localObject6 != null) {
-                  localObject1 = Integer.valueOf(((View)localObject6).getWidth());
-                }
-                Log.i((String)localObject5, localObject1 + " entranceRoot.width:" + ((l)localObject3).uHq.getWidth() + ",arrowMarginEnd:" + i);
-                localView.setTranslationX(-i);
-                AppMethodBeat.o(248185);
-                return;
-              }
-            }
-          }
-        }
-        AppMethodBeat.o(248185);
-      }
-    });
-    Log.i(this.TAG, "init globalLayoutCallbackFrequency:" + this.uHP);
-    AppMethodBeat.o(248188);
+    paramMMActivity = this.fyN.findViewById(b.f.post_license_tv);
+    kotlin.g.b.p.j(paramMMActivity, "container.findViewById(R.id.post_license_tv)");
+    this.zoc = ((TextView)paramMMActivity);
+    s(this.zoc);
+    AppMethodBeat.o(287886);
   }
   
-  public final boolean isVisible()
+  private final void s(TextView paramTextView)
   {
-    AppMethodBeat.i(248187);
-    if (this.hwr.getVisibility() == 0)
+    AppMethodBeat.i(287882);
+    Object localObject = com.tencent.mm.plugin.finder.utils.p.ADF;
+    localObject = com.tencent.mm.plugin.finder.utils.p.d((Context)this.activity, b.j.finder_live_game_agree_with_format, this.znY);
+    paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
+    paramTextView.setText((CharSequence)localObject);
+    AppMethodBeat.o(287882);
+  }
+  
+  public final void bp(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(287885);
+    kotlin.g.b.p.k(paramString, "appId");
+    this.appId = paramString;
+    if (this.znY != paramBoolean)
     {
-      AppMethodBeat.o(248187);
-      return true;
+      this.znY = paramBoolean;
+      s(this.zoc);
     }
-    AppMethodBeat.o(248187);
-    return false;
-  }
-  
-  public final void rg(int paramInt)
-  {
-    AppMethodBeat.i(248186);
-    if ((!this.uFw.getLiveData().isLiveStarted()) && (paramInt == 0))
-    {
-      Object localObject = o.ujN;
-      localObject = o.getFinderLiveAssistant();
-      if (localObject != null)
-      {
-        ((s)localObject).ag((View)this.hwr, paramInt);
-        AppMethodBeat.o(248186);
-        return;
+    if (paramBoolean) {
+      if (!zoe.contains(paramString)) {
+        break label64;
       }
-      AppMethodBeat.o(248186);
+    }
+    label64:
+    for (int i = 1;; i = 0)
+    {
+      this.yzc = i;
+      AppMethodBeat.o(287885);
       return;
     }
-    this.hwr.setVisibility(paramInt);
-    AppMethodBeat.o(248186);
   }
+  
+  public final void dIl()
+  {
+    AppMethodBeat.i(287883);
+    if (this.zod) {
+      this.yzc = 0;
+    }
+    if (this.yzc == 1)
+    {
+      this.fyN.setVisibility(8);
+      this.zlm.onChange();
+      AppMethodBeat.o(287883);
+      return;
+    }
+    this.fyN.setVisibility(0);
+    AppMethodBeat.o(287883);
+  }
+  
+  public final void dIm()
+  {
+    AppMethodBeat.i(287884);
+    com.tencent.c.a.a.a.a.a locala = com.tencent.c.a.a.a.a.a.Zlt;
+    com.tencent.c.a.a.a.a.a.aAi(this.yzc);
+    if ((this.znY) && (isReady())) {
+      zoe.add(this.appId);
+    }
+    AppMethodBeat.o(287884);
+  }
+  
+  public final CheckBox getCheckBox()
+  {
+    AppMethodBeat.i(287881);
+    CheckBox localCheckBox = this.checkBox;
+    if (localCheckBox == null) {
+      kotlin.g.b.p.bGy("checkBox");
+    }
+    AppMethodBeat.o(287881);
+    return localCheckBox;
+  }
+  
+  public final boolean isReady()
+  {
+    return this.yzc == 1;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveGamePostLicenseWidget$Companion;", "", "()V", "checkedMiniGameIdSet", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.widget.r
  * JD-Core Version:    0.7.0.1
  */

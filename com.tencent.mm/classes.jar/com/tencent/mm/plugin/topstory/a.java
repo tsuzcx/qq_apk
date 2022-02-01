@@ -7,21 +7,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public final class a
+public class a
   implements d
 {
-  Map<String, List<Object>> GiJ;
+  Map<String, List<Object>> MVv;
   
   public a()
   {
     AppMethodBeat.i(88416);
-    this.GiJ = Collections.synchronizedMap(new HashMap());
+    this.MVv = Collections.synchronizedMap(new HashMap());
     AppMethodBeat.o(88416);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a
  * JD-Core Version:    0.7.0.1
  */

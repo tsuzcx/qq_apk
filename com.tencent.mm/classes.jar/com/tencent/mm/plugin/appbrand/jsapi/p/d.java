@@ -1,58 +1,119 @@
 package com.tencent.mm.plugin.appbrand.jsapi.p;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.s.a;
+import com.tencent.mm.plugin.appbrand.s.j;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/JsApiHideHomeButton;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-wxa-app-jsapi_release"})
 public final class d
-  extends com.tencent.mm.plugin.appbrand.jsapi.d<com.tencent.mm.plugin.appbrand.d>
+  extends c
 {
-  public static final int CTRL_INDEX = 684;
-  public static final String NAME = "hideHomeButton";
-  @Deprecated
-  public static final a mkn;
+  public static final int CTRL_INDEX = 615;
+  public static final String NAME = "checkNetworkAPIURL";
   
-  static
+  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(240921);
-    mkn = new a((byte)0);
-    AppMethodBeat.o(240921);
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/JsApiHideHomeButton$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-wxa-app-jsapi_release"})
-  static final class a {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(d paramd, ac paramac, com.tencent.mm.plugin.appbrand.d paramd1, int paramInt) {}
-    
-    public final void run()
+    AppMethodBeat.i(144185);
+    if (paramJSONObject == null)
     {
-      AppMethodBeat.i(240919);
-      if (this.mkp.bRi() == null) {
-        this.mkp.bRE();
+      parame.j(paramInt, h("fail:data nil", null));
+      Log.w("MicroMsg.JsApiCheckNetworkAPIURL", "data is null");
+      AppMethodBeat.o(144185);
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    String str = paramJSONObject.optString("api", "");
+    paramJSONObject = paramJSONObject.optString("url", "");
+    if ((Util.isNullOrNil(str)) || (Util.isNullOrNil(paramJSONObject)))
+    {
+      Log.w("MicroMsg.JsApiCheckNetworkAPIURL", "invalid api:%s,url:%s", new Object[] { str, paramJSONObject });
+      localHashMap.put("isValid", Boolean.FALSE);
+      parame.j(paramInt, m("fail:api or url invalid", localHashMap));
+      AppMethodBeat.o(144185);
+      return;
+    }
+    Object localObject = (a)parame.au(a.class);
+    boolean bool;
+    if (str.equalsIgnoreCase("request"))
+    {
+      bool = j.b(((a)localObject).cxA, paramJSONObject, false);
+      localObject = (String)j.akW(paramJSONObject).get("host");
+      if (Util.isNullOrNil((String)localObject)) {
+        break label599;
+      }
+      Log.i("MicroMsg.JsApiCheckNetworkAPIURL", "ipHost:%s", new Object[] { localObject });
+    }
+    label267:
+    label599:
+    for (int i = j.akY((String)localObject);; i = 0)
+    {
+      Log.i("MicroMsg.JsApiCheckNetworkAPIURL", "checkRet:%b,ipCheckRet:%d,api:%s,url:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), str, paramJSONObject });
+      if (bool)
+      {
+        localHashMap.put("isInDomainList", Boolean.TRUE);
+        switch (i)
+        {
+        }
       }
       for (;;)
       {
-        com.tencent.mm.plugin.appbrand.d locald = this.lBv;
-        if (locald == null) {
-          p.hyc();
-        }
-        locald.i(this.lyo, this.mko.Zf("ok"));
-        AppMethodBeat.o(240919);
+        parame.j(paramInt, m("ok", localHashMap));
+        AppMethodBeat.o(144185);
         return;
-        this.mkp.bRF();
+        if (str.equalsIgnoreCase("websocket"))
+        {
+          bool = j.b(((a)localObject).cxB, paramJSONObject, ((a)localObject).cxu);
+          break;
+        }
+        if (str.equalsIgnoreCase("downloadFile"))
+        {
+          bool = j.b(((a)localObject).cxD, paramJSONObject, false);
+          break;
+        }
+        if (str.equalsIgnoreCase("uploadFile"))
+        {
+          bool = j.b(((a)localObject).cxC, paramJSONObject, false);
+          break;
+        }
+        if (str.equalsIgnoreCase("udp"))
+        {
+          bool = j.b(((a)localObject).cxE, paramJSONObject, false);
+          break;
+        }
+        if (str.equalsIgnoreCase("tcp"))
+        {
+          bool = j.b(((a)localObject).cxF, paramJSONObject, false);
+          break;
+        }
+        Log.w("MicroMsg.JsApiCheckNetworkAPIURL", "hy: unknown api: %s", new Object[] { str });
+        localHashMap.put("isValid", Boolean.FALSE);
+        parame.j(paramInt, m("fail:unknow api", localHashMap));
+        AppMethodBeat.o(144185);
+        return;
+        localHashMap.put("isInDomainList", Boolean.FALSE);
+        break label267;
+        localHashMap.put("isInLAN", Boolean.FALSE);
+        localHashMap.put("isLocalHost", Boolean.FALSE);
+        continue;
+        localHashMap.put("isInLAN", Boolean.TRUE);
+        localHashMap.put("isLocalHost", Boolean.TRUE);
+        continue;
+        localHashMap.put("isInLAN", Boolean.TRUE);
+        localHashMap.put("isLocalHost", Boolean.FALSE);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.p.d
  * JD-Core Version:    0.7.0.1
  */

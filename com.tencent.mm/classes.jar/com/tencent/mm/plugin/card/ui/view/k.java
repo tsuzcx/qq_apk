@@ -6,26 +6,27 @@ import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a;
-import com.tencent.mm.av.a.a.c;
-import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.av.q;
+import com.tencent.mm.ay.a.a;
+import com.tencent.mm.ay.a.a.c;
+import com.tencent.mm.ay.a.a.c.a;
+import com.tencent.mm.ay.q;
+import com.tencent.mm.plugin.card.a.d;
 import com.tencent.mm.plugin.card.model.m;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.agy;
-import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.protocal.protobuf.ahk;
+import com.tencent.mm.protocal.protobuf.vb;
 import java.util.LinkedList;
 
 public final class k
   extends i
 {
-  private View qjY;
+  private View tFU;
   
-  public final void cxw()
+  public final void cKY()
   {
     AppMethodBeat.i(113680);
-    if (this.qjY != null) {
-      this.qjY.setVisibility(8);
+    if (this.tFU != null) {
+      this.tFU.setVisibility(8);
     }
     AppMethodBeat.o(113680);
   }
@@ -35,38 +36,38 @@ public final class k
   public final void update()
   {
     AppMethodBeat.i(113679);
-    if (this.qjY == null) {
-      this.qjY = ((ViewStub)findViewById(2131298099)).inflate();
+    if (this.tFU == null) {
+      this.tFU = ((ViewStub)findViewById(a.d.tbR)).inflate();
     }
-    this.qjY.setOnClickListener(this.qjX.cvu());
-    Object localObject1 = this.qjX.cvq().csQ().LeS;
-    if (!TextUtils.isEmpty(((agy)localObject1).detail))
+    this.tFU.setOnClickListener(this.tFT.cIW());
+    Object localObject1 = this.tFT.cIS().cGs().Sgg;
+    if (!TextUtils.isEmpty(((ahk)localObject1).detail))
     {
-      ((TextView)findViewById(2131298093)).setText(((agy)localObject1).detail);
-      findViewById(2131298094).setVisibility(0);
+      ((TextView)findViewById(a.d.tbL)).setText(((ahk)localObject1).detail);
+      findViewById(a.d.tbM).setVisibility(0);
     }
     ImageView localImageView;
     for (;;)
     {
-      localImageView = (ImageView)findViewById(2131298098);
-      if ((((agy)localObject1).LqB == null) || (((agy)localObject1).LqB.size() <= 0) || (TextUtils.isEmpty((CharSequence)((agy)localObject1).LqB.get(0)))) {
+      localImageView = (ImageView)findViewById(a.d.tbQ);
+      if ((((ahk)localObject1).SrZ == null) || (((ahk)localObject1).SrZ.size() <= 0) || (TextUtils.isEmpty((CharSequence)((ahk)localObject1).SrZ.get(0)))) {
         break;
       }
-      localObject1 = (String)((agy)localObject1).LqB.get(0);
+      localObject1 = (String)((ahk)localObject1).SrZ.get(0);
       localImageView.setVisibility(0);
       Object localObject2 = new c.a();
-      ((c.a)localObject2).prefixPath = com.tencent.mm.loader.j.b.aKJ();
-      q.bcW();
-      ((c.a)localObject2).jbw = null;
-      ((c.a)localObject2).fullPath = m.ajp((String)localObject1);
-      ((c.a)localObject2).jbf = true;
-      ((c.a)localObject2).iaT = false;
-      ((c.a)localObject2).jbd = true;
-      localObject2 = ((c.a)localObject2).bdv();
-      q.bcV().a((String)localObject1, localImageView, (c)localObject2);
+      ((c.a)localObject2).prefixPath = com.tencent.mm.loader.j.b.aSL();
+      q.bmm();
+      ((c.a)localObject2).lRV = null;
+      ((c.a)localObject2).fullPath = m.arc((String)localObject1);
+      ((c.a)localObject2).lRD = true;
+      ((c.a)localObject2).kPz = false;
+      ((c.a)localObject2).lRB = true;
+      localObject2 = ((c.a)localObject2).bmL();
+      q.bml().a((String)localObject1, localImageView, (c)localObject2);
       AppMethodBeat.o(113679);
       return;
-      findViewById(2131298094).setVisibility(8);
+      findViewById(a.d.tbM).setVisibility(8);
     }
     localImageView.setVisibility(8);
     AppMethodBeat.o(113679);

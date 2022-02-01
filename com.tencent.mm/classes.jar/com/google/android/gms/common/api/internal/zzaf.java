@@ -1,6 +1,6 @@
 package com.google.android.gms.common.api.internal;
 
-import android.support.v4.app.FragmentActivity;
+import androidx.fragment.app.FragmentActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -145,9 +145,9 @@ public class zzaf
   
   public void stopAutoManage(FragmentActivity paramFragmentActivity)
   {
-    AppMethodBeat.i(11194);
+    AppMethodBeat.i(256937);
     paramFragmentActivity = new UnsupportedOperationException(this.zzhe);
-    AppMethodBeat.o(11194);
+    AppMethodBeat.o(256937);
     throw paramFragmentActivity;
   }
   
@@ -169,7 +169,7 @@ public class zzaf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzaf
  * JD-Core Version:    0.7.0.1
  */

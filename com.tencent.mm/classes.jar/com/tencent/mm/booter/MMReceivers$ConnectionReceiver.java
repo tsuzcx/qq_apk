@@ -9,12 +9,11 @@ import android.net.NetworkInfo.State;
 import android.os.Process;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.k;
+import com.tencent.mm.kernel.m;
 import com.tencent.mm.network.af;
-import com.tencent.mm.network.af.b;
 import com.tencent.mm.sdk.platformtools.Log;
 
-@k
+@m
 @JgClassChecked(author=20, fComment="checked", lastDate="20140819", reviewer=20, vComment={com.jg.EType.RECEIVERCHECK})
 public class MMReceivers$ConnectionReceiver
   extends BroadcastReceiver
@@ -31,12 +30,12 @@ public class MMReceivers$ConnectionReceiver
     }
     if (!b.c(paramContext, "connection", true))
     {
-      MMReceivers.AlarmReceiver.ck(paramContext);
+      MMReceivers.AlarmReceiver.cg(paramContext);
       Log.appenderFlush();
       AppMethodBeat.o(131890);
       return;
     }
-    if (af.bkk() == null)
+    if (af.btT())
     {
       AppMethodBeat.o(131890);
       return;
@@ -57,10 +56,9 @@ public class MMReceivers$ConnectionReceiver
         paramIntent = paramContext.getState();
       }
       Log.i("MicroMsg.ConnectionReceiver", "NetworkAvailable: true");
-      paramIntent = af.bkk();
       paramContext.getTypeName();
       paramContext.getSubtypeName();
-      paramIntent.df(true);
+      af.gO(true);
       AppMethodBeat.o(131890);
     }
     if ((paramContext == null) || (paramContext.getState() != NetworkInfo.State.CONNECTED)) {
@@ -68,14 +66,13 @@ public class MMReceivers$ConnectionReceiver
       {
         paramIntent = "null";
         Log.i("MicroMsg.ConnectionReceiver", "NetworkAvailable: false, state:%s", new Object[] { paramIntent });
-        paramIntent = af.bkk();
         if (paramContext != null) {
           paramContext.getTypeName();
         }
         if (paramContext != null) {
           paramContext.getSubtypeName();
         }
-        paramIntent.df(false);
+        af.gO(false);
         AppMethodBeat.o(131890);
         return;
       }
@@ -84,7 +81,7 @@ public class MMReceivers$ConnectionReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.booter.MMReceivers.ConnectionReceiver
  * JD-Core Version:    0.7.0.1
  */

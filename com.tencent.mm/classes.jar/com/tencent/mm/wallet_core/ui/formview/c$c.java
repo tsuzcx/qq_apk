@@ -23,13 +23,13 @@ public final class c$c
       AppMethodBeat.o(73141);
       return paramTenpaySecureEditText;
     case 1: 
-      b.hgC();
-      paramTenpaySecureEditText = paramTenpaySecureEditText.getEncryptDataWithHash(true, b.hgD());
+      b.iie();
+      paramTenpaySecureEditText = paramTenpaySecureEditText.getEncryptDataWithHash(true, b.iif());
       AppMethodBeat.o(73141);
       return paramTenpaySecureEditText;
     case 0: 
-      b.hgC();
-      paramTenpaySecureEditText = paramTenpaySecureEditText.getEncryptDataWithHash(false, b.hgD());
+      b.iie();
+      paramTenpaySecureEditText = paramTenpaySecureEditText.getEncryptDataWithHash(false, b.iif());
       AppMethodBeat.o(73141);
       return paramTenpaySecureEditText;
     case 3: 
@@ -44,7 +44,7 @@ public final class c$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.formview.c.c
  * JD-Core Version:    0.7.0.1
  */

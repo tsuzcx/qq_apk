@@ -7,20 +7,23 @@ import java.util.Map;
 public final class g$b
   implements com.tencent.xweb.WebResourceRequest
 {
-  private Map<String, String> JZZ;
-  private boolean SEb;
-  private boolean SEc;
+  private Map<String, String> RaC;
+  private boolean aafm;
+  private boolean aafn;
   private String method;
   private Uri url;
   
   public g$b(com.tencent.smtt.export.external.interfaces.WebResourceRequest paramWebResourceRequest)
   {
     AppMethodBeat.i(153848);
-    this.url = paramWebResourceRequest.getUrl();
-    this.SEb = paramWebResourceRequest.isForMainFrame();
-    this.SEc = paramWebResourceRequest.hasGesture();
-    this.method = paramWebResourceRequest.getMethod();
-    this.JZZ = paramWebResourceRequest.getRequestHeaders();
+    if (paramWebResourceRequest != null)
+    {
+      this.url = paramWebResourceRequest.getUrl();
+      this.aafm = paramWebResourceRequest.isForMainFrame();
+      this.aafn = paramWebResourceRequest.hasGesture();
+      this.method = paramWebResourceRequest.getMethod();
+      this.RaC = paramWebResourceRequest.getRequestHeaders();
+    }
     AppMethodBeat.o(153848);
   }
   
@@ -31,7 +34,7 @@ public final class g$b
   
   public final Map<String, String> getRequestHeaders()
   {
-    return this.JZZ;
+    return this.RaC;
   }
   
   public final Uri getUrl()
@@ -41,17 +44,17 @@ public final class g$b
   
   public final boolean hasGesture()
   {
-    return this.SEc;
+    return this.aafn;
   }
   
   public final boolean isForMainFrame()
   {
-    return this.SEb;
+    return this.aafm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.x5.g.b
  * JD-Core Version:    0.7.0.1
  */

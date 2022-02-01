@@ -11,84 +11,100 @@ import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.i.a.aj;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.findersdk.a.ak;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.protocal.protobuf.bfx;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.teenmode.a.a;
+import com.tencent.mm.plugin.teenmode.a.d;
+import com.tencent.mm.plugin.teenmode.a.e;
+import com.tencent.mm.plugin.teenmode.a.g;
+import com.tencent.mm.protocal.protobuf.bmy;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.o.f;
-import com.tencent.mm.ui.base.o.g;
-import com.tencent.mm.ui.base.u;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.widget.a.e;
 
 public class SettingsTeenModeMain
   extends MMActivity
 {
-  private RelativeLayout FWA;
-  private TextView FWB;
-  private TextView FWC;
-  private TextView FWD;
-  private int FWE = 0;
-  private int FWF = 0;
-  private int FWG = 0;
-  private RelativeLayout FWq;
-  private RelativeLayout FWr;
-  private RelativeLayout FWs;
-  private RelativeLayout FWt;
-  private RelativeLayout FWu;
-  private RelativeLayout FWv;
-  private RelativeLayout FWw;
-  private RelativeLayout FWx;
-  private RelativeLayout FWy;
-  private RelativeLayout FWz;
-  private View hRd;
-  private com.tencent.mm.ui.widget.a.e ojT;
+  private RelativeLayout MtD;
+  private RelativeLayout MtE;
+  private RelativeLayout MtF;
+  private RelativeLayout MtG;
+  private RelativeLayout MtH;
+  private RelativeLayout MtI;
+  private RelativeLayout MtJ;
+  private RelativeLayout MtK;
+  private RelativeLayout MtL;
+  private RelativeLayout MtM;
+  private RelativeLayout MtN;
+  private RelativeLayout MtO;
+  private TextView MtP;
+  private TextView MtQ;
+  private TextView MtR;
+  private int MtS = 0;
+  private int MtT = 0;
+  private int MtU = 0;
+  private RelativeLayout PIo;
+  private View kFA;
+  private e rmh;
   
-  private void is(boolean paramBoolean)
+  private void jq(boolean paramBoolean)
   {
-    AppMethodBeat.i(187412);
+    AppMethodBeat.i(259413);
     int i;
-    if (this.FWB != null)
+    if (this.MtP != null)
     {
-      i = ((com.tencent.mm.plugin.teenmode.a.b)g.af(com.tencent.mm.plugin.teenmode.a.b.class)).dxW();
+      i = ((com.tencent.mm.plugin.teenmode.a.b)h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).dYS();
       if (paramBoolean) {
-        this.FWE = i;
+        this.MtS = i;
       }
     }
+    label141:
+    label209:
+    TextView localTextView;
     switch (i)
     {
     default: 
-      this.FWB.setText("");
-      if (this.FWC != null)
+      this.MtP.setText("");
+      if (this.MtQ != null)
       {
-        i = ((com.tencent.mm.plugin.teenmode.a.b)g.af(com.tencent.mm.plugin.teenmode.a.b.class)).fvo();
+        i = ((com.tencent.mm.plugin.teenmode.a.b)h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).gkr();
         if (paramBoolean) {
-          this.FWF = i;
+          this.MtT = i;
         }
       }
       switch (i)
       {
       default: 
-        this.FWC.setText("");
-        label141:
-        if (this.FWD != null)
+        this.MtQ.setText("");
+        if (this.MtR != null)
         {
-          i = ((com.tencent.mm.plugin.teenmode.a.b)g.af(com.tencent.mm.plugin.teenmode.a.b.class)).fvp();
+          i = ((com.tencent.mm.plugin.teenmode.a.b)h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).gks();
           if (paramBoolean) {
-            this.FWG = i;
+            this.MtU = i;
           }
-          switch (i)
-          {
-          default: 
-            this.FWD.setText("");
+        }
+        switch (i)
+        {
+        default: 
+          this.MtR.setText("");
+          if (!com.tencent.mm.bw.a.hfs()) {
+            break label397;
           }
+          localTextView = (TextView)this.MtL.findViewById(a.d.Mso);
+          com.tencent.mm.plugin.finder.nearby.abtest.a locala = com.tencent.mm.plugin.finder.nearby.abtest.a.zDp;
+          if (com.tencent.mm.plugin.finder.nearby.abtest.a.dLo()) {
+            localTextView.setText(a.g.Mtl);
+          }
+          break;
         }
         break;
       }
@@ -96,35 +112,34 @@ public class SettingsTeenModeMain
     }
     for (;;)
     {
-      if (!com.tencent.mm.bp.a.glB()) {
-        break label346;
-      }
-      this.FWw.setVisibility(8);
-      this.FWx.setVisibility(0);
-      AppMethodBeat.o(187412);
+      this.MtK.setVisibility(8);
+      this.MtL.setVisibility(0);
+      AppMethodBeat.o(259413);
       return;
-      this.FWB.setText(2131766681);
+      this.MtP.setText(SettingsTeenModeMainFinder.gky());
       break;
-      this.FWB.setText(2131766663);
+      this.MtP.setText(SettingsTeenModeMainFinder.gkz());
       break;
-      this.FWB.setText(2131766683);
+      this.MtP.setText(SettingsTeenModeMainFinder.gkA());
       break;
-      this.FWC.setText(2131766681);
+      this.MtQ.setText(a.g.Mtr);
       break label141;
-      this.FWC.setText(2131766678);
+      this.MtQ.setText(a.g.Mtq);
       break label141;
-      this.FWC.setText(2131766683);
+      this.MtQ.setText(a.g.Mts);
       break label141;
-      this.FWD.setText(2131766681);
-      continue;
-      this.FWD.setText(2131766661);
-      continue;
-      this.FWD.setText(2131766660);
+      this.MtR.setText(a.g.Mtr);
+      break label209;
+      this.MtR.setText(a.g.Mtc);
+      break label209;
+      this.MtR.setText(a.g.Mtb);
+      break label209;
+      localTextView.setText(a.g.Mtk);
     }
-    label346:
-    this.FWw.setVisibility(0);
-    this.FWx.setVisibility(8);
-    AppMethodBeat.o(187412);
+    label397:
+    this.MtK.setVisibility(0);
+    this.MtL.setVisibility(8);
+    AppMethodBeat.o(259413);
   }
   
   public int getForceOrientation()
@@ -134,322 +149,380 @@ public class SettingsTeenModeMain
   
   public int getLayoutId()
   {
-    return 2131496271;
+    return a.e.MsE;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(187413);
+    AppMethodBeat.i(259416);
     setMMTitle("");
     hideActionbarLine();
-    setActionbarColor(getResources().getColor(2131101424));
-    boolean bool1 = Util.nullAsFalse(Boolean.valueOf(g.aAh().azQ().getBoolean(ar.a.OaV, false)));
+    setActionbarColor(getResources().getColor(a.a.white));
+    boolean bool1 = Util.nullAsFalse(Boolean.valueOf(h.aHG().aHp().getBoolean(ar.a.VoX, false)));
     if (!bool1)
     {
-      g.aAh().azQ().set(ar.a.OaV, Boolean.TRUE);
-      ((com.tencent.mm.plugin.teenmode.a.b)g.af(com.tencent.mm.plugin.teenmode.a.b.class)).fvq();
+      h.aHG().aHp().set(ar.a.VoX, Boolean.TRUE);
+      ((com.tencent.mm.plugin.teenmode.a.b)h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).gkt();
     }
-    boolean bool2 = Util.nullAsFalse(Boolean.valueOf(g.aAh().azQ().getBoolean(ar.a.OaU, false)));
+    boolean bool2 = Util.nullAsFalse(Boolean.valueOf(h.aHG().aHp().getBoolean(ar.a.VoW, false)));
     if ((!bool1) && (bool2)) {
-      ((com.tencent.mm.plugin.teenmode.a.b)g.af(com.tencent.mm.plugin.teenmode.a.b.class)).pl(5);
+      ((com.tencent.mm.plugin.teenmode.a.b)h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).rE(5);
     }
-    Object localObject = new bfx();
-    ((bfx)localObject).LPB = 59;
-    ((bfx)localObject).BsD = 1;
-    ((l)g.af(l.class)).aSM().d(new k.a(23, (com.tencent.mm.bw.a)localObject));
-    this.FWB = ((TextView)findViewById(2131308924));
-    this.FWq = ((RelativeLayout)findViewById(2131301347));
-    this.FWq.setOnClickListener(new View.OnClickListener()
+    Object localObject = new bmy();
+    ((bmy)localObject).SXP = 59;
+    ((bmy)localObject).HmX = 1;
+    ((n)h.ae(n.class)).bbK().d(new k.a(23, (com.tencent.mm.cd.a)localObject));
+    this.MtP = ((TextView)findViewById(a.d.Mst));
+    this.MtD = ((RelativeLayout)findViewById(a.d.Mse));
+    this.MtD.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(187392);
+        AppMethodBeat.i(259674);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
         localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainFinder.class);
         paramAnonymousView = SettingsTeenModeMain.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(187392);
+        AppMethodBeat.o(259674);
       }
     });
-    bool1 = ((aj)g.ah(aj.class)).showFinderEntry();
+    bool1 = ((ak)h.ag(ak.class)).showFinderEntry();
     Log.i("MicroMsg.SettingsTeenModeMain", "showFinder %s", new Object[] { Boolean.valueOf(bool1) });
     if (!bool1) {
-      this.FWq.setVisibility(8);
+      this.MtD.setVisibility(8);
     }
-    this.FWC = ((TextView)findViewById(2131308926));
-    this.FWr = ((RelativeLayout)findViewById(2131304923));
-    this.FWr.setOnClickListener(new View.OnClickListener()
+    this.MtE = ((RelativeLayout)findViewById(a.d.Msd));
+    this.PIo = ((RelativeLayout)findViewById(a.d.OSr));
+    localObject = com.tencent.mm.plugin.finder.nearby.abtest.a.zDp;
+    if (com.tencent.mm.plugin.finder.nearby.abtest.a.cFx())
     {
-      public final void onClick(View paramAnonymousView)
+      this.MtE.setVisibility(8);
+      this.PIo.setVisibility(0);
+      this.MtE.setOnClickListener(new View.OnClickListener()
       {
-        AppMethodBeat.i(187401);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-        localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainBizAcct.class);
-        paramAnonymousView = SettingsTeenModeMain.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(187401);
-      }
-    });
-    this.FWD = ((TextView)findViewById(2131308922));
-    this.FWs = ((RelativeLayout)findViewById(2131296846));
-    this.FWs.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(259587);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainOther.class);
+          ((Intent)localObject).putExtra("biz_type", 9);
+          paramAnonymousView = SettingsTeenModeMain.this;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(259587);
+        }
+      });
+      this.PIo.setOnClickListener(new View.OnClickListener()
       {
-        AppMethodBeat.i(187402);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-        localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainMiniProgram.class);
-        paramAnonymousView = SettingsTeenModeMain.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$3", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$3", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(187402);
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(259583);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainOther.class);
+          ((Intent)localObject).putExtra("biz_type", 9);
+          paramAnonymousView = SettingsTeenModeMain.this;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$3", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$3", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(259583);
+        }
+      });
+      localObject = com.tencent.mm.plugin.finder.nearby.abtest.a.zDp;
+      bool1 = com.tencent.mm.plugin.finder.nearby.abtest.a.dLo();
+      Log.i("MicroMsg.SettingsTeenModeMain", "showFinderLiveEntry %s", new Object[] { Boolean.valueOf(bool1) });
+      if (!bool1) {
+        this.MtE.setVisibility(8);
       }
-    });
-    this.FWu = ((RelativeLayout)findViewById(2131309332));
-    this.FWu.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
+      this.MtQ = ((TextView)findViewById(a.d.Msu));
+      this.MtF = ((RelativeLayout)findViewById(a.d.Msl));
+      this.MtF.setOnClickListener(new View.OnClickListener()
       {
-        AppMethodBeat.i(187403);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-        localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainOther.class);
-        ((Intent)localObject).putExtra("biz_type", 1);
-        paramAnonymousView = SettingsTeenModeMain.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$4", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$4", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(187403);
-      }
-    });
-    this.FWt = ((RelativeLayout)findViewById(2131299675));
-    this.FWt.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(259659);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainBizAcct.class);
+          paramAnonymousView = SettingsTeenModeMain.this;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$4", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$4", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(259659);
+        }
+      });
+      this.MtR = ((TextView)findViewById(a.d.Mss));
+      this.MtG = ((RelativeLayout)findViewById(a.d.MrZ));
+      this.MtG.setOnClickListener(new View.OnClickListener()
       {
-        AppMethodBeat.i(187404);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-        localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainOther.class);
-        ((Intent)localObject).putExtra("biz_type", 2);
-        paramAnonymousView = SettingsTeenModeMain.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$5", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$5", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(187404);
-      }
-    });
-    this.FWv = ((RelativeLayout)findViewById(2131301886));
-    this.FWv.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(259428);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainMiniProgram.class);
+          paramAnonymousView = SettingsTeenModeMain.this;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$5", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$5", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(259428);
+        }
+      });
+      this.MtI = ((RelativeLayout)findViewById(a.d.MsB));
+      this.MtI.setOnClickListener(new View.OnClickListener()
       {
-        AppMethodBeat.i(187405);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-        localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainOther.class);
-        ((Intent)localObject).putExtra("biz_type", 3);
-        paramAnonymousView = SettingsTeenModeMain.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$6", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$6", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(187405);
-      }
-    });
-    this.FWw = ((RelativeLayout)findViewById(2131305258));
-    this.FWw.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(259546);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainOther.class);
+          ((Intent)localObject).putExtra("biz_type", 1);
+          paramAnonymousView = SettingsTeenModeMain.this;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$6", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$6", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(259546);
+        }
+      });
+      this.MtH = ((RelativeLayout)findViewById(a.d.Msb));
+      this.MtH.setOnClickListener(new View.OnClickListener()
       {
-        AppMethodBeat.i(187406);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-        localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainOther.class);
-        ((Intent)localObject).putExtra("biz_type", 4);
-        paramAnonymousView = SettingsTeenModeMain.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$7", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$7", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(187406);
-      }
-    });
-    this.FWx = ((RelativeLayout)findViewById(2131305259));
-    this.FWx.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(259638);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainOther.class);
+          ((Intent)localObject).putExtra("biz_type", 2);
+          paramAnonymousView = SettingsTeenModeMain.this;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$7", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$7", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(259638);
+        }
+      });
+      this.MtJ = ((RelativeLayout)findViewById(a.d.Msg));
+      this.MtJ.setOnClickListener(new View.OnClickListener()
       {
-        AppMethodBeat.i(187407);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-        localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainOther.class);
-        ((Intent)localObject).putExtra("biz_type", 8);
-        paramAnonymousView = SettingsTeenModeMain.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$8", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$8", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(187407);
-      }
-    });
-    this.FWy = ((RelativeLayout)findViewById(2131307741));
-    this.FWy.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(259325);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainOther.class);
+          ((Intent)localObject).putExtra("biz_type", 3);
+          paramAnonymousView = SettingsTeenModeMain.this;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$8", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$8", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(259325);
+        }
+      });
+      this.MtK = ((RelativeLayout)findViewById(a.d.Msm));
+      this.MtK.setOnClickListener(new View.OnClickListener()
       {
-        AppMethodBeat.i(187408);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-        localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainOther.class);
-        ((Intent)localObject).putExtra("biz_type", 5);
-        paramAnonymousView = SettingsTeenModeMain.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$9", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$9", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(187408);
-      }
-    });
-    this.FWz = ((RelativeLayout)findViewById(2131307851));
-    this.FWz.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(259527);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainOther.class);
+          ((Intent)localObject).putExtra("biz_type", 4);
+          paramAnonymousView = SettingsTeenModeMain.this;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$9", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$9", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(259527);
+        }
+      });
+      this.MtL = ((RelativeLayout)findViewById(a.d.Msn));
+      this.MtL.setOnClickListener(new View.OnClickListener()
       {
-        AppMethodBeat.i(187393);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-        localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainOther.class);
-        ((Intent)localObject).putExtra("biz_type", 6);
-        paramAnonymousView = SettingsTeenModeMain.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$10", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$10", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(187393);
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(259595);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainOther.class);
+          ((Intent)localObject).putExtra("biz_type", 8);
+          paramAnonymousView = SettingsTeenModeMain.this;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$10", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$10", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(259595);
+        }
+      });
+      this.MtM = ((RelativeLayout)findViewById(a.d.Msp));
+      this.MtM.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(259319);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainOther.class);
+          ((Intent)localObject).putExtra("biz_type", 5);
+          paramAnonymousView = SettingsTeenModeMain.this;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$11", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$11", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(259319);
+        }
+      });
+      this.MtN = ((RelativeLayout)findViewById(a.d.Msq));
+      this.MtN.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(259497);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainOther.class);
+          ((Intent)localObject).putExtra("biz_type", 6);
+          paramAnonymousView = SettingsTeenModeMain.this;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$12", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$12", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(259497);
+        }
+      });
+      this.MtO = ((RelativeLayout)findViewById(a.d.MsC));
+      bool1 = ((com.tencent.mm.plugin.wallet.wecoin.a.c)h.ae(com.tencent.mm.plugin.wallet.wecoin.a.c.class)).dxX();
+      localObject = this.MtO;
+      if (!bool1) {
+        break label836;
       }
-    });
-    this.FWA = ((RelativeLayout)findViewById(2131310447));
-    bool1 = ((com.tencent.mm.plugin.wallet.wecoin.a.c)g.af(com.tencent.mm.plugin.wallet.wecoin.a.c.class)).dfq();
-    localObject = this.FWA;
-    if (bool1) {}
+    }
+    label836:
     for (int i = 0;; i = 8)
     {
       ((RelativeLayout)localObject).setVisibility(i);
-      this.FWA.setOnClickListener(new View.OnClickListener()
+      this.MtO.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(187394);
+          AppMethodBeat.i(259550);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
           localObject = new Intent(SettingsTeenModeMain.this, SettingsTeenModeMainOther.class);
           ((Intent)localObject).putExtra("biz_type", 7);
           paramAnonymousView = SettingsTeenModeMain.this;
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$11", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$11", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(187394);
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$13", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$13", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(259550);
         }
       });
-      this.hRd = findViewById(2131298786);
-      this.hRd.setOnClickListener(new View.OnClickListener()
+      this.kFA = findViewById(a.d.Msa);
+      this.kFA.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(187395);
+          AppMethodBeat.i(293029);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           SettingsTeenModeMain.a(SettingsTeenModeMain.this);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(187395);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMain$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(293029);
         }
       });
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
-          AppMethodBeat.i(187396);
+          AppMethodBeat.i(259344);
           SettingsTeenModeMain.this.onBackPressed();
-          AppMethodBeat.o(187396);
+          AppMethodBeat.o(259344);
           return true;
         }
       });
-      is(true);
-      addTextOptionMenu(0, getString(2131766654), new MenuItem.OnMenuItemClickListener()
+      jq(true);
+      addTextOptionMenu(0, getString(a.g.MsX), new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
-          AppMethodBeat.i(187397);
+          AppMethodBeat.i(293026);
           paramAnonymousMenuItem = new Intent();
           paramAnonymousMenuItem.putExtra("rawUrl", "https://support.weixin.qq.com/cgi-bin/mmsupport-bin/newreadtemplate?t=youngmode/faq&wechat_real_lang=zh_CN");
-          com.tencent.mm.br.c.b(SettingsTeenModeMain.this, "webview", ".ui.tools.WebViewUI", paramAnonymousMenuItem);
-          AppMethodBeat.o(187397);
+          com.tencent.mm.by.c.b(SettingsTeenModeMain.this, "webview", ".ui.tools.WebViewUI", paramAnonymousMenuItem);
+          AppMethodBeat.o(293026);
           return true;
         }
       });
-      AppMethodBeat.o(187413);
+      AppMethodBeat.o(259416);
       return;
+      this.MtE.setVisibility(0);
+      this.PIo.setVisibility(8);
+      break;
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(187409);
+    AppMethodBeat.i(259409);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(187409);
+    AppMethodBeat.o(259409);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(187411);
-    if (this.FWE != ((com.tencent.mm.plugin.teenmode.a.b)g.af(com.tencent.mm.plugin.teenmode.a.b.class)).dxW())
+    AppMethodBeat.i(259412);
+    if (this.MtS != ((com.tencent.mm.plugin.teenmode.a.b)h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).dYS())
     {
       i = 1;
-      if ((i == 0) && (this.FWF == ((com.tencent.mm.plugin.teenmode.a.b)g.af(com.tencent.mm.plugin.teenmode.a.b.class)).fvo())) {
+      if ((i == 0) && (this.MtT == ((com.tencent.mm.plugin.teenmode.a.b)h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).gkr())) {
         break label114;
       }
       i = 1;
       label54:
-      if ((i == 0) && (this.FWG == ((com.tencent.mm.plugin.teenmode.a.b)g.af(com.tencent.mm.plugin.teenmode.a.b.class)).fvo())) {
+      if ((i == 0) && (this.MtU == ((com.tencent.mm.plugin.teenmode.a.b)h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).gkr())) {
         break label119;
       }
     }
@@ -458,10 +531,10 @@ public class SettingsTeenModeMain
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        ((com.tencent.mm.plugin.teenmode.a.b)g.af(com.tencent.mm.plugin.teenmode.a.b.class)).pl(3);
+        ((com.tencent.mm.plugin.teenmode.a.b)h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).rE(3);
       }
       super.onDestroy();
-      AppMethodBeat.o(187411);
+      AppMethodBeat.o(259412);
       return;
       i = 0;
       break;
@@ -472,10 +545,10 @@ public class SettingsTeenModeMain
   
   public void onResume()
   {
-    AppMethodBeat.i(187410);
+    AppMethodBeat.i(259410);
     super.onResume();
-    is(false);
-    AppMethodBeat.o(187410);
+    jq(false);
+    AppMethodBeat.o(259410);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -486,7 +559,7 @@ public class SettingsTeenModeMain
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.teenmode.ui.SettingsTeenModeMain
  * JD-Core Version:    0.7.0.1
  */

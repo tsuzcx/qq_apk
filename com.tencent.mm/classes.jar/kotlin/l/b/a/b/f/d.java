@@ -10,9 +10,9 @@ public final class d
   private static boolean a(b paramb1, b paramb2)
   {
     AppMethodBeat.i(59318);
-    p.h(paramb1, "$this$isSubpackageOf");
-    p.h(paramb2, "packageName");
-    if (p.j(paramb1, paramb2))
+    p.k(paramb1, "$this$isSubpackageOf");
+    p.k(paramb2, "packageName");
+    if (p.h(paramb1, paramb2))
     {
       AppMethodBeat.o(59318);
       return true;
@@ -22,11 +22,11 @@ public final class d
       AppMethodBeat.o(59318);
       return true;
     }
-    paramb1 = paramb1.sG();
-    p.g(paramb1, "this.asString()");
-    paramb2 = paramb2.sG();
-    p.g(paramb2, "packageName.asString()");
-    if ((n.J(paramb1, paramb2, false)) && (paramb1.charAt(paramb2.length()) == '.'))
+    paramb1 = paramb1.qu();
+    p.j(paramb1, "this.asString()");
+    paramb2 = paramb2.qu();
+    p.j(paramb2, "packageName.asString()");
+    if ((n.M(paramb1, paramb2, false)) && (paramb1.charAt(paramb2.length()) == '.'))
     {
       AppMethodBeat.o(59318);
       return true;
@@ -38,23 +38,23 @@ public final class d
   public static final b b(b paramb1, b paramb2)
   {
     AppMethodBeat.i(59319);
-    p.h(paramb1, "$this$tail");
-    p.h(paramb2, "prefix");
+    p.k(paramb1, "$this$tail");
+    p.k(paramb2, "prefix");
     if ((!a(paramb1, paramb2)) || (paramb2.isRoot()))
     {
       AppMethodBeat.o(59319);
       return paramb1;
     }
-    if (p.j(paramb1, paramb2))
+    if (p.h(paramb1, paramb2))
     {
-      paramb1 = b.TCQ;
-      p.g(paramb1, "FqName.ROOT");
+      paramb1 = b.abfD;
+      p.j(paramb1, "FqName.ROOT");
       AppMethodBeat.o(59319);
       return paramb1;
     }
-    paramb1 = paramb1.sG();
-    p.g(paramb1, "asString()");
-    int i = paramb2.sG().length();
+    paramb1 = paramb1.qu();
+    p.j(paramb1, "asString()");
+    int i = paramb2.qu().length();
     if (paramb1 == null)
     {
       paramb1 = new t("null cannot be cast to non-null type java.lang.String");
@@ -62,7 +62,7 @@ public final class d
       throw paramb1;
     }
     paramb1 = paramb1.substring(i + 1);
-    p.g(paramb1, "(this as java.lang.String).substring(startIndex)");
+    p.j(paramb1, "(this as java.lang.String).substring(startIndex)");
     paramb1 = new b(paramb1);
     AppMethodBeat.o(59319);
     return paramb1;
@@ -70,7 +70,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.f.d
  * JD-Core Version:    0.7.0.1
  */

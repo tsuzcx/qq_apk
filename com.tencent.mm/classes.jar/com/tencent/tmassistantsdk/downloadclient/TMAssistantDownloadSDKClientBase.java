@@ -249,11 +249,9 @@ public abstract class TMAssistantDownloadSDKClientBase
     // Exception table:
     //   from	to	target	type
     //   44	53	60	finally
-    //   61	63	60	finally
     //   26	44	65	finally
     //   53	59	65	finally
-    //   63	65	65	finally
-    //   66	68	65	finally
+    //   61	65	65	finally
   }
   
   protected abstract void registerServiceCallback();
@@ -344,7 +342,7 @@ public abstract class TMAssistantDownloadSDKClientBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClientBase
  * JD-Core Version:    0.7.0.1
  */

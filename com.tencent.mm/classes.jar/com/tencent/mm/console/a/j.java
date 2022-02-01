@@ -1,102 +1,87 @@
 package com.tencent.mm.console.a;
 
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
+import android.graphics.Typeface;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelstat.WatchDogPushReceiver;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.f;
+import com.tencent.mm.plugin.websearch.api.ai;
 import com.tencent.mm.pluginsdk.cmd.a;
-import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.protocal.MMProtocalJni;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import junit.framework.Assert;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import java.util.Map;
 
 public final class j
   implements a
 {
   static
   {
-    AppMethodBeat.i(20186);
-    b.a(new j(), new String[] { "//assert", "//netassert", "//jniassert", "//jnipushassert", "//pushassert", "//anrassert" });
-    AppMethodBeat.o(20186);
+    AppMethodBeat.i(20188);
+    com.tencent.mm.pluginsdk.cmd.b.a(new j(), new String[] { "//version" });
+    AppMethodBeat.o(20188);
   }
   
   public static void init() {}
   
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    AppMethodBeat.i(20185);
-    paramContext = paramArrayOfString[0];
-    label72:
-    int i;
-    switch (paramContext.hashCode())
-    {
-    default: 
-      i = -1;
-    }
-    for (;;)
-    {
-      switch (i)
+    AppMethodBeat.i(20187);
+    paramString = new StringBuilder();
+    paramString.append(String.format("[ver  ] %s %08X\n", new Object[] { ChannelUtil.formatVersion(paramContext, com.tencent.mm.protocal.d.RAD, true), Integer.valueOf(com.tencent.mm.protocal.d.RAD) }));
+    paramString.append(BuildInfo.info());
+    paramString.append(String.format("[cid  ] %d\n", new Object[] { Integer.valueOf(ChannelUtil.channelId) }));
+    paramString.append(String.format("[s.ver] %d\n", new Object[] { Integer.valueOf(ai.anh(0)) }));
+    paramString.append(String.format("[l.ver] %d %s\n", new Object[] { Integer.valueOf(ai.anh(1)), ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.topstory.a.b.class)).getWebViewType() }));
+    paramString.append(String.format("[w.ver] %d\n", new Object[] { Integer.valueOf(ai.anh(3)) }));
+    paramString.append(String.format("[b.ver] %d\n", new Object[] { Integer.valueOf(ai.anh(2)) }));
+    paramString.append(String.format("[ts.ver] %d\n", new Object[] { Long.valueOf(((com.tencent.mm.plugin.textstatus.a.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.textstatus.a.d.class)).getResVersion()) }));
+    paramString.append(String.format("[r.ver] %s\n", new Object[] { BuildInfo.CLIENT_VERSION }));
+    if (BuildInfo.EX_DEVICE_LOGIN) {
+      try
       {
-      default: 
-        AppMethodBeat.o(20185);
-        return false;
-        if (!paramContext.equals("//assert")) {
-          break label72;
+        Map localMap = XmlParser.parseXml(Util.convertStreamToString(paramContext.getAssets().open("merged_features.xml")), "merged", null);
+        if (localMap != null)
+        {
+          i = 0;
+          StringBuilder localStringBuilder = new StringBuilder(".merged.feature");
+          if (i > 0) {}
+          for (paramArrayOfString = String.valueOf(i);; paramArrayOfString = "")
+          {
+            paramArrayOfString = (String)localMap.get(paramArrayOfString);
+            if (paramArrayOfString == null) {
+              break label378;
+            }
+            paramString.append(String.format("[feature#%02d] %s\n", new Object[] { Integer.valueOf(i), paramArrayOfString }));
+            i += 1;
+            break;
+          }
         }
-        i = 0;
-        continue;
-        if (!paramContext.equals("//netassert")) {
-          break label72;
-        }
-        i = 1;
-        continue;
-        if (!paramContext.equals("//jniassert")) {
-          break label72;
-        }
-        i = 2;
-        continue;
-        if (!paramContext.equals("//jnipushassert")) {
-          break label72;
-        }
-        i = 3;
-        continue;
-        if (!paramContext.equals("//pushassert")) {
-          break label72;
-        }
-        i = 4;
-        continue;
-        if (!paramContext.equals("//anrassert")) {
-          break label72;
-        }
-        i = 5;
+        paramArrayOfString = new TextView(paramContext);
+      }
+      catch (Exception paramArrayOfString)
+      {
+        Log.printErrStackTrace("MicroMsg.Version", paramArrayOfString, "", new Object[0]);
       }
     }
-    Assert.assertTrue("test errlog " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()), false);
-    AppMethodBeat.o(20185);
+    label378:
+    paramArrayOfString.setText(paramString);
+    paramArrayOfString.setGravity(19);
+    paramArrayOfString.setTextSize(1, 10.0F);
+    paramArrayOfString.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+    paramArrayOfString.setTextColor(paramContext.getResources().getColor(R.e.FG_0));
+    paramArrayOfString.setTypeface(Typeface.MONOSPACE);
+    int i = paramContext.getResources().getDimensionPixelSize(R.f.LargePadding);
+    paramArrayOfString.setPadding(i, i, i, i);
+    com.tencent.mm.ui.base.h.a(paramContext, null, paramArrayOfString, null);
+    AppMethodBeat.o(20187);
     return true;
-    Assert.assertTrue("NetsceneQueue forbid in ", false);
-    AppMethodBeat.o(20185);
-    return true;
-    MMProtocalJni.setClientPackVersion(-1);
-    AppMethodBeat.o(20185);
-    return true;
-    WatchDogPushReceiver.tZ(2);
-    AppMethodBeat.o(20185);
-    return true;
-    WatchDogPushReceiver.tZ(1);
-    AppMethodBeat.o(20185);
-    return true;
-    try
-    {
-      Thread.sleep(10000L);
-      label317:
-      AppMethodBeat.o(20185);
-      return true;
-    }
-    catch (InterruptedException paramContext)
-    {
-      break label317;
-    }
   }
 }
 

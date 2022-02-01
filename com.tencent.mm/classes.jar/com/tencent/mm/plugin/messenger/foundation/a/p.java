@@ -1,12 +1,11 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.b;
-import java.util.Map;
+import com.tencent.mm.storage.ca;
 
+@Deprecated
 public abstract interface p
 {
-  public abstract h.b a(String paramString, Map<String, String> paramMap, h.a parama);
+  public abstract String au(ca paramca);
 }
 
 

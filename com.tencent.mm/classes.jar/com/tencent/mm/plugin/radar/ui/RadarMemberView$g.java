@@ -4,17 +4,17 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.storage.as;
-import com.tencent.mm.ui.e.e;
+import com.tencent.mm.ui.f.e;
 import java.util.Arrays;
-import kotlin.g.b.ae;
+import kotlin.g.b.af;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class RadarMemberView$g
   implements View.OnClickListener
 {
@@ -24,22 +24,22 @@ final class RadarMemberView$g
   {
     AppMethodBeat.i(138598);
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    a.b("com/tencent/mm/plugin/radar/ui/RadarMemberView$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+    ((b)localObject).bn(paramView);
+    a.c("com/tencent/mm/plugin/radar/ui/RadarMemberView$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
     localObject = new Intent();
-    paramView = RadarMemberView.c(this.BzO);
+    paramView = RadarMemberView.c(this.Hvj);
     if (paramView != null) {}
     for (paramView = paramView.getUsername();; paramView = null)
     {
       ((Intent)localObject).putExtra("k_username", paramView);
       ((Intent)localObject).putExtra("showShare", false);
-      paramView = ae.SYK;
-      paramView = e.e.OyU;
-      p.g(paramView, "ConstantsUI.ExposeUI.KExposeH5Url");
+      paramView = af.aaBG;
+      paramView = f.e.VRX;
+      p.j(paramView, "ConstantsUI.ExposeUI.KExposeH5Url");
       paramView = String.format(paramView, Arrays.copyOf(new Object[] { Integer.valueOf(38) }, 1));
-      p.g(paramView, "java.lang.String.format(format, *args)");
+      p.j(paramView, "java.lang.String.format(format, *args)");
       ((Intent)localObject).putExtra("rawUrl", paramView);
-      c.b(this.BzO.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+      c.b(this.Hvj.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
       a.a(this, "com/tencent/mm/plugin/radar/ui/RadarMemberView$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(138598);
       return;

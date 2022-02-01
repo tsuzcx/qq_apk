@@ -11,7 +11,7 @@ public final class m
   extends MAutoStorage<l>
 {
   public static final String[] SQL_CREATE;
-  public h iFy;
+  public h lvy;
   
   static
   {
@@ -23,24 +23,24 @@ public final class m
   public m(h paramh)
   {
     super(paramh, l.info, "BackupRecoverMsgListDataId", null);
-    this.iFy = paramh;
+    this.lvy = paramh;
   }
   
-  public final boolean aHo()
+  public final boolean aPo()
   {
     AppMethodBeat.i(32830);
-    boolean bool = this.iFy.execSQL("BackupRecoverMsgListDataId", "delete from BackupRecoverMsgListDataId");
+    boolean bool = this.lvy.execSQL("BackupRecoverMsgListDataId", "delete from BackupRecoverMsgListDataId");
     Log.i("MicroMsg.BackupRecoverMsgListDataIdStorage", "deleteAllData, result:%b", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(32830);
     return bool;
   }
   
-  public final String biE(String paramString)
+  public final String buX(String paramString)
   {
     AppMethodBeat.i(32826);
     Object localObject = "SELECT * FROM BackupRecoverMsgListDataId WHERE msgListDataId = \"" + paramString + "\" ";
     Log.d("MicroMsg.BackupRecoverMsgListDataIdStorage", "getSessionNameByMsgListDataId:".concat(String.valueOf(localObject)));
-    localObject = this.iFy.rawQuery((String)localObject, null);
+    localObject = this.lvy.rawQuery((String)localObject, null);
     if (localObject == null)
     {
       Log.e("MicroMsg.BackupRecoverMsgListDataIdStorage", "getSessionNameByMsgListDataId failed, msgListDataId:%s", new Object[] { paramString });
@@ -61,7 +61,7 @@ public final class m
     return null;
   }
   
-  public final HashMap<String, String> gzC()
+  public final HashMap<String, String> hvC()
   {
     AppMethodBeat.i(32827);
     HashMap localHashMap = new HashMap();
@@ -83,11 +83,11 @@ public final class m
     return localHashMap;
   }
   
-  public final boolean gzD()
+  public final boolean hvD()
   {
     AppMethodBeat.i(32828);
     Log.d("MicroMsg.BackupRecoverMsgListDataIdStorage", "isMsgListDataIdExist:".concat(String.valueOf("SELECT * FROM BackupRecoverMsgListDataId")));
-    Cursor localCursor = this.iFy.rawQuery("SELECT * FROM BackupRecoverMsgListDataId", null);
+    Cursor localCursor = this.lvy.rawQuery("SELECT * FROM BackupRecoverMsgListDataId", null);
     if (localCursor == null)
     {
       Log.e("MicroMsg.BackupRecoverMsgListDataIdStorage", "isMsgListDataIdExist failed.");
@@ -106,12 +106,12 @@ public final class m
     return true;
   }
   
-  public final int gzE()
+  public final int hvE()
   {
     int i = 0;
     AppMethodBeat.i(32829);
     Log.d("MicroMsg.BackupRecoverMsgListDataIdStorage", "getSessionCount:".concat(String.valueOf("SELECT COUNT(DISTINCT sessionName) FROM BackupRecoverMsgListDataId ")));
-    Cursor localCursor = this.iFy.rawQuery("SELECT COUNT(DISTINCT sessionName) FROM BackupRecoverMsgListDataId ", null);
+    Cursor localCursor = this.lvy.rawQuery("SELECT COUNT(DISTINCT sessionName) FROM BackupRecoverMsgListDataId ", null);
     if (localCursor.moveToLast()) {
       i = localCursor.getInt(0);
     }
@@ -122,7 +122,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.m
  * JD-Core Version:    0.7.0.1
  */

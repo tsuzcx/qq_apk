@@ -4,22 +4,22 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.pluginsdk.ui.chat.j;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "query", "", "emojiMD5", "chatID", "timestamp", "", "scene", "", "toUser", "panelEmojiCtx", "Lcom/tencent/mm/protobuf/ByteString;", "PageBuff", "enableSos", "", "panelCallbackImpl", "Lcom/tencent/mm/pluginsdk/ui/chat/SmileyPanelCallback;", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JILjava/lang/String;Lcom/tencent/mm/protobuf/ByteString;Lcom/tencent/mm/protobuf/ByteString;ZLcom/tencent/mm/pluginsdk/ui/chat/SmileyPanelCallback;)V", "getPageBuff", "()Lcom/tencent/mm/protobuf/ByteString;", "setPageBuff", "(Lcom/tencent/mm/protobuf/ByteString;)V", "getChatID", "()Ljava/lang/String;", "setChatID", "(Ljava/lang/String;)V", "getEmojiMD5", "setEmojiMD5", "getEnableSos", "()Z", "setEnableSos", "(Z)V", "getPanelCallbackImpl", "()Lcom/tencent/mm/pluginsdk/ui/chat/SmileyPanelCallback;", "setPanelCallbackImpl", "(Lcom/tencent/mm/pluginsdk/ui/chat/SmileyPanelCallback;)V", "getPanelEmojiCtx", "setPanelEmojiCtx", "getQuery", "setQuery", "getScene", "()I", "setScene", "(I)V", "getTimestamp", "()J", "setTimestamp", "(J)V", "getToUser", "setToUser", "component1", "component10", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "describeContents", "equals", "other", "", "hashCode", "isSimilarSearch", "toString", "writeToParcel", "", "dest", "flags", "Companion", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "query", "", "emojiMD5", "chatID", "timestamp", "", "scene", "", "toUser", "panelEmojiCtx", "Lcom/tencent/mm/protobuf/ByteString;", "PageBuff", "enableSos", "", "panelCallbackImpl", "Lcom/tencent/mm/pluginsdk/ui/chat/SmileyPanelCallback;", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JILjava/lang/String;Lcom/tencent/mm/protobuf/ByteString;Lcom/tencent/mm/protobuf/ByteString;ZLcom/tencent/mm/pluginsdk/ui/chat/SmileyPanelCallback;)V", "getPageBuff", "()Lcom/tencent/mm/protobuf/ByteString;", "setPageBuff", "(Lcom/tencent/mm/protobuf/ByteString;)V", "getChatID", "()Ljava/lang/String;", "setChatID", "(Ljava/lang/String;)V", "getEmojiMD5", "setEmojiMD5", "getEnableSos", "()Z", "setEnableSos", "(Z)V", "getPanelCallbackImpl", "()Lcom/tencent/mm/pluginsdk/ui/chat/SmileyPanelCallback;", "setPanelCallbackImpl", "(Lcom/tencent/mm/pluginsdk/ui/chat/SmileyPanelCallback;)V", "getPanelEmojiCtx", "setPanelEmojiCtx", "getQuery", "setQuery", "getScene", "()I", "setScene", "(I)V", "getTimestamp", "()J", "setTimestamp", "(J)V", "getToUser", "setToUser", "component1", "component10", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "describeContents", "equals", "other", "", "hashCode", "isSimilarSearch", "toString", "writeToParcel", "", "dest", "flags", "Companion", "plugin-emojisdk_release"})
 public final class SimilarEmojiQueryModel
   implements Parcelable
 {
   public static final Parcelable.Creator<SimilarEmojiQueryModel> CREATOR;
-  public static final a NJo;
-  private b LXB;
-  public String NJk;
-  public b NJl;
-  public boolean NJm;
-  public j NJn;
+  public static final a UWP;
+  private b TgS;
+  public String UWL;
+  public b UWM;
+  public boolean UWN;
+  public j UWO;
   public String emojiMD5;
   public String query;
   public int scene;
@@ -29,7 +29,7 @@ public final class SimilarEmojiQueryModel
   static
   {
     AppMethodBeat.i(105830);
-    NJo = new a((byte)0);
+    UWP = new a((byte)0);
     CREATOR = (Parcelable.Creator)new b();
     AppMethodBeat.o(105830);
   }
@@ -43,18 +43,18 @@ public final class SimilarEmojiQueryModel
   
   public SimilarEmojiQueryModel(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt, String paramString4, b paramb, boolean paramBoolean, j paramj)
   {
-    AppMethodBeat.i(200081);
+    AppMethodBeat.i(226364);
     this.query = paramString1;
     this.emojiMD5 = paramString2;
-    this.NJk = paramString3;
+    this.UWL = paramString3;
     this.timestamp = paramLong;
     this.scene = paramInt;
     this.toUser = paramString4;
-    this.NJl = paramb;
-    this.LXB = null;
-    this.NJm = paramBoolean;
-    this.NJn = paramj;
-    AppMethodBeat.o(200081);
+    this.UWM = paramb;
+    this.TgS = null;
+    this.UWN = paramBoolean;
+    this.UWO = paramj;
+    AppMethodBeat.o(226364);
   }
   
   public final int describeContents()
@@ -70,7 +70,7 @@ public final class SimilarEmojiQueryModel
       if ((paramObject instanceof SimilarEmojiQueryModel))
       {
         paramObject = (SimilarEmojiQueryModel)paramObject;
-        if ((!p.j(this.query, paramObject.query)) || (!p.j(this.emojiMD5, paramObject.emojiMD5)) || (!p.j(this.NJk, paramObject.NJk)) || (this.timestamp != paramObject.timestamp) || (this.scene != paramObject.scene) || (!p.j(this.toUser, paramObject.toUser)) || (!p.j(this.NJl, paramObject.NJl)) || (!p.j(this.LXB, paramObject.LXB)) || (this.NJm != paramObject.NJm) || (!p.j(this.NJn, paramObject.NJn))) {}
+        if ((!p.h(this.query, paramObject.query)) || (!p.h(this.emojiMD5, paramObject.emojiMD5)) || (!p.h(this.UWL, paramObject.UWL)) || (this.timestamp != paramObject.timestamp) || (this.scene != paramObject.scene) || (!p.h(this.toUser, paramObject.toUser)) || (!p.h(this.UWM, paramObject.UWM)) || (!p.h(this.TgS, paramObject.TgS)) || (this.UWN != paramObject.UWN) || (!p.h(this.UWO, paramObject.UWO))) {}
       }
     }
     else
@@ -82,16 +82,16 @@ public final class SimilarEmojiQueryModel
     return false;
   }
   
-  public final boolean gau()
+  public final boolean gTo()
   {
-    AppMethodBeat.i(200080);
+    AppMethodBeat.i(226362);
     CharSequence localCharSequence = (CharSequence)this.query;
     if ((localCharSequence == null) || (localCharSequence.length() == 0))
     {
-      AppMethodBeat.o(200080);
+      AppMethodBeat.o(226362);
       return true;
     }
-    AppMethodBeat.o(200080);
+    AppMethodBeat.o(226362);
     return false;
   }
   
@@ -103,7 +103,7 @@ public final class SimilarEmojiQueryModel
   public final String toString()
   {
     AppMethodBeat.i(105831);
-    String str = "SimilarEmojiQueryModel(query=" + this.query + ", emojiMD5=" + this.emojiMD5 + ", chatID=" + this.NJk + ", timestamp=" + this.timestamp + ", scene=" + this.scene + ", toUser=" + this.toUser + ", panelEmojiCtx=" + this.NJl + ", PageBuff=" + this.LXB + ", enableSos=" + this.NJm + ", panelCallbackImpl=" + this.NJn + ")";
+    String str = "SimilarEmojiQueryModel(query=" + this.query + ", emojiMD5=" + this.emojiMD5 + ", chatID=" + this.UWL + ", timestamp=" + this.timestamp + ", scene=" + this.scene + ", toUser=" + this.toUser + ", panelEmojiCtx=" + this.UWM + ", PageBuff=" + this.TgS + ", enableSos=" + this.UWN + ", panelCallbackImpl=" + this.UWO + ")";
     AppMethodBeat.o(105831);
     return str;
   }
@@ -111,20 +111,20 @@ public final class SimilarEmojiQueryModel
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(105827);
-    p.h(paramParcel, "dest");
+    p.k(paramParcel, "dest");
     paramParcel.writeString(this.query);
     paramParcel.writeString(this.emojiMD5);
-    paramParcel.writeString(this.NJk);
+    paramParcel.writeString(this.UWL);
     paramParcel.writeLong(this.timestamp);
     paramParcel.writeInt(this.scene);
     paramParcel.writeString(this.toUser);
     AppMethodBeat.o(105827);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/search/data/SimilarEmojiQueryModel$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "plugin-emojisdk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/search/data/SimilarEmojiQueryModel$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "plugin-emojisdk_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/search/data/SimilarEmojiQueryModel$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "plugin-emojisdk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/search/data/SimilarEmojiQueryModel$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "plugin-emojisdk_release"})
   public static final class b
     implements Parcelable.Creator<SimilarEmojiQueryModel>
   {}

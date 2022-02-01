@@ -9,24 +9,24 @@ public final class n
   {
     super(paramString1, "");
     AppMethodBeat.i(158901);
-    a(e.a.ljE);
-    cV("SID", paramString2);
+    a(e.a.oen);
+    de("SID", paramString2);
     AppMethodBeat.o(158901);
   }
   
-  public final String bBg()
+  public final String bMB()
   {
     return "UNSUBSCRIBE";
   }
   
-  public final String bBh()
+  public final String bMC()
   {
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.a.n
  * JD-Core Version:    0.7.0.1
  */

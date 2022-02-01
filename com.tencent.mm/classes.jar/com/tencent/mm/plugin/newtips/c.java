@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.newtips;
 
-import com.tencent.mm.model.bd;
+import com.tencent.mm.model.be;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class c
-  implements bd
+  implements be
 {
   public void clearPluginData(int paramInt) {}
   

@@ -5,8 +5,8 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet.pay.ui.WalletLoanRepaymentUI;
 import com.tencent.mm.plugin.wallet_core.b.b;
-import com.tencent.mm.plugin.wallet_core.model.an;
-import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.plugin.wallet_core.model.ao;
+import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.wallet_core.d;
 
 public class a
@@ -15,7 +15,7 @@ public class a
   public final d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(69177);
-    if (t.fQI().fRk()) {
+    if (u.gJo().gJQ()) {
       b(paramActivity, WalletLoanCheckPwdUI.class, paramBundle);
     }
     for (;;)
@@ -37,10 +37,10 @@ public class a
     AppMethodBeat.o(69179);
   }
   
-  public final void g(Activity paramActivity, int paramInt)
+  public final void h(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(69178);
-    b(paramActivity, this.dQL);
+    b(paramActivity, this.fKb);
     AppMethodBeat.o(69178);
   }
 }

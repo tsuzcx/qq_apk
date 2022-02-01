@@ -2,8 +2,8 @@ package com.tencent.mm.sdk.http;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -35,9 +35,9 @@ public class HttpClientUploadWrapper
   
   static
   {
-    AppMethodBeat.i(230273);
+    AppMethodBeat.i(187828);
     BOUNDARY = "WEIXIN" + System.currentTimeMillis();
-    AppMethodBeat.o(230273);
+    AppMethodBeat.o(187828);
   }
   
   public HttpClientUploadWrapper(HttpClient paramHttpClient)
@@ -47,18 +47,18 @@ public class HttpClientUploadWrapper
   
   private String genNextPart(HttpWrapperBase.Request paramRequest)
   {
-    AppMethodBeat.i(230272);
+    AppMethodBeat.i(187826);
     paramRequest = new StringBuilder();
     paramRequest.append("\r\n");
     paramRequest.append("------" + BOUNDARY + "--\r\n");
     paramRequest = paramRequest.toString();
-    AppMethodBeat.o(230272);
+    AppMethodBeat.o(187826);
     return paramRequest;
   }
   
   private String genPrePart(HttpWrapperBase.Request paramRequest)
   {
-    AppMethodBeat.i(230271);
+    AppMethodBeat.i(187825);
     StringBuilder localStringBuilder = new StringBuilder();
     Object localObject = paramRequest.params.keySet().iterator();
     while (((Iterator)localObject).hasNext())
@@ -70,37 +70,37 @@ public class HttpClientUploadWrapper
       localStringBuilder.append((String)paramRequest.params.get(str));
       localStringBuilder.append("\r\n");
     }
-    localObject = new o(paramRequest.attachment.filePath);
-    if (!((o)localObject).isFile())
+    localObject = new q(paramRequest.attachment.filePath);
+    if (!((q)localObject).ifH())
     {
       paramRequest = new InvalidParameterException("The path to upload isnot a file.");
-      AppMethodBeat.o(230271);
+      AppMethodBeat.o(187825);
       throw paramRequest;
     }
-    localObject = ((o)localObject).getName();
+    localObject = ((q)localObject).getName();
     localStringBuilder.append("------" + BOUNDARY + "\r\n");
     localStringBuilder.append("Content-Disposition: form-data; name=\"" + paramRequest.attachment.param + "\"; filename=\"" + (String)localObject + "\"\r\n");
     localStringBuilder.append("\r\n");
     paramRequest = localStringBuilder.toString();
-    AppMethodBeat.o(230271);
+    AppMethodBeat.o(187825);
     return paramRequest;
   }
   
   public void cancel()
   {
-    AppMethodBeat.i(230270);
+    AppMethodBeat.i(187824);
     Log.d("MicroMsg.HttpClientWrapper", "cancel conection.");
     if ((this.post != null) && (!this.post.isAborted())) {
       this.post.abort();
     }
     this.client.getConnectionManager().shutdown();
-    AppMethodBeat.o(230270);
+    AppMethodBeat.o(187824);
   }
   
   public void send(HttpWrapperBase.Request paramRequest, HttpWrapperBase.Response paramResponse)
   {
     int j = 0;
-    AppMethodBeat.i(230269);
+    AppMethodBeat.i(187823);
     Log.d("MicroMsg.HttpClientWrapper", "request: %s", new Object[] { paramRequest });
     int i = j;
     try
@@ -154,45 +154,45 @@ public class HttpClientUploadWrapper
     finally
     {
       this.client.getConnectionManager().shutdown();
-      AppMethodBeat.o(230269);
+      AppMethodBeat.o(187823);
     }
   }
   
   class FileUploadEntity
     implements HttpEntity
   {
-    private o file;
+    private q file;
     private int length;
     private String nextPart;
     private String prePart;
     
     public FileUploadEntity(String paramString1, String paramString2, String paramString3)
     {
-      AppMethodBeat.i(230262);
+      AppMethodBeat.i(186400);
       this.prePart = paramString1;
-      this.file = new o(paramString2);
+      this.file = new q(paramString2);
       this.nextPart = paramString3;
       this.length = (paramString1.length() + (int)this.file.length() + paramString3.length());
-      AppMethodBeat.o(230262);
+      AppMethodBeat.o(186400);
     }
     
     public void consumeContent()
     {
-      AppMethodBeat.i(230268);
+      AppMethodBeat.i(186419);
       if (isStreaming())
       {
         UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("Streaming entity does not implement #consumeContent()");
-        AppMethodBeat.o(230268);
+        AppMethodBeat.o(186419);
         throw localUnsupportedOperationException;
       }
-      AppMethodBeat.o(230268);
+      AppMethodBeat.o(186419);
     }
     
     public InputStream getContent()
     {
-      AppMethodBeat.i(230266);
+      AppMethodBeat.i(186413);
       UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("Multipart form entity does not implement #getContent()");
-      AppMethodBeat.o(230266);
+      AppMethodBeat.o(186413);
       throw localUnsupportedOperationException;
     }
     
@@ -208,21 +208,21 @@ public class HttpClientUploadWrapper
     
     public Header getContentType()
     {
-      AppMethodBeat.i(230265);
+      AppMethodBeat.i(186408);
       BasicHeader localBasicHeader = new BasicHeader("Content-Type", "multipart/form-data; boundary=----" + HttpClientUploadWrapper.BOUNDARY);
-      AppMethodBeat.o(230265);
+      AppMethodBeat.o(186408);
       return localBasicHeader;
     }
     
     public boolean isChunked()
     {
-      AppMethodBeat.i(230263);
+      AppMethodBeat.i(186402);
       if (!isRepeatable())
       {
-        AppMethodBeat.o(230263);
+        AppMethodBeat.o(186402);
         return true;
       }
-      AppMethodBeat.o(230263);
+      AppMethodBeat.o(186402);
       return false;
     }
     
@@ -233,19 +233,19 @@ public class HttpClientUploadWrapper
     
     public boolean isStreaming()
     {
-      AppMethodBeat.i(230264);
+      AppMethodBeat.i(186404);
       if (!isRepeatable())
       {
-        AppMethodBeat.o(230264);
+        AppMethodBeat.o(186404);
         return true;
       }
-      AppMethodBeat.o(230264);
+      AppMethodBeat.o(186404);
       return false;
     }
     
     public void writeTo(OutputStream paramOutputStream)
     {
-      AppMethodBeat.i(230267);
+      AppMethodBeat.i(186418);
       DataOutputStream localDataOutputStream = new DataOutputStream(paramOutputStream);
       localDataOutputStream.writeBytes(this.prePart);
       InputStream localInputStream = null;
@@ -254,7 +254,7 @@ public class HttpClientUploadWrapper
       {
         byte[] arrayOfByte = new byte[1024];
         paramOutputStream = localInputStream;
-        localInputStream = s.ao(this.file);
+        localInputStream = u.al(this.file);
         for (;;)
         {
           paramOutputStream = localInputStream;
@@ -272,20 +272,20 @@ public class HttpClientUploadWrapper
         if (paramOutputStream != null) {
           paramOutputStream.close();
         }
-        AppMethodBeat.o(230267);
+        AppMethodBeat.o(186418);
       }
       localDataOutputStream.flush();
       if (localObject != null) {
         localObject.close();
       }
       localDataOutputStream.writeBytes(this.nextPart);
-      AppMethodBeat.o(230267);
+      AppMethodBeat.o(186418);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.http.HttpClientUploadWrapper
  * JD-Core Version:    0.7.0.1
  */

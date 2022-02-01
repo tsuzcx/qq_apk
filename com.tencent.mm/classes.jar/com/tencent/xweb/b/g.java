@@ -2,17 +2,17 @@ package com.tencent.xweb.b;
 
 public final class g
 {
-  static f SCB = null;
+  static f aadL = null;
   
   /* Error */
-  static f htt()
+  static f ixc()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
     //   3: ldc 14
     //   5: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 10	com/tencent/xweb/b/g:SCB	Lcom/tencent/xweb/b/f;
+    //   8: getstatic 10	com/tencent/xweb/b/g:aadL	Lcom/tencent/xweb/b/f;
     //   11: ifnonnull +21 -> 32
     //   14: new 22	com/tencent/xweb/b/c
     //   17: dup
@@ -24,7 +24,7 @@ public final class g
     //   29: monitorexit
     //   30: aload_0
     //   31: areturn
-    //   32: getstatic 10	com/tencent/xweb/b/g:SCB	Lcom/tencent/xweb/b/f;
+    //   32: getstatic 10	com/tencent/xweb/b/g:aadL	Lcom/tencent/xweb/b/f;
     //   35: astore_0
     //   36: ldc 14
     //   38: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -46,7 +46,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.b.g
  * JD-Core Version:    0.7.0.1
  */

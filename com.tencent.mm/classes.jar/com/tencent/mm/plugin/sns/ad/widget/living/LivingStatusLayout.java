@@ -6,12 +6,15 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.i.e;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.j;
 
 public class LivingStatusLayout
   extends FrameLayout
 {
-  private TextView DAG;
-  private View DAH;
+  private TextView JMt;
+  private View JMu;
   
   public LivingStatusLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,68 +28,68 @@ public class LivingStatusLayout
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(202422);
+    AppMethodBeat.i(267738);
     super.onFinishInflate();
     try
     {
-      this.DAG = ((TextView)findViewById(2131296501));
-      this.DAH = findViewById(2131296500);
-      this.DAH.setVisibility(8);
-      AppMethodBeat.o(202422);
+      this.JMt = ((TextView)findViewById(i.f.ad_live_status_content));
+      this.JMu = findViewById(i.f.ad_live_finder_living_icon);
+      this.JMu.setVisibility(8);
+      AppMethodBeat.o(267738);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(202422);
+      AppMethodBeat.o(267738);
     }
   }
   
   public void setLiveStatus(int paramInt)
   {
-    AppMethodBeat.i(202423);
+    AppMethodBeat.i(267739);
     Object localObject;
     if ((paramInt & 0x7F) == 2)
     {
-      if (this.DAH != null) {
-        this.DAH.setVisibility(0);
+      if (this.JMu != null) {
+        this.JMu.setVisibility(0);
       }
-      if (this.DAG != null)
+      if (this.JMt != null)
       {
-        this.DAG.setVisibility(8);
-        AppMethodBeat.o(202423);
+        this.JMt.setVisibility(8);
+        AppMethodBeat.o(267739);
       }
     }
     else
     {
-      if (this.DAH != null) {
-        this.DAH.setVisibility(8);
+      if (this.JMu != null) {
+        this.JMu.setVisibility(8);
       }
-      if (this.DAG != null)
+      if (this.JMt != null)
       {
-        this.DAG.setVisibility(0);
-        TextView localTextView = this.DAG;
+        this.JMt.setVisibility(0);
+        TextView localTextView = this.JMt;
         paramInt &= 0x7F;
         if (paramInt != 3) {
-          break label140;
+          break label142;
         }
-        localObject = getContext().getString(2131765966);
+        localObject = getContext().getString(i.j.sns_ad_living_over);
         localTextView.setText((CharSequence)localObject);
-        localObject = this.DAG;
+        localObject = this.JMt;
         if ((paramInt != 2) && (paramInt != 1)) {
-          break label164;
+          break label167;
         }
       }
     }
-    label140:
-    label164:
-    for (paramInt = 2131230895;; paramInt = 2131230896)
+    label142:
+    label167:
+    for (paramInt = i.e.ad_live_status_living_background;; paramInt = i.e.ad_live_status_over_background)
     {
       ((TextView)localObject).setBackgroundResource(paramInt);
-      AppMethodBeat.o(202423);
+      AppMethodBeat.o(267739);
       return;
       if (paramInt == 1)
       {
-        localObject = getContext().getString(2131765967);
+        localObject = getContext().getString(i.j.sns_ad_living_preview);
         break;
       }
       localObject = "";
@@ -96,17 +99,17 @@ public class LivingStatusLayout
   
   public void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(202424);
+    AppMethodBeat.i(267740);
     super.setVisibility(paramInt);
-    if ((this.DAH != null) && (paramInt != 0)) {
-      this.DAH.setVisibility(paramInt);
+    if ((this.JMu != null) && (paramInt != 0)) {
+      this.JMu.setVisibility(paramInt);
     }
-    AppMethodBeat.o(202424);
+    AppMethodBeat.o(267740);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.living.LivingStatusLayout
  * JD-Core Version:    0.7.0.1
  */

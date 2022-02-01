@@ -1,36 +1,26 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.a.b;
+import kotlin.d.f;
+import kotlin.d.g;
 import kotlin.l;
-import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/InvokeOnCancel;", "Lkotlinx/coroutines/CancelHandler;", "handler", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "(Lkotlin/jvm/functions/Function1;)V", "invoke", "toString", "", "kotlinx-coroutines-core"})
-final class br
-  extends i
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/GlobalScope;", "Lkotlinx/coroutines/CoroutineScope;", "()V", "coroutineContext", "Lkotlin/coroutines/CoroutineContext;", "getCoroutineContext", "()Lkotlin/coroutines/CoroutineContext;", "kotlinx-coroutines-core"})
+public final class br
+  implements ak
 {
-  private final b<Throwable, x> lJK;
+  public static final br abxo;
   
-  public br(b<? super Throwable, x> paramb)
+  static
   {
-    AppMethodBeat.i(118164);
-    this.lJK = paramb;
-    AppMethodBeat.o(118164);
+    AppMethodBeat.i(118184);
+    abxo = new br();
+    AppMethodBeat.o(118184);
   }
   
-  public final String toString()
+  public final f getCoroutineContext()
   {
-    AppMethodBeat.i(118163);
-    String str = "InvokeOnCancel[" + this.lJK.getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this)) + ']';
-    AppMethodBeat.o(118163);
-    return str;
-  }
-  
-  public final void y(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118161);
-    this.lJK.invoke(paramThrowable);
-    AppMethodBeat.o(118161);
+    return (f)g.aaAw;
   }
 }
 

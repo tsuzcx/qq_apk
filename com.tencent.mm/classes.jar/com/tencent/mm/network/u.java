@@ -19,9 +19,9 @@ public abstract interface u
       attachInterface(this, "com.tencent.mm.network.IWorkerCallback_AIDL");
     }
     
-    public static u bjK()
+    public static u bto()
     {
-      return a.jEc;
+      return a.muF;
     }
     
     public IBinder asBinder()
@@ -53,7 +53,7 @@ public abstract interface u
     static final class a
       implements u
     {
-      public static u jEc;
+      public static u muF;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -89,9 +89,9 @@ public abstract interface u
         //   30: iconst_0
         //   31: invokeinterface 50 5 0
         //   36: ifne +34 -> 70
-        //   39: invokestatic 54	com/tencent/mm/network/u$a:bjK	()Lcom/tencent/mm/network/u;
+        //   39: invokestatic 54	com/tencent/mm/network/u$a:bto	()Lcom/tencent/mm/network/u;
         //   42: ifnull +28 -> 70
-        //   45: invokestatic 54	com/tencent/mm/network/u$a:bjK	()Lcom/tencent/mm/network/u;
+        //   45: invokestatic 54	com/tencent/mm/network/u$a:bto	()Lcom/tencent/mm/network/u;
         //   48: invokeinterface 56 1 0
         //   53: istore_2
         //   54: aload 4
@@ -147,7 +147,7 @@ public abstract interface u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.network.u
  * JD-Core Version:    0.7.0.1
  */

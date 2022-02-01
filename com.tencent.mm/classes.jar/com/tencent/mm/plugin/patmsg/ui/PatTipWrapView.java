@@ -5,11 +5,12 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.patmsg.d.e;
 
 public class PatTipWrapView
   extends FrameLayout
 {
-  private View ARQ;
+  private View GLc;
   
   public PatTipWrapView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -19,14 +20,14 @@ public class PatTipWrapView
   public PatTipWrapView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(207011);
-    this.ARQ = View.inflate(getContext(), 2131495900, null);
-    AppMethodBeat.o(207011);
+    AppMethodBeat.i(186585);
+    this.GLc = View.inflate(getContext(), d.e.pat_tips_view, null);
+    AppMethodBeat.o(186585);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.patmsg.ui.PatTipWrapView
  * JD-Core Version:    0.7.0.1
  */

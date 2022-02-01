@@ -12,7 +12,7 @@ public class FaceCharacteristicsResult
   public static final Parcelable.Creator<FaceCharacteristicsResult> CREATOR;
   public int errCode;
   public String errMsg;
-  public FaceProNative.FaceStatus sQG;
+  public FaceProNative.FaceStatus wwC;
   
   static
   {
@@ -31,22 +31,22 @@ public class FaceCharacteristicsResult
     AppMethodBeat.o(103703);
   }
   
-  public static boolean HG(int paramInt)
+  public static boolean Lq(int paramInt)
   {
     return (paramInt >= 10) && (paramInt < 100);
   }
   
-  public static boolean HH(int paramInt)
+  public static boolean Lr(int paramInt)
   {
     return (paramInt > 0) && (paramInt < 10);
   }
   
-  public static boolean HI(int paramInt)
+  public static boolean Ls(int paramInt)
   {
     return paramInt <= 0;
   }
   
-  public final void aW(int paramInt, String paramString)
+  public final void aV(int paramInt, String paramString)
   {
     this.errCode = paramInt;
     this.errMsg = paramString;
@@ -60,7 +60,7 @@ public class FaceCharacteristicsResult
   public String toString()
   {
     AppMethodBeat.i(103705);
-    String str = "FaceCharacteristicsResult{mStatus=" + this.sQG + ", errCode=" + this.errCode + ", errMsg='" + this.errMsg + '\'' + '}';
+    String str = "FaceCharacteristicsResult{mStatus=" + this.wwC + ", errCode=" + this.errCode + ", errMsg='" + this.errMsg + '\'' + '}';
     AppMethodBeat.o(103705);
     return str;
   }
@@ -68,7 +68,7 @@ public class FaceCharacteristicsResult
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(103704);
-    paramParcel.writeParcelable(this.sQG, paramInt);
+    paramParcel.writeParcelable(this.wwC, paramInt);
     paramParcel.writeInt(this.errCode);
     paramParcel.writeString(this.errMsg);
     AppMethodBeat.o(103704);

@@ -10,34 +10,46 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
+import com.tencent.mm.f.a.gl;
+import com.tencent.mm.f.a.gl.b;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.ck;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.sport.b.b;
+import com.tencent.mm.plugin.sport.b.c;
+import com.tencent.mm.plugin.sport.b.e;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.cl;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMEditText;
 import java.util.Calendar;
 import kotlin.g.b.p;
 import kotlin.l;
+import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/sport/ui/SportExptSettingUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "plugin-sport_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/sport/ui/SportExptSettingUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "plugin-sport_release"})
 public final class SportExptSettingUI
   extends MMActivity
 {
+  final String TAG = "MicroMsg.Repairer.SportExptSettingUI";
+  
   public final int getLayoutId()
   {
-    return 2131496542;
+    return b.c.sport_reset_step_ui;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(199379);
+    AppMethodBeat.i(221793);
     super.onCreate(paramBundle);
-    setMMTitle(2131758927);
+    setMMTitle(b.e.exdevice_wechat_sport);
     setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
-    findViewById(2131305592).setOnClickListener((View.OnClickListener)new b(this));
-    findViewById(2131305616).setOnClickListener((View.OnClickListener)new c(this));
-    AppMethodBeat.o(199379);
+    findViewById(b.b.ok_btn).setOnClickListener((View.OnClickListener)new b(this));
+    findViewById(b.b.open_btn).setOnClickListener((View.OnClickListener)new c(this));
+    findViewById(b.b.get_sport_config_btn).setOnClickListener((View.OnClickListener)new d(this));
+    AppMethodBeat.o(221793);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -46,7 +58,7 @@ public final class SportExptSettingUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -54,14 +66,14 @@ public final class SportExptSettingUI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(199376);
-      this.Fkg.finish();
-      AppMethodBeat.o(199376);
+      AppMethodBeat.i(221683);
+      this.LyR.finish();
+      AppMethodBeat.o(221683);
       return false;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -69,38 +81,33 @@ public final class SportExptSettingUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(199377);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-      a.b("com/tencent/mm/plugin/sport/ui/SportExptSettingUI$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-      paramView = this.Fkg.findViewById(2131309674);
-      p.g(paramView, "findViewById<MMEditText>(R.id.value_et)");
-      paramView = ((MMEditText)paramView).getText().toString();
-      localObject = (CharSequence)paramView;
-      if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
-      for (int i = 1;; i = 0)
+      AppMethodBeat.i(221449);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bn(paramView);
+      a.c("com/tencent/mm/plugin/sport/ui/SportExptSettingUI$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      paramView = this.LyR.findViewById(b.b.value_et);
+      p.j(paramView, "findViewById<MMEditText>(R.id.value_et)");
+      paramView = n.bHC(((MMEditText)paramView).getText().toString());
+      if (paramView != null) {}
+      for (int i = paramView.intValue();; i = 1)
       {
-        if (i == 0)
-        {
-          i = Integer.parseInt(paramView);
-          paramView = Calendar.getInstance();
-          paramView.set(11, 0);
-          paramView.set(12, 0);
-          paramView.set(13, 0);
-          p.g(paramView, "cal");
-          long l1 = paramView.getTimeInMillis();
-          long l2 = System.currentTimeMillis();
-          ((com.tencent.mm.plugin.sport.a.b)g.af(com.tencent.mm.plugin.sport.a.b.class)).b("", "gh_43f2581f6fd6", (int)(l1 / 1000L), (int)(l2 / 1000L), i, ck.getFingerprint());
-          Toast.makeText((Context)this.Fkg, 2131755898, 0).show();
-        }
+        paramView = Calendar.getInstance();
+        paramView.set(11, 0);
+        paramView.set(12, 0);
+        paramView.set(13, 0);
+        p.j(paramView, "cal");
+        long l1 = paramView.getTimeInMillis();
+        long l2 = System.currentTimeMillis();
+        ((com.tencent.mm.plugin.sport.a.b)h.ae(com.tencent.mm.plugin.sport.a.b.class)).b("", "gh_43f2581f6fd6", (int)(l1 / 1000L), (int)(l2 / 1000L), i, cl.hAM());
+        Toast.makeText((Context)this.LyR, b.e.app_modify_success, 0).show();
         a.a(this, "com/tencent/mm/plugin/sport/ui/SportExptSettingUI$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(199377);
+        AppMethodBeat.o(221449);
         return;
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
@@ -108,15 +115,36 @@ public final class SportExptSettingUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(199378);
+      AppMethodBeat.i(221397);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      a.b("com/tencent/mm/plugin/sport/ui/SportExptSettingUI$onCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      localb.bn(paramView);
+      a.c("com/tencent/mm/plugin/sport/ui/SportExptSettingUI$onCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
       paramView = new Intent();
       paramView.putExtra("rawUrl", "https://fm.m.tencent.com/an:mhr/sports/");
-      c.b((Context)this.Fkg, "webview", ".ui.tools.WebviewMpUI", paramView);
+      c.b((Context)this.LyR, "webview", ".ui.tools.WebviewMpUI", paramView);
       a.a(this, "com/tencent/mm/plugin/sport/ui/SportExptSettingUI$onCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(199378);
+      AppMethodBeat.o(221397);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class d
+    implements View.OnClickListener
+  {
+    d(SportExptSettingUI paramSportExptSettingUI) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(221543);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bn(paramView);
+      a.c("com/tencent/mm/plugin/sport/ui/SportExptSettingUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      paramView = new gl();
+      paramView.fCE.action = 3;
+      EventCenter.instance.publish((IEvent)paramView);
+      Log.i(this.LyR.TAG, "getconfig:  " + paramView.fCF.fCJ + ' ' + paramView.fCF.config);
+      a.a(this, "com/tencent/mm/plugin/sport/ui/SportExptSettingUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(221543);
     }
   }
 }

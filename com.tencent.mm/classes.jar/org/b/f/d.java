@@ -6,16 +6,16 @@ import java.util.Random;
 public final class d
   implements c
 {
-  private a UiJ;
+  private a abMe;
   
   public d()
   {
     AppMethodBeat.i(40570);
-    this.UiJ = new a();
+    this.abMe = new a();
     AppMethodBeat.o(40570);
   }
   
-  private static Long hQp()
+  private static Long iVz()
   {
     AppMethodBeat.i(40573);
     long l = System.currentTimeMillis() / 1000L;
@@ -23,28 +23,28 @@ public final class d
     return Long.valueOf(l);
   }
   
-  public final String getNonce()
+  public final String iVx()
+  {
+    AppMethodBeat.i(40572);
+    String str = String.valueOf(iVz());
+    AppMethodBeat.o(40572);
+    return str;
+  }
+  
+  public final String iVy()
   {
     AppMethodBeat.i(40571);
-    long l1 = hQp().longValue();
+    long l1 = iVz().longValue();
     long l2 = new Random().nextInt();
     AppMethodBeat.o(40571);
     return String.valueOf(l1 + l2);
-  }
-  
-  public final String hQo()
-  {
-    AppMethodBeat.i(40572);
-    String str = String.valueOf(hQp());
-    AppMethodBeat.o(40572);
-    return str;
   }
   
   static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.b.f.d
  * JD-Core Version:    0.7.0.1
  */

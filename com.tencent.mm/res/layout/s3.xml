@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout style="@style/gs"
-  xmlns:android="http://schemas.android.com/apk/res/android">
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <include layout="@layout/qp" />
     <LinearLayout android:orientation="vertical" android:id="@id/atz" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/gt">
         <TextView android:id="@id/ayn" android:visibility="gone" style="@style/gy" />
@@ -10,7 +10,8 @@
                 <com.tencent.mm.ui.widget.MMTextView android:textSize="14.0dip" android:textColor="@color/BW_0_Alpha_0_5" android:layout_gravity="left" android:id="@id/hpo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" android:text="@string/g6g" />
                 <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="@dimen/ir" />
                 <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt">
-                    <ImageView android:id="@id/hpm" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+                    <com.tencent.mm.plugin.finder.view.FinderLiveOnliveWidget android:id="@id/kap" android:visibility="gone" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" app:logo_anim_auto_paly="true" app:logo_height="@dimen/cb" app:logo_mode="ao_" app:logo_style="mz" app:logo_width="@dimen/cb" />
+                    <com.tencent.mm.plugin.finder.view.FinderLiveOnliveWidget android:id="@id/kaq" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" app:logo_height="@dimen/cb" app:logo_mode="ao_" app:logo_style="dup" app:logo_width="@dimen/cb" />
                     <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/kc" android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/g" android:text="@string/g7m" />
                 </LinearLayout>
             </LinearLayout>

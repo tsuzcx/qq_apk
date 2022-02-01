@@ -1,37 +1,36 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.i;
-import com.tencent.mm.view.recyclerview.g.b;
+import com.tencent.mm.plugin.finder.feed.model.internal.k;
+import com.tencent.mm.plugin.finder.storage.an;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/FinderPrivateMsgNotifyData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "()V", "sessionId", "", "getSessionId", "()Ljava/lang/String;", "setSessionId", "(Ljava/lang/String;)V", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderMsgSysHead;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;)V", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemType", "plugin-finder_release"})
 public final class bh
-  extends g.b
-  implements bo
+  extends a
 {
-  public String sessionId;
-  
-  public final int a(i parami)
+  public bh(an paraman)
   {
-    AppMethodBeat.i(248845);
-    p.h(parami, "obj");
-    AppMethodBeat.o(248845);
+    super(paraman);
+    AppMethodBeat.i(277753);
+    AppMethodBeat.o(277753);
+  }
+  
+  public final int a(k paramk)
+  {
+    AppMethodBeat.i(277752);
+    p.k(paramk, "obj");
+    AppMethodBeat.o(277752);
     return 0;
   }
   
-  public final int cxn()
+  public final int bAQ()
   {
-    return -6;
-  }
-  
-  public final long lT()
-  {
-    AppMethodBeat.i(258542);
-    long l = hashCode();
-    AppMethodBeat.o(258542);
-    return l;
+    AppMethodBeat.i(277751);
+    int i = bh.class.getName().hashCode();
+    AppMethodBeat.o(277751);
+    return i;
   }
 }
 

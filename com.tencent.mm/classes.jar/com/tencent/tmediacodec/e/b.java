@@ -4,24 +4,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static final b SmK;
-  public boolean SmG = true;
-  public int SmH = 1920;
-  public int SmI = 1920;
-  public a SmJ = a.SmL;
+  public static final b ZPv;
+  public boolean ZPr = true;
+  public int ZPs = 1920;
+  public int ZPt = 1920;
+  public a ZPu = a.ZPw;
   
   static
   {
-    AppMethodBeat.i(190176);
-    SmK = new b();
-    AppMethodBeat.o(190176);
+    AppMethodBeat.i(224576);
+    ZPv = new b();
+    AppMethodBeat.o(224576);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(190175);
-    String str = "[initWidth:" + this.SmH + ", initHeight:" + this.SmI + ", reConfigByRealFormat:" + this.SmG + ']';
-    AppMethodBeat.o(190175);
+    AppMethodBeat.i(224574);
+    String str = "[initWidth:" + this.ZPs + ", initHeight:" + this.ZPt + ", reConfigByRealFormat:" + this.ZPr + ']';
+    AppMethodBeat.o(224574);
     return str;
   }
   
@@ -29,11 +29,11 @@ public final class b
   {
     static
     {
-      AppMethodBeat.i(190174);
-      SmL = new a("First", 0);
-      SmM = new a("SAME", 1);
-      SmN = new a[] { SmL, SmM };
-      AppMethodBeat.o(190174);
+      AppMethodBeat.i(224569);
+      ZPw = new a("First", 0);
+      ZPx = new a("SAME", 1);
+      ZPy = new a[] { ZPw, ZPx };
+      AppMethodBeat.o(224569);
     }
     
     private a() {}
@@ -41,7 +41,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.tmediacodec.e.b
  * JD-Core Version:    0.7.0.1
  */

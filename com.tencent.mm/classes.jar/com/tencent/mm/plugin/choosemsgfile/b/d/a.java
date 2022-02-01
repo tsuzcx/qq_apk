@@ -15,20 +15,20 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class a
 {
   public int mMaxCount;
-  private Map<Long, MsgFile> qoK;
-  public boolean qoL;
-  private Set<Long> qoM;
+  private Map<Long, MsgFile> tNt;
+  public boolean tNu;
+  private Set<Long> tNv;
   
   public a()
   {
     AppMethodBeat.i(123349);
     this.mMaxCount = 2147483647;
-    this.qoK = new ConcurrentHashMap();
-    this.qoM = new HashSet();
+    this.tNt = new ConcurrentHashMap();
+    this.tNv = new HashSet();
     AppMethodBeat.o(123349);
   }
   
-  public final boolean BX(long paramLong)
+  public final boolean Ig(long paramLong)
   {
     AppMethodBeat.i(123355);
     if (paramLong == -1L)
@@ -37,38 +37,38 @@ public final class a
       AppMethodBeat.o(123355);
       return false;
     }
-    if (this.qoK == null)
+    if (this.tNt == null)
     {
       Log.e("MicroMsg.ChooseMsgFileHelper", "msgIdToMsgFile is null, return");
       AppMethodBeat.o(123355);
       return false;
     }
     Log.i("MicroMsg.ChooseMsgFileHelper", "msgIdToFilePath remove msgId:%d", new Object[] { Long.valueOf(paramLong) });
-    this.qoK.remove(Long.valueOf(paramLong));
+    this.tNt.remove(Long.valueOf(paramLong));
     AppMethodBeat.o(123355);
     return true;
   }
   
-  public final boolean BY(long paramLong)
+  public final boolean Ih(long paramLong)
   {
     AppMethodBeat.i(123356);
-    if (this.qoK == null)
+    if (this.tNt == null)
     {
       AppMethodBeat.o(123356);
       return false;
     }
-    boolean bool = this.qoK.containsKey(Long.valueOf(paramLong));
+    boolean bool = this.tNt.containsKey(Long.valueOf(paramLong));
     AppMethodBeat.o(123356);
     return bool;
   }
   
-  public final void BZ(long paramLong)
+  public final void Ii(long paramLong)
   {
     try
     {
       AppMethodBeat.i(123359);
-      if (this.qoM != null) {
-        this.qoM.add(Long.valueOf(paramLong));
+      if (this.tNv != null) {
+        this.tNv.add(Long.valueOf(paramLong));
       }
       AppMethodBeat.o(123359);
       return;
@@ -76,13 +76,13 @@ public final class a
     finally {}
   }
   
-  public final void Ca(long paramLong)
+  public final void Ij(long paramLong)
   {
     try
     {
       AppMethodBeat.i(123360);
-      if (this.qoM != null) {
-        this.qoM.remove(Long.valueOf(paramLong));
+      if (this.tNv != null) {
+        this.tNv.remove(Long.valueOf(paramLong));
       }
       AppMethodBeat.o(123360);
       return;
@@ -91,7 +91,7 @@ public final class a
   }
   
   /* Error */
-  public final boolean Cb(long paramLong)
+  public final boolean Ik(long paramLong)
   {
     // Byte code:
     //   0: aload_0
@@ -99,10 +99,10 @@ public final class a
     //   2: ldc 96
     //   4: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 38	com/tencent/mm/plugin/choosemsgfile/b/d/a:qoM	Ljava/util/Set;
+    //   8: getfield 38	com/tencent/mm/plugin/choosemsgfile/b/d/a:tNv	Ljava/util/Set;
     //   11: ifnull +30 -> 41
     //   14: aload_0
-    //   15: getfield 38	com/tencent/mm/plugin/choosemsgfile/b/d/a:qoM	Ljava/util/Set;
+    //   15: getfield 38	com/tencent/mm/plugin/choosemsgfile/b/d/a:tNv	Ljava/util/Set;
     //   18: lload_1
     //   19: invokestatic 67	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   22: invokeinterface 99 2 0
@@ -165,28 +165,28 @@ public final class a
       AppMethodBeat.o(123354);
       return false;
     }
-    if (this.qoK == null)
+    if (this.tNt == null)
     {
       Log.e("MicroMsg.ChooseMsgFileHelper", "msgIdToMsgFile is null, return");
       AppMethodBeat.o(123354);
       return false;
     }
     Log.i("MicroMsg.ChooseMsgFileHelper", "msgIdToFilePath put msgId:%d filePath:%s", new Object[] { Long.valueOf(paramLong), paramMsgFile });
-    this.qoK.put(Long.valueOf(paramLong), paramMsgFile);
+    this.tNt.put(Long.valueOf(paramLong), paramMsgFile);
     AppMethodBeat.o(123354);
     return true;
   }
   
-  public final boolean cyG()
+  public final boolean cNb()
   {
     AppMethodBeat.i(123353);
-    if (this.qoK == null)
+    if (this.tNt == null)
     {
       Log.e("MicroMsg.ChooseMsgFileHelper", "isChange() msgIdToMsgFile is null, return");
       AppMethodBeat.o(123353);
       return false;
     }
-    if ((this.qoK.size() == this.mMaxCount - 1) || (this.qoK.size() == this.mMaxCount))
+    if ((this.tNt.size() == this.mMaxCount - 1) || (this.tNt.size() == this.mMaxCount))
     {
       AppMethodBeat.o(123353);
       return true;
@@ -195,17 +195,17 @@ public final class a
     return false;
   }
   
-  public final ArrayList<MsgFile> cyH()
+  public final ArrayList<MsgFile> cNc()
   {
     AppMethodBeat.i(123358);
-    if ((this.qoK == null) || (this.qoK.size() == 0))
+    if ((this.tNt == null) || (this.tNt.size() == 0))
     {
       Log.e("MicroMsg.ChooseMsgFileHelper", "msgIdToFilePath is null, return");
       AppMethodBeat.o(123358);
       return null;
     }
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.qoK.values().iterator();
+    Iterator localIterator = this.tNt.values().iterator();
     while (localIterator.hasNext()) {
       localArrayList.add((MsgFile)localIterator.next());
     }
@@ -214,7 +214,7 @@ public final class a
   }
   
   /* Error */
-  public final boolean cyI()
+  public final boolean cNd()
   {
     // Byte code:
     //   0: aload_0
@@ -222,10 +222,10 @@ public final class a
     //   2: ldc 177
     //   4: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 38	com/tencent/mm/plugin/choosemsgfile/b/d/a:qoM	Ljava/util/Set;
+    //   8: getfield 38	com/tencent/mm/plugin/choosemsgfile/b/d/a:tNv	Ljava/util/Set;
     //   11: ifnull +26 -> 37
     //   14: aload_0
-    //   15: getfield 38	com/tencent/mm/plugin/choosemsgfile/b/d/a:qoM	Ljava/util/Set;
+    //   15: getfield 38	com/tencent/mm/plugin/choosemsgfile/b/d/a:tNv	Ljava/util/Set;
     //   18: invokeinterface 178 1 0
     //   23: ifle +14 -> 37
     //   26: iconst_1
@@ -261,12 +261,12 @@ public final class a
   public final int getSelectCount()
   {
     AppMethodBeat.i(123357);
-    if (this.qoK == null)
+    if (this.tNt == null)
     {
       AppMethodBeat.o(123357);
       return 0;
     }
-    int i = this.qoK.size();
+    int i = this.tNt.size();
     AppMethodBeat.o(123357);
     return i;
   }
@@ -278,7 +278,7 @@ public final class a
       AppMethodBeat.i(123350);
       Log.i("MicroMsg.ChooseMsgFileHelper", "init count:%d", new Object[] { Integer.valueOf(paramInt) });
       this.mMaxCount = paramInt;
-      this.qoK.clear();
+      this.tNt.clear();
       AppMethodBeat.o(123350);
       return;
     }
@@ -292,13 +292,13 @@ public final class a
   public final boolean isInvalid()
   {
     AppMethodBeat.i(123352);
-    if (this.qoK == null)
+    if (this.tNt == null)
     {
       Log.e("MicroMsg.ChooseMsgFileHelper", "isInvalid() msgIdToMsgFile is null, return");
       AppMethodBeat.o(123352);
       return false;
     }
-    if (this.qoK.size() >= this.mMaxCount)
+    if (this.tNt.size() >= this.mMaxCount)
     {
       AppMethodBeat.o(123352);
       return true;
@@ -313,10 +313,10 @@ public final class a
     {
       AppMethodBeat.i(123351);
       Log.i("MicroMsg.ChooseMsgFileHelper", "uninit");
-      this.qoK.clear();
-      this.qoK = null;
-      this.qoM.clear();
-      this.qoM = null;
+      this.tNt.clear();
+      this.tNt = null;
+      this.tNv.clear();
+      this.tNv = null;
       AppMethodBeat.o(123351);
       return;
     }
@@ -329,7 +329,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.d.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
+import com.tencent.mm.an.d;
 import com.tencent.mm.ipcinvoker.extension.c;
 import com.tencent.mm.ipcinvoker.wx_extension.a;
 
@@ -38,13 +38,13 @@ public class IPCRunCgiRespWrapper
   
   public static IPCRunCgiRespWrapper b(d paramd)
   {
-    AppMethodBeat.i(225236);
+    AppMethodBeat.i(205314);
     IPCRunCgiRespWrapper localIPCRunCgiRespWrapper = new IPCRunCgiRespWrapper();
     localIPCRunCgiRespWrapper.rr = paramd;
     localIPCRunCgiRespWrapper.errMsg = null;
     localIPCRunCgiRespWrapper.errType = 3;
     localIPCRunCgiRespWrapper.errCode = -2;
-    AppMethodBeat.o(225236);
+    AppMethodBeat.o(205314);
     return localIPCRunCgiRespWrapper;
   }
   
@@ -65,7 +65,7 @@ public class IPCRunCgiRespWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.wx_extension.service.IPCRunCgiRespWrapper
  * JD-Core Version:    0.7.0.1
  */

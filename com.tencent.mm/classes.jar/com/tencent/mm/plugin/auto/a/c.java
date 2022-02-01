@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.auto.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
+import com.tencent.mm.model.be;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class c
-  implements bd
+  implements be
 {
-  private a oIH;
+  private a rKx;
   
   public c()
   {
     AppMethodBeat.i(21158);
-    this.oIH = new a();
+    this.rKx = new a();
     AppMethodBeat.o(21158);
   }
   
@@ -30,8 +30,8 @@ public final class c
   {
     AppMethodBeat.i(21159);
     Log.i("MicroMsg.auto.SubCoreAuto", "onAccountPostReset");
-    a locala = this.oIH;
-    EventCenter.instance.addListener(locala.oID);
+    a locala = this.rKx;
+    EventCenter.instance.addListener(locala.rKt);
     AppMethodBeat.o(21159);
   }
   
@@ -39,8 +39,8 @@ public final class c
   {
     AppMethodBeat.i(21160);
     Log.i("MicroMsg.auto.SubCoreAuto", "onAccountRelease");
-    a locala = this.oIH;
-    EventCenter.instance.removeListener(locala.oID);
+    a locala = this.rKx;
+    EventCenter.instance.removeListener(locala.rKt);
     AppMethodBeat.o(21160);
   }
   
@@ -48,7 +48,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.auto.a.c
  * JD-Core Version:    0.7.0.1
  */

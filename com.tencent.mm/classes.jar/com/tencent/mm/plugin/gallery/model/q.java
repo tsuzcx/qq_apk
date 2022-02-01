@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.gallery.model;
 
-import android.support.v4.e.b;
+import androidx.b.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
@@ -11,24 +11,24 @@ import kotlin.j.c;
 import kotlin.j.c.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gallery/model/RandomPreload;", "Lcom/tencent/mm/plugin/gallery/model/IPreload;", "()V", "preloadOnlyOnIdle", "", "retrievePreloadItems", "", "", "state", "Lcom/tencent/mm/plugin/gallery/model/PreLoadManager$State;", "lastState", "first", "last", "limit", "Companion", "plugin-gallery_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gallery/model/RandomPreload;", "Lcom/tencent/mm/plugin/gallery/model/IPreload;", "()V", "preloadOnlyOnIdle", "", "retrievePreloadItems", "", "", "state", "Lcom/tencent/mm/plugin/gallery/model/PreLoadManager$State;", "lastState", "first", "last", "limit", "Companion", "plugin-gallery_release"})
 public final class q
   implements j
 {
-  public static final q.a xjD;
+  public static final q.a BVS;
   
   static
   {
     AppMethodBeat.i(111801);
-    xjD = new q.a((byte)0);
+    BVS = new q.a((byte)0);
     AppMethodBeat.o(111801);
   }
   
   public final Set<Integer> a(p.c paramc1, p.c paramc2, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(111800);
-    p.h(paramc1, "state");
-    p.h(paramc2, "lastState");
+    p.k(paramc1, "state");
+    p.k(paramc2, "lastState");
     paramc2 = new b();
     if ((paramInt1 != -1) && (paramInt2 != -1) && (paramInt1 < paramInt2)) {
       Log.d("MicroMsg.RandomPreload", "start RandomPreload!!!");
@@ -57,7 +57,7 @@ public final class q
         paramInt3 = 0;
         while (paramInt3 < 50)
         {
-          paramc1.add(Integer.valueOf(c.SYP.nextInt(paramInt2, paramInt1)));
+          paramc1.add(Integer.valueOf(c.aaBL.os(paramInt2, paramInt1)));
           paramInt3 += 1;
         }
         paramc2.addAll((Collection)paramc1);
@@ -67,7 +67,7 @@ public final class q
       paramInt3 = 0;
       while (paramInt3 < i)
       {
-        paramc1.add(Integer.valueOf(c.SYP.nextInt(paramInt2, paramInt1)));
+        paramc1.add(Integer.valueOf(c.aaBL.os(paramInt2, paramInt1)));
         paramInt3 += 1;
       }
       paramc2.addAll((Collection)paramc1);
@@ -87,7 +87,7 @@ public final class q
           paramInt1 = 0;
           while (paramInt1 < 50)
           {
-            paramc1.add(Integer.valueOf(c.SYP.nextInt(paramInt2, paramInt3)));
+            paramc1.add(Integer.valueOf(c.aaBL.os(paramInt2, paramInt3)));
             paramInt1 += 1;
           }
           paramc2.addAll((Collection)paramc1);
@@ -97,7 +97,7 @@ public final class q
         paramInt1 = 0;
         while (paramInt1 < i)
         {
-          paramc1.add(Integer.valueOf(c.SYP.nextInt(paramInt2, paramInt3)));
+          paramc1.add(Integer.valueOf(c.aaBL.os(paramInt2, paramInt3)));
           paramInt1 += 1;
         }
         paramc2.addAll((Collection)paramc1);
@@ -107,7 +107,7 @@ public final class q
     }
   }
   
-  public final boolean dRm()
+  public final boolean etO()
   {
     return false;
   }

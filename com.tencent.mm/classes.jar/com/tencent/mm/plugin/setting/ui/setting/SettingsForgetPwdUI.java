@@ -11,57 +11,60 @@ import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.setting.b.c;
+import com.tencent.mm.plugin.setting.b.f;
+import com.tencent.mm.plugin.setting.b.g;
 import com.tencent.mm.ui.MMActivity;
 
 public class SettingsForgetPwdUI
   extends MMActivity
 {
-  private Button gxv;
+  private Button jbJ;
   
   public int getLayoutId()
   {
-    return 2131496254;
+    return b.g.settings_forget_pwd;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(256545);
+    AppMethodBeat.i(264222);
     setMMTitle("");
     hideActionbarLine();
-    setActionbarColor(getResources().getColor(2131101424));
+    setActionbarColor(getResources().getColor(b.c.white));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(256542);
+        AppMethodBeat.i(263969);
         SettingsForgetPwdUI.this.onBackPressed();
-        AppMethodBeat.o(256542);
+        AppMethodBeat.o(263969);
         return true;
       }
     });
-    this.gxv = ((Button)findViewById(2131305423));
-    this.gxv.setOnClickListener(new View.OnClickListener()
+    this.jbJ = ((Button)findViewById(b.f.next_btn));
+    this.jbJ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(256543);
+        AppMethodBeat.i(263933);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsForgetPwdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/setting/ui/setting/SettingsForgetPwdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         SettingsForgetPwdUI.this.onBackPressed();
         a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsForgetPwdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(256543);
+        AppMethodBeat.o(263933);
       }
     });
-    AppMethodBeat.o(256545);
+    AppMethodBeat.o(264222);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(256544);
+    AppMethodBeat.i(264219);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(256544);
+    AppMethodBeat.o(264219);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -72,7 +75,7 @@ public class SettingsForgetPwdUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsForgetPwdUI
  * JD-Core Version:    0.7.0.1
  */

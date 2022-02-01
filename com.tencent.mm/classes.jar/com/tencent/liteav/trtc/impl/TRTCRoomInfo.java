@@ -53,8 +53,8 @@ public class TRTCRoomInfo
   private boolean micHasStartd;
   public boolean muteLocalAudio;
   public boolean muteLocalVideo;
-  public boolean muteRemoteAudio;
-  public boolean muteRemoteVideo;
+  public TRTCRemoteMuteState muteRemoteAudio;
+  public TRTCRemoteMuteState muteRemoteVideo;
   public int networkStatus;
   public String privateMapKey;
   private HashMap<Long, Integer> recvFirstIFrameCntList;
@@ -80,9 +80,9 @@ public class TRTCRoomInfo
     this.userList = new HashMap();
     this.recvFirstIFrameCntList = new HashMap();
     this.muteLocalVideo = false;
-    this.muteRemoteVideo = false;
+    this.muteRemoteVideo = TRTCRemoteMuteState.UNSET;
     this.muteLocalAudio = false;
-    this.muteRemoteAudio = false;
+    this.muteRemoteAudio = TRTCRemoteMuteState.UNSET;
     this.localRenderRotation = 0;
     this.micHasStartd = false;
     this.hasExitedRoom = false;
@@ -203,8 +203,8 @@ public class TRTCRoomInfo
       this.tinyId = "";
       this.muteLocalVideo = false;
       this.muteLocalAudio = false;
-      this.muteRemoteVideo = false;
-      this.muteRemoteAudio = false;
+      this.muteRemoteVideo = TRTCRemoteMuteState.UNSET;
+      this.muteRemoteAudio = TRTCRemoteMuteState.UNSET;
       this.userList.clear();
       this.recvFirstIFrameCntList.clear();
       this.networkStatus = 1;
@@ -247,14 +247,15 @@ public class TRTCRoomInfo
     {
       ((HashMap)localObject).putAll(this.userList);
       localObject = ((HashMap)localObject).entrySet().iterator();
-      while (((Iterator)localObject).hasNext())
+      Map.Entry localEntry;
+      do
       {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        if ((paramUserAction != null) && (localEntry.getValue() != null)) {
-          paramUserAction.accept((String)localEntry.getKey(), (UserInfo)localEntry.getValue());
+        if (!((Iterator)localObject).hasNext()) {
+          break;
         }
-      }
-      AppMethodBeat.o(15743);
+        localEntry = (Map.Entry)((Iterator)localObject).next();
+      } while ((paramUserAction == null) || (localEntry.getValue() == null));
+      return;
     }
     finally
     {
@@ -358,33 +359,33 @@ public class TRTCRoomInfo
     //   0: aload_0
     //   1: monitorenter
     //   2: sipush 15742
-    //   5: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 118	com/tencent/liteav/trtc/impl/TRTCRoomInfo:userList	Ljava/util/HashMap;
-    //   12: invokevirtual 221	java/util/HashMap:entrySet	()Ljava/util/Set;
-    //   15: invokeinterface 227 1 0
+    //   9: getfield 122	com/tencent/liteav/trtc/impl/TRTCRoomInfo:userList	Ljava/util/HashMap;
+    //   12: invokevirtual 228	java/util/HashMap:entrySet	()Ljava/util/Set;
+    //   15: invokeinterface 234 1 0
     //   20: astore_3
     //   21: aload_3
-    //   22: invokeinterface 233 1 0
+    //   22: invokeinterface 240 1 0
     //   27: ifeq +53 -> 80
     //   30: aload_3
-    //   31: invokeinterface 237 1 0
-    //   36: checkcast 239	java/util/Map$Entry
-    //   39: invokeinterface 242 1 0
-    //   44: checkcast 12	com/tencent/liteav/trtc/impl/TRTCRoomInfo$UserInfo
+    //   31: invokeinterface 244 1 0
+    //   36: checkcast 246	java/util/Map$Entry
+    //   39: invokeinterface 249 1 0
+    //   44: checkcast 15	com/tencent/liteav/trtc/impl/TRTCRoomInfo$UserInfo
     //   47: astore 4
     //   49: aload 4
     //   51: ifnull -30 -> 21
     //   54: aload 4
-    //   56: getfield 309	com/tencent/liteav/trtc/impl/TRTCRoomInfo$UserInfo:tinyID	J
+    //   56: getfield 316	com/tencent/liteav/trtc/impl/TRTCRoomInfo$UserInfo:tinyID	J
     //   59: lload_1
     //   60: lcmp
     //   61: ifne -40 -> 21
     //   64: aload 4
-    //   66: getfield 312	com/tencent/liteav/trtc/impl/TRTCRoomInfo$UserInfo:userID	Ljava/lang/String;
+    //   66: getfield 319	com/tencent/liteav/trtc/impl/TRTCRoomInfo$UserInfo:userID	Ljava/lang/String;
     //   69: astore_3
     //   70: sipush 15742
-    //   73: invokestatic 150	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   73: invokestatic 157	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   76: aload_0
     //   77: monitorexit
     //   78: aload_3
@@ -392,7 +393,7 @@ public class TRTCRoomInfo
     //   80: aconst_null
     //   81: astore_3
     //   82: sipush 15742
-    //   85: invokestatic 150	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   85: invokestatic 157	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   88: goto -12 -> 76
     //   91: astore_3
     //   92: aload_0
@@ -421,23 +422,23 @@ public class TRTCRoomInfo
     //   0: aload_0
     //   1: monitorenter
     //   2: sipush 15746
-    //   5: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 120	com/tencent/liteav/trtc/impl/TRTCRoomInfo:recvFirstIFrameCntList	Ljava/util/HashMap;
+    //   9: getfield 124	com/tencent/liteav/trtc/impl/TRTCRoomInfo:recvFirstIFrameCntList	Ljava/util/HashMap;
     //   12: lload_1
-    //   13: invokestatic 319	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   16: invokevirtual 304	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   19: checkcast 181	java/lang/Integer
+    //   13: invokestatic 326	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   16: invokevirtual 311	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   19: checkcast 188	java/lang/Integer
     //   22: astore 4
     //   24: aload 4
     //   26: ifnull +23 -> 49
     //   29: aload 4
-    //   31: invokevirtual 322	java/lang/Integer:intValue	()I
+    //   31: invokevirtual 329	java/lang/Integer:intValue	()I
     //   34: ifle +15 -> 49
     //   37: iconst_1
     //   38: istore_3
     //   39: sipush 15746
-    //   42: invokestatic 150	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   42: invokestatic 157	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   45: aload_0
     //   46: monitorexit
     //   47: iload_3
@@ -445,7 +446,7 @@ public class TRTCRoomInfo
     //   49: iconst_0
     //   50: istore_3
     //   51: sipush 15746
-    //   54: invokestatic 150	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   54: invokestatic 157	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   57: goto -12 -> 45
     //   60: astore 4
     //   62: aload_0
@@ -513,16 +514,16 @@ public class TRTCRoomInfo
     //   0: aload_0
     //   1: monitorenter
     //   2: sipush 15745
-    //   5: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 120	com/tencent/liteav/trtc/impl/TRTCRoomInfo:recvFirstIFrameCntList	Ljava/util/HashMap;
+    //   9: getfield 124	com/tencent/liteav/trtc/impl/TRTCRoomInfo:recvFirstIFrameCntList	Ljava/util/HashMap;
     //   12: lload_1
-    //   13: invokestatic 319	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   16: invokevirtual 304	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   19: checkcast 181	java/lang/Integer
+    //   13: invokestatic 326	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   16: invokevirtual 311	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   19: checkcast 188	java/lang/Integer
     //   22: astore 4
     //   24: aload_0
-    //   25: getfield 120	com/tencent/liteav/trtc/impl/TRTCRoomInfo:recvFirstIFrameCntList	Ljava/util/HashMap;
+    //   25: getfield 124	com/tencent/liteav/trtc/impl/TRTCRoomInfo:recvFirstIFrameCntList	Ljava/util/HashMap;
     //   28: astore 5
     //   30: aload 4
     //   32: ifnonnull +36 -> 68
@@ -530,15 +531,15 @@ public class TRTCRoomInfo
     //   36: istore_3
     //   37: aload 5
     //   39: lload_1
-    //   40: invokestatic 319	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   40: invokestatic 326	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   43: iload_3
-    //   44: invokestatic 333	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   47: invokevirtual 194	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   44: invokestatic 340	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   47: invokevirtual 201	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   50: pop
     //   51: aload 4
     //   53: ifnonnull +26 -> 79
     //   56: sipush 15745
-    //   59: invokestatic 150	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   59: invokestatic 157	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   62: iconst_1
     //   63: istore_3
     //   64: aload_0
@@ -546,18 +547,18 @@ public class TRTCRoomInfo
     //   66: iload_3
     //   67: ireturn
     //   68: aload 4
-    //   70: invokevirtual 322	java/lang/Integer:intValue	()I
+    //   70: invokevirtual 329	java/lang/Integer:intValue	()I
     //   73: iconst_1
     //   74: iadd
     //   75: istore_3
     //   76: goto -39 -> 37
     //   79: aload 4
-    //   81: invokevirtual 322	java/lang/Integer:intValue	()I
+    //   81: invokevirtual 329	java/lang/Integer:intValue	()I
     //   84: iconst_1
     //   85: iadd
     //   86: istore_3
     //   87: sipush 15745
-    //   90: invokestatic 150	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   90: invokestatic 157	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   93: goto -29 -> 64
     //   96: astore 4
     //   98: aload_0
@@ -658,9 +659,10 @@ public class TRTCRoomInfo
   public static class RenderInfo
     implements SurfaceHolder.Callback
   {
-    public boolean muteAudio = false;
-    public boolean muteVideo = false;
+    public TRTCRoomInfo.TRTCRemoteMuteState muteAudio = TRTCRoomInfo.TRTCRemoteMuteState.UNSET;
+    public TRTCRoomInfo.TRTCRemoteMuteState muteVideo = TRTCRoomInfo.TRTCRemoteMuteState.UNSET;
     public TXCRenderAndDec render = null;
+    public Boolean startRenderView = Boolean.FALSE;
     public long tinyID;
     public TXCloudVideoView view = null;
     
@@ -690,7 +692,7 @@ public class TRTCRoomInfo
       for (paramSurfaceHolder = this.render.getVideoRender();; paramSurfaceHolder = null)
       {
         if (paramSurfaceHolder != null) {
-          paramSurfaceHolder.c(paramInt2, paramInt3);
+          paramSurfaceHolder.d(paramInt2, paramInt3);
         }
         AppMethodBeat.o(15665);
         return;
@@ -733,6 +735,21 @@ public class TRTCRoomInfo
     }
   }
   
+  public static enum TRTCRemoteMuteState
+  {
+    static
+    {
+      AppMethodBeat.i(222210);
+      UNSET = new TRTCRemoteMuteState("UNSET", 0);
+      MUTE = new TRTCRemoteMuteState("MUTE", 1);
+      UNMUTE = new TRTCRemoteMuteState("UNMUTE", 2);
+      $VALUES = new TRTCRemoteMuteState[] { UNSET, MUTE, UNMUTE };
+      AppMethodBeat.o(222210);
+    }
+    
+    private TRTCRemoteMuteState() {}
+  }
+  
   public static abstract interface UserAction
   {
     public abstract void accept(String paramString, TRTCRoomInfo.UserInfo paramUserInfo);
@@ -770,7 +787,7 @@ public class TRTCRoomInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCRoomInfo
  * JD-Core Version:    0.7.0.1
  */

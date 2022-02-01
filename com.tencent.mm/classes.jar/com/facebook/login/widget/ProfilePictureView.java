@@ -23,6 +23,8 @@ import com.facebook.internal.ImageRequest.Callback;
 import com.facebook.internal.ImageResponse;
 import com.facebook.internal.Logger;
 import com.facebook.internal.Utility;
+import com.facebook.login.R.dimen;
+import com.facebook.login.R.drawable;
 import com.facebook.login.R.styleable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
@@ -105,30 +107,32 @@ public class ProfilePictureView
   
   private int getPresetSizeInPixels(boolean paramBoolean)
   {
-    int j = 2131166103;
     AppMethodBeat.i(40475);
-    int i = j;
+    int i;
     switch (this.presetSizeType)
     {
     default: 
       AppMethodBeat.o(40475);
       return 0;
     case -2: 
-      i = 2131166104;
+      i = R.dimen.com_facebook_profilepictureview_preset_size_small;
     }
-    do
+    for (;;)
     {
-      for (;;)
+      i = getResources().getDimensionPixelSize(i);
+      AppMethodBeat.o(40475);
+      return i;
+      i = R.dimen.com_facebook_profilepictureview_preset_size_normal;
+      continue;
+      i = R.dimen.com_facebook_profilepictureview_preset_size_large;
+      continue;
+      if (!paramBoolean)
       {
-        i = getResources().getDimensionPixelSize(i);
         AppMethodBeat.o(40475);
-        return i;
-        i = 2131166102;
+        return 0;
       }
-      i = j;
-    } while (paramBoolean);
-    AppMethodBeat.o(40475);
-    return 0;
+      i = R.dimen.com_facebook_profilepictureview_preset_size_normal;
+    }
   }
   
   private void initialize(Context paramContext)
@@ -147,8 +151,8 @@ public class ProfilePictureView
   {
     AppMethodBeat.i(40468);
     paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.com_facebook_profile_picture_view);
-    setPresetSize(paramAttributeSet.getInt(1, -1));
-    this.isCropped = paramAttributeSet.getBoolean(0, true);
+    setPresetSize(paramAttributeSet.getInt(R.styleable.com_facebook_profile_picture_view_com_facebook_preset_size, -1));
+    this.isCropped = paramAttributeSet.getBoolean(R.styleable.com_facebook_profile_picture_view_com_facebook_is_cropped, true);
     paramAttributeSet.recycle();
     AppMethodBeat.o(40468);
   }
@@ -230,7 +234,7 @@ public class ProfilePictureView
     if (this.customizedDefaultProfilePicture == null)
     {
       if (isCropped()) {}
-      for (int i = 2131231888;; i = 2131231887)
+      for (int i = R.drawable.com_facebook_profile_picture_blank_square;; i = R.drawable.com_facebook_profile_picture_blank_portrait)
       {
         setImageBitmap(BitmapFactory.decodeResource(getResources(), i));
         AppMethodBeat.o(40470);
@@ -466,7 +470,7 @@ public class ProfilePictureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.login.widget.ProfilePictureView
  * JD-Core Version:    0.7.0.1
  */

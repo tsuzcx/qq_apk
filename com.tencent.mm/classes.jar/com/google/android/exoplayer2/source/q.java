@@ -7,8 +7,8 @@ import java.util.Arrays;
 
 public final class q
 {
-  private int aHK;
-  public final Format[] bwD;
+  private int aNf;
+  public final Format[] bgf;
   public final int length;
   
   public q(Format... paramVarArgs)
@@ -18,7 +18,7 @@ public final class q
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      this.bwD = paramVarArgs;
+      this.bgf = paramVarArgs;
       this.length = paramVarArgs.length;
       AppMethodBeat.o(92720);
       return;
@@ -39,7 +39,7 @@ public final class q
       return false;
     }
     paramObject = (q)paramObject;
-    if ((this.length == paramObject.length) && (Arrays.equals(this.bwD, paramObject.bwD)))
+    if ((this.length == paramObject.length) && (Arrays.equals(this.bgf, paramObject.bgf)))
     {
       AppMethodBeat.o(92722);
       return true;
@@ -51,10 +51,10 @@ public final class q
   public final int hashCode()
   {
     AppMethodBeat.i(92721);
-    if (this.aHK == 0) {
-      this.aHK = (Arrays.hashCode(this.bwD) + 527);
+    if (this.aNf == 0) {
+      this.aNf = (Arrays.hashCode(this.bgf) + 527);
     }
-    int i = this.aHK;
+    int i = this.aNf;
     AppMethodBeat.o(92721);
     return i;
   }
@@ -62,9 +62,9 @@ public final class q
   public final int j(Format paramFormat)
   {
     int i = 0;
-    while (i < this.bwD.length)
+    while (i < this.bgf.length)
     {
-      if (paramFormat == this.bwD[i]) {
+      if (paramFormat == this.bgf[i]) {
         return i;
       }
       i += 1;
@@ -74,7 +74,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.source.q
  * JD-Core Version:    0.7.0.1
  */

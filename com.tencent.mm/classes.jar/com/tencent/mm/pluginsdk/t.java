@@ -5,8 +5,8 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class t
 {
-  private static boolean JTf = false;
-  public boolean JTe = false;
+  private static boolean QSk = false;
+  public boolean QSj = false;
   public String mTag = "";
   
   public t(String paramString)
@@ -14,21 +14,21 @@ public final class t
     this.mTag = paramString;
   }
   
-  public static void glY()
+  public static void hfP()
   {
-    JTf = true;
+    QSk = true;
   }
   
-  public final boolean fP(String paramString)
+  public final boolean gz(String paramString)
   {
     AppMethodBeat.i(141158);
-    if (JTf)
+    if (QSk)
     {
       Log.i("MicroMsg.SplashOptimizing", "[%s], check cancel", new Object[] { this.mTag });
       AppMethodBeat.o(141158);
       return false;
     }
-    if (this.JTe)
+    if (this.QSj)
     {
       Log.i("MicroMsg.SplashOptimizing", "[%s], recreate activity, skip this %s", new Object[] { this.mTag, paramString });
       AppMethodBeat.o(141158);
@@ -40,7 +40,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.t
  * JD-Core Version:    0.7.0.1
  */

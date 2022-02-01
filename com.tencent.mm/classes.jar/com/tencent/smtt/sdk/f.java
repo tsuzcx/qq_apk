@@ -1,111 +1,100 @@
 package com.tencent.smtt.sdk;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.utils.TbsLog;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.smtt.utils.c;
+import java.util.UnknownFormatConversionException;
 
 public class f
 {
-  private static String a = "SDKEcService";
-  private static f b;
-  private Map<Integer, a> c;
-  private Map<Integer, String> d;
-  private int e;
+  static int a = 5;
+  static int b = 16;
+  static char[] c = new char[16];
+  static String d = "dex2oat-cmdline";
+  static long e = 4096L;
   
-  public f()
+  public static String a(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(188390);
-    this.e = -1;
-    this.c = new LinkedHashMap();
-    this.d = new LinkedHashMap();
-    AppMethodBeat.o(188390);
+    boolean bool = true;
+    AppMethodBeat.i(196435);
+    paramContext = new c(paramString);
+    paramContext.a(c);
+    if (c[a] == '\001') {}
+    for (;;)
+    {
+      paramContext.a(bool);
+      paramContext.a(e);
+      paramContext = a(new String(a(paramContext)));
+      AppMethodBeat.o(196435);
+      return paramContext;
+      bool = false;
+    }
   }
   
-  public static f a()
+  private static String a(String paramString)
   {
-    AppMethodBeat.i(188389);
-    if (b == null) {
-      b = new f();
-    }
-    f localf = b;
-    AppMethodBeat.o(188389);
-    return localf;
-  }
-  
-  public void a(int paramInt, a parama)
-  {
-    AppMethodBeat.i(188391);
-    if (this.d.containsKey(Integer.valueOf(paramInt)))
+    AppMethodBeat.i(196438);
+    paramString = paramString.split(new String(""));
+    int i = 0;
+    while (i < paramString.length)
     {
-      String str = (String)this.d.get(Integer.valueOf(paramInt));
-      this.d.remove(Integer.valueOf(paramInt));
-      parama.a(str);
-      TbsLog.e(a, "Executed command: " + paramInt + ", extra: " + str + ", emergency configuration has requested");
-      AppMethodBeat.o(188391);
-      return;
-    }
-    if (this.e == -1)
-    {
-      this.c.put(Integer.valueOf(paramInt), parama);
-      TbsLog.e(a, "Emergency configuration has not yet dispatched. Command query: " + paramInt + " has been suspended");
-      AppMethodBeat.o(188391);
-      return;
-    }
-    TbsLog.e(a, "Emergency configuration has been dispatched, status: " + this.e + ". Command query: " + paramInt + " ignored");
-    AppMethodBeat.o(188391);
-  }
-  
-  public void a(int paramInt, Map<Integer, String> paramMap)
-  {
-    AppMethodBeat.i(188392);
-    TbsLog.e(a, "Handle emergency commands in sdk, status: ".concat(String.valueOf(paramInt)));
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    if (paramInt == 0)
-    {
-      Iterator localIterator = paramMap.keySet().iterator();
-      Integer localInteger;
-      for (;;)
+      int j = i + 1;
+      Object localObject = paramString[i];
+      i = j + 1;
+      String str = paramString[j];
+      if (localObject.equals(d))
       {
-        if (!localIterator.hasNext()) {
-          break label181;
-        }
-        localInteger = (Integer)localIterator.next();
-        if (!this.c.containsKey(localInteger)) {
-          break;
-        }
-        localObject = (a)this.c.get(localInteger);
-        if (localObject != null) {
-          ((a)localObject).a((String)paramMap.get(localInteger));
-        }
-      }
-      Object localObject = (String)paramMap.get(localInteger);
-      if (localObject != null) {}
-      for (;;)
-      {
-        localLinkedHashMap.put(localInteger, localObject);
-        break;
-        localObject = "";
+        AppMethodBeat.o(196438);
+        return str;
       }
     }
-    this.c.clear();
-    TbsLog.e(a, "Handle emergency commands failed, ignore all unhandled emergencies, status: ".concat(String.valueOf(paramInt)));
-    label181:
-    this.d = localLinkedHashMap;
-    this.e = paramInt;
-    AppMethodBeat.o(188392);
+    AppMethodBeat.o(196438);
+    return "";
   }
   
-  public static abstract interface a
+  public static char[] a(c paramc)
   {
-    public abstract void a(String paramString);
+    AppMethodBeat.i(196444);
+    char[] arrayOfChar1 = new char[4];
+    char[] arrayOfChar2 = new char[4];
+    paramc.a(arrayOfChar1);
+    if ((arrayOfChar1[0] != 'o') || (arrayOfChar1[1] != 'a') || (arrayOfChar1[2] != 't'))
+    {
+      paramc = new UnknownFormatConversionException(String.format("Invalid art magic %c%c%c", new Object[] { Character.valueOf(arrayOfChar1[0]), Character.valueOf(arrayOfChar1[1]), Character.valueOf(arrayOfChar1[2]) }));
+      AppMethodBeat.o(196444);
+      throw paramc;
+    }
+    paramc.a(arrayOfChar2);
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    if (arrayOfChar2[1] <= '4')
+    {
+      paramc.b();
+      paramc.b();
+      paramc.b();
+    }
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    arrayOfChar1 = new char[paramc.b()];
+    paramc.a(arrayOfChar1);
+    AppMethodBeat.o(196444);
+    return arrayOfChar1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.f
  * JD-Core Version:    0.7.0.1
  */

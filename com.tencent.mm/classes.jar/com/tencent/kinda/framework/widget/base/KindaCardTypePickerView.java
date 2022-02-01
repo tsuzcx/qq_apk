@@ -4,13 +4,14 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
 import android.widget.EditText;
+import com.tencent.kinda.framework.R.color;
 import com.tencent.kinda.framework.widget.tools.MMKViewUtil;
 import com.tencent.kinda.gen.KCardTypePickerView;
 import com.tencent.kinda.gen.KCardTypePickerViewOnSelectCallback;
 import com.tencent.kinda.gen.Option;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.widget.picker.c;
-import com.tencent.mm.ui.widget.picker.c.b;
+import com.tencent.mm.ui.widget.picker.b;
+import com.tencent.mm.ui.widget.picker.b.b;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -22,7 +23,7 @@ public class KindaCardTypePickerView
   private KCardTypePickerViewOnSelectCallback mCallBack;
   private Context mContext;
   private EditText mEditText;
-  private c mOptionPiker;
+  private b mOptionPiker;
   private ArrayList<Option> mOptions;
   private int selected = -1;
   
@@ -36,8 +37,8 @@ public class KindaCardTypePickerView
     this.mEditText.setTextSize(0, MMKViewUtil.dpToPx(paramContext, 17.0F));
     this.mEditText.setPadding(0, 0, 0, 0);
     this.mContext = paramContext;
-    this.mEditText.setHintTextColor(paramContext.getResources().getColor(2131099746));
-    this.mEditText.setTextColor(paramContext.getResources().getColor(2131099746));
+    this.mEditText.setHintTextColor(paramContext.getResources().getColor(R.color.FG_0));
+    this.mEditText.setTextColor(paramContext.getResources().getColor(R.color.FG_0));
     paramContext = new LayoutWrapper(paramContext, this.mEditText);
     AppMethodBeat.o(18895);
     return paramContext;
@@ -84,8 +85,8 @@ public class KindaCardTypePickerView
       while (localIterator.hasNext()) {
         localArrayList.add(((Option)localIterator.next()).mContent);
       }
-      this.mOptionPiker = new c(this.mContext, localArrayList);
-      this.mOptionPiker.QTc = new c.b()
+      this.mOptionPiker = new b(this.mContext, localArrayList);
+      this.mOptionPiker.YrN = new b.b()
       {
         public void onResult(boolean paramAnonymousBoolean, Object paramAnonymousObject1, Object paramAnonymousObject2)
         {
@@ -95,14 +96,14 @@ public class KindaCardTypePickerView
           {
             paramAnonymousObject1 = (String)paramAnonymousObject1;
             KindaCardTypePickerView.this.mEditText.setText(paramAnonymousObject1);
-            KindaCardTypePickerView.access$202(KindaCardTypePickerView.this, KindaCardTypePickerView.this.mOptionPiker.hci());
-            KindaCardTypePickerView.this.mCallBack.onSelect(KindaCardTypePickerView.this.mOptionPiker.hci());
+            KindaCardTypePickerView.access$202(KindaCardTypePickerView.this, KindaCardTypePickerView.this.mOptionPiker.idp());
+            KindaCardTypePickerView.this.mCallBack.onSelect(KindaCardTypePickerView.this.mOptionPiker.idp());
           }
           AppMethodBeat.o(18887);
         }
       };
       if (this.selected != -1) {
-        this.mOptionPiker.app(this.selected);
+        this.mOptionPiker.ayK(this.selected);
       }
       this.mOptionPiker.show();
     }
@@ -133,7 +134,7 @@ public class KindaCardTypePickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaCardTypePickerView
  * JD-Core Version:    0.7.0.1
  */

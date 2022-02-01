@@ -5,43 +5,43 @@ import java.lang.reflect.Field;
 
 public final class a<T>
 {
-  private Field bUo;
-  private String classname;
-  private String fieldName;
-  private boolean gKM;
+  private Field bKF;
+  private String jva;
+  private boolean jvb;
+  private String jvc;
   private Object obj;
   
   public a(Object paramObject, String paramString)
   {
-    AppMethodBeat.i(197814);
+    AppMethodBeat.i(258871);
     if (paramObject == null)
     {
       paramObject = new IllegalArgumentException("obj cannot be null");
-      AppMethodBeat.o(197814);
+      AppMethodBeat.o(258871);
       throw paramObject;
     }
     this.obj = paramObject;
-    this.fieldName = paramString;
-    this.classname = null;
-    AppMethodBeat.o(197814);
+    this.jva = paramString;
+    this.jvc = null;
+    AppMethodBeat.o(258871);
   }
   
   private void prepare()
   {
-    AppMethodBeat.i(197815);
-    if (this.gKM)
+    AppMethodBeat.i(258872);
+    if (this.jvb)
     {
-      AppMethodBeat.o(197815);
+      AppMethodBeat.o(258872);
       return;
     }
-    this.gKM = true;
+    this.jvb = true;
     Class localClass = this.obj.getClass();
     while (localClass != null) {
       try
       {
-        Field localField1 = localClass.getDeclaredField(this.fieldName);
+        Field localField1 = localClass.getDeclaredField(this.jva);
         localField1.setAccessible(true);
-        this.bUo = localField1;
+        this.bKF = localField1;
         return;
       }
       catch (Exception localException1)
@@ -50,7 +50,7 @@ public final class a<T>
         {
           try
           {
-            if ((this.classname != null) && (!this.classname.equals("")))
+            if ((this.jvc != null) && (!this.jvc.equals("")))
             {
               Field[] arrayOfField = localClass.getDeclaredFields();
               int j = arrayOfField.length;
@@ -58,11 +58,11 @@ public final class a<T>
               if (i < j)
               {
                 Field localField2 = arrayOfField[i];
-                if (!localField2.getType().getName().equals(this.classname)) {
+                if (!localField2.getType().getName().equals(this.jvc)) {
                   continue;
                 }
                 localField2.setAccessible(true);
-                this.bUo = localField2;
+                this.bKF = localField2;
               }
             }
           }
@@ -79,53 +79,53 @@ public final class a<T>
       finally
       {
         localClass.getSuperclass();
-        AppMethodBeat.o(197815);
+        AppMethodBeat.o(258872);
       }
     }
-    AppMethodBeat.o(197815);
+    AppMethodBeat.o(258872);
   }
   
-  public final boolean apg()
+  public final boolean avs()
   {
-    AppMethodBeat.i(197817);
+    AppMethodBeat.i(258875);
     prepare();
-    if (this.bUo != null)
+    if (this.bKF != null)
     {
-      AppMethodBeat.o(197817);
+      AppMethodBeat.o(258875);
       return true;
     }
-    AppMethodBeat.o(197817);
+    AppMethodBeat.o(258875);
     return false;
   }
   
   public final T get()
   {
-    AppMethodBeat.i(197816);
+    AppMethodBeat.i(258873);
     prepare();
     Object localObject;
-    if (this.bUo == null)
+    if (this.bKF == null)
     {
       localObject = new NoSuchFieldException();
-      AppMethodBeat.o(197816);
+      AppMethodBeat.o(258873);
       throw ((Throwable)localObject);
     }
     try
     {
-      localObject = this.bUo.get(this.obj);
-      AppMethodBeat.o(197816);
+      localObject = this.bKF.get(this.obj);
+      AppMethodBeat.o(258873);
       return localObject;
     }
     catch (ClassCastException localClassCastException)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("unable to cast object");
-      AppMethodBeat.o(197816);
+      AppMethodBeat.o(258873);
       throw localIllegalArgumentException;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ext.a.a.a
  * JD-Core Version:    0.7.0.1
  */

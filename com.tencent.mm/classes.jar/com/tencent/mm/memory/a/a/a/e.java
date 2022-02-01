@@ -10,10 +10,10 @@ import java.util.Set;
 public abstract class e<T, V, X, Y>
   implements f<T, V>
 {
-  protected a iuq;
-  public f<T, X> iuv = null;
-  public d<T, Y> iuw = null;
-  public f.b<T, V> iux = null;
+  public f<T, X> ljE = null;
+  public d<T, Y> ljF = null;
+  public f.b<T, V> ljG = null;
+  protected a ljz;
   public int maxSize;
   
   public e(int paramInt)
@@ -24,20 +24,18 @@ public abstract class e<T, V, X, Y>
   
   public e(int paramInt, f.b<T, V> paramb)
   {
-    this.iux = paramb;
+    this.ljG = paramb;
     this.maxSize = 10;
     init();
   }
   
   public e(int paramInt, f.b<T, V> paramb, a parama)
   {
-    this.iux = paramb;
+    this.ljG = paramb;
     this.maxSize = paramInt;
-    this.iuq = parama;
+    this.ljz = parama;
     init();
   }
-  
-  protected abstract Y A(T paramT, V paramV);
   
   protected d<T, Y> a(a parama)
   {
@@ -46,183 +44,185 @@ public abstract class e<T, V, X, Y>
   
   public final void a(final f.a<T, V> parama)
   {
-    this.iuv.a(new f.a() {});
+    this.ljE.a(new f.a() {});
   }
   
-  protected abstract T aSg();
-  
-  protected f<T, X> aSh()
+  public V aX(T paramT)
   {
-    new h(this.maxSize, new f.b()
-    {
-      public final void c(T paramAnonymousT, X paramAnonymousX1, X paramAnonymousX2)
-      {
-        AppMethodBeat.i(156513);
-        if (e.this.iux != null) {
-          e.this.iux.c(paramAnonymousT, e.this.bY(paramAnonymousX1), e.this.bY(paramAnonymousX2));
-        }
-        AppMethodBeat.o(156513);
-      }
-    });
-  }
-  
-  public V aT(T paramT)
-  {
-    Object localObject = bY(this.iuv.aT(paramT));
-    if (this.iuw != null) {
-      this.iuw.G(aSg(), paramT);
+    Object localObject = bY(this.ljE.aX(paramT));
+    if (this.ljF != null) {
+      this.ljF.z(bbd(), paramT);
     }
     return localObject;
   }
   
   protected abstract V bY(X paramX);
   
+  protected abstract T bbd();
+  
+  protected f<T, X> bbe()
+  {
+    new h(this.maxSize, new f.b()
+    {
+      public final void preRemoveCallback(T paramAnonymousT, X paramAnonymousX1, X paramAnonymousX2)
+      {
+        AppMethodBeat.i(156513);
+        if (e.this.ljG != null) {
+          e.this.ljG.preRemoveCallback(paramAnonymousT, e.this.bY(paramAnonymousX1), e.this.bY(paramAnonymousX2));
+        }
+        AppMethodBeat.o(156513);
+      }
+    });
+  }
+  
   protected abstract X ca(V paramV);
   
   public boolean check(T paramT)
   {
-    boolean bool = this.iuv.check(paramT);
-    if (this.iuw != null) {
-      this.iuw.C(aSg(), paramT);
+    boolean bool = this.ljE.check(paramT);
+    if (this.ljF != null) {
+      this.ljF.v(bbd(), paramT);
     }
     return bool;
   }
   
   public boolean checkAndUpTime(T paramT)
   {
-    boolean bool = this.iuv.checkAndUpTime(paramT);
-    if (this.iuw != null) {
-      this.iuw.H(aSg(), paramT);
+    boolean bool = this.ljE.checkAndUpTime(paramT);
+    if (this.ljF != null) {
+      this.ljF.A(bbd(), paramT);
     }
     return bool;
   }
   
   public final void clear()
   {
-    this.iuv.clear();
+    this.ljE.clear();
   }
   
   public int createCount()
   {
-    int i = this.iuv.createCount();
-    if (this.iuw != null) {
-      this.iuw.createCount();
+    int i = this.ljE.createCount();
+    if (this.ljF != null) {
+      this.ljF.createCount();
     }
     return i;
   }
   
   public int evictionCount()
   {
-    int i = this.iuv.evictionCount();
-    if (this.iuw != null) {
-      this.iuw.evictionCount();
+    int i = this.ljE.evictionCount();
+    if (this.ljF != null) {
+      this.ljF.evictionCount();
     }
     return i;
   }
   
   public V get(T paramT)
   {
-    Object localObject = bY(this.iuv.get(paramT));
-    if (this.iuw != null) {
-      this.iuw.F(aSg(), paramT);
+    Object localObject = bY(this.ljE.get(paramT));
+    if (this.ljF != null) {
+      this.ljF.y(bbd(), paramT);
     }
     return localObject;
   }
   
   public int hitCount()
   {
-    int i = this.iuv.hitCount();
-    if (this.iuw != null) {
-      this.iuw.hitCount();
+    int i = this.ljE.hitCount();
+    if (this.ljF != null) {
+      this.ljF.hitCount();
     }
     return i;
   }
   
   protected void init()
   {
-    this.iuv = aSh();
-    this.iuw = a(this.iuq);
+    this.ljE = bbe();
+    this.ljF = a(this.ljz);
   }
   
   public Set<T> keySet()
   {
-    return this.iuv.keySet();
+    return this.ljE.keySet();
   }
   
   public int maxSize()
   {
-    int i = this.iuv.maxSize();
-    if (this.iuw != null) {
-      this.iuw.maxSize();
+    int i = this.ljE.maxSize();
+    if (this.ljF != null) {
+      this.ljF.maxSize();
     }
     return i;
   }
   
   public int missCount()
   {
-    int i = this.iuv.missCount();
-    if (this.iuw != null) {
-      this.iuw.missCount();
+    int i = this.ljE.missCount();
+    if (this.ljF != null) {
+      this.ljF.missCount();
     }
     return i;
   }
   
   public V put(T paramT, V paramV)
   {
-    Object localObject1 = bY(this.iuv.put(paramT, ca(paramV)));
-    if (this.iuw != null)
+    Object localObject1 = bY(this.ljE.put(paramT, ca(paramV)));
+    if (this.ljF != null)
     {
-      Object localObject2 = aSg();
-      this.iuw.g(localObject2, paramT, A(paramT, paramV));
+      Object localObject2 = bbd();
+      this.ljF.f(localObject2, paramT, t(paramT, paramV));
     }
     return localObject1;
   }
   
   public int putCount()
   {
-    int i = this.iuv.putCount();
-    if (this.iuw != null) {
-      this.iuw.putCount();
+    int i = this.ljE.putCount();
+    if (this.ljF != null) {
+      this.ljF.putCount();
     }
     return i;
   }
   
+  public void q(T paramT, V paramV)
+  {
+    this.ljE.q(paramT, ca(paramV));
+    if (this.ljF != null)
+    {
+      Object localObject = bbd();
+      this.ljF.e(localObject, paramT, t(paramT, paramV));
+    }
+  }
+  
   public V remove(T paramT)
   {
-    Object localObject = bY(this.iuv.remove(paramT));
-    if (this.iuw != null) {
-      this.iuw.E(aSg(), paramT);
+    Object localObject = bY(this.ljE.remove(paramT));
+    if (this.ljF != null) {
+      this.ljF.x(bbd(), paramT);
     }
     return localObject;
   }
   
   public int size()
   {
-    int i = this.iuv.size();
-    if (this.iuw != null) {
-      this.iuw.size();
+    int i = this.ljE.size();
+    if (this.ljF != null) {
+      this.ljF.size();
     }
     return i;
   }
   
   public int sizeOf(T paramT, V paramV)
   {
-    return this.iuv.sizeOf(paramT, ca(paramV));
+    return this.ljE.sizeOf(paramT, ca(paramV));
   }
+  
+  protected abstract Y t(T paramT, V paramV);
   
   public void trimToSize(int paramInt)
   {
-    this.iuv.trimToSize(paramInt);
-  }
-  
-  public void x(T paramT, V paramV)
-  {
-    this.iuv.x(paramT, ca(paramV));
-    if (this.iuw != null)
-    {
-      Object localObject = aSg();
-      this.iuw.f(localObject, paramT, A(paramT, paramV));
-    }
+    this.ljE.trimToSize(paramInt);
   }
 }
 

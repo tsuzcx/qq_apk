@@ -3,16 +3,12 @@ package kotlin.l.b.a.b.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.Set;
-import kotlin.a.j;
 import kotlin.g.b.i;
 import kotlin.g.b.p;
 
 public final class b
   implements Collection<a>, kotlin.g.b.a.a
 {
-  final Set<a> TDm;
-  
   public final boolean addAll(Collection<? extends a> paramCollection)
   {
     AppMethodBeat.i(59349);
@@ -37,20 +33,17 @@ public final class b
       AppMethodBeat.o(59345);
       return false;
     }
-    paramObject = (a)paramObject;
-    p.h(paramObject, "element");
-    boolean bool = this.TDm.contains(paramObject);
+    p.k((a)paramObject, "element");
     AppMethodBeat.o(59345);
-    return bool;
+    throw null;
   }
   
   public final boolean containsAll(Collection<? extends Object> paramCollection)
   {
     AppMethodBeat.i(59346);
-    p.h(paramCollection, "elements");
-    boolean bool = this.TDm.containsAll(paramCollection);
+    p.k(paramCollection, "elements");
     AppMethodBeat.o(59346);
-    return bool;
+    throw null;
   }
   
   public final boolean equals(Object paramObject)
@@ -66,37 +59,29 @@ public final class b
       AppMethodBeat.o(59342);
       return false;
     }
-    if ((p.j(this.TDm, ((b)paramObject).TDm) ^ true))
-    {
-      AppMethodBeat.o(59342);
-      return false;
-    }
     AppMethodBeat.o(59342);
-    return true;
+    throw null;
   }
   
   public final int hashCode()
   {
     AppMethodBeat.i(59343);
-    int i = this.TDm.hashCode();
     AppMethodBeat.o(59343);
-    return i;
+    throw null;
   }
   
   public final boolean isEmpty()
   {
     AppMethodBeat.i(59347);
-    boolean bool = this.TDm.isEmpty();
     AppMethodBeat.o(59347);
-    return bool;
+    throw null;
   }
   
   public final Iterator<a> iterator()
   {
     AppMethodBeat.i(59348);
-    Iterator localIterator = this.TDm.iterator();
     AppMethodBeat.o(59348);
-    return localIterator;
+    throw null;
   }
   
   public final boolean remove(Object paramObject)
@@ -126,7 +111,7 @@ public final class b
   public final Object[] toArray()
   {
     AppMethodBeat.i(59355);
-    Object[] arrayOfObject = i.w(this);
+    Object[] arrayOfObject = i.u(this);
     AppMethodBeat.o(59355);
     return arrayOfObject;
   }
@@ -134,7 +119,7 @@ public final class b
   public final <T> T[] toArray(T[] paramArrayOfT)
   {
     AppMethodBeat.i(59356);
-    paramArrayOfT = i.a(this, paramArrayOfT);
+    paramArrayOfT = i.b(this, paramArrayOfT);
     AppMethodBeat.o(59356);
     return paramArrayOfT;
   }
@@ -142,15 +127,14 @@ public final class b
   public final String toString()
   {
     AppMethodBeat.i(59341);
-    p.h(this, "$this$presentableDescription");
-    String str = j.a((Iterable)this.TDm, (CharSequence)"/", null, null, 0, null, null, 62);
+    p.k(this, "$this$presentableDescription");
     AppMethodBeat.o(59341);
-    return str;
+    throw null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlin.l.b.a.b.g.b
  * JD-Core Version:    0.7.0.1
  */

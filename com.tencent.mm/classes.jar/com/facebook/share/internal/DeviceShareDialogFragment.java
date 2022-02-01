@@ -5,10 +5,9 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.g;
-import android.support.v4.app.k;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,11 +17,19 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.e;
+import androidx.fragment.app.i;
 import com.facebook.FacebookRequestError;
 import com.facebook.GraphRequest;
 import com.facebook.GraphRequest.Callback;
 import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
+import com.facebook.common.R.id;
+import com.facebook.common.R.layout;
+import com.facebook.common.R.string;
+import com.facebook.common.R.style;
 import com.facebook.devicerequests.internal.DeviceRequestsHelper;
 import com.facebook.internal.Validate;
 import com.facebook.share.model.ShareContent;
@@ -45,7 +52,7 @@ public class DeviceShareDialogFragment
   private static ScheduledThreadPoolExecutor backgroundExecutor;
   private volatile ScheduledFuture codeExpiredFuture;
   private TextView confirmationCode;
-  private volatile DeviceShareDialogFragment.RequestState currentRequestState;
+  private volatile RequestState currentRequestState;
   private Dialog dialog;
   private ProgressBar progressBar;
   private ShareContent shareContent;
@@ -54,7 +61,7 @@ public class DeviceShareDialogFragment
   {
     AppMethodBeat.i(7991);
     if (isAdded()) {
-      getFragmentManager().beginTransaction().a(this).commit();
+      getFragmentManager().beginTransaction().a(this).in();
     }
     AppMethodBeat.o(7991);
   }
@@ -128,7 +135,7 @@ public class DeviceShareDialogFragment
     return null;
   }
   
-  private void setCurrentRequestState(DeviceShareDialogFragment.RequestState paramRequestState)
+  private void setCurrentRequestState(RequestState paramRequestState)
   {
     AppMethodBeat.i(7996);
     this.currentRequestState = paramRequestState;
@@ -191,11 +198,11 @@ public class DeviceShareDialogFragment
   public Dialog onCreateDialog(Bundle paramBundle)
   {
     AppMethodBeat.i(7987);
-    this.dialog = new Dialog(getActivity(), 2131821743);
-    paramBundle = getActivity().getLayoutInflater().inflate(2131493684, null);
-    this.progressBar = ((ProgressBar)paramBundle.findViewById(2131306284));
-    this.confirmationCode = ((TextView)paramBundle.findViewById(2131299011));
-    ((Button)paramBundle.findViewById(2131297964)).setOnClickListener(new View.OnClickListener()
+    this.dialog = new Dialog(getActivity(), R.style.com_facebook_auth_dialog);
+    paramBundle = getActivity().getLayoutInflater().inflate(R.layout.com_facebook_device_auth_dialog_fragment, null);
+    this.progressBar = ((ProgressBar)paramBundle.findViewById(R.id.progress_bar));
+    this.confirmationCode = ((TextView)paramBundle.findViewById(R.id.confirmation_code));
+    ((Button)paramBundle.findViewById(R.id.cancel_button)).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
@@ -204,7 +211,7 @@ public class DeviceShareDialogFragment
         AppMethodBeat.o(7977);
       }
     });
-    ((TextView)paramBundle.findViewById(2131298917)).setText(Html.fromHtml(getString(2131757722)));
+    ((TextView)paramBundle.findViewById(R.id.com_facebook_device_auth_instructions)).setText(Html.fromHtml(getString(R.string.com_facebook_device_auth_instructions)));
     this.dialog.setContentView(paramBundle);
     startShare();
     paramBundle = this.dialog;
@@ -218,7 +225,7 @@ public class DeviceShareDialogFragment
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     if (paramBundle != null)
     {
-      paramViewGroup = (DeviceShareDialogFragment.RequestState)paramBundle.getParcelable("request_state");
+      paramViewGroup = (RequestState)paramBundle.getParcelable("request_state");
       if (paramViewGroup != null) {
         setCurrentRequestState(paramViewGroup);
       }
@@ -252,10 +259,82 @@ public class DeviceShareDialogFragment
   {
     this.shareContent = paramShareContent;
   }
+  
+  static class RequestState
+    implements Parcelable
+  {
+    public static final Parcelable.Creator<RequestState> CREATOR;
+    private long expiresIn;
+    private String userCode;
+    
+    static
+    {
+      AppMethodBeat.i(7985);
+      CREATOR = new Parcelable.Creator()
+      {
+        public final DeviceShareDialogFragment.RequestState createFromParcel(Parcel paramAnonymousParcel)
+        {
+          AppMethodBeat.i(7980);
+          paramAnonymousParcel = new DeviceShareDialogFragment.RequestState(paramAnonymousParcel);
+          AppMethodBeat.o(7980);
+          return paramAnonymousParcel;
+        }
+        
+        public final DeviceShareDialogFragment.RequestState[] newArray(int paramAnonymousInt)
+        {
+          return new DeviceShareDialogFragment.RequestState[paramAnonymousInt];
+        }
+      };
+      AppMethodBeat.o(7985);
+    }
+    
+    RequestState() {}
+    
+    protected RequestState(Parcel paramParcel)
+    {
+      AppMethodBeat.i(7983);
+      this.userCode = paramParcel.readString();
+      this.expiresIn = paramParcel.readLong();
+      AppMethodBeat.o(7983);
+    }
+    
+    public int describeContents()
+    {
+      return 0;
+    }
+    
+    public long getExpiresIn()
+    {
+      return this.expiresIn;
+    }
+    
+    public String getUserCode()
+    {
+      return this.userCode;
+    }
+    
+    public void setExpiresIn(long paramLong)
+    {
+      this.expiresIn = paramLong;
+    }
+    
+    public void setUserCode(String paramString)
+    {
+      this.userCode = paramString;
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(7984);
+      paramParcel.writeString(this.userCode);
+      paramParcel.writeLong(this.expiresIn);
+      AppMethodBeat.o(7984);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.share.internal.DeviceShareDialogFragment
  * JD-Core Version:    0.7.0.1
  */

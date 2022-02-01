@@ -1,189 +1,291 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.drawable.GradientDrawable;
+import android.content.res.Resources.Theme;
+import android.graphics.Point;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.luggage.sdk.d.d;
+import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.appbrand.ac.m;
-import com.tencent.mm.plugin.appbrand.widget.b;
-import com.tencent.mm.ui.statusbar.c;
-import com.tencent.mm.ui.statusbar.c.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
+import com.tencent.mm.ui.MMFragmentActivity;
+import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.ar;
 
-@SuppressLint({"ViewConstructor"})
 public final class v
-  extends LinearLayout
-  implements c.a
+  extends ContextThemeWrapper
 {
-  public final d cBE;
-  private int mStatusBarHeight;
-  private final a[] nXO;
-  private final SparseArray<b> nXP;
-  private final SparseArray<b> nXQ;
+  private Resources cDI;
+  private LayoutInflater cDJ;
   
-  public v(Context paramContext, d paramd)
+  public v(Context paramContext)
   {
-    super(paramContext);
-    AppMethodBeat.i(147701);
-    this.cBE = paramd;
-    this.nXP = new SparseArray();
-    this.nXQ = new SparseArray();
-    this.nXO = new a[4];
-    setClickable(false);
-    int i = getContext().getResources().getDisplayMetrics().widthPixels;
-    int j = a.fromDPToPix(getContext(), 10);
-    int k = a.fromDPToPix(getContext(), 4);
-    paramContext = new FrameLayout.LayoutParams(i * 3 / 5, -2);
-    paramContext.gravity = 53;
-    setLayoutParams(paramContext);
-    bXE();
-    setPadding(j, j, j, j);
-    setOrientation(1);
-    paramContext = new GradientDrawable();
-    paramContext.setCornerRadius(k);
-    paramContext.setColor(-652403418);
-    setBackground(paramContext);
-    paramContext = new LinearLayout.LayoutParams(-1, -2);
-    paramd = new LinearLayout.LayoutParams(-1, 2);
-    TextView localTextView = new TextView(getContext());
-    View localView = new View(getContext());
-    localTextView.setTextColor(-1);
-    localTextView.setLayoutParams(paramContext);
-    localTextView.setTextSize(1, 14.0F);
-    localTextView.setText(getContext().getString(2131755605));
-    addView(localTextView);
-    paramd.setMargins(0, a.fromDPToPix(getContext(), 10), 0, 0);
-    localView.setLayoutParams(paramd);
-    localView.setBackgroundColor(1728053247);
-    addView(localView);
-    bXF();
-    c.bt((Activity)getContext()).a(this);
-    AppMethodBeat.o(147701);
+    AppMethodBeat.i(48882);
+    super.attachBaseContext(paramContext);
+    ep(paramContext);
+    AppMethodBeat.o(48882);
   }
   
-  private void bXE()
+  public v(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(147702);
-    if ((getLayoutParams() != null) && ((getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
-    {
-      ((ViewGroup.MarginLayoutParams)getLayoutParams()).topMargin = (b.eu(getContext()) + this.mStatusBarHeight);
-      requestLayout();
-    }
-    AppMethodBeat.o(147702);
+    super(paramContext, paramInt);
+    AppMethodBeat.i(177764);
+    ep(paramContext);
+    AppMethodBeat.o(177764);
   }
   
-  private void bXF()
+  private static Resources eo(Context paramContext)
   {
-    AppMethodBeat.i(147703);
-    int i = 0;
-    while (i < 4)
+    AppMethodBeat.i(278666);
+    Object localObject = AndroidContextUtil.castActivityOrNull(paramContext);
+    if ((localObject instanceof MMFragmentActivity))
     {
-      a locala = new a(getContext());
-      locala.setText(getContext().getString(com.tencent.mm.plugin.appbrand.performance.d.nwQ[i]));
-      this.nXO[i] = locala;
-      addView(locala);
-      i += 1;
-    }
-    AppMethodBeat.o(147703);
-  }
-  
-  public final void aw(final int paramInt, final String paramString)
-  {
-    AppMethodBeat.i(147704);
-    m.runOnUiThread(new Runnable()
-    {
-      public final void run()
+      paramContext = ((MMFragmentActivity)localObject).getOriginalResources();
+      if (paramContext.getConfiguration().orientation == 1)
       {
-        AppMethodBeat.i(147692);
-        v.a(v.this, paramInt, paramString);
-        AppMethodBeat.o(147692);
+        AppMethodBeat.o(278666);
+        return paramContext;
       }
-    });
-    AppMethodBeat.o(147704);
-  }
-  
-  public final void eL(final String paramString1, final String paramString2)
-  {
-    AppMethodBeat.i(147705);
-    m.runOnUiThread(new Runnable()
+      paramContext = new Resources(paramContext.getAssets(), paramContext.getDisplayMetrics(), paramContext.getConfiguration());
+      localObject = ar.au((Context)localObject);
+      if (((Point)localObject).y >= paramContext.getDisplayMetrics().heightPixels) {
+        paramContext.getDisplayMetrics().heightPixels = ((Point)localObject).y;
+      }
+      AppMethodBeat.o(278666);
+      return paramContext;
+    }
+    if ((paramContext instanceof ContextWrapper))
     {
-      public final void run()
+      paramContext = ((ContextWrapper)paramContext).getBaseContext().getResources();
+      AppMethodBeat.o(278666);
+      return paramContext;
+    }
+    paramContext = paramContext.getResources();
+    AppMethodBeat.o(278666);
+    return paramContext;
+  }
+  
+  private void ep(Context paramContext)
+  {
+    AppMethodBeat.i(48884);
+    paramContext = eo(paramContext);
+    this.cDI = new a(paramContext, com.tencent.mm.cj.a.b(paramContext.getDisplayMetrics()));
+    if (Build.VERSION.SDK_INT >= 21) {
+      getTheme().getResources().getDisplayMetrics().setTo(this.cDI.getDisplayMetrics());
+    }
+    AppMethodBeat.o(48884);
+  }
+  
+  public final Resources getResources()
+  {
+    AppMethodBeat.i(48886);
+    if ((getAssets() != null) && (this.cDI != null))
+    {
+      localResources = this.cDI;
+      AppMethodBeat.o(48886);
+      return localResources;
+    }
+    Resources localResources = super.getResources();
+    AppMethodBeat.o(48886);
+    return localResources;
+  }
+  
+  public final Object getSystemService(String paramString)
+  {
+    AppMethodBeat.i(48885);
+    if ("layout_inflater".equals(paramString))
+    {
+      if (this.cDJ != null)
       {
-        AppMethodBeat.i(147693);
-        v.a(v.this, paramString1, paramString2);
-        AppMethodBeat.o(147693);
+        paramString = this.cDJ;
+        AppMethodBeat.o(48885);
+        return paramString;
       }
-    });
-    AppMethodBeat.o(147705);
+      paramString = ad.b((LayoutInflater)super.getSystemService("layout_inflater"));
+      this.cDJ = paramString;
+      AppMethodBeat.o(48885);
+      return paramString;
+    }
+    paramString = super.getSystemService(paramString);
+    AppMethodBeat.o(48885);
+    return paramString;
   }
   
-  public final void yf(int paramInt)
+  static final class a
+    extends com.tencent.mm.plugin.appbrand.widget.a
   {
-    AppMethodBeat.i(147706);
-    this.mStatusBarHeight = paramInt;
-    bXE();
-    AppMethodBeat.o(147706);
-  }
-  
-  @SuppressLint({"AppCompatCustomView"})
-  final class a
-    extends TextView
-  {
-    public a(Context paramContext)
+    private final Resources cDM;
+    private DisplayMetrics cDN;
+    private Configuration jN;
+    
+    a(Resources paramResources, DisplayMetrics paramDisplayMetrics)
     {
       super();
-      AppMethodBeat.i(147694);
-      this$1 = new LinearLayout.LayoutParams(-1, -2);
-      int i = a.fromDPToPix(getContext(), 5);
-      v.this.setMargins(0, i, 0, i);
-      setLayoutParams(v.this);
-      setTextSize(1, 12.0F);
-      setTextColor(getContext().getResources().getColor(2131100245));
-      AppMethodBeat.o(147694);
-    }
-  }
-  
-  @SuppressLint({"AppCompatCustomView"})
-  final class b
-    extends TextView
-  {
-    private String mTitle;
-    private String mValue;
-    
-    public b(Context paramContext)
-    {
-      super();
-      AppMethodBeat.i(147696);
-      setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-      setTextSize(1, 12.0F);
-      setTextColor(getContext().getResources().getColor(2131099681));
-      AppMethodBeat.o(147696);
+      AppMethodBeat.i(48871);
+      this.cDM = paramResources;
+      this.cDN = paramDisplayMetrics;
+      paramResources = new Configuration(this.cDM.getConfiguration());
+      paramDisplayMetrics = new DisplayMetrics();
+      paramDisplayMetrics.setTo(this.cDM.getDisplayMetrics());
+      updateConfiguration(paramResources, paramDisplayMetrics);
+      AppMethodBeat.o(48871);
     }
     
-    private void update()
+    private Drawable A(Drawable paramDrawable)
     {
-      AppMethodBeat.i(147697);
-      setText(String.format("%s: %s", new Object[] { this.mTitle, this.mValue }));
-      AppMethodBeat.o(147697);
+      AppMethodBeat.i(48874);
+      if (((paramDrawable instanceof BitmapDrawable)) && (this.cDN != null)) {
+        ((BitmapDrawable)paramDrawable).setTargetDensity(this.cDN.densityDpi);
+      }
+      AppMethodBeat.o(48874);
+      return paramDrawable;
+    }
+    
+    public final Configuration getConfiguration()
+    {
+      AppMethodBeat.i(48873);
+      if (this.jN != null)
+      {
+        localConfiguration = this.jN;
+        AppMethodBeat.o(48873);
+        return localConfiguration;
+      }
+      Configuration localConfiguration = super.getConfiguration();
+      AppMethodBeat.o(48873);
+      return localConfiguration;
+    }
+    
+    public final int getDimensionPixelOffset(int paramInt)
+    {
+      AppMethodBeat.i(48880);
+      paramInt = Dr(paramInt);
+      AppMethodBeat.o(48880);
+      return paramInt;
+    }
+    
+    public final int getDimensionPixelSize(int paramInt)
+    {
+      AppMethodBeat.i(48879);
+      paramInt = Ds(paramInt);
+      AppMethodBeat.o(48879);
+      return paramInt;
+    }
+    
+    public final DisplayMetrics getDisplayMetrics()
+    {
+      AppMethodBeat.i(48872);
+      if (this.cDN != null)
+      {
+        localDisplayMetrics = this.cDN;
+        AppMethodBeat.o(48872);
+        return localDisplayMetrics;
+      }
+      DisplayMetrics localDisplayMetrics = super.getDisplayMetrics();
+      AppMethodBeat.o(48872);
+      return localDisplayMetrics;
+    }
+    
+    public final Drawable getDrawable(int paramInt)
+    {
+      AppMethodBeat.i(48875);
+      if (this.cDN != null)
+      {
+        localDrawable = getDrawableForDensity(paramInt, this.cDN.densityDpi);
+        AppMethodBeat.o(48875);
+        return localDrawable;
+      }
+      Drawable localDrawable = A(this.cDM.getDrawable(paramInt));
+      AppMethodBeat.o(48875);
+      return localDrawable;
+    }
+    
+    public final Drawable getDrawable(int paramInt, Resources.Theme paramTheme)
+    {
+      AppMethodBeat.i(48876);
+      try
+      {
+        if (this.cDN != null)
+        {
+          Drawable localDrawable = getDrawableForDensity(paramInt, this.cDN.densityDpi, paramTheme);
+          AppMethodBeat.o(48876);
+          return localDrawable;
+        }
+      }
+      catch (NoSuchMethodError localNoSuchMethodError)
+      {
+        Log.printErrStackTrace("MicroMsg.AppBrandUIScreenAdaptiveContextThemeWrapper", localNoSuchMethodError, "getDrawable(id, theme)", new Object[0]);
+        if (paramTheme == null)
+        {
+          paramTheme = getDrawableForDensity(paramInt, this.cDN.densityDpi);
+          AppMethodBeat.o(48876);
+          return paramTheme;
+        }
+        paramTheme = A(this.cDM.getDrawable(paramInt, paramTheme));
+        AppMethodBeat.o(48876);
+      }
+      return paramTheme;
+    }
+    
+    public final Drawable getDrawableForDensity(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(48877);
+      int i = paramInt2;
+      if (paramInt2 == 0)
+      {
+        i = paramInt2;
+        if (this.cDN != null) {
+          i = this.cDN.densityDpi;
+        }
+      }
+      Drawable localDrawable = this.cDM.getDrawableForDensity(paramInt1, i);
+      AppMethodBeat.o(48877);
+      return localDrawable;
+    }
+    
+    public final Drawable getDrawableForDensity(int paramInt1, int paramInt2, Resources.Theme paramTheme)
+    {
+      AppMethodBeat.i(48878);
+      int i = paramInt2;
+      if (paramInt2 == 0)
+      {
+        i = paramInt2;
+        if (this.cDN != null) {
+          i = this.cDN.densityDpi;
+        }
+      }
+      paramTheme = this.cDM.getDrawableForDensity(paramInt1, i, paramTheme);
+      AppMethodBeat.o(48878);
+      return paramTheme;
+    }
+    
+    public final void updateConfiguration(Configuration paramConfiguration, DisplayMetrics paramDisplayMetrics)
+    {
+      AppMethodBeat.i(48881);
+      if (this.cDN != null)
+      {
+        this.cDN = com.tencent.mm.cj.a.b(paramDisplayMetrics);
+        this.jN = new Configuration(paramConfiguration);
+        this.jN.densityDpi = this.cDN.densityDpi;
+        super.updateConfiguration(this.jN, this.cDN);
+        this.cDM.updateConfiguration(paramConfiguration, paramDisplayMetrics);
+        AppMethodBeat.o(48881);
+        return;
+      }
+      super.updateConfiguration(paramConfiguration, paramDisplayMetrics);
+      AppMethodBeat.o(48881);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.v
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.page;
 
 public abstract interface aq
 {
-  public abstract boolean bSa();
+  public abstract void c(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

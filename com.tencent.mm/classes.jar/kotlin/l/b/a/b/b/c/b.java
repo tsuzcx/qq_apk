@@ -13,23 +13,23 @@ public abstract class b
 {
   public b(j paramj, l paraml, f paramf, bh parambh, boolean paramBoolean, int paramInt, an paraman, aq paramaq)
   {
-    super(paramj, paraml, g.a.hBP(), paramf, parambh, paramBoolean, paramInt, paraman, paramaq);
+    super(paramj, paraml, g.a.iGe(), paramf, parambh, paramBoolean, paramInt, paraman, paramaq);
   }
   
   public String toString()
   {
     String str1;
-    if (this.Tkf)
+    if (iEX())
     {
       str1 = "reified ";
-      if (hAJ() != bh.TOQ) {
+      if (iEW() != bh.abrp) {
         break label54;
       }
     }
     label54:
-    for (String str2 = "";; str2 = hAJ() + " ")
+    for (String str2 = "";; str2 = iEW() + " ")
     {
-      return String.format("%s%s%s", new Object[] { str1, str2, hAH() });
+      return String.format("%s%s%s", new Object[] { str1, str2, iEU() });
       str1 = "";
       break;
     }
@@ -37,7 +37,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.c.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,9 @@ public final class d
 {
   public static b a(Context paramContext, com.tencent.thumbplayer.f.b paramb)
   {
-    AppMethodBeat.i(188747);
+    AppMethodBeat.i(218921);
     paramContext = new com.tencent.thumbplayer.a.a.b.b(paramContext, paramb);
-    AppMethodBeat.o(188747);
+    AppMethodBeat.o(218921);
     return paramContext;
   }
 }

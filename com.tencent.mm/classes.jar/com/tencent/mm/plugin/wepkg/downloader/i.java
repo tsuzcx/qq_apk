@@ -4,11 +4,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import com.tencent.f.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.aaz;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.a.ach;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.plugin.game.commlib.a;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -24,14 +23,14 @@ import java.util.Iterator;
 
 public class i
 {
-  private static a JMJ;
-  private static int qJw = -1;
+  private static a QMc;
+  private static int uiB = -1;
   
-  public static void cBn()
+  public static void cPR()
   {
     AppMethodBeat.i(110625);
-    if (JMJ == null) {
-      JMJ = new a((byte)0);
+    if (QMc == null) {
+      QMc = new a((byte)0);
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.net.wifi.STATE_CHANGE");
@@ -39,7 +38,7 @@ public class i
     localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
     try
     {
-      MMApplicationContext.getContext().registerReceiver(JMJ, localIntentFilter);
+      MMApplicationContext.getContext().registerReceiver(QMc, localIntentFilter);
       label59:
       Log.i("MicroMsg.Wepkg.WepkgAutoDownloader", "WepkgAutoDownloader startListen");
       AppMethodBeat.o(110625);
@@ -51,15 +50,15 @@ public class i
     }
   }
   
-  public static void cBo()
+  public static void cPS()
   {
     AppMethodBeat.i(110626);
-    if (JMJ != null) {}
+    if (QMc != null) {}
     try
     {
-      MMApplicationContext.getContext().unregisterReceiver(JMJ);
+      MMApplicationContext.getContext().unregisterReceiver(QMc);
       label20:
-      JMJ = null;
+      QMc = null;
       Log.i("MicroMsg.Wepkg.WepkgAutoDownloader", "WepkgAutoDownloader stopListen");
       AppMethodBeat.o(110626);
       return;
@@ -76,32 +75,32 @@ public class i
     public final void onReceive(Context paramContext, Intent paramIntent)
     {
       AppMethodBeat.i(110624);
-      h.RTc.aX(new Runnable()
+      com.tencent.e.h.ZvG.be(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(200159);
+          AppMethodBeat.i(194977);
           for (;;)
           {
             Object localObject3;
             ArrayList localArrayList;
             try
             {
-              if ((!g.aAc()) || (com.tencent.mm.kernel.a.azj()))
+              if ((!com.tencent.mm.kernel.h.aHB()) || (b.aGE()))
               {
                 Log.e("MicroMsg.Wepkg.WepkgAutoDownloader", "acc has not ready");
                 return;
               }
               i = NetStatusUtil.getNetType(MMApplicationContext.getContext());
-              if (i == i.qJw) {
+              if (i == i.uiB) {
                 return;
               }
               i.access$102(i);
               Log.i("MicroMsg.Wepkg.WepkgAutoDownloader", "onNetStateChange, netState = ".concat(String.valueOf(i)));
               if (i == 0)
               {
-                boolean bool = com.tencent.mm.plugin.game.commlib.a.dSV();
-                if (Util.secondsToNow(Util.nullAsNil((Long)g.aAh().azQ().get(ar.a.OcR, Long.valueOf(0L)))) <= 1800L) {
+                boolean bool = a.ewd();
+                if (Util.secondsToNow(Util.nullAsNil((Long)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VqY, Long.valueOf(0L)))) <= 1800L) {
                   break label349;
                 }
                 i = 1;
@@ -110,18 +109,18 @@ public class i
                 }
                 if ((!bool) && (i != 0))
                 {
-                  g.aAh().azQ().set(ar.a.OcR, Long.valueOf(Util.nowSecond()));
-                  localObject1 = new aaz();
-                  ((aaz)localObject1).eif.dDe = 0;
+                  com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VqY, Long.valueOf(Util.nowSecond()));
+                  localObject1 = new ach();
+                  ((ach)localObject1).gcw.fvK = 0;
                   EventCenter.instance.publish((IEvent)localObject1);
                 }
                 return;
               }
-              Object localObject1 = d.gkL();
-              if ((((d)localObject1).JMi == null) || (((d)localObject1).JMi.size() == 0)) {
+              Object localObject1 = d.heC();
+              if ((((d)localObject1).QLB == null) || (((d)localObject1).QLB.size() == 0)) {
                 continue;
               }
-              localObject3 = ((d)localObject1).JMi.values();
+              localObject3 = ((d)localObject1).QLB.values();
               localArrayList = new ArrayList();
               localObject3 = ((Collection)localObject3).iterator();
               if (((Iterator)localObject3).hasNext())
@@ -133,12 +132,12 @@ public class i
             }
             finally
             {
-              AppMethodBeat.o(200159);
+              AppMethodBeat.o(194977);
             }
             while (((Iterator)localObject3).hasNext())
             {
               c localc = (c)((Iterator)localObject3).next();
-              if (localc.JLZ.JMC) {
+              if (localc.QLs.QLV) {
                 localObject2.a(localc);
               }
             }
@@ -155,7 +154,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.downloader.i
  * JD-Core Version:    0.7.0.1
  */

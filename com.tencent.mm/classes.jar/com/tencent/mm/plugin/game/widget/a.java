@@ -18,27 +18,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public final class a
+public class a
 {
-  private TextPaint Ol;
-  TextView Ws;
-  private TextWatcher aws;
-  private float gPN;
+  float Dei;
+  float Dej;
+  float Dek;
+  boolean Del;
+  private TextPaint Mf;
+  private float jAg;
   private boolean mEnabled;
   private ArrayList<b> mListeners;
-  private int pME;
-  float xZB;
-  float xZC;
-  float xZD;
-  boolean xZE;
+  TextView rR;
+  private int sTC;
+  private TextWatcher uY;
   
   private a(TextView paramTextView)
   {
     AppMethodBeat.i(42581);
-    this.aws = new a((byte)0);
+    this.uY = new a((byte)0);
     float f = paramTextView.getContext().getResources().getDisplayMetrics().scaledDensity;
-    this.Ws = paramTextView;
-    this.Ol = new TextPaint();
+    this.rR = paramTextView;
+    this.Mf = new TextPaint();
     setRawTextSize(paramTextView.getTextSize());
     int i = -1;
     TransformationMethod localTransformationMethod = paramTextView.getTransformationMethod();
@@ -47,10 +47,10 @@ public final class a
     }
     for (;;)
     {
-      this.pME = i;
-      this.xZB = (8.0F * f);
-      this.xZC = this.gPN;
-      this.xZD = 0.5F;
+      this.sTC = i;
+      this.Dei = (8.0F * f);
+      this.Dej = this.jAg;
+      this.Dek = 0.5F;
       AppMethodBeat.o(42581);
       return;
       if (Build.VERSION.SDK_INT >= 16) {
@@ -136,11 +136,11 @@ public final class a
     paramTextView = new a(paramTextView);
     if (paramAttributeSet != null)
     {
-      int i = (int)paramTextView.xZB;
-      float f = paramTextView.xZD;
-      paramTextView.r(0, i).bp(f);
+      int i = (int)paramTextView.Dei;
+      float f = paramTextView.Dek;
+      paramTextView.s(0, i).bq(f);
     }
-    paramTextView.pX(true);
+    paramTextView.su(true);
     AppMethodBeat.o(42578);
     return paramTextView;
   }
@@ -196,18 +196,18 @@ public final class a
     }
   }
   
-  private void bq(float paramFloat)
+  private void br(float paramFloat)
   {
     AppMethodBeat.i(42585);
-    if (paramFloat != this.xZB)
+    if (paramFloat != this.Dei)
     {
-      this.xZB = paramFloat;
-      dWT();
+      this.Dei = paramFloat;
+      eAc();
     }
     AppMethodBeat.o(42585);
   }
   
-  private void dWU()
+  private void eAd()
   {
     AppMethodBeat.i(42589);
     if (this.mListeners == null)
@@ -222,13 +222,13 @@ public final class a
     AppMethodBeat.o(42589);
   }
   
-  public final a OC(int paramInt)
+  public final a TX(int paramInt)
   {
     AppMethodBeat.i(42586);
-    if (this.pME != paramInt)
+    if (this.sTC != paramInt)
     {
-      this.pME = paramInt;
-      dWT();
+      this.sTC = paramInt;
+      eAc();
     }
     AppMethodBeat.o(42586);
     return this;
@@ -245,32 +245,52 @@ public final class a
     return this;
   }
   
-  public final a bp(float paramFloat)
+  public final a bq(float paramFloat)
   {
     AppMethodBeat.i(42583);
-    if (this.xZD != paramFloat)
+    if (this.Dek != paramFloat)
     {
-      this.xZD = paramFloat;
-      dWT();
+      this.Dek = paramFloat;
+      eAc();
     }
     AppMethodBeat.o(42583);
     return this;
   }
   
-  public final void dWT()
+  public final void eAc()
   {
     AppMethodBeat.i(42588);
-    float f = this.Ws.getTextSize();
-    this.xZE = true;
-    a(this.Ws, this.Ol, this.xZB, this.xZC, this.pME, this.xZD);
-    this.xZE = false;
-    if (this.Ws.getTextSize() != f) {
-      dWU();
+    float f = this.rR.getTextSize();
+    this.Del = true;
+    a(this.rR, this.Mf, this.Dei, this.Dej, this.sTC, this.Dek);
+    this.Del = false;
+    if (this.rR.getTextSize() != f) {
+      eAd();
     }
     AppMethodBeat.o(42588);
   }
   
-  public final a pX(boolean paramBoolean)
+  public final a s(int paramInt, float paramFloat)
+  {
+    AppMethodBeat.i(42584);
+    Context localContext = this.rR.getContext();
+    Resources localResources = Resources.getSystem();
+    if (localContext != null) {
+      localResources = localContext.getResources();
+    }
+    br(TypedValue.applyDimension(paramInt, paramFloat, localResources.getDisplayMetrics()));
+    AppMethodBeat.o(42584);
+    return this;
+  }
+  
+  final void setRawTextSize(float paramFloat)
+  {
+    if (this.jAg != paramFloat) {
+      this.jAg = paramFloat;
+    }
+  }
+  
+  public final a su(boolean paramBoolean)
   {
     AppMethodBeat.i(42587);
     if (this.mEnabled != paramBoolean)
@@ -279,36 +299,16 @@ public final class a
       if (!paramBoolean) {
         break label44;
       }
-      this.Ws.addTextChangedListener(this.aws);
-      dWT();
+      this.rR.addTextChangedListener(this.uY);
+      eAc();
     }
     for (;;)
     {
       AppMethodBeat.o(42587);
       return this;
       label44:
-      this.Ws.removeTextChangedListener(this.aws);
-      this.Ws.setTextSize(0, this.gPN);
-    }
-  }
-  
-  public final a r(int paramInt, float paramFloat)
-  {
-    AppMethodBeat.i(42584);
-    Context localContext = this.Ws.getContext();
-    Resources localResources = Resources.getSystem();
-    if (localContext != null) {
-      localResources = localContext.getResources();
-    }
-    bq(TypedValue.applyDimension(paramInt, paramFloat, localResources.getDisplayMetrics()));
-    AppMethodBeat.o(42584);
-    return this;
-  }
-  
-  final void setRawTextSize(float paramFloat)
-  {
-    if (this.gPN != paramFloat) {
-      this.gPN = paramFloat;
+      this.rR.removeTextChangedListener(this.uY);
+      this.rR.setTextSize(0, this.jAg);
     }
   }
   
@@ -324,7 +324,7 @@ public final class a
     public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(42577);
-      a.this.dWT();
+      a.this.eAc();
       AppMethodBeat.o(42577);
     }
   }
@@ -333,7 +333,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.a
  * JD-Core Version:    0.7.0.1
  */

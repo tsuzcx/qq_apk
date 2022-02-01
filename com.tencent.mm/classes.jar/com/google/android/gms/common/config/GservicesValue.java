@@ -136,15 +136,12 @@ public abstract class GservicesValue<T>
   
   public static boolean isInitialized()
   {
-    for (;;)
+    synchronized (sLock)
     {
-      synchronized (sLock)
+      if (zzmu != null)
       {
-        if (zzmu != null)
-        {
-          bool = true;
-          return bool;
-        }
+        bool = true;
+        return bool;
       }
       boolean bool = false;
     }
@@ -225,20 +222,20 @@ public abstract class GservicesValue<T>
     {
       synchronized (sLock)
       {
-        if (!(zzmu instanceof zzb))
-        {
-          if (!(zzmu instanceof zzc)) {
+        if (!(zzmu instanceof zzb)) {
+          if ((zzmu instanceof zzc))
+          {
             break label41;
+            return bool;
           }
-          break label36;
-          return bool;
+          else
+          {
+            bool = false;
+          }
         }
       }
-      label36:
-      boolean bool = true;
-      continue;
       label41:
-      bool = false;
+      boolean bool = true;
     }
   }
   
@@ -585,7 +582,7 @@ public abstract class GservicesValue<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.common.config.GservicesValue
  * JD-Core Version:    0.7.0.1
  */

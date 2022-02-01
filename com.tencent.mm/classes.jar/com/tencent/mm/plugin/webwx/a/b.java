@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.webwx.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.akp;
-import com.tencent.mm.protocal.protobuf.akq;
+import com.tencent.mm.protocal.protobuf.alp;
+import com.tencent.mm.protocal.protobuf.alq;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
@@ -17,25 +17,25 @@ public final class b
   implements m
 {
   private i callback;
-  public int dJY;
-  private final d iUB;
+  public int fCN;
+  private final d lKU;
   
   public b(int paramInt)
   {
     AppMethodBeat.i(30169);
-    this.dJY = paramInt;
+    this.fCN = paramInt;
     d.a locala = new d.a();
-    akp localakp = new akp();
-    akq localakq = new akq();
-    locala.iLN = localakp;
-    locala.iLO = localakq;
+    alp localalp = new alp();
+    alq localalq = new alq();
+    locala.lBU = localalp;
+    locala.lBV = localalq;
     locala.uri = "/cgi-bin/micromsg-bin/extdevicecontrol";
     locala.funcId = 792;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    localakp.him = paramInt;
-    localakp.Ltz = 1;
-    this.iUB = locala.aXF();
+    localalp.jUk = paramInt;
+    localalp.SvV = 1;
+    this.lKU = locala.bgN();
     AppMethodBeat.o(30169);
   }
   
@@ -43,7 +43,7 @@ public final class b
   {
     AppMethodBeat.i(30171);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
+    int i = dispatch(paramg, this.lKU, this);
     AppMethodBeat.o(30171);
     return i;
   }

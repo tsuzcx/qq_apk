@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.qqmail.c;
 
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.type.IPCLong;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 
 public class a
-  implements b<IPCLong, IPCString>
+  implements d<IPCLong, IPCString>
 {}
 
 

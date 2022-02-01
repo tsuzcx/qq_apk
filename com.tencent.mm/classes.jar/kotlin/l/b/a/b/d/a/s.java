@@ -3,25 +3,25 @@ package kotlin.l.b.a.b.d.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 import kotlin.a.j;
-import kotlin.aa;
 import kotlin.g.b.p;
 import kotlin.l.b.a.b.f.f;
 import kotlin.l.b.a.b.n.a.a;
 import kotlin.n.n;
+import kotlin.z;
 
 public final class s
 {
   private static final f a(f paramf, String paramString1, boolean paramBoolean, String paramString2)
   {
     AppMethodBeat.i(57623);
-    if (paramf.TDa)
+    if (paramf.abfN)
     {
       AppMethodBeat.o(57623);
       return null;
     }
     String str = paramf.getIdentifier();
-    p.g(str, "methodName.identifier");
-    if (!n.J(str, paramString1, false))
+    p.j(str, "methodName.identifier");
+    if (!n.M(str, paramString1, false))
     {
       AppMethodBeat.o(57623);
       return null;
@@ -34,7 +34,7 @@ public final class s
     int i = str.charAt(paramString1.length());
     if (97 > i) {}
     while (paramString2 != null) {
-      if ((aa.SXc) && (!paramBoolean))
+      if ((z.aazO) && (!paramBoolean))
       {
         paramf = (Throwable)new AssertionError("Assertion failed");
         AppMethodBeat.o(57623);
@@ -47,7 +47,7 @@ public final class s
       }
       else
       {
-        paramf = f.btY(paramString2 + n.b(str, (CharSequence)paramString1));
+        paramf = f.bHb(paramString2 + n.b(str, (CharSequence)paramString1));
         AppMethodBeat.o(57623);
         return paramf;
       }
@@ -57,13 +57,13 @@ public final class s
       AppMethodBeat.o(57623);
       return paramf;
     }
-    paramf = a.bur(n.b(str, (CharSequence)paramString1));
-    if (!f.btZ(paramf))
+    paramf = a.bHt(n.b(str, (CharSequence)paramString1));
+    if (!f.bHc(paramf))
     {
       AppMethodBeat.o(57623);
       return null;
     }
-    paramf = f.btY(paramf);
+    paramf = f.bHb(paramf);
     AppMethodBeat.o(57623);
     return paramf;
   }
@@ -71,7 +71,7 @@ public final class s
   private static f a(f paramf, boolean paramBoolean)
   {
     AppMethodBeat.i(57622);
-    p.h(paramf, "methodName");
+    p.k(paramf, "methodName");
     if (paramBoolean) {}
     for (String str = "is";; str = null)
     {
@@ -84,29 +84,29 @@ public final class s
   public static final List<f> i(f paramf)
   {
     AppMethodBeat.i(57625);
-    p.h(paramf, "name");
-    Object localObject = paramf.sG();
-    p.g(localObject, "name.asString()");
-    if (o.btH((String)localObject))
+    p.k(paramf, "name");
+    Object localObject = paramf.qu();
+    p.j(localObject, "name.asString()");
+    if (o.bGK((String)localObject))
     {
-      p.h(paramf, "methodName");
+      p.k(paramf, "methodName");
       f localf = a(paramf, "get", false, null, 12);
       localObject = localf;
       if (localf == null) {
         localObject = a(paramf, "is", false, null, 8);
       }
-      paramf = j.eR(localObject);
+      paramf = j.eY(localObject);
       AppMethodBeat.o(57625);
       return paramf;
     }
-    if (o.btI((String)localObject))
+    if (o.bGL((String)localObject))
     {
-      p.h(paramf, "methodName");
-      paramf = j.ad(new f[] { a(paramf, false), a(paramf, true) });
+      p.k(paramf, "methodName");
+      paramf = j.ah(new f[] { a(paramf, false), a(paramf, true) });
       AppMethodBeat.o(57625);
       return paramf;
     }
-    localObject = e.ToV;
+    localObject = e.aaRP;
     paramf = e.h(paramf);
     AppMethodBeat.o(57625);
     return paramf;
@@ -114,7 +114,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.s
  * JD-Core Version:    0.7.0.1
  */

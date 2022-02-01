@@ -7,45 +7,47 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
 import kotlin.g.b.p;
 import kotlin.l;
 import org.libpag.PAGView;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveGiftPreviewView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "thumbPagView", "Lorg/libpag/PAGView;", "tvSend", "Landroid/widget/TextView;", "release", "", "startPAGAnim", "path", "stopPAGAnim", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveGiftPreviewView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "thumbPagView", "Lorg/libpag/PAGView;", "tvSend", "Landroid/widget/TextView;", "release", "", "startPAGAnim", "path", "stopPAGAnim", "plugin-finder_release"})
 public final class FinderLiveGiftPreviewView
   extends RelativeLayout
 {
   private final String TAG;
-  public final PAGView uyw;
-  private final TextView uyx;
+  public final PAGView yUn;
+  private final TextView yUo;
   
   public FinderLiveGiftPreviewView(Context paramContext)
   {
     this(paramContext, null, 0);
-    AppMethodBeat.i(247451);
-    AppMethodBeat.o(247451);
+    AppMethodBeat.i(224174);
+    AppMethodBeat.o(224174);
   }
   
   public FinderLiveGiftPreviewView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(247452);
-    AppMethodBeat.o(247452);
+    AppMethodBeat.i(224176);
+    AppMethodBeat.o(224176);
   }
   
   public FinderLiveGiftPreviewView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(247450);
+    AppMethodBeat.i(224171);
     this.TAG = "Finder.FinderLiveGiftPreviewView";
-    View.inflate(paramContext, 2131494403, (ViewGroup)this);
-    paramContext = findViewById(2131301024);
-    p.g(paramContext, "findViewById(R.id.finder_live_gift_thumb_pag)");
-    this.uyw = ((PAGView)paramContext);
-    paramContext = findViewById(2131301025);
-    p.g(paramContext, "findViewById(R.id.finder_live_gift_thumb_send_btn)");
-    this.uyx = ((TextView)paramContext);
-    AppMethodBeat.o(247450);
+    View.inflate(paramContext, b.g.finder_live_gift_thumb_ui, (ViewGroup)this);
+    paramContext = findViewById(b.f.finder_live_gift_thumb_pag);
+    p.j(paramContext, "findViewById(R.id.finder_live_gift_thumb_pag)");
+    this.yUn = ((PAGView)paramContext);
+    paramContext = findViewById(b.f.finder_live_gift_thumb_send_btn);
+    p.j(paramContext, "findViewById(R.id.finder_live_gift_thumb_send_btn)");
+    this.yUo = ((TextView)paramContext);
+    AppMethodBeat.o(224171);
   }
 }
 

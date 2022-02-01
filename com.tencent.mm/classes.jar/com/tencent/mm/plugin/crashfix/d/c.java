@@ -6,11 +6,11 @@ import java.util.List;
 
 public final class c
 {
-  public static List<b> qCA;
+  public static List<b> ubA;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.crashfix.d.c
  * JD-Core Version:    0.7.0.1
  */

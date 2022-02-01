@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
@@ -15,38 +14,42 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
+import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.ui.websearch.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.statusbar.b;
-import com.tencent.mm.ui.t;
+import com.tencent.mm.ui.w;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
 
 @com.tencent.mm.ui.base.a(7)
 public class WebSearchVoiceUI
   extends MMActivity
 {
-  private com.tencent.mm.pluginsdk.ui.websearch.a QBw;
-  private View QBx;
-  private int QBy;
-  private b Qoh = null;
-  private String dVO;
+  private b XMm = null;
+  private com.tencent.mm.pluginsdk.ui.websearch.a XZV;
+  private View XZW;
+  private int XZX;
+  private String fPs;
   private int scene;
   private String sessionId;
   
-  private int getStatusBarColor()
+  private int hZp()
   {
     AppMethodBeat.i(39591);
-    int i = getResources().getColor(2131101402);
+    int i = getResources().getColor(R.e.websearch_bg);
     AppMethodBeat.o(39591);
     return i;
   }
   
   public int getLayoutId()
   {
-    return 2131497062;
+    return R.i.websearch_voice_ui;
   }
   
   public boolean initNavigationSwipeBack()
@@ -54,7 +57,7 @@ public class WebSearchVoiceUI
     AppMethodBeat.i(39590);
     boolean bool = super.initNavigationSwipeBack();
     if (!isSupportNavigationSwipeBack()) {
-      com.tencent.mm.ui.statusbar.a.e(getContentView(), getStatusBarColor(), true);
+      com.tencent.mm.ui.statusbar.a.f(getContentView(), hZp(), true);
     }
     AppMethodBeat.o(39590);
     return bool;
@@ -68,12 +71,12 @@ public class WebSearchVoiceUI
     {
       View localView = getSwipeBackLayout().getChildAt(0);
       getSwipeBackLayout().removeView(localView);
-      this.Qoh = new b(this);
-      this.Qoh.addView(localView, new FrameLayout.LayoutParams(-1, -1));
-      getSwipeBackLayout().addView(this.Qoh);
-      getSwipeBackLayout().setContentView(this.Qoh);
+      this.XMm = new b(this);
+      this.XMm.addView(localView, new FrameLayout.LayoutParams(-1, -1));
+      getSwipeBackLayout().addView(this.XMm);
+      getSwipeBackLayout().setContentView(this.XMm);
     }
-    com.tencent.mm.ui.statusbar.a.e(getContentView(), getStatusBarColor(), true);
+    com.tencent.mm.ui.statusbar.a.f(getContentView(), hZp(), true);
     AppMethodBeat.o(39589);
   }
   
@@ -94,8 +97,8 @@ public class WebSearchVoiceUI
     setMMTitleColor(-16777216);
     if (getSupportActionBar() != null)
     {
-      getSupportActionBar().getCustomView().setBackgroundColor(getResources().getColor(2131101402));
-      getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(2131101402)));
+      getSupportActionBar().getCustomView().setBackgroundColor(getResources().getColor(R.e.websearch_bg));
+      getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.e.websearch_bg)));
     }
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -110,18 +113,27 @@ public class WebSearchVoiceUI
     if (getIntent() != null)
     {
       this.sessionId = getIntent().getStringExtra("sessionId");
-      this.dVO = getIntent().getStringExtra("subSessionId");
+      this.fPs = getIntent().getStringExtra("subSessionId");
       this.scene = getIntent().getIntExtra("key_scene", -1);
-      this.QBy = getIntent().getIntExtra("key_is_nav_voice", 0);
+      this.XZX = getIntent().getIntExtra("key_is_nav_voice", 0);
     }
-    this.QBx = findViewById(2131310008);
+    this.XZW = findViewById(R.h.voiceinput_mask_view);
     this.mController.hideTitleView();
-    if (this.QBw == null)
+    if (this.XZV == null)
     {
-      this.QBw = new com.tencent.mm.pluginsdk.ui.websearch.a(getContext());
-      this.QBw.setCallback(new a.a()
+      this.XZV = new com.tencent.mm.pluginsdk.ui.websearch.a(getContext());
+      this.XZV.setCallback(new a.a()
       {
-        public final void bez(String paramAnonymousString)
+        public final void DV(boolean paramAnonymousBoolean)
+        {
+          AppMethodBeat.i(39587);
+          if (paramAnonymousBoolean) {
+            h.IzE.a(15178, new Object[] { Integer.valueOf(2), Long.valueOf(System.currentTimeMillis()), "", WebSearchVoiceUI.a(WebSearchVoiceUI.this), WebSearchVoiceUI.b(WebSearchVoiceUI.this), Integer.valueOf(WebSearchVoiceUI.c(WebSearchVoiceUI.this)), Integer.valueOf(WebSearchVoiceUI.d(WebSearchVoiceUI.this)) });
+          }
+          AppMethodBeat.o(39587);
+        }
+        
+        public final void bqV(String paramAnonymousString)
         {
           AppMethodBeat.i(39586);
           String str = paramAnonymousString;
@@ -135,53 +147,44 @@ public class WebSearchVoiceUI
           paramAnonymousString = new Intent();
           paramAnonymousString.putExtra("text", str);
           WebSearchVoiceUI.this.setResult(0, paramAnonymousString);
-          h.CyF.a(15178, new Object[] { Integer.valueOf(3), Long.valueOf(System.currentTimeMillis()), str, WebSearchVoiceUI.a(WebSearchVoiceUI.this), WebSearchVoiceUI.b(WebSearchVoiceUI.this), Integer.valueOf(WebSearchVoiceUI.c(WebSearchVoiceUI.this)), Integer.valueOf(WebSearchVoiceUI.d(WebSearchVoiceUI.this)) });
+          h.IzE.a(15178, new Object[] { Integer.valueOf(3), Long.valueOf(System.currentTimeMillis()), str, WebSearchVoiceUI.a(WebSearchVoiceUI.this), WebSearchVoiceUI.b(WebSearchVoiceUI.this), Integer.valueOf(WebSearchVoiceUI.c(WebSearchVoiceUI.this)), Integer.valueOf(WebSearchVoiceUI.d(WebSearchVoiceUI.this)) });
           WebSearchVoiceUI.this.finish();
           AppMethodBeat.o(39586);
         }
         
-        public final void gpc()
+        public final void hjV()
         {
           AppMethodBeat.i(39585);
           WebSearchVoiceUI.this.setResult(0);
-          h.CyF.a(15178, new Object[] { Integer.valueOf(4), Long.valueOf(System.currentTimeMillis()), "", WebSearchVoiceUI.a(WebSearchVoiceUI.this), WebSearchVoiceUI.b(WebSearchVoiceUI.this), Integer.valueOf(WebSearchVoiceUI.c(WebSearchVoiceUI.this)), Integer.valueOf(WebSearchVoiceUI.d(WebSearchVoiceUI.this)) });
+          h.IzE.a(15178, new Object[] { Integer.valueOf(4), Long.valueOf(System.currentTimeMillis()), "", WebSearchVoiceUI.a(WebSearchVoiceUI.this), WebSearchVoiceUI.b(WebSearchVoiceUI.this), Integer.valueOf(WebSearchVoiceUI.c(WebSearchVoiceUI.this)), Integer.valueOf(WebSearchVoiceUI.d(WebSearchVoiceUI.this)) });
           WebSearchVoiceUI.this.finish();
           AppMethodBeat.o(39585);
         }
-        
-        public final void zQ(boolean paramAnonymousBoolean)
-        {
-          AppMethodBeat.i(39587);
-          if (paramAnonymousBoolean) {
-            h.CyF.a(15178, new Object[] { Integer.valueOf(2), Long.valueOf(System.currentTimeMillis()), "", WebSearchVoiceUI.a(WebSearchVoiceUI.this), WebSearchVoiceUI.b(WebSearchVoiceUI.this), Integer.valueOf(WebSearchVoiceUI.c(WebSearchVoiceUI.this)), Integer.valueOf(WebSearchVoiceUI.d(WebSearchVoiceUI.this)) });
-          }
-          AppMethodBeat.o(39587);
-        }
       });
     }
-    this.QBw.grz();
-    com.tencent.mm.pluginsdk.ui.websearch.a locala = this.QBw;
-    Log.d("MicroMsg.VoiceInputPanel", "refreshHeight DISPLAY_HEIGHT_PORT_IN_PX %s,needRefreshProtHeight %s", new Object[] { Integer.valueOf(locala.Khj), Boolean.valueOf(locala.Koo) });
-    if (locala.Koo)
+    this.XZV.hmy();
+    com.tencent.mm.pluginsdk.ui.websearch.a locala = this.XZV;
+    Log.d("MicroMsg.VoiceInputPanel", "refreshHeight DISPLAY_HEIGHT_PORT_IN_PX %s,needRefreshProtHeight %s", new Object[] { Integer.valueOf(locala.RhU), Boolean.valueOf(locala.Rpa) });
+    if (locala.Rpa)
     {
-      locala.Koo = false;
-      View localView = locala.findViewById(2131309955);
+      locala.Rpa = false;
+      View localView = locala.findViewById(R.h.eaa);
       ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
-      int i = locala.Khj;
+      int i = locala.RhU;
       paramBundle = localLayoutParams;
       if (localLayoutParams == null) {
         paramBundle = new LinearLayout.LayoutParams(-1, i);
       }
       paramBundle.height = i;
       localView.setLayoutParams(paramBundle);
-      locala.grB();
+      locala.hmA();
       locala.requestLayout();
     }
-    this.QBw.setVisibility(0);
+    this.XZV.setVisibility(0);
     paramBundle = new RelativeLayout.LayoutParams(-1, -2);
     paramBundle.addRule(12);
-    ((ViewGroup)findViewById(2131307157)).addView(this.QBw, paramBundle);
-    h.CyF.a(15178, new Object[] { Integer.valueOf(1), Long.valueOf(System.currentTimeMillis()), "", this.sessionId, this.dVO, Integer.valueOf(this.scene), Integer.valueOf(this.QBy) });
+    ((ViewGroup)findViewById(R.h.root)).addView(this.XZV, paramBundle);
+    h.IzE.a(15178, new Object[] { Integer.valueOf(1), Long.valueOf(System.currentTimeMillis()), "", this.sessionId, this.fPs, Integer.valueOf(this.scene), Integer.valueOf(this.XZX) });
     AppMethodBeat.o(39588);
   }
   
@@ -189,8 +192,8 @@ public class WebSearchVoiceUI
   {
     AppMethodBeat.i(39593);
     super.onDestroy();
-    if (this.QBw != null) {
-      this.QBw.destroy();
+    if (this.XZV != null) {
+      this.XZV.destroy();
     }
     AppMethodBeat.o(39593);
   }

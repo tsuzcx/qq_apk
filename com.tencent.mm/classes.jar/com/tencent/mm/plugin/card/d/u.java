@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.card.d;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.us;
+import com.tencent.mm.protocal.protobuf.uu;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import org.json.JSONArray;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 public final class u
 {
-  public static ArrayList<us> akq(String paramString)
+  public static ArrayList<uu> asd(String paramString)
   {
     AppMethodBeat.i(113878);
     if (TextUtils.isEmpty(paramString))
@@ -50,20 +50,20 @@ public final class u
             localArrayList.add(paramString);
             break label282;
           }
-          paramString = new us();
+          paramString = new uu();
           paramString.name = localJSONObject.optString("name");
           paramString.descriptor = localJSONObject.optString("descriptor");
-          paramString.pSm = localJSONObject.optString("phone");
+          paramString.tol = localJSONObject.optString("phone");
           paramString.country = localJSONObject.optString("country");
-          paramString.fuJ = localJSONObject.optString("province");
-          paramString.fuK = localJSONObject.optString("city");
-          paramString.iUO = localJSONObject.optString("address");
-          paramString.DWG = ((float)localJSONObject.optDouble("distance"));
-          paramString.dTj = ((float)localJSONObject.optDouble("longitude"));
+          paramString.province = localJSONObject.optString("province");
+          paramString.city = localJSONObject.optString("city");
+          paramString.lLg = localJSONObject.optString("address");
+          paramString.KjR = ((float)localJSONObject.optDouble("distance"));
+          paramString.longitude = ((float)localJSONObject.optDouble("longitude"));
           paramString.latitude = ((float)localJSONObject.optDouble("latitude"));
-          paramString.pTL = localJSONObject.optString("jump_url");
-          paramString.Leo = localJSONObject.optString("app_brand_user_name");
-          paramString.Lep = localJSONObject.optString("app_brand_pass");
+          paramString.jump_url = localJSONObject.optString("jump_url");
+          paramString.SfB = localJSONObject.optString("app_brand_user_name");
+          paramString.SfC = localJSONObject.optString("app_brand_pass");
           continue;
         }
         AppMethodBeat.o(113878);

@@ -5,17 +5,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MMHandler.Callback;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
 final class d$a$a
   implements MMHandler.Callback
 {
-  public static final a Emj;
+  public static final a Kzr;
   
   static
   {
-    AppMethodBeat.i(201807);
-    Emj = new a();
-    AppMethodBeat.o(201807);
+    AppMethodBeat.i(241915);
+    Kzr = new a();
+    AppMethodBeat.o(241915);
   }
   
   public final boolean handleMessage(Message paramMessage)

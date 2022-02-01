@@ -8,18 +8,18 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatButton;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
+import androidx.appcompat.widget.AppCompatButton;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a
   extends AppCompatButton
 {
-  private RectF cuJ;
-  private boolean cuK;
-  private float cuL;
-  private float cuM;
+  private RectF csX;
+  private boolean csY;
+  private float csZ;
+  private float cta;
   
   public a(Context paramContext)
   {
@@ -34,15 +34,15 @@ final class a
     AppMethodBeat.o(130484);
   }
   
-  private boolean s(float paramFloat1, float paramFloat2)
+  private boolean t(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(130485);
-    if (this.cuJ == null)
+    if (this.csX == null)
     {
       AppMethodBeat.o(130485);
       return false;
     }
-    boolean bool = this.cuJ.contains(paramFloat1, paramFloat2);
+    boolean bool = this.csX.contains(paramFloat1, paramFloat2);
     AppMethodBeat.o(130485);
     return bool;
   }
@@ -55,21 +55,21 @@ final class a
     }
     for (;;)
     {
-      this.cuL = paramMotionEvent.getRawX();
-      this.cuM = paramMotionEvent.getRawY();
+      this.csZ = paramMotionEvent.getRawX();
+      this.cta = paramMotionEvent.getRawY();
       AppMethodBeat.o(130486);
       return true;
-      this.cuJ = new RectF(getX(), getY(), getX() + getWidth(), getY() + getHeight());
-      this.cuK = false;
+      this.csX = new RectF(getX(), getY(), getX() + getWidth(), getY() + getHeight());
+      this.csY = false;
       continue;
-      if ((this.cuK) || (!s(paramMotionEvent.getRawX(), paramMotionEvent.getRawY())))
+      if ((this.csY) || (!t(paramMotionEvent.getRawX(), paramMotionEvent.getRawY())))
       {
-        setX(getX() + (paramMotionEvent.getRawX() - this.cuL));
-        setY(getY() + (paramMotionEvent.getRawY() - this.cuM));
+        setX(getX() + (paramMotionEvent.getRawX() - this.csZ));
+        setY(getY() + (paramMotionEvent.getRawY() - this.cta));
         requestLayout();
-        this.cuK = true;
+        this.csY = true;
         continue;
-        if ((!this.cuK) && (s(paramMotionEvent.getRawX(), paramMotionEvent.getRawY()))) {
+        if ((!this.csY) && (t(paramMotionEvent.getRawX(), paramMotionEvent.getRawY()))) {
           performClick();
         }
       }
@@ -79,14 +79,14 @@ final class a
   final class a
     extends Drawable
   {
-    RectF cuN;
+    RectF ctb;
     Paint paint;
     
     private a()
     {
       AppMethodBeat.i(130482);
       this.paint = new Paint(1);
-      this.cuN = new RectF();
+      this.ctb = new RectF();
       this.paint.setColor(-12748166);
       this.paint.setStyle(Paint.Style.FILL);
       AppMethodBeat.o(130482);
@@ -96,20 +96,20 @@ final class a
     {
       AppMethodBeat.i(130483);
       float f1 = paramCanvas.getHeight() / 2.0F;
-      RectF localRectF1 = this.cuN;
-      this.cuN.top = 0.0F;
+      RectF localRectF1 = this.ctb;
+      this.ctb.top = 0.0F;
       localRectF1.left = 0.0F;
-      localRectF1 = this.cuN;
-      RectF localRectF2 = this.cuN;
+      localRectF1 = this.ctb;
+      RectF localRectF2 = this.ctb;
       float f2 = f1 * 2.0F;
       localRectF2.bottom = f2;
       localRectF1.right = f2;
-      paramCanvas.drawArc(this.cuN, 90.0F, 180.0F, false, this.paint);
-      this.cuN.left = (paramCanvas.getWidth() - f1 * 2.0F);
-      this.cuN.top = 0.0F;
-      this.cuN.right = paramCanvas.getWidth();
-      this.cuN.bottom = paramCanvas.getHeight();
-      paramCanvas.drawArc(this.cuN, -90.0F, 180.0F, false, this.paint);
+      paramCanvas.drawArc(this.ctb, 90.0F, 180.0F, false, this.paint);
+      this.ctb.left = (paramCanvas.getWidth() - f1 * 2.0F);
+      this.ctb.top = 0.0F;
+      this.ctb.right = paramCanvas.getWidth();
+      this.ctb.bottom = paramCanvas.getHeight();
+      paramCanvas.drawArc(this.ctb, -90.0F, 180.0F, false, this.paint);
       paramCanvas.drawRect(f1 - 1.0F, 0.0F, a.this.getWidth() - f1 + 1.0F, a.this.getHeight(), this.paint);
       AppMethodBeat.o(130483);
     }
@@ -126,7 +126,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.game.c.a
  * JD-Core Version:    0.7.0.1
  */

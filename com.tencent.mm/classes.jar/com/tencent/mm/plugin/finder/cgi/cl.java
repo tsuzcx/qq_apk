@@ -1,230 +1,254 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.q.b;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.network.g;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.network.m;
-import com.tencent.mm.protocal.protobuf.bdw;
-import com.tencent.mm.protocal.protobuf.bdx;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.finder.model.am;
+import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.plugin.finder.model.y;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.bac;
+import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.protocal.protobuf.bjh;
+import com.tencent.mm.protocal.protobuf.bji;
+import com.tencent.mm.protocal.protobuf.bjj;
+import com.tencent.mm.protocal.protobuf.bjk;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import com.tencent.mm.storage.ar.a;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.a.j;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderUploadHeadImg;", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "filePath", "", "scene", "", "fileMD5", "totalLen", "(Ljava/lang/String;ILjava/lang/String;I)V", "ERRCODE_CANNOT_READ_FILE", "getERRCODE_CANNOT_READ_FILE", "()I", "ERRCODE_REACH_RETRY_LIMIT", "getERRCODE_REACH_RETRY_LIMIT", "IMG_SLICE_LEN", "MAX_DO_SCENE_LIMIT", "TAG", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getFilePath", "()Ljava/lang/String;", "imgUrl", "readBuf", "", "getScene", "startPos", "doNextUpload", "doScene", "getFileMD5", "getImgUrl", "getTotalLen", "getType", "isEnableReport", "Lcom/tencent/mm/plugin/finder/cgi/report/EnableValue;", "onCgiEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "securityLimitCount", "securityVerificationChecked", "Lcom/tencent/mm/modelbase/NetSceneBase$SecurityCheckStatus;", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderSnsGetLiveObjectList;", "Lcom/tencent/mm/plugin/findersdk/cgi/NetSceneFinderBase;", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protobuf/ByteString;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "pullType", "", "getPullType", "()I", "setPullType", "(I)V", "responseList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lkotlin/collections/ArrayList;", "getResponseList", "()Ljava/util/ArrayList;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getRequestBuffer", "getResponseBuffer", "getType", "hasContinue", "", "isFetchFeedCgi", "onCgiEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-finder_release"})
 public final class cl
-  extends ax
-  implements m
+  extends com.tencent.mm.plugin.findersdk.b.g
 {
-  public static final a twA;
-  private static final int twy = 1;
-  private static final int twz = 2;
   private final String TAG;
-  private int bNu;
   private i callback;
-  private g dispatcher;
-  public String fileMD5;
-  private final String filePath;
-  public int iKP;
-  private final int scene;
-  private byte[] tws;
-  public String twt;
-  private final int twu;
-  private final int twv;
-  private final int tww;
-  private final int twx;
+  private final b lastBuffer;
+  public int pullType;
+  public d rr;
+  public final ArrayList<bu> xec;
   
-  static
+  public cl(b paramb, bid parambid)
   {
-    AppMethodBeat.i(165287);
-    twA = new a((byte)0);
-    twy = 1;
-    twz = 2;
-    AppMethodBeat.o(165287);
-  }
-  
-  public cl(String paramString1, int paramInt1, String paramString2, int paramInt2)
-  {
-    AppMethodBeat.i(242520);
-    this.filePath = paramString1;
-    this.scene = paramInt1;
-    this.fileMD5 = paramString2;
-    this.iKP = paramInt2;
-    this.TAG = "Finder.NetSceneFinderUploadHeadImg";
-    this.twu = 51200;
-    this.twv = 20;
-    this.tww = -40000;
-    this.twx = -40001;
-    Log.i(this.TAG, "filePath " + this.filePath + " and size: " + Util.getSizeKB(com.tencent.mm.vfs.s.boW(this.filePath)) + " total:" + com.tencent.mm.vfs.s.boW(this.filePath));
-    AppMethodBeat.o(242520);
-  }
-  
-  private final int cZg()
-  {
-    AppMethodBeat.i(165284);
-    d.a locala = new d.a();
-    locala.MB("/cgi-bin/micromsg-bin/finderuploadheadimg");
-    locala.sG(getType());
-    bdw localbdw = new bdw();
-    localbdw.scene = this.scene;
-    localbdw.bNu = this.bNu;
-    localbdw.iKP = this.iKP;
-    localbdw.LNB = this.fileMD5;
-    this.tws = com.tencent.mm.vfs.s.aW(this.filePath, this.bNu, this.twu);
-    if (this.tws == null)
+    super(parambid);
+    AppMethodBeat.i(266889);
+    this.lastBuffer = paramb;
+    this.TAG = "Finder.NetSceneFinderSnsGetLiveObjectList";
+    this.xec = new ArrayList();
+    paramb = new d.a();
+    paramb.vD(getType());
+    Object localObject = new bjj();
+    ((bjj)localObject).lastBuffer = this.lastBuffer;
+    ao localao = ao.xcj;
+    ((bjj)localObject).SDi = ao.a(parambid);
+    paramb.c((a)localObject);
+    paramb.d((a)new bjk());
+    paramb.TW("/cgi-bin/micromsg-bin/findersnsgetliveobjectlist");
+    paramb = paramb.bgN();
+    p.j(paramb, "builder.buildInstance()");
+    this.rr = paramb;
+    parambid = this.TAG;
+    localObject = new StringBuilder("NetSceneFinderSnsGetLiveObjectList pullType:").append(this.pullType).append(" lastBuffer:");
+    if (this.lastBuffer == null) {}
+    for (paramb = "null";; paramb = MD5Util.getMD5String(this.lastBuffer.UH))
     {
-      localObject1 = this.callback;
-      if (localObject1 != null) {
-        ((i)localObject1).onSceneEnd(3, this.twx, "", (q)this);
-      }
-      AppMethodBeat.o(165284);
-      return -1;
-    }
-    Object localObject1 = this.tws;
-    Object localObject2 = this.tws;
-    int i;
-    StringBuilder localStringBuilder;
-    if (localObject2 != null)
-    {
-      i = localObject2.length;
-      localbdw.LrK = com.tencent.mm.bw.b.Q((byte[])localObject1, 0, i);
-      localObject2 = this.TAG;
-      localStringBuilder = new StringBuilder("next upload start:").append(this.bNu).append(", len:");
-      localObject1 = this.tws;
-      if (localObject1 == null) {
-        break label318;
-      }
-    }
-    label318:
-    for (localObject1 = Integer.valueOf(localObject1.length);; localObject1 = null)
-    {
-      Log.i((String)localObject2, localObject1);
-      localObject1 = am.tuw;
-      localbdw.uli = am.cXY();
-      locala.c((a)localbdw);
-      locala.d((a)new bdx());
-      i = dispatch(this.dispatcher, (com.tencent.mm.network.s)locala.aXF(), (m)this);
-      if (i == -1)
-      {
-        localObject1 = this.callback;
-        if (localObject1 != null) {
-          ((i)localObject1).onSceneEnd(3, this.tww, "", (q)this);
-        }
-      }
-      AppMethodBeat.o(165284);
-      return i;
-      i = 0;
-      break;
+      Log.i(parambid, paramb);
+      AppMethodBeat.o(266889);
+      return;
     }
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params)
+  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, s params)
   {
-    AppMethodBeat.i(242519);
-    Log.i(this.TAG, "errType " + paramInt2 + " errCode " + paramInt3 + " errMsg " + paramString);
+    AppMethodBeat.i(266888);
+    Log.i(this.TAG, "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
+    Object localObject1;
+    Object localObject2;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
+      params = this.rr.bhY();
       if (params == null)
       {
-        paramString = new t("null cannot be cast to non-null type com.tencent.mm.modelbase.CommReqResp");
-        AppMethodBeat.o(242519);
+        paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSnsGetLiveObjectListResponse");
+        AppMethodBeat.o(266888);
         throw paramString;
       }
-      params = ((d)params).aYK();
-      if (params == null)
+      params = (bjk)params;
+      localObject1 = params.STz;
+      localObject2 = params.STB;
+      Object localObject3 = params.STA;
+      Object localObject4;
+      if (localObject3 != null)
       {
-        paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderUploadHeadImgResponse");
-        AppMethodBeat.o(242519);
-        throw paramString;
-      }
-      params = (bdx)params;
-      if (params.completed)
-      {
-        this.twt = params.twt;
-        Log.i(this.TAG, "upload completed " + this.twt);
-        params = this.callback;
-        if (params != null)
+        localObject3 = ((bji)localObject3).STy;
+        if (localObject3 != null)
         {
-          params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
-          AppMethodBeat.o(242519);
-          return;
+          localObject3 = ((Iterable)localObject3).iterator();
+          while (((Iterator)localObject3).hasNext())
+          {
+            localObject4 = (Long)((Iterator)localObject3).next();
+            Iterator localIterator;
+            Object localObject5;
+            long l;
+            if (localObject1 != null)
+            {
+              localIterator = ((Iterable)localObject1).iterator();
+              while (localIterator.hasNext())
+              {
+                localObject5 = (FinderObject)localIterator.next();
+                l = ((FinderObject)localObject5).id;
+                if ((localObject4 != null) && (l == ((Long)localObject4).longValue()))
+                {
+                  Object localObject6 = ((FinderObject)localObject5).liveInfo;
+                  label248:
+                  int i;
+                  if (localObject6 != null)
+                  {
+                    l = ((bac)localObject6).liveId;
+                    localObject6 = (List)this.xec;
+                    paramInt1 = 0;
+                    localObject6 = ((List)localObject6).iterator();
+                    label268:
+                    if (!((Iterator)localObject6).hasNext()) {
+                      break label403;
+                    }
+                    Object localObject7 = (bu)((Iterator)localObject6).next();
+                    if (!(localObject7 instanceof y)) {
+                      break label390;
+                    }
+                    localObject7 = ((y)localObject7).zAF.liveInfo;
+                    if ((localObject7 == null) || (((bac)localObject7).liveId != l)) {
+                      break label390;
+                    }
+                    i = 1;
+                    label330:
+                    if (i == 0) {
+                      break label396;
+                    }
+                  }
+                  for (;;)
+                  {
+                    if (paramInt1 < 0) {
+                      break label408;
+                    }
+                    Log.i(this.TAG, "exist: " + localObject4 + ", " + l + ", filter");
+                    break;
+                    l = 0L;
+                    break label248;
+                    label390:
+                    i = 0;
+                    break label330;
+                    label396:
+                    paramInt1 += 1;
+                    break label268;
+                    label403:
+                    paramInt1 = -1;
+                  }
+                  label408:
+                  localObject6 = this.xec;
+                  p.j(localObject5, "it");
+                  ((ArrayList)localObject6).add(new y((FinderObject)localObject5));
+                }
+              }
+            }
+            if (localObject2 != null)
+            {
+              localIterator = ((Iterable)localObject2).iterator();
+              while (localIterator.hasNext())
+              {
+                localObject5 = (bjh)localIterator.next();
+                l = ((bjh)localObject5).zAO;
+                if ((localObject4 != null) && (l == ((Long)localObject4).longValue())) {
+                  this.xec.add(new am(((bjh)localObject5).zAO));
+                }
+              }
+            }
+          }
         }
-        AppMethodBeat.o(242519);
-        return;
       }
-      this.bNu = params.bNu;
-      cZg();
-      AppMethodBeat.o(242519);
-      return;
+      if ((this.xec.isEmpty()) && (localObject1 != null))
+      {
+        if (!((Collection)localObject1).isEmpty()) {
+          paramInt1 = 1;
+        }
+        while (paramInt1 == 1)
+        {
+          localObject2 = this.xec;
+          localObject3 = (Iterable)localObject1;
+          localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject3, 10));
+          localObject3 = ((Iterable)localObject3).iterator();
+          for (;;)
+          {
+            if (((Iterator)localObject3).hasNext())
+            {
+              localObject4 = (FinderObject)((Iterator)localObject3).next();
+              p.j(localObject4, "it");
+              ((Collection)localObject1).add(new y((FinderObject)localObject4));
+              continue;
+              paramInt1 = 0;
+              break;
+            }
+          }
+          ((ArrayList)localObject2).addAll((Collection)localObject1);
+        }
+      }
+      localObject1 = h.aHG();
+      p.j(localObject1, "MMKernel.storage()");
+      localObject1 = ((f)localObject1).aHp();
+      localObject2 = ar.a.VBP;
+      if (!params.STC) {
+        break label792;
+      }
     }
-    params = this.callback;
-    if (params != null)
+    label792:
+    for (paramInt1 = 1;; paramInt1 = 0)
     {
+      ((com.tencent.mm.storage.ao)localObject1).set((ar.a)localObject2, Integer.valueOf(paramInt1));
+      Log.i(this.TAG, "responseList size:" + this.xec.size() + ", resp.enableSetting:" + params.STC);
+      params = this.callback;
+      if (params == null) {
+        break;
+      }
       params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
-      AppMethodBeat.o(242519);
+      AppMethodBeat.o(266888);
       return;
     }
-    AppMethodBeat.o(242519);
+    AppMethodBeat.o(266888);
   }
   
-  public final com.tencent.mm.plugin.finder.cgi.report.b cXS()
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
-    return com.tencent.mm.plugin.finder.cgi.report.b.tye;
-  }
-  
-  public final int doScene(g paramg, i parami)
-  {
-    AppMethodBeat.i(165283);
-    if (Util.isNullOrNil(this.fileMD5))
-    {
-      this.fileMD5 = com.tencent.mm.vfs.s.bhK(this.filePath);
-      this.iKP = ((int)com.tencent.mm.vfs.s.boW(this.filePath));
-      Log.i(this.TAG, "upload img file path:" + this.filePath + " totalLen:" + this.iKP + " md5:" + this.fileMD5);
-    }
+    AppMethodBeat.i(266887);
     this.callback = parami;
-    this.dispatcher = paramg;
-    int i = cZg();
-    AppMethodBeat.o(165283);
+    int i = dispatch(paramg, (s)this.rr, (m)this);
+    AppMethodBeat.o(266887);
     return i;
   }
   
   public final int getType()
   {
-    return 3759;
+    return 6847;
   }
-  
-  public final int securityLimitCount()
-  {
-    return this.twv;
-  }
-  
-  public final q.b securityVerificationChecked(com.tencent.mm.network.s params)
-  {
-    AppMethodBeat.i(165282);
-    p.h(params, "rr");
-    if (Util.isNullOrNil(this.filePath))
-    {
-      params = q.b.iMr;
-      AppMethodBeat.o(165282);
-      return params;
-    }
-    params = q.b.iMq;
-    AppMethodBeat.o(165282);
-    return params;
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderUploadHeadImg$Companion;", "", "()V", "UPLOAD_FINDER_HEAD_IMG_SCENE_CREATE_CONTACT", "", "getUPLOAD_FINDER_HEAD_IMG_SCENE_CREATE_CONTACT", "()I", "UPLOAD_FINDER_HEAD_IMG_SCENE_UPDATE_CONTACT", "getUPLOAD_FINDER_HEAD_IMG_SCENE_UPDATE_CONTACT", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.cl
  * JD-Core Version:    0.7.0.1
  */

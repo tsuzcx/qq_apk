@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.appbrand.config;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.aa;
-import com.tencent.mm.ak.aa.a;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.plugin.appbrand.app.n;
-import com.tencent.mm.protocal.protobuf.bia;
-import com.tencent.mm.protocal.protobuf.bib;
-import com.tencent.mm.protocal.protobuf.bic;
-import com.tencent.mm.protocal.protobuf.eqm;
-import com.tencent.mm.protocal.protobuf.ew;
+import com.tencent.mm.an.aa;
+import com.tencent.mm.an.aa.a;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.plugin.appbrand.app.m;
+import com.tencent.mm.protocal.protobuf.bpl;
+import com.tencent.mm.protocal.protobuf.bpm;
+import com.tencent.mm.protocal.protobuf.bpn;
+import com.tencent.mm.protocal.protobuf.et;
+import com.tencent.mm.protocal.protobuf.fay;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
@@ -19,28 +19,28 @@ import java.util.LinkedList;
 
 public final class q
 {
-  private static bia M(String paramString, int paramInt1, int paramInt2)
+  private static bpl M(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(44868);
-    bia localbia = new bia();
-    localbia.jfi = paramString;
-    localbia.oUv = paramInt1;
-    localbia.KIm = paramInt2;
+    bpl localbpl = new bpl();
+    localbpl.lVG = paramString;
+    localbpl.rWu = paramInt1;
+    localbpl.RJD = paramInt2;
     AppMethodBeat.o(44868);
-    return localbia;
+    return localbpl;
   }
   
   public static String a(final String paramString, int paramInt1, int paramInt2, c paramc, boolean paramBoolean)
   {
     AppMethodBeat.i(44869);
-    if (n.NL() == null)
+    if (m.QG() == null)
     {
       AppMethodBeat.o(44869);
       return "";
     }
-    int i = a.bB(paramString, paramInt1);
-    int j = a.bC(paramString, paramInt1);
-    String str = a.bD(paramString, paramInt1);
+    int i = a.bV(paramString, paramInt1);
+    int j = a.bW(paramString, paramInt1);
+    String str = a.bX(paramString, paramInt1);
     boolean bool;
     if ((j != 0) && ((Util.isNullOrNil(str)) || (j > i)))
     {
@@ -59,38 +59,38 @@ public final class q
             if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
             {
               Log.e("MicroMsg.CommonConfigManager", "getConfig syncConfigFromServer, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-              if (this.lfk != null) {
-                this.lfk.Vo("");
+              if (this.nZx != null) {
+                this.nZx.acY("");
               }
               AppMethodBeat.o(44855);
               return;
             }
-            paramAnonymousString = (bic)paramAnonymousd.iLL.iLR;
-            if ((paramAnonymousString.LSs == null) || (paramAnonymousString.LSs.size() == 0))
+            paramAnonymousString = (bpn)d.c.b(paramAnonymousd.lBS);
+            if ((paramAnonymousString.Tbe == null) || (paramAnonymousString.Tbe.size() == 0))
             {
               Log.e("MicroMsg.CommonConfigManager", "getConfig syncConfigFromServer, AppConfigList is empty");
-              if (this.lfk != null) {
-                this.lfk.Vo("");
+              if (this.nZx != null) {
+                this.nZx.acY("");
               }
               AppMethodBeat.o(44855);
               return;
             }
-            paramAnonymousString = (ew)paramAnonymousString.LSs.get(0);
-            Log.i("MicroMsg.CommonConfigManager", "getConfig syncConfigFromServer, the config is %s, the configVersion is %d", new Object[] { paramAnonymousString.KIn, Integer.valueOf(paramAnonymousString.KIm) });
-            if (!Util.isNullOrNil(paramAnonymousString.KIn))
+            paramAnonymousString = (et)paramAnonymousString.Tbe.get(0);
+            Log.i("MicroMsg.CommonConfigManager", "getConfig syncConfigFromServer, the config is %s, the configVersion is %d", new Object[] { paramAnonymousString.RJE, Integer.valueOf(paramAnonymousString.RJD) });
+            if (!Util.isNullOrNil(paramAnonymousString.RJE))
             {
-              q.a.N(paramString, paramAnonymousString.oUv, paramAnonymousString.KIm);
-              q.a.O(paramString, paramAnonymousString.oUv, paramAnonymousString.KIm);
-              q.a.t(paramString, paramAnonymousString.oUv, paramAnonymousString.KIn);
-              if (this.lfk != null)
+              q.a.N(paramString, paramAnonymousString.rWu, paramAnonymousString.RJD);
+              q.a.O(paramString, paramAnonymousString.rWu, paramAnonymousString.RJD);
+              q.a.u(paramString, paramAnonymousString.rWu, paramAnonymousString.RJE);
+              if (this.nZx != null)
               {
-                this.lfk.Vo(paramAnonymousString.KIn);
+                this.nZx.acY(paramAnonymousString.RJE);
                 AppMethodBeat.o(44855);
               }
             }
-            else if (this.lfk != null)
+            else if (this.nZx != null)
             {
-              this.lfk.Vo("");
+              this.nZx.acY("");
             }
             AppMethodBeat.o(44855);
           }
@@ -104,7 +104,7 @@ public final class q
       bool = false;
       break;
       label155:
-      paramc.Vo(str);
+      paramc.acY(str);
     }
   }
   
@@ -112,17 +112,17 @@ public final class q
   {
     AppMethodBeat.i(44870);
     LinkedList localLinkedList = new LinkedList();
-    bia localbia = new bia();
-    localbia.jfi = paramString;
-    localbia.oUv = paramInt1;
-    localbia.KIm = paramInt2;
-    localbia.LSq = paramInt3;
-    localLinkedList.add(localbia);
+    bpl localbpl = new bpl();
+    localbpl.lVG = paramString;
+    localbpl.rWu = paramInt1;
+    localbpl.RJD = paramInt2;
+    localbpl.Tbc = paramInt3;
+    localLinkedList.add(localbpl);
     a(localLinkedList, paramb);
     AppMethodBeat.o(44870);
   }
   
-  public static void a(String paramString, LinkedList<eqm> paramLinkedList, boolean paramBoolean)
+  public static void a(String paramString, LinkedList<fay> paramLinkedList, boolean paramBoolean)
   {
     AppMethodBeat.i(44867);
     if (Util.isNullOrNil(paramString))
@@ -141,27 +141,27 @@ public final class q
     Iterator localIterator = paramLinkedList.iterator();
     while (localIterator.hasNext())
     {
-      eqm localeqm = (eqm)localIterator.next();
-      Log.d("MicroMsg.CommonConfigManager", "versionItem.version:%d,version.type:%d", new Object[] { Integer.valueOf(localeqm.version), Integer.valueOf(localeqm.type) });
-      int i = a.bB(paramString, localeqm.type);
-      int j = localeqm.version;
-      a.O(paramString, localeqm.type, j);
+      fay localfay = (fay)localIterator.next();
+      Log.d("MicroMsg.CommonConfigManager", "versionItem.version:%d,version.type:%d", new Object[] { Integer.valueOf(localfay.version), Integer.valueOf(localfay.type) });
+      int i = a.bV(paramString, localfay.type);
+      int j = localfay.version;
+      a.O(paramString, localfay.type, j);
       if (j != 0) {
         if (j > i)
         {
-          localLinkedList.add(M(paramString, localeqm.type, localeqm.version));
+          localLinkedList.add(M(paramString, localfay.type, localfay.version));
         }
         else if (j == i)
         {
-          if (Util.isNullOrNil(a.bD(paramString, localeqm.type))) {
-            localLinkedList.add(M(paramString, localeqm.type, localeqm.version));
+          if (Util.isNullOrNil(a.bX(paramString, localfay.type))) {
+            localLinkedList.add(M(paramString, localfay.type, localfay.version));
           }
         }
         else
         {
           Log.i("MicroMsg.CommonConfigManager", "local_version:%d, server_version:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-          if (Util.isNullOrNil(a.bD(paramString, localeqm.type))) {
-            localLinkedList.add(M(paramString, localeqm.type, localeqm.version));
+          if (Util.isNullOrNil(a.bX(paramString, localfay.type))) {
+            localLinkedList.add(M(paramString, localfay.type, localfay.version));
           }
         }
       }
@@ -186,24 +186,24 @@ public final class q
             AppMethodBeat.o(44854);
             return;
           }
-          paramAnonymousString = (bic)paramAnonymousd.iLL.iLR;
-          if ((paramAnonymousString.LSs == null) || (paramAnonymousString.LSs.size() == 0))
+          paramAnonymousString = (bpn)d.c.b(paramAnonymousd.lBS);
+          if ((paramAnonymousString.Tbe == null) || (paramAnonymousString.Tbe.size() == 0))
           {
             Log.e("MicroMsg.CommonConfigManager", "setVersion syncConfigFromServer, AppConfigList is empty");
             AppMethodBeat.o(44854);
             return;
           }
-          Log.i("MicroMsg.CommonConfigManager", "setVersion syncConfigFromServer appConfigList.size:%d", new Object[] { Integer.valueOf(paramAnonymousString.LSs.size()) });
-          paramAnonymousString = paramAnonymousString.LSs.iterator();
+          Log.i("MicroMsg.CommonConfigManager", "setVersion syncConfigFromServer appConfigList.size:%d", new Object[] { Integer.valueOf(paramAnonymousString.Tbe.size()) });
+          paramAnonymousString = paramAnonymousString.Tbe.iterator();
           while (paramAnonymousString.hasNext())
           {
-            paramAnonymousd = (ew)paramAnonymousString.next();
-            Log.i("MicroMsg.CommonConfigManager", "setVersion syncConfigFromServer, the config is %s, the configVersion is %d", new Object[] { paramAnonymousd.KIn, Integer.valueOf(paramAnonymousd.KIm) });
-            if (!Util.isNullOrNil(paramAnonymousd.KIn))
+            paramAnonymousd = (et)paramAnonymousString.next();
+            Log.i("MicroMsg.CommonConfigManager", "setVersion syncConfigFromServer, the config is %s, the configVersion is %d", new Object[] { paramAnonymousd.RJE, Integer.valueOf(paramAnonymousd.RJD) });
+            if (!Util.isNullOrNil(paramAnonymousd.RJE))
             {
-              q.a.N(this.lfj, paramAnonymousd.oUv, paramAnonymousd.KIm);
-              q.a.O(this.lfj, paramAnonymousd.oUv, paramAnonymousd.KIm);
-              q.a.t(this.lfj, paramAnonymousd.oUv, paramAnonymousd.KIn);
+              q.a.N(this.nZw, paramAnonymousd.rWu, paramAnonymousd.RJD);
+              q.a.O(this.nZw, paramAnonymousd.rWu, paramAnonymousd.RJD);
+              q.a.u(this.nZw, paramAnonymousd.rWu, paramAnonymousd.RJE);
             }
           }
           AppMethodBeat.o(44854);
@@ -213,25 +213,25 @@ public final class q
     AppMethodBeat.o(44867);
   }
   
-  private static void a(LinkedList<bia> paramLinkedList, b paramb)
+  private static void a(LinkedList<bpl> paramLinkedList, b paramb)
   {
     AppMethodBeat.i(44871);
     d.a locala = new d.a();
     locala.funcId = 1138;
     locala.uri = "/cgi-bin/mmbiz-bin/wxausrevent/getappconfig";
-    locala.iLO = new bic();
-    locala.iLP = 0;
+    locala.lBV = new bpn();
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    bib localbib = new bib();
-    localbib.LSr = paramLinkedList;
-    locala.iLN = localbib;
-    aa.a(locala.aXF(), new aa.a()
+    bpm localbpm = new bpm();
+    localbpm.Tbd = paramLinkedList;
+    locala.lBU = localbpm;
+    aa.a(locala.bgN(), new aa.a()
     {
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd, com.tencent.mm.ak.q paramAnonymousq)
+      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd, com.tencent.mm.an.q paramAnonymousq)
       {
         AppMethodBeat.i(44856);
-        if (this.lfl != null) {
-          this.lfl.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, paramAnonymousd);
+        if (this.nZy != null) {
+          this.nZy.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, paramAnonymousd);
         }
         AppMethodBeat.o(44856);
         return 0;
@@ -240,7 +240,7 @@ public final class q
     AppMethodBeat.o(44871);
   }
   
-  public static void b(String paramString, LinkedList<eqm> paramLinkedList)
+  public static void b(String paramString, LinkedList<fay> paramLinkedList)
   {
     AppMethodBeat.i(44866);
     a(paramString, paramLinkedList, true);
@@ -252,83 +252,36 @@ public final class q
     public static void N(String paramString, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(44860);
-      if (n.NL() == null)
+      if (m.QG() == null)
       {
         AppMethodBeat.o(44860);
         return;
       }
-      n.NL().cN(by(paramString, paramInt1), String.valueOf(paramInt2));
+      m.QG().cW(bS(paramString, paramInt1), String.valueOf(paramInt2));
       AppMethodBeat.o(44860);
     }
     
     public static void O(String paramString, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(44861);
-      if (n.NL() == null)
+      if (m.QG() == null)
       {
         AppMethodBeat.o(44861);
         return;
       }
-      n.NL().cN(bz(paramString, paramInt1), String.valueOf(paramInt2));
+      m.QG().cW(bT(paramString, paramInt1), String.valueOf(paramInt2));
       AppMethodBeat.o(44861);
     }
     
-    public static String Xj(String paramString)
+    public static String aeV(String paramString)
     {
-      AppMethodBeat.i(226466);
+      AppMethodBeat.i(280336);
       paramString = String.format("%s#NotifyMessageStatus", new Object[] { paramString });
-      AppMethodBeat.o(226466);
+      AppMethodBeat.o(280336);
       return paramString;
     }
     
-    private static String bA(String paramString, int paramInt)
-    {
-      AppMethodBeat.i(44859);
-      paramString = String.format("%s_%s_config", new Object[] { paramString, Integer.valueOf(paramInt) });
-      AppMethodBeat.o(44859);
-      return paramString;
-    }
-    
-    public static int bB(String paramString, int paramInt)
-    {
-      AppMethodBeat.i(44863);
-      if (n.NL() == null)
-      {
-        AppMethodBeat.o(44863);
-        return 0;
-      }
-      paramInt = Util.getInt(n.NL().get(by(paramString, paramInt), "0"), 0);
-      AppMethodBeat.o(44863);
-      return paramInt;
-    }
-    
-    public static int bC(String paramString, int paramInt)
-    {
-      AppMethodBeat.i(44864);
-      if (n.NL() == null)
-      {
-        AppMethodBeat.o(44864);
-        return 0;
-      }
-      paramInt = Util.getInt(n.NL().get(bz(paramString, paramInt), "0"), 0);
-      AppMethodBeat.o(44864);
-      return paramInt;
-    }
-    
-    public static String bD(String paramString, int paramInt)
-    {
-      AppMethodBeat.i(44865);
-      if (n.NL() == null)
-      {
-        AppMethodBeat.o(44865);
-        return "";
-      }
-      paramString = n.NL().get(bA(paramString, paramInt), "");
-      AppMethodBeat.o(44865);
-      return paramString;
-    }
-    
-    private static String by(String paramString, int paramInt)
+    private static String bS(String paramString, int paramInt)
     {
       AppMethodBeat.i(44857);
       paramString = String.format("%s_%s_local_version", new Object[] { paramString, Integer.valueOf(paramInt) });
@@ -336,7 +289,7 @@ public final class q
       return paramString;
     }
     
-    private static String bz(String paramString, int paramInt)
+    private static String bT(String paramString, int paramInt)
     {
       AppMethodBeat.i(44858);
       paramString = String.format("%s_%s_server_version", new Object[] { paramString, Integer.valueOf(paramInt) });
@@ -344,15 +297,62 @@ public final class q
       return paramString;
     }
     
-    public static void t(String paramString1, int paramInt, String paramString2)
+    private static String bU(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(44859);
+      paramString = String.format("%s_%s_config", new Object[] { paramString, Integer.valueOf(paramInt) });
+      AppMethodBeat.o(44859);
+      return paramString;
+    }
+    
+    public static int bV(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(44863);
+      if (m.QG() == null)
+      {
+        AppMethodBeat.o(44863);
+        return 0;
+      }
+      paramInt = Util.getInt(m.QG().L(bS(paramString, paramInt), "0"), 0);
+      AppMethodBeat.o(44863);
+      return paramInt;
+    }
+    
+    public static int bW(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(44864);
+      if (m.QG() == null)
+      {
+        AppMethodBeat.o(44864);
+        return 0;
+      }
+      paramInt = Util.getInt(m.QG().L(bT(paramString, paramInt), "0"), 0);
+      AppMethodBeat.o(44864);
+      return paramInt;
+    }
+    
+    public static String bX(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(44865);
+      if (m.QG() == null)
+      {
+        AppMethodBeat.o(44865);
+        return "";
+      }
+      paramString = m.QG().L(bU(paramString, paramInt), "");
+      AppMethodBeat.o(44865);
+      return paramString;
+    }
+    
+    public static void u(String paramString1, int paramInt, String paramString2)
     {
       AppMethodBeat.i(44862);
-      if (n.NL() == null)
+      if (m.QG() == null)
       {
         AppMethodBeat.o(44862);
         return;
       }
-      n.NL().cN(bA(paramString1, paramInt), paramString2);
+      m.QG().cW(bU(paramString1, paramInt), paramString2);
       AppMethodBeat.o(44862);
     }
   }
@@ -364,12 +364,12 @@ public final class q
   
   public static abstract interface c
   {
-    public abstract void Vo(String paramString);
+    public abstract void acY(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.q
  * JD-Core Version:    0.7.0.1
  */

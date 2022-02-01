@@ -3,20 +3,19 @@ package com.tencent.mm.plugin.teenmode.ui;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.service.t;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.protocal.protobuf.egx;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.teenmode.a.a;
+import com.tencent.mm.plugin.teenmode.a.d;
+import com.tencent.mm.plugin.teenmode.a.e;
+import com.tencent.mm.plugin.teenmode.a.g;
+import com.tencent.mm.plugin.teenmode.a.b;
+import com.tencent.mm.protocal.protobuf.eqz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
@@ -26,41 +25,50 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 public class SettingsTeenModeMainMiniProgram
   extends MMActivity
 {
-  private WeImageView FWJ;
-  private WeImageView FWK;
-  private WeImageView FWL;
-  private LinearLayout FWM;
-  private int FWN = 0;
+  private WeImageView MtY;
+  private WeImageView MtZ;
+  private WeImageView Mua;
+  private LinearLayout Mub;
+  private int Muc = 0;
   
-  private void fvu()
+  private void gkx()
   {
-    AppMethodBeat.i(187447);
-    Log.d("MicroMsg.SettingsTeenModeMainMiniProgram", "doSaveConfig: %s", new Object[] { Integer.valueOf(this.FWN) });
-    g.aAh().azQ().set(ar.a.OaY, Integer.valueOf(this.FWN));
-    AppMethodBeat.o(187447);
+    AppMethodBeat.i(259514);
+    Log.d("MicroMsg.SettingsTeenModeMainMiniProgram", "doSaveConfig: %s", new Object[] { Integer.valueOf(this.Muc) });
+    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vpa, Integer.valueOf(this.Muc));
+    AppMethodBeat.o(259514);
   }
   
   private void updateStatus()
   {
-    AppMethodBeat.i(187446);
-    this.FWJ.setVisibility(8);
-    this.FWK.setVisibility(8);
-    this.FWL.setVisibility(8);
-    this.FWM.setVisibility(4);
-    switch (this.FWN)
+    AppMethodBeat.i(259513);
+    TextView localTextView1 = (TextView)findViewById(a.d.Msw);
+    TextView localTextView2 = (TextView)findViewById(a.d.MsA);
+    TextView localTextView3 = (TextView)findViewById(a.d.Msy);
+    localTextView1.setContentDescription(getString(a.g.Mtr));
+    localTextView2.setContentDescription(getString(a.g.Mta));
+    localTextView3.setContentDescription(getString(a.g.Mtb));
+    this.MtY.setVisibility(8);
+    this.MtZ.setVisibility(8);
+    this.Mua.setVisibility(8);
+    this.Mub.setVisibility(4);
+    switch (this.Muc)
     {
     }
     for (;;)
     {
-      fvu();
-      AppMethodBeat.o(187446);
+      gkx();
+      AppMethodBeat.o(259513);
       return;
-      this.FWJ.setVisibility(0);
+      this.MtY.setVisibility(0);
+      localTextView1.setContentDescription(getString(a.g.Mtd) + getString(a.g.Mtr));
       continue;
-      this.FWK.setVisibility(0);
-      this.FWM.setVisibility(0);
+      this.MtZ.setVisibility(0);
+      this.Mub.setVisibility(0);
+      localTextView2.setContentDescription(getString(a.g.Mtd) + getString(a.g.Mta));
       continue;
-      this.FWL.setVisibility(0);
+      this.Mua.setVisibility(0);
+      localTextView3.setContentDescription(getString(a.g.Mtd) + getString(a.g.Mtb));
     }
   }
   
@@ -71,107 +79,47 @@ public class SettingsTeenModeMainMiniProgram
   
   public int getLayoutId()
   {
-    return 2131496274;
+    return a.e.MsH;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(187443);
+    AppMethodBeat.i(259509);
     super.onCreate(paramBundle);
     setMMTitle("");
     hideActionbarLine();
-    setActionbarColor(getResources().getColor(2131101424));
-    this.FWJ = ((WeImageView)findViewById(2131308933));
-    this.FWK = ((WeImageView)findViewById(2131308935));
-    this.FWL = ((WeImageView)findViewById(2131308934));
-    this.FWM = ((LinearLayout)findViewById(2131300136));
-    this.FWN = ((com.tencent.mm.plugin.teenmode.a.b)g.af(com.tencent.mm.plugin.teenmode.a.b.class)).fvp();
+    setActionbarColor(getResources().getColor(a.a.white));
+    this.MtY = ((WeImageView)findViewById(a.d.Msv));
+    this.MtZ = ((WeImageView)findViewById(a.d.Msz));
+    this.Mua = ((WeImageView)findViewById(a.d.Msx));
+    this.Mub = ((LinearLayout)findViewById(a.d.Msc));
+    this.Muc = ((b)com.tencent.mm.kernel.h.ae(b.class)).gks();
     updateStatus();
-    ((View)this.FWJ.getParent()).setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(187438);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMainMiniProgram$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        SettingsTeenModeMainMiniProgram.a(SettingsTeenModeMainMiniProgram.this, 1);
-        SettingsTeenModeMainMiniProgram.a(SettingsTeenModeMainMiniProgram.this);
-        a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMainMiniProgram$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(187438);
-      }
-    });
-    ((View)this.FWK.getParent()).setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(187439);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMainMiniProgram$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        SettingsTeenModeMainMiniProgram.a(SettingsTeenModeMainMiniProgram.this, 0);
-        SettingsTeenModeMainMiniProgram.a(SettingsTeenModeMainMiniProgram.this);
-        a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMainMiniProgram$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(187439);
-      }
-    });
-    ((View)this.FWL.getParent()).setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(187440);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMainMiniProgram$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        SettingsTeenModeMainMiniProgram.a(SettingsTeenModeMainMiniProgram.this, 2);
-        SettingsTeenModeMainMiniProgram.a(SettingsTeenModeMainMiniProgram.this);
-        a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMainMiniProgram$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(187440);
-      }
-    });
-    this.FWM.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(187441);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMainMiniProgram$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        ((t)g.af(t.class)).dF(SettingsTeenModeMainMiniProgram.this.getContext());
-        a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMainMiniProgram$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(187441);
-      }
-    });
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(187442);
-        SettingsTeenModeMainMiniProgram.this.onBackPressed();
-        AppMethodBeat.o(187442);
-        return true;
-      }
-    });
-    AppMethodBeat.o(187443);
+    ((View)this.MtY.getParent()).setOnClickListener(new SettingsTeenModeMainMiniProgram.1(this));
+    ((View)this.MtZ.getParent()).setOnClickListener(new SettingsTeenModeMainMiniProgram.2(this));
+    ((View)this.Mua.getParent()).setOnClickListener(new SettingsTeenModeMainMiniProgram.3(this));
+    this.Mub.setOnClickListener(new SettingsTeenModeMainMiniProgram.4(this));
+    setBackBtn(new SettingsTeenModeMainMiniProgram.5(this));
+    AppMethodBeat.o(259509);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(187445);
-    Log.d("MicroMsg.SettingsTeenModeMainMiniProgram", "doOPLog: %s", new Object[] { Integer.valueOf(this.FWN) });
-    egx localegx = new egx();
-    localegx.NgJ = this.FWN;
-    ((l)g.af(l.class)).eis().b(new k.a(225, localegx));
-    ((com.tencent.mm.plugin.teenmode.a.b)g.af(com.tencent.mm.plugin.teenmode.a.b.class)).fvq();
+    AppMethodBeat.i(259511);
+    Log.d("MicroMsg.SettingsTeenModeMainMiniProgram", "doOPLog: %s", new Object[] { Integer.valueOf(this.Muc) });
+    eqz localeqz = new eqz();
+    localeqz.Utn = this.Muc;
+    ((n)com.tencent.mm.kernel.h.ae(n.class)).eRY().b(new k.a(225, localeqz));
+    ((b)com.tencent.mm.kernel.h.ae(b.class)).gkt();
     super.onDestroy();
-    AppMethodBeat.o(187445);
+    AppMethodBeat.o(259511);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(187444);
+    AppMethodBeat.i(259510);
     super.onPause();
-    AppMethodBeat.o(187444);
+    AppMethodBeat.o(259510);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -182,7 +130,7 @@ public class SettingsTeenModeMainMiniProgram
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.teenmode.ui.SettingsTeenModeMainMiniProgram
  * JD-Core Version:    0.7.0.1
  */

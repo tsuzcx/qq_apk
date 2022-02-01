@@ -27,7 +27,7 @@ public final class o
     this.db = paramISQLiteDatabase;
   }
   
-  public final List<n> ctO()
+  public final List<n> cHq()
   {
     AppMethodBeat.i(113026);
     ArrayList localArrayList = new ArrayList();
@@ -46,7 +46,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.model.o
  * JD-Core Version:    0.7.0.1
  */

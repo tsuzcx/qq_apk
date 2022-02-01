@@ -1,72 +1,197 @@
 package com.tencent.mm.plugin.collect.model;
 
-import android.app.Dialog;
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.g.a.tk;
-import com.tencent.mm.g.a.tk.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.collect.reward.a.c;
-import com.tencent.mm.sdk.event.IListener;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.ui.h;
-import java.lang.ref.WeakReference;
+import g.a.a.b;
 
-public final class v
-  extends IListener<tk>
+public class v
+  extends com.tencent.mm.cd.a
 {
-  private Dialog jUV;
+  public int dXr;
+  public String fww;
+  public String fyc;
+  public String jmB;
+  public int msgType;
+  public int scene;
+  public int status;
+  public double tVK;
+  public String tVM;
+  public String type;
+  public String username;
   
-  public v()
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(160790);
-    this.__eventId = tk.class.getName().hashCode();
-    AppMethodBeat.o(160790);
-  }
-  
-  private boolean a(tk paramtk)
-  {
-    AppMethodBeat.i(63856);
-    Log.i("MicroMsg.ScanMaterialCodeListener", "scan material code type: %s", new Object[] { Integer.valueOf(paramtk.dZQ.type) });
-    if ((paramtk.dZQ.aWF == null) || (paramtk.dZQ.aWF.get() == null))
+    AppMethodBeat.i(91250);
+    if (paramInt == 0)
     {
-      Log.i("MicroMsg.ScanMaterialCodeListener", "context has destroyed");
-      paramtk.dZQ.callback.run();
-      AppMethodBeat.o(63856);
-      return false;
-    }
-    Context localContext = (Context)paramtk.dZQ.aWF.get();
-    Object localObject;
-    if (paramtk.dZQ.type == 0)
-    {
-      this.jUV = h.a(localContext, false, null);
-      localObject = new k(paramtk.dZQ.dZS, paramtk.dZQ.scene);
-      g.azz().a(1800, new v.1(this, paramtk, localContext));
-      g.azz().a((q)localObject, 0);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(63856);
-      return false;
-      if (paramtk.dZQ.type == 1)
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.username == null)
       {
-        this.jUV = h.a(localContext, false, null);
-        localObject = new c(paramtk.dZQ.dZS, paramtk.dZQ.scene);
-        g.azz().a(2811, new v.2(this, paramtk, localContext));
-        g.azz().a((q)localObject, 0);
+        paramVarArgs = new b("Not all required fields were included: username");
+        AppMethodBeat.o(91250);
+        throw paramVarArgs;
       }
-      else
+      if (this.fww == null)
       {
-        Log.w("MicroMsg.ScanMaterialCodeListener", "unknown type: %d", new Object[] { Integer.valueOf(paramtk.dZQ.type) });
+        paramVarArgs = new b("Not all required fields were included: transactionId");
+        AppMethodBeat.o(91250);
+        throw paramVarArgs;
       }
+      if (this.fyc == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: feeType");
+        AppMethodBeat.o(91250);
+        throw paramVarArgs;
+      }
+      if (this.username != null) {
+        paramVarArgs.f(1, this.username);
+      }
+      if (this.fww != null) {
+        paramVarArgs.f(2, this.fww);
+      }
+      paramVarArgs.e(3, this.tVK);
+      if (this.fyc != null) {
+        paramVarArgs.f(4, this.fyc);
+      }
+      paramVarArgs.aY(5, this.dXr);
+      paramVarArgs.aY(6, this.scene);
+      paramVarArgs.aY(7, this.status);
+      if (this.jmB != null) {
+        paramVarArgs.f(8, this.jmB);
+      }
+      if (this.tVM != null) {
+        paramVarArgs.f(9, this.tVM);
+      }
+      paramVarArgs.aY(10, this.msgType);
+      if (this.type != null) {
+        paramVarArgs.f(11, this.type);
+      }
+      AppMethodBeat.o(91250);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.username == null) {
+        break label889;
+      }
+    }
+    label889:
+    for (paramInt = g.a.a.b.b.a.g(1, this.username) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.fww != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.fww);
+      }
+      i += g.a.a.b.b.a.gL(3) + 8;
+      paramInt = i;
+      if (this.fyc != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.fyc);
+      }
+      i = paramInt + g.a.a.b.b.a.bM(5, this.dXr) + g.a.a.b.b.a.bM(6, this.scene) + g.a.a.b.b.a.bM(7, this.status);
+      paramInt = i;
+      if (this.jmB != null) {
+        paramInt = i + g.a.a.b.b.a.g(8, this.jmB);
+      }
+      i = paramInt;
+      if (this.tVM != null) {
+        i = paramInt + g.a.a.b.b.a.g(9, this.tVM);
+      }
+      i += g.a.a.b.b.a.bM(10, this.msgType);
+      paramInt = i;
+      if (this.type != null) {
+        paramInt = i + g.a.a.b.b.a.g(11, this.type);
+      }
+      AppMethodBeat.o(91250);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
+        }
+        if (this.username == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: username");
+          AppMethodBeat.o(91250);
+          throw paramVarArgs;
+        }
+        if (this.fww == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: transactionId");
+          AppMethodBeat.o(91250);
+          throw paramVarArgs;
+        }
+        if (this.fyc == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: feeType");
+          AppMethodBeat.o(91250);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(91250);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        v localv = (v)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(91250);
+          return -1;
+        case 1: 
+          localv.username = locala.abFh.readString();
+          AppMethodBeat.o(91250);
+          return 0;
+        case 2: 
+          localv.fww = locala.abFh.readString();
+          AppMethodBeat.o(91250);
+          return 0;
+        case 3: 
+          localv.tVK = Double.longBitsToDouble(locala.abFh.AP());
+          AppMethodBeat.o(91250);
+          return 0;
+        case 4: 
+          localv.fyc = locala.abFh.readString();
+          AppMethodBeat.o(91250);
+          return 0;
+        case 5: 
+          localv.dXr = locala.abFh.AK();
+          AppMethodBeat.o(91250);
+          return 0;
+        case 6: 
+          localv.scene = locala.abFh.AK();
+          AppMethodBeat.o(91250);
+          return 0;
+        case 7: 
+          localv.status = locala.abFh.AK();
+          AppMethodBeat.o(91250);
+          return 0;
+        case 8: 
+          localv.jmB = locala.abFh.readString();
+          AppMethodBeat.o(91250);
+          return 0;
+        case 9: 
+          localv.tVM = locala.abFh.readString();
+          AppMethodBeat.o(91250);
+          return 0;
+        case 10: 
+          localv.msgType = locala.abFh.AK();
+          AppMethodBeat.o(91250);
+          return 0;
+        }
+        localv.type = locala.abFh.readString();
+        AppMethodBeat.o(91250);
+        return 0;
+      }
+      AppMethodBeat.o(91250);
+      return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.v
  * JD-Core Version:    0.7.0.1
  */

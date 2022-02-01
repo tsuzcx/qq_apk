@@ -1,78 +1,94 @@
 package com.tencent.mm.plugin.finder.profile.uic;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.cgi.bv;
-import com.tencent.mm.plugin.finder.cgi.cn;
+import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.api.d.a;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.cgi.bw;
+import com.tencent.mm.plugin.finder.cgi.by;
+import com.tencent.mm.plugin.finder.cgi.cr;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
 import com.tencent.mm.plugin.finder.loader.FinderAtFeedLoader;
-import com.tencent.mm.plugin.finder.model.bo;
+import com.tencent.mm.plugin.finder.model.bp;
+import com.tencent.mm.plugin.finder.model.bu;
 import com.tencent.mm.plugin.finder.profile.FinderProfileAtFeedFragment;
 import com.tencent.mm.plugin.finder.profile.FinderProfileFeedFragment;
 import com.tencent.mm.plugin.finder.profile.FinderProfileMegaVideoFragment;
-import com.tencent.mm.plugin.finder.report.k;
+import com.tencent.mm.plugin.finder.report.n;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.data.l.a;
+import com.tencent.mm.plugin.finder.storage.data.k;
+import com.tencent.mm.plugin.finder.storage.data.k.a;
+import com.tencent.mm.plugin.finder.storage.logic.c.a;
 import com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment;
-import com.tencent.mm.plugin.finder.upload.action.g.a;
-import com.tencent.mm.plugin.finder.utils.y;
+import com.tencent.mm.plugin.finder.upload.action.i.a;
 import com.tencent.mm.plugin.finder.view.FinderViewPager;
 import com.tencent.mm.plugin.finder.view.tabcomp.FinderTabProvider;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
+import com.tencent.mm.plugin.finder.view.tabcomp.e;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderTabUIC;
+import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
+import com.tencent.mm.protocal.protobuf.blm;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.view.HardTouchableLayout;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import kotlin.a.j;
 import kotlin.g.b.p;
+import kotlin.l;
 import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC;", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderTabUIC;", "activity", "Landroid/support/v7/app/AppCompatActivity;", "(Landroid/support/v7/app/AppCompatActivity;)V", "atFeedLoader", "Lcom/tencent/mm/plugin/finder/loader/FinderAtFeedLoader;", "checkMusicFirstPage", "", "isNoSeeAtTab", "()Z", "isPrivateAccount", "isSelf", "isSelf$delegate", "Lkotlin/Lazy;", "isSelfFlag", "isSelfFlag$delegate", "isSelfScene", "isSelfScene$delegate", "line", "Landroid/view/View;", "kotlin.jvm.PlatformType", "getLine", "()Landroid/view/View;", "line$delegate", "profileContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "getProfileContact", "()Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "selfUserName", "", "targetUsername", "username", "getUsername", "()Ljava/lang/String;", "username$delegate", "addAtFeedFragment", "", "addMegaVideoFragment", "addMusicFragment", "checkHasAtFeed", "checkHasMegaVideoItem", "checkFirstPage", "checkHasMusic", "checkMusicTab", "checkTabLayoutVisibility", "generateProvider", "Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC$Provider;", "getFragmentBy", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "T", "clazz", "Ljava/lang/Class;", "isEnableShowAtFeedFragment", "isPostingMvExist", "isShouldAddDraftTab", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "removeAtFeedFragment", "clearCache", "removeMegaVideoFragment", "removeMusicFragment", "Companion", "Provider", "Tab", "TabContainer", "TabViewAction", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC;", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderTabUIC;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "DEFAULT_APPID", "", "DEFAULT_APPURL", "atFeedLoader", "Lcom/tencent/mm/plugin/finder/loader/FinderAtFeedLoader;", "checkMusicFirstPage", "", "isNoSeeAtTab", "()Z", "isPrivateAccount", "isSelf", "isSelf$delegate", "Lkotlin/Lazy;", "isSelfFlag", "isSelfFlag$delegate", "isSelfScene", "isSelfScene$delegate", "line", "Landroid/view/View;", "kotlin.jvm.PlatformType", "getLine", "()Landroid/view/View;", "line$delegate", "profileContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "getProfileContact", "()Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "selfUserName", "showShopOpGuide", "targetUsername", "username", "getUsername", "()Ljava/lang/String;", "username$delegate", "addAtFeedFragment", "", "addMegaVideoFragment", "addMusicFragment", "checkHasAtFeed", "checkHasMegaVideoItem", "checkFirstPage", "checkHasMusic", "checkMusicTab", "checkShopOpGuide", "scene", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderGetWindowProducts;", "checkShopTab", "checkTabLayoutVisibility", "generateProvider", "Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC$Provider;", "getFragmentBy", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "T", "clazz", "Ljava/lang/Class;", "isAtFeedNotEmpty", "response", "Lcom/tencent/mm/plugin/finder/loader/FinderAtFeedLoader$FinderAtTimelineResponse;", "isEnableShowAtFeedFragment", "isPostingMvExist", "isShouldAddDraftTab", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "onShopGuideRightBtnClick", "appId", "appUrl", "removeAtFeedFragment", "clearCache", "removeMegaVideoFragment", "removeMusicFragment", "showShopOpGuideDialog", "Companion", "Provider", "Tab", "TabContainer", "TabViewAction", "plugin-finder_release"})
 public final class FinderProfileTabUIC
   extends FinderTabUIC
 {
-  public static final a vcI;
-  private final kotlin.f tZk;
-  private final kotlin.f tZl;
-  private final String tvp;
-  private final kotlin.f vag;
-  private boolean vcD;
-  private final kotlin.f vcE;
-  private final kotlin.f vcF;
-  private FinderAtFeedLoader vcG;
-  private final String vcH;
+  public static final a zTu;
+  private final kotlin.f xLz;
+  private final String xcW;
+  private final kotlin.f xjx;
+  private final kotlin.f zQp;
+  private boolean zTn;
+  private final kotlin.f zTo;
+  private final kotlin.f zTp;
+  private boolean zTq;
+  private final String zTr;
+  private final String zTs;
+  private final String zTt;
+  private FinderAtFeedLoader zsC;
   
   static
   {
-    AppMethodBeat.i(250494);
-    vcI = new a((byte)0);
-    AppMethodBeat.o(250494);
+    AppMethodBeat.i(285736);
+    zTu = new a((byte)0);
+    AppMethodBeat.o(285736);
   }
   
   public FinderProfileTabUIC(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(250493);
-    this.tZk = kotlin.g.ah((kotlin.g.a.a)new s(this));
-    this.tZl = kotlin.g.ah((kotlin.g.a.a)new k(this));
-    this.vag = kotlin.g.ah((kotlin.g.a.a)new j(this));
-    this.vcE = kotlin.g.ah((kotlin.g.a.a)new l(this));
-    this.vcF = kotlin.g.ah((kotlin.g.a.a)new m(paramAppCompatActivity));
-    Object localObject = new StringBuilder("[Provider] username=").append(getUsername()).append(" isSelf=").append(isSelf()).append(" isSelfFlag=").append(isSelfFlag()).append(" isNoSeeAtTab=").append(dnu()).append(" isPrivateAccount=").append(dnv()).append(" profileContact=");
+    AppMethodBeat.i(285735);
+    this.xLz = kotlin.g.ar((kotlin.g.a.a)new v(this));
+    this.xjx = kotlin.g.ar((kotlin.g.a.a)new l(this));
+    this.zQp = kotlin.g.ar((kotlin.g.a.a)new k(this));
+    this.zTo = kotlin.g.ar((kotlin.g.a.a)new m(this));
+    this.zTp = kotlin.g.ar((kotlin.g.a.a)new n(paramAppCompatActivity));
+    Object localObject = new StringBuilder("[Provider] username=").append(getUsername()).append(" isSelf=").append(isSelf()).append(" isSelfFlag=").append(isSelfFlag()).append(" isNoSeeAtTab=");
+    com.tencent.mm.plugin.finder.utils.aj localaj = com.tencent.mm.plugin.finder.utils.aj.AGc;
+    localObject = ((StringBuilder)localObject).append(com.tencent.mm.plugin.finder.utils.aj.aFN(getUsername())).append(" isPrivateAccount=").append(dOO()).append(" profileContact=");
     if (getProfileContact() != null) {}
     for (boolean bool = true;; bool = false)
     {
@@ -82,139 +98,161 @@ public final class FinderProfileTabUIC
       if (localObject == null) {
         paramAppCompatActivity = "";
       }
-      this.tvp = paramAppCompatActivity;
-      this.vcH = z.aUg();
-      AppMethodBeat.o(250493);
+      this.xcW = paramAppCompatActivity;
+      this.zTr = z.bdh();
+      this.zTs = "wx2bff878c51bab23b";
+      this.zTt = "pages/index/index";
+      AppMethodBeat.o(285735);
       return;
     }
   }
   
-  private final boolean dnA()
+  private boolean dOM()
   {
-    AppMethodBeat.i(250491);
-    if (!((Collection)com.tencent.mm.plugin.finder.storage.data.l.vGw.bc(14, this.tvp)).isEmpty())
-    {
-      AppMethodBeat.o(250491);
-      return true;
-    }
-    AppMethodBeat.o(250491);
-    return false;
-  }
-  
-  private boolean dns()
-  {
-    AppMethodBeat.i(250476);
-    boolean bool = ((Boolean)this.vcE.getValue()).booleanValue();
-    AppMethodBeat.o(250476);
+    AppMethodBeat.i(285717);
+    boolean bool = ((Boolean)this.zTo.getValue()).booleanValue();
+    AppMethodBeat.o(285717);
     return bool;
   }
   
-  private View dnt()
+  private View dON()
   {
-    AppMethodBeat.i(250477);
-    View localView = (View)this.vcF.getValue();
-    AppMethodBeat.o(250477);
+    AppMethodBeat.i(285718);
+    View localView = (View)this.zTp.getValue();
+    AppMethodBeat.o(285718);
     return localView;
   }
   
-  private boolean dnu()
+  private boolean dOO()
   {
-    AppMethodBeat.i(250479);
-    y localy = y.vXH;
-    boolean bool = y.awr(getUsername());
-    AppMethodBeat.o(250479);
+    AppMethodBeat.i(285720);
+    com.tencent.mm.plugin.finder.utils.aj localaj = com.tencent.mm.plugin.finder.utils.aj.AGc;
+    boolean bool = com.tencent.mm.plugin.finder.utils.aj.j(getProfileContact());
+    AppMethodBeat.o(285720);
     return bool;
   }
   
-  private boolean dnv()
+  private final boolean dOP()
   {
-    AppMethodBeat.i(250480);
-    y localy = y.vXH;
-    boolean bool = y.i(getProfileContact());
-    AppMethodBeat.o(250480);
-    return bool;
-  }
-  
-  private final boolean dnw()
-  {
-    AppMethodBeat.i(250481);
-    if ((!dns()) || (dnu()))
+    AppMethodBeat.i(285721);
+    if (!dOM())
     {
-      if (!dns()) {
-        if (dnv())
-        {
-          if (dnv())
-          {
-            g.a locala = com.tencent.mm.plugin.finder.upload.action.g.vUn;
-            if (!com.tencent.mm.plugin.finder.upload.action.g.dBr().asJ(this.tvp)) {}
-          }
+      if (dOM()) {
+        break label59;
+      }
+      if (dOO())
+      {
+        if (!dOO()) {
+          break label59;
         }
-        else if (dnu()) {}
+        i.a locala = com.tencent.mm.plugin.finder.upload.action.i.ACa;
+        if (!com.tencent.mm.plugin.finder.upload.action.i.ecE().aAN(this.xcW)) {
+          break label59;
+        }
       }
     }
-    else
-    {
-      AppMethodBeat.o(250481);
-      return true;
-    }
-    AppMethodBeat.o(250481);
+    AppMethodBeat.o(285721);
+    return true;
+    label59:
+    AppMethodBeat.o(285721);
     return false;
   }
   
-  private final void dnz()
+  private final void dOR()
   {
-    AppMethodBeat.i(250486);
-    com.tencent.mm.ac.d.h((kotlin.g.a.a)new f(this));
-    AppMethodBeat.o(250486);
+    AppMethodBeat.i(285724);
+    Object localObject = com.tencent.mm.plugin.finder.storage.d.AjH;
+    if (!com.tencent.mm.plugin.finder.storage.d.dXH())
+    {
+      AppMethodBeat.o(285724);
+      return;
+    }
+    h.aGY().a(5244, (com.tencent.mm.an.i)new j(this));
+    localObject = this.xcW;
+    com.tencent.mm.ui.component.g localg = com.tencent.mm.ui.component.g.Xox;
+    localObject = new bw((String)localObject, null, ((com.tencent.mm.plugin.finder.viewmodel.component.aj)com.tencent.mm.ui.component.g.b(getActivity()).i(com.tencent.mm.plugin.finder.viewmodel.component.aj.class)).ekY());
+    h.aGY().b((com.tencent.mm.an.q)localObject);
+    AppMethodBeat.o(285724);
   }
   
-  private final com.tencent.mm.plugin.finder.api.g getProfileContact()
+  private final boolean dOT()
   {
-    AppMethodBeat.i(250478);
-    Object localObject = com.tencent.mm.plugin.finder.api.c.tsp;
-    localObject = com.tencent.mm.plugin.finder.api.c.a.asG(getUsername());
-    AppMethodBeat.o(250478);
+    AppMethodBeat.i(285727);
+    if ((isSelfFlag()) && (((PluginFinder)h.ag(PluginFinder.class)).getDraftStorage().getCount() > 0))
+    {
+      AppMethodBeat.o(285727);
+      return true;
+    }
+    AppMethodBeat.o(285727);
+    return false;
+  }
+  
+  private final void dOU()
+  {
+    AppMethodBeat.i(285728);
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new f(this));
+    AppMethodBeat.o(285728);
+  }
+  
+  private final boolean dOV()
+  {
+    AppMethodBeat.i(285733);
+    if (!((Collection)k.Anu.bc(14, this.xcW)).isEmpty())
+    {
+      AppMethodBeat.o(285733);
+      return true;
+    }
+    AppMethodBeat.o(285733);
+    return false;
+  }
+  
+  private final com.tencent.mm.plugin.finder.api.i getProfileContact()
+  {
+    AppMethodBeat.i(285719);
+    Object localObject = com.tencent.mm.plugin.finder.api.d.wZQ;
+    localObject = d.a.aAK(getUsername());
+    AppMethodBeat.o(285719);
     return localObject;
   }
   
-  private final boolean nS(boolean paramBoolean)
+  private final boolean qc(boolean paramBoolean)
   {
-    AppMethodBeat.i(250489);
-    Object localObject = com.tencent.mm.plugin.finder.storage.c.vCb;
-    if (((Number)com.tencent.mm.plugin.finder.storage.c.dvJ().value()).intValue() != 1)
+    AppMethodBeat.i(285731);
+    Object localObject = com.tencent.mm.plugin.finder.storage.d.AjH;
+    if (((Number)com.tencent.mm.plugin.finder.storage.d.dWj().aSr()).intValue() != 1)
     {
-      AppMethodBeat.o(250489);
+      AppMethodBeat.o(285731);
       return false;
     }
     int i;
     if (paramBoolean)
     {
-      if (!((Collection)com.tencent.mm.plugin.finder.storage.data.l.vGw.bc(13, this.tvp)).isEmpty()) {}
+      if (!((Collection)k.Anu.bc(13, this.xcW)).isEmpty()) {}
       for (i = 1; i != 0; i = 0)
       {
         Log.i("Finder.FinderProfileTabUIC", "checkHasMegaVideoItem: has mega video first page data");
-        AppMethodBeat.o(250489);
+        AppMethodBeat.o(285731);
         return true;
       }
     }
-    if (!dns())
+    if (!dOM())
     {
-      AppMethodBeat.o(250489);
+      AppMethodBeat.o(285731);
       return false;
     }
-    localObject = com.tencent.mm.plugin.finder.storage.logic.c.vGN;
-    localObject = com.tencent.mm.plugin.finder.storage.logic.c.a.af(this.tvp, 0, 2147483647);
+    localObject = com.tencent.mm.plugin.finder.storage.logic.c.AnK;
+    localObject = c.a.ai(this.xcW, 0, 2147483647);
     if (!((Collection)localObject).isEmpty())
     {
       i = 1;
       if (i == 0) {
-        break label196;
+        break label198;
       }
     }
     for (;;)
     {
       if (localObject == null) {
-        break label201;
+        break label203;
       }
       localObject = ((Iterable)localObject).iterator();
       do
@@ -224,22 +262,22 @@ public final class FinderProfileTabUIC
         }
       } while (!((FinderItem)((Iterator)localObject).next()).isLongVideo());
       Log.i("Finder.FinderProfileTabUIC", "checkHasMegaVideoItem: has posting mega video");
-      AppMethodBeat.o(250489);
+      AppMethodBeat.o(285731);
       return true;
       i = 0;
       break;
-      label196:
+      label198:
       localObject = null;
     }
-    label201:
-    AppMethodBeat.o(250489);
+    label203:
+    AppMethodBeat.o(285731);
     return false;
   }
   
-  public final <T extends FinderHomeTabFragment> FinderHomeTabFragment aN(Class<T> paramClass)
+  public final <T extends FinderHomeTabFragment> FinderHomeTabFragment aK(Class<T> paramClass)
   {
-    AppMethodBeat.i(250492);
-    p.h(paramClass, "clazz");
+    AppMethodBeat.i(285734);
+    p.k(paramClass, "clazz");
     Iterator localIterator = ((Iterable)getFragments()).iterator();
     Object localObject;
     do
@@ -248,94 +286,87 @@ public final class FinderProfileTabUIC
         break;
       }
       localObject = localIterator.next();
-    } while (!p.j(((FinderHomeTabFragment)localObject).getClass(), paramClass));
+    } while (!p.h(((FinderHomeTabFragment)localObject).getClass(), paramClass));
     for (paramClass = localObject;; paramClass = null)
     {
       if (paramClass == null) {
-        p.hyc();
+        p.iCn();
       }
       paramClass = (FinderHomeTabFragment)paramClass;
-      AppMethodBeat.o(250492);
+      AppMethodBeat.o(285734);
       return paramClass;
     }
   }
   
-  public final void dnx()
+  public final void dOQ()
   {
-    AppMethodBeat.i(250483);
-    super.dnx();
-    Object localObject = getTabContainer().dHK();
+    AppMethodBeat.i(285723);
+    super.dOQ();
+    Object localObject = getTabContainer().ejV();
     if ((localObject != null) && (((HardTouchableLayout)localObject).getVisibility() == 0))
     {
-      localObject = dnt();
+      localObject = dON();
       if (localObject != null)
       {
         ((View)localObject).setVisibility(0);
-        AppMethodBeat.o(250483);
+        AppMethodBeat.o(285723);
         return;
       }
-      AppMethodBeat.o(250483);
+      AppMethodBeat.o(285723);
       return;
     }
-    localObject = dnt();
+    localObject = dON();
     if (localObject != null)
     {
       ((View)localObject).setVisibility(8);
-      AppMethodBeat.o(250483);
+      AppMethodBeat.o(285723);
       return;
     }
-    AppMethodBeat.o(250483);
+    AppMethodBeat.o(285723);
   }
   
-  public final void dny()
+  public final void dOS()
   {
-    AppMethodBeat.i(250484);
-    com.tencent.mm.plugin.finder.storage.c localc = com.tencent.mm.plugin.finder.storage.c.vCb;
-    if (((Number)com.tencent.mm.plugin.finder.storage.c.dvJ().value()).intValue() != 1)
+    AppMethodBeat.i(285725);
+    com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.AjH;
+    if (((Number)com.tencent.mm.plugin.finder.storage.d.dWj().aSr()).intValue() != 1)
     {
-      AppMethodBeat.o(250484);
+      AppMethodBeat.o(285725);
       return;
     }
-    com.tencent.mm.ac.d.h((kotlin.g.a.a)new g(this));
-    AppMethodBeat.o(250484);
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new g(this));
+    AppMethodBeat.o(285725);
   }
   
   public final String getUsername()
   {
-    AppMethodBeat.i(250473);
-    String str = (String)this.tZk.getValue();
-    AppMethodBeat.o(250473);
+    AppMethodBeat.i(285714);
+    String str = (String)this.xLz.getValue();
+    AppMethodBeat.o(285714);
     return str;
   }
   
   public final boolean isSelf()
   {
-    AppMethodBeat.i(250475);
-    boolean bool = ((Boolean)this.vag.getValue()).booleanValue();
-    AppMethodBeat.o(250475);
+    AppMethodBeat.i(285716);
+    boolean bool = ((Boolean)this.zQp.getValue()).booleanValue();
+    AppMethodBeat.o(285716);
     return bool;
   }
   
   public final boolean isSelfFlag()
   {
-    AppMethodBeat.i(250474);
-    boolean bool = ((Boolean)this.tZl.getValue()).booleanValue();
-    AppMethodBeat.o(250474);
+    AppMethodBeat.i(285715);
+    boolean bool = ((Boolean)this.xjx.getValue()).booleanValue();
+    AppMethodBeat.o(285715);
     return bool;
-  }
-  
-  public final void nR(final boolean paramBoolean)
-  {
-    AppMethodBeat.i(250487);
-    com.tencent.mm.ac.d.h((kotlin.g.a.a)new q(this, paramBoolean));
-    AppMethodBeat.o(250487);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(250482);
+    AppMethodBeat.i(285722);
     super.onCreate(paramBundle);
-    paramBundle = this.uO;
+    paramBundle = ejW();
     if ((paramBundle instanceof FinderViewPager)) {
       ((FinderViewPager)paramBundle).setEnableViewPagerScroll(true);
     }
@@ -344,44 +375,45 @@ public final class FinderProfileTabUIC
     }
     for (;;)
     {
-      if (!nS(true))
+      if (!qc(true))
       {
         Log.i("Finder.FinderProfileTabUIC", "onCreate: do not have mega video item, remove the tab");
-        nR(false);
+        qb(false);
       }
-      if ((dnw()) && (!dnA()))
+      if ((dOP()) && (!dOV()))
       {
         Log.i("Finder.FinderProfileTabUIC", "onCreate: do not have at item, remove the tab");
-        com.tencent.mm.ac.d.h((kotlin.g.a.a)new p(this));
-        paramBundle = new FinderAtFeedLoader(com.tencent.mm.plugin.finder.feed.model.internal.e.tYz, this.tvp, null);
-        paramBundle.tVa = ((kotlin.g.a.b)new n(this));
-        this.vcG = paramBundle;
-        paramBundle = this.vcG;
+        com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new q(this));
+        paramBundle = new FinderAtFeedLoader(com.tencent.mm.plugin.finder.feed.model.internal.g.xKD, this.xcW, null);
+        paramBundle.xGJ = ((kotlin.g.a.b)new o(this));
+        this.zsC = paramBundle;
+        paramBundle = this.zsC;
         if (paramBundle != null) {
           paramBundle.onAlive();
         }
-        paramBundle = this.vcG;
+        paramBundle = this.zsC;
         if (paramBundle != null) {
           paramBundle.requestRefresh();
         }
       }
-      paramBundle = com.tencent.mm.plugin.finder.storage.c.vCb;
-      if ((((Number)com.tencent.mm.plugin.finder.storage.c.dvJ().value()).intValue() == 1) && (!MJ(105)))
+      paramBundle = com.tencent.mm.plugin.finder.storage.d.AjH;
+      if ((((Number)com.tencent.mm.plugin.finder.storage.d.dWj().aSr()).intValue() == 1) && (!Sd(105)))
       {
-        com.tencent.mm.kernel.g.azz().a(3736, (i)new o(this));
-        paramBundle = com.tencent.mm.kernel.g.azz();
-        localObject = this.tvp;
-        locala = com.tencent.mm.ui.component.a.PRN;
-        paramBundle.b((com.tencent.mm.ak.q)new cn((String)localObject, 0L, null, 0, ((FinderReporterUIC)com.tencent.mm.ui.component.a.b(getActivity()).get(FinderReporterUIC.class)).dIx(), 1, 0L, 64));
+        h.aGY().a(3736, (com.tencent.mm.an.i)new p(this));
+        paramBundle = h.aGY();
+        localObject = this.xcW;
+        localg = com.tencent.mm.ui.component.g.Xox;
+        paramBundle.b((com.tencent.mm.an.q)new cr((String)localObject, 0L, null, 0, ((com.tencent.mm.plugin.finder.viewmodel.component.aj)com.tencent.mm.ui.component.g.b(getActivity()).i(com.tencent.mm.plugin.finder.viewmodel.component.aj.class)).ekY(), 1, 0L, 64));
       }
-      com.tencent.mm.kernel.g.azz().a(6628, (i)new i(this));
-      paramBundle = this.tvp;
-      Object localObject = this.vcH;
-      com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.PRN;
-      paramBundle = new bv(paramBundle, (String)localObject, null, 0, ((FinderReporterUIC)com.tencent.mm.ui.component.a.b(getActivity()).get(FinderReporterUIC.class)).dIx());
-      com.tencent.mm.kernel.g.azz().b((com.tencent.mm.ak.q)paramBundle);
-      dnx();
-      AppMethodBeat.o(250482);
+      h.aGY().a(6628, (com.tencent.mm.an.i)new i(this));
+      paramBundle = this.xcW;
+      Object localObject = this.zTr;
+      com.tencent.mm.ui.component.g localg = com.tencent.mm.ui.component.g.Xox;
+      paramBundle = new by(paramBundle, (String)localObject, null, 0, ((com.tencent.mm.plugin.finder.viewmodel.component.aj)com.tencent.mm.ui.component.g.b(getActivity()).i(com.tencent.mm.plugin.finder.viewmodel.component.aj.class)).ekY());
+      h.aGY().b((com.tencent.mm.an.q)paramBundle);
+      dOR();
+      dOQ();
+      AppMethodBeat.o(285722);
       return;
       paramBundle = ((Iterable)getFragments()).iterator();
       int i = 0;
@@ -389,10 +421,10 @@ public final class FinderProfileTabUIC
       {
         localObject = paramBundle.next();
         if (i < 0) {
-          j.hxH();
+          j.iBO();
         }
         if (((FinderHomeTabFragment)localObject instanceof FinderProfileAtFeedFragment)) {
-          aw(i, false);
+          aA(i, false);
         }
         i += 1;
       }
@@ -402,10 +434,10 @@ public final class FinderProfileTabUIC
       {
         localObject = paramBundle.next();
         if (i < 0) {
-          j.hxH();
+          j.iBO();
         }
         if (((FinderHomeTabFragment)localObject instanceof FinderProfileMegaVideoFragment)) {
-          aw(i, false);
+          aA(i, false);
         }
         i += 1;
       }
@@ -415,10 +447,10 @@ public final class FinderProfileTabUIC
       {
         localObject = paramBundle.next();
         if (i < 0) {
-          j.hxH();
+          j.iBO();
         }
         if (((FinderHomeTabFragment)localObject instanceof FinderProfileMusicFragment)) {
-          aw(i, false);
+          aA(i, false);
         }
         i += 1;
       }
@@ -428,10 +460,10 @@ public final class FinderProfileTabUIC
       {
         localObject = paramBundle.next();
         if (i < 0) {
-          j.hxH();
+          j.iBO();
         }
         if (((FinderHomeTabFragment)localObject instanceof FinderProfileDraftFragment)) {
-          aw(i, false);
+          aA(i, false);
         }
         i += 1;
       }
@@ -440,21 +472,21 @@ public final class FinderProfileTabUIC
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(250490);
+    AppMethodBeat.i(285732);
     super.onDestroy();
-    FinderAtFeedLoader localFinderAtFeedLoader = this.vcG;
+    FinderAtFeedLoader localFinderAtFeedLoader = this.zsC;
     if (localFinderAtFeedLoader != null)
     {
       localFinderAtFeedLoader.onDead();
-      AppMethodBeat.o(250490);
+      AppMethodBeat.o(285732);
       return;
     }
-    AppMethodBeat.o(250490);
+    AppMethodBeat.o(285732);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(250488);
+    AppMethodBeat.i(285730);
     super.onResume();
     Iterator localIterator = getFragments().iterator();
     int i = 0;
@@ -463,79 +495,118 @@ public final class FinderProfileTabUIC
       {
         label46:
         if (i < 0) {
-          break label111;
+          break label217;
         }
-        if (!dnw()) {
-          gx(i, -1);
+        if (!dOP()) {
+          FinderTabUIC.c(this, i);
+        }
+        label62:
+        if ((!Sd(105)) && (qc(false)))
+        {
+          Log.i("Finder.FinderProfileTabUIC", "onResume: add long video tab back because of local item");
+          dOS();
+        }
+        localIterator = getFragments().iterator();
+        i = 0;
+        label104:
+        if (!localIterator.hasNext()) {
+          break label245;
+        }
+        if (!((FinderHomeTabFragment)localIterator.next() instanceof FinderProfileDraftFragment)) {
+          break label238;
         }
       }
     }
     for (;;)
     {
-      if ((!MJ(105)) && (nS(false)))
-      {
-        Log.i("Finder.FinderProfileTabUIC", "onResume: add long video tab back because of local item");
-        dny();
+      if ((i < 0) && (dOT())) {
+        FinderTabUIC.a(this, (com.tencent.mm.plugin.finder.view.tabcomp.a)new c(b.j.finder_profile_draft_tab_name), (FinderHomeTabFragment)new FinderProfileDraftFragment());
       }
-      AppMethodBeat.o(250488);
+      if ((isSelf()) && (this.zTq))
+      {
+        Log.i("Finder.FinderProfileTabUIC", "checkShopTab after showShopOpGuide!");
+        this.zTq = false;
+        dOR();
+      }
+      AppMethodBeat.o(285730);
       return;
       i += 1;
       break;
       i = -1;
       break label46;
-      label111:
-      if ((dnw()) && (dnA())) {
-        dnz();
+      label217:
+      if ((!dOP()) || (!dOV())) {
+        break label62;
       }
+      dOU();
+      break label62;
+      label238:
+      i += 1;
+      break label104;
+      label245:
+      i = -1;
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public final void qb(final boolean paramBoolean)
+  {
+    AppMethodBeat.i(285729);
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new r(this, paramBoolean));
+    AppMethodBeat.o(285729);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC$Provider;", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderTabProvider;", "(Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC;)V", "isDynamic", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC$Provider;", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderTabProvider;", "(Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC;)V", "isDynamic", "", "plugin-finder_release"})
   public final class b
     extends FinderTabProvider
   {
     public b()
     {
-      AppMethodBeat.i(250454);
+      AppMethodBeat.i(292003);
       setTabContainer((com.tencent.mm.plugin.finder.view.tabcomp.g)new FinderProfileTabUIC.d());
       setTabViewAction((com.tencent.mm.plugin.finder.view.tabcomp.f)new FinderProfileTabUIC.e());
-      boolean bool = FinderProfileTabUIC.dnB();
+      boolean bool = FinderProfileTabUIC.b(this$1);
       this$1 = new LinkedList();
-      this$1.add(new FinderProfileTabUIC.c(2131760537));
-      com.tencent.mm.plugin.finder.storage.c localc = com.tencent.mm.plugin.finder.storage.c.vCb;
-      if (((Number)com.tencent.mm.plugin.finder.storage.c.dvJ().value()).intValue() == 1) {
-        this$1.add(new FinderProfileTabUIC.c(2131760617));
+      this$1.add(new FinderProfileTabUIC.c(b.j.finder_self_profile_feed_title));
+      Object localObject = com.tencent.mm.plugin.finder.storage.d.AjH;
+      if (((Number)com.tencent.mm.plugin.finder.storage.d.dWj().aSr()).intValue() == 1) {
+        this$1.add(new FinderProfileTabUIC.c(b.j.finder_tab_title_long_video));
       }
-      if (FinderProfileTabUIC.b(this.vcJ)) {
-        this$1.add(new FinderProfileTabUIC.c(2131760535));
+      if (FinderProfileTabUIC.c(this.zTv)) {
+        this$1.add(new FinderProfileTabUIC.c(b.j.finder_self_profile_care_feed_title));
       }
-      if (FinderProfileTabUIC.c(this.vcJ)) {
-        this$1.add(new FinderProfileTabUIC.c(2131760472));
+      if (FinderProfileTabUIC.d(this.zTv)) {
+        this$1.add(new FinderProfileTabUIC.c(b.j.finder_profile_music_tab_name));
       }
-      if ((this.vcJ.isSelf()) && (bool)) {
-        this$1.add(new FinderProfileTabUIC.c(2131760460));
+      if ((this.zTv.isSelf()) && (bool)) {
+        this$1.add(new FinderProfileTabUIC.c(b.j.finder_profile_draft_tab_name));
       }
       setTabs((List)this$1);
       this$1 = new LinkedList();
       this$1.add(new FinderProfileFeedFragment());
-      localc = com.tencent.mm.plugin.finder.storage.c.vCb;
-      if (((Number)com.tencent.mm.plugin.finder.storage.c.dvJ().value()).intValue() == 1) {
+      localObject = com.tencent.mm.plugin.finder.storage.d.AjH;
+      if (((Number)com.tencent.mm.plugin.finder.storage.d.dWj().aSr()).intValue() == 1) {
         this$1.add(new FinderProfileMegaVideoFragment());
       }
-      if (FinderProfileTabUIC.b(this.vcJ)) {
+      if (FinderProfileTabUIC.c(this.zTv)) {
         this$1.add(new FinderProfileAtFeedFragment());
       }
-      if (FinderProfileTabUIC.c(this.vcJ)) {
+      if (FinderProfileTabUIC.d(this.zTv))
+      {
         this$1.add(new FinderProfileMusicFragment());
+        localObject = com.tencent.mm.ui.component.g.Xox;
+        f.a((f)com.tencent.mm.ui.component.g.b(this.zTv.getActivity()).i(f.class), "mvtab", 0, null, 6);
       }
-      if ((this.vcJ.isSelf()) && (bool)) {
+      if ((this.zTv.isSelf()) && (bool))
+      {
         this$1.add(new FinderProfileDraftFragment());
+        localObject = com.tencent.mm.ui.component.g.Xox;
+        f.a((f)com.tencent.mm.ui.component.g.b(this.zTv.getActivity()).i(f.class), "drafttab", 0, null, 6);
       }
       setFragments((List)this$1);
-      AppMethodBeat.o(250454);
+      AppMethodBeat.o(292003);
     }
     
     public final boolean isDynamic()
@@ -544,71 +615,83 @@ public final class FinderProfileTabUIC
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC$Tab;", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderTab;", "titleId", "", "(I)V", "getTitleId", "()I", "firstValidSelect", "", "tabView", "Landroid/view/ViewGroup;", "getLayoutId", "getTabMargin", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC$Tab;", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderTab;", "titleId", "", "(I)V", "getTitleId", "()I", "firstValidSelect", "", "tabView", "Landroid/view/ViewGroup;", "getLayoutId", "getTabMargin", "", "plugin-finder_release"})
   public static final class c
     extends com.tencent.mm.plugin.finder.view.tabcomp.c
   {
-    private final int uQk;
+    private final int zDq;
     
     public c(int paramInt)
     {
       super();
-      this.uQk = paramInt;
+      this.zDq = paramInt;
     }
     
-    public final int[] cXC()
+    public final int[] dmU()
     {
       return new int[] { 0, 6 };
     }
     
     public final int getLayoutId()
     {
-      return 2131494595;
+      return b.g.finder_profile_normal_tab_text;
     }
     
-    public final void t(ViewGroup paramViewGroup)
+    public final void y(ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(250455);
-      p.h(paramViewGroup, "tabView");
-      super.t(paramViewGroup);
-      long l;
-      if (this.uQk == 2131759526)
+      com.tencent.mm.ui.component.g localg = null;
+      AppMethodBeat.i(263847);
+      p.k(paramViewGroup, "tabView");
+      super.y(paramViewGroup);
+      int i = this.zDq;
+      if (i == b.j.finder_activity_title)
       {
         Object localObject = paramViewGroup.getContext();
         if (localObject == null)
         {
           paramViewGroup = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-          AppMethodBeat.o(250455);
+          AppMethodBeat.o(263847);
           throw paramViewGroup;
         }
         localObject = ((MMActivity)localObject).getIntent().getStringExtra("finder_username");
-        k localk = k.vfA;
-        if (!p.j(localObject, z.aUg())) {
-          break label134;
-        }
-        l = 1L;
-        localObject = FinderReporterUIC.wzC;
-        paramViewGroup = paramViewGroup.getContext();
-        p.g(paramViewGroup, "tabView.context");
-        paramViewGroup = FinderReporterUIC.a.fH(paramViewGroup);
-        if (paramViewGroup == null) {
-          break label139;
+        n localn = n.zWF;
+        if (p.h(localObject, z.bdh())) {}
+        for (long l = 1L;; l = 0L)
+        {
+          localObject = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
+          paramViewGroup = paramViewGroup.getContext();
+          p.j(paramViewGroup, "tabView.context");
+          localObject = aj.a.fZ(paramViewGroup);
+          paramViewGroup = localg;
+          if (localObject != null) {
+            paramViewGroup = ((com.tencent.mm.plugin.finder.viewmodel.component.aj)localObject).ekY();
+          }
+          n.a(l, "2", 3L, "", paramViewGroup);
+          AppMethodBeat.o(263847);
+          return;
         }
       }
-      label134:
-      label139:
-      for (paramViewGroup = paramViewGroup.dIx();; paramViewGroup = null)
+      if (i == b.j.finder_profile_music_tab_name)
       {
-        k.a(l, "2", 3L, "", paramViewGroup);
-        AppMethodBeat.o(250455);
+        localg = com.tencent.mm.ui.component.g.Xox;
+        paramViewGroup = paramViewGroup.getContext();
+        p.j(paramViewGroup, "tabView.context");
+        f.a((f)com.tencent.mm.ui.component.g.lm(paramViewGroup).i(f.class), "mvtab", 1, null, 4);
+        AppMethodBeat.o(263847);
         return;
-        l = 0L;
-        break;
       }
+      if (i == b.j.finder_profile_draft_tab_name)
+      {
+        localg = com.tencent.mm.ui.component.g.Xox;
+        paramViewGroup = paramViewGroup.getContext();
+        p.j(paramViewGroup, "tabView.context");
+        f.a((f)com.tencent.mm.ui.component.g.lm(paramViewGroup).i(f.class), "drafttab", 1, null, 4);
+      }
+      AppMethodBeat.o(263847);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC$TabContainer;", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderTabContainer;", "()V", "getBackBtn", "Landroid/view/View;", "getLayoutId", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC$TabContainer;", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderTabContainer;", "()V", "getBackBtn", "Landroid/view/View;", "getLayoutId", "", "plugin-finder_release"})
   public static final class d
     extends com.tencent.mm.plugin.finder.view.tabcomp.d
   {
@@ -619,36 +702,36 @@ public final class FinderProfileTabUIC
     
     public final int getLayoutId()
     {
-      return 2131494600;
+      return b.g.finder_profile_ui;
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC$TabViewAction;", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderTabViewAction;", "()V", "onTabSelected", "", "context", "Landroid/content/Context;", "tab", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderBaseTab;", "onTabUnSelected", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC$TabViewAction;", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderTabViewAction;", "()V", "onTabSelected", "", "context", "Landroid/content/Context;", "tab", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderBaseTab;", "onTabUnSelected", "plugin-finder_release"})
   public static final class e
-    extends com.tencent.mm.plugin.finder.view.tabcomp.e
+    extends e
   {
     public final void a(Context paramContext, com.tencent.mm.plugin.finder.view.tabcomp.a parama)
     {
-      AppMethodBeat.i(250456);
-      p.h(paramContext, "context");
-      p.h(parama, "tab");
+      AppMethodBeat.i(266034);
+      p.k(paramContext, "context");
+      p.k(parama, "tab");
       super.a(paramContext, parama);
-      parama.pd(true);
-      AppMethodBeat.o(250456);
+      parama.rx(true);
+      AppMethodBeat.o(266034);
     }
     
     public final void b(Context paramContext, com.tencent.mm.plugin.finder.view.tabcomp.a parama)
     {
-      AppMethodBeat.i(250457);
-      p.h(paramContext, "context");
-      p.h(parama, "tab");
+      AppMethodBeat.i(266035);
+      p.k(paramContext, "context");
+      p.k(parama, "tab");
       super.b(paramContext, parama);
-      parama.pd(false);
-      AppMethodBeat.o(250457);
+      parama.rx(false);
+      AppMethodBeat.o(266035);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class f
     extends kotlin.g.b.q
     implements kotlin.g.a.a<x>
@@ -659,7 +742,7 @@ public final class FinderProfileTabUIC
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class g
     extends kotlin.g.b.q
     implements kotlin.g.a.a<x>
@@ -670,7 +753,7 @@ public final class FinderProfileTabUIC
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class h
     extends kotlin.g.b.q
     implements kotlin.g.a.a<x>
@@ -681,19 +764,19 @@ public final class FinderProfileTabUIC
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC$checkMusicTab$1", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC$checkMusicTab$1", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
   public static final class i
-    implements i
+    implements com.tencent.mm.an.i
   {
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
     {
-      AppMethodBeat.i(250461);
-      com.tencent.mm.kernel.g.azz().b(6628, (i)this);
-      if ((paramq instanceof bv))
+      AppMethodBeat.i(227502);
+      h.aGY().b(6628, (com.tencent.mm.an.i)this);
+      if ((paramq instanceof by))
       {
-        if ((p.j(((bv)paramq).sBN, FinderProfileTabUIC.d(this.vcJ)) ^ true))
+        if ((p.h(((by)paramq).whH, FinderProfileTabUIC.e(this.zTv)) ^ true))
         {
-          AppMethodBeat.o(250461);
+          AppMethodBeat.o(227502);
           return;
         }
         if (paramInt1 == 0)
@@ -701,51 +784,93 @@ public final class FinderProfileTabUIC
           if (paramInt2 == -1234)
           {
             Log.i("Finder.FinderProfileTabUIC", "onSceneEnd: add music tab MM_ERR_DROP_CGI_BY_BUSINESS");
-            FinderProfileTabUIC.f(this.vcJ);
-            AppMethodBeat.o(250461);
+            FinderProfileTabUIC.i(this.zTv);
+            AppMethodBeat.o(227502);
             return;
           }
           if (paramInt2 == 0)
           {
-            if (!((Collection)((bv)paramq).cYL()).isEmpty()) {}
+            if (!((Collection)((by)paramq).doA()).isEmpty()) {}
             for (paramInt1 = 1; paramInt1 != 0; paramInt1 = 0)
             {
               Log.i("Finder.FinderProfileTabUIC", "onSceneEnd: add music tab items not empty");
-              FinderProfileTabUIC.f(this.vcJ);
-              AppMethodBeat.o(250461);
+              FinderProfileTabUIC.i(this.zTv);
+              AppMethodBeat.o(227502);
               return;
             }
-            if ((p.j(FinderProfileTabUIC.d(this.vcJ), FinderProfileTabUIC.g(this.vcJ))) && (FinderProfileTabUIC.h(this.vcJ)))
+            if ((p.h(FinderProfileTabUIC.e(this.zTv), FinderProfileTabUIC.j(this.zTv))) && (FinderProfileTabUIC.k(this.zTv)))
             {
               Log.i("Finder.FinderProfileTabUIC", "onSceneEnd: add music tab self mv posting");
-              FinderProfileTabUIC.f(this.vcJ);
-              AppMethodBeat.o(250461);
+              FinderProfileTabUIC.i(this.zTv);
+              AppMethodBeat.o(227502);
               return;
             }
-            if (((bv)paramq).cYL().isEmpty())
+            if (((by)paramq).doA().isEmpty())
             {
               Log.i("Finder.FinderProfileTabUIC", "onSceneEnd: remove music tab items  empty");
-              FinderProfileTabUIC.a(this.vcJ);
+              FinderProfileTabUIC.a(this.zTv);
             }
           }
         }
       }
-      AppMethodBeat.o(250461);
+      AppMethodBeat.o(227502);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
-  static final class j
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<Boolean>
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC$checkShopTab$1", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+  public static final class j
+    implements com.tencent.mm.an.i
   {
-    j(FinderProfileTabUIC paramFinderProfileTabUIC)
+    public final void onSceneEnd(int paramInt1, int paramInt2, final String paramString, final com.tencent.mm.an.q paramq)
     {
-      super();
+      AppMethodBeat.i(268717);
+      h.aGY().b(5244, (com.tencent.mm.an.i)this);
+      if ((paramq instanceof bw))
+      {
+        if ((p.h(((bw)paramq).finderUsername, FinderProfileTabUIC.e(this.zTv)) ^ true))
+        {
+          AppMethodBeat.o(268717);
+          return;
+        }
+        if ((paramInt1 == 0) && (paramInt2 == 0))
+        {
+          FinderProfileTabUIC.a(this.zTv, (bw)paramq);
+          Object localObject = (Iterable)((bw)paramq).doz();
+          paramString = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
+          localObject = ((Iterable)localObject).iterator();
+          while (((Iterator)localObject).hasNext()) {
+            paramString.add(new bp((blm)((Iterator)localObject).next()));
+          }
+          paramString = (List)paramString;
+          if (((Collection)paramString).isEmpty()) {
+            break label198;
+          }
+        }
+      }
+      label198:
+      for (paramInt1 = 1;; paramInt1 = 0)
+      {
+        if (paramInt1 != 0) {
+          com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(this, paramString, paramq));
+        }
+        AppMethodBeat.o(268717);
+        return;
+      }
+    }
+    
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+    static final class a
+      extends kotlin.g.b.q
+      implements kotlin.g.a.a<x>
+    {
+      a(FinderProfileTabUIC.j paramj, List paramList, com.tencent.mm.an.q paramq)
+      {
+        super();
+      }
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class k
     extends kotlin.g.b.q
     implements kotlin.g.a.a<Boolean>
@@ -756,7 +881,7 @@ public final class FinderProfileTabUIC
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class l
     extends kotlin.g.b.q
     implements kotlin.g.a.a<Boolean>
@@ -767,92 +892,163 @@ public final class FinderProfileTabUIC
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class m
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<Boolean>
+  {
+    m(FinderProfileTabUIC paramFinderProfileTabUIC)
+    {
+      super();
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  static final class n
     extends kotlin.g.b.q
     implements kotlin.g.a.a<View>
   {
-    m(AppCompatActivity paramAppCompatActivity)
+    n(AppCompatActivity paramAppCompatActivity)
     {
       super();
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "invoke", "com/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC$onCreate$5$1"})
-  static final class n
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "invoke", "com/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC$onCreate$5$1"})
+  static final class o
     extends kotlin.g.b.q
-    implements kotlin.g.a.b<IResponse<bo>, x>
+    implements kotlin.g.a.b<IResponse<bu>, x>
   {
-    n(FinderProfileTabUIC paramFinderProfileTabUIC)
+    o(FinderProfileTabUIC paramFinderProfileTabUIC)
     {
       super();
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC$onCreate$6", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
-  public static final class o
-    implements i
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/profile/uic/FinderProfileTabUIC$onCreate$6", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+  public static final class p
+    implements com.tencent.mm.an.i
   {
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
     {
-      AppMethodBeat.i(250467);
-      com.tencent.mm.kernel.g.azz().b(3736, (i)this);
-      if ((paramq instanceof cn))
+      AppMethodBeat.i(287206);
+      h.aGY().b(3736, (com.tencent.mm.an.i)this);
+      if ((paramq instanceof cr))
       {
-        if ((p.j(((cn)paramq).tuH, FinderProfileTabUIC.d(this.vcJ)) ^ true))
+        if ((p.h(((cr)paramq).xcq, FinderProfileTabUIC.e(this.zTv)) ^ true))
         {
-          AppMethodBeat.o(250467);
+          AppMethodBeat.o(287206);
           return;
         }
-        if ((paramInt1 == 0) && (paramInt2 == 0) && (!Util.isNullOrNil(((cn)paramq).tvo)))
+        if ((paramInt1 == 0) && (paramInt2 == 0) && (!Util.isNullOrNil(((cr)paramq).xcV)))
         {
           Log.i("Finder.FinderProfileTabUIC", "onSceneEnd: add long video tab back");
-          this.vcJ.dny();
+          this.zTv.dOS();
         }
       }
-      AppMethodBeat.o(250467);
+      AppMethodBeat.o(287206);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
-  static final class p
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    p(FinderProfileTabUIC paramFinderProfileTabUIC)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class q
     extends kotlin.g.b.q
     implements kotlin.g.a.a<x>
   {
-    q(FinderProfileTabUIC paramFinderProfileTabUIC, boolean paramBoolean)
+    q(FinderProfileTabUIC paramFinderProfileTabUIC)
     {
       super();
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class r
     extends kotlin.g.b.q
     implements kotlin.g.a.a<x>
   {
-    r(FinderProfileTabUIC paramFinderProfileTabUIC)
+    r(FinderProfileTabUIC paramFinderProfileTabUIC, boolean paramBoolean)
     {
       super();
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class s
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<x>
+  {
+    s(FinderProfileTabUIC paramFinderProfileTabUIC)
+    {
+      super();
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onClick"})
+  static final class u
+    implements com.tencent.mm.ui.widget.a.g.a
+  {
+    u(FinderProfileTabUIC paramFinderProfileTabUIC, com.tencent.mm.ui.widget.a.g paramg) {}
+    
+    public final void onClick()
+    {
+      AppMethodBeat.i(288976);
+      Object localObject1 = h.aHG();
+      p.j(localObject1, "MMKernel.storage()");
+      localObject1 = ((com.tencent.mm.kernel.f)localObject1).aHp().get(ar.a.Vyv, "");
+      if (localObject1 == null)
+      {
+        localObject1 = new kotlin.t("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(288976);
+        throw ((Throwable)localObject1);
+      }
+      localObject1 = (String)localObject1;
+      Object localObject2 = h.aHG();
+      p.j(localObject2, "MMKernel.storage()");
+      localObject2 = ((com.tencent.mm.kernel.f)localObject2).aHp().get(ar.a.Vyw, "");
+      if (localObject2 == null)
+      {
+        localObject1 = new kotlin.t("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(288976);
+        throw ((Throwable)localObject1);
+      }
+      localObject2 = (String)localObject2;
+      Log.i("Finder.FinderProfileTabUIC", "showShopOpGuideDialog right btn click, bindAppId:" + (String)localObject1 + ",bindPath:" + (String)localObject2 + '!');
+      CharSequence localCharSequence = (CharSequence)localObject1;
+      if ((localCharSequence == null) || (localCharSequence.length() == 0))
+      {
+        i = 1;
+        if (i == 0)
+        {
+          localCharSequence = (CharSequence)localObject2;
+          if ((localCharSequence != null) && (localCharSequence.length() != 0)) {
+            break label235;
+          }
+        }
+      }
+      label235:
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0)
+        {
+          localObject1 = FinderProfileTabUIC.g(this.zTv);
+          localObject2 = FinderProfileTabUIC.h(this.zTv);
+        }
+        FinderProfileTabUIC.a(this.zTv, (String)localObject1, (String)localObject2);
+        this.kvu.bYF();
+        AppMethodBeat.o(288976);
+        return;
+        i = 0;
+        break;
+      }
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "kotlin.jvm.PlatformType", "invoke"})
+  static final class v
     extends kotlin.g.b.q
     implements kotlin.g.a.a<String>
   {
-    s(FinderProfileTabUIC paramFinderProfileTabUIC)
+    v(FinderProfileTabUIC paramFinderProfileTabUIC)
     {
       super();
     }

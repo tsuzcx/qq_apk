@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.a;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/Atom/MvhdAtom$Companion;", "", "()V", "TAG", "", "plugin-playvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/Atom/MvhdAtom$Companion;", "", "()V", "TAG", "", "plugin-playvideo_release"})
 public final class m$a {}
 
 

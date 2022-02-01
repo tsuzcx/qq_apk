@@ -3,13 +3,13 @@ package com.tencent.mm.media.widget.camerarecordview.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig$Companion;", "", "()V", "MEDIACODEC_CREATE_ERROR", "", "RECORDER_TYPE_FFMPEG", "", "RECORDER_TYPE_MEDIACODEC", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig$Companion;", "", "()V", "MEDIACODEC_CREATE_ERROR", "", "RECORDER_TYPE_FFMPEG", "", "RECORDER_TYPE_MEDIACODEC", "plugin-mediaeditor_release"})
 public final class a$a
 {
   static
   {
     AppMethodBeat.i(94273);
-    iqc = new a();
+    lfi = new a();
     AppMethodBeat.o(94273);
   }
 }

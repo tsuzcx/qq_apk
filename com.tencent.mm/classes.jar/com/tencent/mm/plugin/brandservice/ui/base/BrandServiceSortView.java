@@ -21,105 +21,115 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.ag;
-import com.tencent.mm.al.o.a;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.plugin.brandservice.b.f;
-import com.tencent.mm.plugin.brandservice.b.f.a;
+import com.tencent.mm.ao.af;
+import com.tencent.mm.ao.o.a;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.plugin.brandservice.b.g.a;
+import com.tencent.mm.plugin.brandservice.d.c;
+import com.tencent.mm.plugin.brandservice.d.d;
+import com.tencent.mm.plugin.brandservice.d.e;
+import com.tencent.mm.plugin.brandservice.d.f;
+import com.tencent.mm.plugin.brandservice.d.i;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.plugin.websearch.api.am;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.protobuf.qw;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.protocal.protobuf.qp;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.base.VerticalScrollBar;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.base.s;
 import com.tencent.mm.ui.base.sortview.BaseSortView;
 import com.tencent.mm.ui.base.sortview.BaseSortView.a;
 import com.tencent.mm.ui.base.sortview.c.a;
 import com.tencent.mm.ui.base.sortview.d;
-import com.tencent.mm.ui.contact.ac;
-import java.util.ArrayList;
+import com.tencent.mm.ui.contact.ae;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
 public class BrandServiceSortView
   extends BaseSortView
-  implements View.OnCreateContextMenuListener, AdapterView.OnItemLongClickListener, f.a, BaseSortView.a
+  implements View.OnCreateContextMenuListener, AdapterView.OnItemLongClickListener, g.a, BaseSortView.a
 {
-  private boolean ajQ;
-  private String mRa;
+  private s jhZ;
   private int mServiceType;
-  private boolean poJ;
-  private int ppd;
-  private int ppe;
-  private HashMap<String, SpannableString> pqp;
-  private f pqq;
-  private com.tencent.mm.ui.widget.b.a pqr;
-  private boolean pqs;
-  private ListView pqt;
-  private a pqu;
-  private String pqv;
-  private View pqw;
-  private TextView pqx;
-  private o.g pqy;
+  private String pRV;
+  private boolean qm;
+  private boolean sxI;
+  private int syc;
+  private int syd;
+  private HashMap<String, SpannableString> szo;
+  private com.tencent.mm.plugin.brandservice.b.g szp;
+  private com.tencent.mm.ui.widget.b.a szq;
+  private boolean szr;
+  private ListView szs;
+  private a szt;
+  private boolean szu;
+  private String szv;
+  private View szw;
+  private TextView szx;
+  private q.g szy;
   
   public BrandServiceSortView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(5799);
-    this.pqp = new HashMap();
-    this.pqq = new f();
+    this.szo = new HashMap();
+    this.szp = new com.tencent.mm.plugin.brandservice.b.g();
     this.mServiceType = 251658241;
-    this.ppd = 0;
-    this.ppe = 0;
-    this.pqy = new o.g()
+    this.szu = true;
+    this.syc = 0;
+    this.syd = 0;
+    this.szy = new q.g()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
-        AppMethodBeat.i(5797);
-        if (Util.isNullOrNil(BrandServiceSortView.d(BrandServiceSortView.this)))
+        AppMethodBeat.i(261497);
+        if (Util.isNullOrNil(BrandServiceSortView.j(BrandServiceSortView.this)))
         {
           Log.i("MicroMsg.BrandServiceSortView", "username is null or nil.");
-          AppMethodBeat.o(5797);
+          AppMethodBeat.o(261497);
           return;
         }
         if (paramAnonymousMenuItem.getItemId() == 0)
         {
           Log.i("MicroMsg.BrandServiceSortView", "Menu Item selected, pos(%d)", new Object[] { Integer.valueOf(paramAnonymousInt) });
-          as localas = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(BrandServiceSortView.d(BrandServiceSortView.this));
-          com.tencent.mm.api.c localc = com.tencent.mm.al.g.fJ(BrandServiceSortView.d(BrandServiceSortView.this));
+          as localas = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG(BrandServiceSortView.j(BrandServiceSortView.this));
+          com.tencent.mm.api.c localc = com.tencent.mm.ao.g.gu(BrandServiceSortView.j(BrandServiceSortView.this));
           BrandServiceSortView.a(BrandServiceSortView.this, localc, BrandServiceSortView.this.getContext(), localas, paramAnonymousMenuItem.getGroupId());
         }
-        AppMethodBeat.o(5797);
+        AppMethodBeat.o(261497);
       }
     };
     setDataSetObserver(this);
-    this.pqs = false;
+    this.szr = false;
     setShowFooterView(false);
-    refresh();
-    paramContext = this.pqq;
-    if (!paramContext.pno.contains(this))
+    bfU();
+    paramContext = this.szp;
+    if (!paramContext.swm.contains(this))
     {
       Log.i("MicroMsg.BrandService.BrandServiceMgr", "addListener:add");
-      paramContext.pno.add(this);
+      paramContext.swm.add(this);
     }
-    this.pqr = new com.tencent.mm.ui.widget.b.a(getContext());
+    this.szq = new com.tencent.mm.ui.widget.b.a(getContext());
     setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(5795);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousAdapterView);
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.zo(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/base/BrandServiceSortView$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+        localb.bn(paramAnonymousAdapterView);
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.Fs(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/brandservice/ui/base/BrandServiceSortView$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
         paramAnonymousAdapterView = paramAnonymousView.getTag();
         if ((paramAnonymousAdapterView == null) || (!(paramAnonymousAdapterView instanceof BrandServiceSortView.b)))
         {
@@ -136,8 +146,8 @@ public class BrandServiceSortView
           AppMethodBeat.o(5795);
           return;
         }
-        am.aXh(paramAnonymousView.username);
-        ac.u(BrandServiceSortView.a(BrandServiceSortView.this), 12, 4, paramAnonymousInt - 1);
+        am.biS(paramAnonymousView.username);
+        ae.y(BrandServiceSortView.a(BrandServiceSortView.this), 12, 4, paramAnonymousInt - 1);
         if (BrandServiceSortView.b(BrandServiceSortView.this))
         {
           paramAnonymousAdapterView = new Intent();
@@ -153,15 +163,7 @@ public class BrandServiceSortView
             return;
           }
         }
-        paramAnonymousView = paramAnonymousView.username;
-        paramAnonymousAdapterView = BrandServiceSortView.this.getContext();
-        Log.i("MicroMsg.BrandService.BrandServiceApplication", "startChattingUI");
-        paramAnonymousView = new Intent().putExtra("Chat_User", paramAnonymousView);
-        paramAnonymousView.putExtra("finish_direct", true);
-        paramAnonymousView.putExtra("chat_from_scene", 2);
-        paramAnonymousView.putExtra("specific_chat_from_scene", 4);
-        paramAnonymousView.putExtra("img_gallery_enter_from_chatting_ui", true);
-        com.tencent.mm.plugin.brandservice.b.jRt.d(paramAnonymousView, paramAnonymousAdapterView);
+        com.tencent.mm.plugin.brandservice.b.b(paramAnonymousView.username, BrandServiceSortView.this.getContext());
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/brandservice/ui/base/BrandServiceSortView$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(5795);
       }
@@ -170,57 +172,13 @@ public class BrandServiceSortView
     AppMethodBeat.o(5799);
   }
   
-  private static List<d> cy(List<qw> paramList)
-  {
-    AppMethodBeat.i(5801);
-    if (paramList != null)
-    {
-      ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      if (i < paramList.size())
-      {
-        qw localqw = (qw)paramList.get(i);
-        d locald;
-        int j;
-        if ((localqw != null) && (localqw.contact != null))
-        {
-          locald = new d();
-          locald.data = localqw;
-          int k = localqw.contact.field_showHead;
-          j = k;
-          if (k >= 97)
-          {
-            j = k;
-            if (k <= 122) {
-              j = k - 32;
-            }
-          }
-          if ((j < 65) || (j > 90)) {
-            break label151;
-          }
-        }
-        label151:
-        for (locald.Pae = ((char)j);; locald.Pae = "#")
-        {
-          localArrayList.add(locald);
-          i += 1;
-          break;
-        }
-      }
-      AppMethodBeat.o(5801);
-      return localArrayList;
-    }
-    AppMethodBeat.o(5801);
-    return null;
-  }
-  
   public final boolean a(String paramString, d paramd)
   {
     AppMethodBeat.i(5803);
     if ((!Util.isNullOrNil(paramString)) && (paramd != null))
     {
-      this.pqv = paramString;
-      paramd = (qw)paramd.data;
+      this.szv = paramString;
+      paramd = (qp)paramd.bnW;
       if ((paramd == null) || (paramd.contact == null))
       {
         Log.w("MicroMsg.BrandServiceSortView", "BrandServiceItem or contact is null.");
@@ -228,9 +186,9 @@ public class BrandServiceSortView
         return false;
       }
       Object localObject = paramd.contact;
-      paramd = ((as)localObject).arJ();
-      String str = ((as)localObject).ajz();
-      localObject = ((as)localObject).ajA();
+      paramd = ((as)localObject).ays();
+      String str = ((as)localObject).aph();
+      localObject = ((as)localObject).api();
       paramString = paramString.toUpperCase();
       if (((!Util.isNullOrNil(paramd)) && (paramd.toUpperCase().indexOf(paramString) != -1)) || ((!Util.isNullOrNil(str)) && (str.toUpperCase().indexOf(paramString) != -1)) || ((!Util.isNullOrNil((String)localObject)) && (((String)localObject).toUpperCase().startsWith(paramString))))
       {
@@ -242,11 +200,57 @@ public class BrandServiceSortView
     return false;
   }
   
-  public final void cz(List<d> paramList)
+  public final void bfU()
+  {
+    AppMethodBeat.i(5800);
+    com.tencent.e.h.ZvG.n(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(257709);
+        if (BrandServiceSortView.c(BrandServiceSortView.this))
+        {
+          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1378L, 8L, 1L, false);
+          BrandServiceSortView.d(BrandServiceSortView.this);
+          BrandServiceSortView.a(BrandServiceSortView.this, com.tencent.mm.ui.base.h.a(BrandServiceSortView.this.getContext(), BrandServiceSortView.this.getContext().getString(c.i.app_waiting), true, null));
+        }
+        AppMethodBeat.o(257709);
+      }
+    }, 1000L);
+    this.szp.ao(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(263528);
+        BrandServiceSortView localBrandServiceSortView = BrandServiceSortView.this;
+        Object localObject = BrandServiceSortView.f(BrandServiceSortView.this);
+        switch (BrandServiceSortView.e(BrandServiceSortView.this))
+        {
+        }
+        for (localObject = ((com.tencent.mm.plugin.brandservice.b.g)localObject).swp;; localObject = ((com.tencent.mm.plugin.brandservice.b.g)localObject).swo)
+        {
+          localBrandServiceSortView.ig(BrandServiceSortView.cw((List)localObject));
+          BrandServiceSortView.g(BrandServiceSortView.this);
+          BrandServiceSortView.d(BrandServiceSortView.this);
+          if ((BrandServiceSortView.h(BrandServiceSortView.this) != null) && (BrandServiceSortView.h(BrandServiceSortView.this).isShowing()))
+          {
+            BrandServiceSortView.h(BrandServiceSortView.this).dismiss();
+            BrandServiceSortView.h(BrandServiceSortView.this).setCancelMessage(null);
+            BrandServiceSortView.h(BrandServiceSortView.this).setDismissMessage(null);
+          }
+          AppMethodBeat.o(263528);
+          return;
+        }
+      }
+    });
+    AppMethodBeat.o(5800);
+  }
+  
+  public final void cv(List<d> paramList)
   {
     AppMethodBeat.i(5813);
-    if ((this.pqx != null) && (paramList != null)) {
-      this.pqx.setText(getContext().getString(2131756898, new Object[] { Integer.valueOf(paramList.size()) }));
+    if ((this.szx != null) && (paramList != null)) {
+      this.szx.setText(getContext().getString(d.i.svd, new Object[] { Integer.valueOf(paramList.size()) }));
     }
     AppMethodBeat.o(5813);
   }
@@ -256,117 +260,125 @@ public class BrandServiceSortView
     AppMethodBeat.i(5810);
     if (paramMotionEvent.getAction() == 0)
     {
-      this.ppd = ((int)paramMotionEvent.getRawX());
-      this.ppe = ((int)paramMotionEvent.getRawY());
+      this.syc = ((int)paramMotionEvent.getRawX());
+      this.syd = ((int)paramMotionEvent.getRawY());
     }
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
     AppMethodBeat.o(5810);
     return bool;
   }
   
+  public final View eI()
+  {
+    AppMethodBeat.i(5804);
+    View localView = View.inflate(getContext(), d.f.sug, this);
+    AppMethodBeat.o(5804);
+    return localView;
+  }
+  
   public a getITransferToChildOnTouchListener()
   {
-    return this.pqu;
+    return this.szt;
   }
   
   public c.a getItemViewCreator()
   {
     AppMethodBeat.i(5808);
-    c.a local2 = new c.a()
+    c.a local4 = new c.a()
     {
       public final View a(d paramAnonymousd, View paramAnonymousView, int paramAnonymousInt, boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
       {
-        AppMethodBeat.i(5796);
+        AppMethodBeat.i(265106);
         long l = Util.currentTicks();
         Context localContext = BrandServiceSortView.this.getContext();
         BrandServiceSortView.b localb;
         if (paramAnonymousView == null)
         {
-          paramAnonymousView = LayoutInflater.from(localContext).inflate(2131493322, null);
+          paramAnonymousView = LayoutInflater.from(localContext).inflate(d.f.suf, null);
           localb = new BrandServiceSortView.b();
-          localb.pnP = ((TextView)paramAnonymousView.findViewById(2131298244));
-          localb.contentView = paramAnonymousView.findViewById(2131299189);
-          localb.gvv = ((ImageView)paramAnonymousView.findViewById(2131296772));
-          localb.pps = ((ImageView)paramAnonymousView.findViewById(2131305356));
-          localb.gvw = ((TextView)paramAnonymousView.findViewById(2131297734));
-          localb.ppt = paramAnonymousView.findViewById(2131307573);
+          localb.swP = ((TextView)paramAnonymousView.findViewById(d.e.catalogTV));
+          localb.contentView = paramAnonymousView.findViewById(d.e.contentView);
+          localb.iZG = ((ImageView)paramAnonymousView.findViewById(d.e.spN));
+          localb.syr = ((ImageView)paramAnonymousView.findViewById(d.e.ssf));
+          localb.iZH = ((TextView)paramAnonymousView.findViewById(d.e.srw));
+          localb.sys = paramAnonymousView.findViewById(d.e.fFT);
           paramAnonymousView.setTag(localb);
         }
-        qw localqw;
+        qp localqp;
         for (;;)
         {
-          localqw = (qw)paramAnonymousd.data;
-          if (localqw != null) {
+          localqp = (qp)paramAnonymousd.bnW;
+          if (localqp != null) {
             break;
           }
           Log.e("MicroMsg.BrandServiceSortView", "should not be empty");
-          AppMethodBeat.o(5796);
+          AppMethodBeat.o(265106);
           return paramAnonymousView;
           localb = (BrandServiceSortView.b)paramAnonymousView.getTag();
         }
-        if ((BrandServiceSortView.this.OZW) && (paramAnonymousBoolean1))
+        if ((BrandServiceSortView.this.Wtj) && (paramAnonymousBoolean1))
         {
-          localb.pnP.setText(paramAnonymousd.Pae);
-          localb.pnP.setVisibility(0);
-          localb.username = localqw.userName;
-          localb.gvv.setTag(localqw.userName);
-          a.b.d(localb.gvv, localb.username);
-          paramAnonymousd = localqw.contact.arJ();
-          BrandServiceSortView.a(BrandServiceSortView.this, localb.gvw, localContext, paramAnonymousd, (int)localb.gvw.getTextSize());
-          Log.v("MicroMsg.BrandServiceSortView", "bizinfo status%d", new Object[] { Integer.valueOf(localqw.Bdk.field_status) });
-          paramAnonymousd = localb.pps;
-          if ((!BrandServiceSortView.c(BrandServiceSortView.this)) || (localqw.Bdk.field_status != 1)) {
-            break label461;
+          localb.swP.setText(paramAnonymousd.Wtr);
+          localb.swP.setVisibility(0);
+          localb.username = localqp.userName;
+          localb.iZG.setTag(localqp.userName);
+          a.b.d(localb.iZG, localb.username);
+          paramAnonymousd = localqp.contact.ays();
+          BrandServiceSortView.a(BrandServiceSortView.this, localb.iZH, localContext, paramAnonymousd, (int)localb.iZH.getTextSize());
+          Log.v("MicroMsg.BrandServiceSortView", "bizinfo status%d", new Object[] { Integer.valueOf(localqp.GXj.field_status) });
+          paramAnonymousd = localb.syr;
+          if ((!BrandServiceSortView.i(BrandServiceSortView.this)) || (localqp.GXj.field_status != 1)) {
+            break label468;
           }
           paramAnonymousInt = 0;
-          label330:
+          label335:
           paramAnonymousd.setVisibility(paramAnonymousInt);
           if ((BrandServiceSortView.this.getMode() != 0) || (!paramAnonymousBoolean2)) {
-            break label467;
+            break label474;
           }
-          localb.ppt.setBackgroundResource(2131231901);
-          label360:
-          if (!BrandServiceSortView.this.OZX) {
-            break label480;
+          localb.sys.setBackgroundResource(d.d.comm_list_item_selector_no_divider);
+          label366:
+          if (!BrandServiceSortView.this.Wtk) {
+            break label488;
           }
-          localb.contentView.setPadding(localb.contentView.getPaddingLeft(), localb.contentView.getPaddingTop(), (int)BrandServiceSortView.this.getContext().getResources().getDimension(2131165188), localb.contentView.getPaddingBottom());
+          localb.contentView.setPadding(localb.contentView.getPaddingLeft(), localb.contentView.getPaddingTop(), (int)BrandServiceSortView.this.getContext().getResources().getDimension(d.c.AddressScrollBarWidth), localb.contentView.getPaddingBottom());
         }
         for (;;)
         {
           Log.v("MicroMsg.BrandServiceSortView", "get view use %d ms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
-          AppMethodBeat.o(5796);
+          AppMethodBeat.o(265106);
           return paramAnonymousView;
-          localb.pnP.setVisibility(8);
+          localb.swP.setVisibility(8);
           break;
-          label461:
+          label468:
           paramAnonymousInt = 8;
-          break label330;
-          label467:
-          localb.ppt.setBackgroundResource(2131233327);
-          break label360;
-          label480:
-          localb.contentView.setPadding(localb.contentView.getPaddingLeft(), localb.contentView.getPaddingTop(), (int)BrandServiceSortView.this.getContext().getResources().getDimension(2131165534), localb.contentView.getPaddingBottom());
+          break label335;
+          label474:
+          localb.sys.setBackgroundResource(d.d.list_item_normal);
+          break label366;
+          label488:
+          localb.contentView.setPadding(localb.contentView.getPaddingLeft(), localb.contentView.getPaddingTop(), (int)BrandServiceSortView.this.getContext().getResources().getDimension(d.c.NormalPadding), localb.contentView.getPaddingBottom());
         }
       }
     };
     AppMethodBeat.o(5808);
-    return local2;
+    return local4;
   }
   
   public ListView getListView()
   {
     AppMethodBeat.i(5806);
-    this.pqt = ((ListView)findViewById(2131303242));
-    if (this.pqw == null)
+    this.szs = ((ListView)findViewById(d.e.listview));
+    if (this.szw == null)
     {
-      this.pqw = inflate(getContext(), 2131493797, null);
-      if ((this.pqt != null) && (this.pqw != null))
+      this.szw = inflate(getContext(), d.f.sui, null);
+      if ((this.szs != null) && (this.szw != null))
       {
-        this.pqx = ((TextView)this.pqw.findViewById(2131299258));
-        this.pqt.addFooterView(this.pqw, null, false);
+        this.szx = ((TextView)this.szw.findViewById(d.e.dCM));
+        this.szs.addFooterView(this.szw, null, false);
       }
     }
-    ListView localListView = this.pqt;
+    ListView localListView = this.szs;
     AppMethodBeat.o(5806);
     return localListView;
   }
@@ -374,7 +386,7 @@ public class BrandServiceSortView
   public View getNoResultView()
   {
     AppMethodBeat.i(5807);
-    View localView = findViewById(2131305459);
+    View localView = findViewById(d.e.no_result);
     AppMethodBeat.o(5807);
     return localView;
   }
@@ -382,23 +394,15 @@ public class BrandServiceSortView
   public VerticalScrollBar getScrollBar()
   {
     AppMethodBeat.i(5805);
-    VerticalScrollBar localVerticalScrollBar = (VerticalScrollBar)findViewById(2131307882);
+    VerticalScrollBar localVerticalScrollBar = (VerticalScrollBar)findViewById(d.e.sidrbar);
     AppMethodBeat.o(5805);
     return localVerticalScrollBar;
-  }
-  
-  public final View inflate()
-  {
-    AppMethodBeat.i(5804);
-    View localView = View.inflate(getContext(), 2131493324, this);
-    AppMethodBeat.o(5804);
-    return localView;
   }
   
   public final void onChange()
   {
     AppMethodBeat.i(5809);
-    refresh();
+    bfU();
     AppMethodBeat.o(5809);
   }
   
@@ -414,25 +418,25 @@ public class BrandServiceSortView
     Log.i("MicroMsg.BrandServiceSortView", "onCreateContextMenu");
     paramContextMenuInfo = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
     paramView = (d)((AdapterView)paramView).getItemAtPosition(paramContextMenuInfo.position);
-    if ((paramView == null) || (paramView.data == null))
+    if ((paramView == null) || (paramView.bnW == null))
     {
       Log.i("MicroMsg.BrandServiceSortView", "SortEntity(%s) is null or its data is null.", new Object[] { paramView });
       AppMethodBeat.o(5812);
       return;
     }
-    paramView = ((qw)paramView.data).contact;
+    paramView = ((qp)paramView.bnW).contact;
     if (paramView == null)
     {
       Log.e("MicroMsg.BrandServiceSortView", "onCreateContextMenu, contact is null");
       AppMethodBeat.o(5812);
       return;
     }
-    this.mRa = paramView.field_username;
-    String str = paramView.arJ();
-    paramContextMenu.setHeaderTitle(com.tencent.mm.pluginsdk.ui.span.l.c(getContext(), str));
-    paramView = com.tencent.mm.al.g.fJ(paramView.field_username);
-    if ((paramView != null) && (!paramView.UE())) {
-      paramContextMenu.add(paramContextMenuInfo.position, 0, 0, 2131762835);
+    this.pRV = paramView.field_username;
+    String str = paramView.ays();
+    paramContextMenu.setHeaderTitle(l.c(getContext(), str));
+    paramView = com.tencent.mm.ao.g.gu(paramView.field_username);
+    if ((paramView != null) && (!paramView.YW())) {
+      paramContextMenu.add(paramContextMenuInfo.position, 0, 0, d.i.eLi);
     }
     AppMethodBeat.o(5812);
   }
@@ -440,8 +444,8 @@ public class BrandServiceSortView
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(5815);
-    if (this.pqu != null) {
-      this.pqu.clY();
+    if (this.szt != null) {
+      this.szt.czC();
     }
     if (super.onInterceptTouchEvent(paramMotionEvent))
     {
@@ -455,63 +459,54 @@ public class BrandServiceSortView
   public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     AppMethodBeat.i(5811);
-    this.pqr.QSr = paramView;
-    this.pqr.a(paramAdapterView, paramInt, paramLong, this, this.pqy, this.ppd, this.ppe);
+    this.szq.Yre = paramView;
+    this.szq.a(paramAdapterView, paramInt, paramLong, this, this.szy, this.syc, this.syd);
     AppMethodBeat.o(5811);
     return true;
-  }
-  
-  public final void refresh()
-  {
-    AppMethodBeat.i(5800);
-    this.pqq.init();
-    hy(cy(this.pqq.CV(this.mServiceType)));
-    super.refresh();
-    AppMethodBeat.o(5800);
   }
   
   public final void release()
   {
     AppMethodBeat.i(5802);
-    if (com.tencent.mm.kernel.g.aAc()) {
-      ag.bas().aZX();
+    if (com.tencent.mm.kernel.h.aHB()) {
+      af.bjG().bjm();
     }
-    this.pqq.release();
+    this.szp.release();
     AppMethodBeat.o(5802);
   }
   
   public void setITransferToChildOnTouchListener(a parama)
   {
-    this.pqu = parama;
+    this.szt = parama;
   }
   
   public void setReturnResult(boolean paramBoolean)
   {
-    this.poJ = paramBoolean;
+    this.sxI = paramBoolean;
   }
   
   public void setShowFooterView(boolean paramBoolean)
   {
     AppMethodBeat.i(5814);
-    this.ajQ = paramBoolean;
-    A(this.pqx, paramBoolean);
+    this.qm = paramBoolean;
+    C(this.szx, paramBoolean);
     AppMethodBeat.o(5814);
   }
   
   public static abstract interface a
   {
-    public abstract boolean clY();
+    public abstract boolean czC();
   }
   
   public static final class b
   {
-    static Bitmap pqA = null;
+    static Bitmap fgf = null;
     public View contentView;
-    ImageView gvv;
-    TextView gvw;
-    public TextView pnP;
-    ImageView pps;
-    View ppt;
+    ImageView iZG;
+    TextView iZH;
+    public TextView swP;
+    ImageView syr;
+    View sys;
     String username;
   }
 }

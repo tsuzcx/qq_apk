@@ -7,7 +7,7 @@ public abstract interface f
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.api.f
  * JD-Core Version:    0.7.0.1
  */

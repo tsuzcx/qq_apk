@@ -5,27 +5,27 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class e
 {
-  private static ConcurrentHashMap<Integer, c> Jck;
+  private static ConcurrentHashMap<Integer, c> PYS;
   
   static
   {
-    AppMethodBeat.i(224490);
-    Jck = new ConcurrentHashMap();
-    AppMethodBeat.o(224490);
+    AppMethodBeat.i(206178);
+    PYS = new ConcurrentHashMap();
+    AppMethodBeat.o(206178);
   }
   
   public static void a(int paramInt, c paramc)
   {
-    AppMethodBeat.i(224488);
-    Jck.put(Integer.valueOf(paramInt), paramc);
-    AppMethodBeat.o(224488);
+    AppMethodBeat.i(206175);
+    PYS.put(Integer.valueOf(paramInt), paramc);
+    AppMethodBeat.o(206175);
   }
   
-  public static c agf(int paramInt)
+  public static c anU(int paramInt)
   {
-    AppMethodBeat.i(224489);
-    c localc = (c)Jck.remove(Integer.valueOf(paramInt));
-    AppMethodBeat.o(224489);
+    AppMethodBeat.i(206176);
+    c localc = (c)PYS.remove(Integer.valueOf(paramInt));
+    AppMethodBeat.o(206176);
     return localc;
   }
 }

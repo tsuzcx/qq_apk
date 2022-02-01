@@ -1,12 +1,12 @@
 package kotlin.l.b.a.b.e.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.aa;
 import kotlin.g.b.p;
+import kotlin.z;
 
 public class a
 {
-  private static final boolean TCv;
+  private static final boolean abfj;
   
   static
   {
@@ -21,7 +21,7 @@ public class a
       try
       {
         String str = System.getProperty("kotlin.jvm.serialization.use8to7");
-        TCv = "true".equals(str);
+        abfj = "true".equals(str);
         AppMethodBeat.o(59224);
         return;
         bool = false;
@@ -41,7 +41,7 @@ public class a
     int n = 0;
     AppMethodBeat.i(59220);
     if (paramArrayOfString == null) {
-      atM(7);
+      aDG(7);
     }
     Object localObject = paramArrayOfString;
     if (paramArrayOfString.length > 0)
@@ -53,7 +53,7 @@ public class a
         if (i == 0)
         {
           paramArrayOfString = am(paramArrayOfString);
-          p.h(paramArrayOfString, "strings");
+          p.k(paramArrayOfString, "strings");
           int k = paramArrayOfString.length;
           i = 0;
           int j = 0;
@@ -91,7 +91,7 @@ public class a
           if (i == localObject.length) {
             j = 1;
           }
-          if ((aa.SXc) && (j == 0))
+          if ((z.aazO) && (j == 0))
           {
             paramArrayOfString = (Throwable)new AssertionError("Should have reached the end");
             AppMethodBeat.o(59220);
@@ -107,8 +107,8 @@ public class a
       }
     }
     paramArrayOfString = an((String[])localObject);
-    dg(paramArrayOfString);
-    paramArrayOfString = dh(paramArrayOfString);
+    dE(paramArrayOfString);
+    paramArrayOfString = dF(paramArrayOfString);
     AppMethodBeat.o(59220);
     return paramArrayOfString;
   }
@@ -117,12 +117,12 @@ public class a
   {
     AppMethodBeat.i(59221);
     if (paramArrayOfString == null) {
-      atM(9);
+      aDG(9);
     }
     paramArrayOfString = (String[])paramArrayOfString.clone();
     paramArrayOfString[0] = paramArrayOfString[0].substring(1);
     if (paramArrayOfString == null) {
-      atM(10);
+      aDG(10);
     }
     AppMethodBeat.o(59221);
     return paramArrayOfString;
@@ -132,7 +132,7 @@ public class a
   {
     AppMethodBeat.i(59222);
     if (paramArrayOfString == null) {
-      atM(11);
+      aDG(11);
     }
     int k = paramArrayOfString.length;
     int i = 0;
@@ -170,11 +170,11 @@ public class a
     return localObject;
   }
   
-  private static void dg(byte[] paramArrayOfByte)
+  private static void dE(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(59219);
     if (paramArrayOfByte == null) {
-      atM(4);
+      aDG(4);
     }
     int i = 0;
     int j = paramArrayOfByte.length;
@@ -186,11 +186,11 @@ public class a
     AppMethodBeat.o(59219);
   }
   
-  private static byte[] dh(byte[] paramArrayOfByte)
+  private static byte[] dF(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(59223);
     if (paramArrayOfByte == null) {
-      atM(13);
+      aDG(13);
     }
     int m = paramArrayOfByte.length * 7 / 8;
     byte[] arrayOfByte = new byte[m];

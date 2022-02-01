@@ -1,118 +1,118 @@
 package com.tencent.mm.plugin.appbrand.launching.a;
 
+import android.os.Build;
+import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.a;
-import com.tencent.mm.ak.c.a;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.co.f;
-import com.tencent.mm.g.b.a.mu;
-import com.tencent.mm.g.b.a.mu.b;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.plugin.appbrand.appcache.au;
+import com.tencent.mm.plugin.appbrand.appcache.o;
 import com.tencent.mm.plugin.appbrand.launching.ay;
-import com.tencent.mm.plugin.appbrand.permission.AppRuntimeApiPermissionBundle;
-import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.plugin.appbrand.report.quality.g;
-import com.tencent.mm.protocal.protobuf.acc;
-import com.tencent.mm.protocal.protobuf.fdo;
-import com.tencent.mm.protocal.protobuf.fdp;
-import com.tencent.mm.protocal.protobuf.fdq;
+import com.tencent.mm.plugin.appbrand.permission.appidABTest.AppRuntimeAppidABTestPermissionBundle;
+import com.tencent.mm.protocal.protobuf.fmz;
+import com.tencent.mm.protocal.protobuf.fna;
+import com.tencent.mm.protocal.protobuf.fnb;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
 
 public final class c
-  extends com.tencent.mm.ak.c<fdp>
+  extends com.tencent.mm.an.c<fnb>
 {
   final String appId;
-  final String cym;
-  final int iOo;
-  public volatile boolean mWd;
-  private final ay mXR;
-  private final mu mXS;
-  public volatile HashMap<String, AppRuntimeApiPermissionBundle> mXT;
+  final int cBU;
+  final String cwP;
+  public volatile boolean pWG;
+  private final ay pYl;
+  public volatile HashMap<String, AppRuntimeAppidABTestPermissionBundle> pYm;
   final d rr;
   
-  public c(String paramString1, int paramInt, List<e> paramList, boolean paramBoolean, String paramString2, QualitySession paramQualitySession, ay paramay, acc paramacc)
+  public c(String paramString1, int paramInt, List<f> paramList, boolean paramBoolean, String paramString2, ay paramay)
   {
-    AppMethodBeat.i(227128);
-    this.mWd = false;
-    this.mXT = new HashMap();
+    AppMethodBeat.i(271321);
+    this.pWG = false;
+    this.pYm = new HashMap();
     this.appId = paramString1;
-    this.iOo = paramInt;
-    this.cym = paramString2;
-    this.mXR = paramay;
-    this.mXS = g.f(paramQualitySession);
-    Object localObject = this.mXS;
-    if (paramBoolean) {}
-    for (paramay = mu.b.feH;; paramay = mu.b.feI)
+    this.cBU = paramInt;
+    this.cwP = paramString2;
+    this.pYl = paramay;
+    paramay = new fna();
+    Object localObject = paramList.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      ((mu)localObject).feC = paramay;
-      this.mXS.eJb = g.getNetworkType();
-      paramay = new fdo();
-      localObject = paramList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        e locale = (e)((Iterator)localObject).next();
-        fdq localfdq = new fdq();
-        localfdq.dNI = locale.appId;
-        localfdq.qGD = locale.appType;
-        paramay.Nzk.add(localfdq);
-      }
+      f localf = (f)((Iterator)localObject).next();
+      fmz localfmz = new fmz();
+      localfmz.appid = localf.appId;
+      localfmz.ufE = localf.appType;
+      localfmz.TuP = localf.cBU;
+      paramay.ULx.add(localfmz);
     }
-    paramay.KOF = ((acc)Objects.requireNonNull(paramacc));
+    paramay.jUb = Build.MODEL;
+    paramay.jUc = Build.BRAND;
+    paramay.ULy = Build.MANUFACTURER;
+    paramay.jUe = Build.VERSION.RELEASE;
+    paramay.ULB = Build.VERSION.RELEASE;
+    paramay.ULC = Build.VERSION.INCREMENTAL;
+    paramay.ULD = Build.DISPLAY;
+    localObject = au.bHb();
+    if (localObject != null)
+    {
+      paramay.ULz = ((o)localObject).bGg();
+      paramay.ULA = ((o)localObject).bGi();
+    }
     localObject = new d.a();
-    ((d.a)localObject).funcId = 3827;
-    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaattr/wxajsapiinfo";
-    ((d.a)localObject).iLN = paramay;
-    ((d.a)localObject).iLO = new fdp();
-    paramay = ((d.a)localObject).aXF();
+    ((d.a)localObject).funcId = 5124;
+    ((d.a)localObject).uri = "/cgi-bin/mmgame-bin/getwxagameabtestinfo";
+    ((d.a)localObject).lBU = paramay;
+    ((d.a)localObject).lBV = new fnb();
+    paramay = ((d.a)localObject).bgN();
     this.rr = paramay;
     c(paramay);
-    Log.i("MicroMsg.AppBrand.CgiWxaJsApiInfo", "<init> appId:%s, versionType:%d, appIdList:%s, sync:%b, sessionId:%s, instanceId:%s, source:%s", new Object[] { paramString1, Integer.valueOf(paramInt), bN(paramList), Boolean.valueOf(paramBoolean), paramString2, paramQualitySession.kEY, a.a(paramacc) });
-    AppMethodBeat.o(227128);
+    Log.i("MicroMsg.AppBrand.CgiWxaAppidABTestInfo", "<init> appId:%s, versionType:%d, appIdList:%s, sync:%b, sessionId:%s", new Object[] { paramString1, Integer.valueOf(paramInt), bM(paramList), Boolean.valueOf(paramBoolean), paramString2 });
+    AppMethodBeat.o(271321);
   }
   
-  private static String bN(List<e> paramList)
+  public static String T(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(227129);
+    AppMethodBeat.i(271324);
+    String str;
+    if (paramInt1 == 1) {
+      str = "_weApp";
+    }
+    for (;;)
+    {
+      paramString = paramString + str + paramInt2;
+      AppMethodBeat.o(271324);
+      return paramString;
+      if (paramInt1 == 2) {
+        str = "_plugin";
+      } else {
+        str = "";
+      }
+    }
+  }
+  
+  private static String bM(List<f> paramList)
+  {
+    AppMethodBeat.i(271322);
     StringBuilder localStringBuilder = new StringBuilder("[");
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      e locale = (e)paramList.next();
-      localStringBuilder.append("{appId:").append(locale.appId).append(", appType:").append(locale.appType).append("}");
+      f localf = (f)paramList.next();
+      localStringBuilder.append("{appId:").append(localf.appId).append(", appType:").append(localf.appType).append(", versionType:").append(localf.cBU).append("}");
     }
     localStringBuilder.append("]");
     paramList = localStringBuilder.toString();
-    AppMethodBeat.o(227129);
+    AppMethodBeat.o(271322);
     return paramList;
-  }
-  
-  public final f<c.a<fdp>> aYI()
-  {
-    try
-    {
-      AppMethodBeat.i(227130);
-      long l = Util.nowMilliSecond();
-      this.mXS.wZ(l);
-      f localf = super.aYI();
-      AppMethodBeat.o(227130);
-      return localf;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.a.c
  * JD-Core Version:    0.7.0.1
  */

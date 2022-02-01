@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.tencent.mm.plugin.finder.view.FinderTouchLayout android:id="@id/b9l" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

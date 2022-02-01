@@ -1,22 +1,36 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"SupervisorJob", "Lkotlinx/coroutines/CompletableJob;", "parent", "Lkotlinx/coroutines/Job;", "SupervisorJob0", "supervisorScope", "R", "block", "Lkotlin/Function2;", "Lkotlinx/coroutines/CoroutineScope;", "Lkotlin/coroutines/Continuation;", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "kotlinx-coroutines-core"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/RemoveOnCancel;", "Lkotlinx/coroutines/CancelHandler;", "node", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
 public final class cn
+  extends k
 {
-  public static final u hNy()
+  private final kotlinx.coroutines.internal.l abxL;
+  
+  public cn(kotlinx.coroutines.internal.l paraml)
   {
-    AppMethodBeat.i(192387);
-    u localu = (u)new cm(null);
-    AppMethodBeat.o(192387);
-    return localu;
+    this.abxL = paraml;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(204241);
+    String str = "RemoveOnCancel[" + this.abxL + ']';
+    AppMethodBeat.o(204241);
+    return str;
+  }
+  
+  public final void y(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(204237);
+    this.abxL.remove();
+    AppMethodBeat.o(204237);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlinx.coroutines.cn
  * JD-Core Version:    0.7.0.1
  */

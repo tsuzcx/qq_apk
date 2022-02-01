@@ -4,7 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.wallet.bind.a;
 import com.tencent.mm.plugin.wallet.bind.ui.WalletBankcardDetailUI;
@@ -12,28 +13,30 @@ import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_payu.bind.ui.WalletPayUBankcardDetailUI;
 import com.tencent.mm.plugin.wallet_payu.pwd.a.c;
 import com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUCheckPwdUI;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.u;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
 
 public class d
   extends a
 {
-  public final com.tencent.mm.wallet_core.d.g a(MMActivity paramMMActivity, i parami)
+  public final g a(MMActivity paramMMActivity, i parami)
   {
     AppMethodBeat.i(71992);
     if ((paramMMActivity instanceof WalletPayUCheckPwdUI))
     {
-      paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
+      paramMMActivity = new g(paramMMActivity, parami)
       {
         public final CharSequence getTips(int paramAnonymousInt)
         {
           AppMethodBeat.i(71986);
           if (paramAnonymousInt == 0)
           {
-            localObject = this.activity.getString(2131767652);
+            localObject = this.activity.getString(a.i.wallet_check_pwd_unbind_bankcard_tip_payu);
             AppMethodBeat.o(71986);
             return localObject;
           }
@@ -56,7 +59,7 @@ public class d
               Log.d("MicroMsg.PayUUnbindProcess", "hy: check pwd pass");
               paramAnonymousString = (Bankcard)d.b(d.this).getParcelable("key_bankcard");
               if (paramAnonymousString != null) {
-                this.Ruz.b(new b(paramAnonymousString.field_bindSerial, d.c(d.this).getString("payu_reference")), true);
+                this.YVX.b(new b(paramAnonymousString.field_bindSerial, d.c(d.this).getString("payu_reference")), true);
               }
             }
           }
@@ -82,7 +85,7 @@ public class d
         {
           AppMethodBeat.i(71988);
           d.f(d.this).putString("key_pwd1", (String)paramAnonymousVarArgs[0]);
-          this.Ruz.b(new c(d.g(d.this).getString("key_pwd1")), true);
+          this.YVX.b(new c(d.g(d.this).getString("key_pwd1")), true);
           AppMethodBeat.o(71988);
           return true;
         }
@@ -113,22 +116,22 @@ public class d
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(71990);
-    if (this.dQL.getInt("key_errcode_payu", -1) == 0) {
-      u.makeText(paramActivity, 2131768018, 0).show();
+    if (this.fKb.getInt("key_errcode_payu", -1) == 0) {
+      w.makeText(paramActivity, a.i.wallet_order_info_result_success, 0).show();
     }
     for (;;)
     {
-      boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.sad, true);
+      boolean bool = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vHh, true);
       Log.i("MicroMsg.PayUUnbindProcess", " walletMallV2 switch is ：%s", new Object[] { Boolean.valueOf(bool) });
       if (!bool) {
         break;
       }
-      e(paramActivity, "mall", ".ui.MallIndexUIv2");
+      h(paramActivity, "mall", ".ui.MallIndexUIv2");
       AppMethodBeat.o(71990);
       return;
-      u.makeText(paramActivity, 2131767695, 0).show();
+      w.makeText(paramActivity, a.i.wallet_err_wording_comm_failed, 0).show();
     }
-    e(paramActivity, "mall", ".ui.MallIndexUI");
+    h(paramActivity, "mall", ".ui.MallIndexUI");
     AppMethodBeat.o(71990);
   }
   
@@ -146,7 +149,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.bind.model.d
  * JD-Core Version:    0.7.0.1
  */

@@ -8,70 +8,70 @@ import kotlin.g.a.b;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/view/recyclerview/HorizontalRecyclerView;", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "lastIntercept", "", "onInterceptChangedListener", "Lkotlin/Function1;", "", "getOnInterceptChangedListener", "()Lkotlin/jvm/functions/Function1;", "setOnInterceptChangedListener", "(Lkotlin/jvm/functions/Function1;)V", "dispatchTouchEvent", "ev", "Landroid/view/MotionEvent;", "onInterceptTouchEvent", "e", "onTouchEvent", "libmmui_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/recyclerview/HorizontalRecyclerView;", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "lastIntercept", "", "onInterceptChangedListener", "Lkotlin/Function1;", "", "getOnInterceptChangedListener", "()Lkotlin/jvm/functions/Function1;", "setOnInterceptChangedListener", "(Lkotlin/jvm/functions/Function1;)V", "dispatchTouchEvent", "ev", "Landroid/view/MotionEvent;", "onInterceptTouchEvent", "e", "onTouchEvent", "libmmui_release"})
 public final class HorizontalRecyclerView
   extends WxRecyclerView
 {
-  private boolean RqE;
-  private b<? super Boolean, x> RqF;
   private final String TAG;
+  private boolean YSc;
+  private b<? super Boolean, x> YSd;
   
   public HorizontalRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(205044);
+    AppMethodBeat.i(209518);
     this.TAG = "MicroMsg.HorizontalRecyclerView";
-    AppMethodBeat.o(205044);
+    AppMethodBeat.o(209518);
   }
   
   public HorizontalRecyclerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(205045);
+    AppMethodBeat.i(209520);
     this.TAG = "MicroMsg.HorizontalRecyclerView";
-    AppMethodBeat.o(205045);
+    AppMethodBeat.o(209520);
   }
   
   public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(205041);
+    AppMethodBeat.i(209511);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(205041);
+    AppMethodBeat.o(209511);
     return bool;
   }
   
   public final b<Boolean, x> getOnInterceptChangedListener()
   {
-    return this.RqF;
+    return this.YSd;
   }
   
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(205043);
+    AppMethodBeat.i(209515);
     boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-    if (bool != this.RqE)
+    if (bool != this.YSc)
     {
-      paramMotionEvent = this.RqF;
+      paramMotionEvent = this.YSd;
       if (paramMotionEvent != null) {
         paramMotionEvent.invoke(Boolean.valueOf(bool));
       }
-      this.RqE = bool;
+      this.YSc = bool;
     }
-    AppMethodBeat.o(205043);
+    AppMethodBeat.o(209515);
     return bool;
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(205042);
+    AppMethodBeat.i(209513);
     boolean bool = super.onTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(205042);
+    AppMethodBeat.o(209513);
     return bool;
   }
   
   public final void setOnInterceptChangedListener(b<? super Boolean, x> paramb)
   {
-    this.RqF = paramb;
+    this.YSd = paramb;
   }
 }
 

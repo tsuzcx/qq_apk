@@ -7,7 +7,7 @@ import java.util.Set;
 public final class b$e<N>
   implements b.d<N>
 {
-  private final Set<N> TRw;
+  private final Set<N> abtV;
   
   public b$e()
   {
@@ -18,20 +18,20 @@ public final class b$e<N>
   
   private b$e(Set<N> paramSet)
   {
-    this.TRw = paramSet;
+    this.abtV = paramSet;
   }
   
-  public final boolean fG(N paramN)
+  public final boolean fM(N paramN)
   {
     AppMethodBeat.i(61350);
-    boolean bool = this.TRw.add(paramN);
+    boolean bool = this.abtV.add(paramN);
     AppMethodBeat.o(61350);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlin.l.b.a.b.o.b.e
  * JD-Core Version:    0.7.0.1
  */

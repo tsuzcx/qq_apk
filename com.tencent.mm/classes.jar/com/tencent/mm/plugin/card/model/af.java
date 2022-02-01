@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bzm;
-import com.tencent.mm.protocal.protobuf.bzn;
+import com.tencent.mm.protocal.protobuf.chg;
+import com.tencent.mm.protocal.protobuf.chh;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class af
@@ -19,26 +19,26 @@ public final class af
   implements m
 {
   private i callback;
-  public String eaP;
-  public int pTZ;
-  public String pUa;
+  public String fUM;
   private final d rr;
+  public int tqa;
+  public String tqb;
   
   public af(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(112852);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bzm();
-    ((d.a)localObject).iLO = new bzn();
+    ((d.a)localObject).lBU = new chg();
+    ((d.a)localObject).lBV = new chh();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/giftcarditem";
     ((d.a)localObject).funcId = 1045;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (bzm)this.rr.iLK.iLR;
-    ((bzm)localObject).eaO = paramString1;
-    ((bzm)localObject).pPz = paramString2;
-    ((bzm)localObject).Mfg = paramInt;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (chg)d.b.b(this.rr.lBR);
+    ((chg)localObject).fUL = paramString1;
+    ((chg)localObject).sWA = paramString2;
+    ((chg)localObject).ToI = paramInt;
     AppMethodBeat.o(112852);
   }
   
@@ -62,12 +62,12 @@ public final class af
     Log.i("MicroMsg.NetSceneGiftCardItem", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (bzn)this.rr.iLL.iLR;
+      params = (chh)d.c.b(this.rr.lBS);
       if (params != null)
       {
-        this.eaP = params.eaP;
-        this.pUa = params.pUa;
-        this.pTZ = params.pTZ;
+        this.fUM = params.fUM;
+        this.tqb = params.tqb;
+        this.tqa = params.tqa;
       }
     }
     for (;;)
@@ -75,12 +75,12 @@ public final class af
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(112854);
       return;
-      params = (bzn)this.rr.iLL.iLR;
+      params = (chh)d.c.b(this.rr.lBS);
       if (params != null)
       {
-        this.eaP = params.eaP;
-        this.pUa = params.pUa;
-        this.pTZ = params.pTZ;
+        this.fUM = params.fUM;
+        this.tqb = params.tqb;
+        this.tqa = params.tqa;
       }
     }
   }

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.b.l;
+import com.tencent.mm.plugin.sns.b.m;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public final class t
   extends MAutoStorage<s>
-  implements l
+  implements m
 {
   public static final String[] SQL_CREATE;
   private ISQLiteDatabase db;
@@ -30,10 +30,10 @@ public final class t
     this.db = paramISQLiteDatabase;
   }
   
-  public final List<String> IZ(long paramLong)
+  public final List<String> Qs(long paramLong)
   {
     AppMethodBeat.i(97625);
-    Object localObject = JL(paramLong);
+    Object localObject = Rf(paramLong);
     if ((((s)localObject).field_memberList != null) && (!((s)localObject).field_memberList.equals("")))
     {
       localObject = Util.stringsToList(((s)localObject).field_memberList.split(","));
@@ -45,7 +45,15 @@ public final class t
     return localObject;
   }
   
-  public final s JL(long paramLong)
+  public final String Qt(long paramLong)
+  {
+    AppMethodBeat.i(97626);
+    String str = Rf(paramLong).field_tagName;
+    AppMethodBeat.o(97626);
+    return str;
+  }
+  
+  public final s Rf(long paramLong)
   {
     AppMethodBeat.i(97624);
     Cursor localCursor = this.db.rawQuery("select *, rowid from snsTagInfo2 where tagId = ? ", new String[] { String.valueOf(paramLong) }, 2);
@@ -58,7 +66,7 @@ public final class t
     return locals;
   }
   
-  public final int JM(long paramLong)
+  public final int Rg(long paramLong)
   {
     AppMethodBeat.i(97629);
     int i = this.db.delete("snsTagInfo2", " tagId = ? ", new String[] { String.valueOf(paramLong) });
@@ -66,15 +74,7 @@ public final class t
     return i;
   }
   
-  public final String Ja(long paramLong)
-  {
-    AppMethodBeat.i(97626);
-    String str = JL(paramLong).field_tagName;
-    AppMethodBeat.o(97626);
-    return str;
-  }
-  
-  public final boolean K(long paramLong, String paramString)
+  public final boolean S(long paramLong, String paramString)
   {
     AppMethodBeat.i(97630);
     paramString = "select tagId, tagName, count, rowid from snsTagInfo2 where tagId > 5 AND  tagName  =\"" + Util.escapeSqlValue(paramString) + "\" AND  tagId != " + paramLong;
@@ -110,10 +110,10 @@ public final class t
     }
   }
   
-  public final boolean aKt(String paramString)
+  public final boolean aUR(String paramString)
   {
     AppMethodBeat.i(97632);
-    s locals = JL(5L);
+    s locals = Rf(5L);
     if (Util.isNullOrNil(locals.field_memberList))
     {
       AppMethodBeat.o(97632);
@@ -124,10 +124,10 @@ public final class t
     return bool;
   }
   
-  public final boolean eZm()
+  public final boolean fNc()
   {
     AppMethodBeat.i(97633);
-    if (ffg().size() == 0)
+    if (fTb().size() == 0)
     {
       AppMethodBeat.o(97633);
       return false;
@@ -136,7 +136,7 @@ public final class t
     return true;
   }
   
-  public final List<Long> ffg()
+  public final List<Long> fTb()
   {
     AppMethodBeat.i(97627);
     Cursor localCursor = this.db.query("snsTagInfo2", new String[] { "tagId" }, null, null, null, null, null, 2);
@@ -149,7 +149,7 @@ public final class t
     return localArrayList;
   }
   
-  public final Cursor getCursor()
+  public final Cursor hK()
   {
     AppMethodBeat.i(97631);
     Cursor localCursor = this.db.rawQuery("select *, rowid from snsTagInfo2 where tagId > 5", null);
@@ -159,7 +159,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.t
  * JD-Core Version:    0.7.0.1
  */

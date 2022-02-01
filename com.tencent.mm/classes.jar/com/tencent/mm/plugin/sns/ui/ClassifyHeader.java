@@ -8,13 +8,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
 
 public class ClassifyHeader
   extends LinearLayout
 {
-  private TextView hPW;
+  private ImageView EPO;
+  private TextView kEs;
   private Context mContext;
-  private ImageView zky;
   
   public ClassifyHeader(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,16 +39,16 @@ public class ClassifyHeader
   {
     AppMethodBeat.i(97831);
     this.mContext = paramContext;
-    paramContext = View.inflate(this.mContext, 2131493650, this);
-    this.zky = ((ImageView)paramContext.findViewById(2131303140));
-    this.hPW = ((TextView)paramContext.findViewById(2131302288));
+    paramContext = View.inflate(this.mContext, i.g.classify_header, this);
+    this.EPO = ((ImageView)paramContext.findViewById(i.f.left_iv));
+    this.kEs = ((TextView)paramContext.findViewById(i.f.header_desc));
     AppMethodBeat.o(97831);
   }
   
   public void setDesc(String paramString)
   {
     AppMethodBeat.i(97832);
-    this.hPW.setText(String.valueOf(paramString));
+    this.kEs.setText(String.valueOf(paramString));
     AppMethodBeat.o(97832);
   }
 }

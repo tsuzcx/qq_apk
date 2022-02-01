@@ -6,73 +6,72 @@ import java.util.AbstractList;
 import java.util.Arrays;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 import java.util.RandomAccess;
 
 public final class h<E>
   extends AbstractList<E>
   implements RandomAccess
 {
-  private int TRZ;
-  private Object TSa;
+  private int abuy;
+  private Object abuz;
   
   public final void add(int paramInt, E paramE)
   {
     AppMethodBeat.i(61385);
-    if ((paramInt < 0) || (paramInt > this.TRZ))
+    if ((paramInt < 0) || (paramInt > this.abuy))
     {
-      paramE = new IndexOutOfBoundsException("Index: " + paramInt + ", Size: " + this.TRZ);
+      paramE = new IndexOutOfBoundsException("Index: " + paramInt + ", Size: " + this.abuy);
       AppMethodBeat.o(61385);
       throw paramE;
     }
-    if (this.TRZ == 0) {}
-    for (this.TSa = paramE;; this.TSa = new Object[] { paramE, this.TSa })
+    if (this.abuy == 0) {}
+    for (this.abuz = paramE;; this.abuz = new Object[] { paramE, this.abuz })
     {
-      this.TRZ += 1;
+      this.abuy += 1;
       this.modCount += 1;
       AppMethodBeat.o(61385);
       return;
-      if ((this.TRZ != 1) || (paramInt != 0)) {
+      if ((this.abuy != 1) || (paramInt != 0)) {
         break;
       }
     }
-    Object[] arrayOfObject1 = new Object[this.TRZ + 1];
-    if (this.TRZ == 1) {
-      arrayOfObject1[0] = this.TSa;
+    Object[] arrayOfObject1 = new Object[this.abuy + 1];
+    if (this.abuy == 1) {
+      arrayOfObject1[0] = this.abuz;
     }
     for (;;)
     {
       arrayOfObject1[paramInt] = paramE;
-      this.TSa = arrayOfObject1;
+      this.abuz = arrayOfObject1;
       break;
-      Object[] arrayOfObject2 = (Object[])this.TSa;
+      Object[] arrayOfObject2 = (Object[])this.abuz;
       System.arraycopy(arrayOfObject2, 0, arrayOfObject1, 0, paramInt);
-      System.arraycopy(arrayOfObject2, paramInt, arrayOfObject1, paramInt + 1, this.TRZ - paramInt);
+      System.arraycopy(arrayOfObject2, paramInt, arrayOfObject1, paramInt + 1, this.abuy - paramInt);
     }
   }
   
   public final boolean add(E paramE)
   {
     AppMethodBeat.i(61384);
-    if (this.TRZ == 0) {}
-    for (this.TSa = paramE;; this.TSa = new Object[] { this.TSa, paramE })
+    if (this.abuy == 0) {}
+    for (this.abuz = paramE;; this.abuz = new Object[] { this.abuz, paramE })
     {
-      this.TRZ += 1;
+      this.abuy += 1;
       this.modCount += 1;
       AppMethodBeat.o(61384);
       return true;
-      if (this.TRZ != 1) {
+      if (this.abuy != 1) {
         break;
       }
     }
-    Object[] arrayOfObject2 = (Object[])this.TSa;
+    Object[] arrayOfObject2 = (Object[])this.abuz;
     int k = arrayOfObject2.length;
     Object[] arrayOfObject1 = arrayOfObject2;
     int i;
-    if (this.TRZ >= k)
+    if (this.abuy >= k)
     {
       i = k * 3 / 2 + 1;
-      int j = this.TRZ + 1;
+      int j = this.abuy + 1;
       if (i >= j) {
         break label161;
       }
@@ -82,36 +81,36 @@ public final class h<E>
     for (;;)
     {
       arrayOfObject1 = new Object[i];
-      this.TSa = arrayOfObject1;
+      this.abuz = arrayOfObject1;
       System.arraycopy(arrayOfObject2, 0, arrayOfObject1, 0, k);
-      arrayOfObject1[this.TRZ] = paramE;
+      arrayOfObject1[this.abuy] = paramE;
       break;
     }
   }
   
   public final void clear()
   {
-    this.TSa = null;
-    this.TRZ = 0;
+    this.abuz = null;
+    this.abuy = 0;
     this.modCount += 1;
   }
   
   public final E get(int paramInt)
   {
     AppMethodBeat.i(61383);
-    if ((paramInt < 0) || (paramInt >= this.TRZ))
+    if ((paramInt < 0) || (paramInt >= this.abuy))
     {
-      localObject = new IndexOutOfBoundsException("Index: " + paramInt + ", Size: " + this.TRZ);
+      localObject = new IndexOutOfBoundsException("Index: " + paramInt + ", Size: " + this.abuy);
       AppMethodBeat.o(61383);
       throw ((Throwable)localObject);
     }
-    if (this.TRZ == 1)
+    if (this.abuy == 1)
     {
-      localObject = this.TSa;
+      localObject = this.abuz;
       AppMethodBeat.o(61383);
       return localObject;
     }
-    Object localObject = ((Object[])(Object[])this.TSa)[paramInt];
+    Object localObject = ((Object[])(Object[])this.abuz)[paramInt];
     AppMethodBeat.o(61383);
     return localObject;
   }
@@ -119,16 +118,16 @@ public final class h<E>
   public final Iterator<E> iterator()
   {
     AppMethodBeat.i(61388);
-    if (this.TRZ == 0)
+    if (this.abuy == 0)
     {
-      localObject = h.a.hLW();
+      localObject = h.a.iQn();
       if (localObject == null) {
-        atM(2);
+        aDG(2);
       }
       AppMethodBeat.o(61388);
       return localObject;
     }
-    if (this.TRZ == 1)
+    if (this.abuy == 1)
     {
       localObject = new b();
       AppMethodBeat.o(61388);
@@ -136,7 +135,7 @@ public final class h<E>
     }
     Object localObject = super.iterator();
     if (localObject == null) {
-      atM(3);
+      aDG(3);
     }
     AppMethodBeat.o(61388);
     return localObject;
@@ -146,36 +145,36 @@ public final class h<E>
   {
     AppMethodBeat.i(61387);
     Object localObject;
-    if ((paramInt < 0) || (paramInt >= this.TRZ))
+    if ((paramInt < 0) || (paramInt >= this.abuy))
     {
-      localObject = new IndexOutOfBoundsException("Index: " + paramInt + ", Size: " + this.TRZ);
+      localObject = new IndexOutOfBoundsException("Index: " + paramInt + ", Size: " + this.abuy);
       AppMethodBeat.o(61387);
       throw ((Throwable)localObject);
     }
-    if (this.TRZ == 1)
+    if (this.abuy == 1)
     {
-      localObject = this.TSa;
-      this.TSa = null;
+      localObject = this.abuz;
+      this.abuz = null;
     }
     for (;;)
     {
-      this.TRZ -= 1;
+      this.abuy -= 1;
       this.modCount += 1;
       AppMethodBeat.o(61387);
       return localObject;
-      Object[] arrayOfObject = (Object[])this.TSa;
+      Object[] arrayOfObject = (Object[])this.abuz;
       localObject = arrayOfObject[paramInt];
-      if (this.TRZ == 2)
+      if (this.abuy == 2)
       {
-        this.TSa = arrayOfObject[(1 - paramInt)];
+        this.abuz = arrayOfObject[(1 - paramInt)];
       }
       else
       {
-        int i = this.TRZ - paramInt - 1;
+        int i = this.abuy - paramInt - 1;
         if (i > 0) {
           System.arraycopy(arrayOfObject, paramInt + 1, arrayOfObject, paramInt, i);
         }
-        arrayOfObject[(this.TRZ - 1)] = null;
+        arrayOfObject[(this.abuy - 1)] = null;
       }
     }
   }
@@ -183,23 +182,23 @@ public final class h<E>
   public final E set(int paramInt, E paramE)
   {
     AppMethodBeat.i(61386);
-    if ((paramInt < 0) || (paramInt >= this.TRZ))
+    if ((paramInt < 0) || (paramInt >= this.abuy))
     {
-      paramE = new IndexOutOfBoundsException("Index: " + paramInt + ", Size: " + this.TRZ);
+      paramE = new IndexOutOfBoundsException("Index: " + paramInt + ", Size: " + this.abuy);
       AppMethodBeat.o(61386);
       throw paramE;
     }
     Object localObject;
-    if (this.TRZ == 1)
+    if (this.abuy == 1)
     {
-      localObject = this.TSa;
-      this.TSa = paramE;
+      localObject = this.abuz;
+      this.abuz = paramE;
     }
     for (paramE = localObject;; paramE = localObject)
     {
       AppMethodBeat.o(61386);
       return paramE;
-      Object[] arrayOfObject = (Object[])this.TSa;
+      Object[] arrayOfObject = (Object[])this.abuz;
       localObject = arrayOfObject[paramInt];
       arrayOfObject[paramInt] = paramE;
     }
@@ -207,49 +206,49 @@ public final class h<E>
   
   public final int size()
   {
-    return this.TRZ;
+    return this.abuy;
   }
   
   public final <T> T[] toArray(T[] paramArrayOfT)
   {
     AppMethodBeat.i(61389);
     if (paramArrayOfT == null) {
-      atM(4);
+      aDG(4);
     }
     int i = paramArrayOfT.length;
-    if (this.TRZ == 1) {
+    if (this.abuy == 1) {
       if (i != 0) {
-        paramArrayOfT[0] = this.TSa;
+        paramArrayOfT[0] = this.abuz;
       }
     }
     for (;;)
     {
-      if (i > this.TRZ) {
-        paramArrayOfT[this.TRZ] = null;
+      if (i > this.abuy) {
+        paramArrayOfT[this.abuy] = null;
       }
       if (paramArrayOfT == null) {
-        atM(7);
+        aDG(7);
       }
       AppMethodBeat.o(61389);
       return paramArrayOfT;
       paramArrayOfT = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), 1);
-      paramArrayOfT[0] = this.TSa;
+      paramArrayOfT[0] = this.abuz;
       if (paramArrayOfT == null) {
-        atM(5);
+        aDG(5);
       }
       AppMethodBeat.o(61389);
       return paramArrayOfT;
-      if (i < this.TRZ)
+      if (i < this.abuy)
       {
-        paramArrayOfT = (Object[])Arrays.copyOf((Object[])this.TSa, this.TRZ, paramArrayOfT.getClass());
+        paramArrayOfT = (Object[])Arrays.copyOf((Object[])this.abuz, this.abuy, paramArrayOfT.getClass());
         if (paramArrayOfT == null) {
-          atM(6);
+          aDG(6);
         }
         AppMethodBeat.o(61389);
         return paramArrayOfT;
       }
-      if (this.TRZ != 0) {
-        System.arraycopy(this.TSa, 0, paramArrayOfT, 0, this.TRZ);
+      if (this.abuy != 0) {
+        System.arraycopy(this.abuz, 0, paramArrayOfT, 0, this.abuy);
       }
     }
   }
@@ -257,17 +256,17 @@ public final class h<E>
   final class b
     extends h.c<E>
   {
-    private final int TSc;
+    private final int abuB;
     
     public b()
     {
       super();
       AppMethodBeat.i(61379);
-      this.TSc = h.a(h.this);
+      this.abuB = h.a(h.this);
       AppMethodBeat.o(61379);
     }
     
-    protected final E hLX()
+    protected final E iQo()
     {
       AppMethodBeat.i(61380);
       Object localObject = h.b(h.this);
@@ -275,12 +274,12 @@ public final class h<E>
       return localObject;
     }
     
-    protected final void hLY()
+    protected final void iQp()
     {
       AppMethodBeat.i(61381);
-      if (h.c(h.this) != this.TSc)
+      if (h.c(h.this) != this.abuB)
       {
-        ConcurrentModificationException localConcurrentModificationException = new ConcurrentModificationException("ModCount: " + h.d(h.this) + "; expected: " + this.TSc);
+        ConcurrentModificationException localConcurrentModificationException = new ConcurrentModificationException("ModCount: " + h.d(h.this) + "; expected: " + this.abuB);
         AppMethodBeat.o(61381);
         throw localConcurrentModificationException;
       }
@@ -290,40 +289,15 @@ public final class h<E>
     public final void remove()
     {
       AppMethodBeat.i(61382);
-      hLY();
+      iQp();
       h.this.clear();
       AppMethodBeat.o(61382);
-    }
-  }
-  
-  static abstract class c<T>
-    implements Iterator<T>
-  {
-    private boolean TSe;
-    
-    protected abstract T hLX();
-    
-    protected abstract void hLY();
-    
-    public final boolean hasNext()
-    {
-      return !this.TSe;
-    }
-    
-    public final T next()
-    {
-      if (this.TSe) {
-        throw new NoSuchElementException();
-      }
-      this.TSe = true;
-      hLY();
-      return hLX();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.o.h
  * JD-Core Version:    0.7.0.1
  */

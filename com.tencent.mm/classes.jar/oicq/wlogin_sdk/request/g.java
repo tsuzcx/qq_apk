@@ -10,25 +10,25 @@ public final class g
 {
   public g(i parami)
   {
-    this.Ucx = 2064;
-    this.Ucy = 2;
-    this.UcA = parami;
+    this.abFM = 2064;
+    this.abFN = 2;
+    this.abFP = parami;
   }
   
-  public final byte[] dn(byte[] paramArrayOfByte)
+  public final byte[] dM(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88065);
-    int k = this.UcA.UcK;
-    byte[] arrayOfByte1 = this.UcA.UcF.hPA();
-    Object localObject = this.UcA.UcG;
-    byte[] arrayOfByte2 = new byte[((oicq.wlogin_sdk.a.g)localObject).Uds];
+    int k = this.abFP.abFZ;
+    byte[] arrayOfByte1 = this.abFP.abFU.iUI();
+    Object localObject = this.abFP.abFV;
+    byte[] arrayOfByte2 = new byte[((oicq.wlogin_sdk.a.g)localObject).abGH];
     int i;
-    if (((oicq.wlogin_sdk.a.g)localObject).Uds <= 0)
+    if (((oicq.wlogin_sdk.a.g)localObject).abGH <= 0)
     {
       localObject = new f();
       ao localao = new ao();
-      localObject = ((f)localObject).jdMethod_do(arrayOfByte1);
-      paramArrayOfByte = localao.r(paramArrayOfByte, arrayOfByte2);
+      localObject = ((f)localObject).dN(arrayOfByte1);
+      paramArrayOfByte = localao.u(paramArrayOfByte, arrayOfByte2);
       arrayOfByte2 = new byte[localObject.length + paramArrayOfByte.length];
       if (arrayOfByte1.length <= 0) {
         break label218;
@@ -39,12 +39,12 @@ public final class g
     for (int j = 1;; j = 0)
     {
       System.arraycopy(paramArrayOfByte, 0, arrayOfByte2, i, paramArrayOfByte.length);
-      paramArrayOfByte = super.aa(arrayOfByte2, this.Ucy, j + 1);
-      a(this.Ucs, this.Ucx, this.UcA._uin, this.Ucu, this.Ucv, k, this.Ucw, paramArrayOfByte);
-      paramArrayOfByte = super.hPx();
+      paramArrayOfByte = super.ab(arrayOfByte2, this.abFN, j + 1);
+      a(this.abFH, this.abFM, this.abFP._uin, this.abFJ, this.abFK, k, this.abFL, paramArrayOfByte);
+      paramArrayOfByte = super.iUF();
       AppMethodBeat.o(88065);
       return paramArrayOfByte;
-      System.arraycopy(((oicq.wlogin_sdk.a.g)localObject).Ucr, ((oicq.wlogin_sdk.a.g)localObject).Udu, arrayOfByte2, 0, ((oicq.wlogin_sdk.a.g)localObject).Uds);
+      System.arraycopy(((oicq.wlogin_sdk.a.g)localObject).abFG, ((oicq.wlogin_sdk.a.g)localObject).abGJ, arrayOfByte2, 0, ((oicq.wlogin_sdk.a.g)localObject).abGH);
       break;
       label218:
       i = 0;
@@ -53,7 +53,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     oicq.wlogin_sdk.request.g
  * JD-Core Version:    0.7.0.1
  */

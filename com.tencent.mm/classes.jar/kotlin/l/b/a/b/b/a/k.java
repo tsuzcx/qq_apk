@@ -14,18 +14,18 @@ import kotlin.m.i;
 public final class k
   implements g
 {
-  private final List<g> TiL;
+  private final List<g> aaLF;
   
   public k(List<? extends g> paramList)
   {
     AppMethodBeat.i(56968);
-    this.TiL = paramList;
+    this.aaLF = paramList;
     AppMethodBeat.o(56968);
   }
   
   public k(g... paramVarArgs)
   {
-    this(e.W(paramVarArgs));
+    this(e.aa(paramVarArgs));
     AppMethodBeat.i(56969);
     AppMethodBeat.o(56969);
   }
@@ -33,9 +33,9 @@ public final class k
   public final c g(kotlin.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(56966);
-    p.h(paramb, "fqName");
-    paramb = i.e(j.z((Iterable)this.TiL), (kotlin.g.a.b)new a(paramb));
-    p.h(paramb, "$this$firstOrNull");
+    p.k(paramb, "fqName");
+    paramb = i.e(j.z((Iterable)this.aaLF), (kotlin.g.a.b)new a(paramb));
+    p.k(paramb, "$this$firstOrNull");
     paramb = paramb.iterator();
     if (!paramb.hasNext()) {}
     for (paramb = null;; paramb = paramb.next())
@@ -49,8 +49,8 @@ public final class k
   public final boolean h(kotlin.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(56965);
-    p.h(paramb, "fqName");
-    Iterator localIterator = j.z((Iterable)this.TiL).iterator();
+    p.k(paramb, "fqName");
+    Iterator localIterator = j.z((Iterable)this.aaLF).iterator();
     while (localIterator.hasNext()) {
       if (((g)localIterator.next()).h(paramb))
       {
@@ -65,7 +65,7 @@ public final class k
   public final boolean isEmpty()
   {
     AppMethodBeat.i(56964);
-    Object localObject = (Iterable)this.TiL;
+    Object localObject = (Iterable)this.aaLF;
     if ((!(localObject instanceof Collection)) || (!((Collection)localObject).isEmpty()))
     {
       localObject = ((Iterable)localObject).iterator();
@@ -84,7 +84,7 @@ public final class k
   public final Iterator<c> iterator()
   {
     AppMethodBeat.i(56967);
-    Iterator localIterator = i.c(j.z((Iterable)this.TiL), (kotlin.g.a.b)k.b.TiN).iterator();
+    Iterator localIterator = i.c(j.z((Iterable)this.aaLF), (kotlin.g.a.b)k.b.aaLH).iterator();
     AppMethodBeat.o(56967);
     return localIterator;
   }
@@ -101,7 +101,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.a.k
  * JD-Core Version:    0.7.0.1
  */

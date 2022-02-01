@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.c;
 
-import com.tencent.mm.plugin.appbrand.jsapi.bc;
+import com.tencent.mm.plugin.appbrand.jsapi.az;
 
 public final class b$c
-  extends bc
+  extends az
 {
   private static final int CTRL_INDEX = 129;
   private static final String NAME = "onVideoEnded";

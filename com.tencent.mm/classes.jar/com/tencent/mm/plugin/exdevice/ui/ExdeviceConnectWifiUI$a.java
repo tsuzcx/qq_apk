@@ -5,7 +5,7 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 final class ExdeviceConnectWifiUI$a
 {
-  public static String aT(int paramInt, String paramString)
+  public static String aS(int paramInt, String paramString)
   {
     AppMethodBeat.i(23960);
     if (Util.isNullOrNil(paramString))

@@ -10,6 +10,8 @@ import android.graphics.RectF;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
+import com.facebook.common.R.color;
+import com.facebook.common.R.dimen;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 @Deprecated
@@ -80,12 +82,12 @@ public class LikeBoxCountView
   {
     AppMethodBeat.i(8104);
     setWillNotDraw(false);
-    this.caretHeight = getResources().getDimension(2131166095);
-    this.caretWidth = getResources().getDimension(2131166096);
-    this.borderRadius = getResources().getDimension(2131166093);
+    this.caretHeight = getResources().getDimension(R.dimen.com_facebook_likeboxcountview_caret_height);
+    this.caretWidth = getResources().getDimension(R.dimen.com_facebook_likeboxcountview_caret_width);
+    this.borderRadius = getResources().getDimension(R.dimen.com_facebook_likeboxcountview_border_radius);
     this.borderPaint = new Paint();
-    this.borderPaint.setColor(getResources().getColor(2131100208));
-    this.borderPaint.setStrokeWidth(getResources().getDimension(2131166094));
+    this.borderPaint.setColor(getResources().getColor(R.color.com_facebook_likeboxcountview_border_color));
+    this.borderPaint.setStrokeWidth(getResources().getDimension(R.dimen.com_facebook_likeboxcountview_border_width));
     this.borderPaint.setStyle(Paint.Style.STROKE);
     initializeLikeCountLabel(paramContext);
     addView(this.likeCountLabel);
@@ -100,10 +102,10 @@ public class LikeBoxCountView
     paramContext = new FrameLayout.LayoutParams(-1, -1);
     this.likeCountLabel.setLayoutParams(paramContext);
     this.likeCountLabel.setGravity(17);
-    this.likeCountLabel.setTextSize(0, getResources().getDimension(2131166098));
-    this.likeCountLabel.setTextColor(getResources().getColor(2131100209));
-    this.textPadding = getResources().getDimensionPixelSize(2131166097);
-    this.additionalTextPadding = getResources().getDimensionPixelSize(2131166095);
+    this.likeCountLabel.setTextSize(0, getResources().getDimension(R.dimen.com_facebook_likeboxcountview_text_size));
+    this.likeCountLabel.setTextColor(getResources().getColor(R.color.com_facebook_likeboxcountview_text_color));
+    this.textPadding = getResources().getDimensionPixelSize(R.dimen.com_facebook_likeboxcountview_text_padding);
+    this.additionalTextPadding = getResources().getDimensionPixelSize(R.dimen.com_facebook_likeboxcountview_caret_height);
     AppMethodBeat.o(8105);
   }
   
@@ -191,7 +193,7 @@ public class LikeBoxCountView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.share.internal.LikeBoxCountView
  * JD-Core Version:    0.7.0.1
  */

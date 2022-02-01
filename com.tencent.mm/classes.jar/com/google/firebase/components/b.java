@@ -7,14 +7,14 @@ import com.google.firebase.a.a;
 public abstract interface b
 {
   @KeepForSdk
-  public abstract <T> a<T> A(Class<T> paramClass);
+  public abstract <T> T m(Class<T> paramClass);
   
   @KeepForSdk
-  public abstract <T> T y(Class<T> paramClass);
+  public abstract <T> a<T> o(Class<T> paramClass);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.components.b
  * JD-Core Version:    0.7.0.1
  */

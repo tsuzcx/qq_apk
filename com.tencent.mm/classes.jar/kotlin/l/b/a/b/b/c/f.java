@@ -24,8 +24,8 @@ public class f
   extends p
   implements d
 {
-  private static final kotlin.l.b.a.b.f.f Tkn;
-  protected final boolean lNt;
+  private static final kotlin.l.b.a.b.f.f aaNh;
+  protected final boolean oJH;
   
   static
   {
@@ -34,7 +34,7 @@ public class f
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      Tkn = kotlin.l.b.a.b.f.f.bua("<init>");
+      aaNh = kotlin.l.b.a.b.f.f.bHd("<init>");
       AppMethodBeat.o(57041);
       return;
     }
@@ -42,9 +42,9 @@ public class f
   
   protected f(e parame, k paramk, g paramg, boolean paramBoolean, b.a parama, an paraman)
   {
-    super(parame, paramk, paramg, Tkn, parama, paraman);
+    super(parame, paramk, paramg, aaNh, parama, paraman);
     AppMethodBeat.i(57015);
-    this.lNt = paramBoolean;
+    this.oJH = paramBoolean;
     AppMethodBeat.o(57015);
   }
   
@@ -52,12 +52,12 @@ public class f
   {
     AppMethodBeat.i(57016);
     if (paramg == null) {
-      atM(5);
+      aDG(5);
     }
     if (paraman == null) {
-      atM(6);
+      aDG(6);
     }
-    parame = new f(parame, null, paramg, true, b.a.TgW, paraman);
+    parame = new f(parame, null, paramg, true, b.a.aaJQ, paraman);
     AppMethodBeat.o(57016);
     return parame;
   }
@@ -67,7 +67,7 @@ public class f
     AppMethodBeat.i(57027);
     paraml = (d)super.b(paraml, paramw, paramba, parama, paramBoolean);
     if (paraml == null) {
-      atM(25);
+      aDG(25);
     }
     AppMethodBeat.o(57027);
     return paraml;
@@ -85,12 +85,12 @@ public class f
   {
     AppMethodBeat.i(57018);
     if (paramList == null) {
-      atM(13);
+      aDG(13);
     }
     if (paramba == null) {
-      atM(14);
+      aDG(14);
     }
-    a(paramList, paramba, hBY().hzO());
+    a(paramList, paramba, iGn().iEb());
     AppMethodBeat.o(57018);
     return this;
   }
@@ -99,23 +99,23 @@ public class f
   {
     AppMethodBeat.i(57017);
     if (paramList == null) {
-      atM(10);
+      aDG(10);
     }
     if (paramba == null) {
-      atM(11);
+      aDG(11);
     }
     if (paramList1 == null) {
-      atM(12);
+      aDG(12);
     }
-    Object localObject = hBY();
-    if (((e)localObject).hzG())
+    Object localObject = iGn();
+    if (((e)localObject).iDS())
     {
-      localObject = ((e)localObject).hzx();
+      localObject = ((e)localObject).iDJ();
       if (!(localObject instanceof e)) {}
     }
-    for (localObject = ((e)localObject).hAO();; localObject = null)
+    for (localObject = ((e)localObject).iFb();; localObject = null)
     {
-      super.a(null, (ak)localObject, paramList1, paramList, null, w.Tho, paramba);
+      super.a(null, (ak)localObject, paramList1, paramList, null, w.aaKi, paramba);
       AppMethodBeat.o(57017);
       return this;
     }
@@ -125,7 +125,7 @@ public class f
   {
     AppMethodBeat.i(57022);
     if (paramba == null) {
-      atM(18);
+      aDG(18);
     }
     paramba = (d)super.c(paramba);
     AppMethodBeat.o(57022);
@@ -136,18 +136,18 @@ public class f
   {
     AppMethodBeat.i(57026);
     if (paraml == null) {
-      atM(21);
+      aDG(21);
     }
     if (parama == null) {
-      atM(22);
+      aDG(22);
     }
     if (paramg == null) {
-      atM(23);
+      aDG(23);
     }
     if (paraman == null) {
-      atM(24);
+      aDG(24);
     }
-    if ((parama != b.a.TgW) && (parama != b.a.TgZ))
+    if ((parama != b.a.aaJQ) && (parama != b.a.aaJT))
     {
       paraml = new IllegalStateException("Attempt at creating a constructor that is not a declaration: \ncopy from: " + this + "\nnewOwner: " + paraml + "\nkind: " + parama);
       AppMethodBeat.o(57026);
@@ -159,65 +159,65 @@ public class f
       AppMethodBeat.o(57026);
       throw paraml;
     }
-    paraml = new f((e)paraml, this, paramg, this.lNt, b.a.TgW, paraman);
+    paraml = new f((e)paraml, this, paramg, this.oJH, b.a.aaJQ, paraman);
     AppMethodBeat.o(57026);
     return paraml;
   }
   
-  public final d hAL()
-  {
-    AppMethodBeat.i(57021);
-    d locald = (d)super.hAT();
-    if (locald == null) {
-      atM(17);
-    }
-    AppMethodBeat.o(57021);
-    return locald;
-  }
-  
-  public final e hAS()
-  {
-    AppMethodBeat.i(57020);
-    e locale = hBY();
-    if (locale == null) {
-      atM(16);
-    }
-    AppMethodBeat.o(57020);
-    return locale;
-  }
-  
-  public final Collection<? extends t> hAy()
+  public final Collection<? extends t> iEL()
   {
     AppMethodBeat.i(57024);
     Set localSet = Collections.emptySet();
     if (localSet == null) {
-      atM(19);
+      aDG(19);
     }
     AppMethodBeat.o(57024);
     return localSet;
   }
   
-  public final e hBY()
+  public final d iEY()
+  {
+    AppMethodBeat.i(57021);
+    d locald = (d)super.iFh();
+    if (locald == null) {
+      aDG(17);
+    }
+    AppMethodBeat.o(57021);
+    return locald;
+  }
+  
+  public final e iFf()
+  {
+    AppMethodBeat.i(57020);
+    e locale = iGn();
+    if (locale == null) {
+      aDG(16);
+    }
+    AppMethodBeat.o(57020);
+    return locale;
+  }
+  
+  public final boolean iFg()
+  {
+    return this.oJH;
+  }
+  
+  public final e iGn()
   {
     AppMethodBeat.i(57019);
-    e locale = (e)super.hzx();
+    e locale = (e)super.iDJ();
     if (locale == null) {
-      atM(15);
+      aDG(15);
     }
     AppMethodBeat.o(57019);
     return locale;
   }
   
-  public final boolean isPrimary()
-  {
-    return this.lNt;
-  }
-  
-  public final void x(Collection<? extends b> paramCollection)
+  public final void v(Collection<? extends b> paramCollection)
   {
     AppMethodBeat.i(57025);
     if (paramCollection == null) {
-      atM(20);
+      aDG(20);
     }
     if ((!$assertionsDisabled) && (!paramCollection.isEmpty()))
     {
@@ -230,7 +230,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.c.f
  * JD-Core Version:    0.7.0.1
  */

@@ -4,9 +4,11 @@ import android.util.DisplayMetrics;
 
 public abstract interface g
 {
-  public abstract boolean OD();
+  public abstract boolean RZ();
   
-  public abstract boolean OG();
+  public abstract boolean Sc();
+  
+  public abstract boolean Sd();
   
   public abstract d a(d.b paramb);
   
@@ -22,7 +24,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.platform.window.g
  * JD-Core Version:    0.7.0.1
  */

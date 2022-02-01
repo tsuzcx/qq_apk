@@ -1,15 +1,18 @@
 package com.tencent.kinda.framework.app;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import com.tencent.kinda.framework.R.string;
+import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.gen.KDeviceService;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.soter.d.d;
 import com.tencent.mm.plugin.soter.d.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.widget.a.f.a;
 
 public class KindaDeviceServiceImpl
   implements KDeviceService
@@ -21,23 +24,45 @@ public class KindaDeviceServiceImpl
   public KindaDeviceServiceImpl()
   {
     AppMethodBeat.i(18416);
-    this.mgr = ((com.tencent.mm.plugin.fingerprint.d.a)g.af(com.tencent.mm.plugin.fingerprint.d.a.class));
+    this.mgr = ((com.tencent.mm.plugin.fingerprint.d.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.fingerprint.d.a.class));
     AppMethodBeat.o(18416);
   }
   
   public void invokePhoneCall(String paramString)
   {
     AppMethodBeat.i(18424);
-    Log.i("KindaDeviceServiceImpl", "invokePhoneCall %s", new Object[] { paramString });
+    Log.i("KindaDeviceServiceImpl", "invokePhoneCall, phoneNumber: %s", new Object[] { paramString });
     Object localObject = new Intent("android.intent.action.DIAL");
     ((Intent)localObject).setFlags(268435456);
     ((Intent)localObject).setData(Uri.parse("tel:".concat(String.valueOf(paramString))));
-    paramString = MMApplicationContext.getContext();
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/kinda/framework/app/KindaDeviceServiceImpl", "invokePhoneCall", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/kinda/framework/app/KindaDeviceServiceImpl", "invokePhoneCall", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(18424);
+    try
+    {
+      Context localContext1 = MMApplicationContext.getContext();
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(localContext1, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/kinda/framework/app/KindaDeviceServiceImpl", "invokePhoneCall", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      localContext1.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(localContext1, "com/tencent/kinda/framework/app/KindaDeviceServiceImpl", "invokePhoneCall", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(18424);
+      return;
+    }
+    catch (ActivityNotFoundException localActivityNotFoundException)
+    {
+      com.tencent.mm.plugin.report.service.h.IzE.p(1589L, 5L, 1L);
+      Log.printErrStackTrace("KindaDeviceServiceImpl", localActivityNotFoundException, "invokePhoneCall: The device may not have a phone App installed! ", new Object[0]);
+      Context localContext2 = KindaContext.get();
+      if (localContext2 == null)
+      {
+        Log.e("KindaDeviceServiceImpl", "KindaDeviceServiceImpl invokePhoneCall() KindaContext.get() return null! case 9");
+        AppMethodBeat.o(18424);
+        return;
+      }
+      localObject = new f.a(localContext2);
+      ((f.a)localObject).bBl(localContext2.getString(R.string.wallet_card_unable_call, new Object[] { paramString }));
+      ((f.a)localObject).Qlf = true;
+      ((f.a)localObject).ayp(R.string.wallet_dialog_confirm);
+      ((f.a)localObject).show();
+      AppMethodBeat.o(18424);
+    }
   }
   
   public boolean isDeviceOpenBiometricVerification()
@@ -49,8 +74,8 @@ public class KindaDeviceServiceImpl
       AppMethodBeat.o(18417);
       return false;
     }
-    boolean bool1 = this.mgr.dJU();
-    boolean bool2 = this.mgr.dKc();
+    boolean bool1 = this.mgr.eot();
+    boolean bool2 = this.mgr.eoB();
     Log.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceOpenBiometricVerification, isDeviceHasFingerPrint: " + bool1 + ", isDeviceHasFaceID: " + bool2);
     if ((bool1) || (bool2))
     {
@@ -70,7 +95,7 @@ public class KindaDeviceServiceImpl
       AppMethodBeat.o(18419);
       return false;
     }
-    boolean bool = this.mgr.dKb();
+    boolean bool = this.mgr.eoA();
     Log.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceSupportFaceId, return: ".concat(String.valueOf(bool)));
     AppMethodBeat.o(18419);
     return bool;
@@ -85,7 +110,7 @@ public class KindaDeviceServiceImpl
       AppMethodBeat.o(18418);
       return false;
     }
-    boolean bool = this.mgr.dJT();
+    boolean bool = this.mgr.eos();
     Log.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceSupportFP, return".concat(String.valueOf(bool)));
     AppMethodBeat.o(18418);
     return bool;
@@ -108,7 +133,7 @@ public class KindaDeviceServiceImpl
   public String soterCpuId()
   {
     AppMethodBeat.i(18421);
-    String str = d.flM().FhU;
+    String str = d.gai().Lwz;
     Log.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.soterCpuId, return: ".concat(String.valueOf(str)));
     AppMethodBeat.o(18421);
     return str;
@@ -117,7 +142,7 @@ public class KindaDeviceServiceImpl
   public String soterUid()
   {
     AppMethodBeat.i(18422);
-    String str = d.flM().hFF;
+    String str = d.gai().ktM;
     Log.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceSupportFaceId, return: ".concat(String.valueOf(str)));
     AppMethodBeat.o(18422);
     return str;
@@ -127,10 +152,10 @@ public class KindaDeviceServiceImpl
   {
     AppMethodBeat.i(18423);
     if (paramInt == 0) {
-      if (this.mgr.dJT())
+      if (this.mgr.eos())
       {
-        this.mgr.pj(paramBoolean);
-        this.mgr.pk(false);
+        this.mgr.rD(paramBoolean);
+        this.mgr.rE(false);
       }
     }
     for (;;)
@@ -138,20 +163,20 @@ public class KindaDeviceServiceImpl
       Log.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.updateBiometricVerificationState, soterOpenType: " + paramInt + ", biometricVerificationState: " + paramBoolean);
       AppMethodBeat.o(18423);
       return;
-      if (this.mgr.dKb())
+      if (this.mgr.eoA())
       {
-        this.mgr.pk(paramBoolean);
-        this.mgr.pj(false);
+        this.mgr.rE(paramBoolean);
+        this.mgr.rD(false);
         continue;
-        if ((paramInt == 1) && (this.mgr.dJT()))
+        if ((paramInt == 1) && (this.mgr.eos()))
         {
-          this.mgr.pj(paramBoolean);
-          this.mgr.pk(false);
+          this.mgr.rD(paramBoolean);
+          this.mgr.rE(false);
         }
-        else if ((paramInt == 2) && (this.mgr.dKb()))
+        else if ((paramInt == 2) && (this.mgr.eoA()))
         {
-          this.mgr.pk(paramBoolean);
-          this.mgr.pj(false);
+          this.mgr.rE(paramBoolean);
+          this.mgr.rD(false);
         }
       }
     }

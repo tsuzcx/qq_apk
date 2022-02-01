@@ -2,6 +2,8 @@ package com.tencent.kinda.gen;
 
 public abstract interface KindaRealNameManager
 {
+  public abstract void reportRealnameAction(int paramInt);
+  
   public abstract void startRealNameImpl(VoidCallback paramVoidCallback1, VoidCallback paramVoidCallback2, ITransmitKvData paramITransmitKvData);
 }
 

@@ -9,28 +9,32 @@ import android.util.AttributeSet;
 import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.at;
+import com.tencent.mm.R.d;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.k;
+import com.tencent.mm.ui.aw;
 
 public class AnimImageView
   extends TextView
 {
-  private boolean ONW;
-  private AnimationDrawable ONX;
+  private boolean Whh;
+  private AnimationDrawable Whi;
   private Context context;
   private boolean isRunning;
-  private AlphaAnimation qUh;
-  private AnimationDrawable qUi;
   private int type;
+  private AlphaAnimation uwn;
+  private AnimationDrawable uwo;
   
   public AnimImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(33857);
     this.isRunning = false;
-    this.ONW = false;
+    this.Whh = false;
     this.type = 1;
     this.context = paramContext;
-    blc();
+    buR();
     AppMethodBeat.o(33857);
   }
   
@@ -39,48 +43,64 @@ public class AnimImageView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(33858);
     this.isRunning = false;
-    this.ONW = false;
+    this.Whh = false;
     this.type = 1;
     this.context = paramContext;
-    blc();
+    buR();
     AppMethodBeat.o(33858);
   }
   
-  private void blc()
+  private void buR()
   {
     AppMethodBeat.i(33859);
-    this.qUh = new AlphaAnimation(0.1F, 1.0F);
-    this.qUh.setDuration(1000L);
-    this.qUh.setRepeatCount(-1);
-    this.qUh.setRepeatMode(2);
-    this.qUi = new com.tencent.mm.ui.f.a();
-    Drawable localDrawable = at.aN(getContext(), 2130968753);
+    this.uwn = new AlphaAnimation(0.1F, 1.0F);
+    this.uwn.setDuration(1000L);
+    this.uwn.setRepeatCount(-1);
+    this.uwn.setRepeatMode(2);
+    this.uwo = new com.tencent.mm.ui.g.a();
+    Drawable localDrawable = aw.bf(getContext(), R.d.chatfrom_voice_playing_f1);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.qUi.addFrame(localDrawable, 300);
-    localDrawable = at.aN(getContext(), 2130968754);
+    this.uwo.addFrame(localDrawable, 300);
+    localDrawable = aw.bf(getContext(), R.d.chatfrom_voice_playing_f2);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.qUi.addFrame(localDrawable, 300);
-    localDrawable = at.aN(getContext(), 2130968755);
+    this.uwo.addFrame(localDrawable, 300);
+    localDrawable = aw.bf(getContext(), R.d.chatfrom_voice_playing_f3);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.qUi.addFrame(localDrawable, 300);
-    this.qUi.setOneShot(false);
-    this.qUi.setVisible(true, true);
-    this.ONX = new com.tencent.mm.ui.f.a();
-    localDrawable = getResources().getDrawable(2131689943);
+    this.uwo.addFrame(localDrawable, 300);
+    this.uwo.setOneShot(false);
+    this.uwo.setVisible(true, true);
+    this.Whi = new com.tencent.mm.ui.g.a();
+    localDrawable = getResources().getDrawable(R.k.chatto_voice_playing_f1);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.ONX.addFrame(localDrawable, 300);
-    localDrawable = getResources().getDrawable(2131689944);
+    this.Whi.addFrame(localDrawable, 300);
+    localDrawable = getResources().getDrawable(R.k.chatto_voice_playing_f2);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.ONX.addFrame(localDrawable, 300);
-    localDrawable = getResources().getDrawable(2131689945);
+    this.Whi.addFrame(localDrawable, 300);
+    localDrawable = getResources().getDrawable(R.k.chatto_voice_playing_f3);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.ONX.addFrame(localDrawable, 300);
-    this.ONX.setOneShot(false);
-    this.ONX.setVisible(true, true);
+    this.Whi.addFrame(localDrawable, 300);
+    this.Whi.setOneShot(false);
+    this.Whi.setVisible(true, true);
     AppMethodBeat.o(33859);
   }
   
-  public final void bWT()
+  public final void cTg()
+  {
+    AppMethodBeat.i(33856);
+    if ((this.uwn != null) && (this.uwn.isInitialized())) {
+      setAnimation(null);
+    }
+    if ((this.type == 1) || (this.type == 2))
+    {
+      this.isRunning = false;
+      setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      this.uwo.stop();
+      this.Whi.stop();
+    }
+    AppMethodBeat.o(33856);
+  }
+  
+  public final void cjx()
   {
     AppMethodBeat.i(33855);
     switch (this.type)
@@ -89,56 +109,40 @@ public class AnimImageView
       AppMethodBeat.o(33855);
       return;
     case 2: 
-      if (this.ONW) {
-        setBackgroundResource(2131100101);
+      if (this.Whh) {
+        setBackgroundResource(R.e.bubble_chat_from_bg_color);
       }
     case 1: 
       while (!this.isRunning)
       {
         this.isRunning = true;
-        if (!this.ONW) {
-          break label114;
+        if (!this.Whh) {
+          break label116;
         }
-        setCompoundDrawablesWithIntrinsicBounds(this.qUi, null, null, null);
-        this.qUi.stop();
-        this.qUi.start();
+        setCompoundDrawablesWithIntrinsicBounds(this.uwo, null, null, null);
+        this.uwo.stop();
+        this.uwo.start();
         AppMethodBeat.o(33855);
         return;
-        setBackgroundResource(2131100102);
+        setBackgroundResource(R.e.bubble_chat_to_bg_color);
       }
-      label114:
-      setCompoundDrawablesWithIntrinsicBounds(null, null, this.ONX, null);
-      this.ONX.stop();
-      this.ONX.start();
+      label116:
+      setCompoundDrawablesWithIntrinsicBounds(null, null, this.Whi, null);
+      this.Whi.stop();
+      this.Whi.start();
       AppMethodBeat.o(33855);
       return;
     }
-    if (this.ONW) {
-      setBackgroundDrawable(com.tencent.mm.cb.a.l(this.context, 2131231670));
+    if (this.Whh) {
+      setBackgroundDrawable(com.tencent.mm.ci.a.m(this.context, R.g.chatfrom_bg));
     }
     for (;;)
     {
-      setAnimation(this.qUh);
-      this.qUh.startNow();
+      setAnimation(this.uwn);
+      this.uwn.startNow();
       break;
-      setBackgroundDrawable(com.tencent.mm.cb.a.l(this.context, 2131231796));
+      setBackgroundDrawable(com.tencent.mm.ci.a.m(this.context, R.g.chatto_bg));
     }
-  }
-  
-  public final void cEA()
-  {
-    AppMethodBeat.i(33856);
-    if ((this.qUh != null) && (this.qUh.isInitialized())) {
-      setAnimation(null);
-    }
-    if ((this.type == 1) || (this.type == 2))
-    {
-      this.isRunning = false;
-      setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-      this.qUi.stop();
-      this.ONX.stop();
-    }
-    AppMethodBeat.o(33856);
   }
   
   public int getBaseline()
@@ -207,38 +211,38 @@ public class AnimImageView
   
   public void setFromVoice(boolean paramBoolean)
   {
-    this.ONW = paramBoolean;
+    this.Whh = paramBoolean;
   }
   
   public void setType(int paramInt)
   {
     AppMethodBeat.i(33854);
     this.type = paramInt;
-    if (this.ONW)
+    if (this.Whh)
     {
       if (paramInt == 2)
       {
-        setBackgroundResource(2131100101);
+        setBackgroundResource(R.e.bubble_chat_from_bg_color);
         AppMethodBeat.o(33854);
         return;
       }
-      setBackgroundDrawable(com.tencent.mm.cb.a.l(this.context, 2131231670));
+      setBackgroundDrawable(com.tencent.mm.ci.a.m(this.context, R.g.chatfrom_bg));
       AppMethodBeat.o(33854);
       return;
     }
     if (paramInt == 2)
     {
-      setBackgroundResource(2131100102);
+      setBackgroundResource(R.e.bubble_chat_to_bg_color);
       AppMethodBeat.o(33854);
       return;
     }
-    setBackgroundDrawable(com.tencent.mm.cb.a.l(this.context, 2131231796));
+    setBackgroundDrawable(com.tencent.mm.ci.a.m(this.context, R.g.chatto_bg));
     AppMethodBeat.o(33854);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.AnimImageView
  * JD-Core Version:    0.7.0.1
  */

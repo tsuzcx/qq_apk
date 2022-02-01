@@ -1,29 +1,63 @@
 package com.tencent.mm.model;
 
 import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.b;
 import com.tencent.mm.compatible.util.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
-public final class d
+public class d
 {
-  private b dtz;
-  a iBA;
-  private boolean iBB;
-  private b.a iBz;
+  private b fmh;
+  private b.a lrd;
+  private a lre;
+  private boolean lrf;
   private Context mAppContext;
   
-  public d()
+  private d()
   {
     AppMethodBeat.i(150150);
-    this.iBB = false;
+    this.lrf = false;
     this.mAppContext = MMApplicationContext.getContext();
     AppMethodBeat.o(150150);
   }
   
-  public static d aTu()
+  public static void a(d paramd, String paramString)
+  {
+    AppMethodBeat.i(203189);
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "MicroMsg.AudioHelperTool";
+    }
+    if (paramd != null) {
+      paramd.a(new d.1(str));
+    }
+    AppMethodBeat.o(203189);
+  }
+  
+  private boolean avy()
+  {
+    AppMethodBeat.i(203184);
+    if (this.fmh == null)
+    {
+      AppMethodBeat.o(203184);
+      return false;
+    }
+    if (this.lrf)
+    {
+      AppMethodBeat.o(203184);
+      return false;
+    }
+    this.fmh.avy();
+    this.lrf = true;
+    boolean bool = this.lrf;
+    AppMethodBeat.o(203184);
+    return bool;
+  }
+  
+  public static d bcs()
   {
     AppMethodBeat.i(150151);
     d locald = new d();
@@ -31,71 +65,51 @@ public final class d
     return locald;
   }
   
-  private boolean requestFocus()
-  {
-    AppMethodBeat.i(223527);
-    if (this.dtz == null)
-    {
-      AppMethodBeat.o(223527);
-      return false;
-    }
-    if (this.iBB)
-    {
-      AppMethodBeat.o(223527);
-      return false;
-    }
-    this.dtz.requestFocus();
-    this.iBB = true;
-    boolean bool = this.iBB;
-    AppMethodBeat.o(223527);
-    return bool;
-  }
-  
   public final boolean a(a parama)
   {
     AppMethodBeat.i(150152);
-    this.iBA = parama;
-    boolean bool = aTv();
+    this.lre = parama;
+    boolean bool = bct();
     AppMethodBeat.o(150152);
     return bool;
   }
   
-  public final boolean aTv()
-  {
-    AppMethodBeat.i(223528);
-    b localb = new b((byte)0);
-    if (this.dtz == null) {
-      this.dtz = new b(this.mAppContext);
-    }
-    if (this.iBz != localb) {
-      this.iBz = localb;
-    }
-    this.dtz.a(this.iBz);
-    boolean bool = requestFocus();
-    AppMethodBeat.o(223528);
-    return bool;
-  }
-  
-  public final boolean apm()
+  public final boolean avz()
   {
     AppMethodBeat.i(150153);
-    boolean bool = fp(false);
+    boolean bool = fZ(false);
     AppMethodBeat.o(150153);
     return bool;
   }
   
-  public final boolean fp(boolean paramBoolean)
+  public final boolean bct()
+  {
+    AppMethodBeat.i(203187);
+    b localb = new b((byte)0);
+    if (this.fmh == null) {
+      this.fmh = new b(this.mAppContext);
+    }
+    if (this.lrd != localb) {
+      this.lrd = localb;
+    }
+    this.fmh.a(this.lrd);
+    boolean bool = avy();
+    AppMethodBeat.o(203187);
+    return bool;
+  }
+  
+  public final boolean fZ(boolean paramBoolean)
   {
     AppMethodBeat.i(150154);
-    if (this.dtz != null) {}
-    for (boolean bool = this.dtz.apm();; bool = false)
+    if (this.fmh != null) {}
+    for (boolean bool = this.fmh.avz();; bool = false)
     {
-      this.iBB = false;
+      this.lrf = false;
       if (paramBoolean)
       {
-        this.dtz = null;
-        this.iBz = null;
-        this.iBA = null;
+        this.fmh = null;
+        this.lrd = null;
+        this.lre = null;
       }
       AppMethodBeat.o(150154);
       return bool;
@@ -104,13 +118,13 @@ public final class d
   
   public static abstract interface a
   {
-    public abstract void aTw();
+    public abstract void bcu();
     
-    public abstract void aTx();
+    public abstract void bcv();
     
-    public abstract void aTy();
+    public abstract void bcw();
     
-    public abstract void aTz();
+    public abstract void bcx();
   }
   
   final class b
@@ -118,7 +132,7 @@ public final class d
   {
     private b() {}
     
-    public final void iZ(int paramInt)
+    public final void kp(int paramInt)
     {
       AppMethodBeat.i(150149);
       switch (paramInt)
@@ -138,30 +152,30 @@ public final class d
               AppMethodBeat.o(150149);
               return;
               Log.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_GAIN");
-            } while (d.this.iBA == null);
-            d.this.iBA.aTw();
+            } while (d.a(d.this) == null);
+            d.a(d.this).bcu();
             AppMethodBeat.o(150149);
             return;
             Log.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_LOSS");
-          } while (d.this.iBA == null);
-          d.this.iBA.aTx();
+          } while (d.a(d.this) == null);
+          d.a(d.this).bcv();
           AppMethodBeat.o(150149);
           return;
           Log.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_LOSS_TRANSIENT");
-        } while (d.this.iBA == null);
-        d.this.iBA.aTy();
+        } while (d.a(d.this) == null);
+        d.a(d.this).bcw();
         AppMethodBeat.o(150149);
         return;
         Log.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK");
-      } while (d.this.iBA == null);
-      d.this.iBA.aTz();
+      } while (d.a(d.this) == null);
+      d.a(d.this).bcx();
       AppMethodBeat.o(150149);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.model.d
  * JD-Core Version:    0.7.0.1
  */

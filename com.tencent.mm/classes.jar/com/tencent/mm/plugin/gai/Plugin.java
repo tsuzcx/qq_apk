@@ -6,9 +6,9 @@ import android.content.SharedPreferences.Editor;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.model.be;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -20,7 +20,7 @@ public class Plugin
   public Plugin()
   {
     AppMethodBeat.i(25273);
-    boolean bool = MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_google_aid", g.aps()).getBoolean("already_report_googleaid", false);
+    boolean bool = MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_google_aid", g.avK()).getBoolean("already_report_googleaid", false);
     Log.i("MicroMsg.Plugin.gai", "gai Plugin! %b", new Object[] { Boolean.valueOf(bool) });
     if (!bool) {
       try
@@ -50,7 +50,7 @@ public class Plugin
           int i = 9;
         }
         Log.w("MicroMsg.Plugin.gai", "gp service invalid, just ignore");
-        MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_google_aid", g.aps()).edit().putBoolean("already_report_googleaid", true).commit();
+        MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_google_aid", g.avK()).edit().putBoolean("already_report_googleaid", true).commit();
       }
     }
     AppMethodBeat.o(25273);
@@ -64,7 +64,7 @@ public class Plugin
     return locala;
   }
   
-  public bd createSubCore()
+  public be createSubCore()
   {
     AppMethodBeat.i(25275);
     com.tencent.mm.plugin.gai.b.a locala = new com.tencent.mm.plugin.gai.b.a();

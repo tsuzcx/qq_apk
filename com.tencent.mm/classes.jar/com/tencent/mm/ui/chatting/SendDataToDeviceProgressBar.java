@@ -10,22 +10,25 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.g;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 
 class SendDataToDeviceProgressBar
   extends ImageView
 {
+  private int AFN;
   private int bottom;
-  private MMHandler hAk;
+  private MMHandler knk;
   private int left;
   private Context mContext;
   private Paint mPaint;
-  private int rHF;
-  private int rHG;
-  private Runnable rHH;
   private int right;
+  private int startAngle;
   private int top;
-  private int vXu;
+  private int vno;
+  private Runnable vnp;
   
   public SendDataToDeviceProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,14 +39,14 @@ class SendDataToDeviceProgressBar
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(34884);
-    this.rHF = 2;
+    this.startAngle = 2;
     this.left = -1;
     this.top = -1;
     this.right = -1;
     this.bottom = -1;
-    this.rHG = -1;
-    this.vXu = 10;
-    this.rHH = new Runnable()
+    this.vno = -1;
+    this.AFN = 10;
+    this.vnp = new Runnable()
     {
       public final void run()
       {
@@ -52,41 +55,41 @@ class SendDataToDeviceProgressBar
         AppMethodBeat.o(34883);
       }
     };
-    setImageResource(2131234503);
+    setImageResource(R.g.dow);
     this.mContext = paramContext;
     this.mPaint = new Paint();
     this.mPaint.setAntiAlias(true);
     this.mPaint.setStyle(Paint.Style.STROKE);
-    this.left = this.mContext.getResources().getDimensionPixelSize(2131166907);
+    this.left = this.mContext.getResources().getDimensionPixelSize(R.f.send_data_progress_bar_circle_margin);
     this.top = this.left;
-    this.rHG = this.mContext.getResources().getDimensionPixelSize(2131166908);
-    this.hAk = new MMHandler(Looper.getMainLooper());
+    this.vno = this.mContext.getResources().getDimensionPixelSize(R.f.send_data_progress_bar_circle_width);
+    this.knk = new MMHandler(Looper.getMainLooper());
     AppMethodBeat.o(34884);
   }
   
-  private void gOp()
+  private void hNA()
   {
     AppMethodBeat.i(34887);
-    this.hAk.removeCallbacks(this.rHH);
-    this.hAk.postDelayed(this.rHH, 0L);
+    this.knk.removeCallbacks(this.vnp);
+    this.knk.postDelayed(this.vnp, 0L);
     AppMethodBeat.o(34887);
   }
   
-  public final void amr(int paramInt)
+  public final void avr(int paramInt)
   {
     AppMethodBeat.i(34885);
     int i = paramInt;
     if (paramInt >= 100) {
       i = 100;
     }
-    this.rHF = ((int)(i / 100.0F * 360.0F));
-    gOp();
+    this.startAngle = ((int)(i / 100.0F * 360.0F));
+    hNA();
     AppMethodBeat.o(34885);
   }
   
   public final int getProgress()
   {
-    return (int)(this.rHF / 360.0F * 100.0F);
+    return (int)(this.startAngle / 360.0F * 100.0F);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -94,8 +97,8 @@ class SendDataToDeviceProgressBar
     AppMethodBeat.i(34886);
     super.onDraw(paramCanvas);
     int i = getWidth() / 2;
-    this.mPaint.setColor(this.mContext.getResources().getColor(2131100966));
-    this.mPaint.setStrokeWidth(this.rHG);
+    this.mPaint.setColor(this.mContext.getResources().getColor(R.e.dkG));
+    this.mPaint.setStrokeWidth(this.vno);
     if (this.right == -1) {
       this.right = (i * 2 - this.left);
     }
@@ -103,20 +106,20 @@ class SendDataToDeviceProgressBar
       this.bottom = this.right;
     }
     RectF localRectF = new RectF(this.left, this.top, this.right, this.bottom);
-    paramCanvas.drawArc(localRectF, 270.0F, this.rHF, false, this.mPaint);
-    int j = this.rHF + 270;
+    paramCanvas.drawArc(localRectF, 270.0F, this.startAngle, false, this.mPaint);
+    int j = this.startAngle + 270;
     i = j;
     if (j > 360) {
       i = j - 360;
     }
-    this.mPaint.setColor(this.mContext.getResources().getColor(2131100963));
-    paramCanvas.drawArc(localRectF, i, 360 - this.rHF, false, this.mPaint);
+    this.mPaint.setColor(this.mContext.getResources().getColor(R.e.dkF));
+    paramCanvas.drawArc(localRectF, i, 360 - this.startAngle, false, this.mPaint);
     AppMethodBeat.o(34886);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.SendDataToDeviceProgressBar
  * JD-Core Version:    0.7.0.1
  */

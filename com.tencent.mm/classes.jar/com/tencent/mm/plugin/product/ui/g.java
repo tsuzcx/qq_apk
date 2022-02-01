@@ -2,30 +2,29 @@ package com.tencent.mm.plugin.product.ui;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.v4.view.q;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class g
-  extends q
+  extends androidx.viewpager.widget.a
 {
-  private List<String> BaA;
-  private ArrayList<b> BaV;
-  private boolean BaW;
-  a BaX;
-  Context mContext;
+  private ArrayList<b> GUT;
+  private boolean GUU;
+  a GUV;
+  private List<String> GUy;
+  private Context mContext;
   
   public g(Context paramContext)
   {
@@ -35,29 +34,29 @@ public final class g
   private g(Context paramContext, byte paramByte)
   {
     AppMethodBeat.i(66978);
-    this.BaW = false;
-    this.BaX = null;
+    this.GUU = false;
+    this.GUV = null;
     this.mContext = paramContext;
-    this.BaA = null;
-    setData(this.BaA);
+    this.GUy = null;
+    setData(this.GUy);
     AppMethodBeat.o(66978);
   }
   
-  private void eDD()
+  private void dBo()
   {
     AppMethodBeat.i(66979);
-    if (this.BaV == null) {
-      this.BaV = new ArrayList();
+    if (this.GUT == null) {
+      this.GUT = new ArrayList();
     }
     for (;;)
     {
-      Iterator localIterator = this.BaA.iterator();
+      Iterator localIterator = this.GUy.iterator();
       while (localIterator.hasNext())
       {
         b localb = new b((String)localIterator.next());
-        this.BaV.add(localb);
+        this.GUT.add(localb);
       }
-      this.BaV.clear();
+      this.GUT.clear();
     }
     AppMethodBeat.o(66979);
   }
@@ -66,8 +65,8 @@ public final class g
   {
     AppMethodBeat.i(66982);
     Log.d("MicroMsg.MallProductImageAdapter", "destroy item");
-    if (this.BaV != null) {
-      paramViewGroup.removeView(((b)this.BaV.get(paramInt)).dPk);
+    if (this.GUT != null) {
+      paramViewGroup.removeView(((b)this.GUT.get(paramInt)).fIv);
     }
     AppMethodBeat.o(66982);
   }
@@ -75,17 +74,17 @@ public final class g
   public final int getCount()
   {
     AppMethodBeat.i(66981);
-    if (this.BaA == null)
+    if (this.GUy == null)
     {
       AppMethodBeat.o(66981);
       return 0;
     }
-    if (this.BaW)
+    if (this.GUU)
     {
       AppMethodBeat.o(66981);
       return 2147483647;
     }
-    int i = this.BaA.size();
+    int i = this.GUy.size();
     AppMethodBeat.o(66981);
     return i;
   }
@@ -98,11 +97,11 @@ public final class g
   public final Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
     AppMethodBeat.i(66983);
-    if (this.BaV != null)
+    if (this.GUT != null)
     {
       Log.d("MicroMsg.MallProductImageAdapter", "data valid");
-      paramViewGroup.addView(((b)this.BaV.get(paramInt)).dPk, 0);
-      paramViewGroup = ((b)this.BaV.get(paramInt)).dPk;
+      paramViewGroup.addView(((b)this.GUT.get(paramInt)).fIv, 0);
+      paramViewGroup = ((b)this.GUT.get(paramInt)).fIv;
       AppMethodBeat.o(66983);
       return paramViewGroup;
     }
@@ -122,45 +121,45 @@ public final class g
     if (paramList != null)
     {
       if (paramList.size() > 0) {
-        this.BaA = paramList;
+        this.GUy = paramList;
       }
-      eDD();
+      dBo();
     }
     AppMethodBeat.o(66980);
   }
   
   public static abstract interface a
   {
-    public abstract void eDz();
+    public abstract void fps();
   }
   
   final class b
     implements u.a
   {
-    public ImageView dPk;
+    public ImageView fIv;
     public String url;
     
     public b(String paramString)
     {
       AppMethodBeat.i(66976);
-      this.dPk = null;
+      this.fIv = null;
       this.url = paramString;
-      this.dPk = ((ImageView)((LayoutInflater)g.this.mContext.getSystemService("layout_inflater")).inflate(2131495962, null));
+      this.fIv = ((ImageView)((LayoutInflater)g.a(g.this).getSystemService("layout_inflater")).inflate(a.g.product_image_item, null));
       paramString = u.a(new c(paramString));
-      this.dPk.setImageBitmap(paramString);
-      this.dPk.setOnClickListener(new View.OnClickListener()
+      this.fIv.setImageBitmap(paramString);
+      this.fIv.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(66974);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/product/ui/MallProductImageAdapter$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/product/ui/MallProductImageAdapter$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           Log.i("MicroMsg.MallProductImageAdapter", "henryyr user: clicked the ImageView");
-          if (g.this.BaX != null) {
-            g.this.BaX.eDz();
+          if (g.b(g.this) != null) {
+            g.b(g.this).fps();
           }
-          a.a(this, "com/tencent/mm/plugin/product/ui/MallProductImageAdapter$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/product/ui/MallProductImageAdapter$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(66974);
         }
       });
@@ -183,12 +182,12 @@ public final class g
         return;
       }
       if (paramString.equals(this.url)) {
-        this.dPk.post(new Runnable()
+        this.fIv.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(66975);
-            g.b.this.dPk.setImageBitmap(paramBitmap);
+            g.b.this.fIv.setImageBitmap(paramBitmap);
             AppMethodBeat.o(66975);
           }
         });
@@ -199,7 +198,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.g
  * JD-Core Version:    0.7.0.1
  */

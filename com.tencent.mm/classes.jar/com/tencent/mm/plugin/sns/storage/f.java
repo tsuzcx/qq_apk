@@ -8,27 +8,27 @@ public final class f
   public static boolean a(String paramString, SnsInfo paramSnsInfo)
   {
     AppMethodBeat.i(97445);
-    if (y.aNz(paramString))
+    if (y.aYj(paramString))
     {
-      bool = aj.faO().b(y.aOa(paramString), paramSnsInfo);
+      bool = aj.fOI().b(y.aYS(paramString), paramSnsInfo);
       AppMethodBeat.o(97445);
       return bool;
     }
-    boolean bool = aj.faR().b(y.aOa(paramString), paramSnsInfo.getAdSnsInfo());
+    boolean bool = aj.fOL().b(y.aYS(paramString), paramSnsInfo.getAdSnsInfo());
     AppMethodBeat.o(97445);
     return bool;
   }
   
-  public static SnsInfo aQl(String paramString)
+  public static SnsInfo bbk(String paramString)
   {
     AppMethodBeat.i(97444);
-    if (y.aNz(paramString))
+    if (y.aYj(paramString))
     {
-      paramString = aj.faO().JJ(y.aOa(paramString));
+      paramString = aj.fOI().Rd(y.aYS(paramString));
       AppMethodBeat.o(97444);
       return paramString;
     }
-    paramString = aj.faR().JE(y.aOa(paramString));
+    paramString = aj.fOL().QX(y.aYS(paramString));
     if (paramString != null)
     {
       paramString = paramString.convertToSnsInfo();
@@ -39,16 +39,16 @@ public final class f
     return null;
   }
   
-  public static SnsInfo aQm(String paramString)
+  public static SnsInfo bbl(String paramString)
   {
     AppMethodBeat.i(97446);
-    if (y.aNz(paramString))
+    if (y.aYj(paramString))
     {
-      paramString = aj.faO().Zr(y.aQI(paramString));
+      paramString = aj.fOI().agI(y.bbI(paramString));
       AppMethodBeat.o(97446);
       return paramString;
     }
-    paramString = aj.faR().Zp(y.aQI(paramString));
+    paramString = aj.fOL().agG(y.bbI(paramString));
     if (paramString != null)
     {
       paramString = paramString.convertToSnsInfo();
@@ -61,7 +61,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.f
  * JD-Core Version:    0.7.0.1
  */

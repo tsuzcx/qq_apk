@@ -8,15 +8,15 @@ import java.io.RandomAccessFile;
 
 public final class a
 {
-  public a dje;
-  public b djf = null;
+  public a faL;
+  public b faM = null;
   
   public a(b paramb)
   {
-    this.djf = paramb;
+    this.faM = paramb;
   }
   
-  public static a fO(String paramString)
+  public static a gy(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(962);
@@ -42,25 +42,25 @@ public final class a
         AppMethodBeat.o(962);
       }
     }
-    localObject = a.U(k(paramString, i - 8, 8));
+    localObject = a.ab(l(paramString, i - 8, 8));
     if (localObject == null)
     {
       AppMethodBeat.o(962);
       return null;
     }
-    if (((a)localObject).djh >= 0)
+    if (((a)localObject).faO >= 0)
     {
       localb = new b();
-      localb.parseFrom(k(paramString, i - ((a)localObject).djh - 8, ((a)localObject).djh));
+      localb.parseFrom(l(paramString, i - ((a)localObject).faO - 8, ((a)localObject).faO));
       paramString = new a(localb);
-      paramString.dje = ((a)localObject);
+      paramString.faL = ((a)localObject);
       AppMethodBeat.o(962);
       return paramString;
     }
     return null;
   }
   
-  public static boolean fP(String paramString)
+  public static boolean gz(String paramString)
   {
     AppMethodBeat.i(963);
     if (paramString == null)
@@ -74,14 +74,14 @@ public final class a
       AppMethodBeat.o(963);
       return false;
     }
-    a locala = fO(paramString);
-    if ((locala != null) && (locala.djf != null)) {
+    a locala = gy(paramString);
+    if ((locala != null) && (locala.faM != null)) {
       try
       {
         paramString = new File(paramString);
         if (paramString.exists())
         {
-          boolean bool = locala.djf.apkMd5.equalsIgnoreCase(g.a(paramString, (int)(localFile.length() - (locala.dje.djh + 8) - 2L), new byte[] { 0, 0 }));
+          boolean bool = locala.faM.apkMd5.equalsIgnoreCase(g.a(paramString, (int)(localFile.length() - (locala.faL.faO + 8) - 2L), new byte[] { 0, 0 }));
           AppMethodBeat.o(963);
           return bool;
         }
@@ -92,7 +92,7 @@ public final class a
     return false;
   }
   
-  private static byte[] k(String paramString, int paramInt1, int paramInt2)
+  private static byte[] l(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(964);
     if (paramString == null)
@@ -157,20 +157,20 @@ public final class a
     }
   }
   
-  public final int A(File paramFile)
+  public final int t(File paramFile)
   {
     AppMethodBeat.i(961);
     try
     {
-      if (fO(paramFile.getAbsolutePath()) != null)
+      if (gy(paramFile.getAbsolutePath()) != null)
       {
         System.out.println("Error: duplicate append apk external info!");
         AppMethodBeat.o(961);
         return -1;
       }
-      byte[] arrayOfByte = this.djf.toByteArray();
+      byte[] arrayOfByte = this.faM.toByteArray();
       Object localObject = new a(arrayOfByte.length);
-      localObject = a.bt(a.djg << 32 | ((a)localObject).djh);
+      localObject = a.bG(a.faN << 32 | ((a)localObject).faO);
       int i = (byte)((arrayOfByte.length + 8) % 256);
       int j = (byte)((arrayOfByte.length + 8) / 256);
       RandomAccessFile localRandomAccessFile = new RandomAccessFile(paramFile, "rw");
@@ -194,22 +194,22 @@ public final class a
   
   public static final class a
   {
-    static final long djg;
-    public int djh = 0;
+    static final long faN;
+    public int faO = 0;
     
     static
     {
       AppMethodBeat.i(959);
-      djg = "Micromsg".hashCode();
+      faN = "Micromsg".hashCode();
       AppMethodBeat.o(959);
     }
     
     public a(int paramInt)
     {
-      this.djh = paramInt;
+      this.faO = paramInt;
     }
     
-    public static a U(byte[] paramArrayOfByte)
+    public static a ab(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(960);
       long l;
@@ -219,7 +219,7 @@ public final class a
         l = 0L;
         i = 0;
         if (i >= paramArrayOfByte.length) {
-          if (l >> 32 != djg) {
+          if (l >> 32 != faN) {
             break label75;
           }
         }
@@ -235,7 +235,7 @@ public final class a
       }
     }
     
-    static byte[] bt(long paramLong)
+    static byte[] bG(long paramLong)
     {
       byte[] arrayOfByte = new byte[8];
       int i = 0;
@@ -252,7 +252,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.d.a
  * JD-Core Version:    0.7.0.1
  */

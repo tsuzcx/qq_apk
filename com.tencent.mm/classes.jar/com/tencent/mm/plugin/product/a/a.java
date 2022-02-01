@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.product.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bd;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.be;
 import com.tencent.mm.model.y;
 import com.tencent.mm.plugin.product.b.c;
 import com.tencent.mm.plugin.product.b.d;
@@ -11,51 +12,51 @@ import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class a
-  implements bd
+  implements be
 {
-  private c AYT;
-  private d AYU;
-  private com.tencent.mm.plugin.product.b.a AYV;
+  private c GSR;
+  private d GSS;
+  private com.tencent.mm.plugin.product.b.a GST;
   
   public a()
   {
     AppMethodBeat.i(66847);
-    this.AYT = null;
-    this.AYU = null;
-    this.AYV = new com.tencent.mm.plugin.product.b.a();
+    this.GSR = null;
+    this.GSS = null;
+    this.GST = new com.tencent.mm.plugin.product.b.a();
     AppMethodBeat.o(66847);
   }
   
-  public static a eDb()
+  public static a foU()
   {
     AppMethodBeat.i(66848);
-    a locala = (a)y.at(a.class);
+    a locala = (a)y.as(a.class);
     AppMethodBeat.o(66848);
     return locala;
   }
   
-  public static c eDc()
+  public static c foV()
   {
     AppMethodBeat.i(66851);
-    g.aAf().azk();
-    if (eDb().AYT == null) {
-      eDb().AYT = new c();
+    h.aHE().aGH();
+    if (foU().GSR == null) {
+      foU().GSR = new c();
     }
-    c localc = eDb().AYT;
+    c localc = foU().GSR;
     AppMethodBeat.o(66851);
     return localc;
   }
   
   public void clearPluginData(int paramInt) {}
   
-  public final d eDd()
+  public final d foW()
   {
     AppMethodBeat.i(66852);
-    g.aAf().azk();
-    if (this.AYU == null) {
-      this.AYU = new d();
+    h.aHE().aGH();
+    if (this.GSS == null) {
+      this.GSS = new d();
     }
-    d locald = this.AYU;
+    d locald = this.GSS;
     AppMethodBeat.o(66852);
     return locald;
   }
@@ -68,15 +69,15 @@ public class a
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(66849);
-    this.AYT = null;
-    EventCenter.instance.addListener(this.AYV);
+    this.GSR = null;
+    EventCenter.instance.addListener(this.GST);
     AppMethodBeat.o(66849);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(66850);
-    EventCenter.instance.removeListener(this.AYV);
+    EventCenter.instance.removeListener(this.GST);
     AppMethodBeat.o(66850);
   }
   
@@ -84,7 +85,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.product.a.a
  * JD-Core Version:    0.7.0.1
  */

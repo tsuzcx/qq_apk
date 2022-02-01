@@ -1,440 +1,621 @@
 package com.tencent.mm.modelvideo;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cly;
-import com.tencent.mm.protocal.protobuf.eeq;
+import com.tencent.mm.an.h.d;
+import com.tencent.mm.app.o.a;
+import com.tencent.mm.aq.a;
+import com.tencent.mm.aq.e;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.y;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.XmlParser;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.storagebase.h.b;
+import com.tencent.mm.vfs.u;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-public final class s
+public class s
+  implements be
 {
-  public int cSx;
-  String clientId;
-  public long createTime;
-  public int dRQ;
-  public long dTS;
-  public String dWq;
-  public String ean;
-  public String ebj;
-  public String fileName;
-  public int gqW;
-  public int iFw;
-  public int iKP;
-  public String jpP;
-  public int jqP;
-  public long jqz;
-  private boolean jsA;
-  private boolean jsB;
-  public String jsh;
-  public int jsj;
-  public int jsk;
-  public int jsl;
-  public long jsm;
-  public long jsn;
-  public int jso;
-  public int jsp;
-  public int jsq;
-  public int jsr;
-  public int jss;
-  public String jst;
-  public int jsu;
-  public String jsv;
-  public eeq jsw;
-  public cly jsx;
-  int jsy;
-  String jsz;
-  public int status;
-  public int videoFormat;
+  private static HashMap<Integer, h.b> baseDBFactories;
+  private static MMHandler mhz;
+  private o.a appForegroundListener;
+  private e mhA;
+  private m mhB;
+  private t mhC;
+  private volatile z mhs;
+  private volatile x mht;
+  private volatile ab mhu;
+  private volatile ac.a mhv;
+  private volatile p mhw;
+  private volatile o mhx;
+  private volatile q mhy;
+  
+  static
+  {
+    AppMethodBeat.i(126943);
+    mhz = null;
+    baseDBFactories = new HashMap();
+    Iterator localIterator = x.d.lOO.iterator();
+    while (localIterator.hasNext())
+    {
+      x.c localc = (x.c)localIterator.next();
+      baseDBFactories.put(Integer.valueOf(localc.table.hashCode()), new h.b()
+      {
+        public final String[] getSQLs()
+        {
+          return this.mhF.lOL;
+        }
+      });
+    }
+    baseDBFactories.put(Integer.valueOf("VIDEOPLAYHISTORY_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return ab.SQL_CREATE;
+      }
+    });
+    baseDBFactories.put(Integer.valueOf("SIGHTDRAFTSINFO_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return p.SQL_CREATE;
+      }
+    });
+    AppMethodBeat.o(126943);
+  }
   
   public s()
   {
-    AppMethodBeat.i(126948);
-    this.cSx = -1;
-    this.fileName = "";
-    this.clientId = "";
-    this.dTS = 0L;
-    this.jqP = 0;
-    this.jsj = 0;
-    this.iKP = 0;
-    this.jsk = 0;
-    this.jsl = 0;
-    this.status = 0;
-    this.createTime = 0L;
-    this.jsm = 0L;
-    this.jsn = 0L;
-    this.iFw = 0;
-    this.jso = 0;
-    this.jsp = 0;
-    this.jsq = 0;
-    this.dWq = "";
-    this.jsh = "";
-    this.jsr = 0;
-    this.jss = 0;
-    this.jpP = "";
-    this.jst = "";
-    this.jsu = 0;
-    this.jqz = 0L;
-    this.jsv = "";
-    this.ebj = "";
-    this.jsw = new eeq();
-    this.ean = "";
-    this.gqW = 0;
-    this.jsx = new cly();
-    this.dRQ = 0;
-    this.videoFormat = 0;
-    AppMethodBeat.o(126948);
+    AppMethodBeat.i(126928);
+    this.mhs = new z();
+    this.mhv = null;
+    this.mhw = null;
+    this.mhx = null;
+    this.mhy = null;
+    this.mhA = null;
+    this.mhB = null;
+    this.mhC = new t();
+    this.appForegroundListener = new o.a()
+    {
+      public final void onAppBackground(String paramAnonymousString)
+      {
+        AppMethodBeat.i(126926);
+        if ((com.tencent.mm.kernel.h.aHB()) && (com.tencent.mm.kernel.h.aHE().kbT))
+        {
+          com.tencent.mm.kernel.h.aHE();
+          com.tencent.mm.kernel.b.aGE();
+        }
+        AppMethodBeat.o(126926);
+      }
+      
+      public final void onAppForeground(String paramAnonymousString)
+      {
+        AppMethodBeat.i(126925);
+        if ((com.tencent.mm.kernel.h.aHB()) && (com.tencent.mm.kernel.h.aHE().kbT))
+        {
+          com.tencent.mm.kernel.h.aHE();
+          if (!com.tencent.mm.kernel.b.aGE()) {
+            com.tencent.mm.blink.b.aqa().arrange(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(126924);
+                s.bqG().run();
+                AppMethodBeat.o(126924);
+              }
+            });
+          }
+        }
+        AppMethodBeat.o(126925);
+      }
+    };
+    AppMethodBeat.o(126928);
   }
   
-  public static String Qn(String paramString)
+  public static boolean I(Runnable paramRunnable)
   {
-    AppMethodBeat.i(126949);
+    AppMethodBeat.i(126939);
+    if (paramRunnable == null)
+    {
+      AppMethodBeat.o(126939);
+      return true;
+    }
+    bqI();
+    if (mhz == null)
+    {
+      Log.e("MicroMsg.SubCoreVideo", "short video decoder handler is null");
+      AppMethodBeat.o(126939);
+      return false;
+    }
+    mhz.removeCallbacks(paramRunnable);
+    AppMethodBeat.o(126939);
+    return true;
+  }
+  
+  public static s bqA()
+  {
+    AppMethodBeat.i(126929);
+    s locals = (s)y.as(s.class);
+    AppMethodBeat.o(126929);
+    return locals;
+  }
+  
+  public static x bqB()
+  {
     try
     {
-      paramString = XmlParser.parseXml(paramString, "msg", null);
-      if (paramString != null)
+      AppMethodBeat.i(126930);
+      if (!com.tencent.mm.kernel.h.aHB())
       {
-        paramString = (String)paramString.get(".msg.videomsg.$cdnvideourl");
-        AppMethodBeat.o(126949);
-        return paramString;
+        com.tencent.mm.model.b localb = new com.tencent.mm.model.b();
+        AppMethodBeat.o(126930);
+        throw localb;
       }
     }
-    catch (Exception paramString)
-    {
-      AppMethodBeat.o(126949);
+    finally {}
+    if (bqA().mht == null) {
+      bqA().mht = new x(com.tencent.mm.kernel.h.aHG().kcF);
     }
-    return "";
+    x localx = bqA().mht;
+    AppMethodBeat.o(126930);
+    return localx;
   }
   
-  private void as(byte[] paramArrayOfByte)
+  public static e bqC()
   {
-    AppMethodBeat.i(126953);
-    this.jsw = new eeq();
-    try
-    {
-      this.jsw.parseFrom(paramArrayOfByte);
-      AppMethodBeat.o(126953);
-      return;
+    int j = 0;
+    AppMethodBeat.i(126931);
+    com.tencent.mm.kernel.h.aHE().aGH();
+    if (bqA().mhA == null) {
+      bqA().mhA = new e();
     }
-    catch (Exception paramArrayOfByte)
+    if (com.tencent.mm.aq.f.bkh().lHG == null) {}
+    for (int i = 1;; i = 0)
     {
-      Log.printErrStackTrace("MicroMsg.VideoInfo", paramArrayOfByte, "", new Object[0]);
-      AppMethodBeat.o(126953);
-    }
-  }
-  
-  private void at(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(126955);
-    this.jsx = new cly();
-    try
-    {
-      this.jsx.parseFrom(paramArrayOfByte);
-      AppMethodBeat.o(126955);
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      AppMethodBeat.o(126955);
-    }
-  }
-  
-  private byte[] bht()
-  {
-    AppMethodBeat.i(126952);
-    Object localObject = new byte[0];
-    try
-    {
-      byte[] arrayOfByte = this.jsw.toByteArray();
-      localObject = arrayOfByte;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      if (i != 0)
       {
-        Log.printErrStackTrace("MicroMsg.VideoInfo", localException, "", new Object[0]);
+        localObject = com.tencent.mm.aq.f.bkh();
+        e locale = bqA().mhA;
+        ((a)localObject).lHG = locale;
+        int k = localObject.hashCode();
+        i = j;
+        if (locale != null) {
+          i = locale.hashCode();
+        }
+        Log.i("MicroMsg.CdnTransportEngine", "set cdn online video callback hash[%d] onlineVideoCallback[%d]", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
       }
+      Object localObject = bqA().mhA;
+      AppMethodBeat.o(126931);
+      return localObject;
     }
-    AppMethodBeat.o(126952);
+  }
+  
+  public static m bqD()
+  {
+    AppMethodBeat.i(126932);
+    com.tencent.mm.kernel.h.aHE().aGH();
+    if (bqA().mhB == null) {
+      bqA().mhB = new m();
+    }
+    m localm = bqA().mhB;
+    AppMethodBeat.o(126932);
+    return localm;
+  }
+  
+  public static ab bqE()
+  {
+    AppMethodBeat.i(126933);
+    if (!com.tencent.mm.kernel.h.aHB())
+    {
+      localObject = new com.tencent.mm.model.b();
+      AppMethodBeat.o(126933);
+      throw ((Throwable)localObject);
+    }
+    if (bqA().mhu == null) {
+      bqA().mhu = new ab(com.tencent.mm.kernel.h.aHG().kcF);
+    }
+    Object localObject = bqA().mhu;
+    AppMethodBeat.o(126933);
     return localObject;
   }
   
-  private byte[] bhz()
+  public static p bqF()
   {
-    AppMethodBeat.i(126956);
-    Object localObject = new byte[0];
     try
     {
-      byte[] arrayOfByte = this.jsx.toByteArray();
-      localObject = arrayOfByte;
+      AppMethodBeat.i(126934);
+      if (!com.tencent.mm.kernel.h.aHB())
+      {
+        com.tencent.mm.model.b localb = new com.tencent.mm.model.b();
+        AppMethodBeat.o(126934);
+        throw localb;
+      }
     }
-    catch (Exception localException)
+    finally {}
+    if (bqA().mhw == null) {
+      bqA().mhw = new p(com.tencent.mm.kernel.h.aHG().kcF);
+    }
+    p localp = bqA().mhw;
+    AppMethodBeat.o(126934);
+    return localp;
+  }
+  
+  public static ac.a bqG()
+  {
+    AppMethodBeat.i(126935);
+    if (!com.tencent.mm.kernel.h.aHB())
     {
-      label19:
-      break label19;
+      localObject = new com.tencent.mm.model.b();
+      AppMethodBeat.o(126935);
+      throw ((Throwable)localObject);
     }
-    AppMethodBeat.o(126956);
+    if (bqA().mhv == null) {
+      bqA().mhv = new ac.a();
+    }
+    Object localObject = bqA().mhv;
+    AppMethodBeat.o(126935);
     return localObject;
   }
   
-  public final void Qo(String paramString)
+  public static q bqH()
   {
-    this.jsz = paramString;
-    this.jsB = true;
-  }
-  
-  public final void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    AppMethodBeat.i(126954);
-    if (this.jsw == null) {
-      this.jsw = new eeq();
-    }
-    this.jsw.izb = paramString2;
-    this.jsw.LxJ = paramInt;
-    this.jsw.iyZ = paramString1;
-    this.jsw.izc = paramString3;
-    this.jsw.izd = paramString4;
-    this.jsw.izf = paramString5;
-    this.jsw.izg = paramString6;
-    AppMethodBeat.o(126954);
-  }
-  
-  public final int bcq()
-  {
-    return this.iKP;
-  }
-  
-  public final String bhs()
-  {
-    if (this.jsh == null) {
-      return "";
-    }
-    return this.jsh;
-  }
-  
-  public final String bhu()
-  {
-    if (this.jpP == null) {
-      return "";
-    }
-    return this.jpP;
-  }
-  
-  public final String bhv()
-  {
-    if (this.jst == null) {
-      return "";
-    }
-    return this.jst;
-  }
-  
-  public final boolean bhw()
-  {
-    return (this.status == 140) || (this.status == 141) || (this.status == 142);
-  }
-  
-  public final boolean bhx()
-  {
-    return (this.status == 121) || (this.status == 122) || (this.status == 120) || (this.status == 123);
-  }
-  
-  public final boolean bhy()
-  {
-    return (this.status == 199) || (this.status == 199);
-  }
-  
-  public final void convertFrom(Cursor paramCursor)
-  {
-    AppMethodBeat.i(126950);
-    this.fileName = paramCursor.getString(0);
-    this.clientId = paramCursor.getString(1);
-    this.dTS = paramCursor.getLong(2);
-    this.jqP = paramCursor.getInt(3);
-    this.jsj = paramCursor.getInt(4);
-    this.iKP = paramCursor.getInt(5);
-    this.jsk = paramCursor.getInt(6);
-    this.jsl = paramCursor.getInt(7);
-    this.status = paramCursor.getInt(8);
-    this.createTime = paramCursor.getLong(9);
-    this.jsm = paramCursor.getLong(10);
-    this.jsn = paramCursor.getLong(11);
-    this.iFw = paramCursor.getInt(12);
-    this.jso = paramCursor.getInt(13);
-    this.jsp = paramCursor.getInt(14);
-    this.jsq = paramCursor.getInt(15);
-    this.dWq = paramCursor.getString(16);
-    this.jsh = paramCursor.getString(17);
-    this.jsr = paramCursor.getInt(18);
-    this.jss = paramCursor.getInt(19);
-    this.jpP = paramCursor.getString(20);
-    this.jst = paramCursor.getString(21);
-    this.jsu = paramCursor.getInt(22);
-    this.jqz = paramCursor.getLong(23);
-    this.jsv = paramCursor.getString(24);
-    this.ebj = paramCursor.getString(25);
-    as(paramCursor.getBlob(26));
-    this.ean = paramCursor.getString(27);
-    this.gqW = paramCursor.getInt(28);
-    at(paramCursor.getBlob(29));
-    this.dRQ = paramCursor.getInt(30);
-    this.videoFormat = paramCursor.getInt(31);
-    this.jsy = paramCursor.getInt(32);
-    this.jsz = paramCursor.getString(33);
-    AppMethodBeat.o(126950);
-  }
-  
-  public final ContentValues convertTo()
-  {
-    AppMethodBeat.i(126951);
-    ContentValues localContentValues = new ContentValues();
-    if ((this.cSx & 0x1) != 0) {
-      localContentValues.put("filename", getFileName());
-    }
-    if ((this.cSx & 0x2) != 0) {
-      if (this.clientId != null) {
-        break label821;
-      }
-    }
-    label821:
-    for (String str = "";; str = this.clientId)
+    AppMethodBeat.i(126936);
+    if (!com.tencent.mm.kernel.h.aHB())
     {
-      localContentValues.put("clientid", str);
-      if ((this.cSx & 0x4) != 0) {
-        localContentValues.put("msgsvrid", Long.valueOf(this.dTS));
-      }
-      if ((this.cSx & 0x8) != 0) {
-        localContentValues.put("netoffset", Integer.valueOf(this.jqP));
-      }
-      if ((this.cSx & 0x10) != 0) {
-        localContentValues.put("filenowsize", Integer.valueOf(this.jsj));
-      }
-      if ((this.cSx & 0x20) != 0) {
-        localContentValues.put("totallen", Integer.valueOf(this.iKP));
-      }
-      if ((this.cSx & 0x40) != 0) {
-        localContentValues.put("thumbnetoffset", Integer.valueOf(this.jsk));
-      }
-      if ((this.cSx & 0x80) != 0) {
-        localContentValues.put("thumblen", Integer.valueOf(this.jsl));
-      }
-      if ((this.cSx & 0x100) != 0) {
-        localContentValues.put("status", Integer.valueOf(this.status));
-      }
-      if ((this.cSx & 0x200) != 0) {
-        localContentValues.put("createtime", Long.valueOf(this.createTime));
-      }
-      if ((this.cSx & 0x400) != 0) {
-        localContentValues.put("lastmodifytime", Long.valueOf(this.jsm));
-      }
-      if ((this.cSx & 0x800) != 0) {
-        localContentValues.put("downloadtime", Long.valueOf(this.jsn));
-      }
-      if ((this.cSx & 0x1000) != 0) {
-        localContentValues.put("videolength", Integer.valueOf(this.iFw));
-      }
-      if ((this.cSx & 0x2000) != 0) {
-        localContentValues.put("msglocalid", Integer.valueOf(this.jso));
-      }
-      if ((this.cSx & 0x4000) != 0) {
-        localContentValues.put("nettimes", Integer.valueOf(this.jsp));
-      }
-      if ((this.cSx & 0x8000) != 0) {
-        localContentValues.put("cameratype", Integer.valueOf(this.jsq));
-      }
-      if ((this.cSx & 0x10000) != 0) {
-        localContentValues.put("user", getUser());
-      }
-      if ((this.cSx & 0x20000) != 0) {
-        localContentValues.put("human", bhs());
-      }
-      if ((this.cSx & 0x40000) != 0) {
-        localContentValues.put("reserved1", Integer.valueOf(this.jsr));
-      }
-      if ((this.cSx & 0x80000) != 0) {
-        localContentValues.put("reserved2", Integer.valueOf(this.jss));
-      }
-      if ((this.cSx & 0x100000) != 0) {
-        localContentValues.put("reserved3", bhu());
-      }
-      if ((this.cSx & 0x200000) != 0) {
-        localContentValues.put("reserved4", bhv());
-      }
-      if ((this.cSx & 0x400000) != 0) {
-        localContentValues.put("videofuncflag", Integer.valueOf(this.jsu));
-      }
-      if ((this.cSx & 0x800000) != 0) {
-        localContentValues.put("masssendid", Long.valueOf(this.jqz));
-      }
-      if ((this.cSx & 0x1000000) != 0) {
-        localContentValues.put("masssendlist", this.jsv);
-      }
-      if ((this.cSx & 0x2000000) != 0) {
-        localContentValues.put("videomd5", this.ebj);
-      }
-      if ((this.cSx & 0x4000000) != 0) {
-        localContentValues.put("streamvideo", bht());
-      }
-      if ((this.cSx & 0x8000000) != 0) {
-        localContentValues.put("statextstr", this.ean);
-      }
-      if ((this.cSx & 0x10000000) != 0) {
-        localContentValues.put("downloadscene", Integer.valueOf(this.gqW));
-      }
-      if ((this.cSx & 0x20000000) != 0) {
-        localContentValues.put("mmsightextinfo", bhz());
-      }
-      if ((this.cSx & 0x1) != 0) {
-        localContentValues.put("preloadsize", Integer.valueOf(this.dRQ));
-      }
-      if ((this.cSx & 0x2) != 0) {
-        localContentValues.put("videoformat", Integer.valueOf(this.videoFormat));
-      }
-      if (this.jsA) {
-        localContentValues.put("forward_msg_local_id", Integer.valueOf(this.jsy));
-      }
-      if (this.jsB) {
-        localContentValues.put("msg_uuid", this.jsz);
-      }
-      AppMethodBeat.o(126951);
-      return localContentValues;
+      localObject = new com.tencent.mm.model.b();
+      AppMethodBeat.o(126936);
+      throw ((Throwable)localObject);
+    }
+    if (bqA().mhy == null) {
+      bqA().mhy = new q();
+    }
+    Object localObject = bqA().mhy;
+    AppMethodBeat.o(126936);
+    return localObject;
+  }
+  
+  private static void bqI()
+  {
+    AppMethodBeat.i(126937);
+    if ((mhz == null) || (mhz.isQuit()))
+    {
+      MMHandler localMMHandler = new MMHandler("Short-Video-Decoder-Thread-" + System.currentTimeMillis());
+      mhz = localMMHandler;
+      localMMHandler.setLogging(false);
+    }
+    AppMethodBeat.o(126937);
+  }
+  
+  public static String bqJ()
+  {
+    AppMethodBeat.i(216427);
+    Object localObject = new StringBuilder();
+    com.tencent.mm.kernel.h.aHH();
+    localObject = u.n(com.tencent.mm.kernel.h.aHG().kcB + "subvideo/", true);
+    AppMethodBeat.o(216427);
+    return localObject;
+  }
+  
+  public static boolean g(Runnable paramRunnable, long paramLong)
+  {
+    AppMethodBeat.i(126938);
+    if (paramRunnable == null)
+    {
+      AppMethodBeat.o(126938);
+      return false;
+    }
+    bqI();
+    if (paramLong > 0L) {
+      mhz.postDelayed(paramRunnable, paramLong);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(126938);
+      return true;
+      mhz.post(paramRunnable);
     }
   }
   
-  public final String getFileName()
+  public static String getAccVideoPath()
   {
-    if (this.fileName == null) {
-      return "";
+    AppMethodBeat.i(126942);
+    Object localObject = new StringBuilder();
+    com.tencent.mm.kernel.h.aHH();
+    localObject = u.n(com.tencent.mm.kernel.h.aHG().kcB + "video/", true);
+    AppMethodBeat.o(126942);
+    return localObject;
+  }
+  
+  public void clearPluginData(int paramInt) {}
+  
+  public HashMap<Integer, h.b> getBaseDBFactories()
+  {
+    return baseDBFactories;
+  }
+  
+  public void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(126941);
+    Log.i("MicroMsg.SubCoreVideo", "%d onAccountPostReset ", new Object[] { Integer.valueOf(hashCode()) });
+    bqG().a(this.mhC);
+    this.appForegroundListener.alive();
+    h.d.a(Integer.valueOf(43), this.mhs);
+    h.d.a(Integer.valueOf(44), this.mhs);
+    h.d.a(Integer.valueOf(62), this.mhs);
+    h.d.a(Integer.valueOf(486539313), this.mhs);
+    if (mhz != null) {
+      mhz.removeCallbacksAndMessages(null);
     }
-    return this.fileName;
-  }
-  
-  public final String getUser()
-  {
-    if (this.dWq == null) {
-      return "";
+    com.tencent.mm.kernel.h.aHJ().postToWorker(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(126927);
+        if (!com.tencent.mm.kernel.h.aHB())
+        {
+          AppMethodBeat.o(126927);
+          return;
+        }
+        Object localObject1 = s.bqB();
+        long l = System.currentTimeMillis() / 1000L;
+        Object localObject2 = "UPDATE videoinfo2 SET status = 198, lastmodifytime = " + l + " WHERE masssendid > 0  AND status = 200";
+        Log.i("MicroMsg.VideoInfoStorage", "fail all massSendInfos, sql %s", new Object[] { localObject2 });
+        ((x)localObject1).lvy.execSQL("videoinfo2", (String)localObject2);
+        s.bqF().db.execSQL("SightDraftInfo", "UPDATE SightDraftInfo SET fileStatus = 1 WHERE fileStatus = 6");
+        localObject1 = s.bqF();
+        if (1209600000L <= 0L)
+        {
+          Log.w("MicroMsg.SightDraftStorage", "keep 0 sight draft");
+          ((p)localObject1).db.execSQL("SightDraftInfo", "UPDATE SightDraftInfo SET fileStatus = 7 WHERE fileStatus = 1");
+        }
+        for (;;)
+        {
+          localObject1 = s.bqF().bqv().iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (n)((Iterator)localObject1).next();
+            Log.i("MicroMsg.SubCoreVideo", "do delete sight draft file, name %s", new Object[] { ((n)localObject2).field_fileName });
+            u.deleteFile(o.XE(((n)localObject2).field_fileName));
+            u.deleteFile(o.XF(((n)localObject2).field_fileName));
+          }
+          l = Util.nowMilliSecond() - 1209600000L;
+          Log.i("MicroMsg.SightDraftStorage", "check delete ITEM, create time %d", new Object[] { Long.valueOf(l) });
+          localObject2 = "UPDATE SightDraftInfo SET fileStatus = 7 WHERE fileStatus = 1 AND createTime < ".concat(String.valueOf(l));
+          ((p)localObject1).db.execSQL("SightDraftInfo", (String)localObject2);
+        }
+        AppMethodBeat.o(126927);
+      }
+    });
+    com.tencent.mm.vfs.q localq = new com.tencent.mm.vfs.q(o.bqu());
+    if ((!localq.ifE()) || (!localq.isDirectory())) {
+      localq.ifL();
     }
-    return this.dWq;
+    AppMethodBeat.o(126941);
   }
   
-  public final String toString()
+  /* Error */
+  public void onAccountRelease()
   {
-    AppMethodBeat.i(126947);
-    String str = "VideoInfo{fileName='" + this.fileName + '\'' + ", clientId='" + this.clientId + '\'' + ", msgSvrId=" + this.dTS + ", netOffset=" + this.jqP + ", fileNowSize=" + this.jsj + ", totalLen=" + this.iKP + ", thumbNetOffset=" + this.jsk + ", thumbLen=" + this.jsl + ", status=" + this.status + ", createTime=" + this.createTime + ", lastModifyTime=" + this.jsm + ", priorityTime=" + this.jsn + ", videoLength=" + this.iFw + ", msgLocalId=" + this.jso + ", netTimes=" + this.jsp + ", cameraType=" + this.jsq + ", user='" + this.dWq + '\'' + ", human='" + this.jsh + '\'' + ", isExport=" + this.jsr + ", isUseCdn=" + this.jss + ", importPath='" + this.jpP + '\'' + ", recvXml='" + this.jst + '\'' + ", videoFuncFlag=" + this.jsu + ", massSendId=" + this.jqz + ", massSendList='" + this.jsv + '\'' + ", videoMD5='" + this.ebj + '\'' + ", streamVideoProto=" + this.jsw + ", statextstr='" + this.ean + '\'' + ", downloadScene=" + this.gqW + ", mmSightExtInfo=" + this.jsx + ", preloadSize=" + this.dRQ + ", videoFormat=" + this.videoFormat + ", flag=" + this.cSx + '}';
-    AppMethodBeat.o(126947);
-    return str;
+    // Byte code:
+    //   0: ldc_w 405
+    //   3: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc 157
+    //   8: ldc_w 407
+    //   11: iconst_1
+    //   12: anewarray 4	java/lang/Object
+    //   15: dup
+    //   16: iconst_0
+    //   17: aload_0
+    //   18: invokevirtual 238	java/lang/Object:hashCode	()I
+    //   21: invokestatic 103	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   24: aastore
+    //   25: invokestatic 245	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   28: invokestatic 354	com/tencent/mm/modelvideo/s:bqG	()Lcom/tencent/mm/modelvideo/ac$a;
+    //   31: aload_0
+    //   32: getfield 144	com/tencent/mm/modelvideo/s:mhC	Lcom/tencent/mm/modelvideo/t;
+    //   35: invokevirtual 410	com/tencent/mm/modelvideo/ac$a:b	(Lcom/tencent/mm/modelvideo/aa;)V
+    //   38: aload_0
+    //   39: getfield 149	com/tencent/mm/modelvideo/s:appForegroundListener	Lcom/tencent/mm/app/o$a;
+    //   42: invokevirtual 413	com/tencent/mm/app/o$a:dead	()V
+    //   45: invokestatic 193	com/tencent/mm/modelvideo/s:bqA	()Lcom/tencent/mm/modelvideo/s;
+    //   48: getfield 129	com/tencent/mm/modelvideo/s:mhv	Lcom/tencent/mm/modelvideo/ac$a;
+    //   51: ifnull +83 -> 134
+    //   54: invokestatic 193	com/tencent/mm/modelvideo/s:bqA	()Lcom/tencent/mm/modelvideo/s;
+    //   57: getfield 129	com/tencent/mm/modelvideo/s:mhv	Lcom/tencent/mm/modelvideo/ac$a;
+    //   60: astore_1
+    //   61: aload_1
+    //   62: iconst_0
+    //   63: putfield 416	com/tencent/mm/modelvideo/ac$a:ftu	I
+    //   66: aload_1
+    //   67: getfield 420	com/tencent/mm/modelvideo/ac$a:miE	Lcom/tencent/mm/modelvideo/h;
+    //   70: ifnull +13 -> 83
+    //   73: invokestatic 424	com/tencent/mm/kernel/h:aGY	()Lcom/tencent/mm/an/t;
+    //   76: aload_1
+    //   77: getfield 420	com/tencent/mm/modelvideo/ac$a:miE	Lcom/tencent/mm/modelvideo/h;
+    //   80: invokevirtual 429	com/tencent/mm/an/t:a	(Lcom/tencent/mm/an/q;)V
+    //   83: aload_1
+    //   84: getfield 433	com/tencent/mm/modelvideo/ac$a:miF	Lcom/tencent/mm/modelvideo/k;
+    //   87: ifnull +13 -> 100
+    //   90: invokestatic 424	com/tencent/mm/kernel/h:aGY	()Lcom/tencent/mm/an/t;
+    //   93: aload_1
+    //   94: getfield 433	com/tencent/mm/modelvideo/ac$a:miF	Lcom/tencent/mm/modelvideo/k;
+    //   97: invokevirtual 429	com/tencent/mm/an/t:a	(Lcom/tencent/mm/an/q;)V
+    //   100: invokestatic 424	com/tencent/mm/kernel/h:aGY	()Lcom/tencent/mm/an/t;
+    //   103: sipush 149
+    //   106: aload_1
+    //   107: invokevirtual 436	com/tencent/mm/an/t:b	(ILcom/tencent/mm/an/i;)V
+    //   110: invokestatic 424	com/tencent/mm/kernel/h:aGY	()Lcom/tencent/mm/an/t;
+    //   113: sipush 150
+    //   116: aload_1
+    //   117: invokevirtual 436	com/tencent/mm/an/t:b	(ILcom/tencent/mm/an/i;)V
+    //   120: invokestatic 438	com/tencent/mm/modelvideo/s:bqB	()Lcom/tencent/mm/modelvideo/x;
+    //   123: aload_1
+    //   124: invokevirtual 441	com/tencent/mm/modelvideo/x:a	(Lcom/tencent/mm/modelvideo/x$a;)V
+    //   127: aload_1
+    //   128: getfield 445	com/tencent/mm/modelvideo/ac$a:miG	Ljava/util/concurrent/ConcurrentHashMap;
+    //   131: invokevirtual 450	java/util/concurrent/ConcurrentHashMap:clear	()V
+    //   134: invokestatic 193	com/tencent/mm/modelvideo/s:bqA	()Lcom/tencent/mm/modelvideo/s;
+    //   137: getfield 135	com/tencent/mm/modelvideo/s:mhy	Lcom/tencent/mm/modelvideo/q;
+    //   140: ifnull +56 -> 196
+    //   143: invokestatic 193	com/tencent/mm/modelvideo/s:bqA	()Lcom/tencent/mm/modelvideo/s;
+    //   146: getfield 135	com/tencent/mm/modelvideo/s:mhy	Lcom/tencent/mm/modelvideo/q;
+    //   149: astore_1
+    //   150: aload_1
+    //   151: iconst_0
+    //   152: putfield 451	com/tencent/mm/modelvideo/q:ftu	I
+    //   155: ldc_w 453
+    //   158: ldc_w 455
+    //   161: iconst_1
+    //   162: anewarray 4	java/lang/Object
+    //   165: dup
+    //   166: iconst_0
+    //   167: aload_1
+    //   168: getfield 458	com/tencent/mm/modelvideo/q:mgT	Ljava/lang/String;
+    //   171: aastore
+    //   172: invokestatic 245	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   175: aload_1
+    //   176: getfield 458	com/tencent/mm/modelvideo/q:mgT	Ljava/lang/String;
+    //   179: invokestatic 464	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   182: ifne +14 -> 196
+    //   185: invokestatic 468	com/tencent/mm/aq/f:bkg	()Lcom/tencent/mm/aq/b;
+    //   188: aload_1
+    //   189: getfield 458	com/tencent/mm/modelvideo/q:mgT	Ljava/lang/String;
+    //   192: invokevirtual 473	com/tencent/mm/aq/b:Vy	(Ljava/lang/String;)Z
+    //   195: pop
+    //   196: invokestatic 193	com/tencent/mm/modelvideo/s:bqA	()Lcom/tencent/mm/modelvideo/s;
+    //   199: getfield 139	com/tencent/mm/modelvideo/s:mhB	Lcom/tencent/mm/modelvideo/m;
+    //   202: ifnull +21 -> 223
+    //   205: invokestatic 193	com/tencent/mm/modelvideo/s:bqA	()Lcom/tencent/mm/modelvideo/s;
+    //   208: getfield 139	com/tencent/mm/modelvideo/s:mhB	Lcom/tencent/mm/modelvideo/m;
+    //   211: astore_1
+    //   212: aload_1
+    //   213: invokevirtual 476	com/tencent/mm/modelvideo/m:stopDownload	()V
+    //   216: aload_1
+    //   217: getfield 480	com/tencent/mm/modelvideo/m:mgD	Ljava/util/LinkedList;
+    //   220: invokevirtual 483	java/util/LinkedList:clear	()V
+    //   223: invokestatic 193	com/tencent/mm/modelvideo/s:bqA	()Lcom/tencent/mm/modelvideo/s;
+    //   226: getfield 137	com/tencent/mm/modelvideo/s:mhA	Lcom/tencent/mm/aq/e;
+    //   229: ifnull +12 -> 241
+    //   232: invokestatic 193	com/tencent/mm/modelvideo/s:bqA	()Lcom/tencent/mm/modelvideo/s;
+    //   235: getfield 137	com/tencent/mm/modelvideo/s:mhA	Lcom/tencent/mm/aq/e;
+    //   238: invokevirtual 486	com/tencent/mm/aq/e:release	()V
+    //   241: bipush 43
+    //   243: invokestatic 103	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   246: aload_0
+    //   247: getfield 127	com/tencent/mm/modelvideo/s:mhs	Lcom/tencent/mm/modelvideo/z;
+    //   250: invokestatic 488	com/tencent/mm/an/h$d:b	(Ljava/lang/Object;Lcom/tencent/mm/an/h;)V
+    //   253: bipush 44
+    //   255: invokestatic 103	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   258: aload_0
+    //   259: getfield 127	com/tencent/mm/modelvideo/s:mhs	Lcom/tencent/mm/modelvideo/z;
+    //   262: invokestatic 488	com/tencent/mm/an/h$d:b	(Ljava/lang/Object;Lcom/tencent/mm/an/h;)V
+    //   265: bipush 62
+    //   267: invokestatic 103	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   270: aload_0
+    //   271: getfield 127	com/tencent/mm/modelvideo/s:mhs	Lcom/tencent/mm/modelvideo/z;
+    //   274: invokestatic 488	com/tencent/mm/an/h$d:b	(Ljava/lang/Object;Lcom/tencent/mm/an/h;)V
+    //   277: ldc_w 369
+    //   280: invokestatic 103	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   283: aload_0
+    //   284: getfield 127	com/tencent/mm/modelvideo/s:mhs	Lcom/tencent/mm/modelvideo/z;
+    //   287: invokestatic 488	com/tencent/mm/an/h$d:b	(Ljava/lang/Object;Lcom/tencent/mm/an/h;)V
+    //   290: getstatic 56	com/tencent/mm/modelvideo/s:mhz	Lcom/tencent/mm/sdk/platformtools/MMHandler;
+    //   293: ifnull +10 -> 303
+    //   296: getstatic 56	com/tencent/mm/modelvideo/s:mhz	Lcom/tencent/mm/sdk/platformtools/MMHandler;
+    //   299: aconst_null
+    //   300: invokevirtual 373	com/tencent/mm/sdk/platformtools/MMHandler:removeCallbacksAndMessages	(Ljava/lang/Object;)V
+    //   303: invokestatic 354	com/tencent/mm/modelvideo/s:bqG	()Lcom/tencent/mm/modelvideo/ac$a;
+    //   306: astore_1
+    //   307: ldc_w 490
+    //   310: ldc_w 492
+    //   313: invokestatic 494	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   316: aload_1
+    //   317: getfield 497	com/tencent/mm/modelvideo/ac$a:miz	Lcom/tencent/mm/sdk/platformtools/MMHandler;
+    //   320: astore_2
+    //   321: aload_2
+    //   322: ifnull +66 -> 388
+    //   325: aload_1
+    //   326: getfield 497	com/tencent/mm/modelvideo/ac$a:miz	Lcom/tencent/mm/sdk/platformtools/MMHandler;
+    //   329: invokevirtual 500	com/tencent/mm/sdk/platformtools/MMHandler:quit	()Z
+    //   332: pop
+    //   333: aload_1
+    //   334: iconst_0
+    //   335: putfield 504	com/tencent/mm/modelvideo/ac$a:miA	Z
+    //   338: aload_1
+    //   339: aconst_null
+    //   340: putfield 497	com/tencent/mm/modelvideo/ac$a:miz	Lcom/tencent/mm/sdk/platformtools/MMHandler;
+    //   343: ldc_w 405
+    //   346: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   349: return
+    //   350: astore_1
+    //   351: ldc 157
+    //   353: aload_1
+    //   354: ldc_w 506
+    //   357: iconst_0
+    //   358: anewarray 4	java/lang/Object
+    //   361: invokestatic 510	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   364: goto -123 -> 241
+    //   367: astore_1
+    //   368: ldc_w 490
+    //   371: ldc_w 512
+    //   374: iconst_1
+    //   375: anewarray 4	java/lang/Object
+    //   378: dup
+    //   379: iconst_0
+    //   380: aload_1
+    //   381: invokevirtual 515	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   384: aastore
+    //   385: invokestatic 517	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   388: ldc_w 405
+    //   391: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   394: return
+    //   395: astore_1
+    //   396: ldc 157
+    //   398: ldc_w 519
+    //   401: iconst_1
+    //   402: anewarray 4	java/lang/Object
+    //   405: dup
+    //   406: iconst_0
+    //   407: aload_1
+    //   408: invokevirtual 515	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   411: aastore
+    //   412: invokestatic 517	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   415: ldc_w 405
+    //   418: invokestatic 119	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   421: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	422	0	this	s
+    //   60	279	1	localObject	Object
+    //   350	4	1	localException1	java.lang.Exception
+    //   367	14	1	localException2	java.lang.Exception
+    //   395	13	1	localException3	java.lang.Exception
+    //   320	2	2	localMMHandler	MMHandler
+    // Exception table:
+    //   from	to	target	type
+    //   45	83	350	java/lang/Exception
+    //   83	100	350	java/lang/Exception
+    //   100	134	350	java/lang/Exception
+    //   134	196	350	java/lang/Exception
+    //   196	223	350	java/lang/Exception
+    //   223	241	350	java/lang/Exception
+    //   325	343	367	java/lang/Exception
+    //   303	321	395	java/lang/Exception
+    //   343	349	395	java/lang/Exception
+    //   368	388	395	java/lang/Exception
   }
   
-  public final void ue(int paramInt)
-  {
-    this.jsy = paramInt;
-    this.jsA = true;
-  }
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelvideo.s
  * JD-Core Version:    0.7.0.1
  */

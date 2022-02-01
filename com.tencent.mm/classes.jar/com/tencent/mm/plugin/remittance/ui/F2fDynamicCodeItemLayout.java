@@ -7,12 +7,14 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 
 public class F2fDynamicCodeItemLayout
   extends LinearLayout
 {
-  TextView Cqw;
-  TextView qWU;
+  TextView InN;
+  TextView uzI;
   
   public F2fDynamicCodeItemLayout(Context paramContext)
   {
@@ -41,15 +43,15 @@ public class F2fDynamicCodeItemLayout
   private void init()
   {
     AppMethodBeat.i(67920);
-    View localView = LayoutInflater.from(getContext()).inflate(2131496101, this);
-    this.Cqw = ((TextView)localView.findViewById(2131307068));
-    this.qWU = ((TextView)localView.findViewById(2131307069));
+    View localView = LayoutInflater.from(getContext()).inflate(a.g.remittance_f2f_dynamic_code_item_layout, this);
+    this.InN = ((TextView)localView.findViewById(a.f.rfdi_left_tv));
+    this.uzI = ((TextView)localView.findViewById(a.f.rfdi_right_tv));
     AppMethodBeat.o(67920);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.F2fDynamicCodeItemLayout
  * JD-Core Version:    0.7.0.1
  */

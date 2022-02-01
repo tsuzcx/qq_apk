@@ -1,55 +1,74 @@
 package com.tencent.mm.plugin.sns.ad.timeline.b;
 
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
+import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.sns.ui.PhotosContent;
+import com.tencent.mm.modelsns.SnsAdClick;
+import com.tencent.mm.plugin.sns.ad.f.l;
+import com.tencent.mm.plugin.sns.data.m;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
+import com.tencent.mm.plugin.sns.ui.SnsCommentDetailUI;
+import com.tencent.mm.plugin.sns.ui.SnsTimeLineUI;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
 {
-  public static ImageView a(Context paramContext, PhotosContent paramPhotosContent, int paramInt1, int paramInt2)
+  public static void a(Activity paramActivity, int paramInt1, SnsInfo paramSnsInfo, int paramInt2)
   {
-    AppMethodBeat.i(202202);
-    if ((paramContext == null) || (paramPhotosContent == null))
+    AppMethodBeat.i(269361);
+    paramActivity = aN(paramActivity);
+    if (paramInt1 == 0) {}
+    for (int i = 1;; i = 2)
     {
-      AppMethodBeat.o(202202);
-      return null;
+      SnsAdClick localSnsAdClick = new SnsAdClick(paramInt1, i, paramSnsInfo.field_snsId, paramInt2, 45);
+      m.a(localSnsAdClick, paramActivity, paramSnsInfo, paramInt2);
+      t.a(localSnsAdClick);
+      AppMethodBeat.o(269361);
+      return;
     }
+  }
+  
+  private static l aN(Activity paramActivity)
+  {
+    AppMethodBeat.i(269362);
+    Object localObject2 = null;
     try
     {
-      paramPhotosContent = paramPhotosContent.getChildAt(paramInt1);
-      if (paramPhotosContent != null) {}
-      for (paramPhotosContent = (ViewGroup.MarginLayoutParams)paramPhotosContent.getLayoutParams(); paramPhotosContent != null; paramPhotosContent = null)
-      {
-        ImageView localImageView = new ImageView(paramContext);
-        paramPhotosContent = new ViewGroup.MarginLayoutParams(paramPhotosContent);
-        paramPhotosContent.width = paramInt2;
-        paramPhotosContent.height = paramInt2;
-        localImageView.setImageDrawable(a.l(paramContext, 2131235696));
-        localImageView.setLayoutParams(paramPhotosContent);
-        AppMethodBeat.o(202202);
-        return localImageView;
+      if ((paramActivity instanceof SnsTimeLineUI)) {
+        localObject1 = ((SnsTimeLineUI)paramActivity).fXs();
       }
-      Log.e("AddWeAppIconHelper", "getEachImageViewLayoutParams is null");
+      for (;;)
+      {
+        AppMethodBeat.o(269362);
+        return localObject1;
+        localObject1 = localObject2;
+        if ((paramActivity instanceof SnsCommentDetailUI)) {
+          localObject1 = ((SnsCommentDetailUI)paramActivity).KPn;
+        }
+      }
     }
-    catch (Throwable paramContext)
+    catch (Throwable paramActivity)
     {
       for (;;)
       {
-        Log.e("AddWeAppIconHelper", paramContext.toString());
+        Log.e("AdTagClickableHelper", paramActivity.toString());
+        Object localObject1 = localObject2;
       }
     }
-    AppMethodBeat.o(202202);
-    return null;
+  }
+  
+  public static boolean ag(boolean paramBoolean, int paramInt)
+  {
+    if (!paramBoolean) {}
+    while ((paramInt != 2) && (paramInt != 3) && (paramInt != 4) && (paramInt != 5) && (paramInt != 9) && (paramInt != 19)) {
+      return false;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.b.c
  * JD-Core Version:    0.7.0.1
  */

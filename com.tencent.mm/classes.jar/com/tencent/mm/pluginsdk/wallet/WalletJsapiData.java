@@ -5,8 +5,8 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.os.ResultReceiver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.pj;
-import com.tencent.mm.g.a.pj.a;
+import com.tencent.mm.f.a.qh;
+import com.tencent.mm.f.a.qh.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
@@ -20,28 +20,29 @@ public class WalletJsapiData
   implements Parcelable
 {
   public static final Parcelable.Creator<WalletJsapiData> CREATOR;
-  public String DWX;
-  public int KxF;
-  public int KxG;
-  public int KxH;
-  public String KxI;
-  public int KxJ;
-  public String KxK;
-  public String KxL;
-  public String KxM;
-  public boolean KxN;
-  public String KxO;
-  public Map<String, String> KxP;
-  public ResultReceiver KxQ;
+  public String Kkg;
+  public String RzA;
+  public boolean RzB;
+  public String RzC;
+  public Map<String, String> RzD;
+  public ResultReceiver RzE;
+  public int Rzt;
+  public int Rzu;
+  public int Rzv;
+  public String Rzw;
+  public int Rzx;
+  public String Rzy;
+  public String Rzz;
   public String appId;
-  public String dDL;
-  public String dVt;
-  public String dVu;
-  public int dVv;
-  public int dVw;
+  public int chatType;
   public String extInfo;
-  public String iDk;
-  public int iGQ;
+  public String fOW;
+  public String fOX;
+  public int fOY;
+  public int fOZ;
+  public String fwv;
+  public String ltk;
+  public int lwS;
   public String nonceStr;
   public String packageExt;
   public String partnerId;
@@ -59,170 +60,168 @@ public class WalletJsapiData
   
   public WalletJsapiData()
   {
-    this.KxH = 0;
-    this.KxJ = 0;
+    this.Rzv = 0;
+    this.Rzx = 0;
   }
   
   protected WalletJsapiData(Parcel paramParcel)
   {
     AppMethodBeat.i(117573);
-    this.KxH = 0;
-    this.KxJ = 0;
+    this.Rzv = 0;
+    this.Rzx = 0;
     this.appId = paramParcel.readString();
     this.partnerId = paramParcel.readString();
     this.signType = paramParcel.readString();
     this.nonceStr = paramParcel.readString();
     this.timeStamp = paramParcel.readString();
     this.packageExt = paramParcel.readString();
-    this.dDL = paramParcel.readString();
-    this.KxF = paramParcel.readInt();
-    this.iGQ = paramParcel.readInt();
-    this.dVt = paramParcel.readString();
-    this.iDk = paramParcel.readString();
+    this.fwv = paramParcel.readString();
+    this.Rzt = paramParcel.readInt();
+    this.lwS = paramParcel.readInt();
+    this.fOW = paramParcel.readString();
+    this.ltk = paramParcel.readString();
     this.url = paramParcel.readString();
-    this.dVu = paramParcel.readString();
-    this.dVv = paramParcel.readInt();
-    this.dVw = paramParcel.readInt();
+    this.fOX = paramParcel.readString();
+    this.fOY = paramParcel.readInt();
+    this.fOZ = paramParcel.readInt();
     this.payChannel = paramParcel.readInt();
-    this.KxG = paramParcel.readInt();
+    this.Rzu = paramParcel.readInt();
     this.extInfo = paramParcel.readString();
-    this.KxH = paramParcel.readInt();
-    this.KxI = paramParcel.readString();
-    this.KxJ = paramParcel.readInt();
-    this.KxK = paramParcel.readString();
-    this.KxL = paramParcel.readString();
-    this.KxM = paramParcel.readString();
+    this.Rzv = paramParcel.readInt();
+    this.Rzw = paramParcel.readString();
+    this.Rzx = paramParcel.readInt();
+    this.Rzy = paramParcel.readString();
+    this.Rzz = paramParcel.readString();
+    this.RzA = paramParcel.readString();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.KxN = bool;
-      this.DWX = paramParcel.readString();
+      this.RzB = bool;
+      this.Kkg = paramParcel.readString();
       int j = paramParcel.readInt();
       if (j <= 0) {
         break;
       }
-      this.KxP = new HashMap();
+      this.RzD = new HashMap();
       while (i < j)
       {
         String str1 = paramParcel.readString();
         String str2 = paramParcel.readString();
-        this.KxP.put(str1, str2);
+        this.RzD.put(str1, str2);
         i += 1;
       }
       bool = false;
     }
-    this.KxO = paramParcel.readString();
+    this.RzC = paramParcel.readString();
+    this.chatType = paramParcel.readInt();
     if ("PAY_SUCCESS_AHEAD_CALLBACK_RESULT_RECEIVER_MAGIC_WORD".equals(paramParcel.readString())) {
-      this.KxQ = ((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel));
+      this.RzE = ((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel));
     }
     AppMethodBeat.o(117573);
   }
   
-  public WalletJsapiData(pj parampj)
+  public WalletJsapiData(qh paramqh)
   {
     AppMethodBeat.i(117570);
-    this.KxH = 0;
-    this.KxJ = 0;
-    if ((parampj == null) || (parampj.dVs == null))
+    this.Rzv = 0;
+    this.Rzx = 0;
+    if ((paramqh == null) || (paramqh.fOV == null))
     {
       AppMethodBeat.o(117570);
       return;
     }
-    this.appId = parampj.dVs.appId;
-    this.partnerId = parampj.dVs.partnerId;
-    this.signType = parampj.dVs.signType;
-    this.nonceStr = parampj.dVs.nonceStr;
-    this.timeStamp = parampj.dVs.timeStamp;
-    this.packageExt = parampj.dVs.packageExt;
-    this.dVt = parampj.dVs.dVt;
-    this.url = parampj.dVs.url;
-    this.dVu = parampj.dVs.dVu;
-    this.dVv = parampj.dVs.dVv;
-    this.payChannel = parampj.dVs.payChannel;
-    this.dVw = parampj.dVs.dVw;
+    this.appId = paramqh.fOV.appId;
+    this.partnerId = paramqh.fOV.partnerId;
+    this.signType = paramqh.fOV.signType;
+    this.nonceStr = paramqh.fOV.nonceStr;
+    this.timeStamp = paramqh.fOV.timeStamp;
+    this.packageExt = paramqh.fOV.packageExt;
+    this.fOW = paramqh.fOV.fOW;
+    this.url = paramqh.fOV.url;
+    this.fOX = paramqh.fOV.fOX;
+    this.fOY = paramqh.fOV.fOY;
+    this.payChannel = paramqh.fOV.payChannel;
+    this.fOZ = paramqh.fOV.fOZ;
     AppMethodBeat.o(117570);
   }
   
   public WalletJsapiData(Map<String, Object> paramMap)
   {
     AppMethodBeat.i(117568);
-    this.KxH = 0;
-    this.KxJ = 0;
+    this.Rzv = 0;
+    this.Rzx = 0;
     this.appId = ((String)paramMap.get("appId"));
     this.partnerId = ((String)paramMap.get("partnerId"));
     this.signType = ((String)paramMap.get("signType"));
     this.nonceStr = ((String)paramMap.get("nonceStr"));
     this.timeStamp = ((String)paramMap.get("timeStamp"));
     this.packageExt = ((String)paramMap.get("package"));
-    this.dDL = ((String)paramMap.get("reqKey"));
-    this.KxF = Util.getInt((String)paramMap.get("payScene"), 1);
-    this.iGQ = Util.getInt((String)paramMap.get("businessScene"), 1);
-    this.dVt = ((String)paramMap.get("paySign"));
+    this.fwv = ((String)paramMap.get("reqKey"));
+    this.Rzt = Util.getInt((String)paramMap.get("payScene"), 1);
+    this.lwS = Util.getInt((String)paramMap.get("businessScene"), 1);
+    this.fOW = ((String)paramMap.get("paySign"));
     this.url = ((String)paramMap.get("url"));
-    this.dVu = ((String)paramMap.get("src_username"));
-    this.dVv = Util.getInt((String)paramMap.get("scene"), 0);
-    if (this.dVv == 0) {
-      this.dVv = Util.getInt((String)paramMap.get("pay_scene"), 0);
+    this.fOX = ((String)paramMap.get("src_username"));
+    this.fOY = Util.getInt((String)paramMap.get("scene"), 0);
+    if (this.fOY == 0) {
+      this.fOY = Util.getInt((String)paramMap.get("pay_scene"), 0);
     }
     this.payChannel = Util.getInt((String)paramMap.get("pay_channel"), 0);
     this.extInfo = Util.nullAsNil((String)paramMap.get("ext_info"));
-    this.KxI = Util.nullAsNil((String)paramMap.get("token"));
-    this.KxJ = Util.getInt(Util.nullAs((String)paramMap.get("result_jump_mode"), "0"), 0);
-    this.KxK = Util.nullAsNil((String)paramMap.get("key_appbrand_from_path"));
-    this.KxL = Util.nullAsNil((String)paramMap.get("key_appbrand_from_username"));
-    this.KxM = Util.nullAsNil((String)paramMap.get("key_appbrand_from_scene"));
+    this.Rzw = Util.nullAsNil((String)paramMap.get("token"));
+    this.Rzx = Util.getInt(Util.nullAs((String)paramMap.get("result_jump_mode"), "0"), 0);
+    this.Rzy = Util.nullAsNil((String)paramMap.get("key_appbrand_from_path"));
+    this.Rzz = Util.nullAsNil((String)paramMap.get("key_appbrand_from_username"));
+    this.RzA = Util.nullAsNil((String)paramMap.get("key_appbrand_from_scene"));
+    this.chatType = Util.getInt((String)paramMap.get("key_chat_type"), 0);
     AppMethodBeat.o(117568);
   }
   
   public WalletJsapiData(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(117569);
-    this.KxH = 0;
-    this.KxJ = 0;
+    this.Rzv = 0;
+    this.Rzx = 0;
     this.appId = paramJSONObject.optString("appId");
     this.partnerId = paramJSONObject.optString("partnerId");
     this.signType = paramJSONObject.optString("signType");
     this.nonceStr = paramJSONObject.optString("nonceStr");
     this.timeStamp = paramJSONObject.optString("timeStamp");
     this.packageExt = paramJSONObject.optString("package");
-    this.dDL = paramJSONObject.optString("reqKey");
-    this.KxF = paramJSONObject.optInt("payScene", 1);
-    this.iGQ = paramJSONObject.optInt("businessScene", 1);
-    this.dVt = paramJSONObject.optString("paySign");
-    this.iDk = paramJSONObject.optString("cookie");
+    this.fwv = paramJSONObject.optString("reqKey");
+    this.Rzt = paramJSONObject.optInt("payScene", 1);
+    this.lwS = paramJSONObject.optInt("businessScene", 1);
+    this.fOW = paramJSONObject.optString("paySign");
+    this.ltk = paramJSONObject.optString("cookie");
     this.url = paramJSONObject.optString("url");
-    this.dVu = paramJSONObject.optString("src_username");
-    this.dVv = paramJSONObject.optInt("scene", 0);
-    if (this.dVv == 0) {
-      this.dVv = paramJSONObject.optInt("pay_scene", 0);
+    this.fOX = paramJSONObject.optString("src_username");
+    this.fOY = paramJSONObject.optInt("scene", 0);
+    if (this.fOY == 0) {
+      this.fOY = paramJSONObject.optInt("pay_scene", 0);
     }
     this.payChannel = paramJSONObject.optInt("pay_channel", 0);
     this.extInfo = paramJSONObject.optString("ext_info", "");
-    this.KxI = paramJSONObject.optString("token", "");
-    this.KxJ = Util.getInt(paramJSONObject.optString("result_jump_mode", "0"), 0);
-    this.KxH = paramJSONObject.optInt("pay_for_wallet_type", 0);
-    this.KxK = Util.nullAsNil(paramJSONObject.optString("key_appbrand_from_path"));
-    this.KxL = Util.nullAsNil(paramJSONObject.optString("key_appbrand_from_username"));
-    this.KxM = Util.nullAsNil(paramJSONObject.optString("key_appbrand_from_scene"));
-    this.KxN = paramJSONObject.optBoolean("key_joint_pay", false);
+    this.Rzw = paramJSONObject.optString("token", "");
+    this.Rzx = Util.getInt(paramJSONObject.optString("result_jump_mode", "0"), 0);
+    this.Rzv = paramJSONObject.optInt("pay_for_wallet_type", 0);
+    this.Rzy = Util.nullAsNil(paramJSONObject.optString("key_appbrand_from_path"));
+    this.Rzz = Util.nullAsNil(paramJSONObject.optString("key_appbrand_from_username"));
+    this.RzA = Util.nullAsNil(paramJSONObject.optString("key_appbrand_from_scene"));
+    this.RzB = paramJSONObject.optBoolean("key_joint_pay", false);
+    this.chatType = paramJSONObject.optInt("key_chat_type", 0);
     AppMethodBeat.o(117569);
   }
   
-  public static int kG(int paramInt1, int paramInt2)
+  public static int ard(int paramInt)
   {
-    if (paramInt1 != 1037) {}
-    while (paramInt2 <= 0) {
-      return paramInt1;
-    }
-    return paramInt2;
+    return paramInt;
   }
   
-  public static int kH(int paramInt1, int paramInt2)
+  public static int lZ(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(117571);
-    int j = kG(paramInt1, paramInt2);
     int i;
-    if ((j == 1000) || (j == 1018) || (j == 1017) || (j == 1033)) {
+    if ((paramInt1 == 1000) || (paramInt1 == 1018) || (paramInt1 == 1017) || (paramInt1 == 1033)) {
       i = 0;
     }
     for (;;)
@@ -230,86 +229,46 @@ public class WalletJsapiData
       Log.i("MicroMsg.WalletJsapiData", "parsePayChannelByScene, scene: %s, rawScene: %s, resultChannel: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
       AppMethodBeat.o(117571);
       return i;
-      if (j == 1019)
-      {
+      if (paramInt1 == 1019) {
         i = 1;
-      }
-      else if (j == 1010)
-      {
+      } else if (paramInt1 == 1010) {
         i = 5;
-      }
-      else if ((j == 1007) || (j == 1008))
-      {
+      } else if ((paramInt1 == 1007) || (paramInt1 == 1008)) {
         i = 6;
-      }
-      else if (j == 1009)
-      {
+      } else if (paramInt1 == 1009) {
         i = 7;
-      }
-      else if ((j == 1035) || (j == 1020))
-      {
+      } else if ((paramInt1 == 1035) || (paramInt1 == 1020)) {
         i = 8;
-      }
-      else if ((j == 1011) || (j == 1047) || (j == 1025))
-      {
+      } else if ((paramInt1 == 1011) || (paramInt1 == 1047) || (paramInt1 == 1025)) {
         i = 12;
-      }
-      else if ((j == 1012) || (j == 1032) || (j == 1048) || (j == 1050))
-      {
+      } else if ((paramInt1 == 1012) || (paramInt1 == 1032) || (paramInt1 == 1048) || (paramInt1 == 1050)) {
         i = 13;
-      }
-      else if ((j == 1005) || (j == 1027) || (j == 1042) || (j == 1006))
-      {
+      } else if ((paramInt1 == 1005) || (paramInt1 == 1027) || (paramInt1 == 1042) || (paramInt1 == 1006)) {
         i = 15;
-      }
-      else if ((j == 1024) || (j == 1021))
-      {
+      } else if ((paramInt1 == 1024) || (paramInt1 == 1021)) {
         i = 16;
-      }
-      else if ((j == 1029) || (j == 1028))
-      {
+      } else if ((paramInt1 == 1029) || (paramInt1 == 1028)) {
         i = 23;
-      }
-      else if ((j == 1013) || (j == 1031) || (j == 1049))
-      {
+      } else if ((paramInt1 == 1013) || (paramInt1 == 1031) || (paramInt1 == 1049)) {
         i = 24;
-      }
-      else if ((j == 1001) || (j == 1003))
-      {
+      } else if ((paramInt1 == 1001) || (paramInt1 == 1003)) {
         i = 25;
-      }
-      else if ((j == 1045) || (j == 1046))
-      {
+      } else if ((paramInt1 == 1045) || (paramInt1 == 1046)) {
         i = 26;
-      }
-      else if (j == 1022)
-      {
+      } else if (paramInt1 == 1022) {
         i = 27;
-      }
-      else if (j == 1023)
-      {
+      } else if (paramInt1 == 1023) {
         i = 28;
-      }
-      else if (j == 1026)
-      {
+      } else if (paramInt1 == 1026) {
         i = 29;
-      }
-      else if (j == 1039)
-      {
+      } else if (paramInt1 == 1039) {
         i = 30;
-      }
-      else if ((j == 1034) || (j == 1060))
-      {
+      } else if ((paramInt1 == 1034) || (paramInt1 == 1060)) {
         i = 31;
-      }
-      else if ((j != 1014) && (j != 1043) && (j != 1044))
-      {
-        i = j;
-        if (j != 1036) {}
-      }
-      else
-      {
+      } else if ((paramInt1 == 1014) || (paramInt1 == 1043) || (paramInt1 == 1044) || (paramInt1 == 1036)) {
         i = 32;
+      } else {
+        i = paramInt1;
       }
     }
   }
@@ -328,34 +287,34 @@ public class WalletJsapiData
     paramParcel.writeString(this.nonceStr);
     paramParcel.writeString(this.timeStamp);
     paramParcel.writeString(this.packageExt);
-    paramParcel.writeString(this.dDL);
-    paramParcel.writeInt(this.KxF);
-    paramParcel.writeInt(this.iGQ);
-    paramParcel.writeString(this.dVt);
-    paramParcel.writeString(this.iDk);
+    paramParcel.writeString(this.fwv);
+    paramParcel.writeInt(this.Rzt);
+    paramParcel.writeInt(this.lwS);
+    paramParcel.writeString(this.fOW);
+    paramParcel.writeString(this.ltk);
     paramParcel.writeString(this.url);
-    paramParcel.writeString(this.dVu);
-    paramParcel.writeInt(this.dVv);
-    paramParcel.writeInt(this.dVw);
+    paramParcel.writeString(this.fOX);
+    paramParcel.writeInt(this.fOY);
+    paramParcel.writeInt(this.fOZ);
     paramParcel.writeInt(this.payChannel);
-    paramParcel.writeInt(this.KxG);
+    paramParcel.writeInt(this.Rzu);
     paramParcel.writeString(this.extInfo);
-    paramParcel.writeInt(this.KxH);
-    paramParcel.writeString(this.KxI);
-    paramParcel.writeInt(this.KxJ);
-    paramParcel.writeString(this.KxK);
-    paramParcel.writeString(this.KxL);
-    paramParcel.writeString(this.KxM);
-    if (this.KxN) {}
+    paramParcel.writeInt(this.Rzv);
+    paramParcel.writeString(this.Rzw);
+    paramParcel.writeInt(this.Rzx);
+    paramParcel.writeString(this.Rzy);
+    paramParcel.writeString(this.Rzz);
+    paramParcel.writeString(this.RzA);
+    if (this.RzB) {}
     for (int i = 1;; i = 0)
     {
       paramParcel.writeInt(i);
-      paramParcel.writeString(this.DWX);
-      if (this.KxP == null) {
+      paramParcel.writeString(this.Kkg);
+      if (this.RzD == null) {
         break;
       }
-      paramParcel.writeInt(this.KxP.size());
-      Iterator localIterator = this.KxP.entrySet().iterator();
+      paramParcel.writeInt(this.RzD.size());
+      Iterator localIterator = this.RzD.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -364,11 +323,12 @@ public class WalletJsapiData
       }
     }
     paramParcel.writeInt(0);
-    paramParcel.writeString(this.KxO);
-    if (this.KxQ != null)
+    paramParcel.writeString(this.RzC);
+    paramParcel.writeInt(this.chatType);
+    if (this.RzE != null)
     {
       paramParcel.writeString("PAY_SUCCESS_AHEAD_CALLBACK_RESULT_RECEIVER_MAGIC_WORD");
-      this.KxQ.writeToParcel(paramParcel, paramInt);
+      this.RzE.writeToParcel(paramParcel, paramInt);
       AppMethodBeat.o(117572);
       return;
     }

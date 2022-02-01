@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.mv.ui.widget.RangeSliderView android:id="@id/bmi" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.mv.ui.widget.MvFrameListView android:id="@id/d9v" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </com.tencent.mm.plugin.mv.ui.widget.RangeSliderView>
+    <TextView android:textSize="12.0sp" android:textColor="@android:color/holo_red_light" android:id="@id/bku" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_alignLeft="@id/bmi" android:layout_alignTop="@id/bmi" android:layout_alignRight="@id/bmi" android:layout_alignBottom="@id/bmi" android:layout_alignParentBottom="true" />
+    <View android:id="@id/vn" android:background="@drawable/d2j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignLeft="@id/bmi" android:layout_alignTop="@id/bmi" android:layout_alignRight="@id/bmi" android:layout_alignBottom="@id/bmi" />
+</RelativeLayout>

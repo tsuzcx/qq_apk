@@ -13,19 +13,19 @@ final class AppAttachDownloadUI$7
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(232800);
+    AppMethodBeat.i(277244);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/ui/chatting/AppAttachDownloadUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    AppAttachDownloadUI.O(this.PdA);
-    AppAttachDownloadUI.P(this.PdA);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/ui/chatting/AppAttachDownloadUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    AppAttachDownloadUI.O(this.WwM);
+    AppAttachDownloadUI.P(this.WwM);
     a.a(this, "com/tencent/mm/ui/chatting/AppAttachDownloadUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(232800);
+    AppMethodBeat.o(277244);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.AppAttachDownloadUI.7
  * JD-Core Version:    0.7.0.1
  */

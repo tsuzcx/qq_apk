@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.masssend.ui;
 import android.content.Context;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.l;
 import com.tencent.mm.pluginsdk.ui.chat.j;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 
@@ -16,18 +17,18 @@ public final class d
     this.context = paramContext;
   }
   
-  public final void B(EmojiInfo paramEmojiInfo)
+  public final void A(boolean paramBoolean, int paramInt) {}
+  
+  public final void cpE() {}
+  
+  public final void cpF() {}
+  
+  public final void o(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(26512);
-    Toast.makeText(this.context, this.context.getString(2131762961), 0).show();
+    Toast.makeText(this.context, this.context.getString(R.l.eLy), 0).show();
     AppMethodBeat.o(26512);
   }
-  
-  public final void N(boolean paramBoolean, int paramInt) {}
-  
-  public final void ein() {}
-  
-  public final void eio() {}
 }
 
 

@@ -9,31 +9,31 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/IsoDepLogic;", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/INFCTechLogic;", "()V", "TAG", "", "exec", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult;", "", "tag", "Landroid/nfc/Tag;", "function", "params", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/model/INFCTechExecParams;", "execAsync", "", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteCallback;", "getHistoricalBytes", "", "isoDep", "Landroid/nfc/tech/IsoDep;", "getIsoDep", "luggage-commons-jsapi-nfc-ext_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/IsoDepLogic;", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/INFCTechLogic;", "()V", "TAG", "", "exec", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult;", "", "tag", "Landroid/nfc/Tag;", "function", "params", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/model/INFCTechExecParams;", "execAsync", "", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteCallback;", "getHistoricalBytes", "", "isoDep", "Landroid/nfc/tech/IsoDep;", "getIsoDep", "luggage-commons-jsapi-nfc-ext_release"})
 public final class b
   implements a
 {
-  public static final b miy;
+  public static final b pgA;
   
   static
   {
-    AppMethodBeat.i(207146);
-    miy = new b();
-    AppMethodBeat.o(207146);
+    AppMethodBeat.i(241805);
+    pgA = new b();
+    AppMethodBeat.o(241805);
   }
   
   public final void a(Tag paramTag, String paramString, kotlin.g.a.b<? super e<Object>, x> paramb)
   {
-    AppMethodBeat.i(207145);
-    p.h(paramTag, "tag");
-    p.h(paramString, "function");
-    p.h(paramb, "callback");
+    AppMethodBeat.i(241803);
+    p.k(paramTag, "tag");
+    p.k(paramString, "function");
+    p.k(paramb, "callback");
     Log.d("MicroMsg.AppBrand.IsoDepLogic", "execAsync, function: ".concat(String.valueOf(paramString)));
     paramTag = IsoDep.get(paramTag);
     if (paramTag == null)
     {
       paramb.invoke(new e.a(13015, "unavailable tech"));
-      AppMethodBeat.o(207145);
+      AppMethodBeat.o(241803);
       return;
     }
     switch (paramString.hashCode())
@@ -43,7 +43,7 @@ public final class b
     {
       paramTag = (e)new e.a(13024, "function not support");
       paramb.invoke(paramTag);
-      AppMethodBeat.o(207145);
+      AppMethodBeat.o(241803);
       return;
     } while (!paramString.equals("getHistoricalBytes"));
     paramTag = paramTag.getHistoricalBytes();
@@ -51,7 +51,7 @@ public final class b
     {
       paramString = new StringBuilder("historicalBytes: ");
       String str = Arrays.toString(paramTag);
-      p.g(str, "java.util.Arrays.toString(this)");
+      p.j(str, "java.util.Arrays.toString(this)");
       Log.d("MicroMsg.AppBrand.IsoDepLogic", str);
     }
     for (;;)
@@ -64,7 +64,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.logic.b
  * JD-Core Version:    0.7.0.1
  */

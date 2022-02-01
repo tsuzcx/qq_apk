@@ -6,13 +6,13 @@ import java.util.HashMap;
 
 public final class g
 {
-  private static int Iyf = 0;
-  private HashMap<String, f> tyt;
+  private static int Psk = 0;
+  private HashMap<String, f> xge;
   
   public g()
   {
     AppMethodBeat.i(30014);
-    this.tyt = new HashMap();
+    this.xge = new HashMap();
     AppMethodBeat.o(30014);
   }
   
@@ -22,7 +22,7 @@ public final class g
     {
       AppMethodBeat.i(30017);
       Log.i("MicroMsg.Wear.WearNotificationMap", "update notification=%s", new Object[] { paramf });
-      this.tyt.put(paramf.talker, paramf);
+      this.xge.put(paramf.talker, paramf);
       AppMethodBeat.o(30017);
       return;
     }
@@ -34,7 +34,7 @@ public final class g
   }
   
   /* Error */
-  public final f aWj(String paramString)
+  public final f bhQ(String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -42,12 +42,12 @@ public final class g
     //   2: sipush 30015
     //   5: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 28	com/tencent/mm/plugin/wear/model/g:tyt	Ljava/util/HashMap;
+    //   9: getfield 28	com/tencent/mm/plugin/wear/model/g:xge	Ljava/util/HashMap;
     //   12: aload_1
     //   13: invokevirtual 58	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   16: ifeq +31 -> 47
     //   19: aload_0
-    //   20: getfield 28	com/tencent/mm/plugin/wear/model/g:tyt	Ljava/util/HashMap;
+    //   20: getfield 28	com/tencent/mm/plugin/wear/model/g:xge	Ljava/util/HashMap;
     //   23: aload_1
     //   24: invokevirtual 62	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   27: checkcast 44	com/tencent/mm/plugin/wear/model/f
@@ -60,10 +60,10 @@ public final class g
     //   44: monitorexit
     //   45: aload_1
     //   46: areturn
-    //   47: getstatic 13	com/tencent/mm/plugin/wear/model/g:Iyf	I
+    //   47: getstatic 13	com/tencent/mm/plugin/wear/model/g:Psk	I
     //   50: iconst_1
     //   51: iadd
-    //   52: putstatic 13	com/tencent/mm/plugin/wear/model/g:Iyf	I
+    //   52: putstatic 13	com/tencent/mm/plugin/wear/model/g:Psk	I
     //   55: new 44	com/tencent/mm/plugin/wear/model/f
     //   58: dup
     //   59: invokespecial 67	com/tencent/mm/plugin/wear/model/f:<init>	()V
@@ -72,13 +72,13 @@ public final class g
     //   64: aload_1
     //   65: putfield 48	com/tencent/mm/plugin/wear/model/f:talker	Ljava/lang/String;
     //   68: aload_2
-    //   69: getstatic 13	com/tencent/mm/plugin/wear/model/g:Iyf	I
+    //   69: getstatic 13	com/tencent/mm/plugin/wear/model/g:Psk	I
     //   72: putfield 70	com/tencent/mm/plugin/wear/model/f:id	I
     //   75: aload_2
-    //   76: getstatic 76	com/tencent/mm/plugin/wear/model/f$a:Iya	Lcom/tencent/mm/plugin/wear/model/f$a;
-    //   79: putfield 79	com/tencent/mm/plugin/wear/model/f:IxZ	Lcom/tencent/mm/plugin/wear/model/f$a;
+    //   76: getstatic 76	com/tencent/mm/plugin/wear/model/f$a:Psf	Lcom/tencent/mm/plugin/wear/model/f$a;
+    //   79: putfield 79	com/tencent/mm/plugin/wear/model/f:Pse	Lcom/tencent/mm/plugin/wear/model/f$a;
     //   82: aload_0
-    //   83: getfield 28	com/tencent/mm/plugin/wear/model/g:tyt	Ljava/util/HashMap;
+    //   83: getfield 28	com/tencent/mm/plugin/wear/model/g:xge	Ljava/util/HashMap;
     //   86: aload_1
     //   87: aload_2
     //   88: invokevirtual 52	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -106,16 +106,16 @@ public final class g
     //   47	106	109	finally
   }
   
-  public final void aWk(String paramString)
+  public final void bhR(String paramString)
   {
     try
     {
       AppMethodBeat.i(30016);
       Log.i("MicroMsg.Wear.WearNotificationMap", "reset notification talker=%s", new Object[] { paramString });
-      if (this.tyt.containsKey(paramString))
+      if (this.xge.containsKey(paramString))
       {
-        ((f)this.tyt.get(paramString)).IxZ = f.a.Iya;
-        ((f)this.tyt.get(paramString)).IxY = 0;
+        ((f)this.xge.get(paramString)).Pse = f.a.Psf;
+        ((f)this.xge.get(paramString)).Psd = 0;
       }
       AppMethodBeat.o(30016);
       return;
@@ -123,16 +123,16 @@ public final class g
     finally {}
   }
   
-  public final void aWl(String paramString)
+  public final void bhS(String paramString)
   {
     try
     {
       AppMethodBeat.i(30018);
-      if (this.tyt.containsKey(paramString))
+      if (this.xge.containsKey(paramString))
       {
-        paramString = (f)this.tyt.get(paramString);
-        paramString.IxZ = f.a.Iyd;
-        paramString.IxY = 0;
+        paramString = (f)this.xge.get(paramString);
+        paramString.Pse = f.a.Psi;
+        paramString.Psd = 0;
         Log.i("MicroMsg.Wear.WearNotificationMap", "Update reply success, notification=%s", new Object[] { paramString });
       }
       AppMethodBeat.o(30018);
@@ -141,15 +141,15 @@ public final class g
     finally {}
   }
   
-  public final void aWm(String paramString)
+  public final void bhT(String paramString)
   {
     try
     {
       AppMethodBeat.i(30020);
-      if (this.tyt.containsKey(paramString))
+      if (this.xge.containsKey(paramString))
       {
-        paramString = (f)this.tyt.get(paramString);
-        paramString.IxZ = f.a.Iyb;
+        paramString = (f)this.xge.get(paramString);
+        paramString.Pse = f.a.Psg;
         Log.i("MicroMsg.Wear.WearNotificationMap", "Update showing success, notification=%s", new Object[] { paramString });
       }
       AppMethodBeat.o(30020);
@@ -158,16 +158,16 @@ public final class g
     finally {}
   }
   
-  public final void gc(String paramString, int paramInt)
+  public final void gL(String paramString, int paramInt)
   {
     try
     {
       AppMethodBeat.i(30019);
-      if (this.tyt.containsKey(paramString))
+      if (this.xge.containsKey(paramString))
       {
-        paramString = (f)this.tyt.get(paramString);
-        paramString.IxZ = f.a.Iyc;
-        paramString.IxY = paramInt;
+        paramString = (f)this.xge.get(paramString);
+        paramString.Pse = f.a.Psh;
+        paramString.Psd = paramInt;
         Log.i("MicroMsg.Wear.WearNotificationMap", "Update ignore success, notification=%s", new Object[] { paramString });
       }
       AppMethodBeat.o(30019);
@@ -178,7 +178,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.g
  * JD-Core Version:    0.7.0.1
  */

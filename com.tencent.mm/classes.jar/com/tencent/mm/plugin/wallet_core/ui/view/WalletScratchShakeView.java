@@ -14,8 +14,8 @@ import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.l.d;
-import com.tencent.mm.pluginsdk.l.d.a;
+import com.tencent.mm.pluginsdk.m.d;
+import com.tencent.mm.pluginsdk.m.d.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -26,10 +26,10 @@ import java.nio.ByteOrder;
 public class WalletScratchShakeView
   extends FrameLayout
 {
-  private a InA;
-  b Inx;
-  boolean Iny;
-  boolean Inz;
+  b PfP;
+  boolean PfQ;
+  boolean PfR;
+  private a PfS;
   
   public WalletScratchShakeView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -44,12 +44,12 @@ public class WalletScratchShakeView
   public final void onDestroy()
   {
     AppMethodBeat.i(71547);
-    if (this.Inx != null)
+    if (this.PfP != null)
     {
-      b localb = this.Inx;
+      b localb = this.PfP;
       Log.i("MicroMsg.WalletScratchShakeView", "onDestroy");
       if (localb.shakeSensor != null) {
-        localb.shakeSensor.cBo();
+        localb.shakeSensor.cPS();
       }
     }
     AppMethodBeat.o(71547);
@@ -57,43 +57,43 @@ public class WalletScratchShakeView
   
   public void setScratchShakeCallback(a parama)
   {
-    this.InA = parama;
+    this.PfS = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void fTW();
+    public abstract void Ct(boolean paramBoolean);
     
-    public abstract void yy(boolean paramBoolean);
+    public abstract void gMC();
   }
   
   final class b
     extends View
   {
-    private Bitmap Ehf;
-    private Canvas InB;
-    Drawable InC;
-    Paint InD;
-    Paint InE;
-    Path InF;
-    Path InG;
-    private float InH;
-    private float InI;
-    private int[] InJ;
-    private int InK = -1;
-    boolean InL;
-    boolean InM;
-    float InN;
-    float InO;
-    int InP;
-    private boolean InQ;
-    boolean InR;
-    private float InS = 0.9F;
-    Paint aYz;
+    private Bitmap Kum;
+    private Canvas PfT;
+    Drawable PfU;
+    Paint PfV;
+    Paint PfW;
+    Path PfX;
+    Path PfY;
+    private float PfZ;
+    private float Pga;
+    private int[] Pgb;
+    private int Pgc = -1;
+    boolean Pgd;
+    boolean Pge;
+    float Pgf;
+    float Pgg;
+    int Pgh;
+    private boolean Pgi;
+    boolean Pgj;
+    private float Pgk = 0.9F;
+    Paint aHU;
+    int bvH;
     private boolean isStartShake = false;
     long lastShakeTime;
-    private int meh = 0;
-    int rZ;
+    private int pbZ = 0;
     d shakeSensor;
     
     public b(Context paramContext)
@@ -101,7 +101,7 @@ public class WalletScratchShakeView
       super();
     }
     
-    static byte[] aD(Bitmap paramBitmap)
+    static byte[] aA(Bitmap paramBitmap)
     {
       int i = 0;
       AppMethodBeat.i(71538);
@@ -141,27 +141,27 @@ public class WalletScratchShakeView
       return paramBitmap;
     }
     
-    private boolean fTX()
+    private boolean gMD()
     {
       AppMethodBeat.i(71539);
-      if (this.InO >= getHeight())
+      if (this.Pgg >= getHeight())
       {
-        this.InR = true;
-        if (!this.InM)
+        this.Pgj = true;
+        if (!this.Pge)
         {
           if (WalletScratchShakeView.a(WalletScratchShakeView.this) != null) {
-            WalletScratchShakeView.a(WalletScratchShakeView.this).fTW();
+            WalletScratchShakeView.a(WalletScratchShakeView.this).gMC();
           }
-          this.InM = true;
+          this.Pge = true;
         }
-        if (this.InB != null)
+        if (this.PfT != null)
         {
-          this.InG.reset();
-          this.InG.moveTo(0.0F, 0.0F);
-          this.InG.lineTo(getWidth(), 0.0F);
-          this.InG.lineTo(getWidth(), getHeight());
-          this.InG.lineTo(0.0F, getHeight());
-          this.InB.drawPath(this.InG, this.InE);
+          this.PfY.reset();
+          this.PfY.moveTo(0.0F, 0.0F);
+          this.PfY.lineTo(getWidth(), 0.0F);
+          this.PfY.lineTo(getWidth(), getHeight());
+          this.PfY.lineTo(0.0F, getHeight());
+          this.PfT.drawPath(this.PfY, this.PfW);
         }
         invalidate();
         AppMethodBeat.o(71539);
@@ -171,26 +171,26 @@ public class WalletScratchShakeView
       return false;
     }
     
-    private void fTY()
+    private void gME()
     {
       AppMethodBeat.i(71540);
-      if (this.InB != null)
+      if (this.PfT != null)
       {
-        this.InG.reset();
-        this.InG.moveTo(0.0F, this.InO);
-        this.InG.cubicTo(getWidth() / 2, getHeight(), getWidth() / 2, 0.0F, getWidth(), this.InN);
-        this.InG.lineTo(getWidth(), 0.0F);
-        this.InG.lineTo(0.0F, 0.0F);
-        this.InB.drawPath(this.InG, this.InE);
+        this.PfY.reset();
+        this.PfY.moveTo(0.0F, this.Pgg);
+        this.PfY.cubicTo(getWidth() / 2, getHeight(), getWidth() / 2, 0.0F, getWidth(), this.Pgf);
+        this.PfY.lineTo(getWidth(), 0.0F);
+        this.PfY.lineTo(0.0F, 0.0F);
+        this.PfT.drawPath(this.PfY, this.PfW);
       }
       invalidate();
       AppMethodBeat.o(71540);
     }
     
-    public final boolean ae(MotionEvent paramMotionEvent)
+    public final boolean an(MotionEvent paramMotionEvent)
     {
       AppMethodBeat.i(71543);
-      if ((this.Ehf != null) && ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 0)))
+      if ((this.Kum != null) && ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 0)))
       {
         int i = getWidth();
         int j = getHeight();
@@ -202,7 +202,7 @@ public class WalletScratchShakeView
         Log.d("MicroMsg.WalletScratchShakeView", "checkIsTouchEraseArea, x: %s, y: %s, width: %s, height: %s, index: %s, len: %s", new Object[] { Float.valueOf(paramMotionEvent.getX()), Float.valueOf(paramMotionEvent.getY()), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(n), Integer.valueOf(i1 * i2) });
         if ((n > 0) && (k > 0) && (m > 0) && (k < getWidth()) && (m < getHeight()))
         {
-          if (this.Ehf.getPixel(k, m) == 0)
+          if (this.Kum.getPixel(k, m) == 0)
           {
             AppMethodBeat.o(71543);
             return true;
@@ -219,22 +219,22 @@ public class WalletScratchShakeView
     {
       AppMethodBeat.i(71541);
       paramCanvas.save();
-      if (this.Ehf == null)
+      if (this.Kum == null)
       {
         int i = getWidth();
         int j = getHeight();
-        Log.i("MicroMsg.WalletScratchShakeView", "createMasker width: %s, height: %s, waterMark: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), this.InC });
-        this.Ehf = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-        this.InB = new Canvas(this.Ehf);
-        if (this.InC != null)
+        Log.i("MicroMsg.WalletScratchShakeView", "createMasker width: %s, height: %s, waterMark: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), this.PfU });
+        this.Kum = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+        this.PfT = new Canvas(this.Kum);
+        if (this.PfU != null)
         {
           Rect localRect = new Rect(0, 0, i, j);
-          this.InC.setBounds(localRect);
-          this.InC.draw(this.InB);
+          this.PfU.setBounds(localRect);
+          this.PfU.draw(this.PfT);
         }
-        this.InJ = new int[i * j];
+        this.Pgb = new int[i * j];
       }
-      paramCanvas.drawBitmap(this.Ehf, 0.0F, 0.0F, this.aYz);
+      paramCanvas.drawBitmap(this.Kum, 0.0F, 0.0F, this.aHU);
       paramCanvas.restore();
       AppMethodBeat.o(71541);
     }
@@ -253,18 +253,18 @@ public class WalletScratchShakeView
       switch (j)
       {
       }
-      while ((!this.InR) && (!ae(paramMotionEvent)) && (i != 0))
+      while ((!this.Pgj) && (!an(paramMotionEvent)) && (i != 0))
       {
         AppMethodBeat.o(71542);
         return true;
         float f1 = paramMotionEvent.getX();
         float f2 = paramMotionEvent.getY();
-        this.InF.reset();
-        this.InF.moveTo(f1, f2);
-        this.InH = f1;
-        this.InI = f2;
+        this.PfX.reset();
+        this.PfX.moveTo(f1, f2);
+        this.PfZ = f1;
+        this.Pga = f2;
         invalidate();
-        if (!this.InL)
+        if (!this.Pgd)
         {
           MMHandlerThread.postToMainThreadDelayed(new Runnable()
           {
@@ -272,36 +272,36 @@ public class WalletScratchShakeView
             {
               AppMethodBeat.i(71535);
               if (WalletScratchShakeView.a(WalletScratchShakeView.this) != null) {
-                WalletScratchShakeView.a(WalletScratchShakeView.this).yy(true);
+                WalletScratchShakeView.a(WalletScratchShakeView.this).Ct(true);
               }
               AppMethodBeat.o(71535);
             }
           }, 50L);
-          this.InL = true;
+          this.Pgd = true;
           i = 1;
           continue;
           f1 = paramMotionEvent.getX();
           f2 = paramMotionEvent.getY();
-          if (this.InB != null)
+          if (this.PfT != null)
           {
-            i = (int)Math.abs(f1 - this.InH);
-            j = (int)Math.abs(f2 - this.InI);
-            if ((i >= this.rZ) || (j >= this.rZ))
+            i = (int)Math.abs(f1 - this.PfZ);
+            j = (int)Math.abs(f2 - this.Pga);
+            if ((i >= this.bvH) || (j >= this.bvH))
             {
-              this.InH = f1;
-              this.InI = f2;
-              this.InF.quadTo((this.InH + f1) / 2.0F, (this.InI + f2) / 2.0F, f1, f2);
-              this.InB.drawPath(this.InF, this.InD);
-              this.InF.reset();
-              this.InF.moveTo(this.InH, this.InI);
+              this.PfZ = f1;
+              this.Pga = f2;
+              this.PfX.quadTo((this.PfZ + f1) / 2.0F, (this.Pga + f2) / 2.0F, f1, f2);
+              this.PfT.drawPath(this.PfX, this.PfV);
+              this.PfX.reset();
+              this.PfX.moveTo(this.PfZ, this.Pga);
             }
           }
           invalidate();
           i = 1;
           continue;
-          this.InH = 0.0F;
-          this.InI = 0.0F;
-          this.InF.reset();
+          this.PfZ = 0.0F;
+          this.Pga = 0.0F;
+          this.PfX.reset();
           ThreadPool.post(new Runnable()
           {
             public final void run()

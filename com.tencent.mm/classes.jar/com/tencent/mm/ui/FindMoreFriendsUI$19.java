@@ -1,24 +1,19 @@
 package com.tencent.mm.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.by.c;
 
 final class FindMoreFriendsUI$19
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  FindMoreFriendsUI$19(FindMoreFriendsUI paramFindMoreFriendsUI, Runnable paramRunnable) {}
+  FindMoreFriendsUI$19(FindMoreFriendsUI paramFindMoreFriendsUI, Intent paramIntent) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    AppMethodBeat.i(33052);
-    this.val$runnable.run();
-    g.aAh().azQ().set(ar.a.Oju, Boolean.TRUE);
-    AppMethodBeat.o(33052);
+    AppMethodBeat.i(290403);
+    c.b(this.VUs.getContext(), "webview", ".ui.tools.WebViewUI", this.val$intent);
+    AppMethodBeat.o(290403);
   }
 }
 

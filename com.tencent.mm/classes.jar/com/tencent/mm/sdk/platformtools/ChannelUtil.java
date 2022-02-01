@@ -75,7 +75,7 @@ public final class ChannelUtil
   
   private static String formatVersionImpl(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(200838);
+    AppMethodBeat.i(249192);
     int i = paramInt >> 8 & 0xFF;
     if (i == 0) {}
     String str2;
@@ -113,23 +113,23 @@ public final class ChannelUtil
         if ((paramContext != null) && (paramContext.length >= 4)) {
           break label275;
         }
-        AppMethodBeat.o(200838);
+        AppMethodBeat.o(249192);
         return str2;
         str1 = paramContext[0] + "." + paramContext[1];
         if (!paramContext[2].trim().equals("0")) {
           break label326;
         }
-        AppMethodBeat.o(200838);
+        AppMethodBeat.o(249192);
         return str1;
         paramContext = str1 + "." + paramContext[2];
-        AppMethodBeat.o(200838);
+        AppMethodBeat.o(249192);
       }
       if (!paramBoolean) {
         break;
       }
       paramContext = str2 + "_" + paramInt;
       Log.d("MicroMsg.SDK.ChannelUtil", "full version: ".concat(String.valueOf(paramContext)));
-      AppMethodBeat.o(200838);
+      AppMethodBeat.o(249192);
       return paramContext;
     }
     label275:
@@ -144,13 +144,13 @@ public final class ChannelUtil
   
   public static boolean isGPVersion()
   {
-    AppMethodBeat.i(200839);
+    AppMethodBeat.i(249193);
     if ((WeChatSomeFeatureSwitch.forceGooglePlayChannel()) || (channelId == 1))
     {
-      AppMethodBeat.o(200839);
+      AppMethodBeat.o(249193);
       return true;
     }
-    AppMethodBeat.o(200839);
+    AppMethodBeat.o(249193);
     return false;
   }
   
@@ -245,7 +245,7 @@ public final class ChannelUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.ChannelUtil
  * JD-Core Version:    0.7.0.1
  */

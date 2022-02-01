@@ -1,105 +1,89 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
+import java.util.LinkedList;
 
 public final class alc
-  extends com.tencent.mm.bw.a
+  extends dyy
 {
-  public String Lub;
-  public String finderUsername;
-  public long hFK;
-  public int mediaType;
-  public String sessionBuffer;
-  public int videoDuration;
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209321);
+    AppMethodBeat.i(32194);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bb(1, this.hFK);
-      if (this.finderUsername != null) {
-        paramVarArgs.e(2, this.finderUsername);
-      }
-      if (this.sessionBuffer != null) {
-        paramVarArgs.e(3, this.sessionBuffer);
-      }
-      if (this.Lub != null) {
-        paramVarArgs.e(4, this.Lub);
-      }
-      paramVarArgs.aM(5, this.videoDuration);
-      paramVarArgs.aM(6, this.mediaType);
-      AppMethodBeat.o(209321);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.r(1, this.hFK) + 0;
-      paramInt = i;
-      if (this.finderUsername != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.finderUsername);
-      }
-      i = paramInt;
-      if (this.sessionBuffer != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.sessionBuffer);
-      }
-      paramInt = i;
-      if (this.Lub != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.Lub);
-      }
-      i = g.a.a.b.b.a.bu(5, this.videoDuration);
-      int j = g.a.a.b.b.a.bu(6, this.mediaType);
-      AppMethodBeat.o(209321);
-      return paramInt + i + j;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
-      }
-      AppMethodBeat.o(209321);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      alc localalc = (alc)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.BaseResponse == null)
       {
-      default: 
-        AppMethodBeat.o(209321);
-        return -1;
-      case 1: 
-        localalc.hFK = locala.UbS.zl();
-        AppMethodBeat.o(209321);
-        return 0;
-      case 2: 
-        localalc.finderUsername = locala.UbS.readString();
-        AppMethodBeat.o(209321);
-        return 0;
-      case 3: 
-        localalc.sessionBuffer = locala.UbS.readString();
-        AppMethodBeat.o(209321);
-        return 0;
-      case 4: 
-        localalc.Lub = locala.UbS.readString();
-        AppMethodBeat.o(209321);
-        return 0;
-      case 5: 
-        localalc.videoDuration = locala.UbS.zi();
-        AppMethodBeat.o(209321);
-        return 0;
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(32194);
+        throw paramVarArgs;
       }
-      localalc.mediaType = locala.UbS.zi();
-      AppMethodBeat.o(209321);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.oE(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(32194);
       return 0;
     }
-    AppMethodBeat.o(209321);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseResponse == null) {
+        break label347;
+      }
+    }
+    label347:
+    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    {
+      AppMethodBeat.o(32194);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
+        }
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(32194);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32194);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        alc localalc = (alc)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(32194);
+          return -1;
+        }
+        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          jh localjh = new jh();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localjh.parseFrom((byte[])localObject);
+          }
+          localalc.BaseResponse = localjh;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(32194);
+        return 0;
+      }
+      AppMethodBeat.o(32194);
+      return -1;
+    }
   }
 }
 

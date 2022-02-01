@@ -5,27 +5,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/MatrixInterpolator;", "", "()V", "Companion", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/MatrixInterpolator;", "", "()V", "Companion", "plugin-recordvideo_release"})
 public final class b
 {
-  public static final a CgU;
+  public static final a IdK;
   
   static
   {
-    AppMethodBeat.i(237929);
-    CgU = new a((byte)0);
-    AppMethodBeat.o(237929);
+    AppMethodBeat.i(225287);
+    IdK = new a((byte)0);
+    AppMethodBeat.o(225287);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/MatrixInterpolator$Companion;", "", "()V", "clampScale", "", "matrix", "Landroid/graphics/Matrix;", "pivotSrc", "", "minScale", "", "maxScale", "getScale", "plugin-recordvideo_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/MatrixInterpolator$Companion;", "", "()V", "clampScale", "", "matrix", "Landroid/graphics/Matrix;", "pivotSrc", "", "minScale", "", "maxScale", "getScale", "plugin-recordvideo_release"})
   public static final class a
   {
     public static void a(Matrix paramMatrix, float[] paramArrayOfFloat, float paramFloat1, float paramFloat2)
     {
-      AppMethodBeat.i(237928);
-      p.h(paramMatrix, "matrix");
-      p.h(paramArrayOfFloat, "pivotSrc");
-      p.h(paramMatrix, "matrix");
+      AppMethodBeat.i(218340);
+      p.k(paramMatrix, "matrix");
+      p.k(paramArrayOfFloat, "pivotSrc");
+      p.k(paramMatrix, "matrix");
       float[] arrayOfFloat = new float[9];
       paramMatrix.getValues(arrayOfFloat);
       double d1 = arrayOfFloat[0];
@@ -49,20 +49,20 @@ public final class b
         paramMatrix.postScale(paramFloat1, paramFloat1);
         paramMatrix.postRotate(paramFloat2);
         paramMatrix.postTranslate(paramArrayOfFloat[0], paramArrayOfFloat[1]);
-        AppMethodBeat.o(237928);
+        AppMethodBeat.o(218340);
         return;
         if (f <= paramFloat2) {
           break;
         }
         paramFloat1 = paramFloat2;
       }
-      AppMethodBeat.o(237928);
+      AppMethodBeat.o(218340);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.c.b
  * JD-Core Version:    0.7.0.1
  */

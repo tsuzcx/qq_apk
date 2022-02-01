@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:background="@drawable/amk" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/bt" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/kkj" android:background="@drawable/amk" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/bt" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.tencent.mm.view.HardTouchableLayout android:id="@id/ig6" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m">
-        <android.support.design.widget.TabLayout android:layout_gravity="center" android:id="@id/igb" android:layout_width="wrap_content" android:layout_height="fill_parent" app:tabBackground="@color/ac_" app:tabGravity="aq3" app:tabIndicatorHeight="0.0dip" app:tabMaxWidth="@dimen/bu" app:tabMinWidth="@dimen/cf" app:tabMode="hcu" app:tabPaddingEnd="@dimen/c5" app:tabPaddingStart="@dimen/c5" app:tabRippleColor="@color/ac_" app:tabSelectedTextColor="@color/a2x" app:tabTextColor="@color/l4" />
+        <com.google.android.material.tabs.TabLayout android:id="@id/igb" android:layout_width="wrap_content" android:layout_height="fill_parent" app:tabBackground="@color/ac_" app:tabGravity="aq3" app:tabIndicatorHeight="0.0dip" app:tabMaxWidth="@dimen/bu" app:tabMinWidth="@dimen/cf" app:tabMode="hcu" app:tabPaddingEnd="@dimen/bt" app:tabPaddingStart="@dimen/bt" app:tabRippleColor="@color/ac_" app:tabSelectedTextColor="@color/a2x" app:tabTextColor="@color/l4" />
     </com.tencent.mm.view.HardTouchableLayout>
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

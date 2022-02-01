@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/kzy" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/d3l" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/l02" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginTop="14.0dip" android:layout_marginRight="14.0dip" android:src="@drawable/d3q" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <org.libpag.PAGView android:id="@id/kzq" android:visibility="invisible" android:layout_width="68.0dip" android:layout_height="68.0dip" android:layout_marginTop="52.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/l06" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:layout_below="@id/kzq" android:layout_centerHorizontal="true">
+        <TextView android:textSize="17.0dip" android:textColor="@color/am" android:ellipsize="end" android:id="@id/iop" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:id="@id/l05" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:singleLine="true" />
+    </LinearLayout>
+</RelativeLayout>

@@ -5,12 +5,12 @@ public final class u
 {
   public u()
   {
-    this.Ucx = 284;
+    this.abFM = 284;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     oicq.wlogin_sdk.a.u
  * JD-Core Version:    0.7.0.1
  */

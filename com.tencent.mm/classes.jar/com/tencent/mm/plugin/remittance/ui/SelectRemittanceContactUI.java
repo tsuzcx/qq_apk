@@ -12,11 +12,17 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.es;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.by.c;
+import com.tencent.mm.f.b.a.fv;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.ap;
+import com.tencent.mm.model.aq;
 import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.chatroom.a.b;
+import com.tencent.mm.plugin.wxpay.a.a;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.j;
 import com.tencent.mm.pluginsdk.ui.applet.y.a;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -24,10 +30,10 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
-import com.tencent.mm.ui.contact.o;
-import com.tencent.mm.ui.contact.q;
-import com.tencent.mm.ui.contact.s;
+import com.tencent.mm.ui.contact.p;
+import com.tencent.mm.ui.contact.r;
 import com.tencent.mm.ui.contact.u;
+import com.tencent.mm.ui.contact.w;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -38,56 +44,18 @@ import java.util.List;
 public class SelectRemittanceContactUI
   extends MMBaseSelectContactUI
 {
-  private List<String> CuD;
-  private List<String> Cxk;
+  private View EOv;
+  private List<String> Isq;
+  private List<String> IvC;
   private int fromScene;
-  private List<String> gzY;
+  private List<String> jkb;
   private String title;
-  private View zjf;
-  
-  private static List<String> SA(String paramString)
-  {
-    AppMethodBeat.i(68349);
-    if (Util.isNullOrNil(paramString))
-    {
-      Log.i("MicroMsg.SelectRemittanceContactUI", "illegal chatroomName");
-      paramString = new ArrayList();
-      AppMethodBeat.o(68349);
-      return paramString;
-    }
-    Object localObject;
-    if (!ab.Eq(paramString))
-    {
-      localObject = new ArrayList();
-      ((List)localObject).add(z.aTY());
-      ((List)localObject).add(paramString);
-      AppMethodBeat.o(68349);
-      return localObject;
-    }
-    try
-    {
-      localObject = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kh(paramString);
-      paramString = (String)localObject;
-      if (localObject == null) {
-        paramString = new ArrayList();
-      }
-      AppMethodBeat.o(68349);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      Log.e("MicroMsg.SelectRemittanceContactUI", "getChatroomMemberList error! %s", new Object[] { paramString.getMessage() });
-      paramString = new ArrayList();
-      AppMethodBeat.o(68349);
-    }
-    return paramString;
-  }
   
   private void a(final String paramString, final ArrayList<String> paramArrayList, int paramInt)
   {
     AppMethodBeat.i(68346);
-    uZ(17);
-    com.tencent.mm.ui.base.h.a(this, getString(2131768307, new Object[] { Integer.valueOf(paramInt) }), "", getString(2131768306), getString(2131755761), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    yd(17);
+    com.tencent.mm.ui.base.h.a(this, getString(a.i.wallet_select_conversation_no_include_all_user, new Object[] { Integer.valueOf(paramInt) }), "", getString(a.i.wallet_select_conversation_next_pay), getString(a.i.app_cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -108,17 +76,39 @@ public class SelectRemittanceContactUI
     AppMethodBeat.o(68346);
   }
   
-  private void aMp(String paramString)
+  private static boolean aQ(List<String> paramList)
+  {
+    AppMethodBeat.i(68350);
+    if (paramList == null)
+    {
+      AppMethodBeat.o(68350);
+      return false;
+    }
+    paramList = paramList.iterator();
+    do
+    {
+      if (!paramList.hasNext()) {
+        break;
+      }
+    } while (!Util.isEqual((String)paramList.next(), z.bcZ()));
+    for (boolean bool = true;; bool = false)
+    {
+      AppMethodBeat.o(68350);
+      return bool;
+    }
+  }
+  
+  private void aWT(String paramString)
   {
     AppMethodBeat.i(68345);
     Log.i("MicroMsg.SelectRemittanceContactUI", "doClickUser=%s", new Object[] { paramString });
-    if (bmE())
+    if (bwM())
     {
-      if (!ab.Eq(paramString))
+      if (!ab.Lj(paramString))
       {
-        if (this.Cxk.contains(paramString))
+        if (this.IvC.contains(paramString))
         {
-          if (this.Cxk.size() == 1)
+          if (this.IvC.size() == 1)
           {
             localObject = this.title;
             localArrayList = new ArrayList();
@@ -133,20 +123,20 @@ public class SelectRemittanceContactUI
           AppMethodBeat.o(68345);
           return;
         }
-        eOo();
+        fBd();
         AppMethodBeat.o(68345);
         return;
       }
-      localObject = SA(paramString);
-      if (!aS((List)localObject))
+      localObject = aag(paramString);
+      if (!aQ((List)localObject))
       {
-        eOo();
+        fBd();
         Log.e("MicroMsg.SelectRemittanceContactUI", "self no in chatroom(%s)", new Object[] { paramString });
         AppMethodBeat.o(68345);
         return;
       }
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.Cxk.iterator();
+      Iterator localIterator = this.IvC.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
@@ -156,11 +146,11 @@ public class SelectRemittanceContactUI
       }
       if (localArrayList.size() == 0)
       {
-        eOo();
+        fBd();
         AppMethodBeat.o(68345);
         return;
       }
-      if (localArrayList.size() == this.Cxk.size())
+      if (localArrayList.size() == this.IvC.size())
       {
         b(paramString, localArrayList, this.title);
         AppMethodBeat.o(68345);
@@ -178,26 +168,42 @@ public class SelectRemittanceContactUI
     AppMethodBeat.o(68345);
   }
   
-  private static boolean aS(List<String> paramList)
+  private static List<String> aag(String paramString)
   {
-    AppMethodBeat.i(68350);
-    if (paramList == null)
+    AppMethodBeat.i(68349);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(68350);
-      return false;
+      Log.i("MicroMsg.SelectRemittanceContactUI", "illegal chatroomName");
+      paramString = new ArrayList();
+      AppMethodBeat.o(68349);
+      return paramString;
     }
-    paramList = paramList.iterator();
-    do
+    Object localObject;
+    if (!ab.Lj(paramString))
     {
-      if (!paramList.hasNext()) {
-        break;
+      localObject = new ArrayList();
+      ((List)localObject).add(z.bcZ());
+      ((List)localObject).add(paramString);
+      AppMethodBeat.o(68349);
+      return localObject;
+    }
+    try
+    {
+      localObject = ((b)com.tencent.mm.kernel.h.ae(b.class)).bbV().RA(paramString);
+      paramString = (String)localObject;
+      if (localObject == null) {
+        paramString = new ArrayList();
       }
-    } while (!Util.isEqual((String)paramList.next(), z.aTY()));
-    for (boolean bool = true;; bool = false)
-    {
-      AppMethodBeat.o(68350);
-      return bool;
+      AppMethodBeat.o(68349);
+      return paramString;
     }
+    catch (Exception paramString)
+    {
+      Log.e("MicroMsg.SelectRemittanceContactUI", "getChatroomMemberList error! %s", new Object[] { paramString.getMessage() });
+      paramString = new ArrayList();
+      AppMethodBeat.o(68349);
+    }
+    return paramString;
   }
   
   private void b(final String paramString1, final ArrayList<String> paramArrayList, String paramString2)
@@ -206,9 +212,9 @@ public class SelectRemittanceContactUI
     Log.i("MicroMsg.SelectRemittanceContactUI", "showLaunchComfirmDialog()");
     String str = paramString2;
     if (Util.isNullOrNil(paramString2)) {
-      str = getString(2131762172);
+      str = getString(a.i.launch_aa_default_title);
     }
-    ((j)com.tencent.mm.kernel.g.af(j.class)).a(getController(), paramString1, getString(2131755036) + str, getString(2131755035), new y.a()
+    ((j)com.tencent.mm.kernel.h.ae(j.class)).a(getController(), paramString1, getString(a.i.aa_dialog_sub_title) + str, getString(a.i.aa_dialog_ok_text), new y.a()
     {
       public final void a(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
       {
@@ -216,28 +222,28 @@ public class SelectRemittanceContactUI
         if (paramAnonymousBoolean)
         {
           SelectRemittanceContactUI.a(SelectRemittanceContactUI.this, paramString1, paramArrayList);
-          SelectRemittanceContactUI.uZ(12);
+          SelectRemittanceContactUI.yd(12);
           AppMethodBeat.o(68333);
           return;
         }
-        SelectRemittanceContactUI.uZ(13);
+        SelectRemittanceContactUI.yd(13);
         AppMethodBeat.o(68333);
       }
     });
-    uZ(11);
+    yd(11);
     AppMethodBeat.o(68348);
   }
   
-  private boolean bmE()
+  private boolean bwM()
   {
     return this.fromScene == 3;
   }
   
-  private void eOo()
+  private void fBd()
   {
     AppMethodBeat.i(68347);
-    uZ(16);
-    com.tencent.mm.ui.base.h.a(this, getString(2131768308), "", getString(2131768713), false, new DialogInterface.OnClickListener()
+    yd(16);
+    com.tencent.mm.ui.base.h.a(this, getString(a.i.wallet_select_conversation_no_include_self), "", getString(a.i.welcome_i_know), false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -249,18 +255,18 @@ public class SelectRemittanceContactUI
     AppMethodBeat.o(68347);
   }
   
-  public static void uZ(int paramInt)
+  public static void yd(int paramInt)
   {
     AppMethodBeat.i(68351);
-    es locales = new es();
-    locales.eEr = paramInt;
-    locales.bfK();
+    fv localfv = new fv();
+    localfv.gBN = paramInt;
+    localfv.bpa();
     AppMethodBeat.o(68351);
   }
   
-  public final void M(View paramView, int paramInt)
+  public final void N(View paramView, int paramInt)
   {
-    AppMethodBeat.i(213843);
+    AppMethodBeat.i(255949);
     if (paramInt < getContentLV().getHeaderViewsCount())
     {
       Log.i("MicroMsg.SelectRemittanceContactUI", "Click HeaderView position=%d", new Object[] { Integer.valueOf(paramInt) });
@@ -268,46 +274,46 @@ public class SelectRemittanceContactUI
       paramView = new Intent();
       if ((this.fromScene == 1) || (this.fromScene == 3))
       {
-        paramView.putExtra("list_attr", u.Q(new int[] { u.PWR, 16384, 64, 4096, 262144 }));
+        paramView.putExtra("list_attr", w.P(new int[] { w.XtJ, 16384, 64, 4096, 262144 }));
         paramView.putExtra("min_limit_num", 1);
         paramView.putExtra("block_contact", getIntent().getStringExtra("Select_block_List"));
-        paramView.putExtra("titile", getString(2131768313));
+        paramView.putExtra("titile", getString(a.i.wallet_select_create_chatroom_title));
         paramView.putExtra("without_openim", true);
       }
       for (;;)
       {
-        com.tencent.mm.br.c.c(this, ".ui.contact.SelectContactUI", paramView, 1);
-        overridePendingTransition(2130772132, 2130772060);
-        AppMethodBeat.o(213843);
+        c.d(this, ".ui.contact.SelectContactUI", paramView, 1);
+        overridePendingTransition(a.a.push_up_in, a.a.fast_faded_out);
+        AppMethodBeat.o(255949);
         return;
-        paramInt = u.Q(new int[] { 16, 1, 2, 4, 16384 });
+        paramInt = w.P(new int[] { 16, 1, 2, 4, 16384 });
         paramView.putExtra("list_type", 0);
         paramView.putExtra("list_attr", paramInt);
-        paramView.putExtra("titile", getString(2131764598));
-        paramView.putExtra("sub_title", getString(2131768388));
+        paramView.putExtra("titile", getString(a.i.remittance_select_receiver_title));
+        paramView.putExtra("sub_title", getString(a.i.wallet_wechat_authenticate_safely));
       }
     }
     paramView = (com.tencent.mm.ui.contact.a.a)getContentLV().getAdapter().getItem(paramInt);
     if (paramView == null)
     {
-      AppMethodBeat.o(213843);
+      AppMethodBeat.o(255949);
       return;
     }
     Object localObject = paramView.contact;
     if (localObject == null)
     {
-      AppMethodBeat.o(213843);
+      AppMethodBeat.o(255949);
       return;
     }
     paramView = ((ax)localObject).field_username;
-    if ((as.bjq(paramView)) || (as.bjp(paramView)))
+    if ((as.bvL(paramView)) || (as.bvK(paramView)))
     {
       Log.i("MicroMsg.SelectRemittanceContactUI", "username[%s] is openime || oepnimechatroom", new Object[] { Util.nullAs(paramView, "null") });
       localObject = MMApplicationContext.getContext();
-      if (as.bjq(paramView)) {}
-      for (paramView = ((Context)localObject).getString(2131768310);; paramView = ((Context)localObject).getString(2131768309))
+      if (as.bvL(paramView)) {}
+      for (paramView = ((Context)localObject).getString(a.i.wallet_select_conversation_no_support_openim_chatroom);; paramView = ((Context)localObject).getString(a.i.wallet_select_conversation_no_support_openim))
       {
-        com.tencent.mm.ui.base.h.a(this, paramView, "", getString(2131768713), false, new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.a(this, paramView, "", getString(a.i.welcome_i_know), false, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -316,20 +322,20 @@ public class SelectRemittanceContactUI
             AppMethodBeat.o(68329);
           }
         });
-        AppMethodBeat.o(213843);
+        AppMethodBeat.o(255949);
         return;
       }
     }
-    aMp(((ax)localObject).field_username);
-    if ((gUP() instanceof g))
+    aWT(((ax)localObject).field_username);
+    if ((hUP() instanceof g))
     {
       paramInt -= getContentLV().getHeaderViewsCount();
-      paramView = (g)gUP();
+      paramView = (g)hUP();
       Log.d("MicroMsg.RecentConversationAdapter", "pos: %s", new Object[] { Integer.valueOf(paramInt) });
-      if (paramView.CuB < 0) {
+      if (paramView.Iso < 0) {
         break label547;
       }
-      if (paramView.CuC >= 0) {
+      if (paramView.Isp >= 0) {
         break label526;
       }
       paramInt = 1;
@@ -337,12 +343,12 @@ public class SelectRemittanceContactUI
     for (;;)
     {
       if (paramInt != 0) {
-        com.tencent.mm.plugin.report.service.h.CyF.a(13721, new Object[] { Integer.valueOf(6), Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(13721, new Object[] { Integer.valueOf(6), Integer.valueOf(1) });
       }
-      AppMethodBeat.o(213843);
+      AppMethodBeat.o(255949);
       return;
       label526:
-      if ((paramInt > paramView.CuB) && (paramInt < paramView.CuC)) {
+      if ((paramInt > paramView.Iso) && (paramInt < paramView.Isp)) {
         paramInt = 1;
       } else {
         label547:
@@ -357,100 +363,100 @@ public class SelectRemittanceContactUI
     super.a(paramListView, paramInt);
     View localView;
     TextView localTextView;
-    if (this.zjf == null)
+    if (this.EOv == null)
     {
-      localView = View.inflate(this, 2131496202, null);
-      this.zjf = localView.findViewById(2131299180);
-      localTextView = (TextView)localView.findViewById(2131309163);
+      localView = View.inflate(this, a.g.select_conversation_header, null);
+      this.EOv = localView.findViewById(a.f.content);
+      localTextView = (TextView)localView.findViewById(a.f.tip_tv);
       if ((this.fromScene != 1) && (this.fromScene != 3)) {
         break label95;
       }
-      localTextView.setText(2131768304);
+      localTextView.setText(a.i.wallet_select_conversation_create);
     }
     for (;;)
     {
       paramListView.addHeaderView(localView);
-      this.zjf.setVisibility(paramInt);
+      this.EOv.setVisibility(paramInt);
       AppMethodBeat.o(68341);
       return;
       label95:
-      localTextView.setText(2131764562);
+      localTextView.setText(a.i.remittance_go_select_contact);
     }
   }
   
-  public final void amZ()
+  public final void ata()
   {
     AppMethodBeat.i(68335);
-    super.amZ();
+    super.ata();
     this.fromScene = getIntent().getIntExtra("key_from_scene", 0);
     Object localObject = getIntent().getStringExtra("recent_remittance_contact_list");
     Log.v("MicroMsg.SelectRemittanceContactUI", "recent list:".concat(String.valueOf(localObject)));
-    this.CuD = new ArrayList();
+    this.Isq = new ArrayList();
     if (!Util.isNullOrNil((String)localObject)) {
-      this.CuD = Util.stringsToList(((String)localObject).split(","));
+      this.Isq = Util.stringsToList(((String)localObject).split(","));
     }
-    if (bmE())
+    if (bwM())
     {
       this.title = getIntent().getStringExtra("key_title");
       localObject = getIntent().getStringExtra("key_include_username_list");
-      this.Cxk = new ArrayList();
+      this.IvC = new ArrayList();
       if (!Util.isNullOrNil((String)localObject)) {
-        this.Cxk = Util.stringsToList(((String)localObject).split(","));
+        this.IvC = Util.stringsToList(((String)localObject).split(","));
       }
     }
     localObject = new HashSet();
-    ((HashSet)localObject).addAll(u.gVb());
-    ((HashSet)localObject).addAll(u.gVc());
+    ((HashSet)localObject).addAll(w.hVh());
+    ((HashSet)localObject).addAll(w.hVi());
     String str = getIntent().getStringExtra("Select_block_List");
     if (!Util.isNullOrNil(str)) {
       ((HashSet)localObject).addAll(Util.stringsToList(str.split(",")));
     }
-    this.gzY = new ArrayList();
-    this.gzY.addAll((Collection)localObject);
+    this.jkb = new ArrayList();
+    this.jkb.addAll((Collection)localObject);
     AppMethodBeat.o(68335);
   }
   
-  public final boolean bmA()
-  {
-    return false;
-  }
-  
-  public final String bmB()
-  {
-    AppMethodBeat.i(68340);
-    if ((this.fromScene == 1) || (this.fromScene == 3))
-    {
-      str = getString(2131768311);
-      AppMethodBeat.o(68340);
-      return str;
-    }
-    String str = getString(2131764602);
-    AppMethodBeat.o(68340);
-    return str;
-  }
-  
-  public final q bmC()
-  {
-    AppMethodBeat.i(68336);
-    g localg = new g(this, this.CuD, this.gzY, this.fromScene);
-    AppMethodBeat.o(68336);
-    return localg;
-  }
-  
-  public final o bmD()
-  {
-    AppMethodBeat.i(68337);
-    s locals = new s(this, this.gzY, false, this.scene);
-    AppMethodBeat.o(68337);
-    return locals;
-  }
-  
-  public final boolean bmz()
+  public final boolean bwH()
   {
     return true;
   }
   
-  public final int[] egI()
+  public final boolean bwI()
+  {
+    return false;
+  }
+  
+  public final String bwJ()
+  {
+    AppMethodBeat.i(68340);
+    if ((this.fromScene == 1) || (this.fromScene == 3))
+    {
+      str = getString(a.i.wallet_select_conversation_title);
+      AppMethodBeat.o(68340);
+      return str;
+    }
+    String str = getString(a.i.remittance_title);
+    AppMethodBeat.o(68340);
+    return str;
+  }
+  
+  public final r bwK()
+  {
+    AppMethodBeat.i(68336);
+    g localg = new g(this, this.Isq, this.jkb, this.fromScene);
+    AppMethodBeat.o(68336);
+    return localg;
+  }
+  
+  public final p bwL()
+  {
+    AppMethodBeat.i(68337);
+    u localu = new u(this, this.jkb, false, this.scene);
+    AppMethodBeat.o(68337);
+    return localu;
+  }
+  
+  public final int[] dvA()
   {
     if ((this.fromScene == 1) || (this.fromScene == 3)) {
       return new int[] { 131072, 131075 };
@@ -458,10 +464,10 @@ public class SelectRemittanceContactUI
     return new int[] { 131072 };
   }
   
-  public final void egJ()
+  public final void eQp()
   {
     AppMethodBeat.i(68342);
-    super.egJ();
+    super.eQp();
     hideVKB();
     AppMethodBeat.o(68342);
   }
@@ -477,11 +483,11 @@ public class SelectRemittanceContactUI
       if (paramInt2 == -1)
       {
         Log.i("MicroMsg.SelectRemittanceContactUI", "getIntent = " + getIntent());
-        if (bmE())
+        if (bwM())
         {
           paramIntent = paramIntent.getStringExtra("Select_Conv_User");
           if (!Util.isNullOrNil(paramIntent)) {
-            aMp(paramIntent);
+            aWT(paramIntent);
           }
           AppMethodBeat.o(68339);
           return;
@@ -527,7 +533,7 @@ public class SelectRemittanceContactUI
   {
     AppMethodBeat.i(68344);
     if (paramInt == 4) {
-      egJ();
+      eQp();
     }
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
     AppMethodBeat.o(68344);
@@ -542,7 +548,7 @@ public class SelectRemittanceContactUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.SelectRemittanceContactUI
  * JD-Core Version:    0.7.0.1
  */

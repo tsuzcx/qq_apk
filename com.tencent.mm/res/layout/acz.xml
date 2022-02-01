@@ -2,7 +2,7 @@
 <RelativeLayout android:id="@id/cu9" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <FrameLayout android:id="@id/cu7" android:visibility="gone" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:layout_centerInParent="true" />
-    <RelativeLayout android:id="@id/alm" android:background="@color/ad" android:layout_width="fill_parent" android:layout_height="fill_parent">
+    <RelativeLayout android:id="@id/alm" android:background="@color/UN_BW_0_Alpha_0_5" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <RelativeLayout android:id="@id/ajh" android:background="@drawable/icon_live_lottery_card_bg" android:clickable="true" android:layout_width="320.0dip" android:layout_height="424.0dip" android:layout_centerInParent="true">
             <include android:id="@id/h9x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/ad0" />
             <RelativeLayout android:id="@id/bt4" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">

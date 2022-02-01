@@ -6,9 +6,10 @@ import android.database.MergeCursor;
 import android.util.SparseArray;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.selectcontact.a.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.MStorageEx;
@@ -17,73 +18,77 @@ import com.tencent.mm.storage.ah;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.contact.a.a;
-import com.tencent.mm.ui.contact.a.e;
-import com.tencent.mm.ui.contact.a.k;
+import com.tencent.mm.ui.contact.a.f;
+import com.tencent.mm.ui.contact.a.j;
+import com.tencent.mm.ui.contact.a.m;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class c
-  extends q
+  extends r
   implements MStorageEx.IOnStorageChange
 {
-  private int CuC;
-  private int PTA;
-  private int PTB;
-  private int PTC;
-  private HashMap<String, Integer> PTD;
-  private SparseArray<String> PTE;
-  private int PTF;
-  private List<String> PTG;
-  private List<String> PTH;
-  g PTI;
-  private List<String> PTJ;
-  private List<ah> PTK;
-  private a PTu;
-  private int PTv;
-  private int PTw;
-  private int PTx;
-  private int PTy;
-  private int PTz;
-  private Cursor jWh;
+  private int Isp;
+  private a Xqf;
+  private int Xqg;
+  private int Xqh;
+  private int Xqi;
+  private int Xqj;
+  private int Xqk;
+  private int Xql;
+  private int Xqm;
+  private int Xqn;
+  private HashMap<String, Integer> Xqo;
+  private SparseArray<String> Xqp;
+  private int Xqq;
+  private List<String> Xqr;
+  private List<String> Xqs;
+  g Xqt;
+  private List<String> Xqu;
+  private List<ah> Xqv;
+  private Cursor mNt;
+  public boolean xUe;
   
-  public c(MMBaseSelectContactUI paramMMBaseSelectContactUI, List<String> paramList1, List<String> paramList2, List<String> paramList3, boolean paramBoolean1, boolean paramBoolean2, a parama, boolean paramBoolean3)
+  public c(MMBaseSelectContactUI paramMMBaseSelectContactUI, List<String> paramList1, List<String> paramList2, List<String> paramList3, boolean paramBoolean1, boolean paramBoolean2, a parama, boolean paramBoolean3, boolean paramBoolean4)
   {
     super(paramMMBaseSelectContactUI, paramList3, paramBoolean1, paramBoolean2, paramBoolean3);
-    AppMethodBeat.i(102809);
-    this.PTv = 2147483647;
-    this.CuC = 2147483647;
-    this.PTw = 2147483647;
-    this.PTx = 2147483647;
-    this.PTy = 2147483647;
-    this.PTz = 2147483647;
-    this.PTA = 2147483647;
-    this.PTB = 2147483647;
-    this.PTC = 2147483647;
-    this.PTD = null;
-    this.PTE = null;
-    this.PTF = 0;
-    this.PTI = new g();
-    this.PTJ = null;
-    this.PTK = null;
+    AppMethodBeat.i(187397);
+    this.Xqg = 2147483647;
+    this.Isp = 2147483647;
+    this.Xqh = 2147483647;
+    this.Xqi = 2147483647;
+    this.Xqj = 2147483647;
+    this.Xqk = 2147483647;
+    this.Xql = 2147483647;
+    this.Xqm = 2147483647;
+    this.Xqn = 2147483647;
+    this.Xqo = null;
+    this.Xqp = null;
+    this.Xqq = 0;
+    this.xUe = false;
+    this.Xqt = new g();
+    this.Xqu = null;
+    this.Xqv = null;
+    this.xUe = paramBoolean4;
     Log.i("MicroMsg.AlphabetContactAdapter", "create!");
     if (parama != null) {}
-    for (this.PTu = parama;; this.PTu = new a())
+    for (this.Xqf = parama;; this.Xqf = new a())
     {
-      this.PTH = paramList1;
-      this.PTG = paramList2;
-      com.tencent.mm.kernel.g.aAi();
-      ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().add(this);
-      and();
-      AppMethodBeat.o(102809);
+      this.Xqs = paramList1;
+      this.Xqr = paramList2;
+      com.tencent.mm.kernel.h.aHH();
+      ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().add(this);
+      ate();
+      AppMethodBeat.o(187397);
       return;
     }
   }
   
   private c(MMBaseSelectContactUI paramMMBaseSelectContactUI, List<String> paramList, boolean paramBoolean, a parama)
   {
-    this(paramMMBaseSelectContactUI, null, null, paramList, true, paramBoolean, parama, false);
+    this(paramMMBaseSelectContactUI, null, null, paramList, true, paramBoolean, parama, false, false);
   }
   
   public c(MMBaseSelectContactUI paramMMBaseSelectContactUI, List<String> paramList, boolean paramBoolean, a parama, byte paramByte)
@@ -91,97 +96,98 @@ public final class c
     this(paramMMBaseSelectContactUI, paramList, paramBoolean, parama);
   }
   
-  private void dm(int paramInt, String paramString)
+  private void dl(int paramInt, String paramString)
   {
     AppMethodBeat.i(102812);
-    this.PTD.put(paramString, Integer.valueOf(paramInt));
-    this.PTE.put(paramInt, paramString);
+    this.Xqo.put(paramString, Integer.valueOf(paramInt));
+    this.Xqp.put(paramInt, paramString);
     AppMethodBeat.o(102812);
   }
   
-  private static a dn(int paramInt, String paramString)
+  private a dm(int paramInt, String paramString)
   {
     AppMethodBeat.i(102816);
-    com.tencent.mm.ui.contact.a.h localh = new com.tencent.mm.ui.contact.a.h(paramInt);
-    localh.header = paramString;
+    j localj = new j(paramInt);
+    localj.header = paramString;
+    localj.xUe = this.xUe;
     AppMethodBeat.o(102816);
-    return localh;
+    return localj;
   }
   
-  public final void and()
+  public final void ate()
   {
     Object localObject2 = null;
     AppMethodBeat.i(102811);
     Log.i("MicroMsg.AlphabetContactAdapter", "resetData");
-    if (this.jWh != null)
+    if (this.mNt != null)
     {
-      this.jWh.close();
-      this.jWh = null;
+      this.mNt.close();
+      this.mNt = null;
     }
-    this.PTv = 2147483647;
-    this.CuC = 2147483647;
-    this.PTw = 2147483647;
-    this.PTx = 2147483647;
-    this.PTy = 2147483647;
-    this.PTz = 2147483647;
-    this.PTA = 2147483647;
-    this.PTC = 2147483647;
+    this.Xqg = 2147483647;
+    this.Isp = 2147483647;
+    this.Xqh = 2147483647;
+    this.Xqi = 2147483647;
+    this.Xqj = 2147483647;
+    this.Xqk = 2147483647;
+    this.Xql = 2147483647;
+    this.Xqn = 2147483647;
     label112:
     ArrayList localArrayList;
     Object localObject1;
     int i;
-    if (this.PTD != null)
+    if (this.Xqo != null)
     {
-      this.PTD.clear();
-      if (this.PTE == null) {
+      this.Xqo.clear();
+      if (this.Xqp == null) {
         break label478;
       }
-      this.PTE.clear();
+      this.Xqp.clear();
       localArrayList = new ArrayList();
-      if (!this.PTu.PTQ) {
+      if (!this.Xqf.XqB) {
         break label649;
       }
-      localObject1 = Util.stringToList(this.PTu.PTU, ",");
+      localObject1 = Util.stringToList(this.Xqf.XqF, ",");
       if (((List)localObject1).isEmpty()) {
         break label503;
       }
-      com.tencent.mm.kernel.g.aAi();
-      localObject1 = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().x((List)localObject1, false);
+      com.tencent.mm.kernel.h.aHH();
+      localObject1 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().z((List)localObject1, false);
       localArrayList.add(localObject1);
       i = ((Cursor)localObject1).getCount();
       Log.d("MicroMsg.AlphabetContactAdapter", "sport recent like count %d", new Object[] { Integer.valueOf(i) });
       if (i <= 0) {
         break label492;
       }
-      this.PTC = 0;
-      dm(this.PTC, "☆");
+      this.Xqn = 0;
+      dl(this.Xqn, "☆");
       i = i + 1 + 0;
       label243:
-      if (this.PTu.PSf != "@all.contact.without.chatroom.without.openim.without.openimfavour") {
+      if (this.Xqf.XoS != "@all.contact.without.chatroom.without.openim.without.openimfavour") {
         break label514;
       }
-      com.tencent.mm.kernel.g.aAi();
-      localObject1 = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().iR(Util.stringsToList(this.PTu.PTT.split(",")));
+      com.tencent.mm.kernel.h.aHH();
+      localObject1 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().jJ(Util.stringsToList(this.Xqf.XqE.split(",")));
       label294:
       localArrayList.add(localObject1);
       j = ((Cursor)localObject1).getCount();
       if (j <= 0) {
         break label556;
       }
-      this.PTy = i;
+      this.Xqj = i;
       i += j + 1;
-      dm(this.PTy, "☆");
+      dl(this.Xqj, "☆");
     }
     Object localObject3;
     int k;
     for (;;)
     {
-      localObject3 = Util.stringsToList(this.PTu.PTT.split(","));
-      com.tencent.mm.kernel.g.aAi();
-      localObject1 = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().x((List)localObject3, true);
+      localObject3 = Util.stringsToList(this.Xqf.XqE.split(","));
+      com.tencent.mm.kernel.h.aHH();
+      localObject1 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().z((List)localObject3, true);
       localArrayList.add(localObject1);
-      localObject2 = ab.aq((List)localObject3);
-      localObject3 = ab.ap((List)localObject3);
+      localObject2 = ab.ao((List)localObject3);
+      localObject3 = ab.an((List)localObject3);
       if ((localObject2 == null) || (localObject3 == null)) {
         break label573;
       }
@@ -193,114 +199,114 @@ public final class c
         k = j;
         if (i < localObject3.length)
         {
-          dm(localObject3[i] + j, localObject2[i]);
+          dl(localObject3[i] + j, localObject2[i]);
           k = j + 1;
         }
         i += 1;
         j = k;
       }
-      this.PTD = new HashMap();
+      this.Xqo = new HashMap();
       break;
       label478:
-      this.PTE = new SparseArray();
+      this.Xqp = new SparseArray();
       break label112;
       label492:
-      this.PTC = 2147483647;
+      this.Xqn = 2147483647;
       i = 0;
       break label243;
       label503:
-      this.PTC = 2147483647;
+      this.Xqn = 2147483647;
       i = 0;
       break label243;
       label514:
-      com.tencent.mm.kernel.g.aAi();
-      localObject1 = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().iQ(Util.stringsToList(this.PTu.PTT.split(",")));
+      com.tencent.mm.kernel.h.aHH();
+      localObject1 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().jI(Util.stringsToList(this.Xqf.XqE.split(",")));
       break label294;
       label556:
-      this.PTy = 2147483647;
+      this.Xqj = 2147483647;
     }
     ((Cursor)localObject1).getCount();
     label573:
-    this.jWh = new MergeCursor((Cursor[])localArrayList.toArray(new Cursor[0]));
-    Log.i("MicroMsg.AlphabetContactAdapter", "datacount:%d headerPosMap=%s", new Object[] { Integer.valueOf(this.jWh.getCount()), this.PTD.toString() });
+    this.mNt = new MergeCursor((Cursor[])localArrayList.toArray(new Cursor[0]));
+    Log.i("MicroMsg.AlphabetContactAdapter", "datacount:%d headerPosMap=%s", new Object[] { Integer.valueOf(this.mNt.getCount()), this.Xqo.toString() });
     clearCache();
     notifyDataSetChanged();
     AppMethodBeat.o(102811);
     return;
     label649:
-    if (this.PTu.PTR)
+    if (this.Xqf.XqC)
     {
-      this.PTB = 0;
-      dm(this.PTB, "nonLimit");
+      this.Xqm = 0;
+      dl(this.Xqm, "nonLimit");
     }
     for (int j = 1;; j = 0)
     {
-      if ((this.PTu.PTV) && (this.PTu.PTW != null) && (!Util.isNullOrNil(this.PTu.PTW)))
+      if ((this.Xqf.XqG) && (this.Xqf.XqH != null) && (!Util.isNullOrNil(this.Xqf.XqH)))
       {
-        localObject1 = Util.stringsToList(this.PTu.PTW.split(";"));
-        com.tencent.mm.kernel.g.aAi();
-        localObject1 = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().iL((List)localObject1);
+        localObject1 = Util.stringsToList(this.Xqf.XqH.split(";"));
+        com.tencent.mm.kernel.h.aHH();
+        localObject1 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().jD((List)localObject1);
         localArrayList.add(localObject1);
         i = ((Cursor)localObject1).getCount();
         if (i > 0)
         {
-          this.PTv = j;
+          this.Xqg = j;
           i = j + (i + 1);
-          dm(this.PTv, "↑");
+          dl(this.Xqg, "↑");
           j = i;
-          if (this.PTu.PTP)
+          if (this.Xqf.XqA)
           {
-            this.PTI.jE(this.gzY);
+            this.Xqt.kz(csq());
             localObject1 = new LinkedList();
-            ((List)localObject1).addAll(this.PTH);
-            ((List)localObject1).addAll(this.PTG);
-            this.PTI.jC((List)localObject1);
+            ((List)localObject1).addAll(this.Xqs);
+            ((List)localObject1).addAll(this.Xqr);
+            this.Xqt.kx((List)localObject1);
             k = i;
-            if (this.PTH.size() < 3)
+            if (this.Xqs.size() < 3)
             {
-              localObject1 = this.PTI.gUy();
+              localObject1 = this.Xqt.hUr();
               j = ((Cursor)localObject1).getCount();
-              this.PTF = j;
+              this.Xqq = j;
               if (j <= 0) {
-                break label1474;
+                break label1482;
               }
               localArrayList.add(localObject1);
-              this.PTx = i;
+              this.Xqi = i;
               k = i + (j + 1);
-              dm(this.PTx, "↑");
+              dl(this.Xqi, "↑");
               Log.i("MicroMsg.AlphabetContactAdapter", "add recommend group cursor %s", new Object[] { Integer.valueOf(j) });
             }
             label955:
             j = k;
-            if (this.PTG.size() > 0)
+            if (this.Xqr.size() > 0)
             {
               j = k;
-              if (this.PTH.size() < 41)
+              if (this.Xqs.size() < 41)
               {
-                localObject1 = this.PTI.gUx();
+                localObject1 = this.Xqt.hUq();
                 i = ((Cursor)localObject1).getCount();
                 if (i <= 0) {
-                  break label1486;
+                  break label1494;
                 }
                 localArrayList.add(localObject1);
-                this.PTw = k;
+                this.Xqh = k;
                 j = k + (i + 1);
-                dm(this.PTw, "↑");
+                dl(this.Xqh, "↑");
                 Log.i("MicroMsg.AlphabetContactAdapter", "add recommend contact cursor %s", new Object[] { Integer.valueOf(i) });
               }
             }
           }
           label1057:
           i = j;
-          if (this.PTu.PTM)
+          if (this.Xqf.Xqx)
           {
-            Log.i("MicroMsg.AlphabetContactAdapter", "option.filterType = " + this.PTu.PSf);
-            if (this.PTu.PSf != "@all.contact.without.chatroom.without.openim.without.openimfavour") {
-              break label1498;
+            Log.i("MicroMsg.AlphabetContactAdapter", "option.filterType = " + this.Xqf.XoS);
+            if (this.Xqf.XoS != "@all.contact.without.chatroom.without.openim.without.openimfavour") {
+              break label1506;
             }
             Log.i("MicroMsg.AlphabetContactAdapter", "getFavCursorWithoutOpenIM");
-            com.tencent.mm.kernel.g.aAi();
-            localObject1 = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().iT(this.gzY);
+            com.tencent.mm.kernel.h.aHH();
+            localObject1 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().jL(csq());
             label1145:
             localArrayList.add(localObject1);
             long l = System.currentTimeMillis();
@@ -308,11 +314,11 @@ public final class c
             i = ((Cursor)localObject1).getCount();
             Log.i("MicroMsg.AlphabetContactAdapter", "favContactCursor.getCount duration = " + (System.currentTimeMillis() - l));
             if (i <= 0) {
-              break label1537;
+              break label1545;
             }
-            this.PTy = j;
+            this.Xqj = j;
             i = j + (i + 1);
-            dm(this.PTy, "☆");
+            dl(this.Xqj, "☆");
           }
         }
       }
@@ -320,123 +326,133 @@ public final class c
       int m;
       for (;;)
       {
-        if (this.PTu.PTS)
+        if (this.Xqf.XqD)
         {
           localObject1 = localObject2;
-          if (!Util.isNullOrNil(this.PTu.PTX)) {
-            localObject1 = Util.stringToList(this.PTu.PTX, ",");
+          if (!Util.isNullOrNil(this.Xqf.XqI)) {
+            localObject1 = Util.stringToList(this.Xqf.XqI, ",");
           }
-          com.tencent.mm.kernel.g.aAi();
-          localObject2 = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().x((List)localObject1, true);
-          localArrayList.add(localObject2);
-          localObject3 = ab.aq((List)localObject1);
-          localObject1 = ab.ap((List)localObject1);
-          j = i;
-          if (localObject3 != null)
+          if (!Util.isNullOrNil((List)localObject1))
           {
+            com.tencent.mm.kernel.h.aHH();
+            localObject2 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().z((List)localObject1, true);
+            localArrayList.add(localObject2);
+            localObject3 = ab.ao((List)localObject1);
+            localObject1 = ab.an((List)localObject1);
             j = i;
-            if (localObject1 != null)
+            if (localObject3 != null)
             {
-              j = 0;
-              k = i;
-              for (;;)
+              j = i;
+              if (localObject1 != null)
               {
-                if (j < localObject3.length)
+                j = 0;
+                k = i;
+                for (;;)
                 {
-                  m = k;
-                  if (j < localObject1.length)
+                  if (j < localObject3.length)
                   {
-                    dm(localObject1[j] + k, localObject3[j]);
-                    m = k + 1;
-                  }
-                  j += 1;
-                  k = m;
-                  continue;
-                  this.PTv = 2147483647;
-                  i = j;
-                  break;
-                  i = j;
-                  if (!this.PTu.PTL) {
+                    m = k;
+                    if (j < localObject1.length)
+                    {
+                      dl(localObject1[j] + k, localObject3[j]);
+                      m = k + 1;
+                    }
+                    j += 1;
+                    k = m;
+                    continue;
+                    this.Xqg = 2147483647;
+                    i = j;
                     break;
-                  }
-                  localObject1 = h.jG(this.gzY);
-                  localArrayList.add(localObject1);
-                  i = ((Cursor)localObject1).getCount();
-                  if (i > 0)
-                  {
-                    this.CuC = j;
-                    i = j + (i + 1);
-                    dm(this.CuC, "↑");
+                    i = j;
+                    if (!this.Xqf.Xqw) {
+                      break;
+                    }
+                    localObject1 = h.kB(csq());
+                    localArrayList.add(localObject1);
+                    i = ((Cursor)localObject1).getCount();
+                    if (i > 0)
+                    {
+                      this.Isp = j;
+                      i = j + (i + 1);
+                      dl(this.Isp, "↑");
+                      break;
+                    }
+                    this.Isp = 2147483647;
+                    i = j;
                     break;
+                    label1482:
+                    ((Cursor)localObject1).close();
+                    k = i;
+                    break label955;
+                    label1494:
+                    ((Cursor)localObject1).close();
+                    j = k;
+                    break label1057;
+                    label1506:
+                    Log.i("MicroMsg.AlphabetContactAdapter", "getFavCursor");
+                    com.tencent.mm.kernel.h.aHH();
+                    localObject1 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().jK(csq());
+                    break label1145;
+                    label1545:
+                    this.Xqj = 2147483647;
+                    i = j;
+                    break label1228;
                   }
-                  this.CuC = 2147483647;
-                  i = j;
-                  break;
-                  label1474:
-                  ((Cursor)localObject1).close();
-                  k = i;
-                  break label955;
-                  label1486:
-                  ((Cursor)localObject1).close();
-                  j = k;
-                  break label1057;
-                  label1498:
-                  Log.i("MicroMsg.AlphabetContactAdapter", "getFavCursor");
-                  com.tencent.mm.kernel.g.aAi();
-                  localObject1 = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().iS(this.gzY);
-                  break label1145;
-                  label1537:
-                  this.PTy = 2147483647;
-                  i = j;
-                  break label1228;
                 }
+                j = i + (((Cursor)localObject2).getCount() + localObject3.length);
               }
-              j = i + (((Cursor)localObject2).getCount() + localObject3.length);
             }
-          }
-          label1562:
-          i = j;
-          if (this.PTu.PTN)
-          {
-            com.tencent.mm.kernel.g.aAi();
-            localObject1 = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().d("@all.chatroom.contact", "", this.gzY);
-            localArrayList.add(localObject1);
-            i = ((Cursor)localObject1).getCount();
-            if (i <= 0) {
-              break label1934;
+            label1570:
+            i = j;
+            if (this.Xqf.Xqy)
+            {
+              com.tencent.mm.kernel.h.aHH();
+              localObject1 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().e("@all.chatroom.contact", "", csq());
+              localArrayList.add(localObject1);
+              i = ((Cursor)localObject1).getCount();
+              if (i <= 0) {
+                break label1979;
+              }
+              this.Xqk = j;
+              i = j + (i + 1);
+              dl(this.Xqk, this.XsW.getActivity().getString(a.h.address_chatroom_contact_nick));
             }
-            this.PTz = j;
-            i = j + (i + 1);
-            dm(this.PTz, this.PWg.getActivity().getString(2131755196));
           }
         }
       }
       for (;;)
       {
-        if (!this.PTu.PTO) {
-          break label1943;
+        if (!this.Xqf.Xqz) {
+          break label1988;
         }
-        com.tencent.mm.kernel.g.aAi();
-        localObject1 = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().d("@verify.contact", "", this.gzY);
+        com.tencent.mm.kernel.h.aHH();
+        localObject1 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().e("@verify.contact", "", csq());
         localArrayList.add(localObject1);
         if (((Cursor)localObject1).getCount() <= 0) {
-          break label1945;
+          break label1990;
         }
-        this.PTA = i;
-        dm(this.PTA, this.PWg.getActivity().getString(2131765134));
+        this.Xql = i;
+        dl(this.Xql, this.XsW.getActivity().getString(a.h.select_contact_official_accounts_title));
         break;
-        com.tencent.mm.kernel.g.aAi();
-        localObject1 = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().c(this.PTu.PSf, "", this.gzY);
+        localArrayList.add(new com.tencent.mm.storagebase.d());
+        j = i;
+        break label1570;
+        com.tencent.mm.kernel.h.aHH();
+        localObject1 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL();
+        localObject2 = this.Xqf.XoS;
+        localObject3 = csq();
+        hVe();
+        localObject1 = ((bv)localObject1).d((String)localObject2, "", (List)localObject3);
         localArrayList.add(localObject1);
-        localObject2 = ab.a(null, this.PTu.PSf, "", "", this.gzY);
-        localObject3 = ab.a(null, this.PTu.PSf, "", this.gzY, "");
+        localObject2 = ab.a(null, this.Xqf.XoS, "", "", csq());
+        localObject3 = ab.a(null, this.Xqf.XoS, "", csq(), "");
         j = i;
         if (localObject2 == null) {
-          break label1562;
+          break label1570;
         }
         j = i;
         if (localObject3 == null) {
-          break label1562;
+          break label1570;
         }
         j = 0;
         for (k = i; j < localObject2.length; k = m)
@@ -444,34 +460,34 @@ public final class c
           m = k;
           if (j < localObject3.length)
           {
-            dm(localObject3[j] + k, localObject2[j]);
+            dl(localObject3[j] + k, localObject2[j]);
             m = k + 1;
           }
           j += 1;
         }
         j = i + (((Cursor)localObject1).getCount() + localObject2.length);
-        break label1562;
-        label1934:
-        this.PTz = 2147483647;
+        break label1570;
+        label1979:
+        this.Xqk = 2147483647;
         i = j;
       }
-      label1943:
+      label1988:
       break;
-      label1945:
-      this.PTA = 2147483647;
+      label1990:
+      this.Xql = 2147483647;
       break;
     }
   }
   
-  public final boolean bnq(String paramString)
+  public final boolean bzQ(String paramString)
   {
     AppMethodBeat.i(102810);
-    boolean bool = this.PTI.bnt(paramString);
+    boolean bool = this.Xqt.bzT(paramString);
     AppMethodBeat.o(102810);
     return bool;
   }
   
-  public final int bnr(String paramString)
+  public final int bzR(String paramString)
   {
     AppMethodBeat.i(102813);
     if (paramString.equals("↑"))
@@ -479,12 +495,12 @@ public final class c
       AppMethodBeat.o(102813);
       return 0;
     }
-    if (this.PTD != null)
+    if (this.Xqo != null)
     {
-      if (this.PTD.containsKey(paramString))
+      if (this.Xqo.containsKey(paramString))
       {
-        int i = ((Integer)this.PTD.get(paramString)).intValue();
-        int j = this.PWg.getContentLV().getHeaderViewsCount();
+        int i = ((Integer)this.Xqo.get(paramString)).intValue();
+        int j = this.XsW.getContentLV().getHeaderViewsCount();
         AppMethodBeat.o(102813);
         return i + j;
       }
@@ -499,14 +515,14 @@ public final class c
   {
     AppMethodBeat.i(102819);
     int j = parama.position + 1;
-    int k = this.PTC;
-    int m = this.PTv;
-    int n = this.CuC;
-    int i1 = this.PTw;
-    int i2 = this.PTx;
-    int i3 = this.PTy;
-    int i4 = this.PTz;
-    int i5 = this.PTA;
+    int k = this.Xqn;
+    int m = this.Xqg;
+    int n = this.Isp;
+    int i1 = this.Xqh;
+    int i2 = this.Xqi;
+    int i3 = this.Xqj;
+    int i4 = this.Xqk;
+    int i5 = this.Xql;
     int i = 0;
     while (i < 8)
     {
@@ -517,7 +533,7 @@ public final class c
       }
       i += 1;
     }
-    if (this.PTE.indexOfKey(j) >= 0)
+    if (this.Xqp.indexOfKey(j) >= 0)
     {
       AppMethodBeat.o(102819);
       return true;
@@ -531,31 +547,44 @@ public final class c
     AppMethodBeat.i(102817);
     super.finish();
     Log.i("MicroMsg.AlphabetContactAdapter", "finish!");
-    if (this.jWh != null)
+    if (this.mNt != null)
     {
-      this.jWh.close();
-      this.jWh = null;
+      this.mNt.close();
+      this.mNt = null;
     }
-    com.tencent.mm.kernel.g.aAi();
-    ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().remove(this);
+    com.tencent.mm.kernel.h.aHH();
+    ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().remove(this);
     AppMethodBeat.o(102817);
   }
   
-  public final int gUt()
+  public final int getContactCount()
   {
-    return this.PTF;
+    AppMethodBeat.i(187418);
+    if (this.mNt != null)
+    {
+      int i = this.mNt.getCount();
+      AppMethodBeat.o(187418);
+      return i;
+    }
+    AppMethodBeat.o(187418);
+    return 0;
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(102814);
-    int j = this.jWh.getCount();
-    if (this.PTE == null) {}
-    for (int i = 0;; i = this.PTE.size())
+    int j = this.mNt.getCount();
+    if (this.Xqp == null) {}
+    for (int i = 0;; i = this.Xqp.size())
     {
       AppMethodBeat.o(102814);
       return i + j;
     }
+  }
+  
+  public final int hUm()
+  {
+    return this.Xqq;
   }
   
   public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
@@ -570,76 +599,76 @@ public final class c
     }
     if (paramObject != null)
     {
-      com.tencent.mm.kernel.g.aAi();
-      paramMStorageEx = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().bjF(paramObject.toString());
-      if ((paramMStorageEx != null) && (com.tencent.mm.contact.c.oR(paramMStorageEx.field_type))) {
-        and();
+      com.tencent.mm.kernel.h.aHH();
+      paramMStorageEx = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().bwc(paramObject.toString());
+      if ((paramMStorageEx != null) && (com.tencent.mm.contact.d.rk(paramMStorageEx.field_type))) {
+        ate();
       }
     }
     AppMethodBeat.o(102818);
   }
   
-  protected final a va(int paramInt)
+  protected final a ye(int paramInt)
   {
     AppMethodBeat.i(102815);
     Object localObject;
-    if (paramInt == this.PTC)
+    if (paramInt == this.Xqn)
     {
-      localObject = dn(paramInt, this.PWg.getActivity().getString(2131765138));
+      localObject = dm(paramInt, this.XsW.getActivity().getString(a.h.select_contact_wechat_sport_recent_like_contact_name));
       AppMethodBeat.o(102815);
       return localObject;
     }
-    if (paramInt == this.PTv)
+    if (paramInt == this.Xqg)
     {
-      localObject = dn(paramInt, this.PTu.customHeader);
+      localObject = dm(paramInt, this.Xqf.customHeader);
       AppMethodBeat.o(102815);
       return localObject;
     }
-    if (paramInt == this.CuC)
+    if (paramInt == this.Isp)
     {
-      localObject = dn(paramInt, this.PWg.getActivity().getString(2131765128));
+      localObject = dm(paramInt, this.XsW.getActivity().getString(a.h.select_contact_near_contact_catalog_name));
       AppMethodBeat.o(102815);
       return localObject;
     }
-    if (paramInt == this.PTw)
+    if (paramInt == this.Xqh)
     {
-      localObject = dn(paramInt, this.PWg.getActivity().getString(2131765135));
+      localObject = dm(paramInt, this.XsW.getActivity().getString(a.h.select_contact_recommend_contact_catalog_name));
       AppMethodBeat.o(102815);
       return localObject;
     }
-    if (paramInt == this.PTx)
+    if (paramInt == this.Xqi)
     {
-      localObject = dn(paramInt, this.PWg.getActivity().getString(2131765136));
+      localObject = dm(paramInt, this.XsW.getActivity().getString(a.h.select_contact_recommend_group_catalog_name));
       AppMethodBeat.o(102815);
       return localObject;
     }
-    if (paramInt == this.PTy)
+    if (paramInt == this.Xqj)
     {
-      localObject = dn(paramInt, this.PWg.getActivity().getString(2131765122));
+      localObject = dm(paramInt, this.XsW.getActivity().getString(a.h.select_contact_favour_contact_catalog_name));
       AppMethodBeat.o(102815);
       return localObject;
     }
-    if (paramInt == this.PTz)
+    if (paramInt == this.Xqk)
     {
-      localObject = dn(paramInt, this.PWg.getActivity().getString(2131755196));
+      localObject = dm(paramInt, this.XsW.getActivity().getString(a.h.address_chatroom_contact_nick));
       AppMethodBeat.o(102815);
       return localObject;
     }
-    if (paramInt == this.PTA)
+    if (paramInt == this.Xql)
     {
-      localObject = dn(paramInt, this.PWg.getActivity().getString(2131765134));
+      localObject = dm(paramInt, this.XsW.getActivity().getString(a.h.select_contact_official_accounts_title));
       AppMethodBeat.o(102815);
       return localObject;
     }
-    if (paramInt == this.PTB)
+    if (paramInt == this.Xqm)
     {
-      localObject = new k(paramInt);
+      localObject = new m(paramInt);
       AppMethodBeat.o(102815);
       return localObject;
     }
-    if (this.PTE.indexOfKey(paramInt) >= 0)
+    if (this.Xqp.indexOfKey(paramInt) >= 0)
     {
-      localObject = dn(paramInt, (String)this.PTE.get(paramInt));
+      localObject = dm(paramInt, (String)this.Xqp.get(paramInt));
       AppMethodBeat.o(102815);
       return localObject;
     }
@@ -650,11 +679,11 @@ public final class c
     do
     {
       j = i;
-      if (i > this.PTE.size()) {
+      if (i > this.Xqp.size()) {
         break;
       }
       j = i;
-      if (this.PTE.indexOfKey(k) >= 0) {
+      if (this.Xqp.indexOfKey(k) >= 0) {
         j = i + 1;
       }
       m = k - 1;
@@ -662,28 +691,29 @@ public final class c
       i = j;
     } while (m >= 0);
     i = paramInt - j;
-    if (this.jWh.moveToPosition(i))
+    if (this.mNt.moveToPosition(i))
     {
       Log.d("MicroMsg.AlphabetContactAdapter", "create contact item position=%d | index=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
       localObject = new as();
-      ((as)localObject).convertFrom(this.jWh);
-      e locale = new e(paramInt);
-      locale.contact = ((as)localObject);
-      if (!Util.isNullOrNil(this.PTu.dFl)) {
-        locale.dFl = this.PTu.dFl;
+      ((as)localObject).convertFrom(this.mNt);
+      f localf = new f(paramInt);
+      localf.contact = ((as)localObject);
+      if (!Util.isNullOrNil(this.Xqf.fxT)) {
+        localf.fxT = this.Xqf.fxT;
       }
-      if (ab.Eq(((ax)localObject).field_username))
+      if (ab.Lj(((ax)localObject).field_username))
       {
-        locale.PWh = false;
-        locale.PWi = false;
-        locale.Qaa = false;
+        localf.XsX = false;
+        localf.XsY = false;
+        localf.Xxs = false;
       }
-      for (locale.Qap = true;; locale.Qap = false)
+      for (localf.XxM = true;; localf.XxM = false)
       {
+        localf.xUe = this.xUe;
         AppMethodBeat.o(102815);
-        return locale;
-        locale.PWh = eWh();
-        locale.PWi = this.PWi;
+        return localf;
+        localf.XsX = fJk();
+        localf.XsY = hUO();
       }
     }
     Log.i("MicroMsg.AlphabetContactAdapter", "create contact item error: position=%d | index=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
@@ -693,27 +723,27 @@ public final class c
   
   public static final class a
   {
-    public String PSf = "@all.contact.without.chatroom";
-    public boolean PTL = false;
-    public boolean PTM = false;
-    public boolean PTN = false;
-    public boolean PTO = false;
-    public boolean PTP = false;
-    public boolean PTQ = false;
-    public boolean PTR = false;
-    public boolean PTS = false;
-    public String PTT;
-    public String PTU;
-    public boolean PTV = false;
-    public String PTW = "";
-    public String PTX = "";
+    public String XoS = "@all.contact.without.chatroom";
+    public boolean XqA = false;
+    public boolean XqB = false;
+    public boolean XqC = false;
+    public boolean XqD = false;
+    public String XqE;
+    public String XqF;
+    public boolean XqG = false;
+    public String XqH = "";
+    public String XqI = "";
+    public boolean Xqw = false;
+    public boolean Xqx = false;
+    public boolean Xqy = false;
+    public boolean Xqz = false;
     public String customHeader = "";
-    public String dFl = "";
+    public String fxT = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.c
  * JD-Core Version:    0.7.0.1
  */

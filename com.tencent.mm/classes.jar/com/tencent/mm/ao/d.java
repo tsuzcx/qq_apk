@@ -1,71 +1,105 @@
 package com.tencent.mm.ao;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.f.c.ak;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class d
-  extends com.tencent.mm.model.as
+  extends ak
 {
-  public final String getTag()
+  protected static IAutoDBItem.MAutoDBInfo info;
+  
+  static
   {
-    return "MicroMsg.VerifyFlagDataTransfer";
+    AppMethodBeat.i(123984);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[17];
+    localMAutoDBInfo.columns = new String[18];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localMAutoDBInfo.columns[0] = "userName";
+    localMAutoDBInfo.colsMap.put("userName", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" userName TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.primaryKey = "userName";
+    localMAutoDBInfo.columns[1] = "qyUin";
+    localMAutoDBInfo.colsMap.put("qyUin", "INTEGER");
+    localStringBuilder.append(" qyUin INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[2] = "userUin";
+    localMAutoDBInfo.colsMap.put("userUin", "INTEGER");
+    localStringBuilder.append(" userUin INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[3] = "userFlag";
+    localMAutoDBInfo.colsMap.put("userFlag", "INTEGER");
+    localStringBuilder.append(" userFlag INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[4] = "wwExposeTimes";
+    localMAutoDBInfo.colsMap.put("wwExposeTimes", "INTEGER");
+    localStringBuilder.append(" wwExposeTimes INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[5] = "wwMaxExposeTimes";
+    localMAutoDBInfo.colsMap.put("wwMaxExposeTimes", "INTEGER");
+    localStringBuilder.append(" wwMaxExposeTimes INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[6] = "wwCorpId";
+    localMAutoDBInfo.colsMap.put("wwCorpId", "LONG");
+    localStringBuilder.append(" wwCorpId LONG");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[7] = "wwUserVid";
+    localMAutoDBInfo.colsMap.put("wwUserVid", "LONG");
+    localStringBuilder.append(" wwUserVid LONG");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[8] = "userType";
+    localMAutoDBInfo.colsMap.put("userType", "INTEGER");
+    localStringBuilder.append(" userType INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[9] = "chatOpen";
+    localMAutoDBInfo.colsMap.put("chatOpen", "INTEGER");
+    localStringBuilder.append(" chatOpen INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[10] = "wwUnreadCnt";
+    localMAutoDBInfo.colsMap.put("wwUnreadCnt", "INTEGER default '0' ");
+    localStringBuilder.append(" wwUnreadCnt INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[11] = "show_confirm";
+    localMAutoDBInfo.colsMap.put("show_confirm", "INTEGER");
+    localStringBuilder.append(" show_confirm INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[12] = "use_preset_banner_tips";
+    localMAutoDBInfo.colsMap.put("use_preset_banner_tips", "INTEGER");
+    localStringBuilder.append(" use_preset_banner_tips INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[13] = "hide_create_chat";
+    localMAutoDBInfo.colsMap.put("hide_create_chat", "INTEGER");
+    localStringBuilder.append(" hide_create_chat INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[14] = "hide_mod_chat_member";
+    localMAutoDBInfo.colsMap.put("hide_mod_chat_member", "INTEGER");
+    localStringBuilder.append(" hide_mod_chat_member INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[15] = "hide_colleage_invite";
+    localMAutoDBInfo.colsMap.put("hide_colleage_invite", "INTEGER default 'true' ");
+    localStringBuilder.append(" hide_colleage_invite INTEGER default 'true' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[16] = "raw_attrs";
+    localMAutoDBInfo.colsMap.put("raw_attrs", "BLOB");
+    localStringBuilder.append(" raw_attrs BLOB");
+    localMAutoDBInfo.columns[17] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
+    AppMethodBeat.o(123984);
   }
   
-  public final boolean rT(int paramInt)
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return (paramInt != 0) && (paramInt < 604176383);
-  }
-  
-  public final void transfer(int paramInt)
-  {
-    AppMethodBeat.i(20479);
-    Log.d("MicroMsg.VerifyFlagDataTransfer", "the previous version is %d", new Object[] { Integer.valueOf(paramInt) });
-    if (!rT(paramInt))
-    {
-      Log.w("MicroMsg.VerifyFlagDataTransfer", "do not need transfer");
-      AppMethodBeat.o(20479);
-      return;
-    }
-    com.tencent.mm.plugin.report.service.h.CyF.dN(336, 10);
-    long l = System.currentTimeMillis();
-    bg.aVF();
-    if (Util.nullAsNil((Integer)c.azQ().get(86017, null)) == 3)
-    {
-      Log.w("MicroMsg.VerifyFlagDataTransfer", "check old contact not exist");
-      AppMethodBeat.o(20479);
-      return;
-    }
-    bg.aVF();
-    c.getDataDB().execSQL("rcontact", "update rcontact set verifyflag=0 where verifyflag is null;");
-    bg.aVF();
-    Cursor localCursor = c.aSN().d("@all.weixin.android", "", null);
-    localCursor.moveToFirst();
-    while (!localCursor.isAfterLast())
-    {
-      com.tencent.mm.storage.as localas = new com.tencent.mm.storage.as();
-      localas.convertFrom(localCursor);
-      bg.aVF();
-      c.aSN().e(localas.field_username, localas);
-      localCursor.moveToNext();
-    }
-    localCursor.close();
-    Log.d("MicroMsg.VerifyFlagDataTransfer", "update verifyflag from the beginning to update finish use %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    bg.aVF();
-    c.azQ().set(86017, Integer.valueOf(3));
-    Log.d("MicroMsg.VerifyFlagDataTransfer", "update verifyflag use time " + (System.currentTimeMillis() - l) + " ms");
-    AppMethodBeat.o(20479);
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ao.d
  * JD-Core Version:    0.7.0.1
  */

@@ -2,16 +2,14 @@ package kotlin.l.b.a.b.g;
 
 public abstract class a
 {
-  private final String LHM;
-  
   public String toString()
   {
-    return this.LHM;
+    throw null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlin.l.b.a.b.g.a
  * JD-Core Version:    0.7.0.1
  */

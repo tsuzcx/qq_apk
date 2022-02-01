@@ -14,14 +14,14 @@ public final class MediaSessionCompat$QueueItem
   implements Parcelable
 {
   public static final Parcelable.Creator<QueueItem> CREATOR = new Parcelable.Creator() {};
-  private final MediaDescriptionCompat Ln;
-  private final long MS;
-  private Object MT;
+  private final MediaDescriptionCompat cO;
+  private final long dI;
+  private Object dJ;
   
   MediaSessionCompat$QueueItem(Parcel paramParcel)
   {
-    this.Ln = ((MediaDescriptionCompat)MediaDescriptionCompat.CREATOR.createFromParcel(paramParcel));
-    this.MS = paramParcel.readLong();
+    this.cO = ((MediaDescriptionCompat)MediaDescriptionCompat.CREATOR.createFromParcel(paramParcel));
+    this.dI = paramParcel.readLong();
   }
   
   private MediaSessionCompat$QueueItem(Object paramObject, MediaDescriptionCompat paramMediaDescriptionCompat, long paramLong)
@@ -32,12 +32,12 @@ public final class MediaSessionCompat$QueueItem
     if (paramLong == -1L) {
       throw new IllegalArgumentException("Id cannot be QueueItem.UNKNOWN_ID");
     }
-    this.Ln = paramMediaDescriptionCompat;
-    this.MS = paramLong;
-    this.MT = paramObject;
+    this.cO = paramMediaDescriptionCompat;
+    this.dI = paramLong;
+    this.dJ = paramObject;
   }
   
-  public static List<QueueItem> l(List<?> paramList)
+  public static List<QueueItem> f(List<?> paramList)
   {
     if ((paramList == null) || (Build.VERSION.SDK_INT < 21)) {
       return null;
@@ -48,7 +48,7 @@ public final class MediaSessionCompat$QueueItem
     {
       paramList = localIterator.next();
       if ((paramList == null) || (Build.VERSION.SDK_INT < 21)) {}
-      for (paramList = null;; paramList = new QueueItem(paramList, MediaDescriptionCompat.v(((MediaSession.QueueItem)paramList).getDescription()), ((MediaSession.QueueItem)paramList).getQueueId()))
+      for (paramList = null;; paramList = new QueueItem(paramList, MediaDescriptionCompat.d(((MediaSession.QueueItem)paramList).getDescription()), ((MediaSession.QueueItem)paramList).getQueueId()))
       {
         localArrayList.add(paramList);
         break;
@@ -64,18 +64,18 @@ public final class MediaSessionCompat$QueueItem
   
   public final String toString()
   {
-    return "MediaSession.QueueItem {Description=" + this.Ln + ", Id=" + this.MS + " }";
+    return "MediaSession.QueueItem {Description=" + this.cO + ", Id=" + this.dI + " }";
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    this.Ln.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeLong(this.MS);
+    this.cO.writeToParcel(paramParcel, paramInt);
+    paramParcel.writeLong(this.dI);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     android.support.v4.media.session.MediaSessionCompat.QueueItem
  * JD-Core Version:    0.7.0.1
  */

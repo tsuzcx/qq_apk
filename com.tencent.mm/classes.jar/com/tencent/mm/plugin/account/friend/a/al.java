@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.dug;
-import com.tencent.mm.protocal.protobuf.duh;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.eek;
+import com.tencent.mm.protocal.protobuf.eel;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -29,23 +29,23 @@ public final class al
     AppMethodBeat.i(131139);
     this.callback = null;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new dug();
-    ((d.a)localObject).iLO = new duh();
+    ((d.a)localObject).lBU = new eek();
+    ((d.a)localObject).lBV = new eel();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/sendsmstomfriend";
     ((d.a)localObject).funcId = 432;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (dug)this.rr.iLK.iLR;
-    ((dug)localObject).Bri = paramString;
-    ((dug)localObject).Mnw = new LinkedList();
-    ((dug)localObject).Mnv = paramList.size();
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (eek)d.b.b(this.rr.lBR);
+    ((eek)localObject).HlB = paramString;
+    ((eek)localObject).Tyr = new LinkedList();
+    ((eek)localObject).Tyq = paramList.size();
     paramString = paramList.iterator();
     while (paramString.hasNext())
     {
       paramList = (String)paramString.next();
       if (!Util.isNullOrNil(paramList)) {
-        ((dug)localObject).Mnw.add(new dqi().bhy(paramList));
+        ((eek)localObject).Tyr.add(new eaf().btQ(paramList));
       }
     }
     AppMethodBeat.o(131139);
@@ -74,7 +74,7 @@ public final class al
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.al
  * JD-Core Version:    0.7.0.1
  */

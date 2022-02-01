@@ -7,13 +7,19 @@ import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.model.z;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ah;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.t.b;
+import com.tencent.mm.ui.contact.a.a;
+import com.tencent.mm.ui.contact.a.d.a;
+import com.tencent.mm.ui.contact.t;
+import com.tencent.mm.ui.w.b;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -21,58 +27,105 @@ import java.util.List;
 public class SelectDelMemberUI
   extends SelectMemberUI
 {
-  private int gxQ;
+  private int jhS;
   
-  private void ani()
+  private void atk()
   {
     AppMethodBeat.i(12935);
-    if (this.gAB.size() > 0)
+    if (this.jkF.size() > 0)
     {
-      updateOptionMenuText(1, getString(2131758291) + "(" + this.gAB.size() + ")");
+      updateOptionMenuText(1, getString(a.i.delete_room_member) + "(" + this.jkF.size() + ")");
       enableOptionMenu(1, true);
       AppMethodBeat.o(12935);
       return;
     }
-    updateOptionMenuText(1, getString(2131758291));
+    updateOptionMenuText(1, getString(a.i.delete_room_member));
     enableOptionMenu(1, false);
     AppMethodBeat.o(12935);
+  }
+  
+  protected final void B(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(12933);
+    super.B(paramInt, paramBoolean);
+    atk();
+    AppMethodBeat.o(12933);
   }
   
   protected final void a(View paramView, int paramInt, long paramLong)
   {
     AppMethodBeat.i(12934);
     super.a(paramView, paramInt, paramLong);
-    ((SelectMemberUI.c)paramView.getTag()).gAQ.performClick();
+    if (getContentLV().getAdapter() == this.jkD)
+    {
+      paramView = (d.a)paramView.getTag();
+      if ((paramView.iZG != null) && ((paramView.iZG.getTag() instanceof String)))
+      {
+        paramView = (String)paramView.iZG.getTag();
+        if (!this.jkF.contains(paramView)) {
+          break label104;
+        }
+        this.jkF.remove(paramView);
+      }
+      for (;;)
+      {
+        atk();
+        this.jkD.notifyDataSetChanged();
+        AppMethodBeat.o(12934);
+        return;
+        label104:
+        this.jkF.add(paramView);
+      }
+    }
+    ((SelectMemberUI.c)paramView.getTag()).jkW.performClick();
     AppMethodBeat.o(12934);
   }
   
-  protected final void anf()
+  public final boolean a(a parama)
+  {
+    AppMethodBeat.i(191227);
+    if ((parama.XsX) && (parama.contact != null))
+    {
+      boolean bool = this.jkF.contains(parama.contact.field_username);
+      AppMethodBeat.o(191227);
+      return bool;
+    }
+    AppMethodBeat.o(191227);
+    return false;
+  }
+  
+  protected final void atg()
   {
     AppMethodBeat.i(12929);
-    super.anf();
-    this.gxQ = getIntent().getIntExtra("room_member_count", 0);
+    super.atg();
+    this.jhS = getIntent().getIntExtra("room_member_count", 0);
     AppMethodBeat.o(12929);
   }
   
-  public final boolean ang()
+  public final boolean ath()
   {
     return true;
   }
   
-  protected final HashSet<String> anj()
+  protected final boolean ati()
+  {
+    return false;
+  }
+  
+  protected final HashSet<String> atl()
   {
     AppMethodBeat.i(12932);
-    HashSet localHashSet = super.anj();
-    if (ano().JO(z.aTY()))
+    HashSet localHashSet = super.atl();
+    if (atq().Rh(z.bcZ()))
     {
       AppMethodBeat.o(12932);
       return localHashSet;
     }
-    Iterator localIterator = ano().bax().iterator();
+    Iterator localIterator = atq().bjL().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if ((ano().bjf(str)) || (ano().JO(str))) {
+      if ((atq().bvA(str)) || (atq().Rh(str))) {
         localHashSet.add(str);
       }
     }
@@ -92,13 +145,13 @@ public class SelectDelMemberUI
   {
     AppMethodBeat.i(12930);
     super.initView();
-    setMMTitle(getString(2131764780) + "(" + this.gxQ + ")");
-    addTextOptionMenu(1, getString(2131758291), new MenuItem.OnMenuItemClickListener()
+    setMMTitle(getString(a.i.jgB) + "(" + this.jhS + ")");
+    addTextOptionMenu(1, getString(a.i.delete_room_member), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(12928);
-        h.a(SelectDelMemberUI.this, SelectDelMemberUI.this.getString(2131764678), "", new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        h.a(SelectDelMemberUI.this, SelectDelMemberUI.this.getString(a.i.jfW), "", new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
           {
@@ -116,8 +169,8 @@ public class SelectDelMemberUI
         AppMethodBeat.o(12928);
         return false;
       }
-    }, null, t.b.OGV);
-    ani();
+    }, null, w.b.Wap);
+    atk();
     AppMethodBeat.o(12930);
   }
   
@@ -126,18 +179,10 @@ public class SelectDelMemberUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  protected final void z(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(12933);
-    super.z(paramInt, paramBoolean);
-    ani();
-    AppMethodBeat.o(12933);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.SelectDelMemberUI
  * JD-Core Version:    0.7.0.1
  */

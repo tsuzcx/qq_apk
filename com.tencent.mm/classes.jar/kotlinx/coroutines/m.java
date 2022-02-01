@@ -1,20 +1,27 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.d.d;
+import kotlin.g.a.b;
 import kotlin.l;
-import kotlinx.coroutines.internal.u;
+import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"RESUMED", "", "RESUME_TOKEN", "Lkotlinx/coroutines/internal/Symbol;", "RESUME_TOKEN$annotations", "()V", "SUSPENDED", "UNDECIDED", "kotlinx-coroutines-core"})
-public final class m
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/CancellableContinuation;", "T", "Lkotlin/coroutines/Continuation;", "isActive", "", "()Z", "isCancelled", "isCompleted", "cancel", "cause", "", "completeResume", "", "token", "", "initCancellability", "invokeOnCancellation", "handler", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "Lkotlinx/coroutines/CompletionHandler;", "resume", "value", "onCancellation", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)V", "tryResume", "idempotent", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "tryResumeWithException", "exception", "resumeUndispatched", "Lkotlinx/coroutines/CoroutineDispatcher;", "(Lkotlinx/coroutines/CoroutineDispatcher;Ljava/lang/Object;)V", "resumeUndispatchedWithException", "kotlinx-coroutines-core"})
+public abstract interface m<T>
+  extends d<T>
 {
-  public static final u TTE;
+  public abstract boolean A(Throwable paramThrowable);
   
-  static
-  {
-    AppMethodBeat.i(192398);
-    TTE = new u("RESUME_TOKEN");
-    AppMethodBeat.o(192398);
-  }
+  public abstract void a(af paramaf, T paramT);
+  
+  public abstract void am(b<? super Throwable, x> paramb);
+  
+  public abstract Object fV(T paramT);
+  
+  public abstract void fW(Object paramObject);
+  
+  public abstract boolean isCompleted();
+  
+  public abstract Object z(Throwable paramThrowable);
 }
 
 

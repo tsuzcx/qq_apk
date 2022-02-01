@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h
 {
-  public static int bH(Context paramContext)
+  public static int bG(Context paramContext)
   {
     AppMethodBeat.i(125019);
     if (paramContext == null)
@@ -28,7 +28,7 @@ public final class h
     return 0;
   }
   
-  public static int bI(Context paramContext)
+  public static int bH(Context paramContext)
   {
     AppMethodBeat.i(125020);
     if (paramContext == null)
@@ -67,10 +67,15 @@ public final class h
       AppMethodBeat.o(125021);
     }
   }
+  
+  public static abstract interface a
+  {
+    public abstract void kb(int paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.app.h
  * JD-Core Version:    0.7.0.1
  */

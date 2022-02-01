@@ -1,6 +1,5 @@
 package com.tencent.mm.xeffect.effect;
 
-import android.content.res.AssetManager;
 import android.util.Pair;
 import android.util.Size;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -11,10 +10,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import kotlin.a.j;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/mm/xeffect/effect/VLogEffectJNI;", "", "()V", "TAG", "", "createEffect", "", "type", "Lcom/tencent/mm/xeffect/effect/EffectType;", "asset", "Landroid/content/res/AssetManager;", "assetPath", "path", "destroyEffect", "", "effect", "Lcom/tencent/mm/xeffect/effect/VLogEffect;", "getPagDuration", "nPtr", "getPagDuration$renderlib_release", "getPagImageNum", "", "getPagImageNum$renderlib_release", "getPagSize", "Landroid/util/Size;", "getPagSize$renderlib_release", "getPagTemplateInfo", "", "Landroid/util/Pair;", "replacementType", "Lcom/tencent/mm/xeffect/effect/PAGReplacementType;", "checkMarker", "", "getPagTemplateInfo$renderlib_release", "nCreateEffect", "nCreateEffectAsset", "nCreateEffectPath", "nDestroy", "ptr", "nGetPagDuration", "nGetPagImageNum", "nGetPagSize", "", "nGetPagTemplateInfo", "", "nSetCheckMarker", "check", "nSetConfigJson", "json", "nSetEffectLayout", "centerX", "centerY", "scale", "", "rotate", "nSetEffectParams", "keys", "values", "", "nSetEffectText", "text", "fontSize", "fontFamily", "italic", "bold", "nSetEffectTexture", "textureId", "width", "height", "nSetEffectTime", "start", "end", "nSetFadeEffectFadeBackgroundColor", "red", "green", "blue", "nSetGradientBlurEffectBlurBottom", "blur", "nSetGradientBlurEffectBlurMaskRatio", "ratio", "nSetGradientBlurEffectBlurTop", "nSetGradientBlurEffectCenterCropBlur", "nSetGradientBlurEffectContentOffset", "offset", "nSetPagTemplateText", "index", "nSetScene", "scene", "nSetShowLandmarks", "show", "nSetStickerSize", "setCheckMarker", "setCheckMarker$renderlib_release", "setConfigJson", "setConfigJson$renderlib_release", "setEffectLayout", "layout", "Lcom/tencent/mm/xeffect/effect/EffectLayoutInfo;", "setEffectLayout$renderlib_release", "setEffectParams", "effectParams", "", "setEffectParams$renderlib_release", "setEffectText", "textInfo", "Lcom/tencent/mm/xeffect/effect/EffectTextInfo;", "setEffectText$renderlib_release", "setEffectTexture", "setEffectTexture$renderlib_release", "setEffectTime", "timeRange", "Lcom/tencent/mm/xeffect/effect/EffectTimeRange;", "setEffectTime$renderlib_release", "setPagTemplateText", "setPagTemplateText$renderlib_release", "setScene", "setScene$renderlib_release", "setShowLandmarks", "setShowLandmarks$renderlib_release", "setStickerSize", "setStickerSize$renderlib_release", "renderlib_release"})
+@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/effect/VLogEffectJNI;", "", "()V", "TAG", "", "destroyEffect", "", "effect", "Lcom/tencent/mm/xeffect/effect/VLogEffect;", "getPagDuration", "", "nPtr", "getPagDuration$renderlib_release", "getPagFrameRate", "", "getPagFrameRate$renderlib_release", "getPagImageNum", "", "getPagImageNum$renderlib_release", "getPagSize", "Landroid/util/Size;", "getPagSize$renderlib_release", "getPagTemplateInfo", "", "Landroid/util/Pair;", "replacementType", "Lcom/tencent/mm/xeffect/effect/PAGReplacementType;", "checkMarker", "", "getPagTemplateInfo$renderlib_release", "nDestroy", "ptr", "nGetPagDuration", "nGetPagFrameRate", "nGetPagImageNum", "nGetPagSize", "", "nGetPagTemplateInfo", "", "nSetCheckMarker", "check", "nSetConfigJson", "json", "nSetEffectIsPreMultiplied", "isPreMultiplied", "nSetEffectLayout", "centerX", "centerY", "scale", "rotate", "nSetEffectParams", "keys", "values", "", "nSetEffectText", "text", "fontSize", "fontFamily", "italic", "bold", "nSetEffectTexture", "textureId", "width", "height", "nSetEffectTime", "start", "end", "nSetFadeEffectFadeBackgroundColor", "red", "green", "blue", "nSetGradientBlurContentOffsetPercent", "percent", "nSetGradientBlurEffectBlurBottom", "blur", "nSetGradientBlurEffectBlurMaskRatio", "ratio", "nSetGradientBlurEffectBlurTop", "nSetGradientBlurEffectCenterCropBlur", "nSetGradientBlurEffectContentOffset", "offset", "nSetLutFilterWeight", "weight", "nSetPagTemplateText", "index", "nSetScene", "scene", "nSetShowLandmarks", "show", "nSetStickerSize", "setCheckMarker", "setCheckMarker$renderlib_release", "setConfigJson", "setConfigJson$renderlib_release", "setEffectLayout", "layout", "Lcom/tencent/mm/xeffect/effect/EffectLayoutInfo;", "setEffectLayout$renderlib_release", "setEffectParams", "effectParams", "", "setEffectParams$renderlib_release", "setEffectText", "textInfo", "Lcom/tencent/mm/xeffect/effect/EffectTextInfo;", "setEffectText$renderlib_release", "setEffectTexture", "setEffectTexture$renderlib_release", "setEffectTime", "timeRange", "Lcom/tencent/mm/xeffect/effect/EffectTimeRange;", "setEffectTime$renderlib_release", "setPagTemplateText", "setPagTemplateText$renderlib_release", "setScene", "setScene$renderlib_release", "setShowLandmarks", "setShowLandmarks$renderlib_release", "setStickerSize", "setStickerSize$renderlib_release", "renderlib_release"})
 public final class VLogEffectJNI
 {
   public static final VLogEffectJNI INSTANCE;
@@ -22,21 +22,17 @@ public final class VLogEffectJNI
   
   static
   {
-    AppMethodBeat.i(237139);
+    AppMethodBeat.i(195945);
     INSTANCE = new VLogEffectJNI();
     TAG = "VLogEffectJNI";
-    AppMethodBeat.o(237139);
+    AppMethodBeat.o(195945);
   }
-  
-  private final native long nCreateEffect(int paramInt);
-  
-  private final native long nCreateEffectAsset(int paramInt, AssetManager paramAssetManager, String paramString);
-  
-  private final native long nCreateEffectPath(int paramInt, String paramString);
   
   private final native void nDestroy(long paramLong);
   
   private final native long nGetPagDuration(long paramLong);
+  
+  private final native float nGetPagFrameRate(long paramLong);
   
   private final native int nGetPagImageNum(long paramLong);
   
@@ -66,91 +62,73 @@ public final class VLogEffectJNI
   
   private final native void nSetStickerSize(long paramLong, int paramInt1, int paramInt2);
   
-  public final long createEffect(j paramj)
+  public final void destroyEffect(af paramaf)
   {
-    AppMethodBeat.i(237120);
-    p.h(paramj, "type");
-    long l = nCreateEffect(paramj.ordinal());
-    AppMethodBeat.o(237120);
-    return l;
-  }
-  
-  public final long createEffect(j paramj, AssetManager paramAssetManager, String paramString)
-  {
-    AppMethodBeat.i(237122);
-    p.h(paramj, "type");
-    p.h(paramAssetManager, "asset");
-    p.h(paramString, "assetPath");
-    long l = nCreateEffectAsset(paramj.ordinal(), paramAssetManager, paramString);
-    AppMethodBeat.o(237122);
-    return l;
-  }
-  
-  public final long createEffect(j paramj, String paramString)
-  {
-    AppMethodBeat.i(237121);
-    p.h(paramj, "type");
-    p.h(paramString, "path");
-    long l = nCreateEffectPath(paramj.ordinal(), paramString);
-    AppMethodBeat.o(237121);
-    return l;
-  }
-  
-  public final void destroyEffect(ad paramad)
-  {
-    AppMethodBeat.i(237123);
-    p.h(paramad, "effect");
-    nDestroy(paramad.ptr);
-    AppMethodBeat.o(237123);
+    AppMethodBeat.i(195907);
+    p.k(paramaf, "effect");
+    nDestroy(paramaf.ptr);
+    AppMethodBeat.o(195907);
   }
   
   public final long getPagDuration$renderlib_release(long paramLong)
   {
-    AppMethodBeat.i(237131);
+    AppMethodBeat.i(195921);
     paramLong = nGetPagDuration(paramLong);
-    AppMethodBeat.o(237131);
+    AppMethodBeat.o(195921);
     return paramLong;
+  }
+  
+  public final float getPagFrameRate$renderlib_release(long paramLong)
+  {
+    AppMethodBeat.i(195928);
+    float f = nGetPagFrameRate(paramLong);
+    AppMethodBeat.o(195928);
+    return f;
   }
   
   public final int getPagImageNum$renderlib_release(long paramLong)
   {
-    AppMethodBeat.i(237130);
+    AppMethodBeat.i(195920);
     int i = nGetPagImageNum(paramLong);
-    AppMethodBeat.o(237130);
+    AppMethodBeat.o(195920);
     return i;
   }
   
   public final Size getPagSize$renderlib_release(long paramLong)
   {
-    AppMethodBeat.i(237129);
+    AppMethodBeat.i(195918);
     Object localObject = nGetPagSize(paramLong);
     localObject = new Size(localObject[0], localObject[1]);
-    AppMethodBeat.o(237129);
+    AppMethodBeat.o(195918);
     return localObject;
   }
   
-  public final List<Pair<Long, Long>> getPagTemplateInfo$renderlib_release(long paramLong, q paramq, boolean paramBoolean)
+  public final List<Pair<Long, Long>> getPagTemplateInfo$renderlib_release(long paramLong, s params, boolean paramBoolean)
   {
-    AppMethodBeat.i(237134);
-    p.h(paramq, "replacementType");
+    AppMethodBeat.i(195927);
+    p.k(params, "replacementType");
     ArrayList localArrayList = new ArrayList();
-    paramq = nGetPagTemplateInfo(paramLong, paramq.ordinal(), paramBoolean);
-    if (paramq != null)
+    params = nGetPagTemplateInfo(paramLong, params.ordinal(), paramBoolean);
+    if (params != null)
     {
       int i = 0;
-      int j = paramq.length / 2;
+      int j = params.length / 2;
       while (i < j)
       {
-        localArrayList.add(new Pair(Long.valueOf(paramq[(i * 2)]), Long.valueOf(paramq[(i * 2 + 1)])));
+        localArrayList.add(new Pair(Long.valueOf(params[(i * 2)]), Long.valueOf(params[(i * 2 + 1)])));
         i += 1;
       }
     }
-    paramq = (List)localArrayList;
-    AppMethodBeat.o(237134);
-    return paramq;
+    params = (List)localArrayList;
+    AppMethodBeat.o(195927);
+    return params;
   }
   
+  public final native void nSetEffectIsPreMultiplied(long paramLong, boolean paramBoolean);
+  
   public final native void nSetFadeEffectFadeBackgroundColor(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  public final native void nSetGradientBlurContentOffsetPercent(long paramLong, float paramFloat);
   
   public final native void nSetGradientBlurEffectBlurBottom(long paramLong, boolean paramBoolean);
   
@@ -162,35 +140,37 @@ public final class VLogEffectJNI
   
   public final native void nSetGradientBlurEffectContentOffset(long paramLong, float paramFloat);
   
+  public final native void nSetLutFilterWeight(long paramLong, float paramFloat);
+  
   public final void setCheckMarker$renderlib_release(long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(237132);
+    AppMethodBeat.i(195922);
     nSetCheckMarker(paramLong, paramBoolean);
-    AppMethodBeat.o(237132);
+    AppMethodBeat.o(195922);
   }
   
   public final void setConfigJson$renderlib_release(long paramLong, String paramString)
   {
-    AppMethodBeat.i(237135);
-    p.h(paramString, "json");
+    AppMethodBeat.i(195931);
+    p.k(paramString, "json");
     nSetConfigJson(paramLong, paramString);
-    AppMethodBeat.o(237135);
+    AppMethodBeat.o(195931);
   }
   
   public final void setEffectLayout$renderlib_release(long paramLong, f paramf)
   {
-    AppMethodBeat.i(237125);
-    p.h(paramf, "layout");
+    AppMethodBeat.i(195909);
+    p.k(paramf, "layout");
     if (paramLong != 0L) {
-      nSetEffectLayout(paramLong, paramf.centerX, paramf.centerY, paramf.scale, paramf.mat);
+      nSetEffectLayout(paramLong, paramf.centerX, paramf.centerY, paramf.scale, paramf.oYk);
     }
-    AppMethodBeat.o(237125);
+    AppMethodBeat.o(195909);
   }
   
   public final void setEffectParams$renderlib_release(long paramLong, Map<Integer, Float> paramMap)
   {
-    AppMethodBeat.i(237138);
-    p.h(paramMap, "effectParams");
+    AppMethodBeat.i(195940);
+    p.k(paramMap, "effectParams");
     int i = paramMap.size();
     int[] arrayOfInt = new int[i];
     float[] arrayOfFloat = new float[i];
@@ -200,79 +180,79 @@ public final class VLogEffectJNI
     {
       Object localObject = localIterator.next();
       if (i < 0) {
-        kotlin.a.j.hxH();
+        j.iBO();
       }
       localObject = (Map.Entry)localObject;
       arrayOfInt[i] = ((Number)((Map.Entry)localObject).getKey()).intValue();
       arrayOfFloat[i] = ((Number)((Map.Entry)localObject).getValue()).floatValue();
       i += 1;
     }
-    nSetEffectParams(paramLong, kotlin.a.j.u((Collection)paramMap.keySet()), kotlin.a.j.t(paramMap.values()));
-    AppMethodBeat.o(237138);
+    nSetEffectParams(paramLong, j.s((Collection)paramMap.keySet()), j.r(paramMap.values()));
+    AppMethodBeat.o(195940);
   }
   
   public final void setEffectText$renderlib_release(long paramLong, h paramh)
   {
-    AppMethodBeat.i(237126);
-    p.h(paramh, "textInfo");
+    AppMethodBeat.i(195911);
+    p.k(paramh, "textInfo");
     if (paramLong != 0L) {
-      nSetEffectText(paramLong, paramh.text, paramh.fontSize, paramh.fontFamily, paramh.RxU, paramh.sYW);
+      nSetEffectText(paramLong, paramh.text, paramh.fontSize, paramh.fontFamily, paramh.YZA, paramh.wEY);
     }
-    AppMethodBeat.o(237126);
+    AppMethodBeat.o(195911);
   }
   
   public final void setEffectTexture$renderlib_release(long paramLong, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(237127);
+    AppMethodBeat.i(195912);
     nSetEffectTexture(paramLong, paramInt1, paramInt2, paramInt3);
-    AppMethodBeat.o(237127);
+    AppMethodBeat.o(195912);
   }
   
   public final void setEffectTime$renderlib_release(long paramLong, i parami)
   {
-    AppMethodBeat.i(237124);
-    p.h(parami, "timeRange");
+    AppMethodBeat.i(195908);
+    p.k(parami, "timeRange");
     if (paramLong != 0L) {
-      nSetEffectTime(paramLong, parami.start, parami.boX);
+      nSetEffectTime(paramLong, parami.start, parami.aYz);
     }
-    AppMethodBeat.o(237124);
+    AppMethodBeat.o(195908);
   }
   
   public final void setPagTemplateText$renderlib_release(long paramLong, int paramInt, h paramh)
   {
-    AppMethodBeat.i(237133);
-    p.h(paramh, "textInfo");
+    AppMethodBeat.i(195924);
+    p.k(paramh, "textInfo");
     if (paramLong != 0L) {
-      nSetPagTemplateText(paramLong, paramInt, paramh.text, paramh.fontSize, paramh.fontFamily, paramh.RxU, paramh.sYW);
+      nSetPagTemplateText(paramLong, paramInt, paramh.text, paramh.fontSize, paramh.fontFamily, paramh.YZA, paramh.wEY);
     }
-    AppMethodBeat.o(237133);
+    AppMethodBeat.o(195924);
   }
   
   public final void setScene$renderlib_release(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(237136);
+    AppMethodBeat.i(195933);
     nSetScene(paramLong, paramInt);
-    AppMethodBeat.o(237136);
+    AppMethodBeat.o(195933);
   }
   
   public final void setShowLandmarks$renderlib_release(long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(237137);
+    AppMethodBeat.i(195935);
     nSetShowLandmarks(paramLong, paramBoolean);
-    AppMethodBeat.o(237137);
+    AppMethodBeat.o(195935);
   }
   
   public final void setStickerSize$renderlib_release(long paramLong, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(237128);
+    AppMethodBeat.i(195914);
     XEffectLog.i(TAG, "setStickerSize ptr:" + paramLong + ", width:" + paramInt1 + ", height:" + paramInt2, new Object[0]);
     nSetStickerSize(paramLong, paramInt1, paramInt2);
-    AppMethodBeat.o(237128);
+    AppMethodBeat.o(195914);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.xeffect.effect.VLogEffectJNI
  * JD-Core Version:    0.7.0.1
  */

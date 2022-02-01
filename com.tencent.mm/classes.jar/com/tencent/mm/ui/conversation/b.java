@@ -7,14 +7,20 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  private static final String[] Qbz = { "M3X", "M5s", "M5", "MX6", "U10", "U20", "M2 E", "M A5", "DIG-AL00", "DIG-TL10", "NCE-AL00", "NCE-TL10", "MYA-TL10", "MYA-AL10", "NEM-AL10" };
+  private static final String[] XzM = { "M3X", "M5s", "M5", "MX6", "U10", "U20", "M2 E", "M A5", "DIG-AL00", "DIG-TL10", "NCE-AL00", "NCE-TL10", "MYA-TL10", "MYA-AL10", "NEM-AL10" };
   
-  public static boolean gVn()
+  public static boolean hVU()
   {
     AppMethodBeat.i(38272);
+    if (Build.VERSION.SDK_INT == 23)
+    {
+      Log.i("CompatSupportV27", "for weird native crash, %s", new Object[] { Build.MODEL });
+      AppMethodBeat.o(38272);
+      return true;
+    }
     if ((Build.VERSION.SDK_INT == 23) && (Build.MODEL != null))
     {
-      String[] arrayOfString = Qbz;
+      String[] arrayOfString = XzM;
       int j = arrayOfString.length;
       int i = 0;
       while (i < j)

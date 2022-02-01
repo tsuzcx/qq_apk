@@ -15,16 +15,16 @@ final class ContactRemarkInfoModUI$a
   {
     AppMethodBeat.i(37767);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/ui/contact/ContactRemarkInfoModUI$LabelEditOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    ContactRemarkInfoModUI.c(this.PVk);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/ui/contact/ContactRemarkInfoModUI$LabelEditOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    ContactRemarkInfoModUI.c(this.XrY);
     a.a(this, "com/tencent/mm/ui/contact/ContactRemarkInfoModUI$LabelEditOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(37767);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ContactRemarkInfoModUI.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,45 +6,45 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class f
 {
-  private static AtomicInteger nhX;
-  public HashMap<String, d> nhY;
+  private static AtomicInteger qiG;
+  public HashMap<String, d> qiH;
   
   static
   {
     AppMethodBeat.i(144343);
-    nhX = new AtomicInteger(1);
+    qiG = new AtomicInteger(1);
     AppMethodBeat.o(144343);
   }
   
   private f()
   {
     AppMethodBeat.i(144339);
-    this.nhY = new HashMap();
+    this.qiH = new HashMap();
     AppMethodBeat.o(144339);
   }
   
-  public static f bPA()
-  {
-    AppMethodBeat.i(144341);
-    f localf = a.bPB();
-    AppMethodBeat.o(144341);
-    return localf;
-  }
-  
-  public static int bPw()
+  public static int cbN()
   {
     AppMethodBeat.i(144340);
-    int i = nhX.incrementAndGet();
+    int i = qiG.incrementAndGet();
     AppMethodBeat.o(144340);
     return i;
   }
   
-  public final d acZ(String paramString)
+  public static f cbR()
+  {
+    AppMethodBeat.i(144341);
+    f localf = a.cbS();
+    AppMethodBeat.o(144341);
+    return localf;
+  }
+  
+  public final d akT(String paramString)
   {
     AppMethodBeat.i(144342);
-    if (this.nhY.containsKey(paramString))
+    if (this.qiH.containsKey(paramString))
     {
-      paramString = (d)this.nhY.get(paramString);
+      paramString = (d)this.qiH.get(paramString);
       AppMethodBeat.o(144342);
       return paramString;
     }
@@ -54,19 +54,19 @@ public final class f
   
   static final class a
   {
-    private static f niB;
+    private static f qjm;
     
     static
     {
       AppMethodBeat.i(144338);
-      niB = new f((byte)0);
+      qjm = new f((byte)0);
       AppMethodBeat.o(144338);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.s.f
  * JD-Core Version:    0.7.0.1
  */

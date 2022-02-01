@@ -7,60 +7,62 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.a.g;
-import com.tencent.mm.plugin.sns.ui.av;
+import com.tencent.mm.plugin.sns.ad.adxml.g;
+import com.tencent.mm.plugin.sns.i.c;
+import com.tencent.mm.plugin.sns.i.j;
+import com.tencent.mm.plugin.sns.ui.ax;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.List;
 
 public final class c
   implements LivingDescBarLayout.b, b.a
 {
-  LivingStatusLayout DAL;
-  LivingDescBarLayout DAM;
-  g DAN;
-  av DAO;
-  int DAP;
-  String Dsr;
+  g JMA;
+  ax JMB;
+  int JMC;
+  LivingStatusLayout JMy;
+  LivingDescBarLayout JMz;
+  String JyZ;
   
-  public c(ViewGroup paramViewGroup, LivingDescBarLayout paramLivingDescBarLayout, av paramav)
+  public c(ViewGroup paramViewGroup, LivingDescBarLayout paramLivingDescBarLayout, ax paramax)
   {
-    AppMethodBeat.i(202433);
-    this.DAP = 0;
+    AppMethodBeat.i(270198);
+    this.JMC = 0;
     try
     {
-      this.DAL = ((LivingStatusLayout)paramViewGroup);
-      this.DAM = paramLivingDescBarLayout;
-      this.DAO = paramav;
-      AppMethodBeat.o(202433);
+      this.JMy = ((LivingStatusLayout)paramViewGroup);
+      this.JMz = paramLivingDescBarLayout;
+      this.JMB = paramax;
+      AppMethodBeat.o(270198);
       return;
     }
     catch (Throwable paramViewGroup)
     {
-      AppMethodBeat.o(202433);
+      AppMethodBeat.o(270198);
     }
   }
   
-  private void XX(int paramInt)
+  private void afl(int paramInt)
   {
-    AppMethodBeat.i(202434);
-    LivingStatusLayout localLivingStatusLayout = this.DAL;
+    AppMethodBeat.i(270201);
+    LivingStatusLayout localLivingStatusLayout = this.JMy;
     if (localLivingStatusLayout != null)
     {
       localLivingStatusLayout.setVisibility(0);
       localLivingStatusLayout.setLiveStatus(paramInt);
     }
-    AppMethodBeat.o(202434);
+    AppMethodBeat.o(270201);
   }
   
-  private void XY(int paramInt)
+  private void afm(int paramInt)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(202436);
-    av localav = this.DAO;
+    AppMethodBeat.i(270203);
+    ax localax = this.JMB;
     String str;
     int i;
     boolean bool1;
-    if (localav != null)
+    if (localax != null)
     {
       str = "";
       i = paramInt & 0x7F;
@@ -68,7 +70,7 @@ public final class c
       if (i == 1) {
         if (paramInt == 2)
         {
-          str = getString(2131765957);
+          str = getString(i.j.sns_ad_finder_living_notice_subscribed);
           bool1 = false;
         }
       }
@@ -78,26 +80,26 @@ public final class c
       if (!TextUtils.isEmpty(str)) {}
       try
       {
-        if (localav.EwI != null) {
-          localav.EwI.setText(str);
+        if (localax.KKA != null) {
+          localax.KKA.setText(str);
         }
         try
         {
-          label82:
-          if (localav.EwI != null)
+          label83:
+          if (localax.KKA != null)
           {
-            localav.EwI.setEnabled(bool1);
+            localax.KKA.setEnabled(bool1);
             if (bool1)
             {
-              localav.EwI.setTextColor(localav.mContext.getResources().getColor(2131100053));
-              AppMethodBeat.o(202436);
+              localax.KKA.setTextColor(localax.mContext.getResources().getColor(i.c.blue_text_color));
+              AppMethodBeat.o(270203);
               return;
-              str = getString(2131765969);
+              str = getString(i.j.sns_ad_living_subscription);
               bool1 = bool2;
               continue;
               if (i == 2)
               {
-                str = getString(2131765965);
+                str = getString(i.j.sns_ad_living_enter);
                 bool1 = bool2;
                 continue;
               }
@@ -107,187 +109,192 @@ public final class c
               }
               if (paramInt == 3)
               {
-                str = getString(2131765966);
+                str = getString(i.j.sns_ad_living_over);
                 bool1 = bool2;
                 continue;
               }
-              str = getString(2131765968);
+              str = getString(i.j.sns_ad_living_review);
               bool1 = bool2;
               continue;
             }
-            localav.EwI.setTextColor(-7829368);
+            localax.KKA.setTextColor(-7829368);
           }
-          AppMethodBeat.o(202436);
+          AppMethodBeat.o(270203);
           return;
         }
         catch (Throwable localThrowable1) {}
-        AppMethodBeat.o(202436);
+        AppMethodBeat.o(270203);
         return;
       }
       catch (Throwable localThrowable2)
       {
-        break label82;
+        break label83;
       }
     }
   }
   
-  private void eYw()
+  public static boolean afn(int paramInt)
   {
-    AppMethodBeat.i(202435);
-    LivingDescBarLayout localLivingDescBarLayout = this.DAM;
+    return (paramInt & 0x7F) == 2;
+  }
+  
+  private void fMg()
+  {
+    AppMethodBeat.i(270202);
+    LivingDescBarLayout localLivingDescBarLayout = this.JMz;
     if (localLivingDescBarLayout == null)
     {
-      AppMethodBeat.o(202435);
+      AppMethodBeat.o(270202);
       return;
     }
     if (getCount() == 0)
     {
       localLivingDescBarLayout.setVisibility(4);
-      localLivingDescBarLayout.eYt();
-      AppMethodBeat.o(202435);
+      localLivingDescBarLayout.fMd();
+      AppMethodBeat.o(270202);
       return;
     }
     localLivingDescBarLayout.setVisibility(0);
     localLivingDescBarLayout.setSlideAdapter(this);
-    AppMethodBeat.o(202435);
+    AppMethodBeat.o(270202);
   }
   
-  private void eYx()
+  private void fMh()
   {
-    AppMethodBeat.i(202438);
-    Object localObject = this.DAM;
+    AppMethodBeat.i(270205);
+    Object localObject = this.JMz;
     if (localObject != null)
     {
       ((LivingDescBarLayout)localObject).setVisibility(8);
-      ((LivingDescBarLayout)localObject).eYt();
+      ((LivingDescBarLayout)localObject).fMd();
     }
-    localObject = this.DAL;
+    localObject = this.JMy;
     if (localObject != null) {
       ((View)localObject).setVisibility(8);
     }
-    AppMethodBeat.o(202438);
+    AppMethodBeat.o(270205);
   }
   
-  private List<String> eYy()
+  private List<String> fMi()
   {
-    int i = this.DAP;
-    g localg = this.DAN;
+    int i = this.JMC;
+    g localg = this.JMA;
     if (localg != null) {}
     switch (i & 0x7F)
     {
     default: 
       return null;
     case 1: 
-      return localg.DrZ;
+      return localg.Jys;
     case 2: 
-      return localg.Dsa;
+      return localg.Jyt;
     }
-    return localg.Dsb;
+    return localg.Jyu;
   }
   
   private Context getContext()
   {
-    AppMethodBeat.i(202441);
-    Object localObject = this.DAM;
+    AppMethodBeat.i(270208);
+    Object localObject = this.JMz;
     if (localObject != null)
     {
       localObject = ((LivingDescBarLayout)localObject).getContext();
-      AppMethodBeat.o(202441);
+      AppMethodBeat.o(270208);
       return localObject;
     }
-    AppMethodBeat.o(202441);
+    AppMethodBeat.o(270208);
     return null;
   }
   
   private String getString(int paramInt)
   {
-    AppMethodBeat.i(202442);
+    AppMethodBeat.i(270209);
     Object localObject = getContext();
     if (localObject != null)
     {
       localObject = ((Context)localObject).getString(paramInt);
-      AppMethodBeat.o(202442);
+      AppMethodBeat.o(270209);
       return localObject;
     }
-    AppMethodBeat.o(202442);
-    return "";
-  }
-  
-  public final String XW(int paramInt)
-  {
-    AppMethodBeat.i(202440);
-    Object localObject = eYy();
-    if ((localObject != null) && (paramInt >= 0) && (paramInt < ((List)localObject).size()))
-    {
-      localObject = (String)((List)localObject).get(paramInt);
-      AppMethodBeat.o(202440);
-      return localObject;
-    }
-    AppMethodBeat.o(202440);
+    AppMethodBeat.o(270209);
     return "";
   }
   
   public final void a(String paramString, g paramg)
   {
-    this.Dsr = paramString;
-    this.DAN = paramg;
+    this.JyZ = paramString;
+    this.JMA = paramg;
+  }
+  
+  public final String afk(int paramInt)
+  {
+    AppMethodBeat.i(270207);
+    Object localObject = fMi();
+    if ((localObject != null) && (paramInt >= 0) && (paramInt < ((List)localObject).size()))
+    {
+      localObject = (String)((List)localObject).get(paramInt);
+      AppMethodBeat.o(270207);
+      return localObject;
+    }
+    AppMethodBeat.o(270207);
+    return "";
+  }
+  
+  public final void fZ(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(270210);
+    if ((this.JyZ.equals(paramString)) && (this.JMC != paramInt)) {
+      setLiveStatus(paramInt);
+    }
+    AppMethodBeat.o(270210);
   }
   
   protected final void finalize()
   {
-    AppMethodBeat.i(202444);
+    AppMethodBeat.i(270211);
     super.finalize();
     Log.d("SnsAd.LivingStatusController", "the SnsAdLivingStatusController is going to be gc:  ".concat(String.valueOf(this)));
-    AppMethodBeat.o(202444);
-  }
-  
-  public final void fw(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(202443);
-    if ((this.Dsr.equals(paramString)) && (this.DAP != paramInt)) {
-      setLiveStatus(paramInt);
-    }
-    AppMethodBeat.o(202443);
+    AppMethodBeat.o(270211);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(202439);
-    List localList = eYy();
+    AppMethodBeat.i(270206);
+    List localList = fMi();
     if (localList != null)
     {
       int i = localList.size();
-      AppMethodBeat.o(202439);
+      AppMethodBeat.o(270206);
       return i;
     }
-    AppMethodBeat.o(202439);
+    AppMethodBeat.o(270206);
     return 0;
   }
   
   public final void setLiveStatus(int paramInt)
   {
     int i = 0;
-    AppMethodBeat.i(202437);
-    if (paramInt == this.DAP)
+    AppMethodBeat.i(270204);
+    if (paramInt == this.JMC)
     {
       if (paramInt == 0)
       {
-        eYx();
-        AppMethodBeat.o(202437);
+        fMh();
+        AppMethodBeat.o(270204);
         return;
       }
-      XX(paramInt);
-      XY(paramInt);
-      Object localObject = this.DAM;
+      afl(paramInt);
+      afm(paramInt);
+      Object localObject = this.JMz;
       if (localObject != null)
       {
-        localObject = ((LivingDescBarLayout)localObject).DAz;
+        localObject = ((LivingDescBarLayout)localObject).JMm;
         paramInt = i;
         if (localObject != null) {
-          if (((LivingDescBarLayout.a)localObject).DAD != null)
+          if (((LivingDescBarLayout.a)localObject).JMq != null)
           {
             paramInt = i;
-            if (((LivingDescBarLayout.a)localObject).DAD.getCount() > 0) {}
+            if (((LivingDescBarLayout.a)localObject).JMq.getCount() > 0) {}
           }
           else
           {
@@ -295,28 +302,28 @@ public final class c
           }
         }
         if (paramInt != 0) {
-          eYw();
+          fMg();
         }
       }
-      AppMethodBeat.o(202437);
+      AppMethodBeat.o(270204);
       return;
     }
-    this.DAP = paramInt;
+    this.JMC = paramInt;
     if (paramInt == 0)
     {
-      eYx();
-      AppMethodBeat.o(202437);
+      fMh();
+      AppMethodBeat.o(270204);
       return;
     }
-    XX(paramInt);
-    XY(paramInt);
-    eYw();
-    AppMethodBeat.o(202437);
+    afl(paramInt);
+    afm(paramInt);
+    fMg();
+    AppMethodBeat.o(270204);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.living.c
  * JD-Core Version:    0.7.0.1
  */

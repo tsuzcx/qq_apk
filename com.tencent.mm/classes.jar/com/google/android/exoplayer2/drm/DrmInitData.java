@@ -15,9 +15,9 @@ public final class DrmInitData
   implements Parcelable, Comparator<SchemeData>
 {
   public static final Parcelable.Creator<DrmInitData> CREATOR;
-  private int aHK;
-  public final SchemeData[] bhB;
-  public final int bhC;
+  private int aNf;
+  public final SchemeData[] aRg;
+  public final int aRh;
   
   static
   {
@@ -29,8 +29,8 @@ public final class DrmInitData
   DrmInitData(Parcel paramParcel)
   {
     AppMethodBeat.i(91876);
-    this.bhB = ((SchemeData[])paramParcel.createTypedArray(SchemeData.CREATOR));
-    this.bhC = this.bhB.length;
+    this.aRg = ((SchemeData[])paramParcel.createTypedArray(SchemeData.CREATOR));
+    this.aRh = this.aRg.length;
     AppMethodBeat.o(91876);
   }
   
@@ -61,8 +61,8 @@ public final class DrmInitData
         }
         i += 1;
       }
-      this.bhB = paramVarArgs;
-      this.bhC = paramVarArgs.length;
+      this.aRg = paramVarArgs;
+      this.aRh = paramVarArgs.length;
       AppMethodBeat.o(91875);
       return;
     }
@@ -73,26 +73,26 @@ public final class DrmInitData
     this(true, paramVarArgs);
   }
   
-  public final DrmInitData bg(String paramString)
+  public final DrmInitData br(String paramString)
   {
     AppMethodBeat.i(91877);
-    Object localObject = this.bhB;
+    Object localObject = this.aRg;
     int j = localObject.length;
     int i = 0;
     if (i < j) {
-      if (x.j(localObject[i].type, paramString)) {}
+      if (x.h(localObject[i].type, paramString)) {}
     }
     for (i = 1;; i = 0)
     {
       if (i != 0)
       {
-        SchemeData[] arrayOfSchemeData = new SchemeData[this.bhB.length];
+        SchemeData[] arrayOfSchemeData = new SchemeData[this.aRg.length];
         i = 0;
         label54:
         if (i < arrayOfSchemeData.length)
         {
-          localObject = this.bhB[i];
-          if (x.j(((SchemeData)localObject).type, paramString)) {}
+          localObject = this.aRg[i];
+          if (x.h(((SchemeData)localObject).type, paramString)) {}
           for (;;)
           {
             arrayOfSchemeData[i] = localObject;
@@ -100,7 +100,7 @@ public final class DrmInitData
             break label54;
             i += 1;
             break;
-            localObject = new SchemeData(((SchemeData)localObject).uuid, paramString, ((SchemeData)localObject).mimeType, ((SchemeData)localObject).data, ((SchemeData)localObject).bhD);
+            localObject = new SchemeData(((SchemeData)localObject).aRi, paramString, ((SchemeData)localObject).mimeType, ((SchemeData)localObject).data, ((SchemeData)localObject).aRj);
           }
         }
         paramString = new DrmInitData(arrayOfSchemeData);
@@ -130,7 +130,7 @@ public final class DrmInitData
       AppMethodBeat.o(91879);
       return false;
     }
-    boolean bool = Arrays.equals(this.bhB, ((DrmInitData)paramObject).bhB);
+    boolean bool = Arrays.equals(this.aRg, ((DrmInitData)paramObject).aRg);
     AppMethodBeat.o(91879);
     return bool;
   }
@@ -138,10 +138,10 @@ public final class DrmInitData
   public final int hashCode()
   {
     AppMethodBeat.i(91878);
-    if (this.aHK == 0) {
-      this.aHK = Arrays.hashCode(this.bhB);
+    if (this.aNf == 0) {
+      this.aNf = Arrays.hashCode(this.aRg);
     }
-    int i = this.aHK;
+    int i = this.aNf;
     AppMethodBeat.o(91878);
     return i;
   }
@@ -149,7 +149,7 @@ public final class DrmInitData
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(91880);
-    paramParcel.writeTypedArray(this.bhB, 0);
+    paramParcel.writeTypedArray(this.aRg, 0);
     AppMethodBeat.o(91880);
   }
   
@@ -157,12 +157,12 @@ public final class DrmInitData
     implements Parcelable
   {
     public static final Parcelable.Creator<SchemeData> CREATOR;
-    private int aHK;
-    public final boolean bhD;
+    private int aNf;
+    final UUID aRi;
+    public final boolean aRj;
     public final byte[] data;
     public final String mimeType;
     public final String type;
-    final UUID uuid;
     
     static
     {
@@ -174,14 +174,14 @@ public final class DrmInitData
     SchemeData(Parcel paramParcel)
     {
       AppMethodBeat.i(91869);
-      this.uuid = new UUID(paramParcel.readLong(), paramParcel.readLong());
+      this.aRi = new UUID(paramParcel.readLong(), paramParcel.readLong());
       this.type = paramParcel.readString();
       this.mimeType = paramParcel.readString();
       this.data = paramParcel.createByteArray();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.bhD = bool;
+        this.aRj = bool;
         AppMethodBeat.o(91869);
         return;
       }
@@ -190,11 +190,11 @@ public final class DrmInitData
     public SchemeData(UUID paramUUID, String paramString1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean)
     {
       AppMethodBeat.i(91868);
-      this.uuid = ((UUID)a.checkNotNull(paramUUID));
+      this.aRi = ((UUID)a.checkNotNull(paramUUID));
       this.type = paramString1;
       this.mimeType = ((String)a.checkNotNull(paramString2));
       this.data = ((byte[])a.checkNotNull(paramArrayOfByte));
-      this.bhD = paramBoolean;
+      this.aRj = paramBoolean;
       AppMethodBeat.o(91868);
     }
     
@@ -222,7 +222,7 @@ public final class DrmInitData
         return true;
       }
       paramObject = (SchemeData)paramObject;
-      if ((this.mimeType.equals(paramObject.mimeType)) && (x.j(this.uuid, paramObject.uuid)) && (x.j(this.type, paramObject.type)) && (Arrays.equals(this.data, paramObject.data)))
+      if ((this.mimeType.equals(paramObject.mimeType)) && (x.h(this.aRi, paramObject.aRi)) && (x.h(this.type, paramObject.type)) && (Arrays.equals(this.data, paramObject.data)))
       {
         AppMethodBeat.o(91870);
         return true;
@@ -235,9 +235,9 @@ public final class DrmInitData
     {
       AppMethodBeat.i(91871);
       int j;
-      if (this.aHK == 0)
+      if (this.aNf == 0)
       {
-        j = this.uuid.hashCode();
+        j = this.aRi.hashCode();
         if (this.type != null) {
           break label73;
         }
@@ -245,8 +245,8 @@ public final class DrmInitData
       label73:
       for (int i = 0;; i = this.type.hashCode())
       {
-        this.aHK = (((i + j * 31) * 31 + this.mimeType.hashCode()) * 31 + Arrays.hashCode(this.data));
-        i = this.aHK;
+        this.aNf = (((i + j * 31) * 31 + this.mimeType.hashCode()) * 31 + Arrays.hashCode(this.data));
+        i = this.aNf;
         AppMethodBeat.o(91871);
         return i;
       }
@@ -255,12 +255,12 @@ public final class DrmInitData
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(91872);
-      paramParcel.writeLong(this.uuid.getMostSignificantBits());
-      paramParcel.writeLong(this.uuid.getLeastSignificantBits());
+      paramParcel.writeLong(this.aRi.getMostSignificantBits());
+      paramParcel.writeLong(this.aRi.getLeastSignificantBits());
       paramParcel.writeString(this.type);
       paramParcel.writeString(this.mimeType);
       paramParcel.writeByteArray(this.data);
-      if (this.bhD) {}
+      if (this.aRj) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeByte((byte)paramInt);
@@ -272,7 +272,7 @@ public final class DrmInitData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.drm.DrmInitData
  * JD-Core Version:    0.7.0.1
  */

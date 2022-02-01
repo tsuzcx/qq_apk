@@ -8,35 +8,35 @@ import java.util.List;
 final class b
 {
   private volatile int count;
-  private final LinkedList<Runnable> ngK;
+  private final LinkedList<Runnable> qhu;
   
   b()
   {
     AppMethodBeat.i(147340);
-    this.ngK = new LinkedList();
+    this.qhu = new LinkedList();
     this.count = 2;
     AppMethodBeat.o(147340);
   }
   
-  public final void ad(Runnable paramRunnable)
+  public final void ag(Runnable paramRunnable)
   {
     AppMethodBeat.i(147341);
     Object localObject = null;
     if (paramRunnable != null) {}
     try
     {
-      this.ngK.addLast(paramRunnable);
+      this.qhu.addLast(paramRunnable);
       int i = this.count - 1;
       this.count = i;
       paramRunnable = localObject;
       if (i <= 0)
       {
         paramRunnable = localObject;
-        if (this.ngK.size() > 0)
+        if (this.qhu.size() > 0)
         {
           paramRunnable = new LinkedList();
-          paramRunnable.addAll(this.ngK);
-          this.ngK.clear();
+          paramRunnable.addAll(this.qhu);
+          this.qhu.clear();
         }
       }
       if (paramRunnable != null)

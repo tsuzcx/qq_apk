@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class d
   extends h
 {
-  private final String string;
+  private final String aJg;
   
   d(String paramString)
   {
@@ -16,14 +16,14 @@ final class d
       AppMethodBeat.o(74710);
       throw paramString;
     }
-    this.string = paramString;
+    this.aJg = paramString;
     AppMethodBeat.o(74710);
   }
   
   final void a(i parami)
   {
     AppMethodBeat.i(74711);
-    parami.aY(this.string);
+    parami.bj(this.aJg);
     AppMethodBeat.o(74711);
   }
   
@@ -46,7 +46,7 @@ final class d
       return false;
     }
     paramObject = (d)paramObject;
-    boolean bool = this.string.equals(paramObject.string);
+    boolean bool = this.aJg.equals(paramObject.aJg);
     AppMethodBeat.o(74716);
     return bool;
   }
@@ -54,7 +54,7 @@ final class d
   public final int hashCode()
   {
     AppMethodBeat.i(74715);
-    int i = this.string.hashCode();
+    int i = this.aJg.hashCode();
     AppMethodBeat.o(74715);
     return i;
   }
@@ -64,38 +64,38 @@ final class d
     return true;
   }
   
-  public final int sf()
+  public final int pT()
   {
     AppMethodBeat.i(74712);
-    int i = Integer.parseInt(this.string, 10);
+    int i = Integer.parseInt(this.aJg, 10);
     AppMethodBeat.o(74712);
     return i;
   }
   
-  public final long sg()
+  public final long pU()
   {
     AppMethodBeat.i(74713);
-    long l = Long.parseLong(this.string, 10);
+    long l = Long.parseLong(this.aJg, 10);
     AppMethodBeat.o(74713);
     return l;
   }
   
-  public final double sh()
+  public final double pV()
   {
     AppMethodBeat.i(74714);
-    double d = Double.parseDouble(this.string);
+    double d = Double.parseDouble(this.aJg);
     AppMethodBeat.o(74714);
     return d;
   }
   
   public final String toString()
   {
-    return this.string;
+    return this.aJg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.eclipsesource.a.d
  * JD-Core Version:    0.7.0.1
  */

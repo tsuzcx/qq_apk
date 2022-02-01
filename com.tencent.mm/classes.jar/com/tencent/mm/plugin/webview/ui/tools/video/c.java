@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.webview.ui.tools.video;
 
 public class c
 {
-  public void Na() {}
+  public void PS() {}
   
-  public void bDq() {}
+  public void bOO() {}
 }
 
 

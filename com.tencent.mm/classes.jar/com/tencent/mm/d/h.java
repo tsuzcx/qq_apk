@@ -7,7 +7,7 @@ import java.io.RandomAccessFile;
 
 public final class h
 {
-  public static int a(String paramString1, String paramString2, String paramString3, String paramString4)
+  public static int b(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(966);
     if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null))
@@ -30,10 +30,10 @@ public final class h
           AppMethodBeat.o(966);
           return -1;
         }
-        paramString1 = a.fO(paramString1);
-        if ((paramString1 != null) && (paramString1.dje != null))
+        paramString1 = a.gy(paramString1);
+        if ((paramString1 != null) && (paramString1.faL != null))
         {
-          i = paramString1.dje.djh + 8;
+          i = paramString1.faL.faO + 8;
           System.out.println("MicroMsg.MergePatchApk:extLen = ".concat(String.valueOf(i)));
           if (d.a(localRandomAccessFile, localFile1, paramString2, i) != 1)
           {
@@ -51,7 +51,7 @@ public final class h
           }
           paramString1 = new b();
           paramString1.apkMd5 = paramString4;
-          new a(paramString1).A(localFile1);
+          new a(paramString1).t(localFile1);
           AppMethodBeat.o(966);
           return 0;
         }
@@ -68,7 +68,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.d.h
  * JD-Core Version:    0.7.0.1
  */

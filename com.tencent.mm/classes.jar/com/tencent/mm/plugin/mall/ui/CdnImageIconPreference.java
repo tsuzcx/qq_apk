@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.IconPreference;
@@ -13,8 +15,8 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class CdnImageIconPreference
   extends IconPreference
 {
+  private CdnImageView EPf;
   String iconUrl;
-  private CdnImageView zjO;
   
   public CdnImageIconPreference(Context paramContext)
   {
@@ -35,12 +37,12 @@ public class CdnImageIconPreference
   {
     AppMethodBeat.i(66029);
     super.onBindView(paramView);
-    this.zjO = ((CdnImageView)paramView.findViewById(2131302573));
+    this.EPf = ((CdnImageView)paramView.findViewById(a.f.image_iv));
     if (!Util.isNullOrNil(this.iconUrl))
     {
-      this.zjO.setUseSdcardCache(true);
-      this.zjO.setUrl(this.iconUrl);
-      this.zjO.setVisibility(0);
+      this.EPf.setUseSdcardCache(true);
+      this.EPf.setUrl(this.iconUrl);
+      this.EPf.setVisibility(0);
     }
     AppMethodBeat.o(66029);
   }
@@ -49,16 +51,16 @@ public class CdnImageIconPreference
   {
     AppMethodBeat.i(66028);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.f.content);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2131493458, localViewGroup);
+    View.inflate(this.mContext, a.g.cdn_preference_content_icon, localViewGroup);
     AppMethodBeat.o(66028);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.ui.CdnImageIconPreference
  * JD-Core Version:    0.7.0.1
  */

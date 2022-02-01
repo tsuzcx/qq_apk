@@ -14,7 +14,7 @@ public class e
     AppMethodBeat.o(163990);
   }
   
-  protected final JsApiShareAppMessageBase.d bIJ()
+  protected final JsApiShareAppMessageBase.d bUr()
   {
     AppMethodBeat.i(174909);
     JsApiShareAppMessageBase.d locald = new JsApiShareAppMessageBase.d();
@@ -24,7 +24,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.e
  * JD-Core Version:    0.7.0.1
  */

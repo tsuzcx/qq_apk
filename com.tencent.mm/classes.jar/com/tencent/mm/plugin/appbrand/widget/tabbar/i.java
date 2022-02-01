@@ -3,25 +3,24 @@ package com.tencent.mm.plugin.appbrand.widget.tabbar;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.q;
-import com.tencent.mm.plugin.appbrand.s;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.vfs.q;
 
 public final class i
   extends d
 {
-  public i(String paramString, c paramc, s params)
+  public i(String paramString, c paramc, v paramv)
   {
-    super(paramString, paramc, params);
+    super(paramString, paramc, paramv);
   }
   
-  public final void cdf()
+  public final void cqr()
   {
     AppMethodBeat.i(135550);
-    if ((this.kGT.getFileSystem() != null) && (this.oFe != null))
+    if ((this.nAz.getFileSystem() != null) && (this.rGO != null))
     {
-      com.tencent.f.h.RTc.aX(new com.tencent.f.i.h()
+      com.tencent.e.h.ZvG.be(new com.tencent.e.i.h()
       {
         public final String getKey()
         {
@@ -31,34 +30,34 @@ public final class i
         public final void run()
         {
           AppMethodBeat.i(135549);
-          Object localObject = i.this.kGT.getFileSystem().VY(i.this.oFe);
+          Object localObject = i.this.nAz.getFileSystem().adL(i.this.rGO);
           if (localObject == null)
           {
-            i.this.oFf.a("Failed to load icon via temp file", i.this);
+            i.this.rGP.a("Failed to load icon via temp file", i.this);
             AppMethodBeat.o(135549);
             return;
           }
-          localObject = BitmapFactory.decodeFile(aa.z(((o)localObject).mUri));
+          localObject = BitmapFactory.decodeFile(((q)localObject).getPath());
           if (localObject != null)
           {
-            i.this.X((Bitmap)localObject);
+            i.this.V((Bitmap)localObject);
             AppMethodBeat.o(135549);
             return;
           }
-          i.this.oFf.a("Failed to load icon via temp file", i.this);
+          i.this.rGP.a("Failed to load icon via temp file", i.this);
           AppMethodBeat.o(135549);
         }
       });
       AppMethodBeat.o(135550);
       return;
     }
-    this.oFf.a("Failed to load icon via temp file", this);
+    this.rGP.a("Failed to load icon via temp file", this);
     AppMethodBeat.o(135550);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.tabbar.i
  * JD-Core Version:    0.7.0.1
  */

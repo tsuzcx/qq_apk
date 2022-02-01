@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.card.sharecard.model;
 
 public final class i
 {
-  public String pRX = "";
-  public int pVV = 0;
+  public int item_index = 0;
+  public String tnX = "";
 }
 
 

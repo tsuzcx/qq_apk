@@ -5,29 +5,29 @@ import com.google.android.exoplayer2.source.q;
 
 public abstract interface f
 {
-  public abstract void af(long paramLong);
+  public abstract void ai(long paramLong);
   
-  public abstract Format eU(int paramInt);
+  public abstract Format fm(int paramInt);
   
-  public abstract int eV(int paramInt);
+  public abstract int fn(int paramInt);
+  
+  public abstract int fo(int paramInt);
   
   public abstract int getSelectedIndex();
-  
-  public abstract int indexOf(int paramInt);
   
   public abstract boolean k(int paramInt, long paramLong);
   
   public abstract int length();
   
-  public abstract int vP();
+  public abstract int tN();
   
-  public abstract Object vQ();
+  public abstract Object tO();
   
-  public abstract int wA();
+  public abstract Format uA();
   
-  public abstract q wy();
+  public abstract int uB();
   
-  public abstract Format wz();
+  public abstract q uz();
   
   public static abstract interface a
   {
@@ -36,7 +36,7 @@ public abstract interface f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.g.f
  * JD-Core Version:    0.7.0.1
  */

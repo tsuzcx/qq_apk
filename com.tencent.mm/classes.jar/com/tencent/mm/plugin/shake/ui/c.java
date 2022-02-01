@@ -18,7 +18,7 @@ final class c
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(28377);
-        c.this.eUS();
+        c.this.fHT();
         AppMethodBeat.o(28377);
         return false;
       }
@@ -27,7 +27,7 @@ final class c
     AppMethodBeat.o(28378);
   }
   
-  public final void eUS()
+  public final void fHT()
   {
     AppMethodBeat.i(28379);
     if (this.view != null) {
@@ -38,7 +38,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.c
  * JD-Core Version:    0.7.0.1
  */

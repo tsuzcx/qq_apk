@@ -3,22 +3,24 @@ package com.tencent.mm.plugin.gallery.ui;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.davemorrissey.labs.subscaleview.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.graphics.a.b;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
-import com.tencent.mm.plugin.gallery.model.t;
 import com.tencent.mm.plugin.gallery.model.t.a;
+import com.tencent.mm.plugin.thumbplayer.view.ThumbPlayerVideoView;
 import com.tencent.mm.sdk.platformtools.ForceGpuUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import com.tencent.mm.ui.base.WxImageView;
-import com.tencent.mm.ui.base.v;
+import com.tencent.mm.ui.base.x;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,40 +29,50 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 
 public final class d
-  extends v
+  extends x
 {
-  int bNu;
-  private Bitmap dku;
-  int eeE;
-  private HashMap<String, WeakReference<b>> kwA;
-  Context mContext;
-  ArrayList<GalleryItem.MediaItem> xno;
-  boolean xpA;
-  HashSet<String> xpB;
-  View xpC;
-  boolean xpD;
-  private boolean xpE;
-  public f xpF;
-  public e xpG;
-  ArrayList<String> xpz;
+  ArrayList<GalleryItem.MediaItem> BZG;
+  ArrayList<String> CbT;
+  boolean CbU;
+  private HashSet<String> CbV;
+  View CbW;
+  boolean CbX;
+  private boolean CbY;
+  public f CbZ;
+  public e Cca;
+  int bPt;
+  private final Handler cQo;
+  int fYT;
+  private Bitmap fcd;
+  private Context mContext;
+  private HashMap<String, WeakReference<b>> noN;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(111516);
-    this.xpz = new ArrayList();
-    this.xno = new ArrayList();
-    this.xpB = new HashSet();
-    this.eeE = -1;
-    this.xpC = null;
-    this.xpD = false;
-    this.xpE = true;
-    this.bNu = -1;
-    this.dku = null;
-    this.kwA = new HashMap();
-    this.xpF = new f(this);
-    this.xpG = new e(this);
+    this.CbT = new ArrayList();
+    this.BZG = new ArrayList();
+    this.CbV = new HashSet();
+    this.fYT = -1;
+    this.CbW = null;
+    this.CbX = false;
+    this.CbY = true;
+    this.bPt = -1;
+    this.cQo = new d.3(this, Looper.getMainLooper());
+    this.fcd = null;
+    this.noN = new HashMap();
+    this.CbZ = new f(this);
+    this.Cca = new e(this);
     this.mContext = paramContext;
     AppMethodBeat.o(111516);
+  }
+  
+  private void a(b paramb)
+  {
+    AppMethodBeat.i(241000);
+    paramb = this.cQo.obtainMessage(1, paramb);
+    this.cQo.sendMessageDelayed(paramb, 500L);
+    AppMethodBeat.o(241000);
   }
   
   @TargetApi(11)
@@ -68,21 +80,42 @@ public final class d
   {
     AppMethodBeat.i(111526);
     Log.i("MicroMsg.ImageAdapter", "showImage, trace: %s.", new Object[] { Util.getStack() });
-    paramb.xpN.setVisibility(0);
-    paramb.xpO.setVisibility(4);
-    paramb.xpN.setMaxZoomLimit(4.5F);
-    paramb.xpN.setEnableHorLongBmpMode(false);
-    ForceGpuUtil.decideLayerType(paramb.xpN, paramBitmap.getWidth(), paramBitmap.getHeight());
-    paramb.xpN.cN(paramBitmap.getWidth(), paramBitmap.getHeight());
-    paramb.xpN.setImageBitmap(paramBitmap);
-    paramb.xpN.requestLayout();
+    paramb.Cci.setVisibility(0);
+    paramb.Ccj.setVisibility(4);
+    paramb.Cci.setMaxZoomLimit(4.5F);
+    paramb.Cci.setEnableHorLongBmpMode(false);
+    ForceGpuUtil.decideLayerType(paramb.Cci, paramBitmap.getWidth(), paramBitmap.getHeight());
+    paramb.Cci.di(paramBitmap.getWidth(), paramBitmap.getHeight());
+    paramb.Cci.setImageBitmap(paramBitmap);
+    paramb.Cci.requestLayout();
     AppMethodBeat.o(111526);
   }
   
-  public final MultiTouchImageView NQ(int paramInt)
+  public static Bitmap aIz(String paramString)
+  {
+    AppMethodBeat.i(241003);
+    long l = Util.currentTicks();
+    Bitmap localBitmap = com.tencent.mm.plugin.sns.data.t.aZl(paramString);
+    Log.v("MicroMsg.ImageAdapter", "test decode: %d filePath:%s", new Object[] { Long.valueOf(Util.ticksToNow(l)), paramString });
+    AppMethodBeat.o(241003);
+    return localBitmap;
+  }
+  
+  private void b(b paramb)
+  {
+    AppMethodBeat.i(241002);
+    paramb.Ccl.setVisibility(8);
+    paramb.wSa.setVisibility(0);
+    paramb.Ccj.setVisibility(0);
+    paramb.Cci.setVisibility(0);
+    this.cQo.removeMessages(1);
+    AppMethodBeat.o(241002);
+  }
+  
+  public final MultiTouchImageView Tf(int paramInt)
   {
     AppMethodBeat.i(111521);
-    Object localObject = super.abm(paramInt);
+    Object localObject = super.aiI(paramInt);
     if (localObject == null)
     {
       Log.e("MicroMsg.ImageAdapter", "position : %d getMultiTouchImageViewByPosition view is null.", new Object[] { Integer.valueOf(paramInt) });
@@ -96,20 +129,20 @@ public final class d
       AppMethodBeat.o(111521);
       return null;
     }
-    if (((b)localObject).xpN.getVisibility() == 8)
+    if (((b)localObject).Cci.getVisibility() == 8)
     {
       AppMethodBeat.o(111521);
       return null;
     }
-    localObject = ((b)localObject).xpN;
+    localObject = ((b)localObject).Cci;
     AppMethodBeat.o(111521);
     return localObject;
   }
   
-  public final WxImageView NR(int paramInt)
+  public final WxImageView Tg(int paramInt)
   {
     AppMethodBeat.i(111522);
-    Object localObject = super.abm(paramInt);
+    Object localObject = super.aiI(paramInt);
     if (localObject == null)
     {
       Log.e("MicroMsg.ImageAdapter", "position : %d getWxImageViewByPosition view is null.", new Object[] { Integer.valueOf(paramInt) });
@@ -123,49 +156,49 @@ public final class d
       AppMethodBeat.o(111522);
       return null;
     }
-    if (((b)localObject).xpO.getVisibility() == 8)
+    if (((b)localObject).Ccj.getVisibility() == 8)
     {
       AppMethodBeat.o(111522);
       return null;
     }
-    localObject = ((b)localObject).xpO;
+    localObject = ((b)localObject).Ccj;
     AppMethodBeat.o(111522);
     return localObject;
   }
   
-  public final GalleryItem.MediaItem NS(int paramInt)
+  public final GalleryItem.MediaItem Th(int paramInt)
   {
     AppMethodBeat.i(111524);
-    if (this.xpA)
+    if (this.CbU)
     {
-      if ((paramInt < 0) || (paramInt >= this.xno.size()))
+      if ((paramInt < 0) || (paramInt >= this.BZG.size()))
       {
-        Log.w("MicroMsg.ImageAdapter", "error position %d mediaitems size", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.xno.size()) });
+        Log.w("MicroMsg.ImageAdapter", "error position %d mediaitems size", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.BZG.size()) });
         AppMethodBeat.o(111524);
         return null;
       }
-      localObject = (GalleryItem.MediaItem)this.xno.get(paramInt);
+      localObject = (GalleryItem.MediaItem)this.BZG.get(paramInt);
       AppMethodBeat.o(111524);
       return localObject;
     }
-    if ((paramInt < 0) || (paramInt >= this.xpz.size()))
+    if ((paramInt < 0) || (paramInt >= this.CbT.size()))
     {
-      Log.w("MicroMsg.ImageAdapter", "error position %d, imagePaths size %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.xpz.size()) });
+      Log.w("MicroMsg.ImageAdapter", "error position %d, imagePaths size %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.CbT.size()) });
       AppMethodBeat.o(111524);
       return null;
     }
-    Object localObject = (String)this.xpz.get(paramInt);
+    Object localObject = (String)this.CbT.get(paramInt);
     GalleryItem.MediaItem localMediaItem2 = GalleryItem.MediaItem.a(0, 0L, (String)localObject, (String)localObject, "");
-    if (com.tencent.mm.plugin.gallery.model.e.dQM() != null)
+    if (com.tencent.mm.plugin.gallery.model.e.etn() != null)
     {
-      paramInt = com.tencent.mm.plugin.gallery.model.e.dQM().indexOf(localMediaItem2);
+      paramInt = com.tencent.mm.plugin.gallery.model.e.etn().indexOf(localMediaItem2);
       if (paramInt < 0) {}
     }
-    for (localObject = (GalleryItem.MediaItem)com.tencent.mm.plugin.gallery.model.e.dQM().get(paramInt);; localObject = null)
+    for (localObject = (GalleryItem.MediaItem)com.tencent.mm.plugin.gallery.model.e.etn().get(paramInt);; localObject = null)
     {
-      if ((localObject == null) && (!com.tencent.mm.plugin.gallery.model.e.dQP().isEmpty()))
+      if ((localObject == null) && (!com.tencent.mm.plugin.gallery.model.e.etq().isEmpty()))
       {
-        Iterator localIterator = com.tencent.mm.plugin.gallery.model.e.dQP().iterator();
+        Iterator localIterator = com.tencent.mm.plugin.gallery.model.e.etq().iterator();
         while (localIterator.hasNext())
         {
           GalleryItem.MediaItem localMediaItem1 = (GalleryItem.MediaItem)localIterator.next();
@@ -185,46 +218,27 @@ public final class d
   public final void a(MultiTouchImageView paramMultiTouchImageView, String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(111525);
-    this.xpB.remove(paramString);
+    Log.i("MicroMsg.ImageAdapter", "onImageGalleryLoaded, bigImgPath: %s, bitmap: %s.", new Object[] { paramString, paramBitmap });
+    this.CbV.remove(paramString);
     if (paramMultiTouchImageView != null)
     {
       paramMultiTouchImageView = (b)paramMultiTouchImageView.getTag();
-      if (paramMultiTouchImageView != null) {
-        if (paramBitmap != null)
-        {
+      if (paramMultiTouchImageView != null)
+      {
+        Log.i("MicroMsg.ImageAdapter", "onImageGalleryLoaded, viewHolder.isImg: %s.", new Object[] { Boolean.valueOf(paramMultiTouchImageView.Cch) });
+        if (paramBitmap != null) {
           a(paramMultiTouchImageView, paramBitmap);
-          if (paramMultiTouchImageView.xpQ != null)
-          {
-            paramMultiTouchImageView.xpQ.setText("");
-            paramMultiTouchImageView.xpQ.setVisibility(8);
-            AppMethodBeat.o(111525);
-          }
-        }
-        else
-        {
-          if ((paramMultiTouchImageView.xpM) && (paramMultiTouchImageView.xpQ != null))
-          {
-            paramMultiTouchImageView.xpQ.setText(paramString);
-            paramMultiTouchImageView.xpQ.setVisibility(0);
-            AppMethodBeat.o(111525);
-            return;
-          }
-          if (paramMultiTouchImageView.xpQ != null)
-          {
-            paramMultiTouchImageView.xpQ.setText("");
-            paramMultiTouchImageView.xpQ.setVisibility(8);
-          }
         }
       }
     }
     AppMethodBeat.o(111525);
   }
   
-  public final void as(ArrayList<String> paramArrayList)
+  public final void ay(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(111519);
-    this.xpz.clear();
-    this.xpz.addAll(paramArrayList);
+    this.CbT.clear();
+    this.CbT.addAll(paramArrayList);
     reset();
     notifyDataSetChanged();
     AppMethodBeat.o(111519);
@@ -233,7 +247,7 @@ public final class d
   public final void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     AppMethodBeat.i(111518);
-    if (!this.xpA)
+    if (!this.CbU)
     {
       if (paramObject == null)
       {
@@ -241,10 +255,10 @@ public final class d
         AppMethodBeat.o(111518);
         return;
       }
-      if (this.xpC != null) {
-        Log.i("MicroMsg.ImageAdapter", "[destroyItem] position:%s object:%s lastVisibleView:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramObject.hashCode()), Integer.valueOf(this.xpC.hashCode()) });
+      if (this.CbW != null) {
+        Log.i("MicroMsg.ImageAdapter", "[destroyItem] position:%s object:%s lastVisibleView:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramObject.hashCode()), Integer.valueOf(this.CbW.hashCode()) });
       }
-      if ((paramObject != this.xpC) || (!this.xpD))
+      if ((paramObject != this.CbW) || (!this.CbX))
       {
         super.destroyItem(paramViewGroup, paramInt, paramObject);
         paramViewGroup.removeView((View)paramObject);
@@ -263,21 +277,22 @@ public final class d
   public final void detach()
   {
     AppMethodBeat.i(111528);
+    stopAll();
     super.detach();
-    this.xpG.detach();
+    this.Cca.detach();
     AppMethodBeat.o(111528);
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(111520);
-    if (this.xpA)
+    if (this.CbU)
     {
-      i = this.xno.size();
+      i = this.BZG.size();
       AppMethodBeat.o(111520);
       return i;
     }
-    int i = this.xpz.size();
+    int i = this.CbT.size();
     AppMethodBeat.o(111520);
     return i;
   }
@@ -285,25 +300,25 @@ public final class d
   public final String getItem(int paramInt)
   {
     AppMethodBeat.i(111523);
-    if (this.xpA)
+    if (this.CbU)
     {
-      if ((paramInt < 0) || (paramInt >= this.xno.size()))
+      if ((paramInt < 0) || (paramInt >= this.BZG.size()))
       {
-        Log.w("MicroMsg.ImageAdapter", "error position %d, mediaitems size %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.xno.size()) });
+        Log.w("MicroMsg.ImageAdapter", "error position %d, mediaitems size %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.BZG.size()) });
         AppMethodBeat.o(111523);
         return "";
       }
-      str = ((GalleryItem.MediaItem)this.xno.get(paramInt)).xiW;
+      str = ((GalleryItem.MediaItem)this.BZG.get(paramInt)).AAz;
       AppMethodBeat.o(111523);
       return str;
     }
-    if ((paramInt < 0) || (paramInt >= this.xpz.size()))
+    if ((paramInt < 0) || (paramInt >= this.CbT.size()))
     {
-      Log.w("MicroMsg.ImageAdapter", "error position %d, imagePaths size %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.xpz.size()) });
+      Log.w("MicroMsg.ImageAdapter", "error position %d, imagePaths size %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.CbT.size()) });
       AppMethodBeat.o(111523);
       return "";
     }
-    String str = (String)this.xpz.get(paramInt);
+    String str = (String)this.CbT.get(paramInt);
     AppMethodBeat.o(111523);
     return str;
   }
@@ -311,17 +326,17 @@ public final class d
   public final Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
     AppMethodBeat.i(111517);
-    if (!this.xpA)
+    if (!this.CbU)
     {
-      Log.i("MicroMsg.ImageAdapter", "[instantiateItem] position:%s %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.eeE) });
-      if ((paramInt == this.eeE) && (this.xpD))
+      Log.i("MicroMsg.ImageAdapter", "[instantiateItem] position:%s %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.fYT) });
+      if ((paramInt == this.fYT) && (this.CbX))
       {
         Log.d("MicroMsg.ImageAdapter", "[isSwap-instantiateItem]");
-        this.OUz.put(this.xpC, Integer.valueOf(this.eeE));
-        this.OUA.put(this.eeE, this.xpC);
-        this.eeE = -1;
-        this.xpD = false;
-        paramViewGroup = this.xpC;
+        this.WnM.put(this.CbW, Integer.valueOf(this.fYT));
+        this.WnN.put(this.fYT, this.CbW);
+        this.fYT = -1;
+        this.CbX = false;
+        paramViewGroup = this.CbW;
         AppMethodBeat.o(111517);
         return paramViewGroup;
       }
@@ -338,24 +353,48 @@ public final class d
   {
     AppMethodBeat.i(111527);
     detach();
-    this.kwA.clear();
-    this.xpB.clear();
+    this.noN.clear();
+    this.CbV.clear();
     AppMethodBeat.o(111527);
+  }
+  
+  public final void stopAll()
+  {
+    AppMethodBeat.i(241006);
+    Log.w("MicroMsg.ImageAdapter", "stop all video");
+    SparseArray localSparseArray = this.WnN;
+    int i = 0;
+    while (i < localSparseArray.size())
+    {
+      Object localObject = localSparseArray.valueAt(i);
+      if ((localObject instanceof View))
+      {
+        localObject = (b)((View)localObject).getTag();
+        if (((b)localObject).Ccl.isInitialized())
+        {
+          ((b)localObject).Ccl.stop();
+          b((b)localObject);
+        }
+      }
+      i += 1;
+    }
+    this.cQo.removeMessages(1);
+    AppMethodBeat.o(241006);
   }
   
   static final class b
   {
-    ImageView tlC;
-    boolean xpM = false;
-    MultiTouchImageView xpN;
-    WxImageView xpO;
-    TextView xpP;
-    TextView xpQ;
+    boolean Cch = false;
+    MultiTouchImageView Cci;
+    WxImageView Ccj;
+    TextView Cck;
+    ThumbPlayerVideoView Ccl;
+    ImageView wSa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.d
  * JD-Core Version:    0.7.0.1
  */

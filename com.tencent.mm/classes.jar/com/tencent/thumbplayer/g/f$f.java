@@ -2,7 +2,7 @@ package com.tencent.thumbplayer.g;
 
 final class f$f
 {
-  int SbF;
+  int ZEq;
   String fileKey;
   long requestEnd;
   long requestStart;

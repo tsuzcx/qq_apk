@@ -6,13 +6,15 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.ak;
-import com.tencent.mm.plugin.appbrand.ao;
-import com.tencent.mm.plugin.appbrand.au;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.page.t;
-import com.tencent.mm.plugin.appbrand.page.x;
+import com.tencent.mm.plugin.appbrand.ap;
+import com.tencent.mm.plugin.appbrand.aw;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.plugin.appbrand.page.y;
+import com.tencent.mm.plugin.appbrand.t;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandUI;
 import com.tencent.mm.plugin.ball.a.e;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.system.AndroidContextUtil;
 import java.util.concurrent.ConcurrentSkipListSet;
@@ -20,61 +22,63 @@ import java.util.concurrent.ConcurrentSkipListSet;
 public class d
   extends e
 {
-  com.tencent.mm.plugin.appbrand.q lqE;
+  t olo;
   
-  public d(Activity paramActivity, com.tencent.mm.plugin.appbrand.q paramq)
+  public d(Activity paramActivity, t paramt)
   {
     super(paramActivity);
-    AppMethodBeat.i(226544);
-    this.lqE = paramq;
-    paramActivity = this.lqE;
-    paramq = new ao()
+    AppMethodBeat.i(272791);
+    this.olo = paramt;
+    paramActivity = this.olo;
+    paramt = new ap()
     {
       public final void b(ak paramAnonymousak)
       {
-        AppMethodBeat.i(226543);
-        d.this.activity = AndroidContextUtil.castActivityOrNull(d.this.lqE.mContext);
-        AppMethodBeat.o(226543);
+        AppMethodBeat.i(282500);
+        d.a(d.this, AndroidContextUtil.castActivityOrNull(d.this.olo.mContext));
+        AppMethodBeat.o(282500);
       }
       
-      public final void btq()
+      public final void bEn()
       {
-        d.this.activity = null;
+        AppMethodBeat.i(282501);
+        d.a(d.this);
+        AppMethodBeat.o(282501);
       }
     };
-    paramActivity.kAB.kFx.add(paramq);
-    AppMethodBeat.o(226544);
+    paramActivity.ntL.nzd.add(paramt);
+    AppMethodBeat.o(272791);
   }
   
-  public final boolean aGg()
+  public final boolean aOg()
   {
     return false;
   }
   
-  public boolean bCI()
+  public boolean bOd()
   {
     AppMethodBeat.i(44979);
-    if (this.lqE != null) {}
-    for (boolean bool = this.lqE.NA(); bool; bool = false)
+    if (this.olo != null) {}
+    for (boolean bool = this.olo.Qv(); bool; bool = false)
     {
       AppMethodBeat.o(44979);
       return false;
     }
-    if (com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q.qta.qtB)
+    if (q.tRM.tSn)
     {
       AppMethodBeat.o(44979);
       return false;
     }
-    bool = super.bCI();
+    bool = super.bOd();
     AppMethodBeat.o(44979);
     return bool;
   }
   
   public final Activity getActivity()
   {
-    AppMethodBeat.i(226545);
-    Activity localActivity = AndroidContextUtil.castActivityOrNull(this.lqE.mContext);
-    AppMethodBeat.o(226545);
+    AppMethodBeat.i(272792);
+    Activity localActivity = AndroidContextUtil.castActivityOrNull(this.olo.mContext);
+    AppMethodBeat.o(272792);
     return localActivity;
   }
   
@@ -83,9 +87,9 @@ public class d
     AppMethodBeat.i(44977);
     try
     {
-      if ((this.lqE != null) && (this.lqE.bsD() != null) && (this.lqE.bsD().getCurrentPage() != null) && (this.lqE.bsD().getCurrentPage().getCurrentPageView() != null))
+      if ((this.olo != null) && (this.olo.bDz() != null) && (this.olo.bDz().getCurrentPage() != null) && (this.olo.bDz().getCurrentPage().getCurrentPageView() != null))
       {
-        Bitmap localBitmap1 = this.lqE.bsD().getCurrentPage().getCurrentPageView().bRB();
+        Bitmap localBitmap1 = this.olo.bDz().getCurrentPage().getCurrentPageView().ces();
         AppMethodBeat.o(44977);
         return localBitmap1;
       }
@@ -101,8 +105,8 @@ public class d
   
   public final View getContentView()
   {
-    if (this.lqE != null) {
-      return this.lqE.kAt;
+    if (this.olo != null) {
+      return this.olo.ntC;
     }
     return null;
   }
@@ -115,11 +119,11 @@ public class d
     return localView;
   }
   
-  public final void hb(boolean paramBoolean)
+  public final void hS(boolean paramBoolean)
   {
     AppMethodBeat.i(44978);
     AppBrandUI localAppBrandUI;
-    if (this.lqE != null) {
+    if (this.olo != null) {
       if ((getActivity() instanceof AppBrandUI))
       {
         localAppBrandUI = (AppBrandUI)getActivity();
@@ -131,8 +135,8 @@ public class d
     label54:
     for (paramBoolean = true;; paramBoolean = false)
     {
-      localAppBrandUI.nXd = paramBoolean;
-      this.lqE.bsu();
+      localAppBrandUI.qYD = paramBoolean;
+      this.olo.bDo();
       AppMethodBeat.o(44978);
       return;
     }
@@ -140,7 +144,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.floatball.d
  * JD-Core Version:    0.7.0.1
  */

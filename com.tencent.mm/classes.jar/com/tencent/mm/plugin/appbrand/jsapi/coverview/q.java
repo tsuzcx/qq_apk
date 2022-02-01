@@ -3,11 +3,9 @@ package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ad.b;
-import com.tencent.mm.plugin.appbrand.ac.g;
-import com.tencent.mm.plugin.appbrand.jsapi.ac.f;
+import com.tencent.mm.plugin.appbrand.jsapi.ae.f;
 import com.tencent.mm.plugin.appbrand.jsapi.base.d;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.plugin.appbrand.jsapi.h.a;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +18,7 @@ public final class q
   private static final int CTRL_INDEX = 447;
   public static final String NAME = "updateScrollView";
   
-  public final int H(JSONObject paramJSONObject)
+  public final int K(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137545);
     int i = paramJSONObject.getInt("viewId");
@@ -28,7 +26,7 @@ public final class q
     return i;
   }
   
-  public final boolean c(final h paramh, final int paramInt, View paramView, final JSONObject paramJSONObject)
+  public final boolean c(final com.tencent.mm.plugin.appbrand.jsapi.g paramg, final int paramInt, View paramView, final JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137546);
     Log.d("MicroMsg.JsApiUpdateScrollView", "onUpdateView(viewId : %s, %s)", new Object[] { Integer.valueOf(paramInt), paramJSONObject });
@@ -53,7 +51,7 @@ public final class q
               AppMethodBeat.o(137544);
               return;
             }
-            Object localObject = paramh.gA(paramJSONObject.optBoolean("independent", false)).L(paramInt, false);
+            Object localObject = paramg.hl(paramJSONObject.optBoolean("independent", false)).N(paramInt, false);
             if (localObject == null)
             {
               AppMethodBeat.o(137544);
@@ -68,12 +66,12 @@ public final class q
             paramAnonymousView = ((WxaScrollView)paramAnonymousView).getTargetView();
             HashMap localHashMap = new HashMap();
             localHashMap.put("data", localObject);
-            localHashMap.put("scrollLeft", Integer.valueOf(g.zC(paramAnonymousInt1)));
-            localHashMap.put("scrollTop", Integer.valueOf(g.zC(paramAnonymousInt2)));
-            localHashMap.put("scrollWidth", Integer.valueOf(g.zC(paramAnonymousView.getWidth())));
-            localHashMap.put("scrollHeight", Integer.valueOf(g.zC(paramAnonymousView.getHeight())));
-            paramAnonymousView = new s().L(localHashMap);
-            paramh.a(paramAnonymousView, null);
+            localHashMap.put("scrollLeft", Integer.valueOf(com.tencent.mm.plugin.appbrand.ac.g.Dh(paramAnonymousInt1)));
+            localHashMap.put("scrollTop", Integer.valueOf(com.tencent.mm.plugin.appbrand.ac.g.Dh(paramAnonymousInt2)));
+            localHashMap.put("scrollWidth", Integer.valueOf(com.tencent.mm.plugin.appbrand.ac.g.Dh(paramAnonymousView.getWidth())));
+            localHashMap.put("scrollHeight", Integer.valueOf(com.tencent.mm.plugin.appbrand.ac.g.Dh(paramAnonymousView.getHeight())));
+            paramAnonymousView = new s().E(localHashMap);
+            paramg.a(paramAnonymousView, null);
             AppMethodBeat.o(137544);
           }
         });
@@ -96,11 +94,11 @@ public final class q
         }
         if (paramJSONObject.has("scrollTop"))
         {
-          int i = g.a(paramJSONObject, "scrollTop", localWxaScrollView.getScrollY());
+          int i = com.tencent.mm.plugin.appbrand.ac.g.a(paramJSONObject, "scrollTop", localWxaScrollView.getScrollY());
           Log.i("MicroMsg.JsApiUpdateScrollView", "scrollTop:%d", new Object[] { Integer.valueOf(i) });
           localWxaScrollView.scrollTo(localWxaScrollView.getScrollX(), i);
         }
-        boolean bool = super.c(paramh, paramInt, paramView, paramJSONObject);
+        boolean bool = super.c(paramg, paramInt, paramView, paramJSONObject);
         AppMethodBeat.o(137546);
         return bool;
         localWxaScrollView.setOnScrollChangedListener(null);
@@ -114,7 +112,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.q
  * JD-Core Version:    0.7.0.1
  */

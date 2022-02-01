@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.profile.ui;
 
+import android.text.Editable;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.ui.widget.imageview.WeImageView;
+import com.tencent.mm.sdk.platformtools.Util;
 
 final class SayHiWithSnsPermissionUI2$9
-  implements View.OnClickListener
+  implements View.OnFocusChangeListener
 {
   SayHiWithSnsPermissionUI2$9(SayHiWithSnsPermissionUI2 paramSayHiWithSnsPermissionUI2) {}
   
-  public final void onClick(View paramView)
+  public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(179685);
-    b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI2$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    if (SayHiWithSnsPermissionUI2.g(this.BiF).getVisibility() != 0)
+    AppMethodBeat.i(179676);
+    if (paramBoolean)
     {
-      SayHiWithSnsPermissionUI2.g(this.BiF).setVisibility(0);
-      SayHiWithSnsPermissionUI2.o(this.BiF).setVisibility(4);
-      this.BiF.findViewById(2131305488).setVisibility(8);
+      if ((!Util.isNullOrNil(SayHiWithSnsPermissionUI2.a(this.HcW).getHint())) && (Util.isNullOrNil(SayHiWithSnsPermissionUI2.a(this.HcW).getText())))
+      {
+        SayHiWithSnsPermissionUI2.a(this.HcW).setText(SayHiWithSnsPermissionUI2.a(this.HcW).getHint());
+        SayHiWithSnsPermissionUI2.a(this.HcW).setHint(null);
+      }
+      SayHiWithSnsPermissionUI2.b(this.HcW);
+      SayHiWithSnsPermissionUI2.a(this.HcW).setSelection(SayHiWithSnsPermissionUI2.a(this.HcW).getText().length());
     }
-    a.a(this, "com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI2$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(179685);
+    AppMethodBeat.o(179676);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.SayHiWithSnsPermissionUI2.9
  * JD-Core Version:    0.7.0.1
  */

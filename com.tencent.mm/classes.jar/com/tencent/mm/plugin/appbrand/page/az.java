@@ -1,24 +1,45 @@
 package com.tencent.mm.plugin.appbrand.page;
 
+import android.util.SparseIntArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public enum az
+final class az
+  extends SparseIntArray
 {
-  static
+  final void u(ad paramad)
   {
-    AppMethodBeat.i(135279);
-    ntg = new az("MODAL", 0);
-    nth = new az("ACTION_SHEET", 1);
-    nti = new az("TOAST", 2);
-    ntj = new az[] { ntg, nth, nti };
-    AppMethodBeat.o(135279);
+    AppMethodBeat.i(245702);
+    if (paramad == null)
+    {
+      AppMethodBeat.o(245702);
+      return;
+    }
+    super.put(paramad.getComponentId(), paramad.getComponentId());
+    AppMethodBeat.o(245702);
   }
   
-  private az() {}
+  final boolean v(ad paramad)
+  {
+    AppMethodBeat.i(245703);
+    if (paramad == null)
+    {
+      AppMethodBeat.o(245703);
+      return false;
+    }
+    int i = super.indexOfKey(paramad.getComponentId());
+    if (i >= 0)
+    {
+      super.removeAt(i);
+      AppMethodBeat.o(245703);
+      return true;
+    }
+    AppMethodBeat.o(245703);
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.az
  * JD-Core Version:    0.7.0.1
  */

@@ -13,18 +13,18 @@ import kotlin.l.b.a.b.e.a.s;
 
 public final class h
 {
-  private final List<a.p> GjM;
+  private final List<a.p> MWx;
   
   public h(a.s params)
   {
     AppMethodBeat.i(59084);
-    Object localObject = params.TzW;
+    Object localObject = params.abcN;
     Collection localCollection;
-    if (params.hHI())
+    if (params.iMc())
     {
-      int j = params.TzX;
-      params = params.TzW;
-      p.g(params, "typeTable.typeList");
+      int j = params.abcO;
+      params = params.abcN;
+      p.j(params, "typeTable.typeList");
       params = (Iterable)params;
       localCollection = (Collection)new ArrayList(j.a(params, 10));
       int i = 0;
@@ -33,12 +33,12 @@ public final class h
       {
         params = localIterator.next();
         if (i < 0) {
-          j.hxH();
+          j.iBO();
         }
         localObject = (a.p)params;
         params = (a.s)localObject;
         if (i >= j) {
-          params = ((a.p)localObject).hHf().EH(true).hHn();
+          params = ((a.p)localObject).iLz().Jo(true).iLH();
         }
         localCollection.add(params);
         i += 1;
@@ -46,24 +46,24 @@ public final class h
     }
     for (params = (List)localCollection;; params = (a.s)localObject)
     {
-      this.GjM = params;
+      this.MWx = params;
       AppMethodBeat.o(59084);
       return;
-      p.g(localObject, "originalTypes");
+      p.j(localObject, "originalTypes");
     }
   }
   
-  public final a.p avo(int paramInt)
+  public final a.p aFi(int paramInt)
   {
     AppMethodBeat.i(59083);
-    a.p localp = (a.p)this.GjM.get(paramInt);
+    a.p localp = (a.p)this.MWx.get(paramInt);
     AppMethodBeat.o(59083);
     return localp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.e.b.h
  * JD-Core Version:    0.7.0.1
  */

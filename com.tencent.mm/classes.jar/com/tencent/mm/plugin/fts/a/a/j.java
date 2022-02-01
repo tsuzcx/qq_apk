@@ -9,46 +9,46 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class j
 {
-  private static final AtomicInteger wWR;
+  private static final AtomicInteger BIM;
+  public String BIN;
+  public String BIO;
+  public int[] BIP;
+  public int[] BIQ;
+  public int BIR;
+  public HashSet<String> BIS;
+  public Comparator<m> BIT;
+  public l BIU;
   public MMHandler handler;
   public final int id;
-  public int kXb;
+  public int nRn;
   public String query;
   public int scene;
   public String talker;
-  public String wWS;
-  public String wWT;
-  public int[] wWU;
-  public int[] wWV;
-  public int wWW;
-  public HashSet<String> wWX;
-  public Comparator<m> wWY;
-  public l wWZ;
   
   static
   {
     AppMethodBeat.i(131707);
-    wWR = new AtomicInteger(0);
+    BIM = new AtomicInteger(0);
     AppMethodBeat.o(131707);
   }
   
   public j()
   {
     AppMethodBeat.i(131703);
-    this.kXb = 0;
+    this.nRn = 0;
     this.query = null;
-    this.wWS = null;
-    this.wWT = null;
+    this.BIN = null;
+    this.BIO = null;
     this.talker = null;
-    this.wWU = null;
-    this.wWV = null;
-    this.wWW = 2147483647;
-    this.wWX = new HashSet();
-    this.wWY = null;
-    this.wWZ = null;
+    this.BIP = null;
+    this.BIQ = null;
+    this.BIR = 2147483647;
+    this.BIS = new HashSet();
+    this.BIT = null;
+    this.BIU = null;
     this.handler = null;
     this.scene = -1;
-    this.id = wWR.incrementAndGet();
+    this.id = BIM.incrementAndGet();
     AppMethodBeat.o(131703);
   }
   
@@ -57,13 +57,13 @@ public class j
     AppMethodBeat.i(131704);
     j localj = new j();
     localj.query = paramString;
-    localj.wWS = null;
-    localj.wWU = paramArrayOfInt1;
-    localj.wWV = paramArrayOfInt2;
-    localj.wWW = paramInt;
-    localj.wWX = paramHashSet;
-    localj.wWY = paramComparator;
-    localj.wWZ = paraml;
+    localj.BIN = null;
+    localj.BIP = paramArrayOfInt1;
+    localj.BIQ = paramArrayOfInt2;
+    localj.BIR = paramInt;
+    localj.BIS = paramHashSet;
+    localj.BIT = paramComparator;
+    localj.BIU = paraml;
     localj.handler = paramMMHandler;
     AppMethodBeat.o(131704);
     return localj;

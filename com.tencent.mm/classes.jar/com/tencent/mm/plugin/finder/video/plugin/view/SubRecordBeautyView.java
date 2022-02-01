@@ -6,20 +6,22 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.j;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/plugin/view/SubRecordBeautyView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/plugin/view/SubRecordBeautyView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "plugin-finder_release"})
 public final class SubRecordBeautyView
   extends FrameLayout
 {
   public SubRecordBeautyView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(254520);
-    LayoutInflater.from(paramContext).inflate(2131494638, (ViewGroup)this, true);
-    setBackgroundDrawable(a.l(paramContext, 2131232515));
-    AppMethodBeat.o(254520);
+    AppMethodBeat.i(281997);
+    LayoutInflater.from(paramContext).inflate(b.g.finder_sub_record_beauty_layout, (ViewGroup)this, true);
+    setContentDescription((CharSequence)a.ba(paramContext, b.j.finder_live_menu_opt_beauty));
+    AppMethodBeat.o(281997);
   }
 }
 

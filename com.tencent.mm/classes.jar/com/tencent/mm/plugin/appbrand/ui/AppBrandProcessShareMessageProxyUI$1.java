@@ -11,7 +11,7 @@ final class AppBrandProcessShareMessageProxyUI$1
   protected final void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(48686);
-    if ((-1 == paramInt) && (this.nUM != null)) {
+    if ((-1 == paramInt) && (this.qWm != null)) {
       if (paramBundle != null) {
         break label66;
       }
@@ -19,9 +19,9 @@ final class AppBrandProcessShareMessageProxyUI$1
     label66:
     for (paramBundle = null;; paramBundle = paramBundle.getString("message"))
     {
-      this.nUM.a(true, paramBundle, 0);
-      if ((-2 == paramInt) && (this.nUM != null)) {
-        this.nUM.a(false, null, 0);
+      this.qWm.a(true, paramBundle, 0);
+      if ((-2 == paramInt) && (this.qWm != null)) {
+        this.qWm.a(false, null, 0);
       }
       AppMethodBeat.o(48686);
       return;

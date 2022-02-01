@@ -3,13 +3,13 @@ package com.tencent.mm.ui.chatting.h;
 import android.os.Bundle;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.eo;
+import com.tencent.mm.f.c.et;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.chatting.l.b;
-import com.tencent.mm.ui.chatting.n.f;
+import com.tencent.mm.ui.chatting.m.b;
+import com.tencent.mm.ui.chatting.o.g;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,58 +17,58 @@ import java.util.List;
 public final class a
   implements c<ca>
 {
-  private SparseArray<ca> PDv;
-  private com.tencent.mm.ui.chatting.e.a dom;
+  private SparseArray<ca> WYi;
+  private com.tencent.mm.ui.chatting.e.a fgR;
   
   public a(com.tencent.mm.ui.chatting.e.a parama, SparseArray<ca> paramSparseArray)
   {
-    this.dom = parama;
-    this.PDv = paramSparseArray;
+    this.fgR = parama;
+    this.WYi = paramSparseArray;
   }
   
-  public final void a(final d.a parama, final f<ca> paramf, final d.d<ca> paramd, final d.b paramb)
+  public final void a(final d.a parama, final g<ca> paramg, final d.d<ca> paramd, final d.b paramb)
   {
     AppMethodBeat.i(36418);
-    Object localObject = b.PEW;
-    switch (com.tencent.mm.ui.chatting.l.b.1.PEY[paramd.PDL.ordinal()])
+    Object localObject = b.WZI;
+    switch (com.tencent.mm.ui.chatting.m.b.1.WZK[paramd.WYy.ordinal()])
     {
     }
-    while (paramf == null)
+    while (paramg == null)
     {
       Log.e("MicroMsg.ChattingLoader.ChattingDataCallback", "[load] null == source!");
       paramb.next();
       AppMethodBeat.o(36418);
       return;
-      localObject = ((b)localObject).PEX;
+      localObject = ((b)localObject).WZJ;
       localObject[0] += 1;
       continue;
-      localObject = ((b)localObject).PEX;
+      localObject = ((b)localObject).WZJ;
       localObject[1] += 1;
       continue;
-      localObject = ((b)localObject).PEX;
+      localObject = ((b)localObject).WZJ;
       localObject[2] += 1;
       continue;
-      if ((paramd.PDK != null) && (paramd.PDK.getInt("SCENE") == 1))
+      if ((paramd.WYx != null) && (paramd.WYx.getInt("SCENE") == 1))
       {
-        localObject = ((b)localObject).PEX;
+        localObject = ((b)localObject).WZJ;
         localObject[3] += 1;
       }
       else
       {
-        localObject = ((b)localObject).PEX;
+        localObject = ((b)localObject).WZJ;
         localObject[4] += 1;
       }
     }
-    paramf.a(new d.b()
+    paramg.a(new d.b()
     {
       public final void next()
       {
         AppMethodBeat.i(36417);
-        paramf.jA(paramd.PDM);
-        paramf.close();
-        paramd.gAZ = paramf.cZm();
-        paramd.PDN = paramd.PDM.size();
-        Log.i("MicroMsg.ChattingLoader.ChattingDataCallback", "action：" + parama + " addCount:" + paramd.PDN + " totalCount:" + paramd.gAZ);
+        paramg.ks(paramd.WYz);
+        paramg.close();
+        paramd.jlf = paramg.dpe();
+        paramd.WYA = paramd.WYz.size();
+        Log.i("MicroMsg.ChattingLoader.ChattingDataCallback", "action：" + parama + " addCount:" + paramd.WYA + " totalCount:" + paramd.jlf);
         paramb.next();
         AppMethodBeat.o(36417);
       }
@@ -76,7 +76,7 @@ public final class a
     AppMethodBeat.o(36418);
   }
   
-  public final SparseArray<ca> jv(List<ca> paramList)
+  public final SparseArray<ca> kn(List<ca> paramList)
   {
     AppMethodBeat.i(36419);
     Object localObject = paramList;
@@ -87,16 +87,16 @@ public final class a
     }
     try
     {
-      if ((((List)localObject).size() > 0) && (this.dom != null))
+      if ((((List)localObject).size() > 0) && (this.fgR != null))
       {
-        paramList = this.dom.getTalkerUserName();
+        paramList = this.fgR.getTalkerUserName();
         localca = (ca)((List)localObject).get(0);
         if ((localca != null) && (!Util.isNullOrNil(paramList)) && (!Util.isNullOrNil(localca.field_talker)) && (!Util.isEqual(localca.field_talker, paramList)))
         {
           Log.i("MicroMsg.ChattingLoader.ChattingDataCallback", "talker not equal, chattingContextTalker:%s, msgInfoTalker:%s", new Object[] { localca.field_talker, paramList });
-          h.CyF.a(18264, new Object[] { localca.field_talker, paramList });
-          h.CyF.n(1151L, 0L, 1L);
-          paramList = this.PDv;
+          h.IzE.a(18264, new Object[] { localca.field_talker, paramList });
+          h.IzE.p(1151L, 0L, 1L);
+          paramList = this.WYi;
           AppMethodBeat.o(36419);
           return paramList;
         }
@@ -106,13 +106,13 @@ public final class a
     {
       ca localca;
       Log.printErrStackTrace("MicroMsg.ChattingLoader.ChattingDataCallback", paramList, "fillData Exception", new Object[0]);
-      h.CyF.n(1151L, 1L, 1L);
-      this.PDv.clear();
+      h.IzE.p(1151L, 1L, 1L);
+      this.WYi.clear();
       paramList = ((List)localObject).iterator();
       int i = 0;
       while (paramList.hasNext())
       {
-        localObject = this.PDv;
+        localObject = this.WYi;
         localca = (ca)paramList.next();
         ((SparseArray)localObject).put(i, localca);
         int j = i + 1;
@@ -120,7 +120,7 @@ public final class a
         if (localca != null)
         {
           i = j;
-          if (localca.isText())
+          if (localca.hwH())
           {
             i = j;
             if (localca.field_content != null)
@@ -131,7 +131,7 @@ public final class a
           }
         }
       }
-      paramList = this.PDv;
+      paramList = this.WYi;
       AppMethodBeat.o(36419);
     }
     return paramList;
@@ -139,7 +139,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.h.a
  * JD-Core Version:    0.7.0.1
  */

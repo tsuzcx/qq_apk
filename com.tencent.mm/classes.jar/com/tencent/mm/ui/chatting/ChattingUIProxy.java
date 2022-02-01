@@ -1,51 +1,49 @@
 package com.tencent.mm.ui.chatting;
 
 import android.os.SystemClock;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.g;
-import android.support.v4.app.k;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.matrix.trace.f.c;
-import com.tencent.mm.plugin.report.service.i;
 import com.tencent.mm.plugin.report.service.i.2;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.ui.IChattingUIProxy;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragmentActivity;
-import com.tencent.mm.ui.t;
+import com.tencent.mm.ui.w;
 import java.util.Iterator;
 import java.util.List;
 
 public class ChattingUIProxy
   implements IChattingUIProxy
 {
-  private MMFragmentActivity Dpx;
-  private BaseChattingUIFragment OJN;
-  private int PjA = -1;
+  private MMFragmentActivity Jvc;
+  private int WDc = -1;
+  private BaseChattingUIFragment Wdi;
   public boolean isInit = false;
   
   public ChattingUIProxy(MMFragmentActivity paramMMFragmentActivity, BaseChattingUIFragment paramBaseChattingUIFragment)
   {
-    this.OJN = paramBaseChattingUIFragment;
-    this.Dpx = paramMMFragmentActivity;
+    this.Wdi = paramBaseChattingUIFragment;
+    this.Jvc = paramMMFragmentActivity;
   }
   
   public void onEnterBegin()
   {
     AppMethodBeat.i(34786);
     Log.i("MicroMsg.ChattingUIProxy", "[onEnterBegin]");
-    i locali = i.CyW;
-    locali.Czc = SystemClock.uptimeMillis();
-    locali.tN(false);
-    if (locali.daF != null) {
-      locali.daF.a(locali.Czf);
+    com.tencent.mm.plugin.report.service.i locali = com.tencent.mm.plugin.report.service.i.IzV;
+    locali.IAb = SystemClock.uptimeMillis();
+    locali.xj(false);
+    if (locali.deH != null) {
+      locali.deH.a(locali.IAe);
     }
-    this.OJN.gMW();
-    this.OJN.onEnterBegin();
-    this.OJN.gMX();
-    if ((this.PjA != -1) && ((this.Dpx instanceof MMActivity))) {
-      this.OJN.getController().setStatusBarColor(this.PjA);
+    this.Wdi.hMf();
+    this.Wdi.onEnterBegin();
+    this.Wdi.hMg();
+    if ((this.WDc != -1) && ((this.Jvc instanceof MMActivity))) {
+      this.Wdi.getController().setStatusBarColor(this.WDc);
     }
     AppMethodBeat.o(34786);
   }
@@ -54,19 +52,19 @@ public class ChattingUIProxy
   {
     AppMethodBeat.i(34787);
     Log.i("MicroMsg.ChattingUIProxy", "[onEnterEnd]");
-    if (this.OJN.amb(256))
+    if (this.Wdi.avb(256))
     {
-      this.OJN.gMY();
-      this.OJN.onEnterEnd();
+      this.Wdi.hMh();
+      this.Wdi.onEnterEnd();
     }
-    i locali = i.CyW;
-    locali.Czc = (SystemClock.uptimeMillis() - locali.Czc);
-    Log.i("MicroMsg.SceneFpsReportService", "[onChattingEnterEnd] enterChattingDuration=" + locali.Czc + "ms");
-    locali.Cze[(locali.Czb % 20)] = locali.Czc;
-    long[] arrayOfLong = locali.Cze;
-    arrayOfLong[20] += locali.Czc;
-    locali.Czb += 1;
-    if (locali.daF == null)
+    com.tencent.mm.plugin.report.service.i locali = com.tencent.mm.plugin.report.service.i.IzV;
+    locali.IAb = (SystemClock.uptimeMillis() - locali.IAb);
+    Log.i("MicroMsg.SceneFpsReportService", "[onChattingEnterEnd] enterChattingDuration=" + locali.IAb + "ms");
+    locali.IAd[(locali.IAa % 20)] = locali.IAb;
+    long[] arrayOfLong = locali.IAd;
+    arrayOfLong[20] += locali.IAb;
+    locali.IAa += 1;
+    if (locali.deH == null)
     {
       AppMethodBeat.o(34787);
       return;
@@ -79,11 +77,11 @@ public class ChattingUIProxy
   {
     AppMethodBeat.i(34788);
     Log.i("MicroMsg.ChattingUIProxy", "[onExitBegin]");
-    if (!this.OJN.gNe()) {
-      this.OJN.onExitBegin();
+    if (!this.Wdi.hMn()) {
+      this.Wdi.onExitBegin();
     }
-    if ((this.Dpx instanceof MMActivity)) {
-      this.PjA = this.OJN.getController().statusBarColor;
+    if ((this.Jvc instanceof MMActivity)) {
+      this.WDc = this.Wdi.getController().PyE;
     }
     AppMethodBeat.o(34788);
   }
@@ -92,10 +90,10 @@ public class ChattingUIProxy
   {
     AppMethodBeat.i(34789);
     Log.i("MicroMsg.ChattingUIProxy", "[onExitEnd]");
-    this.OJN.gMZ();
-    this.OJN.gNa();
-    this.OJN.gNb();
-    this.OJN.onExitEnd();
+    this.Wdi.hMi();
+    this.Wdi.hMj();
+    this.Wdi.hMk();
+    this.Wdi.onExitEnd();
     AppMethodBeat.o(34789);
   }
   
@@ -103,11 +101,11 @@ public class ChattingUIProxy
   {
     AppMethodBeat.i(34785);
     if (paramBoolean) {
-      ai.gOk().PjZ = 4;
+      ai.hNu().WDH = 4;
     }
     this.isInit = true;
-    this.OJN.PeC = true;
-    Object localObject = this.Dpx.getSupportFragmentManager().getFragments();
+    this.Wdi.WxU = true;
+    Object localObject = this.Jvc.getSupportFragmentManager().getFragments();
     label53:
     boolean bool;
     if (localObject == null)
@@ -120,8 +118,8 @@ public class ChattingUIProxy
       if (!bool) {
         break label254;
       }
-      this.Dpx.getSupportFragmentManager().beginTransaction().a(paramInt, this.OJN).commitAllowingStateLoss();
-      this.Dpx.getSupportFragmentManager().executePendingTransactions();
+      this.Jvc.getSupportFragmentManager().beginTransaction().a(paramInt, this.Wdi).ip();
+      this.Jvc.getSupportFragmentManager().executePendingTransactions();
     }
     for (;;)
     {
@@ -130,7 +128,7 @@ public class ChattingUIProxy
         onExitBegin();
         onExitEnd();
       }
-      this.OJN.PeC = false;
+      this.Wdi.WxU = false;
       AppMethodBeat.o(34785);
       return;
       if (((List)localObject).size() >= 5)
@@ -151,13 +149,13 @@ public class ChattingUIProxy
       Log.i("MicroMsg.ChattingUIProxy", "fragments size %s", new Object[] { Integer.valueOf(((List)localObject).size()) });
       break label53;
       label254:
-      this.Dpx.getSupportFragmentManager().beginTransaction().b(paramInt, this.OJN).commitAllowingStateLoss();
+      this.Jvc.getSupportFragmentManager().beginTransaction().b(paramInt, this.Wdi).ip();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ChattingUIProxy
  * JD-Core Version:    0.7.0.1
  */

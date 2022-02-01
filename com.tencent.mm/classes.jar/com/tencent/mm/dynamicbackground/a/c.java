@@ -5,16 +5,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static a gRu;
-  private static a gRv;
+  private static a jBQ;
+  private static a jBR;
   
   static
   {
     AppMethodBeat.i(102977);
     a local1 = new a()
     {
-      public final void d(String paramAnonymousString1, String paramAnonymousString2) {}
-      
       public final void e(String paramAnonymousString1, String paramAnonymousString2) {}
       
       public final void i(String paramAnonymousString1, String paramAnonymousString2) {}
@@ -23,42 +21,27 @@ public final class c
       
       public final void w(String paramAnonymousString1, String paramAnonymousString2) {}
     };
-    gRu = local1;
-    gRv = local1;
+    jBQ = local1;
+    jBR = local1;
     AppMethodBeat.o(102977);
   }
   
   public static void a(a parama)
   {
-    gRv = parama;
-  }
-  
-  public static void d(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(102972);
-    if (gRv != null)
-    {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
-      }
-      gRv.d(paramString1, paramString2);
-    }
-    AppMethodBeat.o(102972);
+    jBR = parama;
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102975);
-    if (gRv != null)
+    if (jBR != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
       if (paramVarArgs == null) {
         paramString2 = "";
       }
-      gRv.e(paramString1, paramString2);
+      jBR.e(paramString1, paramString2);
     }
     AppMethodBeat.o(102975);
   }
@@ -66,14 +49,14 @@ public final class c
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102973);
-    if (gRv != null)
+    if (jBR != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
       if (paramVarArgs == null) {
         paramString2 = "";
       }
-      gRv.i(paramString1, paramString2);
+      jBR.i(paramString1, paramString2);
     }
     AppMethodBeat.o(102973);
   }
@@ -81,7 +64,7 @@ public final class c
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102976);
-    if (gRv != null)
+    if (jBR != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
@@ -89,7 +72,7 @@ public final class c
         paramString2 = "";
       }
       paramThrowable = paramString2 + "  " + Log.getStackTraceString(paramThrowable);
-      gRv.e(paramString1, paramThrowable);
+      jBR.e(paramString1, paramThrowable);
     }
     AppMethodBeat.o(102976);
   }
@@ -97,14 +80,14 @@ public final class c
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102971);
-    if (gRv != null)
+    if (jBR != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
       if (paramVarArgs == null) {
         paramString2 = "";
       }
-      gRv.v(paramString1, paramString2);
+      jBR.v(paramString1, paramString2);
     }
     AppMethodBeat.o(102971);
   }
@@ -112,22 +95,20 @@ public final class c
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102974);
-    if (gRv != null)
+    if (jBR != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
       if (paramVarArgs == null) {
         paramString2 = "";
       }
-      gRv.w(paramString1, paramString2);
+      jBR.w(paramString1, paramString2);
     }
     AppMethodBeat.o(102974);
   }
   
   public static abstract interface a
   {
-    public abstract void d(String paramString1, String paramString2);
-    
     public abstract void e(String paramString1, String paramString2);
     
     public abstract void i(String paramString1, String paramString2);

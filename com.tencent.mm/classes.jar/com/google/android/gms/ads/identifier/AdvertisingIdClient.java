@@ -422,7 +422,6 @@ public class AdvertisingIdClient
     //   27	29	81	finally
     //   36	57	81	finally
     //   57	74	81	finally
-    //   82	84	81	finally
     //   36	57	92	java/lang/Throwable
   }
   
@@ -579,7 +578,7 @@ public class AdvertisingIdClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.ads.identifier.AdvertisingIdClient
  * JD-Core Version:    0.7.0.1
  */

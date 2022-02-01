@@ -16,24 +16,24 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/remuxer/MediaCodecCheckVideoCropRect;", "", "mediaExtractor", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "calbackInMainThread", "", "(Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;Z)V", "TAG", "", "callback", "Lkotlin/Function2;", "Landroid/media/MediaFormat;", "Lkotlin/ParameterName;", "name", "mediaFormat", "checker", "", "decodeThread", "Landroid/os/HandlerThread;", "decoder", "Lcom/tencent/mm/media/decoder/IMediaCodecTransDecoder;", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "invokeCallback", "lock", "Ljava/lang/Object;", "onDecode", "Lkotlin/Function4;", "Ljava/nio/ByteBuffer;", "", "Landroid/media/MediaCodec$BufferInfo;", "onFormatChanged", "Lkotlin/Function1;", "getCropBottom", "", "getCropLeft", "getCropRight", "getCropTop", "hasCropRect", "startCheck", "stopDecoder", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/remuxer/MediaCodecCheckVideoCropRect;", "", "mediaExtractor", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "calbackInMainThread", "", "(Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;Z)V", "TAG", "", "callback", "Lkotlin/Function2;", "Landroid/media/MediaFormat;", "Lkotlin/ParameterName;", "name", "mediaFormat", "checker", "", "decodeThread", "Landroid/os/HandlerThread;", "decoder", "Lcom/tencent/mm/media/decoder/IMediaCodecTransDecoder;", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "invokeCallback", "lock", "Ljava/lang/Object;", "onDecode", "Lkotlin/Function4;", "Ljava/nio/ByteBuffer;", "", "Landroid/media/MediaCodec$BufferInfo;", "onFormatChanged", "Lkotlin/Function1;", "getCropBottom", "", "getCropLeft", "getCropRight", "getCropTop", "hasCropRect", "startCheck", "stopDecoder", "plugin-mediaeditor_release"})
 public final class e
 {
   public final String TAG;
-  public m<? super MediaFormat, ? super e, x> gWp;
   final MMHandler handler;
-  final b<MediaFormat, x> ieq;
-  public f ihG;
-  boolean ihH;
-  public HandlerThread ihI;
-  final r<ByteBuffer, Long, MediaCodec.BufferInfo, Boolean, x> ihJ;
-  public final com.tencent.mm.media.f.a ihK;
+  public m<? super MediaFormat, ? super e, x> jHk;
+  final b<MediaFormat, x> kTe;
+  public f kWu;
+  boolean kWv;
+  public HandlerThread kWw;
+  final r<ByteBuffer, Long, MediaCodec.BufferInfo, Boolean, x> kWx;
+  public final com.tencent.mm.media.f.a kWy;
   final Object lock;
   
   private e(com.tencent.mm.media.f.a parama)
   {
     AppMethodBeat.i(93776);
-    this.ihK = parama;
+    this.kWy = parama;
     this.lock = new Object();
     this.TAG = "MicroMsg.MediaCodecCheckVideoCropRect";
     Looper localLooper = Looper.myLooper();
@@ -43,13 +43,13 @@ public final class e
     }
     this.handler = new MMHandler(parama);
     Log.i(this.TAG, "create MediaCodecCheckVideoCropRect");
-    this.ihK.aMq();
-    this.ihJ = ((r)new a(this));
-    this.ieq = ((b)new b(this));
+    this.kWy.aUG();
+    this.kWx = ((r)new a(this));
+    this.kTe = ((b)new b(this));
     AppMethodBeat.o(93776);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "Ljava/nio/ByteBuffer;", "pts", "", "<anonymous parameter 2>", "Landroid/media/MediaCodec$BufferInfo;", "duplicate", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "Ljava/nio/ByteBuffer;", "pts", "", "<anonymous parameter 2>", "Landroid/media/MediaCodec$BufferInfo;", "duplicate", "", "invoke"})
   static final class a
     extends q
     implements r<ByteBuffer, Long, MediaCodec.BufferInfo, Boolean, x>
@@ -59,7 +59,7 @@ public final class e
       super();
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run", "com/tencent/mm/media/remuxer/MediaCodecCheckVideoCropRect$onDecode$1$1$1"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/media/remuxer/MediaCodecCheckVideoCropRect$onDecode$1$1$1"})
     static final class a
       implements Runnable
     {
@@ -68,10 +68,10 @@ public final class e
       public final void run()
       {
         AppMethodBeat.i(93763);
-        m localm = this.ihN.ihL.gWp;
+        m localm = this.kWB.kWz.jHk;
         if (localm != null)
         {
-          localm.invoke(this.ihM, this.ihN.ihL);
+          localm.invoke(this.kWA, this.kWB.kWz);
           AppMethodBeat.o(93763);
           return;
         }
@@ -80,7 +80,7 @@ public final class e
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "mediaFormat", "Landroid/media/MediaFormat;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "mediaFormat", "Landroid/media/MediaFormat;", "invoke"})
   static final class b
     extends q
     implements b<MediaFormat, x>
@@ -90,7 +90,7 @@ public final class e
       super();
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run", "com/tencent/mm/media/remuxer/MediaCodecCheckVideoCropRect$onFormatChanged$1$1$1"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/media/remuxer/MediaCodecCheckVideoCropRect$onFormatChanged$1$1$1"})
     static final class a
       implements Runnable
     {
@@ -99,10 +99,10 @@ public final class e
       public final void run()
       {
         AppMethodBeat.i(93765);
-        m localm = this.ihO.ihL.gWp;
+        m localm = this.kWC.kWz.jHk;
         if (localm != null)
         {
-          localm.invoke(this.ihP, this.ihO.ihL);
+          localm.invoke(this.kWD, this.kWC.kWz);
           AppMethodBeat.o(93765);
           return;
         }
@@ -111,7 +111,7 @@ public final class e
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "Lcom/tencent/mm/media/decoder/IMediaCodecTransDecoder;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lcom/tencent/mm/media/decoder/IMediaCodecTransDecoder;", "invoke"})
   public static final class c
     extends q
     implements b<f, x>
@@ -122,7 +122,7 @@ public final class e
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "Lcom/tencent/mm/media/decoder/IMediaCodecTransDecoder;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lcom/tencent/mm/media/decoder/IMediaCodecTransDecoder;", "invoke"})
   public static final class d
     extends q
     implements b<f, x>
@@ -133,7 +133,7 @@ public final class e
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke", "()Lkotlin/Unit;"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke", "()Lkotlin/Unit;"})
   public static final class e
     extends q
     implements kotlin.g.a.a<x>
@@ -146,7 +146,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.media.i.e
  * JD-Core Version:    0.7.0.1
  */

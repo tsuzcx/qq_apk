@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v4.view.u;
 import android.text.method.LinkMovementMethod;
 import android.view.KeyEvent;
 import android.view.KeyEvent.DispatcherState;
@@ -20,70 +19,75 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+import androidx.core.g.w;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.permission.g;
+import com.tencent.mm.plugin.appbrand.au.c;
+import com.tencent.mm.plugin.appbrand.au.f;
+import com.tencent.mm.plugin.appbrand.au.g;
+import com.tencent.mm.plugin.appbrand.au.i;
 import com.tencent.mm.plugin.appbrand.utils.html.c.a;
 import com.tencent.mm.sdk.system.AndroidContextUtil;
 import com.tencent.mm.ui.MMFragmentActivity.a;
+import com.tencent.mm.ui.widget.e;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePrivacyExplainPresenterUIView;", "Lcom/tencent/mm/ui/statusbar/DrawStatusBarFrameLayout;", "Lcom/tencent/mm/plugin/appbrand/permission/IAuthorizePrivacyExplainPresenterView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "dismissing", "", "value", "", "explainContent", "getExplainContent", "()Ljava/lang/String;", "setExplainContent", "(Ljava/lang/String;)V", "explainContentTv", "Landroid/widget/TextView;", "explainTitle", "getExplainTitle", "setExplainTitle", "explainTitleTv", "dismiss", "", "component", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "dispatchKeyEventPreIme", "event", "Landroid/view/KeyEvent;", "show", "parent", "Landroid/view/ViewGroup;", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePrivacyExplainPresenterUIView;", "Lcom/tencent/mm/ui/statusbar/DrawStatusBarFrameLayout;", "Lcom/tencent/mm/plugin/appbrand/permission/IAuthorizePrivacyExplainPresenterView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "dismissing", "", "value", "", "explainContent", "getExplainContent", "()Ljava/lang/String;", "setExplainContent", "(Ljava/lang/String;)V", "explainContentTv", "Landroid/widget/TextView;", "explainTitle", "getExplainTitle", "setExplainTitle", "explainTitleTv", "dismiss", "", "component", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "dispatchKeyEventPreIme", "event", "Landroid/view/KeyEvent;", "show", "parent", "Landroid/view/ViewGroup;", "plugin-appbrand-integration_release"})
 public final class d
   extends com.tencent.mm.ui.statusbar.b
-  implements g
+  implements com.tencent.mm.plugin.appbrand.permission.g
 {
-  private boolean jLA;
-  private final TextView ncu;
-  private final TextView ncv;
-  private String ncw;
-  private String ncx;
+  private boolean mCE;
+  private final TextView qcI;
+  private final TextView qcJ;
+  private String qcK;
+  private String qcL;
   
   public d(final Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(229030);
-    LayoutInflater.from(paramContext).inflate(2131493033, (ViewGroup)this, true);
-    setBackgroundColor(android.support.v4.content.b.n(paramContext, 2131101424));
-    CF(false);
-    Object localObject = findViewById(2131306133);
-    p.g(localObject, "this.findViewById(R.id.privacy_explain_title)");
-    this.ncu = ((TextView)localObject);
-    localObject = findViewById(2131306132);
-    p.g(localObject, "this.findViewById(R.id.privacy_explain_content)");
-    this.ncv = ((TextView)localObject);
-    localObject = (WeImageView)findViewById(2131296422);
-    ((WeImageView)localObject).setIconColor(android.support.v4.content.b.n(paramContext, 2131099669));
+    AppMethodBeat.i(268821);
+    LayoutInflater.from(paramContext).inflate(au.g.app_brand_functional_page_privacy_explain_ui, (ViewGroup)this, true);
+    setBackgroundColor(androidx.core.content.a.w(paramContext, au.c.white));
+    GZ(false);
+    Object localObject = findViewById(au.f.privacy_explain_title);
+    p.j(localObject, "this.findViewById(R.id.privacy_explain_title)");
+    this.qcI = ((TextView)localObject);
+    localObject = findViewById(au.f.privacy_explain_content);
+    p.j(localObject, "this.findViewById(R.id.privacy_explain_content)");
+    this.qcJ = ((TextView)localObject);
+    localObject = (WeImageView)findViewById(au.f.actionbar_back_btn);
+    ((WeImageView)localObject).setIconColor(androidx.core.content.a.w(paramContext, au.c.BW_0_Alpha_0_9));
     ((WeImageView)localObject).setOnClickListener((View.OnClickListener)new a(this, paramContext));
-    AppMethodBeat.o(229030);
+    AppMethodBeat.o(268821);
   }
   
   public final void dismiss()
   {
-    AppMethodBeat.i(229029);
-    if (this.jLA)
+    AppMethodBeat.i(268819);
+    if (this.mCE)
     {
-      AppMethodBeat.o(229029);
+      AppMethodBeat.o(268819);
       return;
     }
-    this.jLA = true;
+    this.mCE = true;
     animate().cancel();
     Animation localAnimation = getAnimation();
     if (localAnimation != null) {
       localAnimation.cancel();
     }
-    localAnimation = AnimationUtils.loadAnimation(getContext(), MMFragmentActivity.a.ogp);
+    localAnimation = AnimationUtils.loadAnimation(getContext(), MMFragmentActivity.a.rib);
     localAnimation.setAnimationListener((Animation.AnimationListener)new b(this));
     startAnimation(localAnimation);
-    AppMethodBeat.o(229029);
+    AppMethodBeat.o(268819);
   }
   
   public final boolean dispatchKeyEventPreIme(KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(229027);
-    if ((u.aD((View)this)) && (paramKeyEvent != null) && (4 == paramKeyEvent.getKeyCode()))
+    AppMethodBeat.i(268817);
+    if ((w.al((View)this)) && (paramKeyEvent != null) && (4 == paramKeyEvent.getKeyCode()))
     {
       KeyEvent.DispatcherState localDispatcherState = getKeyDispatcherState();
       if (localDispatcherState != null)
@@ -91,98 +95,106 @@ public final class d
         if ((paramKeyEvent.getAction() == 0) && (paramKeyEvent.getRepeatCount() == 0))
         {
           localDispatcherState.startTracking(paramKeyEvent, this);
-          AppMethodBeat.o(229027);
+          AppMethodBeat.o(268817);
           return true;
         }
         if ((1 == paramKeyEvent.getAction()) && (!paramKeyEvent.isCanceled()) && (localDispatcherState.isTracking(paramKeyEvent)))
         {
           dismiss();
-          AppMethodBeat.o(229027);
+          AppMethodBeat.o(268817);
           return true;
         }
       }
     }
     boolean bool = super.dispatchKeyEventPreIme(paramKeyEvent);
-    AppMethodBeat.o(229027);
+    AppMethodBeat.o(268817);
     return bool;
   }
   
   public final String getExplainContent()
   {
-    return this.ncx;
+    return this.qcL;
   }
   
   public final String getExplainTitle()
   {
-    return this.ncw;
+    return this.qcK;
   }
   
-  public final void h(com.tencent.mm.plugin.appbrand.d paramd)
+  public final void i(com.tencent.mm.plugin.appbrand.g paramg)
   {
-    AppMethodBeat.i(229028);
-    p.h(paramd, "component");
-    Context localContext = paramd.getContext();
-    paramd = localContext;
+    AppMethodBeat.i(268818);
+    p.k(paramg, "component");
+    Context localContext = paramg.getContext();
+    paramg = localContext;
     if (!(localContext instanceof Activity)) {
-      paramd = null;
+      paramg = null;
     }
-    paramd = (Activity)paramd;
-    if (paramd != null)
+    paramg = (Activity)paramg;
+    if (paramg != null)
     {
-      paramd = (ViewGroup)paramd.findViewById(16908290);
-      if (paramd != null)
+      paramg = (ViewGroup)paramg.findViewById(16908290);
+      if (paramg != null)
       {
-        p.h(paramd, "parent");
-        paramd.addView((View)this, new ViewGroup.LayoutParams(-1, -1));
+        p.k(paramg, "parent");
+        paramg.addView((View)this, new ViewGroup.LayoutParams(-1, -1));
         bringToFront();
         setFocusable(true);
         setFocusableInTouchMode(true);
         requestFocus();
-        paramd = (View)this;
-        paramd.getViewTreeObserver().addOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)new d(paramd, this));
-        AppMethodBeat.o(229028);
+        paramg = (View)this;
+        paramg.getViewTreeObserver().addOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)new d(paramg, this));
+        AppMethodBeat.o(268818);
         return;
       }
     }
-    AppMethodBeat.o(229028);
+    AppMethodBeat.o(268818);
+  }
+  
+  public final void j(com.tencent.mm.plugin.appbrand.g paramg)
+  {
+    AppMethodBeat.i(268820);
+    p.k(paramg, "component");
+    dismiss();
+    AppMethodBeat.o(268820);
   }
   
   public final void setExplainContent(String paramString)
   {
-    AppMethodBeat.i(229026);
-    this.ncx = paramString;
+    AppMethodBeat.i(268815);
+    this.qcL = paramString;
     CharSequence localCharSequence = (CharSequence)paramString;
-    if ((localCharSequence == null) || (n.aL(localCharSequence))) {}
+    if ((localCharSequence == null) || (n.ba(localCharSequence))) {}
     for (int i = 1; i != 0; i = 0)
     {
-      this.ncv.setText((CharSequence)"");
-      AppMethodBeat.o(229026);
+      this.qcJ.setText((CharSequence)"");
+      AppMethodBeat.o(268815);
       return;
     }
-    this.ncv.setText(com.tencent.mm.plugin.appbrand.utils.html.c.a(paramString, false, (c.a)new c(this)));
-    this.ncv.setMovementMethod(LinkMovementMethod.getInstance());
-    this.ncv.setLinkTextColor(Color.parseColor("#FF576B95"));
-    AppMethodBeat.o(229026);
+    this.qcJ.setText(com.tencent.mm.plugin.appbrand.utils.html.c.a(paramString, false, (c.a)new c(this)));
+    this.qcJ.setMovementMethod(LinkMovementMethod.getInstance());
+    this.qcJ.setLinkTextColor(Color.parseColor("#FF576B95"));
+    AppMethodBeat.o(268815);
   }
   
   public final void setExplainTitle(String paramString)
   {
-    AppMethodBeat.i(229025);
+    AppMethodBeat.i(268813);
     CharSequence localCharSequence = (CharSequence)paramString;
     if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        paramString = getContext().getString(2131756123);
+        paramString = getContext().getString(au.i.appbrand_permission_authorize_explain_title);
       }
-      this.ncw = paramString;
-      this.ncu.setText((CharSequence)this.ncw);
-      AppMethodBeat.o(229025);
+      this.qcK = paramString;
+      this.qcI.setText((CharSequence)this.qcK);
+      AppMethodBeat.o(268813);
       return;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePrivacyExplainPresenterUIView$1$1"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePrivacyExplainPresenterUIView$1$1"})
   static final class a
     implements View.OnClickListener
   {
@@ -190,49 +202,49 @@ public final class d
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(229020);
+      AppMethodBeat.i(257221);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePrivacyExplainPresenterUIView$$special$$inlined$let$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      this.ncy.dismiss();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePrivacyExplainPresenterUIView$$special$$inlined$let$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      this.qcM.dismiss();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePrivacyExplainPresenterUIView$$special$$inlined$let$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(229020);
+      AppMethodBeat.o(257221);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePrivacyExplainPresenterUIView$dismiss$1$1", "Lcom/tencent/mm/ui/widget/MMAnimationListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePrivacyExplainPresenterUIView$dismiss$1$1", "Lcom/tencent/mm/ui/widget/MMAnimationListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "plugin-appbrand-integration_release"})
   public static final class b
-    extends com.tencent.mm.ui.widget.c
+    extends e
   {
     b(d paramd) {}
     
     public final void onAnimationEnd(Animation paramAnimation)
     {
-      AppMethodBeat.i(229021);
-      a.cw((View)this.ncy);
-      AppMethodBeat.o(229021);
+      AppMethodBeat.i(282872);
+      a.cP((View)this.qcM);
+      AppMethodBeat.o(282872);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "url", "", "kotlin.jvm.PlatformType", "performOpenUrl"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "url", "", "kotlin.jvm.PlatformType", "performOpenUrl"})
   static final class c
     implements c.a
   {
     c(d paramd) {}
     
-    public final void YF(String paramString)
+    public final void agt(String paramString)
     {
-      AppMethodBeat.i(229022);
-      Context localContext = this.ncy.getContext();
+      AppMethodBeat.i(272347);
+      Context localContext = this.qcM.getContext();
       Intent localIntent = new Intent();
       localIntent.putExtra("rawUrl", paramString);
       localIntent.putExtra("forceHideShare", true);
-      com.tencent.mm.br.c.b(localContext, "webview", ".ui.tools.WebViewUI", localIntent);
-      AppMethodBeat.o(229022);
+      com.tencent.mm.by.c.b(localContext, "webview", ".ui.tools.WebViewUI", localIntent);
+      AppMethodBeat.o(272347);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalAuthorizePesenterViewUtilsKt$doOnPreDraw$1", "Landroid/view/ViewTreeObserver$OnPreDrawListener;", "onPreDraw", "", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalAuthorizePesenterViewUtilsKt$doOnPreDraw$1", "Landroid/view/ViewTreeObserver$OnPreDrawListener;", "onPreDraw", "", "plugin-appbrand-integration_release"})
   public static final class d
     implements ViewTreeObserver.OnPreDrawListener
   {
@@ -240,17 +252,17 @@ public final class d
     
     public final boolean onPreDraw()
     {
-      AppMethodBeat.i(229024);
-      this.nca.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)this);
-      View localView = this.nca;
-      Animation localAnimation = AnimationUtils.loadAnimation(jdField_this.getContext(), MMFragmentActivity.a.ogm);
+      AppMethodBeat.i(265779);
+      this.qco.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)this);
+      View localView = this.qco;
+      Animation localAnimation = AnimationUtils.loadAnimation(jdField_this.getContext(), MMFragmentActivity.a.rhY);
       localAnimation.setAnimationListener((Animation.AnimationListener)new a(localView, this));
       localView.startAnimation(localAnimation);
-      AppMethodBeat.o(229024);
+      AppMethodBeat.o(265779);
       return true;
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePrivacyExplainPresenterUIView$show$1$1$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-appbrand-integration_release", "com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePrivacyExplainPresenterUIView$$special$$inlined$let$lambda$1"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePrivacyExplainPresenterUIView$show$1$1$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-appbrand-integration_release", "com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/ui/FunctionalPagePrivacyExplainPresenterUIView$$special$$inlined$let$lambda$1"})
     public static final class a
       implements Animation.AnimationListener
     {
@@ -258,15 +270,15 @@ public final class d
       
       public final void onAnimationEnd(Animation paramAnimation)
       {
-        AppMethodBeat.i(229023);
-        paramAnimation = AndroidContextUtil.castActivityOrNull(jdField_this.ncy.getContext());
+        AppMethodBeat.i(243505);
+        paramAnimation = AndroidContextUtil.castActivityOrNull(jdField_this.qcM.getContext());
         if (paramAnimation != null)
         {
-          com.tencent.mm.ui.statusbar.c.bt(paramAnimation).requestApplyInsets();
-          AppMethodBeat.o(229023);
+          com.tencent.mm.ui.statusbar.c.bA(paramAnimation).hXX();
+          AppMethodBeat.o(243505);
           return;
         }
-        AppMethodBeat.o(229023);
+        AppMethodBeat.o(243505);
       }
       
       public final void onAnimationRepeat(Animation paramAnimation) {}
@@ -277,7 +289,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -4,10 +4,10 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.ui.base.o.b;
+import com.tencent.mm.ui.base.q.b;
 
 final class an$11
-  implements o.b
+  implements q.b
 {
   public final void a(ImageView paramImageView, MenuItem paramMenuItem)
   {

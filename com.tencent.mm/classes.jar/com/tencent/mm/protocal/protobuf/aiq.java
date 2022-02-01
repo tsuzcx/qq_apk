@@ -1,61 +1,96 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
+import java.util.LinkedList;
 
 public final class aiq
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public long endTimeMs;
-  public long startTimeMs;
+  public eae RMR;
+  public int Stl;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(201295);
+    AppMethodBeat.i(133169);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bb(1, this.startTimeMs);
-      paramVarArgs.bb(2, this.endTimeMs);
-      AppMethodBeat.o(201295);
+      if (this.RMR == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Key");
+        AppMethodBeat.o(133169);
+        throw paramVarArgs;
+      }
+      paramVarArgs.aY(1, this.Stl);
+      if (this.RMR != null)
+      {
+        paramVarArgs.oE(2, this.RMR.computeSize());
+        this.RMR.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(133169);
       return 0;
     }
+    int i;
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.r(1, this.startTimeMs);
-      int i = g.a.a.b.b.a.r(2, this.endTimeMs);
-      AppMethodBeat.o(201295);
-      return paramInt + 0 + i;
+      i = g.a.a.b.b.a.bM(1, this.Stl) + 0;
+      paramInt = i;
+      if (this.RMR != null) {
+        paramInt = i + g.a.a.a.oD(2, this.RMR.computeSize());
+      }
+      AppMethodBeat.o(133169);
+      return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(201295);
+      if (this.RMR == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Key");
+        AppMethodBeat.o(133169);
+        throw paramVarArgs;
+      }
+      AppMethodBeat.o(133169);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject = (g.a.a.a.a)paramVarArgs[0];
       aiq localaiq = (aiq)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(201295);
+        AppMethodBeat.o(133169);
         return -1;
       case 1: 
-        localaiq.startTimeMs = locala.UbS.zl();
-        AppMethodBeat.o(201295);
+        localaiq.Stl = ((g.a.a.a.a)localObject).abFh.AK();
+        AppMethodBeat.o(133169);
         return 0;
       }
-      localaiq.endTimeMs = locala.UbS.zl();
-      AppMethodBeat.o(201295);
+      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject = (byte[])paramVarArgs.get(paramInt);
+        eae localeae = new eae();
+        if ((localObject != null) && (localObject.length > 0)) {
+          localeae.dd((byte[])localObject);
+        }
+        localaiq.RMR = localeae;
+        paramInt += 1;
+      }
+      AppMethodBeat.o(133169);
       return 0;
     }
-    AppMethodBeat.o(201295);
+    AppMethodBeat.o(133169);
     return -1;
   }
 }

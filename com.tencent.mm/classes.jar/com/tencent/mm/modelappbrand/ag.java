@@ -3,7 +3,7 @@ package com.tencent.mm.modelappbrand;
 public abstract class ag
   implements o
 {
-  public abstract void aXW();
+  public abstract void bhf();
   
   public final String getName()
   {
@@ -12,7 +12,7 @@ public abstract class ag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.ag
  * JD-Core Version:    0.7.0.1
  */

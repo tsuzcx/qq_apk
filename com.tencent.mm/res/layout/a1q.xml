@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/e1v" android:background="@null" android:layout_width="74.0dip" android:layout_height="74.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dup" android:padding="@dimen/g" android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_centerInParent="true" />
-    <CheckBox android:id="@id/b0v" android:background="@drawable/ai1" android:focusable="false" android:clickable="false" android:layout_width="@dimen/as" android:layout_height="@dimen/ar" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-</RelativeLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/e1v" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/dup" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_margin="8.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+    <CheckBox android:id="@id/b0v" android:background="@drawable/ai1" android:focusable="false" android:clickable="false" android:layout_width="@dimen/as" android:layout_height="@dimen/ar" android:scaleType="fitCenter" app:layout_constraintStart_toStartOf="@id/dup" app:layout_constraintTop_toTopOf="@id/dup" />
+</androidx.constraintlayout.widget.ConstraintLayout>

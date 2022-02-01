@@ -4,6 +4,7 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.matrix.trace.g.b;
 import com.tencent.mm.model.aa;
+import com.tencent.mm.plugin.music.a.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -12,35 +13,35 @@ import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public final class e
+public class e
 {
-  private boolean Akm;
-  public ArrayList<a> Akn;
-  private LinkedList<Long> Ako;
-  private String Akp;
-  private String Akq;
-  private String Akr;
-  private boolean Aks;
+  private boolean FRq;
+  public ArrayList<a> FRr;
+  private LinkedList<Long> FRs;
+  private String FRt;
+  private String FRu;
+  private String FRv;
+  private boolean FRw;
   private String album;
-  private String lDR;
   private long offset;
-  private int sTB;
+  private String ozs;
   private String title;
+  private int wzx;
   
   private e()
   {
     AppMethodBeat.i(63007);
-    this.Akm = false;
-    this.Ako = new LinkedList();
-    this.Akn = new ArrayList();
-    this.sTB = 0;
-    this.Aks = false;
+    this.FRq = false;
+    this.FRs = new LinkedList();
+    this.FRr = new ArrayList();
+    this.wzx = 0;
+    this.FRw = false;
     AppMethodBeat.o(63007);
   }
   
   public static e a(String paramString1, String paramString2, String paramString3, boolean paramBoolean1, String paramString4, boolean paramBoolean2, boolean paramBoolean3)
   {
-    AppMethodBeat.i(219834);
+    AppMethodBeat.i(259935);
     e locale = new e();
     long l = Util.currentTicks();
     if (!Util.isNullOrNil(paramString1)) {
@@ -48,8 +49,8 @@ public final class e
       {
         Log.w("MicroMsg.Music.LyricObj", "parserLrc: but lrc or lrcMgr is null");
         Log.d("MicroMsg.Music.LyricObj", "getLrcMgr beg: src lrc = %s", new Object[] { paramString1 });
-        Log.d("MicroMsg.Music.LyricObj", "parse finish: sentence size [%d], result:", new Object[] { Integer.valueOf(locale.Akn.size()) });
-        locale.Akm = true;
+        Log.d("MicroMsg.Music.LyricObj", "parse finish: sentence size [%d], result:", new Object[] { Integer.valueOf(locale.FRr.size()) });
+        locale.FRq = true;
         if (paramBoolean3)
         {
           if (!Util.isNullOrNil(paramString3)) {
@@ -70,7 +71,7 @@ public final class e
     for (;;)
     {
       Log.d("MicroMsg.Music.LyricObj", "getLrcMgr finish: use %d ms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
-      AppMethodBeat.o(219834);
+      AppMethodBeat.o(259935);
       return locale;
       paramString4 = paramString1.replaceAll("\n", " ").replaceAll("\r", " ");
       Matcher localMatcher1 = Pattern.compile("(\\[((\\d{2}:\\d{2}(\\.\\d{2}){0,1}\\])|(al:|ar:|by:|offset:|re:|ti:|ve:))[^\\[]*)").matcher(paramString4);
@@ -85,31 +86,31 @@ public final class e
         }
         else if (str.startsWith("[ti:"))
         {
-          locale.title = iY(str, "[ti:");
+          locale.title = ji(str, "[ti:");
         }
         else if (str.startsWith("[ar:"))
         {
-          locale.lDR = iY(str, "[ar:");
+          locale.ozs = ji(str, "[ar:");
         }
         else if (str.startsWith("[al:"))
         {
-          locale.album = iY(str, "[al:");
+          locale.album = ji(str, "[al:");
         }
         else if (str.startsWith("[by:"))
         {
-          locale.Akp = iY(str, "[by:");
+          locale.FRt = ji(str, "[by:");
         }
         else if (str.startsWith("[offset:"))
         {
-          locale.offset = Util.getLong(iY(str, "[offset:"), 0L);
+          locale.offset = Util.getLong(ji(str, "[offset:"), 0L);
         }
         else if (str.startsWith("[re:"))
         {
-          locale.Akq = iY(str, "[re:");
+          locale.FRu = ji(str, "[re:");
         }
         else if (str.startsWith("[ve:"))
         {
-          locale.Akr = iY(str, "[ve:");
+          locale.FRv = ji(str, "[ve:");
         }
         else
         {
@@ -122,7 +123,7 @@ public final class e
             if (localMatcher2.find())
             {
               if (localMatcher2.groupCount() > 0) {
-                locala.timestamp = aHO(localMatcher2.group(1));
+                locala.timestamp = aSe(localMatcher2.group(1));
               }
               paramString4 = localPattern.split(str);
               if ((paramString4 != null) && (paramString4.length > 0))
@@ -141,30 +142,30 @@ public final class e
               }
               for (;;)
               {
-                if (i < locale.Ako.size())
+                if (i < locale.FRs.size())
                 {
                   paramString4 = new a();
-                  paramString4.timestamp = ((Long)locale.Ako.get(i)).longValue();
+                  paramString4.timestamp = ((Long)locale.FRs.get(i)).longValue();
                   paramString4.content = locala.content;
-                  paramString4.Akt = true;
+                  paramString4.FRx = true;
                   i += 1;
                   continue;
-                  locale.Ako.add(Long.valueOf(locala.timestamp));
+                  locale.FRs.add(Long.valueOf(locala.timestamp));
                   break;
                 }
               }
-              locale.Ako.clear();
+              locale.FRs.clear();
               if (!locala.isEmpty()) {
-                i = locale.Akn.size() - 1;
+                i = locale.FRr.size() - 1;
               }
             }
           }
           for (;;)
           {
-            if ((i >= 0) && (((a)locale.Akn.get(i)).timestamp != locala.timestamp))
+            if ((i >= 0) && (((a)locale.FRr.get(i)).timestamp != locala.timestamp))
             {
-              if (((a)locale.Akn.get(i)).timestamp < locala.timestamp) {
-                locale.Akn.add(i + 1, locala);
+              if (((a)locale.FRr.get(i)).timestamp < locala.timestamp) {
+                locale.FRr.add(i + 1, locala);
               }
             }
             else
@@ -172,7 +173,7 @@ public final class e
               if (i >= 0) {
                 break label433;
               }
-              locale.Akn.add(0, locala);
+              locale.FRr.add(0, locala);
               break label433;
               break;
             }
@@ -184,19 +185,19 @@ public final class e
       if (locale.offset != 0L)
       {
         i = 0;
-        while (i < locale.Akn.size())
+        while (i < locale.FRr.size())
         {
-          paramString4 = (a)locale.Akn.get(i);
+          paramString4 = (a)locale.FRr.get(i);
           paramString4.timestamp += locale.offset;
           i += 1;
         }
         locale.offset = 0L;
       }
       int i = 0;
-      while (i < locale.Akn.size() - 1)
+      while (i < locale.FRr.size() - 1)
       {
-        paramString4 = (a)locale.Akn.get(i);
-        if ((paramString4.Akt) && (paramString4.content.equals(((a)locale.Akn.get(i + 1)).content))) {
+        paramString4 = (a)locale.FRr.get(i);
+        if ((paramString4.FRx) && (paramString4.content.equals(((a)locale.FRr.get(i + 1)).content))) {
           paramString4.content = " ";
         }
         i += 1;
@@ -210,12 +211,12 @@ public final class e
       for (;;)
       {
         if (((a)localObject).content != null) {
-          locale.Akn.add(localObject);
+          locale.FRr.add(localObject);
         }
-        locale.Akm = false;
+        locale.FRq = false;
         break;
         if (!paramBoolean1) {
-          ((a)localObject).content = MMApplicationContext.getContext().getString(2131763589);
+          ((a)localObject).content = MMApplicationContext.getContext().getString(a.h.no_licence_lyric_wording);
         } else {
           ((a)localObject).content = "";
         }
@@ -223,43 +224,43 @@ public final class e
       label1015:
       paramString4 = new a();
       paramString4.timestamp = 0L;
-      paramString4.content = MMApplicationContext.getContext().getString(2131766987, new Object[] { aa.getDisplayName(paramString3) });
-      if (locale.Akn.isEmpty())
+      paramString4.content = MMApplicationContext.getContext().getString(a.h.user_share_music, new Object[] { aa.PJ(paramString3) });
+      if (locale.FRr.isEmpty())
       {
-        locale.Akn.add(paramString4);
+        locale.FRr.add(paramString4);
         break label102;
       }
-      if (locale.Akn.size() == 1)
+      if (locale.FRr.size() == 1)
       {
-        locale.Akn.add(0, paramString4);
-        ((a)locale.Akn.get(1)).timestamp = 5000L;
+        locale.FRr.add(0, paramString4);
+        ((a)locale.FRr.get(1)).timestamp = 5000L;
         break label102;
       }
-      locale.Akn.add(0, paramString4);
-      ((a)locale.Akn.get(1)).timestamp = (3L * (((a)locale.Akn.get(2)).timestamp >> 2));
+      locale.FRr.add(0, paramString4);
+      ((a)locale.FRr.get(1)).timestamp = (3L * (((a)locale.FRr.get(2)).timestamp >> 2));
       break label102;
       label1174:
       paramString1 = new a();
       paramString1.timestamp = 0L;
       paramString1.content = paramString2;
-      if (locale.Akn.isEmpty())
+      if (locale.FRr.isEmpty())
       {
-        locale.Akn.add(paramString1);
+        locale.FRr.add(paramString1);
       }
-      else if (locale.Akn.size() == 1)
+      else if (locale.FRr.size() == 1)
       {
-        locale.Akn.add(0, paramString1);
-        ((a)locale.Akn.get(1)).timestamp = 5000L;
+        locale.FRr.add(0, paramString1);
+        ((a)locale.FRr.get(1)).timestamp = 5000L;
       }
       else
       {
-        locale.Akn.add(0, paramString1);
-        ((a)locale.Akn.get(1)).timestamp = (3L * (((a)locale.Akn.get(2)).timestamp >> 2));
+        locale.FRr.add(0, paramString1);
+        ((a)locale.FRr.get(1)).timestamp = (3L * (((a)locale.FRr.get(2)).timestamp >> 2));
       }
     }
   }
   
-  private static long aHO(String paramString)
+  private static long aSe(String paramString)
   {
     AppMethodBeat.i(63005);
     for (;;)
@@ -267,15 +268,15 @@ public final class e
       try
       {
         paramString = paramString.split(":");
-        int k = m.cL(paramString[0]);
+        int k = m.df(paramString[0]);
         if (paramString.length <= 1) {
           break label145;
         }
         paramString = paramString[1].split("\\.");
-        j = m.cL(paramString[0]);
+        j = m.df(paramString[0]);
         if (paramString.length > 1)
         {
-          i = m.cL(paramString[1]);
+          i = m.df(paramString[1]);
           long l1 = k;
           long l2 = j * 1000;
           long l3 = i * 10;
@@ -298,7 +299,7 @@ public final class e
     }
   }
   
-  private static String iY(String paramString1, String paramString2)
+  private static String ji(String paramString1, String paramString2)
   {
     AppMethodBeat.i(63004);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
@@ -317,47 +318,47 @@ public final class e
     return str;
   }
   
-  public final int Hp(long paramLong)
+  public final int OF(long paramLong)
   {
-    AppMethodBeat.i(219836);
-    if (this.Akn.isEmpty())
+    AppMethodBeat.i(259945);
+    if (this.FRr.isEmpty())
     {
       Log.w("MicroMsg.Music.LyricObj", "getCurIndex: but sentence list is empty");
-      AppMethodBeat.o(219836);
+      AppMethodBeat.o(259945);
       return -1;
     }
     int j;
     int i;
-    if (((a)this.Akn.get(this.sTB)).timestamp <= paramLong)
+    if (((a)this.FRr.get(this.wzx)).timestamp <= paramLong)
     {
-      j = this.Akn.size() - 1;
-      i = this.sTB;
+      j = this.FRr.size() - 1;
+      i = this.wzx;
       while (i < j)
       {
-        if ((((a)this.Akn.get(i)).timestamp <= paramLong) && (paramLong < ((a)this.Akn.get(i + 1)).timestamp))
+        if ((((a)this.FRr.get(i)).timestamp <= paramLong) && (paramLong < ((a)this.FRr.get(i + 1)).timestamp))
         {
-          this.sTB = i;
-          i = this.sTB;
-          AppMethodBeat.o(219836);
+          this.wzx = i;
+          i = this.wzx;
+          AppMethodBeat.o(259945);
           return i;
         }
         i += 1;
       }
     }
-    for (this.sTB = j;; this.sTB = 0)
+    for (this.wzx = j;; this.wzx = 0)
     {
-      Log.d("MicroMsg.Music.LyricObj", "curIndex %d", new Object[] { Integer.valueOf(this.sTB) });
-      i = this.sTB;
-      AppMethodBeat.o(219836);
+      Log.d("MicroMsg.Music.LyricObj", "curIndex %d", new Object[] { Integer.valueOf(this.wzx) });
+      i = this.wzx;
+      AppMethodBeat.o(259945);
       return i;
-      i = this.sTB;
+      i = this.wzx;
       while (i > 0)
       {
-        if ((((a)this.Akn.get(i)).timestamp >= paramLong) && (paramLong > ((a)this.Akn.get(i - 1)).timestamp))
+        if ((((a)this.FRr.get(i)).timestamp >= paramLong) && (paramLong > ((a)this.FRr.get(i - 1)).timestamp))
         {
-          this.sTB = (i - 1);
-          i = this.sTB;
-          AppMethodBeat.o(219836);
+          this.wzx = (i - 1);
+          i = this.wzx;
+          AppMethodBeat.o(259945);
           return i;
         }
         i -= 1;
@@ -365,38 +366,38 @@ public final class e
     }
   }
   
-  public final a SQ(int paramInt)
+  public final a Zm(int paramInt)
   {
     AppMethodBeat.i(63006);
-    if ((paramInt < 0) || (paramInt >= this.Akn.size()))
+    if ((paramInt < 0) || (paramInt >= this.FRr.size()))
     {
       AppMethodBeat.o(63006);
       return null;
     }
-    a locala = (a)this.Akn.get(paramInt);
+    a locala = (a)this.FRr.get(paramInt);
     AppMethodBeat.o(63006);
     return locala;
   }
   
-  public final int euw()
+  public final int feO()
   {
-    AppMethodBeat.i(219835);
-    int i = this.Akn.size();
-    AppMethodBeat.o(219835);
+    AppMethodBeat.i(259943);
+    int i = this.FRr.size();
+    AppMethodBeat.o(259943);
     return i;
   }
   
   public static final class a
   {
-    public boolean Akt;
+    public boolean FRx;
     public String content;
     public long timestamp;
     
     public final boolean isEmpty()
     {
-      AppMethodBeat.i(219833);
-      boolean bool = b.eP(this.content.trim());
-      AppMethodBeat.o(219833);
+      AppMethodBeat.i(260304);
+      boolean bool = b.fK(this.content.trim());
+      AppMethodBeat.o(260304);
       return bool;
     }
     
@@ -411,7 +412,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.e
  * JD-Core Version:    0.7.0.1
  */

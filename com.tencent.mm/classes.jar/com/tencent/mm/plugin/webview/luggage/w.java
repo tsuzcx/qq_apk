@@ -7,22 +7,22 @@ import java.util.HashMap;
 
 public final class w
 {
-  public g ISU;
-  public final HashMap<String, String> IVj;
-  public final HashMap<String, a.d> IVk;
-  public final HashMap<String, String> IVl;
+  public g PPn;
+  public final HashMap<String, a.d> PRA;
+  public final HashMap<String, String> PRB;
+  public final HashMap<String, String> PRz;
   
   public w(g paramg)
   {
     AppMethodBeat.i(78474);
-    this.IVj = new HashMap();
-    this.IVk = new HashMap();
-    this.IVl = new HashMap();
-    this.ISU = paramg;
+    this.PRz = new HashMap();
+    this.PRA = new HashMap();
+    this.PRB = new HashMap();
+    this.PPn = paramg;
     AppMethodBeat.o(78474);
   }
   
-  public static String aYy(String paramString)
+  public static String bks(String paramString)
   {
     AppMethodBeat.i(78476);
     if (Util.isNullOrNil(paramString))
@@ -44,14 +44,14 @@ public final class w
   public final String getAppId()
   {
     AppMethodBeat.i(78475);
-    String str = this.ISU.getUrl();
+    String str = this.PPn.getUrl();
     if (Util.isNullOrNil(str))
     {
       AppMethodBeat.o(78475);
       return null;
     }
-    str = aYy(str);
-    str = (String)this.IVj.get(str);
+    str = bks(str);
+    str = (String)this.PRz.get(str);
     AppMethodBeat.o(78475);
     return str;
   }
@@ -65,7 +65,7 @@ public final class w
       AppMethodBeat.o(78477);
       return null;
     }
-    str = (String)this.IVl.get(str);
+    str = (String)this.PRB.get(str);
     AppMethodBeat.o(78477);
     return str;
   }

@@ -249,9 +249,8 @@ public class CommonPlayer
     Object localObject = this.mAudioPlayer;
     if (localObject == null)
     {
-      localObject = new IllegalStateException("not initialized!");
       AppMethodBeat.o(76468);
-      throw ((Throwable)localObject);
+      return null;
     }
     localObject = ((CorePlayer)localObject).createSeekTable();
     AppMethodBeat.o(76468);
@@ -383,14 +382,14 @@ public class CommonPlayer
   
   public float getSpeed()
   {
-    AppMethodBeat.i(190286);
+    AppMethodBeat.i(244443);
     float f = 1.0F;
     if (this.mAudioPlayer != null) {
       f = this.mAudioPlayer.getSpeed();
     }
     for (;;)
     {
-      AppMethodBeat.o(190286);
+      AppMethodBeat.o(244443);
       return f;
       if (this.mSpeedToSet != null) {
         f = this.mSpeedToSet.floatValue();
@@ -1017,7 +1016,7 @@ public class CommonPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.CommonPlayer
  * JD-Core Version:    0.7.0.1
  */

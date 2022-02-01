@@ -5,7 +5,6 @@ import android.content.Intent;
 import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.model.WebViewJSSDKVideoItem;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -22,14 +21,14 @@ public class k
   public static void a(com.tencent.luggage.d.b<g>.a paramb, int paramInt)
   {
     AppMethodBeat.i(78543);
-    final MMActivity localMMActivity = (MMActivity)((g)paramb.cta).mContext;
+    final MMActivity localMMActivity = (MMActivity)((g)paramb.crg).mContext;
     if (localMMActivity == null)
     {
       Log.e("MicroMsg.JsApiChooseVideo", "activity is null");
       AppMethodBeat.o(78543);
       return;
     }
-    Object localObject = paramb.ctb.csi;
+    Object localObject = paramb.crh.cqn;
     String str1 = ((JSONObject)localObject).optString("sourceType", "");
     String str2 = ((JSONObject)localObject).optString("camera", "");
     Log.i("MicroMsg.JsApiChooseVideo", "doChooseVideo sourceType = %s, camera = %s, isVideoType:%d", new Object[] { str1, str2, Integer.valueOf(paramInt) });
@@ -42,7 +41,7 @@ public class k
       {
         if (k <= 0)
         {
-          paramb.c("fail", null);
+          paramb.a("fail", null);
           AppMethodBeat.o(78543);
           return;
         }
@@ -123,14 +122,14 @@ public class k
                   switch (paramAnonymousInt2)
                   {
                   default: 
-                    this.xwD.c("fail", null);
+                    this.CAL.a("fail", null);
                   }
                   for (;;)
                   {
                     localMMActivity.mmSetOnActivityResultCallback(null);
                     AppMethodBeat.o(78541);
                     return;
-                    this.xwD.c("cancel", null);
+                    this.CAL.a("cancel", null);
                     continue;
                     localObject1 = paramAnonymousIntent.getStringExtra("key_pick_local_media_local_id");
                     paramAnonymousIntent = paramAnonymousIntent.getStringExtra("key_pick_local_media_thumb_local_id");
@@ -139,7 +138,7 @@ public class k
                     if (Util.isNullOrNil((String)localObject1)) {
                       break;
                     }
-                    localObject2 = com.tencent.mm.plugin.webview.luggage.c.b.aYC((String)localObject1);
+                    localObject2 = com.tencent.mm.plugin.webview.luggage.c.c.bkw((String)localObject1);
                     if ((localObject2 != null) && ((localObject2 instanceof WebViewJSSDKVideoItem)))
                     {
                       localObject2 = (WebViewJSSDKVideoItem)localObject2;
@@ -150,11 +149,11 @@ public class k
                       localHashMap.put("size", Integer.valueOf(((WebViewJSSDKVideoItem)localObject2).size));
                       localHashMap.put("width", Integer.valueOf(((WebViewJSSDKVideoItem)localObject2).width));
                       localHashMap.put("thumbLocalId", paramAnonymousIntent);
-                      this.xwD.e("", localHashMap);
+                      this.CAL.d("", localHashMap);
                     }
                     else
                     {
-                      this.xwD.c("fail", null);
+                      this.CAL.a("fail", null);
                     }
                   }
                 }
@@ -162,7 +161,7 @@ public class k
                   switch (paramAnonymousInt2)
                   {
                   default: 
-                    this.xwD.c("fail", null);
+                    this.CAL.a("fail", null);
                   }
                 }
                 for (;;)
@@ -170,13 +169,13 @@ public class k
                   localMMActivity.mmSetOnActivityResultCallback(null);
                   AppMethodBeat.o(78541);
                   return;
-                  this.xwD.c("cancel", null);
+                  this.CAL.a("cancel", null);
                   continue;
                   paramAnonymousIntent = paramAnonymousIntent.getStringExtra("key_pick_local_media_local_id");
                   if (Util.isNullOrNil(paramAnonymousIntent)) {
                     break;
                   }
-                  localObject1 = com.tencent.mm.plugin.webview.luggage.c.b.aYC(paramAnonymousIntent);
+                  localObject1 = com.tencent.mm.plugin.webview.luggage.c.c.bkw(paramAnonymousIntent);
                   if ((localObject1 != null) && ((localObject1 instanceof WebViewJSSDKVideoItem)))
                   {
                     localObject1 = (WebViewJSSDKVideoItem)localObject1;
@@ -186,22 +185,22 @@ public class k
                     ((HashMap)localObject2).put("height", Integer.valueOf(((WebViewJSSDKVideoItem)localObject1).height));
                     ((HashMap)localObject2).put("size", Integer.valueOf(((WebViewJSSDKVideoItem)localObject1).size));
                     ((HashMap)localObject2).put("width", Integer.valueOf(((WebViewJSSDKVideoItem)localObject1).width));
-                    this.xwD.e("", (Map)localObject2);
+                    this.CAL.d("", (Map)localObject2);
                   }
                   else
                   {
-                    this.xwD.c("fail", null);
+                    this.CAL.a("fail", null);
                   }
                 }
               }
             });
             if (paramInt == 1)
             {
-              c.a(localMMActivity, "webview", ".ui.tools.OpenFileChooserUI", (Intent)localObject, 45, false);
+              com.tencent.mm.by.c.a(localMMActivity, "webview", ".ui.tools.OpenFileChooserUI", (Intent)localObject, 45, false);
               AppMethodBeat.o(78543);
               return;
             }
-            c.a(localMMActivity, "webview", ".ui.tools.OpenFileChooserUI", (Intent)localObject, 32, false);
+            com.tencent.mm.by.c.a(localMMActivity, "webview", ".ui.tools.OpenFileChooserUI", (Intent)localObject, 32, false);
             AppMethodBeat.o(78543);
             return;
           }
@@ -220,7 +219,7 @@ public class k
     AppMethodBeat.o(78542);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

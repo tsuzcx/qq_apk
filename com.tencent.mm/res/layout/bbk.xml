@@ -21,7 +21,7 @@
                 <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
                     <TextView android:textSize="15.0dip" android:textColor="@color/FG_1" android:id="@id/j1l" android:layout_width="0.0dip" android:text="{user}" android:layout_weight="1.0" style="@style/mk" />
                     <RelativeLayout android:gravity="end|center" android:id="@id/gnx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/ct" android:paddingEnd="@dimen/ct" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="@dimen/ct">
-                        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/gny" android:padding="@dimen/bt" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_qrcode" app:iconColor="@color/FG_1" />
+                        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/gny" android:padding="@dimen/bt" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_qrcode" android:contentDescription="@string/gj3" app:iconColor="@color/FG_1" />
                         <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/uk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:src="@raw/icons_outlined_arrow" android:layout_alignTop="@id/gny" android:paddingStart="@dimen/cb" android:layout_toEndOf="@id/gny" app:iconColor="@color/FG_2" />
                     </RelativeLayout>
                 </LinearLayout>
@@ -29,4 +29,5 @@
             <TextView android:id="@id/h7d" android:visibility="gone" android:layout_marginRight="2.0dip" android:text="100" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/zs" />
         </RelativeLayout>
     </LinearLayout>
+    <View android:id="@id/kjs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@id/dns" android:layout_alignBottom="@id/dns" />
 </RelativeLayout>

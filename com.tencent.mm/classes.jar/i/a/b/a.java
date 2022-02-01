@@ -7,47 +7,47 @@ import java.io.OutputStream;
 
 public final class a
 {
-  i.a.a.a UoR;
-  b UoS;
-  short[] UoT;
-  short[] UoU;
-  short[] UoV;
-  short[] UoW;
-  short[] UoX;
-  short[] UoY;
-  i.a.c.a[] UoZ;
-  short[] Upa;
-  i.a.c.a Upb;
-  a Upc;
-  a Upd;
-  b Upe;
-  int Upf;
-  int Upg;
-  int Uph;
+  i.a.a.a abSg;
+  b abSh;
+  short[] abSi;
+  short[] abSj;
+  short[] abSk;
+  short[] abSl;
+  short[] abSm;
+  short[] abSn;
+  i.a.c.a[] abSo;
+  short[] abSp;
+  i.a.c.a abSq;
+  a abSr;
+  a abSs;
+  b abSt;
+  int abSu;
+  int abSv;
+  int abSw;
   
   public a()
   {
     AppMethodBeat.i(155357);
-    this.UoR = new i.a.a.a();
-    this.UoS = new b();
-    this.UoT = new short['À'];
-    this.UoU = new short[12];
-    this.UoV = new short[12];
-    this.UoW = new short[12];
-    this.UoX = new short[12];
-    this.UoY = new short['À'];
-    this.UoZ = new i.a.c.a[4];
-    this.Upa = new short[114];
-    this.Upb = new i.a.c.a(4);
-    this.Upc = new a();
-    this.Upd = new a();
-    this.Upe = new b();
-    this.Upf = -1;
-    this.Upg = -1;
+    this.abSg = new i.a.a.a();
+    this.abSh = new b();
+    this.abSi = new short['À'];
+    this.abSj = new short[12];
+    this.abSk = new short[12];
+    this.abSl = new short[12];
+    this.abSm = new short[12];
+    this.abSn = new short['À'];
+    this.abSo = new i.a.c.a[4];
+    this.abSp = new short[114];
+    this.abSq = new i.a.c.a(4);
+    this.abSr = new a();
+    this.abSs = new a();
+    this.abSt = new b();
+    this.abSu = -1;
+    this.abSv = -1;
     int i = 0;
     while (i < 4)
     {
-      this.UoZ[i] = new i.a.c.a(6);
+      this.abSo[i] = new i.a.c.a(6);
       i += 1;
     }
     AppMethodBeat.o(155357);
@@ -56,45 +56,45 @@ public final class a
   public final boolean a(InputStream paramInputStream, OutputStream paramOutputStream, long paramLong)
   {
     AppMethodBeat.i(155358);
-    this.UoS.Upx = paramInputStream;
-    paramInputStream = this.UoR;
-    paramInputStream.hRo();
-    paramInputStream.UoQ = paramOutputStream;
-    paramInputStream = this.UoR;
-    paramInputStream.UoP = 0;
-    paramInputStream.Ucm = 0;
-    b.c(this.UoT);
-    b.c(this.UoY);
-    b.c(this.UoU);
-    b.c(this.UoV);
-    b.c(this.UoW);
-    b.c(this.UoX);
-    b.c(this.Upa);
-    paramInputStream = this.Upe;
-    int k = paramInputStream.Upp;
-    int m = paramInputStream.Upq;
+    this.abSh.abSM = paramInputStream;
+    paramInputStream = this.abSg;
+    paramInputStream.iWy();
+    paramInputStream.abSf = paramOutputStream;
+    paramInputStream = this.abSg;
+    paramInputStream.abSe = 0;
+    paramInputStream.abFB = 0;
+    b.c(this.abSi);
+    b.c(this.abSn);
+    b.c(this.abSj);
+    b.c(this.abSk);
+    b.c(this.abSl);
+    b.c(this.abSm);
+    b.c(this.abSp);
+    paramInputStream = this.abSt;
+    int k = paramInputStream.abSE;
+    int m = paramInputStream.abSF;
     int j = 0;
     while (j < 1 << k + m)
     {
-      b.c(paramInputStream.Upo[j].Ups);
+      b.c(paramInputStream.abSD[j].abSH);
       j += 1;
     }
     j = 0;
     while (j < 4)
     {
-      b.c(this.UoZ[j].Upu);
+      b.c(this.abSo[j].abSJ);
       j += 1;
     }
-    this.Upc.hRq();
-    this.Upd.hRq();
-    b.c(this.Upb.Upu);
-    paramInputStream = this.UoS;
-    paramInputStream.NcY = 0;
-    paramInputStream.Upw = -1;
+    this.abSr.iWA();
+    this.abSs.iWA();
+    b.c(this.abSq.abSJ);
+    paramInputStream = this.abSh;
+    paramInputStream.Upv = 0;
+    paramInputStream.abSL = -1;
     j = 0;
     while (j < 5)
     {
-      paramInputStream.NcY = (paramInputStream.NcY << 8 | paramInputStream.Upx.read());
+      paramInputStream.Upv = (paramInputStream.Upv << 8 | paramInputStream.abSM.read());
       j += 1;
     }
     int i1 = 0;
@@ -110,23 +110,23 @@ public final class a
     int i6;
     if ((paramLong < 0L) || (l < paramLong))
     {
-      i4 = (int)l & this.Uph;
-      if (this.UoS.g(this.UoT, (i1 << 4) + i4) == 0)
+      i4 = (int)l & this.abSw;
+      if (this.abSh.g(this.abSi, (i1 << 4) + i4) == 0)
       {
-        paramInputStream = this.Upe;
+        paramInputStream = this.abSt;
         i3 = (int)l;
-        paramOutputStream = paramInputStream.Upo;
-        i4 = paramInputStream.Upr;
-        i5 = paramInputStream.Upp;
-        paramInputStream = paramOutputStream[(((i2 & 0xFF) >>> 8 - paramInputStream.Upp) + ((i3 & i4) << i5))];
+        paramOutputStream = paramInputStream.abSD;
+        i4 = paramInputStream.abSG;
+        i5 = paramInputStream.abSE;
+        paramInputStream = paramOutputStream[(((i2 & 0xFF) >>> 8 - paramInputStream.abSE) + ((i3 & i4) << i5))];
         int i;
         if (i1 < 7)
         {
           i2 = 1;
           if (i2 == 0)
           {
-            paramOutputStream = this.UoS;
-            i4 = this.UoR.awq(m);
+            paramOutputStream = this.abSh;
+            i4 = this.abSg.aGl(m);
             i3 = 1;
           }
         }
@@ -136,7 +136,7 @@ public final class a
           {
             i5 = i4 >> 7 & 0x1;
             i4 = (byte)(i4 << 1);
-            i6 = paramOutputStream.g(paramInputStream.Ups, (i5 + 1 << 8) + i3);
+            i6 = paramOutputStream.g(paramInputStream.abSH, (i5 + 1 << 8) + i3);
             i2 = i3 << 1 | i6;
             if (i5 != i6)
             {
@@ -146,7 +146,7 @@ public final class a
                 if (i2 >= 256) {
                   break;
                 }
-                i2 = paramOutputStream.g(paramInputStream.Ups, i2) | i2 << 1;
+                i2 = paramOutputStream.g(paramInputStream.abSH, i2) | i2 << 1;
               }
               i2 = 0;
               break;
@@ -156,13 +156,13 @@ public final class a
           i3 = i2;
           i = (byte)i3;
           label515:
-          paramInputStream = this.UoR;
-          paramOutputStream = paramInputStream.UoN;
-          i2 = paramInputStream.Ucm;
-          paramInputStream.Ucm = (i2 + 1);
+          paramInputStream = this.abSg;
+          paramOutputStream = paramInputStream.abSc;
+          i2 = paramInputStream.abFB;
+          paramInputStream.abFB = (i2 + 1);
           paramOutputStream[i2] = i;
-          if (paramInputStream.Ucm >= paramInputStream.UoO) {
-            paramInputStream.hRp();
+          if (paramInputStream.abFB >= paramInputStream.abSd) {
+            paramInputStream.iWz();
           }
           if (i1 >= 4) {
             break label627;
@@ -174,11 +174,11 @@ public final class a
           l = 1L + l;
           i2 = i;
           break;
-          paramOutputStream = this.UoS;
+          paramOutputStream = this.abSh;
           i2 = 1;
           do
           {
-            i3 = paramOutputStream.g(paramInputStream.Ups, i2) | i2 << 1;
+            i3 = paramOutputStream.g(paramInputStream.abSH, i2) | i2 << 1;
             i2 = i3;
           } while (i3 < 256);
           i = (byte)i3;
@@ -191,12 +191,12 @@ public final class a
           }
         }
       }
-      if (this.UoS.g(this.UoU, i1) == 1)
+      if (this.abSh.g(this.abSj, i1) == 1)
       {
         i3 = 0;
-        if (this.UoS.g(this.UoV, i1) == 0)
+        if (this.abSh.g(this.abSk, i1) == 0)
         {
-          if (this.UoS.g(this.UoY, (i1 << 4) + i4) != 0) {
+          if (this.abSh.g(this.abSn, (i1 << 4) + i4) != 0) {
             break label1661;
           }
           if (i1 < 7)
@@ -213,7 +213,7 @@ public final class a
       label724:
       if (i2 == 0)
       {
-        i4 = this.Upd.a(this.UoS, i4) + 2;
+        i4 = this.abSs.a(this.abSh, i4) + 2;
         if (i1 < 7)
         {
           i1 = 8;
@@ -228,13 +228,13 @@ public final class a
       }
       for (;;)
       {
-        if ((i2 >= l) || (i2 >= this.Upg))
+        if ((i2 >= l) || (i2 >= this.abSv))
         {
           AppMethodBeat.o(155358);
           return false;
           i1 = 11;
           break label721;
-          if (this.UoS.g(this.UoW, i1) == 0)
+          if (this.abSh.g(this.abSl, i1) == 0)
           {
             i2 = m;
             m = k;
@@ -242,7 +242,7 @@ public final class a
             i2 = i3;
             break label724;
           }
-          if (this.UoS.g(this.UoX, i1) == 0) {}
+          if (this.abSh.g(this.abSm, i1) == 0) {}
           for (;;)
           {
             i2 = k;
@@ -255,11 +255,11 @@ public final class a
           }
           i1 = 11;
           break label757;
-          i2 = this.Upc.a(this.UoS, i4) + 2;
+          i2 = this.abSr.a(this.abSh, i4) + 2;
           if (i1 < 7)
           {
             n = 7;
-            paramInputStream = this.UoZ;
+            paramInputStream = this.abSo;
             i1 = i2 - 2;
             if (i1 >= 4) {
               break label1069;
@@ -268,7 +268,7 @@ public final class a
           int i7;
           for (;;)
           {
-            i5 = paramInputStream[i1].a(this.UoS);
+            i5 = paramInputStream[i1].a(this.abSh);
             if (i5 < 4) {
               break label1383;
             }
@@ -277,8 +277,8 @@ public final class a
             if (i5 >= 14) {
               break label1121;
             }
-            paramInputStream = this.Upa;
-            paramOutputStream = this.UoS;
+            paramInputStream = this.abSp;
+            paramOutputStream = this.abSh;
             i4 = 1;
             i1 = 0;
             i3 = 0;
@@ -306,30 +306,30 @@ public final class a
           i2 = i6;
           continue;
           label1121:
-          paramInputStream = this.UoS;
+          paramInputStream = this.abSh;
           i3 = i7 - 4;
           i1 = 0;
           while (i3 != 0)
           {
-            paramInputStream.Upw >>>= 1;
-            i4 = paramInputStream.NcY - paramInputStream.Upw >>> 31;
-            paramInputStream.NcY -= (paramInputStream.Upw & i4 - 1);
+            paramInputStream.abSL >>>= 1;
+            i4 = paramInputStream.Upv - paramInputStream.abSL >>> 31;
+            paramInputStream.Upv -= (paramInputStream.abSL & i4 - 1);
             i1 = i1 << 1 | 1 - i4;
-            if ((paramInputStream.Upw & 0xFF000000) == 0)
+            if ((paramInputStream.abSL & 0xFF000000) == 0)
             {
-              paramInputStream.NcY = (paramInputStream.NcY << 8 | paramInputStream.Upx.read());
-              paramInputStream.Upw <<= 8;
+              paramInputStream.Upv = (paramInputStream.Upv << 8 | paramInputStream.abSM.read());
+              paramInputStream.abSL <<= 8;
             }
             i3 -= 1;
           }
-          paramInputStream = this.Upb;
-          paramOutputStream = this.UoS;
+          paramInputStream = this.abSq;
+          paramOutputStream = this.abSh;
           i5 = 1;
           i4 = 0;
           i3 = 0;
-          while (i3 < paramInputStream.Upv)
+          while (i3 < paramInputStream.abSK)
           {
-            i7 = paramOutputStream.g(paramInputStream.Upu, i5);
+            i7 = paramOutputStream.g(paramInputStream.abSJ, i5);
             i5 = (i5 << 1) + i7;
             i4 |= i7 << i3;
             i3 += 1;
@@ -367,11 +367,11 @@ public final class a
           i1 = i6;
           continue;
         }
-        paramInputStream = this.UoR;
-        i3 = paramInputStream.Ucm - i2 - 1;
+        paramInputStream = this.abSg;
+        i3 = paramInputStream.abFB - i2 - 1;
         if (i3 < 0)
         {
-          i3 += paramInputStream.UoO;
+          i3 += paramInputStream.abSd;
           i4 = j;
         }
         for (;;)
@@ -379,15 +379,15 @@ public final class a
           if (i4 != 0)
           {
             i5 = i3;
-            if (i3 >= paramInputStream.UoO) {
+            if (i3 >= paramInputStream.abSd) {
               i5 = 0;
             }
-            paramOutputStream = paramInputStream.UoN;
-            i3 = paramInputStream.Ucm;
-            paramInputStream.Ucm = (i3 + 1);
-            paramOutputStream[i3] = paramInputStream.UoN[i5];
-            if (paramInputStream.Ucm >= paramInputStream.UoO) {
-              paramInputStream.hRp();
+            paramOutputStream = paramInputStream.abSc;
+            i3 = paramInputStream.abFB;
+            paramInputStream.abFB = (i3 + 1);
+            paramOutputStream[i3] = paramInputStream.abSc[i5];
+            if (paramInputStream.abFB >= paramInputStream.abSd) {
+              paramInputStream.iWz();
             }
             i4 -= 1;
             i3 = i5 + 1;
@@ -395,7 +395,7 @@ public final class a
           else
           {
             l += j;
-            i4 = this.UoR.awq(0);
+            i4 = this.abSg.aGl(0);
             j = m;
             m = n;
             i3 = i2;
@@ -405,9 +405,9 @@ public final class a
             m = i3;
             break;
             label1590:
-            this.UoR.hRp();
-            this.UoR.hRo();
-            this.UoS.Upx = null;
+            this.abSg.iWz();
+            this.abSg.iWy();
+            this.abSh.abSM = null;
             AppMethodBeat.o(155358);
             return true;
             i4 = j;
@@ -427,7 +427,7 @@ public final class a
     }
   }
   
-  public final boolean dz(byte[] paramArrayOfByte)
+  public final boolean dY(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(155359);
     int i = paramArrayOfByte[0] & 0xFF;
@@ -447,43 +447,43 @@ public final class a
     {
       AppMethodBeat.o(155359);
       return false;
-      paramArrayOfByte = this.Upe;
-      if ((paramArrayOfByte.Upo == null) || (paramArrayOfByte.Upp != m) || (paramArrayOfByte.Upq != n))
+      paramArrayOfByte = this.abSt;
+      if ((paramArrayOfByte.abSD == null) || (paramArrayOfByte.abSE != m) || (paramArrayOfByte.abSF != n))
       {
-        paramArrayOfByte.Upq = n;
-        paramArrayOfByte.Upr = ((1 << n) - 1);
-        paramArrayOfByte.Upp = m;
-        m = 1 << paramArrayOfByte.Upp + paramArrayOfByte.Upq;
-        paramArrayOfByte.Upo = new a.b.a[m];
+        paramArrayOfByte.abSF = n;
+        paramArrayOfByte.abSG = ((1 << n) - 1);
+        paramArrayOfByte.abSE = m;
+        m = 1 << paramArrayOfByte.abSE + paramArrayOfByte.abSF;
+        paramArrayOfByte.abSD = new a.b.a[m];
         j = 0;
         while (j < m)
         {
-          paramArrayOfByte.Upo[j] = new a.b.a(paramArrayOfByte);
+          paramArrayOfByte.abSD[j] = new a.b.a(paramArrayOfByte);
           j += 1;
         }
       }
       j = 1 << k;
-      this.Upc.awr(j);
-      this.Upd.awr(j);
-      this.Uph = (j - 1);
+      this.abSr.aGm(j);
+      this.abSs.aGm(j);
+      this.abSw = (j - 1);
     }
     if (i < 0)
     {
       AppMethodBeat.o(155359);
       return false;
     }
-    if (this.Upf != i)
+    if (this.abSu != i)
     {
-      this.Upf = i;
-      this.Upg = Math.max(this.Upf, 1);
-      paramArrayOfByte = this.UoR;
-      i = Math.max(this.Upg, 4096);
-      if ((paramArrayOfByte.UoN == null) || (paramArrayOfByte.UoO != i)) {
-        paramArrayOfByte.UoN = new byte[i];
+      this.abSu = i;
+      this.abSv = Math.max(this.abSu, 1);
+      paramArrayOfByte = this.abSg;
+      i = Math.max(this.abSv, 4096);
+      if ((paramArrayOfByte.abSc == null) || (paramArrayOfByte.abSd != i)) {
+        paramArrayOfByte.abSc = new byte[i];
       }
-      paramArrayOfByte.UoO = i;
-      paramArrayOfByte.Ucm = 0;
-      paramArrayOfByte.UoP = 0;
+      paramArrayOfByte.abSd = i;
+      paramArrayOfByte.abFB = 0;
+      paramArrayOfByte.abSe = 0;
     }
     AppMethodBeat.o(155359);
     return true;
@@ -491,85 +491,85 @@ public final class a
   
   final class a
   {
-    short[] Upi;
-    i.a.c.a[] Upj;
-    i.a.c.a[] Upk;
-    i.a.c.a Upl;
-    int Upm;
+    i.a.c.a abSA;
+    int abSB;
+    short[] abSx;
+    i.a.c.a[] abSy;
+    i.a.c.a[] abSz;
     
     a()
     {
       AppMethodBeat.i(155352);
-      this.Upi = new short[2];
-      this.Upj = new i.a.c.a[16];
-      this.Upk = new i.a.c.a[16];
-      this.Upl = new i.a.c.a(8);
-      this.Upm = 0;
+      this.abSx = new short[2];
+      this.abSy = new i.a.c.a[16];
+      this.abSz = new i.a.c.a[16];
+      this.abSA = new i.a.c.a(8);
+      this.abSB = 0;
       AppMethodBeat.o(155352);
     }
     
     public final int a(b paramb, int paramInt)
     {
       AppMethodBeat.i(155355);
-      if (paramb.g(this.Upi, 0) == 0)
+      if (paramb.g(this.abSx, 0) == 0)
       {
-        paramInt = this.Upj[paramInt].a(paramb);
+        paramInt = this.abSy[paramInt].a(paramb);
         AppMethodBeat.o(155355);
         return paramInt;
       }
-      if (paramb.g(this.Upi, 1) == 0) {}
-      for (paramInt = this.Upk[paramInt].a(paramb) + 8;; paramInt = this.Upl.a(paramb) + 8 + 8)
+      if (paramb.g(this.abSx, 1) == 0) {}
+      for (paramInt = this.abSz[paramInt].a(paramb) + 8;; paramInt = this.abSA.a(paramb) + 8 + 8)
       {
         AppMethodBeat.o(155355);
         return paramInt;
       }
     }
     
-    public final void awr(int paramInt)
+    public final void aGm(int paramInt)
     {
       AppMethodBeat.i(155353);
-      while (this.Upm < paramInt)
+      while (this.abSB < paramInt)
       {
-        this.Upj[this.Upm] = new i.a.c.a(3);
-        this.Upk[this.Upm] = new i.a.c.a(3);
-        this.Upm += 1;
+        this.abSy[this.abSB] = new i.a.c.a(3);
+        this.abSz[this.abSB] = new i.a.c.a(3);
+        this.abSB += 1;
       }
       AppMethodBeat.o(155353);
     }
     
-    public final void hRq()
+    public final void iWA()
     {
       AppMethodBeat.i(155354);
-      b.c(this.Upi);
+      b.c(this.abSx);
       int i = 0;
-      while (i < this.Upm)
+      while (i < this.abSB)
       {
-        b.c(this.Upj[i].Upu);
-        b.c(this.Upk[i].Upu);
+        b.c(this.abSy[i].abSJ);
+        b.c(this.abSz[i].abSJ);
         i += 1;
       }
-      b.c(this.Upl.Upu);
+      b.c(this.abSA.abSJ);
       AppMethodBeat.o(155354);
     }
   }
   
   final class b
   {
-    a[] Upo;
-    int Upp;
-    int Upq;
-    int Upr;
+    a[] abSD;
+    int abSE;
+    int abSF;
+    int abSG;
     
     b() {}
     
     final class a
     {
-      short[] Ups;
+      short[] abSH;
       
       a()
       {
         AppMethodBeat.i(155356);
-        this.Ups = new short[768];
+        this.abSH = new short[768];
         AppMethodBeat.o(155356);
       }
     }
@@ -577,7 +577,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     i.a.b.a
  * JD-Core Version:    0.7.0.1
  */

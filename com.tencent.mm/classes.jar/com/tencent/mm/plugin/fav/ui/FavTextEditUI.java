@@ -4,14 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.plugin.fav.a.af;
-import com.tencent.mm.plugin.fav.a.am;
-import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.anb;
-import com.tencent.mm.protocal.protobuf.cps;
-import com.tencent.mm.protocal.protobuf.cpv;
+import com.tencent.mm.an.t;
+import com.tencent.mm.plugin.fav.a.ag;
+import com.tencent.mm.plugin.fav.a.an;
+import com.tencent.mm.plugin.fav.a.g;
+import com.tencent.mm.plugin.fav.a.y;
+import com.tencent.mm.protocal.protobuf.aoc;
+import com.tencent.mm.protocal.protobuf.cyi;
+import com.tencent.mm.protocal.protobuf.cyl;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.tools.MMTextInputUI;
@@ -20,7 +20,7 @@ import java.util.LinkedList;
 public class FavTextEditUI
   extends MMTextInputUI
 {
-  public final void O(CharSequence paramCharSequence)
+  public final void X(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(106934);
     if ((paramCharSequence == null) || (Util.isNullOrNil(paramCharSequence.toString())))
@@ -38,36 +38,36 @@ public class FavTextEditUI
       return;
     }
     LinkedList localLinkedList = new LinkedList();
-    Object localObject1 = new cps();
-    ((cps)localObject1).MvI = 4;
-    ((cps)localObject1).MvJ = 0;
+    Object localObject1 = new cyi();
+    ((cyi)localObject1).TGG = 4;
+    ((cyi)localObject1).TGH = 0;
     localLinkedList.add(localObject1);
     localObject1 = new LinkedList();
-    Object localObject2 = new cpv();
-    ((cpv)localObject2).xMo = "favitem.desc";
-    ((cpv)localObject2).Cyk = Util.nullAs(paramCharSequence, "");
+    Object localObject2 = new cyl();
+    ((cyl)localObject2).CQx = "favitem.desc";
+    ((cyl)localObject2).Izj = Util.nullAs(paramCharSequence, "");
     ((LinkedList)localObject1).add(localObject2);
-    localObject2 = new cpv();
-    ((cpv)localObject2).xMo = "favitem.edittime";
-    ((cpv)localObject2).Cyk = String.valueOf(Util.nowSecond());
+    localObject2 = new cyl();
+    ((cyl)localObject2).CQx = "favitem.edittime";
+    ((cyl)localObject2).Izj = String.valueOf(Util.nowSecond());
     ((LinkedList)localObject1).add(localObject2);
-    localObject2 = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DZ(i);
+    localObject2 = ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().Kn(i);
     if (localObject2 != null)
     {
-      ((com.tencent.mm.plugin.fav.a.g)localObject2).field_edittime = Util.nowSecond();
-      ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.Mz(((com.tencent.mm.plugin.fav.a.g)localObject2).field_edittime);
-      ((com.tencent.mm.plugin.fav.a.g)localObject2).field_favProto.bhe(Util.nullAs(paramCharSequence, ""));
-      ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().a((com.tencent.mm.plugin.fav.a.g)localObject2, new String[] { "localId" });
+      ((g)localObject2).field_edittime = Util.nowSecond();
+      ((g)localObject2).field_favProto.Ud(((g)localObject2).field_edittime);
+      ((g)localObject2).field_favProto.btw(Util.nullAs(paramCharSequence, ""));
+      ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().a((g)localObject2, new String[] { "localId" });
     }
-    paramCharSequence = new am(i, localLinkedList, (LinkedList)localObject1);
-    com.tencent.mm.kernel.g.azz().a(paramCharSequence, 0);
-    h.CyF.a(10874, new Object[] { Integer.valueOf(1) });
+    paramCharSequence = new an(i, localLinkedList, (LinkedList)localObject1);
+    com.tencent.mm.kernel.h.aGY().a(paramCharSequence, 0);
+    com.tencent.mm.plugin.report.service.h.IzE.a(10874, new Object[] { Integer.valueOf(1) });
     AppMethodBeat.o(106934);
   }
   
   public int getLayoutId()
   {
-    return 2131494115;
+    return s.f.fav_edit_input_ui;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -75,7 +75,7 @@ public class FavTextEditUI
     AppMethodBeat.i(106933);
     customfixStatusbar(true);
     super.onCreate(paramBundle);
-    setMMTitle(2131759201);
+    setMMTitle(s.i.favorite_edit_title);
     AppMethodBeat.o(106933);
   }
   

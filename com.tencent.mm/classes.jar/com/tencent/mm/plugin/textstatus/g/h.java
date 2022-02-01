@@ -1,106 +1,107 @@
 package com.tencent.mm.plugin.textstatus.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.dpc;
-import g.a.a.b;
-import java.util.LinkedList;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.textstatus.proto.u;
+import com.tencent.mm.plugin.textstatus.proto.v;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/model/NetSceneTextStatusGetSelfLikeds;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "statusId", "", "context", "Lcom/tencent/mm/protobuf/ByteString;", "(Ljava/lang/String;Lcom/tencent/mm/protobuf/ByteString;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "commReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "response", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusGetSelfLikedsResp;", "getResponse", "()Lcom/tencent/mm/plugin/textstatus/proto/TextStatusGetSelfLikedsResp;", "setResponse", "(Lcom/tencent/mm/plugin/textstatus/proto/TextStatusGetSelfLikedsResp;)V", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-textstatus_release"})
 public final class h
-  extends dpc
+  extends q
+  implements m
 {
-  public boolean GaD;
-  public int GaE;
+  public static final a MDn;
+  public v MDm;
+  private i callback;
+  private final d lKU;
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  static
   {
-    AppMethodBeat.i(222826);
-    if (paramInt == 0)
-    {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(222826);
-        throw paramVarArgs;
-      }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.ni(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
-      }
-      paramVarArgs.cc(2, this.GaD);
-      paramVarArgs.aM(3, this.GaE);
-      AppMethodBeat.o(222826);
-      return 0;
-    }
-    if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label446;
-      }
-    }
-    label446:
-    for (paramInt = g.a.a.a.nh(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
-    {
-      int i = g.a.a.b.b.a.fS(2);
-      int j = g.a.a.b.b.a.bu(3, this.GaE);
-      AppMethodBeat.o(222826);
-      return paramInt + (i + 1) + j;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dpc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dpc.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
-          }
-        }
-        if (this.BaseResponse == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(222826);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(222826);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-        h localh = (h)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(222826);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localh.BaseResponse = ((BaseResponse)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(222826);
-          return 0;
-        case 2: 
-          localh.GaD = ((g.a.a.a.a)localObject1).UbS.yZ();
-          AppMethodBeat.o(222826);
-          return 0;
-        }
-        localh.GaE = ((g.a.a.a.a)localObject1).UbS.zi();
-        AppMethodBeat.o(222826);
-        return 0;
-      }
-      AppMethodBeat.o(222826);
-      return -1;
-    }
+    AppMethodBeat.i(238601);
+    MDn = new a((byte)0);
+    AppMethodBeat.o(238601);
   }
+  
+  public h(String paramString, b paramb)
+  {
+    AppMethodBeat.i(238598);
+    Object localObject = new d.a();
+    ((d.a)localObject).vD(getType());
+    ((d.a)localObject).TW("/cgi-bin/micromsg-bin/textstatusgetselflikeds");
+    ((d.a)localObject).c((a)new u());
+    ((d.a)localObject).d((a)new v());
+    localObject = ((d.a)localObject).bgN();
+    p.j(localObject, "commReqRespBuilder.buildInstance()");
+    this.lKU = ((d)localObject);
+    localObject = this.lKU.bhX();
+    if (localObject == null)
+    {
+      paramString = new t("null cannot be cast to non-null type com.tencent.mm.plugin.textstatus.proto.TextStatusGetSelfLikedsReq");
+      AppMethodBeat.o(238598);
+      throw paramString;
+    }
+    localObject = (u)localObject;
+    ((u)localObject).MEN = paramString;
+    ((u)localObject).MFp = paramb;
+    AppMethodBeat.o(238598);
+  }
+  
+  public final int doScene(g paramg, i parami)
+  {
+    AppMethodBeat.i(238591);
+    p.k(paramg, "dispatcher");
+    p.k(parami, "callback");
+    this.callback = parami;
+    int i = dispatch(paramg, (s)this.lKU, (m)this);
+    AppMethodBeat.o(238591);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 6621;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(238595);
+    p.k(params, "rr");
+    Log.i("MicroMsg.TextStatus.NetSceneTextStatusGetSelfLikeds", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 == 0) && (paramInt3 == 0))
+    {
+      params = this.lKU.bhY();
+      if (params == null)
+      {
+        paramString = new t("null cannot be cast to non-null type com.tencent.mm.plugin.textstatus.proto.TextStatusGetSelfLikedsResp");
+        AppMethodBeat.o(238595);
+        throw paramString;
+      }
+      this.MDm = ((v)params);
+    }
+    params = this.callback;
+    if (params != null)
+    {
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
+      AppMethodBeat.o(238595);
+      return;
+    }
+    AppMethodBeat.o(238595);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/model/NetSceneTextStatusGetSelfLikeds$Companion;", "", "()V", "TAG", "", "plugin-textstatus_release"})
+  public static final class a {}
 }
 
 

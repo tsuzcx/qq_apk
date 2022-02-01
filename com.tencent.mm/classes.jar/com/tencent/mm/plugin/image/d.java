@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.image;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.api.bucket.b;
 import com.tencent.mm.kernel.b.c;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,51 +12,51 @@ import java.util.List;
 public final class d
   implements b, c
 {
-  private static d ynN;
+  private static d DNP;
   
-  public static String aSY()
+  public static String bbW()
   {
     AppMethodBeat.i(151494);
     Object localObject = new StringBuilder();
-    g.aAi();
-    localObject = g.aAh().hqG + "image/";
+    h.aHH();
+    localObject = h.aHG().kcB + "image/";
     AppMethodBeat.o(151494);
     return localObject;
   }
   
-  public static String aSZ()
+  public static String bbX()
   {
     AppMethodBeat.i(151495);
     Object localObject = new StringBuilder();
-    g.aAi();
-    localObject = g.aAh().hqG + "image2/";
+    h.aHH();
+    localObject = h.aHG().kcB + "image2/";
     AppMethodBeat.o(151495);
     return localObject;
   }
   
-  public static d dZE()
+  public static d eIB()
   {
     try
     {
       AppMethodBeat.i(151492);
-      if (ynN == null) {
-        ynN = new d();
+      if (DNP == null) {
+        DNP = new d();
       }
-      d locald = ynN;
+      d locald = DNP;
       AppMethodBeat.o(151492);
       return locald;
     }
     finally {}
   }
   
-  public static String dZF()
+  public static String eIC()
   {
     AppMethodBeat.i(151496);
     AppMethodBeat.o(151496);
     return "wcf://bizimg/";
   }
   
-  public final List<String> aAo()
+  public final List<String> aHP()
   {
     AppMethodBeat.i(151493);
     LinkedList localLinkedList = new LinkedList();
@@ -67,7 +67,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.image.d
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
 {
-  public static int Xm(int paramInt)
+  public static int ael(int paramInt)
   {
     switch (paramInt)
     {
@@ -27,27 +27,27 @@ public final class a
   
   public static void g(Context paramContext, float paramFloat)
   {
-    AppMethodBeat.i(256452);
+    AppMethodBeat.i(264830);
     paramContext = paramContext.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).edit();
     paramContext.putFloat("current_text_size_scale_key", paramFloat);
     Log.i("MicroMsg.FontSizeService", "CURRENT_TEXT_SIZE_KEY put result: ".concat(String.valueOf(paramContext.commit())));
-    AppMethodBeat.o(256452);
+    AppMethodBeat.o(264830);
   }
   
-  public static float gV(Context paramContext)
+  public static float hV(Context paramContext)
   {
     float f = 1.0F;
-    AppMethodBeat.i(256453);
+    AppMethodBeat.i(264831);
     if (paramContext != null) {
       f = paramContext.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).getFloat("current_text_size_scale_key", 1.0F);
     }
-    AppMethodBeat.o(256453);
+    AppMethodBeat.o(264831);
     return f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.a
  * JD-Core Version:    0.7.0.1
  */

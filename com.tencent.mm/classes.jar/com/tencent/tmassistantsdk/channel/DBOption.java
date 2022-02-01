@@ -7,8 +7,8 @@ import android.database.sqlite.SQLiteException;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 
 public class DBOption
@@ -24,8 +24,8 @@ public class DBOption
   {
     AppMethodBeat.i(101853);
     this.DB_PATH = "";
-    this.DB_PATH = (b.aKJ() + "/assistant/");
-    new o(this.DB_PATH).mkdirs();
+    this.DB_PATH = (b.aSL() + "/assistant/");
+    new q(this.DB_PATH).ifL();
     this.DB_PATH += ".SystemConfig.db";
     AppMethodBeat.o(101853);
   }
@@ -79,7 +79,7 @@ public class DBOption
       try
       {
         AppMethodBeat.i(101858);
-        if (!new o(this.DB_PATH).exists())
+        if (!new q(this.DB_PATH).ifE())
         {
           AppMethodBeat.o(101858);
           return localObject3;
@@ -91,7 +91,7 @@ public class DBOption
       finally {}
       try
       {
-        localObject3 = SQLiteDatabase.openDatabase(s.k(this.DB_PATH, true), null, 1);
+        localObject3 = SQLiteDatabase.openDatabase(u.n(this.DB_PATH, true), null, 1);
         localObject1 = localObject3;
       }
       catch (SQLiteException localSQLiteException)
@@ -124,7 +124,7 @@ public class DBOption
       }
       try
       {
-        localObject2 = SQLiteDatabase.openOrCreateDatabase(s.k(this.DB_PATH, true), null);
+        localObject2 = SQLiteDatabase.openOrCreateDatabase(u.n(this.DB_PATH, true), null);
         localObject1 = localObject2;
       }
       catch (SQLiteException localSQLiteException)
@@ -227,7 +227,7 @@ public class DBOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.channel.DBOption
  * JD-Core Version:    0.7.0.1
  */

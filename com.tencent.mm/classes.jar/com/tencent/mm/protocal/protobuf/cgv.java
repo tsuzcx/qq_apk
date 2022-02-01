@@ -1,79 +1,96 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cgv
-  extends com.tencent.mm.bw.a
+  extends dyl
 {
-  public int KWb;
-  public int Mmd;
-  public String Mme;
+  public double Toj;
+  public double Tok;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(146308);
+    AppMethodBeat.i(179488);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.Mmd);
-      if (this.Mme != null) {
-        paramVarArgs.e(2, this.Mme);
-      }
-      paramVarArgs.aM(3, this.KWb);
-      AppMethodBeat.o(146308);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.bu(1, this.Mmd) + 0;
-      paramInt = i;
-      if (this.Mme != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.Mme);
-      }
-      i = g.a.a.b.b.a.bu(3, this.KWb);
-      AppMethodBeat.o(146308);
-      return paramInt + i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
-      }
-      AppMethodBeat.o(146308);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      cgv localcgv = (cgv)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.BaseRequest != null)
       {
-      default: 
-        AppMethodBeat.o(146308);
-        return -1;
-      case 1: 
-        localcgv.Mmd = locala.UbS.zi();
-        AppMethodBeat.o(146308);
-        return 0;
-      case 2: 
-        localcgv.Mme = locala.UbS.readString();
-        AppMethodBeat.o(146308);
-        return 0;
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      localcgv.KWb = locala.UbS.zi();
-      AppMethodBeat.o(146308);
+      paramVarArgs.e(2, this.Toj);
+      paramVarArgs.e(3, this.Tok);
+      AppMethodBeat.o(179488);
       return 0;
     }
-    AppMethodBeat.o(146308);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label382;
+      }
+    }
+    label382:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = g.a.a.b.b.a.gL(2);
+      int j = g.a.a.b.b.a.gL(3);
+      AppMethodBeat.o(179488);
+      return paramInt + (i + 8) + (j + 8);
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
+        }
+        AppMethodBeat.o(179488);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        cgv localcgv = (cgv)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(179488);
+          return -1;
+        case 1: 
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            jg localjg = new jg();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localjg.parseFrom((byte[])localObject);
+            }
+            localcgv.BaseRequest = localjg;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(179488);
+          return 0;
+        case 2: 
+          localcgv.Toj = Double.longBitsToDouble(((g.a.a.a.a)localObject).abFh.AP());
+          AppMethodBeat.o(179488);
+          return 0;
+        }
+        localcgv.Tok = Double.longBitsToDouble(((g.a.a.a.a)localObject).abFh.AP());
+        AppMethodBeat.o(179488);
+        return 0;
+      }
+      AppMethodBeat.o(179488);
+      return -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cgv
  * JD-Core Version:    0.7.0.1
  */

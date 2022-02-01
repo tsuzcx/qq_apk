@@ -11,9 +11,9 @@ import android.net.http.SslError;
 import android.util.Base64;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.plugin.webview.modeltools.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -37,26 +37,26 @@ import java.util.Map;
 @JgClassChecked(author=20, fComment="checked", lastDate="20141210", reviewer=20, vComment={com.jg.EType.HTTPSCHECK})
 public final class c
 {
-  private final SimpleDateFormat BGt;
-  WebView IRR;
-  Map<String, List<r>> Jer;
-  Map<String, Boolean> Jes;
+  private final SimpleDateFormat HCy;
+  WebView POh;
+  Map<String, List<r>> Qbt;
+  Map<String, Boolean> Qbu;
   Context context;
-  private d kvo;
-  private List<String> niZ;
-  private KeyStore nja;
+  private d nnz;
+  private List<String> qjK;
+  private KeyStore qjL;
   
   public c(Context paramContext, WebView paramWebView)
   {
     AppMethodBeat.i(79605);
-    this.kvo = null;
-    this.niZ = null;
-    this.nja = null;
-    this.BGt = new SimpleDateFormat("yyyy-MM-dd HH:mmZ", Locale.getDefault());
+    this.nnz = null;
+    this.qjK = null;
+    this.qjL = null;
+    this.HCy = new SimpleDateFormat("yyyy-MM-dd HH:mmZ", Locale.getDefault());
     this.context = paramContext;
-    this.IRR = paramWebView;
-    this.Jer = new HashMap();
-    this.Jes = new HashMap();
+    this.POh = paramWebView;
+    this.Qbt = new HashMap();
+    this.Qbu = new HashMap();
     AppMethodBeat.o(79605);
   }
   
@@ -70,7 +70,7 @@ public final class c
     localStringBuilder.append(b(paramString, paramSslError));
     paramString = localStringBuilder.toString();
     Log.i("MicroMsg.WebView.MMSslErrorHandler", "reportWebViewSslError, value = %s", new Object[] { paramString });
-    com.tencent.mm.plugin.report.service.h.CyF.kvStat(11098, paramString);
+    com.tencent.mm.plugin.report.service.h.IzE.kvStat(11098, paramString);
     AppMethodBeat.o(79609);
   }
   
@@ -90,7 +90,7 @@ public final class c
         localStringBuilder.append(localObject);
         localStringBuilder.append("</primaryerror>");
         localStringBuilder.append("<clienttime>");
-        localStringBuilder.append(Base64.encodeToString(this.BGt.format(new Date()).getBytes(), 0));
+        localStringBuilder.append(Base64.encodeToString(this.HCy.format(new Date()).getBytes(), 0));
         localStringBuilder.append("</clienttime>");
         localStringBuilder.append("<currenturl>");
         if (!Util.isNullOrNil(paramString)) {
@@ -172,21 +172,21 @@ public final class c
       localObject1 = paramSslCertificate.getClass().getDeclaredField("mX509Certificate");
       ((Field)localObject1).setAccessible(true);
       paramSslCertificate = (X509Certificate)((Field)localObject1).get(paramSslCertificate);
-      if (this.nja == null)
+      if (this.qjL == null)
       {
-        this.nja = KeyStore.getInstance("AndroidCAStore");
-        this.nja.load(null, null);
+        this.qjL = KeyStore.getInstance("AndroidCAStore");
+        this.qjL.load(null, null);
       }
-      if (this.niZ != null) {
+      if (this.qjK != null) {
         break label201;
       }
-      this.niZ = new ArrayList();
-      localObject1 = this.nja.aliases();
+      this.qjK = new ArrayList();
+      localObject1 = this.qjL.aliases();
       while (((Enumeration)localObject1).hasMoreElements())
       {
         localObject2 = (String)((Enumeration)localObject1).nextElement();
         if ((localObject2 != null) && (((String)localObject2).startsWith("user:"))) {
-          this.niZ.add(localObject2);
+          this.qjK.add(localObject2);
         }
       }
       AppMethodBeat.o(79606);
@@ -198,7 +198,7 @@ public final class c
     }
     return bool;
     label201:
-    Object localObject1 = this.niZ.iterator();
+    Object localObject1 = this.qjK.iterator();
     for (;;)
     {
       for (;;)
@@ -206,7 +206,7 @@ public final class c
         if (((Iterator)localObject1).hasNext())
         {
           localObject2 = (String)((Iterator)localObject1).next();
-          localObject2 = (X509Certificate)this.nja.getCertificate((String)localObject2);
+          localObject2 = (X509Certificate)this.qjL.getCertificate((String)localObject2);
         }
         try
         {
@@ -224,7 +224,7 @@ public final class c
   {
     AppMethodBeat.i(79607);
     Log.e("MicroMsg.WebView.MMSslErrorHandler", "onReceiveSslError, currentUrl = %s", new Object[] { paramString });
-    if (this.IRR == null)
+    if (this.POh == null)
     {
       Log.e("MicroMsg.WebView.MMSslErrorHandler", "onReceiveSslError fail, has been detached");
       AppMethodBeat.o(79607);
@@ -236,7 +236,7 @@ public final class c
       AppMethodBeat.o(79607);
       return;
     }
-    Boolean localBoolean = (Boolean)this.Jes.get(paramString);
+    Boolean localBoolean = (Boolean)this.Qbu.get(paramString);
     if (localBoolean != null)
     {
       Log.v("MicroMsg.WebView.MMSslErrorHandler", "onReceiveSslError, already selected = %b", new Object[] { localBoolean });
@@ -253,12 +253,12 @@ public final class c
     URL localURL;
     try
     {
-      int i = ((b)g.af(b.class)).a(b.a.rSD, 1);
+      int i = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vzc, 1);
       Log.i("MicroMsg.WebView.MMSslErrorHandler", "onReceiveSslError skipUserCert = %d", new Object[] { Integer.valueOf(i) });
       if ((i == 1) && (b(paramSslError.getCertificate())))
       {
         Log.i("MicroMsg.WebView.MMSslErrorHandler", "onReceiveSslError use user certificatess");
-        this.Jes.put(paramString, Boolean.TRUE);
+        this.Qbu.put(paramString, Boolean.TRUE);
         paramr.proceed();
         AppMethodBeat.o(79607);
         return;
@@ -271,42 +271,42 @@ public final class c
       try
       {
         localURL = new URL(paramString);
-        if ((((b)g.af(b.class)).a(b.a.rSB, 0) != 1) || (!localURL.getHost().endsWith(".qq.com"))) {
+        if ((((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vza, 0) != 1) || (!localURL.getHost().endsWith(".qq.com"))) {
           break label533;
         }
-        localList = (List)this.Jer.get(paramString);
+        localList = (List)this.Qbt.get(paramString);
         if ((localList == null) || (localList.size() == 0))
         {
           a(paramString, paramSslError);
           paramSslError = new ArrayList();
           paramSslError.add(paramr);
-          this.Jer.put(paramString, paramSslError);
-          if ((this.kvo != null) && (this.kvo.isShowing()))
+          this.Qbt.put(paramString, paramSslError);
+          if ((this.nnz != null) && (this.nnz.isShowing()))
           {
             paramr.cancel();
             AppMethodBeat.o(79607);
             return;
           }
-          this.kvo = com.tencent.mm.ui.base.h.a(this.context, false, this.context.getString(2131768756, new Object[] { localURL.getHost() }), this.context.getString(2131768757), this.context.getString(2131755771), this.context.getString(2131755316), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          this.nnz = com.tencent.mm.ui.base.h.a(this.context, false, this.context.getString(c.i.wv_alert_certificate_err, new Object[] { localURL.getHost() }), this.context.getString(c.i.wv_alert_certificate_err_title), this.context.getString(c.i.app_continue), this.context.getString(c.i.app_back), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(79603);
-              paramAnonymousDialogInterface = (List)c.this.Jer.get(paramString);
+              paramAnonymousDialogInterface = (List)c.this.Qbt.get(paramString);
               if (paramAnonymousDialogInterface == null)
               {
                 Log.e("MicroMsg.WebView.MMSslErrorHandler", "onReceivedSslError, continue selected, list should not be null");
                 AppMethodBeat.o(79603);
                 return;
               }
-              c.this.Jes.put(paramString, Boolean.FALSE);
+              c.this.Qbu.put(paramString, Boolean.FALSE);
               Log.i("MicroMsg.WebView.MMSslErrorHandler", "onReceivedSslError, continue selected, list size = %d", new Object[] { Integer.valueOf(paramAnonymousDialogInterface.size()) });
               Iterator localIterator = paramAnonymousDialogInterface.iterator();
               while (localIterator.hasNext()) {
                 ((r)localIterator.next()).cancel();
               }
               paramAnonymousDialogInterface.clear();
-              c.this.IRR.clearSslPreferences();
+              c.this.POh.clearSslPreferences();
               new a().c((Activity)c.this.context, paramString);
               AppMethodBeat.o(79603);
             }
@@ -315,21 +315,21 @@ public final class c
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(79604);
-              paramAnonymousDialogInterface = (List)c.this.Jer.get(paramString);
+              paramAnonymousDialogInterface = (List)c.this.Qbt.get(paramString);
               if (paramAnonymousDialogInterface == null)
               {
                 Log.e("MicroMsg.WebView.MMSslErrorHandler", "onReceivedSslError, cancel selected, list should not be null");
                 AppMethodBeat.o(79604);
                 return;
               }
-              c.this.Jes.put(paramString, Boolean.FALSE);
+              c.this.Qbu.put(paramString, Boolean.FALSE);
               Log.i("MicroMsg.WebView.MMSslErrorHandler", "onReceivedSslError, cancel selected, list size = %d", new Object[] { Integer.valueOf(paramAnonymousDialogInterface.size()) });
               Iterator localIterator = paramAnonymousDialogInterface.iterator();
               while (localIterator.hasNext()) {
                 ((r)localIterator.next()).cancel();
               }
               paramAnonymousDialogInterface.clear();
-              c.this.IRR.clearSslPreferences();
+              c.this.POh.clearSslPreferences();
               AppMethodBeat.o(79604);
             }
           });
@@ -353,7 +353,7 @@ public final class c
     AppMethodBeat.o(79607);
   }
   
-  public final void aG(Context paramContext)
+  public final void aD(Context paramContext)
   {
     this.context = paramContext;
   }
@@ -363,9 +363,9 @@ public final class c
     AppMethodBeat.i(79608);
     Log.i("MicroMsg.WebView.MMSslErrorHandler", "detach");
     this.context = null;
-    this.IRR = null;
-    this.Jer.clear();
-    this.Jes.clear();
+    this.POh = null;
+    this.Qbt.clear();
+    this.Qbu.clear();
     AppMethodBeat.o(79608);
   }
 }

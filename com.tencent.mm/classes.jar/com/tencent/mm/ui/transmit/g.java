@@ -13,6 +13,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.m;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
@@ -22,37 +26,37 @@ public final class g
   extends Dialog
   implements DialogInterface
 {
-  private LinearLayout NIA;
-  private a QAA;
-  private Button QAB;
+  private LinearLayout UWb;
+  private a XYZ;
+  private Button XZa;
   private Context mContext;
   
   private g(Context paramContext)
   {
-    super(paramContext, 2131821772);
+    super(paramContext, R.m.mmalertdialog);
     AppMethodBeat.i(180117);
-    this.QAA = null;
+    this.XYZ = null;
     this.mContext = paramContext;
-    this.NIA = ((LinearLayout)View.inflate(this.mContext, 2131496725, null));
-    this.QAB = ((Button)this.NIA.findViewById(2131309270));
-    paramContext = (ImageView)this.NIA.findViewById(2131309265);
+    this.UWb = ((LinearLayout)View.inflate(this.mContext, R.i.ely, null));
+    this.XZa = ((Button)this.UWb.findViewById(R.h.dXJ));
+    paramContext = (ImageView)this.UWb.findViewById(R.h.dXF);
     if (LocaleUtil.isChineseAppLang()) {
-      paramContext.setImageResource(2131235319);
+      paramContext.setImageResource(R.g.todo_introduce_chinease);
     }
     for (;;)
     {
-      this.QAB.setOnClickListener(new View.OnClickListener()
+      this.XZa.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(180115);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          a.b("com/tencent/mm/ui/transmit/TodoIntroduceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          a.c("com/tencent/mm/ui/transmit/TodoIntroduceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           Log.i("MicroMsg.grouptodo.TodoIntroduceView", "click i know");
           g.this.dismiss();
           if (g.a(g.this) != null) {
-            g.a(g.this).gUb();
+            g.a(g.this).hTM();
           }
           a.a(this, "com/tencent/mm/ui/transmit/TodoIntroduceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(180115);
@@ -60,7 +64,7 @@ public final class g
       });
       AppMethodBeat.o(180117);
       return;
-      paramContext.setImageResource(2131235320);
+      paramContext.setImageResource(R.g.todo_introduce_english);
     }
   }
   
@@ -68,7 +72,7 @@ public final class g
   {
     AppMethodBeat.i(180121);
     paramContext = new g(paramContext);
-    paramContext.QAA = parama;
+    paramContext.XYZ = parama;
     paramContext.setCancelable(false);
     paramContext.show();
     AppMethodBeat.o(180121);
@@ -119,7 +123,7 @@ public final class g
   {
     AppMethodBeat.i(180118);
     super.onCreate(paramBundle);
-    setContentView(this.NIA);
+    setContentView(this.UWb);
     AppMethodBeat.o(180118);
   }
   
@@ -141,12 +145,12 @@ public final class g
   
   public static abstract interface a
   {
-    public abstract void gUb();
+    public abstract void hTM();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.g
  * JD-Core Version:    0.7.0.1
  */

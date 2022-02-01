@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.doc;
-import com.tencent.mm.protocal.protobuf.dod;
+import com.tencent.mm.protocal.protobuf.dxu;
+import com.tencent.mm.protocal.protobuf.dxv;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class y
   extends q
   implements m
 {
-  private String IEd;
+  private String Pyt;
   private i callback;
-  private d iUB;
+  private d lKU;
   private int scene;
   
-  public y(doc paramdoc)
+  public y(dxu paramdxu)
   {
     AppMethodBeat.i(117627);
     d.a locala = new d.a();
     locala.funcId = 1523;
     locala.uri = "/cgi-bin/mmsearch-bin/recsearchreport";
-    locala.iLN = paramdoc;
-    locala.iLO = new dod();
-    this.iUB = locala.aXF();
-    this.scene = paramdoc.Scene;
-    this.IEd = paramdoc.MRe;
+    locala.lBU = paramdxu;
+    locala.lBV = new dxv();
+    this.lKU = locala.bgN();
+    this.scene = paramdxu.CPw;
+    this.Pyt = paramdxu.Udk;
     AppMethodBeat.o(117627);
   }
   
@@ -39,10 +39,10 @@ public final class y
   {
     AppMethodBeat.i(117629);
     Log.i("MicroMsg.FTS.NetSceneWebSearchReport", "doScene %d", new Object[] { Integer.valueOf(this.scene) });
-    ar.afB(5);
-    ar.O(this.scene, 4, this.IEd);
+    ar.anp(5);
+    ar.N(this.scene, 4, this.Pyt);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
+    int i = dispatch(paramg, this.lKU, this);
     AppMethodBeat.o(117629);
     return i;
   }
@@ -59,19 +59,19 @@ public final class y
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      ar.afB(7);
+      ar.anp(7);
       AppMethodBeat.o(117628);
       return;
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    ar.afB(6);
-    ar.a(this.scene, 5, paramInt2, paramInt3, this.IEd);
+    ar.anp(6);
+    ar.a(this.scene, 5, paramInt2, paramInt3, this.Pyt);
     AppMethodBeat.o(117628);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.y
  * JD-Core Version:    0.7.0.1
  */

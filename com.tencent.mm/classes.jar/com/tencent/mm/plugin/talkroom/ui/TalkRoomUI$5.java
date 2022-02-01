@@ -13,14 +13,14 @@ final class TalkRoomUI$5
   {
     AppMethodBeat.i(29593);
     Log.i("MicroMsg.TalkRoomUI", "onSeizeMicSuccess expired to execute");
-    TalkRoomUI.q(this.FRv);
+    TalkRoomUI.q(this.Mlw);
     AppMethodBeat.o(29593);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.TalkRoomUI.5
  * JD-Core Version:    0.7.0.1
  */

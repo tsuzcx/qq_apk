@@ -28,43 +28,43 @@ import org.xml.sax.XMLReader;
 public final class c
   implements Html.TagHandler
 {
-  private static final Pattern bCJ;
-  private static final Pattern qQe;
-  private static HashMap<String, Integer> qQf;
-  private Stack<a> qQc;
-  final HashMap<String, String> qQd;
+  private static final Pattern bml;
+  private static final Pattern usk;
+  private static HashMap<String, Integer> usl;
+  private Stack<a> usi;
+  final HashMap<String, String> usj;
   
   static
   {
     AppMethodBeat.i(181712);
-    bCJ = Pattern.compile("\\d+");
-    qQe = Pattern.compile("#[a-f0-9]+");
+    bml = Pattern.compile("\\d+");
+    usk = Pattern.compile("#[a-f0-9]+");
     HashMap localHashMap = new HashMap();
-    qQf = localHashMap;
+    usl = localHashMap;
     localHashMap.put("aqua", Integer.valueOf(65535));
-    qQf.put("black", Integer.valueOf(0));
-    qQf.put("blue", Integer.valueOf(255));
-    qQf.put("fuchsia", Integer.valueOf(16711935));
-    qQf.put("green", Integer.valueOf(32768));
-    qQf.put("grey", Integer.valueOf(8421504));
-    qQf.put("lime", Integer.valueOf(65280));
-    qQf.put("maroon", Integer.valueOf(8388608));
-    qQf.put("navy", Integer.valueOf(128));
-    qQf.put("olive", Integer.valueOf(8421376));
-    qQf.put("purple", Integer.valueOf(8388736));
-    qQf.put("red", Integer.valueOf(16711680));
-    qQf.put("silver", Integer.valueOf(12632256));
-    qQf.put("teal", Integer.valueOf(32896));
-    qQf.put("white", Integer.valueOf(16777215));
-    qQf.put("yellow", Integer.valueOf(16776960));
+    usl.put("black", Integer.valueOf(0));
+    usl.put("blue", Integer.valueOf(255));
+    usl.put("fuchsia", Integer.valueOf(16711935));
+    usl.put("green", Integer.valueOf(32768));
+    usl.put("grey", Integer.valueOf(8421504));
+    usl.put("lime", Integer.valueOf(65280));
+    usl.put("maroon", Integer.valueOf(8388608));
+    usl.put("navy", Integer.valueOf(128));
+    usl.put("olive", Integer.valueOf(8421376));
+    usl.put("purple", Integer.valueOf(8388736));
+    usl.put("red", Integer.valueOf(16711680));
+    usl.put("silver", Integer.valueOf(12632256));
+    usl.put("teal", Integer.valueOf(32896));
+    usl.put("white", Integer.valueOf(16777215));
+    usl.put("yellow", Integer.valueOf(16776960));
     AppMethodBeat.o(181712);
   }
   
   public c()
   {
     AppMethodBeat.i(181704);
-    this.qQc = new Stack();
-    this.qQd = new HashMap();
+    this.usi = new Stack();
+    this.usj = new HashMap();
     AppMethodBeat.o(181704);
   }
   
@@ -94,33 +94,33 @@ public final class c
   {
     AppMethodBeat.i(181707);
     if (paramBoolean) {
-      paramo = o.qTr;
+      paramo = o.uvx;
     }
-    if (this.qQc.isEmpty()) {}
-    for (a locala = null; locala == null; locala = (a)this.qQc.peek())
+    if (this.usi.isEmpty()) {}
+    for (a locala = null; locala == null; locala = (a)this.usi.peek())
     {
       paramo = new a(paramo, 1, 1);
-      this.qQc.push(paramo);
+      this.usi.push(paramo);
       AppMethodBeat.o(181707);
       return;
     }
-    if (locala.qSY == paramo)
+    if (locala.uve == paramo)
     {
-      locala.qSZ += 1;
-      locala.qTa += 1;
+      locala.uvf += 1;
+      locala.uvg += 1;
       AppMethodBeat.o(181707);
       return;
     }
-    paramo = new a(paramo, locala.qSZ + 1, 1);
-    this.qQc.push(paramo);
+    paramo = new a(paramo, locala.uvf + 1, 1);
+    this.usi.push(paramo);
     AppMethodBeat.o(181707);
   }
   
   @SuppressLint({"DefaultLocale"})
-  private static int alT(String paramString)
+  private static int atN(String paramString)
   {
     AppMethodBeat.i(181711);
-    Integer localInteger = (Integer)qQf.get(paramString.toLowerCase());
+    Integer localInteger = (Integer)usl.get(paramString.toLowerCase());
     int i;
     if (localInteger != null)
     {
@@ -207,28 +207,28 @@ public final class c
     AppMethodBeat.o(181706);
   }
   
-  private void lg(boolean paramBoolean)
+  private void ms(boolean paramBoolean)
   {
     AppMethodBeat.i(181708);
-    while (!this.qQc.isEmpty())
+    while (!this.usi.isEmpty())
     {
-      a locala = (a)this.qQc.peek();
-      o localo = locala.qSY;
-      if (((paramBoolean) && (localo.cEx())) || ((!paramBoolean) && (localo.cEw())) || ((!paramBoolean) && (localo.cEy())))
+      a locala = (a)this.usi.peek();
+      o localo = locala.uve;
+      if (((paramBoolean) && (localo.cTd())) || ((!paramBoolean) && (localo.cTc())) || ((!paramBoolean) && (localo.cTe())))
       {
-        int i = locala.qTa;
+        int i = locala.uvg;
         if (i > 1)
         {
-          locala.qTa = (i - 1);
-          locala.qSZ -= 1;
+          locala.uvg = (i - 1);
+          locala.uvf -= 1;
           AppMethodBeat.o(181708);
           return;
         }
-        this.qQc.pop();
+        this.usi.pop();
         AppMethodBeat.o(181708);
         return;
       }
-      this.qQc.pop();
+      this.usi.pop();
     }
     AppMethodBeat.o(181708);
   }
@@ -240,7 +240,7 @@ public final class c
     boolean bool2 = true;
     boolean bool1 = false;
     AppMethodBeat.i(181705);
-    this.qQd.clear();
+    this.usj.clear();
     Object localObject;
     Field localField;
     int k;
@@ -262,7 +262,7 @@ public final class c
       i = 0;
       while (i < k)
       {
-        this.qQd.put(localObject[(i * 5 + 1)], localObject[(i * 5 + 4)]);
+        this.usj.put(localObject[(i * 5 + 1)], localObject[(i * 5 + 4)]);
         i += 1;
       }
       if (!paramBoolean) {
@@ -271,7 +271,7 @@ public final class c
     }
     catch (Exception paramXMLReader) {}
     if (paramString.equalsIgnoreCase("wx-ul")) {
-      a(false, o.qTq);
+      a(false, o.uvw);
     }
     label393:
     label663:
@@ -280,20 +280,20 @@ public final class c
     label1697:
     for (;;)
     {
-      a.qQa = paramEditable;
+      a.usg = paramEditable;
       AppMethodBeat.o(181705);
       return;
       label1574:
       if (paramString.equalsIgnoreCase("wx-ol")) {
-        a(true, o.qTr);
+        a(true, o.uvx);
       } else {
         label1449:
         label1578:
         if (paramString.equalsIgnoreCase("wn-todo"))
         {
-          paramString = new a(o.qTs, 1, 1);
-          this.qQc.push(paramString);
-          paramString = (String)this.qQd.get("checked");
+          paramString = new a(o.uvy, 1, 1);
+          this.usi.push(paramString);
+          paramString = (String)this.usj.get("checked");
           paramBoolean = bool1;
           if (!Util.isNullOrNil(paramString))
           {
@@ -302,23 +302,23 @@ public final class c
               paramBoolean = true;
             }
           }
-          a(paramEditable, new e(((a)this.qQc.peek()).qSZ, paramBoolean));
+          a(paramEditable, new e(((a)this.usi.peek()).uvf, paramBoolean));
         }
         else
         {
           if (paramString.equalsIgnoreCase("wx-li"))
           {
-            paramString = (String)this.qQd.get("done");
+            paramString = (String)this.usj.get("done");
             if ((!Util.isNullOrNil(paramString)) && (paramString.equals("true")))
             {
               paramBoolean = bool2;
-              if (this.qQc.isEmpty()) {
+              if (this.usi.isEmpty()) {
                 break label504;
               }
-              paramString = (a)this.qQc.peek();
-              paramXMLReader = paramString.qSY;
-              i = paramString.qSZ;
-              if (!paramXMLReader.cEx()) {
+              paramString = (a)this.usi.peek();
+              paramXMLReader = paramString.uve;
+              i = paramString.uvf;
+              if (!paramXMLReader.cTd()) {
                 break label461;
               }
               paramString = new d(i);
@@ -335,11 +335,11 @@ public final class c
             paramBoolean = false;
             break label393;
             label461:
-            if (paramXMLReader.cEw())
+            if (paramXMLReader.cTc())
             {
               paramString = new f(i);
             }
-            else if (paramXMLReader.cEy())
+            else if (paramXMLReader.cTe())
             {
               paramString = new e(i, paramBoolean);
               continue;
@@ -350,7 +350,7 @@ public final class c
               if ((paramString.equalsIgnoreCase("wx-font")) || (paramString.equalsIgnoreCase("span")))
               {
                 i = -2147483648;
-                paramString = (String)this.qQd.get("style");
+                paramString = (String)this.usj.get("style");
                 if (paramString == null) {
                   break label1686;
                 }
@@ -366,7 +366,7 @@ public final class c
                   int n;
                   if (localField.startsWith("font-size"))
                   {
-                    localMatcher = bCJ.matcher(localField);
+                    localMatcher = bml.matcher(localField);
                     if (localMatcher.find(0))
                     {
                       k = localMatcher.start();
@@ -385,7 +385,7 @@ public final class c
                     continue;
                     if (localNumberFormatException.startsWith("color"))
                     {
-                      localMatcher = qQe.matcher(localNumberFormatException);
+                      localMatcher = usk.matcher(localNumberFormatException);
                       if (localMatcher.find(0)) {
                         paramString = localNumberFormatException.substring(localMatcher.start(), localMatcher.end());
                       }
@@ -395,7 +395,7 @@ public final class c
                       if (!localNumberFormatException.startsWith("background-color")) {
                         break label1683;
                       }
-                      localMatcher = qQe.matcher(localNumberFormatException);
+                      localMatcher = usk.matcher(localNumberFormatException);
                       if (!localMatcher.find(0)) {
                         break label1683;
                       }
@@ -406,12 +406,12 @@ public final class c
               }
               for (;;)
               {
-                localObject = (String)this.qQd.get("face");
+                localObject = (String)this.usj.get("face");
                 j = paramEditable.length();
                 b localb = new b((byte)0);
                 localb.mSize = i;
-                localb.qQg = paramString;
-                localb.qQh = paramXMLReader;
+                localb.usm = paramString;
+                localb.usn = paramXMLReader;
                 paramEditable.setSpan(b.a(localb, (String)localObject), j, j, 17);
                 break;
                 if (paramString.equalsIgnoreCase("wx-b"))
@@ -430,15 +430,15 @@ public final class c
                 d(paramEditable);
                 break;
                 if (paramString.equalsIgnoreCase("wx-ul")) {
-                  lg(false);
+                  ms(false);
                 }
                 for (;;)
                 {
-                  this.qQd.clear();
+                  this.usj.clear();
                   break;
                   if (paramString.equalsIgnoreCase("wx-ol"))
                   {
-                    lg(true);
+                    ms(true);
                   }
                   else if (paramString.equalsIgnoreCase("wn-todo"))
                   {
@@ -450,10 +450,10 @@ public final class c
                       }
                       i = paramEditable.getSpanStart(paramString);
                       j = paramEditable.length();
-                      if (!paramString.qQk)
+                      if (!paramString.usq)
                       {
-                        k = f.cDE();
-                        bool1 = ((e)paramString).oD;
+                        k = f.cSj();
+                        bool1 = ((e)paramString).bBh;
                         if (i != j) {
                           break label1097;
                         }
@@ -476,9 +476,9 @@ public final class c
                       }
                       i = paramEditable.getSpanStart(paramXMLReader);
                       j = paramEditable.length();
-                      if (!paramXMLReader.qQk)
+                      if (!paramXMLReader.usq)
                       {
-                        k = f.cDE();
+                        k = f.cSj();
                         if (!(paramXMLReader instanceof d)) {
                           break label1256;
                         }
@@ -514,12 +514,12 @@ public final class c
                       if (m != k)
                       {
                         paramString = (b)paramString;
-                        if (!TextUtils.isEmpty(paramString.qQi))
+                        if (!TextUtils.isEmpty(paramString.uso))
                         {
                           i = 1;
                           label1367:
                           if (i != 0) {
-                            paramEditable.setSpan(new TypefaceSpan(paramString.qQi), m, k, 33);
+                            paramEditable.setSpan(new TypefaceSpan(paramString.uso), m, k, 33);
                           }
                           if (paramString.mSize <= 0) {
                             break label1562;
@@ -527,20 +527,20 @@ public final class c
                           i = 1;
                           label1405:
                           if (i != 0) {
-                            paramEditable.setSpan(new AbsoluteSizeSpan(f.Fz(paramString.mSize)), m, k, 33);
+                            paramEditable.setSpan(new AbsoluteSizeSpan(f.Jg(paramString.mSize)), m, k, 33);
                           }
-                          if (TextUtils.isEmpty(paramString.qQg)) {
+                          if (TextUtils.isEmpty(paramString.usm)) {
                             break label1568;
                           }
                           i = 1;
                           if (i != 0)
                           {
-                            i = alT(paramString.qQg);
+                            i = atN(paramString.usm);
                             if (i != -1) {
                               paramEditable.setSpan(new ForegroundColorSpan(i | 0xFF000000), m, k, 33);
                             }
                           }
-                          if (TextUtils.isEmpty(paramString.qQh)) {
+                          if (TextUtils.isEmpty(paramString.usn)) {
                             break label1574;
                           }
                         }
@@ -549,7 +549,7 @@ public final class c
                           if (i == 0) {
                             break label1578;
                           }
-                          i = alT(paramString.qQh);
+                          i = atN(paramString.usn);
                           if (i == -1) {
                             break;
                           }
@@ -603,20 +603,20 @@ public final class c
   static class b
   {
     int mSize = -2147483648;
-    String qQg;
-    String qQh;
-    String qQi;
+    String usm;
+    String usn;
+    String uso;
   }
   
   static abstract class c
   {
-    int qQj;
-    boolean qQk;
+    int usp;
+    boolean usq;
     
     c(int paramInt)
     {
-      this.qQj = paramInt;
-      this.qQk = false;
+      this.usp = paramInt;
+      this.usq = false;
     }
   }
   
@@ -632,12 +632,12 @@ public final class c
   static final class e
     extends c.c
   {
-    boolean oD = false;
+    boolean bBh = false;
     
     e(int paramInt, boolean paramBoolean)
     {
       super();
-      this.oD = paramBoolean;
+      this.bBh = paramBoolean;
     }
   }
   

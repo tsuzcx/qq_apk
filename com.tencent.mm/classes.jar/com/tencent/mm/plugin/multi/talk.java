@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.multi;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.a.a;
 import com.tencent.pb.common.c.b;
-import com.tencent.wecall.talkroom.model.i;
+import com.tencent.wecall.talkroom.model.VoiceEngineConf;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class talk
 {
+  public static int FlJ;
   public static int VOICE_FRAME_DURATION;
   public static int VOICE_SAMPLERATE;
-  public static int zGz;
   public byte[] field_capInfo = null;
   public int field_localImgHeight = 0;
   public int field_localImgWidth = 0;
@@ -30,10 +30,10 @@ public class talk
     AppMethodBeat.i(62794);
     VOICE_SAMPLERATE = 8000;
     VOICE_FRAME_DURATION = 20;
-    zGz = 9;
+    FlJ = 9;
     try
     {
-      if ((a.RCk) && (a.RCB))
+      if ((a.ZdM) && (a.Zed))
       {
         System.loadLibrary("stlport_shared");
         System.loadLibrary("wechatxlog");
@@ -57,7 +57,7 @@ public class talk
   
   public native void OnMembersChanged(int[] paramArrayOfInt);
   
-  public native int Open(a parama, i parami, int paramInt1, int paramInt2, int paramInt3, long paramLong, String[] paramArrayOfString1, short[] paramArrayOfShort1, int paramInt4, int[] paramArrayOfInt1, byte[] paramArrayOfByte1, boolean paramBoolean, int paramInt5, String[] paramArrayOfString2, short[] paramArrayOfShort2, int paramInt6, int paramInt7, int paramInt8, byte[] paramArrayOfByte2, int[] paramArrayOfInt2, int paramInt9, int paramInt10);
+  public native int Open(IMultiTalkListener paramIMultiTalkListener, VoiceEngineConf paramVoiceEngineConf, int paramInt1, int paramInt2, int paramInt3, long paramLong, String[] paramArrayOfString1, short[] paramArrayOfShort1, int paramInt4, int[] paramArrayOfInt1, byte[] paramArrayOfByte1, boolean paramBoolean, int paramInt5, String[] paramArrayOfString2, short[] paramArrayOfShort2, int paramInt6, int paramInt7, int paramInt8, byte[] paramArrayOfByte2, int[] paramArrayOfInt2, int paramInt9, String paramString);
   
   public native int Redirect(String[] paramArrayOfString1, short[] paramArrayOfShort1, String[] paramArrayOfString2, short[] paramArrayOfShort2, int paramInt);
   
@@ -76,6 +76,8 @@ public class talk
   public native int getChannelBytes(AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2);
   
   public native int getSampleRate(AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2);
+  
+  public native int imgClip(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
   
   public native int init(int paramInt1, int paramInt2, int paramInt3, String paramString);
   
@@ -103,7 +105,7 @@ public class talk
   
   public native int videoTrans(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt);
   
-  public static abstract interface a
+  public static abstract interface IMultiTalkListener
   {
     public abstract void keep_OnError(int paramInt);
     

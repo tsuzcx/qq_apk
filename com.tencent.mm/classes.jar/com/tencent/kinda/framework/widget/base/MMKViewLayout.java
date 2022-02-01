@@ -160,10 +160,10 @@ public class MMKViewLayout<Layout extends ViewGroup>
   
   public void setFocusableInTouchMode(boolean paramBoolean)
   {
-    AppMethodBeat.i(214568);
+    AppMethodBeat.i(262930);
     ((ViewGroup)getView()).setFocusable(true);
     ((ViewGroup)getView()).setFocusableInTouchMode(true);
-    AppMethodBeat.o(214568);
+    AppMethodBeat.o(262930);
   }
   
   public void setJustifyContent(Justify paramJustify)
@@ -175,7 +175,7 @@ public class MMKViewLayout<Layout extends ViewGroup>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKViewLayout
  * JD-Core Version:    0.7.0.1
  */

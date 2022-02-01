@@ -16,21 +16,21 @@ final class WxImageView$1
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(205274);
+    AppMethodBeat.i(213171);
     if (paramMotionEvent.getAction() == 0)
     {
-      paramView = ad.aVe().G("basescanui@datacenter", true);
+      paramView = ad.beh().I("basescanui@datacenter", true);
       Log.i("MicroMsg.WxImageView", "alvinluo WxImageView get touchCoordinate touch x: %s, y: %s", new Object[] { Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()) });
-      paramMotionEvent = WxImageView.a(this.OWZ, paramMotionEvent.getRawX(), paramMotionEvent.getRawY());
+      paramMotionEvent = WxImageView.a(this.Wqk, paramMotionEvent.getRawX(), paramMotionEvent.getRawY());
       if (paramMotionEvent == null) {
         break label108;
       }
-      paramView.l("key_basescanui_touch_normalize_x", Float.valueOf(paramMotionEvent.x));
-      paramView.l("key_basescanui_touch_normalize_y", Float.valueOf(paramMotionEvent.y));
+      paramView.k("key_basescanui_touch_normalize_x", Float.valueOf(paramMotionEvent.x));
+      paramView.k("key_basescanui_touch_normalize_y", Float.valueOf(paramMotionEvent.y));
     }
     for (;;)
     {
-      AppMethodBeat.o(205274);
+      AppMethodBeat.o(213171);
       return false;
       label108:
       Log.e("MicroMsg.WxImageView", "alvinluo get touchCoordinate is invalid");
@@ -39,7 +39,7 @@ final class WxImageView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.WxImageView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,34 +9,43 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import kotlin.g.b.p;
-import org.libpag.PAGFont;
+import kotlin.t;
 
-@kotlin.l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/mm/xeffect/effect/EffectManager;", "", "()V", "effectList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/xeffect/effect/VLogEffect;", "<set-?>", "", "nPtr", "getNPtr", "()J", "addEffect", "effect", "bringToFront", "", "effectId", "clearEffect", "createEffect", "type", "Lcom/tencent/mm/xeffect/effect/EffectType;", "asset", "Landroid/content/res/AssetManager;", "assetPath", "", "bytes", "", "path", "destroy", "getEffect", "nAddEffect", "ptr", "effectPtr", "nBringToFront", "nCreateEffect", "", "nCreateEffectAsset", "nCreateEffectBinary", "length", "nCreateEffectPath", "nDestroy", "nInit", "nProfileData", "nRemoveEffect", "nSetDecoderFactory", "factory", "Lcom/tencent/mm/xeffect/effect/IStickerDecoderFactory;", "profileData", "Lcom/tencent/mm/xeffect/effect/EffectProfileData;", "removeEffect", "removeEffects", "setDecoderFactory", "Companion", "renderlib_release"})
+@kotlin.l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/effect/EffectManager;", "", "()V", "ptr", "", "(J)V", "effectList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/xeffect/effect/VLogEffect;", "<set-?>", "nPtr", "getNPtr", "()J", "addBlurEffect", "Lcom/tencent/mm/xeffect/effect/BlurEffect;", "addEffect", "effect", "addGradientBlurEffect", "Lcom/tencent/mm/xeffect/effect/GradientBlurEffect;", "addTransitionEffect", "Lcom/tencent/mm/xeffect/effect/PagTransitionEffect;", "path", "", "bringToFront", "", "effectId", "clearEffect", "createEffect", "type", "Lcom/tencent/mm/xeffect/effect/EffectType;", "asset", "Landroid/content/res/AssetManager;", "assetPath", "bytes", "", "destroy", "getEffect", "nAddEffect", "effectPtr", "nBringToFront", "nCreateEffect", "", "nCreateEffectAsset", "nCreateEffectBinary", "length", "nCreateEffectPath", "nDestroy", "nInit", "nProfileData", "nRemoveEffect", "nSetDecoderFactory", "factory", "Lcom/tencent/mm/xeffect/effect/IStickerDecoderFactory;", "profileData", "Lcom/tencent/mm/xeffect/effect/EffectProfileData;", "removeEffect", "removeEffects", "setDecoderFactory", "Companion", "renderlib_release"})
 public final class EffectManager
 {
-  public static final a RxS;
-  private static final String TAG = "EffectManager";
-  private final LinkedList<ad> GAp;
-  public long Rxd;
+  public static final String TAG = "EffectManager";
+  public static final a YZy;
+  public long NmO;
+  private final LinkedList<af> NnV;
   
   static
   {
-    AppMethodBeat.i(237069);
-    RxS = new a((byte)0);
+    AppMethodBeat.i(195744);
+    YZy = new a((byte)0);
     TAG = "EffectManager";
-    com.tencent.mm.xeffect.d.load("xlabeffect");
-    com.tencent.mm.xeffect.d.load("pag");
-    PAGFont.RegisterFallbackFonts();
-    a.b((IStickerDecoderFactory)new e());
-    AppMethodBeat.o(237069);
+    com.tencent.mm.xeffect.e.load("xlabeffect");
+    com.tencent.mm.xeffect.e.load("pag");
+    IStickerDecoderFactory localIStickerDecoderFactory = (IStickerDecoderFactory)new e();
+    p.k(localIStickerDecoderFactory, "factory");
+    nSetDefaultFactory((IStickerDecoderFactory)new StickerDecoderFactoryWrapper(localIStickerDecoderFactory));
+    AppMethodBeat.o(195744);
   }
   
   public EffectManager()
   {
-    AppMethodBeat.i(237068);
-    this.GAp = new LinkedList();
-    this.Rxd = nInit();
-    AppMethodBeat.o(237068);
+    AppMethodBeat.i(195742);
+    this.NnV = new LinkedList();
+    this.NmO = nInit();
+    AppMethodBeat.o(195742);
+  }
+  
+  private EffectManager(long paramLong)
+  {
+    AppMethodBeat.i(195743);
+    this.NnV = new LinkedList();
+    this.NmO = paramLong;
+    AppMethodBeat.o(195743);
   }
   
   private final native long nAddEffect(long paramLong1, long paramLong2);
@@ -46,8 +55,6 @@ public final class EffectManager
   private final native long nCreateEffect(long paramLong, int paramInt);
   
   private final native long nCreateEffectAsset(long paramLong, int paramInt, AssetManager paramAssetManager, String paramString);
-  
-  private final native long nCreateEffectBinary(long paramLong1, int paramInt, byte[] paramArrayOfByte, long paramLong2);
   
   private final native long nCreateEffectPath(long paramLong, int paramInt, String paramString);
   
@@ -59,20 +66,18 @@ public final class EffectManager
   
   private final native void nRemoveEffect(long paramLong1, long paramLong2);
   
-  private final native void nSetDecoderFactory(long paramLong, IStickerDecoderFactory paramIStickerDecoderFactory);
-  
   private static final native void nSetDefaultFactory(IStickerDecoderFactory paramIStickerDecoderFactory);
   
-  public final ad Os(long paramLong)
+  public final af WH(long paramLong)
   {
-    AppMethodBeat.i(237061);
-    Iterator localIterator = ((Iterable)this.GAp).iterator();
+    AppMethodBeat.i(195728);
+    Iterator localIterator = ((Iterable)this.NnV).iterator();
     Object localObject;
     int i;
     if (localIterator.hasNext())
     {
       localObject = localIterator.next();
-      if (((ad)localObject).id == paramLong)
+      if (((af)localObject).id == paramLong)
       {
         i = 1;
         label53:
@@ -83,8 +88,8 @@ public final class EffectManager
     }
     for (;;)
     {
-      localObject = (ad)localObject;
-      AppMethodBeat.o(237061);
+      localObject = (af)localObject;
+      AppMethodBeat.o(195728);
       return localObject;
       i = 0;
       break label53;
@@ -94,31 +99,31 @@ public final class EffectManager
     }
   }
   
-  public final void Ot(long paramLong)
+  public final void WI(long paramLong)
   {
-    AppMethodBeat.i(237062);
+    AppMethodBeat.i(195730);
     for (;;)
     {
       int j;
-      synchronized (this.GAp)
+      synchronized (this.NnV)
       {
-        Object localObject1 = ((List)this.GAp).iterator();
+        Object localObject1 = ((List)this.NnV).iterator();
         int i = 0;
         if (((Iterator)localObject1).hasNext())
         {
-          if (((ad)((Iterator)localObject1).next()).id == paramLong)
+          if (((af)((Iterator)localObject1).next()).id == paramLong)
           {
             j = 1;
             break label194;
             if (i >= 0)
             {
-              XEffectLog.i(TAG, "removeEffect ptr:" + ((ad)this.GAp.get(i)).ptr + ", effectId:" + paramLong, new Object[0]);
-              ((ad)this.GAp.get(i)).id = 0L;
-              this.GAp.remove(i);
+              XEffectLog.i(TAG, "removeEffect ptr:" + ((af)this.NnV.get(i)).ptr + ", effectId:" + paramLong, new Object[0]);
+              ((af)this.NnV.get(i)).id = 0L;
+              this.NnV.remove(i);
             }
-            nRemoveEffect(this.Rxd, paramLong);
-            localObject1 = kotlin.x.SXb;
-            AppMethodBeat.o(237062);
+            nRemoveEffect(this.NmO, paramLong);
+            localObject1 = kotlin.x.aazN;
+            AppMethodBeat.o(195730);
           }
           else
           {
@@ -136,32 +141,32 @@ public final class EffectManager
     }
   }
   
-  public final void Ou(long paramLong)
+  public final void WJ(long paramLong)
   {
-    AppMethodBeat.i(237065);
+    AppMethodBeat.i(195733);
     for (;;)
     {
       int j;
-      synchronized (this.GAp)
+      synchronized (this.NnV)
       {
-        Object localObject1 = ((List)this.GAp).iterator();
+        Object localObject1 = ((List)this.NnV).iterator();
         int i = 0;
         if (((Iterator)localObject1).hasNext())
         {
-          if (((ad)((Iterator)localObject1).next()).id == paramLong)
+          if (((af)((Iterator)localObject1).next()).id == paramLong)
           {
             j = 1;
             break label156;
             if (i >= 0)
             {
-              localObject1 = this.GAp.remove(i);
-              p.g(localObject1, "effectList.removeAt(index)");
-              localObject1 = (ad)localObject1;
-              this.GAp.add(localObject1);
+              localObject1 = this.NnV.remove(i);
+              p.j(localObject1, "effectList.removeAt(index)");
+              localObject1 = (af)localObject1;
+              this.NnV.add(localObject1);
             }
-            nBringToFront(this.Rxd, paramLong);
-            localObject1 = kotlin.x.SXb;
-            AppMethodBeat.o(237065);
+            nBringToFront(this.NmO, paramLong);
+            localObject1 = kotlin.x.aazN;
+            AppMethodBeat.o(195733);
           }
           else
           {
@@ -179,82 +184,70 @@ public final class EffectManager
     }
   }
   
-  public final ad a(ad paramad)
+  public final af a(j paramj)
   {
-    AppMethodBeat.i(237060);
-    if (paramad != null)
+    AppMethodBeat.i(195718);
+    p.k(paramj, "type");
+    paramj = a.a(nCreateEffect(this.NmO, paramj.ordinal()), paramj);
+    AppMethodBeat.o(195718);
+    return paramj;
+  }
+  
+  public final af a(j paramj, AssetManager paramAssetManager, String paramString)
+  {
+    AppMethodBeat.i(195721);
+    p.k(paramj, "type");
+    p.k(paramAssetManager, "asset");
+    p.k(paramString, "assetPath");
+    paramj = a.a(nCreateEffectAsset(this.NmO, paramj.ordinal(), paramAssetManager, paramString), paramj);
+    AppMethodBeat.o(195721);
+    return paramj;
+  }
+  
+  public final af a(j paramj, String paramString)
+  {
+    AppMethodBeat.i(195720);
+    p.k(paramj, "type");
+    p.k(paramString, "path");
+    paramj = a.a(nCreateEffectPath(this.NmO, paramj.ordinal(), paramString), paramj);
+    AppMethodBeat.o(195720);
+    return paramj;
+  }
+  
+  public final af b(af paramaf)
+  {
+    AppMethodBeat.i(195723);
+    if (paramaf != null)
     {
-      long l = nAddEffect(this.Rxd, paramad.ptr);
-      paramad.id = l;
-      XEffectLog.i(TAG, "addEffect ptr:" + paramad.ptr + ", effectId:" + l, new Object[0]);
+      long l = nAddEffect(this.NmO, paramaf.ptr);
+      paramaf.id = l;
+      XEffectLog.i(TAG, "addEffect ptr:" + paramaf.ptr + ", effectId:" + l, new Object[0]);
     }
-    synchronized (this.GAp)
+    synchronized (this.NnV)
     {
-      this.GAp.add(paramad);
-      AppMethodBeat.o(237060);
-      return paramad;
+      this.NnV.add(paramaf);
+      AppMethodBeat.o(195723);
+      return paramaf;
     }
-  }
-  
-  public final ad a(j paramj)
-  {
-    AppMethodBeat.i(237056);
-    p.h(paramj, "type");
-    paramj = a.a(nCreateEffect(this.Rxd, paramj.ordinal()), paramj);
-    AppMethodBeat.o(237056);
-    return paramj;
-  }
-  
-  public final ad a(j paramj, AssetManager paramAssetManager, String paramString)
-  {
-    AppMethodBeat.i(237059);
-    p.h(paramj, "type");
-    p.h(paramAssetManager, "asset");
-    p.h(paramString, "assetPath");
-    paramj = a.a(nCreateEffectAsset(this.Rxd, paramj.ordinal(), paramAssetManager, paramString), paramj);
-    AppMethodBeat.o(237059);
-    return paramj;
-  }
-  
-  public final ad a(j paramj, String paramString)
-  {
-    AppMethodBeat.i(237057);
-    p.h(paramj, "type");
-    p.h(paramString, "path");
-    paramj = a.a(nCreateEffectPath(this.Rxd, paramj.ordinal(), paramString), paramj);
-    AppMethodBeat.o(237057);
-    return paramj;
-  }
-  
-  public final ad a(j paramj, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(237058);
-    p.h(paramj, "type");
-    p.h(paramArrayOfByte, "bytes");
-    long l = nCreateEffectBinary(this.Rxd, paramj.ordinal(), paramArrayOfByte, paramArrayOfByte.length);
-    ad localad = a.a(l, paramj);
-    XEffectLog.i(TAG, "create effect binary ptr:" + l + ", type:" + paramj + ", " + paramArrayOfByte.length, new Object[0]);
-    AppMethodBeat.o(237058);
-    return localad;
   }
   
   public final void b(j paramj)
   {
-    AppMethodBeat.i(237063);
-    p.h(paramj, "type");
+    AppMethodBeat.i(195731);
+    p.k(paramj, "type");
     Collection localCollection;
     for (;;)
     {
-      synchronized (this.GAp)
+      synchronized (this.NnV)
       {
-        Object localObject1 = (Iterable)this.GAp;
+        Object localObject1 = (Iterable)this.NnV;
         localCollection = (Collection)new ArrayList();
         localObject1 = ((Iterable)localObject1).iterator();
         if (!((Iterator)localObject1).hasNext()) {
           break;
         }
         Object localObject2 = ((Iterator)localObject1).next();
-        if (((ad)localObject2).hiu() == paramj)
+        if (((af)localObject2).ika() == paramj)
         {
           i = 1;
           if (i == 0) {
@@ -267,141 +260,202 @@ public final class EffectManager
     }
     paramj = ((Iterable)localCollection).iterator();
     while (paramj.hasNext()) {
-      Ot(((ad)paramj.next()).id);
+      c((af)paramj.next());
     }
-    paramj = kotlin.x.SXb;
-    AppMethodBeat.o(237063);
+    paramj = kotlin.x.aazN;
+    AppMethodBeat.o(195731);
+  }
+  
+  public final void c(af paramaf)
+  {
+    AppMethodBeat.i(195729);
+    if (paramaf != null) {
+      synchronized (this.NnV)
+      {
+        this.NnV.remove(paramaf);
+        nRemoveEffect(this.NmO, paramaf.id);
+        paramaf = kotlin.x.aazN;
+        AppMethodBeat.o(195729);
+        return;
+      }
+    }
+    AppMethodBeat.o(195729);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(237067);
-    hiv();
-    nDestroy(this.Rxd);
-    AppMethodBeat.o(237067);
+    AppMethodBeat.i(195736);
+    ike();
+    nDestroy(this.NmO);
+    AppMethodBeat.o(195736);
   }
   
-  public final void hiv()
+  public final b ikc()
   {
-    AppMethodBeat.i(237064);
-    synchronized (this.GAp)
+    AppMethodBeat.i(195725);
+    Object localObject = a(j.YZP);
+    if (localObject == null)
     {
-      Iterator localIterator = ((Iterable)this.GAp).iterator();
+      localObject = new t("null cannot be cast to non-null type com.tencent.mm.xeffect.effect.BlurEffect");
+      AppMethodBeat.o(195725);
+      throw ((Throwable)localObject);
+    }
+    localObject = (b)localObject;
+    b((af)localObject);
+    AppMethodBeat.o(195725);
+    return localObject;
+  }
+  
+  public final l ikd()
+  {
+    AppMethodBeat.i(195727);
+    Object localObject = a(j.YZN);
+    if (localObject == null)
+    {
+      localObject = new t("null cannot be cast to non-null type com.tencent.mm.xeffect.effect.GradientBlurEffect");
+      AppMethodBeat.o(195727);
+      throw ((Throwable)localObject);
+    }
+    localObject = (l)localObject;
+    ((l)localObject).setRadius(20.0F);
+    b((af)localObject);
+    AppMethodBeat.o(195727);
+    return localObject;
+  }
+  
+  public final void ike()
+  {
+    AppMethodBeat.i(195732);
+    synchronized (this.NnV)
+    {
+      Iterator localIterator = ((Iterable)this.NnV).iterator();
       if (localIterator.hasNext())
       {
-        ad localad = (ad)localIterator.next();
-        nRemoveEffect(this.Rxd, localad.id);
-        localad.id = 0L;
+        af localaf = (af)localIterator.next();
+        nRemoveEffect(this.NmO, localaf.id);
+        localaf.id = 0L;
       }
     }
-    this.GAp.clear();
-    kotlin.x localx = kotlin.x.SXb;
-    AppMethodBeat.o(237064);
+    this.NnV.clear();
+    kotlin.x localx = kotlin.x.aazN;
+    AppMethodBeat.o(195732);
   }
   
-  public final EffectProfileData hiw()
+  public final EffectProfileData ikf()
   {
-    AppMethodBeat.i(237066);
-    EffectProfileData localEffectProfileData = new EffectProfileData(nProfileData(this.Rxd));
-    AppMethodBeat.o(237066);
+    AppMethodBeat.i(195735);
+    EffectProfileData localEffectProfileData = new EffectProfileData(nProfileData(this.NmO));
+    AppMethodBeat.o(195735);
     return localEffectProfileData;
   }
   
-  @kotlin.l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/mm/xeffect/effect/EffectManager$Companion;", "", "()V", "TAG", "", "createEffect", "Lcom/tencent/mm/xeffect/effect/VLogEffect;", "ptr", "", "type", "Lcom/tencent/mm/xeffect/effect/EffectType;", "nSetDefaultFactory", "", "factory", "Lcom/tencent/mm/xeffect/effect/IStickerDecoderFactory;", "setDefaultFactory", "renderlib_release"})
+  public final native long nCreateEffectBinary(long paramLong1, int paramInt, byte[] paramArrayOfByte, long paramLong2);
+  
+  public final native void nSetDecoderFactory(long paramLong, IStickerDecoderFactory paramIStickerDecoderFactory);
+  
+  @kotlin.l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/effect/EffectManager$Companion;", "", "()V", "TAG", "", "createEffect", "Lcom/tencent/mm/xeffect/effect/VLogEffect;", "ptr", "", "type", "Lcom/tencent/mm/xeffect/effect/EffectType;", "createFromExternalPtr", "Lcom/tencent/mm/xeffect/effect/EffectManager;", "nSetDefaultFactory", "", "factory", "Lcom/tencent/mm/xeffect/effect/IStickerDecoderFactory;", "setDefaultFactory", "renderlib_release"})
   public static final class a
   {
-    static ad a(long paramLong, j paramj)
+    public static EffectManager WK(long paramLong)
     {
-      AppMethodBeat.i(237055);
+      AppMethodBeat.i(195709);
+      EffectManager localEffectManager = new EffectManager(paramLong, (byte)0);
+      AppMethodBeat.o(195709);
+      return localEffectManager;
+    }
+    
+    public static af a(long paramLong, j paramj)
+    {
+      AppMethodBeat.i(195706);
       XEffectLog.i(EffectManager.access$getTAG$cp(), "create effect ptr:" + paramLong + ", type:" + paramj, new Object[0]);
       if (paramLong == 0L)
       {
-        AppMethodBeat.o(237055);
+        AppMethodBeat.o(195706);
         return null;
       }
       switch (g.$EnumSwitchMapping$0[paramj.ordinal()])
       {
       default: 
-        AppMethodBeat.o(237055);
+        AppMethodBeat.o(195706);
         return null;
       case 1: 
-        paramj = (ad)new t(paramLong);
-        AppMethodBeat.o(237055);
+        paramj = (af)new v(paramLong);
+        AppMethodBeat.o(195706);
         return paramj;
       case 2: 
-        paramj = (ad)new w(paramLong);
-        AppMethodBeat.o(237055);
+        paramj = (af)new y(paramLong);
+        AppMethodBeat.o(195706);
         return paramj;
       case 3: 
-        paramj = (ad)new v(paramLong);
-        AppMethodBeat.o(237055);
+        paramj = (af)new x(paramLong);
+        AppMethodBeat.o(195706);
         return paramj;
       case 4: 
-        paramj = (ad)new u(paramLong);
-        AppMethodBeat.o(237055);
+        paramj = (af)new w(paramLong);
+        AppMethodBeat.o(195706);
         return paramj;
       case 5: 
-        paramj = (ad)new s(paramLong);
-        AppMethodBeat.o(237055);
+        paramj = (af)new u(paramLong);
+        AppMethodBeat.o(195706);
         return paramj;
       case 6: 
-        paramj = (ad)new n(paramLong);
-        AppMethodBeat.o(237055);
+        paramj = (af)new n(paramLong);
+        AppMethodBeat.o(195706);
         return paramj;
       case 7: 
-        paramj = (ad)new aa(paramLong);
-        AppMethodBeat.o(237055);
+        paramj = (af)new ac(paramLong);
+        AppMethodBeat.o(195706);
         return paramj;
       case 8: 
-        paramj = (ad)new a(paramLong);
-        AppMethodBeat.o(237055);
+        paramj = (af)new a(paramLong);
+        AppMethodBeat.o(195706);
         return paramj;
       case 9: 
-        paramj = (ad)new c(paramLong);
-        AppMethodBeat.o(237055);
+        paramj = (af)new r(paramLong);
+        AppMethodBeat.o(195706);
         return paramj;
       case 10: 
-        paramj = (ad)new d(paramLong);
-        AppMethodBeat.o(237055);
+        paramj = (af)new c(paramLong);
+        AppMethodBeat.o(195706);
         return paramj;
       case 11: 
-        paramj = (ad)new x(paramLong);
-        AppMethodBeat.o(237055);
+        paramj = (af)new d(paramLong);
+        AppMethodBeat.o(195706);
         return paramj;
       case 12: 
-        paramj = (ad)new m(paramLong);
-        AppMethodBeat.o(237055);
+        paramj = (af)new z(paramLong);
+        AppMethodBeat.o(195706);
         return paramj;
       case 13: 
-        paramj = (ad)new ae(paramLong);
-        AppMethodBeat.o(237055);
+        paramj = (af)new m(paramLong);
+        AppMethodBeat.o(195706);
         return paramj;
       case 14: 
-        paramj = (ad)new l(paramLong);
-        AppMethodBeat.o(237055);
+        paramj = (af)new ag(paramLong);
+        AppMethodBeat.o(195706);
         return paramj;
       case 15: 
-        paramj = (ad)new k(paramLong);
-        AppMethodBeat.o(237055);
+        paramj = (af)new l(paramLong);
+        AppMethodBeat.o(195706);
+        return paramj;
+      case 16: 
+        paramj = (af)new k(paramLong);
+        AppMethodBeat.o(195706);
+        return paramj;
+      case 17: 
+        paramj = (af)new b(paramLong);
+        AppMethodBeat.o(195706);
         return paramj;
       }
-      paramj = (ad)new b(paramLong);
-      AppMethodBeat.o(237055);
+      paramj = (af)new q(paramLong);
+      AppMethodBeat.o(195706);
       return paramj;
-    }
-    
-    public static void b(IStickerDecoderFactory paramIStickerDecoderFactory)
-    {
-      AppMethodBeat.i(237054);
-      p.h(paramIStickerDecoderFactory, "factory");
-      EffectManager.a((IStickerDecoderFactory)new StickerDecoderFactoryWrapper(paramIStickerDecoderFactory));
-      AppMethodBeat.o(237054);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.xeffect.effect.EffectManager
  * JD-Core Version:    0.7.0.1
  */

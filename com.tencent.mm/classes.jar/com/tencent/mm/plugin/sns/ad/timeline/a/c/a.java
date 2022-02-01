@@ -2,9 +2,11 @@ package com.tencent.mm.plugin.sns.ad.timeline.a.c;
 
 import android.view.View;
 import com.tencent.mm.modelsns.SnsAdClick;
+import com.tencent.mm.plugin.sns.ad.f.l;
 import com.tencent.mm.plugin.sns.ad.timeline.a.c;
 import com.tencent.mm.plugin.sns.ad.timeline.a.d;
-import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.data.m;
+import com.tencent.mm.plugin.sns.data.t;
 import com.tencent.mm.plugin.sns.storage.ADXml;
 import com.tencent.mm.plugin.sns.storage.SnsInfo;
 
@@ -37,10 +39,10 @@ public abstract class a
           if (paramView == null) {
             break label190;
           }
-          r.a(paramView);
+          t.a(paramView);
           break label190;
         }
-        localObject = (com.tencent.mm.plugin.sns.ad.g.k)paramd.z("snsAdStatistic", null);
+        localObject = (l)paramd.y("snsAdStatistic", null);
         if (localObject == null)
         {
           paramView = null;
@@ -48,18 +50,18 @@ public abstract class a
         }
         if (paramd.containsKey("flipStatus"))
         {
-          j = ((Integer)paramd.z("flipStatus", Integer.valueOf(0))).intValue();
+          j = ((Integer)paramd.y("flipStatus", Integer.valueOf(0))).intValue();
           if (paramInt != 0) {
             break label193;
           }
-          paramView = new SnsAdClick(paramInt, i, paramSnsInfo.field_snsId, eXH(), j, (byte)0);
-          com.tencent.mm.plugin.sns.data.k.a(paramView, (com.tencent.mm.plugin.sns.ad.g.k)localObject, paramSnsInfo, 22);
+          paramView = new SnsAdClick(paramInt, i, paramSnsInfo.field_snsId, eCp(), j, (byte)0);
+          m.a(paramView, (l)localObject, paramSnsInfo, 22);
           continue;
         }
         if (paramInt == 0)
         {
           i = j;
-          paramView = new SnsAdClick(paramInt, i, paramSnsInfo.field_snsId, 22, eXH());
+          paramView = new SnsAdClick(paramInt, i, paramSnsInfo.field_snsId, 22, eCp());
           continue;
         }
         i = 2;
@@ -78,11 +80,11 @@ public abstract class a
   
   protected abstract boolean a(View paramView, int paramInt, SnsInfo paramSnsInfo, ADXml paramADXml);
   
-  protected abstract int eXH();
+  protected abstract int eCp();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.a.c.a
  * JD-Core Version:    0.7.0.1
  */

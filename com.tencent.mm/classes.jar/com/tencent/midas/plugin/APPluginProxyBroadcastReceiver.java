@@ -11,18 +11,18 @@ public class APPluginProxyBroadcastReceiver
 {
   public static void sendBroadcastReceiver(Context paramContext, String paramString1, String paramString2, Intent paramIntent)
   {
-    AppMethodBeat.i(193163);
+    AppMethodBeat.i(252642);
     paramIntent.putExtra("pluginsdk_pluginName", paramString1);
     paramIntent.putExtra("pluginsdk_launchReceiver", paramString2);
     try
     {
       paramContext.sendBroadcast(paramIntent);
-      AppMethodBeat.o(193163);
+      AppMethodBeat.o(252642);
       return;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(193163);
+      AppMethodBeat.o(252642);
     }
   }
   
@@ -167,18 +167,18 @@ public class APPluginProxyBroadcastReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(193164);
+    AppMethodBeat.i(252644);
     IAPPluginBroadcastReceiver localIAPPluginBroadcastReceiver = startPluginIfNeccessary(paramContext, paramIntent);
     APLog.i("APPLuginProxyBroadcastReciver", "onReceive startPluginIfNeccessary: ".concat(String.valueOf(localIAPPluginBroadcastReceiver)));
     if (localIAPPluginBroadcastReceiver != null) {
       localIAPPluginBroadcastReceiver.IOnReceive(paramContext, paramIntent);
     }
-    AppMethodBeat.o(193164);
+    AppMethodBeat.o(252644);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.plugin.APPluginProxyBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

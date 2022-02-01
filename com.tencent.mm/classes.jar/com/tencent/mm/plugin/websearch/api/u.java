@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cze;
-import com.tencent.mm.protocal.protobuf.czf;
+import com.tencent.mm.protocal.protobuf.diq;
+import com.tencent.mm.protocal.protobuf.dir;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 
 public final class u
   extends q
   implements m
 {
-  public czf IDC;
-  public cze IDD;
+  public dir PxS;
+  public diq PxT;
   private i callback;
-  private d iUB;
+  private d lKU;
   
-  public u(cze paramcze)
+  public u(diq paramdiq)
   {
     AppMethodBeat.i(117620);
-    this.IDD = paramcze;
-    Object localObject = this.IDD;
-    if (ao.isDarkMode()) {}
+    this.PxT = paramdiq;
+    Object localObject = this.PxT;
+    if (ar.isDarkMode()) {}
     for (int i = 1;; i = 0)
     {
-      ((cze)localObject).MEt = i;
-      paramcze.MlQ = ai.clJ();
-      paramcze.MlR = ai.fYd();
-      this.IDC = new czf();
+      ((diq)localObject).TQc = i;
+      paramdiq.TwK = ai.czn();
+      paramdiq.TwL = ai.gQO();
+      this.PxS = new dir();
       localObject = new d.a();
       ((d.a)localObject).funcId = 1076;
       ((d.a)localObject).uri = "/cgi-bin/mmsearch-bin/pardussearch";
-      ((d.a)localObject).iLN = paramcze;
-      ((d.a)localObject).iLO = this.IDC;
-      this.iUB = ((d.a)localObject).aXF();
+      ((d.a)localObject).lBU = paramdiq;
+      ((d.a)localObject).lBV = this.PxS;
+      this.lKU = ((d.a)localObject).bgN();
       AppMethodBeat.o(117620);
       return;
     }
@@ -49,14 +49,14 @@ public final class u
   {
     AppMethodBeat.i(117621);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
+    int i = dispatch(paramg, this.lKU, this);
     AppMethodBeat.o(117621);
     return i;
   }
   
-  public final czf fXO()
+  public final dir gQz()
   {
-    return this.IDC;
+    return this.PxS;
   }
   
   public final int getType()
@@ -74,7 +74,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.u
  * JD-Core Version:    0.7.0.1
  */

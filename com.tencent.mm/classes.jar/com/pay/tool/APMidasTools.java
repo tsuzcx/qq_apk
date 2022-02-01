@@ -53,9 +53,9 @@ public class APMidasTools
   
   public static String getCurrentThreadName(Thread paramThread)
   {
-    AppMethodBeat.i(193318);
+    AppMethodBeat.i(253790);
     paramThread = paramThread.getName();
-    AppMethodBeat.o(193318);
+    AppMethodBeat.o(253790);
     return paramThread;
   }
   
@@ -168,19 +168,19 @@ public class APMidasTools
   
   public static String getSysServerDomain()
   {
-    AppMethodBeat.i(193316);
+    AppMethodBeat.i(253788);
     String str = APMidasPayAPI.env;
     if (str.equals("dev"))
     {
-      AppMethodBeat.o(193316);
+      AppMethodBeat.o(253788);
       return "dev.api.unipay.qq.com";
     }
     if (str.equals("test"))
     {
-      AppMethodBeat.o(193316);
+      AppMethodBeat.o(253788);
       return "sandbox.api.unipay.qq.com";
     }
-    AppMethodBeat.o(193316);
+    AppMethodBeat.o(253788);
     return "api.unipay.qq.com";
   }
   
@@ -191,7 +191,7 @@ public class APMidasTools
   
   public static String getUUID()
   {
-    AppMethodBeat.i(193317);
+    AppMethodBeat.i(253789);
     Object localObject = "";
     try
     {
@@ -203,13 +203,13 @@ public class APMidasTools
       label17:
       break label17;
     }
-    AppMethodBeat.o(193317);
+    AppMethodBeat.o(253789);
     return localObject;
   }
   
   public static String getUrlParamsValue(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(193314);
+    AppMethodBeat.i(253785);
     paramString1 = paramString1.split("[?]");
     int i;
     Object localObject;
@@ -235,14 +235,14 @@ public class APMidasTools
       {
         if ((paramString1 != null) && (paramString1.compareToIgnoreCase(paramString2) == 0))
         {
-          AppMethodBeat.o(193314);
+          AppMethodBeat.o(253785);
           return localObject;
-          AppMethodBeat.o(193314);
+          AppMethodBeat.o(253785);
           return null;
         }
         i += 1;
         break;
-        AppMethodBeat.o(193314);
+        AppMethodBeat.o(253785);
         return null;
       }
     }
@@ -250,21 +250,21 @@ public class APMidasTools
   
   public static boolean isFastClick()
   {
-    AppMethodBeat.i(193311);
+    AppMethodBeat.i(253782);
     long l = System.currentTimeMillis();
     if (l - lastClickTime < 3000L)
     {
-      AppMethodBeat.o(193311);
+      AppMethodBeat.o(253782);
       return true;
     }
     lastClickTime = l;
-    AppMethodBeat.o(193311);
+    AppMethodBeat.o(253782);
     return false;
   }
   
   public static String map2UrlParams(HashMap<String, String> paramHashMap)
   {
-    AppMethodBeat.i(193315);
+    AppMethodBeat.i(253786);
     StringBuffer localStringBuffer = new StringBuffer();
     try
     {
@@ -283,7 +283,7 @@ public class APMidasTools
     catch (Exception paramHashMap) {}
     for (;;)
     {
-      AppMethodBeat.o(193315);
+      AppMethodBeat.o(253786);
       return paramHashMap;
       if (!TextUtils.isEmpty(localStringBuffer)) {
         localStringBuffer.deleteCharAt(localStringBuffer.length() - 1);
@@ -293,13 +293,13 @@ public class APMidasTools
   
   public static String urlDecode(String paramString, int paramInt)
   {
-    AppMethodBeat.i(193313);
+    AppMethodBeat.i(253784);
     String str2 = "";
     if (!TextUtils.isEmpty(paramString))
     {
       if (paramInt <= 0)
       {
-        AppMethodBeat.o(193313);
+        AppMethodBeat.o(253784);
         return paramString;
       }
       int i = 0;
@@ -332,19 +332,19 @@ public class APMidasTools
     }
     APLog.w("", "解码内容为空");
     label88:
-    AppMethodBeat.o(193313);
+    AppMethodBeat.o(253784);
     return str2;
   }
   
   public static String urlEncode(String paramString, int paramInt)
   {
-    AppMethodBeat.i(193312);
+    AppMethodBeat.i(253783);
     String str2 = "";
     if (!TextUtils.isEmpty(paramString))
     {
       if (paramInt <= 0)
       {
-        AppMethodBeat.o(193312);
+        AppMethodBeat.o(253783);
         return paramString;
       }
       int i = 0;
@@ -377,13 +377,13 @@ public class APMidasTools
     }
     APLog.i("urlEncode", "编码内容为空");
     label89:
-    AppMethodBeat.o(193312);
+    AppMethodBeat.o(253783);
     return str2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.pay.tool.APMidasTools
  * JD-Core Version:    0.7.0.1
  */

@@ -1,105 +1,57 @@
 package com.tencent.f;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-
-public final class d
+public abstract class d<T extends e>
 {
-  public static e RSQ;
-  public static f RSR;
-  public static a RSS;
+  private T[] ZQu = aCo(20);
+  private final Object mLock = new Object();
+  private int pCf;
   
-  static
+  private T itu()
   {
-    AppMethodBeat.i(183137);
-    RSQ = new c((byte)0);
-    RSR = new d((byte)0);
-    RSS = new b((byte)0);
-    AppMethodBeat.o(183137);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void e(String paramString1, String paramString2, Object... paramVarArgs);
-    
-    public abstract void i(String paramString1, String paramString2, Object... paramVarArgs);
-    
-    public abstract void w(String paramString1, String paramString2, Object... paramVarArgs);
-  }
-  
-  static final class b
-    implements d.a
-  {
-    public final void e(String paramString1, String paramString2, Object... paramVarArgs)
+    e locale = null;
+    synchronized (this.mLock)
     {
-      AppMethodBeat.i(183136);
-      String.format(paramString2, paramVarArgs);
-      AppMethodBeat.o(183136);
-    }
-    
-    public final void i(String paramString1, String paramString2, Object... paramVarArgs)
-    {
-      AppMethodBeat.i(183134);
-      String.format(paramString2, paramVarArgs);
-      AppMethodBeat.o(183134);
-    }
-    
-    public final void w(String paramString1, String paramString2, Object... paramVarArgs)
-    {
-      AppMethodBeat.i(183135);
-      String.format(paramString2, paramVarArgs);
-      AppMethodBeat.o(183135);
+      if (this.pCf > 0)
+      {
+        this.pCf -= 1;
+        locale = this.ZQu[this.pCf];
+        this.ZQu[this.pCf] = null;
+      }
+      return locale;
     }
   }
   
-  static final class c
-    implements d.e
+  public final void a(T paramT)
   {
-    public final void a(String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2) {}
-    
-    public final void a(String paramString1, int paramInt, f paramf, long paramLong1, long paramLong2, String paramString2, boolean paramBoolean) {}
-    
-    public final void a(String paramString, int paramInt, Throwable paramThrowable) {}
-    
-    public final void g(String paramString1, int paramInt, String paramString2) {}
-    
-    public final void shutdown() {}
+    synchronized (this.mLock)
+    {
+      int i = this.ZQu.length;
+      if (this.pCf < i)
+      {
+        this.ZQu[this.pCf] = paramT;
+        this.pCf += 1;
+      }
+      return;
+    }
   }
   
-  static final class d
-    implements d.f
-  {
-    public final void a(Thread paramThread, String paramString, long paramLong) {}
-    
-    public final void b(Thread paramThread, String paramString, long paramLong) {}
-    
-    public final void c(Thread paramThread, String paramString, long paramLong) {}
-  }
+  protected abstract T[] aCo(int paramInt);
   
-  public static abstract interface e
-  {
-    public abstract void a(String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2);
-    
-    public abstract void a(String paramString1, int paramInt, f paramf, long paramLong1, long paramLong2, String paramString2, boolean paramBoolean);
-    
-    public abstract void a(String paramString, int paramInt, Throwable paramThrowable);
-    
-    public abstract void g(String paramString1, int paramInt, String paramString2);
-    
-    public abstract void shutdown();
-  }
+  protected abstract T its();
   
-  public static abstract interface f
+  public final T itt()
   {
-    public abstract void a(Thread paramThread, String paramString, long paramLong);
-    
-    public abstract void b(Thread paramThread, String paramString, long paramLong);
-    
-    public abstract void c(Thread paramThread, String paramString, long paramLong);
+    e locale = itu();
+    if (locale == null) {
+      return its();
+    }
+    locale.reset();
+    return locale;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.f.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,421 +1,128 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
-import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
+import android.graphics.Color;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vd;
-import com.tencent.mm.g.a.vd.a;
-import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
-import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy.e;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ab;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.protocal.protobuf.btl;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IListener;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.lang.ref.WeakReference;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ag;
+import com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesUI;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
+import org.json.JSONObject;
+import org.xwalk.core.Log;
 
 public final class af
-  extends q
+  extends m
+  implements View.OnClickListener
 {
-  private com.tencent.mm.plugin.sns.data.h EcI;
-  ab EfL;
-  String EfM = "";
-  String EfN = "";
-  String EfO = "";
-  volatile int EfP = -10;
-  IListener<vd> EfQ;
-  com.tencent.mm.ui.base.q nUi = null;
+  private WeImageView KsZ;
+  private int Kta = 0;
+  private Context mContext;
+  private TextView rR;
   
-  public af(Context paramContext, ab paramab, ViewGroup paramViewGroup)
+  public af(Context paramContext, ag paramag, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramab, paramViewGroup);
-    this.EfL = paramab;
+    super(paramContext, paramag, paramViewGroup);
+    this.mContext = paramContext;
   }
   
-  private void fdE()
+  public final boolean by(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(203017);
-    Bundle localBundle;
-    if (this.EcI == null)
+    AppMethodBeat.i(219228);
+    if (!super.by(paramJSONObject))
     {
-      localBundle = new Bundle();
-      localObject = this.EfL;
-      if (localObject == null) {
-        break label68;
-      }
-    }
-    label68:
-    for (Object localObject = ((ab)localObject).DYM;; localObject = "")
-    {
-      localBundle.putString("qrExtInfo", (String)localObject);
-      this.EcI = new com.tencent.mm.plugin.sns.data.h(this.context, fds(), 3, localBundle);
-      AppMethodBeat.o(203017);
-      return;
-    }
-  }
-  
-  protected final void O(int paramInt, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(203016);
-    vd localvd = new vd();
-    localvd.ebw.ebx = fdn();
-    localvd.ebw.eby = paramString1;
-    localvd.ebw.ebz = paramString2;
-    localvd.ebw.ebA = paramInt;
-    EventCenter.instance.publish(localvd);
-    AppMethodBeat.o(203016);
-  }
-  
-  protected final void eWS()
-  {
-    AppMethodBeat.i(203014);
-    fdE();
-    try
-    {
-      if (this.EfL.DZz == 1)
-      {
-        if ((this.nUi == null) && ((this.context instanceof Activity)) && (!((Activity)this.context).isFinishing())) {
-          this.nUi = com.tencent.mm.ui.base.h.a(this.context, "加载中", true, null);
-        }
-        if ((this.EfP == 3) && (!TextUtils.isEmpty(this.EfO)))
-        {
-          if (this.nUi != null)
-          {
-            this.nUi.dismiss();
-            this.nUi = null;
-          }
-          this.Edn.kv("qrUrl", this.EfN);
-          this.EcI.jX(this.EfO, this.EfN);
-          AppMethodBeat.o(203014);
-          return;
-        }
-        if ((this.EfP == 0) || (this.EfP == 1) || (this.EfP == 2))
-        {
-          if (this.nUi != null) {
-            this.nUi.show();
-          }
-          AppMethodBeat.o(203014);
-          return;
-        }
-      }
-      if (this.nUi != null)
-      {
-        this.nUi.dismiss();
-        this.nUi = null;
-      }
-    }
-    catch (Throwable localThrowable1)
-    {
-      for (;;)
-      {
-        try
-        {
-          this.Edn.kv("qrUrl", this.EfL.DZy);
-          this.EcI.jX(this.EfM, this.EfL.DZy);
-          AppMethodBeat.o(203014);
-          return;
-        }
-        catch (Throwable localThrowable2)
-        {
-          Log.e("SnsAd.AdLandingPageQRCodeBtnComp", "the ad qr helper has something wrong. exception: ".concat(String.valueOf(localThrowable2)));
-        }
-        localThrowable1 = localThrowable1;
-        Log.e("SnsAd.AdLandingPageQRCodeBtnComp", localThrowable1.toString());
-      }
-      AppMethodBeat.o(203014);
-    }
-    if (!TextUtils.isEmpty(this.EfM)) {}
-  }
-  
-  protected final void eWT()
-  {
-    AppMethodBeat.i(203013);
-    super.eWT();
-    String str;
-    if (this.EfL != null)
-    {
-      str = this.EfL.DZy;
-      Log.d("SnsAd.AdLandingPageQRCodeBtnComp", "the qr code img url: ".concat(String.valueOf(str)));
-      if (this.EfL.DZz != 1) {}
+      AppMethodBeat.o(219228);
+      return false;
     }
     try
     {
-      AdLandingPagesProxy.getInstance().doAdUpdateQrUrlScene("", this.EfL.DYM, "", fds().uxInfo, fdn(), fds().getSnsId(), new b(this));
-      this.EfP = 0;
-      Log.i("SnsAd.AdLandingPageQRCodeBtnComp", "mNewQRStatus = " + this.EfP);
-      com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(str, fdx().DZj, new a(this, false));
-      AppMethodBeat.o(203013);
-      return;
+      paramJSONObject.put("clickCount", this.Kta);
+      AppMethodBeat.o(219228);
+      return true;
     }
-    catch (Throwable localThrowable)
+    catch (Exception paramJSONObject)
     {
-      for (;;)
-      {
-        Log.e("SnsAd.AdLandingPageQRCodeBtnComp", localThrowable.toString());
-      }
+      Log.e("MicroMsg.Sns.AdLandingPageShareComponent", "setComponentKVReportData exp=" + paramJSONObject.toString());
+      AppMethodBeat.o(219228);
     }
+    return false;
   }
   
-  public final void eXd()
+  protected final void fKe()
   {
-    AppMethodBeat.i(203015);
-    super.eXd();
-    if (this.EfQ != null)
-    {
-      this.EfQ.dead();
-      this.EfQ = null;
-    }
-    AppMethodBeat.o(203015);
-  }
-  
-  public final void eXe()
-  {
-    AppMethodBeat.i(203012);
-    super.eXe();
-    fdE();
-    if (this.EfQ == null)
-    {
-      this.EfQ = new IListener()
-      {
-        private boolean a(vd paramAnonymousvd)
-        {
-          AppMethodBeat.i(203002);
-          for (;;)
-          {
-            try
-            {
-              localaf = af.this;
-              if ((paramAnonymousvd != null) && (paramAnonymousvd.ebw != null))
-              {
-                localObject = localaf.EfL;
-                if (localObject != null) {
-                  continue;
-                }
-              }
-            }
-            catch (Throwable paramAnonymousvd)
-            {
-              af localaf;
-              Object localObject;
-              String str1;
-              int i;
-              String str2;
-              continue;
-            }
-            AppMethodBeat.o(203002);
-            return false;
-            str1 = paramAnonymousvd.ebw.ebx;
-            localObject = paramAnonymousvd.ebw.eby;
-            i = paramAnonymousvd.ebw.ebA;
-            str2 = localaf.fdn();
-            Log.d("SnsAd.AdLandingPageQRCodeBtnComp", "onDownloadEventFromOthers is called, from " + str1 + "; self is " + str2 + "; type is " + i);
-            if ((!Util.isEqual(str1, str2)) && (!TextUtils.isEmpty(paramAnonymousvd.ebw.ebz)))
-            {
-              paramAnonymousvd = paramAnonymousvd.ebw.ebz;
-              Log.d("SnsAd.AdLandingPageQRCodeBtnComp", "onDownloadEventFromOthers is called, the path is ".concat(String.valueOf(paramAnonymousvd)));
-              if (i == 0)
-              {
-                if ((Util.isEqual((String)localObject, localaf.EfL.DZy)) && (TextUtils.isEmpty(localaf.EfM))) {
-                  localaf.EfM = paramAnonymousvd;
-                }
-              }
-              else if ((i == 1) && (Util.isEqual((String)localObject, localaf.EfN)) && (TextUtils.isEmpty(localaf.EfO))) {
-                localaf.EfO = paramAnonymousvd;
-              }
-            }
-          }
-        }
-      };
-      this.EfQ.alive();
-    }
-    AppMethodBeat.o(203012);
-  }
-  
-  public static final class a
-    implements f.a
-  {
-    WeakReference<af> EfS;
-    private boolean EfT;
-    
-    a(af paramaf, boolean paramBoolean)
-    {
-      AppMethodBeat.i(203005);
-      this.EfT = false;
-      this.EfS = new WeakReference(paramaf);
-      this.EfT = paramBoolean;
-      AppMethodBeat.o(203005);
-    }
-    
-    public final void aNH(String paramString)
-    {
-      AppMethodBeat.i(203008);
-      af localaf = (af)this.EfS.get();
-      if (localaf != null)
-      {
-        Log.d("SnsAd.AdLandingPageQRCodeBtnComp", "download qr image completed, the path " + paramString + "; cId " + localaf.fdn());
-        if (this.EfT)
-        {
-          localaf.EfO = paramString;
-          localaf.EfP = 3;
-          Log.i("SnsAd.AdLandingPageQRCodeBtnComp", "mNewQRStatus = 3");
-          localaf.O(1, localaf.EfN, paramString);
-          AppMethodBeat.o(203008);
-          return;
-        }
-        localaf.EfM = paramString;
-        if (localaf.EfL != null)
-        {
-          localaf.O(0, localaf.EfL.DZy, paramString);
-          AppMethodBeat.o(203008);
-        }
-      }
-      else
-      {
-        Log.w("SnsAd.AdLandingPageQRCodeBtnComp", "qrCodeBtnComp is null in weak ref");
-      }
-      AppMethodBeat.o(203008);
-    }
-    
-    public final void eWN()
-    {
-      AppMethodBeat.i(203006);
-      af localaf = (af)this.EfS.get();
-      if ((localaf != null) && (this.EfT))
-      {
-        localaf.EfP = 2;
-        Log.i("SnsAd.AdLandingPageQRCodeBtnComp", "mNewQRStatus = 2");
-      }
-      AppMethodBeat.o(203006);
-    }
-    
-    public final void eWO()
-    {
-      AppMethodBeat.i(203007);
-      Log.e("SnsAd.AdLandingPageQRCodeBtnComp", "there is something error happening when downloading qr image.");
-      final af localaf = (af)this.EfS.get();
-      if ((localaf != null) && (this.EfT))
-      {
-        MMHandlerThread.postToMainThread(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(203004);
-            try
-            {
-              if (localaf.nUi != null)
-              {
-                localaf.nUi.dismiss();
-                localaf.nUi = null;
-              }
-              AppMethodBeat.o(203004);
-              return;
-            }
-            catch (Throwable localThrowable)
-            {
-              Log.e("SnsAd.AdLandingPageQRCodeBtnComp", localThrowable.toString());
-              AppMethodBeat.o(203004);
-            }
-          }
-        });
-        localaf.EfP = -2;
-        Log.i("SnsAd.AdLandingPageQRCodeBtnComp", "mNewQRStatus = -2");
-      }
-      AppMethodBeat.o(203007);
-    }
-  }
-  
-  public static final class b
-    implements AdLandingPagesProxy.e
-  {
-    private WeakReference<af> EfS;
-    
-    b(af paramaf)
-    {
-      AppMethodBeat.i(203010);
-      this.EfS = new WeakReference(paramaf);
-      AppMethodBeat.o(203010);
-    }
-    
-    public final void bn(Object paramObject) {}
-    
-    public final void h(int paramInt1, int paramInt2, final Object paramObject)
-    {
-      AppMethodBeat.i(203011);
-      if ((paramInt1 == 0) && (paramInt2 == 0)) {}
+    AppMethodBeat.i(219222);
+    ag localag = (ag)this.KqB;
+    this.rR.setText(localag.Kne);
+    if (!TextUtils.isEmpty(localag.KlM)) {
       try
       {
-        if ((paramObject instanceof byte[]))
-        {
-          btl localbtl = new btl();
-          localbtl.parseFrom((byte[])paramObject);
-          if (this.EfS != null)
-          {
-            paramObject = (af)this.EfS.get();
-            if ((paramObject != null) && (paramObject.fdn().equals(localbtl.Mac)))
-            {
-              Log.i("SnsAd.AdLandingPageQRCodeBtnComp", "request new qr image imgUrl completed");
-              paramObject.EfN = localbtl.url;
-              paramObject.EfP = 1;
-              Log.i("SnsAd.AdLandingPageQRCodeBtnComp", "mNewQRStatus = 1");
-              com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(paramObject.EfN, paramObject.fdx().DZj, new af.a(paramObject, true));
-            }
-          }
-          AppMethodBeat.o(203011);
-          return;
-        }
-        if (this.EfS != null)
-        {
-          paramObject = (af)this.EfS.get();
-          if (paramObject != null)
-          {
-            paramObject.EfP = -1;
-            MMHandlerThread.postToMainThread(new Runnable()
-            {
-              public final void run()
-              {
-                AppMethodBeat.i(203009);
-                try
-                {
-                  if (paramObject.nUi != null)
-                  {
-                    paramObject.nUi.dismiss();
-                    paramObject.nUi = null;
-                  }
-                  AppMethodBeat.o(203009);
-                  return;
-                }
-                catch (Throwable localThrowable)
-                {
-                  Log.e("SnsAd.AdLandingPageQRCodeBtnComp", localThrowable.toString());
-                  AppMethodBeat.o(203009);
-                }
-              }
-            });
-            Log.i("SnsAd.AdLandingPageQRCodeBtnComp", "mNewQRStatus = -1");
-          }
-        }
-        AppMethodBeat.o(203011);
+        int i = Color.parseColor(localag.KlM);
+        this.rR.setTextColor(i);
+        this.KsZ.setIconColor(i);
+        AppMethodBeat.o(219222);
         return;
       }
-      catch (Throwable paramObject)
+      catch (Exception localException)
       {
-        Log.e("SnsAd.AdLandingPageQRCodeBtnComp", paramObject.toString());
-        AppMethodBeat.o(203011);
+        Log.e("MicroMsg.Sns.AdLandingPageShareComponent", "parseColor exp=" + localException.toString());
       }
     }
+    AppMethodBeat.o(219222);
+  }
+  
+  protected final void fKi()
+  {
+    AppMethodBeat.i(219221);
+    ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
+    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.KqB.paddingLeft, (int)this.KqB.paddingTop, (int)this.KqB.paddingRight, (int)this.KqB.paddingBottom);
+    }
+    this.contentView.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(219221);
+  }
+  
+  public final void fKp()
+  {
+    AppMethodBeat.i(219224);
+    View localView = this.contentView;
+    this.rR = ((TextView)localView.findViewById(i.f.txt));
+    this.KsZ = ((WeImageView)localView.findViewById(i.f.icon));
+    localView.setOnClickListener(this);
+    AppMethodBeat.o(219224);
+  }
+  
+  protected final int getLayout()
+  {
+    return i.g.sns_ad_native_landing_pages_item_share_comp;
+  }
+  
+  public final void onClick(View paramView)
+  {
+    AppMethodBeat.i(219226);
+    b localb = new b();
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPageShareComponent", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    this.Kta += 1;
+    if ((this.mContext instanceof SnsAdNativeLandingPagesUI)) {
+      ((SnsAdNativeLandingPagesUI)this.mContext).fVf();
+    }
+    a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPageShareComponent", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(219226);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.af
  * JD-Core Version:    0.7.0.1
  */

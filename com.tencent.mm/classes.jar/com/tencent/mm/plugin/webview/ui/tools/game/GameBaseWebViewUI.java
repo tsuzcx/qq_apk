@@ -13,21 +13,21 @@ import com.tencent.xweb.WebView;
 public class GameBaseWebViewUI
   extends WebViewUI
 {
-  protected a JpK;
-  private c xyK;
+  private d CCS;
+  protected b Qnf;
   
   public GameBaseWebViewUI()
   {
     AppMethodBeat.i(80808);
-    this.xyK = new c()
+    this.CCS = new d()
     {
-      protected final void an(Bundle paramAnonymousBundle)
+      protected final void ah(Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(80805);
         try
         {
-          if ((GameBaseWebViewUI.this.mHh != null) && (paramAnonymousBundle != null)) {
-            GameBaseWebViewUI.this.mHh.j(96, paramAnonymousBundle);
+          if ((GameBaseWebViewUI.this.pGC != null) && (paramAnonymousBundle != null)) {
+            GameBaseWebViewUI.this.pGC.l(96, paramAnonymousBundle);
           }
           AppMethodBeat.o(80805);
           return;
@@ -41,16 +41,16 @@ public class GameBaseWebViewUI
     AppMethodBeat.o(80808);
   }
   
-  public final boolean bXi()
-  {
-    return true;
-  }
-  
-  public final void ba(Bundle paramBundle)
+  public final void aW(Bundle paramBundle)
   {
     AppMethodBeat.i(80809);
-    this.xyK.Jqh.bm(paramBundle);
+    this.CCS.QnE.bk(paramBundle);
     AppMethodBeat.o(80809);
+  }
+  
+  public final boolean cjM()
+  {
+    return true;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -63,9 +63,9 @@ public class GameBaseWebViewUI
   public void onDestroy()
   {
     AppMethodBeat.i(80813);
-    c.a(this.xyK.Jqh.Jqi);
-    if (this.JpK != null) {
-      this.JpK.onDestroy();
+    d.a(this.CCS.QnE.QnF);
+    if (this.Qnf != null) {
+      this.Qnf.onDestroy();
     }
     super.onDestroy();
     AppMethodBeat.o(80813);
@@ -75,14 +75,14 @@ public class GameBaseWebViewUI
   {
     AppMethodBeat.i(80812);
     super.onPause();
-    this.xyK.Jqh.onPause();
-    if (this.JpK != null)
+    this.CCS.QnE.onPause();
+    if (this.Qnf != null)
     {
-      a locala = this.JpK;
-      locala.xyK.Jqh.onPause();
-      GameWebPerformanceInfo localGameWebPerformanceInfo = locala.xyv;
-      localGameWebPerformanceInfo.hhU += System.currentTimeMillis() - locala.xyL;
-      locala.xyL = System.currentTimeMillis();
+      b localb = this.Qnf;
+      localb.CCS.QnE.onPause();
+      GameWebPerformanceInfo localGameWebPerformanceInfo = localb.CCD;
+      localGameWebPerformanceInfo.jTS += System.currentTimeMillis() - localb.CCT;
+      localb.CCT = System.currentTimeMillis();
     }
     AppMethodBeat.o(80812);
   }
@@ -90,12 +90,12 @@ public class GameBaseWebViewUI
   public void onResume()
   {
     AppMethodBeat.i(80811);
-    this.xyK.Jqh.onResume();
-    if (this.JpK != null)
+    this.CCS.QnE.onResume();
+    if (this.Qnf != null)
     {
-      a locala = this.JpK;
-      locala.xyK.Jqh.onResume();
-      locala.xyL = System.currentTimeMillis();
+      b localb = this.Qnf;
+      localb.CCS.QnE.onResume();
+      localb.CCT = System.currentTimeMillis();
     }
     super.onResume();
     AppMethodBeat.o(80811);
@@ -114,16 +114,16 @@ public class GameBaseWebViewUI
     
     public void b(WebView paramWebView, String paramString)
     {
-      AppMethodBeat.i(211306);
-      GameBaseWebViewUI.a(GameBaseWebViewUI.this).Jqh.LZ();
-      AppMethodBeat.o(211306);
+      AppMethodBeat.i(264859);
+      GameBaseWebViewUI.a(GameBaseWebViewUI.this).QnE.OR();
+      AppMethodBeat.o(264859);
     }
     
-    public void i(WebView paramWebView, String paramString)
+    public void h(WebView paramWebView, String paramString)
     {
-      AppMethodBeat.i(211305);
-      GameBaseWebViewUI.a(GameBaseWebViewUI.this).Jqh.ghf();
-      AppMethodBeat.o(211305);
+      AppMethodBeat.i(264858);
+      GameBaseWebViewUI.a(GameBaseWebViewUI.this).QnE.hay();
+      AppMethodBeat.o(264858);
     }
   }
 }

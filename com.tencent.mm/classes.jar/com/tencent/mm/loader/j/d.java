@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class d
 {
-  public static d icC = new d(null);
+  public static d kRj = new d(null);
   protected final SharedPreferences sp;
   
   protected d(SharedPreferences paramSharedPreferences)
@@ -19,19 +19,19 @@ public class d
     this.sp = paramSharedPreferences;
   }
   
-  public final String aA(String paramString1, String paramString2)
+  public final String aD(String paramString1, String paramString2)
   {
     return this.sp.getString(paramString1, paramString2);
   }
   
-  public final SharedPreferences aLJ()
+  public final SharedPreferences aTO()
   {
     return this.sp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.loader.j.d
  * JD-Core Version:    0.7.0.1
  */

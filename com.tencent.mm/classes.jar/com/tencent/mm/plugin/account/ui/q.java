@@ -4,22 +4,22 @@ import android.content.Context;
 import android.view.View;
 import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.ui.base.HorizontalListView;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.base.r;
 
 public final class q
 {
-  public static p a(Context paramContext, View paramView, String[] paramArrayOfString, AdapterView.OnItemClickListener paramOnItemClickListener)
+  public static r a(Context paramContext, View paramView, String[] paramArrayOfString, AdapterView.OnItemClickListener paramOnItemClickListener)
   {
     AppMethodBeat.i(128472);
-    View localView = View.inflate(paramContext, 2131495943, null);
-    HorizontalListView localHorizontalListView = (HorizontalListView)localView.findViewById(2131308759);
+    View localView = View.inflate(paramContext, r.g.popup_menu, null);
+    HorizontalListView localHorizontalListView = (HorizontalListView)localView.findViewById(r.f.suggest_alias_lv);
     paramArrayOfString = new b(paramContext, paramArrayOfString);
     localHorizontalListView.setAdapter(paramArrayOfString);
     localHorizontalListView.setOnItemClickListener(paramOnItemClickListener);
-    localHorizontalListView.setBackgroundResource(2131234904);
-    paramOnItemClickListener = new p(localView);
+    localHorizontalListView.setBackgroundResource(r.e.signup_chose_bg);
+    paramOnItemClickListener = new r(localView);
     paramOnItemClickListener.setHeight(a.fromDPToPix(paramContext, 120));
     int i = 0;
     int j = 0;
@@ -38,7 +38,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.q
  * JD-Core Version:    0.7.0.1
  */

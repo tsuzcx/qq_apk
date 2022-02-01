@@ -6,19 +6,19 @@ import android.text.TextUtils;
 import android.util.Pair;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.by.c;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.fts.a.a.e;
-import com.tencent.mm.plugin.fts.a.a.h;
 import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.a.d;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
 import com.tencent.mm.plugin.fts.a.j;
-import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.fts.ui.b.c;
+import com.tencent.mm.plugin.fts.ui.o.b;
+import com.tencent.mm.plugin.fts.ui.o.g;
+import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
 import com.tencent.mm.storage.as;
@@ -29,32 +29,32 @@ import java.util.List;
 public final class r
   extends b
 {
-  private a xdN;
+  private a BPL;
   
   public r(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(112120);
-    this.xdN = new a();
+    this.BPL = new a();
     AppMethodBeat.o(112120);
   }
   
-  private Pair<String, String> Y(as paramas)
+  private Pair<String, String> af(as paramas)
   {
     AppMethodBeat.i(112122);
     com.tencent.mm.openim.a.b localb = new com.tencent.mm.openim.a.b();
-    localb.Sa(paramas.fvb);
+    localb.ZC(paramas.hDA);
     int i = 0;
-    while (i < localb.jGV.size())
+    while (i < localb.mxJ.size())
     {
-      com.tencent.mm.openim.a.b.a locala = (com.tencent.mm.openim.a.b.a)localb.jGV.get(i);
-      Iterator localIterator = locala.jGW.iterator();
+      com.tencent.mm.openim.a.b.a locala = (com.tencent.mm.openim.a.b.a)localb.mxJ.get(i);
+      Iterator localIterator = locala.mya.iterator();
       while (localIterator.hasNext())
       {
-        String str = ((com.tencent.mm.openim.a.b.b)localIterator.next()).Sb(paramas.field_openImAppid);
+        String str = ((com.tencent.mm.openim.a.b.b)localIterator.next()).ZD(paramas.field_openImAppid);
         if (!Util.isNullOrNil(str))
         {
-          String[] arrayOfString = this.wWd.wWD;
+          String[] arrayOfString = this.BHY.BIy;
           int k = arrayOfString.length;
           int j = 0;
           while (j < k)
@@ -79,8 +79,8 @@ public final class r
   {
     AppMethodBeat.i(112121);
     super.a(paramContext, parama, paramVarArgs);
-    this.username = this.lqW.wVX;
-    this.contact = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(this.username);
+    this.username = this.olG.BHS;
+    this.contact = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().RG(this.username);
     paramVarArgs = null;
     parama = null;
     int j = 0;
@@ -89,9 +89,9 @@ public final class r
     boolean bool1 = false;
     boolean bool2 = false;
     boolean bool5 = false;
-    String str1 = d.arL(this.username);
+    String str1 = d.azM(this.username);
     int i;
-    switch (this.lqW.wVW)
+    switch (this.olG.BHR)
     {
     default: 
       i = 0;
@@ -99,26 +99,26 @@ public final class r
       bool3 = bool4;
       if (j != 0)
       {
-        this.pqB = com.tencent.mm.pluginsdk.ui.span.l.d(paramContext, str1, com.tencent.mm.cb.a.aG(paramContext, 2131165535));
-        this.pqB = com.tencent.mm.plugin.fts.a.f.a(e.a(this.pqB, this.wWd, bool3, bool2, com.tencent.mm.plugin.fts.ui.b.a.wZP, b.c.wZW)).wWu;
+        this.szA = l.d(paramContext, str1, com.tencent.mm.ci.a.aY(paramContext, o.b.NormalTextSize));
+        this.szA = com.tencent.mm.plugin.fts.a.f.a(e.a(this.szA, this.BHY, bool3, bool2, com.tencent.mm.plugin.fts.ui.b.a.BLO, b.c.BLV)).BIp;
         if (i != 0)
         {
-          this.pqC = com.tencent.mm.pluginsdk.ui.span.l.d(paramContext, parama, com.tencent.mm.cb.a.aG(paramContext, 2131165535));
-          this.pqC = com.tencent.mm.plugin.fts.a.f.a(e.a(this.pqC, this.wWd, bool3, bool2, com.tencent.mm.plugin.fts.ui.b.a.wZP, b.c.wZY)).wWu;
-          this.pqC = TextUtils.concat(new CharSequence[] { paramVarArgs, this.pqC });
+          this.szB = l.d(paramContext, parama, com.tencent.mm.ci.a.aY(paramContext, o.b.NormalTextSize));
+          this.szB = com.tencent.mm.plugin.fts.a.f.a(e.a(this.szB, this.BHY, bool3, bool2, com.tencent.mm.plugin.fts.ui.b.a.BLO, b.c.BLX)).BIp;
+          this.szB = TextUtils.concat(new CharSequence[] { paramVarArgs, this.szB });
         }
-        if (!as.bjp(this.contact.field_username)) {
-          break label961;
+        if (!as.bvK(this.contact.field_username)) {
+          break label965;
         }
-        this.xcu = ((com.tencent.mm.openim.a.a)g.af(com.tencent.mm.openim.a.a.class)).bN(this.contact.field_openImAppid, this.contact.field_descWordingId);
+        this.BOs = ((com.tencent.mm.openim.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.openim.a.a.class)).bR(this.contact.field_openImAppid, this.contact.field_descWordingId);
         AppMethodBeat.o(112121);
       }
       break;
     case 3: 
-      label265:
+      label266:
       bool2 = true;
     }
-    label393:
+    label395:
     for (bool1 = true;; bool1 = false)
     {
       j = 1;
@@ -129,26 +129,26 @@ public final class r
       bool3 = true;
       bool2 = bool1;
       parama = this.contact.field_nickname;
-      paramVarArgs = paramContext.getString(2131765066);
+      paramVarArgs = paramContext.getString(o.g.search_contact_tag_nickname);
       i = 1;
       break;
-      parama = this.contact.fuR;
-      paramVarArgs = paramContext.getString(2131765061);
+      parama = this.contact.hDq;
+      paramVarArgs = paramContext.getString(o.g.search_contact_tag_description);
       i = 1;
       bool3 = bool4;
       bool2 = bool5;
       break;
-      paramVarArgs = this.contact.ajx();
+      paramVarArgs = this.contact.apf();
       parama = paramVarArgs;
       if (Util.isNullOrNil(paramVarArgs)) {
         parama = this.contact.field_username;
       }
-      paramVarArgs = paramContext.getString(2131765071);
+      paramVarArgs = paramContext.getString(o.g.search_contact_tag_wxid);
       i = 1;
       bool3 = bool4;
       bool2 = bool5;
       break;
-      parama = this.lqW.content;
+      parama = this.olG.content;
       String[] arrayOfString;
       int k;
       if (!Util.isNullOrNil(parama))
@@ -156,39 +156,39 @@ public final class r
         arrayOfString = parama.split("​");
         k = arrayOfString.length;
         i = 0;
-        label549:
+        label552:
         if (i < k)
         {
           paramVarArgs = arrayOfString[i];
-          if (paramVarArgs.startsWith(this.wWd.wWB)) {
+          if (paramVarArgs.startsWith(this.BHY.BIw)) {
             parama = paramVarArgs;
           }
         }
       }
       for (;;)
       {
-        paramVarArgs = paramContext.getString(2131765065);
+        paramVarArgs = paramContext.getString(o.g.search_contact_tag_mobile);
         i = 1;
         bool3 = bool4;
         bool2 = bool5;
         break;
         i += 1;
-        break label549;
-        parama = this.lqW.content;
-        paramVarArgs = paramContext.getString(2131765067);
+        break label552;
+        parama = this.olG.content;
+        paramVarArgs = paramContext.getString(o.g.search_contact_tag_province);
         i = 1;
         bool3 = bool4;
         bool2 = bool5;
         break;
-        parama = this.lqW.content;
-        paramVarArgs = paramContext.getString(2131765060);
+        parama = this.olG.content;
+        paramVarArgs = paramContext.getString(o.g.search_contact_tag_city);
         i = 1;
         bool3 = bool4;
         bool2 = bool5;
         break;
-        parama = ((n)g.ah(n.class)).getFTSMainDB().aym(this.contact.field_contactLabelIds);
+        parama = ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.fts.a.n.class)).getFTSMainDB().aHF(this.contact.field_contactLabelIds);
         paramVarArgs = new StringBuffer();
-        arrayOfString = this.wWd.wWD;
+        arrayOfString = this.BHY.BIy;
         k = arrayOfString.length;
         i = 0;
         while (i < k)
@@ -198,7 +198,7 @@ public final class r
           while (localIterator.hasNext())
           {
             String str3 = (String)localIterator.next();
-            if (d.ayq(str3).contains(str2))
+            if (d.aHJ(str3).contains(str2))
             {
               paramVarArgs.append(str3);
               paramVarArgs.append(",");
@@ -210,13 +210,13 @@ public final class r
         if (paramVarArgs.length() == 0) {}
         for (parama = "";; parama = paramVarArgs.substring(0, paramVarArgs.length() - 1))
         {
-          paramVarArgs = paramContext.getString(2131765070);
+          paramVarArgs = paramContext.getString(o.g.search_contact_tag_tag);
           i = 1;
           bool3 = bool4;
           bool2 = bool5;
           break;
         }
-        paramVarArgs = Y(this.contact);
+        paramVarArgs = af(this.contact);
         if (paramVarArgs != null)
         {
           parama = (String)paramVarArgs.second;
@@ -232,28 +232,28 @@ public final class r
         bool3 = bool4;
         bool2 = bool5;
         break;
-        this.pqB = com.tencent.mm.pluginsdk.ui.span.l.d(paramContext, str1, com.tencent.mm.cb.a.aG(paramContext, 2131165535));
-        break label265;
-        label961:
-        this.xcu = "";
+        this.szA = l.d(paramContext, str1, com.tencent.mm.ci.a.aY(paramContext, o.b.NormalTextSize));
+        break label266;
+        label965:
+        this.BOs = "";
         AppMethodBeat.o(112121);
         return;
       }
       bool2 = false;
-      break label393;
+      break label395;
       bool2 = false;
     }
   }
   
-  public final a.b axc()
+  public final a.b aEw()
   {
-    return this.xdN;
+    return this.BPL;
   }
   
-  public final String bCR()
+  public final String bOm()
   {
     AppMethodBeat.i(112123);
-    if ((this.contact != null) && (as.bjp(this.contact.field_username)))
+    if ((this.contact != null) && (as.bvK(this.contact.field_username)))
     {
       String str = "openim:" + this.contact.field_openImAppid;
       AppMethodBeat.o(112123);
@@ -273,31 +273,31 @@ public final class r
     
     public final boolean a(Context paramContext, View paramView, com.tencent.mm.plugin.fts.a.d.a.a paramVarArgs)
     {
-      AppMethodBeat.i(235406);
+      AppMethodBeat.i(190107);
       paramVarArgs = (r)paramVarArgs;
-      if ((ab.Jx(paramVarArgs.username)) && (!WeChatBrands.Business.Entries.HomeNotifyMessage.checkAvailable(paramView.getContext())))
+      if ((ab.QQ(paramVarArgs.username)) && (!WeChatBrands.Business.Entries.HomeNotifyMessage.checkAvailable(paramView.getContext())))
       {
-        AppMethodBeat.o(235406);
+        AppMethodBeat.o(190107);
         return true;
       }
-      if (((as.bjp(paramVarArgs.username)) || (ab.Iy(paramVarArgs.username))) && (!WeChatBrands.Business.Entries.GlobalWeCom.checkAvailable(paramView.getContext())))
+      if (((as.bvK(paramVarArgs.username)) || (ab.PQ(paramVarArgs.username))) && (!WeChatBrands.Business.Entries.GlobalWeCom.checkAvailable(paramView.getContext())))
       {
-        AppMethodBeat.o(235406);
+        AppMethodBeat.o(190107);
         return true;
       }
-      a(r.this.wWd.wWB, paramVarArgs.lqW);
+      a(r.this.BHY.BIw, paramVarArgs.olG);
       paramView = new Intent().putExtra("Chat_User", paramVarArgs.username).putExtra("finish_direct", true);
       paramView.putExtra("chat_from_scene", 5);
       c.f(paramContext, ".ui.chatting.ChattingUI", paramView);
-      ((com.tencent.mm.plugin.comm.a.b)g.af(com.tencent.mm.plugin.comm.a.b.class)).cV(paramVarArgs.username, 2);
-      AppMethodBeat.o(235406);
+      ((com.tencent.mm.plugin.comm.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.comm.a.b.class)).dp(paramVarArgs.username, 2);
+      AppMethodBeat.o(190107);
       return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.r
  * JD-Core Version:    0.7.0.1
  */

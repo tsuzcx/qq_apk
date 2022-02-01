@@ -2,27 +2,19 @@ package com.tencent.mm.memory.a.a.a;
 
 public abstract interface d<T, V>
 {
-  public abstract boolean C(T paramT1, T paramT2);
+  public abstract boolean A(T paramT1, T paramT2);
   
-  public abstract V E(T paramT1, T paramT2);
+  public abstract void aFa();
   
-  public abstract V F(T paramT1, T paramT2);
-  
-  public abstract V G(T paramT1, T paramT2);
-  
-  public abstract boolean H(T paramT1, T paramT2);
-  
-  public abstract void aSq();
-  
-  public abstract void axJ();
+  public abstract void bbn();
   
   public abstract int createCount();
   
+  public abstract void e(T paramT1, T paramT2, V paramV);
+  
   public abstract int evictionCount();
   
-  public abstract void f(T paramT1, T paramT2, V paramV);
-  
-  public abstract V g(T paramT1, T paramT2, V paramV);
+  public abstract V f(T paramT1, T paramT2, V paramV);
   
   public abstract int hitCount();
   
@@ -35,6 +27,14 @@ public abstract interface d<T, V>
   public abstract int size();
   
   public abstract void trimToSize(int paramInt);
+  
+  public abstract boolean v(T paramT1, T paramT2);
+  
+  public abstract V x(T paramT1, T paramT2);
+  
+  public abstract V y(T paramT1, T paramT2);
+  
+  public abstract V z(T paramT1, T paramT2);
 }
 
 

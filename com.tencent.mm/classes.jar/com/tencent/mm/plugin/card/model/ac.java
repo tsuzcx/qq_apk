@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bkp;
-import com.tencent.mm.protocal.protobuf.bkq;
+import com.tencent.mm.protocal.protobuf.bry;
+import com.tencent.mm.protocal.protobuf.brz;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
@@ -20,24 +20,24 @@ public final class ac
   implements m
 {
   private i callback;
-  public LinkedList<String> pQI;
-  public int pQK;
-  public int pQL;
-  public int pQM;
   private final d rr;
+  public LinkedList<String> tmH;
+  public int tmJ;
+  public int tmK;
+  public int tmL;
   
   public ac(String paramString)
   {
     AppMethodBeat.i(112843);
     d.a locala = new d.a();
-    locala.iLN = new bkp();
-    locala.iLO = new bkq();
+    locala.lBU = new bry();
+    locala.lBV = new brz();
     locala.uri = "/cgi-bin/micromsg-bin/getcardserial";
     locala.funcId = 577;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    ((bkp)this.rr.iLK.iLR).eaO = paramString;
+    this.rr = locala.bgN();
+    ((bry)d.b.b(this.rr.lBR)).fUL = paramString;
     AppMethodBeat.o(112843);
   }
   
@@ -61,15 +61,15 @@ public final class ac
     Log.i("MicroMsg.NetSceneGetCardSerial", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (bkq)this.rr.iLL.iLR;
-      this.pQI = params.pQI;
-      this.pQK = params.pQK;
-      this.pQL = params.pQL;
-      this.pQM = params.pQM;
+      params = (brz)d.c.b(this.rr.lBS);
+      this.tmH = params.tmH;
+      this.tmJ = params.tmJ;
+      this.tmK = params.tmK;
+      this.tmL = params.tmL;
     }
-    Log.i("MicroMsg.NetSceneGetCardSerial", "onGYNetEnd, resp request_time = %d, request_count = %d, refresh_interval = %d,", new Object[] { Integer.valueOf(this.pQK), Integer.valueOf(this.pQL), Integer.valueOf(this.pQM) });
-    if (this.pQI != null) {
-      Log.i("MicroMsg.NetSceneGetCardSerial", "onGYNetEnd, resp codes size is " + this.pQI.size());
+    Log.i("MicroMsg.NetSceneGetCardSerial", "onGYNetEnd, resp request_time = %d, request_count = %d, refresh_interval = %d,", new Object[] { Integer.valueOf(this.tmJ), Integer.valueOf(this.tmK), Integer.valueOf(this.tmL) });
+    if (this.tmH != null) {
+      Log.i("MicroMsg.NetSceneGetCardSerial", "onGYNetEnd, resp codes size is " + this.tmH.size());
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(112845);
@@ -77,7 +77,7 @@ public final class ac
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.ac
  * JD-Core Version:    0.7.0.1
  */

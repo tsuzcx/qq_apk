@@ -28,7 +28,7 @@ public class i
   
   static
   {
-    AppMethodBeat.i(188267);
+    AppMethodBeat.i(194044);
     a = null;
     b = null;
     c = "sandbox_crash_record0";
@@ -37,28 +37,28 @@ public class i
     f = new HashMap();
     g = "/data/data/com.tencent.mm/app_tbs/core_share/";
     h = "/data/data/com.tbs.default/app_tbs/core_share/";
-    AppMethodBeat.o(188267);
+    AppMethodBeat.o(194044);
   }
   
   public static ParcelFileDescriptor a()
   {
-    AppMethodBeat.i(188257);
+    AppMethodBeat.i(194015);
     if (b != null)
     {
       ParcelFileDescriptor localParcelFileDescriptor = b.getFdByFileName(c);
-      AppMethodBeat.o(188257);
+      AppMethodBeat.o(194015);
       return localParcelFileDescriptor;
     }
-    AppMethodBeat.o(188257);
+    AppMethodBeat.o(194015);
     return null;
   }
   
   public static String a(String paramString)
   {
-    AppMethodBeat.i(188263);
+    AppMethodBeat.i(194035);
     if (paramString == null)
     {
-      AppMethodBeat.o(188263);
+      AppMethodBeat.o(194035);
       return paramString;
     }
     Iterator localIterator = f.keySet().iterator();
@@ -68,13 +68,13 @@ public class i
       paramString = paramString.replace(String.format("[anon:libc_malloc:%s]", new Object[] { f.get(str) }), g + str);
     }
     paramString = paramString.replace("[anon:libc_malloc]", h + "libmttwebview.so");
-    AppMethodBeat.o(188263);
+    AppMethodBeat.o(194035);
     return paramString;
   }
   
   public static String a(String paramString, ParcelFileDescriptor paramParcelFileDescriptor)
   {
-    AppMethodBeat.i(188261);
+    AppMethodBeat.i(194028);
     new StringBuilder(" [").append(java.lang.Thread.currentThread().getStackTrace()[2].getMethodName()).append("] libraryName: ").append(paramString).append(", parcelFileDescriptor: ").append(paramParcelFileDescriptor);
     int j = paramParcelFileDescriptor.getFd();
     i = j;
@@ -111,7 +111,7 @@ public class i
     new StringBuilder("loadLibraryByPrivateLinker -- loadLibraryByFd: ").append(paramParcelFileDescriptor).append(", size: ").append(l).append(", name: ").append(paramString).append(", nativeFd: ").append(i);
     paramParcelFileDescriptor = a.loadLibraryByFd(paramParcelFileDescriptor, l, paramString, i);
     f.put(paramString, paramParcelFileDescriptor.substring(2));
-    AppMethodBeat.o(188261);
+    AppMethodBeat.o(194028);
     return paramParcelFileDescriptor;
   }
   
@@ -127,7 +127,7 @@ public class i
   
   public static boolean a(Context paramContext)
   {
-    AppMethodBeat.i(188266);
+    AppMethodBeat.i(194040);
     String str = b(paramContext);
     new StringBuilder("[").append(java.lang.Thread.currentThread().getStackTrace()[2].getMethodName()).append("] hostContext: ").append(paramContext).append(" libraryPath: ").append(str);
     try
@@ -136,77 +136,77 @@ public class i
       paramContext = str + File.separator + "libmttwebview.so";
       new StringBuilder("[").append(java.lang.Thread.currentThread().getStackTrace()[2].getMethodName()).append("] loading library: ").append(paramContext);
       System.load(paramContext);
-      AppMethodBeat.o(188266);
+      AppMethodBeat.o(194040);
       return true;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(188266);
+      AppMethodBeat.o(194040);
     }
     return false;
   }
   
   public static boolean a(Context paramContext, ParcelFileDescriptor[] paramArrayOfParcelFileDescriptor)
   {
-    AppMethodBeat.i(188264);
+    AppMethodBeat.i(194037);
     new StringBuilder("[").append(java.lang.Thread.currentThread().getStackTrace()[2].getMethodName()).append("] hostContext: ").append(paramContext);
     try
     {
       a("libwebp_base.so", paramArrayOfParcelFileDescriptor[0]);
       a("libmttwebview.so", paramArrayOfParcelFileDescriptor[1]);
-      AppMethodBeat.o(188264);
+      AppMethodBeat.o(194037);
       return true;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(188264);
+      AppMethodBeat.o(194037);
     }
     return false;
   }
   
   public static ParcelFileDescriptor b()
   {
-    AppMethodBeat.i(188258);
+    AppMethodBeat.i(194016);
     if (b != null)
     {
       ParcelFileDescriptor localParcelFileDescriptor = b.getFdByFileName(d);
-      AppMethodBeat.o(188258);
+      AppMethodBeat.o(194016);
       return localParcelFileDescriptor;
     }
-    AppMethodBeat.o(188258);
+    AppMethodBeat.o(194016);
     return null;
   }
   
   private static String b(Context paramContext)
   {
-    AppMethodBeat.i(188265);
+    AppMethodBeat.i(194038);
     paramContext = q.a().r(paramContext).getAbsolutePath();
-    AppMethodBeat.o(188265);
+    AppMethodBeat.o(194038);
     return paramContext;
   }
   
   public static void c()
   {
-    AppMethodBeat.i(188259);
+    AppMethodBeat.i(194018);
     ParcelFileDescriptor localParcelFileDescriptor1 = a();
     ParcelFileDescriptor localParcelFileDescriptor2 = b();
     if (e != null) {
       e.setCrashRecordFileDescriptor(localParcelFileDescriptor1, localParcelFileDescriptor2);
     }
-    AppMethodBeat.o(188259);
+    AppMethodBeat.o(194018);
   }
   
   public static void d()
   {
     try
     {
-      AppMethodBeat.i(188260);
+      AppMethodBeat.i(194021);
       new StringBuilder("[").append(java.lang.Thread.currentThread().getStackTrace()[2].getMethodName()).append("]");
       Linker localLinker = Linker.getInstance();
       localLinker.disableSharedRelros();
       localLinker.prepareLibraryLoad();
       a = localLinker;
-      AppMethodBeat.o(188260);
+      AppMethodBeat.o(194021);
       return;
     }
     finally
@@ -218,19 +218,19 @@ public class i
   
   public static void e()
   {
-    AppMethodBeat.i(188262);
+    AppMethodBeat.i(194030);
     Iterator localIterator = f.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
       new StringBuilder("@TbsLinker -- loaded library : ").append(str).append(", start_address: ").append((String)f.get(str));
     }
-    AppMethodBeat.o(188262);
+    AppMethodBeat.o(194030);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sdk.i
  * JD-Core Version:    0.7.0.1
  */

@@ -32,295 +32,298 @@ import java.util.Map;
 public class c
   implements ITPBusinessReportManager, com.tencent.thumbplayer.g.a.a
 {
-  private static boolean SbQ = false;
-  private static com.tencent.thumbplayer.utils.c SbU = null;
-  private PhoneStateListener GUP;
-  private int RVX;
-  private boolean RXs;
-  private HandlerThread SbR;
-  private b SbS;
-  private final Object SbT;
-  private TPDefaultReportInfo SbV;
-  private d SbW;
-  private int SbX;
-  private int SbY;
-  private boolean SbZ;
-  private boolean Sca;
-  private long Scb;
-  private long Scc;
-  private int Scd;
-  private int Sce;
-  private int Scf;
-  private boolean Scg;
-  private boolean Sch;
-  private String Sci;
-  private String Scj;
-  private String Sck;
-  private int Scl;
-  private long Scm;
-  private c Scn;
-  private d.a Sco;
-  private d.l Scp;
-  private final e Scq;
-  private e.a Scr;
-  private int cFx;
+  private static boolean ZEB = false;
+  private static com.tencent.thumbplayer.utils.c ZEF = null;
+  private boolean ZAc;
+  private HandlerThread ZEC;
+  private b ZED;
+  private final Object ZEE;
+  private TPDefaultReportInfo ZEG;
+  private d ZEH;
+  private int ZEI;
+  private int ZEJ;
+  private boolean ZEK;
+  private boolean ZEL;
+  private long ZEM;
+  private long ZEN;
+  private int ZEO;
+  private int ZEP;
+  private int ZEQ;
+  private boolean ZER;
+  private boolean ZES;
+  private String ZET;
+  private String ZEU;
+  private String ZEV;
+  private int ZEW;
+  private long ZEX;
+  private c ZEY;
+  private d.a ZEZ;
+  private d.l ZFa;
+  private final e ZFb;
+  private e.a ZFc;
+  private int ZyH;
+  private int cGd;
   private Context mContext;
   private int mDownloadType;
-  private int mHZ;
   private boolean mIsExit;
+  private int pIN;
   
   public c(Context paramContext)
   {
-    AppMethodBeat.i(189529);
-    this.SbT = new Object();
+    AppMethodBeat.i(221620);
+    this.ZEE = new Object();
     this.mIsExit = false;
-    this.SbV = null;
-    this.SbW = null;
-    this.SbX = 1;
-    this.SbY = 0;
-    this.SbZ = true;
-    this.Sca = true;
-    this.Scb = 0L;
-    this.Scc = 0L;
-    this.mHZ = 0;
-    this.Scd = 0;
-    this.Sce = 0;
-    this.Scf = 0;
-    this.Scg = false;
-    this.RXs = false;
-    this.Sch = false;
-    this.Sci = "0";
-    this.Scj = "";
-    this.RVX = 0;
+    this.ZEG = null;
+    this.ZEH = null;
+    this.ZEI = 1;
+    this.ZEJ = 0;
+    this.ZEK = true;
+    this.ZEL = true;
+    this.ZEM = 0L;
+    this.ZEN = 0L;
+    this.pIN = 0;
+    this.ZEO = 0;
+    this.ZEP = 0;
+    this.ZEQ = 0;
+    this.ZER = false;
+    this.ZAc = false;
+    this.ZES = false;
+    this.ZET = "0";
+    this.ZEU = "";
+    this.ZyH = 0;
     this.mDownloadType = 0;
-    this.Sck = "";
-    this.Scl = 0;
-    this.Scm = 0L;
-    this.cFx = -1;
-    this.Scn = new a();
-    this.Sco = null;
-    this.Scp = null;
-    this.Scq = new e((byte)0);
-    this.GUP = new c.1(this);
-    this.Scr = new e.a()
-    {
-      public final void d(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, Object paramAnonymousObject)
-      {
-        AppMethodBeat.i(189524);
-        g.i("TPReportManager", "OnGlobalEventChangeListener eventId: ".concat(String.valueOf(paramAnonymousInt1)));
-        switch (paramAnonymousInt1)
-        {
-        default: 
-          AppMethodBeat.o(189524);
-          return;
-        }
-        for (paramAnonymousInt1 = 2100;; paramAnonymousInt1 = 2101)
-        {
-          c.f(c.this).obtainMessage(paramAnonymousInt1, null).sendToTarget();
-          AppMethodBeat.o(189524);
-          return;
-        }
-      }
-    };
+    this.ZEV = "";
+    this.ZEW = 0;
+    this.ZEX = 0L;
+    this.cGd = -1;
+    this.ZEY = new a();
+    this.ZEZ = null;
+    this.ZFa = null;
+    this.ZFb = new e((byte)0);
+    this.ZFc = new c.2(this);
     this.mContext = paramContext.getApplicationContext();
-    AppMethodBeat.o(189529);
+    AppMethodBeat.o(221620);
   }
   
-  private static int T(Map<String, Object> paramMap, String paramString)
+  private static void a(a parama)
   {
-    AppMethodBeat.i(189542);
+    AppMethodBeat.i(221665);
+    g.i("TPReportManager", "onReportEvent: " + parama.toString());
+    AppMethodBeat.o(221665);
+  }
+  
+  private void a(a parama, boolean paramBoolean)
+  {
+    int j = 1;
+    AppMethodBeat.i(221679);
+    d.n localn = this.ZEH.ZFF;
+    if (localn == null)
+    {
+      AppMethodBeat.o(221679);
+      return;
+    }
+    if ((this.ZEG != null) && ((this.ZEG instanceof TPVodReportInfo)) && (paramBoolean))
+    {
+      localn.ZHF = ((TPVodReportInfo)this.ZEG).currentPlayState;
+      localn.ZHG = ((TPVodReportInfo)this.ZEG).optimizedPlay;
+      if (((TPVodReportInfo)this.ZEG).hasSubtitles)
+      {
+        i = 1;
+        localn.ZHH = i;
+        localn.ZHK = ((TPVodReportInfo)this.ZEG).bizId;
+        localn.ZHM = ((TPVodReportInfo)this.ZEG).clipCount;
+        localn.ZHN = ((TPVodReportInfo)this.ZEG).videoStatus;
+        localn.ZGO = this.ZEG.freeType;
+      }
+    }
+    else
+    {
+      if (!this.ZFb.ZFq) {
+        break label351;
+      }
+      i = 1;
+      label169:
+      localn.ZHJ = i;
+      if (!this.ZFb.ZFp) {
+        break label356;
+      }
+    }
+    label351:
+    label356:
+    for (int i = j;; i = 0)
+    {
+      localn.ZHI = i;
+      localn.ZHL = 0;
+      parama.bR("freetype", localn.ZGO);
+      parama.bR("currentplay", localn.ZHF);
+      parama.bR("optimizedplay", localn.ZHG);
+      parama.bR("subtitles", localn.ZHH);
+      parama.bR("selsubtitles", localn.ZHI);
+      parama.bR("multitrack", localn.ZHJ);
+      parama.bR("bizid", localn.ZHK);
+      parama.bR("hevclv", localn.ZHL);
+      parama.bR("clip", localn.ZHM);
+      parama.bR("status", localn.ZHN);
+      AppMethodBeat.o(221679);
+      return;
+      i = 0;
+      break;
+      i = 0;
+      break label169;
+    }
+  }
+  
+  private void aBp(int paramInt)
+  {
+    AppMethodBeat.i(221767);
+    if (this.mContext == null)
+    {
+      AppMethodBeat.o(221767);
+      return;
+    }
+    TelephonyManager localTelephonyManager = (TelephonyManager)this.mContext.getSystemService("phone");
+    if (localTelephonyManager == null)
+    {
+      g.e("TPReportManager", "getSystemService TELEPHONY_SERVICE err.");
+      AppMethodBeat.o(221767);
+      return;
+    }
+    g.i("TPReportManager", "EventHandler handleMessage ");
+    Object localObject = new c.1(this);
+    localObject = com.tencent.mm.hellhoundlib.b.c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a()).bm(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(localTelephonyManager, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/thumbplayer/tplayer/plugins/report/TPReportManager", "handleSignalStrength", "(I)V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+    localTelephonyManager.listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(1)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.c(localTelephonyManager, "com/tencent/thumbplayer/tplayer/plugins/report/TPReportManager", "handleSignalStrength", "(I)V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+    AppMethodBeat.o(221767);
+  }
+  
+  private static int ah(Map<String, Object> paramMap, String paramString)
+  {
+    AppMethodBeat.i(221742);
     if (paramMap == null)
     {
-      AppMethodBeat.o(189542);
+      AppMethodBeat.o(221742);
       return 0;
     }
     paramMap = paramMap.get(paramString);
     if (paramMap != null)
     {
       int i = ((Integer)paramMap).intValue();
-      AppMethodBeat.o(189542);
+      AppMethodBeat.o(221742);
       return i;
     }
-    AppMethodBeat.o(189542);
+    AppMethodBeat.o(221742);
     return 0;
   }
   
-  private static boolean U(Map<String, Object> paramMap, String paramString)
+  private static boolean ai(Map<String, Object> paramMap, String paramString)
   {
-    AppMethodBeat.i(189545);
+    AppMethodBeat.i(221751);
     if (paramMap == null)
     {
-      AppMethodBeat.o(189545);
+      AppMethodBeat.o(221751);
       return false;
     }
     paramMap = paramMap.get(paramString);
     if (paramMap != null)
     {
       boolean bool = ((Boolean)paramMap).booleanValue();
-      AppMethodBeat.o(189545);
+      AppMethodBeat.o(221751);
       return bool;
     }
-    AppMethodBeat.o(189545);
+    AppMethodBeat.o(221751);
     return false;
-  }
-  
-  private static void a(a parama)
-  {
-    AppMethodBeat.i(189533);
-    g.i("TPReportManager", "onReportEvent: " + parama.toString());
-    AppMethodBeat.o(189533);
-  }
-  
-  private void a(a parama, boolean paramBoolean)
-  {
-    int j = 1;
-    AppMethodBeat.i(189536);
-    d.n localn = this.SbW.ScU;
-    if (localn == null)
-    {
-      AppMethodBeat.o(189536);
-      return;
-    }
-    if ((this.SbV != null) && ((this.SbV instanceof TPVodReportInfo)) && (paramBoolean))
-    {
-      localn.SeU = ((TPVodReportInfo)this.SbV).currentPlayState;
-      localn.SeV = ((TPVodReportInfo)this.SbV).optimizedPlay;
-      if (((TPVodReportInfo)this.SbV).hasSubtitles)
-      {
-        i = 1;
-        localn.SeW = i;
-        localn.SeZ = ((TPVodReportInfo)this.SbV).bizId;
-        localn.Sfb = ((TPVodReportInfo)this.SbV).clipCount;
-        localn.Sfc = ((TPVodReportInfo)this.SbV).videoStatus;
-        localn.Sed = this.SbV.freeType;
-      }
-    }
-    else
-    {
-      if (!this.Scq.ScF) {
-        break label354;
-      }
-      i = 1;
-      label171:
-      localn.SeY = i;
-      if (!this.Scq.ScE) {
-        break label359;
-      }
-    }
-    label354:
-    label359:
-    for (int i = j;; i = 0)
-    {
-      localn.SeX = i;
-      localn.Sfa = 0;
-      parama.put("freetype", localn.Sed);
-      parama.put("currentplay", localn.SeU);
-      parama.put("optimizedplay", localn.SeV);
-      parama.put("subtitles", localn.SeW);
-      parama.put("selsubtitles", localn.SeX);
-      parama.put("multitrack", localn.SeY);
-      parama.put("bizid", localn.SeZ);
-      parama.put("hevclv", localn.Sfa);
-      parama.put("clip", localn.Sfb);
-      parama.put("status", localn.Sfc);
-      AppMethodBeat.o(189536);
-      return;
-      i = 0;
-      break;
-      i = 0;
-      break label171;
-    }
   }
   
   private static long b(Map<String, Object> paramMap, String paramString, long paramLong)
   {
-    AppMethodBeat.i(189543);
+    AppMethodBeat.i(221744);
     if (paramMap == null)
     {
-      AppMethodBeat.o(189543);
+      AppMethodBeat.o(221744);
       return paramLong;
     }
     paramMap = paramMap.get(paramString);
     if (paramMap != null)
     {
       paramLong = ((Long)paramMap).longValue();
-      AppMethodBeat.o(189543);
+      AppMethodBeat.o(221744);
       return paramLong;
     }
-    AppMethodBeat.o(189543);
+    AppMethodBeat.o(221744);
     return paramLong;
   }
   
   private void b(a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(189537);
-    d.g localg = this.SbW.ScT;
+    AppMethodBeat.i(221710);
+    d.g localg = this.ZEH.ZFE;
     if (localg == null)
     {
-      AppMethodBeat.o(189537);
+      AppMethodBeat.o(221710);
       return;
     }
     int i;
-    if ((this.SbV != null) && ((this.SbV instanceof TPLiveReportInfo)) && (paramBoolean))
+    if ((this.ZEG != null) && ((this.ZEG instanceof TPLiveReportInfo)) && (paramBoolean))
     {
-      localg.Sea = ((TPLiveReportInfo)this.SbV).adPlayLength;
-      localg.Seg = ((TPLiveReportInfo)this.SbV).programId;
-      localg.Seh = ((TPLiveReportInfo)this.SbV).streamId;
-      localg.Sei = ((TPLiveReportInfo)this.SbV).contentId;
-      localg.Sej = ((TPLiveReportInfo)this.SbV).playTime;
-      localg.Sem = ((TPLiveReportInfo)this.SbV).liveType;
-      if (((TPLiveReportInfo)this.SbV).isUserPay)
+      localg.ZGL = ((TPLiveReportInfo)this.ZEG).adPlayLength;
+      localg.ZGR = ((TPLiveReportInfo)this.ZEG).programId;
+      localg.ZGS = ((TPLiveReportInfo)this.ZEG).streamId;
+      localg.ZGT = ((TPLiveReportInfo)this.ZEG).contentId;
+      localg.ZGU = ((TPLiveReportInfo)this.ZEG).playTime;
+      localg.ZGX = ((TPLiveReportInfo)this.ZEG).liveType;
+      if (((TPLiveReportInfo)this.ZEG).isUserPay)
       {
         i = 1;
-        localg.Sek = i;
-        if (!((TPLiveReportInfo)this.SbV).isLookBack) {
+        localg.ZGV = i;
+        if (!((TPLiveReportInfo)this.ZEG).isLookBack) {
           break label1291;
         }
         i = 1;
         label174:
-        localg.Seo = i;
-        localg.Sen = ((TPLiveReportInfo)this.SbV).cdnServer;
-        localg.Sed = this.SbV.freeType;
-        localg.SdY = this.SbV.uin;
-        localg.SdX = this.SbV.uip;
-        if (!this.SbV.enableP2p) {
+        localg.ZGZ = i;
+        localg.ZGY = ((TPLiveReportInfo)this.ZEG).cdnServer;
+        localg.ZGO = this.ZEG.freeType;
+        localg.ZGJ = this.ZEG.uin;
+        localg.ZGI = this.ZEG.uip;
+        if (!this.ZEG.enableP2p) {
           break label1296;
         }
         i = 1;
         label243:
-        localg.Sef = i;
+        localg.ZGQ = i;
       }
     }
     else
     {
-      if ((this.SbV != null) && ((this.SbV instanceof TPLiveReportInfo))) {
-        localg.Sep = ((TPLiveReportInfo)this.SbV).liveDelay;
+      if ((this.ZEG != null) && ((this.ZEG instanceof TPLiveReportInfo))) {
+        localg.ZHa = ((TPLiveReportInfo)this.ZEG).liveDelay;
       }
-      if (!this.Sch) {
+      if (!this.ZES) {
         break label1301;
       }
       i = 1;
       label290:
-      localg.See = i;
-      localg.downloadUrl = this.Scq.pkK;
+      localg.ZGP = i;
+      localg.downloadUrl = this.ZFb.smT;
       if (TextUtils.isEmpty(localg.downloadUrl)) {
-        localg.downloadUrl = this.SbW.ScM.SdT;
+        localg.downloadUrl = this.ZEH.ZFx.ZGE;
       }
-      localg.Seb = this.Scq.cdnIp;
-      localg.SdW = System.currentTimeMillis();
-      if (this.Scq.Sct > 0L)
+      localg.ZGM = this.ZFb.cdnIp;
+      localg.ZGH = System.currentTimeMillis();
+      if (this.ZFb.ZFe > 0L)
       {
-        localObject = this.Scq;
-        ((e)localObject).Scu = ((int)(((e)localObject).Scu + (System.currentTimeMillis() - this.Scq.Sct)));
-        if ((!this.SbZ) && (!this.RXs) && (!this.Scq.RWM)) {
+        localObject = this.ZFb;
+        ((e)localObject).ZFf = ((int)(((e)localObject).ZFf + (System.currentTimeMillis() - this.ZFb.ZFe)));
+        if ((!this.ZEK) && (!this.ZAc) && (!this.ZFb.Zzw)) {
           break label1306;
         }
-        this.Scq.Sct = 0L;
+        this.ZFb.ZFe = 0L;
       }
       label428:
-      localg.SdZ = this.Scq.Scu;
-      this.Scq.Scu = 0;
-      localg.SdG = "2.9.0.1112";
+      localg.ZGK = this.ZFb.ZFf;
+      this.ZFb.ZFf = 0;
+      localg.ZGr = "2.9.0.1112";
       Object localObject = (UiModeManager)this.mContext.getSystemService("uimode");
       if (localObject == null) {
         break label1344;
@@ -332,73 +335,73 @@ public class c
     }
     for (;;)
     {
-      localg.Sec = i;
-      localg.Sdy = bAX();
-      localg.Set = this.Scq.JON;
-      this.Scq.JON = 0;
-      localg.Seu = this.Scd;
-      if (this.Scq.ScD > 0)
+      localg.ZGN = i;
+      localg.ZGj = bMs();
+      localg.ZHe = this.ZFb.ZFm;
+      this.ZFb.ZFm = 0;
+      localg.ZHf = this.ZEO;
+      if (this.ZFb.ZFo > 0)
       {
-        localg.Sev = (this.Scq.ScC / this.Scq.ScD);
-        this.Scq.ScC = 0;
-        this.Scq.ScD = 0;
+        localg.ZHg = (this.ZFb.ZFn / this.ZFb.ZFo);
+        this.ZFb.ZFn = 0;
+        this.ZFb.ZFo = 0;
       }
-      localg.Seq = 0;
-      localg.Ser = "";
-      localg.Sew = 0;
-      localg.Ses = 0;
-      localg.SeB = 0;
-      localg.Sel = this.Scq.ScG;
-      localg.Sex = (this.Scq.Scw - this.Scq.Scv);
-      localg.Sey = this.Scq.Scy;
-      localg.Sez = this.Scq.Scx;
-      this.Scq.Scx = 0;
-      this.Scq.Scy = 0;
-      localg.SeA = 0;
-      localg.SeC = this.Sci;
-      localg.ScH = this.Scq.ScH;
-      localg.ScI = this.Scq.ScI;
-      parama.put("ftime", localg.SdW);
-      parama.put("sip", localg.SdX);
-      parama.put("iqq", localg.SdY);
-      parama.put("prdlength", localg.SdZ);
-      parama.put("playad", localg.Sea);
-      parama.put("fplayerver", localg.SdG);
-      parama.put("dsip", localg.Seb);
-      parama.put("devtype", localg.Sec);
-      parama.put("nettype", localg.Sdy);
-      parama.put("freetype", localg.Sed);
-      parama.put("use_p2p", localg.See);
-      parama.put("p2p_play", localg.Sef);
-      parama.put("livepid", localg.Seg);
-      parama.put("sid", localg.Seh);
-      parama.put("contentid", localg.Sei);
-      parama.put("playtime", localg.Sej);
-      parama.put("isuserpay", localg.Sek);
-      parama.put("switch", localg.Sel);
-      parama.put("live_type", localg.Sem);
-      parama.put("xserverip", localg.Sen);
+      localg.ZHb = 0;
+      localg.ZHc = "";
+      localg.ZHh = 0;
+      localg.ZHd = 0;
+      localg.ZHm = 0;
+      localg.ZGW = this.ZFb.ZFr;
+      localg.ZHi = (this.ZFb.ZFh - this.ZFb.ZFg);
+      localg.ZHj = this.ZFb.ZFi;
+      localg.ZHk = this.ZFb.MTA;
+      this.ZFb.MTA = 0;
+      this.ZFb.ZFi = 0;
+      localg.ZHl = 0;
+      localg.ZHn = this.ZET;
+      localg.ZFs = this.ZFb.ZFs;
+      localg.ZFt = this.ZFb.ZFt;
+      parama.cu("ftime", localg.ZGH);
+      parama.put("sip", localg.ZGI);
+      parama.put("iqq", localg.ZGJ);
+      parama.bR("prdlength", localg.ZGK);
+      parama.bR("playad", localg.ZGL);
+      parama.put("fplayerver", localg.ZGr);
+      parama.put("dsip", localg.ZGM);
+      parama.bR("devtype", localg.ZGN);
+      parama.bR("nettype", localg.ZGj);
+      parama.bR("freetype", localg.ZGO);
+      parama.bR("use_p2p", localg.ZGP);
+      parama.bR("p2p_play", localg.ZGQ);
+      parama.bR("livepid", localg.ZGR);
+      parama.bR("sid", localg.ZGS);
+      parama.bR("contentid", localg.ZGT);
+      parama.bR("playtime", localg.ZGU);
+      parama.bR("isuserpay", localg.ZGV);
+      parama.put("switch", localg.ZGW);
+      parama.bR("live_type", localg.ZGX);
+      parama.put("xserverip", localg.ZGY);
       parama.put("durl", localg.downloadUrl);
-      parama.put("lookback", localg.Seo);
-      parama.put("live_delay", localg.Sep);
-      parama.put("live_tag", localg.Seq);
-      parama.put("extraInfo", localg.Ser);
-      parama.put("cnntime", localg.Ses);
-      parama.put("maxspeed", localg.Set);
-      parama.put("testspeed", localg.Seu);
-      parama.put("downspeed", localg.Sev);
-      parama.put("recnncount", localg.Sew);
-      parama.put("loadingtime", localg.Sex);
-      parama.put("blocktime", localg.Sey);
-      parama.put("blockcount", localg.Sez);
-      parama.put("errorcode", localg.SeA);
-      parama.put("geturltime", localg.SeB);
-      parama.put("fullecode", localg.SeC);
-      parama.put("get_stream_data_duration", localg.SeD);
-      parama.put("get_sync_frame_duration", localg.SeE);
-      parama.put("spanId", localg.ScH);
-      parama.put("tuid", localg.ScI);
-      AppMethodBeat.o(189537);
+      parama.bR("lookback", localg.ZGZ);
+      parama.bR("live_delay", localg.ZHa);
+      parama.bR("live_tag", localg.ZHb);
+      parama.put("extraInfo", localg.ZHc);
+      parama.bR("cnntime", localg.ZHd);
+      parama.bR("maxspeed", localg.ZHe);
+      parama.bR("testspeed", localg.ZHf);
+      parama.bR("downspeed", localg.ZHg);
+      parama.bR("recnncount", localg.ZHh);
+      parama.cu("loadingtime", localg.ZHi);
+      parama.bR("blocktime", localg.ZHj);
+      parama.bR("blockcount", localg.ZHk);
+      parama.bR("errorcode", localg.ZHl);
+      parama.bR("geturltime", localg.ZHm);
+      parama.put("fullecode", localg.ZHn);
+      parama.bR("get_stream_data_duration", localg.ZHo);
+      parama.bR("get_sync_frame_duration", localg.ZHp);
+      parama.put("spanId", localg.ZFs);
+      parama.put("tuid", localg.ZFt);
+      AppMethodBeat.o(221710);
       return;
       i = 0;
       break;
@@ -412,7 +415,7 @@ public class c
       i = 0;
       break label290;
       label1306:
-      this.Scq.Sct = System.currentTimeMillis();
+      this.ZFb.ZFe = System.currentTimeMillis();
       break label428;
       label1319:
       if ((this.mContext.getResources().getConfiguration().screenLayout & 0xF) >= 3) {
@@ -425,13 +428,13 @@ public class c
   }
   
   @SuppressLint({"MissingPermission"})
-  private int bAX()
+  private int bMs()
   {
     j = 0;
-    AppMethodBeat.i(189546);
+    AppMethodBeat.i(221761);
     if (this.mContext == null)
     {
-      AppMethodBeat.o(189546);
+      AppMethodBeat.o(221761);
       return 0;
     }
     for (;;)
@@ -466,7 +469,7 @@ public class c
         int i = j;
         continue;
       }
-      AppMethodBeat.o(189546);
+      AppMethodBeat.o(221761);
       return i;
       i = ((NetworkInfo)localObject).getSubtype();
       switch (i)
@@ -502,279 +505,235 @@ public class c
     }
   }
   
-  private void cp(Map<String, Object> paramMap)
+  private void cv(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(189530);
+    AppMethodBeat.i(221624);
     g.i("TPReportManager", "onSeekComplete");
-    this.Scg = false;
+    this.ZER = false;
     if (paramMap == null)
     {
-      AppMethodBeat.o(189530);
+      AppMethodBeat.o(221624);
       return;
     }
-    if (this.Scp == null)
+    if (this.ZFa == null)
     {
-      AppMethodBeat.o(189530);
+      AppMethodBeat.o(221624);
       return;
     }
-    this.Scp.SeP = b(paramMap, "etime", System.currentTimeMillis());
-    this.Scp.SeN = (b(paramMap, "petime", 0L) / 1000L);
-    this.Scp.Sdd = this.Sci;
-    long l = this.Scp.SeP - this.Scp.SeO;
+    this.ZFa.ZHA = b(paramMap, "etime", System.currentTimeMillis());
+    this.ZFa.ZHy = (b(paramMap, "petime", 0L) / 1000L);
+    this.ZFa.ZFO = this.ZET;
+    long l = this.ZFa.ZHA - this.ZFa.ZHz;
     if (l > 1200L)
     {
-      this.Scf += 1;
-      this.Sce = ((int)(l + this.Sce));
+      this.ZEQ += 1;
+      this.ZEP = ((int)(l + this.ZEP));
     }
-    paramMap = this.SbW.ScR;
-    paramMap.SeQ += 1;
-    paramMap.SeS = this.Sce;
-    paramMap.SeR = this.Scf;
-    if (paramMap.SeT.size() < 20)
+    paramMap = this.ZEH.ZFC;
+    paramMap.ZHB += 1;
+    paramMap.ZHD = this.ZEP;
+    paramMap.ZHC = this.ZEQ;
+    if (paramMap.ZHE.size() < 20)
     {
-      paramMap.SeT.add(this.Scp);
+      paramMap.ZHE.add(this.ZFa);
       paramMap = new h();
-      d.l locall = this.Scp;
-      paramMap.put("format", locall.ScY);
-      paramMap.put("pstime", locall.SeM);
-      paramMap.put("petime", locall.SeN);
-      paramMap.put("lstime", locall.SeO);
-      paramMap.put("letime", locall.SeP);
-      paramMap.put("code", locall.Sdd);
-      this.Scn.a(40, paramMap);
+      d.l locall = this.ZFa;
+      paramMap.bR("format", locall.ZFJ);
+      paramMap.cu("pstime", locall.ZHx);
+      paramMap.cu("petime", locall.ZHy);
+      paramMap.cu("lstime", locall.ZHz);
+      paramMap.cu("letime", locall.ZHA);
+      paramMap.put("code", locall.ZFO);
+      this.ZEY.a(40, paramMap);
     }
-    this.Scp = null;
-    AppMethodBeat.o(189530);
+    this.ZFa = null;
+    AppMethodBeat.o(221624);
   }
   
-  private void cq(Map<String, Object> paramMap)
+  private void cw(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(189531);
+    AppMethodBeat.i(221636);
     g.i("TPReportManager", "onBufferingEnd");
-    this.RXs = false;
-    if (!this.Scq.RWM) {
-      this.Scq.Sct = System.currentTimeMillis();
+    this.ZAc = false;
+    if (!this.ZFb.Zzw) {
+      this.ZFb.ZFe = System.currentTimeMillis();
     }
     if (paramMap == null)
     {
-      AppMethodBeat.o(189531);
+      AppMethodBeat.o(221636);
       return;
     }
     long l = b(paramMap, "etime", System.currentTimeMillis());
-    int i = (int)(l - this.Scq.Scz);
+    int i = (int)(l - this.ZFb.ZFj);
     if (i <= 1200)
     {
-      AppMethodBeat.o(189531);
+      AppMethodBeat.o(221636);
       return;
     }
-    if (this.Scg)
+    if (this.ZER)
     {
-      AppMethodBeat.o(189531);
+      AppMethodBeat.o(221636);
       return;
     }
-    Object localObject = this.Scq;
-    ((e)localObject).Scx += 1;
-    this.Scq.ScA = l;
-    localObject = this.Scq;
-    ((e)localObject).Scy += (int)(this.Scq.ScA - this.Scq.Scz);
-    if (this.Sco == null)
+    Object localObject = this.ZFb;
+    ((e)localObject).MTA += 1;
+    this.ZFb.ZFk = l;
+    localObject = this.ZFb;
+    ((e)localObject).ZFi += (int)(this.ZFb.ZFk - this.ZFb.ZFj);
+    if (this.ZEZ == null)
     {
-      AppMethodBeat.o(189531);
+      AppMethodBeat.o(221636);
       return;
     }
-    this.Sco.Sdb = b(paramMap, "etime", 0L);
-    this.Sco.Sdd = this.Sci;
-    paramMap = this.SbW.ScQ;
-    paramMap.Sdf += 1;
-    paramMap.Sdg += i;
-    if (paramMap.Sdh.size() < 20)
+    this.ZEZ.ZFM = b(paramMap, "etime", 0L);
+    this.ZEZ.ZFO = this.ZET;
+    paramMap = this.ZEH.ZFB;
+    paramMap.ZFQ += 1;
+    paramMap.ZFR += i;
+    if (paramMap.ZFS.size() < 20)
     {
-      paramMap.Sdh.add(this.Sco);
+      paramMap.ZFS.add(this.ZEZ);
       paramMap = new h();
-      localObject = this.Sco;
-      paramMap.put("scene", ((d.a)localObject).ScV);
-      paramMap.put("levent", ((d.a)localObject).ScW);
-      paramMap.put("reason", ((d.a)localObject).ScX);
-      paramMap.put("format", ((d.a)localObject).ScY);
-      paramMap.put("ptime", ((d.a)localObject).ScZ);
-      paramMap.put("stime", ((d.a)localObject).Sda);
-      paramMap.put("etime", ((d.a)localObject).Sdb);
-      paramMap.put("url", ((d.a)localObject).Sdc);
-      paramMap.put("code", ((d.a)localObject).Sdd);
-      this.Scn.a(35, paramMap);
+      localObject = this.ZEZ;
+      paramMap.bR("scene", ((d.a)localObject).ZFG);
+      paramMap.bR("levent", ((d.a)localObject).ZFH);
+      paramMap.bR("reason", ((d.a)localObject).ZFI);
+      paramMap.bR("format", ((d.a)localObject).ZFJ);
+      paramMap.cu("ptime", ((d.a)localObject).ZFK);
+      paramMap.cu("stime", ((d.a)localObject).ZFL);
+      paramMap.cu("etime", ((d.a)localObject).ZFM);
+      paramMap.put("url", ((d.a)localObject).ZFN);
+      paramMap.put("code", ((d.a)localObject).ZFO);
+      this.ZEY.a(35, paramMap);
     }
-    this.Sco = null;
-    AppMethodBeat.o(189531);
+    this.ZEZ = null;
+    AppMethodBeat.o(221636);
   }
   
-  private void cr(Map<String, Object> paramMap)
+  private void cx(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(189532);
+    AppMethodBeat.i(221662);
     g.i("TPReportManager", "onPlayEnd");
-    if ((paramMap == null) || (this.SbZ))
+    if ((paramMap == null) || (this.ZEK))
     {
-      AppMethodBeat.o(189532);
+      AppMethodBeat.o(221662);
       return;
     }
-    if (this.RXs) {
-      cq(new f().S("etime", Long.valueOf(System.currentTimeMillis())).map);
+    if (this.ZAc) {
+      cw(new f().L("etime", Long.valueOf(System.currentTimeMillis())).map);
     }
-    if (this.Scg) {
-      cp(new f().S("etime", Long.valueOf(System.currentTimeMillis())).map);
+    if (this.ZER) {
+      cv(new f().L("etime", Long.valueOf(System.currentTimeMillis())).map);
     }
-    if (this.Scq.Sct > 0L)
+    if (this.ZFb.ZFe > 0L)
     {
-      localObject = this.Scq;
-      ((e)localObject).Scu += (int)(System.currentTimeMillis() - this.Scq.Sct);
-      this.Scq.Sct = 0L;
+      localObject = this.ZFb;
+      ((e)localObject).ZFf += (int)(System.currentTimeMillis() - this.ZFb.ZFe);
+      this.ZFb.ZFe = 0L;
     }
-    this.Scg = false;
+    this.ZER = false;
     Object localObject = new h();
-    this.SbW.ScQ.c((a)localObject);
-    this.SbW.ScQ.reset();
-    this.SbW.ScR.c((a)localObject);
-    this.SbW.ScR.reset();
-    d.i locali = this.SbW.ScS;
-    locali.Sdb = b(paramMap, "etime", System.currentTimeMillis());
-    locali.ScX = T(paramMap, "reason");
-    locali.Sdd = this.Sci;
-    if (this.Scb > 0L)
+    this.ZEH.ZFB.c((a)localObject);
+    this.ZEH.ZFB.reset();
+    this.ZEH.ZFC.c((a)localObject);
+    this.ZEH.ZFC.reset();
+    d.i locali = this.ZEH.ZFD;
+    locali.ZFM = b(paramMap, "etime", System.currentTimeMillis());
+    locali.ZFI = ah(paramMap, "reason");
+    locali.ZFO = this.ZET;
+    if (this.ZEM > 0L)
     {
-      this.Scc += locali.Sdb - this.Scb;
-      this.Scb = 0L;
+      this.ZEN += locali.ZFM - this.ZEM;
+      this.ZEM = 0L;
     }
-    locali.SeH = ((float)this.Scc / 1000.0F);
+    locali.ZHs = ((float)this.ZEN / 1000.0F);
     locali.c((a)localObject);
-    this.Scn.a(50, (a)localObject);
-    this.SbZ = true;
-    this.Sci = "0";
-    this.Scb = 0L;
-    this.Scc = 0L;
-    this.Scf = 0;
-    this.Sce = 0;
-    paramMap = this.Scq;
-    paramMap.Sct = 0L;
-    paramMap.Scu = 0;
-    paramMap.Scv = 0L;
-    paramMap.Scw = 0L;
-    paramMap.Scx = 0;
-    paramMap.Scy = 0;
-    paramMap.Scz = 0L;
-    paramMap.ScA = 0L;
-    paramMap.ScB = 0;
-    paramMap.JON = 0;
-    paramMap.ScC = 0;
-    paramMap.ScD = 0;
-    paramMap.ScE = false;
-    paramMap.ScF = false;
-    paramMap.RWM = false;
-    paramMap.ScG = "";
-    paramMap.pkK = "";
+    this.ZEY.a(50, (a)localObject);
+    this.ZEK = true;
+    this.ZET = "0";
+    this.ZEM = 0L;
+    this.ZEN = 0L;
+    this.ZEQ = 0;
+    this.ZEP = 0;
+    paramMap = this.ZFb;
+    paramMap.ZFe = 0L;
+    paramMap.ZFf = 0;
+    paramMap.ZFg = 0L;
+    paramMap.ZFh = 0L;
+    paramMap.MTA = 0;
+    paramMap.ZFi = 0;
+    paramMap.ZFj = 0L;
+    paramMap.ZFk = 0L;
+    paramMap.ZFl = 0;
+    paramMap.ZFm = 0;
+    paramMap.ZFn = 0;
+    paramMap.ZFo = 0;
+    paramMap.ZFp = false;
+    paramMap.ZFq = false;
+    paramMap.Zzw = false;
+    paramMap.ZFr = "";
+    paramMap.smT = "";
     paramMap.cdnIp = "";
     paramMap.cdnUip = "";
-    paramMap.ScH = "";
-    paramMap.ScI = "";
-    hom();
-    AppMethodBeat.o(189532);
+    paramMap.ZFs = "";
+    paramMap.ZFt = "";
+    irN();
+    AppMethodBeat.o(221662);
   }
   
-  private static String f(Map<String, Object> paramMap, String paramString1, String paramString2)
+  private static String g(Map<String, Object> paramMap, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(189544);
+    AppMethodBeat.i(221749);
     if (paramMap == null)
     {
-      AppMethodBeat.o(189544);
+      AppMethodBeat.o(221749);
       return paramString2;
     }
     paramMap = paramMap.get(paramString1);
     if (paramMap != null)
     {
       paramMap = (String)paramMap;
-      AppMethodBeat.o(189544);
+      AppMethodBeat.o(221749);
       return paramMap;
     }
-    AppMethodBeat.o(189544);
+    AppMethodBeat.o(221749);
     return paramString2;
   }
   
-  private void hol()
+  private void irM()
   {
-    AppMethodBeat.i(189534);
+    AppMethodBeat.i(221671);
     g.i("TPReportManager", "onLivePeriodReport");
     h localh = new h();
-    this.Scn.a(263, localh);
-    AppMethodBeat.o(189534);
+    this.ZEY.a(263, localh);
+    AppMethodBeat.o(221671);
   }
   
-  private void hom()
+  private void irN()
   {
-    AppMethodBeat.i(189535);
-    g.i("TPReportManager", "removeCacheEvent: mFlowId: " + this.Scj);
-    if ((SbU != null) && (!TextUtils.isEmpty(this.Scj))) {
-      SbU.bqG(this.Scj);
+    AppMethodBeat.i(221674);
+    g.i("TPReportManager", "removeCacheEvent: mFlowId: " + this.ZEU);
+    if ((ZEF != null) && (!TextUtils.isEmpty(this.ZEU))) {
+      ZEF.bDD(this.ZEU);
     }
-    AppMethodBeat.o(189535);
-  }
-  
-  public final void aSs()
-  {
-    AppMethodBeat.i(189539);
-    this.SbR = new HandlerThread("TP-ReportThread");
-    this.SbR.start();
-    this.SbS = new b(this.SbR.getLooper());
-    this.SbW = new d();
-    TelephonyManager localTelephonyManager;
-    if (this.mContext != null)
-    {
-      localTelephonyManager = (TelephonyManager)this.mContext.getSystemService("phone");
-      if (localTelephonyManager != null) {
-        break label156;
-      }
-      g.e("TPReportManager", "getSystemService TELEPHONY_SERVICE err.");
-    }
-    for (;;)
-    {
-      e.a(this.Scr);
-      try
-      {
-        if (SbU == null) {
-          SbU = new com.tencent.thumbplayer.utils.c(this.mContext, "TPReportCache");
-        }
-        if (!SbQ) {
-          this.SbS.obtainMessage(4000).sendToTarget();
-        }
-        SbQ = true;
-        return;
-      }
-      finally
-      {
-        label156:
-        Object localObject2;
-        AppMethodBeat.o(189539);
-      }
-      localObject2 = this.GUP;
-      localObject2 = com.tencent.mm.hellhoundlib.b.c.a(256, new com.tencent.mm.hellhoundlib.b.a()).bl(localObject2);
-      com.tencent.mm.hellhoundlib.a.a.a(localTelephonyManager, ((com.tencent.mm.hellhoundlib.b.a)localObject2).axQ(), "com/tencent/thumbplayer/tplayer/plugins/report/TPReportManager", "signalStrengthRegister", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
-      localTelephonyManager.listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject2).pG(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).pG(1)).intValue());
-      com.tencent.mm.hellhoundlib.a.a.a(localTelephonyManager, "com/tencent/thumbplayer/tplayer/plugins/report/TPReportManager", "signalStrengthRegister", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
-    }
+    AppMethodBeat.o(221674);
   }
   
   public final void b(int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    AppMethodBeat.i(189541);
+    AppMethodBeat.i(221741);
     switch (paramInt1)
     {
     default: 
-      AppMethodBeat.o(189541);
+      AppMethodBeat.o(221741);
       return;
     case 100: 
       paramInt1 = 999;
     }
     for (;;)
     {
-      this.SbS.obtainMessage(paramInt1, paramObject).sendToTarget();
-      AppMethodBeat.o(189541);
+      this.ZED.obtainMessage(paramInt1, paramObject).sendToTarget();
+      AppMethodBeat.o(221741);
       return;
       paramInt1 = 1000;
       continue;
@@ -826,52 +785,63 @@ public class c
     }
   }
   
+  public final void bbp()
+  {
+    AppMethodBeat.i(221724);
+    this.ZEC = new HandlerThread("TP-ReportThread");
+    this.ZEC.start();
+    this.ZED = new b(this.ZEC.getLooper());
+    this.ZEH = new d();
+    this.ZED.sendEmptyMessage(4001);
+    e.a(this.ZFc);
+    try
+    {
+      if (ZEF == null) {
+        ZEF = new com.tencent.thumbplayer.utils.c(this.mContext, "TPReportCache");
+      }
+      if (!ZEB) {
+        this.ZED.obtainMessage(4000).sendToTarget();
+      }
+      ZEB = true;
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(221724);
+    }
+  }
+  
   public final void onDetach()
   {
-    AppMethodBeat.i(189540);
+    AppMethodBeat.i(221729);
     g.i("TPReportManager", "release: ");
-    if (this.mContext != null)
+    this.ZED.sendEmptyMessage(4002);
+    e.b(this.ZFc);
+    if (this.ZEC != null)
     {
-      ??? = (TelephonyManager)this.mContext.getSystemService("phone");
-      if (??? == null) {
-        g.e("TPReportManager", "getSystemService TELEPHONY_SERVICE err.");
+      if (Build.VERSION.SDK_INT < 18) {
+        break label75;
       }
-    }
-    else
-    {
-      e.b(this.Scr);
-      if (this.SbR != null)
-      {
-        if (Build.VERSION.SDK_INT < 18) {
-          break label192;
-        }
-        this.SbR.quitSafely();
-      }
+      this.ZEC.quitSafely();
     }
     for (;;)
     {
-      this.SbR = null;
+      this.ZEC = null;
       g.i("TPReportManager", "release: end!");
-      AppMethodBeat.o(189540);
+      AppMethodBeat.o(221729);
       return;
-      Object localObject2 = this.GUP;
-      localObject2 = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a()).bl(localObject2);
-      com.tencent.mm.hellhoundlib.a.a.a(???, ((com.tencent.mm.hellhoundlib.b.a)localObject2).axQ(), "com/tencent/thumbplayer/tplayer/plugins/report/TPReportManager", "signalStrengthUnRegister", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
-      ((TelephonyManager)???).listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject2).pG(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).pG(1)).intValue());
-      com.tencent.mm.hellhoundlib.a.a.a(???, "com/tencent/thumbplayer/tplayer/plugins/report/TPReportManager", "signalStrengthUnRegister", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
-      break;
-      label192:
-      synchronized (this.SbT)
+      label75:
+      synchronized (this.ZEE)
       {
         this.mIsExit = false;
-        this.SbS.sendEmptyMessage(100);
+        this.ZED.sendEmptyMessage(100);
         for (;;)
         {
           boolean bool = this.mIsExit;
           if (!bool) {
             try
             {
-              this.SbT.wait(5000L, 0);
+              this.ZEE.wait(5000L, 0);
             }
             catch (InterruptedException localInterruptedException)
             {
@@ -880,13 +850,13 @@ public class c
           }
         }
       }
-      this.SbR.quit();
+      this.ZEC.quit();
     }
   }
   
   public void reportEvent(int paramInt, Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(189538);
+    AppMethodBeat.i(221715);
     Object localObject = paramMap;
     if (paramMap == null) {
       localObject = new HashMap();
@@ -894,15 +864,15 @@ public class c
     switch (paramInt)
     {
     default: 
-      AppMethodBeat.o(189538);
+      AppMethodBeat.o(221715);
       return;
     case 1000: 
       paramInt = 2000;
     }
     for (;;)
     {
-      this.SbS.obtainMessage(paramInt, localObject).sendToTarget();
-      AppMethodBeat.o(189538);
+      this.ZED.obtainMessage(paramInt, localObject).sendToTarget();
+      AppMethodBeat.o(221715);
       return;
       paramInt = 2001;
       continue;
@@ -912,7 +882,7 @@ public class c
   
   public void setReportInfoGetter(TPDefaultReportInfo paramTPDefaultReportInfo)
   {
-    this.SbV = paramTPDefaultReportInfo;
+    this.ZEG = paramTPDefaultReportInfo;
   }
   
   final class a
@@ -922,14 +892,14 @@ public class c
     
     public final void a(int paramInt, a parama)
     {
-      AppMethodBeat.i(189525);
+      AppMethodBeat.i(221584);
       boolean bool = true;
       if (paramInt > 30) {
         bool = false;
       }
       c.a(c.this, parama, paramInt, bool);
       c.b(parama);
-      AppMethodBeat.o(189525);
+      AppMethodBeat.o(221584);
     }
   }
   
@@ -943,7 +913,7 @@ public class c
     
     public final void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(189526);
+      AppMethodBeat.i(221592);
       Map localMap = null;
       if ((paramMessage.obj instanceof Map)) {
         localMap = (Map)paramMessage.obj;
@@ -953,107 +923,113 @@ public class c
       }
       for (;;)
       {
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.a(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.b(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.c(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.d(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.e(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.f(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.g(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.h(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.i(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.j(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.k(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.l(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.m(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.n(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.o(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.p(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.q(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.r(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.s(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.t(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.u(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.v(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.w(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.x(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.y(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.z(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.A(c.this, localMap);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.a(c.this);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         c.b(c.this);
-        AppMethodBeat.o(189526);
+        AppMethodBeat.o(221592);
         return;
         if ((paramMessage.obj instanceof String))
         {
           c.a(c.this, (String)paramMessage.obj);
-          AppMethodBeat.o(189526);
+          AppMethodBeat.o(221592);
           return;
           c.c(c.this);
-          AppMethodBeat.o(189526);
+          AppMethodBeat.o(221592);
           return;
           c.d(c.this);
-          AppMethodBeat.o(189526);
+          AppMethodBeat.o(221592);
           return;
-          c.hon();
+          c.irO();
+          AppMethodBeat.o(221592);
+          return;
+          c.e(c.this);
+          AppMethodBeat.o(221592);
+          return;
+          c.f(c.this);
         }
       }
     }
@@ -1071,7 +1047,7 @@ public class c
     
     public final void a(int paramInt, a parama)
     {
-      AppMethodBeat.i(189527);
+      AppMethodBeat.i(221594);
       parama = new h();
       boolean bool2 = true;
       boolean bool1 = bool2;
@@ -1085,7 +1061,7 @@ public class c
       switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(189527);
+        AppMethodBeat.o(221594);
         return;
       case 30: 
         paramInt = 205;
@@ -1095,46 +1071,46 @@ public class c
         c.a(c.this, parama, paramInt, bool1);
         c.b(c.this, parama, bool1);
         if (paramInt != 205) {
-          parama.put("loadingtime", 0);
+          parama.bR("loadingtime", 0);
         }
-        g.i("TPReportManager", "liveExParam.prePlayLengthInt: " + c.g(c.this).ScT.SdZ);
+        g.i("TPReportManager", "liveExParam.prePlayLengthInt: " + c.h(c.this).ZFE.ZGK);
         c.b(parama);
-        AppMethodBeat.o(189527);
+        AppMethodBeat.o(221594);
         return;
-        c.f(c.this).removeMessages(3000);
+        c.g(c.this).removeMessages(3000);
         paramInt = 263;
         continue;
-        c.f(c.this).removeMessages(3000);
+        c.g(c.this).removeMessages(3000);
         continue;
-        c.f(c.this).removeMessages(3000);
-        c.f(c.this).sendEmptyMessageDelayed(3000, 60000L);
+        c.g(c.this).removeMessages(3000);
+        c.g(c.this).sendEmptyMessageDelayed(3000, 60000L);
       }
     }
   }
   
   final class e
   {
-    int JON = 0;
-    boolean RWM = false;
-    long ScA = 0L;
-    int ScB = 0;
-    int ScC = 0;
-    int ScD = 0;
-    boolean ScE = false;
-    boolean ScF = false;
-    String ScG = "";
-    String ScH = "";
-    String ScI = "";
-    long Sct = 0L;
-    int Scu = 0;
-    long Scv = 0L;
-    long Scw = 0L;
-    int Scx = 0;
-    int Scy = 0;
-    long Scz = 0L;
+    int MTA = 0;
+    long ZFe = 0L;
+    int ZFf = 0;
+    long ZFg = 0L;
+    long ZFh = 0L;
+    int ZFi = 0;
+    long ZFj = 0L;
+    long ZFk = 0L;
+    int ZFl = 0;
+    int ZFm = 0;
+    int ZFn = 0;
+    int ZFo = 0;
+    boolean ZFp = false;
+    boolean ZFq = false;
+    String ZFr = "";
+    String ZFs = "";
+    String ZFt = "";
+    boolean Zzw = false;
     String cdnIp = "";
     String cdnUip = "";
-    String pkK = "";
+    String smT = "";
     
     private e() {}
   }
@@ -1146,7 +1122,7 @@ public class c
     
     public final void a(int paramInt, a parama)
     {
-      AppMethodBeat.i(189528);
+      AppMethodBeat.i(221605);
       boolean bool = true;
       if (paramInt > 30) {
         bool = false;
@@ -1154,13 +1130,13 @@ public class c
       c.a(c.this, parama, paramInt, bool);
       c.a(c.this, parama, bool);
       c.b(parama);
-      AppMethodBeat.o(189528);
+      AppMethodBeat.o(221605);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.g.a.a.c
  * JD-Core Version:    0.7.0.1
  */

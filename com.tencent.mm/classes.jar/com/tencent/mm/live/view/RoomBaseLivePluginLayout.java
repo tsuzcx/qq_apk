@@ -3,28 +3,27 @@ package com.tencent.mm.live.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Base64;
-import com.tencent.mm.g.a.mu;
-import com.tencent.mm.g.a.zj;
+import com.tencent.mm.f.a.aaq;
+import com.tencent.mm.f.a.nl;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.live.b.b.a.a;
 import com.tencent.mm.live.b.b.a.c;
 import com.tencent.mm.live.b.b.a.d;
 import com.tencent.mm.live.b.b.a.g;
-import com.tencent.mm.live.b.h;
-import com.tencent.mm.live.b.m;
-import com.tencent.mm.live.b.o.j;
-import com.tencent.mm.live.b.q;
-import com.tencent.mm.live.b.r;
+import com.tencent.mm.live.b.e;
+import com.tencent.mm.live.b.j;
+import com.tencent.mm.live.b.k;
+import com.tencent.mm.live.b.l.i;
+import com.tencent.mm.live.b.o;
 import com.tencent.mm.live.b.s;
-import com.tencent.mm.live.b.v;
-import com.tencent.mm.live.b.x;
-import com.tencent.mm.live.core.core.d.b.a;
-import com.tencent.mm.model.cl;
-import com.tencent.mm.protocal.protobuf.civ;
-import com.tencent.mm.protocal.protobuf.ciw;
-import com.tencent.mm.protocal.protobuf.cjc;
+import com.tencent.mm.live.b.u;
+import com.tencent.mm.live.core.core.c.c.a;
+import com.tencent.mm.model.cm;
+import com.tencent.mm.protocal.protobuf.crq;
+import com.tencent.mm.protocal.protobuf.crr;
+import com.tencent.mm.protocal.protobuf.crx;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.trtc.TRTCCloudDef.TRTCParams;
@@ -32,15 +31,14 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
-import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/view/RoomBaseLivePluginLayout;", "Lcom/tencent/mm/live/view/BaseLivePluginLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mVoipCallEvent", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/VoipEvent;", "multiTalkActionListener", "mount", "", "onAcceptLiveMic", "info", "Lcom/tencent/mm/live/model/AcceptLiveMicInfo;", "onAnchorConnectionChange", "", "onApplyLiveMic", "Lcom/tencent/mm/live/model/ApplyLiveMicInfo;", "onBanLiveComment", "Lcom/tencent/mm/live/model/BanLiveCommentInfo;", "onCloseApplyLiveMic", "Lcom/tencent/mm/live/model/CloseApplyLiveMicInfo;", "onCloseLive", "Lcom/tencent/mm/live/model/CloseLiveInfo;", "onCloseLiveMic", "Lcom/tencent/mm/live/model/CloseLiveMicInfo;", "onFinderLiveAcceptLiveMic", "Lcom/tencent/mm/live/model/FinderLiveAcceptLiveMicInfo;", "onFinderLiveApplyLiveMic", "Lcom/tencent/mm/live/model/FinderLiveApplyLiveMicInfo;", "onFinderLiveCloseLiveMic", "Lcom/tencent/mm/live/model/FinderLiveCloseLiveMicInfo;", "onLiveMicSucc", "Lcom/tencent/mm/live/model/LiveMicSuccessInfo;", "onOnlineLiveList", "Lcom/tencent/mm/live/model/OnlineLiveListInfo;", "unMount", "plugin-logic_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/view/RoomBaseLivePluginLayout;", "Lcom/tencent/mm/live/view/BaseLivePluginLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mVoipCallEvent", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/VoipEvent;", "multiTalkActionListener", "mount", "", "onAcceptLiveMic", "info", "Lcom/tencent/mm/live/model/AcceptLiveMicInfo;", "onAnchorCallInterruption", "callInterruption", "", "onAnchorConnectionChange", "onApplyLiveMic", "Lcom/tencent/mm/live/model/ApplyLiveMicInfo;", "onBanLiveComment", "Lcom/tencent/mm/live/model/BanLiveCommentInfo;", "onBattleApply", "onBattleClose", "onBattleDismiss", "onBattleEnd", "onBattleStart", "onCloseApplyLiveMic", "Lcom/tencent/mm/live/model/CloseApplyLiveMicInfo;", "onCloseLive", "Lcom/tencent/mm/live/model/CloseLiveInfo;", "onCloseLiveMic", "Lcom/tencent/mm/live/model/CloseLiveMicInfo;", "onLiveMicSucc", "Lcom/tencent/mm/live/model/LiveMicSuccessInfo;", "onOnlineLiveList", "Lcom/tencent/mm/live/model/OnlineLiveListInfo;", "unMount", "plugin-logic_release"})
 public abstract class RoomBaseLivePluginLayout
   extends BaseLivePluginLayout
 {
-  private final IListener<zj> hXm = (IListener)new a(this);
-  private final IListener<?> hXn = (IListener)new b(this);
+  private final IListener<aaq> kLR = (IListener)new a(this);
+  private final IListener<?> kLS = (IListener)new b(this);
   
   public RoomBaseLivePluginLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -50,17 +48,17 @@ public abstract class RoomBaseLivePluginLayout
   public void mount()
   {
     super.mount();
-    s locals = s.hIl;
-    s.a((com.tencent.mm.live.b.j)this);
-    this.hXm.alive();
-    this.hXn.alive();
+    com.tencent.mm.live.b.p localp = com.tencent.mm.live.b.p.kvF;
+    com.tencent.mm.live.b.p.a((com.tencent.mm.live.b.g)this);
+    this.kLR.alive();
+    this.kLS.alive();
   }
   
   public void onAcceptLiveMic(com.tencent.mm.live.b.a parama)
   {
-    p.h(parama, "info");
+    kotlin.g.b.p.k(parama, "info");
     long l1 = parama.liveId;
-    Object localObject1 = parama.hFz;
+    Object localObject1 = parama.ktE;
     if (localObject1 == null) {
       localObject1 = "";
     }
@@ -72,8 +70,8 @@ public abstract class RoomBaseLivePluginLayout
       if (localObject3 == null) {
         localObject2 = "";
       }
-      int j = parama.hFB;
-      int k = parama.hFA;
+      int j = parama.ktG;
+      int k = parama.ktF;
       Object localObject4 = parama.userSig;
       localObject3 = localObject4;
       if (localObject4 == null) {
@@ -84,72 +82,73 @@ public abstract class RoomBaseLivePluginLayout
       if (localObject5 == null) {
         localObject4 = "";
       }
-      long l2 = parama.hFC;
-      parama = parama.hFD;
+      long l2 = parama.ktH;
+      parama = parama.ktI;
       if (parama == null) {
-        parama = "";
+        parama = null;
       }
       for (;;)
       {
         localObject4 = Base64.decode((String)localObject4, 0);
-        p.g(localObject4, "Base64.decode(privateMapKey, 0)");
+        kotlin.g.b.p.j(localObject4, "Base64.decode(privateMapKey, 0)");
         localObject5 = Charset.forName("UTF-8");
-        p.g(localObject5, "Charset.forName(\"UTF-8\")");
+        kotlin.g.b.p.j(localObject5, "Charset.forName(\"UTF-8\")");
         localObject4 = new String((byte[])localObject4, (Charset)localObject5);
         localObject3 = new TRTCCloudDef.TRTCParams(i, (String)localObject2, (String)localObject3, j, (String)localObject4, "");
-        localObject5 = o.j.hHj;
-        if (k != o.j.aFK())
+        localObject5 = l.i.kuO;
+        if (k != l.i.aNR())
         {
-          localObject5 = o.j.hHj;
-          if (k != o.j.aFL()) {}
+          localObject5 = l.i.kuO;
+          if (k != l.i.aNS()) {}
         }
         for (i = 21;; i = 20)
         {
           ((TRTCCloudDef.TRTCParams)localObject3).role = i;
-          localObject3 = new cjc();
+          localObject3 = new crx();
           if (!Util.isNullOrNil(parama)) {
-            ((cjc)localObject3).parseFrom(Base64.decode(parama, 0));
+            ((crx)localObject3).parseFrom(Base64.decode(parama, 0));
           }
-          parama = com.tencent.mm.live.b.n.hGh;
-          com.tencent.mm.live.b.n.a((cjc)localObject3, null, new com.tencent.mm.live.core.core.b.e(null, 0L, 0, null, 0L, 0L, 0, null, null, 0L, 4095));
-          parama = com.tencent.mm.live.core.core.d.b.hCo;
-          MMApplicationContext.getContext();
-          b.a.aEf().Go((String)localObject4);
+          parama = k.kuf;
+          k.a((crx)localObject3, null, new com.tencent.mm.live.core.core.model.f(null, 0L, 0, null, 0L, 0L, null, null, 0L, null, 8191));
+          parama = com.tencent.mm.live.core.core.c.c.kqq;
+          c.a.aMm().Nv((String)localObject4);
           parama = new a.a(l1, (String)localObject1, "", "", (String)localObject2);
-          localObject1 = x.hJf;
-          localObject1 = x.aGv();
+          localObject1 = u.kwz;
+          localObject1 = u.aOv();
           if (localObject1 != null)
           {
-            localObject1 = ((com.tencent.mm.live.core.core.b.f)localObject1).hzu;
+            localObject1 = ((com.tencent.mm.live.core.core.model.g)localObject1).kmq;
             if (localObject1 != null) {
               ((TRTCCloudDef.TRTCParams)localObject1).privateMapKey = ((String)localObject4);
             }
           }
-          localObject1 = x.hJf;
-          x.aHa().a(parama);
-          parama = x.hJf;
-          x.zB(l2);
-          parama = r.hIg;
-          localObject1 = x.hJf;
-          parama.zA(kotlin.k.j.aM((x.aGw() - 60L) * 1000L, 60000L));
+          localObject1 = u.kwz;
+          u.aPa().a(parama);
+          parama = u.kwz;
+          u.FI(l2);
+          parama = o.kvA;
+          localObject1 = u.kwz;
+          parama.FH(kotlin.k.i.be((u.aOw() - 60L) * 1000L, 60000L));
           return;
         }
       }
     }
   }
   
+  public void onAnchorCallInterruption(boolean paramBoolean) {}
+  
   public void onAnchorConnectionChange(boolean paramBoolean) {}
   
   public void onApplyLiveMic(com.tencent.mm.live.b.b paramb)
   {
-    p.h(paramb, "info");
+    kotlin.g.b.p.k(paramb, "info");
     long l = paramb.liveId;
-    Object localObject2 = paramb.hFz;
+    Object localObject2 = paramb.ktE;
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = "";
     }
-    Object localObject3 = paramb.hFF;
+    Object localObject3 = paramb.ktM;
     localObject2 = localObject3;
     if (localObject3 == null) {
       localObject2 = "";
@@ -159,209 +158,204 @@ public abstract class RoomBaseLivePluginLayout
     if (localObject4 == null) {
       localObject3 = "";
     }
-    localObject4 = paramb.hFG;
+    localObject4 = paramb.ktN;
     paramb = (com.tencent.mm.live.b.b)localObject4;
     if (localObject4 == null) {
       paramb = "";
     }
-    localObject4 = x.hJf;
-    localObject4 = x.aHa();
+    localObject4 = u.kwz;
+    localObject4 = u.aPa();
     paramb = new a.a(l, (String)localObject1, (String)localObject2, (String)localObject3, paramb);
-    p.h(paramb, "liveMicUser");
-    localObject1 = com.tencent.mm.live.core.debug.a.hCA;
-    com.tencent.mm.live.core.debug.a.au("MicroMsg.LiveCoreMic", "[sysmsg]anchor receive mic ".concat(String.valueOf(paramb)));
-    localObject1 = x.hJf;
-    if (x.aGr().hyH == paramb.liveId)
+    kotlin.g.b.p.k(paramb, "liveMicUser");
+    localObject1 = com.tencent.mm.live.core.debug.a.kqB;
+    com.tencent.mm.live.core.debug.a.ay("MicroMsg.LiveCoreMic", "[sysmsg]anchor receive mic ".concat(String.valueOf(paramb)));
+    localObject1 = u.kwz;
+    if (u.aOr().klE == paramb.liveId)
     {
-      localObject2 = ((Iterable)((com.tencent.mm.live.b.b.a)localObject4).hKT).iterator();
+      localObject2 = ((Iterable)((com.tencent.mm.live.b.b.a)localObject4).kyn).iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject1 = (a.a)((Iterator)localObject2).next();
-        if (p.j(((a.a)localObject1).hFG, paramb.hFG))
+        if (kotlin.g.b.p.h(((a.a)localObject1).ktN, paramb.ktN))
         {
-          localObject2 = paramb.hFz;
-          p.h(localObject2, "<set-?>");
-          ((a.a)localObject1).hFz = ((String)localObject2);
+          localObject2 = paramb.ktE;
+          kotlin.g.b.p.k(localObject2, "<set-?>");
+          ((a.a)localObject1).ktE = ((String)localObject2);
           paramb = paramb.roomId;
-          p.h(paramb, "<set-?>");
+          kotlin.g.b.p.k(paramb, "<set-?>");
           ((a.a)localObject1).roomId = paramb;
           return;
         }
       }
-      ((com.tencent.mm.live.b.b.a)localObject4).hKT.add(0, paramb);
+      ((com.tencent.mm.live.b.b.a)localObject4).kyn.add(0, paramb);
       MMHandlerThread.postToMainThread((Runnable)new a.g((com.tencent.mm.live.b.b.a)localObject4));
       return;
     }
     paramb = new StringBuilder("anchor receive mic ,but error live_id for ");
-    localObject1 = x.hJf;
-    Log.e("MicroMsg.LiveCoreMic", x.aGr().hyH);
+    localObject1 = u.kwz;
+    Log.e("MicroMsg.LiveCoreMic", u.aOr().klE);
   }
   
   public void onBanLiveComment(com.tencent.mm.live.b.c paramc)
   {
     boolean bool = true;
     int i = 0;
-    p.h(paramc, "info");
-    long l = paramc.hFH;
-    int j = paramc.hFI;
-    Object localObject = paramc.dQx;
+    kotlin.g.b.p.k(paramc, "info");
+    long l = paramc.ktO;
+    int j = paramc.ktP;
+    Object localObject = paramc.wording;
     paramc = (com.tencent.mm.live.b.c)localObject;
     if (localObject == null) {
       paramc = "";
     }
-    localObject = x.hJf;
-    if (x.aGr().hyH == l)
+    localObject = u.kwz;
+    if (u.aOr().klE == l)
     {
-      localObject = x.hJf;
-      localObject = x.aGr();
+      localObject = u.kwz;
+      localObject = u.aOr();
       if (j != 1) {
         break label111;
       }
-      ((civ)localObject).KNv = bool;
-      localObject = x.hJf;
-      localObject = x.hJf;
-      if (!x.aGr().KNv) {
+      ((crq)localObject).ROp = bool;
+      localObject = u.kwz;
+      localObject = u.kwz;
+      if (!u.aOr().ROp) {
         break label117;
       }
     }
     for (;;)
     {
-      x.qT(i);
-      localObject = m.hGg;
-      m.GL(paramc);
+      u.tI(i);
+      localObject = j.kue;
+      j.NW(paramc);
       return;
       label111:
       bool = false;
       break;
       label117:
-      i = cl.aWB();
+      i = cm.bfF();
     }
   }
   
+  public void onBattleApply() {}
+  
+  public void onBattleClose() {}
+  
+  public void onBattleDismiss() {}
+  
+  public void onBattleEnd() {}
+  
+  public void onBattleStart() {}
+  
   public void onCloseApplyLiveMic(com.tencent.mm.live.b.d paramd)
   {
-    p.h(paramd, "info");
+    kotlin.g.b.p.k(paramd, "info");
     long l = paramd.liveId;
     boolean bool = paramd.enable;
-    paramd = x.hJf;
-    paramd = x.aHa();
-    Object localObject = com.tencent.mm.live.core.debug.a.hCA;
-    com.tencent.mm.live.core.debug.a.au("MicroMsg.LiveCoreMic", "[sysmsg]anchor set mic permission:" + bool + " liveId:" + l);
-    localObject = x.hJf;
-    if (l == x.aGr().hyH) {
+    paramd = u.kwz;
+    paramd = u.aPa();
+    Object localObject = com.tencent.mm.live.core.debug.a.kqB;
+    com.tencent.mm.live.core.debug.a.ay("MicroMsg.LiveCoreMic", "[sysmsg]anchor set mic permission:" + bool + " liveId:" + l);
+    localObject = u.kwz;
+    if (l == u.aOr().klE) {
       MMHandlerThread.postToMainThread((Runnable)new a.d(paramd, bool));
     }
   }
   
-  public void onCloseLive(com.tencent.mm.live.b.e parame)
+  public void onCloseLive(e parame)
   {
-    p.h(parame, "info");
+    kotlin.g.b.p.k(parame, "info");
     long l = parame.liveId;
-    parame = x.hJf;
-    parame = x.aHa();
-    com.tencent.mm.live.core.debug.a locala = com.tencent.mm.live.core.debug.a.hCA;
-    com.tencent.mm.live.core.debug.a.GA("[sysmsg]anchor close live ".concat(String.valueOf(l)));
+    parame = u.kwz;
+    parame = u.aPa();
+    com.tencent.mm.live.core.debug.a locala = com.tencent.mm.live.core.debug.a.kqB;
+    com.tencent.mm.live.core.debug.a.NN("[sysmsg]anchor close live ".concat(String.valueOf(l)));
     MMHandlerThread.postToMainThread((Runnable)new a.c(parame, l));
-    parame = x.hJf;
-    x.zB(0L);
+    parame = u.kwz;
+    u.FI(0L);
   }
   
   public void onCloseLiveMic(com.tencent.mm.live.b.f paramf)
   {
-    p.h(paramf, "info");
+    kotlin.g.b.p.k(paramf, "info");
     long l = paramf.liveId;
-    Object localObject2 = paramf.hFJ;
+    Object localObject2 = paramf.ktQ;
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = "";
     }
-    localObject2 = paramf.hFz;
+    localObject2 = paramf.ktE;
     paramf = (com.tencent.mm.live.b.f)localObject2;
     if (localObject2 == null) {
       paramf = "";
     }
-    localObject2 = x.hJf;
-    x.aHa().a(l, (String)localObject1, paramf);
-    paramf = r.hIg;
-    com.tencent.mm.ac.d.C(r.hIf);
-    localObject1 = com.tencent.mm.kernel.g.aAg();
-    p.g(localObject1, "MMKernel.network()");
-    ((com.tencent.mm.kernel.b)localObject1).azz().b(760, (com.tencent.mm.ak.i)paramf);
+    localObject2 = u.kwz;
+    u.aPa().a(l, (String)localObject1, paramf);
+    paramf = o.kvA;
+    com.tencent.mm.ae.d.C(o.kvz);
+    localObject1 = h.aHF();
+    kotlin.g.b.p.j(localObject1, "MMKernel.network()");
+    ((com.tencent.mm.kernel.c)localObject1).aGY().b(760, (com.tencent.mm.an.i)paramf);
   }
   
-  public void onFinderLiveAcceptLiveMic(com.tencent.mm.live.b.g paramg)
+  public void onLiveMicSucc(com.tencent.mm.live.b.n paramn)
   {
-    p.h(paramg, "info");
-  }
-  
-  public void onFinderLiveApplyLiveMic(h paramh)
-  {
-    p.h(paramh, "info");
-  }
-  
-  public void onFinderLiveCloseLiveMic(com.tencent.mm.live.b.i parami)
-  {
-    p.h(parami, "info");
-  }
-  
-  public void onLiveMicSucc(q paramq)
-  {
-    p.h(paramq, "info");
-    long l = paramq.liveId;
-    Object localObject2 = paramq.hFJ;
+    kotlin.g.b.p.k(paramn, "info");
+    long l = paramn.liveId;
+    Object localObject2 = paramn.ktQ;
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = "";
     }
-    Object localObject3 = paramq.hIc;
+    Object localObject3 = paramn.kvw;
     localObject2 = localObject3;
     if (localObject3 == null) {
       localObject2 = "";
     }
-    Object localObject4 = paramq.nickName;
+    Object localObject4 = paramn.nickName;
     localObject3 = localObject4;
     if (localObject4 == null) {
       localObject3 = "";
     }
-    Object localObject5 = paramq.hFG;
+    Object localObject5 = paramn.ktN;
     localObject4 = localObject5;
     if (localObject5 == null) {
       localObject4 = "";
     }
-    localObject5 = paramq.hFz;
-    paramq = (q)localObject5;
+    localObject5 = paramn.ktE;
+    paramn = (com.tencent.mm.live.b.n)localObject5;
     if (localObject5 == null) {
-      paramq = "";
+      paramn = "";
     }
-    localObject5 = x.hJf;
-    x.aHa().a(l, paramq, (String)localObject1, (String)localObject2, (String)localObject3, (String)localObject4);
+    localObject5 = u.kwz;
+    u.aPa().a(l, paramn, (String)localObject1, (String)localObject2, (String)localObject3, (String)localObject4);
   }
   
-  public void onOnlineLiveList(v paramv)
+  public void onOnlineLiveList(s params)
   {
-    p.h(paramv, "info");
-    Object localObject2 = paramv.hIo;
+    kotlin.g.b.p.k(params, "info");
+    Object localObject2 = params.kvI;
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = "";
     }
-    Object localObject3 = paramv.content;
+    Object localObject3 = params.content;
     localObject2 = localObject3;
     if (localObject3 == null) {
       localObject2 = "";
     }
-    paramv = paramv.dkV;
-    if (paramv == null) {
-      paramv = "";
+    params = params.fcD;
+    if (params == null) {
+      params = "";
     }
     for (;;)
     {
-      localObject1 = new ciw().parseFrom(Base64.decode((String)localObject1, 0));
+      localObject1 = new crr().parseFrom(Base64.decode((String)localObject1, 0));
       if (localObject1 == null) {
         throw new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.LiveInfoList");
       }
-      localObject3 = (ciw)localObject1;
-      if ((localObject3 != null) && (((ciw)localObject3).gCs != null) && (((ciw)localObject3).gCs.size() > 0))
+      localObject3 = (crr)localObject1;
+      if ((localObject3 != null) && (((crr)localObject3).jmy != null) && (((crr)localObject3).jmy.size() > 0))
       {
         int i = kotlin.n.n.a((CharSequence)localObject2, ":", 0, false, 6);
         if (i == -1) {
@@ -371,24 +365,24 @@ public abstract class RoomBaseLivePluginLayout
           throw new kotlin.t("null cannot be cast to non-null type java.lang.String");
         }
         localObject1 = ((String)localObject2).substring(0, i);
-        p.g(localObject1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+        kotlin.g.b.p.j(localObject1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
       }
       for (;;)
       {
         localObject2 = new LinkedList();
-        localObject3 = ((ciw)localObject3).gCs.iterator();
+        localObject3 = ((crr)localObject3).jmy.iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          civ localciv = (civ)((Iterator)localObject3).next();
-          if (!paramv.equals(localciv.MnN))
+          crq localcrq = (crq)((Iterator)localObject3).next();
+          if (!params.equals(localcrq.TyH))
           {
             com.tencent.mm.live.b.c.b localb = new com.tencent.mm.live.b.c.b();
-            localb.field_liveId = localciv.hyH;
+            localb.field_liveId = localcrq.klE;
             localb.field_hostRoomId = ((String)localObject1);
-            localb.field_liveName = localciv.MnO;
-            localb.field_anchorUsername = localciv.MnN;
+            localb.field_liveName = localcrq.TyI;
+            localb.field_anchorUsername = localcrq.TyH;
             localb.field_isSender = false;
-            localb.field_timeStamp = localciv.Gaz;
+            localb.field_timeStamp = localcrq.ChC;
             ((LinkedList)localObject2).add(localb);
           }
         }
@@ -403,25 +397,25 @@ public abstract class RoomBaseLivePluginLayout
   public void unMount()
   {
     super.unMount();
-    s locals = s.hIl;
-    s.release();
-    this.hXm.dead();
-    this.hXn.dead();
+    com.tencent.mm.live.b.p localp = com.tencent.mm.live.b.p.kvF;
+    com.tencent.mm.live.b.p.release();
+    this.kLR.dead();
+    this.kLS.dead();
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/live/view/RoomBaseLivePluginLayout$mVoipCallEvent$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/VoipEvent;", "callback", "", "event", "plugin-logic_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/live/view/RoomBaseLivePluginLayout$mVoipCallEvent$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/VoipEvent;", "callback", "", "event", "plugin-logic_release"})
   public static final class a
-    extends IListener<zj>
+    extends IListener<aaq>
   {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/live/view/RoomBaseLivePluginLayout$multiTalkActionListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/MultiTalkActionEvent;", "callback", "", "event", "plugin-logic_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/live/view/RoomBaseLivePluginLayout$multiTalkActionListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/MultiTalkActionEvent;", "callback", "", "event", "plugin-logic_release"})
   public static final class b
-    extends IListener<mu>
+    extends IListener<nl>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.view.RoomBaseLivePluginLayout
  * JD-Core Version:    0.7.0.1
  */

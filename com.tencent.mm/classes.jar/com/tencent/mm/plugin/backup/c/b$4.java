@@ -11,15 +11,15 @@ public final class b$4
   public final void run()
   {
     AppMethodBeat.i(21228);
-    if ((!this.oJI.oJF) && (this.oJJ != null)) {
-      this.oJJ.D(this.oJK);
+    if ((!this.rLy.rLv) && (this.rLz != null)) {
+      this.rLz.E(this.rLA);
     }
     AppMethodBeat.o(21228);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.c.b.4
  * JD-Core Version:    0.7.0.1
  */

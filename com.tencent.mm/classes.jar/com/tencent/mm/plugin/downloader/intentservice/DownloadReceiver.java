@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.downloader.intentservice;
 
 import android.os.Bundle;
 import android.os.ResultReceiver;
-import android.support.v4.app.s.c;
+import androidx.core.app.e.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.plugin.notification.d;
 
 public class DownloadReceiver
   extends ResultReceiver
 {
   private static final String TAG;
-  private s.c Ij;
+  private e.d Jh;
   
   static
   {
@@ -27,27 +27,27 @@ public class DownloadReceiver
     if (paramInt == 4657)
     {
       paramInt = paramBundle.getInt("progress");
-      if (d.AGv == null)
+      if (d.GzE == null)
       {
         AppMethodBeat.o(88886);
         return;
       }
       if (paramInt < 100)
       {
-        this.Ij.b(100, paramInt, false).g("Download in progress:".concat(String.valueOf(paramInt)));
-        d.AGv.notify(4657, this.Ij.build());
+        this.Jh.b(100, paramInt, false).l("Download in progress:".concat(String.valueOf(paramInt)));
+        d.GzE.c(4657, this.Jh.gr());
         AppMethodBeat.o(88886);
         return;
       }
-      this.Ij.b(0, 0, false).g("Download Complete");
-      d.AGv.notify(4658, this.Ij.build());
+      this.Jh.b(0, 0, false).l("Download Complete");
+      d.GzE.c(4658, this.Jh.gr());
     }
     AppMethodBeat.o(88886);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.intentservice.DownloadReceiver
  * JD-Core Version:    0.7.0.1
  */

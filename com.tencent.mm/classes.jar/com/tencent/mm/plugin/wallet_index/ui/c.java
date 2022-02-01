@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.wallet_index.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.wallet_index.c.g;
 import com.tencent.mm.plugin.wallet_index.c.n;
-import com.tencent.mm.protocal.protobuf.ccu;
-import com.tencent.mm.protocal.protobuf.ccv;
+import com.tencent.mm.protocal.protobuf.cky;
+import com.tencent.mm.protocal.protobuf.ckz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.c.u;
 import com.tencent.mm.wallet_core.c.v;
@@ -14,37 +14,38 @@ import java.util.List;
 
 public final class c
 {
-  int AQo;
-  public String IqF;
-  public String IqG;
-  public ccu IqP;
-  public ccv IqQ;
-  public String Irm;
-  public ArrayList<String> Irp;
-  public ArrayList<String> Irq;
-  public String Irr;
-  public int Irs;
-  List<String> Irt;
-  boolean Iru;
-  public String Irv;
-  public String Irw;
+  int GJz;
+  public String PjV;
+  public ArrayList<String> PjY;
+  public ArrayList<String> PjZ;
+  public String Pjo;
+  public String Pjp;
+  public cky Pjy;
+  public ckz Pjz;
+  public String Pka;
+  public int Pkb;
+  List<String> Pkc;
+  boolean Pkd;
+  public String Pke;
+  public String Pkf;
   public int mCount;
-  public String rcD;
+  public String ovF;
+  public String uFI;
   
   public c()
   {
     AppMethodBeat.i(71861);
-    this.Irp = new ArrayList();
-    this.Irq = new ArrayList();
+    this.PjY = new ArrayList();
+    this.PjZ = new ArrayList();
     this.mCount = 1;
-    this.Irr = null;
-    this.Irs = 0;
-    this.IqG = null;
-    this.IqF = null;
-    this.Irm = null;
-    this.Irt = new ArrayList();
-    this.rcD = null;
-    this.Iru = false;
+    this.Pka = null;
+    this.Pkb = 0;
+    this.Pjp = null;
+    this.Pjo = null;
+    this.PjV = null;
+    this.Pkc = new ArrayList();
+    this.uFI = null;
+    this.Pkd = false;
     AppMethodBeat.o(71861);
   }
   
@@ -52,51 +53,51 @@ public final class c
   {
     AppMethodBeat.i(71862);
     if (paramBoolean) {}
-    for (int i = 2; this.Iru; i = 1)
+    for (int i = 2; this.Pkd; i = 1)
     {
-      if (!fUs())
+      if (!gMY())
       {
-        this.IqP.MiK = paramc.mSignature;
-        this.IqP.MiH = paramc.IqE;
-        this.IqP.price = paramc.IqG;
-        this.IqP.LSm = paramc.IqF;
-        this.IqP.AZx = paramc.rcD;
-        this.IqP.MiJ = paramc.mOriginalJson;
+        this.Pjy.TsA = paramc.mSignature;
+        this.Pjy.Tsx = paramc.Pjn;
+        this.Pjy.price = paramc.Pjp;
+        this.Pjy.TaW = paramc.Pjo;
+        this.Pjy.GTv = paramc.uFI;
+        this.Pjy.Tsz = paramc.mOriginalJson;
       }
-      paramc = new n(this.AQo, i, paramc.rcD, this.IqQ, this.IqP);
+      paramc = new n(this.GJz, i, paramc.uFI, this.Pjz, this.Pjy);
       AppMethodBeat.o(71862);
       return paramc;
     }
-    paramc = new v(paramc.rcD, i, this.AQo, this.mCount, paramc.IqE, paramc.mOriginalJson, paramc.mSignature, paramc.IqF, paramc.IqG);
+    paramc = new v(paramc.uFI, i, this.GJz, this.mCount, paramc.Pjn, paramc.mOriginalJson, paramc.mSignature, paramc.Pjo, paramc.Pjp);
     AppMethodBeat.o(71862);
     return paramc;
   }
   
-  public final q f(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
+  public final boolean gMY()
   {
-    AppMethodBeat.i(214277);
-    if (this.Iru) {
+    return this.GJz == 2;
+  }
+  
+  public final q h(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    AppMethodBeat.i(273513);
+    if (this.Pkd) {
       try
       {
-        paramString1 = new g(paramInt, paramString2, this.IqG, paramString3, this.mCount, this.IqF, paramString4, this.Irv, this.Irw);
-        AppMethodBeat.o(214277);
+        paramString1 = new g(paramInt, paramString2, this.Pjp, paramString3, this.mCount, this.Pjo, paramString4, this.Pke, this.Pkf, this.ovF);
+        AppMethodBeat.o(273513);
         return paramString1;
       }
       catch (NumberFormatException paramString1)
       {
-        Log.printErrStackTrace("MicroMsg.IapData", paramString1, "NetSceneGetAndroidIapPackage Error priceLevel:" + this.IqG, new Object[0]);
-        AppMethodBeat.o(214277);
+        Log.printErrStackTrace("MicroMsg.IapData", paramString1, "NetSceneGetAndroidIapPackage Error priceLevel:" + this.Pjp, new Object[0]);
+        AppMethodBeat.o(273513);
         return null;
       }
     }
-    paramString1 = new u(this.rcD, this.IqG, this.IqF, this.mCount, paramInt, paramString1);
-    AppMethodBeat.o(214277);
+    paramString1 = new u(this.uFI, this.Pjp, this.Pjo, this.mCount, paramInt, paramString1);
+    AppMethodBeat.o(273513);
     return paramString1;
-  }
-  
-  public final boolean fUs()
-  {
-    return this.AQo == 2;
   }
 }
 

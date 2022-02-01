@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:id="@id/hxz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/hxz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView android:id="@id/hy3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" app:layout_constraintHeight_default="i3y" app:layout_constraintTop_toTopOf="g8m" />
     <com.tencent.mm.plugin.finder.view.FinderLiveOnliveWidget android:layout_gravity="center|left|top" android:id="@id/cra" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_margin="@dimen/bt" android:minWidth="@dimen/co" app:desc_color="@color/am" app:desc_margin_left="2.0dip" app:desc_margin_right="@dimen/bt" app:desc_text="@string/cz2" app:desc_text_size="@dimen/a3" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="g8m" app:logo_anim_auto_paly="false" app:logo_color="@color/am" app:logo_height="@dimen/c5" app:logo_margin_left="@dimen/bt" app:logo_mode="g42" app:logo_style="dup" app:logo_width="@dimen/c5" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

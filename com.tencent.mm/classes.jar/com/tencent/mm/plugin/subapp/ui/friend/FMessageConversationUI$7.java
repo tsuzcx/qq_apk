@@ -11,9 +11,9 @@ final class FMessageConversationUI$7
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(232074);
-    this.FKR.finish();
-    AppMethodBeat.o(232074);
+    AppMethodBeat.i(289554);
+    this.MeO.finish();
+    AppMethodBeat.o(289554);
     return true;
   }
 }

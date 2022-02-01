@@ -16,17 +16,17 @@ public abstract interface m
   
   public static final class a
   {
-    public final int bhd;
-    public final int bhe;
-    public final int big;
-    public final byte[] bih;
+    public final int aQH;
+    public final int aQI;
+    public final int aRK;
+    public final byte[] aRL;
     
     public a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
     {
-      this.big = paramInt1;
-      this.bih = paramArrayOfByte;
-      this.bhd = paramInt2;
-      this.bhe = paramInt3;
+      this.aRK = paramInt1;
+      this.aRL = paramArrayOfByte;
+      this.aQH = paramInt2;
+      this.aQI = paramInt3;
     }
     
     public final boolean equals(Object paramObject)
@@ -43,7 +43,7 @@ public abstract interface m
         return false;
       }
       paramObject = (a)paramObject;
-      if ((this.big == paramObject.big) && (this.bhd == paramObject.bhd) && (this.bhe == paramObject.bhe) && (Arrays.equals(this.bih, paramObject.bih)))
+      if ((this.aRK == paramObject.aRK) && (this.aQH == paramObject.aQH) && (this.aQI == paramObject.aQI) && (Arrays.equals(this.aRL, paramObject.aRL)))
       {
         AppMethodBeat.o(92188);
         return true;
@@ -55,10 +55,10 @@ public abstract interface m
     public final int hashCode()
     {
       AppMethodBeat.i(92189);
-      int i = this.big;
-      int j = Arrays.hashCode(this.bih);
-      int k = this.bhd;
-      int m = this.bhe;
+      int i = this.aRK;
+      int j = Arrays.hashCode(this.aRL);
+      int k = this.aQH;
+      int m = this.aQI;
       AppMethodBeat.o(92189);
       return ((i * 31 + j) * 31 + k) * 31 + m;
     }
@@ -66,7 +66,7 @@ public abstract interface m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.c.m
  * JD-Core Version:    0.7.0.1
  */

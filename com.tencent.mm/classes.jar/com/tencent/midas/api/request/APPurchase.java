@@ -19,21 +19,21 @@ public class APPurchase
   
   public APPurchase(String paramString)
   {
-    AppMethodBeat.i(192923);
+    AppMethodBeat.i(253297);
     paramString = new JSONObject(paramString);
     this.mSignature = ((String)paramString.get("sign"));
     this.mOriginalJson = ((String)paramString.get("data"));
     this.mSku = "";
-    AppMethodBeat.o(192923);
+    AppMethodBeat.o(253297);
   }
   
   public APPurchase(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192922);
+    AppMethodBeat.i(253296);
     this.mOriginalJson = paramString1;
     this.mSku = new JSONObject(new String(Base64.decode(paramString1.getBytes(), 0))).optString("product-id");
     this.mSignature = paramString2;
-    AppMethodBeat.o(192922);
+    AppMethodBeat.o(253296);
   }
   
   public String getOriginalJson()
@@ -53,9 +53,9 @@ public class APPurchase
   
   public String toString()
   {
-    AppMethodBeat.i(192924);
+    AppMethodBeat.i(253302);
     String str = "PurchaseInfo():" + this.mOriginalJson;
-    AppMethodBeat.o(192924);
+    AppMethodBeat.o(253302);
     return str;
   }
 }

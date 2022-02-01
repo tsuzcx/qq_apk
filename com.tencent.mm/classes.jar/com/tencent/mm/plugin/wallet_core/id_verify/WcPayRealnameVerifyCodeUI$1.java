@@ -13,21 +13,21 @@ final class WcPayRealnameVerifyCodeUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(174457);
-    paramMenuItem = this.HSe.getProcess();
+    paramMenuItem = this.OKl.getProcess();
     if (paramMenuItem != null) {
-      paramMenuItem.g(this.HSe.getContext(), 0);
+      paramMenuItem.h(this.OKl.getContext(), 0);
     }
     for (;;)
     {
       AppMethodBeat.o(174457);
       return false;
-      this.HSe.finish();
+      this.OKl.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.WcPayRealnameVerifyCodeUI.1
  * JD-Core Version:    0.7.0.1
  */

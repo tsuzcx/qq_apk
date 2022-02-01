@@ -9,18 +9,18 @@ import kotlin.l.b.a.b.e.b.c;
 
 public final class h
 {
-  final c SZH;
-  final a.b TKA;
-  final a TKB;
-  final an TKC;
+  final c aaCB;
+  final a.b abnd;
+  final a abne;
+  final an abnf;
   
   public h(c paramc, a.b paramb, a parama, an paraman)
   {
     AppMethodBeat.i(60288);
-    this.SZH = paramc;
-    this.TKA = paramb;
-    this.TKB = parama;
-    this.TKC = paraman;
+    this.aaCB = paramc;
+    this.abnd = paramb;
+    this.abne = parama;
+    this.abnf = paraman;
     AppMethodBeat.o(60288);
   }
   
@@ -32,7 +32,7 @@ public final class h
       if ((paramObject instanceof h))
       {
         paramObject = (h)paramObject;
-        if ((!p.j(this.SZH, paramObject.SZH)) || (!p.j(this.TKA, paramObject.TKA)) || (!p.j(this.TKB, paramObject.TKB)) || (!p.j(this.TKC, paramObject.TKC))) {}
+        if ((!p.h(this.aaCB, paramObject.aaCB)) || (!p.h(this.abnd, paramObject.abnd)) || (!p.h(this.abne, paramObject.abne)) || (!p.h(this.abnf, paramObject.abnf))) {}
       }
     }
     else
@@ -48,19 +48,19 @@ public final class h
   {
     int m = 0;
     AppMethodBeat.i(60290);
-    Object localObject = this.SZH;
+    Object localObject = this.aaCB;
     int i;
     int j;
     if (localObject != null)
     {
       i = localObject.hashCode();
-      localObject = this.TKA;
+      localObject = this.abnd;
       if (localObject == null) {
         break label105;
       }
       j = localObject.hashCode();
       label42:
-      localObject = this.TKB;
+      localObject = this.abne;
       if (localObject == null) {
         break label110;
       }
@@ -69,7 +69,7 @@ public final class h
     label110:
     for (int k = localObject.hashCode();; k = 0)
     {
-      localObject = this.TKC;
+      localObject = this.abnf;
       if (localObject != null) {
         m = localObject.hashCode();
       }
@@ -85,14 +85,14 @@ public final class h
   public final String toString()
   {
     AppMethodBeat.i(60289);
-    String str = "ClassData(nameResolver=" + this.SZH + ", classProto=" + this.TKA + ", metadataVersion=" + this.TKB + ", sourceElement=" + this.TKC + ")";
+    String str = "ClassData(nameResolver=" + this.aaCB + ", classProto=" + this.abnd + ", metadataVersion=" + this.abne + ", sourceElement=" + this.abnf + ")";
     AppMethodBeat.o(60289);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.h
  * JD-Core Version:    0.7.0.1
  */

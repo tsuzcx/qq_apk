@@ -11,14 +11,14 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.input.d.c;
-import com.tencent.mm.plugin.appbrand.widget.input.d.g;
-import com.tencent.mm.plugin.appbrand.widget.input.d.h;
+import com.tencent.mm.plugin.appbrand.widget.input.e.c;
+import com.tencent.mm.plugin.appbrand.widget.input.e.g;
+import com.tencent.mm.plugin.appbrand.widget.input.e.h;
 import com.tencent.mm.sdk.platformtools.Log;
 
  enum b
 {
-  static <Input extends EditText,  extends ab> void a(Input paramInput, int paramInt1, int paramInt2)
+  static <Input extends EditText,  extends af> void a(Input paramInput, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(136307);
     if ((paramInput == null) || (paramInput.getEditableText() == null))
@@ -58,7 +58,7 @@ import com.tencent.mm.sdk.platformtools.Log;
     }
   }
   
-  static <Input extends EditText,  extends ab> void a(Input paramInput, h paramh)
+  static <Input extends EditText,  extends af> void a(Input paramInput, h paramh)
   {
     AppMethodBeat.i(136306);
     if ((paramInput == null) || (paramh == null))
@@ -66,42 +66,42 @@ import com.tencent.mm.sdk.platformtools.Log;
       AppMethodBeat.o(136306);
       return;
     }
-    if ((paramh.oxS != null) && (paramh.oxS.floatValue() != paramInput.getTextSize())) {
-      paramInput.setTextSize(paramh.oxS.floatValue());
+    if ((paramh.rAr != null) && (paramh.rAr.floatValue() != paramInput.getTextSize())) {
+      paramInput.setTextSize(paramh.rAr.floatValue());
     }
-    if (paramh.oxR != null) {
-      paramInput.setTextColor(paramh.oxR.intValue());
+    if (paramh.rAq != null) {
+      paramInput.setTextColor(paramh.rAq.intValue());
     }
     label155:
     Object localObject;
-    ab localab;
-    if (paramh.oxQ != null)
+    af localaf;
+    if (paramh.rAp != null)
     {
-      if ((paramInput.getBackground() == null) || (!(paramInput.getBackground() instanceof ColorDrawable)) || (((ColorDrawable)paramInput.getBackground()).getColor() != paramh.oxQ.intValue())) {
-        paramInput.setBackground(new ColorDrawable(paramh.oxQ.intValue()));
+      if ((paramInput.getBackground() == null) || (!(paramInput.getBackground() instanceof ColorDrawable)) || (((ColorDrawable)paramInput.getBackground()).getColor() != paramh.rAp.intValue())) {
+        paramInput.setBackground(new ColorDrawable(paramh.rAp.intValue()));
       }
-      if (paramh.oxU != null)
+      if (paramh.rAt != null)
       {
-        if (!TextUtils.isEmpty(paramh.oxU)) {
+        if (!TextUtils.isEmpty(paramh.rAt)) {
           break label288;
         }
         paramInput.setHint("");
       }
-      if (paramh.cNw != null)
+      if (paramh.cOk != null)
       {
-        localObject = Typeface.create("sans-serif", c.agb(paramh.cNw).style);
+        localObject = Typeface.create("sans-serif", c.anE(paramh.cOk).style);
         if (localObject != null) {
           paramInput.setTypeface((Typeface)localObject);
         }
       }
-      localObject = g.agc(paramh.kZR);
-      localab = (ab)paramInput;
-      if (localab != null) {}
-      switch (com.tencent.mm.plugin.appbrand.widget.input.d.g.1.oyo[localObject.ordinal()])
+      localObject = g.anF(paramh.nUc);
+      localaf = (af)paramInput;
+      if (localaf != null) {}
+      switch (com.tencent.mm.plugin.appbrand.widget.input.e.g.1.rAO[localObject.ordinal()])
       {
       default: 
         label240:
-        if (!aj.i(paramh.oxZ)) {
+        if (!an.m(paramh.rAy)) {
           break;
         }
       }
@@ -109,35 +109,35 @@ import com.tencent.mm.sdk.platformtools.Log;
     for (int i = 8;; i = 0)
     {
       paramInput.setVisibility(i);
-      ((ab)paramInput).setFixed(aj.i(paramh.oyd));
+      ((af)paramInput).setFixed(an.m(paramh.rAC));
       AppMethodBeat.o(136306);
       return;
       paramInput.setBackground(null);
       break;
       label288:
-      localObject = new SpannableStringBuilder(paramh.oxU);
-      i = paramh.oxU.length();
-      ((SpannableStringBuilder)localObject).setSpan(new StyleSpan(c.agb(paramh.oxV).style), 0, i, 18);
-      if (paramh.oxX != null) {
-        ((SpannableStringBuilder)localObject).setSpan(new ForegroundColorSpan(paramh.oxX.intValue()), 0, i, 18);
+      localObject = new SpannableStringBuilder(paramh.rAt);
+      i = paramh.rAt.length();
+      ((SpannableStringBuilder)localObject).setSpan(new StyleSpan(c.anE(paramh.rAu).style), 0, i, 18);
+      if (paramh.rAw != null) {
+        ((SpannableStringBuilder)localObject).setSpan(new ForegroundColorSpan(paramh.rAw.intValue()), 0, i, 18);
       }
-      if (paramh.oxW != null) {
-        ((SpannableStringBuilder)localObject).setSpan(new AbsoluteSizeSpan(paramh.oxW.intValue(), false), 0, i, 18);
+      if (paramh.rAv != null) {
+        ((SpannableStringBuilder)localObject).setSpan(new AbsoluteSizeSpan(paramh.rAv.intValue(), false), 0, i, 18);
       }
       paramInput.setHint((CharSequence)localObject);
       break label155;
-      localab.cbQ();
+      localaf.cpb();
       break label240;
-      localab.cbR();
+      localaf.cpc();
       break label240;
-      localab.cbS();
+      localaf.cpd();
       break label240;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.b
  * JD-Core Version:    0.7.0.1
  */

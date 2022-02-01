@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.monitor;
 
-import com.tencent.f.h;
+import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.report.service.e;
 import com.tencent.mm.sdk.platformtools.Log;
 
 final class b$1
-  implements com.tencent.mm.ak.i
+  implements com.tencent.mm.an.i
 {
   b$1(b paramb) {}
   
@@ -19,12 +19,12 @@ final class b$1
     {
       Log.i("MicroMsg.SubCoreBaseMonitor", "summerhv onIDKeyCallback onSceneEnd[%d][%d, %d, %s]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        h.RTc.aX(new Runnable()
+        h.ZvG.be(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(51499);
-            e.eOE();
+            e.fBz();
             AppMethodBeat.o(51499);
           }
         });

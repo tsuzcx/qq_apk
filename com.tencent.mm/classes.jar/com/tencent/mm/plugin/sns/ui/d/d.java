@@ -11,11 +11,11 @@ public abstract class d
 {
   public abstract void a(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo);
   
-  public abstract boolean fD(View paramView);
+  public abstract boolean gK(View paramView);
   
   public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    if (fD(paramView))
+    if (gK(paramView))
     {
       a(paramContextMenu, paramView, paramContextMenuInfo);
       return;
@@ -25,7 +25,7 @@ public abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.d.d
  * JD-Core Version:    0.7.0.1
  */

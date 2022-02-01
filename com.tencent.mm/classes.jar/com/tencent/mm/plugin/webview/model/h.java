@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cdi;
-import com.tencent.mm.protocal.protobuf.cfy;
+import com.tencent.mm.plugin.webview.modeltools.f;
+import com.tencent.mm.protocal.protobuf.cmc;
+import com.tencent.mm.protocal.protobuf.cou;
 import com.tencent.mm.sdk.platformtools.RWCache;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
@@ -11,26 +12,26 @@ import java.util.List;
 
 public final class h
 {
-  public int IXD;
-  public int IXE;
-  public int IXF;
-  public final List<cfy> IXG;
-  public int IXH;
-  public long IXI;
+  public int PTU;
+  public int PTV;
+  public int PTW;
+  public final List<cou> PTX;
+  public int PTY;
+  public long PTZ;
   
   private h()
   {
     AppMethodBeat.i(78862);
-    this.IXD = 20480;
-    this.IXE = 30720;
-    this.IXF = 51200;
-    this.IXG = new LinkedList();
-    this.IXH = 0;
-    this.IXI = 0L;
+    this.PTU = 20480;
+    this.PTV = 30720;
+    this.PTW = 51200;
+    this.PTX = new LinkedList();
+    this.PTY = 0;
+    this.PTZ = 0L;
     AppMethodBeat.o(78862);
   }
   
-  public static void ii(List<cdi> paramList)
+  public static void iY(List<cmc> paramList)
   {
     AppMethodBeat.i(78863);
     if (Util.isNullOrNil(paramList))
@@ -41,25 +42,25 @@ public final class h
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      cdi localcdi = (cdi)paramList.next();
-      g localg = com.tencent.mm.plugin.webview.modeltools.g.gdx();
-      int i = localcdi.Mjf;
+      cmc localcmc = (cmc)paramList.next();
+      g localg = f.gWv();
+      int i = localcmc.Stn;
       long l1 = Util.nowSecond();
-      long l2 = localcdi.Mjg;
-      localg.IXB.set(Integer.valueOf(i), Long.valueOf(l1 + l2));
+      long l2 = localcmc.TtU;
+      localg.PTS.set(Integer.valueOf(i), Long.valueOf(l1 + l2));
     }
-    com.tencent.mm.plugin.webview.modeltools.g.gdx().gct();
+    f.gWv().gVo();
     AppMethodBeat.o(78863);
   }
   
   public static final class a
   {
-    private static final h IXJ;
+    private static final h PUa;
     
     static
     {
       AppMethodBeat.i(78861);
-      IXJ = new h((byte)0);
+      PUa = new h((byte)0);
       AppMethodBeat.o(78861);
     }
   }

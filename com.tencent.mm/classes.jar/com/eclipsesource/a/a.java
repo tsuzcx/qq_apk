@@ -5,33 +5,47 @@ import java.io.IOException;
 
 public final class a
 {
-  public static final h aZC;
-  public static final h aZD;
-  public static final h aZE;
+  public static final h aIY;
+  public static final h aIZ;
+  public static final h aJa;
   
   static
   {
     AppMethodBeat.i(74683);
-    aZC = new c("null");
-    aZD = new c("true");
-    aZE = new c("false");
+    aIY = new c("null");
+    aIZ = new c("true");
+    aJa = new c("false");
     AppMethodBeat.o(74683);
   }
   
-  public static h aL(boolean paramBoolean)
+  public static h N(float paramFloat)
   {
-    if (paramBoolean) {
-      return aZD;
+    AppMethodBeat.i(74678);
+    if ((Float.isInfinite(paramFloat)) || (Float.isNaN(paramFloat)))
+    {
+      localObject = new IllegalArgumentException("Infinite and NaN values not permitted in JSON");
+      AppMethodBeat.o(74678);
+      throw ((Throwable)localObject);
     }
-    return aZE;
+    Object localObject = new d(bc(Float.toString(paramFloat)));
+    AppMethodBeat.o(74678);
+    return localObject;
   }
   
-  public static h aQ(String paramString)
+  public static h aJ(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return aIZ;
+    }
+    return aJa;
+  }
+  
+  public static h ba(String paramString)
   {
     AppMethodBeat.i(74680);
     if (paramString == null)
     {
-      paramString = aZC;
+      paramString = aIY;
       AppMethodBeat.o(74680);
       return paramString;
     }
@@ -40,7 +54,7 @@ public final class a
     return paramString;
   }
   
-  public static h aR(String paramString)
+  public static h bb(String paramString)
   {
     AppMethodBeat.i(74681);
     if (paramString == null)
@@ -53,13 +67,13 @@ public final class a
     try
     {
       paramString = new f(paramString);
-      paramString.sy();
-      paramString.sx();
-      localh = paramString.sj();
-      paramString.sx();
-      if (!paramString.sF())
+      paramString.qm();
+      paramString.ql();
+      localh = paramString.pX();
+      paramString.ql();
+      if (!paramString.qt())
       {
-        paramString = paramString.aW("Unexpected character");
+        paramString = paramString.bh("Unexpected character");
         AppMethodBeat.o(74681);
         throw paramString;
       }
@@ -74,7 +88,7 @@ public final class a
     return localh;
   }
   
-  private static String aS(String paramString)
+  private static String bc(String paramString)
   {
     AppMethodBeat.i(74682);
     if (paramString.endsWith(".0"))
@@ -87,21 +101,7 @@ public final class a
     return paramString;
   }
   
-  public static h ab(float paramFloat)
-  {
-    AppMethodBeat.i(74678);
-    if ((Float.isInfinite(paramFloat)) || (Float.isNaN(paramFloat)))
-    {
-      localObject = new IllegalArgumentException("Infinite and NaN values not permitted in JSON");
-      AppMethodBeat.o(74678);
-      throw ((Throwable)localObject);
-    }
-    Object localObject = new d(aS(Float.toString(paramFloat)));
-    AppMethodBeat.o(74678);
-    return localObject;
-  }
-  
-  public static h d(double paramDouble)
+  public static h c(double paramDouble)
   {
     AppMethodBeat.i(74679);
     if ((Double.isInfinite(paramDouble)) || (Double.isNaN(paramDouble)))
@@ -110,12 +110,12 @@ public final class a
       AppMethodBeat.o(74679);
       throw ((Throwable)localObject);
     }
-    Object localObject = new d(aS(Double.toString(paramDouble)));
+    Object localObject = new d(bc(Double.toString(paramDouble)));
     AppMethodBeat.o(74679);
     return localObject;
   }
   
-  public static h dA(int paramInt)
+  public static h dO(int paramInt)
   {
     AppMethodBeat.i(74676);
     d locald = new d(Integer.toString(paramInt, 10));
@@ -123,7 +123,7 @@ public final class a
     return locald;
   }
   
-  public static h s(long paramLong)
+  public static h u(long paramLong)
   {
     AppMethodBeat.i(74677);
     d locald = new d(Long.toString(paramLong, 10));
@@ -133,7 +133,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.eclipsesource.a.a
  * JD-Core Version:    0.7.0.1
  */

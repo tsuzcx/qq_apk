@@ -10,37 +10,37 @@ public final class al
   extends n
   implements bd
 {
-  private final ab TOa;
-  private final aj TtS;
+  private final aj aaWM;
+  private final ab abqA;
   
   public al(aj paramaj, ab paramab)
   {
     AppMethodBeat.i(60801);
-    this.TtS = paramaj;
-    this.TOa = paramab;
+    this.aaWM = paramaj;
+    this.abqA = paramab;
     AppMethodBeat.o(60801);
   }
   
   private al l(i parami)
   {
     AppMethodBeat.i(60797);
-    p.h(parami, "kotlinTypeRefiner");
-    ab localab = parami.aK((ab)this.TtS);
+    p.k(parami, "kotlinTypeRefiner");
+    ab localab = parami.aK((ab)this.aaWM);
     if (localab == null)
     {
       parami = new t("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
       AppMethodBeat.o(60797);
       throw parami;
     }
-    parami = new al((aj)localab, parami.aK(this.TOa));
+    parami = new al((aj)localab, parami.aK(this.abqA));
     AppMethodBeat.o(60797);
     return parami;
   }
   
-  public final aj EG(boolean paramBoolean)
+  public final aj Jn(boolean paramBoolean)
   {
     AppMethodBeat.i(60794);
-    Object localObject = be.b(((bg)this.TtS).EF(paramBoolean), (ab)this.TOa.hLF().EF(paramBoolean));
+    Object localObject = be.b(((bg)this.aaWM).Jm(paramBoolean), (ab)this.abqA.iPX().Jm(paramBoolean));
     if (localObject == null)
     {
       localObject = new t("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
@@ -55,8 +55,8 @@ public final class al
   public final aj d(g paramg)
   {
     AppMethodBeat.i(60792);
-    p.h(paramg, "newAnnotations");
-    paramg = be.b(((bg)this.TtS).b(paramg), this.TOa);
+    p.k(paramg, "newAnnotations");
+    paramg = be.b(((bg)this.aaWM).b(paramg), this.abqA);
     if (paramg == null)
     {
       paramg = new t("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
@@ -68,24 +68,24 @@ public final class al
     return paramg;
   }
   
-  protected final aj hDW()
+  protected final aj iIq()
   {
-    return this.TtS;
+    return this.aaWM;
   }
   
-  public final bg hLC()
+  public final bg iPU()
   {
-    return (bg)this.TtS;
+    return (bg)this.aaWM;
   }
   
-  public final ab hLD()
+  public final ab iPV()
   {
-    return this.TOa;
+    return this.abqA;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.al
  * JD-Core Version:    0.7.0.1
  */

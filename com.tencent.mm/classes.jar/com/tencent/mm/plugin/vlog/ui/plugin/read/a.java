@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.vlog.ui.plugin.read;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -9,170 +8,173 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.modelcontrol.e;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
-import com.tencent.mm.plugin.recordvideo.plugin.t.a;
-import com.tencent.mm.plugin.recordvideo.ui.editor.item.b.c;
-import com.tencent.mm.plugin.recordvideo.ui.editor.item.o;
+import com.tencent.mm.plugin.recordvideo.ui.editor.item.r;
 import com.tencent.mm.plugin.vlog.model.ac;
-import com.tencent.mm.plugin.vlog.ui.plugin.e.c;
-import com.tencent.mm.plugin.vlog.ui.plugin.e.d;
-import com.tencent.mm.plugin.vlog.ui.plugin.e.e;
+import com.tencent.mm.plugin.vlog.ui.plugin.d.d;
+import com.tencent.mm.plugin.vlog.ui.plugin.d.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.widget.MMProcessBar;
-import com.tencent.mm.vfs.s;
-import com.tencent.mm.videocomposition.n;
+import com.tencent.mm.vfs.u;
 import java.util.UUID;
 import kotlin.ResultKt;
-import kotlin.d.b.a.j;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.g.b.z.a;
+import kotlin.g.b.aa.a;
+import kotlin.g.b.aa.f;
 import kotlin.l;
 import kotlin.x;
-import kotlinx.coroutines.ai;
-import kotlinx.coroutines.ba;
-import kotlinx.coroutines.bn;
+import kotlinx.coroutines.ak;
+import kotlinx.coroutines.bc;
+import kotlinx.coroutines.br;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/read/EditReadPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewUpdateCallback;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewSeekCallback;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "curEditData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditorTTSData;", "curTimeMs", "", "hideErrorRunnable", "Ljava/lang/Runnable;", "loading", "", "maxDurationMs", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "reqId", "", "simpleAudioRemuxer", "Lcom/tencent/mm/plugin/vlog/ui/plugin/read/SimpleAudioRemuxer;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "ttsCancelText", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "getTtsCancelText", "()Landroid/widget/TextView;", "ttsCancelText$delegate", "Lkotlin/Lazy;", "ttsFailedContainer", "getTtsFailedContainer", "ttsFailedContainer$delegate", "ttsLoadingContainer", "getTtsLoadingContainer", "ttsLoadingContainer$delegate", "ttsProcessBar", "Lcom/tencent/mm/ui/widget/MMProcessBar;", "getTtsProcessBar", "()Lcom/tencent/mm/ui/widget/MMProcessBar;", "ttsProcessBar$delegate", "videoParams", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "applyTTS", "", "path", "", "durationMs", "cancel", "doNetRequest", "finderUserName", "inputText", "hideError", "hideLoading", "onFinish", "onProgress", "timeMs", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onStart", "seekable", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "onUpdate", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "seekTo", "seekToOrigin", "release", "showError", "showLoading", "textToSpeech", "data", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "Companion", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/read/EditReadPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewUpdateCallback;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewSeekCallback;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "curEditData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditorTTSData;", "curTimeMs", "", "hideErrorRunnable", "Ljava/lang/Runnable;", "loading", "", "maxDurationMs", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "reqId", "", "simpleAudioRemuxer", "Lcom/tencent/mm/plugin/vlog/ui/plugin/read/SimpleAudioRemuxer;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "ttsCancelText", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "getTtsCancelText", "()Landroid/widget/TextView;", "ttsCancelText$delegate", "Lkotlin/Lazy;", "ttsFailedContainer", "getTtsFailedContainer", "ttsFailedContainer$delegate", "ttsLoadingContainer", "getTtsLoadingContainer", "ttsLoadingContainer$delegate", "ttsProcessBar", "Lcom/tencent/mm/ui/widget/MMProcessBar;", "getTtsProcessBar", "()Lcom/tencent/mm/ui/widget/MMProcessBar;", "ttsProcessBar$delegate", "videoParams", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "applyTTS", "", "path", "", "durationMs", "cancel", "doNetRequest", "finderUserName", "inputText", "hideError", "hideLoading", "onFinish", "onProgress", "timeMs", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onStart", "seekable", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "onUpdate", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "seekTo", "seekToOrigin", "release", "showError", "showLoading", "textToSpeech", "data", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "Companion", "plugin-vlog_release"})
 public final class a
-  implements com.tencent.mm.ak.i, com.tencent.mm.plugin.recordvideo.plugin.t, e.c, e.d
+  extends com.tencent.mm.plugin.recordvideo.plugin.a
+  implements com.tencent.mm.an.i, com.tencent.mm.plugin.vlog.ui.plugin.d.c, d.d
 {
-  public static final a GLP;
-  private static int wJJ;
-  long CbW;
-  private long CbX;
-  com.tencent.mm.plugin.recordvideo.ui.editor.item.i GLJ;
-  private final kotlin.f GLK;
-  private final kotlin.f GLL;
-  private final kotlin.f GLM;
-  private final kotlin.f GLN;
-  private final Runnable GLO;
-  private boolean aWP;
-  private final VideoTransPara irT;
+  private static int Nzq;
+  public static final a Nzr;
+  com.tencent.mm.plugin.recordvideo.plugin.parent.d APl;
+  long Nzg;
+  int Nzh;
+  com.tencent.mm.plugin.recordvideo.ui.editor.item.j Nzi;
+  private long Nzj;
+  private final kotlin.f Nzk;
+  private final kotlin.f Nzl;
+  private final kotlin.f Nzm;
+  private final kotlin.f Nzn;
+  private final Runnable Nzo;
+  private final d Nzp;
+  private boolean aGh;
+  private final VideoTransPara lgX;
   ViewGroup parent;
-  int wJG;
-  private final d wJI;
-  com.tencent.mm.plugin.recordvideo.plugin.parent.d wgr;
   
   static
   {
-    AppMethodBeat.i(191804);
-    GLP = new a((byte)0);
-    AppMethodBeat.o(191804);
+    AppMethodBeat.i(243501);
+    Nzr = new a((byte)0);
+    AppMethodBeat.o(243501);
   }
   
   public a(ViewGroup paramViewGroup, com.tencent.mm.plugin.recordvideo.plugin.parent.d paramd)
   {
-    AppMethodBeat.i(191803);
+    super(paramd, (byte)0);
+    AppMethodBeat.i(243500);
     this.parent = paramViewGroup;
-    this.wgr = paramd;
-    this.wJG = -1;
-    this.GLK = kotlin.g.ah((kotlin.g.a.a)new f(this));
-    this.GLL = kotlin.g.ah((kotlin.g.a.a)new g(this));
-    this.GLM = kotlin.g.ah((kotlin.g.a.a)new d(this));
-    this.GLN = kotlin.g.ah((kotlin.g.a.a)new e(this));
-    this.GLO = ((Runnable)new b(this));
-    LayoutInflater.from(this.parent.getContext()).inflate(2131493897, this.parent, true);
+    this.APl = paramd;
+    this.Nzh = -1;
+    this.Nzk = kotlin.g.ar((kotlin.g.a.a)new f(this));
+    this.Nzl = kotlin.g.ar((kotlin.g.a.a)new g(this));
+    this.Nzm = kotlin.g.ar((kotlin.g.a.a)new d(this));
+    this.Nzn = kotlin.g.ar((kotlin.g.a.a)new e(this));
+    this.Nzo = ((Runnable)new b(this));
+    LayoutInflater.from(this.parent.getContext()).inflate(com.tencent.mm.plugin.vlog.a.g.editor_tts_panel, this.parent, true);
     this.parent.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(191779);
+        AppMethodBeat.i(237627);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/read/EditReadPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        if (!a.c(this.GLQ)) {
-          this.GLQ.cO();
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/read/EditReadPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        if (!a.c(this.Nzs)) {
+          this.Nzs.xK();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/read/EditReadPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(191779);
+        AppMethodBeat.o(237627);
       }
     });
-    ((TextView)this.GLM.getValue()).setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    ((TextView)this.Nzm.getValue()).setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(191780);
+        AppMethodBeat.i(228919);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/read/EditReadPlugin$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        paramAnonymousView = this.GLQ;
-        paramAnonymousView.wJG = -1;
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/read/EditReadPlugin$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        paramAnonymousView = this.Nzs;
+        paramAnonymousView.Nzh = -1;
         paramAnonymousView.hideLoading();
         paramAnonymousView.parent.setVisibility(8);
-        d.b.a(paramAnonymousView.wgr, d.c.BWP);
-        d.b.a(paramAnonymousView.wgr, d.c.BWv);
+        d.b.a(paramAnonymousView.APl, com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HTB);
+        d.b.a(paramAnonymousView.APl, com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HTk);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/read/EditReadPlugin$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(191780);
+        AppMethodBeat.o(228919);
       }
     });
-    paramViewGroup = com.tencent.mm.kernel.g.aAg();
-    p.g(paramViewGroup, "MMKernel.network()");
-    paramViewGroup.azz().a(5207, (com.tencent.mm.ak.i)this);
-    this.wJI = new d();
-    paramViewGroup = e.baZ();
-    p.g(paramViewGroup, "SubCoreVideoControl.getCore()");
-    this.irT = paramViewGroup.bbf();
-    AppMethodBeat.o(191803);
+    paramViewGroup = h.aHF();
+    kotlin.g.b.p.j(paramViewGroup, "MMKernel.network()");
+    paramViewGroup.aGY().a(5207, (com.tencent.mm.an.i)this);
+    this.Nzp = new d();
+    paramViewGroup = e.bkp();
+    kotlin.g.b.p.j(paramViewGroup, "SubCoreVideoControl.getCore()");
+    this.lgX = paramViewGroup.bkv();
+    AppMethodBeat.o(243500);
   }
   
-  private final ViewGroup fEe()
+  private final ViewGroup gwd()
   {
-    AppMethodBeat.i(191792);
-    ViewGroup localViewGroup = (ViewGroup)this.GLK.getValue();
-    AppMethodBeat.o(191792);
+    AppMethodBeat.i(243481);
+    ViewGroup localViewGroup = (ViewGroup)this.Nzk.getValue();
+    AppMethodBeat.o(243481);
     return localViewGroup;
   }
   
-  private final ViewGroup fEf()
+  private final ViewGroup gwe()
   {
-    AppMethodBeat.i(191793);
-    ViewGroup localViewGroup = (ViewGroup)this.GLN.getValue();
-    AppMethodBeat.o(191793);
+    AppMethodBeat.i(243483);
+    ViewGroup localViewGroup = (ViewGroup)this.Nzn.getValue();
+    AppMethodBeat.o(243483);
     return localViewGroup;
   }
   
-  private final void ll(String paramString1, String paramString2)
+  private final void lJ(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(191799);
+    AppMethodBeat.i(243495);
     paramString1 = new b(paramString1, paramString2);
-    int i = wJJ;
-    wJJ = i + 1;
-    this.wJG = i;
-    paramString1.wJG = this.wJG;
-    paramString2 = com.tencent.mm.kernel.g.aAg();
-    p.g(paramString2, "MMKernel.network()");
-    paramString2.azz().b((com.tencent.mm.ak.q)paramString1);
-    AppMethodBeat.o(191799);
+    int i = Nzq;
+    Nzq = i + 1;
+    this.Nzh = i;
+    paramString1.Nzh = this.Nzh;
+    paramString2 = h.aHF();
+    kotlin.g.b.p.j(paramString2, "MMKernel.network()");
+    paramString2.aGY().b((com.tencent.mm.an.q)paramString1);
+    AppMethodBeat.o(243495);
   }
   
   private void showLoading()
   {
-    AppMethodBeat.i(191795);
-    this.aWP = true;
-    ViewGroup localViewGroup = fEe();
-    p.g(localViewGroup, "ttsLoadingContainer");
+    AppMethodBeat.i(243486);
+    this.aGh = true;
+    ViewGroup localViewGroup = gwd();
+    kotlin.g.b.p.j(localViewGroup, "ttsLoadingContainer");
     localViewGroup.setVisibility(0);
-    localViewGroup = fEf();
-    p.g(localViewGroup, "ttsFailedContainer");
+    localViewGroup = gwe();
+    kotlin.g.b.p.j(localViewGroup, "ttsFailedContainer");
     localViewGroup.setVisibility(4);
     this.parent.setVisibility(0);
-    AppMethodBeat.o(191795);
+    AppMethodBeat.o(243486);
+  }
+  
+  public final void LX(long paramLong)
+  {
+    this.Nzj = paramLong;
   }
   
   public final void a(com.tencent.mm.plugin.recordvideo.ui.editor.item.a parama)
   {
-    AppMethodBeat.i(191794);
-    p.h(parama, "data");
+    AppMethodBeat.i(243485);
+    kotlin.g.b.p.k(parama, "data");
     String str;
-    if ((parama instanceof com.tencent.mm.plugin.recordvideo.ui.editor.item.q))
+    if ((parama instanceof r))
     {
-      str = String.valueOf(((com.tencent.mm.plugin.recordvideo.ui.editor.item.q)parama).text);
-      if ((parama instanceof com.tencent.mm.plugin.recordvideo.ui.editor.item.i)) {
+      str = String.valueOf(((r)parama).LV);
+      if ((parama instanceof com.tencent.mm.plugin.recordvideo.ui.editor.item.j)) {
         break label111;
       }
       parama = null;
@@ -180,18 +182,18 @@ public final class a
     label111:
     for (;;)
     {
-      this.GLJ = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.i)parama);
+      this.Nzi = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.j)parama);
       showLoading();
-      parama = z.aUg();
-      p.g(parama, "ConfigStorageLogic.getMyFinderUsername()");
-      ll(parama, str);
-      parama = com.tencent.mm.plugin.vlog.model.report.a.GBa;
+      parama = z.bdh();
+      kotlin.g.b.p.j(parama, "ConfigStorageLogic.getMyFinderUsername()");
+      lJ(parama, str);
+      parama = com.tencent.mm.plugin.vlog.model.report.a.NoJ;
       com.tencent.mm.plugin.vlog.model.report.a.report(110L);
-      AppMethodBeat.o(191794);
+      AppMethodBeat.o(243485);
       return;
-      if ((parama instanceof o))
+      if ((parama instanceof com.tencent.mm.plugin.recordvideo.ui.editor.item.p))
       {
-        str = ((o)parama).text;
+        str = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.p)parama).text;
         break;
       }
       str = "";
@@ -201,135 +203,98 @@ public final class a
   
   public final void a(ac paramac, long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(191802);
+    AppMethodBeat.i(243499);
     if (paramac != null) {}
-    for (paramLong = paramac.Gez.getDurationMs();; paramLong = 0L)
+    for (paramLong = paramac.NmT.getDurationMs();; paramLong = 0L)
     {
-      this.CbW = paramLong;
-      AppMethodBeat.o(191802);
+      this.Nzg = paramLong;
+      AppMethodBeat.o(243499);
       return;
     }
   }
   
-  public final void a(e.e parame) {}
+  public final void a(d.e parame) {}
   
-  public final void aSs() {}
-  
-  public final void cIh()
+  public final void cWO()
   {
-    AppMethodBeat.i(191797);
-    Object localObject = fEe();
-    p.g(localObject, "ttsLoadingContainer");
+    AppMethodBeat.i(243490);
+    Object localObject = gwd();
+    kotlin.g.b.p.j(localObject, "ttsLoadingContainer");
     ((ViewGroup)localObject).setVisibility(4);
-    localObject = fEf();
-    p.g(localObject, "ttsFailedContainer");
+    localObject = gwe();
+    kotlin.g.b.p.j(localObject, "ttsFailedContainer");
     ((ViewGroup)localObject).setVisibility(0);
-    this.parent.postDelayed(this.GLO, 2000L);
-    localObject = com.tencent.mm.plugin.vlog.model.report.a.GBa;
+    this.parent.postDelayed(this.Nzo, 2000L);
+    localObject = com.tencent.mm.plugin.vlog.model.report.a.NoJ;
     com.tencent.mm.plugin.vlog.model.report.a.report(112L);
-    AppMethodBeat.o(191797);
-  }
-  
-  public final void cO()
-  {
-    AppMethodBeat.i(191798);
-    ViewGroup localViewGroup = fEf();
-    p.g(localViewGroup, "ttsFailedContainer");
-    localViewGroup.setVisibility(4);
-    this.parent.getHandler().removeCallbacks(this.GLO);
-    this.parent.setVisibility(8);
-    d.b.a(this.wgr, d.c.BWP);
-    d.b.a(this.wgr, d.c.BWv);
-    AppMethodBeat.o(191798);
+    AppMethodBeat.o(243490);
   }
   
   public final void hideLoading()
   {
-    AppMethodBeat.i(191796);
-    this.aWP = false;
-    ViewGroup localViewGroup = fEe();
-    p.g(localViewGroup, "ttsLoadingContainer");
+    AppMethodBeat.i(243488);
+    this.aGh = false;
+    ViewGroup localViewGroup = gwd();
+    kotlin.g.b.p.j(localViewGroup, "ttsLoadingContainer");
     localViewGroup.setVisibility(4);
-    AppMethodBeat.o(191796);
+    AppMethodBeat.o(243488);
   }
   
-  public final String name()
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final com.tencent.mm.an.q paramq)
   {
-    return null;
-  }
-  
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public final boolean onBackPress()
-  {
-    return false;
-  }
-  
-  public final void onDetach() {}
-  
-  public final void onPause() {}
-  
-  public final void onProgress(long paramLong)
-  {
-    this.CbX = paramLong;
-  }
-  
-  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    AppMethodBeat.i(191805);
-    p.h(paramArrayOfString, "permissions");
-    p.h(paramArrayOfInt, "grantResults");
-    t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(191805);
-  }
-  
-  public final void onResume() {}
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final com.tencent.mm.ak.q paramq)
-  {
-    AppMethodBeat.i(191800);
-    if (((paramq instanceof b)) && (((b)paramq).wJG == this.wJG))
+    AppMethodBeat.i(243496);
+    if (((paramq instanceof b)) && (((b)paramq).Nzh == this.Nzh))
     {
       hideLoading();
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        final String str1 = com.tencent.mm.plugin.sight.base.b.eVt() + '/' + UUID.randomUUID();
-        final String str2 = str1 + ".wav";
-        StringBuilder localStringBuilder = new StringBuilder("tts success, input text:").append(((b)paramq).GLT).append(", speech size:");
-        paramString = ((b)paramq).GLS;
+        final aa.f localf = new aa.f();
+        localf.aaBC = (com.tencent.mm.plugin.sight.base.c.fIw() + '/' + UUID.randomUUID());
+        final String str = (String)localf.aaBC + ".tts";
+        StringBuilder localStringBuilder = new StringBuilder("tts success, input text:").append(((b)paramq).Nzy).append(", speech size:");
+        paramString = ((b)paramq).Nzx;
         if (paramString != null) {}
         for (paramString = Integer.valueOf(paramString.length);; paramString = null)
         {
-          Log.i("MicroMsg.EditorReadPlugin", paramString + ", speech duration:" + ((b)paramq).durationMs + ", path:" + str1);
-          s.C(str1, ((b)paramq).GLS);
-          kotlinx.coroutines.f.b((ai)bn.TUK, (kotlin.d.f)ba.hMV(), (m)new c(this, str1, str2, paramq, null), 2);
-          AppMethodBeat.o(191800);
+          Log.i("MicroMsg.EditorReadPlugin", paramString + ", speech duration:" + ((b)paramq).durationMs + ", path:" + (String)localf.aaBC);
+          u.H((String)localf.aaBC, ((b)paramq).Nzx);
+          kotlinx.coroutines.g.b((ak)br.abxo, (kotlin.d.f)bc.iRr(), (m)new c(this, localf, str, paramq, null), 2);
+          AppMethodBeat.o(243496);
           return;
         }
       }
-      Log.e("MicroMsg.EditorReadPlugin", "tts error, input text:" + ((b)paramq).GLT + ", errType:" + paramInt1 + ", errCode:" + paramInt2);
-      cIh();
+      Log.e("MicroMsg.EditorReadPlugin", "tts error, input text:" + ((b)paramq).Nzy + ", errType:" + paramInt1 + ", errCode:" + paramInt2);
+      cWO();
     }
-    AppMethodBeat.o(191800);
+    AppMethodBeat.o(243496);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(191801);
-    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.aAg();
-    p.g(localb, "MMKernel.network()");
-    localb.azz().b(5207, (com.tencent.mm.ak.i)this);
-    AppMethodBeat.o(191801);
+    AppMethodBeat.i(243497);
+    com.tencent.mm.kernel.c localc = h.aHF();
+    kotlin.g.b.p.j(localc, "MMKernel.network()");
+    localc.aGY().b(5207, (com.tencent.mm.an.i)this);
+    AppMethodBeat.o(243497);
   }
   
-  public final void reset() {}
+  public final void xK()
+  {
+    AppMethodBeat.i(243493);
+    ViewGroup localViewGroup = gwe();
+    kotlin.g.b.p.j(localViewGroup, "ttsFailedContainer");
+    localViewGroup.setVisibility(4);
+    this.parent.getHandler().removeCallbacks(this.Nzo);
+    this.parent.setVisibility(8);
+    d.b.a(this.APl, com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HTB);
+    d.b.a(this.APl, com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HTk);
+    AppMethodBeat.o(243493);
+  }
   
-  public final void setVisibility(int paramInt) {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/read/EditReadPlugin$Companion;", "", "()V", "BASE_REQ_ID", "", "HIDE_ERROR_TIMEOUT", "", "REPORT_KEY_MULTI_VIDEO_EDIT_CLICK_READ", "REPORT_KEY_MULTI_VIDEO_EDIT_READ_FAIL", "REPORT_KEY_MULTI_VIDEO_EDIT_READ_SUCCESS", "TAG", "", "plugin-vlog_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/read/EditReadPlugin$Companion;", "", "()V", "BASE_REQ_ID", "", "HIDE_ERROR_TIMEOUT", "", "REPORT_KEY_MULTI_VIDEO_EDIT_CLICK_READ", "REPORT_KEY_MULTI_VIDEO_EDIT_READ_FAIL", "REPORT_KEY_MULTI_VIDEO_EDIT_READ_SUCCESS", "TAG", "", "plugin-vlog_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -337,134 +302,133 @@ public final class a
     
     public final void run()
     {
-      AppMethodBeat.i(191781);
-      this.GLQ.cO();
-      AppMethodBeat.o(191781);
+      AppMethodBeat.i(234103);
+      this.Nzs.xK();
+      AppMethodBeat.o(234103);
     }
   }
   
-  @kotlin.d.b.a.f(c="com.tencent.mm.plugin.vlog.ui.plugin.read.EditReadPlugin$onSceneEnd$1", f="EditReadPlugin.kt", hxM={174}, m="invokeSuspend")
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
   static final class c
-    extends j
-    implements m<ai, kotlin.d.d<? super x>, Object>
+    extends kotlin.d.b.a.j
+    implements m<ak, kotlin.d.d<? super x>, Object>
   {
     Object L$0;
     int label;
-    private ai p$;
-    Object pED;
+    Object oDA;
+    private ak p$;
     
-    c(a parama, String paramString1, String paramString2, com.tencent.mm.ak.q paramq, kotlin.d.d paramd)
+    c(a parama, aa.f paramf, String paramString, com.tencent.mm.an.q paramq, kotlin.d.d paramd)
     {
       super(paramd);
     }
     
     public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
     {
-      AppMethodBeat.i(191786);
-      p.h(paramd, "completion");
-      paramd = new c(this.GLQ, str1, str2, paramq, paramd);
-      paramd.p$ = ((ai)paramObject);
-      AppMethodBeat.o(191786);
+      AppMethodBeat.i(230189);
+      kotlin.g.b.p.k(paramd, "completion");
+      paramd = new c(this.Nzs, localf, str, paramq, paramd);
+      paramd.p$ = ((ak)paramObject);
+      AppMethodBeat.o(230189);
       return paramd;
     }
     
     public final Object invoke(Object paramObject1, Object paramObject2)
     {
-      AppMethodBeat.i(191787);
-      paramObject1 = ((c)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.SXb);
-      AppMethodBeat.o(191787);
+      AppMethodBeat.i(230192);
+      paramObject1 = ((c)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.aazN);
+      AppMethodBeat.o(230192);
       return paramObject1;
     }
     
     public final Object invokeSuspend(final Object paramObject)
     {
-      AppMethodBeat.i(191785);
-      Object localObject1 = kotlin.d.a.a.SXO;
+      AppMethodBeat.i(230186);
+      Object localObject1 = kotlin.d.a.a.aaAA;
       Object localObject2;
       switch (this.label)
       {
       default: 
         paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(191785);
+        AppMethodBeat.o(230186);
         throw paramObject;
       case 0: 
         ResultKt.throwOnFailure(paramObject);
         localObject2 = this.p$;
-        paramObject = new z.a();
-        paramObject.SYB = false;
-        kotlin.d.f localf = (kotlin.d.f)ba.hMW();
-        m localm = (m)new j(paramObject, null)
+        paramObject = new aa.a();
+        paramObject.aaBx = false;
+        kotlin.d.f localf = (kotlin.d.f)bc.iRs();
+        m localm = (m)new kotlin.d.b.a.j(paramObject, null)
         {
           int label;
-          private ai p$;
+          private ak p$;
           
           public final kotlin.d.d<x> create(Object paramAnonymousObject, kotlin.d.d<?> paramAnonymousd)
           {
-            AppMethodBeat.i(191783);
-            p.h(paramAnonymousd, "completion");
-            paramAnonymousd = new 1(this.GLR, paramObject, paramAnonymousd);
-            paramAnonymousd.p$ = ((ai)paramAnonymousObject);
-            AppMethodBeat.o(191783);
+            AppMethodBeat.i(242693);
+            kotlin.g.b.p.k(paramAnonymousd, "completion");
+            paramAnonymousd = new 1(this.Nzv, paramObject, paramAnonymousd);
+            paramAnonymousd.p$ = ((ak)paramAnonymousObject);
+            AppMethodBeat.o(242693);
             return paramAnonymousd;
           }
           
           public final Object invoke(Object paramAnonymousObject1, Object paramAnonymousObject2)
           {
-            AppMethodBeat.i(191784);
-            paramAnonymousObject1 = ((1)create(paramAnonymousObject1, (kotlin.d.d)paramAnonymousObject2)).invokeSuspend(x.SXb);
-            AppMethodBeat.o(191784);
+            AppMethodBeat.i(242694);
+            paramAnonymousObject1 = ((1)create(paramAnonymousObject1, (kotlin.d.d)paramAnonymousObject2)).invokeSuspend(x.aazN);
+            AppMethodBeat.o(242694);
             return paramAnonymousObject1;
           }
           
           public final Object invokeSuspend(Object paramAnonymousObject)
           {
-            AppMethodBeat.i(191782);
-            kotlin.d.a.a locala = kotlin.d.a.a.SXO;
+            AppMethodBeat.i(242692);
+            kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
             switch (this.label)
             {
             default: 
               paramAnonymousObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-              AppMethodBeat.o(191782);
+              AppMethodBeat.o(242692);
               throw paramAnonymousObject;
             }
             ResultKt.throwOnFailure(paramAnonymousObject);
             paramAnonymousObject = paramObject;
-            a.a(this.GLR.GLQ);
-            paramAnonymousObject.SYB = d.ak(this.GLR.wJM, this.GLR.wJN, a.b(this.GLR.GLQ).audioChannelCount);
-            paramAnonymousObject = x.SXb;
-            AppMethodBeat.o(191782);
+            a.a(this.Nzv.Nzs);
+            paramAnonymousObject.aaBx = d.ar((String)this.Nzv.Nzt.aaBC, this.Nzv.Nzu, a.b(this.Nzv.Nzs).audioChannelCount);
+            paramAnonymousObject = x.aazN;
+            AppMethodBeat.o(242692);
             return paramAnonymousObject;
           }
         };
         this.L$0 = localObject2;
-        this.pED = paramObject;
+        this.oDA = paramObject;
         this.label = 1;
-        if (kotlinx.coroutines.g.a(localf, localm, this) == localObject1)
+        if (kotlinx.coroutines.i.a(localf, localm, this) == localObject1)
         {
-          AppMethodBeat.o(191785);
+          AppMethodBeat.o(230186);
           return localObject1;
         }
         break;
       case 1: 
-        localObject1 = (z.a)this.pED;
+        localObject1 = (aa.a)this.oDA;
         ResultKt.throwOnFailure(paramObject);
         paramObject = localObject1;
       }
       for (;;)
       {
         long l;
-        if (paramObject.SYB)
+        if (paramObject.aaBx)
         {
-          localObject2 = this.GLQ;
-          paramObject = str2;
+          localObject2 = this.Nzs;
+          paramObject = str;
           l = ((b)paramq).durationMs;
-          p.h(paramObject, "path");
-          localObject1 = ((a)localObject2).GLJ;
+          kotlin.g.b.p.k(paramObject, "path");
+          localObject1 = ((a)localObject2).Nzi;
           if (localObject1 != null) {
-            ((com.tencent.mm.plugin.recordvideo.ui.editor.item.i)localObject1).bh(paramObject, l);
+            ((com.tencent.mm.plugin.recordvideo.ui.editor.item.j)localObject1).bj(paramObject, l);
           }
-          localObject1 = ((a)localObject2).GLJ;
+          localObject1 = ((a)localObject2).Nzi;
           paramObject = localObject1;
           if (!(localObject1 instanceof com.tencent.mm.plugin.recordvideo.ui.editor.item.a)) {
             paramObject = null;
@@ -472,33 +436,33 @@ public final class a
           paramObject = (com.tencent.mm.plugin.recordvideo.ui.editor.item.a)paramObject;
           if (paramObject != null)
           {
-            l = Math.min(paramObject.Cev.Cgx.getTime(), ((a)localObject2).CbW);
+            l = Math.min(paramObject.Ibr.Ido.getTime(), ((a)localObject2).Nzg);
             ((a)localObject2).parent.setVisibility(8);
-            d.b.a(((a)localObject2).wgr, d.c.BWv);
-            paramObject = ((a)localObject2).wgr;
-            localObject1 = d.c.BWO;
+            d.b.a(((a)localObject2).APl, com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HTk);
+            paramObject = ((a)localObject2).APl;
+            localObject1 = com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HTA;
             localObject2 = new Bundle();
             ((Bundle)localObject2).putLong("PARAM_1_LONG", l);
-            paramObject.a((d.c)localObject1, (Bundle)localObject2);
-            paramObject = com.tencent.mm.plugin.vlog.model.report.a.GBa;
+            paramObject.a((com.tencent.mm.plugin.recordvideo.plugin.parent.d.c)localObject1, (Bundle)localObject2);
+            paramObject = com.tencent.mm.plugin.vlog.model.report.a.NoJ;
             com.tencent.mm.plugin.vlog.model.report.a.report(111L);
           }
         }
         for (;;)
         {
-          paramObject = x.SXb;
-          AppMethodBeat.o(191785);
+          paramObject = x.aazN;
+          AppMethodBeat.o(230186);
           return paramObject;
           l = 0L;
           break;
-          Log.e("MicroMsg.EditorReadPlugin", "tts remux error, input text:" + ((b)paramq).GLT);
-          this.GLQ.cIh();
+          Log.e("MicroMsg.EditorReadPlugin", "tts remux error, input text:" + ((b)paramq).Nzy);
+          this.Nzs.cWO();
         }
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class d
     extends kotlin.g.b.q
     implements kotlin.g.a.a<TextView>
@@ -509,7 +473,7 @@ public final class a
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
   static final class e
     extends kotlin.g.b.q
     implements kotlin.g.a.a<ViewGroup>
@@ -520,7 +484,7 @@ public final class a
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
   static final class f
     extends kotlin.g.b.q
     implements kotlin.g.a.a<ViewGroup>
@@ -531,7 +495,7 @@ public final class a
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/ui/widget/MMProcessBar;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/widget/MMProcessBar;", "kotlin.jvm.PlatformType", "invoke"})
   static final class g
     extends kotlin.g.b.q
     implements kotlin.g.a.a<MMProcessBar>
@@ -544,7 +508,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.read.a
  * JD-Core Version:    0.7.0.1
  */

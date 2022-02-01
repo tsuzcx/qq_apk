@@ -1,32 +1,32 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.util.LinkedList;
 import java.util.List;
 
 final class bc
 {
-  private bb Opf;
   protected final long SECONDS_OF_DAY;
+  private bb VEY;
   
   public bc()
   {
     AppMethodBeat.i(117134);
     this.SECONDS_OF_DAY = 86400L;
-    this.Opf = new bb();
+    this.VEY = new bb();
     Object localObject = new StringBuilder();
-    g.aAi();
-    localObject = s.aW(g.aAh().cachePath + "checkmsgid.ini", 0, -1);
+    h.aHH();
+    localObject = u.aY(h.aHG().cachePath + "checkmsgid.ini", 0, -1);
     if (!Util.isNullOrNil((byte[])localObject)) {
       try
       {
-        this.Opf.parseFrom((byte[])localObject);
-        if (gCE()) {
-          gCD();
+        this.VEY.parseFrom((byte[])localObject);
+        if (hyQ()) {
+          hyP();
         }
         AppMethodBeat.o(117134);
         return;
@@ -40,26 +40,26 @@ final class bc
     AppMethodBeat.o(117134);
   }
   
-  private void gCD()
+  private void hyP()
   {
     AppMethodBeat.i(117135);
-    Log.i("MicroMsg.DelSvrIdMgr", "summerdel toFile tid[%d] [%d, %d ,%d] stack[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(this.Opf.Opc.size()), Integer.valueOf(this.Opf.Opd.size()), Integer.valueOf(this.Opf.Ope.size()), Util.getStack() });
+    Log.i("MicroMsg.DelSvrIdMgr", "summerdel toFile tid[%d] [%d, %d ,%d] stack[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(this.VEY.VEV.size()), Integer.valueOf(this.VEY.VEW.size()), Integer.valueOf(this.VEY.VEX.size()), Util.getStack() });
     try
     {
-      this.Opf.Opb.clear();
-      this.Opf.Opa.clear();
-      this.Opf.OoZ.clear();
+      this.VEY.VEU.clear();
+      this.VEY.VET.clear();
+      this.VEY.VES.clear();
       bb localbb = new bb();
-      localbb.Opc.addAll(this.Opf.Opc);
-      localbb.Opd.addAll(this.Opf.Opd);
-      localbb.Ope.addAll(this.Opf.Ope);
+      localbb.VEV.addAll(this.VEY.VEV);
+      localbb.VEW.addAll(this.VEY.VEW);
+      localbb.VEX.addAll(this.VEY.VEX);
       byte[] arrayOfByte = localbb.toByteArray();
       StringBuilder localStringBuilder = new StringBuilder();
-      g.aAi();
-      s.f(g.aAh().cachePath + "checkmsgid.ini", arrayOfByte, arrayOfByte.length);
-      int j = localbb.Opc.size();
-      int k = localbb.Opd.size();
-      int m = localbb.Ope.size();
+      h.aHH();
+      u.f(h.aHG().cachePath + "checkmsgid.ini", arrayOfByte, arrayOfByte.length);
+      int j = localbb.VEV.size();
+      int k = localbb.VEW.size();
+      int m = localbb.VEX.size();
       if (arrayOfByte == null) {}
       for (int i = -1;; i = arrayOfByte.length)
       {
@@ -71,49 +71,49 @@ final class bc
     }
     catch (Exception localException)
     {
-      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(111L, 168L, 1L, false);
+      com.tencent.mm.plugin.report.f.Iyx.idkeyStat(111L, 168L, 1L, false);
       Log.printErrStackTrace("MicroMsg.DelSvrIdMgr", localException, "summerdel ", new Object[0]);
       AppMethodBeat.o(117135);
     }
   }
   
-  private boolean gCE()
+  private boolean hyQ()
   {
     AppMethodBeat.i(117140);
-    Log.v("MicroMsg.DelSvrIdMgr", "checkOldData todayIndex:%d, t0Size:%d, t1Size:%d, t2Size:%d", new Object[] { Integer.valueOf(this.Opf.OoY), Integer.valueOf(this.Opf.Opc.size()), Integer.valueOf(this.Opf.Opd.size()), Integer.valueOf(this.Opf.Ope.size()) });
+    Log.v("MicroMsg.DelSvrIdMgr", "checkOldData todayIndex:%d, t0Size:%d, t1Size:%d, t2Size:%d", new Object[] { Integer.valueOf(this.VEY.VER), Integer.valueOf(this.VEY.VEV.size()), Integer.valueOf(this.VEY.VEW.size()), Integer.valueOf(this.VEY.VEX.size()) });
     int i = (int)(Util.nowSecond() / 86400L);
-    int j = this.Opf.OoY;
-    this.Opf.OoY = i;
+    int j = this.VEY.VER;
+    this.VEY.VER = i;
     switch (i - j)
     {
     default: 
-      this.Opf.Ope.clear();
-      this.Opf.Opd.clear();
-      this.Opf.Opc.clear();
+      this.VEY.VEX.clear();
+      this.VEY.VEW.clear();
+      this.VEY.VEV.clear();
       AppMethodBeat.o(117140);
       return true;
     case 0: 
       AppMethodBeat.o(117140);
       return false;
     case 1: 
-      this.Opf.Ope = this.Opf.Opd;
-      this.Opf.Opd = this.Opf.Opc;
-      this.Opf.Opc.clear();
+      this.VEY.VEX = this.VEY.VEW;
+      this.VEY.VEW = this.VEY.VEV;
+      this.VEY.VEV.clear();
       AppMethodBeat.o(117140);
       return true;
     }
-    this.Opf.Ope = this.Opf.Opc;
-    this.Opf.Opd.clear();
-    this.Opf.Opc.clear();
+    this.VEY.VEX = this.VEY.VEV;
+    this.VEY.VEW.clear();
+    this.VEY.VEV.clear();
     AppMethodBeat.o(117140);
     return true;
   }
   
-  protected final void B(List<Integer> paramList, List<Long> paramList1)
+  protected final void H(List<Integer> paramList, List<Long> paramList1)
   {
     AppMethodBeat.i(117139);
     Log.i("MicroMsg.DelSvrIdMgr", "add size:%d", new Object[] { Integer.valueOf(paramList.size()) });
-    gCE();
+    hyQ();
     int j = (int)(Util.nowSecond() / 86400L);
     int i = 0;
     while (i < paramList.size())
@@ -121,17 +121,17 @@ final class bc
       b(j, ((Integer)paramList.get(i)).intValue(), ((Long)paramList1.get(i)).longValue(), false);
       i += 1;
     }
-    gCD();
+    hyP();
     AppMethodBeat.o(117139);
   }
   
-  protected final boolean Ni(long paramLong)
+  protected final boolean UU(long paramLong)
   {
     AppMethodBeat.i(117136);
-    if (gCE()) {
-      gCD();
+    if (hyQ()) {
+      hyP();
     }
-    if ((this.Opf.Opc.contains(Long.valueOf(paramLong))) || (this.Opf.Opd.contains(Long.valueOf(paramLong))) || (this.Opf.Ope.contains(Long.valueOf(paramLong))))
+    if ((this.VEY.VEV.contains(Long.valueOf(paramLong))) || (this.VEY.VEW.contains(Long.valueOf(paramLong))) || (this.VEY.VEX.contains(Long.valueOf(paramLong))))
     {
       AppMethodBeat.o(117136);
       return true;
@@ -149,7 +149,7 @@ final class bc
       return;
     }
     if (paramBoolean) {
-      gCE();
+      hyQ();
     }
     paramInt -= (int)(paramLong2 / 86400L);
     switch (paramInt)
@@ -160,19 +160,19 @@ final class bc
     for (;;)
     {
       if (paramBoolean) {
-        gCD();
+        hyP();
       }
       AppMethodBeat.o(117138);
       return;
-      this.Opf.Opc.add(Long.valueOf(paramLong1));
+      this.VEY.VEV.add(Long.valueOf(paramLong1));
       continue;
-      this.Opf.Opd.add(Long.valueOf(paramLong1));
+      this.VEY.VEW.add(Long.valueOf(paramLong1));
       continue;
-      this.Opf.Ope.add(Long.valueOf(paramLong1));
+      this.VEY.VEX.add(Long.valueOf(paramLong1));
     }
   }
   
-  protected final void r(int paramInt, long paramLong1, long paramLong2)
+  protected final void y(int paramInt, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(117137);
     b(paramInt, paramLong1, paramLong2, true);
@@ -181,7 +181,7 @@ final class bc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.storage.bc
  * JD-Core Version:    0.7.0.1
  */

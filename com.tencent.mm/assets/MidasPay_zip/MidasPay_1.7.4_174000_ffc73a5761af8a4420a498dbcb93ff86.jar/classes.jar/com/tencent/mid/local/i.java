@@ -1,0 +1,80 @@
+package com.tencent.mid.local;
+
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build.VERSION;
+import android.util.Base64;
+import android.util.Log;
+import org.json.JSONObject;
+
+public class i
+{
+  static void a(String paramString)
+  {
+    Log.i("MID", paramString);
+  }
+  
+  static void a(Throwable paramThrowable)
+  {
+    Log.w("MID", paramThrowable);
+  }
+  
+  static void a(JSONObject paramJSONObject, String paramString1, String paramString2)
+  {
+    if (b(paramString2)) {
+      paramJSONObject.put(paramString1, paramString2);
+    }
+  }
+  
+  static boolean a(Context paramContext, String paramString)
+  {
+    try
+    {
+      int i = paramContext.getPackageManager().checkPermission(paramString, paramContext.getPackageName());
+      if (i == 0) {
+        return true;
+      }
+    }
+    catch (Throwable paramContext)
+    {
+      Log.e("MID", "checkPermission error", paramContext);
+    }
+    return false;
+  }
+  
+  static boolean b(String paramString)
+  {
+    return (paramString != null) && (paramString.trim().length() != 0);
+  }
+  
+  static boolean c(String paramString)
+  {
+    return (paramString != null) && (paramString.trim().length() >= 40);
+  }
+  
+  static String d(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    if (Build.VERSION.SDK_INT < 8) {
+      return paramString;
+    }
+    try
+    {
+      String str = new String(e.a(Base64.decode(paramString.getBytes("UTF-8"), 0)), "UTF-8").trim().replace("\t", "").replace("\n", "").replace("\r", "");
+      return str;
+    }
+    catch (Throwable localThrowable)
+    {
+      Log.e("MID", "decode error", localThrowable);
+    }
+    return paramString;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\assets\MidasPay_zip\MidasPay_1.7.4_174000_ffc73a5761af8a4420a498dbcb93ff86.jar\classes.jar
+ * Qualified Name:     com.tencent.mid.local.i
+ * JD-Core Version:    0.7.0.1
+ */

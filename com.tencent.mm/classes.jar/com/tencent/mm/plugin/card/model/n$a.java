@@ -7,14 +7,14 @@ public enum n$a
   static
   {
     AppMethodBeat.i(112798);
-    pTQ = new a("NORMAL_TYPE", 0);
-    pTR = new a("INVALID_TYPE", 1);
-    pTS = new a("CAN_GIFT_TYPE", 2);
-    pTT = new a("GENERAL_TYPE", 3);
-    pTU = new a("MEMBER_CARD_TYPE", 4);
-    pTV = new a("HOME_MEMBER_CARD_TYPE", 5);
-    pTW = new a("GENERAL_WITHOUT_INVOICE_TYPE", 6);
-    pTX = new a[] { pTQ, pTR, pTS, pTT, pTU, pTV, pTW };
+    tpR = new a("NORMAL_TYPE", 0);
+    tpS = new a("INVALID_TYPE", 1);
+    tpT = new a("CAN_GIFT_TYPE", 2);
+    tpU = new a("GENERAL_TYPE", 3);
+    tpV = new a("MEMBER_CARD_TYPE", 4);
+    tpW = new a("HOME_MEMBER_CARD_TYPE", 5);
+    tpX = new a("GENERAL_WITHOUT_INVOICE_TYPE", 6);
+    tpY = new a[] { tpR, tpS, tpT, tpU, tpV, tpW, tpX };
     AppMethodBeat.o(112798);
   }
   

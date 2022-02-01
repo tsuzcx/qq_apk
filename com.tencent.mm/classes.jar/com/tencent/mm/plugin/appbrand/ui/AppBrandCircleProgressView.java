@@ -11,177 +11,177 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.f;
 import kotlin.g;
-import kotlin.g.b.aa;
+import kotlin.g.b.ab;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
 import kotlin.g.b.v;
 import kotlin.i.b;
 import kotlin.i.c;
 import kotlin.l;
-import kotlin.l.k;
+import kotlin.l.n;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandCircleProgressView;", "Landroid/view/View;", "ctx", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "angle", "", "animDuration", "", "getAnimDuration", "()J", "setAnimDuration", "(J)V", "animator", "Landroid/animation/ValueAnimator;", "getAnimator", "()Landroid/animation/ValueAnimator;", "animator$delegate", "Lkotlin/Lazy;", "<set-?>", "", "circleColor", "getCircleColor", "()I", "setCircleColor", "(I)V", "circleColor$delegate", "Lkotlin/properties/ReadWriteProperty;", "circlePaint", "Landroid/graphics/Paint;", "getCirclePaint", "()Landroid/graphics/Paint;", "circlePaint$delegate", "circleStrokeWidth", "getCircleStrokeWidth", "()F", "setCircleStrokeWidth", "(F)V", "circleStrokeWidth$delegate", "currentPlayTime", "dotColor", "getDotColor", "setDotColor", "dotColor$delegate", "dotPaint", "getDotPaint", "dotPaint$delegate", "dotWidth", "getDotWidth", "setDotWidth", "dotWidth$delegate", "pointX", "pointY", "processToDraw", "value", "progress", "getProgress", "setProgress", "progressColor", "getProgressColor", "setProgressColor", "progressColor$delegate", "progressPaint", "getProgressPaint", "progressPaint$delegate", "progressWidth", "getProgressWidth", "setProgressWidth", "progressWidth$delegate", "radius", "getRadius", "step", "transitionTimingMs", "getTransitionTimingMs", "setTransitionTimingMs", "onDetachedFromWindow", "", "onDraw", "canvas", "Landroid/graphics/Canvas;", "promote", "startAnim", "stopAnim", "Companion", "luggage-wechat-full-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandCircleProgressView;", "Landroid/view/View;", "ctx", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "angle", "", "animDuration", "", "getAnimDuration", "()J", "setAnimDuration", "(J)V", "animator", "Landroid/animation/ValueAnimator;", "getAnimator", "()Landroid/animation/ValueAnimator;", "animator$delegate", "Lkotlin/Lazy;", "<set-?>", "", "circleColor", "getCircleColor", "()I", "setCircleColor", "(I)V", "circleColor$delegate", "Lkotlin/properties/ReadWriteProperty;", "circlePaint", "Landroid/graphics/Paint;", "getCirclePaint", "()Landroid/graphics/Paint;", "circlePaint$delegate", "circleStrokeWidth", "getCircleStrokeWidth", "()F", "setCircleStrokeWidth", "(F)V", "circleStrokeWidth$delegate", "currentPlayTime", "dotColor", "getDotColor", "setDotColor", "dotColor$delegate", "dotPaint", "getDotPaint", "dotPaint$delegate", "dotWidth", "getDotWidth", "setDotWidth", "dotWidth$delegate", "pointX", "pointY", "processToDraw", "value", "progress", "getProgress", "setProgress", "progressColor", "getProgressColor", "setProgressColor", "progressColor$delegate", "progressPaint", "getProgressPaint", "progressPaint$delegate", "progressWidth", "getProgressWidth", "setProgressWidth", "progressWidth$delegate", "radius", "getRadius", "step", "transitionTimingMs", "getTransitionTimingMs", "setTransitionTimingMs", "onDetachedFromWindow", "", "onDraw", "canvas", "Landroid/graphics/Canvas;", "promote", "startAnim", "stopAnim", "Companion", "luggage-wechat-full-sdk_release"})
 public final class AppBrandCircleProgressView
   extends View
 {
-  public static final AppBrandCircleProgressView.g nSL;
+  public static final AppBrandCircleProgressView.g qUn;
   private float angle;
-  private int lCq;
-  private final c nSA;
-  private final c nSB;
-  private final c nSC;
-  private final f nSD;
-  private final f nSE;
-  private final f nSF;
-  private final f nSG;
-  private long nSH;
-  private float nSI;
-  private float nSJ;
-  private float nSK;
-  private int nSv;
-  private long nSw;
-  private final c nSx;
-  private final c nSy;
-  private final c nSz;
+  private long currentPlayTime;
+  private int oxQ;
   private int progress;
+  private int qTY;
+  private long qTZ;
+  private final c qUa;
+  private final c qUb;
+  private final c qUc;
+  private final c qUd;
+  private final c qUe;
+  private final c qUf;
+  private final f qUg;
+  private final f qUh;
+  private final f qUi;
+  private final f qUj;
+  private float qUk;
+  private float qUl;
+  private float qUm;
   
   static
   {
-    AppMethodBeat.i(230202);
-    cLI = new k[] { (k)aa.a(new v(aa.bp(AppBrandCircleProgressView.class), "circleColor", "getCircleColor()I")), (k)aa.a(new v(aa.bp(AppBrandCircleProgressView.class), "dotColor", "getDotColor()I")), (k)aa.a(new v(aa.bp(AppBrandCircleProgressView.class), "progressColor", "getProgressColor()I")), (k)aa.a(new v(aa.bp(AppBrandCircleProgressView.class), "circleStrokeWidth", "getCircleStrokeWidth()F")), (k)aa.a(new v(aa.bp(AppBrandCircleProgressView.class), "dotWidth", "getDotWidth()F")), (k)aa.a(new v(aa.bp(AppBrandCircleProgressView.class), "progressWidth", "getProgressWidth()F")) };
-    nSL = new AppBrandCircleProgressView.g((byte)0);
-    AppMethodBeat.o(230202);
+    AppMethodBeat.i(240343);
+    cMt = new n[] { (n)ab.a(new v(ab.bO(AppBrandCircleProgressView.class), "circleColor", "getCircleColor()I")), (n)ab.a(new v(ab.bO(AppBrandCircleProgressView.class), "dotColor", "getDotColor()I")), (n)ab.a(new v(ab.bO(AppBrandCircleProgressView.class), "progressColor", "getProgressColor()I")), (n)ab.a(new v(ab.bO(AppBrandCircleProgressView.class), "circleStrokeWidth", "getCircleStrokeWidth()F")), (n)ab.a(new v(ab.bO(AppBrandCircleProgressView.class), "dotWidth", "getDotWidth()F")), (n)ab.a(new v(ab.bO(AppBrandCircleProgressView.class), "progressWidth", "getProgressWidth()F")) };
+    qUn = new AppBrandCircleProgressView.g((byte)0);
+    AppMethodBeat.o(240343);
   }
   
   public AppBrandCircleProgressView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(230225);
-    this.nSv = 2000;
-    this.nSw = 1500L;
-    paramContext = kotlin.i.a.SYL;
+    AppMethodBeat.i(240396);
+    this.qTY = 2000;
+    this.qTZ = 1500L;
+    paramContext = kotlin.i.a.aaBH;
     paramContext = Integer.valueOf(-7829368);
-    this.nSx = ((c)new a(paramContext, paramContext, this));
-    paramContext = kotlin.i.a.SYL;
+    this.qUa = ((c)new a(paramContext, paramContext, this));
+    paramContext = kotlin.i.a.aaBH;
     paramContext = Integer.valueOf(-7829368);
-    this.nSy = ((c)new b(paramContext, paramContext, this));
-    paramContext = kotlin.i.a.SYL;
+    this.qUb = ((c)new b(paramContext, paramContext, this));
+    paramContext = kotlin.i.a.aaBH;
     paramContext = Integer.valueOf(-16711936);
-    this.nSz = ((c)new c(paramContext, paramContext, this));
-    paramContext = kotlin.i.a.SYL;
+    this.qUc = ((c)new c(paramContext, paramContext, this));
+    paramContext = kotlin.i.a.aaBH;
     paramContext = Float.valueOf(1.0F);
-    this.nSA = ((c)new d(paramContext, paramContext, this));
-    paramContext = kotlin.i.a.SYL;
+    this.qUd = ((c)new d(paramContext, paramContext, this));
+    paramContext = kotlin.i.a.aaBH;
     paramContext = Float.valueOf(1.0F);
-    this.nSB = ((c)new e(paramContext, paramContext, this));
-    paramContext = kotlin.i.a.SYL;
+    this.qUe = ((c)new e(paramContext, paramContext, this));
+    paramContext = kotlin.i.a.aaBH;
     paramContext = Float.valueOf(3.0F);
-    this.nSC = ((c)new f(paramContext, paramContext, this));
-    this.nSD = g.ah((kotlin.g.a.a)new h(this));
-    this.nSE = g.ah((kotlin.g.a.a)new i(this));
-    this.nSF = g.ah((kotlin.g.a.a)new j(this));
-    this.nSG = g.ah((kotlin.g.a.a)new k(this));
-    this.lCq = 1;
-    this.nSK = this.progress;
-    AppMethodBeat.o(230225);
+    this.qUf = ((c)new f(paramContext, paramContext, this));
+    this.qUg = g.ar((kotlin.g.a.a)new h(this));
+    this.qUh = g.ar((kotlin.g.a.a)new i(this));
+    this.qUi = g.ar((kotlin.g.a.a)new j(this));
+    this.qUj = g.ar((kotlin.g.a.a)new k(this));
+    this.oxQ = 1;
+    this.qUm = this.progress;
+    AppMethodBeat.o(240396);
   }
   
   private final ValueAnimator getAnimator()
   {
-    AppMethodBeat.i(230216);
-    ValueAnimator localValueAnimator = (ValueAnimator)this.nSD.getValue();
-    AppMethodBeat.o(230216);
+    AppMethodBeat.i(240378);
+    ValueAnimator localValueAnimator = (ValueAnimator)this.qUg.getValue();
+    AppMethodBeat.o(240378);
     return localValueAnimator;
   }
   
   private final Paint getCirclePaint()
   {
-    AppMethodBeat.i(230217);
-    Paint localPaint = (Paint)this.nSE.getValue();
-    AppMethodBeat.o(230217);
+    AppMethodBeat.i(240380);
+    Paint localPaint = (Paint)this.qUh.getValue();
+    AppMethodBeat.o(240380);
     return localPaint;
   }
   
   private final Paint getDotPaint()
   {
-    AppMethodBeat.i(230218);
-    Paint localPaint = (Paint)this.nSF.getValue();
-    AppMethodBeat.o(230218);
+    AppMethodBeat.i(240382);
+    Paint localPaint = (Paint)this.qUi.getValue();
+    AppMethodBeat.o(240382);
     return localPaint;
   }
   
   private final Paint getProgressPaint()
   {
-    AppMethodBeat.i(230219);
-    Paint localPaint = (Paint)this.nSG.getValue();
-    AppMethodBeat.o(230219);
+    AppMethodBeat.i(240383);
+    Paint localPaint = (Paint)this.qUj.getValue();
+    AppMethodBeat.o(240383);
     return localPaint;
   }
   
   private final float getRadius()
   {
-    AppMethodBeat.i(230220);
+    AppMethodBeat.i(240385);
     float f = 0.0F;
     if (isLaidOut()) {
       f = Math.min(getMeasuredHeight() - Math.max(getProgressWidth(), getDotWidth()) * 2.0F, getMeasuredWidth() - Math.max(getProgressWidth(), getDotWidth()) * 2.0F) / 2.0F;
     }
-    AppMethodBeat.o(230220);
+    AppMethodBeat.o(240385);
     return f;
   }
   
-  public final void bWT()
+  public final void cjx()
   {
-    AppMethodBeat.i(230221);
-    this.nSH = 0L;
+    AppMethodBeat.i(240388);
+    this.currentPlayTime = 0L;
     getAnimator().addUpdateListener((ValueAnimator.AnimatorUpdateListener)new l(this));
     getAnimator().start();
-    AppMethodBeat.o(230221);
+    AppMethodBeat.o(240388);
   }
   
-  public final void bWU()
+  public final void cjy()
   {
-    AppMethodBeat.i(230222);
-    this.nSv = 0;
+    AppMethodBeat.i(240390);
+    this.qTY = 0;
     getAnimator().setDuration(1000L);
-    this.lCq = 5;
-    AppMethodBeat.o(230222);
+    this.oxQ = 5;
+    AppMethodBeat.o(240390);
   }
   
   public final long getAnimDuration()
   {
-    return this.nSw;
+    return this.qTZ;
   }
   
   public final int getCircleColor()
   {
-    AppMethodBeat.i(230204);
-    int i = ((Number)this.nSx.a(cLI[0])).intValue();
-    AppMethodBeat.o(230204);
+    AppMethodBeat.i(240352);
+    int i = ((Number)this.qUa.a(cMt[0])).intValue();
+    AppMethodBeat.o(240352);
     return i;
   }
   
   public final float getCircleStrokeWidth()
   {
-    AppMethodBeat.i(230210);
-    float f = ((Number)this.nSA.a(cLI[3])).floatValue();
-    AppMethodBeat.o(230210);
+    AppMethodBeat.i(240368);
+    float f = ((Number)this.qUd.a(cMt[3])).floatValue();
+    AppMethodBeat.o(240368);
     return f;
   }
   
   public final int getDotColor()
   {
-    AppMethodBeat.i(230206);
-    int i = ((Number)this.nSy.a(cLI[1])).intValue();
-    AppMethodBeat.o(230206);
+    AppMethodBeat.i(240355);
+    int i = ((Number)this.qUb.a(cMt[1])).intValue();
+    AppMethodBeat.o(240355);
     return i;
   }
   
   public final float getDotWidth()
   {
-    AppMethodBeat.i(230212);
-    float f = ((Number)this.nSB.a(cLI[4])).floatValue();
-    AppMethodBeat.o(230212);
+    AppMethodBeat.i(240371);
+    float f = ((Number)this.qUe.a(cMt[4])).floatValue();
+    AppMethodBeat.o(240371);
     return f;
   }
   
@@ -192,58 +192,58 @@ public final class AppBrandCircleProgressView
   
   public final int getProgressColor()
   {
-    AppMethodBeat.i(230208);
-    int i = ((Number)this.nSz.a(cLI[2])).intValue();
-    AppMethodBeat.o(230208);
+    AppMethodBeat.i(240362);
+    int i = ((Number)this.qUc.a(cMt[2])).intValue();
+    AppMethodBeat.o(240362);
     return i;
   }
   
   public final float getProgressWidth()
   {
-    AppMethodBeat.i(230214);
-    float f = ((Number)this.nSC.a(cLI[5])).floatValue();
-    AppMethodBeat.o(230214);
+    AppMethodBeat.i(240375);
+    float f = ((Number)this.qUf.a(cMt[5])).floatValue();
+    AppMethodBeat.o(240375);
     return f;
   }
   
   public final int getTransitionTimingMs()
   {
-    return this.nSv;
+    return this.qTY;
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(230224);
+    AppMethodBeat.i(240393);
     super.onDetachedFromWindow();
     getAnimator().cancel();
-    AppMethodBeat.o(230224);
+    AppMethodBeat.o(240393);
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(230223);
-    p.h(paramCanvas, "canvas");
+    AppMethodBeat.i(240392);
+    p.k(paramCanvas, "canvas");
     super.onDraw(paramCanvas);
-    if ((this.nSI == 0.0F) || (this.nSJ == 0.0F))
+    if ((this.qUk == 0.0F) || (this.qUl == 0.0F))
     {
-      AppMethodBeat.o(230223);
+      AppMethodBeat.o(240392);
       return;
     }
     float f8 = getMeasuredWidth();
     float f1 = getMeasuredHeight();
     paramCanvas.drawCircle(f8 / 2.0F, f1 / 2.0F, getRadius(), getCirclePaint());
-    if (this.nSH <= this.nSv)
+    if (this.currentPlayTime <= this.qTY)
     {
-      paramCanvas.drawCircle(this.nSI + getRadius() + Math.max(getProgressWidth(), getDotWidth()), this.nSJ + getRadius() + Math.max(getProgressWidth(), getDotWidth()), getDotWidth(), getDotPaint());
-      AppMethodBeat.o(230223);
+      paramCanvas.drawCircle(this.qUk + getRadius() + Math.max(getProgressWidth(), getDotWidth()), this.qUl + getRadius() + Math.max(getProgressWidth(), getDotWidth()), getDotWidth(), getDotPaint());
+      AppMethodBeat.o(240392);
       return;
     }
-    if (this.nSK < this.progress) {
-      this.nSK += this.lCq;
+    if (this.qUm < this.progress) {
+      this.qUm += this.oxQ;
     }
     for (;;)
     {
-      float f2 = this.nSK * 360.0F / 100.0F;
+      float f2 = this.qUm * 360.0F / 100.0F;
       float f3 = f8 / 2.0F;
       float f4 = getRadius();
       float f5 = f1 / 2.0F;
@@ -252,78 +252,78 @@ public final class AppBrandCircleProgressView
       f8 /= 2.0F;
       float f9 = getRadius();
       paramCanvas.drawArc(f3 - f4, f5 - f6, f7 + f8, f1 / 2.0F + f9, this.angle, f2, false, getProgressPaint());
-      if (this.nSK >= 100.0F) {
+      if (this.qUm >= 100.0F) {
         getAnimator().cancel();
       }
-      AppMethodBeat.o(230223);
+      AppMethodBeat.o(240392);
       return;
-      if (this.nSK <= 80.0F) {
-        this.nSK += 0.5F;
+      if (this.qUm <= 80.0F) {
+        this.qUm += 0.5F;
       }
     }
   }
   
   public final void setAnimDuration(long paramLong)
   {
-    this.nSw = paramLong;
+    this.qTZ = paramLong;
   }
   
   public final void setCircleColor(int paramInt)
   {
-    AppMethodBeat.i(230205);
-    this.nSx.a(cLI[0], Integer.valueOf(paramInt));
-    AppMethodBeat.o(230205);
+    AppMethodBeat.i(240354);
+    this.qUa.a(cMt[0], Integer.valueOf(paramInt));
+    AppMethodBeat.o(240354);
   }
   
   public final void setCircleStrokeWidth(float paramFloat)
   {
-    AppMethodBeat.i(230211);
-    this.nSA.a(cLI[3], Float.valueOf(paramFloat));
-    AppMethodBeat.o(230211);
+    AppMethodBeat.i(240369);
+    this.qUd.a(cMt[3], Float.valueOf(paramFloat));
+    AppMethodBeat.o(240369);
   }
   
   public final void setDotColor(int paramInt)
   {
-    AppMethodBeat.i(230207);
-    this.nSy.a(cLI[1], Integer.valueOf(paramInt));
-    AppMethodBeat.o(230207);
+    AppMethodBeat.i(240359);
+    this.qUb.a(cMt[1], Integer.valueOf(paramInt));
+    AppMethodBeat.o(240359);
   }
   
   public final void setDotWidth(float paramFloat)
   {
-    AppMethodBeat.i(230213);
-    this.nSB.a(cLI[4], Float.valueOf(paramFloat));
-    AppMethodBeat.o(230213);
+    AppMethodBeat.i(240373);
+    this.qUe.a(cMt[4], Float.valueOf(paramFloat));
+    AppMethodBeat.o(240373);
   }
   
   public final void setProgress(int paramInt)
   {
-    AppMethodBeat.i(230203);
+    AppMethodBeat.i(240349);
     Log.d("AppBrandCircleProgressView", "hash = " + hashCode() + " progress = " + paramInt);
     this.progress = paramInt;
-    AppMethodBeat.o(230203);
+    AppMethodBeat.o(240349);
   }
   
   public final void setProgressColor(int paramInt)
   {
-    AppMethodBeat.i(230209);
-    this.nSz.a(cLI[2], Integer.valueOf(paramInt));
-    AppMethodBeat.o(230209);
+    AppMethodBeat.i(240365);
+    this.qUc.a(cMt[2], Integer.valueOf(paramInt));
+    AppMethodBeat.o(240365);
   }
   
   public final void setProgressWidth(float paramFloat)
   {
-    AppMethodBeat.i(230215);
-    this.nSC.a(cLI[5], Float.valueOf(paramFloat));
-    AppMethodBeat.o(230215);
+    AppMethodBeat.i(240376);
+    this.qUf.a(cMt[5], Float.valueOf(paramFloat));
+    AppMethodBeat.o(240376);
   }
   
   public final void setTransitionTimingMs(int paramInt)
   {
-    this.nSv = paramInt;
+    this.qTY = paramInt;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"kotlin/properties/Delegates$observable$1", "Lkotlin/properties/ObservableProperty;", "afterChange", "", "property", "Lkotlin/reflect/KProperty;", "oldValue", "newValue", "(Lkotlin/reflect/KProperty;Ljava/lang/Object;Ljava/lang/Object;)V", "kotlin-stdlib"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlin/properties/Delegates$observable$1", "Lkotlin/properties/ObservableProperty;", "afterChange", "", "property", "Lkotlin/reflect/KProperty;", "oldValue", "newValue", "(Lkotlin/reflect/KProperty;Ljava/lang/Object;Ljava/lang/Object;)V", "kotlin-stdlib"})
   public static final class a
     extends b<Integer>
   {
@@ -332,18 +332,18 @@ public final class AppBrandCircleProgressView
       super();
     }
     
-    public final void a(k<?> paramk, Integer paramInteger1, Integer paramInteger2)
+    public final void a(n<?> paramn, Integer paramInteger1, Integer paramInteger2)
     {
-      AppMethodBeat.i(230191);
-      p.h(paramk, "property");
+      AppMethodBeat.i(237673);
+      p.k(paramn, "property");
       int i = ((Number)paramInteger2).intValue();
       ((Number)paramInteger1).intValue();
       AppBrandCircleProgressView.b(jdField_this).setColor(i);
-      AppMethodBeat.o(230191);
+      AppMethodBeat.o(237673);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"kotlin/properties/Delegates$observable$1", "Lkotlin/properties/ObservableProperty;", "afterChange", "", "property", "Lkotlin/reflect/KProperty;", "oldValue", "newValue", "(Lkotlin/reflect/KProperty;Ljava/lang/Object;Ljava/lang/Object;)V", "kotlin-stdlib"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlin/properties/Delegates$observable$1", "Lkotlin/properties/ObservableProperty;", "afterChange", "", "property", "Lkotlin/reflect/KProperty;", "oldValue", "newValue", "(Lkotlin/reflect/KProperty;Ljava/lang/Object;Ljava/lang/Object;)V", "kotlin-stdlib"})
   public static final class b
     extends b<Integer>
   {
@@ -352,18 +352,18 @@ public final class AppBrandCircleProgressView
       super();
     }
     
-    public final void a(k<?> paramk, Integer paramInteger1, Integer paramInteger2)
+    public final void a(n<?> paramn, Integer paramInteger1, Integer paramInteger2)
     {
-      AppMethodBeat.i(230192);
-      p.h(paramk, "property");
+      AppMethodBeat.i(235785);
+      p.k(paramn, "property");
       int i = ((Number)paramInteger2).intValue();
       ((Number)paramInteger1).intValue();
       AppBrandCircleProgressView.c(jdField_this).setColor(i);
-      AppMethodBeat.o(230192);
+      AppMethodBeat.o(235785);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"kotlin/properties/Delegates$observable$1", "Lkotlin/properties/ObservableProperty;", "afterChange", "", "property", "Lkotlin/reflect/KProperty;", "oldValue", "newValue", "(Lkotlin/reflect/KProperty;Ljava/lang/Object;Ljava/lang/Object;)V", "kotlin-stdlib"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlin/properties/Delegates$observable$1", "Lkotlin/properties/ObservableProperty;", "afterChange", "", "property", "Lkotlin/reflect/KProperty;", "oldValue", "newValue", "(Lkotlin/reflect/KProperty;Ljava/lang/Object;Ljava/lang/Object;)V", "kotlin-stdlib"})
   public static final class c
     extends b<Integer>
   {
@@ -372,18 +372,18 @@ public final class AppBrandCircleProgressView
       super();
     }
     
-    public final void a(k<?> paramk, Integer paramInteger1, Integer paramInteger2)
+    public final void a(n<?> paramn, Integer paramInteger1, Integer paramInteger2)
     {
-      AppMethodBeat.i(230193);
-      p.h(paramk, "property");
+      AppMethodBeat.i(246110);
+      p.k(paramn, "property");
       int i = ((Number)paramInteger2).intValue();
       ((Number)paramInteger1).intValue();
       AppBrandCircleProgressView.d(jdField_this).setColor(i);
-      AppMethodBeat.o(230193);
+      AppMethodBeat.o(246110);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"kotlin/properties/Delegates$observable$1", "Lkotlin/properties/ObservableProperty;", "afterChange", "", "property", "Lkotlin/reflect/KProperty;", "oldValue", "newValue", "(Lkotlin/reflect/KProperty;Ljava/lang/Object;Ljava/lang/Object;)V", "kotlin-stdlib"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlin/properties/Delegates$observable$1", "Lkotlin/properties/ObservableProperty;", "afterChange", "", "property", "Lkotlin/reflect/KProperty;", "oldValue", "newValue", "(Lkotlin/reflect/KProperty;Ljava/lang/Object;Ljava/lang/Object;)V", "kotlin-stdlib"})
   public static final class d
     extends b<Float>
   {
@@ -392,18 +392,18 @@ public final class AppBrandCircleProgressView
       super();
     }
     
-    public final void a(k<?> paramk, Float paramFloat1, Float paramFloat2)
+    public final void a(n<?> paramn, Float paramFloat1, Float paramFloat2)
     {
-      AppMethodBeat.i(230194);
-      p.h(paramk, "property");
+      AppMethodBeat.i(244146);
+      p.k(paramn, "property");
       float f = ((Number)paramFloat2).floatValue();
       ((Number)paramFloat1).floatValue();
       AppBrandCircleProgressView.b(jdField_this).setStrokeWidth(f);
-      AppMethodBeat.o(230194);
+      AppMethodBeat.o(244146);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"kotlin/properties/Delegates$observable$1", "Lkotlin/properties/ObservableProperty;", "afterChange", "", "property", "Lkotlin/reflect/KProperty;", "oldValue", "newValue", "(Lkotlin/reflect/KProperty;Ljava/lang/Object;Ljava/lang/Object;)V", "kotlin-stdlib"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlin/properties/Delegates$observable$1", "Lkotlin/properties/ObservableProperty;", "afterChange", "", "property", "Lkotlin/reflect/KProperty;", "oldValue", "newValue", "(Lkotlin/reflect/KProperty;Ljava/lang/Object;Ljava/lang/Object;)V", "kotlin-stdlib"})
   public static final class e
     extends b<Float>
   {
@@ -412,18 +412,18 @@ public final class AppBrandCircleProgressView
       super();
     }
     
-    public final void a(k<?> paramk, Float paramFloat1, Float paramFloat2)
+    public final void a(n<?> paramn, Float paramFloat1, Float paramFloat2)
     {
-      AppMethodBeat.i(230195);
-      p.h(paramk, "property");
+      AppMethodBeat.i(247217);
+      p.k(paramn, "property");
       float f = ((Number)paramFloat2).floatValue();
       ((Number)paramFloat1).floatValue();
       AppBrandCircleProgressView.b(jdField_this).setStrokeWidth(f);
-      AppMethodBeat.o(230195);
+      AppMethodBeat.o(247217);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"kotlin/properties/Delegates$observable$1", "Lkotlin/properties/ObservableProperty;", "afterChange", "", "property", "Lkotlin/reflect/KProperty;", "oldValue", "newValue", "(Lkotlin/reflect/KProperty;Ljava/lang/Object;Ljava/lang/Object;)V", "kotlin-stdlib"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlin/properties/Delegates$observable$1", "Lkotlin/properties/ObservableProperty;", "afterChange", "", "property", "Lkotlin/reflect/KProperty;", "oldValue", "newValue", "(Lkotlin/reflect/KProperty;Ljava/lang/Object;Ljava/lang/Object;)V", "kotlin-stdlib"})
   public static final class f
     extends b<Float>
   {
@@ -432,18 +432,18 @@ public final class AppBrandCircleProgressView
       super();
     }
     
-    public final void a(k<?> paramk, Float paramFloat1, Float paramFloat2)
+    public final void a(n<?> paramn, Float paramFloat1, Float paramFloat2)
     {
-      AppMethodBeat.i(230196);
-      p.h(paramk, "property");
+      AppMethodBeat.i(234547);
+      p.k(paramn, "property");
       float f = ((Number)paramFloat2).floatValue();
       ((Number)paramFloat1).floatValue();
       AppBrandCircleProgressView.d(jdField_this).setStrokeWidth(f);
-      AppMethodBeat.o(230196);
+      AppMethodBeat.o(234547);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "invoke"})
   static final class h
     extends q
     implements kotlin.g.a.a<ValueAnimator>
@@ -454,7 +454,7 @@ public final class AppBrandCircleProgressView
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/graphics/Paint;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/graphics/Paint;", "invoke"})
   static final class i
     extends q
     implements kotlin.g.a.a<Paint>
@@ -465,7 +465,7 @@ public final class AppBrandCircleProgressView
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/graphics/Paint;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/graphics/Paint;", "invoke"})
   static final class j
     extends q
     implements kotlin.g.a.a<Paint>
@@ -476,7 +476,7 @@ public final class AppBrandCircleProgressView
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/graphics/Paint;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/graphics/Paint;", "invoke"})
   static final class k
     extends q
     implements kotlin.g.a.a<Paint>
@@ -487,7 +487,7 @@ public final class AppBrandCircleProgressView
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
   static final class l
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -495,23 +495,23 @@ public final class AppBrandCircleProgressView
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(230201);
-      AppBrandCircleProgressView localAppBrandCircleProgressView = this.nSM;
-      p.g(paramValueAnimator, "animation");
+      AppMethodBeat.i(234315);
+      AppBrandCircleProgressView localAppBrandCircleProgressView = this.qUo;
+      p.j(paramValueAnimator, "animation");
       AppBrandCircleProgressView.a(localAppBrandCircleProgressView, paramValueAnimator.getCurrentPlayTime());
       paramValueAnimator = paramValueAnimator.getAnimatedValue();
       if (paramValueAnimator == null)
       {
         paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(230201);
+        AppMethodBeat.o(234315);
         throw paramValueAnimator;
       }
       float f = ((Float)paramValueAnimator).floatValue();
-      AppBrandCircleProgressView.a(this.nSM, AppBrandCircleProgressView.a(this.nSM) * (float)Math.cos(f));
-      AppBrandCircleProgressView.b(this.nSM, AppBrandCircleProgressView.a(this.nSM) * (float)Math.sin(f));
-      AppBrandCircleProgressView.c(this.nSM, (float)(f * 360.0F / 6.283185307179586D));
-      this.nSM.invalidate();
-      AppMethodBeat.o(230201);
+      AppBrandCircleProgressView.a(this.qUo, AppBrandCircleProgressView.a(this.qUo) * (float)Math.cos(f));
+      AppBrandCircleProgressView.b(this.qUo, AppBrandCircleProgressView.a(this.qUo) * (float)Math.sin(f));
+      AppBrandCircleProgressView.c(this.qUo, (float)(f * 360.0F / 6.283185307179586D));
+      this.qUo.invalidate();
+      AppMethodBeat.o(234315);
     }
   }
 }

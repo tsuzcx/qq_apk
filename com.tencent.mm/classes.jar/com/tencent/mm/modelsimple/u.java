@@ -1,40 +1,40 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dht;
-import com.tencent.mm.protocal.protobuf.dhu;
+import com.tencent.mm.protocal.protobuf.drn;
+import com.tencent.mm.protocal.protobuf.dro;
 
 public final class u
   extends q
   implements m
 {
   private i callback;
-  public int jkg;
-  public int jkh;
+  public int mad;
+  public int mae;
   private d rr;
   
   public u(int paramInt)
   {
     AppMethodBeat.i(134182);
-    this.jkg = 1;
+    this.mad = 1;
     d.a locala = new d.a();
-    locala.iLN = new dht();
-    locala.iLO = new dhu();
+    locala.lBU = new drn();
+    locala.lBV = new dro();
     locala.uri = "/cgi-bin/micromsg-bin/queryhaspasswd";
     locala.funcId = 255;
-    locala.iLP = 132;
+    locala.lBW = 132;
     locala.respCmdId = 1000000132;
-    this.rr = locala.aXF();
-    ((dht)this.rr.iLK.iLR).Scene = paramInt;
-    this.jkh = paramInt;
+    this.rr = locala.bgN();
+    ((drn)d.b.b(this.rr.lBR)).CPw = paramInt;
+    this.mae = paramInt;
     AppMethodBeat.o(134182);
   }
   

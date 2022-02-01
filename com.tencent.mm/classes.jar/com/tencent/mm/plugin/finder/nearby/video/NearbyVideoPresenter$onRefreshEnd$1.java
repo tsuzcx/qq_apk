@@ -6,7 +6,7 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
 final class NearbyVideoPresenter$onRefreshEnd$1
   extends q
   implements a<x>
@@ -15,9 +15,9 @@ final class NearbyVideoPresenter$onRefreshEnd$1
   
   static
   {
-    AppMethodBeat.i(249417);
+    AppMethodBeat.i(200027);
     INSTANCE = new 1();
-    AppMethodBeat.o(249417);
+    AppMethodBeat.o(200027);
   }
   
   NearbyVideoPresenter$onRefreshEnd$1()

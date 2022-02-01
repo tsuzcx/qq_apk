@@ -17,13 +17,13 @@ import org.json.JSONObject;
 
 public final class c
 {
-  public int dNP = 0;
-  public String dNR;
-  public String dNS;
+  public String ByC;
+  public String ByD;
   public int errCode = -1;
   public String errMsg;
-  public String wFF;
-  public String wFG;
+  public int fHa = 0;
+  public String fHc;
+  public String fHd;
   
   public static c a(a parama)
   {
@@ -31,7 +31,7 @@ public final class c
     c localc = new c();
     if (parama.isSuccess())
     {
-      parama = (j)parama.RQu;
+      parama = (j)parama.ZsY;
       if (parama == null) {}
     }
     for (;;)
@@ -39,13 +39,13 @@ public final class c
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("json", parama.RPZ);
+        localJSONObject.put("json", parama.ZsE);
         localJSONObject.put("signature", parama.signature);
-        localc.wFF = parama.RPZ;
-        localc.wFG = parama.signature;
-        p.wFK.wFO = parama;
+        localc.ByC = parama.ZsE;
+        localc.ByD = parama.signature;
+        p.ByH.ByL = parama;
         localc.errCode = 0;
-        Log.i("MicroMsg.BiometricPayAuthenticationResult", "soter authen result: %s, sign: %s", new Object[] { localc.wFF, localc.wFG });
+        Log.i("MicroMsg.BiometricPayAuthenticationResult", "soter authen result: %s, sign: %s", new Object[] { localc.ByC, localc.ByD });
         AppMethodBeat.o(64400);
         return localc;
       }
@@ -62,7 +62,7 @@ public final class c
       {
         Log.i("MicroMsg.BiometricPayAuthenticationResult", "init error, maybe key invalid. remove former key and give suggestion");
         localc.errCode = 2007;
-        p.wFK.wFM = true;
+        p.ByH.ByJ = true;
       }
       else if ((parama.errCode == 1021) || (parama.errCode == 1022))
       {
@@ -86,17 +86,17 @@ public final class c
     }
   }
   
-  public static c ai(String paramString, int paramInt1, int paramInt2)
+  public static c ak(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(64401);
     c localc = new c();
     localc.errCode = paramInt1;
-    localc.dNP = paramInt2;
+    localc.fHa = paramInt2;
     String str1 = d.getUserId();
-    String str2 = q.aoG();
-    String str3 = y.hhp();
-    localc.dNR = FingerPrintAuth.genPayFPEncrypt(d.fL(MMApplicationContext.getContext()), str1, str2, String.valueOf(paramInt2), str3, paramString, Build.MODEL);
-    localc.dNS = FingerPrintAuth.genOpenFPSign(d.fL(MMApplicationContext.getContext()), d.getUserId(), q.aoG(), localc.dNR);
+    String str2 = q.auM();
+    String str3 = y.iiR();
+    localc.fHc = FingerPrintAuth.genPayFPEncrypt(d.gf(MMApplicationContext.getContext()), str1, str2, String.valueOf(paramInt2), str3, paramString, Build.MODEL);
+    localc.fHd = FingerPrintAuth.genOpenFPSign(d.gf(MMApplicationContext.getContext()), d.getUserId(), q.auM(), localc.fHc);
     AppMethodBeat.o(64401);
     return localc;
   }

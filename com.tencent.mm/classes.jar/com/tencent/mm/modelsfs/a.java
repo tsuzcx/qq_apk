@@ -8,19 +8,19 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  private static boolean jiQ = false;
-  long jiR;
-  private String jiS;
-  long jiT;
+  private static boolean lYN = false;
+  long lYO;
+  private String lYP;
+  long lYQ;
   long mNativePtr;
   
   public a(long paramLong)
   {
     AppMethodBeat.i(155977);
-    this.jiR = 0L;
+    this.lYO = 0L;
     this.mNativePtr = 0L;
-    this.jiT = 0L;
-    this.jiS = String.valueOf(paramLong);
+    this.lYQ = 0L;
+    this.lYP = String.valueOf(paramLong);
     init();
     AppMethodBeat.o(155977);
   }
@@ -28,10 +28,10 @@ public final class a
   public a(String paramString)
   {
     AppMethodBeat.i(155978);
-    this.jiR = 0L;
+    this.lYO = 0L;
     this.mNativePtr = 0L;
-    this.jiT = 0L;
-    this.jiS = paramString;
+    this.lYQ = 0L;
+    this.lYP = paramString;
     init();
     AppMethodBeat.o(155978);
   }
@@ -42,17 +42,17 @@ public final class a
     if (this.mNativePtr == 0L) {
       Log.i("MicroMsg.EncEngine", "transFor " + Util.getStack().toString());
     }
-    if (jiQ) {
+    if (lYN) {
       Log.i("MicroMsg.EncEngine", "trans for  " + hashCode() + " " + paramArrayOfByte.length);
     }
-    if ((jiQ) && (this.jiR < 64L)) {
-      Log.d("MicroMsg.EncEngine", "dump before _offset " + this.jiR + "  length:" + paramInt + " " + Util.dumpHex(paramArrayOfByte) + " hashcode " + hashCode());
+    if ((lYN) && (this.lYO < 64L)) {
+      Log.d("MicroMsg.EncEngine", "dump before _offset " + this.lYO + "  length:" + paramInt + " " + Util.dumpHex(paramArrayOfByte) + " hashcode " + hashCode());
     }
-    MMIMAGEENCJNI.transFor(this.mNativePtr, paramArrayOfByte, this.jiR, paramInt);
-    if ((jiQ) && (this.jiR < 64L)) {
-      Log.d("MicroMsg.EncEngine", "dump after _offset " + this.jiR + "  length:" + paramInt + " " + Util.dumpHex(paramArrayOfByte) + " hashcode " + hashCode());
+    MMIMAGEENCJNI.transFor(this.mNativePtr, paramArrayOfByte, this.lYO, paramInt);
+    if ((lYN) && (this.lYO < 64L)) {
+      Log.d("MicroMsg.EncEngine", "dump after _offset " + this.lYO + "  length:" + paramInt + " " + Util.dumpHex(paramArrayOfByte) + " hashcode " + hashCode());
     }
-    this.jiR += paramInt;
+    this.lYO += paramInt;
     AppMethodBeat.o(155980);
     return paramInt;
   }
@@ -69,8 +69,8 @@ public final class a
   final void init()
   {
     AppMethodBeat.i(155979);
-    Log.i("MicroMsg.EncEngine", "init  key  enckey " + this.jiS + "  hashcode " + hashCode());
-    this.mNativePtr = MMIMAGEENCJNI.open(this.jiS);
+    Log.i("MicroMsg.EncEngine", "init  key  enckey " + this.lYP + "  hashcode " + hashCode());
+    this.mNativePtr = MMIMAGEENCJNI.open(this.lYP);
     try
     {
       Log.i("MicroMsg.EncEngine", "mNativePtr " + this.mNativePtr + " " + hashCode());
@@ -86,7 +86,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelsfs.a
  * JD-Core Version:    0.7.0.1
  */

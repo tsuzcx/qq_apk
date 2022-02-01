@@ -17,11 +17,11 @@ public abstract class r
 {
   protected final List<kotlin.l.b.a.b.d.a.e.y> a(Type[] paramArrayOfType, Annotation[][] paramArrayOfAnnotation, boolean paramBoolean)
   {
-    kotlin.g.b.p.h(paramArrayOfType, "parameterTypes");
-    kotlin.g.b.p.h(paramArrayOfAnnotation, "parameterAnnotations");
+    kotlin.g.b.p.k(paramArrayOfType, "parameterTypes");
+    kotlin.g.b.p.k(paramArrayOfAnnotation, "parameterAnnotations");
     ArrayList localArrayList = new ArrayList(paramArrayOfType.length);
-    Object localObject = a.TmV;
-    List localList = a.b(hyV());
+    Object localObject = a.aaPP;
+    List localList = a.b(iDg());
     if (localList != null) {}
     int j;
     w localw;
@@ -32,19 +32,19 @@ public abstract class r
       if (j >= k) {
         break label251;
       }
-      localObject = w.Tnu;
-      localw = w.a.b(paramArrayOfType[j]);
+      localObject = w.aaQo;
+      localw = w.a.j(paramArrayOfType[j]);
       if (localList == null) {
         break label239;
       }
-      localObject = (String)j.L(localList, j + i);
+      localObject = (String)j.M(localList, j + i);
       if (localObject != null) {
         break;
       }
-      throw ((Throwable)new IllegalStateException(("No parameter with index " + j + '+' + i + " (name=" + hAH() + " type=" + localw + ") in " + localList + "@ReflectJavaMember").toString()));
+      throw ((Throwable)new IllegalStateException(("No parameter with index " + j + '+' + i + " (name=" + iEU() + " type=" + localw + ") in " + localList + "@ReflectJavaMember").toString()));
     }
     label191:
-    if ((paramBoolean) && (j == e.V(paramArrayOfType))) {}
+    if ((paramBoolean) && (j == e.Z(paramArrayOfType))) {}
     for (boolean bool = true;; bool = false)
     {
       localArrayList.add(new y(localw, paramArrayOfAnnotation[j], (String)localObject, bool));
@@ -60,69 +60,69 @@ public abstract class r
   
   public boolean equals(Object paramObject)
   {
-    return ((paramObject instanceof r)) && (kotlin.g.b.p.j(hyV(), ((r)paramObject).hyV()));
+    return ((paramObject instanceof r)) && (kotlin.g.b.p.h(iDg(), ((r)paramObject).iDg()));
   }
   
-  public final int getModifiers()
+  public int hashCode()
   {
-    return hyV().getModifiers();
+    return iDg().hashCode();
   }
   
-  public final kotlin.l.b.a.b.f.f hAH()
+  public final ba iDQ()
   {
-    Object localObject = hyV().getName();
+    return t.a.d(this);
+  }
+  
+  public abstract Member iDg();
+  
+  public final kotlin.l.b.a.b.f.f iEU()
+  {
+    Object localObject = iDg().getName();
     if (localObject != null) {
-      return kotlin.l.b.a.b.f.f.btY((String)localObject);
+      return kotlin.l.b.a.b.f.f.bHb((String)localObject);
     }
-    localObject = h.TDd;
-    kotlin.g.b.p.g(localObject, "SpecialNames.NO_NAME_PROVIDED");
+    localObject = h.abfQ;
+    kotlin.g.b.p.j(localObject, "SpecialNames.NO_NAME_PROVIDED");
     return localObject;
   }
   
-  public final AnnotatedElement hCG()
+  public final AnnotatedElement iGX()
   {
-    Member localMember = hyV();
+    Member localMember = iDg();
     if (localMember == null) {
       throw new kotlin.t("null cannot be cast to non-null type java.lang.reflect.AnnotatedElement");
     }
     return (AnnotatedElement)localMember;
   }
   
-  public final boolean hCQ()
+  public final int iHb()
+  {
+    return iDg().getModifiers();
+  }
+  
+  public final boolean iHk()
   {
     return t.a.a(this);
   }
   
-  public final boolean hCR()
+  public final boolean iHl()
   {
     return t.a.c(this);
   }
   
-  public int hashCode()
-  {
-    return hyV().hashCode();
-  }
-  
-  public final boolean hgu()
+  public final boolean ihW()
   {
     return t.a.b(this);
   }
   
-  public abstract Member hyV();
-  
-  public final ba hzE()
-  {
-    return t.a.d(this);
-  }
-  
   public String toString()
   {
-    return getClass().getName() + ": " + hyV();
+    return getClass().getName() + ": " + iDg();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d.b.r
  * JD-Core Version:    0.7.0.1
  */

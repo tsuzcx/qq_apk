@@ -1,121 +1,154 @@
 package com.tencent.mm.plugin.appbrand.luggage.b;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.text.TextUtils;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.plugin.appbrand.ac.b;
-import com.tencent.mm.plugin.appbrand.ac.p.a;
-import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ChannelUtil;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.f.a.b;
+import com.tencent.mm.plugin.appbrand.f.a.c;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo;
-import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo.WhichApp;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.vfs.q;
 
 public final class f
-  implements p.a
+  extends com.tencent.luggage.bridge.impl.a.a
+  implements com.tencent.mm.plugin.appbrand.f.b
 {
-  private Context mContext;
-  private String version = "";
+  private final AppBrandRuntime nxs;
   
-  public f(Context paramContext)
+  f(AppBrandRuntime paramAppBrandRuntime)
   {
-    this.mContext = paramContext;
+    this.nxs = paramAppBrandRuntime;
   }
   
-  public static String acq(String paramString)
+  private static Pair<String, String> akl(String paramString)
   {
-    AppMethodBeat.i(224209);
-    if (!ao.gJH())
+    AppMethodBeat.i(246038);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(224209);
+      paramString = Pair.create(null, null);
+      AppMethodBeat.o(246038);
       return paramString;
     }
-    String str = Util.nullAsNil(paramString);
-    paramString = str;
-    if (!str.contains("Android Tablet")) {
-      paramString = str + " Android Tablet";
+    int i = paramString.lastIndexOf("wxblob://");
+    if (i < 0)
+    {
+      paramString = Pair.create(null, null);
+      AppMethodBeat.o(246038);
+      return paramString;
     }
-    AppMethodBeat.o(224209);
+    paramString = Pair.create(paramString.substring(0, i), paramString.substring(i));
+    AppMethodBeat.o(246038);
     return paramString;
   }
   
-  public final String Nv()
+  public final void a(String paramString, a.c paramc)
   {
-    return " MicroMessenger/";
+    AppMethodBeat.i(246040);
+    if (paramc == null)
+    {
+      AppMethodBeat.o(246040);
+      return;
+    }
+    r localr = this.nxs.getFileSystem();
+    if (localr == null)
+    {
+      paramc.A(null);
+      AppMethodBeat.o(246040);
+      return;
+    }
+    paramc.A(localr.adQ((String)akl(paramString).second));
+    AppMethodBeat.o(246040);
   }
   
-  public final String version()
+  public final boolean a(e parame, String paramString)
   {
-    AppMethodBeat.i(103126);
-    Object localObject;
-    if (!TextUtils.isEmpty(this.version))
+    AppMethodBeat.i(246043);
+    if ((parame == null) || (paramString == null) || (paramString.length() == 0))
     {
-      localObject = this.version;
-      AppMethodBeat.o(103126);
-      return localObject;
+      AppMethodBeat.o(246043);
+      return false;
     }
-    try
+    if ((paramString.startsWith("wxblob://")) || (Util.nullAsNil((String)akl(paramString).second).startsWith("wxblob://")))
     {
-      localObject = b.getPackageInfo(this.mContext, MMApplicationContext.getPackageName());
-      if (localObject != null)
-      {
-        this.version += ChannelUtil.formatVersion(null, d.KyO);
-        this.version = (this.version + "." + ((PackageInfo)localObject).versionCode);
-        this.version = (this.version + "(" + String.format("0x%08X", new Object[] { Integer.valueOf(d.KyO) }) + ")");
-        StringBuilder localStringBuilder = new StringBuilder().append(this.version).append(" Process/");
-        localObject = MMApplicationContext.getPackageName().trim().toLowerCase();
-        str2 = MMApplicationContext.getProcessName().trim().toLowerCase();
-        if (!str2.equals(localObject)) {
-          break label358;
-        }
-        localObject = "mm";
-        this.version = ((String)localObject);
-        localStringBuilder = new StringBuilder().append(this.version).append(" WeChat/");
-        if (!q.is64BitRuntime()) {
-          break label386;
-        }
-        localObject = "arm64";
-        this.version = ((String)localObject);
-        this.version = (this.version + " " + WeChatBrands.AppInfo.current().getUserAgent());
-        if (ChannelUtil.isGPVersion()) {
-          this.version += " GPVersion/1";
-        }
-      }
-      this.version = acq(this.version);
-      localObject = this.version;
-      AppMethodBeat.o(103126);
-      return localObject;
+      AppMethodBeat.o(246043);
+      return true;
     }
-    catch (Exception localException)
+    AppMethodBeat.o(246043);
+    return false;
+  }
+  
+  public final Bitmap b(String paramString, Rect paramRect, a.b paramb)
+  {
+    AppMethodBeat.i(246041);
+    if (!dq(paramString))
     {
-      label386:
-      for (;;)
+      AppMethodBeat.o(246041);
+      return null;
+    }
+    paramb = this.nxs.getFileSystem();
+    if (paramb == null)
+    {
+      AppMethodBeat.o(246041);
+      return null;
+    }
+    paramString = paramb.adI((String)akl(paramString).second);
+    if ((paramString == null) || (!paramString.ifE()))
+    {
+      AppMethodBeat.o(246041);
+      return null;
+    }
+    paramString = paramString.bOF();
+    if (!paramString.startsWith("file://")) {
+      paramString = "file://".concat(String.valueOf(paramString));
+    }
+    for (;;)
+    {
+      if (paramRect != null) {}
+      for (paramRect = new com.tencent.mm.plugin.appbrand.luggage.a.a(paramRect.left, paramRect.top, paramRect.width(), paramRect.height());; paramRect = null)
       {
-        String str2;
-        String str1 = null;
-        continue;
-        label358:
-        if (str2.startsWith(str1))
-        {
-          str1 = str2.substring(str1.length() + 1);
-        }
-        else
-        {
-          str1 = "unknown";
-          continue;
-          str1 = "arm32";
-        }
+        paramString = com.tencent.mm.modelappbrand.a.b.bhh().a(paramString, paramRect);
+        AppMethodBeat.o(246041);
+        return paramString;
       }
     }
+  }
+  
+  public final String b(e parame, String paramString)
+  {
+    AppMethodBeat.i(246045);
+    if (!a(parame, paramString))
+    {
+      AppMethodBeat.o(246045);
+      return paramString;
+    }
+    parame = Util.nullAsNil((String)akl(paramString).second);
+    AppMethodBeat.o(246045);
+    return parame;
+  }
+  
+  public final boolean dq(String paramString)
+  {
+    AppMethodBeat.i(246036);
+    if ((paramString != null) && (paramString.startsWith("wxblob://")))
+    {
+      AppMethodBeat.o(246036);
+      return true;
+    }
+    AppMethodBeat.o(246036);
+    return false;
+  }
+  
+  public final String key()
+  {
+    return "WxBlobImageReader";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.f
  * JD-Core Version:    0.7.0.1
  */

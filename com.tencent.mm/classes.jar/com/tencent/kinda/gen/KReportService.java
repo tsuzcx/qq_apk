@@ -2,9 +2,13 @@ package com.tencent.kinda.gen;
 
 public abstract interface KReportService
 {
+  public abstract String getLastSessionInfo();
+  
   public abstract void idkeyStat(long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean);
   
   public abstract void kvStat(int paramInt, String paramString);
+  
+  public abstract void setLastSessionInfo(String paramString);
   
   public abstract long svrTimeMs();
 }

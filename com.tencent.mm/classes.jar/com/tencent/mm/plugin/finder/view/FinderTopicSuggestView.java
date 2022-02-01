@@ -8,19 +8,21 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
 import kotlin.g.a.b;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderTopicSuggestView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "listLayout", "listScrollView", "Landroid/widget/ScrollView;", "onItemSelected", "Lkotlin/Function1;", "", "getOnItemSelected", "()Lkotlin/jvm/functions/Function1;", "setOnItemSelected", "(Lkotlin/jvm/functions/Function1;)V", "initView", "refresh", "suggestions", "", "Lcom/tencent/mm/protocal/protobuf/FinderSuggestion;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderTopicSuggestView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "listLayout", "listScrollView", "Landroid/widget/ScrollView;", "onItemSelected", "Lkotlin/Function1;", "", "getOnItemSelected", "()Lkotlin/jvm/functions/Function1;", "setOnItemSelected", "(Lkotlin/jvm/functions/Function1;)V", "initView", "refresh", "suggestions", "", "Lcom/tencent/mm/protocal/protobuf/FinderSuggestion;", "plugin-finder_release"})
 public final class FinderTopicSuggestView
   extends LinearLayout
 {
+  private ScrollView Bbo;
+  private LinearLayout Bbp;
+  private b<? super String, x> Bbq;
   private final String TAG;
-  private ScrollView wpG;
-  private LinearLayout wpH;
-  private b<? super String, x> wpI;
   
   public FinderTopicSuggestView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -44,24 +46,24 @@ public final class FinderTopicSuggestView
   {
     AppMethodBeat.i(168422);
     setOrientation(1);
-    LayoutInflater.from(getContext()).inflate(2131494661, (ViewGroup)this, true);
-    View localView = findViewById(2131309354);
-    p.g(localView, "findViewById(R.id.topic_suggest_item_scrollview)");
-    this.wpG = ((ScrollView)localView);
-    localView = findViewById(2131309355);
-    p.g(localView, "findViewById(R.id.topic_suggest_list)");
-    this.wpH = ((LinearLayout)localView);
+    LayoutInflater.from(getContext()).inflate(b.g.finder_topic_suggest_view, (ViewGroup)this, true);
+    View localView = findViewById(b.f.topic_suggest_item_scrollview);
+    p.j(localView, "findViewById(R.id.topic_suggest_item_scrollview)");
+    this.Bbo = ((ScrollView)localView);
+    localView = findViewById(b.f.topic_suggest_list);
+    p.j(localView, "findViewById(R.id.topic_suggest_list)");
+    this.Bbp = ((LinearLayout)localView);
     AppMethodBeat.o(168422);
   }
   
   public final b<String, x> getOnItemSelected()
   {
-    return this.wpI;
+    return this.Bbq;
   }
   
   public final void setOnItemSelected(b<? super String, x> paramb)
   {
-    this.wpI = paramb;
+    this.Bbq = paramb;
   }
 }
 

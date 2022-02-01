@@ -1,23 +1,13 @@
 package com.tencent.mm.plugin.chatroom.a;
 
-import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.model.ap;
-import com.tencent.mm.storagebase.h;
+import com.tencent.mm.kernel.b.a;
 
 public abstract interface c
   extends a
-{
-  public abstract ap aSX();
-  
-  public abstract boolean akx(String paramString);
-  
-  public abstract ap b(h paramh);
-  
-  public abstract void setDebugMode(boolean paramBoolean);
-}
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.chatroom.a.c
  * JD-Core Version:    0.7.0.1
  */

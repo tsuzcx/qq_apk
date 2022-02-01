@@ -26,12 +26,12 @@ public class YTAGReflectLiveCheckJNIInterface
   
   static
   {
-    AppMethodBeat.i(193636);
+    AppMethodBeat.i(231632);
     TIME_REGULATION_STRICT = 0;
     TIME_REGULATION_LOOSE = 1;
     instance = null;
     instanceLock = new ReentrantLock();
-    AppMethodBeat.o(193636);
+    AppMethodBeat.o(231632);
   }
   
   private YTAGReflectLiveCheckJNIInterface()
@@ -200,20 +200,20 @@ public class YTAGReflectLiveCheckJNIInterface
   
   public static void nativeLog(int paramInt, String paramString)
   {
-    AppMethodBeat.i(193635);
+    AppMethodBeat.i(231614);
     if (loggerListener != null) {
       loggerListener.log("[YTAGReflectLiveCheckJNIInterface.nativeLog]", paramString);
     }
-    AppMethodBeat.o(193635);
+    AppMethodBeat.o(231614);
   }
   
   public static void nativeLog(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(193634);
+    AppMethodBeat.i(231612);
     if (loggerListener != null) {
       loggerListener.log(paramString1, paramString2);
     }
-    AppMethodBeat.o(193634);
+    AppMethodBeat.o(231612);
   }
   
   public static String sdkVersion()

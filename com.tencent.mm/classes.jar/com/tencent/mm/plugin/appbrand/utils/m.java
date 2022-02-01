@@ -1,97 +1,38 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-import org.apache.commons.b.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import kotlin.l;
 
-public class m
-  implements InvocationHandler
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/utils/CheckServerTrustedIssueFixerABTest;", "", "()V", "DEFAULT_IS_CHECK_SERVER_TRUSTED_ISSUE_FIXER_ENABLE", "", "isEnable", "()Z", "plugin-appbrand-integration_release"})
+public final class m
 {
-  public static <I> I g(String paramString, Class<I> paramClass)
+  public static final m riE;
+  
+  static
   {
-    AppMethodBeat.i(176786);
-    paramString = new m()
-    {
-      public final Object invoke(Object paramAnonymousObject, Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
-      {
-        AppMethodBeat.i(176785);
-        Log.i(this.ogS, "dummy invoke method(%s) args(%s)", new Object[] { paramAnonymousMethod.getName(), a.toString(paramAnonymousArrayOfObject, "NULL") });
-        paramAnonymousObject = super.invoke(paramAnonymousObject, paramAnonymousMethod, paramAnonymousArrayOfObject);
-        AppMethodBeat.o(176785);
-        return paramAnonymousObject;
-      }
-    };
-    paramString = paramClass.cast(Proxy.newProxyInstance(paramClass.getClassLoader(), new Class[] { paramClass }, paramString));
-    AppMethodBeat.o(176786);
-    return paramString;
+    AppMethodBeat.i(258244);
+    riE = new m();
+    AppMethodBeat.o(258244);
   }
   
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public static boolean isEnable()
   {
-    AppMethodBeat.i(147718);
-    paramObject = paramMethod.getReturnType();
-    if (paramObject.equals(Integer.TYPE))
+    AppMethodBeat.i(258242);
+    b localb = (b)h.ae(b.class);
+    if (localb != null) {}
+    for (boolean bool = localb.a(b.a.vCk, true);; bool = true)
     {
-      AppMethodBeat.o(147718);
-      return Integer.valueOf(0);
+      AppMethodBeat.o(258242);
+      return bool;
     }
-    if (paramObject.equals(Long.TYPE))
-    {
-      AppMethodBeat.o(147718);
-      return Long.valueOf(0L);
-    }
-    if (paramObject.equals(Double.TYPE))
-    {
-      AppMethodBeat.o(147718);
-      return Double.valueOf(0.0D);
-    }
-    if (paramObject.equals(Float.TYPE))
-    {
-      AppMethodBeat.o(147718);
-      return Float.valueOf(0.0F);
-    }
-    if (paramObject.equals(Short.TYPE))
-    {
-      AppMethodBeat.o(147718);
-      return Integer.valueOf(0);
-    }
-    if (paramObject.equals(Byte.TYPE))
-    {
-      AppMethodBeat.o(147718);
-      return Integer.valueOf(0);
-    }
-    if (paramObject.equals(Character.TYPE))
-    {
-      AppMethodBeat.o(147718);
-      return Integer.valueOf(0);
-    }
-    if (paramObject.equals(Boolean.TYPE))
-    {
-      paramObject = Boolean.FALSE;
-      AppMethodBeat.o(147718);
-      return paramObject;
-    }
-    if (paramObject.equals(Boolean.class))
-    {
-      paramObject = Boolean.FALSE;
-      AppMethodBeat.o(147718);
-      return paramObject;
-    }
-    if (paramObject.isInterface())
-    {
-      AppMethodBeat.o(147718);
-      return null;
-    }
-    AppMethodBeat.o(147718);
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.m
  * JD-Core Version:    0.7.0.1
  */

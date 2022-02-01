@@ -13,35 +13,38 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.account.ui.RegByMobileSetPwdUI;
+import com.tencent.mm.plugin.setting.b.f;
+import com.tencent.mm.plugin.setting.b.g;
+import com.tencent.mm.plugin.setting.b.i;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.MMActivity;
 
 public class SettingsAliasResultUI
   extends MMActivity
 {
-  private TextView Dbl;
-  private Button Dbm;
-  private ImageView Dbn;
-  private boolean Dbo;
-  private String fMb;
-  private TextView jBR;
+  private TextView JgM;
+  private Button JgN;
+  private ImageView JgO;
+  private boolean JgP;
+  private String idS;
+  private TextView mrM;
   
   public int getLayoutId()
   {
-    return 2131496247;
+    return b.g.settings_alias_result;
   }
   
   public void initView()
   {
     AppMethodBeat.i(74112);
-    setMMTitle(2131763146);
-    this.jBR = ((TextView)findViewById(2131299510));
-    this.Dbl = ((TextView)findViewById(2131296716));
-    this.Dbm = ((Button)findViewById(2131307664));
-    this.Dbn = ((ImageView)findViewById(2131305593));
+    setMMTitle(b.i.modify_username);
+    this.mrM = ((TextView)findViewById(b.f.desc_tv));
+    this.JgM = ((TextView)findViewById(b.f.alias_tv));
+    this.JgN = ((Button)findViewById(b.f.setpwd_btn));
+    this.JgO = ((ImageView)findViewById(b.f.ok_iv));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -52,24 +55,24 @@ public class SettingsAliasResultUI
         return true;
       }
     });
-    this.Dbl.setText(this.fMb);
-    if (!this.Dbo)
+    this.JgM.setText(this.idS);
+    if (!this.JgP)
     {
-      this.Dbm.setVisibility(0);
-      this.jBR.setText(getString(2131763151));
+      this.JgN.setVisibility(0);
+      this.mrM.setText(getString(b.i.modify_username_result_goto_setpass));
     }
     for (;;)
     {
-      this.Dbm.setOnClickListener(new View.OnClickListener()
+      this.JgN.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(74108);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsAliasResultUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/setting/ui/setting/SettingsAliasResultUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           paramAnonymousView = new Intent(SettingsAliasResultUI.this.getContext(), RegByMobileSetPwdUI.class);
-          paramAnonymousView.putExtra("kintent_hint", SettingsAliasResultUI.this.getString(2131764424));
+          paramAnonymousView.putExtra("kintent_hint", SettingsAliasResultUI.this.getString(b.i.regbymobile_reg_setpwd_tip_after_set_alias));
           SettingsAliasResultUI.this.startActivityForResult(paramAnonymousView, 0);
           a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAliasResultUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(74108);
@@ -77,8 +80,8 @@ public class SettingsAliasResultUI
       });
       AppMethodBeat.o(74112);
       return;
-      this.Dbm.setVisibility(8);
-      this.jBR.setText(getString(2131763152));
+      this.JgN.setVisibility(8);
+      this.mrM.setText(getString(b.i.modify_username_result_normal_desc));
     }
   }
   
@@ -96,8 +99,8 @@ public class SettingsAliasResultUI
   {
     AppMethodBeat.i(74109);
     super.onCreate(paramBundle);
-    this.fMb = ((String)g.aAh().azQ().get(42, null));
-    this.Dbo = getIntent().getBooleanExtra("has_pwd", true);
+    this.idS = ((String)h.aHG().aHp().b(42, null));
+    this.JgP = getIntent().getBooleanExtra("has_pwd", true);
     initView();
     AppMethodBeat.o(74109);
   }
@@ -124,7 +127,7 @@ public class SettingsAliasResultUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsAliasResultUI
  * JD-Core Version:    0.7.0.1
  */

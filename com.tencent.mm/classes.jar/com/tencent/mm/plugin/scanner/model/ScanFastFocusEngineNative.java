@@ -87,13 +87,15 @@ public class ScanFastFocusEngineNative
   
   public native void setNetSpeed(int paramInt);
   
+  public native void setPHashConfig(String paramString);
+  
   public native void setServerState(int paramInt);
   
   public native ScanFrameProcessResult shouldJump(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.ScanFastFocusEngineNative
  * JD-Core Version:    0.7.0.1
  */

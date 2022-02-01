@@ -2,41 +2,38 @@ package com.tencent.mm.ui.transmit;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.a.l;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.ui.contact.a.e;
-import com.tencent.mm.ui.contact.a.i;
-import com.tencent.mm.ui.contact.o;
-import com.tencent.mm.ui.contact.o.a;
+import com.tencent.mm.ui.contact.a.f;
 import com.tencent.mm.ui.contact.p;
+import com.tencent.mm.ui.contact.p.a;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 public final class b
-  extends o
+  extends p
 {
-  private MMCreateChatroomUI QxW;
-  private l QxX;
+  com.tencent.mm.plugin.fts.a.a.k BIK;
+  private com.tencent.mm.plugin.fts.a.a.a BIV;
+  private MMCreateChatroomUI XWb;
+  private l XWc;
   private MMHandler handler;
   String query;
-  k wWP;
-  private com.tencent.mm.plugin.fts.a.a.a wXa;
   
   public b(MMCreateChatroomUI paramMMCreateChatroomUI, int paramInt)
   {
     super(paramMMCreateChatroomUI, false, paramInt);
     AppMethodBeat.i(39232);
     this.handler = new MMHandler(Looper.getMainLooper());
-    this.QxX = new l()
+    this.XWc = new l()
     {
-      public final void b(k paramAnonymousk)
+      public final void b(com.tencent.mm.plugin.fts.a.a.k paramAnonymousk)
       {
         AppMethodBeat.i(39231);
         if (paramAnonymousk.resultCode == 0) {
@@ -44,48 +41,48 @@ public final class b
         }
         for (;;)
         {
-          if (paramAnonymousk.wXb.size() == 0)
+          if (paramAnonymousk.BIW.size() == 0)
           {
             m localm = new m();
-            localm.wVX = "no_result​";
-            paramAnonymousk.wXb = new ArrayList();
-            paramAnonymousk.wXb.add(localm);
+            localm.BHS = "no_result​";
+            paramAnonymousk.BIW = new ArrayList();
+            paramAnonymousk.BIW.add(localm);
           }
           b.this.clearCache();
           b.this.notifyDataSetChanged();
-          b.a(b.this).B(paramAnonymousk.wTn.query, paramAnonymousk.wXb.size(), true);
+          b.a(b.this).g(paramAnonymousk.BFk.query, paramAnonymousk.BIW.size(), true);
           AppMethodBeat.o(39231);
           return;
           b.a(b.this, null);
         }
       }
     };
-    this.QxW = paramMMCreateChatroomUI;
+    this.XWb = paramMMCreateChatroomUI;
     AppMethodBeat.o(39232);
   }
   
-  public final void b(String paramString, int[] paramArrayOfInt)
+  public final void a(String paramString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(39233);
     this.query = paramString;
     paramArrayOfInt = new j();
     paramArrayOfInt.handler = this.handler;
-    paramArrayOfInt.wWZ = this.QxX;
+    paramArrayOfInt.BIU = this.XWc;
     paramArrayOfInt.query = paramString;
-    paramArrayOfInt.wWY = com.tencent.mm.plugin.fts.a.c.b.wXy;
-    paramArrayOfInt.wWU = new int[] { 131072 };
-    paramArrayOfInt.wWX.add("filehelper");
-    paramArrayOfInt.wWX.add(z.aTY());
-    paramArrayOfInt.wWX.addAll(this.QxW.Qya.gYd());
-    this.wXa = ((n)g.ah(n.class)).search(2, paramArrayOfInt);
+    paramArrayOfInt.BIT = com.tencent.mm.plugin.fts.a.c.b.BJu;
+    paramArrayOfInt.BIP = new int[] { 131072 };
+    paramArrayOfInt.BIS.add("filehelper");
+    paramArrayOfInt.BIS.add(z.bcZ());
+    paramArrayOfInt.BIS.addAll(this.XWb.XWf.hYO());
+    this.BIV = ((n)h.ag(n.class)).search(2, paramArrayOfInt);
     AppMethodBeat.o(39233);
   }
   
   public final void clearData()
   {
     AppMethodBeat.i(39234);
-    if (this.wXa != null) {
-      ((n)g.ah(n.class)).cancelSearchTask(this.wXa);
+    if (this.BIV != null) {
+      ((n)h.ag(n.class)).cancelSearchTask(this.BIV);
     }
     this.query = null;
     AppMethodBeat.o(39234);
@@ -94,9 +91,9 @@ public final class b
   public final int getCount()
   {
     AppMethodBeat.i(39236);
-    if ((this.wWP != null) && (this.wWP.wXb != null))
+    if ((this.BIK != null) && (this.BIK.BIW != null))
     {
-      int i = this.wWP.wXb.size();
+      int i = this.BIK.BIW.size();
       AppMethodBeat.o(39236);
       return i;
     }
@@ -104,34 +101,34 @@ public final class b
     return 0;
   }
   
-  public final com.tencent.mm.ui.contact.a.a va(int paramInt)
+  public final com.tencent.mm.ui.contact.a.a ye(int paramInt)
   {
     AppMethodBeat.i(39235);
-    m localm = (m)this.wWP.wXb.get(paramInt);
+    m localm = (m)this.BIK.BIW.get(paramInt);
     Object localObject;
-    if (localm.wVX.equals("no_result​")) {
-      localObject = new i(paramInt);
+    if (localm.BHS.equals("no_result​")) {
+      localObject = new com.tencent.mm.ui.contact.a.k(paramInt);
     }
     for (;;)
     {
       ((com.tencent.mm.ui.contact.a.a)localObject).query = this.query;
-      ((com.tencent.mm.ui.contact.a.a)localObject).scene = this.scene;
-      ((com.tencent.mm.ui.contact.a.a)localObject).PWh = false;
+      ((com.tencent.mm.ui.contact.a.a)localObject).scene = getScene();
+      ((com.tencent.mm.ui.contact.a.a)localObject).XsX = false;
       AppMethodBeat.o(39235);
       return localObject;
-      localObject = new e(paramInt);
-      ((e)localObject).lqW = localm;
-      ((com.tencent.mm.ui.contact.a.a)localObject).wWd = this.wWP.wWd;
-      ((com.tencent.mm.ui.contact.a.a)localObject).PWh = eWh();
-      ((e)localObject).hkH = true;
-      ((e)localObject).wXL = (paramInt + 1);
-      ((e)localObject).gE(((e)localObject).lqW.type, ((e)localObject).lqW.wVW);
+      localObject = new f(paramInt);
+      ((f)localObject).olG = localm;
+      ((com.tencent.mm.ui.contact.a.a)localObject).BHY = this.BIK.BHY;
+      ((com.tencent.mm.ui.contact.a.a)localObject).XsX = fJk();
+      ((f)localObject).jWq = true;
+      ((f)localObject).BJH = (paramInt + 1);
+      ((f)localObject).hx(((f)localObject).olG.type, ((f)localObject).olG.BHR);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.b
  * JD-Core Version:    0.7.0.1
  */

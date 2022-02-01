@@ -4,13 +4,15 @@ import java.nio.ByteBuffer;
 
 public abstract interface l
 {
-  public abstract j K(ByteBuffer paramByteBuffer);
+  public abstract j G(ByteBuffer paramByteBuffer);
   
-  public abstract Object L(ByteBuffer paramByteBuffer);
+  public abstract Object H(ByteBuffer paramByteBuffer);
   
   public abstract ByteBuffer b(j paramj);
   
-  public abstract ByteBuffer eQ(Object paramObject);
+  public abstract ByteBuffer bw(String paramString1, String paramString2, String paramString3);
+  
+  public abstract ByteBuffer eV(Object paramObject);
   
   public abstract ByteBuffer h(String paramString1, String paramString2, Object paramObject);
 }

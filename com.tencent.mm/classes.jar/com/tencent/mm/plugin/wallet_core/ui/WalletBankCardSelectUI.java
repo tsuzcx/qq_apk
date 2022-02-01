@@ -8,33 +8,39 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.platformtools.SpellMap;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
 import com.tencent.mm.plugin.wallet_core.model.e;
-import com.tencent.mm.plugin.wallet_core.model.t;
-import com.tencent.mm.plugin.wallet_core.model.x;
+import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.plugin.wallet_core.model.y;
 import com.tencent.mm.plugin.wallet_core.ui.view.BankCardSelectSortView;
 import com.tencent.mm.plugin.wallet_core.ui.view.BankCardSelectSortView.a;
 import com.tencent.mm.plugin.wallet_core.utils.a.8;
 import com.tencent.mm.plugin.wallet_core.utils.a.9;
 import com.tencent.mm.plugin.wallet_core.utils.a.a;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.sortview.d;
-import com.tencent.mm.ui.tools.s;
-import com.tencent.mm.ui.tools.s.b;
+import com.tencent.mm.ui.tools.t;
+import com.tencent.mm.ui.tools.t.b;
 import com.tencent.mm.vending.g.c;
 import com.tencent.mm.vending.g.g;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class WalletBankCardSelectUI
@@ -45,15 +51,15 @@ public class WalletBankCardSelectUI
   private List<d> bankcardQueryList;
   public List<ElementQuery> bankcardTypeList;
   private boolean isSearchMode;
-  protected WalletBankCardSelectUI.a mBankCardComparator;
+  protected a mBankCardComparator;
   protected BankCardSelectSortView mBankCardSelectSortView;
-  private s mSearchViewHelper;
+  private t mSearchViewHelper;
   private List<d> origBankcardList;
   
   public WalletBankCardSelectUI()
   {
     AppMethodBeat.i(70699);
-    this.mBankCardComparator = new WalletBankCardSelectUI.a((byte)0);
+    this.mBankCardComparator = new a((byte)0);
     this.isSearchMode = false;
     AppMethodBeat.o(70699);
   }
@@ -64,8 +70,8 @@ public class WalletBankCardSelectUI
     Iterator localIterator = this.origBankcardList.iterator();
     while (localIterator.hasNext())
     {
-      BankCardSelectSortView.a locala = (BankCardSelectSortView.a)((d)localIterator.next()).data;
-      if ((!Util.isNullOrNil(paramElementQuery.ynT)) && (paramElementQuery.ynT.equals(locala.AOj)))
+      BankCardSelectSortView.a locala = (BankCardSelectSortView.a)((d)localIterator.next()).bnW;
+      if ((!Util.isNullOrNil(paramElementQuery.DNV)) && (paramElementQuery.DNV.equals(locala.GHx)))
       {
         AppMethodBeat.o(70703);
         return true;
@@ -96,7 +102,7 @@ public class WalletBankCardSelectUI
     int i = 0;
     if (i < j)
     {
-      String str = SpellMap.x(paramString1.charAt(i));
+      String str = SpellMap.D(paramString1.charAt(i));
       if (!Util.isNullOrNil(str))
       {
         if (!paramBoolean) {
@@ -149,14 +155,14 @@ public class WalletBankCardSelectUI
       {
         d locald = new d();
         BankCardSelectSortView.a locala = new BankCardSelectSortView.a();
-        locala.AOj = ((ElementQuery)localObject).ynT;
+        locala.GHx = ((ElementQuery)localObject).DNV;
         if (paramMap != null)
         {
-          localObject = (e)paramMap.get(((ElementQuery)localObject).dDj);
+          localObject = (e)paramMap.get(((ElementQuery)localObject).fvP);
           if (localObject != null)
           {
-            locala.icon = ((e)localObject).AAU;
-            locala.ImL = ((e)localObject).HWe;
+            locala.icon = ((e)localObject).GtW;
+            locala.Pfd = ((e)localObject).OOe;
             locala.pinyin = ((e)localObject).pinyin;
           }
         }
@@ -165,11 +171,11 @@ public class WalletBankCardSelectUI
         }
         for (;;)
         {
-          locald.Pae = locala.pinyin.toUpperCase().charAt(0);
-          locald.data = locala;
+          locald.Wtr = locala.pinyin.toUpperCase().charAt(0);
+          locald.bnW = locala;
           this.origBankcardList.add(locald);
           break;
-          locala.pinyin = getFullPY(locala.AOj, "#", "_", true);
+          locala.pinyin = getFullPY(locala.GHx, "#", "_", true);
         }
       }
     }
@@ -179,7 +185,7 @@ public class WalletBankCardSelectUI
       public final void run()
       {
         AppMethodBeat.i(70696);
-        WalletBankCardSelectUI.this.mBankCardSelectSortView.hy(WalletBankCardSelectUI.this.origBankcardList);
+        WalletBankCardSelectUI.this.mBankCardSelectSortView.ig(WalletBankCardSelectUI.this.origBankcardList);
         AppMethodBeat.o(70696);
       }
     });
@@ -200,15 +206,15 @@ public class WalletBankCardSelectUI
       {
         localObject2 = (ElementQuery)((Iterator)localObject1).next();
         Bankcard localBankcard = new Bankcard();
-        localBankcard.field_bankName = ((ElementQuery)localObject2).ynT;
-        localBankcard.field_bankcardType = ((ElementQuery)localObject2).dDj;
+        localBankcard.field_bankName = ((ElementQuery)localObject2).DNV;
+        localBankcard.field_bankcardType = ((ElementQuery)localObject2).fvP;
         localLinkedList.add(localBankcard);
       }
     }
     getContext();
     Object localObject1 = new a.a()
     {
-      public final void bc(Map<String, e> paramAnonymousMap)
+      public final void aW(Map<String, e> paramAnonymousMap)
       {
         AppMethodBeat.i(70695);
         Log.i("WalletBankCardSelectUI", "get logo callback: %s", new Object[] { Integer.valueOf(paramAnonymousMap.size()) });
@@ -220,44 +226,44 @@ public class WalletBankCardSelectUI
     if (localLinkedList.isEmpty())
     {
       Log.w("MicroMsg.BankcardLogoHelper", "req is null");
-      ((a.a)localObject1).bc((Map)localObject2);
+      ((a.a)localObject1).aW((Map)localObject2);
       AppMethodBeat.o(70704);
       return;
     }
-    g.en(localLinkedList).d(new a.9(locala)).d(new a.8(locala, localLinkedList, (Map)localObject2, (a.a)localObject1));
+    g.et(localLinkedList).d(new a.9(locala)).d(new a.8(locala, localLinkedList, (Map)localObject2, (a.a)localObject1));
     AppMethodBeat.o(70704);
   }
   
   public int getLayoutId()
   {
-    return 2131496901;
+    return a.g.wallet_bankcard_select_ui;
   }
   
   public void initView()
   {
     AppMethodBeat.i(70701);
-    this.mBankCardSelectSortView = ((BankCardSelectSortView)findViewById(2131297316));
+    this.mBankCardSelectSortView = ((BankCardSelectSortView)findViewById(a.f.bankcard_sort_view));
     this.mBankCardSelectSortView.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(70690);
         b localb = new b();
-        localb.bm(paramAnonymousAdapterView);
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.zo(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/WalletBankCardSelectUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+        localb.bn(paramAnonymousAdapterView);
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.Fs(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_core/ui/WalletBankCardSelectUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
         paramAnonymousAdapterView = (d)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt);
-        WalletBankCardSelectUI.this.onItemSelect(paramAnonymousAdapterView.data, paramAnonymousInt);
+        WalletBankCardSelectUI.this.onItemSelect(paramAnonymousAdapterView.bnW, paramAnonymousInt);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletBankCardSelectUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(70690);
       }
     });
-    this.mSearchViewHelper = new s((byte)0);
-    this.mSearchViewHelper.Qwi = new s.b()
+    this.mSearchViewHelper = new t((byte)0);
+    this.mSearchViewHelper.XUl = new t.b()
     {
-      public final boolean SN(String paramAnonymousString)
+      public final boolean aat(String paramAnonymousString)
       {
         AppMethodBeat.i(70694);
         WalletBankCardSelectUI.this.hideVKB();
@@ -265,36 +271,36 @@ public class WalletBankCardSelectUI
         return false;
       }
       
-      public final void SO(String paramAnonymousString)
+      public final void aau(String paramAnonymousString)
       {
         AppMethodBeat.i(70693);
         Log.d("WalletBankCardSelectUI", "search text: %s", new Object[] { paramAnonymousString });
-        WalletBankCardSelectUI.this.mBankCardSelectSortView.bmm(paramAnonymousString);
+        WalletBankCardSelectUI.this.mBankCardSelectSortView.byL(paramAnonymousString);
         AppMethodBeat.o(70693);
       }
       
-      public final void bnA() {}
-      
-      public final void bnB() {}
-      
-      public final void bny()
+      public final void bxH()
       {
         AppMethodBeat.i(70692);
         WalletBankCardSelectUI.access$102(WalletBankCardSelectUI.this, false);
         WalletBankCardSelectUI.this.hideVKB();
-        WalletBankCardSelectUI.this.mBankCardSelectSortView.BF(true);
+        WalletBankCardSelectUI.this.mBankCardSelectSortView.FZ(true);
         WalletBankCardSelectUI.this.mBankCardSelectSortView.setMode(0);
         AppMethodBeat.o(70692);
       }
       
-      public final void bnz()
+      public final void bxI()
       {
         AppMethodBeat.i(70691);
         WalletBankCardSelectUI.access$102(WalletBankCardSelectUI.this, true);
-        WalletBankCardSelectUI.this.mBankCardSelectSortView.BF(false);
+        WalletBankCardSelectUI.this.mBankCardSelectSortView.FZ(false);
         WalletBankCardSelectUI.this.mBankCardSelectSortView.setMode(1);
         AppMethodBeat.o(70691);
       }
+      
+      public final void bxJ() {}
+      
+      public final void bxK() {}
     };
     AppMethodBeat.o(70701);
   }
@@ -303,8 +309,8 @@ public class WalletBankCardSelectUI
   {
     AppMethodBeat.i(70700);
     super.onCreate(paramBundle);
-    setMMTitle(2131756532);
-    this.bankcardList = t.fQQ().HQe;
+    setMMTitle(a.i.bank_remit_select_bank_title);
+    this.bankcardList = u.gJw().OIn;
     initView();
     fetchData();
     addSearchMenu(true, this.mSearchViewHelper);
@@ -319,8 +325,8 @@ public class WalletBankCardSelectUI
     {
       hideVKB();
       Intent localIntent = new Intent();
-      localIntent.putExtra("bank_name", paramObject.AOj);
-      Log.i("WalletBankCardSelectUI", "item bank: %s", new Object[] { paramObject.AOj });
+      localIntent.putExtra("bank_name", paramObject.GHx);
+      Log.i("WalletBankCardSelectUI", "item bank: %s", new Object[] { paramObject.GHx });
       setResult(-1, localIntent);
       finish();
     }
@@ -336,6 +342,19 @@ public class WalletBankCardSelectUI
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  static class a
+    implements Comparator<d>
+  {
+    private Collator OVs;
+    
+    private a()
+    {
+      AppMethodBeat.i(70697);
+      this.OVs = Collator.getInstance(Locale.getDefault());
+      AppMethodBeat.o(70697);
+    }
   }
 }
 

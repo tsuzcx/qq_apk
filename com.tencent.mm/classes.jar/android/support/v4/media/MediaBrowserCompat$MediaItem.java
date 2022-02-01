@@ -14,13 +14,13 @@ public class MediaBrowserCompat$MediaItem
   implements Parcelable
 {
   public static final Parcelable.Creator<MediaItem> CREATOR = new Parcelable.Creator() {};
-  private final int FV;
-  private final MediaDescriptionCompat Ln;
+  private final int cN;
+  private final MediaDescriptionCompat cO;
   
   MediaBrowserCompat$MediaItem(Parcel paramParcel)
   {
-    this.FV = paramParcel.readInt();
-    this.Ln = ((MediaDescriptionCompat)MediaDescriptionCompat.CREATOR.createFromParcel(paramParcel));
+    this.cN = paramParcel.readInt();
+    this.cO = ((MediaDescriptionCompat)MediaDescriptionCompat.CREATOR.createFromParcel(paramParcel));
   }
   
   private MediaBrowserCompat$MediaItem(MediaDescriptionCompat paramMediaDescriptionCompat, int paramInt)
@@ -28,14 +28,14 @@ public class MediaBrowserCompat$MediaItem
     if (paramMediaDescriptionCompat == null) {
       throw new IllegalArgumentException("description cannot be null");
     }
-    if (TextUtils.isEmpty(paramMediaDescriptionCompat.Mc)) {
+    if (TextUtils.isEmpty(paramMediaDescriptionCompat.cY)) {
       throw new IllegalArgumentException("description must have a non-empty media id");
     }
-    this.FV = paramInt;
-    this.Ln = paramMediaDescriptionCompat;
+    this.cN = paramInt;
+    this.cO = paramMediaDescriptionCompat;
   }
   
-  public static List<MediaItem> i(List<?> paramList)
+  public static List<MediaItem> c(List<?> paramList)
   {
     if ((paramList == null) || (Build.VERSION.SDK_INT < 21)) {
       return null;
@@ -47,7 +47,7 @@ public class MediaBrowserCompat$MediaItem
       paramList = localIterator.next();
       if ((paramList == null) || (Build.VERSION.SDK_INT < 21)) {}
       int i;
-      for (paramList = null;; paramList = new MediaItem(MediaDescriptionCompat.v(((MediaBrowser.MediaItem)paramList).getDescription()), i))
+      for (paramList = null;; paramList = new MediaItem(MediaDescriptionCompat.d(((MediaBrowser.MediaItem)paramList).getDescription()), i))
       {
         localArrayList.add(paramList);
         break;
@@ -65,21 +65,21 @@ public class MediaBrowserCompat$MediaItem
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("MediaItem{");
-    localStringBuilder.append("mFlags=").append(this.FV);
-    localStringBuilder.append(", mDescription=").append(this.Ln);
+    localStringBuilder.append("mFlags=").append(this.cN);
+    localStringBuilder.append(", mDescription=").append(this.cO);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.FV);
-    this.Ln.writeToParcel(paramParcel, paramInt);
+    paramParcel.writeInt(this.cN);
+    this.cO.writeToParcel(paramParcel, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     android.support.v4.media.MediaBrowserCompat.MediaItem
  * JD-Core Version:    0.7.0.1
  */

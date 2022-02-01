@@ -3,41 +3,43 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bbk
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int dLS;
-  public long iVn;
-  public int source;
+  public String RSu;
+  public int fOv;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209650);
+    AppMethodBeat.i(206436);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.dLS);
-      paramVarArgs.bb(2, this.iVn);
-      paramVarArgs.aM(3, this.source);
-      AppMethodBeat.o(209650);
+      paramVarArgs.aY(1, this.fOv);
+      if (this.RSu != null) {
+        paramVarArgs.f(2, this.RSu);
+      }
+      AppMethodBeat.o(206436);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bu(1, this.dLS);
-      int i = g.a.a.b.b.a.r(2, this.iVn);
-      int j = g.a.a.b.b.a.bu(3, this.source);
-      AppMethodBeat.o(209650);
-      return paramInt + 0 + i + j;
+      int i = g.a.a.b.b.a.bM(1, this.fOv) + 0;
+      paramInt = i;
+      if (this.RSu != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.RSu);
+      }
+      AppMethodBeat.o(206436);
+      return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(209650);
+      AppMethodBeat.o(206436);
       return 0;
     }
     if (paramInt == 3)
@@ -47,22 +49,18 @@ public final class bbk
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(209650);
+        AppMethodBeat.o(206436);
         return -1;
       case 1: 
-        localbbk.dLS = locala.UbS.zi();
-        AppMethodBeat.o(209650);
-        return 0;
-      case 2: 
-        localbbk.iVn = locala.UbS.zl();
-        AppMethodBeat.o(209650);
+        localbbk.fOv = locala.abFh.AK();
+        AppMethodBeat.o(206436);
         return 0;
       }
-      localbbk.source = locala.UbS.zi();
-      AppMethodBeat.o(209650);
+      localbbk.RSu = locala.abFh.readString();
+      AppMethodBeat.o(206436);
       return 0;
     }
-    AppMethodBeat.o(209650);
+    AppMethodBeat.o(206436);
     return -1;
   }
 }

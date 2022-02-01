@@ -28,11 +28,11 @@ public final class k
     this.db = paramISQLiteDatabase;
   }
   
-  public static String Ek(int paramInt)
+  public static String HL(int paramInt)
   {
     AppMethodBeat.i(113013);
     Object localObject = new StringBuilder();
-    ArrayList localArrayList = b.Eh(paramInt);
+    ArrayList localArrayList = b.HI(paramInt);
     if ((localArrayList != null) && (localArrayList.size() > 0))
     {
       ((StringBuilder)localObject).append(" (");
@@ -54,7 +54,7 @@ public final class k
     return "";
   }
   
-  public final boolean El(int paramInt)
+  public final boolean HM(int paramInt)
   {
     AppMethodBeat.i(113018);
     Object localObject = new StringBuilder();
@@ -74,7 +74,7 @@ public final class k
     }
   }
   
-  public final boolean W(String paramString, int paramInt1, int paramInt2)
+  public final boolean Y(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(113019);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -92,21 +92,7 @@ public final class k
     }
   }
   
-  public final ShareCardInfo ajA(String paramString)
-  {
-    AppMethodBeat.i(113021);
-    ShareCardInfo localShareCardInfo = new ShareCardInfo();
-    localShareCardInfo.field_card_id = paramString;
-    if (super.get(localShareCardInfo, new String[0]))
-    {
-      AppMethodBeat.o(113021);
-      return localShareCardInfo;
-    }
-    AppMethodBeat.o(113021);
-    return null;
-  }
-  
-  public final ArrayList<String> ajw(String paramString)
+  public final ArrayList<String> arj(String paramString)
   {
     AppMethodBeat.i(113014);
     Log.i("MicroMsg.ShareCardInfoStorage", "queryNameByCardtpId(), limit is 99");
@@ -153,7 +139,7 @@ public final class k
     }
   }
   
-  public final int ajx(String paramString)
+  public final int ark(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(113015);
@@ -177,7 +163,7 @@ public final class k
     return i;
   }
   
-  public final String ajy(String paramString)
+  public final String arl(String paramString)
   {
     AppMethodBeat.i(113016);
     Log.i("MicroMsg.ShareCardInfoStorage", "queryCardIdByCardtpId()");
@@ -211,7 +197,7 @@ public final class k
     return paramString;
   }
   
-  public final void ajz(String paramString)
+  public final void arm(String paramString)
   {
     AppMethodBeat.i(113020);
     paramString = "delete from ShareCardInfo where card_id = '" + paramString + "'";
@@ -219,7 +205,21 @@ public final class k
     AppMethodBeat.o(113020);
   }
   
-  public final String fv(String paramString1, String paramString2)
+  public final ShareCardInfo arn(String paramString)
+  {
+    AppMethodBeat.i(113021);
+    ShareCardInfo localShareCardInfo = new ShareCardInfo();
+    localShareCardInfo.field_card_id = paramString;
+    if (super.get(localShareCardInfo, new String[0]))
+    {
+      AppMethodBeat.o(113021);
+      return localShareCardInfo;
+    }
+    AppMethodBeat.o(113021);
+    return null;
+  }
+  
+  public final String fJ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(113017);
     Log.i("MicroMsg.ShareCardInfoStorage", "queryNewCardIdByCardtpId()");

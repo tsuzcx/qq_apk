@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.qqmail.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int Brl;
-  public String Brm;
-  public long Brn;
-  public int FileSize;
-  public int oTW;
+  public int HlE;
+  public String HlF;
+  public int HlG;
+  public long HlH;
+  public int rVU;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -17,35 +17,35 @@ public final class f
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.Brl);
-      if (this.Brm != null) {
-        paramVarArgs.e(2, this.Brm);
+      paramVarArgs.aY(1, this.HlE);
+      if (this.HlF != null) {
+        paramVarArgs.f(2, this.HlF);
       }
-      paramVarArgs.aM(3, this.oTW);
-      paramVarArgs.aM(4, this.FileSize);
-      paramVarArgs.bb(5, this.Brn);
+      paramVarArgs.aY(3, this.rVU);
+      paramVarArgs.aY(4, this.HlG);
+      paramVarArgs.bm(5, this.HlH);
       AppMethodBeat.o(122660);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bu(1, this.Brl) + 0;
+      int i = g.a.a.b.b.a.bM(1, this.HlE) + 0;
       paramInt = i;
-      if (this.Brm != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.Brm);
+      if (this.HlF != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.HlF);
       }
-      i = g.a.a.b.b.a.bu(3, this.oTW);
-      int j = g.a.a.b.b.a.bu(4, this.FileSize);
-      int k = g.a.a.b.b.a.r(5, this.Brn);
+      i = g.a.a.b.b.a.bM(3, this.rVU);
+      int j = g.a.a.b.b.a.bM(4, this.HlG);
+      int k = g.a.a.b.b.a.p(5, this.HlH);
       AppMethodBeat.o(122660);
       return paramInt + i + j + k;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
       AppMethodBeat.o(122660);
@@ -61,23 +61,23 @@ public final class f
         AppMethodBeat.o(122660);
         return -1;
       case 1: 
-        localf.Brl = locala.UbS.zi();
+        localf.HlE = locala.abFh.AK();
         AppMethodBeat.o(122660);
         return 0;
       case 2: 
-        localf.Brm = locala.UbS.readString();
+        localf.HlF = locala.abFh.readString();
         AppMethodBeat.o(122660);
         return 0;
       case 3: 
-        localf.oTW = locala.UbS.zi();
+        localf.rVU = locala.abFh.AK();
         AppMethodBeat.o(122660);
         return 0;
       case 4: 
-        localf.FileSize = locala.UbS.zi();
+        localf.HlG = locala.abFh.AK();
         AppMethodBeat.o(122660);
         return 0;
       }
-      localf.Brn = locala.UbS.zl();
+      localf.HlH = locala.abFh.AN();
       AppMethodBeat.o(122660);
       return 0;
     }

@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.se;
-import com.tencent.mm.g.a.se.b;
+import com.tencent.mm.f.a.tf;
+import com.tencent.mm.f.a.tf.b;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
@@ -45,25 +45,26 @@ public class FaceTransStubUI
     AppMethodBeat.i(104269);
     super.onCreate(paramBundle);
     Log.i("MicroMsg.FaceTransStubUI", "carson: start FaceTransStubUI ");
-    paramBundle = new se();
-    paramBundle.dYI.scene = getIntent().getIntExtra("scene", 0);
-    paramBundle.dYI.packageName = getIntent().getStringExtra("package");
-    paramBundle.dYI.dYK = getIntent().getStringExtra("packageSign");
-    paramBundle.dYI.dYL = getIntent().getStringExtra("otherVerifyTitle");
-    paramBundle.dYI.dYM = getIntent().getStringExtra("needFrontPage");
-    paramBundle.dYI.requestCode = 63;
+    paramBundle = new tf();
+    paramBundle.fSA.scene = getIntent().getIntExtra("scene", 0);
+    paramBundle.fSA.packageName = getIntent().getStringExtra("package");
+    paramBundle.fSA.fSC = getIntent().getStringExtra("packageSign");
+    paramBundle.fSA.fSD = getIntent().getStringExtra("otherVerifyTitle");
+    paramBundle.fSA.fSE = getIntent().getStringExtra("needFrontPage");
+    paramBundle.fSA.fSF = getIntent().getStringExtra("faceVerifyTitle");
+    paramBundle.fSA.requestCode = 63;
     if ((this.context instanceof Activity)) {
-      paramBundle.dYI.dKq = ((Activity)this.context);
+      paramBundle.fSA.fDf = ((Activity)this.context);
     }
     EventCenter.instance.publish(paramBundle);
-    Log.i("MicroMsg.FaceTransStubUI", "carson: start face detect event result: %b", new Object[] { Boolean.valueOf(paramBundle.dYJ.dYN) });
-    if (!paramBundle.dYJ.dYN)
+    Log.i("MicroMsg.FaceTransStubUI", "carson: start face detect event result: %b", new Object[] { Boolean.valueOf(paramBundle.fSB.fSG) });
+    if (!paramBundle.fSB.fSG)
     {
-      if (paramBundle.dYJ.extras == null) {
-        break label227;
+      if (paramBundle.fSB.extras == null) {
+        break label243;
       }
       Intent localIntent = new Intent();
-      localIntent.putExtras(paramBundle.dYJ.extras);
+      localIntent.putExtras(paramBundle.fSB.extras);
       setResult(1, localIntent);
     }
     for (;;)
@@ -71,7 +72,7 @@ public class FaceTransStubUI
       finish();
       AppMethodBeat.o(104269);
       return;
-      label227:
+      label243:
       setResult(1);
     }
   }

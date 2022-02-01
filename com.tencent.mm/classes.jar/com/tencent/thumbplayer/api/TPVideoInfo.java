@@ -17,7 +17,7 @@ public class TPVideoInfo
   
   private TPVideoInfo(Builder paramBuilder)
   {
-    AppMethodBeat.i(189061);
+    AppMethodBeat.i(219940);
     this.width = paramBuilder.width;
     this.height = paramBuilder.height;
     this.videoCodecId = paramBuilder.videoCodecId;
@@ -25,7 +25,7 @@ public class TPVideoInfo
     this.definition = paramBuilder.definition;
     this.downloadParamList = paramBuilder.downloadParamList;
     this.builder = paramBuilder;
-    AppMethodBeat.o(189061);
+    AppMethodBeat.o(219940);
   }
   
   public Builder getBuilder()
@@ -74,9 +74,9 @@ public class TPVideoInfo
     
     public TPVideoInfo build()
     {
-      AppMethodBeat.i(189060);
+      AppMethodBeat.i(219938);
       TPVideoInfo localTPVideoInfo = new TPVideoInfo(this, null);
-      AppMethodBeat.o(189060);
+      AppMethodBeat.o(219938);
       return localTPVideoInfo;
     }
     
@@ -88,14 +88,14 @@ public class TPVideoInfo
     
     public Builder downloadParam(TPDownloadParamData paramTPDownloadParamData)
     {
-      AppMethodBeat.i(189059);
+      AppMethodBeat.i(219937);
       if (b.isEmpty(this.downloadParamList)) {
         this.downloadParamList = new ArrayList();
       }
       for (;;)
       {
         this.downloadParamList.add(paramTPDownloadParamData);
-        AppMethodBeat.o(189059);
+        AppMethodBeat.o(219937);
         return this;
         this.downloadParamList.clear();
       }
@@ -129,7 +129,7 @@ public class TPVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPVideoInfo
  * JD-Core Version:    0.7.0.1
  */

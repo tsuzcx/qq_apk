@@ -19,24 +19,24 @@ import java.util.LinkedList;
 public class FavTagPanel
   extends MMTagPanel
 {
-  private LinkedList<MMTagPanel.d> tmP;
-  private a tmQ;
-  private View.OnClickListener tmR;
+  private LinkedList<MMTagPanel.d> wTn;
+  private a wTo;
+  private View.OnClickListener wTp;
   
   public FavTagPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(107556);
-    this.tmP = new LinkedList();
-    this.tmQ = null;
-    this.tmR = new View.OnClickListener()
+    this.wTn = new LinkedList();
+    this.wTo = null;
+    this.wTp = new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
         AppMethodBeat.i(107554);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/fav/ui/widget/FavTagPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/fav/ui/widget/FavTagPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (((Integer)paramAnonymousView.getTag()).intValue() == 0)
         {
           FavTagPanel.a(FavTagPanel.this, (TextView)paramAnonymousView);
@@ -65,7 +65,7 @@ public class FavTagPanel
               public final void run()
               {
                 AppMethodBeat.i(107553);
-                FavTagPanel.a(FavTagPanel.this).asx(((TextView)paramAnonymousView).getText().toString());
+                FavTagPanel.a(FavTagPanel.this).aAA(((TextView)paramAnonymousView).getText().toString());
                 AppMethodBeat.o(107553);
               }
             });
@@ -80,16 +80,16 @@ public class FavTagPanel
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(107555);
-    this.tmP = new LinkedList();
-    this.tmQ = null;
-    this.tmR = new View.OnClickListener()
+    this.wTn = new LinkedList();
+    this.wTo = null;
+    this.wTp = new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
         AppMethodBeat.i(107554);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/fav/ui/widget/FavTagPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/fav/ui/widget/FavTagPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (((Integer)paramAnonymousView.getTag()).intValue() == 0)
         {
           FavTagPanel.a(FavTagPanel.this, (TextView)paramAnonymousView);
@@ -118,7 +118,7 @@ public class FavTagPanel
               public final void run()
               {
                 AppMethodBeat.i(107553);
-                FavTagPanel.a(FavTagPanel.this).asx(((TextView)paramAnonymousView).getText().toString());
+                FavTagPanel.a(FavTagPanel.this).aAA(((TextView)paramAnonymousView).getText().toString());
                 AppMethodBeat.o(107553);
               }
             });
@@ -129,12 +129,12 @@ public class FavTagPanel
     AppMethodBeat.o(107555);
   }
   
-  public final void cWT() {}
+  public final void dmb() {}
   
   public void setCallBack(a parama)
   {
     AppMethodBeat.i(107557);
-    this.tmQ = parama;
+    this.wTo = parama;
     super.setCallBack(parama);
     AppMethodBeat.o(107557);
   }
@@ -149,35 +149,35 @@ public class FavTagPanel
       return;
     }
     paramString = paramString.trim();
-    Object localObject = this.tmP.iterator();
+    Object localObject = this.wTn.iterator();
     while (((Iterator)localObject).hasNext()) {
-      if (paramString.equals(((MMTagPanel.d)((Iterator)localObject).next()).OTF))
+      if (paramString.equals(((MMTagPanel.d)((Iterator)localObject).next()).WmS))
       {
         Log.w("MicroMsg.FavTagPanel", "want to add type %s, but it exsited!", new Object[] { paramString });
         AppMethodBeat.o(107558);
         return;
       }
     }
-    this.tmP.clear();
-    localObject = gLf();
-    this.tmP.add(localObject);
+    this.wTn.clear();
+    localObject = hKd();
+    this.wTn.add(localObject);
     a((MMTagPanel.d)localObject, paramString, true);
-    ((MMTagPanel.d)localObject).OTG.setOnClickListener(this.tmR);
+    ((MMTagPanel.d)localObject).WmT.setOnClickListener(this.wTp);
     removeViews(0, getChildCount() - 1);
-    addView(((MMTagPanel.d)localObject).OTG, 0);
-    gLg();
+    addView(((MMTagPanel.d)localObject).WmT, 0);
+    hKe();
     AppMethodBeat.o(107558);
   }
   
   public static abstract interface a
     extends MMTagPanel.a
   {
-    public abstract void asx(String paramString);
+    public abstract void aAA(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.widget.FavTagPanel
  * JD-Core Version:    0.7.0.1
  */

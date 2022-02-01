@@ -19,23 +19,23 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
 {
-  private static e hup;
-  private static final SpannableString huq;
-  int breakStrategy = -1;
-  public int gravity = 51;
-  float huA = 0.0F;
-  float huB = 1.0F;
-  boolean huC = false;
-  InputFilter.LengthFilter huD = null;
-  CharSequence hur = null;
-  CharSequence hus = null;
-  int hut = 0;
-  int huu = 0;
-  TextPaint huv = null;
-  Layout.Alignment huw = Layout.Alignment.ALIGN_NORMAL;
-  TextUtils.TruncateAt hux = null;
-  int huy = -1;
-  TextDirectionHeuristic huz = null;
+  private static e kgk;
+  private static final SpannableString kgl;
+  public int ek = 51;
+  CharSequence kgm = null;
+  CharSequence kgn = null;
+  int kgo = 0;
+  int kgp = 0;
+  TextPaint kgq = null;
+  Layout.Alignment kgr = Layout.Alignment.ALIGN_NORMAL;
+  TextUtils.TruncateAt kgs = null;
+  int kgt = -1;
+  TextDirectionHeuristic kgu = null;
+  float kgv = 0.0F;
+  float kgw = 1.0F;
+  boolean kgx = false;
+  int kgy = -1;
+  InputFilter.LengthFilter kgz = null;
   int maxLength = -1;
   int maxLines = 2147483647;
   int width = 0;
@@ -43,35 +43,35 @@ public final class d
   static
   {
     AppMethodBeat.i(141031);
-    hup = new e();
-    huq = new SpannableString("");
+    kgk = new e();
+    kgl = new SpannableString("");
     AppMethodBeat.o(141031);
   }
   
   private StaticLayout a(CharSequence paramCharSequence, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(196223);
+    AppMethodBeat.i(237885);
     if (paramInt2 >= 0) {
-      paramCharSequence = StaticLayout.Builder.obtain(paramCharSequence, this.hut, this.huu, this.huv, this.width).setAlignment(this.huw).setTextDirection(TextDirectionHeuristics.FIRSTSTRONG_LTR).setLineSpacing(this.huA, this.huB).setIncludePad(this.huC).setEllipsize(this.hux).setEllipsizedWidth(paramInt1).setBreakStrategy(paramInt2).setMaxLines(2147483647).build();
+      paramCharSequence = StaticLayout.Builder.obtain(paramCharSequence, this.kgo, this.kgp, this.kgq, this.width).setAlignment(this.kgr).setTextDirection(TextDirectionHeuristics.FIRSTSTRONG_LTR).setLineSpacing(this.kgv, this.kgw).setIncludePad(this.kgx).setEllipsize(this.kgs).setEllipsizedWidth(paramInt1).setBreakStrategy(paramInt2).setMaxLines(2147483647).build();
     }
     for (;;)
     {
-      AppMethodBeat.o(196223);
+      AppMethodBeat.o(237885);
       return paramCharSequence;
       if (paramBoolean)
       {
-        paramCharSequence = new StaticLayout(paramCharSequence, this.hut, this.huu, this.huv, this.width, this.huw, this.huB, this.huA, this.huC, this.hux, paramInt1);
+        paramCharSequence = new StaticLayout(paramCharSequence, this.kgo, this.kgp, this.kgq, this.width, this.kgr, this.kgw, this.kgv, this.kgx, this.kgs, paramInt1);
       }
       else if (Build.VERSION.SDK_INT >= 18)
       {
-        if (this.huz == null) {
-          this.huz = TextDirectionHeuristics.FIRSTSTRONG_LTR;
+        if (this.kgu == null) {
+          this.kgu = TextDirectionHeuristics.FIRSTSTRONG_LTR;
         }
-        paramCharSequence = com.tencent.mm.kiss.widget.textview.b.a.b(paramCharSequence, this.hut, this.huu, this.huv, this.width, this.huw, this.huz, this.huB, this.huA, this.huC, this.hux, paramInt1, this.maxLines);
+        paramCharSequence = com.tencent.mm.kiss.widget.textview.b.a.b(paramCharSequence, this.kgo, this.kgp, this.kgq, this.width, this.kgr, this.kgu, this.kgw, this.kgv, this.kgx, this.kgs, paramInt1, this.maxLines);
       }
       else
       {
-        paramCharSequence = com.tencent.mm.kiss.widget.textview.b.a.a(paramCharSequence, this.hut, this.huu, this.huv, this.width, this.huw, this.huB, this.huA, this.huC, this.hux, paramInt1, this.maxLines);
+        paramCharSequence = com.tencent.mm.kiss.widget.textview.b.a.a(paramCharSequence, this.kgo, this.kgp, this.kgq, this.width, this.kgr, this.kgw, this.kgv, this.kgx, this.kgs, paramInt1, this.maxLines);
       }
     }
   }
@@ -89,15 +89,15 @@ public final class d
     if (localObject == null) {
       paramCharSequence = "";
     }
-    localObject = aBk();
-    ((d)localObject).hur = paramCharSequence.toString();
-    ((d)localObject).hus = paramCharSequence;
-    ((d)localObject).hut = 0;
-    ((d)localObject).huu = i;
+    localObject = aIN();
+    ((d)localObject).kgm = paramCharSequence.toString();
+    ((d)localObject).kgn = paramCharSequence;
+    ((d)localObject).kgo = 0;
+    ((d)localObject).kgp = i;
     ((d)localObject).width = paramInt;
-    ((d)localObject).huv = new TextPaint();
+    ((d)localObject).kgq = new TextPaint();
     if (parama.maxLines != -1) {
-      ((d)localObject).qi(parama.maxLines);
+      ((d)localObject).sI(parama.maxLines);
     }
     if (parama.maxLength != -1)
     {
@@ -105,42 +105,42 @@ public final class d
       if (paramInt >= 0)
       {
         ((d)localObject).maxLength = paramInt;
-        ((d)localObject).huD = new InputFilter.LengthFilter(((d)localObject).maxLength);
+        ((d)localObject).kgz = new InputFilter.LengthFilter(((d)localObject).maxLength);
       }
     }
-    paramCharSequence = parama.huw;
+    paramCharSequence = parama.kgr;
     if (paramCharSequence != null) {
-      ((d)localObject).huw = paramCharSequence;
+      ((d)localObject).kgr = paramCharSequence;
     }
-    if (parama.hux != null) {
-      ((d)localObject).a(parama.hux);
+    if (parama.kgs != null) {
+      ((d)localObject).a(parama.kgs);
     }
-    ((d)localObject).gravity = parama.gravity;
-    if (parama.huY != -1)
+    ((d)localObject).ek = parama.ek;
+    if (parama.kgV != -1)
     {
-      paramInt = parama.huY;
+      paramInt = parama.kgV;
       if (paramInt >= 0) {
-        ((d)localObject).huy = paramInt;
+        ((d)localObject).kgt = paramInt;
       }
     }
-    if (parama.huz != null)
+    if (parama.kgu != null)
     {
-      paramCharSequence = parama.huz;
+      paramCharSequence = parama.kgu;
       if (Build.VERSION.SDK_INT >= 18) {
-        ((d)localObject).huz = paramCharSequence;
+        ((d)localObject).kgu = paramCharSequence;
       }
     }
-    float f1 = parama.huA;
-    float f2 = parama.huB;
-    ((d)localObject).huA = f1;
-    ((d)localObject).huB = f2;
-    ((d)localObject).huC = parama.huC;
-    if (parama.sB != null)
+    float f1 = parama.kgv;
+    float f2 = parama.kgw;
+    ((d)localObject).kgv = f1;
+    ((d)localObject).kgw = f2;
+    ((d)localObject).kgx = parama.kgx;
+    if (parama.bGp != null)
     {
       if (parama.fontStyle == -1) {
         break label540;
       }
-      paramCharSequence = parama.sB;
+      paramCharSequence = parama.bGp;
       i = parama.fontStyle;
       if (i <= 0) {
         break label512;
@@ -149,19 +149,19 @@ public final class d
         break label492;
       }
       paramCharSequence = Typeface.defaultFromStyle(i);
-      ((d)localObject).c(paramCharSequence);
+      ((d)localObject).d(paramCharSequence);
       if (paramCharSequence == null) {
         break label502;
       }
       paramInt = paramCharSequence.getStyle();
       label330:
       paramInt = (paramInt ^ 0xFFFFFFFF) & i;
-      paramCharSequence = ((d)localObject).huv;
+      paramCharSequence = ((d)localObject).kgq;
       if ((paramInt & 0x1) != 0) {
         bool = true;
       }
       paramCharSequence.setFakeBoldText(bool);
-      paramCharSequence = ((d)localObject).huv;
+      paramCharSequence = ((d)localObject).kgq;
       if ((paramInt & 0x2) == 0) {
         break label507;
       }
@@ -174,26 +174,26 @@ public final class d
       if (parama.textSize != -1.0F)
       {
         f1 = parama.textSize;
-        ((d)localObject).huv.setTextSize(f1);
+        ((d)localObject).kgq.setTextSize(f1);
       }
       if (parama.textColor != -1)
       {
         paramInt = parama.textColor;
-        ((d)localObject).huv.setColor(paramInt);
+        ((d)localObject).kgq.setColor(paramInt);
       }
       if (parama.linkColor != -1)
       {
         paramInt = parama.linkColor;
-        ((d)localObject).huv.linkColor = paramInt;
+        ((d)localObject).kgq.linkColor = paramInt;
       }
-      if (parama.iW != null) {
-        ((d)localObject).huv = parama.iW;
+      if (parama.bzo != null) {
+        ((d)localObject).kgq = parama.bzo;
       }
-      if (parama.breakStrategy >= 0)
+      if (parama.kgy >= 0)
       {
-        paramInt = parama.breakStrategy;
+        paramInt = parama.kgy;
         if (paramInt >= 0) {
-          ((d)localObject).breakStrategy = paramInt;
+          ((d)localObject).kgy = paramInt;
         }
       }
       AppMethodBeat.o(141027);
@@ -208,106 +208,106 @@ public final class d
       f1 = 0.0F;
       break label373;
       label512:
-      ((d)localObject).huv.setFakeBoldText(false);
-      ((d)localObject).huv.setTextSkewX(0.0F);
-      ((d)localObject).c(paramCharSequence);
+      ((d)localObject).kgq.setFakeBoldText(false);
+      ((d)localObject).kgq.setTextSkewX(0.0F);
+      ((d)localObject).d(paramCharSequence);
       continue;
       label540:
-      ((d)localObject).c(parama.sB);
+      ((d)localObject).d(parama.bGp);
     }
   }
   
   public static d a(CharSequence paramCharSequence, TextPaint paramTextPaint, int paramInt)
   {
-    AppMethodBeat.i(196220);
-    d locald = aBk();
-    locald.hus = paramCharSequence;
-    locald.hut = 0;
-    locald.huu = paramCharSequence.length();
-    locald.huv = paramTextPaint;
+    AppMethodBeat.i(237867);
+    d locald = aIN();
+    locald.kgn = paramCharSequence;
+    locald.kgo = 0;
+    locald.kgp = paramCharSequence.length();
+    locald.kgq = paramTextPaint;
     locald.width = paramInt;
-    AppMethodBeat.o(196220);
+    AppMethodBeat.o(237867);
     return locald;
   }
   
-  private static d aBk()
+  private static d aIN()
   {
-    AppMethodBeat.i(196221);
-    d locald2 = hup.aBm();
+    AppMethodBeat.i(237869);
+    d locald2 = kgk.aIP();
     d locald1 = locald2;
     if (locald2 == null) {
       locald1 = new d();
     }
-    AppMethodBeat.o(196221);
+    AppMethodBeat.o(237869);
     return locald1;
   }
   
-  private d c(Typeface paramTypeface)
+  private d d(Typeface paramTypeface)
   {
     AppMethodBeat.i(141028);
-    this.huv.setTypeface(paramTypeface);
+    this.kgq.setTypeface(paramTypeface);
     AppMethodBeat.o(141028);
     return this;
   }
   
-  public final d C(CharSequence paramCharSequence)
+  public final d I(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(196222);
+    AppMethodBeat.i(237873);
     if (paramCharSequence == null)
     {
-      AppMethodBeat.o(196222);
+      AppMethodBeat.o(237873);
       return this;
     }
-    this.hus = paramCharSequence;
-    this.hut = 0;
-    this.huu = paramCharSequence.length();
-    AppMethodBeat.o(196222);
+    this.kgn = paramCharSequence;
+    this.kgo = 0;
+    this.kgp = paramCharSequence.length();
+    AppMethodBeat.o(237873);
     return this;
   }
   
   public final d a(TextUtils.TruncateAt paramTruncateAt)
   {
     if (paramTruncateAt != null) {
-      this.hux = paramTruncateAt;
+      this.kgs = paramTruncateAt;
     }
     return this;
   }
   
   @TargetApi(18)
-  public final f aBl()
+  public final f aIO()
   {
     AppMethodBeat.i(141029);
     int j;
     Object localObject1;
-    if ((this.hux == null) || (this.huy <= 0))
+    if ((this.kgs == null) || (this.kgt <= 0))
     {
       j = this.width;
-      if ((this.hux == null) && (this.maxLines == 1)) {
-        this.hux = TextUtils.TruncateAt.END;
+      if ((this.kgs == null) && (this.maxLines == 1)) {
+        this.kgs = TextUtils.TruncateAt.END;
       }
-      if ((this.maxLength > 0) && (this.huD != null))
+      if ((this.maxLength > 0) && (this.kgz != null))
       {
-        localObject1 = this.huD.filter(this.hus, 0, this.hus.length(), huq, 0, 0);
+        localObject1 = this.kgz.filter(this.kgn, 0, this.kgn.length(), kgl, 0, 0);
         if (localObject1 != null)
         {
-          this.hus = ((CharSequence)localObject1);
-          if (this.huu > this.hus.length()) {
-            this.huu = this.hus.length();
+          this.kgn = ((CharSequence)localObject1);
+          if (this.kgp > this.kgn.length()) {
+            this.kgp = this.kgn.length();
           }
         }
       }
       if (h.DEBUG) {
-        Log.i("StaticTextView.StaticLayoutBuilder", "StaticLayoutWrapper build " + this.hus + " " + this.width);
+        Log.i("StaticTextView.StaticLayoutBuilder", "StaticLayoutWrapper build " + this.kgn + " " + this.width);
       }
-      if (this.huw == Layout.Alignment.ALIGN_NORMAL) {}
-      switch (this.gravity & 0x800007)
+      if (this.kgr == Layout.Alignment.ALIGN_NORMAL) {}
+      switch (this.ek & 0x800007)
       {
       default: 
-        this.huw = Layout.Alignment.ALIGN_NORMAL;
+        this.kgr = Layout.Alignment.ALIGN_NORMAL;
         label251:
-        this.huv.setAntiAlias(true);
+        this.kgq.setAntiAlias(true);
         localObject1 = null;
-        if (((this.huz != null) && ((!com.tencent.mm.compatible.util.d.oD(18)) || (this.huz != TextDirectionHeuristics.FIRSTSTRONG_LTR))) || ((this.maxLines != 2147483647) && (this.maxLines != -1))) {
+        if (((this.kgu != null) && ((!com.tencent.mm.compatible.util.d.qV(18)) || (this.kgu != TextDirectionHeuristics.FIRSTSTRONG_LTR))) || ((this.maxLines != 2147483647) && (this.maxLines != -1))) {
           break;
         }
       }
@@ -316,7 +316,7 @@ public final class d
     {
       try
       {
-        localObject3 = a(this.hus, bool, j, this.breakStrategy);
+        localObject3 = a(this.kgn, bool, j, this.kgy);
         localObject1 = localObject3;
       }
       catch (Exception localException2)
@@ -332,7 +332,7 @@ public final class d
             Object localObject4 = localObject1;
             try
             {
-              SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(this.hus);
+              SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(this.kgn);
               k = i;
               localObject4 = localObject1;
               MetricAffectingSpan[] arrayOfMetricAffectingSpan = (MetricAffectingSpan[])localSpannableStringBuilder.getSpans(0, localSpannableStringBuilder.length(), MetricAffectingSpan.class);
@@ -352,10 +352,10 @@ public final class d
               {
                 k = i;
                 localObject4 = localObject1;
-                this.hus = localSpannableStringBuilder;
+                this.kgn = localSpannableStringBuilder;
                 k = i;
                 localObject4 = localObject1;
-                localObject1 = a(this.hus, bool, j, this.breakStrategy);
+                localObject1 = a(this.kgn, bool, j, this.kgy);
                 k = i;
                 localObject4 = localObject1;
                 Log.i("StaticTextView.StaticLayoutBuilder", "fix from build static layout, fixCount: %s", new Object[] { Integer.valueOf(i) });
@@ -375,34 +375,34 @@ public final class d
       localObject3 = localObject1;
       if (localObject1 == null)
       {
-        this.hus = this.hus.toString();
-        localObject3 = a(this.hus, bool, j, this.breakStrategy);
+        this.kgn = this.kgn.toString();
+        localObject3 = a(this.kgn, bool, j, this.kgy);
       }
       localObject1 = new f((StaticLayout)localObject3);
-      ((f)localObject1).huG = this.hur;
-      ((f)localObject1).text = this.hus;
+      ((f)localObject1).kgC = this.kgm;
+      ((f)localObject1).LV = this.kgn;
       ((f)localObject1).maxLength = this.maxLength;
       ((f)localObject1).maxLines = this.maxLines;
-      ((f)localObject1).huw = this.huw;
-      ((f)localObject1).hux = this.hux;
-      ((f)localObject1).iW = this.huv;
-      ((f)localObject1).gravity = this.gravity;
-      ((f)localObject1).breakStrategy = this.breakStrategy;
-      hup.a(this);
+      ((f)localObject1).kgr = this.kgr;
+      ((f)localObject1).kgs = this.kgs;
+      ((f)localObject1).bzo = this.kgq;
+      ((f)localObject1).ek = this.ek;
+      ((f)localObject1).kgy = this.kgy;
+      kgk.a(this);
       AppMethodBeat.o(141029);
       return localObject1;
-      j = this.huy;
+      j = this.kgt;
       break;
-      this.huw = Layout.Alignment.ALIGN_NORMAL;
+      this.kgr = Layout.Alignment.ALIGN_NORMAL;
       break label251;
-      this.huw = Layout.Alignment.ALIGN_OPPOSITE;
+      this.kgr = Layout.Alignment.ALIGN_OPPOSITE;
       break label251;
-      this.huw = Layout.Alignment.ALIGN_CENTER;
+      this.kgr = Layout.Alignment.ALIGN_CENTER;
       break label251;
     }
   }
   
-  public final d qi(int paramInt)
+  public final d sI(int paramInt)
   {
     if (paramInt >= 0) {
       this.maxLines = paramInt;
@@ -412,7 +412,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.d
  * JD-Core Version:    0.7.0.1
  */

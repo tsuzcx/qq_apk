@@ -3,19 +3,20 @@ package com.tencent.mm.plugin.topstory.ui.video;
 import android.content.Intent;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cz;
+import com.tencent.mm.f.a.dd;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.topstory.a.h;
 import com.tencent.mm.plugin.topstory.a.i;
+import com.tencent.mm.plugin.topstory.ui.c.g;
 import com.tencent.mm.plugin.websearch.api.aj;
-import com.tencent.mm.protocal.protobuf.aca;
-import com.tencent.mm.protocal.protobuf.aml;
-import com.tencent.mm.protocal.protobuf.anb;
-import com.tencent.mm.protocal.protobuf.anh;
-import com.tencent.mm.protocal.protobuf.anq;
-import com.tencent.mm.protocal.protobuf.eit;
-import com.tencent.mm.protocal.protobuf.eiw;
+import com.tencent.mm.protocal.protobuf.aci;
+import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.protocal.protobuf.aoc;
+import com.tencent.mm.protocal.protobuf.aoi;
+import com.tencent.mm.protocal.protobuf.aor;
+import com.tencent.mm.protocal.protobuf.esv;
+import com.tencent.mm.protocal.protobuf.esy;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -29,85 +30,85 @@ import org.json.JSONObject;
 
 public final class p
 {
-  public static final p GnV;
-  eiw GnW;
+  public static final p NaI;
+  esy NaJ;
   
   static
   {
     AppMethodBeat.i(126175);
-    GnV = new p();
+    NaI = new p();
     AppMethodBeat.o(126175);
   }
   
-  public static void a(MMActivity paramMMActivity, eit parameit, eiw parameiw)
+  public static void a(MMActivity paramMMActivity, esv paramesv, esy paramesy)
   {
     AppMethodBeat.i(126174);
-    cz localcz = new cz();
-    anb localanb = new anb();
-    anh localanh = new anh();
-    aml localaml = new aml();
-    if (Util.isNullOrNil(parameiw.xDQ)) {}
-    for (Object localObject = paramMMActivity.getString(2131764255);; localObject = parameiw.xDQ)
+    dd localdd = new dd();
+    aoc localaoc = new aoc();
+    aoi localaoi = new aoi();
+    anm localanm = new anm();
+    if (Util.isNullOrNil(paramesy.CHR)) {}
+    for (Object localObject = paramMMActivity.getString(c.g.recommend_video_share_desc_default);; localObject = paramesy.CHR)
     {
-      localaml.bgl(parameiw.rCq);
-      localaml.bgf(parameiw.msN);
-      localaml.bgg((String)localObject);
-      localaml.bgo(parameiw.IED);
-      localaml.As(true);
-      localaml.At(true);
-      localaml.ajd(5);
-      anq localanq = new anq();
-      localanq.bhv(parameiw.IED);
-      localanq.bhs(parameiw.msN);
-      localanq.bht((String)localObject);
-      localanb.b(localanq);
+      localanm.bsD(paramesy.vhY);
+      localanm.bsx(paramesy.pqW);
+      localanm.bsy((String)localObject);
+      localanm.bsG(paramesy.PyV);
+      localanm.Ex(true);
+      localanm.Ey(true);
+      localanm.arq(5);
+      aor localaor = new aor();
+      localaor.btN(paramesy.PyV);
+      localaor.btK(paramesy.pqW);
+      localaor.btL((String)localObject);
+      localaoc.c(localaor);
       localObject = new aj();
-      ((aj)localObject).IEy = parameiw.psI;
-      ((aj)localObject).IEz = parameiw.Nir;
-      ((aj)localObject).IEA = parameit.hes;
-      ((aj)localObject).IEB = parameiw.Niq;
-      ((aj)localObject).IEC = 100201L;
-      ((aj)localObject).rCq = parameiw.rCq;
-      ((aj)localObject).msN = parameiw.msN;
-      ((aj)localObject).xDQ = parameiw.xDQ;
-      ((aj)localObject).IED = parameiw.IED;
-      ((aj)localObject).IEE = parameiw.IEE;
-      ((aj)localObject).IEF = parameiw.IEF;
-      ((aj)localObject).source = parameiw.source;
-      ((aj)localObject).eby = parameiw.eby;
-      ((aj)localObject).IEG = parameiw.IEG;
-      ((aj)localObject).IEH = parameiw.IEH;
+      ((aj)localObject).PyQ = paramesy.Crh;
+      ((aj)localObject).PyR = paramesy.UuX;
+      ((aj)localObject).PyS = paramesv.jQi;
+      ((aj)localObject).PyT = paramesy.UuW;
+      ((aj)localObject).PyU = 100201L;
+      ((aj)localObject).vhY = paramesy.vhY;
+      ((aj)localObject).pqW = paramesy.pqW;
+      ((aj)localObject).CHR = paramesy.CHR;
+      ((aj)localObject).PyV = paramesy.PyV;
+      ((aj)localObject).PyW = paramesy.PyW;
+      ((aj)localObject).PyX = paramesy.PyX;
+      ((aj)localObject).source = paramesy.source;
+      ((aj)localObject).fVx = paramesy.fVx;
+      ((aj)localObject).PyY = paramesy.PyY;
+      ((aj)localObject).PyZ = paramesy.PyZ;
       LinkedList localLinkedList = new LinkedList();
-      localLinkedList.addAll(parameit.IDO);
-      localLinkedList.addAll(parameiw.IDO);
-      ((aj)localObject).IEJ = h.hK(parameiw.xuO).toString();
-      ((aj)localObject).IEI = hL(localLinkedList).toString();
-      ((aj)localObject).IEK = parameiw.Niy;
-      ((aj)localObject).thumbUrl = parameiw.Nio;
-      parameit = new StringBuilder();
-      ((aj)localObject).a(parameit, null, null, null, 0, 0);
-      localanq.bhx(parameit.toString());
-      localanh.bhf(z.aTY());
-      localanh.bhg(z.aTY());
-      localanh.ajm(3);
-      localanh.MA(Util.nowMilliSecond());
-      localanh.bhm(parameiw.rCq);
-      localanh.bhh(parameiw.rCq);
-      localcz.dFZ.title = localaml.title;
-      localcz.dFZ.dGb = localanb;
-      localcz.dFZ.dGf = 25;
-      localcz.dFZ.scene = 2;
-      localcz.dFZ.type = 5;
-      localcz.dFZ.activity = paramMMActivity;
-      localanb.a(localanh);
-      localanb.ppH.add(localaml);
-      EventCenter.instance.publish(localcz);
+      localLinkedList.addAll(paramesv.Pye);
+      localLinkedList.addAll(paramesy.Pye);
+      ((aj)localObject).Pzb = h.iz(paramesy.Crg).toString();
+      ((aj)localObject).Pza = iA(localLinkedList).toString();
+      ((aj)localObject).Pzc = paramesy.Uve;
+      ((aj)localObject).thumbUrl = paramesy.UuU;
+      paramesv = new StringBuilder();
+      ((aj)localObject).a(paramesv, null, null, null, 0, 0);
+      localaor.btP(paramesv.toString());
+      localaoi.btx(z.bcZ());
+      localaoi.bty(z.bcZ());
+      localaoi.arz(3);
+      localaoi.Ue(Util.nowMilliSecond());
+      localaoi.btE(paramesy.vhY);
+      localaoi.btz(paramesy.vhY);
+      localdd.fyI.title = localanm.title;
+      localdd.fyI.fyK = localaoc;
+      localdd.fyI.fyP = 25;
+      localdd.fyI.scene = 2;
+      localdd.fyI.type = 5;
+      localdd.fyI.activity = paramMMActivity;
+      localaoc.a(localaoi);
+      localaoc.syG.add(localanm);
+      EventCenter.instance.publish(localdd);
       AppMethodBeat.o(126174);
       return;
     }
   }
   
-  static JSONArray hL(List<aca> paramList)
+  static JSONArray iA(List<aci> paramList)
   {
     AppMethodBeat.i(126173);
     JSONArray localJSONArray = new JSONArray();
@@ -118,10 +119,10 @@ public final class p
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        aca localaca = (aca)paramList.get(i);
-        localJSONObject.put("key", localaca.key);
-        localJSONObject.put("uintValue", localaca.LmC);
-        localJSONObject.put("textValue", localaca.LmD);
+        aci localaci = (aci)paramList.get(i);
+        localJSONObject.put("key", localaci.key);
+        localJSONObject.put("uintValue", localaci.SnV);
+        localJSONObject.put("textValue", localaci.SnW);
         localJSONArray.put(localJSONObject);
         label91:
         i += 1;
@@ -136,9 +137,9 @@ public final class p
     }
   }
   
-  static boolean l(eiw parameiw)
+  static boolean l(esy paramesy)
   {
-    return (parameiw.Niy != 100201L) && (parameiw.Niy != 100203L);
+    return (paramesy.Uve != 100201L) && (paramesy.Uve != 100203L);
   }
   
   public final void a(b paramb, int paramInt1, int paramInt2, Intent paramIntent)
@@ -148,8 +149,8 @@ public final class p
     {
       if (paramInt2 == -1)
       {
-        Toast.makeText(MMApplicationContext.getContext(), 2131755986, 1).show();
-        i.a(paramb.fyD(), this.GnW, "1", z.aTY(), "");
+        Toast.makeText(MMApplicationContext.getContext(), c.g.app_shared, 1).show();
+        i.a(paramb.gqA(), this.NaJ, "1", z.bcZ(), "");
         AppMethodBeat.o(126172);
       }
     }
@@ -164,7 +165,7 @@ public final class p
         if (((Iterator)localObject).hasNext())
         {
           String str = (String)((Iterator)localObject).next();
-          if (ab.Eq(str))
+          if (ab.Lj(str))
           {
             paramIntent.append(3);
             paramIntent.append(";");
@@ -178,7 +179,7 @@ public final class p
             paramIntent.append(";");
           }
         }
-        i.a(paramb.fyD(), this.GnW, paramIntent.toString(), z.aTY(), localStringBuilder.toString());
+        i.a(paramb.gqA(), this.NaJ, paramIntent.toString(), z.bcZ(), localStringBuilder.toString());
       }
     }
     AppMethodBeat.o(126172);
@@ -186,7 +187,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.p
  * JD-Core Version:    0.7.0.1
  */

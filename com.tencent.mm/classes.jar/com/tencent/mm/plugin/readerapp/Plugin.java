@@ -2,24 +2,24 @@ package com.tencent.mm.plugin.readerapp;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
+import com.tencent.mm.model.be;
 import com.tencent.mm.plugin.readerapp.ui.b;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class Plugin
   implements d
 {
-  private c pkO;
+  private c smX;
   
   public Plugin()
   {
     AppMethodBeat.i(102644);
-    this.pkO = new c()
+    this.smX = new c()
     {
-      public final com.tencent.mm.pluginsdk.b.a ak(Context paramAnonymousContext, String paramAnonymousString)
+      public final com.tencent.mm.pluginsdk.c.a ak(Context paramAnonymousContext, String paramAnonymousString)
       {
         AppMethodBeat.i(102643);
         Log.i("MicroMsg.ReaderApp.Plugin", "create contact widget type[%s]", new Object[] { paramAnonymousString });
@@ -44,19 +44,19 @@ public final class Plugin
     return locala;
   }
   
-  public final bd createSubCore()
+  public final be createSubCore()
   {
     return null;
   }
   
   public final c getContactWidgetFactory()
   {
-    return this.pkO;
+    return this.smX;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.readerapp.Plugin
  * JD-Core Version:    0.7.0.1
  */

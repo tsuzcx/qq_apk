@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.ui.scangoods.widget;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsGroupView$Companion;", "", "()V", "TAG", "", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsGroupView$Companion;", "", "()V", "TAG", "", "plugin-scan_release"})
 public final class g$c {}
 
 

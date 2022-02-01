@@ -12,36 +12,36 @@ public class ExtractorLoader
   
   static
   {
-    AppMethodBeat.i(218515);
+    AppMethodBeat.i(192435);
     HandlerThread localHandlerThread = new HandlerThread("ExtractorLoader");
     loadThread = localHandlerThread;
     localHandlerThread.start();
-    AppMethodBeat.o(218515);
+    AppMethodBeat.o(192435);
   }
   
   public static void cacheExtractor(AssetExtractor paramAssetExtractor)
   {
-    AppMethodBeat.i(218514);
+    AppMethodBeat.i(192428);
     checkAndStart();
     loadHandler.post(new ExtractorLoaderRunnable(paramAssetExtractor));
-    AppMethodBeat.o(218514);
+    AppMethodBeat.o(192428);
   }
   
   public static void cacheExtractor(String paramString)
   {
-    AppMethodBeat.i(218513);
+    AppMethodBeat.i(192423);
     checkAndStart();
     loadHandler.post(new VideoPathLoaderRunnable(paramString));
-    AppMethodBeat.o(218513);
+    AppMethodBeat.o(192423);
   }
   
   private static void checkAndStart()
   {
-    AppMethodBeat.i(218512);
+    AppMethodBeat.i(192422);
     if ((loadHandler == null) && (loadThread.getLooper() != null)) {
       loadHandler = new Handler(loadThread.getLooper());
     }
-    AppMethodBeat.o(218512);
+    AppMethodBeat.o(192422);
   }
   
   static class ExtractorLoaderRunnable
@@ -56,7 +56,7 @@ public class ExtractorLoader
     
     public void run()
     {
-      AppMethodBeat.i(218510);
+      AppMethodBeat.i(192411);
       if (!ExtractorWrapperPool.contains(this.extractor.getSourcePath()))
       {
         ExtractorWrapper localExtractorWrapper = new ExtractorWrapper(this.extractor.getSourcePath());
@@ -64,7 +64,7 @@ public class ExtractorLoader
         ExtractorWrapperPool.put(localExtractorWrapper);
         this.extractor = null;
       }
-      AppMethodBeat.o(218510);
+      AppMethodBeat.o(192411);
     }
   }
   
@@ -80,7 +80,7 @@ public class ExtractorLoader
     
     public void run()
     {
-      AppMethodBeat.i(218511);
+      AppMethodBeat.i(192417);
       if (!ExtractorWrapperPool.contains(this.videoPath))
       {
         AssetExtractor localAssetExtractor = new AssetExtractor();
@@ -89,13 +89,13 @@ public class ExtractorLoader
         localExtractorWrapper.checkAndLoad(localAssetExtractor);
         ExtractorWrapperPool.put(localExtractorWrapper);
       }
-      AppMethodBeat.o(218511);
+      AppMethodBeat.o(192417);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.extractor.wrapper.ExtractorLoader
  * JD-Core Version:    0.7.0.1
  */

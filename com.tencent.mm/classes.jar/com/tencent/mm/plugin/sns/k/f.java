@@ -1,23 +1,54 @@
 package com.tencent.mm.plugin.sns.k;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.f.a.xe;
+import com.tencent.mm.f.a.xe.a;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import java.util.HashMap;
 
 public final class f
 {
-  public static void s(int paramInt1, String paramString, int paramInt2)
+  private static f KhU = null;
+  public HashMap<Integer, a> KhV;
+  private IListener<xe> iQL;
+  
+  private f()
   {
-    AppMethodBeat.i(125685);
-    paramString = String.format("%s,%s,%s,%s", new Object[] { Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramInt2), Long.valueOf(System.currentTimeMillis()) });
-    Log.i("MicroMsg.SNS.SnsReportLogic", "snsRedDotAction 16172 report %s", new Object[] { paramString });
-    e.Cxv.kvStat(16172, paramString);
-    AppMethodBeat.o(125685);
+    AppMethodBeat.i(96205);
+    this.KhV = null;
+    this.iQL = new IListener() {};
+    this.KhV = new HashMap();
+    EventCenter.instance.add(this.iQL);
+    AppMethodBeat.o(96205);
+  }
+  
+  public static f fQl()
+  {
+    AppMethodBeat.i(96206);
+    if (KhU == null) {
+      KhU = new f();
+    }
+    f localf = KhU;
+    AppMethodBeat.o(96206);
+    return localf;
+  }
+  
+  public final class a
+  {
+    String content = "";
+    int mediaType = 0;
+    
+    public a(int paramInt, String paramString)
+    {
+      this.content = paramString;
+      this.mediaType = paramInt;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.k.f
  * JD-Core Version:    0.7.0.1
  */

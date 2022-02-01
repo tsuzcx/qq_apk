@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Paint;
 import android.graphics.Point;
-import android.support.annotation.Keep;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,50 +21,62 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import androidx.annotation.Keep;
+import com.tencent.c.a.a.a.b.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bp;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.bq;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.loader.m.a;
-import com.tencent.mm.plugin.finder.report.live.s.av;
-import com.tencent.mm.plugin.finder.report.live.s.j;
-import com.tencent.mm.plugin.finder.report.live.s.n;
-import com.tencent.mm.plugin.finder.report.live.s.p;
+import com.tencent.mm.plugin.finder.live.report.s.bj;
+import com.tencent.mm.plugin.finder.live.report.s.l;
+import com.tencent.mm.plugin.finder.live.report.s.r;
+import com.tencent.mm.plugin.finder.live.report.s.t;
+import com.tencent.mm.plugin.finder.loader.t.a;
+import com.tencent.mm.plugin.finder.storage.u;
 import com.tencent.mm.plugin.finder.view.FinderLiveOnliveWidget;
-import com.tencent.mm.plugin.i.a.af;
-import com.tencent.mm.plugin.i.a.aj;
-import com.tencent.mm.plugin.i.a.aj.b;
-import com.tencent.mm.protocal.protobuf.axf;
+import com.tencent.mm.plugin.findersdk.a.ag;
+import com.tencent.mm.plugin.findersdk.a.ak;
+import com.tencent.mm.pluginsdk.model.app.m;
+import com.tencent.mm.protocal.protobuf.bcp;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.MMFragmentActivity;
 import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.base.o;
 import com.tencent.mm.ui.chatting.t.n;
 import com.tencent.mm.ui.transmit.MsgRetransmitUI;
 import com.tencent.mm.view.NinePatchCropImageView;
+import kotlin.g.b.p;
 import kotlin.n.n;
-import kotlin.t;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed;", "", "()V", "AppMsgFinderLiveFeedHolder", "ChattingItemAppMsgFinderLiveFeedFrom", "ChattingItemAppMsgFinderLiveFeedTo", "Companion", "app_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed;", "", "()V", "AppMsgFinderLiveFeedHolder", "ChattingItemAppMsgFinderLiveFeedFrom", "ChattingItemAppMsgFinderLiveFeedTo", "Companion", "IChattingItemAppMsgFinderLiveFeed", "app_release"})
 public final class ChatingItemAppMsgFinderLiveFeed
 {
-  public static final c PGG;
   private static final String TAG = "ChatingItemAppMsgFinderLiveFeed";
+  public static final c XbY;
   
   static
   {
-    AppMethodBeat.i(231370);
-    PGG = new c((byte)0);
+    AppMethodBeat.i(280696);
+    XbY = new c((byte)0);
     TAG = "ChatingItemAppMsgFinderLiveFeed";
-    AppMethodBeat.o(231370);
+    AppMethodBeat.o(280696);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed$AppMsgFinderLiveFeedHolder;", "Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem$BaseViewHolder;", "()V", "detailLayout", "Landroid/view/View;", "getDetailLayout", "()Landroid/view/View;", "setDetailLayout", "(Landroid/view/View;)V", "finderAvatar", "Landroid/widget/ImageView;", "getFinderAvatar", "()Landroid/widget/ImageView;", "setFinderAvatar", "(Landroid/widget/ImageView;)V", "finderDesc", "Landroid/widget/TextView;", "getFinderDesc", "()Landroid/widget/TextView;", "setFinderDesc", "(Landroid/widget/TextView;)V", "finderIcon", "getFinderIcon", "setFinderIcon", "finderNickname", "getFinderNickname", "setFinderNickname", "finderText", "getFinderText", "setFinderText", "finderThumb", "getFinderThumb", "setFinderThumb", "liveEndTag", "Lcom/tencent/mm/plugin/finder/view/FinderLiveOnliveWidget;", "getLiveEndTag", "()Lcom/tencent/mm/plugin/finder/view/FinderLiveOnliveWidget;", "setLiveEndTag", "(Lcom/tencent/mm/plugin/finder/view/FinderLiveOnliveWidget;)V", "liveTag", "getLiveTag", "setLiveTag", "tickIV", "getTickIV", "setTickIV", "width", "", "getWidth", "()I", "setWidth", "(I)V", "createAppMsgFinderFeedHolder", "view", "isSend", "", "getMainContainerView", "app_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed$AppMsgFinderLiveFeedHolder;", "Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem$BaseViewHolder;", "()V", "detailLayout", "Landroid/view/View;", "getDetailLayout", "()Landroid/view/View;", "setDetailLayout", "(Landroid/view/View;)V", "finderAvatar", "Landroid/widget/ImageView;", "getFinderAvatar", "()Landroid/widget/ImageView;", "setFinderAvatar", "(Landroid/widget/ImageView;)V", "finderDesc", "Landroid/widget/TextView;", "getFinderDesc", "()Landroid/widget/TextView;", "setFinderDesc", "(Landroid/widget/TextView;)V", "finderIcon", "getFinderIcon", "setFinderIcon", "finderNickname", "getFinderNickname", "setFinderNickname", "finderText", "getFinderText", "setFinderText", "finderThumb", "getFinderThumb", "setFinderThumb", "liveEndTag", "Lcom/tencent/mm/plugin/finder/view/FinderLiveOnliveWidget;", "getLiveEndTag", "()Lcom/tencent/mm/plugin/finder/view/FinderLiveOnliveWidget;", "setLiveEndTag", "(Lcom/tencent/mm/plugin/finder/view/FinderLiveOnliveWidget;)V", "liveTag", "getLiveTag", "setLiveTag", "tickIV", "getTickIV", "setTickIV", "width", "", "getWidth", "()I", "setWidth", "(I)V", "createAppMsgFinderFeedHolder", "view", "isSend", "", "getMainContainerView", "app_release"})
   @Keep
   public static final class AppMsgFinderLiveFeedHolder
     extends c.a
@@ -84,37 +95,37 @@ public final class ChatingItemAppMsgFinderLiveFeed
     
     public final AppMsgFinderLiveFeedHolder createAppMsgFinderFeedHolder(View paramView, boolean paramBoolean)
     {
-      AppMethodBeat.i(231350);
-      kotlin.g.b.p.h(paramView, "view");
+      AppMethodBeat.i(277675);
+      p.k(paramView, "view");
       super.create(paramView);
-      Object localObject1 = (LinearLayout)paramView.findViewById(2131298411);
+      Object localObject1 = (LinearLayout)paramView.findViewById(R.h.chatting_click_area);
       Object localObject2 = paramView.getContext();
-      Point localPoint = au.az((Context)localObject2);
+      Point localPoint = ax.au((Context)localObject2);
       int i = Math.min(localPoint.x, localPoint.y);
-      kotlin.g.b.p.g(localObject2, "context");
-      float f = ((Context)localObject2).getResources().getDimension(2131165289);
+      p.j(localObject2, "context");
+      float f = ((Context)localObject2).getResources().getDimension(R.f.Edge_1_5_A);
       this.width = ((int)((i - f) / 2.0F));
-      kotlin.g.b.p.g(localObject1, "clickArea");
+      p.j(localObject1, "clickArea");
       localObject2 = ((LinearLayout)localObject1).getLayoutParams();
       if (localObject2 == null)
       {
-        paramView = new t("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
-        AppMethodBeat.o(231350);
+        paramView = new kotlin.t("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
+        AppMethodBeat.o(277675);
         throw paramView;
       }
       localObject2 = (LinearLayout.LayoutParams)localObject2;
       ((LinearLayout.LayoutParams)localObject2).width = this.width;
       ((LinearLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      localObject1 = ChatingItemAppMsgFinderLiveFeed.PGG;
+      localObject1 = ChatingItemAppMsgFinderLiveFeed.XbY;
       Log.i(ChatingItemAppMsgFinderLiveFeed.access$getTAG$cp(), "real widthPixels:" + i + " ,dp:" + f + " , width:" + this.width);
-      this.finderAvatar = ((ImageView)paramView.findViewById(2131298472));
-      this.finderNickname = ((TextView)paramView.findViewById(2131298477));
-      this.finderThumb = ((ImageView)paramView.findViewById(2131298481));
-      this.finderDesc = ((TextView)paramView.findViewById(2131298473));
-      this.finderText = ((TextView)paramView.findViewById(2131298480));
-      this.finderIcon = ((ImageView)paramView.findViewById(2131298474));
-      this.liveEndTag = ((FinderLiveOnliveWidget)paramView.findViewById(2131300979));
-      localObject2 = paramView.findViewById(2131298566);
+      this.finderAvatar = ((ImageView)paramView.findViewById(R.h.dxY));
+      this.finderNickname = ((TextView)paramView.findViewById(R.h.dye));
+      this.finderThumb = ((ImageView)paramView.findViewById(R.h.dyi));
+      this.finderDesc = ((TextView)paramView.findViewById(R.h.dxZ));
+      this.finderText = ((TextView)paramView.findViewById(R.h.dyh));
+      this.finderIcon = ((ImageView)paramView.findViewById(R.h.dya));
+      this.liveEndTag = ((FinderLiveOnliveWidget)paramView.findViewById(R.h.finder_live_end_tag));
+      localObject2 = paramView.findViewById(R.h.chatting_user_tv);
       localObject1 = localObject2;
       if (!(localObject2 instanceof TextView)) {
         localObject1 = null;
@@ -123,53 +134,57 @@ public final class ChatingItemAppMsgFinderLiveFeed
       if (localObject1 != null) {
         this.userTV = ((TextView)localObject1);
       }
-      this.detailLayout = paramView.findViewById(2131298394);
-      this.liveTag = ((FinderLiveOnliveWidget)paramView.findViewById(2131301031));
-      if (!((aj)g.ah(aj.class)).showFinderEntry()) {}
+      this.detailLayout = paramView.findViewById(R.h.dwR);
+      this.liveTag = ((FinderLiveOnliveWidget)paramView.findViewById(R.h.finder_live_icon));
+      if (!((ak)h.ag(ak.class)).showFinderEntry()) {}
       for (i = 1;; i = 0)
       {
         if (i == 0)
         {
-          this.checkBox = ((CheckBox)paramView.findViewById(2131298410));
-          this.maskView = paramView.findViewById(2131298508);
+          this.checkBox = ((CheckBox)paramView.findViewById(R.h.dwZ));
+          this.maskView = paramView.findViewById(R.h.dyD);
         }
+        this.uploadingPB = ((ProgressBar)paramView.findViewById(R.h.dYz));
         if (!paramBoolean) {
-          break label525;
+          break label538;
         }
-        this.uploadingPB = ((ProgressBar)paramView.findViewById(2131309619));
-        this.tickIV = ((ImageView)paramView.findViewById(2131298556));
+        this.tickIV = ((ImageView)paramView.findViewById(R.h.chatting_status_tick));
         if (!(this.finderThumb instanceof NinePatchCropImageView)) {
-          break label485;
+          break label498;
         }
         paramView = this.finderThumb;
         if (paramView != null) {
           break;
         }
-        paramView = new t("null cannot be cast to non-null type com.tencent.mm.view.NinePatchCropImageView");
-        AppMethodBeat.o(231350);
+        paramView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.view.NinePatchCropImageView");
+        AppMethodBeat.o(277675);
         throw paramView;
       }
-      ((NinePatchCropImageView)paramView).setNinePatchId(2131231809);
+      ((NinePatchCropImageView)paramView).setNinePatchId(R.g.chatto_finder_image_bg);
       for (;;)
       {
-        label485:
+        label498:
         paramView = this.finderIcon;
         if (paramView != null) {
-          paramView.setImageDrawable(ar.m(paramView.getContext(), 2131690801, com.tencent.mm.cb.a.n(paramView.getContext(), 2131099792)));
+          paramView.setImageDrawable(au.o(paramView.getContext(), R.k.icons_outlined_finder_icon, com.tencent.mm.ci.a.w(paramView.getContext(), R.e.Orange)));
         }
-        AppMethodBeat.o(231350);
+        AppMethodBeat.o(277675);
         return this;
-        label525:
+        label538:
+        paramView = this.uploadingPB;
+        if (paramView != null) {
+          paramView.setVisibility(8);
+        }
         if ((this.finderThumb instanceof NinePatchCropImageView))
         {
           paramView = this.finderThumb;
           if (paramView == null)
           {
-            paramView = new t("null cannot be cast to non-null type com.tencent.mm.view.NinePatchCropImageView");
-            AppMethodBeat.o(231350);
+            paramView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.view.NinePatchCropImageView");
+            AppMethodBeat.o(277675);
             throw paramView;
           }
-          ((NinePatchCropImageView)paramView).setNinePatchId(2131231692);
+          ((NinePatchCropImageView)paramView).setNinePatchId(R.g.chatfrom_finder_image_bg);
         }
       }
     }
@@ -290,24 +305,24 @@ public final class ChatingItemAppMsgFinderLiveFeed
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed$ChattingItemAppMsgFinderLiveFeedFrom;", "Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem;", "()V", "ui", "Lcom/tencent/mm/ui/chatting/context/ChattingContext;", "filling", "", "tag", "Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem$BaseViewHolder;", "position", "", "msg", "Lcom/tencent/mm/storage/MsgInfo;", "userName", "", "inflating", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "convertView", "isSender", "", "onContextItemSelected", "item", "Landroid/view/MenuItem;", "onCreateContextMenu", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "v", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "onItemClick", "support", "msgType", "Companion", "app_release"})
-  public static final class a
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed$ChattingItemAppMsgFinderLiveFeedFrom;", "Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem;", "Lcom/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed$IChattingItemAppMsgFinderLiveFeed;", "()V", "ui", "Lcom/tencent/mm/ui/chatting/context/ChattingContext;", "checkLiveStatus", "", "holder", "Lcom/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed$AppMsgFinderLiveFeedHolder;", "shareObject", "Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;", "filling", "tag", "Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem$BaseViewHolder;", "position", "", "msg", "Lcom/tencent/mm/storage/MsgInfo;", "userName", "", "inflating", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "convertView", "isSender", "", "onContextItemSelected", "item", "Landroid/view/MenuItem;", "onCreateContextMenu", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "v", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "onItemClick", "retransmit", "context", "Landroid/app/Activity;", "support", "msgType", "Companion", "app_release"})
+  public static class a
     extends c
   {
-    public static final ChatingItemAppMsgFinderLiveFeed.a.a PGH;
-    private com.tencent.mm.ui.chatting.e.a PhN;
+    public static final ChatingItemAppMsgFinderLiveFeed.a.a XbZ;
+    private com.tencent.mm.ui.chatting.e.a WBq;
     
     static
     {
-      AppMethodBeat.i(231357);
-      PGH = new ChatingItemAppMsgFinderLiveFeed.a.a((byte)0);
-      AppMethodBeat.o(231357);
+      AppMethodBeat.i(270781);
+      XbZ = new ChatingItemAppMsgFinderLiveFeed.a.a((byte)0);
+      AppMethodBeat.o(270781);
     }
     
     public final View a(LayoutInflater paramLayoutInflater, View paramView)
     {
-      AppMethodBeat.i(231352);
-      kotlin.g.b.p.h(paramLayoutInflater, "inflater");
+      AppMethodBeat.i(270772);
+      p.k(paramLayoutInflater, "inflater");
       View localView;
       if (paramView != null)
       {
@@ -316,395 +331,481 @@ public final class ChatingItemAppMsgFinderLiveFeed
       }
       else
       {
-        localView = (View)new an(paramLayoutInflater, 2131493534);
-        localView.setTag(new ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder().createAppMsgFinderFeedHolder(localView, false));
+        paramView = com.tencent.mm.plugin.finder.storage.d.AjH;
+        if (((Number)com.tencent.mm.plugin.finder.storage.d.dXV().aSr()).intValue() != 0) {
+          break label88;
+        }
       }
-      AppMethodBeat.o(231352);
-      return localView;
+      label88:
+      for (int i = R.i.ecR;; i = R.i.ecS)
+      {
+        localView = (View)new aq(paramLayoutInflater, i);
+        localView.setTag(new ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder().createAppMsgFinderFeedHolder(localView, false));
+        AppMethodBeat.o(270772);
+        return localView;
+      }
+    }
+    
+    public void a(Activity paramActivity, ca paramca)
+    {
+      AppMethodBeat.i(270779);
+      p.k(paramActivity, "context");
+      p.k(paramca, "msg");
+      ChatingItemAppMsgFinderLiveFeed.c localc = ChatingItemAppMsgFinderLiveFeed.XbY;
+      ChatingItemAppMsgFinderLiveFeed.c.a(paramActivity, paramca);
+      AppMethodBeat.o(270779);
+    }
+    
+    public void a(ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder paramAppMsgFinderLiveFeedHolder, bcp parambcp, com.tencent.mm.ui.chatting.e.a parama)
+    {
+      AppMethodBeat.i(270780);
+      p.k(paramAppMsgFinderLiveFeedHolder, "holder");
+      p.k(parambcp, "shareObject");
+      p.k(parama, "ui");
+      ChatingItemAppMsgFinderLiveFeed.c localc = ChatingItemAppMsgFinderLiveFeed.XbY;
+      ChatingItemAppMsgFinderLiveFeed.c.a(paramAppMsgFinderLiveFeedHolder, parambcp, parama);
+      AppMethodBeat.o(270780);
     }
     
     public final void a(c.a parama, int paramInt, final com.tencent.mm.ui.chatting.e.a parama1, ca paramca, String paramString)
     {
-      AppMethodBeat.i(231353);
-      kotlin.g.b.p.h(parama, "tag");
-      kotlin.g.b.p.h(parama1, "ui");
-      kotlin.g.b.p.h(paramca, "msg");
-      kotlin.g.b.p.h(paramString, "userName");
-      this.PhN = parama1;
-      paramString = (ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder)parama;
-      parama = paramString.getDetailLayout();
+      AppMethodBeat.i(270773);
+      p.k(parama, "tag");
+      p.k(parama1, "ui");
+      p.k(paramca, "msg");
+      p.k(paramString, "userName");
+      this.WBq = parama1;
+      final ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder localAppMsgFinderLiveFeedHolder = (ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder)parama;
+      parama = localAppMsgFinderLiveFeedHolder.getDetailLayout();
       if (parama == null) {
-        kotlin.g.b.p.hyc();
+        p.iCn();
       }
       parama.animate().cancel();
-      parama = paramString.getDetailLayout();
+      parama = localAppMsgFinderLiveFeedHolder.getDetailLayout();
       if (parama == null) {
-        kotlin.g.b.p.hyc();
+        p.iCn();
       }
       parama.setTag(Long.valueOf(System.currentTimeMillis()));
-      Object localObject1 = paramca.getContent();
-      parama = null;
-      if (localObject1 != null) {
-        parama = k.b.aD((String)localObject1, paramca.ajQ());
-      }
-      Object localObject2;
-      Object localObject3;
-      int i;
-      if (parama != null)
+      parama = paramca.getContent();
+      if (parama != null) {}
+      for (parama = k.b.aG(parama, paramca.apL());; parama = null)
       {
-        localObject1 = (com.tencent.mm.plugin.i.a.b)parama.as(com.tencent.mm.plugin.i.a.b.class);
-        if (localObject1 != null)
+        final com.tencent.mm.plugin.findersdk.a.b localb;
+        Object localObject;
+        int i;
+        if (parama != null)
         {
-          parama = com.tencent.mm.plugin.finder.loader.m.uJa;
-          parama = com.tencent.mm.plugin.finder.loader.m.dka();
-          localObject2 = new com.tencent.mm.plugin.finder.loader.p(((com.tencent.mm.plugin.i.a.b)localObject1).wDV.headUrl, com.tencent.mm.plugin.finder.storage.x.vEo);
-          localObject3 = paramString.getFinderAvatar();
-          if (localObject3 == null) {
-            kotlin.g.b.p.hyc();
-          }
-          com.tencent.mm.plugin.finder.loader.m localm = com.tencent.mm.plugin.finder.loader.m.uJa;
-          parama.a(localObject2, (ImageView)localObject3, com.tencent.mm.plugin.finder.loader.m.a(m.a.uJh));
-          parama = paramString.getFinderNickname();
-          if (parama == null) {
-            kotlin.g.b.p.hyc();
-          }
-          parama.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)parama1.getContext(), (CharSequence)((com.tencent.mm.plugin.i.a.b)localObject1).wDV.nickName));
-          parama = paramString.getFinderNickname();
-          if (parama == null) {
-            kotlin.g.b.p.hyc();
-          }
-          ao.a((Paint)parama.getPaint(), 0.8F);
-          if (((com.tencent.mm.plugin.i.a.b)localObject1).wDV.liveStatus != 1) {
-            break label709;
-          }
-          parama = (CharSequence)((com.tencent.mm.plugin.i.a.b)localObject1).wDV.coverUrl;
-          if ((parama != null) && (parama.length() != 0)) {
-            break label645;
-          }
-          i = 1;
-          if (i != 0) {
-            break label651;
-          }
-          parama = ((com.tencent.mm.plugin.i.a.b)localObject1).wDV.coverUrl;
-          label312:
-          localObject2 = paramString.getLiveTag();
-          if (localObject2 != null) {
-            ((FinderLiveOnliveWidget)localObject2).setVisibility(0);
-          }
-          localObject2 = paramString.getLiveEndTag();
-          if (localObject2 != null) {
-            ((FinderLiveOnliveWidget)localObject2).setVisibility(8);
-          }
-          localObject2 = paramString.getLiveTag();
-          if (localObject2 != null)
+          localb = (com.tencent.mm.plugin.findersdk.a.b)parama.ar(com.tencent.mm.plugin.findersdk.a.b.class);
+          if (localb != null)
           {
-            localObject3 = parama1.getContext();
-            kotlin.g.b.p.g(localObject3, "ui.context");
-            localObject3 = ((Activity)localObject3).getResources().getString(2131760176);
-            kotlin.g.b.p.g(localObject3, "ui.context.resources.get…live_share_onlive_status)");
-            ((FinderLiveOnliveWidget)localObject2).setText((String)localObject3);
+            parama = com.tencent.mm.plugin.finder.loader.t.ztT;
+            parama = com.tencent.mm.plugin.finder.loader.t.dJh();
+            paramString = new com.tencent.mm.plugin.finder.loader.x(localb.Bvb.headUrl, u.Alz);
+            localObject = localAppMsgFinderLiveFeedHolder.getFinderAvatar();
+            if (localObject == null) {
+              p.iCn();
+            }
+            com.tencent.mm.plugin.finder.loader.t localt = com.tencent.mm.plugin.finder.loader.t.ztT;
+            parama.a(paramString, (ImageView)localObject, com.tencent.mm.plugin.finder.loader.t.a(t.a.zua));
+            parama = localAppMsgFinderLiveFeedHolder.getFinderNickname();
+            if (parama == null) {
+              p.iCn();
+            }
+            parama.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)parama1.getContext(), (CharSequence)localb.Bvb.nickName));
+            parama = localAppMsgFinderLiveFeedHolder.getFinderNickname();
+            if (parama == null) {
+              p.iCn();
+            }
+            ar.a((Paint)parama.getPaint(), 0.8F);
+            if (localb.Bvb.liveStatus != 1) {
+              break label706;
+            }
+            parama = (CharSequence)localb.Bvb.coverUrl;
+            if ((parama != null) && (parama.length() != 0)) {
+              break label642;
+            }
+            i = 1;
+            if (i != 0) {
+              break label648;
+            }
+            parama = localb.Bvb.coverUrl;
+            label308:
+            paramString = localAppMsgFinderLiveFeedHolder.getLiveTag();
+            if (paramString != null) {
+              paramString.setVisibility(0);
+            }
+            paramString = localAppMsgFinderLiveFeedHolder.getLiveEndTag();
+            if (paramString != null) {
+              paramString.setVisibility(8);
+            }
+            paramString = localAppMsgFinderLiveFeedHolder.getLiveTag();
+            if (paramString != null)
+            {
+              localObject = parama1.getContext();
+              p.j(localObject, "ui.context");
+              localObject = ((Activity)localObject).getResources().getString(R.l.finder_live_share_onlive_status);
+              p.j(localObject, "ui.context.resources.get…live_share_onlive_status)");
+              paramString.setText((String)localObject);
+            }
+            ((ak)h.ag(ak.class)).loadImage(parama, localAppMsgFinderLiveFeedHolder.getFinderThumb());
+            com.tencent.mm.ae.d.a(200L, (kotlin.g.a.a)new b(this, localAppMsgFinderLiveFeedHolder, localb, parama1));
+            label441:
+            parama = ChatingItemAppMsgFinderLiveFeed.XbY;
+            ChatingItemAppMsgFinderLiveFeed.c.a(localAppMsgFinderLiveFeedHolder);
+            parama = localAppMsgFinderLiveFeedHolder.getFinderThumb();
+            if (parama == null) {
+              p.iCn();
+            }
+            parama.setVisibility(0);
+            parama = (CharSequence)localb.Bvb.desc;
+            if ((parama != null) && (parama.length() != 0)) {
+              break label972;
+            }
+            i = 1;
+            label496:
+            if (i == 0) {
+              break label978;
+            }
+            parama = localAppMsgFinderLiveFeedHolder.getFinderDesc();
+            if (parama == null) {
+              p.iCn();
+            }
+            parama.setVisibility(8);
           }
-          ((aj)g.ah(aj.class)).loadImage(parama, paramString.getFinderThumb());
-          com.tencent.mm.ac.d.a(200L, (kotlin.g.a.a)new b(paramString, (com.tencent.mm.plugin.i.a.b)localObject1, parama1));
-          label444:
-          parama = ChatingItemAppMsgFinderLiveFeed.PGG;
-          ChatingItemAppMsgFinderLiveFeed.c.a(paramString);
-          parama = paramString.getFinderThumb();
-          if (parama == null) {
-            kotlin.g.b.p.hyc();
-          }
-          parama.setVisibility(0);
-          parama = (CharSequence)((com.tencent.mm.plugin.i.a.b)localObject1).wDV.desc;
-          if ((parama != null) && (parama.length() != 0)) {
-            break label963;
-          }
-          i = 1;
-          label499:
-          if (i == 0) {
-            break label969;
-          }
-          parama = paramString.getFinderDesc();
-          if (parama == null) {
-            kotlin.g.b.p.hyc();
-          }
-          parama.setVisibility(8);
         }
-      }
-      for (;;)
-      {
-        paramString.clickArea.setOnClickListener((View.OnClickListener)d(parama1));
-        paramString.clickArea.setOnLongClickListener((View.OnLongClickListener)c(parama1));
-        parama = paramString.clickArea;
-        parama1 = parama1.bh(com.tencent.mm.ui.chatting.d.b.k.class);
-        kotlin.g.b.p.g(parama1, "ui.component(IChattingLi…terComponent::class.java)");
-        parama.setOnTouchListener((View.OnTouchListener)((com.tencent.mm.ui.chatting.d.b.k)parama1).gOC());
-        parama = this.PhN;
-        if (parama == null) {
-          kotlin.g.b.p.hyc();
-        }
-        parama = new bq(paramca, parama.gRM(), paramInt, null, '\000');
-        parama1 = paramString.clickArea;
-        kotlin.g.b.p.g(parama1, "holder.clickArea");
-        parama1.setTag(parama);
-        AppMethodBeat.o(231353);
-        return;
-        label645:
-        i = 0;
-        break;
-        label651:
-        parama = (CharSequence)((com.tencent.mm.plugin.i.a.b)localObject1).wDV.headUrl;
-        if ((parama == null) || (parama.length() == 0)) {}
-        for (i = 1;; i = 0)
-        {
-          if (i != 0) {
-            break label702;
-          }
-          parama = ((com.tencent.mm.plugin.i.a.b)localObject1).wDV.headUrl;
-          break;
-        }
-        label702:
-        parama = "";
-        break label312;
-        label709:
-        if (((com.tencent.mm.plugin.i.a.b)localObject1).wDV.liveStatus != 2) {
-          break label444;
-        }
-        parama = "";
-        localObject2 = (CharSequence)((com.tencent.mm.plugin.i.a.b)localObject1).wDV.coverUrl;
-        if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0))
-        {
-          i = 1;
-          label756:
-          if (i != 0) {
-            break label902;
-          }
-          parama = ((com.tencent.mm.plugin.i.a.b)localObject1).wDV.coverUrl;
-          kotlin.g.b.p.g(parama, "finderObject.shareObject.coverUrl");
-        }
-        label902:
-        label961:
         for (;;)
         {
-          localObject2 = paramString.getLiveTag();
-          if (localObject2 != null) {
-            ((FinderLiveOnliveWidget)localObject2).setVisibility(8);
+          localAppMsgFinderLiveFeedHolder.clickArea.setOnClickListener((View.OnClickListener)d(parama1));
+          localAppMsgFinderLiveFeedHolder.clickArea.setOnLongClickListener((View.OnLongClickListener)c(parama1));
+          parama = localAppMsgFinderLiveFeedHolder.clickArea;
+          parama1 = parama1.bC(com.tencent.mm.ui.chatting.d.b.k.class);
+          p.j(parama1, "ui.component(IChattingLi…terComponent::class.java)");
+          parama.setOnTouchListener((View.OnTouchListener)((com.tencent.mm.ui.chatting.d.b.k)parama1).hNO());
+          parama = this.WBq;
+          if (parama == null) {
+            p.iCn();
           }
-          localObject2 = paramString.getLiveEndTag();
-          if (localObject2 != null) {
-            ((FinderLiveOnliveWidget)localObject2).setVisibility(0);
-          }
-          localObject2 = paramString.getLiveTag();
-          if (localObject2 != null)
-          {
-            localObject3 = parama1.getContext();
-            kotlin.g.b.p.g(localObject3, "ui.context");
-            localObject3 = ((Activity)localObject3).getResources().getString(2131760176);
-            kotlin.g.b.p.g(localObject3, "ui.context.resources.get…live_share_onlive_status)");
-            ((FinderLiveOnliveWidget)localObject2).setText((String)localObject3);
-          }
-          ((aj)g.ah(aj.class)).getFinderUtilApi().g(paramString.getFinderThumb(), parama);
-          break;
+          parama = new by(paramca, parama.hRi(), paramInt, null, '\000');
+          parama1 = localAppMsgFinderLiveFeedHolder.clickArea;
+          p.j(parama1, "holder.clickArea");
+          parama1.setTag(parama);
+          AppMethodBeat.o(270773);
+          return;
+          label642:
           i = 0;
-          break label756;
-          localObject2 = (CharSequence)((com.tencent.mm.plugin.i.a.b)localObject1).wDV.headUrl;
-          if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0)) {}
+          break;
+          label648:
+          parama = (CharSequence)localb.Bvb.headUrl;
+          if ((parama == null) || (parama.length() == 0)) {}
           for (i = 1;; i = 0)
           {
             if (i != 0) {
-              break label961;
+              break label699;
             }
-            parama = ((com.tencent.mm.plugin.i.a.b)localObject1).wDV.headUrl;
-            kotlin.g.b.p.g(parama, "finderObject.shareObject.headUrl");
+            parama = localb.Bvb.headUrl;
             break;
           }
+          label699:
+          parama = "";
+          break label308;
+          label706:
+          if (localb.Bvb.liveStatus != 2) {
+            break label441;
+          }
+          parama = "";
+          paramString = (CharSequence)localb.Bvb.coverUrl;
+          if ((paramString == null) || (paramString.length() == 0))
+          {
+            i = 1;
+            label753:
+            if (i != 0) {
+              break label905;
+            }
+            paramString = localb.Bvb.coverUrl;
+            parama = paramString;
+            if (paramString == null) {
+              parama = "";
+            }
+          }
+          label905:
+          label970:
+          for (;;)
+          {
+            paramString = localAppMsgFinderLiveFeedHolder.getLiveTag();
+            if (paramString != null) {
+              paramString.setVisibility(8);
+            }
+            paramString = localAppMsgFinderLiveFeedHolder.getLiveEndTag();
+            if (paramString != null) {
+              paramString.setVisibility(0);
+            }
+            paramString = localAppMsgFinderLiveFeedHolder.getLiveTag();
+            if (paramString != null)
+            {
+              localObject = parama1.getContext();
+              p.j(localObject, "ui.context");
+              localObject = ((Activity)localObject).getResources().getString(R.l.finder_live_share_onlive_status);
+              p.j(localObject, "ui.context.resources.get…live_share_onlive_status)");
+              paramString.setText((String)localObject);
+            }
+            ((ak)h.ag(ak.class)).getFinderUtilApi().f(localAppMsgFinderLiveFeedHolder.getFinderThumb(), parama);
+            break;
+            i = 0;
+            break label753;
+            paramString = (CharSequence)localb.Bvb.headUrl;
+            if ((paramString == null) || (paramString.length() == 0)) {}
+            for (i = 1;; i = 0)
+            {
+              if (i != 0) {
+                break label970;
+              }
+              paramString = localb.Bvb.headUrl;
+              parama = paramString;
+              if (paramString == null) {
+                parama = "";
+              }
+              break;
+            }
+          }
+          label972:
+          i = 0;
+          break label496;
+          label978:
+          parama = localAppMsgFinderLiveFeedHolder.getFinderDesc();
+          if (parama == null) {
+            p.iCn();
+          }
+          parama.setVisibility(0);
+          parama = localAppMsgFinderLiveFeedHolder.getFinderDesc();
+          if (parama == null) {
+            p.iCn();
+          }
+          parama.setText((CharSequence)localb.Bvb.desc);
         }
-        label963:
-        i = 0;
-        break label499;
-        label969:
-        parama = paramString.getFinderDesc();
-        if (parama == null) {
-          kotlin.g.b.p.hyc();
-        }
-        parama.setVisibility(0);
-        parama = paramString.getFinderDesc();
-        if (parama == null) {
-          kotlin.g.b.p.hyc();
-        }
-        parama.setText((CharSequence)((com.tencent.mm.plugin.i.a.b)localObject1).wDV.desc);
       }
     }
     
     public final boolean a(MenuItem paramMenuItem, com.tencent.mm.ui.chatting.e.a parama, ca paramca)
     {
-      AppMethodBeat.i(231355);
-      kotlin.g.b.p.h(paramMenuItem, "item");
-      kotlin.g.b.p.h(parama, "ui");
-      kotlin.g.b.p.h(paramca, "msg");
+      AppMethodBeat.i(270776);
+      p.k(paramMenuItem, "item");
+      p.k(parama, "ui");
+      p.k(paramca, "msg");
       switch (paramMenuItem.getItemId())
       {
       default: 
-        AppMethodBeat.o(231355);
+        AppMethodBeat.o(270776);
         return false;
       }
-      paramMenuItem = ChatingItemAppMsgFinderLiveFeed.PGG;
       paramMenuItem = parama.getContext();
-      kotlin.g.b.p.g(paramMenuItem, "ui.context");
-      ChatingItemAppMsgFinderLiveFeed.c.a(paramMenuItem, paramca);
-      AppMethodBeat.o(231355);
+      p.j(paramMenuItem, "ui.context");
+      a(paramMenuItem, paramca);
+      AppMethodBeat.o(270776);
       return true;
     }
     
-    public final boolean a(com.tencent.mm.ui.base.m paramm, View paramView, ca paramca)
+    public final boolean a(o paramo, View paramView, ca paramca)
     {
-      AppMethodBeat.i(231354);
-      kotlin.g.b.p.h(paramm, "menu");
-      kotlin.g.b.p.h(paramView, "v");
+      AppMethodBeat.i(270774);
+      p.k(paramo, "menu");
+      p.k(paramView, "v");
       paramView = paramView.getTag();
       if (paramView == null)
       {
-        paramm = new t("null cannot be cast to non-null type com.tencent.mm.ui.chatting.viewitems.ItemDataTag");
-        AppMethodBeat.o(231354);
-        throw paramm;
+        paramo = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.ui.chatting.viewitems.ItemDataTag");
+        AppMethodBeat.o(270774);
+        throw paramo;
       }
-      int i = ((bq)paramView).position;
+      int i = ((by)paramView).position;
       if (paramca != null)
       {
-        paramView = this.PhN;
+        paramView = this.WBq;
         if (paramView == null) {
-          kotlin.g.b.p.hyc();
+          p.iCn();
         }
-        paramm.a(i, 111, (CharSequence)paramView.getResources().getString(2131764628), 2131690674);
-        paramm.removeItem(116);
+        paramo.a(i, 111, (CharSequence)paramView.getResources().getString(R.l.retransmit), R.k.icons_filled_share);
+        paramo.removeItem(116);
       }
-      AppMethodBeat.o(231354);
+      AppMethodBeat.o(270774);
       return true;
     }
     
-    public final boolean bM(int paramInt, boolean paramBoolean)
+    public boolean bZ(int paramInt, boolean paramBoolean)
     {
       return (!paramBoolean) && (paramInt == 973078577);
     }
     
-    public final boolean c(View paramView, com.tencent.mm.ui.chatting.e.a parama, ca paramca)
+    public boolean c(View paramView, com.tencent.mm.ui.chatting.e.a parama, ca paramca)
     {
-      AppMethodBeat.i(231356);
-      kotlin.g.b.p.h(paramView, "v");
-      kotlin.g.b.p.h(parama, "ui");
-      kotlin.g.b.p.h(paramca, "msg");
-      Object localObject = paramca.getContent();
+      AppMethodBeat.i(270778);
+      p.k(paramView, "v");
+      p.k(parama, "ui");
+      p.k(paramca, "msg");
+      Object localObject1 = paramca.getContent();
       paramView = null;
-      if (localObject != null) {
-        paramView = k.b.aD((String)localObject, paramca.ajQ());
+      if (localObject1 != null) {
+        paramView = k.b.aG((String)localObject1, paramca.apL());
       }
+      Object localObject3;
       long l2;
       long l3;
       if (paramView != null)
       {
-        localObject = (com.tencent.mm.plugin.i.a.b)paramView.as(com.tencent.mm.plugin.i.a.b.class);
-        if (localObject != null)
+        localObject3 = (com.tencent.mm.plugin.findersdk.a.b)paramView.ar(com.tencent.mm.plugin.findersdk.a.b.class);
+        if (localObject3 != null)
         {
-          l2 = com.tencent.mm.ac.d.Ga(((com.tencent.mm.plugin.i.a.b)localObject).wDV.feedId);
-          l3 = com.tencent.mm.ac.d.Ga(((com.tencent.mm.plugin.i.a.b)localObject).wDV.hJs);
+          l2 = com.tencent.mm.ae.d.Nb(((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.feedId);
+          l3 = com.tencent.mm.ae.d.Nb(((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.kwM);
           if (l2 != 0L)
           {
-            paramView = com.tencent.mm.plugin.finder.storage.c.vCb;
-            if (!((Boolean)com.tencent.mm.plugin.finder.storage.c.dvR().value()).booleanValue()) {
+            paramView = com.tencent.c.a.a.a.a.a.Zlt;
+            if (!((Boolean)com.tencent.c.a.a.a.a.a.imm().aSr()).booleanValue()) {
               break label180;
             }
             paramView = new Intent();
             paramView.putExtra("feed_object_id", l2);
-            paramView.putExtra("feed_object_nonceId", ((com.tencent.mm.plugin.i.a.b)localObject).wDV.objectNonceId);
-            ((aj)g.ah(aj.class)).enterFinderShareFeedUI(MMApplicationContext.getContext(), paramView);
+            paramView.putExtra("feed_object_nonceId", ((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.objectNonceId);
+            ((ak)h.ag(ak.class)).enterFinderShareFeedUI(MMApplicationContext.getContext(), paramView);
           }
         }
       }
+      label180:
+      Object localObject2;
       for (;;)
       {
-        AppMethodBeat.o(231356);
+        AppMethodBeat.o(270778);
         return false;
-        label180:
-        if (!Util.isEqual(((com.tencent.mm.plugin.i.a.b)localObject).wDV.username, z.aUg())) {
+        if (!Util.isEqual(((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.username, z.bdh())) {
           break;
         }
-        ((aj)g.ah(aj.class)).enterFinderLiveAnchorUI(MMApplicationContext.getContext(), l2, Long.valueOf(l3), ((com.tencent.mm.plugin.i.a.b)localObject).wDV.objectNonceId, ((com.tencent.mm.plugin.i.a.b)localObject).wDV.desc, "", "");
+        paramca = new Intent();
+        paramca.putExtra("KEY_PARAMS_SOURCE_TYPE", ((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.sourceType);
+        localObject1 = (com.tencent.c.a.a.a.b)h.ag(com.tencent.c.a.a.a.b.class);
+        localObject2 = MMApplicationContext.getContext();
+        parama = ((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.objectNonceId;
+        paramView = parama;
+        if (parama == null) {
+          paramView = "";
+        }
+        ((com.tencent.c.a.a.a.b)localObject1).enterFinderLiveAnchorUI(paramca, (Context)localObject2, l2, Long.valueOf(l3), paramView, ((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.desc, "", "", "");
       }
       paramca = a(parama, paramca);
       paramView = paramca;
       if (paramca == null)
       {
         paramView = parama.getTalker();
-        kotlin.g.b.p.g(paramView, "ui.talker");
+        p.j(paramView, "ui.talker");
         paramView = paramView.getUsername();
       }
       paramca = paramView;
       if (paramView == null) {
         paramca = "";
       }
-      com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sEq = paramca;
-      com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sEr = com.tencent.mm.plugin.expt.hellhound.core.b.zs(parama.getTalker().gMZ);
-      paramView = com.tencent.mm.plugin.finder.report.live.k.vkd;
-      String str1 = ((com.tencent.mm.plugin.i.a.b)localObject).wDV.username;
-      kotlin.g.b.p.g(str1, "finderObject.shareObject.username");
-      s.p localp = s.p.voF;
-      String str2 = s.j.vnS.scene;
-      if (((com.tencent.mm.plugin.i.a.b)localObject).wDV.liveStatus == 1) {}
-      for (long l1 = s.n.vop.jii;; l1 = s.n.voq.jii)
+      com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkl = paramca;
+      com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkm = com.tencent.mm.plugin.expt.hellhound.core.b.Fw(parama.getTalker().jxt);
+      paramView = com.tencent.mm.plugin.finder.live.report.k.yBj;
+      paramca = ((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.username;
+      paramView = paramca;
+      if (paramca == null) {
+        paramView = "";
+      }
+      Object localObject4 = s.t.yGS;
+      Object localObject5 = s.l.yFU.scene;
+      long l1;
+      if (((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.liveStatus == 1)
       {
-        paramView = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sFa;
-        long l4 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.a.cPi();
-        parama = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sEq;
-        paramView = parama;
-        if (parama == null) {
-          paramView = "";
+        l1 = s.r.yGC.status;
+        label407:
+        paramca = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkV;
+        long l4 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.a.deb();
+        localObject1 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkl;
+        paramca = (ca)localObject1;
+        if (localObject1 == null) {
+          paramca = "";
         }
-        paramca = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sEr;
+        localObject2 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkm;
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = "";
+        }
+        com.tencent.mm.plugin.finder.live.report.k.b(new com.tencent.mm.plugin.finder.live.report.q(l2, l3, paramView, 0L, -1L, (s.t)localObject4, (String)localObject5, l1, l4, paramca, (String)localObject1, System.currentTimeMillis(), s.bj.yMa, null, null, null, null, 122880));
+        if (parama.hRh()) {
+          break label747;
+        }
+      }
+      label747:
+      for (paramView = ((ak)h.ag(ak.class)).genContextId(2, 2, 65);; paramView = ((ak)h.ag(ak.class)).genContextId(2, 3, 65))
+      {
+        localObject2 = new Intent();
+        localObject1 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkl;
+        paramca = (ca)localObject1;
+        if (localObject1 == null) {
+          paramca = "";
+        }
+        ((Intent)localObject2).putExtra("key_enter_live_param_share_username", paramca);
+        ((Intent)localObject2).putExtra("key_enter_live_param_from_share_scene", 0);
+        ((Intent)localObject2).putExtra("key_enter_live_param_visitor_enter_scene", 1);
+        localObject4 = (com.tencent.c.a.a.a.b)h.ag(com.tencent.c.a.a.a.b.class);
+        localObject5 = (Context)parama.getContext();
+        paramca = ((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.username;
         parama = paramca;
         if (paramca == null) {
           parama = "";
         }
-        com.tencent.mm.plugin.finder.report.live.k.b(new com.tencent.mm.plugin.finder.report.live.q(l2, l3, str1, 0L, -1L, localp, str2, l1, l4, paramView, parama, System.currentTimeMillis(), s.av.vsc));
-        ((aj)g.ah(aj.class)).enterFinderLiveVisitorUI(MMApplicationContext.getContext(), l2, Long.valueOf(l3), ((com.tencent.mm.plugin.i.a.b)localObject).wDV.username, ((com.tencent.mm.plugin.i.a.b)localObject).wDV.objectNonceId, ((com.tencent.mm.plugin.i.a.b)localObject).wDV.desc, "", "");
+        localObject1 = ((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.objectNonceId;
+        paramca = (ca)localObject1;
+        if (localObject1 == null) {
+          paramca = "";
+        }
+        localObject1 = ((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.desc;
+        p.j(paramView, "contextId");
+        localObject3 = h.ag(ak.class);
+        p.j(localObject3, "MMKernel.plugin(IPluginFinder::class.java)");
+        localObject3 = ((ak)localObject3).getFinderUtilApi();
+        p.j(localObject3, "MMKernel.plugin(IPluginF…class.java).finderUtilApi");
+        ((com.tencent.c.a.a.a.b)localObject4).enterFinderLiveVisitorUI((Intent)localObject2, (Context)localObject5, l2, Long.valueOf(l3), parama, paramca, (String)localObject1, paramView, "", "", 0, "", 1, ((ag)localObject3).eeK());
         break;
+        l1 = s.r.yGD.status;
+        break label407;
       }
     }
     
-    public final boolean gTT()
+    public final boolean hTD()
     {
       return false;
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
     static final class b
       extends kotlin.g.b.q
       implements kotlin.g.a.a<kotlin.x>
     {
-      b(ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder paramAppMsgFinderLiveFeedHolder, com.tencent.mm.plugin.i.a.b paramb, com.tencent.mm.ui.chatting.e.a parama)
+      b(ChatingItemAppMsgFinderLiveFeed.a parama, ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder paramAppMsgFinderLiveFeedHolder, com.tencent.mm.plugin.findersdk.a.b paramb, com.tencent.mm.ui.chatting.e.a parama1)
       {
         super();
       }
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed$ChattingItemAppMsgFinderLiveFeedTo;", "Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem;", "Lcom/tencent/mm/ui/chatting/ChattingListEventListener$StateBtnClickListener;", "()V", "ui", "Lcom/tencent/mm/ui/chatting/context/ChattingContext;", "filling", "", "tag", "Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem$BaseViewHolder;", "position", "", "msg", "Lcom/tencent/mm/storage/MsgInfo;", "userName", "", "inflating", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "convertView", "isSender", "", "onContextItemSelected", "item", "Landroid/view/MenuItem;", "onCreateContextMenu", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "v", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "onItemClick", "onStateBtnClick", "support", "msgType", "Companion", "app_release"})
-  public static final class b
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed$ChattingItemAppMsgFinderLiveFeedTo;", "Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem;", "Lcom/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed$IChattingItemAppMsgFinderLiveFeed;", "Lcom/tencent/mm/ui/chatting/ChattingListEventListener$StateBtnClickListener;", "()V", "ui", "Lcom/tencent/mm/ui/chatting/context/ChattingContext;", "checkLiveStatus", "", "holder", "Lcom/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed$AppMsgFinderLiveFeedHolder;", "shareObject", "Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;", "filling", "tag", "Lcom/tencent/mm/ui/chatting/viewitems/ChattingItem$BaseViewHolder;", "position", "", "msg", "Lcom/tencent/mm/storage/MsgInfo;", "userName", "", "inflating", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "convertView", "isSender", "", "onContextItemSelected", "item", "Landroid/view/MenuItem;", "onCreateContextMenu", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "v", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "onItemClick", "onStateBtnClick", "retransmit", "context", "Landroid/app/Activity;", "support", "msgType", "Companion", "app_release"})
+  public static class b
     extends c
     implements t.n
   {
-    public static final ChatingItemAppMsgFinderLiveFeed.b.a PGL;
-    private com.tencent.mm.ui.chatting.e.a PhN;
+    public static final ChatingItemAppMsgFinderLiveFeed.b.a Xce;
+    private com.tencent.mm.ui.chatting.e.a WBq;
     
     static
     {
-      AppMethodBeat.i(231365);
-      PGL = new ChatingItemAppMsgFinderLiveFeed.b.a((byte)0);
-      AppMethodBeat.o(231365);
+      AppMethodBeat.i(270612);
+      Xce = new ChatingItemAppMsgFinderLiveFeed.b.a((byte)0);
+      AppMethodBeat.o(270612);
     }
     
     public final View a(LayoutInflater paramLayoutInflater, View paramView)
     {
-      AppMethodBeat.i(231359);
-      kotlin.g.b.p.h(paramLayoutInflater, "inflater");
+      AppMethodBeat.i(270602);
+      p.k(paramLayoutInflater, "inflater");
       View localView;
       if (paramView != null)
       {
@@ -713,270 +814,305 @@ public final class ChatingItemAppMsgFinderLiveFeed
       }
       else
       {
-        localView = (View)new an(paramLayoutInflater, 2131493585);
-        localView.setTag(new ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder().createAppMsgFinderFeedHolder(localView, true));
+        paramView = com.tencent.mm.plugin.finder.storage.d.AjH;
+        if (((Number)com.tencent.mm.plugin.finder.storage.d.dXV().aSr()).intValue() != 0) {
+          break label88;
+        }
       }
-      AppMethodBeat.o(231359);
-      return localView;
+      label88:
+      for (int i = R.i.edR;; i = R.i.edS)
+      {
+        localView = (View)new aq(paramLayoutInflater, i);
+        localView.setTag(new ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder().createAppMsgFinderFeedHolder(localView, true));
+        AppMethodBeat.o(270602);
+        return localView;
+      }
+    }
+    
+    public void a(Activity paramActivity, ca paramca)
+    {
+      AppMethodBeat.i(270610);
+      p.k(paramActivity, "context");
+      p.k(paramca, "msg");
+      ChatingItemAppMsgFinderLiveFeed.c localc = ChatingItemAppMsgFinderLiveFeed.XbY;
+      ChatingItemAppMsgFinderLiveFeed.c.a(paramActivity, paramca);
+      AppMethodBeat.o(270610);
+    }
+    
+    public void a(ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder paramAppMsgFinderLiveFeedHolder, bcp parambcp, com.tencent.mm.ui.chatting.e.a parama)
+    {
+      AppMethodBeat.i(270611);
+      p.k(paramAppMsgFinderLiveFeedHolder, "holder");
+      p.k(parambcp, "shareObject");
+      p.k(parama, "ui");
+      ChatingItemAppMsgFinderLiveFeed.c localc = ChatingItemAppMsgFinderLiveFeed.XbY;
+      ChatingItemAppMsgFinderLiveFeed.c.a(paramAppMsgFinderLiveFeedHolder, parambcp, parama);
+      AppMethodBeat.o(270611);
     }
     
     public final void a(c.a parama, int paramInt, final com.tencent.mm.ui.chatting.e.a parama1, ca paramca, String paramString)
     {
-      AppMethodBeat.i(231360);
-      kotlin.g.b.p.h(parama, "tag");
-      kotlin.g.b.p.h(parama1, "ui");
-      kotlin.g.b.p.h(paramca, "msg");
-      kotlin.g.b.p.h(paramString, "userName");
-      this.PhN = parama1;
-      paramString = (ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder)parama;
-      parama = paramString.getDetailLayout();
+      AppMethodBeat.i(270605);
+      p.k(parama, "tag");
+      p.k(parama1, "ui");
+      p.k(paramca, "msg");
+      p.k(paramString, "userName");
+      this.WBq = parama1;
+      final ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder localAppMsgFinderLiveFeedHolder = (ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder)parama;
+      parama = localAppMsgFinderLiveFeedHolder.getDetailLayout();
       if (parama == null) {
-        kotlin.g.b.p.hyc();
+        p.iCn();
       }
       parama.animate().cancel();
-      parama = paramString.getDetailLayout();
+      parama = localAppMsgFinderLiveFeedHolder.getDetailLayout();
       if (parama == null) {
-        kotlin.g.b.p.hyc();
+        p.iCn();
       }
       parama.setTag(Long.valueOf(System.currentTimeMillis()));
-      Object localObject1 = paramca.getContent();
+      paramString = paramca.getContent();
       parama = null;
-      if (localObject1 != null) {
-        parama = k.b.aD((String)localObject1, paramca.ajQ());
+      if (paramString != null) {
+        parama = k.b.aG(paramString, paramca.apL());
       }
-      Object localObject2;
-      Object localObject3;
+      final bcp localbcp;
+      Object localObject;
       int i;
       if (parama != null)
       {
-        localObject1 = ((com.tencent.mm.plugin.i.a.b)parama.as(com.tencent.mm.plugin.i.a.b.class)).wDV;
-        if (localObject1 != null)
+        localbcp = ((com.tencent.mm.plugin.findersdk.a.b)parama.ar(com.tencent.mm.plugin.findersdk.a.b.class)).Bvb;
+        if (localbcp != null)
         {
-          parama = com.tencent.mm.plugin.finder.loader.m.uJa;
-          parama = com.tencent.mm.plugin.finder.loader.m.dka();
-          localObject2 = new com.tencent.mm.plugin.finder.loader.p(((axf)localObject1).headUrl, com.tencent.mm.plugin.finder.storage.x.vEo);
-          localObject3 = paramString.getFinderAvatar();
-          if (localObject3 == null) {
-            kotlin.g.b.p.hyc();
+          parama = com.tencent.mm.plugin.finder.loader.t.ztT;
+          parama = com.tencent.mm.plugin.finder.loader.t.dJh();
+          paramString = new com.tencent.mm.plugin.finder.loader.x(localbcp.headUrl, u.Alz);
+          localObject = localAppMsgFinderLiveFeedHolder.getFinderAvatar();
+          if (localObject == null) {
+            p.iCn();
           }
-          com.tencent.mm.plugin.finder.loader.m localm = com.tencent.mm.plugin.finder.loader.m.uJa;
-          parama.a(localObject2, (ImageView)localObject3, com.tencent.mm.plugin.finder.loader.m.a(m.a.uJh));
-          parama = paramString.getFinderNickname();
+          com.tencent.mm.plugin.finder.loader.t localt = com.tencent.mm.plugin.finder.loader.t.ztT;
+          parama.a(paramString, (ImageView)localObject, com.tencent.mm.plugin.finder.loader.t.a(t.a.zua));
+          parama = localAppMsgFinderLiveFeedHolder.getFinderNickname();
           if (parama == null) {
-            kotlin.g.b.p.hyc();
+            p.iCn();
           }
-          parama.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)parama1.getContext(), (CharSequence)((axf)localObject1).nickName));
-          parama = paramString.getFinderNickname();
+          parama.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)parama1.getContext(), (CharSequence)localbcp.nickName));
+          parama = localAppMsgFinderLiveFeedHolder.getFinderNickname();
           if (parama == null) {
-            kotlin.g.b.p.hyc();
+            p.iCn();
           }
-          ao.a((Paint)parama.getPaint(), 0.8F);
-          if (((axf)localObject1).liveStatus != 1) {
-            break label808;
+          ar.a((Paint)parama.getPaint(), 0.8F);
+          if (localbcp.liveStatus != 1) {
+            break label810;
           }
-          parama = (CharSequence)((axf)localObject1).coverUrl;
+          parama = (CharSequence)localbcp.coverUrl;
           if ((parama == null) || (parama.length() == 0))
           {
             i = 1;
             if (i != 0) {
-              break label756;
+              break label758;
             }
-            parama = ((axf)localObject1).coverUrl;
-            label300:
-            localObject2 = paramString.getLiveTag();
-            if (localObject2 != null) {
-              ((FinderLiveOnliveWidget)localObject2).setVisibility(0);
+            parama = localbcp.coverUrl;
+            label301:
+            paramString = localAppMsgFinderLiveFeedHolder.getLiveTag();
+            if (paramString != null) {
+              paramString.setVisibility(0);
             }
-            localObject2 = paramString.getLiveEndTag();
-            if (localObject2 != null) {
-              ((FinderLiveOnliveWidget)localObject2).setVisibility(8);
+            paramString = localAppMsgFinderLiveFeedHolder.getLiveEndTag();
+            if (paramString != null) {
+              paramString.setVisibility(8);
             }
-            localObject2 = paramString.getLiveTag();
-            if (localObject2 != null)
+            paramString = localAppMsgFinderLiveFeedHolder.getLiveTag();
+            if (paramString != null)
             {
-              localObject3 = parama1.getContext();
-              kotlin.g.b.p.g(localObject3, "ui.context");
-              localObject3 = ((Activity)localObject3).getResources().getString(2131760176);
-              kotlin.g.b.p.g(localObject3, "ui.context.resources.get…live_share_onlive_status)");
-              ((FinderLiveOnliveWidget)localObject2).setText((String)localObject3);
+              localObject = parama1.getContext();
+              p.j(localObject, "ui.context");
+              localObject = ((Activity)localObject).getResources().getString(R.l.finder_live_share_onlive_status);
+              p.j(localObject, "ui.context.resources.get…live_share_onlive_status)");
+              paramString.setText((String)localObject);
             }
-            ((aj)g.ah(aj.class)).loadImage(parama, paramString.getFinderThumb());
-            com.tencent.mm.ac.d.a(200L, (kotlin.g.a.a)new b(paramString, (axf)localObject1, parama1));
-            label432:
-            parama = ChatingItemAppMsgFinderLiveFeed.PGG;
-            ChatingItemAppMsgFinderLiveFeed.c.a(paramString);
-            parama = paramString.getFinderThumb();
+            ((ak)h.ag(ak.class)).loadImage(parama, localAppMsgFinderLiveFeedHolder.getFinderThumb());
+            com.tencent.mm.ae.d.a(200L, (kotlin.g.a.a)new b(this, localAppMsgFinderLiveFeedHolder, localbcp, parama1));
+            label434:
+            parama = ChatingItemAppMsgFinderLiveFeed.XbY;
+            ChatingItemAppMsgFinderLiveFeed.c.a(localAppMsgFinderLiveFeedHolder);
+            parama = localAppMsgFinderLiveFeedHolder.getFinderThumb();
             if (parama == null) {
-              kotlin.g.b.p.hyc();
+              p.iCn();
             }
             parama.setVisibility(0);
-            parama = (CharSequence)((axf)localObject1).desc;
+            parama = (CharSequence)localbcp.desc;
             if ((parama != null) && (parama.length() != 0)) {
-              break label1047;
+              break label1061;
             }
             i = 1;
-            label484:
+            label486:
             if (i == 0) {
-              break label1053;
+              break label1067;
             }
-            parama = paramString.getFinderDesc();
+            parama = localAppMsgFinderLiveFeedHolder.getFinderDesc();
             if (parama == null) {
-              kotlin.g.b.p.hyc();
+              p.iCn();
             }
             parama.setVisibility(8);
           }
         }
         else
         {
-          label508:
-          paramString.clickArea.setOnClickListener((View.OnClickListener)d(parama1));
-          paramString.clickArea.setOnLongClickListener((View.OnLongClickListener)c(parama1));
-          parama = paramString.clickArea;
-          localObject1 = parama1.bh(com.tencent.mm.ui.chatting.d.b.k.class);
-          kotlin.g.b.p.g(localObject1, "ui.component(IChattingLi…terComponent::class.java)");
-          parama.setOnTouchListener((View.OnTouchListener)((com.tencent.mm.ui.chatting.d.b.k)localObject1).gOC());
-          parama = this.PhN;
+          label510:
+          localAppMsgFinderLiveFeedHolder.clickArea.setOnClickListener((View.OnClickListener)d(parama1));
+          localAppMsgFinderLiveFeedHolder.clickArea.setOnLongClickListener((View.OnLongClickListener)c(parama1));
+          parama = localAppMsgFinderLiveFeedHolder.clickArea;
+          paramString = parama1.bC(com.tencent.mm.ui.chatting.d.b.k.class);
+          p.j(paramString, "ui.component(IChattingLi…terComponent::class.java)");
+          parama.setOnTouchListener((View.OnTouchListener)((com.tencent.mm.ui.chatting.d.b.k)paramString).hNO());
+          parama = this.WBq;
           if (parama == null) {
-            kotlin.g.b.p.hyc();
+            p.iCn();
           }
-          parama = new bq(paramca, parama.gRM(), paramInt, null, '\000');
-          localObject1 = paramString.clickArea;
-          kotlin.g.b.p.g(localObject1, "holder.clickArea");
-          ((View)localObject1).setTag(parama);
+          parama = new by(paramca, parama.hRi(), paramInt, null, '\000');
+          paramString = localAppMsgFinderLiveFeedHolder.clickArea;
+          p.j(paramString, "holder.clickArea");
+          paramString.setTag(parama);
         }
       }
       else
       {
-        if (!c.gTW()) {
-          break label1129;
+        if (!c.hTG()) {
+          break label1143;
         }
-        if (paramString.uploadingPB != null)
+        if (localAppMsgFinderLiveFeedHolder.uploadingPB != null)
         {
-          parama = paramString.uploadingPB;
-          kotlin.g.b.p.g(parama, "holder.uploadingPB");
+          parama = localAppMsgFinderLiveFeedHolder.uploadingPB;
+          p.j(parama, "holder.uploadingPB");
           parama.setVisibility(8);
         }
-        if ((paramca.getStatus() != 2) || (!b((com.tencent.mm.ui.chatting.d.b.k)parama1.bh(com.tencent.mm.ui.chatting.d.b.k.class), paramca.ajL()))) {
-          break label1099;
+        if ((paramca.getStatus() != 2) || (!b((com.tencent.mm.ui.chatting.d.b.k)parama1.bC(com.tencent.mm.ui.chatting.d.b.k.class), paramca.apG()))) {
+          break label1113;
         }
-        if (paramString.getTickIV() != null)
+        if (localAppMsgFinderLiveFeedHolder.getTickIV() != null)
         {
-          parama = paramString.getTickIV();
+          parama = localAppMsgFinderLiveFeedHolder.getTickIV();
           if (parama == null) {
-            kotlin.g.b.p.hyc();
+            p.iCn();
           }
           parama.setVisibility(0);
         }
       }
       for (;;)
       {
-        a(paramInt, (c.a)paramString, paramca, parama1.gRI(), parama1.gRM(), parama1, (t.n)this);
-        AppMethodBeat.o(231360);
+        a(paramInt, (c.a)localAppMsgFinderLiveFeedHolder, paramca, parama1.getSelfUserName(), parama1.hRi(), parama1, (t.n)this);
+        AppMethodBeat.o(270605);
         return;
         i = 0;
         break;
-        label756:
-        parama = (CharSequence)((axf)localObject1).headUrl;
+        label758:
+        parama = (CharSequence)localbcp.headUrl;
         if ((parama == null) || (parama.length() == 0)) {}
         for (i = 1;; i = 0)
         {
           if (i != 0) {
-            break label801;
+            break label803;
           }
-          parama = ((axf)localObject1).headUrl;
+          parama = localbcp.headUrl;
           break;
         }
-        label801:
+        label803:
         parama = "";
-        break label300;
-        label808:
-        if (((axf)localObject1).liveStatus != 2) {
-          break label432;
+        break label301;
+        label810:
+        if (localbcp.liveStatus != 2) {
+          break label434;
         }
         parama = "";
-        localObject2 = (CharSequence)((axf)localObject1).coverUrl;
-        if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0))
+        paramString = (CharSequence)localbcp.coverUrl;
+        if ((paramString == null) || (paramString.length() == 0))
         {
           i = 1;
-          label849:
+          label851:
           if (i != 0) {
-            break label992;
+            break label1000;
           }
-          parama = ((axf)localObject1).coverUrl;
-          kotlin.g.b.p.g(parama, "finderObject.coverUrl");
+          paramString = localbcp.coverUrl;
+          parama = paramString;
+          if (paramString == null) {
+            parama = "";
+          }
         }
-        label1045:
+        label1059:
         for (;;)
         {
-          localObject2 = paramString.getLiveTag();
-          if (localObject2 != null) {
-            ((FinderLiveOnliveWidget)localObject2).setVisibility(8);
+          paramString = localAppMsgFinderLiveFeedHolder.getLiveTag();
+          if (paramString != null) {
+            paramString.setVisibility(8);
           }
-          localObject2 = paramString.getLiveEndTag();
-          if (localObject2 != null) {
-            ((FinderLiveOnliveWidget)localObject2).setVisibility(0);
+          paramString = localAppMsgFinderLiveFeedHolder.getLiveEndTag();
+          if (paramString != null) {
+            paramString.setVisibility(0);
           }
-          localObject2 = paramString.getLiveTag();
-          if (localObject2 != null)
+          paramString = localAppMsgFinderLiveFeedHolder.getLiveTag();
+          if (paramString != null)
           {
-            localObject3 = parama1.getContext();
-            kotlin.g.b.p.g(localObject3, "ui.context");
-            localObject3 = ((Activity)localObject3).getResources().getString(2131760176);
-            kotlin.g.b.p.g(localObject3, "ui.context.resources.get…live_share_onlive_status)");
-            ((FinderLiveOnliveWidget)localObject2).setText((String)localObject3);
+            localObject = parama1.getContext();
+            p.j(localObject, "ui.context");
+            localObject = ((Activity)localObject).getResources().getString(R.l.finder_live_share_onlive_status);
+            p.j(localObject, "ui.context.resources.get…live_share_onlive_status)");
+            paramString.setText((String)localObject);
           }
-          ((aj)g.ah(aj.class)).getFinderUtilApi().g(paramString.getFinderThumb(), parama);
+          ((ak)h.ag(ak.class)).getFinderUtilApi().f(localAppMsgFinderLiveFeedHolder.getFinderThumb(), parama);
           break;
           i = 0;
-          break label849;
-          label992:
-          localObject2 = (CharSequence)((axf)localObject1).headUrl;
-          if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0)) {}
+          break label851;
+          label1000:
+          paramString = (CharSequence)localbcp.headUrl;
+          if ((paramString == null) || (paramString.length() == 0)) {}
           for (i = 1;; i = 0)
           {
             if (i != 0) {
-              break label1045;
+              break label1059;
             }
-            parama = ((axf)localObject1).headUrl;
-            kotlin.g.b.p.g(parama, "finderObject.headUrl");
+            paramString = localbcp.headUrl;
+            parama = paramString;
+            if (paramString == null) {
+              parama = "";
+            }
             break;
           }
         }
-        label1047:
+        label1061:
         i = 0;
-        break label484;
-        label1053:
-        parama = paramString.getFinderDesc();
+        break label486;
+        label1067:
+        parama = localAppMsgFinderLiveFeedHolder.getFinderDesc();
         if (parama == null) {
-          kotlin.g.b.p.hyc();
+          p.iCn();
         }
         parama.setVisibility(0);
-        parama = paramString.getFinderDesc();
+        parama = localAppMsgFinderLiveFeedHolder.getFinderDesc();
         if (parama == null) {
-          kotlin.g.b.p.hyc();
+          p.iCn();
         }
-        parama.setText((CharSequence)((axf)localObject1).desc);
-        break label508;
-        label1099:
-        if (paramString.getTickIV() != null)
+        parama.setText((CharSequence)localbcp.desc);
+        break label510;
+        label1113:
+        if (localAppMsgFinderLiveFeedHolder.getTickIV() != null)
         {
-          parama = paramString.getTickIV();
+          parama = localAppMsgFinderLiveFeedHolder.getTickIV();
           if (parama == null) {
-            kotlin.g.b.p.hyc();
+            p.iCn();
           }
           parama.setVisibility(8);
         }
       }
-      label1129:
-      if (paramString.getTickIV() != null)
+      label1143:
+      if (localAppMsgFinderLiveFeedHolder.getTickIV() != null)
       {
-        parama = paramString.getTickIV();
+        parama = localAppMsgFinderLiveFeedHolder.getTickIV();
         if (parama == null) {
-          kotlin.g.b.p.hyc();
+          p.iCn();
         }
         parama.setVisibility(8);
       }
-      parama = (c.a)paramString;
+      parama = (c.a)localAppMsgFinderLiveFeedHolder;
       if (paramca.getStatus() < 2) {}
       for (boolean bool = true;; bool = false)
       {
@@ -987,191 +1123,242 @@ public final class ChatingItemAppMsgFinderLiveFeed
     
     public final boolean a(MenuItem paramMenuItem, com.tencent.mm.ui.chatting.e.a parama, ca paramca)
     {
-      AppMethodBeat.i(231363);
-      kotlin.g.b.p.h(paramMenuItem, "item");
-      kotlin.g.b.p.h(parama, "ui");
-      kotlin.g.b.p.h(paramca, "msg");
+      AppMethodBeat.i(270608);
+      p.k(paramMenuItem, "item");
+      p.k(parama, "ui");
+      p.k(paramca, "msg");
       switch (paramMenuItem.getItemId())
       {
       default: 
-        AppMethodBeat.o(231363);
+        AppMethodBeat.o(270608);
         return false;
       }
-      paramMenuItem = ChatingItemAppMsgFinderLiveFeed.PGG;
       paramMenuItem = parama.getContext();
-      kotlin.g.b.p.g(paramMenuItem, "ui.context");
-      ChatingItemAppMsgFinderLiveFeed.c.a(paramMenuItem, paramca);
-      AppMethodBeat.o(231363);
+      p.j(paramMenuItem, "ui.context");
+      a(paramMenuItem, paramca);
+      AppMethodBeat.o(270608);
       return true;
     }
     
-    public final boolean a(com.tencent.mm.ui.base.m paramm, View paramView, ca paramca)
+    public final boolean a(o paramo, View paramView, ca paramca)
     {
-      AppMethodBeat.i(231362);
-      kotlin.g.b.p.h(paramm, "menu");
-      kotlin.g.b.p.h(paramView, "v");
+      AppMethodBeat.i(270607);
+      p.k(paramo, "menu");
+      p.k(paramView, "v");
       Object localObject = paramView.getTag();
       if (localObject == null)
       {
-        paramm = new t("null cannot be cast to non-null type com.tencent.mm.ui.chatting.viewitems.ItemDataTag");
-        AppMethodBeat.o(231362);
-        throw paramm;
+        paramo = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.ui.chatting.viewitems.ItemDataTag");
+        AppMethodBeat.o(270607);
+        throw paramo;
       }
-      int i = ((bq)localObject).position;
+      int i = ((by)localObject).position;
       if (paramca != null)
       {
-        localObject = this.PhN;
+        localObject = this.WBq;
         if (localObject == null) {
-          kotlin.g.b.p.hyc();
+          p.iCn();
         }
-        paramm.a(i, 111, (CharSequence)((com.tencent.mm.ui.chatting.e.a)localObject).getResources().getString(2131764628), 2131690674);
-        paramm.removeItem(116);
-        if (((paramca.getStatus() == 2) || (paramca.ajS() == 1)) && (b(paramca, this.PhN)) && (bnf(paramca.ajO())))
+        paramo.a(i, 111, (CharSequence)((com.tencent.mm.ui.chatting.e.a)localObject).getResources().getString(R.l.retransmit), R.k.icons_filled_share);
+        paramo.removeItem(116);
+        if (((paramca.getStatus() == 2) || (paramca.apO() == 1)) && (b(paramca, this.WBq)) && (bzE(paramca.apJ())))
         {
-          paramca = this.PhN;
+          paramca = this.WBq;
           if (paramca == null) {
-            kotlin.g.b.p.hyc();
+            p.iCn();
           }
-          if (!paramca.gRO()) {
-            paramm.a(i, 123, (CharSequence)paramView.getContext().getString(2131757446), 2131690650);
+          if (!paramca.hRk()) {
+            paramo.a(i, 123, (CharSequence)paramView.getContext().getString(R.l.ewa), R.k.icons_filled_previous);
           }
         }
       }
-      AppMethodBeat.o(231362);
+      AppMethodBeat.o(270607);
       return true;
     }
     
     public final void b(View paramView, com.tencent.mm.ui.chatting.e.a parama, ca paramca)
     {
-      AppMethodBeat.i(231361);
-      kotlin.g.b.p.h(paramView, "v");
-      kotlin.g.b.p.h(parama, "ui");
-      kotlin.g.b.p.h(paramca, "msg");
-      if (paramca.dOQ())
+      AppMethodBeat.i(270606);
+      p.k(paramView, "v");
+      p.k(parama, "ui");
+      p.k(paramca, "msg");
+      if (paramca.erk())
       {
-        com.tencent.mm.pluginsdk.model.app.m.aS(paramca);
-        bp.Ad(paramca.ajL());
-        parama.BN(true);
+        m.bh(paramca);
+        bq.Gk(paramca.apG());
+        parama.Gi(true);
       }
-      AppMethodBeat.o(231361);
+      AppMethodBeat.o(270606);
     }
     
-    public final boolean bM(int paramInt, boolean paramBoolean)
+    public boolean bZ(int paramInt, boolean paramBoolean)
     {
       return (paramBoolean) && (paramInt == 973078577);
     }
     
-    public final boolean c(View paramView, com.tencent.mm.ui.chatting.e.a parama, ca paramca)
+    public boolean c(View paramView, com.tencent.mm.ui.chatting.e.a parama, ca paramca)
     {
-      AppMethodBeat.i(231364);
-      kotlin.g.b.p.h(paramView, "v");
-      kotlin.g.b.p.h(parama, "ui");
-      kotlin.g.b.p.h(paramca, "msg");
-      Object localObject = paramca.getContent();
+      AppMethodBeat.i(270609);
+      p.k(paramView, "v");
+      p.k(parama, "ui");
+      p.k(paramca, "msg");
+      Object localObject1 = paramca.getContent();
       paramView = null;
-      if (localObject != null) {
-        paramView = k.b.aD((String)localObject, paramca.ajQ());
+      if (localObject1 != null) {
+        paramView = k.b.aG((String)localObject1, paramca.apL());
       }
+      Object localObject3;
       long l2;
       long l3;
       if (paramView != null)
       {
-        localObject = (com.tencent.mm.plugin.i.a.b)paramView.as(com.tencent.mm.plugin.i.a.b.class);
-        if (localObject != null)
+        localObject3 = (com.tencent.mm.plugin.findersdk.a.b)paramView.ar(com.tencent.mm.plugin.findersdk.a.b.class);
+        if (localObject3 != null)
         {
-          l2 = com.tencent.mm.ac.d.Ga(((com.tencent.mm.plugin.i.a.b)localObject).wDV.feedId);
-          l3 = com.tencent.mm.ac.d.Ga(((com.tencent.mm.plugin.i.a.b)localObject).wDV.hJs);
+          l2 = com.tencent.mm.ae.d.Nb(((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.feedId);
+          l3 = com.tencent.mm.ae.d.Nb(((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.kwM);
           if (l2 != 0L)
           {
-            paramView = com.tencent.mm.plugin.finder.storage.c.vCb;
-            if (!((Boolean)com.tencent.mm.plugin.finder.storage.c.dvR().value()).booleanValue()) {
+            paramView = com.tencent.c.a.a.a.a.a.Zlt;
+            if (!((Boolean)com.tencent.c.a.a.a.a.a.imm().aSr()).booleanValue()) {
               break label180;
             }
             paramView = new Intent();
             paramView.putExtra("feed_object_id", l2);
-            paramView.putExtra("feed_object_nonceId", ((com.tencent.mm.plugin.i.a.b)localObject).wDV.objectNonceId);
-            ((aj)g.ah(aj.class)).enterFinderShareFeedUI(MMApplicationContext.getContext(), paramView);
+            paramView.putExtra("feed_object_nonceId", ((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.objectNonceId);
+            ((ak)h.ag(ak.class)).enterFinderShareFeedUI(MMApplicationContext.getContext(), paramView);
           }
         }
       }
+      label180:
+      Object localObject2;
       for (;;)
       {
-        AppMethodBeat.o(231364);
+        AppMethodBeat.o(270609);
         return false;
-        label180:
         paramca = a(parama, paramca);
         paramView = paramca;
         if (paramca == null)
         {
           paramView = parama.getTalker();
-          kotlin.g.b.p.g(paramView, "ui.talker");
+          p.j(paramView, "ui.talker");
           paramView = paramView.getUsername();
         }
         paramca = paramView;
         if (paramView == null) {
           paramca = "";
         }
-        com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sEq = paramca;
-        com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sEr = com.tencent.mm.plugin.expt.hellhound.core.b.zs(parama.getTalker().gMZ);
-        if (!Util.isEqual(((com.tencent.mm.plugin.i.a.b)localObject).wDV.username, z.aUg())) {
+        com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkl = paramca;
+        com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkm = com.tencent.mm.plugin.expt.hellhound.core.b.Fw(parama.getTalker().jxt);
+        if (!Util.isEqual(((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.username, z.bdh())) {
           break;
         }
-        ((aj)g.ah(aj.class)).enterFinderLiveAnchorUI(MMApplicationContext.getContext(), l2, Long.valueOf(l3), ((com.tencent.mm.plugin.i.a.b)localObject).wDV.objectNonceId, ((com.tencent.mm.plugin.i.a.b)localObject).wDV.desc, "", "");
-      }
-      paramView = com.tencent.mm.plugin.finder.report.live.k.vkd;
-      String str1 = ((com.tencent.mm.plugin.i.a.b)localObject).wDV.username;
-      kotlin.g.b.p.g(str1, "finderObject.shareObject.username");
-      s.p localp = s.p.voF;
-      String str2 = s.j.vnS.scene;
-      if (((com.tencent.mm.plugin.i.a.b)localObject).wDV.liveStatus == 1) {}
-      for (long l1 = s.n.vop.jii;; l1 = s.n.voq.jii)
-      {
-        paramView = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sFa;
-        long l4 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.a.cPi();
-        parama = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sEq;
+        paramca = new Intent();
+        paramca.putExtra("KEY_PARAMS_SOURCE_TYPE", ((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.sourceType);
+        localObject1 = (com.tencent.c.a.a.a.b)h.ag(com.tencent.c.a.a.a.b.class);
+        localObject2 = MMApplicationContext.getContext();
+        parama = ((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.objectNonceId;
         paramView = parama;
         if (parama == null) {
           paramView = "";
         }
-        paramca = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sEr;
+        ((com.tencent.c.a.a.a.b)localObject1).enterFinderLiveAnchorUI(paramca, (Context)localObject2, l2, Long.valueOf(l3), paramView, ((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.desc, "", "", "");
+      }
+      paramView = com.tencent.mm.plugin.finder.live.report.k.yBj;
+      paramca = ((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.username;
+      paramView = paramca;
+      if (paramca == null) {
+        paramView = "";
+      }
+      Object localObject4 = s.t.yGS;
+      Object localObject5 = s.l.yFU.scene;
+      long l1;
+      if (((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.liveStatus == 1)
+      {
+        l1 = s.r.yGC.status;
+        label407:
+        paramca = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkV;
+        long l4 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.a.deb();
+        localObject1 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkl;
+        paramca = (ca)localObject1;
+        if (localObject1 == null) {
+          paramca = "";
+        }
+        localObject2 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkm;
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = "";
+        }
+        com.tencent.mm.plugin.finder.live.report.k.b(new com.tencent.mm.plugin.finder.live.report.q(l2, l3, paramView, 0L, -1L, (s.t)localObject4, (String)localObject5, l1, l4, paramca, (String)localObject1, System.currentTimeMillis(), s.bj.yMa, null, null, null, null, 122880));
+        if (parama.hRh()) {
+          break label747;
+        }
+      }
+      label747:
+      for (paramView = ((ak)h.ag(ak.class)).genContextId(2, 2, 65);; paramView = ((ak)h.ag(ak.class)).genContextId(2, 3, 65))
+      {
+        localObject2 = new Intent();
+        localObject1 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkl;
+        paramca = (ca)localObject1;
+        if (localObject1 == null) {
+          paramca = "";
+        }
+        ((Intent)localObject2).putExtra("key_enter_live_param_share_username", paramca);
+        ((Intent)localObject2).putExtra("key_enter_live_param_from_share_scene", 0);
+        ((Intent)localObject2).putExtra("key_enter_live_param_visitor_enter_scene", 1);
+        localObject4 = (com.tencent.c.a.a.a.b)h.ag(com.tencent.c.a.a.a.b.class);
+        localObject5 = (Context)parama.getContext();
+        paramca = ((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.username;
         parama = paramca;
         if (paramca == null) {
           parama = "";
         }
-        com.tencent.mm.plugin.finder.report.live.k.b(new com.tencent.mm.plugin.finder.report.live.q(l2, l3, str1, 0L, -1L, localp, str2, l1, l4, paramView, parama, System.currentTimeMillis(), s.av.vsc));
-        ((aj)g.ah(aj.class)).enterFinderLiveVisitorUI(MMApplicationContext.getContext(), l2, Long.valueOf(l3), ((com.tencent.mm.plugin.i.a.b)localObject).wDV.username, ((com.tencent.mm.plugin.i.a.b)localObject).wDV.objectNonceId, ((com.tencent.mm.plugin.i.a.b)localObject).wDV.desc, "", "");
+        localObject1 = ((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.objectNonceId;
+        paramca = (ca)localObject1;
+        if (localObject1 == null) {
+          paramca = "";
+        }
+        localObject1 = ((com.tencent.mm.plugin.findersdk.a.b)localObject3).Bvb.desc;
+        p.j(paramView, "contextId");
+        localObject3 = h.ag(ak.class);
+        p.j(localObject3, "MMKernel.plugin(IPluginFinder::class.java)");
+        localObject3 = ((ak)localObject3).getFinderUtilApi();
+        p.j(localObject3, "MMKernel.plugin(IPluginF…class.java).finderUtilApi");
+        ((com.tencent.c.a.a.a.b)localObject4).enterFinderLiveVisitorUI((Intent)localObject2, (Context)localObject5, l2, Long.valueOf(l3), parama, paramca, (String)localObject1, paramView, "", "", 0, "", 1, ((ag)localObject3).eeK());
         break;
+        l1 = s.r.yGD.status;
+        break label407;
       }
     }
     
-    public final boolean gTT()
+    public final boolean hTD()
     {
       return true;
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
     static final class b
       extends kotlin.g.b.q
       implements kotlin.g.a.a<kotlin.x>
     {
-      b(ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder paramAppMsgFinderLiveFeedHolder, axf paramaxf, com.tencent.mm.ui.chatting.e.a parama)
+      b(ChatingItemAppMsgFinderLiveFeed.b paramb, ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder paramAppMsgFinderLiveFeedHolder, bcp parambcp, com.tencent.mm.ui.chatting.e.a parama)
       {
         super();
       }
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "adjustMediaHeight", "", "holder", "Lcom/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed$AppMsgFinderLiveFeedHolder;", "width", "", "height", "checkLiveStatus", "shareObject", "Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;", "ui", "Lcom/tencent/mm/ui/chatting/context/ChattingContext;", "retransmit", "context", "Landroid/app/Activity;", "msg", "Lcom/tencent/mm/storage/MsgInfo;", "app_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "adjustMediaHeight", "", "holder", "Lcom/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed$AppMsgFinderLiveFeedHolder;", "width", "", "height", "checkLiveStatus", "shareObject", "Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;", "ui", "Lcom/tencent/mm/ui/chatting/context/ChattingContext;", "retransmit", "context", "Landroid/app/Activity;", "msg", "Lcom/tencent/mm/storage/MsgInfo;", "app_release"})
   public static final class c
   {
     public static void a(Activity paramActivity, ca paramca)
     {
-      AppMethodBeat.i(231368);
-      kotlin.g.b.p.h(paramActivity, "context");
-      kotlin.g.b.p.h(paramca, "msg");
+      AppMethodBeat.i(221595);
+      p.k(paramActivity, "context");
+      p.k(paramca, "msg");
       if (!Util.isNullOrNil(paramca.getContent()))
       {
-        paramca = k.b.HD(paramca.getContent());
+        paramca = k.b.OQ(paramca.getContent());
         if (paramca != null)
         {
           Intent localIntent = new Intent((Context)paramActivity, MsgRetransmitUI.class);
@@ -1180,73 +1367,113 @@ public final class ChatingItemAppMsgFinderLiveFeed
           localIntent.putExtra("Retr_Msg_content", k.b.a(paramca, null, null));
           localIntent.putExtra("Retr_go_to_chattingUI", false);
           localIntent.putExtra("Retr_show_success_tips", true);
-          paramca = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
-          com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramca.axQ(), "com/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed$Companion", "retransmit", "(Landroid/app/Activity;Lcom/tencent/mm/storage/MsgInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramActivity.startActivity((Intent)paramca.pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed$Companion", "retransmit", "(Landroid/app/Activity;Lcom/tencent/mm/storage/MsgInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramca = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
+          com.tencent.mm.hellhoundlib.a.a.b(paramActivity, paramca.aFh(), "com/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed$Companion", "retransmit", "(Landroid/app/Activity;Lcom/tencent/mm/storage/MsgInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramActivity.startActivity((Intent)paramca.sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramActivity, "com/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed$Companion", "retransmit", "(Landroid/app/Activity;Lcom/tencent/mm/storage/MsgInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
       }
-      AppMethodBeat.o(231368);
+      AppMethodBeat.o(221595);
     }
     
     public static void a(ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder paramAppMsgFinderLiveFeedHolder)
     {
-      AppMethodBeat.i(231367);
-      kotlin.g.b.p.h(paramAppMsgFinderLiveFeedHolder, "holder");
+      AppMethodBeat.i(221593);
+      p.k(paramAppMsgFinderLiveFeedHolder, "holder");
+      Object localObject = com.tencent.mm.plugin.finder.storage.d.AjH;
+      if (((Number)com.tencent.mm.plugin.finder.storage.d.dXV().aSr()).intValue() == 0)
+      {
+        i = (int)(paramAppMsgFinderLiveFeedHolder.getWidth() * 1.333333373069763D);
+        localObject = paramAppMsgFinderLiveFeedHolder.getFinderThumb();
+        if (localObject == null) {
+          p.iCn();
+        }
+        localObject = ((ImageView)localObject).getLayoutParams();
+        if (localObject == null)
+        {
+          paramAppMsgFinderLiveFeedHolder = new kotlin.t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+          AppMethodBeat.o(221593);
+          throw paramAppMsgFinderLiveFeedHolder;
+        }
+        localObject = (FrameLayout.LayoutParams)localObject;
+        ((FrameLayout.LayoutParams)localObject).height = i;
+        paramAppMsgFinderLiveFeedHolder = paramAppMsgFinderLiveFeedHolder.getFinderThumb();
+        if (paramAppMsgFinderLiveFeedHolder == null) {
+          p.iCn();
+        }
+        paramAppMsgFinderLiveFeedHolder.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        AppMethodBeat.o(221593);
+        return;
+      }
       int i = paramAppMsgFinderLiveFeedHolder.getWidth();
-      Object localObject = paramAppMsgFinderLiveFeedHolder.getFinderThumb();
+      localObject = paramAppMsgFinderLiveFeedHolder.getFinderThumb();
       if (localObject == null) {
-        kotlin.g.b.p.hyc();
+        p.iCn();
       }
       localObject = ((ImageView)localObject).getLayoutParams();
       if (localObject == null)
       {
-        paramAppMsgFinderLiveFeedHolder = new t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
-        AppMethodBeat.o(231367);
+        paramAppMsgFinderLiveFeedHolder = new kotlin.t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+        AppMethodBeat.o(221593);
         throw paramAppMsgFinderLiveFeedHolder;
       }
       localObject = (FrameLayout.LayoutParams)localObject;
       ((FrameLayout.LayoutParams)localObject).height = i;
       paramAppMsgFinderLiveFeedHolder = paramAppMsgFinderLiveFeedHolder.getFinderThumb();
       if (paramAppMsgFinderLiveFeedHolder == null) {
-        kotlin.g.b.p.hyc();
+        p.iCn();
       }
       paramAppMsgFinderLiveFeedHolder.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      AppMethodBeat.o(231367);
+      AppMethodBeat.o(221593);
     }
     
-    public static void a(final ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder paramAppMsgFinderLiveFeedHolder, axf paramaxf, com.tencent.mm.ui.chatting.e.a parama)
+    public static void a(final ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder paramAppMsgFinderLiveFeedHolder, bcp parambcp, com.tencent.mm.ui.chatting.e.a parama)
     {
-      AppMethodBeat.i(231369);
-      kotlin.g.b.p.h(paramAppMsgFinderLiveFeedHolder, "holder");
-      kotlin.g.b.p.h(paramaxf, "shareObject");
-      kotlin.g.b.p.h(parama, "ui");
-      parama = paramaxf.hJs;
-      if (parama != null)
+      AppMethodBeat.i(221598);
+      p.k(paramAppMsgFinderLiveFeedHolder, "holder");
+      p.k(parambcp, "shareObject");
+      p.k(parama, "ui");
+      Object localObject = parambcp.kwM;
+      if (localObject != null)
       {
-        parama = n.buB(parama);
-        if (parama == null) {}
+        localObject = n.bHD((String)localObject);
+        if (localObject == null) {}
       }
-      for (long l = parama.longValue();; l = 0L)
+      for (long l = ((Long)localObject).longValue();; l = 0L)
       {
-        ((aj)g.ah(aj.class)).refreshLiveStatus(Long.valueOf(l), (aj.b)new a(l, paramaxf, paramAppMsgFinderLiveFeedHolder));
-        AppMethodBeat.o(231369);
+        parambcp = new a(l, parambcp, paramAppMsgFinderLiveFeedHolder);
+        if (!(parama.getContext() instanceof MMFragmentActivity)) {
+          break label137;
+        }
+        paramAppMsgFinderLiveFeedHolder = parama.getContext();
+        if (paramAppMsgFinderLiveFeedHolder != null) {
+          break;
+        }
+        paramAppMsgFinderLiveFeedHolder = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.ui.MMFragmentActivity");
+        AppMethodBeat.o(221598);
+        throw paramAppMsgFinderLiveFeedHolder;
+      }
+      label137:
+      for (paramAppMsgFinderLiveFeedHolder = (MMFragmentActivity)paramAppMsgFinderLiveFeedHolder;; paramAppMsgFinderLiveFeedHolder = null)
+      {
+        ((com.tencent.c.a.a.a.b)h.ag(com.tencent.c.a.a.a.b.class)).refreshLiveStatus(l, (com.tencent.mm.vending.e.b)paramAppMsgFinderLiveFeedHolder, (b.d)parambcp);
+        AppMethodBeat.o(221598);
         return;
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "liveId", "", "status", "", "liveInfo", "", "kotlin.jvm.PlatformType", "onLiveStatusCallback"})
-    static final class a
-      implements aj.b
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/ui/chatting/viewitems/ChatingItemAppMsgFinderLiveFeed$Companion$checkLiveStatus$statusCallBack$1", "Lcom/tencent/plugin/finder/live/api/IPluginFinderLive$FinderLiveStatusCallback;", "onLiveStatusCallback", "", "liveId", "", "status", "", "liveInfo", "", "app_release"})
+    public static final class a
+      implements b.d
     {
-      a(long paramLong, axf paramaxf, ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder paramAppMsgFinderLiveFeedHolder) {}
+      a(long paramLong, bcp parambcp, ChatingItemAppMsgFinderLiveFeed.AppMsgFinderLiveFeedHolder paramAppMsgFinderLiveFeedHolder) {}
       
       public final void a(long paramLong, int paramInt, Object paramObject)
       {
-        AppMethodBeat.i(231366);
-        paramObject = ChatingItemAppMsgFinderLiveFeed.PGG;
-        Log.i(ChatingItemAppMsgFinderLiveFeed.access$getTAG$cp(), "[checkLiveStatus] thisLiveId:" + this.EYq + ",liveID:" + paramLong + ",desc:" + paramAppMsgFinderLiveFeedHolder.desc + ",share status:" + paramAppMsgFinderLiveFeedHolder.liveStatus + ",callback liveStatus:" + paramInt);
-        if (this.EYq == paramLong)
+        AppMethodBeat.i(278486);
+        paramObject = ChatingItemAppMsgFinderLiveFeed.XbY;
+        Log.i(ChatingItemAppMsgFinderLiveFeed.access$getTAG$cp(), "[checkLiveStatus] thisLiveId:" + this.LmD + ",liveID:" + paramLong + ",desc:" + paramAppMsgFinderLiveFeedHolder.desc + ",share status:" + paramAppMsgFinderLiveFeedHolder.liveStatus + ",callback liveStatus:" + paramInt);
+        if (this.LmD == paramLong)
         {
           paramObject = (CharSequence)paramAppMsgFinderLiveFeedHolder.coverUrl;
           int i;
@@ -1264,16 +1491,16 @@ public final class ChatingItemAppMsgFinderLiveFeed
               break label289;
             }
             paramAppMsgFinderLiveFeedHolder.liveStatus = paramInt;
-            FinderLiveOnliveWidget localFinderLiveOnliveWidget = this.PGI.getLiveTag();
+            FinderLiveOnliveWidget localFinderLiveOnliveWidget = this.Xcb.getLiveTag();
             if (localFinderLiveOnliveWidget != null) {
               localFinderLiveOnliveWidget.setVisibility(8);
             }
-            localFinderLiveOnliveWidget = this.PGI.getLiveEndTag();
+            localFinderLiveOnliveWidget = this.Xcb.getLiveEndTag();
             if (localFinderLiveOnliveWidget != null) {
               localFinderLiveOnliveWidget.setVisibility(0);
             }
-            ((aj)g.ah(aj.class)).getFinderUtilApi().g(this.PGI.getFinderThumb(), paramObject);
-            AppMethodBeat.o(231366);
+            ((ak)h.ag(ak.class)).getFinderUtilApi().f(this.Xcb.getFinderThumb(), paramObject);
+            AppMethodBeat.o(278486);
             return;
             i = 0;
             break;
@@ -1296,14 +1523,14 @@ public final class ChatingItemAppMsgFinderLiveFeed
             paramAppMsgFinderLiveFeedHolder.liveStatus = paramInt;
           }
         }
-        AppMethodBeat.o(231366);
+        AppMethodBeat.o(278486);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.ChatingItemAppMsgFinderLiveFeed
  * JD-Core Version:    0.7.0.1
  */

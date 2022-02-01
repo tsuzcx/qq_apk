@@ -1,25 +1,23 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.network.g;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.biv;
-import com.tencent.mm.protocal.protobuf.biw;
+import com.tencent.mm.protocal.protobuf.bqe;
+import com.tencent.mm.protocal.protobuf.bqf;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.ui.f;
 
 public final class h
   extends q
   implements m
 {
-  public biw HPF;
+  public bqf OHN;
   private i callback;
   private d rr;
   
@@ -27,19 +25,19 @@ public final class h
   {
     AppMethodBeat.i(69902);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new biv();
-    ((d.a)localObject).iLO = new biw();
+    ((d.a)localObject).lBU = new bqe();
+    ((d.a)localObject).lBV = new bqf();
     ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/tenpay/getbanpaymobileinfo";
     ((d.a)localObject).funcId = getType();
-    ((d.a)localObject).routeInfo = f.bpA(paramString);
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (biv)this.rr.iLK.iLR;
+    ((d.a)localObject).routeInfo = com.tencent.mm.wallet_core.ui.g.bCx(paramString);
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (bqe)d.b.b(this.rr.lBR);
     Log.d("MicroMsg.NetSceneGetBanpayMobileInfo", "req_key: %s", new Object[] { paramString });
-    ((biv)localObject).dNQ = paramString;
+    ((bqe)localObject).fHb = paramString;
     AppMethodBeat.o(69902);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(69903);
     this.callback = parami;
@@ -57,7 +55,7 @@ public final class h
   {
     AppMethodBeat.i(69904);
     Log.i("MicroMsg.NetSceneGetBanpayMobileInfo", "NetSceneGetBanpayMobileInfo, netId: %s, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.HPF = ((biw)this.rr.iLL.iLR);
+    this.OHN = ((bqf)d.c.b(this.rr.lBS));
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.label.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cgu;
-import com.tencent.mm.protocal.protobuf.elt;
-import com.tencent.mm.protocal.protobuf.elu;
+import com.tencent.mm.protocal.protobuf.cpq;
+import com.tencent.mm.protocal.protobuf.evz;
+import com.tencent.mm.protocal.protobuf.ewa;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -19,27 +19,27 @@ public final class e
   extends q
   implements m
 {
+  private cpq Edm;
   private i callback;
   private final d rr;
-  private cgu yBW;
   
   public e(int paramInt, String paramString)
   {
     AppMethodBeat.i(26155);
-    this.yBW = null;
+    this.Edm = null;
     d.a locala = new d.a();
-    locala.iLN = new elt();
-    locala.iLO = new elu();
+    locala.lBU = new evz();
+    locala.lBV = new ewa();
     locala.uri = "/cgi-bin/micromsg-bin/updatecontactlabel";
     locala.funcId = 637;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
+    this.rr = locala.bgN();
     if ((paramInt >= 0) && (!Util.isNullOrNil(paramString)))
     {
-      this.yBW = new cgu();
-      this.yBW.Mmc = paramInt;
-      this.yBW.Mmb = paramString;
+      this.Edm = new cpq();
+      this.Edm.TwW = paramInt;
+      this.Edm.TwV = paramString;
     }
     AppMethodBeat.o(26155);
   }
@@ -48,10 +48,10 @@ public final class e
   {
     AppMethodBeat.i(26157);
     this.callback = parami;
-    elt localelt = (elt)this.rr.iLK.iLR;
-    if (this.yBW != null)
+    evz localevz = (evz)d.b.b(this.rr.lBR);
+    if (this.Edm != null)
     {
-      localelt.NkF = this.yBW;
+      localevz.Uxp = this.Edm;
       int i = dispatch(paramg, this.rr, this);
       AppMethodBeat.o(26157);
       return i;
@@ -77,7 +77,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.label.b.e
  * JD-Core Version:    0.7.0.1
  */

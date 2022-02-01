@@ -1,22 +1,22 @@
 package com.tencent.mm.appbrand.v8;
 
-import com.eclipsesource.v8.V8ScriptException;
+import com.eclipsesource.mmv8.V8ScriptException;
 
 abstract interface c
 {
-  public abstract String LP();
-  
-  public abstract boolean Xw();
+  public abstract String OG();
   
   public abstract void a(a parama);
   
-  public abstract void b(Runnable paramRunnable, long paramLong, boolean paramBoolean);
+  public abstract boolean abY();
   
-  public abstract void cS(boolean paramBoolean);
+  public abstract void acb();
+  
+  public abstract void b(Runnable paramRunnable, long paramLong, boolean paramBoolean);
   
   public abstract boolean doInnerLoopTask();
   
-  public abstract void loop();
+  public abstract void dp(boolean paramBoolean);
   
   public abstract void pause();
   
@@ -26,7 +26,7 @@ abstract interface c
   
   public abstract void resumeLoopTasks();
   
-  public abstract void u(Runnable paramRunnable);
+  public abstract void t(Runnable paramRunnable);
   
   public static abstract interface a
   {
@@ -35,7 +35,7 @@ abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.c
  * JD-Core Version:    0.7.0.1
  */

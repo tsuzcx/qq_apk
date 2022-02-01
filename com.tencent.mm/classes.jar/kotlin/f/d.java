@@ -2,18 +2,19 @@ package kotlin.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Reader;
+import java.io.StringWriter;
 import java.io.Writer;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"buffered", "Ljava/io/BufferedReader;", "Ljava/io/Reader;", "bufferSize", "", "Ljava/io/BufferedWriter;", "Ljava/io/Writer;", "copyTo", "", "out", "forEachLine", "", "action", "Lkotlin/Function1;", "", "lineSequence", "Lkotlin/sequences/Sequence;", "readBytes", "", "Ljava/net/URL;", "readLines", "", "readText", "charset", "Ljava/nio/charset/Charset;", "reader", "Ljava/io/StringReader;", "useLines", "T", "block", "Requires newer compiler version to be inlined correctly.", "(Ljava/io/Reader;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"buffered", "Ljava/io/BufferedReader;", "Ljava/io/Reader;", "bufferSize", "", "Ljava/io/BufferedWriter;", "Ljava/io/Writer;", "copyTo", "", "out", "forEachLine", "", "action", "Lkotlin/Function1;", "", "lineSequence", "Lkotlin/sequences/Sequence;", "readBytes", "", "Ljava/net/URL;", "readLines", "", "readText", "charset", "Ljava/nio/charset/Charset;", "reader", "Ljava/io/StringReader;", "useLines", "T", "block", "Requires newer compiler version to be inlined correctly.", "(Ljava/io/Reader;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "kotlin-stdlib"})
 public final class d
 {
-  public static final long a(Reader paramReader, Writer paramWriter)
+  private static long a(Reader paramReader, Writer paramWriter)
   {
     AppMethodBeat.i(129250);
-    p.h(paramReader, "$this$copyTo");
-    p.h(paramWriter, "out");
+    p.k(paramReader, "$this$copyTo");
+    p.k(paramWriter, "out");
     long l = 0L;
     char[] arrayOfChar = new char[8192];
     for (int i = paramReader.read(arrayOfChar); i >= 0; i = paramReader.read(arrayOfChar))
@@ -25,69 +26,81 @@ public final class d
     return l;
   }
   
+  public static final String a(Reader paramReader)
+  {
+    AppMethodBeat.i(216989);
+    p.k(paramReader, "$this$readText");
+    StringWriter localStringWriter = new StringWriter();
+    b(paramReader, (Writer)localStringWriter);
+    paramReader = localStringWriter.toString();
+    p.j(paramReader, "buffer.toString()");
+    AppMethodBeat.o(216989);
+    return paramReader;
+  }
+  
   /* Error */
-  public static final void a(Reader paramReader, kotlin.g.a.b<? super java.lang.String, kotlin.x> paramb)
+  public static final void a(Reader paramReader, kotlin.g.a.b<? super String, kotlin.x> paramb)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore_2
-    //   2: ldc 77
+    //   2: ldc 99
     //   4: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: ldc 79
-    //   10: invokestatic 56	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   8: ldc 101
+    //   10: invokestatic 56	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
     //   13: aload_1
-    //   14: ldc 80
-    //   16: invokestatic 56	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   19: new 82	java/io/BufferedReader
+    //   14: ldc 102
+    //   16: invokestatic 56	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   19: new 104	java/io/BufferedReader
     //   22: dup
     //   23: aload_0
     //   24: sipush 8192
-    //   27: invokespecial 86	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
-    //   30: checkcast 88	java/io/Closeable
+    //   27: invokespecial 107	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   30: checkcast 109	java/io/Closeable
     //   33: astore_3
     //   34: aload_3
-    //   35: checkcast 82	java/io/BufferedReader
+    //   35: checkcast 104	java/io/BufferedReader
     //   38: astore_0
     //   39: aload_0
-    //   40: ldc 90
-    //   42: invokestatic 56	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   45: new 92	kotlin/f/c
+    //   40: ldc 111
+    //   42: invokestatic 56	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   45: new 113	kotlin/f/c
     //   48: dup
     //   49: aload_0
-    //   50: invokespecial 95	kotlin/f/c:<init>	(Ljava/io/BufferedReader;)V
-    //   53: checkcast 97	kotlin/m/h
-    //   56: invokestatic 102	kotlin/m/i:a	(Lkotlin/m/h;)Lkotlin/m/h;
-    //   59: invokeinterface 106 1 0
+    //   50: invokespecial 116	kotlin/f/c:<init>	(Ljava/io/BufferedReader;)V
+    //   53: checkcast 118	kotlin/m/h
+    //   56: invokestatic 123	kotlin/m/i:a	(Lkotlin/m/h;)Lkotlin/m/h;
+    //   59: invokeinterface 127 1 0
     //   64: astore_0
     //   65: aload_0
-    //   66: invokeinterface 112 1 0
+    //   66: invokeinterface 133 1 0
     //   71: ifeq +40 -> 111
     //   74: aload_1
     //   75: aload_0
-    //   76: invokeinterface 116 1 0
-    //   81: invokeinterface 122 2 0
+    //   76: invokeinterface 137 1 0
+    //   81: invokeinterface 143 2 0
     //   86: pop
     //   87: goto -22 -> 65
     //   90: astore_1
-    //   91: ldc 77
+    //   91: ldc 99
     //   93: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   96: aload_1
     //   97: athrow
     //   98: astore_0
     //   99: aload_3
     //   100: aload_1
-    //   101: invokestatic 127	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   104: ldc 77
+    //   101: invokestatic 148	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   104: ldc 99
     //   106: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   109: aload_0
     //   110: athrow
-    //   111: getstatic 133	kotlin/x:SXb	Lkotlin/x;
+    //   111: getstatic 154	kotlin/x:aazN	Lkotlin/x;
     //   114: astore_0
     //   115: aload_3
     //   116: aconst_null
-    //   117: invokestatic 127	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   120: ldc 77
+    //   117: invokestatic 148	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   120: ldc 99
     //   122: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   125: return
     //   126: astore_0
@@ -97,7 +110,7 @@ public final class d
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	132	0	paramReader	Reader
-    //   0	132	1	paramb	kotlin.g.a.b<? super java.lang.String, kotlin.x>
+    //   0	132	1	paramb	kotlin.g.a.b<? super String, kotlin.x>
     //   1	127	2	localObject	Object
     //   33	83	3	localCloseable	java.io.Closeable
     // Exception table:
@@ -117,41 +130,41 @@ public final class d
     // Byte code:
     //   0: aconst_null
     //   1: astore_1
-    //   2: ldc 138
+    //   2: ldc 162
     //   4: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: ldc 140
-    //   10: invokestatic 56	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   8: ldc 164
+    //   10: invokestatic 56	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
     //   13: aload_0
-    //   14: invokevirtual 146	java/net/URL:openStream	()Ljava/io/InputStream;
-    //   17: checkcast 88	java/io/Closeable
+    //   14: invokevirtual 170	java/net/URL:openStream	()Ljava/io/InputStream;
+    //   17: checkcast 109	java/io/Closeable
     //   20: astore_2
     //   21: aload_2
-    //   22: checkcast 148	java/io/InputStream
+    //   22: checkcast 172	java/io/InputStream
     //   25: astore_0
     //   26: aload_0
-    //   27: ldc 150
-    //   29: invokestatic 153	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   27: ldc 174
+    //   29: invokestatic 95	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
     //   32: aload_0
-    //   33: invokestatic 159	kotlin/f/a:U	(Ljava/io/InputStream;)[B
+    //   33: invokestatic 180	kotlin/f/a:S	(Ljava/io/InputStream;)[B
     //   36: astore_0
     //   37: aload_2
     //   38: aconst_null
-    //   39: invokestatic 127	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   42: ldc 138
+    //   39: invokestatic 148	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   42: ldc 162
     //   44: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   47: aload_0
     //   48: areturn
     //   49: astore_1
-    //   50: ldc 138
+    //   50: ldc 162
     //   52: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   55: aload_1
     //   56: athrow
     //   57: astore_0
     //   58: aload_2
     //   59: aload_1
-    //   60: invokestatic 127	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   63: ldc 138
+    //   60: invokestatic 148	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   63: ldc 162
     //   65: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   68: aload_0
     //   69: athrow
@@ -172,7 +185,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlin.f.d
  * JD-Core Version:    0.7.0.1
  */

@@ -3,89 +3,74 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cue
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String desc;
-  public int id;
-  public String lHM;
-  public String nickname;
+  public String RUq;
+  public boolean TBT;
+  public int TBU;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152630);
+    AppMethodBeat.i(197284);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.id);
-      if (this.nickname != null) {
-        paramVarArgs.e(2, this.nickname);
+      if (this.RUq != null) {
+        paramVarArgs.f(1, this.RUq);
       }
-      if (this.lHM != null) {
-        paramVarArgs.e(3, this.lHM);
-      }
-      if (this.desc != null) {
-        paramVarArgs.e(4, this.desc);
-      }
-      AppMethodBeat.o(152630);
+      paramVarArgs.co(2, this.TBT);
+      paramVarArgs.aY(3, this.TBU);
+      AppMethodBeat.o(197284);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.bu(1, this.id) + 0;
-      paramInt = i;
-      if (this.nickname != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.nickname);
+    if (paramInt == 1) {
+      if (this.RUq == null) {
+        break label302;
       }
-      i = paramInt;
-      if (this.lHM != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.lHM);
-      }
-      paramInt = i;
-      if (this.desc != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.desc);
-      }
-      AppMethodBeat.o(152630);
-      return paramInt;
     }
-    if (paramInt == 2)
+    label302:
+    for (paramInt = g.a.a.b.b.a.g(1, this.RUq) + 0;; paramInt = 0)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
-      }
-      AppMethodBeat.o(152630);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      cue localcue = (cue)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      int i = g.a.a.b.b.a.gL(2);
+      int j = g.a.a.b.b.a.bM(3, this.TBU);
+      AppMethodBeat.o(197284);
+      return paramInt + (i + 1) + j;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(152630);
-        return -1;
-      case 1: 
-        localcue.id = locala.UbS.zi();
-        AppMethodBeat.o(152630);
-        return 0;
-      case 2: 
-        localcue.nickname = locala.UbS.readString();
-        AppMethodBeat.o(152630);
-        return 0;
-      case 3: 
-        localcue.lHM = locala.UbS.readString();
-        AppMethodBeat.o(152630);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
+        }
+        AppMethodBeat.o(197284);
         return 0;
       }
-      localcue.desc = locala.UbS.readString();
-      AppMethodBeat.o(152630);
-      return 0;
+      if (paramInt == 3)
+      {
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        cue localcue = (cue)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(197284);
+          return -1;
+        case 1: 
+          localcue.RUq = locala.abFh.readString();
+          AppMethodBeat.o(197284);
+          return 0;
+        case 2: 
+          localcue.TBT = locala.abFh.AB();
+          AppMethodBeat.o(197284);
+          return 0;
+        }
+        localcue.TBU = locala.abFh.AK();
+        AppMethodBeat.o(197284);
+        return 0;
+      }
+      AppMethodBeat.o(197284);
+      return -1;
     }
-    AppMethodBeat.o(152630);
-    return -1;
   }
 }
 

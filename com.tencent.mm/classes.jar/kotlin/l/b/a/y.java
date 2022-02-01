@@ -10,14 +10,14 @@ public final class y
   {
     AppMethodBeat.i(56519);
     if (parama == null) {
-      atM(1);
+      aDG(1);
     }
     paramT = new a(paramT, parama);
     AppMethodBeat.o(56519);
     return paramT;
   }
   
-  public static <T> b<T> aj(a<T> parama)
+  public static <T> b<T> at(a<T> parama)
   {
     AppMethodBeat.i(56518);
     parama = new b(parama);
@@ -25,11 +25,11 @@ public final class y
     return parama;
   }
   
-  public static <T> a<T> ak(a<T> parama)
+  public static <T> a<T> au(a<T> parama)
   {
     AppMethodBeat.i(56520);
     if (parama == null) {
-      atM(2);
+      aDG(2);
     }
     parama = a(null, parama);
     AppMethodBeat.o(56520);
@@ -39,16 +39,16 @@ public final class y
   public static final class a<T>
     extends y.c<T>
   {
-    private final a<T> SWT;
-    private volatile SoftReference<Object> TbC;
+    private volatile SoftReference<Object> aaEw;
+    private final a<T> aazF;
     
     public a(T paramT, a<T> parama)
     {
       AppMethodBeat.i(56514);
-      this.TbC = null;
-      this.SWT = parama;
+      this.aaEw = null;
+      this.aazF = parama;
       if (paramT != null) {
-        this.TbC = new SoftReference(ff(paramT));
+        this.aaEw = new SoftReference(fm(paramT));
       }
       AppMethodBeat.o(56514);
     }
@@ -56,19 +56,19 @@ public final class y
     public final T invoke()
     {
       AppMethodBeat.i(56515);
-      Object localObject = this.TbC;
+      Object localObject = this.aaEw;
       if (localObject != null)
       {
         localObject = ((SoftReference)localObject).get();
         if (localObject != null)
         {
-          localObject = fg(localObject);
+          localObject = fn(localObject);
           AppMethodBeat.o(56515);
           return localObject;
         }
       }
-      localObject = this.SWT.invoke();
-      this.TbC = new SoftReference(ff(localObject));
+      localObject = this.aazF.invoke();
+      this.aaEw = new SoftReference(fm(localObject));
       AppMethodBeat.o(56515);
       return localObject;
     }
@@ -77,14 +77,14 @@ public final class y
   public static final class b<T>
     extends y.c<T>
   {
-    private final a<T> SWT;
+    private final a<T> aazF;
     private volatile Object value;
     
     public b(a<T> parama)
     {
       AppMethodBeat.i(56516);
       this.value = null;
-      this.SWT = parama;
+      this.aazF = parama;
       AppMethodBeat.o(56516);
     }
     
@@ -94,12 +94,12 @@ public final class y
       Object localObject = this.value;
       if (localObject != null)
       {
-        localObject = fg(localObject);
+        localObject = fn(localObject);
         AppMethodBeat.o(56517);
         return localObject;
       }
-      localObject = this.SWT.invoke();
-      this.value = ff(localObject);
+      localObject = this.aazF.invoke();
+      this.value = fm(localObject);
       AppMethodBeat.o(56517);
       return localObject;
     }
@@ -107,21 +107,21 @@ public final class y
   
   public static abstract class c<T>
   {
-    private static final Object TbD = new Object() {};
+    private static final Object aaEx = new Object() {};
     
-    protected static Object ff(T paramT)
+    protected static Object fm(T paramT)
     {
       Object localObject = paramT;
       if (paramT == null) {
-        localObject = TbD;
+        localObject = aaEx;
       }
       return localObject;
     }
     
-    protected static T fg(Object paramObject)
+    protected static T fn(Object paramObject)
     {
       Object localObject = paramObject;
-      if (paramObject == TbD) {
+      if (paramObject == aaEx) {
         localObject = null;
       }
       return localObject;
@@ -132,7 +132,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.y
  * JD-Core Version:    0.7.0.1
  */

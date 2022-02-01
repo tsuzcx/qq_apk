@@ -3,26 +3,30 @@ package com.tencent.mm.plugin.location.ui.impl;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.b.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.loader.j.b;
+import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 
 public final class i
-  implements com.tencent.mm.platformtools.s
+  implements s
 {
   private String iconUrl;
-  private s.b qvE;
+  private s.b tUD;
   
   public i(String paramString)
   {
     AppMethodBeat.i(56143);
-    this.qvE = new s.b()
+    this.tUD = new s.b()
     {
-      public final Bitmap So(String paramAnonymousString)
+      public final Bitmap ZQ(String paramAnonymousString)
       {
         AppMethodBeat.i(56142);
         paramAnonymousString = BitmapUtil.decodeFile(paramAnonymousString, null);
@@ -31,13 +35,13 @@ public final class i
       }
     };
     this.iconUrl = paramString;
-    com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
+    h.aHJ().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(56141);
-        if (!com.tencent.mm.vfs.s.YS(i.eea())) {
-          com.tencent.mm.vfs.s.boN(i.eea());
+        if (!u.agG(i.eNv())) {
+          u.bBD(i.eNv());
         }
         AppMethodBeat.o(56141);
       }
@@ -45,10 +49,10 @@ public final class i
     AppMethodBeat.o(56143);
   }
   
-  public static String eea()
+  public static String eNv()
   {
     AppMethodBeat.i(56144);
-    String str = b.aKJ() + "taxi_icon";
+    String str = b.aSL() + "taxi_icon";
     AppMethodBeat.o(56144);
     return str;
   }
@@ -56,18 +60,18 @@ public final class i
   public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
     AppMethodBeat.i(56146);
-    if (s.a.jNh == parama) {
+    if (s.a.mEp == parama) {
       if ((paramBitmap != null) && (paramBitmap.getNinePatchChunk() != null))
       {
         Log.v("MicroMsg.TaxiWeappIconStrategy", "get ninePatch chChunk.");
-        com.tencent.mm.vfs.s.nw(paramString, blA());
+        u.on(paramString, bvq());
         AppMethodBeat.o(56146);
         return paramBitmap;
       }
     }
     try
     {
-      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, blA(), false);
+      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, bvq(), false);
       Log.d("MicroMsg.TaxiWeappIconStrategy", "get bitmap, from %s.", new Object[] { parama.toString() });
       AppMethodBeat.o(56146);
       return paramBitmap;
@@ -78,9 +82,9 @@ public final class i
       {
         try
         {
-          com.tencent.mm.vfs.s.boN(eea());
+          u.bBD(eNv());
           Log.w("MicroMsg.TaxiWeappIconStrategy", "retry saving bitmap.");
-          BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, blA(), false);
+          BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, bvq(), false);
         }
         catch (IOException paramString)
         {
@@ -91,49 +95,44 @@ public final class i
     }
   }
   
-  public final void a(s.a parama, String paramString) {}
+  public final void a(s.a parama) {}
   
-  public final void ad(String paramString, boolean paramBoolean) {}
+  public final s.b bvp()
+  {
+    return this.tUD;
+  }
   
-  public final String blA()
+  public final String bvq()
   {
     AppMethodBeat.i(56145);
-    String str = String.format("%s/%s", new Object[] { eea(), com.tencent.mm.b.g.getMessageDigest(this.iconUrl.getBytes()) });
+    String str = String.format("%s/%s", new Object[] { eNv(), g.getMessageDigest(this.iconUrl.getBytes()) });
     AppMethodBeat.o(56145);
     return str;
   }
   
-  public final String blB()
+  public final String bvr()
   {
     return this.iconUrl;
   }
   
-  public final String blC()
+  public final String bvs()
   {
     return this.iconUrl;
   }
   
-  public final boolean blD()
+  public final boolean bvt()
   {
     return true;
   }
   
-  public final boolean blE()
-  {
-    return false;
-  }
-  
-  public final Bitmap blF()
+  public final Bitmap bvu()
   {
     return null;
   }
   
-  public final void blG() {}
+  public final void bvv() {}
   
-  public final s.b blz()
-  {
-    return this.qvE;
-  }
+  public final void bvw() {}
   
   public final String getCacheKey()
   {

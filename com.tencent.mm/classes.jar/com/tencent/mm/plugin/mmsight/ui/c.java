@@ -9,49 +9,49 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c
 {
+  private float FhD;
+  float FhE;
+  float FhF;
+  float FhG;
+  a FhH;
   int duration;
-  long gXF;
   boolean isStart;
-  MTimerHandler jer;
-  private float zCH;
-  float zCI;
-  float zCJ;
-  float zCK;
-  a zCL;
+  long jID;
+  MTimerHandler lUQ;
   
   public c(float paramFloat1, float paramFloat2, int paramInt)
   {
     AppMethodBeat.i(94630);
-    this.jer = null;
-    this.zCH = 0.0F;
-    this.zCI = paramFloat1;
-    this.zCJ = paramFloat2;
+    this.lUQ = null;
+    this.FhD = 0.0F;
+    this.FhE = paramFloat1;
+    this.FhF = paramFloat2;
     this.duration = paramInt;
-    this.zCH = (100.0F / this.duration * 20.0F);
-    Log.i("MicroMsg.ProgressHandlerAnimator", "create ProgressHandlerAnimator, start: %s, end: %s, duration: %s, updateStep: %s", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(paramInt), Float.valueOf(this.zCH) });
+    this.FhD = (100.0F / this.duration * 20.0F);
+    Log.i("MicroMsg.ProgressHandlerAnimator", "create ProgressHandlerAnimator, start: %s, end: %s, duration: %s, updateStep: %s", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(paramInt), Float.valueOf(this.FhD) });
     this.isStart = false;
-    this.gXF = 0L;
-    this.jer = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
+    this.jID = 0L;
+    this.lUQ = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(94628);
         c localc = c.this;
-        localc.zCK = ((float)Util.ticksToNow(localc.gXF) / localc.duration * 100.0F + localc.zCI);
-        if (localc.zCL != null) {
-          localc.zCL.bv(localc.zCK);
+        localc.FhG = ((float)Util.ticksToNow(localc.jID) / localc.duration * 100.0F + localc.FhE);
+        if (localc.FhH != null) {
+          localc.FhH.bx(localc.FhG);
         }
         if (c.this.isStart)
         {
-          if (c.this.zCK < c.this.zCJ)
+          if (c.this.FhG < c.this.FhF)
           {
             AppMethodBeat.o(94628);
             return true;
           }
           c.this.isStart = false;
-          Log.i("MicroMsg.ProgressHandlerAnimator", "reach end, currentValue: %s, end: %s, callback: %s", new Object[] { Float.valueOf(c.this.zCK), Float.valueOf(c.this.zCJ), c.this.zCL });
-          if (c.this.zCL != null) {
-            c.this.zCL.onAnimationEnd();
+          Log.i("MicroMsg.ProgressHandlerAnimator", "reach end, currentValue: %s, end: %s, callback: %s", new Object[] { Float.valueOf(c.this.FhG), Float.valueOf(c.this.FhF), c.this.FhH });
+          if (c.this.FhH != null) {
+            c.this.FhH.onAnimationEnd();
           }
           AppMethodBeat.o(94628);
           return false;
@@ -67,19 +67,19 @@ public final class c
   public final void cancel()
   {
     this.isStart = false;
-    this.gXF = 0L;
+    this.jID = 0L;
   }
   
   public static abstract interface a
   {
-    public abstract void bv(float paramFloat);
+    public abstract void bx(float paramFloat);
     
     public abstract void onAnimationEnd();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.c
  * JD-Core Version:    0.7.0.1
  */

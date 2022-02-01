@@ -1,7 +1,7 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.d;
+import com.tencent.mm.f.c.d;
 import com.tencent.mm.model.c.a;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
@@ -14,7 +14,7 @@ public final class c
   implements Serializable
 {
   protected static IAutoDBItem.MAutoDBInfo info;
-  private Map<String, String> NOK = null;
+  private Map<String, String> Vct = null;
   
   static
   {
@@ -70,13 +70,13 @@ public final class c
     return info;
   }
   
-  public final Map<String, String> gzz()
+  public final Map<String, String> hvz()
   {
     AppMethodBeat.i(153159);
-    if (this.NOK == null) {
-      this.NOK = a.Le(this.field_rawXML);
+    if (this.Vct == null) {
+      this.Vct = a.Sx(this.field_rawXML);
     }
-    Map localMap = this.NOK;
+    Map localMap = this.Vct;
     AppMethodBeat.o(153159);
     return localMap;
   }
@@ -96,7 +96,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.c
  * JD-Core Version:    0.7.0.1
  */

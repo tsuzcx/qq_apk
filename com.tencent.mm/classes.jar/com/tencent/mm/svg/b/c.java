@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static a Ovk = null;
+  private static a VLi = null;
   
   public static void b(a parama)
   {
-    Ovk = parama;
+    VLi = parama;
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(148765);
-    if (Ovk != null) {
-      Ovk.d(paramString1, paramString2, paramVarArgs);
+    if (VLi != null) {
+      VLi.d(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(148765);
   }
@@ -23,8 +23,8 @@ public final class c
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(148762);
-    if (Ovk != null) {
-      Ovk.e(paramString1, paramString2, paramVarArgs);
+    if (VLi != null) {
+      VLi.e(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(148762);
   }
@@ -32,8 +32,8 @@ public final class c
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(148764);
-    if (Ovk != null) {
-      Ovk.i(paramString1, paramString2, paramVarArgs);
+    if (VLi != null) {
+      VLi.i(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(148764);
   }
@@ -41,8 +41,8 @@ public final class c
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(148766);
-    if (Ovk != null) {
-      Ovk.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+    if (VLi != null) {
+      VLi.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(148766);
   }
@@ -50,8 +50,8 @@ public final class c
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(148763);
-    if (Ovk != null) {
-      Ovk.w(paramString1, paramString2, paramVarArgs);
+    if (VLi != null) {
+      VLi.w(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(148763);
   }
@@ -71,7 +71,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.svg.b.c
  * JD-Core Version:    0.7.0.1
  */

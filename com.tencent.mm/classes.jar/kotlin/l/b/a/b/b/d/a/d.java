@@ -15,36 +15,36 @@ import kotlin.n.n;
 public final class d
   implements kotlin.l.b.a.b.d.a.j
 {
-  private final ClassLoader TmI;
+  private final ClassLoader aaPC;
   
   public d(ClassLoader paramClassLoader)
   {
     AppMethodBeat.i(57362);
-    this.TmI = paramClassLoader;
+    this.aaPC = paramClassLoader;
     AppMethodBeat.o(57362);
   }
   
   public final g a(j.a parama)
   {
     AppMethodBeat.i(57359);
-    p.h(parama, "request");
-    parama = parama.Tfj;
-    b localb = parama.hIY();
-    p.g(localb, "classId.packageFqName");
-    parama = parama.hIZ().sG();
-    p.g(parama, "classId.relativeClassName.asString()");
+    p.k(parama, "request");
+    parama = parama.aaId;
+    b localb = parama.iNs();
+    p.j(localb, "classId.packageFqName");
+    parama = parama.iNt().qu();
+    p.j(parama, "classId.relativeClassName.asString()");
     parama = n.a(parama, '.', '$');
-    if (localb.TCR.TCW.isEmpty()) {}
+    if (localb.abfE.abfJ.isEmpty()) {}
     for (;;)
     {
-      parama = e.a(this.TmI, parama);
+      parama = e.a(this.aaPC, parama);
       if (parama == null) {
         break;
       }
       parama = (g)new kotlin.l.b.a.b.b.d.b.j(parama);
       AppMethodBeat.o(57359);
       return parama;
-      parama = localb.sG() + "." + parama;
+      parama = localb.qu() + "." + parama;
     }
     AppMethodBeat.o(57359);
     return null;
@@ -53,7 +53,7 @@ public final class d
   public final t i(b paramb)
   {
     AppMethodBeat.i(57360);
-    p.h(paramb, "fqName");
+    p.k(paramb, "fqName");
     paramb = (t)new u(paramb);
     AppMethodBeat.o(57360);
     return paramb;
@@ -62,14 +62,14 @@ public final class d
   public final Set<String> j(b paramb)
   {
     AppMethodBeat.i(57361);
-    p.h(paramb, "packageFqName");
+    p.k(paramb, "packageFqName");
     AppMethodBeat.o(57361);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d.a.d
  * JD-Core Version:    0.7.0.1
  */

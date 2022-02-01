@@ -9,62 +9,64 @@ import android.view.View;
 
 public final class a
 {
-  int Kaw = 0;
-  CharSequence NHK;
-  CharSequence NHL;
-  CharSequence NHM;
-  boolean NHN;
-  String NHO;
-  CharSequence NHP;
-  boolean NHQ;
-  boolean NHR = false;
-  Drawable NHV;
-  Bitmap NHW;
-  CharSequence NHX;
-  CharSequence NHY;
-  CharSequence NHZ;
-  CharSequence NIa;
-  CharSequence NIb;
-  CharSequence NIc;
-  CharSequence NId;
-  CharSequence NIe;
-  boolean NIf = false;
-  boolean NIg = false;
-  boolean NIh = false;
-  DialogInterface.OnClickListener NIi;
-  DialogInterface.OnClickListener NIj;
-  DialogInterface.OnClickListener NIk;
-  DialogInterface.OnClickListener NIl;
-  DialogInterface.OnClickListener NIm;
-  View NIn;
-  public View NIo;
-  int NIp = 0;
-  int NIq = 0;
-  int NIr = 3;
-  int NIs = 1;
-  int NIt = 0;
-  public int NIu = 0;
-  int NIv = 0;
-  int NIw = 0;
-  boolean NIx = true;
-  boolean NIy = false;
-  boolean NIz = false;
-  CharSequence QNs;
-  d.a.c QNt;
-  d.a.a QNu;
-  d.a.b QNv;
-  d.a.d QNw;
-  Bitmap QNx;
-  public DialogInterface.OnCancelListener XY;
-  public DialogInterface.OnDismissListener XZ;
-  boolean ox = true;
+  CharSequence Ig;
+  boolean OEz = false;
+  int RaZ = 0;
+  CharSequence UVA;
+  CharSequence UVB;
+  CharSequence UVC;
+  CharSequence UVD;
+  CharSequence UVE;
+  CharSequence UVF;
+  boolean UVG = false;
+  boolean UVH = false;
+  boolean UVI = false;
+  DialogInterface.OnClickListener UVJ;
+  DialogInterface.OnClickListener UVK;
+  DialogInterface.OnClickListener UVL;
+  DialogInterface.OnClickListener UVM;
+  DialogInterface.OnClickListener UVN;
+  View UVO;
+  public View UVP;
+  int UVQ = 0;
+  int UVR = 0;
+  int UVS = 3;
+  int UVT = 1;
+  int UVU = 0;
+  public int UVV = 0;
+  int UVW = 0;
+  int UVX = 0;
+  boolean UVY = true;
+  boolean UVZ = false;
+  CharSequence UVl;
+  CharSequence UVm;
+  CharSequence UVn;
+  boolean UVo;
+  String UVp;
+  CharSequence UVq;
+  boolean UVr;
+  boolean UVs = false;
+  Drawable UVw;
+  Bitmap UVx;
+  CharSequence UVy;
+  CharSequence UVz;
+  boolean UWa = false;
+  CharSequence Ymg;
+  d.a.c Ymh;
+  d.a.a Ymi;
+  d.a.b Ymj;
+  d.a.d Ymk;
+  Bitmap Yml;
+  int Ymm = 0;
+  View bFK;
+  boolean bxO = true;
+  public DialogInterface.OnCancelListener fs;
+  public DialogInterface.OnDismissListener ft;
   String thumbPath;
-  CharSequence title;
-  View vk;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.a.a
  * JD-Core Version:    0.7.0.1
  */

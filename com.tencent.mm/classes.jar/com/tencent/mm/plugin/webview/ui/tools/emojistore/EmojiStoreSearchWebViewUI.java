@@ -8,18 +8,18 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class EmojiStoreSearchWebViewUI
   extends BaseEmojiStoreSearchWebViewUI
 {
+  public final void B(int paramInt, Bundle paramBundle)
+  {
+    AppMethodBeat.i(80478);
+    Log.i("MicroMsg.emoji.EmojiStoreSearchWebViewUI", "handleEmojiStoreAction action:%d", new Object[] { Integer.valueOf(paramInt) });
+    super.B(paramInt, paramBundle);
+    AppMethodBeat.o(80478);
+  }
+  
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
-  }
-  
-  public final void z(int paramInt, Bundle paramBundle)
-  {
-    AppMethodBeat.i(80478);
-    Log.i("MicroMsg.emoji.EmojiStoreSearchWebViewUI", "handleEmojiStoreAction action:%d", new Object[] { Integer.valueOf(paramInt) });
-    super.z(paramInt, paramBundle);
-    AppMethodBeat.o(80478);
   }
 }
 

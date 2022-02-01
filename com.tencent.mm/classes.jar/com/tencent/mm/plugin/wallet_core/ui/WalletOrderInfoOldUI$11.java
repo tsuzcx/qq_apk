@@ -6,6 +6,8 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.ClipboardHelper;
 import com.tencent.mm.sdk.platformtools.Log;
 
@@ -18,14 +20,14 @@ final class WalletOrderInfoOldUI$11
   {
     AppMethodBeat.i(71053);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoOldUI$9", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
-    if ((paramView.getId() == 2131310238) || (paramView.getId() == 2131310266)) {}
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoOldUI$9", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
+    if ((paramView.getId() == a.f.wallet_order_info_desc) || (paramView.getId() == a.f.wallet_order_info_trans_id)) {}
     try
     {
       paramView = (String)paramView.getTag();
-      Toast.makeText(this.Iir, 2131767989, 0).show();
-      ClipboardHelper.setText(this.Iir.getContext(), paramView, paramView);
+      Toast.makeText(this.PaI, a.i.wallet_order_info_copy_success, 0).show();
+      ClipboardHelper.setText(this.PaI.getContext(), paramView, paramView);
       a.a(true, this, "com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoOldUI$9", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
       AppMethodBeat.o(71053);
       return true;

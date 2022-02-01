@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.shake.e;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
+import com.tencent.mm.R.l;
+import com.tencent.mm.aj.k.b;
 import com.tencent.mm.plugin.shake.d.a.k;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
@@ -22,20 +23,20 @@ public final class c
       localb.type = 20;
       localb.url = parama.field_shareurl;
       localb.action = "";
-      if (k.eUk())
+      if (k.fHm())
       {
-        localb.appName = paramContext.getString(2131764998);
+        localb.appName = paramContext.getString(R.l.eRI);
         localb.appId = "wxaf060266bfa9a35c";
       }
       localb.thumburl = parama.field_thumburl;
-      localb.ixk = b(parama);
+      localb.lmz = b(parama);
       paramContext = k.b.a(localb, null, null);
       AppMethodBeat.o(28624);
       return paramContext;
     }
   }
   
-  public static a aNu(String paramString)
+  public static a aYd(String paramString)
   {
     AppMethodBeat.i(28622);
     if (paramString == null)
@@ -59,7 +60,7 @@ public final class c
     locala.field_playurl = Util.nullAsNil((String)localMap.get("" + ".tv.playurl"));
     locala.field_playstatid = Util.nullAsNil((String)localMap.get("" + ".tv.playurl$statid"));
     locala.field_source = Util.nullAsNil((String)localMap.get("" + ".tv.source"));
-    locala.CUx = a.o(localMap, "" + ".tv");
+    locala.IZR = a.o(localMap, "" + ".tv");
     locala.field_xml = paramString;
     AppMethodBeat.o(28622);
     return locala;
@@ -94,7 +95,7 @@ public final class c
   
   public static final class a
   {
-    public LinkedList<a> CUx;
+    public LinkedList<a> IZR;
     public String field_id;
     public String field_playstatid;
     public String field_playurl;
@@ -109,7 +110,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.e.c
  * JD-Core Version:    0.7.0.1
  */

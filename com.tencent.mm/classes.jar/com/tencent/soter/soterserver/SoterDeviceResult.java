@@ -9,8 +9,8 @@ public class SoterDeviceResult
   implements Parcelable
 {
   public static final Parcelable.Creator<SoterDeviceResult> CREATOR;
-  public byte[] RQo;
-  public int RQp;
+  public byte[] ZsS;
+  public int ZsT;
   public int resultCode;
   
   static
@@ -26,8 +26,8 @@ public class SoterDeviceResult
   {
     AppMethodBeat.i(88740);
     this.resultCode = paramParcel.readInt();
-    this.RQo = paramParcel.createByteArray();
-    this.RQp = paramParcel.readInt();
+    this.ZsS = paramParcel.createByteArray();
+    this.ZsT = paramParcel.readInt();
     AppMethodBeat.o(88740);
   }
   
@@ -40,14 +40,14 @@ public class SoterDeviceResult
   {
     AppMethodBeat.i(88741);
     paramParcel.writeInt(this.resultCode);
-    paramParcel.writeByteArray(this.RQo);
-    paramParcel.writeInt(this.RQp);
+    paramParcel.writeByteArray(this.ZsS);
+    paramParcel.writeInt(this.ZsT);
     AppMethodBeat.o(88741);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.soter.soterserver.SoterDeviceResult
  * JD-Core Version:    0.7.0.1
  */

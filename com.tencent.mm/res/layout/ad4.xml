@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <View android:id="@id/cnq" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
     <com.tencent.mm.live.view.LiveBottomSheetPanel android:orientation="vertical" android:id="@id/cnr" android:background="@drawable/a_h" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <android.support.v4.widget.NestedScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <androidx.core.widget.NestedScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
             <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <RelativeLayout android:id="@id/cnp" android:background="@drawable/a0q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="@dimen/ce" android:layout_centerHorizontal="true" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip">
                     <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cno" android:layout_width="32.0dip" android:layout_height="16.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" android:src="@raw/icons_outlined_arrow" android:layout_centerHorizontal="true" android:rotation="90.0" android:layout_marginStart="8.0dip" android:layout_marginEnd="8.0dip" app:iconColor="@color/BW_100_Alpha_0_8" />
@@ -18,6 +18,6 @@
                     <TextView android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/cnw" android:layout_marginBottom="@dimen/cn" android:text="@string/x_" android:layout_below="@id/cnu" android:layout_centerHorizontal="true" style="@style/jm" />
                 </RelativeLayout>
             </RelativeLayout>
-        </android.support.v4.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
     </com.tencent.mm.live.view.LiveBottomSheetPanel>
 </LinearLayout>

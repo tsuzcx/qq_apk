@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/e2f" android:padding="@dimen/k_" android:layout_width="@dimen/i" android:layout_height="@dimen/i" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
     <RelativeLayout android:id="@id/e23" android:paddingLeft="@dimen/ib" android:paddingRight="@dimen/ib" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/e3p" android:layout_toRightOf="@id/e2f" android:layout_centerVertical="true">
-        <TextView android:textSize="@dimen/hn" android:id="@id/e40" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" style="@style/mp" />
+        <TextView android:textSize="@dimen/hn" android:ellipsize="middle" android:id="@id/e40" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="我是很很很很长很长很长很长很长的名字" style="@style/mp" />
         <TextView android:id="@id/e3t" android:paddingRight="@dimen/ir" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/e40" android:layout_alignParentLeft="true" style="@style/mo" />
         <TextView android:id="@id/e3y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/e3t" android:layout_below="@id/e40" style="@style/mo" />
     </RelativeLayout>

@@ -4,38 +4,37 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l.b.a.b.h.b;
 import kotlin.l.b.a.b.h.d;
 import kotlin.l.b.a.b.h.f;
-import kotlin.l.b.a.b.h.h;
 import kotlin.l.b.a.b.h.i.a;
 import kotlin.l.b.a.b.h.i.b;
 import kotlin.l.b.a.b.h.i.c;
 import kotlin.l.b.a.b.h.i.c.a;
-import kotlin.l.b.a.b.h.s;
+import kotlin.l.b.a.b.h.t;
 
 public final class a$f
   extends i.c<f>
   implements i
 {
-  public static s<f> TwL;
-  private static final f Tyj;
-  private final d TwK;
-  public int Tyk;
-  private int bOT;
-  private byte bPe = -1;
-  private int bVY = -1;
+  public static t<f> aaZC;
+  private static final f abba;
+  private final d aaZB;
+  public int abbb;
+  private int bQS;
+  private byte bRd = -1;
+  private int bXW = -1;
   
   static
   {
     AppMethodBeat.i(58550);
-    TwL = new b() {};
+    aaZC = new b() {};
     f localf = new f();
-    Tyj = localf;
-    localf.Tyk = 0;
+    abba = localf;
+    localf.abbb = 0;
     AppMethodBeat.o(58550);
   }
   
   private a$f()
   {
-    this.TwK = d.TDp;
+    this.aaZB = d.abgb;
   }
   
   /* Error */
@@ -50,26 +49,26 @@ public final class a$f
     //   8: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   11: aload_0
     //   12: iconst_m1
-    //   13: putfield 54	kotlin/l/b/a/b/e/a$f:bPe	B
+    //   13: putfield 54	kotlin/l/b/a/b/e/a$f:bRd	B
     //   16: aload_0
     //   17: iconst_m1
-    //   18: putfield 56	kotlin/l/b/a/b/e/a$f:bVY	I
+    //   18: putfield 56	kotlin/l/b/a/b/e/a$f:bXW	I
     //   21: aload_0
     //   22: iconst_0
-    //   23: putfield 47	kotlin/l/b/a/b/e/a$f:Tyk	I
-    //   26: invokestatic 73	kotlin/l/b/a/b/h/d:hJo	()Lkotlin/l/b/a/b/h/d$b;
+    //   23: putfield 47	kotlin/l/b/a/b/e/a$f:abbb	I
+    //   26: invokestatic 73	kotlin/l/b/a/b/h/d:iNH	()Lkotlin/l/b/a/b/h/d$b;
     //   29: astore 5
     //   31: aload 5
     //   33: iconst_1
     //   34: invokestatic 78	kotlin/l/b/a/b/h/f:f	(Ljava/io/OutputStream;I)Lkotlin/l/b/a/b/h/f;
     //   37: astore 6
     //   39: iload_3
-    //   40: ifne +117 -> 157
+    //   40: ifne +114 -> 154
     //   43: aload_1
-    //   44: invokevirtual 84	kotlin/l/b/a/b/h/e:yT	()I
+    //   44: invokevirtual 84	kotlin/l/b/a/b/h/e:Av	()I
     //   47: istore 4
     //   49: iload 4
-    //   51: lookupswitch	default:+218->269, 0:+221->272, 8:+43->94
+    //   51: lookupswitch	default:+212->263, 0:+215->266, 8:+43->94
     //   77: aload_1
     //   78: aload 6
     //   80: aload_2
@@ -81,19 +80,19 @@ public final class a$f
     //   91: goto -52 -> 39
     //   94: aload_0
     //   95: aload_0
-    //   96: getfield 89	kotlin/l/b/a/b/e/a$f:bOT	I
+    //   96: getfield 89	kotlin/l/b/a/b/e/a$f:bQS	I
     //   99: iconst_1
     //   100: ior
-    //   101: putfield 89	kotlin/l/b/a/b/e/a$f:bOT	I
+    //   101: putfield 89	kotlin/l/b/a/b/e/a$f:bQS	I
     //   104: aload_0
     //   105: aload_1
-    //   106: invokevirtual 92	kotlin/l/b/a/b/h/e:zi	()I
-    //   109: putfield 47	kotlin/l/b/a/b/e/a$f:Tyk	I
+    //   106: invokevirtual 92	kotlin/l/b/a/b/h/e:AK	()I
+    //   109: putfield 47	kotlin/l/b/a/b/e/a$f:abbb	I
     //   112: goto -73 -> 39
     //   115: astore_1
     //   116: aload_1
     //   117: aload_0
-    //   118: putfield 96	kotlin/l/b/a/b/h/k:TDK	Lkotlin/l/b/a/b/h/q;
+    //   118: putfield 96	kotlin/l/b/a/b/h/l:abgy	Lkotlin/l/b/a/b/h/r;
     //   121: ldc 69
     //   123: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   126: aload_1
@@ -103,141 +102,153 @@ public final class a$f
     //   131: invokevirtual 99	kotlin/l/b/a/b/h/f:flush	()V
     //   134: aload_0
     //   135: aload 5
-    //   137: invokevirtual 105	kotlin/l/b/a/b/h/d$b:hJs	()Lkotlin/l/b/a/b/h/d;
-    //   140: putfield 63	kotlin/l/b/a/b/e/a$f:TwK	Lkotlin/l/b/a/b/h/d;
+    //   137: invokevirtual 105	kotlin/l/b/a/b/h/d$b:iNK	()Lkotlin/l/b/a/b/h/d;
+    //   140: putfield 63	kotlin/l/b/a/b/e/a$f:aaZB	Lkotlin/l/b/a/b/h/d;
     //   143: aload_0
-    //   144: getfield 109	kotlin/l/b/a/b/h/i$c:TDA	Lkotlin/l/b/a/b/h/h;
-    //   147: invokevirtual 114	kotlin/l/b/a/b/h/h:yK	()V
-    //   150: ldc 69
-    //   152: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   155: aload_1
-    //   156: athrow
-    //   157: aload 6
-    //   159: invokevirtual 99	kotlin/l/b/a/b/h/f:flush	()V
-    //   162: aload_0
-    //   163: aload 5
-    //   165: invokevirtual 105	kotlin/l/b/a/b/h/d$b:hJs	()Lkotlin/l/b/a/b/h/d;
-    //   168: putfield 63	kotlin/l/b/a/b/e/a$f:TwK	Lkotlin/l/b/a/b/h/d;
-    //   171: aload_0
-    //   172: getfield 109	kotlin/l/b/a/b/h/i$c:TDA	Lkotlin/l/b/a/b/h/h;
-    //   175: invokevirtual 114	kotlin/l/b/a/b/h/h:yK	()V
-    //   178: ldc 69
-    //   180: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   183: return
-    //   184: astore_1
-    //   185: aload_0
-    //   186: aload 5
-    //   188: invokevirtual 105	kotlin/l/b/a/b/h/d$b:hJs	()Lkotlin/l/b/a/b/h/d;
-    //   191: putfield 63	kotlin/l/b/a/b/e/a$f:TwK	Lkotlin/l/b/a/b/h/d;
-    //   194: goto -23 -> 171
-    //   197: astore_1
-    //   198: aload_0
-    //   199: aload 5
-    //   201: invokevirtual 105	kotlin/l/b/a/b/h/d$b:hJs	()Lkotlin/l/b/a/b/h/d;
-    //   204: putfield 63	kotlin/l/b/a/b/e/a$f:TwK	Lkotlin/l/b/a/b/h/d;
-    //   207: ldc 69
-    //   209: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   212: aload_1
-    //   213: athrow
-    //   214: astore_1
-    //   215: new 66	kotlin/l/b/a/b/h/k
-    //   218: dup
-    //   219: aload_1
-    //   220: invokevirtual 118	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   223: invokespecial 121	kotlin/l/b/a/b/h/k:<init>	(Ljava/lang/String;)V
-    //   226: astore_1
-    //   227: aload_1
-    //   228: aload_0
-    //   229: putfield 96	kotlin/l/b/a/b/h/k:TDK	Lkotlin/l/b/a/b/h/q;
-    //   232: ldc 69
-    //   234: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   237: aload_1
-    //   238: athrow
-    //   239: astore_2
-    //   240: aload_0
-    //   241: aload 5
-    //   243: invokevirtual 105	kotlin/l/b/a/b/h/d$b:hJs	()Lkotlin/l/b/a/b/h/d;
-    //   246: putfield 63	kotlin/l/b/a/b/e/a$f:TwK	Lkotlin/l/b/a/b/h/d;
-    //   249: goto -106 -> 143
-    //   252: astore_1
-    //   253: aload_0
-    //   254: aload 5
-    //   256: invokevirtual 105	kotlin/l/b/a/b/h/d$b:hJs	()Lkotlin/l/b/a/b/h/d;
-    //   259: putfield 63	kotlin/l/b/a/b/e/a$f:TwK	Lkotlin/l/b/a/b/h/d;
-    //   262: ldc 69
-    //   264: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   267: aload_1
-    //   268: athrow
-    //   269: goto -193 -> 76
-    //   272: iconst_1
-    //   273: istore_3
-    //   274: goto -235 -> 39
+    //   144: invokevirtual 108	kotlin/l/b/a/b/e/a$f:HZ	()V
+    //   147: ldc 69
+    //   149: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   152: aload_1
+    //   153: athrow
+    //   154: aload 6
+    //   156: invokevirtual 99	kotlin/l/b/a/b/h/f:flush	()V
+    //   159: aload_0
+    //   160: aload 5
+    //   162: invokevirtual 105	kotlin/l/b/a/b/h/d$b:iNK	()Lkotlin/l/b/a/b/h/d;
+    //   165: putfield 63	kotlin/l/b/a/b/e/a$f:aaZB	Lkotlin/l/b/a/b/h/d;
+    //   168: aload_0
+    //   169: invokevirtual 108	kotlin/l/b/a/b/e/a$f:HZ	()V
+    //   172: ldc 69
+    //   174: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   177: return
+    //   178: astore_1
+    //   179: aload_0
+    //   180: aload 5
+    //   182: invokevirtual 105	kotlin/l/b/a/b/h/d$b:iNK	()Lkotlin/l/b/a/b/h/d;
+    //   185: putfield 63	kotlin/l/b/a/b/e/a$f:aaZB	Lkotlin/l/b/a/b/h/d;
+    //   188: goto -20 -> 168
+    //   191: astore_1
+    //   192: aload_0
+    //   193: aload 5
+    //   195: invokevirtual 105	kotlin/l/b/a/b/h/d$b:iNK	()Lkotlin/l/b/a/b/h/d;
+    //   198: putfield 63	kotlin/l/b/a/b/e/a$f:aaZB	Lkotlin/l/b/a/b/h/d;
+    //   201: ldc 69
+    //   203: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   206: aload_1
+    //   207: athrow
+    //   208: astore_1
+    //   209: new 66	kotlin/l/b/a/b/h/l
+    //   212: dup
+    //   213: aload_1
+    //   214: invokevirtual 112	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   217: invokespecial 115	kotlin/l/b/a/b/h/l:<init>	(Ljava/lang/String;)V
+    //   220: astore_1
+    //   221: aload_1
+    //   222: aload_0
+    //   223: putfield 96	kotlin/l/b/a/b/h/l:abgy	Lkotlin/l/b/a/b/h/r;
+    //   226: ldc 69
+    //   228: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   231: aload_1
+    //   232: athrow
+    //   233: astore_2
+    //   234: aload_0
+    //   235: aload 5
+    //   237: invokevirtual 105	kotlin/l/b/a/b/h/d$b:iNK	()Lkotlin/l/b/a/b/h/d;
+    //   240: putfield 63	kotlin/l/b/a/b/e/a$f:aaZB	Lkotlin/l/b/a/b/h/d;
+    //   243: goto -100 -> 143
+    //   246: astore_1
+    //   247: aload_0
+    //   248: aload 5
+    //   250: invokevirtual 105	kotlin/l/b/a/b/h/d$b:iNK	()Lkotlin/l/b/a/b/h/d;
+    //   253: putfield 63	kotlin/l/b/a/b/e/a$f:aaZB	Lkotlin/l/b/a/b/h/d;
+    //   256: ldc 69
+    //   258: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   261: aload_1
+    //   262: athrow
+    //   263: goto -187 -> 76
+    //   266: iconst_1
+    //   267: istore_3
+    //   268: goto -229 -> 39
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	277	0	this	f
-    //   0	277	1	parame	kotlin.l.b.a.b.h.e
-    //   0	277	2	paramg	kotlin.l.b.a.b.h.g
-    //   1	273	3	i	int
+    //   0	271	0	this	f
+    //   0	271	1	parame	kotlin.l.b.a.b.h.e
+    //   0	271	2	paramg	kotlin.l.b.a.b.h.g
+    //   1	267	3	i	int
     //   47	35	4	j	int
-    //   29	226	5	localb	kotlin.l.b.a.b.h.d.b
-    //   37	121	6	localf	f
+    //   29	220	5	localb	kotlin.l.b.a.b.h.d.b
+    //   37	118	6	localf	f
     // Exception table:
     //   from	to	target	type
-    //   43	49	115	kotlin/l/b/a/b/h/k
-    //   76	89	115	kotlin/l/b/a/b/h/k
-    //   94	112	115	kotlin/l/b/a/b/h/k
+    //   43	49	115	kotlin/l/b/a/b/h/l
+    //   76	89	115	kotlin/l/b/a/b/h/l
+    //   94	112	115	kotlin/l/b/a/b/h/l
     //   43	49	128	finally
     //   76	89	128	finally
     //   94	112	128	finally
     //   116	128	128	finally
-    //   215	239	128	finally
-    //   157	162	184	java/io/IOException
-    //   157	162	197	finally
-    //   43	49	214	java/io/IOException
-    //   76	89	214	java/io/IOException
-    //   94	112	214	java/io/IOException
-    //   129	134	239	java/io/IOException
-    //   129	134	252	finally
+    //   209	233	128	finally
+    //   154	159	178	java/io/IOException
+    //   154	159	191	finally
+    //   43	49	208	java/io/IOException
+    //   76	89	208	java/io/IOException
+    //   94	112	208	java/io/IOException
+    //   129	134	233	java/io/IOException
+    //   129	134	246	finally
   }
   
   private a$f(i.b<f, ?> paramb)
   {
     super(paramb);
-    this.TwK = paramb.TwK;
+    this.aaZB = paramb.aaZB;
   }
   
-  public static f hFL()
+  public static f iKf()
   {
-    return Tyj;
+    return abba;
   }
   
-  public final boolean Az()
+  public final int Ad()
   {
-    return (this.bOT & 0x1) == 1;
+    AppMethodBeat.i(58547);
+    int i = this.bXW;
+    if (i != -1)
+    {
+      AppMethodBeat.o(58547);
+      return i;
+    }
+    i = 0;
+    if ((this.bQS & 0x1) == 1) {
+      i = f.bM(1, this.abbb) + 0;
+    }
+    i = i + Ii() + this.aaZB.size();
+    this.bXW = i;
+    AppMethodBeat.o(58547);
+    return i;
+  }
+  
+  public final boolean Cc()
+  {
+    return (this.bQS & 0x1) == 1;
   }
   
   public final void a(f paramf)
   {
     AppMethodBeat.i(58546);
-    yC();
-    i.c.a locala = hJC();
-    if ((this.bOT & 0x1) == 1) {
-      paramf.bs(1, this.Tyk);
+    Ad();
+    i.c.a locala = iNU();
+    if ((this.bQS & 0x1) == 1) {
+      paramf.bJ(1, this.abbb);
     }
     locala.b(200, paramf);
-    paramf.e(this.TwK);
+    paramf.e(this.aaZB);
     AppMethodBeat.o(58546);
-  }
-  
-  public final s<f> hEs()
-  {
-    return TwL;
   }
   
   public final boolean isInitialized()
   {
     AppMethodBeat.i(58545);
-    int i = this.bPe;
+    int i = this.bRd;
     if (i == 1)
     {
       AppMethodBeat.o(58545);
@@ -248,67 +259,48 @@ public final class a$f
       AppMethodBeat.o(58545);
       return false;
     }
-    if (!this.TDA.isInitialized())
+    if (!Ig())
     {
-      this.bPe = 0;
+      this.bRd = 0;
       AppMethodBeat.o(58545);
       return false;
     }
-    this.bPe = 1;
+    this.bRd = 1;
     AppMethodBeat.o(58545);
     return true;
-  }
-  
-  public final int yC()
-  {
-    AppMethodBeat.i(58547);
-    int i = this.bVY;
-    if (i != -1)
-    {
-      AppMethodBeat.o(58547);
-      return i;
-    }
-    i = 0;
-    if ((this.bOT & 0x1) == 1) {
-      i = f.bu(1, this.Tyk) + 0;
-    }
-    i = i + this.TDA.yC() + this.TwK.size();
-    this.bVY = i;
-    AppMethodBeat.o(58547);
-    return i;
   }
   
   public static final class a
     extends i.b<a.f, a>
     implements i
   {
-    private int Tyk;
-    private int bOT;
+    private int abbb;
+    private int bQS;
     
-    private a auj(int paramInt)
+    private a aEd(int paramInt)
     {
-      this.bOT |= 0x1;
-      this.Tyk = paramInt;
+      this.bQS |= 0x1;
+      this.abbb = paramInt;
       return this;
     }
     
-    private a hFM()
+    private a iKg()
     {
       AppMethodBeat.i(58528);
-      a locala = new a().b(hFN());
+      a locala = new a().b(iKh());
       AppMethodBeat.o(58528);
       return locala;
     }
     
-    private a.f hFN()
+    private a.f iKh()
     {
       int i = 1;
       AppMethodBeat.i(58529);
       a.f localf = new a.f(this, (byte)0);
-      if ((this.bOT & 0x1) == 1) {}
+      if ((this.bQS & 0x1) == 1) {}
       for (;;)
       {
-        a.f.a(localf, this.Tyk);
+        a.f.a(localf, this.abbb);
         a.f.b(localf, i);
         AppMethodBeat.o(58529);
         return localf;
@@ -324,7 +316,7 @@ public final class a$f
       //   2: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aconst_null
       //   6: astore_3
-      //   7: getstatic 68	kotlin/l/b/a/b/e/a$f:TwL	Lkotlin/l/b/a/b/h/s;
+      //   7: getstatic 68	kotlin/l/b/a/b/e/a$f:aaZC	Lkotlin/l/b/a/b/h/t;
       //   10: aload_1
       //   11: aload_2
       //   12: invokeinterface 73 3 0
@@ -340,7 +332,7 @@ public final class a$f
       //   33: areturn
       //   34: astore_1
       //   35: aload_1
-      //   36: getfield 77	kotlin/l/b/a/b/h/k:TDK	Lkotlin/l/b/a/b/h/q;
+      //   36: getfield 77	kotlin/l/b/a/b/h/l:abgy	Lkotlin/l/b/a/b/h/r;
       //   39: checkcast 9	kotlin/l/b/a/b/e/a$f
       //   42: astore_2
       //   43: ldc 64
@@ -370,7 +362,7 @@ public final class a$f
       //   6	64	3	localObject	java.lang.Object
       // Exception table:
       //   from	to	target	type
-      //   7	21	34	kotlin/l/b/a/b/h/k
+      //   7	21	34	kotlin/l/b/a/b/h/l
       //   43	50	50	finally
       //   7	21	68	finally
       //   35	43	68	finally
@@ -379,16 +371,16 @@ public final class a$f
     public final a b(a.f paramf)
     {
       AppMethodBeat.i(58530);
-      if (paramf == a.f.hFL())
+      if (paramf == a.f.iKf())
       {
         AppMethodBeat.o(58530);
         return this;
       }
-      if (paramf.Az()) {
-        auj(paramf.Tyk);
+      if (paramf.Cc()) {
+        aEd(paramf.abbb);
       }
       a(paramf);
-      this.TwK = this.TwK.a(a.f.a(paramf));
+      this.aaZB = this.aaZB.a(a.f.a(paramf));
       AppMethodBeat.o(58530);
       return this;
     }
@@ -396,7 +388,7 @@ public final class a$f
     public final boolean isInitialized()
     {
       AppMethodBeat.i(58531);
-      if (!this.TDA.isInitialized())
+      if (!Ig())
       {
         AppMethodBeat.o(58531);
         return false;
@@ -408,7 +400,7 @@ public final class a$f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     kotlin.l.b.a.b.e.a.f
  * JD-Core Version:    0.7.0.1
  */

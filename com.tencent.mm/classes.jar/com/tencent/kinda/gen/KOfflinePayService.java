@@ -1,10 +1,12 @@
 package com.tencent.kinda.gen;
 
-import java.util.ArrayList;
-
 public abstract interface KOfflinePayService
 {
   public abstract void cleanCftToken(String paramString);
+  
+  public abstract String decryptByCftCert(String paramString1, String paramString2);
+  
+  public abstract byte[] decryptBySM4(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3);
   
   public abstract boolean deleteCftCert(String paramString);
   
@@ -14,8 +16,6 @@ public abstract interface KOfflinePayService
   
   public abstract String getCftCertSign(String paramString1, String paramString2);
   
-  public abstract String getCftToken(String paramString);
-  
   public abstract String getCodever();
   
   public abstract String getDeviceid();
@@ -24,13 +24,11 @@ public abstract interface KOfflinePayService
   
   public abstract long getLastTokenUpdateTs();
   
+  public abstract String getOfflinePayAckKey();
+  
   public abstract boolean getOfflinePayHasSuccess();
   
-  public abstract ArrayList<ITransmitKvData> getPaymentCardList();
-  
   public abstract int getRegetTokenNum();
-  
-  public abstract int getRemainCftTokenNum(String paramString);
   
   public abstract String getTokenPin();
   
@@ -52,7 +50,13 @@ public abstract interface KOfflinePayService
   
   public abstract void setLastTokenUpdateTs(long paramLong);
   
+  public abstract void setOfflinePayAckKey(String paramString);
+  
   public abstract void setOfflinePayHasSuccess();
+  
+  public abstract void setOfflineStateClose();
+  
+  public abstract void setOfflineStateOpen();
   
   public abstract void setRegetTokenNum(int paramInt);
   

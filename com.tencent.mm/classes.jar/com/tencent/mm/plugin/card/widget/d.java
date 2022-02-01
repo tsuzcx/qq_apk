@@ -7,177 +7,178 @@ import android.view.View.OnClickListener;
 import android.view.ViewStub;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.card.a.d;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.d.n;
-import com.tencent.mm.protocal.protobuf.abz;
-import com.tencent.mm.protocal.protobuf.ty;
-import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.protocal.protobuf.acg;
+import com.tencent.mm.protocal.protobuf.ua;
+import com.tencent.mm.protocal.protobuf.vb;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class d
   extends a
 {
-  private View qlD;
-  private TextView qlE;
-  private TextView qlF;
-  private View qlG;
-  private TextView qlH;
-  private TextView qlI;
-  private View qlJ;
-  private View qlK;
-  private View qlL;
+  private TextView tHA;
+  private View tHB;
+  private TextView tHC;
+  private TextView tHD;
+  private View tHE;
+  private View tHF;
+  private View tHG;
+  private View tHy;
+  private TextView tHz;
   
   public d(Context paramContext)
   {
     super(paramContext);
   }
   
-  protected final void cxM()
+  protected final void cLo()
   {
     AppMethodBeat.i(113904);
-    this.qlD = this.qlr.findViewById(2131305818);
-    this.qlE = ((TextView)this.qlr.findViewById(2131305820));
-    this.qlF = ((TextView)this.qlr.findViewById(2131305819));
-    this.qlG = this.qlr.findViewById(2131297376);
-    this.qlH = ((TextView)this.qlr.findViewById(2131297378));
-    this.qlI = ((TextView)this.qlr.findViewById(2131297377));
-    this.qlK = this.qlr.findViewById(2131298241);
-    this.qlL = this.qlr.findViewById(2131298053);
+    this.tHy = this.tHm.findViewById(a.d.tgq);
+    this.tHz = ((TextView)this.tHm.findViewById(a.d.tgs));
+    this.tHA = ((TextView)this.tHm.findViewById(a.d.tgr));
+    this.tHB = this.tHm.findViewById(a.d.taM);
+    this.tHC = ((TextView)this.tHm.findViewById(a.d.taO));
+    this.tHD = ((TextView)this.tHm.findViewById(a.d.taN));
+    this.tHF = this.tHm.findViewById(a.d.tdK);
+    this.tHG = this.tHm.findViewById(a.d.tbo);
     AppMethodBeat.o(113904);
   }
   
-  protected final void cxN()
+  protected final void cLp()
   {
     AppMethodBeat.i(113905);
     Object localObject3;
     Object localObject2;
     Object localObject1;
-    if ((this.pQV.csQ().LeC != null) && (this.pQV.csQ().LeC.size() > 0))
+    if ((this.tmU.cGs().SfP != null) && (this.tmU.cGs().SfP.size() > 0))
     {
-      localObject3 = this.pQV.csQ().LeC;
+      localObject3 = this.tmU.cGs().SfP;
       localObject2 = null;
       if (((LinkedList)localObject3).size() == 1)
       {
-        localObject1 = (abz)((LinkedList)localObject3).get(0);
+        localObject1 = (acg)((LinkedList)localObject3).get(0);
         if (localObject1 != null)
         {
-          this.qlD.setVisibility(0);
-          this.qlE.setText(((abz)localObject1).title);
-          this.qlF.setText(((abz)localObject1).pRY);
-          if (!TextUtils.isEmpty(((abz)localObject1).LfE)) {
-            this.qlE.setTextColor(l.ake(((abz)localObject1).LfE));
+          this.tHy.setVisibility(0);
+          this.tHz.setText(((acg)localObject1).title);
+          this.tHA.setText(((acg)localObject1).tnY);
+          if (!TextUtils.isEmpty(((acg)localObject1).SgS)) {
+            this.tHz.setTextColor(l.arR(((acg)localObject1).SgS));
           }
-          if (!TextUtils.isEmpty(((abz)localObject1).LfF)) {
-            this.qlF.setTextColor(l.ake(((abz)localObject1).LfF));
+          if (!TextUtils.isEmpty(((acg)localObject1).SgT)) {
+            this.tHA.setTextColor(l.arR(((acg)localObject1).SgT));
           }
         }
         if (localObject2 != null)
         {
-          this.qlG.setVisibility(0);
-          this.qlH.setText(((abz)localObject2).title);
-          this.qlI.setText(((abz)localObject2).pRY);
-          if (!TextUtils.isEmpty(((abz)localObject2).LfE)) {
-            this.qlH.setTextColor(l.ake(((abz)localObject2).LfE));
+          this.tHB.setVisibility(0);
+          this.tHC.setText(((acg)localObject2).title);
+          this.tHD.setText(((acg)localObject2).tnY);
+          if (!TextUtils.isEmpty(((acg)localObject2).SgS)) {
+            this.tHC.setTextColor(l.arR(((acg)localObject2).SgS));
           }
-          if (!TextUtils.isEmpty(((abz)localObject2).LfF)) {
-            this.qlI.setTextColor(l.ake(((abz)localObject2).LfF));
+          if (!TextUtils.isEmpty(((acg)localObject2).SgT)) {
+            this.tHD.setTextColor(l.arR(((acg)localObject2).SgT));
           }
         }
         label234:
-        if ((!this.pQV.csv()) || (this.pQV.csB())) {
+        if ((!this.tmU.cFW()) || (this.tmU.cGc())) {
           break label358;
         }
         Log.i("MicroMsg.CardWidgetInvoice", "is not invoice, don't updateCardSecondaryFieldListView");
         label265:
-        if (!this.pQV.csM()) {
-          break label866;
+        if (!this.tmU.cGn()) {
+          break label886;
         }
-        this.qlK.setVisibility(8);
+        this.tHF.setVisibility(8);
       }
     }
     for (;;)
     {
-      if ((this.pQV.csR().LcB != null) || (!this.pQV.csM())) {
-        break label943;
+      if ((this.tmU.cGt().SdO != null) || (!this.tmU.cGn())) {
+        break label964;
       }
-      this.qlL.setVisibility(0);
+      this.tHG.setVisibility(0);
       AppMethodBeat.o(113905);
       return;
-      localObject1 = (abz)((LinkedList)localObject3).get(0);
-      localObject2 = (abz)((LinkedList)localObject3).get(1);
+      localObject1 = (acg)((LinkedList)localObject3).get(0);
+      localObject2 = (acg)((LinkedList)localObject3).get(1);
       break;
       Log.i("MicroMsg.CardWidgetInvoice", "primary_fields is null");
       break label234;
       label358:
-      if ((this.pQV.csR().Lcs != null) && (this.pQV.csR().Lcs.size() > 0))
+      if ((this.tmU.cGt().SdF != null) && (this.tmU.cGt().SdF.size() > 0))
       {
-        if (this.qlJ == null) {
-          this.qlJ = ((ViewStub)this.qlr.findViewById(2131298206)).inflate();
+        if (this.tHE == null) {
+          this.tHE = ((ViewStub)this.tHm.findViewById(a.d.tdn)).inflate();
         }
-        this.qlr.findViewById(2131298053).setVisibility(8);
-        localObject1 = this.qlJ;
-        localObject3 = this.pQV;
-        localObject2 = this.kuO;
-        localObject3 = ((b)localObject3).csR().Lcs;
+        this.tHm.findViewById(a.d.tbo).setVisibility(8);
+        localObject1 = this.tHE;
+        localObject3 = this.tmU;
+        localObject2 = this.nmC;
+        localObject3 = ((b)localObject3).cGt().SdF;
         if (((LinkedList)localObject3).size() == 1)
         {
-          ((View)localObject1).findViewById(2131298210).setVisibility(0);
-          localObject3 = (abz)((LinkedList)localObject3).get(0);
-          ((TextView)((View)localObject1).findViewById(2131307444)).setText(((abz)localObject3).title);
-          ((TextView)((View)localObject1).findViewById(2131307441)).setText(((abz)localObject3).pRY);
-          ((View)localObject1).findViewById(2131298210).setOnClickListener((View.OnClickListener)localObject2);
-          if (!TextUtils.isEmpty(((abz)localObject3).LfE)) {
-            ((TextView)((View)localObject1).findViewById(2131307444)).setTextColor(l.ake(((abz)localObject3).LfE));
+          ((View)localObject1).findViewById(a.d.tdr).setVisibility(0);
+          localObject3 = (acg)((LinkedList)localObject3).get(0);
+          ((TextView)((View)localObject1).findViewById(a.d.tgA)).setText(((acg)localObject3).title);
+          ((TextView)((View)localObject1).findViewById(a.d.tgx)).setText(((acg)localObject3).tnY);
+          ((View)localObject1).findViewById(a.d.tdr).setOnClickListener((View.OnClickListener)localObject2);
+          if (!TextUtils.isEmpty(((acg)localObject3).SgS)) {
+            ((TextView)((View)localObject1).findViewById(a.d.tgA)).setTextColor(l.arR(((acg)localObject3).SgS));
           }
-          if (!TextUtils.isEmpty(((abz)localObject3).LfF)) {
-            ((TextView)((View)localObject1).findViewById(2131307441)).setTextColor(l.ake(((abz)localObject3).LfF));
+          if (!TextUtils.isEmpty(((acg)localObject3).SgT)) {
+            ((TextView)((View)localObject1).findViewById(a.d.tgx)).setTextColor(l.arR(((acg)localObject3).SgT));
           }
-          ((View)localObject1).findViewById(2131298211).setVisibility(8);
+          ((View)localObject1).findViewById(a.d.tds).setVisibility(8);
           break label265;
         }
         if (((LinkedList)localObject3).size() < 2) {
           break label265;
         }
-        abz localabz = (abz)((LinkedList)localObject3).get(0);
-        ((TextView)((View)localObject1).findViewById(2131307444)).setText(localabz.title);
-        ((TextView)((View)localObject1).findViewById(2131307441)).setText(localabz.pRY);
-        if (!TextUtils.isEmpty(localabz.LfE)) {
-          ((TextView)((View)localObject1).findViewById(2131307444)).setTextColor(l.ake(localabz.LfE));
+        acg localacg = (acg)((LinkedList)localObject3).get(0);
+        ((TextView)((View)localObject1).findViewById(a.d.tgA)).setText(localacg.title);
+        ((TextView)((View)localObject1).findViewById(a.d.tgx)).setText(localacg.tnY);
+        if (!TextUtils.isEmpty(localacg.SgS)) {
+          ((TextView)((View)localObject1).findViewById(a.d.tgA)).setTextColor(l.arR(localacg.SgS));
         }
-        if (!TextUtils.isEmpty(localabz.LfF)) {
-          ((TextView)((View)localObject1).findViewById(2131307441)).setTextColor(l.ake(localabz.LfF));
+        if (!TextUtils.isEmpty(localacg.SgT)) {
+          ((TextView)((View)localObject1).findViewById(a.d.tgx)).setTextColor(l.arR(localacg.SgT));
         }
-        localObject3 = (abz)((LinkedList)localObject3).get(1);
-        ((TextView)((View)localObject1).findViewById(2131307445)).setText(((abz)localObject3).title);
-        ((TextView)((View)localObject1).findViewById(2131307442)).setText(((abz)localObject3).pRY);
-        if (!TextUtils.isEmpty(((abz)localObject3).LfE)) {
-          ((TextView)((View)localObject1).findViewById(2131307445)).setTextColor(l.ake(((abz)localObject3).LfE));
+        localObject3 = (acg)((LinkedList)localObject3).get(1);
+        ((TextView)((View)localObject1).findViewById(a.d.tgB)).setText(((acg)localObject3).title);
+        ((TextView)((View)localObject1).findViewById(a.d.tgy)).setText(((acg)localObject3).tnY);
+        if (!TextUtils.isEmpty(((acg)localObject3).SgS)) {
+          ((TextView)((View)localObject1).findViewById(a.d.tgB)).setTextColor(l.arR(((acg)localObject3).SgS));
         }
-        if (!TextUtils.isEmpty(((abz)localObject3).LfF)) {
-          ((TextView)((View)localObject1).findViewById(2131307442)).setTextColor(l.ake(((abz)localObject3).LfF));
+        if (!TextUtils.isEmpty(((acg)localObject3).SgT)) {
+          ((TextView)((View)localObject1).findViewById(a.d.tgy)).setTextColor(l.arR(((acg)localObject3).SgT));
         }
-        ((View)localObject1).findViewById(2131298210).setOnClickListener((View.OnClickListener)localObject2);
-        ((View)localObject1).findViewById(2131298211).setOnClickListener((View.OnClickListener)localObject2);
+        ((View)localObject1).findViewById(a.d.tdr).setOnClickListener((View.OnClickListener)localObject2);
+        ((View)localObject1).findViewById(a.d.tds).setOnClickListener((View.OnClickListener)localObject2);
         break label265;
       }
-      if (this.qlJ != null) {
-        this.qlJ.setVisibility(8);
+      if (this.tHE != null) {
+        this.tHE.setVisibility(8);
       }
-      this.qlr.findViewById(2131298053).setVisibility(8);
+      this.tHm.findViewById(a.d.tbo).setVisibility(8);
       break label265;
-      label866:
-      this.qlK.setVisibility(0);
-      localObject1 = (TextView)this.qlK.findViewById(2131298219);
-      if (!TextUtils.isEmpty(this.pQV.csQ().LeY)) {
-        ((TextView)localObject1).setText(this.pQV.csQ().LeY);
+      label886:
+      this.tHF.setVisibility(0);
+      localObject1 = (TextView)this.tHF.findViewById(a.d.tdz);
+      if (!TextUtils.isEmpty(this.tmU.cGs().Sgm)) {
+        ((TextView)localObject1).setText(this.tmU.cGs().Sgm);
       } else {
-        n.h((TextView)localObject1, this.pQV.csR().status);
+        n.h((TextView)localObject1, this.tmU.cGt().status);
       }
     }
-    label943:
-    this.qlL.setVisibility(8);
+    label964:
+    this.tHG.setVisibility(8);
     AppMethodBeat.o(113905);
   }
 }

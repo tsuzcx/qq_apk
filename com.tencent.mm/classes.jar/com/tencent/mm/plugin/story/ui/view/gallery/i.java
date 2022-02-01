@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.story.ui.view.gallery;
 
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.aj;
-import android.support.v7.widget.ak;
 import android.view.View;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.u;
+import androidx.recyclerview.widget.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/gallery/PageScrollHelper;", "Landroid/support/v7/widget/PagerSnapHelper;", "()V", "horizontalHelper", "Landroid/support/v7/widget/OrientationHelper;", "verticalHelper", "calculateDistanceToFinalSnap", "", "layoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "targetView", "Landroid/view/View;", "distanceToCenter", "", "helper", "getHorizontalHelper", "getVerticalHelper", "Companion", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/gallery/PageScrollHelper;", "Landroidx/recyclerview/widget/PagerSnapHelper;", "()V", "horizontalHelper", "Landroidx/recyclerview/widget/OrientationHelper;", "verticalHelper", "calculateDistanceToFinalSnap", "", "layoutManager", "Landroidx/recyclerview/widget/RecyclerView$LayoutManager;", "targetView", "Landroid/view/View;", "distanceToCenter", "", "helper", "getHorizontalHelper", "getVerticalHelper", "Companion", "plugin-story_release"})
 public final class i
-  extends ak
+  extends v
 {
-  public static final i.a FFS;
+  public static final a LZS;
   private static final String TAG = "MicroMsg.PageScrollHelper";
-  private aj hbL;
-  private aj hbM;
+  private u jMV;
+  private u jMW;
   
   static
   {
     AppMethodBeat.i(120396);
-    FFS = new i.a((byte)0);
+    LZS = new a((byte)0);
     TAG = "MicroMsg.PageScrollHelper";
     AppMethodBeat.o(120396);
   }
   
-  private static int a(RecyclerView.LayoutManager paramLayoutManager, View paramView, aj paramaj)
+  private static int a(RecyclerView.LayoutManager paramLayoutManager, View paramView, u paramu)
   {
-    AppMethodBeat.i(120395);
+    AppMethodBeat.i(211519);
     int j;
     int k;
     if (paramLayoutManager.canScrollHorizontally())
     {
       i = paramLayoutManager.getLeftDecorationWidth(paramView) + paramLayoutManager.getRightDecorationWidth(paramView);
-      j = paramaj.bo(paramView);
-      k = (paramaj.bs(paramView) - i) / 2;
+      j = paramu.aZ(paramView);
+      k = (paramu.bd(paramView) - i) / 2;
       if (!paramLayoutManager.getClipToPadding()) {
         break label89;
       }
     }
     label89:
-    for (int i = paramaj.kH() + paramaj.kJ() / 2;; i = paramaj.getEnd() / 2)
+    for (int i = paramu.kT() + paramu.kV() / 2;; i = paramu.getEnd() / 2)
     {
-      AppMethodBeat.o(120395);
+      AppMethodBeat.o(211519);
       return j + k - i;
       i = paramLayoutManager.getTopDecorationHeight(paramView) + paramLayoutManager.getBottomDecorationHeight(paramView);
       break;
@@ -53,58 +53,58 @@ public final class i
   public final int[] a(RecyclerView.LayoutManager paramLayoutManager, View paramView)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(120394);
-    p.h(paramLayoutManager, "layoutManager");
-    p.h(paramView, "targetView");
+    AppMethodBeat.i(211517);
+    p.k(paramLayoutManager, "layoutManager");
+    p.k(paramView, "targetView");
     Log.i(TAG, "LogStory: calculateDistanceToFinalSnap " + paramLayoutManager.getPosition(paramView));
     int[] arrayOfInt = new int[2];
     Object localObject1;
     if (paramLayoutManager.canScrollHorizontally())
     {
-      if (this.hbM != null)
+      if (this.jMW != null)
       {
-        localObject1 = this.hbM;
+        localObject1 = this.jMW;
         if (localObject1 == null) {
           break label191;
         }
-        localObject1 = ((aj)localObject1).getLayoutManager();
+        localObject1 = ((u)localObject1).getLayoutManager();
         if (localObject1 == paramLayoutManager) {}
       }
       else
       {
-        this.hbM = aj.d(paramLayoutManager);
+        this.jMW = u.d(paramLayoutManager);
       }
-      localObject1 = this.hbM;
+      localObject1 = this.jMW;
       if (localObject1 == null) {
-        p.hyc();
+        p.iCn();
       }
-      arrayOfInt[0] = a(paramLayoutManager, paramView, (aj)localObject1);
+      arrayOfInt[0] = a(paramLayoutManager, paramView, (u)localObject1);
       label114:
       if (!paramLayoutManager.canScrollVertically()) {
         break label204;
       }
-      if (this.hbL != null)
+      if (this.jMV != null)
       {
-        aj localaj = this.hbL;
+        u localu = this.jMV;
         localObject1 = localObject2;
-        if (localaj != null) {
-          localObject1 = localaj.getLayoutManager();
+        if (localu != null) {
+          localObject1 = localu.getLayoutManager();
         }
         if (localObject1 == paramLayoutManager) {}
       }
       else
       {
-        this.hbL = aj.e(paramLayoutManager);
+        this.jMV = u.e(paramLayoutManager);
       }
-      localObject1 = this.hbL;
+      localObject1 = this.jMV;
       if (localObject1 == null) {
-        p.hyc();
+        p.iCn();
       }
-      arrayOfInt[1] = a(paramLayoutManager, paramView, (aj)localObject1);
+      arrayOfInt[1] = a(paramLayoutManager, paramView, (u)localObject1);
     }
     for (;;)
     {
-      AppMethodBeat.o(120394);
+      AppMethodBeat.o(211517);
       return arrayOfInt;
       label191:
       localObject1 = null;
@@ -115,10 +115,13 @@ public final class i
       arrayOfInt[1] = 0;
     }
   }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/gallery/PageScrollHelper$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.i
  * JD-Core Version:    0.7.0.1
  */

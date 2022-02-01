@@ -2,47 +2,39 @@ package com.tencent.mm.plugin.appbrand.ad;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.appstorage.q;
+import com.tencent.mm.plugin.appbrand.appstorage.r;
 
 public final class d
   implements k
 {
-  public static final d kGH;
+  public static final d nAo;
   
   static
   {
     AppMethodBeat.i(44024);
-    kGH = new d();
+    nAo = new d();
     AppMethodBeat.o(44024);
   }
   
-  public final boolean H(AppBrandRuntime paramAppBrandRuntime)
+  public final boolean I(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(44022);
-    boolean bool = e.H(paramAppBrandRuntime);
+    boolean bool = e.I(paramAppBrandRuntime);
     AppMethodBeat.o(44022);
     return bool;
   }
   
-  public final boolean Ux(String paramString)
-  {
-    AppMethodBeat.i(44021);
-    boolean bool = e.Ux(paramString);
-    AppMethodBeat.o(44021);
-    return bool;
-  }
-  
-  public final q btJ()
+  public final r bEH()
   {
     AppMethodBeat.i(174692);
-    q localq = e.btJ();
+    r localr = e.bEH();
     AppMethodBeat.o(174692);
-    return localq;
+    return localr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.d
  * JD-Core Version:    0.7.0.1
  */

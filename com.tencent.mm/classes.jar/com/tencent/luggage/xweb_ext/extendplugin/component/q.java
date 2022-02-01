@@ -14,13 +14,13 @@ import java.util.Objects;
 
 public final class q
 {
-  private static final Field cEl;
+  private static final Field cES;
   private final List<b> mListeners;
   private final SurfaceTexture mSurfaceTexture;
   
   static
   {
-    AppMethodBeat.i(215554);
+    AppMethodBeat.i(222201);
     Object localObject = null;
     try
     {
@@ -36,16 +36,16 @@ public final class q
         Log.w("MicroMsg.AppBrand.SurfaceTextureWrapper", "get mOnFrameAvailableHandler fail since " + localException.toString());
       }
     }
-    cEl = localObject;
-    AppMethodBeat.o(215554);
+    cES = localObject;
+    AppMethodBeat.o(222201);
   }
   
   private q(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(215549);
+    AppMethodBeat.i(222190);
     this.mListeners = new ArrayList();
     this.mSurfaceTexture = paramSurfaceTexture;
-    AppMethodBeat.o(215549);
+    AppMethodBeat.o(222190);
   }
   
   /* Error */
@@ -56,7 +56,7 @@ public final class q
     //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: monitorenter
-    //   7: getstatic 48	com/tencent/luggage/xweb_ext/extendplugin/component/q:cEl	Ljava/lang/reflect/Field;
+    //   7: getstatic 48	com/tencent/luggage/xweb_ext/extendplugin/component/q:cES	Ljava/lang/reflect/Field;
     //   10: ifnonnull +12 -> 22
     //   13: aload_0
     //   14: monitorexit
@@ -64,7 +64,7 @@ public final class q
     //   17: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   20: aconst_null
     //   21: areturn
-    //   22: getstatic 48	com/tencent/luggage/xweb_ext/extendplugin/component/q:cEl	Ljava/lang/reflect/Field;
+    //   22: getstatic 48	com/tencent/luggage/xweb_ext/extendplugin/component/q:cES	Ljava/lang/reflect/Field;
     //   25: aload_0
     //   26: invokevirtual 101	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   29: checkcast 103	android/os/Handler
@@ -88,7 +88,7 @@ public final class q
     //   64: invokestatic 109	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   67: aload_2
     //   68: checkcast 8	com/tencent/luggage/xweb_ext/extendplugin/component/q$a
-    //   71: getfield 113	com/tencent/luggage/xweb_ext/extendplugin/component/q$a:cEo	Lcom/tencent/luggage/xweb_ext/extendplugin/component/q;
+    //   71: getfield 113	com/tencent/luggage/xweb_ext/extendplugin/component/q$a:cEV	Lcom/tencent/luggage/xweb_ext/extendplugin/component/q;
     //   74: astore_1
     //   75: aload_0
     //   76: monitorexit
@@ -107,7 +107,7 @@ public final class q
     //   98: aload_1
     //   99: invokespecial 118	com/tencent/luggage/xweb_ext/extendplugin/component/q$a:<init>	(Landroid/os/Handler;Lcom/tencent/luggage/xweb_ext/extendplugin/component/q;)V
     //   102: astore_2
-    //   103: getstatic 48	com/tencent/luggage/xweb_ext/extendplugin/component/q:cEl	Ljava/lang/reflect/Field;
+    //   103: getstatic 48	com/tencent/luggage/xweb_ext/extendplugin/component/q:cES	Ljava/lang/reflect/Field;
     //   106: aload_0
     //   107: aload_2
     //   108: invokevirtual 122	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
@@ -163,7 +163,6 @@ public final class q
     //   84	111	154	finally
     //   111	113	154	finally
     //   121	147	154	finally
-    //   155	157	154	finally
   }
   
   private void onFrameAvailable()
@@ -172,38 +171,38 @@ public final class q
     {
       try
       {
-        AppMethodBeat.i(215552);
+        AppMethodBeat.i(222195);
         Iterator localIterator = this.mListeners.iterator();
         if (!localIterator.hasNext()) {
           break;
         }
         final b localb = (b)localIterator.next();
         if (localb.handler == null) {
-          localb.cEq.onFrameAvailable(this.mSurfaceTexture);
+          localb.cEX.onFrameAvailable(this.mSurfaceTexture);
         } else {
           localb.handler.post(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(215543);
-              localb.cEq.onFrameAvailable(q.a(q.this));
-              AppMethodBeat.o(215543);
+              AppMethodBeat.i(226120);
+              localb.cEX.onFrameAvailable(q.a(q.this));
+              AppMethodBeat.o(226120);
             }
           });
         }
       }
       finally {}
     }
-    AppMethodBeat.o(215552);
+    AppMethodBeat.o(222195);
   }
   
   public final void a(SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener)
   {
     try
     {
-      AppMethodBeat.i(215551);
+      AppMethodBeat.i(222194);
       this.mListeners.remove(new b(paramOnFrameAvailableListener, null));
-      AppMethodBeat.o(215551);
+      AppMethodBeat.o(222194);
       return;
     }
     finally
@@ -217,11 +216,11 @@ public final class q
   {
     try
     {
-      AppMethodBeat.i(215550);
+      AppMethodBeat.i(222193);
       paramOnFrameAvailableListener = new b(paramOnFrameAvailableListener, paramHandler);
       this.mListeners.remove(paramOnFrameAvailableListener);
       this.mListeners.add(paramOnFrameAvailableListener);
-      AppMethodBeat.o(215550);
+      AppMethodBeat.o(222193);
       return;
     }
     finally
@@ -234,69 +233,69 @@ public final class q
   static final class a
     extends Handler
   {
-    public final q cEo;
-    private final Handler cEp;
+    public final q cEV;
+    private final Handler cEW;
     
     public a(Handler paramHandler, q paramq)
     {
       super();
-      AppMethodBeat.i(215544);
-      this.cEp = paramHandler;
-      this.cEo = paramq;
-      AppMethodBeat.o(215544);
+      AppMethodBeat.i(222698);
+      this.cEW = paramHandler;
+      this.cEV = paramq;
+      AppMethodBeat.o(222698);
     }
     
     public final void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(215545);
-      this.cEp.handleMessage(paramMessage);
-      q.b(this.cEo);
-      AppMethodBeat.o(215545);
+      AppMethodBeat.i(222699);
+      this.cEW.handleMessage(paramMessage);
+      q.b(this.cEV);
+      AppMethodBeat.o(222699);
     }
   }
   
   static final class b
   {
-    public final SurfaceTexture.OnFrameAvailableListener cEq;
+    public final SurfaceTexture.OnFrameAvailableListener cEX;
     public final Handler handler;
     
     public b(SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener, Handler paramHandler)
     {
-      this.cEq = paramOnFrameAvailableListener;
+      this.cEX = paramOnFrameAvailableListener;
       this.handler = paramHandler;
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(215546);
+      AppMethodBeat.i(224965);
       if (this == paramObject)
       {
-        AppMethodBeat.o(215546);
+        AppMethodBeat.o(224965);
         return true;
       }
       if ((paramObject == null) || (getClass() != paramObject.getClass()))
       {
-        AppMethodBeat.o(215546);
+        AppMethodBeat.o(224965);
         return false;
       }
       paramObject = (b)paramObject;
-      boolean bool = this.cEq.equals(paramObject.cEq);
-      AppMethodBeat.o(215546);
+      boolean bool = this.cEX.equals(paramObject.cEX);
+      AppMethodBeat.o(224965);
       return bool;
     }
     
     public final int hashCode()
     {
-      AppMethodBeat.i(215547);
-      int i = Objects.hash(new Object[] { this.cEq });
-      AppMethodBeat.o(215547);
+      AppMethodBeat.i(224967);
+      int i = Objects.hash(new Object[] { this.cEX });
+      AppMethodBeat.o(224967);
       return i;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.q
  * JD-Core Version:    0.7.0.1
  */

@@ -2,119 +2,100 @@ package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class cxt
-  extends com.tencent.mm.bw.a
+public final class cxt
+  extends com.tencent.mm.cd.a
 {
-  public String AAN;
-  public double KUt;
-  public double KUu;
-  public String LpJ;
-  public String LpK;
-  public String MCE;
-  public String MCF;
-  public String MCG;
-  public String MCH;
-  public String Name;
-  public String kdZ;
-  public String kea;
+  public String SjI;
+  public String SjJ;
+  public int TGb;
+  public int TGc;
+  public String UserName;
+  public String mVA;
+  public String mVB;
+  public String mVH;
+  public int mVy;
+  public String mVz;
+  public int rWu;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(56257);
+    AppMethodBeat.i(32348);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Name != null) {
-        paramVarArgs.e(1, this.Name);
+      if (this.UserName != null) {
+        paramVarArgs.f(1, this.UserName);
       }
-      if (this.MCE != null) {
-        paramVarArgs.e(2, this.MCE);
+      paramVarArgs.aY(2, this.rWu);
+      paramVarArgs.aY(3, this.mVy);
+      if (this.mVA != null) {
+        paramVarArgs.f(4, this.mVA);
       }
-      paramVarArgs.e(3, this.KUt);
-      paramVarArgs.e(4, this.KUu);
-      if (this.MCF != null) {
-        paramVarArgs.e(5, this.MCF);
+      if (this.mVz != null) {
+        paramVarArgs.f(5, this.mVz);
       }
-      if (this.AAN != null) {
-        paramVarArgs.e(6, this.AAN);
+      if (this.mVB != null) {
+        paramVarArgs.f(6, this.mVB);
       }
-      if (this.MCG != null) {
-        paramVarArgs.e(7, this.MCG);
+      paramVarArgs.aY(7, this.TGb);
+      paramVarArgs.aY(8, this.TGc);
+      if (this.mVH != null) {
+        paramVarArgs.f(9, this.mVH);
       }
-      if (this.kdZ != null) {
-        paramVarArgs.e(8, this.kdZ);
+      if (this.SjI != null) {
+        paramVarArgs.f(10, this.SjI);
       }
-      if (this.kea != null) {
-        paramVarArgs.e(9, this.kea);
+      if (this.SjJ != null) {
+        paramVarArgs.f(11, this.SjJ);
       }
-      if (this.LpJ != null) {
-        paramVarArgs.e(10, this.LpJ);
-      }
-      if (this.LpK != null) {
-        paramVarArgs.e(11, this.LpK);
-      }
-      if (this.MCH != null) {
-        paramVarArgs.e(12, this.MCH);
-      }
-      AppMethodBeat.o(56257);
+      AppMethodBeat.o(32348);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Name == null) {
-        break label860;
+      if (this.UserName == null) {
+        break label775;
       }
     }
-    label860:
-    for (paramInt = g.a.a.b.b.a.f(1, this.Name) + 0;; paramInt = 0)
+    label775:
+    for (paramInt = g.a.a.b.b.a.g(1, this.UserName) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.MCE != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.MCE);
-      }
-      i = i + (g.a.a.b.b.a.fS(3) + 8) + (g.a.a.b.b.a.fS(4) + 8);
+      int i = paramInt + g.a.a.b.b.a.bM(2, this.rWu) + g.a.a.b.b.a.bM(3, this.mVy);
       paramInt = i;
-      if (this.MCF != null) {
-        paramInt = i + g.a.a.b.b.a.f(5, this.MCF);
+      if (this.mVA != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.mVA);
       }
       i = paramInt;
-      if (this.AAN != null) {
-        i = paramInt + g.a.a.b.b.a.f(6, this.AAN);
+      if (this.mVz != null) {
+        i = paramInt + g.a.a.b.b.a.g(5, this.mVz);
       }
       paramInt = i;
-      if (this.MCG != null) {
-        paramInt = i + g.a.a.b.b.a.f(7, this.MCG);
+      if (this.mVB != null) {
+        paramInt = i + g.a.a.b.b.a.g(6, this.mVB);
+      }
+      i = paramInt + g.a.a.b.b.a.bM(7, this.TGb) + g.a.a.b.b.a.bM(8, this.TGc);
+      paramInt = i;
+      if (this.mVH != null) {
+        paramInt = i + g.a.a.b.b.a.g(9, this.mVH);
       }
       i = paramInt;
-      if (this.kdZ != null) {
-        i = paramInt + g.a.a.b.b.a.f(8, this.kdZ);
+      if (this.SjI != null) {
+        i = paramInt + g.a.a.b.b.a.g(10, this.SjI);
       }
       paramInt = i;
-      if (this.kea != null) {
-        paramInt = i + g.a.a.b.b.a.f(9, this.kea);
+      if (this.SjJ != null) {
+        paramInt = i + g.a.a.b.b.a.g(11, this.SjJ);
       }
-      i = paramInt;
-      if (this.LpJ != null) {
-        i = paramInt + g.a.a.b.b.a.f(10, this.LpJ);
-      }
-      paramInt = i;
-      if (this.LpK != null) {
-        paramInt = i + g.a.a.b.b.a.f(11, this.LpK);
-      }
-      i = paramInt;
-      if (this.MCH != null) {
-        i = paramInt + g.a.a.b.b.a.f(12, this.MCH);
-      }
-      AppMethodBeat.o(56257);
-      return i;
+      AppMethodBeat.o(32348);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(56257);
+        AppMethodBeat.o(32348);
         return 0;
       }
       if (paramInt == 3)
@@ -124,65 +105,61 @@ public class cxt
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(56257);
+          AppMethodBeat.o(32348);
           return -1;
         case 1: 
-          localcxt.Name = locala.UbS.readString();
-          AppMethodBeat.o(56257);
+          localcxt.UserName = locala.abFh.readString();
+          AppMethodBeat.o(32348);
           return 0;
         case 2: 
-          localcxt.MCE = locala.UbS.readString();
-          AppMethodBeat.o(56257);
+          localcxt.rWu = locala.abFh.AK();
+          AppMethodBeat.o(32348);
           return 0;
         case 3: 
-          localcxt.KUt = Double.longBitsToDouble(locala.UbS.zn());
-          AppMethodBeat.o(56257);
+          localcxt.mVy = locala.abFh.AK();
+          AppMethodBeat.o(32348);
           return 0;
         case 4: 
-          localcxt.KUu = Double.longBitsToDouble(locala.UbS.zn());
-          AppMethodBeat.o(56257);
+          localcxt.mVA = locala.abFh.readString();
+          AppMethodBeat.o(32348);
           return 0;
         case 5: 
-          localcxt.MCF = locala.UbS.readString();
-          AppMethodBeat.o(56257);
+          localcxt.mVz = locala.abFh.readString();
+          AppMethodBeat.o(32348);
           return 0;
         case 6: 
-          localcxt.AAN = locala.UbS.readString();
-          AppMethodBeat.o(56257);
+          localcxt.mVB = locala.abFh.readString();
+          AppMethodBeat.o(32348);
           return 0;
         case 7: 
-          localcxt.MCG = locala.UbS.readString();
-          AppMethodBeat.o(56257);
+          localcxt.TGb = locala.abFh.AK();
+          AppMethodBeat.o(32348);
           return 0;
         case 8: 
-          localcxt.kdZ = locala.UbS.readString();
-          AppMethodBeat.o(56257);
+          localcxt.TGc = locala.abFh.AK();
+          AppMethodBeat.o(32348);
           return 0;
         case 9: 
-          localcxt.kea = locala.UbS.readString();
-          AppMethodBeat.o(56257);
+          localcxt.mVH = locala.abFh.readString();
+          AppMethodBeat.o(32348);
           return 0;
         case 10: 
-          localcxt.LpJ = locala.UbS.readString();
-          AppMethodBeat.o(56257);
-          return 0;
-        case 11: 
-          localcxt.LpK = locala.UbS.readString();
-          AppMethodBeat.o(56257);
+          localcxt.SjI = locala.abFh.readString();
+          AppMethodBeat.o(32348);
           return 0;
         }
-        localcxt.MCH = locala.UbS.readString();
-        AppMethodBeat.o(56257);
+        localcxt.SjJ = locala.abFh.readString();
+        AppMethodBeat.o(32348);
         return 0;
       }
-      AppMethodBeat.o(56257);
+      AppMethodBeat.o(32348);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cxt
  * JD-Core Version:    0.7.0.1
  */

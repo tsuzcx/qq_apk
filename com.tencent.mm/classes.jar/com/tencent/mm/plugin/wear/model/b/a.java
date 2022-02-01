@@ -8,7 +8,7 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
 {
-  public static void aK(Bundle paramBundle)
+  public static void aG(Bundle paramBundle)
   {
     AppMethodBeat.i(30050);
     Intent localIntent = new Intent();

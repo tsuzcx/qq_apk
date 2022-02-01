@@ -7,23 +7,23 @@ import com.tencent.mm.loader.j.b;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public final class r
   implements IPxxLogic.ICallBack
 {
-  private static long jDZ = 0L;
-  private static int jEa = 0;
+  private static long muC = 0L;
+  private static int muD = 0;
   private final String TAG = "IPxxCallback";
   
-  private static void uv(int paramInt)
+  private static void xw(int paramInt)
   {
     AppMethodBeat.i(132756);
     try
     {
-      af.bkl().uw(paramInt);
+      af.btU().xx(paramInt);
       AppMethodBeat.o(132756);
       return;
     }
@@ -39,8 +39,8 @@ public final class r
     AppMethodBeat.i(132751);
     Object localObject = new Date(System.currentTimeMillis() - paramInt * 86400000L);
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-    localObject = b.aKL() + "crash_" + localSimpleDateFormat.format((Date)localObject) + ".txt";
-    if (s.YS((String)localObject))
+    localObject = b.aSN() + "crash_" + localSimpleDateFormat.format((Date)localObject) + ".txt";
+    if (u.agG((String)localObject))
     {
       AppMethodBeat.o(132751);
       return localObject;
@@ -55,7 +55,7 @@ public final class r
     try
     {
       paramString = new StringBuffer();
-      paramString.append("Device:").append(d.KyJ).append(" ").append(d.KyK).append("\n");
+      paramString.append("Device:").append(d.RAx).append(" ").append(d.RAy).append("\n");
       paramString = paramString.toString();
       AppMethodBeat.o(132749);
       return paramString;
@@ -84,22 +84,22 @@ public final class r
   public final void uploadLogFail()
   {
     AppMethodBeat.i(132754);
-    jEa = 0;
-    uv(-1);
+    muD = 0;
+    xw(-1);
     AppMethodBeat.o(132754);
   }
   
   public final void uploadLogResponse(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(132753);
-    Log.i("IPxxCallback", "ipxx progress totalSize:%d uploadSize:%d lastPercent:%d ", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(jEa) });
+    Log.i("IPxxCallback", "ipxx progress totalSize:%d uploadSize:%d lastPercent:%d ", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(muD) });
     long l = Util.nowSecond();
-    if (l - 1L < jDZ)
+    if (l - 1L < muC)
     {
       AppMethodBeat.o(132753);
       return;
     }
-    jDZ = l;
+    muC = l;
     int j = 0;
     int i = j;
     if (paramLong2 >= 0L)
@@ -118,25 +118,25 @@ public final class r
       j = 100;
     }
     i = j;
-    if (jEa > j) {
-      i = jEa;
+    if (muD > j) {
+      i = muD;
     }
-    jEa = i;
-    uv(i);
+    muD = i;
+    xw(i);
     AppMethodBeat.o(132753);
   }
   
   public final void uploadLogSuccess()
   {
     AppMethodBeat.i(132755);
-    jEa = 0;
-    uv(100);
+    muD = 0;
+    xw(100);
     AppMethodBeat.o(132755);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.network.r
  * JD-Core Version:    0.7.0.1
  */

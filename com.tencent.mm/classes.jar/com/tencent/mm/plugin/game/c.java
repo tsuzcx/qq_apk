@@ -1,38 +1,49 @@
 package com.tencent.mm.plugin.game;
 
 import android.database.Cursor;
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.c;
+import com.tencent.mm.an.h.c;
 import com.tencent.mm.app.o.a;
-import com.tencent.mm.g.a.aaz;
-import com.tencent.mm.g.a.is;
-import com.tencent.mm.g.a.it;
-import com.tencent.mm.g.a.iw;
-import com.tencent.mm.g.a.iy;
-import com.tencent.mm.g.a.iz;
-import com.tencent.mm.g.a.jr;
-import com.tencent.mm.g.a.qe;
-import com.tencent.mm.g.a.qf;
-import com.tencent.mm.g.a.rx;
-import com.tencent.mm.model.cj.a;
+import com.tencent.mm.f.a.ach;
+import com.tencent.mm.f.a.ji;
+import com.tencent.mm.f.a.jj;
+import com.tencent.mm.f.a.jk;
+import com.tencent.mm.f.a.jl;
+import com.tencent.mm.f.a.jm;
+import com.tencent.mm.f.a.jn;
+import com.tencent.mm.f.a.jo;
+import com.tencent.mm.f.a.jp;
+import com.tencent.mm.f.a.js;
+import com.tencent.mm.f.a.kh;
+import com.tencent.mm.f.a.mz;
+import com.tencent.mm.f.a.pu;
+import com.tencent.mm.f.a.qq;
+import com.tencent.mm.f.a.rc;
+import com.tencent.mm.f.a.rd;
+import com.tencent.mm.f.a.sx;
+import com.tencent.mm.f.a.vx;
+import com.tencent.mm.f.a.yp;
+import com.tencent.mm.model.ck.a;
 import com.tencent.mm.platformtools.z;
+import com.tencent.mm.plugin.game.d.a.a;
+import com.tencent.mm.plugin.game.d.a.b;
 import com.tencent.mm.plugin.game.model.av;
 import com.tencent.mm.plugin.game.model.g.1;
 import com.tencent.mm.plugin.game.model.g.2;
 import com.tencent.mm.plugin.game.model.g.a;
 import com.tencent.mm.plugin.game.model.o;
-import com.tencent.mm.plugin.game.model.o.f;
-import com.tencent.mm.plugin.game.model.o.l;
+import com.tencent.mm.plugin.game.model.o.g;
 import com.tencent.mm.plugin.game.model.o.m;
 import com.tencent.mm.plugin.game.model.o.n;
 import com.tencent.mm.plugin.game.model.o.o;
 import com.tencent.mm.plugin.game.model.o.p;
+import com.tencent.mm.plugin.game.model.o.q;
 import com.tencent.mm.plugin.game.model.q;
 import com.tencent.mm.plugin.game.model.r;
 import com.tencent.mm.plugin.game.model.s;
 import com.tencent.mm.plugin.game.model.u;
-import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.protocal.protobuf.db;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.event.IListener;
@@ -56,49 +67,103 @@ import org.json.JSONObject;
 public final class c
 {
   static o.a appForegroundListener;
-  IListener grk;
-  cj.a rBq;
-  IListener sKr;
-  IListener xtA;
-  com.tencent.mm.pluginsdk.c.d xtB;
-  com.tencent.mm.pluginsdk.c.d xtC;
-  IListener xtD;
-  IListener xtE;
-  IListener xtF;
-  IListener xtG;
-  IListener xtH;
-  av xtq;
-  com.tencent.mm.plugin.game.media.background.b xtr;
-  IListener xts;
-  IListener xtt;
-  IListener xtu;
-  IListener xtv;
-  IListener xtw;
-  IListener xtx;
-  IListener xty;
-  IListener xtz;
+  av CfO;
+  com.tencent.mm.plugin.game.media.background.b CfP;
+  IListener CfQ;
+  IListener CfR;
+  IListener CfS;
+  IListener CfT;
+  IListener CfU;
+  IListener CfV;
+  IListener CfW;
+  IListener CfX;
+  IListener CfY;
+  com.tencent.mm.pluginsdk.d.d CfZ;
+  com.tencent.mm.pluginsdk.d.d Cga;
+  IListener Cgb;
+  IListener Cgc;
+  IListener Cgd;
+  IListener Cge;
+  IListener Cgf;
+  IListener Cgg;
+  IListener iVt;
+  ck.a vgX;
+  IListener wqp;
   
   static
   {
-    AppMethodBeat.i(204085);
-    appForegroundListener = new c.13();
-    AppMethodBeat.o(204085);
+    AppMethodBeat.i(207055);
+    appForegroundListener = new o.a()
+    {
+      public final void onAppBackground(String paramAnonymousString)
+      {
+        AppMethodBeat.i(191026);
+        if ((com.tencent.mm.kernel.h.aHB()) && (com.tencent.mm.kernel.h.aHE().kbT))
+        {
+          com.tencent.mm.kernel.h.aHE();
+          if (!com.tencent.mm.kernel.b.aGE())
+          {
+            Log.i("MicroMsg.GameEventListener", "appForegroundListener, onAppBackground(%s)", new Object[] { paramAnonymousString });
+            if ((a.a.ezW().DdD.DdG > 0L) && (a.a.ezW().DdD.DdG < System.currentTimeMillis()))
+            {
+              long l = System.currentTimeMillis() - a.a.ezW().DdD.DdG;
+              paramAnonymousString = a.a.ezW().DdD;
+              paramAnonymousString.wmw += l;
+              Log.d("MicroMsg.GameEventListener", "spanTime:%d, stayTime:%d", new Object[] { Long.valueOf(l), Long.valueOf(a.a.ezW().DdD.wmw) });
+            }
+          }
+        }
+        AppMethodBeat.o(191026);
+      }
+      
+      public final void onAppForeground(String paramAnonymousString)
+      {
+        AppMethodBeat.i(191019);
+        if ((com.tencent.mm.kernel.h.aHB()) && (com.tencent.mm.kernel.h.aHE().kbT))
+        {
+          com.tencent.mm.kernel.h.aHE();
+          if (!com.tencent.mm.kernel.b.aGE())
+          {
+            Log.i("MicroMsg.GameEventListener", "appForegroundListener, onAppForeground(%s)", new Object[] { paramAnonymousString });
+            if (a.a.ezW().DdD.startTimeMs > 0L) {
+              a.a.ezW().DdD.DdG = System.currentTimeMillis();
+            }
+            paramAnonymousString = Long.valueOf(Util.nullAsNil((Long)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Vrg, Long.valueOf(0L))));
+            if ((paramAnonymousString.longValue() != 0L) && (Util.nowSecond() > paramAnonymousString.longValue())) {
+              com.tencent.mm.plugin.game.commlib.b.ewm().T(true, 1);
+            }
+            int i = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Vrm, Integer.valueOf(0))).intValue();
+            if (1920 != i)
+            {
+              Log.i("MicroMsg.GameEventListener", "checkVersionChange lastVersion:%d, currentVersion:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(1920) });
+              com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vrm, Integer.valueOf(1920));
+              paramAnonymousString = new jj();
+              paramAnonymousString.fGE.Vh = 5;
+              paramAnonymousString.fGE.param = "5";
+              EventCenter.instance.publish(paramAnonymousString);
+            }
+          }
+        }
+        AppMethodBeat.o(191019);
+      }
+    };
+    AppMethodBeat.o(207055);
   }
   
   public c()
   {
     AppMethodBeat.i(40840);
-    this.xtq = new av();
-    this.xtr = new com.tencent.mm.plugin.game.media.background.b();
-    this.rBq = new cj.a()
+    this.CfO = new av();
+    this.CfP = new com.tencent.mm.plugin.game.media.background.b();
+    this.vgX = new ck.a()
     {
-      public final void a(com.tencent.mm.ak.h.a paramAnonymousa)
+      public final void a(com.tencent.mm.an.h.a paramAnonymousa)
       {
         AppMethodBeat.i(40823);
-        ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.e.class)).dSJ();
-        Object localObject1 = paramAnonymousa.heO;
-        paramAnonymousa = z.a(((de)localObject1).KHn);
-        Log.i("MicroMsg.GameMessageService", "Received a message: %d", new Object[] { Long.valueOf(((de)localObject1).Brn) });
+        Object localObject3 = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.e.class)).evn();
+        Object localObject1 = paramAnonymousa.jQG;
+        paramAnonymousa = z.a(((db)localObject1).RIF);
+        Log.i("MicroMsg.GameMessageService", "Received a message: %d", new Object[] { Long.valueOf(((db)localObject1).HlH) });
         Log.i("MicroMsg.GameMessageService", "Message content: %s".concat(String.valueOf(paramAnonymousa)));
         int i;
         if (Util.isNullOrNil(paramAnonymousa))
@@ -107,7 +172,7 @@ public final class c
           paramAnonymousa = null;
           if (paramAnonymousa != null)
           {
-            Log.i("MicroMsg.GameMessageService", "type = %d, appId = %s, msgId = %s, gameMsgId:%s, reportMode:%d, reportSample:%d", new Object[] { Integer.valueOf(paramAnonymousa.field_msgType), paramAnonymousa.field_appId, Long.valueOf(paramAnonymousa.field_msgId), paramAnonymousa.field_gameMsgId, Integer.valueOf(paramAnonymousa.xFP.xGO), Integer.valueOf(paramAnonymousa.xFP.xGP) });
+            Log.i("MicroMsg.GameMessageService", "type = %d, appId = %s, msgId = %s, gameMsgId:%s, reportMode:%d, reportSample:%d", new Object[] { Integer.valueOf(paramAnonymousa.field_msgType), paramAnonymousa.field_appId, Long.valueOf(paramAnonymousa.field_msgId), paramAnonymousa.field_gameMsgId, Integer.valueOf(paramAnonymousa.CJQ.CKR), Integer.valueOf(paramAnonymousa.CJQ.CKS) });
             i = 0;
             switch (paramAnonymousa.field_msgType)
             {
@@ -126,33 +191,33 @@ public final class c
           if (i == 0)
           {
             r.j(paramAnonymousa);
-            Log.i("MicroMsg.GameMessageService", "Insert raw message: %b", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSK().insert(paramAnonymousa)) });
+            Log.i("MicroMsg.GameMessageService", "Insert raw message: %b", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.f.class)).evo().insert(paramAnonymousa)) });
             if (paramAnonymousa.field_needReport) {
-              com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(858L, 1L, 1L, false);
+              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(858L, 1L, 1L, false);
             }
           }
           Log.i("MicroMsg.GameMessageService", "process status:%d", new Object[] { Integer.valueOf(i) });
-          Object localObject3;
+          Object localObject4;
           for (;;)
           {
             if (Util.isNullOrNil(paramAnonymousa.field_gameMsgId)) {
-              paramAnonymousa.field_gameMsgId = paramAnonymousa.xFP.iGB;
+              paramAnonymousa.field_gameMsgId = paramAnonymousa.CJQ.lwD;
             }
             if (paramAnonymousa.field_needReport)
             {
-              com.tencent.mm.game.report.f.a(MMApplicationContext.getContext(), 0, 0, 0, 18, i, paramAnonymousa.field_appId, 0, paramAnonymousa.xFV, paramAnonymousa.field_gameMsgId, paramAnonymousa.xFW, com.tencent.mm.game.report.f.a("resource", String.valueOf(paramAnonymousa.xFg.xGi), paramAnonymousa.xFX, null));
-              com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(858L, 0L, 1L, false);
+              com.tencent.mm.game.report.g.a(MMApplicationContext.getContext(), 0, 0, 0, 18, i, paramAnonymousa.field_appId, 0, paramAnonymousa.CJW, paramAnonymousa.field_gameMsgId, paramAnonymousa.CJX, com.tencent.mm.game.report.g.a("resource", String.valueOf(paramAnonymousa.CJh.CKl), paramAnonymousa.CJY, null));
+              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(858L, 0L, 1L, false);
             }
             AppMethodBeat.o(40823);
             return;
-            localObject3 = XmlParser.parseXml(paramAnonymousa, "sysmsg", null);
-            if ((localObject3 == null) || (((Map)localObject3).size() == 0))
+            localObject4 = XmlParser.parseXml(paramAnonymousa, "sysmsg", null);
+            if ((localObject4 == null) || (((Map)localObject4).size() == 0))
             {
               Log.e("MicroMsg.GameMessageParser", "Parse failed");
               paramAnonymousa = null;
               break;
             }
-            if (!"gamecenter".equalsIgnoreCase((String)((Map)localObject3).get(".sysmsg.$type")))
+            if (!"gamecenter".equalsIgnoreCase((String)((Map)localObject4).get(".sysmsg.$type")))
             {
               Log.e("MicroMsg.GameMessageParser", "Type not matched");
               paramAnonymousa = null;
@@ -163,71 +228,71 @@ public final class c
             ((o)localObject1).field_msgId = System.currentTimeMillis();
             ((o)localObject1).field_rawXML = paramAnonymousa;
             ((o)localObject1).field_hasMergedCount = 1;
-            ((o)localObject1).field_msgType = Util.getInt((String)((Map)localObject3).get(".sysmsg.gamecenter.$newmsgtype"), 0);
+            ((o)localObject1).field_msgType = Util.getInt((String)((Map)localObject4).get(".sysmsg.gamecenter.$newmsgtype"), 0);
             if ((((o)localObject1).field_msgType == 100) || (((o)localObject1).field_msgType == 30))
             {
-              u.dVC();
-              ((o)localObject1).field_gameMsgId = Util.nullAs((String)((Map)localObject3).get(".sysmsg.gamecenter.msg_id"), "");
-              ((o)localObject1).field_appId = ((String)((Map)localObject3).get(".sysmsg.gamecenter.appid"));
-              ((o)localObject1).field_createTime = Util.getLong((String)((Map)localObject3).get(".sysmsg.gamecenter.time_info.create_time"), System.currentTimeMillis() / 1000L);
-              l1 = Util.getLong((String)((Map)localObject3).get(".sysmsg.gamecenter.time_info.expire_time"), 0L);
+              u.eyK();
+              ((o)localObject1).field_gameMsgId = Util.nullAs((String)((Map)localObject4).get(".sysmsg.gamecenter.msg_id"), "");
+              ((o)localObject1).field_appId = ((String)((Map)localObject4).get(".sysmsg.gamecenter.appid"));
+              ((o)localObject1).field_createTime = Util.getLong((String)((Map)localObject4).get(".sysmsg.gamecenter.time_info.create_time"), System.currentTimeMillis() / 1000L);
+              l1 = Util.getLong((String)((Map)localObject4).get(".sysmsg.gamecenter.time_info.expire_time"), 0L);
               if (l1 == 0L)
               {
                 ((o)localObject1).field_expireTime = 9223372036854775807L;
                 label637:
-                ((o)localObject1).xEU = Util.getLong((String)((Map)localObject3).get(".sysmsg.gamecenter.time_info.random_time"), 0L);
-                if (Util.getInt((String)((Map)localObject3).get(".sysmsg.gamecenter.wifi_flag"), 0) <= 0) {
+                ((o)localObject1).CIV = Util.getLong((String)((Map)localObject4).get(".sysmsg.gamecenter.time_info.random_time"), 0L);
+                if (Util.getInt((String)((Map)localObject4).get(".sysmsg.gamecenter.wifi_flag"), 0) <= 0) {
                   break label1305;
                 }
                 bool1 = true;
                 label682:
                 ((o)localObject1).field_isHidden = bool1;
-                ((o)localObject1).field_mergerId = Util.nullAs((String)((Map)localObject3).get(".sysmsg.gamecenter.merge_id"), "");
-                ((o)localObject1).field_weight = Util.nullAs((String)((Map)localObject3).get(".sysmsg.gamecenter.weight"), "");
+                ((o)localObject1).field_mergerId = Util.nullAs((String)((Map)localObject4).get(".sysmsg.gamecenter.merge_id"), "");
+                ((o)localObject1).field_weight = Util.nullAs((String)((Map)localObject4).get(".sysmsg.gamecenter.weight"), "");
                 ((o)localObject1).field_receiveTime = (System.currentTimeMillis() / 1000L);
-                u.s((Map)localObject3, (o)localObject1);
-                ((o)localObject1).xFu = Util.getLong((String)((Map)localObject3).get(".sysmsg.gamecenter.filter_flag"), 0L);
-                ((o)localObject1).xFv = Util.getInt((String)((Map)localObject3).get(".sysmsg.gamecenter.msg_center.not_in_msg_center"), 0);
-                if (Util.getInt((String)((Map)localObject3).get(".sysmsg.gamecenter.entrance.entrance_red_dot_type"), 0) <= 0) {
+                u.s((Map)localObject4, (o)localObject1);
+                ((o)localObject1).CJv = Util.getLong((String)((Map)localObject4).get(".sysmsg.gamecenter.filter_flag"), 0L);
+                ((o)localObject1).CJw = Util.getInt((String)((Map)localObject4).get(".sysmsg.gamecenter.msg_center.not_in_msg_center"), 0);
+                if (Util.getInt((String)((Map)localObject4).get(".sysmsg.gamecenter.entrance.entrance_red_dot_type"), 0) <= 0) {
                   break label1311;
                 }
                 bool1 = true;
                 label823:
-                ((o)localObject1).xFf = bool1;
-                ((o)localObject1).xFg.xGg = Util.nullAs((String)((Map)localObject3).get(".sysmsg.gamecenter.entrance.entrance_icon_url"), "");
-                if ((Util.isNullOrNil((String)((Map)localObject3).get(".sysmsg.gamecenter.msg_bubble_info.bubble_icon_url"))) && (Util.isNullOrNil((String)((Map)localObject3).get(".sysmsg.gamecenter.msg_bubble_info.bubble_desc")))) {
+                ((o)localObject1).CJg = bool1;
+                ((o)localObject1).CJh.CKj = Util.nullAs((String)((Map)localObject4).get(".sysmsg.gamecenter.entrance.entrance_icon_url"), "");
+                if ((Util.isNullOrNil((String)((Map)localObject4).get(".sysmsg.gamecenter.msg_bubble_info.bubble_icon_url"))) && (Util.isNullOrNil((String)((Map)localObject4).get(".sysmsg.gamecenter.msg_bubble_info.bubble_desc")))) {
                   break label1317;
                 }
-                ((o)localObject1).xFh = true;
+                ((o)localObject1).CJi = true;
                 label901:
-                u.u((Map)localObject3, (o)localObject1);
-                ((o)localObject1).xFM.xGt = Util.nullAs((String)((Map)localObject3).get(".sysmsg.gamecenter.display_with_wepkg.$pkg_id"), "");
-                ((o)localObject1).xFM.pXp = Util.getInt((String)((Map)localObject3).get(".sysmsg.gamecenter.display_with_wepkg"), 0);
-                if (!Util.isNullOrNil(((o)localObject1).xFM.xGt)) {
+                u.u((Map)localObject4, (o)localObject1);
+                ((o)localObject1).CJN.CKw = Util.nullAs((String)((Map)localObject4).get(".sysmsg.gamecenter.display_with_wepkg.$pkg_id"), "");
+                ((o)localObject1).CJN.ttm = Util.getInt((String)((Map)localObject4).get(".sysmsg.gamecenter.display_with_wepkg"), 0);
+                if (!Util.isNullOrNil(((o)localObject1).CJN.CKw)) {
                   ((o)localObject1).field_isHidden = true;
                 }
-                ((o)localObject1).xFM.xGu = Util.getLong((String)((Map)localObject3).get(".sysmsg.gamecenter.display_with_wepkg.$always_display_after_time"), 0L);
-                u.w((Map)localObject3, (o)localObject1);
-                u.x((Map)localObject3, (o)localObject1);
-                u.k((Map)localObject3, (o)localObject1);
-                u.y((Map)localObject3, (o)localObject1);
-                u.z((Map)localObject3, (o)localObject1);
-                u.A((Map)localObject3, (o)localObject1);
-                u.B((Map)localObject3, (o)localObject1);
-                ((o)localObject1).field_showType = ((o)localObject1).xFQ.xGz;
+                ((o)localObject1).CJN.CKx = Util.getLong((String)((Map)localObject4).get(".sysmsg.gamecenter.display_with_wepkg.$always_display_after_time"), 0L);
+                u.w((Map)localObject4, (o)localObject1);
+                u.x((Map)localObject4, (o)localObject1);
+                u.k((Map)localObject4, (o)localObject1);
+                u.y((Map)localObject4, (o)localObject1);
+                u.z((Map)localObject4, (o)localObject1);
+                u.A((Map)localObject4, (o)localObject1);
+                u.B((Map)localObject4, (o)localObject1);
+                ((o)localObject1).field_showType = ((o)localObject1).CJR.CKC;
                 if (((o)localObject1).field_showType == 0) {
                   break label1840;
                 }
-                if (((o)localObject1).xFQ.xGA == 1) {
+                if (((o)localObject1).CJR.CKD == 1) {
                   ((o)localObject1).field_showInMsgList = false;
                 }
                 label1093:
-                ((o)localObject1).field_interactiveMergeId = ((o)localObject1).xFQ.xGH;
-                ((o)localObject1).field_redDotExpireTime = ((o)localObject1).xFS.xGx;
-                q.a((Map)localObject3, (o)localObject1);
-                ((o)localObject1).xFO.xGQ = Util.getInt((String)((Map)localObject3).get(".sysmsg.support_version.$android"), 0);
-                Log.i("MicroMsg.GameMessageParser", "xml support version: %d, current client version: %d", new Object[] { Integer.valueOf(((o)localObject1).xFO.xGQ), Integer.valueOf(com.tencent.mm.protocal.d.KyO) });
-                if ((((o)localObject1).xFO.xGQ != 0) && (((o)localObject1).xFO.xGQ > com.tencent.mm.protocal.d.KyO)) {
+                ((o)localObject1).field_interactiveMergeId = ((o)localObject1).CJR.CKK;
+                ((o)localObject1).field_redDotExpireTime = ((o)localObject1).CJT.CKA;
+                q.a((Map)localObject4, (o)localObject1);
+                ((o)localObject1).CJP.CKT = Util.getInt((String)((Map)localObject4).get(".sysmsg.support_version.$android"), 0);
+                Log.i("MicroMsg.GameMessageParser", "xml support version: %d, current client version: %d", new Object[] { Integer.valueOf(((o)localObject1).CJP.CKT), Integer.valueOf(com.tencent.mm.protocal.d.RAD) });
+                if ((((o)localObject1).CJP.CKT != 0) && (((o)localObject1).CJP.CKT > com.tencent.mm.protocal.d.RAD)) {
                   break label1858;
                 }
               }
@@ -246,73 +311,73 @@ public final class c
               }
               Log.i("MicroMsg.GameMessageParser", "xml is invalid in current client version");
               if (((o)localObject1).field_needReport) {
-                com.tencent.mm.game.report.f.a(MMApplicationContext.getContext(), 0, 0, 0, 401, 0, ((o)localObject1).field_appId, 0, 0, ((o)localObject1).field_gameMsgId, ((o)localObject1).xFW, "");
+                com.tencent.mm.game.report.g.a(MMApplicationContext.getContext(), 0, 0, 0, 401, 0, ((o)localObject1).field_appId, 0, 0, ((o)localObject1).field_gameMsgId, ((o)localObject1).CJX, "");
               }
               paramAnonymousa = null;
               break;
-              ((o)localObject1).field_expireTime = (Util.getLong((String)((Map)localObject3).get(".sysmsg.gamecenter.time_info.create_time"), System.currentTimeMillis() / 1000L) + l1);
+              ((o)localObject1).field_expireTime = (Util.getLong((String)((Map)localObject4).get(".sysmsg.gamecenter.time_info.create_time"), System.currentTimeMillis() / 1000L) + l1);
               break label637;
               bool1 = false;
               break label682;
               bool1 = false;
               break label823;
-              ((o)localObject1).xFh = false;
+              ((o)localObject1).CJi = false;
               break label901;
-              ((o)localObject1).field_gameMsgId = Util.nullAs((String)((Map)localObject3).get(".sysmsg.gamecenter.msg_id"), "");
-              ((o)localObject1).field_msgType = Util.getInt((String)((Map)localObject3).get(".sysmsg.gamecenter.$newmsgtype"), 0);
+              ((o)localObject1).field_gameMsgId = Util.nullAs((String)((Map)localObject4).get(".sysmsg.gamecenter.msg_id"), "");
+              ((o)localObject1).field_msgType = Util.getInt((String)((Map)localObject4).get(".sysmsg.gamecenter.$newmsgtype"), 0);
               if (((o)localObject1).field_msgType == 0) {
-                ((o)localObject1).field_msgType = Util.getInt((String)((Map)localObject3).get(".sysmsg.gamecenter.$msgtype"), 0);
+                ((o)localObject1).field_msgType = Util.getInt((String)((Map)localObject4).get(".sysmsg.gamecenter.$msgtype"), 0);
               }
-              ((o)localObject1).field_appId = ((String)((Map)localObject3).get(".sysmsg.gamecenter.appinfo.appid"));
-              if (!Util.isNullOrNil(q.al((Map)localObject3)))
+              ((o)localObject1).field_appId = ((String)((Map)localObject4).get(".sysmsg.gamecenter.appinfo.appid"));
+              if (!Util.isNullOrNil(q.ae((Map)localObject4)))
               {
                 bool1 = true;
                 ((o)localObject1).field_showInMsgList = bool1;
-                ((o)localObject1).field_createTime = Util.getLong((String)((Map)localObject3).get(".sysmsg.game_control_info.createtime"), System.currentTimeMillis() / 1000L);
-                l1 = Util.getLong((String)((Map)localObject3).get(".sysmsg.game_control_info.expiredtime"), 0L);
+                ((o)localObject1).field_createTime = Util.getLong((String)((Map)localObject4).get(".sysmsg.game_control_info.createtime"), System.currentTimeMillis() / 1000L);
+                l1 = Util.getLong((String)((Map)localObject4).get(".sysmsg.game_control_info.expiredtime"), 0L);
                 if (l1 != 0L) {
                   break label1777;
                 }
                 ((o)localObject1).field_expireTime = 9223372036854775807L;
                 label1503:
-                if (Util.getInt((String)((Map)localObject3).get(".sysmsg.gamecenter.wifi_flag"), 0) <= 0) {
+                if (Util.getInt((String)((Map)localObject4).get(".sysmsg.gamecenter.wifi_flag"), 0) <= 0) {
                   break label1811;
                 }
                 bool1 = true;
                 label1526:
                 ((o)localObject1).field_isHidden = bool1;
-                ((o)localObject1).field_mergerId = Util.nullAs((String)((Map)localObject3).get(".sysmsg.gamecenter.merge_id"), "");
+                ((o)localObject1).field_mergerId = Util.nullAs((String)((Map)localObject4).get(".sysmsg.gamecenter.merge_id"), "");
                 if (((o)localObject1).field_msgType != 10) {
                   break label1817;
                 }
                 ((o)localObject1).field_weight = "6";
                 ((o)localObject1).field_receiveTime = (System.currentTimeMillis() / 1000L);
-                ((o)localObject1).xFu = Util.getLong((String)((Map)localObject3).get(".sysmsg.game_control_info.filter_flag"), 0L);
-                ((o)localObject1).xFt = q.am((Map)localObject3);
-                ((o)localObject1).xFv = Util.getInt((String)((Map)localObject3).get(".sysmsg.game_control_info.not_in_msg_center"), 0);
-                if (Util.getInt((String)((Map)localObject3).get(".sysmsg.gamecenter.message_bubble_info.show_message_bubble"), 0) <= 0) {
+                ((o)localObject1).CJv = Util.getLong((String)((Map)localObject4).get(".sysmsg.game_control_info.filter_flag"), 0L);
+                ((o)localObject1).CJu = q.af((Map)localObject4);
+                ((o)localObject1).CJw = Util.getInt((String)((Map)localObject4).get(".sysmsg.game_control_info.not_in_msg_center"), 0);
+                if (Util.getInt((String)((Map)localObject4).get(".sysmsg.gamecenter.message_bubble_info.show_message_bubble"), 0) <= 0) {
                   break label1828;
                 }
                 bool1 = true;
-                ((o)localObject1).xFh = bool1;
-                ((o)localObject1).xFW = Util.nullAs((String)((Map)localObject3).get(".sysmsg.gamecenter.noticeid"), "");
-                ((o)localObject1).xFg.xGi = Util.getInt((String)((Map)localObject3).get(".sysmsg.gamecenter.badge_display_type"), 0);
-                if (((o)localObject1).xFg.xGi <= 0) {
+                ((o)localObject1).CJi = bool1;
+                ((o)localObject1).CJX = Util.nullAs((String)((Map)localObject4).get(".sysmsg.gamecenter.noticeid"), "");
+                ((o)localObject1).CJh.CKl = Util.getInt((String)((Map)localObject4).get(".sysmsg.gamecenter.badge_display_type"), 0);
+                if (((o)localObject1).CJh.CKl <= 0) {
                   break label1834;
                 }
               }
               for (bool1 = true;; bool1 = false)
               {
-                ((o)localObject1).xFf = bool1;
-                if ((((o)localObject1).xFt & 0x4) == 0L) {
-                  ((o)localObject1).xFf = false;
+                ((o)localObject1).CJg = bool1;
+                if ((((o)localObject1).CJu & 0x4) == 0L) {
+                  ((o)localObject1).CJg = false;
                 }
-                q.m((Map)localObject3, (o)localObject1);
+                q.m((Map)localObject4, (o)localObject1);
                 break;
                 bool1 = false;
                 break label1434;
                 label1777:
-                ((o)localObject1).field_expireTime = (Util.getLong((String)((Map)localObject3).get(".sysmsg.game_control_info.createtime"), System.currentTimeMillis() / 1000L) + l1);
+                ((o)localObject1).field_expireTime = (Util.getLong((String)((Map)localObject4).get(".sysmsg.game_control_info.createtime"), System.currentTimeMillis() / 1000L) + l1);
                 break label1503;
                 bool1 = false;
                 break label1526;
@@ -321,7 +386,7 @@ public final class c
                 bool1 = false;
                 break label1664;
               }
-              if (((o)localObject1).xFv != 1) {
+              if (((o)localObject1).CJw != 1) {
                 break label1093;
               }
               ((o)localObject1).field_showInMsgList = false;
@@ -330,18 +395,18 @@ public final class c
             label1434:
             label1828:
             label1863:
-            if (com.tencent.mm.plugin.game.model.g.xEA == null) {
-              com.tencent.mm.plugin.game.model.g.xEA = new com.tencent.mm.plugin.game.model.g();
+            if (com.tencent.mm.plugin.game.model.g.CIB == null) {
+              com.tencent.mm.plugin.game.model.g.CIB = new com.tencent.mm.plugin.game.model.g();
             }
             label1664:
             label1811:
             label1817:
             bool1 = ((o)localObject1).field_needReport;
-            paramAnonymousa = Util.nullAs((String)((Map)localObject3).get(".sysmsg.wepkg.$pkg_id"), "");
-            i = Util.getInt((String)((Map)localObject3).get(".sysmsg.wepkg.download_trigger_type"), 0);
-            int j = Util.getInt((String)((Map)localObject3).get(".sysmsg.wepkg.download_type"), 0);
-            com.tencent.f.h.RTc.ba(new g.1(paramAnonymousa, i, j, bool1));
-            if (((Map)localObject3).get(".sysmsg.control_command") == null) {
+            paramAnonymousa = Util.nullAs((String)((Map)localObject4).get(".sysmsg.wepkg.$pkg_id"), "");
+            i = Util.getInt((String)((Map)localObject4).get(".sysmsg.wepkg.download_trigger_type"), 0);
+            int j = Util.getInt((String)((Map)localObject4).get(".sysmsg.wepkg.download_type"), 0);
+            com.tencent.e.h.ZvG.bh(new g.1(paramAnonymousa, i, j, bool1));
+            if (((Map)localObject4).get(".sysmsg.control_command") == null) {
               Log.i("MicroMsg.GameControlCmdParser", "dont exist control command");
             }
             label2083:
@@ -350,14 +415,14 @@ public final class c
             label2638:
             for (;;)
             {
-              paramAnonymousa = (com.tencent.mm.ak.h.a)localObject1;
+              paramAnonymousa = (com.tencent.mm.an.h.a)localObject1;
               break;
               label2128:
               g.a locala;
-              if (((Map)localObject3).get(".sysmsg.control_command.global_setting") != null)
+              if (((Map)localObject4).get(".sysmsg.control_command.global_setting") != null)
               {
-                i = Util.getInt((String)((Map)localObject3).get(".sysmsg.control_command.global_setting.pull_trigger_type"), 0);
-                l1 = Util.getLong((String)((Map)localObject3).get(".sysmsg.control_command.global_setting.expect_complete_seconds"), 0L);
+                i = Util.getInt((String)((Map)localObject4).get(".sysmsg.control_command.global_setting.pull_trigger_type"), 0);
+                l1 = Util.getLong((String)((Map)localObject4).get(".sysmsg.control_command.global_setting.expect_complete_seconds"), 0L);
                 Log.i("MicroMsg.GameControlCmdParser", "pull_trigger_type:%d, expect_complete_seconds:%d", new Object[] { Integer.valueOf(i), Long.valueOf(l1) });
                 if (i != 0) {
                   break label2577;
@@ -366,19 +431,19 @@ public final class c
                 {
                   l1 = 0L;
                   l2 = Util.nowSecond();
-                  com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OcZ, Long.valueOf(l2 + l1));
-                  com.tencent.mm.plugin.game.commlib.util.a.getWorkerHandler().postDelayed(new g.2(), l1 * 1000L);
+                  com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vrg, Long.valueOf(l2 + l1));
+                  com.tencent.mm.plugin.game.commlib.e.b.getWorkerHandler().postDelayed(new g.2(), l1 * 1000L);
                 }
               }
-              else if (((Map)localObject3).get(".sysmsg.control_command.message_setting.hide_conf") != null)
+              else if (((Map)localObject4).get(".sysmsg.control_command.message_setting.hide_conf") != null)
               {
                 locala = new g.a();
-                locala.startTime = Util.getLong((String)((Map)localObject3).get(".sysmsg.control_command.message_setting.hide_conf.$start_time"), 0L);
-                locala.endTime = Util.getLong((String)((Map)localObject3).get(".sysmsg.control_command.message_setting.hide_conf.$end_time"), 0L);
-                locala.xEF = Util.getInt((String)((Map)localObject3).get(".sysmsg.control_command.message_setting.hide_conf.$msg_type"), -10);
-                locala.xEG.addAll(com.tencent.mm.plugin.game.model.g.D(".sysmsg.control_command.message_setting.hide_conf", (Map)localObject3));
+                locala.startTime = Util.getLong((String)((Map)localObject4).get(".sysmsg.control_command.message_setting.hide_conf.$start_time"), 0L);
+                locala.endTime = Util.getLong((String)((Map)localObject4).get(".sysmsg.control_command.message_setting.hide_conf.$end_time"), 0L);
+                locala.CIG = Util.getInt((String)((Map)localObject4).get(".sysmsg.control_command.message_setting.hide_conf.$msg_type"), -10);
+                locala.CIH.addAll(com.tencent.mm.plugin.game.model.g.F(".sysmsg.control_command.message_setting.hide_conf", (Map)localObject4));
               }
-              for (paramAnonymousa = Util.nullAsNil((String)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.Oda, ""));; paramAnonymousa = new JSONArray())
+              for (paramAnonymousa = Util.nullAsNil((String)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Vrh, ""));; paramAnonymousa = new JSONArray())
               {
                 try
                 {
@@ -386,14 +451,14 @@ public final class c
                     continue;
                   }
                   localObject2 = new JSONArray(paramAnonymousa);
-                  paramAnonymousa = (com.tencent.mm.ak.h.a)localObject2;
+                  paramAnonymousa = (com.tencent.mm.an.h.a)localObject2;
                   if (((JSONArray)localObject2).length() > 20)
                   {
                     ((JSONArray)localObject2).remove(0);
-                    paramAnonymousa = (com.tencent.mm.ak.h.a)localObject2;
+                    paramAnonymousa = (com.tencent.mm.an.h.a)localObject2;
                   }
                   paramAnonymousa.put(locala.toJson());
-                  com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Oda, paramAnonymousa.toString());
+                  com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vrh, paramAnonymousa.toString());
                   Log.i("MicroMsg.GameControlCmdParser", "hideConf list size:%d, content:%s", new Object[] { Integer.valueOf(paramAnonymousa.length()), paramAnonymousa.toString() });
                 }
                 catch (JSONException paramAnonymousa)
@@ -408,14 +473,14 @@ public final class c
                     catch (JSONException paramAnonymousa) {}
                   }
                 }
-                if (((Map)localObject3).get(".sysmsg.control_command.message_setting.del_conf") != null)
+                if (((Map)localObject4).get(".sysmsg.control_command.message_setting.del_conf") != null)
                 {
                   paramAnonymousa = new ArrayList();
-                  paramAnonymousa.addAll(com.tencent.mm.plugin.game.model.g.D(".sysmsg.control_command.message_setting.del_conf", (Map)localObject3));
-                  com.tencent.mm.plugin.game.model.g.g(paramAnonymousa, bool1);
+                  paramAnonymousa.addAll(com.tencent.mm.plugin.game.model.g.F(".sysmsg.control_command.message_setting.del_conf", (Map)localObject4));
+                  com.tencent.mm.plugin.game.model.g.h(paramAnonymousa, bool1);
                 }
-                com.tencent.mm.plugin.game.model.g.ak((Map)localObject3);
-                if (((Map)localObject3).get(".sysmsg.control_command.auto_run_switch") == null) {
+                com.tencent.mm.plugin.game.model.g.ad((Map)localObject4);
+                if (((Map)localObject4).get(".sysmsg.control_command.auto_run_switch") == null) {
                   break;
                 }
                 localObject2 = MultiProcessMMKV.getMMKV("game_mmkv");
@@ -427,14 +492,14 @@ public final class c
                   break label2638;
                 }
                 paramAnonymousa = new JSONObject();
-                com.tencent.mm.plugin.game.model.g.a("md5_check", (Map)localObject3, paramAnonymousa);
-                com.tencent.mm.plugin.game.model.g.a("download_resume", (Map)localObject3, paramAnonymousa);
-                com.tencent.mm.plugin.game.model.g.a("preload_commlib", (Map)localObject3, paramAnonymousa);
-                com.tencent.mm.plugin.game.model.g.a("game_silent_download", (Map)localObject3, paramAnonymousa);
-                com.tencent.mm.plugin.game.model.g.a("wepkg_download_retry", (Map)localObject3, paramAnonymousa);
-                com.tencent.mm.plugin.game.model.g.a("wepkg_expired_clean", (Map)localObject3, paramAnonymousa);
-                com.tencent.mm.plugin.game.model.g.a("game_cache_clean", (Map)localObject3, paramAnonymousa);
-                com.tencent.mm.plugin.game.model.g.a("game_resource_check", (Map)localObject3, paramAnonymousa);
+                com.tencent.mm.plugin.game.model.g.a("md5_check", (Map)localObject4, paramAnonymousa);
+                com.tencent.mm.plugin.game.model.g.a("download_resume", (Map)localObject4, paramAnonymousa);
+                com.tencent.mm.plugin.game.model.g.a("preload_commlib", (Map)localObject4, paramAnonymousa);
+                com.tencent.mm.plugin.game.model.g.a("game_silent_download", (Map)localObject4, paramAnonymousa);
+                com.tencent.mm.plugin.game.model.g.a("wepkg_download_retry", (Map)localObject4, paramAnonymousa);
+                com.tencent.mm.plugin.game.model.g.a("wepkg_expired_clean", (Map)localObject4, paramAnonymousa);
+                com.tencent.mm.plugin.game.model.g.a("game_cache_clean", (Map)localObject4, paramAnonymousa);
+                com.tencent.mm.plugin.game.model.g.a("game_resource_check", (Map)localObject4, paramAnonymousa);
                 ((MultiProcessMMKV)localObject2).encode("auto_run_switch", paramAnonymousa.toString());
                 break;
                 i = Util.getIntRandom((int)l1, 0);
@@ -446,30 +511,30 @@ public final class c
                 }
                 if (com.tencent.mm.plugin.wepkg.utils.d.isAppOnForeground(MMApplicationContext.getContext()))
                 {
-                  com.tencent.mm.plugin.game.commlib.b.dTd().I(true, 1);
+                  com.tencent.mm.plugin.game.commlib.b.ewm().T(true, 1);
                   break label2128;
                 }
-                com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OcZ, Long.valueOf(Util.nowSecond()));
+                com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vrg, Long.valueOf(Util.nowSecond()));
                 break label2128;
               }
             }
             Log.i("MicroMsg.GameMessageService", "control command message");
             continue;
             Log.i("MicroMsg.GameMessageService", "silent download message");
-            localObject1 = com.tencent.mm.plugin.game.model.a.h.a.dWd();
+            localObject1 = com.tencent.mm.plugin.game.model.a.h.a.ezl();
             if ((paramAnonymousa == null) || (Util.isNullOrNil(paramAnonymousa.field_appId)))
             {
               Log.i("MicroMsg.GameSilentDownloader", "msg is null");
-              com.tencent.mm.plugin.downloader.f.a.aa("appid_is_empty", 16L);
+              com.tencent.mm.plugin.downloader.f.a.ab("appid_is_empty", 16L);
             }
             else
             {
               localObject2 = paramAnonymousa.field_appId;
               l1 = paramAnonymousa.field_expireTime;
-              l2 = paramAnonymousa.xEU;
+              l2 = paramAnonymousa.CIV;
               localObject3 = new com.tencent.mm.plugin.game.model.a.d();
               ((com.tencent.mm.plugin.game.model.a.d)localObject3).field_appId = ((String)localObject2);
-              if (!((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSM().get((IAutoDBItem)localObject3, new String[0]))
+              if (!((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.f.class)).evq().get((IAutoDBItem)localObject3, new String[0]))
               {
                 ((com.tencent.mm.plugin.game.model.a.d)localObject3).field_expireTime = l1;
                 ((com.tencent.mm.plugin.game.model.a.d)localObject3).field_randomTime = l2;
@@ -481,14 +546,14 @@ public final class c
                 ((com.tencent.mm.plugin.game.model.a.d)localObject3).field_lowBattery = true;
                 ((com.tencent.mm.plugin.game.model.a.d)localObject3).field_continueDelay = true;
                 ((com.tencent.mm.plugin.game.model.a.d)localObject3).field_forceUpdateFlag = 0;
-                bool1 = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSM().insert((IAutoDBItem)localObject3);
+                bool1 = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.f.class)).evq().insert((IAutoDBItem)localObject3);
                 Log.i("MicroMsg.GameSilentDownloader", "insert GameSilentDownloadTask, appid:%s, expireTime:%d, randomTime:%d, ret:%b", new Object[] { ((com.tencent.mm.plugin.game.model.a.d)localObject3).field_appId, Long.valueOf(((com.tencent.mm.plugin.game.model.a.d)localObject3).field_expireTime), Long.valueOf(((com.tencent.mm.plugin.game.model.a.d)localObject3).field_randomTime), Boolean.valueOf(bool1) });
-                ((com.tencent.mm.plugin.game.model.a.h)localObject1).pQ(false);
+                ((com.tencent.mm.plugin.game.model.a.h)localObject1).sn(false);
               }
               else
               {
                 Log.i("MicroMsg.GameSilentDownloader", "GameSilentDownloadTask exist! appid = %s", new Object[] { localObject2 });
-                com.tencent.mm.plugin.downloader.f.a.aa((String)localObject2, 17L);
+                com.tencent.mm.plugin.downloader.f.a.ab((String)localObject2, 17L);
               }
             }
           }
@@ -498,7 +563,7 @@ public final class c
             i = 5;
             continue;
           }
-          if (paramAnonymousa.xFs == 1)
+          if (paramAnonymousa.CJt == 1)
           {
             Log.i("MicroMsg.GameMessageService", "only in ios");
             i = 6;
@@ -507,7 +572,7 @@ public final class c
           localObject1 = paramAnonymousa.field_gameMsgId;
           if (!Util.isNullOrNil((String)localObject1))
           {
-            localObject2 = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSK();
+            localObject2 = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.f.class)).evo();
             i = 0;
             localObject1 = ((s)localObject2).rawQuery("select count(*) from GameRawMessage where gameMsgId = \"" + (String)localObject1 + "\"", new String[0]);
             if (localObject1 != null)
@@ -526,7 +591,7 @@ public final class c
             }
             Log.e("MicroMsg.GameMessageService", "duplicated msg:%s", new Object[] { paramAnonymousa.field_gameMsgId });
             if (paramAnonymousa.field_needReport) {
-              com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(858L, 4L, 1L, false);
+              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(858L, 4L, 1L, false);
             }
             i = 2;
             break;
@@ -541,29 +606,29 @@ public final class c
             }
             Log.e("MicroMsg.GameMessageService", "msg is expired Time, %s", new Object[] { paramAnonymousa.field_gameMsgId });
             if (paramAnonymousa.field_needReport) {
-              com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(858L, 5L, 1L, false);
+              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(858L, 5L, 1L, false);
             }
-            localObject1 = paramAnonymousa.xFM.xGt;
+            localObject1 = paramAnonymousa.CJN.CKw;
             if (!Util.isNullOrNil((String)localObject1))
             {
-              localObject2 = new aaz();
-              ((aaz)localObject2).eif.dDe = 6;
-              ((aaz)localObject2).eif.eig = ((String)localObject1);
+              localObject2 = new ach();
+              ((ach)localObject2).gcw.fvK = 6;
+              ((ach)localObject2).gcw.gcx = ((String)localObject1);
               EventCenter.instance.publish((IEvent)localObject2);
             }
             i = 1;
             break;
           }
           label3271:
-          l1 = paramAnonymousa.xFu;
+          l1 = paramAnonymousa.CJv;
           localObject1 = paramAnonymousa.field_appId;
           if (l1 == 1L)
           {
-            if ((!Util.isNullOrNil((String)localObject1)) && (com.tencent.mm.pluginsdk.model.app.h.s(MMApplicationContext.getContext(), (String)localObject1))) {
+            if ((!Util.isNullOrNil((String)localObject1)) && (com.tencent.mm.pluginsdk.model.app.h.u(MMApplicationContext.getContext(), (String)localObject1))) {
               break label3419;
             }
             if (paramAnonymousa.field_needReport) {
-              com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(858L, 6L, 1L, false);
+              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(858L, 6L, 1L, false);
             }
             i = 3;
           }
@@ -574,10 +639,10 @@ public final class c
             }
             Log.e("MicroMsg.GameMessageService", "checkFilter failed,%s, status: %d", new Object[] { paramAnonymousa.field_gameMsgId, Integer.valueOf(i) });
             break;
-            if ((l1 == 2L) && ((Util.isNullOrNil((String)localObject1)) || (com.tencent.mm.pluginsdk.model.app.h.s(MMApplicationContext.getContext(), (String)localObject1))))
+            if ((l1 == 2L) && ((Util.isNullOrNil((String)localObject1)) || (com.tencent.mm.pluginsdk.model.app.h.u(MMApplicationContext.getContext(), (String)localObject1))))
             {
               if (paramAnonymousa.field_needReport) {
-                com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(858L, 7L, 1L, false);
+                com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(858L, 7L, 1L, false);
               }
               i = 4;
             }
@@ -591,106 +656,106 @@ public final class c
           if (paramAnonymousa.field_msgType == 30)
           {
             if (paramAnonymousa.field_needReport) {
-              com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(858L, 8L, 1L, false);
+              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(858L, 8L, 1L, false);
             }
             i = 0;
             continue;
           }
-          localObject1 = r.dVm();
+          localObject1 = r.eyu();
           boolean bool1 = r.k((o)localObject1);
           boolean bool2 = r.k(paramAnonymousa);
-          Object localObject2 = r.dVm();
+          Object localObject2 = r.eyu();
           if (localObject2 != null)
           {
-            ((o)localObject2).dVl();
-            localObject3 = new JSONObject();
+            ((o)localObject2).eyt();
+            localObject4 = new JSONObject();
           }
           try
           {
-            ((JSONObject)localObject3).put("oldNoticeId", ((o)localObject2).xFW);
-            ((JSONObject)localObject3).put("oldMsgId", ((o)localObject2).field_gameMsgId);
+            ((JSONObject)localObject4).put("oldNoticeId", ((o)localObject2).CJX);
+            ((JSONObject)localObject4).put("oldMsgId", ((o)localObject2).field_gameMsgId);
             if (paramAnonymousa.field_weight.compareTo(((o)localObject2).field_weight) >= 0) {
-              ((JSONObject)localObject3).put("coverType", 1);
+              ((JSONObject)localObject4).put("coverType", 1);
             }
             for (;;)
             {
               if (paramAnonymousa.field_needReport) {
-                com.tencent.mm.game.report.f.a(MMApplicationContext.getContext(), 0, 0, 0, 31, 0, paramAnonymousa.field_appId, 0, paramAnonymousa.xFV, paramAnonymousa.field_gameMsgId, paramAnonymousa.xFW, com.tencent.mm.plugin.game.d.a.Fh(((JSONObject)localObject3).toString()));
+                com.tencent.mm.game.report.g.a(MMApplicationContext.getContext(), 0, 0, 0, 31, 0, paramAnonymousa.field_appId, 0, paramAnonymousa.CJW, paramAnonymousa.field_gameMsgId, paramAnonymousa.CJX, com.tencent.mm.plugin.game.c.a.Md(((JSONObject)localObject4).toString()));
               }
               if (paramAnonymousa.field_weight.compareTo(((o)localObject2).field_weight) < 0) {
-                break label3916;
+                break label3922;
               }
               if (paramAnonymousa.field_needReport) {
-                com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(858L, 10L, 1L, false);
+                com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(858L, 10L, 1L, false);
               }
-              localObject2 = ((o)localObject2).xFM.xGt;
+              localObject2 = ((o)localObject2).CJN.CKw;
               if (!Util.isNullOrNil((String)localObject2))
               {
-                localObject3 = new aaz();
-                ((aaz)localObject3).eif.dDe = 6;
-                ((aaz)localObject3).eif.eig = ((String)localObject2);
-                EventCenter.instance.publish((IEvent)localObject3);
+                localObject4 = new ach();
+                ((ach)localObject4).gcw.fvK = 6;
+                ((ach)localObject4).gcw.gcx = ((String)localObject2);
+                EventCenter.instance.publish((IEvent)localObject4);
               }
               i = 1;
               if (i == 0) {
-                break label3942;
+                break label3948;
               }
               i = 1;
               if (i == 0) {
-                break label3947;
+                break label3953;
               }
               if ((localObject1 == null) || (!bool2) || (bool1))
               {
                 if (!bool2) {
                   r.d(paramAnonymousa);
                 }
-                r.e(paramAnonymousa);
-                r.f(paramAnonymousa);
-                r.g(paramAnonymousa);
+                ((r)localObject3).e(paramAnonymousa);
+                ((r)localObject3).f(paramAnonymousa);
+                ((r)localObject3).g(paramAnonymousa);
               }
               if ((bool2) && (paramAnonymousa.field_needReport)) {
-                com.tencent.mm.game.report.f.a(MMApplicationContext.getContext(), 0, 0, 0, 404, 0, paramAnonymousa.field_appId, 0, paramAnonymousa.xFV, paramAnonymousa.field_gameMsgId, paramAnonymousa.xFW, com.tencent.mm.game.report.f.a("resource", String.valueOf(paramAnonymousa.xFg.xGi), paramAnonymousa.xFX, null));
+                com.tencent.mm.game.report.g.a(MMApplicationContext.getContext(), 0, 0, 0, 404, 0, paramAnonymousa.field_appId, 0, paramAnonymousa.CJW, paramAnonymousa.field_gameMsgId, paramAnonymousa.CJX, com.tencent.mm.game.report.g.a("resource", String.valueOf(paramAnonymousa.CJh.CKl), paramAnonymousa.CJY, null));
               }
               if (paramAnonymousa.field_msgType == 4) {
-                com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NVO, Long.valueOf(paramAnonymousa.field_msgId));
+                com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VjO, Long.valueOf(paramAnonymousa.field_msgId));
               }
-              if ((paramAnonymousa != null) && (!Util.isNullOrNil(paramAnonymousa.xFg.xGg)))
+              if ((paramAnonymousa != null) && (!Util.isNullOrNil(paramAnonymousa.CJh.CKj)))
               {
-                if (!paramAnonymousa.xFg.xGj) {
-                  break label3976;
+                if (!paramAnonymousa.CJh.CKm) {
+                  break label3988;
                 }
-                com.tencent.mm.plugin.game.e.c.g(paramAnonymousa.xFg.xGg, 0.08333334F);
+                com.tencent.mm.plugin.game.d.c.h(paramAnonymousa.CJh.CKj, 0.08333334F);
               }
               i = 0;
               break;
-              ((JSONObject)localObject3).put("coverType", 2);
+              ((JSONObject)localObject4).put("coverType", 2);
             }
           }
           catch (Exception localException)
           {
-            label3976:
+            label3988:
             for (;;)
             {
               Log.e("MicroMsg.GameMessageService", "reportMsgCover: " + localException.getMessage());
               continue;
-              label3916:
+              label3922:
               if (paramAnonymousa.field_needReport) {
-                com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(858L, 11L, 1L, false);
+                com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(858L, 11L, 1L, false);
               }
               i = 0;
               continue;
-              label3942:
+              label3948:
               i = 0;
               continue;
-              label3947:
+              label3953:
               if ((bool1) && (!bool2))
               {
                 r.d(paramAnonymousa);
-                r.e(paramAnonymousa);
-                r.f(paramAnonymousa);
-                r.g(paramAnonymousa);
+                ((r)localObject3).e(paramAnonymousa);
+                ((r)localObject3).f(paramAnonymousa);
+                ((r)localObject3).g(paramAnonymousa);
                 continue;
-                com.tencent.mm.plugin.game.e.c.g(paramAnonymousa.xFg.xGg, 0.0F);
+                com.tencent.mm.plugin.game.d.c.h(paramAnonymousa.CJh.CKj, 0.0F);
               }
             }
           }
@@ -700,65 +765,220 @@ public final class c
       public final void a(h.c paramAnonymousc)
       {
         AppMethodBeat.i(40824);
-        if ((paramAnonymousc == null) || (Util.isNullOrNil(paramAnonymousc.iMe)) || (Util.isNullOrNil(paramAnonymousc.iMf)))
+        if ((paramAnonymousc == null) || (Util.isNullOrNil(paramAnonymousc.lCl)) || (Util.isNullOrNil(paramAnonymousc.lCm)))
         {
           AppMethodBeat.o(40824);
           return;
         }
-        Log.i("MicroMsg.GameEventListener", "delete msgType:%s, msgId:%s", new Object[] { paramAnonymousc.iMe, paramAnonymousc.iMf });
-        if (!"gamecenter".equalsIgnoreCase(paramAnonymousc.iMe))
+        Log.i("MicroMsg.GameEventListener", "delete msgType:%s, msgId:%s", new Object[] { paramAnonymousc.lCl, paramAnonymousc.lCm });
+        if (!"gamecenter".equalsIgnoreCase(paramAnonymousc.lCl))
         {
           AppMethodBeat.o(40824);
           return;
         }
         ArrayList localArrayList = new ArrayList();
-        localArrayList.add(paramAnonymousc.iMf);
-        com.tencent.mm.plugin.game.model.g.g(localArrayList, false);
+        localArrayList.add(paramAnonymousc.lCm);
+        com.tencent.mm.plugin.game.model.g.h(localArrayList, false);
         AppMethodBeat.o(40824);
       }
     };
-    this.xts = new c.12(this);
-    this.xtt = new IListener() {};
-    this.xtu = new IListener() {};
-    this.xtv = new IListener() {};
-    this.xtw = new IListener() {};
-    this.xtx = new c.18(this);
-    this.xty = new IListener() {};
-    this.xtz = new c.20(this);
-    this.xtA = new IListener() {};
-    this.xtB = new com.tencent.mm.pluginsdk.c.d()
+    this.CfQ = new IListener() {};
+    this.CfR = new IListener() {};
+    this.CfS = new IListener() {};
+    this.CfT = new IListener() {};
+    this.CfU = new IListener() {};
+    this.CfV = new IListener() {};
+    this.CfW = new IListener() {};
+    this.CfX = new c.21(this);
+    this.CfY = new IListener() {};
+    this.CfZ = new com.tencent.mm.pluginsdk.d.d()
     {
-      public final IEvent azl(String paramAnonymousString)
+      public final IEvent aIL(String paramAnonymousString)
       {
-        AppMethodBeat.i(204073);
-        iy localiy = new iy();
-        localiy.dNC.event = paramAnonymousString;
-        AppMethodBeat.o(204073);
-        return localiy;
+        AppMethodBeat.i(201586);
+        jo localjo = new jo();
+        localjo.fGO.event = paramAnonymousString;
+        AppMethodBeat.o(201586);
+        return localjo;
       }
       
-      public final MStorage dSG()
+      public final MStorage evj()
       {
-        AppMethodBeat.i(204074);
-        s locals = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSK();
-        AppMethodBeat.o(204074);
+        AppMethodBeat.i(201588);
+        s locals = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.f.class)).evo();
+        AppMethodBeat.o(201588);
         return locals;
       }
     };
-    this.xtC = new c.4(this);
-    this.grk = new c.5(this);
-    this.xtD = new c.6(this);
-    this.xtE = new IListener() {};
-    this.xtF = new c.8(this);
-    this.xtG = new c.9(this);
-    this.sKr = new c.10(this);
-    this.xtH = new IListener() {};
+    this.Cga = new com.tencent.mm.pluginsdk.d.d()
+    {
+      public final IEvent aIL(String paramAnonymousString)
+      {
+        AppMethodBeat.i(193730);
+        jn localjn = new jn();
+        localjn.fGN.event = paramAnonymousString;
+        AppMethodBeat.o(193730);
+        return localjn;
+      }
+      
+      public final MStorage evj()
+      {
+        AppMethodBeat.i(193732);
+        com.tencent.mm.plugin.gamelife.e.e locale = ((com.tencent.mm.plugin.gamelife.a.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.c.class)).eAk();
+        AppMethodBeat.o(193732);
+        return locale;
+      }
+    };
+    this.iVt = new IListener() {};
+    this.Cgb = new IListener() {};
+    this.Cgc = new IListener() {};
+    this.Cgd = new IListener() {};
+    this.Cge = new IListener() {};
+    this.wqp = new IListener() {};
+    this.Cgf = new IListener() {};
+    this.Cgg = new IListener()
+    {
+      /* Error */
+      private boolean evk()
+      {
+        // Byte code:
+        //   0: aload_0
+        //   1: monitorenter
+        //   2: ldc 48
+        //   4: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+        //   7: invokestatic 54	com/tencent/mm/plugin/game/d/a$a:ezW	()Lcom/tencent/mm/plugin/game/d/a;
+        //   10: getfield 60	com/tencent/mm/plugin/game/d/a:DdD	Lcom/tencent/mm/plugin/game/d/a$b;
+        //   13: astore 8
+        //   15: aload 8
+        //   17: getfield 66	com/tencent/mm/plugin/game/d/a$b:startTimeMs	J
+        //   20: lconst_0
+        //   21: lcmp
+        //   22: ifle +211 -> 233
+        //   25: aload 8
+        //   27: getfield 69	com/tencent/mm/plugin/game/d/a$b:DdG	J
+        //   30: lconst_0
+        //   31: lcmp
+        //   32: ifle +201 -> 233
+        //   35: iconst_1
+        //   36: istore_1
+        //   37: iload_1
+        //   38: ifeq +177 -> 215
+        //   41: invokestatic 54	com/tencent/mm/plugin/game/d/a$a:ezW	()Lcom/tencent/mm/plugin/game/d/a;
+        //   44: getfield 60	com/tencent/mm/plugin/game/d/a:DdD	Lcom/tencent/mm/plugin/game/d/a$b;
+        //   47: invokestatic 75	java/lang/System:currentTimeMillis	()J
+        //   50: putfield 78	com/tencent/mm/plugin/game/d/a$b:endTimeMs	J
+        //   53: invokestatic 54	com/tencent/mm/plugin/game/d/a$a:ezW	()Lcom/tencent/mm/plugin/game/d/a;
+        //   56: getfield 60	com/tencent/mm/plugin/game/d/a:DdD	Lcom/tencent/mm/plugin/game/d/a$b;
+        //   59: astore 8
+        //   61: aload 8
+        //   63: aload 8
+        //   65: getfield 81	com/tencent/mm/plugin/game/d/a$b:wmw	J
+        //   68: invokestatic 75	java/lang/System:currentTimeMillis	()J
+        //   71: invokestatic 54	com/tencent/mm/plugin/game/d/a$a:ezW	()Lcom/tencent/mm/plugin/game/d/a;
+        //   74: getfield 60	com/tencent/mm/plugin/game/d/a:DdD	Lcom/tencent/mm/plugin/game/d/a$b;
+        //   77: getfield 69	com/tencent/mm/plugin/game/d/a$b:DdG	J
+        //   80: lsub
+        //   81: ladd
+        //   82: putfield 81	com/tencent/mm/plugin/game/d/a$b:wmw	J
+        //   85: ldc 83
+        //   87: ldc 85
+        //   89: iconst_3
+        //   90: anewarray 87	java/lang/Object
+        //   93: dup
+        //   94: iconst_0
+        //   95: invokestatic 54	com/tencent/mm/plugin/game/d/a$a:ezW	()Lcom/tencent/mm/plugin/game/d/a;
+        //   98: getfield 60	com/tencent/mm/plugin/game/d/a:DdD	Lcom/tencent/mm/plugin/game/d/a$b;
+        //   101: getfield 66	com/tencent/mm/plugin/game/d/a$b:startTimeMs	J
+        //   104: invokestatic 93	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+        //   107: aastore
+        //   108: dup
+        //   109: iconst_1
+        //   110: invokestatic 54	com/tencent/mm/plugin/game/d/a$a:ezW	()Lcom/tencent/mm/plugin/game/d/a;
+        //   113: getfield 60	com/tencent/mm/plugin/game/d/a:DdD	Lcom/tencent/mm/plugin/game/d/a$b;
+        //   116: getfield 78	com/tencent/mm/plugin/game/d/a$b:endTimeMs	J
+        //   119: invokestatic 93	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+        //   122: aastore
+        //   123: dup
+        //   124: iconst_2
+        //   125: invokestatic 54	com/tencent/mm/plugin/game/d/a$a:ezW	()Lcom/tencent/mm/plugin/game/d/a;
+        //   128: getfield 60	com/tencent/mm/plugin/game/d/a:DdD	Lcom/tencent/mm/plugin/game/d/a$b;
+        //   131: getfield 81	com/tencent/mm/plugin/game/d/a$b:wmw	J
+        //   134: invokestatic 93	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+        //   137: aastore
+        //   138: invokestatic 98	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   141: invokestatic 54	com/tencent/mm/plugin/game/d/a$a:ezW	()Lcom/tencent/mm/plugin/game/d/a;
+        //   144: getfield 60	com/tencent/mm/plugin/game/d/a:DdD	Lcom/tencent/mm/plugin/game/d/a$b;
+        //   147: getfield 66	com/tencent/mm/plugin/game/d/a$b:startTimeMs	J
+        //   150: ldc2_w 99
+        //   153: ldiv
+        //   154: lstore_2
+        //   155: invokestatic 54	com/tencent/mm/plugin/game/d/a$a:ezW	()Lcom/tencent/mm/plugin/game/d/a;
+        //   158: getfield 60	com/tencent/mm/plugin/game/d/a:DdD	Lcom/tencent/mm/plugin/game/d/a$b;
+        //   161: getfield 78	com/tencent/mm/plugin/game/d/a$b:endTimeMs	J
+        //   164: ldc2_w 99
+        //   167: ldiv
+        //   168: lstore 4
+        //   170: invokestatic 54	com/tencent/mm/plugin/game/d/a$a:ezW	()Lcom/tencent/mm/plugin/game/d/a;
+        //   173: getfield 60	com/tencent/mm/plugin/game/d/a:DdD	Lcom/tencent/mm/plugin/game/d/a$b;
+        //   176: getfield 81	com/tencent/mm/plugin/game/d/a$b:wmw	J
+        //   179: ldc2_w 99
+        //   182: ldiv
+        //   183: lstore 6
+        //   185: invokestatic 106	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+        //   188: bipush 35
+        //   190: iconst_0
+        //   191: iconst_0
+        //   192: bipush 91
+        //   194: iconst_0
+        //   195: ldc 108
+        //   197: sipush 901
+        //   200: iconst_0
+        //   201: ldc 108
+        //   203: ldc 108
+        //   205: ldc 108
+        //   207: lload_2
+        //   208: lload 4
+        //   210: lload 6
+        //   212: invokestatic 114	com/tencent/mm/game/report/g:a	(Landroid/content/Context;IIIIILjava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;JJJ)V
+        //   215: invokestatic 54	com/tencent/mm/plugin/game/d/a$a:ezW	()Lcom/tencent/mm/plugin/game/d/a;
+        //   218: getfield 60	com/tencent/mm/plugin/game/d/a:DdD	Lcom/tencent/mm/plugin/game/d/a$b;
+        //   221: invokevirtual 117	com/tencent/mm/plugin/game/d/a$b:ezX	()V
+        //   224: ldc 48
+        //   226: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   229: aload_0
+        //   230: monitorexit
+        //   231: iconst_0
+        //   232: ireturn
+        //   233: iconst_0
+        //   234: istore_1
+        //   235: goto -198 -> 37
+        //   238: astore 8
+        //   240: aload_0
+        //   241: monitorexit
+        //   242: aload 8
+        //   244: athrow
+        // Local variable table:
+        //   start	length	slot	name	signature
+        //   0	245	0	this	13
+        //   36	199	1	i	int
+        //   154	54	2	l1	long
+        //   168	41	4	l2	long
+        //   183	28	6	l3	long
+        //   13	51	8	localb	a.b
+        //   238	5	8	localObject	Object
+        // Exception table:
+        //   from	to	target	type
+        //   2	35	238	finally
+        //   41	215	238	finally
+        //   215	229	238	finally
+      }
+    };
     AppMethodBeat.o(40840);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.c
  * JD-Core Version:    0.7.0.1
  */

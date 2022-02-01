@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget.input;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,46 +13,52 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ce.e;
+import com.tencent.mm.cl.f;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.ui.aa;
+import com.tencent.mm.plugin.webview.c.d;
+import com.tencent.mm.plugin.webview.c.e;
+import com.tencent.mm.plugin.webview.c.g;
+import com.tencent.mm.plugin.webview.c.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.emotion.SmileyPanelConfigInfo;
+import com.tencent.mm.ui.ad;
 
 public class WebViewSmileyGrid
   extends GridView
 {
-  private c JBa;
-  a JBb;
-  AdapterView.OnItemClickListener awr;
-  int gOF;
-  int owU;
-  int owV;
-  int owW;
-  int owX;
-  int owY;
+  private c Qzm;
+  a Qzp;
+  int Qzq;
+  int Qzr;
+  int Qzs;
+  int Qzt;
+  int jyZ;
+  int rFz;
+  AdapterView.OnItemClickListener uX;
   
   public WebViewSmileyGrid(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(82342);
-    this.owV = 0;
-    this.owX = 0;
-    this.owY = 0;
-    this.gOF = 0;
-    this.awr = new AdapterView.OnItemClickListener()
+    this.Qzr = 0;
+    this.Qzs = 0;
+    this.Qzt = 0;
+    this.jyZ = 0;
+    this.uX = new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(82338);
         b localb = new b();
-        localb.bm(paramAnonymousAdapterView);
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.zo(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/widget/input/WebViewSmileyGrid$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+        localb.bn(paramAnonymousAdapterView);
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.Fs(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/ui/tools/widget/input/WebViewSmileyGrid$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
         if (paramAnonymousInt == WebViewSmileyGrid.a(WebViewSmileyGrid.this).getCount() - 1)
         {
-          if (WebViewSmileyGrid.b(WebViewSmileyGrid.this).JBh != null) {
-            WebViewSmileyGrid.b(WebViewSmileyGrid.this).JBh.aHC();
+          if (WebViewSmileyGrid.b(WebViewSmileyGrid.this).QzA != null) {
+            WebViewSmileyGrid.b(WebViewSmileyGrid.this).QzA.aDO();
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/widget/input/WebViewSmileyGrid$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(82338);
@@ -66,11 +72,11 @@ public class WebViewSmileyGrid
         }
         int i = WebViewSmileyGrid.c(WebViewSmileyGrid.this);
         int j = WebViewSmileyGrid.d(WebViewSmileyGrid.this);
-        if (WebViewSmileyGrid.b(WebViewSmileyGrid.this).JBh != null)
+        if (WebViewSmileyGrid.b(WebViewSmileyGrid.this).QzA != null)
         {
-          paramAnonymousAdapterView = WebViewSmileyGrid.b(WebViewSmileyGrid.this).JBh;
+          paramAnonymousAdapterView = WebViewSmileyGrid.b(WebViewSmileyGrid.this).QzA;
           WebViewSmileyGrid.b(WebViewSmileyGrid.this);
-          paramAnonymousAdapterView.append(e.gxR().An(i * (j - 1) + paramAnonymousInt));
+          paramAnonymousAdapterView.append(c.hcq().asi(i * (j - 1) + paramAnonymousInt));
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/widget/input/WebViewSmileyGrid$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(82338);
@@ -81,12 +87,12 @@ public class WebViewSmileyGrid
   
   int getRowSpacing()
   {
-    return this.owX;
+    return this.Qzs;
   }
   
   public void setPanelManager(c paramc)
   {
-    this.JBa = paramc;
+    this.Qzm = paramc;
   }
   
   final class a
@@ -115,35 +121,54 @@ public class WebViewSmileyGrid
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(82340);
+      View localView;
       if ((paramView == null) || (paramView.getTag() == null))
       {
-        paramView = aa.jQ(WebViewSmileyGrid.this.getContext()).inflate(2131497077, null);
-        paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (WebViewSmileyGrid.b(WebViewSmileyGrid.this).oxh - com.tencent.mm.cb.a.aG(WebViewSmileyGrid.this.getContext(), 2131165508) - com.tencent.mm.cb.a.aG(WebViewSmileyGrid.this.getContext(), 2131166293)) / WebViewSmileyGrid.f(WebViewSmileyGrid.this)));
-        paramViewGroup = new WebViewSmileyGrid.b(paramView);
-        paramView.setTag(paramViewGroup);
+        localView = ad.kS(WebViewSmileyGrid.this.getContext()).inflate(c.g.webview_smiley_grid_item, null);
+        localView.setLayoutParams(new AbsListView.LayoutParams(-1, (WebViewSmileyGrid.b(WebViewSmileyGrid.this).QzB - com.tencent.mm.ci.a.aY(WebViewSmileyGrid.this.getContext(), c.d.LittlePadding) - com.tencent.mm.ci.a.aY(WebViewSmileyGrid.this.getContext(), c.d.emoji_panel_tab_height)) / WebViewSmileyGrid.f(WebViewSmileyGrid.this)));
+        paramViewGroup = new WebViewSmileyGrid.b(localView);
+        localView.setTag(paramViewGroup);
         if (paramInt != getCount() - 1) {
-          break label159;
+          break label172;
         }
-        paramViewGroup.nnL.setImageResource(2131231968);
-        paramViewGroup.nnL.setContentDescription(WebViewSmileyGrid.this.getContext().getString(2131758284));
+        paramViewGroup.qps.setImageResource(c.e.del_btn);
+        paramViewGroup.qps.setContentDescription(WebViewSmileyGrid.this.getContext().getString(c.i.delete_btn));
       }
       for (;;)
       {
         AppMethodBeat.o(82340);
-        return paramView;
+        return localView;
         paramViewGroup = (WebViewSmileyGrid.b)paramView.getTag();
+        localView = paramView;
         break;
-        label159:
+        label172:
         paramInt = (WebViewSmileyGrid.d(WebViewSmileyGrid.this) - 1) * WebViewSmileyGrid.c(WebViewSmileyGrid.this) + paramInt;
-        if (paramInt > WebViewSmileyGrid.e(WebViewSmileyGrid.this) - 1)
+        if (paramInt <= WebViewSmileyGrid.e(WebViewSmileyGrid.this) - 1) {
+          break label216;
+        }
+        paramViewGroup.qps.setImageDrawable(null);
+      }
+      label216:
+      WebViewSmileyGrid.b(WebViewSmileyGrid.this);
+      paramView = c.hcq();
+      if (paramView.UYB == null)
+      {
+        Log.i("MicroMsg.MergerSmileyManager", "getSmileyDrawable smiley panel map is null.");
+        paramView = null;
+      }
+      for (;;)
+      {
+        paramViewGroup.qps.setImageDrawable(paramView);
+        break;
+        paramView = (SmileyPanelConfigInfo)paramView.UYB.get(paramInt);
+        if (paramView == null)
         {
-          paramViewGroup.nnL.setImageDrawable(null);
+          Log.i("MicroMsg.MergerSmileyManager", "getSmileyDrawable smiley info is null.");
+          paramView = null;
         }
         else
         {
-          WebViewSmileyGrid.b(WebViewSmileyGrid.this);
-          Drawable localDrawable = e.gxR().Al(paramInt);
-          paramViewGroup.nnL.setImageDrawable(localDrawable);
+          paramView = f.buv(paramView.field_key);
         }
       }
     }
@@ -151,7 +176,7 @@ public class WebViewSmileyGrid
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewSmileyGrid
  * JD-Core Version:    0.7.0.1
  */

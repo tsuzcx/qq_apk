@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.talkroom.model;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.d;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.cg;
+import com.tencent.mm.an.h.d;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.ch;
 import com.tencent.mm.network.p;
 import com.tencent.mm.network.p.a;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -13,21 +13,21 @@ import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class b
-  implements bd
+  implements be
 {
-  private d FPA;
-  public c FPB;
-  private e FPC;
-  f FPD;
-  private p FPE;
-  g FPz;
+  private g MjA;
+  private d MjB;
+  private c MjC;
+  private e MjD;
+  private f MjE;
+  private p MjF;
   
   public b()
   {
     AppMethodBeat.i(29439);
-    this.FPA = new d();
-    this.FPB = new c();
-    this.FPE = new p.a()
+    this.MjB = new d();
+    this.MjC = new c();
+    this.MjF = new p.a()
     {
       public final void onNetworkChange(int paramAnonymousInt)
       {
@@ -42,8 +42,8 @@ public final class b
           public final void run()
           {
             AppMethodBeat.i(29437);
-            if (b.this.FPz != null) {
-              b.this.FPz.wi(false);
+            if (b.a(b.this) != null) {
+              b.a(b.this).zO(false);
             }
             AppMethodBeat.o(29437);
           }
@@ -54,60 +54,75 @@ public final class b
     AppMethodBeat.o(29439);
   }
   
-  public static b ftM()
+  private static b gim()
   {
     AppMethodBeat.i(29440);
-    bg.aVz();
-    b localb2 = (b)cg.KG("plugin.talkroom");
+    bh.beC();
+    b localb2 = (b)ch.RZ("plugin.talkroom");
     b localb1 = localb2;
     if (localb2 == null)
     {
       localb1 = new b();
-      bg.aVz().a("plugin.talkroom", localb1);
+      bh.beC().a("plugin.talkroom", localb1);
     }
     AppMethodBeat.o(29440);
     return localb1;
   }
   
-  public static g ftN()
+  public static g gin()
   {
     AppMethodBeat.i(29441);
-    if (ftM().FPz == null) {
-      ftM().FPz = new g();
+    if (gim().MjA == null) {
+      gim().MjA = new g();
     }
-    g localg = ftM().FPz;
+    g localg = gim().MjA;
     AppMethodBeat.o(29441);
     return localg;
   }
   
-  public static e ftO()
+  public static e gio()
   {
     AppMethodBeat.i(29442);
-    if (ftM().FPC == null) {
-      ftM().FPC = new e();
+    if (gim().MjD == null) {
+      gim().MjD = new e();
     }
-    e locale = ftM().FPC;
+    e locale = gim().MjD;
     AppMethodBeat.o(29442);
     return locale;
   }
   
-  public static String ftP()
+  public static String gip()
   {
     AppMethodBeat.i(29443);
     Object localObject = new StringBuilder();
-    bg.aVF();
-    localObject = com.tencent.mm.model.c.azM() + "talkroom/";
+    bh.beI();
+    localObject = com.tencent.mm.model.c.aHl() + "talkroom/";
     AppMethodBeat.o(29443);
     return localObject;
   }
   
-  public static f ftQ()
+  public static void giq()
+  {
+    AppMethodBeat.i(267103);
+    gim().MjE = new f();
+    AppMethodBeat.o(267103);
+  }
+  
+  public static c gir()
+  {
+    AppMethodBeat.i(267104);
+    c localc = gim().MjC;
+    AppMethodBeat.o(267104);
+    return localc;
+  }
+  
+  public static f gis()
   {
     AppMethodBeat.i(29444);
-    if (ftM().FPD == null) {
-      ftM().FPD = new f();
+    if (gim().MjE == null) {
+      gim().MjE = new f();
     }
-    f localf = ftM().FPD;
+    f localf = gim().MjE;
     AppMethodBeat.o(29444);
     return localf;
   }
@@ -122,25 +137,25 @@ public final class b
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(29445);
-    h.d.a(Integer.valueOf(56), this.FPA);
-    bg.a(this.FPE);
-    com.tencent.mm.bh.g.jpy = ftO();
-    com.tencent.mm.bh.g.jpz = ftN();
-    com.tencent.mm.bh.g.jpy.bgs();
+    h.d.a(Integer.valueOf(56), this.MjB);
+    bh.a(this.MjF);
+    com.tencent.mm.bj.g.meT = gio();
+    com.tencent.mm.bj.g.meU = gin();
+    com.tencent.mm.bj.g.meT.bpI();
     AppMethodBeat.o(29445);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(29446);
-    h.d.b(Integer.valueOf(56), this.FPA);
-    bg.b(this.FPE);
-    com.tencent.mm.bh.g.jpy = null;
-    com.tencent.mm.bh.g.jpz = null;
-    if (this.FPz != null)
+    h.d.b(Integer.valueOf(56), this.MjB);
+    bh.b(this.MjF);
+    com.tencent.mm.bj.g.meT = null;
+    com.tencent.mm.bj.g.meU = null;
+    if (this.MjA != null)
     {
-      this.FPz.fub();
-      this.FPz = null;
+      this.MjA.giD();
+      this.MjA = null;
     }
     AppMethodBeat.o(29446);
   }
@@ -149,7 +164,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.model.b
  * JD-Core Version:    0.7.0.1
  */

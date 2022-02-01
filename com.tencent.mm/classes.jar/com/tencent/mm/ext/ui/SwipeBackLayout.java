@@ -10,8 +10,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v4.view.u;
-import android.support.v4.widget.p;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
@@ -23,6 +21,9 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.OverScroller;
+import androidx.core.g.w;
+import androidx.core.widget.h;
+import com.tencent.liteapp.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ext.a.b.a;
 import java.lang.ref.WeakReference;
@@ -33,25 +34,25 @@ import java.lang.reflect.Proxy;
 public class SwipeBackLayout
   extends FrameLayout
 {
-  private float TH;
-  private Rect Ui;
-  private Drawable hfA;
-  private boolean hfB;
-  private boolean hfC;
-  private a hfD;
-  private float hfn;
-  private int hfo;
-  private int hfp;
-  private f hfq;
-  private float hfr;
-  private Drawable hfs;
-  private boolean hft;
-  private boolean hfu;
-  boolean hfv;
-  private boolean hfw;
-  boolean hfx;
-  private boolean hfy;
-  private b hfz;
+  private float RH;
+  private Rect Si;
+  private float jRf;
+  private int jRg;
+  private int jRh;
+  private f jRi;
+  private float jRj;
+  private Drawable jRk;
+  private boolean jRl;
+  private boolean jRm;
+  boolean jRn;
+  private boolean jRo;
+  boolean jRp;
+  private boolean jRq;
+  private b jRr;
+  private Drawable jRs;
+  private boolean jRt;
+  private boolean jRu;
+  private a jRv;
   private View mContentView;
   private boolean mEnable;
   private Handler mHandler;
@@ -65,117 +66,117 @@ public class SwipeBackLayout
   public SwipeBackLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(197854);
-    this.hfn = 0.3F;
+    AppMethodBeat.i(258978);
+    this.jRf = 0.3F;
     this.mEnable = true;
-    this.Ui = new Rect();
-    this.hft = true;
-    this.hfu = false;
-    this.hfv = false;
-    this.hfw = false;
-    this.hfx = false;
-    this.hfy = false;
+    this.Si = new Rect();
+    this.jRl = true;
+    this.jRm = false;
+    this.jRn = false;
+    this.jRo = false;
+    this.jRp = false;
+    this.jRq = false;
     this.mHandler = new Handler(Looper.getMainLooper());
-    this.hfC = true;
-    this.hfD = null;
-    this.hfs = getResources().getDrawable(2131234799);
+    this.jRu = true;
+    this.jRv = null;
+    this.jRk = getResources().getDrawable(a.c.shadow_left);
     setFocusable(true);
     setDescendantFocusability(262144);
     init();
-    AppMethodBeat.o(197854);
+    AppMethodBeat.o(258978);
   }
   
-  public final boolean awK()
+  public final boolean aEc()
   {
-    AppMethodBeat.i(197858);
-    if (!this.hfx)
+    AppMethodBeat.i(258985);
+    if (!this.jRp)
     {
-      AppMethodBeat.o(197858);
+      AppMethodBeat.o(258985);
       return false;
     }
     if (Float.compare(this.mContentView.getLeft(), 0.01F) <= 0)
     {
-      this.hfx = false;
-      AppMethodBeat.o(197858);
+      this.jRp = false;
+      AppMethodBeat.o(258985);
       return false;
     }
-    AppMethodBeat.o(197858);
+    AppMethodBeat.o(258985);
     return true;
   }
   
   public void computeScroll()
   {
-    AppMethodBeat.i(197863);
-    this.TH = Math.max(0.0F, 1.0F - this.hfr);
-    f localf = this.hfq;
-    if (localf.Wx == 2)
+    AppMethodBeat.i(258994);
+    this.RH = Math.max(0.0F, 1.0F - this.jRj);
+    f localf = this.jRi;
+    if (localf.Rh == 2)
     {
-      boolean bool2 = localf.hgg.UD.computeScrollOffset();
-      i = localf.hgg.UD.getCurrX();
-      int j = localf.hgg.UD.getCurrY();
-      int k = i - localf.WL.getLeft();
-      int m = j - localf.WL.getTop();
+      boolean bool2 = localf.jRY.Qi.computeScrollOffset();
+      i = localf.jRY.Qi.getCurrX();
+      int j = localf.jRY.Qi.getCurrY();
+      int k = i - localf.Rv.getLeft();
+      int m = j - localf.Rv.getTop();
       if (k != 0) {
-        localf.WL.offsetLeftAndRight(k);
+        localf.Rv.offsetLeftAndRight(k);
       }
       if (m != 0) {
-        localf.WL.offsetTopAndBottom(m);
+        localf.Rv.offsetTopAndBottom(m);
       }
       if ((k != 0) || (m != 0)) {
-        localf.hgh.cL(i, j);
+        localf.jRZ.df(i, j);
       }
       boolean bool1 = bool2;
       if (bool2)
       {
         bool1 = bool2;
-        if (i == localf.hgg.UD.getFinalX())
+        if (i == localf.jRY.Qi.getFinalX())
         {
           bool1 = bool2;
-          if (j == localf.hgg.UD.getFinalY())
+          if (j == localf.jRY.Qi.getFinalY())
           {
-            localf.hgg.UD.abortAnimation();
-            bool1 = localf.hgg.UD.isFinished();
+            localf.jRY.Qi.abortAnimation();
+            bool1 = localf.jRY.Qi.isFinished();
           }
         }
       }
       if (!bool1) {
-        localf.WN.post(localf.WO);
+        localf.Rx.post(localf.Ry);
       }
     }
-    if (localf.Wx == 2) {}
+    if (localf.Rh == 2) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        u.X(this);
+        w.G(this);
       }
-      AppMethodBeat.o(197863);
+      AppMethodBeat.o(258994);
       return;
     }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(197859);
+    AppMethodBeat.i(258987);
     boolean bool;
     if (!this.mEnable)
     {
       bool = super.dispatchTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(197859);
+      AppMethodBeat.o(258987);
       return bool;
     }
     if (paramMotionEvent.getAction() == 0) {
-      this.hfB = false;
+      this.jRt = false;
     }
-    if (this.hfB)
+    if (this.jRt)
     {
       bool = super.dispatchTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(197859);
+      AppMethodBeat.o(258987);
       return bool;
     }
-    if (awK())
+    if (aEc())
     {
       bool = super.dispatchTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(197859);
+      AppMethodBeat.o(258987);
       return bool;
     }
     float f1;
@@ -191,10 +192,10 @@ public class SwipeBackLayout
     {
       try
       {
-        if (this.hfq.Wx != 1) {
+        if (this.jRi.Rh != 1) {
           break;
         }
-        localf = this.hfq;
+        localf = this.jRi;
         i = paramMotionEvent.getActionMasked();
         j = paramMotionEvent.getActionIndex();
         if (i == 0) {
@@ -211,53 +212,53 @@ public class SwipeBackLayout
       catch (NullPointerException paramMotionEvent)
       {
         com.tencent.liteapp.b.b.e("MicroMsg.SwipeBackLayout", "got an NullPointerException: %s", new Object[] { paramMotionEvent.toString() });
-        AppMethodBeat.o(197859);
+        AppMethodBeat.o(258987);
         return false;
         j = (int)f1;
         k = (int)f2;
-        if (!f.i(localf.WL, j, k)) {
+        if (!f.g(localf.Rv, j, k)) {
           continue;
         }
-        localf.z(localf.WL, i);
+        localf.y(localf.Rv, i);
         continue;
       }
       catch (IllegalArgumentException paramMotionEvent)
       {
         com.tencent.liteapp.b.b.e("MicroMsg.SwipeBackLayout", "got an IllegalArgumentException: %s", new Object[] { paramMotionEvent.toString() });
-        AppMethodBeat.o(197859);
+        AppMethodBeat.o(258987);
         return false;
-        if (localf.Wx != 1) {
+        if (localf.Rh != 1) {
           continue;
         }
         i = paramMotionEvent.findPointerIndex(localf.mActivePointerId);
         f1 = paramMotionEvent.getX(i);
         f2 = paramMotionEvent.getY(i);
-        m = (int)(f1 - localf.WA[localf.mActivePointerId]);
-        n = (int)(f2 - localf.WB[localf.mActivePointerId]);
-        k = localf.WL.getLeft() + m;
-        j = localf.WL.getTop() + n;
-        int i2 = localf.WL.getLeft();
-        int i1 = localf.WL.getTop();
+        m = (int)(f1 - localf.Rk[localf.mActivePointerId]);
+        n = (int)(f2 - localf.Rl[localf.mActivePointerId]);
+        k = localf.Rv.getLeft() + m;
+        j = localf.Rv.getTop() + n;
+        int i2 = localf.Rv.getLeft();
+        int i1 = localf.Rv.getTop();
         i = k;
         if (m == 0) {
           continue;
         }
-        i = localf.hgh.e(localf.WL, k);
-        localf.WL.offsetLeftAndRight(i - i2);
+        i = localf.jRZ.d(localf.Rv, k);
+        localf.Rv.offsetLeftAndRight(i - i2);
         if (n == 0) {
           break label1477;
         }
-        localf.WL.offsetTopAndBottom(0 - i1);
+        localf.Rv.offsetTopAndBottom(0 - i1);
         j = 0;
         break label1477;
-        localf.hgh.cL(i, j);
-        localf.i(paramMotionEvent);
+        localf.jRZ.df(i, j);
+        localf.h(paramMotionEvent);
         continue;
       }
       catch (ArrayIndexOutOfBoundsException paramMotionEvent)
       {
         com.tencent.liteapp.b.b.e("MicroMsg.SwipeBackLayout", "got an ArrayIndexOutOfBoundsException: %s", new Object[] { paramMotionEvent.toString() });
-        AppMethodBeat.o(197859);
+        AppMethodBeat.o(258987);
         return false;
         j = paramMotionEvent.getPointerCount();
         i = 0;
@@ -267,48 +268,48 @@ public class SwipeBackLayout
         k = paramMotionEvent.getPointerId(i);
         f1 = paramMotionEvent.getX(i);
         f2 = paramMotionEvent.getY(i);
-        f3 = f1 - localf.Wy[k];
-        localf.b(f3, f2 - localf.Wz[k], k);
-        if (localf.Wx == 1) {
+        f3 = f1 - localf.Ri[k];
+        localf.b(f3, f2 - localf.Rj[k], k);
+        if (localf.Rh == 1) {
           continue;
         }
-        localView = localf.J((int)f1, (int)f2);
-        if ((!localf.r(localView, f3)) || (!localf.z(localView, k))) {
+        localView = localf.K((int)f1, (int)f2);
+        if ((!localf.r(localView, f3)) || (!localf.y(localView, k))) {
           break label1490;
         }
-        localf.i(paramMotionEvent);
+        localf.h(paramMotionEvent);
         continue;
       }
       catch (IllegalStateException paramMotionEvent)
       {
         com.tencent.liteapp.b.b.e("MicroMsg.SwipeBackLayout", "got an IllegalStateException: %s", new Object[] { paramMotionEvent.toString() });
-        AppMethodBeat.o(197859);
+        AppMethodBeat.o(258987);
         return false;
       }
-      AppMethodBeat.o(197859);
+      AppMethodBeat.o(258987);
       return true;
       f1 = paramMotionEvent.getX();
       f2 = paramMotionEvent.getY();
       i = paramMotionEvent.getPointerId(0);
-      paramMotionEvent = localf.J((int)f1, (int)f2);
+      paramMotionEvent = localf.K((int)f1, (int)f2);
       localf.a(f1, f2, i);
-      localf.z(paramMotionEvent, i);
-      i = localf.WC[i];
-      if ((localf.WJ & i) != 0)
+      localf.y(paramMotionEvent, i);
+      i = localf.Rm[i];
+      if ((localf.Rt & i) != 0)
       {
         continue;
         i = paramMotionEvent.getPointerId(j);
         f1 = paramMotionEvent.getX(j);
         f2 = paramMotionEvent.getY(j);
         localf.a(f1, f2, i);
-        if (localf.Wx == 0)
+        if (localf.Rh == 0)
         {
-          localf.z(localf.J((int)f1, (int)f2), i);
+          localf.y(localf.K((int)f1, (int)f2), i);
         }
         else
         {
           j = paramMotionEvent.getPointerId(j);
-          if ((localf.Wx == 1) && (j == localf.mActivePointerId))
+          if ((localf.Rh == 1) && (j == localf.mActivePointerId))
           {
             k = paramMotionEvent.getPointerCount();
             i = 0;
@@ -322,30 +323,30 @@ public class SwipeBackLayout
             }
             f1 = paramMotionEvent.getX(i);
             f2 = paramMotionEvent.getY(i);
-            if ((localf.J((int)f1, (int)f2) != localf.WL) || (!localf.z(localf.WL, m))) {
+            if ((localf.K((int)f1, (int)f2) != localf.Rv) || (!localf.y(localf.Rv, m))) {
               break label1499;
             }
             i = localf.mActivePointerId;
             label921:
             if (i == -1) {
-              localf.gq();
+              localf.hN();
             }
           }
-          localf.bd(j);
+          localf.bP(j);
           continue;
-          if (localf.Wx == 1) {
-            localf.gq();
+          if (localf.Rh == 1) {
+            localf.hN();
           }
           localf.cancel();
           continue;
-          if (localf.Wx == 1) {
-            localf.l(0.0F, 0.0F);
+          if (localf.Rh == 1) {
+            localf.e(0.0F, 0.0F);
           }
           localf.cancel();
         }
       }
     }
-    f localf = this.hfq;
+    f localf = this.jRi;
     int j = paramMotionEvent.getActionMasked();
     int i = paramMotionEvent.getActionIndex();
     if (j == 0) {
@@ -359,7 +360,7 @@ public class SwipeBackLayout
     {
     case 4: 
       label1084:
-      if (localf.Wx != 1) {
+      if (localf.Rh != 1) {
         break;
       }
     }
@@ -370,17 +371,17 @@ public class SwipeBackLayout
         com.tencent.liteapp.b.b.i("changelcai", "shouldInterceptTouchEvent %s", new Object[] { paramMotionEvent });
         paramMotionEvent.setAction(3);
         super.dispatchTouchEvent(paramMotionEvent);
-        AppMethodBeat.o(197859);
+        AppMethodBeat.o(258987);
         return true;
         f1 = paramMotionEvent.getX();
         f2 = paramMotionEvent.getY();
         i = paramMotionEvent.getPointerId(0);
         localf.a(f1, f2, i);
-        localView = localf.J((int)f1, (int)f2);
-        if ((localView == localf.WL) && (localf.Wx == 2)) {
-          localf.z(localView, i);
+        localView = localf.K((int)f1, (int)f2);
+        if ((localView == localf.Rv) && (localf.Rh == 2)) {
+          localf.y(localView, i);
         }
-        if ((localf.WC[i] & localf.WJ) == 0) {
+        if ((localf.Rm[i] & localf.Rt) == 0) {
           break label1084;
         }
         break label1084;
@@ -388,14 +389,14 @@ public class SwipeBackLayout
         f1 = paramMotionEvent.getX(i);
         f2 = paramMotionEvent.getY(i);
         localf.a(f1, f2, j);
-        if ((localf.Wx == 0) || (localf.Wx != 2)) {
+        if ((localf.Rh == 0) || (localf.Rh != 2)) {
           break label1084;
         }
-        localView = localf.J((int)f1, (int)f2);
-        if (localView != localf.WL) {
+        localView = localf.K((int)f1, (int)f2);
+        if (localView != localf.Rv) {
           break label1084;
         }
-        localf.z(localView, j);
+        localf.y(localView, j);
         break label1084;
         j = paramMotionEvent.getPointerCount();
         i = 0;
@@ -407,24 +408,24 @@ public class SwipeBackLayout
           k = paramMotionEvent.getPointerId(i);
           f1 = paramMotionEvent.getX(i);
           f2 = paramMotionEvent.getY(i);
-          f3 = f1 - localf.Wy[k];
-          localf.b(f3, f2 - localf.Wz[k], k);
-          if (localf.Wx != 1)
+          f3 = f1 - localf.Ri[k];
+          localf.b(f3, f2 - localf.Rj[k], k);
+          if (localf.Rh != 1)
           {
-            localView = localf.J((int)f1, (int)f2);
-            if ((localView == null) || (!localf.r(localView, f3)) || (!localf.z(localView, k))) {
+            localView = localf.K((int)f1, (int)f2);
+            if ((localView == null) || (!localf.r(localView, f3)) || (!localf.y(localView, k))) {
               break label1511;
             }
           }
         }
-        localf.i(paramMotionEvent);
+        localf.h(paramMotionEvent);
         break label1084;
-        localf.bd(paramMotionEvent.getPointerId(i));
+        localf.bP(paramMotionEvent.getPointerId(i));
         break label1084;
         localf.cancel();
         break label1084;
         super.dispatchTouchEvent(paramMotionEvent);
-        AppMethodBeat.o(197859);
+        AppMethodBeat.o(258987);
         return true;
         label1471:
         i = -1;
@@ -452,21 +453,21 @@ public class SwipeBackLayout
   
   protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
-    AppMethodBeat.i(197862);
+    AppMethodBeat.i(258992);
     if (paramView == this.mContentView) {}
     for (int i = 1;; i = 0)
     {
       boolean bool = super.drawChild(paramCanvas, paramView, paramLong);
-      if ((Float.compare(this.TH, 0.0F) > 0) && (i != 0) && (this.hfq.Wx != 0))
+      if ((Float.compare(this.RH, 0.0F) > 0) && (i != 0) && (this.jRi.Rh != 0))
       {
-        Rect localRect = this.Ui;
+        Rect localRect = this.Si;
         paramView.getHitRect(localRect);
-        this.hfs.setBounds(localRect.left - this.hfs.getIntrinsicWidth(), localRect.top, localRect.left, localRect.bottom);
-        this.hfs.setAlpha((int)(this.TH * 255.0F));
-        this.hfs.draw(paramCanvas);
-        com.tencent.liteapp.b.b.i("MicroMsg.SwipeBackLayout", "shadow left:%d top:%d right:%d bootom:%d", new Object[] { Integer.valueOf(this.hfs.getBounds().left), Integer.valueOf(this.hfs.getBounds().top), Integer.valueOf(this.hfs.getBounds().right), Integer.valueOf(this.hfs.getBounds().bottom) });
+        this.jRk.setBounds(localRect.left - this.jRk.getIntrinsicWidth(), localRect.top, localRect.left, localRect.bottom);
+        this.jRk.setAlpha((int)(this.RH * 255.0F));
+        this.jRk.draw(paramCanvas);
+        com.tencent.liteapp.b.b.i("MicroMsg.SwipeBackLayout", "shadow left:%d top:%d right:%d bootom:%d", new Object[] { Integer.valueOf(this.jRk.getBounds().left), Integer.valueOf(this.jRk.getBounds().top), Integer.valueOf(this.jRk.getBounds().right), Integer.valueOf(this.jRk.getBounds().bottom) });
       }
-      AppMethodBeat.o(197862);
+      AppMethodBeat.o(258992);
       return bool;
     }
   }
@@ -478,44 +479,44 @@ public class SwipeBackLayout
   
   public final void init()
   {
-    AppMethodBeat.i(197855);
-    Interpolator localInterpolator = AnimationUtils.loadInterpolator(getContext(), 2130772093);
-    this.hfq = f.a(this, new c((byte)0), localInterpolator);
-    this.hfq.WJ = 1;
+    AppMethodBeat.i(258979);
+    Interpolator localInterpolator = AnimationUtils.loadInterpolator(getContext(), com.tencent.liteapp.a.a.mm_decelerate_interpolator);
+    this.jRi = f.a(this, new c((byte)0), localInterpolator);
+    this.jRi.Rt = 1;
     float f = getResources().getDisplayMetrics().density;
-    this.hfq.WH = (100.0F * f);
-    this.hfq.WG = (f * 300.0F);
-    this.hfo = 0;
-    this.hfp = 0;
-    AppMethodBeat.o(197855);
+    this.jRi.Rr = (100.0F * f);
+    this.jRi.Rq = (f * 300.0F);
+    this.jRg = 0;
+    this.jRh = 0;
+    AppMethodBeat.o(258979);
   }
   
   public void onFinishInflate()
   {
-    AppMethodBeat.i(197856);
+    AppMethodBeat.i(258981);
     super.onFinishInflate();
     this.mContentView = this;
-    AppMethodBeat.o(197856);
+    AppMethodBeat.o(258981);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(197860);
+    AppMethodBeat.i(258988);
     this.mInLayout = true;
     if (this.mContentView != null) {
-      this.mContentView.layout(this.hfo, this.hfp, this.hfo + this.mContentView.getMeasuredWidth(), this.hfp + this.mContentView.getMeasuredHeight());
+      this.mContentView.layout(this.jRg, this.jRh, this.jRg + this.mContentView.getMeasuredWidth(), this.jRh + this.mContentView.getMeasuredHeight());
     }
     this.mInLayout = false;
-    AppMethodBeat.o(197860);
+    AppMethodBeat.o(258988);
   }
   
   public void requestLayout()
   {
-    AppMethodBeat.i(197861);
+    AppMethodBeat.i(258991);
     if (!this.mInLayout) {
       super.requestLayout();
     }
-    AppMethodBeat.o(197861);
+    AppMethodBeat.o(258991);
   }
   
   public void setContentView(View paramView)
@@ -530,33 +531,33 @@ public class SwipeBackLayout
   
   public void setNeedChangeWindowBackground(boolean paramBoolean)
   {
-    this.hfC = paramBoolean;
+    this.jRu = paramBoolean;
   }
   
   public void setNeedRequestActivityTranslucent(boolean paramBoolean)
   {
-    this.hft = paramBoolean;
-    if (this.hft) {
-      this.hfu = false;
+    this.jRl = paramBoolean;
+    if (this.jRl) {
+      this.jRm = false;
     }
   }
   
   public void setOnceDisEnableGesture(boolean paramBoolean)
   {
-    AppMethodBeat.i(197857);
+    AppMethodBeat.i(258983);
     com.tencent.liteapp.b.b.i("MicroMsg.SwipeBackLayout", "[setOnceDisEnableGesture] enable:%s", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.hfB = paramBoolean;
-    AppMethodBeat.o(197857);
+    this.jRt = paramBoolean;
+    AppMethodBeat.o(258983);
   }
   
   public void setSwipeBackListener(b paramb)
   {
-    this.hfz = paramb;
+    this.jRr = paramb;
   }
   
   public void setSwipeGestureDelegate(a parama)
   {
-    this.hfD = parama;
+    this.jRv = parama;
   }
   
   public static abstract interface a
@@ -570,23 +571,23 @@ public class SwipeBackLayout
   
   public static abstract interface b
   {
-    public abstract int awL();
+    public abstract int aEd();
   }
   
   final class c
     extends f.a
     implements a.a
   {
-    int hfE = 0;
-    int hfF = 0;
-    int hfG = 0;
+    int jRw = 0;
+    int jRx = 0;
+    int jRy = 0;
     
     private c() {}
     
-    public final void L(int paramInt)
+    public final void G(int paramInt)
     {
       Object localObject1 = null;
-      AppMethodBeat.i(197852);
+      AppMethodBeat.i(258973);
       com.tencent.liteapp.b.b.i("MicroMsg.SwipeBackLayout", "ashutest::onViewDragStateChanged state %d, requestedTranslucent %B fastRelease %B", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(SwipeBackLayout.m(SwipeBackLayout.this)), Boolean.valueOf(SwipeBackLayout.n(SwipeBackLayout.this)) });
       if (1 == paramInt)
       {
@@ -603,7 +604,7 @@ public class SwipeBackLayout
         }
         SwipeBackLayout.a(SwipeBackLayout.this, false);
         if (SwipeBackLayout.b(SwipeBackLayout.this)) {
-          d.aq(0.0F);
+          d.ap(0.0F);
         }
       }
       if ((paramInt == 0) && (!SwipeBackLayout.n(SwipeBackLayout.this)))
@@ -620,7 +621,7 @@ public class SwipeBackLayout
           }
           SwipeBackLayout.h(SwipeBackLayout.this).onCancel();
         }
-        d.aq(1.0F);
+        d.ap(1.0F);
       }
       Activity localActivity;
       boolean bool;
@@ -629,7 +630,7 @@ public class SwipeBackLayout
         com.tencent.liteapp.b.b.i("MicroMsg.SwipeBackLayout", "ashutest:: match dragging", new Object[0]);
         SwipeBackLayout.d(SwipeBackLayout.this, true);
         localActivity = (Activity)SwipeBackLayout.this.getContext();
-        if (a.oE(16)) {
+        if (a.qW(16)) {
           com.tencent.liteapp.b.b.w("MicroMsg.ActivityUtil", "convertActivityToTranslucent::Android Version Error %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
         }
       }
@@ -637,15 +638,15 @@ public class SwipeBackLayout
       {
         if (2 == paramInt)
         {
-          com.tencent.liteapp.b.b.i("MicroMsg.SwipeBackLayout", "ashutest:: notify settle, mReleasedLeft %d", new Object[] { Integer.valueOf(this.hfF) });
-          if (this.hfF <= 0) {
+          com.tencent.liteapp.b.b.i("MicroMsg.SwipeBackLayout", "ashutest:: notify settle, mReleasedLeft %d", new Object[] { Integer.valueOf(this.jRx) });
+          if (this.jRx <= 0) {
             break label689;
           }
           bool = true;
           label457:
-          d.h(bool, this.hfF);
+          d.j(bool, this.jRx);
         }
-        AppMethodBeat.o(197852);
+        AppMethodBeat.o(258973);
         return;
       }
       for (;;)
@@ -667,9 +668,9 @@ public class SwipeBackLayout
             break label695;
           }
           localObject2 = new a.b((byte)0);
-          ((a.b)localObject2).hfj = new WeakReference(this);
+          ((a.b)localObject2).jRb = new WeakReference(this);
           localObject2 = Proxy.newProxyInstance(((Class)localObject1).getClassLoader(), new Class[] { localObject1 }, (InvocationHandler)localObject2);
-          if (!a.oE(21)) {
+          if (!a.qW(21)) {
             break label636;
           }
           localObject1 = Activity.class.getDeclaredMethod("convertToTranslucent", new Class[] { localObject1 });
@@ -696,24 +697,24 @@ public class SwipeBackLayout
     
     public final void a(View paramView, float paramFloat1, float paramFloat2)
     {
-      AppMethodBeat.i(197850);
+      AppMethodBeat.i(258971);
       int i = paramView.getWidth();
-      this.hfF = 0;
-      this.hfG = 0;
+      this.jRx = 0;
+      this.jRy = 0;
       if ((paramFloat1 > 0.0F) || ((paramFloat1 == 0.0F) && (SwipeBackLayout.f(SwipeBackLayout.this) > SwipeBackLayout.l(SwipeBackLayout.this))))
       {
         i = i + SwipeBackLayout.d(SwipeBackLayout.this).getIntrinsicWidth() + 10;
-        this.hfF = i;
-        com.tencent.liteapp.b.b.i("MicroMsg.SwipeBackLayout", "ashutest::onViewReleased, xvel:%f yvel:%f, releaseLeft:%d, releaseTop:%d, translucent %B", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(this.hfF), Integer.valueOf(this.hfG), Boolean.valueOf(SwipeBackLayout.b(SwipeBackLayout.this)) });
+        this.jRx = i;
+        com.tencent.liteapp.b.b.i("MicroMsg.SwipeBackLayout", "ashutest::onViewReleased, xvel:%f yvel:%f, releaseLeft:%d, releaseTop:%d, translucent %B", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(this.jRx), Integer.valueOf(this.jRy), Boolean.valueOf(SwipeBackLayout.b(SwipeBackLayout.this)) });
         SwipeBackLayout.b(SwipeBackLayout.this, true);
         if (SwipeBackLayout.e(SwipeBackLayout.this) != null)
         {
-          i = SwipeBackLayout.e(SwipeBackLayout.this).awL();
+          i = SwipeBackLayout.e(SwipeBackLayout.this).aEd();
           com.tencent.liteapp.b.b.i("MicroMsg.SwipeBackLayout", "intercepted by mSwipeBackListener.onViewReleased, result:%s", new Object[] { Integer.valueOf(i) });
           if (i != 2) {
             break label259;
           }
-          this.hfF = 0;
+          this.jRx = 0;
         }
       }
       for (;;)
@@ -721,12 +722,12 @@ public class SwipeBackLayout
         if (SwipeBackLayout.b(SwipeBackLayout.this))
         {
           paramView = SwipeBackLayout.a(SwipeBackLayout.this);
-          int n = this.hfF;
-          int i1 = this.hfG;
-          if (!paramView.WM)
+          int n = this.jRx;
+          int i1 = this.jRy;
+          if (!paramView.Rw)
           {
             paramView = new IllegalStateException("Cannot settleCapturedViewAt outside of a call to Callback#onViewReleased");
-            AppMethodBeat.o(197850);
+            AppMethodBeat.o(258971);
             throw paramView;
             i = 0;
             break;
@@ -734,21 +735,21 @@ public class SwipeBackLayout
             if (i != 3) {
               continue;
             }
-            AppMethodBeat.o(197850);
+            AppMethodBeat.o(258971);
             return;
           }
           i = (int)paramView.mVelocityTracker.getXVelocity(paramView.mActivePointerId);
           int j = (int)paramView.mVelocityTracker.getYVelocity(paramView.mActivePointerId);
-          int k = paramView.WL.getLeft();
-          int m = paramView.WL.getTop();
+          int k = paramView.Rv.getLeft();
+          int m = paramView.Rv.getTop();
           n -= k;
           i1 -= m;
           if ((n == 0) && (i1 == 0))
           {
-            paramView.hgg.UD.abortAnimation();
-            paramView.bf(0);
+            paramView.jRY.Qi.abortAnimation();
+            paramView.bR(0);
             SwipeBackLayout.this.invalidate();
-            AppMethodBeat.o(197850);
+            AppMethodBeat.o(258971);
             return;
           }
           int i2;
@@ -760,8 +761,8 @@ public class SwipeBackLayout
           float f;
           if (0L == 0L)
           {
-            int i3 = f.i(i, (int)paramView.WH, (int)paramView.WG);
-            i2 = f.i(j, (int)paramView.WH, (int)paramView.WG);
+            int i3 = f.f(i, (int)paramView.Rr, (int)paramView.Rq);
+            i2 = f.f(j, (int)paramView.Rr, (int)paramView.Rq);
             i4 = Math.abs(n);
             i5 = Math.abs(i1);
             int i6 = Math.abs(i3);
@@ -775,16 +776,16 @@ public class SwipeBackLayout
                 break label614;
               }
               paramFloat2 = i7 / i8;
-              i3 = paramView.h(n, i3, paramView.hgh.awM());
-              i2 = paramView.h(i1, i2, 0);
+              i3 = paramView.e(n, i3, paramView.jRZ.aEe());
+              i2 = paramView.e(i1, i2, 0);
               f = i3;
             }
           }
           for (long l = (int)(paramFloat2 * i2 + paramFloat1 * f);; l = 0L)
           {
             com.tencent.liteapp.b.b.d("WxViewDragHelper", "ashutest:: xvel %d, yvel %d, dx %d, dy %d duration %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(n), Integer.valueOf(i1), Long.valueOf(l) });
-            paramView.hgg.startScroll(k, m, n, i1, (int)l);
-            paramView.bf(2);
+            paramView.jRY.startScroll(k, m, n, i1, (int)l);
+            paramView.bR(2);
             break;
             paramFloat1 = i4 / i9;
             break label464;
@@ -795,21 +796,37 @@ public class SwipeBackLayout
         }
       }
       SwipeBackLayout.c(SwipeBackLayout.this, true);
-      AppMethodBeat.o(197850);
+      AppMethodBeat.o(258971);
     }
     
-    public final int awM()
+    public final int aEe()
     {
       return 1;
     }
     
-    public final void cL(int paramInt1, int paramInt2)
+    public final int d(View paramView, int paramInt)
     {
-      AppMethodBeat.i(197849);
+      AppMethodBeat.i(258972);
+      if (SwipeBackLayout.b(SwipeBackLayout.this))
+      {
+        paramInt = Math.max(this.jRw, paramInt);
+        this.jRw = 0;
+        paramInt = Math.min(paramView.getWidth(), Math.max(paramInt, 0));
+        AppMethodBeat.o(258972);
+        return paramInt;
+      }
+      this.jRw = Math.max(this.jRw, paramInt);
+      AppMethodBeat.o(258972);
+      return 0;
+    }
+    
+    public final void df(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(258970);
       if (!SwipeBackLayout.b(SwipeBackLayout.this))
       {
         com.tencent.liteapp.b.b.w("MicroMsg.SwipeBackLayout", "[onViewPositionChanged] mHasTranslucent is false", new Object[0]);
-        AppMethodBeat.o(197849);
+        AppMethodBeat.o(258970);
         return;
       }
       SwipeBackLayout.a(SwipeBackLayout.this, Math.abs(paramInt1 / (SwipeBackLayout.c(SwipeBackLayout.this).getWidth() + SwipeBackLayout.d(SwipeBackLayout.this).getIntrinsicWidth())));
@@ -828,7 +845,7 @@ public class SwipeBackLayout
         {
           public final void run()
           {
-            AppMethodBeat.i(197841);
+            AppMethodBeat.i(258948);
             if (SwipeBackLayout.h(SwipeBackLayout.this) != null)
             {
               com.tencent.liteapp.b.b.i("MicroMsg.SwipeBackLayout", "ashutest:: on popOut", new Object[0]);
@@ -842,16 +859,16 @@ public class SwipeBackLayout
               SwipeBackLayout.h(SwipeBackLayout.this).onSwipeBack();
             }
             SwipeBackLayout.b(SwipeBackLayout.this, false);
-            AppMethodBeat.o(197841);
+            AppMethodBeat.o(258948);
           }
         });
       }
       for (;;)
       {
-        if (SwipeBackLayout.a(SwipeBackLayout.this).Wx == 1) {
-          d.aq(SwipeBackLayout.f(SwipeBackLayout.this));
+        if (SwipeBackLayout.a(SwipeBackLayout.this).Rh == 1) {
+          d.ap(SwipeBackLayout.f(SwipeBackLayout.this));
         }
-        AppMethodBeat.o(197849);
+        AppMethodBeat.o(258970);
         return;
         if (Float.compare(SwipeBackLayout.f(SwipeBackLayout.this), 0.01F) <= 0)
         {
@@ -861,59 +878,43 @@ public class SwipeBackLayout
       }
     }
     
-    public final int e(View paramView, int paramInt)
+    public final void eG(final boolean paramBoolean)
     {
-      AppMethodBeat.i(197851);
-      if (SwipeBackLayout.b(SwipeBackLayout.this))
-      {
-        paramInt = Math.max(this.hfE, paramInt);
-        this.hfE = 0;
-        paramInt = Math.min(paramView.getWidth(), Math.max(paramInt, 0));
-        AppMethodBeat.o(197851);
-        return paramInt;
-      }
-      this.hfE = Math.max(this.hfE, paramInt);
-      AppMethodBeat.o(197851);
-      return 0;
-    }
-    
-    public final void ei(final boolean paramBoolean)
-    {
-      AppMethodBeat.i(197853);
+      AppMethodBeat.i(258974);
       SwipeBackLayout.k(SwipeBackLayout.this).post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(197847);
-          com.tencent.liteapp.b.b.i("MicroMsg.SwipeBackLayout", "on Complete, result %B, releaseLeft %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(SwipeBackLayout.c.this.hfF) });
+          AppMethodBeat.i(258965);
+          com.tencent.liteapp.b.b.i("MicroMsg.SwipeBackLayout", "on Complete, result %B, releaseLeft %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(SwipeBackLayout.c.this.jRx) });
           SwipeBackLayout.d(SwipeBackLayout.this, paramBoolean);
           if (paramBoolean) {
-            if (SwipeBackLayout.c.this.hfF > 0)
+            if (SwipeBackLayout.c.this.jRx > 0)
             {
-              d.aq(0.0F);
+              d.ap(0.0F);
               SwipeBackLayout localSwipeBackLayout = SwipeBackLayout.this;
               boolean bool = paramBoolean;
               com.tencent.liteapp.b.b.i("MicroMsg.SwipeBackLayout", "ashutest::markTranslucent %B", new Object[] { Boolean.valueOf(bool) });
-              localSwipeBackLayout.hfv = bool;
+              localSwipeBackLayout.jRn = bool;
               if ((paramBoolean) && (SwipeBackLayout.n(SwipeBackLayout.this)))
               {
-                if (SwipeBackLayout.c.this.hfF != 0) {
+                if (SwipeBackLayout.c.this.jRx != 0) {
                   break label206;
                 }
                 b.a(SwipeBackLayout.c(SwipeBackLayout.this), 200L, 0.0F, new b.a()
                 {
-                  public final void awJ()
+                  public final void aEa()
                   {
-                    AppMethodBeat.i(197843);
+                    AppMethodBeat.i(258950);
                     onAnimationEnd();
-                    AppMethodBeat.o(197843);
+                    AppMethodBeat.o(258950);
                   }
                   
                   public final void onAnimationEnd()
                   {
-                    AppMethodBeat.i(197842);
+                    AppMethodBeat.i(258949);
                     SwipeBackLayout.b(SwipeBackLayout.this, false);
-                    AppMethodBeat.o(197842);
+                    AppMethodBeat.o(258949);
                   }
                 });
               }
@@ -922,31 +923,31 @@ public class SwipeBackLayout
           for (;;)
           {
             SwipeBackLayout.c(SwipeBackLayout.this, false);
-            AppMethodBeat.o(197847);
+            AppMethodBeat.o(258965);
             return;
-            d.aq(1.0F);
+            d.ap(1.0F);
             break;
             SwipeBackLayout.b(SwipeBackLayout.this, false);
             break;
             label206:
-            b.a(SwipeBackLayout.c(SwipeBackLayout.this), 200L, SwipeBackLayout.c.this.hfF, new b.a()
+            b.a(SwipeBackLayout.c(SwipeBackLayout.this), 200L, SwipeBackLayout.c.this.jRx, new b.a()
             {
-              public final void awJ()
+              public final void aEa()
               {
-                AppMethodBeat.i(197846);
+                AppMethodBeat.i(258960);
                 onAnimationEnd();
-                AppMethodBeat.o(197846);
+                AppMethodBeat.o(258960);
               }
               
               public final void onAnimationEnd()
               {
-                AppMethodBeat.i(197845);
+                AppMethodBeat.i(258959);
                 SwipeBackLayout.a(SwipeBackLayout.this, true);
                 new Handler().post(new Runnable()
                 {
                   public final void run()
                   {
-                    AppMethodBeat.i(197844);
+                    AppMethodBeat.i(258958);
                     if (SwipeBackLayout.h(SwipeBackLayout.this) != null)
                     {
                       if (((SwipeBackLayout.this.getContext() instanceof Activity)) && (SwipeBackLayout.i(SwipeBackLayout.this) != null))
@@ -959,39 +960,39 @@ public class SwipeBackLayout
                       SwipeBackLayout.h(SwipeBackLayout.this).onSwipeBack();
                       com.tencent.liteapp.b.b.d("MicroMsg.SwipeBackLayout", "ashutest:: on onSwipeBack", new Object[0]);
                     }
-                    d.aq(1.0F);
+                    d.ap(1.0F);
                     SwipeBackLayout.b(SwipeBackLayout.this, false);
-                    AppMethodBeat.o(197844);
+                    AppMethodBeat.o(258958);
                   }
                 });
-                AppMethodBeat.o(197845);
+                AppMethodBeat.o(258959);
               }
             });
-            d.h(true, SwipeBackLayout.c.this.hfF);
+            d.j(true, SwipeBackLayout.c.this.jRx);
           }
         }
       });
-      AppMethodBeat.o(197853);
+      AppMethodBeat.o(258974);
     }
     
-    public final boolean pv(int paramInt)
+    public final boolean rS(int paramInt)
     {
-      AppMethodBeat.i(197848);
+      AppMethodBeat.i(258968);
       f localf = SwipeBackLayout.a(SwipeBackLayout.this);
-      if ((localf.WF & 1 << paramInt) != 0) {}
-      for (int i = 1; (i != 0) && ((localf.WC[paramInt] & 0x1) != 0); i = 0)
+      if ((localf.Rp & 1 << paramInt) != 0) {}
+      for (int i = 1; (i != 0) && ((localf.Rm[paramInt] & 0x1) != 0); i = 0)
       {
-        AppMethodBeat.o(197848);
+        AppMethodBeat.o(258968);
         return true;
       }
-      AppMethodBeat.o(197848);
+      AppMethodBeat.o(258968);
       return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ext.ui.SwipeBackLayout
  * JD-Core Version:    0.7.0.1
  */

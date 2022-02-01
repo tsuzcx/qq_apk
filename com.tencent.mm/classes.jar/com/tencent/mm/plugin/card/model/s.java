@@ -3,18 +3,17 @@ package com.tencent.mm.plugin.card.model;
 import android.text.TextUtils;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
-import com.tencent.mm.plugin.card.d.f;
 import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.protocal.protobuf.ki;
-import com.tencent.mm.protocal.protobuf.kj;
+import com.tencent.mm.protocal.protobuf.jy;
+import com.tencent.mm.protocal.protobuf.jz;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,28 +24,28 @@ public final class s
   implements m
 {
   private i callback;
-  private LinkedList<ak> pUc;
-  public LinkedList<ak> pUd;
   private final d rr;
+  private LinkedList<ak> tqd;
+  public LinkedList<ak> tqe;
   
   public s(LinkedList<ak> paramLinkedList)
   {
     AppMethodBeat.i(112811);
-    this.pUd = new LinkedList();
-    this.pUc = paramLinkedList;
+    this.tqe = new LinkedList();
+    this.tqd = paramLinkedList;
     d.a locala = new d.a();
-    locala.iLN = new ki();
-    locala.iLO = new kj();
+    locala.lBU = new jy();
+    locala.lBV = new jz();
     locala.uri = "/cgi-bin/micromsg-bin/batchgetcarditem";
     locala.funcId = 1074;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    ((ki)this.rr.iLK.iLR).KOl = R(paramLinkedList);
+    this.rr = locala.bgN();
+    ((jy)d.b.b(this.rr.lBR)).RPh = P(paramLinkedList);
     AppMethodBeat.o(112811);
   }
   
-  private static LinkedList<String> R(LinkedList<ak> paramLinkedList)
+  private static LinkedList<String> P(LinkedList<ak> paramLinkedList)
   {
     AppMethodBeat.i(112814);
     LinkedList localLinkedList = new LinkedList();
@@ -67,7 +66,7 @@ public final class s
     return localLinkedList;
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(112812);
     this.callback = parami;
@@ -92,7 +91,7 @@ public final class s
       AppMethodBeat.o(112813);
       return;
     }
-    params = ((kj)this.rr.iLL.iLR).pTY;
+    params = ((jz)d.c.b(this.rr.lBS)).tpZ;
     if (TextUtils.isEmpty(params))
     {
       Log.e("MicroMsg.NetSceneBatchGetCardItem", "onGYNetEnd fail, resp json_ret is null");
@@ -101,14 +100,14 @@ public final class s
       return;
     }
     long l1 = System.currentTimeMillis();
-    params = f.ajX(params);
+    params = com.tencent.mm.plugin.card.d.f.arK(params);
     if (params != null)
     {
-      if (this.pUc != null) {
-        this.pUd.addAll(this.pUc);
+      if (this.tqd != null) {
+        this.tqe.addAll(this.tqd);
       }
       long l2 = System.currentTimeMillis();
-      long l3 = com.tencent.mm.kernel.g.aAh().hqK.beginTransaction(Thread.currentThread().getId());
+      long l3 = com.tencent.mm.kernel.h.aHG().kcF.beginTransaction(Thread.currentThread().getId());
       paramInt1 = 0;
       paramArrayOfByte = params.iterator();
       Object localObject1;
@@ -122,7 +121,7 @@ public final class s
         if (!l.b((CardInfo)localObject1))
         {
           paramInt1 += 1;
-          localObject2 = this.pUd;
+          localObject2 = this.tqe;
           paramInt2 = paramInt1;
           if (localObject1 != null)
           {
@@ -134,10 +133,10 @@ public final class s
         }
         paramInt1 = paramInt2;
       }
-      com.tencent.mm.kernel.g.aAh().hqK.endTransaction(l3);
+      com.tencent.mm.kernel.h.aHG().kcF.endTransaction(l3);
       Log.i("MicroMsg.NetSceneBatchGetCardItem", "onGYNetEnd do transaction use time %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
       Log.e("MicroMsg.NetSceneBatchGetCardItem", "onGYNetEnd, deal CardObject %d fail of %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      l.cxE();
+      l.cLg();
       if (params.size() > 0)
       {
         paramInt1 = (int)(System.currentTimeMillis() - l1);
@@ -162,7 +161,7 @@ public final class s
         paramArrayOfByte.add(localObject2);
         paramArrayOfByte.add(localObject3);
         paramArrayOfByte.add(localIDKey);
-        com.tencent.mm.plugin.report.service.h.CyF.b(paramArrayOfByte, true);
+        com.tencent.mm.plugin.report.service.h.IzE.b(paramArrayOfByte, true);
       }
     }
     this.callback.onSceneEnd(0, 0, paramString, this);

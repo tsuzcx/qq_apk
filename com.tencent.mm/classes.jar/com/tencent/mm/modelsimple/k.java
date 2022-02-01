@@ -1,17 +1,17 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ajp;
-import com.tencent.mm.protocal.protobuf.ajq;
+import com.tencent.mm.protocal.protobuf.akq;
+import com.tencent.mm.protocal.protobuf.akr;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class k
@@ -26,13 +26,13 @@ public final class k
     AppMethodBeat.i(20617);
     Log.i("MicroMsg.NetSceneEnterTempSession", "NetSceneEnterTempSession %s, %s, %s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new ajp();
-    ((d.a)localObject).iLO = new ajq();
+    ((d.a)localObject).lBU = new akq();
+    ((d.a)localObject).lBV = new akr();
     ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/entertempsession";
     ((d.a)localObject).funcId = 1066;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
+    this.rr = ((d.a)localObject).bgN();
     if (paramString2 != null)
     {
       localObject = paramString2;
@@ -44,14 +44,14 @@ public final class k
     }
     for (localObject = paramString2.substring(0, 32);; localObject = "")
     {
-      paramString2 = (ajp)this.rr.iLK.iLR;
-      paramString2.KSV = paramString1;
-      paramString2.xub = paramInt;
-      paramString2.Lte = b.bfZ((String)localObject);
+      paramString2 = (akq)d.b.b(this.rr.lBR);
+      paramString2.RTS = paramString1;
+      paramString2.Cqs = paramInt;
+      paramString2.Svz = b.bss((String)localObject);
       if (paramArrayOfByte == null) {}
-      for (paramString2.Lqr = b.cD(new byte[0]);; paramString2.Lqr = b.cD(paramArrayOfByte))
+      for (paramString2.SrO = b.cU(new byte[0]);; paramString2.SrO = b.cU(paramArrayOfByte))
       {
-        Log.i("MicroMsg.NetSceneEnterTempSession", "NetSceneEnterTempSession %s, %s, %s", new Object[] { paramString1, Integer.valueOf(paramInt), Integer.valueOf(paramString2.Lqr.zy.length) });
+        Log.i("MicroMsg.NetSceneEnterTempSession", "NetSceneEnterTempSession %s, %s, %s", new Object[] { paramString1, Integer.valueOf(paramInt), Integer.valueOf(paramString2.SrO.UH.length) });
         AppMethodBeat.o(20617);
         return;
       }
@@ -82,7 +82,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.modelsimple.k
  * JD-Core Version:    0.7.0.1
  */

@@ -2,13 +2,13 @@ package com.tencent.mm.media.widget.camerarecordview.preview;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16})
+@l(iBK={1, 1, 16})
 final class a
   implements Runnable
 {
   a(kotlin.g.a.a parama)
   {
-    this.cuq = parama;
+    this.csv = parama;
   }
 }
 

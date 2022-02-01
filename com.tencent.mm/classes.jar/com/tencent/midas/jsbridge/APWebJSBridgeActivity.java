@@ -38,18 +38,18 @@ public class APWebJSBridgeActivity
   private static final String TAG = "APWebJSBridgeActivity";
   private static final String VALUE_PURE_H5 = "value_pure_h5_pay";
   private static final String WEB_URL_POST = "/index.html";
-  private static final String WEB_URL_PRE = "http://youxi.vip.qq.com/m/act/";
+  private static final String WEB_URL_PRE = "https://youxi.vip.qq.com/m/act/";
   private byte _hellAccFlag_;
   private IAPWebPage webPage = null;
   
   private String constructUrl()
   {
-    AppMethodBeat.i(192856);
+    AppMethodBeat.i(253207);
     String str1;
     Object localObject;
     if (TextUtils.isEmpty(APPluginDataInterface.singleton().getDiscountUrl()))
     {
-      str1 = "http://youxi.vip.qq.com/m/act/" + APPluginDataInterface.singleton().getOfferId() + "/index.html";
+      str1 = "https://youxi.vip.qq.com/m/act/" + APPluginDataInterface.singleton().getOfferId() + "/index.html";
       str2 = APMidasTools.getUrlParamsValue(str1, APWebProtocol.URL_KEY_HEAD_CONTROL);
       localObject = APMidasTools.getUrlParamsValue(str1, APWebProtocol.URL_KEY_HEAD_TITLE);
       this.webPage.initHead(this, str2, (String)localObject);
@@ -75,7 +75,7 @@ public class APWebJSBridgeActivity
     {
       str1 = str2 + APMidasTools.map2UrlParams((HashMap)localObject);
       APLog.i("constructUrl", str1);
-      AppMethodBeat.o(192856);
+      AppMethodBeat.o(253207);
       return str1;
       str1 = APPluginDataInterface.singleton().getDiscountUrl();
       str2 = APMidasTools.getUrlParamsValue(str1, APWebProtocol.URL_KEY_HEAD_CONTROL);
@@ -88,7 +88,7 @@ public class APWebJSBridgeActivity
   
   private String getPureH5PayURLParameters(APMidasBaseRequest paramAPMidasBaseRequest)
   {
-    AppMethodBeat.i(192847);
+    AppMethodBeat.i(253192);
     HashMap localHashMap = new HashMap();
     localHashMap.put("m", "buy");
     localHashMap.put("_version", "v3");
@@ -134,7 +134,7 @@ public class APWebJSBridgeActivity
     for (;;)
     {
       paramAPMidasBaseRequest = map2UrlParams(localHashMap);
-      AppMethodBeat.o(192847);
+      AppMethodBeat.o(253192);
       return paramAPMidasBaseRequest;
       if ("itopid".equals(paramAPMidasBaseRequest.sessionId))
       {
@@ -202,31 +202,31 @@ public class APWebJSBridgeActivity
   
   private void initUI()
   {
-    AppMethodBeat.i(192853);
+    AppMethodBeat.i(253203);
     this.webPage.initUI(this);
     this.webPage.loadUrl(constructUrl());
-    AppMethodBeat.o(192853);
+    AppMethodBeat.o(253203);
   }
   
   private void initWebPage()
   {
-    AppMethodBeat.i(192852);
+    AppMethodBeat.i(253200);
     APPluginReportManager.getInstance().insertData(APPluginDataInterface.singleton().getLaunchInterface(), "sdk.plugin.webpage.init", "", "");
     if (APX5.isX5Enabled(this))
     {
       this.webPage = new APX5WebPage();
       APPluginReportManager.getInstance().insertData(APPluginDataInterface.singleton().getLaunchInterface(), "sdk.plugin.webpage.x5", "", "");
-      AppMethodBeat.o(192852);
+      AppMethodBeat.o(253200);
       return;
     }
     this.webPage = new APSystemWebPage();
     APPluginReportManager.getInstance().insertData(APPluginDataInterface.singleton().getLaunchInterface(), "sdk.plugin.webpage.system", "", "");
-    AppMethodBeat.o(192852);
+    AppMethodBeat.o(253200);
   }
   
   public static String map2UrlParams(HashMap<String, String> paramHashMap)
   {
-    AppMethodBeat.i(192848);
+    AppMethodBeat.i(253193);
     StringBuffer localStringBuffer = new StringBuffer();
     try
     {
@@ -245,7 +245,7 @@ public class APWebJSBridgeActivity
     catch (Exception paramHashMap) {}
     for (;;)
     {
-      AppMethodBeat.o(192848);
+      AppMethodBeat.o(253193);
       return paramHashMap;
       if (!TextUtils.isEmpty(localStringBuffer)) {
         localStringBuffer.deleteCharAt(localStringBuffer.length() - 1);
@@ -255,69 +255,69 @@ public class APWebJSBridgeActivity
   
   private static boolean startPureH5Pay(Context paramContext, APMidasBaseRequest paramAPMidasBaseRequest)
   {
-    AppMethodBeat.i(192851);
+    AppMethodBeat.i(253198);
     if (paramContext == null)
     {
       APLog.e("APWebJSBridgeActivity", "Cannot start pure h5 pay with null context!");
-      AppMethodBeat.o(192851);
+      AppMethodBeat.o(253198);
       return false;
     }
     Intent localIntent = new Intent();
     localIntent.setClass(paramContext, APWebJSBridgeActivity.class);
     localIntent.putExtra("key_pure_h5_pay", "value_pure_h5_pay");
     localIntent.putExtra("key_request", paramAPMidasBaseRequest);
-    paramAPMidasBaseRequest = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramAPMidasBaseRequest.axQ(), "com/tencent/midas/jsbridge/APWebJSBridgeActivity", "startPureH5Pay", "(Landroid/content/Context;Lcom/tencent/midas/api/request/APMidasBaseRequest;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramAPMidasBaseRequest.pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/midas/jsbridge/APWebJSBridgeActivity", "startPureH5Pay", "(Landroid/content/Context;Lcom/tencent/midas/api/request/APMidasBaseRequest;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(192851);
+    paramAPMidasBaseRequest = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramAPMidasBaseRequest.aFh(), "com/tencent/midas/jsbridge/APWebJSBridgeActivity", "startPureH5Pay", "(Landroid/content/Context;Lcom/tencent/midas/api/request/APMidasBaseRequest;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramAPMidasBaseRequest.sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/midas/jsbridge/APWebJSBridgeActivity", "startPureH5Pay", "(Landroid/content/Context;Lcom/tencent/midas/api/request/APMidasBaseRequest;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(253198);
     return true;
   }
   
   public static boolean startPureH5Pay(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192850);
+    AppMethodBeat.i(253197);
     APLog.d("APWebJSBridgeActivity", " Calling into startPureH5Pay caller = " + java.lang.Thread.currentThread().getStackTrace()[3].toString());
     APPluginReportManager.getInstance().reportImmediatelyOneRecord("launchpay", "sdk.plugin.pureH5.error.reason", "scene=" + paramString2 + "&reason=" + paramString1);
     if (paramContext == null)
     {
       APLog.e("APWebJSBridgeActivity", "Cannot start pure h5 pay with null context!");
-      AppMethodBeat.o(192850);
+      AppMethodBeat.o(253197);
       return false;
     }
     paramContext = APMidasPayHelper.requestObject;
     if (paramContext == null)
     {
       APLog.e("APWebJSBridgeActivity", "Cannot start pure h5 pay with null request object!");
-      AppMethodBeat.o(192850);
+      AppMethodBeat.o(253197);
       return false;
     }
     paramString1 = APMidasPayHelper.staticActivityContext;
     if (paramString1 == null)
     {
       APLog.e("APWebJSBridgeActivity", "Cannot start pure h5 pay with null activity object!");
-      AppMethodBeat.o(192850);
+      AppMethodBeat.o(253197);
       return false;
     }
     APMidasPayHelper.staticActivityContext = null;
     boolean bool = startPureH5Pay(paramString1, paramContext);
-    AppMethodBeat.o(192850);
+    AppMethodBeat.o(253197);
     return bool;
   }
   
   private void toPureH5Pay(APMidasBaseRequest paramAPMidasBaseRequest)
   {
-    AppMethodBeat.i(192849);
+    AppMethodBeat.i(253195);
     this.webPage.toPureH5Pay(this, paramAPMidasBaseRequest);
     paramAPMidasBaseRequest = "https://pay.qq.com/h5/index.shtml?" + getPureH5PayURLParameters(paramAPMidasBaseRequest);
     APLog.d("APWebJSBridgeActivity", "To pure h5 pay full url = ".concat(String.valueOf(paramAPMidasBaseRequest)));
     this.webPage.loadUrl(paramAPMidasBaseRequest);
-    AppMethodBeat.o(192849);
+    AppMethodBeat.o(253195);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(192846);
+    AppMethodBeat.i(253191);
     super.onCreate(paramBundle);
     try
     {
@@ -327,11 +327,11 @@ public class APWebJSBridgeActivity
       if ((paramBundle != null) && ("value_pure_h5_pay".equals(paramBundle.getStringExtra("key_pure_h5_pay"))))
       {
         toPureH5Pay((APMidasBaseRequest)paramBundle.getSerializableExtra("key_request"));
-        AppMethodBeat.o(192846);
+        AppMethodBeat.o(253191);
         return;
       }
       initUI();
-      AppMethodBeat.o(192846);
+      AppMethodBeat.o(253191);
       return;
     }
     catch (Exception paramBundle)
@@ -342,13 +342,13 @@ public class APWebJSBridgeActivity
       }
       APPluginUtils.callbackInMidasPluginWithoutCaringAboutNewProcess(this, 100, "返回");
       finish();
-      AppMethodBeat.o(192846);
+      AppMethodBeat.o(253191);
     }
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(192857);
+    AppMethodBeat.i(253208);
     if (paramInt == 4)
     {
       APLog.d("APWebJSBridgeActivity", "onKey down = back!");
@@ -359,22 +359,22 @@ public class APWebJSBridgeActivity
       finish();
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(192857);
+    AppMethodBeat.o(253208);
     return bool;
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(192854);
+    AppMethodBeat.i(253204);
     super.onResume();
-    AppMethodBeat.o(192854);
+    AppMethodBeat.o(253204);
   }
   
   protected void onStart()
   {
-    AppMethodBeat.i(192855);
+    AppMethodBeat.i(253206);
     super.onStart();
-    AppMethodBeat.o(192855);
+    AppMethodBeat.o(253206);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -385,7 +385,7 @@ public class APWebJSBridgeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.jsbridge.APWebJSBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

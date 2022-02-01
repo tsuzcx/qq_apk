@@ -1,99 +1,64 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
 
 public final class dtw
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public long KHA;
-  public String KHz;
-  public String MVG;
-  public String jGZ;
+  public String Uaa;
+  public String Uab;
+  public int Uac;
+  public int Uad = 0;
+  public String Uae;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152690);
+    AppMethodBeat.i(117895);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.jGZ == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: tp_username");
-        AppMethodBeat.o(152690);
-        throw paramVarArgs;
+      if (this.Uaa != null) {
+        paramVarArgs.f(1, this.Uaa);
       }
-      if (this.MVG == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: verify_content");
-        AppMethodBeat.o(152690);
-        throw paramVarArgs;
+      if (this.Uab != null) {
+        paramVarArgs.f(2, this.Uab);
       }
-      if (this.KHz == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: antispam_ticket");
-        AppMethodBeat.o(152690);
-        throw paramVarArgs;
+      paramVarArgs.aY(3, this.Uac);
+      paramVarArgs.aY(4, this.Uad);
+      if (this.Uae != null) {
+        paramVarArgs.f(5, this.Uae);
       }
-      if (this.jGZ != null) {
-        paramVarArgs.e(1, this.jGZ);
-      }
-      if (this.MVG != null) {
-        paramVarArgs.e(2, this.MVG);
-      }
-      if (this.KHz != null) {
-        paramVarArgs.e(3, this.KHz);
-      }
-      paramVarArgs.bb(4, this.KHA);
-      AppMethodBeat.o(152690);
+      AppMethodBeat.o(117895);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.jGZ == null) {
-        break label522;
+      if (this.Uaa == null) {
+        break label422;
       }
     }
-    label522:
-    for (int i = g.a.a.b.b.a.f(1, this.jGZ) + 0;; i = 0)
+    label422:
+    for (paramInt = g.a.a.b.b.a.g(1, this.Uaa) + 0;; paramInt = 0)
     {
+      int i = paramInt;
+      if (this.Uab != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.Uab);
+      }
+      i = i + g.a.a.b.b.a.bM(3, this.Uac) + g.a.a.b.b.a.bM(4, this.Uad);
       paramInt = i;
-      if (this.MVG != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.MVG);
+      if (this.Uae != null) {
+        paramInt = i + g.a.a.b.b.a.g(5, this.Uae);
       }
-      i = paramInt;
-      if (this.KHz != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.KHz);
-      }
-      paramInt = g.a.a.b.b.a.r(4, this.KHA);
-      AppMethodBeat.o(152690);
-      return i + paramInt;
+      AppMethodBeat.o(117895);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.jGZ == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: tp_username");
-          AppMethodBeat.o(152690);
-          throw paramVarArgs;
-        }
-        if (this.MVG == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: verify_content");
-          AppMethodBeat.o(152690);
-          throw paramVarArgs;
-        }
-        if (this.KHz == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: antispam_ticket");
-          AppMethodBeat.o(152690);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(152690);
+        AppMethodBeat.o(117895);
         return 0;
       }
       if (paramInt == 3)
@@ -103,26 +68,30 @@ public final class dtw
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(152690);
+          AppMethodBeat.o(117895);
           return -1;
         case 1: 
-          localdtw.jGZ = locala.UbS.readString();
-          AppMethodBeat.o(152690);
+          localdtw.Uaa = locala.abFh.readString();
+          AppMethodBeat.o(117895);
           return 0;
         case 2: 
-          localdtw.MVG = locala.UbS.readString();
-          AppMethodBeat.o(152690);
+          localdtw.Uab = locala.abFh.readString();
+          AppMethodBeat.o(117895);
           return 0;
         case 3: 
-          localdtw.KHz = locala.UbS.readString();
-          AppMethodBeat.o(152690);
+          localdtw.Uac = locala.abFh.AK();
+          AppMethodBeat.o(117895);
+          return 0;
+        case 4: 
+          localdtw.Uad = locala.abFh.AK();
+          AppMethodBeat.o(117895);
           return 0;
         }
-        localdtw.KHA = locala.UbS.zl();
-        AppMethodBeat.o(152690);
+        localdtw.Uae = locala.abFh.readString();
+        AppMethodBeat.o(117895);
         return 0;
       }
-      AppMethodBeat.o(152690);
+      AppMethodBeat.o(117895);
       return -1;
     }
   }

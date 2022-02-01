@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/k6" android:textColor="@color/a2t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:text="@string/jza" />
+    <RelativeLayout android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="59.639984dip">
+        <com.tencent.mm.plugin.hld.view.ImeSeekBar android:id="@id/ksz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/k6" android:textColor="@color/a2t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:text="@string/jz_" />
+    <RelativeLayout android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="59.639984dip">
+        <com.tencent.mm.plugin.hld.view.ImeSeekBar android:id="@id/ksy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

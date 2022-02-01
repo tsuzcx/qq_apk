@@ -3,79 +3,57 @@ package com.tencent.mm.plugin.game.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dr
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String xIB;
-  public String xIJ;
-  public String xNi;
-  public String xNj;
-  public String xNk;
-  public boolean xNl;
-  public boolean xNm;
+  public String CMD;
+  public String CNj;
+  public String CRr;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41833);
+    AppMethodBeat.i(41832);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.xIJ != null) {
-        paramVarArgs.e(1, this.xIJ);
+      if (this.CRr != null) {
+        paramVarArgs.f(1, this.CRr);
       }
-      if (this.xNi != null) {
-        paramVarArgs.e(2, this.xNi);
+      if (this.CNj != null) {
+        paramVarArgs.f(2, this.CNj);
       }
-      if (this.xNj != null) {
-        paramVarArgs.e(3, this.xNj);
+      if (this.CMD != null) {
+        paramVarArgs.f(3, this.CMD);
       }
-      if (this.xNk != null) {
-        paramVarArgs.e(4, this.xNk);
-      }
-      if (this.xIB != null) {
-        paramVarArgs.e(5, this.xIB);
-      }
-      paramVarArgs.cc(6, this.xNl);
-      paramVarArgs.cc(7, this.xNm);
-      AppMethodBeat.o(41833);
+      AppMethodBeat.o(41832);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.xIJ == null) {
-        break label546;
+      if (this.CRr == null) {
+        break label334;
       }
     }
-    label546:
-    for (int i = g.a.a.b.b.a.f(1, this.xIJ) + 0;; i = 0)
+    label334:
+    for (int i = g.a.a.b.b.a.g(1, this.CRr) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.xNi != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.xNi);
+      if (this.CNj != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.CNj);
       }
       i = paramInt;
-      if (this.xNj != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.xNj);
+      if (this.CMD != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.CMD);
       }
-      paramInt = i;
-      if (this.xNk != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.xNk);
-      }
-      i = paramInt;
-      if (this.xIB != null) {
-        i = paramInt + g.a.a.b.b.a.f(5, this.xIB);
-      }
-      paramInt = g.a.a.b.b.a.fS(6);
-      int j = g.a.a.b.b.a.fS(7);
-      AppMethodBeat.o(41833);
-      return i + (paramInt + 1) + (j + 1);
+      AppMethodBeat.o(41832);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(41833);
+        AppMethodBeat.o(41832);
         return 0;
       }
       if (paramInt == 3)
@@ -85,45 +63,29 @@ public final class dr
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(41833);
+          AppMethodBeat.o(41832);
           return -1;
         case 1: 
-          localdr.xIJ = locala.UbS.readString();
-          AppMethodBeat.o(41833);
+          localdr.CRr = locala.abFh.readString();
+          AppMethodBeat.o(41832);
           return 0;
         case 2: 
-          localdr.xNi = locala.UbS.readString();
-          AppMethodBeat.o(41833);
-          return 0;
-        case 3: 
-          localdr.xNj = locala.UbS.readString();
-          AppMethodBeat.o(41833);
-          return 0;
-        case 4: 
-          localdr.xNk = locala.UbS.readString();
-          AppMethodBeat.o(41833);
-          return 0;
-        case 5: 
-          localdr.xIB = locala.UbS.readString();
-          AppMethodBeat.o(41833);
-          return 0;
-        case 6: 
-          localdr.xNl = locala.UbS.yZ();
-          AppMethodBeat.o(41833);
+          localdr.CNj = locala.abFh.readString();
+          AppMethodBeat.o(41832);
           return 0;
         }
-        localdr.xNm = locala.UbS.yZ();
-        AppMethodBeat.o(41833);
+        localdr.CMD = locala.abFh.readString();
+        AppMethodBeat.o(41832);
         return 0;
       }
-      AppMethodBeat.o(41833);
+      AppMethodBeat.o(41832);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.dr
  * JD-Core Version:    0.7.0.1
  */

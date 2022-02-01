@@ -1,8 +1,9 @@
 package com.tencent.kinda.framework.app;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBar;
+import androidx.appcompat.app.ActionBar;
+import androidx.fragment.app.FragmentActivity;
+import com.tencent.kinda.framework.R.layout;
 import com.tencent.kinda.framework.widget.PlatformWrapLayout;
 import com.tencent.kinda.framework.widget.base.BaseFragment;
 import com.tencent.kinda.framework.widget.base.MMKViewLayout;
@@ -11,9 +12,11 @@ import com.tencent.kinda.gen.IUIPage;
 import com.tencent.kinda.gen.NavigationBarConfig;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.t;
+import com.tencent.mm.ui.w;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
+import com.tencent.mm.ui.widget.pulldown.c;
 
+@c(0)
 public class MainFragment
   extends BaseFragment
 {
@@ -75,7 +78,7 @@ public class MainFragment
   
   public int getLayoutId()
   {
-    return 2131495146;
+    return R.layout.kinda_main_container_layout_with_keyboard;
   }
   
   public String getTagName()
@@ -97,14 +100,14 @@ public class MainFragment
   
   public void initPagePlatformDelegate()
   {
-    AppMethodBeat.i(214428);
+    AppMethodBeat.i(265202);
     super.initPagePlatformDelegate();
     if (this.page != null)
     {
       this.page.setPlatformFuncDelegate(this.pagePlatformFuncDelegate);
       this.page.setPlatformDelegate(this.pagePlatformDelegate);
     }
-    AppMethodBeat.o(214428);
+    AppMethodBeat.o(265202);
   }
   
   public boolean onBackPressed()
@@ -151,11 +154,11 @@ public class MainFragment
   
   public void onKeyboardShow(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(214429);
+    AppMethodBeat.i(265204);
     if (this.pagePlatformFuncDelegate != null) {
       this.pagePlatformFuncDelegate.onKeyboardShow(paramBoolean, paramInt);
     }
-    AppMethodBeat.o(214429);
+    AppMethodBeat.o(265204);
   }
   
   public void onPause()
@@ -211,7 +214,7 @@ public class MainFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.app.MainFragment
  * JD-Core Version:    0.7.0.1
  */

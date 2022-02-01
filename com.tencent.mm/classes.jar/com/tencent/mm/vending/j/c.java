@@ -5,17 +5,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class c<$1, $2>
   extends b<$1>
 {
-  public final $2 hdN()
+  public final $2 ieU()
   {
-    AppMethodBeat.i(258612);
+    AppMethodBeat.i(292714);
     Object localObject = get(1);
-    AppMethodBeat.o(258612);
+    AppMethodBeat.o(292714);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.vending.j.c
  * JD-Core Version:    0.7.0.1
  */

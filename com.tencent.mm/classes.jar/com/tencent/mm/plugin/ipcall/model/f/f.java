@@ -6,32 +6,32 @@ import com.tencent.mm.plugin.report.service.h;
 public final class f
   extends a
 {
-  public int yrZ = 0;
-  public int ysa = 0;
-  public int ysb = 0;
-  public int ysc = 0;
-  public int ysd = -9999;
-  public String yse = "";
-  public int ysf = 0;
-  public int ysg = 0;
+  public int DSb = 0;
+  public int DSc = 0;
+  public int DSd = 0;
+  public int DSe = 0;
+  public int DSf = -9999;
+  public String DSg = "";
+  public int DSh = 0;
+  public int DSi = 0;
   
-  protected final void bUV()
+  protected final void cig()
   {
     AppMethodBeat.i(25504);
-    h.CyF.a(14182, new Object[] { Integer.valueOf(this.yrZ), Integer.valueOf(this.ysa), Integer.valueOf(this.ysb), Integer.valueOf(this.ysc), Integer.valueOf(this.ysd), this.yse, Integer.valueOf(this.ysf), Integer.valueOf(this.ysg) });
+    h.IzE.a(14182, new Object[] { Integer.valueOf(this.DSb), Integer.valueOf(this.DSc), Integer.valueOf(this.DSd), Integer.valueOf(this.DSe), Integer.valueOf(this.DSf), this.DSg, Integer.valueOf(this.DSh), Integer.valueOf(this.DSi) });
     AppMethodBeat.o(25504);
   }
   
   public final void reset()
   {
-    this.yrZ = 0;
-    this.ysa = 0;
-    this.ysb = 0;
-    this.ysc = 0;
-    this.ysd = -9999;
-    this.yse = "";
-    this.ysf = 0;
-    this.ysg = 0;
+    this.DSb = 0;
+    this.DSc = 0;
+    this.DSd = 0;
+    this.DSe = 0;
+    this.DSf = -9999;
+    this.DSg = "";
+    this.DSh = 0;
+    this.DSi = 0;
   }
   
   public final void start()
@@ -43,7 +43,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.f.f
  * JD-Core Version:    0.7.0.1
  */

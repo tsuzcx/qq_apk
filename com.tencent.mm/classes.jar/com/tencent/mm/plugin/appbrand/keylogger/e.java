@@ -11,64 +11,64 @@ import java.util.regex.Pattern;
 public final class e
   implements c
 {
-  private static final Pattern mPj;
-  c mPk = null;
+  private static final Pattern pQc;
+  c pQd = null;
   
   static
   {
-    AppMethodBeat.i(221311);
-    mPj = Pattern.compile(String.format("%s(.*)%s", new Object[] { "<kLog>", "</kLog>" }));
-    AppMethodBeat.o(221311);
+    AppMethodBeat.i(207620);
+    pQc = Pattern.compile(String.format("%s(.*)%s", new Object[] { "<kLog>", "</kLog>" }));
+    AppMethodBeat.o(207620);
   }
   
-  public static String abS(String paramString)
+  public static String ajN(String paramString)
   {
-    AppMethodBeat.i(221310);
+    AppMethodBeat.i(207618);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(221310);
+      AppMethodBeat.o(207618);
       return paramString;
     }
-    paramString = mPj.matcher(paramString);
+    paramString = pQc.matcher(paramString);
     if (paramString.find())
     {
       paramString = paramString.group(1);
-      AppMethodBeat.o(221310);
+      AppMethodBeat.o(207618);
       return paramString;
     }
-    AppMethodBeat.o(221310);
+    AppMethodBeat.o(207618);
     return null;
   }
   
   public final List<String> V(String paramString, long paramLong)
   {
-    AppMethodBeat.i(221309);
-    if (this.mPk == null)
+    AppMethodBeat.i(207616);
+    if (this.pQd == null)
     {
       paramString = new ArrayList();
-      AppMethodBeat.o(221309);
+      AppMethodBeat.o(207616);
       return paramString;
     }
-    paramString = this.mPk.V(paramString, paramLong);
-    AppMethodBeat.o(221309);
+    paramString = this.pQd.V(paramString, paramLong);
+    AppMethodBeat.o(207616);
     return paramString;
   }
   
-  public final void g(String paramString1, String paramString2, Object... paramVarArgs)
+  public final void h(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(221308);
-    if (this.mPk == null)
+    AppMethodBeat.i(207614);
+    if (this.pQd == null)
     {
-      AppMethodBeat.o(221308);
+      AppMethodBeat.o(207614);
       return;
     }
-    this.mPk.g(paramString1, String.format("%s%s%s", new Object[] { "<kLog>", paramString2, "</kLog>" }), paramVarArgs);
-    AppMethodBeat.o(221308);
+    this.pQd.h(paramString1, String.format("%s%s%s", new Object[] { "<kLog>", paramString2, "</kLog>" }), paramVarArgs);
+    AppMethodBeat.o(207614);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.e
  * JD-Core Version:    0.7.0.1
  */

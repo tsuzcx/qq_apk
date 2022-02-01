@@ -6,18 +6,18 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "succ", "", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "succ", "", "invoke"})
 final class DevFinderRecordPluginLayout$b
   extends q
   implements b<Boolean, x>
 {
-  public static final b wgA;
+  public static final b APV;
   
   static
   {
-    AppMethodBeat.i(254421);
-    wgA = new b();
-    AppMethodBeat.o(254421);
+    AppMethodBeat.i(270122);
+    APV = new b();
+    AppMethodBeat.o(270122);
   }
   
   DevFinderRecordPluginLayout$b()

@@ -28,6 +28,14 @@ import com.tencent.mm.opensdk.modelbiz.SubscribeMessage.Req;
 import com.tencent.mm.opensdk.modelbiz.SubscribeMessage.Resp;
 import com.tencent.mm.opensdk.modelbiz.SubscribeMiniProgramMsg.Req;
 import com.tencent.mm.opensdk.modelbiz.SubscribeMiniProgramMsg.Resp;
+import com.tencent.mm.opensdk.modelbiz.WXChannelOpenFeed.Req;
+import com.tencent.mm.opensdk.modelbiz.WXChannelOpenFeed.Resp;
+import com.tencent.mm.opensdk.modelbiz.WXChannelOpenLive.Req;
+import com.tencent.mm.opensdk.modelbiz.WXChannelOpenLive.Resp;
+import com.tencent.mm.opensdk.modelbiz.WXChannelOpenProfile.Req;
+import com.tencent.mm.opensdk.modelbiz.WXChannelOpenProfile.Resp;
+import com.tencent.mm.opensdk.modelbiz.WXChannelShareVideo.Req;
+import com.tencent.mm.opensdk.modelbiz.WXChannelShareVideo.Resp;
 import com.tencent.mm.opensdk.modelbiz.WXInvoiceAuthInsert.Req;
 import com.tencent.mm.opensdk.modelbiz.WXInvoiceAuthInsert.Resp;
 import com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgram.Req;
@@ -58,6 +66,8 @@ import com.tencent.mm.opensdk.modelmsg.ShowMessageFromWX.Req;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
 import com.tencent.mm.opensdk.modelmsg.WXMiniProgramObject;
+import com.tencent.mm.opensdk.modelmsg.WXStateSceneDataObject;
+import com.tencent.mm.opensdk.modelmsg.WXTextObject;
 import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
 import com.tencent.mm.opensdk.modelpay.JumpToOfflinePay.Resp;
 import com.tencent.mm.opensdk.modelpay.PayResp;
@@ -84,19 +94,22 @@ class BaseWXApiImplV10
   protected boolean checkSignature;
   protected Context context;
   protected boolean detached;
+  private int launchMode;
   private int wxSdkVersion;
   
-  BaseWXApiImplV10(Context paramContext, String paramString, boolean paramBoolean)
+  BaseWXApiImplV10(Context paramContext, String paramString, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(3790);
+    AppMethodBeat.i(254372);
     this.checkSignature = false;
     this.detached = false;
-    Log.d("MicroMsg.SDK.WXApiImplV10", "<init>, appId = " + paramString + ", checkSignature = " + paramBoolean);
+    this.launchMode = 2;
+    Log.d("MicroMsg.SDK.WXApiImplV10", "<init>, appId = " + paramString + ", checkSignature = " + paramBoolean + ", launchMode = " + paramInt);
     this.context = paramContext;
     this.appId = paramString;
     this.checkSignature = paramBoolean;
+    this.launchMode = paramInt;
     b.a = paramContext.getApplicationContext();
-    AppMethodBeat.o(3790);
+    AppMethodBeat.o(254372);
   }
   
   private boolean checkSumConsistent(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
@@ -143,7 +156,7 @@ class BaseWXApiImplV10
   private String getTokenFromWX(Context paramContext)
   {
     AppMethodBeat.i(3800);
-    paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/genTokenForOpenSdk"), null, null, new String[] { this.appId, "637928960" }, null);
+    paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/genTokenForOpenSdk"), null, null, new String[] { this.appId, "637992960" }, null);
     if ((paramContext != null) && (paramContext.moveToFirst()))
     {
       String str = paramContext.getString(0);
@@ -224,7 +237,7 @@ class BaseWXApiImplV10
         return true;
       }
       if (("subscribeminiprogrammsg".equals(localObject)) || ("5".equals(localObject))) {
-        break label442;
+        break label445;
       }
       Log.e("MicroMsg.SDK.WXApiImplV10", "this open sdk version not support the request type");
     }
@@ -239,7 +252,7 @@ class BaseWXApiImplV10
     }
     AppMethodBeat.o(3795);
     return false;
-    label442:
+    label445:
     localObject = new SubscribeMiniProgramMsg.Resp();
     str = paramString.getQueryParameter("ret");
     if ((str != null) && (str.length() > 0)) {
@@ -269,21 +282,25 @@ class BaseWXApiImplV10
   private void launchWXIfNeed()
   {
     AppMethodBeat.i(3802);
-    if (Build.VERSION.SDK_INT >= 29) {
+    if ((Build.VERSION.SDK_INT >= 29) && (this.launchMode == 2))
+    {
       launchWXUsingPendingIntent();
+      AppMethodBeat.o(3802);
+      return;
     }
+    openWXApp();
     AppMethodBeat.o(3802);
   }
   
   private void launchWXUsingPendingIntent()
   {
-    AppMethodBeat.i(190369);
+    AppMethodBeat.i(254380);
     if (!this.detached)
     {
       if (!isWXAppInstalled())
       {
         Log.e("MicroMsg.SDK.WXApiImplV10", "openWXApp failed, not installed or signature check failed");
-        AppMethodBeat.o(190369);
+        AppMethodBeat.o(254380);
         return;
       }
       try
@@ -294,24 +311,24 @@ class BaseWXApiImplV10
         {
           public void onSendFinished(PendingIntent paramAnonymousPendingIntent, Intent paramAnonymousIntent, int paramAnonymousInt, String paramAnonymousString, Bundle paramAnonymousBundle)
           {
-            AppMethodBeat.i(190353);
+            AppMethodBeat.i(253496);
             Log.d("MicroMsg.SDK.WXApiImplV10", "onSendFinished resultCode: " + paramAnonymousInt + ", resultData: " + paramAnonymousString);
-            AppMethodBeat.o(190353);
+            AppMethodBeat.o(253496);
           }
         }, null);
-        AppMethodBeat.o(190369);
+        AppMethodBeat.o(254380);
         return;
       }
       catch (Exception localException)
       {
         Log.e("MicroMsg.SDK.WXApiImplV10", "launchWXUsingPendingIntent pendingIntent send failed: " + localException.getMessage());
         openWXApp();
-        AppMethodBeat.o(190369);
+        AppMethodBeat.o(254380);
         return;
       }
     }
     IllegalStateException localIllegalStateException = new IllegalStateException("openWXApp fail, WXMsgImpl has been detached");
-    AppMethodBeat.o(190369);
+    AppMethodBeat.o(254380);
     throw localIllegalStateException;
   }
   
@@ -336,6 +353,62 @@ class BaseWXApiImplV10
       paramContext.close();
     }
     AppMethodBeat.o(3804);
+    return true;
+  }
+  
+  private boolean sendFinderOpenFeed(Context paramContext, BaseReq paramBaseReq)
+  {
+    AppMethodBeat.i(254400);
+    launchWXIfNeed();
+    Log.i("MicroMsg.SDK.WXApiImplV10", "sendFinderOpenFeed");
+    paramBaseReq = (WXChannelOpenFeed.Req)paramBaseReq;
+    paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/finderOpenFeed"), null, null, new String[] { this.appId, paramBaseReq.feedID, paramBaseReq.nonceID, String.valueOf(paramBaseReq.notGetReleatedList) }, null);
+    if (paramContext != null) {
+      paramContext.close();
+    }
+    AppMethodBeat.o(254400);
+    return true;
+  }
+  
+  private boolean sendFinderOpenLive(Context paramContext, BaseReq paramBaseReq)
+  {
+    AppMethodBeat.i(254399);
+    launchWXIfNeed();
+    Log.i("MicroMsg.SDK.WXApiImplV10", "sendFinderOpenLive");
+    paramBaseReq = (WXChannelOpenLive.Req)paramBaseReq;
+    paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/finderOpenLive"), null, null, new String[] { this.appId, paramBaseReq.feedID, paramBaseReq.nonceID }, null);
+    if (paramContext != null) {
+      paramContext.close();
+    }
+    AppMethodBeat.o(254399);
+    return true;
+  }
+  
+  private boolean sendFinderOpenProfile(Context paramContext, BaseReq paramBaseReq)
+  {
+    AppMethodBeat.i(254398);
+    launchWXIfNeed();
+    Log.i("MicroMsg.SDK.WXApiImplV10", "sendFinderOpenProfile");
+    paramBaseReq = (WXChannelOpenProfile.Req)paramBaseReq;
+    paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/finderOpenProfile"), null, null, new String[] { this.appId, paramBaseReq.userName }, null);
+    if (paramContext != null) {
+      paramContext.close();
+    }
+    AppMethodBeat.o(254398);
+    return true;
+  }
+  
+  private boolean sendFinderShareVideo(Context paramContext, BaseReq paramBaseReq)
+  {
+    AppMethodBeat.i(254397);
+    launchWXIfNeed();
+    Log.i("MicroMsg.SDK.WXApiImplV10", "sendFinderShareVideo");
+    paramBaseReq = (WXChannelShareVideo.Req)paramBaseReq;
+    paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/finderShareVideo"), null, null, new String[] { this.appId, paramBaseReq.videoPath, "", "", paramBaseReq.extData }, null);
+    if (paramContext != null) {
+      paramContext.close();
+    }
+    AppMethodBeat.o(254397);
     return true;
   }
   
@@ -541,6 +614,7 @@ class BaseWXApiImplV10
     localArgs.bundle = paramBundle;
     localArgs.targetPkgName = "com.tencent.mm";
     localArgs.targetClassName = wxappPayEntryClassname;
+    localArgs.launchMode = this.launchMode;
     boolean bool = MMessageActV2.send(paramContext, localArgs);
     AppMethodBeat.o(3801);
     return bool;
@@ -548,13 +622,13 @@ class BaseWXApiImplV10
   
   private boolean sendPreloadWXMiniProgramEnvironment(Context paramContext, BaseReq paramBaseReq)
   {
-    AppMethodBeat.i(190370);
+    AppMethodBeat.i(254394);
     paramBaseReq = (WXPreloadMiniProgramEnvironment.Req)paramBaseReq;
     paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/preloadWXMiniprogramEnvironment"), null, null, new String[] { this.appId, paramBaseReq.extData }, null);
     if (paramContext != null) {
       paramContext.close();
     }
-    AppMethodBeat.o(190370);
+    AppMethodBeat.o(254394);
     return true;
   }
   
@@ -598,7 +672,7 @@ class BaseWXApiImplV10
   
   private boolean sendToWxaRedirectingPage(Context paramContext, BaseReq paramBaseReq)
   {
-    AppMethodBeat.i(190371);
+    AppMethodBeat.i(254395);
     launchWXIfNeed();
     paramBaseReq = (WXLaunchWxaRedirectingPage.Req)paramBaseReq;
     paramContext = paramContext.getContentResolver();
@@ -616,7 +690,7 @@ class BaseWXApiImplV10
     }
     finally
     {
-      AppMethodBeat.o(190371);
+      AppMethodBeat.o(254395);
     }
   }
   
@@ -711,13 +785,13 @@ class BaseWXApiImplV10
         return false;
       }
       if (this.detached) {
-        break label1180;
+        break label1296;
       }
       localObject1 = paramIntent.getStringExtra("_mmessage_content");
       int i = paramIntent.getIntExtra("_mmessage_sdkVersion", 0);
       localObject2 = paramIntent.getStringExtra("_mmessage_appPackage");
       if ((localObject2 == null) || (((String)localObject2).length() == 0)) {
-        break label1164;
+        break label1280;
       }
       if (!checkSumConsistent(paramIntent.getByteArrayExtra("_mmessage_checksum"), com.tencent.mm.opensdk.channel.a.a.a((String)localObject1, i, (String)localObject2)))
       {
@@ -758,6 +832,18 @@ class BaseWXApiImplV10
     }
     AppMethodBeat.o(3794);
     return false;
+    paramIWXAPIEventHandler.onResp(new WXChannelOpenFeed.Resp(paramIntent.getExtras()));
+    AppMethodBeat.o(3794);
+    return true;
+    paramIWXAPIEventHandler.onResp(new WXChannelOpenLive.Resp(paramIntent.getExtras()));
+    AppMethodBeat.o(3794);
+    return true;
+    paramIWXAPIEventHandler.onResp(new WXChannelOpenProfile.Resp(paramIntent.getExtras()));
+    AppMethodBeat.o(3794);
+    return true;
+    paramIWXAPIEventHandler.onResp(new WXChannelShareVideo.Resp(paramIntent.getExtras()));
+    AppMethodBeat.o(3794);
+    return true;
     paramIWXAPIEventHandler.onResp(new WXPreloadMiniProgramEnvironment.Resp(paramIntent.getExtras()));
     AppMethodBeat.o(3794);
     return true;
@@ -864,11 +950,11 @@ class BaseWXApiImplV10
     paramIWXAPIEventHandler.onResp(new SendAuth.Resp(paramIntent.getExtras()));
     AppMethodBeat.o(3794);
     return true;
-    label1164:
+    label1280:
     Log.e("MicroMsg.SDK.WXApiImplV10", "invalid argument");
     AppMethodBeat.o(3794);
     return false;
-    label1180:
+    label1296:
     paramIntent = new IllegalStateException("handleIntent fail, WXMsgImpl has been detached");
     AppMethodBeat.o(3794);
     throw paramIntent;
@@ -916,10 +1002,10 @@ class BaseWXApiImplV10
       {
         Context localContext = this.context;
         Object localObject = this.context.getPackageManager().getLaunchIntentForPackage("com.tencent.mm");
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/opensdk/openapi/BaseWXApiImplV10", "openWXApp", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/opensdk/openapi/BaseWXApiImplV10", "openWXApp", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/opensdk/openapi/BaseWXApiImplV10", "openWXApp", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(localContext, "com/tencent/mm/opensdk/openapi/BaseWXApiImplV10", "openWXApp", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(3798);
         return true;
       }
@@ -988,6 +1074,31 @@ class BaseWXApiImplV10
         AppMethodBeat.o(3799);
         return false;
       }
+      Object localObject1;
+      Object localObject3;
+      if (paramBaseReq.getType() == 2)
+      {
+        localObject1 = (SendMessageToWX.Req)paramBaseReq;
+        if (((SendMessageToWX.Req)localObject1).scene == 4)
+        {
+          localObject2 = ((SendMessageToWX.Req)localObject1).sceneDataObject;
+          if ((localObject2 instanceof WXStateSceneDataObject))
+          {
+            localObject2 = (WXStateSceneDataObject)localObject2;
+            localObject3 = ((SendMessageToWX.Req)localObject1).message;
+            if (((WXMediaMessage)localObject3).mediaObject == null) {
+              ((WXMediaMessage)localObject3).mediaObject = new WXTextObject();
+            }
+            if (((SendMessageToWX.Req)localObject1).message.getType() == 1)
+            {
+              localObject3 = ((WXStateSceneDataObject)localObject2).stateTitle;
+              if ((localObject3 == null) || (((String)localObject3).length() <= 0)) {
+                ((WXStateSceneDataObject)localObject2).stateTitle = ((WXTextObject)((SendMessageToWX.Req)localObject1).message.mediaObject).text;
+              }
+            }
+          }
+        }
+      }
       if (!paramBaseReq.checkArgs())
       {
         Log.e("MicroMsg.SDK.WXApiImplV10", "sendReq checkArgs fail");
@@ -995,31 +1106,31 @@ class BaseWXApiImplV10
         return false;
       }
       Log.i("MicroMsg.SDK.WXApiImplV10", "sendReq, req type = " + paramBaseReq.getType());
-      Bundle localBundle = new Bundle();
-      paramBaseReq.toBundle(localBundle);
+      Object localObject2 = new Bundle();
+      paramBaseReq.toBundle((Bundle)localObject2);
       if ((paramBaseReq.getType() != 5) && (paramBaseReq.getType() != 27))
       {
         if (paramBaseReq.getType() == 9)
         {
-          bool = sendAddCardToWX(this.context, localBundle);
+          bool = sendAddCardToWX(this.context, (Bundle)localObject2);
           AppMethodBeat.o(3799);
           return bool;
         }
         if (paramBaseReq.getType() == 16)
         {
-          bool = sendChooseCardFromWX(this.context, localBundle);
+          bool = sendChooseCardFromWX(this.context, (Bundle)localObject2);
           AppMethodBeat.o(3799);
           return bool;
         }
         if (paramBaseReq.getType() == 11)
         {
-          bool = sendOpenRankListReq(this.context, localBundle);
+          bool = sendOpenRankListReq(this.context, (Bundle)localObject2);
           AppMethodBeat.o(3799);
           return bool;
         }
         if (paramBaseReq.getType() == 12)
         {
-          bool = sendOpenWebview(this.context, localBundle);
+          bool = sendOpenWebview(this.context, (Bundle)localObject2);
           AppMethodBeat.o(3799);
           return bool;
         }
@@ -1031,25 +1142,25 @@ class BaseWXApiImplV10
         }
         if (paramBaseReq.getType() == 13)
         {
-          bool = sendOpenBusiLuckyMoney(this.context, localBundle);
+          bool = sendOpenBusiLuckyMoney(this.context, (Bundle)localObject2);
           AppMethodBeat.o(3799);
           return bool;
         }
         if (paramBaseReq.getType() == 14)
         {
-          bool = createChatroom(this.context, localBundle);
+          bool = createChatroom(this.context, (Bundle)localObject2);
           AppMethodBeat.o(3799);
           return bool;
         }
         if (paramBaseReq.getType() == 15)
         {
-          bool = joinChatroom(this.context, localBundle);
+          bool = joinChatroom(this.context, (Bundle)localObject2);
           AppMethodBeat.o(3799);
           return bool;
         }
         if (paramBaseReq.getType() == 17)
         {
-          bool = sendHandleScanResult(this.context, localBundle);
+          bool = sendHandleScanResult(this.context, (Bundle)localObject2);
           AppMethodBeat.o(3799);
           return bool;
         }
@@ -1101,6 +1212,30 @@ class BaseWXApiImplV10
           AppMethodBeat.o(3799);
           return bool;
         }
+        if (paramBaseReq.getType() == 33)
+        {
+          bool = sendFinderShareVideo(this.context, paramBaseReq);
+          AppMethodBeat.o(3799);
+          return bool;
+        }
+        if (paramBaseReq.getType() == 34)
+        {
+          bool = sendFinderOpenProfile(this.context, paramBaseReq);
+          AppMethodBeat.o(3799);
+          return bool;
+        }
+        if (paramBaseReq.getType() == 35)
+        {
+          bool = sendFinderOpenLive(this.context, paramBaseReq);
+          AppMethodBeat.o(3799);
+          return bool;
+        }
+        if (paramBaseReq.getType() == 36)
+        {
+          bool = sendFinderOpenFeed(this.context, paramBaseReq);
+          AppMethodBeat.o(3799);
+          return bool;
+        }
         if (paramBaseReq.getType() == 20)
         {
           bool = sendInvoiceAuthInsert(this.context, paramBaseReq);
@@ -1121,65 +1256,64 @@ class BaseWXApiImplV10
         }
         if (paramBaseReq.getType() == 24)
         {
-          bool = sendJumpToOfflinePayReq(this.context, localBundle);
+          bool = sendJumpToOfflinePayReq(this.context, (Bundle)localObject2);
           AppMethodBeat.o(3799);
           return bool;
         }
-        SendMessageToWX.Req localReq;
         int i;
-        Object localObject;
         if (paramBaseReq.getType() == 2)
         {
-          localReq = (SendMessageToWX.Req)paramBaseReq;
-          i = localReq.message.getType();
+          localObject3 = (SendMessageToWX.Req)paramBaseReq;
+          i = ((SendMessageToWX.Req)localObject3).message.getType();
           if (b.a(i))
           {
             if (getWXAppSupportAPI() >= 620756993) {
-              break label898;
+              break label1138;
             }
-            localObject = new WXWebpageObject();
-            ((WXWebpageObject)localObject).webpageUrl = localBundle.getString("_wxminiprogram_webpageurl");
-            localReq.message.mediaObject = ((WXMediaMessage.IMediaObject)localObject);
+            localObject1 = new WXWebpageObject();
+            ((WXWebpageObject)localObject1).webpageUrl = ((Bundle)localObject2).getString("_wxminiprogram_webpageurl");
+            ((SendMessageToWX.Req)localObject3).message.mediaObject = ((WXMediaMessage.IMediaObject)localObject1);
           }
         }
         for (;;)
         {
-          i = localReq.scene;
+          i = ((SendMessageToWX.Req)localObject3).scene;
           if ((i != 3) && (i != 1)) {
-            localReq.scene = 0;
+            ((SendMessageToWX.Req)localObject3).scene = 0;
           }
-          paramBaseReq.toBundle(localBundle);
-          localObject = new MMessageActV2.Args();
-          ((MMessageActV2.Args)localObject).bundle = localBundle;
-          ((MMessageActV2.Args)localObject).content = ("weixin://sendreq?appid=" + this.appId);
-          ((MMessageActV2.Args)localObject).targetPkgName = "com.tencent.mm";
-          ((MMessageActV2.Args)localObject).targetClassName = "com.tencent.mm.plugin.base.stub.WXEntryActivity";
+          paramBaseReq.toBundle((Bundle)localObject2);
+          localObject1 = new MMessageActV2.Args();
+          ((MMessageActV2.Args)localObject1).bundle = ((Bundle)localObject2);
+          ((MMessageActV2.Args)localObject1).content = ("weixin://sendreq?appid=" + this.appId);
+          ((MMessageActV2.Args)localObject1).targetPkgName = "com.tencent.mm";
+          ((MMessageActV2.Args)localObject1).targetClassName = "com.tencent.mm.plugin.base.stub.WXEntryActivity";
+          ((MMessageActV2.Args)localObject1).launchMode = this.launchMode;
           if (paramBaseReq.getType() == 2) {}
           try
           {
-            ((MMessageActV2.Args)localObject).token = getTokenFromWX(this.context);
-            bool = MMessageActV2.send(this.context, (MMessageActV2.Args)localObject);
+            ((MMessageActV2.Args)localObject1).token = getTokenFromWX(this.context);
+            bool = MMessageActV2.send(this.context, (MMessageActV2.Args)localObject1);
             AppMethodBeat.o(3799);
             return bool;
-            label898:
+            label1138:
             if ((i == 46) && (getWXAppSupportAPI() < 620953856))
             {
-              localObject = new WXWebpageObject();
-              ((WXWebpageObject)localObject).webpageUrl = localBundle.getString("_wxminiprogram_webpageurl");
-              localReq.message.mediaObject = ((WXMediaMessage.IMediaObject)localObject);
+              localObject1 = new WXWebpageObject();
+              ((WXWebpageObject)localObject1).webpageUrl = ((Bundle)localObject2).getString("_wxminiprogram_webpageurl");
+              ((SendMessageToWX.Req)localObject3).message.mediaObject = ((WXMediaMessage.IMediaObject)localObject1);
             }
             else
             {
-              WXMiniProgramObject localWXMiniProgramObject = (WXMiniProgramObject)localReq.message.mediaObject;
+              WXMiniProgramObject localWXMiniProgramObject = (WXMiniProgramObject)((SendMessageToWX.Req)localObject3).message.mediaObject;
               localWXMiniProgramObject.userName += "@app";
-              localObject = localWXMiniProgramObject.path;
-              if (!b.b((String)localObject))
+              localObject1 = localWXMiniProgramObject.path;
+              if (!b.b((String)localObject1))
               {
-                localObject = ((String)localObject).split("\\?");
-                if (localObject.length > 1) {}
-                for (localObject = localObject[0] + ".html?" + localObject[1];; localObject = localObject[0] + ".html")
+                localObject1 = ((String)localObject1).split("\\?");
+                if (localObject1.length > 1) {}
+                for (localObject1 = localObject1[0] + ".html?" + localObject1[1];; localObject1 = localObject1[0] + ".html")
                 {
-                  localWXMiniProgramObject.path = ((String)localObject);
+                  localWXMiniProgramObject.path = ((String)localObject1);
                   break;
                 }
               }
@@ -1194,7 +1328,7 @@ class BaseWXApiImplV10
           }
         }
       }
-      boolean bool = sendPayReq(this.context, localBundle);
+      boolean bool = sendPayReq(this.context, (Bundle)localObject2);
       AppMethodBeat.o(3799);
       return bool;
     }
@@ -1278,7 +1412,7 @@ class BaseWXApiImplV10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.openapi.BaseWXApiImplV10
  * JD-Core Version:    0.7.0.1
  */

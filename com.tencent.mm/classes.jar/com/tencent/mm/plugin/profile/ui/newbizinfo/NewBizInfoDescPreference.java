@@ -5,8 +5,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.np;
-import com.tencent.mm.protocal.protobuf.ph;
+import com.tencent.mm.R.h;
+import com.tencent.mm.protocal.protobuf.nf;
+import com.tencent.mm.protocal.protobuf.pd;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
@@ -16,18 +17,18 @@ import com.tencent.mm.ui.widget.MMNeat7extView;
 public class NewBizInfoDescPreference
   extends Preference
 {
-  private ph BiU;
-  private LinearLayout gCh;
-  private MMActivity gte;
-  private MMNeat7extView pIP;
-  private boolean rFe;
+  private MMNeat7extView HdL;
+  private pd Hdu;
+  private MMActivity iXq;
+  private LinearLayout jmn;
+  private boolean vkO;
   
   public NewBizInfoDescPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27495);
-    this.gte = ((MMActivity)paramContext);
-    this.rFe = false;
+    this.iXq = ((MMActivity)paramContext);
+    this.vkO = false;
     AppMethodBeat.o(27495);
   }
   
@@ -35,19 +36,19 @@ public class NewBizInfoDescPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27496);
-    this.gte = ((MMActivity)paramContext);
-    this.rFe = false;
+    this.iXq = ((MMActivity)paramContext);
+    this.vkO = false;
     AppMethodBeat.o(27496);
   }
   
-  private String sM(boolean paramBoolean)
+  private String we(boolean paramBoolean)
   {
     AppMethodBeat.i(27498);
     Object localObject = new StringBuilder();
-    if (this.BiU.KWf != null)
+    if (this.Hdu.RXt != null)
     {
-      String str1 = this.BiU.KWf.KTb;
-      String str2 = this.BiU.KWf.KTc;
+      String str1 = this.Hdu.RXt.RTY;
+      String str2 = this.Hdu.RXt.RTZ;
       if ((!Util.isNullOrNil(str1)) && (!Util.isNullOrNil(str2)))
       {
         ((StringBuilder)localObject).append(str1);
@@ -85,56 +86,56 @@ public class NewBizInfoDescPreference
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27497);
-    this.gCh = ((LinearLayout)paramView.findViewById(2131297633));
-    this.pIP = ((MMNeat7extView)paramView.findViewById(2131297632));
-    this.rFe = true;
-    if (!this.rFe)
+    this.jmn = ((LinearLayout)paramView.findViewById(R.h.dur));
+    this.HdL = ((MMNeat7extView)paramView.findViewById(R.h.duq));
+    this.vkO = true;
+    if (!this.vkO)
     {
-      Log.w("MicroMsg.NewBizInfoDescPreference", "bindView:%b or profileInfo is null, return", new Object[] { Boolean.valueOf(this.rFe) });
+      Log.w("MicroMsg.NewBizInfoDescPreference", "bindView:%b or profileInfo is null, return", new Object[] { Boolean.valueOf(this.vkO) });
       AppMethodBeat.o(27497);
       return;
     }
-    if (this.BiU == null)
+    if (this.Hdu == null)
     {
-      this.gCh.setVisibility(4);
+      this.jmn.setVisibility(4);
       AppMethodBeat.o(27497);
       return;
     }
-    paramView = sM(false);
+    paramView = we(false);
     if (!Util.isNullOrNil(paramView))
     {
-      this.gCh.setVisibility(0);
-      this.pIP.aw(paramView);
-      int i = this.BiU.KWf.KSY;
-      int j = this.BiU.KWf.KSZ;
+      this.jmn.setVisibility(0);
+      this.HdL.aL(paramView);
+      int i = this.Hdu.RXt.RTV;
+      int j = this.Hdu.RXt.RTW;
       if ((i > 0) && (j > 0))
       {
-        i = com.tencent.mm.cb.a.jn(this.gte);
-        j = (int)(com.tencent.mm.cb.a.getDensity(this.gte) * 24.0F);
-        paramView = this.pIP.mq(i - j, 2147483647);
+        i = com.tencent.mm.ci.a.kr(this.iXq);
+        j = (int)(com.tencent.mm.ci.a.getDensity(this.iXq) * 24.0F);
+        paramView = this.HdL.nH(i - j, 2147483647);
         if (paramView == null) {
-          break label223;
+          break label225;
         }
       }
-      label223:
-      for (i = paramView.hiG();; i = 0)
+      label225:
+      for (i = paramView.ikp();; i = 0)
       {
         if (i > 1)
         {
-          paramView = sM(true);
-          this.pIP.aw(paramView);
+          paramView = we(true);
+          this.HdL.aL(paramView);
         }
         AppMethodBeat.o(27497);
         return;
       }
     }
-    this.gCh.setVisibility(8);
+    this.jmn.setVisibility(8);
     AppMethodBeat.o(27497);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.NewBizInfoDescPreference
  * JD-Core Version:    0.7.0.1
  */

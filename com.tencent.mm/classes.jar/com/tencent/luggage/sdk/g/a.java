@@ -1,44 +1,71 @@
 package com.tencent.luggage.sdk.g;
 
-import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Bitmap;
+import com.tencent.luggage.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/luggage/sdk/wxa_ktx/ActivityUtils;", "", "()V", "REQUEST_CODE_LOW_BITS_MAGIC_NUM", "", "TAG", "", "hashCodeAsRequestCode", "safeRequestWindowFeature", "", "Landroid/app/Activity;", "feature", "luggage-wxa-app_release"})
-public final class a
+public abstract interface a
+  extends b
 {
-  public static final a cCG;
+  public abstract String Sy();
   
-  static
+  public abstract void a(b paramb);
+  
+  public static final class a
   {
-    AppMethodBeat.i(176450);
-    cCG = new a();
-    AppMethodBeat.o(176450);
+    private static final a cDg;
+    
+    static
+    {
+      AppMethodBeat.i(169461);
+      cDg = new a()
+      {
+        public final String Sy()
+        {
+          return null;
+        }
+        
+        public final void a(final a.b paramAnonymousb)
+        {
+          AppMethodBeat.i(169459);
+          MMHandlerThread.postToMainThread(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(169458);
+              paramAnonymousb.j(null);
+              AppMethodBeat.o(169458);
+            }
+          });
+          AppMethodBeat.o(169459);
+        }
+      };
+      AppMethodBeat.o(169461);
+    }
+    
+    public static a d(e parame)
+    {
+      AppMethodBeat.i(169460);
+      a locala = (a)parame.K(a.class);
+      parame = locala;
+      if (locala == null) {
+        parame = cDg;
+      }
+      AppMethodBeat.o(169460);
+      return parame;
+    }
   }
   
-  public static final int aK(Object paramObject)
+  public static abstract interface b
   {
-    AppMethodBeat.i(176449);
-    p.h(paramObject, "$this$hashCodeAsRequestCode");
-    int i = paramObject.hashCode();
-    AppMethodBeat.o(176449);
-    return i & 0xFFFF;
-  }
-  
-  public static final boolean b(Activity paramActivity, int paramInt)
-  {
-    AppMethodBeat.i(177599);
-    p.h(paramActivity, "$this$safeRequestWindowFeature");
-    boolean bool = ((AppCompatActivity)paramActivity).supportRequestWindowFeature(paramInt);
-    AppMethodBeat.o(177599);
-    return bool;
+    public abstract void j(Bitmap paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.sdk.g.a
  * JD-Core Version:    0.7.0.1
  */

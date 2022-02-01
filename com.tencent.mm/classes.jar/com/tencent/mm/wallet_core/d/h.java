@@ -5,11 +5,11 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.b.a.ky;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.q;
+import com.tencent.mm.f.b.a.nu;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.b;
@@ -18,7 +18,7 @@ import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.d.a;
 import com.tencent.mm.wallet_core.tenpay.model.n;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.g;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 
 public final class h
@@ -31,16 +31,16 @@ public final class h
     if (paramInt1 == 1000)
     {
       if (!Util.isNullOrNil(paramString)) {
-        break label586;
+        break label596;
       }
-      paramString = paramWalletBaseUI.getString(2131768354);
+      paramString = paramWalletBaseUI.getString(a.i.wallet_unknown_err);
     }
     label145:
     label154:
-    label586:
+    label596:
     for (;;)
     {
-      d locald = com.tencent.mm.wallet_core.a.by(paramWalletBaseUI);
+      d locald = com.tencent.mm.wallet_core.a.bF(paramWalletBaseUI);
       switch (paramInt2)
       {
       default: 
@@ -60,16 +60,16 @@ public final class h
         if (!(paramq instanceof n)) {}
         break;
       }
-      for (paramInt1 = ((n)paramq).HZm;; paramInt1 = 0)
+      for (paramInt1 = ((n)paramq).ORm;; paramInt1 = 0)
       {
         if (paramInt1 == 1) {
-          com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramString, "", paramWalletBaseUI.getString(2131767716), new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramString, "", paramWalletBaseUI.getString(a.i.wallet_forget_notretry_password), new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(72841);
-              if (this.HFx.isTransparent()) {
-                this.HFx.finish();
+              if (this.Oxq.isTransparent()) {
+                this.Oxq.finish();
               }
               AppMethodBeat.o(72841);
             }
@@ -80,31 +80,31 @@ public final class h
           bool = true;
           paramInt1 = 1;
           break;
-          com.tencent.mm.ui.base.h.a(paramWalletBaseUI, false, paramString, "", paramWalletBaseUI.getString(2131767717), paramWalletBaseUI.getString(2131755967), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          com.tencent.mm.ui.base.h.a(paramWalletBaseUI, false, paramString, "", paramWalletBaseUI.getString(a.i.wallet_forget_password), paramWalletBaseUI.getString(a.i.app_retry), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(72844);
               paramAnonymousDialogInterface = "";
-              if ((this.dAK instanceof n)) {
-                paramAnonymousDialogInterface = ((n)this.dAK).HIu;
+              if ((this.ftz instanceof n)) {
+                paramAnonymousDialogInterface = ((n)this.ftz).OAm;
               }
               if (!Util.isNullOrNil(paramAnonymousDialogInterface))
               {
-                ky localky = new ky();
-                localky.eXG = 1L;
-                localky.eXH = 2L;
-                localky.bfK();
+                nu localnu = new nu();
+                localnu.hal = 1L;
+                localnu.ham = 2L;
+                localnu.bpa();
                 Log.i("MicroMsg.WalletErrMgr", "jump to forget_url %s", new Object[] { paramAnonymousDialogInterface });
-                f.p(paramWalletBaseUI, paramAnonymousDialogInterface, false);
+                g.p(paramWalletBaseUI, paramAnonymousDialogInterface, false);
                 AppMethodBeat.o(72844);
                 return;
               }
-              paramAnonymousDialogInterface = new ky();
-              paramAnonymousDialogInterface.eXG = 1L;
-              paramAnonymousDialogInterface.eXH = 1L;
-              paramAnonymousDialogInterface.bfK();
-              if (z.aUo()) {
+              paramAnonymousDialogInterface = new nu();
+              paramAnonymousDialogInterface.hal = 1L;
+              paramAnonymousDialogInterface.ham = 1L;
+              paramAnonymousDialogInterface.bpa();
+              if (z.bdq()) {
                 com.tencent.mm.wallet_core.a.b(paramWalletBaseUI, "PayUForgotPwdProcess", null);
               }
               label223:
@@ -116,11 +116,11 @@ public final class h
                 AppMethodBeat.o(72844);
                 return;
                 paramAnonymousDialogInterface = paramWalletBaseUI;
-                b.hgC();
-                if (b.b(b.a.rZV, false))
+                b.iie();
+                if (b.b(b.a.vGX, false))
                 {
                   Log.d("MicroMsg.WalletErrMgr", "startKindaResetPwd:true");
-                  ((com.tencent.mm.pluginsdk.wallet.a)g.af(com.tencent.mm.pluginsdk.wallet.a.class)).startResetPwdUseCase(paramAnonymousDialogInterface, null);
+                  ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.pluginsdk.wallet.a.class)).startResetPwdUseCase(paramAnonymousDialogInterface, null);
                 }
                 for (paramAnonymousInt = 1;; paramAnonymousInt = 0)
                 {
@@ -138,7 +138,7 @@ public final class h
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(72845);
-              this.HFx.cleanUiData(1);
+              this.Oxq.cleanUiData(1);
               AppMethodBeat.o(72845);
             }
           });
@@ -148,8 +148,8 @@ public final class h
           bool = locald.a(paramWalletBaseUI, paramInt2, paramString);
           paramInt1 = 1;
           break label145;
-          TenpaySecureEditText.setSalt(f.hhV());
-          if (z.aUo()) {
+          TenpaySecureEditText.setSalt(g.ijw());
+          if (z.bdq()) {
             b(paramWalletBaseUI, paramInt2, paramString);
           }
           for (;;)
@@ -162,9 +162,9 @@ public final class h
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
                 AppMethodBeat.i(72846);
-                com.tencent.mm.wallet_core.a.c(this.HFx, new Bundle(), paramInt2);
-                if (this.HFx.isTransparent()) {
-                  this.HFx.finish();
+                com.tencent.mm.wallet_core.a.b(this.Oxq, new Bundle(), paramInt2);
+                if (this.Oxq.isTransparent()) {
+                  this.Oxq.finish();
                 }
                 AppMethodBeat.o(72846);
               }
@@ -177,16 +177,16 @@ public final class h
             break label145;
             paramInt1 = i;
             if ((paramq instanceof n)) {
-              paramInt1 = ((n)paramq).HZm;
+              paramInt1 = ((n)paramq).ORm;
             }
             if (paramInt1 == 1) {
-              com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramString, "", paramWalletBaseUI.getString(2131767716), new DialogInterface.OnClickListener()
+              com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramString, "", paramWalletBaseUI.getString(a.i.wallet_forget_notretry_password), new DialogInterface.OnClickListener()
               {
                 public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
                 {
                   AppMethodBeat.i(72847);
-                  if (this.HFx.isTransparent()) {
-                    this.HFx.finish();
+                  if (this.Oxq.isTransparent()) {
+                    this.Oxq.finish();
                   }
                   AppMethodBeat.o(72847);
                 }
@@ -197,26 +197,26 @@ public final class h
               bool = true;
               paramInt1 = 1;
               break;
-              com.tencent.mm.ui.base.h.c(paramWalletBaseUI, paramString, "", paramWalletBaseUI.getString(2131768265), paramWalletBaseUI.getString(2131755761), new DialogInterface.OnClickListener()
+              com.tencent.mm.ui.base.h.c(paramWalletBaseUI, paramString, "", paramWalletBaseUI.getString(a.i.wallet_retry), paramWalletBaseUI.getString(a.i.app_cancel), new DialogInterface.OnClickListener()
               {
                 public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
                 {
                   AppMethodBeat.i(72848);
-                  this.HFx.resend(true);
+                  this.Oxq.resend(true);
                   AppMethodBeat.o(72848);
                 }
               }, null);
             }
-            com.tencent.mm.ui.base.h.c(paramWalletBaseUI, paramString, "", paramWalletBaseUI.getString(2131768383), paramWalletBaseUI.getString(2131755761), new DialogInterface.OnClickListener()
+            com.tencent.mm.ui.base.h.c(paramWalletBaseUI, paramString, "", paramWalletBaseUI.getString(a.i.wallet_verify_user_info_tips), paramWalletBaseUI.getString(a.i.app_cancel), new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
                 AppMethodBeat.i(72849);
                 paramAnonymousDialogInterface = new Bundle();
                 paramAnonymousDialogInterface.putBoolean("key_is_bind_bankcard", false);
-                com.tencent.mm.wallet_core.a.a(this.HFx, "BindCardProcess", paramAnonymousDialogInterface, new d.a()
+                com.tencent.mm.wallet_core.a.a(this.Oxq, "BindCardProcess", paramAnonymousDialogInterface, new d.a()
                 {
-                  public final Intent q(int paramAnonymous2Int, Bundle paramAnonymous2Bundle)
+                  public final Intent s(int paramAnonymous2Int, Bundle paramAnonymous2Bundle)
                   {
                     return null;
                   }
@@ -227,19 +227,19 @@ public final class h
             bool = true;
             paramInt1 = 1;
             break label145;
-            TenpaySecureEditText.setSalt(f.hhV());
+            TenpaySecureEditText.setSalt(g.ijw());
             b(paramWalletBaseUI, paramInt2, paramString);
             bool = true;
             paramInt1 = 1;
             break label145;
-            com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramWalletBaseUI.getString(2131767698), null, false, new DialogInterface.OnClickListener()
+            com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramWalletBaseUI.getString(a.i.wallet_err_wording_payment_not_match), null, false, new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
                 AppMethodBeat.i(72850);
-                com.tencent.mm.wallet_core.a.c(this.HFx, this.HFx.getInput(), paramInt2);
-                if (this.HFx.isTransparent()) {
-                  this.HFx.finish();
+                com.tencent.mm.wallet_core.a.b(this.Oxq, this.Oxq.getInput(), paramInt2);
+                if (this.Oxq.isTransparent()) {
+                  this.Oxq.finish();
                 }
                 AppMethodBeat.o(72850);
               }
@@ -247,14 +247,14 @@ public final class h
             bool = true;
             paramInt1 = 1;
             break label145;
-            com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramWalletBaseUI.getString(2131767697), null, false, new DialogInterface.OnClickListener()
+            com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramWalletBaseUI.getString(a.i.wallet_err_wording_not_open_wallet), null, false, new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
                 AppMethodBeat.i(72851);
-                com.tencent.mm.wallet_core.a.c(this.HFx, this.HFx.getInput(), paramInt2);
-                if (this.HFx.isTransparent()) {
-                  this.HFx.finish();
+                com.tencent.mm.wallet_core.a.b(this.Oxq, this.Oxq.getInput(), paramInt2);
+                if (this.Oxq.isTransparent()) {
+                  this.Oxq.finish();
                 }
                 AppMethodBeat.o(72851);
               }
@@ -275,14 +275,14 @@ public final class h
   private static void b(WalletBaseUI paramWalletBaseUI, final int paramInt, String paramString)
   {
     AppMethodBeat.i(72854);
-    com.tencent.mm.ui.base.h.a(paramWalletBaseUI, false, paramString, "", paramWalletBaseUI.getString(2131767696), paramWalletBaseUI.getString(2131755761), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    com.tencent.mm.ui.base.h.a(paramWalletBaseUI, false, paramString, "", paramWalletBaseUI.getString(a.i.wallet_err_wording_contact_me_payu), paramWalletBaseUI.getString(a.i.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(72842);
-        f.bn(this.HFx, "https://www.payu.co.za/wechat/contact-us/");
-        if ((this.HFx.isTransparent()) || (this.HFx.getContentViewVisibility() != 0)) {
-          this.HFx.finish();
+        g.bA(this.Oxq, "https://www.payu.co.za/wechat/contact-us/");
+        if ((this.Oxq.isTransparent()) || (this.Oxq.getContentViewVisibility() != 0)) {
+          this.Oxq.finish();
         }
         AppMethodBeat.o(72842);
       }
@@ -291,9 +291,9 @@ public final class h
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(72843);
-        com.tencent.mm.wallet_core.a.c(this.HFx, this.HFx.getInput(), paramInt);
-        if ((this.HFx.isTransparent()) || (this.HFx.getContentViewVisibility() != 0)) {
-          this.HFx.finish();
+        com.tencent.mm.wallet_core.a.b(this.Oxq, this.Oxq.getInput(), paramInt);
+        if ((this.Oxq.isTransparent()) || (this.Oxq.getContentViewVisibility() != 0)) {
+          this.Oxq.finish();
         }
         AppMethodBeat.o(72843);
       }

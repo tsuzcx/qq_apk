@@ -13,32 +13,32 @@ public final class b
   
   static
   {
-    AppMethodBeat.i(241782);
+    AppMethodBeat.i(287361);
     sHandler = new Handler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
-        AppMethodBeat.i(241780);
+        AppMethodBeat.i(279069);
         if ((paramAnonymousMessage.obj instanceof Runnable)) {
           ((Runnable)paramAnonymousMessage.obj).run();
         }
         super.handleMessage(paramAnonymousMessage);
-        AppMethodBeat.o(241780);
+        AppMethodBeat.o(279069);
       }
     };
-    AppMethodBeat.o(241782);
+    AppMethodBeat.o(287361);
   }
   
   public static void post(Runnable paramRunnable)
   {
-    AppMethodBeat.i(241781);
+    AppMethodBeat.i(287360);
     sHandler.post(paramRunnable);
-    AppMethodBeat.o(241781);
+    AppMethodBeat.o(287360);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.danmaku.f.b
  * JD-Core Version:    0.7.0.1
  */

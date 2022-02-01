@@ -1,7 +1,7 @@
 package com.facebook;
 
 import android.content.Intent;
-import android.support.v4.content.d;
+import androidx.h.a.a;
 import com.facebook.internal.Utility;
 import com.facebook.internal.Validate;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -13,17 +13,17 @@ public final class ProfileManager
   public static final String EXTRA_OLD_PROFILE = "com.facebook.sdk.EXTRA_OLD_PROFILE";
   private static volatile ProfileManager instance;
   private Profile currentProfile;
-  private final d localBroadcastManager;
+  private final a localBroadcastManager;
   private final ProfileCache profileCache;
   
-  ProfileManager(d paramd, ProfileCache paramProfileCache)
+  ProfileManager(a parama, ProfileCache paramProfileCache)
   {
-    AppMethodBeat.i(17261);
-    Validate.notNull(paramd, "localBroadcastManager");
+    AppMethodBeat.i(257848);
+    Validate.notNull(parama, "localBroadcastManager");
     Validate.notNull(paramProfileCache, "profileCache");
-    this.localBroadcastManager = paramd;
+    this.localBroadcastManager = parama;
     this.profileCache = paramProfileCache;
-    AppMethodBeat.o(17261);
+    AppMethodBeat.o(257848);
   }
   
   static ProfileManager getInstance()
@@ -33,7 +33,7 @@ public final class ProfileManager
     try
     {
       if (instance == null) {
-        instance = new ProfileManager(d.W(FacebookSdk.getApplicationContext()), new ProfileCache());
+        instance = new ProfileManager(a.V(FacebookSdk.getApplicationContext()), new ProfileCache());
       }
       ProfileManager localProfileManager = instance;
       AppMethodBeat.o(17262);
@@ -51,7 +51,7 @@ public final class ProfileManager
     Intent localIntent = new Intent("com.facebook.sdk.ACTION_CURRENT_PROFILE_CHANGED");
     localIntent.putExtra("com.facebook.sdk.EXTRA_OLD_PROFILE", paramProfile1);
     localIntent.putExtra("com.facebook.sdk.EXTRA_NEW_PROFILE", paramProfile2);
-    this.localBroadcastManager.b(localIntent);
+    this.localBroadcastManager.c(localIntent);
     AppMethodBeat.o(17266);
   }
   
@@ -107,7 +107,7 @@ public final class ProfileManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.ProfileManager
  * JD-Core Version:    0.7.0.1
  */

@@ -14,56 +14,56 @@ import java.util.LinkedList;
 
 public final class o
 {
-  public int mcq;
-  HashSet<i.a> xjj;
-  public HashSet<i.a> xjk;
-  private HashSet<i.c> xjl;
-  public HashSet<i.b> xjm;
-  public i xjn;
-  public int xjo;
+  private HashSet<i.c> BVA;
+  public HashSet<i.b> BVB;
+  public i BVC;
+  public int BVD;
+  HashSet<i.a> BVy;
+  public HashSet<i.a> BVz;
+  public int pag;
   
   public o()
   {
     AppMethodBeat.i(111350);
-    this.mcq = 3;
-    this.xjo = 1;
-    this.xjj = new HashSet();
-    this.xjk = new HashSet();
-    this.xjl = new HashSet();
-    this.xjm = new HashSet();
+    this.pag = 3;
+    this.BVD = 1;
+    this.BVy = new HashSet();
+    this.BVz = new HashSet();
+    this.BVA = new HashSet();
+    this.BVB = new HashSet();
     AppMethodBeat.o(111350);
   }
   
-  private void dRo()
+  private void etQ()
   {
     AppMethodBeat.i(111352);
-    Log.i("MicroMsg.MediaQueryService", "initQueryType: %d", new Object[] { Integer.valueOf(this.xjo) });
-    switch (this.xjo)
+    Log.i("MicroMsg.MediaQueryService", "initQueryType: %d", new Object[] { Integer.valueOf(this.BVD) });
+    switch (this.BVD)
     {
     default: 
-      this.xjn = new a();
+      this.BVC = new a();
       AppMethodBeat.o(111352);
       return;
     case 1: 
-      this.xjn = new k();
+      this.BVC = new k();
       AppMethodBeat.o(111352);
       return;
     }
-    this.xjn = new u();
+    this.BVC = new u();
     AppMethodBeat.o(111352);
   }
   
-  public final void D(final String paramString, final int paramInt, final long paramLong)
+  public final void E(final String paramString, final int paramInt, final long paramLong)
   {
     AppMethodBeat.i(111358);
-    if (this.xjn == null)
+    if (this.BVC == null)
     {
       Log.e("MicroMsg.MediaQueryService", "media query not init, init again");
-      dRo();
+      etQ();
     }
     Log.i("MicroMsg.MediaQueryService", "queryMediaInAlbums, albumName: %s ticket: %d, stack: %s.", new Object[] { paramString, Long.valueOf(paramLong), Util.getStack().toString() });
-    this.xjn.dQx();
-    e.dQL().as(new Runnable()
+    this.BVC.esY();
+    e.etm().ax(new Runnable()
     {
       public final void run()
       {
@@ -71,7 +71,7 @@ public final class o
         try
         {
           Log.i("MicroMsg.MediaQueryService", "queryMediaItemsInAlbum Begin...");
-          o.this.xjn.a(paramString, paramInt, new i.c()
+          o.this.BVC.a(paramString, paramInt, new i.c()
           {
             public final void b(LinkedList<GalleryItem.MediaItem> paramAnonymous2LinkedList, long paramAnonymous2Long, boolean paramAnonymous2Boolean)
             {
@@ -103,93 +103,93 @@ public final class o
     AppMethodBeat.o(111358);
   }
   
-  public final void NG(int paramInt)
+  public final void SU(int paramInt)
   {
-    this.mcq = paramInt;
+    this.pag = paramInt;
   }
   
   public final void a(i.a parama)
   {
     AppMethodBeat.i(111354);
-    this.xjj.add(parama);
+    this.BVy.add(parama);
     AppMethodBeat.o(111354);
   }
   
   public final void a(i.c paramc)
   {
     AppMethodBeat.i(111353);
-    this.xjl.add(paramc);
+    this.BVA.add(paramc);
     AppMethodBeat.o(111353);
   }
   
   public final void ax(String paramString, long paramLong)
   {
     AppMethodBeat.i(111357);
-    D(paramString, this.xjo, paramLong);
+    E(paramString, this.BVD, paramLong);
     AppMethodBeat.o(111357);
   }
   
   public final void b(i.a parama)
   {
     AppMethodBeat.i(111355);
-    this.xjj.remove(parama);
+    this.BVy.remove(parama);
     AppMethodBeat.o(111355);
   }
   
   public final void b(i.c paramc)
   {
-    AppMethodBeat.i(257731);
-    this.xjl.remove(paramc);
-    AppMethodBeat.o(257731);
+    AppMethodBeat.i(240933);
+    this.BVA.remove(paramc);
+    AppMethodBeat.o(240933);
   }
   
   public final void c(i.a parama)
   {
     AppMethodBeat.i(173739);
-    this.xjk.remove(parama);
+    this.BVz.remove(parama);
     AppMethodBeat.o(173739);
   }
   
-  public final int dRp()
+  public final int etR()
   {
-    return this.mcq;
+    return this.pag;
   }
   
-  public final int dRq()
+  public final int etS()
   {
-    return this.xjo;
+    return this.BVD;
   }
   
-  public final void dRr()
+  public final void etT()
   {
     AppMethodBeat.i(111356);
     Log.i("MicroMsg.MediaQueryService", "queryAlbums, %s.", new Object[] { this });
-    if (this.xjn == null)
+    if (this.BVC == null)
     {
       Log.f("MicroMsg.MediaQueryService", "media query not init, init again");
-      dRo();
+      etQ();
     }
-    e.dQL().ar(new Runnable()
+    e.etm().aw(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(111345);
         Log.i("MicroMsg.MediaQueryService", "real run, %s.", new Object[] { this });
-        Object localObject1 = o.this.xjn.dQr();
+        Object localObject1 = o.this.BVC.esR();
         Object localObject2 = o.this;
-        Object localObject3 = new i.a[((o)localObject2).xjj.size()];
-        ((o)localObject2).xjj.toArray((Object[])localObject3);
+        Object localObject3 = new i.a[((o)localObject2).BVy.size()];
+        ((o)localObject2).BVy.toArray((Object[])localObject3);
         int j = localObject3.length;
         int i = 0;
         while (i < j)
         {
-          localObject3[i].aL((LinkedList)localObject1);
+          localObject3[i].be((LinkedList)localObject1);
           i += 1;
         }
-        localObject2 = s.dRv();
+        localObject2 = s.etX();
         localObject1 = new ArrayList();
-        localObject3 = s.BASE_URI.buildUpon().appendEncodedPath("private").build();
-        localObject2 = ((s)localObject2).hwt.query((Uri)localObject3, s.dRw(), null, null, null);
+        localObject3 = s.BVU.buildUpon().appendEncodedPath("private").build();
+        localObject2 = ((s)localObject2).kiH.query((Uri)localObject3, s.etY(), null, null, null);
         if (localObject2 != null)
         {
           i = ((Cursor)localObject2).getColumnIndex("categoryID");
@@ -204,25 +204,25 @@ public final class o
           {
             localObject3 = new s.a();
             if ((i != -1) && (j != -1)) {
-              ((s.a)localObject3).hD(((Cursor)localObject2).getString(i), ((Cursor)localObject2).getString(j));
+              ((s.a)localObject3).hK(((Cursor)localObject2).getString(i), ((Cursor)localObject2).getString(j));
             }
-            ((s.a)localObject3).xjJ = ((Cursor)localObject2).getString(k);
+            ((s.a)localObject3).BVZ = ((Cursor)localObject2).getString(k);
             ((s.a)localObject3).albumName = ((Cursor)localObject2).getString(m);
-            ((s.a)localObject3).xjK = Util.safeParseInt(((Cursor)localObject2).getString(n));
-            ((s.a)localObject3).xjL = Util.safeParseLong(((Cursor)localObject2).getString(i1));
-            ((s.a)localObject3).xjM = ((Cursor)localObject2).getString(i2);
+            ((s.a)localObject3).BWa = Util.safeParseInt(((Cursor)localObject2).getString(n));
+            ((s.a)localObject3).BWb = Util.safeParseLong(((Cursor)localObject2).getString(i1));
+            ((s.a)localObject3).BWc = ((Cursor)localObject2).getString(i2);
             if (i3 != -1)
             {
               String str = ((Cursor)localObject2).getString(i3);
               if (!Util.isNullOrNil(str)) {
-                ((s.a)localObject3).xjN = s.hC(str, ((s.a)localObject3).xjJ);
+                ((s.a)localObject3).BWd = s.hJ(str, ((s.a)localObject3).BVZ);
               }
             }
             ((ArrayList)localObject1).add(localObject3);
           }
           ((Cursor)localObject2).close();
         }
-        localObject1 = s.ap((ArrayList)localObject1);
+        localObject1 = s.av((ArrayList)localObject1);
         o.a(o.this, (LinkedList)localObject1);
         AppMethodBeat.o(111345);
       }
@@ -238,11 +238,11 @@ public final class o
     AppMethodBeat.o(111356);
   }
   
-  public final void dRs()
+  public final void etU()
   {
     AppMethodBeat.i(173740);
-    if (this.xjn != null) {
-      this.xjn.dQx();
+    if (this.BVC != null) {
+      this.BVC.esY();
     }
     AppMethodBeat.o(173740);
   }
@@ -250,14 +250,14 @@ public final class o
   public final void release()
   {
     AppMethodBeat.i(164768);
-    if (this.xjj != null) {
-      this.xjj.clear();
+    if (this.BVy != null) {
+      this.BVy.clear();
     }
-    if (this.xjl != null) {
-      this.xjl.clear();
+    if (this.BVA != null) {
+      this.BVA.clear();
     }
-    if (this.xjm != null) {
-      this.xjm.clear();
+    if (this.BVB != null) {
+      this.BVB.clear();
     }
     AppMethodBeat.o(164768);
   }
@@ -265,14 +265,14 @@ public final class o
   public final void setQueryType(int paramInt)
   {
     AppMethodBeat.i(111351);
-    this.xjo = paramInt;
-    dRo();
+    this.BVD = paramInt;
+    etQ();
     AppMethodBeat.o(111351);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.o
  * JD-Core Version:    0.7.0.1
  */

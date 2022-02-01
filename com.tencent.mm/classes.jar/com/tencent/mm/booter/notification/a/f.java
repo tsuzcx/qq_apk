@@ -9,76 +9,76 @@ import android.media.MediaPlayer.OnErrorListener;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.f.c.d;
+import com.tencent.e.c.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.compatible.deviceinfo.af;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.storage.ck;
+import com.tencent.mm.storage.cl;
 
 public final class f
 {
   Context context;
-  MediaPlayer goA;
+  boolean iSI;
+  MediaPlayer iSJ;
   @SuppressLint({"HandlerLeak"})
-  MMHandler goB;
-  private MMHandler goC;
-  boolean goz;
+  MMHandler iSK;
+  private MMHandler iSL;
   
   private f()
   {
     AppMethodBeat.i(20065);
-    this.goz = false;
-    this.goA = null;
-    this.goB = new MMHandler(Looper.getMainLooper())
+    this.iSI = false;
+    this.iSJ = null;
+    this.iSK = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(20056);
-        Log.i("MicroMsg.Notification.Tool.Sound", "play sound handler, try to stop notify mediaplayer playerIsInit:%s", new Object[] { Boolean.valueOf(f.this.goz) });
+        Log.i("MicroMsg.Notification.Tool.Sound", "play sound handler, try to stop notify mediaplayer playerIsInit:%s", new Object[] { Boolean.valueOf(f.this.iSI) });
         try
         {
-          if (f.this.goA != null)
+          if (f.this.iSJ != null)
           {
-            if (f.this.goA.isPlaying()) {
-              f.this.goA.stop();
+            if (f.this.iSJ.isPlaying()) {
+              f.this.iSJ.stop();
             }
-            f.this.goA.release();
-            f.this.goz = false;
-            Log.i("MicroMsg.Notification.Tool.Sound", "play sound handler, try to stop notify mediaplayer done playerIsInit:%s", new Object[] { Boolean.valueOf(f.this.goz) });
+            f.this.iSJ.release();
+            f.this.iSI = false;
+            Log.i("MicroMsg.Notification.Tool.Sound", "play sound handler, try to stop notify mediaplayer done playerIsInit:%s", new Object[] { Boolean.valueOf(f.this.iSI) });
           }
           AppMethodBeat.o(20056);
           return;
         }
         catch (IllegalStateException paramAnonymousMessage)
         {
-          Log.w("MicroMsg.Notification.Tool.Sound", "Exception in playSoundHander,playerIsInit:%s", new Object[] { Boolean.valueOf(f.this.goz) });
-          if (f.this.goA != null) {
-            f.this.goA.release();
+          Log.w("MicroMsg.Notification.Tool.Sound", "Exception in playSoundHander,playerIsInit:%s", new Object[] { Boolean.valueOf(f.this.iSI) });
+          if (f.this.iSJ != null) {
+            f.this.iSJ.release();
           }
           AppMethodBeat.o(20056);
         }
       }
     };
     this.context = MMApplicationContext.getContext();
-    ae.DV(ck.gEw());
+    af.KN(cl.hAN());
     AppMethodBeat.o(20065);
   }
   
-  public final void De(final String paramString)
+  public final void JV(final String paramString)
   {
     try
     {
       AppMethodBeat.i(20066);
-      if (this.goC == null)
+      if (this.iSL == null)
       {
         Log.i("MicroMsg.Notification.Tool.Sound", "playSound playHandler == null");
-        HandlerThread localHandlerThread = d.hA("playSoundThread", 0);
+        HandlerThread localHandlerThread = d.ik("playSoundThread", 0);
         localHandlerThread.start();
-        this.goC = new MMHandler(localHandlerThread.getLooper());
+        this.iSL = new MMHandler(localHandlerThread.getLooper());
       }
-      this.goC.post(new Runnable()
+      this.iSL.post(new Runnable()
       {
         /* Error */
         public final void run()
@@ -87,13 +87,13 @@ public final class f
           //   0: sipush 20057
           //   3: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
           //   6: aload_0
-          //   7: getfield 21	com/tencent/mm/booter/notification/a/f$2:goD	Lcom/tencent/mm/booter/notification/a/f;
+          //   7: getfield 21	com/tencent/mm/booter/notification/a/f$2:iSM	Lcom/tencent/mm/booter/notification/a/f;
           //   10: astore 14
           //   12: aload_0
-          //   13: getfield 23	com/tencent/mm/booter/notification/a/f$2:goE	Ljava/lang/String;
+          //   13: getfield 23	com/tencent/mm/booter/notification/a/f$2:iSN	Ljava/lang/String;
           //   16: astore 15
           //   18: aload_0
-          //   19: getfield 25	com/tencent/mm/booter/notification/a/f$2:goF	Z
+          //   19: getfield 25	com/tencent/mm/booter/notification/a/f$2:iSO	Z
           //   22: istore 8
           //   24: aload 14
           //   26: getfield 46	com/tencent/mm/booter/notification/a/f:context	Landroid/content/Context;
@@ -126,11 +126,11 @@ public final class f
           //   93: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
           //   96: return
           //   97: aload 14
-          //   99: getfield 83	com/tencent/mm/booter/notification/a/f:goB	Lcom/tencent/mm/sdk/platformtools/MMHandler;
+          //   99: getfield 83	com/tencent/mm/booter/notification/a/f:iSK	Lcom/tencent/mm/sdk/platformtools/MMHandler;
           //   102: ldc 84
           //   104: invokevirtual 89	com/tencent/mm/sdk/platformtools/MMHandler:removeMessages	(I)V
           //   107: aload 14
-          //   109: getfield 83	com/tencent/mm/booter/notification/a/f:goB	Lcom/tencent/mm/sdk/platformtools/MMHandler;
+          //   109: getfield 83	com/tencent/mm/booter/notification/a/f:iSK	Lcom/tencent/mm/sdk/platformtools/MMHandler;
           //   112: ldc 84
           //   114: ldc2_w 90
           //   117: invokevirtual 95	com/tencent/mm/sdk/platformtools/MMHandler:sendEmptyMessageDelayed	(IJ)Z
@@ -142,27 +142,27 @@ public final class f
           //   129: dup
           //   130: iconst_0
           //   131: aload 14
-          //   133: getfield 100	com/tencent/mm/booter/notification/a/f:goz	Z
+          //   133: getfield 100	com/tencent/mm/booter/notification/a/f:iSI	Z
           //   136: invokestatic 106	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
           //   139: aastore
           //   140: invokestatic 109	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
           //   143: aload 14
-          //   145: getfield 100	com/tencent/mm/booter/notification/a/f:goz	Z
+          //   145: getfield 100	com/tencent/mm/booter/notification/a/f:iSI	Z
           //   148: istore 9
           //   150: iload 9
           //   152: ifeq +66 -> 218
           //   155: aload 14
-          //   157: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   157: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   160: ifnull +52 -> 212
           //   163: aload 14
-          //   165: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   165: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   168: invokevirtual 119	android/media/MediaPlayer:isPlaying	()Z
           //   171: ifeq +11 -> 182
           //   174: aload 14
-          //   176: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   176: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   179: invokevirtual 122	android/media/MediaPlayer:stop	()V
           //   182: aload 14
-          //   184: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   184: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   187: invokevirtual 125	android/media/MediaPlayer:release	()V
           //   190: ldc 54
           //   192: ldc 127
@@ -171,18 +171,18 @@ public final class f
           //   198: dup
           //   199: iconst_0
           //   200: aload 14
-          //   202: getfield 100	com/tencent/mm/booter/notification/a/f:goz	Z
+          //   202: getfield 100	com/tencent/mm/booter/notification/a/f:iSI	Z
           //   205: invokestatic 106	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
           //   208: aastore
           //   209: invokestatic 109	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
           //   212: aload 14
           //   214: iconst_0
-          //   215: putfield 100	com/tencent/mm/booter/notification/a/f:goz	Z
+          //   215: putfield 100	com/tencent/mm/booter/notification/a/f:iSI	Z
           //   218: aload 14
           //   220: new 129	com/tencent/mm/compatible/b/k
           //   223: dup
           //   224: invokespecial 130	com/tencent/mm/compatible/b/k:<init>	()V
-          //   227: putfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   227: putfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   230: ldc 54
           //   232: ldc 132
           //   234: iconst_1
@@ -190,11 +190,11 @@ public final class f
           //   238: dup
           //   239: iconst_0
           //   240: aload 14
-          //   242: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   242: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   245: aastore
           //   246: invokestatic 109	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
           //   249: aload 14
-          //   251: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   251: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   254: astore 17
           //   256: invokestatic 138	java/lang/System:currentTimeMillis	()J
           //   259: lstore 11
@@ -233,7 +233,7 @@ public final class f
           //   329: invokevirtual 173	android/media/AudioManager:isWiredHeadsetOn	()Z
           //   332: ifeq +573 -> 905
           //   335: iconst_0
-          //   336: invokestatic 179	com/tencent/mm/plugin/audio/c/a:jv	(Z)I
+          //   336: invokestatic 179	com/tencent/mm/plugin/audio/c/a:kG	(Z)I
           //   339: istore 7
           //   341: ldc 54
           //   343: ldc 181
@@ -343,13 +343,13 @@ public final class f
           //   522: anewarray 4	java/lang/Object
           //   525: dup
           //   526: iconst_0
-          //   527: getstatic 219	com/tencent/mm/compatible/deviceinfo/ae:gKE	Lcom/tencent/mm/compatible/deviceinfo/k;
-          //   530: getfield 225	com/tencent/mm/compatible/deviceinfo/k:gHJ	I
+          //   527: getstatic 219	com/tencent/mm/compatible/deviceinfo/af:juS	Lcom/tencent/mm/compatible/deviceinfo/k;
+          //   530: getfield 225	com/tencent/mm/compatible/deviceinfo/k:jsa	I
           //   533: invokestatic 186	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
           //   536: aastore
           //   537: invokestatic 109	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   540: getstatic 219	com/tencent/mm/compatible/deviceinfo/ae:gKE	Lcom/tencent/mm/compatible/deviceinfo/k;
-          //   543: getfield 225	com/tencent/mm/compatible/deviceinfo/k:gHJ	I
+          //   540: getstatic 219	com/tencent/mm/compatible/deviceinfo/af:juS	Lcom/tencent/mm/compatible/deviceinfo/k;
+          //   543: getfield 225	com/tencent/mm/compatible/deviceinfo/k:jsa	I
           //   546: iconst_1
           //   547: if_icmpne +321 -> 868
           //   550: ldc 54
@@ -362,7 +362,7 @@ public final class f
           //   567: iconst_3
           //   568: invokevirtual 234	android/media/AudioManager:setMode	(I)V
           //   571: aload 14
-          //   573: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   573: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   576: new 236	com/tencent/mm/booter/notification/a/f$3
           //   579: dup
           //   580: aload 14
@@ -370,7 +370,7 @@ public final class f
           //   584: invokespecial 239	com/tencent/mm/booter/notification/a/f$3:<init>	(Lcom/tencent/mm/booter/notification/a/f;Landroid/media/AudioManager;)V
           //   587: invokevirtual 243	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
           //   590: aload 14
-          //   592: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   592: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   595: new 245	com/tencent/mm/booter/notification/a/f$4
           //   598: dup
           //   599: aload 14
@@ -378,18 +378,18 @@ public final class f
           //   603: invokespecial 246	com/tencent/mm/booter/notification/a/f$4:<init>	(Lcom/tencent/mm/booter/notification/a/f;Landroid/media/AudioManager;)V
           //   606: invokevirtual 250	android/media/MediaPlayer:setOnErrorListener	(Landroid/media/MediaPlayer$OnErrorListener;)V
           //   609: aload 14
-          //   611: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   611: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   614: iload 7
           //   616: invokevirtual 253	android/media/MediaPlayer:setAudioStreamType	(I)V
           //   619: aload 14
-          //   621: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   621: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   624: iconst_1
           //   625: invokevirtual 256	android/media/MediaPlayer:setLooping	(Z)V
           //   628: aload 14
-          //   630: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   630: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   633: invokevirtual 259	android/media/MediaPlayer:prepare	()V
           //   636: aload 14
-          //   638: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   638: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   641: fload_1
           //   642: fload_2
           //   643: fdiv
@@ -398,15 +398,15 @@ public final class f
           //   646: fdiv
           //   647: invokevirtual 263	android/media/MediaPlayer:setVolume	(FF)V
           //   650: aload 14
-          //   652: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   652: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   655: iconst_0
           //   656: invokevirtual 256	android/media/MediaPlayer:setLooping	(Z)V
           //   659: aload 14
-          //   661: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   661: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   664: invokevirtual 266	android/media/MediaPlayer:start	()V
           //   667: aload 14
           //   669: iconst_1
-          //   670: putfield 100	com/tencent/mm/booter/notification/a/f:goz	Z
+          //   670: putfield 100	com/tencent/mm/booter/notification/a/f:iSI	Z
           //   673: sipush 20057
           //   676: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
           //   679: return
@@ -418,10 +418,10 @@ public final class f
           //   690: anewarray 4	java/lang/Object
           //   693: invokestatic 272	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
           //   696: aload 14
-          //   698: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   698: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   701: ifnull +11 -> 712
           //   704: aload 14
-          //   706: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   706: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   709: invokevirtual 125	android/media/MediaPlayer:release	()V
           //   712: sipush 20057
           //   715: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -431,10 +431,10 @@ public final class f
           //   723: ldc_w 274
           //   726: invokestatic 62	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
           //   729: aload 14
-          //   731: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   731: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   734: ifnull -522 -> 212
           //   737: aload 14
-          //   739: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   739: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   742: invokevirtual 125	android/media/MediaPlayer:release	()V
           //   745: goto -533 -> 212
           //   748: iload 8
@@ -491,14 +491,14 @@ public final class f
           //   862: invokestatic 109	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
           //   865: goto -573 -> 292
           //   868: aload 14
-          //   870: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   870: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   873: new 312	com/tencent/mm/booter/notification/a/f$5
           //   876: dup
           //   877: aload 14
           //   879: invokespecial 315	com/tencent/mm/booter/notification/a/f$5:<init>	(Lcom/tencent/mm/booter/notification/a/f;)V
           //   882: invokevirtual 243	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
           //   885: aload 14
-          //   887: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   887: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   890: new 317	com/tencent/mm/booter/notification/a/f$6
           //   893: dup
           //   894: aload 14
@@ -522,42 +522,42 @@ public final class f
           //   930: aastore
           //   931: invokestatic 189	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
           //   934: aload 14
-          //   936: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   936: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   939: new 322	com/tencent/mm/booter/notification/a/f$7
           //   942: dup
           //   943: aload 14
           //   945: invokespecial 323	com/tencent/mm/booter/notification/a/f$7:<init>	(Lcom/tencent/mm/booter/notification/a/f;)V
           //   948: invokevirtual 243	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
           //   951: aload 14
-          //   953: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   953: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   956: new 325	com/tencent/mm/booter/notification/a/f$8
           //   959: dup
           //   960: aload 14
           //   962: invokespecial 326	com/tencent/mm/booter/notification/a/f$8:<init>	(Lcom/tencent/mm/booter/notification/a/f;)V
           //   965: invokevirtual 250	android/media/MediaPlayer:setOnErrorListener	(Landroid/media/MediaPlayer$OnErrorListener;)V
           //   968: aload 14
-          //   970: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   970: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   973: iconst_5
           //   974: invokevirtual 253	android/media/MediaPlayer:setAudioStreamType	(I)V
           //   977: aload 14
-          //   979: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   979: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   982: iconst_1
           //   983: invokevirtual 256	android/media/MediaPlayer:setLooping	(Z)V
           //   986: aload 14
-          //   988: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   988: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   991: invokevirtual 259	android/media/MediaPlayer:prepare	()V
           //   994: aload 14
-          //   996: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   996: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   999: iconst_0
           //   1000: invokevirtual 256	android/media/MediaPlayer:setLooping	(Z)V
           //   1003: aload 14
-          //   1005: getfield 113	com/tencent/mm/booter/notification/a/f:goA	Landroid/media/MediaPlayer;
+          //   1005: getfield 113	com/tencent/mm/booter/notification/a/f:iSJ	Landroid/media/MediaPlayer;
           //   1008: invokevirtual 266	android/media/MediaPlayer:start	()V
           //   1011: aload 14
           //   1013: iconst_1
-          //   1014: putfield 100	com/tencent/mm/booter/notification/a/f:goz	Z
+          //   1014: putfield 100	com/tencent/mm/booter/notification/a/f:iSI	Z
           //   1017: aload 14
-          //   1019: getfield 100	com/tencent/mm/booter/notification/a/f:goz	Z
+          //   1019: getfield 100	com/tencent/mm/booter/notification/a/f:iSI	Z
           //   1022: istore 10
           //   1024: invokestatic 332	android/os/Looper:myLooper	()Landroid/os/Looper;
           //   1027: ifnull +58 -> 1085
@@ -668,7 +668,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.booter.notification.a.f
  * JD-Core Version:    0.7.0.1
  */

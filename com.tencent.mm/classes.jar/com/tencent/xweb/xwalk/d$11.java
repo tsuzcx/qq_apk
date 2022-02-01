@@ -17,11 +17,11 @@ final class d$11
   {
     AppMethodBeat.i(154162);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/xweb/xwalk/WebDebugPage$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    if (this.SGj.getVisibility() == 8)
+    localb.bn(paramView);
+    a.c("com/tencent/xweb/xwalk/WebDebugPage$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    if (this.aahy.getVisibility() == 8)
     {
-      this.SGj.setVisibility(0);
+      this.aahy.setVisibility(0);
       ((Button)paramView).setText("隐藏插件设置");
     }
     for (;;)
@@ -29,14 +29,14 @@ final class d$11
       a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(154162);
       return;
-      this.SGj.setVisibility(8);
+      this.aahy.setVisibility(8);
       ((Button)paramView).setText("插件设置");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.xwalk.d.11
  * JD-Core Version:    0.7.0.1
  */

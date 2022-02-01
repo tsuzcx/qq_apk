@@ -17,36 +17,36 @@ import java.util.Map;
 public class a
   implements IImageDecodeService.a
 {
-  private volatile boolean aMn;
-  private b baq;
-  private BitmapType bar;
-  private IImageDecodeService.b bas;
-  private int mMaxHeight;
-  private int mMaxWidth;
+  private int EK;
+  private b aJN;
+  private BitmapType aJO;
+  private IImageDecodeService.b aJP;
+  private volatile boolean aJQ;
+  private int uJ;
   
   public a()
   {
-    AppMethodBeat.i(219790);
-    this.mMaxWidth = 2048;
-    this.mMaxHeight = 2048;
-    this.baq = new b();
-    this.aMn = false;
-    b localb = this.baq;
+    AppMethodBeat.i(219641);
+    this.uJ = 2048;
+    this.EK = 2048;
+    this.aJN = new b();
+    this.aJQ = false;
+    b localb = this.aJN;
     BitmapType localBitmapType = BitmapType.Native;
     com.github.henryye.nativeiv.comm.a locala = new com.github.henryye.nativeiv.comm.a();
-    localb.bat.put(localBitmapType, locala);
-    AppMethodBeat.o(219790);
+    localb.aJR.put(localBitmapType, locala);
+    AppMethodBeat.o(219641);
   }
   
   public final IBitmap a(String paramString, Object paramObject, com.github.henryye.nativeiv.b.b paramb, ImageDecodeConfig paramImageDecodeConfig)
   {
-    AppMethodBeat.i(219792);
+    AppMethodBeat.i(219668);
     com.github.henryye.nativeiv.api.a locala = new com.github.henryye.nativeiv.api.a();
-    int i = this.mMaxWidth;
-    locala.mMaxHeight = this.mMaxHeight;
-    locala.mMaxWidth = i;
+    int i = this.uJ;
+    locala.EK = this.EK;
+    locala.uJ = i;
     locala.mPath = paramString;
-    locala.baO = paramb.sS();
+    locala.aKm = paramb.qG();
     for (;;)
     {
       InputStream localInputStream;
@@ -56,45 +56,45 @@ public class a
       try
       {
         localObject1 = paramb.a(paramObject, paramImageDecodeConfig);
-        if ((((b.a)localObject1).inputStream == null) || (!TextUtils.isEmpty(((b.a)localObject1).errorMsg)))
+        if ((((b.a)localObject1).aFw == null) || (!TextUtils.isEmpty(((b.a)localObject1).errorMsg)))
         {
-          locala.baP = ((b.a)localObject1).errorMsg;
-          this.bas.a(paramString, IImageDecodeService.b.a.baR, locala);
-          AppMethodBeat.o(219792);
+          locala.aKn = ((b.a)localObject1).errorMsg;
+          this.aJP.a(paramString, IImageDecodeService.b.a.aKp, locala);
+          AppMethodBeat.o(219668);
           return null;
         }
-        localInputStream = ((b.a)localObject1).inputStream;
-        localc = a(this.baq, locala);
-        localc.bar = this.bar;
-        localc.bay = this.bas;
-        locald = localc.h(localInputStream);
+        localInputStream = ((b.a)localObject1).aFw;
+        localc = a(this.aJN, locala);
+        localc.aJO = this.aJO;
+        localc.aJW = this.aJP;
+        locald = localc.f(localInputStream);
         if (locald == null)
         {
-          this.bas.a(paramString, IImageDecodeService.b.a.baS, locala);
-          AppMethodBeat.o(219792);
+          this.aJP.a(paramString, IImageDecodeService.b.a.aKq, locala);
+          AppMethodBeat.o(219668);
           return null;
         }
-        if (locald.bbo == com.github.henryye.nativeiv.bitmap.c.bbm)
+        if (locald.aKM == com.github.henryye.nativeiv.bitmap.c.aKK)
         {
-          this.bas.a(paramString, IImageDecodeService.b.a.baU, locala);
-          AppMethodBeat.o(219792);
+          this.aJP.a(paramString, IImageDecodeService.b.a.aKs, locala);
+          AppMethodBeat.o(219668);
           return null;
         }
-        localc1 = locald.bbo;
+        localc1 = locald.aKM;
         if (localInputStream != null)
         {
-          if (localc.bar == null) {
+          if (localc.aJO == null) {
             continue;
           }
-          localObject1 = localc.baA;
+          localObject1 = localc.aJY;
           i = localc.hashCode();
-          localObject3 = localc.bar;
-          localObject4 = (Map)((b)localObject1).bau.get(i);
+          localObject3 = localc.aJO;
+          localObject4 = (Map)((b)localObject1).aJS.get(i);
           if ((localObject4 == null) || (((Map)localObject4).get(localObject3) == null)) {
             continue;
           }
-          localObject1 = ((com.github.henryye.nativeiv.bitmap.b)((Map)localObject4).get(localObject3)).sP();
-          localc.bax = ((IBitmap)localObject1);
+          localObject1 = ((com.github.henryye.nativeiv.bitmap.b)((Map)localObject4).get(localObject3)).qD();
+          localc.aJV = ((IBitmap)localObject1);
           j = 0;
         }
       }
@@ -104,15 +104,15 @@ public class a
         d locald;
         Object localObject3;
         Object localObject4;
-        this.bas.a(paramString, IImageDecodeService.b.a.bbb, locala);
+        this.aJP.a(paramString, IImageDecodeService.b.a.aKz, locala);
         com.github.henryye.nativeiv.a.b.e("DefaultBitmapDecoder", "ImageDecoder(%s) decode path[%s] error %s", new Object[] { paramb, paramObject.toString(), paramImageDecodeConfig.toString() });
-        AppMethodBeat.o(219792);
+        AppMethodBeat.o(219668);
         return null;
       }
       try
       {
-        localc.bax.decodeInputStream(localInputStream, paramImageDecodeConfig, localc1);
-        localObject1 = localc.bax.provide();
+        localc.aJV.decodeInputStream(localInputStream, paramImageDecodeConfig, localc1);
+        localObject1 = localc.aJV.provide();
         if (localObject1 == null) {
           break label597;
         }
@@ -121,8 +121,8 @@ public class a
       catch (IOException localIOException1)
       {
         com.github.henryye.nativeiv.a.b.printStackTrace("Ni.BitmapWrapper", localIOException1, "hy: decodeInputStream", new Object[0]);
-        localc.bay.a(paramString, IImageDecodeService.b.a.baW, localc.baz);
-        localc.bax.recycle();
+        localc.aJW.a(paramString, IImageDecodeService.b.a.aKu, localc.aJX);
+        localc.aJV.recycle();
         j = 1;
         i = 0;
         continue;
@@ -130,8 +130,8 @@ public class a
       catch (OutOfMemoryError localOutOfMemoryError)
       {
         com.github.henryye.nativeiv.a.b.printStackTrace("Ni.BitmapWrapper", localOutOfMemoryError, "hy: decodeInputStream", new Object[0]);
-        localc.bay.a(paramString, IImageDecodeService.b.a.baX, localc.baz);
-        localc.bax.recycle();
+        localc.aJW.a(paramString, IImageDecodeService.b.a.aKv, localc.aJX);
+        localc.aJV.recycle();
         j = 1;
         i = 0;
         continue;
@@ -140,38 +140,38 @@ public class a
       {
         label597:
         com.github.henryye.nativeiv.a.b.printStackTrace("Ni.BitmapWrapper", localThrowable, "hy: decode image exception", new Object[0]);
-        localc.bay.a(paramString, IImageDecodeService.b.a.bba, localc.baz);
-        localc.bax.recycle();
+        localc.aJW.a(paramString, IImageDecodeService.b.a.aKy, localc.aJX);
+        localc.aJV.recycle();
         i = 0;
         continue;
       }
       if (j != 0)
       {
         com.github.henryye.nativeiv.c.b.b(localInputStream);
-        if ((locald.width <= this.mMaxWidth) && (locald.height <= this.mMaxHeight)) {
+        if ((locald.width <= this.uJ) && (locald.height <= this.EK)) {
           break label1102;
         }
-        this.bas.a(paramString, IImageDecodeService.b.a.baV, locala);
-        localc.bax.recycle();
-        AppMethodBeat.o(219792);
+        this.aJP.a(paramString, IImageDecodeService.b.a.aKt, locala);
+        localc.aJV.recycle();
+        AppMethodBeat.o(219668);
         return null;
-        if (((b)localObject1).bat.get(localObject3) == null) {
+        if (((b)localObject1).aJR.get(localObject3) == null) {
           break label1128;
         }
-        localObject1 = ((com.github.henryye.nativeiv.bitmap.b)((b)localObject1).bat.get(localObject3)).sP();
+        localObject1 = ((com.github.henryye.nativeiv.bitmap.b)((b)localObject1).aJR.get(localObject3)).qD();
         continue;
-        localObject4 = localc.baA;
+        localObject4 = localc.aJY;
         i = localc.hashCode();
-        localObject1 = (Map)((b)localObject4).bau.get(i);
+        localObject1 = (Map)((b)localObject4).aJS.get(i);
         if (localObject1 == null) {
           break label1122;
         }
         localObject1 = b.a(localc1, (Map)localObject1);
         localObject3 = localObject1;
         if (localObject1 == null) {
-          localObject3 = b.a(localc1, ((b)localObject4).bat);
+          localObject3 = b.a(localc1, ((b)localObject4).aJR);
         }
-        localc.bax = ((IBitmap)localObject3);
+        localc.aJV = ((IBitmap)localObject3);
         continue;
         i = 0;
         continue;
@@ -180,24 +180,24 @@ public class a
       {
         j = localInputStream.available();
         long l = j;
-        if ((i == 0) && (localc.bax.getType() == BitmapType.Native))
+        if ((i == 0) && (localc.aJV.getType() == BitmapType.Native))
         {
           com.github.henryye.nativeiv.a.b.i("Ni.BitmapWrapper", "hy: decode switch to legacy mode!", new Object[0]);
-          localc.bax = ((com.github.henryye.nativeiv.bitmap.b)localc.baA.bat.get(BitmapType.Legacy)).sP();
+          localc.aJV = ((com.github.henryye.nativeiv.bitmap.b)localc.aJY.aJR.get(BitmapType.Legacy)).qD();
         }
         try
         {
-          localc.bax.decodeInputStream(localInputStream, paramImageDecodeConfig, localc1);
-          localc.baz.baM = l;
-          localc.baz.baN = localc.bax.getDecodeTime();
-          localc.bay.a(paramString, IImageDecodeService.b.a.baQ, localc.baz);
-          if (localc.bax.getType() == BitmapType.Legacy) {
-            localc.bay.a(paramString, IImageDecodeService.b.a.baY, localc.baz);
+          localc.aJV.decodeInputStream(localInputStream, paramImageDecodeConfig, localc1);
+          localc.aJX.aKk = l;
+          localc.aJX.aKl = localc.aJV.getDecodeTime();
+          localc.aJW.a(paramString, IImageDecodeService.b.a.aKo, localc.aJX);
+          if (localc.aJV.getType() == BitmapType.Legacy) {
+            localc.aJW.a(paramString, IImageDecodeService.b.a.aKw, localc.aJX);
           }
-          if (localc.bax.provide() == null)
+          if (localc.aJV.provide() == null)
           {
-            localc.bax.recycle();
-            localc.bax = null;
+            localc.aJV.recycle();
+            localc.aJV = null;
           }
           com.github.henryye.nativeiv.c.b.b(localInputStream);
           continue;
@@ -210,7 +210,7 @@ public class a
           for (;;)
           {
             com.github.henryye.nativeiv.a.b.printStackTrace("Ni.BitmapWrapper", paramImageDecodeConfig, "hy: IOException when use legacy", new Object[0]);
-            localc.bay.a(paramString, IImageDecodeService.b.a.baW, localc.baz);
+            localc.aJW.a(paramString, IImageDecodeService.b.a.aKu, localc.aJX);
           }
         }
         catch (OutOfMemoryError paramImageDecodeConfig)
@@ -218,7 +218,7 @@ public class a
           for (;;)
           {
             com.github.henryye.nativeiv.a.b.printStackTrace("Ni.BitmapWrapper", paramImageDecodeConfig, "hy: decodeInputStream", new Object[0]);
-            localc.bay.a(paramString, IImageDecodeService.b.a.baX, localc.baz);
+            localc.aJW.a(paramString, IImageDecodeService.b.a.aKv, localc.aJX);
           }
         }
         catch (Throwable paramImageDecodeConfig)
@@ -226,12 +226,12 @@ public class a
           for (;;)
           {
             com.github.henryye.nativeiv.a.b.printStackTrace("Ni.BitmapWrapper", paramImageDecodeConfig, "hy: decode image exception", new Object[0]);
-            localc.bay.a(paramString, IImageDecodeService.b.a.bba, localc.baz);
+            localc.aJW.a(paramString, IImageDecodeService.b.a.aKy, localc.aJX);
           }
         }
         label1102:
-        paramImageDecodeConfig = localc.bax;
-        AppMethodBeat.o(219792);
+        paramImageDecodeConfig = localc.aJV;
+        AppMethodBeat.o(219668);
         return paramImageDecodeConfig;
       }
       catch (IllegalStateException localIllegalStateException)
@@ -252,52 +252,52 @@ public class a
   
   protected c a(b paramb, com.github.henryye.nativeiv.api.a parama)
   {
-    AppMethodBeat.i(219793);
+    AppMethodBeat.i(219669);
     paramb = new c(paramb, parama);
-    AppMethodBeat.o(219793);
+    AppMethodBeat.o(219669);
     return paramb;
   }
   
   public final void a(IImageDecodeService.b paramb)
   {
-    this.bas = paramb;
+    this.aJP = paramb;
   }
   
-  public final void aW(int paramInt1, int paramInt2)
+  public final void bc(int paramInt1, int paramInt2)
   {
-    this.mMaxWidth = paramInt1;
-    this.mMaxHeight = paramInt2;
+    this.uJ = paramInt1;
+    this.EK = paramInt2;
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(219791);
-    this.aMn = true;
-    b localb = this.baq;
+    AppMethodBeat.i(219645);
+    this.aJQ = true;
+    b localb = this.aJN;
     int i = 0;
-    while (i < localb.bau.size())
+    while (i < localb.aJS.size())
     {
-      int j = localb.bau.keyAt(i);
-      b.b((Map)localb.bau.get(j));
+      int j = localb.aJS.keyAt(i);
+      b.b((Map)localb.aJS.get(j));
       i += 1;
     }
-    b.b(localb.bat);
-    AppMethodBeat.o(219791);
+    b.b(localb.aJR);
+    AppMethodBeat.o(219645);
   }
   
   public final void forceSetUseType(BitmapType paramBitmapType)
   {
-    this.bar = paramBitmapType;
+    this.aJO = paramBitmapType;
   }
   
   public final boolean isDestroyed()
   {
-    return this.aMn;
+    return this.aJQ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.github.henryye.nativeiv.a
  * JD-Core Version:    0.7.0.1
  */

@@ -5,14 +5,14 @@ import g.a.a.b;
 import java.util.LinkedList;
 
 public final class j
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String gqB;
-  public m qGW;
-  public String qGX;
-  public long qGq;
-  public String qGu;
-  public String qGx;
+  public String iUJ;
+  public m ufX;
+  public String ufY;
+  public long ufr;
+  public String ufv;
+  public String ufy;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -20,69 +20,69 @@ public final class j
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.gqB == null)
+      if (this.iUJ == null)
       {
         paramVarArgs = new b("Not all required fields were included: download_url");
         AppMethodBeat.o(153070);
         throw paramVarArgs;
       }
-      if (this.gqB != null) {
-        paramVarArgs.e(1, this.gqB);
+      if (this.iUJ != null) {
+        paramVarArgs.f(1, this.iUJ);
       }
-      paramVarArgs.bb(2, this.qGq);
-      if (this.qGW != null)
+      paramVarArgs.bm(2, this.ufr);
+      if (this.ufX != null)
       {
-        paramVarArgs.ni(3, this.qGW.computeSize());
-        this.qGW.writeFields(paramVarArgs);
+        paramVarArgs.oE(3, this.ufX.computeSize());
+        this.ufX.writeFields(paramVarArgs);
       }
-      if (this.qGX != null) {
-        paramVarArgs.e(4, this.qGX);
+      if (this.ufY != null) {
+        paramVarArgs.f(4, this.ufY);
       }
-      if (this.qGx != null) {
-        paramVarArgs.e(5, this.qGx);
+      if (this.ufy != null) {
+        paramVarArgs.f(5, this.ufy);
       }
-      if (this.qGu != null) {
-        paramVarArgs.e(6, this.qGu);
+      if (this.ufv != null) {
+        paramVarArgs.f(6, this.ufv);
       }
       AppMethodBeat.o(153070);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.gqB == null) {
-        break label646;
+      if (this.iUJ == null) {
+        break label624;
       }
     }
-    label646:
-    for (paramInt = g.a.a.b.b.a.f(1, this.gqB) + 0;; paramInt = 0)
+    label624:
+    for (paramInt = g.a.a.b.b.a.g(1, this.iUJ) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.r(2, this.qGq);
+      int i = paramInt + g.a.a.b.b.a.p(2, this.ufr);
       paramInt = i;
-      if (this.qGW != null) {
-        paramInt = i + g.a.a.a.nh(3, this.qGW.computeSize());
+      if (this.ufX != null) {
+        paramInt = i + g.a.a.a.oD(3, this.ufX.computeSize());
       }
       i = paramInt;
-      if (this.qGX != null) {
-        i = paramInt + g.a.a.b.b.a.f(4, this.qGX);
+      if (this.ufY != null) {
+        i = paramInt + g.a.a.b.b.a.g(4, this.ufY);
       }
       paramInt = i;
-      if (this.qGx != null) {
-        paramInt = i + g.a.a.b.b.a.f(5, this.qGx);
+      if (this.ufy != null) {
+        paramInt = i + g.a.a.b.b.a.g(5, this.ufy);
       }
       i = paramInt;
-      if (this.qGu != null) {
-        i = paramInt + g.a.a.b.b.a.f(6, this.qGu);
+      if (this.ufv != null) {
+        i = paramInt + g.a.a.b.b.a.g(6, this.ufv);
       }
       AppMethodBeat.o(153070);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.gqB == null)
+        if (this.iUJ == null)
         {
           paramVarArgs = new b("Not all required fields were included: download_url");
           AppMethodBeat.o(153070);
@@ -93,7 +93,7 @@ public final class j
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         j localj = (j)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
@@ -102,38 +102,39 @@ public final class j
           AppMethodBeat.o(153070);
           return -1;
         case 1: 
-          localj.gqB = ((g.a.a.a.a)localObject1).UbS.readString();
+          localj.iUJ = ((g.a.a.a.a)localObject).abFh.readString();
           AppMethodBeat.o(153070);
           return 0;
         case 2: 
-          localj.qGq = ((g.a.a.a.a)localObject1).UbS.zl();
+          localj.ufr = ((g.a.a.a.a)localObject).abFh.AN();
           AppMethodBeat.o(153070);
           return 0;
         case 3: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new m();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((m)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localj.qGW = ((m)localObject1);
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            m localm = new m();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localm.parseFrom((byte[])localObject);
+            }
+            localj.ufX = localm;
             paramInt += 1;
           }
           AppMethodBeat.o(153070);
           return 0;
         case 4: 
-          localj.qGX = ((g.a.a.a.a)localObject1).UbS.readString();
+          localj.ufY = ((g.a.a.a.a)localObject).abFh.readString();
           AppMethodBeat.o(153070);
           return 0;
         case 5: 
-          localj.qGx = ((g.a.a.a.a)localObject1).UbS.readString();
+          localj.ufy = ((g.a.a.a.a)localObject).abFh.readString();
           AppMethodBeat.o(153070);
           return 0;
         }
-        localj.qGu = ((g.a.a.a.a)localObject1).UbS.readString();
+        localj.ufv = ((g.a.a.a.a)localObject).abFh.readString();
         AppMethodBeat.o(153070);
         return 0;
       }
@@ -144,7 +145,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.c.b.j
  * JD-Core Version:    0.7.0.1
  */

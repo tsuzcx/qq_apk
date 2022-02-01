@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.product.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
   public String name;
   public String value;
@@ -15,10 +15,10 @@ public final class i
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.name != null) {
-        paramVarArgs.e(1, this.name);
+        paramVarArgs.f(1, this.name);
       }
       if (this.value != null) {
-        paramVarArgs.e(2, this.value);
+        paramVarArgs.f(2, this.value);
       }
       AppMethodBeat.o(91275);
       return 0;
@@ -29,20 +29,20 @@ public final class i
       }
     }
     label274:
-    for (paramInt = g.a.a.b.b.a.f(1, this.name) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.name) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.value != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.value);
+        i = paramInt + g.a.a.b.b.a.g(2, this.value);
       }
       AppMethodBeat.o(91275);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         AppMethodBeat.o(91275);
@@ -58,11 +58,11 @@ public final class i
           AppMethodBeat.o(91275);
           return -1;
         case 1: 
-          locali.name = locala.UbS.readString();
+          locali.name = locala.abFh.readString();
           AppMethodBeat.o(91275);
           return 0;
         }
-        locali.value = locala.UbS.readString();
+        locali.value = locala.abFh.readString();
         AppMethodBeat.o(91275);
         return 0;
       }

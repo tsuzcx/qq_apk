@@ -1,388 +1,250 @@
 package com.tencent.mm.storage;
 
-import android.os.Build;
-import android.os.Build.VERSION;
+import android.content.ContentValues;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.messenger.foundation.a.a.l;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MStorage;
-import com.tencent.mm.vfs.s;
-import java.nio.charset.Charset;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import com.tencent.mm.storagebase.h;
+import java.util.LinkedList;
+import java.util.List;
+import junit.framework.Assert;
 
 public final class ck
   extends MStorage
+  implements l
 {
-  private ao OrC = null;
+  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS role_info ( id TEXT PRIMARY KEY, name TEXT, status INT, text_reserved1 TEXT, text_reserved2 TEXT, text_reserved3 TEXT, text_reserved4 TEXT, int_reserved1 INT, int_reserved2 INT, int_reserved3 INT, int_reserved4 INT )" };
+  private ISQLiteDatabase db = null;
   
-  public ck(ao paramao)
+  public ck(h paramh)
   {
-    this.OrC = paramao;
+    this.db = paramh;
   }
   
-  public static boolean bkU(String paramString)
+  private void a(cj paramcj)
   {
-    AppMethodBeat.i(133306);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(133306);
-      return false;
+    AppMethodBeat.i(117324);
+    paramcj.cUP = 135;
+    paramcj = paramcj.convertTo();
+    if ((paramcj.size() > 0) && (this.db.insert("role_info", "id", paramcj) != 0L)) {
+      doNotify();
     }
-    try
+    AppMethodBeat.o(117324);
+  }
+  
+  private void b(cj paramcj)
+  {
+    AppMethodBeat.i(117329);
+    ContentValues localContentValues = paramcj.convertTo();
+    if (localContentValues.size() > 0)
     {
-      Map localMap = XmlParser.parseXml(paramString, "deviceinfoconfig", null);
-      if (localMap == null)
-      {
-        AppMethodBeat.o(133306);
-        return false;
+      int i = this.db.update("role_info", localContentValues, "name like ?", new String[] { paramcj.name });
+      Log.d("MicroMsg.RoleStorage", "update role info, name=" + paramcj.name + ", res:" + i);
+      if (i > 0) {
+        doNotify();
       }
     }
-    catch (Exception paramString)
-    {
-      Log.e("MicroMsg.ServerConfigInfoStorage", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
-      AppMethodBeat.o(133306);
-      return false;
-    }
-    if (!g.aAc())
-    {
-      AppMethodBeat.o(133306);
-      return false;
-    }
-    g.aAi();
-    g.aAh().azR().bkT(paramString);
-    AppMethodBeat.o(133306);
-    return true;
+    AppMethodBeat.o(117329);
   }
   
-  /* Error */
-  private static boolean bkV(String paramString)
+  private cj bxs(String paramString)
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_1
-    //   2: ldc 83
-    //   4: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: new 85	com/tencent/mm/vfs/o
-    //   10: dup
-    //   11: getstatic 91	com/tencent/mm/storage/ar:NSe	Ljava/lang/String;
-    //   14: invokespecial 94	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
-    //   17: astore_2
-    //   18: aload_2
-    //   19: invokevirtual 97	com/tencent/mm/vfs/o:exists	()Z
-    //   22: ifne +8 -> 30
-    //   25: aload_2
-    //   26: invokevirtual 100	com/tencent/mm/vfs/o:mkdirs	()Z
-    //   29: pop
-    //   30: aconst_null
-    //   31: astore_2
-    //   32: ldc 43
-    //   34: ldc 102
-    //   36: iconst_2
-    //   37: anewarray 47	java/lang/Object
-    //   40: dup
-    //   41: iconst_0
-    //   42: new 104	java/lang/StringBuilder
-    //   45: dup
-    //   46: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   49: getstatic 91	com/tencent/mm/storage/ar:NSe	Ljava/lang/String;
-    //   52: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: ldc 111
-    //   57: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   60: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   63: aastore
-    //   64: dup
-    //   65: iconst_1
-    //   66: aload_0
-    //   67: aastore
-    //   68: invokestatic 117	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   71: new 119	com/tencent/mm/vfs/v
-    //   74: dup
-    //   75: new 104	java/lang/StringBuilder
-    //   78: dup
-    //   79: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   82: getstatic 91	com/tencent/mm/storage/ar:NSe	Ljava/lang/String;
-    //   85: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: ldc 111
-    //   90: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   93: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   96: invokespecial 120	com/tencent/mm/vfs/v:<init>	(Ljava/lang/String;)V
-    //   99: astore_3
-    //   100: aload_3
-    //   101: astore_2
-    //   102: aload_3
-    //   103: aload_0
-    //   104: invokevirtual 123	com/tencent/mm/vfs/v:write	(Ljava/lang/String;)V
-    //   107: aload_3
-    //   108: astore_2
-    //   109: aload_3
-    //   110: invokevirtual 126	com/tencent/mm/vfs/v:close	()V
-    //   113: aload_3
-    //   114: invokevirtual 126	com/tencent/mm/vfs/v:close	()V
-    //   117: ldc 83
-    //   119: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   122: iload_1
-    //   123: ireturn
-    //   124: astore_0
-    //   125: ldc 43
-    //   127: ldc 45
-    //   129: iconst_1
-    //   130: anewarray 47	java/lang/Object
-    //   133: dup
-    //   134: iconst_0
-    //   135: aload_0
-    //   136: invokestatic 51	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   139: aastore
-    //   140: invokestatic 57	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   143: goto -26 -> 117
-    //   146: astore_0
-    //   147: aconst_null
-    //   148: astore_3
-    //   149: iconst_0
-    //   150: istore_1
-    //   151: aload_3
-    //   152: astore_2
-    //   153: ldc 43
-    //   155: ldc 45
-    //   157: iconst_1
-    //   158: anewarray 47	java/lang/Object
-    //   161: dup
-    //   162: iconst_0
-    //   163: aload_0
-    //   164: invokestatic 51	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   167: aastore
-    //   168: invokestatic 57	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   171: aload_3
-    //   172: ifnull +86 -> 258
-    //   175: aload_3
-    //   176: invokevirtual 126	com/tencent/mm/vfs/v:close	()V
-    //   179: goto -62 -> 117
-    //   182: astore_0
-    //   183: ldc 43
-    //   185: ldc 45
-    //   187: iconst_1
-    //   188: anewarray 47	java/lang/Object
-    //   191: dup
-    //   192: iconst_0
-    //   193: aload_0
-    //   194: invokestatic 51	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   197: aastore
-    //   198: invokestatic 57	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   201: goto -84 -> 117
-    //   204: astore_0
-    //   205: aload_2
-    //   206: ifnull +7 -> 213
-    //   209: aload_2
-    //   210: invokevirtual 126	com/tencent/mm/vfs/v:close	()V
-    //   213: ldc 83
-    //   215: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   218: aload_0
-    //   219: athrow
-    //   220: astore_2
-    //   221: ldc 43
-    //   223: ldc 45
-    //   225: iconst_1
-    //   226: anewarray 47	java/lang/Object
-    //   229: dup
-    //   230: iconst_0
-    //   231: aload_2
-    //   232: invokestatic 51	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   235: aastore
-    //   236: invokestatic 57	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   239: goto -26 -> 213
-    //   242: astore_0
-    //   243: goto -38 -> 205
-    //   246: astore_0
-    //   247: iconst_0
-    //   248: istore_1
-    //   249: goto -98 -> 151
-    //   252: astore_0
-    //   253: iconst_1
-    //   254: istore_1
-    //   255: goto -104 -> 151
-    //   258: goto -141 -> 117
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	261	0	paramString	String
-    //   1	254	1	bool	boolean
-    //   17	193	2	localObject	Object
-    //   220	12	2	localException	Exception
-    //   99	77	3	localv	com.tencent.mm.vfs.v
-    // Exception table:
-    //   from	to	target	type
-    //   113	117	124	java/lang/Exception
-    //   32	100	146	java/lang/Exception
-    //   175	179	182	java/lang/Exception
-    //   32	100	204	finally
-    //   209	213	220	java/lang/Exception
-    //   102	107	242	finally
-    //   109	113	242	finally
-    //   153	171	242	finally
-    //   102	107	246	java/lang/Exception
-    //   109	113	252	java/lang/Exception
+    Object localObject = null;
+    AppMethodBeat.i(117322);
+    if ((paramString != null) && (paramString.length() > 0)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Assert.assertTrue(bool);
+      cj localcj = new cj();
+      Cursor localCursor = this.db.query("role_info", null, "name= ?", new String[] { paramString }, null, null, null, 2);
+      paramString = localObject;
+      if (localCursor.moveToFirst())
+      {
+        localcj.convertFrom(localCursor);
+        paramString = localcj;
+      }
+      localCursor.close();
+      AppMethodBeat.o(117322);
+      return paramString;
+    }
   }
   
-  private boolean gEs()
+  public final void Up(String paramString)
   {
-    AppMethodBeat.i(133300);
-    String str = (String)this.OrC.get(77825, null);
-    Log.i("MicroMsg.ServerConfigInfoStorage", "hy: readConfig xml ".concat(String.valueOf(str)));
-    if (!Util.isNullOrNil(str)) {
-      super.doNotify(str);
-    }
-    if (!Util.isNullOrNil(str))
+    AppMethodBeat.i(117330);
+    if (paramString.length() > 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.o(133300);
+      Assert.assertTrue(bool);
+      int i = this.db.delete("role_info", "name=?", new String[] { String.valueOf(paramString) });
+      Log.d("MicroMsg.RoleStorage", "delete name name :" + paramString + ", res:" + i);
+      if (i > 0) {
+        doNotify();
+      }
+      AppMethodBeat.o(117330);
+      return;
+    }
+  }
+  
+  public final cj aPi(String paramString)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(117321);
+    if ((paramString == null) || (paramString.length() <= 0))
+    {
+      AppMethodBeat.o(117321);
+      return null;
+    }
+    cj localcj = new cj();
+    Cursor localCursor = this.db.query("role_info", null, "name LIKE ?", new String[] { "%".concat(String.valueOf(paramString)) }, null, null, null, 2);
+    paramString = localObject;
+    if (localCursor.moveToFirst())
+    {
+      localcj.convertFrom(localCursor);
+      paramString = localcj;
+    }
+    localCursor.close();
+    AppMethodBeat.o(117321);
+    return paramString;
+  }
+  
+  public final void bV(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(117327);
+    if (Util.isNullOrNil(paramString))
+    {
+      Log.e("MicroMsg.RoleStorage", "insert role info failed: empty user");
+      AppMethodBeat.o(117327);
+      return;
+    }
+    cj localcj = bxs(paramString);
+    if (localcj == null)
+    {
+      a(new cj(paramString, paramBoolean, 2));
+      Log.d("MicroMsg.RoleStorage", "insert new role, user=".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(117327);
+      return;
+    }
+    localcj.setEnable(paramBoolean);
+    localcj.cUP = 4;
+    b(localcj);
+    AppMethodBeat.o(117327);
+  }
+  
+  public final List<cj> eSy()
+  {
+    AppMethodBeat.i(117323);
+    LinkedList localLinkedList = new LinkedList();
+    Cursor localCursor = this.db.query("role_info", null, "int_reserved1=1", null, null, null, null, 2);
+    while (localCursor.moveToNext())
+    {
+      cj localcj = new cj();
+      localcj.convertFrom(localCursor);
+      localLinkedList.add(localcj);
+    }
+    localCursor.close();
+    AppMethodBeat.o(117323);
+    return localLinkedList;
+  }
+  
+  public final void fk(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(117326);
+    if (Util.isNullOrNil(paramString))
+    {
+      Log.e("MicroMsg.RoleStorage", "insert role info failed: empty user");
+      AppMethodBeat.o(117326);
+      return;
+    }
+    if (bxs(paramString) == null)
+    {
+      a(new cj(paramString, true, paramInt));
+      Log.d("MicroMsg.RoleStorage", "insert new role, user=".concat(String.valueOf(paramString)));
+    }
+    AppMethodBeat.o(117326);
+  }
+  
+  public final boolean has(String paramString)
+  {
+    AppMethodBeat.i(117325);
+    cj localcj = bxs(paramString);
+    if (localcj != null)
+    {
+      if (localcj.VHy == 4)
+      {
+        i = 1;
+        if (i == 0) {
+          if (localcj.VHy != 5) {
+            break label55;
+          }
+        }
+      }
+      label55:
+      for (int i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label60;
+        }
+        AppMethodBeat.o(117325);
+        return true;
+        i = 0;
+        break;
+      }
+    }
+    label60:
+    localcj = aPi(new cj.a(paramString).bxr(""));
+    if ((localcj != null) && (paramString.equals(localcj.name)))
+    {
+      AppMethodBeat.o(117325);
       return true;
     }
-    AppMethodBeat.o(133300);
+    AppMethodBeat.o(117325);
     return false;
   }
   
-  private int gEt()
+  public final void i(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(133301);
-    if (!gEs())
+    int i = 2;
+    AppMethodBeat.i(117328);
+    if (Util.isNullOrNil(paramString))
     {
-      Object localObject = ar.NSe + "deviceconfig.cfg";
-      if (!s.YS((String)localObject))
-      {
-        AppMethodBeat.o(133301);
-        return -1;
-      }
-      localObject = s.aW((String)localObject, 0, -1);
-      if (Util.isNullOrNil((byte[])localObject))
-      {
-        AppMethodBeat.o(133301);
-        return -2;
-      }
-      localObject = new String((byte[])localObject, Charset.defaultCharset());
-      if (Util.isNullOrNil((String)localObject))
-      {
-        AppMethodBeat.o(133301);
-        return -3;
-      }
-      Log.i("MicroMsg.ServerConfigInfoStorage", "hy: read from file: %s", new Object[] { localObject });
-      bkT((String)localObject);
-      AppMethodBeat.o(133301);
-      return 0;
+      Log.e("MicroMsg.RoleStorage", "insert role info failed: empty user");
+      AppMethodBeat.o(117328);
+      return;
     }
-    Log.i("MicroMsg.ServerConfigInfoStorage", "hy: got conf from db");
-    AppMethodBeat.o(133301);
-    return 0;
-  }
-  
-  public static String gEv()
-  {
-    AppMethodBeat.i(133304);
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    String str2 = Build.FINGERPRINT;
-    String str1 = str2;
-    if (str2 != null) {
-      str1 = str2.replace("/", ":");
-    }
-    localLinkedHashMap.put("fingerprint", str1);
-    localLinkedHashMap.put("manufacturer", Build.MANUFACTURER);
-    localLinkedHashMap.put("device", Build.DEVICE);
-    localLinkedHashMap.put("model", Build.MODEL);
-    localLinkedHashMap.put("product", Build.PRODUCT);
-    localLinkedHashMap.put("board", Build.BOARD);
-    localLinkedHashMap.put("release", Build.VERSION.RELEASE);
-    localLinkedHashMap.put("codename", Build.VERSION.CODENAME);
-    localLinkedHashMap.put("incremental", Build.VERSION.INCREMENTAL);
-    localLinkedHashMap.put("display", Build.DISPLAY);
-    str1 = Util.mapToXml("key", localLinkedHashMap);
-    Log.d("MicroMsg.ServerConfigInfoStorage", "getLocalFingerprint  ".concat(String.valueOf(str1)));
-    AppMethodBeat.o(133304);
-    return str1;
-  }
-  
-  public static String gEw()
-  {
-    AppMethodBeat.i(197180);
-    Object localObject = ar.NSe + "deviceconfig.cfg";
-    Log.i("MicroMsg.ServerConfigInfoStorage", "readConfigFromLocalFile, path: %s, isExist: %s", new Object[] { localObject, Boolean.valueOf(s.YS((String)localObject)) });
-    if (!s.YS((String)localObject))
+    cj localcj = bxs(paramString);
+    if (localcj == null)
     {
-      AppMethodBeat.o(197180);
-      return null;
+      a(new cj(paramString, paramBoolean1, 2));
+      Log.d("MicroMsg.RoleStorage", "insert new role, user=".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(117328);
+      return;
     }
-    localObject = s.aW((String)localObject, 0, -1);
-    if (Util.isNullOrNil((byte[])localObject))
+    localcj.setEnable(paramBoolean1);
+    int j;
+    if (paramBoolean2)
     {
-      AppMethodBeat.o(197180);
-      return null;
+      j = localcj.status;
+      if (!paramBoolean2) {}
     }
-    localObject = new String((byte[])localObject, Charset.defaultCharset());
-    if (Util.isNullOrNil((String)localObject))
+    for (localcj.status = (i | j);; localcj.status &= 0xFFFFFFFD)
     {
-      AppMethodBeat.o(197180);
-      return null;
+      localcj.cUP = 4;
+      b(localcj);
+      AppMethodBeat.o(117328);
+      return;
+      i = 0;
+      break;
     }
-    AppMethodBeat.o(197180);
-    return localObject;
-  }
-  
-  public static String getFingerprint()
-  {
-    AppMethodBeat.i(133305);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("<deviceinfo>");
-    ((StringBuffer)localObject).append("<MANUFACTURER name=\"");
-    ((StringBuffer)localObject).append(Build.MANUFACTURER);
-    ((StringBuffer)localObject).append("\">");
-    ((StringBuffer)localObject).append("<MODEL name=\"");
-    ((StringBuffer)localObject).append(Build.MODEL);
-    ((StringBuffer)localObject).append("\">");
-    ((StringBuffer)localObject).append("<VERSION_RELEASE name=\"");
-    ((StringBuffer)localObject).append(Build.VERSION.RELEASE);
-    ((StringBuffer)localObject).append("\">");
-    ((StringBuffer)localObject).append("<VERSION_INCREMENTAL name=\"");
-    ((StringBuffer)localObject).append(Build.VERSION.INCREMENTAL);
-    ((StringBuffer)localObject).append("\">");
-    ((StringBuffer)localObject).append("<DISPLAY name=\"");
-    ((StringBuffer)localObject).append(Build.DISPLAY);
-    ((StringBuffer)localObject).append("\">");
-    ((StringBuffer)localObject).append("</DISPLAY></VERSION_INCREMENTAL></VERSION_RELEASE></MODEL></MANUFACTURER></deviceinfo>");
-    Log.d("MicroMsg.ServerConfigInfoStorage", "getFingerprint  " + ((StringBuffer)localObject).toString());
-    localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(133305);
-    return localObject;
-  }
-  
-  public final int bkT(String paramString)
-  {
-    AppMethodBeat.i(133303);
-    Log.d("MicroMsg.ServerConfigInfoStorage", "dkconf info:[%s] ", new Object[] { paramString });
-    this.OrC.set(77825, paramString);
-    bkV(paramString);
-    super.doNotify(paramString);
-    AppMethodBeat.o(133303);
-    return 0;
-  }
-  
-  public final void gEr()
-  {
-    AppMethodBeat.i(133299);
-    Log.i("MicroMsg.ServerConfigInfoStorage", "hy: read from local retcode: %d", new Object[] { Integer.valueOf(gEt()) });
-    AppMethodBeat.o(133299);
-  }
-  
-  public final String gEu()
-  {
-    AppMethodBeat.i(133302);
-    String str = (String)this.OrC.get(77825, null);
-    Log.d("MicroMsg.ServerConfigInfoStorage", "getInfoByKey xml " + str + " key 77825");
-    AppMethodBeat.o(133302);
-    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.ck
  * JD-Core Version:    0.7.0.1
  */

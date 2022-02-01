@@ -1,74 +1,66 @@
 package com.tencent.mm.bb;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.dbr;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class h
-  extends com.tencent.mm.bw.a
 {
-  public int dYn;
-  public int jgU;
-  public int jgV;
+  public String fMd;
+  public dbr lVY;
+  public String lVZ;
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  public static h a(String paramString, dbr paramdbr)
   {
-    AppMethodBeat.i(150799);
-    if (paramInt == 0)
+    AppMethodBeat.i(248854);
+    h localh = new h();
+    localh.fMd = paramString;
+    if (paramdbr != null) {}
+    try
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.dYn);
-      paramVarArgs.aM(2, this.jgU);
-      paramVarArgs.aM(3, this.jgV);
-      AppMethodBeat.o(150799);
-      return 0;
+      paramString = new dbr();
+      paramString.parseFrom(paramdbr.toByteArray());
+      localh.lVY = paramString;
+      localh.lVZ = paramString.lVZ;
+      AppMethodBeat.o(248854);
+      return localh;
     }
-    if (paramInt == 1)
+    catch (Exception paramString)
     {
-      paramInt = g.a.a.b.b.a.bu(1, this.dYn);
-      int i = g.a.a.b.b.a.bu(2, this.jgU);
-      int j = g.a.a.b.b.a.bu(3, this.jgV);
-      AppMethodBeat.o(150799);
-      return paramInt + 0 + i + j;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
-      }
-      AppMethodBeat.o(150799);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      h localh = (h)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      for (;;)
       {
-      default: 
-        AppMethodBeat.o(150799);
-        return -1;
-      case 1: 
-        localh.dYn = locala.UbS.zi();
-        AppMethodBeat.o(150799);
-        return 0;
-      case 2: 
-        localh.jgU = locala.UbS.zi();
-        AppMethodBeat.o(150799);
-        return 0;
+        Log.printErrStackTrace("MicroMsg.MusicWrapperExtend", paramString, "alvinluo createMusicWrapperExtend exception", new Object[0]);
       }
-      localh.jgV = locala.UbS.zi();
-      AppMethodBeat.o(150799);
-      return 0;
     }
-    AppMethodBeat.o(150799);
-    return -1;
+  }
+  
+  public static h a(String paramString1, dbr paramdbr, String paramString2)
+  {
+    AppMethodBeat.i(248853);
+    h localh = new h();
+    localh.fMd = paramString1;
+    if (paramdbr != null) {}
+    try
+    {
+      paramString1 = new dbr();
+      paramString1.parseFrom(paramdbr.toByteArray());
+      localh.lVY = paramString1;
+      localh.lVZ = paramString2;
+      AppMethodBeat.o(248853);
+      return localh;
+    }
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.MusicWrapperExtend", paramString1, "alvinluo createMusicWrapperExtend exception", new Object[0]);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.bb.h
  * JD-Core Version:    0.7.0.1
  */

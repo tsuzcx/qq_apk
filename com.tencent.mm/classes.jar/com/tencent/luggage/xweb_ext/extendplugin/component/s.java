@@ -2,13 +2,13 @@ package com.tencent.luggage.xweb_ext.extendplugin.component;
 
 public abstract interface s
 {
-  public abstract void PL();
+  public abstract void Tk();
   
-  public abstract void PM();
+  public abstract void Tl();
   
-  public abstract void PN();
+  public abstract void Tm();
   
-  public abstract void bZ(boolean paramBoolean);
+  public abstract void cm(boolean paramBoolean);
   
   public abstract void onError();
   

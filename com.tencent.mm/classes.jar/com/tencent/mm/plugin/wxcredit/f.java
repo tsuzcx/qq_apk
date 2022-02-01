@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.wxcredit;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
@@ -11,17 +12,18 @@ import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d;
+import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
 
 public class f
   extends d
 {
-  public final com.tencent.mm.wallet_core.d.g a(MMActivity paramMMActivity, i parami)
+  public final g a(MMActivity paramMMActivity, i parami)
   {
     AppMethodBeat.i(72295);
     if ((paramMMActivity instanceof WalletCheckPwdUI))
     {
-      paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
+      paramMMActivity = new g(paramMMActivity, parami)
       {
         public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
@@ -42,7 +44,7 @@ public class f
           if (!f.b(f.this).getBoolean("key_is_show_detail", true))
           {
             paramAnonymousVarArgs = (Bankcard)f.c(f.this).getParcelable("key_bankcard");
-            this.Ruz.a(new com.tencent.mm.plugin.wxcredit.a.f(paramAnonymousVarArgs.field_bankcardType, paramAnonymousVarArgs.field_bindSerial, f.d(f.this).getString("key_pwd1")), true, 1);
+            this.YVX.a(new com.tencent.mm.plugin.wxcredit.a.f(paramAnonymousVarArgs.field_bankcardType, paramAnonymousVarArgs.field_bindSerial, f.d(f.this).getString("key_pwd1")), true, 1);
             AppMethodBeat.o(72290);
             return true;
           }
@@ -91,15 +93,15 @@ public class f
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72294);
-    boolean bool = ((b)com.tencent.mm.kernel.g.af(b.class)).a(b.a.sad, true);
+    boolean bool = ((b)h.ae(b.class)).a(b.a.vHh, true);
     Log.i("MicroMsg.ProcessManager", " walletMallV2 switch is ：%s", new Object[] { Boolean.valueOf(bool) });
     if (bool)
     {
-      e(paramActivity, "mall", ".ui.MallIndexUIv2");
+      h(paramActivity, "mall", ".ui.MallIndexUIv2");
       AppMethodBeat.o(72294);
       return;
     }
-    e(paramActivity, "mall", ".ui.MallIndexUI");
+    h(paramActivity, "mall", ".ui.MallIndexUI");
     AppMethodBeat.o(72294);
   }
   
@@ -108,15 +110,15 @@ public class f
     return false;
   }
   
-  public final String dKC()
+  public final String epb()
   {
     return "WXCreditUnbindProcess";
   }
   
-  public final void g(Activity paramActivity, int paramInt)
+  public final void h(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(72293);
-    P(paramActivity);
+    Q(paramActivity);
     AppMethodBeat.o(72293);
   }
 }

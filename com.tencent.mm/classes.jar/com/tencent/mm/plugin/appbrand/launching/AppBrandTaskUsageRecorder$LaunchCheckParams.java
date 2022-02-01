@@ -12,12 +12,12 @@ public final class AppBrandTaskUsageRecorder$LaunchCheckParams
   implements Parcelable
 {
   public static final Parcelable.Creator<LaunchCheckParams> CREATOR;
-  final String cym;
-  final AppBrandInitConfigWC kEG;
-  final int lKh;
-  final QualitySession ldW;
-  final boolean loP;
-  final AppBrandStatObject mRM;
+  final String cwP;
+  final QualitySession nYk;
+  final AppBrandInitConfigWC nyg;
+  final int oGx;
+  final boolean ojz;
+  final AppBrandStatObject pSI;
   final int pkgVersion;
   
   static
@@ -30,25 +30,25 @@ public final class AppBrandTaskUsageRecorder$LaunchCheckParams
   AppBrandTaskUsageRecorder$LaunchCheckParams(Parcel paramParcel)
   {
     AppMethodBeat.i(47110);
-    this.loP = true;
-    this.kEG = ((AppBrandInitConfigWC)paramParcel.readParcelable(AppBrandInitConfigWC.class.getClassLoader()));
-    this.mRM = ((AppBrandStatObject)paramParcel.readParcelable(AppBrandStatObject.class.getClassLoader()));
+    this.ojz = true;
+    this.nyg = ((AppBrandInitConfigWC)paramParcel.readParcelable(AppBrandInitConfigWC.class.getClassLoader()));
+    this.pSI = ((AppBrandStatObject)paramParcel.readParcelable(AppBrandStatObject.class.getClassLoader()));
     this.pkgVersion = paramParcel.readInt();
-    this.lKh = paramParcel.readInt();
-    this.cym = paramParcel.readString();
-    this.ldW = ((QualitySession)paramParcel.readParcelable(QualitySession.class.getClassLoader()));
+    this.oGx = paramParcel.readInt();
+    this.cwP = paramParcel.readString();
+    this.nYk = ((QualitySession)paramParcel.readParcelable(QualitySession.class.getClassLoader()));
     AppMethodBeat.o(47110);
   }
   
   public AppBrandTaskUsageRecorder$LaunchCheckParams(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject, int paramInt1, int paramInt2, String paramString, QualitySession paramQualitySession)
   {
-    this.loP = true;
-    this.kEG = paramAppBrandInitConfigWC;
-    this.mRM = paramAppBrandStatObject;
+    this.ojz = true;
+    this.nyg = paramAppBrandInitConfigWC;
+    this.pSI = paramAppBrandStatObject;
     this.pkgVersion = paramInt1;
-    this.lKh = paramInt2;
-    this.cym = paramString;
-    this.ldW = paramQualitySession;
+    this.oGx = paramInt2;
+    this.cwP = paramString;
+    this.nYk = paramQualitySession;
   }
   
   public final int describeContents()
@@ -59,18 +59,18 @@ public final class AppBrandTaskUsageRecorder$LaunchCheckParams
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(47109);
-    paramParcel.writeParcelable(this.kEG, paramInt);
-    paramParcel.writeParcelable(this.mRM, paramInt);
+    paramParcel.writeParcelable(this.nyg, paramInt);
+    paramParcel.writeParcelable(this.pSI, paramInt);
     paramParcel.writeInt(this.pkgVersion);
-    paramParcel.writeInt(this.lKh);
-    paramParcel.writeString(this.cym);
-    paramParcel.writeParcelable(this.ldW, paramInt);
+    paramParcel.writeInt(this.oGx);
+    paramParcel.writeString(this.cwP);
+    paramParcel.writeParcelable(this.nYk, paramInt);
     AppMethodBeat.o(47109);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.AppBrandTaskUsageRecorder.LaunchCheckParams
  * JD-Core Version:    0.7.0.1
  */

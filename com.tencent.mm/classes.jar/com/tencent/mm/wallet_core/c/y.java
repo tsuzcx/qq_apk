@@ -8,25 +8,25 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class y
 {
-  private static String HXc = "";
-  private static String Rud = "";
-  private static long pWj = 0L;
+  private static String OPc = "";
+  private static String YVC = "";
+  private static long tsi = 0L;
   
-  public static String hhp()
+  public static String iiR()
   {
     boolean bool = false;
     AppMethodBeat.i(72804);
-    if ((Util.isNullOrNil(HXc)) || (CrashReportFactory.hasDebuger()))
+    if ((Util.isNullOrNil(OPc)) || (CrashReportFactory.hasDebuger()))
     {
-      str = Rud;
-      long l = Util.secondsToNow(pWj);
+      str = YVC;
+      long l = Util.secondsToNow(tsi);
       Log.d("MicroMsg.TimeStampHelper", "pass time ".concat(String.valueOf(l)));
       if (l > 300L) {
         bool = true;
       }
-      Log.i("MicroMsg.TimeStampHelper", "getTimeStamp is null from %s isOverdue %s update_time: %s", new Object[] { str, Boolean.valueOf(bool), Long.valueOf(pWj) });
+      Log.i("MicroMsg.TimeStampHelper", "getTimeStamp is null from %s isOverdue %s update_time: %s", new Object[] { str, Boolean.valueOf(bool), Long.valueOf(tsi) });
     }
-    String str = HXc;
+    String str = OPc;
     AppMethodBeat.o(72804);
     return str;
   }
@@ -34,9 +34,9 @@ public final class y
   public static void setTimeStamp(String paramString)
   {
     AppMethodBeat.i(72803);
-    HXc = paramString;
-    pWj = System.currentTimeMillis() / 1000L;
-    Rud = Util.getStack().toString();
+    OPc = paramString;
+    tsi = System.currentTimeMillis() / 1000L;
+    YVC = Util.getStack().toString();
     AppMethodBeat.o(72803);
   }
 }

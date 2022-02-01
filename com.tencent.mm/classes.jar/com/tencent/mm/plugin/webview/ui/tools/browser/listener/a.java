@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.browser.listener;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/listener/BrowserChooseDialogClickListener;", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/listener/BrowserDialogItemClickListener;", "onCloseClick", "", "dialog", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BaseBrowseDialog;", "view", "Landroid/view/View;", "onMoreClick", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/listener/BrowserChooseDialogClickListener;", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/listener/BrowserDialogItemClickListener;", "onCloseClick", "", "dialog", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BaseBrowseDialog;", "view", "Landroid/view/View;", "onMoreClick", "plugin-webview_release"})
 public abstract interface a
   extends b
 {
@@ -12,7 +12,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.browser.listener.a
  * JD-Core Version:    0.7.0.1
  */

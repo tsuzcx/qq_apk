@@ -5,13 +5,14 @@ import android.os.Bundle;
 import android.view.Window;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.gn;
-import com.tencent.mm.plugin.remittance.model.p;
+import com.tencent.mm.an.q;
+import com.tencent.mm.f.a.gu;
+import com.tencent.mm.plugin.remittance.model.r;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
+import com.tencent.mm.plugin.wxpay.a.c;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.protocal.protobuf.vt;
+import com.tencent.mm.protocal.protobuf.vv;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -25,9 +26,9 @@ import java.util.List;
 public class RemittanceResultUI
   extends WalletBaseUI
 {
-  private Orders CwO;
+  private Orders Ivh;
   
-  private void aV(Class<?> paramClass)
+  private void bq(Class<?> paramClass)
   {
     AppMethodBeat.i(68315);
     if (getProcess() == null)
@@ -40,7 +41,7 @@ public class RemittanceResultUI
     AppMethodBeat.o(68315);
   }
   
-  protected boolean eOn()
+  protected boolean fBc()
   {
     return true;
   }
@@ -55,95 +56,95 @@ public class RemittanceResultUI
     AppMethodBeat.i(68314);
     super.onCreate(paramBundle);
     PayInfo localPayInfo;
-    if (eOn())
+    if (fBc())
     {
       setContentViewVisibility(4);
-      getWindow().setBackgroundDrawableResource(2131101287);
-      this.CwO = ((Orders)getInput().getParcelable("key_orders"));
+      getWindow().setBackgroundDrawableResource(a.c.transparent);
+      this.Ivh = ((Orders)getInput().getParcelable("key_orders"));
       localPayInfo = (PayInfo)getInput().getParcelable("key_pay_info");
       if (localPayInfo == null) {
-        break label698;
+        break label699;
       }
     }
-    label652:
-    label661:
-    label674:
-    label698:
-    for (int i = localPayInfo.dVv;; i = 0)
+    label640:
+    label653:
+    label662:
+    label675:
+    label699:
+    for (int i = localPayInfo.fOY;; i = 0)
     {
       boolean bool1;
       boolean bool2;
-      label96:
+      label97:
       Object localObject1;
       if ((i == 31) || (i == 5))
       {
         bool1 = false;
-        if (this.CwO != null) {
-          break label633;
+        if (this.Ivh != null) {
+          break label634;
         }
         bool2 = true;
         Log.i("MicroMsg.RemittanceResultUI", "orders==null:%s, paysScene: %s, needFetchF2fData: %s", new Object[] { Boolean.valueOf(bool2), Integer.valueOf(i), Boolean.valueOf(bool1) });
-        if (this.CwO == null) {
-          break label661;
+        if (this.Ivh == null) {
+          break label662;
         }
-        Log.i("MicroMsg.RemittanceResultUI", "is_use_new_paid_succ_page: %s", new Object[] { Integer.valueOf(this.CwO.HZn) });
-        if (this.CwO.HZn != 1) {
-          break label652;
+        Log.i("MicroMsg.RemittanceResultUI", "is_use_new_paid_succ_page: %s", new Object[] { Integer.valueOf(this.Ivh.ORn) });
+        if (this.Ivh.ORn != 1) {
+          break label653;
         }
         if (!bool1) {
-          break label661;
+          break label662;
         }
-        Object localObject2 = this.CwO;
-        if ((localPayInfo == null) || (localPayInfo.iqp == null)) {
-          break label639;
+        Object localObject2 = this.Ivh;
+        if ((localPayInfo == null) || (localPayInfo.lfu == null)) {
+          break label640;
         }
         Log.i("MicroMsg.RemittanceResultUI", "fetch f2f data");
-        String str1 = localPayInfo.iqp.getString("extinfo_key_11");
+        String str1 = localPayInfo.lfu.getString("extinfo_key_11");
         localObject1 = "";
         paramBundle = (Bundle)localObject1;
         if (localObject2 != null)
         {
           paramBundle = (Bundle)localObject1;
-          if (((Orders)localObject2).HZd.size() > 0) {
-            paramBundle = ((Orders.Commodity)((Orders)localObject2).HZd.get(0)).dDM;
+          if (((Orders)localObject2).ORd.size() > 0) {
+            paramBundle = ((Orders.Commodity)((Orders)localObject2).ORd.get(0)).fww;
           }
         }
-        i = localPayInfo.iqp.getInt("extinfo_key_15", 0);
-        String str2 = localPayInfo.iqp.getString("extinfo_key_7");
-        String str3 = localPayInfo.iqp.getString("extinfo_key_3");
-        int j = localPayInfo.iqp.getInt("extinfo_key_12", 0);
-        String str4 = localPayInfo.iqp.getString("extinfo_key_13");
-        String str5 = localPayInfo.iqp.getString("extinfo_key_14");
-        localObject2 = localPayInfo.iqp.getString("extinfo_key_16");
+        i = localPayInfo.lfu.getInt("extinfo_key_15", 0);
+        String str2 = localPayInfo.lfu.getString("extinfo_key_7");
+        String str3 = localPayInfo.lfu.getString("extinfo_key_3");
+        int j = localPayInfo.lfu.getInt("extinfo_key_12", 0);
+        String str4 = localPayInfo.lfu.getString("extinfo_key_13");
+        String str5 = localPayInfo.lfu.getString("extinfo_key_14");
+        localObject2 = localPayInfo.lfu.getString("extinfo_key_16");
         localObject1 = localObject2;
         if (Util.isNullOrNil((String)localObject2)) {
           localObject1 = paramBundle;
         }
-        Log.i("MicroMsg.RemittanceResultUI", "fetchF2fData, f2fid: %s, transid: %s, amount: %s, payerDesc: %s, recvDesc: %s, scanScene: %s, paySuccSign: %s, paySuccExtend: %s, channel: %s, payscene: %s", new Object[] { str1, localObject1, Integer.valueOf(i), str2, str3, Integer.valueOf(j), str4, str5, Integer.valueOf(localPayInfo.channel), Integer.valueOf(localPayInfo.dVv) });
+        Log.i("MicroMsg.RemittanceResultUI", "fetchF2fData, f2fid: %s, transid: %s, amount: %s, payerDesc: %s, recvDesc: %s, scanScene: %s, paySuccSign: %s, paySuccExtend: %s, channel: %s, payscene: %s", new Object[] { str1, localObject1, Integer.valueOf(i), str2, str3, Integer.valueOf(j), str4, str5, Integer.valueOf(localPayInfo.channel), Integer.valueOf(localPayInfo.fOY) });
         addSceneEndListener(2773);
-        doSceneProgress(new p(str1, (String)localObject1, i, str2, str3, localPayInfo.channel, j, str4, str5));
-        label479:
+        doSceneProgress(new r(str1, (String)localObject1, i, str2, str3, localPayInfo.channel, j, str4, str5));
+        label480:
         i = 0;
         paramBundle = (PayInfo)getInput().getParcelable("key_pay_info");
         if (paramBundle != null) {
-          i = paramBundle.dVv;
+          i = paramBundle.fOY;
         }
         if ((i == 33) || (i == 32) || (i == 48) || (i == 31))
         {
-          localObject1 = new gn();
-          ((gn)localObject1).dKu.dDL = paramBundle.dDL;
+          localObject1 = new gu();
+          ((gu)localObject1).fDj.fwv = paramBundle.fwv;
           if (i != 31) {
-            break label674;
+            break label675;
           }
         }
       }
-      for (((gn)localObject1).dKu.type = 0;; ((gn)localObject1).dKu.type = 1) {
-        label633:
-        label639:
+      for (((gu)localObject1).fDj.type = 0;; ((gu)localObject1).fDj.type = 1) {
+        label634:
         do
         {
-          if ((this.CwO != null) && (!this.CwO.HZd.isEmpty())) {
-            ((gn)localObject1).dKu.dDM = ((Orders.Commodity)this.CwO.HZd.get(0)).dDM;
+          if ((this.Ivh != null) && (!this.Ivh.ORd.isEmpty())) {
+            ((gu)localObject1).fDj.fww = ((Orders.Commodity)this.Ivh.ORd.get(0)).fww;
           }
           EventCenter.instance.publish((IEvent)localObject1);
           AppMethodBeat.o(68314);
@@ -151,15 +152,15 @@ public class RemittanceResultUI
           bool1 = true;
           break;
           bool2 = false;
-          break label96;
-          aV(RemittanceResultNewUI.class);
+          break label97;
+          bq(RemittanceResultNewUI.class);
           finish();
-          break label479;
-          aV(RemittanceResultOldUI.class);
-          break label479;
-          aV(RemittanceResultNewUI.class);
+          break label480;
+          bq(RemittanceResultOldUI.class);
+          break label480;
+          bq(RemittanceResultNewUI.class);
           finish();
-          break label479;
+          break label480;
         } while ((i != 32) && (i != 33));
       }
     }
@@ -176,22 +177,22 @@ public class RemittanceResultUI
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(68316);
-    if ((paramq instanceof p))
+    if ((paramq instanceof r))
     {
       Log.i("MicroMsg.RemittanceResultUI", "on f2f succpage scene end, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      paramString = (p)paramq;
+      paramString = (r)paramq;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = paramString.CoN;
-        Log.i("MicroMsg.RemittanceResultUI", "on f2f succpage scene end, retcode: %s, retmsg: %s, exposesureInfo: %s", new Object[] { Integer.valueOf(paramString.dDN), paramString.qwn, paramString.Iah });
-        if (paramString.dDN != 0) {}
+        paramString = paramString.IlP;
+        Log.i("MicroMsg.RemittanceResultUI", "on f2f succpage scene end, retcode: %s, retmsg: %s, exposesureInfo: %s", new Object[] { Integer.valueOf(paramString.fwx), paramString.tVo, paramString.OSs });
+        if (paramString.fwx != 0) {}
       }
       for (;;)
       {
         try
         {
           getInput().putByteArray("key_succpage_resp", paramString.toByteArray());
-          aV(RemittanceResultNewUI.class);
+          bq(RemittanceResultNewUI.class);
           finish();
           AppMethodBeat.o(68316);
           return true;
@@ -201,8 +202,8 @@ public class RemittanceResultUI
           Log.printErrStackTrace("MicroMsg.RemittanceResultUI", paramString, "pass succ page resp error: %s", new Object[] { paramString.getMessage() });
           continue;
         }
-        Toast.makeText(this, paramString.qwn, 1).show();
-        aV(RemittanceResultNewUI.class);
+        Toast.makeText(this, paramString.tVo, 1).show();
+        bq(RemittanceResultNewUI.class);
       }
     }
     AppMethodBeat.o(68316);

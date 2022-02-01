@@ -26,48 +26,48 @@ import java.util.regex.Pattern;
 public final class f
 {
   private static final Pattern RANGE_HEADER_PATTERN;
-  public static HashMap<String, Map<String, String>> mzW;
-  private BufferedReader bzE;
+  public static HashMap<String, Map<String, String>> pyr;
+  private BufferedReader bjf;
   private String logTag;
-  private LinkedHashMap<String, String> mzS;
-  private LinkedHashMap<String, String> mzT;
-  private int[] mzU;
-  private ArrayList<String> mzV;
-  public String mzy;
+  public String pxT;
+  private LinkedHashMap<String, String> pyn;
+  private LinkedHashMap<String, String> pyo;
+  private int[] pyp;
+  private ArrayList<String> pyq;
   
   static
   {
-    AppMethodBeat.i(234848);
+    AppMethodBeat.i(229467);
     RANGE_HEADER_PATTERN = Pattern.compile("[R,r]ange:\\s*bytes=(\\d*)\\s*-\\s*(\\d*)");
-    mzW = new HashMap();
-    AppMethodBeat.o(234848);
+    pyr = new HashMap();
+    AppMethodBeat.o(229467);
   }
   
   public f(InputStream paramInputStream, String paramString)
   {
-    AppMethodBeat.i(234838);
-    this.bzE = new BufferedReader(new InputStreamReader(paramInputStream));
-    this.mzS = new LinkedHashMap();
-    this.mzT = new LinkedHashMap();
-    this.mzU = new int[2];
-    this.mzV = new ArrayList();
+    AppMethodBeat.i(229407);
+    this.bjf = new BufferedReader(new InputStreamReader(paramInputStream));
+    this.pyn = new LinkedHashMap();
+    this.pyo = new LinkedHashMap();
+    this.pyp = new int[2];
+    this.pyq = new ArrayList();
     this.logTag = (paramString + "HttpParser");
     try
     {
-      bKa();
-      AppMethodBeat.o(234838);
+      bVK();
+      AppMethodBeat.o(229407);
       return;
     }
     catch (IOException paramInputStream)
     {
       h.log(6, this.logTag, "error parsing request " + h.i(paramInputStream));
-      AppMethodBeat.o(234838);
+      AppMethodBeat.o(229407);
     }
   }
   
-  private static String S(Map<String, String> paramMap)
+  private static String L(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(234842);
+    AppMethodBeat.i(229444);
     Object localObject = "";
     Iterator localIterator = paramMap.entrySet().iterator();
     for (paramMap = (Map<String, String>)localObject; localIterator.hasNext(); paramMap = paramMap + "\r\n")
@@ -81,13 +81,13 @@ public final class f
       }
       paramMap = (String)localObject + (String)localEntry.getValue();
     }
-    AppMethodBeat.o(234842);
+    AppMethodBeat.o(229444);
     return paramMap;
   }
   
-  public static String T(Map<String, List<String>> paramMap)
+  public static String M(Map<String, List<String>> paramMap)
   {
-    AppMethodBeat.i(234843);
+    AppMethodBeat.i(229449);
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     paramMap = paramMap.entrySet().iterator();
     if (paramMap.hasNext())
@@ -113,14 +113,14 @@ public final class f
         localLinkedHashMap.put(str, ((List)localObject).get(i));
       }
     }
-    paramMap = S(localLinkedHashMap);
-    AppMethodBeat.o(234843);
+    paramMap = L(localLinkedHashMap);
+    AppMethodBeat.o(229449);
     return paramMap;
   }
   
   public static String a(long paramLong1, long paramLong2, long paramLong3, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(234846);
+    AppMethodBeat.i(229463);
     int i;
     int j;
     label27:
@@ -210,9 +210,9 @@ public final class f
       localObject1 = (String)localObject1 + String.format("X-Server: %s\r\n", new Object[] { "VideoProxy 1.4.1" });
       localObject1 = (String)localObject1 + "\r\n";
       if ((i == 0) && (j != 0) && (paramString.equalsIgnoreCase("video/mp4"))) {
-        com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bJK().mxp.Bi(paramLong3);
+        com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvJ.Hv(paramLong3);
       }
-      AppMethodBeat.o(234846);
+      AppMethodBeat.o(229463);
       return localObject1;
       i = 0;
       break;
@@ -242,14 +242,14 @@ public final class f
     }
   }
   
-  public static Map<String, String> abf(String paramString)
+  public static Map<String, String> aiZ(String paramString)
   {
     int i = 0;
-    AppMethodBeat.i(234841);
-    if ((!TextUtils.isEmpty(paramString)) && (mzW.containsKey(paramString)))
+    AppMethodBeat.i(229440);
+    if ((!TextUtils.isEmpty(paramString)) && (pyr.containsKey(paramString)))
     {
-      paramString = (Map)mzW.get(paramString);
-      AppMethodBeat.o(234841);
+      paramString = (Map)pyr.get(paramString);
+      AppMethodBeat.o(229440);
       return paramString;
     }
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
@@ -281,17 +281,17 @@ public final class f
       }
       for (;;)
       {
-        AppMethodBeat.o(234841);
+        AppMethodBeat.o(229440);
         return localLinkedHashMap;
-        mzW.put(paramString, localLinkedHashMap);
+        pyr.put(paramString, localLinkedHashMap);
       }
       i += 1;
     }
   }
   
-  public static long[] abh(String paramString)
+  public static long[] ajb(String paramString)
   {
-    AppMethodBeat.i(234847);
+    AppMethodBeat.i(229464);
     if (!TextUtils.isEmpty(paramString))
     {
       Object localObject = RANGE_HEADER_PATTERN.matcher(paramString);
@@ -310,13 +310,13 @@ public final class f
             try
             {
               long l2 = Long.parseLong((String)localObject);
-              AppMethodBeat.o(234847);
+              AppMethodBeat.o(229464);
               return new long[] { l1, l2 };
             }
             catch (NumberFormatException paramString)
             {
               long l1;
-              AppMethodBeat.o(234847);
+              AppMethodBeat.o(229464);
               return new long[] { l1, -2L };
             }
             paramString = paramString;
@@ -325,37 +325,37 @@ public final class f
         }
       }
     }
-    AppMethodBeat.o(234847);
+    AppMethodBeat.o(229464);
     return new long[] { -1L, -1L };
   }
   
-  private void bKa()
+  private void bVK()
   {
-    AppMethodBeat.i(234839);
+    AppMethodBeat.i(229428);
     String[] arrayOfString1 = null;
-    Object localObject = this.bzE.readLine();
+    Object localObject = this.bjf.readLine();
     h.log(4, this.logTag, "parseRequest:".concat(String.valueOf(localObject)));
     if ((localObject == null) || (((String)localObject).length() == 0))
     {
       h.log(6, this.logTag, "initial is not valid");
-      AppMethodBeat.o(234839);
+      AppMethodBeat.o(229428);
       return;
     }
     if (Character.isWhitespace(((String)localObject).charAt(0)))
     {
       h.log(6, this.logTag, "character first char is whitespace");
-      AppMethodBeat.o(234839);
+      AppMethodBeat.o(229428);
       return;
     }
     String[] arrayOfString2 = ((String)localObject).split("\\s");
     if (arrayOfString2.length != 3)
     {
       h.log(6, this.logTag, "cmd.length is not 3");
-      AppMethodBeat.o(234839);
+      AppMethodBeat.o(229428);
       return;
     }
-    this.mzV.add(localObject);
-    this.mzy = arrayOfString2[0];
+    this.pyq.add(localObject);
+    this.pxT = arrayOfString2[0];
     if ((arrayOfString2[2].indexOf("HTTP/") == 0) && (arrayOfString2[2].indexOf('.') > 5))
     {
       localObject = arrayOfString2[2];
@@ -368,8 +368,8 @@ public final class f
       int i;
       try
       {
-        this.mzU[0] = Integer.parseInt(localObject[0]);
-        this.mzU[1] = Integer.parseInt(localObject[1]);
+        this.pyp[0] = Integer.parseInt(localObject[0]);
+        this.pyp[1] = Integer.parseInt(localObject[1]);
         if ((!arrayOfString2[0].equals("GET")) && (!arrayOfString2[0].equals("HEAD"))) {
           break label464;
         }
@@ -378,7 +378,7 @@ public final class f
           break label540;
         }
         localObject = arrayOfString2[1].substring(i + 1).split("&");
-        this.mzT = new LinkedHashMap();
+        this.pyo = new LinkedHashMap();
         i = 0;
         if (i >= localObject.length) {
           break label540;
@@ -386,7 +386,7 @@ public final class f
         arrayOfString1 = localObject[i].split("=");
         if (arrayOfString1.length == 2)
         {
-          this.mzT.put(URLDecoder.decode(arrayOfString1[0], "UTF-8"), URLDecoder.decode(arrayOfString1[1], "UTF-8"));
+          this.pyo.put(URLDecoder.decode(arrayOfString1[0], "UTF-8"), URLDecoder.decode(arrayOfString1[1], "UTF-8"));
           i += 1;
           continue;
           localObject = arrayOfString1;
@@ -403,11 +403,11 @@ public final class f
       catch (NumberFormatException localNumberFormatException)
       {
         h.log(6, this.logTag, "error parsing request NumberFormatException:" + h.i(localNumberFormatException));
-        AppMethodBeat.o(234839);
+        AppMethodBeat.o(229428);
         return;
       }
       if ((arrayOfString1.length == 1) && (localNumberFormatException[i].indexOf('=') == localNumberFormatException[i].length() - 1)) {
-        this.mzT.put(URLDecoder.decode(arrayOfString1[0], "UTF-8"), "");
+        this.pyo.put(URLDecoder.decode(arrayOfString1[0], "UTF-8"), "");
       }
     }
     label464:
@@ -415,15 +415,15 @@ public final class f
       arrayOfString2[0].equals("CONNECT");
     }
     label540:
-    bKb();
-    AppMethodBeat.o(234839);
+    bVL();
+    AppMethodBeat.o(229428);
   }
   
-  private void bKb()
+  private void bVL()
   {
-    AppMethodBeat.i(234840);
+    AppMethodBeat.i(229436);
     StringBuilder localStringBuilder = new StringBuilder();
-    String str = this.bzE.readLine();
+    String str = this.bjf.readLine();
     localStringBuilder.append(str).append("|");
     for (;;)
     {
@@ -432,48 +432,48 @@ public final class f
       {
         i = str.indexOf(':');
         if (i < 0) {
-          this.mzS = null;
+          this.pyn = null;
         }
       }
       else
       {
         h.log(4, this.logTag, "parseHeaders:" + localStringBuilder.toString());
-        AppMethodBeat.o(234840);
+        AppMethodBeat.o(229436);
         return;
       }
-      this.mzS.put(str.substring(0, i).toLowerCase().trim(), str.substring(i + 1).trim());
-      this.mzV.add(str);
-      str = this.bzE.readLine();
+      this.pyn.put(str.substring(0, i).toLowerCase().trim(), str.substring(i + 1).trim());
+      this.pyq.add(str);
+      str = this.bjf.readLine();
       localStringBuilder.append(str).append("|");
     }
   }
   
-  public final String abg(String paramString)
+  public final String aja(String paramString)
   {
-    AppMethodBeat.i(234845);
-    paramString = (String)this.mzT.get(paramString);
-    AppMethodBeat.o(234845);
+    AppMethodBeat.i(229454);
+    paramString = (String)this.pyo.get(paramString);
+    AppMethodBeat.o(229454);
     return paramString;
   }
   
-  public final String bKc()
+  public final String bVM()
   {
-    AppMethodBeat.i(234844);
+    AppMethodBeat.i(229451);
     Object localObject = new StringBuilder();
-    Iterator localIterator = this.mzV.iterator();
+    Iterator localIterator = this.pyq.iterator();
     while (localIterator.hasNext())
     {
       ((StringBuilder)localObject).append((String)localIterator.next());
       ((StringBuilder)localObject).append("\n");
     }
     localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(234844);
+    AppMethodBeat.o(229451);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.e.f
  * JD-Core Version:    0.7.0.1
  */

@@ -11,100 +11,100 @@ import java.util.HashMap;
 public final class c
   extends b
 {
-  static HashMap<String, HashMap<String, byte[]>> cgl = null;
-  protected RequestPacket cgk;
+  static HashMap<String, HashMap<String, byte[]>> cim = null;
+  protected RequestPacket cil;
   
   public c()
   {
-    AppMethodBeat.i(187109);
-    this.cgk = new RequestPacket();
-    this.cgk.iVersion = 2;
-    AppMethodBeat.o(187109);
+    AppMethodBeat.i(186369);
+    this.cil = new RequestPacket();
+    this.cil.iVersion = 2;
+    AppMethodBeat.o(186369);
   }
   
-  public final byte[] IJ()
+  public final byte[] Km()
   {
-    AppMethodBeat.i(187111);
-    if (this.cgk.sServantName.equals(""))
+    AppMethodBeat.i(186373);
+    if (this.cil.sServantName.equals(""))
     {
       localObject = new IllegalArgumentException("servantName can not is null");
-      AppMethodBeat.o(187111);
+      AppMethodBeat.o(186373);
       throw ((Throwable)localObject);
     }
-    if (this.cgk.sFuncName.equals(""))
+    if (this.cil.sFuncName.equals(""))
     {
       localObject = new IllegalArgumentException("funcName can not is null");
-      AppMethodBeat.o(187111);
+      AppMethodBeat.o(186373);
       throw ((Throwable)localObject);
     }
     Object localObject = new JceOutputStream(0);
-    ((JceOutputStream)localObject).setServerEncoding(this.cgh);
-    ((JceOutputStream)localObject).write(this.cge, 0);
-    this.cgk.sBuffer = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
+    ((JceOutputStream)localObject).setServerEncoding(this.cij);
+    ((JceOutputStream)localObject).write(this.cig, 0);
+    this.cil.sBuffer = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
     localObject = new JceOutputStream(0);
-    ((JceOutputStream)localObject).setServerEncoding(this.cgh);
+    ((JceOutputStream)localObject).setServerEncoding(this.cij);
     writeTo((JceOutputStream)localObject);
     localObject = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
     int i = localObject.length;
     ByteBuffer localByteBuffer = ByteBuffer.allocate(i + 4);
     localByteBuffer.putInt(i + 4).put((byte[])localObject).flip();
     localObject = localByteBuffer.array();
-    AppMethodBeat.o(187111);
+    AppMethodBeat.o(186373);
     return localObject;
   }
   
-  public final void IK()
+  public final void Kn()
   {
-    this.cgk.iRequestId = 1;
+    this.cil.iRequestId = 1;
   }
   
-  public final void cy(String paramString)
+  public final <T> void c(String paramString, T paramT)
   {
-    this.cgk.sServantName = paramString;
+    AppMethodBeat.i(186371);
+    if (paramString.startsWith("."))
+    {
+      paramString = new IllegalArgumentException("put name can not startwith . ");
+      AppMethodBeat.o(186371);
+      throw paramString;
+    }
+    super.c(paramString, paramT);
+    AppMethodBeat.o(186371);
   }
   
-  public final void cz(String paramString)
+  public final void cS(String paramString)
   {
-    this.cgk.sFuncName = paramString;
+    this.cil.sServantName = paramString;
+  }
+  
+  public final void cT(String paramString)
+  {
+    this.cil.sFuncName = paramString;
   }
   
   public final void display(StringBuilder paramStringBuilder, int paramInt)
   {
-    AppMethodBeat.i(187114);
-    this.cgk.display(paramStringBuilder, paramInt);
-    AppMethodBeat.o(187114);
-  }
-  
-  public final <T> void put(String paramString, T paramT)
-  {
-    AppMethodBeat.i(187110);
-    if (paramString.startsWith("."))
-    {
-      paramString = new IllegalArgumentException("put name can not startwith . ");
-      AppMethodBeat.o(187110);
-      throw paramString;
-    }
-    super.put(paramString, paramT);
-    AppMethodBeat.o(187110);
+    AppMethodBeat.i(186384);
+    this.cil.display(paramStringBuilder, paramInt);
+    AppMethodBeat.o(186384);
   }
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(187113);
-    this.cgk.readFrom(paramJceInputStream);
-    AppMethodBeat.o(187113);
+    AppMethodBeat.i(186381);
+    this.cil.readFrom(paramJceInputStream);
+    AppMethodBeat.o(186381);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(187112);
-    this.cgk.writeTo(paramJceOutputStream);
-    AppMethodBeat.o(187112);
+    AppMethodBeat.i(186377);
+    this.cil.writeTo(paramJceOutputStream);
+    AppMethodBeat.o(186377);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.qq.a.a.c
  * JD-Core Version:    0.7.0.1
  */

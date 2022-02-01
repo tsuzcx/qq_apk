@@ -24,21 +24,21 @@ public class DecoderAssetTrack
   
   public static DecoderAssetTrack create(AssetTrack paramAssetTrack, AssetTrackSegment paramAssetTrackSegment)
   {
-    AppMethodBeat.i(218146);
+    AppMethodBeat.i(190515);
     if ((paramAssetTrackSegment instanceof CompositionTrackSegment))
     {
       paramAssetTrack = createFromCompositionTrackSegment(paramAssetTrack, (CompositionTrackSegment)paramAssetTrackSegment);
-      AppMethodBeat.o(218146);
+      AppMethodBeat.o(190515);
       return paramAssetTrack;
     }
     paramAssetTrack = createFromTrackSegment(paramAssetTrack, paramAssetTrackSegment);
-    AppMethodBeat.o(218146);
+    AppMethodBeat.o(190515);
     return paramAssetTrack;
   }
   
   private static DecoderAssetTrack createFromCompositionTrackSegment(AssetTrack paramAssetTrack, CompositionTrackSegment paramCompositionTrackSegment)
   {
-    AppMethodBeat.i(218144);
+    AppMethodBeat.i(190510);
     DecoderAssetTrack localDecoderAssetTrack = null;
     if (!paramCompositionTrackSegment.isEmpty())
     {
@@ -58,13 +58,13 @@ public class DecoderAssetTrack
       localDecoderAssetTrack.preferredVolume = 1.0F;
       localDecoderAssetTrack.frameRate = 30;
     }
-    AppMethodBeat.o(218144);
+    AppMethodBeat.o(190510);
     return localDecoderAssetTrack;
   }
   
   private static DecoderAssetTrack createFromTrackSegment(AssetTrack paramAssetTrack, AssetTrackSegment paramAssetTrackSegment)
   {
-    AppMethodBeat.i(218145);
+    AppMethodBeat.i(190513);
     DecoderAssetTrack localDecoderAssetTrack = null;
     if (!paramAssetTrackSegment.isEmpty())
     {
@@ -81,13 +81,13 @@ public class DecoderAssetTrack
       localDecoderAssetTrack.preferRotation = paramAssetTrack.getPreferredRotation();
       localDecoderAssetTrack.frameRate = ((int)paramAssetTrack.getNominalFrameRate());
     }
-    AppMethodBeat.o(218145);
+    AppMethodBeat.o(190513);
     return localDecoderAssetTrack;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.decoder.DecoderAssetTrack
  * JD-Core Version:    0.7.0.1
  */

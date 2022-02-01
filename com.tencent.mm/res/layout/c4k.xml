@@ -2,8 +2,8 @@
 <com.tencent.mm.plugin.transvoice.ui.TransVoicePanelLayout android:id="@id/dyv" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <android.support.design.widget.CoordinatorLayout android:id="@id/my" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/c1l">
-            <android.support.v7.widget.LinearLayoutCompat android:orientation="vertical" android:id="@id/gs3" android:background="@drawable/s0" android:layout_width="fill_parent" android:layout_height="wrap_content" app:behavior_peekHeight="0.0dip" app:layout_behavior="@string/f0t">
+        <androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@id/my" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/c1l">
+            <androidx.appcompat.widget.LinearLayoutCompat android:orientation="vertical" android:id="@id/gs3" android:background="@drawable/s0" android:layout_width="fill_parent" android:layout_height="wrap_content" app:behavior_peekHeight="0.0dip" app:layout_behavior="@string/f0t">
                 <RelativeLayout android:id="@id/gs2" android:layout_width="fill_parent" android:layout_height="@dimen/amz">
                     <RelativeLayout android:id="@id/gs7" android:layout_width="fill_parent" android:layout_height="@dimen/ana">
                         <ImageView android:id="@id/b4j" android:visibility="gone" android:layout_width="@dimen/anc" android:layout_height="@dimen/anc" android:src="@raw/close_cross" android:layout_centerVertical="true" android:layout_marginStart="@dimen/anb" android:layout_alignParentStart="true" />
@@ -27,8 +27,8 @@
                         </RelativeLayout>
                     </FrameLayout>
                 </RelativeLayout>
-            </android.support.v7.widget.LinearLayoutCompat>
-        </android.support.design.widget.CoordinatorLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
         <FrameLayout android:id="@id/c1l" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
     </RelativeLayout>
 </com.tencent.mm.plugin.transvoice.ui.TransVoicePanelLayout>

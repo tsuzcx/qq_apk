@@ -1,77 +1,82 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.a.a.e;
+import com.google.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.b.a.a.a.ah;
-import com.tencent.pb.common.b.a.a.a.aq;
-import com.tencent.pb.common.b.a.a.a.i;
+import com.tencent.pb.common.b.a.a.a.aj;
+import com.tencent.pb.common.b.a.a.a.k;
 import com.tencent.pb.common.b.d;
 import com.tencent.pb.common.c.b;
 import com.tencent.wecall.talkroom.model.c;
-import java.util.List;
 
 public final class m
   extends d
 {
-  public long HgX;
-  public String xOr;
-  public int yvK;
+  public String CSB;
+  public int DVO;
+  public long NXM;
+  public int ZXT;
+  public String ZXU;
+  public int wDk;
   
-  public m(String paramString, int paramInt, long paramLong, List<a.aq> paramList)
+  public m(String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2, int paramInt3, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(199661);
-    b.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneSubscribeScreenSharingVideo" });
-    a.i locali = new a.i();
+    AppMethodBeat.i(209877);
+    b.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneSwitchVideoGroup" });
+    a.k localk = new a.k();
     try
     {
-      locali.groupId = paramString;
-      this.xOr = paramString;
-      locali.roomId = paramInt;
-      this.yvK = paramInt;
-      locali.ypH = paramLong;
-      this.HgX = paramLong;
-      i = paramList.size();
-      arrayOfaq = null;
-      if (i > 0)
-      {
-        arrayOfaq = new a.aq[i];
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          arrayOfaq[paramInt] = ((a.aq)paramList.get(paramInt));
-          paramInt += 1;
-        }
+      localk.groupId = paramString1;
+      this.CSB = paramString1;
+      localk.roomId = paramInt1;
+      this.DVO = paramInt1;
+      localk.DPJ = paramLong;
+      this.NXM = paramLong;
+      localk.action = paramInt2;
+      this.wDk = paramInt2;
+      localk.Zfi = paramInt3;
+      this.ZXT = paramInt3;
+      localk.timestamp = System.currentTimeMillis();
+      String str = paramString2;
+      if (paramString2 == null) {
+        str = "";
       }
+      localk.Zfh = str;
+      paramString2 = paramString3;
+      if (paramString3 == null) {
+        paramString2 = "";
+      }
+      localk.Zfj = paramString2;
+      this.ZXU = paramString2;
+      paramString2 = paramString4;
+      if (paramString4 == null) {
+        paramString2 = "";
+      }
+      localk.Zfk = paramString2;
+      aAc(3);
+      aAd(c.iuI().bEi(paramString1));
     }
-    catch (Exception paramString)
+    catch (Exception paramString1)
     {
       for (;;)
       {
-        int i;
-        a.aq[] arrayOfaq;
-        b.w(this.TAG2, new Object[] { "NetSceneSubscribeScreenSharingVideo constructor", paramString });
+        b.w(this.TAG2, new Object[] { "NetSceneSwitchVideoGroup constructor", paramString1 });
       }
     }
-    locali.RDD = arrayOfaq;
-    locali.timestamp = System.currentTimeMillis();
-    b.i("MicroMsg.Voip", new Object[] { "roomId: %d, roomKey: %d, groupId: %s, timestamp: %d, memberCnt: %d", Integer.valueOf(locali.roomId), Long.valueOf(locali.ypH), locali.groupId, Long.valueOf(locali.timestamp), Integer.valueOf(i) });
-    this.mNetType = 3;
-    this.RCJ = c.hqY().brj(paramString);
-    c(259, locali);
-    AppMethodBeat.o(199661);
+    c(243, localk);
+    AppMethodBeat.o(209877);
   }
   
-  public final Object cO(byte[] paramArrayOfByte)
+  public final Object dn(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(199662);
+    AppMethodBeat.i(62525);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
     if (paramArrayOfByte != null) {}
     for (;;)
     {
       try
       {
-        paramArrayOfByte = (a.ah)e.a(new a.ah(), paramArrayOfByte, paramArrayOfByte.length);
-        AppMethodBeat.o(199662);
+        paramArrayOfByte = (a.aj)e.a(new a.aj(), paramArrayOfByte, paramArrayOfByte.length);
+        AppMethodBeat.o(62525);
         return paramArrayOfByte;
       }
       catch (Exception paramArrayOfByte)
@@ -86,12 +91,12 @@ public final class m
   
   public final int getType()
   {
-    return 802;
+    return 214;
   }
   
-  public final String hiV()
+  public final String ikF()
   {
-    return "CsCmd.Cmd_V_CSSubscribeScreenSharingVideoReq";
+    return "CsCmd.Cmd_V_CSSwitchVideoGroupReq";
   }
 }
 

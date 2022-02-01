@@ -14,14 +14,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.live.b.e;
+import com.tencent.mm.live.b.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.h.e;
 import java.util.LinkedList;
 import java.util.List;
@@ -29,63 +29,63 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/ui/LiveUIG;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "adapter", "Lcom/tencent/mm/live/ui/LiveUIG$ChoiceAdapter;", "listview", "Landroid/widget/ListView;", "selectsList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/live/ui/LiveUIG$ITestMenu;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "ChoiceAdapter", "ChoiceItem", "Companion", "ITestMenu", "plugin-logic_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/ui/LiveUIG;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "adapter", "Lcom/tencent/mm/live/ui/LiveUIG$ChoiceAdapter;", "listview", "Landroid/widget/ListView;", "selectsList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/live/ui/LiveUIG$ITestMenu;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "ChoiceAdapter", "ChoiceItem", "Companion", "ITestMenu", "plugin-logic_release"})
 public final class LiveUIG
   extends MMActivity
 {
-  public static final c hUJ;
-  private final LinkedList<d> hUG;
-  private a hUH;
-  private ListView hUI;
+  public static final c kJi;
+  private final LinkedList<d> kJf;
+  private a kJg;
+  private ListView kJh;
   
   static
   {
-    AppMethodBeat.i(208427);
-    hUJ = new c((byte)0);
-    AppMethodBeat.o(208427);
+    AppMethodBeat.i(197712);
+    kJi = new c((byte)0);
+    AppMethodBeat.o(197712);
   }
   
   public LiveUIG()
   {
-    AppMethodBeat.i(208426);
-    this.hUG = new LinkedList();
-    AppMethodBeat.o(208426);
+    AppMethodBeat.i(197711);
+    this.kJf = new LinkedList();
+    AppMethodBeat.o(197711);
   }
   
   public final int getLayoutId()
   {
-    return 2131495277;
+    return b.f.live_setting_ui;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(208425);
+    AppMethodBeat.i(197708);
     super.onCreate(paramBundle);
-    paramBundle = findViewById(2131303507);
+    paramBundle = findViewById(b.e.live_profile);
     if (paramBundle == null)
     {
       paramBundle = new t("null cannot be cast to non-null type android.widget.ListView");
-      AppMethodBeat.o(208425);
+      AppMethodBeat.o(197708);
       throw paramBundle;
     }
-    this.hUI = ((ListView)paramBundle);
-    this.hUH = new a();
-    paramBundle = this.hUI;
+    this.kJh = ((ListView)paramBundle);
+    this.kJg = new a();
+    paramBundle = this.kJh;
     if (paramBundle == null) {
-      p.hyc();
+      p.iCn();
     }
-    a locala = this.hUH;
+    a locala = this.kJg;
     if (locala == null) {
-      p.btv("adapter");
+      p.bGy("adapter");
     }
     paramBundle.setAdapter((ListAdapter)locala);
-    this.hUG.add(new b("Live Mode 开关", ar.a.Onj, new String[] { "open", "close", "default" }, new int[] { 1, 2, 0 }));
-    this.hUG.add(new b("Live DebugView 开关", ar.a.Onl, new String[] { "open", "close", "default" }, new int[] { 1, 2, 0 }));
-    this.hUG.add(new b("主播自定义房间id", ar.a.Onm, new String[] { "open", "close", "default" }, new int[] { 1, 2, 0 }));
-    this.hUG.add(new b("观众自定义房间id", ar.a.Onn, new String[] { "open", "close", "default" }, new int[] { 1, 2, 0 }));
-    this.hUG.add(new b("Live Entrance 开关", ar.a.Onk, new String[] { "open", "close", "default" }, new int[] { 1, 2, 0 }));
-    this.hUG.add(new b("观众首次微信群直播功能使用条款", ar.a.OnS, new String[] { "open", "close" }, new int[] { 1, 0 }));
-    AppMethodBeat.o(208425);
+    this.kJf.add(new b("Live Mode 开关", ar.a.VCv, new String[] { "open", "close", "default" }, new int[] { 1, 2, 0 }));
+    this.kJf.add(new b("Live DebugView 开关", ar.a.VCx, new String[] { "open", "close", "default" }, new int[] { 1, 2, 0 }));
+    this.kJf.add(new b("主播自定义房间id", ar.a.VCy, new String[] { "open", "close", "default" }, new int[] { 1, 2, 0 }));
+    this.kJf.add(new b("观众自定义房间id", ar.a.VCz, new String[] { "open", "close", "default" }, new int[] { 1, 2, 0 }));
+    this.kJf.add(new b("Live Entrance 开关", ar.a.VCw, new String[] { "open", "close", "default" }, new int[] { 1, 2, 0 }));
+    this.kJf.add(new b("观众首次微信群直播功能使用条款", ar.a.VDi, new String[] { "open", "close" }, new int[] { 1, 0 }));
+    AppMethodBeat.o(197708);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -94,24 +94,24 @@ public final class LiveUIG
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/ui/LiveUIG$ChoiceAdapter;", "Landroid/widget/BaseAdapter;", "(Lcom/tencent/mm/live/ui/LiveUIG;)V", "getCount", "", "getItem", "", "position", "getItemId", "", "getView", "Landroid/view/View;", "convertView", "parent", "Landroid/view/ViewGroup;", "plugin-logic_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/ui/LiveUIG$ChoiceAdapter;", "Landroid/widget/BaseAdapter;", "(Lcom/tencent/mm/live/ui/LiveUIG;)V", "getCount", "", "getItem", "", "position", "getItemId", "", "getView", "Landroid/view/View;", "convertView", "parent", "Landroid/view/ViewGroup;", "plugin-logic_release"})
   public final class a
     extends BaseAdapter
   {
     public final int getCount()
     {
-      AppMethodBeat.i(208418);
-      int i = LiveUIG.b(this.hUK).size();
-      AppMethodBeat.o(208418);
+      AppMethodBeat.i(188829);
+      int i = LiveUIG.b(this.kJj).size();
+      AppMethodBeat.o(188829);
       return i;
     }
     
     public final Object getItem(int paramInt)
     {
-      AppMethodBeat.i(208419);
-      Object localObject = LiveUIG.b(this.hUK).get(paramInt);
-      p.g(localObject, "selectsList[position]");
-      AppMethodBeat.o(208419);
+      AppMethodBeat.i(188832);
+      Object localObject = LiveUIG.b(this.kJj).get(paramInt);
+      p.j(localObject, "selectsList[position]");
+      AppMethodBeat.o(188832);
       return localObject;
     }
     
@@ -123,32 +123,32 @@ public final class LiveUIG
     @SuppressLint({"SetTextI18n"})
     public final View getView(int paramInt, final View paramView, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(208420);
-      p.h(paramViewGroup, "parent");
-      paramView = new TextView((Context)this.hUK);
+      AppMethodBeat.i(188836);
+      p.k(paramViewGroup, "parent");
+      paramView = new TextView((Context)this.kJj);
       paramViewGroup = getItem(paramInt);
       if (paramViewGroup == null)
       {
         paramView = new t("null cannot be cast to non-null type com.tencent.mm.live.ui.LiveUIG.ITestMenu");
-        AppMethodBeat.o(208420);
+        AppMethodBeat.o(188836);
         throw paramView;
       }
       paramViewGroup = (LiveUIG.d)paramViewGroup;
       paramView.setTag(paramViewGroup);
-      paramView.setText((CharSequence)(paramViewGroup.auk() + "->:" + paramViewGroup.value()));
+      paramView.setText((CharSequence)(paramViewGroup.aBd() + "->:" + paramViewGroup.value()));
       paramView.setGravity(17);
       paramView.setTextSize(1, 20.0F);
-      paramView.setHeight(com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 50));
+      paramView.setHeight(com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 50));
       if (paramInt % 2 == 1) {
         paramView.setBackgroundColor(Color.parseColor("#e2efda"));
       }
       paramView.setOnClickListener((View.OnClickListener)new a(paramViewGroup, paramView));
       paramView = (View)paramView;
-      AppMethodBeat.o(208420);
+      AppMethodBeat.o(188836);
       return paramView;
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class a
       implements View.OnClickListener
     {
@@ -156,75 +156,75 @@ public final class LiveUIG
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(208417);
+        AppMethodBeat.i(193929);
         b localb = new b();
-        localb.bm(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/LiveUIG$ChoiceAdapter$getView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        this.hUL.cp((View)paramView);
+        localb.bn(paramView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/ui/LiveUIG$ChoiceAdapter$getView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        this.kJk.cI((View)paramView);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/LiveUIG$ChoiceAdapter$getView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(208417);
+        AppMethodBeat.o(193929);
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/ui/LiveUIG$ChoiceItem;", "Lcom/tencent/mm/live/ui/LiveUIG$ITestMenu;", "_showtitle", "", "_key", "Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "_items", "", "_vals", "", "(Lcom/tencent/mm/live/ui/LiveUIG;Ljava/lang/String;Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;[Ljava/lang/String;Ljava/lang/Object;)V", "get_items", "()[Ljava/lang/String;", "set_items", "([Ljava/lang/String;)V", "[Ljava/lang/String;", "get_key", "()Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "set_key", "(Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;)V", "get_showtitle", "()Ljava/lang/String;", "set_showtitle", "(Ljava/lang/String;)V", "get_vals", "()Ljava/lang/Object;", "set_vals", "(Ljava/lang/Object;)V", "value", "getValue", "get", "field", "showAlert", "", "view", "Landroid/view/View;", "title", "plugin-logic_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/ui/LiveUIG$ChoiceItem;", "Lcom/tencent/mm/live/ui/LiveUIG$ITestMenu;", "_showtitle", "", "_key", "Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "_items", "", "_vals", "", "(Lcom/tencent/mm/live/ui/LiveUIG;Ljava/lang/String;Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;[Ljava/lang/String;Ljava/lang/Object;)V", "get_items", "()[Ljava/lang/String;", "set_items", "([Ljava/lang/String;)V", "[Ljava/lang/String;", "get_key", "()Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "set_key", "(Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;)V", "get_showtitle", "()Ljava/lang/String;", "set_showtitle", "(Ljava/lang/String;)V", "get_vals", "()Ljava/lang/Object;", "set_vals", "(Ljava/lang/Object;)V", "value", "getValue", "get", "field", "showAlert", "", "view", "Landroid/view/View;", "title", "plugin-logic_release"})
   public final class b
     implements LiveUIG.d
   {
-    private String hUN;
-    ar.a hUO;
-    private String[] hUP;
-    Object hUQ;
+    private String kJm;
+    ar.a kJn;
+    private String[] kJo;
+    Object kJp;
     
     public b(ar.a parama, String[] paramArrayOfString, Object paramObject)
     {
-      AppMethodBeat.i(208424);
-      this.hUN = parama;
-      this.hUO = paramArrayOfString;
-      this.hUP = paramObject;
-      this.hUQ = localObject;
-      AppMethodBeat.o(208424);
+      AppMethodBeat.i(196246);
+      this.kJm = parama;
+      this.kJn = paramArrayOfString;
+      this.kJo = paramObject;
+      this.kJp = localObject;
+      AppMethodBeat.o(196246);
     }
     
-    public final String auk()
+    public final String aBd()
     {
-      return this.hUN;
+      return this.kJm;
     }
     
-    public final void cp(View paramView)
+    public final void cI(View paramView)
     {
-      AppMethodBeat.i(208423);
-      p.h(paramView, "view");
+      AppMethodBeat.i(196242);
+      p.k(paramView, "view");
       paramView = new LinkedList();
       LinkedList localLinkedList = new LinkedList();
       int i = 0;
-      int j = this.hUP.length;
+      int j = this.kJo.length;
       while (i < j)
       {
-        paramView.add(this.hUP[i]);
+        paramView.add(this.kJo[i]);
         localLinkedList.add(Integer.valueOf(i));
         i += 1;
       }
-      h.a((Context)LiveUIG.this, "", (List)paramView, (List)localLinkedList, "", (h.e)new a(this));
-      AppMethodBeat.o(208423);
+      com.tencent.mm.ui.base.h.a((Context)LiveUIG.this, "", (List)paramView, (List)localLinkedList, "", (h.e)new a(this));
+      AppMethodBeat.o(196242);
     }
     
     public final String value()
     {
-      AppMethodBeat.i(208422);
-      if ((this.hUQ instanceof long[]))
+      AppMethodBeat.i(196237);
+      if ((this.kJp instanceof long[]))
       {
-        localObject1 = g.aAh();
-        p.g(localObject1, "MMKernel.storage()");
+        localObject1 = com.tencent.mm.kernel.h.aHG();
+        p.j(localObject1, "MMKernel.storage()");
       }
       int k;
       int i;
       int i1;
       int j;
-      for (int m = (int)((e)localObject1).azQ().a(this.hUO, 0L);; m = ((e)localObject1).azQ().getInt(this.hUO, 0))
+      for (int m = (int)((f)localObject1).aHp().a(this.kJn, 0L);; m = ((f)localObject1).aHp().getInt(this.kJn, 0))
       {
         k = -1;
-        localObject2 = this.hUQ;
+        localObject2 = this.kJp;
         localObject1 = localObject2;
         if (!(localObject2 instanceof int[])) {
           localObject1 = null;
@@ -249,10 +249,10 @@ public final class LiveUIG
           n += 1;
           j += 1;
         }
-        localObject1 = g.aAh();
-        p.g(localObject1, "MMKernel.storage()");
+        localObject1 = com.tencent.mm.kernel.h.aHG();
+        p.j(localObject1, "MMKernel.storage()");
       }
-      Object localObject2 = this.hUQ;
+      Object localObject2 = this.kJp;
       Object localObject1 = localObject2;
       if (!(localObject2 instanceof long[])) {
         localObject1 = null;
@@ -279,69 +279,69 @@ public final class LiveUIG
         }
       }
       int n = i;
-      if ((n >= 0) && (n < this.hUP.length))
+      if ((n >= 0) && (n < this.kJo.length))
       {
-        localObject1 = this.hUP[n];
-        AppMethodBeat.o(208422);
+        localObject1 = this.kJo[n];
+        AppMethodBeat.o(196237);
         return localObject1;
       }
-      AppMethodBeat.o(208422);
+      AppMethodBeat.o(196237);
       return "";
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "whichButton", "", "<anonymous parameter 1>", "onClick"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "whichButton", "", "<anonymous parameter 1>", "onClick"})
     static final class a
       implements h.e
     {
       a(LiveUIG.b paramb) {}
       
-      public final void cy(int paramInt1, int paramInt2)
+      public final void cS(int paramInt1, int paramInt2)
       {
-        AppMethodBeat.i(208421);
+        AppMethodBeat.i(197797);
         ar.a locala;
         Object localObject3;
         try
         {
-          Object localObject1 = this.hUR.hUQ;
+          Object localObject1 = this.kJq.kJp;
           if (!(localObject1 instanceof long[])) {
             break label132;
           }
-          localObject1 = g.aAh();
-          p.g(localObject1, "MMKernel.storage()");
-          localObject1 = ((e)localObject1).azQ();
-          locala = this.hUR.hUO;
-          localObject3 = this.hUR.hUQ;
+          localObject1 = com.tencent.mm.kernel.h.aHG();
+          p.j(localObject1, "MMKernel.storage()");
+          localObject1 = ((f)localObject1).aHp();
+          locala = this.kJq.kJn;
+          localObject3 = this.kJq.kJp;
           if (localObject3 == null)
           {
             localObject1 = new t("null cannot be cast to non-null type kotlin.LongArray");
-            AppMethodBeat.o(208421);
+            AppMethodBeat.o(197797);
             throw ((Throwable)localObject1);
           }
         }
         catch (Exception localException)
         {
           Log.printErrStackTrace("MicorMsg.LiveSettingUI", (Throwable)localException, "", new Object[0]);
-          AppMethodBeat.o(208421);
+          AppMethodBeat.o(197797);
           return;
         }
         localException.set(locala, Long.valueOf(((long[])localObject3)[paramInt1]));
         for (;;)
         {
-          LiveUIG.a(this.hUR.hUK).notifyDataSetChanged();
-          AppMethodBeat.o(208421);
+          LiveUIG.a(this.kJq.kJj).notifyDataSetChanged();
+          AppMethodBeat.o(197797);
           return;
           label132:
           if ((localException instanceof int[]))
           {
-            Object localObject2 = g.aAh();
-            p.g(localObject2, "MMKernel.storage()");
-            localObject2 = ((e)localObject2).azQ();
-            locala = this.hUR.hUO;
-            localObject3 = this.hUR.hUQ;
+            Object localObject2 = com.tencent.mm.kernel.h.aHG();
+            p.j(localObject2, "MMKernel.storage()");
+            localObject2 = ((f)localObject2).aHp();
+            locala = this.kJq.kJn;
+            localObject3 = this.kJq.kJp;
             if (localObject3 == null)
             {
               localObject2 = new t("null cannot be cast to non-null type kotlin.IntArray");
-              AppMethodBeat.o(208421);
+              AppMethodBeat.o(197797);
               throw ((Throwable)localObject2);
             }
             ((ao)localObject2).set(locala, Integer.valueOf(((int[])localObject3)[paramInt1]));
@@ -351,22 +351,22 @@ public final class LiveUIG
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/ui/LiveUIG$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/ui/LiveUIG$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
   public static final class c {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/ui/LiveUIG$ITestMenu;", "", "showAlert", "", "view", "Landroid/view/View;", "title", "", "value", "plugin-logic_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/ui/LiveUIG$ITestMenu;", "", "showAlert", "", "view", "Landroid/view/View;", "title", "", "value", "plugin-logic_release"})
   public static abstract interface d
   {
-    public abstract String auk();
+    public abstract String aBd();
     
-    public abstract void cp(View paramView);
+    public abstract void cI(View paramView);
     
     public abstract String value();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.ui.LiveUIG
  * JD-Core Version:    0.7.0.1
  */

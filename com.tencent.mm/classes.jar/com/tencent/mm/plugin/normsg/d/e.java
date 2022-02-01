@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.normsg.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.b;
+import com.tencent.mm.az.b;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -9,24 +9,24 @@ import java.util.Set;
 
 public final class e
 {
-  private static final Set<String> AGi;
+  private static final Set<String> Gzr;
   
   static
   {
-    AppMethodBeat.i(187606);
-    AGi = Collections.unmodifiableSet(new HashSet(Arrays.asList("US,JP,AU,CA,GB".split("\\s*,\\s*"))));
-    AppMethodBeat.o(187606);
+    AppMethodBeat.i(257679);
+    Gzr = Collections.unmodifiableSet(new HashSet(Arrays.asList("US,JP,AU,CA,GB".split("\\s*,\\s*"))));
+    AppMethodBeat.o(257679);
   }
   
-  public static boolean aIX(String paramString)
+  public static boolean aTt(String paramString)
   {
-    AppMethodBeat.i(187605);
-    if ((b.Pi(paramString)) || (AGi.contains(paramString.toUpperCase())))
+    AppMethodBeat.i(257676);
+    if ((b.WF(paramString)) || (Gzr.contains(paramString.toUpperCase())))
     {
-      AppMethodBeat.o(187605);
+      AppMethodBeat.o(257676);
       return true;
     }
-    AppMethodBeat.o(187605);
+    AppMethodBeat.o(257676);
     return false;
   }
 }

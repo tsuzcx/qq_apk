@@ -1,64 +1,64 @@
 package com.tencent.mm.view.recyclerview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.LinkedList;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/view/recyclerview/WxRVDataItem;", "", "convertData", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "exposeTimestamp", "", "(Lcom/tencent/mm/view/recyclerview/ConvertData;J)V", "getConvertData", "()Lcom/tencent/mm/view/recyclerview/ConvertData;", "dataPos", "", "getDataPos", "()I", "setDataPos", "(I)V", "getExposeTimestamp", "()J", "showInfo", "Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "getShowInfo", "()Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "setShowInfo", "(Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;)V", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "libmmui_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/recyclerview/WxRVData;", "", "state", "", "(I)V", "acrossDataList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/view/recyclerview/WxRVDataItem;", "getAcrossDataList", "()Ljava/util/LinkedList;", "setAcrossDataList", "(Ljava/util/LinkedList;)V", "diffInvisibleDataList", "getDiffInvisibleDataList", "setDiffInvisibleDataList", "diffVisibleDataList", "getDiffVisibleDataList", "setDiffVisibleDataList", "firstExposeList", "getFirstExposeList", "setFirstExposeList", "firstVisibleItemPosition", "getFirstVisibleItemPosition", "()I", "setFirstVisibleItemPosition", "lastFirstVisibleItemPosition", "getLastFirstVisibleItemPosition", "setLastFirstVisibleItemPosition", "lastLastVisibleItemPosition", "getLastLastVisibleItemPosition", "setLastLastVisibleItemPosition", "lastVisibleItemPosition", "getLastVisibleItemPosition", "setLastVisibleItemPosition", "getState", "visibleDataList", "getVisibleDataList", "setVisibleDataList", "component1", "copy", "equals", "", "other", "hashCode", "toString", "", "libmmui_release"})
 public final class k
 {
-  public final a Rrp;
-  public final long Rrq;
-  public int tIv;
-  i tIw;
+  public LinkedList<l> YSK;
+  public LinkedList<l> YSL;
+  LinkedList<l> YSM;
+  public LinkedList<l> YSN;
+  public LinkedList<l> YSO;
+  public int sCr;
+  public int sCs;
+  public final int state;
+  public int xrh;
+  public int xrj;
   
-  private k(a parama, long paramLong)
+  public k(int paramInt)
   {
-    AppMethodBeat.i(205051);
-    this.Rrp = parama;
-    this.Rrq = paramLong;
-    AppMethodBeat.o(205051);
+    AppMethodBeat.i(191084);
+    this.state = paramInt;
+    this.sCr = -1;
+    this.sCs = -1;
+    this.xrh = -1;
+    this.xrj = -1;
+    this.YSK = new LinkedList();
+    this.YSL = new LinkedList();
+    this.YSM = new LinkedList();
+    this.YSN = new LinkedList();
+    this.YSO = new LinkedList();
+    AppMethodBeat.o(191084);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(205055);
     if (this != paramObject)
     {
       if ((paramObject instanceof k))
       {
         paramObject = (k)paramObject;
-        if ((!p.j(this.Rrp, paramObject.Rrp)) || (this.Rrq != paramObject.Rrq)) {}
+        if (this.state != paramObject.state) {}
       }
     }
-    else
-    {
-      AppMethodBeat.o(205055);
+    else {
       return true;
     }
-    AppMethodBeat.o(205055);
     return false;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(205054);
-    a locala = this.Rrp;
-    if (locala != null) {}
-    for (int i = locala.hashCode();; i = 0)
-    {
-      long l = this.Rrq;
-      int j = (int)(l ^ l >>> 32);
-      AppMethodBeat.o(205054);
-      return i * 31 + j;
-    }
+    return this.state;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(205053);
-    String str = "WxRVDataItem(convertData=" + this.Rrp + ", exposeTimestamp=" + this.Rrq + ")";
-    AppMethodBeat.o(205053);
+    AppMethodBeat.i(191085);
+    String str = "WxRVData(state=" + this.state + ")";
+    AppMethodBeat.o(191085);
     return str;
   }
 }

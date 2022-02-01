@@ -1,9 +1,9 @@
 package com.tencent.mm.audio.mix.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.mix.d.i;
-import com.tencent.mm.audio.mix.d.j;
-import com.tencent.mm.audio.mix.i.b;
+import com.tencent.mm.audio.mix.decode.i;
+import com.tencent.mm.audio.mix.decode.j;
+import com.tencent.mm.audio.mix.h.b;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,43 +11,43 @@ import java.util.List;
 
 public final class f
 {
-  public static final Long duM;
-  public static final Long duN;
-  public static final Long duO;
-  public static final Long duP;
-  public static final Long duQ;
-  public static final Long duR;
-  public static final Long duS;
-  public static final Long duT;
-  public static final Long duU;
-  public static long duW;
+  public static final Long fnA;
+  public static final Long fnB;
+  public static final Long fnC;
+  public static long fnE;
+  public static final Long fnu;
+  public static final Long fnv;
+  public static final Long fnw;
+  public static final Long fnx;
+  public static final Long fny;
+  public static final Long fnz;
   public String appId;
-  private List<String> duV;
+  private List<String> fnD;
   
   static
   {
     AppMethodBeat.i(136779);
-    duM = Long.valueOf(2592000000L);
-    duN = Long.valueOf(604800000L);
-    duO = Long.valueOf(259200000L);
-    duP = Long.valueOf(172800000L);
-    duQ = Long.valueOf(86400000L);
-    duR = Long.valueOf(43200000L);
-    duS = Long.valueOf(240000L);
-    duT = duQ;
-    duU = Long.valueOf(60000L);
-    duW = 0L;
+    fnu = Long.valueOf(2592000000L);
+    fnv = Long.valueOf(604800000L);
+    fnw = Long.valueOf(259200000L);
+    fnx = Long.valueOf(172800000L);
+    fny = Long.valueOf(86400000L);
+    fnz = Long.valueOf(43200000L);
+    fnA = Long.valueOf(240000L);
+    fnB = fny;
+    fnC = Long.valueOf(60000L);
+    fnE = 0L;
     AppMethodBeat.o(136779);
   }
   
   public f()
   {
     AppMethodBeat.i(136775);
-    this.duV = new ArrayList(10);
+    this.fnD = new ArrayList(10);
     AppMethodBeat.o(136775);
   }
   
-  private void gI(String paramString)
+  private void hu(String paramString)
   {
     AppMethodBeat.i(136776);
     Object localObject = new File(paramString);
@@ -65,7 +65,7 @@ public final class f
       if (i < j)
       {
         String str = localObject[i];
-        if (gJ(str)) {
+        if (hv(str)) {
           b.i("MicroMsg.Mix.AudioScanConvertCacheController", "file is the block file, don't delete");
         }
         for (;;)
@@ -81,9 +81,9 @@ public final class f
           else if (localFile.isDirectory())
           {
             b.i("MicroMsg.Mix.AudioScanConvertCacheController", "file is directory, scan and delete subFilePath:%s", new Object[] { str });
-            gI(str);
+            hu(str);
           }
-          else if (System.currentTimeMillis() - localFile.lastModified() > duP.longValue())
+          else if (System.currentTimeMillis() - localFile.lastModified() > fnx.longValue())
           {
             b.e("MicroMsg.Mix.AudioScanConvertCacheController", "Clean 2 days file in mix convert file name=%s, path:%s", new Object[] { localFile.getName(), localFile.getAbsolutePath() });
             localFile.delete();
@@ -97,10 +97,10 @@ public final class f
     AppMethodBeat.o(136776);
   }
   
-  private boolean gJ(String paramString)
+  private boolean hv(String paramString)
   {
     AppMethodBeat.i(136777);
-    Iterator localIterator = this.duV.iterator();
+    Iterator localIterator = this.fnD.iterator();
     while (localIterator.hasNext()) {
       if (paramString.contains((String)localIterator.next()))
       {
@@ -131,7 +131,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.c.f
  * JD-Core Version:    0.7.0.1
  */

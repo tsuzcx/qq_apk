@@ -17,40 +17,40 @@ public class FileSchemeResolver
     AppMethodBeat.o(13101);
   }
   
-  static m hdX()
+  static n iff()
   {
-    return a.Rbl;
+    return a.YBF;
   }
   
-  public final Pair<FileSystem.b, String> a(k paramk, Uri paramUri)
+  public final Pair<FileSystem.b, String> a(l paraml, Uri paramUri)
   {
-    AppMethodBeat.i(187651);
+    AppMethodBeat.i(236134);
     String str = paramUri.getPath();
     paramUri = str;
     if (str == null) {
       paramUri = "";
     }
-    paramk = paramk.boU(paramUri);
-    AppMethodBeat.o(187651);
-    return paramk;
+    paraml = paraml.bBM(paramUri);
+    AppMethodBeat.o(236134);
+    return paraml;
   }
   
-  static final class a
+  static class a
     implements Parcelable.Creator<FileSchemeResolver>
   {
-    static final m Rbl;
+    static final n YBF;
     
     static
     {
       AppMethodBeat.i(13098);
-      Rbl = new m(new FileSchemeResolver((byte)0));
+      YBF = new n(new FileSchemeResolver((byte)0));
       AppMethodBeat.o(13098);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vfs.FileSchemeResolver
  * JD-Core Version:    0.7.0.1
  */

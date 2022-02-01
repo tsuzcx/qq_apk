@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.music.h;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.f;
+import com.tencent.mm.bb.f;
 import com.tencent.mm.plugin.music.cache.g;
 import com.tencent.mm.plugin.music.cache.i;
 import com.tencent.mm.pointers.PBool;
@@ -10,7 +10,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 
 public final class d
 {
@@ -35,13 +35,13 @@ public final class d
     label165:
     String str3;
     String str1;
-    if (Util.isNullOrNil(paramf.jfb))
+    if (Util.isNullOrNil(paramf.lVz))
     {
-      localObject1 = paramf.jfd;
-      String str4 = paramf.jfc;
+      localObject1 = paramf.lVB;
+      String str4 = paramf.lVA;
       str2 = e.a((String)localObject1, str4, bool1, (PBool)localObject2);
       Log.i("MicroMsg.Music.MusicUrlParser", "parsePlayUrl mSrc:%s", new Object[] { str2 });
-      Log.i("MicroMsg.Music.MusicUrlParser", "songWifiUrl:%s", new Object[] { paramf.jfb });
+      Log.i("MicroMsg.Music.MusicUrlParser", "songWifiUrl:%s", new Object[] { paramf.lVz });
       if (!bool1) {
         break label303;
       }
@@ -84,10 +84,10 @@ public final class d
     for (;;)
     {
       paramf.playUrl = ((String)localObject1);
-      g.bS((String)localObject1, bool1);
+      g.bZ((String)localObject1, bool1);
       AppMethodBeat.o(137451);
       return;
-      localObject1 = paramf.jfb;
+      localObject1 = paramf.lVz;
       break;
       label303:
       i = 0;
@@ -99,16 +99,16 @@ public final class d
       bool1 = false;
       break label165;
       label318:
-      if (c.Th(paramf.jeT))
+      if (c.ZB(paramf.lVr))
       {
         Log.i("MicroMsg.Music.MusicUrlParser", "use qqMusicPlayer");
-        if (i.aHH(str1))
+        if (i.aRW(str1))
         {
           localObject1 = str1;
           break label242;
         }
         localObject1 = str3;
-        if (!i.aHH((String)localObject2)) {
+        if (!i.aRW((String)localObject2)) {
           break label242;
         }
         localObject1 = localObject2;
@@ -134,8 +134,8 @@ public final class d
   private static boolean e(f paramf, boolean paramBoolean)
   {
     AppMethodBeat.i(137452);
-    paramf = new o(b.bT(b.S(paramf), paramBoolean));
-    if ((paramf.exists()) && (paramf.length() > 0L))
+    paramf = new q(b.cc(b.S(paramf), paramBoolean));
+    if ((paramf.ifE()) && (paramf.length() > 0L))
     {
       AppMethodBeat.o(137452);
       return true;
@@ -146,7 +146,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.h.d
  * JD-Core Version:    0.7.0.1
  */

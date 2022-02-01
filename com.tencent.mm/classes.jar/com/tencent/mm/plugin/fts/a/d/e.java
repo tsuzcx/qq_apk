@@ -13,11 +13,11 @@ import java.util.List;
 
 public abstract interface e
 {
-  public abstract List<c> GE(long paramLong);
+  public abstract List<c> NG(long paramLong);
   
-  public abstract int Nn(int paramInt);
+  public abstract int SB(int paramInt);
   
-  public abstract a No(int paramInt);
+  public abstract a SC(int paramInt);
   
   public abstract void a(String paramString, MMHandler paramMMHandler, HashSet<String> paramHashSet, long paramLong);
   
@@ -25,47 +25,47 @@ public abstract interface e
   
   public abstract void clearData();
   
-  public abstract int dOF();
+  public abstract int eqW();
   
-  public abstract void dOG();
+  public abstract void eqZ();
   
-  public abstract LinkedList<Integer> dOH();
+  public abstract LinkedList<Integer> era();
   
-  public abstract int dOI();
+  public abstract int erb();
   
-  public abstract long dOJ();
+  public abstract long erc();
   
   public abstract int getType();
   
   public static final class a
   {
+    public h BHY = null;
+    public boolean BJA = true;
+    public int BJB = 2147483647;
+    public boolean BJC = true;
+    public m BJD;
+    public int BJE = 0;
+    public int BJz = 2147483647;
     public int businessType = 0;
-    public List<m> mWl = null;
-    public boolean tuG = false;
-    public h wWd = null;
-    public int wXD = 2147483647;
-    public boolean wXE = true;
-    public int wXF = 2147483647;
-    public boolean wXG = true;
-    public m wXH;
-    public int wXI = 0;
+    public List<m> pWR = null;
+    public boolean xcp = false;
     
     public final String toString()
     {
       int i = 0;
       AppMethodBeat.i(131734);
-      int j = this.wXD;
-      boolean bool1 = this.wXE;
-      int k = this.wXF;
-      boolean bool2 = this.tuG;
+      int j = this.BJz;
+      boolean bool1 = this.BJA;
+      int k = this.BJB;
+      boolean bool2 = this.xcp;
       int m = this.businessType;
-      if (this.mWl == null) {}
+      if (this.pWR == null) {}
       for (;;)
       {
-        String str = String.format("{%d, %b, %d, %b, %d, %d, %d}", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool1), Integer.valueOf(k), Boolean.valueOf(bool2), Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(this.wXI) });
+        String str = String.format("{%d, %b, %d, %b, %d, %d, %d}", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool1), Integer.valueOf(k), Boolean.valueOf(bool2), Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(this.BJE) });
         AppMethodBeat.o(131734);
         return str;
-        i = this.mWl.size();
+        i = this.pWR.size();
       }
     }
   }
@@ -77,7 +77,7 @@ public abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.d.e
  * JD-Core Version:    0.7.0.1
  */

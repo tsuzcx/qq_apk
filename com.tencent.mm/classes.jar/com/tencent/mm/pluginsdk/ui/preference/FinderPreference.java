@@ -9,11 +9,15 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.i.a.ae;
-import com.tencent.mm.plugin.i.a.aj;
-import com.tencent.mm.protocal.protobuf.eoy;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.findersdk.a.af;
+import com.tencent.mm.plugin.findersdk.a.ak;
+import com.tencent.mm.protocal.protobuf.ezi;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -25,105 +29,113 @@ public final class FinderPreference
   extends Preference
 {
   public static String NAME = "contact_profile_finder";
-  private List<ImageView> Kpq;
-  public eoy Kpr;
-  private MMActivity gte;
-  private String mTitle;
-  private View zlc;
+  private List<ImageView> AYn;
+  private View EQs;
+  public ezi Rqh;
+  private MMActivity iXq;
+  public String mTitle;
+  
+  public FinderPreference(Context paramContext)
+  {
+    this(paramContext, null);
+    AppMethodBeat.i(219756);
+    this.iXq = ((MMActivity)paramContext);
+    AppMethodBeat.o(219756);
+  }
   
   public FinderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(232333);
-    this.gte = ((MMActivity)paramContext);
-    AppMethodBeat.o(232333);
+    AppMethodBeat.i(219759);
+    this.iXq = ((MMActivity)paramContext);
+    AppMethodBeat.o(219759);
   }
   
   public FinderPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(232334);
+    AppMethodBeat.i(219760);
     this.mTitle = "";
-    this.Kpq = new LinkedList();
-    this.Kpr = null;
-    this.gte = ((MMActivity)paramContext);
-    this.mTitle = paramContext.getString(2131759418);
-    setLayoutResource(2131495538);
-    AppMethodBeat.o(232334);
+    this.AYn = new LinkedList();
+    this.Rqh = null;
+    this.iXq = ((MMActivity)paramContext);
+    this.mTitle = paramContext.getString(R.l.find_friends_by_finder);
+    setLayoutResource(R.i.mm_preference);
+    AppMethodBeat.o(219760);
   }
   
-  private void grH()
+  private void eiM()
   {
-    AppMethodBeat.i(232335);
-    Object localObject = this.Kpq.iterator();
+    AppMethodBeat.i(219764);
+    Object localObject = this.AYn.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((ImageView)((Iterator)localObject).next()).setVisibility(8);
     }
-    localObject = this.Kpr;
-    if ((localObject != null) && (((eoy)localObject).LNG == 0))
+    localObject = this.Rqh;
+    if ((localObject != null) && (((ezi)localObject).SVR == 0))
     {
-      int j = ((eoy)localObject).LCW.size();
+      int j = ((ezi)localObject).SGi.size();
       int i = 0;
-      while ((i < j) && (i < this.Kpq.size()))
+      while ((i < j) && (i < this.AYn.size()))
       {
-        ImageView localImageView = (ImageView)this.Kpq.get(i);
+        ImageView localImageView = (ImageView)this.AYn.get(i);
         localImageView.setVisibility(0);
-        ((aj)g.ah(aj.class)).getFinderUIApi().a(((eoy)localObject).LCW.get(i), localImageView);
+        ((ak)h.ag(ak.class)).getFinderUIApi().a(((ezi)localObject).SGi.get(i), localImageView);
         i += 1;
       }
     }
-    AppMethodBeat.o(232335);
+    AppMethodBeat.o(219764);
   }
   
-  public final void a(eoy parameoy)
+  public final void a(ezi paramezi)
   {
-    AppMethodBeat.i(232338);
-    this.Kpr = parameoy;
-    grH();
-    AppMethodBeat.o(232338);
+    AppMethodBeat.i(219774);
+    this.Rqh = paramezi;
+    eiM();
+    AppMethodBeat.o(219774);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(232337);
+    AppMethodBeat.i(219772);
     super.onBindView(paramView);
-    this.Kpq.clear();
-    this.Kpq.add((ImageView)paramView.findViewById(2131302574));
-    this.Kpq.add((ImageView)paramView.findViewById(2131302575));
-    this.Kpq.add((ImageView)paramView.findViewById(2131302576));
-    this.Kpq.add((ImageView)paramView.findViewById(2131302577));
-    paramView = (TextView)paramView.findViewById(2131296703);
+    this.AYn.clear();
+    this.AYn.add((ImageView)paramView.findViewById(R.h.image_iv1));
+    this.AYn.add((ImageView)paramView.findViewById(R.h.image_iv2));
+    this.AYn.add((ImageView)paramView.findViewById(R.h.image_iv3));
+    this.AYn.add((ImageView)paramView.findViewById(R.h.image_iv4));
+    paramView = (TextView)paramView.findViewById(R.h.album_title);
     if (!Util.isNullOrNil(this.mTitle))
     {
       paramView.setText(this.mTitle);
       ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-      localLayoutParams.width = a.aG(this.mContext, 2131165381);
+      localLayoutParams.width = a.aY(this.mContext, R.f.FixedTitleWidth);
       paramView.setLayoutParams(localLayoutParams);
     }
-    grH();
-    AppMethodBeat.o(232337);
+    eiM();
+    AppMethodBeat.o(219772);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(232336);
-    if (this.zlc == null)
+    AppMethodBeat.i(219767);
+    if (this.EQs == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
       LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
       localViewGroup.removeAllViews();
-      localLayoutInflater.inflate(2131495561, localViewGroup);
-      this.zlc = paramViewGroup;
+      localLayoutInflater.inflate(R.i.eiQ, localViewGroup);
+      this.EQs = paramViewGroup;
     }
-    paramViewGroup = this.zlc;
-    AppMethodBeat.o(232336);
+    paramViewGroup = this.EQs;
+    AppMethodBeat.o(219767);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.FinderPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.kinda.framework.app.KindaPlatformLayout android:orientation="vertical" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.kinda.framework.app.KindaPlatformLayout android:orientation="vertical" android:id="@id/k6x" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/kyz" android:layout_width="fill_parent" android:layout_height="24.0dip" />
     <ViewStub android:id="@id/e6l" android:layout="@layout/bd" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     <FrameLayout android:id="@id/be7" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
         <LinearLayout android:orientation="vertical" android:id="@id/be3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <ImageView android:id="@id/kar" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     </FrameLayout>
     <View android:id="@id/j7f" android:background="@color/ac_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="100.0dip" />
     <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/c21" />

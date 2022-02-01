@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.sns.ad.landingpage.component.b;
 
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.q;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r;
 
 public final class a
-  extends q
+  extends r
 {
-  public String couponAppId;
-  public String couponStockId;
+  public String JxS;
+  public String JxT;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.landingpage.component.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -5,27 +5,27 @@ import com.tencent.mm.storage.emotion.EmojiInfo;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyConfig;", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "verifyMd5", "", "needDecrypt", "", "aesKey", "path", "tempPath", "fetcherType", "", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Ljava/lang/String;ZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V", "getAesKey", "()Ljava/lang/String;", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "getFetcherType", "()I", "getNeedDecrypt", "()Z", "getPath", "getTempPath", "getVerifyMd5", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "copy", "equals", "other", "hashCode", "toString", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyConfig;", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "verifyMd5", "", "needDecrypt", "", "aesKey", "path", "tempPath", "fetcherType", "", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Ljava/lang/String;ZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V", "getAesKey", "()Ljava/lang/String;", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "getFetcherType", "()I", "getNeedDecrypt", "()Z", "getPath", "getTempPath", "getVerifyMd5", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "copy", "equals", "other", "hashCode", "toString", "plugin-emojisdk_release"})
 public final class b
 {
   final String aesKey;
-  final String gWQ;
-  final boolean gWR;
-  final String gWS;
-  final EmojiInfo gWm;
-  final int gWn;
+  final String jHO;
+  final boolean jHP;
+  final String jHQ;
+  final EmojiInfo jHh;
+  final int jHi;
   final String path;
   
   public b(EmojiInfo paramEmojiInfo, String paramString1, boolean paramBoolean, String paramString2, String paramString3, String paramString4, int paramInt)
   {
     AppMethodBeat.i(105487);
-    this.gWm = paramEmojiInfo;
-    this.gWQ = paramString1;
-    this.gWR = paramBoolean;
+    this.jHh = paramEmojiInfo;
+    this.jHO = paramString1;
+    this.jHP = paramBoolean;
     this.aesKey = paramString2;
     this.path = paramString3;
-    this.gWS = paramString4;
-    this.gWn = paramInt;
+    this.jHQ = paramString4;
+    this.jHi = paramInt;
     AppMethodBeat.o(105487);
   }
   
@@ -37,7 +37,7 @@ public final class b
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((!p.j(this.gWm, paramObject.gWm)) || (!p.j(this.gWQ, paramObject.gWQ)) || (this.gWR != paramObject.gWR) || (!p.j(this.aesKey, paramObject.aesKey)) || (!p.j(this.path, paramObject.path)) || (!p.j(this.gWS, paramObject.gWS)) || (this.gWn != paramObject.gWn)) {}
+        if ((!p.h(this.jHh, paramObject.jHh)) || (!p.h(this.jHO, paramObject.jHO)) || (this.jHP != paramObject.jHP) || (!p.h(this.aesKey, paramObject.aesKey)) || (!p.h(this.path, paramObject.path)) || (!p.h(this.jHQ, paramObject.jHQ)) || (this.jHi != paramObject.jHi)) {}
       }
     }
     else
@@ -57,14 +57,14 @@ public final class b
   public final String toString()
   {
     AppMethodBeat.i(105488);
-    String str = "EmojiVerifyConfig(emojiInfo=" + this.gWm + ", verifyMd5=" + this.gWQ + ", needDecrypt=" + this.gWR + ", aesKey=" + this.aesKey + ", path=" + this.path + ", tempPath=" + this.gWS + ", fetcherType=" + this.gWn + ")";
+    String str = "EmojiVerifyConfig(emojiInfo=" + this.jHh + ", verifyMd5=" + this.jHO + ", needDecrypt=" + this.jHP + ", aesKey=" + this.aesKey + ", path=" + this.path + ", tempPath=" + this.jHQ + ", fetcherType=" + this.jHi + ")";
     AppMethodBeat.o(105488);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.f.b
  * JD-Core Version:    0.7.0.1
  */

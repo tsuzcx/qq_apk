@@ -3,11 +3,9 @@ package com.tencent.mm.plugin.appbrand.dynamic.d;
 import android.os.Bundle;
 import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.b.b.a;
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ac.b.b.a;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.extension.f;
 import com.tencent.mm.model.ad.b;
 import com.tencent.mm.modelappbrand.t;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -21,28 +19,28 @@ public final class g
     super("makePhoneCall", 327);
   }
   
-  public final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.ac.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121318);
-    parama = parama.ayQ();
+    parama = parama.aGj();
     a locala = new a((byte)0);
     locala.id = parama.getString("__page_view_id", "");
-    locala.ebd = paramJSONObject.optString("phoneNumber", "");
-    XIPCInvoker.a(parama.getString("__process_name", MMApplicationContext.getProcessName()), locala, b.class, new d() {});
+    locala.fVa = paramJSONObject.optString("phoneNumber", "");
+    XIPCInvoker.a(parama.getString("__process_name", MMApplicationContext.getProcessName()), locala, b.class, new com.tencent.mm.ipcinvoker.f() {});
     AppMethodBeat.o(121318);
   }
   
   static final class a
-    implements f
+    implements com.tencent.mm.ipcinvoker.extension.f
   {
-    String ebd;
+    String fVa;
     String id;
     
     public final void e(Parcel paramParcel)
     {
       AppMethodBeat.i(121314);
       paramParcel.writeString(this.id);
-      paramParcel.writeString(this.ebd);
+      paramParcel.writeString(this.fVa);
       AppMethodBeat.o(121314);
     }
     
@@ -50,18 +48,18 @@ public final class g
     {
       AppMethodBeat.i(121315);
       this.id = paramParcel.readString();
-      this.ebd = paramParcel.readString();
+      this.fVa = paramParcel.readString();
       AppMethodBeat.o(121315);
     }
   }
   
   static class b
-    implements b<g.a, Bundle>
+    implements d<g.a, Bundle>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.g
  * JD-Core Version:    0.7.0.1
  */

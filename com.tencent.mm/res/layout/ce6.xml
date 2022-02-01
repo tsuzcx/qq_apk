@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/kgn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_3" android:layout_gravity="center_horizontal" android:id="@id/kgm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c9" android:text="@string/jsg" />
+        <TextView android:textSize="@dimen/is" android:textColor="@color/am" android:gravity="center" android:layout_gravity="bottom|center" android:id="@id/kgl" android:background="@drawable/a01" android:layout_width="@dimen/c8" android:layout_height="@dimen/cl" android:layout_marginBottom="@dimen/bx" android:text="@string/jre" />
+    </FrameLayout>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/kg_" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.google.android.material.appbar.AppBarLayout android:id="@id/kgv" android:background="@color/BW_BG_20" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" app:elevation="@dimen/a_w" app:expanded="false">
+            <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/kgw" android:paddingLeft="@dimen/cb" android:paddingTop="@dimen/ce" android:paddingRight="@dimen/cb" android:paddingBottom="@dimen/ct" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_scrollFlags="hci|htw">
+                <SeekBar android:id="@id/kgx" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="2.0dip" android:progressDrawable="@drawable/cu4" android:minHeight="2.0dip" android:thumb="@drawable/zu" android:layout_toLeftOf="@id/kgy" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/kgy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" />
+            </RelativeLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+        <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/kgu" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_behavior="@string/a0e" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <include android:id="@id/kgp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/ced" />
+    <ProgressBar android:id="@id/kgs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a61" />
+</RelativeLayout>

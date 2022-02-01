@@ -1,43 +1,43 @@
 package kotlin.l.b.a.b.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l.b.a.b.h.j.a;
-import kotlin.l.b.a.b.h.j.b;
+import kotlin.l.b.a.b.h.k.a;
+import kotlin.l.b.a.b.h.k.b;
 
 public enum a$r$b
-  implements j.a
+  implements k.a
 {
-  private static j.b<b> Txp;
+  private static k.b<b> abag;
   final int value;
   
   static
   {
     AppMethodBeat.i(58922);
-    TzR = new b("IN", 0, 0);
-    TzS = new b("OUT", 1, 1);
-    TzT = new b("INV", 2, 2);
-    TzU = new b[] { TzR, TzS, TzT };
-    Txp = new j.b() {};
+    abcI = new b("IN", 0, 0);
+    abcJ = new b("OUT", 1, 1);
+    abcK = new b("INV", 2, 2);
+    abcL = new b[] { abcI, abcJ, abcK };
+    abag = new k.b() {};
     AppMethodBeat.o(58922);
   }
   
-  private a$r$b(int paramInt1, int paramInt2)
+  private a$r$b(int paramInt)
   {
-    this.value = paramInt1;
+    this.value = paramInt;
   }
   
-  public static b auX(int paramInt)
+  public static b aER(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 0: 
-      return TzR;
+      return abcI;
     case 1: 
-      return TzS;
+      return abcJ;
     }
-    return TzT;
+    return abcK;
   }
   
   public final int getNumber()
@@ -47,7 +47,7 @@ public enum a$r$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.e.a.r.b
  * JD-Core Version:    0.7.0.1
  */

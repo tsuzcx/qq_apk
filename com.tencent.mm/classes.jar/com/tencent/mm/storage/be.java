@@ -6,18 +6,18 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class be
 {
-  public boolean Opg;
-  public String Oph;
-  private String jsh;
-  public boolean jsi;
+  public boolean VEZ;
+  public String VFa;
   public String md5;
+  private String mhK;
+  public boolean mhL;
   public long time;
   
   public be(String paramString)
   {
     AppMethodBeat.i(104954);
     this.md5 = "-1";
-    this.Oph = "";
+    this.VFa = "";
     if (Util.isNullOrNil(paramString))
     {
       Log.e("MicroMsg.emoji.EmojiContent", "EmojiContent parse failed. content is null.");
@@ -33,33 +33,33 @@ public final class be
         {
           localObject = paramString.substring(0, paramString.length() - 1);
           localObject = ((String)localObject).split(":", 6);
-          if ((localObject.length == 4) && (as.IG(localObject[0])))
+          if ((localObject.length == 4) && (as.PY(localObject[0])))
           {
             i = 1;
             if (localObject.length > i) {
-              this.jsh = localObject[i];
+              this.mhK = localObject[i];
             }
             if (localObject.length > i + 1) {
               this.time = Util.getLong(localObject[(i + 1)], 0L);
             }
             if (localObject.length > i + 2) {
-              this.jsi = localObject[(i + 2)].equals("1");
+              this.mhL = localObject[(i + 2)].equals("1");
             }
             if (localObject.length > i + 3) {
               this.md5 = localObject[(i + 3)];
             }
             if (localObject.length > i + 4) {
-              this.Oph = localObject[(i + 4)].replace("*#*", ":");
+              this.VFa = localObject[(i + 4)].replace("*#*", ":");
             }
             if (localObject.length > i + 5) {
-              this.Opg = localObject[(i + 5)].equals("1");
+              this.VEZ = localObject[(i + 5)].equals("1");
             }
             AppMethodBeat.o(104954);
           }
         }
         else
         {
-          this.Oph = paramString.replace(":", "*#*");
+          this.VFa = paramString.replace(":", "*#*");
           localObject = paramString;
           continue;
         }
@@ -100,7 +100,7 @@ public final class be
     }
   }
   
-  public static be bkr(String paramString)
+  public static be bwQ(String paramString)
   {
     AppMethodBeat.i(104955);
     paramString = new be(paramString);
@@ -108,21 +108,21 @@ public final class be
     return paramString;
   }
   
-  public final String bhs()
+  public final String bqK()
   {
-    return this.jsh;
+    return this.mhK;
   }
   
-  public final String bie()
+  public final String brC()
   {
     int j = 1;
     AppMethodBeat.i(104953);
-    Object localObject = new StringBuilder().append(this.jsh).append(":").append(this.time).append(":");
-    if (this.jsi)
+    Object localObject = new StringBuilder().append(this.mhK).append(":").append(this.time).append(":");
+    if (this.mhL)
     {
       i = 1;
-      localObject = ((StringBuilder)localObject).append(i).append(":").append(this.md5).append(":").append(this.Oph).append(":");
-      if (!this.Opg) {
+      localObject = ((StringBuilder)localObject).append(i).append(":").append(this.md5).append(":").append(this.VFa).append(":");
+      if (!this.VEZ) {
         break label118;
       }
     }
@@ -139,7 +139,7 @@ public final class be
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.be
  * JD-Core Version:    0.7.0.1
  */

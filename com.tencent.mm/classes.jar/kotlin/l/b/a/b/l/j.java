@@ -5,25 +5,25 @@ import kotlin.x;
 
 public abstract interface j
 {
-  public abstract <K, V> c<K, V> U(b<? super K, ? extends V> paramb);
-  
-  public abstract <K, V> d<K, V> V(b<? super K, ? extends V> paramb);
-  
   public abstract <T> f<T> a(kotlin.g.a.a<? extends T> parama, T paramT);
   
   public abstract <T> f<T> a(kotlin.g.a.a<? extends T> parama, b<? super Boolean, ? extends T> paramb, b<? super T, x> paramb1);
   
-  public abstract <T> f<T> al(kotlin.g.a.a<? extends T> parama);
+  public abstract <K, V> c<K, V> ak(b<? super K, ? extends V> paramb);
   
-  public abstract <T> g<T> am(kotlin.g.a.a<? extends T> parama);
+  public abstract <K, V> d<K, V> al(b<? super K, ? extends V> paramb);
   
-  public abstract <T> T an(kotlin.g.a.a<? extends T> parama);
+  public abstract <T> f<T> av(kotlin.g.a.a<? extends T> parama);
   
-  public abstract <K, V> a<K, V> hLs();
+  public abstract <T> g<T> aw(kotlin.g.a.a<? extends T> parama);
+  
+  public abstract <T> T ax(kotlin.g.a.a<? extends T> parama);
+  
+  public abstract <K, V> a<K, V> iPK();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.l.j
  * JD-Core Version:    0.7.0.1
  */

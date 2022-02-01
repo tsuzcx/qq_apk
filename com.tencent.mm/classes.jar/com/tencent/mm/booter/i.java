@@ -1,7 +1,7 @@
 package com.tencent.mm.booter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -9,13 +9,13 @@ import com.tencent.mm.storage.ao;
 
 public final class i
 {
-  public static boolean akM()
+  public static boolean aqI()
   {
     AppMethodBeat.i(19886);
     try
     {
-      bg.aVF();
-      Util.nullAs((Long)c.azQ().get(66817, null), 0L);
+      bh.beI();
+      Util.nullAs((Long)c.aHp().b(66817, null), 0L);
       if (Util.secondsToNow(0L) * 1000L > 1800000L)
       {
         AppMethodBeat.o(19886);

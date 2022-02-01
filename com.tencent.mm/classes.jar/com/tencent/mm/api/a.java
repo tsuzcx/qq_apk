@@ -7,14 +7,14 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  public static String fe(String paramString)
+  public static String fU(String paramString)
   {
     AppMethodBeat.i(116343);
     String str = paramString;
     if (Util.isNullOrNil(paramString)) {
       str = "tempConv";
     }
-    paramString = new StringBuilder(d.aSZ());
+    paramString = new StringBuilder(d.bbX());
     paramString.append(g.getMessageDigest(str.getBytes())).append("/");
     paramString.append("conv/");
     paramString = paramString.toString();
@@ -24,7 +24,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.api.a
  * JD-Core Version:    0.7.0.1
  */

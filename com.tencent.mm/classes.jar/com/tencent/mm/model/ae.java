@@ -1,13 +1,13 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.b;
-import com.tencent.mm.ak.h.c;
-import com.tencent.mm.g.a.cw;
+import com.tencent.mm.an.h;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.b;
+import com.tencent.mm.an.h.c;
+import com.tencent.mm.f.a.da;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.protocal.protobuf.db;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -28,15 +28,15 @@ public final class ae
   public final h.b b(h.a parama)
   {
     AppMethodBeat.i(150155);
-    parama = parama.heO;
-    if ((parama == null) || (parama.KHn == null))
+    parama = parama.jQG;
+    if ((parama == null) || (parama.RIF == null))
     {
       Log.f("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension failed, invalid cmdAM");
       AppMethodBeat.o(150155);
       return null;
     }
     Log.i("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension start");
-    parama = z.a(parama.KHn);
+    parama = z.a(parama.RIF);
     Object localObject = DocumentBuilderFactory.newInstance();
     for (;;)
     {
@@ -66,8 +66,8 @@ public final class ae
               break label298;
             }
             int k = Util.getInt(((Node)localObject).getNodeValue(), 0);
-            localObject = new cw();
-            ((cw)localObject).dFY.packageType = k;
+            localObject = new da();
+            ((da)localObject).fyG.fyH = k;
             EventCenter.instance.publish((IEvent)localObject);
             break label298;
           }
@@ -91,7 +91,7 @@ public final class ae
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.ae
  * JD-Core Version:    0.7.0.1
  */

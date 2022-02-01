@@ -1,10 +1,12 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
+import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.game.api.d;
 import com.tencent.mm.plugin.game.luggage.g.i;
+import com.tencent.mm.plugin.webview.luggage.c.c;
 import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
 import org.json.JSONArray;
@@ -16,7 +18,7 @@ public class e
   public final void a(Context paramContext, String paramString, br.a parama)
   {
     AppMethodBeat.i(83054);
-    paramContext = com.tencent.mm.plugin.webview.luggage.c.b.Zc(paramString);
+    paramContext = c.agO(paramString);
     if (paramContext == null)
     {
       parama.i("empty_postId", null);
@@ -24,7 +26,7 @@ public class e
       return;
     }
     if (paramContext.optBoolean("cancelAll")) {
-      ((d)g.af(d.class)).c(null, true);
+      ((d)h.ae(d.class)).c(null, true);
     }
     for (;;)
     {
@@ -38,13 +40,13 @@ public class e
         AppMethodBeat.o(83054);
         return;
       }
-      ((d)g.af(d.class)).c(paramContext, false);
+      ((d)h.ae(d.class)).c(paramContext, false);
     }
   }
   
-  public final void b(com.tencent.luggage.d.b<i>.a paramb) {}
+  public final void b(b<i>.a paramb) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 1;
   }

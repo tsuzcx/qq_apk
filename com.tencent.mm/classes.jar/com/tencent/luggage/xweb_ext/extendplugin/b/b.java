@@ -5,20 +5,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   implements d
 {
-  private static b cKc;
+  private static b cKF;
   
-  public static b QL()
+  public static b Us()
   {
-    AppMethodBeat.i(215749);
-    if (cKc == null) {
-      cKc = new b();
+    AppMethodBeat.i(227624);
+    if (cKF == null) {
+      cKF = new b();
     }
-    b localb = cKc;
-    AppMethodBeat.o(215749);
+    b localb = cKF;
+    AppMethodBeat.o(227624);
     return localb;
   }
   
-  public final c QM()
+  public final c Ut()
   {
     AppMethodBeat.i(139361);
     a locala = new a();

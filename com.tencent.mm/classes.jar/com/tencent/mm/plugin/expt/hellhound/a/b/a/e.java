@@ -9,88 +9,88 @@ import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFeedRelMonitor;", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/IFeedFlowMonitor;", "()V", "mActivityRef", "Ljava/lang/ref/WeakReference;", "Landroid/app/Activity;", "mFeedFlowCallback", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FeedFlowCallback;", "mFeedMonitor", "Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/FeedMonitor;", "mListener", "com/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFeedRelMonitor$mListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFeedRelMonitor$mListener$1;", "mSmoothListener", "com/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFeedRelMonitor$mSmoothListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFeedRelMonitor$mSmoothListener$1;", "convertState", "", "scrollState", "free", "", "monitor", "cmd", "aName", "", "activity", "report", "startMonitor", "stopMonitor", "Companion", "plugin-expt_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFeedRelMonitor;", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/IFeedFlowMonitor;", "()V", "mActivityRef", "Ljava/lang/ref/WeakReference;", "Landroid/app/Activity;", "mFeedFlowCallback", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FeedFlowCallback;", "mFeedMonitor", "Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/FeedMonitor;", "mListener", "com/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFeedRelMonitor$mListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFeedRelMonitor$mListener$1;", "mSmoothListener", "com/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFeedRelMonitor$mSmoothListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFeedRelMonitor$mSmoothListener$1;", "convertState", "", "scrollState", "free", "", "monitor", "cmd", "aName", "", "activity", "report", "startMonitor", "stopMonitor", "Companion", "plugin-expt_release"})
 public final class e
   implements o
 {
-  public static final e.a sDo;
+  public static final e.a wji;
   private WeakReference<Activity> mActivityRef;
-  private final a sDf;
-  private com.tencent.mm.plugin.expt.hellhound.a.a.a sDg;
-  private final b sDm;
-  private final c sDn;
+  private final a wiZ;
+  private com.tencent.mm.plugin.expt.hellhound.a.a.a wja;
+  private final b wjg;
+  private final c wjh;
   
   static
   {
-    AppMethodBeat.i(220853);
-    sDo = new e.a((byte)0);
-    AppMethodBeat.o(220853);
+    AppMethodBeat.i(252486);
+    wji = new e.a((byte)0);
+    AppMethodBeat.o(252486);
   }
   
   public e()
   {
-    AppMethodBeat.i(220852);
-    this.sDf = new a();
-    this.sDg = new com.tencent.mm.plugin.expt.hellhound.a.a.a(8, "18260", "1008");
-    this.sDm = new b(this);
-    this.sDn = new c(this);
-    AppMethodBeat.o(220852);
+    AppMethodBeat.i(252484);
+    this.wiZ = new a();
+    this.wja = new com.tencent.mm.plugin.expt.hellhound.a.a.a(8, "18260", "1008");
+    this.wjg = new b(this);
+    this.wjh = new c(this);
+    AppMethodBeat.o(252484);
   }
   
   public final void a(int paramInt, String paramString, Activity paramActivity)
   {
-    AppMethodBeat.i(220847);
-    kotlin.g.b.p.h(paramString, "aName");
+    AppMethodBeat.i(252474);
+    kotlin.g.b.p.k(paramString, "aName");
     Log.i("HABBYGE-MALI.FinderFeedRelMonitor", "monitor: %d, %s", new Object[] { Integer.valueOf(paramInt), paramString });
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(220847);
+      AppMethodBeat.o(252474);
       return;
       if (paramActivity != null) {
         this.mActivityRef = new WeakReference(paramActivity);
       }
-      c.cNJ().m(728, paramString);
-      AppMethodBeat.o(220847);
+      c.dcB().p(728, paramString);
+      AppMethodBeat.o(252474);
       return;
-      c.cNJ().m(729, paramString);
-      AppMethodBeat.o(220847);
+      c.dcB().p(729, paramString);
+      AppMethodBeat.o(252474);
       return;
-      c.cNJ().m(730, paramString);
-      AppMethodBeat.o(220847);
+      c.dcB().p(730, paramString);
+      AppMethodBeat.o(252474);
       return;
-      c.cNJ().m(731, paramString);
+      c.dcB().p(731, paramString);
     }
   }
   
   public final void free()
   {
-    AppMethodBeat.i(220850);
-    this.sDg.a(2, null);
+    AppMethodBeat.i(252480);
+    this.wja.a(2, null);
     WeakReference localWeakReference = this.mActivityRef;
     if (localWeakReference != null) {
       localWeakReference.clear();
     }
     this.mActivityRef = null;
-    AppMethodBeat.o(220850);
+    AppMethodBeat.o(252480);
   }
   
   public final void report()
   {
-    AppMethodBeat.i(220851);
-    this.sDg.a(3, null);
-    AppMethodBeat.o(220851);
+    AppMethodBeat.i(252482);
+    this.wja.a(3, null);
+    AppMethodBeat.o(252482);
   }
   
   public final void startMonitor()
   {
-    AppMethodBeat.i(220848);
+    AppMethodBeat.i(252476);
     com.tencent.mm.plugin.expt.hellhound.a.a.a locala;
     if (this.mActivityRef != null)
     {
-      locala = this.sDg;
+      locala = this.wja;
       localObject = this.mActivityRef;
       if (localObject == null) {
         break label67;
@@ -100,62 +100,62 @@ public final class e
     for (Object localObject = (Activity)((WeakReference)localObject).get();; localObject = null)
     {
       locala.a(0, (Activity)localObject);
-      this.sDf.a((f)this.sDm, (p)this.sDn);
-      AppMethodBeat.o(220848);
+      this.wiZ.a((f)this.wjg, (p)this.wjh);
+      AppMethodBeat.o(252476);
       return;
     }
   }
   
   public final void stopMonitor()
   {
-    AppMethodBeat.i(220849);
-    this.sDf.stopMonitor();
-    this.sDg.a(1, null);
-    AppMethodBeat.o(220849);
+    AppMethodBeat.i(252477);
+    this.wiZ.stopMonitor();
+    this.wja.a(1, null);
+    AppMethodBeat.o(252477);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFeedRelMonitor$mListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/IFeedOnScrollListener;", "onScroll", "", "listView", "Landroid/view/ViewGroup;", "firstVisibleItem", "", "visibleItemCount", "totalItemCount", "dx", "dy", "onScrollStateChanged", "scrollState", "plugin-expt_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFeedRelMonitor$mListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/IFeedOnScrollListener;", "onScroll", "", "listView", "Landroid/view/ViewGroup;", "firstVisibleItem", "", "visibleItemCount", "totalItemCount", "dx", "dy", "onScrollStateChanged", "scrollState", "plugin-expt_release"})
   public static final class b
     implements f
   {
     public final void a(ViewGroup paramViewGroup, int paramInt1, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.i(220845);
-      Object localObject = e.b(this.sDp);
+      AppMethodBeat.i(253125);
+      Object localObject = e.b(this.wjj);
       if (localObject != null) {}
       for (localObject = (Activity)((WeakReference)localObject).get(); (localObject == null) || (((Activity)localObject).isFinishing()) || (((Activity)localObject).isDestroyed()); localObject = null)
       {
         Log.printInfoStack("HABBYGE-MALI.FinderFeedRelMonitor", "onScroll, is NULL or finishing", new Object[0]);
-        AppMethodBeat.o(220845);
+        AppMethodBeat.o(253125);
         return;
       }
-      e.a(this.sDp).a((Activity)localObject, paramViewGroup, paramInt1, paramInt2, paramInt3);
-      AppMethodBeat.o(220845);
+      e.a(this.wjj).a((Activity)localObject, paramViewGroup, paramInt1, paramInt2, paramInt3);
+      AppMethodBeat.o(253125);
     }
     
     public final void k(ViewGroup paramViewGroup, int paramInt)
     {
-      AppMethodBeat.i(220844);
-      e.a(this.sDp).g(paramViewGroup, e.Ha(paramInt));
-      AppMethodBeat.o(220844);
+      AppMethodBeat.i(253123);
+      e.a(this.wjj).g(paramViewGroup, e.KK(paramInt));
+      AppMethodBeat.o(253123);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFeedRelMonitor$mSmoothListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/IFinderSmoothListener;", "scrollToPosition", "", "postion2Zero", "", "smoothScrollToPosition", "position", "", "plugin-expt_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFeedRelMonitor$mSmoothListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/IFinderSmoothListener;", "scrollToPosition", "", "postion2Zero", "", "smoothScrollToPosition", "position", "", "plugin-expt_release"})
   public static final class c
     implements p
   {
-    public final void md(boolean paramBoolean)
+    public final void np(boolean paramBoolean)
     {
-      AppMethodBeat.i(220846);
-      e.a(this.sDp).mc(paramBoolean);
-      AppMethodBeat.o(220846);
+      AppMethodBeat.i(257161);
+      e.a(this.wjj).no(paramBoolean);
+      AppMethodBeat.o(257161);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.b.a.e
  * JD-Core Version:    0.7.0.1
  */

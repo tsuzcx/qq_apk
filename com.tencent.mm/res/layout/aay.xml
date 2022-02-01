@@ -44,7 +44,7 @@
                 <TextView android:textSize="@dimen/aja" android:textColor="@color/uj" android:layout_gravity="center_vertical" android:id="@id/d3_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cnw" android:includeFontPadding="false" />
                 <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/finder_self_feed_like_arrow" app:iconColor="@color/BW_0_Alpha_0_3" />
             </LinearLayout>
-            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/xk" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/xk" android:layout_width="wrap_content" android:layout_height="fill_parent" android:contentDescription="@string/d3v">
                 <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dts" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icon_outlined_awesome" android:layout_marginEnd="2.0dip" app:iconColor="@color/FG_0" />
                 <TextView android:textSize="@dimen/bd" android:textColor="@color/a2x" android:id="@id/cf2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="14.0dip" />
             </LinearLayout>

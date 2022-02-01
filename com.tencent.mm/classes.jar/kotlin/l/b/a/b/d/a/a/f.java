@@ -13,20 +13,20 @@ public abstract interface f
   public static final class a
     implements f
   {
-    public static final a Tql;
+    public static final a aaTf;
     
     static
     {
       AppMethodBeat.i(57672);
-      Tql = new a();
+      aaTf = new a();
       AppMethodBeat.o(57672);
     }
     
     public final g<?> a(n paramn, ah paramah)
     {
       AppMethodBeat.i(57671);
-      p.h(paramn, "field");
-      p.h(paramah, "descriptor");
+      p.k(paramn, "field");
+      p.k(paramah, "descriptor");
       AppMethodBeat.o(57671);
       return null;
     }
@@ -34,7 +34,7 @@ public abstract interface f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.a.f
  * JD-Core Version:    0.7.0.1
  */

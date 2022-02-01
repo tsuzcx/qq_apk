@@ -10,16 +10,16 @@ public class TPDLProxyUtils
   
   public static String byteArrayToString(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(210157);
+    AppMethodBeat.i(256239);
     if (paramArrayOfByte == null)
     {
-      AppMethodBeat.o(210157);
+      AppMethodBeat.o(256239);
       return "";
     }
     try
     {
       paramArrayOfByte = new String(paramArrayOfByte, "UTF-8");
-      AppMethodBeat.o(210157);
+      AppMethodBeat.o(256239);
       return paramArrayOfByte;
     }
     catch (Throwable paramArrayOfByte)
@@ -34,7 +34,7 @@ public class TPDLProxyUtils
   
   public static String losePackageCheck(int paramInt)
   {
-    AppMethodBeat.i(210162);
+    AppMethodBeat.i(256249);
     Object localObject2 = "";
     String str1 = "";
     String str2 = str1;
@@ -89,50 +89,50 @@ public class TPDLProxyUtils
     catch (Throwable localThrowable)
     {
       localObject1 = (String)localObject1 + ";" + str2;
-      AppMethodBeat.o(210162);
+      AppMethodBeat.o(256249);
     }
   }
   
   public static int objectToInt(Object paramObject, int paramInt)
   {
-    AppMethodBeat.i(210158);
+    AppMethodBeat.i(256242);
     if (paramObject == null)
     {
-      AppMethodBeat.o(210158);
+      AppMethodBeat.o(256242);
       return paramInt;
     }
     try
     {
       int i = ((Integer)paramObject).intValue();
-      AppMethodBeat.o(210158);
+      AppMethodBeat.o(256242);
       return i;
     }
     catch (Throwable paramObject)
     {
       TPDLProxyLog.e("TPDLProxyUtils", 0, "tpdlnative", "object to int failed, error:" + paramObject.toString());
-      AppMethodBeat.o(210158);
+      AppMethodBeat.o(256242);
     }
     return paramInt;
   }
   
   public static long objectToLong(Object paramObject, long paramLong)
   {
-    AppMethodBeat.i(210159);
+    AppMethodBeat.i(256244);
     if (paramObject == null)
     {
-      AppMethodBeat.o(210159);
+      AppMethodBeat.o(256244);
       return paramLong;
     }
     try
     {
       long l = ((Long)paramObject).longValue();
-      AppMethodBeat.o(210159);
+      AppMethodBeat.o(256244);
       return l;
     }
     catch (Throwable paramObject)
     {
       TPDLProxyLog.e("TPDLProxyUtils", 0, "tpdlnative", "object to long failed, error:" + paramObject.toString());
-      AppMethodBeat.o(210159);
+      AppMethodBeat.o(256244);
     }
     return paramLong;
   }
@@ -571,7 +571,7 @@ public class TPDLProxyUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.utils.TPDLProxyUtils
  * JD-Core Version:    0.7.0.1
  */

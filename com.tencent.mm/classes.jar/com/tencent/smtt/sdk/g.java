@@ -36,7 +36,7 @@ class g
   
   public static g a(boolean paramBoolean)
   {
-    AppMethodBeat.i(188194);
+    AppMethodBeat.i(191637);
     if ((d == null) && (paramBoolean)) {}
     try
     {
@@ -44,12 +44,12 @@ class g
         d = new g();
       }
       g localg = d;
-      AppMethodBeat.o(188194);
+      AppMethodBeat.o(191637);
       return localg;
     }
     finally
     {
-      AppMethodBeat.o(188194);
+      AppMethodBeat.o(191637);
     }
   }
   
@@ -60,24 +60,24 @@ class g
   
   private void b(int paramInt)
   {
-    AppMethodBeat.i(188200);
+    AppMethodBeat.i(191712);
     TbsLog.d("SDKEngine", "setCountProp i = ".concat(String.valueOf(paramInt)));
     Properties localProperties = new Properties();
     localProperties.setProperty(j, String.valueOf(paramInt));
     try
     {
       localProperties.store(new FileOutputStream(new File(this.i, "count.prop")), null);
-      AppMethodBeat.o(188200);
+      AppMethodBeat.o(191712);
       return;
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
-      AppMethodBeat.o(188200);
+      AppMethodBeat.o(191712);
       return;
     }
     catch (IOException localIOException)
     {
-      AppMethodBeat.o(188200);
+      AppMethodBeat.o(191712);
     }
   }
   
@@ -392,9 +392,9 @@ class g
     //   370: aload 4
     //   372: invokevirtual 276	com/tencent/smtt/sdk/g:a	(Landroid/content/Context;Lcom/tencent/smtt/sdk/p;)Z
     //   375: putfield 51	com/tencent/smtt/sdk/g:e	Z
-    //   378: invokestatic 281	com/tencent/smtt/sdk/c:a	()Lcom/tencent/smtt/sdk/c;
+    //   378: invokestatic 281	com/tencent/smtt/sdk/d:a	()Lcom/tencent/smtt/sdk/d;
     //   381: aload_1
-    //   382: invokevirtual 283	com/tencent/smtt/sdk/c:a	(Landroid/content/Context;)V
+    //   382: invokevirtual 283	com/tencent/smtt/sdk/d:a	(Landroid/content/Context;)V
     //   385: aload_0
     //   386: aload_1
     //   387: invokestatic 287	com/tencent/smtt/sdk/q:t	(Landroid/content/Context;)Ljava/io/File;
@@ -530,10 +530,10 @@ class g
   boolean a(Context paramContext, p paramp)
   {
     int k = 0;
-    AppMethodBeat.i(188196);
+    AppMethodBeat.i(191670);
     if (this.c != null)
     {
-      AppMethodBeat.o(188196);
+      AppMethodBeat.o(191670);
       return true;
     }
     TbsOneGreyInfoHelper.initExtension(paramContext);
@@ -542,7 +542,7 @@ class g
     {
       this.e = false;
       QbSdk.a(paramContext, "SDKEngine::useSystemWebView by tbs_core_share_dir null!");
-      AppMethodBeat.o(188196);
+      AppMethodBeat.o(191670);
       return false;
     }
     String[] arrayOfString = QbSdk.getDexLoaderFileList(paramContext, paramContext, localFile.getAbsolutePath());
@@ -556,7 +556,7 @@ class g
     if (TbsOneGreyInfoHelper.isOneModeAvailable(paramContext)) {}
     for (this.c = new TbsWizard(paramContext);; this.c = new TbsWizard(paramContext, paramContext, localFile.getAbsolutePath(), str, arrayOfString, QbSdk.getLibraryPath(), paramp))
     {
-      AppMethodBeat.o(188196);
+      AppMethodBeat.o(191670);
       return true;
     }
   }
@@ -579,27 +579,27 @@ class g
   
   public String e()
   {
-    AppMethodBeat.i(188197);
+    AppMethodBeat.i(191689);
     if ((this.c == null) || (QbSdk.a))
     {
-      AppMethodBeat.o(188197);
+      AppMethodBeat.o(191689);
       return "system webview get nothing...";
     }
     String str = this.c.getCrashExtraMessage();
-    AppMethodBeat.o(188197);
+    AppMethodBeat.o(191689);
     return str;
   }
   
   boolean f()
   {
-    AppMethodBeat.i(188198);
+    AppMethodBeat.i(191696);
     TbsLog.d("SDKEngine", "getTbsNeedReboot");
     int k;
     if (b)
     {
       if (j == null)
       {
-        AppMethodBeat.o(188198);
+        AppMethodBeat.o(191696);
         return false;
       }
       k = h();
@@ -611,7 +611,7 @@ class g
     for (;;)
     {
       boolean bool = b;
-      AppMethodBeat.o(188198);
+      AppMethodBeat.o(191696);
       return bool;
       label60:
       if (k + 1 > h) {
@@ -619,7 +619,7 @@ class g
       }
       b(k + 1);
     }
-    AppMethodBeat.o(188198);
+    AppMethodBeat.o(191696);
     return false;
   }
   
@@ -630,7 +630,7 @@ class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sdk.g
  * JD-Core Version:    0.7.0.1
  */

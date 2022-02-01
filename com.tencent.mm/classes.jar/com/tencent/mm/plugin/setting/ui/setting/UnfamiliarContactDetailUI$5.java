@@ -12,14 +12,14 @@ final class UnfamiliarContactDetailUI$5
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(74573);
-    this.Dfg.finish();
+    this.JkM.finish();
     AppMethodBeat.o(74573);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.UnfamiliarContactDetailUI.5
  * JD-Core Version:    0.7.0.1
  */

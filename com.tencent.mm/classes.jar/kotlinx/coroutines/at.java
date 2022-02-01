@@ -1,31 +1,19 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.d.d;
 import kotlin.l;
-import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/Delay;", "", "delay", "", "time", "", "(JLkotlin/coroutines/Continuation;)Ljava/lang/Object;", "invokeOnTimeout", "Lkotlinx/coroutines/DisposableHandle;", "timeMillis", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "scheduleResumeAfterDelay", "continuation", "Lkotlinx/coroutines/CancellableContinuation;", "kotlinx-coroutines-core"})
-public abstract interface at
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/Deferred;", "T", "Lkotlinx/coroutines/Job;", "onAwait", "Lkotlinx/coroutines/selects/SelectClause1;", "getOnAwait", "()Lkotlinx/coroutines/selects/SelectClause1;", "await", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getCompleted", "()Ljava/lang/Object;", "getCompletionExceptionOrNull", "", "kotlinx-coroutines-core"})
+public abstract interface at<T>
+  extends by
 {
-  public abstract void a(long paramLong, k<? super x> paramk);
+  public abstract T iRo();
   
-  public abstract bc d(long paramLong, Runnable paramRunnable);
-  
-  @l(hxD={1, 1, 16})
-  public static final class a
-  {
-    public static bc e(long paramLong, Runnable paramRunnable)
-    {
-      AppMethodBeat.i(192329);
-      paramRunnable = aq.hMR().d(paramLong, paramRunnable);
-      AppMethodBeat.o(192329);
-      return paramRunnable;
-    }
-  }
+  public abstract Object n(d<? super T> paramd);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.at
  * JD-Core Version:    0.7.0.1
  */

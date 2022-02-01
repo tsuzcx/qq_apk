@@ -1,53 +1,33 @@
 package com.tencent.mm.modelappbrand;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MultiProcessSharedPreferences;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class b
 {
-  public static String iIm;
-  public static String iIn;
+  public static String lyo;
+  public static String lyp;
   
-  public static void Lm(String paramString)
-  {
-    AppMethodBeat.i(153190);
-    try
-    {
-      Object localObject = MultiProcessSharedPreferences.getSharedPreferences(MMApplicationContext.getContext(), "pref_appbrand_process", 4);
-      String str = paramString + ":start_time";
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).remove(str);
-      ((SharedPreferences.Editor)localObject).commit();
-      e.Cxv.idkeyStat(365L, 5L, 1L, false);
-      Log.v("MicroMsg.AppBrandReporter", "onProcessExit");
-      AppMethodBeat.o(153190);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      Log.printErrStackTrace("MicroMsg.AppBrandReporter", localThrowable, "onProcessExit(%s)", new Object[] { paramString });
-      AppMethodBeat.o(153190);
-    }
-  }
-  
-  public static String aXE()
+  public static String bgL()
   {
     AppMethodBeat.i(153189);
     Object localObject = new StringBuilder("sid_");
-    g.aAf();
-    iIm = a.getUin() + "_" + Util.nowMilliSecond();
-    Log.v("MicroMsg.AppBrandReporter", "refreshWeAppSearchSessionId : %s", new Object[] { iIm });
-    localObject = iIm;
+    h.aHE();
+    lyo = com.tencent.mm.kernel.b.getUin() + "_" + Util.nowMilliSecond();
+    Log.v("MicroMsg.AppBrandReporter", "refreshWeAppSearchSessionId : %s", new Object[] { lyo });
+    localObject = lyo;
     AppMethodBeat.o(153189);
     return localObject;
+  }
+  
+  public static void bgM()
+  {
+    AppMethodBeat.i(191302);
+    f.Iyx.idkeyStat(365L, 5L, 1L, false);
+    AppMethodBeat.o(191302);
   }
 }
 

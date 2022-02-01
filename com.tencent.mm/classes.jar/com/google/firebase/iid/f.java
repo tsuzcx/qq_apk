@@ -19,11 +19,11 @@ import javax.annotation.concurrent.GuardedBy;
 
 public final class f
 {
-  private final Context bLv;
+  private final Context bJa;
   @GuardedBy("this")
-  private int bLw;
+  private int bJb;
   @GuardedBy("this")
-  private int bLx = 0;
+  private int bJc = 0;
   @GuardedBy("this")
   private String zzbu;
   @GuardedBy("this")
@@ -31,7 +31,7 @@ public final class f
   
   public f(Context paramContext)
   {
-    this.bLv = paramContext;
+    this.bJa = paramContext;
   }
   
   public static String a(KeyPair paramKeyPair)
@@ -56,13 +56,13 @@ public final class f
   public static String b(a parama)
   {
     AppMethodBeat.i(4153);
-    String str = parama.xR().bKz;
+    String str = parama.yl().bIe;
     if (str != null)
     {
       AppMethodBeat.o(4153);
       return str;
     }
-    parama = parama.xR().zzs;
+    parama = parama.yl().zzs;
     if (!parama.startsWith("1:"))
     {
       AppMethodBeat.o(4153);
@@ -84,12 +84,12 @@ public final class f
     return parama;
   }
   
-  private final PackageInfo bO(String paramString)
+  private final PackageInfo ca(String paramString)
   {
     AppMethodBeat.i(4159);
     try
     {
-      paramString = this.bLv.getPackageManager().getPackageInfo(paramString, 0);
+      paramString = this.bJa.getPackageManager().getPackageInfo(paramString, 0);
       AppMethodBeat.o(4159);
       return paramString;
     }
@@ -107,7 +107,7 @@ public final class f
     try
     {
       AppMethodBeat.i(4158);
-      PackageInfo localPackageInfo = bO(this.bLv.getPackageName());
+      PackageInfo localPackageInfo = ca(this.bJa.getPackageName());
       if (localPackageInfo != null)
       {
         this.zzbu = Integer.toString(localPackageInfo.versionCode);
@@ -119,7 +119,7 @@ public final class f
     finally {}
   }
   
-  public final String yn()
+  public final String yH()
   {
     try
     {
@@ -134,7 +134,7 @@ public final class f
     finally {}
   }
   
-  public final String yo()
+  public final String yI()
   {
     try
     {
@@ -149,19 +149,19 @@ public final class f
     finally {}
   }
   
-  public final int yp()
+  public final int yJ()
   {
     try
     {
       AppMethodBeat.i(4157);
-      if (this.bLw == 0)
+      if (this.bJb == 0)
       {
-        PackageInfo localPackageInfo = bO("com.google.android.gms");
+        PackageInfo localPackageInfo = ca("com.google.android.gms");
         if (localPackageInfo != null) {
-          this.bLw = localPackageInfo.versionCode;
+          this.bJb = localPackageInfo.versionCode;
         }
       }
-      int i = this.bLw;
+      int i = this.bJb;
       AppMethodBeat.o(4157);
       return i;
     }
@@ -176,13 +176,13 @@ public final class f
       try
       {
         AppMethodBeat.i(4152);
-        if (this.bLx != 0)
+        if (this.bJc != 0)
         {
-          i = this.bLx;
+          i = this.bJc;
           AppMethodBeat.o(4152);
           return i;
         }
-        PackageManager localPackageManager = this.bLv.getPackageManager();
+        PackageManager localPackageManager = this.bJa.getPackageManager();
         if (localPackageManager.checkPermission("com.google.android.c2dm.permission.SEND", "com.google.android.gms") == -1)
         {
           AppMethodBeat.o(4152);
@@ -198,8 +198,8 @@ public final class f
       localObject2 = localObject1.queryIntentServices((Intent)localObject2, 0);
       if ((localObject2 != null) && (((List)localObject2).size() > 0))
       {
-        this.bLx = 1;
-        i = this.bLx;
+        this.bJc = 1;
+        i = this.bJc;
         AppMethodBeat.o(4152);
       }
       else
@@ -211,15 +211,15 @@ public final class f
         if ((localList == null) || (localList.size() <= 0)) {
           break;
         }
-        this.bLx = 2;
-        i = this.bLx;
+        this.bJc = 2;
+        i = this.bJc;
         AppMethodBeat.o(4152);
       }
     }
     if (PlatformVersion.isAtLeastO()) {}
-    for (this.bLx = 2;; this.bLx = 1)
+    for (this.bJc = 2;; this.bJc = 1)
     {
-      i = this.bLx;
+      i = this.bJc;
       AppMethodBeat.o(4152);
       break;
     }
@@ -227,7 +227,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.f
  * JD-Core Version:    0.7.0.1
  */

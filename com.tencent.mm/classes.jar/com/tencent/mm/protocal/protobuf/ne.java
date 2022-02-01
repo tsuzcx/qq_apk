@@ -3,41 +3,49 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ne
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String KRO;
+  public String CRg;
+  public String Izj;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152507);
+    AppMethodBeat.i(124409);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.KRO != null) {
-        paramVarArgs.e(1, this.KRO);
+      if (this.CRg != null) {
+        paramVarArgs.f(1, this.CRg);
       }
-      AppMethodBeat.o(152507);
+      if (this.Izj != null) {
+        paramVarArgs.f(2, this.Izj);
+      }
+      AppMethodBeat.o(124409);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.KRO == null) {
-        break label213;
+      if (this.CRg == null) {
+        break label274;
       }
     }
-    label213:
-    for (paramInt = g.a.a.b.b.a.f(1, this.KRO) + 0;; paramInt = 0)
+    label274:
+    for (paramInt = g.a.a.b.b.a.g(1, this.CRg) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(152507);
-      return paramInt;
+      int i = paramInt;
+      if (this.Izj != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.Izj);
+      }
+      AppMethodBeat.o(124409);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(152507);
+        AppMethodBeat.o(124409);
         return 0;
       }
       if (paramInt == 3)
@@ -47,14 +55,18 @@ public final class ne
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(152507);
+          AppMethodBeat.o(124409);
           return -1;
+        case 1: 
+          localne.CRg = locala.abFh.readString();
+          AppMethodBeat.o(124409);
+          return 0;
         }
-        localne.KRO = locala.UbS.readString();
-        AppMethodBeat.o(152507);
+        localne.Izj = locala.abFh.readString();
+        AppMethodBeat.o(124409);
         return 0;
       }
-      AppMethodBeat.o(152507);
+      AppMethodBeat.o(124409);
       return -1;
     }
   }

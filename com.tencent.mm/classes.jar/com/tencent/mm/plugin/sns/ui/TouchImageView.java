@@ -16,10 +16,10 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 public class TouchImageView
   extends ImageView
 {
-  private RectF ERR;
-  private Paint ERS;
-  MMHandler Eok;
-  Runnable Eol;
+  MMHandler KBt;
+  Runnable KBu;
+  private RectF LfW;
+  private Paint LfX;
   private int a;
   private int b;
   private boolean enable;
@@ -30,8 +30,8 @@ public class TouchImageView
   {
     super(paramContext);
     AppMethodBeat.i(99770);
-    this.ERR = new RectF();
-    this.ERS = new Paint();
+    this.LfW = new RectF();
+    this.LfX = new Paint();
     this.a = 90;
     this.r = 0;
     this.g = 0;
@@ -45,8 +45,8 @@ public class TouchImageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(99771);
-    this.ERR = new RectF();
-    this.ERS = new Paint();
+    this.LfW = new RectF();
+    this.LfX = new Paint();
     this.a = 90;
     this.r = 0;
     this.g = 0;
@@ -59,8 +59,8 @@ public class TouchImageView
   private void init()
   {
     AppMethodBeat.i(99772);
-    this.Eok = new MMHandler();
-    this.Eol = new Runnable()
+    this.KBt = new MMHandler();
+    this.KBu = new Runnable()
     {
       public final void run()
       {
@@ -90,9 +90,9 @@ public class TouchImageView
           return true;
           paramAnonymousView.setPressed(true);
           paramAnonymousView.invalidate();
-          localTouchImageView.Eok.removeCallbacks(localTouchImageView.Eol);
+          localTouchImageView.KBt.removeCallbacks(localTouchImageView.KBu);
           continue;
-          localTouchImageView.Eok.post(localTouchImageView.Eol);
+          localTouchImageView.KBt.post(localTouchImageView.KBu);
         }
         AppMethodBeat.o(99769);
         return false;
@@ -123,12 +123,12 @@ public class TouchImageView
     super.onDraw(paramCanvas);
     if (isPressed())
     {
-      this.ERR.left = getPaddingLeft();
-      this.ERR.top = getPaddingTop();
-      this.ERR.right = (getWidth() - getPaddingRight());
-      this.ERR.bottom = (getHeight() - getPaddingBottom());
-      this.ERS.setARGB(this.a, this.r, this.g, this.b);
-      paramCanvas.drawRoundRect(this.ERR, getWidth() / 10, getHeight() / 10, this.ERS);
+      this.LfW.left = getPaddingLeft();
+      this.LfW.top = getPaddingTop();
+      this.LfW.right = (getWidth() - getPaddingRight());
+      this.LfW.bottom = (getHeight() - getPaddingBottom());
+      this.LfX.setARGB(this.a, this.r, this.g, this.b);
+      paramCanvas.drawRoundRect(this.LfW, getWidth() / 10, getHeight() / 10, this.LfX);
     }
     AppMethodBeat.o(99773);
   }
@@ -146,7 +146,7 @@ public class TouchImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.TouchImageView
  * JD-Core Version:    0.7.0.1
  */

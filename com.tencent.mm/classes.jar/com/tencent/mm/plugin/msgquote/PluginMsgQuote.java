@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.msgquote;
 import android.content.Context;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.ag.w;
-import com.tencent.mm.ag.w.a;
-import com.tencent.mm.g.c.eo;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.aj.w;
+import com.tencent.mm.aj.w.a;
+import com.tencent.mm.f.c.et;
 import com.tencent.mm.kernel.api.bucket.c;
-import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.plugin.msgquote.model.MsgQuoteItem;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -22,12 +22,12 @@ import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class PluginMsgQuote
-  extends f
+  extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.api.bucket.a, c, a
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private com.tencent.mm.plugin.msgquote.model.b zFG = null;
-  private com.tencent.mm.plugin.msgquote.a.a zFH = null;
+  private com.tencent.mm.plugin.msgquote.model.b FkF = null;
+  private com.tencent.mm.plugin.msgquote.a.a FkG = null;
   
   static
   {
@@ -49,18 +49,18 @@ public class PluginMsgQuote
     return baseDBFactories;
   }
   
-  public void execute(com.tencent.mm.kernel.b.g paramg) {}
+  public void execute(g paramg) {}
   
   public com.tencent.mm.plugin.msgquote.a.a getMsgQuoteStorage()
   {
     AppMethodBeat.i(88785);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (this.zFH == null)
+    h.aHE().aGH();
+    if (this.FkG == null)
     {
-      com.tencent.mm.kernel.g.aAi();
-      this.zFH = new com.tencent.mm.plugin.msgquote.a.a(com.tencent.mm.kernel.g.aAh().hqK);
+      h.aHH();
+      this.FkG = new com.tencent.mm.plugin.msgquote.a.a(h.aHG().kcF);
     }
-    com.tencent.mm.plugin.msgquote.a.a locala = this.zFH;
+    com.tencent.mm.plugin.msgquote.a.a locala = this.FkG;
     AppMethodBeat.o(88785);
     return locala;
   }
@@ -68,11 +68,11 @@ public class PluginMsgQuote
   public com.tencent.mm.plugin.msgquote.model.b getMsgReportManager()
   {
     AppMethodBeat.i(88786);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (this.zFG == null) {
-      this.zFG = new com.tencent.mm.plugin.msgquote.model.b();
+    h.aHE().aGH();
+    if (this.FkF == null) {
+      this.FkF = new com.tencent.mm.plugin.msgquote.model.b();
     }
-    com.tencent.mm.plugin.msgquote.model.b localb = this.zFG;
+    com.tencent.mm.plugin.msgquote.model.b localb = this.FkF;
     AppMethodBeat.o(88786);
     return localb;
   }
@@ -86,24 +86,24 @@ public class PluginMsgQuote
       AppMethodBeat.o(88788);
       return;
     }
-    Log.i("MicroMsg.msgquote.PluginMsgQuote", "handleQuoteMsgClick msgId:%s msgSvrId:%s MsgQuoteItem(type:%s svrid:%s content:%s)", new Object[] { Long.valueOf(paramLong), Long.valueOf(((l)com.tencent.mm.kernel.g.af(l.class)).eiy().Hb(paramLong).field_msgSvrId), Integer.valueOf(paramMsgQuoteItem.type), Long.valueOf(paramMsgQuoteItem.zFI), Util.secPrint(paramMsgQuoteItem.content) });
+    Log.i("MicroMsg.msgquote.PluginMsgQuote", "handleQuoteMsgClick msgId:%s msgSvrId:%s MsgQuoteItem(type:%s svrid:%s content:%s)", new Object[] { Long.valueOf(paramLong), Long.valueOf(((n)h.ae(n.class)).eSe().Oq(paramLong).field_msgSvrId), Integer.valueOf(paramMsgQuoteItem.type), Long.valueOf(paramMsgQuoteItem.FkS), Util.secPrint(paramMsgQuoteItem.content) });
     AppMethodBeat.o(88788);
   }
   
   public void handleQuoteMsgSendResuld(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(88792);
-    com.tencent.mm.plugin.msgquote.a.b localb = ((a)com.tencent.mm.kernel.g.ah(a.class)).getMsgQuoteStorage().Hj(paramLong1);
+    com.tencent.mm.plugin.msgquote.a.b localb = ((a)h.ag(a.class)).getMsgQuoteStorage().Oy(paramLong1);
     if (localb != null)
     {
       localb.field_msgSvrId = paramLong2;
-      boolean bool = ((a)com.tencent.mm.kernel.g.ah(a.class)).getMsgQuoteStorage().a(localb);
-      Object localObject = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().Hb(localb.field_quotedMsgId);
-      if ((((ca)localObject).getType() == 49) || (((ca)localObject).getType() == 805306417) || (((ca)localObject).getType() == 822083633))
+      boolean bool = ((a)h.ag(a.class)).getMsgQuoteStorage().a(localb);
+      Object localObject = ((n)h.ae(n.class)).eSe().Oq(localb.field_quotedMsgId);
+      if ((((ca)localObject).getType() == 49) || (((ca)localObject).getType() == 805306417) || (((ca)localObject).getType() == 822083633) || (((ca)localObject).getType() == 1090519089))
       {
-        localObject = k.b.HD(((eo)localObject).field_content);
+        localObject = k.b.OQ(((et)localObject).field_content);
         if (localObject != null) {
-          com.tencent.mm.plugin.msgquote.model.b.b(2L, localb.field_quotedMsgSvrId, 49L, ((k.b)localObject).type);
+          com.tencent.mm.plugin.msgquote.model.b.c(2L, localb.field_quotedMsgSvrId, 49L, ((k.b)localObject).type);
         }
       }
       for (;;)
@@ -111,7 +111,7 @@ public class PluginMsgQuote
         Log.i("MicroMsg.msgquote.PluginMsgQuote", "handleQuoteMsgSendResuld() msgId:%s msgSvrId:%s result:%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(bool) });
         AppMethodBeat.o(88792);
         return;
-        com.tencent.mm.plugin.msgquote.model.b.b(2L, localb.field_quotedMsgSvrId, ((ca)localObject).getType(), 0L);
+        com.tencent.mm.plugin.msgquote.model.b.c(2L, localb.field_quotedMsgSvrId, ((ca)localObject).getType(), 0L);
       }
     }
     Log.e("MicroMsg.msgquote.PluginMsgQuote", "handleQuoteMsgSendResuld() msgId:%s msgSvrId:%s, msgQuote is null", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
@@ -125,15 +125,15 @@ public class PluginMsgQuote
     localb.field_msgId = paramLong1;
     localb.field_msgSvrId = paramLong2;
     localb.field_quotedMsgSvrId = paramLong3;
-    localb.field_quotedMsgId = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().aJ(paramString, paramLong3).field_msgId;
-    Log.i("MicroMsg.msgquote.PluginMsgQuote", "handleReceivedQuoteMsg() msgId:%s msgSvrid:%s talker:%s quotedMsgSvrid:%s result:%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString, Long.valueOf(paramLong3), Boolean.valueOf(((a)com.tencent.mm.kernel.g.ah(a.class)).getMsgQuoteStorage().b(localb)) });
+    localb.field_quotedMsgId = ((n)h.ae(n.class)).eSe().aL(paramString, paramLong3).field_msgId;
+    Log.i("MicroMsg.msgquote.PluginMsgQuote", "handleReceivedQuoteMsg() msgId:%s msgSvrid:%s talker:%s quotedMsgSvrid:%s result:%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString, Long.valueOf(paramLong3), Boolean.valueOf(((a)h.ag(a.class)).getMsgQuoteStorage().b(localb)) });
     AppMethodBeat.o(88789);
   }
   
   public void handleRevokeMsgBySelf(long paramLong)
   {
     AppMethodBeat.i(88790);
-    com.tencent.mm.plugin.msgquote.a.b localb = ((a)com.tencent.mm.kernel.g.ah(a.class)).getMsgQuoteStorage().Hl(paramLong);
+    com.tencent.mm.plugin.msgquote.a.b localb = ((a)h.ag(a.class)).getMsgQuoteStorage().OA(paramLong);
     if (localb == null)
     {
       Log.e("MicroMsg.msgquote.PluginMsgQuote", "handleRevokeMsgBySelf msgId:%s, msgQuote is null", new Object[] { Long.valueOf(paramLong) });
@@ -141,14 +141,14 @@ public class PluginMsgQuote
       return;
     }
     localb.field_status = 1;
-    Log.i("MicroMsg.msgquote.PluginMsgQuote", "handleRevokeMsgBySelf() msgId:%s result:%s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(((a)com.tencent.mm.kernel.g.ah(a.class)).getMsgQuoteStorage().a(localb)) });
+    Log.i("MicroMsg.msgquote.PluginMsgQuote", "handleRevokeMsgBySelf() msgId:%s result:%s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(((a)h.ag(a.class)).getMsgQuoteStorage().a(localb)) });
     AppMethodBeat.o(88790);
   }
   
   public void handleRevokeMsgBySvrId(long paramLong)
   {
     AppMethodBeat.i(88791);
-    com.tencent.mm.plugin.msgquote.a.b localb = ((a)com.tencent.mm.kernel.g.ah(a.class)).getMsgQuoteStorage().Hk(paramLong);
+    com.tencent.mm.plugin.msgquote.a.b localb = ((a)h.ag(a.class)).getMsgQuoteStorage().Oz(paramLong);
     if (localb == null)
     {
       Log.e("MicroMsg.msgquote.PluginMsgQuote", "handleRevokeMsgBySvrId msgSvrId:%s, msgQuote is null", new Object[] { Long.valueOf(paramLong) });
@@ -162,11 +162,11 @@ public class PluginMsgQuote
       return;
     }
     localb.field_status = 1;
-    Log.i("MicroMsg.msgquote.PluginMsgQuote", "handleRevokeMsgBySelf() msgSvrId:%s result:%s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(((a)com.tencent.mm.kernel.g.ah(a.class)).getMsgQuoteStorage().a(localb)) });
+    Log.i("MicroMsg.msgquote.PluginMsgQuote", "handleRevokeMsgBySelf() msgSvrId:%s result:%s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(((a)h.ag(a.class)).getMsgQuoteStorage().a(localb)) });
     AppMethodBeat.o(88791);
   }
   
-  public void onAccountInitialized(e.c paramc) {}
+  public void onAccountInitialized(f.c paramc) {}
   
   public void onAccountRelease() {}
   
@@ -180,18 +180,18 @@ public class PluginMsgQuote
       k.b localb = new k.b();
       localb.title = paramString2;
       localb.type = 57;
-      localb.izy = com.tencent.mm.plugin.msgquote.model.a.a(paramca, paramInt1, paramCharSequence, paramInt2, paramHashMap);
+      localb.loR = com.tencent.mm.plugin.msgquote.model.a.a(paramca, paramInt1, paramCharSequence, paramInt2, paramHashMap);
       if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE)) {
-        Log.d("MicroMsg.msgquote.PluginMsgQuote", "content:%s MsgQuoteItem:%s", new Object[] { Util.secPrint(paramString2), localb.izy });
+        Log.d("MicroMsg.msgquote.PluginMsgQuote", "content:%s MsgQuoteItem:%s", new Object[] { Util.secPrint(paramString2), localb.loR });
       }
-      paramString1 = w.a.aSz().a(localb, "", "", paramString1, "", null);
+      paramString1 = w.a.bbx().a(localb, "", "", paramString1, "", null);
       if (paramString1 != null)
       {
         paramCharSequence = new com.tencent.mm.plugin.msgquote.a.b();
         paramCharSequence.field_msgId = ((Long)paramString1.second).longValue();
         paramCharSequence.field_quotedMsgId = paramca.field_msgId;
         paramCharSequence.field_quotedMsgSvrId = paramca.field_msgSvrId;
-        boolean bool = ((a)com.tencent.mm.kernel.g.ah(a.class)).getMsgQuoteStorage().b(paramCharSequence);
+        boolean bool = ((a)h.ag(a.class)).getMsgQuoteStorage().b(paramCharSequence);
         Log.i("MicroMsg.msgquote.PluginMsgQuote", "sendQuoteMsg result:%s msgId:%s result:%s", new Object[] { paramString1.first, paramString1.second, Boolean.valueOf(bool) });
         AppMethodBeat.o(88787);
         return;
@@ -203,7 +203,7 @@ public class PluginMsgQuote
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.msgquote.PluginMsgQuote
  * JD-Core Version:    0.7.0.1
  */

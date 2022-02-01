@@ -15,8 +15,8 @@ public final class ab
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, float paramFloat)
   {
     AppMethodBeat.i(144956);
-    paramd.kZm.setStrokeWidth(paramFloat);
-    paramd.kZl.setStrokeWidth(paramFloat);
+    paramd.nTx.setStrokeWidth(paramFloat);
+    paramd.nTw.setStrokeWidth(paramFloat);
     AppMethodBeat.o(144956);
     return true;
   }
@@ -30,7 +30,7 @@ public final class ab
       AppMethodBeat.o(144957);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas.kZO);
+    boolean bool = a(paramd, paramCanvas.nTZ);
     AppMethodBeat.o(144957);
     return bool;
   }
@@ -48,7 +48,7 @@ public final class ab
     return bool;
   }
   
-  public final BaseDrawActionArg bzj()
+  public final BaseDrawActionArg bKy()
   {
     AppMethodBeat.i(144954);
     SetLineWidthActionArg localSetLineWidthActionArg = new SetLineWidthActionArg();
@@ -63,7 +63,7 @@ public final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.ab
  * JD-Core Version:    0.7.0.1
  */

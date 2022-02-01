@@ -1,16 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 
+import com.tencent.mm.plugin.appbrand.g;
+
 public abstract class a
-  extends com.tencent.mm.plugin.appbrand.jsapi.d<com.tencent.mm.plugin.appbrand.d>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<g>
 {
-  protected c bGm()
+  protected c bRX()
   {
-    return j.meZ;
+    return j.pcV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.a
  * JD-Core Version:    0.7.0.1
  */

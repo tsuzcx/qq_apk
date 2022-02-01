@@ -5,20 +5,20 @@ import java.util.Collection;
 import kotlin.g.a.a;
 import kotlin.g.b.q;
 import kotlin.l;
-import kotlin.l.m;
+import kotlin.l.r;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "Lkotlin/reflect/KProperty1;", "Lcom/tencent/mm/plugin/handoff/model/HandOffURL;", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlin/reflect/KProperty1;", "Lcom/tencent/mm/plugin/handoff/model/HandOffURL;", "invoke"})
 final class HandOffURL$c
   extends q
-  implements a<Collection<? extends m<HandOffURL, ?>>>
+  implements a<Collection<? extends r<HandOffURL, ?>>>
 {
-  public static final c yhJ;
+  public static final c DrL;
   
   static
   {
-    AppMethodBeat.i(238061);
-    yhJ = new c();
-    AppMethodBeat.o(238061);
+    AppMethodBeat.i(193104);
+    DrL = new c();
+    AppMethodBeat.o(193104);
   }
   
   HandOffURL$c()
@@ -28,7 +28,7 @@ final class HandOffURL$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.handoff.model.HandOffURL.c
  * JD-Core Version:    0.7.0.1
  */

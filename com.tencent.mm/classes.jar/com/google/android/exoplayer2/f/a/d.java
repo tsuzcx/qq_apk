@@ -9,88 +9,88 @@ import java.util.PriorityQueue;
 abstract class d
   implements com.google.android.exoplayer2.f.e
 {
-  private final LinkedList<h> bBA = new LinkedList();
-  final LinkedList<i> bBB;
-  private final PriorityQueue<h> bBC;
-  private h bBD;
-  private long buZ;
+  private long beB;
+  private final LinkedList<h> blc = new LinkedList();
+  final LinkedList<i> bld;
+  private final PriorityQueue<h> ble;
+  private h blf;
   
   public d()
   {
     int i = 0;
     while (i < 10)
     {
-      this.bBA.add(new h());
+      this.blc.add(new h());
       i += 1;
     }
-    this.bBB = new LinkedList();
+    this.bld = new LinkedList();
     i = j;
     while (i < 2)
     {
-      this.bBB.add(new e(this));
+      this.bld.add(new e(this));
       i += 1;
     }
-    this.bBC = new PriorityQueue();
+    this.ble = new PriorityQueue();
   }
   
   private void c(h paramh)
   {
     paramh.clear();
-    this.bBA.add(paramh);
+    this.blc.add(paramh);
   }
   
   protected abstract void a(h paramh);
   
-  public void ah(long paramLong)
+  public void ak(long paramLong)
   {
-    this.buZ = paramLong;
+    this.beB = paramLong;
   }
   
   public void b(h paramh)
   {
     boolean bool;
-    if (paramh == this.bBD)
+    if (paramh == this.blf)
     {
       bool = true;
       a.checkArgument(bool);
-      if (!paramh.uc()) {
+      if (!paramh.rU()) {
         break label37;
       }
       c(paramh);
     }
     for (;;)
     {
-      this.bBD = null;
+      this.blf = null;
       return;
       bool = false;
       break;
       label37:
-      this.bBC.add(paramh);
+      this.ble.add(paramh);
     }
   }
   
   public void flush()
   {
-    this.buZ = 0L;
-    while (!this.bBC.isEmpty()) {
-      c((h)this.bBC.poll());
+    this.beB = 0L;
+    while (!this.ble.isEmpty()) {
+      c((h)this.ble.poll());
     }
-    if (this.bBD != null)
+    if (this.blf != null)
     {
-      c(this.bBD);
-      this.bBD = null;
+      c(this.blf);
+      this.blf = null;
     }
   }
   
   public void release() {}
   
-  protected abstract boolean we();
+  protected abstract boolean ue();
   
-  protected abstract com.google.android.exoplayer2.f.d wf();
+  protected abstract com.google.android.exoplayer2.f.d uf();
   
-  public i wi()
+  public i ui()
   {
-    if (this.bBB.isEmpty()) {
+    if (this.bld.isEmpty()) {
       return null;
     }
     h localh;
@@ -100,46 +100,46 @@ abstract class d
       do
       {
         c(localh);
-        if ((this.bBC.isEmpty()) || (((h)this.bBC.peek()).timeUs > this.buZ)) {
+        if ((this.ble.isEmpty()) || (((h)this.ble.peek()).timeUs > this.beB)) {
           break;
         }
-        localh = (h)this.bBC.poll();
-        if (localh.ud())
+        localh = (h)this.ble.poll();
+        if (localh.rV())
         {
-          localObject = (i)this.bBB.pollFirst();
-          ((i)localObject).dK(4);
+          localObject = (i)this.bld.pollFirst();
+          ((i)localObject).dY(4);
           c(localh);
           return localObject;
         }
         a(localh);
-      } while (!we());
-      localObject = wf();
-    } while (localh.uc());
-    i locali = (i)this.bBB.pollFirst();
+      } while (!ue());
+      localObject = uf();
+    } while (localh.rU());
+    i locali = (i)this.bld.pollFirst();
     locali.a(localh.timeUs, (com.google.android.exoplayer2.f.d)localObject, 9223372036854775807L);
     c(localh);
     return locali;
     return null;
   }
   
-  public h wj()
+  public h uj()
   {
-    if (this.bBD == null) {}
+    if (this.blf == null) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      if (!this.bBA.isEmpty()) {
+      if (!this.blc.isEmpty()) {
         break;
       }
       return null;
     }
-    this.bBD = ((h)this.bBA.pollFirst());
-    return this.bBD;
+    this.blf = ((h)this.blc.pollFirst());
+    return this.blf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.a.d
  * JD-Core Version:    0.7.0.1
  */

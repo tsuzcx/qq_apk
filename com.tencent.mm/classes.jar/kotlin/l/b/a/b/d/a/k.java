@@ -11,26 +11,26 @@ public abstract interface k
   public static final class a
     implements k
   {
-    public static final a Tpc;
+    public static final a aaRW;
     
     static
     {
       AppMethodBeat.i(57586);
-      Tpc = new a();
+      aaRW = new a();
       AppMethodBeat.o(57586);
     }
     
     public final void a(d paramd)
     {
       AppMethodBeat.i(57585);
-      p.h(paramd, "classDescriptor");
+      p.k(paramd, "classDescriptor");
       AppMethodBeat.o(57585);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.k
  * JD-Core Version:    0.7.0.1
  */

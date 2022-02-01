@@ -1,42 +1,42 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.e;
 
 public final class a$i
   extends e
 {
-  public a.aq[] RDD = a.aq.hjf();
+  public long DPJ = 0L;
+  public a.ap[] Zff = a.ap.ikP();
   public String groupId = "";
   public int roomId = 0;
   public long timestamp = 0L;
-  public long ypH = 0L;
   
   public a$i()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int j = super.Ig() + b.bu(1, this.roomId) + b.r(2, this.ypH);
+    int j = super.JG() + b.bM(1, this.roomId) + b.p(2, this.DPJ);
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.f(3, this.groupId);
+      i = j + b.g(3, this.groupId);
     }
     j = i;
-    if (this.RDD != null)
+    if (this.Zff != null)
     {
       j = i;
-      if (this.RDD.length > 0)
+      if (this.Zff.length > 0)
       {
         j = 0;
-        while (j < this.RDD.length)
+        while (j < this.Zff.length)
         {
-          a.aq localaq = this.RDD[j];
+          a.ap localap = this.Zff[j];
           int k = i;
-          if (localaq != null) {
-            k = i + b.b(4, localaq);
+          if (localap != null) {
+            k = i + b.b(4, localap);
           }
           j += 1;
           i = k;
@@ -46,26 +46,26 @@ public final class a$i
     }
     i = j;
     if (this.timestamp != 0L) {
-      i = j + b.p(5, this.timestamp);
+      i = j + b.q(5, this.timestamp);
     }
     return i;
   }
   
   public final void a(b paramb)
   {
-    paramb.bs(1, this.roomId);
-    paramb.q(2, this.ypH);
+    paramb.bJ(1, this.roomId);
+    paramb.r(2, this.DPJ);
     if (!this.groupId.equals("")) {
-      paramb.e(3, this.groupId);
+      paramb.f(3, this.groupId);
     }
-    if ((this.RDD != null) && (this.RDD.length > 0))
+    if ((this.Zff != null) && (this.Zff.length > 0))
     {
       int i = 0;
-      while (i < this.RDD.length)
+      while (i < this.Zff.length)
       {
-        a.aq localaq = this.RDD[i];
-        if (localaq != null) {
-          paramb.a(4, localaq);
+        a.ap localap = this.Zff[i];
+        if (localap != null) {
+          paramb.a(4, localap);
         }
         i += 1;
       }

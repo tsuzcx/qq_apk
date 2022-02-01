@@ -3,8 +3,8 @@ package com.google.android.gms.common.api.internal;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Looper;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import androidx.fragment.app.FragmentActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.GoogleApiAvailabilityLight;
@@ -831,16 +831,16 @@ public final class zzav
   
   public final void stopAutoManage(FragmentActivity paramFragmentActivity)
   {
-    AppMethodBeat.i(11273);
+    AppMethodBeat.i(257054);
     paramFragmentActivity = new LifecycleActivity(paramFragmentActivity);
     if (this.zzde >= 0)
     {
       zzi.zza(paramFragmentActivity).zzc(this.zzde);
-      AppMethodBeat.o(11273);
+      AppMethodBeat.o(257054);
       return;
     }
     paramFragmentActivity = new IllegalStateException("Called stopAutoManage but automatic lifecycle management is not enabled.");
-    AppMethodBeat.o(11273);
+    AppMethodBeat.o(257054);
     throw paramFragmentActivity;
   }
   
@@ -1013,7 +1013,7 @@ public final class zzav
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzav
  * JD-Core Version:    0.7.0.1
  */

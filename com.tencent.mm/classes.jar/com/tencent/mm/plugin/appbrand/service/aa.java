@@ -1,65 +1,70 @@
 package com.tencent.mm.plugin.appbrand.service;
 
+import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ac.d;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.m.g;
+import com.tencent.mm.plugin.appbrand.t;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.stubs.logger.Log;
+import java.net.URL;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/service/WXNativeInjector;", "", "()V", "WXNATIVE", "", "getWXNATIVE", "()Ljava/lang/String;", "WXNATIVEFILE", "getWXNATIVEFILE", "enableWxNative", "", "component", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "getWXNativeJSRet", "getWXNativeJSScript", "getWXNativeJSScriptName", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/service/WXNativeInjector;", "", "()V", "TAG", "", "WX_NATIVE_JS", "getWXNativeJSScript", "injectWxNativeForContext", "", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "context", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJSContext;", "isWxNativeEnabled", "", "plugin-appbrand-integration_release"})
 public final class aa
 {
-  private static final String nMW = "WxNative";
-  private static final String nMX = "wxNative.js";
-  public static final aa nMY;
+  public static final aa qPr;
   
   static
   {
     AppMethodBeat.i(51061);
-    nMY = new aa();
-    nMW = "WxNative";
-    nMX = "wxNative.js";
+    qPr = new aa();
     AppMethodBeat.o(51061);
   }
   
-  public static String bVu()
+  public static final void a(c paramc, final g paramg)
   {
-    return nMW;
-  }
-  
-  public static String bVv()
-  {
-    AppMethodBeat.i(51060);
-    String str = d.afA(nMX);
-    p.g(str, "AppBrandIOUtil.getAssetAsString(WXNATIVEFILE)");
-    AppMethodBeat.o(51060);
-    return str;
-  }
-  
-  public static String bVw()
-  {
-    return ";injectNativateRet";
-  }
-  
-  public static boolean f(c paramc)
-  {
-    AppMethodBeat.i(51059);
-    p.h(paramc, "component");
-    paramc = paramc.getRuntime();
-    p.g(paramc, "component.runtime");
-    if ((paramc.bsr()) || (BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED))
+    AppMethodBeat.i(283069);
+    p.k(paramc, "$this$injectWxNativeForContext");
+    p.k(paramg, "context");
+    if (!g(paramc))
     {
-      AppMethodBeat.o(51059);
+      AppMethodBeat.o(283069);
+      return;
+    }
+    Log.i("MicroMsg.AppBrand.WXNativeInjector", "evaluate wxNative.js start. appId:" + paramc.getAppId() + ", contextId:" + paramg.bYT());
+    final long l = Util.currentTicks();
+    paramg.a(new URL(paramc.Rs() + "wxNative.js"), d.anc("wxNative.js") + "\n;(function() { return injectNativateRet; })()", (ValueCallback)new a(paramc, paramg, l));
+    AppMethodBeat.o(283069);
+  }
+  
+  public static final boolean g(c paramc)
+  {
+    AppMethodBeat.i(283070);
+    p.k(paramc, "$this$isWxNativeEnabled");
+    paramc = paramc.getRuntime();
+    p.j(paramc, "runtime");
+    if ((paramc.bDl()) || (BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED))
+    {
+      AppMethodBeat.o(283070);
       return true;
     }
-    AppMethodBeat.o(51059);
+    AppMethodBeat.o(283070);
     return false;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "value", "", "onReceiveValue"})
+  static final class a<T>
+    implements ValueCallback<String>
+  {
+    a(c paramc, g paramg, long paramLong) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.service.aa
  * JD-Core Version:    0.7.0.1
  */

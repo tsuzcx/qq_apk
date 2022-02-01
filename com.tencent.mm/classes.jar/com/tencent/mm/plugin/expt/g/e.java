@@ -1,12 +1,11 @@
 package com.tencent.mm.plugin.expt.g;
 
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.gw;
+import com.tencent.mm.f.b.a.jb;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.expt.b.e.a;
-import com.tencent.mm.plugin.expt.d.b;
-import com.tencent.mm.plugin.expt.d.d.a.2;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.expt.d.e.a.2;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
@@ -16,28 +15,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.ThreadPoolExecutor;
 import org.apache.commons.b.g;
 
 public final class e
 {
-  private static e sKu;
+  private static e wqs;
   
-  private static MultiProcessMMKV VQ()
-  {
-    AppMethodBeat.i(122392);
-    int i = com.tencent.mm.kernel.a.azs();
-    if (i == 0)
-    {
-      AppMethodBeat.o(122392);
-      return null;
-    }
-    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV(i + "_WxPageFlowMerge");
-    AppMethodBeat.o(122392);
-    return localMultiProcessMMKV;
-  }
-  
-  private void a(b.a parama, gw paramgw)
+  private void a(b.a parama, jb paramjb)
   {
     AppMethodBeat.i(122391);
     if (!MMApplicationContext.isMMProcess())
@@ -52,22 +36,22 @@ public final class e
       AppMethodBeat.o(122391);
       return;
     }
-    MultiProcessMMKV localMultiProcessMMKV = VQ();
+    MultiProcessMMKV localMultiProcessMMKV = aal();
     if (localMultiProcessMMKV == null)
     {
       AppMethodBeat.o(122391);
       return;
     }
     String str = localMultiProcessMMKV.getString(parama.name(), "");
-    str = str + "|" + paramgw.uL(";");
+    str = str + "|" + paramjb.Ai(";");
     long l2 = localMultiProcessMMKV.getLong(parama.name() + "_rpttime", 0L);
-    if (((str.length() >= i) || (Util.secondsToNow(l2) > 3600L)) && (paramgw.erY % 2L == 0L))
+    if (((str.length() >= i) || (Util.secondsToNow(l2) > 3600L)) && (paramjb.goe % 2L == 0L))
     {
       localMultiProcessMMKV.putLong(parama.name() + "_rpttime", Util.nowSecond());
       localMultiProcessMMKV.putString(parama.name(), "");
-      h.CyF.kvStat(16562, str);
-      if (parama == b.a.rUj) {
-        arh(str);
+      com.tencent.mm.plugin.report.service.h.IzE.kvStat(16562, str);
+      if (parama == b.a.vAT) {
+        azi(str);
       }
     }
     for (;;)
@@ -79,7 +63,21 @@ public final class e
     }
   }
   
-  private void arh(final String paramString)
+  private static MultiProcessMMKV aal()
+  {
+    AppMethodBeat.i(122392);
+    int i = com.tencent.mm.kernel.b.aGP();
+    if (i == 0)
+    {
+      AppMethodBeat.o(122392);
+      return null;
+    }
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV(i + "_WxPageFlowMerge");
+    AppMethodBeat.o(122392);
+    return localMultiProcessMMKV;
+  }
+  
+  private void azi(final String paramString)
   {
     AppMethodBeat.i(122393);
     ThreadPool.post(new Runnable()
@@ -102,8 +100,8 @@ public final class e
             localObject4 = localObject3[i];
             if (!Util.isNullOrNil((String)localObject4))
             {
-              localObject4 = new gw(((String)localObject4).replace(';', ','));
-              if ((((gw)localObject4).eHw > 0L) && (((gw)localObject4).erY > 0L)) {
+              localObject4 = new jb(((String)localObject4).replace(';', ','));
+              if ((((jb)localObject4).gFX > 0L) && (((jb)localObject4).goe > 0L)) {
                 ((List)localObject2).add(localObject4);
               }
             }
@@ -135,25 +133,25 @@ public final class e
                 Log.printErrStackTrace("MicroMsg.MMPageReporter", localException1, "reportWeixinAppTime error", new Object[0]);
                 continue;
                 l1 = System.currentTimeMillis();
-                ((com.tencent.mm.plugin.expt.d.d.a)localObject2).sxy.execute(new a.2((com.tencent.mm.plugin.expt.d.d.a)localObject2, l1, localException1));
+                com.tencent.e.h.ZvG.be(new a.2((com.tencent.mm.plugin.expt.d.e.a)localObject2, l1, localException1));
                 continue;
               }
               try
               {
-                localObject4 = (gw)((List)localObject2).get(j);
+                localObject4 = (jb)((List)localObject2).get(j);
                 if (j + 1 < k) {
-                  localObject1 = (gw)((List)localObject2).get(j + 1);
+                  localObject1 = (jb)((List)localObject2).get(j + 1);
                 }
                 if ((localObject4 == null) || (localObject1 == null)) {
-                  break label678;
+                  break label679;
                 }
-                if ((((gw)localObject4).erY != 7L) || (((gw)localObject1).erY != 8L) || (((gw)localObject4).eHw >= ((gw)localObject1).eHw) || (((gw)localObject4).euv != ((gw)localObject1).euv)) {
+                if ((((jb)localObject4).goe != 7L) || (((jb)localObject1).goe != 8L) || (((jb)localObject4).gFX >= ((jb)localObject1).gFX) || (((jb)localObject4).gqB != ((jb)localObject1).gqB)) {
                   continue;
                 }
                 if (l1 <= 0L) {
-                  break label681;
+                  break label682;
                 }
-                l1 = ((gw)localObject4).eHw - l1;
+                l1 = ((jb)localObject4).gFX - l1;
               }
               catch (Exception localException2)
               {
@@ -162,15 +160,15 @@ public final class e
                 l1 = 0L;
                 continue;
               }
-              ((StringBuffer)localObject3).append(String.format("{\"tbe\":%d.\"ten\":%d.\"in\":%d.\"inbg\":%d}", new Object[] { Long.valueOf(((gw)localObject4).eHw), Long.valueOf(((gw)localObject1).eHw), Long.valueOf(((gw)localObject1).eHw - ((gw)localObject4).eHw), Long.valueOf(l1) })).append(";");
-              l1 = ((gw)localObject1).eHw;
+              ((StringBuffer)localObject3).append(String.format("{\"tbe\":%d.\"ten\":%d.\"in\":%d.\"inbg\":%d}", new Object[] { Long.valueOf(((jb)localObject4).gFX), Long.valueOf(((jb)localObject1).gFX), Long.valueOf(((jb)localObject1).gFX - ((jb)localObject4).gFX), Long.valueOf(l1) })).append(";");
+              l1 = ((jb)localObject1).gFX;
               i += 1;
               j += 2;
               continue;
-              if (((gw)localObject4).erY != 8L) {
-                break label678;
+              if (((jb)localObject4).goe != 8L) {
+                break label679;
               }
-              l1 = ((gw)localObject4).eHw;
+              l1 = ((jb)localObject4).gFX;
               j += 1;
             }
           }
@@ -179,20 +177,20 @@ public final class e
           {
             localObject2 = ((String)localObject3).replace(".", ",").replace(";", ",");
             localObject1 = localObject2;
-            if (g.equals(((String)localObject2).substring(((String)localObject2).length() - 1), ",")) {
+            if (g.oC(((String)localObject2).substring(((String)localObject2).length() - 1), ",")) {
               localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
             }
             localObject1 = "[" + (String)localObject1 + "]";
-            localObject2 = com.tencent.mm.plugin.expt.d.a.cMI().sxs;
-            if (b.cML())
+            localObject2 = com.tencent.mm.plugin.expt.d.a.dbw().wcY;
+            if (com.tencent.mm.plugin.expt.d.b.dby())
             {
-              if (g.eP((String)localObject1)) {
+              if (g.fK((String)localObject1)) {
                 Log.e("EdgeComputingDataSourceService", "[EdgeComputingDataSourceService] sendForeBack data isEmpty!");
               }
             }
             else
             {
-              h.CyF.a(16563, new Object[] { localObject3, Long.valueOf(Util.ticksToNow(l2)), Integer.valueOf(i) });
+              com.tencent.mm.plugin.report.service.h.IzE.a(16563, new Object[] { localObject3, Long.valueOf(Util.ticksToNow(l2)), Integer.valueOf(i) });
               Log.i("MicroMsg.MMPageReporter", "reportWeixinAppTime [%s]", new Object[] { localObject3 });
             }
           }
@@ -211,45 +209,45 @@ public final class e
     AppMethodBeat.o(122393);
   }
   
-  public static e cRy()
+  public static e dgt()
   {
     AppMethodBeat.i(122389);
-    if (sKu == null) {
-      sKu = new e();
+    if (wqs == null) {
+      wqs = new e();
     }
-    e locale = sKu;
+    e locale = wqs;
     AppMethodBeat.o(122389);
     return locale;
   }
   
-  public final void a(gw paramgw)
+  public final void a(jb paramjb)
   {
     AppMethodBeat.i(122390);
-    if (paramgw == null)
+    if (paramjb == null)
     {
       AppMethodBeat.o(122390);
       return;
     }
-    int i = (int)paramgw.erY;
-    if ((i == e.a.sxa.value) || (i == e.a.sxb.value))
+    int i = (int)paramjb.goe;
+    if ((i == e.a.wcC.value) || (i == e.a.wcD.value))
     {
-      a(b.a.rUh, paramgw);
-      if (a.cRq()) {
-        paramgw.bfK();
+      a(b.a.vAR, paramjb);
+      if (a.dgl()) {
+        paramjb.bpa();
       }
     }
-    if ((i == e.a.sxc.value) || (i == e.a.sxd.value))
+    if ((i == e.a.wcE.value) || (i == e.a.wcF.value))
     {
-      a(b.a.rUi, paramgw);
-      if (a.cRr()) {
-        paramgw.bfK();
+      a(b.a.vAS, paramjb);
+      if (a.dgm()) {
+        paramjb.bpa();
       }
     }
-    if (((i == e.a.sxg.value) || (i == e.a.sxh.value)) && (com.tencent.mm.plugin.expt.hellhound.a.cNo()) && (com.tencent.mm.plugin.expt.hellhound.a.cNp()))
+    if (((i == e.a.wcI.value) || (i == e.a.wcJ.value)) && (com.tencent.mm.plugin.expt.hellhound.a.dcg()) && (com.tencent.mm.plugin.expt.hellhound.a.dch()))
     {
-      a(b.a.rUj, paramgw);
-      if (a.cRs()) {
-        paramgw.bfK();
+      a(b.a.vAT, paramjb);
+      if (a.dgn()) {
+        paramjb.bpa();
       }
     }
     AppMethodBeat.o(122390);
@@ -257,7 +255,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.g.e
  * JD-Core Version:    0.7.0.1
  */

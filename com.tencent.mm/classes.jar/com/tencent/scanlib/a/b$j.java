@@ -6,11 +6,11 @@ import com.tencent.stubs.logger.Log;
 public final class b$j
   extends b.e
 {
-  private f ROm;
+  private f ZqS;
   
   public b$j(f paramf)
   {
-    this.ROm = paramf;
+    this.ZqS = paramf;
   }
   
   private Void call()
@@ -18,10 +18,10 @@ public final class b$j
     AppMethodBeat.i(174590);
     try
     {
-      if (this.ROm.dEO())
+      if (this.ZqS.egx())
       {
         Log.i("CameraTask.DefaultStopPreviewTask", "stop preview");
-        this.ROm.stopPreview();
+        this.ZqS.TL();
       }
       AppMethodBeat.o(174590);
       return null;
@@ -37,7 +37,7 @@ public final class b$j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.scanlib.a.b.j
  * JD-Core Version:    0.7.0.1
  */

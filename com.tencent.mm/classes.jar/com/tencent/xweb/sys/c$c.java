@@ -8,20 +8,20 @@ import com.tencent.xweb.x.a;
 public final class c$c
   extends x.a
 {
-  public WebChromeClient.FileChooserParams SDY;
+  public WebChromeClient.FileChooserParams aafj;
   
   public c$c(WebChromeClient.FileChooserParams paramFileChooserParams)
   {
-    this.SDY = paramFileChooserParams;
+    this.aafj = paramFileChooserParams;
   }
   
   @TargetApi(21)
   public final String[] getAcceptTypes()
   {
     AppMethodBeat.i(153660);
-    if (this.SDY != null)
+    if (this.aafj != null)
     {
-      String[] arrayOfString = this.SDY.getAcceptTypes();
+      String[] arrayOfString = this.aafj.getAcceptTypes();
       AppMethodBeat.o(153660);
       return arrayOfString;
     }
@@ -33,9 +33,9 @@ public final class c$c
   public final int getMode()
   {
     AppMethodBeat.i(153659);
-    if (this.SDY != null)
+    if (this.aafj != null)
     {
-      int i = this.SDY.getMode();
+      int i = this.aafj.getMode();
       AppMethodBeat.o(153659);
       return i;
     }
@@ -47,9 +47,9 @@ public final class c$c
   public final boolean isCaptureEnabled()
   {
     AppMethodBeat.i(153661);
-    if (this.SDY != null)
+    if (this.aafj != null)
     {
-      boolean bool = this.SDY.isCaptureEnabled();
+      boolean bool = this.aafj.isCaptureEnabled();
       AppMethodBeat.o(153661);
       return bool;
     }
@@ -59,7 +59,7 @@ public final class c$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.sys.c.c
  * JD-Core Version:    0.7.0.1
  */

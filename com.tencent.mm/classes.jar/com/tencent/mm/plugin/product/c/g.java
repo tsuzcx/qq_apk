@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.product.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
+  public String city;
   public String country;
-  public String fuJ;
-  public String fuK;
-  public String iUO;
+  public String lLg;
+  public String province;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -17,16 +17,16 @@ public final class g
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.country != null) {
-        paramVarArgs.e(1, this.country);
+        paramVarArgs.f(1, this.country);
       }
-      if (this.fuJ != null) {
-        paramVarArgs.e(2, this.fuJ);
+      if (this.province != null) {
+        paramVarArgs.f(2, this.province);
       }
-      if (this.fuK != null) {
-        paramVarArgs.e(3, this.fuK);
+      if (this.city != null) {
+        paramVarArgs.f(3, this.city);
       }
-      if (this.iUO != null) {
-        paramVarArgs.e(4, this.iUO);
+      if (this.lLg != null) {
+        paramVarArgs.f(4, this.lLg);
       }
       AppMethodBeat.o(91273);
       return 0;
@@ -37,28 +37,28 @@ public final class g
       }
     }
     label394:
-    for (int i = g.a.a.b.b.a.f(1, this.country) + 0;; i = 0)
+    for (int i = g.a.a.b.b.a.g(1, this.country) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.fuJ != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.fuJ);
+      if (this.province != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.province);
       }
       i = paramInt;
-      if (this.fuK != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.fuK);
+      if (this.city != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.city);
       }
       paramInt = i;
-      if (this.iUO != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.iUO);
+      if (this.lLg != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.lLg);
       }
       AppMethodBeat.o(91273);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         AppMethodBeat.o(91273);
@@ -74,19 +74,19 @@ public final class g
           AppMethodBeat.o(91273);
           return -1;
         case 1: 
-          localg.country = locala.UbS.readString();
+          localg.country = locala.abFh.readString();
           AppMethodBeat.o(91273);
           return 0;
         case 2: 
-          localg.fuJ = locala.UbS.readString();
+          localg.province = locala.abFh.readString();
           AppMethodBeat.o(91273);
           return 0;
         case 3: 
-          localg.fuK = locala.UbS.readString();
+          localg.city = locala.abFh.readString();
           AppMethodBeat.o(91273);
           return 0;
         }
-        localg.iUO = locala.UbS.readString();
+        localg.lLg = locala.abFh.readString();
         AppMethodBeat.o(91273);
         return 0;
       }

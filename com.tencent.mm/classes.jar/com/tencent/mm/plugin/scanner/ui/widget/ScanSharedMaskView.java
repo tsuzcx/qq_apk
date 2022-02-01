@@ -15,54 +15,58 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.t;
 import com.tencent.mm.plugin.scanner.api.BaseScanRequest;
+import com.tencent.mm.plugin.scanner.l.c;
+import com.tencent.mm.plugin.scanner.l.f;
+import com.tencent.mm.plugin.scanner.l.g;
+import com.tencent.mm.plugin.scanner.l.i;
 import com.tencent.mm.plugin.scanner.ui.ScannerFlashSwitcher;
-import com.tencent.mm.plugin.scanner.util.l.b;
 import com.tencent.mm.plugin.scanner.util.m;
+import com.tencent.mm.plugin.scanner.util.m.b;
+import com.tencent.mm.plugin.scanner.util.n;
 import com.tencent.mm.plugin.scanner.util.r;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import kotlin.g.b.p;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/scanner/ui/widget/IScanSharedMaskView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "backgroundView", "Landroid/view/TextureView;", "blurBitmap", "Landroid/graphics/Bitmap;", "blurMaskView", "Landroid/widget/ImageView;", "contentLayout", "currentNetworkAvailable", "", "currentTab", "darkCornerMask", "flashSwitcher", "Lcom/tencent/mm/plugin/scanner/ui/ScannerFlashSwitcher;", "galleryButton", "Landroid/view/View;", "isFlashShow", "isTitleShowing", "mBottomExtraHeight", "needAnimateBackgroundView", "onFlashSwitcherClickListener", "Landroid/view/View$OnClickListener;", "onGalleryClickListener", "scanRequest", "Lcom/tencent/mm/plugin/scanner/api/BaseScanRequest;", "scanTips", "Landroid/widget/TextView;", "scanTipsWording", "", "scanTitle", "scanToast", "showTitle", "showToast", "titleShowAnimationTask", "Lcom/tencent/mm/plugin/scanner/util/ScanViewShowAnimationTask;", "toastShowAnimationTask", "animateBackgroundView", "", "show", "animationListener", "Landroid/animation/AnimatorListenerAdapter;", "animateShow", "animateShowScanTips", "attachBackgroundView", "textureView", "cancelTitleAnimationTask", "cancelToastAnimationTask", "checkNetwork", "getFlashSwitcherView", "getGalleryButton", "getScanTipsView", "getScanTitleView", "init", "onFlashStatusChanged", "onNetworkChange", "state", "onPreviewReady", "isSwitchTab", "onScanSuccess", "onShowInfoView", "onViewReady", "recycleBlurBitmap", "release", "setAnimateBackgroundView", "needAnimate", "setBottomExtraHeight", "bottomHeight", "setFlashStatus", "setOnFlashSwitcherClickListener", "onClickListener", "setOnGalleryClickListener", "setScanRequest", "request", "setScanTips", "tips", "setScanTitle", "title", "setScanToast", "toast", "setShowTitle", "setShowToast", "showGalleryButton", "showScanTips", "startTitleAnimationTask", "withShowAnimation", "startToastAnimationTask", "updateBackgroundBlurView", "updateTitleAndTips", "updateViewByNetwork", "updateViewLayoutParams", "Companion", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/scanner/ui/widget/IScanSharedMaskView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "backgroundView", "Landroid/view/TextureView;", "blurBitmap", "Landroid/graphics/Bitmap;", "blurMaskView", "Landroid/widget/ImageView;", "contentLayout", "currentNetworkAvailable", "", "currentTab", "darkCornerMask", "flashSwitcher", "Lcom/tencent/mm/plugin/scanner/ui/ScannerFlashSwitcher;", "galleryButton", "Landroid/view/View;", "isFlashShow", "isTitleShowing", "mBottomExtraHeight", "needAnimateBackgroundView", "onFlashSwitcherClickListener", "Landroid/view/View$OnClickListener;", "onGalleryClickListener", "scanRequest", "Lcom/tencent/mm/plugin/scanner/api/BaseScanRequest;", "scanTips", "Landroid/widget/TextView;", "scanTipsWording", "", "scanTitle", "scanToast", "showTitle", "showToast", "titleShowAnimationTask", "Lcom/tencent/mm/plugin/scanner/util/ScanViewShowAnimationTask;", "toastShowAnimationTask", "animateBackgroundView", "", "show", "animationListener", "Landroid/animation/AnimatorListenerAdapter;", "animateShow", "animateShowScanTips", "attachBackgroundView", "textureView", "cancelTitleAnimationTask", "cancelToastAnimationTask", "checkNetwork", "getFlashSwitcherView", "getGalleryButton", "getScanTipsView", "getScanTitleView", "init", "onFlashStatusChanged", "onNetworkChange", "state", "onPreviewReady", "isSwitchTab", "onScanSuccess", "onShowInfoView", "onViewReady", "recycleBlurBitmap", "release", "setAnimateBackgroundView", "needAnimate", "setBottomExtraHeight", "bottomHeight", "setFlashStatus", "setOnFlashSwitcherClickListener", "onClickListener", "setOnGalleryClickListener", "setScanRequest", "request", "setScanTips", "tips", "setScanTitle", "title", "setScanToast", "toast", "setShowTitle", "setShowToast", "showGalleryButton", "showScanTips", "startTitleAnimationTask", "withShowAnimation", "startToastAnimationTask", "updateBackgroundBlurView", "updateTitleAndTips", "updateViewByNetwork", "updateViewLayoutParams", "Companion", "plugin-scan_release"})
 public final class ScanSharedMaskView
   extends RelativeLayout
 {
-  public static final ScanSharedMaskView.a CSS;
-  private Bitmap BQT;
-  private String CAQ;
-  private BaseScanRequest CJD;
-  public ScannerFlashSwitcher CJh;
-  private boolean CJv;
-  public TextView CSA;
-  public TextView CSB;
-  public TextView CSC;
-  private ImageView CSD;
-  public View CSE;
-  private ImageView CSF;
-  public int CSG;
-  public TextureView CSH;
-  private boolean CSI;
-  private View.OnClickListener CSJ;
-  private View.OnClickListener CSK;
-  public com.tencent.mm.plugin.scanner.util.l CSL;
-  private com.tencent.mm.plugin.scanner.util.l CSM;
-  public boolean CSN;
-  public boolean CSO;
-  public int CSP;
-  public boolean CSQ;
-  private boolean CSR;
+  public static final ScanSharedMaskView.a IYk;
+  private Bitmap HNJ;
+  private String IGv;
+  public ScannerFlashSwitcher IOH;
+  private boolean IOW;
+  private BaseScanRequest IPe;
+  public TextView IXS;
+  public TextView IXT;
+  public TextView IXU;
+  private ImageView IXV;
+  public View IXW;
+  private ImageView IXX;
+  public int IXY;
+  public TextureView IXZ;
+  private boolean IYa;
+  private View.OnClickListener IYb;
+  private View.OnClickListener IYc;
+  public m IYd;
+  private m IYe;
+  public boolean IYf;
+  public boolean IYg;
+  public int IYh;
+  public boolean IYi;
+  private boolean IYj;
   public RelativeLayout contentLayout;
   
   static
   {
     AppMethodBeat.i(52465);
-    CSS = new ScanSharedMaskView.a((byte)0);
+    IYk = new ScanSharedMaskView.a((byte)0);
     AppMethodBeat.o(52465);
   }
   
@@ -84,145 +88,145 @@ public final class ScanSharedMaskView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(52464);
-    this.CJv = true;
-    this.CSQ = true;
-    this.CAQ = "";
-    paramContext = LayoutInflater.from(paramContext).inflate(2131495196, (ViewGroup)this);
-    paramAttributeSet = paramContext.findViewById(2131299205);
-    p.g(paramAttributeSet, "view.findViewById(R.id.content_layout)");
+    this.IOW = true;
+    this.IYi = true;
+    this.IGv = "";
+    paramContext = LayoutInflater.from(paramContext).inflate(l.g.IEd, (ViewGroup)this);
+    paramAttributeSet = paramContext.findViewById(l.f.content_layout);
+    p.j(paramAttributeSet, "view.findViewById(R.id.content_layout)");
     this.contentLayout = ((RelativeLayout)paramAttributeSet);
-    paramAttributeSet = paramContext.findViewById(2131307264);
-    p.g(paramAttributeSet, "view.findViewById(R.id.scan_title)");
-    this.CSA = ((TextView)paramAttributeSet);
-    paramAttributeSet = paramContext.findViewById(2131307263);
-    p.g(paramAttributeSet, "view.findViewById(R.id.scan_tip_tv)");
-    this.CSB = ((TextView)paramAttributeSet);
-    paramAttributeSet = paramContext.findViewById(2131307270);
-    p.g(paramAttributeSet, "view.findViewById(R.id.scan_toast_tv)");
-    this.CSC = ((TextView)paramAttributeSet);
-    paramAttributeSet = paramContext.findViewById(2131299406);
-    p.g(paramAttributeSet, "view.findViewById(R.id.dark_corner_mask)");
-    this.CSD = ((ImageView)paramAttributeSet);
-    paramAttributeSet = paramContext.findViewById(2131307278);
-    p.g(paramAttributeSet, "view.findViewById(R.id.scanner_flash_switcher)");
-    this.CJh = ((ScannerFlashSwitcher)paramAttributeSet);
-    paramAttributeSet = paramContext.findViewById(2131307527);
-    p.g(paramAttributeSet, "view.findViewById(R.id.select_from_gallery)");
-    this.CSE = paramAttributeSet;
-    paramContext = paramContext.findViewById(2131297173);
-    p.g(paramContext, "view.findViewById(R.id.background_blur_mask_view)");
-    this.CSF = ((ImageView)paramContext);
-    paramContext = this.CSE;
+    paramAttributeSet = paramContext.findViewById(l.f.IDy);
+    p.j(paramAttributeSet, "view.findViewById(R.id.scan_title)");
+    this.IXS = ((TextView)paramAttributeSet);
+    paramAttributeSet = paramContext.findViewById(l.f.IDx);
+    p.j(paramAttributeSet, "view.findViewById(R.id.scan_tip_tv)");
+    this.IXT = ((TextView)paramAttributeSet);
+    paramAttributeSet = paramContext.findViewById(l.f.IDz);
+    p.j(paramAttributeSet, "view.findViewById(R.id.scan_toast_tv)");
+    this.IXU = ((TextView)paramAttributeSet);
+    paramAttributeSet = paramContext.findViewById(l.f.ICF);
+    p.j(paramAttributeSet, "view.findViewById(R.id.dark_corner_mask)");
+    this.IXV = ((ImageView)paramAttributeSet);
+    paramAttributeSet = paramContext.findViewById(l.f.scanner_flash_switcher);
+    p.j(paramAttributeSet, "view.findViewById(R.id.scanner_flash_switcher)");
+    this.IOH = ((ScannerFlashSwitcher)paramAttributeSet);
+    paramAttributeSet = paramContext.findViewById(l.f.IDD);
+    p.j(paramAttributeSet, "view.findViewById(R.id.select_from_gallery)");
+    this.IXW = paramAttributeSet;
+    paramContext = paramContext.findViewById(l.f.ICv);
+    p.j(paramContext, "view.findViewById(R.id.background_blur_mask_view)");
+    this.IXX = ((ImageView)paramContext);
+    paramContext = this.IXW;
     if (paramContext == null) {
-      p.btv("galleryButton");
+      p.bGy("galleryButton");
     }
     paramContext.setOnClickListener((View.OnClickListener)new ScanSharedMaskView.d(this));
-    paramContext = this.CJh;
+    paramContext = this.IOH;
     if (paramContext == null) {
-      p.btv("flashSwitcher");
+      p.bGy("flashSwitcher");
     }
     paramContext.setOnClickListener((View.OnClickListener)new ScanSharedMaskView.e(this));
-    paramContext = this.CSA;
+    paramContext = this.IXS;
     if (paramContext == null) {
-      p.btv("scanTitle");
+      p.bGy("scanTitle");
     }
-    ao.a((Paint)paramContext.getPaint(), 0.8F);
+    ar.a((Paint)paramContext.getPaint(), 0.8F);
     AppMethodBeat.o(52464);
   }
   
-  private final void eRr()
+  private final void fEs()
   {
-    AppMethodBeat.i(240696);
-    if (this.BQT != null)
+    AppMethodBeat.i(217213);
+    if (this.HNJ != null)
     {
-      Bitmap localBitmap = this.BQT;
+      Bitmap localBitmap = this.HNJ;
       if (localBitmap == null) {
-        p.hyc();
+        p.iCn();
       }
       if (!localBitmap.isRecycled())
       {
-        localBitmap = this.BQT;
+        localBitmap = this.HNJ;
         if (localBitmap == null) {
-          p.hyc();
+          p.iCn();
         }
         localBitmap.recycle();
-        this.BQT = null;
+        this.HNJ = null;
       }
     }
-    AppMethodBeat.o(240696);
+    AppMethodBeat.o(217213);
   }
   
-  private final void ug(boolean paramBoolean)
+  private final void xE(boolean paramBoolean)
   {
     int j = 0;
     int i = 0;
-    AppMethodBeat.i(240692);
-    if ((paramBoolean) && (this.CJD != null))
+    AppMethodBeat.i(217205);
+    if ((paramBoolean) && (this.IPe != null))
     {
-      localView = this.CSE;
+      localView = this.IXW;
       if (localView == null) {
-        p.btv("galleryButton");
+        p.bGy("galleryButton");
       }
-      BaseScanRequest localBaseScanRequest = this.CJD;
+      BaseScanRequest localBaseScanRequest = this.IPe;
       if (localBaseScanRequest == null) {
-        p.hyc();
+        p.iCn();
       }
-      if ((!localBaseScanRequest.CAH) && (paramBoolean)) {}
+      if ((!localBaseScanRequest.IGn) && (paramBoolean)) {}
       for (;;)
       {
         localView.setVisibility(i);
-        AppMethodBeat.o(240692);
+        AppMethodBeat.o(217205);
         return;
         i = 8;
       }
     }
-    View localView = this.CSE;
+    View localView = this.IXW;
     if (localView == null) {
-      p.btv("galleryButton");
+      p.bGy("galleryButton");
     }
     if (paramBoolean) {}
     for (i = j;; i = 8)
     {
       localView.setVisibility(i);
-      AppMethodBeat.o(240692);
+      AppMethodBeat.o(217205);
       return;
     }
   }
   
-  private final void uj(boolean paramBoolean)
+  private final void xH(boolean paramBoolean)
   {
     boolean bool = false;
     float f2 = 1.0F;
     AppMethodBeat.i(170087);
-    Object localObject = this.CSB;
+    Object localObject = this.IXT;
     if (localObject == null) {
-      p.btv("scanTips");
+      p.bGy("scanTips");
     }
     if (((TextView)localObject).getVisibility() == 0) {
       bool = true;
     }
     Log.d("MicroMsg.ScanSharedMaskView", "alvinluo animateScanTips show: %b, visible: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool) });
-    if ((paramBoolean) && (this.CJD != null))
+    if ((paramBoolean) && (this.IPe != null))
     {
-      localObject = this.CJD;
+      localObject = this.IPe;
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
-      if (((BaseScanRequest)localObject).CAF)
+      if (((BaseScanRequest)localObject).IGl)
       {
         AppMethodBeat.o(170087);
         return;
       }
     }
-    localObject = this.CSB;
+    localObject = this.IXT;
     if (localObject == null) {
-      p.btv("scanTips");
+      p.bGy("scanTips");
     }
     if (((TextView)localObject).getVisibility() == 0)
     {
-      localObject = this.CSB;
+      localObject = this.IXT;
       if (localObject == null) {
-        p.btv("scanTips");
+        p.bGy("scanTips");
       }
       if ((((TextView)localObject).getAlpha() == 1.0F) && (paramBoolean))
       {
@@ -230,19 +234,19 @@ public final class ScanSharedMaskView
         return;
       }
     }
-    localObject = this.CSB;
+    localObject = this.IXT;
     if (localObject == null) {
-      p.btv("scanTips");
+      p.bGy("scanTips");
     }
     if ((((TextView)localObject).getVisibility() != 0) && (!paramBoolean))
     {
       AppMethodBeat.o(170087);
       return;
     }
-    uf(true);
-    localObject = this.CSB;
+    xD(true);
+    localObject = this.IXT;
     if (localObject == null) {
-      p.btv("scanTips");
+      p.bGy("scanTips");
     }
     localObject = (View)localObject;
     float f1;
@@ -255,7 +259,7 @@ public final class ScanSharedMaskView
     }
     for (;;)
     {
-      m.a((View)localObject, f1, f2, 200L, (Animator.AnimatorListener)new ScanSharedMaskView.c(this, paramBoolean));
+      n.a((View)localObject, f1, f2, 200L, (Animator.AnimatorListener)new ScanSharedMaskView.c(this, paramBoolean));
       AppMethodBeat.o(170087);
       return;
       f1 = 1.0F;
@@ -265,140 +269,83 @@ public final class ScanSharedMaskView
     }
   }
   
-  public final void WY(int paramInt)
+  public final void adW(int paramInt)
   {
-    AppMethodBeat.i(240690);
+    AppMethodBeat.i(217202);
     TextView localTextView;
-    if (this.CJv)
+    if (this.IOW)
     {
-      ug(true);
-      localTextView = this.CSB;
+      xE(true);
+      localTextView = this.IXT;
       if (localTextView == null) {
-        p.btv("scanTips");
+        p.bGy("scanTips");
       }
-      localTextView.setText((CharSequence)this.CAQ);
-      AppMethodBeat.o(240690);
+      localTextView.setText((CharSequence)this.IGv);
+      AppMethodBeat.o(217202);
       return;
     }
-    if ((r.Xe(paramInt)) || (r.Xf(paramInt)))
+    if ((r.aec(paramInt)) || (r.aed(paramInt)))
     {
-      localTextView = this.CSB;
+      localTextView = this.IXT;
       if (localTextView == null) {
-        p.btv("scanTips");
+        p.bGy("scanTips");
       }
-      localTextView.setText(2131764952);
-      ug(false);
-      AppMethodBeat.o(240690);
+      localTextView.setText(l.i.scan_no_network_tips);
+      xE(false);
+      AppMethodBeat.o(217202);
       return;
     }
-    ug(true);
-    AppMethodBeat.o(240690);
+    xE(true);
+    AppMethodBeat.o(217202);
   }
   
-  public final void eQC()
+  public final void dBp()
   {
-    AppMethodBeat.i(240689);
-    t localt = g.azz();
-    p.g(localt, "MMKernel.getNetSceneQueue()");
-    if (localt.aYS() != 6)
+    AppMethodBeat.i(217201);
+    t localt = com.tencent.mm.kernel.h.aGY();
+    p.j(localt, "MMKernel.getNetSceneQueue()");
+    if (localt.bih() != 6)
     {
-      localt = g.azz();
-      p.g(localt, "MMKernel.getNetSceneQueue()");
-      if (localt.aYS() != 4) {
+      localt = com.tencent.mm.kernel.h.aGY();
+      p.j(localt, "MMKernel.getNetSceneQueue()");
+      if (localt.bih() != 4) {
         break label59;
       }
     }
     label59:
     for (boolean bool = true;; bool = false)
     {
-      this.CJv = bool;
-      AppMethodBeat.o(240689);
+      this.IOW = bool;
+      AppMethodBeat.o(217201);
       return;
     }
-  }
-  
-  public final void eRF()
-  {
-    AppMethodBeat.i(240693);
-    com.tencent.mm.plugin.scanner.util.l locall = this.CSL;
-    if (locall != null)
-    {
-      locall.cancel();
-      AppMethodBeat.o(240693);
-      return;
-    }
-    AppMethodBeat.o(240693);
-  }
-  
-  public final void eRG()
-  {
-    AppMethodBeat.i(240694);
-    com.tencent.mm.plugin.scanner.util.l locall = this.CSM;
-    if (locall != null)
-    {
-      locall.cancel();
-      AppMethodBeat.o(240694);
-      return;
-    }
-    AppMethodBeat.o(240694);
-  }
-  
-  public final void eRH()
-  {
-    AppMethodBeat.i(240695);
-    Log.v("MicroMsg.ScanSharedMaskView", "alvinluo onScanSuccess");
-    Object localObject = this.CSE;
-    if (localObject == null) {
-      p.btv("galleryButton");
-    }
-    m.a((View)localObject, 1.0F, 0.0F, 200L, null);
-    eRG();
-    eRF();
-    localObject = this.CSA;
-    if (localObject == null) {
-      p.btv("scanTitle");
-    }
-    ((TextView)localObject).setVisibility(8);
-    localObject = this.CSC;
-    if (localObject == null) {
-      p.btv("scanToast");
-    }
-    ((TextView)localObject).setVisibility(8);
-    this.CSN = false;
-    this.CSO = false;
-    localObject = this.CJh;
-    if (localObject == null) {
-      p.btv("flashSwitcher");
-    }
-    ((ScannerFlashSwitcher)localObject).setVisibility(8);
-    AppMethodBeat.o(240695);
   }
   
   public final void f(boolean paramBoolean, AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
     float f2 = 1.0F;
-    AppMethodBeat.i(240688);
-    if (this.BQT != null)
+    AppMethodBeat.i(217199);
+    if (this.HNJ != null)
     {
-      localObject = this.BQT;
+      localObject = this.HNJ;
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
       if (!((Bitmap)localObject).isRecycled()) {}
     }
     else
     {
-      paramAnimatorListenerAdapter = this.CSF;
+      paramAnimatorListenerAdapter = this.IXX;
       if (paramAnimatorListenerAdapter == null) {
-        p.btv("blurMaskView");
+        p.bGy("blurMaskView");
       }
       paramAnimatorListenerAdapter.setVisibility(8);
-      AppMethodBeat.o(240688);
+      AppMethodBeat.o(217199);
       return;
     }
-    Object localObject = this.CSF;
+    Object localObject = this.IXX;
     if (localObject == null) {
-      p.btv("blurMaskView");
+      p.bGy("blurMaskView");
     }
     ((ImageView)localObject).setVisibility(0);
     float f1;
@@ -411,17 +358,17 @@ public final class ScanSharedMaskView
     }
     for (;;)
     {
-      localObject = this.CSF;
+      localObject = this.IXX;
       if (localObject == null) {
-        p.btv("blurMaskView");
+        p.bGy("blurMaskView");
       }
       ((ImageView)localObject).setAlpha(f1);
-      localObject = this.CSF;
+      localObject = this.IXX;
       if (localObject == null) {
-        p.btv("blurMaskView");
+        p.bGy("blurMaskView");
       }
-      m.a((View)localObject, f1, f2, 150L, (Animator.AnimatorListener)new ScanSharedMaskView.b(this, paramBoolean, paramAnimatorListenerAdapter));
-      AppMethodBeat.o(240688);
+      n.a((View)localObject, f1, f2, 150L, (Animator.AnimatorListener)new ScanSharedMaskView.b(this, paramBoolean, paramAnimatorListenerAdapter));
+      AppMethodBeat.o(217199);
       return;
       f1 = 1.0F;
       break;
@@ -430,12 +377,69 @@ public final class ScanSharedMaskView
     }
   }
   
+  public final void fEE()
+  {
+    AppMethodBeat.i(217206);
+    m localm = this.IYd;
+    if (localm != null)
+    {
+      localm.cancel();
+      AppMethodBeat.o(217206);
+      return;
+    }
+    AppMethodBeat.o(217206);
+  }
+  
+  public final void fEF()
+  {
+    AppMethodBeat.i(217207);
+    m localm = this.IYe;
+    if (localm != null)
+    {
+      localm.cancel();
+      AppMethodBeat.o(217207);
+      return;
+    }
+    AppMethodBeat.o(217207);
+  }
+  
+  public final void fEG()
+  {
+    AppMethodBeat.i(217209);
+    Log.v("MicroMsg.ScanSharedMaskView", "alvinluo onScanSuccess");
+    Object localObject = this.IXW;
+    if (localObject == null) {
+      p.bGy("galleryButton");
+    }
+    n.a((View)localObject, 1.0F, 0.0F, 200L, null);
+    fEF();
+    fEE();
+    localObject = this.IXS;
+    if (localObject == null) {
+      p.bGy("scanTitle");
+    }
+    ((TextView)localObject).setVisibility(8);
+    localObject = this.IXU;
+    if (localObject == null) {
+      p.bGy("scanToast");
+    }
+    ((TextView)localObject).setVisibility(8);
+    this.IYf = false;
+    this.IYg = false;
+    localObject = this.IOH;
+    if (localObject == null) {
+      p.bGy("flashSwitcher");
+    }
+    ((ScannerFlashSwitcher)localObject).setVisibility(8);
+    AppMethodBeat.o(217209);
+  }
+  
   public final ScannerFlashSwitcher getFlashSwitcherView()
   {
     AppMethodBeat.i(52455);
-    ScannerFlashSwitcher localScannerFlashSwitcher = this.CJh;
+    ScannerFlashSwitcher localScannerFlashSwitcher = this.IOH;
     if (localScannerFlashSwitcher == null) {
-      p.btv("flashSwitcher");
+      p.bGy("flashSwitcher");
     }
     AppMethodBeat.o(52455);
     return localScannerFlashSwitcher;
@@ -444,9 +448,9 @@ public final class ScanSharedMaskView
   public final View getGalleryButton()
   {
     AppMethodBeat.i(52458);
-    View localView = this.CSE;
+    View localView = this.IXW;
     if (localView == null) {
-      p.btv("galleryButton");
+      p.bGy("galleryButton");
     }
     AppMethodBeat.o(52458);
     return localView;
@@ -455,9 +459,9 @@ public final class ScanSharedMaskView
   public final TextView getScanTipsView()
   {
     AppMethodBeat.i(52454);
-    TextView localTextView = this.CSB;
+    TextView localTextView = this.IXT;
     if (localTextView == null) {
-      p.btv("scanTips");
+      p.bGy("scanTips");
     }
     AppMethodBeat.o(52454);
     return localTextView;
@@ -466,9 +470,9 @@ public final class ScanSharedMaskView
   public final TextView getScanTitleView()
   {
     AppMethodBeat.i(52452);
-    TextView localTextView = this.CSA;
+    TextView localTextView = this.IXS;
     if (localTextView == null) {
-      p.btv("scanTitle");
+      p.bGy("scanTitle");
     }
     AppMethodBeat.o(52452);
     return localTextView;
@@ -476,61 +480,61 @@ public final class ScanSharedMaskView
   
   public final void setAnimateBackgroundView(boolean paramBoolean)
   {
-    AppMethodBeat.i(240687);
-    this.CSI = paramBoolean;
-    if ((!this.CSI) || (this.CSH == null))
+    AppMethodBeat.i(217196);
+    this.IYa = paramBoolean;
+    if ((!this.IYa) || (this.IXZ == null))
     {
       Log.e("MicroMsg.ScanSharedMaskView", "updateBackgroundBlurView not need show blurMaskView");
-      ImageView localImageView = this.CSF;
+      ImageView localImageView = this.IXX;
       if (localImageView == null) {
-        p.btv("blurMaskView");
+        p.bGy("blurMaskView");
       }
       localImageView.setVisibility(8);
-      eRr();
-      AppMethodBeat.o(240687);
+      fEs();
+      AppMethodBeat.o(217196);
       return;
     }
-    h.RTc.aX((Runnable)new ScanSharedMaskView.h(this));
-    AppMethodBeat.o(240687);
+    com.tencent.e.h.ZvG.be((Runnable)new ScanSharedMaskView.h(this));
+    AppMethodBeat.o(217196);
   }
   
   public final void setBottomExtraHeight(int paramInt)
   {
-    this.CSP = paramInt;
+    this.IYh = paramInt;
   }
   
   public final void setFlashStatus(boolean paramBoolean)
   {
     AppMethodBeat.i(170085);
     Log.d("MicroMsg.ScanSharedMaskView", "alvinluo setFlashStatus show: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.CSO = paramBoolean;
+    this.IYg = paramBoolean;
     AppMethodBeat.o(170085);
   }
   
   public final void setOnFlashSwitcherClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(52457);
-    p.h(paramOnClickListener, "onClickListener");
-    this.CSK = paramOnClickListener;
+    p.k(paramOnClickListener, "onClickListener");
+    this.IYc = paramOnClickListener;
     AppMethodBeat.o(52457);
   }
   
   public final void setOnGalleryClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(52456);
-    p.h(paramOnClickListener, "onClickListener");
-    this.CSJ = paramOnClickListener;
-    paramOnClickListener = this.CSE;
+    p.k(paramOnClickListener, "onClickListener");
+    this.IYb = paramOnClickListener;
+    paramOnClickListener = this.IXW;
     if (paramOnClickListener == null) {
-      p.btv("galleryButton");
+      p.bGy("galleryButton");
     }
-    paramOnClickListener.setOnClickListener(this.CSJ);
+    paramOnClickListener.setOnClickListener(this.IYb);
     AppMethodBeat.o(52456);
   }
   
   public final void setScanRequest(BaseScanRequest paramBaseScanRequest)
   {
-    this.CJD = paramBaseScanRequest;
+    this.IPe = paramBaseScanRequest;
   }
   
   public final void setScanTips(String paramString)
@@ -539,10 +543,10 @@ public final class ScanSharedMaskView
     if (paramString == null) {}
     for (Object localObject = "";; localObject = paramString)
     {
-      this.CAQ = ((String)localObject);
-      localObject = this.CSB;
+      this.IGv = ((String)localObject);
+      localObject = this.IXT;
       if (localObject == null) {
-        p.btv("scanTips");
+        p.bGy("scanTips");
       }
       ((TextView)localObject).setText((CharSequence)paramString);
       AppMethodBeat.o(52453);
@@ -553,9 +557,9 @@ public final class ScanSharedMaskView
   public final void setScanTitle(String paramString)
   {
     AppMethodBeat.i(52451);
-    TextView localTextView = this.CSA;
+    TextView localTextView = this.IXS;
     if (localTextView == null) {
-      p.btv("scanTitle");
+      p.bGy("scanTitle");
     }
     localTextView.setText((CharSequence)paramString);
     AppMethodBeat.o(52451);
@@ -563,93 +567,71 @@ public final class ScanSharedMaskView
   
   public final void setScanToast(String paramString)
   {
-    AppMethodBeat.i(240686);
-    TextView localTextView = this.CSC;
+    AppMethodBeat.i(217192);
+    TextView localTextView = this.IXU;
     if (localTextView == null) {
-      p.btv("scanToast");
+      p.bGy("scanToast");
     }
     localTextView.setText((CharSequence)paramString);
-    AppMethodBeat.o(240686);
+    AppMethodBeat.o(217192);
   }
   
   public final void setShowTitle(boolean paramBoolean)
   {
-    this.CSQ = paramBoolean;
+    this.IYi = paramBoolean;
   }
   
   public final void setShowToast(boolean paramBoolean)
   {
-    this.CSR = paramBoolean;
+    this.IYj = paramBoolean;
   }
   
-  public final void tY(boolean paramBoolean)
-  {
-    AppMethodBeat.i(52459);
-    Log.v("MicroMsg.ScanSharedMaskView", "alvinluo onPreviewReady isSwitchTab: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (!paramBoolean)
-    {
-      View localView = this.CSE;
-      if (localView == null) {
-        p.btv("galleryButton");
-      }
-      if (localView.getVisibility() == 0)
-      {
-        localView = this.CSE;
-        if (localView == null) {
-          p.btv("galleryButton");
-        }
-        m.a(localView, 0.0F, 1.0F, 200L, null);
-      }
-    }
-    AppMethodBeat.o(52459);
-  }
-  
-  public final void uf(boolean paramBoolean)
+  public final void xD(boolean paramBoolean)
   {
     int j = 0;
     int i = 0;
-    AppMethodBeat.i(240691);
-    if ((paramBoolean) && (this.CJD != null))
+    AppMethodBeat.i(217203);
+    if ((paramBoolean) && (this.IPe != null))
     {
-      localTextView = this.CSB;
+      localTextView = this.IXT;
       if (localTextView == null) {
-        p.btv("scanTips");
+        p.bGy("scanTips");
       }
-      BaseScanRequest localBaseScanRequest = this.CJD;
+      BaseScanRequest localBaseScanRequest = this.IPe;
       if (localBaseScanRequest == null) {
-        p.hyc();
+        p.iCn();
       }
-      if ((!localBaseScanRequest.CAF) && (paramBoolean)) {}
+      if ((!localBaseScanRequest.IGl) && (paramBoolean)) {}
       for (;;)
       {
         localTextView.setVisibility(i);
-        AppMethodBeat.o(240691);
+        AppMethodBeat.o(217203);
         return;
         i = 8;
       }
     }
-    TextView localTextView = this.CSB;
+    TextView localTextView = this.IXT;
     if (localTextView == null) {
-      p.btv("scanTips");
+      p.bGy("scanTips");
     }
     if (paramBoolean) {}
     for (i = j;; i = 8)
     {
       localTextView.setVisibility(i);
-      AppMethodBeat.o(240691);
+      AppMethodBeat.o(217203);
       return;
     }
   }
   
-  public final void uh(boolean paramBoolean)
+  public final void xF(boolean paramBoolean)
   {
     boolean bool = true;
     AppMethodBeat.i(170086);
-    Log.i("MicroMsg.ScanSharedMaskView", "alvinluo onFlashStatusChanged show: %b, isTitleShowing: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.CSN) });
-    if (this.CSO != paramBoolean)
+    Log.i("MicroMsg.ScanSharedMaskView", "alvinluo onFlashStatusChanged show: %b, isTitleShowing: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.IYf) });
+    if (this.IYg != paramBoolean)
     {
-      this.CSO = paramBoolean;
-      if (!this.CSN) {
+      this.IYg = paramBoolean;
+      if (!this.IYf) {
         if (paramBoolean) {
           break label76;
         }
@@ -658,92 +640,114 @@ public final class ScanSharedMaskView
     label76:
     for (paramBoolean = bool;; paramBoolean = false)
     {
-      uj(paramBoolean);
+      xH(paramBoolean);
       AppMethodBeat.o(170086);
       return;
     }
   }
   
-  public final void ui(boolean paramBoolean)
+  public final void xG(boolean paramBoolean)
   {
     AppMethodBeat.i(52460);
     Log.v("MicroMsg.ScanSharedMaskView", "alvinluo animateShow show: %b, alpha: %f", new Object[] { Boolean.valueOf(paramBoolean), Float.valueOf(getAlpha()) });
     if ((paramBoolean) && (getAlpha() == 0.0F))
     {
-      m.a((View)this, 0.0F, 1.0F, 200L, null);
+      n.a((View)this, 0.0F, 1.0F, 200L, null);
       AppMethodBeat.o(52460);
       return;
     }
     if ((!paramBoolean) && (getAlpha() == 1.0F)) {
-      m.a((View)this, 1.0F, 0.0F, 200L, null);
+      n.a((View)this, 1.0F, 0.0F, 200L, null);
     }
     AppMethodBeat.o(52460);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$startTitleAnimationTask$1", "Lcom/tencent/mm/plugin/scanner/util/ScanViewShowAnimationTask$ScanViewAnimationTaskListener;", "onShowAnimationEnd", "", "show", "", "onShowAnimationStart", "onShowTaskEnd", "onShowTaskStart", "withShowAnimation", "plugin-scan_release"})
-  public static final class f
-    implements l.b
+  public final void xw(boolean paramBoolean)
   {
-    public final void eRI()
+    AppMethodBeat.i(52459);
+    Log.v("MicroMsg.ScanSharedMaskView", "alvinluo onPreviewReady isSwitchTab: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (!paramBoolean)
     {
-      AppMethodBeat.i(240680);
-      ScanSharedMaskView.e(this.CST).setShadowLayer(10.0F, 0.0F, 0.0F, this.CST.getResources().getColor(2131099660));
-      AppMethodBeat.o(240680);
+      View localView = this.IXW;
+      if (localView == null) {
+        p.bGy("galleryButton");
+      }
+      if (localView.getVisibility() == 0)
+      {
+        localView = this.IXW;
+        if (localView == null) {
+          p.bGy("galleryButton");
+        }
+        n.a(localView, 0.0F, 1.0F, 200L, null);
+      }
+    }
+    AppMethodBeat.o(52459);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$startTitleAnimationTask$1", "Lcom/tencent/mm/plugin/scanner/util/ScanViewShowAnimationTask$ScanViewAnimationTaskListener;", "onShowAnimationEnd", "", "show", "", "onShowAnimationStart", "onShowTaskEnd", "onShowTaskStart", "withShowAnimation", "plugin-scan_release"})
+  public static final class f
+    implements m.b
+  {
+    public final void fEH()
+    {
+      AppMethodBeat.i(217586);
+      ScanSharedMaskView.e(this.IYl).setShadowLayer(10.0F, 0.0F, 0.0F, this.IYl.getResources().getColor(l.c.BW_0_Alpha_0_2));
+      AppMethodBeat.o(217586);
     }
     
-    public final void eRJ()
+    public final void fEI()
     {
-      AppMethodBeat.i(240681);
-      ScanSharedMaskView.a(this.CST, true);
-      AppMethodBeat.o(240681);
+      AppMethodBeat.i(217588);
+      ScanSharedMaskView.a(this.IYl, true);
+      AppMethodBeat.o(217588);
     }
     
-    public final void eRK()
+    public final void fEJ()
     {
-      AppMethodBeat.i(240682);
-      ScanSharedMaskView.a(this.CST, false);
-      Log.i("MicroMsg.ScanSharedMaskView", "alvinluo onShowTaskEnd isFlashShow: %b, showToast: %b", new Object[] { Boolean.valueOf(ScanSharedMaskView.f(this.CST)), Boolean.valueOf(ScanSharedMaskView.g(this.CST)) });
-      if (ScanSharedMaskView.f(this.CST))
+      AppMethodBeat.i(217591);
+      ScanSharedMaskView.a(this.IYl, false);
+      Log.i("MicroMsg.ScanSharedMaskView", "alvinluo onShowTaskEnd isFlashShow: %b, showToast: %b", new Object[] { Boolean.valueOf(ScanSharedMaskView.f(this.IYl)), Boolean.valueOf(ScanSharedMaskView.g(this.IYl)) });
+      if (ScanSharedMaskView.f(this.IYl))
       {
-        AppMethodBeat.o(240682);
+        AppMethodBeat.o(217591);
         return;
       }
-      if (ScanSharedMaskView.g(this.CST))
+      if (ScanSharedMaskView.g(this.IYl))
       {
-        ScanSharedMaskView.h(this.CST);
-        ScanSharedMaskView.i(this.CST);
-        AppMethodBeat.o(240682);
+        ScanSharedMaskView.h(this.IYl);
+        ScanSharedMaskView.i(this.IYl);
+        AppMethodBeat.o(217591);
         return;
       }
-      ScanSharedMaskView.j(this.CST);
-      AppMethodBeat.o(240682);
+      ScanSharedMaskView.j(this.IYl);
+      AppMethodBeat.o(217591);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$startToastAnimationTask$1", "Lcom/tencent/mm/plugin/scanner/util/ScanViewShowAnimationTask$ScanViewAnimationTaskListener;", "onShowAnimationEnd", "", "show", "", "onShowAnimationStart", "onShowTaskEnd", "onShowTaskStart", "withShowAnimation", "plugin-scan_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$startToastAnimationTask$1", "Lcom/tencent/mm/plugin/scanner/util/ScanViewShowAnimationTask$ScanViewAnimationTaskListener;", "onShowAnimationEnd", "", "show", "", "onShowAnimationStart", "onShowTaskEnd", "onShowTaskStart", "withShowAnimation", "plugin-scan_release"})
   public static final class g
-    implements l.b
+    implements m.b
   {
-    public final void eRI() {}
+    public final void fEH() {}
     
-    public final void eRJ() {}
+    public final void fEI() {}
     
-    public final void eRK()
+    public final void fEJ()
     {
-      AppMethodBeat.i(240683);
-      if (ScanSharedMaskView.f(this.CST))
+      AppMethodBeat.i(218464);
+      if (ScanSharedMaskView.f(this.IYl))
       {
-        AppMethodBeat.o(240683);
+        AppMethodBeat.o(218464);
         return;
       }
-      ScanSharedMaskView.j(this.CST);
-      AppMethodBeat.o(240683);
+      ScanSharedMaskView.j(this.IYl);
+      AppMethodBeat.o(218464);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.widget.ScanSharedMaskView
  * JD-Core Version:    0.7.0.1
  */

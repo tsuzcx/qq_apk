@@ -5,14 +5,16 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.text.format.DateFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bh.e;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.R.c;
+import com.tencent.mm.R.l;
+import com.tencent.mm.bj.e;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.n.f;
-import com.tencent.mm.plugin.voip.b.m;
-import com.tencent.mm.protocal.protobuf.byf;
-import com.tencent.mm.protocal.protobuf.dfe;
-import com.tencent.mm.protocal.protobuf.esq;
-import com.tencent.mm.protocal.protobuf.esr;
+import com.tencent.mm.plugin.voip.c.m;
+import com.tencent.mm.protocal.protobuf.cfz;
+import com.tencent.mm.protocal.protobuf.doy;
+import com.tencent.mm.protocal.protobuf.fdb;
+import com.tencent.mm.protocal.protobuf.fdc;
 import com.tencent.mm.sdk.platformtools.ClipboardHelper;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -34,19 +36,19 @@ import java.util.Locale;
 
 public final class c
 {
-  public static String GU(long paramLong)
+  public static String Oj(long paramLong)
   {
     AppMethodBeat.i(26098);
     Object localObject = MMApplicationContext.getContext();
-    if (GV(paramLong))
+    if (Ok(paramLong))
     {
       localObject = new SimpleDateFormat("HH:mm", Locale.US).format(new Date(paramLong));
       AppMethodBeat.o(26098);
       return localObject;
     }
-    if (GW(paramLong))
+    if (Ol(paramLong))
     {
-      localObject = ((Context)localObject).getString(2131761880);
+      localObject = ((Context)localObject).getString(R.l.eIC);
       AppMethodBeat.o(26098);
       return localObject;
     }
@@ -55,10 +57,10 @@ public final class c
     return localObject;
   }
   
-  private static boolean GV(long paramLong)
+  private static boolean Ok(long paramLong)
   {
     AppMethodBeat.i(26099);
-    if (GX(paramLong) == 0L)
+    if (Om(paramLong) == 0L)
     {
       AppMethodBeat.o(26099);
       return true;
@@ -67,10 +69,10 @@ public final class c
     return false;
   }
   
-  private static boolean GW(long paramLong)
+  private static boolean Ol(long paramLong)
   {
     AppMethodBeat.i(26100);
-    if (GX(paramLong) == -1L)
+    if (Om(paramLong) == -1L)
     {
       AppMethodBeat.o(26100);
       return true;
@@ -79,10 +81,10 @@ public final class c
     return false;
   }
   
-  private static long GX(long paramLong)
+  private static long Om(long paramLong)
   {
     AppMethodBeat.i(26102);
-    long l1 = ebN();
+    long l1 = eKL();
     long l2 = Calendar.getInstance().getTimeInMillis();
     paramLong /= l1;
     l1 = l2 / l1;
@@ -90,13 +92,13 @@ public final class c
     return paramLong - l1;
   }
   
-  public static String GY(long paramLong)
+  public static String On(long paramLong)
   {
     AppMethodBeat.i(26103);
     Object localObject = MMApplicationContext.getContext();
     if (paramLong <= 60.0D)
     {
-      localObject = ((Context)localObject).getString(2131761889, new Object[] { String.valueOf(paramLong) });
+      localObject = ((Context)localObject).getString(R.l.eIH, new Object[] { String.valueOf(paramLong) });
       AppMethodBeat.o(26103);
       return localObject;
     }
@@ -106,12 +108,12 @@ public final class c
     if (d - j > 0.0D) {
       i = j + 1;
     }
-    localObject = ((Context)localObject).getString(2131761888, new Object[] { String.valueOf(i) });
+    localObject = ((Context)localObject).getString(R.l.eIG, new Object[] { String.valueOf(i) });
     AppMethodBeat.o(26103);
     return localObject;
   }
   
-  public static String Pr(int paramInt)
+  public static String VA(int paramInt)
   {
     AppMethodBeat.i(26095);
     Object localObject = MMApplicationContext.getContext();
@@ -121,40 +123,40 @@ public final class c
     case 4: 
     case 5: 
     default: 
-      localObject = ((Context)localObject).getString(2131761943);
+      localObject = ((Context)localObject).getString(R.l.eJu);
       AppMethodBeat.o(26095);
       return localObject;
     case 1: 
-      localObject = ((Context)localObject).getString(2131761943);
+      localObject = ((Context)localObject).getString(R.l.eJu);
       AppMethodBeat.o(26095);
       return localObject;
     case 2: 
-      localObject = ((Context)localObject).getString(2131761943);
+      localObject = ((Context)localObject).getString(R.l.eJu);
       AppMethodBeat.o(26095);
       return localObject;
     case 6: 
-      localObject = ((Context)localObject).getString(2131761939);
+      localObject = ((Context)localObject).getString(R.l.eJq);
       AppMethodBeat.o(26095);
       return localObject;
     }
-    localObject = ((Context)localObject).getString(2131761940);
+    localObject = ((Context)localObject).getString(R.l.eJr);
     AppMethodBeat.o(26095);
     return localObject;
   }
   
-  public static String Ps(int paramInt)
+  public static String VB(int paramInt)
   {
     AppMethodBeat.i(26110);
     Object localObject = MMApplicationContext.getContext();
     if (((paramInt & 0x1) > 0) && ((paramInt & 0x2) <= 0))
     {
-      localObject = ((Context)localObject).getString(2131762010) + " ";
+      localObject = ((Context)localObject).getString(R.l.eKo) + " ";
       AppMethodBeat.o(26110);
       return localObject;
     }
     if ((paramInt & 0x8) > 0)
     {
-      localObject = ((Context)localObject).getString(2131762011) + " ";
+      localObject = ((Context)localObject).getString(R.l.eKp) + " ";
       AppMethodBeat.o(26110);
       return localObject;
     }
@@ -162,7 +164,7 @@ public final class c
     return "";
   }
   
-  private static int aCD(String paramString)
+  private static int aMK(String paramString)
   {
     AppMethodBeat.i(26092);
     try
@@ -190,43 +192,18 @@ public final class c
     return 0;
   }
   
-  public static void aCE(String paramString)
+  public static void aML(String paramString)
   {
     AppMethodBeat.i(26105);
     ClipboardHelper.setText(MMApplicationContext.getContext(), null, paramString);
     AppMethodBeat.o(26105);
   }
   
-  public static esr bc(LinkedList<dfe> paramLinkedList)
-  {
-    AppMethodBeat.i(26091);
-    if ((paramLinkedList == null) || (paramLinkedList.size() <= 0))
-    {
-      AppMethodBeat.o(26091);
-      return null;
-    }
-    esr localesr = new esr();
-    localesr.NpY = paramLinkedList.size();
-    localesr.NpZ = new LinkedList();
-    paramLinkedList = paramLinkedList.iterator();
-    while (paramLinkedList.hasNext())
-    {
-      dfe localdfe = (dfe)paramLinkedList.next();
-      esq localesq = new esq();
-      localesq.NgB = aCD(localdfe.MpA);
-      localesq.MKe = localdfe.MKe;
-      localesq.NgC = localdfe.MpA;
-      localesr.NpZ.add(localesq);
-    }
-    AppMethodBeat.o(26091);
-    return localesr;
-  }
-  
-  public static String bf(Context paramContext, String paramString)
+  public static String br(Context paramContext, String paramString)
   {
     int j = 0;
     AppMethodBeat.i(26097);
-    String[] arrayOfString = paramContext.getResources().getStringArray(2130903095);
+    String[] arrayOfString = paramContext.getResources().getStringArray(R.c.time_month);
     paramContext = new ArrayList();
     paramContext.add("");
     int i = 0;
@@ -256,7 +233,32 @@ public final class c
     }
   }
   
-  public static int ebM()
+  public static fdc bv(LinkedList<doy> paramLinkedList)
+  {
+    AppMethodBeat.i(26091);
+    if ((paramLinkedList == null) || (paramLinkedList.size() <= 0))
+    {
+      AppMethodBeat.o(26091);
+      return null;
+    }
+    fdc localfdc = new fdc();
+    localfdc.UCU = paramLinkedList.size();
+    localfdc.UCV = new LinkedList();
+    paramLinkedList = paramLinkedList.iterator();
+    while (paramLinkedList.hasNext())
+    {
+      doy localdoy = (doy)paramLinkedList.next();
+      fdb localfdb = new fdb();
+      localfdb.Utf = aMK(localdoy.TVX);
+      localfdb.TVY = localdoy.TVY;
+      localfdb.Utg = localdoy.TVX;
+      localfdc.UCV.add(localfdb);
+    }
+    AppMethodBeat.o(26091);
+    return localfdc;
+  }
+  
+  public static int eKK()
   {
     AppMethodBeat.i(26093);
     Context localContext = MMApplicationContext.getContext();
@@ -284,7 +286,7 @@ public final class c
     return 0;
   }
   
-  private static long ebN()
+  private static long eKL()
   {
     AppMethodBeat.i(26101);
     Calendar localCalendar = Calendar.getInstance();
@@ -295,7 +297,7 @@ public final class c
     return l2 - l1;
   }
   
-  public static String ebO()
+  public static String eKM()
   {
     AppMethodBeat.i(26106);
     String str = MMApplicationContext.getContext().getSharedPreferences("IPCall_LastInputPref", 0).getString("IPCall_LastInputCountryCode", "");
@@ -305,15 +307,15 @@ public final class c
       AppMethodBeat.o(26106);
       return str;
     }
-    str = a.ebK();
+    str = a.eKI();
     AppMethodBeat.o(26106);
     return str;
   }
   
-  public static boolean ebP()
+  public static boolean eKN()
   {
     AppMethodBeat.i(26107);
-    if (com.tencent.mm.n.h.aqJ().getInt("WCOSecondPurchaseSwitch", 0) > 0) {}
+    if (com.tencent.mm.n.h.axc().getInt("WCOSecondPurchaseSwitch", 0) > 0) {}
     for (int i = 1; i != 0; i = 0)
     {
       AppMethodBeat.o(26107);
@@ -323,10 +325,10 @@ public final class c
     return false;
   }
   
-  public static boolean ebQ()
+  public static boolean eKO()
   {
     AppMethodBeat.i(26108);
-    if (com.tencent.mm.n.h.aqJ().getInt("WCOClosePurchaseEntranceSwitch", 0) != 0)
+    if (com.tencent.mm.n.h.axc().getInt("WCOClosePurchaseEntranceSwitch", 0) != 0)
     {
       AppMethodBeat.o(26108);
       return true;
@@ -335,21 +337,21 @@ public final class c
     return false;
   }
   
-  public static byf ebR()
+  public static cfz eKP()
   {
     AppMethodBeat.i(26109);
-    bg.aVF();
-    Object localObject = com.tencent.mm.model.c.azQ().get(ar.a.NWt, null);
+    bh.beI();
+    Object localObject = com.tencent.mm.model.c.aHp().get(ar.a.Vkt, null);
     if (localObject != null)
     {
-      byf localbyf = new byf();
+      cfz localcfz = new cfz();
       localObject = Util.decodeHexString(localObject.toString());
       try
       {
-        localbyf.parseFrom((byte[])localObject);
-        Log.i("MicroMsg.IPCallUtil", "[royle]parse success,Coupons:%s,Wording:%s,Title:%s,Desc:%s,ImgPath:%s,UrlPath:%s,Balance:%s,PVWording:%s,PackageMsg:%s", new Object[] { localbyf.MdG, localbyf.xJH, localbyf.Title, localbyf.Desc, localbyf.MdH, localbyf.MdI, localbyf.MdJ, localbyf.MdK, localbyf.MdR });
+        localcfz.parseFrom((byte[])localObject);
+        Log.i("MicroMsg.IPCallUtil", "[royle]parse success,Coupons:%s,Wording:%s,Title:%s,Desc:%s,ImgPath:%s,UrlPath:%s,Balance:%s,PVWording:%s,PackageMsg:%s", new Object[] { localcfz.Tnh, localcfz.CNP, localcfz.fwr, localcfz.CMB, localcfz.Tni, localcfz.Tnj, localcfz.Tnk, localcfz.Tnl, localcfz.Tns });
         AppMethodBeat.o(26109);
-        return localbyf;
+        return localcfz;
       }
       catch (IOException localIOException)
       {
@@ -360,13 +362,12 @@ public final class c
     return null;
   }
   
-  public static boolean gq(Context paramContext)
+  public static boolean hn(Context paramContext)
   {
-    int j = 2131761780;
     AppMethodBeat.i(26104);
     int i;
     if (m.isVoipStarted()) {
-      i = 2131761781;
+      i = R.l.in_voip_tip;
     }
     for (;;)
     {
@@ -374,36 +375,38 @@ public final class c
       {
         AppMethodBeat.o(26104);
         return true;
-        i = j;
-        if (m.fKI()) {
-          continue;
-        }
-        if (e.bgH())
+        if (m.gDi())
         {
-          i = 2131761779;
+          i = R.l.in_voip_cs_tip;
           continue;
         }
-        if (com.tencent.mm.q.a.att())
+        if (e.bpW())
         {
-          i = 2131761776;
+          i = R.l.in_share_location_tip;
           continue;
         }
-        if (e.bgG())
+        if (com.tencent.mm.q.a.aAj())
         {
-          i = 2131761779;
+          i = R.l.in_multitalk_tip;
           continue;
         }
-        i = j;
-        if (com.tencent.mm.q.a.atx()) {
+        if (e.bpV())
+        {
+          i = R.l.in_share_location_tip;
           continue;
         }
-        if (com.tencent.mm.q.a.atw()) {
-          i = 2131761776;
+        if (com.tencent.mm.q.a.aAn())
+        {
+          i = R.l.in_voip_cs_tip;
+          continue;
+        }
+        if (com.tencent.mm.q.a.aAm()) {
+          i = R.l.in_multitalk_tip;
         }
       }
       else
       {
-        com.tencent.mm.ui.base.h.n(paramContext, i, 2131755998);
+        com.tencent.mm.ui.base.h.p(paramContext, i, R.l.app_tip);
         AppMethodBeat.o(26104);
         return false;
       }
@@ -411,10 +414,10 @@ public final class c
     }
   }
   
-  public static CharSequence j(Context paramContext, long paramLong)
+  public static CharSequence k(Context paramContext, long paramLong)
   {
     AppMethodBeat.i(26096);
-    paramContext = DateFormat.format(paramContext.getString(2131760844), paramLong);
+    paramContext = DateFormat.format(paramContext.getString(R.l.fmt_normal_time_24), paramLong);
     AppMethodBeat.o(26096);
     return paramContext;
   }
@@ -429,7 +432,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.a.c
  * JD-Core Version:    0.7.0.1
  */

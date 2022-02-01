@@ -5,9 +5,9 @@ import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
 import com.tencent.mm.ui.MMActivity;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/FinderRetransmitSourceContract$Presenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "loadMoreData", "", "requestRefresh", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderRetransmitSourceContract$Presenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "loadMoreData", "", "requestRefresh", "plugin-finder_release"})
 public final class FinderRetransmitSourceContract$a
-  extends v.a
+  extends aa.a
 {
   public FinderRetransmitSourceContract$a(MMActivity paramMMActivity)
   {
@@ -16,10 +16,10 @@ public final class FinderRetransmitSourceContract$a
     AppMethodBeat.o(165848);
   }
   
-  public final void boE()
+  public final void byN()
   {
     AppMethodBeat.i(165847);
-    BaseFinderFeedLoader localBaseFinderFeedLoader = this.tFM;
+    BaseFinderFeedLoader localBaseFinderFeedLoader = this.xnX;
     if (localBaseFinderFeedLoader != null)
     {
       localBaseFinderFeedLoader.requestLoadMore();
@@ -32,7 +32,7 @@ public final class FinderRetransmitSourceContract$a
   public final void requestRefresh()
   {
     AppMethodBeat.i(165846);
-    BaseFinderFeedLoader localBaseFinderFeedLoader = this.tFM;
+    BaseFinderFeedLoader localBaseFinderFeedLoader = this.xnX;
     if (localBaseFinderFeedLoader != null)
     {
       localBaseFinderFeedLoader.requestRefresh();

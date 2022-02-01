@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bx;
-import com.tencent.mm.protocal.protobuf.by;
-import com.tencent.mm.protocal.protobuf.cg;
+import com.tencent.mm.protocal.protobuf.bv;
+import com.tencent.mm.protocal.protobuf.bw;
+import com.tencent.mm.protocal.protobuf.ce;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
@@ -19,25 +19,25 @@ public final class l
   extends q
   implements m
 {
-  private LinkedList<cg> DsY;
+  private LinkedList<ce> JzN;
   public i callback;
   private d rr;
   
-  public l(LinkedList<cg> paramLinkedList)
+  public l(LinkedList<ce> paramLinkedList)
   {
     AppMethodBeat.i(95567);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bx();
-    ((d.a)localObject).iLO = new by();
+    ((d.a)localObject).lBU = new bv();
+    ((d.a)localObject).lBV = new bw();
     ((d.a)localObject).uri = "/cgi-bin/mmoc-bin/ad/addatareport";
     ((d.a)localObject).funcId = 1295;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (bx)this.rr.iLK.iLR;
-    ((bx)localObject).KFY = paramLinkedList;
-    this.DsY = paramLinkedList;
-    Log.i("MicroMsg.NetSceneSnsAdDataReport", "report %d ads", new Object[] { Integer.valueOf(((bx)localObject).KFY.size()) });
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (bv)d.b.b(this.rr.lBR);
+    ((bv)localObject).RHr = paramLinkedList;
+    this.JzN = paramLinkedList;
+    Log.i("MicroMsg.NetSceneSnsAdDataReport", "report %d ads", new Object[] { Integer.valueOf(((bv)localObject).RHr.size()) });
     AppMethodBeat.o(95567);
   }
   

@@ -8,7 +8,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class f
 {
-  public static boolean dm(View paramView)
+  public static boolean dJ(View paramView)
   {
     AppMethodBeat.i(121658);
     if (paramView == null)
@@ -46,7 +46,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.wxawidget.console.f
  * JD-Core Version:    0.7.0.1
  */

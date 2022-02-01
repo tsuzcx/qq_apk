@@ -64,20 +64,18 @@ public class e
     AppMethodBeat.i(14992);
     if ((Build.BRAND.equals("samsung")) && (Build.MODEL.equals("GT-I9500")) && (Build.VERSION.RELEASE.equals("4.3")))
     {
-      NativeLoad.getInstance();
       this.a = NativeLoad.nativeLoadGLProgram(15);
       if ((this.a == 0) || (!b())) {
-        break label103;
+        break label95;
       }
     }
-    label103:
+    label95:
     for (this.g = true;; this.g = false)
     {
       c();
       boolean bool = this.g;
       AppMethodBeat.o(14992);
       return bool;
-      NativeLoad.getInstance();
       this.a = NativeLoad.nativeLoadGLProgram(5);
       break;
     }
@@ -87,23 +85,23 @@ public class e
   {
     AppMethodBeat.i(14993);
     super.b();
-    q();
+    r();
     AppMethodBeat.o(14993);
     return true;
   }
   
-  public void q()
+  public void r()
   {
-    AppMethodBeat.i(14995);
-    this.r = GLES20.glGetUniformLocation(p(), "texelWidthOffset");
-    this.s = GLES20.glGetUniformLocation(p(), "texelHeightOffset");
-    this.t = GLES20.glGetUniformLocation(p(), "smoothDegree");
-    AppMethodBeat.o(14995);
+    AppMethodBeat.i(233598);
+    this.r = GLES20.glGetUniformLocation(q(), "texelWidthOffset");
+    this.s = GLES20.glGetUniformLocation(q(), "texelHeightOffset");
+    this.t = GLES20.glGetUniformLocation(q(), "smoothDegree");
+    AppMethodBeat.o(233598);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.a.e
  * JD-Core Version:    0.7.0.1
  */

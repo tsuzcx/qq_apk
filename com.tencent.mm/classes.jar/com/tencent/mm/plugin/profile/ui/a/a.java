@@ -6,73 +6,76 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.br.c;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.R.l;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.by.c;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.profile.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.s;
 
 public final class a
   implements i
 {
-  b BiP;
-  private MTimerHandler BiQ;
-  Activity dKq;
-  com.tencent.mm.ui.base.q wSy;
+  private b Hdo;
+  private s Hdp;
+  private MTimerHandler Hdq;
+  private Activity fDf;
   
   public a(Activity paramActivity)
   {
     AppMethodBeat.i(27423);
-    this.BiQ = new MTimerHandler(new MTimerHandler.CallBack()
+    this.Hdq = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(27422);
-        if (!a.this.dKq.isFinishing())
+        if (!a.a(a.this).isFinishing())
         {
           a locala = a.this;
-          Activity localActivity = a.this.dKq;
-          a.this.dKq.getString(2131755998);
-          locala.wSy = h.a(localActivity, a.this.dKq.getString(2131756029), true, new DialogInterface.OnCancelListener()
+          Activity localActivity = a.a(a.this);
+          a.a(a.this).getString(R.l.app_tip);
+          a.a(locala, h.a(localActivity, a.a(a.this).getString(R.l.app_waiting), true, new DialogInterface.OnCancelListener()
           {
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
               AppMethodBeat.i(27421);
-              bg.azz().a(a.this.BiP);
-              a.this.wSy = null;
+              bh.aGY().a(a.b(a.this));
+              a.a(a.this, null);
               AppMethodBeat.o(27421);
             }
-          });
+          }));
         }
         AppMethodBeat.o(27422);
         return false;
       }
     }, false);
-    this.dKq = paramActivity;
+    this.fDf = paramActivity;
     AppMethodBeat.o(27423);
   }
   
   private void openWebView(String paramString)
   {
     AppMethodBeat.i(27426);
-    this.BiQ.stopTimer();
-    if (this.wSy != null) {
-      this.wSy.dismiss();
+    this.Hdq.stopTimer();
+    if (this.Hdp != null) {
+      this.Hdp.dismiss();
     }
     paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
-    paramString.putExtra("title", this.dKq.getString(2131758142));
+    paramString.putExtra("title", this.fDf.getString(R.l.eAm));
     paramString.putExtra("zoom", true);
     paramString.putExtra("vertical_scroll", false);
-    c.b(this.dKq, "webview", ".ui.tools.WebViewUI", paramString);
+    c.b(this.fDf, "webview", ".ui.tools.WebViewUI", paramString);
     AppMethodBeat.o(27426);
   }
   
-  public final void jx(String paramString1, String paramString2)
+  public final void jI(String paramString1, String paramString2)
   {
     AppMethodBeat.i(27424);
     if (paramString1 == null)
@@ -81,28 +84,28 @@ public final class a
       AppMethodBeat.o(27424);
       return;
     }
-    bg.azz().a(205, this);
-    this.BiP = new b(Util.nullAsNil(paramString1).replace("http://t.qq.com/", "").trim(), paramString2);
-    bg.azz().a(this.BiP, 0);
-    this.BiQ.startTimer(3000L);
+    bh.aGY().a(205, this);
+    this.Hdo = new b(Util.nullAsNil(paramString1).replace("http://t.qq.com/", "").trim(), paramString2);
+    bh.aGY().a(this.Hdo, 0);
+    this.Hdq.startTimer(3000L);
     AppMethodBeat.o(27424);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(27425);
-    bg.azz().b(205, this);
+    bh.aGY().b(205, this);
     paramString = (b)paramq;
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      openWebView(paramString.getURL());
+      openWebView(paramString.btD());
       AppMethodBeat.o(27425);
       return;
     }
     if (paramInt1 != 4) {
       Log.e("MicroMsg.ViewTWeibo", "view weibo failed: " + paramInt1 + ", " + paramInt2);
     }
-    openWebView("http://t.qq.com/" + paramString.BcV);
+    openWebView("http://t.qq.com/" + paramString.GWU);
     AppMethodBeat.o(27425);
   }
 }

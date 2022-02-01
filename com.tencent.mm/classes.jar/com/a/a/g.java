@@ -5,61 +5,61 @@ import java.util.List;
 
 public final class g
 {
-  b.q aPY = null;
-  f aPZ = null;
-  String aQa = null;
-  h.b aQb = null;
-  h.b aQc = null;
+  b.q ayr = null;
+  f ays = null;
+  String ayt = null;
+  h.b ayu = null;
+  h.b ayv = null;
   String viewId = null;
   
-  public final g p(float paramFloat1, float paramFloat2)
+  public final g k(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(206474);
-    this.aQc = new h.b(0.0F, 0.0F, paramFloat1, paramFloat2);
-    AppMethodBeat.o(206474);
+    AppMethodBeat.i(201805);
+    this.ayv = new h.b(0.0F, 0.0F, paramFloat1, paramFloat2);
+    AppMethodBeat.o(201805);
     return this;
   }
   
-  public final boolean qG()
+  public final boolean ob()
   {
-    AppMethodBeat.i(206473);
-    if (this.aPY != null)
+    AppMethodBeat.i(201804);
+    if (this.ayr != null)
     {
-      b.q localq = this.aPY;
-      if (localq.aPm != null) {}
-      for (int i = localq.aPm.size(); i > 0; i = 0)
+      b.q localq = this.ayr;
+      if (localq.axF != null) {}
+      for (int i = localq.axF.size(); i > 0; i = 0)
       {
-        AppMethodBeat.o(206473);
+        AppMethodBeat.o(201804);
         return true;
       }
     }
-    AppMethodBeat.o(206473);
+    AppMethodBeat.o(201804);
     return false;
   }
   
-  public final boolean qH()
+  public final boolean oc()
   {
-    return this.aPZ != null;
+    return this.ays != null;
   }
   
-  public final boolean qI()
+  public final boolean od()
   {
     return this.viewId != null;
   }
   
-  public final boolean qJ()
+  public final boolean oe()
   {
-    return this.aQb != null;
+    return this.ayu != null;
   }
   
-  public final boolean qK()
+  public final boolean of()
   {
-    return this.aQa != null;
+    return this.ayt != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.a.a.g
  * JD-Core Version:    0.7.0.1
  */

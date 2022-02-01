@@ -30,6 +30,12 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.AppForegroundDelegate;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.ball.a.c;
+import com.tencent.mm.plugin.ball.a.d;
+import com.tencent.mm.plugin.ball.a.e;
+import com.tencent.mm.plugin.ball.a.f;
+import com.tencent.mm.plugin.ball.c.g;
 import com.tencent.mm.plugin.ball.f.e;
 import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.ball.model.BallInfo.a;
@@ -38,8 +44,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.ar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -50,168 +55,168 @@ public class FloatBallView
   extends FrameLayout
   implements com.tencent.mm.plugin.ball.c.d
 {
-  public static final int paA;
-  private static final int paB;
-  private static final int paC;
-  private static final int paD;
-  public static final int paE;
-  public static final int paF;
-  private static final int paG;
-  private static final int paH;
-  private static final int paI;
-  private static final int paJ;
-  private static final int paK;
-  private static final int paL;
-  private static final int paM;
-  private static final int paN;
-  private static final int paO;
-  private static final int paP;
-  public static final int paQ;
-  private static final int pac;
-  private static final int pad;
-  private static final int pae;
-  private static final int paf;
-  private static final int pag;
-  private static final int pah;
-  private static final int pai;
-  private static final int paj;
-  private static final int pak;
-  private static final int pal;
-  private static final int pam;
-  private static final int pan;
-  private static final int pao;
-  private static final int pap;
-  private static final int paq;
-  private static final int par;
-  private static final int pas;
-  private static final int pat;
-  private static final int pau;
-  private static final int pav;
-  private static final int paw;
-  private static final int pax;
-  private static final int pay;
-  private static final int paz;
-  private Handler cPw;
-  private boolean hbN;
+  private static final int scA;
+  public static final int scB;
+  private static final int scC;
+  private static final int scD;
+  private static final int scE;
+  public static final int scF;
+  public static final int scG;
+  private static final int scH;
+  private static final int scI;
+  private static final int scJ;
+  private static final int scK;
+  private static final int scL;
+  private static final int scM;
+  private static final int scN;
+  private static final int scO;
+  private static final int scP;
+  private static final int scQ;
+  public static final int scR;
+  private static final int scd;
+  private static final int sce;
+  private static final int scf;
+  private static final int scg;
+  private static final int sch;
+  private static final int sci;
+  private static final int scj;
+  private static final int sck;
+  private static final int scl;
+  private static final int scm;
+  private static final int scn;
+  private static final int sco;
+  private static final int scp;
+  private static final int scq;
+  private static final int scr;
+  private static final int scs;
+  private static final int sct;
+  private static final int scu;
+  private static final int scv;
+  private static final int scw;
+  private static final int scx;
+  private static final int scy;
+  private static final int scz;
+  public View bFK;
+  private Handler cQo;
+  private boolean jMX;
   private long lastClickTime;
   private int lastOrientation;
-  public Set<com.tencent.mm.plugin.ball.c.g> listeners;
-  private View lrc;
-  private boolean oVp;
-  private Point oWm;
-  public boolean oYj;
-  public int oZZ;
-  private int paR;
-  private int paS;
-  private Vibrator paT;
-  private ValueAnimator paU;
-  public com.tencent.mm.plugin.ball.b.b paV;
-  private View paW;
-  private LinearLayout paX;
-  public FrameLayout paY;
-  private FrameLayout paZ;
-  private int paa;
-  private int pab;
-  private LayoutTransition pbA;
-  private boolean pbB;
-  public boolean pbC;
-  private Point pbD;
-  private PointF pbE;
-  private Point pbF;
-  private float pbG;
-  private int pbH;
-  private boolean pbI;
-  private boolean pbJ;
-  private boolean pbK;
-  private BallInfo pbL;
-  private BallInfo pbM;
-  private Point pbN;
-  private int pbO;
-  private boolean pbP;
-  public int pbQ;
-  private boolean pbR;
-  private boolean pbS;
-  private boolean pbT;
-  private int pbU;
-  private Handler pbV;
-  private Runnable pbW;
-  private boolean pbX;
-  private boolean pbY;
-  private boolean pbZ;
-  private FrameLayout pba;
-  private FrameLayout pbb;
-  private CircleAnimateView pbc;
-  private CircleAnimateView pbd;
-  private CircleAnimateView pbe;
-  private CircleAnimateView pbf;
-  private Drawable pbg;
-  private Drawable pbh;
-  private Drawable pbi;
-  private Drawable pbj;
-  private Drawable pbk;
-  private Drawable pbl;
-  private Drawable pbm;
-  private Drawable pbn;
-  private Drawable pbo;
-  private Drawable pbp;
-  private Drawable pbq;
-  private Drawable pbr;
-  private Drawable pbs;
-  private Drawable pbt;
-  private Drawable pbu;
-  private Drawable pbv;
-  private Drawable pbw;
-  private Drawable pbx;
-  private String pby;
-  private List<BallInfo> pbz;
-  private int pca;
-  public View vk;
+  public Set<g> listeners;
+  private View olM;
+  private boolean rXo;
+  private Point rYm;
+  private Vibrator rqC;
+  public boolean sak;
+  private int scS;
+  private int scT;
+  private ValueAnimator scU;
+  public com.tencent.mm.plugin.ball.b.b scV;
+  private View scW;
+  private LinearLayout scX;
+  public FrameLayout scY;
+  private FrameLayout scZ;
+  public int sca;
+  private int scb;
+  private int scc;
+  private LayoutTransition sdA;
+  private boolean sdB;
+  public boolean sdC;
+  private Point sdD;
+  private PointF sdE;
+  private Point sdF;
+  private float sdG;
+  private int sdH;
+  private boolean sdI;
+  private boolean sdJ;
+  private boolean sdK;
+  private BallInfo sdL;
+  private BallInfo sdM;
+  private Point sdN;
+  private int sdO;
+  private boolean sdP;
+  public int sdQ;
+  private boolean sdR;
+  private boolean sdS;
+  private boolean sdT;
+  private int sdU;
+  private Handler sdV;
+  private Runnable sdW;
+  private boolean sdX;
+  private boolean sdY;
+  private boolean sdZ;
+  private FrameLayout sda;
+  private FrameLayout sdb;
+  private CircleAnimateView sdc;
+  private CircleAnimateView sdd;
+  private CircleAnimateView sde;
+  private CircleAnimateView sdf;
+  private Drawable sdg;
+  private Drawable sdh;
+  private Drawable sdi;
+  private Drawable sdj;
+  private Drawable sdk;
+  private Drawable sdl;
+  private Drawable sdm;
+  private Drawable sdn;
+  private Drawable sdo;
+  private Drawable sdp;
+  private Drawable sdq;
+  private Drawable sdr;
+  private Drawable sds;
+  private Drawable sdt;
+  private Drawable sdu;
+  private Drawable sdv;
+  private Drawable sdw;
+  private Drawable sdx;
+  private String sdy;
+  private List<BallInfo> sdz;
+  private int sea;
   private WindowManager windowManager;
   
   static
   {
     AppMethodBeat.i(106478);
-    pac = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166389);
-    pad = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166386);
-    pae = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166388);
-    paf = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166387);
-    pag = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166413);
-    pah = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166412);
-    pai = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166426);
-    paj = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166425);
-    pak = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166422);
-    pal = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166421);
-    pam = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166434);
-    pan = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166433);
-    pao = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166437);
-    pap = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166435);
-    paq = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166438);
-    par = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166436);
-    pas = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166428);
-    pat = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166427);
-    pau = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166431);
-    pav = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166429);
-    paw = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166432);
-    pax = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166430);
-    pay = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166448);
-    paz = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166446);
-    paA = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166449);
-    paB = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166447);
-    paC = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166441);
-    paD = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166439);
-    paE = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166442);
-    paF = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166440);
-    paG = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166420);
-    paH = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166390);
-    paI = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166404);
-    paJ = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166405);
-    paK = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166402);
-    paL = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166403);
-    paM = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166393);
-    paN = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166395);
-    paO = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166394);
-    paP = com.tencent.mm.cb.a.aG(MMApplicationContext.getContext(), 2131166392);
-    paQ = paJ;
+    scd = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_active_width);
+    sce = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_active_height);
+    scf = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_active_passive_width);
+    scg = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_active_passive_height);
+    sch = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_one_passive_width);
+    sci = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_one_passive_height);
+    scj = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_two_passive_width);
+    sck = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_two_passive_height);
+    scl = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_three_passive_width);
+    scm = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_three_passive_height);
+    scn = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_video_width);
+    sco = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_video_height);
+    scp = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_video_with_others_width);
+    scq = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_video_with_others_height);
+    scr = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_video_with_others_width_large);
+    scs = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_video_with_others_height_large);
+    sct = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_audio_width);
+    scu = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_audio_height);
+    scv = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_audio_with_others_width);
+    scw = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_audio_with_others_height);
+    scx = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_audio_with_others_width_large);
+    scy = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_audio_with_others_height_large);
+    scz = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_view_video_width);
+    scA = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_view_video_height);
+    scB = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_view_video_width_large);
+    scC = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_view_video_height_large);
+    scD = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_view_audio_width);
+    scE = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_view_audio_height);
+    scF = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_view_audio_width_large);
+    scG = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_voip_view_audio_height_large);
+    scH = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_state_icon_size);
+    scI = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_content_view_size);
+    scJ = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_inner_margin_4);
+    scK = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_inner_margin_8);
+    scL = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_inner_margin_12);
+    scM = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_inner_margin_16);
+    scN = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_dragging_size_one_passive);
+    scO = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_dragging_size_two_passive);
+    scP = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_ball_dragging_size_three_passive);
+    scQ = com.tencent.mm.ci.a.aY(MMApplicationContext.getContext(), a.c.float_ball_divider_view_height);
+    scR = scK;
     AppMethodBeat.o(106478);
   }
   
@@ -229,32 +234,32 @@ public class FloatBallView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(106438);
-    this.oZZ = 0;
-    this.paa = 0;
-    this.pab = 0;
+    this.sca = 0;
+    this.scb = 0;
+    this.scc = 0;
     this.listeners = new CopyOnWriteArraySet();
-    this.pbE = new PointF();
-    this.pbF = new Point();
-    this.pbG = -1.0F;
-    this.pbH = 0;
-    this.pbI = false;
-    this.oYj = false;
-    this.pbJ = false;
-    this.pbK = true;
-    this.oWm = null;
-    this.pbN = new Point();
-    this.pbO = 0;
-    this.pbP = false;
-    this.pbQ = 16;
-    this.cPw = new Handler(Looper.getMainLooper());
-    this.pbR = false;
-    this.pbS = false;
-    this.pbT = false;
-    this.pbU = 0;
-    this.hbN = false;
-    this.oVp = false;
-    this.pbV = new Handler(Looper.getMainLooper());
-    this.pbW = new Runnable()
+    this.sdE = new PointF();
+    this.sdF = new Point();
+    this.sdG = -1.0F;
+    this.sdH = 0;
+    this.sdI = false;
+    this.sak = false;
+    this.sdJ = false;
+    this.sdK = true;
+    this.rYm = null;
+    this.sdN = new Point();
+    this.sdO = 0;
+    this.sdP = false;
+    this.sdQ = 16;
+    this.cQo = new Handler(Looper.getMainLooper());
+    this.sdR = false;
+    this.sdS = false;
+    this.sdT = false;
+    this.sdU = 0;
+    this.jMX = false;
+    this.rXo = false;
+    this.sdV = new Handler(Looper.getMainLooper());
+    this.sdW = new Runnable()
     {
       public final void run()
       {
@@ -263,75 +268,75 @@ public class FloatBallView
         FloatBallView.b(FloatBallView.this);
         Iterator localIterator = FloatBallView.this.listeners.iterator();
         while (localIterator.hasNext()) {
-          ((com.tencent.mm.plugin.ball.c.g)localIterator.next()).chZ();
+          ((g)localIterator.next()).cvl();
         }
         AppMethodBeat.o(106430);
       }
     };
-    this.pbX = false;
-    this.pbY = false;
-    this.pbZ = false;
-    this.pca = 0;
-    View.inflate(paramContext, 2131495173, this);
-    this.pbg = com.tencent.mm.cb.a.l(paramContext, 2131232776);
-    this.pbh = com.tencent.mm.cb.a.l(paramContext, 2131232778);
-    this.pbi = com.tencent.mm.cb.a.l(paramContext, 2131232780);
-    this.pbj = com.tencent.mm.cb.a.l(paramContext, 2131232777);
-    this.pbk = com.tencent.mm.cb.a.l(paramContext, 2131232779);
-    this.pbl = com.tencent.mm.cb.a.l(paramContext, 2131232781);
-    this.pbm = com.tencent.mm.cb.a.l(paramContext, 2131232770);
-    this.pbn = com.tencent.mm.cb.a.l(paramContext, 2131232772);
-    this.pbo = com.tencent.mm.cb.a.l(paramContext, 2131232774);
-    this.pbp = com.tencent.mm.cb.a.l(paramContext, 2131232771);
-    this.pbq = com.tencent.mm.cb.a.l(paramContext, 2131232773);
-    this.pbr = com.tencent.mm.cb.a.l(paramContext, 2131232775);
-    this.pbs = com.tencent.mm.cb.a.l(paramContext, 2131232793);
-    this.pbt = com.tencent.mm.cb.a.l(paramContext, 2131232794);
-    this.pbu = com.tencent.mm.cb.a.l(paramContext, 2131232795);
-    this.pbv = com.tencent.mm.cb.a.l(paramContext, 2131232793);
-    this.pbw = com.tencent.mm.cb.a.l(paramContext, 2131232794);
-    this.pbx = com.tencent.mm.cb.a.l(paramContext, 2131232795);
-    this.paX = ((LinearLayout)findViewById(2131297255));
-    this.pba = ((FrameLayout)findViewById(2131297254));
-    this.paY = ((FrameLayout)findViewById(2131310012));
-    this.paZ = ((FrameLayout)findViewById(2131305726));
-    this.lrc = findViewById(2131299698);
-    this.pbb = ((FrameLayout)findViewById(2131297256));
-    this.pbc = ((CircleAnimateView)findViewById(2131309301));
-    this.pbd = ((CircleAnimateView)findViewById(2131297658));
-    this.pbe = ((CircleAnimateView)findViewById(2131309040));
-    this.pbf = ((CircleAnimateView)findViewById(2131301709));
-    this.paV = new com.tencent.mm.plugin.ball.b.b(this);
-    this.paT = ((Vibrator)paramContext.getSystemService("vibrator"));
+    this.sdX = false;
+    this.sdY = false;
+    this.sdZ = false;
+    this.sea = 0;
+    View.inflate(paramContext, a.f.layout_float_ball_view, this);
+    this.sdg = com.tencent.mm.ci.a.m(paramContext, a.d.float_window_56_background_left);
+    this.sdh = com.tencent.mm.ci.a.m(paramContext, a.d.float_window_56_background_right);
+    this.sdi = com.tencent.mm.ci.a.m(paramContext, a.d.float_window_56_background_round);
+    this.sdj = com.tencent.mm.ci.a.m(paramContext, a.d.float_window_56_background_left_press);
+    this.sdk = com.tencent.mm.ci.a.m(paramContext, a.d.float_window_56_background_right_press);
+    this.sdl = com.tencent.mm.ci.a.m(paramContext, a.d.float_window_56_background_round_press);
+    this.sdm = com.tencent.mm.ci.a.m(paramContext, a.d.float_window_48_background_left);
+    this.sdn = com.tencent.mm.ci.a.m(paramContext, a.d.float_window_48_background_right);
+    this.sdo = com.tencent.mm.ci.a.m(paramContext, a.d.float_window_48_background_round);
+    this.sdp = com.tencent.mm.ci.a.m(paramContext, a.d.float_window_48_background_left_press);
+    this.sdq = com.tencent.mm.ci.a.m(paramContext, a.d.float_window_48_background_right_press);
+    this.sdr = com.tencent.mm.ci.a.m(paramContext, a.d.float_window_48_background_round_press);
+    this.sds = com.tencent.mm.ci.a.m(paramContext, a.d.float_window_voip_background_left);
+    this.sdt = com.tencent.mm.ci.a.m(paramContext, a.d.float_window_voip_background_right);
+    this.sdu = com.tencent.mm.ci.a.m(paramContext, a.d.float_window_voip_background_round);
+    this.sdv = com.tencent.mm.ci.a.m(paramContext, a.d.float_window_voip_background_left);
+    this.sdw = com.tencent.mm.ci.a.m(paramContext, a.d.float_window_voip_background_right);
+    this.sdx = com.tencent.mm.ci.a.m(paramContext, a.d.float_window_voip_background_round);
+    this.scX = ((LinearLayout)findViewById(a.e.ballRootView));
+    this.sda = ((FrameLayout)findViewById(a.e.ballContentView));
+    this.scY = ((FrameLayout)findViewById(a.e.voipContentView));
+    this.scZ = ((FrameLayout)findViewById(a.e.otherContentView));
+    this.olM = findViewById(a.e.dividerView);
+    this.sdb = ((FrameLayout)findViewById(a.e.ballStateView));
+    this.sdc = ((CircleAnimateView)findViewById(a.e.topStateImageView));
+    this.sdd = ((CircleAnimateView)findViewById(a.e.bottomStateImageView));
+    this.sde = ((CircleAnimateView)findViewById(a.e.thirdStateImageView));
+    this.sdf = ((CircleAnimateView)findViewById(a.e.fourthStateImageView));
+    this.scV = new com.tencent.mm.plugin.ball.b.b(this);
+    this.rqC = ((Vibrator)paramContext.getSystemService("vibrator"));
     this.windowManager = ((WindowManager)paramContext.getSystemService("window"));
-    this.paR = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    this.pbD = ao.az(paramContext);
-    if ((ao.gJN()) && (aw.kB(paramContext))) {
-      this.pbD.x = ao.getDeviceWidth();
+    this.scS = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.sdD = ar.au(paramContext);
+    if ((ar.hIO()) && (ar.kL(paramContext))) {
+      this.sdD.x = ar.getDeviceWidth();
     }
-    if (ao.gJK()) {
-      this.pbD.x = ao.getDeviceHeight();
+    if (ar.hIH()) {
+      this.sdD.x = ar.getDeviceHeight();
     }
-    this.paS = ViewConfiguration.getLongPressTimeout();
-    this.pbA = new LayoutTransition();
-    this.paX.setLayoutTransition(this.pbA);
+    this.scT = ViewConfiguration.getLongPressTimeout();
+    this.sdA = new LayoutTransition();
+    this.scX.setLayoutTransition(this.sdA);
     this.lastOrientation = getResources().getConfiguration().orientation;
     AppMethodBeat.o(106438);
   }
   
-  private void B(boolean paramBoolean1, boolean paramBoolean2)
+  private void F(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(217078);
-    int j = this.paX.getPaddingLeft();
-    int k = this.paX.getPaddingRight();
-    int m = this.paX.getPaddingTop();
-    int n = this.paX.getPaddingBottom();
+    AppMethodBeat.i(186950);
+    int j = this.scX.getPaddingLeft();
+    int k = this.scX.getPaddingRight();
+    int m = this.scX.getPaddingTop();
+    int n = this.scX.getPaddingBottom();
     label466:
     Object localObject;
-    if (Cp(this.oZZ))
+    if (FR(this.sca))
     {
       if (paramBoolean2) {}
-      for (int i = this.pbQ | 0x800003;; i = this.pbQ | 0x800005)
+      for (int i = this.sdQ | 0x800003;; i = this.sdQ | 0x800005)
       {
         X(i, true);
         if (!paramBoolean1) {
@@ -340,65 +345,65 @@ public class FloatBallView
         if (!paramBoolean2) {
           break;
         }
-        this.paX.setPadding(getExtendWidth(), m, k, n);
-        this.paX.setLayoutTransition(this.pbA);
-        cjp();
-        AppMethodBeat.o(217078);
+        this.scX.setPadding(getExtendWidth(), m, k, n);
+        this.scX.setLayoutTransition(this.sdA);
+        cwG();
+        AppMethodBeat.o(186950);
         return;
       }
-      this.paX.setPadding(j, m, getExtendWidth(), n);
-      if (((Cr(this.paa)) && (Cv(this.oZZ))) || ((Cs(this.paa)) && (Cw(this.oZZ))) || ((Ct(this.paa)) && (Cx(this.oZZ))) || ((Cu(this.paa)) && (Cy(this.oZZ))))
+      this.scX.setPadding(j, m, getExtendWidth(), n);
+      if (((FT(this.scb)) && (FX(this.sca))) || ((FU(this.scb)) && (FY(this.sca))) || ((FV(this.scb)) && (FZ(this.sca))) || ((FW(this.scb)) && (Ga(this.sca))))
       {
-        this.paX.setLayoutTransition(null);
-        cjr();
-        AppMethodBeat.o(217078);
+        this.scX.setLayoutTransition(null);
+        cwI();
+        AppMethodBeat.o(186950);
         return;
       }
-      if (((Cq(this.paa)) && (Cv(this.oZZ))) || ((Cq(this.paa)) && (Cw(this.oZZ))) || ((Cq(this.paa)) && (Cx(this.oZZ))) || ((Cq(this.paa)) && (Cy(this.oZZ))))
+      if (((FS(this.scb)) && (FX(this.sca))) || ((FS(this.scb)) && (FY(this.sca))) || ((FS(this.scb)) && (FZ(this.sca))) || ((FS(this.scb)) && (Ga(this.sca))))
       {
-        this.paX.setLayoutTransition(null);
-        cjr();
-        AppMethodBeat.o(217078);
+        this.scX.setLayoutTransition(null);
+        cwI();
+        AppMethodBeat.o(186950);
         return;
       }
-      if (((Cv(this.paa)) && (Cq(this.oZZ))) || ((Cw(this.paa)) && (Cq(this.oZZ))) || ((Cx(this.paa)) && (Cq(this.oZZ))) || ((Cy(this.paa)) && (Cq(this.oZZ))))
+      if (((FX(this.scb)) && (FS(this.sca))) || ((FY(this.scb)) && (FS(this.sca))) || ((FZ(this.scb)) && (FS(this.sca))) || ((Ga(this.scb)) && (FS(this.sca))))
       {
-        this.paX.setLayoutTransition(null);
-        cjr();
-        AppMethodBeat.o(217078);
+        this.scX.setLayoutTransition(null);
+        cwI();
+        AppMethodBeat.o(186950);
         return;
       }
-      this.paX.setLayoutTransition(this.pbA);
-      cjr();
-      AppMethodBeat.o(217078);
+      this.scX.setLayoutTransition(this.sdA);
+      cwI();
+      AppMethodBeat.o(186950);
       return;
-      if ((Cv(this.oZZ)) || (Cw(this.oZZ)) || (Cx(this.oZZ)) || (Cy(this.oZZ)))
+      if ((FX(this.sca)) || (FY(this.sca)) || (FZ(this.sca)) || (Ga(this.sca)))
       {
         if (paramBoolean2)
         {
-          cjt();
-          AppMethodBeat.o(217078);
+          cwK();
+          AppMethodBeat.o(186950);
           return;
         }
-        cju();
-        AppMethodBeat.o(217078);
+        cwL();
+        AppMethodBeat.o(186950);
         return;
       }
-      if ((Cr(this.oZZ)) || (Cs(this.oZZ)) || (Ct(this.oZZ)) || (Cu(this.oZZ)))
+      if ((FT(this.sca)) || (FU(this.sca)) || (FV(this.sca)) || (FW(this.sca)))
       {
-        C(paramBoolean2, false);
-        AppMethodBeat.o(217078);
+        G(paramBoolean2, false);
+        AppMethodBeat.o(186950);
         return;
       }
-      if (Cq(this.oZZ))
+      if (FS(this.sca))
       {
-        localObject = (FrameLayout.LayoutParams)this.pba.getLayoutParams();
+        localObject = (FrameLayout.LayoutParams)this.sda.getLayoutParams();
         ((FrameLayout.LayoutParams)localObject).gravity = 17;
-        i = paJ;
-        j = paJ;
+        i = scK;
+        j = scK;
         ((FrameLayout.LayoutParams)localObject).setMargins(i, i, j, j);
-        this.pba.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        AppMethodBeat.o(217078);
+        this.sda.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        AppMethodBeat.o(186950);
       }
     }
     else
@@ -407,127 +412,348 @@ public class FloatBallView
       {
         if (paramBoolean2)
         {
-          this.paX.setPadding(getExtendWidth(), m, k, n);
-          this.paX.setLayoutTransition(this.pbA);
-          X(this.pbQ | 0x800003, true);
-          this.lrc.setVisibility(8);
-          if (Cf(this.oZZ))
+          this.scX.setPadding(getExtendWidth(), m, k, n);
+          this.scX.setLayoutTransition(this.sdA);
+          X(this.sdQ | 0x800003, true);
+          this.olM.setVisibility(8);
+          if (FG(this.sca))
           {
-            this.paZ.setVisibility(0);
-            this.pba.setVisibility(8);
-            this.pbb.setVisibility(0);
-            localObject = (LinearLayout.LayoutParams)this.paZ.getLayoutParams();
+            this.scZ.setVisibility(0);
+            this.sda.setVisibility(8);
+            this.sdb.setVisibility(0);
+            localObject = (LinearLayout.LayoutParams)this.scZ.getLayoutParams();
             ((LinearLayout.LayoutParams)localObject).gravity = 8388627;
-            this.paZ.setLayoutParams((ViewGroup.LayoutParams)localObject);
-            C(true, true);
+            this.scZ.setLayoutParams((ViewGroup.LayoutParams)localObject);
+            G(true, true);
           }
           for (;;)
           {
-            this.paY.setVisibility(0);
-            if ((this.pbL == null) || (this.pbL.oWu)) {
-              break label898;
+            this.scY.setVisibility(0);
+            if ((this.sdL == null) || (this.sdL.rYu)) {
+              break label908;
             }
-            this.paY.setVisibility(0);
-            paramBoolean1 = Cc(this.oZZ);
-            if (!Ch(this.oZZ)) {
+            this.scY.setVisibility(0);
+            paramBoolean1 = FD(this.sca);
+            if ((!FJ(this.sca)) && (!FI(this.sca))) {
               break;
             }
-            g(true, false, paramBoolean1);
-            AppMethodBeat.o(217078);
+            f(true, false, paramBoolean1);
+            AppMethodBeat.o(186950);
             return;
-            this.paZ.setVisibility(8);
+            this.scZ.setVisibility(8);
           }
-          if (Ck(this.oZZ))
+          if (FM(this.sca))
           {
-            g(false, true, paramBoolean1);
-            AppMethodBeat.o(217078);
+            f(false, true, paramBoolean1);
+            AppMethodBeat.o(186950);
             return;
           }
-          this.paY.setVisibility(8);
-          AppMethodBeat.o(217078);
+          this.scY.setVisibility(8);
+          AppMethodBeat.o(186950);
           return;
-          label898:
-          this.paY.setVisibility(8);
-          AppMethodBeat.o(217078);
+          label908:
+          this.scY.setVisibility(8);
+          AppMethodBeat.o(186950);
           return;
         }
-        this.paX.setPadding(j, m, getExtendWidth(), n);
-        this.paX.setLayoutTransition(this.pbA);
-        X(this.pbQ | 0x800005, true);
-        this.lrc.setVisibility(8);
-        if (Cf(this.oZZ))
+        this.scX.setPadding(j, m, getExtendWidth(), n);
+        this.scX.setLayoutTransition(this.sdA);
+        X(this.sdQ | 0x800005, true);
+        this.olM.setVisibility(8);
+        if (FG(this.sca))
         {
-          this.paZ.setVisibility(0);
-          this.pba.setVisibility(8);
-          this.pbb.setVisibility(0);
-          localObject = (LinearLayout.LayoutParams)this.paZ.getLayoutParams();
+          this.scZ.setVisibility(0);
+          this.sda.setVisibility(8);
+          this.sdb.setVisibility(0);
+          localObject = (LinearLayout.LayoutParams)this.scZ.getLayoutParams();
           ((LinearLayout.LayoutParams)localObject).gravity = 8388629;
-          this.paZ.setLayoutParams((ViewGroup.LayoutParams)localObject);
-          C(false, true);
-          cjv();
-          this.paY.setVisibility(0);
-          if ((this.pbL == null) || (this.pbL.oWu)) {
-            break label1176;
+          this.scZ.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          G(false, true);
+          cwM();
+          this.scY.setVisibility(0);
+          if ((this.sdL == null) || (this.sdL.rYu)) {
+            break label1206;
           }
-          this.paY.setVisibility(0);
-          paramBoolean1 = Cc(this.oZZ);
-          if (!Ch(this.oZZ)) {
-            break label1144;
+          this.scY.setVisibility(0);
+          paramBoolean1 = FD(this.sca);
+          if ((!FJ(this.sca)) && (!FI(this.sca))) {
+            break label1174;
           }
-          g(true, false, paramBoolean1);
+          f(true, false, paramBoolean1);
         }
-        label1176:
         for (;;)
         {
-          paramBoolean1 = Cc(this.oZZ);
-          if (!Ch(this.oZZ)) {
-            break label1188;
+          paramBoolean1 = FD(this.sca);
+          if ((!FJ(this.sca)) && (!FI(this.sca))) {
+            break label1218;
           }
-          g(true, false, paramBoolean1);
-          AppMethodBeat.o(217078);
+          f(true, false, paramBoolean1);
+          AppMethodBeat.o(186950);
           return;
-          this.paZ.setVisibility(8);
+          this.scZ.setVisibility(8);
           break;
-          label1144:
-          if (Ck(this.oZZ))
+          label1174:
+          if (FM(this.sca))
           {
-            g(false, true, paramBoolean1);
+            f(false, true, paramBoolean1);
           }
           else
           {
-            this.paY.setVisibility(8);
+            this.scY.setVisibility(8);
             continue;
-            this.paY.setVisibility(8);
+            label1206:
+            this.scY.setVisibility(8);
           }
         }
-        label1188:
-        if (Ck(this.oZZ))
+        label1218:
+        if (FM(this.sca))
         {
-          g(false, true, paramBoolean1);
-          AppMethodBeat.o(217078);
+          f(false, true, paramBoolean1);
+          AppMethodBeat.o(186950);
           return;
         }
-        this.paY.setVisibility(8);
-        AppMethodBeat.o(217078);
+        this.scY.setVisibility(8);
+        AppMethodBeat.o(186950);
         return;
       }
-      X(this.pbQ | 0x1, false);
+      X(this.sdQ | 0x1, false);
     }
-    AppMethodBeat.o(217078);
+    AppMethodBeat.o(186950);
   }
   
-  private void BR(int paramInt)
+  private boolean F(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(217076);
-    Point localPoint1 = this.pbD;
-    this.pbD = ao.az(getContext());
-    if ((ao.gJN()) && (aw.kB(getContext()))) {
-      this.pbD.x = ao.getDeviceWidth();
+    AppMethodBeat.i(106453);
+    if ((Math.abs(paramMotionEvent.getRawX() - this.sdE.x) > this.scS) || (Math.abs(paramMotionEvent.getRawY() - this.sdE.y) > this.scS))
+    {
+      AppMethodBeat.o(106453);
+      return true;
     }
-    if (ao.gJK()) {
-      this.pbD.x = ao.getDeviceHeight();
+    AppMethodBeat.o(106453);
+    return false;
+  }
+  
+  private void FA(int paramInt)
+  {
+    this.sca |= paramInt;
+  }
+  
+  private int FB(int paramInt)
+  {
+    AppMethodBeat.i(187058);
+    if ((FJ(paramInt)) || (FI(paramInt))) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramInt = g(bool, FM(paramInt), FD(paramInt));
+      AppMethodBeat.o(187058);
+      return paramInt;
     }
-    Point localPoint2 = this.pbD;
+  }
+  
+  private int FC(int paramInt)
+  {
+    AppMethodBeat.i(187059);
+    if ((FJ(paramInt)) || (FI(paramInt))) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramInt = a(paramInt, bool, FM(paramInt), FD(paramInt));
+      AppMethodBeat.o(187059);
+      return paramInt;
+    }
+  }
+  
+  private static boolean FE(int paramInt)
+  {
+    return (paramInt & 0x1) != 0;
+  }
+  
+  private static boolean FF(int paramInt)
+  {
+    AppMethodBeat.i(176994);
+    if ((FN(paramInt)) || (FO(paramInt)) || (FP(paramInt)) || (FQ(paramInt)))
+    {
+      AppMethodBeat.o(176994);
+      return true;
+    }
+    AppMethodBeat.o(176994);
+    return false;
+  }
+  
+  private static boolean FG(int paramInt)
+  {
+    return ((paramInt & 0x100) != 0) || ((paramInt & 0x200) != 0);
+  }
+  
+  private static boolean FH(int paramInt)
+  {
+    AppMethodBeat.i(187086);
+    if ((FJ(paramInt)) || (FM(paramInt)) || (FI(paramInt)))
+    {
+      AppMethodBeat.o(187086);
+      return true;
+    }
+    AppMethodBeat.o(187086);
+    return false;
+  }
+  
+  private static boolean FI(int paramInt)
+  {
+    return (paramInt & 0x1000) != 0;
+  }
+  
+  public static boolean FJ(int paramInt)
+  {
+    return (paramInt & 0x8) != 0;
+  }
+  
+  private static boolean FK(int paramInt)
+  {
+    return (paramInt & 0x400) != 0;
+  }
+  
+  private static boolean FL(int paramInt)
+  {
+    return (paramInt & 0x800) != 0;
+  }
+  
+  public static boolean FM(int paramInt)
+  {
+    return (paramInt & 0x10) != 0;
+  }
+  
+  private static boolean FN(int paramInt)
+  {
+    return (paramInt & 0x2) != 0;
+  }
+  
+  private static boolean FO(int paramInt)
+  {
+    return (paramInt & 0x4) != 0;
+  }
+  
+  private static boolean FP(int paramInt)
+  {
+    return (paramInt & 0x40) != 0;
+  }
+  
+  private static boolean FQ(int paramInt)
+  {
+    return (paramInt & 0x80) != 0;
+  }
+  
+  private static boolean FR(int paramInt)
+  {
+    return (paramInt & 0x20) != 0;
+  }
+  
+  private static boolean FS(int paramInt)
+  {
+    AppMethodBeat.i(176996);
+    if ((FE(paramInt)) && (!FH(paramInt)) && (!FF(paramInt)))
+    {
+      AppMethodBeat.o(176996);
+      return true;
+    }
+    AppMethodBeat.o(176996);
+    return false;
+  }
+  
+  private static boolean FT(int paramInt)
+  {
+    AppMethodBeat.i(176997);
+    if ((FN(paramInt)) && (!FH(paramInt)) && (!FE(paramInt)))
+    {
+      AppMethodBeat.o(176997);
+      return true;
+    }
+    AppMethodBeat.o(176997);
+    return false;
+  }
+  
+  private static boolean FU(int paramInt)
+  {
+    AppMethodBeat.i(176998);
+    if ((FO(paramInt)) && (!FH(paramInt)) && (!FE(paramInt)))
+    {
+      AppMethodBeat.o(176998);
+      return true;
+    }
+    AppMethodBeat.o(176998);
+    return false;
+  }
+  
+  private static boolean FV(int paramInt)
+  {
+    AppMethodBeat.i(176999);
+    if ((FP(paramInt)) && (!FH(paramInt)) && (!FE(paramInt)))
+    {
+      AppMethodBeat.o(176999);
+      return true;
+    }
+    AppMethodBeat.o(176999);
+    return false;
+  }
+  
+  private static boolean FW(int paramInt)
+  {
+    AppMethodBeat.i(187116);
+    if ((FQ(paramInt)) && (!FH(paramInt)) && (!FE(paramInt)))
+    {
+      AppMethodBeat.o(187116);
+      return true;
+    }
+    AppMethodBeat.o(187116);
+    return false;
+  }
+  
+  private static boolean FX(int paramInt)
+  {
+    AppMethodBeat.i(177000);
+    if ((FN(paramInt)) && (FE(paramInt)) && (!FH(paramInt)))
+    {
+      AppMethodBeat.o(177000);
+      return true;
+    }
+    AppMethodBeat.o(177000);
+    return false;
+  }
+  
+  private static boolean FY(int paramInt)
+  {
+    AppMethodBeat.i(177001);
+    if ((FO(paramInt)) && (FE(paramInt)) && (!FH(paramInt)))
+    {
+      AppMethodBeat.o(177001);
+      return true;
+    }
+    AppMethodBeat.o(177001);
+    return false;
+  }
+  
+  private static boolean FZ(int paramInt)
+  {
+    AppMethodBeat.i(177002);
+    if ((FP(paramInt)) && (FE(paramInt)) && (!FH(paramInt)))
+    {
+      AppMethodBeat.o(177002);
+      return true;
+    }
+    AppMethodBeat.o(177002);
+    return false;
+  }
+  
+  private void Fs(int paramInt)
+  {
+    AppMethodBeat.i(186940);
+    Point localPoint1 = this.sdD;
+    this.sdD = ar.au(getContext());
+    if ((ar.hIO()) && (ar.kL(getContext()))) {
+      this.sdD.x = ar.getDeviceWidth();
+    }
+    if (ar.hIH()) {
+      this.sdD.x = ar.getDeviceHeight();
+    }
+    Point localPoint2 = this.sdD;
     Object localObject;
     int i;
     int j;
@@ -536,17 +762,17 @@ public class FloatBallView
     {
       localObject = localPoint1;
       Log.i("MicroMsg.FloatBallView", "processOrientationChanged, screenResolution: %s, lastResolution: %s", new Object[] { localPoint2, localObject });
-      if ((this.lastOrientation != paramInt) || ((localPoint1 != null) && ((localPoint1.x != this.pbD.x) || (localPoint1.y != this.pbD.y))))
+      if ((this.lastOrientation != paramInt) || ((localPoint1 != null) && ((localPoint1.x != this.sdD.x) || (localPoint1.y != this.sdD.y))))
       {
         this.lastOrientation = paramInt;
-        this.pbI = true;
+        this.sdI = true;
         localObject = (WindowManager.LayoutParams)getLayoutParams();
         paramInt = ((WindowManager.LayoutParams)localObject).x;
-        i = (int)(this.pbD.y * this.pbG);
-        paramInt = Math.max(Math.min(paramInt, this.pbD.x), 0);
-        i = Math.max(Math.min(i, this.pbD.y), 0);
+        i = (int)(this.sdD.y * this.sdG);
+        paramInt = Math.max(Math.min(paramInt, this.sdD.x), 0);
+        i = Math.max(Math.min(i, this.sdD.y), 0);
         j = getTargetPositionXWhenOrientationChanged();
-        k = BU(i);
+        k = Fv(i);
         if (j != 0) {
           break label336;
         }
@@ -557,17 +783,17 @@ public class FloatBallView
     {
       Log.i("MicroMsg.FloatBallView", "processOrientationChanged, layoutParams.x: %s, layoutParams.y: %s, stickToLeft:%s, startSticky:[%s, %s]=>[%s, %s]", new Object[] { Integer.valueOf(((WindowManager.LayoutParams)localObject).x), Integer.valueOf(((WindowManager.LayoutParams)localObject).y), Boolean.valueOf(bool), Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
       d(bool, paramInt, i, j, k);
-      AppMethodBeat.o(217076);
+      AppMethodBeat.o(186940);
       return;
       localObject = "null";
       break;
     }
   }
   
-  private boolean BS(int paramInt)
+  private boolean Ft(int paramInt)
   {
     AppMethodBeat.i(176987);
-    if (getCurrentStateWidth() + paramInt != this.pbD.x)
+    if (getCurrentStateWidth() + paramInt != this.sdD.x)
     {
       AppMethodBeat.o(176987);
       return true;
@@ -576,115 +802,118 @@ public class FloatBallView
     return false;
   }
   
-  private static int BU(int paramInt)
+  private static int Fv(int paramInt)
   {
     int i;
-    if (paramInt < e.oYS) {
-      i = e.oYS;
+    if (paramInt < e.saT) {
+      i = e.saT;
     }
     do
     {
       return i;
       i = paramInt;
-    } while (paramInt <= e.oYT);
-    return e.oYT;
+    } while (paramInt <= e.saU);
+    return e.saU;
   }
   
-  private int BV(int paramInt)
+  private int Fw(int paramInt)
   {
     AppMethodBeat.i(106465);
     int i = 0;
-    if (!BT(paramInt)) {
-      i = this.pbD.x - getCurrentStateWidth();
+    if (!Fu(paramInt)) {
+      i = this.sdD.x - getCurrentStateWidth();
     }
     AppMethodBeat.o(106465);
     return i;
   }
   
-  private int BW(int paramInt)
+  private int Fx(int paramInt)
   {
-    AppMethodBeat.i(217088);
+    AppMethodBeat.i(187004);
     int i = getWidth();
-    if (Cq(paramInt)) {
-      i = pac;
+    if (FS(paramInt)) {
+      i = scd;
     }
     for (;;)
     {
-      AppMethodBeat.o(217088);
+      AppMethodBeat.o(187004);
       return i;
-      if ((Cr(paramInt)) || ((!Cp(paramInt)) && (Cf(paramInt)))) {
-        i = paM;
-      } else if (Cs(paramInt)) {
-        i = paN;
-      } else if ((Ct(paramInt)) || (Cu(paramInt))) {
-        i = paO;
-      } else if ((Cv(paramInt)) || (Cw(paramInt))) {
-        i = pae;
-      } else if ((Cx(paramInt)) || (Cy(paramInt))) {
-        i = pae + paG;
+      if ((FT(paramInt)) || ((!FR(paramInt)) && (FG(paramInt)))) {
+        i = scN;
+      } else if (FU(paramInt)) {
+        i = scO;
+      } else if ((FV(paramInt)) || (FW(paramInt))) {
+        i = scP;
+      } else if ((FX(paramInt)) || (FY(paramInt))) {
+        i = scf;
+      } else if ((FZ(paramInt)) || (Ga(paramInt))) {
+        i = scf + scH;
       }
     }
   }
   
-  private int BX(int paramInt)
+  private int Fy(int paramInt)
   {
-    AppMethodBeat.i(217089);
+    AppMethodBeat.i(187006);
     int i = getHeight();
-    if (Cq(paramInt)) {
-      paramInt = pad;
+    if (FS(paramInt)) {
+      paramInt = sce;
     }
     for (;;)
     {
-      AppMethodBeat.o(217089);
+      AppMethodBeat.o(187006);
       return paramInt;
-      if (Cr(paramInt))
+      if (FT(paramInt))
       {
-        paramInt = paM;
+        paramInt = scN;
       }
-      else if (Cs(paramInt))
+      else if (FU(paramInt))
       {
-        paramInt = paN;
+        paramInt = scO;
       }
-      else if ((Ct(paramInt)) || (Cu(paramInt)))
+      else if ((FV(paramInt)) || (FW(paramInt)))
       {
-        paramInt = paN;
+        paramInt = scO;
       }
-      else if ((Cv(paramInt)) || (Cw(paramInt)) || (Cx(paramInt)) || (Cy(paramInt)))
+      else if ((FX(paramInt)) || (FY(paramInt)) || (FZ(paramInt)) || (Ga(paramInt)))
       {
-        paramInt = paf;
+        paramInt = scg;
       }
-      else if (!Cx(this.oZZ))
+      else if (!FZ(this.sca))
       {
         paramInt = i;
-        if (!Cy(this.oZZ)) {}
+        if (!Ga(this.sca)) {}
       }
       else
       {
-        paramInt = paf;
+        paramInt = scg;
       }
     }
   }
   
-  private void BY(int paramInt)
+  private void Fz(int paramInt)
   {
-    this.oZZ &= (paramInt ^ 0xFFFFFFFF);
+    this.sca &= (paramInt ^ 0xFFFFFFFF);
   }
   
-  private void BZ(int paramInt)
+  private int G(MotionEvent paramMotionEvent)
   {
-    this.oZZ |= paramInt;
+    AppMethodBeat.i(106454);
+    int i = (int)Math.max(Math.min(this.sdF.x + paramMotionEvent.getRawX() - this.sdE.x, this.sdD.x), 0.0F);
+    AppMethodBeat.o(106454);
+    return i;
   }
   
-  private int C(boolean paramBoolean1, boolean paramBoolean2)
+  private int G(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(176983);
-    this.pbb.setVisibility(0);
-    boolean bool1 = Co(this.oZZ);
-    boolean bool2 = Cn(this.oZZ);
-    boolean bool3 = Cm(this.oZZ);
-    boolean bool4 = Cl(this.oZZ);
-    boolean bool5 = Cd(this.oZZ);
-    boolean bool6 = Cg(this.oZZ);
+    this.sdb.setVisibility(0);
+    boolean bool1 = FQ(this.sca);
+    boolean bool2 = FP(this.sca);
+    boolean bool3 = FO(this.sca);
+    boolean bool4 = FN(this.sca);
+    boolean bool5 = FE(this.sca);
+    boolean bool6 = FH(this.sca);
     int i1;
     label100:
     int i2;
@@ -697,95 +926,95 @@ public class FloatBallView
     if (paramBoolean1)
     {
       i1 = 8388611;
-      if ((Cp(this.oZZ)) || (!Cf(this.oZZ))) {
+      if ((FR(this.sca)) || (!FG(this.sca))) {
         break label364;
       }
       k = 1;
       if ((!bool4) && (k == 0)) {
         break label370;
       }
-      i2 = paK;
+      i2 = scL;
       if ((paramBoolean2) || (bool5) || (bool6)) {
         break label385;
       }
       if ((!bool4) && (!bool2) && (!bool1) && (k == 0)) {
         break label378;
       }
-      i = paK;
+      i = scL;
       m = i;
       j = i;
       i = m;
       if ((!bool4) && (k == 0)) {
         break label473;
       }
-      this.pbc.setVisibility(0);
-      this.pbd.setVisibility(8);
-      this.pbe.setVisibility(8);
-      this.pbf.setVisibility(8);
+      this.sdc.setVisibility(0);
+      this.sdd.setVisibility(8);
+      this.sde.setVisibility(8);
+      this.sdf.setVisibility(8);
       m = 0;
       k = m;
-      if (!Cp(this.oZZ))
+      if (!FR(this.sca))
       {
         k = m;
-        if (Cf(this.oZZ)) {
+        if (FG(this.sca)) {
           k = getAppBrandVoipBallInfoIndex();
         }
       }
-      a(this.pbc, k);
-      localLayoutParams1 = (FrameLayout.LayoutParams)this.pbc.getLayoutParams();
+      a(this.sdc, k);
+      localLayoutParams1 = (FrameLayout.LayoutParams)this.sdc.getLayoutParams();
       localLayoutParams1.setMargins(j, i2, i, i2);
       localLayoutParams1.gravity = i1;
-      this.pbc.setLayoutParams(localLayoutParams1);
+      this.sdc.setLayoutParams(localLayoutParams1);
     }
     label364:
     label370:
     label378:
     while ((!bool3) && (!bool2) && (!bool1))
     {
-      localLayoutParams1 = (FrameLayout.LayoutParams)this.pbb.getLayoutParams();
+      localLayoutParams1 = (FrameLayout.LayoutParams)this.sdb.getLayoutParams();
       localLayoutParams1.gravity = (i1 | 0x10);
-      this.pbb.setLayoutParams(localLayoutParams1);
+      this.sdb.setLayoutParams(localLayoutParams1);
       if ((!bool2) && (!bool1)) {
         break label959;
       }
-      k = paG;
+      k = scH;
       AppMethodBeat.o(176983);
       return k * 2 + j + i;
       i1 = 8388613;
       break;
       k = 0;
       break label100;
-      i2 = paI;
+      i2 = scJ;
       break label115;
-      i = paL;
+      i = scM;
       break label153;
       if (paramBoolean1)
       {
         if ((bool5) && (!bool6))
         {
-          j = paI;
+          j = scJ;
           if (!bool5) {
             break label424;
           }
         }
-        for (i = paI;; i = paK)
+        for (i = scJ;; i = scL)
         {
           break;
-          j = paJ;
+          j = scK;
           break label404;
         }
       }
       if (bool5)
       {
-        j = paI;
+        j = scJ;
         if ((!bool5) || (bool6)) {
           break label466;
         }
       }
-      for (i = paI;; i = paJ)
+      for (i = scJ;; i = scK)
       {
         break;
-        j = paK;
+        j = scL;
         break label441;
       }
     }
@@ -795,363 +1024,164 @@ public class FloatBallView
     label441:
     label466:
     label473:
-    this.pbc.setVisibility(0);
-    this.pbd.setVisibility(0);
-    a(this.pbc, 0);
-    a(this.pbd, 1);
+    this.sdc.setVisibility(0);
+    this.sdd.setVisibility(0);
+    a(this.sdc, 0);
+    a(this.sdd, 1);
     int n;
     int i3;
     if (bool2)
     {
-      this.pbe.setVisibility(0);
-      this.pbf.setVisibility(8);
-      a(this.pbe, 2);
+      this.sde.setVisibility(0);
+      this.sdf.setVisibility(8);
+      a(this.sde, 2);
       if (paramBoolean1)
       {
-        m = j + paG;
+        m = j + scH;
         n = 0;
         k = i;
         i3 = j;
         label575:
-        localLayoutParams1 = (FrameLayout.LayoutParams)this.pbe.getLayoutParams();
+        localLayoutParams1 = (FrameLayout.LayoutParams)this.sde.getLayoutParams();
         localLayoutParams1.setMargins(i3, 0, n, 0);
         localLayoutParams1.gravity = (i1 | 0x10);
-        this.pbe.setLayoutParams(localLayoutParams1);
+        this.sde.setLayoutParams(localLayoutParams1);
         n = m;
         m = k;
       }
     }
     for (;;)
     {
-      localLayoutParams1 = (FrameLayout.LayoutParams)this.pbc.getLayoutParams();
+      localLayoutParams1 = (FrameLayout.LayoutParams)this.sdc.getLayoutParams();
       localLayoutParams1.setMargins(n, i2, m, 0);
       localLayoutParams1.gravity = i1;
-      this.pbc.setLayoutParams(localLayoutParams1);
-      FrameLayout.LayoutParams localLayoutParams2 = (FrameLayout.LayoutParams)this.pbd.getLayoutParams();
-      k = paG;
+      this.sdc.setLayoutParams(localLayoutParams1);
+      FrameLayout.LayoutParams localLayoutParams2 = (FrameLayout.LayoutParams)this.sdd.getLayoutParams();
+      k = scH;
       localLayoutParams2.setMargins(n, localLayoutParams1.topMargin + k, m, i2);
       localLayoutParams2.gravity = i1;
-      this.pbd.setLayoutParams(localLayoutParams2);
+      this.sdd.setLayoutParams(localLayoutParams2);
       break;
       i3 = 0;
-      k = paG;
+      k = scH;
       n = i;
       k += i;
       m = j;
       break label575;
       if (bool1)
       {
-        this.pbe.setVisibility(0);
-        this.pbf.setVisibility(0);
-        a(this.pbe, 2);
-        a(this.pbf, 3);
+        this.sde.setVisibility(0);
+        this.sdf.setVisibility(0);
+        a(this.sde, 2);
+        a(this.sdf, 3);
         if (paramBoolean1)
         {
-          k = paG;
+          k = scH;
           n = 0;
           m = i;
           k += j;
         }
         for (i3 = j;; i3 = 0)
         {
-          localLayoutParams1 = (FrameLayout.LayoutParams)this.pbe.getLayoutParams();
+          localLayoutParams1 = (FrameLayout.LayoutParams)this.sde.getLayoutParams();
           localLayoutParams1.setMargins(i3, i2, n, 0);
           localLayoutParams1.gravity = i1;
-          this.pbe.setLayoutParams(localLayoutParams1);
-          localLayoutParams2 = (FrameLayout.LayoutParams)this.pbf.getLayoutParams();
-          int i4 = paG;
+          this.sde.setLayoutParams(localLayoutParams1);
+          localLayoutParams2 = (FrameLayout.LayoutParams)this.sdf.getLayoutParams();
+          int i4 = scH;
           localLayoutParams2.setMargins(i3, localLayoutParams1.topMargin + i4, n, 0);
           localLayoutParams2.gravity = i1;
-          this.pbf.setLayoutParams(localLayoutParams2);
+          this.sdf.setLayoutParams(localLayoutParams2);
           n = k;
           break;
-          k = paG;
+          k = scH;
           n = i;
           m = k + i;
           k = j;
         }
       }
-      this.pbf.setVisibility(8);
-      this.pbe.setVisibility(8);
+      this.sdf.setVisibility(8);
+      this.sde.setVisibility(8);
       m = i;
       n = j;
     }
     label959:
-    int k = paG;
+    int k = scH;
     AppMethodBeat.o(176983);
     return k + j + i;
   }
   
-  private static boolean CA(int paramInt)
+  private static boolean Ga(int paramInt)
   {
-    AppMethodBeat.i(217106);
-    if ((Ck(paramInt)) && (!Cd(paramInt)) && (!Ce(paramInt)))
+    AppMethodBeat.i(187121);
+    if ((FQ(paramInt)) && (FE(paramInt)) && (!FH(paramInt)))
     {
-      AppMethodBeat.o(217106);
+      AppMethodBeat.o(187121);
       return true;
     }
-    AppMethodBeat.o(217106);
+    AppMethodBeat.o(187121);
     return false;
   }
   
-  private static boolean CB(int paramInt)
+  private static boolean Gb(int paramInt)
   {
-    AppMethodBeat.i(217107);
-    if ((Cd(paramInt)) && (Cg(paramInt)) && (!Ce(paramInt)))
+    AppMethodBeat.i(187123);
+    if ((FJ(paramInt)) && (!FE(paramInt)) && (!FF(paramInt)))
     {
-      AppMethodBeat.o(217107);
+      AppMethodBeat.o(187123);
       return true;
     }
-    AppMethodBeat.o(217107);
+    AppMethodBeat.o(187123);
     return false;
   }
   
-  private int Ca(int paramInt)
+  private static boolean Gc(int paramInt)
   {
-    AppMethodBeat.i(217097);
-    paramInt = h(Ch(paramInt), Ck(paramInt), Cc(paramInt));
-    AppMethodBeat.o(217097);
-    return paramInt;
-  }
-  
-  private int Cb(int paramInt)
-  {
-    AppMethodBeat.i(217098);
-    paramInt = a(paramInt, Ch(paramInt), Ck(paramInt), Cc(paramInt));
-    AppMethodBeat.o(217098);
-    return paramInt;
-  }
-  
-  private static boolean Cd(int paramInt)
-  {
-    return (paramInt & 0x1) != 0;
-  }
-  
-  private static boolean Ce(int paramInt)
-  {
-    AppMethodBeat.i(176994);
-    if ((Cl(paramInt)) || (Cm(paramInt)) || (Cn(paramInt)) || (Co(paramInt)))
+    AppMethodBeat.i(187125);
+    if ((FM(paramInt)) && (!FE(paramInt)) && (!FF(paramInt)))
     {
-      AppMethodBeat.o(176994);
+      AppMethodBeat.o(187125);
       return true;
     }
-    AppMethodBeat.o(176994);
+    AppMethodBeat.o(187125);
     return false;
   }
   
-  private static boolean Cf(int paramInt)
+  private static boolean Gd(int paramInt)
   {
-    return ((paramInt & 0x100) != 0) || ((paramInt & 0x200) != 0);
-  }
-  
-  private static boolean Cg(int paramInt)
-  {
-    AppMethodBeat.i(217102);
-    if ((Ch(paramInt)) || (Ck(paramInt)))
+    AppMethodBeat.i(187128);
+    if ((FI(paramInt)) && (!FE(paramInt)) && (!FF(paramInt)))
     {
-      AppMethodBeat.o(217102);
+      AppMethodBeat.o(187128);
       return true;
     }
-    AppMethodBeat.o(217102);
+    AppMethodBeat.o(187128);
     return false;
   }
   
-  public static boolean Ch(int paramInt)
+  private static boolean Ge(int paramInt)
   {
-    return (paramInt & 0x8) != 0;
-  }
-  
-  private static boolean Ci(int paramInt)
-  {
-    return (paramInt & 0x400) != 0;
-  }
-  
-  private static boolean Cj(int paramInt)
-  {
-    return (paramInt & 0x800) != 0;
-  }
-  
-  public static boolean Ck(int paramInt)
-  {
-    return (paramInt & 0x10) != 0;
-  }
-  
-  private static boolean Cl(int paramInt)
-  {
-    return (paramInt & 0x2) != 0;
-  }
-  
-  private static boolean Cm(int paramInt)
-  {
-    return (paramInt & 0x4) != 0;
-  }
-  
-  private static boolean Cn(int paramInt)
-  {
-    return (paramInt & 0x40) != 0;
-  }
-  
-  private static boolean Co(int paramInt)
-  {
-    return (paramInt & 0x80) != 0;
-  }
-  
-  private static boolean Cp(int paramInt)
-  {
-    return (paramInt & 0x20) != 0;
-  }
-  
-  private static boolean Cq(int paramInt)
-  {
-    AppMethodBeat.i(176996);
-    if ((Cd(paramInt)) && (!Cg(paramInt)) && (!Ce(paramInt)))
+    AppMethodBeat.i(187139);
+    if ((FE(paramInt)) && (FH(paramInt)) && (!FF(paramInt)))
     {
-      AppMethodBeat.o(176996);
+      AppMethodBeat.o(187139);
       return true;
     }
-    AppMethodBeat.o(176996);
-    return false;
-  }
-  
-  private static boolean Cr(int paramInt)
-  {
-    AppMethodBeat.i(176997);
-    if ((Cl(paramInt)) && (!Cg(paramInt)) && (!Cd(paramInt)))
-    {
-      AppMethodBeat.o(176997);
-      return true;
-    }
-    AppMethodBeat.o(176997);
-    return false;
-  }
-  
-  private static boolean Cs(int paramInt)
-  {
-    AppMethodBeat.i(176998);
-    if ((Cm(paramInt)) && (!Cg(paramInt)) && (!Cd(paramInt)))
-    {
-      AppMethodBeat.o(176998);
-      return true;
-    }
-    AppMethodBeat.o(176998);
-    return false;
-  }
-  
-  private static boolean Ct(int paramInt)
-  {
-    AppMethodBeat.i(176999);
-    if ((Cn(paramInt)) && (!Cg(paramInt)) && (!Cd(paramInt)))
-    {
-      AppMethodBeat.o(176999);
-      return true;
-    }
-    AppMethodBeat.o(176999);
-    return false;
-  }
-  
-  private static boolean Cu(int paramInt)
-  {
-    AppMethodBeat.i(217103);
-    if ((Co(paramInt)) && (!Cg(paramInt)) && (!Cd(paramInt)))
-    {
-      AppMethodBeat.o(217103);
-      return true;
-    }
-    AppMethodBeat.o(217103);
-    return false;
-  }
-  
-  private static boolean Cv(int paramInt)
-  {
-    AppMethodBeat.i(177000);
-    if ((Cl(paramInt)) && (Cd(paramInt)) && (!Cg(paramInt)))
-    {
-      AppMethodBeat.o(177000);
-      return true;
-    }
-    AppMethodBeat.o(177000);
-    return false;
-  }
-  
-  private static boolean Cw(int paramInt)
-  {
-    AppMethodBeat.i(177001);
-    if ((Cm(paramInt)) && (Cd(paramInt)) && (!Cg(paramInt)))
-    {
-      AppMethodBeat.o(177001);
-      return true;
-    }
-    AppMethodBeat.o(177001);
-    return false;
-  }
-  
-  private static boolean Cx(int paramInt)
-  {
-    AppMethodBeat.i(177002);
-    if ((Cn(paramInt)) && (Cd(paramInt)) && (!Cg(paramInt)))
-    {
-      AppMethodBeat.o(177002);
-      return true;
-    }
-    AppMethodBeat.o(177002);
-    return false;
-  }
-  
-  private static boolean Cy(int paramInt)
-  {
-    AppMethodBeat.i(217104);
-    if ((Co(paramInt)) && (Cd(paramInt)) && (!Cg(paramInt)))
-    {
-      AppMethodBeat.o(217104);
-      return true;
-    }
-    AppMethodBeat.o(217104);
-    return false;
-  }
-  
-  private static boolean Cz(int paramInt)
-  {
-    AppMethodBeat.i(217105);
-    if ((Ch(paramInt)) && (!Cd(paramInt)) && (!Ce(paramInt)))
-    {
-      AppMethodBeat.o(217105);
-      return true;
-    }
-    AppMethodBeat.o(217105);
-    return false;
-  }
-  
-  private boolean G(MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(106453);
-    if ((Math.abs(paramMotionEvent.getRawX() - this.pbE.x) > this.paR) || (Math.abs(paramMotionEvent.getRawY() - this.pbE.y) > this.paR))
-    {
-      AppMethodBeat.o(106453);
-      return true;
-    }
-    AppMethodBeat.o(106453);
+    AppMethodBeat.o(187139);
     return false;
   }
   
   private int H(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(106454);
-    int i = (int)Math.max(Math.min(this.pbF.x + paramMotionEvent.getRawX() - this.pbE.x, this.pbD.x), 0.0F);
-    AppMethodBeat.o(106454);
-    return i;
-  }
-  
-  private int I(MotionEvent paramMotionEvent)
-  {
     AppMethodBeat.i(106455);
-    int i = (int)Math.max(Math.min(this.pbF.y + paramMotionEvent.getRawY() - this.pbE.y, this.pbD.y), 0.0F);
+    int i = (int)Math.max(Math.min(this.sdF.y + paramMotionEvent.getRawY() - this.sdE.y, this.sdD.y), 0.0F);
     AppMethodBeat.o(106455);
     return i;
   }
   
   private static boolean K(BallInfo paramBallInfo)
   {
-    return (paramBallInfo != null) && ((paramBallInfo.state == 4) || (paramBallInfo.state == 512));
+    return (paramBallInfo != null) && (paramBallInfo.state == 2048);
   }
   
   private void L(int paramInt, long paramLong)
@@ -1159,50 +1189,55 @@ public class FloatBallView
     AppMethodBeat.i(176984);
     if (paramInt == 0)
     {
-      a(this.pbc, paramLong);
+      a(this.sdc, paramLong);
       AppMethodBeat.o(176984);
       return;
     }
     if (paramInt == 1)
     {
-      a(this.pbd, paramLong);
+      a(this.sdd, paramLong);
       AppMethodBeat.o(176984);
       return;
     }
     if (paramInt == 2)
     {
-      a(this.pbe, paramLong);
+      a(this.sde, paramLong);
       AppMethodBeat.o(176984);
       return;
     }
     if (paramInt == 3) {
-      a(this.pbf, paramLong);
+      a(this.sdf, paramLong);
     }
     AppMethodBeat.o(176984);
   }
   
   private static boolean L(BallInfo paramBallInfo)
   {
+    return (paramBallInfo != null) && ((paramBallInfo.state == 4) || (paramBallInfo.state == 512));
+  }
+  
+  private static boolean M(BallInfo paramBallInfo)
+  {
     return (paramBallInfo != null) && ((paramBallInfo.state == 8) || (paramBallInfo.state == 1024));
   }
   
-  private void N(MotionEvent paramMotionEvent)
+  private void U(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(217083);
-    this.pbE.x = paramMotionEvent.getRawX();
-    this.pbE.y = paramMotionEvent.getRawY();
+    AppMethodBeat.i(186983);
+    this.sdE.x = paramMotionEvent.getRawX();
+    this.sdE.y = paramMotionEvent.getRawY();
     paramMotionEvent = (WindowManager.LayoutParams)getLayoutParams();
-    this.pbF.x = paramMotionEvent.x;
-    this.pbF.y = paramMotionEvent.y;
-    AppMethodBeat.o(217083);
+    this.sdF.x = paramMotionEvent.x;
+    this.sdF.y = paramMotionEvent.y;
+    AppMethodBeat.o(186983);
   }
   
-  private void O(MotionEvent paramMotionEvent)
+  private void V(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(106475);
     Iterator localIterator = this.listeners.iterator();
     while (localIterator.hasNext()) {
-      ((com.tencent.mm.plugin.ball.c.g)localIterator.next()).M(paramMotionEvent);
+      ((g)localIterator.next()).T(paramMotionEvent);
     }
     AppMethodBeat.o(106475);
   }
@@ -1210,18 +1245,18 @@ public class FloatBallView
   private void Y(int paramInt, boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.pbG = (paramInt / this.pbD.y);
+      this.sdG = (paramInt / this.sdD.y);
     }
-    this.pbH = paramInt;
+    this.sdH = paramInt;
   }
   
   private void a(CircleAnimateView paramCircleAnimateView, int paramInt)
   {
     AppMethodBeat.i(176986);
-    if ((com.tencent.mm.plugin.ball.f.d.h(this.pbz)) && (this.pbz.size() > paramInt))
+    if ((com.tencent.mm.plugin.ball.f.d.checkListNotEmpty(this.sdz)) && (this.sdz.size() > paramInt))
     {
-      BallInfo localBallInfo = (BallInfo)this.pbz.get(paramInt);
-      paramInt = com.tencent.mm.plugin.ball.f.d.BM(localBallInfo.state);
+      BallInfo localBallInfo = (BallInfo)this.sdz.get(paramInt);
+      paramInt = com.tencent.mm.plugin.ball.f.d.Fn(localBallInfo.state);
       if (-1 != paramInt)
       {
         com.tencent.mm.svg.a.a locala = new com.tencent.mm.svg.a.a();
@@ -1259,18 +1294,18 @@ public class FloatBallView
   private void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
   {
     AppMethodBeat.i(176989);
-    if ((this.pbY == paramBoolean1) && (this.pbZ == paramBoolean2) && (this.pbX == paramBoolean3) && (this.pca == paramInt))
+    if ((this.sdY == paramBoolean1) && (this.sdZ == paramBoolean2) && (this.sdX == paramBoolean3) && (this.sea == paramInt))
     {
       AppMethodBeat.o(176989);
       return;
     }
     Log.i("MicroMsg.FloatBallView", "updateFloatBallBackground, isSettled:%s, isDockLeft:%s, isManual:%s, state:%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), Integer.valueOf(paramInt) });
-    this.pca = paramInt;
-    this.pbX = paramBoolean3;
-    this.pbY = paramBoolean1;
-    this.pbZ = paramBoolean2;
-    boolean bool1 = Cg(paramInt);
-    boolean bool2 = Cr(paramInt);
+    this.sea = paramInt;
+    this.sdX = paramBoolean3;
+    this.sdY = paramBoolean1;
+    this.sdZ = paramBoolean2;
+    boolean bool1 = FH(paramInt);
+    boolean bool2 = FT(paramInt);
     if (paramBoolean1)
     {
       if (paramBoolean2)
@@ -1279,33 +1314,33 @@ public class FloatBallView
         {
           if (bool1)
           {
-            this.paX.setBackground(this.pbv);
+            this.scX.setBackground(this.sdv);
             AppMethodBeat.o(176989);
             return;
           }
           if (bool2)
           {
-            this.paX.setBackground(this.pbp);
+            this.scX.setBackground(this.sdp);
             AppMethodBeat.o(176989);
             return;
           }
-          this.paX.setBackground(this.pbj);
+          this.scX.setBackground(this.sdj);
           AppMethodBeat.o(176989);
           return;
         }
         if (bool1)
         {
-          this.paX.setBackground(this.pbs);
+          this.scX.setBackground(this.sds);
           AppMethodBeat.o(176989);
           return;
         }
         if (bool2)
         {
-          this.paX.setBackground(this.pbm);
+          this.scX.setBackground(this.sdm);
           AppMethodBeat.o(176989);
           return;
         }
-        this.paX.setBackground(this.pbg);
+        this.scX.setBackground(this.sdg);
         AppMethodBeat.o(176989);
         return;
       }
@@ -1313,33 +1348,33 @@ public class FloatBallView
       {
         if (bool1)
         {
-          this.paX.setBackground(this.pbw);
+          this.scX.setBackground(this.sdw);
           AppMethodBeat.o(176989);
           return;
         }
         if (bool2)
         {
-          this.paX.setBackground(this.pbq);
+          this.scX.setBackground(this.sdq);
           AppMethodBeat.o(176989);
           return;
         }
-        this.paX.setBackground(this.pbk);
+        this.scX.setBackground(this.sdk);
         AppMethodBeat.o(176989);
         return;
       }
       if (bool1)
       {
-        this.paX.setBackground(this.pbt);
+        this.scX.setBackground(this.sdt);
         AppMethodBeat.o(176989);
         return;
       }
       if (bool2)
       {
-        this.paX.setBackground(this.pbn);
+        this.scX.setBackground(this.sdn);
         AppMethodBeat.o(176989);
         return;
       }
-      this.paX.setBackground(this.pbh);
+      this.scX.setBackground(this.sdh);
       AppMethodBeat.o(176989);
       return;
     }
@@ -1347,329 +1382,376 @@ public class FloatBallView
     {
       if (bool1)
       {
-        this.paX.setBackground(this.pbx);
+        this.scX.setBackground(this.sdx);
         AppMethodBeat.o(176989);
         return;
       }
       if (bool2)
       {
-        this.paX.setBackground(this.pbr);
+        this.scX.setBackground(this.sdr);
         AppMethodBeat.o(176989);
         return;
       }
-      this.paX.setBackground(this.pbl);
+      this.scX.setBackground(this.sdl);
       AppMethodBeat.o(176989);
       return;
     }
     if (bool1)
     {
-      this.paX.setBackground(this.pbu);
+      this.scX.setBackground(this.sdu);
       AppMethodBeat.o(176989);
       return;
     }
     if (bool2)
     {
-      this.paX.setBackground(this.pbo);
+      this.scX.setBackground(this.sdo);
       AppMethodBeat.o(176989);
       return;
     }
-    this.paX.setBackground(this.pbi);
+    this.scX.setBackground(this.sdi);
     AppMethodBeat.o(176989);
   }
   
-  private void cjA()
+  private void cn(List<BallInfo> paramList)
   {
-    AppMethodBeat.i(217094);
-    if (((int)getAlpha() == 1) && (getVisibility() == 0))
+    AppMethodBeat.i(106443);
+    this.scb = this.sca;
+    this.sca = 0;
+    if (AppForegroundDelegate.fby.cQt) {
+      this.sca |= 0x20;
+    }
+    List localList = com.tencent.mm.plugin.ball.f.d.cf(com.tencent.mm.plugin.ball.f.d.cd(com.tencent.mm.plugin.ball.f.d.ce(paramList)));
+    this.sdz = com.tencent.mm.plugin.ball.f.d.ca(localList);
+    int i = com.tencent.mm.plugin.ball.f.d.Fl(com.tencent.mm.plugin.ball.f.d.ck(localList));
+    boolean bool1 = com.tencent.mm.plugin.ball.f.d.cb(com.tencent.mm.plugin.ball.f.d.ci(paramList));
+    if (bool1) {
+      this.sca |= 0x1;
+    }
+    boolean bool3;
+    boolean bool4;
+    if (i == 1)
     {
-      int i = getResources().getConfiguration().orientation;
-      if (i != this.lastOrientation)
-      {
-        Log.i("MicroMsg.FloatBallView", "alvinluo checkOrientationIfNeed currentOrientation: %d, lastOrientation: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.lastOrientation) });
-        BR(i);
+      this.sca |= 0x2;
+      this.scc = i;
+      this.sdL = com.tencent.mm.plugin.ball.f.d.cg(paramList);
+      boolean bool2 = K(this.sdL);
+      bool3 = L(this.sdL);
+      bool4 = M(this.sdL);
+      if (!bool2) {
+        break label387;
       }
-    }
-    AppMethodBeat.o(217094);
-  }
-  
-  private void cjB()
-  {
-    AppMethodBeat.i(217095);
-    if (!this.pbP)
-    {
-      AppMethodBeat.o(217095);
-      return;
-    }
-    try
-    {
-      WindowManager.LayoutParams localLayoutParams;
-      int i;
-      if ((this.pbN.x != 0) || (this.pbN.y != 0))
+      this.sca |= 0x1000;
+      label163:
+      if (this.sdL != null)
       {
-        localLayoutParams = (WindowManager.LayoutParams)getLayoutParams();
-        if (!this.pbC) {
-          break label103;
+        if (this.sdL.state != 512) {
+          break label422;
         }
-        i = 0;
+        this.sca |= 0x400;
       }
-      for (;;)
+      label195:
+      if ((this.sdL != null) && (this.sdL.bFK != null)) {
+        setCustomView(this.sdL);
+      }
+      this.sdM = com.tencent.mm.plugin.ball.f.d.ch(paramList);
+      if (this.sdM != null)
       {
-        int j = localLayoutParams.y;
-        int k = this.pbN.y;
-        cjC();
-        this.pbQ = 16;
-        cjz();
-        e(i, j + k, true, false);
-        AppMethodBeat.o(217095);
-        return;
-        label103:
-        i = localLayoutParams.x;
-        j = this.pbN.x;
-        i += j;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      Log.printErrStackTrace("MicroMsg.FloatBallView", localException, "alvinluo resetFloatBallViewSizeAndPosition", new Object[0]);
-      AppMethodBeat.o(217095);
-    }
-  }
-  
-  private void cjC()
-  {
-    AppMethodBeat.i(217096);
-    Log.v("MicroMsg.FloatBallView", "alvinluo resetExtraSize");
-    this.pbN.x = 0;
-    this.pbN.y = 0;
-    AppMethodBeat.o(217096);
-  }
-  
-  private void cjp()
-  {
-    AppMethodBeat.i(176977);
-    if (Cg(this.oZZ))
-    {
-      View localView = this.lrc;
-      if ((Cd(this.oZZ)) || (Ce(this.oZZ))) {}
-      boolean bool;
-      for (int i = 0;; i = 4)
-      {
-        localView.setVisibility(i);
-        this.paY.setVisibility(0);
-        bool = Cc(this.oZZ);
-        if (!Ch(this.oZZ)) {
-          break label147;
+        if (this.sdM.state != 32) {
+          break label450;
         }
-        if (!Cz(this.oZZ)) {
-          break;
-        }
-        this.lrc.setVisibility(4);
-        g(true, false, bool);
-        this.paZ.setVisibility(8);
-        AppMethodBeat.o(176977);
-        return;
-      }
-      g(true, false, bool);
-      this.paZ.setVisibility(0);
-      cjq();
-      AppMethodBeat.o(176977);
-      return;
-      label147:
-      if (CA(this.oZZ))
-      {
-        this.lrc.setVisibility(4);
-        g(false, true, bool);
-        this.paZ.setVisibility(8);
-        AppMethodBeat.o(176977);
-        return;
-      }
-      g(false, true, bool);
-      this.paZ.setVisibility(0);
-      cjq();
-      AppMethodBeat.o(176977);
-      return;
-    }
-    this.lrc.setVisibility(8);
-    this.paY.setVisibility(8);
-    this.paZ.setVisibility(0);
-    cjq();
-    AppMethodBeat.o(176977);
-  }
-  
-  private void cjq()
-  {
-    AppMethodBeat.i(176978);
-    Object localObject = (LinearLayout.LayoutParams)this.paZ.getLayoutParams();
-    if (Cg(this.oZZ)) {}
-    for (int i = 8388629;; i = 8388627)
-    {
-      ((LinearLayout.LayoutParams)localObject).gravity = i;
-      this.paZ.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      if ((!Cd(this.oZZ)) || (!Ce(this.oZZ))) {
-        break;
-      }
-      cjt();
-      AppMethodBeat.o(176978);
-      return;
-    }
-    if ((CB(this.oZZ)) || (Cq(this.oZZ)))
-    {
-      this.pbb.setVisibility(8);
-      this.pba.setVisibility(0);
-      localObject = (FrameLayout.LayoutParams)this.pba.getLayoutParams();
-      ((FrameLayout.LayoutParams)localObject).gravity = 8388629;
-      i = paJ;
-      int j = paJ;
-      ((FrameLayout.LayoutParams)localObject).setMargins(i, i, j, j);
-      this.pba.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      AppMethodBeat.o(176978);
-      return;
-    }
-    if (Ce(this.oZZ))
-    {
-      this.pba.setVisibility(8);
-      C(true, true);
-    }
-    AppMethodBeat.o(176978);
-  }
-  
-  private void cjr()
-  {
-    AppMethodBeat.i(176979);
-    int i;
-    boolean bool;
-    if (Cg(this.oZZ))
-    {
-      View localView = this.lrc;
-      if ((Cd(this.oZZ)) || (Ce(this.oZZ)))
-      {
-        i = 0;
-        localView.setVisibility(i);
-        this.paY.setVisibility(0);
-        bool = Cc(this.oZZ);
-        if (!Ch(this.oZZ)) {
-          break label148;
-        }
-        if (!Cz(this.oZZ)) {
-          break label126;
-        }
-        this.lrc.setVisibility(4);
-        g(true, false, bool);
-        this.paZ.setVisibility(8);
+        this.sca |= 0x100;
       }
     }
     for (;;)
     {
-      cjv();
+      Log.i("MicroMsg.FloatBallView", ">>> updateFloatBallViewLayoutState, state:[%s => %s], active:%s, passiveCnt:%d, video:%s, audio:%s <<<", new Object[] { Integer.valueOf(this.scb), Integer.valueOf(this.sca), Boolean.valueOf(bool1), Integer.valueOf(i), Boolean.valueOf(bool3), Boolean.valueOf(bool4) });
+      AppMethodBeat.o(106443);
+      return;
+      if (i == 2)
+      {
+        this.sca |= 0x4;
+        break;
+      }
+      if (i == 3)
+      {
+        this.sca |= 0x40;
+        break;
+      }
+      if (i != 4) {
+        break;
+      }
+      this.sca |= 0x80;
+      break;
+      label387:
+      if (bool3) {
+        this.sca |= 0x8;
+      }
+      if (!bool4) {
+        break label163;
+      }
+      this.sca |= 0x10;
+      break label163;
+      label422:
+      if (this.sdL.state != 1024) {
+        break label195;
+      }
+      this.sca |= 0x800;
+      break label195;
+      label450:
+      if (this.sdM.state == 64) {
+        this.sca |= 0x200;
+      }
+    }
+  }
+  
+  private static String co(List<BallInfo> paramList)
+  {
+    AppMethodBeat.i(106474);
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    while (i < paramList.size())
+    {
+      BallInfo localBallInfo = (BallInfo)paramList.get(i);
+      localStringBuilder.append(localBallInfo.key).append(localBallInfo.type).append(localBallInfo.icon).append(localBallInfo.qpN).append(localBallInfo.state).append(localBallInfo.rYr).append(localBallInfo.qmt).append(localBallInfo.progress);
+      if ((com.tencent.mm.plugin.ball.f.d.H(localBallInfo)) && (localBallInfo.bFK != null)) {
+        localStringBuilder.append(localBallInfo.bFK.hashCode());
+      }
+      localStringBuilder.append("|");
+      i += 1;
+    }
+    paramList = MD5Util.getMD5String(localStringBuilder.toString());
+    AppMethodBeat.o(106474);
+    return paramList;
+  }
+  
+  private void cwG()
+  {
+    AppMethodBeat.i(176977);
+    if (FH(this.sca))
+    {
+      View localView = this.olM;
+      if ((FE(this.sca)) || (FF(this.sca))) {}
+      boolean bool;
+      for (int i = 0;; i = 4)
+      {
+        localView.setVisibility(i);
+        this.scY.setVisibility(0);
+        bool = FD(this.sca);
+        if ((!FJ(this.sca)) && (!FI(this.sca))) {
+          break label167;
+        }
+        if ((!Gb(this.sca)) && (!Gd(this.sca))) {
+          break;
+        }
+        this.olM.setVisibility(4);
+        f(true, false, bool);
+        this.scZ.setVisibility(8);
+        AppMethodBeat.o(176977);
+        return;
+      }
+      f(true, false, bool);
+      this.scZ.setVisibility(0);
+      cwH();
+      AppMethodBeat.o(176977);
+      return;
+      label167:
+      if (FM(this.sca))
+      {
+        if (Gc(this.sca))
+        {
+          this.olM.setVisibility(4);
+          f(false, true, bool);
+          this.scZ.setVisibility(8);
+          AppMethodBeat.o(176977);
+          return;
+        }
+        f(false, true, bool);
+        this.scZ.setVisibility(0);
+        cwH();
+      }
+      AppMethodBeat.o(176977);
+      return;
+    }
+    this.olM.setVisibility(8);
+    this.scY.setVisibility(8);
+    this.scZ.setVisibility(0);
+    cwH();
+    AppMethodBeat.o(176977);
+  }
+  
+  private void cwH()
+  {
+    AppMethodBeat.i(176978);
+    Object localObject = (LinearLayout.LayoutParams)this.scZ.getLayoutParams();
+    if (FH(this.sca)) {}
+    for (int i = 8388629;; i = 8388627)
+    {
+      ((LinearLayout.LayoutParams)localObject).gravity = i;
+      this.scZ.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      if ((!FE(this.sca)) || (!FF(this.sca))) {
+        break;
+      }
+      cwK();
+      AppMethodBeat.o(176978);
+      return;
+    }
+    if ((Ge(this.sca)) || (FS(this.sca)))
+    {
+      this.sdb.setVisibility(8);
+      this.sda.setVisibility(0);
+      localObject = (FrameLayout.LayoutParams)this.sda.getLayoutParams();
+      ((FrameLayout.LayoutParams)localObject).gravity = 8388629;
+      i = scK;
+      int j = scK;
+      ((FrameLayout.LayoutParams)localObject).setMargins(i, i, j, j);
+      this.sda.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      AppMethodBeat.o(176978);
+      return;
+    }
+    if (FF(this.sca))
+    {
+      this.sda.setVisibility(8);
+      G(true, true);
+    }
+    AppMethodBeat.o(176978);
+  }
+  
+  private void cwI()
+  {
+    AppMethodBeat.i(176979);
+    int i;
+    boolean bool;
+    if (FH(this.sca))
+    {
+      View localView = this.olM;
+      if ((FE(this.sca)) || (FF(this.sca)))
+      {
+        i = 0;
+        localView.setVisibility(i);
+        this.scY.setVisibility(0);
+        bool = FD(this.sca);
+        if ((!FJ(this.sca)) && (!FI(this.sca))) {
+          break label168;
+        }
+        if ((!Gb(this.sca)) && (!Gd(this.sca))) {
+          break label146;
+        }
+        this.olM.setVisibility(4);
+        f(true, false, bool);
+        this.scZ.setVisibility(8);
+      }
+    }
+    for (;;)
+    {
+      cwM();
       AppMethodBeat.o(176979);
       return;
       i = 4;
       break;
-      label126:
-      g(true, false, bool);
-      this.paZ.setVisibility(0);
-      cjs();
+      label146:
+      f(true, false, bool);
+      this.scZ.setVisibility(0);
+      cwJ();
       continue;
-      label148:
-      if (CA(this.oZZ))
+      label168:
+      if (Gc(this.sca))
       {
-        this.lrc.setVisibility(4);
-        g(false, true, bool);
-        this.paZ.setVisibility(8);
+        this.olM.setVisibility(4);
+        f(false, true, bool);
+        this.scZ.setVisibility(8);
       }
       else
       {
-        g(false, true, bool);
-        this.paZ.setVisibility(0);
-        cjs();
+        f(false, true, bool);
+        this.scZ.setVisibility(0);
+        cwJ();
         continue;
-        this.lrc.setVisibility(8);
-        this.paY.setVisibility(8);
-        this.paZ.setVisibility(0);
-        cjs();
+        this.olM.setVisibility(8);
+        this.scY.setVisibility(8);
+        this.scZ.setVisibility(0);
+        cwJ();
       }
     }
   }
   
-  private void cjs()
+  private void cwJ()
   {
     AppMethodBeat.i(176980);
-    Object localObject = (LinearLayout.LayoutParams)this.paZ.getLayoutParams();
-    if (Cg(this.oZZ)) {}
+    Object localObject = (LinearLayout.LayoutParams)this.scZ.getLayoutParams();
+    if (FH(this.sca)) {}
     for (int i = 8388627;; i = 8388629)
     {
       ((LinearLayout.LayoutParams)localObject).gravity = i;
-      this.paZ.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      if ((!Cd(this.oZZ)) || (!Ce(this.oZZ))) {
+      this.scZ.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      if ((!FE(this.sca)) || (!FF(this.sca))) {
         break;
       }
-      cju();
+      cwL();
       AppMethodBeat.o(176980);
       return;
     }
-    if ((CB(this.oZZ)) || (Cq(this.oZZ)))
+    if ((Ge(this.sca)) || (FS(this.sca)))
     {
-      this.pbb.setVisibility(8);
-      this.pba.setVisibility(0);
-      localObject = (FrameLayout.LayoutParams)this.pba.getLayoutParams();
+      this.sdb.setVisibility(8);
+      this.sda.setVisibility(0);
+      localObject = (FrameLayout.LayoutParams)this.sda.getLayoutParams();
       ((FrameLayout.LayoutParams)localObject).gravity = 8388629;
-      i = paJ;
-      int j = paJ;
+      i = scK;
+      int j = scK;
       ((FrameLayout.LayoutParams)localObject).setMargins(i, i, j, j);
-      this.pba.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.sda.setLayoutParams((ViewGroup.LayoutParams)localObject);
       AppMethodBeat.o(176980);
       return;
     }
-    if (Ce(this.oZZ))
+    if (FF(this.sca))
     {
-      this.pba.setVisibility(8);
-      C(false, true);
+      this.sda.setVisibility(8);
+      G(false, true);
     }
     AppMethodBeat.o(176980);
   }
   
-  private void cjt()
+  private void cwK()
   {
     AppMethodBeat.i(176981);
-    int i = C(true, true);
-    this.pba.setVisibility(0);
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.pba.getLayoutParams();
+    int i = G(true, true);
+    this.sda.setVisibility(0);
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.sda.getLayoutParams();
     localLayoutParams.gravity = 8388627;
-    int j = paJ;
-    localLayoutParams.setMargins(i, j, j, paJ);
-    this.pba.setLayoutParams(localLayoutParams);
+    int j = scK;
+    localLayoutParams.setMargins(i, j, j, scK);
+    this.sda.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(176981);
   }
   
-  private void cju()
+  private void cwL()
   {
     AppMethodBeat.i(176982);
-    int i = C(false, true);
-    this.pba.setVisibility(0);
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.pba.getLayoutParams();
+    int i = G(false, true);
+    this.sda.setVisibility(0);
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.sda.getLayoutParams();
     localLayoutParams.gravity = 8388629;
-    int j = paJ;
-    localLayoutParams.setMargins(j, j, i, paJ);
-    this.pba.setLayoutParams(localLayoutParams);
+    int j = scK;
+    localLayoutParams.setMargins(j, j, i, scK);
+    this.sda.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(176982);
   }
   
-  private boolean cjv()
+  private boolean cwM()
   {
     AppMethodBeat.i(106451);
     WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)getLayoutParams();
     int i = localLayoutParams.x;
     int j = localLayoutParams.y;
-    if (BS(i))
+    if (Ft(i))
     {
-      i = Math.max(Math.min(i, this.pbD.x), 0);
-      j = Math.max(Math.min(j, this.pbD.y), 0);
-      int k = BV(i);
-      int m = BU(j);
+      i = Math.max(Math.min(i, this.sdD.x), 0);
+      j = Math.max(Math.min(j, this.sdD.y), 0);
+      int k = Fw(i);
+      int m = Fv(j);
       Log.i("MicroMsg.FloatBallView", "stickToScreenEdgeIfNeed, start:[%s, %s], target:[%s, %s]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
       if ((i != k) || (j != m)) {
-        e(k, m, true, false);
+        d(k, m, true, false);
       }
       AppMethodBeat.o(106451);
       return true;
@@ -1678,13 +1760,13 @@ public class FloatBallView
     return false;
   }
   
-  private void cjw()
+  private void cwN()
   {
     AppMethodBeat.i(176990);
     int i = 0;
-    while (i < this.pbz.size())
+    while (i < this.sdz.size())
     {
-      long l = ((BallInfo)this.pbz.get(i)).progress;
+      long l = ((BallInfo)this.sdz.get(i)).progress;
       if (l >= 0L) {
         L(i, l);
       }
@@ -1693,62 +1775,62 @@ public class FloatBallView
     AppMethodBeat.o(176990);
   }
   
-  private void cjx()
+  private void cwO()
   {
-    AppMethodBeat.i(217085);
-    if (this.oYj) {
+    AppMethodBeat.i(186991);
+    if (this.sak) {
       d(new AnimatorListenerAdapter()
       {
         public final void onAnimationCancel(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(217069);
+          AppMethodBeat.i(188846);
           super.onAnimationCancel(paramAnonymousAnimator);
           FloatBallView.a(FloatBallView.this, false);
-          AppMethodBeat.o(217069);
+          AppMethodBeat.o(188846);
         }
         
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(217068);
+          AppMethodBeat.i(188844);
           super.onAnimationEnd(paramAnonymousAnimator);
           FloatBallView.a(FloatBallView.this, false);
-          AppMethodBeat.o(217068);
+          AppMethodBeat.o(188844);
         }
         
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(217067);
+          AppMethodBeat.i(188842);
           super.onAnimationStart(paramAnonymousAnimator);
           FloatBallView.a(FloatBallView.this, true);
-          AppMethodBeat.o(217067);
+          AppMethodBeat.o(188842);
         }
       });
     }
-    AppMethodBeat.o(217085);
+    AppMethodBeat.o(186991);
   }
   
-  private void cjz()
+  private void cwQ()
   {
     AppMethodBeat.i(106468);
     int i;
     int k;
     int m;
     int j;
-    if (Cp(this.oZZ)) {
-      if (Cg(this.oZZ))
+    if (FR(this.sca)) {
+      if (FH(this.sca))
       {
-        i = Ca(this.oZZ);
-        k = this.pbO * 2 + i;
-        m = Cb(this.oZZ) + this.pbO * 2;
-        if (!Cd(this.oZZ))
+        i = FB(this.sca);
+        k = this.sdO * 2 + i;
+        m = FC(this.sca) + this.sdO * 2;
+        if (!FE(this.sca))
         {
           i = m;
           j = k;
-          if (!Ce(this.oZZ)) {}
+          if (!FF(this.sca)) {}
         }
         else
         {
-          i = m + (paH + paJ * 2 + paP);
+          i = m + (scI + scK * 2 + scQ);
           j = k;
         }
       }
@@ -1760,35 +1842,35 @@ public class FloatBallView
       if ((j != 0) && (i != 0))
       {
         int n = getExtendWidth();
-        j = this.pbN.x + (j + m + n);
-        i = this.pbN.y + (i + k);
+        j = this.sdN.x + (j + m + n);
+        i = this.sdN.y + (i + k);
       }
       for (;;)
       {
-        eY(j, i);
+        fx(j, i);
         AppMethodBeat.o(106468);
         return;
-        j = BW(this.oZZ);
-        i = BX(this.oZZ);
+        j = Fx(this.sca);
+        i = Fy(this.sca);
         break;
-        if (Cg(this.oZZ))
+        if (FH(this.sca))
         {
-          if ((this.pbL != null) && (this.pbL.oWu))
+          if ((this.sdL != null) && (this.sdL.rYu))
           {
             i = 0;
             j = 0;
             break;
           }
-          i = Ca(this.oZZ);
-          j = this.pbO * 2 + i;
-          i = Cb(this.oZZ) + this.pbO * 2;
+          i = FB(this.sca);
+          j = this.sdO * 2 + i;
+          i = FC(this.sca) + this.sdO * 2;
           break;
         }
-        if (!Cf(this.oZZ)) {
+        if (!FG(this.sca)) {
           break label291;
         }
-        j = paM;
-        i = paM;
+        j = scN;
+        i = scN;
         break;
         i = 0;
         j = 0;
@@ -1799,166 +1881,191 @@ public class FloatBallView
     }
   }
   
-  private void cr(List<BallInfo> paramList)
+  private void cwR()
   {
-    AppMethodBeat.i(106443);
-    this.paa = this.oZZ;
-    this.oZZ = 0;
-    if (AppForegroundDelegate.djR.cPB) {
-      this.oZZ |= 0x20;
-    }
-    List localList = com.tencent.mm.plugin.ball.f.d.cj(com.tencent.mm.plugin.ball.f.d.ch(com.tencent.mm.plugin.ball.f.d.ci(paramList)));
-    this.pbz = com.tencent.mm.plugin.ball.f.d.ce(localList);
-    int i = com.tencent.mm.plugin.ball.f.d.BK(com.tencent.mm.plugin.ball.f.d.co(localList));
-    boolean bool1 = com.tencent.mm.plugin.ball.f.d.cf(com.tencent.mm.plugin.ball.f.d.cm(paramList));
-    if (bool1) {
-      this.oZZ |= 0x1;
-    }
-    boolean bool2;
-    boolean bool3;
-    if (i == 1)
+    AppMethodBeat.i(187043);
+    if (((int)getAlpha() == 1) && (getVisibility() == 0))
     {
-      this.oZZ |= 0x2;
-      this.pab = i;
-      this.pbL = com.tencent.mm.plugin.ball.f.d.ck(paramList);
-      bool2 = K(this.pbL);
-      bool3 = L(this.pbL);
-      if (bool2) {
-        this.oZZ |= 0x8;
-      }
-      if (bool3) {
-        this.oZZ |= 0x10;
-      }
-      if (this.pbL != null)
+      int i = getResources().getConfiguration().orientation;
+      if (i != this.lastOrientation)
       {
-        if (this.pbL.state != 512) {
-          break label393;
-        }
-        this.oZZ |= 0x400;
-      }
-      label201:
-      if ((this.pbL != null) && (this.pbL.vk != null)) {
-        setCustomView(this.pbL);
-      }
-      this.pbM = com.tencent.mm.plugin.ball.f.d.cl(paramList);
-      if (this.pbM != null)
-      {
-        if (this.pbM.state != 32) {
-          break label421;
-        }
-        this.oZZ |= 0x100;
+        Log.i("MicroMsg.FloatBallView", "alvinluo checkOrientationIfNeed currentOrientation: %d, lastOrientation: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.lastOrientation) });
+        Fs(i);
       }
     }
-    for (;;)
+    AppMethodBeat.o(187043);
+  }
+  
+  private void cwS()
+  {
+    AppMethodBeat.i(187050);
+    if (!this.sdP)
     {
-      Log.i("MicroMsg.FloatBallView", ">>> updateFloatBallViewLayoutState, state:[%s => %s], active:%s, passiveCnt:%d, video:%s, audio:%s <<<", new Object[] { Integer.valueOf(this.paa), Integer.valueOf(this.oZZ), Boolean.valueOf(bool1), Integer.valueOf(i), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
-      AppMethodBeat.o(106443);
+      AppMethodBeat.o(187050);
       return;
-      if (i == 2)
+    }
+    try
+    {
+      WindowManager.LayoutParams localLayoutParams;
+      int i;
+      if ((this.sdN.x != 0) || (this.sdN.y != 0))
       {
-        this.oZZ |= 0x4;
-        break;
+        localLayoutParams = (WindowManager.LayoutParams)getLayoutParams();
+        if (!this.sdC) {
+          break label103;
+        }
+        i = 0;
       }
-      if (i == 3)
+      for (;;)
       {
-        this.oZZ |= 0x40;
-        break;
+        int j = localLayoutParams.y;
+        int k = this.sdN.y;
+        cwT();
+        this.sdQ = 16;
+        cwQ();
+        d(i, j + k, true, false);
+        AppMethodBeat.o(187050);
+        return;
+        label103:
+        i = localLayoutParams.x;
+        j = this.sdN.x;
+        i += j;
       }
-      if (i != 4) {
-        break;
-      }
-      this.oZZ |= 0x80;
-      break;
-      label393:
-      if (this.pbL.state != 1024) {
-        break label201;
-      }
-      this.oZZ |= 0x800;
-      break label201;
-      label421:
-      if (this.pbM.state == 64) {
-        this.oZZ |= 0x200;
-      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace("MicroMsg.FloatBallView", localException, "alvinluo resetFloatBallViewSizeAndPosition", new Object[0]);
+      AppMethodBeat.o(187050);
     }
   }
   
-  private static String cs(List<BallInfo> paramList)
+  private void cwT()
   {
-    AppMethodBeat.i(106474);
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramList.size())
-    {
-      BallInfo localBallInfo = (BallInfo)paramList.get(i);
-      localStringBuilder.append(localBallInfo.key).append(localBallInfo.type).append(localBallInfo.icon).append(localBallInfo.noe).append(localBallInfo.state).append(localBallInfo.oWr).append(localBallInfo.nno).append(localBallInfo.progress);
-      if ((com.tencent.mm.plugin.ball.f.d.H(localBallInfo)) && (localBallInfo.vk != null)) {
-        localStringBuilder.append(localBallInfo.vk.hashCode());
-      }
-      localStringBuilder.append("|");
-      i += 1;
-    }
-    paramList = MD5Util.getMD5String(localStringBuilder.toString());
-    AppMethodBeat.o(106474);
-    return paramList;
+    AppMethodBeat.i(187053);
+    Log.v("MicroMsg.FloatBallView", "alvinluo resetExtraSize");
+    this.sdN.x = 0;
+    this.sdN.y = 0;
+    AppMethodBeat.o(187053);
   }
   
   private void d(AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
-    AppMethodBeat.i(217087);
+    AppMethodBeat.i(186999);
     Log.i("MicroMsg.FloatBallView", "alvinluo showByTranslation");
     setNeedTranslateAnimation(false);
-    if (this.paV != null)
+    if (this.scV != null)
     {
-      boolean bool = BT(((WindowManager.LayoutParams)getLayoutParams()).x);
-      this.paV.a(getCurrentStateWidth(), bool, paramAnimatorListenerAdapter);
+      boolean bool = Fu(((WindowManager.LayoutParams)getLayoutParams()).x);
+      this.scV.a(getCurrentStateWidth(), bool, paramAnimatorListenerAdapter);
     }
-    AppMethodBeat.o(217087);
+    AppMethodBeat.o(186999);
   }
   
   private void d(boolean paramBoolean, final int paramInt1, final int paramInt2, final int paramInt3, final int paramInt4)
   {
     AppMethodBeat.i(106464);
     Log.i("MicroMsg.FloatBallView", "start StickyAnimation, stickToLeft:%s, startPositionY: %d, targetPositionY: %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2), Integer.valueOf(paramInt4) });
-    if ((this.paU != null) && (this.paU.isRunning()))
+    if ((this.scU != null) && (this.scU.isRunning()))
     {
       Log.i("MicroMsg.FloatBallView", "cancel StickyAnimation");
-      this.paU.cancel();
+      this.scU.cancel();
     }
-    this.paU = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.paU.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.paU.setDuration(100L);
-    this.paU.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.scU = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.scU.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.scU.setDuration(100L);
+    this.scU.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
-        AppMethodBeat.i(217071);
+        AppMethodBeat.i(186519);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
         int i = paramInt1;
         int j = (int)((paramInt3 * 1.0F - paramInt1) * f);
         int k = paramInt2;
         int m = (int)(f * (paramInt4 * 1.0F - paramInt2));
-        FloatBallView.this.e(i + j, m + k, false, false);
-        AppMethodBeat.o(217071);
+        FloatBallView.this.d(i + j, m + k, false, false);
+        AppMethodBeat.o(186519);
       }
     });
-    this.paU.addListener(new AnimatorListenerAdapter()
+    this.scU.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(217072);
+        AppMethodBeat.i(186908);
         super.onAnimationEnd(paramAnonymousAnimator);
         paramAnonymousAnimator = (WindowManager.LayoutParams)FloatBallView.this.getLayoutParams();
-        FloatBallView.this.g(paramAnonymousAnimator.x, paramAnonymousAnimator.y, true, false);
-        AppMethodBeat.o(217072);
+        FloatBallView.this.f(paramAnonymousAnimator.x, paramAnonymousAnimator.y, true, false);
+        AppMethodBeat.o(186908);
       }
     });
-    this.paU.start();
+    this.scU.start();
     AppMethodBeat.o(106464);
   }
   
-  private void eY(int paramInt1, int paramInt2)
+  private void e(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(217090);
+    AppMethodBeat.i(186986);
+    WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)getLayoutParams();
+    int i = localLayoutParams.x;
+    int j = localLayoutParams.y;
+    if ((this.windowManager != null) && ((i != paramInt1) || (j != paramInt2)))
+    {
+      localLayoutParams.x = paramInt1;
+      localLayoutParams.y = paramInt2;
+      try
+      {
+        this.windowManager.updateViewLayout(this, localLayoutParams);
+        f(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
+        AppMethodBeat.o(186986);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        Log.printErrStackTrace("MicroMsg.FloatBallView", localThrowable, "updateBallPosition fail", new Object[0]);
+      }
+    }
+    AppMethodBeat.o(186986);
+  }
+  
+  private void e(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    AppMethodBeat.i(186947);
+    if ((this.sdS == paramBoolean1) && (this.sdT == paramBoolean2) && (this.sdR == paramBoolean3) && (this.sdU != 0) && (this.sdU == this.sca))
+    {
+      Log.d("MicroMsg.FloatBallView", "<<< updateFloatBallViewLayout, ignore layout %b %b;%b %b; %b %b; %d %d", new Object[] { Boolean.valueOf(this.sdY), Boolean.valueOf(paramBoolean1), Boolean.valueOf(this.sdT), Boolean.valueOf(paramBoolean2), Boolean.valueOf(this.sdR), Boolean.valueOf(paramBoolean3), Integer.valueOf(this.sdU), Integer.valueOf(this.sca) });
+      AppMethodBeat.o(186947);
+      return;
+    }
+    Log.i("MicroMsg.FloatBallView", ">>> updateFloatBallViewLayout, isSettled:%s, isDockLeft:%s, isManual:%s, lastLayoutState:%s, currentLayoutState:%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), Integer.valueOf(this.sdU), Integer.valueOf(this.sca) });
+    this.sdR = paramBoolean3;
+    this.sdS = paramBoolean1;
+    this.sdT = paramBoolean2;
+    this.sdU = this.sca;
+    cwQ();
+    F(paramBoolean1, paramBoolean2);
+    AppMethodBeat.o(186947);
+  }
+  
+  private void f(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    AppMethodBeat.i(186953);
+    int i = g(paramBoolean1, paramBoolean2, paramBoolean3);
+    int j = a(this.sca, paramBoolean1, paramBoolean2, paramBoolean3);
+    Log.v("MicroMsg.FloatBallView", "alvinluo updateCustomViewLayout width: %d, height: %d, margin: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.sdO) });
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.scY.getLayoutParams();
+    localLayoutParams.width = i;
+    localLayoutParams.height = j;
+    if (this.sdO > 0) {
+      localLayoutParams.setMargins(this.sdO, this.sdO, this.sdO, this.sdO);
+    }
+    this.scY.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(186953);
+  }
+  
+  private void fx(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(187013);
     WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)getLayoutParams();
     if ((paramInt1 != 0) && (paramInt2 != 0))
     {
@@ -1973,7 +2080,7 @@ public class FloatBallView
         Log.i("MicroMsg.FloatBallView", "updateFloatBallViewSize, width:%s, height:%s", new Object[] { Integer.valueOf(localLayoutParams.width), Integer.valueOf(localLayoutParams.height) });
         Iterator localIterator = this.listeners.iterator();
         while (localIterator.hasNext()) {
-          ((com.tencent.mm.plugin.ball.c.g)localIterator.next()).a(localLayoutParams.x, localLayoutParams.y, localLayoutParams.height, this.pbS, this.pbC);
+          ((g)localIterator.next()).a(localLayoutParams.x, localLayoutParams.y, localLayoutParams.height, this.sdS, this.sdC);
         }
         localLayoutParams.width = 0;
         localLayoutParams.height = 0;
@@ -1985,113 +2092,53 @@ public class FloatBallView
       {
         Log.printErrStackTrace("MicroMsg.FloatBallView", localException, "updateFloatBallViewSize exception", new Object[0]);
       }
-      AppMethodBeat.o(217090);
+      AppMethodBeat.o(187013);
     }
-  }
-  
-  private void f(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(217084);
-    WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)getLayoutParams();
-    int i = localLayoutParams.x;
-    int j = localLayoutParams.y;
-    if ((this.windowManager != null) && ((i != paramInt1) || (j != paramInt2)))
-    {
-      localLayoutParams.x = paramInt1;
-      localLayoutParams.y = paramInt2;
-      try
-      {
-        this.windowManager.updateViewLayout(this, localLayoutParams);
-        g(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
-        AppMethodBeat.o(217084);
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        Log.printErrStackTrace("MicroMsg.FloatBallView", localThrowable, "updateBallPosition fail", new Object[0]);
-      }
-    }
-    AppMethodBeat.o(217084);
-  }
-  
-  private void f(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    AppMethodBeat.i(217077);
-    if ((this.pbS == paramBoolean1) && (this.pbT == paramBoolean2) && (this.pbR == paramBoolean3) && (this.pbU != 0) && (this.pbU == this.oZZ))
-    {
-      Log.d("MicroMsg.FloatBallView", "<<< updateFloatBallViewLayout, ignore layout %b %b;%b %b; %b %b; %d %d", new Object[] { Boolean.valueOf(this.pbY), Boolean.valueOf(paramBoolean1), Boolean.valueOf(this.pbT), Boolean.valueOf(paramBoolean2), Boolean.valueOf(this.pbR), Boolean.valueOf(paramBoolean3), Integer.valueOf(this.pbU), Integer.valueOf(this.oZZ) });
-      AppMethodBeat.o(217077);
-      return;
-    }
-    Log.i("MicroMsg.FloatBallView", ">>> updateFloatBallViewLayout, isSettled:%s, isDockLeft:%s, isManual:%s, lastLayoutState:%s, currentLayoutState:%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), Integer.valueOf(this.pbU), Integer.valueOf(this.oZZ) });
-    this.pbR = paramBoolean3;
-    this.pbS = paramBoolean1;
-    this.pbT = paramBoolean2;
-    this.pbU = this.oZZ;
-    cjz();
-    B(paramBoolean1, paramBoolean2);
-    AppMethodBeat.o(217077);
-  }
-  
-  private void g(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    AppMethodBeat.i(217080);
-    int i = h(paramBoolean1, paramBoolean2, paramBoolean3);
-    int j = a(this.oZZ, paramBoolean1, paramBoolean2, paramBoolean3);
-    Log.v("MicroMsg.FloatBallView", "alvinluo updateCustomViewLayout width: %d, height: %d, margin: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.pbO) });
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.paY.getLayoutParams();
-    localLayoutParams.width = i;
-    localLayoutParams.height = j;
-    if (this.pbO > 0) {
-      localLayoutParams.setMargins(this.pbO, this.pbO, this.pbO, this.pbO);
-    }
-    this.paY.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(217080);
   }
   
   private int getAppBrandVoipBallInfoIndex()
   {
-    AppMethodBeat.i(217081);
-    if (com.tencent.mm.plugin.ball.f.d.h(this.pbz))
+    AppMethodBeat.i(186976);
+    if (com.tencent.mm.plugin.ball.f.d.checkListNotEmpty(this.sdz))
     {
       int i = 0;
-      while (i < this.pbz.size())
+      while (i < this.sdz.size())
       {
-        BallInfo localBallInfo = (BallInfo)this.pbz.get(i);
+        BallInfo localBallInfo = (BallInfo)this.sdz.get(i);
         if ((localBallInfo != null) && (localBallInfo.type == 17))
         {
-          AppMethodBeat.o(217081);
+          AppMethodBeat.o(186976);
           return i;
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(217081);
+    AppMethodBeat.o(186976);
     return 0;
   }
   
   private int getCurrentStateHeight()
   {
     AppMethodBeat.i(176991);
-    int k = this.oZZ;
+    int k = this.sca;
     Log.v("MicroMsg.FloatBallView", "getStateHeight state: %d", new Object[] { Integer.valueOf(k) });
     int j;
-    if (Cg(k))
+    if (FH(k))
     {
-      j = Cb(k) + this.pbO * 2;
-      if (!Cd(k))
+      j = FC(k) + this.sdO * 2;
+      if (!FE(k))
       {
         i = j;
-        if (!Ce(k)) {
+        if (!FF(k)) {
           break label83;
         }
       }
     }
-    for (int i = j + (paH + paJ * 2 + paP);; i = BX(k))
+    for (int i = j + (scI + scK * 2 + scQ);; i = Fy(k))
     {
       label83:
-      j = e.oYL;
-      k = e.oYM;
+      j = e.saM;
+      k = e.saN;
       AppMethodBeat.o(176991);
       return i + j + k;
     }
@@ -2100,20 +2147,20 @@ public class FloatBallView
   private int getExtendWidth()
   {
     AppMethodBeat.i(106469);
-    if (!this.pbI)
+    if (!this.sdI)
     {
       AppMethodBeat.o(106469);
       return 0;
     }
-    if (!com.tencent.mm.plugin.ball.f.d.eF(getContext()))
+    if (!com.tencent.mm.plugin.ball.f.d.eI(getContext()))
     {
       AppMethodBeat.o(106469);
       return 0;
     }
     int i = this.windowManager.getDefaultDisplay().getRotation();
-    if (((this.pbC) && (i == 1)) || ((!this.pbC) && (i == 3)))
+    if (((this.sdC) && (i == 1)) || ((!this.sdC) && (i == 3)))
     {
-      i = com.tencent.mm.plugin.ball.f.d.aP(getContext());
+      i = com.tencent.mm.plugin.ball.f.d.aM(getContext());
       AppMethodBeat.o(106469);
       return i;
     }
@@ -2123,22 +2170,22 @@ public class FloatBallView
   
   private int getHorizontalShadowSize()
   {
-    if ((this.pbL != null) && (this.pbL.oWn != null))
+    if ((this.sdL != null) && (this.sdL.rYn != null))
     {
-      if (this.pbL.oWn.y > 0) {
-        return this.pbL.oWn.y;
+      if (this.sdL.rYn.y > 0) {
+        return this.sdL.rYn.y;
       }
-      return e.oYN * 2;
+      return e.saO * 2;
     }
-    return e.oYN * 2;
+    return e.saO * 2;
   }
   
   private int getTargetPositionXWhenOrientationChanged()
   {
     AppMethodBeat.i(106466);
     int i = 0;
-    if (!this.pbC) {
-      i = this.pbD.x - getCurrentStateWidth();
+    if (!this.sdC) {
+      i = this.sdD.x - getCurrentStateWidth();
     }
     AppMethodBeat.o(106466);
     return i;
@@ -2146,14 +2193,14 @@ public class FloatBallView
   
   private int getVerticalShadowSize()
   {
-    if ((this.pbL != null) && (this.pbL.oWn != null))
+    if ((this.sdL != null) && (this.sdL.rYn != null))
     {
-      if (this.pbL.oWn.x > 0) {
-        return this.pbL.oWn.x;
+      if (this.sdL.rYn.x > 0) {
+        return this.sdL.rYn.x;
       }
-      return e.oYL + e.oYM;
+      return e.saM + e.saN;
     }
-    return e.oYL + e.oYM;
+    return e.saM + e.saN;
   }
   
   public static boolean h(Point paramPoint)
@@ -2177,10 +2224,22 @@ public class FloatBallView
     AppMethodBeat.o(106461);
   }
   
-  public final boolean BT(int paramInt)
+  public final boolean FD(int paramInt)
+  {
+    AppMethodBeat.i(187067);
+    if ((FE(paramInt)) && (this.scc >= 3))
+    {
+      AppMethodBeat.o(187067);
+      return true;
+    }
+    AppMethodBeat.o(187067);
+    return false;
+  }
+  
+  public final boolean Fu(int paramInt)
   {
     AppMethodBeat.i(106459);
-    if (getCurrentStateWidth() / 2 + paramInt <= this.pbD.x / 2)
+    if (getCurrentStateWidth() / 2 + paramInt <= this.sdD.x / 2)
     {
       AppMethodBeat.o(106459);
       return true;
@@ -2189,102 +2248,90 @@ public class FloatBallView
     return false;
   }
   
-  public final boolean Cc(int paramInt)
-  {
-    AppMethodBeat.i(217100);
-    if ((Cd(paramInt)) && (this.pab >= 3))
-    {
-      AppMethodBeat.o(217100);
-      return true;
-    }
-    AppMethodBeat.o(217100);
-    return false;
-  }
-  
   public final void X(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(217079);
-    Object localObject = (FrameLayout.LayoutParams)this.paX.getLayoutParams();
+    AppMethodBeat.i(186951);
+    Object localObject = (FrameLayout.LayoutParams)this.scX.getLayoutParams();
     ((FrameLayout.LayoutParams)localObject).gravity = paramInt;
-    this.paX.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    if ((!paramBoolean) && (!Cp(this.oZZ)) && (this.paZ.getVisibility() == 0))
+    this.scX.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    if ((!paramBoolean) && (!FR(this.sca)) && (this.scZ.getVisibility() == 0))
     {
-      localObject = (LinearLayout.LayoutParams)this.paZ.getLayoutParams();
+      localObject = (LinearLayout.LayoutParams)this.scZ.getLayoutParams();
       ((LinearLayout.LayoutParams)localObject).gravity = 17;
-      this.paZ.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.scZ.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    AppMethodBeat.o(217079);
+    AppMethodBeat.o(186951);
   }
   
   public final int a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    AppMethodBeat.i(217099);
+    AppMethodBeat.i(187060);
     int i = 0;
     if ((paramBoolean1) || (paramBoolean2))
     {
-      if ((this.oWm != null) && (this.oWm.x > 0) && (this.oWm.y > 0)) {
-        i = this.oWm.y;
+      if ((this.rYm != null) && (this.rYm.x > 0) && (this.rYm.y > 0)) {
+        i = this.rYm.y;
       }
       while (paramBoolean3)
       {
-        if ((!Ci(paramInt)) && (!Cj(paramInt))) {
+        if ((!FK(paramInt)) && (!FL(paramInt))) {
           break label167;
         }
-        if ((this.oWm != null) && (this.oWm.x > 0) && (this.oWm.y > 0))
+        if ((this.rYm != null) && (this.rYm.x > 0) && (this.rYm.y > 0))
         {
-          paramInt = this.oWm.y;
-          AppMethodBeat.o(217099);
+          paramInt = this.rYm.y;
+          AppMethodBeat.o(187060);
           return paramInt;
           if (paramBoolean1) {
-            i = paz + paQ * 2;
+            i = scA + scR * 2;
           } else {
-            i = paD + paQ * 2;
+            i = scE + scR * 2;
           }
         }
         else
         {
-          i = paD + paQ * 2;
+          i = scE + scR * 2;
         }
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(217099);
+      AppMethodBeat.o(187060);
       return i;
       label167:
       if (paramBoolean1) {
-        i = paB + paQ * 2;
+        i = scC + scR * 2;
       } else {
-        i = paF + paQ * 2;
+        i = scG + scR * 2;
       }
     }
   }
   
-  public final void a(com.tencent.mm.plugin.ball.c.g paramg)
+  public final void a(g paramg)
   {
-    AppMethodBeat.i(217101);
+    AppMethodBeat.i(187071);
     this.listeners.add(paramg);
-    AppMethodBeat.o(217101);
+    AppMethodBeat.o(187071);
   }
   
   public final void a(List<BallInfo> paramList, BallInfo paramBallInfo)
   {
     AppMethodBeat.i(106442);
-    paramBallInfo = cs(paramList);
-    if (Util.isEqual(paramBallInfo, this.pby))
+    paramBallInfo = co(paramList);
+    if (Util.isEqual(paramBallInfo, this.sdy))
     {
       Log.d("MicroMsg.FloatBallView", "<<< onFloatBallInfoChanged, ignore refresh");
       AppMethodBeat.o(106442);
       return;
     }
     Log.i("MicroMsg.FloatBallView", ">>> onFloatBallInfoChanged, ballInfoList:%s", new Object[] { paramList });
-    this.pby = paramBallInfo;
-    cr(paramList);
-    cjw();
-    boolean bool = BT(((WindowManager.LayoutParams)getLayoutParams()).x);
-    f(true, bool, false);
-    a(true, bool, false, this.oZZ);
-    cjx();
+    this.sdy = paramBallInfo;
+    cn(paramList);
+    cwN();
+    boolean bool = Fu(((WindowManager.LayoutParams)getLayoutParams()).x);
+    e(true, bool, false);
+    a(true, bool, false, this.sca);
+    cwO();
     AppMethodBeat.o(106442);
   }
   
@@ -2292,9 +2339,9 @@ public class FloatBallView
   {
     AppMethodBeat.i(184624);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.en(paramBoolean);
-    localb.bm(paramAnimatorListenerAdapter);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ball/view/FloatBallView", "com/tencent/mm/plugin/ball/view/FloatBallView", "hide", "(ZLandroid/animation/AnimatorListenerAdapter;)V", this, localb.axR());
+    localb.eL(paramBoolean);
+    localb.bn(paramAnimatorListenerAdapter);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/ball/view/FloatBallView", "com/tencent/mm/plugin/ball/view/FloatBallView", "hide", "(ZLandroid/animation/AnimatorListenerAdapter;)V", this, localb.aFi());
     if (getVisibility() == 8)
     {
       Log.i("MicroMsg.FloatBallView", "float ball already hide");
@@ -2302,10 +2349,10 @@ public class FloatBallView
       AppMethodBeat.o(184624);
       return;
     }
-    if ((paramBoolean) && (this.paV != null))
+    if ((paramBoolean) && (this.scV != null))
     {
       Log.i("MicroMsg.FloatBallView", "hide with animation");
-      this.paV.b(paramAnimatorListenerAdapter);
+      this.scV.b(paramAnimatorListenerAdapter);
     }
     for (;;)
     {
@@ -2314,7 +2361,7 @@ public class FloatBallView
       return;
       Log.i("MicroMsg.FloatBallView", "hide without animation");
       setVisibility(8);
-      cjB();
+      cwS();
     }
   }
   
@@ -2327,10 +2374,10 @@ public class FloatBallView
       AppMethodBeat.o(184623);
       return;
     }
-    if ((paramBoolean1) && (this.paV != null))
+    if ((paramBoolean1) && (this.scV != null))
     {
       Log.i("MicroMsg.FloatBallView", "show with animation");
-      this.paV.a(paramAnimatorListenerAdapter);
+      this.scV.a(paramAnimatorListenerAdapter);
       AppMethodBeat.o(184623);
       return;
     }
@@ -2339,16 +2386,23 @@ public class FloatBallView
     AppMethodBeat.o(184623);
   }
   
-  public final void cjy()
+  public final void cwP()
   {
     AppMethodBeat.i(184622);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.en(false);
-    localb.bm(null);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ball/view/FloatBallView", "com/tencent/mm/plugin/ball/view/FloatBallView", "show", "(ZLandroid/animation/AnimatorListenerAdapter;)V", this, localb.axR());
+    localb.eL(false);
+    localb.bn(null);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/ball/view/FloatBallView", "com/tencent/mm/plugin/ball/view/FloatBallView", "show", "(ZLandroid/animation/AnimatorListenerAdapter;)V", this, localb.aFi());
     c(false, false, null);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ball/view/FloatBallView", "com/tencent/mm/plugin/ball/view/FloatBallView", "show", "(ZLandroid/animation/AnimatorListenerAdapter;)V");
     AppMethodBeat.o(184622);
+  }
+  
+  public final void d(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(106456);
+    e(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
+    AppMethodBeat.o(106456);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -2359,26 +2413,60 @@ public class FloatBallView
     return bool;
   }
   
-  public final void e(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(106456);
-    f(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
-    AppMethodBeat.o(106456);
-  }
-  
-  public final void g(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  public final void f(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(106457);
-    this.pbC = BT(paramInt1);
-    a(paramBoolean1, this.pbC, paramBoolean2, this.oZZ);
-    f(paramBoolean1, this.pbC, paramBoolean2);
+    this.sdC = Fu(paramInt1);
+    a(paramBoolean1, this.sdC, paramBoolean2, this.sca);
+    e(paramBoolean1, this.sdC, paramBoolean2);
     Y(paramInt2, paramBoolean1);
-    Log.i("MicroMsg.FloatBallView", "notifyBallPositionChanged, x:%s, y:%s, isSettled:%s, isManual:%s, isDockLeft:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(this.pbC) });
+    Log.i("MicroMsg.FloatBallView", "notifyBallPositionChanged, x:%s, y:%s, isSettled:%s, isManual:%s, isDockLeft:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(this.sdC) });
     Iterator localIterator = this.listeners.iterator();
     while (localIterator.hasNext()) {
-      ((com.tencent.mm.plugin.ball.c.g)localIterator.next()).a(paramInt1, paramInt2, getCurrentStateHeight(), paramBoolean1, this.pbC);
+      ((g)localIterator.next()).a(paramInt1, paramInt2, getCurrentStateHeight(), paramBoolean1, this.sdC);
     }
     AppMethodBeat.o(106457);
+  }
+  
+  public final int g(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    int i = 0;
+    int j;
+    if ((paramBoolean1) || (paramBoolean2))
+    {
+      if ((this.rYm == null) || (this.rYm.x <= 0) || (this.rYm.y <= 0)) {
+        break label90;
+      }
+      j = this.rYm.x;
+      if (!paramBoolean3) {
+        break label142;
+      }
+      if (!paramBoolean1) {
+        break label76;
+      }
+      i = scB + scR * 2;
+    }
+    while (j < i)
+    {
+      return i;
+      label76:
+      i = scF + scR * 2;
+      continue;
+      label90:
+      if (paramBoolean1)
+      {
+        if (paramBoolean3) {
+          return scB + scR * 2;
+        }
+        return scz + scR * 2;
+      }
+      if (paramBoolean3) {
+        return scF + scR * 2;
+      }
+      return scD + scR * 2;
+    }
+    label142:
+    return j;
   }
   
   public Point getBallPosition()
@@ -2390,59 +2478,59 @@ public class FloatBallView
       AppMethodBeat.o(106470);
       return null;
     }
-    if (this.pbC)
+    if (this.sdC)
     {
-      if (Ch(this.oZZ))
+      if ((FJ(this.sca)) || (FI(this.sca)))
       {
-        localObject = new Point(((WindowManager.LayoutParams)localObject).x, ((WindowManager.LayoutParams)localObject).y + e.oYL + paz);
+        localObject = new Point(((WindowManager.LayoutParams)localObject).x, ((WindowManager.LayoutParams)localObject).y + e.saM + scA);
         AppMethodBeat.o(106470);
         return localObject;
       }
-      if (Ck(this.oZZ))
+      if (FM(this.sca))
       {
-        localObject = new Point(((WindowManager.LayoutParams)localObject).x, ((WindowManager.LayoutParams)localObject).y + e.oYL + paD);
+        localObject = new Point(((WindowManager.LayoutParams)localObject).x, ((WindowManager.LayoutParams)localObject).y + e.saM + scE);
         AppMethodBeat.o(106470);
         return localObject;
       }
-      localObject = new Point(((WindowManager.LayoutParams)localObject).x, ((WindowManager.LayoutParams)localObject).y + e.oYL);
+      localObject = new Point(((WindowManager.LayoutParams)localObject).x, ((WindowManager.LayoutParams)localObject).y + e.saM);
       AppMethodBeat.o(106470);
       return localObject;
     }
-    if (Ch(this.oZZ))
+    if ((FJ(this.sca)) || (FI(this.sca)))
     {
-      localObject = new Point(((WindowManager.LayoutParams)localObject).x + e.oYN, ((WindowManager.LayoutParams)localObject).y + e.oYL + paz);
+      localObject = new Point(((WindowManager.LayoutParams)localObject).x + e.saO, ((WindowManager.LayoutParams)localObject).y + e.saM + scA);
       AppMethodBeat.o(106470);
       return localObject;
     }
-    if (Ck(this.oZZ))
+    if (FM(this.sca))
     {
-      localObject = new Point(((WindowManager.LayoutParams)localObject).x + e.oYN, ((WindowManager.LayoutParams)localObject).y + e.oYL + paD);
+      localObject = new Point(((WindowManager.LayoutParams)localObject).x + e.saO, ((WindowManager.LayoutParams)localObject).y + e.saM + scE);
       AppMethodBeat.o(106470);
       return localObject;
     }
-    localObject = new Point(((WindowManager.LayoutParams)localObject).x + e.oYN, ((WindowManager.LayoutParams)localObject).y + e.oYL);
+    localObject = new Point(((WindowManager.LayoutParams)localObject).x + e.saO, ((WindowManager.LayoutParams)localObject).y + e.saM);
     AppMethodBeat.o(106470);
     return localObject;
   }
   
   public Point getBallSize()
   {
-    AppMethodBeat.i(217092);
+    AppMethodBeat.i(187018);
     Log.v("MicroMsg.FloatBallView", "alvinluo getBallSize stateWidth: %d, stateHeight: %d", new Object[] { Integer.valueOf(getCurrentStateWidth()), Integer.valueOf(getCurrentStateHeight()) });
-    Point localPoint = new Point(getCurrentStateWidth() - e.oYN, getCurrentStateHeight() - e.oYL - e.oYM);
-    AppMethodBeat.o(217092);
+    Point localPoint = new Point(getCurrentStateWidth() - e.saO, getCurrentStateHeight() - e.saM - e.saN);
+    AppMethodBeat.o(187018);
     return localPoint;
   }
   
   public int getCurrentStateWidth()
   {
     AppMethodBeat.i(106467);
-    int i = this.oZZ;
+    int i = this.sca;
     Log.v("MicroMsg.FloatBallView", "getStateWidth state: %d", new Object[] { Integer.valueOf(i) });
-    if (Cg(i)) {}
-    for (i = Ca(i) + this.pbO * 2;; i = BW(i))
+    if (FH(i)) {}
+    for (i = FB(i) + this.sdO * 2;; i = Fx(i))
     {
-      int j = e.oYN;
+      int j = e.saO;
       AppMethodBeat.o(106467);
       return i + j;
     }
@@ -2450,91 +2538,50 @@ public class FloatBallView
   
   public Point getFloatBallPosition()
   {
-    AppMethodBeat.i(217091);
+    AppMethodBeat.i(187015);
     Object localObject = (WindowManager.LayoutParams)getLayoutParams();
     if (localObject == null)
     {
-      AppMethodBeat.o(217091);
+      AppMethodBeat.o(187015);
       return null;
     }
-    if (this.pbC)
+    if (this.sdC)
     {
-      localObject = new Point(((WindowManager.LayoutParams)localObject).x, ((WindowManager.LayoutParams)localObject).y + e.oYL);
-      AppMethodBeat.o(217091);
+      localObject = new Point(((WindowManager.LayoutParams)localObject).x, ((WindowManager.LayoutParams)localObject).y + e.saM);
+      AppMethodBeat.o(187015);
       return localObject;
     }
-    localObject = new Point(((WindowManager.LayoutParams)localObject).x + e.oYN, ((WindowManager.LayoutParams)localObject).y + e.oYL);
-    AppMethodBeat.o(217091);
+    localObject = new Point(((WindowManager.LayoutParams)localObject).x + e.saO, ((WindowManager.LayoutParams)localObject).y + e.saM);
+    AppMethodBeat.o(187015);
     return localObject;
   }
   
   public float getPosYPercentOfScreen()
   {
-    return this.pbG;
+    return this.sdG;
   }
   
   public int getPositionY()
   {
-    return this.pbH;
+    return this.sdH;
   }
   
-  public final int h(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    int i = 0;
-    int j;
-    if ((paramBoolean1) || (paramBoolean2))
-    {
-      if ((this.oWm == null) || (this.oWm.x <= 0) || (this.oWm.y <= 0)) {
-        break label90;
-      }
-      j = this.oWm.x;
-      if (!paramBoolean3) {
-        break label142;
-      }
-      if (!paramBoolean1) {
-        break label76;
-      }
-      i = paA + paQ * 2;
-    }
-    while (j < i)
-    {
-      return i;
-      label76:
-      i = paE + paQ * 2;
-      continue;
-      label90:
-      if (paramBoolean1)
-      {
-        if (paramBoolean3) {
-          return paA + paQ * 2;
-        }
-        return pay + paQ * 2;
-      }
-      if (paramBoolean3) {
-        return paE + paQ * 2;
-      }
-      return paC + paQ * 2;
-    }
-    label142:
-    return j;
-  }
-  
-  public final void jQ(boolean paramBoolean)
+  public final void la(boolean paramBoolean)
   {
     AppMethodBeat.i(176992);
     Log.i("MicroMsg.FloatBallView", "markWechatInForeground, visibility:%s, inForeground:%s", new Object[] { Integer.valueOf(getVisibility()), Boolean.valueOf(paramBoolean) });
     if (paramBoolean) {
-      this.oZZ |= 0x20;
+      this.sca |= 0x20;
     }
     for (;;)
     {
-      f(this.pbS, this.pbT, this.pbR);
+      e(this.sdS, this.sdT, this.sdR);
       AppMethodBeat.o(176992);
       return;
-      this.oZZ &= 0xFFFFFFDF;
-      if ((Cg(this.oZZ)) || (Cf(this.oZZ)))
+      this.sca &= 0xFFFFFFDF;
+      if ((FH(this.sca)) || (FG(this.sca)))
       {
-        cjy();
+        cwP();
         if ((int)getAlpha() == 0) {
           setAlpha(1.0F);
         }
@@ -2548,7 +2595,7 @@ public class FloatBallView
     com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ball/view/FloatBallView", "com/tencent/mm/plugin/ball/view/FloatBallView", "onAttachedToWindow", "()V", this);
     super.onAttachedToWindow();
     WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)getLayoutParams();
-    g(localLayoutParams.x, localLayoutParams.y, true, false);
+    f(localLayoutParams.x, localLayoutParams.y, true, false);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ball/view/FloatBallView", "com/tencent/mm/plugin/ball/view/FloatBallView", "onAttachedToWindow", "()V");
     AppMethodBeat.o(106439);
   }
@@ -2557,11 +2604,11 @@ public class FloatBallView
   {
     AppMethodBeat.i(106441);
     Log.i("MicroMsg.FloatBallView", "onConfigurationChanged, orientation:%d, lastOrientation: %d", new Object[] { Integer.valueOf(paramConfiguration.orientation), Integer.valueOf(this.lastOrientation) });
-    BR(paramConfiguration.orientation);
+    Fs(paramConfiguration.orientation);
     int i = paramConfiguration.orientation;
     paramConfiguration = this.listeners.iterator();
     while (paramConfiguration.hasNext()) {
-      ((com.tencent.mm.plugin.ball.c.g)paramConfiguration.next()).onOrientationChange(i);
+      ((g)paramConfiguration.next()).onOrientationChange(i);
     }
     AppMethodBeat.o(106441);
   }
@@ -2571,10 +2618,10 @@ public class FloatBallView
     AppMethodBeat.i(106440);
     com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ball/view/FloatBallView", "com/tencent/mm/plugin/ball/view/FloatBallView", "onDetachedFromWindow", "()V", this);
     super.onDetachedFromWindow();
-    if (this.paU != null)
+    if (this.scU != null)
     {
-      this.paU.cancel();
-      this.paU = null;
+      this.scU.cancel();
+      this.scU = null;
     }
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ball/view/FloatBallView", "com/tencent/mm/plugin/ball/view/FloatBallView", "onDetachedFromWindow", "()V");
     AppMethodBeat.o(106440);
@@ -2582,31 +2629,31 @@ public class FloatBallView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(217082);
+    AppMethodBeat.i(186980);
     int i = (int)paramMotionEvent.getRawX();
     int j = (int)paramMotionEvent.getRawY();
     if (paramMotionEvent.getAction() == 0) {
-      N(paramMotionEvent);
+      U(paramMotionEvent);
     }
-    if (com.tencent.mm.plugin.ball.f.d.q(this.vk, i, j))
+    if (com.tencent.mm.plugin.ball.f.d.q(this.bFK, i, j))
     {
       if (paramMotionEvent.getAction() != 2)
       {
-        AppMethodBeat.o(217082);
+        AppMethodBeat.o(186980);
         return false;
       }
-      boolean bool = G(paramMotionEvent);
-      AppMethodBeat.o(217082);
+      boolean bool = F(paramMotionEvent);
+      AppMethodBeat.o(186980);
       return bool;
     }
-    AppMethodBeat.o(217082);
+    AppMethodBeat.o(186980);
     return true;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(106452);
-    if (!this.pbB)
+    if (!this.sdB)
     {
       bool = super.onTouchEvent(paramMotionEvent);
       AppMethodBeat.o(106452);
@@ -2620,86 +2667,86 @@ public class FloatBallView
     {
       AppMethodBeat.o(106452);
       return true;
-      this.hbN = false;
-      N(paramMotionEvent);
-      a(true, this.pbC, true, this.oZZ);
-      if (this.pbI) {
-        f(true, this.pbC, true);
+      this.jMX = false;
+      U(paramMotionEvent);
+      a(true, this.sdC, true, this.sca);
+      if (this.sdI) {
+        e(true, this.sdC, true);
       }
-      this.oVp = false;
-      if ((Cp(this.oZZ)) && (!Cz(this.oZZ)) && (!CA(this.oZZ)))
+      this.rXo = false;
+      if ((FR(this.sca)) && (!Gb(this.sca)) && (!Gc(this.sca)) && (!Gd(this.sca)))
       {
-        this.pbV.postDelayed(this.pbW, this.paS);
+        this.sdV.postDelayed(this.sdW, this.scT);
         continue;
-        if (this.oVp)
+        if (this.rXo)
         {
-          O(paramMotionEvent);
+          V(paramMotionEvent);
         }
         else
         {
-          if ((!this.hbN) && (G(paramMotionEvent)))
+          if ((!this.jMX) && (F(paramMotionEvent)))
           {
-            this.pbV.removeCallbacks(this.pbW);
-            this.hbN = true;
-            i = this.pbF.x;
-            i = this.pbF.y;
+            this.sdV.removeCallbacks(this.sdW);
+            this.jMX = true;
+            i = this.sdF.x;
+            i = this.sdF.y;
             localIterator = this.listeners.iterator();
             while (localIterator.hasNext()) {
-              ((com.tencent.mm.plugin.ball.c.g)localIterator.next()).cia();
+              ((g)localIterator.next()).cvm();
             }
           }
-          if (this.hbN)
+          if (this.jMX)
           {
-            e(H(paramMotionEvent), I(paramMotionEvent), false, true);
+            d(G(paramMotionEvent), H(paramMotionEvent), false, true);
             continue;
-            if (this.oVp)
+            if (this.rXo)
             {
-              a(true, this.pbC, false, this.oZZ);
-              if (this.pbI) {
-                f(true, this.pbC, false);
+              a(true, this.sdC, false, this.sca);
+              if (this.sdI) {
+                e(true, this.sdC, false);
               }
-              O(paramMotionEvent);
+              V(paramMotionEvent);
             }
             else
             {
-              this.pbV.removeCallbacks(this.pbW);
-              if ((this.hbN) || (G(paramMotionEvent))) {
+              this.sdV.removeCallbacks(this.sdW);
+              if ((this.jMX) || (F(paramMotionEvent))) {
                 break;
               }
-              a(true, this.pbC, false, this.oZZ);
-              if (this.pbI) {
-                f(true, this.pbC, false);
+              a(true, this.sdC, false, this.sca);
+              if (this.sdI) {
+                e(true, this.sdC, false);
               }
-              e(this.pbF.x, this.pbF.y, true, false);
-              if (this.pbK)
+              d(this.sdF.x, this.sdF.y, true, false);
+              if (this.sdK)
               {
-                float f1 = this.pbE.x;
-                float f2 = this.pbE.y;
+                float f1 = this.sdE.x;
+                float f2 = this.sdE.y;
                 long l = System.currentTimeMillis();
                 if (l > this.lastClickTime + 800L)
                 {
                   this.lastClickTime = l;
-                  if (com.tencent.mm.plugin.ball.f.d.q(this.vk, (int)f1, (int)f2))
+                  if (com.tencent.mm.plugin.ball.f.d.q(this.bFK, (int)f1, (int)f2))
                   {
                     Log.w("MicroMsg.FloatBallView", "notifyBallClickedIfNeed, click voip unexpectedly");
                   }
-                  else if ((CA(this.oZZ)) || (Cz(this.oZZ)))
+                  else if ((Gc(this.sca)) || (Gb(this.sca)) || (Gd(this.sca)))
                   {
                     Log.i("MicroMsg.FloatBallView", "notifyBallClickedIfNeed, ignore click");
                   }
-                  else if (Cp(this.oZZ))
+                  else if (FR(this.sca))
                   {
                     Log.i("MicroMsg.FloatBallView", "notifyBallClickedIfNeed, wechat in foreground");
                     paramMotionEvent = this.listeners.iterator();
                     while (paramMotionEvent.hasNext()) {
-                      ((com.tencent.mm.plugin.ball.c.g)paramMotionEvent.next()).chY();
+                      ((g)paramMotionEvent.next()).cvk();
                     }
                   }
-                  else if ((this.pbM != null) && (com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class) != null))
+                  else if ((this.sdM != null) && (h.ae(com.tencent.mm.plugin.ball.c.b.class) != null))
                   {
                     Log.i("MicroMsg.FloatBallView", "notifyBallClickedIfNeed, you clicked appbrand voip");
-                    this.pbM.oWs.opType = 3;
-                    ((com.tencent.mm.plugin.ball.c.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class)).m(this.pbM);
+                    this.sdM.rYs.opType = 3;
+                    ((com.tencent.mm.plugin.ball.c.b)h.ae(com.tencent.mm.plugin.ball.c.b.class)).m(this.sdM);
                   }
                 }
                 else
@@ -2712,19 +2759,19 @@ public class FloatBallView
         }
       }
     }
-    a(false, this.pbC, false, this.oZZ);
-    if (this.hbN)
+    a(false, this.sdC, false, this.sca);
+    if (this.jMX)
     {
-      this.hbN = false;
+      this.jMX = false;
       localIterator = this.listeners.iterator();
       while (localIterator.hasNext()) {
-        ((com.tencent.mm.plugin.ball.c.g)localIterator.next()).cib();
+        ((g)localIterator.next()).cvn();
       }
     }
-    int i = H(paramMotionEvent);
-    int j = I(paramMotionEvent);
-    int k = BV(i);
-    int m = BU(j);
+    int i = G(paramMotionEvent);
+    int j = H(paramMotionEvent);
+    int k = Fw(i);
+    int m = Fv(j);
     if (k == 0) {}
     for (boolean bool = true;; bool = false)
     {
@@ -2739,18 +2786,18 @@ public class FloatBallView
     AppMethodBeat.i(106473);
     super.setAlpha(paramFloat);
     Log.printInfoStack("MicroMsg.FloatBallView", "setAlpha:%s", new Object[] { Float.valueOf(paramFloat) });
-    cjA();
+    cwR();
     AppMethodBeat.o(106473);
   }
   
   public void setCustomView(BallInfo paramBallInfo)
   {
-    AppMethodBeat.i(217093);
-    Object localObject = paramBallInfo.vk;
-    if (localObject == this.vk)
+    AppMethodBeat.i(187029);
+    Object localObject = paramBallInfo.bFK;
+    if (localObject == this.bFK)
     {
       Log.w("MicroMsg.FloatBallView", "setCustomView voipView not changed");
-      AppMethodBeat.o(217093);
+      AppMethodBeat.o(187029);
       return;
     }
     if ((((View)localObject).getParent() != null) && ((((View)localObject).getParent() instanceof ViewGroup)))
@@ -2758,61 +2805,61 @@ public class FloatBallView
       Log.i("MicroMsg.FloatBallView", "setCustomView remove from parent first");
       ((ViewGroup)((View)localObject).getParent()).removeView((View)localObject);
     }
-    this.paY.removeAllViews();
-    this.vk = ((View)localObject);
+    this.scY.removeAllViews();
+    this.bFK = ((View)localObject);
     localObject = new FrameLayout.LayoutParams(-1, -1);
     ((FrameLayout.LayoutParams)localObject).gravity = 17;
-    this.paY.addView(this.vk, (ViewGroup.LayoutParams)localObject);
-    this.oWm = paramBallInfo.oWm;
-    this.pbP = true;
-    cjC();
-    if (this.pbL.oWt != null)
+    this.scY.addView(this.bFK, (ViewGroup.LayoutParams)localObject);
+    this.rYm = paramBallInfo.rYm;
+    this.sdP = true;
+    cwT();
+    if (this.sdL.rYt != null)
     {
-      paramBallInfo = this.pbL.oWt.oWv;
-      localObject = this.pbL.oWt.oWw;
+      paramBallInfo = this.sdL.rYt.rYv;
+      localObject = this.sdL.rYt.rYw;
       if ((h(paramBallInfo)) && (h((Point)localObject)))
       {
-        this.pbQ = 80;
+        this.sdQ = 80;
         if ((paramBallInfo.x < ((Point)localObject).x) && (paramBallInfo.y < ((Point)localObject).y))
         {
-          this.pbN.x = (((Point)localObject).x - paramBallInfo.x);
-          this.pbN.y = (((Point)localObject).y - paramBallInfo.y);
-          this.pbP = false;
+          this.sdN.x = (((Point)localObject).x - paramBallInfo.x);
+          this.sdN.y = (((Point)localObject).y - paramBallInfo.y);
+          this.sdP = false;
         }
       }
-      Log.v("MicroMsg.FloatBallView", "alvinluo updateVoipViewParams startSize: %s, endSize: %s, extraSize: %s, voipViewSize: %s", new Object[] { paramBallInfo, localObject, this.pbN, this.oWm });
+      Log.v("MicroMsg.FloatBallView", "alvinluo updateVoipViewParams startSize: %s, endSize: %s, extraSize: %s, voipViewSize: %s", new Object[] { paramBallInfo, localObject, this.sdN, this.rYm });
     }
-    AppMethodBeat.o(217093);
+    AppMethodBeat.o(187029);
   }
   
   public void setEnableClick(boolean paramBoolean)
   {
-    AppMethodBeat.i(217086);
+    AppMethodBeat.i(186993);
     Log.d("MicroMsg.FloatBallView", "alvinluo setEnableClick enable: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.pbK = paramBoolean;
-    AppMethodBeat.o(217086);
+    this.sdK = paramBoolean;
+    AppMethodBeat.o(186993);
   }
   
   public void setFloatBallAlpha(final float paramFloat)
   {
     AppMethodBeat.i(106460);
-    com.tencent.mm.plugin.ball.b.b localb = this.paV;
-    if ((localb.chI()) || (localb.chJ())) {}
+    com.tencent.mm.plugin.ball.b.b localb = this.scV;
+    if ((localb.cuT()) || (localb.cuU())) {}
     for (int i = 1; i != 0; i = 0)
     {
       Log.printInfoStack("MicroMsg.FloatBallView", "setFloatBallAlpha later, alpha:%s", new Object[] { Float.valueOf(paramFloat) });
-      localb = this.paV;
+      localb = this.scV;
       Runnable local3 = new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(217070);
+          AppMethodBeat.i(186783);
           Log.i("MicroMsg.FloatBallView", "setFloatBallAlpha when animation ends, alpha:%s", new Object[] { Float.valueOf(paramFloat) });
           FloatBallView.a(FloatBallView.this, paramFloat);
-          AppMethodBeat.o(217070);
+          AppMethodBeat.o(186783);
         }
       };
-      localb.oWi.add(local3);
+      localb.rYi.add(local3);
       AppMethodBeat.o(106460);
       return;
     }
@@ -2824,31 +2871,31 @@ public class FloatBallView
   public void setInnerView(View paramView)
   {
     AppMethodBeat.i(106471);
-    if (paramView == this.paW)
+    if (paramView == this.scW)
     {
       AppMethodBeat.o(106471);
       return;
     }
-    this.pba.removeAllViews();
-    this.paW = paramView;
-    if (this.paW != null)
+    this.sda.removeAllViews();
+    this.scW = paramView;
+    if (this.scW != null)
     {
       paramView = new FrameLayout.LayoutParams(-1, -1);
       paramView.gravity = 17;
-      this.pba.addView(this.paW, paramView);
+      this.sda.addView(this.scW, paramView);
     }
     AppMethodBeat.o(106471);
   }
   
   public void setNeedTranslateAnimation(boolean paramBoolean)
   {
-    this.oYj = paramBoolean;
+    this.sak = paramBoolean;
   }
   
   public void setVisibility(int paramInt)
   {
     AppMethodBeat.i(106472);
-    if ((com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class) != null) && (((com.tencent.mm.plugin.ball.c.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.ball.c.b.class)).chV()))
+    if ((h.ae(com.tencent.mm.plugin.ball.c.b.class) != null) && (((com.tencent.mm.plugin.ball.c.b)h.ae(com.tencent.mm.plugin.ball.c.b.class)).cvh()))
     {
       super.setVisibility(8);
       AppMethodBeat.o(106472);
@@ -2858,16 +2905,16 @@ public class FloatBallView
     int i = (int)getAlpha();
     if (i == 0)
     {
-      this.pbB = false;
+      this.sdB = false;
       Log.printInfoStack("MicroMsg.FloatBallView", "setVisibility:%s, alphaInt:%s, disableTouch", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
       AppMethodBeat.o(106472);
       return;
     }
     if (i == 1)
     {
-      this.pbB = true;
+      this.sdB = true;
       Log.printInfoStack("MicroMsg.FloatBallView", "setVisibility:%s, alphaInt:%s, enableTouch", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-      cjA();
+      cwR();
     }
     AppMethodBeat.o(106472);
   }

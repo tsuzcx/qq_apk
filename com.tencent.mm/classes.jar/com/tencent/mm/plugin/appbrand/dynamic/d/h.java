@@ -3,11 +3,9 @@ package com.tencent.mm.plugin.appbrand.dynamic.d;
 import android.os.Bundle;
 import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.b.b.a;
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ac.b.b.a;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.extension.f;
 import com.tencent.mm.model.ad.b;
 import com.tencent.mm.modelappbrand.t;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -21,42 +19,42 @@ public final class h
     super("onTapCallback", 327);
   }
   
-  public final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.ac.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121324);
-    parama = parama.ayQ();
+    parama = parama.aGj();
     b localb = new b();
     localb.id = parama.getString("__page_view_id", "");
-    localb.edD = paramJSONObject.optString("eventId", "");
-    localb.lny = paramJSONObject.optBoolean("hasHandler");
-    localb.lnz = paramJSONObject.optBoolean("res");
-    XIPCInvoker.a(parama.getString("__process_name", MMApplicationContext.getProcessName()), localb, a.class, new d() {});
+    localb.fXM = paramJSONObject.optString("eventId", "");
+    localb.oij = paramJSONObject.optBoolean("hasHandler");
+    localb.oik = paramJSONObject.optBoolean("res");
+    XIPCInvoker.a(parama.getString("__process_name", MMApplicationContext.getProcessName()), localb, a.class, new com.tencent.mm.ipcinvoker.f() {});
     AppMethodBeat.o(121324);
   }
   
   static class a
-    implements b<h.b, Bundle>
+    implements d<h.b, Bundle>
   {}
   
   public static final class b
-    implements f
+    implements com.tencent.mm.ipcinvoker.extension.f
   {
-    String edD;
+    String fXM;
     String id;
-    boolean lny;
-    boolean lnz;
+    boolean oij;
+    boolean oik;
     
     public final void e(Parcel paramParcel)
     {
       int j = 1;
       AppMethodBeat.i(121322);
       paramParcel.writeString(this.id);
-      if (this.lny)
+      if (this.oij)
       {
         i = 1;
         paramParcel.writeInt(i);
-        paramParcel.writeString(this.edD);
-        if (!this.lnz) {
+        paramParcel.writeString(this.fXM);
+        if (!this.oik) {
           break label62;
         }
       }
@@ -79,8 +77,8 @@ public final class h
       if (paramParcel.readInt() == 1)
       {
         bool1 = true;
-        this.lny = bool1;
-        this.edD = paramParcel.readString();
+        this.oij = bool1;
+        this.fXM = paramParcel.readString();
         if (paramParcel.readInt() != 1) {
           break label64;
         }
@@ -88,7 +86,7 @@ public final class h
       label64:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.lnz = bool1;
+        this.oik = bool1;
         AppMethodBeat.o(121323);
         return;
         bool1 = false;
@@ -99,7 +97,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.h
  * JD-Core Version:    0.7.0.1
  */

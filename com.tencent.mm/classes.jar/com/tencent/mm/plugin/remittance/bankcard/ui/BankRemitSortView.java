@@ -8,8 +8,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.d.b;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.jg;
+import com.tencent.mm.protocal.protobuf.iv;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.VerticalScrollBar;
 import com.tencent.mm.ui.base.sortview.BaseSortView;
@@ -20,7 +23,7 @@ public class BankRemitSortView
   extends BaseSortView
 {
   private final String TAG = "MicroMsg.BankcardSortView";
-  private ListView pqt;
+  private ListView szs;
   
   public BankRemitSortView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,6 +33,14 @@ public class BankRemitSortView
   public final boolean a(String paramString, d paramd)
   {
     return false;
+  }
+  
+  public final View eI()
+  {
+    AppMethodBeat.i(67612);
+    View localView = View.inflate(getContext(), a.g.bank_remit_sort_view, this);
+    AppMethodBeat.o(67612);
+    return localView;
   }
   
   public c.a getItemViewCreator()
@@ -44,25 +55,25 @@ public class BankRemitSortView
         View localView = paramAnonymousView;
         if (paramAnonymousView == null)
         {
-          localView = LayoutInflater.from((Context)localObject).inflate(2131493212, null);
+          localView = LayoutInflater.from((Context)localObject).inflate(a.g.bank_remit_sort_item, null);
           paramAnonymousView = new BankRemitSortView.a(BankRemitSortView.this, (byte)0);
-          paramAnonymousView.ClO = ((TextView)localView.findViewById(2131298244));
-          paramAnonymousView.Cjs = ((TextView)localView.findViewById(2131297803));
-          paramAnonymousView.Cjq = ((CdnImageView)localView.findViewById(2131297802));
+          paramAnonymousView.IiH = ((TextView)localView.findViewById(a.f.catalogTV));
+          paramAnonymousView.Igl = ((TextView)localView.findViewById(a.f.brsb_item_title));
+          paramAnonymousView.Igj = ((CdnImageView)localView.findViewById(a.f.brsb_item_icon));
           localView.setTag(paramAnonymousView);
         }
         paramAnonymousView = (BankRemitSortView.a)localView.getTag();
-        localObject = (jg)paramAnonymousd.data;
+        localObject = (iv)paramAnonymousd.bnW;
         if (localObject != null) {
-          if ((BankRemitSortView.this.OZW) && (paramAnonymousBoolean1)) {
-            if (paramAnonymousd.Pae.equals("☆"))
+          if ((BankRemitSortView.this.Wtj) && (paramAnonymousBoolean1)) {
+            if (paramAnonymousd.Wtr.equals("☆"))
             {
-              paramAnonymousView.ClO.setText(2131756531);
-              paramAnonymousView.ClO.setVisibility(0);
-              label162:
-              paramAnonymousView.Cjq.setUseSdcardCache(true);
-              paramAnonymousView.Cjq.mB(((jg)localObject).CiX, b.aKj(((jg)localObject).CiX));
-              paramAnonymousView.Cjs.setText(((jg)localObject).ynT);
+              paramAnonymousView.IiH.setText(a.i.bank_remit_select_bank_freq_bank_title);
+              paramAnonymousView.IiH.setVisibility(0);
+              label167:
+              paramAnonymousView.Igj.setUseSdcardCache(true);
+              paramAnonymousView.Igj.nr(((iv)localObject).IfQ, b.aUH(((iv)localObject).IfQ));
+              paramAnonymousView.Igl.setText(((iv)localObject).DNV);
             }
           }
         }
@@ -70,10 +81,10 @@ public class BankRemitSortView
         {
           AppMethodBeat.o(67611);
           return localView;
-          paramAnonymousView.ClO.setText(paramAnonymousd.Pae);
+          paramAnonymousView.IiH.setText(paramAnonymousd.Wtr);
           break;
-          paramAnonymousView.ClO.setVisibility(8);
-          break label162;
+          paramAnonymousView.IiH.setVisibility(8);
+          break label167;
           Log.w("MicroMsg.BankcardSortView", "elem is null: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
         }
       }
@@ -85,8 +96,8 @@ public class BankRemitSortView
   public ListView getListView()
   {
     AppMethodBeat.i(67614);
-    this.pqt = ((ListView)findViewById(2131303242));
-    ListView localListView = this.pqt;
+    this.szs = ((ListView)findViewById(a.f.listview));
+    ListView localListView = this.szs;
     AppMethodBeat.o(67614);
     return localListView;
   }
@@ -99,31 +110,23 @@ public class BankRemitSortView
   public VerticalScrollBar getScrollBar()
   {
     AppMethodBeat.i(67613);
-    VerticalScrollBar localVerticalScrollBar = (VerticalScrollBar)findViewById(2131307882);
+    VerticalScrollBar localVerticalScrollBar = (VerticalScrollBar)findViewById(a.f.sidrbar);
     AppMethodBeat.o(67613);
     return localVerticalScrollBar;
   }
   
-  public final View inflate()
-  {
-    AppMethodBeat.i(67612);
-    View localView = View.inflate(getContext(), 2131493213, this);
-    AppMethodBeat.o(67612);
-    return localView;
-  }
-  
   final class a
   {
-    CdnImageView Cjq;
-    TextView Cjs;
-    TextView ClO;
+    CdnImageView Igj;
+    TextView Igl;
+    TextView IiH;
     
     private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitSortView
  * JD-Core Version:    0.7.0.1
  */

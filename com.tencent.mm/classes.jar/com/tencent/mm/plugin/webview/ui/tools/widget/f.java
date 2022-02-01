@@ -5,11 +5,11 @@ import com.tencent.mm.ui.widget.MMWebView;
 
 public abstract interface f
 {
-  public abstract MMWebView eK(Context paramContext);
+  public abstract MMWebView eN(Context paramContext);
   
   public static final class a
   {
-    public static f Jys;
+    public static f QwC;
   }
 }
 

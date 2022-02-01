@@ -3,52 +3,48 @@ package kotlin.l.b.a.b.b.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 import kotlin.g.a.a;
-import kotlin.g.b.aa;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
-import kotlin.g.b.y;
+import kotlin.g.b.z;
 import kotlin.l.b.a.b.b.a.g.a;
-import kotlin.l.b.a.b.b.ab;
 import kotlin.l.b.a.b.b.ad;
-import kotlin.l.b.a.b.b.n;
 import kotlin.l.b.a.b.f.b;
 import kotlin.l.b.a.b.j.f.g;
 import kotlin.l.b.a.b.j.f.h;
 import kotlin.l.b.a.b.l.f;
 import kotlin.l.b.a.b.l.i;
-import kotlin.l.k;
 
 public final class r
   extends j
   implements ad
 {
-  final b TiI;
-  private final f Tlx;
-  private final h Tly;
-  final w Tlz;
+  final b aaLC;
+  private final f aaOr;
+  private final h aaOs;
+  final w aaOt;
   
   static
   {
     AppMethodBeat.i(57124);
-    cLI = new k[] { (k)aa.a(new y(aa.bp(r.class), "fragments", "getFragments()Ljava/util/List;")) };
+    cMt = new kotlin.l.n[] { (kotlin.l.n)kotlin.g.b.ab.a(new z(kotlin.g.b.ab.bO(r.class), "fragments", "getFragments()Ljava/util/List;")) };
     AppMethodBeat.o(57124);
   }
   
   public r(w paramw, b paramb, kotlin.l.b.a.b.l.j paramj)
   {
-    super(g.a.hBP(), paramb.hJh());
+    super(g.a.iGe(), paramb.iNB());
     AppMethodBeat.i(57130);
-    this.Tlz = paramw;
-    this.TiI = paramb;
-    this.Tlx = paramj.al((a)new a(this));
-    this.Tly = ((h)new g(paramj.al((a)new b(this))));
+    this.aaOt = paramw;
+    this.aaLC = paramb;
+    this.aaOr = paramj.av((a)new a(this));
+    this.aaOs = ((h)new g(paramj.av((a)new b(this))));
     AppMethodBeat.o(57130);
   }
   
-  public final <R, D> R a(n<R, D> paramn, D paramD)
+  public final <R, D> R a(kotlin.l.b.a.b.b.n<R, D> paramn, D paramD)
   {
     AppMethodBeat.i(57129);
-    p.h(paramn, "visitor");
+    p.k(paramn, "visitor");
     paramn = paramn.a((ad)this, paramD);
     AppMethodBeat.o(57129);
     return paramn;
@@ -68,7 +64,7 @@ public final class r
         AppMethodBeat.o(57127);
         return false;
       }
-      if ((p.j(this.TiI, paramObject.hBk())) && (p.j(this.Tlz, paramObject.hBl())))
+      if ((p.h(this.aaLC, paramObject.iFy())) && (p.h(this.aaOt, paramObject.iFz())))
       {
         AppMethodBeat.o(57127);
         return true;
@@ -78,31 +74,31 @@ public final class r
     }
   }
   
-  public final List<ab> getFragments()
+  public final List<kotlin.l.b.a.b.b.ab> getFragments()
   {
     AppMethodBeat.i(57125);
-    List localList = (List)i.a(this.Tlx, cLI[0]);
+    List localList = (List)i.a(this.aaOr, cMt[0]);
     AppMethodBeat.o(57125);
     return localList;
-  }
-  
-  public final h hAp()
-  {
-    return this.Tly;
-  }
-  
-  public final b hBk()
-  {
-    return this.TiI;
   }
   
   public final int hashCode()
   {
     AppMethodBeat.i(57128);
-    int i = this.Tlz.hashCode();
-    int j = this.TiI.hashCode();
+    int i = this.aaOt.hashCode();
+    int j = this.aaLC.hashCode();
     AppMethodBeat.o(57128);
     return i * 31 + j;
+  }
+  
+  public final h iEC()
+  {
+    return this.aaOs;
+  }
+  
+  public final b iFy()
+  {
+    return this.aaLC;
   }
   
   public final boolean isEmpty()
@@ -115,7 +111,7 @@ public final class r
   
   static final class a
     extends q
-    implements a<List<? extends ab>>
+    implements a<List<? extends kotlin.l.b.a.b.b.ab>>
   {
     a(r paramr)
     {
@@ -135,7 +131,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.c.r
  * JD-Core Version:    0.7.0.1
  */

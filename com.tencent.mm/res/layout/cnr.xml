@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/bsp" android:background="@color/a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/ct" app:layout_constraintTop_toTopOf="g8m" />
+    <androidx.constraintlayout.widget.ConstraintLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/cb" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintTop_toTopOf="g8m">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kw_" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_error" app:iconColor="@color/FG_1" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+        <TextView android:textSize="@dimen/h_" android:textColor="@color/FG_1" android:id="@id/kw9" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:includeFontPadding="true" app:layout_constraintBottom_toBottomOf="@id/kw_" app:layout_constraintStart_toEndOf="@id/kw_" app:layout_constraintTop_toTopOf="@id/kw_" />
+        <TextView android:textSize="@dimen/h_" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/kwa" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:includeFontPadding="true" android:layout_marginStart="@dimen/ci" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="@id/kw9" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View android:background="@color/BW_0_Alpha_0_1" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" app:layout_constraintBottom_toBottomOf="g8m" />
+</androidx.constraintlayout.widget.ConstraintLayout>

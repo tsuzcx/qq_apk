@@ -15,16 +15,16 @@ public final class s
   public static final e a(y paramy, kotlin.l.b.a.b.f.a parama, aa paramaa)
   {
     AppMethodBeat.i(56858);
-    p.h(paramy, "$this$findNonGenericClassAcrossDependencies");
-    p.h(parama, "classId");
-    p.h(paramaa, "notFoundClasses");
+    p.k(paramy, "$this$findNonGenericClassAcrossDependencies");
+    p.k(parama, "classId");
+    p.k(paramaa, "notFoundClasses");
     paramy = b(paramy, parama);
     if (paramy != null)
     {
       AppMethodBeat.o(56858);
       return paramy;
     }
-    paramy = paramaa.a(parama, i.c(i.d(i.b(parama, (kotlin.g.a.b)a.Thm), (kotlin.g.a.b)s.b.Thn)));
+    paramy = paramaa.a(parama, i.c(i.d(i.b(parama, (kotlin.g.a.b)a.aaKg), (kotlin.g.a.b)s.b.aaKh)));
     AppMethodBeat.o(56858);
     return paramy;
   }
@@ -32,20 +32,20 @@ public final class s
   public static final h a(y paramy, kotlin.l.b.a.b.f.a parama)
   {
     AppMethodBeat.i(56856);
-    p.h(paramy, "$this$findClassifierAcrossModuleDependencies");
-    p.h(parama, "classId");
-    Object localObject = parama.hIY();
-    p.g(localObject, "classId.packageFqName");
+    p.k(paramy, "$this$findClassifierAcrossModuleDependencies");
+    p.k(parama, "classId");
+    Object localObject = parama.iNs();
+    p.j(localObject, "classId.packageFqName");
     paramy = paramy.e((kotlin.l.b.a.b.f.b)localObject);
-    parama = parama.hIZ().TCR.hJl();
+    parama = parama.iNt().abfE.iNF();
     if (parama == null) {
-      kotlin.l.b.a.b.f.b.atM(11);
+      kotlin.l.b.a.b.f.b.aDG(11);
     }
-    p.g(parama, "classId.relativeClassName.pathSegments()");
-    paramy = paramy.hAp();
-    localObject = j.ks(parama);
-    p.g(localObject, "segments.first()");
-    paramy = paramy.c((f)localObject, (kotlin.l.b.a.b.c.a.a)kotlin.l.b.a.b.c.a.c.TnT);
+    p.j(parama, "classId.relativeClassName.pathSegments()");
+    paramy = paramy.iEC();
+    localObject = j.lo(parama);
+    p.j(localObject, "segments.first()");
+    paramy = paramy.c((f)localObject, (kotlin.l.b.a.b.c.a.a)kotlin.l.b.a.b.c.a.c.aaQN);
     if (paramy == null)
     {
       AppMethodBeat.o(56856);
@@ -60,9 +60,9 @@ public final class s
         AppMethodBeat.o(56856);
         return null;
       }
-      paramy = ((e)paramy).hAN();
-      p.g(parama, "name");
-      parama = paramy.c(parama, (kotlin.l.b.a.b.c.a.a)kotlin.l.b.a.b.c.a.c.TnT);
+      paramy = ((e)paramy).iFa();
+      p.j(parama, "name");
+      parama = paramy.c(parama, (kotlin.l.b.a.b.c.a.a)kotlin.l.b.a.b.c.a.c.aaQN);
       paramy = parama;
       if (!(parama instanceof e)) {
         paramy = null;
@@ -85,8 +85,8 @@ public final class s
   public static final e b(y paramy, kotlin.l.b.a.b.f.a parama)
   {
     AppMethodBeat.i(56857);
-    p.h(paramy, "$this$findClassAcrossModuleDependencies");
-    p.h(parama, "classId");
+    p.k(paramy, "$this$findClassAcrossModuleDependencies");
+    p.k(parama, "classId");
     parama = a(paramy, parama);
     paramy = parama;
     if (!(parama instanceof e)) {
@@ -99,7 +99,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.s
  * JD-Core Version:    0.7.0.1
  */

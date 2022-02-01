@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cqj;
-import com.tencent.mm.protocal.protobuf.cqk;
-import com.tencent.mm.protocal.protobuf.eoo;
+import com.tencent.mm.protocal.protobuf.cza;
+import com.tencent.mm.protocal.protobuf.czb;
+import com.tencent.mm.protocal.protobuf.eyw;
 
 public final class k
   extends q
   implements m
 {
-  public final String CXO;
-  public final int CXP;
+  public final String Jdu;
+  public final int Jdv;
+  private final String appid;
   private i callback;
-  private final String dNI;
   private final int scene;
   
   public k(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    this.dNI = paramString1;
-    this.CXO = paramString2;
-    this.CXP = paramInt1;
+    this.appid = paramString1;
+    this.Jdu = paramString2;
+    this.Jdv = paramInt1;
     this.scene = paramInt2;
   }
   
@@ -36,17 +36,17 @@ public final class k
     AppMethodBeat.i(73777);
     this.callback = parami;
     parami = new d.a();
-    cqj localcqj = new cqj();
-    localcqj.dNI = this.dNI;
-    localcqj.MvX = this.CXO;
-    localcqj.MvY = this.CXP;
-    parami.iLN = localcqj;
+    cza localcza = new cza();
+    localcza.appid = this.appid;
+    localcza.TGV = this.Jdu;
+    localcza.TGW = this.Jdv;
+    parami.lBU = localcza;
     parami.uri = "/cgi-bin/mmbiz-bin/moduserauth";
-    parami.iLO = new cqk();
+    parami.lBV = new czb();
     parami.funcId = getType();
-    parami.iLP = 0;
+    parami.lBW = 0;
     parami.respCmdId = 0;
-    int i = dispatch(paramg, parami.aXF(), this);
+    int i = dispatch(paramg, parami.bgN(), this);
     AppMethodBeat.o(73777);
     return i;
   }
@@ -59,8 +59,8 @@ public final class k
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(73776);
-    paramString = (cqk)((d)params).iLL.iLR;
-    this.callback.onSceneEnd(paramInt2, paramString.Lqs.dIZ, paramString.Lqs.dJa, this);
+    paramString = (czb)d.c.b(((d)params).lBS);
+    this.callback.onSceneEnd(paramInt2, paramString.SrP.fBP, paramString.SrP.errmsg, this);
     AppMethodBeat.o(73776);
   }
 }

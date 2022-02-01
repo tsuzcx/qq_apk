@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
-import android.support.v4.app.a.a;
 import android.text.TextUtils;
+import androidx.core.app.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ac.h;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -10,12 +10,12 @@ import java.util.Iterator;
 
 public final class r
 {
-  private static final h<String, a.a> nxM;
+  private static final h<String, a.a> qzQ;
   
   static
   {
     AppMethodBeat.i(140777);
-    nxM = new h();
+    qzQ = new h();
     AppMethodBeat.o(140777);
   }
   
@@ -28,7 +28,7 @@ public final class r
       AppMethodBeat.o(140776);
       return;
     }
-    paramString = nxM.cM(paramString);
+    paramString = qzQ.cN(paramString);
     if (paramString != null)
     {
       paramString = paramString.iterator();
@@ -41,18 +41,18 @@ public final class r
   
   public static void a(String paramString, a.a parama)
   {
-    AppMethodBeat.i(140773);
+    AppMethodBeat.i(209418);
     if ((TextUtils.isEmpty(paramString)) || (parama == null))
     {
       Log.e("Luggage.RequestPermissionRegistry", "addCallback fail, invalid arguments");
-      AppMethodBeat.o(140773);
+      AppMethodBeat.o(209418);
       return;
     }
-    nxM.r(paramString, parama);
-    AppMethodBeat.o(140773);
+    qzQ.k(paramString, parama);
+    AppMethodBeat.o(209418);
   }
   
-  public static void aeq(String paramString)
+  public static void amk(String paramString)
   {
     AppMethodBeat.i(140775);
     if (TextUtils.isEmpty(paramString))
@@ -61,21 +61,21 @@ public final class r
       AppMethodBeat.o(140775);
       return;
     }
-    nxM.cN(paramString);
+    qzQ.cO(paramString);
     AppMethodBeat.o(140775);
   }
   
   @Deprecated
   public static void b(String paramString, a.a parama)
   {
-    AppMethodBeat.i(140774);
+    AppMethodBeat.i(209420);
     a(paramString, parama);
-    AppMethodBeat.o(140774);
+    AppMethodBeat.o(209420);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.r
  * JD-Core Version:    0.7.0.1
  */

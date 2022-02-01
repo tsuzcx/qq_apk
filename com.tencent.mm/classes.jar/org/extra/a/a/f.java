@@ -16,65 +16,65 @@ import java.util.List;
 public final class f
   implements Closeable, c
 {
-  private final int UhV;
-  private final FileChannel UhW;
+  private final int abLq;
+  private final FileChannel abLr;
   
   public f(File paramFile)
   {
-    AppMethodBeat.i(236800);
-    this.UhV = 1179403647;
+    AppMethodBeat.i(194720);
+    this.abLq = 1179403647;
     if ((paramFile == null) || (!paramFile.exists()))
     {
       paramFile = new IllegalArgumentException("File is null or does not exist");
-      AppMethodBeat.o(236800);
+      AppMethodBeat.o(194720);
       throw paramFile;
     }
-    this.UhW = new FileInputStream(paramFile).getChannel();
-    AppMethodBeat.o(236800);
+    this.abLr = new FileInputStream(paramFile).getChannel();
+    AppMethodBeat.o(194720);
   }
   
   private static long a(c.b paramb, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(236802);
+    AppMethodBeat.i(194728);
     for (long l = 0L; l < paramLong1; l += 1L)
     {
-      c.c localc = paramb.Pv(l);
-      if ((localc.dDw == 1L) && (localc.UhR <= paramLong2) && (paramLong2 <= localc.UhR + localc.UhS))
+      c.c localc = paramb.XL(l);
+      if ((localc.fwf == 1L) && (localc.abLm <= paramLong2) && (paramLong2 <= localc.abLm + localc.abLn))
       {
-        paramLong1 = localc.UhR;
+        paramLong1 = localc.abLm;
         l = localc.offset;
-        AppMethodBeat.o(236802);
+        AppMethodBeat.o(194728);
         return paramLong2 - paramLong1 + l;
       }
     }
     paramb = new IllegalStateException("Could not map vma to file offset!");
-    AppMethodBeat.o(236802);
+    AppMethodBeat.o(194728);
     throw paramb;
   }
   
   private void a(ByteBuffer paramByteBuffer, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(236809);
+    AppMethodBeat.i(194744);
     paramByteBuffer.position(0);
     paramByteBuffer.limit(paramInt);
     int i;
     for (long l = 0L; l < paramInt; l += i)
     {
-      i = this.UhW.read(paramByteBuffer, paramLong + l);
+      i = this.abLr.read(paramByteBuffer, paramLong + l);
       if (i == -1)
       {
         paramByteBuffer = new EOFException();
-        AppMethodBeat.o(236809);
+        AppMethodBeat.o(194744);
         throw paramByteBuffer;
       }
     }
     paramByteBuffer.position(0);
-    AppMethodBeat.o(236809);
+    AppMethodBeat.o(194744);
   }
   
   private String c(ByteBuffer paramByteBuffer, long paramLong)
   {
-    AppMethodBeat.i(236804);
+    AppMethodBeat.i(194733);
     StringBuilder localStringBuilder = new StringBuilder();
     for (;;)
     {
@@ -86,65 +86,65 @@ public final class f
       paramLong = 1L + paramLong;
     }
     paramByteBuffer = localStringBuilder.toString();
-    AppMethodBeat.o(236804);
+    AppMethodBeat.o(194733);
     return paramByteBuffer;
   }
   
   private short g(ByteBuffer paramByteBuffer, long paramLong)
   {
-    AppMethodBeat.i(236808);
+    AppMethodBeat.i(194740);
     a(paramByteBuffer, paramLong, 1);
     short s = (short)(paramByteBuffer.get() & 0xFF);
-    AppMethodBeat.o(236808);
+    AppMethodBeat.o(194740);
     return s;
   }
   
   public final void close()
   {
-    AppMethodBeat.i(236803);
-    this.UhW.close();
-    AppMethodBeat.o(236803);
+    AppMethodBeat.i(194730);
+    this.abLr.close();
+    AppMethodBeat.o(194730);
   }
   
   protected final long d(ByteBuffer paramByteBuffer, long paramLong)
   {
-    AppMethodBeat.i(236805);
+    AppMethodBeat.i(194735);
     a(paramByteBuffer, paramLong, 8);
     paramLong = paramByteBuffer.getLong();
-    AppMethodBeat.o(236805);
+    AppMethodBeat.o(194735);
     return paramLong;
   }
   
   protected final long e(ByteBuffer paramByteBuffer, long paramLong)
   {
-    AppMethodBeat.i(236806);
+    AppMethodBeat.i(194737);
     a(paramByteBuffer, paramLong, 4);
     paramLong = paramByteBuffer.getInt();
-    AppMethodBeat.o(236806);
+    AppMethodBeat.o(194737);
     return paramLong & 0xFFFFFFFF;
   }
   
   protected final int f(ByteBuffer paramByteBuffer, long paramLong)
   {
-    AppMethodBeat.i(236807);
+    AppMethodBeat.i(194739);
     a(paramByteBuffer, paramLong, 2);
     int i = paramByteBuffer.getShort();
-    AppMethodBeat.o(236807);
+    AppMethodBeat.o(194739);
     return i & 0xFFFF;
   }
   
-  public final List<String> hPT()
+  public final List<String> iVc()
   {
-    AppMethodBeat.i(236801);
-    this.UhW.position(0L);
+    AppMethodBeat.i(194726);
+    this.abLr.position(0L);
     ArrayList localArrayList = new ArrayList();
-    this.UhW.position(0L);
+    this.abLr.position(0L);
     Object localObject1 = ByteBuffer.allocate(8);
     ((ByteBuffer)localObject1).order(ByteOrder.LITTLE_ENDIAN);
     if (e((ByteBuffer)localObject1, 0L) != 1179403647L)
     {
       localObject1 = new IllegalArgumentException("Invalid ELF Magic!");
-      AppMethodBeat.o(236801);
+      AppMethodBeat.o(194726);
       throw ((Throwable)localObject1);
     }
     int i = g((ByteBuffer)localObject1, 4L);
@@ -162,23 +162,23 @@ public final class f
       }
       localObject1 = new d(bool, this);
       localByteBuffer = ByteBuffer.allocate(8);
-      if (!((c.b)localObject1).UhJ) {
+      if (!((c.b)localObject1).abLe) {
         break label282;
       }
       localObject2 = ByteOrder.BIG_ENDIAN;
       localByteBuffer.order((ByteOrder)localObject2);
-      l2 = ((c.b)localObject1).UhN;
+      l2 = ((c.b)localObject1).abLi;
       l1 = l2;
       if (l2 == 65535L) {
-        l1 = ((c.b)localObject1).hPS().UhT;
+        l1 = ((c.b)localObject1).iVb().abLo;
       }
       l2 = 0L;
       label182:
       if (l2 >= l1) {
         break label491;
       }
-      localObject2 = ((c.b)localObject1).Pv(l2);
-      if (((c.c)localObject2).dDw != 2L) {
+      localObject2 = ((c.b)localObject1).XL(l2);
+      if (((c.c)localObject2).fwf != 2L) {
         break label290;
       }
     }
@@ -191,7 +191,7 @@ public final class f
       if (l2 == 0L)
       {
         localObject1 = Collections.unmodifiableList(localArrayList);
-        AppMethodBeat.o(236801);
+        AppMethodBeat.o(194726);
         return localObject1;
         bool = false;
         break;
@@ -202,7 +202,7 @@ public final class f
           break label122;
         }
         localObject1 = new IllegalStateException("Invalid class type!");
-        AppMethodBeat.o(236801);
+        AppMethodBeat.o(194726);
         throw ((Throwable)localObject1);
         localObject2 = ByteOrder.LITTLE_ENDIAN;
         break label142;
@@ -212,29 +212,29 @@ public final class f
       i = 0;
       localObject2 = new ArrayList();
       long l3 = 0L;
-      c.a locala = ((c.b)localObject1).aw(l2, i);
+      c.a locala = ((c.b)localObject1).aF(l2, i);
       long l4;
-      if (locala.UhH == 1L)
+      if (locala.abLc == 1L)
       {
-        ((List)localObject2).add(Long.valueOf(locala.UhI));
+        ((List)localObject2).add(Long.valueOf(locala.abLd));
         l4 = l3;
       }
       for (;;)
       {
         i += 1;
         l3 = l4;
-        if (locala.UhH != 0L) {
+        if (locala.abLc != 0L) {
           break;
         }
         if (l4 != 0L) {
           break label423;
         }
         localObject1 = new IllegalStateException("String table offset not found!");
-        AppMethodBeat.o(236801);
+        AppMethodBeat.o(194726);
         throw ((Throwable)localObject1);
         l4 = l3;
-        if (locala.UhH == 5L) {
-          l4 = locala.UhI;
+        if (locala.abLc == 5L) {
+          l4 = locala.abLd;
         }
       }
       l1 = a((c.b)localObject1, l1, l4);
@@ -242,14 +242,14 @@ public final class f
       while (((Iterator)localObject1).hasNext()) {
         localArrayList.add(c(localByteBuffer, ((Long)((Iterator)localObject1).next()).longValue() + l1));
       }
-      AppMethodBeat.o(236801);
+      AppMethodBeat.o(194726);
       return localArrayList;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     org.extra.a.a.f
  * JD-Core Version:    0.7.0.1
  */

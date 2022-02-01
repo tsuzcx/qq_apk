@@ -9,27 +9,27 @@ public final class k
   extends ac
   implements j
 {
-  public final void B(EmojiInfo paramEmojiInfo)
-  {
-    AppMethodBeat.i(104687);
-    this.djc.a(paramEmojiInfo);
-    AppMethodBeat.o(104687);
-  }
+  public final void A(boolean paramBoolean, int paramInt) {}
   
-  public final void N(boolean paramBoolean, int paramInt) {}
-  
-  public final void ein()
+  public final void cpE()
   {
     AppMethodBeat.i(104689);
-    this.djc.onHide();
+    this.faJ.onHide();
     AppMethodBeat.o(104689);
   }
   
-  public final void eio() {}
+  public final void cpF() {}
+  
+  public final void o(EmojiInfo paramEmojiInfo)
+  {
+    AppMethodBeat.i(104687);
+    this.faJ.a(paramEmojiInfo);
+    AppMethodBeat.o(104687);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.k
  * JD-Core Version:    0.7.0.1
  */

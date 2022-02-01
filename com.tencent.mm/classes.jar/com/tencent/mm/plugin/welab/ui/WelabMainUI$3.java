@@ -1,12 +1,17 @@
 package com.tencent.mm.plugin.welab.ui;
 
-import com.tencent.mm.plugin.welab.d.a.a;
-import java.util.Comparator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.HashMap;
 
 final class WelabMainUI$3
-  implements Comparator<a>
+  extends HashMap<String, String>
 {
-  WelabMainUI$3(WelabMainUI paramWelabMainUI) {}
+  WelabMainUI$3()
+  {
+    AppMethodBeat.i(248541);
+    put("wximeplugin", "inputmethod");
+    AppMethodBeat.o(248541);
+  }
 }
 
 

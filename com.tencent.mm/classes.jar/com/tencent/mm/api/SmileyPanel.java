@@ -12,11 +12,13 @@ public abstract class SmileyPanel
     super(paramContext, paramAttributeSet);
   }
   
+  public abstract void bhB();
+  
   public void set16029ExtraInfo(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.api.SmileyPanel
  * JD-Core Version:    0.7.0.1
  */

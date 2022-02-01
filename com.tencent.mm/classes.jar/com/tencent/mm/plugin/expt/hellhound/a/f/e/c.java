@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.expt.hellhound.a.f.e;
 
 import android.app.Activity;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.a.f.b.e;
-import com.tencent.mm.protocal.protobuf.cbm;
-import com.tencent.mm.protocal.protobuf.cyk;
-import com.tencent.mm.protocal.protobuf.cyl;
-import com.tencent.mm.protocal.protobuf.dvo;
-import com.tencent.mm.protocal.protobuf.dvp;
+import com.tencent.mm.protocal.protobuf.cjp;
+import com.tencent.mm.protocal.protobuf.dhw;
+import com.tencent.mm.protocal.protobuf.dhx;
+import com.tencent.mm.protocal.protobuf.efq;
+import com.tencent.mm.protocal.protobuf.efr;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -17,23 +17,23 @@ import java.util.Map;
 
 public final class c
 {
-  private static final Map<Integer, WeakReference<Activity>> sIN;
+  private static final Map<Integer, WeakReference<Activity>> woK;
   
   static
   {
     AppMethodBeat.i(122214);
-    sIN = new HashMap();
+    woK = new HashMap();
     AppMethodBeat.o(122214);
   }
   
-  public static void Hn(int paramInt)
+  public static void KX(int paramInt)
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(122204);
-        Object localObject1 = (WeakReference)sIN.get(Integer.valueOf(paramInt));
+        Object localObject1 = (WeakReference)woK.get(Integer.valueOf(paramInt));
         if (localObject1 != null)
         {
           localObject1 = (Activity)((WeakReference)localObject1).get();
@@ -49,25 +49,25 @@ public final class c
           AppMethodBeat.o(122204);
           continue;
         }
-        localcyl = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
+        localdhx = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.dfi();
       }
       finally {}
-      cyl localcyl;
-      if (localcyl != null) {
-        b(localObject2, localcyl, true);
+      dhx localdhx;
+      if (localdhx != null) {
+        b(localObject2, localdhx, true);
       }
       AppMethodBeat.o(122204);
     }
   }
   
-  public static void Ho(int paramInt)
+  public static void KY(int paramInt)
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(122206);
-        Object localObject1 = (WeakReference)sIN.get(Integer.valueOf(paramInt));
+        Object localObject1 = (WeakReference)woK.get(Integer.valueOf(paramInt));
         if (localObject1 != null)
         {
           localObject1 = (Activity)((WeakReference)localObject1).get();
@@ -83,48 +83,48 @@ public final class c
           AppMethodBeat.o(122206);
           continue;
         }
-        localcyl = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
+        localdhx = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.dfi();
       }
       finally {}
-      cyl localcyl;
-      if (localcyl != null) {
-        b(localObject2, localcyl, false);
+      dhx localdhx;
+      if (localdhx != null) {
+        b(localObject2, localdhx, false);
       }
       AppMethodBeat.o(122206);
     }
   }
   
-  private static void a(Object paramObject, cyk paramcyk, cyl paramcyl, boolean paramBoolean)
+  private static void a(Object paramObject, dhw paramdhw, dhx paramdhx, boolean paramBoolean)
   {
     AppMethodBeat.i(122213);
-    paramcyl = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.gw(paramcyl.sessionId, paramObject.getClass().getSimpleName());
-    if (paramcyl == null)
+    paramdhx = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.gK(paramdhx.sessionId, paramObject.getClass().getSimpleName());
+    if (paramdhx == null)
     {
       AppMethodBeat.o(122213);
       return;
     }
-    cbm localcbm = (cbm)paramcyl.get(0);
-    b.a(paramObject, paramcyk, localcbm, true, paramBoolean);
-    com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcbm, ((Integer)paramcyl.get(1)).intValue());
+    cjp localcjp = (cjp)paramdhx.get(0);
+    b.a(paramObject, paramdhw, localcjp, true, paramBoolean);
+    com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcjp, ((Integer)paramdhx.get(1)).intValue());
     AppMethodBeat.o(122213);
   }
   
-  private static void a(Object paramObject, dvp paramdvp, cyl paramcyl, boolean paramBoolean)
+  private static void a(Object paramObject, efr paramefr, dhx paramdhx, boolean paramBoolean)
   {
     AppMethodBeat.i(122212);
-    paramdvp = paramdvp.KVY.iterator();
-    while (paramdvp.hasNext())
+    paramefr = paramefr.RXm.iterator();
+    while (paramefr.hasNext())
     {
-      cyk localcyk = (cyk)paramdvp.next();
-      if (localcyk != null) {
-        a(paramObject, localcyk, paramcyl, paramBoolean);
+      dhw localdhw = (dhw)paramefr.next();
+      if (localdhw != null) {
+        a(paramObject, localdhw, paramdhx, paramBoolean);
       }
     }
     AppMethodBeat.o(122212);
   }
   
   /* Error */
-  private static void ag(Activity paramActivity)
+  private static void ah(Activity paramActivity)
   {
     // Byte code:
     //   0: ldc 2
@@ -134,7 +134,7 @@ public final class c
     //   8: aload_0
     //   9: invokevirtual 143	java/lang/Object:hashCode	()I
     //   12: istore_1
-    //   13: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:sIN	Ljava/util/Map;
+    //   13: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:woK	Ljava/util/Map;
     //   16: iload_1
     //   17: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   20: invokeinterface 147 2 0
@@ -144,23 +144,23 @@ public final class c
     //   32: aload_0
     //   33: invokespecial 150	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
     //   36: astore_0
-    //   37: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:sIN	Ljava/util/Map;
+    //   37: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:woK	Ljava/util/Map;
     //   40: iload_1
     //   41: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   44: aload_0
     //   45: invokeinterface 154 3 0
     //   50: pop
-    //   51: invokestatic 160	com/tencent/mm/plugin/expt/hellhound/core/a/a/c:cNJ	()Lcom/tencent/mm/plugin/expt/hellhound/core/a/a/c;
+    //   51: invokestatic 160	com/tencent/mm/plugin/expt/hellhound/core/a/a/c:dcB	()Lcom/tencent/mm/plugin/expt/hellhound/core/a/a/c;
     //   54: sipush 402
     //   57: iload_1
     //   58: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   61: invokevirtual 164	com/tencent/mm/plugin/expt/hellhound/core/a/a/c:m	(ILjava/lang/Object;)V
+    //   61: invokevirtual 164	com/tencent/mm/plugin/expt/hellhound/core/a/a/c:p	(ILjava/lang/Object;)V
     //   64: ldc 140
     //   66: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   69: ldc 2
     //   71: monitorexit
     //   72: return
-    //   73: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:sIN	Ljava/util/Map;
+    //   73: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:woK	Ljava/util/Map;
     //   76: iload_1
     //   77: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   80: invokeinterface 41 2 0
@@ -171,7 +171,7 @@ public final class c
     //   93: aload_2
     //   94: invokevirtual 46	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
     //   97: ifnonnull -46 -> 51
-    //   100: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:sIN	Ljava/util/Map;
+    //   100: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:woK	Ljava/util/Map;
     //   103: iload_1
     //   104: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   107: invokeinterface 167 2 0
@@ -181,7 +181,7 @@ public final class c
     //   117: aload_0
     //   118: invokespecial 150	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
     //   121: astore_0
-    //   122: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:sIN	Ljava/util/Map;
+    //   122: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:woK	Ljava/util/Map;
     //   125: iload_1
     //   126: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   129: aload_0
@@ -208,7 +208,7 @@ public final class c
   }
   
   /* Error */
-  private static void ah(Activity paramActivity)
+  private static void ai(Activity paramActivity)
   {
     // Byte code:
     //   0: ldc 2
@@ -218,7 +218,7 @@ public final class c
     //   8: aload_0
     //   9: invokevirtual 143	java/lang/Object:hashCode	()I
     //   12: istore_1
-    //   13: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:sIN	Ljava/util/Map;
+    //   13: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:woK	Ljava/util/Map;
     //   16: iload_1
     //   17: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   20: invokeinterface 147 2 0
@@ -228,23 +228,23 @@ public final class c
     //   32: aload_0
     //   33: invokespecial 150	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
     //   36: astore_0
-    //   37: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:sIN	Ljava/util/Map;
+    //   37: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:woK	Ljava/util/Map;
     //   40: iload_1
     //   41: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   44: aload_0
     //   45: invokeinterface 154 3 0
     //   50: pop
-    //   51: invokestatic 160	com/tencent/mm/plugin/expt/hellhound/core/a/a/c:cNJ	()Lcom/tencent/mm/plugin/expt/hellhound/core/a/a/c;
+    //   51: invokestatic 160	com/tencent/mm/plugin/expt/hellhound/core/a/a/c:dcB	()Lcom/tencent/mm/plugin/expt/hellhound/core/a/a/c;
     //   54: sipush 403
     //   57: iload_1
     //   58: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   61: invokevirtual 164	com/tencent/mm/plugin/expt/hellhound/core/a/a/c:m	(ILjava/lang/Object;)V
+    //   61: invokevirtual 164	com/tencent/mm/plugin/expt/hellhound/core/a/a/c:p	(ILjava/lang/Object;)V
     //   64: ldc 169
     //   66: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   69: ldc 2
     //   71: monitorexit
     //   72: return
-    //   73: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:sIN	Ljava/util/Map;
+    //   73: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:woK	Ljava/util/Map;
     //   76: iload_1
     //   77: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   80: invokeinterface 41 2 0
@@ -255,7 +255,7 @@ public final class c
     //   93: aload_2
     //   94: invokevirtual 46	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
     //   97: ifnonnull -46 -> 51
-    //   100: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:sIN	Ljava/util/Map;
+    //   100: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:woK	Ljava/util/Map;
     //   103: iload_1
     //   104: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   107: invokeinterface 167 2 0
@@ -265,7 +265,7 @@ public final class c
     //   117: aload_0
     //   118: invokespecial 150	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
     //   121: astore_0
-    //   122: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:sIN	Ljava/util/Map;
+    //   122: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:woK	Ljava/util/Map;
     //   125: iload_1
     //   126: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   129: aload_0
@@ -293,10 +293,10 @@ public final class c
   
   public static void b(Fragment paramFragment, int paramInt)
   {
-    AppMethodBeat.i(122208);
+    AppMethodBeat.i(251160);
     if (paramFragment == null)
     {
-      AppMethodBeat.o(122208);
+      AppMethodBeat.o(251160);
       return;
     }
     switch (paramInt)
@@ -304,51 +304,51 @@ public final class c
     }
     for (;;)
     {
-      AppMethodBeat.o(122208);
+      AppMethodBeat.o(251160);
       return;
-      cyl localcyl = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
-      if (localcyl != null) {
-        b(paramFragment, localcyl, true);
+      dhx localdhx = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.dfi();
+      if (localdhx != null) {
+        b(paramFragment, localdhx, true);
       }
-      AppMethodBeat.o(122208);
+      AppMethodBeat.o(251160);
       return;
-      localcyl = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
-      if (localcyl != null) {
-        b(paramFragment, localcyl, false);
+      localdhx = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.dfi();
+      if (localdhx != null) {
+        b(paramFragment, localdhx, false);
       }
     }
   }
   
-  private static void b(Object paramObject, cyl paramcyl, boolean paramBoolean)
+  private static void b(Object paramObject, dhx paramdhx, boolean paramBoolean)
   {
     AppMethodBeat.i(122211);
-    e.cQg();
-    Object localObject = e.cQh();
-    if ((localObject == null) || (((dvo)localObject).gyp))
+    e.dfa();
+    Object localObject = e.dfb();
+    if ((localObject == null) || (((efq)localObject).jis))
     {
       AppMethodBeat.o(122211);
       return;
     }
-    localObject = ((dvo)localObject).iAd.iterator();
+    localObject = ((efq)localObject).lpz.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      dvp localdvp = (dvp)((Iterator)localObject).next();
-      if (localdvp != null) {
-        a(paramObject, localdvp, paramcyl, paramBoolean);
+      efr localefr = (efr)((Iterator)localObject).next();
+      if (localefr != null) {
+        a(paramObject, localefr, paramdhx, paramBoolean);
       }
     }
     AppMethodBeat.o(122211);
   }
   
   /* Error */
-  public static void dp(java.lang.String paramString, int paramInt)
+  public static void dK(java.lang.String paramString, int paramInt)
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
     //   3: ldc 198
     //   5: invokestatic 16	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:sIN	Ljava/util/Map;
+    //   8: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:woK	Ljava/util/Map;
     //   11: invokeinterface 201 1 0
     //   16: ifeq +12 -> 28
     //   19: ldc 198
@@ -358,7 +358,7 @@ public final class c
     //   27: return
     //   28: iload_1
     //   29: ifle +58 -> 87
-    //   32: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:sIN	Ljava/util/Map;
+    //   32: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:woK	Ljava/util/Map;
     //   35: iload_1
     //   36: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   39: invokeinterface 167 2 0
@@ -390,7 +390,7 @@ public final class c
     //   90: dup
     //   91: invokespecial 217	java/util/ArrayList:<init>	()V
     //   94: astore_2
-    //   95: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:sIN	Ljava/util/Map;
+    //   95: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:woK	Ljava/util/Map;
     //   98: invokeinterface 221 1 0
     //   103: invokeinterface 224 1 0
     //   108: astore_3
@@ -446,7 +446,7 @@ public final class c
     //   243: checkcast 31	java/lang/Integer
     //   246: invokevirtual 108	java/lang/Integer:intValue	()I
     //   249: istore_1
-    //   250: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:sIN	Ljava/util/Map;
+    //   250: getstatic 23	com/tencent/mm/plugin/expt/hellhound/a/f/e/c:woK	Ljava/util/Map;
     //   253: iload_1
     //   254: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   257: invokeinterface 167 2 0
@@ -481,7 +481,7 @@ public final class c
     //   32	45	59	java/lang/NumberFormatException
   }
   
-  public static void f(Activity paramActivity, int paramInt)
+  public static void g(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(122202);
     if (paramActivity == null)
@@ -496,16 +496,16 @@ public final class c
     {
       AppMethodBeat.o(122202);
       return;
-      ag(paramActivity);
+      ah(paramActivity);
       AppMethodBeat.o(122202);
       return;
-      ah(paramActivity);
+      ai(paramActivity);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.e.c
  * JD-Core Version:    0.7.0.1
  */

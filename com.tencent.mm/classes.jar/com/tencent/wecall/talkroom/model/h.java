@@ -12,50 +12,50 @@ import java.util.List;
 
 public class h
 {
-  public static h Sws;
   static final String TAG;
-  public int HaK;
-  public int HaM;
-  public int HaN;
-  public int HaQ;
-  public int HaY;
-  int Hre;
-  int Hrh;
-  int Hrl;
-  long Hrm;
-  int Hrr;
-  public int Hrs;
-  private String Hrx;
-  public String RDo;
-  long SwA;
-  private int SwB;
-  private int SwC;
-  private String SwD;
-  private int SwE;
-  private StringBuffer SwF;
-  private long SwG;
-  long SwH;
-  long SwI;
-  public int Swt;
-  int Swu;
-  long Swv;
-  long Sww;
-  int Swx;
-  public int Swy;
-  int Swz;
+  public static h ZXq;
+  public long DPJ;
+  long DQU;
+  int DQV;
+  public int NQW;
+  public int NQY;
+  public int NQZ;
+  public int NRc;
+  public int NRk;
+  int OiP;
+  int OiS;
+  int OiW;
+  long OiX;
+  int Ojc;
+  public int Ojd;
+  private String Oji;
+  private int ZXA;
+  private String ZXB;
+  private int ZXC;
+  private StringBuffer ZXD;
+  private long ZXE;
+  long ZXF;
+  long ZXG;
+  public int ZXr;
+  int ZXs;
+  long ZXt;
+  long ZXu;
+  int ZXv;
+  public int ZXw;
+  int ZXx;
+  long ZXy;
+  private int ZXz;
+  public String ZeQ;
   private String deviceModel;
   public String groupId;
   public int netType;
-  public int qrD;
   public int roomId;
-  public long ypH;
-  long yqS;
-  int yqT;
+  public int tQm;
   
   static
   {
     AppMethodBeat.i(62655);
-    Sws = new h();
+    ZXq = new h();
     TAG = h.class.getCanonicalName();
     AppMethodBeat.o(62655);
   }
@@ -64,38 +64,38 @@ public class h
   {
     AppMethodBeat.i(62634);
     this.groupId = "";
-    this.RDo = "";
-    this.HaK = 1;
+    this.ZeQ = "";
+    this.NQW = 1;
     this.roomId = 0;
-    this.ypH = 0L;
-    this.qrD = -1;
-    this.Hre = 0;
-    this.Hrl = 0;
-    this.Hrh = 0;
-    this.yqT = 0;
-    this.Swt = 0;
-    this.Swu = 0;
-    this.Swv = 0L;
-    this.Sww = 0L;
-    this.Swx = 0;
-    this.Swy = 0;
-    this.Swz = 0;
-    this.SwA = 0L;
-    this.Hrm = 0L;
-    this.yqS = 0L;
-    this.Hrr = 0;
-    this.Hrs = 0;
+    this.DPJ = 0L;
+    this.tQm = -1;
+    this.OiP = 0;
+    this.OiW = 0;
+    this.OiS = 0;
+    this.DQV = 0;
+    this.ZXr = 0;
+    this.ZXs = 0;
+    this.ZXt = 0L;
+    this.ZXu = 0L;
+    this.ZXv = 0;
+    this.ZXw = 0;
+    this.ZXx = 0;
+    this.ZXy = 0L;
+    this.OiX = 0L;
+    this.DQU = 0L;
+    this.Ojc = 0;
+    this.Ojd = 0;
     this.netType = -1;
-    this.SwC = -1;
-    this.Hrx = "";
-    this.SwF = new StringBuffer();
-    this.HaY = -1;
-    this.HaQ = 0;
-    this.HaM = 0;
-    this.HaN = 0;
-    this.SwG = 0L;
-    this.SwH = 0L;
-    this.SwI = 0L;
+    this.ZXA = -1;
+    this.Oji = "";
+    this.ZXD = new StringBuffer();
+    this.NRk = -1;
+    this.NRc = 0;
+    this.NQY = 0;
+    this.NQZ = 0;
+    this.ZXE = 0L;
+    this.ZXF = 0L;
+    this.ZXG = 0L;
     AppMethodBeat.o(62634);
   }
   
@@ -105,11 +105,11 @@ public class h
     h localh = new h();
     localh.groupId = "";
     localh.roomId = paramInt;
-    localh.ypH = paramLong;
-    localh.RDo = "";
+    localh.DPJ = paramLong;
+    localh.ZeQ = "";
     localh.ag(paramVarArgs);
-    brq(localh.hru());
-    e.hjp();
+    bEp(localh.ivd());
+    e.ikZ();
     AppMethodBeat.o(62639);
   }
   
@@ -130,9 +130,9 @@ public class h
     }
     localh.groupId = str;
     localh.roomId = paramInt;
-    localh.ypH = paramLong;
+    localh.DPJ = paramLong;
     localh.ag(paramVarArgs);
-    brq(localh.hru());
+    bEp(localh.ivd());
     AppMethodBeat.o(62637);
   }
   
@@ -153,88 +153,88 @@ public class h
     }
     localh.groupId = str;
     localh.roomId = paramInt;
-    localh.ypH = paramLong;
+    localh.DPJ = paramLong;
     paramString1 = paramString2;
     if (paramString2 == null) {
       paramString1 = "";
     }
-    localh.RDo = paramString1;
+    localh.ZeQ = paramString1;
     localh.ag(paramVarArgs);
-    brq(localh.hru());
-    e.hjp();
+    bEp(localh.ivd());
+    e.ikZ();
     AppMethodBeat.o(62638);
   }
   
-  public static void asK(int paramInt)
-  {
-    AppMethodBeat.i(62645);
-    b.d(TAG, new Object[] { "sendNetSceneStat", Integer.valueOf(paramInt) });
-    e.U(527, 3, String.valueOf(paramInt));
-    AppMethodBeat.o(62645);
-  }
-  
-  public static void asL(int paramInt)
-  {
-    AppMethodBeat.i(62646);
-    b.d(TAG, new Object[] { "sendDeviceStat", Integer.valueOf(paramInt) });
-    e.U(528, 3, String.valueOf(paramInt));
-    AppMethodBeat.o(62646);
-  }
-  
-  public static void asM(int paramInt)
+  public static void aCA(int paramInt)
   {
     AppMethodBeat.i(62647);
     b.d(TAG, new Object[] { "sendtalkRoomDialStat", Integer.valueOf(paramInt) });
-    e.U(530, 3, String.valueOf(paramInt));
+    e.S(530, 3, String.valueOf(paramInt));
     AppMethodBeat.o(62647);
   }
   
-  public static void asN(int paramInt)
+  public static void aCB(int paramInt)
   {
     AppMethodBeat.i(62649);
     b.d(TAG, new Object[] { "sendEngineStat", Integer.valueOf(paramInt) });
-    e.U(529, 3, String.valueOf(paramInt));
+    e.S(529, 3, String.valueOf(paramInt));
     AppMethodBeat.o(62649);
   }
   
-  public static void brq(String paramString)
+  public static void aCy(int paramInt)
+  {
+    AppMethodBeat.i(62645);
+    b.d(TAG, new Object[] { "sendNetSceneStat", Integer.valueOf(paramInt) });
+    e.S(527, 3, String.valueOf(paramInt));
+    AppMethodBeat.o(62645);
+  }
+  
+  public static void aCz(int paramInt)
+  {
+    AppMethodBeat.i(62646);
+    b.d(TAG, new Object[] { "sendDeviceStat", Integer.valueOf(paramInt) });
+    e.S(528, 3, String.valueOf(paramInt));
+    AppMethodBeat.o(62646);
+  }
+  
+  public static void bEp(String paramString)
   {
     AppMethodBeat.i(62650);
     b.d(TAG, new Object[] { "sendSummaryNetScene", paramString });
-    e.U(532, 3, paramString);
+    e.S(532, 3, paramString);
     AppMethodBeat.o(62650);
   }
   
-  public static void brr(String paramString)
+  public static void bEq(String paramString)
   {
     AppMethodBeat.i(62651);
     b.d(TAG, new Object[] { "sendEngineRecv", paramString });
-    e.U(533, 3, paramString);
+    e.S(533, 3, paramString);
     AppMethodBeat.o(62651);
   }
   
-  public static void brs(String paramString)
+  public static void bEr(String paramString)
   {
     AppMethodBeat.i(62652);
     b.d(TAG, new Object[] { "sendEngineSend", paramString });
-    e.U(534, 3, paramString);
+    e.S(534, 3, paramString);
     AppMethodBeat.o(62652);
   }
   
-  public static void brt(String paramString)
+  public static void bEs(String paramString)
   {
     AppMethodBeat.i(62653);
     b.d(TAG, new Object[] { "sendChannelStat", paramString });
-    e.U(535, 3, paramString);
+    e.S(535, 3, paramString);
     AppMethodBeat.o(62653);
   }
   
-  public static void hrz()
+  public final void aCC(int paramInt)
   {
-    AppMethodBeat.i(62648);
-    b.d(TAG, new Object[] { "sendTalkRoomOnDialStat", Integer.valueOf(-5001) });
-    e.U(531, 3, "-5001");
-    AppMethodBeat.o(62648);
+    AppMethodBeat.i(62654);
+    b.d(TAG, new Object[] { "stopStatus", Integer.valueOf(paramInt) });
+    this.OiP = paramInt;
+    AppMethodBeat.o(62654);
   }
   
   public final void ag(String... paramVarArgs)
@@ -246,134 +246,126 @@ public class h
       AppMethodBeat.o(62640);
       return;
     }
-    if (this.SwF.length() > 900)
+    if (this.ZXD.length() > 900)
     {
-      this.SwF.setLength(0);
-      this.SwF.append("overmaxsize");
+      this.ZXD.setLength(0);
+      this.ZXD.append("overmaxsize");
     }
-    if (this.SwF.length() != 0) {
-      this.SwF.append("-");
+    if (this.ZXD.length() != 0) {
+      this.ZXD.append("-");
     }
     int j = paramVarArgs.length;
     while (i < j)
     {
       String str = paramVarArgs[i];
-      this.SwF.append(str);
-      this.SwF.append("|");
+      this.ZXD.append(str);
+      this.ZXD.append("|");
       i += 1;
     }
     AppMethodBeat.o(62640);
   }
   
-  public final void asO(int paramInt)
-  {
-    AppMethodBeat.i(62654);
-    b.d(TAG, new Object[] { "stopStatus", Integer.valueOf(paramInt) });
-    this.Hre = paramInt;
-    AppMethodBeat.o(62654);
-  }
-  
-  public final String hru()
+  public final String ivd()
   {
     AppMethodBeat.i(62636);
     b.d(TAG, new Object[] { "collectInfo" });
-    this.SwD = Build.MANUFACTURER;
+    this.ZXB = Build.MANUFACTURER;
     this.deviceModel = Build.MODEL;
-    this.SwE = Build.VERSION.SDK_INT;
-    this.Hrx = Build.VERSION.RELEASE;
-    this.netType = k.lx(com.tencent.pb.common.c.c.Hhs);
-    this.SwB = -1;
-    this.SwC = -1;
+    this.ZXC = Build.VERSION.SDK_INT;
+    this.Oji = Build.VERSION.RELEASE;
+    this.netType = j.mv(com.tencent.pb.common.c.c.NYh);
+    this.ZXz = -1;
+    this.ZXA = -1;
     Object localObject = new ArrayList();
     ((List)localObject).add(this.groupId);
-    ((List)localObject).add(this.RDo);
-    ((List)localObject).add(Integer.valueOf(this.HaK));
+    ((List)localObject).add(this.ZeQ);
+    ((List)localObject).add(Integer.valueOf(this.NQW));
     ((List)localObject).add(Integer.valueOf(this.roomId));
-    ((List)localObject).add(Long.valueOf(this.ypH));
-    ((List)localObject).add(Integer.valueOf(this.qrD));
-    ((List)localObject).add(Integer.valueOf(this.Hre));
-    ((List)localObject).add(Integer.valueOf(this.Hrl));
-    ((List)localObject).add(Integer.valueOf(this.Hrh));
-    ((List)localObject).add(Integer.valueOf(this.yqT));
-    ((List)localObject).add(Integer.valueOf(this.Swt));
-    ((List)localObject).add(Integer.valueOf(this.Swu));
-    ((List)localObject).add(Long.valueOf(this.Swv));
-    ((List)localObject).add(Long.valueOf(this.Sww));
-    ((List)localObject).add(Integer.valueOf(this.Swx));
-    ((List)localObject).add(Integer.valueOf(this.Swy));
-    ((List)localObject).add(Integer.valueOf(this.Swz));
-    ((List)localObject).add(Long.valueOf(this.SwA));
-    ((List)localObject).add(Long.valueOf(this.Hrm));
-    ((List)localObject).add(Long.valueOf(this.yqS));
-    ((List)localObject).add(Integer.valueOf(this.Hrr));
-    ((List)localObject).add(Integer.valueOf(this.Hrs));
+    ((List)localObject).add(Long.valueOf(this.DPJ));
+    ((List)localObject).add(Integer.valueOf(this.tQm));
+    ((List)localObject).add(Integer.valueOf(this.OiP));
+    ((List)localObject).add(Integer.valueOf(this.OiW));
+    ((List)localObject).add(Integer.valueOf(this.OiS));
+    ((List)localObject).add(Integer.valueOf(this.DQV));
+    ((List)localObject).add(Integer.valueOf(this.ZXr));
+    ((List)localObject).add(Integer.valueOf(this.ZXs));
+    ((List)localObject).add(Long.valueOf(this.ZXt));
+    ((List)localObject).add(Long.valueOf(this.ZXu));
+    ((List)localObject).add(Integer.valueOf(this.ZXv));
+    ((List)localObject).add(Integer.valueOf(this.ZXw));
+    ((List)localObject).add(Integer.valueOf(this.ZXx));
+    ((List)localObject).add(Long.valueOf(this.ZXy));
+    ((List)localObject).add(Long.valueOf(this.OiX));
+    ((List)localObject).add(Long.valueOf(this.DQU));
+    ((List)localObject).add(Integer.valueOf(this.Ojc));
+    ((List)localObject).add(Integer.valueOf(this.Ojd));
     ((List)localObject).add(Integer.valueOf(this.netType));
-    ((List)localObject).add(Integer.valueOf(this.SwB));
-    ((List)localObject).add(Integer.valueOf(this.SwC));
-    ((List)localObject).add(this.SwD);
+    ((List)localObject).add(Integer.valueOf(this.ZXz));
+    ((List)localObject).add(Integer.valueOf(this.ZXA));
+    ((List)localObject).add(this.ZXB);
     ((List)localObject).add(this.deviceModel);
-    ((List)localObject).add(Integer.valueOf(this.SwE));
-    ((List)localObject).add(this.Hrx);
-    ((List)localObject).add(Integer.valueOf(c.hqY().brk(this.groupId)));
-    ((List)localObject).add(this.SwF.toString());
-    ((List)localObject).add(Integer.valueOf(this.HaY));
-    ((List)localObject).add(Integer.valueOf(this.HaQ));
-    ((List)localObject).add(Integer.valueOf(this.HaM));
-    ((List)localObject).add(Integer.valueOf(this.HaN));
+    ((List)localObject).add(Integer.valueOf(this.ZXC));
+    ((List)localObject).add(this.Oji);
+    ((List)localObject).add(Integer.valueOf(c.iuI().bEj(this.groupId)));
+    ((List)localObject).add(this.ZXD.toString());
+    ((List)localObject).add(Integer.valueOf(this.NRk));
+    ((List)localObject).add(Integer.valueOf(this.NRc));
+    ((List)localObject).add(Integer.valueOf(this.NQY));
+    ((List)localObject).add(Integer.valueOf(this.NQZ));
     localObject = f.a((Iterable)localObject, ",", "_");
-    b.d(TAG, new Object[] { "logBuf: ", this.SwF.toString() });
+    b.d(TAG, new Object[] { "logBuf: ", this.ZXD.toString() });
     b.d(TAG, new Object[] { "statresult", localObject });
     AppMethodBeat.o(62636);
     return localObject;
   }
   
-  public final void hrv()
+  public final void ive()
   {
     AppMethodBeat.i(62641);
-    this.SwG = System.currentTimeMillis();
-    b.d(TAG, new Object[] { "beginCreateOrEnter", Long.valueOf(this.SwG) });
+    this.ZXE = System.currentTimeMillis();
+    b.d(TAG, new Object[] { "beginCreateOrEnter", Long.valueOf(this.ZXE) });
     AppMethodBeat.o(62641);
   }
   
-  public final void hrw()
+  public final void ivf()
   {
     AppMethodBeat.i(62642);
-    b.d(TAG, new Object[] { "endCancelCreate", Long.valueOf(System.currentTimeMillis() - this.SwG), Long.valueOf(this.Swv) });
-    if (this.Swv > 0L)
+    b.d(TAG, new Object[] { "endCancelCreate", Long.valueOf(System.currentTimeMillis() - this.ZXE), Long.valueOf(this.ZXt) });
+    if (this.ZXt > 0L)
     {
       AppMethodBeat.o(62642);
       return;
     }
-    this.Hrl = 1;
-    if (this.SwG == 0L)
+    this.OiW = 1;
+    if (this.ZXE == 0L)
     {
-      this.Hrm = 0L;
+      this.OiX = 0L;
       AppMethodBeat.o(62642);
       return;
     }
-    this.Hrm = (System.currentTimeMillis() - this.SwG);
+    this.OiX = (System.currentTimeMillis() - this.ZXE);
     AppMethodBeat.o(62642);
   }
   
-  public final void hrx()
+  public final void ivg()
   {
     AppMethodBeat.i(62643);
     b.w(TAG, new Object[] { "beginCreateOrNotify" });
-    this.SwH = System.currentTimeMillis();
+    this.ZXF = System.currentTimeMillis();
     AppMethodBeat.o(62643);
   }
   
-  public final void hry()
+  public final void ivh()
   {
     AppMethodBeat.i(62644);
-    b.d(TAG, new Object[] { "endAnswerTime", Long.valueOf(this.SwI) });
-    if (this.SwI == 0L)
+    b.d(TAG, new Object[] { "endAnswerTime", Long.valueOf(this.ZXG) });
+    if (this.ZXG == 0L)
     {
-      this.yqS = 0L;
+      this.DQU = 0L;
       AppMethodBeat.o(62644);
       return;
     }
-    this.yqS = (System.currentTimeMillis() - this.SwI);
+    this.DQU = (System.currentTimeMillis() - this.ZXG);
     AppMethodBeat.o(62644);
   }
   
@@ -381,43 +373,43 @@ public class h
   {
     AppMethodBeat.i(62635);
     b.d(TAG, new Object[] { "reset" });
-    this.SwI = 0L;
-    this.SwH = 0L;
-    this.SwG = 0L;
+    this.ZXG = 0L;
+    this.ZXF = 0L;
+    this.ZXE = 0L;
     this.groupId = "";
-    this.RDo = "";
-    this.HaK = 1;
+    this.ZeQ = "";
+    this.NQW = 1;
     this.roomId = 0;
-    this.ypH = 0L;
-    this.qrD = -1;
-    this.Hre = 0;
-    this.Hrl = 0;
-    this.Hrh = 0;
-    this.yqT = 0;
-    this.Swt = 0;
-    this.Swu = 0;
-    this.Swv = 0L;
-    this.Sww = 0L;
-    this.Swx = 0;
-    this.Swy = 0;
-    this.Swz = 0;
-    this.SwA = 0L;
-    this.Hrm = 0L;
-    this.yqS = 0L;
-    this.Hrr = 0;
-    this.Hrs = 0;
+    this.DPJ = 0L;
+    this.tQm = -1;
+    this.OiP = 0;
+    this.OiW = 0;
+    this.OiS = 0;
+    this.DQV = 0;
+    this.ZXr = 0;
+    this.ZXs = 0;
+    this.ZXt = 0L;
+    this.ZXu = 0L;
+    this.ZXv = 0;
+    this.ZXw = 0;
+    this.ZXx = 0;
+    this.ZXy = 0L;
+    this.OiX = 0L;
+    this.DQU = 0L;
+    this.Ojc = 0;
+    this.Ojd = 0;
     this.netType = -1;
-    this.SwB = 0;
-    this.SwC = 0;
-    this.SwD = "";
+    this.ZXz = 0;
+    this.ZXA = 0;
+    this.ZXB = "";
     this.deviceModel = "";
-    this.SwE = -1;
-    this.Hrx = "";
-    this.SwF.setLength(0);
-    this.HaY = -1;
-    this.HaQ = 0;
-    this.HaM = 0;
-    this.HaN = 0;
+    this.ZXC = -1;
+    this.Oji = "";
+    this.ZXD.setLength(0);
+    this.NRk = -1;
+    this.NRc = 0;
+    this.NQY = 0;
+    this.NQZ = 0;
     AppMethodBeat.o(62635);
   }
 }

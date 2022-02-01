@@ -4,79 +4,79 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import g.a.a.b;
 
 public final class fbj
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String Md5;
-  public int NxA;
-  public int NxB;
-  public String xuc;
+  public boolean Nop;
+  public String PzO;
+  public long duration;
+  public String kXi;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(110860);
+    AppMethodBeat.i(255084);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Md5 == null)
+      if (this.PzO == null)
       {
-        paramVarArgs = new b("Not all required fields were included: Md5");
-        AppMethodBeat.o(110860);
+        paramVarArgs = new b("Not all required fields were included: templatePath");
+        AppMethodBeat.o(255084);
         throw paramVarArgs;
       }
-      if (this.xuc == null)
+      if (this.kXi == null)
       {
-        paramVarArgs = new b("Not all required fields were included: DownloadUrl");
-        AppMethodBeat.o(110860);
+        paramVarArgs = new b("Not all required fields were included: musicPath");
+        AppMethodBeat.o(255084);
         throw paramVarArgs;
       }
-      if (this.Md5 != null) {
-        paramVarArgs.e(1, this.Md5);
+      if (this.PzO != null) {
+        paramVarArgs.f(1, this.PzO);
       }
-      if (this.xuc != null) {
-        paramVarArgs.e(2, this.xuc);
+      if (this.kXi != null) {
+        paramVarArgs.f(2, this.kXi);
       }
-      paramVarArgs.aM(3, this.NxA);
-      paramVarArgs.aM(4, this.NxB);
-      AppMethodBeat.o(110860);
+      paramVarArgs.bm(3, this.duration);
+      paramVarArgs.co(4, this.Nop);
+      AppMethodBeat.o(255084);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Md5 == null) {
-        break label462;
+      if (this.PzO == null) {
+        break label458;
       }
     }
-    label462:
-    for (paramInt = g.a.a.b.b.a.f(1, this.Md5) + 0;; paramInt = 0)
+    label458:
+    for (paramInt = g.a.a.b.b.a.g(1, this.PzO) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.xuc != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.xuc);
+      if (this.kXi != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.kXi);
       }
-      paramInt = g.a.a.b.b.a.bu(3, this.NxA);
-      int j = g.a.a.b.b.a.bu(4, this.NxB);
-      AppMethodBeat.o(110860);
-      return i + paramInt + j;
+      paramInt = g.a.a.b.b.a.p(3, this.duration);
+      int j = g.a.a.b.b.a.gL(4);
+      AppMethodBeat.o(255084);
+      return i + paramInt + (j + 1);
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.Md5 == null)
+        if (this.PzO == null)
         {
-          paramVarArgs = new b("Not all required fields were included: Md5");
-          AppMethodBeat.o(110860);
+          paramVarArgs = new b("Not all required fields were included: templatePath");
+          AppMethodBeat.o(255084);
           throw paramVarArgs;
         }
-        if (this.xuc == null)
+        if (this.kXi == null)
         {
-          paramVarArgs = new b("Not all required fields were included: DownloadUrl");
-          AppMethodBeat.o(110860);
+          paramVarArgs = new b("Not all required fields were included: musicPath");
+          AppMethodBeat.o(255084);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(110860);
+        AppMethodBeat.o(255084);
         return 0;
       }
       if (paramInt == 3)
@@ -86,33 +86,33 @@ public final class fbj
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(110860);
+          AppMethodBeat.o(255084);
           return -1;
         case 1: 
-          localfbj.Md5 = locala.UbS.readString();
-          AppMethodBeat.o(110860);
+          localfbj.PzO = locala.abFh.readString();
+          AppMethodBeat.o(255084);
           return 0;
         case 2: 
-          localfbj.xuc = locala.UbS.readString();
-          AppMethodBeat.o(110860);
+          localfbj.kXi = locala.abFh.readString();
+          AppMethodBeat.o(255084);
           return 0;
         case 3: 
-          localfbj.NxA = locala.UbS.zi();
-          AppMethodBeat.o(110860);
+          localfbj.duration = locala.abFh.AN();
+          AppMethodBeat.o(255084);
           return 0;
         }
-        localfbj.NxB = locala.UbS.zi();
-        AppMethodBeat.o(110860);
+        localfbj.Nop = locala.abFh.AB();
+        AppMethodBeat.o(255084);
         return 0;
       }
-      AppMethodBeat.o(110860);
+      AppMethodBeat.o(255084);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.fbj
  * JD-Core Version:    0.7.0.1
  */

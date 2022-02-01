@@ -6,6 +6,6 @@
         <FrameLayout android:id="@id/b4g" android:background="@drawable/ad0" android:layout_width="48.0dip" android:layout_height="24.0dip" android:layout_marginTop="24.0dip">
             <ImageView android:layout_gravity="center" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/byx" android:rotation="-90.0" />
         </FrameLayout>
-        <android.support.v7.widget.RecyclerView android:id="@id/ef4" android:fadingEdge="vertical" android:fadingEdgeLength="16.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/bt" android:layout_marginTop="@dimen/ci" android:layout_marginRight="@dimen/bt" android:requiresFadingEdge="vertical" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/ef4" android:fadingEdge="vertical" android:fadingEdgeLength="16.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/bt" android:layout_marginTop="@dimen/ci" android:layout_marginRight="@dimen/bt" android:requiresFadingEdge="vertical" />
     </LinearLayout>
 </LinearLayout>

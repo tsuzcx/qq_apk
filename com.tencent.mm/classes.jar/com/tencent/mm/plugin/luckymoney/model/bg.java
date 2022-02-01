@@ -1,122 +1,42 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.z;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
 public final class bg
-  extends com.tencent.mm.bw.a
+  extends aw
 {
-  public String content;
-  public int gGn;
-  public String iconUrl;
-  public String name;
-  public String type;
-  public int yXT;
-  public int yXU;
-  
-  public final int op(int paramInt, Object... paramVarArgs)
+  public bg(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(91259);
-    if (paramInt == 0)
-    {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.gGn);
-      if (this.name != null) {
-        paramVarArgs.e(2, this.name);
-      }
-      if (this.type != null) {
-        paramVarArgs.e(3, this.type);
-      }
-      if (this.content != null) {
-        paramVarArgs.e(4, this.content);
-      }
-      paramVarArgs.aM(5, this.yXT);
-      if (this.iconUrl != null) {
-        paramVarArgs.e(6, this.iconUrl);
-      }
-      paramVarArgs.aM(7, this.yXU);
-      AppMethodBeat.o(91259);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.bu(1, this.gGn) + 0;
-      paramInt = i;
-      if (this.name != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.name);
-      }
-      i = paramInt;
-      if (this.type != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.type);
-      }
-      paramInt = i;
-      if (this.content != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.content);
-      }
-      i = paramInt + g.a.a.b.b.a.bu(5, this.yXT);
-      paramInt = i;
-      if (this.iconUrl != null) {
-        paramInt = i + g.a.a.b.b.a.f(6, this.iconUrl);
-      }
-      i = g.a.a.b.b.a.bu(7, this.yXU);
-      AppMethodBeat.o(91259);
-      return paramInt + i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
-      }
-      AppMethodBeat.o(91259);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      bg localbg = (bg)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
-      {
-      default: 
-        AppMethodBeat.o(91259);
-        return -1;
-      case 1: 
-        localbg.gGn = locala.UbS.zi();
-        AppMethodBeat.o(91259);
-        return 0;
-      case 2: 
-        localbg.name = locala.UbS.readString();
-        AppMethodBeat.o(91259);
-        return 0;
-      case 3: 
-        localbg.type = locala.UbS.readString();
-        AppMethodBeat.o(91259);
-        return 0;
-      case 4: 
-        localbg.content = locala.UbS.readString();
-        AppMethodBeat.o(91259);
-        return 0;
-      case 5: 
-        localbg.yXT = locala.UbS.zi();
-        AppMethodBeat.o(91259);
-        return 0;
-      case 6: 
-        localbg.iconUrl = locala.UbS.readString();
-        AppMethodBeat.o(91259);
-        return 0;
-      }
-      localbg.yXU = locala.UbS.zi();
-      AppMethodBeat.o(91259);
-      return 0;
-    }
-    AppMethodBeat.o(91259);
-    return -1;
+    AppMethodBeat.i(65311);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("username", paramString1);
+    localHashMap.put("sendId", paramString2);
+    localHashMap.put("channelId", "1");
+    localHashMap.put("ver", paramString3);
+    localHashMap.put("sendUserName", z.bcZ());
+    setRequestData(localHashMap);
+    AppMethodBeat.o(65311);
   }
+  
+  public final String cOd()
+  {
+    return "/cgi-bin/mmpay-bin/sharewxhb";
+  }
+  
+  public final int getType()
+  {
+    return 1668;
+  }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.bg
  * JD-Core Version:    0.7.0.1
  */

@@ -7,20 +7,20 @@ import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.c;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.w;
-import com.tencent.mm.plugin.webview.ui.tools.widget.r;
-import com.tencent.mm.plugin.webview.ui.tools.widget.r.a;
-import com.tencent.mm.protocal.protobuf.cdz;
-import com.tencent.mm.protocal.protobuf.cem;
-import com.tencent.mm.protocal.protobuf.cen;
-import com.tencent.mm.protocal.protobuf.ceo;
-import com.tencent.mm.protocal.protobuf.cep;
+import com.tencent.mm.plugin.webview.ui.tools.widget.p;
+import com.tencent.mm.plugin.webview.ui.tools.widget.p.a;
+import com.tencent.mm.protocal.protobuf.cmt;
+import com.tencent.mm.protocal.protobuf.cng;
+import com.tencent.mm.protocal.protobuf.cnh;
+import com.tencent.mm.protocal.protobuf.cni;
+import com.tencent.mm.protocal.protobuf.cnj;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -39,19 +39,19 @@ public class c
   {
     AppMethodBeat.i(78521);
     Log.i("MicroMsg.JsApiAuthorize", "invokeInOwn");
-    Object localObject = paramb.ctb.csi.optJSONArray("scope");
+    Object localObject = paramb.crh.cqn.optJSONArray("scope");
     if (localObject == null)
     {
       Log.e("MicroMsg.JsApiAuthorize", "scope is null!");
-      paramb.c("fail", null);
+      paramb.a("fail", null);
       AppMethodBeat.o(78521);
       return;
     }
-    final String str = ((g)paramb.cta).ITw.getAppId();
+    final String str = ((g)paramb.crg).PPO.getAppId();
     if (Util.isNullOrNil(str))
     {
       Log.e("MicroMsg.JsApiAuthorize", "appId is null!");
-      paramb.c("fail", null);
+      paramb.a("fail", null);
       AppMethodBeat.o(78521);
       return;
     }
@@ -63,17 +63,17 @@ public class c
       i += 1;
     }
     localObject = new d.a();
-    ceo localceo = new ceo();
-    ((d.a)localObject).iLN = localceo;
-    ((d.a)localObject).iLO = new cep();
+    cni localcni = new cni();
+    ((d.a)localObject).lBU = localcni;
+    ((d.a)localObject).lBV = new cnj();
     ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/js-authorize";
     ((d.a)localObject).funcId = 1157;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    localceo.jfi = str;
-    localceo.MjX = localLinkedList;
-    localceo.MjZ = 0;
-    IPCRunCgi.a(((d.a)localObject).aXF(), new IPCRunCgi.a()
+    localcni.lVG = str;
+    localcni.TuN = localLinkedList;
+    localcni.TuP = 0;
+    IPCRunCgi.a(((d.a)localObject).bgN(), new IPCRunCgi.a()
     {
       public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd)
       {
@@ -81,19 +81,19 @@ public class c
         Log.i("MicroMsg.JsApiAuthorize", "onSceneEnd errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
         if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
         {
-          paramb.c("fail", null);
+          paramb.a("fail", null);
           AppMethodBeat.o(78519);
           return;
         }
-        paramAnonymousString = (cep)paramAnonymousd.iLL.iLR;
-        if ((paramAnonymousString == null) || (paramAnonymousString.Mkb == null))
+        paramAnonymousString = (cnj)d.c.b(paramAnonymousd.lBS);
+        if ((paramAnonymousString == null) || (paramAnonymousString.TuR == null))
         {
-          paramb.c("fail", null);
+          paramb.a("fail", null);
           AppMethodBeat.o(78519);
           return;
         }
-        paramAnonymousInt1 = paramAnonymousString.Mkb.dIZ;
-        paramAnonymousd = paramAnonymousString.Mkb.dJa;
+        paramAnonymousInt1 = paramAnonymousString.TuR.fBP;
+        paramAnonymousd = paramAnonymousString.TuR.errmsg;
         Log.i("MicroMsg.JsApiAuthorize", "jsErrcode = %d", new Object[] { Integer.valueOf(paramAnonymousInt1) });
         if (paramAnonymousInt1 == -12000)
         {
@@ -102,10 +102,10 @@ public class c
             public final void run()
             {
               AppMethodBeat.i(78518);
-              r localr = new r(((g)c.1.this.xwD.cta).mContext);
-              r.a local1 = new r.a()
+              p localp = new p(((g)c.1.this.CAL.crg).mContext);
+              p.a local1 = new p.a()
               {
-                public final void i(int paramAnonymous3Int, Bundle paramAnonymous3Bundle)
+                public final void k(int paramAnonymous3Int, Bundle paramAnonymous3Bundle)
                 {
                   AppMethodBeat.i(78517);
                   Log.i("MicroMsg.JsApiAuthorize", "stev onRevMsg resultCode %d", new Object[] { Integer.valueOf(paramAnonymous3Int) });
@@ -113,7 +113,7 @@ public class c
                   {
                   default: 
                     Log.d("MicroMsg.JsApiAuthorize", "press back button!");
-                    c.1.this.xwD.c("auth_cancel", null);
+                    c.1.this.CAL.a("auth_cancel", null);
                   }
                   do
                   {
@@ -121,7 +121,7 @@ public class c
                     return;
                     c localc = c.this;
                     String str = c.1.this.val$appId;
-                    b.a locala = c.1.this.xwD;
+                    b.a locala = c.1.this.CAL;
                     Object localObject = (ArrayList)paramAnonymous3Bundle.getSerializable("key_scope");
                     paramAnonymous3Bundle = new LinkedList();
                     localObject = ((ArrayList)localObject).iterator();
@@ -129,33 +129,33 @@ public class c
                       paramAnonymous3Bundle.add((String)((Iterator)localObject).next());
                     }
                     localObject = new d.a();
-                    cem localcem = new cem();
-                    ((d.a)localObject).iLN = localcem;
-                    ((d.a)localObject).iLO = new cen();
+                    cng localcng = new cng();
+                    ((d.a)localObject).lBU = localcng;
+                    ((d.a)localObject).lBV = new cnh();
                     ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/js-authorize-confirm";
                     ((d.a)localObject).funcId = 1158;
-                    ((d.a)localObject).iLP = 0;
+                    ((d.a)localObject).lBW = 0;
                     ((d.a)localObject).respCmdId = 0;
-                    localcem.jfi = str;
-                    localcem.MjX = paramAnonymous3Bundle;
-                    localcem.MjZ = 0;
-                    localcem.MjY = paramAnonymous3Int;
-                    IPCRunCgi.a(((d.a)localObject).aXF(), new c.2(localc, locala, paramAnonymous3Int));
+                    localcng.lVG = str;
+                    localcng.TuN = paramAnonymous3Bundle;
+                    localcng.TuP = 0;
+                    localcng.TuO = paramAnonymous3Int;
+                    IPCRunCgi.a(((d.a)localObject).bgN(), new c.2(localc, locala, paramAnonymous3Int));
                   } while (paramAnonymous3Int != 2);
-                  c.1.this.xwD.c("auth_deny", null);
+                  c.1.this.CAL.a("auth_deny", null);
                   AppMethodBeat.o(78517);
                 }
               };
-              if ((this.lGl != null) && (this.lGl.size() > 0))
+              if ((this.oBO != null) && (this.oBO.size() > 0))
               {
-                if (!localr.a(this.lGl, this.IVE, this.IVF, local1)) {
-                  c.1.this.xwD.c("fail", null);
+                if (!localp.a(this.oBO, this.PRU, this.PRV, local1)) {
+                  c.1.this.CAL.a("fail", null);
                 }
                 AppMethodBeat.o(78518);
                 return;
               }
               Log.e("MicroMsg.JsApiAuthorize", "scopeInfoList is empty!");
-              c.1.this.xwD.c("fail", null);
+              c.1.this.CAL.a("fail", null);
               AppMethodBeat.o(78518);
             }
           });
@@ -164,19 +164,19 @@ public class c
         }
         if (paramAnonymousInt1 == 0)
         {
-          paramb.c("", null);
+          paramb.a("", null);
           AppMethodBeat.o(78519);
           return;
         }
         Log.e("MicroMsg.JsApiAuthorize", "ERROR = %s", new Object[] { paramAnonymousd });
-        paramb.c("fail", null);
+        paramb.a("fail", null);
         AppMethodBeat.o(78519);
       }
     });
     AppMethodBeat.o(78521);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

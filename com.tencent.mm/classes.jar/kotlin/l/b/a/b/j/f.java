@@ -16,8 +16,8 @@ import kotlin.x;
 public class f
   implements Comparator<l>
 {
-  public static final f THL;
-  private static final kotlin.l.b.a.b.i.c THM;
+  public static final f abkp;
+  private static final kotlin.l.b.a.b.i.c abkq;
   
   static
   {
@@ -26,9 +26,9 @@ public class f
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      THL = new f();
-      c.a locala = kotlin.l.b.a.b.i.c.TFl;
-      THM = c.a.T(new b() {});
+      abkp = new f();
+      c.a locala = kotlin.l.b.a.b.i.c.abhP;
+      abkq = c.a.aj(new b() {});
       AppMethodBeat.o(59953);
       return;
     }
@@ -37,12 +37,12 @@ public class f
   public static final class a
     implements Comparator<l>
   {
-    public static final a THN;
+    public static final a abkr;
     
     static
     {
       AppMethodBeat.i(59951);
-      THN = new a();
+      abkr = new a();
       AppMethodBeat.o(59951);
     }
     
@@ -61,7 +61,7 @@ public class f
       }
       if ((paraml instanceof ah))
       {
-        if (((ah)paraml).hAr() == null)
+        if (((ah)paraml).iEE() == null)
         {
           AppMethodBeat.o(59947);
           return 6;
@@ -71,7 +71,7 @@ public class f
       }
       if ((paraml instanceof t))
       {
-        if (((t)paraml).hAr() == null)
+        if (((t)paraml).iEE() == null)
         {
           AppMethodBeat.o(59947);
           return 4;
@@ -107,7 +107,7 @@ public class f
         AppMethodBeat.o(59948);
         return Integer.valueOf(0);
       }
-      i = paraml1.hAH().u(paraml2.hAH());
+      i = paraml1.iEU().u(paraml2.iEU());
       if (i != 0)
       {
         AppMethodBeat.o(59948);
@@ -120,7 +120,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.j.f
  * JD-Core Version:    0.7.0.1
  */

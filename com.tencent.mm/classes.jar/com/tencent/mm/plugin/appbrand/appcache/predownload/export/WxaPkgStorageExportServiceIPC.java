@@ -5,78 +5,100 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
-import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.m;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
+import com.tencent.mm.ipcinvoker.type.IPCInteger;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.plugin.appbrand.appcache.bd;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
 import com.tencent.mm.plugin.appbrand.service.v;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.IAutoDBItem;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/export/WxaPkgStorageExportServiceIPC;", "Lcom/tencent/mm/plugin/appbrand/service/IWxaPkgStorageExportService;", "()V", "TAG", "", "getPkgRecord", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgManifestRecord;", "appId", "versionType", "", "version", "insertPkg", "", "filePath", "setPkgIsOccupied", "", "PkgParams", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/export/WxaPkgStorageExportServiceIPC;", "Lcom/tencent/mm/plugin/appbrand/service/IWxaPkgStorageExportService;", "()V", "TAG", "", "getPkgRecord", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgManifestRecord;", "appId", "versionType", "", "version", "getServerNotifiedReleaseVersion", "insertPkg", "", "filePath", "setPkgIsOccupied", "", "PkgParams", "plugin-appbrand-integration_release"})
 public final class WxaPkgStorageExportServiceIPC
   implements v
 {
-  public static final WxaPkgStorageExportServiceIPC kQn;
+  public static final WxaPkgStorageExportServiceIPC nKs;
   
   static
   {
-    AppMethodBeat.i(228102);
-    kQn = new WxaPkgStorageExportServiceIPC();
-    AppMethodBeat.o(228102);
+    AppMethodBeat.i(270119);
+    nKs = new WxaPkgStorageExportServiceIPC();
+    AppMethodBeat.o(270119);
   }
   
-  public final bd H(String paramString, int paramInt1, int paramInt2)
+  public final bh H(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(228100);
+    AppMethodBeat.i(270115);
     Object localObject = (CharSequence)paramString;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(228100);
+      AppMethodBeat.o(270115);
       return null;
     }
-    paramString = (ContentValues)com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new PkgParams(paramString, paramInt1, paramInt2, 8), (k)a.kQo);
+    paramString = (ContentValues)com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new PkgParams(paramString, paramInt1, paramInt2, 8), (m)a.nKt);
     if (paramString != null)
     {
-      localObject = new bd();
-      a locala = a.kPZ;
+      localObject = new bh();
+      a locala = a.nKe;
       a.a((IAutoDBItem)localObject, paramString);
-      AppMethodBeat.o(228100);
+      AppMethodBeat.o(270115);
       return localObject;
     }
-    AppMethodBeat.o(228100);
+    AppMethodBeat.o(270115);
     return null;
   }
   
-  public final bd VF(String paramString)
+  public final bh ado(String paramString)
   {
-    AppMethodBeat.i(228099);
+    AppMethodBeat.i(270114);
     paramString = H(paramString, 0, 0);
-    AppMethodBeat.o(228099);
+    AppMethodBeat.o(270114);
     return paramString;
   }
   
-  public final void bc(String paramString, int paramInt)
+  public final int adp(String paramString)
   {
-    AppMethodBeat.i(228101);
+    AppMethodBeat.i(270118);
     CharSequence localCharSequence = (CharSequence)paramString;
     if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(228101);
-      return;
+      AppMethodBeat.o(270118);
+      return 0;
     }
-    com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new PkgParams(paramString, 0, paramInt, 10), (b)c.kQq, null);
-    AppMethodBeat.o(228101);
+    paramString = (IPCInteger)com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new PkgParams(paramString, 0, 0, 14), (m)b.nKu);
+    if (paramString != null)
+    {
+      i = paramString.value;
+      AppMethodBeat.o(270118);
+      return i;
+    }
+    AppMethodBeat.o(270118);
+    return 0;
   }
   
-  public final boolean s(String paramString1, int paramInt, String paramString2)
+  public final void bv(String paramString, int paramInt)
   {
-    AppMethodBeat.i(228098);
+    AppMethodBeat.i(270116);
+    CharSequence localCharSequence = (CharSequence)paramString;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(270116);
+      return;
+    }
+    com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new PkgParams(paramString, 0, paramInt, 10), (d)d.nKw, null);
+    AppMethodBeat.o(270116);
+  }
+  
+  public final boolean t(String paramString1, int paramInt, String paramString2)
+  {
+    AppMethodBeat.i(270113);
     CharSequence localCharSequence = (CharSequence)paramString1;
     if ((localCharSequence == null) || (localCharSequence.length() == 0))
     {
@@ -96,47 +118,47 @@ public final class WxaPkgStorageExportServiceIPC
         break label121;
       }
       Log.e("MicroMsg.WxaPkgStorageExportIPC", "insertPkg, invalid args: appId:" + paramString1 + ", version:" + paramInt + ", filePath:" + paramString2);
-      AppMethodBeat.o(228098);
+      AppMethodBeat.o(270113);
       return false;
       i = 0;
       break;
     }
     label121:
-    paramString1 = (IPCBoolean)com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new PkgParams(paramString1, 0, paramInt, paramString2), (k)b.kQp);
+    paramString1 = (IPCBoolean)com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new PkgParams(paramString1, 0, paramInt, paramString2), (m)c.nKv);
     if ((paramString1 != null) && (paramString1.value == true))
     {
-      AppMethodBeat.o(228098);
+      AppMethodBeat.o(270113);
       return true;
     }
-    AppMethodBeat.o(228098);
+    AppMethodBeat.o(270113);
     return false;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/export/WxaPkgStorageExportServiceIPC$PkgParams;", "Landroid/os/Parcelable;", "appId", "", "versionType", "", "version", "filePath", "(Ljava/lang/String;IILjava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "getFilePath", "getVersion", "()I", "getVersionType", "component1", "component2", "component3", "component4", "copy", "describeContents", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/export/WxaPkgStorageExportServiceIPC$PkgParams;", "Landroid/os/Parcelable;", "appId", "", "versionType", "", "version", "filePath", "(Ljava/lang/String;IILjava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "getFilePath", "getVersion", "()I", "getVersionType", "component1", "component2", "component3", "component4", "copy", "describeContents", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"})
   static final class PkgParams
     implements Parcelable
   {
     public static final Parcelable.Creator CREATOR;
     final String appId;
+    final int cBU;
     final String filePath;
-    final int iOo;
     final int version;
     
     static
     {
-      AppMethodBeat.i(228091);
+      AppMethodBeat.i(280698);
       CREATOR = new a();
-      AppMethodBeat.o(228091);
+      AppMethodBeat.o(280698);
     }
     
     public PkgParams(String paramString1, int paramInt1, int paramInt2, String paramString2)
     {
-      AppMethodBeat.i(228085);
+      AppMethodBeat.i(280690);
       this.appId = paramString1;
-      this.iOo = paramInt1;
+      this.cBU = paramInt1;
       this.version = paramInt2;
       this.filePath = paramString2;
-      AppMethodBeat.o(228085);
+      AppMethodBeat.o(280690);
     }
     
     public final int describeContents()
@@ -146,72 +168,72 @@ public final class WxaPkgStorageExportServiceIPC
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(228089);
+      AppMethodBeat.i(280695);
       if (this != paramObject)
       {
         if ((paramObject instanceof PkgParams))
         {
           paramObject = (PkgParams)paramObject;
-          if ((!p.j(this.appId, paramObject.appId)) || (this.iOo != paramObject.iOo) || (this.version != paramObject.version) || (!p.j(this.filePath, paramObject.filePath))) {}
+          if ((!p.h(this.appId, paramObject.appId)) || (this.cBU != paramObject.cBU) || (this.version != paramObject.version) || (!p.h(this.filePath, paramObject.filePath))) {}
         }
       }
       else
       {
-        AppMethodBeat.o(228089);
+        AppMethodBeat.o(280695);
         return true;
       }
-      AppMethodBeat.o(228089);
+      AppMethodBeat.o(280695);
       return false;
     }
     
     public final int hashCode()
     {
       int j = 0;
-      AppMethodBeat.i(228088);
+      AppMethodBeat.i(280694);
       String str = this.appId;
       if (str != null) {}
       for (int i = str.hashCode();; i = 0)
       {
-        int k = this.iOo;
+        int k = this.cBU;
         int m = this.version;
         str = this.filePath;
         if (str != null) {
           j = str.hashCode();
         }
-        AppMethodBeat.o(228088);
+        AppMethodBeat.o(280694);
         return ((i * 31 + k) * 31 + m) * 31 + j;
       }
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(228087);
-      String str = "PkgParams(appId=" + this.appId + ", versionType=" + this.iOo + ", version=" + this.version + ", filePath=" + this.filePath + ")";
-      AppMethodBeat.o(228087);
+      AppMethodBeat.i(280693);
+      String str = "PkgParams(appId=" + this.appId + ", versionType=" + this.cBU + ", version=" + this.version + ", filePath=" + this.filePath + ")";
+      AppMethodBeat.o(280693);
       return str;
     }
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(228090);
-      p.h(paramParcel, "parcel");
+      AppMethodBeat.i(280697);
+      p.k(paramParcel, "parcel");
       paramParcel.writeString(this.appId);
-      paramParcel.writeInt(this.iOo);
+      paramParcel.writeInt(this.cBU);
       paramParcel.writeInt(this.version);
       paramParcel.writeString(this.filePath);
-      AppMethodBeat.o(228090);
+      AppMethodBeat.o(280697);
     }
     
-    @l(hxD={1, 1, 16})
+    @l(iBK={1, 1, 16})
     public static final class a
       implements Parcelable.Creator
     {
       public final Object createFromParcel(Parcel paramParcel)
       {
-        AppMethodBeat.i(228084);
-        p.h(paramParcel, "in");
+        AppMethodBeat.i(276131);
+        p.k(paramParcel, "in");
         paramParcel = new WxaPkgStorageExportServiceIPC.PkgParams(paramParcel.readString(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString());
-        AppMethodBeat.o(228084);
+        AppMethodBeat.o(276131);
         return paramParcel;
       }
       
@@ -222,51 +244,65 @@ public final class WxaPkgStorageExportServiceIPC
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/content/ContentValues;", "it", "Lcom/tencent/mm/plugin/appbrand/appcache/predownload/export/WxaPkgStorageExportServiceIPC$PkgParams;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/content/ContentValues;", "it", "Lcom/tencent/mm/plugin/appbrand/appcache/predownload/export/WxaPkgStorageExportServiceIPC$PkgParams;", "kotlin.jvm.PlatformType", "invoke"})
   static final class a<InputType, ResultType>
-    implements k<WxaPkgStorageExportServiceIPC.PkgParams, ContentValues>
+    implements m<WxaPkgStorageExportServiceIPC.PkgParams, ContentValues>
   {
-    public static final a kQo;
+    public static final a nKt;
     
     static
     {
-      AppMethodBeat.i(228093);
-      kQo = new a();
-      AppMethodBeat.o(228093);
+      AppMethodBeat.i(282750);
+      nKt = new a();
+      AppMethodBeat.o(282750);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "it", "Lcom/tencent/mm/plugin/appbrand/appcache/predownload/export/WxaPkgStorageExportServiceIPC$PkgParams;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ipcinvoker/type/IPCInteger;", "data", "Lcom/tencent/mm/plugin/appbrand/appcache/predownload/export/WxaPkgStorageExportServiceIPC$PkgParams;", "kotlin.jvm.PlatformType", "invoke"})
   static final class b<InputType, ResultType>
-    implements k<WxaPkgStorageExportServiceIPC.PkgParams, IPCBoolean>
+    implements m<WxaPkgStorageExportServiceIPC.PkgParams, IPCInteger>
   {
-    public static final b kQp;
+    public static final b nKu;
     
     static
     {
-      AppMethodBeat.i(228095);
-      kQp = new b();
-      AppMethodBeat.o(228095);
+      AppMethodBeat.i(280880);
+      nKu = new b();
+      AppMethodBeat.o(280880);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "data", "Lcom/tencent/mm/plugin/appbrand/appcache/predownload/export/WxaPkgStorageExportServiceIPC$PkgParams;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "it", "Lcom/tencent/mm/plugin/appbrand/appcache/predownload/export/WxaPkgStorageExportServiceIPC$PkgParams;", "kotlin.jvm.PlatformType", "invoke"})
   static final class c<InputType, ResultType>
-    implements b<WxaPkgStorageExportServiceIPC.PkgParams, IPCVoid>
+    implements m<WxaPkgStorageExportServiceIPC.PkgParams, IPCBoolean>
   {
-    public static final c kQq;
+    public static final c nKv;
     
     static
     {
-      AppMethodBeat.i(228097);
-      kQq = new c();
-      AppMethodBeat.o(228097);
+      AppMethodBeat.i(265137);
+      nKv = new c();
+      AppMethodBeat.o(265137);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "data", "Lcom/tencent/mm/plugin/appbrand/appcache/predownload/export/WxaPkgStorageExportServiceIPC$PkgParams;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  static final class d<InputType, ResultType>
+    implements d<WxaPkgStorageExportServiceIPC.PkgParams, IPCVoid>
+  {
+    public static final d nKw;
+    
+    static
+    {
+      AppMethodBeat.i(274181);
+      nKw = new d();
+      AppMethodBeat.o(274181);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.predownload.export.WxaPkgStorageExportServiceIPC
  * JD-Core Version:    0.7.0.1
  */

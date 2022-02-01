@@ -11,49 +11,15 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class b
 {
-  private static final Map<String, List<n.a>> hno;
-  private static final Map<String, DebuggerInfo> lnf;
+  private static final Map<String, List<n.a>> jZc;
+  private static final Map<String, DebuggerInfo> ohR;
   
   static
   {
     AppMethodBeat.i(121294);
-    hno = new ConcurrentHashMap();
-    lnf = new ConcurrentHashMap();
+    jZc = new ConcurrentHashMap();
+    ohR = new ConcurrentHashMap();
     AppMethodBeat.o(121294);
-  }
-  
-  public static void S(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(121293);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(121293);
-      return;
-    }
-    paramString = (List)hno.get(paramString);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(121293);
-      return;
-    }
-    paramString = new LinkedList(paramString).iterator();
-    while (paramString.hasNext()) {
-      ((n.a)paramString.next()).sF(paramInt);
-    }
-    AppMethodBeat.o(121293);
-  }
-  
-  public static DebuggerInfo Yv(String paramString)
-  {
-    AppMethodBeat.i(121289);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      AppMethodBeat.o(121289);
-      return null;
-    }
-    paramString = (DebuggerInfo)lnf.get(paramString);
-    AppMethodBeat.o(121289);
-    return paramString;
   }
   
   public static void a(String paramString, DebuggerInfo paramDebuggerInfo)
@@ -64,8 +30,42 @@ public final class b
       AppMethodBeat.o(121290);
       return;
     }
-    lnf.put(paramString, paramDebuggerInfo);
+    ohR.put(paramString, paramDebuggerInfo);
     AppMethodBeat.o(121290);
+  }
+  
+  public static DebuggerInfo agj(String paramString)
+  {
+    AppMethodBeat.i(121289);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      AppMethodBeat.o(121289);
+      return null;
+    }
+    paramString = (DebuggerInfo)ohR.get(paramString);
+    AppMethodBeat.o(121289);
+    return paramString;
+  }
+  
+  public static void aj(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(121293);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(121293);
+      return;
+    }
+    paramString = (List)jZc.get(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(121293);
+      return;
+    }
+    paramString = new LinkedList(paramString).iterator();
+    while (paramString.hasNext()) {
+      ((n.a)paramString.next()).vC(paramInt);
+    }
+    AppMethodBeat.o(121293);
   }
   
   public static boolean c(String paramString, n.a parama)
@@ -76,11 +76,11 @@ public final class b
       AppMethodBeat.o(121291);
       return false;
     }
-    Object localObject = (List)hno.get(paramString);
+    Object localObject = (List)jZc.get(paramString);
     if (localObject == null)
     {
       localObject = new LinkedList();
-      hno.put(paramString, localObject);
+      jZc.put(paramString, localObject);
       paramString = (String)localObject;
     }
     do
@@ -102,7 +102,7 @@ public final class b
       AppMethodBeat.o(121292);
       return false;
     }
-    List localList = (List)hno.get(paramString);
+    List localList = (List)jZc.get(paramString);
     if (localList == null)
     {
       AppMethodBeat.o(121292);
@@ -110,7 +110,7 @@ public final class b
     }
     boolean bool = localList.remove(parama);
     if (localList.isEmpty()) {
-      hno.remove(paramString);
+      jZc.remove(paramString);
     }
     AppMethodBeat.o(121292);
     return bool;
@@ -118,7 +118,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.debugger.b
  * JD-Core Version:    0.7.0.1
  */

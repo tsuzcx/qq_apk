@@ -16,7 +16,7 @@ public abstract interface IShakeCheckingManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.gen.IShakeCheckingManager
  * JD-Core Version:    0.7.0.1
  */

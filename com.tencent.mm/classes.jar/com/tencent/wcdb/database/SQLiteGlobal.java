@@ -26,7 +26,6 @@ public final class SQLiteGlobal
     {
       i = new StatFs(Environment.getDataDirectory().getAbsolutePath()).getBlockSize();
       defaultPageSize = i;
-      nativeSetDefaultCipherSettings(i);
       AppMethodBeat.o(3268);
       return;
     }
@@ -39,11 +38,18 @@ public final class SQLiteGlobal
     }
   }
   
+  public static void initialize()
+  {
+    AppMethodBeat.i(188621);
+    Initializer.init();
+    AppMethodBeat.o(188621);
+  }
+  
   public static void loadLib() {}
   
-  private static native int nativeReleaseMemory();
+  private static native void nativeInitialize(int paramInt);
   
-  private static native void nativeSetDefaultCipherSettings(int paramInt);
+  private static native int nativeReleaseMemory();
   
   public static int releaseMemory()
   {
@@ -52,10 +58,22 @@ public final class SQLiteGlobal
     AppMethodBeat.o(3267);
     return i;
   }
+  
+  static class Initializer
+  {
+    static
+    {
+      AppMethodBeat.i(188604);
+      SQLiteGlobal.access$000(SQLiteGlobal.defaultPageSize);
+      AppMethodBeat.o(188604);
+    }
+    
+    static void init() {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wcdb.database.SQLiteGlobal
  * JD-Core Version:    0.7.0.1
  */

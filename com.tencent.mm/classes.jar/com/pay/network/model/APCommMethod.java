@@ -7,7 +7,7 @@ public class APCommMethod
 {
   public static void transformStrToList(String paramString, List<String> paramList)
   {
-    AppMethodBeat.i(193304);
+    AppMethodBeat.i(253777);
     int i = paramString.indexOf("[");
     int j = paramString.indexOf("]");
     paramList.clear();
@@ -26,12 +26,12 @@ public class APCommMethod
         }
       }
     }
-    AppMethodBeat.o(193304);
+    AppMethodBeat.o(253777);
   }
   
   public static void transformStrToMpInfoList(String paramString, List<String> paramList1, List<String> paramList2)
   {
-    AppMethodBeat.i(193303);
+    AppMethodBeat.i(253776);
     int i = paramString.indexOf("[");
     int j = paramString.indexOf("]");
     if ((i != -1) && (j != -1) && (j > i))
@@ -41,7 +41,7 @@ public class APCommMethod
       {
         paramList1.clear();
         paramList2.clear();
-        AppMethodBeat.o(193303);
+        AppMethodBeat.o(253776);
         return;
       }
       paramString = paramString.split(",");
@@ -61,12 +61,12 @@ public class APCommMethod
         }
       }
     }
-    AppMethodBeat.o(193303);
+    AppMethodBeat.o(253776);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.pay.network.model.APCommMethod
  * JD-Core Version:    0.7.0.1
  */

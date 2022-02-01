@@ -6,19 +6,19 @@ import com.tencent.mm.danmaku.d.a;
 
 public final class b
 {
-  final a gNx;
-  HandlerThread gNy;
+  final a jxS;
+  HandlerThread jxT;
   
   public b()
   {
-    AppMethodBeat.i(241599);
-    this.gNx = new a();
-    AppMethodBeat.o(241599);
+    AppMethodBeat.i(276331);
+    this.jxS = new a();
+    AppMethodBeat.o(276331);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.danmaku.a.b
  * JD-Core Version:    0.7.0.1
  */

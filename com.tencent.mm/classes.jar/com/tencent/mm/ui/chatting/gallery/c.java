@@ -1,558 +1,319 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.av.a.c.k;
-import com.tencent.mm.av.q;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.modelvideo.o;
-import com.tencent.mm.pluginsdk.model.app.ao;
-import com.tencent.mm.pluginsdk.model.app.d;
-import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.aq.e;
+import com.tencent.mm.modelsimple.ab;
+import com.tencent.mm.modelvideo.ac.a;
+import com.tencent.mm.modelvideo.s;
+import com.tencent.mm.modelvideo.w;
+import com.tencent.mm.modelvideo.y;
+import com.tencent.mm.n.f;
+import com.tencent.mm.plugin.thumbplayer.g.b.b;
+import com.tencent.mm.protocal.protobuf.cuv;
+import com.tencent.mm.protocal.protobuf.eor;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ca;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mm.vfs.u;
+import java.util.Collection;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.k;
+import kotlin.n.n;
+import kotlin.t;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/chatting/gallery/C2CVideoDownloadTask;", "Lcom/tencent/mm/plugin/thumbplayer/downloader/VideoDownloadTask;", "msg", "Lcom/tencent/mm/storage/MsgInfo;", "videoInfo", "Lcom/tencent/mm/modelvideo/VideoInfo;", "reporter", "Lcom/tencent/mm/plugin/thumbplayer/reporter/LegacyPlayerReporter;", "onGotTask", "Lkotlin/Function1;", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "", "(Lcom/tencent/mm/storage/MsgInfo;Lcom/tencent/mm/modelvideo/VideoInfo;Lcom/tencent/mm/plugin/thumbplayer/reporter/LegacyPlayerReporter;Lkotlin/jvm/functions/Function1;)V", "downloadSec", "", "filename", "", "getFilename", "()Ljava/lang/String;", "length", "", "getLength", "()J", "mediaId", "getMediaId", "minRemainPercent", "getMinRemainPercent", "()I", "setMinRemainPercent", "(I)V", "minStreamSize", "preloadSec", "savedPath", "getSavedPath", "task", "buildReportData", "", "()[Ljava/lang/Integer;", "createMpVideoDownloadTask", "createTask", "findFile", "finishRemaining", "isFinished", "", "refresh", "start", "stop", "Companion", "app_release"})
 public final class c
-  extends com.tencent.mm.ui.s<ca>
-  implements View.OnClickListener
+  implements com.tencent.mm.plugin.thumbplayer.c.h
 {
-  private static Map<String, Integer> Pxk;
-  private static Map<String, Integer> oYD;
-  long PlX;
-  private final ImageGalleryGridUI Pxi;
-  boolean Pxj;
-  String gAn;
-  protected com.tencent.mm.av.a.a.c gzE;
-  Context mContext;
-  private LayoutInflater mInflater;
-  private boolean qoo;
-  boolean tca;
-  public boolean vtY;
+  public static final c.a WQQ;
+  private w LrH;
+  private int LrI;
+  private final com.tencent.mm.plugin.thumbplayer.g.b LrJ;
+  private com.tencent.mm.i.h WQN;
+  private int WQO;
+  private final kotlin.g.a.b<com.tencent.mm.i.h, kotlin.x> WQP;
+  private final ca fvt;
+  private int mfN;
+  private int mfO;
   
   static
   {
-    AppMethodBeat.i(35949);
-    HashMap localHashMap = new HashMap();
-    oYD = localHashMap;
-    localHashMap.put("avi", Integer.valueOf(2131689585));
-    oYD.put("m4v", Integer.valueOf(2131689585));
-    oYD.put("vob", Integer.valueOf(2131689585));
-    oYD.put("mpeg", Integer.valueOf(2131689585));
-    oYD.put("mpe", Integer.valueOf(2131689585));
-    oYD.put("asx", Integer.valueOf(2131689585));
-    oYD.put("asf", Integer.valueOf(2131689585));
-    oYD.put("f4v", Integer.valueOf(2131689585));
-    oYD.put("flv", Integer.valueOf(2131689585));
-    oYD.put("mkv", Integer.valueOf(2131689585));
-    oYD.put("wmv", Integer.valueOf(2131689585));
-    oYD.put("wm", Integer.valueOf(2131689585));
-    oYD.put("3gp", Integer.valueOf(2131689585));
-    oYD.put("mp4", Integer.valueOf(2131689585));
-    oYD.put("rmvb", Integer.valueOf(2131689585));
-    oYD.put("rm", Integer.valueOf(2131689585));
-    oYD.put("ra", Integer.valueOf(2131689585));
-    oYD.put("ram", Integer.valueOf(2131689585));
-    oYD.put("mp3pro", Integer.valueOf(2131689568));
-    oYD.put("vqf", Integer.valueOf(2131689568));
-    oYD.put("cd", Integer.valueOf(2131689568));
-    oYD.put("md", Integer.valueOf(2131689568));
-    oYD.put("mod", Integer.valueOf(2131689568));
-    oYD.put("vorbis", Integer.valueOf(2131689568));
-    oYD.put("au", Integer.valueOf(2131689568));
-    oYD.put("amr", Integer.valueOf(2131689568));
-    oYD.put("silk", Integer.valueOf(2131689568));
-    oYD.put("wma", Integer.valueOf(2131689568));
-    oYD.put("mmf", Integer.valueOf(2131689568));
-    oYD.put("mid", Integer.valueOf(2131689568));
-    oYD.put("midi", Integer.valueOf(2131689568));
-    oYD.put("mp3", Integer.valueOf(2131689568));
-    oYD.put("aac", Integer.valueOf(2131689568));
-    oYD.put("ape", Integer.valueOf(2131689568));
-    oYD.put("aiff", Integer.valueOf(2131689568));
-    oYD.put("aif", Integer.valueOf(2131689568));
-    oYD.put("doc", Integer.valueOf(2131689589));
-    oYD.put("docx", Integer.valueOf(2131689589));
-    oYD.put("ppt", Integer.valueOf(2131689575));
-    oYD.put("pptx", Integer.valueOf(2131689575));
-    oYD.put("xls", Integer.valueOf(2131689561));
-    oYD.put("xlsx", Integer.valueOf(2131689561));
-    oYD.put("pdf", Integer.valueOf(2131689572));
-    oYD.put("unknown", Integer.valueOf(2131689581));
-    localHashMap = new HashMap();
-    Pxk = localHashMap;
-    localHashMap.put("doc", Integer.valueOf(2131099928));
-    Pxk.put("docx", Integer.valueOf(2131099928));
-    Pxk.put("ppt", Integer.valueOf(2131099931));
-    Pxk.put("pptx", Integer.valueOf(2131099931));
-    Pxk.put("xls", Integer.valueOf(2131099934));
-    Pxk.put("xlsx", Integer.valueOf(2131099934));
-    Pxk.put("pdf", Integer.valueOf(2131099930));
-    Pxk.put("unknown", Integer.valueOf(2131099932));
-    Pxk.put("mp3pro", Integer.valueOf(2131099929));
-    Pxk.put("vqf", Integer.valueOf(2131099929));
-    Pxk.put("cd", Integer.valueOf(2131099929));
-    Pxk.put("md", Integer.valueOf(2131099929));
-    Pxk.put("mod", Integer.valueOf(2131099929));
-    Pxk.put("vorbis", Integer.valueOf(2131099929));
-    Pxk.put("au", Integer.valueOf(2131099929));
-    Pxk.put("amr", Integer.valueOf(2131099929));
-    Pxk.put("silk", Integer.valueOf(2131099929));
-    Pxk.put("wma", Integer.valueOf(2131099929));
-    Pxk.put("mmf", Integer.valueOf(2131099929));
-    Pxk.put("mid", Integer.valueOf(2131099929));
-    Pxk.put("midi", Integer.valueOf(2131099929));
-    Pxk.put("mp3", Integer.valueOf(2131099929));
-    Pxk.put("aac", Integer.valueOf(2131099929));
-    Pxk.put("ape", Integer.valueOf(2131099929));
-    Pxk.put("aiff", Integer.valueOf(2131099929));
-    Pxk.put("aif", Integer.valueOf(2131099929));
-    AppMethodBeat.o(35949);
+    AppMethodBeat.i(268405);
+    WQQ = new c.a((byte)0);
+    AppMethodBeat.o(268405);
   }
   
-  public c(Context paramContext, ca paramca, String paramString)
+  public c(ca paramca, w paramw, com.tencent.mm.plugin.thumbplayer.g.b paramb, kotlin.g.a.b<? super com.tencent.mm.i.h, kotlin.x> paramb1)
   {
-    super(paramContext, paramca);
-    AppMethodBeat.i(35938);
-    this.gzE = null;
-    this.Pxj = false;
-    this.vtY = false;
-    this.Pxi = ((ImageGalleryGridUI)paramContext);
-    this.gAn = paramString;
-    this.tca = g.DQ(this.gAn);
-    if (this.tca) {
-      this.PlX = paramca.field_bizChatId;
-    }
-    bg.aVF();
-    this.qoo = com.tencent.mm.model.c.isSDCardAvailable();
-    this.mInflater = LayoutInflater.from(paramContext);
-    paramca = new com.tencent.mm.av.a.a.c.a();
-    paramca.jbi = 1;
-    paramca.jby = true;
-    paramca.hZA = (com.tencent.mm.cb.a.jn(paramContext) / 3);
-    paramca.hZz = (com.tencent.mm.cb.a.jn(paramContext) / 3);
-    paramca.jbt = 2131100928;
-    this.gzE = paramca.bdv();
-    AppMethodBeat.o(35938);
-  }
-  
-  private static String cv(ca paramca)
-  {
-    AppMethodBeat.i(35944);
-    Object localObject1;
-    if ((paramca.cWJ()) || (paramca.cWL()))
+    AppMethodBeat.i(268404);
+    this.fvt = paramca;
+    this.LrH = paramw;
+    this.LrJ = paramb;
+    this.WQP = paramb1;
+    paramca = null;
+    if (y.brb())
     {
-      o.bhj();
-      localObject1 = com.tencent.mm.modelvideo.t.Qx(paramca.field_imgPath);
+      Log.i("MicroMsg.C2CVideoDownloadTask", "create c2c online task: filename=" + this.fvt.apK());
+      s.bqC();
+      paramca = e.VB(this.fvt.apK());
+    }
+    paramw = paramca;
+    if (paramca == null)
+    {
+      paramw = paramca;
+      if (this.fvt.dlS())
+      {
+        paramw = new com.tencent.mm.i.h();
+        paramw.taskName = "task_OnlineVideoUIHelper";
+        paramw.field_mediaId = com.tencent.mm.aq.c.a("downvideo", this.LrH.getCreateTime(), this.LrH.bqM(), this.LrH.getFileName());
+        paramw.url = this.LrH.mhZ.lor;
+        paramw.iVd = 1;
+        paramw.iUX = 7;
+        paramw.concurrentCount = 4;
+        paramw.filename = this.LrH.getFileName();
+        s.bqB();
+        paramw.field_fullpath = com.tencent.mm.modelvideo.x.XT(this.LrH.getFileName());
+        paramw.iVc = this.LrH.blF();
+      }
+    }
+    this.WQN = paramw;
+    paramca = com.tencent.mm.n.h.axc().getValue("AndroidOnlineVideoArgs");
+    paramw = (CharSequence)paramca;
+    if ((paramw == null) || (paramw.length() == 0)) {
+      i = 1;
+    }
+    while (i == 0)
+    {
+      Log.i("MicroMsg.C2CVideoDownloadTask", "online video config : ".concat(String.valueOf(paramca)));
+      paramca = (CharSequence)paramca;
+      paramca = ((Collection)new k(";").u(paramca, 0)).toArray(new String[0]);
+      if (paramca == null)
+      {
+        paramca = new t("null cannot be cast to non-null type kotlin.Array<T>");
+        AppMethodBeat.o(268404);
+        throw paramca;
+        i = 0;
+      }
+      else
+      {
+        paramca = (String[])paramca;
+        if (paramca.length >= 4)
+        {
+          this.mfN = Util.getInt(paramca[0], 5);
+          this.mfO = Util.getInt(paramca[1], 1);
+          this.LrI = Util.getInt(paramca[2], 75);
+          this.WQO = (Util.getInt(paramca[3], 1) * 1048576);
+        }
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0)
+      {
+        this.mfN = 5;
+        this.mfO = 1;
+        this.LrI = 75;
+        this.WQO = 1048576;
+      }
+      Log.i("MicroMsg.C2CVideoDownloadTask", "parseConfig preload[%d] downloadSec[%d], needFinish[%d], minStreamSize[%d]", new Object[] { Integer.valueOf(this.mfN), Integer.valueOf(this.mfO), Integer.valueOf(this.LrI), Integer.valueOf(this.WQO) });
+      AppMethodBeat.o(268404);
+      return;
+    }
+  }
+  
+  private final String hRA()
+  {
+    AppMethodBeat.i(268403);
+    Object localObject1;
+    if (this.LrH.bqP() == -1) {
+      if (!u.agG(this.LrH.bqN()))
+      {
+        s.bqB();
+        localObject1 = com.tencent.mm.modelvideo.x.XT(this.fvt.apK());
+      }
     }
     for (;;)
     {
-      Log.i("MicroMsg.ImageGalleryGridAdapter", "MsgInfoForMonetUri imgPath : %s", new Object[] { localObject1 });
-      Object localObject2 = localObject1;
-      if (paramca.gDr())
+      AppMethodBeat.o(268403);
+      return localObject1;
+      localObject1 = this.LrH.bqN();
+      continue;
+      s.bqB();
+      String str = com.tencent.mm.modelvideo.x.XT(this.fvt.apK());
+      if ((this.fvt.apA() == 1) && (this.LrH.bqU() != null) && (this.LrH.bqU().TCA)) {}
+      try
       {
-        Object localObject3 = k.b.HD(paramca.field_content);
-        localObject2 = null;
-        paramca = (ca)localObject2;
-        if (localObject3 != null)
-        {
-          paramca = (ca)localObject2;
-          if (((k.b)localObject3).dCK != null)
-          {
-            paramca = (ca)localObject2;
-            if (((k.b)localObject3).dCK.length() > 0)
-            {
-              localObject3 = ao.cgO().bdx(((k.b)localObject3).dCK);
-              paramca = (ca)localObject2;
-              if (localObject3 != null) {
-                paramca = ((com.tencent.mm.pluginsdk.model.app.c)localObject3).field_fileFullPath;
-              }
-            }
-          }
-        }
-        localObject2 = localObject1;
-        if (paramca != null) {
-          localObject2 = paramca;
-        }
-      }
-      AppMethodBeat.o(35944);
-      return localObject2;
-      localObject2 = q.bcR().d(paramca.field_imgPath, false, false);
-      localObject1 = localObject2;
-      if (!Util.isNullOrNil((String)localObject2))
-      {
+        Object localObject2 = u.bBT(str);
         localObject1 = localObject2;
-        if (!((String)localObject2).endsWith("hd"))
-        {
-          localObject1 = localObject2;
-          if (com.tencent.mm.vfs.s.YS((String)localObject2 + "hd")) {
-            localObject1 = (String)localObject2 + "hd";
-          }
+        if (localObject2 == null) {
+          localObject1 = "";
+        }
+        p.j(localObject1, "VFSFileOp.getParentAbsolutePath(path) ?: \"\"");
+        localObject2 = localObject1;
+        if (!n.pu((String)localObject1, "/")) {
+          localObject2 = (String)localObject1 + "/";
+        }
+        localObject1 = u.bBW(str);
+        localObject1 = (String)localObject2 + (String)localObject1 + "_hd.mp4";
+        boolean bool = u.agG((String)localObject1);
+        Log.i("MicroMsg.C2CVideoDownloadTask", "local capture video, hdFilePath: " + (String)localObject1 + ", exist: " + bool);
+        if (bool) {
+          continue;
         }
       }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          Log.e("MicroMsg.C2CVideoDownloadTask", "try to get hd filePath error: " + localException.getMessage());
+        }
+      }
+      localObject1 = str;
     }
   }
   
-  private static int j(k.b paramb)
+  public final void bfU()
   {
-    AppMethodBeat.i(35942);
-    if (paramb == null)
+    AppMethodBeat.i(268402);
+    w localw = y.Yk(eRe());
+    if (localw != null)
     {
-      Log.i("MicroMsg.ImageGalleryGridAdapter", "getIconId:2131689580");
-      AppMethodBeat.o(35942);
-      return 2131689581;
-    }
-    if ((paramb.type == 5) || (paramb.type == 7) || (paramb.type == 15))
-    {
-      AppMethodBeat.o(35942);
-      return 2131689583;
-    }
-    if (paramb.type == 3)
-    {
-      AppMethodBeat.o(35942);
-      return 2131689568;
-    }
-    if ((paramb.type == 6) && (oYD.containsKey(Util.nullAsNil(paramb.iwJ))))
-    {
-      Log.i("MicroMsg.ImageGalleryGridAdapter", "getIconId:" + oYD.get(Util.nullAsNil(paramb.iwJ)));
-      int i = ((Integer)oYD.get(Util.nullAsNil(paramb.iwJ))).intValue();
-      AppMethodBeat.o(35942);
-      return i;
-    }
-    AppMethodBeat.o(35942);
-    return 2131689581;
-  }
-  
-  private static int k(k.b paramb)
-  {
-    AppMethodBeat.i(35943);
-    if (paramb == null)
-    {
-      Log.i("MicroMsg.ImageGalleryGridAdapter", "getIconId:2131099932");
-      AppMethodBeat.o(35943);
-      return 2131099932;
-    }
-    if ((paramb.type == 5) || (paramb.type == 7) || (paramb.type == 15))
-    {
-      AppMethodBeat.o(35943);
-      return 2131099933;
-    }
-    if ((paramb.type == 6) && (Pxk.containsKey(Util.nullAsNil(paramb.iwJ))))
-    {
-      Log.i("MicroMsg.ImageGalleryGridAdapter", "getIconId:" + Pxk.get(Util.nullAsNil(paramb.iwJ)));
-      int i = ((Integer)Pxk.get(Util.nullAsNil(paramb.iwJ))).intValue();
-      AppMethodBeat.o(35943);
-      return i;
-    }
-    AppMethodBeat.o(35943);
-    return 2131099932;
-  }
-  
-  public final void anp()
-  {
-    AppMethodBeat.i(35939);
-    if (this.tca)
-    {
-      bg.aVF();
-      setCursor(com.tencent.mm.model.c.aSR().bY(this.gAn, this.PlX));
-      AppMethodBeat.o(35939);
+      this.LrH = localw;
+      AppMethodBeat.o(268402);
       return;
     }
-    bg.aVF();
-    setCursor(com.tencent.mm.model.c.aSQ().aEC(this.gAn));
-    AppMethodBeat.o(35939);
+    AppMethodBeat.o(268402);
   }
   
-  public final void anq()
+  public final String eRe()
   {
-    AppMethodBeat.i(35940);
-    if (this.tca)
+    com.tencent.mm.i.h localh = this.WQN;
+    if (localh != null) {
+      return localh.filename;
+    }
+    return null;
+  }
+  
+  public final String fZd()
+  {
+    AppMethodBeat.i(268396);
+    String str = hRA();
+    AppMethodBeat.o(268396);
+    return str;
+  }
+  
+  public final int fZe()
+  {
+    return this.LrI;
+  }
+  
+  public final void fZf()
+  {
+    AppMethodBeat.i(268400);
+    Log.i("MicroMsg.C2CVideoDownloadTask", "finishRemaining()");
+    Object localObject = this.WQN;
+    if (localObject != null) {}
+    for (localObject = ((com.tencent.mm.i.h)localObject).filename;; localObject = null)
     {
-      bg.aVF();
-      setCursor(com.tencent.mm.model.c.aSR().bY(this.gAn, this.PlX));
-      AppMethodBeat.o(35940);
+      y.aR((String)localObject, 2);
+      AppMethodBeat.o(268400);
       return;
     }
-    bg.aVF();
-    setCursor(com.tencent.mm.model.c.aSQ().aEC(this.gAn));
-    AppMethodBeat.o(35940);
   }
   
-  public final boolean areAllItemsEnabled()
+  public final String getMediaId()
   {
+    com.tencent.mm.i.h localh = this.WQN;
+    if (localh != null) {
+      return localh.field_mediaId;
+    }
+    return null;
+  }
+  
+  public final boolean isFinished()
+  {
+    AppMethodBeat.i(268401);
+    if ((this.LrH.bqS()) || (this.LrH.getStatus() == 123))
+    {
+      AppMethodBeat.o(268401);
+      return true;
+    }
+    AppMethodBeat.o(268401);
     return false;
   }
   
-  public final void cWH()
+  public final long sr()
   {
-    AppMethodBeat.i(35945);
-    this.vtY = false;
-    notifyDataSetChanged();
-    AppMethodBeat.o(35945);
+    AppMethodBeat.i(268397);
+    com.tencent.mm.i.h localh = this.WQN;
+    if (localh != null)
+    {
+      l = localh.iVc;
+      AppMethodBeat.o(268397);
+      return l;
+    }
+    long l = this.LrH.bfj();
+    AppMethodBeat.o(268397);
+    return l;
   }
   
-  public final long getItemId(int paramInt)
+  public final boolean start()
   {
-    return paramInt;
+    AppMethodBeat.i(268398);
+    Log.i("MicroMsg.C2CVideoDownloadTask", "start task: path=" + hRA());
+    if ((this.fvt.apA() == 1) && (!this.fvt.dlS()))
+    {
+      AppMethodBeat.o(268398);
+      return false;
+    }
+    if (this.WQN == null)
+    {
+      AppMethodBeat.o(268398);
+      return false;
+    }
+    Object localObject = this.WQN;
+    if (localObject != null) {
+      this.WQP.invoke(localObject);
+    }
+    localObject = (CharSequence)getMediaId();
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(268398);
+      return false;
+    }
+    long l = this.LrH.blF();
+    if (l < 0L)
+    {
+      Log.i("MicroMsg.C2CVideoDownloadTask", "video size[" + l + "] less than config size[0], do not stream video");
+      y.b(this.LrH, 9);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(354L, 17L, 1L, false);
+      AppMethodBeat.o(268398);
+      return false;
+    }
+    ab.ah(this.fvt);
+    boolean bool = s.bqG().brd();
+    s.bqC().a(this.WQN, bool);
+    y.b(this.LrH, 1);
+    AppMethodBeat.o(268398);
+    return true;
   }
   
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public final void stop()
   {
-    AppMethodBeat.i(35941);
-    if (paramView == null)
-    {
-      paramView = this.mInflater.inflate(2131495048, paramViewGroup, false);
-      paramViewGroup = new a();
-      paramViewGroup.tkI = ((ImageView)paramView.findViewById(2131302167));
-      paramViewGroup.tkJ = paramView.findViewById(2131309835);
-      paramViewGroup.Pxo = ((TextView)paramView.findViewById(2131300628));
-      paramViewGroup.Pxo.setVisibility(8);
-      paramViewGroup.Pxn = ((ImageView)paramView.findViewById(2131300621));
-      paramViewGroup.qog = ((TextView)paramView.findViewById(2131309832));
-      paramViewGroup.tkJ.setVisibility(8);
-      paramViewGroup.tkL = paramView.findViewById(2131307900);
-      paramViewGroup.tkL.setVisibility(8);
-      paramViewGroup.Pxp = paramView.findViewById(2131300636);
-      paramViewGroup.Pxp.setVisibility(8);
-      paramViewGroup.tkK = ((ImageView)paramView.findViewById(2131302170));
-      paramViewGroup.checkBox = ((CheckBox)paramView.findViewById(2131304550));
-      paramViewGroup.tkM = paramView.findViewById(2131304551);
-      paramView.setTag(paramViewGroup);
-    }
-    ca localca;
-    for (;;)
-    {
-      paramViewGroup.tkL.setVisibility(8);
-      paramViewGroup.tkJ.setVisibility(8);
-      paramViewGroup.Pxp.setVisibility(8);
-      paramViewGroup.Pxo.setVisibility(8);
-      localca = (ca)getItem(paramInt);
-      if (localca != null) {
-        break;
-      }
-      AppMethodBeat.o(35941);
-      return paramView;
-      paramViewGroup = (a)paramView.getTag();
-    }
-    Object localObject2;
-    Object localObject1;
-    int i;
-    if (this.qoo)
-    {
-      if (!(this.Pxi instanceof ImageGalleryGridUI))
-      {
-        paramView = new IllegalArgumentException("the context should be ImageGalleryGridUI");
-        AppMethodBeat.o(35941);
-        throw paramView;
-      }
-      localObject2 = localca.field_content;
-      localObject1 = null;
-      if (localObject2 != null) {
-        localObject1 = k.b.aD((String)localObject2, localca.field_reserved);
-      }
-      if (this.Pxi.Pxq == paramInt)
-      {
-        paramViewGroup.tkK.setVisibility(0);
-        if ((b.co(localca)) && (localObject1 != null) && (((k.b)localObject1).type != 3))
-        {
-          paramViewGroup.Pxn.setImageDrawable(this.Pxi.getResources().getDrawable(j((k.b)localObject1)));
-          paramViewGroup.tkI.setImageResource(k((k.b)localObject1));
-          paramViewGroup.tkI.setPadding(0, 0, 0, 0);
-          paramInt = paramViewGroup.tkI.getMeasuredWidth();
-          i = paramViewGroup.tkI.getMeasuredHeight();
-          if ((paramInt > 0) && (i > 0)) {
-            break label774;
-          }
-          label445:
-          if (!b.m(localca)) {
-            break label808;
-          }
-          if (paramViewGroup != null)
-          {
-            paramViewGroup.tkJ.setVisibility(0);
-            localObject1 = j.cF(localca);
-            if (localObject1 != null) {
-              paramViewGroup.qog.setText(Util.formatSecToMin(((com.tencent.mm.modelvideo.s)localObject1).iFw));
-            }
-          }
-          label492:
-          paramViewGroup.checkBox.setChecked(h.a.gSp().cE(localca));
-          paramViewGroup.checkBox.setTag(localca);
-          paramViewGroup.tkM.setTag(paramViewGroup);
-          paramViewGroup.tkM.setOnClickListener(this);
-          if (!h.a.gSp().tku) {
-            break label979;
-          }
-          paramViewGroup.checkBox.setVisibility(0);
-          paramViewGroup.tkM.setVisibility(0);
-          paramViewGroup.tkK.setVisibility(0);
-        }
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(35941);
-      return paramView;
-      if ((localObject1 != null) && (((k.b)localObject1).type == 3)) {
-        paramViewGroup.Pxn.setImageDrawable(this.Pxi.getResources().getDrawable(j((k.b)localObject1)));
-      }
-      q.bcV().a(cv(localca), paramViewGroup.tkI, this.gzE, new k()
-      {
-        public final void a(String paramAnonymousString, View paramAnonymousView, Bitmap paramAnonymousBitmap, Object... paramAnonymousVarArgs)
-        {
-          AppMethodBeat.i(35937);
-          MMHandlerThread.postToMainThread(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(35936);
-              AppMethodBeat.o(35936);
-            }
-          });
-          AppMethodBeat.o(35937);
-        }
-      });
-      break;
-      paramViewGroup.tkK.setVisibility(0);
-      paramViewGroup.tkK.setBackgroundResource(2131100641);
-      if ((b.co(localca)) && (localObject1 != null) && (((k.b)localObject1).type != 3))
-      {
-        paramViewGroup.Pxn.setImageDrawable(this.Pxi.getResources().getDrawable(j((k.b)localObject1)));
-        paramViewGroup.tkI.setImageResource(k((k.b)localObject1));
-        break;
-      }
-      if ((localObject1 != null) && (((k.b)localObject1).type == 3)) {
-        paramViewGroup.Pxn.setImageDrawable(this.Pxi.getResources().getDrawable(j((k.b)localObject1)));
-      }
-      q.bcV().a(cv(localca), paramViewGroup.tkI, this.gzE);
-      break;
-      label774:
-      localObject2 = paramViewGroup.tkK.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject2).width = paramInt;
-      ((ViewGroup.LayoutParams)localObject2).height = i;
-      paramViewGroup.tkK.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      break label445;
-      label808:
-      if (b.cn(localca))
-      {
-        paramViewGroup.tkL.setVisibility(0);
-        break label492;
-      }
-      if ((!b.co(localca)) || (paramViewGroup == null)) {
-        break label492;
-      }
-      paramViewGroup.Pxp.setVisibility(0);
-      paramViewGroup.Pxo.setVisibility(0);
-      if (localObject1 == null) {
-        break label492;
-      }
-      Log.i("MicroMsg.ImageGalleryGridAdapter", "initFileName--->content:%s", new Object[] { Util.nullAsNil(((k.b)localObject1).title) });
-      if (((k.b)localObject1).type != 24)
-      {
-        paramViewGroup.Pxo.setText(l.b(this.mContext, Util.nullAsNil(((k.b)localObject1).title), paramViewGroup.Pxo.getTextSize()));
-        break label492;
-      }
-      paramViewGroup.Pxo.setText(l.b(paramViewGroup.Pxo.getContext(), paramViewGroup.Pxo.getContext().getString(2131759360), paramViewGroup.Pxo.getTextSize()));
-      break label492;
-      paramViewGroup.tkI.setImageResource(2131234279);
-      break label492;
-      label979:
-      paramViewGroup.checkBox.setVisibility(8);
-      paramViewGroup.tkM.setVisibility(8);
-      paramViewGroup.tkK.setVisibility(8);
-    }
-  }
-  
-  public final void notifyDataSetChanged()
-  {
-    AppMethodBeat.i(35946);
-    super.notifyDataSetChanged();
-    this.Pxj = false;
-    AppMethodBeat.o(35946);
-  }
-  
-  public final void onClick(View paramView)
-  {
-    AppMethodBeat.i(35947);
-    Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/gallery/ImageGalleryGridAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-    paramView = (a)paramView.getTag();
-    if (paramView.checkBox == null)
-    {
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/gallery/ImageGalleryGridAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(35947);
-      return;
-    }
-    localObject = (ca)paramView.checkBox.getTag();
-    if (localObject == null)
-    {
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/gallery/ImageGalleryGridAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(35947);
-      return;
-    }
-    h localh = h.a.gSp();
-    if (localh.cE((ca)localObject))
-    {
-      localh.cD((ca)localObject);
-      if (!h.a.gSp().cE((ca)localObject)) {
-        break label232;
-      }
-      paramView.checkBox.setChecked(true);
-      paramView.tkK.setBackgroundResource(2131100584);
-    }
-    for (;;)
-    {
-      if ((!this.vtY) && (h.a.gSp().tkt.size() > 1))
-      {
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(219L, 20L, 1L, true);
-        this.vtY = true;
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/gallery/ImageGalleryGridAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(35947);
-      return;
-      localh.cC((ca)localObject);
-      break;
-      label232:
-      paramView.checkBox.setChecked(false);
-      paramView.tkK.setBackgroundResource(2131100641);
-    }
-  }
-  
-  protected static final class a
-  {
-    public ImageView Pxn;
-    public TextView Pxo;
-    public View Pxp;
-    public CheckBox checkBox;
-    public TextView qog;
-    public ImageView tkI;
-    public View tkJ;
-    public ImageView tkK;
-    public View tkL;
-    public View tkM;
+    AppMethodBeat.i(268399);
+    Log.i("MicroMsg.C2CVideoDownloadTask", "stop()");
+    e locale = s.bqC();
+    String str = getMediaId();
+    b.b localb = this.LrJ.goP();
+    locale.l(str, new Integer[] { Integer.valueOf(localb.EFk), Integer.valueOf(localb.MTC), Integer.valueOf(localb.MTD), Integer.valueOf(localb.MTA), Integer.valueOf(localb.MTE), Integer.valueOf(localb.MTF), Integer.valueOf(localb.errorCode) });
+    AppMethodBeat.o(268399);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.c
  * JD-Core Version:    0.7.0.1
  */

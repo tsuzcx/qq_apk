@@ -4,16 +4,18 @@ import android.content.Context;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.api.bucket.c;
-import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.bp;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.bq;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.qqmail.d.a;
 import com.tencent.mm.plugin.qqmail.d.aa;
-import com.tencent.mm.plugin.qqmail.d.ab;
 import com.tencent.mm.plugin.qqmail.d.k;
 import com.tencent.mm.plugin.qqmail.d.v;
+import com.tencent.mm.plugin.qqmail.d.y;
 import com.tencent.mm.plugin.qqmail.d.z;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -25,94 +27,94 @@ import java.io.IOException;
 import java.util.LinkedList;
 
 public class PluginQQMail
-  extends f
+  extends com.tencent.mm.kernel.b.f
   implements c, k
 {
-  private v BqU;
-  private ab BqV;
-  private com.tencent.mm.plugin.qqmail.d.a BqW;
+  private v Hln;
+  private com.tencent.mm.plugin.qqmail.d.ab Hlo;
+  private a Hlp;
   
   public PluginQQMail()
   {
     AppMethodBeat.i(122630);
-    this.BqW = new com.tencent.mm.plugin.qqmail.d.a();
+    this.Hlp = new a();
     AppMethodBeat.o(122630);
   }
   
-  public void configure(com.tencent.mm.kernel.b.g paramg)
+  public void configure(g paramg)
   {
     AppMethodBeat.i(122631);
-    if (paramg.aBb()) {
-      com.tencent.mm.vfs.y.at("mailapp", "mailapp", 3);
+    if (paramg.aIE()) {
+      com.tencent.mm.vfs.ab.aE("mailapp", "mailapp", 1);
     }
     AppMethodBeat.o(122631);
   }
   
-  public void execute(com.tencent.mm.kernel.b.g paramg) {}
+  public void execute(g paramg) {}
   
   public v getNormalMailAppService()
   {
     AppMethodBeat.i(122632);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (this.BqU == null) {
-      this.BqU = new v();
+    h.aHE().aGH();
+    if (this.Hln == null) {
+      this.Hln = new v();
     }
-    v localv = this.BqU;
+    v localv = this.Hln;
     AppMethodBeat.o(122632);
     return localv;
   }
   
-  public ab getShareModeMailAppService()
+  public com.tencent.mm.plugin.qqmail.d.ab getShareModeMailAppService()
   {
     AppMethodBeat.i(122633);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (this.BqV == null) {
-      this.BqV = new ab();
+    h.aHE().aGH();
+    if (this.Hlo == null) {
+      this.Hlo = new com.tencent.mm.plugin.qqmail.d.ab();
     }
-    ab localab = this.BqV;
+    com.tencent.mm.plugin.qqmail.d.ab localab = this.Hlo;
     AppMethodBeat.o(122633);
     return localab;
   }
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(122634);
-    EventCenter.instance.addListener(this.BqW);
-    com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
+    EventCenter.instance.addListener(this.Hlp);
+    h.aHJ().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(122629);
-        if (!com.tencent.mm.kernel.g.aAc())
+        if (!h.aHB())
         {
           AppMethodBeat.o(122629);
           return;
         }
         long l = System.currentTimeMillis();
         Object localObject = new aa();
-        if (((aa)localObject).Bsj.zns.size() > 0)
+        if (((aa)localObject).HmC.ESJ.size() > 0)
         {
           int i = 0;
-          while (i < ((aa)localObject).Bsj.zns.size())
+          while (i < ((aa)localObject).HmC.ESJ.size())
           {
-            String str = ((com.tencent.mm.plugin.qqmail.d.y)((aa)localObject).Bsj.zns.get(i)).Bru;
+            String str = ((y)((aa)localObject).HmC.ESJ.get(i)).BDX;
             ca localca = new ca();
-            localca.Cy("qqmail");
-            localca.setCreateTime(bp.Kw("qqmail"));
-            localca.nv(0);
-            localca.setContent(String.format(MMApplicationContext.getContext().getString(2131765212), new Object[] { str }));
+            localca.Jm("qqmail");
+            localca.setCreateTime(bq.RP("qqmail"));
+            localca.pJ(0);
+            localca.setContent(String.format(MMApplicationContext.getContext().getString(e.i.send_mail_fail_prompt), new Object[] { str }));
             localca.setType(1);
             localca.setStatus(3);
-            Log.d("MicroMsg.ShareMailInfoMgr", "send mail fail, publish fail message, id: %d", new Object[] { Long.valueOf(((l)com.tencent.mm.kernel.g.af(l.class)).eiy().aC(localca)) });
+            Log.d("MicroMsg.ShareMailInfoMgr", "send mail fail, publish fail message, id: %d", new Object[] { Long.valueOf(((n)h.ae(n.class)).eSe().aM(localca)) });
             i += 1;
           }
-          ((aa)localObject).Bsj.zns.clear();
+          ((aa)localObject).HmC.ESJ.clear();
         }
         try
         {
-          localObject = Base64.encodeToString(((aa)localObject).Bsj.toByteArray(), 0);
+          localObject = Base64.encodeToString(((aa)localObject).HmC.toByteArray(), 0);
           Log.d("MicroMsg.ShareMailInfoMgr", "save %s", new Object[] { localObject });
-          com.tencent.mm.kernel.g.aAh().azQ().set(282625, localObject);
+          h.aHG().aHp().i(282625, localObject);
           Log.i("SubCoreQQMail", "summeranrt onAccountPostReset notifyAllFail take[%d]ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
           AppMethodBeat.o(122629);
           return;
@@ -133,17 +135,17 @@ public class PluginQQMail
   public void onAccountRelease()
   {
     AppMethodBeat.i(122635);
-    v localv = this.BqU;
+    v localv = this.Hln;
     if (localv != null) {
       localv.reset();
     }
-    EventCenter.instance.removeListener(this.BqW);
+    EventCenter.instance.removeListener(this.Hlp);
     AppMethodBeat.o(122635);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.PluginQQMail
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,18 @@
 package com.tencent.mm.ui.chatting;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.f.c.et;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bp;
+import com.tencent.mm.model.bq;
 import com.tencent.mm.model.v;
 import com.tencent.mm.model.z;
-import com.tencent.mm.modelsns.m;
-import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.modelsns.n;
+import com.tencent.mm.modelvideo.w;
+import com.tencent.mm.modelvideo.y;
 import com.tencent.mm.plugin.sns.b.d;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.protocal.protobuf.eeq;
+import com.tencent.mm.protocal.protobuf.eor;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ca;
@@ -36,41 +34,41 @@ public final class a
   {
     AppMethodBeat.i(34111);
     String str2 = paramca.field_talker;
-    boolean bool = ab.Iw(str2);
+    boolean bool = ab.PO(str2);
     String str1;
-    m localm;
+    n localn;
     if (paramca.field_isSend == 1)
     {
-      str1 = z.aTY();
-      localm = new m();
-      localm.n("20source_publishid", paramString1 + ",");
-      localm.n("21uxinfo", paramString2 + ",");
-      localm.n("22clienttime", Util.nowMilliSecond() + ",");
-      localm.n("23video_statu", ",");
+      str1 = z.bcZ();
+      localn = new n();
+      localn.m("20source_publishid", paramString1 + ",");
+      localn.m("21uxinfo", paramString2 + ",");
+      localn.m("22clienttime", Util.nowMilliSecond() + ",");
+      localn.m("23video_statu", ",");
       paramString1 = new StringBuilder();
       if (paramca.getType() != 62) {
         break label494;
       }
       i = 1;
       label149:
-      localm.n("24source_type", i + ",");
+      localn.m("24source_type", i + ",");
       paramString1 = new StringBuilder();
       if (!bool) {
         break label500;
       }
       i = 4;
       label186:
-      localm.n("25scene", i + ",");
-      localm.n("26action_type", a.a(parama) + ",");
-      localm.n("27scene_chatname", str2 + ",");
-      localm.n("28scene_username", str1 + ",");
-      localm.n("29curr_publishid", ",");
-      localm.n("30curr_msgid", paramca.field_msgSvrId + ",");
-      localm.n("31curr_favid", "0,");
-      localm.n("32elapsed_time", "0,");
-      localm.n("33load_time", "0,");
-      localm.n("34is_load_complete", "0,");
-      localm.n("35destination", "0,");
+      localn.m("25scene", i + ",");
+      localn.m("26action_type", a.a(parama) + ",");
+      localn.m("27scene_chatname", str2 + ",");
+      localn.m("28scene_username", str1 + ",");
+      localn.m("29curr_publishid", ",");
+      localn.m("30curr_msgid", paramca.field_msgSvrId + ",");
+      localn.m("31curr_favid", "0,");
+      localn.m("32elapsed_time", "0,");
+      localn.m("33load_time", "0,");
+      localn.m("34is_load_complete", "0,");
+      localn.m("35destination", "0,");
       parama = new StringBuilder();
       if (!bool) {
         break label506;
@@ -79,16 +77,16 @@ public final class a
     label494:
     label500:
     label506:
-    for (int i = v.Ie(str2);; i = 0)
+    for (int i = v.Pu(str2);; i = 0)
     {
-      localm.n("36chatroom_membercount", i + ",");
-      Log.i("MicroMsg.AdVideoStatistic", "report snsad_video_action: " + localm.abW());
-      ((d)g.af(d.class)).a(12990, new Object[] { localm });
+      localn.m("36chatroom_membercount", i + ",");
+      Log.i("MicroMsg.AdVideoStatistic", "report snsad_video_action: " + localn.agI());
+      ((d)com.tencent.mm.kernel.h.ae(d.class)).a(12990, new Object[] { localn });
       AppMethodBeat.o(34111);
       return;
       if (bool)
       {
-        str1 = bp.Ks(paramca.field_content);
+        str1 = bq.RL(paramca.field_content);
         break;
       }
       str1 = str2;
@@ -106,42 +104,42 @@ public final class a
     Object localObject2 = new PString();
     Object localObject1 = new PString();
     boolean bool;
-    m localm;
+    n localn;
     if (a(paramca, (PString)localObject2, (PString)localObject1))
     {
       String str1 = ((PString)localObject2).value;
       String str2 = ((PString)localObject1).value;
       localObject2 = paramca.field_talker;
-      bool = ab.Iw((String)localObject2);
+      bool = ab.PO((String)localObject2);
       if (paramca.field_isSend != 1) {
         break label518;
       }
-      localObject1 = z.aTY();
-      localm = new m();
-      localm.n("20source_publishid", str1 + ",");
-      localm.n("21uxinfo", str2 + ",");
-      localm.n("22clienttime", Util.nowMilliSecond() + ",");
-      localm.n("23video_statu", d.a(paramd) + ",");
+      localObject1 = z.bcZ();
+      localn = new n();
+      localn.m("20source_publishid", str1 + ",");
+      localn.m("21uxinfo", str2 + ",");
+      localn.m("22clienttime", Util.nowMilliSecond() + ",");
+      localn.m("23video_statu", d.a(paramd) + ",");
       paramd = new StringBuilder();
       if (paramca.getType() != 62) {
         break label542;
       }
       i = 1;
       label214:
-      localm.n("24source_type", i + ",");
+      localn.m("24source_type", i + ",");
       paramd = new StringBuilder();
       if (!bool) {
         break label548;
       }
       i = 4;
       label251:
-      localm.n("25scene", i + ",");
-      localm.n("26action_type", c.a(paramc) + ",");
-      localm.n("27scene_chatname", (String)localObject2 + ",");
-      localm.n("28scene_username", (String)localObject1 + ",");
-      localm.n("29curr_publishid", ",");
-      localm.n("30curr_msgid", paramca.field_msgSvrId + ",");
-      localm.n("31curr_favid", "0,");
+      localn.m("25scene", i + ",");
+      localn.m("26action_type", c.a(paramc) + ",");
+      localn.m("27scene_chatname", (String)localObject2 + ",");
+      localn.m("28scene_username", (String)localObject1 + ",");
+      localn.m("29curr_publishid", ",");
+      localn.m("30curr_msgid", paramca.field_msgSvrId + ",");
+      localn.m("31curr_favid", "0,");
       paramc = new StringBuilder();
       if (!bool) {
         break label554;
@@ -151,17 +149,17 @@ public final class a
     label542:
     label548:
     label554:
-    for (int i = v.Ie((String)localObject2);; i = 0)
+    for (int i = v.Pu((String)localObject2);; i = 0)
     {
-      localm.n("32chatroom_membercount", i + ",");
-      localm.n("33chatroom_toMemberCount", paramInt + ",");
-      Log.i("MicroMsg.AdVideoStatistic", "report snsad_video_spread: " + localm.abW());
-      h.CyF.a(12991, new Object[] { localm });
+      localn.m("32chatroom_membercount", i + ",");
+      localn.m("33chatroom_toMemberCount", paramInt + ",");
+      Log.i("MicroMsg.AdVideoStatistic", "report snsad_video_spread: " + localn.agI());
+      com.tencent.mm.plugin.report.service.h.IzE.a(12991, new Object[] { localn });
       AppMethodBeat.o(34112);
       return;
       if (bool)
       {
-        localObject1 = bp.Ks(paramca.field_content);
+        localObject1 = bq.RL(paramca.field_content);
         break;
       }
       localObject1 = localObject2;
@@ -178,26 +176,26 @@ public final class a
     AppMethodBeat.i(34113);
     if (paramca.getType() == 62)
     {
-      paramca = u.QN(paramca.field_imgPath);
+      paramca = y.Yk(paramca.field_imgPath);
       if (paramca == null)
       {
         AppMethodBeat.o(34113);
         return false;
       }
-      paramca = paramca.jsw;
-      if ((paramca == null) || (Util.isNullOrNil(paramca.izf)))
+      paramca = paramca.mhZ;
+      if ((paramca == null) || (Util.isNullOrNil(paramca.lox)))
       {
         AppMethodBeat.o(34113);
         return false;
       }
-      paramPString1.value = paramca.izg;
-      paramPString2.value = paramca.izf;
+      paramPString1.value = paramca.loy;
+      paramPString2.value = paramca.lox;
       AppMethodBeat.o(34113);
       return true;
     }
     if (paramca.getType() == 49)
     {
-      boolean bool = ab.Eq(paramca.field_talker);
+      boolean bool = ab.Lj(paramca.field_talker);
       String str2 = paramca.field_content;
       String str1 = str2;
       if (bool)
@@ -207,18 +205,18 @@ public final class a
         {
           str1 = str2;
           if (paramca.field_isSend == 0) {
-            str1 = bp.Kt(paramca.field_content);
+            str1 = bq.RM(paramca.field_content);
           }
         }
       }
-      paramca = k.b.HD(str1);
-      if ((paramca == null) || (paramca.type != 4) || (Util.isNullOrNil(paramca.iyZ)))
+      paramca = k.b.OQ(str1);
+      if ((paramca == null) || (paramca.type != 4) || (Util.isNullOrNil(paramca.lor)))
       {
         AppMethodBeat.o(34113);
         return false;
       }
-      paramPString1.value = paramca.izg;
-      paramPString2.value = paramca.izf;
+      paramPString1.value = paramca.loy;
+      paramPString2.value = paramca.lox;
       AppMethodBeat.o(34113);
       return true;
     }
@@ -233,14 +231,14 @@ public final class a
     static
     {
       AppMethodBeat.i(34100);
-      PcI = new a("PlayIcon", 0, 1);
-      PcJ = new a("EnterFullScreen", 1, 2);
-      PcK = new a("EnterCompleteVideo", 2, 3);
-      PcL = new a("DetailInVideo", 3, 4);
-      PcM = new a("LeavelFullScreen", 4, 5);
-      PcN = new a("LeaveCompleteVideo", 5, 6);
-      PcO = new a("SightLoaded", 6, 7);
-      PcP = new a[] { PcI, PcJ, PcK, PcL, PcM, PcN, PcO };
+      WvT = new a("PlayIcon", 0, 1);
+      WvU = new a("EnterFullScreen", 1, 2);
+      WvV = new a("EnterCompleteVideo", 2, 3);
+      WvW = new a("DetailInVideo", 3, 4);
+      WvX = new a("LeavelFullScreen", 4, 5);
+      WvY = new a("LeaveCompleteVideo", 5, 6);
+      WvZ = new a("SightLoaded", 6, 7);
+      Wwa = new a[] { WvT, WvU, WvV, WvW, WvX, WvY, WvZ };
       AppMethodBeat.o(34100);
     }
     
@@ -257,12 +255,12 @@ public final class a
     static
     {
       AppMethodBeat.i(34103);
-      PcQ = new b("Sight", 0, 1);
-      PcR = new b("AdUrl", 1, 2);
-      PcS = new b("Chat", 2, 3);
-      PcT = new b("TalkChat", 3, 4);
-      PcU = new b("Fav", 4, 5);
-      PcV = new b[] { PcQ, PcR, PcS, PcT, PcU };
+      Wwb = new b("Sight", 0, 1);
+      Wwc = new b("AdUrl", 1, 2);
+      Wwd = new b("Chat", 2, 3);
+      Wwe = new b("TalkChat", 3, 4);
+      Wwf = new b("Fav", 4, 5);
+      Wwg = new b[] { Wwb, Wwc, Wwd, Wwe, Wwf };
       AppMethodBeat.o(34103);
     }
     
@@ -279,11 +277,11 @@ public final class a
     static
     {
       AppMethodBeat.i(34106);
-      PcW = new c("Fav", 0, 1);
-      PcX = new c("Chat", 1, 2);
-      PcY = new c("Chatroom", 2, 3);
-      PcZ = new c("Sns", 3, 4);
-      Pda = new c[] { PcW, PcX, PcY, PcZ };
+      Wwh = new c("Fav", 0, 1);
+      Wwi = new c("Chat", 1, 2);
+      Wwj = new c("Chatroom", 2, 3);
+      Wwk = new c("Sns", 3, 4);
+      Wwl = new c[] { Wwh, Wwi, Wwj, Wwk };
       AppMethodBeat.o(34106);
     }
     
@@ -300,10 +298,10 @@ public final class a
     static
     {
       AppMethodBeat.i(34109);
-      Pdb = new d("Samll", 0, 1);
-      Pdc = new d("Full", 1, 2);
-      Pdd = new d("Complete", 2, 3);
-      Pde = new d[] { Pdb, Pdc, Pdd };
+      Wwm = new d("Samll", 0, 1);
+      Wwn = new d("Full", 1, 2);
+      Wwo = new d("Complete", 2, 3);
+      Wwp = new d[] { Wwm, Wwn, Wwo };
       AppMethodBeat.o(34109);
     }
     
@@ -315,7 +313,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.a
  * JD-Core Version:    0.7.0.1
  */

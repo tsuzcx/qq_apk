@@ -9,35 +9,35 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface a
   extends IInterface
 {
-  public abstract SoterSignResult OC(long paramLong);
+  public abstract SoterSignResult WS(long paramLong);
   
-  public abstract SoterSessionResult ab(int paramInt, String paramString1, String paramString2);
+  public abstract int aAt(int paramInt);
   
-  public abstract int aqG(int paramInt);
+  public abstract SoterExportResult aAu(int paramInt);
   
-  public abstract SoterExportResult aqH(int paramInt);
+  public abstract boolean aAv(int paramInt);
   
-  public abstract boolean aqI(int paramInt);
+  public abstract int aAw(int paramInt);
   
-  public abstract int aqJ(int paramInt);
-  
-  public abstract int ds(int paramInt, String paramString);
+  public abstract SoterSessionResult af(int paramInt, String paramString1, String paramString2);
   
   public abstract int dt(int paramInt, String paramString);
   
-  public abstract SoterExportResult du(int paramInt, String paramString);
+  public abstract int du(int paramInt, String paramString);
   
-  public abstract boolean dv(int paramInt, String paramString);
+  public abstract SoterExportResult dv(int paramInt, String paramString);
+  
+  public abstract boolean dw(int paramInt, String paramString);
   
   public abstract int getVersion();
   
-  public abstract SoterDeviceResult hlB();
+  public abstract SoterDeviceResult ipa();
   
   public static abstract class a
     extends Binder
     implements a
   {
-    public static a Q(IBinder paramIBinder)
+    public static a U(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -63,13 +63,13 @@ public abstract interface a
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        paramInt1 = aqG(paramParcel1.readInt());
+        paramInt1 = aAt(paramParcel1.readInt());
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
       case 2: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        paramParcel1 = aqH(paramParcel1.readInt());
+        paramParcel1 = aAu(paramParcel1.readInt());
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -81,7 +81,7 @@ public abstract interface a
         return true;
       case 3: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        bool = aqI(paramParcel1.readInt());
+        bool = aAv(paramParcel1.readInt());
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool) {
@@ -91,19 +91,19 @@ public abstract interface a
         return true;
       case 4: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        paramInt1 = ds(paramParcel1.readInt(), paramParcel1.readString());
+        paramInt1 = dt(paramParcel1.readInt(), paramParcel1.readString());
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
       case 5: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        paramInt1 = dt(paramParcel1.readInt(), paramParcel1.readString());
+        paramInt1 = du(paramParcel1.readInt(), paramParcel1.readString());
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
       case 6: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        paramParcel1 = du(paramParcel1.readInt(), paramParcel1.readString());
+        paramParcel1 = dv(paramParcel1.readInt(), paramParcel1.readString());
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -115,13 +115,13 @@ public abstract interface a
         return true;
       case 7: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        paramInt1 = aqJ(paramParcel1.readInt());
+        paramInt1 = aAw(paramParcel1.readInt());
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
       case 8: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        bool = dv(paramParcel1.readInt(), paramParcel1.readString());
+        bool = dw(paramParcel1.readInt(), paramParcel1.readString());
         paramParcel2.writeNoException();
         paramInt1 = j;
         if (bool) {
@@ -131,7 +131,7 @@ public abstract interface a
         return true;
       case 9: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        paramParcel1 = ab(paramParcel1.readInt(), paramParcel1.readString(), paramParcel1.readString());
+        paramParcel1 = af(paramParcel1.readInt(), paramParcel1.readString(), paramParcel1.readString());
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -143,7 +143,7 @@ public abstract interface a
         return true;
       case 10: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        paramParcel1 = OC(paramParcel1.readLong());
+        paramParcel1 = WS(paramParcel1.readLong());
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -155,7 +155,7 @@ public abstract interface a
         return true;
       case 11: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        paramParcel1 = hlB();
+        paramParcel1 = ipa();
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -184,7 +184,7 @@ public abstract interface a
       }
       
       /* Error */
-      public final SoterSignResult OC(long paramLong)
+      public final SoterSignResult WS(long paramLong)
       {
         // Byte code:
         //   0: ldc 22
@@ -250,80 +250,7 @@ public abstract interface a
         //   15	72	94	finally
       }
       
-      /* Error */
-      public final SoterSessionResult ab(int paramInt, String paramString1, String paramString2)
-      {
-        // Byte code:
-        //   0: ldc 78
-        //   2: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   5: invokestatic 34	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   8: astore 4
-        //   10: invokestatic 34	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   13: astore 5
-        //   15: aload 4
-        //   17: ldc 36
-        //   19: invokevirtual 40	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-        //   22: aload 4
-        //   24: iload_1
-        //   25: invokevirtual 81	android/os/Parcel:writeInt	(I)V
-        //   28: aload 4
-        //   30: aload_2
-        //   31: invokevirtual 84	android/os/Parcel:writeString	(Ljava/lang/String;)V
-        //   34: aload 4
-        //   36: aload_3
-        //   37: invokevirtual 84	android/os/Parcel:writeString	(Ljava/lang/String;)V
-        //   40: aload_0
-        //   41: getfield 18	com/tencent/soter/soterserver/a$a$a:mRemote	Landroid/os/IBinder;
-        //   44: bipush 9
-        //   46: aload 4
-        //   48: aload 5
-        //   50: iconst_0
-        //   51: invokeinterface 50 5 0
-        //   56: pop
-        //   57: aload 5
-        //   59: invokevirtual 53	android/os/Parcel:readException	()V
-        //   62: aload 5
-        //   64: invokevirtual 57	android/os/Parcel:readInt	()I
-        //   67: ifeq +34 -> 101
-        //   70: getstatic 87	com/tencent/soter/soterserver/SoterSessionResult:CREATOR	Landroid/os/Parcelable$Creator;
-        //   73: aload 5
-        //   75: invokeinterface 69 2 0
-        //   80: checkcast 86	com/tencent/soter/soterserver/SoterSessionResult
-        //   83: astore_2
-        //   84: aload 5
-        //   86: invokevirtual 72	android/os/Parcel:recycle	()V
-        //   89: aload 4
-        //   91: invokevirtual 72	android/os/Parcel:recycle	()V
-        //   94: ldc 78
-        //   96: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   99: aload_2
-        //   100: areturn
-        //   101: aconst_null
-        //   102: astore_2
-        //   103: goto -19 -> 84
-        //   106: astore_2
-        //   107: aload 5
-        //   109: invokevirtual 72	android/os/Parcel:recycle	()V
-        //   112: aload 4
-        //   114: invokevirtual 72	android/os/Parcel:recycle	()V
-        //   117: ldc 78
-        //   119: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   122: aload_2
-        //   123: athrow
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	124	0	this	a
-        //   0	124	1	paramInt	int
-        //   0	124	2	paramString1	String
-        //   0	124	3	paramString2	String
-        //   8	105	4	localParcel1	Parcel
-        //   13	95	5	localParcel2	Parcel
-        // Exception table:
-        //   from	to	target	type
-        //   15	84	106	finally
-      }
-      
-      public final int aqG(int paramInt)
+      public final int aAt(int paramInt)
       {
         AppMethodBeat.i(88727);
         Parcel localParcel1 = Parcel.obtain();
@@ -346,10 +273,10 @@ public abstract interface a
       }
       
       /* Error */
-      public final SoterExportResult aqH(int paramInt)
+      public final SoterExportResult aAu(int paramInt)
       {
         // Byte code:
-        //   0: ldc 93
+        //   0: ldc 84
         //   2: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
         //   5: invokestatic 34	android/os/Parcel:obtain	()Landroid/os/Parcel;
         //   8: astore_3
@@ -374,16 +301,16 @@ public abstract interface a
         //   45: aload 4
         //   47: invokevirtual 57	android/os/Parcel:readInt	()I
         //   50: ifeq +33 -> 83
-        //   53: getstatic 96	com/tencent/soter/soterserver/SoterExportResult:CREATOR	Landroid/os/Parcelable$Creator;
+        //   53: getstatic 87	com/tencent/soter/soterserver/SoterExportResult:CREATOR	Landroid/os/Parcelable$Creator;
         //   56: aload 4
         //   58: invokeinterface 69 2 0
-        //   63: checkcast 95	com/tencent/soter/soterserver/SoterExportResult
+        //   63: checkcast 86	com/tencent/soter/soterserver/SoterExportResult
         //   66: astore_2
         //   67: aload 4
         //   69: invokevirtual 72	android/os/Parcel:recycle	()V
         //   72: aload_3
         //   73: invokevirtual 72	android/os/Parcel:recycle	()V
-        //   76: ldc 93
+        //   76: ldc 84
         //   78: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   81: aload_2
         //   82: areturn
@@ -395,7 +322,7 @@ public abstract interface a
         //   91: invokevirtual 72	android/os/Parcel:recycle	()V
         //   94: aload_3
         //   95: invokevirtual 72	android/os/Parcel:recycle	()V
-        //   98: ldc 93
+        //   98: ldc 84
         //   100: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   103: aload_2
         //   104: athrow
@@ -412,7 +339,7 @@ public abstract interface a
         //   14	67	88	finally
       }
       
-      public final boolean aqI(int paramInt)
+      public final boolean aAv(int paramInt)
       {
         boolean bool = false;
         AppMethodBeat.i(88729);
@@ -438,7 +365,7 @@ public abstract interface a
         }
       }
       
-      public final int aqJ(int paramInt)
+      public final int aAw(int paramInt)
       {
         AppMethodBeat.i(88733);
         Parcel localParcel1 = Parcel.obtain();
@@ -460,12 +387,85 @@ public abstract interface a
         }
       }
       
+      /* Error */
+      public final SoterSessionResult af(int paramInt, String paramString1, String paramString2)
+      {
+        // Byte code:
+        //   0: ldc 95
+        //   2: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+        //   5: invokestatic 34	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   8: astore 4
+        //   10: invokestatic 34	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   13: astore 5
+        //   15: aload 4
+        //   17: ldc 36
+        //   19: invokevirtual 40	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+        //   22: aload 4
+        //   24: iload_1
+        //   25: invokevirtual 81	android/os/Parcel:writeInt	(I)V
+        //   28: aload 4
+        //   30: aload_2
+        //   31: invokevirtual 98	android/os/Parcel:writeString	(Ljava/lang/String;)V
+        //   34: aload 4
+        //   36: aload_3
+        //   37: invokevirtual 98	android/os/Parcel:writeString	(Ljava/lang/String;)V
+        //   40: aload_0
+        //   41: getfield 18	com/tencent/soter/soterserver/a$a$a:mRemote	Landroid/os/IBinder;
+        //   44: bipush 9
+        //   46: aload 4
+        //   48: aload 5
+        //   50: iconst_0
+        //   51: invokeinterface 50 5 0
+        //   56: pop
+        //   57: aload 5
+        //   59: invokevirtual 53	android/os/Parcel:readException	()V
+        //   62: aload 5
+        //   64: invokevirtual 57	android/os/Parcel:readInt	()I
+        //   67: ifeq +34 -> 101
+        //   70: getstatic 101	com/tencent/soter/soterserver/SoterSessionResult:CREATOR	Landroid/os/Parcelable$Creator;
+        //   73: aload 5
+        //   75: invokeinterface 69 2 0
+        //   80: checkcast 100	com/tencent/soter/soterserver/SoterSessionResult
+        //   83: astore_2
+        //   84: aload 5
+        //   86: invokevirtual 72	android/os/Parcel:recycle	()V
+        //   89: aload 4
+        //   91: invokevirtual 72	android/os/Parcel:recycle	()V
+        //   94: ldc 95
+        //   96: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   99: aload_2
+        //   100: areturn
+        //   101: aconst_null
+        //   102: astore_2
+        //   103: goto -19 -> 84
+        //   106: astore_2
+        //   107: aload 5
+        //   109: invokevirtual 72	android/os/Parcel:recycle	()V
+        //   112: aload 4
+        //   114: invokevirtual 72	android/os/Parcel:recycle	()V
+        //   117: ldc 95
+        //   119: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   122: aload_2
+        //   123: athrow
+        // Local variable table:
+        //   start	length	slot	name	signature
+        //   0	124	0	this	a
+        //   0	124	1	paramInt	int
+        //   0	124	2	paramString1	String
+        //   0	124	3	paramString2	String
+        //   8	105	4	localParcel1	Parcel
+        //   13	95	5	localParcel2	Parcel
+        // Exception table:
+        //   from	to	target	type
+        //   15	84	106	finally
+      }
+      
       public final IBinder asBinder()
       {
         return this.mRemote;
       }
       
-      public final int ds(int paramInt, String paramString)
+      public final int dt(int paramInt, String paramString)
       {
         AppMethodBeat.i(88730);
         Parcel localParcel1 = Parcel.obtain();
@@ -488,7 +488,7 @@ public abstract interface a
         }
       }
       
-      public final int dt(int paramInt, String paramString)
+      public final int du(int paramInt, String paramString)
       {
         AppMethodBeat.i(88731);
         Parcel localParcel1 = Parcel.obtain();
@@ -512,7 +512,7 @@ public abstract interface a
       }
       
       /* Error */
-      public final SoterExportResult du(int paramInt, String paramString)
+      public final SoterExportResult dv(int paramInt, String paramString)
       {
         // Byte code:
         //   0: ldc 111
@@ -529,7 +529,7 @@ public abstract interface a
         //   22: invokevirtual 81	android/os/Parcel:writeInt	(I)V
         //   25: aload_3
         //   26: aload_2
-        //   27: invokevirtual 84	android/os/Parcel:writeString	(Ljava/lang/String;)V
+        //   27: invokevirtual 98	android/os/Parcel:writeString	(Ljava/lang/String;)V
         //   30: aload_0
         //   31: getfield 18	com/tencent/soter/soterserver/a$a$a:mRemote	Landroid/os/IBinder;
         //   34: bipush 6
@@ -543,10 +543,10 @@ public abstract interface a
         //   51: aload 4
         //   53: invokevirtual 57	android/os/Parcel:readInt	()I
         //   56: ifeq +33 -> 89
-        //   59: getstatic 96	com/tencent/soter/soterserver/SoterExportResult:CREATOR	Landroid/os/Parcelable$Creator;
+        //   59: getstatic 87	com/tencent/soter/soterserver/SoterExportResult:CREATOR	Landroid/os/Parcelable$Creator;
         //   62: aload 4
         //   64: invokeinterface 69 2 0
-        //   69: checkcast 95	com/tencent/soter/soterserver/SoterExportResult
+        //   69: checkcast 86	com/tencent/soter/soterserver/SoterExportResult
         //   72: astore_2
         //   73: aload 4
         //   75: invokevirtual 72	android/os/Parcel:recycle	()V
@@ -580,7 +580,7 @@ public abstract interface a
         //   14	73	94	finally
       }
       
-      public final boolean dv(int paramInt, String paramString)
+      public final boolean dw(int paramInt, String paramString)
       {
         boolean bool = false;
         AppMethodBeat.i(88734);
@@ -629,7 +629,7 @@ public abstract interface a
       }
       
       /* Error */
-      public final SoterDeviceResult hlB()
+      public final SoterDeviceResult ipa()
       {
         // Byte code:
         //   0: ldc 119
@@ -695,7 +695,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.soter.soterserver.a
  * JD-Core Version:    0.7.0.1
  */

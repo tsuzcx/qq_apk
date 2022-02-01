@@ -1,91 +1,82 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class ezj
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public com.tencent.mm.bw.b KKz;
-  public long KMm;
-  public int NvM;
+  public LinkedList<FinderObject> SGi;
+  
+  public ezj()
+  {
+    AppMethodBeat.i(196983);
+    this.SGi = new LinkedList();
+    AppMethodBeat.o(196983);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32552);
+    AppMethodBeat.i(196997);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.KKz == null)
-      {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: VoiceData");
-        AppMethodBeat.o(32552);
-        throw paramVarArgs;
-      }
-      paramVarArgs.bb(1, this.KMm);
-      if (this.KKz != null) {
-        paramVarArgs.c(2, this.KKz);
-      }
-      paramVarArgs.aM(3, this.NvM);
-      AppMethodBeat.o(32552);
+      ((g.a.a.c.a)paramVarArgs[0]).e(1, 8, this.SGi);
+      AppMethodBeat.o(196997);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.r(1, this.KMm) + 0;
-      paramInt = i;
-      if (this.KKz != null) {
-        paramInt = i + g.a.a.b.b.a.b(2, this.KKz);
-      }
-      i = g.a.a.b.b.a.bu(3, this.NvM);
-      AppMethodBeat.o(32552);
-      return paramInt + i;
+      paramInt = g.a.a.a.c(1, 8, this.SGi);
+      AppMethodBeat.o(196997);
+      return paramInt + 0;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.SGi.clear();
+      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      if (this.KKz == null)
-      {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: VoiceData");
-        AppMethodBeat.o(32552);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(32552);
+      AppMethodBeat.o(196997);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject = (g.a.a.a.a)paramVarArgs[0];
       ezj localezj = (ezj)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(32552);
+        AppMethodBeat.o(196997);
         return -1;
-      case 1: 
-        localezj.KMm = locala.UbS.zl();
-        AppMethodBeat.o(32552);
-        return 0;
-      case 2: 
-        localezj.KKz = locala.UbS.hPo();
-        AppMethodBeat.o(32552);
-        return 0;
       }
-      localezj.NvM = locala.UbS.zi();
-      AppMethodBeat.o(32552);
+      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+      int i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject = (byte[])paramVarArgs.get(paramInt);
+        FinderObject localFinderObject = new FinderObject();
+        if ((localObject != null) && (localObject.length > 0)) {
+          localFinderObject.parseFrom((byte[])localObject);
+        }
+        localezj.SGi.add(localFinderObject);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(196997);
       return 0;
     }
-    AppMethodBeat.o(32552);
+    AppMethodBeat.o(196997);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ezj
  * JD-Core Version:    0.7.0.1
  */

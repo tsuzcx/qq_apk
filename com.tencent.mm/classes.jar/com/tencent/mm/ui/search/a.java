@@ -9,23 +9,28 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.d;
+import com.tencent.mm.ah.a.e;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 public final class a
   extends LinearLayout
 {
-  private FTSEditTextView Awv;
-  private WeImageView OxK;
-  private View QnU;
-  private LinearLayout QnV;
-  private LinearLayout QnW;
-  private View QnX;
-  private boolean QnY;
-  private TextView QnZ;
-  private b Qoa;
-  private a Qob;
-  private View uvi;
+  private FTSEditTextView Gng;
+  private View XLZ;
+  private LinearLayout XMa;
+  private LinearLayout XMb;
+  private View XMc;
+  private boolean XMd;
+  private TextView XMe;
+  private b XMf;
+  private a XMg;
+  private View xZQ;
+  private boolean zEV;
+  private WeImageView zoq;
   
   public a(Context paramContext)
   {
@@ -35,135 +40,163 @@ public final class a
   private a(Context paramContext, byte paramByte)
   {
     super(paramContext);
-    AppMethodBeat.i(205358);
-    this.QnY = false;
-    ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131494737, this, true);
-    this.QnV = ((LinearLayout)findViewById(2131307371));
-    this.QnW = ((LinearLayout)findViewById(2131302355));
-    this.uvi = findViewById(2131297963);
-    this.uvi.setOnClickListener(new View.OnClickListener()
+    AppMethodBeat.i(189731);
+    this.zEV = false;
+    this.XMd = false;
+    init();
+    AppMethodBeat.o(189731);
+  }
+  
+  public a(Context paramContext, boolean paramBoolean)
+  {
+    super(paramContext);
+    AppMethodBeat.i(164206);
+    this.zEV = false;
+    this.XMd = false;
+    this.zEV = paramBoolean;
+    init();
+    AppMethodBeat.o(164206);
+  }
+  
+  private void init()
+  {
+    AppMethodBeat.i(189741);
+    LayoutInflater localLayoutInflater = (LayoutInflater)getContext().getSystemService("layout_inflater");
+    if (this.zEV) {}
+    for (int i = a.h.fts_actionbar_searchview_night_mode;; i = a.h.fts_actionbar_searchview)
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(164204);
-        b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/search/FTSSearchView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        if (a.a(a.this) != null) {
-          a.a(a.this).onClickBackBtn(paramAnonymousView);
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/search/FTSSearchView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(164204);
+      localLayoutInflater.inflate(i, this, true);
+      this.XMa = ((LinearLayout)findViewById(a.g.search_container));
+      if (this.zEV) {
+        this.XMa.setBackgroundColor(getResources().getColor(a.d.Dark_0));
       }
-    });
-    this.OxK = ((WeImageView)findViewById(2131307390));
-    this.OxK.setVisibility(0);
-    this.Awv = ((FTSEditTextView)findViewById(2131301807));
-    if (this.QnY)
-    {
-      this.QnX = findViewById(2131301808);
-      this.QnX.setVisibility(0);
-      this.QnX.setOnClickListener(new View.OnClickListener()
+      this.XMb = ((LinearLayout)findViewById(a.g.hot_search_container));
+      this.xZQ = findViewById(a.g.cancel_btn);
+      this.xZQ.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(164205);
+          AppMethodBeat.i(164204);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/search/FTSSearchView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          if (a.b(a.this) != null) {
-            a.b(a.this);
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/search/FTSSearchView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          if (a.a(a.this) != null) {
+            a.a(a.this).onClickBackBtn(paramAnonymousView);
           }
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/search/FTSSearchView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(164205);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/search/FTSSearchView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(164204);
         }
       });
+      this.zoq = ((WeImageView)findViewById(a.g.search_icon));
+      this.zoq.setVisibility(0);
+      this.Gng = ((FTSEditTextView)findViewById(a.g.fts_edittext));
+      if (this.XMd)
+      {
+        this.XMc = findViewById(a.g.fts_image_search_btn);
+        this.XMc.setVisibility(0);
+        this.XMc.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(164205);
+            b localb = new b();
+            localb.bn(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/search/FTSSearchView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+            if (a.b(a.this) != null) {
+              a.b(a.this);
+            }
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/search/FTSSearchView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(164205);
+          }
+        });
+      }
+      AppMethodBeat.o(189741);
+      return;
     }
-    AppMethodBeat.o(205358);
   }
   
-  public final void gXh()
+  public final void axr(int paramInt)
   {
-    AppMethodBeat.i(205359);
-    this.QnU = findViewById(2131297163);
-    this.QnU.setOnClickListener(new View.OnClickListener()
+    AppMethodBeat.i(189748);
+    this.XLZ = findViewById(a.g.back_btn);
+    this.XLZ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(205356);
+        AppMethodBeat.i(204971);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/search/FTSSearchView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/search/FTSSearchView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (a.a(a.this) != null) {
           a.a(a.this).onClickBackBtn(paramAnonymousView);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/search/FTSSearchView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(205356);
+        AppMethodBeat.o(204971);
       }
     });
-    this.QnU.setVisibility(0);
-    this.uvi.setVisibility(8);
-    int i = getResources().getColor(2131099689);
-    this.QnV.setBackgroundColor(i);
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.Awv.getLayoutParams();
+    this.XLZ.setVisibility(0);
+    this.xZQ.setVisibility(8);
+    paramInt = getResources().getColor(paramInt);
+    this.XMa.setBackgroundColor(paramInt);
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.Gng.getLayoutParams();
     localLayoutParams.width = -2;
-    localLayoutParams.setMarginEnd((int)getResources().getDimension(2131165296));
-    this.Awv.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(205359);
+    localLayoutParams.setMarginEnd((int)getResources().getDimension(a.e.Edge_2A));
+    this.Gng.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(189748);
   }
   
   public final FTSEditTextView getFtsEditText()
   {
-    return this.Awv;
+    return this.Gng;
   }
   
   public final LinearLayout getSearchContainer()
   {
-    return this.QnV;
+    return this.XMa;
   }
   
   public final WeImageView getSearchIcon()
   {
-    return this.OxK;
+    return this.zoq;
   }
   
-  public final void j(View.OnClickListener paramOnClickListener)
+  public final void l(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(205360);
-    this.QnV.setVisibility(8);
-    this.QnW.setVisibility(0);
-    this.QnZ = ((TextView)findViewById(2131302356));
-    this.QnU = findViewById(2131297163);
-    this.QnU.setOnClickListener(new View.OnClickListener()
+    AppMethodBeat.i(189752);
+    this.XMa.setVisibility(8);
+    this.XMb.setVisibility(0);
+    this.XMe = ((TextView)findViewById(a.g.hot_search_hint_text));
+    this.XLZ = findViewById(a.g.back_btn);
+    this.XLZ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(205357);
+        AppMethodBeat.i(189861);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/search/FTSSearchView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/search/FTSSearchView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (a.a(a.this) != null) {
           a.a(a.this).onClickBackBtn(paramAnonymousView);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/search/FTSSearchView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(205357);
+        AppMethodBeat.o(189861);
       }
     });
-    this.QnW.setClickable(true);
-    this.QnW.setOnClickListener(paramOnClickListener);
-    this.QnU.setVisibility(0);
-    this.uvi.setVisibility(8);
-    AppMethodBeat.o(205360);
+    this.XMb.setClickable(true);
+    this.XMb.setOnClickListener(paramOnClickListener);
+    this.XLZ.setVisibility(0);
+    this.xZQ.setVisibility(8);
+    AppMethodBeat.o(189752);
   }
   
   public final void setImageSearchListener(a parama)
   {
-    this.Qob = parama;
+    this.XMg = parama;
   }
   
   public final void setSearchViewListener(b paramb)
   {
-    this.Qoa = paramb;
+    this.XMf = paramb;
   }
   
   public static abstract interface a {}
@@ -175,7 +208,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.search.a
  * JD-Core Version:    0.7.0.1
  */

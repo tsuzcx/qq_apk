@@ -1,178 +1,39 @@
 package com.tencent.mm.plugin.appbrand.jsapi.live;
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.plugin.appbrand.jsapi.i.b;
-import com.tencent.mm.plugin.appbrand.jsapi.i.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i.d;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.page.bu;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.rtmp.TXLiveBase;
-import com.tencent.rtmp.WXLivePlayer;
+import com.tencent.rtmp.ITXLivePlayListener;
+import com.tencent.rtmp.TXLivePlayer.ITXAudioVolumeEvaluationListener;
+import com.tencent.rtmp.TXLivePlayer.ITXSnapshotListener;
 import com.tencent.rtmp.ui.TXCloudVideoView;
-import java.util.HashMap;
-import java.util.Map;
+import kotlin.l;
 import org.json.JSONObject;
 
-public final class a
-  extends com.tencent.mm.plugin.appbrand.jsapi.base.b
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/live/ITXLivePlayerJSAdapter;", "", "enterBackground", "Lcom/tencent/mm/plugin/appbrand/jsapi/live/TXJSAdapterError;", "type", "", "enterForeground", "initLivePlayer", "videoView", "Lcom/tencent/rtmp/ui/TXCloudVideoView;", "params", "Landroid/os/Bundle;", "operateLivePlayer", "operateName", "", "param", "Lorg/json/JSONObject;", "setAudioVolumeListener", "", "listener", "Lcom/tencent/rtmp/TXLivePlayer$ITXAudioVolumeEvaluationListener;", "setPlayListener", "Lcom/tencent/rtmp/ITXLivePlayListener;", "setSnapshotListener", "Lcom/tencent/rtmp/TXLivePlayer$ITXSnapshotListener;", "takePhoto", "needCompress", "", "uninitLivePlayer", "updateLivePlayer", "luggage-qcloud-live-ext_release"})
+public abstract interface a
 {
-  private static final int CTRL_INDEX = 364;
-  public static final String NAME = "insertLivePlayer";
+  public abstract k Ty();
   
-  public final int H(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(145857);
-    int i = paramJSONObject.getInt("livePlayerId");
-    AppMethodBeat.o(145857);
-    return i;
-  }
+  public abstract k Tz();
   
-  public final View a(h paramh, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(145858);
-    paramJSONObject = new AppBrandLivePlayerView(paramh.getContext());
-    paramh = new CoverViewContainer(paramh.getContext(), paramJSONObject);
-    paramh.setBackgroundColor(-16777216);
-    AppMethodBeat.o(145858);
-    return paramh;
-  }
+  public abstract k a(TXCloudVideoView paramTXCloudVideoView, Bundle paramBundle);
   
-  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
-  {
-    AppMethodBeat.i(145856);
-    j.PP();
-    if (paramJSONObject.optInt("mode", 0) == 2)
-    {
-      if (!(paramf.getContext() instanceof Activity))
-      {
-        Log.w("MicroMsg.JsApiInsertLivePlayer", "invokeAfterRequestPermission pageContext not activity");
-        paramf.i(paramInt, h("fail", null));
-        AppMethodBeat.o(145856);
-        return;
-      }
-      Activity localActivity = (Activity)paramf.getContext();
-      try
-      {
-        int i = android.support.v4.content.b.checkSelfPermission(localActivity, "android.permission.RECORD_AUDIO");
-        if (i == 0)
-        {
-          super.a(paramf, paramJSONObject, paramInt);
-          AppMethodBeat.o(145856);
-          return;
-        }
-      }
-      catch (Exception paramJSONObject)
-      {
-        Log.e("MicroMsg.JsApiInsertLivePlayer", "check mpermission exception:%s.", new Object[] { paramJSONObject });
-        paramf.i(paramInt, h("fail", null));
-        AppMethodBeat.o(145856);
-        return;
-      }
-      paramJSONObject = new HashMap();
-      paramJSONObject.put("errCode", Integer.valueOf(10001));
-      paramf.i(paramInt, n("fail:system permission denied", paramJSONObject));
-      AppMethodBeat.o(145856);
-      return;
-    }
-    super.a(paramf, paramJSONObject, paramInt);
-    AppMethodBeat.o(145856);
-  }
+  public abstract k d(String paramString, JSONObject paramJSONObject);
   
-  public final void a(final h paramh, int paramInt, View paramView, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(145859);
-    Log.i("MicroMsg.JsApiInsertLivePlayer", "onInsertView livePlayerId=%d", new Object[] { Integer.valueOf(paramInt) });
-    if (!(paramView instanceof CoverViewContainer))
-    {
-      Log.w("MicroMsg.JsApiInsertLivePlayer", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(145859);
-      return;
-    }
-    TXLiveBase.setAppVersion(String.format("weixin_%s", new Object[] { paramh.getAppId() }));
-    final AppBrandLivePlayerView localAppBrandLivePlayerView = (AppBrandLivePlayerView)((CoverViewContainer)paramView).aB(AppBrandLivePlayerView.class);
-    Object localObject = new a.1(this, localAppBrandLivePlayerView);
-    final i.d local2 = new i.d()
-    {
-      public final void onForeground()
-      {
-        AppMethodBeat.i(145845);
-        Object localObject = localAppBrandLivePlayerView.lXC;
-        if (((l)localObject).lYb) {}
-        for (localObject = ((l)localObject).k("resume", null);; localObject = new i())
-        {
-          Log.i("MicroMsg.AppBrandLivePlayerView", "onForeground code:%d info:%s", new Object[] { Integer.valueOf(((i)localObject).errorCode), ((i)localObject).errorInfo });
-          AppMethodBeat.o(145845);
-          return;
-        }
-      }
-    };
-    final a.3 local3 = new a.3(this, paramh, localAppBrandLivePlayerView);
-    i.c local4 = new i.c()
-    {
-      public final void onDestroy()
-      {
-        AppMethodBeat.i(145847);
-        localAppBrandLivePlayerView.onExit();
-        paramh.b(this);
-        AppMethodBeat.o(145847);
-      }
-    };
-    paramh.a(local2);
-    paramh.a(local3);
-    paramh.a(local4);
-    localAppBrandLivePlayerView.setFullScreenDelegate(new a.5(this, paramh, paramJSONObject.optBoolean("independent", false), paramInt, (bu)localObject));
-    localAppBrandLivePlayerView.setExitListener(new AppBrandLivePlayerView.b()
-    {
-      public final void bGM()
-      {
-        AppMethodBeat.i(145851);
-        paramh.b(local3);
-        paramh.b(local2);
-        AppMethodBeat.o(145851);
-      }
-    });
-    localAppBrandLivePlayerView.setNeedEvent(paramJSONObject.optBoolean("needEvent", false));
-    localAppBrandLivePlayerView.setOnFullScreenChangeListener(new a.7(this, paramInt, paramh));
-    paramJSONObject = k.Y(paramJSONObject);
-    localObject = localAppBrandLivePlayerView.lXC;
-    l.l("initLivePlayer", paramJSONObject);
-    ((l)localObject).mVideoView = localAppBrandLivePlayerView;
-    ((l)localObject).mVideoView.disableLog(false);
-    ((l)localObject).cFu.setPlayerView(localAppBrandLivePlayerView);
-    ((l)localObject).cEW = paramJSONObject.getString("playUrl", ((l)localObject).cEW);
-    ((l)localObject).cFx = ((l)localObject).n(paramJSONObject);
-    ((l)localObject).a(paramJSONObject, true);
-    ((l)localObject).cEZ = paramJSONObject.getBoolean("autoplay", ((l)localObject).cEZ);
-    if ((((l)localObject).cEZ) && (((l)localObject).cEW != null) && (!((l)localObject).cEW.isEmpty()))
-    {
-      Log.i("TXLivePlayerJSAdapter", "initLivePlayer: startPlay");
-      ((l)localObject).cFu.startPlay(((l)localObject).cEW, ((l)localObject).cFx);
-    }
-    ((l)localObject).mInited = true;
-    localObject = new i();
-    Log.i("MicroMsg.AppBrandLivePlayerView", "onInsert code:%d info:%s", new Object[] { Integer.valueOf(((i)localObject).errorCode), ((i)localObject).errorInfo });
-    localAppBrandLivePlayerView.setPlayEventListener(new a.8(this, paramInt, paramh));
-    localAppBrandLivePlayerView.setAudioVolumeEventListener(new a.9(this, paramInt, paramh));
-    if (paramJSONObject.getInt("mode", 0) == 5) {}
-    for (paramh = paramView.getContext().getString(2131755324);; paramh = paramView.getContext().getString(2131755323))
-    {
-      localAppBrandLivePlayerView.setContentDescription(paramh);
-      AppMethodBeat.o(145859);
-      return;
-    }
-  }
+  public abstract k iY(int paramInt);
+  
+  public abstract k q(Bundle paramBundle);
+  
+  public abstract void setAudioVolumeListener(TXLivePlayer.ITXAudioVolumeEvaluationListener paramITXAudioVolumeEvaluationListener);
+  
+  public abstract void setPlayListener(ITXLivePlayListener paramITXLivePlayListener);
+  
+  public abstract void setSnapshotListener(TXLivePlayer.ITXSnapshotListener paramITXSnapshotListener);
+  
+  public abstract void takePhoto(boolean paramBoolean, TXLivePlayer.ITXSnapshotListener paramITXSnapshotListener);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.a
  * JD-Core Version:    0.7.0.1
  */

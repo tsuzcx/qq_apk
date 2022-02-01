@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.wallet_core.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.czx;
-import com.tencent.mm.protocal.protobuf.czy;
+import com.tencent.mm.protocal.protobuf.djl;
+import com.tencent.mm.protocal.protobuf.djm;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
@@ -25,21 +25,21 @@ public final class a
   {
     AppMethodBeat.i(69967);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new czx();
-    ((d.a)localObject).iLO = new czy();
+    ((d.a)localObject).lBU = new djl();
+    ((d.a)localObject).lBV = new djm();
     ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/payibgcheckjsapisign";
     ((d.a)localObject).funcId = 1767;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (czx)this.rr.iLK.iLR;
-    ((czx)localObject).jfi = paramString1;
-    ((czx)localObject).Lkq = paramString4;
-    ((czx)localObject).Lkp = paramString2;
-    ((czx)localObject).Lkr = paramString5;
-    ((czx)localObject).Lks = paramString6;
-    ((czx)localObject).KPJ = paramString3;
-    ((czx)localObject).Ljk = paramString7;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (djl)d.b.b(this.rr.lBR);
+    ((djl)localObject).lVG = paramString1;
+    ((djl)localObject).Slz = paramString4;
+    ((djl)localObject).Sly = paramString2;
+    ((djl)localObject).SlA = paramString5;
+    ((djl)localObject).SlB = paramString6;
+    ((djl)localObject).RQH = paramString3;
+    ((djl)localObject).SkB = paramString7;
     AppMethodBeat.o(69967);
   }
   
@@ -61,7 +61,7 @@ public final class a
   {
     AppMethodBeat.i(69968);
     Log.i("MicroMsg.NetSceneIbgCheckJsapi", "check jsapi: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramArrayOfByte = (czy)((d)params).iLL.iLR;
+    paramArrayOfByte = (djm)d.c.b(((d)params).lBS);
     paramInt1 = paramInt3;
     params = paramString;
     if (paramInt3 == 0)
@@ -70,8 +70,8 @@ public final class a
       params = paramString;
       if (paramInt2 == 0)
       {
-        paramInt1 = paramArrayOfByte.rBL;
-        params = paramArrayOfByte.rBM;
+        paramInt1 = paramArrayOfByte.vht;
+        params = paramArrayOfByte.vhu;
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt1, params, this);

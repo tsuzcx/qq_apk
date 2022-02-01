@@ -11,11 +11,11 @@ import android.media.MediaMuxer;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.z;
+import com.tencent.mm.compatible.deviceinfo.aa;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.plugin.voip.b.c;
-import com.tencent.mm.protocal.protobuf.caq;
+import com.tencent.mm.plugin.voip.c.c;
+import com.tencent.mm.protocal.protobuf.cir;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.BufferedOutputStream;
 import java.nio.ByteBuffer;
@@ -27,7 +27,7 @@ import java.util.LinkedList;
 public final class e
 {
   public static int EMethodGetQosPara;
-  public static int GTO;
+  public static int NKa;
   public static short[] SizeFormat2WH;
   public static int VFMT_HEVC_HW;
   public static int VFMT_i264;
@@ -36,16 +36,19 @@ public final class e
   private static int streamqueuesize;
   public static final String[] supportedH264HwCodecPrefixes;
   public String ENCODING;
-  l GSZ;
-  private byte[] GTK;
-  private byte[] GTL;
-  private ByteBuffer GTM;
-  a GTN;
+  public LinkedList<cir> Frb;
+  public LinkedList<Integer> Frc;
+  public int Frd;
+  private byte[] NJW;
+  private byte[] NJX;
+  private ByteBuffer NJY;
+  a NJZ;
+  l NJk;
   private int TIMEOUT_USEC;
   public byte[] configbyte;
   public int encLen;
-  public long igB;
   public boolean isRuning;
+  public long kVp;
   public long mGeneratedIdx;
   int mPrevResolution;
   int mProfileCfg;
@@ -57,33 +60,30 @@ public final class e
   int m_width;
   protected MediaFormat mediaFormat;
   private BufferedOutputStream outputStream;
-  public int qsb;
-  private z qsc;
-  private byte[] qsd;
-  private MediaMuxer qse;
-  private int qsf;
-  private boolean qsg;
-  private BufferedOutputStream qsh;
-  g qsi;
-  public int qsj;
-  public int qsk;
-  public int qsl;
-  public int qsm;
-  public LinkedList<caq> zLK;
-  public LinkedList<Integer> zLL;
-  public int zLM;
+  public int tQK;
+  private aa tQL;
+  private byte[] tQM;
+  private MediaMuxer tQN;
+  private int tQO;
+  private boolean tQP;
+  private BufferedOutputStream tQQ;
+  g tQR;
+  public int tQS;
+  public int tQT;
+  public int tQU;
+  public int tQV;
   
   static
   {
     AppMethodBeat.i(177015);
     streamqueuesize = 100;
     frameID = 0;
-    path = b.aKJ();
+    path = b.aSL();
     VFMT_i264 = 18;
     VFMT_HEVC_HW = 19;
     SizeFormat2WH = new short[] { 128, 96, 240, 160, 320, 240, 480, 360, 640, 480 };
     supportedH264HwCodecPrefixes = new String[] { "OMX.qcom.", "OMX.Exynos.", "OMX.hisi", "OMX.MTK", "OMX.sprd" };
-    GTO = 60;
+    NKa = 60;
     EMethodGetQosPara = 25;
     AppMethodBeat.o(177015);
   }
@@ -91,26 +91,26 @@ public final class e
   public e(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString)
   {
     AppMethodBeat.i(114837);
-    this.qsb = 0;
+    this.tQK = 0;
     this.ENCODING = "hevc";
     this.TIMEOUT_USEC = 12000;
     this.mProfileCfg = 1;
-    this.GTK = null;
-    this.GTL = null;
-    this.qsd = null;
-    this.GTM = null;
+    this.NJW = null;
+    this.NJX = null;
+    this.tQM = null;
+    this.NJY = null;
     this.configbyte = null;
     this.mGeneratedIdx = 0L;
-    this.igB = 0L;
-    this.GSZ = null;
-    this.zLK = new LinkedList();
-    this.zLL = new LinkedList();
-    this.qsi = null;
-    this.qsj = 0;
-    this.qsk = 8;
-    this.qsl = 0;
-    this.qsm = 0;
-    this.zLM = 0;
+    this.kVp = 0L;
+    this.NJk = null;
+    this.Frb = new LinkedList();
+    this.Frc = new LinkedList();
+    this.tQR = null;
+    this.tQS = 0;
+    this.tQT = 8;
+    this.tQU = 0;
+    this.tQV = 0;
+    this.Frd = 0;
     this.isRuning = false;
     this.encLen = 0;
     this.mPrevResolution = 8;
@@ -124,57 +124,55 @@ public final class e
     this.mProfileCfg = paramInt5;
     frameID = 0;
     this.mGeneratedIdx = 0L;
-    this.GTN = new a();
-    this.qsc = null;
-    this.qsk = 8;
-    this.qsj = 0;
-    this.qsl = 0;
-    this.qsb = 0;
-    paramString = new caq();
-    paramString.MfO = 1L;
-    paramString.MfP = 24;
-    paramString.MfQ = 1L;
-    paramString.MfR = 24;
-    paramString.MfS = 0L;
-    paramString.MfT = 0;
-    this.zLK.add(paramString);
-    this.zLL.add(Integer.valueOf(0));
-    this.qsd = null;
-    this.GTM = null;
-    this.qsm = 0;
-    this.zLM = 0;
-    this.igB = 0L;
+    this.NJZ = new a();
+    this.tQL = null;
+    this.tQT = 8;
+    this.tQS = 0;
+    this.tQU = 0;
+    this.tQK = 0;
+    paramString = new cir();
+    paramString.TpA = 1L;
+    paramString.TpB = 24;
+    paramString.TpC = 1L;
+    paramString.TpD = 24;
+    paramString.TpE = 0L;
+    paramString.TpF = 0;
+    this.Frb.add(paramString);
+    this.Frc.add(Integer.valueOf(0));
+    this.tQM = null;
+    this.NJY = null;
+    this.tQV = 0;
+    this.Frd = 0;
+    this.kVp = 0L;
     AppMethodBeat.o(114837);
   }
   
-  private int I(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private int K(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(114844);
-    if ((paramArrayOfByte != null) && (this.GSZ.GVV != null))
+    if ((paramArrayOfByte != null) && (this.NJk.NMi != null))
     {
       int i = VFMT_i264;
       if (this.ENCODING.equalsIgnoreCase("video/hevc")) {
         i = VFMT_HEVC_HW;
       }
-      i = this.GSZ.GVV.videoEncodeToSend(paramArrayOfByte, paramInt2, this.m_width, paramInt1, i);
-      if (i >= 0)
-      {
-        this.zLM = 0;
-        Log.d("MeidaCodec[HWEnc]", "steve: send successfully! frameLen = " + paramInt2 + ", type = " + paramInt1 + ", pkt cnt = " + i);
-        paramInt1 = i;
+      paramInt1 = this.NJk.NMi.videoEncodeToSend(paramArrayOfByte, paramInt2, this.m_width, paramInt1, i);
+      if (paramInt1 >= 0) {
+        this.Frd = 0;
       }
     }
     for (;;)
     {
       AppMethodBeat.o(114844);
       return paramInt1;
-      paramInt1 = this.zLM;
-      this.zLM = (paramInt1 + 1);
+      MakeIFrame();
+      paramInt1 = this.Frd;
+      this.Frd = (paramInt1 + 1);
       if (paramInt1 > 5)
       {
-        this.qsb = 2008;
-        paramInt1 = -this.qsb;
-        Log.e("MeidaCodec[HWEnc]", "steve: hw send error for 5 times!! send ret = ".concat(String.valueOf(paramInt1)));
+        this.tQK = 2008;
+        paramInt1 = -this.tQK;
+        Log.e("MicroMsg.AvcEncoder", "steve: hw send error for 5 times!! send ret = ".concat(String.valueOf(paramInt1)));
       }
       else
       {
@@ -184,25 +182,48 @@ public final class e
   }
   
   @SuppressLint({"NewApi"})
+  private void MakeIFrame()
+  {
+    AppMethodBeat.i(233711);
+    if (this.tQL != null)
+    {
+      Log.v("MicroMsg.AvcEncoder", "steve: Sync frame request soon!");
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("request-sync", 0);
+      try
+      {
+        this.tQL.setParameters(localBundle);
+        AppMethodBeat.o(233711);
+        return;
+      }
+      catch (Exception localException)
+      {
+        Log.e("MicroMsg.AvcEncoder", "make I failed, just ignored, exception: ".concat(String.valueOf(localException)));
+      }
+    }
+    AppMethodBeat.o(233711);
+  }
+  
+  @SuppressLint({"NewApi"})
   private boolean SetBitRate(int paramInt)
   {
     AppMethodBeat.i(114843);
     try
     {
-      if (this.qsc != null)
+      if (this.tQL != null)
       {
         Bundle localBundle = new Bundle();
         paramInt *= 1000;
-        Log.v("MeidaCodec[HWEnc]", "steve: setRates: ".concat(String.valueOf(paramInt)));
+        Log.v("MicroMsg.AvcEncoder", "steve: setRates: ".concat(String.valueOf(paramInt)));
         localBundle.putInt("video-bitrate", paramInt);
-        this.qsc.setParameters(localBundle);
+        this.tQL.setParameters(localBundle);
         AppMethodBeat.o(114843);
         return true;
       }
     }
     catch (Exception localException)
     {
-      Log.e("MeidaCodec[HWEnc]", "steve: setRates failed:".concat(String.valueOf(localException)));
+      Log.e("MicroMsg.AvcEncoder", "steve: setRates failed:".concat(String.valueOf(localException)));
       AppMethodBeat.o(114843);
     }
     return false;
@@ -214,17 +235,17 @@ public final class e
     AppMethodBeat.i(114838);
     try
     {
-      if (this.qsc != null)
+      if (this.tQL != null)
       {
-        this.qsc.stop();
-        this.qsc.release();
+        this.tQL.stop();
+        this.tQL.release();
       }
       AppMethodBeat.o(114838);
       return;
     }
     catch (Exception localException)
     {
-      Log.e("MeidaCodec[HWEnc]", " error:" + localException.toString());
+      Log.printErrStackTrace("MicroMsg.AvcEncoder", localException, "StopEncoder error:" + localException.toString(), new Object[0]);
       AppMethodBeat.o(114838);
     }
   }
@@ -245,7 +266,7 @@ public final class e
         if (paramMediaCodecInfo.startsWith(arrayOfString[i]))
         {
           bool1 = true;
-          Log.d("MeidaCodec[HWEnc]", "steve : known H.264 HW encoder :".concat(String.valueOf(paramMediaCodecInfo)));
+          Log.d("MicroMsg.AvcEncoder", "steve : known H.264 HW encoder :".concat(String.valueOf(paramMediaCodecInfo)));
         }
       }
       else
@@ -267,7 +288,7 @@ public final class e
     if (Build.VERSION.SDK_INT >= 18)
     {
       bool2 = bool3;
-      if (8 <= this.qsk)
+      if (8 <= this.tQT)
       {
         String str = paramMediaCodecInfo.getName();
         String[] arrayOfString = supportedH264HwCodecPrefixes;
@@ -302,7 +323,7 @@ public final class e
                   bool3 = true;
                 }
                 bool2 = bool3;
-                Log.i("MeidaCodec[HWEnc]", "steve : [" + str + "] supported profiles:" + localCodecProfileLevel.profile + ", maxAllowedProfile: " + this.qsk + ", MIME:" + paramString);
+                Log.i("MicroMsg.AvcEncoder", "steve : [" + str + "] supported profiles:" + localCodecProfileLevel.profile + ", maxAllowedProfile: " + this.tQT + ", MIME:" + paramString);
                 j += 1;
                 bool1 = bool3;
               }
@@ -323,7 +344,7 @@ public final class e
     AppMethodBeat.i(114834);
     bool2 = false;
     bool1 = bool2;
-    if (d.oD(23))
+    if (d.qV(23))
     {
       for (;;)
       {
@@ -361,7 +382,7 @@ public final class e
           int m;
           int n;
           boolean bool3;
-          Log.e("MeidaCodec[HWEnc]", "trySetProfile error: " + paramMediaCodecInfo.getMessage());
+          Log.e("MicroMsg.AvcEncoder", "trySetProfile error: " + paramMediaCodecInfo.getMessage());
           bool1 = bool2;
           continue;
           int j = 0;
@@ -388,10 +409,10 @@ public final class e
             }
           }
         }
-        Log.i("MeidaCodec[HWEnc]", "steve : profile: " + m + ", level: " + n + ", maxProfile: " + paramInt + ", isRecognized:" + bool1);
+        Log.i("MicroMsg.AvcEncoder", "steve : profile: " + m + ", level: " + n + ", maxProfile: " + paramInt + ", isRecognized:" + bool1);
         i += 1;
       }
-      Log.i("MeidaCodec[HWEnc]", "best profile: " + paramString.profile + ", best level: " + paramString.level);
+      Log.i("MicroMsg.AvcEncoder", "best profile: " + paramString.profile + ", best level: " + paramString.level);
       bool1 = bool2;
       if (paramString.profile > 0)
       {
@@ -408,66 +429,11 @@ public final class e
     return bool1;
   }
   
-  private static String bO(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(114840);
-    String str1 = "";
-    int i = 0;
-    while (i < paramArrayOfByte.length)
-    {
-      String str3 = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
-      String str2 = str3;
-      if (str3.length() == 1) {
-        str2 = "0".concat(String.valueOf(str3));
-      }
-      str1 = str1 + str2;
-      i += 1;
-    }
-    AppMethodBeat.o(114840);
-    return str1;
-  }
-  
-  private static ArrayList<Integer> bS(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(114841);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    paramArrayOfByte = bO(paramArrayOfByte);
-    String str = bO(new byte[] { 0, 0, 0, 1 });
-    Log.d("MeidaCodec[HWEnc]", "parent: " + paramArrayOfByte + ", child:" + str);
-    for (;;)
-    {
-      int j = paramArrayOfByte.indexOf(str, i);
-      if (j == -1) {
-        break;
-      }
-      Log.d("MeidaCodec[HWEnc]", "vps/sps/pps start: " + i + ", nextStartIdx:" + j);
-      i = str.length() + j;
-      localArrayList.add(Integer.valueOf(j / 2));
-    }
-    AppMethodBeat.o(114841);
-    return localArrayList;
-  }
-  
-  private long computePresentationTime(long paramLong)
-  {
-    AppMethodBeat.i(235483);
-    int i = Math.min(Math.max(this.m_framerate, 15), 30);
-    if ((paramLong == 0L) || (this.igB == 0L)) {}
-    for (this.igB = 132L;; this.igB = (1000000 / i + paramLong))
-    {
-      paramLong = this.igB;
-      AppMethodBeat.o(235483);
-      return paramLong;
-      paramLong = this.igB;
-    }
-  }
-  
   @SuppressLint({"NewApi"})
-  private int cyY()
+  private int cNw()
   {
     AppMethodBeat.i(114836);
-    if (this.qsc != null) {
+    if (this.tQL != null) {
       StopEncoder();
     }
     String str1 = this.ENCODING;
@@ -494,7 +460,7 @@ public final class e
             label97:
             if (k < n) {
               if (str2.startsWith(arrayOfString2[k])) {
-                Log.i("MeidaCodec[HWEnc]", "steve : H.264 HW encoder found:".concat(String.valueOf(str2)));
+                Log.i("MicroMsg.AvcEncoder", "steve : H.264 HW encoder found:".concat(String.valueOf(str2)));
               }
             }
           }
@@ -506,9 +472,9 @@ public final class e
       if (localMediaCodecInfo != null) {
         break label211;
       }
-      Log.e("MeidaCodec[HWEnc]", "steve: Unable to find an appropriate codec for " + this.ENCODING);
-      this.qsb = 2001;
-      i = -this.qsb;
+      Log.e("MicroMsg.AvcEncoder", "steve: Unable to find an appropriate codec for " + this.ENCODING);
+      this.tQK = 2001;
+      i = -this.tQK;
       AppMethodBeat.o(114836);
       return i;
       k += 1;
@@ -520,94 +486,158 @@ public final class e
       localMediaCodecInfo = null;
     }
     label211:
-    Log.i("MeidaCodec[HWEnc]", "steve: found HW codec: " + localMediaCodecInfo.getName());
+    Log.i("MicroMsg.AvcEncoder", "steve: found HW codec: " + localMediaCodecInfo.getName());
+    Log.i("MicroMsg.AvcEncoder", "licaguo: InitHWEncoder width = " + this.m_width + " height = " + this.m_height);
     this.mediaFormat = MediaFormat.createVideoFormat(this.ENCODING, this.m_width, this.m_height);
-    this.mediaFormat.setInteger("color-format", 21);
-    this.mediaFormat.setInteger("bitrate", this.m_br_kbps * 1000);
-    this.mediaFormat.setInteger("frame-rate", this.m_framerate);
-    this.mediaFormat.setInteger("i-frame-interval", 4);
-    str1 = this.mediaFormat.getString("mime");
-    this.qsj = 1;
-    label394:
+    label446:
+    label464:
     boolean bool;
-    if ((this.ENCODING.equalsIgnoreCase("video/avc")) && (a(localMediaCodecInfo)) && (d.oD(23)))
+    if (d.qX(30))
     {
-      if ((this.mProfileCfg <= 0) || ((this.mProfileCfg & 0x1) == 0)) {
-        break label561;
+      this.mediaFormat.setInteger("color-format", 20);
+      Log.i("MicroMsg.AvcEncoder", "licaguo InitHWEncoder with csp YUV420PP");
+      this.mediaFormat.setInteger("stride", this.m_width);
+      this.mediaFormat.setInteger("bitrate", this.m_br_kbps * 1000);
+      this.mediaFormat.setInteger("frame-rate", this.m_framerate);
+      this.mediaFormat.setInteger("i-frame-interval", 4);
+      str1 = this.mediaFormat.getString("mime");
+      this.tQS = 1;
+      if ((this.ENCODING.equalsIgnoreCase("video/avc")) && (a(localMediaCodecInfo)) && (d.qV(23)))
+      {
+        if ((this.mProfileCfg <= 0) || ((this.mProfileCfg & 0x1) == 0)) {
+          break label655;
+        }
+        i = 1;
+        if ((this.mProfileCfg <= 0) || ((this.mProfileCfg & 0x4) == 0)) {
+          break label660;
+        }
+        j = 1;
+        bool = a(localMediaCodecInfo, str1);
+        if ((j == 0) || (!bool)) {
+          break label665;
+        }
+        this.mediaFormat.setInteger("profile", 8);
+        this.mediaFormat.setInteger("level", 256);
+        bool = true;
       }
-      i = 1;
-      if ((this.mProfileCfg <= 0) || ((this.mProfileCfg & 0x4) == 0)) {
-        break label566;
-      }
-      j = 1;
-      bool = a(localMediaCodecInfo, str1);
-      if ((j == 0) || (!bool)) {
-        break label571;
-      }
-      this.mediaFormat.setInteger("profile", 8);
-      this.mediaFormat.setInteger("level", 256);
-      bool = true;
     }
     for (;;)
     {
-      label441:
+      label511:
       if (bool) {}
-      for (this.qsj = this.mediaFormat.getInteger("profile");; this.qsj = 1)
+      for (this.tQS = this.mediaFormat.getInteger("profile");; this.tQS = 1)
       {
         this.mediaFormat.setInteger("bitrate-mode", 2);
         try
         {
-          this.qsc = z.q(str1, false);
-          Log.i("MeidaCodec[HWEnc]", "steve: mediaFormat: " + this.mediaFormat + ", actProfile: " + this.qsj);
-          this.qsc.a(this.mediaFormat, null, 1);
-          this.qsc.start();
-          this.qsi = new g();
+          this.tQL = aa.t(str1, false);
+          Log.i("MicroMsg.AvcEncoder", "steve: mediaFormat: " + this.mediaFormat + ", actProfile: " + this.tQS);
+          this.tQL.a(this.mediaFormat, null, 1);
+          this.tQL.start();
+          this.tQR = new g();
           AppMethodBeat.o(114836);
           return 2000;
         }
         catch (Exception localException)
         {
-          label561:
-          Log.e("MeidaCodec[HWEnc]", " error:" + localException.toString());
-          this.qsb = 2002;
-          i = -this.qsb;
+          Log.printErrStackTrace("MicroMsg.AvcEncoder", localException, "InitHWEncoder error:" + localException.toString(), new Object[0]);
+          this.tQK = 2002;
+          i = -this.tQK;
           AppMethodBeat.o(114836);
           return i;
         }
-        i = 0;
+        this.mediaFormat.setInteger("color-format", 21);
+        Log.i("MicroMsg.AvcEncoder", "licaguo InitHWEncoder with csp YUV420SP, aka NV12");
         break;
-        label566:
+        label655:
+        i = 0;
+        break label446;
+        label660:
         j = 0;
-        break label394;
-        label571:
+        break label464;
+        label665:
         if (i != 0)
         {
           this.mediaFormat.setInteger("profile", 1);
           this.mediaFormat.setInteger("level", 256);
           bool = true;
-          break label441;
+          break label511;
         }
         if (localMediaCodecInfo == null) {
-          break label685;
+          break label785;
         }
-        bool = a(localMediaCodecInfo, str1, this.qsk);
-        break label441;
+        bool = a(localMediaCodecInfo, str1, this.tQT);
+        break label511;
       }
-      label685:
+      label785:
       bool = false;
+    }
+  }
+  
+  private static String ce(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(114840);
+    String str1 = "";
+    int i = 0;
+    while (i < paramArrayOfByte.length)
+    {
+      String str3 = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
+      String str2 = str3;
+      if (str3.length() == 1) {
+        str2 = "0".concat(String.valueOf(str3));
+      }
+      str1 = str1 + str2;
+      i += 1;
+    }
+    AppMethodBeat.o(114840);
+    return str1;
+  }
+  
+  private static ArrayList<Integer> ci(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(114841);
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    paramArrayOfByte = ce(paramArrayOfByte);
+    String str = ce(new byte[] { 0, 0, 0, 1 });
+    Log.d("MicroMsg.AvcEncoder", "parent: " + paramArrayOfByte + ", child:" + str);
+    for (;;)
+    {
+      int j = paramArrayOfByte.indexOf(str, i);
+      if (j == -1) {
+        break;
+      }
+      Log.d("MicroMsg.AvcEncoder", "vps/sps/pps start: " + i + ", nextStartIdx:" + j);
+      i = str.length() + j;
+      localArrayList.add(Integer.valueOf(j / 2));
+    }
+    AppMethodBeat.o(114841);
+    return localArrayList;
+  }
+  
+  private long computePresentationTime(long paramLong)
+  {
+    AppMethodBeat.i(233716);
+    int i = Math.min(Math.max(this.m_framerate, 15), 30);
+    if ((paramLong == 0L) || (this.kVp == 0L)) {}
+    for (this.kVp = 132L;; this.kVp = (1000000 / i + paramLong))
+    {
+      paramLong = this.kVp;
+      AppMethodBeat.o(233716);
+      return paramLong;
+      paramLong = this.kVp;
     }
   }
   
   public final void DoQosSvrCtrl()
   {
-    AppMethodBeat.i(235482);
-    Object localObject;
+    AppMethodBeat.i(233709);
     int k;
-    if ((this.GSZ != null) && (this.GSZ.GVV != null))
+    if ((this.NJk != null) && (this.NJk.NMi != null))
     {
-      if ((this.GSZ != null) && (this.GSZ.GVV != null) && (this.GSZ.GVV.setAppCmd(EMethodGetQosPara, this.GTN.s2p, this.GTN.s2p.length) >= 0))
+      if ((this.NJk != null) && (this.NJk.NMi != null) && (this.NJk.NMi.setAppCmd(EMethodGetQosPara, this.NJZ.s2p, this.NJZ.s2p.length) >= 0))
       {
-        localObject = this.GTN;
+        Object localObject = this.NJZ;
         ByteBuffer localByteBuffer = ByteBuffer.wrap(((a)localObject).s2p);
         localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
         ((a)localObject).iKbps = localByteBuffer.getShort();
@@ -623,49 +653,40 @@ public final class e
         ((a)localObject).cRsvd2 = localByteBuffer.get();
         ((a)localObject).cSkipFlag = localByteBuffer.get();
         ((a)localObject).cIReqFlag = localByteBuffer.get();
-        ((a)localObject).GTP = localByteBuffer.getShort();
-        ((a)localObject).GTQ = localByteBuffer.getShort();
-        localObject = this.GTN;
-        Log.i("MeidaCodec[HWEnc]", "raw S2P:" + ((a)localObject).s2p);
-        Log.i("MeidaCodec[HWEnc]", "-S2P- iKbps:" + ((a)localObject).iKbps + ", fps:" + ((a)localObject).cFps + ", IP:" + ((a)localObject).cIPeriod + ", RS:" + ((a)localObject).cRSLevel + ", QPMin:" + ((a)localObject).cQPmin + ", QPMax:" + ((a)localObject).cQPmax + ", HPP:" + ((a)localObject).cHPPMaxLyr + ", SWitch:" + ((a)localObject).cSwitch + ", Reso:" + ((a)localObject).cResolution + ", Rsvd1:" + ((a)localObject).cRsvd1 + ", Rsvd2:" + ((a)localObject).cRsvd2 + ", Skip:" + ((a)localObject).cSkipFlag + ", IReq:" + ((a)localObject).cIReqFlag + ", iEncW:" + ((a)localObject).GTP + ", iEncH:" + ((a)localObject).GTQ);
-        localObject = c.HgQ;
-        c.ec(this.GTN.GTP, this.GTN.GTQ);
+        ((a)localObject).NKb = localByteBuffer.getShort();
+        ((a)localObject).NKc = localByteBuffer.getShort();
+        localObject = c.NXF;
+        c.eA(this.NJZ.NKb, this.NJZ.NKc);
       }
-      k = this.GTN.iKbps;
-      if (this.qsj != 8) {
-        break label796;
+      k = this.NJZ.iKbps;
+      if (this.tQS != 8) {
+        break label501;
       }
     }
-    label796:
+    label501:
     for (int i = 1;; i = 0)
     {
       int j = k;
       if (i == 0)
       {
-        double d = Math.max(Math.min(this.GSZ.GVV.Hbr, 30), 0) * 1.0D / 100.0D;
+        double d = Math.max(Math.min(this.NJk.NMi.NRD, 30), 0) * 1.0D / 100.0D;
         j = (int)(k * (d + 1.0D));
       }
       if (this.m_br_kbps != j)
       {
         SetBitRate(j);
-        Log.i("MeidaCodec[HWEnc]", "steve[QoS]: Update BR! frameID: " + frameID + ", new_br: " + this.m_br_kbps + ", tuneBR:" + j + ", tuneRatio:" + this.GSZ.GVV.Hbr);
+        Log.i("MicroMsg.AvcEncoder", "steve[QoS]: Update BR! frameID: " + frameID + ", new_br: " + this.m_br_kbps + ", tuneBR:" + j + ", tuneRatio:" + this.NJk.NMi.NRD);
         this.m_br_kbps = j;
       }
-      if ((1 == this.GTN.cIReqFlag) && (frameID > 0))
+      if ((1 == this.NJZ.cIReqFlag) && (frameID > 0))
       {
-        if (this.qsc != null)
-        {
-          Log.v("MeidaCodec[HWEnc]", "steve: Sync frame request soon!");
-          localObject = new Bundle();
-          ((Bundle)localObject).putInt("request-sync", 0);
-          this.qsc.setParameters((Bundle)localObject);
-        }
-        Log.i("MeidaCodec[HWEnc]", "steve[QoS]: Force I Frame! frameID: " + frameID);
+        MakeIFrame();
+        Log.i("MicroMsg.AvcEncoder", "steve[QoS]: Force I Frame! frameID: " + frameID);
       }
-      if (this.GTN.cFps != this.m_framerate) {
-        this.m_framerate = this.GTN.cFps;
+      if (this.NJZ.cFps != this.m_framerate) {
+        this.m_framerate = this.NJZ.cFps;
       }
-      AppMethodBeat.o(235482);
+      AppMethodBeat.o(233709);
       return;
     }
   }
@@ -674,2462 +695,2434 @@ public final class e
   public final int a(ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     // Byte code:
-    //   0: ldc_w 704
+    //   0: ldc_w 692
     //   3: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: aconst_null
-    //   7: astore 14
-    //   9: iload_2
-    //   10: aload_0
-    //   11: getfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
-    //   14: if_icmpne +11 -> 25
-    //   17: iload_3
-    //   18: aload_0
-    //   19: getfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
-    //   22: if_icmpeq +33 -> 55
-    //   25: aload_0
-    //   26: iload_2
-    //   27: putfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
-    //   30: aload_0
-    //   31: iload_3
-    //   32: putfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
-    //   35: aload_0
-    //   36: aload_0
-    //   37: getfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
-    //   40: aload_0
-    //   41: getfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
-    //   44: imul
-    //   45: iconst_3
-    //   46: imul
-    //   47: iconst_2
-    //   48: idiv
-    //   49: invokestatic 708	java/nio/ByteBuffer:allocateDirect	(I)Ljava/nio/ByteBuffer;
-    //   52: putfield 154	com/tencent/mm/plugin/voip/model/e:GTM	Ljava/nio/ByteBuffer;
-    //   55: aload_0
-    //   56: getfield 154	com/tencent/mm/plugin/voip/model/e:GTM	Ljava/nio/ByteBuffer;
-    //   59: ifnonnull +23 -> 82
-    //   62: aload_0
-    //   63: aload_0
-    //   64: getfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
-    //   67: aload_0
-    //   68: getfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
-    //   71: imul
-    //   72: iconst_3
-    //   73: imul
-    //   74: iconst_2
-    //   75: idiv
-    //   76: invokestatic 708	java/nio/ByteBuffer:allocateDirect	(I)Ljava/nio/ByteBuffer;
-    //   79: putfield 154	com/tencent/mm/plugin/voip/model/e:GTM	Ljava/nio/ByteBuffer;
-    //   82: ldc_w 259
-    //   85: new 261	java/lang/StringBuilder
-    //   88: dup
-    //   89: ldc_w 710
-    //   92: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   95: aload_0
-    //   96: getfield 197	com/tencent/mm/plugin/voip/model/e:m_framerate	I
-    //   99: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   102: ldc_w 712
-    //   105: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   108: aload_0
-    //   109: getfield 199	com/tencent/mm/plugin/voip/model/e:m_br_kbps	I
-    //   112: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   115: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   118: invokestatic 286	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   121: aload_0
-    //   122: getfield 204	com/tencent/mm/plugin/voip/model/e:GTN	Lcom/tencent/mm/plugin/voip/model/e$a;
-    //   125: getfield 630	com/tencent/mm/plugin/voip/model/e$a:cSkipFlag	B
-    //   128: ifne +2293 -> 2421
-    //   131: aload_0
-    //   132: getfield 162	com/tencent/mm/plugin/voip/model/e:GSZ	Lcom/tencent/mm/plugin/voip/model/l;
-    //   135: getfield 245	com/tencent/mm/plugin/voip/model/l:GVV	Lcom/tencent/mm/plugin/voip/model/v2protocal;
-    //   138: ifnull +2283 -> 2421
-    //   141: iload 5
-    //   143: ifeq +235 -> 378
-    //   146: invokestatic 718	com/tencent/mm/sdk/platformtools/Util:currentTicks	()J
-    //   149: lstore 12
-    //   151: aload_0
-    //   152: getfield 162	com/tencent/mm/plugin/voip/model/e:GSZ	Lcom/tencent/mm/plugin/voip/model/l;
-    //   155: getfield 245	com/tencent/mm/plugin/voip/model/l:GVV	Lcom/tencent/mm/plugin/voip/model/v2protocal;
-    //   158: aload_1
-    //   159: aload_1
-    //   160: invokevirtual 721	java/nio/ByteBuffer:capacity	()I
-    //   163: aload_0
-    //   164: getfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
-    //   167: aload_0
-    //   168: getfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
-    //   171: iload 4
-    //   173: aload_0
-    //   174: getfield 154	com/tencent/mm/plugin/voip/model/e:GTM	Ljava/nio/ByteBuffer;
-    //   177: invokevirtual 725	com/tencent/mm/plugin/voip/model/v2protocal:videoHWProcess2	(Ljava/nio/ByteBuffer;IIIILjava/nio/ByteBuffer;)I
-    //   180: pop
-    //   181: getstatic 731	com/tencent/mm/plugin/voip/video/render/i:HnR	Lcom/tencent/mm/plugin/voip/video/render/i;
-    //   184: astore_1
-    //   185: iconst_0
-    //   186: lload 12
-    //   188: invokestatic 734	com/tencent/mm/sdk/platformtools/Util:ticksToNow	(J)J
-    //   191: invokestatic 738	com/tencent/mm/plugin/voip/video/render/i:aO	(IJ)V
-    //   194: aload_0
-    //   195: getfield 154	com/tencent/mm/plugin/voip/model/e:GTM	Ljava/nio/ByteBuffer;
-    //   198: astore_1
-    //   199: iload 5
-    //   201: ifeq +180 -> 381
-    //   204: aload_0
-    //   205: getfield 162	com/tencent/mm/plugin/voip/model/e:GSZ	Lcom/tencent/mm/plugin/voip/model/l;
-    //   208: getfield 245	com/tencent/mm/plugin/voip/model/l:GVV	Lcom/tencent/mm/plugin/voip/model/v2protocal;
-    //   211: getfield 741	com/tencent/mm/plugin/voip/model/v2protocal:field_HWEncW	I
-    //   214: istore 4
-    //   216: iload 5
-    //   218: ifeq +169 -> 387
-    //   221: aload_0
-    //   222: getfield 162	com/tencent/mm/plugin/voip/model/e:GSZ	Lcom/tencent/mm/plugin/voip/model/l;
-    //   225: getfield 245	com/tencent/mm/plugin/voip/model/l:GVV	Lcom/tencent/mm/plugin/voip/model/v2protocal;
-    //   228: getfield 744	com/tencent/mm/plugin/voip/model/v2protocal:field_HWEncH	I
-    //   231: istore 6
-    //   233: aload_0
-    //   234: getfield 189	com/tencent/mm/plugin/voip/model/e:m_width	I
-    //   237: iload 4
-    //   239: if_icmpne +12 -> 251
+    //   6: iconst_0
+    //   7: istore 7
+    //   9: aconst_null
+    //   10: astore 15
+    //   12: iload_2
+    //   13: aload_0
+    //   14: getfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
+    //   17: if_icmpne +11 -> 28
+    //   20: iload_3
+    //   21: aload_0
+    //   22: getfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
+    //   25: if_icmpeq +33 -> 58
+    //   28: aload_0
+    //   29: iload_2
+    //   30: putfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
+    //   33: aload_0
+    //   34: iload_3
+    //   35: putfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
+    //   38: aload_0
+    //   39: aload_0
+    //   40: getfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
+    //   43: aload_0
+    //   44: getfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
+    //   47: imul
+    //   48: iconst_3
+    //   49: imul
+    //   50: iconst_2
+    //   51: idiv
+    //   52: invokestatic 696	java/nio/ByteBuffer:allocateDirect	(I)Ljava/nio/ByteBuffer;
+    //   55: putfield 154	com/tencent/mm/plugin/voip/model/e:NJY	Ljava/nio/ByteBuffer;
+    //   58: aload_0
+    //   59: getfield 154	com/tencent/mm/plugin/voip/model/e:NJY	Ljava/nio/ByteBuffer;
+    //   62: ifnonnull +23 -> 85
+    //   65: aload_0
+    //   66: aload_0
+    //   67: getfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
+    //   70: aload_0
+    //   71: getfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
+    //   74: imul
+    //   75: iconst_3
+    //   76: imul
+    //   77: iconst_2
+    //   78: idiv
+    //   79: invokestatic 696	java/nio/ByteBuffer:allocateDirect	(I)Ljava/nio/ByteBuffer;
+    //   82: putfield 154	com/tencent/mm/plugin/voip/model/e:NJY	Ljava/nio/ByteBuffer;
+    //   85: ldc_w 263
+    //   88: new 328	java/lang/StringBuilder
+    //   91: dup
+    //   92: ldc_w 698
+    //   95: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   98: aload_0
+    //   99: getfield 197	com/tencent/mm/plugin/voip/model/e:m_framerate	I
+    //   102: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   105: ldc_w 700
+    //   108: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   111: aload_0
+    //   112: getfield 199	com/tencent/mm/plugin/voip/model/e:m_br_kbps	I
+    //   115: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   118: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   121: invokestatic 360	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   124: iload 7
+    //   126: istore 6
+    //   128: aload 15
+    //   130: astore 14
+    //   132: aload_0
+    //   133: getfield 204	com/tencent/mm/plugin/voip/model/e:NJZ	Lcom/tencent/mm/plugin/voip/model/e$a;
+    //   136: getfield 654	com/tencent/mm/plugin/voip/model/e$a:cSkipFlag	B
+    //   139: ifne +419 -> 558
+    //   142: iload 7
+    //   144: istore 6
+    //   146: aload 15
+    //   148: astore 14
+    //   150: aload_0
+    //   151: getfield 162	com/tencent/mm/plugin/voip/model/e:NJk	Lcom/tencent/mm/plugin/voip/model/l;
+    //   154: getfield 246	com/tencent/mm/plugin/voip/model/l:NMi	Lcom/tencent/mm/plugin/voip/model/v2protocal;
+    //   157: ifnull +401 -> 558
+    //   160: iconst_1
+    //   161: istore 6
+    //   163: bipush 30
+    //   165: invokestatic 474	com/tencent/mm/compatible/util/d:qX	(I)Z
+    //   168: ifeq +9 -> 177
+    //   171: iconst_0
+    //   172: istore 6
+    //   174: iconst_1
+    //   175: istore 5
+    //   177: iload 5
+    //   179: ifeq +275 -> 454
+    //   182: invokestatic 706	com/tencent/mm/sdk/platformtools/Util:currentTicks	()J
+    //   185: lstore 12
+    //   187: aload_0
+    //   188: getfield 162	com/tencent/mm/plugin/voip/model/e:NJk	Lcom/tencent/mm/plugin/voip/model/l;
+    //   191: getfield 246	com/tencent/mm/plugin/voip/model/l:NMi	Lcom/tencent/mm/plugin/voip/model/v2protocal;
+    //   194: aload_1
+    //   195: aload_1
+    //   196: invokevirtual 709	java/nio/ByteBuffer:capacity	()I
+    //   199: aload_0
+    //   200: getfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
+    //   203: aload_0
+    //   204: getfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
+    //   207: iload 4
+    //   209: aload_0
+    //   210: getfield 154	com/tencent/mm/plugin/voip/model/e:NJY	Ljava/nio/ByteBuffer;
+    //   213: iload 6
+    //   215: invokevirtual 713	com/tencent/mm/plugin/voip/model/v2protocal:videoHWProcess3	(Ljava/nio/ByteBuffer;IIIILjava/nio/ByteBuffer;I)I
+    //   218: istore 4
+    //   220: iload 4
+    //   222: ifge +34 -> 256
+    //   225: ldc_w 263
+    //   228: ldc_w 715
+    //   231: iload 4
+    //   233: invokestatic 268	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   236: invokevirtual 272	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   239: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   242: aload_0
-    //   243: getfield 191	com/tencent/mm/plugin/voip/model/e:m_height	I
-    //   246: iload 6
-    //   248: if_icmpeq +190 -> 438
-    //   251: ldc_w 259
-    //   254: new 261	java/lang/StringBuilder
-    //   257: dup
-    //   258: ldc_w 746
-    //   261: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   264: iload_2
-    //   265: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   268: ldc_w 748
-    //   271: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   274: iload_3
-    //   275: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   278: ldc_w 750
-    //   281: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   284: aload_0
-    //   285: getfield 189	com/tencent/mm/plugin/voip/model/e:m_width	I
-    //   288: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   291: ldc_w 748
-    //   294: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   297: aload_0
-    //   298: getfield 191	com/tencent/mm/plugin/voip/model/e:m_height	I
-    //   301: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   304: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   307: invokestatic 286	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   310: aload_0
-    //   311: iload 4
-    //   313: putfield 189	com/tencent/mm/plugin/voip/model/e:m_width	I
-    //   316: aload_0
-    //   317: iload 6
-    //   319: putfield 191	com/tencent/mm/plugin/voip/model/e:m_height	I
-    //   322: aload_0
-    //   323: aload_0
-    //   324: getfield 189	com/tencent/mm/plugin/voip/model/e:m_width	I
-    //   327: aload_0
-    //   328: getfield 191	com/tencent/mm/plugin/voip/model/e:m_height	I
-    //   331: imul
-    //   332: iconst_3
-    //   333: imul
-    //   334: iconst_1
-    //   335: ishr
-    //   336: putfield 185	com/tencent/mm/plugin/voip/model/e:encLen	I
-    //   339: aload_0
-    //   340: invokespecial 752	com/tencent/mm/plugin/voip/model/e:cyY	()I
-    //   343: istore_2
-    //   344: iload_2
-    //   345: istore_3
-    //   346: iload_2
-    //   347: ifge +93 -> 440
-    //   350: ldc_w 259
-    //   353: ldc_w 754
-    //   356: iload_2
-    //   357: invokestatic 291	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   360: invokevirtual 295	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   363: invokestatic 298	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   366: aload_0
-    //   367: invokevirtual 757	com/tencent/mm/plugin/voip/model/e:emB	()V
-    //   370: ldc_w 704
-    //   373: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   376: iload_2
-    //   377: ireturn
-    //   378: goto -179 -> 199
-    //   381: iload_2
-    //   382: istore 4
-    //   384: goto -168 -> 216
-    //   387: iload_3
-    //   388: istore 6
-    //   390: goto -157 -> 233
-    //   393: astore 14
-    //   395: ldc_w 259
-    //   398: new 261	java/lang/StringBuilder
-    //   401: dup
-    //   402: ldc_w 759
-    //   405: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   408: aload 14
-    //   410: invokevirtual 426	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   413: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   416: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   419: invokestatic 298	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   422: aload_0
-    //   423: sipush 2003
-    //   426: putfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   429: aload_0
-    //   430: getfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   433: ineg
-    //   434: istore_2
-    //   435: goto -91 -> 344
-    //   438: iconst_0
-    //   439: istore_3
-    //   440: getstatic 87	com/tencent/mm/plugin/voip/model/e:frameID	I
-    //   443: bipush 100
-    //   445: if_icmpgt +411 -> 856
-    //   448: aload_0
-    //   449: getfield 761	com/tencent/mm/plugin/voip/model/e:qsh	Ljava/io/BufferedOutputStream;
-    //   452: ifnull +404 -> 856
-    //   455: aload_0
-    //   456: getfield 761	com/tencent/mm/plugin/voip/model/e:qsh	Ljava/io/BufferedOutputStream;
-    //   459: aload_0
-    //   460: getfield 154	com/tencent/mm/plugin/voip/model/e:GTM	Ljava/nio/ByteBuffer;
-    //   463: invokevirtual 765	java/nio/ByteBuffer:array	()[B
-    //   466: iconst_0
-    //   467: aload_0
-    //   468: getfield 185	com/tencent/mm/plugin/voip/model/e:encLen	I
-    //   471: invokevirtual 771	java/io/BufferedOutputStream:write	([BII)V
-    //   474: iload_3
-    //   475: istore_2
-    //   476: aload_1
-    //   477: ifnull +1911 -> 2388
-    //   480: aload_0
-    //   481: getfield 206	com/tencent/mm/plugin/voip/model/e:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   484: ifnull +1904 -> 2388
-    //   487: aload_0
-    //   488: iconst_0
-    //   489: putfield 179	com/tencent/mm/plugin/voip/model/e:qsm	I
-    //   492: invokestatic 776	java/lang/System:currentTimeMillis	()J
-    //   495: lstore 12
-    //   497: ldc_w 259
-    //   500: new 261	java/lang/StringBuilder
-    //   503: dup
-    //   504: ldc_w 778
-    //   507: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   510: aload_0
-    //   511: getfield 185	com/tencent/mm/plugin/voip/model/e:encLen	I
-    //   514: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   517: ldc_w 780
-    //   520: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   523: getstatic 87	com/tencent/mm/plugin/voip/model/e:frameID	I
-    //   526: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   529: ldc_w 782
-    //   532: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   535: lload 12
-    //   537: invokevirtual 785	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   540: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   543: invokestatic 286	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   546: aload_0
-    //   547: getfield 206	com/tencent/mm/plugin/voip/model/e:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   550: invokevirtual 789	com/tencent/mm/compatible/deviceinfo/z:getInputBuffers	()[Ljava/nio/ByteBuffer;
-    //   553: astore 15
-    //   555: aload_0
-    //   556: getfield 206	com/tencent/mm/plugin/voip/model/e:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   559: invokevirtual 792	com/tencent/mm/compatible/deviceinfo/z:getOutputBuffers	()[Ljava/nio/ByteBuffer;
-    //   562: astore 14
-    //   564: aload_0
-    //   565: getfield 206	com/tencent/mm/plugin/voip/model/e:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   568: ldc2_w 793
-    //   571: invokevirtual 798	com/tencent/mm/compatible/deviceinfo/z:dequeueInputBuffer	(J)I
-    //   574: istore_3
-    //   575: iload_3
-    //   576: iflt +74 -> 650
-    //   579: aload_0
-    //   580: aload_0
-    //   581: getfield 158	com/tencent/mm/plugin/voip/model/e:mGeneratedIdx	J
-    //   584: invokespecial 800	com/tencent/mm/plugin/voip/model/e:computePresentationTime	(J)J
-    //   587: lstore 12
-    //   589: aload_1
-    //   590: invokevirtual 804	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
+    //   243: invokevirtual 718	com/tencent/mm/plugin/voip/model/e:eWp	()V
+    //   246: ldc_w 692
+    //   249: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   252: sipush -2010
+    //   255: ireturn
+    //   256: getstatic 724	com/tencent/mm/plugin/voip/video/render/j:OeL	Lcom/tencent/mm/plugin/voip/video/render/j;
+    //   259: astore_1
+    //   260: iconst_0
+    //   261: lload 12
+    //   263: invokestatic 727	com/tencent/mm/sdk/platformtools/Util:ticksToNow	(J)J
+    //   266: invokestatic 731	com/tencent/mm/plugin/voip/video/render/j:ba	(IJ)V
+    //   269: aload_0
+    //   270: getfield 154	com/tencent/mm/plugin/voip/model/e:NJY	Ljava/nio/ByteBuffer;
+    //   273: astore_1
+    //   274: iload 5
+    //   276: ifeq +184 -> 460
+    //   279: aload_0
+    //   280: getfield 162	com/tencent/mm/plugin/voip/model/e:NJk	Lcom/tencent/mm/plugin/voip/model/l;
+    //   283: getfield 246	com/tencent/mm/plugin/voip/model/l:NMi	Lcom/tencent/mm/plugin/voip/model/v2protocal;
+    //   286: getfield 734	com/tencent/mm/plugin/voip/model/v2protocal:field_HWEncW	I
+    //   289: istore 6
+    //   291: iload 5
+    //   293: ifeq +173 -> 466
+    //   296: aload_0
+    //   297: getfield 162	com/tencent/mm/plugin/voip/model/e:NJk	Lcom/tencent/mm/plugin/voip/model/l;
+    //   300: getfield 246	com/tencent/mm/plugin/voip/model/l:NMi	Lcom/tencent/mm/plugin/voip/model/v2protocal;
+    //   303: getfield 737	com/tencent/mm/plugin/voip/model/v2protocal:field_HWEncH	I
+    //   306: istore 7
+    //   308: aload_0
+    //   309: getfield 189	com/tencent/mm/plugin/voip/model/e:m_width	I
+    //   312: iload 6
+    //   314: if_icmpne +12 -> 326
+    //   317: aload_0
+    //   318: getfield 191	com/tencent/mm/plugin/voip/model/e:m_height	I
+    //   321: iload 7
+    //   323: if_icmpeq +194 -> 517
+    //   326: ldc_w 263
+    //   329: new 328	java/lang/StringBuilder
+    //   332: dup
+    //   333: ldc_w 739
+    //   336: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   339: iload_2
+    //   340: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   343: ldc_w 741
+    //   346: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   349: iload_3
+    //   350: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   353: ldc_w 743
+    //   356: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   359: aload_0
+    //   360: getfield 189	com/tencent/mm/plugin/voip/model/e:m_width	I
+    //   363: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   366: ldc_w 741
+    //   369: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   372: aload_0
+    //   373: getfield 191	com/tencent/mm/plugin/voip/model/e:m_height	I
+    //   376: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   379: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   382: invokestatic 360	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   385: aload_0
+    //   386: iload 6
+    //   388: putfield 189	com/tencent/mm/plugin/voip/model/e:m_width	I
+    //   391: aload_0
+    //   392: iload 7
+    //   394: putfield 191	com/tencent/mm/plugin/voip/model/e:m_height	I
+    //   397: aload_0
+    //   398: aload_0
+    //   399: getfield 189	com/tencent/mm/plugin/voip/model/e:m_width	I
+    //   402: aload_0
+    //   403: getfield 191	com/tencent/mm/plugin/voip/model/e:m_height	I
+    //   406: imul
+    //   407: iconst_3
+    //   408: imul
+    //   409: iconst_1
+    //   410: ishr
+    //   411: putfield 185	com/tencent/mm/plugin/voip/model/e:encLen	I
+    //   414: aload_0
+    //   415: invokespecial 745	com/tencent/mm/plugin/voip/model/e:cNw	()I
+    //   418: istore_2
+    //   419: iload_2
+    //   420: istore 6
+    //   422: iload_2
+    //   423: ifge +98 -> 521
+    //   426: ldc_w 263
+    //   429: ldc_w 747
+    //   432: iload_2
+    //   433: invokestatic 268	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   436: invokevirtual 272	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   439: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   442: aload_0
+    //   443: invokevirtual 718	com/tencent/mm/plugin/voip/model/e:eWp	()V
+    //   446: ldc_w 692
+    //   449: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   452: iload_2
+    //   453: ireturn
+    //   454: iconst_0
+    //   455: istore 4
+    //   457: goto -183 -> 274
+    //   460: iload_2
+    //   461: istore 6
+    //   463: goto -172 -> 291
+    //   466: iload_3
+    //   467: istore 7
+    //   469: goto -161 -> 308
+    //   472: astore 14
+    //   474: ldc_w 263
+    //   477: new 328	java/lang/StringBuilder
+    //   480: dup
+    //   481: ldc_w 749
+    //   484: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   487: aload 14
+    //   489: invokevirtual 435	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   492: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   495: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   498: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   501: aload_0
+    //   502: sipush 2003
+    //   505: putfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   508: aload_0
+    //   509: getfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   512: ineg
+    //   513: istore_2
+    //   514: goto -95 -> 419
+    //   517: iload 4
+    //   519: istore 6
+    //   521: getstatic 87	com/tencent/mm/plugin/voip/model/e:frameID	I
+    //   524: bipush 100
+    //   526: if_icmpgt +415 -> 941
+    //   529: aload_0
+    //   530: getfield 751	com/tencent/mm/plugin/voip/model/e:tQQ	Ljava/io/BufferedOutputStream;
+    //   533: ifnull +408 -> 941
+    //   536: aload_0
+    //   537: getfield 751	com/tencent/mm/plugin/voip/model/e:tQQ	Ljava/io/BufferedOutputStream;
+    //   540: aload_1
+    //   541: invokevirtual 755	java/nio/ByteBuffer:array	()[B
+    //   544: aload_1
+    //   545: invokevirtual 758	java/nio/ByteBuffer:arrayOffset	()I
+    //   548: aload_0
+    //   549: getfield 185	com/tencent/mm/plugin/voip/model/e:encLen	I
+    //   552: invokevirtual 764	java/io/BufferedOutputStream:write	([BII)V
+    //   555: aload_1
+    //   556: astore 14
+    //   558: aload 14
+    //   560: ifnull +1855 -> 2415
+    //   563: aload_0
+    //   564: getfield 206	com/tencent/mm/plugin/voip/model/e:tQL	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   567: ifnull +1848 -> 2415
+    //   570: aload_0
+    //   571: iconst_0
+    //   572: putfield 179	com/tencent/mm/plugin/voip/model/e:tQV	I
+    //   575: invokestatic 769	java/lang/System:currentTimeMillis	()J
+    //   578: lstore 12
+    //   580: ldc_w 263
+    //   583: new 328	java/lang/StringBuilder
+    //   586: dup
+    //   587: ldc_w 771
+    //   590: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   593: aload_0
     //   594: getfield 185	com/tencent/mm/plugin/voip/model/e:encLen	I
-    //   597: invokevirtual 810	java/nio/Buffer:limit	(I)Ljava/nio/Buffer;
-    //   600: pop
-    //   601: aload 15
-    //   603: iload_3
-    //   604: aaload
-    //   605: astore 15
-    //   607: aload 15
-    //   609: invokevirtual 813	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
-    //   612: pop
-    //   613: aload 15
-    //   615: aload_1
-    //   616: invokevirtual 817	java/nio/ByteBuffer:put	(Ljava/nio/ByteBuffer;)Ljava/nio/ByteBuffer;
-    //   619: pop
-    //   620: aload_1
-    //   621: invokevirtual 813	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
-    //   624: pop
-    //   625: aload_0
-    //   626: getfield 206	com/tencent/mm/plugin/voip/model/e:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   629: iload_3
-    //   630: aload_0
-    //   631: getfield 185	com/tencent/mm/plugin/voip/model/e:encLen	I
-    //   634: lload 12
-    //   636: iconst_0
-    //   637: invokevirtual 820	com/tencent/mm/compatible/deviceinfo/z:a	(IIJI)V
-    //   640: aload_0
-    //   641: aload_0
-    //   642: getfield 158	com/tencent/mm/plugin/voip/model/e:mGeneratedIdx	J
-    //   645: lconst_1
-    //   646: ladd
-    //   647: putfield 158	com/tencent/mm/plugin/voip/model/e:mGeneratedIdx	J
-    //   650: new 822	android/media/MediaCodec$BufferInfo
-    //   653: dup
-    //   654: invokespecial 823	android/media/MediaCodec$BufferInfo:<init>	()V
-    //   657: astore_1
-    //   658: aload_0
-    //   659: getfield 206	com/tencent/mm/plugin/voip/model/e:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   662: aload_1
-    //   663: aload_0
-    //   664: getfield 144	com/tencent/mm/plugin/voip/model/e:TIMEOUT_USEC	I
-    //   667: i2l
-    //   668: invokevirtual 827	com/tencent/mm/compatible/deviceinfo/z:dequeueOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;J)I
-    //   671: istore 4
-    //   673: iload_2
-    //   674: istore_3
-    //   675: iload 4
-    //   677: istore 7
-    //   679: iload 4
-    //   681: bipush 254
-    //   683: if_icmpne +242 -> 925
-    //   686: aload_0
-    //   687: getfield 206	com/tencent/mm/plugin/voip/model/e:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   690: invokevirtual 831	com/tencent/mm/compatible/deviceinfo/z:getOutputFormat	()Landroid/media/MediaFormat;
-    //   693: astore 15
-    //   695: ldc_w 259
-    //   698: ldc_w 833
-    //   701: aload 15
-    //   703: invokestatic 330	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   706: invokevirtual 295	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   709: invokestatic 386	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   712: iload_2
-    //   713: istore_3
-    //   714: iload 4
-    //   716: istore 7
-    //   718: aload 15
-    //   720: ldc_w 516
-    //   723: invokevirtual 836	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
-    //   726: ifeq +199 -> 925
-    //   729: iload_2
-    //   730: istore_3
-    //   731: iload 4
-    //   733: istore 7
-    //   735: aload 15
-    //   737: ldc_w 516
-    //   740: invokevirtual 535	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   743: i2d
+    //   597: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   600: ldc_w 773
+    //   603: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   606: getstatic 87	com/tencent/mm/plugin/voip/model/e:frameID	I
+    //   609: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   612: ldc_w 775
+    //   615: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   618: lload 12
+    //   620: invokevirtual 778	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   623: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   626: invokestatic 360	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   629: aload_0
+    //   630: getfield 206	com/tencent/mm/plugin/voip/model/e:tQL	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   633: invokevirtual 782	com/tencent/mm/compatible/deviceinfo/aa:avj	()[Ljava/nio/ByteBuffer;
+    //   636: astore 15
+    //   638: aload_0
+    //   639: getfield 206	com/tencent/mm/plugin/voip/model/e:tQL	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   642: invokevirtual 785	com/tencent/mm/compatible/deviceinfo/aa:avk	()[Ljava/nio/ByteBuffer;
+    //   645: astore_1
+    //   646: aload_0
+    //   647: getfield 206	com/tencent/mm/plugin/voip/model/e:tQL	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   650: ldc2_w 786
+    //   653: invokevirtual 791	com/tencent/mm/compatible/deviceinfo/aa:EX	(J)I
+    //   656: istore_2
+    //   657: iload_2
+    //   658: iflt +77 -> 735
+    //   661: aload_0
+    //   662: aload_0
+    //   663: getfield 158	com/tencent/mm/plugin/voip/model/e:mGeneratedIdx	J
+    //   666: invokespecial 793	com/tencent/mm/plugin/voip/model/e:computePresentationTime	(J)J
+    //   669: lstore 12
+    //   671: aload 14
+    //   673: invokevirtual 797	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
+    //   676: aload_0
+    //   677: getfield 185	com/tencent/mm/plugin/voip/model/e:encLen	I
+    //   680: invokevirtual 803	java/nio/Buffer:limit	(I)Ljava/nio/Buffer;
+    //   683: pop
+    //   684: aload 15
+    //   686: iload_2
+    //   687: aaload
+    //   688: astore 15
+    //   690: aload 15
+    //   692: invokevirtual 806	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   695: pop
+    //   696: aload 15
+    //   698: aload 14
+    //   700: invokevirtual 810	java/nio/ByteBuffer:put	(Ljava/nio/ByteBuffer;)Ljava/nio/ByteBuffer;
+    //   703: pop
+    //   704: aload 14
+    //   706: invokevirtual 806	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   709: pop
+    //   710: aload_0
+    //   711: getfield 206	com/tencent/mm/plugin/voip/model/e:tQL	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   714: iload_2
+    //   715: aload_0
+    //   716: getfield 185	com/tencent/mm/plugin/voip/model/e:encLen	I
+    //   719: lload 12
+    //   721: iconst_0
+    //   722: invokevirtual 813	com/tencent/mm/compatible/deviceinfo/aa:a	(IIJI)V
+    //   725: aload_0
+    //   726: aload_0
+    //   727: getfield 158	com/tencent/mm/plugin/voip/model/e:mGeneratedIdx	J
+    //   730: lconst_1
+    //   731: ladd
+    //   732: putfield 158	com/tencent/mm/plugin/voip/model/e:mGeneratedIdx	J
+    //   735: new 815	android/media/MediaCodec$BufferInfo
+    //   738: dup
+    //   739: invokespecial 816	android/media/MediaCodec$BufferInfo:<init>	()V
+    //   742: astore 14
     //   744: aload_0
-    //   745: getfield 199	com/tencent/mm/plugin/voip/model/e:m_br_kbps	I
-    //   748: sipush 1000
-    //   751: imul
-    //   752: i2d
-    //   753: ldc2_w 837
-    //   756: dmul
-    //   757: dcmpl
-    //   758: ifle +167 -> 925
-    //   761: ldc_w 259
-    //   764: new 261	java/lang/StringBuilder
-    //   767: dup
-    //   768: ldc_w 840
-    //   771: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   774: aload 15
-    //   776: ldc_w 516
-    //   779: invokevirtual 535	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   782: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   785: ldc_w 842
-    //   788: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   791: aload_0
-    //   792: getfield 199	com/tencent/mm/plugin/voip/model/e:m_br_kbps	I
-    //   795: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   798: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   801: invokestatic 298	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   804: aload_0
-    //   805: sipush 2007
-    //   808: putfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   811: aload_0
-    //   812: getfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   815: istore_2
-    //   816: iload_2
-    //   817: ineg
-    //   818: istore_2
-    //   819: ldc_w 704
-    //   822: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   825: iload_2
-    //   826: ireturn
-    //   827: astore 14
-    //   829: ldc_w 259
-    //   832: new 261	java/lang/StringBuilder
-    //   835: dup
-    //   836: ldc_w 341
-    //   839: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   842: aload 14
-    //   844: invokevirtual 342	java/lang/Exception:toString	()Ljava/lang/String;
-    //   847: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   850: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   853: invokestatic 298	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   856: iload_3
-    //   857: istore_2
-    //   858: goto -382 -> 476
-    //   861: aload_0
-    //   862: getfield 844	com/tencent/mm/plugin/voip/model/e:qsg	Z
-    //   865: ifeq +22 -> 887
-    //   868: aload 15
-    //   870: ifnull +17 -> 887
-    //   873: aload_0
-    //   874: getfield 846	com/tencent/mm/plugin/voip/model/e:qse	Landroid/media/MediaMuxer;
-    //   877: aload_0
-    //   878: getfield 848	com/tencent/mm/plugin/voip/model/e:qsf	I
-    //   881: aload 15
-    //   883: aload_1
-    //   884: invokevirtual 854	android/media/MediaMuxer:writeSampleData	(ILjava/nio/ByteBuffer;Landroid/media/MediaCodec$BufferInfo;)V
-    //   887: aload_1
-    //   888: getfield 857	android/media/MediaCodec$BufferInfo:flags	I
-    //   891: istore_3
-    //   892: getstatic 87	com/tencent/mm/plugin/voip/model/e:frameID	I
-    //   895: iconst_1
-    //   896: iadd
-    //   897: putstatic 87	com/tencent/mm/plugin/voip/model/e:frameID	I
-    //   900: aload_0
-    //   901: getfield 206	com/tencent/mm/plugin/voip/model/e:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   904: iload 7
-    //   906: iconst_0
-    //   907: invokevirtual 861	com/tencent/mm/compatible/deviceinfo/z:releaseOutputBuffer	(IZ)V
-    //   910: aload_0
-    //   911: getfield 206	com/tencent/mm/plugin/voip/model/e:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   914: aload_1
-    //   915: aload_0
-    //   916: getfield 144	com/tencent/mm/plugin/voip/model/e:TIMEOUT_USEC	I
-    //   919: i2l
-    //   920: invokevirtual 827	com/tencent/mm/compatible/deviceinfo/z:dequeueOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;J)I
-    //   923: istore 7
-    //   925: iload_3
-    //   926: istore_2
-    //   927: iload 7
-    //   929: iflt +1443 -> 2372
-    //   932: aload 14
-    //   934: iload 7
-    //   936: aaload
-    //   937: astore 15
-    //   939: aload_1
-    //   940: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   943: newarray byte
-    //   945: astore 16
-    //   947: aload 15
-    //   949: aload 16
-    //   951: invokevirtual 866	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
-    //   954: pop
-    //   955: aload_0
-    //   956: getfield 868	com/tencent/mm/plugin/voip/model/e:outputStream	Ljava/io/BufferedOutputStream;
-    //   959: ifnull +16 -> 975
-    //   962: aload_0
-    //   963: getfield 868	com/tencent/mm/plugin/voip/model/e:outputStream	Ljava/io/BufferedOutputStream;
-    //   966: aload 16
-    //   968: iconst_0
-    //   969: aload 16
-    //   971: arraylength
-    //   972: invokevirtual 771	java/io/BufferedOutputStream:write	([BII)V
-    //   975: aload_1
-    //   976: getfield 857	android/media/MediaCodec$BufferInfo:flags	I
-    //   979: iconst_2
-    //   980: if_icmpne +554 -> 1534
-    //   983: aload 16
-    //   985: invokestatic 870	com/tencent/mm/plugin/voip/model/e:bS	([B)Ljava/util/ArrayList;
-    //   988: astore 17
-    //   990: new 872	com/tencent/mm/protocal/protobuf/cap
-    //   993: dup
-    //   994: invokespecial 873	com/tencent/mm/protocal/protobuf/cap:<init>	()V
-    //   997: astore 18
-    //   999: iconst_0
-    //   1000: istore 10
-    //   1002: iconst_0
-    //   1003: istore 11
-    //   1005: iconst_0
-    //   1006: istore 4
-    //   1008: iconst_0
-    //   1009: istore_2
-    //   1010: iconst_0
-    //   1011: istore 6
-    //   1013: iconst_0
-    //   1014: istore_3
-    //   1015: aload 17
-    //   1017: invokevirtual 875	java/util/ArrayList:size	()I
-    //   1020: iconst_3
-    //   1021: if_icmpne +328 -> 1349
-    //   1024: aload_0
-    //   1025: getfield 142	com/tencent/mm/plugin/voip/model/e:ENCODING	Ljava/lang/String;
-    //   1028: ldc 247
-    //   1030: invokevirtual 251	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   1033: ifeq +316 -> 1349
-    //   1036: aload 17
-    //   1038: iconst_0
-    //   1039: invokevirtual 878	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   1042: checkcast 233	java/lang/Integer
-    //   1045: invokevirtual 881	java/lang/Integer:intValue	()I
-    //   1048: iconst_4
-    //   1049: iadd
-    //   1050: istore 8
-    //   1052: aload 17
-    //   1054: iconst_1
-    //   1055: invokevirtual 878	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   1058: checkcast 233	java/lang/Integer
-    //   1061: invokevirtual 881	java/lang/Integer:intValue	()I
-    //   1064: iconst_4
-    //   1065: iadd
-    //   1066: istore 4
-    //   1068: aload 17
+    //   745: getfield 206	com/tencent/mm/plugin/voip/model/e:tQL	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   748: aload 14
+    //   750: aload_0
+    //   751: getfield 144	com/tencent/mm/plugin/voip/model/e:TIMEOUT_USEC	I
+    //   754: i2l
+    //   755: invokevirtual 819	com/tencent/mm/compatible/deviceinfo/aa:a	(Landroid/media/MediaCodec$BufferInfo;J)I
+    //   758: istore_3
+    //   759: iload 6
+    //   761: istore_2
+    //   762: iload_3
+    //   763: istore 7
+    //   765: iload_3
+    //   766: bipush 254
+    //   768: if_icmpne +246 -> 1014
+    //   771: aload_0
+    //   772: getfield 206	com/tencent/mm/plugin/voip/model/e:tQL	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   775: invokevirtual 823	com/tencent/mm/compatible/deviceinfo/aa:avi	()Landroid/media/MediaFormat;
+    //   778: astore 15
+    //   780: ldc_w 263
+    //   783: ldc_w 825
+    //   786: aload 15
+    //   788: invokestatic 308	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   791: invokevirtual 272	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   794: invokestatic 395	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   797: iload 6
+    //   799: istore_2
+    //   800: iload_3
+    //   801: istore 7
+    //   803: aload 15
+    //   805: ldc_w 482
+    //   808: invokevirtual 828	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   811: ifeq +203 -> 1014
+    //   814: iload 6
+    //   816: istore_2
+    //   817: iload_3
+    //   818: istore 7
+    //   820: aload 15
+    //   822: ldc_w 482
+    //   825: invokevirtual 501	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   828: i2d
+    //   829: aload_0
+    //   830: getfield 199	com/tencent/mm/plugin/voip/model/e:m_br_kbps	I
+    //   833: sipush 1000
+    //   836: imul
+    //   837: i2d
+    //   838: ldc2_w 829
+    //   841: dmul
+    //   842: dcmpl
+    //   843: ifle +171 -> 1014
+    //   846: ldc_w 263
+    //   849: new 328	java/lang/StringBuilder
+    //   852: dup
+    //   853: ldc_w 832
+    //   856: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   859: aload 15
+    //   861: ldc_w 482
+    //   864: invokevirtual 501	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   867: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   870: ldc_w 834
+    //   873: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   876: aload_0
+    //   877: getfield 199	com/tencent/mm/plugin/voip/model/e:m_br_kbps	I
+    //   880: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   883: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   886: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   889: aload_0
+    //   890: sipush 2007
+    //   893: putfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   896: aload_0
+    //   897: getfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   900: istore_2
+    //   901: iload_2
+    //   902: ineg
+    //   903: istore_2
+    //   904: ldc_w 692
+    //   907: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   910: iload_2
+    //   911: ireturn
+    //   912: astore 14
+    //   914: ldc_w 263
+    //   917: new 328	java/lang/StringBuilder
+    //   920: dup
+    //   921: ldc_w 836
+    //   924: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   927: aload 14
+    //   929: invokevirtual 336	java/lang/Exception:toString	()Ljava/lang/String;
+    //   932: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   935: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   938: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   941: aload_1
+    //   942: astore 14
+    //   944: goto -386 -> 558
+    //   947: aload_0
+    //   948: getfield 838	com/tencent/mm/plugin/voip/model/e:tQP	Z
+    //   951: ifeq +23 -> 974
+    //   954: aload 15
+    //   956: ifnull +18 -> 974
+    //   959: aload_0
+    //   960: getfield 840	com/tencent/mm/plugin/voip/model/e:tQN	Landroid/media/MediaMuxer;
+    //   963: aload_0
+    //   964: getfield 842	com/tencent/mm/plugin/voip/model/e:tQO	I
+    //   967: aload 15
+    //   969: aload 14
+    //   971: invokevirtual 848	android/media/MediaMuxer:writeSampleData	(ILjava/nio/ByteBuffer;Landroid/media/MediaCodec$BufferInfo;)V
+    //   974: aload 14
+    //   976: getfield 851	android/media/MediaCodec$BufferInfo:flags	I
+    //   979: istore_2
+    //   980: getstatic 87	com/tencent/mm/plugin/voip/model/e:frameID	I
+    //   983: iconst_1
+    //   984: iadd
+    //   985: putstatic 87	com/tencent/mm/plugin/voip/model/e:frameID	I
+    //   988: aload_0
+    //   989: getfield 206	com/tencent/mm/plugin/voip/model/e:tQL	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   992: iload 7
+    //   994: iconst_0
+    //   995: invokevirtual 855	com/tencent/mm/compatible/deviceinfo/aa:releaseOutputBuffer	(IZ)V
+    //   998: aload_0
+    //   999: getfield 206	com/tencent/mm/plugin/voip/model/e:tQL	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   1002: aload 14
+    //   1004: aload_0
+    //   1005: getfield 144	com/tencent/mm/plugin/voip/model/e:TIMEOUT_USEC	I
+    //   1008: i2l
+    //   1009: invokevirtual 819	com/tencent/mm/compatible/deviceinfo/aa:a	(Landroid/media/MediaCodec$BufferInfo;J)I
+    //   1012: istore 7
+    //   1014: iload_2
+    //   1015: istore 6
+    //   1017: iload 7
+    //   1019: iflt +1378 -> 2397
+    //   1022: aload_1
+    //   1023: iload 7
+    //   1025: aaload
+    //   1026: astore 15
+    //   1028: aload 14
+    //   1030: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1033: newarray byte
+    //   1035: astore 16
+    //   1037: aload 15
+    //   1039: aload 16
+    //   1041: invokevirtual 860	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
+    //   1044: pop
+    //   1045: aload_0
+    //   1046: getfield 862	com/tencent/mm/plugin/voip/model/e:outputStream	Ljava/io/BufferedOutputStream;
+    //   1049: ifnull +16 -> 1065
+    //   1052: aload_0
+    //   1053: getfield 862	com/tencent/mm/plugin/voip/model/e:outputStream	Ljava/io/BufferedOutputStream;
+    //   1056: aload 16
+    //   1058: iconst_0
+    //   1059: aload 16
+    //   1061: arraylength
+    //   1062: invokevirtual 764	java/io/BufferedOutputStream:write	([BII)V
+    //   1065: aload 14
+    //   1067: getfield 851	android/media/MediaCodec$BufferInfo:flags	I
     //   1070: iconst_2
-    //   1071: invokevirtual 878	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   1074: checkcast 233	java/lang/Integer
-    //   1077: invokevirtual 881	java/lang/Integer:intValue	()I
-    //   1080: iconst_4
-    //   1081: iadd
-    //   1082: istore 6
-    //   1084: iload 4
-    //   1086: iload 8
-    //   1088: isub
-    //   1089: iconst_4
-    //   1090: isub
-    //   1091: istore 9
-    //   1093: iload 6
-    //   1095: iload 4
-    //   1097: isub
-    //   1098: iconst_4
-    //   1099: isub
-    //   1100: istore_2
-    //   1101: aload_1
-    //   1102: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1105: iload 6
-    //   1107: isub
-    //   1108: istore_3
-    //   1109: aload 18
-    //   1111: aload 16
-    //   1113: iload 8
-    //   1115: iload 9
-    //   1117: invokestatic 887	com/tencent/mm/bw/b:Q	([BII)Lcom/tencent/mm/bw/b;
-    //   1120: putfield 891	com/tencent/mm/protocal/protobuf/cap:MfN	Lcom/tencent/mm/bw/b;
-    //   1123: aload_0
-    //   1124: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   1127: ifnonnull +13 -> 1140
-    //   1130: aload_0
-    //   1131: aload_1
-    //   1132: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1135: newarray byte
-    //   1137: putfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   1140: aload_0
-    //   1141: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   1144: ifnull +40 -> 1184
-    //   1147: aload_1
-    //   1148: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1151: aload_0
-    //   1152: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   1155: arraylength
-    //   1156: if_icmple +13 -> 1169
-    //   1159: aload_0
-    //   1160: aload_1
-    //   1161: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1164: newarray byte
-    //   1166: putfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   1169: aload 16
-    //   1171: iconst_0
-    //   1172: aload_0
-    //   1173: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   1176: iconst_0
-    //   1177: aload_1
-    //   1178: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1181: invokestatic 895	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   1184: ldc_w 259
-    //   1187: new 261	java/lang/StringBuilder
-    //   1190: dup
-    //   1191: ldc_w 897
-    //   1194: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1197: iload 4
-    //   1199: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1202: ldc_w 899
-    //   1205: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1208: iload_2
-    //   1209: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1212: ldc_w 901
-    //   1215: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1218: iload 6
-    //   1220: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1223: ldc_w 899
-    //   1226: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1229: iload_3
-    //   1230: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1233: ldc_w 903
-    //   1236: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1239: iload 8
-    //   1241: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1244: ldc_w 899
-    //   1247: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1250: iload 9
-    //   1252: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1255: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1258: invokestatic 286	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1261: aload_0
-    //   1262: getfield 173	com/tencent/mm/plugin/voip/model/e:qsj	I
-    //   1265: iconst_1
-    //   1266: if_icmpeq +202 -> 1468
-    //   1269: aload_0
-    //   1270: getfield 171	com/tencent/mm/plugin/voip/model/e:qsi	Lcom/tencent/mm/plugin/voip/model/g;
-    //   1273: aload 16
-    //   1275: invokevirtual 907	com/tencent/mm/plugin/voip/model/g:cg	([B)Z
-    //   1278: ifeq +190 -> 1468
-    //   1281: aload_0
-    //   1282: aload_0
-    //   1283: getfield 171	com/tencent/mm/plugin/voip/model/e:qsi	Lcom/tencent/mm/plugin/voip/model/g;
-    //   1286: getfield 910	com/tencent/mm/plugin/voip/model/g:GTT	I
-    //   1289: putfield 177	com/tencent/mm/plugin/voip/model/e:qsl	I
-    //   1292: aload_0
-    //   1293: iconst_1
-    //   1294: putfield 175	com/tencent/mm/plugin/voip/model/e:qsk	I
-    //   1297: ldc_w 259
-    //   1300: new 261	java/lang/StringBuilder
-    //   1303: dup
-    //   1304: ldc_w 912
-    //   1307: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1310: aload_0
-    //   1311: getfield 175	com/tencent/mm/plugin/voip/model/e:qsk	I
-    //   1314: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1317: ldc_w 914
-    //   1320: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1323: aload_0
-    //   1324: getfield 177	com/tencent/mm/plugin/voip/model/e:qsl	I
-    //   1327: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1330: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1333: invokestatic 386	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1336: aload_0
-    //   1337: invokespecial 752	com/tencent/mm/plugin/voip/model/e:cyY	()I
-    //   1340: istore_2
-    //   1341: ldc_w 704
-    //   1344: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1347: iload_2
-    //   1348: ireturn
-    //   1349: iload 11
-    //   1351: istore 9
-    //   1353: iload 10
-    //   1355: istore 8
-    //   1357: aload 17
-    //   1359: invokevirtual 875	java/util/ArrayList:size	()I
-    //   1362: iconst_2
-    //   1363: if_icmpne -240 -> 1123
-    //   1366: aload 17
-    //   1368: iconst_0
-    //   1369: invokevirtual 878	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   1372: checkcast 233	java/lang/Integer
-    //   1375: invokevirtual 881	java/lang/Integer:intValue	()I
-    //   1378: iconst_4
-    //   1379: iadd
-    //   1380: istore 4
-    //   1382: aload 17
-    //   1384: iconst_1
-    //   1385: invokevirtual 878	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   1388: checkcast 233	java/lang/Integer
-    //   1391: invokevirtual 881	java/lang/Integer:intValue	()I
-    //   1394: iconst_4
-    //   1395: iadd
-    //   1396: istore 6
-    //   1398: iload 6
-    //   1400: iload 4
-    //   1402: isub
-    //   1403: iconst_4
-    //   1404: isub
-    //   1405: istore_2
-    //   1406: aload_1
-    //   1407: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1410: iload 6
-    //   1412: isub
-    //   1413: istore_3
-    //   1414: iload 11
-    //   1416: istore 9
-    //   1418: iload 10
-    //   1420: istore 8
-    //   1422: goto -299 -> 1123
-    //   1425: astore_1
-    //   1426: ldc_w 259
-    //   1429: new 261	java/lang/StringBuilder
-    //   1432: dup
-    //   1433: ldc_w 916
-    //   1436: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1439: aload_1
-    //   1440: invokevirtual 426	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1443: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1446: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1449: invokestatic 298	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1452: aload_0
-    //   1453: sipush 2005
-    //   1456: putfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   1459: aload_0
-    //   1460: getfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   1463: ineg
-    //   1464: istore_2
-    //   1465: goto -124 -> 1341
-    //   1468: aload 18
-    //   1470: iconst_4
-    //   1471: putfield 919	com/tencent/mm/protocal/protobuf/cap:MfK	I
-    //   1474: aload 18
-    //   1476: aload 16
-    //   1478: iload 4
-    //   1480: iload_2
-    //   1481: invokestatic 887	com/tencent/mm/bw/b:Q	([BII)Lcom/tencent/mm/bw/b;
-    //   1484: putfield 922	com/tencent/mm/protocal/protobuf/cap:MfL	Lcom/tencent/mm/bw/b;
-    //   1487: aload 18
-    //   1489: aload 16
-    //   1491: iload 6
-    //   1493: iload_3
-    //   1494: invokestatic 887	com/tencent/mm/bw/b:Q	([BII)Lcom/tencent/mm/bw/b;
-    //   1497: putfield 925	com/tencent/mm/protocal/protobuf/cap:MfM	Lcom/tencent/mm/bw/b;
-    //   1500: aload 18
-    //   1502: invokevirtual 928	com/tencent/mm/protocal/protobuf/cap:toByteArray	()[B
-    //   1505: arraylength
-    //   1506: istore_2
-    //   1507: aload_0
-    //   1508: aload 18
-    //   1510: invokevirtual 928	com/tencent/mm/protocal/protobuf/cap:toByteArray	()[B
-    //   1513: aload_1
-    //   1514: getfield 857	android/media/MediaCodec$BufferInfo:flags	I
-    //   1517: iload_2
-    //   1518: invokespecial 930	com/tencent/mm/plugin/voip/model/e:I	([BII)I
-    //   1521: istore_2
-    //   1522: iload_2
-    //   1523: ifge -662 -> 861
-    //   1526: ldc_w 704
-    //   1529: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1532: iload_2
-    //   1533: ireturn
-    //   1534: aload_0
-    //   1535: getfield 173	com/tencent/mm/plugin/voip/model/e:qsj	I
-    //   1538: iconst_1
-    //   1539: if_icmpeq +126 -> 1665
-    //   1542: aload_0
-    //   1543: getfield 171	com/tencent/mm/plugin/voip/model/e:qsi	Lcom/tencent/mm/plugin/voip/model/g;
-    //   1546: aload 16
-    //   1548: invokevirtual 933	com/tencent/mm/plugin/voip/model/g:ch	([B)Z
-    //   1551: ifeq +114 -> 1665
-    //   1554: aload_0
-    //   1555: aload_0
-    //   1556: getfield 171	com/tencent/mm/plugin/voip/model/e:qsi	Lcom/tencent/mm/plugin/voip/model/g;
-    //   1559: getfield 910	com/tencent/mm/plugin/voip/model/g:GTT	I
-    //   1562: putfield 177	com/tencent/mm/plugin/voip/model/e:qsl	I
-    //   1565: aload_0
-    //   1566: iconst_1
-    //   1567: putfield 175	com/tencent/mm/plugin/voip/model/e:qsk	I
-    //   1570: ldc_w 259
-    //   1573: new 261	java/lang/StringBuilder
-    //   1576: dup
-    //   1577: ldc_w 912
-    //   1580: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1583: aload_0
-    //   1584: getfield 175	com/tencent/mm/plugin/voip/model/e:qsk	I
-    //   1587: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1590: ldc_w 914
-    //   1593: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1596: aload_0
-    //   1597: getfield 177	com/tencent/mm/plugin/voip/model/e:qsl	I
-    //   1600: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1603: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1606: invokestatic 386	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1609: aload_0
-    //   1610: invokespecial 752	com/tencent/mm/plugin/voip/model/e:cyY	()I
-    //   1613: istore_2
-    //   1614: ldc_w 704
-    //   1617: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1620: iload_2
-    //   1621: ireturn
-    //   1622: astore_1
-    //   1623: ldc_w 259
-    //   1626: new 261	java/lang/StringBuilder
-    //   1629: dup
-    //   1630: ldc_w 916
-    //   1633: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1636: aload_1
-    //   1637: invokevirtual 426	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1640: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1643: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1646: invokestatic 298	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1071: if_icmpne +557 -> 1628
+    //   1074: aload 16
+    //   1076: invokestatic 864	com/tencent/mm/plugin/voip/model/e:ci	([B)Ljava/util/ArrayList;
+    //   1079: astore 17
+    //   1081: new 866	com/tencent/mm/protocal/protobuf/ciq
+    //   1084: dup
+    //   1085: invokespecial 867	com/tencent/mm/protocal/protobuf/ciq:<init>	()V
+    //   1088: astore 18
+    //   1090: iconst_0
+    //   1091: istore 10
+    //   1093: iconst_0
+    //   1094: istore 11
+    //   1096: iconst_0
+    //   1097: istore 6
+    //   1099: iconst_0
+    //   1100: istore 4
+    //   1102: iconst_0
+    //   1103: istore_2
+    //   1104: iconst_0
+    //   1105: istore_3
+    //   1106: aload 17
+    //   1108: invokevirtual 869	java/util/ArrayList:size	()I
+    //   1111: iconst_3
+    //   1112: if_icmpne +331 -> 1443
+    //   1115: aload_0
+    //   1116: getfield 142	com/tencent/mm/plugin/voip/model/e:ENCODING	Ljava/lang/String;
+    //   1119: ldc 248
+    //   1121: invokevirtual 252	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   1124: ifeq +319 -> 1443
+    //   1127: aload 17
+    //   1129: iconst_0
+    //   1130: invokevirtual 872	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1133: checkcast 233	java/lang/Integer
+    //   1136: invokevirtual 875	java/lang/Integer:intValue	()I
+    //   1139: iconst_4
+    //   1140: iadd
+    //   1141: istore 8
+    //   1143: aload 17
+    //   1145: iconst_1
+    //   1146: invokevirtual 872	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1149: checkcast 233	java/lang/Integer
+    //   1152: invokevirtual 875	java/lang/Integer:intValue	()I
+    //   1155: iconst_4
+    //   1156: iadd
+    //   1157: istore 6
+    //   1159: aload 17
+    //   1161: iconst_2
+    //   1162: invokevirtual 872	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1165: checkcast 233	java/lang/Integer
+    //   1168: invokevirtual 875	java/lang/Integer:intValue	()I
+    //   1171: iconst_4
+    //   1172: iadd
+    //   1173: istore_2
+    //   1174: iload 6
+    //   1176: iload 8
+    //   1178: isub
+    //   1179: iconst_4
+    //   1180: isub
+    //   1181: istore 9
+    //   1183: iload_2
+    //   1184: iload 6
+    //   1186: isub
+    //   1187: iconst_4
+    //   1188: isub
+    //   1189: istore 4
+    //   1191: aload 14
+    //   1193: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1196: iload_2
+    //   1197: isub
+    //   1198: istore_3
+    //   1199: aload 18
+    //   1201: aload 16
+    //   1203: iload 8
+    //   1205: iload 9
+    //   1207: invokestatic 880	com/tencent/mm/cd/b:S	([BII)Lcom/tencent/mm/cd/b;
+    //   1210: putfield 884	com/tencent/mm/protocal/protobuf/ciq:Tpz	Lcom/tencent/mm/cd/b;
+    //   1213: aload_0
+    //   1214: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   1217: ifnonnull +14 -> 1231
+    //   1220: aload_0
+    //   1221: aload 14
+    //   1223: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1226: newarray byte
+    //   1228: putfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   1231: aload_0
+    //   1232: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   1235: ifnull +43 -> 1278
+    //   1238: aload 14
+    //   1240: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1243: aload_0
+    //   1244: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   1247: arraylength
+    //   1248: if_icmple +14 -> 1262
+    //   1251: aload_0
+    //   1252: aload 14
+    //   1254: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1257: newarray byte
+    //   1259: putfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   1262: aload 16
+    //   1264: iconst_0
+    //   1265: aload_0
+    //   1266: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   1269: iconst_0
+    //   1270: aload 14
+    //   1272: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1275: invokestatic 888	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   1278: ldc_w 263
+    //   1281: new 328	java/lang/StringBuilder
+    //   1284: dup
+    //   1285: ldc_w 890
+    //   1288: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1291: iload 6
+    //   1293: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1296: ldc_w 892
+    //   1299: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1302: iload 4
+    //   1304: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1307: ldc_w 894
+    //   1310: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1313: iload_2
+    //   1314: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1317: ldc_w 892
+    //   1320: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1323: iload_3
+    //   1324: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1327: ldc_w 896
+    //   1330: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1333: iload 8
+    //   1335: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1338: ldc_w 892
+    //   1341: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1344: iload 9
+    //   1346: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1349: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1352: invokestatic 360	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1355: aload_0
+    //   1356: getfield 173	com/tencent/mm/plugin/voip/model/e:tQS	I
+    //   1359: iconst_1
+    //   1360: if_icmpeq +201 -> 1561
+    //   1363: aload_0
+    //   1364: getfield 171	com/tencent/mm/plugin/voip/model/e:tQR	Lcom/tencent/mm/plugin/voip/model/g;
+    //   1367: aload 16
+    //   1369: invokevirtual 900	com/tencent/mm/plugin/voip/model/g:cw	([B)Z
+    //   1372: ifeq +189 -> 1561
+    //   1375: aload_0
+    //   1376: aload_0
+    //   1377: getfield 171	com/tencent/mm/plugin/voip/model/e:tQR	Lcom/tencent/mm/plugin/voip/model/g;
+    //   1380: getfield 903	com/tencent/mm/plugin/voip/model/g:NKf	I
+    //   1383: putfield 177	com/tencent/mm/plugin/voip/model/e:tQU	I
+    //   1386: aload_0
+    //   1387: iconst_1
+    //   1388: putfield 175	com/tencent/mm/plugin/voip/model/e:tQT	I
+    //   1391: ldc_w 263
+    //   1394: new 328	java/lang/StringBuilder
+    //   1397: dup
+    //   1398: ldc_w 905
+    //   1401: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1404: aload_0
+    //   1405: getfield 175	com/tencent/mm/plugin/voip/model/e:tQT	I
+    //   1408: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1411: ldc_w 907
+    //   1414: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1417: aload_0
+    //   1418: getfield 177	com/tencent/mm/plugin/voip/model/e:tQU	I
+    //   1421: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1424: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1427: invokestatic 395	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1430: aload_0
+    //   1431: invokespecial 745	com/tencent/mm/plugin/voip/model/e:cNw	()I
+    //   1434: istore_2
+    //   1435: ldc_w 692
+    //   1438: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1441: iload_2
+    //   1442: ireturn
+    //   1443: iload 11
+    //   1445: istore 9
+    //   1447: iload 10
+    //   1449: istore 8
+    //   1451: aload 17
+    //   1453: invokevirtual 869	java/util/ArrayList:size	()I
+    //   1456: iconst_2
+    //   1457: if_icmpne -244 -> 1213
+    //   1460: aload 17
+    //   1462: iconst_0
+    //   1463: invokevirtual 872	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1466: checkcast 233	java/lang/Integer
+    //   1469: invokevirtual 875	java/lang/Integer:intValue	()I
+    //   1472: iconst_4
+    //   1473: iadd
+    //   1474: istore 6
+    //   1476: aload 17
+    //   1478: iconst_1
+    //   1479: invokevirtual 872	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1482: checkcast 233	java/lang/Integer
+    //   1485: invokevirtual 875	java/lang/Integer:intValue	()I
+    //   1488: iconst_4
+    //   1489: iadd
+    //   1490: istore_2
+    //   1491: iload_2
+    //   1492: iload 6
+    //   1494: isub
+    //   1495: iconst_4
+    //   1496: isub
+    //   1497: istore 4
+    //   1499: aload 14
+    //   1501: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1504: iload_2
+    //   1505: isub
+    //   1506: istore_3
+    //   1507: iload 11
+    //   1509: istore 9
+    //   1511: iload 10
+    //   1513: istore 8
+    //   1515: goto -302 -> 1213
+    //   1518: astore_1
+    //   1519: ldc_w 263
+    //   1522: new 328	java/lang/StringBuilder
+    //   1525: dup
+    //   1526: ldc_w 909
+    //   1529: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1532: aload_1
+    //   1533: invokevirtual 435	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1536: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1539: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1542: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1545: aload_0
+    //   1546: sipush 2005
+    //   1549: putfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   1552: aload_0
+    //   1553: getfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   1556: ineg
+    //   1557: istore_2
+    //   1558: goto -123 -> 1435
+    //   1561: aload 18
+    //   1563: iconst_4
+    //   1564: putfield 912	com/tencent/mm/protocal/protobuf/ciq:Tpw	I
+    //   1567: aload 18
+    //   1569: aload 16
+    //   1571: iload 6
+    //   1573: iload 4
+    //   1575: invokestatic 880	com/tencent/mm/cd/b:S	([BII)Lcom/tencent/mm/cd/b;
+    //   1578: putfield 915	com/tencent/mm/protocal/protobuf/ciq:Tpx	Lcom/tencent/mm/cd/b;
+    //   1581: aload 18
+    //   1583: aload 16
+    //   1585: iload_2
+    //   1586: iload_3
+    //   1587: invokestatic 880	com/tencent/mm/cd/b:S	([BII)Lcom/tencent/mm/cd/b;
+    //   1590: putfield 918	com/tencent/mm/protocal/protobuf/ciq:Tpy	Lcom/tencent/mm/cd/b;
+    //   1593: aload 18
+    //   1595: invokevirtual 921	com/tencent/mm/protocal/protobuf/ciq:toByteArray	()[B
+    //   1598: arraylength
+    //   1599: istore_2
+    //   1600: aload_0
+    //   1601: aload 18
+    //   1603: invokevirtual 921	com/tencent/mm/protocal/protobuf/ciq:toByteArray	()[B
+    //   1606: aload 14
+    //   1608: getfield 851	android/media/MediaCodec$BufferInfo:flags	I
+    //   1611: iload_2
+    //   1612: invokespecial 923	com/tencent/mm/plugin/voip/model/e:K	([BII)I
+    //   1615: istore_2
+    //   1616: iload_2
+    //   1617: ifge -670 -> 947
+    //   1620: ldc_w 692
+    //   1623: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1626: iload_2
+    //   1627: ireturn
+    //   1628: aload_0
+    //   1629: getfield 173	com/tencent/mm/plugin/voip/model/e:tQS	I
+    //   1632: iconst_1
+    //   1633: if_icmpeq +126 -> 1759
+    //   1636: aload_0
+    //   1637: getfield 171	com/tencent/mm/plugin/voip/model/e:tQR	Lcom/tencent/mm/plugin/voip/model/g;
+    //   1640: aload 16
+    //   1642: invokevirtual 926	com/tencent/mm/plugin/voip/model/g:cx	([B)Z
+    //   1645: ifeq +114 -> 1759
+    //   1648: aload_0
     //   1649: aload_0
-    //   1650: sipush 2005
-    //   1653: putfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   1656: aload_0
-    //   1657: getfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   1660: ineg
-    //   1661: istore_2
-    //   1662: goto -48 -> 1614
-    //   1665: aload_1
-    //   1666: getfield 857	android/media/MediaCodec$BufferInfo:flags	I
-    //   1669: ifeq +71 -> 1740
-    //   1672: aload_1
-    //   1673: getfield 857	android/media/MediaCodec$BufferInfo:flags	I
-    //   1676: iconst_1
-    //   1677: if_icmpeq +63 -> 1740
-    //   1680: aload_0
-    //   1681: sipush 2009
-    //   1684: putfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   1687: aload_0
-    //   1688: getfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   1691: ineg
-    //   1692: istore_2
-    //   1693: ldc_w 259
-    //   1696: new 261	java/lang/StringBuilder
-    //   1699: dup
-    //   1700: ldc_w 935
-    //   1703: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1706: aload_1
-    //   1707: getfield 857	android/media/MediaCodec$BufferInfo:flags	I
-    //   1710: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1713: ldc_w 899
-    //   1716: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1719: aload_1
-    //   1720: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1723: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1726: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1729: invokestatic 386	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1732: ldc_w 704
-    //   1735: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1738: iload_2
-    //   1739: ireturn
-    //   1740: iconst_0
-    //   1741: istore_3
-    //   1742: iload_3
-    //   1743: istore_2
-    //   1744: aload_1
-    //   1745: getfield 857	android/media/MediaCodec$BufferInfo:flags	I
-    //   1748: iconst_1
-    //   1749: if_icmpne +64 -> 1813
-    //   1752: aload_0
-    //   1753: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   1756: arraylength
-    //   1757: newarray byte
-    //   1759: astore 17
-    //   1761: aload 16
-    //   1763: iconst_0
-    //   1764: aload 17
-    //   1766: iconst_0
-    //   1767: aload_0
-    //   1768: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   1771: arraylength
-    //   1772: invokestatic 895	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   1775: aload 17
-    //   1777: aload_0
-    //   1778: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   1781: invokestatic 941	java/util/Arrays:equals	([B[B)Z
-    //   1784: ifeq +247 -> 2031
-    //   1787: aload_0
-    //   1788: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   1791: arraylength
-    //   1792: istore_2
-    //   1793: ldc_w 259
-    //   1796: ldc_w 943
-    //   1799: iconst_1
-    //   1800: anewarray 4	java/lang/Object
-    //   1803: dup
-    //   1804: iconst_0
-    //   1805: iload_2
-    //   1806: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1809: aastore
-    //   1810: invokestatic 946	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1813: iconst_4
-    //   1814: invokestatic 949	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
-    //   1817: astore 17
-    //   1819: aload 17
-    //   1821: aload_1
-    //   1822: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1825: iconst_4
-    //   1826: isub
-    //   1827: iload_2
-    //   1828: isub
-    //   1829: invokevirtual 951	java/nio/ByteBuffer:putInt	(I)Ljava/nio/ByteBuffer;
-    //   1832: pop
-    //   1833: aload 17
-    //   1835: getstatic 954	java/nio/ByteOrder:BIG_ENDIAN	Ljava/nio/ByteOrder;
-    //   1838: invokevirtual 584	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
-    //   1841: invokevirtual 765	java/nio/ByteBuffer:array	()[B
-    //   1844: iconst_0
-    //   1845: aload 16
-    //   1847: iload_2
-    //   1848: iconst_4
-    //   1849: invokestatic 895	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   1852: invokestatic 776	java/lang/System:currentTimeMillis	()J
-    //   1855: lstore 12
-    //   1857: ldc_w 259
-    //   1860: new 261	java/lang/StringBuilder
-    //   1863: dup
-    //   1864: ldc_w 956
-    //   1867: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1870: aload_1
-    //   1871: getfield 857	android/media/MediaCodec$BufferInfo:flags	I
-    //   1874: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1877: ldc_w 958
-    //   1880: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1883: aload_1
-    //   1884: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1887: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1890: ldc_w 780
-    //   1893: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1896: getstatic 87	com/tencent/mm/plugin/voip/model/e:frameID	I
-    //   1899: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1902: ldc_w 782
-    //   1905: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1908: lload 12
-    //   1910: invokevirtual 785	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1913: ldc_w 960
-    //   1916: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1919: iload_2
-    //   1920: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1923: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1926: invokestatic 286	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1929: new 962	com/tencent/mm/protocal/protobuf/cao
-    //   1932: dup
-    //   1933: invokespecial 963	com/tencent/mm/protocal/protobuf/cao:<init>	()V
-    //   1936: astore 17
-    //   1938: aload 17
-    //   1940: aload 16
-    //   1942: iload_2
-    //   1943: aload_1
-    //   1944: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1947: iload_2
-    //   1948: isub
-    //   1949: invokestatic 887	com/tencent/mm/bw/b:Q	([BII)Lcom/tencent/mm/bw/b;
-    //   1952: putfield 966	com/tencent/mm/protocal/protobuf/cao:MfG	Lcom/tencent/mm/bw/b;
-    //   1955: aload 17
-    //   1957: iconst_1
-    //   1958: putfield 969	com/tencent/mm/protocal/protobuf/cao:MfH	I
-    //   1961: aload 17
-    //   1963: aload_0
-    //   1964: getfield 167	com/tencent/mm/plugin/voip/model/e:zLK	Ljava/util/LinkedList;
-    //   1967: putfield 972	com/tencent/mm/protocal/protobuf/cao:MfI	Ljava/util/LinkedList;
-    //   1970: aload_0
-    //   1971: getfield 169	com/tencent/mm/plugin/voip/model/e:zLL	Ljava/util/LinkedList;
-    //   1974: iconst_0
-    //   1975: aload_1
-    //   1976: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1979: iload_2
-    //   1980: isub
-    //   1981: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1984: invokevirtual 976	java/util/LinkedList:set	(ILjava/lang/Object;)Ljava/lang/Object;
-    //   1987: pop
-    //   1988: aload 17
+    //   1650: getfield 171	com/tencent/mm/plugin/voip/model/e:tQR	Lcom/tencent/mm/plugin/voip/model/g;
+    //   1653: getfield 903	com/tencent/mm/plugin/voip/model/g:NKf	I
+    //   1656: putfield 177	com/tencent/mm/plugin/voip/model/e:tQU	I
+    //   1659: aload_0
+    //   1660: iconst_1
+    //   1661: putfield 175	com/tencent/mm/plugin/voip/model/e:tQT	I
+    //   1664: ldc_w 263
+    //   1667: new 328	java/lang/StringBuilder
+    //   1670: dup
+    //   1671: ldc_w 905
+    //   1674: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1677: aload_0
+    //   1678: getfield 175	com/tencent/mm/plugin/voip/model/e:tQT	I
+    //   1681: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1684: ldc_w 907
+    //   1687: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1690: aload_0
+    //   1691: getfield 177	com/tencent/mm/plugin/voip/model/e:tQU	I
+    //   1694: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1697: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1700: invokestatic 395	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1703: aload_0
+    //   1704: invokespecial 745	com/tencent/mm/plugin/voip/model/e:cNw	()I
+    //   1707: istore_2
+    //   1708: ldc_w 692
+    //   1711: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1714: iload_2
+    //   1715: ireturn
+    //   1716: astore_1
+    //   1717: ldc_w 263
+    //   1720: new 328	java/lang/StringBuilder
+    //   1723: dup
+    //   1724: ldc_w 909
+    //   1727: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1730: aload_1
+    //   1731: invokevirtual 435	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1734: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1737: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1740: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1743: aload_0
+    //   1744: sipush 2005
+    //   1747: putfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   1750: aload_0
+    //   1751: getfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   1754: ineg
+    //   1755: istore_2
+    //   1756: goto -48 -> 1708
+    //   1759: aload 14
+    //   1761: getfield 851	android/media/MediaCodec$BufferInfo:flags	I
+    //   1764: ifeq +74 -> 1838
+    //   1767: aload 14
+    //   1769: getfield 851	android/media/MediaCodec$BufferInfo:flags	I
+    //   1772: iconst_1
+    //   1773: if_icmpeq +65 -> 1838
+    //   1776: aload_0
+    //   1777: sipush 2009
+    //   1780: putfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   1783: aload_0
+    //   1784: getfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   1787: ineg
+    //   1788: istore_2
+    //   1789: ldc_w 263
+    //   1792: new 328	java/lang/StringBuilder
+    //   1795: dup
+    //   1796: ldc_w 928
+    //   1799: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1802: aload 14
+    //   1804: getfield 851	android/media/MediaCodec$BufferInfo:flags	I
+    //   1807: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1810: ldc_w 892
+    //   1813: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1816: aload 14
+    //   1818: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1821: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1824: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1827: invokestatic 395	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1830: ldc_w 692
+    //   1833: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1836: iload_2
+    //   1837: ireturn
+    //   1838: aload 14
+    //   1840: getfield 851	android/media/MediaCodec$BufferInfo:flags	I
+    //   1843: iconst_1
+    //   1844: if_icmpne +605 -> 2449
+    //   1847: aload_0
+    //   1848: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   1851: arraylength
+    //   1852: newarray byte
+    //   1854: astore 17
+    //   1856: aload 16
+    //   1858: iconst_0
+    //   1859: aload 17
+    //   1861: iconst_0
+    //   1862: aload_0
+    //   1863: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   1866: arraylength
+    //   1867: invokestatic 888	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   1870: aload 17
+    //   1872: aload_0
+    //   1873: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   1876: invokestatic 934	java/util/Arrays:equals	([B[B)Z
+    //   1879: ifeq +174 -> 2053
+    //   1882: aload_0
+    //   1883: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   1886: arraylength
+    //   1887: istore_2
+    //   1888: ldc_w 263
+    //   1891: ldc_w 936
+    //   1894: iconst_1
+    //   1895: anewarray 4	java/lang/Object
+    //   1898: dup
+    //   1899: iconst_0
+    //   1900: iload_2
+    //   1901: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1904: aastore
+    //   1905: invokestatic 939	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1908: iconst_4
+    //   1909: invokestatic 942	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   1912: astore 17
+    //   1914: aload 17
+    //   1916: aload 14
+    //   1918: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1921: iconst_4
+    //   1922: isub
+    //   1923: iload_2
+    //   1924: isub
+    //   1925: invokevirtual 944	java/nio/ByteBuffer:putInt	(I)Ljava/nio/ByteBuffer;
+    //   1928: pop
+    //   1929: aload 17
+    //   1931: getstatic 947	java/nio/ByteOrder:BIG_ENDIAN	Ljava/nio/ByteOrder;
+    //   1934: invokevirtual 608	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+    //   1937: invokevirtual 755	java/nio/ByteBuffer:array	()[B
+    //   1940: iconst_0
+    //   1941: aload 16
+    //   1943: iload_2
+    //   1944: iconst_4
+    //   1945: invokestatic 888	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   1948: new 949	com/tencent/mm/protocal/protobuf/cip
+    //   1951: dup
+    //   1952: invokespecial 950	com/tencent/mm/protocal/protobuf/cip:<init>	()V
+    //   1955: astore 17
+    //   1957: aload 17
+    //   1959: aload 16
+    //   1961: iload_2
+    //   1962: aload 14
+    //   1964: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1967: iload_2
+    //   1968: isub
+    //   1969: invokestatic 880	com/tencent/mm/cd/b:S	([BII)Lcom/tencent/mm/cd/b;
+    //   1972: putfield 953	com/tencent/mm/protocal/protobuf/cip:Tps	Lcom/tencent/mm/cd/b;
+    //   1975: aload 17
+    //   1977: iconst_1
+    //   1978: putfield 956	com/tencent/mm/protocal/protobuf/cip:Tpt	I
+    //   1981: aload 17
+    //   1983: aload_0
+    //   1984: getfield 167	com/tencent/mm/plugin/voip/model/e:Frb	Ljava/util/LinkedList;
+    //   1987: putfield 959	com/tencent/mm/protocal/protobuf/cip:Tpu	Ljava/util/LinkedList;
     //   1990: aload_0
-    //   1991: getfield 169	com/tencent/mm/plugin/voip/model/e:zLL	Ljava/util/LinkedList;
-    //   1994: putfield 979	com/tencent/mm/protocal/protobuf/cao:MfJ	Ljava/util/LinkedList;
-    //   1997: aload 17
-    //   1999: invokevirtual 980	com/tencent/mm/protocal/protobuf/cao:toByteArray	()[B
-    //   2002: arraylength
-    //   2003: istore_2
-    //   2004: aload_0
-    //   2005: aload 17
-    //   2007: invokevirtual 980	com/tencent/mm/protocal/protobuf/cao:toByteArray	()[B
-    //   2010: aload_1
-    //   2011: getfield 857	android/media/MediaCodec$BufferInfo:flags	I
-    //   2014: iload_2
-    //   2015: invokespecial 930	com/tencent/mm/plugin/voip/model/e:I	([BII)I
-    //   2018: istore_2
-    //   2019: iload_2
-    //   2020: ifge -1159 -> 861
-    //   2023: ldc_w 704
-    //   2026: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   2029: iload_2
-    //   2030: ireturn
-    //   2031: aload_0
-    //   2032: getfield 150	com/tencent/mm/plugin/voip/model/e:GTL	[B
-    //   2035: ifnonnull +11 -> 2046
-    //   2038: aload_0
-    //   2039: bipush 100
-    //   2041: newarray byte
-    //   2043: putfield 150	com/tencent/mm/plugin/voip/model/e:GTL	[B
-    //   2046: aload_1
-    //   2047: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   2050: bipush 100
-    //   2052: if_icmple +328 -> 2380
-    //   2055: bipush 100
-    //   2057: istore_2
-    //   2058: aload 16
-    //   2060: iconst_0
-    //   2061: aload_0
-    //   2062: getfield 150	com/tencent/mm/plugin/voip/model/e:GTL	[B
-    //   2065: iconst_0
-    //   2066: iload_2
-    //   2067: invokestatic 895	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   2070: aload_0
-    //   2071: getfield 150	com/tencent/mm/plugin/voip/model/e:GTL	[B
-    //   2074: invokestatic 870	com/tencent/mm/plugin/voip/model/e:bS	([B)Ljava/util/ArrayList;
-    //   2077: astore 17
-    //   2079: iload_3
+    //   1991: getfield 169	com/tencent/mm/plugin/voip/model/e:Frc	Ljava/util/LinkedList;
+    //   1994: iconst_0
+    //   1995: aload 14
+    //   1997: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   2000: iload_2
+    //   2001: isub
+    //   2002: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2005: invokevirtual 963	java/util/LinkedList:set	(ILjava/lang/Object;)Ljava/lang/Object;
+    //   2008: pop
+    //   2009: aload 17
+    //   2011: aload_0
+    //   2012: getfield 169	com/tencent/mm/plugin/voip/model/e:Frc	Ljava/util/LinkedList;
+    //   2015: putfield 966	com/tencent/mm/protocal/protobuf/cip:Tpv	Ljava/util/LinkedList;
+    //   2018: aload 17
+    //   2020: invokevirtual 967	com/tencent/mm/protocal/protobuf/cip:toByteArray	()[B
+    //   2023: arraylength
+    //   2024: istore_2
+    //   2025: aload_0
+    //   2026: aload 17
+    //   2028: invokevirtual 967	com/tencent/mm/protocal/protobuf/cip:toByteArray	()[B
+    //   2031: aload 14
+    //   2033: getfield 851	android/media/MediaCodec$BufferInfo:flags	I
+    //   2036: iload_2
+    //   2037: invokespecial 923	com/tencent/mm/plugin/voip/model/e:K	([BII)I
+    //   2040: istore_2
+    //   2041: iload_2
+    //   2042: ifge -1095 -> 947
+    //   2045: ldc_w 692
+    //   2048: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   2051: iload_2
+    //   2052: ireturn
+    //   2053: aload_0
+    //   2054: getfield 150	com/tencent/mm/plugin/voip/model/e:NJX	[B
+    //   2057: ifnonnull +11 -> 2068
+    //   2060: aload_0
+    //   2061: bipush 100
+    //   2063: newarray byte
+    //   2065: putfield 150	com/tencent/mm/plugin/voip/model/e:NJX	[B
+    //   2068: aload 14
+    //   2070: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   2073: bipush 100
+    //   2075: if_icmple +331 -> 2406
+    //   2078: bipush 100
     //   2080: istore_2
-    //   2081: aload 17
-    //   2083: invokevirtual 875	java/util/ArrayList:size	()I
-    //   2086: iconst_3
-    //   2087: if_icmpne -274 -> 1813
-    //   2090: iload_3
-    //   2091: istore_2
-    //   2092: aload_0
-    //   2093: getfield 142	com/tencent/mm/plugin/voip/model/e:ENCODING	Ljava/lang/String;
-    //   2096: ldc_w 527
-    //   2099: invokevirtual 251	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   2102: ifeq -289 -> 1813
-    //   2105: aload 17
-    //   2107: iconst_0
-    //   2108: invokevirtual 878	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   2111: checkcast 233	java/lang/Integer
-    //   2114: invokevirtual 881	java/lang/Integer:intValue	()I
-    //   2117: istore_3
-    //   2118: aload 17
-    //   2120: iconst_1
-    //   2121: invokevirtual 878	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   2124: checkcast 233	java/lang/Integer
-    //   2127: invokevirtual 881	java/lang/Integer:intValue	()I
-    //   2130: istore 4
-    //   2132: aload 17
-    //   2134: iconst_2
-    //   2135: invokevirtual 878	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   2138: checkcast 233	java/lang/Integer
-    //   2141: invokevirtual 881	java/lang/Integer:intValue	()I
-    //   2144: istore_2
-    //   2145: iload 4
-    //   2147: iload_3
-    //   2148: isub
-    //   2149: istore 6
-    //   2151: iload_2
-    //   2152: iload 4
-    //   2154: isub
-    //   2155: istore 8
-    //   2157: ldc_w 259
-    //   2160: ldc_w 982
-    //   2163: iconst_5
-    //   2164: anewarray 4	java/lang/Object
-    //   2167: dup
-    //   2168: iconst_0
-    //   2169: iload_3
-    //   2170: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2173: aastore
-    //   2174: dup
-    //   2175: iconst_1
-    //   2176: iload 4
-    //   2178: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2181: aastore
-    //   2182: dup
-    //   2183: iconst_2
-    //   2184: iload_2
-    //   2185: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2188: aastore
-    //   2189: dup
-    //   2190: iconst_3
-    //   2191: iload 6
-    //   2193: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2196: aastore
-    //   2197: dup
-    //   2198: iconst_4
-    //   2199: iload 8
-    //   2201: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2204: aastore
-    //   2205: invokestatic 984	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   2208: aload_0
-    //   2209: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   2212: arraylength
-    //   2213: iload 6
-    //   2215: iload 8
-    //   2217: iadd
-    //   2218: if_icmpge +14 -> 2232
-    //   2221: aload_0
-    //   2222: iload 6
-    //   2224: iload 8
-    //   2226: iadd
-    //   2227: newarray byte
-    //   2229: putfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   2232: aload 16
-    //   2234: iload_3
-    //   2235: aload_0
-    //   2236: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   2239: iconst_0
-    //   2240: iload 6
-    //   2242: invokestatic 895	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   2245: aload 16
-    //   2247: iload 8
-    //   2249: aload_0
-    //   2250: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   2253: iload 6
-    //   2255: iload 8
-    //   2257: invokestatic 895	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   2260: new 872	com/tencent/mm/protocal/protobuf/cap
-    //   2263: dup
-    //   2264: invokespecial 873	com/tencent/mm/protocal/protobuf/cap:<init>	()V
-    //   2267: astore 17
-    //   2269: aload 17
-    //   2271: iconst_4
-    //   2272: putfield 919	com/tencent/mm/protocal/protobuf/cap:MfK	I
-    //   2275: aload 17
-    //   2277: aload 16
-    //   2279: iload_3
-    //   2280: iconst_4
-    //   2281: iadd
-    //   2282: iload 6
-    //   2284: iconst_4
-    //   2285: isub
-    //   2286: invokestatic 887	com/tencent/mm/bw/b:Q	([BII)Lcom/tencent/mm/bw/b;
-    //   2289: putfield 922	com/tencent/mm/protocal/protobuf/cap:MfL	Lcom/tencent/mm/bw/b;
-    //   2292: aload 17
-    //   2294: aload 16
-    //   2296: iload 4
-    //   2298: iconst_4
-    //   2299: iadd
-    //   2300: iload 8
-    //   2302: iconst_4
-    //   2303: isub
-    //   2304: invokestatic 887	com/tencent/mm/bw/b:Q	([BII)Lcom/tencent/mm/bw/b;
-    //   2307: putfield 925	com/tencent/mm/protocal/protobuf/cap:MfM	Lcom/tencent/mm/bw/b;
-    //   2310: aload 17
-    //   2312: invokevirtual 928	com/tencent/mm/protocal/protobuf/cap:toByteArray	()[B
-    //   2315: arraylength
-    //   2316: istore_3
-    //   2317: aload_0
-    //   2318: aload 17
-    //   2320: invokevirtual 928	com/tencent/mm/protocal/protobuf/cap:toByteArray	()[B
-    //   2323: iconst_2
-    //   2324: iload_3
-    //   2325: invokespecial 930	com/tencent/mm/plugin/voip/model/e:I	([BII)I
-    //   2328: pop
-    //   2329: goto -516 -> 1813
-    //   2332: astore_1
-    //   2333: ldc_w 259
-    //   2336: new 261	java/lang/StringBuilder
-    //   2339: dup
-    //   2340: ldc_w 341
-    //   2343: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   2346: aload_1
-    //   2347: invokevirtual 342	java/lang/Exception:toString	()Ljava/lang/String;
-    //   2350: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2353: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2356: invokestatic 298	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2359: aload_0
-    //   2360: sipush 2004
-    //   2363: putfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   2366: aload_0
-    //   2367: getfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   2370: ineg
-    //   2371: istore_2
-    //   2372: ldc_w 704
-    //   2375: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   2378: iload_2
-    //   2379: ireturn
-    //   2380: aload_1
-    //   2381: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   2384: istore_2
-    //   2385: goto -327 -> 2058
-    //   2388: aload_0
-    //   2389: getfield 179	com/tencent/mm/plugin/voip/model/e:qsm	I
-    //   2392: istore_3
-    //   2393: aload_0
-    //   2394: iload_3
-    //   2395: iconst_1
-    //   2396: iadd
-    //   2397: putfield 179	com/tencent/mm/plugin/voip/model/e:qsm	I
-    //   2400: iload_3
-    //   2401: iconst_5
-    //   2402: if_icmple -30 -> 2372
-    //   2405: aload_0
-    //   2406: sipush 2006
-    //   2409: putfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   2412: aload_0
-    //   2413: getfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   2416: ineg
-    //   2417: istore_2
-    //   2418: goto -46 -> 2372
-    //   2421: iconst_0
-    //   2422: istore_2
-    //   2423: aload 14
-    //   2425: astore_1
-    //   2426: goto -1950 -> 476
+    //   2081: aload 16
+    //   2083: iconst_0
+    //   2084: aload_0
+    //   2085: getfield 150	com/tencent/mm/plugin/voip/model/e:NJX	[B
+    //   2088: iconst_0
+    //   2089: iload_2
+    //   2090: invokestatic 888	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   2093: aload_0
+    //   2094: getfield 150	com/tencent/mm/plugin/voip/model/e:NJX	[B
+    //   2097: invokestatic 864	com/tencent/mm/plugin/voip/model/e:ci	([B)Ljava/util/ArrayList;
+    //   2100: astore 17
+    //   2102: aload 17
+    //   2104: invokevirtual 869	java/util/ArrayList:size	()I
+    //   2107: iconst_3
+    //   2108: if_icmpne +341 -> 2449
+    //   2111: aload_0
+    //   2112: getfield 142	com/tencent/mm/plugin/voip/model/e:ENCODING	Ljava/lang/String;
+    //   2115: ldc_w 493
+    //   2118: invokevirtual 252	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   2121: ifeq +328 -> 2449
+    //   2124: aload 17
+    //   2126: iconst_0
+    //   2127: invokevirtual 872	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   2130: checkcast 233	java/lang/Integer
+    //   2133: invokevirtual 875	java/lang/Integer:intValue	()I
+    //   2136: istore_3
+    //   2137: aload 17
+    //   2139: iconst_1
+    //   2140: invokevirtual 872	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   2143: checkcast 233	java/lang/Integer
+    //   2146: invokevirtual 875	java/lang/Integer:intValue	()I
+    //   2149: istore 4
+    //   2151: aload 17
+    //   2153: iconst_2
+    //   2154: invokevirtual 872	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   2157: checkcast 233	java/lang/Integer
+    //   2160: invokevirtual 875	java/lang/Integer:intValue	()I
+    //   2163: istore_2
+    //   2164: iload 4
+    //   2166: iload_3
+    //   2167: isub
+    //   2168: istore 6
+    //   2170: iload_2
+    //   2171: iload 4
+    //   2173: isub
+    //   2174: istore 8
+    //   2176: ldc_w 263
+    //   2179: ldc_w 969
+    //   2182: iconst_5
+    //   2183: anewarray 4	java/lang/Object
+    //   2186: dup
+    //   2187: iconst_0
+    //   2188: iload_3
+    //   2189: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2192: aastore
+    //   2193: dup
+    //   2194: iconst_1
+    //   2195: iload 4
+    //   2197: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2200: aastore
+    //   2201: dup
+    //   2202: iconst_2
+    //   2203: iload_2
+    //   2204: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2207: aastore
+    //   2208: dup
+    //   2209: iconst_3
+    //   2210: iload 6
+    //   2212: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2215: aastore
+    //   2216: dup
+    //   2217: iconst_4
+    //   2218: iload 8
+    //   2220: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2223: aastore
+    //   2224: invokestatic 971	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   2227: aload_0
+    //   2228: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   2231: arraylength
+    //   2232: iload 6
+    //   2234: iload 8
+    //   2236: iadd
+    //   2237: if_icmpge +14 -> 2251
+    //   2240: aload_0
+    //   2241: iload 6
+    //   2243: iload 8
+    //   2245: iadd
+    //   2246: newarray byte
+    //   2248: putfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   2251: aload 16
+    //   2253: iload_3
+    //   2254: aload_0
+    //   2255: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   2258: iconst_0
+    //   2259: iload 6
+    //   2261: invokestatic 888	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   2264: aload 16
+    //   2266: iload 8
+    //   2268: aload_0
+    //   2269: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   2272: iload 6
+    //   2274: iload 8
+    //   2276: invokestatic 888	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   2279: new 866	com/tencent/mm/protocal/protobuf/ciq
+    //   2282: dup
+    //   2283: invokespecial 867	com/tencent/mm/protocal/protobuf/ciq:<init>	()V
+    //   2286: astore 17
+    //   2288: aload 17
+    //   2290: iconst_4
+    //   2291: putfield 912	com/tencent/mm/protocal/protobuf/ciq:Tpw	I
+    //   2294: aload 17
+    //   2296: aload 16
+    //   2298: iload_3
+    //   2299: iconst_4
+    //   2300: iadd
+    //   2301: iload 6
+    //   2303: iconst_4
+    //   2304: isub
+    //   2305: invokestatic 880	com/tencent/mm/cd/b:S	([BII)Lcom/tencent/mm/cd/b;
+    //   2308: putfield 915	com/tencent/mm/protocal/protobuf/ciq:Tpx	Lcom/tencent/mm/cd/b;
+    //   2311: aload 17
+    //   2313: aload 16
+    //   2315: iload 4
+    //   2317: iconst_4
+    //   2318: iadd
+    //   2319: iload 8
+    //   2321: iconst_4
+    //   2322: isub
+    //   2323: invokestatic 880	com/tencent/mm/cd/b:S	([BII)Lcom/tencent/mm/cd/b;
+    //   2326: putfield 918	com/tencent/mm/protocal/protobuf/ciq:Tpy	Lcom/tencent/mm/cd/b;
+    //   2329: aload 17
+    //   2331: invokevirtual 921	com/tencent/mm/protocal/protobuf/ciq:toByteArray	()[B
+    //   2334: arraylength
+    //   2335: istore_3
+    //   2336: aload_0
+    //   2337: aload 17
+    //   2339: invokevirtual 921	com/tencent/mm/protocal/protobuf/ciq:toByteArray	()[B
+    //   2342: iconst_2
+    //   2343: iload_3
+    //   2344: invokespecial 923	com/tencent/mm/plugin/voip/model/e:K	([BII)I
+    //   2347: pop
+    //   2348: goto -440 -> 1908
+    //   2351: astore_1
+    //   2352: ldc_w 263
+    //   2355: aload_1
+    //   2356: new 328	java/lang/StringBuilder
+    //   2359: dup
+    //   2360: ldc_w 973
+    //   2363: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2366: aload_1
+    //   2367: invokevirtual 336	java/lang/Exception:toString	()Ljava/lang/String;
+    //   2370: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2373: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2376: iconst_0
+    //   2377: anewarray 4	java/lang/Object
+    //   2380: invokestatic 345	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   2383: aload_0
+    //   2384: sipush 2004
+    //   2387: putfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   2390: aload_0
+    //   2391: getfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   2394: ineg
+    //   2395: istore 6
+    //   2397: ldc_w 692
+    //   2400: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   2403: iload 6
+    //   2405: ireturn
+    //   2406: aload 14
+    //   2408: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   2411: istore_2
+    //   2412: goto -331 -> 2081
+    //   2415: aload_0
+    //   2416: getfield 179	com/tencent/mm/plugin/voip/model/e:tQV	I
+    //   2419: istore_2
+    //   2420: aload_0
+    //   2421: iload_2
+    //   2422: iconst_1
+    //   2423: iadd
+    //   2424: putfield 179	com/tencent/mm/plugin/voip/model/e:tQV	I
+    //   2427: iload_2
+    //   2428: iconst_5
+    //   2429: if_icmple -32 -> 2397
+    //   2432: aload_0
+    //   2433: sipush 2006
+    //   2436: putfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   2439: aload_0
+    //   2440: getfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   2443: ineg
+    //   2444: istore 6
+    //   2446: goto -49 -> 2397
+    //   2449: iconst_0
+    //   2450: istore_2
+    //   2451: goto -543 -> 1908
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	2429	0	this	e
-    //   0	2429	1	paramByteBuffer	ByteBuffer
-    //   0	2429	2	paramInt1	int
-    //   0	2429	3	paramInt2	int
-    //   0	2429	4	paramInt3	int
-    //   0	2429	5	paramBoolean	boolean
-    //   231	2055	6	i	int
-    //   677	258	7	j	int
-    //   1050	1254	8	k	int
-    //   1091	326	9	m	int
-    //   1000	419	10	n	int
-    //   1003	412	11	i1	int
-    //   149	1760	12	l	long
-    //   7	1	14	localObject1	Object
-    //   393	16	14	localException1	Exception
-    //   562	1	14	arrayOfByteBuffer	ByteBuffer[]
-    //   827	1597	14	localException2	Exception
-    //   553	395	15	localObject2	Object
-    //   945	1350	16	arrayOfByte	byte[]
-    //   988	1331	17	localObject3	Object
-    //   997	512	18	localcap	com.tencent.mm.protocal.protobuf.cap
+    //   0	2454	0	this	e
+    //   0	2454	1	paramByteBuffer	ByteBuffer
+    //   0	2454	2	paramInt1	int
+    //   0	2454	3	paramInt2	int
+    //   0	2454	4	paramInt3	int
+    //   0	2454	5	paramBoolean	boolean
+    //   126	2319	6	i	int
+    //   7	1017	7	j	int
+    //   1141	1182	8	k	int
+    //   1181	329	9	m	int
+    //   1091	421	10	n	int
+    //   1094	414	11	i1	int
+    //   185	535	12	l	long
+    //   130	19	14	localObject1	Object
+    //   472	16	14	localException1	Exception
+    //   556	193	14	localObject2	Object
+    //   912	16	14	localException2	Exception
+    //   942	1465	14	localByteBuffer	ByteBuffer
+    //   10	1028	15	localObject3	Object
+    //   1035	1279	16	arrayOfByte	byte[]
+    //   1079	1259	17	localObject4	Object
+    //   1088	514	18	localciq	com.tencent.mm.protocal.protobuf.ciq
     // Exception table:
     //   from	to	target	type
-    //   339	344	393	java/lang/Exception
-    //   455	474	827	java/lang/Exception
-    //   1336	1341	1425	java/lang/Exception
-    //   1609	1614	1622	java/lang/Exception
-    //   487	575	2332	java/lang/Exception
-    //   579	601	2332	java/lang/Exception
-    //   607	650	2332	java/lang/Exception
-    //   650	673	2332	java/lang/Exception
-    //   686	712	2332	java/lang/Exception
-    //   718	729	2332	java/lang/Exception
-    //   735	816	2332	java/lang/Exception
-    //   861	868	2332	java/lang/Exception
-    //   873	887	2332	java/lang/Exception
-    //   887	925	2332	java/lang/Exception
-    //   939	975	2332	java/lang/Exception
-    //   975	999	2332	java/lang/Exception
-    //   1015	1084	2332	java/lang/Exception
-    //   1101	1123	2332	java/lang/Exception
-    //   1123	1140	2332	java/lang/Exception
-    //   1140	1169	2332	java/lang/Exception
-    //   1169	1184	2332	java/lang/Exception
-    //   1184	1336	2332	java/lang/Exception
-    //   1357	1398	2332	java/lang/Exception
-    //   1406	1414	2332	java/lang/Exception
-    //   1426	1465	2332	java/lang/Exception
-    //   1468	1522	2332	java/lang/Exception
-    //   1534	1609	2332	java/lang/Exception
-    //   1623	1662	2332	java/lang/Exception
-    //   1665	1732	2332	java/lang/Exception
-    //   1744	1813	2332	java/lang/Exception
-    //   1813	2019	2332	java/lang/Exception
-    //   2031	2046	2332	java/lang/Exception
-    //   2046	2055	2332	java/lang/Exception
-    //   2058	2079	2332	java/lang/Exception
-    //   2081	2090	2332	java/lang/Exception
-    //   2092	2145	2332	java/lang/Exception
-    //   2157	2232	2332	java/lang/Exception
-    //   2232	2329	2332	java/lang/Exception
-    //   2380	2385	2332	java/lang/Exception
+    //   414	419	472	java/lang/Exception
+    //   536	555	912	java/lang/Exception
+    //   1430	1435	1518	java/lang/Exception
+    //   1703	1708	1716	java/lang/Exception
+    //   570	657	2351	java/lang/Exception
+    //   661	684	2351	java/lang/Exception
+    //   690	735	2351	java/lang/Exception
+    //   735	759	2351	java/lang/Exception
+    //   771	797	2351	java/lang/Exception
+    //   803	814	2351	java/lang/Exception
+    //   820	901	2351	java/lang/Exception
+    //   947	954	2351	java/lang/Exception
+    //   959	974	2351	java/lang/Exception
+    //   974	1014	2351	java/lang/Exception
+    //   1028	1065	2351	java/lang/Exception
+    //   1065	1090	2351	java/lang/Exception
+    //   1106	1174	2351	java/lang/Exception
+    //   1191	1213	2351	java/lang/Exception
+    //   1213	1231	2351	java/lang/Exception
+    //   1231	1262	2351	java/lang/Exception
+    //   1262	1278	2351	java/lang/Exception
+    //   1278	1430	2351	java/lang/Exception
+    //   1451	1491	2351	java/lang/Exception
+    //   1499	1507	2351	java/lang/Exception
+    //   1519	1558	2351	java/lang/Exception
+    //   1561	1616	2351	java/lang/Exception
+    //   1628	1703	2351	java/lang/Exception
+    //   1717	1756	2351	java/lang/Exception
+    //   1759	1830	2351	java/lang/Exception
+    //   1838	1908	2351	java/lang/Exception
+    //   1908	2041	2351	java/lang/Exception
+    //   2053	2068	2351	java/lang/Exception
+    //   2068	2078	2351	java/lang/Exception
+    //   2081	2164	2351	java/lang/Exception
+    //   2176	2251	2351	java/lang/Exception
+    //   2251	2348	2351	java/lang/Exception
+    //   2406	2412	2351	java/lang/Exception
   }
   
   /* Error */
   public final int b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     // Byte code:
-    //   0: ldc_w 987
+    //   0: ldc_w 976
     //   3: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: aconst_null
-    //   7: astore 13
-    //   9: iload_2
-    //   10: aload_0
-    //   11: getfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
-    //   14: if_icmpne +11 -> 25
-    //   17: iload_3
-    //   18: aload_0
-    //   19: getfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
-    //   22: if_icmpeq +32 -> 54
-    //   25: aload_0
-    //   26: iload_2
-    //   27: putfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
-    //   30: aload_0
-    //   31: iload_3
-    //   32: putfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
-    //   35: aload_0
-    //   36: aload_0
-    //   37: getfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
-    //   40: aload_0
-    //   41: getfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
-    //   44: imul
-    //   45: iconst_3
-    //   46: imul
-    //   47: iconst_2
-    //   48: idiv
-    //   49: newarray byte
-    //   51: putfield 152	com/tencent/mm/plugin/voip/model/e:qsd	[B
-    //   54: aload_0
-    //   55: getfield 152	com/tencent/mm/plugin/voip/model/e:qsd	[B
-    //   58: ifnonnull +22 -> 80
-    //   61: aload_0
-    //   62: aload_0
-    //   63: getfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
-    //   66: aload_0
-    //   67: getfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
-    //   70: imul
-    //   71: iconst_3
-    //   72: imul
-    //   73: iconst_2
-    //   74: idiv
-    //   75: newarray byte
-    //   77: putfield 152	com/tencent/mm/plugin/voip/model/e:qsd	[B
-    //   80: ldc_w 259
-    //   83: new 261	java/lang/StringBuilder
-    //   86: dup
-    //   87: ldc_w 710
-    //   90: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   93: aload_0
-    //   94: getfield 197	com/tencent/mm/plugin/voip/model/e:m_framerate	I
-    //   97: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   100: ldc_w 712
-    //   103: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   106: aload_0
-    //   107: getfield 199	com/tencent/mm/plugin/voip/model/e:m_br_kbps	I
-    //   110: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   113: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   116: invokestatic 286	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   119: aload_0
-    //   120: getfield 204	com/tencent/mm/plugin/voip/model/e:GTN	Lcom/tencent/mm/plugin/voip/model/e$a;
-    //   123: getfield 630	com/tencent/mm/plugin/voip/model/e$a:cSkipFlag	B
-    //   126: ifne +2250 -> 2376
+    //   6: iconst_0
+    //   7: istore 5
+    //   9: aconst_null
+    //   10: astore 14
+    //   12: iload_2
+    //   13: aload_0
+    //   14: getfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
+    //   17: if_icmpne +11 -> 28
+    //   20: iload_3
+    //   21: aload_0
+    //   22: getfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
+    //   25: if_icmpeq +32 -> 57
+    //   28: aload_0
+    //   29: iload_2
+    //   30: putfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
+    //   33: aload_0
+    //   34: iload_3
+    //   35: putfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
+    //   38: aload_0
+    //   39: aload_0
+    //   40: getfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
+    //   43: aload_0
+    //   44: getfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
+    //   47: imul
+    //   48: iconst_3
+    //   49: imul
+    //   50: iconst_2
+    //   51: idiv
+    //   52: newarray byte
+    //   54: putfield 152	com/tencent/mm/plugin/voip/model/e:tQM	[B
+    //   57: aload_0
+    //   58: getfield 152	com/tencent/mm/plugin/voip/model/e:tQM	[B
+    //   61: ifnonnull +22 -> 83
+    //   64: aload_0
+    //   65: aload_0
+    //   66: getfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
+    //   69: aload_0
+    //   70: getfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
+    //   73: imul
+    //   74: iconst_3
+    //   75: imul
+    //   76: iconst_2
+    //   77: idiv
+    //   78: newarray byte
+    //   80: putfield 152	com/tencent/mm/plugin/voip/model/e:tQM	[B
+    //   83: ldc_w 263
+    //   86: new 328	java/lang/StringBuilder
+    //   89: dup
+    //   90: ldc_w 698
+    //   93: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   96: aload_0
+    //   97: getfield 197	com/tencent/mm/plugin/voip/model/e:m_framerate	I
+    //   100: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   103: ldc_w 700
+    //   106: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   109: aload_0
+    //   110: getfield 199	com/tencent/mm/plugin/voip/model/e:m_br_kbps	I
+    //   113: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   116: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   119: invokestatic 360	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   122: iload 5
+    //   124: istore_2
+    //   125: aload 14
+    //   127: astore 13
     //   129: aload_0
-    //   130: getfield 162	com/tencent/mm/plugin/voip/model/e:GSZ	Lcom/tencent/mm/plugin/voip/model/l;
-    //   133: getfield 245	com/tencent/mm/plugin/voip/model/l:GVV	Lcom/tencent/mm/plugin/voip/model/v2protocal;
-    //   136: ifnull +2240 -> 2376
-    //   139: aload_0
-    //   140: getfield 162	com/tencent/mm/plugin/voip/model/e:GSZ	Lcom/tencent/mm/plugin/voip/model/l;
-    //   143: getfield 245	com/tencent/mm/plugin/voip/model/l:GVV	Lcom/tencent/mm/plugin/voip/model/v2protocal;
-    //   146: aload_1
-    //   147: aload_1
-    //   148: arraylength
-    //   149: aload_0
-    //   150: getfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
-    //   153: aload_0
-    //   154: getfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
-    //   157: iload 4
-    //   159: aload_0
-    //   160: getfield 152	com/tencent/mm/plugin/voip/model/e:qsd	[B
-    //   163: invokevirtual 991	com/tencent/mm/plugin/voip/model/v2protocal:videoHWProcess	([BIIII[B)I
-    //   166: pop
-    //   167: aload_0
-    //   168: getfield 152	com/tencent/mm/plugin/voip/model/e:qsd	[B
-    //   171: astore_1
-    //   172: aload_0
-    //   173: getfield 189	com/tencent/mm/plugin/voip/model/e:m_width	I
+    //   130: getfield 204	com/tencent/mm/plugin/voip/model/e:NJZ	Lcom/tencent/mm/plugin/voip/model/e$a;
+    //   133: getfield 654	com/tencent/mm/plugin/voip/model/e$a:cSkipFlag	B
+    //   136: ifne +363 -> 499
+    //   139: iload 5
+    //   141: istore_2
+    //   142: aload 14
+    //   144: astore 13
+    //   146: aload_0
+    //   147: getfield 162	com/tencent/mm/plugin/voip/model/e:NJk	Lcom/tencent/mm/plugin/voip/model/l;
+    //   150: getfield 246	com/tencent/mm/plugin/voip/model/l:NMi	Lcom/tencent/mm/plugin/voip/model/v2protocal;
+    //   153: ifnull +346 -> 499
+    //   156: aload_0
+    //   157: getfield 162	com/tencent/mm/plugin/voip/model/e:NJk	Lcom/tencent/mm/plugin/voip/model/l;
+    //   160: getfield 246	com/tencent/mm/plugin/voip/model/l:NMi	Lcom/tencent/mm/plugin/voip/model/v2protocal;
+    //   163: aload_1
+    //   164: aload_1
+    //   165: arraylength
+    //   166: aload_0
+    //   167: getfield 193	com/tencent/mm/plugin/voip/model/e:m_CapW	I
+    //   170: aload_0
+    //   171: getfield 195	com/tencent/mm/plugin/voip/model/e:m_CapH	I
+    //   174: iload 4
     //   176: aload_0
-    //   177: getfield 162	com/tencent/mm/plugin/voip/model/e:GSZ	Lcom/tencent/mm/plugin/voip/model/l;
-    //   180: getfield 245	com/tencent/mm/plugin/voip/model/l:GVV	Lcom/tencent/mm/plugin/voip/model/v2protocal;
-    //   183: getfield 741	com/tencent/mm/plugin/voip/model/v2protocal:field_HWEncW	I
-    //   186: if_icmpne +20 -> 206
-    //   189: aload_0
-    //   190: getfield 191	com/tencent/mm/plugin/voip/model/e:m_height	I
-    //   193: aload_0
-    //   194: getfield 162	com/tencent/mm/plugin/voip/model/e:GSZ	Lcom/tencent/mm/plugin/voip/model/l;
-    //   197: getfield 245	com/tencent/mm/plugin/voip/model/l:GVV	Lcom/tencent/mm/plugin/voip/model/v2protocal;
-    //   200: getfield 744	com/tencent/mm/plugin/voip/model/v2protocal:field_HWEncH	I
-    //   203: if_icmpeq +209 -> 412
-    //   206: ldc_w 259
-    //   209: new 261	java/lang/StringBuilder
-    //   212: dup
-    //   213: ldc_w 746
-    //   216: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   219: aload_0
-    //   220: getfield 162	com/tencent/mm/plugin/voip/model/e:GSZ	Lcom/tencent/mm/plugin/voip/model/l;
-    //   223: getfield 245	com/tencent/mm/plugin/voip/model/l:GVV	Lcom/tencent/mm/plugin/voip/model/v2protocal;
-    //   226: getfield 741	com/tencent/mm/plugin/voip/model/v2protocal:field_HWEncW	I
-    //   229: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   232: ldc_w 748
-    //   235: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   238: aload_0
-    //   239: getfield 162	com/tencent/mm/plugin/voip/model/e:GSZ	Lcom/tencent/mm/plugin/voip/model/l;
-    //   242: getfield 245	com/tencent/mm/plugin/voip/model/l:GVV	Lcom/tencent/mm/plugin/voip/model/v2protocal;
-    //   245: getfield 744	com/tencent/mm/plugin/voip/model/v2protocal:field_HWEncH	I
-    //   248: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   251: ldc_w 750
-    //   254: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   257: aload_0
-    //   258: getfield 189	com/tencent/mm/plugin/voip/model/e:m_width	I
-    //   261: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   264: ldc_w 748
-    //   267: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: getfield 152	com/tencent/mm/plugin/voip/model/e:tQM	[B
+    //   180: invokevirtual 980	com/tencent/mm/plugin/voip/model/v2protocal:videoHWProcess	([BIIII[B)I
+    //   183: istore_3
+    //   184: iload_3
+    //   185: ifge +33 -> 218
+    //   188: ldc_w 263
+    //   191: ldc_w 982
+    //   194: iload_3
+    //   195: invokestatic 268	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   198: invokevirtual 272	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   201: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   204: aload_0
+    //   205: invokevirtual 718	com/tencent/mm/plugin/voip/model/e:eWp	()V
+    //   208: ldc_w 976
+    //   211: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   214: sipush -2010
+    //   217: ireturn
+    //   218: aload_0
+    //   219: getfield 152	com/tencent/mm/plugin/voip/model/e:tQM	[B
+    //   222: astore_1
+    //   223: aload_0
+    //   224: getfield 189	com/tencent/mm/plugin/voip/model/e:m_width	I
+    //   227: aload_0
+    //   228: getfield 162	com/tencent/mm/plugin/voip/model/e:NJk	Lcom/tencent/mm/plugin/voip/model/l;
+    //   231: getfield 246	com/tencent/mm/plugin/voip/model/l:NMi	Lcom/tencent/mm/plugin/voip/model/v2protocal;
+    //   234: getfield 734	com/tencent/mm/plugin/voip/model/v2protocal:field_HWEncW	I
+    //   237: if_icmpne +20 -> 257
+    //   240: aload_0
+    //   241: getfield 191	com/tencent/mm/plugin/voip/model/e:m_height	I
+    //   244: aload_0
+    //   245: getfield 162	com/tencent/mm/plugin/voip/model/e:NJk	Lcom/tencent/mm/plugin/voip/model/l;
+    //   248: getfield 246	com/tencent/mm/plugin/voip/model/l:NMi	Lcom/tencent/mm/plugin/voip/model/v2protocal;
+    //   251: getfield 737	com/tencent/mm/plugin/voip/model/v2protocal:field_HWEncH	I
+    //   254: if_icmpeq +209 -> 463
+    //   257: ldc_w 263
+    //   260: new 328	java/lang/StringBuilder
+    //   263: dup
+    //   264: ldc_w 739
+    //   267: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   270: aload_0
-    //   271: getfield 191	com/tencent/mm/plugin/voip/model/e:m_height	I
-    //   274: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   277: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   280: invokestatic 286	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   283: aload_0
-    //   284: aload_0
-    //   285: getfield 162	com/tencent/mm/plugin/voip/model/e:GSZ	Lcom/tencent/mm/plugin/voip/model/l;
-    //   288: getfield 245	com/tencent/mm/plugin/voip/model/l:GVV	Lcom/tencent/mm/plugin/voip/model/v2protocal;
-    //   291: getfield 741	com/tencent/mm/plugin/voip/model/v2protocal:field_HWEncW	I
-    //   294: putfield 189	com/tencent/mm/plugin/voip/model/e:m_width	I
-    //   297: aload_0
-    //   298: aload_0
-    //   299: getfield 162	com/tencent/mm/plugin/voip/model/e:GSZ	Lcom/tencent/mm/plugin/voip/model/l;
-    //   302: getfield 245	com/tencent/mm/plugin/voip/model/l:GVV	Lcom/tencent/mm/plugin/voip/model/v2protocal;
-    //   305: getfield 744	com/tencent/mm/plugin/voip/model/v2protocal:field_HWEncH	I
-    //   308: putfield 191	com/tencent/mm/plugin/voip/model/e:m_height	I
-    //   311: aload_0
-    //   312: aload_0
-    //   313: getfield 189	com/tencent/mm/plugin/voip/model/e:m_width	I
-    //   316: aload_0
-    //   317: getfield 191	com/tencent/mm/plugin/voip/model/e:m_height	I
-    //   320: imul
-    //   321: iconst_3
-    //   322: imul
-    //   323: iconst_1
-    //   324: ishr
-    //   325: putfield 185	com/tencent/mm/plugin/voip/model/e:encLen	I
-    //   328: aload_0
-    //   329: invokespecial 752	com/tencent/mm/plugin/voip/model/e:cyY	()I
-    //   332: istore_2
-    //   333: iload_2
-    //   334: istore_3
-    //   335: iload_2
-    //   336: ifge +78 -> 414
-    //   339: ldc_w 259
-    //   342: ldc_w 754
-    //   345: iload_2
-    //   346: invokestatic 291	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   349: invokevirtual 295	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   352: invokestatic 298	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   355: aload_0
-    //   356: invokevirtual 757	com/tencent/mm/plugin/voip/model/e:emB	()V
-    //   359: ldc_w 987
-    //   362: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   365: iload_2
-    //   366: ireturn
-    //   367: astore 13
-    //   369: ldc_w 259
-    //   372: new 261	java/lang/StringBuilder
-    //   375: dup
-    //   376: ldc_w 759
-    //   379: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   382: aload 13
-    //   384: invokevirtual 426	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   387: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   390: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   393: invokestatic 298	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   396: aload_0
-    //   397: sipush 2003
-    //   400: putfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   403: aload_0
-    //   404: getfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   407: ineg
-    //   408: istore_2
-    //   409: goto -76 -> 333
-    //   412: iconst_0
-    //   413: istore_3
-    //   414: getstatic 87	com/tencent/mm/plugin/voip/model/e:frameID	I
-    //   417: bipush 100
-    //   419: if_icmpgt +396 -> 815
-    //   422: aload_0
-    //   423: getfield 761	com/tencent/mm/plugin/voip/model/e:qsh	Ljava/io/BufferedOutputStream;
-    //   426: ifnull +389 -> 815
-    //   429: aload_0
-    //   430: getfield 761	com/tencent/mm/plugin/voip/model/e:qsh	Ljava/io/BufferedOutputStream;
-    //   433: aload_0
-    //   434: getfield 152	com/tencent/mm/plugin/voip/model/e:qsd	[B
-    //   437: iconst_0
-    //   438: aload_0
-    //   439: getfield 185	com/tencent/mm/plugin/voip/model/e:encLen	I
-    //   442: invokevirtual 771	java/io/BufferedOutputStream:write	([BII)V
-    //   445: iload_3
-    //   446: istore_2
-    //   447: aload_1
-    //   448: ifnull +1895 -> 2343
-    //   451: aload_0
-    //   452: getfield 206	com/tencent/mm/plugin/voip/model/e:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   455: ifnull +1888 -> 2343
-    //   458: aload_0
-    //   459: iconst_0
-    //   460: putfield 179	com/tencent/mm/plugin/voip/model/e:qsm	I
-    //   463: invokestatic 776	java/lang/System:currentTimeMillis	()J
-    //   466: lstore 11
-    //   468: ldc_w 259
-    //   471: new 261	java/lang/StringBuilder
-    //   474: dup
-    //   475: ldc_w 778
-    //   478: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   481: aload_0
-    //   482: getfield 185	com/tencent/mm/plugin/voip/model/e:encLen	I
-    //   485: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   488: ldc_w 780
-    //   491: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   494: getstatic 87	com/tencent/mm/plugin/voip/model/e:frameID	I
-    //   497: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   500: ldc_w 782
-    //   503: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   506: lload 11
-    //   508: invokevirtual 785	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   511: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   514: invokestatic 286	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   517: aload_0
-    //   518: getfield 206	com/tencent/mm/plugin/voip/model/e:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   521: invokevirtual 789	com/tencent/mm/compatible/deviceinfo/z:getInputBuffers	()[Ljava/nio/ByteBuffer;
-    //   524: astore 14
-    //   526: aload_0
-    //   527: getfield 206	com/tencent/mm/plugin/voip/model/e:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   530: invokevirtual 792	com/tencent/mm/compatible/deviceinfo/z:getOutputBuffers	()[Ljava/nio/ByteBuffer;
-    //   533: astore 13
-    //   535: aload_0
-    //   536: getfield 206	com/tencent/mm/plugin/voip/model/e:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   539: ldc2_w 793
-    //   542: invokevirtual 798	com/tencent/mm/compatible/deviceinfo/z:dequeueInputBuffer	(J)I
-    //   545: istore_3
-    //   546: iload_3
-    //   547: iflt +62 -> 609
-    //   550: aload_0
-    //   551: aload_0
-    //   552: getfield 158	com/tencent/mm/plugin/voip/model/e:mGeneratedIdx	J
-    //   555: invokespecial 800	com/tencent/mm/plugin/voip/model/e:computePresentationTime	(J)J
-    //   558: lstore 11
-    //   560: aload 14
-    //   562: iload_3
-    //   563: aaload
-    //   564: astore 14
-    //   566: aload 14
-    //   568: invokevirtual 813	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
-    //   571: pop
-    //   572: aload 14
-    //   574: aload_1
-    //   575: iconst_0
-    //   576: aload_0
-    //   577: getfield 185	com/tencent/mm/plugin/voip/model/e:encLen	I
-    //   580: invokevirtual 994	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
-    //   583: pop
-    //   584: aload_0
-    //   585: getfield 206	com/tencent/mm/plugin/voip/model/e:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   588: iload_3
-    //   589: aload_0
-    //   590: getfield 185	com/tencent/mm/plugin/voip/model/e:encLen	I
-    //   593: lload 11
-    //   595: iconst_0
-    //   596: invokevirtual 820	com/tencent/mm/compatible/deviceinfo/z:a	(IIJI)V
+    //   271: getfield 162	com/tencent/mm/plugin/voip/model/e:NJk	Lcom/tencent/mm/plugin/voip/model/l;
+    //   274: getfield 246	com/tencent/mm/plugin/voip/model/l:NMi	Lcom/tencent/mm/plugin/voip/model/v2protocal;
+    //   277: getfield 734	com/tencent/mm/plugin/voip/model/v2protocal:field_HWEncW	I
+    //   280: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   283: ldc_w 741
+    //   286: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   289: aload_0
+    //   290: getfield 162	com/tencent/mm/plugin/voip/model/e:NJk	Lcom/tencent/mm/plugin/voip/model/l;
+    //   293: getfield 246	com/tencent/mm/plugin/voip/model/l:NMi	Lcom/tencent/mm/plugin/voip/model/v2protocal;
+    //   296: getfield 737	com/tencent/mm/plugin/voip/model/v2protocal:field_HWEncH	I
+    //   299: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   302: ldc_w 743
+    //   305: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   308: aload_0
+    //   309: getfield 189	com/tencent/mm/plugin/voip/model/e:m_width	I
+    //   312: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   315: ldc_w 741
+    //   318: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   321: aload_0
+    //   322: getfield 191	com/tencent/mm/plugin/voip/model/e:m_height	I
+    //   325: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   328: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   331: invokestatic 360	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   334: aload_0
+    //   335: aload_0
+    //   336: getfield 162	com/tencent/mm/plugin/voip/model/e:NJk	Lcom/tencent/mm/plugin/voip/model/l;
+    //   339: getfield 246	com/tencent/mm/plugin/voip/model/l:NMi	Lcom/tencent/mm/plugin/voip/model/v2protocal;
+    //   342: getfield 734	com/tencent/mm/plugin/voip/model/v2protocal:field_HWEncW	I
+    //   345: putfield 189	com/tencent/mm/plugin/voip/model/e:m_width	I
+    //   348: aload_0
+    //   349: aload_0
+    //   350: getfield 162	com/tencent/mm/plugin/voip/model/e:NJk	Lcom/tencent/mm/plugin/voip/model/l;
+    //   353: getfield 246	com/tencent/mm/plugin/voip/model/l:NMi	Lcom/tencent/mm/plugin/voip/model/v2protocal;
+    //   356: getfield 737	com/tencent/mm/plugin/voip/model/v2protocal:field_HWEncH	I
+    //   359: putfield 191	com/tencent/mm/plugin/voip/model/e:m_height	I
+    //   362: aload_0
+    //   363: aload_0
+    //   364: getfield 189	com/tencent/mm/plugin/voip/model/e:m_width	I
+    //   367: aload_0
+    //   368: getfield 191	com/tencent/mm/plugin/voip/model/e:m_height	I
+    //   371: imul
+    //   372: iconst_3
+    //   373: imul
+    //   374: iconst_1
+    //   375: ishr
+    //   376: putfield 185	com/tencent/mm/plugin/voip/model/e:encLen	I
+    //   379: aload_0
+    //   380: invokespecial 745	com/tencent/mm/plugin/voip/model/e:cNw	()I
+    //   383: istore_2
+    //   384: iload_2
+    //   385: istore_3
+    //   386: iload_2
+    //   387: ifge +76 -> 463
+    //   390: ldc_w 263
+    //   393: ldc_w 747
+    //   396: iload_2
+    //   397: invokestatic 268	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   400: invokevirtual 272	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   403: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   406: aload_0
+    //   407: invokevirtual 718	com/tencent/mm/plugin/voip/model/e:eWp	()V
+    //   410: ldc_w 976
+    //   413: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   416: iload_2
+    //   417: ireturn
+    //   418: astore 13
+    //   420: ldc_w 263
+    //   423: new 328	java/lang/StringBuilder
+    //   426: dup
+    //   427: ldc_w 749
+    //   430: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   433: aload 13
+    //   435: invokevirtual 435	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   438: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   441: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   444: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   447: aload_0
+    //   448: sipush 2003
+    //   451: putfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   454: aload_0
+    //   455: getfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   458: ineg
+    //   459: istore_2
+    //   460: goto -76 -> 384
+    //   463: getstatic 87	com/tencent/mm/plugin/voip/model/e:frameID	I
+    //   466: bipush 100
+    //   468: if_icmpgt +348 -> 816
+    //   471: aload_0
+    //   472: getfield 751	com/tencent/mm/plugin/voip/model/e:tQQ	Ljava/io/BufferedOutputStream;
+    //   475: ifnull +341 -> 816
+    //   478: aload_0
+    //   479: getfield 751	com/tencent/mm/plugin/voip/model/e:tQQ	Ljava/io/BufferedOutputStream;
+    //   482: aload_0
+    //   483: getfield 152	com/tencent/mm/plugin/voip/model/e:tQM	[B
+    //   486: iconst_0
+    //   487: aload_0
+    //   488: getfield 185	com/tencent/mm/plugin/voip/model/e:encLen	I
+    //   491: invokevirtual 764	java/io/BufferedOutputStream:write	([BII)V
+    //   494: aload_1
+    //   495: astore 13
+    //   497: iload_3
+    //   498: istore_2
+    //   499: aload 13
+    //   501: ifnull +1791 -> 2292
+    //   504: aload_0
+    //   505: getfield 206	com/tencent/mm/plugin/voip/model/e:tQL	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   508: ifnull +1784 -> 2292
+    //   511: aload_0
+    //   512: iconst_0
+    //   513: putfield 179	com/tencent/mm/plugin/voip/model/e:tQV	I
+    //   516: aload_0
+    //   517: getfield 206	com/tencent/mm/plugin/voip/model/e:tQL	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   520: invokevirtual 782	com/tencent/mm/compatible/deviceinfo/aa:avj	()[Ljava/nio/ByteBuffer;
+    //   523: astore 14
+    //   525: aload_0
+    //   526: getfield 206	com/tencent/mm/plugin/voip/model/e:tQL	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   529: invokevirtual 785	com/tencent/mm/compatible/deviceinfo/aa:avk	()[Ljava/nio/ByteBuffer;
+    //   532: astore_1
+    //   533: aload_0
+    //   534: getfield 206	com/tencent/mm/plugin/voip/model/e:tQL	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   537: ldc2_w 786
+    //   540: invokevirtual 791	com/tencent/mm/compatible/deviceinfo/aa:EX	(J)I
+    //   543: istore_3
+    //   544: iload_3
+    //   545: iflt +63 -> 608
+    //   548: aload_0
+    //   549: aload_0
+    //   550: getfield 158	com/tencent/mm/plugin/voip/model/e:mGeneratedIdx	J
+    //   553: invokespecial 793	com/tencent/mm/plugin/voip/model/e:computePresentationTime	(J)J
+    //   556: lstore 11
+    //   558: aload 14
+    //   560: iload_3
+    //   561: aaload
+    //   562: astore 14
+    //   564: aload 14
+    //   566: invokevirtual 806	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   569: pop
+    //   570: aload 14
+    //   572: aload 13
+    //   574: iconst_0
+    //   575: aload_0
+    //   576: getfield 185	com/tencent/mm/plugin/voip/model/e:encLen	I
+    //   579: invokevirtual 985	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
+    //   582: pop
+    //   583: aload_0
+    //   584: getfield 206	com/tencent/mm/plugin/voip/model/e:tQL	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   587: iload_3
+    //   588: aload_0
+    //   589: getfield 185	com/tencent/mm/plugin/voip/model/e:encLen	I
+    //   592: lload 11
+    //   594: iconst_0
+    //   595: invokevirtual 813	com/tencent/mm/compatible/deviceinfo/aa:a	(IIJI)V
+    //   598: aload_0
     //   599: aload_0
-    //   600: aload_0
-    //   601: getfield 158	com/tencent/mm/plugin/voip/model/e:mGeneratedIdx	J
-    //   604: lconst_1
-    //   605: ladd
-    //   606: putfield 158	com/tencent/mm/plugin/voip/model/e:mGeneratedIdx	J
-    //   609: new 822	android/media/MediaCodec$BufferInfo
-    //   612: dup
-    //   613: invokespecial 823	android/media/MediaCodec$BufferInfo:<init>	()V
-    //   616: astore_1
+    //   600: getfield 158	com/tencent/mm/plugin/voip/model/e:mGeneratedIdx	J
+    //   603: lconst_1
+    //   604: ladd
+    //   605: putfield 158	com/tencent/mm/plugin/voip/model/e:mGeneratedIdx	J
+    //   608: new 815	android/media/MediaCodec$BufferInfo
+    //   611: dup
+    //   612: invokespecial 816	android/media/MediaCodec$BufferInfo:<init>	()V
+    //   615: astore 13
     //   617: aload_0
-    //   618: getfield 206	com/tencent/mm/plugin/voip/model/e:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   621: aload_1
-    //   622: aload_0
-    //   623: getfield 144	com/tencent/mm/plugin/voip/model/e:TIMEOUT_USEC	I
-    //   626: i2l
-    //   627: invokevirtual 827	com/tencent/mm/compatible/deviceinfo/z:dequeueOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;J)I
-    //   630: istore 4
-    //   632: iload_2
-    //   633: istore_3
-    //   634: iload 4
-    //   636: istore 6
-    //   638: iload 4
-    //   640: bipush 254
-    //   642: if_icmpne +242 -> 884
-    //   645: aload_0
-    //   646: getfield 206	com/tencent/mm/plugin/voip/model/e:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   649: invokevirtual 831	com/tencent/mm/compatible/deviceinfo/z:getOutputFormat	()Landroid/media/MediaFormat;
-    //   652: astore 14
-    //   654: ldc_w 259
-    //   657: ldc_w 833
-    //   660: aload 14
-    //   662: invokestatic 330	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   665: invokevirtual 295	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   668: invokestatic 386	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   671: iload_2
-    //   672: istore_3
-    //   673: iload 4
-    //   675: istore 6
-    //   677: aload 14
-    //   679: ldc_w 516
-    //   682: invokevirtual 836	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
-    //   685: ifeq +199 -> 884
-    //   688: iload_2
-    //   689: istore_3
-    //   690: iload 4
-    //   692: istore 6
-    //   694: aload 14
-    //   696: ldc_w 516
-    //   699: invokevirtual 535	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   702: i2d
-    //   703: aload_0
-    //   704: getfield 199	com/tencent/mm/plugin/voip/model/e:m_br_kbps	I
-    //   707: sipush 1000
-    //   710: imul
-    //   711: i2d
-    //   712: ldc2_w 837
-    //   715: dmul
-    //   716: dcmpl
-    //   717: ifle +167 -> 884
-    //   720: ldc_w 259
-    //   723: new 261	java/lang/StringBuilder
-    //   726: dup
-    //   727: ldc_w 840
-    //   730: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   733: aload 14
-    //   735: ldc_w 516
-    //   738: invokevirtual 535	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   741: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   744: ldc_w 842
-    //   747: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   750: aload_0
-    //   751: getfield 199	com/tencent/mm/plugin/voip/model/e:m_br_kbps	I
-    //   754: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   757: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   760: invokestatic 298	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   763: aload_0
-    //   764: sipush 2007
-    //   767: putfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   770: aload_0
-    //   771: getfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   774: istore_2
-    //   775: iload_2
-    //   776: ineg
-    //   777: istore_2
-    //   778: ldc_w 987
-    //   781: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   784: iload_2
-    //   785: ireturn
-    //   786: astore 13
-    //   788: ldc_w 259
-    //   791: new 261	java/lang/StringBuilder
-    //   794: dup
-    //   795: ldc_w 341
-    //   798: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   801: aload 13
-    //   803: invokevirtual 342	java/lang/Exception:toString	()Ljava/lang/String;
-    //   806: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   809: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   812: invokestatic 298	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   815: iload_3
-    //   816: istore_2
-    //   817: goto -370 -> 447
-    //   820: aload_0
-    //   821: getfield 844	com/tencent/mm/plugin/voip/model/e:qsg	Z
-    //   824: ifeq +22 -> 846
-    //   827: aload 14
-    //   829: ifnull +17 -> 846
-    //   832: aload_0
-    //   833: getfield 846	com/tencent/mm/plugin/voip/model/e:qse	Landroid/media/MediaMuxer;
+    //   618: getfield 206	com/tencent/mm/plugin/voip/model/e:tQL	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   621: aload 13
+    //   623: aload_0
+    //   624: getfield 144	com/tencent/mm/plugin/voip/model/e:TIMEOUT_USEC	I
+    //   627: i2l
+    //   628: invokevirtual 819	com/tencent/mm/compatible/deviceinfo/aa:a	(Landroid/media/MediaCodec$BufferInfo;J)I
+    //   631: istore 4
+    //   633: iload_2
+    //   634: istore_3
+    //   635: iload 4
+    //   637: istore 6
+    //   639: iload 4
+    //   641: bipush 254
+    //   643: if_icmpne +248 -> 891
+    //   646: aload_0
+    //   647: getfield 206	com/tencent/mm/plugin/voip/model/e:tQL	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   650: invokevirtual 823	com/tencent/mm/compatible/deviceinfo/aa:avi	()Landroid/media/MediaFormat;
+    //   653: astore 14
+    //   655: ldc_w 263
+    //   658: ldc_w 825
+    //   661: aload 14
+    //   663: invokestatic 308	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   666: invokevirtual 272	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   669: invokestatic 395	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   672: iload_2
+    //   673: istore_3
+    //   674: iload 4
+    //   676: istore 6
+    //   678: aload 14
+    //   680: ldc_w 482
+    //   683: invokevirtual 828	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   686: ifeq +205 -> 891
+    //   689: iload_2
+    //   690: istore_3
+    //   691: iload 4
+    //   693: istore 6
+    //   695: aload 14
+    //   697: ldc_w 482
+    //   700: invokevirtual 501	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   703: i2d
+    //   704: aload_0
+    //   705: getfield 199	com/tencent/mm/plugin/voip/model/e:m_br_kbps	I
+    //   708: sipush 1000
+    //   711: imul
+    //   712: i2d
+    //   713: ldc2_w 829
+    //   716: dmul
+    //   717: dcmpl
+    //   718: ifle +173 -> 891
+    //   721: ldc_w 263
+    //   724: new 328	java/lang/StringBuilder
+    //   727: dup
+    //   728: ldc_w 832
+    //   731: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   734: aload 14
+    //   736: ldc_w 482
+    //   739: invokevirtual 501	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   742: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   745: ldc_w 834
+    //   748: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   751: aload_0
+    //   752: getfield 199	com/tencent/mm/plugin/voip/model/e:m_br_kbps	I
+    //   755: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   758: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   761: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   764: aload_0
+    //   765: sipush 2007
+    //   768: putfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   771: aload_0
+    //   772: getfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   775: istore_2
+    //   776: iload_2
+    //   777: ineg
+    //   778: istore_2
+    //   779: ldc_w 976
+    //   782: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   785: iload_2
+    //   786: ireturn
+    //   787: astore 13
+    //   789: ldc_w 263
+    //   792: new 328	java/lang/StringBuilder
+    //   795: dup
+    //   796: ldc_w 836
+    //   799: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   802: aload 13
+    //   804: invokevirtual 336	java/lang/Exception:toString	()Ljava/lang/String;
+    //   807: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   810: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   813: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   816: iload_3
+    //   817: istore_2
+    //   818: aload_1
+    //   819: astore 13
+    //   821: goto -322 -> 499
+    //   824: aload_0
+    //   825: getfield 838	com/tencent/mm/plugin/voip/model/e:tQP	Z
+    //   828: ifeq +23 -> 851
+    //   831: aload 14
+    //   833: ifnull +18 -> 851
     //   836: aload_0
-    //   837: getfield 848	com/tencent/mm/plugin/voip/model/e:qsf	I
-    //   840: aload 14
-    //   842: aload_1
-    //   843: invokevirtual 854	android/media/MediaMuxer:writeSampleData	(ILjava/nio/ByteBuffer;Landroid/media/MediaCodec$BufferInfo;)V
-    //   846: aload_1
-    //   847: getfield 857	android/media/MediaCodec$BufferInfo:flags	I
-    //   850: istore_3
-    //   851: getstatic 87	com/tencent/mm/plugin/voip/model/e:frameID	I
-    //   854: iconst_1
-    //   855: iadd
-    //   856: putstatic 87	com/tencent/mm/plugin/voip/model/e:frameID	I
-    //   859: aload_0
-    //   860: getfield 206	com/tencent/mm/plugin/voip/model/e:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   863: iload 6
-    //   865: iconst_0
-    //   866: invokevirtual 861	com/tencent/mm/compatible/deviceinfo/z:releaseOutputBuffer	(IZ)V
-    //   869: aload_0
-    //   870: getfield 206	com/tencent/mm/plugin/voip/model/e:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   873: aload_1
-    //   874: aload_0
-    //   875: getfield 144	com/tencent/mm/plugin/voip/model/e:TIMEOUT_USEC	I
-    //   878: i2l
-    //   879: invokevirtual 827	com/tencent/mm/compatible/deviceinfo/z:dequeueOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;J)I
-    //   882: istore 6
-    //   884: iload_3
-    //   885: istore_2
-    //   886: iload 6
-    //   888: iflt +1439 -> 2327
-    //   891: aload 13
+    //   837: getfield 840	com/tencent/mm/plugin/voip/model/e:tQN	Landroid/media/MediaMuxer;
+    //   840: aload_0
+    //   841: getfield 842	com/tencent/mm/plugin/voip/model/e:tQO	I
+    //   844: aload 14
+    //   846: aload 13
+    //   848: invokevirtual 848	android/media/MediaMuxer:writeSampleData	(ILjava/nio/ByteBuffer;Landroid/media/MediaCodec$BufferInfo;)V
+    //   851: aload 13
+    //   853: getfield 851	android/media/MediaCodec$BufferInfo:flags	I
+    //   856: istore_3
+    //   857: getstatic 87	com/tencent/mm/plugin/voip/model/e:frameID	I
+    //   860: iconst_1
+    //   861: iadd
+    //   862: putstatic 87	com/tencent/mm/plugin/voip/model/e:frameID	I
+    //   865: aload_0
+    //   866: getfield 206	com/tencent/mm/plugin/voip/model/e:tQL	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   869: iload 6
+    //   871: iconst_0
+    //   872: invokevirtual 855	com/tencent/mm/compatible/deviceinfo/aa:releaseOutputBuffer	(IZ)V
+    //   875: aload_0
+    //   876: getfield 206	com/tencent/mm/plugin/voip/model/e:tQL	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   879: aload 13
+    //   881: aload_0
+    //   882: getfield 144	com/tencent/mm/plugin/voip/model/e:TIMEOUT_USEC	I
+    //   885: i2l
+    //   886: invokevirtual 819	com/tencent/mm/compatible/deviceinfo/aa:a	(Landroid/media/MediaCodec$BufferInfo;J)I
+    //   889: istore 6
+    //   891: iload_3
+    //   892: istore_2
     //   893: iload 6
-    //   895: aaload
-    //   896: astore 14
+    //   895: iflt +1380 -> 2275
     //   898: aload_1
-    //   899: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   902: newarray byte
-    //   904: astore 15
-    //   906: aload 14
-    //   908: aload 15
-    //   910: invokevirtual 866	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
-    //   913: pop
-    //   914: aload_0
-    //   915: getfield 868	com/tencent/mm/plugin/voip/model/e:outputStream	Ljava/io/BufferedOutputStream;
-    //   918: ifnull +16 -> 934
+    //   899: iload 6
+    //   901: aaload
+    //   902: astore 14
+    //   904: aload 13
+    //   906: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   909: newarray byte
+    //   911: astore 15
+    //   913: aload 14
+    //   915: aload 15
+    //   917: invokevirtual 860	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
+    //   920: pop
     //   921: aload_0
-    //   922: getfield 868	com/tencent/mm/plugin/voip/model/e:outputStream	Ljava/io/BufferedOutputStream;
-    //   925: aload 15
-    //   927: iconst_0
-    //   928: aload 15
-    //   930: arraylength
-    //   931: invokevirtual 771	java/io/BufferedOutputStream:write	([BII)V
-    //   934: aload_1
-    //   935: getfield 857	android/media/MediaCodec$BufferInfo:flags	I
-    //   938: iconst_2
-    //   939: if_icmpne +550 -> 1489
-    //   942: aload 15
-    //   944: invokestatic 870	com/tencent/mm/plugin/voip/model/e:bS	([B)Ljava/util/ArrayList;
-    //   947: astore 16
-    //   949: new 872	com/tencent/mm/protocal/protobuf/cap
-    //   952: dup
-    //   953: invokespecial 873	com/tencent/mm/protocal/protobuf/cap:<init>	()V
-    //   956: astore 17
-    //   958: iconst_0
-    //   959: istore 9
-    //   961: iconst_0
-    //   962: istore 10
-    //   964: iconst_0
-    //   965: istore 5
-    //   967: iconst_0
-    //   968: istore 4
-    //   970: iconst_0
-    //   971: istore_3
+    //   922: getfield 862	com/tencent/mm/plugin/voip/model/e:outputStream	Ljava/io/BufferedOutputStream;
+    //   925: ifnull +16 -> 941
+    //   928: aload_0
+    //   929: getfield 862	com/tencent/mm/plugin/voip/model/e:outputStream	Ljava/io/BufferedOutputStream;
+    //   932: aload 15
+    //   934: iconst_0
+    //   935: aload 15
+    //   937: arraylength
+    //   938: invokevirtual 764	java/io/BufferedOutputStream:write	([BII)V
+    //   941: aload 13
+    //   943: getfield 851	android/media/MediaCodec$BufferInfo:flags	I
+    //   946: iconst_2
+    //   947: if_icmpne +557 -> 1504
+    //   950: aload 15
+    //   952: invokestatic 864	com/tencent/mm/plugin/voip/model/e:ci	([B)Ljava/util/ArrayList;
+    //   955: astore 16
+    //   957: new 866	com/tencent/mm/protocal/protobuf/ciq
+    //   960: dup
+    //   961: invokespecial 867	com/tencent/mm/protocal/protobuf/ciq:<init>	()V
+    //   964: astore 17
+    //   966: iconst_0
+    //   967: istore 9
+    //   969: iconst_0
+    //   970: istore 10
     //   972: iconst_0
-    //   973: istore_2
-    //   974: aload 16
-    //   976: invokevirtual 875	java/util/ArrayList:size	()I
-    //   979: iconst_3
-    //   980: if_icmpne +326 -> 1306
-    //   983: aload_0
-    //   984: getfield 142	com/tencent/mm/plugin/voip/model/e:ENCODING	Ljava/lang/String;
-    //   987: ldc 247
-    //   989: invokevirtual 251	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   992: ifeq +314 -> 1306
-    //   995: aload 16
-    //   997: iconst_0
-    //   998: invokevirtual 878	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   1001: checkcast 233	java/lang/Integer
-    //   1004: invokevirtual 881	java/lang/Integer:intValue	()I
-    //   1007: iconst_4
-    //   1008: iadd
-    //   1009: istore 7
-    //   1011: aload 16
-    //   1013: iconst_1
-    //   1014: invokevirtual 878	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   1017: checkcast 233	java/lang/Integer
-    //   1020: invokevirtual 881	java/lang/Integer:intValue	()I
-    //   1023: iconst_4
-    //   1024: iadd
-    //   1025: istore 5
-    //   1027: aload 16
-    //   1029: iconst_2
-    //   1030: invokevirtual 878	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   1033: checkcast 233	java/lang/Integer
-    //   1036: invokevirtual 881	java/lang/Integer:intValue	()I
-    //   1039: iconst_4
-    //   1040: iadd
-    //   1041: istore_3
-    //   1042: iload 5
-    //   1044: iload 7
-    //   1046: isub
+    //   973: istore 5
+    //   975: iconst_0
+    //   976: istore 4
+    //   978: iconst_0
+    //   979: istore_3
+    //   980: iconst_0
+    //   981: istore_2
+    //   982: aload 16
+    //   984: invokevirtual 869	java/util/ArrayList:size	()I
+    //   987: iconst_3
+    //   988: if_icmpne +331 -> 1319
+    //   991: aload_0
+    //   992: getfield 142	com/tencent/mm/plugin/voip/model/e:ENCODING	Ljava/lang/String;
+    //   995: ldc 248
+    //   997: invokevirtual 252	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   1000: ifeq +319 -> 1319
+    //   1003: aload 16
+    //   1005: iconst_0
+    //   1006: invokevirtual 872	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1009: checkcast 233	java/lang/Integer
+    //   1012: invokevirtual 875	java/lang/Integer:intValue	()I
+    //   1015: iconst_4
+    //   1016: iadd
+    //   1017: istore 7
+    //   1019: aload 16
+    //   1021: iconst_1
+    //   1022: invokevirtual 872	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1025: checkcast 233	java/lang/Integer
+    //   1028: invokevirtual 875	java/lang/Integer:intValue	()I
+    //   1031: iconst_4
+    //   1032: iadd
+    //   1033: istore 5
+    //   1035: aload 16
+    //   1037: iconst_2
+    //   1038: invokevirtual 872	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1041: checkcast 233	java/lang/Integer
+    //   1044: invokevirtual 875	java/lang/Integer:intValue	()I
     //   1047: iconst_4
-    //   1048: isub
-    //   1049: istore 8
-    //   1051: iload_3
-    //   1052: iload 5
+    //   1048: iadd
+    //   1049: istore_3
+    //   1050: iload 5
+    //   1052: iload 7
     //   1054: isub
     //   1055: iconst_4
     //   1056: isub
-    //   1057: istore 4
-    //   1059: aload_1
-    //   1060: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1063: iload_3
+    //   1057: istore 8
+    //   1059: iload_3
+    //   1060: iload 5
+    //   1062: isub
+    //   1063: iconst_4
     //   1064: isub
-    //   1065: istore_2
-    //   1066: aload 17
-    //   1068: aload 15
-    //   1070: iload 7
-    //   1072: iload 8
-    //   1074: invokestatic 887	com/tencent/mm/bw/b:Q	([BII)Lcom/tencent/mm/bw/b;
-    //   1077: putfield 891	com/tencent/mm/protocal/protobuf/cap:MfN	Lcom/tencent/mm/bw/b;
-    //   1080: aload_0
-    //   1081: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   1084: ifnonnull +13 -> 1097
-    //   1087: aload_0
-    //   1088: aload_1
-    //   1089: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1092: newarray byte
-    //   1094: putfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   1097: aload_0
-    //   1098: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   1101: ifnull +40 -> 1141
-    //   1104: aload_1
-    //   1105: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1108: aload_0
-    //   1109: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   1112: arraylength
-    //   1113: if_icmple +13 -> 1126
-    //   1116: aload_0
-    //   1117: aload_1
-    //   1118: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1121: newarray byte
-    //   1123: putfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   1126: aload 15
-    //   1128: iconst_0
-    //   1129: aload_0
-    //   1130: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   1133: iconst_0
-    //   1134: aload_1
-    //   1135: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1138: invokestatic 895	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   1141: ldc_w 259
-    //   1144: new 261	java/lang/StringBuilder
-    //   1147: dup
-    //   1148: ldc_w 897
-    //   1151: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1154: iload 5
-    //   1156: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1159: ldc_w 899
-    //   1162: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1165: iload 4
-    //   1167: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1170: ldc_w 901
-    //   1173: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1176: iload_3
-    //   1177: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1180: ldc_w 899
-    //   1183: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1186: iload_2
-    //   1187: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1190: ldc_w 903
-    //   1193: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1196: iload 7
-    //   1198: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1201: ldc_w 899
-    //   1204: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1207: iload 8
-    //   1209: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1212: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1215: invokestatic 286	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1218: aload_0
-    //   1219: getfield 173	com/tencent/mm/plugin/voip/model/e:qsj	I
-    //   1222: iconst_1
-    //   1223: if_icmpeq +200 -> 1423
-    //   1226: aload_0
-    //   1227: getfield 171	com/tencent/mm/plugin/voip/model/e:qsi	Lcom/tencent/mm/plugin/voip/model/g;
-    //   1230: aload 15
-    //   1232: invokevirtual 907	com/tencent/mm/plugin/voip/model/g:cg	([B)Z
-    //   1235: ifeq +188 -> 1423
-    //   1238: aload_0
+    //   1065: istore 4
+    //   1067: aload 13
+    //   1069: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1072: iload_3
+    //   1073: isub
+    //   1074: istore_2
+    //   1075: aload 17
+    //   1077: aload 15
+    //   1079: iload 7
+    //   1081: iload 8
+    //   1083: invokestatic 880	com/tencent/mm/cd/b:S	([BII)Lcom/tencent/mm/cd/b;
+    //   1086: putfield 884	com/tencent/mm/protocal/protobuf/ciq:Tpz	Lcom/tencent/mm/cd/b;
+    //   1089: aload_0
+    //   1090: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   1093: ifnonnull +14 -> 1107
+    //   1096: aload_0
+    //   1097: aload 13
+    //   1099: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1102: newarray byte
+    //   1104: putfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   1107: aload_0
+    //   1108: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   1111: ifnull +43 -> 1154
+    //   1114: aload 13
+    //   1116: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1119: aload_0
+    //   1120: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   1123: arraylength
+    //   1124: if_icmple +14 -> 1138
+    //   1127: aload_0
+    //   1128: aload 13
+    //   1130: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1133: newarray byte
+    //   1135: putfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   1138: aload 15
+    //   1140: iconst_0
+    //   1141: aload_0
+    //   1142: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   1145: iconst_0
+    //   1146: aload 13
+    //   1148: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1151: invokestatic 888	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   1154: ldc_w 263
+    //   1157: new 328	java/lang/StringBuilder
+    //   1160: dup
+    //   1161: ldc_w 890
+    //   1164: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1167: iload 5
+    //   1169: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1172: ldc_w 892
+    //   1175: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1178: iload 4
+    //   1180: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1183: ldc_w 894
+    //   1186: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1189: iload_3
+    //   1190: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1193: ldc_w 892
+    //   1196: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1199: iload_2
+    //   1200: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1203: ldc_w 896
+    //   1206: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1209: iload 7
+    //   1211: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1214: ldc_w 892
+    //   1217: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1220: iload 8
+    //   1222: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1225: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1228: invokestatic 360	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1231: aload_0
+    //   1232: getfield 173	com/tencent/mm/plugin/voip/model/e:tQS	I
+    //   1235: iconst_1
+    //   1236: if_icmpeq +201 -> 1437
     //   1239: aload_0
-    //   1240: getfield 171	com/tencent/mm/plugin/voip/model/e:qsi	Lcom/tencent/mm/plugin/voip/model/g;
-    //   1243: getfield 910	com/tencent/mm/plugin/voip/model/g:GTT	I
-    //   1246: putfield 177	com/tencent/mm/plugin/voip/model/e:qsl	I
-    //   1249: aload_0
-    //   1250: iconst_1
-    //   1251: putfield 175	com/tencent/mm/plugin/voip/model/e:qsk	I
-    //   1254: ldc_w 259
-    //   1257: new 261	java/lang/StringBuilder
-    //   1260: dup
-    //   1261: ldc_w 912
-    //   1264: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1267: aload_0
-    //   1268: getfield 175	com/tencent/mm/plugin/voip/model/e:qsk	I
-    //   1271: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1274: ldc_w 914
-    //   1277: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1240: getfield 171	com/tencent/mm/plugin/voip/model/e:tQR	Lcom/tencent/mm/plugin/voip/model/g;
+    //   1243: aload 15
+    //   1245: invokevirtual 900	com/tencent/mm/plugin/voip/model/g:cw	([B)Z
+    //   1248: ifeq +189 -> 1437
+    //   1251: aload_0
+    //   1252: aload_0
+    //   1253: getfield 171	com/tencent/mm/plugin/voip/model/e:tQR	Lcom/tencent/mm/plugin/voip/model/g;
+    //   1256: getfield 903	com/tencent/mm/plugin/voip/model/g:NKf	I
+    //   1259: putfield 177	com/tencent/mm/plugin/voip/model/e:tQU	I
+    //   1262: aload_0
+    //   1263: iconst_1
+    //   1264: putfield 175	com/tencent/mm/plugin/voip/model/e:tQT	I
+    //   1267: ldc_w 263
+    //   1270: new 328	java/lang/StringBuilder
+    //   1273: dup
+    //   1274: ldc_w 905
+    //   1277: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1280: aload_0
-    //   1281: getfield 177	com/tencent/mm/plugin/voip/model/e:qsl	I
-    //   1284: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1287: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1290: invokestatic 386	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1281: getfield 175	com/tencent/mm/plugin/voip/model/e:tQT	I
+    //   1284: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1287: ldc_w 907
+    //   1290: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1293: aload_0
-    //   1294: invokespecial 752	com/tencent/mm/plugin/voip/model/e:cyY	()I
-    //   1297: istore_2
-    //   1298: ldc_w 987
-    //   1301: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1304: iload_2
-    //   1305: ireturn
-    //   1306: iload 10
-    //   1308: istore 8
-    //   1310: iload 9
-    //   1312: istore 7
-    //   1314: aload 16
-    //   1316: invokevirtual 875	java/util/ArrayList:size	()I
-    //   1319: iconst_2
-    //   1320: if_icmpne -240 -> 1080
-    //   1323: aload 16
-    //   1325: iconst_0
-    //   1326: invokevirtual 878	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   1329: checkcast 233	java/lang/Integer
-    //   1332: invokevirtual 881	java/lang/Integer:intValue	()I
-    //   1335: iconst_4
-    //   1336: iadd
-    //   1337: istore 5
-    //   1339: aload 16
-    //   1341: iconst_1
-    //   1342: invokevirtual 878	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   1345: checkcast 233	java/lang/Integer
-    //   1348: invokevirtual 881	java/lang/Integer:intValue	()I
-    //   1351: iconst_4
-    //   1352: iadd
-    //   1353: istore_3
-    //   1354: iload_3
-    //   1355: iload 5
-    //   1357: isub
-    //   1358: iconst_4
-    //   1359: isub
-    //   1360: istore 4
-    //   1362: aload_1
-    //   1363: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1366: iload_3
-    //   1367: isub
-    //   1368: istore_2
-    //   1369: iload 10
-    //   1371: istore 8
-    //   1373: iload 9
-    //   1375: istore 7
-    //   1377: goto -297 -> 1080
-    //   1380: astore_1
-    //   1381: ldc_w 259
-    //   1384: new 261	java/lang/StringBuilder
-    //   1387: dup
-    //   1388: ldc_w 916
-    //   1391: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1394: aload_1
-    //   1395: invokevirtual 426	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1398: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1401: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1404: invokestatic 298	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1407: aload_0
-    //   1408: sipush 2005
-    //   1411: putfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   1414: aload_0
-    //   1415: getfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   1418: ineg
-    //   1419: istore_2
-    //   1420: goto -122 -> 1298
-    //   1423: aload 17
-    //   1425: iconst_4
-    //   1426: putfield 919	com/tencent/mm/protocal/protobuf/cap:MfK	I
-    //   1429: aload 17
-    //   1431: aload 15
-    //   1433: iload 5
-    //   1435: iload 4
-    //   1437: invokestatic 887	com/tencent/mm/bw/b:Q	([BII)Lcom/tencent/mm/bw/b;
-    //   1440: putfield 922	com/tencent/mm/protocal/protobuf/cap:MfL	Lcom/tencent/mm/bw/b;
+    //   1294: getfield 177	com/tencent/mm/plugin/voip/model/e:tQU	I
+    //   1297: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1300: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1303: invokestatic 395	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1306: aload_0
+    //   1307: invokespecial 745	com/tencent/mm/plugin/voip/model/e:cNw	()I
+    //   1310: istore_2
+    //   1311: ldc_w 976
+    //   1314: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1317: iload_2
+    //   1318: ireturn
+    //   1319: iload 10
+    //   1321: istore 8
+    //   1323: iload 9
+    //   1325: istore 7
+    //   1327: aload 16
+    //   1329: invokevirtual 869	java/util/ArrayList:size	()I
+    //   1332: iconst_2
+    //   1333: if_icmpne -244 -> 1089
+    //   1336: aload 16
+    //   1338: iconst_0
+    //   1339: invokevirtual 872	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1342: checkcast 233	java/lang/Integer
+    //   1345: invokevirtual 875	java/lang/Integer:intValue	()I
+    //   1348: iconst_4
+    //   1349: iadd
+    //   1350: istore 5
+    //   1352: aload 16
+    //   1354: iconst_1
+    //   1355: invokevirtual 872	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1358: checkcast 233	java/lang/Integer
+    //   1361: invokevirtual 875	java/lang/Integer:intValue	()I
+    //   1364: iconst_4
+    //   1365: iadd
+    //   1366: istore_3
+    //   1367: iload_3
+    //   1368: iload 5
+    //   1370: isub
+    //   1371: iconst_4
+    //   1372: isub
+    //   1373: istore 4
+    //   1375: aload 13
+    //   1377: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1380: iload_3
+    //   1381: isub
+    //   1382: istore_2
+    //   1383: iload 10
+    //   1385: istore 8
+    //   1387: iload 9
+    //   1389: istore 7
+    //   1391: goto -302 -> 1089
+    //   1394: astore_1
+    //   1395: ldc_w 263
+    //   1398: new 328	java/lang/StringBuilder
+    //   1401: dup
+    //   1402: ldc_w 909
+    //   1405: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1408: aload_1
+    //   1409: invokevirtual 435	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1412: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1415: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1418: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1421: aload_0
+    //   1422: sipush 2005
+    //   1425: putfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   1428: aload_0
+    //   1429: getfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   1432: ineg
+    //   1433: istore_2
+    //   1434: goto -123 -> 1311
+    //   1437: aload 17
+    //   1439: iconst_4
+    //   1440: putfield 912	com/tencent/mm/protocal/protobuf/ciq:Tpw	I
     //   1443: aload 17
     //   1445: aload 15
-    //   1447: iload_3
-    //   1448: iload_2
-    //   1449: invokestatic 887	com/tencent/mm/bw/b:Q	([BII)Lcom/tencent/mm/bw/b;
-    //   1452: putfield 925	com/tencent/mm/protocal/protobuf/cap:MfM	Lcom/tencent/mm/bw/b;
-    //   1455: aload 17
-    //   1457: invokevirtual 928	com/tencent/mm/protocal/protobuf/cap:toByteArray	()[B
-    //   1460: arraylength
-    //   1461: istore_2
-    //   1462: aload_0
-    //   1463: aload 17
-    //   1465: invokevirtual 928	com/tencent/mm/protocal/protobuf/cap:toByteArray	()[B
-    //   1468: aload_1
-    //   1469: getfield 857	android/media/MediaCodec$BufferInfo:flags	I
-    //   1472: iload_2
-    //   1473: invokespecial 930	com/tencent/mm/plugin/voip/model/e:I	([BII)I
-    //   1476: istore_2
-    //   1477: iload_2
-    //   1478: ifge -658 -> 820
-    //   1481: ldc_w 987
-    //   1484: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1447: iload 5
+    //   1449: iload 4
+    //   1451: invokestatic 880	com/tencent/mm/cd/b:S	([BII)Lcom/tencent/mm/cd/b;
+    //   1454: putfield 915	com/tencent/mm/protocal/protobuf/ciq:Tpx	Lcom/tencent/mm/cd/b;
+    //   1457: aload 17
+    //   1459: aload 15
+    //   1461: iload_3
+    //   1462: iload_2
+    //   1463: invokestatic 880	com/tencent/mm/cd/b:S	([BII)Lcom/tencent/mm/cd/b;
+    //   1466: putfield 918	com/tencent/mm/protocal/protobuf/ciq:Tpy	Lcom/tencent/mm/cd/b;
+    //   1469: aload 17
+    //   1471: invokevirtual 921	com/tencent/mm/protocal/protobuf/ciq:toByteArray	()[B
+    //   1474: arraylength
+    //   1475: istore_2
+    //   1476: aload_0
+    //   1477: aload 17
+    //   1479: invokevirtual 921	com/tencent/mm/protocal/protobuf/ciq:toByteArray	()[B
+    //   1482: aload 13
+    //   1484: getfield 851	android/media/MediaCodec$BufferInfo:flags	I
     //   1487: iload_2
-    //   1488: ireturn
-    //   1489: aload_0
-    //   1490: getfield 173	com/tencent/mm/plugin/voip/model/e:qsj	I
-    //   1493: iconst_1
-    //   1494: if_icmpeq +126 -> 1620
-    //   1497: aload_0
-    //   1498: getfield 171	com/tencent/mm/plugin/voip/model/e:qsi	Lcom/tencent/mm/plugin/voip/model/g;
-    //   1501: aload 15
-    //   1503: invokevirtual 933	com/tencent/mm/plugin/voip/model/g:ch	([B)Z
-    //   1506: ifeq +114 -> 1620
-    //   1509: aload_0
-    //   1510: aload_0
-    //   1511: getfield 171	com/tencent/mm/plugin/voip/model/e:qsi	Lcom/tencent/mm/plugin/voip/model/g;
-    //   1514: getfield 910	com/tencent/mm/plugin/voip/model/g:GTT	I
-    //   1517: putfield 177	com/tencent/mm/plugin/voip/model/e:qsl	I
-    //   1520: aload_0
-    //   1521: iconst_1
-    //   1522: putfield 175	com/tencent/mm/plugin/voip/model/e:qsk	I
-    //   1525: ldc_w 259
-    //   1528: new 261	java/lang/StringBuilder
-    //   1531: dup
-    //   1532: ldc_w 912
-    //   1535: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1538: aload_0
-    //   1539: getfield 175	com/tencent/mm/plugin/voip/model/e:qsk	I
-    //   1542: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1545: ldc_w 914
-    //   1548: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1551: aload_0
-    //   1552: getfield 177	com/tencent/mm/plugin/voip/model/e:qsl	I
-    //   1555: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1558: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1561: invokestatic 386	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1564: aload_0
-    //   1565: invokespecial 752	com/tencent/mm/plugin/voip/model/e:cyY	()I
-    //   1568: istore_2
-    //   1569: ldc_w 987
-    //   1572: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1575: iload_2
-    //   1576: ireturn
-    //   1577: astore_1
-    //   1578: ldc_w 259
-    //   1581: new 261	java/lang/StringBuilder
-    //   1584: dup
-    //   1585: ldc_w 916
-    //   1588: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1591: aload_1
-    //   1592: invokevirtual 426	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1595: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1598: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1601: invokestatic 298	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1604: aload_0
-    //   1605: sipush 2005
-    //   1608: putfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   1611: aload_0
-    //   1612: getfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   1615: ineg
-    //   1616: istore_2
-    //   1617: goto -48 -> 1569
-    //   1620: aload_1
-    //   1621: getfield 857	android/media/MediaCodec$BufferInfo:flags	I
-    //   1624: ifeq +71 -> 1695
-    //   1627: aload_1
-    //   1628: getfield 857	android/media/MediaCodec$BufferInfo:flags	I
-    //   1631: iconst_1
-    //   1632: if_icmpeq +63 -> 1695
-    //   1635: aload_0
-    //   1636: sipush 2009
-    //   1639: putfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   1642: aload_0
-    //   1643: getfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   1646: ineg
-    //   1647: istore_2
-    //   1648: ldc_w 259
-    //   1651: new 261	java/lang/StringBuilder
-    //   1654: dup
-    //   1655: ldc_w 935
-    //   1658: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1661: aload_1
-    //   1662: getfield 857	android/media/MediaCodec$BufferInfo:flags	I
-    //   1665: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1668: ldc_w 899
-    //   1671: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1674: aload_1
-    //   1675: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1678: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1681: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1684: invokestatic 386	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1687: ldc_w 987
-    //   1690: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1693: iload_2
-    //   1694: ireturn
-    //   1695: iconst_0
-    //   1696: istore_3
-    //   1697: iload_3
-    //   1698: istore_2
-    //   1699: aload_1
-    //   1700: getfield 857	android/media/MediaCodec$BufferInfo:flags	I
-    //   1703: iconst_1
-    //   1704: if_icmpne +64 -> 1768
-    //   1707: aload_0
-    //   1708: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   1711: arraylength
-    //   1712: newarray byte
-    //   1714: astore 16
-    //   1716: aload 15
-    //   1718: iconst_0
-    //   1719: aload 16
-    //   1721: iconst_0
-    //   1722: aload_0
-    //   1723: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   1726: arraylength
-    //   1727: invokestatic 895	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   1730: aload 16
-    //   1732: aload_0
-    //   1733: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   1736: invokestatic 941	java/util/Arrays:equals	([B[B)Z
-    //   1739: ifeq +247 -> 1986
+    //   1488: invokespecial 923	com/tencent/mm/plugin/voip/model/e:K	([BII)I
+    //   1491: istore_2
+    //   1492: iload_2
+    //   1493: ifge -669 -> 824
+    //   1496: ldc_w 976
+    //   1499: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1502: iload_2
+    //   1503: ireturn
+    //   1504: aload_0
+    //   1505: getfield 173	com/tencent/mm/plugin/voip/model/e:tQS	I
+    //   1508: iconst_1
+    //   1509: if_icmpeq +126 -> 1635
+    //   1512: aload_0
+    //   1513: getfield 171	com/tencent/mm/plugin/voip/model/e:tQR	Lcom/tencent/mm/plugin/voip/model/g;
+    //   1516: aload 15
+    //   1518: invokevirtual 926	com/tencent/mm/plugin/voip/model/g:cx	([B)Z
+    //   1521: ifeq +114 -> 1635
+    //   1524: aload_0
+    //   1525: aload_0
+    //   1526: getfield 171	com/tencent/mm/plugin/voip/model/e:tQR	Lcom/tencent/mm/plugin/voip/model/g;
+    //   1529: getfield 903	com/tencent/mm/plugin/voip/model/g:NKf	I
+    //   1532: putfield 177	com/tencent/mm/plugin/voip/model/e:tQU	I
+    //   1535: aload_0
+    //   1536: iconst_1
+    //   1537: putfield 175	com/tencent/mm/plugin/voip/model/e:tQT	I
+    //   1540: ldc_w 263
+    //   1543: new 328	java/lang/StringBuilder
+    //   1546: dup
+    //   1547: ldc_w 905
+    //   1550: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1553: aload_0
+    //   1554: getfield 175	com/tencent/mm/plugin/voip/model/e:tQT	I
+    //   1557: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1560: ldc_w 907
+    //   1563: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1566: aload_0
+    //   1567: getfield 177	com/tencent/mm/plugin/voip/model/e:tQU	I
+    //   1570: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1573: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1576: invokestatic 395	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1579: aload_0
+    //   1580: invokespecial 745	com/tencent/mm/plugin/voip/model/e:cNw	()I
+    //   1583: istore_2
+    //   1584: ldc_w 976
+    //   1587: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1590: iload_2
+    //   1591: ireturn
+    //   1592: astore_1
+    //   1593: ldc_w 263
+    //   1596: new 328	java/lang/StringBuilder
+    //   1599: dup
+    //   1600: ldc_w 909
+    //   1603: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1606: aload_1
+    //   1607: invokevirtual 435	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1610: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1613: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1616: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1619: aload_0
+    //   1620: sipush 2005
+    //   1623: putfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   1626: aload_0
+    //   1627: getfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   1630: ineg
+    //   1631: istore_2
+    //   1632: goto -48 -> 1584
+    //   1635: aload 13
+    //   1637: getfield 851	android/media/MediaCodec$BufferInfo:flags	I
+    //   1640: ifeq +74 -> 1714
+    //   1643: aload 13
+    //   1645: getfield 851	android/media/MediaCodec$BufferInfo:flags	I
+    //   1648: iconst_1
+    //   1649: if_icmpeq +65 -> 1714
+    //   1652: aload_0
+    //   1653: sipush 2009
+    //   1656: putfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   1659: aload_0
+    //   1660: getfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   1663: ineg
+    //   1664: istore_2
+    //   1665: ldc_w 263
+    //   1668: new 328	java/lang/StringBuilder
+    //   1671: dup
+    //   1672: ldc_w 928
+    //   1675: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1678: aload 13
+    //   1680: getfield 851	android/media/MediaCodec$BufferInfo:flags	I
+    //   1683: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1686: ldc_w 892
+    //   1689: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1692: aload 13
+    //   1694: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1697: invokevirtual 389	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1700: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1703: invokestatic 395	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1706: ldc_w 976
+    //   1709: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1712: iload_2
+    //   1713: ireturn
+    //   1714: iconst_0
+    //   1715: istore_3
+    //   1716: iload_3
+    //   1717: istore_2
+    //   1718: aload 13
+    //   1720: getfield 851	android/media/MediaCodec$BufferInfo:flags	I
+    //   1723: iconst_1
+    //   1724: if_icmpne +64 -> 1788
+    //   1727: aload_0
+    //   1728: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   1731: arraylength
+    //   1732: newarray byte
+    //   1734: astore 16
+    //   1736: aload 15
+    //   1738: iconst_0
+    //   1739: aload 16
+    //   1741: iconst_0
     //   1742: aload_0
-    //   1743: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
+    //   1743: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
     //   1746: arraylength
-    //   1747: istore_2
-    //   1748: ldc_w 259
-    //   1751: ldc_w 943
-    //   1754: iconst_1
-    //   1755: anewarray 4	java/lang/Object
-    //   1758: dup
-    //   1759: iconst_0
-    //   1760: iload_2
-    //   1761: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1764: aastore
-    //   1765: invokestatic 946	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1768: iconst_4
-    //   1769: invokestatic 949	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
-    //   1772: astore 16
-    //   1774: aload 16
-    //   1776: aload_1
-    //   1777: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1780: iconst_4
-    //   1781: isub
-    //   1782: iload_2
-    //   1783: isub
-    //   1784: invokevirtual 951	java/nio/ByteBuffer:putInt	(I)Ljava/nio/ByteBuffer;
-    //   1787: pop
-    //   1788: aload 16
-    //   1790: getstatic 954	java/nio/ByteOrder:BIG_ENDIAN	Ljava/nio/ByteOrder;
-    //   1793: invokevirtual 584	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
-    //   1796: invokevirtual 765	java/nio/ByteBuffer:array	()[B
-    //   1799: iconst_0
-    //   1800: aload 15
-    //   1802: iload_2
-    //   1803: iconst_4
-    //   1804: invokestatic 895	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   1807: invokestatic 776	java/lang/System:currentTimeMillis	()J
-    //   1810: lstore 11
-    //   1812: ldc_w 259
-    //   1815: new 261	java/lang/StringBuilder
-    //   1818: dup
-    //   1819: ldc_w 956
-    //   1822: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1825: aload_1
-    //   1826: getfield 857	android/media/MediaCodec$BufferInfo:flags	I
-    //   1829: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1832: ldc_w 958
-    //   1835: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1838: aload_1
-    //   1839: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1842: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1845: ldc_w 780
-    //   1848: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1851: getstatic 87	com/tencent/mm/plugin/voip/model/e:frameID	I
-    //   1854: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1857: ldc_w 782
-    //   1860: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1863: lload 11
-    //   1865: invokevirtual 785	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1868: ldc_w 960
-    //   1871: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1874: iload_2
-    //   1875: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1878: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1881: invokestatic 286	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1884: new 962	com/tencent/mm/protocal/protobuf/cao
-    //   1887: dup
-    //   1888: invokespecial 963	com/tencent/mm/protocal/protobuf/cao:<init>	()V
-    //   1891: astore 16
-    //   1893: aload 16
-    //   1895: aload 15
-    //   1897: iload_2
-    //   1898: aload_1
-    //   1899: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1902: iload_2
-    //   1903: isub
-    //   1904: invokestatic 887	com/tencent/mm/bw/b:Q	([BII)Lcom/tencent/mm/bw/b;
-    //   1907: putfield 966	com/tencent/mm/protocal/protobuf/cao:MfG	Lcom/tencent/mm/bw/b;
-    //   1910: aload 16
-    //   1912: iconst_1
-    //   1913: putfield 969	com/tencent/mm/protocal/protobuf/cao:MfH	I
-    //   1916: aload 16
-    //   1918: aload_0
-    //   1919: getfield 167	com/tencent/mm/plugin/voip/model/e:zLK	Ljava/util/LinkedList;
-    //   1922: putfield 972	com/tencent/mm/protocal/protobuf/cao:MfI	Ljava/util/LinkedList;
-    //   1925: aload_0
-    //   1926: getfield 169	com/tencent/mm/plugin/voip/model/e:zLL	Ljava/util/LinkedList;
-    //   1929: iconst_0
-    //   1930: aload_1
-    //   1931: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   1934: iload_2
-    //   1935: isub
-    //   1936: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1939: invokevirtual 976	java/util/LinkedList:set	(ILjava/lang/Object;)Ljava/lang/Object;
-    //   1942: pop
-    //   1943: aload 16
-    //   1945: aload_0
-    //   1946: getfield 169	com/tencent/mm/plugin/voip/model/e:zLL	Ljava/util/LinkedList;
-    //   1949: putfield 979	com/tencent/mm/protocal/protobuf/cao:MfJ	Ljava/util/LinkedList;
-    //   1952: aload 16
-    //   1954: invokevirtual 980	com/tencent/mm/protocal/protobuf/cao:toByteArray	()[B
-    //   1957: arraylength
-    //   1958: istore_2
-    //   1959: aload_0
-    //   1960: aload 16
-    //   1962: invokevirtual 980	com/tencent/mm/protocal/protobuf/cao:toByteArray	()[B
-    //   1965: aload_1
-    //   1966: getfield 857	android/media/MediaCodec$BufferInfo:flags	I
+    //   1747: invokestatic 888	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   1750: aload 16
+    //   1752: aload_0
+    //   1753: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   1756: invokestatic 934	java/util/Arrays:equals	([B[B)Z
+    //   1759: ifeq +174 -> 1933
+    //   1762: aload_0
+    //   1763: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   1766: arraylength
+    //   1767: istore_2
+    //   1768: ldc_w 263
+    //   1771: ldc_w 936
+    //   1774: iconst_1
+    //   1775: anewarray 4	java/lang/Object
+    //   1778: dup
+    //   1779: iconst_0
+    //   1780: iload_2
+    //   1781: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1784: aastore
+    //   1785: invokestatic 939	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1788: iconst_4
+    //   1789: invokestatic 942	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   1792: astore 16
+    //   1794: aload 16
+    //   1796: aload 13
+    //   1798: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1801: iconst_4
+    //   1802: isub
+    //   1803: iload_2
+    //   1804: isub
+    //   1805: invokevirtual 944	java/nio/ByteBuffer:putInt	(I)Ljava/nio/ByteBuffer;
+    //   1808: pop
+    //   1809: aload 16
+    //   1811: getstatic 947	java/nio/ByteOrder:BIG_ENDIAN	Ljava/nio/ByteOrder;
+    //   1814: invokevirtual 608	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+    //   1817: invokevirtual 755	java/nio/ByteBuffer:array	()[B
+    //   1820: iconst_0
+    //   1821: aload 15
+    //   1823: iload_2
+    //   1824: iconst_4
+    //   1825: invokestatic 888	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   1828: new 949	com/tencent/mm/protocal/protobuf/cip
+    //   1831: dup
+    //   1832: invokespecial 950	com/tencent/mm/protocal/protobuf/cip:<init>	()V
+    //   1835: astore 16
+    //   1837: aload 16
+    //   1839: aload 15
+    //   1841: iload_2
+    //   1842: aload 13
+    //   1844: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1847: iload_2
+    //   1848: isub
+    //   1849: invokestatic 880	com/tencent/mm/cd/b:S	([BII)Lcom/tencent/mm/cd/b;
+    //   1852: putfield 953	com/tencent/mm/protocal/protobuf/cip:Tps	Lcom/tencent/mm/cd/b;
+    //   1855: aload 16
+    //   1857: iconst_1
+    //   1858: putfield 956	com/tencent/mm/protocal/protobuf/cip:Tpt	I
+    //   1861: aload 16
+    //   1863: aload_0
+    //   1864: getfield 167	com/tencent/mm/plugin/voip/model/e:Frb	Ljava/util/LinkedList;
+    //   1867: putfield 959	com/tencent/mm/protocal/protobuf/cip:Tpu	Ljava/util/LinkedList;
+    //   1870: aload_0
+    //   1871: getfield 169	com/tencent/mm/plugin/voip/model/e:Frc	Ljava/util/LinkedList;
+    //   1874: iconst_0
+    //   1875: aload 13
+    //   1877: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1880: iload_2
+    //   1881: isub
+    //   1882: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1885: invokevirtual 963	java/util/LinkedList:set	(ILjava/lang/Object;)Ljava/lang/Object;
+    //   1888: pop
+    //   1889: aload 16
+    //   1891: aload_0
+    //   1892: getfield 169	com/tencent/mm/plugin/voip/model/e:Frc	Ljava/util/LinkedList;
+    //   1895: putfield 966	com/tencent/mm/protocal/protobuf/cip:Tpv	Ljava/util/LinkedList;
+    //   1898: aload 16
+    //   1900: invokevirtual 967	com/tencent/mm/protocal/protobuf/cip:toByteArray	()[B
+    //   1903: arraylength
+    //   1904: istore_2
+    //   1905: aload_0
+    //   1906: aload 16
+    //   1908: invokevirtual 967	com/tencent/mm/protocal/protobuf/cip:toByteArray	()[B
+    //   1911: aload 13
+    //   1913: getfield 851	android/media/MediaCodec$BufferInfo:flags	I
+    //   1916: iload_2
+    //   1917: invokespecial 923	com/tencent/mm/plugin/voip/model/e:K	([BII)I
+    //   1920: istore_2
+    //   1921: iload_2
+    //   1922: ifge -1098 -> 824
+    //   1925: ldc_w 976
+    //   1928: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1931: iload_2
+    //   1932: ireturn
+    //   1933: aload_0
+    //   1934: getfield 150	com/tencent/mm/plugin/voip/model/e:NJX	[B
+    //   1937: ifnonnull +11 -> 1948
+    //   1940: aload_0
+    //   1941: bipush 100
+    //   1943: newarray byte
+    //   1945: putfield 150	com/tencent/mm/plugin/voip/model/e:NJX	[B
+    //   1948: aload 13
+    //   1950: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   1953: bipush 100
+    //   1955: if_icmple +328 -> 2283
+    //   1958: bipush 100
+    //   1960: istore_2
+    //   1961: aload 15
+    //   1963: iconst_0
+    //   1964: aload_0
+    //   1965: getfield 150	com/tencent/mm/plugin/voip/model/e:NJX	[B
+    //   1968: iconst_0
     //   1969: iload_2
-    //   1970: invokespecial 930	com/tencent/mm/plugin/voip/model/e:I	([BII)I
-    //   1973: istore_2
-    //   1974: iload_2
-    //   1975: ifge -1155 -> 820
-    //   1978: ldc_w 987
-    //   1981: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1984: iload_2
-    //   1985: ireturn
-    //   1986: aload_0
-    //   1987: getfield 150	com/tencent/mm/plugin/voip/model/e:GTL	[B
-    //   1990: ifnonnull +11 -> 2001
-    //   1993: aload_0
-    //   1994: bipush 100
-    //   1996: newarray byte
-    //   1998: putfield 150	com/tencent/mm/plugin/voip/model/e:GTL	[B
-    //   2001: aload_1
-    //   2002: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   2005: bipush 100
-    //   2007: if_icmple +328 -> 2335
-    //   2010: bipush 100
-    //   2012: istore_2
-    //   2013: aload 15
-    //   2015: iconst_0
-    //   2016: aload_0
-    //   2017: getfield 150	com/tencent/mm/plugin/voip/model/e:GTL	[B
-    //   2020: iconst_0
-    //   2021: iload_2
-    //   2022: invokestatic 895	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   2025: aload_0
-    //   2026: getfield 150	com/tencent/mm/plugin/voip/model/e:GTL	[B
-    //   2029: invokestatic 870	com/tencent/mm/plugin/voip/model/e:bS	([B)Ljava/util/ArrayList;
-    //   2032: astore 16
-    //   2034: iload_3
-    //   2035: istore_2
-    //   2036: aload 16
-    //   2038: invokevirtual 875	java/util/ArrayList:size	()I
-    //   2041: iconst_3
-    //   2042: if_icmpne -274 -> 1768
-    //   2045: iload_3
-    //   2046: istore_2
-    //   2047: aload_0
-    //   2048: getfield 142	com/tencent/mm/plugin/voip/model/e:ENCODING	Ljava/lang/String;
-    //   2051: ldc_w 527
-    //   2054: invokevirtual 251	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   2057: ifeq -289 -> 1768
-    //   2060: aload 16
-    //   2062: iconst_0
-    //   2063: invokevirtual 878	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   2066: checkcast 233	java/lang/Integer
-    //   2069: invokevirtual 881	java/lang/Integer:intValue	()I
-    //   2072: istore_3
-    //   2073: aload 16
-    //   2075: iconst_1
-    //   2076: invokevirtual 878	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   2079: checkcast 233	java/lang/Integer
-    //   2082: invokevirtual 881	java/lang/Integer:intValue	()I
-    //   2085: istore 4
-    //   2087: aload 16
-    //   2089: iconst_2
-    //   2090: invokevirtual 878	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   2093: checkcast 233	java/lang/Integer
-    //   2096: invokevirtual 881	java/lang/Integer:intValue	()I
-    //   2099: istore_2
-    //   2100: iload 4
-    //   2102: iload_3
-    //   2103: isub
-    //   2104: istore 5
-    //   2106: iload_2
-    //   2107: iload 4
-    //   2109: isub
-    //   2110: istore 7
-    //   2112: ldc_w 259
-    //   2115: ldc_w 982
-    //   2118: iconst_5
-    //   2119: anewarray 4	java/lang/Object
-    //   2122: dup
-    //   2123: iconst_0
-    //   2124: iload_3
-    //   2125: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2128: aastore
-    //   2129: dup
-    //   2130: iconst_1
-    //   2131: iload 4
-    //   2133: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2136: aastore
-    //   2137: dup
-    //   2138: iconst_2
-    //   2139: iload_2
-    //   2140: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2143: aastore
-    //   2144: dup
-    //   2145: iconst_3
-    //   2146: iload 5
-    //   2148: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2151: aastore
-    //   2152: dup
-    //   2153: iconst_4
-    //   2154: iload 7
-    //   2156: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2159: aastore
-    //   2160: invokestatic 984	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   2163: aload_0
-    //   2164: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   2167: arraylength
-    //   2168: iload 5
-    //   2170: iload 7
-    //   2172: iadd
-    //   2173: if_icmpge +14 -> 2187
-    //   2176: aload_0
-    //   2177: iload 5
-    //   2179: iload 7
-    //   2181: iadd
-    //   2182: newarray byte
-    //   2184: putfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   2187: aload 15
-    //   2189: iload_3
-    //   2190: aload_0
-    //   2191: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   2194: iconst_0
-    //   2195: iload 5
-    //   2197: invokestatic 895	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   2200: aload 15
-    //   2202: iload 7
-    //   2204: aload_0
-    //   2205: getfield 148	com/tencent/mm/plugin/voip/model/e:GTK	[B
-    //   2208: iload 5
-    //   2210: iload 7
-    //   2212: invokestatic 895	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   2215: new 872	com/tencent/mm/protocal/protobuf/cap
-    //   2218: dup
-    //   2219: invokespecial 873	com/tencent/mm/protocal/protobuf/cap:<init>	()V
-    //   2222: astore 16
-    //   2224: aload 16
-    //   2226: iconst_4
-    //   2227: putfield 919	com/tencent/mm/protocal/protobuf/cap:MfK	I
-    //   2230: aload 16
-    //   2232: aload 15
-    //   2234: iload_3
-    //   2235: iconst_4
-    //   2236: iadd
-    //   2237: iload 5
-    //   2239: iconst_4
-    //   2240: isub
-    //   2241: invokestatic 887	com/tencent/mm/bw/b:Q	([BII)Lcom/tencent/mm/bw/b;
-    //   2244: putfield 922	com/tencent/mm/protocal/protobuf/cap:MfL	Lcom/tencent/mm/bw/b;
-    //   2247: aload 16
-    //   2249: aload 15
-    //   2251: iload 4
-    //   2253: iconst_4
-    //   2254: iadd
-    //   2255: iload 7
-    //   2257: iconst_4
-    //   2258: isub
-    //   2259: invokestatic 887	com/tencent/mm/bw/b:Q	([BII)Lcom/tencent/mm/bw/b;
-    //   2262: putfield 925	com/tencent/mm/protocal/protobuf/cap:MfM	Lcom/tencent/mm/bw/b;
-    //   2265: aload 16
-    //   2267: invokevirtual 928	com/tencent/mm/protocal/protobuf/cap:toByteArray	()[B
-    //   2270: arraylength
-    //   2271: istore_3
-    //   2272: aload_0
-    //   2273: aload 16
-    //   2275: invokevirtual 928	com/tencent/mm/protocal/protobuf/cap:toByteArray	()[B
-    //   2278: iconst_2
-    //   2279: iload_3
-    //   2280: invokespecial 930	com/tencent/mm/plugin/voip/model/e:I	([BII)I
-    //   2283: pop
-    //   2284: goto -516 -> 1768
-    //   2287: astore_1
-    //   2288: ldc_w 259
-    //   2291: new 261	java/lang/StringBuilder
-    //   2294: dup
-    //   2295: ldc_w 341
-    //   2298: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   2301: aload_1
-    //   2302: invokevirtual 342	java/lang/Exception:toString	()Ljava/lang/String;
-    //   2305: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2308: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2311: invokestatic 298	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2314: aload_0
-    //   2315: sipush 2004
-    //   2318: putfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   2321: aload_0
-    //   2322: getfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   2325: ineg
-    //   2326: istore_2
-    //   2327: ldc_w 987
-    //   2330: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   2333: iload_2
-    //   2334: ireturn
-    //   2335: aload_1
-    //   2336: getfield 864	android/media/MediaCodec$BufferInfo:size	I
-    //   2339: istore_2
-    //   2340: goto -327 -> 2013
-    //   2343: aload_0
-    //   2344: getfield 179	com/tencent/mm/plugin/voip/model/e:qsm	I
-    //   2347: istore_3
-    //   2348: aload_0
-    //   2349: iload_3
-    //   2350: iconst_1
-    //   2351: iadd
-    //   2352: putfield 179	com/tencent/mm/plugin/voip/model/e:qsm	I
-    //   2355: iload_3
-    //   2356: iconst_5
-    //   2357: if_icmple -30 -> 2327
-    //   2360: aload_0
-    //   2361: sipush 2006
-    //   2364: putfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   2367: aload_0
-    //   2368: getfield 138	com/tencent/mm/plugin/voip/model/e:qsb	I
-    //   2371: ineg
-    //   2372: istore_2
-    //   2373: goto -46 -> 2327
-    //   2376: iconst_0
-    //   2377: istore_2
-    //   2378: aload 13
-    //   2380: astore_1
-    //   2381: goto -1934 -> 447
+    //   1970: invokestatic 888	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   1973: aload_0
+    //   1974: getfield 150	com/tencent/mm/plugin/voip/model/e:NJX	[B
+    //   1977: invokestatic 864	com/tencent/mm/plugin/voip/model/e:ci	([B)Ljava/util/ArrayList;
+    //   1980: astore 16
+    //   1982: iload_3
+    //   1983: istore_2
+    //   1984: aload 16
+    //   1986: invokevirtual 869	java/util/ArrayList:size	()I
+    //   1989: iconst_3
+    //   1990: if_icmpne -202 -> 1788
+    //   1993: iload_3
+    //   1994: istore_2
+    //   1995: aload_0
+    //   1996: getfield 142	com/tencent/mm/plugin/voip/model/e:ENCODING	Ljava/lang/String;
+    //   1999: ldc_w 493
+    //   2002: invokevirtual 252	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   2005: ifeq -217 -> 1788
+    //   2008: aload 16
+    //   2010: iconst_0
+    //   2011: invokevirtual 872	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   2014: checkcast 233	java/lang/Integer
+    //   2017: invokevirtual 875	java/lang/Integer:intValue	()I
+    //   2020: istore_3
+    //   2021: aload 16
+    //   2023: iconst_1
+    //   2024: invokevirtual 872	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   2027: checkcast 233	java/lang/Integer
+    //   2030: invokevirtual 875	java/lang/Integer:intValue	()I
+    //   2033: istore 4
+    //   2035: aload 16
+    //   2037: iconst_2
+    //   2038: invokevirtual 872	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   2041: checkcast 233	java/lang/Integer
+    //   2044: invokevirtual 875	java/lang/Integer:intValue	()I
+    //   2047: istore_2
+    //   2048: iload 4
+    //   2050: iload_3
+    //   2051: isub
+    //   2052: istore 5
+    //   2054: iload_2
+    //   2055: iload 4
+    //   2057: isub
+    //   2058: istore 7
+    //   2060: ldc_w 263
+    //   2063: ldc_w 969
+    //   2066: iconst_5
+    //   2067: anewarray 4	java/lang/Object
+    //   2070: dup
+    //   2071: iconst_0
+    //   2072: iload_3
+    //   2073: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2076: aastore
+    //   2077: dup
+    //   2078: iconst_1
+    //   2079: iload 4
+    //   2081: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2084: aastore
+    //   2085: dup
+    //   2086: iconst_2
+    //   2087: iload_2
+    //   2088: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2091: aastore
+    //   2092: dup
+    //   2093: iconst_3
+    //   2094: iload 5
+    //   2096: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2099: aastore
+    //   2100: dup
+    //   2101: iconst_4
+    //   2102: iload 7
+    //   2104: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2107: aastore
+    //   2108: invokestatic 971	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   2111: aload_0
+    //   2112: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   2115: arraylength
+    //   2116: iload 5
+    //   2118: iload 7
+    //   2120: iadd
+    //   2121: if_icmpge +14 -> 2135
+    //   2124: aload_0
+    //   2125: iload 5
+    //   2127: iload 7
+    //   2129: iadd
+    //   2130: newarray byte
+    //   2132: putfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   2135: aload 15
+    //   2137: iload_3
+    //   2138: aload_0
+    //   2139: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   2142: iconst_0
+    //   2143: iload 5
+    //   2145: invokestatic 888	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   2148: aload 15
+    //   2150: iload 7
+    //   2152: aload_0
+    //   2153: getfield 148	com/tencent/mm/plugin/voip/model/e:NJW	[B
+    //   2156: iload 5
+    //   2158: iload 7
+    //   2160: invokestatic 888	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   2163: new 866	com/tencent/mm/protocal/protobuf/ciq
+    //   2166: dup
+    //   2167: invokespecial 867	com/tencent/mm/protocal/protobuf/ciq:<init>	()V
+    //   2170: astore 16
+    //   2172: aload 16
+    //   2174: iconst_4
+    //   2175: putfield 912	com/tencent/mm/protocal/protobuf/ciq:Tpw	I
+    //   2178: aload 16
+    //   2180: aload 15
+    //   2182: iload_3
+    //   2183: iconst_4
+    //   2184: iadd
+    //   2185: iload 5
+    //   2187: iconst_4
+    //   2188: isub
+    //   2189: invokestatic 880	com/tencent/mm/cd/b:S	([BII)Lcom/tencent/mm/cd/b;
+    //   2192: putfield 915	com/tencent/mm/protocal/protobuf/ciq:Tpx	Lcom/tencent/mm/cd/b;
+    //   2195: aload 16
+    //   2197: aload 15
+    //   2199: iload 4
+    //   2201: iconst_4
+    //   2202: iadd
+    //   2203: iload 7
+    //   2205: iconst_4
+    //   2206: isub
+    //   2207: invokestatic 880	com/tencent/mm/cd/b:S	([BII)Lcom/tencent/mm/cd/b;
+    //   2210: putfield 918	com/tencent/mm/protocal/protobuf/ciq:Tpy	Lcom/tencent/mm/cd/b;
+    //   2213: aload 16
+    //   2215: invokevirtual 921	com/tencent/mm/protocal/protobuf/ciq:toByteArray	()[B
+    //   2218: arraylength
+    //   2219: istore_3
+    //   2220: aload_0
+    //   2221: aload 16
+    //   2223: invokevirtual 921	com/tencent/mm/protocal/protobuf/ciq:toByteArray	()[B
+    //   2226: iconst_2
+    //   2227: iload_3
+    //   2228: invokespecial 923	com/tencent/mm/plugin/voip/model/e:K	([BII)I
+    //   2231: pop
+    //   2232: goto -444 -> 1788
+    //   2235: astore_1
+    //   2236: ldc_w 263
+    //   2239: new 328	java/lang/StringBuilder
+    //   2242: dup
+    //   2243: ldc_w 836
+    //   2246: invokespecial 333	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2249: aload_1
+    //   2250: invokevirtual 336	java/lang/Exception:toString	()Ljava/lang/String;
+    //   2253: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2256: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2259: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2262: aload_0
+    //   2263: sipush 2004
+    //   2266: putfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   2269: aload_0
+    //   2270: getfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   2273: ineg
+    //   2274: istore_2
+    //   2275: ldc_w 976
+    //   2278: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   2281: iload_2
+    //   2282: ireturn
+    //   2283: aload 13
+    //   2285: getfield 858	android/media/MediaCodec$BufferInfo:size	I
+    //   2288: istore_2
+    //   2289: goto -328 -> 1961
+    //   2292: aload_0
+    //   2293: getfield 179	com/tencent/mm/plugin/voip/model/e:tQV	I
+    //   2296: istore_3
+    //   2297: aload_0
+    //   2298: iload_3
+    //   2299: iconst_1
+    //   2300: iadd
+    //   2301: putfield 179	com/tencent/mm/plugin/voip/model/e:tQV	I
+    //   2304: iload_3
+    //   2305: iconst_5
+    //   2306: if_icmple -31 -> 2275
+    //   2309: aload_0
+    //   2310: sipush 2006
+    //   2313: putfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   2316: aload_0
+    //   2317: getfield 138	com/tencent/mm/plugin/voip/model/e:tQK	I
+    //   2320: ineg
+    //   2321: istore_2
+    //   2322: goto -47 -> 2275
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	2384	0	this	e
-    //   0	2384	1	paramArrayOfByte	byte[]
-    //   0	2384	2	paramInt1	int
-    //   0	2384	3	paramInt2	int
-    //   0	2384	4	paramInt3	int
-    //   965	1276	5	i	int
-    //   636	258	6	j	int
-    //   1009	1250	7	k	int
-    //   1049	323	8	m	int
-    //   959	415	9	n	int
-    //   962	408	10	i1	int
-    //   466	1398	11	l	long
-    //   7	1	13	localObject1	Object
-    //   367	16	13	localException1	Exception
-    //   533	1	13	arrayOfByteBuffer	ByteBuffer[]
-    //   786	1593	13	localException2	Exception
-    //   524	383	14	localObject2	Object
-    //   904	1346	15	arrayOfByte	byte[]
-    //   947	1327	16	localObject3	Object
-    //   956	508	17	localcap	com.tencent.mm.protocal.protobuf.cap
+    //   0	2325	0	this	e
+    //   0	2325	1	paramArrayOfByte	byte[]
+    //   0	2325	2	paramInt1	int
+    //   0	2325	3	paramInt2	int
+    //   0	2325	4	paramInt3	int
+    //   7	2182	5	i	int
+    //   637	263	6	j	int
+    //   1017	1190	7	k	int
+    //   1057	329	8	m	int
+    //   967	421	9	n	int
+    //   970	414	10	i1	int
+    //   556	37	11	l	long
+    //   127	18	13	localObject1	Object
+    //   418	16	13	localException1	Exception
+    //   495	127	13	localObject2	Object
+    //   787	16	13	localException2	Exception
+    //   819	1465	13	arrayOfByte1	byte[]
+    //   10	904	14	localObject3	Object
+    //   911	1287	15	arrayOfByte2	byte[]
+    //   955	1267	16	localObject4	Object
+    //   964	514	17	localciq	com.tencent.mm.protocal.protobuf.ciq
     // Exception table:
     //   from	to	target	type
-    //   328	333	367	java/lang/Exception
-    //   429	445	786	java/lang/Exception
-    //   1293	1298	1380	java/lang/Exception
-    //   1564	1569	1577	java/lang/Exception
-    //   458	546	2287	java/lang/Exception
-    //   550	560	2287	java/lang/Exception
-    //   566	609	2287	java/lang/Exception
-    //   609	632	2287	java/lang/Exception
-    //   645	671	2287	java/lang/Exception
-    //   677	688	2287	java/lang/Exception
-    //   694	775	2287	java/lang/Exception
-    //   820	827	2287	java/lang/Exception
-    //   832	846	2287	java/lang/Exception
-    //   846	884	2287	java/lang/Exception
-    //   898	934	2287	java/lang/Exception
-    //   934	958	2287	java/lang/Exception
-    //   974	1042	2287	java/lang/Exception
-    //   1059	1080	2287	java/lang/Exception
-    //   1080	1097	2287	java/lang/Exception
-    //   1097	1126	2287	java/lang/Exception
-    //   1126	1141	2287	java/lang/Exception
-    //   1141	1293	2287	java/lang/Exception
-    //   1314	1354	2287	java/lang/Exception
-    //   1362	1369	2287	java/lang/Exception
-    //   1381	1420	2287	java/lang/Exception
-    //   1423	1477	2287	java/lang/Exception
-    //   1489	1564	2287	java/lang/Exception
-    //   1578	1617	2287	java/lang/Exception
-    //   1620	1687	2287	java/lang/Exception
-    //   1699	1768	2287	java/lang/Exception
-    //   1768	1974	2287	java/lang/Exception
-    //   1986	2001	2287	java/lang/Exception
-    //   2001	2010	2287	java/lang/Exception
-    //   2013	2034	2287	java/lang/Exception
-    //   2036	2045	2287	java/lang/Exception
-    //   2047	2100	2287	java/lang/Exception
-    //   2112	2187	2287	java/lang/Exception
-    //   2187	2284	2287	java/lang/Exception
-    //   2335	2340	2287	java/lang/Exception
+    //   379	384	418	java/lang/Exception
+    //   478	494	787	java/lang/Exception
+    //   1306	1311	1394	java/lang/Exception
+    //   1579	1584	1592	java/lang/Exception
+    //   511	544	2235	java/lang/Exception
+    //   548	558	2235	java/lang/Exception
+    //   564	608	2235	java/lang/Exception
+    //   608	633	2235	java/lang/Exception
+    //   646	672	2235	java/lang/Exception
+    //   678	689	2235	java/lang/Exception
+    //   695	776	2235	java/lang/Exception
+    //   824	831	2235	java/lang/Exception
+    //   836	851	2235	java/lang/Exception
+    //   851	891	2235	java/lang/Exception
+    //   904	941	2235	java/lang/Exception
+    //   941	966	2235	java/lang/Exception
+    //   982	1050	2235	java/lang/Exception
+    //   1067	1089	2235	java/lang/Exception
+    //   1089	1107	2235	java/lang/Exception
+    //   1107	1138	2235	java/lang/Exception
+    //   1138	1154	2235	java/lang/Exception
+    //   1154	1306	2235	java/lang/Exception
+    //   1327	1367	2235	java/lang/Exception
+    //   1375	1383	2235	java/lang/Exception
+    //   1395	1434	2235	java/lang/Exception
+    //   1437	1492	2235	java/lang/Exception
+    //   1504	1579	2235	java/lang/Exception
+    //   1593	1632	2235	java/lang/Exception
+    //   1635	1706	2235	java/lang/Exception
+    //   1718	1788	2235	java/lang/Exception
+    //   1788	1921	2235	java/lang/Exception
+    //   1933	1948	2235	java/lang/Exception
+    //   1948	1958	2235	java/lang/Exception
+    //   1961	1982	2235	java/lang/Exception
+    //   1984	1993	2235	java/lang/Exception
+    //   1995	2048	2235	java/lang/Exception
+    //   2060	2135	2235	java/lang/Exception
+    //   2135	2232	2235	java/lang/Exception
+    //   2283	2289	2235	java/lang/Exception
   }
   
-  public final void emB()
+  public final void eWp()
   {
     AppMethodBeat.i(114839);
     this.isRuning = false;
@@ -3141,30 +3134,30 @@ public final class e
         this.outputStream.flush();
         this.outputStream.close();
       }
-      if (this.qsh != null)
+      if (this.tQQ != null)
       {
-        this.qsh.flush();
-        this.qsh.close();
+        this.tQQ.flush();
+        this.tQQ.close();
       }
-      if (this.qse != null)
+      if (this.tQN != null)
       {
-        this.qse.stop();
-        this.qse.release();
+        this.tQN.stop();
+        this.tQN.release();
       }
       AppMethodBeat.o(114839);
       return;
     }
     catch (Exception localException)
     {
-      Log.e("MeidaCodec[HWEnc]", " error:" + localException.toString());
+      Log.e("MicroMsg.AvcEncoder", " error:" + localException.toString());
       AppMethodBeat.o(114839);
     }
   }
   
   final class a
   {
-    public short GTP;
-    public short GTQ;
+    public short NKb;
+    public short NKc;
     public byte cFps;
     public byte cHPPMaxLyr;
     public byte cIPeriod;
@@ -3190,7 +3183,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.e
  * JD-Core Version:    0.7.0.1
  */

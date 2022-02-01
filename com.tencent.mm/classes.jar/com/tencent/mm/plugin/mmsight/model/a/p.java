@@ -1,249 +1,288 @@
 package com.tencent.mm.plugin.mmsight.model.a;
 
-import android.annotation.TargetApi;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaFormat;
-import android.media.MediaMuxer;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.nio.ByteBuffer;
 
-@Deprecated
-@TargetApi(18)
 public class p
-  implements e
+  implements f
 {
-  protected boolean isStart;
-  protected MediaMuxer mediaMuxer;
-  protected int zwv;
-  protected int zww;
-  protected boolean zwx;
-  protected boolean zwy;
-  protected long zwz;
+  public int FbU;
+  private int FbV;
+  private int FbW;
+  private int FbX;
+  private int FbY;
+  public volatile int frameCount;
+  private boolean lhV;
+  public boolean lhW;
+  private int targetHeight;
+  private int targetWidth;
+  private long tick;
+  private long urt;
   
-  public p(String paramString)
+  public p(boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean2)
   {
-    AppMethodBeat.i(241184);
-    this.isStart = false;
-    this.zwv = -1;
-    this.zww = -1;
-    this.zwx = false;
-    this.zwy = false;
-    this.zwz = 0L;
+    AppMethodBeat.i(89576);
+    this.FbU = -1;
+    this.frameCount = 0;
+    this.urt = 0L;
+    this.tick = 0L;
+    this.FbV = -1;
+    this.FbW = -1;
+    this.FbX = -1;
+    this.FbY = -1;
+    this.lhV = paramBoolean1;
+    this.FbV = paramInt1;
+    this.targetWidth = paramInt2;
+    this.targetHeight = paramInt3;
+    this.lhW = paramBoolean2;
+    Log.i("MicroMsg.MMSightX264YUVRecorder", "create MMSightX264YUVRecorder, needRotateEachFrame: %s, initRotate: %s, targetWidth: %s, targetHeight: %s", new Object[] { Boolean.valueOf(paramBoolean1), Integer.valueOf(this.FbV), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    AppMethodBeat.o(89576);
+  }
+  
+  public final void P(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(89581);
+    Log.i("MicroMsg.MMSightX264YUVRecorder", "resume, newRotate: %s, frameWidth: %s, frameHeight: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.FbW = paramInt1;
+    this.FbX = paramInt2;
+    this.FbY = paramInt3;
+    AppMethodBeat.o(89581);
+  }
+  
+  public final int Xc(int paramInt)
+  {
+    AppMethodBeat.i(89577);
+    if (paramInt < 0)
+    {
+      Log.e("MicroMsg.MMSightX264YUVRecorder", "init error, yuv buffer id error");
+      AppMethodBeat.o(89577);
+      return -1;
+    }
+    this.FbU = paramInt;
     try
     {
-      this.mediaMuxer = new MediaMuxer(paramString, 0);
-      this.mediaMuxer.setOrientationHint(0);
-      Log.d("MicroMsg.MMSightSystemMediaMuxer", "create muxer, orientation: %s, filename: %s", new Object[] { Integer.valueOf(0), paramString });
-      AppMethodBeat.o(241184);
-      return;
+      this.frameCount = 0;
+      this.urt = 0L;
+      AppMethodBeat.o(89577);
+      return 0;
     }
-    catch (Exception paramString)
+    finally
     {
-      Log.e("MicroMsg.MMSightSystemMediaMuxer", "new muxer error: %s", new Object[] { paramString.getMessage() });
-      AppMethodBeat.o(241184);
+      AppMethodBeat.o(89577);
     }
   }
   
-  public final boolean ejY()
+  public final long aUC()
   {
-    return false;
+    AppMethodBeat.i(89580);
+    if (0L == this.urt)
+    {
+      Log.w("MicroMsg.MMSightX264YUVRecorder", "do not start record");
+      AppMethodBeat.o(89580);
+      return 0L;
+    }
+    long l1 = System.currentTimeMillis();
+    long l2 = this.urt;
+    AppMethodBeat.o(89580);
+    return l1 - l2;
   }
   
-  public final long ekh()
+  public final void clear()
   {
-    return this.zwz;
-  }
-  
-  public final void eki()
-  {
-    AppMethodBeat.i(241186);
-    this.zwz = System.nanoTime();
-    AppMethodBeat.o(241186);
-  }
-  
-  public final boolean ekj()
-  {
-    return this.isStart;
-  }
-  
-  public void f(MediaFormat paramMediaFormat)
-  {
+    AppMethodBeat.i(89582);
+    SightVideoJNI.releaseBigSightDataBufferLock(this.FbU);
+    this.FbU = -1;
     try
     {
-      AppMethodBeat.i(89574);
-      try
-      {
-        if ((this.mediaMuxer != null) && (this.zww == -1))
-        {
-          this.zww = this.mediaMuxer.addTrack(paramMediaFormat);
-          Log.i("MicroMsg.MMSightSystemMediaMuxer", "addAACTrack, aacTrackIndex: %s", new Object[] { Integer.valueOf(this.zww) });
-          if ((!this.isStart) && (this.zww != -1) && (this.zwv != -1))
-          {
-            Log.i("MicroMsg.MMSightSystemMediaMuxer", "start!");
-            this.mediaMuxer.start();
-            this.isStart = true;
-          }
-        }
-        AppMethodBeat.o(89574);
-      }
-      catch (Exception paramMediaFormat)
-      {
-        for (;;)
-        {
-          Log.e("MicroMsg.MMSightSystemMediaMuxer", "addAACTrack error: %s", new Object[] { paramMediaFormat.getMessage() });
-          AppMethodBeat.o(89574);
-        }
-      }
+      this.frameCount = 0;
+      this.urt = 0L;
+      AppMethodBeat.o(89582);
       return;
     }
-    finally {}
-  }
-  
-  public final void finish()
-  {
-    try
+    finally
     {
-      AppMethodBeat.i(241187);
-      try
-      {
-        Log.i("MicroMsg.MMSightSystemMediaMuxer", "finish");
-        this.isStart = false;
-        if (this.mediaMuxer != null)
-        {
-          this.mediaMuxer.stop();
-          this.mediaMuxer.release();
-        }
-        AppMethodBeat.o(241187);
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          Log.e("MicroMsg.MMSightSystemMediaMuxer", "stop error: %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(241187);
-        }
-      }
-      return;
+      AppMethodBeat.o(89582);
     }
-    finally {}
   }
   
-  public final void g(MediaFormat paramMediaFormat)
+  public final void f(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    try
+    AppMethodBeat.i(89579);
+    this.tick = Util.currentTicks();
+    if (this.FbU < 0)
     {
-      AppMethodBeat.i(89573);
-      try
-      {
-        if ((this.mediaMuxer != null) && (this.zwv == -1))
-        {
-          this.zwv = this.mediaMuxer.addTrack(paramMediaFormat);
-          Log.i("MicroMsg.MMSightSystemMediaMuxer", "addX264Track, x264TrackIndex: %s", new Object[] { Integer.valueOf(this.zwv) });
-          if ((!this.isStart) && (this.zwv != -1) && (this.zww != -1))
-          {
-            Log.i("MicroMsg.MMSightSystemMediaMuxer", "start!");
-            this.mediaMuxer.start();
-            this.isStart = true;
-          }
-        }
-        AppMethodBeat.o(89573);
-      }
-      catch (Exception paramMediaFormat)
-      {
-        for (;;)
-        {
-          Log.e("MicroMsg.MMSightSystemMediaMuxer", "addX264Track error: %s", new Object[] { paramMediaFormat.getMessage() });
-          AppMethodBeat.o(89573);
-        }
-      }
+      Log.e("MicroMsg.MMSightX264YUVRecorder", "write data error, yuv buffer id error");
+      AppMethodBeat.o(89579);
       return;
     }
-    finally {}
-  }
-  
-  public final void j(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
-  {
-    try
-    {
-      AppMethodBeat.i(89575);
-      try
-      {
-        if ((this.mediaMuxer != null) && (this.zww != -1) && (this.isStart) && (paramByteBuffer != null) && (paramBufferInfo != null))
-        {
-          long l1 = paramBufferInfo.presentationTimeUs;
-          paramBufferInfo.presentationTimeUs = ((System.nanoTime() - this.zwz) / 1000L);
-          long l2 = Util.currentTicks();
-          this.mediaMuxer.writeSampleData(this.zww, paramByteBuffer, paramBufferInfo);
-          Log.v("MicroMsg.MMSightSystemMediaMuxer", "writeAACSampleData size: %s used %dms oldpts %s fix pts: %s", new Object[] { Integer.valueOf(paramBufferInfo.size), Long.valueOf(Util.ticksToNow(l2)), Long.valueOf(l1), Long.valueOf(paramBufferInfo.presentationTimeUs) });
-        }
-        AppMethodBeat.o(89575);
-      }
-      catch (Exception paramByteBuffer)
-      {
-        for (;;)
-        {
-          Log.e("MicroMsg.MMSightSystemMediaMuxer", "writeAACSampleData error: %s", new Object[] { paramByteBuffer.getMessage() });
-          AppMethodBeat.o(89575);
-        }
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public final void k(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
-  {
-    int j = 1;
+    label414:
+    label423:
+    label454:
+    label461:
     for (;;)
     {
+      int m;
+      int i;
+      int j;
+      int k;
+      boolean bool2;
       try
       {
-        AppMethodBeat.i(241185);
-        try
+        this.frameCount += 1;
+        m = this.FbV;
+        bool1 = this.lhV;
+        if (bool1) {
+          break label348;
+        }
+        if ((this.FbW == -1) || (this.FbW == this.FbV)) {
+          break label342;
+        }
+        bool1 = true;
+        i = this.FbW;
+        if (this.FbV <= 180)
         {
-          if ((this.mediaMuxer != null) && (this.zwv != -1) && (this.isStart))
+          i -= this.FbV;
+          m = Math.max(0, i);
+          if (m < 360) {
+            break label518;
+          }
+          i = 0;
+          m = i;
+          SightVideoJNI.setRotateForBufId(this.FbU, m);
+          if (!bool1) {
+            break label383;
+          }
+          if ((m != 0) && (m != 180)) {
+            break label374;
+          }
+          i = this.targetWidth;
+          if (!bool1) {
+            break label423;
+          }
+          if ((m != 0) && (m != 180)) {
+            break label414;
+          }
+          j = this.targetHeight;
+          if (!bool1) {
+            break label461;
+          }
+          if ((m != 0) && (m != 180)) {
+            break label454;
+          }
+          k = paramInt2;
+          if (!bool1) {
+            break label490;
+          }
+          if ((m != 0) && (m != 180)) {
+            break label487;
+          }
+          paramInt2 = paramInt3;
+          if ((k != i) || (paramInt2 != j)) {
+            break label512;
+          }
+          bool2 = false;
+          if (this.lhW) {
+            SightVideoJNI.mirrorCameraData(paramArrayOfByte, k, paramInt2, true);
+          }
+          SightVideoJNI.writeYuvDataForMMSight(this.FbU, paramArrayOfByte, paramInt1, i, j, bool1, bool2, k, paramInt2);
+          Log.d("MicroMsg.MMSightX264YUVRecorder", "write data use %dms", new Object[] { Long.valueOf(Util.ticksToNow(this.tick)) });
+          AppMethodBeat.o(89579);
+          return;
+        }
+      }
+      finally
+      {
+        AppMethodBeat.o(89579);
+      }
+      i += 360 - this.FbV;
+      continue;
+      label342:
+      boolean bool1 = false;
+      continue;
+      label348:
+      label487:
+      label490:
+      if (this.FbW == -1)
+      {
+        i = this.FbV;
+      }
+      else
+      {
+        i = this.FbW;
+        continue;
+        label374:
+        i = this.targetHeight;
+        continue;
+        label383:
+        if ((m == 0) || (m == 180))
+        {
+          i = this.targetHeight;
+        }
+        else
+        {
+          i = this.targetWidth;
+          continue;
+          j = this.targetWidth;
+          continue;
+          if ((m == 0) || (m == 180))
           {
-            if (paramByteBuffer == null) {
-              continue;
-            }
-            i = 1;
-            break label194;
-            if ((j & i) != 0)
+            j = this.targetWidth;
+          }
+          else
+          {
+            j = this.targetHeight;
+            continue;
+            k = paramInt3;
+            continue;
+            if ((m == 0) || (m == 180))
             {
-              long l1 = paramBufferInfo.presentationTimeUs;
-              paramBufferInfo.presentationTimeUs = ((System.nanoTime() - this.zwz) / 1000L);
-              paramBufferInfo.flags = 1;
-              long l2 = Util.currentTicks();
-              this.mediaMuxer.writeSampleData(this.zwv, paramByteBuffer, paramBufferInfo);
-              Log.v("MicroMsg.MMSightSystemMediaMuxer", "writeAACSampleData size: %s used %dms oldpts %s fix pts: %s", new Object[] { Integer.valueOf(paramBufferInfo.size), Long.valueOf(Util.ticksToNow(l2)), Long.valueOf(l1), Long.valueOf(paramBufferInfo.presentationTimeUs) });
+              k = paramInt3;
+            }
+            else
+            {
+              k = paramInt2;
+              continue;
+              continue;
+              if ((m == 0) || (m != 180))
+              {
+                paramInt2 = paramInt3;
+                continue;
+                bool2 = true;
+                continue;
+                bool1 = true;
+              }
             }
           }
-          AppMethodBeat.o(241185);
         }
-        catch (Exception paramByteBuffer)
-        {
-          int i;
-          Log.e("MicroMsg.MMSightSystemMediaMuxer", "writeX264SampleData error: %s", new Object[] { paramByteBuffer.getMessage() });
-          AppMethodBeat.o(241185);
-          continue;
-        }
-        return;
       }
-      finally {}
-      i = 0;
-      break label194;
-      j = 0;
-      continue;
-      label194:
-      if (paramBufferInfo == null) {}
     }
+  }
+  
+  public final void start()
+  {
+    AppMethodBeat.i(89578);
+    if (0L == this.urt) {
+      this.urt = System.currentTimeMillis();
+    }
+    AppMethodBeat.o(89578);
+  }
+  
+  public final void stop()
+  {
+    try
+    {
+      this.frameCount = 0;
+      this.urt = 0L;
+      return;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.p
  * JD-Core Version:    0.7.0.1
  */

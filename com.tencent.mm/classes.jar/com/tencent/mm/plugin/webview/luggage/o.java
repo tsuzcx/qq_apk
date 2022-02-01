@@ -4,79 +4,78 @@ import android.view.MenuItem;
 import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.b.n;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.o.f;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.q.g;
 import com.tencent.mm.ui.widget.a.e;
 
 public class o
 {
-  g ISU;
-  n IUo;
-  e oXS;
+  g PPn;
+  n PQF;
+  e rZT;
   
   public o(g paramg, n paramn)
   {
     AppMethodBeat.i(78411);
-    this.ISU = paramg;
-    this.IUo = paramn;
-    this.oXS = new e(this.ISU.mContext, 0, false);
-    this.oXS.HLX = new o.f()
+    this.PPn = paramg;
+    this.PQF = paramn;
+    this.rZT = new e(this.PPn.mContext, 0, false);
+    this.rZT.ODT = new q.f()
     {
-      public final void onCreateMMMenu(m paramAnonymousm)
+      public final void onCreateMMMenu(com.tencent.mm.ui.base.o paramAnonymouso)
       {
         AppMethodBeat.i(78407);
         o localo = o.this;
-        localo.IUo.b(localo.ISU.mContext, localo.ISU, paramAnonymousm);
+        localo.PQF.b(localo.PPn.mContext, localo.PPn, paramAnonymouso);
         AppMethodBeat.o(78407);
       }
     };
-    this.oXS.QNH = new o.f()
+    this.rZT.Ymx = new q.f()
     {
-      public final void onCreateMMMenu(m paramAnonymousm)
+      public final void onCreateMMMenu(com.tencent.mm.ui.base.o paramAnonymouso)
       {
         AppMethodBeat.i(78408);
         o localo = o.this;
-        localo.IUo.c(localo.ISU.mContext, localo.ISU, paramAnonymousm);
+        localo.PQF.c(localo.PPn.mContext, localo.PPn, paramAnonymouso);
         AppMethodBeat.o(78408);
       }
     };
-    this.oXS.HLY = new o.g()
+    this.rZT.ODU = new q.g()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
         AppMethodBeat.i(78409);
-        o.this.d(paramAnonymousMenuItem);
-        o.this.oXS.bMo();
+        o.this.e(paramAnonymousMenuItem);
+        o.this.rZT.bYF();
         AppMethodBeat.o(78409);
       }
     };
-    this.oXS.QNK = new o.g()
+    this.rZT.YmA = new q.g()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
         AppMethodBeat.i(78410);
-        o.this.d(paramAnonymousMenuItem);
-        o.this.oXS.bMo();
+        o.this.e(paramAnonymousMenuItem);
+        o.this.rZT.bYF();
         AppMethodBeat.o(78410);
       }
     };
-    this.oXS.dGm();
+    this.rZT.eik();
     AppMethodBeat.o(78411);
   }
   
-  protected final void d(MenuItem paramMenuItem)
+  protected final void e(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(78412);
-    this.IUo.a(this.ISU.mContext, this.ISU, paramMenuItem);
+    this.PQF.a(this.PPn.mContext, this.PPn, paramMenuItem);
     AppMethodBeat.o(78412);
   }
   
-  public final void gca()
+  public final void gUW()
   {
     AppMethodBeat.i(78413);
-    if (this.oXS != null) {
-      this.oXS.bMo();
+    if (this.rZT != null) {
+      this.rZT.bYF();
     }
     AppMethodBeat.o(78413);
   }

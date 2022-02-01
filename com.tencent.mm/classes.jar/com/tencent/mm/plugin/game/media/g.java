@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.game.media;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.game.api.f;
-import com.tencent.mm.plugin.game.e.c;
+import com.tencent.mm.plugin.game.d.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
@@ -27,49 +28,7 @@ public final class g
     super(paramISQLiteDatabase, e.info, "GameHaowanPublishEdition", null);
   }
   
-  public final void aR(LinkedList<String> paramLinkedList)
-  {
-    AppMethodBeat.i(40974);
-    Object localObject = aS(paramLinkedList);
-    if (localObject != null)
-    {
-      localObject = ((LinkedList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        LinkedList localLinkedList = c.aAL(((e)((Iterator)localObject).next()).field_localIdList);
-        ((f)com.tencent.mm.kernel.g.af(f.class)).dSO().aR(localLinkedList);
-      }
-      paramLinkedList = String.format("delete from %s where %s in %s", new Object[] { "GameHaowanPublishEdition", "taskId", c.aY(paramLinkedList) });
-      Log.i("MicroMsg.Haowan.GameHaowanPublishStorage", "batchDelete, sql : %s", new Object[] { paramLinkedList });
-      execSQL("GameHaowanPublishEdition", paramLinkedList);
-    }
-    AppMethodBeat.o(40974);
-  }
-  
-  public final LinkedList<e> aS(LinkedList<String> paramLinkedList)
-  {
-    AppMethodBeat.i(40973);
-    paramLinkedList = String.format("select * from %s where %s in %s", new Object[] { "GameHaowanPublishEdition", "taskId", c.aY(paramLinkedList) });
-    Log.i("MicroMsg.Haowan.GameHaowanPublishStorage", "batchQuery, sql : %s", new Object[] { paramLinkedList });
-    paramLinkedList = rawQuery(paramLinkedList, new String[0]);
-    if (paramLinkedList == null)
-    {
-      AppMethodBeat.o(40973);
-      return null;
-    }
-    LinkedList localLinkedList = new LinkedList();
-    while (paramLinkedList.moveToNext())
-    {
-      e locale = new e();
-      locale.convertFrom(paramLinkedList);
-      localLinkedList.add(locale);
-    }
-    paramLinkedList.close();
-    AppMethodBeat.o(40973);
-    return localLinkedList;
-  }
-  
-  public final e azX(String paramString)
+  public final e aJI(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(40968);
@@ -92,7 +51,7 @@ public final class g
     return paramString;
   }
   
-  public final boolean azY(String paramString)
+  public final boolean aJJ(String paramString)
   {
     AppMethodBeat.i(40971);
     paramString = String.format("update %s set %s=%d where %s=\"%s\"", new Object[] { "GameHaowanPublishEdition", "publishState", Integer.valueOf(1), "taskId", paramString });
@@ -102,7 +61,69 @@ public final class g
     return bool;
   }
   
-  public final LinkedList<e> dUk()
+  public final void bk(LinkedList<String> paramLinkedList)
+  {
+    AppMethodBeat.i(40974);
+    Object localObject = bl(paramLinkedList);
+    if (localObject != null)
+    {
+      localObject = ((LinkedList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        LinkedList localLinkedList = c.aKx(((e)((Iterator)localObject).next()).field_localIdList);
+        ((f)h.ae(f.class)).evs().bk(localLinkedList);
+      }
+      paramLinkedList = String.format("delete from %s where %s in %s", new Object[] { "GameHaowanPublishEdition", "taskId", c.br(paramLinkedList) });
+      Log.i("MicroMsg.Haowan.GameHaowanPublishStorage", "batchDelete, sql : %s", new Object[] { paramLinkedList });
+      execSQL("GameHaowanPublishEdition", paramLinkedList);
+    }
+    AppMethodBeat.o(40974);
+  }
+  
+  public final LinkedList<e> bl(LinkedList<String> paramLinkedList)
+  {
+    AppMethodBeat.i(40973);
+    paramLinkedList = String.format("select * from %s where %s in %s", new Object[] { "GameHaowanPublishEdition", "taskId", c.br(paramLinkedList) });
+    Log.i("MicroMsg.Haowan.GameHaowanPublishStorage", "batchQuery, sql : %s", new Object[] { paramLinkedList });
+    paramLinkedList = rawQuery(paramLinkedList, new String[0]);
+    if (paramLinkedList == null)
+    {
+      AppMethodBeat.o(40973);
+      return null;
+    }
+    LinkedList localLinkedList = new LinkedList();
+    while (paramLinkedList.moveToNext())
+    {
+      e locale = new e();
+      locale.convertFrom(paramLinkedList);
+      localLinkedList.add(locale);
+    }
+    paramLinkedList.close();
+    AppMethodBeat.o(40973);
+    return localLinkedList;
+  }
+  
+  public final boolean eD(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(40969);
+    paramString = String.format("update %s set %s=%d where %s=\"%s\"", new Object[] { "GameHaowanPublishEdition", "mixState", Integer.valueOf(paramInt), "taskId", paramString });
+    Log.i("MicroMsg.Haowan.GameHaowanPublishStorage", "updateMixState, sql : %s", new Object[] { paramString });
+    boolean bool = execSQL("GameHaowanPublishEdition", paramString);
+    AppMethodBeat.o(40969);
+    return bool;
+  }
+  
+  public final boolean eE(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(40970);
+    paramString = String.format("update %s set %s=%d where %s=\"%s\"", new Object[] { "GameHaowanPublishEdition", "uploadState", Integer.valueOf(paramInt), "taskId", paramString });
+    Log.i("MicroMsg.Haowan.GameHaowanPublishStorage", "updateMediaUploadState, sql : %s", new Object[] { paramString });
+    boolean bool = execSQL("GameHaowanPublishEdition", paramString);
+    AppMethodBeat.o(40970);
+    return bool;
+  }
+  
+  public final LinkedList<e> exr()
   {
     AppMethodBeat.i(40972);
     Object localObject = String.format("select * from %s where %s<>%d", new Object[] { "GameHaowanPublishEdition", "publishState", Integer.valueOf(2) });
@@ -124,30 +145,10 @@ public final class g
     AppMethodBeat.o(40972);
     return localLinkedList;
   }
-  
-  public final boolean ef(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(40969);
-    paramString = String.format("update %s set %s=%d where %s=\"%s\"", new Object[] { "GameHaowanPublishEdition", "mixState", Integer.valueOf(paramInt), "taskId", paramString });
-    Log.i("MicroMsg.Haowan.GameHaowanPublishStorage", "updateMixState, sql : %s", new Object[] { paramString });
-    boolean bool = execSQL("GameHaowanPublishEdition", paramString);
-    AppMethodBeat.o(40969);
-    return bool;
-  }
-  
-  public final boolean eg(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(40970);
-    paramString = String.format("update %s set %s=%d where %s=\"%s\"", new Object[] { "GameHaowanPublishEdition", "uploadState", Integer.valueOf(paramInt), "taskId", paramString });
-    Log.i("MicroMsg.Haowan.GameHaowanPublishStorage", "updateMediaUploadState, sql : %s", new Object[] { paramString });
-    boolean bool = execSQL("GameHaowanPublishEdition", paramString);
-    AppMethodBeat.o(40970);
-    return bool;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.g
  * JD-Core Version:    0.7.0.1
  */

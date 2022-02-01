@@ -1,367 +1,213 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelsns.k;
-import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
-import com.tencent.mm.opensdk.modelmsg.WXMusicObject;
-import com.tencent.mm.opensdk.modelmsg.WXMusicVideoObject;
-import com.tencent.mm.plugin.comm.b;
+import com.tencent.mm.loader.c.e;
+import com.tencent.mm.loader.c.e.a;
+import com.tencent.mm.modelsns.o;
+import com.tencent.mm.plugin.findersdk.a.ak;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
 import com.tencent.mm.plugin.sns.k.g;
+import com.tencent.mm.plugin.sns.model.bd;
 import com.tencent.mm.plugin.sns.model.be;
-import com.tencent.mm.plugin.sns.model.bf;
+import com.tencent.mm.plugin.sns.ui.view.ImageIndicatorView;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.cjy;
-import com.tencent.mm.protocal.protobuf.css;
-import com.tencent.mm.protocal.protobuf.ebm;
-import com.tencent.mm.sdk.platformtools.BitmapUtil;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.protocal.protobuf.cst;
+import com.tencent.mm.protocal.protobuf.cww;
+import com.tencent.mm.protocal.protobuf.cwx;
+import com.tencent.mm.protocal.protobuf.elm;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.aa;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.widget.MMRoundCornerImageView;
-import com.tencent.mm.ui.widget.RoundCornerRelativeLayout;
-import com.tencent.xweb.util.d;
+import com.tencent.mm.ui.ad;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import org.b.d.i;
 
 public final class aj
-  implements ad
+  implements af
 {
-  private int DPi = 1;
-  private int EpG;
-  private k EpM = null;
-  private String EpN = "";
-  private boolean Ero = false;
-  private boolean Erp = false;
-  private WXMediaMessage Erq = null;
-  private TextView EsH;
-  private TextView EsI;
-  private com.tencent.mm.modelsns.i EsJ;
-  private String EsK;
-  private Bitmap EsL;
-  private String appName = "";
-  private String dNI = "";
-  private boolean gVd = false;
-  private MMActivity gte;
-  private View sc;
-  private String songLyric;
+  private static e FKT;
+  private ImageView KDh = null;
+  private ImageIndicatorView KDi = null;
+  private com.tencent.mm.modelsns.h KFi = null;
+  private String appId;
+  private String appName;
+  private View bvK = null;
+  private String fUj;
+  private MMActivity iXq = null;
+  private String mSessionId;
+  private ImageView pDJ = null;
+  private String title = "";
+  private boolean wNV;
+  
+  static
+  {
+    AppMethodBeat.i(270705);
+    e.a locala = new e.a();
+    locala.kOp = true;
+    locala.kOo = true;
+    FKT = locala.aRT();
+    AppMethodBeat.o(270705);
+  }
   
   public aj(MMActivity paramMMActivity)
   {
-    this.gte = paramMMActivity;
+    this.iXq = paramMMActivity;
   }
   
-  public final boolean a(int paramInt1, int paramInt2, org.b.d.i parami, String paramString1, List<String> paramList1, cjy paramcjy, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
+  public final boolean a(int paramInt1, int paramInt2, i parami, String paramString1, List<String> paramList1, cst paramcst, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(203313);
-    com.tencent.mm.plugin.sns.model.aj.faK();
-    WXMediaMessage localWXMediaMessage = this.Erq;
-    paramLinkedList = this.dNI;
-    paramString2 = this.appName;
-    String str1 = this.EsK;
-    String str2 = this.songLyric;
-    Log.d("MicroMsg.UploadManager", "appmsg.description " + localWXMediaMessage.description);
-    Log.d("MicroMsg.UploadManager", "appmsg.title " + localWXMediaMessage.title);
-    WXMediaMessage.IMediaObject localIMediaObject = localWXMediaMessage.mediaObject;
-    bf localbf = new bf(42);
-    localbf.aPC(Util.nullAs(paramLinkedList, "")).aPD(Util.nullAs(paramString2, ""));
-    localbf.YK(5);
-    Log.d("MicroMsg.UploadManager", "TimeLineType 42");
-    if (!Util.isNullOrNil(paramString1)) {
-      localbf.aPw(paramString1);
+    AppMethodBeat.i(270703);
+    paramLinkedList = new be(36, this.iXq);
+    if (this.KFi != null) {
+      paramLinkedList.a(this.KFi);
     }
-    localbf.aPB(Util.nullAs(localWXMediaMessage.title, "")).aPz(Util.nullAs(localWXMediaMessage.description, ""));
-    paramLinkedList = "";
-    Object localObject = "";
-    paramString2 = "";
-    if ((localIMediaObject instanceof WXMusicObject))
-    {
-      paramString2 = (WXMusicObject)localIMediaObject;
-      if (!Util.isNullOrNil(paramString2.musicUrl))
-      {
-        paramString1 = paramString2.musicUrl;
-        paramLinkedList = Util.nullAs(paramString1, "");
-        if (Util.isNullOrNil(paramString2.musicDataUrl)) {
-          break label383;
-        }
-        paramString1 = paramString2.musicDataUrl;
-        label261:
-        localObject = Util.nullAs(paramString1, "");
-        if (Util.isNullOrNil(paramString2.musicLowBandDataUrl)) {
-          break label393;
-        }
-        paramString1 = paramString2.musicLowBandDataUrl;
-        label288:
-        paramString2 = Util.nullAs(paramString1, "");
-        label297:
-        localbf.aPB("").aPz("");
-        paramInt2 = be.tN(localIMediaObject.type());
-        if (paramInt2 != -1) {
-          break label474;
-        }
-        Log.d("MicroMsg.UploadManager", "mediaType is invalid");
-        paramString1 = null;
-      }
+    paramPInt.value = paramLinkedList.aOl;
+    if (paramInt3 > com.tencent.mm.plugin.sns.c.a.JPj) {
+      paramLinkedList.afW(4);
+    }
+    paramLinkedList.bax(this.title).bas(paramString1);
+    paramLinkedList.bav(Util.nullAs(this.iXq.getIntent().getStringExtra("ksnsupload_link_desc"), ""));
+    paramLinkedList.afZ(paramInt1);
+    if (paramBoolean) {
+      paramLinkedList.agc(1);
     }
     for (;;)
     {
-      if (paramString1 != null) {
-        break label528;
-      }
-      Log.e("MicroMsg.MusicMvWidget", "packHelper == null, %s, %s", new Object[] { this.dNI, this.appName });
-      AppMethodBeat.o(203313);
-      return false;
-      paramString1 = paramString2.musicLowBandUrl;
-      break;
-      label383:
-      paramString1 = paramString2.musicUrl;
-      break label261;
-      label393:
-      paramString1 = paramString2.musicLowBandUrl;
-      break label288;
-      if (!(localIMediaObject instanceof WXMusicVideoObject)) {
-        break label297;
-      }
-      paramString1 = (WXMusicVideoObject)localIMediaObject;
-      paramLinkedList = Util.nullAs(paramString1.musicUrl, "");
-      if (!Util.isNullOrNil(paramString1.musicDataUrl)) {}
-      for (paramString1 = paramString1.musicDataUrl;; paramString1 = paramString1.musicUrl)
-      {
-        localObject = Util.nullAs(paramString1, "");
-        paramString2 = "";
+      paramLinkedList.hA(paramList2);
+      paramString1 = new LinkedList();
+      if (paramList1 == null) {
         break;
       }
-      label474:
-      paramString1 = localbf;
-      if (!localbf.a(localWXMediaMessage.thumbData, paramLinkedList, paramString2, (String)localObject, paramInt2, Util.nullAs(localWXMediaMessage.title, ""), Util.nullAs(localWXMediaMessage.description, ""), str1, str2)) {
-        paramString1 = null;
-      }
-    }
-    label528:
-    if (this.EsJ != null)
-    {
-      paramLinkedList = this.EsJ;
-      if (paramLinkedList != null) {
-        paramString1.DPd.ContentObj.jfy = paramLinkedList.jlj;
-      }
-    }
-    paramPInt.value = paramString1.beK;
-    if (paramInt3 > com.tencent.mm.plugin.sns.c.a.DCT) {
-      paramString1.YF(4);
-    }
-    paramString1.YK(this.EpG);
-    if (this.Ero) {
-      paramString1.YK(5);
-    }
-    paramLinkedList = new LinkedList();
-    if (paramList1 != null)
-    {
       new LinkedList();
-      paramPInt = com.tencent.mm.pluginsdk.i.a.gnq();
+      paramList2 = com.tencent.mm.pluginsdk.j.a.hhW();
       paramList1 = paramList1.iterator();
       while (paramList1.hasNext())
       {
-        paramString2 = (String)paramList1.next();
-        if (!paramPInt.contains(paramString2))
+        paramPInt = (String)paramList1.next();
+        if (!paramList2.contains(paramPInt))
         {
-          localObject = new ebm();
-          ((ebm)localObject).UserName = paramString2;
-          paramLinkedList.add(localObject);
+          elm localelm = new elm();
+          localelm.UserName = paramPInt;
+          paramString1.add(localelm);
         }
       }
+      paramLinkedList.agc(0);
     }
-    paramString1.bq(paramLinkedList);
     if (parami != null) {
-      paramString1.kl(parami.token, parami.Mte);
+      paramLinkedList.kG(parami.token, parami.TEk);
     }
-    paramString1.a(paramcjy);
-    if (paramBoolean) {
-      paramString1.YL(1);
+    paramLinkedList.bL(paramString1);
+    if (!Util.isNullOrNil(this.appId)) {
+      paramLinkedList.bay(this.appId);
     }
-    for (;;)
-    {
-      paramString1.gR(paramList2).YI(paramInt1);
-      paramString1.g(null, null, null, paramInt4, paramInt5);
-      paramString1.ct(this.DPi, this.EpN);
-      if ((this.Erp) && (this.Erq != null))
-      {
-        paramString1.aPx(this.Erq.mediaTagName);
-        paramString1.aO(this.dNI, this.Erq.messageExt, this.Erq.messageAction);
-      }
-      paramInt1 = paramString1.commit();
-      if (this.EpM != null)
-      {
-        this.EpM.tQ(paramInt1);
-        g.DVR.c(this.EpM);
-      }
-      com.tencent.mm.plugin.sns.model.aj.faK().eZn();
-      this.gte.finish();
-      AppMethodBeat.o(203313);
-      return false;
-      paramString1.YL(0);
+    if (!Util.isNullOrNil(this.appName)) {
+      paramLinkedList.baz(Util.nullAs(this.appName, ""));
     }
+    paramLinkedList.a(paramcst);
+    paramLinkedList.bau(paramString2);
+    paramLinkedList.baD(this.fUj);
+    paramLinkedList.setSessionId(this.mSessionId);
+    paramInt1 = paramLinkedList.in();
+    if (this.wNV) {
+      g.Kia.KiM = paramInt1;
+    }
+    com.tencent.mm.plugin.sns.model.aj.fOE().fNd();
+    this.iXq.finish();
+    AppMethodBeat.o(270703);
+    return false;
   }
   
-  public final void aC(Bundle paramBundle)
+  public final void ay(Bundle paramBundle)
   {
-    AppMethodBeat.i(203311);
-    this.Erq = new SendMessageToWX.Req(this.gte.getIntent().getBundleExtra("Ksnsupload_timeline")).message;
-    paramBundle = this.gte.getIntent().getStringExtra("Ksnsupload_music_share_object_xml");
+    AppMethodBeat.i(270701);
+    this.title = Util.nullAs(this.iXq.getIntent().getStringExtra("Ksnsupload_title"), "");
+    this.fUj = Util.nullAs(this.iXq.getIntent().getStringExtra("KPublisherId"), "");
+    this.mSessionId = Util.nullAs(this.iXq.getIntent().getStringExtra("reportSessionId"), "");
+    this.appId = Util.nullAs(this.iXq.getIntent().getStringExtra("Ksnsupload_appid"), "");
+    this.appName = Util.nullAs(this.iXq.getIntent().getStringExtra("Ksnsupload_appname"), "");
+    this.wNV = this.iXq.getIntent().getBooleanExtra("ksnsupload_finder_need_report", false);
+    g.Kia.Gdf = this.iXq.getIntent().getLongExtra("finder_feed_id", 0L);
+    paramBundle = this.iXq.getIntent().getStringExtra("ksnsupload_mega_video_object_xml");
     if (!Util.isNullOrNil(paramBundle))
     {
-      paramBundle = XmlParser.parseXml(paramBundle, "musicShareItem", null);
+      paramBundle = XmlParser.parseXml(paramBundle, "finderMegaVideo", null);
       if (paramBundle != null)
       {
-        this.EsJ = new com.tencent.mm.modelsns.i();
-        this.EsJ.j("", paramBundle);
+        this.KFi = new com.tencent.mm.modelsns.h();
+        this.KFi.i("", paramBundle);
       }
     }
-    if (this.EsJ == null) {
-      this.EsJ = new com.tencent.mm.modelsns.i();
-    }
-    if (this.Erq.getType() == 76)
+    AppMethodBeat.o(270701);
+  }
+  
+  public final void az(Bundle paramBundle) {}
+  
+  public final boolean fTA()
+  {
+    return false;
+  }
+  
+  public final boolean fTw()
+  {
+    return this.KFi != null;
+  }
+  
+  public final View fTx()
+  {
+    AppMethodBeat.i(270702);
+    this.bvK = ad.kS(this.iXq).inflate(i.g.sns_finder_media_item, null);
+    this.pDJ = ((ImageView)this.bvK.findViewById(i.f.sns_finder_media_thumb));
+    this.KDh = ((ImageView)this.bvK.findViewById(i.f.sns_finder_media_status_icon));
+    this.KDi = ((ImageIndicatorView)this.bvK.findViewById(i.f.sns_finder_media_image_count_indicator));
+    Object localObject1;
+    if ((this.KFi != null) && (this.KFi.mbk != null))
     {
-      this.EsK = this.gte.getIntent().getStringExtra("music_mv_cover_url");
-      paramBundle = (WXMusicVideoObject)this.Erq.mediaObject;
-      if (paramBundle != null)
+      localObject1 = this.KFi.mbk;
+      if (!Util.isNullOrNil(((cwx)localObject1).mediaList))
       {
-        this.songLyric = paramBundle.songLyric;
-        this.EsJ.jlj.singerName = paramBundle.singerName;
-        this.EsJ.jlj.albumName = paramBundle.albumName;
-        this.EsJ.jlj.musicGenre = paramBundle.musicGenre;
-        this.EsJ.jlj.issueDate = paramBundle.issueDate;
-        this.EsJ.jlj.identification = paramBundle.identification;
-        this.EsJ.jlj.Alz = paramBundle.duration;
-        this.EsJ.jlj.extraInfo = this.Erq.messageExt;
+        localObject1 = (cww)((cwx)localObject1).mediaList.get(0);
+        Object localObject2 = o.a((int)((cww)localObject1).width, (int)((cww)localObject1).height, this.iXq, false);
+        localObject2 = new ViewGroup.LayoutParams(((Integer)((Pair)localObject2).first).intValue(), ((Integer)((Pair)localObject2).second).intValue());
+        this.bvK.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        this.bvK.requestLayout();
+        if (TextUtils.isEmpty(((cww)localObject1).coverUrl)) {
+          break label260;
+        }
+        ((ak)com.tencent.mm.kernel.h.ag(ak.class)).loadImage(((cww)localObject1).coverUrl, this.pDJ);
       }
-      this.EpM = k.w(this.gte.getIntent());
-      this.dNI = Util.nullAs(this.gte.getIntent().getStringExtra("Ksnsupload_appid"), "");
-      this.appName = Util.nullAs(this.gte.getIntent().getStringExtra("Ksnsupload_appname"), "");
-      this.Ero = this.gte.getIntent().getBooleanExtra("KThrid_app", false);
-      this.Erp = this.gte.getIntent().getBooleanExtra("KSnsAction", false);
-      this.EpG = this.gte.getIntent().getIntExtra("Ksnsupload_source", 0);
-      if (!this.gte.getIntent().getBooleanExtra("SendAppMessageWrapper_TokenValid", true)) {
-        break label484;
-      }
-    }
-    label484:
-    for (this.DPi = 1;; this.DPi = 0)
-    {
-      this.EpN = Util.nullAs(this.gte.getIntent().getStringExtra("SendAppMessageWrapper_PkgName"), "");
-      AppMethodBeat.o(203311);
-      return;
-      if (this.Erq.getType() != 3) {
-        break;
-      }
-      paramBundle = (WXMusicObject)this.Erq.mediaObject;
-      if (paramBundle == null) {
-        break;
-      }
-      this.songLyric = paramBundle.songLyric;
-      this.EsK = paramBundle.songAlbumUrl;
-      this.EsJ.jlj.extraInfo = this.Erq.messageExt;
-      break;
-    }
-  }
-  
-  public final void aD(Bundle paramBundle) {}
-  
-  public final boolean ffA()
-  {
-    return true;
-  }
-  
-  public final View ffB()
-  {
-    AppMethodBeat.i(203312);
-    this.sc = aa.jQ(this.gte).inflate(2131496780, null);
-    ((RoundCornerRelativeLayout)this.sc.findViewById(2131307176)).setRadius(com.tencent.mm.cb.a.fromDPToPix(this.gte, 4));
-    View localView = this.sc.findViewById(2131297645);
-    Object localObject1 = (LinearLayout)this.sc.findViewById(2131305087);
-    Object localObject2;
-    if (ao.isDarkMode())
-    {
-      ((LinearLayout)localObject1).setBackgroundResource(2131234996);
-      localObject1 = (MMRoundCornerImageView)this.sc.findViewById(2131298519);
-      this.EsH = ((TextView)this.sc.findViewById(2131298523));
-      localObject2 = (TextView)this.sc.findViewById(2131298524);
-      this.EsI = ((TextView)this.sc.findViewById(2131298521));
-      if (this.Erq.thumbData != null) {
-        this.EsL = BitmapUtil.decodeByteArray(this.Erq.thumbData);
-      }
-      ((MMRoundCornerImageView)localObject1).setImageBitmap(this.EsL);
-      ((TextView)localObject2).setText(this.Erq.title);
-      if (Util.isNullOrNil(this.Erq.description)) {
-        break label431;
-      }
-      this.EsH.setVisibility(0);
-      this.EsH.setText(this.Erq.description);
-      label227:
-      if ((this.EsJ == null) || (this.EsJ.jlj == null) || (Util.isNullOrNil(this.EsJ.jlj.Ktq))) {
-        break label451;
-      }
-      ((ViewGroup.MarginLayoutParams)((TextView)localObject2).getLayoutParams()).topMargin = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 6);
-      ((ViewGroup.MarginLayoutParams)this.EsH.getLayoutParams()).topMargin = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 2);
-      this.sc.findViewById(2131305768).setVisibility(0);
-      this.EsI.setText(this.EsJ.jlj.Ktq + this.gte.getString(2131763368));
-      this.EsI.setVisibility(0);
     }
     for (;;)
     {
-      if ((this.EsL != null) && (!this.EsL.isRecycled()))
-      {
-        localObject1 = d.getMessageDigest(this.Erq.thumbData);
-        localObject2 = b.qCp;
-        b.a(this.gte, localView, this.EsL, (String)localObject1);
-      }
-      localView = this.sc;
-      AppMethodBeat.o(203312);
-      return localView;
-      ((LinearLayout)localObject1).setBackgroundResource(2131234997);
-      break;
-      label431:
-      this.EsH.setText("");
-      this.EsH.setVisibility(0);
-      break label227;
-      label451:
-      this.EsI.setText("");
-      this.EsI.setVisibility(8);
+      this.KDh.setVisibility(0);
+      this.KDi.setVisibility(8);
+      this.bvK.setOnClickListener(new aj.1(this));
+      localObject1 = this.bvK;
+      AppMethodBeat.o(270702);
+      return localObject1;
+      label260:
+      ((ak)com.tencent.mm.kernel.h.ag(ak.class)).loadImage(((cww)localObject1).thumbUrl, this.pDJ);
     }
   }
   
-  public final boolean ffC()
+  public final boolean fTy()
   {
     return true;
   }
   
-  public final boolean ffD()
+  public final boolean fTz()
   {
     return true;
-  }
-  
-  public final boolean ffE()
-  {
-    AppMethodBeat.i(203314);
-    if ((this.EsL != null) && (!this.EsL.isRecycled())) {
-      this.EsL.recycle();
-    }
-    AppMethodBeat.o(203314);
-    return false;
   }
   
   public final boolean k(int paramInt, Intent paramIntent)
@@ -371,7 +217,7 @@ public final class aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.aj
  * JD-Core Version:    0.7.0.1
  */

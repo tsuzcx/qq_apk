@@ -2,12 +2,13 @@ package com.tencent.mm.chatroom.a;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.b;
-import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.widget.AbsListView.LayoutParams;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.chatroom.ui.a.j;
 import com.tencent.mm.chatroom.ui.c;
 import com.tencent.mm.chatroom.ui.c.a;
 import java.io.Serializable;
@@ -18,32 +19,32 @@ public final class b
   extends RecyclerView.a<b>
   implements c.a
 {
-  private final Calendar calendar;
-  private final TypedArray grn;
-  private final a gro;
-  public final a<com.tencent.mm.chatroom.d.a> grp;
-  private final Collection<com.tencent.mm.chatroom.d.a> grq;
-  private final Integer grr;
-  private final Integer grs;
-  private final boolean grt;
+  private final Collection<com.tencent.mm.chatroom.d.a> iVA;
+  private final Integer iVB;
+  private final Integer iVC;
+  private final boolean iVD;
+  private final TypedArray iVw;
+  private final a iVx;
+  private final Calendar iVy;
+  public final a<com.tencent.mm.chatroom.d.a> iVz;
   private final Context mContext;
   
   public b(Context paramContext, a parama, TypedArray paramTypedArray, long paramLong, Collection<com.tencent.mm.chatroom.d.a> paramCollection)
   {
     AppMethodBeat.i(12437);
-    this.grn = paramTypedArray;
-    this.calendar = Calendar.getInstance();
-    this.grs = Integer.valueOf(paramTypedArray.getInt(15, this.calendar.get(2) % 12));
+    this.iVw = paramTypedArray;
+    this.iVy = Calendar.getInstance();
+    this.iVC = Integer.valueOf(paramTypedArray.getInt(a.j.jhz, this.iVy.get(2) % 12));
     if (-1L != paramLong) {
-      this.calendar.setTimeInMillis(paramLong);
+      this.iVy.setTimeInMillis(paramLong);
     }
-    this.grr = Integer.valueOf(paramTypedArray.getInt(13, this.calendar.get(2)));
-    this.grt = paramTypedArray.getBoolean(16, false);
-    this.grp = new a();
-    this.grq = paramCollection;
+    this.iVB = Integer.valueOf(paramTypedArray.getInt(a.j.jhx, this.iVy.get(2)));
+    this.iVD = paramTypedArray.getBoolean(a.j.jhA, false);
+    this.iVz = new a();
+    this.iVA = paramCollection;
     this.mContext = paramContext;
-    this.gro = parama;
-    if (this.grn.getBoolean(10, false)) {
+    this.iVx = parama;
+    if (this.iVw.getBoolean(a.j.jhu, false)) {
       c(new com.tencent.mm.chatroom.d.a(System.currentTimeMillis()));
     }
     AppMethodBeat.o(12437);
@@ -52,7 +53,7 @@ public final class b
   private void c(com.tencent.mm.chatroom.d.a parama)
   {
     AppMethodBeat.i(12440);
-    this.gro.a(parama);
+    this.iVx.a(parama);
     d(parama);
     AppMethodBeat.o(12440);
   }
@@ -60,40 +61,40 @@ public final class b
   private void d(com.tencent.mm.chatroom.d.a parama)
   {
     AppMethodBeat.i(12441);
-    if (this.grt)
+    if (this.iVD)
     {
       int i;
-      if ((this.grp.first != null) && (this.grp.gru == null))
+      if ((this.iVz.Mx != null) && (this.iVz.iVE == null))
       {
-        this.grp.gru = parama;
-        if (((com.tencent.mm.chatroom.d.a)this.grp.first).month < parama.month) {
+        this.iVz.iVE = parama;
+        if (((com.tencent.mm.chatroom.d.a)this.iVz.Mx).month < parama.month) {
           i = 0;
         }
       }
       else
       {
-        while (i < ((com.tencent.mm.chatroom.d.a)this.grp.first).month - parama.month - 1)
+        while (i < ((com.tencent.mm.chatroom.d.a)this.iVz.Mx).month - parama.month - 1)
         {
-          this.gro.a(parama);
+          this.iVx.a(parama);
           i += 1;
           continue;
-          if (this.grp.gru == null) {
+          if (this.iVz.iVE == null) {
             break label144;
           }
-          this.grp.first = parama;
-          this.grp.gru = null;
+          this.iVz.Mx = parama;
+          this.iVz.iVE = null;
         }
       }
     }
     for (;;)
     {
-      this.atj.notifyChanged();
+      this.alc.notifyChanged();
       AppMethodBeat.o(12441);
       return;
       label144:
-      this.grp.first = parama;
+      this.iVz.Mx = parama;
       continue;
-      this.grp.first = parama;
+      this.iVz.Mx = parama;
     }
   }
   
@@ -109,14 +110,14 @@ public final class b
   public final int getItemCount()
   {
     AppMethodBeat.i(12438);
-    int j = (new com.tencent.mm.chatroom.d.a(this.gro.alZ()).year - this.calendar.get(1) + 1) * 12;
+    int j = (new com.tencent.mm.chatroom.d.a(this.iVx.asa()).year - this.iVy.get(1) + 1) * 12;
     int i = j;
-    if (this.grr.intValue() != -1) {
-      i = j - this.grr.intValue();
+    if (this.iVB.intValue() != -1) {
+      i = j - this.iVB.intValue();
     }
     j = i;
-    if (this.grs.intValue() != -1) {
-      j = i - (12 - this.grs.intValue() - 1);
+    if (this.iVC.intValue() != -1) {
+      j = i - (12 - this.iVC.intValue() - 1);
     }
     AppMethodBeat.o(12438);
     return j;
@@ -127,33 +128,33 @@ public final class b
     return paramInt;
   }
   
-  public static final class a<K>
+  public static class a<K>
     implements Serializable
   {
-    K first;
-    K gru;
+    K Mx;
+    K iVE;
   }
   
   public static final class b
     extends RecyclerView.v
   {
-    final c grv;
+    final c iVF;
     
     public b(View paramView, c.a parama)
     {
       super();
       AppMethodBeat.i(12436);
-      this.grv = ((c)paramView);
-      this.grv.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
-      this.grv.setClickable(true);
-      this.grv.setOnDayClickListener(parama);
+      this.iVF = ((c)paramView);
+      this.iVF.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
+      this.iVF.setClickable(true);
+      this.iVF.setOnDayClickListener(parama);
       AppMethodBeat.o(12436);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.chatroom.a.b
  * JD-Core Version:    0.7.0.1
  */

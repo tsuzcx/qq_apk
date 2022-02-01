@@ -10,7 +10,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.c.a;
+import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
@@ -23,14 +24,14 @@ import java.nio.charset.Charset;
 public final class WebViewClipBoardHelper
   implements ClipboardManager.OnPrimaryClipChangedListener
 {
-  private WeakReference<WebViewUI> Jbp;
+  private WeakReference<WebViewUI> PXH;
   private long lastReportTime;
   
   public WebViewClipBoardHelper(WebViewUI paramWebViewUI)
   {
     AppMethodBeat.i(79200);
     this.lastReportTime = 0L;
-    this.Jbp = new WeakReference(paramWebViewUI);
+    this.PXH = new WeakReference(paramWebViewUI);
     paramWebViewUI = (ClipboardManager)paramWebViewUI.getApplicationContext().getSystemService("clipboard");
     try
     {
@@ -47,7 +48,7 @@ public final class WebViewClipBoardHelper
   public final void onPrimaryClipChanged()
   {
     AppMethodBeat.i(79201);
-    if (this.Jbp.get() == null)
+    if (this.PXH.get() == null)
     {
       AppMethodBeat.o(79201);
       return;
@@ -72,7 +73,7 @@ public final class WebViewClipBoardHelper
       return;
     }
     ClipBoardDataWrapper localClipBoardDataWrapper = new ClipBoardDataWrapper();
-    localClipBoardDataWrapper.url = ((WebViewUI)this.Jbp.get()).fZM();
+    localClipBoardDataWrapper.url = ((WebViewUI)this.PXH.get()).elY();
     if (Util.isNullOrNil(((ClipData.Item)localObject).getText()))
     {
       Log.w("MicroMsg.WebViewClipBoardHelper", "onPrimaryClipChanged text is null");
@@ -80,9 +81,9 @@ public final class WebViewClipBoardHelper
       return;
     }
     localClipBoardDataWrapper.length = ((ClipData.Item)localObject).getText().toString().getBytes(Charset.forName("UTF-8")).length;
-    localClipBoardDataWrapper.fromScene = ((WebViewUI)this.Jbp.get()).getIntent().getIntExtra("from_scence", 0);
-    localClipBoardDataWrapper.username = ((WebViewUI)this.Jbp.get()).getIntent().getStringExtra("geta8key_username");
-    XIPCInvoker.a(MainProcessIPCService.dkO, localClipBoardDataWrapper, a.class, null);
+    localClipBoardDataWrapper.fromScene = ((WebViewUI)this.PXH.get()).getIntent().getIntExtra("from_scence", 0);
+    localClipBoardDataWrapper.username = ((WebViewUI)this.PXH.get()).getIntent().getStringExtra("geta8key_username");
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, localClipBoardDataWrapper, a.class, null);
     AppMethodBeat.o(79201);
   }
   
@@ -130,8 +131,9 @@ public final class WebViewClipBoardHelper
     }
   }
   
+  @a
   static final class a
-    implements b<WebViewClipBoardHelper.ClipBoardDataWrapper, Object>
+    implements d<WebViewClipBoardHelper.ClipBoardDataWrapper, Object>
   {}
 }
 

@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class GoodsObject
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
   public float center_x;
   public float center_y;
@@ -25,46 +25,46 @@ public class GoodsObject
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.E(1, this.relative_minx);
-      paramVarArgs.E(2, this.relative_miny);
-      paramVarArgs.E(3, this.relative_maxx);
-      paramVarArgs.E(4, this.relative_maxy);
-      paramVarArgs.E(5, this.score);
-      paramVarArgs.aM(11, this.minx);
-      paramVarArgs.aM(12, this.miny);
-      paramVarArgs.aM(13, this.maxx);
-      paramVarArgs.aM(14, this.maxy);
-      paramVarArgs.E(21, this.center_x);
-      paramVarArgs.E(22, this.center_y);
-      paramVarArgs.E(23, this.obj_w);
-      paramVarArgs.E(24, this.obj_h);
+      paramVarArgs.i(1, this.relative_minx);
+      paramVarArgs.i(2, this.relative_miny);
+      paramVarArgs.i(3, this.relative_maxx);
+      paramVarArgs.i(4, this.relative_maxy);
+      paramVarArgs.i(5, this.score);
+      paramVarArgs.aY(11, this.minx);
+      paramVarArgs.aY(12, this.miny);
+      paramVarArgs.aY(13, this.maxx);
+      paramVarArgs.aY(14, this.maxy);
+      paramVarArgs.i(21, this.center_x);
+      paramVarArgs.i(22, this.center_y);
+      paramVarArgs.i(23, this.obj_w);
+      paramVarArgs.i(24, this.obj_h);
       AppMethodBeat.o(124513);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.fS(1);
-      int i = g.a.a.b.b.a.fS(2);
-      int j = g.a.a.b.b.a.fS(3);
-      int k = g.a.a.b.b.a.fS(4);
-      int m = g.a.a.b.b.a.fS(5);
-      int n = g.a.a.b.b.a.bu(11, this.minx);
-      int i1 = g.a.a.b.b.a.bu(12, this.miny);
-      int i2 = g.a.a.b.b.a.bu(13, this.maxx);
-      int i3 = g.a.a.b.b.a.bu(14, this.maxy);
-      int i4 = g.a.a.b.b.a.fS(21);
-      int i5 = g.a.a.b.b.a.fS(22);
-      int i6 = g.a.a.b.b.a.fS(23);
-      int i7 = g.a.a.b.b.a.fS(24);
+      paramInt = g.a.a.b.b.a.gL(1);
+      int i = g.a.a.b.b.a.gL(2);
+      int j = g.a.a.b.b.a.gL(3);
+      int k = g.a.a.b.b.a.gL(4);
+      int m = g.a.a.b.b.a.gL(5);
+      int n = g.a.a.b.b.a.bM(11, this.minx);
+      int i1 = g.a.a.b.b.a.bM(12, this.miny);
+      int i2 = g.a.a.b.b.a.bM(13, this.maxx);
+      int i3 = g.a.a.b.b.a.bM(14, this.maxy);
+      int i4 = g.a.a.b.b.a.gL(21);
+      int i5 = g.a.a.b.b.a.gL(22);
+      int i6 = g.a.a.b.b.a.gL(23);
+      int i7 = g.a.a.b.b.a.gL(24);
       AppMethodBeat.o(124513);
       return paramInt + 4 + 0 + (i + 4) + (j + 4) + (k + 4) + (m + 4) + n + i1 + i2 + i3 + (i4 + 4) + (i5 + 4) + (i6 + 4) + (i7 + 4);
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
       AppMethodBeat.o(124513);
@@ -91,55 +91,55 @@ public class GoodsObject
         AppMethodBeat.o(124513);
         return -1;
       case 1: 
-        localGoodsObject.relative_minx = Float.intBitsToFloat(locala.UbS.zm());
+        localGoodsObject.relative_minx = Float.intBitsToFloat(locala.abFh.AO());
         AppMethodBeat.o(124513);
         return 0;
       case 2: 
-        localGoodsObject.relative_miny = Float.intBitsToFloat(locala.UbS.zm());
+        localGoodsObject.relative_miny = Float.intBitsToFloat(locala.abFh.AO());
         AppMethodBeat.o(124513);
         return 0;
       case 3: 
-        localGoodsObject.relative_maxx = Float.intBitsToFloat(locala.UbS.zm());
+        localGoodsObject.relative_maxx = Float.intBitsToFloat(locala.abFh.AO());
         AppMethodBeat.o(124513);
         return 0;
       case 4: 
-        localGoodsObject.relative_maxy = Float.intBitsToFloat(locala.UbS.zm());
+        localGoodsObject.relative_maxy = Float.intBitsToFloat(locala.abFh.AO());
         AppMethodBeat.o(124513);
         return 0;
       case 5: 
-        localGoodsObject.score = Float.intBitsToFloat(locala.UbS.zm());
+        localGoodsObject.score = Float.intBitsToFloat(locala.abFh.AO());
         AppMethodBeat.o(124513);
         return 0;
       case 11: 
-        localGoodsObject.minx = locala.UbS.zi();
+        localGoodsObject.minx = locala.abFh.AK();
         AppMethodBeat.o(124513);
         return 0;
       case 12: 
-        localGoodsObject.miny = locala.UbS.zi();
+        localGoodsObject.miny = locala.abFh.AK();
         AppMethodBeat.o(124513);
         return 0;
       case 13: 
-        localGoodsObject.maxx = locala.UbS.zi();
+        localGoodsObject.maxx = locala.abFh.AK();
         AppMethodBeat.o(124513);
         return 0;
       case 14: 
-        localGoodsObject.maxy = locala.UbS.zi();
+        localGoodsObject.maxy = locala.abFh.AK();
         AppMethodBeat.o(124513);
         return 0;
       case 21: 
-        localGoodsObject.center_x = Float.intBitsToFloat(locala.UbS.zm());
+        localGoodsObject.center_x = Float.intBitsToFloat(locala.abFh.AO());
         AppMethodBeat.o(124513);
         return 0;
       case 22: 
-        localGoodsObject.center_y = Float.intBitsToFloat(locala.UbS.zm());
+        localGoodsObject.center_y = Float.intBitsToFloat(locala.abFh.AO());
         AppMethodBeat.o(124513);
         return 0;
       case 23: 
-        localGoodsObject.obj_w = Float.intBitsToFloat(locala.UbS.zm());
+        localGoodsObject.obj_w = Float.intBitsToFloat(locala.abFh.AO());
         AppMethodBeat.o(124513);
         return 0;
       }
-      localGoodsObject.obj_h = Float.intBitsToFloat(locala.UbS.zm());
+      localGoodsObject.obj_h = Float.intBitsToFloat(locala.abFh.AO());
       AppMethodBeat.o(124513);
       return 0;
     }
@@ -149,7 +149,7 @@ public class GoodsObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.GoodsObject
  * JD-Core Version:    0.7.0.1
  */

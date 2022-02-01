@@ -10,59 +10,65 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.j;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.av.g;
-import com.tencent.mm.av.h;
-import com.tencent.mm.av.m;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.an.j;
+import com.tencent.mm.an.t;
+import com.tencent.mm.ay.g;
+import com.tencent.mm.ay.h;
+import com.tencent.mm.ay.m;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.chatting.gallery.ImageGalleryUI;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 
 public class ImageDownloadUI
   extends MMActivity
-  implements com.tencent.mm.ak.i, j
+  implements com.tencent.mm.an.i, j
 {
-  private ProgressBar Bwt;
-  private TextView Bwu;
-  private TextView Bwv;
-  private TextView Bww;
-  private g Bwy;
-  private m Bwz;
-  private ImageView PjS;
-  private long dTS = 0L;
-  private int iXp;
+  private ProgressBar HqO;
+  private TextView HqP;
+  private TextView HqQ;
+  private TextView HqR;
+  private g HqT;
+  private m HqU;
+  private ImageView WDz;
+  private long fNu = 0L;
+  private int lNK;
   private long msgId = 0L;
-  private TextView qLz;
+  private TextView umL;
   private String username;
   
-  private void Vj(int paramInt)
+  private void abR(int paramInt)
   {
     AppMethodBeat.i(34831);
-    this.Bwt.setProgress(paramInt);
-    this.Bwu.setText(getString(2131760846, new Object[] { Integer.valueOf(paramInt) }));
-    if (paramInt < this.Bwt.getMax())
+    this.HqO.setProgress(paramInt);
+    this.HqP.setText(getString(R.l.fmt_percent, new Object[] { Integer.valueOf(paramInt) }));
+    if (paramInt < this.HqO.getMax())
     {
       AppMethodBeat.o(34831);
       return;
     }
-    g localg = com.tencent.mm.av.q.bcR().c(Long.valueOf(this.Bwz.iYP));
-    String str = localg.iXm;
-    if (this.iXp == 1) {
+    g localg = com.tencent.mm.ay.q.bmh().b(Long.valueOf(this.HqU.lPj));
+    String str = localg.lNH;
+    if (this.lNK == 1) {
       str = h.c(localg);
     }
-    bmA(com.tencent.mm.av.q.bcR().o(str, null, null));
+    str = com.tencent.mm.ay.q.bmh().r(str, null, null);
+    localg.blK();
+    bzb(str);
     AppMethodBeat.o(34831);
   }
   
-  private void bmA(String paramString)
+  private void bzb(String paramString)
   {
     AppMethodBeat.i(34832);
-    if ((paramString == null) || (paramString.equals("")) || (!s.YS(paramString)))
+    if ((paramString == null) || (paramString.equals("")) || (!u.agG(paramString)))
     {
       Log.d("ImageDownloadUI", "showImg : imgPath is null");
       AppMethodBeat.o(34832);
@@ -72,7 +78,7 @@ public class ImageDownloadUI
     Intent localIntent = new Intent(this, ImageGalleryUI.class);
     localIntent.putExtra("key_message_id", this.msgId);
     localIntent.putExtra("key_image_path", paramString);
-    localIntent.putExtra("key_compress_type", this.iXp);
+    localIntent.putExtra("key_compress_type", this.lNK);
     localIntent.putExtra("key_favorite", true);
     localIntent.putExtra("img_gallery_msg_id", this.msgId);
     localIntent.putExtra("img_gallery_talker", this.username);
@@ -80,7 +86,7 @@ public class ImageDownloadUI
     AppMethodBeat.o(34832);
   }
   
-  public final void a(int paramInt1, int paramInt2, com.tencent.mm.ak.q paramq)
+  public final void a(int paramInt1, int paramInt2, com.tencent.mm.an.q paramq)
   {
     AppMethodBeat.i(34830);
     Log.d("ImageDownloadUI", "offset " + paramInt1 + "totaolLen  " + paramInt2);
@@ -92,7 +98,7 @@ public class ImageDownloadUI
     label72:
     for (paramInt1 = paramInt1 * 100 / paramInt2 - 1;; paramInt1 = 0)
     {
-      Vj(Math.max(0, paramInt1));
+      abR(Math.max(0, paramInt1));
       AppMethodBeat.o(34830);
       return;
     }
@@ -100,34 +106,34 @@ public class ImageDownloadUI
   
   public int getLayoutId()
   {
-    return 2131496791;
+    return R.i.elH;
   }
   
   public void initView()
   {
     AppMethodBeat.i(34829);
-    this.Bwu = ((TextView)findViewById(2131302554));
-    this.Bwv = ((TextView)findViewById(2131309751));
-    this.qLz = ((TextView)findViewById(2131309752));
-    this.Bww = ((TextView)findViewById(2131309749));
-    this.PjS = ((ImageView)findViewById(2131299740));
-    this.PjS.setImageResource(2131690098);
-    this.Bwu.setVisibility(0);
-    this.Bwv.setVisibility(8);
-    this.qLz.setVisibility(8);
-    this.Bww.setVisibility(8);
+    this.HqP = ((TextView)findViewById(R.h.image_download_percent_tv));
+    this.HqQ = ((TextView)findViewById(R.h.dYK));
+    this.umL = ((TextView)findViewById(R.h.dYL));
+    this.HqR = ((TextView)findViewById(R.h.dYI));
+    this.WDz = ((ImageView)findViewById(R.h.dEW));
+    this.WDz.setImageResource(R.k.download_image_icon);
+    this.HqP.setVisibility(0);
+    this.HqQ.setVisibility(8);
+    this.umL.setVisibility(8);
+    this.HqR.setVisibility(8);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(34825);
-        bg.azz().a(ImageDownloadUI.a(ImageDownloadUI.this));
+        bh.aGY().a(ImageDownloadUI.a(ImageDownloadUI.this));
         ImageDownloadUI.this.finish();
         AppMethodBeat.o(34825);
         return true;
       }
     });
-    this.Bwt = ((ProgressBar)findViewById(2131309750));
+    this.HqO = ((ProgressBar)findViewById(R.h.dYJ));
     AppMethodBeat.o(34829);
   }
   
@@ -136,29 +142,29 @@ public class ImageDownloadUI
     AppMethodBeat.i(34826);
     super.onCreate(paramBundle);
     this.msgId = getIntent().getLongExtra("img_msg_id", 0L);
-    this.dTS = getIntent().getLongExtra("img_server_id", 0L);
-    this.iXp = getIntent().getIntExtra("img_download_compress_type", 0);
+    this.fNu = getIntent().getLongExtra("img_server_id", 0L);
+    this.lNK = getIntent().getIntExtra("img_download_compress_type", 0);
     this.username = getIntent().getStringExtra("img_download_username");
     initView();
     if (this.msgId > 0L) {
-      this.Bwy = com.tencent.mm.av.q.bcR().H(this.username, this.msgId);
+      this.HqT = com.tencent.mm.ay.q.bmh().D(this.username, this.msgId);
     }
-    if (((this.Bwy == null) || (this.Bwy.localId <= 0L)) && (this.dTS > 0L)) {
-      this.Bwy = com.tencent.mm.av.q.bcR().G(this.username, this.dTS);
+    if (((this.HqT == null) || (this.HqT.localId <= 0L)) && (this.fNu > 0L)) {
+      this.HqT = com.tencent.mm.ay.q.bmh().C(this.username, this.fNu);
     }
-    if ((this.Bwy == null) || (this.Bwy.localId <= 0L))
+    if ((this.HqT == null) || (this.HqT.localId <= 0L))
     {
-      Log.e("ImageDownloadUI", "onCreate : on such imginfo, with msgLocalId = " + this.msgId + ", or msgSvrId = " + this.dTS);
+      Log.e("ImageDownloadUI", "onCreate : on such imginfo, with msgLocalId = " + this.msgId + ", or msgSvrId = " + this.fNu);
       AppMethodBeat.o(34826);
       return;
     }
-    if ((this.msgId <= 0L) && (this.dTS > 0L))
+    if ((this.msgId <= 0L) && (this.fNu > 0L))
     {
-      bg.aVF();
-      this.msgId = c.aSQ().aJ(this.username, this.dTS).field_msgId;
+      bh.beI();
+      this.msgId = c.bbO().aL(this.username, this.fNu).field_msgId;
     }
-    this.Bwz = new m(this.Bwy.localId, this.msgId, this.iXp, this);
-    bg.azz().a(this.Bwz, 0);
+    this.HqU = new m(this.HqT.localId, this.msgId, this.lNK, this);
+    bh.aGY().a(this.HqU, 0);
     AppMethodBeat.o(34826);
   }
   
@@ -166,7 +172,7 @@ public class ImageDownloadUI
   {
     AppMethodBeat.i(34827);
     super.onPause();
-    bg.azz().b(109, this);
+    bh.aGY().b(109, this);
     AppMethodBeat.o(34827);
   }
   
@@ -174,11 +180,11 @@ public class ImageDownloadUI
   {
     AppMethodBeat.i(34828);
     super.onResume();
-    bg.azz().a(109, this);
+    bh.aGY().a(109, this);
     AppMethodBeat.o(34828);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
   {
     AppMethodBeat.i(34833);
     if (paramq.getType() != 109)
@@ -188,12 +194,12 @@ public class ImageDownloadUI
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      Vj(this.Bwt.getMax());
+      abR(this.HqO.getMax());
       AppMethodBeat.o(34833);
       return;
     }
     Log.e("ImageDownloadUI", "onSceneEnd : fail, errType = " + paramInt1 + ", errCode = " + paramInt2);
-    Toast.makeText(this, 2131761767, 1).show();
+    Toast.makeText(this, R.l.imgdownload_fail, 1).show();
     AppMethodBeat.o(34833);
   }
   
@@ -205,7 +211,7 @@ public class ImageDownloadUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ImageDownloadUI
  * JD-Core Version:    0.7.0.1
  */

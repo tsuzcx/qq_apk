@@ -12,33 +12,33 @@ import javax.annotation.concurrent.GuardedBy;
 public final class ai
 {
   @GuardedBy("MessengerIpcClient.class")
-  private static ai bME;
-  final Context bLv;
-  final ScheduledExecutorService bMF;
+  private static ai bKj;
+  final Context bJa;
+  final ScheduledExecutorService bKk;
   @GuardedBy("this")
-  private aj bMG;
+  private aj bKl;
   @GuardedBy("this")
-  private int bMH;
+  private int bKm;
   
   private ai(Context paramContext, ScheduledExecutorService paramScheduledExecutorService)
   {
     AppMethodBeat.i(4254);
-    this.bMG = new aj(this, (byte)0);
-    this.bMH = 1;
-    this.bMF = paramScheduledExecutorService;
-    this.bLv = paramContext.getApplicationContext();
+    this.bKl = new aj(this, (byte)0);
+    this.bKm = 1;
+    this.bKk = paramScheduledExecutorService;
+    this.bJa = paramContext.getApplicationContext();
     AppMethodBeat.o(4254);
   }
   
-  public static ai as(Context paramContext)
+  public static ai ao(Context paramContext)
   {
     try
     {
       AppMethodBeat.i(4253);
-      if (bME == null) {
-        bME = new ai(paramContext, Executors.newSingleThreadScheduledExecutor());
+      if (bKj == null) {
+        bKj = new ai(paramContext, Executors.newSingleThreadScheduledExecutor());
       }
-      paramContext = bME;
+      paramContext = bKj;
       AppMethodBeat.o(4253);
       return paramContext;
     }
@@ -55,24 +55,24 @@ public final class ai
         String str = String.valueOf(paramc);
         new StringBuilder(String.valueOf(str).length() + 9).append("Queueing ").append(str);
       }
-      if (!this.bMG.b(paramc))
+      if (!this.bKl.b(paramc))
       {
-        this.bMG = new aj(this, (byte)0);
-        this.bMG.b(paramc);
+        this.bKl = new aj(this, (byte)0);
+        this.bKl.b(paramc);
       }
-      paramc = paramc.bLt.getTask();
+      paramc = paramc.bIY.getTask();
       AppMethodBeat.o(4255);
       return paramc;
     }
     finally {}
   }
   
-  public final int yw()
+  public final int yQ()
   {
     try
     {
-      int i = this.bMH;
-      this.bMH = (i + 1);
+      int i = this.bKm;
+      this.bKm = (i + 1);
       return i;
     }
     finally
@@ -84,7 +84,7 @@ public final class ai
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.ai
  * JD-Core Version:    0.7.0.1
  */

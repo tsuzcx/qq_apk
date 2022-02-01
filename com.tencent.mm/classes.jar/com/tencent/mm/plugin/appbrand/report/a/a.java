@@ -7,33 +7,33 @@ import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/report/keystep/AppBrandKeyStepUtils;", "", "()V", "OPEN", "", "()Z", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/report/keystep/AppBrandKeyStepUtils;", "", "()V", "OPEN", "", "()Z", "plugin-appbrand-integration_release"})
 public final class a
 {
-  public static final a nIf;
+  public static final a qKr;
   
   static
   {
-    AppMethodBeat.i(229308);
-    nIf = new a();
-    AppMethodBeat.o(229308);
+    AppMethodBeat.i(281627);
+    qKr = new a();
+    AppMethodBeat.o(281627);
   }
   
-  public static final boolean bUC()
+  public static final boolean chM()
   {
-    AppMethodBeat.i(229307);
-    if ((f.abT("WeAppLaunch")) || (BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (WeChatEnvironment.hasDebugger()) || (DebuggerShell.bAx()))
+    AppMethodBeat.i(281626);
+    if ((f.ajO("WeAppLaunch")) || (BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (WeChatEnvironment.hasDebugger()) || (DebuggerShell.bLS()))
     {
-      AppMethodBeat.o(229307);
+      AppMethodBeat.o(281626);
       return true;
     }
-    AppMethodBeat.o(229307);
+    AppMethodBeat.o(281626);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.a.a
  * JD-Core Version:    0.7.0.1
  */

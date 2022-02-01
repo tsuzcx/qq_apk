@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.decode.ui.AdVideoPlayerLoadingBar;
 import com.tencent.mm.plugin.sight.decode.ui.b;
+import com.tencent.mm.plugin.websearch.a.d;
+import com.tencent.mm.plugin.websearch.a.e;
 import com.tencent.mm.pluginsdk.ui.h;
 import com.tencent.mm.sdk.platformtools.Log;
 
@@ -20,11 +22,11 @@ public class WebSearchVideoPlayerSeekBar
   extends AdVideoPlayerLoadingBar
   implements h
 {
-  protected boolean dLB = false;
-  private float deo;
-  private int mDC = -1;
-  private int mDD = -1;
-  private int mDE = -1;
+  private float dit;
+  protected boolean fEq = false;
+  private int pCN = -1;
+  private int pCO = -1;
+  private int pCP = -1;
   
   public WebSearchVideoPlayerSeekBar(Context paramContext)
   {
@@ -41,14 +43,14 @@ public class WebSearchVideoPlayerSeekBar
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private int afF(int paramInt)
+  private int ant(int paramInt)
   {
     AppMethodBeat.i(110244);
     int i = paramInt;
     if (paramInt > getBarLen()) {
       i = getBarLen();
     }
-    paramInt = ((FrameLayout.LayoutParams)this.mCN.getLayoutParams()).leftMargin;
+    paramInt = ((FrameLayout.LayoutParams)this.pCa.getLayoutParams()).leftMargin;
     int j = getBarPointWidth();
     AppMethodBeat.o(110244);
     return paramInt + i - (j >>> 1);
@@ -57,10 +59,10 @@ public class WebSearchVideoPlayerSeekBar
   private int getBarPointPaddingLeft()
   {
     AppMethodBeat.i(110236);
-    if (this.mDD == -1) {
-      this.mDD = this.mCO.getPaddingLeft();
+    if (this.pCO == -1) {
+      this.pCO = this.pCb.getPaddingLeft();
     }
-    int i = this.mDD;
+    int i = this.pCO;
     AppMethodBeat.o(110236);
     return i;
   }
@@ -68,10 +70,10 @@ public class WebSearchVideoPlayerSeekBar
   private int getBarPointPaddingRight()
   {
     AppMethodBeat.i(110237);
-    if (this.mDE == -1) {
-      this.mDE = this.mCO.getPaddingRight();
+    if (this.pCP == -1) {
+      this.pCP = this.pCb.getPaddingRight();
     }
-    int i = this.mDE;
+    int i = this.pCP;
     AppMethodBeat.o(110237);
     return i;
   }
@@ -79,7 +81,7 @@ public class WebSearchVideoPlayerSeekBar
   private int getCurProgressBarLen()
   {
     AppMethodBeat.i(110234);
-    int i = this.mCM.getWidth();
+    int i = this.pBZ.getWidth();
     AppMethodBeat.o(110234);
     return i;
   }
@@ -87,12 +89,19 @@ public class WebSearchVideoPlayerSeekBar
   private int getCurTimeByProgressBar()
   {
     AppMethodBeat.i(110233);
-    int i = (int)(getCurProgressBarLen() * 1.0D / getBarLen() * this.mCS);
+    int i = (int)(getCurProgressBarLen() * 1.0D / getBarLen() * this.pCf);
     AppMethodBeat.o(110233);
     return i;
   }
   
-  protected final int afD(int paramInt)
+  public void AS(int paramInt)
+  {
+    AppMethodBeat.i(110247);
+    seek(paramInt);
+    AppMethodBeat.o(110247);
+  }
+  
+  protected final int anr(int paramInt)
   {
     AppMethodBeat.i(110238);
     if (paramInt <= 0)
@@ -100,18 +109,18 @@ public class WebSearchVideoPlayerSeekBar
       AppMethodBeat.o(110238);
       return 0;
     }
-    if (paramInt >= this.mCS)
+    if (paramInt >= this.pCf)
     {
       paramInt = getBarLen();
       AppMethodBeat.o(110238);
       return paramInt;
     }
-    paramInt = (int)(paramInt * 1.0D / this.mCS * getBarLen());
+    paramInt = (int)(paramInt * 1.0D / this.pCf * getBarLen());
     AppMethodBeat.o(110238);
     return paramInt;
   }
   
-  protected final void afE(int paramInt)
+  protected final void ans(int paramInt)
   {
     AppMethodBeat.i(110243);
     int i;
@@ -120,14 +129,14 @@ public class WebSearchVideoPlayerSeekBar
     }
     for (;;)
     {
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.mCO.getLayoutParams();
-      localLayoutParams.leftMargin = afF(i);
-      this.mCO.setLayoutParams(localLayoutParams);
-      localLayoutParams = (FrameLayout.LayoutParams)this.mCM.getLayoutParams();
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.pCb.getLayoutParams();
+      localLayoutParams.leftMargin = ant(i);
+      this.pCb.setLayoutParams(localLayoutParams);
+      localLayoutParams = (FrameLayout.LayoutParams)this.pBZ.getLayoutParams();
       localLayoutParams.width = i;
-      this.mCM.setLayoutParams(localLayoutParams);
-      this.mCO.requestLayout();
-      this.mCM.requestLayout();
+      this.pBZ.setLayoutParams(localLayoutParams);
+      this.pCb.requestLayout();
+      this.pBZ.requestLayout();
       AppMethodBeat.o(110243);
       return;
       i = paramInt;
@@ -137,20 +146,20 @@ public class WebSearchVideoPlayerSeekBar
     }
   }
   
-  public void bKO()
+  public void bWO()
   {
     AppMethodBeat.i(110242);
-    if (this.mCS == 0)
+    if (this.pCf == 0)
     {
       AppMethodBeat.o(110242);
       return;
     }
-    if (this.mbo)
+    if (this.oZf)
     {
       AppMethodBeat.o(110242);
       return;
     }
-    if (this.mCO == null)
+    if (this.pCb == null)
     {
       AppMethodBeat.o(110242);
       return;
@@ -160,18 +169,18 @@ public class WebSearchVideoPlayerSeekBar
       AppMethodBeat.o(110242);
       return;
     }
-    if (this.mPosition == this.mCS) {
+    if (this.mPosition == this.pCf) {
       Log.i("MicroMsg.WebSearch.WebSearchVideoPlayerSeekBar", "test");
     }
-    this.mCQ.setText(xt(this.mPosition / 60) + ":" + xt(this.mPosition % 60));
-    afE(afD(this.mPosition));
+    this.pCd.setText(AQ(this.mPosition / 60) + ":" + AQ(this.mPosition % 60));
+    ans(anr(this.mPosition));
     AppMethodBeat.o(110242);
   }
   
   public int getBarLen()
   {
     AppMethodBeat.i(110239);
-    int i = this.mCN.getWidth();
+    int i = this.pCa.getWidth();
     AppMethodBeat.o(110239);
     return i;
   }
@@ -179,30 +188,30 @@ public class WebSearchVideoPlayerSeekBar
   public int getBarPointWidth()
   {
     AppMethodBeat.i(110235);
-    if (this.mDC == -1) {
-      this.mDC = this.mCO.getWidth();
+    if (this.pCN == -1) {
+      this.pCN = this.pCb.getWidth();
     }
-    int i = this.mDC;
+    int i = this.pCN;
     AppMethodBeat.o(110235);
     return i;
   }
   
   public int getLayoutId()
   {
-    return 2131496802;
+    return a.e.video_player_seek_bar;
   }
   
   public ImageView getPlayBtn()
   {
-    return this.mCP;
+    return this.pCc;
   }
   
   public TextView getPlaytimeTv()
   {
-    return this.mCQ;
+    return this.pCd;
   }
   
-  public final void hP(boolean paramBoolean)
+  public final void iF(boolean paramBoolean)
   {
     AppMethodBeat.i(110248);
     setIsPlay(paramBoolean);
@@ -213,13 +222,13 @@ public class WebSearchVideoPlayerSeekBar
   {
     AppMethodBeat.i(110232);
     this.contentView = View.inflate(getContext(), getLayoutId(), this);
-    this.mCM = ((ImageView)this.contentView.findViewById(2131305975));
-    this.mCN = ((ImageView)this.contentView.findViewById(2131305974));
-    this.mCO = ((ImageView)this.contentView.findViewById(2131305978));
-    this.mCP = ((ImageView)this.contentView.findViewById(2131305954));
-    this.mCQ = ((TextView)this.contentView.findViewById(2131305956));
-    this.mCR = ((TextView)this.contentView.findViewById(2131305962));
-    this.mCO.setOnTouchListener(new View.OnTouchListener()
+    this.pBZ = ((ImageView)this.contentView.findViewById(a.d.player_progress_bar_front));
+    this.pCa = ((ImageView)this.contentView.findViewById(a.d.player_progress_bar_background));
+    this.pCb = ((ImageView)this.contentView.findViewById(a.d.player_progress_point));
+    this.pCc = ((ImageView)this.contentView.findViewById(a.d.play_btn));
+    this.pCd = ((TextView)this.contentView.findViewById(a.d.play_current_time_tv));
+    this.pCe = ((TextView)this.contentView.findViewById(a.d.play_total_time_tv));
+    this.pCb.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -231,7 +240,7 @@ public class WebSearchVideoPlayerSeekBar
           WebSearchVideoPlayerSeekBar.a(WebSearchVideoPlayerSeekBar.this, paramAnonymousMotionEvent.getX());
           WebSearchVideoPlayerSeekBar.b(WebSearchVideoPlayerSeekBar.this, ((FrameLayout.LayoutParams)WebSearchVideoPlayerSeekBar.b(WebSearchVideoPlayerSeekBar.this).getLayoutParams()).leftMargin);
           if (WebSearchVideoPlayerSeekBar.c(WebSearchVideoPlayerSeekBar.this) != null) {
-            WebSearchVideoPlayerSeekBar.d(WebSearchVideoPlayerSeekBar.this).aJq();
+            WebSearchVideoPlayerSeekBar.d(WebSearchVideoPlayerSeekBar.this).aRo();
           }
         }
         for (;;)
@@ -245,11 +254,11 @@ public class WebSearchVideoPlayerSeekBar
             Log.i("MicroMsg.WebSearch.WebSearchVideoPlayerSeekBar", "move dis %f ", new Object[] { Float.valueOf(f1 - WebSearchVideoPlayerSeekBar.e(WebSearchVideoPlayerSeekBar.this)) });
             float f2 = WebSearchVideoPlayerSeekBar.f(WebSearchVideoPlayerSeekBar.this);
             i = (int)(f1 - WebSearchVideoPlayerSeekBar.e(WebSearchVideoPlayerSeekBar.this) + f2);
-            WebSearchVideoPlayerSeekBar.this.afE(i);
+            WebSearchVideoPlayerSeekBar.this.ans(i);
             i = WebSearchVideoPlayerSeekBar.g(WebSearchVideoPlayerSeekBar.this);
-            WebSearchVideoPlayerSeekBar.h(WebSearchVideoPlayerSeekBar.this).setText(WebSearchVideoPlayerSeekBar.xt(i / 60) + ":" + WebSearchVideoPlayerSeekBar.xt(i % 60));
+            WebSearchVideoPlayerSeekBar.h(WebSearchVideoPlayerSeekBar.this).setText(WebSearchVideoPlayerSeekBar.AQ(i / 60) + ":" + WebSearchVideoPlayerSeekBar.AQ(i % 60));
             WebSearchVideoPlayerSeekBar.i(WebSearchVideoPlayerSeekBar.this);
-            WebSearchVideoPlayerSeekBar.fYL();
+            WebSearchVideoPlayerSeekBar.gRw();
           }
           else
           {
@@ -261,31 +270,31 @@ public class WebSearchVideoPlayerSeekBar
             if (WebSearchVideoPlayerSeekBar.l(WebSearchVideoPlayerSeekBar.this) != null)
             {
               Log.i("MicroMsg.WebSearch.WebSearchVideoPlayerSeekBar", "current time : ".concat(String.valueOf(i)));
-              WebSearchVideoPlayerSeekBar.m(WebSearchVideoPlayerSeekBar.this).rk(i);
+              WebSearchVideoPlayerSeekBar.m(WebSearchVideoPlayerSeekBar.this).tY(i);
             }
             WebSearchVideoPlayerSeekBar.n(WebSearchVideoPlayerSeekBar.this);
           }
         }
       }
     });
-    this.mCO.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
+    this.pCb.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
     {
       public final void onLayoutChange(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
       {
         AppMethodBeat.i(110230);
         if (paramAnonymousInt3 - paramAnonymousInt1 != paramAnonymousInt7 - paramAnonymousInt5) {
-          WebSearchVideoPlayerSeekBar.this.bKO();
+          WebSearchVideoPlayerSeekBar.this.bWO();
         }
         AppMethodBeat.o(110230);
       }
     });
-    this.mCN.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
+    this.pCa.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
     {
       public final void onLayoutChange(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
       {
         AppMethodBeat.i(110231);
         if (paramAnonymousInt3 - paramAnonymousInt1 != paramAnonymousInt7 - paramAnonymousInt5) {
-          WebSearchVideoPlayerSeekBar.this.bKO();
+          WebSearchVideoPlayerSeekBar.this.bWO();
         }
         AppMethodBeat.o(110231);
       }
@@ -302,13 +311,13 @@ public class WebSearchVideoPlayerSeekBar
       i = 0;
     }
     paramInt = i;
-    if (i >= this.mCS) {
-      paramInt = this.mCS;
+    if (i >= this.pCf) {
+      paramInt = this.pCf;
     }
     if (this.mPosition != paramInt)
     {
       this.mPosition = paramInt;
-      bKO();
+      bWO();
     }
     AppMethodBeat.o(110240);
   }
@@ -316,7 +325,7 @@ public class WebSearchVideoPlayerSeekBar
   public void setIsPlay(boolean paramBoolean)
   {
     AppMethodBeat.i(110246);
-    this.dLB = paramBoolean;
+    this.fEq = paramBoolean;
     super.setIsPlay(paramBoolean);
     AppMethodBeat.o(110246);
   }
@@ -324,8 +333,8 @@ public class WebSearchVideoPlayerSeekBar
   public void setPlayBtnOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(110245);
-    if (this.mCP != null) {
-      this.mCP.setOnClickListener(paramOnClickListener);
+    if (this.pCc != null) {
+      this.pCc.setOnClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(110245);
   }
@@ -333,23 +342,16 @@ public class WebSearchVideoPlayerSeekBar
   public void setVideoTotalTime(int paramInt)
   {
     AppMethodBeat.i(110241);
-    this.mCS = paramInt;
+    this.pCf = paramInt;
     this.mPosition = 0;
-    this.mCR.setText(xt(this.mCS / 60) + ":" + xt(this.mCS % 60));
-    bKO();
+    this.pCe.setText(AQ(this.pCf / 60) + ":" + AQ(this.pCf % 60));
+    bWO();
     AppMethodBeat.o(110241);
-  }
-  
-  public void xv(int paramInt)
-  {
-    AppMethodBeat.i(110247);
-    seek(paramInt);
-    AppMethodBeat.o(110247);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.ui.WebSearchVideoPlayerSeekBar
  * JD-Core Version:    0.7.0.1
  */

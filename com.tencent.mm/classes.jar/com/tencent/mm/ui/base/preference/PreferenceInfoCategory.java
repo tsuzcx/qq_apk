@@ -7,13 +7,15 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
 
 public class PreferenceInfoCategory
   extends Preference
 {
-  public View.OnClickListener OZL;
-  public View.OnClickListener OZM;
-  public int Oyf;
+  public int VRi;
+  public View.OnClickListener WsV;
+  public View.OnClickListener WsW;
   
   public PreferenceInfoCategory(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,10 +26,10 @@ public class PreferenceInfoCategory
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142661);
-    this.OZL = null;
-    this.OZM = null;
-    this.Oyf = 0;
-    setLayoutResource(2131495604);
+    this.WsV = null;
+    this.WsW = null;
+    this.VRi = 0;
+    setLayoutResource(a.h.mm_preference_info_qrcode);
     AppMethodBeat.o(142661);
   }
   
@@ -46,16 +48,16 @@ public class PreferenceInfoCategory
     }
     for (;;)
     {
-      paramView = (ImageView)paramView.findViewById(2131296535);
-      paramView.setOnClickListener(this.OZL);
-      if (this.Oyf > 0) {
-        paramView.setImageResource(this.Oyf);
+      paramView = (ImageView)paramView.findViewById(a.g.add_my_qrcode);
+      paramView.setOnClickListener(this.WsV);
+      if (this.VRi > 0) {
+        paramView.setImageResource(this.VRi);
       }
       AppMethodBeat.o(142662);
       return;
       localTextView.setVisibility(0);
       localTextView.setText(getTitle());
-      localTextView.setOnClickListener(this.OZM);
+      localTextView.setOnClickListener(this.WsW);
     }
   }
 }

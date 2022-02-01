@@ -1,154 +1,135 @@
 package com.tencent.mm.plugin.finder.live.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import kotlin.g.a.a;
-import kotlin.g.a.b;
-import kotlin.g.b.p;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.protocal.protobuf.FinderContact;
+import com.tencent.mm.protocal.protobuf.axe;
+import com.tencent.mm.protocal.protobuf.aya;
+import com.tencent.mm.protocal.protobuf.aza;
 import kotlin.l;
-import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveSysMsgCallback;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "aceptLinkMicCallbacks", "Ljava/util/HashMap;", "Lkotlin/Function0;", "", "Lkotlin/collections/HashMap;", "anchorConnectionChangeCallbacks", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "available", "applyLinkMicCallbacks", "closeLinkMicCallbacks", "closeLiveCallbacks", "kickedCallbacks", "notifyAccepLinkMic", "notifyAnchorConnectionChange", "notifyApplyLinkMic", "notifyClodeLive", "notifyCloseLinkMic", "notifyKicked", "registerAcceptLinkMicCallback", "key", "callback", "registerAnchorConnectionChangeCallback", "registerApplyLinkMicCallback", "registerCloseLinkMicCallback", "registerCloseLiveCallback", "registerKickedCallback", "releaseCallback", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveInteractiveMsg;", "Lcom/tencent/mm/plugin/finder/live/model/IFinderLiveMsg;", "msg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;)V", "getMsg", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;", "setMsg", "getContent", "", "getFromContact", "Lcom/tencent/mm/protocal/protobuf/FinderLiveContact;", "getFromUserName", "getFromUserNickName", "getLocalClientMsgId", "getPayLoadContent", "", "getSeq", "", "getToContact", "getToUserName", "getToUserNickName", "getType", "", "plugin-finder_release"})
 public final class q
+  implements ao
 {
-  private static final String TAG = "Finder.FinderLiveSysMsgCallback";
-  private static final HashMap<String, a<x>> ujX;
-  private static final HashMap<String, a<x>> ujY;
-  private static final HashMap<String, a<x>> ujZ;
-  private static final HashMap<String, a<x>> uka;
-  private static final HashMap<String, a<x>> ukb;
-  private static final HashMap<String, b<Boolean, x>> ukc;
-  public static final q ukd;
+  public axe yet;
   
-  static
+  public q(axe paramaxe)
   {
-    AppMethodBeat.i(246271);
-    ukd = new q();
-    TAG = "Finder.FinderLiveSysMsgCallback";
-    ujX = new HashMap();
-    ujY = new HashMap();
-    ujZ = new HashMap();
-    uka = new HashMap();
-    ukb = new HashMap();
-    ukc = new HashMap();
-    AppMethodBeat.o(246271);
+    AppMethodBeat.i(271937);
+    this.yet = paramaxe;
+    AppMethodBeat.o(271937);
   }
   
-  public static void dgA()
+  public final String cGy()
   {
-    AppMethodBeat.i(246267);
-    Log.i(TAG, "notify close live");
-    Iterator localIterator = ((Map)uka).entrySet().iterator();
-    while (localIterator.hasNext()) {
-      ((a)((Map.Entry)localIterator.next()).getValue()).invoke();
+    Object localObject = this.yet.SJH;
+    if (localObject != null)
+    {
+      localObject = ((aza)localObject).contact;
+      if (localObject != null) {
+        return ((FinderContact)localObject).username;
+      }
     }
-    AppMethodBeat.o(246267);
+    return null;
   }
   
-  public static void dgB()
+  public final long cYY()
   {
-    AppMethodBeat.i(246268);
-    Log.i(TAG, "notify kicked");
-    Iterator localIterator = ((Map)ukb).entrySet().iterator();
-    while (localIterator.hasNext()) {
-      ((a)((Map.Entry)localIterator.next()).getValue()).invoke();
+    return this.yet.seq;
+  }
+  
+  public final String dyd()
+  {
+    Object localObject = this.yet.SJH;
+    if (localObject != null)
+    {
+      localObject = ((aza)localObject).contact;
+      if (localObject != null) {
+        return ((FinderContact)localObject).nickname;
+      }
     }
-    AppMethodBeat.o(246268);
+    return null;
   }
   
-  public static void dgC()
+  public final aza dye()
   {
-    AppMethodBeat.i(246270);
-    Log.i(TAG, "release callback");
-    ujX.clear();
-    ujY.clear();
-    ujZ.clear();
-    uka.clear();
-    ukb.clear();
-    ukc.clear();
-    AppMethodBeat.o(246270);
+    return this.yet.SJH;
   }
   
-  public static void dgx()
+  public final aza dyf()
   {
-    AppMethodBeat.i(246264);
-    Log.i(TAG, "notify apply link mic");
-    Iterator localIterator = ((Map)ujX).entrySet().iterator();
-    while (localIterator.hasNext()) {
-      ((a)((Map.Entry)localIterator.next()).getValue()).invoke();
+    return this.yet.SJC;
+  }
+  
+  public final String dyg()
+  {
+    Object localObject = this.yet.SJC;
+    if (localObject != null)
+    {
+      localObject = ((aza)localObject).contact;
+      if (localObject != null) {
+        return ((FinderContact)localObject).username;
+      }
     }
-    AppMethodBeat.o(246264);
+    return null;
   }
   
-  public static void dgy()
+  public final String dyh()
   {
-    AppMethodBeat.i(246265);
-    Log.i(TAG, "notify accept link mic");
-    Iterator localIterator = ((Map)ujY).entrySet().iterator();
-    while (localIterator.hasNext()) {
-      ((a)((Map.Entry)localIterator.next()).getValue()).invoke();
+    Object localObject = this.yet.SJC;
+    if (localObject != null)
+    {
+      localObject = ((aza)localObject).contact;
+      if (localObject != null) {
+        return ((FinderContact)localObject).nickname;
+      }
     }
-    AppMethodBeat.o(246265);
+    return null;
   }
   
-  public static void dgz()
+  public final String dyi()
   {
-    AppMethodBeat.i(246266);
-    Log.i(TAG, "notify close link mic");
-    Iterator localIterator = ((Map)ujZ).entrySet().iterator();
-    while (localIterator.hasNext()) {
-      ((a)((Map.Entry)localIterator.next()).getValue()).invoke();
+    String str2 = this.yet.SJI;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    AppMethodBeat.o(246266);
+    return str1;
   }
   
-  public static void j(String paramString, a<x> parama)
+  public final Object dyn()
   {
-    AppMethodBeat.i(246261);
-    p.h(paramString, "key");
-    Log.i(TAG, "register close live callback");
-    if (uka.get(paramString) == null) {
-      ((Map)uka).put(paramString, parama);
-    }
-    AppMethodBeat.o(246261);
+    return null;
   }
   
-  public static void k(String paramString, a<x> parama)
+  public final String getContent()
   {
-    AppMethodBeat.i(246262);
-    p.h(paramString, "key");
-    Log.i(TAG, "register kicked callback");
-    if (ukb.get(paramString) == null) {
-      ((Map)ukb).put(paramString, parama);
+    AppMethodBeat.i(271934);
+    switch (this.yet.msg_type)
+    {
+    default: 
+      AppMethodBeat.o(271934);
+      return "";
+    case 20002: 
+      aya localaya = new aya();
+      Object localObject = this.yet.SJE;
+      if (localObject != null) {}
+      for (localObject = ((b)localObject).toByteArray();; localObject = null)
+      {
+        localaya.parseFrom((byte[])localObject);
+        localObject = localaya.content;
+        AppMethodBeat.o(271934);
+        return localObject;
+      }
     }
-    AppMethodBeat.o(246262);
+    AppMethodBeat.o(271934);
+    return "";
   }
   
-  public static void k(String paramString, b<? super Boolean, x> paramb)
+  public final int getType()
   {
-    AppMethodBeat.i(246263);
-    p.h(paramString, "key");
-    Log.i(TAG, "register anchor connection change callback");
-    if (ukc.get(paramString) == null) {
-      ((Map)ukc).put(paramString, paramb);
-    }
-    AppMethodBeat.o(246263);
-  }
-  
-  public static void no(boolean paramBoolean)
-  {
-    AppMethodBeat.i(246269);
-    Log.i(TAG, "notify anchor connection change");
-    Iterator localIterator = ((Map)ukc).entrySet().iterator();
-    while (localIterator.hasNext()) {
-      ((b)((Map.Entry)localIterator.next()).getValue()).invoke(Boolean.valueOf(paramBoolean));
-    }
-    AppMethodBeat.o(246269);
+    return this.yet.msg_type;
   }
 }
 

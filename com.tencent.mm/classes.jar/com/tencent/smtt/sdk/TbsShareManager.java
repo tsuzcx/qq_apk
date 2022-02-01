@@ -1093,6 +1093,37 @@ public class TbsShareManager
     return null;
   }
   
+  public static int getTbsStableCoreVersion(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(196256);
+    try
+    {
+      Context localContext = getPackageContext(paramContext, "com.tencent.mm", false);
+      if (localContext == null) {}
+      for (paramContext = new File(f.a(paramContext, "com.tencent.mm", 4, true));; paramContext = new File(f.a(localContext, 4)))
+      {
+        paramContext = new File(paramContext, TbsDownloader.getBackupFileName(false, paramInt));
+        TbsLog.i("TbsDownload", "getTbsStableCoreVersion, coreStable is " + paramContext.getAbsolutePath());
+        if ((!paramContext.exists()) || (!paramContext.canRead())) {
+          break;
+        }
+        paramInt = a.b(paramContext);
+        AppMethodBeat.o(196256);
+        return paramInt;
+      }
+      AppMethodBeat.o(196256);
+    }
+    catch (Throwable paramContext)
+    {
+      TbsLog.i("TbsDownload", "getTbsStableCoreVersion stack is " + Log.getStackTraceString(paramContext));
+    }
+    for (;;)
+    {
+      return 0;
+      TbsLog.i("TbsDownload", "getTbsStableCoreVersion,core stable not exist".concat(String.valueOf(paramContext)));
+    }
+  }
+  
   /* Error */
   static int h(Context paramContext)
   {
@@ -1101,10 +1132,10 @@ public class TbsShareManager
     //   1: istore_1
     //   2: ldc 2
     //   4: monitorenter
-    //   5: ldc_w 572
+    //   5: ldc_w 595
     //   8: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   11: ldc 70
-    //   13: ldc_w 574
+    //   13: ldc_w 597
     //   16: invokestatic 77	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   19: aload_0
     //   20: ldc_w 270
@@ -1113,9 +1144,9 @@ public class TbsShareManager
     //   27: aload_0
     //   28: ifnonnull +22 -> 50
     //   31: ldc 70
-    //   33: ldc_w 576
+    //   33: ldc_w 599
     //   36: invokestatic 77	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   39: ldc_w 572
+    //   39: ldc_w 595
     //   42: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   45: ldc 2
     //   47: monitorexit
@@ -1137,7 +1168,7 @@ public class TbsShareManager
     //   75: aload_0
     //   76: invokevirtual 289	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   79: aload_2
-    //   80: ldc_w 578
+    //   80: ldc_w 601
     //   83: ldc_w 349
     //   86: invokevirtual 353	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   89: astore_2
@@ -1146,16 +1177,16 @@ public class TbsShareManager
     //   94: invokevirtual 357	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   97: ifne +39 -> 136
     //   100: ldc 70
-    //   102: ldc_w 580
+    //   102: ldc_w 603
     //   105: invokestatic 77	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   108: aload_2
-    //   109: invokestatic 583	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   109: invokestatic 606	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   112: iconst_0
-    //   113: invokestatic 589	java/lang/Math:max	(II)I
+    //   113: invokestatic 612	java/lang/Math:max	(II)I
     //   116: istore_1
     //   117: aload_0
     //   118: invokevirtual 331	java/io/BufferedInputStream:close	()V
-    //   121: ldc_w 572
+    //   121: ldc_w 595
     //   124: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   127: goto -82 -> 45
     //   130: astore_0
@@ -1164,11 +1195,11 @@ public class TbsShareManager
     //   134: aload_0
     //   135: athrow
     //   136: ldc 70
-    //   138: ldc_w 591
+    //   138: ldc_w 614
     //   141: invokestatic 77	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   144: aload_0
     //   145: invokevirtual 331	java/io/BufferedInputStream:close	()V
-    //   148: ldc_w 572
+    //   148: ldc_w 595
     //   151: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   154: goto -109 -> 45
     //   157: astore_0
@@ -1179,11 +1210,11 @@ public class TbsShareManager
     //   164: aload_0
     //   165: invokevirtual 331	java/io/BufferedInputStream:close	()V
     //   168: ldc 70
-    //   170: ldc_w 593
+    //   170: ldc_w 616
     //   173: invokestatic 77	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   176: bipush 254
     //   178: istore_1
-    //   179: ldc_w 572
+    //   179: ldc_w 595
     //   182: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   185: goto -140 -> 45
     //   188: astore_2
@@ -1193,7 +1224,7 @@ public class TbsShareManager
     //   192: ifnull +7 -> 199
     //   195: aload_0
     //   196: invokevirtual 331	java/io/BufferedInputStream:close	()V
-    //   199: ldc_w 572
+    //   199: ldc_w 595
     //   202: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   205: aload_2
     //   206: athrow
@@ -1410,11 +1441,11 @@ public class TbsShareManager
   private static void n(Context paramContext)
   {
     // Byte code:
-    //   0: ldc_w 630
+    //   0: ldc_w 653
     //   3: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: getstatic 46	com/tencent/smtt/sdk/TbsShareManager:k	Z
     //   9: ifeq +10 -> 19
-    //   12: ldc_w 630
+    //   12: ldc_w 653
     //   15: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   18: return
     //   19: ldc 2
@@ -1423,7 +1454,7 @@ public class TbsShareManager
     //   25: ifeq +13 -> 38
     //   28: ldc 2
     //   30: monitorexit
-    //   31: ldc_w 630
+    //   31: ldc_w 653
     //   34: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   37: return
     //   38: aload_0
@@ -1434,7 +1465,7 @@ public class TbsShareManager
     //   47: ifnonnull +13 -> 60
     //   50: ldc 2
     //   52: monitorexit
-    //   53: ldc_w 630
+    //   53: ldc_w 653
     //   56: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   59: return
     //   60: new 275	java/io/BufferedInputStream
@@ -1453,7 +1484,7 @@ public class TbsShareManager
     //   85: aload_0
     //   86: invokevirtual 289	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   89: aload_1
-    //   90: ldc_w 578
+    //   90: ldc_w 601
     //   93: ldc_w 349
     //   96: invokevirtual 353	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   99: astore_2
@@ -1462,14 +1493,14 @@ public class TbsShareManager
     //   104: invokevirtual 357	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   107: ifne +60 -> 167
     //   110: aload_2
-    //   111: invokestatic 583	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   111: invokestatic 606	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   114: iconst_0
-    //   115: invokestatic 589	java/lang/Math:max	(II)I
+    //   115: invokestatic 612	java/lang/Math:max	(II)I
     //   118: putstatic 32	com/tencent/smtt/sdk/TbsShareManager:d	I
     //   121: ldc 70
     //   123: new 98	java/lang/StringBuilder
     //   126: dup
-    //   127: ldc_w 632
+    //   127: ldc_w 655
     //   130: invokespecial 103	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   133: getstatic 32	com/tencent/smtt/sdk/TbsShareManager:d	I
     //   136: invokevirtual 200	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -1531,7 +1562,7 @@ public class TbsShareManager
     //   274: ldc_w 291
     //   277: ldc_w 293
     //   280: invokevirtual 353	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   283: invokestatic 637	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
+    //   283: invokestatic 660	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
     //   286: putstatic 36	com/tencent/smtt/sdk/TbsShareManager:f	Z
     //   289: iconst_1
     //   290: putstatic 46	com/tencent/smtt/sdk/TbsShareManager:k	Z
@@ -1539,7 +1570,7 @@ public class TbsShareManager
     //   294: invokevirtual 331	java/io/BufferedInputStream:close	()V
     //   297: ldc 2
     //   299: monitorexit
-    //   300: ldc_w 630
+    //   300: ldc_w 653
     //   303: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   306: return
     //   307: iconst_0
@@ -1560,14 +1591,14 @@ public class TbsShareManager
     //   334: ifnull +7 -> 341
     //   337: aload_1
     //   338: invokevirtual 331	java/io/BufferedInputStream:close	()V
-    //   341: ldc_w 630
+    //   341: ldc_w 653
     //   344: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   347: aload_0
     //   348: athrow
     //   349: astore_0
     //   350: ldc 2
     //   352: monitorexit
-    //   353: ldc_w 630
+    //   353: ldc_w 653
     //   356: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   359: aload_0
     //   360: athrow
@@ -1616,7 +1647,6 @@ public class TbsShareManager
     //   319	323	349	finally
     //   337	341	349	finally
     //   341	349	349	finally
-    //   350	353	349	finally
     //   293	297	361	java/lang/Exception
     //   337	341	365	java/lang/Exception
     //   76	167	369	finally
@@ -1893,20 +1923,20 @@ public class TbsShareManager
     // Byte code:
     //   0: iconst_0
     //   1: istore 5
-    //   3: ldc_w 685
+    //   3: ldc_w 708
     //   6: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: ldc 70
     //   11: new 98	java/lang/StringBuilder
     //   14: dup
-    //   15: ldc_w 687
+    //   15: ldc_w 710
     //   18: invokespecial 103	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   21: aload_1
     //   22: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: ldc_w 689
+    //   25: ldc_w 712
     //   28: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   31: aload_2
     //   32: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: ldc_w 691
+    //   35: ldc_w 714
     //   38: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   41: aload_3
     //   42: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1915,7 +1945,7 @@ public class TbsShareManager
     //   51: ldc 70
     //   53: new 98	java/lang/StringBuilder
     //   56: dup
-    //   57: ldc_w 693
+    //   57: ldc_w 716
     //   60: invokespecial 103	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   63: new 67	java/lang/Throwable
     //   66: dup
@@ -1932,10 +1962,10 @@ public class TbsShareManager
     //   93: aload_0
     //   94: ifnonnull +22 -> 116
     //   97: getstatic 138	com/tencent/smtt/sdk/TbsShareManager:a	Landroid/content/Context;
-    //   100: invokestatic 650	com/tencent/smtt/sdk/TbsDownloadConfig:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsDownloadConfig;
+    //   100: invokestatic 673	com/tencent/smtt/sdk/TbsDownloadConfig:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsDownloadConfig;
     //   103: sipush -405
-    //   106: invokevirtual 653	com/tencent/smtt/sdk/TbsDownloadConfig:setDownloadInterruptCode	(I)V
-    //   109: ldc_w 685
+    //   106: invokevirtual 676	com/tencent/smtt/sdk/TbsDownloadConfig:setDownloadInterruptCode	(I)V
+    //   109: ldc_w 708
     //   112: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   115: return
     //   116: new 275	java/io/BufferedInputStream
@@ -1954,14 +1984,14 @@ public class TbsShareManager
     //   144: aload 7
     //   146: invokevirtual 289	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   149: aload_1
-    //   150: invokestatic 583	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   150: invokestatic 606	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   153: istore 6
     //   155: iload 6
     //   157: istore 5
     //   159: iload 5
     //   161: ifeq +111 -> 272
     //   164: aload 8
-    //   166: ldc_w 578
+    //   166: ldc_w 601
     //   169: aload_1
     //   170: invokevirtual 297	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   173: pop
@@ -2000,19 +2030,19 @@ public class TbsShareManager
     //   240: iconst_0
     //   241: putstatic 46	com/tencent/smtt/sdk/TbsShareManager:k	Z
     //   244: getstatic 138	com/tencent/smtt/sdk/TbsShareManager:a	Landroid/content/Context;
-    //   247: invokestatic 650	com/tencent/smtt/sdk/TbsDownloadConfig:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsDownloadConfig;
+    //   247: invokestatic 673	com/tencent/smtt/sdk/TbsDownloadConfig:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsDownloadConfig;
     //   250: sipush -406
-    //   253: invokevirtual 653	com/tencent/smtt/sdk/TbsDownloadConfig:setDownloadInterruptCode	(I)V
+    //   253: invokevirtual 676	com/tencent/smtt/sdk/TbsDownloadConfig:setDownloadInterruptCode	(I)V
     //   256: aload 7
     //   258: invokevirtual 331	java/io/BufferedInputStream:close	()V
     //   261: aload_0
     //   262: invokevirtual 332	java/io/BufferedOutputStream:close	()V
-    //   265: ldc_w 685
+    //   265: ldc_w 708
     //   268: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   271: return
     //   272: aload 8
     //   274: ldc_w 291
-    //   277: ldc_w 695
+    //   277: ldc_w 718
     //   280: invokevirtual 297	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   283: pop
     //   284: goto -67 -> 217
@@ -2027,15 +2057,15 @@ public class TbsShareManager
     //   301: ifnull +7 -> 308
     //   304: aload_0
     //   305: invokevirtual 332	java/io/BufferedOutputStream:close	()V
-    //   308: ldc_w 685
+    //   308: ldc_w 708
     //   311: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   314: return
     //   315: astore_0
-    //   316: ldc_w 685
+    //   316: ldc_w 708
     //   319: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   322: return
     //   323: astore_0
-    //   324: ldc_w 685
+    //   324: ldc_w 708
     //   327: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   330: return
     //   331: astore_0
@@ -2051,7 +2081,7 @@ public class TbsShareManager
     //   348: ifnull +7 -> 355
     //   351: aload_1
     //   352: invokevirtual 332	java/io/BufferedOutputStream:close	()V
-    //   355: ldc_w 685
+    //   355: ldc_w 708
     //   358: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   361: aload_0
     //   362: athrow
@@ -2128,7 +2158,7 @@ public class TbsShareManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsShareManager
  * JD-Core Version:    0.7.0.1
  */

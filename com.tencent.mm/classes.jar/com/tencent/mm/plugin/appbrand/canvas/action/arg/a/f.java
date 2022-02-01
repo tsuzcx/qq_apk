@@ -9,31 +9,31 @@ import java.util.Map;
 public final class f
   extends a<BasePathActionArg>
 {
-  private static f laf;
+  private static f nUp;
   
   static
   {
     AppMethodBeat.i(145325);
-    laf = new f();
+    nUp = new f();
     AppMethodBeat.o(145325);
   }
   
-  public static f bzq()
+  public static f bKF()
   {
-    return laf;
+    return nUp;
   }
   
-  public final <T> T WE(String paramString)
+  public final <T> T aep(String paramString)
   {
     AppMethodBeat.i(145324);
-    paramString = ((com.tencent.mm.plugin.appbrand.canvas.b.a)e.a.law.lav.get(paramString)).bzv();
+    paramString = ((com.tencent.mm.plugin.appbrand.canvas.b.a)e.a.nUF.nUE.get(paramString)).bKK();
     AppMethodBeat.o(145324);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.a.f
  * JD-Core Version:    0.7.0.1
  */

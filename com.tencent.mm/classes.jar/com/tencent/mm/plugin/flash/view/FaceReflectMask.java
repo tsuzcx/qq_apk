@@ -10,7 +10,9 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.facedetect.a.b;
+import com.tencent.mm.plugin.facedetect.a.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.youtu.ytagreflectlivecheck.ui.YTReflectLayout;
@@ -18,54 +20,61 @@ import com.tencent.youtu.ytagreflectlivecheck.ui.YTReflectLayout;
 public class FaceReflectMask
   extends YTReflectLayout
 {
-  private static final int wIW;
-  private Paint lun;
+  private static final int progressWidth;
+  private boolean BCd;
+  private float BCf;
+  private a BCo;
+  private Rect byG;
   private ColorMatrixColorFilter mColorMatrixColorFilter;
+  private Paint opm;
   private float progress;
-  private Rect rect;
-  private Paint sXU;
-  private Paint sXV;
-  private PorterDuffXfermode sXW;
-  private boolean sXX;
-  private boolean wIX;
-  private a wIY;
+  private Paint wDT;
+  private Paint wDU;
+  private PorterDuffXfermode wDV;
+  private boolean wDW;
   private float y;
   
   static
   {
-    AppMethodBeat.i(186723);
-    wIW = a.aG(MMApplicationContext.getContext(), 2131165277);
-    AppMethodBeat.o(186723);
+    AppMethodBeat.i(193607);
+    progressWidth = a.aY(MMApplicationContext.getContext(), a.c.Edge_0_5_A);
+    AppMethodBeat.o(193607);
   }
   
   public FaceReflectMask(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(186718);
-    this.rect = new Rect();
-    this.sXX = false;
+    AppMethodBeat.i(193593);
+    this.byG = new Rect();
+    this.wDW = false;
     this.y = 0.0F;
     this.progress = 0.0F;
+    this.BCf = 0.0F;
     setLayerType(1, null);
-    this.sXU = new Paint(1);
-    this.sXU.setStyle(Paint.Style.FILL);
-    this.sXV = new Paint(1);
-    this.sXV.setColor(a.n(getContext(), 2131101287));
-    this.lun = new Paint(1);
-    this.lun.setStyle(Paint.Style.STROKE);
-    this.lun.setStrokeWidth(wIW);
-    this.lun.setColor(a.n(getContext(), 2131099679));
+    this.wDT = new Paint(1);
+    this.wDT.setStyle(Paint.Style.FILL);
+    this.wDU = new Paint(1);
+    this.wDU.setColor(a.w(getContext(), a.b.transparent));
+    this.opm = new Paint(1);
+    this.opm.setStyle(Paint.Style.STROKE);
+    this.opm.setStrokeWidth(progressWidth);
+    this.opm.setColor(a.w(getContext(), a.b.BW_100_Alpha_0_8));
     setWillNotDraw(false);
-    this.sXW = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
-    this.wIX = true;
-    AppMethodBeat.o(186718);
+    this.wDV = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+    this.BCd = true;
+    AppMethodBeat.o(193593);
   }
   
-  public final void dLo()
+  public final void epS()
   {
-    AppMethodBeat.i(186720);
+    AppMethodBeat.i(193599);
     setColorMatrixColorFilter(new ColorMatrixColorFilter(new float[] { 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F }));
-    AppMethodBeat.o(186720);
+    AppMethodBeat.o(193599);
+  }
+  
+  public float getCircleMarginY()
+  {
+    return this.BCf;
   }
   
   public float getCircleY()
@@ -75,56 +84,65 @@ public class FaceReflectMask
   
   public void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(186722);
+    AppMethodBeat.i(193602);
     paramCanvas.save();
     float f1 = Math.min(getWidth(), getHeight()) * 0.27F;
     float f2 = (float)(getWidth() * 0.5D);
-    this.y = (a.aG(getContext(), 2131166316) + f1);
-    this.rect.left = 0;
-    this.rect.right = getWidth();
-    this.rect.top = 0;
-    this.rect.bottom = getHeight();
-    this.sXU.setColor(-1);
-    if (this.mColorMatrixColorFilter != null) {
-      this.sXU.setColorFilter(this.mColorMatrixColorFilter);
-    }
-    paramCanvas.drawARGB(255, 0, 0, 0);
-    paramCanvas.drawRect(this.rect, this.sXU);
-    if (!this.sXX)
+    if (this.BCf != 0.0F) {}
+    for (this.y = (this.BCf + f1);; this.y = (a.aY(getContext(), a.c.face_flash_circle_margin_top) + f1))
     {
-      setAlpha(0.998F);
-      this.sXV.setStyle(Paint.Style.FILL_AND_STROKE);
-      this.sXV.setXfermode(this.sXW);
-      paramCanvas.drawCircle(f2, this.y, f1, this.sXV);
+      this.byG.left = 0;
+      this.byG.right = getWidth();
+      this.byG.top = 0;
+      this.byG.bottom = getHeight();
+      this.wDT.setColor(-1);
+      if (this.mColorMatrixColorFilter != null) {
+        this.wDT.setColorFilter(this.mColorMatrixColorFilter);
+      }
+      paramCanvas.drawARGB(255, 0, 0, 0);
+      paramCanvas.drawRect(this.byG, this.wDT);
+      if (!this.wDW)
+      {
+        setAlpha(0.998F);
+        this.wDU.setStyle(Paint.Style.FILL_AND_STROKE);
+        this.wDU.setXfermode(this.wDV);
+        paramCanvas.drawCircle(f2, this.y, f1, this.wDU);
+      }
+      float f3 = this.progress;
+      paramCanvas.drawArc(f2 - f1 + (progressWidth >> 1), this.y - f1 + (progressWidth >> 1), f2 + f1 - (progressWidth >> 1), f1 + this.y - (progressWidth >> 1), -90.0F, f3 * 360.0F, false, this.opm);
+      paramCanvas.restore();
+      if (this.BCo != null)
+      {
+        this.BCo.epp();
+        this.BCo = null;
+      }
+      AppMethodBeat.o(193602);
+      return;
     }
-    float f3 = this.progress;
-    paramCanvas.drawArc(f2 - f1 + (wIW >> 1), this.y - f1 + (wIW >> 1), f2 + f1 - (wIW >> 1), f1 + this.y - (wIW >> 1), -90.0F, f3 * 360.0F, false, this.lun);
-    paramCanvas.restore();
-    if (this.wIY != null)
-    {
-      this.wIY.dKQ();
-      this.wIY = null;
-    }
-    AppMethodBeat.o(186722);
   }
   
   public void setCallback(a parama)
   {
-    this.wIY = parama;
+    this.BCo = parama;
+  }
+  
+  public void setCircleMarginY(float paramFloat)
+  {
+    this.BCf = paramFloat;
   }
   
   public void setColorMatrixColorFilter(ColorMatrixColorFilter paramColorMatrixColorFilter)
   {
-    AppMethodBeat.i(186719);
+    AppMethodBeat.i(193595);
     Log.i("MicroMsg.FaceReflectMask", "setColorMatrixColorFilter");
     this.mColorMatrixColorFilter = paramColorMatrixColorFilter;
     postInvalidate();
-    AppMethodBeat.o(186719);
+    AppMethodBeat.o(193595);
   }
   
   public void setProgress(float paramFloat)
   {
-    AppMethodBeat.i(186721);
+    AppMethodBeat.i(193601);
     Log.d("MicroMsg.FaceReflectMask", "setProgress :%s", new Object[] { Float.valueOf(paramFloat) });
     if (paramFloat <= 0.0F) {
       this.progress = 0.0F;
@@ -132,7 +150,7 @@ public class FaceReflectMask
     for (;;)
     {
       postInvalidate();
-      AppMethodBeat.o(186721);
+      AppMethodBeat.o(193601);
       return;
       if (paramFloat <= 1.0F)
       {
@@ -146,17 +164,17 @@ public class FaceReflectMask
         this.progress = 1.0F;
       }
     }
-    AppMethodBeat.o(186721);
+    AppMethodBeat.o(193601);
   }
   
   public static abstract interface a
   {
-    public abstract void dKQ();
+    public abstract void epp();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.flash.view.FaceReflectMask
  * JD-Core Version:    0.7.0.1
  */

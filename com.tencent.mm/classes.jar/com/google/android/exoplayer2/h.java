@@ -16,54 +16,54 @@ import java.util.concurrent.CopyOnWriteArraySet;
 final class h
   implements f
 {
-  private final r[] bcc;
-  final com.google.android.exoplayer2.g.h bcd;
-  private final g bce;
-  private final i bcf;
-  final CopyOnWriteArraySet<q.a> bcg;
-  private final w.b bch;
-  private final w.a bci;
-  boolean bcj;
-  boolean bck;
-  int bcl;
-  int bcm;
-  int bcn;
-  w bco;
-  Object bcp;
-  com.google.android.exoplayer2.source.r bcq;
-  g bcr;
-  p bcs;
-  i.b bct;
-  int bcu;
-  int bcv;
-  long bcw;
+  private final r[] aLB;
+  final com.google.android.exoplayer2.g.h aLC;
+  private final g aLD;
+  private final i aLE;
+  final CopyOnWriteArraySet<q.a> aLF;
+  private final w.b aLG;
+  private final w.a aLH;
+  boolean aLI;
+  boolean aLJ;
+  private int aLK;
+  int aLL;
+  int aLM;
+  int aLN;
+  w aLO;
+  Object aLP;
+  com.google.android.exoplayer2.source.r aLQ;
+  g aLR;
+  p aLS;
+  i.b aLT;
+  int aLU;
+  int aLV;
+  long aLW;
   private final Handler eventHandler;
   boolean isLoading;
-  private int repeatMode;
   
   @SuppressLint({"HandlerLeak"})
   public h(r[] paramArrayOfr, com.google.android.exoplayer2.g.h paramh, m paramm)
   {
     AppMethodBeat.i(91891);
-    new StringBuilder("Init ").append(Integer.toHexString(System.identityHashCode(this))).append(" [ExoPlayerLib/2.5.4] [").append(x.bHH).append("]");
+    new StringBuilder("Init ").append(Integer.toHexString(System.identityHashCode(this))).append(" [ExoPlayerLib/2.5.4] [").append(x.brr).append("]");
     boolean bool;
     if (paramArrayOfr.length > 0)
     {
       bool = true;
       a.checkState(bool);
-      this.bcc = ((r[])a.checkNotNull(paramArrayOfr));
-      this.bcd = ((com.google.android.exoplayer2.g.h)a.checkNotNull(paramh));
-      this.bck = false;
-      this.repeatMode = 0;
-      this.bcl = 1;
-      this.bcg = new CopyOnWriteArraySet();
-      this.bce = new g(new com.google.android.exoplayer2.g.f[paramArrayOfr.length]);
-      this.bco = w.bel;
-      this.bch = new w.b();
-      this.bci = new w.a();
-      this.bcq = com.google.android.exoplayer2.source.r.bxh;
-      this.bcr = this.bce;
-      this.bcs = p.bdM;
+      this.aLB = ((r[])a.checkNotNull(paramArrayOfr));
+      this.aLC = ((com.google.android.exoplayer2.g.h)a.checkNotNull(paramh));
+      this.aLJ = false;
+      this.aLK = 0;
+      this.aLL = 1;
+      this.aLF = new CopyOnWriteArraySet();
+      this.aLD = new g(new com.google.android.exoplayer2.g.f[paramArrayOfr.length]);
+      this.aLO = w.aNM;
+      this.aLG = new w.b();
+      this.aLH = new w.a();
+      this.aLQ = com.google.android.exoplayer2.source.r.bgJ;
+      this.aLR = this.aLD;
+      this.aLS = p.aNn;
       if (Looper.myLooper() == null) {
         break label253;
       }
@@ -84,14 +84,14 @@ final class h
             AppMethodBeat.o(91890);
             throw paramAnonymousMessage;
           case 0: 
-            ((h)localObject).bcn -= 1;
+            ((h)localObject).aLN -= 1;
             AppMethodBeat.o(91890);
             return;
           case 1: 
-            ((h)localObject).bcl = paramAnonymousMessage.arg1;
-            paramAnonymousMessage = ((h)localObject).bcg.iterator();
+            ((h)localObject).aLL = paramAnonymousMessage.arg1;
+            paramAnonymousMessage = ((h)localObject).aLF.iterator();
             while (paramAnonymousMessage.hasNext()) {
-              ((q.a)paramAnonymousMessage.next()).c(((h)localObject).bck, ((h)localObject).bcl);
+              ((q.a)paramAnonymousMessage.next()).e(((h)localObject).aLJ, ((h)localObject).aLL);
             }
             AppMethodBeat.o(91890);
             return;
@@ -100,46 +100,46 @@ final class h
             for (boolean bool = true;; bool = false)
             {
               ((h)localObject).isLoading = bool;
-              paramAnonymousMessage = ((h)localObject).bcg.iterator();
+              paramAnonymousMessage = ((h)localObject).aLF.iterator();
               while (paramAnonymousMessage.hasNext()) {
-                ((q.a)paramAnonymousMessage.next()).aR(((h)localObject).isLoading);
+                ((q.a)paramAnonymousMessage.next()).aP(((h)localObject).isLoading);
               }
             }
             AppMethodBeat.o(91890);
             return;
           case 3: 
-            if (((h)localObject).bcn == 0)
+            if (((h)localObject).aLN == 0)
             {
               paramAnonymousMessage = (com.google.android.exoplayer2.g.i)paramAnonymousMessage.obj;
-              ((h)localObject).bcj = true;
-              ((h)localObject).bcq = paramAnonymousMessage.bEF;
-              ((h)localObject).bcr = paramAnonymousMessage.bEG;
-              ((h)localObject).bcd.ah(paramAnonymousMessage.info);
-              paramAnonymousMessage = ((h)localObject).bcg.iterator();
+              ((h)localObject).aLI = true;
+              ((h)localObject).aLQ = paramAnonymousMessage.boh;
+              ((h)localObject).aLR = paramAnonymousMessage.boi;
+              ((h)localObject).aLC.Z(paramAnonymousMessage.info);
+              paramAnonymousMessage = ((h)localObject).aLF.iterator();
               while (paramAnonymousMessage.hasNext()) {
-                ((q.a)paramAnonymousMessage.next()).tz();
+                ((q.a)paramAnonymousMessage.next()).a(((h)localObject).aLQ, ((h)localObject).aLR);
               }
               AppMethodBeat.o(91890);
               return;
             }
             break;
           case 4: 
-            int i = ((h)localObject).bcm - 1;
-            ((h)localObject).bcm = i;
+            int i = ((h)localObject).aLM - 1;
+            ((h)localObject).aLM = i;
             if (i == 0)
             {
-              ((h)localObject).bct = ((i.b)paramAnonymousMessage.obj);
-              if (((h)localObject).bco.isEmpty())
+              ((h)localObject).aLT = ((i.b)paramAnonymousMessage.obj);
+              if (((h)localObject).aLO.isEmpty())
               {
-                ((h)localObject).bcv = 0;
-                ((h)localObject).bcu = 0;
-                ((h)localObject).bcw = 0L;
+                ((h)localObject).aLV = 0;
+                ((h)localObject).aLU = 0;
+                ((h)localObject).aLW = 0L;
               }
               if (paramAnonymousMessage.arg1 != 0)
               {
-                paramAnonymousMessage = ((h)localObject).bcg.iterator();
+                paramAnonymousMessage = ((h)localObject).aLF.iterator();
                 while (paramAnonymousMessage.hasNext()) {
-                  ((q.a)paramAnonymousMessage.next()).tA();
+                  ((q.a)paramAnonymousMessage.next()).rs();
                 }
                 AppMethodBeat.o(91890);
                 return;
@@ -147,12 +147,12 @@ final class h
             }
             break;
           case 5: 
-            if (((h)localObject).bcm == 0)
+            if (((h)localObject).aLM == 0)
             {
-              ((h)localObject).bct = ((i.b)paramAnonymousMessage.obj);
-              paramAnonymousMessage = ((h)localObject).bcg.iterator();
+              ((h)localObject).aLT = ((i.b)paramAnonymousMessage.obj);
+              paramAnonymousMessage = ((h)localObject).aLF.iterator();
               while (paramAnonymousMessage.hasNext()) {
-                ((q.a)paramAnonymousMessage.next()).tA();
+                ((q.a)paramAnonymousMessage.next()).rs();
               }
               AppMethodBeat.o(91890);
               return;
@@ -160,21 +160,21 @@ final class h
             break;
           case 6: 
             paramAnonymousMessage = (i.d)paramAnonymousMessage.obj;
-            ((h)localObject).bcm -= paramAnonymousMessage.bdk;
-            if (((h)localObject).bcn == 0)
+            ((h)localObject).aLM -= paramAnonymousMessage.aMK;
+            if (((h)localObject).aLN == 0)
             {
-              ((h)localObject).bco = paramAnonymousMessage.bco;
-              ((h)localObject).bcp = paramAnonymousMessage.bcp;
-              ((h)localObject).bct = paramAnonymousMessage.bct;
-              if ((((h)localObject).bcm == 0) && (((h)localObject).bco.isEmpty()))
+              ((h)localObject).aLO = paramAnonymousMessage.aLO;
+              ((h)localObject).aLP = paramAnonymousMessage.aLP;
+              ((h)localObject).aLT = paramAnonymousMessage.aLT;
+              if ((((h)localObject).aLM == 0) && (((h)localObject).aLO.isEmpty()))
               {
-                ((h)localObject).bcv = 0;
-                ((h)localObject).bcu = 0;
-                ((h)localObject).bcw = 0L;
+                ((h)localObject).aLV = 0;
+                ((h)localObject).aLU = 0;
+                ((h)localObject).aLW = 0L;
               }
-              paramAnonymousMessage = ((h)localObject).bcg.iterator();
+              paramAnonymousMessage = ((h)localObject).aLF.iterator();
               while (paramAnonymousMessage.hasNext()) {
-                ((q.a)paramAnonymousMessage.next()).ty();
+                ((q.a)paramAnonymousMessage.next()).b(((h)localObject).aLO, ((h)localObject).aLP);
               }
               AppMethodBeat.o(91890);
               return;
@@ -182,10 +182,10 @@ final class h
             break;
           case 7: 
             paramAnonymousMessage = (p)paramAnonymousMessage.obj;
-            if (!((h)localObject).bcs.equals(paramAnonymousMessage))
+            if (!((h)localObject).aLS.equals(paramAnonymousMessage))
             {
-              ((h)localObject).bcs = paramAnonymousMessage;
-              localObject = ((h)localObject).bcg.iterator();
+              ((h)localObject).aLS = paramAnonymousMessage;
+              localObject = ((h)localObject).aLF.iterator();
               while (((Iterator)localObject).hasNext()) {
                 ((q.a)((Iterator)localObject).next()).b(paramAnonymousMessage);
               }
@@ -195,7 +195,7 @@ final class h
             break;
           case 8: 
             paramAnonymousMessage = (e)paramAnonymousMessage.obj;
-            localObject = ((h)localObject).bcg.iterator();
+            localObject = ((h)localObject).aLF.iterator();
             while (((Iterator)localObject).hasNext()) {
               ((q.a)((Iterator)localObject).next()).a(paramAnonymousMessage);
             }
@@ -205,8 +205,8 @@ final class h
           AppMethodBeat.o(91890);
         }
       };
-      this.bct = new i.b(0L);
-      this.bcf = new i(paramArrayOfr, paramh, paramm, this.bck, this.repeatMode, this.eventHandler, this.bct, this);
+      this.aLT = new i.b(0L);
+      this.aLE = new i(paramArrayOfr, paramh, paramm, this.aLJ, this.aLK, this.eventHandler, this.aLT, this);
       AppMethodBeat.o(91891);
       return;
       bool = false;
@@ -214,32 +214,47 @@ final class h
     }
   }
   
-  private int tk()
+  private long B(long paramLong)
+  {
+    AppMethodBeat.i(91908);
+    long l = b.y(paramLong);
+    paramLong = l;
+    if (!this.aLT.aMD.isAd())
+    {
+      this.aLO.a(this.aLT.aMD.bfZ, this.aLH, false);
+      paramLong = l + b.y(this.aLH.aNO);
+    }
+    AppMethodBeat.o(91908);
+    return paramLong;
+  }
+  
+  private int rc()
   {
     AppMethodBeat.i(91903);
-    if ((this.bco.isEmpty()) || (this.bcm > 0))
+    if ((this.aLO.isEmpty()) || (this.aLM > 0))
     {
-      i = this.bcu;
+      i = this.aLU;
       AppMethodBeat.o(91903);
       return i;
     }
-    int i = this.bco.a(this.bct.bdd.bwx, this.bci, false).bdi;
+    int i = this.aLO.a(this.aLT.aMD.bfZ, this.aLH, false).aMI;
     AppMethodBeat.o(91903);
     return i;
   }
   
-  private long y(long paramLong)
+  public final void L(int paramInt)
   {
-    AppMethodBeat.i(91908);
-    long l = b.v(paramLong);
-    paramLong = l;
-    if (!this.bct.bdd.isAd())
+    AppMethodBeat.i(91896);
+    if (this.aLK != paramInt)
     {
-      this.bco.a(this.bct.bdd.bwx, this.bci, false);
-      paramLong = l + b.v(this.bci.ben);
+      this.aLK = paramInt;
+      this.aLE.handler.obtainMessage(12, paramInt, 0).sendToTarget();
+      Iterator localIterator = this.aLF.iterator();
+      while (localIterator.hasNext()) {
+        ((q.a)localIterator.next()).I(paramInt);
+      }
     }
-    AppMethodBeat.o(91908);
-    return paramLong;
+    AppMethodBeat.o(91896);
   }
   
   public final void a(p paramp)
@@ -247,16 +262,16 @@ final class h
     AppMethodBeat.i(91898);
     p localp = paramp;
     if (paramp == null) {
-      localp = p.bdM;
+      localp = p.aNn;
     }
-    this.bcf.handler.obtainMessage(4, localp).sendToTarget();
+    this.aLE.handler.obtainMessage(4, localp).sendToTarget();
     AppMethodBeat.o(91898);
   }
   
   public final void a(q.a parama)
   {
     AppMethodBeat.i(91892);
-    this.bcg.add(parama);
+    this.aLF.add(parama);
     AppMethodBeat.o(91892);
   }
   
@@ -264,57 +279,57 @@ final class h
   {
     AppMethodBeat.i(91894);
     Iterator localIterator;
-    if ((!this.bco.isEmpty()) || (this.bcp != null))
+    if ((!this.aLO.isEmpty()) || (this.aLP != null))
     {
-      this.bco = w.bel;
-      this.bcp = null;
-      localIterator = this.bcg.iterator();
+      this.aLO = w.aNM;
+      this.aLP = null;
+      localIterator = this.aLF.iterator();
       while (localIterator.hasNext()) {
-        ((q.a)localIterator.next()).ty();
+        ((q.a)localIterator.next()).b(this.aLO, this.aLP);
       }
     }
-    if (this.bcj)
+    if (this.aLI)
     {
-      this.bcj = false;
-      this.bcq = com.google.android.exoplayer2.source.r.bxh;
-      this.bcr = this.bce;
-      this.bcd.ah(null);
-      localIterator = this.bcg.iterator();
+      this.aLI = false;
+      this.aLQ = com.google.android.exoplayer2.source.r.bgJ;
+      this.aLR = this.aLD;
+      this.aLC.Z(null);
+      localIterator = this.aLF.iterator();
       while (localIterator.hasNext()) {
-        ((q.a)localIterator.next()).tz();
+        ((q.a)localIterator.next()).a(this.aLQ, this.aLR);
       }
     }
-    this.bcn += 1;
-    this.bcf.handler.obtainMessage(0, 1, 0, paramk).sendToTarget();
+    this.aLN += 1;
+    this.aLE.handler.obtainMessage(0, 1, 0, paramk).sendToTarget();
     AppMethodBeat.o(91894);
   }
   
   public final void a(f.c... paramVarArgs)
   {
     AppMethodBeat.i(91901);
-    i locali = this.bcf;
+    i locali = this.aLE;
     if (!locali.released)
     {
-      locali.bcJ += 1;
+      locali.aMj += 1;
       locali.handler.obtainMessage(11, paramVarArgs).sendToTarget();
     }
     AppMethodBeat.o(91901);
   }
   
-  public final void aO(boolean paramBoolean)
+  public final void aM(boolean paramBoolean)
   {
     AppMethodBeat.i(91895);
-    if (this.bck != paramBoolean)
+    if (this.aLJ != paramBoolean)
     {
-      this.bck = paramBoolean;
-      Object localObject = this.bcf.handler;
+      this.aLJ = paramBoolean;
+      Object localObject = this.aLE.handler;
       if (paramBoolean) {}
       for (int i = 1;; i = 0)
       {
         ((Handler)localObject).obtainMessage(1, i, 0).sendToTarget();
-        localObject = this.bcg.iterator();
+        localObject = this.aLF.iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((q.a)((Iterator)localObject).next()).c(paramBoolean, this.bcl);
+          ((q.a)((Iterator)localObject).next()).e(paramBoolean, this.aLL);
         }
       }
     }
@@ -324,26 +339,26 @@ final class h
   public final void b(q.a parama)
   {
     AppMethodBeat.i(91893);
-    this.bcg.remove(parama);
+    this.aLF.remove(parama);
     AppMethodBeat.o(91893);
   }
   
   public final void b(f.c... paramVarArgs)
   {
     AppMethodBeat.i(91902);
-    this.bcf.b(paramVarArgs);
+    this.aLE.b(paramVarArgs);
     AppMethodBeat.o(91902);
   }
   
   public final int getBufferedPercentage()
   {
     AppMethodBeat.i(91907);
-    if (this.bco.isEmpty())
+    if (this.aLO.isEmpty())
     {
       AppMethodBeat.o(91907);
       return 0;
     }
-    long l1 = getBufferedPosition();
+    long l1 = rd();
     long l2 = getDuration();
     if ((l1 == -9223372036854775807L) || (l2 == -9223372036854775807L))
     {
@@ -355,35 +370,21 @@ final class h
       AppMethodBeat.o(91907);
       return 100;
     }
-    int i = x.s((int)(l1 * 100L / l2), 0, 100);
+    int i = x.r((int)(l1 * 100L / l2), 0, 100);
     AppMethodBeat.o(91907);
     return i;
-  }
-  
-  public final long getBufferedPosition()
-  {
-    AppMethodBeat.i(91906);
-    if ((this.bco.isEmpty()) || (this.bcm > 0))
-    {
-      l = this.bcw;
-      AppMethodBeat.o(91906);
-      return l;
-    }
-    long l = y(this.bct.bdh);
-    AppMethodBeat.o(91906);
-    return l;
   }
   
   public final long getCurrentPosition()
   {
     AppMethodBeat.i(91905);
-    if ((this.bco.isEmpty()) || (this.bcm > 0))
+    if ((this.aLO.isEmpty()) || (this.aLM > 0))
     {
-      l = this.bcw;
+      l = this.aLW;
       AppMethodBeat.o(91905);
       return l;
     }
-    long l = y(this.bct.bdg);
+    long l = B(this.aLT.aMG);
     AppMethodBeat.o(91905);
     return l;
   }
@@ -391,21 +392,21 @@ final class h
   public final long getDuration()
   {
     AppMethodBeat.i(91904);
-    if (this.bco.isEmpty())
+    if (this.aLO.isEmpty())
     {
       AppMethodBeat.o(91904);
       return -9223372036854775807L;
     }
-    if ((!this.bco.isEmpty()) && (this.bcm == 0) && (this.bct.bdd.isAd())) {}
+    if ((!this.aLO.isEmpty()) && (this.aLM == 0) && (this.aLT.aMD.isAd())) {}
     for (int i = 1; i != 0; i = 0)
     {
-      k.b localb = this.bct.bdd;
-      this.bco.a(localb.bwx, this.bci, false);
-      l = b.v(this.bci.bb(localb.bwy, localb.bwz));
+      k.b localb = this.aLT.aMD;
+      this.aLO.a(localb.bfZ, this.aLH, false);
+      l = b.y(this.aLH.bh(localb.bga, localb.bgb));
       AppMethodBeat.o(91904);
       return l;
     }
-    long l = b.v(this.bco.a(tk(), this.bch).bdJ);
+    long l = b.y(this.aLO.a(rc(), this.aLG).aNk);
     AppMethodBeat.o(91904);
     return l;
   }
@@ -415,11 +416,35 @@ final class h
     return this.isLoading;
   }
   
+  public final int ra()
+  {
+    return this.aLL;
+  }
+  
+  public final boolean rb()
+  {
+    return this.aLJ;
+  }
+  
+  public final long rd()
+  {
+    AppMethodBeat.i(91906);
+    if ((this.aLO.isEmpty()) || (this.aLM > 0))
+    {
+      l = this.aLW;
+      AppMethodBeat.o(91906);
+      return l;
+    }
+    long l = B(this.aLT.aMH);
+    AppMethodBeat.o(91906);
+    return l;
+  }
+  
   public final void release()
   {
     AppMethodBeat.i(91900);
-    new StringBuilder("Release ").append(Integer.toHexString(System.identityHashCode(this))).append(" [ExoPlayerLib/2.5.4] [").append(x.bHH).append("] [").append(j.tu()).append("]");
-    this.bcf.release();
+    new StringBuilder("Release ").append(Integer.toHexString(System.identityHashCode(this))).append(" [ExoPlayerLib/2.5.4] [").append(x.brr).append("] [").append(j.ro()).append("]");
+    this.aLE.release();
     this.eventHandler.removeCallbacksAndMessages(null);
     AppMethodBeat.o(91900);
   }
@@ -427,81 +452,56 @@ final class h
   public final void seekTo(long paramLong)
   {
     AppMethodBeat.i(91897);
-    int j = tk();
-    if ((j < 0) || ((!this.bco.isEmpty()) && (j >= this.bco.tD())))
+    int j = rc();
+    if ((j < 0) || ((!this.aLO.isEmpty()) && (j >= this.aLO.rv())))
     {
-      localObject = new l(this.bco, j, paramLong);
+      localObject = new l(this.aLO, j, paramLong);
       AppMethodBeat.o(91897);
       throw ((Throwable)localObject);
     }
-    this.bcm += 1;
-    this.bcu = j;
-    if (this.bco.isEmpty()) {}
+    this.aLM += 1;
+    this.aLU = j;
+    if (this.aLO.isEmpty()) {}
     int i;
-    for (this.bcv = 0; paramLong == -9223372036854775807L; this.bcv = i)
+    for (this.aLV = 0; paramLong == -9223372036854775807L; this.aLV = i)
     {
-      this.bcw = 0L;
-      this.bcf.a(this.bco, j, -9223372036854775807L);
+      this.aLW = 0L;
+      this.aLE.a(this.aLO, j, -9223372036854775807L);
       AppMethodBeat.o(91897);
       return;
-      this.bco.a(j, this.bch);
+      this.aLO.a(j, this.aLG);
       if (paramLong == -9223372036854775807L) {}
-      for (long l1 = this.bch.beA;; l1 = b.w(paramLong))
+      for (long l1 = this.aLG.aOb;; l1 = b.z(paramLong))
       {
-        i = this.bch.bey;
-        long l2 = this.bch.beB + l1;
-        for (l1 = this.bco.a(i, this.bci, false).bdJ; (l1 != -9223372036854775807L) && (l2 >= l1) && (i < this.bch.bez); l1 = ((w)localObject).a(i, this.bci, false).bdJ)
+        i = this.aLG.aNZ;
+        long l2 = this.aLG.aOc + l1;
+        for (l1 = this.aLO.a(i, this.aLH, false).aNk; (l1 != -9223372036854775807L) && (l2 >= l1) && (i < this.aLG.aOa); l1 = ((w)localObject).a(i, this.aLH, false).aNk)
         {
           l2 -= l1;
-          localObject = this.bco;
+          localObject = this.aLO;
           i += 1;
         }
       }
     }
-    this.bcw = paramLong;
-    this.bcf.a(this.bco, j, b.w(paramLong));
-    Object localObject = this.bcg.iterator();
+    this.aLW = paramLong;
+    this.aLE.a(this.aLO, j, b.z(paramLong));
+    Object localObject = this.aLF.iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((q.a)((Iterator)localObject).next()).tA();
+      ((q.a)((Iterator)localObject).next()).rs();
     }
     AppMethodBeat.o(91897);
-  }
-  
-  public final void setRepeatMode(int paramInt)
-  {
-    AppMethodBeat.i(91896);
-    if (this.repeatMode != paramInt)
-    {
-      this.repeatMode = paramInt;
-      this.bcf.handler.obtainMessage(12, paramInt, 0).sendToTarget();
-      Iterator localIterator = this.bcg.iterator();
-      while (localIterator.hasNext()) {
-        ((q.a)localIterator.next()).aA(paramInt);
-      }
-    }
-    AppMethodBeat.o(91896);
   }
   
   public final void stop()
   {
     AppMethodBeat.i(91899);
-    this.bcf.handler.sendEmptyMessage(5);
+    this.aLE.handler.sendEmptyMessage(5);
     AppMethodBeat.o(91899);
-  }
-  
-  public final int ti()
-  {
-    return this.bcl;
-  }
-  
-  public final boolean tj()
-  {
-    return this.bck;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.h
  * JD-Core Version:    0.7.0.1
  */

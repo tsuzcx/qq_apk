@@ -27,13 +27,17 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.luggage.d.k;
 import com.tencent.luggage.d.l.a;
+import com.tencent.luggage.d.p;
 import com.tencent.luggage.d.s.a;
-import com.tencent.luggage.h.f;
+import com.tencent.luggage.k.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.handoff.model.HandOffURL;
+import com.tencent.mm.plugin.webview.c.c;
+import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.plugin.webview.c.g;
 import com.tencent.mm.plugin.webview.f.c.a;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewKeyboardLinearLayout;
 import com.tencent.mm.plugin.webview.ui.tools.widget.MovingImageButton;
@@ -43,19 +47,17 @@ import com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter;
 import com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter.a;
 import com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter.b;
 import com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter.c;
-import com.tencent.mm.protocal.protobuf.bhj;
+import com.tencent.mm.protocal.protobuf.bot;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.SyncTask;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.KeyboardLinearLayout.a;
-import com.tencent.mm.ui.aa;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.base.MMFalseProgressBar;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.ac;
 import com.tencent.xweb.x;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -68,134 +70,134 @@ import org.json.JSONObject;
 public class g
   extends com.tencent.luggage.d.s
 {
-  private static final Pattern ITJ;
-  private static final Pattern ITK;
-  protected m ISN;
-  protected boolean ITA;
-  protected int ITB;
-  protected boolean ITC;
-  public boolean ITD;
-  private boolean ITE;
-  private boolean ITF;
-  private boolean ITG;
-  public y ITH;
-  private a ITI;
-  private com.tencent.mm.plugin.webview.f.a<bhj> ITL;
-  private s.a ITM;
-  public com.tencent.mm.plugin.webview.luggage.webview_impl.a ITd;
-  protected l ITe;
-  protected b ITf;
-  private WebViewKeyboardLinearLayout ITg;
-  public WebViewInputFooter ITh;
-  public WebViewSearchContentInputFooter ITi;
-  private FrameLayout ITj;
-  private MMFalseProgressBar ITk;
-  protected MovingImageButton ITl;
-  protected FrameLayout ITm;
-  public FrameLayout ITn;
-  protected s ITo;
-  protected q ITp;
-  protected t ITq;
-  protected HandOffURL ITr;
-  private WebChromeClient.CustomViewCallback ITs;
-  private FrameLayout ITt;
-  private ProgressBar ITu;
-  protected com.tencent.mm.plugin.webview.f.c ITv;
-  public w ITw;
-  protected q.a ITx;
-  protected Map<String, String> ITy;
-  protected boolean ITz;
-  private boolean mGR;
-  private com.tencent.mm.plugin.webview.ui.tools.c mHI;
+  private static final Pattern PQb;
+  private static final Pattern PQc;
+  protected boolean CDM;
+  protected String CzZ;
+  private WebViewSearchContentInputFooter PPA;
+  private FrameLayout PPB;
+  private MMFalseProgressBar PPC;
+  protected MovingImageButton PPD;
+  protected FrameLayout PPE;
+  public FrameLayout PPF;
+  protected s PPG;
+  protected q PPH;
+  protected t PPI;
+  protected HandOffURL PPJ;
+  private WebChromeClient.CustomViewCallback PPK;
+  private FrameLayout PPL;
+  private ProgressBar PPM;
+  protected com.tencent.mm.plugin.webview.f.c PPN;
+  public w PPO;
+  protected q.a PPP;
+  protected Map<String, String> PPQ;
+  protected boolean PPR;
+  protected boolean PPS;
+  protected int PPT;
+  protected boolean PPU;
+  public boolean PPV;
+  private boolean PPW;
+  private boolean PPX;
+  private boolean PPY;
+  public y PPZ;
+  protected m PPg;
+  public com.tencent.mm.plugin.webview.luggage.d.a PPv;
+  protected l PPw;
+  protected b PPx;
+  private WebViewKeyboardLinearLayout PPy;
+  public WebViewInputFooter PPz;
+  private a PQa;
+  private com.tencent.mm.plugin.webview.f.a<bot> PQd;
+  private s.a PQe;
   public MMHandler mHandler;
   protected boolean mIsForeground;
   public FrameLayout mRootView;
-  public int ppd;
-  public int ppe;
-  protected String xwe;
-  protected boolean xzH;
+  private boolean pFW;
+  private com.tencent.mm.plugin.webview.ui.tools.c pHc;
+  public int syc;
+  public int syd;
   
   static
   {
     AppMethodBeat.i(78330);
-    ITJ = Pattern.compile("\"\\s*rgba\\(\\s*[0-9]+\\s*,\\s*[0-9]+\\s*,\\s*[0-9]+\\s*,\\s*[0-9]+\\s*\\)\\s*\"");
-    ITK = Pattern.compile("\"\\s*rgb\\(\\s*[0-9]+\\s*,\\s*[0-9]+\\s*,\\s*[0-9]+\\s*\\)\\s*\"");
+    PQb = Pattern.compile("\"\\s*rgba\\(\\s*[0-9]+\\s*,\\s*[0-9]+\\s*,\\s*[0-9]+\\s*,\\s*[0-9]+\\s*\\)\\s*\"");
+    PQc = Pattern.compile("\"\\s*rgb\\(\\s*[0-9]+\\s*,\\s*[0-9]+\\s*,\\s*[0-9]+\\s*\\)\\s*\"");
     AppMethodBeat.o(78330);
   }
   
-  public g(com.tencent.luggage.d.j paramj, com.tencent.luggage.d.p paramp, Bundle paramBundle)
+  public g(com.tencent.luggage.d.j paramj, p paramp, Bundle paramBundle)
   {
     super(paramj, paramp, paramBundle);
     AppMethodBeat.i(78282);
-    this.mGR = true;
-    this.ITz = false;
+    this.pFW = true;
+    this.PPR = false;
     this.mIsForeground = false;
-    this.xzH = false;
-    this.ITD = false;
-    this.ITE = false;
-    this.ITF = false;
-    this.ITG = false;
-    this.ppd = 0;
-    this.ppe = 0;
-    this.ITH = new y();
-    this.ITL = new com.tencent.mm.plugin.webview.f.a()
+    this.CDM = false;
+    this.PPV = false;
+    this.PPW = false;
+    this.PPX = false;
+    this.PPY = false;
+    this.syc = 0;
+    this.syd = 0;
+    this.PPZ = new y();
+    this.PQd = new com.tencent.mm.plugin.webview.f.a()
     {
-      public final void C(int paramAnonymousInt, final String paramAnonymousString1, final String paramAnonymousString2)
+      public final void F(int paramAnonymousInt, final String paramAnonymousString1, final String paramAnonymousString2)
       {
-        AppMethodBeat.i(210899);
-        g.this.ITz = false;
-        g.this.aC(new Runnable()
+        AppMethodBeat.i(249869);
+        g.this.PPR = false;
+        g.this.aI(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(210896);
+            AppMethodBeat.i(228779);
             g localg = g.this;
             String str = paramAnonymousString2;
-            localg.ctS.ctK.loadData(str, "text/html", "utf-8");
-            AppMethodBeat.o(210896);
+            localg.crX.crP.loadData(str, "text/html", "utf-8");
+            AppMethodBeat.o(228779);
           }
         });
-        AppMethodBeat.o(210899);
+        AppMethodBeat.o(249869);
       }
       
       public final void a(final int paramAnonymousInt1, final String paramAnonymousString1, final int paramAnonymousInt2, final int paramAnonymousInt3, final String paramAnonymousString2)
       {
-        AppMethodBeat.i(210900);
-        g.this.ITz = false;
-        g.this.aC(new Runnable()
+        AppMethodBeat.i(249871);
+        g.this.PPR = false;
+        g.this.aI(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(210897);
-            g.this.b(paramAnonymousInt1, paramAnonymousString1, paramAnonymousInt2, paramAnonymousInt3);
-            AppMethodBeat.o(210897);
+            AppMethodBeat.i(243961);
+            g.this.c(paramAnonymousInt1, paramAnonymousString1, paramAnonymousInt2, paramAnonymousInt3);
+            AppMethodBeat.o(243961);
           }
         });
-        AppMethodBeat.o(210900);
+        AppMethodBeat.o(249871);
       }
       
-      public final void bx(int paramAnonymousInt, String paramAnonymousString) {}
+      public final void bu(int paramAnonymousInt, String paramAnonymousString) {}
       
-      public final void by(int paramAnonymousInt, String paramAnonymousString)
+      public final void bv(int paramAnonymousInt, String paramAnonymousString)
       {
-        AppMethodBeat.i(210898);
-        g.this.azO(paramAnonymousString);
-        AppMethodBeat.o(210898);
+        AppMethodBeat.i(249867);
+        g.this.aJA(paramAnonymousString);
+        AppMethodBeat.o(249867);
       }
     };
-    this.ITM = new s.a()
+    this.PQe = new s.a()
     {
       public final WebResourceResponse a(WebResourceRequest paramAnonymousWebResourceRequest, Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(210904);
-        if (com.tencent.mm.cr.d.kS(g.this.mContext)) {}
+        AppMethodBeat.i(218649);
+        if (com.tencent.mm.xwebutil.c.lP(g.this.mContext)) {}
         try
         {
           int i = paramAnonymousBundle.getInt("resourceType");
           if ((i == 1) || (i == 7))
           {
             Log.i("MicroMsg.LuggageMMWebPage", "get resoutce type is iframe : %d, start geta8key", new Object[] { Integer.valueOf(i) });
-            g.this.aYr(paramAnonymousWebResourceRequest.getUrl().toString());
+            g.this.bkm(paramAnonymousWebResourceRequest.getUrl().toString());
           }
         }
         catch (Exception paramAnonymousBundle)
@@ -217,77 +219,77 @@ public class g
         if (paramAnonymousWebResourceRequest != null)
         {
           paramAnonymousWebResourceRequest = paramAnonymousWebResourceRequest.getUrl().toString();
-          paramAnonymousWebResourceRequest = g.this.azN(paramAnonymousWebResourceRequest);
-          AppMethodBeat.o(210904);
+          paramAnonymousWebResourceRequest = g.this.aJz(paramAnonymousWebResourceRequest);
+          AppMethodBeat.o(218649);
           return paramAnonymousWebResourceRequest;
         }
       }
       
       public final void a(com.tencent.luggage.d.s paramAnonymouss, String paramAnonymousString)
       {
-        AppMethodBeat.i(210902);
-        g.this.cV(paramAnonymousString);
-        AppMethodBeat.o(210902);
+        AppMethodBeat.i(218642);
+        g.this.dv(paramAnonymousString);
+        AppMethodBeat.o(218642);
       }
       
       public final void b(com.tencent.luggage.d.s paramAnonymouss, String paramAnonymousString)
       {
-        AppMethodBeat.i(210903);
-        g.this.cW(paramAnonymousString);
-        AppMethodBeat.o(210903);
+        AppMethodBeat.i(218644);
+        g.this.dw(paramAnonymousString);
+        AppMethodBeat.o(218644);
       }
     };
     if (paramp != null)
     {
-      this.ITC = true;
-      this.ITv = com.tencent.mm.plugin.webview.f.e.agf(paramp.hashCode());
+      this.PPU = true;
+      this.PPN = com.tencent.mm.plugin.webview.f.e.anU(paramp.hashCode());
     }
-    if (this.ITv == null) {}
+    if (this.PPN == null) {}
     for (;;)
     {
       Log.i("MicroMsg.LuggageMMWebPage", "LuggageMMWebPage create, getA8key == null ? %b", new Object[] { Boolean.valueOf(bool) });
-      if (this.ITv == null) {
-        this.ITv = new com.tencent.mm.plugin.webview.f.c();
+      if (this.PPN == null) {
+        this.PPN = new com.tencent.mm.plugin.webview.f.c();
       }
       this.mHandler = new MMHandler();
-      this.ITw = new w(this);
-      this.ITx = new q.a(this, this.ITv);
-      this.ctS.ctB = this.ITx;
-      this.ITo = new s(this);
-      this.ITp = new q(new d(this), this);
-      this.ITq = new t(this, new u(this));
+      this.PPO = new w(this);
+      this.PPP = new q.a(this, this.PPN);
+      this.crX.crG = this.PPP;
+      this.PPG = new s(this);
+      this.PPH = new q(new d(this), this);
+      this.PPI = new t(this, new u(this));
       j.b(this);
-      if (this.ITd != null)
+      if (this.PPv != null)
       {
-        this.ITd.setPage(this);
-        this.ITd.setWebViewClient(new ac()
+        this.PPv.setPage(this);
+        this.PPv.setWebViewClient(new com.tencent.xweb.ad()
         {
           public final void a(WebView paramAnonymousWebView, int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
           {
-            AppMethodBeat.i(210887);
+            AppMethodBeat.i(230538);
             Log.i("MicroMsg.LuggageMMWebPage", "onReceivedError, errCode = %d, description = %s, failingUrl = %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString1, paramAnonymousString2 });
-            g.this.D(paramAnonymousInt, paramAnonymousString1, paramAnonymousString2);
-            AppMethodBeat.o(210887);
+            g.this.G(paramAnonymousInt, paramAnonymousString1, paramAnonymousString2);
+            AppMethodBeat.o(230538);
           }
           
           public final void a(WebView paramAnonymousWebView, com.tencent.xweb.r paramAnonymousr, SslError paramAnonymousSslError)
           {
-            AppMethodBeat.i(210888);
+            AppMethodBeat.i(230540);
             if (g.e(g.this) == null) {
               g.a(g.this, new com.tencent.mm.plugin.webview.ui.tools.c(g.this.mContext, paramAnonymousWebView));
             }
             g.e(g.this).a(g.this.getUrl(), paramAnonymousr, paramAnonymousSslError);
-            AppMethodBeat.o(210888);
+            AppMethodBeat.o(230540);
           }
         });
-        this.ITd.setWebChromeClient(new x()
+        this.PPv.setWebChromeClient(new x()
         {
           public final void d(WebView paramAnonymousWebView, String paramAnonymousString)
           {
             int i = 1;
-            AppMethodBeat.i(210889);
+            AppMethodBeat.i(227301);
             Log.i("MicroMsg.LuggageMMWebPage", "onReceivedTitle, title = %s", new Object[] { paramAnonymousString });
-            if (!com.tencent.mm.plugin.webview.luggage.c.b.afC(paramAnonymousString)) {
+            if (!com.tencent.mm.plugin.webview.luggage.c.c.ane(paramAnonymousString)) {
               if ((Util.isNullOrNil(paramAnonymousString)) || (!paramAnonymousString.equalsIgnoreCase("about:blank"))) {
                 break label74;
               }
@@ -295,10 +297,10 @@ public class g
             for (;;)
             {
               if (i == 0) {
-                g.this.ec(paramAnonymousString, 0);
+                g.this.eA(paramAnonymousString, 0);
               }
-              g.this.ctS.LI();
-              AppMethodBeat.o(210889);
+              g.this.crX.Oy();
+              AppMethodBeat.o(227301);
               return;
               label74:
               i = 0;
@@ -307,7 +309,7 @@ public class g
           
           public final View getVideoLoadingProgressView()
           {
-            AppMethodBeat.i(210892);
+            AppMethodBeat.i(227316);
             Log.i("MicroMsg.LuggageMMWebPage", "getVideoLoadingProgressView");
             if (g.h(g.this) == null)
             {
@@ -315,7 +317,7 @@ public class g
               g.h(g.this).setIndeterminate(true);
             }
             ProgressBar localProgressBar = g.h(g.this);
-            AppMethodBeat.o(210892);
+            AppMethodBeat.o(227316);
             return localProgressBar;
           }
           
@@ -326,83 +328,83 @@ public class g
           
           public final void onHideCustomView()
           {
-            AppMethodBeat.i(210891);
+            AppMethodBeat.i(227313);
             Log.i("MicroMsg.LuggageMMWebPage", "onHideCustomView, sdk int = " + Build.VERSION.SDK_INT);
             if (g.f(g.this) == null)
             {
-              AppMethodBeat.o(210891);
+              AppMethodBeat.o(227313);
               return;
             }
             try
             {
-              g.this.ITe.setVisibility(0);
+              g.this.PPw.setVisibility(0);
               if (g.g(g.this) != null) {
                 g.g(g.this).onCustomViewHidden();
               }
-              g.this.ISN.setVisibility(0);
+              g.this.PPg.setVisibility(0);
               if (g.f(g.this) != null) {
                 g.this.mRootView.removeView(g.f(g.this));
               }
               g.f(g.this).removeAllViews();
               g.a(g.this, null);
-              AppMethodBeat.o(210891);
+              AppMethodBeat.o(227313);
               return;
             }
             catch (Exception localException)
             {
               Log.e("MicroMsg.LuggageMMWebPage", "onHideCustomView error " + localException.getMessage());
-              AppMethodBeat.o(210891);
+              AppMethodBeat.o(227313);
             }
           }
           
           public final void onShowCustomView(View paramAnonymousView, WebChromeClient.CustomViewCallback paramAnonymousCustomViewCallback)
           {
-            AppMethodBeat.i(210890);
+            AppMethodBeat.i(227310);
             Log.i("MicroMsg.LuggageMMWebPage", "onShowCustomView, sdk int = " + Build.VERSION.SDK_INT);
             try
             {
               if (g.f(g.this) != null)
               {
                 paramAnonymousCustomViewCallback.onCustomViewHidden();
-                AppMethodBeat.o(210890);
+                AppMethodBeat.o(227310);
                 return;
               }
               g.a(g.this, new FrameLayout(g.this.mContext));
-              g.f(g.this).setBackgroundResource(2131101408);
+              g.f(g.this).setBackgroundResource(c.c.webview_logo_bg_color);
               g.f(g.this).addView(paramAnonymousView);
               g.a(g.this, paramAnonymousCustomViewCallback);
-              g.this.ITe.setVisibility(8);
-              g.this.ISN.setVisibility(8);
+              g.this.PPw.setVisibility(8);
+              g.this.PPg.setVisibility(8);
               g.this.mRootView.addView(g.f(g.this));
-              AppMethodBeat.o(210890);
+              AppMethodBeat.o(227310);
               return;
             }
             catch (Exception paramAnonymousView)
             {
               Log.e("MicroMsg.LuggageMMWebPage", "onShowCustomView error " + paramAnonymousView.getMessage());
-              AppMethodBeat.o(210890);
+              AppMethodBeat.o(227310);
             }
           }
         });
       }
-      a(this.ITM);
-      paramj = this.ctf;
+      a(this.PQe);
+      paramj = this.crl;
       paramp = new l.a()
       {
         public final boolean onBackPressed()
         {
           AppMethodBeat.i(78236);
-          if (g.this.gbB())
+          if (g.this.gUw())
           {
             AppMethodBeat.o(78236);
             return true;
           }
-          if ((g.this.ITq != null) && (g.this.ITq.O(1, true)))
+          if ((g.this.PPI != null) && (g.this.PPI.Q(1, true)))
           {
             AppMethodBeat.o(78236);
             return true;
           }
-          if ((g.this.ITp != null) && (g.this.ITp.wu(2)))
+          if ((g.this.PPH != null) && (g.this.PPH.zH(2)))
           {
             AppMethodBeat.o(78236);
             return true;
@@ -411,126 +413,136 @@ public class g
           return false;
         }
       };
-      paramj.ctz.put(paramp, Boolean.FALSE);
+      paramj.crE.put(paramp, Boolean.FALSE);
       AppMethodBeat.o(78282);
       return;
       bool = false;
     }
   }
   
-  private void afX(int paramInt)
+  private void anL(int paramInt)
   {
     AppMethodBeat.i(78300);
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.ITi.getLayoutParams();
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.PPA.getLayoutParams();
     if (localMarginLayoutParams.bottomMargin != paramInt)
     {
       localMarginLayoutParams.bottomMargin = paramInt;
-      this.ITi.setLayoutParams(localMarginLayoutParams);
+      this.PPA.setLayoutParams(localMarginLayoutParams);
     }
     int i = paramInt;
-    if (this.ITi.isShown()) {
-      i = paramInt + this.ITi.getHeight();
+    if (this.PPA.isShown()) {
+      i = paramInt + this.PPA.getHeight();
     }
-    this.ITe.setPadding(this.ITe.getPaddingLeft(), this.ITe.getPaddingTop(), this.ITe.getPaddingRight(), i);
+    this.PPw.setPadding(this.PPw.getPaddingLeft(), this.PPw.getPaddingTop(), this.PPw.getPaddingRight(), i);
     AppMethodBeat.o(78300);
   }
   
-  protected void D(int paramInt, String paramString1, String paramString2) {}
-  
-  public String LJ()
+  public final void CX(boolean paramBoolean)
   {
-    AppMethodBeat.i(78317);
-    String str = com.tencent.mm.plugin.appbrand.ac.d.afA("luggage_mm_adapter.js");
-    AppMethodBeat.o(78317);
-    return str;
+    AppMethodBeat.i(245779);
+    if (!paramBoolean)
+    {
+      this.PPA.hide();
+      AppMethodBeat.o(245779);
+      return;
+    }
+    if (!this.PPA.isShown())
+    {
+      this.PPA.reset();
+      this.PPA.hcd();
+      this.PPA.show();
+    }
+    AppMethodBeat.o(245779);
   }
   
-  public View Lf()
+  protected void G(int paramInt, String paramString1, String paramString2) {}
+  
+  public View NW()
   {
     AppMethodBeat.i(78283);
-    Object localObject = coX();
-    this.ITI = new a((byte)0);
+    Object localObject = cDu();
+    this.PQa = new a((byte)0);
     localObject = Uri.parse((String)localObject);
     if (Util.nullAsNil(((Uri)localObject).getQueryParameter("immersiveUIStyle")).equals("1")) {
-      this.ITI.ITX = true;
+      this.PQa.PQp = true;
     }
     if (Util.nullAsNil(((Uri)localObject).getQueryParameter("immersivePageBgIsDark")).equals("1"))
     {
-      this.ITI.ITY = true;
+      this.PQa.PQq = true;
       if (Util.nullAsNil(((Uri)localObject).getQueryParameter("hide_share_option")).equals("1")) {
-        this.ITI.ITZ = true;
+        this.PQa.PQr = true;
       }
-      this.ITd = ((com.tencent.mm.plugin.webview.luggage.webview_impl.a)this.ctS.LG());
-      this.ITe = new l(this.mContext, super.Lf());
-      this.ITd.setCompetitorView(this.ITe);
-      this.ITd.setSource(this.mParams.getString("KPublisherId"));
-      this.mRootView = new FrameLayout(this.mContext);
-      this.ITf = new b(this.mContext);
-      this.ITf.setBackgroundColor(android.support.v4.content.b.n(this.mContext, 2131101424));
-      this.mRootView.addView(this.ITf, new FrameLayout.LayoutParams(-1, -1));
-      localObject = aa.jQ(this.mContext).inflate(2131495398, this.ITf, false);
-      dTM();
-      if (!dTB().booleanValue()) {
+      this.PPv = ((com.tencent.mm.plugin.webview.luggage.d.a)this.crX.Ow());
+      this.PPw = new l(getContext(), super.NW());
+      this.PPv.setCompetitorView(this.PPw);
+      this.PPv.setSource(this.mParams.getString("KPublisherId"));
+      this.mRootView = new FrameLayout(getContext());
+      this.PPx = new b(getContext());
+      this.PPx.setBackgroundColor(androidx.core.content.a.w(getContext(), c.c.white));
+      this.mRootView.addView(this.PPx, new FrameLayout.LayoutParams(-1, -1));
+      localObject = com.tencent.mm.ui.ad.kS(getContext()).inflate(c.g.luggage_mm_page, this.PPx, false);
+      ewU();
+      if (!ewJ().booleanValue()) {
         break label671;
       }
-      this.ITf.addView((View)localObject);
+      this.PPx.addView((View)localObject);
     }
     for (;;)
     {
-      if (this.ITI.ITZ) {
-        this.ISN.zd(true);
+      if (this.PQa.PQr) {
+        this.PPg.CY(true);
       }
-      this.ITf.setActionBar(this.ISN);
-      this.ITf.setWebView(this.ITd);
-      this.ITm = ((FrameLayout)((View)localObject).findViewById(2131299174));
-      this.ITk = ((MMFalseProgressBar)((View)localObject).findViewById(2131310370));
-      this.ITl = ((MovingImageButton)((View)localObject).findViewById(2131301834));
-      this.ITl.setOnClickListener(new View.OnClickListener()
+      this.PPx.setActionBar(this.PPg);
+      this.PPx.setWebView(this.PPv);
+      this.PPE = ((FrameLayout)((View)localObject).findViewById(c.f.container));
+      this.PPC = ((MMFalseProgressBar)((View)localObject).findViewById(c.f.web_falseprogress));
+      this.PPD = ((MovingImageButton)((View)localObject).findViewById(c.f.full_screen_menu));
+      this.PPD.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(78257);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/LuggageMMWebPage$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          g.this.dTH();
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/luggage/LuggageMMWebPage$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          g.this.bXF();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/luggage/LuggageMMWebPage$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(78257);
         }
       });
-      this.ITg = ((WebViewKeyboardLinearLayout)((View)localObject).findViewById(2131302102));
-      this.ITn = ((FrameLayout)((View)localObject).findViewById(2131310369));
-      this.ITn.addView(this.ITe, new ViewGroup.LayoutParams(-1, -1));
-      this.ITh = ((WebViewInputFooter)((View)localObject).findViewById(2131310389));
-      this.ITh.hide();
-      this.ITh.setOnTextSendListener(new WebViewInputFooter.c()
+      this.PPy = ((WebViewKeyboardLinearLayout)((View)localObject).findViewById(c.f.game_webview_keyboard_ll));
+      this.PPF = ((FrameLayout)((View)localObject).findViewById(c.f.web_container));
+      this.PPF.addView(this.PPw, new ViewGroup.LayoutParams(-1, -1));
+      this.PPz = ((WebViewInputFooter)((View)localObject).findViewById(c.f.webview_input_footer));
+      this.PPz.hide();
+      this.PPz.setOnTextSendListener(new WebViewInputFooter.c()
       {
-        public final void gbU()
+        public final void gUP()
         {
-          AppMethodBeat.i(210908);
-          g.gbM();
+          AppMethodBeat.i(257556);
+          g.gUH();
           if (g.b(g.this) != null) {
             g.b(g.this).hide();
           }
-          AppMethodBeat.o(210908);
+          AppMethodBeat.o(257556);
         }
       });
-      this.ITh.setOnSmileyChosenListener(new WebViewInputFooter.a()
+      this.PPz.setOnSmileyChosenListener(new WebViewInputFooter.a()
       {
-        public final boolean afZ(final String paramAnonymousString)
+        public final boolean dO(final String paramAnonymousString)
         {
-          AppMethodBeat.i(210874);
-          g.this.ctS.a(new com.tencent.luggage.d.d()
+          AppMethodBeat.i(246226);
+          g.this.crX.a(new com.tencent.luggage.d.d()
           {
-            public final JSONObject Ld()
+            public final JSONObject NU()
             {
-              AppMethodBeat.i(210873);
+              AppMethodBeat.i(222800);
               JSONObject localJSONObject = new JSONObject();
               try
               {
                 localJSONObject.put("smiley", paramAnonymousString);
                 label24:
-                AppMethodBeat.o(210873);
+                AppMethodBeat.o(222800);
                 return localJSONObject;
               }
               catch (JSONException localJSONException)
@@ -544,48 +556,48 @@ public class g
               return "onGetSmiley";
             }
           });
-          AppMethodBeat.o(210874);
+          AppMethodBeat.o(246226);
           return true;
         }
       });
-      this.ITh.setOnSmileyPanelVisibilityChangedListener(new WebViewInputFooter.b()
+      this.PPz.setOnSmileyPanelVisibilityChangedListener(new WebViewInputFooter.b()
       {
-        public final void gbP()
+        public final void gUK()
         {
-          AppMethodBeat.i(210875);
-          g.this.afW(0);
-          AppMethodBeat.o(210875);
+          AppMethodBeat.i(215877);
+          g.this.anK(0);
+          AppMethodBeat.o(215877);
         }
         
-        public final void gbQ()
+        public final void gUL()
         {
-          AppMethodBeat.i(210876);
+          AppMethodBeat.i(215879);
           if ((g.c(g.this) != null) && (g.c(g.this).getKeyBoardHeight() > 0)) {
-            g.this.afW(g.c(g.this).getKeyBoardHeight());
+            g.this.anK(g.c(g.this).getKeyBoardHeight());
           }
-          AppMethodBeat.o(210876);
+          AppMethodBeat.o(215879);
         }
       });
-      this.ITi = ((WebViewSearchContentInputFooter)((View)localObject).findViewById(2131307373));
-      this.ITi.setActionDelegate(new WebViewSearchContentInputFooter.a()
+      this.PPA = ((WebViewSearchContentInputFooter)((View)localObject).findViewById(c.f.search_content_input_footer));
+      this.PPA.setActionDelegate(new WebViewSearchContentInputFooter.a()
       {
         public final void a(WebViewSearchContentInputFooter paramAnonymousWebViewSearchContentInputFooter)
         {
-          AppMethodBeat.i(210878);
+          AppMethodBeat.i(257887);
           if (paramAnonymousWebViewSearchContentInputFooter.getVisibility() == 0) {
             b(paramAnonymousWebViewSearchContentInputFooter);
           }
-          AppMethodBeat.o(210878);
+          AppMethodBeat.o(257887);
         }
         
         public final void b(WebViewSearchContentInputFooter paramAnonymousWebViewSearchContentInputFooter)
         {
-          AppMethodBeat.i(210881);
-          g.this.ITd.clearMatches();
+          AppMethodBeat.i(257890);
+          g.this.PPv.clearMatches();
           paramAnonymousWebViewSearchContentInputFooter.reset();
-          g.d(g.this).H(0, 0, true);
-          g.this.ITd.findAllAsync(paramAnonymousWebViewSearchContentInputFooter.getSearchContent());
-          AppMethodBeat.o(210881);
+          g.d(g.this).O(0, 0, true);
+          g.this.PPv.findAllAsync(paramAnonymousWebViewSearchContentInputFooter.getSearchContent());
+          AppMethodBeat.o(257890);
         }
         
         public final boolean c(int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
@@ -593,65 +605,65 @@ public class g
           return false;
         }
         
-        public final void gbR()
+        public final void gUM()
         {
-          AppMethodBeat.i(210877);
+          AppMethodBeat.i(257886);
           g.a(g.this, 0);
-          g.this.ITd.clearMatches();
-          g.d(g.this).giD();
-          AppMethodBeat.o(210877);
+          g.this.PPv.clearMatches();
+          g.d(g.this).hcd();
+          AppMethodBeat.o(257886);
         }
         
-        public final void gbS()
+        public final void gUN()
         {
-          AppMethodBeat.i(210879);
-          g.this.ITd.findNext(false);
-          AppMethodBeat.o(210879);
+          AppMethodBeat.i(257888);
+          g.this.PPv.findNext(false);
+          AppMethodBeat.o(257888);
         }
         
-        public final void gbT()
+        public final void gUO()
         {
-          AppMethodBeat.i(210880);
-          g.this.ITd.findNext(true);
-          AppMethodBeat.o(210880);
+          AppMethodBeat.i(257889);
+          g.this.PPv.findNext(true);
+          AppMethodBeat.o(257889);
         }
       });
-      this.ITd.setFindListener(new WebView.FindListener()
+      this.PPv.setFindListener(new WebView.FindListener()
       {
         public final void onFindResultReceived(int paramAnonymousInt1, int paramAnonymousInt2, boolean paramAnonymousBoolean)
         {
-          AppMethodBeat.i(210882);
-          g.d(g.this).H(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousBoolean);
-          AppMethodBeat.o(210882);
+          AppMethodBeat.i(223469);
+          g.d(g.this).O(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousBoolean);
+          AppMethodBeat.o(223469);
         }
       });
-      this.ITj = ((FrameLayout)((View)localObject).findViewById(2131306778));
-      if (this.ITj != null) {
-        this.ITj.setOnClickListener(new View.OnClickListener()
+      this.PPB = ((FrameLayout)((View)localObject).findViewById(c.f.refresh_mask));
+      if (this.PPB != null) {
+        this.PPB.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(78274);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bm(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/LuggageMMWebPage$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-            g.this.ctS.loadUrl(g.this.getUrl());
+            localb.bn(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/luggage/LuggageMMWebPage$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+            g.this.crX.loadUrl(g.this.getUrl());
             g.a(g.this).setVisibility(8);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/luggage/LuggageMMWebPage$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(78274);
           }
         });
       }
-      this.ITg.setOnkbdStateListener(new KeyboardLinearLayout.a()
+      this.PPy.setOnkbdStateListener(new KeyboardLinearLayout.a()
       {
-        public final void Ns(int paramAnonymousInt)
+        public final void SG(int paramAnonymousInt)
         {
-          AppMethodBeat.i(210883);
+          AppMethodBeat.i(217401);
           Log.i("MicroMsg.LuggageMMWebPage", "onKeyBoardStateChange, state = ".concat(String.valueOf(paramAnonymousInt)));
           if (!g.this.mIsForeground)
           {
             Log.i("MicroMsg.LuggageMMWebPage", "background ignored");
-            AppMethodBeat.o(210883);
+            AppMethodBeat.o(217401);
             return;
           }
           g.a(g.this, g.c(g.this), paramAnonymousInt);
@@ -660,21 +672,21 @@ public class g
             if ((g.b(g.this) != null) && (g.b(g.this).getVisibility() == 0))
             {
               WebViewInputFooter localWebViewInputFooter = g.b(g.this);
-              if (localWebViewInputFooter.JAQ) {
+              if (localWebViewInputFooter.Qza) {
                 localWebViewInputFooter.setVisibility(8);
               }
               localWebViewInputFooter.state = 0;
-              localWebViewInputFooter.cbM();
+              localWebViewInputFooter.aDL();
             }
             g.a(g.this, g.c(g.this).getKeyBoardHeight());
-            AppMethodBeat.o(210883);
+            AppMethodBeat.o(217401);
             return;
           }
           g.a(g.this, 0);
-          AppMethodBeat.o(210883);
+          AppMethodBeat.o(217401);
         }
       });
-      this.ITd.setOnTouchListener(new View.OnTouchListener()
+      this.PPv.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
@@ -684,8 +696,8 @@ public class g
           }
           if (paramAnonymousMotionEvent.getAction() == 0)
           {
-            g.this.ppd = ((int)paramAnonymousMotionEvent.getRawX());
-            g.this.ppe = ((int)paramAnonymousMotionEvent.getRawY());
+            g.this.syc = ((int)paramAnonymousMotionEvent.getRawX());
+            g.this.syd = ((int)paramAnonymousMotionEvent.getRawY());
           }
           AppMethodBeat.o(78275);
           return false;
@@ -696,20 +708,20 @@ public class g
       return localObject;
       if (Util.nullAsNil(((Uri)localObject).getQueryParameter("immersivePageBgIsDark")).equals("2"))
       {
-        if (ao.isDarkMode())
+        if (ar.isDarkMode())
         {
-          this.ITI.ITY = true;
+          this.PQa.PQq = true;
           break;
         }
-        this.ITI.ITY = false;
+        this.PQa.PQq = false;
         break;
       }
-      this.ITI.ITY = false;
+      this.PQa.PQq = false;
       break;
       label671:
-      b localb = this.ITf;
-      m localm = this.ISN;
-      boolean bool = this.ITI.ITX;
+      b localb = this.PPx;
+      m localm = this.PPg;
+      boolean bool = this.PQa.PQp;
       RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -2);
       localLayoutParams1.addRule(10);
       RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-1, -1);
@@ -728,15 +740,31 @@ public class g
     }
   }
   
-  public boolean Oc(int paramInt)
+  public String Oz()
+  {
+    AppMethodBeat.i(78317);
+    String str = com.tencent.mm.plugin.appbrand.ac.d.anc("luggage_mm_adapter.js");
+    AppMethodBeat.o(78317);
+    return str;
+  }
+  
+  public final boolean QT()
+  {
+    AppMethodBeat.i(78303);
+    boolean bool = this.mParams.getBoolean("show_full_screen", false);
+    AppMethodBeat.o(78303);
+    return bool;
+  }
+  
+  public boolean Tv(int paramInt)
   {
     AppMethodBeat.i(78302);
-    boolean bool = this.ITv.gs(getUrl(), paramInt);
+    boolean bool = this.PPN.ha(getUrl(), paramInt);
     AppMethodBeat.o(78302);
     return bool;
   }
   
-  public final void aC(Runnable paramRunnable)
+  public final void aI(Runnable paramRunnable)
   {
     AppMethodBeat.i(78323);
     if (Looper.myLooper() == Looper.getMainLooper())
@@ -749,12 +777,129 @@ public class g
     AppMethodBeat.o(78323);
   }
   
-  protected final void aYq(final String paramString)
+  protected void aJA(String paramString) {}
+  
+  protected void aJt(String paramString)
+  {
+    AppMethodBeat.i(78312);
+    if (this.PPv.getX5WebViewExtension() != null)
+    {
+      this.PPw.setPullDownEnabled(true);
+      this.PPw.setCurrentUrl(paramString);
+    }
+    AppMethodBeat.o(78312);
+  }
+  
+  protected boolean aJv(String paramString)
+  {
+    return false;
+  }
+  
+  protected boolean aJx(String paramString)
+  {
+    AppMethodBeat.i(78319);
+    if (this.PPN.blD(paramString))
+    {
+      this.PPR = true;
+      AppMethodBeat.o(78319);
+      return false;
+    }
+    if (this.PPN.a(paramString, this.PQd) == c.a.PYJ) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.LuggageMMWebPage", "startGetA8Key, url: %s, ret: %b", new Object[] { paramString, Boolean.valueOf(bool) });
+      this.PPR = bool;
+      AppMethodBeat.o(78319);
+      return bool;
+    }
+  }
+  
+  protected void aJy(String paramString)
+  {
+    AppMethodBeat.i(78314);
+    Log.i("MicroMsg.LuggageMMWebPage", "loadUrlWithoutCache, url: %s, __Time__: %d", new Object[] { paramString, Long.valueOf(System.currentTimeMillis()) });
+    HashMap localHashMap = new HashMap(2);
+    localHashMap.put("Pragma", "no-cache");
+    localHashMap.put("Cache-Control", "no-cache");
+    this.PPv.loadUrl(paramString, localHashMap);
+    AppMethodBeat.o(78314);
+  }
+  
+  protected WebResourceResponse aJz(String paramString)
+  {
+    return null;
+  }
+  
+  public final void anK(int paramInt)
+  {
+    AppMethodBeat.i(78299);
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.PPz.getLayoutParams();
+    if (localMarginLayoutParams.bottomMargin != paramInt)
+    {
+      localMarginLayoutParams.bottomMargin = paramInt;
+      this.PPz.setLayoutParams(localMarginLayoutParams);
+    }
+    AppMethodBeat.o(78299);
+  }
+  
+  public final void b(String paramString, final float paramFloat, int paramInt)
+  {
+    AppMethodBeat.i(245773);
+    if (!Util.isNullOrNil(paramString)) {}
+    try
+    {
+      int i = Color.parseColor(paramString);
+      this.PPS = true;
+      this.PPT = (i | 0xFF000000);
+      this.PPg.setActionBarColorValue(this.PPT);
+      label45:
+      this.PPg.setIconDark(paramInt);
+      if ((paramFloat < 0.0F) || (paramFloat > 1.0F))
+      {
+        gUu();
+        AppMethodBeat.o(245773);
+        return;
+      }
+      this.mHandler.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(78278);
+          g.this.PPg.setAlpha(paramFloat);
+          AppMethodBeat.o(78278);
+        }
+      });
+      AppMethodBeat.o(245773);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      break label45;
+    }
+  }
+  
+  public final void bOL()
+  {
+    AppMethodBeat.i(78297);
+    this.PPT = androidx.core.content.a.w(getContext(), c.c.action_bar_color);
+    this.PPg.PQM = -1;
+    gUu();
+    AppMethodBeat.o(78297);
+  }
+  
+  protected void bXF()
+  {
+    AppMethodBeat.i(78285);
+    this.PPg.bXF();
+    AppMethodBeat.o(78285);
+  }
+  
+  protected final void bkl(final String paramString)
   {
     AppMethodBeat.i(78293);
-    this.ctS.a(new com.tencent.luggage.d.d()
+    this.crX.a(new com.tencent.luggage.d.d()
     {
-      public final JSONObject Ld()
+      public final JSONObject NU()
       {
         AppMethodBeat.i(78276);
         JSONObject localJSONObject = new JSONObject();
@@ -779,10 +924,10 @@ public class g
     AppMethodBeat.o(78293);
   }
   
-  protected final boolean aYr(String paramString)
+  protected final boolean bkm(String paramString)
   {
     AppMethodBeat.i(78320);
-    if (this.ITv.a(paramString, 5, this.ITL) == c.a.Jcb)
+    if (this.PPN.a(paramString, 5, this.PQd) == c.a.PYJ)
     {
       AppMethodBeat.o(78320);
       return true;
@@ -791,72 +936,7 @@ public class g
     return false;
   }
   
-  public final void afW(int paramInt)
-  {
-    AppMethodBeat.i(78299);
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.ITh.getLayoutParams();
-    if (localMarginLayoutParams.bottomMargin != paramInt)
-    {
-      localMarginLayoutParams.bottomMargin = paramInt;
-      this.ITh.setLayoutParams(localMarginLayoutParams);
-    }
-    AppMethodBeat.o(78299);
-  }
-  
-  protected void azH(String paramString)
-  {
-    AppMethodBeat.i(78312);
-    if (this.ITd.getX5WebViewExtension() != null)
-    {
-      this.ITe.setPullDownEnabled(true);
-      this.ITe.setCurrentUrl(paramString);
-    }
-    AppMethodBeat.o(78312);
-  }
-  
-  protected boolean azJ(String paramString)
-  {
-    return false;
-  }
-  
-  protected boolean azL(String paramString)
-  {
-    AppMethodBeat.i(78319);
-    if (this.ITv.aZI(paramString))
-    {
-      this.ITz = true;
-      AppMethodBeat.o(78319);
-      return false;
-    }
-    if (this.ITv.a(paramString, this.ITL) == c.a.Jcb) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Log.i("MicroMsg.LuggageMMWebPage", "startGetA8Key, url: %s, ret: %b", new Object[] { paramString, Boolean.valueOf(bool) });
-      this.ITz = bool;
-      AppMethodBeat.o(78319);
-      return bool;
-    }
-  }
-  
-  protected void azM(String paramString)
-  {
-    AppMethodBeat.i(78314);
-    Log.i("MicroMsg.LuggageMMWebPage", "loadUrlWithoutCache, url: %s, __Time__: %d", new Object[] { paramString, Long.valueOf(System.currentTimeMillis()) });
-    HashMap localHashMap = new HashMap(2);
-    localHashMap.put("Pragma", "no-cache");
-    localHashMap.put("Cache-Control", "no-cache");
-    this.ITd.loadUrl(paramString, localHashMap);
-    AppMethodBeat.o(78314);
-  }
-  
-  protected WebResourceResponse azN(String paramString)
-  {
-    return null;
-  }
-  
-  protected void azO(String paramString) {}
-  
-  protected final void b(int paramInt1, String paramString, int paramInt2, int paramInt3)
+  protected final void c(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(78322);
     Log.i("MicroMsg.LuggageMMWebPage", "onError, reason = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
@@ -867,56 +947,11 @@ public class g
     {
       AppMethodBeat.o(78322);
       return;
-      if (!azJ(paramString))
+      if (!aJv(paramString))
       {
-        this.ITj.setVisibility(0);
-        dTO();
+        this.PPB.setVisibility(0);
+        ewK();
       }
-    }
-  }
-  
-  public final void bDo()
-  {
-    AppMethodBeat.i(78297);
-    this.ITB = android.support.v4.content.b.n(this.mContext, 2131099891);
-    this.ISN.IUv = -1;
-    gbA();
-    AppMethodBeat.o(78297);
-  }
-  
-  public final void c(String paramString, final float paramFloat, int paramInt)
-  {
-    AppMethodBeat.i(210910);
-    if (!Util.isNullOrNil(paramString)) {}
-    try
-    {
-      int i = Color.parseColor(paramString);
-      this.ITA = true;
-      this.ITB = (i | 0xFF000000);
-      this.ISN.setActionBarColorValue(this.ITB);
-      label45:
-      this.ISN.setIconDark(paramInt);
-      if ((paramFloat < 0.0F) || (paramFloat > 1.0F))
-      {
-        gbA();
-        AppMethodBeat.o(210910);
-        return;
-      }
-      this.mHandler.post(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(78278);
-          g.this.ISN.setAlpha(paramFloat);
-          AppMethodBeat.o(78278);
-        }
-      });
-      AppMethodBeat.o(210910);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      break label45;
     }
   }
   
@@ -924,98 +959,30 @@ public class g
   {
     AppMethodBeat.i(78321);
     Log.i("MicroMsg.LuggageMMWebPage", "onUrlRedirect, reqUrl = %s, full = %s", new Object[] { paramString1, paramString2 });
-    if (Util.isNullOrNil(this.xwe)) {
-      this.xwe = paramString2;
+    if (Util.isNullOrNil(this.CzZ)) {
+      this.CzZ = paramString2;
     }
-    this.ITy = paramMap;
-    if ((!azJ(paramString1)) && (!this.ITC) && (!this.ITG))
+    this.PPQ = paramMap;
+    if ((!aJv(paramString1)) && (!this.PPU) && (!this.PPY))
     {
-      this.ctS.stopLoading();
+      this.crX.stopLoading();
       if ((paramMap != null) && (paramMap.size() > 0))
       {
-        this.ctS.ctK.loadUrl(paramString2, paramMap);
+        this.crX.crP.loadUrl(paramString2, paramMap);
         AppMethodBeat.o(78321);
         return;
       }
-      this.ctS.loadUrl(paramString2);
+      this.crX.loadUrl(paramString2);
     }
     AppMethodBeat.o(78321);
   }
   
-  public final void cT(String paramString)
+  public final String cCL()
   {
-    AppMethodBeat.i(210912);
-    if (this.ITd != null) {
-      this.ITd.evaluateJavascript(paramString, null);
-    }
-    AppMethodBeat.o(210912);
+    return this.CzZ;
   }
   
-  protected void cV(String paramString)
-  {
-    AppMethodBeat.i(78315);
-    Log.d("MicroMsg.LuggageMMWebPage", "onUrlLoadingStarted, url = ".concat(String.valueOf(paramString)));
-    if (azL(paramString))
-    {
-      int i = this.ITv.cO(paramString, false);
-      if ((i == 0) || (i == 2) || (i == 8))
-      {
-        this.ctS.stopLoading();
-        AppMethodBeat.o(78315);
-        return;
-      }
-    }
-    com.tencent.mm.plugin.webview.model.a.e(this.ITd);
-    if (this.ITp != null)
-    {
-      this.ITp.eU("rawUrl", paramString);
-      this.ITp.aYt(paramString);
-    }
-    if (this.ITr != null)
-    {
-      this.ITr.setUrl(Util.nullAsNil(paramString));
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.handoff.a.a.class)).e(this.ITr);
-    }
-    this.ISN.setOptionEnable(false);
-    dTA();
-    azH(paramString);
-    AppMethodBeat.o(78315);
-  }
-  
-  protected void cW(String paramString)
-  {
-    AppMethodBeat.i(78316);
-    Log.d("MicroMsg.LuggageMMWebPage", "onUrlLoadingFinished, url = ".concat(String.valueOf(paramString)));
-    com.tencent.mm.plugin.webview.model.a.e(this.ITd);
-    this.ISN.setOptionEnable(true);
-    dTO();
-    if (this.ITp != null)
-    {
-      this.ITp.eU("rawUrl", paramString);
-      this.ITp.aYt(paramString);
-    }
-    if (this.ITr != null)
-    {
-      this.ITr.setUrl(Util.nullAsNil(paramString));
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.handoff.a.a.class)).e(this.ITr);
-    }
-    AppMethodBeat.o(78316);
-  }
-  
-  public final String coX()
-  {
-    AppMethodBeat.i(78318);
-    String str = this.mParams.getString("rawUrl");
-    AppMethodBeat.o(78318);
-    return str;
-  }
-  
-  public final String coy()
-  {
-    return this.xwe;
-  }
-  
-  protected boolean cpz()
+  protected boolean cDX()
   {
     AppMethodBeat.i(78325);
     if (!this.mParams.getBoolean("disable_minimize", false)) {}
@@ -1027,142 +994,285 @@ public class g
     }
   }
   
-  protected void dTA()
+  public final String cDu()
+  {
+    AppMethodBeat.i(78318);
+    String str = this.mParams.getString("rawUrl");
+    AppMethodBeat.o(78318);
+    return str;
+  }
+  
+  public final void dt(String paramString)
+  {
+    AppMethodBeat.i(245782);
+    if (this.PPv != null) {
+      this.PPv.evaluateJavascript(paramString, null);
+    }
+    AppMethodBeat.o(245782);
+  }
+  
+  protected void dv(String paramString)
+  {
+    AppMethodBeat.i(78315);
+    Log.d("MicroMsg.LuggageMMWebPage", "onUrlLoadingStarted, url = ".concat(String.valueOf(paramString)));
+    if (aJx(paramString))
+    {
+      int i = this.PPN.dc(paramString, false);
+      if ((i == 0) || (i == 2) || (i == 8))
+      {
+        this.crX.stopLoading();
+        AppMethodBeat.o(78315);
+        return;
+      }
+    }
+    com.tencent.mm.plugin.webview.model.a.f(this.PPv);
+    if (this.PPH != null)
+    {
+      this.PPH.fi("rawUrl", paramString);
+      this.PPH.bko(paramString);
+    }
+    if (this.PPJ != null)
+    {
+      this.PPJ.setUrl(Util.nullAsNil(paramString));
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.handoff.a.a.class)).e(this.PPJ);
+    }
+    this.PPg.setOptionEnable(false);
+    dwZ();
+    aJt(paramString);
+    AppMethodBeat.o(78315);
+  }
+  
+  protected void dw(String paramString)
+  {
+    AppMethodBeat.i(78316);
+    Log.d("MicroMsg.LuggageMMWebPage", "onUrlLoadingFinished, url = ".concat(String.valueOf(paramString)));
+    com.tencent.mm.plugin.webview.model.a.f(this.PPv);
+    this.PPg.setOptionEnable(true);
+    ewK();
+    if (this.PPH != null)
+    {
+      this.PPH.fi("rawUrl", paramString);
+      this.PPH.bko(paramString);
+    }
+    if (this.PPJ != null)
+    {
+      this.PPJ.setUrl(Util.nullAsNil(paramString));
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.handoff.a.a.class)).e(this.PPJ);
+    }
+    AppMethodBeat.o(78316);
+  }
+  
+  protected void dwZ()
   {
     AppMethodBeat.i(78310);
-    this.ITk.setVisibility(0);
-    this.ITk.start();
+    this.PPC.setVisibility(0);
+    this.PPC.start();
     AppMethodBeat.o(78310);
   }
   
-  protected Boolean dTB()
-  {
-    return Boolean.FALSE;
-  }
-  
-  protected void dTH()
-  {
-    AppMethodBeat.i(78285);
-    this.ISN.dTH();
-    AppMethodBeat.o(78285);
-  }
-  
-  protected View dTM()
-  {
-    AppMethodBeat.i(78284);
-    this.ISN = new m(this);
-    m localm = this.ISN;
-    AppMethodBeat.o(78284);
-    return localm;
-  }
-  
-  protected void dTN()
-  {
-    AppMethodBeat.i(78294);
-    if (!this.ITA)
-    {
-      this.ITB = this.mParams.getInt("customize_status_bar_color");
-      if (this.ITB == 0) {
-        this.ITB = android.support.v4.content.b.n(this.mContext, 2131099891);
-      }
-    }
-    gbA();
-    AppMethodBeat.o(78294);
-  }
-  
-  protected void dTO()
-  {
-    AppMethodBeat.i(78311);
-    this.ITk.finish();
-    this.ITk.setVisibility(8);
-    AppMethodBeat.o(78311);
-  }
-  
-  public void ec(final String paramString, final int paramInt)
+  public void eA(final String paramString, final int paramInt)
   {
     AppMethodBeat.i(78298);
-    if (this.ITF) {
-      this.ITp.agT(paramString);
+    if (this.PPX) {
+      this.PPH.aoy(paramString);
     }
-    this.ITq.aCM(paramString);
-    if (this.ITr != null)
+    this.PPI.aMT(paramString);
+    if (this.PPJ != null)
     {
-      this.ITr.setTitle(paramString);
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.handoff.a.a.class)).e(this.ITr);
+      this.PPJ.setTitle(paramString);
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.handoff.a.a.class)).e(this.PPJ);
     }
     this.mHandler.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(210907);
-        if (g.this.ISN != null)
+        AppMethodBeat.i(219330);
+        if (g.this.PPg != null)
         {
           if (!Util.isNullOrNil(paramString)) {
-            g.this.ISN.setTitleText(paramString);
+            g.this.PPg.setTitleText(paramString);
           }
           if (paramInt != 0) {
-            g.this.ISN.setTitleColor(paramInt);
+            g.this.PPg.setTitleColor(paramInt);
           }
         }
-        AppMethodBeat.o(210907);
+        AppMethodBeat.o(219330);
       }
     });
     AppMethodBeat.o(78298);
   }
   
-  public final void ega()
+  public final void ePB()
   {
     AppMethodBeat.i(78306);
-    this.ISN.setVisibility(8);
+    this.PPg.setVisibility(8);
     AppMethodBeat.o(78306);
   }
   
-  public void g(String paramString, Bundle paramBundle)
+  protected Boolean ewJ()
   {
-    AppMethodBeat.i(78313);
-    Log.i("MicroMsg.LuggageMMWebPage", "load url, url: %s, fromStash: %b", new Object[] { paramString, Boolean.valueOf(this.ITC) });
-    this.ctS.mUrl = paramString;
-    if (this.ITC)
-    {
-      Log.i("MicroMsg.LuggageMMWebPage", "stash url");
-      this.ISN.setOptionEnable(true);
-      if (!Util.isNullOrNil(this.mParams.getString("title"))) {
-        ec(this.mParams.getString("title"), 0);
-      }
-      this.mGR = false;
-      if (this.ITv == null) {
-        this.ITv = new com.tencent.mm.plugin.webview.f.c();
-      }
-      azL(paramString);
-      AppMethodBeat.o(78313);
-      return;
-    }
-    dTA();
-    paramBundle = paramBundle.getString("game_open_html");
-    if (!Util.isNullOrNil(paramBundle))
-    {
-      this.ITG = true;
-      this.ITd.loadDataWithBaseURL(paramString, paramBundle, "text/html", "utf-8", null);
-    }
-    do
-    {
-      for (;;)
-      {
-        azL(paramString);
-        this.mGR = false;
-        AppMethodBeat.o(78313);
-        return;
-        if (!azJ(paramString)) {
-          break;
-        }
-        azM(paramString);
-      }
-    } while (this.mGR);
-    g(paramString, null);
-    AppMethodBeat.o(78313);
+    return Boolean.FALSE;
   }
   
-  protected final void gbA()
+  protected void ewK()
+  {
+    AppMethodBeat.i(78311);
+    this.PPC.finish();
+    this.PPC.setVisibility(8);
+    AppMethodBeat.o(78311);
+  }
+  
+  protected View ewU()
+  {
+    AppMethodBeat.i(78284);
+    this.PPg = new m(this);
+    m localm = this.PPg;
+    AppMethodBeat.o(78284);
+    return localm;
+  }
+  
+  protected void ewV()
+  {
+    AppMethodBeat.i(78294);
+    if (!this.PPS)
+    {
+      this.PPT = this.mParams.getInt("customize_status_bar_color");
+      if (this.PPT == 0) {
+        this.PPT = androidx.core.content.a.w(getContext(), c.c.action_bar_color);
+      }
+    }
+    gUu();
+    AppMethodBeat.o(78294);
+  }
+  
+  public final com.tencent.mm.plugin.webview.f.c gUA()
+  {
+    return this.PPN;
+  }
+  
+  public final q.a gUB()
+  {
+    return this.PPP;
+  }
+  
+  public final boolean gUC()
+  {
+    AppMethodBeat.i(78324);
+    boolean bool1 = this.mParams.getBoolean("forceHideShare", false);
+    boolean bool2 = this.mParams.getBoolean("showShare", true);
+    Log.i("MicroMsg.LuggageMMWebPage", "forceHideShare:%b showShareBtn:%b enableMinimize:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(cDX()) });
+    if ((!bool1) && (bool2) && (cDX()))
+    {
+      AppMethodBeat.o(78324);
+      return true;
+    }
+    AppMethodBeat.o(78324);
+    return false;
+  }
+  
+  public final q gUD()
+  {
+    return this.PPH;
+  }
+  
+  public final t gUE()
+  {
+    return this.PPI;
+  }
+  
+  public final HandOffURL gUF()
+  {
+    return this.PPJ;
+  }
+  
+  public final void gUG()
+  {
+    AppMethodBeat.i(78326);
+    if (Thread.currentThread() == Looper.getMainLooper().getThread())
+    {
+      int i = this.crm.On().indexOf(this);
+      if (i < 0)
+      {
+        AppMethodBeat.o(78326);
+        return;
+      }
+      if (!this.crm.Oo().remove(i))
+      {
+        this.crm.Oq().finish();
+        AppMethodBeat.o(78326);
+        return;
+      }
+      com.tencent.e.h.ZvG.n(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(78273);
+          com.tencent.luggage.d.h localh = (com.tencent.luggage.d.h)g.this.crm.On().peek();
+          if ((localh != null) && ((localh instanceof g))) {
+            g.i((g)localh);
+          }
+          AppMethodBeat.o(78273);
+        }
+      }, 250L);
+      AppMethodBeat.o(78326);
+      return;
+    }
+    com.tencent.mm.ipcinvoker.s.y(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(258311);
+        g.this.gUG();
+        AppMethodBeat.o(258311);
+      }
+    });
+    AppMethodBeat.o(78326);
+  }
+  
+  public final void gUs()
+  {
+    AppMethodBeat.i(78286);
+    Log.i("MicroMsg.LuggageMMWebPage", "onAddInContainer");
+    String str = this.mParams.getString("float_ball_key");
+    if (!Util.isNullOrNil(str))
+    {
+      this.PPH.I(5, str);
+      this.PPI.I(5, str);
+    }
+    for (;;)
+    {
+      this.PPH.fi("rawUrl", cDu());
+      this.PPH.bko(cDu());
+      if (Util.isNullOrNil(this.PPg.getTitle())) {
+        this.PPH.aoy(cDu());
+      }
+      this.PPX = true;
+      if (this.PPW)
+      {
+        this.PPH.bNV();
+        this.PPI.bNV();
+      }
+      this.PPJ = new HandOffURL(Util.nullAsNil(cDu()), Util.nullAsNil(cDu()), "");
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.handoff.a.a.class)).a(this.PPJ);
+      gUt();
+      AppMethodBeat.o(78286);
+      return;
+      this.PPH.I(5, com.tencent.mm.plugin.ball.f.b.aoB(cDu()));
+      this.PPI.I(5, com.tencent.mm.plugin.multitask.g.aQU(((com.tencent.mm.plugin.brandservice.a.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.brandservice.a.c.class)).apf(cDu())));
+    }
+  }
+  
+  public final void gUt()
+  {
+    AppMethodBeat.i(245772);
+    int i = this.mParams.getInt("screen_orientation", -1);
+    if (this.crm.On().peek() == this) {
+      ((Activity)getContext()).setRequestedOrientation(i);
+    }
+    AppMethodBeat.o(245772);
+  }
+  
+  protected final void gUu()
   {
     AppMethodBeat.i(78295);
     Log.d("MicroMsg.LuggageMMWebPage", "setActionBarColor");
@@ -1173,23 +1283,31 @@ public class g
         public final void run()
         {
           AppMethodBeat.i(78277);
-          g.this.gbA();
+          g.this.gUu();
           AppMethodBeat.o(78277);
         }
       });
       AppMethodBeat.o(78295);
       return;
     }
-    this.ISN.k(this.ITB, this.ITI.ITX, this.ITI.ITY);
+    this.PPg.n(this.PPT, this.PQa.PQp, this.PQa.PQq);
     AppMethodBeat.o(78295);
   }
   
-  public final boolean gbB()
+  public final boolean gUv()
+  {
+    AppMethodBeat.i(245778);
+    boolean bool = this.PPA.isShown();
+    AppMethodBeat.o(245778);
+    return bool;
+  }
+  
+  public final boolean gUw()
   {
     AppMethodBeat.i(78304);
-    if (this.ISN != null)
+    if (this.PPg != null)
     {
-      boolean bool = this.ISN.gbB();
+      boolean bool = this.PPg.gUw();
       AppMethodBeat.o(78304);
       return bool;
     }
@@ -1197,231 +1315,141 @@ public class g
     return false;
   }
   
-  public final m gbC()
+  public final m gUx()
   {
-    return this.ISN;
+    return this.PPg;
   }
   
-  public final void gbD()
+  public final void gUy()
   {
     AppMethodBeat.i(78309);
     this.mHandler.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(210894);
-        g.this.ITe.setPullDownEnabled(false);
-        AppMethodBeat.o(210894);
+        AppMethodBeat.i(215959);
+        g.this.PPw.setPullDownEnabled(false);
+        AppMethodBeat.o(215959);
       }
     });
     AppMethodBeat.o(78309);
   }
   
-  public final boolean gbE()
+  public final boolean gUz()
   {
-    return this.ITz;
-  }
-  
-  public final com.tencent.mm.plugin.webview.f.c gbF()
-  {
-    return this.ITv;
-  }
-  
-  public final q.a gbG()
-  {
-    return this.ITx;
-  }
-  
-  public final boolean gbH()
-  {
-    AppMethodBeat.i(78324);
-    boolean bool1 = this.mParams.getBoolean("forceHideShare", false);
-    boolean bool2 = this.mParams.getBoolean("showShare", true);
-    Log.i("MicroMsg.LuggageMMWebPage", "forceHideShare:%b showShareBtn:%b enableMinimize:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(cpz()) });
-    if ((!bool1) && (bool2) && (cpz()))
-    {
-      AppMethodBeat.o(78324);
-      return true;
-    }
-    AppMethodBeat.o(78324);
-    return false;
-  }
-  
-  public final q gbI()
-  {
-    return this.ITp;
-  }
-  
-  public final t gbJ()
-  {
-    return this.ITq;
-  }
-  
-  public final HandOffURL gbK()
-  {
-    return this.ITr;
-  }
-  
-  public final void gbL()
-  {
-    AppMethodBeat.i(78326);
-    if (Thread.currentThread() == Looper.getMainLooper().getThread())
-    {
-      int i = this.ctg.Lx().indexOf(this);
-      if (i < 0)
-      {
-        AppMethodBeat.o(78326);
-        return;
-      }
-      if (!this.ctg.Ly().remove(i))
-      {
-        this.ctg.LA().finish();
-        AppMethodBeat.o(78326);
-        return;
-      }
-      com.tencent.f.h.RTc.n(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(78273);
-          com.tencent.luggage.d.h localh = (com.tencent.luggage.d.h)g.this.ctg.Lx().peek();
-          if ((localh != null) && ((localh instanceof g))) {
-            g.i((g)localh);
-          }
-          AppMethodBeat.o(78273);
-        }
-      }, 250L);
-      AppMethodBeat.o(78326);
-      return;
-    }
-    com.tencent.mm.ipcinvoker.p.y(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(210905);
-        g.this.gbL();
-        AppMethodBeat.o(210905);
-      }
-    });
-    AppMethodBeat.o(78326);
-  }
-  
-  public final void gby()
-  {
-    AppMethodBeat.i(78286);
-    Log.i("MicroMsg.LuggageMMWebPage", "onAddInContainer");
-    String str = this.mParams.getString("float_ball_key");
-    if (!Util.isNullOrNil(str))
-    {
-      this.ITp.G(5, str);
-      this.ITq.G(5, str);
-    }
-    for (;;)
-    {
-      this.ITp.eU("rawUrl", coX());
-      this.ITp.aYt(coX());
-      if (Util.isNullOrNil(this.ISN.getTitle())) {
-        this.ITp.agT(coX());
-      }
-      this.ITF = true;
-      if (this.ITE)
-      {
-        this.ITp.bCA();
-        this.ITq.bCA();
-      }
-      this.ITr = new HandOffURL(Util.nullAsNil(coX()), Util.nullAsNil(coX()), "");
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.handoff.a.a.class)).a(this.ITr);
-      gbz();
-      AppMethodBeat.o(78286);
-      return;
-      this.ITp.G(5, com.tencent.mm.plugin.ball.f.b.bxa(coX()));
-      this.ITq.G(5, com.tencent.mm.plugin.multitask.g.aGG(((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.brandservice.a.b.class)).ahz(coX())));
-    }
-  }
-  
-  public final void gbz()
-  {
-    AppMethodBeat.i(210909);
-    int i = this.mParams.getInt("screen_orientation", -1);
-    if (this.ctg.Lx().peek() == this) {
-      ((Activity)this.mContext).setRequestedOrientation(i);
-    }
-    AppMethodBeat.o(210909);
+    return this.PPR;
   }
   
   public final String getTitle()
   {
-    AppMethodBeat.i(258616);
-    String str = this.ISN.getTitle();
-    AppMethodBeat.o(258616);
+    AppMethodBeat.i(293194);
+    String str = this.PPg.getTitle();
+    AppMethodBeat.o(293194);
     return str;
   }
   
   public final String getUrl()
   {
-    if (this.ctS != null) {
-      return this.ctS.mUrl;
+    if (this.crX != null) {
+      return this.crX.mUrl;
     }
     return "";
   }
   
-  public final void hb(final boolean paramBoolean)
+  public final void hS(final boolean paramBoolean)
   {
     AppMethodBeat.i(78327);
-    if ((this.ITp != null) && (this.ITp.wu(1)))
+    if ((this.PPH != null) && (this.PPH.zH(1)))
     {
       AppMethodBeat.o(78327);
       return;
     }
-    if ((this.ITq != null) && (this.ITq.O(1, true)))
+    if ((this.PPI != null) && (this.PPI.Q(1, true)))
     {
       AppMethodBeat.o(78327);
       return;
     }
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
-      if (!this.ctg.Ly().bR(paramBoolean))
+      if (!this.crm.Oo().cb(paramBoolean))
       {
-        this.ctg.LA().finish();
+        this.crm.Oq().finish();
         AppMethodBeat.o(78327);
       }
     }
     else {
-      com.tencent.mm.ipcinvoker.p.y(new Runnable()
+      com.tencent.mm.ipcinvoker.s.y(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(210906);
-          g.this.hb(paramBoolean);
-          AppMethodBeat.o(210906);
+          AppMethodBeat.i(215346);
+          g.this.hS(paramBoolean);
+          AppMethodBeat.o(215346);
         }
       });
     }
     AppMethodBeat.o(78327);
   }
   
-  public final boolean isFullScreen()
+  public void l(String paramString, Bundle paramBundle)
   {
-    AppMethodBeat.i(78303);
-    boolean bool = this.mParams.getBoolean("show_full_screen", false);
-    AppMethodBeat.o(78303);
-    return bool;
+    AppMethodBeat.i(78313);
+    Log.i("MicroMsg.LuggageMMWebPage", "load url, url: %s, fromStash: %b", new Object[] { paramString, Boolean.valueOf(this.PPU) });
+    this.crX.mUrl = paramString;
+    if (this.PPU)
+    {
+      Log.i("MicroMsg.LuggageMMWebPage", "stash url");
+      this.PPg.setOptionEnable(true);
+      if (!Util.isNullOrNil(this.mParams.getString("title"))) {
+        eA(this.mParams.getString("title"), 0);
+      }
+      this.pFW = false;
+      if (this.PPN == null) {
+        this.PPN = new com.tencent.mm.plugin.webview.f.c();
+      }
+      aJx(paramString);
+      AppMethodBeat.o(78313);
+      return;
+    }
+    dwZ();
+    paramBundle = paramBundle.getString("game_open_html");
+    if (!Util.isNullOrNil(paramBundle))
+    {
+      this.PPY = true;
+      this.PPv.loadDataWithBaseURL(paramString, paramBundle, "text/html", "utf-8", null);
+    }
+    do
+    {
+      for (;;)
+      {
+        aJx(paramString);
+        this.pFW = false;
+        AppMethodBeat.o(78313);
+        return;
+        if (!aJv(paramString)) {
+          break;
+        }
+        aJy(paramString);
+      }
+    } while (this.pFW);
+    l(paramString, null);
+    AppMethodBeat.o(78313);
   }
   
   public void onBackground()
   {
     AppMethodBeat.i(78288);
     Log.i("MicroMsg.LuggageMMWebPage", "onBackground");
-    this.ITE = false;
-    aYq("onPause");
-    this.ISN.dTI();
-    this.ITd.onPause();
+    this.PPW = false;
+    bkl("onPause");
+    this.PPg.ewQ();
+    this.PPv.onPause();
     this.mIsForeground = false;
-    if (this.ITp != null) {
-      this.ITp.aGj();
+    if (this.PPH != null) {
+      this.PPH.aOj();
     }
-    if (this.ITq != null) {
-      this.ITq.aGj();
+    if (this.PPI != null) {
+      this.PPI.aOj();
     }
     AppMethodBeat.o(78288);
   }
@@ -1429,118 +1457,100 @@ public class g
   public void onDestroy()
   {
     AppMethodBeat.i(78289);
-    if (!this.xzH)
+    if (!this.CDM)
     {
-      this.xzH = true;
+      this.CDM = true;
       Log.i("MicroMsg.LuggageMMWebPage", "onDestroy");
-      this.ITo.ISU = null;
+      this.PPG.PPn = null;
       j.c(this);
       this.mRootView.removeAllViews();
-      this.ctS.setContext(MMApplicationContext.getContext());
-      if (this.ITp != null) {
-        this.ITp.onDestroy();
+      this.crX.setContext(MMApplicationContext.getContext());
+      if (this.PPH != null) {
+        this.PPH.onDestroy();
       }
-      if (this.ITq != null)
+      if (this.PPI != null)
       {
-        if (!this.ITq.eqW()) {
+        if (!this.PPI.faQ()) {
           break label151;
         }
-        r.a(this.ITq.bjl(), this.ctS, this.ITv);
+        r.a(this.PPI.bsL(), this.crX, this.PPN);
       }
     }
     for (;;)
     {
-      if (this.ITr != null) {
-        ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.handoff.a.a.class)).b(this.ITr);
+      if (this.PPJ != null) {
+        ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.handoff.a.a.class)).b(this.PPJ);
       }
-      this.ITv.IJS = true;
-      this.ISN.onDestroy();
+      this.PPN.PFQ = true;
+      this.PPg.onDestroy();
       AppMethodBeat.o(78289);
       return;
       label151:
-      aYq("onDestroy");
+      bkl("onDestroy");
     }
   }
   
   public void onForeground()
   {
     AppMethodBeat.i(78287);
-    if (this.ITE)
+    if (this.PPW)
     {
       AppMethodBeat.o(78287);
       return;
     }
-    this.ITE = true;
+    this.PPW = true;
     Log.i("MicroMsg.LuggageMMWebPage", "onForeground");
-    if (this.ITD)
+    if (this.PPV)
     {
-      hb(false);
+      hS(false);
       AppMethodBeat.o(78287);
       return;
     }
-    gbz();
-    pJ(isFullScreen());
-    dTN();
-    aYq("onResume");
-    this.ITd.onResume();
+    gUt();
+    sg(QT());
+    ewV();
+    bkl("onResume");
+    this.PPv.onResume();
     this.mIsForeground = true;
-    afX(0);
-    if (this.ITF)
+    anL(0);
+    if (this.PPX)
     {
-      this.ITp.bCA();
-      this.ITq.bCA();
+      this.PPH.bNV();
+      this.PPI.bNV();
     }
-    this.ISN.onForeground();
+    this.PPg.onForeground();
     AppMethodBeat.o(78287);
-  }
-  
-  protected void pJ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(78292);
-    if (paramBoolean)
-    {
-      this.ISN.setVisibility(8);
-      this.ITl.setVisibility(0);
-      com.tencent.mm.plugin.webview.luggage.c.a.c(((Activity)this.mContext).getWindow(), true);
-      AppMethodBeat.o(78292);
-      return;
-    }
-    this.ISN.setVisibility(0);
-    this.ITl.setVisibility(8);
-    com.tencent.mm.plugin.webview.luggage.c.a.c(((Activity)this.mContext).getWindow(), false);
-    AppMethodBeat.o(78292);
   }
   
   public void reload()
   {
     AppMethodBeat.i(78290);
-    this.ITd.reload();
+    this.PPv.reload();
     AppMethodBeat.o(78290);
   }
   
-  public final void zc(boolean paramBoolean)
+  protected void sg(boolean paramBoolean)
   {
-    AppMethodBeat.i(210911);
-    if (!paramBoolean)
+    AppMethodBeat.i(78292);
+    if (paramBoolean)
     {
-      this.ITi.hide();
-      AppMethodBeat.o(210911);
+      this.PPg.setVisibility(8);
+      this.PPD.setVisibility(0);
+      com.tencent.mm.plugin.webview.luggage.c.b.c(((Activity)getContext()).getWindow(), true);
+      AppMethodBeat.o(78292);
       return;
     }
-    if (!this.ITi.isShown())
-    {
-      this.ITi.reset();
-      this.ITi.giD();
-      this.ITi.show();
-    }
-    AppMethodBeat.o(210911);
+    this.PPg.setVisibility(0);
+    this.PPD.setVisibility(8);
+    com.tencent.mm.plugin.webview.luggage.c.b.c(((Activity)getContext()).getWindow(), false);
+    AppMethodBeat.o(78292);
   }
   
   static final class a
   {
-    boolean ITX;
-    boolean ITY;
-    boolean ITZ;
+    boolean PQp;
+    boolean PQq;
+    boolean PQr;
   }
 }
 

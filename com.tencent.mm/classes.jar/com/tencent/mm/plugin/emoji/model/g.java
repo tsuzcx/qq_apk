@@ -1,80 +1,39 @@
 package com.tencent.mm.plugin.emoji.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.emoji.a.a.f;
-import com.tencent.mm.protocal.protobuf.EmotionBanner;
-import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
-import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
-import java.util.ArrayList;
-import java.util.List;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emoji/model/EmojiCustomGroupModel;", "Lcom/tencent/mm/plugin/emoji/model/AbsEmojiCustomGroupModel;", "Lcom/tencent/mm/plugin/emoji/model/EmojiCustomItemGroup;", "entrance", "", "(Z)V", "data", "getData", "()Lcom/tencent/mm/plugin/emoji/model/EmojiCustomItemGroup;", "setData", "(Lcom/tencent/mm/plugin/emoji/model/EmojiCustomItemGroup;)V", "getEntrance", "()Z", "setEntrance", "createData", "plugin-emoji_release"})
 public final class g
+  extends a<h>
 {
-  public int rbs;
-  public List<f> rbt;
-  public EmotionBanner rbu;
-  public List<EmotionBanner> rbv;
-  public List<EmotionBannerSet> rbw;
-  public List<EmotionBannerSet> rbx;
+  private boolean uDV;
+  private h uEh;
   
-  public final void FX(int paramInt)
+  public g()
   {
-    this.rbs += paramInt;
+    AppMethodBeat.i(256222);
+    this.uDV = true;
+    this.uEh = cUE();
+    AppMethodBeat.o(256222);
   }
   
-  public final void cFZ()
+  private h cUE()
   {
-    AppMethodBeat.i(108587);
-    if (this.rbx == null)
-    {
-      AppMethodBeat.o(108587);
-      return;
-    }
-    if (this.rbx.isEmpty())
-    {
-      AppMethodBeat.o(108587);
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(this.rbx);
-    int i = localArrayList.size() - 1;
-    while (i >= 0)
-    {
-      this.rbt.add(0, new f((EmotionBannerSet)localArrayList.get(i)));
-      this.rbs += 1;
-      this.rbx.remove(localArrayList.get(i));
-      i -= 1;
-    }
-    AppMethodBeat.o(108587);
+    AppMethodBeat.i(256217);
+    h localh = new h(this.uDV);
+    AppMethodBeat.o(256217);
+    return localh;
   }
   
-  public final void dg(List<f> paramList)
+  public final void cUC()
   {
-    AppMethodBeat.i(108588);
-    if (this.rbt == null) {
-      this.rbt = new ArrayList();
-    }
-    for (;;)
-    {
-      this.rbt.addAll(paramList);
-      AppMethodBeat.o(108588);
-      return;
-      int i = this.rbt.size() - 1;
-      if ((i >= 0) && (i < this.rbt.size()))
-      {
-        f localf = (f)this.rbt.get(i);
-        if ((localf != null) && (localf.qYl != null) && (!Util.isNullOrNil(localf.qYl.ProductID)) && (localf.qYl.ProductID.equals(EmojiGroupInfo.Uum))) {
-          this.rbt.remove(localf);
-        }
-      }
-    }
+    this.uDV = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.model.g
  * JD-Core Version:    0.7.0.1
  */

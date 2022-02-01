@@ -4,29 +4,29 @@ import com.tencent.mm.storage.ca;
 
 public final class a
 {
-  public ca dCM;
+  public ca fvt;
   public String talker;
-  public boolean tca;
-  public boolean tcb;
-  public a tcc;
+  public boolean wIf;
+  public boolean wIg;
+  public a wIh;
   
   public a(boolean paramBoolean1, boolean paramBoolean2, String paramString, ca paramca, a parama)
   {
-    this.tca = paramBoolean1;
-    this.tcb = paramBoolean2;
+    this.wIf = paramBoolean1;
+    this.wIg = paramBoolean2;
     this.talker = paramString;
-    this.dCM = paramca;
-    this.tcc = parama;
+    this.fvt = paramca;
+    this.wIh = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void cVq();
+    public abstract void dkw();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.b.c.a
  * JD-Core Version:    0.7.0.1
  */

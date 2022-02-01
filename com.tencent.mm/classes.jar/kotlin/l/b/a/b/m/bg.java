@@ -11,20 +11,20 @@ public abstract class bg
     super((byte)0);
   }
   
-  public abstract bg EF(boolean paramBoolean);
+  public abstract bg Jm(boolean paramBoolean);
   
   public abstract bg b(g paramg);
   
   public abstract bg e(i parami);
   
-  public final bg hLF()
+  public final bg iPX()
   {
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.bg
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mm.sticker.loader;
 import com.tencent.mm.loader.d.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/sticker/loader/LensIconDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/sticker/loader/LensIconData;", "()V", "TAG", "", "loadDataImp", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "plugin-sticker_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sticker/loader/LensIconDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/sticker/loader/LensIconData;", "()V", "TAG", "", "loadDataImp", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "plugin-sticker_release"})
 public final class c
   extends b<a>
 {
@@ -21,34 +21,34 @@ public final class c
     //   8: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   11: aload_1
     //   12: ldc 47
-    //   14: invokestatic 53	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   14: invokestatic 53	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
     //   17: aload_2
     //   18: ldc 54
-    //   20: invokestatic 53	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   20: invokestatic 53	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
     //   23: aload_3
     //   24: ldc 55
-    //   26: invokestatic 53	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   26: invokestatic 53	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
     //   29: aload_1
-    //   30: invokevirtual 61	com/tencent/mm/loader/h/a/a:value	()Ljava/lang/Object;
+    //   30: invokevirtual 61	com/tencent/mm/loader/h/a/a:aSr	()Ljava/lang/Object;
     //   33: checkcast 63	com/tencent/mm/sticker/loader/a
-    //   36: getfield 67	com/tencent/mm/sticker/loader/a:NMJ	Lcom/tencent/mm/protocal/protobuf/chz;
-    //   39: getfield 73	com/tencent/mm/protocal/protobuf/chz:Mnr	Lcom/tencent/mm/protocal/protobuf/chy;
+    //   36: getfield 67	com/tencent/mm/sticker/loader/a:Vat	Lcom/tencent/mm/protocal/protobuf/cqv;
+    //   39: getfield 73	com/tencent/mm/protocal/protobuf/cqv:Tym	Lcom/tencent/mm/protocal/protobuf/cqu;
     //   42: astore_2
     //   43: aload_2
     //   44: ifnull +52 -> 96
     //   47: aload_2
-    //   48: getfield 78	com/tencent/mm/protocal/protobuf/chy:Url	Ljava/lang/String;
+    //   48: getfield 78	com/tencent/mm/protocal/protobuf/cqu:Url	Ljava/lang/String;
     //   51: astore 5
     //   53: aload_1
-    //   54: invokevirtual 61	com/tencent/mm/loader/h/a/a:value	()Ljava/lang/Object;
+    //   54: invokevirtual 61	com/tencent/mm/loader/h/a/a:aSr	()Ljava/lang/Object;
     //   57: checkcast 63	com/tencent/mm/sticker/loader/a
-    //   60: getfield 67	com/tencent/mm/sticker/loader/a:NMJ	Lcom/tencent/mm/protocal/protobuf/chz;
-    //   63: getfield 73	com/tencent/mm/protocal/protobuf/chz:Mnr	Lcom/tencent/mm/protocal/protobuf/chy;
+    //   60: getfield 67	com/tencent/mm/sticker/loader/a:Vat	Lcom/tencent/mm/protocal/protobuf/cqv;
+    //   63: getfield 73	com/tencent/mm/protocal/protobuf/cqv:Tym	Lcom/tencent/mm/protocal/protobuf/cqu;
     //   66: astore_1
     //   67: aload_1
     //   68: ifnull +34 -> 102
     //   71: aload_1
-    //   72: getfield 81	com/tencent/mm/protocal/protobuf/chy:AesKey	Ljava/lang/String;
+    //   72: getfield 81	com/tencent/mm/protocal/protobuf/cqu:AesKey	Ljava/lang/String;
     //   75: astore_2
     //   76: aload 5
     //   78: invokestatic 87	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
@@ -75,7 +75,7 @@ public final class c
     //   123: astore 8
     //   125: aload 8
     //   127: ldc 107
-    //   129: invokestatic 110	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   129: invokestatic 110	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
     //   132: aload 8
     //   134: invokevirtual 116	com/tencent/mm/network/x:getResponseCode	()I
     //   137: istore 4
@@ -83,7 +83,7 @@ public final class c
     //   141: invokevirtual 120	com/tencent/mm/network/x:getInputStream	()Ljava/io/InputStream;
     //   144: astore_1
     //   145: aload 8
-    //   147: invokevirtual 124	com/tencent/mm/network/x:getContentType	()Ljava/lang/String;
+    //   147: invokevirtual 124	com/tencent/mm/network/x:btu	()Ljava/lang/String;
     //   150: astore 7
     //   152: aload_0
     //   153: getfield 34	com/tencent/mm/sticker/loader/c:TAG	Ljava/lang/String;
@@ -121,7 +121,7 @@ public final class c
     //   229: aload_1
     //   230: ifnull +9 -> 239
     //   233: aload_1
-    //   234: invokestatic 160	kotlin/f/a:U	(Ljava/io/InputStream;)[B
+    //   234: invokestatic 160	kotlin/f/a:S	(Ljava/io/InputStream;)[B
     //   237: astore 5
     //   239: aload 8
     //   241: invokevirtual 149	com/tencent/mm/network/x:disconnect	()V
@@ -150,7 +150,7 @@ public final class c
     //   293: astore_2
     //   294: aload_2
     //   295: ldc 184
-    //   297: invokestatic 110	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   297: invokestatic 110	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
     //   300: aload_3
     //   301: aload_2
     //   302: checkcast 186	com/tencent/mm/loader/h/f

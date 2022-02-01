@@ -3,8 +3,8 @@ package com.tencent.liteav.beauty.b;
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
-import com.tencent.liteav.basic.c.h;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.j;
 import com.tencent.liteav.beauty.d.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
@@ -14,7 +14,7 @@ import java.nio.ShortBuffer;
 import java.util.List;
 
 public class x
-  extends h
+  extends j
 {
   private static final float[] A = { 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F };
   protected static final short[] v = { 1, 2, 0, 2, 0, 3 };
@@ -54,9 +54,9 @@ public class x
     AppMethodBeat.o(14969);
   }
   
-  private void q()
+  private void r()
   {
-    AppMethodBeat.i(14974);
+    AppMethodBeat.i(233178);
     if (this.r != null)
     {
       int i = 0;
@@ -75,7 +75,7 @@ public class x
       }
     }
     this.r = null;
-    AppMethodBeat.o(14974);
+    AppMethodBeat.o(233178);
   }
   
   protected void a(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt3)
@@ -187,7 +187,7 @@ public class x
     AppMethodBeat.i(14970);
     super.d();
     this.t = false;
-    q();
+    r();
     AppMethodBeat.o(14970);
   }
   
@@ -234,7 +234,7 @@ public class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.x
  * JD-Core Version:    0.7.0.1
  */

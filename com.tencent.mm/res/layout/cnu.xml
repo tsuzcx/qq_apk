@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kwd" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_marginTop="28.0dip" android:layout_marginRight="20.0dip" android:src="@raw/icons_filled_refresh" android:layout_alignParentRight="true" app:iconColor="@color/BW_100_Alpha_0_5" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/kwe" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="84.0dip" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cf" android:layout_below="@id/kwe">
+        <TextView android:textSize="14.0dip" android:textColor="@color/qp" android:id="@id/kwh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ct" android:layout_alignParentTop="true" android:layout_marginStart="@dimen/ci" />
+        <SeekBar android:id="@id/kwf" android:background="@null" android:layout_width="fill_parent" android:layout_height="64.0dip" android:maxHeight="@dimen/bt" android:max="100" android:progressDrawable="@drawable/zt" android:thumb="@drawable/zu" android:layout_centerHorizontal="true" android:paddingStart="@dimen/ct" android:paddingEnd="@dimen/ct" android:layout_marginStart="@dimen/cl" android:layout_marginEnd="@dimen/cl" android:splitTrack="false" />
+        <ImageView android:id="@id/kwg" android:layout_width="@dimen/ct" android:layout_height="64.0dip" android:src="@drawable/zu" android:layout_alignLeft="@id/kwf" />
+    </RelativeLayout>
+</RelativeLayout>

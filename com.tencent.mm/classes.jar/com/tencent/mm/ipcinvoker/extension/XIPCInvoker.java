@@ -5,39 +5,58 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.e.b;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.m;
 
 public final class XIPCInvoker
 {
-  public static <T extends k<InputType, ResultType>, InputType, ResultType> ResultType a(String paramString, InputType paramInputType, Class<T> paramClass)
+  public static <T extends m<InputType, ResultType>, InputType, ResultType> ResultType a(String paramString, InputType paramInputType, Class<T> paramClass)
   {
     AppMethodBeat.i(158811);
-    paramString = (WrapperParcelable)h.a(paramString, new WrapperParcelable(paramClass.getName(), paramInputType), c.class);
+    paramString = (WrapperParcelable)j.a(paramString, new WrapperParcelable(paramClass.getName(), paramInputType), d.class);
     if (paramString == null)
     {
-      com.tencent.mm.ipcinvoker.h.b.w("IPC.XIPCInvoker", "sync invoke error, wrapper parcelable data is null!", new Object[0]);
+      com.tencent.mm.ipcinvoker.h.c.w("IPC.XIPCInvoker", "sync invoke error, wrapper parcelable data is null!", new Object[0]);
       AppMethodBeat.o(158811);
       return null;
     }
-    paramString = paramString.hnx;
+    paramString = paramString.jZm;
     AppMethodBeat.o(158811);
     return paramString;
   }
   
-  public static <T extends com.tencent.mm.ipcinvoker.b<InputType, ResultType>, InputType, ResultType> void a(String paramString, InputType paramInputType, Class<T> paramClass, d<ResultType> paramd)
+  public static <T extends d<InputType, ResultType>, InputType, ResultType> void a(String paramString, InputType paramInputType, Class<T> paramClass, f<ResultType> paramf)
   {
     AppMethodBeat.i(158810);
-    h.a(paramString, new WrapperParcelable(paramClass.getName(), paramInputType), a.class, new d() {});
-    AppMethodBeat.o(158810);
+    int i = 0;
+    try
+    {
+      boolean bool = com.tencent.mm.ipcinvoker.h.a.e(paramClass, com.tencent.mm.ipcinvoker.c.a.class);
+      i = bool;
+    }
+    catch (Exception localException)
+    {
+      label20:
+      break label20;
+    }
+    paramClass = new WrapperParcelable(paramClass.getName(), paramInputType);
+    if (i != 0) {}
+    for (paramInputType = b.class;; paramInputType = a.class)
+    {
+      j.a(paramString, paramClass, paramInputType, new f() {});
+      AppMethodBeat.o(158810);
+      return;
+    }
   }
   
   static class WrapperParcelable
     implements Parcelable
   {
     public static final Parcelable.Creator<WrapperParcelable> CREATOR;
-    String hnA;
-    Object hnx;
+    Object jZm;
+    String jZp;
     
     static
     {
@@ -50,8 +69,8 @@ public final class XIPCInvoker
     
     public WrapperParcelable(String paramString, Object paramObject)
     {
-      this.hnA = paramString;
-      this.hnx = paramObject;
+      this.jZp = paramString;
+      this.jZm = paramObject;
     }
     
     public int describeContents()
@@ -62,15 +81,15 @@ public final class XIPCInvoker
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(158808);
-      paramParcel.writeString(this.hnA);
-      if (this.hnx != null)
+      paramParcel.writeString(this.jZp);
+      if (this.jZm != null)
       {
-        a locala = c.bq(this.hnx);
+        a locala = c.bq(this.jZm);
         if (locala != null)
         {
           paramParcel.writeInt(1);
           paramParcel.writeString(locala.getClass().getName());
-          locala.a(this.hnx, paramParcel);
+          locala.a(this.jZm, paramParcel);
           AppMethodBeat.o(158808);
           return;
         }
@@ -81,49 +100,60 @@ public final class XIPCInvoker
   }
   
   static class a
-    implements com.tencent.mm.ipcinvoker.b<XIPCInvoker.WrapperParcelable, XIPCInvoker.WrapperParcelable>
+    implements d<XIPCInvoker.WrapperParcelable, XIPCInvoker.WrapperParcelable>
   {}
   
-  static final class b
-    implements d, com.tencent.mm.ipcinvoker.e.a
+  @com.tencent.mm.ipcinvoker.c.a
+  static class b
+    extends XIPCInvoker.a
+    implements com.tencent.mm.ipcinvoker.c<XIPCInvoker.WrapperParcelable, XIPCInvoker.WrapperParcelable>
   {
-    d<XIPCInvoker.WrapperParcelable> hny;
-    com.tencent.mm.ipcinvoker.e.a hnz;
+    private b()
+    {
+      super();
+    }
+  }
+  
+  static final class c
+    implements com.tencent.mm.ipcinvoker.e.a, f
+  {
+    f<XIPCInvoker.WrapperParcelable> jZn;
+    com.tencent.mm.ipcinvoker.e.a jZo;
     
-    b(d<XIPCInvoker.WrapperParcelable> paramd)
+    c(f<XIPCInvoker.WrapperParcelable> paramf)
     {
       AppMethodBeat.i(158803);
-      this.hny = paramd;
-      if ((paramd instanceof com.tencent.mm.ipcinvoker.e.a)) {
-        this.hnz = ((com.tencent.mm.ipcinvoker.e.a)paramd);
+      this.jZn = paramf;
+      if ((paramf instanceof com.tencent.mm.ipcinvoker.e.a)) {
+        this.jZo = ((com.tencent.mm.ipcinvoker.e.a)paramf);
       }
       AppMethodBeat.o(158803);
     }
     
-    public final void a(com.tencent.mm.ipcinvoker.e.b paramb)
+    public final void a(b paramb)
     {
       AppMethodBeat.i(158805);
-      if (this.hnz == null)
+      if (this.jZo == null)
       {
         AppMethodBeat.o(158805);
         return;
       }
-      this.hnz.a(paramb);
+      this.jZo.a(paramb);
       AppMethodBeat.o(158805);
     }
     
-    public final void bn(Object paramObject)
+    public final void aH(Object paramObject)
     {
       AppMethodBeat.i(158804);
-      if (this.hny != null) {
-        this.hny.bn(new XIPCInvoker.WrapperParcelable(null, paramObject));
+      if (this.jZn != null) {
+        this.jZn.aH(new XIPCInvoker.WrapperParcelable(null, paramObject));
       }
       AppMethodBeat.o(158804);
     }
   }
   
-  static class c
-    implements k<XIPCInvoker.WrapperParcelable, XIPCInvoker.WrapperParcelable>
+  static class d
+    implements m<XIPCInvoker.WrapperParcelable, XIPCInvoker.WrapperParcelable>
   {}
 }
 

@@ -1,222 +1,288 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.os.Build.VERSION;
+import android.content.Intent;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.e.c;
-import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.kernel.b.h;
-import com.tencent.mm.kernel.d;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.task.AppBrandRemoteTaskController;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.plugin.appbrand.ac.h;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.Set;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/AppBrandProcessSharedPersistentRuntimeStore;", "", "()V", "TAG", "", "runtimeMap", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "contains", "", "runtime", "isAllEquals", "array", "", "objectToMatch", "([Ljava/lang/Object;Ljava/lang/Object;)Z", "isEmpty", "onRuntimeFinish", "", "appId", "poll", "cfg", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "container", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeContainerWC;", "pollOrCreate", "remotePop", "remove", "stash", "plugin-appbrand-integration_release"})
 public final class k
 {
-  private static final ConcurrentHashMap<String, q> kAg;
-  public static final k kAh;
+  private static final Iterator<k.c> nsP;
+  private static final Map<String, k.b> nsQ;
+  private static final Map<String, d> nsR;
+  private static final h<String, k.c> nsS;
+  private static final h<String, k.a> nsT;
   
   static
   {
-    AppMethodBeat.i(50146);
-    kAh = new k();
-    kAg = new ConcurrentHashMap();
-    AppMethodBeat.o(50146);
+    AppMethodBeat.i(140582);
+    nsP = new k.1();
+    nsQ = new HashMap();
+    nsR = new HashMap();
+    nsS = new h();
+    nsT = new h();
+    AppMethodBeat.o(140582);
   }
   
-  public static final void Ue(String paramString)
+  public static void a(String paramString, k.a parama)
   {
-    AppMethodBeat.i(227894);
-    p.h(paramString, "appId");
-    Log.i("MicroMsg.AppBrandProcessSharedPersistentRuntimeStore", "onRuntimeFinish appId =".concat(String.valueOf(paramString)));
-    XIPCInvoker.a(MainProcessIPCService.dkO, new IPC_PARAM_onRuntimeFinish(paramString), ag.class, null);
-    AppMethodBeat.o(227894);
+    AppMethodBeat.i(182832);
+    nsT.k(paramString, parama);
+    AppMethodBeat.o(182832);
   }
   
-  public static final q a(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandRuntimeContainerWC paramAppBrandRuntimeContainerWC)
+  public static void a(String paramString, k.b paramb)
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(175099);
-    p.h(paramAppBrandInitConfigWC, "cfg");
-    p.h(paramAppBrandRuntimeContainerWC, "container");
-    q localq = (q)kAg.remove(paramAppBrandInitConfigWC.appId);
-    if (localq != null)
+    AppMethodBeat.i(140580);
+    if (TextUtils.isEmpty(paramString))
     {
-      f(localq);
-      Boolean[] arrayOfBoolean = new Boolean[4];
-      if (localq.bss() == paramAppBrandInitConfigWC.ldK)
-      {
-        bool1 = true;
-        arrayOfBoolean[0] = Boolean.valueOf(bool1);
-        arrayOfBoolean[1] = Boolean.valueOf(localq.brt());
-        if (localq.isFinishing()) {
-          break label196;
-        }
-        bool1 = true;
-        label94:
-        arrayOfBoolean[2] = Boolean.valueOf(bool1);
-        if (localq.isDestroyed()) {
-          break label201;
-        }
-      }
-      label196:
-      label201:
-      for (boolean bool1 = bool2;; bool1 = false)
-      {
-        arrayOfBoolean[3] = Boolean.valueOf(bool1);
-        Log.i("MicroMsg.AppBrandProcessSharedPersistentRuntimeStore", "pollOrCreate, existed runtime[" + localq.getAppId() + "], conditions[" + org.apache.commons.b.a.toString(arrayOfBoolean) + ']');
-        if (!a(arrayOfBoolean, Boolean.TRUE)) {
-          break label206;
-        }
-        localq.a((ak)paramAppBrandRuntimeContainerWC);
-        AppMethodBeat.o(175099);
-        return localq;
-        bool1 = false;
-        break;
-        bool1 = false;
-        break label94;
-      }
-    }
-    label206:
-    AppMethodBeat.o(175099);
-    return null;
-  }
-  
-  private static boolean a(Object[] paramArrayOfObject, Object paramObject)
-  {
-    AppMethodBeat.i(50138);
-    int i = 0;
-    while (i < 4)
-    {
-      if ((p.j(paramArrayOfObject[i], paramObject) ^ true))
-      {
-        AppMethodBeat.o(50138);
-        return false;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(50138);
-    return true;
-  }
-  
-  public static final void c(q paramq)
-  {
-    AppMethodBeat.i(50142);
-    p.h(paramq, "runtime");
-    Log.i("MicroMsg.AppBrandProcessSharedPersistentRuntimeStore", "stash ".concat(String.valueOf(paramq)));
-    paramq.a(null);
-    Object localObject = (Map)kAg;
-    String str = paramq.getAppId();
-    p.g(str, "runtime.appId");
-    ((Map)localObject).put(str, paramq);
-    try
-    {
-      localObject = paramq.kDi;
-      p.g(localObject, "runtime.mRemoteController");
-      if (((AppBrandRemoteTaskController)localObject).getAppId() == null)
-      {
-        Log.e("MicroMsg.AppBrandProcessSharedPersistentRuntimeStore", "stash, null == runtime.mRemoteController.appId, updateRuntimeProps(" + paramq + ')');
-        paramq.kDi.M(paramq);
-      }
-      localObject = MainProcessIPCService.dkO;
-      str = paramq.getAppId();
-      com.tencent.mm.kernel.b.g localg = com.tencent.mm.kernel.g.aAe().azG();
-      p.g(localg, "MMKernel.process().current()");
-      XIPCInvoker.a((String)localObject, new IPC_PARAM_stashPersistentApp(str, ((h)localg).getProcessName(), paramq.kDi), ai.class);
-      AppMethodBeat.o(50142);
+      AppMethodBeat.o(140580);
       return;
     }
-    catch (c paramq)
-    {
-      AppMethodBeat.o(50142);
-    }
+    nsQ.put(paramString, paramb);
+    AppMethodBeat.o(140580);
   }
   
-  public static final boolean d(q paramq)
+  public static void a(String paramString, k.c paramc)
   {
-    AppMethodBeat.i(227893);
-    if (paramq == null)
+    AppMethodBeat.i(140567);
+    if ((TextUtils.isEmpty(paramString)) || (paramc == null))
     {
-      AppMethodBeat.o(227893);
-      return false;
-    }
-    boolean bool = kAg.containsValue(paramq);
-    AppMethodBeat.o(227893);
-    return bool;
-  }
-  
-  public static final boolean e(q paramq)
-  {
-    AppMethodBeat.i(50143);
-    p.h(paramq, "runtime");
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 24) {
-      bool = kAg.remove(paramq.getAppId(), paramq);
-    }
-    for (;;)
-    {
-      if (bool) {
-        f(paramq);
-      }
-      AppMethodBeat.o(50143);
-      return bool;
-      if (d(paramq))
-      {
-        kAg.remove(paramq.getAppId());
-        bool = true;
-      }
-      else
-      {
-        bool = false;
-      }
-    }
-  }
-  
-  private static void f(q paramq)
-  {
-    AppMethodBeat.i(50145);
-    kotlin.g.a.a locala = (kotlin.g.a.a)new a(paramq);
-    try
-    {
-      locala.invoke();
-      AppMethodBeat.o(50145);
+      AppMethodBeat.o(140567);
       return;
     }
-    catch (c localc)
-    {
-      Log.e("MicroMsg.AppBrandProcessSharedPersistentRuntimeStore", "remotePop runtime:" + paramq + ", exception:" + localc);
-      AppMethodBeat.o(50145);
-    }
+    nsS.k(paramString, paramc);
+    AppMethodBeat.o(140567);
   }
   
-  public static final boolean isEmpty()
+  public static void a(String paramString, d paramd)
   {
-    AppMethodBeat.i(50139);
-    boolean bool = kAg.isEmpty();
-    AppMethodBeat.o(50139);
-    return bool;
+    AppMethodBeat.i(140579);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140579);
+      return;
+    }
+    nsR.put(paramString, paramd);
+    AppMethodBeat.o(140579);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class a
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<IPCVoid>
+  private static Iterator<k.c> abD(String paramString)
   {
-    a(q paramq)
+    AppMethodBeat.i(140568);
+    paramString = nsS.cN(paramString);
+    if (paramString != null)
     {
-      super();
+      paramString = paramString.iterator();
+      AppMethodBeat.o(140568);
+      return paramString;
     }
+    paramString = nsP;
+    AppMethodBeat.o(140568);
+    return paramString;
+  }
+  
+  public static void abE(String paramString)
+  {
+    AppMethodBeat.i(140569);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140569);
+      return;
+    }
+    paramString = abD(paramString);
+    while (paramString.hasNext()) {
+      ((k.c)paramString.next()).onCreate();
+    }
+    AppMethodBeat.o(140569);
+  }
+  
+  public static void abF(String paramString)
+  {
+    AppMethodBeat.i(140570);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140570);
+      return;
+    }
+    paramString = abD(paramString);
+    while (paramString.hasNext()) {
+      ((k.c)paramString.next()).onDestroy();
+    }
+    AppMethodBeat.o(140570);
+  }
+  
+  public static void abG(String paramString)
+  {
+    AppMethodBeat.i(210457);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(210457);
+      return;
+    }
+    paramString = abD(paramString);
+    while (paramString.hasNext()) {
+      ((k.c)paramString.next()).bBQ();
+    }
+    AppMethodBeat.o(210457);
+  }
+  
+  public static void abH(String paramString)
+  {
+    AppMethodBeat.i(140571);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140571);
+      return;
+    }
+    Iterator localIterator = abD(paramString);
+    while (localIterator.hasNext()) {
+      ((k.c)localIterator.next()).a(abM(paramString));
+    }
+    AppMethodBeat.o(140571);
+  }
+  
+  public static void abI(String paramString)
+  {
+    AppMethodBeat.i(140572);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140572);
+      return;
+    }
+    paramString = abD(paramString);
+    while (paramString.hasNext()) {
+      ((k.c)paramString.next()).onResume();
+    }
+    AppMethodBeat.o(140572);
+  }
+  
+  public static void abJ(String paramString)
+  {
+    AppMethodBeat.i(140573);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140573);
+      return;
+    }
+    paramString = abD(paramString);
+    while (paramString.hasNext()) {
+      paramString.next();
+    }
+    AppMethodBeat.o(140573);
+  }
+  
+  public static void abK(String paramString)
+  {
+    AppMethodBeat.i(140576);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140576);
+      return;
+    }
+    nsS.cO(paramString);
+    nsT.cO(paramString);
+    AppMethodBeat.o(140576);
+  }
+  
+  public static void abL(String paramString)
+  {
+    AppMethodBeat.i(140577);
+    a(paramString, d.ntd);
+    AppMethodBeat.o(140577);
+  }
+  
+  public static d abM(String paramString)
+  {
+    AppMethodBeat.i(140578);
+    paramString = (d)nsR.get(paramString);
+    if (paramString == null)
+    {
+      paramString = d.ntd;
+      AppMethodBeat.o(140578);
+      return paramString;
+    }
+    AppMethodBeat.o(140578);
+    return paramString;
+  }
+  
+  public static k.b abN(String paramString)
+  {
+    AppMethodBeat.i(140581);
+    k.b localb = (k.b)nsQ.get(paramString);
+    paramString = localb;
+    if (localb == null) {
+      paramString = k.b.nsU;
+    }
+    AppMethodBeat.o(140581);
+    return paramString;
+  }
+  
+  public static void b(String paramString, k.a parama)
+  {
+    AppMethodBeat.i(182833);
+    nsT.D(paramString, parama);
+    AppMethodBeat.o(182833);
+  }
+  
+  public static void b(String paramString, k.c paramc)
+  {
+    AppMethodBeat.i(140574);
+    if ((paramc == null) || (TextUtils.isEmpty(paramString)))
+    {
+      AppMethodBeat.o(140574);
+      return;
+    }
+    nsS.D(paramString, paramc);
+    AppMethodBeat.o(140574);
+  }
+  
+  public static boolean b(String paramString, Intent paramIntent)
+  {
+    AppMethodBeat.i(182834);
+    paramString = nsT.cN(paramString);
+    if (paramString != null)
+    {
+      paramString = paramString.iterator();
+      while (paramString.hasNext()) {
+        if (((k.a)paramString.next()).onNewIntent(paramIntent))
+        {
+          AppMethodBeat.o(182834);
+          return true;
+        }
+      }
+    }
+    AppMethodBeat.o(182834);
+    return false;
+  }
+  
+  public static enum d
+  {
+    static
+    {
+      AppMethodBeat.i(140566);
+      ntb = new d("CLOSE", 0);
+      ntc = new d("BACK", 1);
+      ntd = new d("HIDE", 2);
+      nte = new d("HANG", 3);
+      ntf = new d("HOME_PRESSED", 4);
+      ntg = new d("RECENT_APPS_PRESSED", 5);
+      nth = new d("LAUNCH_NATIVE_PAGE", 6);
+      nti = new d("LAUNCH_MINI_PROGRAM", 7);
+      ntj = new d[] { ntb, ntc, ntd, nte, ntf, ntg, nth, nti };
+      AppMethodBeat.o(140566);
+    }
+    
+    private d() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.k
  * JD-Core Version:    0.7.0.1
  */

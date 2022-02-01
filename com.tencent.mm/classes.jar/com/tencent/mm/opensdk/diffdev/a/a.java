@@ -129,13 +129,13 @@ public class a
   {
     a()
     {
-      AppMethodBeat.i(190388);
-      AppMethodBeat.o(190388);
+      AppMethodBeat.i(254854);
+      AppMethodBeat.o(254854);
     }
     
     public void onAuthFinish(OAuthErrCode paramOAuthErrCode, String paramString)
     {
-      AppMethodBeat.i(190391);
+      AppMethodBeat.i(254862);
       Log.d("MicroMsg.SDK.ListenerWrapper", String.format("onAuthFinish, errCode = %s, authCode = %s", new Object[] { paramOAuthErrCode.toString(), paramString }));
       a.a(a.this, null);
       Object localObject = new ArrayList();
@@ -144,12 +144,12 @@ public class a
       while (((Iterator)localObject).hasNext()) {
         ((OAuthListener)((Iterator)localObject).next()).onAuthFinish(paramOAuthErrCode, paramString);
       }
-      AppMethodBeat.o(190391);
+      AppMethodBeat.o(254862);
     }
     
     public void onAuthGotQrcode(String paramString, byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(190389);
+      AppMethodBeat.i(254858);
       Log.d("MicroMsg.SDK.ListenerWrapper", "onAuthGotQrcode, qrcodeImgPath = ".concat(String.valueOf(paramString)));
       Object localObject = new ArrayList();
       ((ArrayList)localObject).addAll(a.a(a.this));
@@ -157,17 +157,17 @@ public class a
       while (((Iterator)localObject).hasNext()) {
         ((OAuthListener)((Iterator)localObject).next()).onAuthGotQrcode(paramString, paramArrayOfByte);
       }
-      AppMethodBeat.o(190389);
+      AppMethodBeat.o(254858);
     }
     
     public void onQrcodeScanned()
     {
-      AppMethodBeat.i(190390);
+      AppMethodBeat.i(254860);
       Log.d("MicroMsg.SDK.ListenerWrapper", "onQrcodeScanned");
       if (a.b(a.this) != null) {
         a.b(a.this).post(new a());
       }
-      AppMethodBeat.o(190390);
+      AppMethodBeat.o(254860);
     }
     
     class a
@@ -175,27 +175,27 @@ public class a
     {
       a()
       {
-        AppMethodBeat.i(190372);
-        AppMethodBeat.o(190372);
+        AppMethodBeat.i(254548);
+        AppMethodBeat.o(254548);
       }
       
       public void run()
       {
-        AppMethodBeat.i(190373);
+        AppMethodBeat.i(254549);
         Object localObject = new ArrayList();
         ((ArrayList)localObject).addAll(a.a(a.this));
         localObject = ((ArrayList)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
           ((OAuthListener)((Iterator)localObject).next()).onQrcodeScanned();
         }
-        AppMethodBeat.o(190373);
+        AppMethodBeat.o(254549);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.opensdk.diffdev.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,284 +1,309 @@
 package com.tencent.mm.plugin.appbrand.floatball;
 
 import android.content.Context;
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.au.i;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.t;
 import com.tencent.mm.plugin.ball.model.BallInfo;
+import com.tencent.mm.plugin.ball.service.FloatBallHelper;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.system.AndroidContextUtil;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class c
 {
-  public a lqA;
-  public b lqw;
-  public e lqx;
-  public f lqy;
-  public g lqz;
+  public b olg;
+  public e olh;
+  public f oli;
+  public g olj;
+  public a olk;
   
-  public static void a(com.tencent.mm.plugin.ball.service.a parama, AppBrandInitConfig paramAppBrandInitConfig)
+  public static void a(FloatBallHelper paramFloatBallHelper, AppBrandInitConfig paramAppBrandInitConfig)
   {
     int i = 0;
-    AppMethodBeat.i(226542);
+    AppMethodBeat.i(267818);
     if (!(paramAppBrandInitConfig instanceof AppBrandInitConfigWC))
     {
-      AppMethodBeat.o(226542);
+      AppMethodBeat.o(267818);
       return;
     }
     paramAppBrandInitConfig = (AppBrandInitConfigWC)paramAppBrandInitConfig;
-    Log.i("MicroMsg.AppBrandFloatBallLogic", "setReportInfo, floatBallHelper:%s, configAppName:%s", new Object[] { parama, paramAppBrandInitConfig.brandName });
-    parama.ciw().dPJ = paramAppBrandInitConfig.appId;
-    parama.ciw().iNV = paramAppBrandInitConfig.brandName;
-    parama.ciw().oWy = String.valueOf(paramAppBrandInitConfig.cyo);
-    parama = parama.ciw();
-    if (paramAppBrandInitConfig.cyA == null) {}
+    Log.i("MicroMsg.AppBrandFloatBallLogic", "setReportInfo, floatBallHelper:%s, configAppName:%s", new Object[] { paramFloatBallHelper, paramAppBrandInitConfig.fzM });
+    paramFloatBallHelper.cvL().fIZ = paramAppBrandInitConfig.appId;
+    paramFloatBallHelper.cvL().lEm = paramAppBrandInitConfig.fzM;
+    paramFloatBallHelper.cvL().rYy = String.valueOf(paramAppBrandInitConfig.cwR);
+    paramFloatBallHelper = paramFloatBallHelper.cvL();
+    if (paramAppBrandInitConfig.cxf == null) {}
     for (;;)
     {
-      parama.oWx = i;
-      AppMethodBeat.o(226542);
+      paramFloatBallHelper.rYx = i;
+      AppMethodBeat.o(267818);
       return;
-      i = paramAppBrandInitConfig.cyA.scene;
+      i = paramAppBrandInitConfig.cxf.scene;
     }
   }
   
-  public final void v(final q paramq)
+  public final void w(final t paramt)
   {
-    AppMethodBeat.i(226539);
-    Log.i("MicroMsg.AppBrandFloatBallLogic", "init, runtime:%s", new Object[] { paramq.mAppId });
-    com.tencent.f.h.RTc.b(new Runnable()
+    AppMethodBeat.i(267815);
+    Log.i("MicroMsg.AppBrandFloatBallLogic", "init, runtime:%s", new Object[] { paramt.mAppId });
+    com.tencent.e.h.ZvG.d(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(226536);
-        if ((paramq.isDestroyed()) || (paramq.SO))
+        AppMethodBeat.i(270572);
+        if ((paramt.ntU.get()) || (paramt.aol))
         {
           Log.w("MicroMsg.AppBrandFloatBallLogic", "initFloatBallHelper in work thread, but runtime finished");
-          AppMethodBeat.o(226536);
+          AppMethodBeat.o(270572);
           return;
         }
-        if (c.this.lqw != null) {
-          c.this.lqw.onDestroy();
+        if (c.this.olg != null) {
+          c.this.olg.onDestroy();
         }
-        Object localObject = new d(AndroidContextUtil.castActivityOrNull(paramq.mContext), paramq);
-        c.this.lqw = new b((com.tencent.mm.plugin.ball.a.f)localObject, paramq);
-        c.this.lqw.G(1, com.tencent.mm.plugin.ball.f.b.cA(paramq.mAppId, paramq.kAq.eix));
-        localObject = c.this.lqw;
-        AppBrandInitConfigWC localAppBrandInitConfigWC = paramq.bsC();
+        Object localObject = new d(AndroidContextUtil.castActivityOrNull(paramt.mContext), paramt);
+        c.this.olg = new b((com.tencent.mm.plugin.ball.a.f)localObject, paramt);
+        c.this.olg.I(1, com.tencent.mm.plugin.ball.f.b.cV(paramt.mAppId, paramt.ntz.cBI));
+        localObject = c.this.olg;
+        AppBrandInitConfigWC localAppBrandInitConfigWC = paramt.bDy();
         if (localAppBrandInitConfigWC != null)
         {
           Log.i("MicroMsg.AppBrandFloatBallHelper", "updateBallInfoWithInitConfig, initConfig:%s", new Object[] { localAppBrandInitConfigWC });
-          ((b)localObject).oWE.icon = ((b)localObject).kGW.bsC().iconUrl;
-          ((b)localObject).oWE.name = ((b)localObject).kGW.bsC().brandName;
-          if (((b)localObject).kGW.kAq.eix == 1)
+          ((b)localObject).rYE.icon = ((b)localObject).nAH.bDy().iconUrl;
+          ((b)localObject).rYE.name = ((b)localObject).nAH.bDy().fzM;
+          if (((b)localObject).nAH.ntz.cBI == 1)
           {
-            ((b)localObject).oWE.tag = MMApplicationContext.getContext().getString(2131755352);
-            ((b)localObject).oWE.eS("appId", ((b)localObject).kGW.bsC().appId);
-            ((b)localObject).oWE.eS("username", ((b)localObject).kGW.bsC().username);
-            ((b)localObject).oWE.cy("versionType", ((b)localObject).kGW.bsC().eix);
-            c.a((com.tencent.mm.plugin.ball.service.a)localObject, localAppBrandInitConfigWC);
-            ((b)localObject).ciw().hDa = 6;
-            ((b)localObject).cit();
+            ((b)localObject).rYE.tag = MMApplicationContext.getContext().getString(au.i.app_brand_app_debug_type_testing);
+            ((b)localObject).rYE.fg("appId", ((b)localObject).nAH.bDy().appId);
+            ((b)localObject).rYE.fg("username", ((b)localObject).nAH.bDy().username);
+            ((b)localObject).rYE.cT("versionType", ((b)localObject).nAH.bDy().cBI);
+            c.a((FloatBallHelper)localObject, localAppBrandInitConfigWC);
+            ((b)localObject).cvL().kqZ = 6;
+            ((b)localObject).cvG();
           }
         }
         else
         {
-          if (c.this.lqx != null) {
-            c.this.lqx.onDestroy();
+          if (c.this.olh != null) {
+            c.this.olh.onDestroy();
           }
-          localObject = new d(AndroidContextUtil.castActivityOrNull(paramq.mContext), paramq);
-          c.this.lqx = new e((com.tencent.mm.plugin.ball.a.f)localObject, paramq);
-          c.this.lqx.G(7, com.tencent.mm.plugin.ball.f.b.cB(paramq.mAppId, paramq.kAq.eix));
-          localObject = c.this.lqx;
-          localAppBrandInitConfigWC = paramq.bsC();
+          localObject = new d(AndroidContextUtil.castActivityOrNull(paramt.mContext), paramt);
+          c.this.olh = new e((com.tencent.mm.plugin.ball.a.f)localObject, paramt);
+          c.this.olh.I(7, com.tencent.mm.plugin.ball.f.b.cW(paramt.mAppId, paramt.ntz.cBI));
+          localObject = c.this.olh;
+          localAppBrandInitConfigWC = paramt.bDy();
           if (localAppBrandInitConfigWC != null)
           {
             Log.i("MicroMsg.AppBrandLocationFloatBallHelper", "updateBallInfoWithInitConfig, initConfig:%s", new Object[] { localAppBrandInitConfigWC });
-            ((e)localObject).oWE.icon = ((e)localObject).kGW.bsC().iconUrl;
-            ((e)localObject).oWE.name = ((e)localObject).kGW.bsC().brandName;
-            if (((e)localObject).kGW.kAq.eix != 1) {
-              break label1300;
+            ((e)localObject).rYE.icon = ((e)localObject).nAH.bDy().iconUrl;
+            ((e)localObject).rYE.name = ((e)localObject).nAH.bDy().fzM;
+            if (((e)localObject).nAH.ntz.cBI != 1) {
+              break label1308;
             }
-            ((e)localObject).oWE.tag = MMApplicationContext.getContext().getString(2131755352);
-            label494:
-            c.a((com.tencent.mm.plugin.ball.service.a)localObject, localAppBrandInitConfigWC);
-            ((e)localObject).ciw().hDa = 2;
-            ((e)localObject).cit();
+            ((e)localObject).rYE.tag = MMApplicationContext.getContext().getString(au.i.app_brand_app_debug_type_testing);
+            label499:
+            c.a((FloatBallHelper)localObject, localAppBrandInitConfigWC);
+            ((e)localObject).cvL().kqZ = 2;
+            ((e)localObject).cvG();
           }
-          if (c.this.lqy != null) {
-            c.this.lqy.onDestroy();
+          if (c.this.oli != null) {
+            c.this.oli.onDestroy();
           }
-          localObject = new d(AndroidContextUtil.castActivityOrNull(paramq.mContext), paramq);
-          c.this.lqy = new f((com.tencent.mm.plugin.ball.a.f)localObject, paramq);
-          c.this.lqy.G(17, com.tencent.mm.plugin.ball.f.b.cB(paramq.mAppId, paramq.kAq.eix));
-          localObject = c.this.lqy;
-          localAppBrandInitConfigWC = paramq.bsC();
+          localObject = new d(AndroidContextUtil.castActivityOrNull(paramt.mContext), paramt);
+          c.this.oli = new f((com.tencent.mm.plugin.ball.a.f)localObject, paramt);
+          c.this.oli.I(17, com.tencent.mm.plugin.ball.f.b.cW(paramt.mAppId, paramt.ntz.cBI));
+          localObject = c.this.oli;
+          localAppBrandInitConfigWC = paramt.bDy();
           if (localAppBrandInitConfigWC != null)
           {
             Log.i("MicroMsg.AppBrand.AppBrandVOIPFloatBallHelper", "updateBallInfoWithInitConfig, initConfig:%s", new Object[] { localAppBrandInitConfigWC });
-            ((f)localObject).oWE.icon = ((f)localObject).kGW.bsC().iconUrl;
-            ((f)localObject).oWE.name = ((f)localObject).kGW.bsC().brandName;
-            if (((f)localObject).kGW.kAq.eix != 1) {
-              break label1344;
+            ((f)localObject).rYE.icon = ((f)localObject).nAH.bDy().iconUrl;
+            ((f)localObject).rYE.name = ((f)localObject).nAH.bDy().fzM;
+            if (((f)localObject).nAH.ntz.cBI != 1) {
+              break label1352;
             }
-            ((f)localObject).oWE.tag = MMApplicationContext.getContext().getString(2131755352);
-            label702:
-            ((f)localObject).oWE.eS("appId", ((f)localObject).kGW.bsC().appId);
-            ((f)localObject).oWE.eS("username", ((f)localObject).kGW.bsC().username);
-            ((f)localObject).oWE.cy("versionType", ((f)localObject).kGW.bsC().eix);
-            c.a((com.tencent.mm.plugin.ball.service.a)localObject, localAppBrandInitConfigWC);
-            ((f)localObject).ciw().hDa = 12;
-            ((f)localObject).cit();
+            ((f)localObject).rYE.tag = MMApplicationContext.getContext().getString(au.i.app_brand_app_debug_type_testing);
+            label708:
+            ((f)localObject).rYE.fg("appId", ((f)localObject).nAH.bDy().appId);
+            ((f)localObject).rYE.fg("username", ((f)localObject).nAH.bDy().username);
+            ((f)localObject).rYE.cT("versionType", ((f)localObject).nAH.bDy().cBI);
+            c.a((FloatBallHelper)localObject, localAppBrandInitConfigWC);
+            ((f)localObject).cvL().kqZ = 12;
+            ((f)localObject).cvG();
           }
-          if (c.this.lqA != null) {
-            c.this.lqA.onDestroy();
+          if (c.this.olk != null) {
+            c.this.olk.onDestroy();
           }
-          localObject = new d(AndroidContextUtil.castActivityOrNull(paramq.mContext), paramq);
-          c.this.lqA = new a((com.tencent.mm.plugin.ball.a.f)localObject, paramq);
-          c.this.lqA.G(18, com.tencent.mm.plugin.ball.f.b.cA(paramq.mAppId, paramq.kAq.eix));
-          localObject = c.this.lqA;
-          localAppBrandInitConfigWC = paramq.bsC();
+          localObject = new d(AndroidContextUtil.castActivityOrNull(paramt.mContext), paramt);
+          c.this.olk = new a((com.tencent.mm.plugin.ball.a.f)localObject, paramt);
+          c.this.olk.I(18, com.tencent.mm.plugin.ball.f.b.cV(paramt.mAppId, paramt.ntz.cBI));
+          localObject = c.this.olk;
+          localAppBrandInitConfigWC = paramt.bDy();
           if (localAppBrandInitConfigWC != null)
           {
-            Log.i(((a)localObject).cDW, "updateBallInfoWithInitConfig, initConfig:%s", new Object[] { localAppBrandInitConfigWC });
-            ((a)localObject).oWE.icon = ((a)localObject).kBw.bsC().iconUrl;
-            ((a)localObject).oWE.name = ((a)localObject).bCD();
-            if (((a)localObject).kBw.kAq.eix != 1) {
-              break label1388;
+            Log.i(((a)localObject).cED, "updateBallInfoWithInitConfig, initConfig:%s", new Object[] { localAppBrandInitConfigWC });
+            ((a)localObject).rYE.icon = ((a)localObject).nuJ.bDy().iconUrl;
+            ((a)localObject).rYE.name = ((a)localObject).bNY();
+            if (((a)localObject).nuJ.ntz.cBI != 1) {
+              break label1396;
             }
-            ((a)localObject).oWE.tag = MMApplicationContext.getContext().getString(2131755352);
-            label964:
-            ((a)localObject).cit();
+            ((a)localObject).rYE.tag = MMApplicationContext.getContext().getString(au.i.app_brand_app_debug_type_testing);
+            label971:
+            ((a)localObject).cvG();
           }
-          if (c.this.lqz != null) {
-            c.this.lqz.onDestroy();
+          if (c.this.olj != null) {
+            c.this.olj.onDestroy();
           }
-          localObject = new h(AndroidContextUtil.castActivityOrNull(paramq.mContext), paramq);
-          c.this.lqz = new g((com.tencent.mm.plugin.ball.a.f)localObject, paramq);
-          c.this.lqz.G(19, com.tencent.mm.plugin.ball.f.b.cB(paramq.mAppId, paramq.kAq.eix));
-          localObject = c.this.lqz;
-          localAppBrandInitConfigWC = paramq.bsC();
+          localObject = new h(AndroidContextUtil.castActivityOrNull(paramt.mContext), paramt);
+          c.this.olj = new g((com.tencent.mm.plugin.ball.a.f)localObject, paramt);
+          c.this.olj.I(19, com.tencent.mm.plugin.ball.f.b.cW(paramt.mAppId, paramt.ntz.cBI));
+          localObject = c.this.olj;
+          localAppBrandInitConfigWC = paramt.bDy();
           if (localAppBrandInitConfigWC != null)
           {
             Log.i("MicroMsg.AppBrand.AppBrandVoIP1v1FloatBallHelper", "updateBallInfoWithInitConfig, initConfig:%s", new Object[] { localAppBrandInitConfigWC });
-            ((g)localObject).oWE.icon = ((g)localObject).kGW.bsC().iconUrl;
-            ((g)localObject).oWE.name = ((g)localObject).kGW.bsC().brandName;
-            if (((g)localObject).kGW.kAq.eix != 1) {
-              break label1432;
+            ((g)localObject).rYE.icon = ((g)localObject).nAH.bDy().iconUrl;
+            ((g)localObject).rYE.name = ((g)localObject).nAH.bDy().fzM;
+            if (((g)localObject).nAH.ntz.cBI != 1) {
+              break label1440;
             }
-            ((g)localObject).oWE.tag = MMApplicationContext.getContext().getString(2131755352);
+            ((g)localObject).rYE.tag = MMApplicationContext.getContext().getString(au.i.app_brand_app_debug_type_testing);
           }
         }
         for (;;)
         {
-          ((g)localObject).oWE.eS("appId", ((g)localObject).kGW.bsC().appId);
-          ((g)localObject).oWE.eS("username", ((g)localObject).kGW.bsC().username);
-          ((g)localObject).oWE.cy("versionType", ((g)localObject).kGW.bsC().eix);
-          c.a((com.tencent.mm.plugin.ball.service.a)localObject, localAppBrandInitConfigWC);
-          ((g)localObject).ciw().hDa = 14;
-          ((g)localObject).cit();
-          paramq.O(new c.1.1(this));
-          AppMethodBeat.o(226536);
-          return;
-          if (((b)localObject).kGW.kAq.eix == 2)
+          ((g)localObject).rYE.fg("appId", ((g)localObject).nAH.bDy().appId);
+          ((g)localObject).rYE.fg("username", ((g)localObject).nAH.bDy().username);
+          ((g)localObject).rYE.cT("versionType", ((g)localObject).nAH.bDy().cBI);
+          c.a((FloatBallHelper)localObject, localAppBrandInitConfigWC);
+          ((g)localObject).cvL().kqZ = 14;
+          ((g)localObject).cvG();
+          paramt.O(new Runnable()
           {
-            ((b)localObject).oWE.tag = MMApplicationContext.getContext().getString(2131755351);
+            public final void run()
+            {
+              AppMethodBeat.i(273624);
+              if (c.this.olg != null) {
+                c.this.olg.bNV();
+              }
+              if (c.this.olh != null) {
+                c.this.olh.bNV();
+              }
+              if (c.this.oli != null) {
+                c.this.oli.bNV();
+              }
+              if (c.this.olk != null) {
+                c.this.olk.bNV();
+              }
+              if (c.this.olj != null) {
+                c.this.olj.bNV();
+              }
+              AppMethodBeat.o(273624);
+            }
+          });
+          AppMethodBeat.o(270572);
+          return;
+          if (((b)localObject).nAH.ntz.cBI == 2)
+          {
+            ((b)localObject).rYE.tag = MMApplicationContext.getContext().getString(au.i.app_brand_app_debug_type_previewing);
             break;
           }
-          ((b)localObject).oWE.tag = null;
+          ((b)localObject).rYE.tag = null;
           break;
-          label1300:
-          if (((e)localObject).kGW.kAq.eix == 2)
+          label1308:
+          if (((e)localObject).nAH.ntz.cBI == 2)
           {
-            ((e)localObject).oWE.tag = MMApplicationContext.getContext().getString(2131755351);
-            break label494;
+            ((e)localObject).rYE.tag = MMApplicationContext.getContext().getString(au.i.app_brand_app_debug_type_previewing);
+            break label499;
           }
-          ((e)localObject).oWE.tag = null;
-          break label494;
-          label1344:
-          if (((f)localObject).kGW.kAq.eix == 2)
+          ((e)localObject).rYE.tag = null;
+          break label499;
+          label1352:
+          if (((f)localObject).nAH.ntz.cBI == 2)
           {
-            ((f)localObject).oWE.tag = MMApplicationContext.getContext().getString(2131755351);
-            break label702;
+            ((f)localObject).rYE.tag = MMApplicationContext.getContext().getString(au.i.app_brand_app_debug_type_previewing);
+            break label708;
           }
-          ((f)localObject).oWE.tag = null;
-          break label702;
-          label1388:
-          if (((a)localObject).kBw.kAq.eix == 2)
+          ((f)localObject).rYE.tag = null;
+          break label708;
+          label1396:
+          if (((a)localObject).nuJ.ntz.cBI == 2)
           {
-            ((a)localObject).oWE.tag = MMApplicationContext.getContext().getString(2131755351);
-            break label964;
+            ((a)localObject).rYE.tag = MMApplicationContext.getContext().getString(au.i.app_brand_app_debug_type_previewing);
+            break label971;
           }
-          ((a)localObject).oWE.tag = null;
-          break label964;
-          label1432:
-          if (((g)localObject).kGW.kAq.eix == 2) {
-            ((g)localObject).oWE.tag = MMApplicationContext.getContext().getString(2131755351);
+          ((a)localObject).rYE.tag = null;
+          break label971;
+          label1440:
+          if (((g)localObject).nAH.ntz.cBI == 2) {
+            ((g)localObject).rYE.tag = MMApplicationContext.getContext().getString(au.i.app_brand_app_debug_type_previewing);
           } else {
-            ((g)localObject).oWE.tag = null;
+            ((g)localObject).rYE.tag = null;
           }
         }
       }
     }, "FloatBallHelperThread");
-    AppMethodBeat.o(226539);
+    AppMethodBeat.o(267815);
   }
   
-  public final void w(q paramq)
+  public final void x(t paramt)
   {
-    AppMethodBeat.i(226541);
-    Log.i("MicroMsg.AppBrandFloatBallLogic", "destroy, runtime:%s", new Object[] { paramq.mAppId });
-    if (this.lqw != null) {
-      this.lqw.onDestroy();
+    AppMethodBeat.i(267817);
+    Log.i("MicroMsg.AppBrandFloatBallLogic", "destroy, runtime:%s", new Object[] { paramt.mAppId });
+    if (this.olg != null) {
+      this.olg.onDestroy();
     }
-    if (this.lqx != null) {
-      this.lqx.onDestroy();
+    if (this.olh != null) {
+      this.olh.onDestroy();
     }
-    if (this.lqy != null) {
-      this.lqy.onDestroy();
+    if (this.oli != null) {
+      this.oli.onDestroy();
     }
-    if (this.lqA != null) {
-      this.lqA.onDestroy();
+    if (this.olk != null) {
+      this.olk.onDestroy();
     }
-    if (this.lqz != null) {
-      this.lqz.onDestroy();
+    if (this.olj != null) {
+      this.olj.onDestroy();
     }
-    AppMethodBeat.o(226541);
+    AppMethodBeat.o(267817);
   }
   
-  public final boolean ww(int paramInt)
+  public final boolean zJ(int paramInt)
   {
-    AppMethodBeat.i(226540);
-    if ((this.lqw != null) && (this.lqw.wu(paramInt)))
+    AppMethodBeat.i(267816);
+    if ((this.olg != null) && (this.olg.zH(paramInt)))
     {
-      AppMethodBeat.o(226540);
+      AppMethodBeat.o(267816);
       return true;
     }
-    if ((this.lqx != null) && (this.lqx.wu(paramInt)))
+    if ((this.olh != null) && (this.olh.zH(paramInt)))
     {
-      AppMethodBeat.o(226540);
+      AppMethodBeat.o(267816);
       return true;
     }
-    if ((this.lqy != null) && (this.lqy.wu(paramInt)))
+    if ((this.oli != null) && (this.oli.zH(paramInt)))
     {
-      AppMethodBeat.o(226540);
+      AppMethodBeat.o(267816);
       return true;
     }
-    if ((this.lqA != null) && (this.lqA.wu(paramInt)))
+    if ((this.olk != null) && (this.olk.zH(paramInt)))
     {
-      AppMethodBeat.o(226540);
+      AppMethodBeat.o(267816);
       return true;
     }
-    if ((this.lqz != null) && (this.lqz.wu(paramInt)))
+    if ((this.olj != null) && (this.olj.zH(paramInt)))
     {
-      AppMethodBeat.o(226540);
+      AppMethodBeat.o(267816);
       return true;
     }
-    AppMethodBeat.o(226540);
+    AppMethodBeat.o(267816);
     return false;
   }
 }

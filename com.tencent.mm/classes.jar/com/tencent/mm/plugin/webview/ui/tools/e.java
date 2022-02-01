@@ -10,15 +10,15 @@ import android.os.Bundle;
 import android.os.RemoteException;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.plugin.webview.stub.f;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.vfs.u;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,12 +26,12 @@ import java.util.List;
 
 public final class e
 {
-  private static final HashMap<String, WeakReference<Bitmap>> JeH;
+  private static final HashMap<String, WeakReference<Bitmap>> QbK;
   
   static
   {
     AppMethodBeat.i(79687);
-    JeH = new HashMap();
+    QbK = new HashMap();
     AppMethodBeat.o(79687);
   }
   
@@ -53,7 +53,7 @@ public final class e
         localArrayList.add(String.valueOf(paramVarArgs[i]));
         i += 1;
       }
-      parame.v(paramInt, localArrayList);
+      parame.y(paramInt, localArrayList);
       AppMethodBeat.o(79678);
       return;
     }
@@ -81,7 +81,7 @@ public final class e
     localBundle.putString("open_ui_with_webview_ui_plugin_entry", paramString2);
     try
     {
-      paramf.j(101, localBundle);
+      paramf.l(101, localBundle);
       AppMethodBeat.o(79686);
       return true;
     }
@@ -102,15 +102,15 @@ public final class e
     return false;
   }
   
-  public static int agC(int paramInt)
+  public static int aor(int paramInt)
   {
     AppMethodBeat.i(79685);
-    paramInt = ao.agC(paramInt);
+    paramInt = ar.aor(paramInt);
     AppMethodBeat.o(79685);
     return paramInt;
   }
   
-  private static long bA(String paramString, long paramLong)
+  private static long bH(String paramString, long paramLong)
   {
     AppMethodBeat.i(79683);
     if (Util.isNullOrNil(paramString))
@@ -146,21 +146,21 @@ public final class e
     return paramLong;
   }
   
-  public static Bitmap baf(String paramString)
+  public static Bitmap bma(String paramString)
   {
     AppMethodBeat.i(79680);
-    Object localObject = (WeakReference)JeH.get(paramString);
+    Object localObject = (WeakReference)QbK.get(paramString);
     if ((localObject != null) && (((WeakReference)localObject).get() != null) && (!((Bitmap)((WeakReference)localObject).get()).isRecycled()))
     {
       paramString = (Bitmap)((WeakReference)localObject).get();
       AppMethodBeat.o(79680);
       return paramString;
     }
-    if (s.YS(paramString)) {}
+    if (u.agG(paramString)) {}
     for (localObject = BitmapUtil.decodeFile(paramString, null);; localObject = null)
     {
       if (localObject != null) {
-        JeH.put(paramString, new WeakReference(localObject));
+        QbK.put(paramString, new WeakReference(localObject));
       }
       for (;;)
       {
@@ -170,7 +170,7 @@ public final class e
         {
           Bitmap localBitmap = BackwardSupportUtil.BitmapFactory.decodeStream(MMApplicationContext.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
           localObject = localBitmap;
-          JeH.put(paramString, new WeakReference(localBitmap));
+          QbK.put(paramString, new WeakReference(localBitmap));
           localObject = localBitmap;
         }
         catch (Exception paramString)
@@ -181,15 +181,15 @@ public final class e
     }
   }
   
-  public static long bag(String paramString)
+  public static long bmb(String paramString)
   {
     AppMethodBeat.i(79681);
-    long l = bA(paramString, -1L);
+    long l = bH(paramString, -1L);
     AppMethodBeat.o(79681);
     return l;
   }
   
-  public static Bitmap bah(String paramString)
+  public static Bitmap bmc(String paramString)
   {
     AppMethodBeat.i(79684);
     if (Util.isNullOrNil(paramString))
@@ -197,7 +197,7 @@ public final class e
       AppMethodBeat.o(79684);
       return null;
     }
-    Object localObject1 = (WeakReference)JeH.get(paramString);
+    Object localObject1 = (WeakReference)QbK.get(paramString);
     if ((localObject1 != null) && (((WeakReference)localObject1).get() != null) && (!((Bitmap)((WeakReference)localObject1).get()).isRecycled()))
     {
       paramString = (Bitmap)((WeakReference)localObject1).get();
@@ -243,7 +243,7 @@ public final class e
         ((Bitmap)localObject2).recycle();
       }
       if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled())) {
-        JeH.put(paramString, new WeakReference(localObject1));
+        QbK.put(paramString, new WeakReference(localObject1));
       }
       AppMethodBeat.o(79684);
       return localObject1;
@@ -254,10 +254,10 @@ public final class e
     return null;
   }
   
-  public static int gw(String paramString, int paramInt)
+  public static int he(String paramString, int paramInt)
   {
     AppMethodBeat.i(79682);
-    paramInt = (int)bA(paramString, paramInt);
+    paramInt = (int)bH(paramString, paramInt);
     AppMethodBeat.o(79682);
     return paramInt;
   }

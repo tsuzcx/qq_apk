@@ -8,21 +8,21 @@ public abstract interface a
   
   public abstract int a(g.a parama, int paramInt, boolean paramBoolean);
   
-  public abstract void abP();
+  public abstract void agC();
   
-  public abstract boolean abQ();
+  public abstract boolean agD();
   
-  public abstract boolean hz(String paramString);
+  public abstract boolean in(String paramString);
   
   public static final class a
   {
     public int count = 0;
-    public long dBj = 0L;
+    public long ftU = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.audio.e.a
  * JD-Core Version:    0.7.0.1
  */

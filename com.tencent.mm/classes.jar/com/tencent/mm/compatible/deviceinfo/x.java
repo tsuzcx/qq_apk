@@ -1,108 +1,160 @@
 package com.tencent.mm.compatible.deviceinfo;
 
+import android.hardware.Camera;
+import android.os.Looper;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class x
 {
-  public int gIP;
-  public int gIQ;
-  public int gIR;
-  public int gIS;
-  public int gIT;
-  public int gIU;
-  public int gIV;
-  public int gIW;
-  public int gIX;
-  public int gIY;
-  public int gIZ;
-  public int gJa;
-  public int gJb;
-  public int gJc;
-  public int gJd;
-  public int gJe;
-  public int gJf;
-  public int gJg;
-  public int gJh;
-  public int gJi;
-  public int gJj;
-  public int gJk;
-  public int gJl;
-  public int gJm;
-  public int gJn;
-  public int gJo;
-  public int gJp;
-  public int gJq;
-  public int gJr;
-  public int gJs;
-  public int gJt;
-  public int gJu;
-  public int gJv;
-  public int gJw;
-  public int gJx;
-  public int gJy;
-  public int gJz;
+  private static final Object jte;
   
-  public x()
+  static
   {
-    AppMethodBeat.i(155765);
-    this.gJq = -1;
-    this.gJr = -1;
-    this.gJs = -1;
-    this.gJt = -1;
-    this.gJu = -1;
-    this.gJv = -1;
-    this.gJw = -1;
-    this.gJx = -1;
-    this.gJy = -1;
-    this.gJz = -1;
-    reset();
-    AppMethodBeat.o(155765);
+    AppMethodBeat.i(155764);
+    jte = new Object();
+    AppMethodBeat.o(155764);
   }
   
-  public final void reset()
+  public static w b(int paramInt, Looper paramLooper)
   {
-    this.gIP = -1;
-    this.gIQ = -1;
-    this.gIR = -1;
-    this.gIS = -1;
-    this.gIT = -1;
-    this.gIU = -1;
-    this.gIV = -1;
-    this.gIW = -1;
-    this.gIX = -1;
-    this.gIY = -1;
-    this.gIZ = -1;
-    this.gJa = -1;
-    this.gJb = -1;
-    this.gJc = -1;
-    this.gJd = -1;
-    this.gJe = -1;
-    this.gJf = -1;
-    this.gJn = -1;
-    this.gJo = -1;
-    this.gJq = -1;
-    this.gJp = -1;
-    this.gJs = -1;
-    this.gJt = -1;
-    this.gJu = -1;
-    this.gJv = -1;
-    this.gJw = -1;
-    this.gJx = -1;
-    this.gJy = -1;
-    this.gJz = -1;
+    AppMethodBeat.i(155761);
+    if (d.qV(28)) {
+      try
+      {
+        w localw = new w(c(paramInt, paramLooper));
+        AppMethodBeat.o(155761);
+        return localw;
+      }
+      catch (Exception localException)
+      {
+        Log.printErrStackTrace("MicroMsg.MMCamera", localException, "opnImpl error, try camera directly, myLooper: %s", new Object[] { Looper.myLooper() });
+        if (Looper.myLooper() == null)
+        {
+          paramLooper = new w(d(paramInt, paramLooper));
+          AppMethodBeat.o(155761);
+          return paramLooper;
+        }
+        paramLooper = new w(Camera.open(paramInt));
+        AppMethodBeat.o(155761);
+        return paramLooper;
+      }
+    }
+    paramLooper = new w(c(paramInt, paramLooper));
+    AppMethodBeat.o(155761);
+    return paramLooper;
   }
   
-  public final String toString()
+  private static Camera c(int paramInt, Looper paramLooper)
   {
-    AppMethodBeat.i(155766);
-    String str = "MMSightRecorderInfo{recorderType=" + this.gIP + ", needRotateEachFrame=" + this.gIQ + ", enableHighResolutionRecord=" + this.gIR + ", landscapeRecordModeEnable=" + this.gIS + ", transcodeDecoderType=" + this.gIT + ", mediaPlayerType=" + this.gIU + ", strategyMask=" + this.gIV + ", recorderOption=" + this.gIW + ", useMetering=" + this.gIX + ", transcodeEncoderType=" + this.gIY + ", checkSendVideoBitrate=" + this.gIZ + ", cpuCrop=" + this.gJa + ", backgroundRemux=" + this.gJb + ", emojiPreviewSize=" + this.gJc + ", emojiStickerSampleSize=" + this.gJd + ", emojiUseSmallModel=" + this.gJe + ", emojiUseGpuSegment=" + this.gJf + ", c2cRemuxUseSoftEncode=" + this.gJn + ", snsRemuxUseSoftEncode=" + this.gJo + ", sideAlignType=" + this.gJq + ", nativeToThumb=" + this.gJr + ", captureC2CHwHevcEncodeEnable=" + this.gJs + ", captureSNSHwHevcEncodeEnable=" + this.gJt + ", captureC2CSwHevcEncodeEnable=" + this.gJu + ", captureSNSSwHevcEncodeEnable=" + this.gJv + ", remuxC2CHwHevcEncodeEnable=" + this.gJw + ", remuxSNSHwHevcEncodeEnable=" + this.gJx + ", remuxC2CSwHevcEncodeEnable=" + this.gJy + ", remuxSNSSwHevcEncodeEnable=" + this.gJz + '}';
-    AppMethodBeat.o(155766);
-    return str;
+    AppMethodBeat.i(155762);
+    if (paramLooper == null)
+    {
+      paramLooper = Camera.open(paramInt);
+      AppMethodBeat.o(155762);
+      return paramLooper;
+    }
+    paramLooper = d(paramInt, paramLooper);
+    AppMethodBeat.o(155762);
+    return paramLooper;
+  }
+  
+  private static Camera d(int paramInt, Looper paramLooper)
+  {
+    AppMethodBeat.i(155763);
+    if ((paramLooper == Looper.getMainLooper()) && (Looper.getMainLooper() == Looper.myLooper()))
+    {
+      if (paramInt >= 0) {}
+      for (paramLooper = Camera.open(paramInt);; paramLooper = Camera.open())
+      {
+        AppMethodBeat.o(155763);
+        return paramLooper;
+      }
+    }
+    final Camera[] arrayOfCamera = new Camera[1];
+    arrayOfCamera[0] = null;
+    h.ZvG.be(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(155759);
+        try
+        {
+          if (this.jtf >= 0) {
+            arrayOfCamera[0] = Camera.open(this.jtf);
+          }
+        }
+        catch (Exception localException1)
+        {
+          synchronized (x.jte)
+          {
+            try
+            {
+              for (;;)
+              {
+                x.jte.notifyAll();
+                Log.i("MicroMsg.MMCamera", "openCamera notifyAll");
+                AppMethodBeat.o(155759);
+                return;
+                arrayOfCamera[0] = Camera.open();
+              }
+              localException1 = localException1;
+              Log.printErrStackTrace("MicroMsg.MMCamera", localException1, "syncCreateCamera error in new free thread", new Object[0]);
+            }
+            catch (Exception localException2)
+            {
+              for (;;)
+              {
+                Log.printErrStackTrace("MicroMsg.MMCamera", localException2, "MMCamera_openLooperNull notify error", new Object[0]);
+              }
+            }
+          }
+        }
+      }
+    });
+    paramLooper = jte;
+    if (arrayOfCamera[0] == null) {}
+    try
+    {
+      jte.wait();
+      Log.i("MicroMsg.MMCamera", "openCamera wait finish");
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.MMCamera", localException, "MMCamera_openLooperNull wait error", new Object[0]);
+      }
+    }
+    finally
+    {
+      AppMethodBeat.o(155763);
+    }
+    paramLooper = arrayOfCamera[0];
+    AppMethodBeat.o(155763);
+    return paramLooper;
+  }
+  
+  public static w f(Looper paramLooper)
+  {
+    AppMethodBeat.i(155760);
+    if (paramLooper == null)
+    {
+      paramLooper = new w(Camera.open());
+      AppMethodBeat.o(155760);
+      return paramLooper;
+    }
+    paramLooper = new w(d(-1, paramLooper));
+    AppMethodBeat.o(155760);
+    return paramLooper;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.x
  * JD-Core Version:    0.7.0.1
  */

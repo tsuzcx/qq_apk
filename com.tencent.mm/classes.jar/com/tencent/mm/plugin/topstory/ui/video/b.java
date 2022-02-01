@@ -1,89 +1,49 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
 import android.graphics.Point;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.aj;
 import android.view.View;
-import com.tencent.mm.protocal.protobuf.dyi;
-import com.tencent.mm.protocal.protobuf.eit;
-import com.tencent.mm.protocal.protobuf.eiw;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.u;
+import com.tencent.mm.protocal.protobuf.eij;
+import com.tencent.mm.protocal.protobuf.esv;
+import com.tencent.mm.protocal.protobuf.esy;
 import com.tencent.mm.ui.MMActivity;
 import java.util.List;
 
 public abstract interface b
 {
-  public abstract void KC();
+  public abstract void Np();
   
-  public abstract boolean Zx();
+  public abstract void a(eij parameij);
   
-  public abstract void a(dyi paramdyi);
+  public abstract void a(esy paramesy);
   
-  public abstract void a(eiw parameiw);
+  public abstract void a(esy paramesy, int paramInt1, int paramInt2);
   
-  public abstract void a(eiw parameiw, int paramInt1, int paramInt2);
+  public abstract void a(esy paramesy, View paramView);
   
-  public abstract void a(eiw parameiw, View paramView);
+  public abstract void a(esy paramesy, f paramf, int paramInt);
   
-  public abstract void a(eiw parameiw, f paramf, int paramInt);
+  public abstract void aD(View paramView, int paramInt);
   
-  public abstract void aTE(String paramString);
+  public abstract boolean aeg();
   
-  public abstract void aTF(String paramString);
+  public abstract boolean ajA(int paramInt);
   
-  public abstract boolean abU(int paramInt);
+  public abstract void ajB(int paramInt);
   
-  public abstract void abV(int paramInt);
+  public abstract void ajC(int paramInt);
   
-  public abstract void abW(int paramInt);
+  public abstract void bfc(String paramString);
   
-  public abstract void ay(View paramView, int paramInt);
+  public abstract void bfd(String paramString);
   
-  public abstract Point cZM();
+  public abstract boolean cne();
   
-  public abstract MMActivity eeF();
+  public abstract Point dpI();
   
-  public abstract l fyA();
-  
-  public abstract o fyB();
-  
-  public abstract String fyC();
-  
-  public abstract eit fyD();
-  
-  public abstract m fyE();
-  
-  public abstract r fyF();
-  
-  public abstract aj fyG();
-  
-  public abstract int fyH();
-  
-  public abstract boolean fyI();
-  
-  public abstract boolean fyJ();
-  
-  public abstract e fyK();
-  
-  public abstract boolean fyL();
-  
-  public abstract void fyM();
-  
-  public abstract int fyN();
-  
-  public abstract n fyO();
-  
-  public abstract String fyP();
-  
-  public abstract int fyQ();
-  
-  public abstract void fyR();
-  
-  public abstract int fyS();
-  
-  public abstract void fyx();
-  
-  public abstract void fyy();
+  public abstract MMActivity eOa();
   
   public abstract RecyclerView.LayoutManager getLayoutManager();
   
@@ -93,13 +53,53 @@ public abstract interface b
   
   public abstract int getVideoWidth();
   
-  public abstract boolean isFullscreenMode();
+  public abstract esv gqA();
   
-  public abstract void s(List<eiw> paramList, boolean paramBoolean);
+  public abstract m gqB();
+  
+  public abstract r gqC();
+  
+  public abstract u gqD();
+  
+  public abstract int gqE();
+  
+  public abstract boolean gqF();
+  
+  public abstract boolean gqG();
+  
+  public abstract e gqH();
+  
+  public abstract boolean gqI();
+  
+  public abstract void gqJ();
+  
+  public abstract int gqK();
+  
+  public abstract n gqL();
+  
+  public abstract String gqM();
+  
+  public abstract int gqN();
+  
+  public abstract void gqO();
+  
+  public abstract int gqP();
+  
+  public abstract void gqu();
+  
+  public abstract void gqv();
+  
+  public abstract l gqx();
+  
+  public abstract o gqy();
+  
+  public abstract String gqz();
+  
+  public abstract void t(List<esy> paramList, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.b
  * JD-Core Version:    0.7.0.1
  */

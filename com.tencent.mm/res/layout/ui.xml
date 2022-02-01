@@ -2,7 +2,7 @@
 <FrameLayout android:orientation="vertical" android:id="@id/bes" android:background="#ff191919" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:textSize="15.0dip" android:textColor="@color/l4" android:gravity="center" android:id="@id/g24" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/im" />
-    <android.support.v7.widget.RecyclerView android:id="@id/cgf" android:background="#ff191919" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/k4" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/cgf" android:background="#ff191919" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/k4" />
     <TextView android:textSize="@dimen/hc" android:textColor="@color/bl" android:gravity="center|left" android:id="@id/bki" android:background="@color/u_" android:paddingLeft="@dimen/k5" android:paddingTop="@dimen/kb" android:paddingRight="@dimen/k5" android:paddingBottom="@dimen/kb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     <RelativeLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/d8c" android:background="@color/ko" android:layout_width="fill_parent" android:layout_height="@dimen/k4">
         <LinearLayout android:orientation="horizontal" android:id="@id/cil" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="165.0dip">

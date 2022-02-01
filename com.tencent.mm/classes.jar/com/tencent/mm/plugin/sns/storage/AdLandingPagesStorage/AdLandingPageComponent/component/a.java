@@ -16,15 +16,15 @@ public abstract class a
     super(paramContext, paramc, paramViewGroup);
   }
   
-  protected final void a(LinearLayout paramLinearLayout)
+  protected final void d(LinearLayout paramLinearLayout)
   {
-    Object localObject = (c)this.EcX;
+    Object localObject = (c)this.KqB;
     if (paramLinearLayout == null) {
       return;
     }
-    int i = Double.compare(((c)localObject).DXS, ((c)localObject).DXT);
-    int m = (int)((c)localObject).DXS;
-    int n = (int)((c)localObject).DXT;
+    int i = Double.compare(((c)localObject).Klc, ((c)localObject).Kld);
+    int m = (int)((c)localObject).Klc;
+    int n = (int)((c)localObject).Kld;
     int k;
     if (i == 0)
     {
@@ -60,7 +60,7 @@ public abstract class a
       if (m == 0)
       {
         j = m;
-        if (((c)localObject).DXS != 0.0D) {
+        if (((c)localObject).Klc != 0.0D) {
           j = 1;
         }
       }
@@ -70,7 +70,7 @@ public abstract class a
       {
         k = n;
         i = j;
-        if (((c)localObject).DXT != 0.0D)
+        if (((c)localObject).Kld != 0.0D)
         {
           k = 1;
           i = j;
@@ -81,7 +81,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.a
  * JD-Core Version:    0.7.0.1
  */

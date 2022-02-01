@@ -1,181 +1,92 @@
 package com.tencent.mm.plugin.webview.model;
 
-import android.content.Intent;
-import android.net.Uri;
+import android.os.Bundle;
+import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.q;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.webview.core.BaseWebViewController;
-import com.tencent.mm.plugin.webview.core.k;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.modelsns.SnsAdClick;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
-import java.util.Iterator;
-import kotlin.a.j;
+import java.util.Collection;
 import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/model/WebViewTeenModeInterceptor;", "Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor;", "()V", "isHostAllow", "", "host", "", "isHostBlock", "overrideStartLoadBefore", "url", "intent", "Landroid/content/Intent;", "Companion", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/model/WebViewSnsAdReporter;", "Lcom/tencent/mm/plugin/webview/model/IWebviewReporter;", "()V", "errCode", "", "loadReportInfo", "Ljava/util/ArrayList;", "", "snsAdClick", "Lcom/tencent/mm/modelsns/SnsAdClick;", "report", "", "setErrorCode", "setLoadReportInfo", "loadReports", "", "([Ljava/lang/String;)V", "setSnsAdClick", "adClick", "plugin-webview_release"})
 public final class av
-  extends k
 {
-  private static final ArrayList<String> IZx;
-  private static final ArrayList<String> IZy;
-  public static final a IZz;
+  public SnsAdClick GZf;
+  private final ArrayList<String> PVM;
+  public int errCode;
   
-  static
+  public av()
   {
-    AppMethodBeat.i(210364);
-    IZz = new a((byte)0);
-    IZx = j.ac(new String[] { "weixin.qq.com", "inews.qq.com", "tenpay.com", "pay.weixin.qq.com", "payapp.weixin.qq.com", "wx.tenpay.com", "support.weixin.qq.com", "action.weixin.qq.com", "log.weixin.qq.com", "api.mch.weixin.qq.com", "act.weixin.qq.com", "res.wx.qq.com", "res2.wx.qq.com", "pingjs.qq.com", "badjs.weixinbridge.com", "mmbiz.qpic.cn", "wx.qlogo.cn", "wx.gtimg.com" });
-    IZy = j.ac(new String[] { "game.weixin.qq.com" });
-    String str = ((b)g.af(b.class)).a(b.a.sea, "");
-    p.g(str, "allowConfig1");
-    a.aYU(str);
-    str = ((b)g.af(b.class)).a(b.a.seb, "");
-    p.g(str, "allowConfig2");
-    a.aYU(str);
-    str = ((b)g.af(b.class)).a(b.a.sec, "");
-    p.g(str, "blockConfig1");
-    a.aYV(str);
-    str = ((b)g.af(b.class)).a(b.a.sed, "");
-    p.g(str, "blockConfig2");
-    a.aYV(str);
-    Log.i("MicroMsg.WebViewTeenModeInterceptor", "alvinluo initWebViewTeenModeInterceptor blockList size: %d, %s, allowList size: %d, %s", new Object[] { Integer.valueOf(IZy.size()), IZy, Integer.valueOf(IZx.size()), IZx });
-    AppMethodBeat.o(210364);
+    AppMethodBeat.i(251231);
+    this.PVM = new ArrayList();
+    AppMethodBeat.o(251231);
   }
   
-  private static boolean aYS(String paramString)
+  public final void V(String... paramVarArgs)
   {
-    AppMethodBeat.i(210362);
-    Iterator localIterator = ((Iterable)IZy).iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(251227);
+    p.k(paramVarArgs, "loadReports");
+    int i = 0;
+    while (i < 4)
     {
-      String str = (String)localIterator.next();
-      if ((p.j(paramString, str)) || (n.K(paramString, ".".concat(String.valueOf(str)), false)))
-      {
-        AppMethodBeat.o(210362);
-        return true;
-      }
+      String str = paramVarArgs[i];
+      this.PVM.add(str);
+      i += 1;
     }
-    AppMethodBeat.o(210362);
-    return false;
+    AppMethodBeat.o(251227);
   }
   
-  private static boolean aYT(String paramString)
+  public final void report()
   {
-    AppMethodBeat.i(210363);
-    Iterator localIterator = ((Iterable)IZx).iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(251229);
+    for (;;)
     {
-      String str = (String)localIterator.next();
-      if ((p.j(paramString, str)) || (n.K(paramString, ".".concat(String.valueOf(str)), false)))
+      try
       {
-        AppMethodBeat.o(210363);
-        return true;
-      }
-    }
-    AppMethodBeat.o(210363);
-    return false;
-  }
-  
-  public final boolean e(String paramString, Intent paramIntent)
-  {
-    AppMethodBeat.i(210361);
-    p.h(paramString, "url");
-    if (paramIntent != null) {}
-    try
-    {
-      for (bool = paramIntent.getBooleanExtra("key_enable_teen_mode_check", false); !bool; bool = false)
-      {
-        Log.d("MicroMsg.WebViewTeenModeInterceptor", "overrideStartLoadBefore not enableTeenModeCheck");
-        AppMethodBeat.o(210361);
-        return false;
-      }
-    }
-    catch (Exception paramIntent)
-    {
-      for (;;)
-      {
-        Log.printErrStackTrace("MicroMsg.WebViewTeenModeInterceptor", (Throwable)paramIntent, "overrideStartLoadBefore get enableTeenModeCheck exception", new Object[0]);
-        bool = false;
-      }
-      paramIntent = g.af(q.class);
-      p.g(paramIntent, "MMKernel.service(IBizTeenModeService::class.java)");
-      boolean bool = ((q)paramIntent).Vt();
-      Log.d("MicroMsg.WebViewTeenModeInterceptor", "overrideStartLoadBefore url: %s, isTeenMode: %s", new Object[] { paramString, Boolean.valueOf(bool) });
-      if (!bool)
-      {
-        AppMethodBeat.o(210361);
-        return false;
-      }
-      paramString = Uri.parse(paramString);
-      p.g(paramString, "uri");
-      paramString = paramString.getHost();
-      paramIntent = (CharSequence)paramString;
-      if ((paramIntent == null) || (paramIntent.length() == 0)) {}
-      for (int i = 1; i != 0; i = 0)
-      {
-        AppMethodBeat.o(210361);
-        return false;
-      }
-      Log.i("MicroMsg.WebViewTeenModeInterceptor", "overrideStartLoadBefore host: %s, allow: %b, block: %b", new Object[] { paramString, Boolean.valueOf(aYT(paramString)), Boolean.valueOf(aYS(paramString)) });
-      if ((aYT(paramString)) && (!aYS(paramString)))
-      {
-        AppMethodBeat.o(210361);
-        return false;
-      }
-      BaseWebViewController.a(getController(), "http://mp.weixin.qq.com/mp/readtemplate?t=appmsg/childmode", true, 0, 4);
-      AppMethodBeat.o(210361);
-    }
-    return true;
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/model/WebViewTeenModeInterceptor$Companion;", "", "()V", "BIZ_TEEN_MODE_ENABLE_CHECK", "", "TAG", "", "allowDomainList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "blockDomainList", "addAllowList", "", "configString", "addBlockList", "plugin-webview_release"})
-  public static final class a
-  {
-    static void aYU(String paramString)
-    {
-      AppMethodBeat.i(210359);
-      paramString = ((Iterable)n.a((CharSequence)paramString, new String[] { ";" })).iterator();
-      label91:
-      while (paramString.hasNext())
-      {
-        String str = (String)paramString.next();
-        if (((CharSequence)str).length() > 0) {}
-        for (int i = 1;; i = 0)
+        if (((Collection)this.PVM).isEmpty()) {
+          continue;
+        }
+        i = 1;
+        if (i != 0)
         {
-          if ((i == 0) || (av.gcS().contains(str))) {
-            break label91;
-          }
-          av.gcS().add(str);
-          break;
+          Bundle localBundle = new Bundle();
+          localBundle.putStringArrayList("reportAdH5Load", new ArrayList((Collection)this.PVM));
+          localBundle.putInt("errCode", this.errCode);
+          localBundle.putParcelable("snsAdClick", (Parcelable)this.GZf);
+          j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)localBundle, a.PVN.getClass(), null);
         }
       }
-      AppMethodBeat.o(210359);
+      catch (Exception localException)
+      {
+        int i;
+        Log.printErrStackTrace("MicroMsg.WebviewReporter", (Throwable)localException, "", new Object[0]);
+        continue;
+      }
+      this.GZf = null;
+      this.PVM.clear();
+      AppMethodBeat.o(251229);
+      return;
+      i = 0;
     }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "data", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  static final class a<InputType, ResultType>
+    implements d<Bundle, IPCVoid>
+  {
+    public static final a PVN;
     
-    static void aYV(String paramString)
+    static
     {
-      AppMethodBeat.i(210360);
-      paramString = ((Iterable)n.a((CharSequence)paramString, new String[] { ";" })).iterator();
-      label91:
-      while (paramString.hasNext())
-      {
-        String str = (String)paramString.next();
-        if (((CharSequence)str).length() > 0) {}
-        for (int i = 1;; i = 0)
-        {
-          if ((i == 0) || (av.gcT().contains(str))) {
-            break label91;
-          }
-          av.gcT().add(str);
-          break;
-        }
-      }
-      AppMethodBeat.o(210360);
+      AppMethodBeat.i(233462);
+      PVN = new a();
+      AppMethodBeat.o(233462);
     }
   }
 }

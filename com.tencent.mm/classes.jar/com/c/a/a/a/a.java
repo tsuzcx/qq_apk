@@ -1,121 +1,67 @@
 package com.c.a.a.a;
 
-import com.c.a.a.b.h;
-import com.c.a.a.b.m;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Set;
-import javax.annotation.CheckReturnValue;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.pulldown.f;
+import kotlin.l;
 
-public class a
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/soon/xanimexample/scroll/pulldown/OverScrollMode1;", "Lcom/tencent/mm/ui/widget/pulldown/IOverScroll;", "()V", "getMaxOffset", "", "child", "Landroid/view/View;", "getMinOffset", "getOffset", "setOffset", "", "offset", "springBack", "stopSpringBack", "weui-native-android-lib_release"})
+public final class a
+  implements f
 {
-  final String separator;
-  
-  private a(a parama)
+  public final void K(View paramView, int paramInt)
   {
-    this.separator = parama.separator;
-  }
-  
-  public a(String paramString)
-  {
-    this.separator = ((String)checkNotNull(paramString));
-  }
-  
-  public static boolean a(Set<?> paramSet, Collection<?> paramCollection)
-  {
-    checkNotNull(paramCollection);
-    Object localObject = paramCollection;
-    if ((paramCollection instanceof m)) {
-      localObject = ((m)paramCollection).JY();
-    }
-    if (((localObject instanceof Set)) && (((Collection)localObject).size() > paramSet.size())) {
-      return h.a(paramSet.iterator(), (Collection)localObject);
-    }
-    return a(paramSet, ((Collection)localObject).iterator());
-  }
-  
-  public static boolean a(Set<?> paramSet, Iterator<?> paramIterator)
-  {
-    boolean bool = false;
-    while (paramIterator.hasNext()) {
-      bool |= paramSet.remove(paramIterator.next());
-    }
-    return bool;
-  }
-  
-  public static int ax(Object paramObject)
-  {
-    if (paramObject == null) {
-      return 0;
-    }
-    return paramObject.hashCode();
-  }
-  
-  public static boolean b(Set<?> paramSet, Object paramObject)
-  {
-    if (paramSet == paramObject) {}
-    for (;;)
+    AppMethodBeat.i(250877);
+    if (paramView != null)
     {
-      return true;
-      if ((paramObject instanceof Set))
-      {
-        paramObject = (Set)paramObject;
-        try
-        {
-          if (paramSet.size() == paramObject.size())
-          {
-            boolean bool = paramSet.containsAll(paramObject);
-            if (bool) {}
-          }
-          else
-          {
-            return false;
-          }
-        }
-        catch (NullPointerException paramSet)
-        {
-          return false;
-        }
-        catch (ClassCastException paramSet)
-        {
-          return false;
-        }
-      }
+      paramView.setTranslationY(paramInt);
+      AppMethodBeat.o(250877);
+      return;
     }
-    return false;
+    AppMethodBeat.o(250877);
   }
   
-  public static void bN(boolean paramBoolean)
+  public final int cm(View paramView)
   {
-    if (!paramBoolean) {
-      throw new IllegalStateException(String.valueOf("no calls to next() since the last call to remove()"));
+    AppMethodBeat.i(250878);
+    if (paramView != null)
+    {
+      int i = (int)paramView.getTranslationY();
+      AppMethodBeat.o(250878);
+      return i;
     }
+    AppMethodBeat.o(250878);
+    return 0;
   }
   
-  public static <T> T checkNotNull(T paramT)
+  public final int cn(View paramView)
   {
-    if (paramT == null) {
-      throw new NullPointerException();
+    AppMethodBeat.i(250880);
+    if (paramView != null)
+    {
+      int i = paramView.getHeight();
+      AppMethodBeat.o(250880);
+      return i;
     }
-    return paramT;
+    AppMethodBeat.o(250880);
+    return 0;
   }
   
-  @CheckReturnValue
-  public static boolean equal(Object paramObject1, Object paramObject2)
+  public final int co(View paramView)
   {
-    return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
-  }
-  
-  @CheckReturnValue
-  public a cH(String paramString)
-  {
-    checkNotNull(paramString);
-    return new c(this, this, paramString);
+    AppMethodBeat.i(250881);
+    if (paramView != null) {}
+    for (int i = paramView.getHeight();; i = 0)
+    {
+      i = -i;
+      AppMethodBeat.o(250881);
+      return i;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.c.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

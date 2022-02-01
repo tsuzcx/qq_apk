@@ -20,10 +20,10 @@ public class NoScaleRelativeLayout
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(214348);
+    AppMethodBeat.i(200122);
     super.onFinishInflate();
-    a.hL(this);
-    AppMethodBeat.o(214348);
+    a.jg(this);
+    AppMethodBeat.o(200122);
   }
 }
 

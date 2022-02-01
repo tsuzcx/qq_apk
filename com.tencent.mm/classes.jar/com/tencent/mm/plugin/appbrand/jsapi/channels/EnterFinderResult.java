@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResu
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/EnterFinderResult;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessResult;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "errCode", "", "(I)V", "getErrCode", "()I", "describeContents", "readParcel", "", "in", "writeToParcel", "flags", "CREATOR", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/EnterFinderResult;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessResult;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "errCode", "", "(I)V", "getErrCode", "()I", "describeContents", "readParcel", "", "in", "writeToParcel", "flags", "CREATOR", "plugin-appbrand-integration_release"})
 final class EnterFinderResult
   extends AppBrandProxyUIProcessTask.ProcessResult
 {
@@ -16,9 +16,9 @@ final class EnterFinderResult
   
   static
   {
-    AppMethodBeat.i(228379);
+    AppMethodBeat.i(269842);
     CREATOR = new a((byte)0);
-    AppMethodBeat.o(228379);
+    AppMethodBeat.o(269842);
   }
   
   public EnterFinderResult(int paramInt)
@@ -29,8 +29,8 @@ final class EnterFinderResult
   public EnterFinderResult(Parcel paramParcel)
   {
     this(paramParcel.readInt());
-    AppMethodBeat.i(228378);
-    AppMethodBeat.o(228378);
+    AppMethodBeat.i(269840);
+    AppMethodBeat.o(269840);
   }
   
   public final int describeContents()
@@ -42,20 +42,20 @@ final class EnterFinderResult
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(228377);
-    p.h(paramParcel, "parcel");
+    AppMethodBeat.i(269839);
+    p.k(paramParcel, "parcel");
     paramParcel.writeInt(this.errCode);
-    AppMethodBeat.o(228377);
+    AppMethodBeat.o(269839);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/EnterFinderResult$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/channels/EnterFinderResult;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/channels/EnterFinderResult;", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/EnterFinderResult$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/channels/EnterFinderResult;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/channels/EnterFinderResult;", "plugin-appbrand-integration_release"})
   public static final class a
     implements Parcelable.Creator<EnterFinderResult>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.channels.EnterFinderResult
  * JD-Core Version:    0.7.0.1
  */

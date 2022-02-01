@@ -4,51 +4,63 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class apu
-  extends com.tencent.mm.bw.a
+  extends dyl
 {
-  public FinderContact contact;
-  public String recommendReason;
+  public aqe SDi;
+  public int fSo;
+  public String finderUsername;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209361);
+    AppMethodBeat.i(207018);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.contact != null)
+      if (this.BaseRequest != null)
       {
-        paramVarArgs.ni(1, this.contact.computeSize());
-        this.contact.writeFields(paramVarArgs);
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.recommendReason != null) {
-        paramVarArgs.e(2, this.recommendReason);
+      if (this.finderUsername != null) {
+        paramVarArgs.f(2, this.finderUsername);
       }
-      AppMethodBeat.o(209361);
+      paramVarArgs.aY(3, this.fSo);
+      if (this.SDi != null)
+      {
+        paramVarArgs.oE(4, this.SDi.computeSize());
+        this.SDi.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(207018);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.contact == null) {
-        break label370;
+      if (this.BaseRequest == null) {
+        break label526;
       }
     }
-    label370:
-    for (paramInt = g.a.a.a.nh(1, this.contact.computeSize()) + 0;; paramInt = 0)
+    label526:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.recommendReason != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.recommendReason);
+      if (this.finderUsername != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.finderUsername);
       }
-      AppMethodBeat.o(209361);
-      return i;
+      i += g.a.a.b.b.a.bM(3, this.fSo);
+      paramInt = i;
+      if (this.SDi != null) {
+        paramInt = i + g.a.a.a.oD(4, this.SDi.computeSize());
+      }
+      AppMethodBeat.o(207018);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(209361);
+        AppMethodBeat.o(207018);
         return 0;
       }
       if (paramInt == 3)
@@ -56,32 +68,54 @@ public final class apu
         Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         apu localapu = (apu)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(209361);
+          AppMethodBeat.o(207018);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new FinderContact();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((FinderContact)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localapu.contact = ((FinderContact)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new jg();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((jg)localObject2).parseFrom((byte[])localObject1);
+            }
+            localapu.BaseRequest = ((jg)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(209361);
+          AppMethodBeat.o(207018);
+          return 0;
+        case 2: 
+          localapu.finderUsername = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(207018);
+          return 0;
+        case 3: 
+          localapu.fSo = ((g.a.a.a.a)localObject1).abFh.AK();
+          AppMethodBeat.o(207018);
           return 0;
         }
-        localapu.recommendReason = ((g.a.a.a.a)localObject1).UbS.readString();
-        AppMethodBeat.o(209361);
+        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new aqe();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((aqe)localObject2).parseFrom((byte[])localObject1);
+          }
+          localapu.SDi = ((aqe)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(207018);
         return 0;
       }
-      AppMethodBeat.o(209361);
+      AppMethodBeat.o(207018);
       return -1;
     }
   }

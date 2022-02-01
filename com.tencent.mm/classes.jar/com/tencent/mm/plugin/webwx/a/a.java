@@ -2,19 +2,20 @@ package com.tencent.mm.plugin.webwx.a;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.av.e.a;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.ay.e.a;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.modelvideo.o;
-import com.tencent.mm.modelvideo.t.a;
-import com.tencent.mm.modelvideo.t.a.a;
-import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.plugin.record.b.f;
+import com.tencent.mm.modelvideo.s;
+import com.tencent.mm.modelvideo.w;
+import com.tencent.mm.modelvideo.x;
+import com.tencent.mm.modelvideo.x.a;
+import com.tencent.mm.modelvideo.x.a.a;
+import com.tencent.mm.modelvideo.y;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -22,31 +23,32 @@ import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.storage.ca;
 import com.tencent.mm.storage.cc;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.util.HashMap;
 
 public final class a
-  implements i, t.a
+  implements i, x.a
 {
-  private static int JEZ = 1048576;
-  private static int JFa = 26214400;
-  private cc JFb;
-  private HashMap<String, ca> JFc;
+  private static int QDN = 1048576;
+  private static int QDO = 26214400;
+  private cc QDP;
+  private HashMap<String, ca> QDQ;
   
   public a()
   {
     AppMethodBeat.i(30159);
-    this.JFc = new HashMap();
-    this.JFb = new cc();
+    this.QDQ = new HashMap();
+    this.QDP = new cc();
     Object localObject = new StringBuilder();
-    g.aAi();
-    localObject = com.tencent.mm.vfs.s.aW(g.aAh().cachePath + "syncmsgid.ini", 0, -1);
+    h.aHH();
+    localObject = u.aY(h.aHG().cachePath + "syncmsgid.ini", 0, -1);
     if (!Util.isNullOrNil((byte[])localObject)) {}
     try
     {
-      this.JFb.parseFrom((byte[])localObject);
-      o.bhj().a(this, Looper.getMainLooper());
-      g.azz().a(221, this);
+      this.QDP.parseFrom((byte[])localObject);
+      s.bqB().a(this, Looper.getMainLooper());
+      h.aGY().a(221, this);
       AppMethodBeat.o(30159);
       return;
     }
@@ -59,15 +61,15 @@ public final class a
     }
   }
   
-  private void dpX()
+  private void dRe()
   {
     AppMethodBeat.i(30163);
     try
     {
-      byte[] arrayOfByte = this.JFb.toByteArray();
+      byte[] arrayOfByte = this.QDP.toByteArray();
       StringBuilder localStringBuilder = new StringBuilder();
-      g.aAi();
-      com.tencent.mm.vfs.s.f(g.aAh().cachePath + "syncmsgid.ini", arrayOfByte, arrayOfByte.length);
+      h.aHH();
+      u.f(h.aHG().cachePath + "syncmsgid.ini", arrayOfByte, arrayOfByte.length);
       AppMethodBeat.o(30163);
       return;
     }
@@ -78,11 +80,11 @@ public final class a
     }
   }
   
-  public final void Mh(final long paramLong)
+  public final void TH(final long paramLong)
   {
     AppMethodBeat.i(30160);
-    bg.aVF();
-    if (!((Boolean)c.azQ().get(ar.a.NZT, Boolean.TRUE)).booleanValue())
+    bh.beI();
+    if (!((Boolean)c.aHp().get(ar.a.VnU, Boolean.TRUE)).booleanValue())
     {
       Log.i("MicroMsg.MultiTerminalSyncMgr", "autoSyncState close");
       AppMethodBeat.o(30160);
@@ -100,7 +102,7 @@ public final class a
     AppMethodBeat.o(30160);
   }
   
-  public final void Mi(final long paramLong)
+  public final void TI(final long paramLong)
   {
     AppMethodBeat.i(30161);
     new MMHandler(Looper.getMainLooper()).post(new Runnable()
@@ -115,36 +117,36 @@ public final class a
     AppMethodBeat.o(30161);
   }
   
-  public final void a(t.a.a parama)
+  public final void a(x.a.a parama)
   {
     AppMethodBeat.i(30164);
-    parama = (ca)this.JFc.get(parama.fileName);
+    parama = (ca)this.QDQ.get(parama.fileName);
     if (parama == null)
     {
       AppMethodBeat.o(30164);
       return;
     }
-    com.tencent.mm.modelvideo.s locals = u.QN(parama.field_imgPath);
-    if (locals == null)
+    w localw = y.Yk(parama.field_imgPath);
+    if (localw == null)
     {
       AppMethodBeat.o(30164);
       return;
     }
-    if ((parama.gDB()) || (locals.status == 199))
+    if ((parama.Ic()) || (localw.status == 199))
     {
-      Log.i("MicroMsg.MultiTerminalSyncMgr", "download video end: %d, status:%d", new Object[] { Long.valueOf(parama.field_msgId), Integer.valueOf(locals.status) });
-      Mi(parama.field_msgId);
-      this.JFc.remove(parama.field_imgPath);
+      Log.i("MicroMsg.MultiTerminalSyncMgr", "download video end: %d, status:%d", new Object[] { Long.valueOf(parama.field_msgId), Integer.valueOf(localw.status) });
+      TI(parama.field_msgId);
+      this.QDQ.remove(parama.field_imgPath);
       AppMethodBeat.o(30164);
       return;
     }
     if (parama.field_status == 198) {
-      this.JFc.remove(parama.field_imgPath);
+      this.QDQ.remove(parama.field_imgPath);
     }
     AppMethodBeat.o(30164);
   }
   
-  public final void gja()
+  public final void hcL()
   {
     AppMethodBeat.i(30162);
     new MMHandler(Looper.getMainLooper()).post(new Runnable()
@@ -162,10 +164,10 @@ public final class a
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(30165);
-    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramq instanceof f)))
+    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramq instanceof com.tencent.mm.plugin.record.b.f)))
     {
-      long l = ((f)paramq).msgId;
-      Mi(l);
+      long l = ((com.tencent.mm.plugin.record.b.f)paramq).msgId;
+      TI(l);
       Log.i("MicroMsg.MultiTerminalSyncMgr", "download attach end: %d", new Object[] { Long.valueOf(l) });
     }
     AppMethodBeat.o(30165);
@@ -173,7 +175,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webwx.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,48 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dfh;
-import com.tencent.mm.protocal.protobuf.dfi;
+import com.tencent.mm.protocal.protobuf.dpb;
+import com.tencent.mm.protocal.protobuf.dpc;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
   extends q
   implements m
 {
+  private dpb DRr;
+  public dpc DRs;
   private i callback;
   private d rr;
-  private dfh yrp;
-  public dfi yrq;
   
   public b(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
     AppMethodBeat.i(25454);
     this.rr = null;
-    this.yrp = null;
-    this.yrq = null;
+    this.DRr = null;
+    this.DRs = null;
     d.a locala = new d.a();
-    locala.iLN = new dfh();
-    locala.iLO = new dfi();
+    locala.lBU = new dpb();
+    locala.lBV = new dpc();
     locala.funcId = 807;
     locala.uri = "/cgi-bin/micromsg-bin/pstnchecknumber";
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    this.yrp = ((dfh)this.rr.iLK.iLR);
-    this.yrp.MKj = paramString1;
-    this.yrp.MKl = paramString2;
-    this.yrp.MKn = paramString3;
-    this.yrp.MKm = paramString4;
-    this.yrp.MKo = paramInt;
+    this.rr = locala.bgN();
+    this.DRr = ((dpb)d.b.b(this.rr.lBR));
+    this.DRr.TWd = paramString1;
+    this.DRr.TWf = paramString2;
+    this.DRr.TWh = paramString3;
+    this.DRr.TWg = paramString4;
+    this.DRr.TWi = paramInt;
     Log.i("MicroMsg.NetSceneIPCallCheckNumber", "NetSceneIPCallCheckNumber pureNumber:%s,lastCountry:%s,osCountry:%s,simCountry:%s,dialScene:%d", new Object[] { paramString1, paramString2, paramString3, paramString4, Integer.valueOf(paramInt) });
     AppMethodBeat.o(25454);
   }
@@ -65,7 +65,7 @@ public final class b
   {
     AppMethodBeat.i(25456);
     Log.i("MicroMsg.NetSceneIPCallCheckNumber", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.yrq = ((dfi)((d)params).iLL.iLR);
+    this.DRs = ((dpc)d.c.b(((d)params).lBS));
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
@@ -74,7 +74,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.e.b
  * JD-Core Version:    0.7.0.1
  */

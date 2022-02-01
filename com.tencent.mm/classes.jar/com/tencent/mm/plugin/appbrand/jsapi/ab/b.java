@@ -1,64 +1,33 @@
 package com.tencent.mm.plugin.appbrand.jsapi.ab;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.s;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.r;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.HashMap;
 
-public enum b
+public final class b
+  extends r
 {
-  public final String mvx;
+  private static final int CTRL_INDEX = -1;
+  private static final String NAME = "onNetworkWeakChange";
   
-  static
+  public static void a(e parame, boolean paramBoolean)
   {
-    AppMethodBeat.i(147307);
-    mvt = new b("UPDATING", 0, "updating");
-    mvu = new b("NO_UPDATE", 1, "noUpdate");
-    mvv = new b("UPDATE_READY", 2, "updateReady");
-    mvw = new b("UPDATE_FAILED", 3, "updateFailed");
-    mvy = new b[] { mvt, mvu, mvv, mvw };
-    AppMethodBeat.o(147307);
-  }
-  
-  private b(String paramString)
-  {
-    this.mvx = paramString;
-  }
-  
-  public static b aaQ(String paramString)
-  {
-    AppMethodBeat.i(147306);
-    b[] arrayOfb = values();
-    int j = arrayOfb.length;
-    int i = 0;
-    while (i < j)
-    {
-      b localb = arrayOfb[i];
-      if (localb.mvx.equals(paramString))
-      {
-        AppMethodBeat.o(147306);
-        return localb;
-      }
-      i += 1;
-    }
-    paramString = new IllegalArgumentException(String.format("Invalid name %s", new Object[] { paramString }));
-    AppMethodBeat.o(147306);
-    throw paramString;
-  }
-  
-  public final String toString()
-  {
-    return this.mvx;
-  }
-  
-  public static final class a
-    extends s
-  {
-    private static final int CTRL_INDEX = -2;
-    private static final String NAME = "onUpdateStatusChange";
+    AppMethodBeat.i(243116);
+    HashMap localHashMap = new HashMap();
+    g.c localc = g.dR(MMApplicationContext.getContext());
+    localHashMap.put("networkType", localc.value);
+    localHashMap.put("weakNet", Boolean.valueOf(paramBoolean));
+    Log.i("MicroMsg.AppBrandOnNetworkWeakChangeEvent", "networkType = %s,weakNet = %b", new Object[] { localc.value, Boolean.valueOf(paramBoolean) });
+    new b().i(parame).D(localHashMap).bPO();
+    AppMethodBeat.o(243116);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ab.b
  * JD-Core Version:    0.7.0.1
  */

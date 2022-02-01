@@ -1,46 +1,78 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.e;
 
 public final class a$k
   extends e
 {
+  public long DPJ = 0L;
+  public String Zfh = "";
+  public int Zfi = 0;
+  public String Zfj = "";
+  public String Zfk = "";
   public int action = 0;
   public String groupId = "";
   public int roomId = 0;
   public long timestamp = 0L;
-  public long ypH = 0L;
   
   public a$k()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int j = super.Ig() + b.bC(1, this.action) + b.bu(2, this.roomId) + b.r(3, this.ypH);
+    int j = super.JG() + b.bN(1, this.action) + b.bM(2, this.roomId) + b.p(3, this.DPJ);
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.f(4, this.groupId);
+      i = j + b.g(4, this.groupId);
     }
     j = i;
     if (this.timestamp != 0L) {
-      j = i + b.p(5, this.timestamp);
+      j = i + b.q(5, this.timestamp);
+    }
+    i = j;
+    if (!this.Zfh.equals("")) {
+      i = j + b.g(6, this.Zfh);
+    }
+    j = i;
+    if (this.Zfi != 0) {
+      j = i + b.bN(7, this.Zfi);
+    }
+    i = j;
+    if (!this.Zfj.equals("")) {
+      i = j + b.g(8, this.Zfj);
+    }
+    j = i;
+    if (!this.Zfk.equals("")) {
+      j = i + b.g(9, this.Zfk);
     }
     return j;
   }
   
   public final void a(b paramb)
   {
-    paramb.bB(1, this.action);
-    paramb.bs(2, this.roomId);
-    paramb.q(3, this.ypH);
+    paramb.bK(1, this.action);
+    paramb.bJ(2, this.roomId);
+    paramb.r(3, this.DPJ);
     if (!this.groupId.equals("")) {
-      paramb.e(4, this.groupId);
+      paramb.f(4, this.groupId);
     }
     if (this.timestamp != 0L) {
       paramb.n(5, this.timestamp);
+    }
+    if (!this.Zfh.equals("")) {
+      paramb.f(6, this.Zfh);
+    }
+    if (this.Zfi != 0) {
+      paramb.bK(7, this.Zfi);
+    }
+    if (!this.Zfj.equals("")) {
+      paramb.f(8, this.Zfj);
+    }
+    if (!this.Zfk.equals("")) {
+      paramb.f(9, this.Zfk);
     }
     super.a(paramb);
   }

@@ -7,9 +7,9 @@ public enum a$a
   static
   {
     AppMethodBeat.i(120685);
-    jGS = new a("TYPE_WORDING", 0);
-    jGT = new a("TYPE_URL", 1);
-    jGU = new a[] { jGS, jGT };
+    mxX = new a("TYPE_WORDING", 0);
+    mxY = new a("TYPE_URL", 1);
+    mxZ = new a[] { mxX, mxY };
     AppMethodBeat.o(120685);
   }
   
@@ -17,7 +17,7 @@ public enum a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.openim.a.a.a
  * JD-Core Version:    0.7.0.1
  */

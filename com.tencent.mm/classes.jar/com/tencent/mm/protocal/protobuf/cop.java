@@ -1,46 +1,78 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
 
 public final class cop
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int AXb;
-  public int MuL;
-  public int MuM;
-  public int MuN;
+  public String key;
+  public String lvH;
+  public int type = -1;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(116472);
+    AppMethodBeat.i(256260);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.MuL);
-      paramVarArgs.aM(2, this.MuM);
-      paramVarArgs.aM(3, this.MuN);
-      paramVarArgs.aM(4, this.AXb);
-      AppMethodBeat.o(116472);
+      if (this.key == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: key");
+        AppMethodBeat.o(256260);
+        throw paramVarArgs;
+      }
+      if (this.lvH == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: val");
+        AppMethodBeat.o(256260);
+        throw paramVarArgs;
+      }
+      paramVarArgs.aY(1, this.type);
+      if (this.key != null) {
+        paramVarArgs.f(2, this.key);
+      }
+      if (this.lvH != null) {
+        paramVarArgs.f(3, this.lvH);
+      }
+      AppMethodBeat.o(256260);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bu(1, this.MuL);
-      int i = g.a.a.b.b.a.bu(2, this.MuM);
-      int j = g.a.a.b.b.a.bu(3, this.MuN);
-      int k = g.a.a.b.b.a.bu(4, this.AXb);
-      AppMethodBeat.o(116472);
-      return paramInt + 0 + i + j + k;
+      int i = g.a.a.b.b.a.bM(1, this.type) + 0;
+      paramInt = i;
+      if (this.key != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.key);
+      }
+      i = paramInt;
+      if (this.lvH != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.lvH);
+      }
+      AppMethodBeat.o(256260);
+      return i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(116472);
+      if (this.key == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: key");
+        AppMethodBeat.o(256260);
+        throw paramVarArgs;
+      }
+      if (this.lvH == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: val");
+        AppMethodBeat.o(256260);
+        throw paramVarArgs;
+      }
+      AppMethodBeat.o(256260);
       return 0;
     }
     if (paramInt == 3)
@@ -50,32 +82,28 @@ public final class cop
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(116472);
+        AppMethodBeat.o(256260);
         return -1;
       case 1: 
-        localcop.MuL = locala.UbS.zi();
-        AppMethodBeat.o(116472);
+        localcop.type = locala.abFh.AK();
+        AppMethodBeat.o(256260);
         return 0;
       case 2: 
-        localcop.MuM = locala.UbS.zi();
-        AppMethodBeat.o(116472);
-        return 0;
-      case 3: 
-        localcop.MuN = locala.UbS.zi();
-        AppMethodBeat.o(116472);
+        localcop.key = locala.abFh.readString();
+        AppMethodBeat.o(256260);
         return 0;
       }
-      localcop.AXb = locala.UbS.zi();
-      AppMethodBeat.o(116472);
+      localcop.lvH = locala.abFh.readString();
+      AppMethodBeat.o(256260);
       return 0;
     }
-    AppMethodBeat.o(116472);
+    AppMethodBeat.o(256260);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cop
  * JD-Core Version:    0.7.0.1
  */

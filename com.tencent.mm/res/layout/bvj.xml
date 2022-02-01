@@ -23,6 +23,7 @@
             <LinearLayout android:id="@id/dwv" android:layout_width="wrap_content" android:layout_height="wrap_content">
                 <ViewStub android:id="@id/dwu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ib" android:layout_marginBottom="@dimen/kb" />
             </LinearLayout>
+            <ViewStub android:id="@id/kiw" android:layout="@layout/cjf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k" />
             <include layout="@layout/bu3" />
             <com.tencent.mm.kiss.widget.textview.PLSysTextView android:textSize="12.0dip" android:textColor="@color/a92" android:id="@id/is" android:background="@drawable/auv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="5.0dip" android:text="" android:singleLine="true" />
             <com.tencent.mm.kiss.widget.textview.PLSysTextView android:textSize="12.0dip" android:textColor="@color/a9v" android:id="@id/joc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:layout_marginBottom="3.0dip" />

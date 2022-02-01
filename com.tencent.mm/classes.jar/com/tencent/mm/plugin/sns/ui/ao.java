@@ -1,177 +1,170 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.Context;
-import android.content.res.Resources;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.c.a;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.protocal.protobuf.bc;
-import com.tencent.mm.protocal.protobuf.be;
-import com.tencent.mm.protocal.protobuf.ek;
-import com.tencent.mm.protocal.protobuf.fb;
-import com.tencent.mm.protocal.protobuf.fc;
-import com.tencent.mm.sdk.platformtools.LocaleUtil;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.modelsns.l;
+import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.plugin.sns.k.k;
+import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.sns.model.bd;
+import com.tencent.mm.plugin.sns.model.be;
+import com.tencent.mm.pointers.PInt;
+import com.tencent.mm.protocal.protobuf.cst;
+import com.tencent.mm.protocal.protobuf.elm;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.MMActivity;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class ao
+  implements af
 {
-  private static String a(Context paramContext, be parambe)
+  private int KCP;
+  private l KCV = null;
+  private String KCW = "";
+  private boolean KEH = false;
+  private boolean KEI = false;
+  private WXMediaMessage KEJ = null;
+  private boolean KGU = false;
+  private int Kcp = 1;
+  private String appName = "";
+  private String appid = "";
+  private MMActivity iXq;
+  private String wZt = "";
+  
+  public ao(MMActivity paramMMActivity, boolean paramBoolean)
   {
-    AppMethodBeat.i(203353);
-    if (parambe == null)
-    {
-      AppMethodBeat.o(203353);
-      return "";
-    }
-    if (parambe.oUv == 6)
-    {
-      if (parambe.KEz == null)
-      {
-        AppMethodBeat.o(203353);
-        return "";
-      }
-      if (a.jRu.s(paramContext, parambe.KEw.jfi))
-      {
-        paramContext = parambe.KEz.KIw;
-        AppMethodBeat.o(203353);
-        return paramContext;
-      }
-      paramContext = parambe.KEz.KIx;
-      AppMethodBeat.o(203353);
-      return paramContext;
-    }
-    paramContext = parambe.KEx;
-    AppMethodBeat.o(203353);
-    return paramContext;
+    this.iXq = paramMMActivity;
+    this.KGU = paramBoolean;
   }
   
-  public static void a(Context paramContext, bl parambl, be parambe)
+  public final boolean a(int paramInt1, int paramInt2, org.b.d.i parami, String paramString1, List<String> paramList1, cst paramcst, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(98141);
-    String str2;
-    String str1;
-    if ((parambe != null) && (parambe.KEw != null) && (h.bdA(parambe.KEw.jfi)))
+    AppMethodBeat.i(98012);
+    if (this.iXq.isFinishing())
     {
-      parambl.EOf = false;
-      str2 = "";
-      if ((parambe.KEA != null) && (parambe.KEB != null)) {
-        if (a.jRu.s(paramContext, parambe.KEw.jfi))
+      AppMethodBeat.o(98012);
+      return false;
+    }
+    paramLinkedList = new be(2, this.iXq);
+    paramPInt.value = paramLinkedList.aOl;
+    if (paramInt3 > com.tencent.mm.plugin.sns.c.a.JPj) {
+      paramLinkedList.afW(2);
+    }
+    paramPInt = new LinkedList();
+    if (paramList1 != null)
+    {
+      new LinkedList();
+      paramString2 = com.tencent.mm.pluginsdk.j.a.hhW();
+      paramList1 = paramList1.iterator();
+      while (paramList1.hasNext())
+      {
+        String str = (String)paramList1.next();
+        if (!paramString2.contains(str))
         {
-          paramContext = parambe.KEA;
-          str1 = LocaleUtil.getApplicationLanguage();
-          if (!str1.equals("zh_CN")) {
-            break label167;
-          }
-          str1 = paramContext.KIu;
+          elm localelm = new elm();
+          localelm.UserName = str;
+          paramPInt.add(localelm);
         }
       }
+    }
+    if (paramBoolean) {
+      paramLinkedList.agc(1);
     }
     for (;;)
     {
-      label97:
-      switch (parambe.oUv)
-      {
-      default: 
-        parambl.EOf = false;
+      if (parami != null) {
+        paramLinkedList.kG(parami.token, parami.TEk);
       }
-      for (;;)
-      {
-        for (;;)
-        {
-          if (Util.isNullOrNil(str1))
-          {
-            Log.e("MicroMsg.OpenActionContent", "text can not load ?");
-            parambl.EOf = false;
-          }
-          AppMethodBeat.o(98141);
-          return;
-          paramContext = parambe.KEB;
-          break;
-          label167:
-          if ((str1.equals("zh_TW")) || (str1.equals("zh_HK")))
-          {
-            str1 = paramContext.KIv;
-            break label97;
-          }
-          str1 = paramContext.KIt;
-          break label97;
-          String str3 = a(paramContext, parambe);
-          str1 = str2;
-          try
-          {
-            if (Util.isNullOrNil(str3)) {
-              break label97;
-            }
-            int i = paramContext.getResources().getIdentifier(str3, "string", paramContext.getPackageName());
-            str1 = str2;
-            if (i <= 0) {
-              break label97;
-            }
-            str1 = paramContext.getString(i);
-          }
-          catch (Exception paramContext)
-          {
-            str1 = str2;
-          }
-        }
-        parambl.EOg = str1;
-        parambl.EOf = true;
-        continue;
-        if (parambe.Scene == 1)
-        {
-          parambl.EOg = str1;
-          parambl.EOf = true;
-          continue;
-          parambl.EOg = str1;
-          parambl.EOf = true;
-        }
+      paramLinkedList.agb(this.KCP);
+      if (this.KEH) {
+        paramLinkedList.agb(5);
       }
-      parambl.EOf = false;
-      AppMethodBeat.o(98141);
+      if ((this.KEI) && (this.KEJ != null))
+      {
+        paramLinkedList.bat(this.KEJ.mediaTagName);
+        paramLinkedList.aI(this.appid, this.KEJ.messageExt, this.KEJ.messageAction);
+      }
+      paramLinkedList.ct(this.Kcp, this.KCW);
+      paramLinkedList.i(null, null, null, paramInt4, paramInt5);
+      paramLinkedList.bas(paramString1).a(paramcst).bL(paramPInt).afZ(paramInt1).aga(paramInt2).hA(paramList2);
+      paramInt1 = paramLinkedList.in();
+      if (this.KCV != null)
+      {
+        this.KCV.wQ(paramInt1);
+        com.tencent.mm.plugin.sns.k.i.Kjb.c(this.KCV);
+      }
+      this.iXq.setResult(-1);
+      aj.fOE().fNd();
+      this.iXq.finish();
+      AppMethodBeat.o(98012);
+      return true;
+      paramLinkedList.agc(0);
+    }
+  }
+  
+  public final void ay(Bundle paramBundle)
+  {
+    AppMethodBeat.i(98011);
+    this.KCV = l.x(this.iXq.getIntent());
+    this.wZt = this.iXq.getIntent().getStringExtra("Kdescription");
+    this.appid = Util.nullAs(this.iXq.getIntent().getStringExtra("Ksnsupload_appid"), "");
+    this.appName = Util.nullAs(this.iXq.getIntent().getStringExtra("Ksnsupload_appname"), "");
+    this.KEH = this.iXq.getIntent().getBooleanExtra("KThrid_app", false);
+    this.KEI = this.iXq.getIntent().getBooleanExtra("KSnsAction", false);
+    this.KCP = this.iXq.getIntent().getIntExtra("Ksnsupload_source", 0);
+    paramBundle = this.iXq.getIntent().getBundleExtra("Ksnsupload_timeline");
+    if (paramBundle != null) {
+      this.KEJ = new SendMessageToWX.Req(paramBundle).message;
+    }
+    if (this.iXq.getIntent().getBooleanExtra("SendAppMessageWrapper_TokenValid", true)) {}
+    for (this.Kcp = 1;; this.Kcp = 0)
+    {
+      this.KCW = Util.nullAs(this.iXq.getIntent().getStringExtra("SendAppMessageWrapper_PkgName"), "");
+      AppMethodBeat.o(98011);
       return;
     }
   }
   
-  public static int b(Context paramContext, be parambe)
+  public final void az(Bundle paramBundle) {}
+  
+  public final boolean fTA()
   {
-    AppMethodBeat.i(98140);
-    if (parambe == null)
-    {
-      AppMethodBeat.o(98140);
-      return 0;
-    }
-    if (parambe.oUv == 6)
-    {
-      if (parambe.KEy == null)
-      {
-        AppMethodBeat.o(98140);
-        return 0;
-      }
-      if (parambe.KEw == null)
-      {
-        AppMethodBeat.o(98140);
-        return 0;
-      }
-      if (a.jRu.s(paramContext, parambe.KEw.jfi))
-      {
-        i = parambe.KEy.KIc;
-        AppMethodBeat.o(98140);
-        return i;
-      }
-      i = parambe.KEy.KIe;
-      AppMethodBeat.o(98140);
-      return i;
-    }
-    int i = parambe.Scene;
-    AppMethodBeat.o(98140);
-    return i;
+    return false;
+  }
+  
+  public final boolean fTw()
+  {
+    return this.KGU;
+  }
+  
+  public final View fTx()
+  {
+    return null;
+  }
+  
+  public final boolean fTy()
+  {
+    return true;
+  }
+  
+  public final boolean fTz()
+  {
+    return true;
+  }
+  
+  public final boolean k(int paramInt, Intent paramIntent)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ao
  * JD-Core Version:    0.7.0.1
  */

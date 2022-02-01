@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.g.a;
 import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
@@ -17,21 +18,21 @@ import java.util.List;
 public class AutoScrollTextView
   extends LinearLayout
 {
-  private int rmJ;
-  private MTimerHandler xOF;
-  private ArrayList<String> xPU;
-  private Animation xQb;
-  private Animation xQc;
-  private TextView xZy;
-  private TextView xZz;
+  private MTimerHandler CSP;
+  private ArrayList<String> CUd;
+  private Animation CUk;
+  private Animation CUl;
+  private TextView Def;
+  private TextView Deg;
+  private int uPV;
   
   public AutoScrollTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(42571);
-    this.xPU = new ArrayList();
-    this.rmJ = 0;
-    this.xOF = new MTimerHandler(new MTimerHandler.CallBack()
+    this.CUd = new ArrayList();
+    this.uPV = 0;
+    this.CSP = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -41,21 +42,21 @@ public class AutoScrollTextView
         return true;
       }
     }, true);
-    this.xZy = new TextView(paramContext, paramAttributeSet);
-    this.xZy.setVisibility(8);
-    this.xZz = new TextView(paramContext, paramAttributeSet);
-    this.xZz.setVisibility(8);
-    addView(this.xZy);
-    addView(this.xZz);
+    this.Def = new TextView(paramContext, paramAttributeSet);
+    this.Def.setVisibility(8);
+    this.Deg = new TextView(paramContext, paramAttributeSet);
+    this.Deg.setVisibility(8);
+    addView(this.Def);
+    addView(this.Deg);
     setOrientation(1);
     setGravity(17);
     setPadding(0, 0, 0, 0);
-    this.xQb = AnimationUtils.loadAnimation(paramContext, 2130772164);
-    this.xQc = AnimationUtils.loadAnimation(paramContext, 2130772172);
+    this.CUk = AnimationUtils.loadAnimation(paramContext, g.a.slide_bottom_in);
+    this.CUl = AnimationUtils.loadAnimation(paramContext, g.a.slide_top_out);
     AppMethodBeat.o(42571);
   }
   
-  private void e(TextView paramTextView, String paramString)
+  private void f(TextView paramTextView, String paramString)
   {
     AppMethodBeat.i(42573);
     paramTextView.setText(new SpannableString(l.b(getContext(), paramString, paramTextView.getTextSize())));
@@ -66,38 +67,38 @@ public class AutoScrollTextView
   {
     AppMethodBeat.i(42574);
     super.onDetachedFromWindow();
-    this.xOF.stopTimer();
+    this.CSP.stopTimer();
     AppMethodBeat.o(42574);
   }
   
   public void setText(List<String> paramList)
   {
     AppMethodBeat.i(42572);
-    this.xPU.clear();
-    this.xOF.stopTimer();
+    this.CUd.clear();
+    this.CSP.stopTimer();
     if ((paramList == null) || (paramList.size() == 0))
     {
-      this.xZy.setVisibility(8);
-      this.xZz.setVisibility(8);
+      this.Def.setVisibility(8);
+      this.Deg.setVisibility(8);
       AppMethodBeat.o(42572);
       return;
     }
-    this.xPU.addAll(paramList);
-    e(this.xZy, (String)this.xPU.get(0));
-    this.xZy.setVisibility(0);
-    this.rmJ = 0;
-    if (this.xPU.size() == 1)
+    this.CUd.addAll(paramList);
+    f(this.Def, (String)this.CUd.get(0));
+    this.Def.setVisibility(0);
+    this.uPV = 0;
+    if (this.CUd.size() == 1)
     {
       AppMethodBeat.o(42572);
       return;
     }
-    this.xOF.startTimer(5000L);
+    this.CSP.startTimer(5000L);
     AppMethodBeat.o(42572);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.AutoScrollTextView
  * JD-Core Version:    0.7.0.1
  */

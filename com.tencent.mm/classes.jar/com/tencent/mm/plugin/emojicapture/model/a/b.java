@@ -7,19 +7,19 @@ import com.tencent.mm.storage.emotion.EmojiInfo;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/model/capture/EmojiCaptureInfo;", "", "()V", "attachEmoji", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "getAttachEmoji", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "setAttachEmoji", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "attachEmojiMatrix", "Landroid/graphics/Matrix;", "getAttachEmojiMatrix", "()Landroid/graphics/Matrix;", "setAttachEmojiMatrix", "(Landroid/graphics/Matrix;)V", "attachText", "", "getAttachText", "()Ljava/lang/String;", "setAttachText", "(Ljava/lang/String;)V", "attachTextColor", "", "getAttachTextColor", "()I", "setAttachTextColor", "(I)V", "enableRemoveBg", "", "getEnableRemoveBg", "()Z", "setEnableRemoveBg", "(Z)V", "removeBg", "getRemoveBg", "setRemoveBg", "scene", "getScene", "setScene", "stickerInfo", "Lcom/tencent/mm/sticker/StickerPack;", "getStickerInfo", "()Lcom/tencent/mm/sticker/StickerPack;", "setStickerInfo", "(Lcom/tencent/mm/sticker/StickerPack;)V", "thumbPath", "getThumbPath", "setThumbPath", "timeEnter", "", "getTimeEnter", "()J", "setTimeEnter", "(J)V", "videoPath", "getVideoPath", "setVideoPath", "plugin-emojicapture_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/model/capture/EmojiCaptureInfo;", "", "()V", "attachEmoji", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "getAttachEmoji", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "setAttachEmoji", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "attachEmojiMatrix", "Landroid/graphics/Matrix;", "getAttachEmojiMatrix", "()Landroid/graphics/Matrix;", "setAttachEmojiMatrix", "(Landroid/graphics/Matrix;)V", "attachText", "", "getAttachText", "()Ljava/lang/String;", "setAttachText", "(Ljava/lang/String;)V", "attachTextColor", "", "getAttachTextColor", "()I", "setAttachTextColor", "(I)V", "enableRemoveBg", "", "getEnableRemoveBg", "()Z", "setEnableRemoveBg", "(Z)V", "removeBg", "getRemoveBg", "setRemoveBg", "scene", "getScene", "setScene", "stickerInfo", "Lcom/tencent/mm/sticker/StickerPack;", "getStickerInfo", "()Lcom/tencent/mm/sticker/StickerPack;", "setStickerInfo", "(Lcom/tencent/mm/sticker/StickerPack;)V", "thumbPath", "getThumbPath", "setThumbPath", "timeEnter", "", "getTimeEnter", "()J", "setTimeEnter", "(J)V", "videoPath", "getVideoPath", "setVideoPath", "plugin-emojicapture_release"})
 public final class b
 {
-  public long hdz;
-  public boolean rnN;
-  public f roL;
-  public String roM;
-  public int roN;
-  public boolean roO;
-  public EmojiInfo roP;
-  public Matrix roQ;
+  public long jPf;
   public int scene;
   public String thumbPath;
+  public boolean uTu;
+  public f uUr;
+  public String uUs;
+  public int uUt;
+  public boolean uUu;
+  public EmojiInfo uUv;
+  public Matrix uUw;
   public String videoPath;
   
   public b()
@@ -28,15 +28,15 @@ public final class b
     this.scene = 1;
     this.videoPath = "";
     this.thumbPath = "";
-    this.roO = true;
-    this.roQ = new Matrix();
+    this.uUu = true;
+    this.uUw = new Matrix();
     AppMethodBeat.o(212);
   }
   
-  public final void HA(String paramString)
+  public final void ON(String paramString)
   {
     AppMethodBeat.i(211);
-    p.h(paramString, "<set-?>");
+    p.k(paramString, "<set-?>");
     this.thumbPath = paramString;
     AppMethodBeat.o(211);
   }
@@ -44,14 +44,14 @@ public final class b
   public final void setVideoPath(String paramString)
   {
     AppMethodBeat.i(210);
-    p.h(paramString, "<set-?>");
+    p.k(paramString, "<set-?>");
     this.videoPath = paramString;
     AppMethodBeat.o(210);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.a.b
  * JD-Core Version:    0.7.0.1
  */

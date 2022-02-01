@@ -6,7 +6,7 @@ import java.nio.ByteBuffer;
 
 public final class a
 {
-  public static int QL(int paramInt)
+  public static int WZ(int paramInt)
   {
     switch (paramInt)
     {
@@ -41,9 +41,9 @@ public final class a
   
   public static void a(ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(241180);
+    AppMethodBeat.i(253737);
     Log.d("MicroMsg.ADTSUtils", "addADTStoPacket params: %d, %d, %d, %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5) });
-    paramInt4 = QL(paramInt4);
+    paramInt4 = WZ(paramInt4);
     paramByteBuffer.put(paramInt1, (byte)-1);
     paramByteBuffer.put(paramInt1 + 1, (byte)-7);
     paramByteBuffer.put(paramInt1 + 2, (byte)((paramInt4 << 2) + (paramInt3 - 1 << 6) + (paramInt5 >> 2)));
@@ -51,12 +51,12 @@ public final class a
     paramByteBuffer.put(paramInt1 + 4, (byte)((paramInt2 & 0x7FF) >> 3));
     paramByteBuffer.put(paramInt1 + 5, (byte)(((paramInt2 & 0x7) << 5) + 31));
     paramByteBuffer.put(paramInt1 + 6, (byte)-4);
-    AppMethodBeat.o(241180);
+    AppMethodBeat.o(253737);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a
  * JD-Core Version:    0.7.0.1
  */

@@ -10,26 +10,29 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.as;
+import com.tencent.mm.cr.a.f;
+import com.tencent.mm.cr.a.g;
+import com.tencent.mm.cr.a.j;
+import com.tencent.mm.ui.av;
 
 public class j
   extends ProgressDialog
 {
-  private TextView NIC;
+  private TextView UWd;
   private View mContentView;
   private Context mContext;
-  private ProgressBar olQ;
+  private ProgressBar ros;
   
-  public j(Context paramContext)
+  public j(Context paramContext, int paramInt)
   {
-    super(paramContext, 2131821772);
-    AppMethodBeat.i(159392);
+    super(paramContext, paramInt);
+    AppMethodBeat.i(252049);
     this.mContext = paramContext;
-    this.mContentView = View.inflate(this.mContext, 2131495991, null);
-    this.NIC = ((TextView)this.mContentView.findViewById(2131306290));
-    this.olQ = ((ProgressBar)this.mContentView.findViewById(2131306289));
+    this.mContentView = View.inflate(this.mContext, a.g.progress_dialog, null);
+    this.UWd = ((TextView)this.mContentView.findViewById(a.f.progress_dialog_msg));
+    this.ros = ((ProgressBar)this.mContentView.findViewById(a.f.progress_dialog_icon));
     setCanceledOnTouchOutside(true);
-    AppMethodBeat.o(159392);
+    AppMethodBeat.o(252049);
   }
   
   public static j b(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean)
@@ -43,13 +46,13 @@ public class j
   
   public static j b(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(198294);
-    paramContext = new j(paramContext);
+    AppMethodBeat.i(252050);
+    paramContext = new j(paramContext, a.j.mmalertdialog);
     paramContext.setMessage(paramCharSequence);
     paramContext.setCancelable(paramBoolean);
     paramContext.setOnCancelListener(null);
     paramContext.setCanceledOnTouchOutside(false);
-    AppMethodBeat.o(198294);
+    AppMethodBeat.o(252050);
     return paramContext;
   }
   
@@ -64,7 +67,7 @@ public class j
     }
     catch (Exception localException)
     {
-      as.e("WeUI.WeUIProgresssDialog", "dismiss exception, e = " + localException.getMessage(), new Object[0]);
+      av.e("WeUI.WeUIProgresssDialog", "dismiss exception, e = " + localException.getMessage(), new Object[0]);
       AppMethodBeat.o(159399);
     }
   }
@@ -92,7 +95,7 @@ public class j
   public void setMessage(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(159397);
-    this.NIC.setText(paramCharSequence);
+    this.UWd.setText(paramCharSequence);
     AppMethodBeat.o(159397);
   }
   
@@ -107,14 +110,14 @@ public class j
     }
     catch (Exception localException)
     {
-      as.printErrStackTrace("WeUI.WeUIProgresssDialog", localException, "", new Object[0]);
+      av.printErrStackTrace("WeUI.WeUIProgresssDialog", localException, "", new Object[0]);
       AppMethodBeat.o(159398);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.a.j
  * JD-Core Version:    0.7.0.1
  */

@@ -79,7 +79,6 @@ public final class AppInfoChangedBlocker
     private boolean hackMessage(Message paramMessage)
     {
       boolean bool = false;
-      ShareTinkerLog.i("Tinker.AppInfoChangedBlocker", "hackmsg: " + paramMessage.what, new Object[0]);
       if (paramMessage.what == this.APPLICATION_INFO_CHANGED)
       {
         ShareTinkerLog.w("Tinker.AppInfoChangedBlocker", "Suicide now.", new Object[0]);
@@ -104,7 +103,7 @@ public final class AppInfoChangedBlocker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.loader.AppInfoChangedBlocker
  * JD-Core Version:    0.7.0.1
  */

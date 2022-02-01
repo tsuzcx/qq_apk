@@ -10,16 +10,16 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public final class a
+public class a
   implements b<NativeBitmapStruct>
 {
-  HashMap<Integer, NativeImage> bbp;
+  HashMap<Integer, NativeImage> aKN;
   private NativeImageJni jni;
   
   public a()
   {
     AppMethodBeat.i(127373);
-    this.bbp = new HashMap();
+    this.aKN = new HashMap();
     this.jni = new NativeImageJni();
     Object localObject = this.jni;
     if (((NativeImageJni)localObject).mNativeInst != 0L)
@@ -34,7 +34,7 @@ public final class a
   
   public final boolean a(c paramc)
   {
-    return (paramc == c.bbh) || (paramc == c.bbg);
+    return (paramc == c.aKF) || (paramc == c.aKE);
   }
   
   public final void destroy()
@@ -47,11 +47,11 @@ public final class a
     localObject1 = new LinkedList();
     try
     {
-      localIterator = this.bbp.values().iterator();
+      localIterator = this.aKN.values().iterator();
       while (localIterator.hasNext()) {
         ((LinkedList)localObject1).push((NativeImage)localIterator.next());
       }
-      this.bbp.clear();
+      this.aKN.clear();
     }
     finally
     {
@@ -65,7 +65,7 @@ public final class a
     AppMethodBeat.o(127375);
   }
   
-  public final IBitmap<NativeBitmapStruct> sP()
+  public final IBitmap<NativeBitmapStruct> qD()
   {
     AppMethodBeat.i(127374);
     NativeImage localNativeImage = new NativeImage(this.jni, this);
@@ -75,7 +75,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.github.henryye.nativeiv.comm.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,12 +6,12 @@ import org.json.JSONObject;
 public final class b
   extends d
 {
-  JSONObject csi;
+  JSONObject cqn;
   String mName;
   
-  public final JSONObject Ld()
+  public final JSONObject NU()
   {
-    return this.csi;
+    return this.cqn;
   }
   
   public final String name()

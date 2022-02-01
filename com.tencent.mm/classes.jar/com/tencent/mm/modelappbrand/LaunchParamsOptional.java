@@ -10,10 +10,11 @@ public final class LaunchParamsOptional
   implements Parcelable
 {
   public static final Parcelable.Creator<LaunchParamsOptional> CREATOR;
-  public String cyq;
-  public String cyr;
-  public AppBrandWeishiParams cyt;
-  public String iIt;
+  public String cwT;
+  public String cwU;
+  public AppBrandWeishiParams cwW;
+  public String lyv;
+  public int lyw;
   
   static
   {
@@ -27,9 +28,10 @@ public final class LaunchParamsOptional
   private LaunchParamsOptional(Parcel paramParcel)
   {
     AppMethodBeat.i(146920);
-    this.cyq = paramParcel.readString();
-    this.cyr = paramParcel.readString();
-    this.cyt = ((AppBrandWeishiParams)paramParcel.readParcelable(AppBrandWeishiParams.class.getClassLoader()));
+    this.cwT = paramParcel.readString();
+    this.cwU = paramParcel.readString();
+    this.cwW = ((AppBrandWeishiParams)paramParcel.readParcelable(AppBrandWeishiParams.class.getClassLoader()));
+    this.lyw = paramParcel.readInt();
     AppMethodBeat.o(146920);
   }
   
@@ -41,15 +43,16 @@ public final class LaunchParamsOptional
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(146919);
-    paramParcel.writeString(this.cyq);
-    paramParcel.writeString(this.cyr);
-    paramParcel.writeParcelable(this.cyt, paramInt);
+    paramParcel.writeString(this.cwT);
+    paramParcel.writeString(this.cwU);
+    paramParcel.writeParcelable(this.cwW, paramInt);
+    paramParcel.writeInt(this.lyw);
     AppMethodBeat.o(146919);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.LaunchParamsOptional
  * JD-Core Version:    0.7.0.1
  */

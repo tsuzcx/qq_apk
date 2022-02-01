@@ -1,10 +1,12 @@
 package com.tencent.mm.plugin.profile.ui.tab.list;
 
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.TextView;
+import androidx.fragment.app.Fragment;
+import com.tencent.mm.plugin.profile.ui.tab.c;
 import com.tencent.mm.plugin.profile.ui.tab.data.BizProfileDataFetcher;
-import com.tencent.mm.protocal.protobuf.ph;
+import com.tencent.mm.plugin.profile.ui.tab.view.BizProfileRecyclerView;
+import com.tencent.mm.protocal.protobuf.pd;
 import kotlin.f;
 import kotlin.g;
 import kotlin.g.a.a;
@@ -12,77 +14,94 @@ import kotlin.g.b.p;
 import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/profile/ui/tab/list/BaseBizProfileFragment;", "Landroid/support/v4/app/Fragment;", "()V", "bizUsername", "", "getBizUsername", "()Ljava/lang/String;", "setBizUsername", "(Ljava/lang/String;)V", "footerTextView", "Landroid/widget/TextView;", "getFooterTextView", "()Landroid/widget/TextView;", "footerTextView$delegate", "Lkotlin/Lazy;", "footerView", "Landroid/view/View;", "getFooterView", "()Landroid/view/View;", "footerView$delegate", "mBizProfileResp", "Lcom/tencent/mm/protocal/protobuf/BizProfileV2Resp;", "getMBizProfileResp", "()Lcom/tencent/mm/protocal/protobuf/BizProfileV2Resp;", "setMBizProfileResp", "(Lcom/tencent/mm/protocal/protobuf/BizProfileV2Resp;)V", "mDataFetcher", "Lcom/tencent/mm/plugin/profile/ui/tab/data/BizProfileDataFetcher;", "getMDataFetcher", "()Lcom/tencent/mm/plugin/profile/ui/tab/data/BizProfileDataFetcher;", "setMDataFetcher", "(Lcom/tencent/mm/plugin/profile/ui/tab/data/BizProfileDataFetcher;)V", "msgType", "", "getMsgType", "()I", "fetchMsgList", "", "onAppBarLayoutExpand", "setBizProfileResp", "bizProfileResp", "setDataFetcher", "dataFetcher", "showErrorView", "app_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/profile/ui/tab/list/BaseBizProfileFragment;", "Landroidx/fragment/app/Fragment;", "()V", "bizUsername", "", "getBizUsername", "()Ljava/lang/String;", "setBizUsername", "(Ljava/lang/String;)V", "controller", "Lcom/tencent/mm/plugin/profile/ui/tab/ContactWidgetTabBizHeaderController;", "getController", "()Lcom/tencent/mm/plugin/profile/ui/tab/ContactWidgetTabBizHeaderController;", "setController", "(Lcom/tencent/mm/plugin/profile/ui/tab/ContactWidgetTabBizHeaderController;)V", "footerTextView", "Landroid/widget/TextView;", "getFooterTextView", "()Landroid/widget/TextView;", "footerTextView$delegate", "Lkotlin/Lazy;", "footerView", "Landroid/view/View;", "getFooterView", "()Landroid/view/View;", "footerView$delegate", "mBizProfileResp", "Lcom/tencent/mm/protocal/protobuf/BizProfileV2Resp;", "getMBizProfileResp", "()Lcom/tencent/mm/protocal/protobuf/BizProfileV2Resp;", "setMBizProfileResp", "(Lcom/tencent/mm/protocal/protobuf/BizProfileV2Resp;)V", "mDataFetcher", "Lcom/tencent/mm/plugin/profile/ui/tab/data/BizProfileDataFetcher;", "getMDataFetcher", "()Lcom/tencent/mm/plugin/profile/ui/tab/data/BizProfileDataFetcher;", "setMDataFetcher", "(Lcom/tencent/mm/plugin/profile/ui/tab/data/BizProfileDataFetcher;)V", "mRecyclerView", "Lcom/tencent/mm/plugin/profile/ui/tab/view/BizProfileRecyclerView;", "getMRecyclerView", "()Lcom/tencent/mm/plugin/profile/ui/tab/view/BizProfileRecyclerView;", "setMRecyclerView", "(Lcom/tencent/mm/plugin/profile/ui/tab/view/BizProfileRecyclerView;)V", "msgType", "", "getMsgType", "()I", "fetchMsgList", "", "onAppBarLayoutExpand", "setBizProfileResp", "bizProfileResp", "setDataFetcher", "dataFetcher", "showErrorView", "app_release"})
 public abstract class BaseBizProfileFragment
   extends Fragment
 {
-  protected BizProfileDataFetcher BmN;
-  protected ph BmO;
-  private final f BmP = g.ah((a)new b(this));
-  private final f BmQ = g.ah((a)new a(this));
-  protected String dVu;
+  protected BizProfileDataFetcher Hhg;
+  protected pd Hhh;
+  protected BizProfileRecyclerView Hhi;
+  public c Hhj;
+  private final f Hhk = g.ar((a)new b(this));
+  private final f Hhl = g.ar((a)new a(this));
+  protected String fOX;
   
-  protected final void Rx(String paramString)
+  protected final void YU(String paramString)
   {
-    p.h(paramString, "<set-?>");
-    this.dVu = paramString;
+    p.k(paramString, "<set-?>");
+    this.fOX = paramString;
+  }
+  
+  protected final void a(BizProfileRecyclerView paramBizProfileRecyclerView)
+  {
+    p.k(paramBizProfileRecyclerView, "<set-?>");
+    this.Hhi = paramBizProfileRecyclerView;
   }
   
   protected final void d(BizProfileDataFetcher paramBizProfileDataFetcher)
   {
-    p.h(paramBizProfileDataFetcher, "<set-?>");
-    this.BmN = paramBizProfileDataFetcher;
+    p.k(paramBizProfileDataFetcher, "<set-?>");
+    this.Hhg = paramBizProfileDataFetcher;
   }
   
   public void e(BizProfileDataFetcher paramBizProfileDataFetcher)
   {
-    p.h(paramBizProfileDataFetcher, "dataFetcher");
-    this.BmN = paramBizProfileDataFetcher;
+    p.k(paramBizProfileDataFetcher, "dataFetcher");
+    this.Hhg = paramBizProfileDataFetcher;
   }
   
-  protected final void e(ph paramph)
+  protected final void e(pd parampd)
   {
-    p.h(paramph, "<set-?>");
-    this.BmO = paramph;
+    p.k(parampd, "<set-?>");
+    this.Hhh = parampd;
   }
   
-  protected final BizProfileDataFetcher eFJ()
+  public void f(pd parampd)
   {
-    BizProfileDataFetcher localBizProfileDataFetcher = this.BmN;
+    p.k(parampd, "bizProfileResp");
+    this.Hhh = parampd;
+  }
+  
+  protected final BizProfileDataFetcher frG()
+  {
+    BizProfileDataFetcher localBizProfileDataFetcher = this.Hhg;
     if (localBizProfileDataFetcher == null) {
-      p.btv("mDataFetcher");
+      p.bGy("mDataFetcher");
     }
     return localBizProfileDataFetcher;
   }
   
-  protected final ph eFK()
+  protected final pd frH()
   {
-    ph localph = this.BmO;
-    if (localph == null) {
-      p.btv("mBizProfileResp");
+    pd localpd = this.Hhh;
+    if (localpd == null) {
+      p.bGy("mBizProfileResp");
     }
-    return localph;
+    return localpd;
   }
   
-  protected final TextView eFL()
+  protected final BizProfileRecyclerView frI()
   {
-    return (TextView)this.BmQ.getValue();
+    BizProfileRecyclerView localBizProfileRecyclerView = this.Hhi;
+    if (localBizProfileRecyclerView == null) {
+      p.bGy("mRecyclerView");
+    }
+    return localBizProfileRecyclerView;
   }
   
-  public void eFM() {}
-  
-  public void f(ph paramph)
+  protected final TextView frJ()
   {
-    p.h(paramph, "bizProfileResp");
-    this.BmO = paramph;
+    return (TextView)this.Hhl.getValue();
   }
+  
+  public void frK() {}
   
   protected final View getFooterView()
   {
-    return (View)this.BmP.getValue();
+    return (View)this.Hhk.getValue();
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class a
     extends q
     implements a<TextView>
@@ -93,7 +112,7 @@ public abstract class BaseBizProfileFragment
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
   static final class b
     extends q
     implements a<View>
@@ -106,7 +125,7 @@ public abstract class BaseBizProfileFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.tab.list.BaseBizProfileFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -28,6 +28,7 @@
                         <ViewStub android:id="@id/dwu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ib" android:layout_marginBottom="@dimen/kb" />
                     </LinearLayout>
                     <ViewStub android:id="@id/hzw" android:visibility="gone" android:layout="@layout/btr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" android:layout_marginBottom="@dimen/g" />
+                    <ViewStub android:id="@id/kiw" android:layout="@layout/cjf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k" />
                     <include layout="@layout/bu3" />
                     <TextView android:textSize="@dimen/kc" android:textColor="@color/a92" android:id="@id/dhk" android:background="@drawable/auv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" android:text="" android:singleLine="true" />
                     <com.tencent.mm.kiss.widget.textview.PLSysTextView android:textSize="@dimen/kc" android:textColor="@color/a92" android:id="@id/is" android:background="@drawable/auv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" android:text="" android:singleLine="true" />

@@ -15,44 +15,44 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/camera2/effect/WCCameraEffectHelper;", "", "()V", "CAMERA_ID_BACK", "", "getCAMERA_ID_BACK", "()I", "CAMERA_ID_FRONT", "getCAMERA_ID_FRONT", "CAMERA_STREAM_IMAGE", "getCAMERA_STREAM_IMAGE", "CAMERA_STREAM_PREVIEW", "getCAMERA_STREAM_PREVIEW", "CAMERA_STREAM_RECORD", "getCAMERA_STREAM_RECORD", "TAG", "", "isUseCaptureKeyCreator", "", "autoConfig", "", "builder", "Landroid/hardware/camera2/CaptureRequest$Builder;", "effectTag", "Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "enable", "getVendorTagCaptureKey", "Landroid/hardware/camera2/CaptureRequest$Key;", "list", "", "getVendorTagCaptureKeyByCreator", "getVendorTagCaptureKeyByFinder", "manualConfig", "value", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/widget/camera2/effect/WCCameraEffectHelper;", "", "()V", "CAMERA_ID_BACK", "", "getCAMERA_ID_BACK", "()I", "CAMERA_ID_FRONT", "getCAMERA_ID_FRONT", "CAMERA_STREAM_IMAGE", "getCAMERA_STREAM_IMAGE", "CAMERA_STREAM_PREVIEW", "getCAMERA_STREAM_PREVIEW", "CAMERA_STREAM_RECORD", "getCAMERA_STREAM_RECORD", "TAG", "", "isUseCaptureKeyCreator", "", "autoConfig", "", "builder", "Landroid/hardware/camera2/CaptureRequest$Builder;", "effectTag", "Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "enable", "getVendorTagCaptureKey", "Landroid/hardware/camera2/CaptureRequest$Key;", "list", "", "getVendorTagCaptureKeyByCreator", "getVendorTagCaptureKeyByFinder", "manualConfig", "value", "plugin-mediaeditor_release"})
 public final class b
 {
   private static final String TAG = "MicroMsg.WCCameraEffectHelper";
-  private static boolean ioj = false;
-  private static final int iok = 1;
-  private static final int iol = 2;
-  private static final int iom = 4;
-  private static final int ion = 1;
-  private static final int ioo = 2;
-  public static final b iop;
+  private static boolean ldo = false;
+  private static final int ldp = 1;
+  private static final int ldq = 2;
+  private static final int ldr = 4;
+  private static final int lds = 1;
+  private static final int ldt = 2;
+  public static final b ldu;
   
   static
   {
     AppMethodBeat.i(94185);
-    iop = new b();
-    ioj = true;
+    ldu = new b();
+    ldo = true;
     TAG = "MicroMsg.WCCameraEffectHelper";
-    iok = 1;
-    iol = 2;
-    iom = 4;
-    ion = 1;
-    ioo = 2;
+    ldp = 1;
+    ldq = 2;
+    ldr = 4;
+    lds = 1;
+    ldt = 2;
     AppMethodBeat.o(94185);
   }
   
   private static CaptureRequest.Key<?> a(a parama, List<CaptureRequest.Key<?>> paramList)
   {
     AppMethodBeat.i(94182);
-    p.h(parama, "effectTag");
+    p.k(parama, "effectTag");
     if (paramList == null)
     {
-      paramList = parama.aEX;
+      paramList = parama.bUV;
       if ((paramList instanceof Integer))
       {
-        parama = parama.ioN;
+        parama = parama.ldS;
         if (parama == null) {
-          p.hyc();
+          p.iCn();
         }
         parama = c.d(parama, Integer.TYPE);
         AppMethodBeat.o(94182);
@@ -60,9 +60,9 @@ public final class b
       }
       if ((paramList instanceof Boolean))
       {
-        parama = parama.ioN;
+        parama = parama.ldS;
         if (parama == null) {
-          p.hyc();
+          p.iCn();
         }
         parama = c.d(parama, Boolean.TYPE);
         AppMethodBeat.o(94182);
@@ -70,19 +70,19 @@ public final class b
       }
       if ((paramList instanceof String))
       {
-        parama = parama.ioN;
+        parama = parama.ldS;
         if (parama == null) {
-          p.hyc();
+          p.iCn();
         }
         parama = c.d(parama, String.class);
         AppMethodBeat.o(94182);
         return parama;
       }
-      Log.e(TAG, "getVendorTagCaptureKeyByCreator: with unknow type value = " + parama.aEX + " key = " + parama.ioN);
+      Log.e(TAG, "getVendorTagCaptureKeyByCreator: with unknow type value = " + parama.bUV + " key = " + parama.ldS);
       AppMethodBeat.o(94182);
       return null;
     }
-    Object localObject = parama.aEX;
+    Object localObject = parama.bUV;
     if ((localObject instanceof Integer))
     {
       parama = d.a(parama, paramList, Integer.TYPE);
@@ -108,13 +108,13 @@ public final class b
   public static final void a(CaptureRequest.Builder paramBuilder, a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(94183);
-    p.h(paramBuilder, "builder");
+    p.k(paramBuilder, "builder");
     if (parama == null) {
-      p.hyc();
+      p.iCn();
     }
-    Object localObject = parama.aEX;
+    Object localObject = parama.bUV;
     if (localObject == null) {
-      p.hyc();
+      p.iCn();
     }
     a(paramBuilder, parama, paramBoolean, localObject);
     AppMethodBeat.o(94183);
@@ -123,21 +123,21 @@ public final class b
   public static final void a(CaptureRequest.Builder paramBuilder, a parama, boolean paramBoolean, Object paramObject)
   {
     AppMethodBeat.i(94184);
-    p.h(paramBuilder, "builder");
-    p.h(paramObject, "value");
+    p.k(paramBuilder, "builder");
+    p.k(paramObject, "value");
     if (parama == null)
     {
       AppMethodBeat.o(94184);
       return;
     }
-    if (ioj) {}
+    if (ldo) {}
     for (CaptureRequest.Key localKey = a(parama, null);; localKey = a(parama, ((CaptureRequest)localObject1).getKeys()))
     {
-      localObject1 = parama.ioM;
+      localObject1 = parama.ldR;
       if (!(localObject1 instanceof Range)) {
         break label180;
       }
-      localObject1 = parama.ioM;
+      localObject1 = parama.ldR;
       if (localObject1 != null) {
         break;
       }
@@ -145,12 +145,12 @@ public final class b
       AppMethodBeat.o(94184);
       throw paramBuilder;
       localObject1 = paramBuilder.build();
-      p.g(localObject1, "builder.build()");
+      p.j(localObject1, "builder.build()");
     }
     Object localObject1 = ((Range)localObject1).getLower();
     for (;;)
     {
-      Log.i(TAG, parama.ioL + " has been set value is " + paramBoolean);
+      Log.i(TAG, parama.ldQ + " has been set value is " + paramBoolean);
       if (!(paramObject instanceof Integer)) {
         break label433;
       }
@@ -163,7 +163,7 @@ public final class b
       label180:
       if ((localObject1 instanceof ArrayList))
       {
-        localObject1 = parama.ioM;
+        localObject1 = parama.ldR;
         if (localObject1 == null)
         {
           paramBuilder = new t("null cannot be cast to non-null type kotlin.collections.ArrayList<*> /* = java.util.ArrayList<*> */");
@@ -265,34 +265,34 @@ public final class b
     AppMethodBeat.o(94184);
   }
   
-  public static int aPQ()
+  public static int aYH()
   {
-    return iok;
+    return ldp;
   }
   
-  public static int aPR()
+  public static int aYI()
   {
-    return iol;
+    return ldq;
   }
   
-  public static int aPS()
+  public static int aYJ()
   {
-    return iom;
+    return ldr;
   }
   
-  public static int aPT()
+  public static int aYK()
   {
-    return ion;
+    return lds;
   }
   
-  public static int aPU()
+  public static int aYL()
   {
-    return ioo;
+    return ldt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.media.widget.b.a.b
  * JD-Core Version:    0.7.0.1
  */

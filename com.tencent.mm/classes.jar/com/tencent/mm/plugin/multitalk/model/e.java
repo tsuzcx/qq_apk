@@ -8,43 +8,47 @@ public abstract interface e
   
   public abstract void a(o paramo);
   
-  public abstract void aFS(String paramString);
+  public abstract void aQe(String paramString);
   
-  public abstract void aFT(String paramString);
+  public abstract void aQf(String paramString);
   
-  public abstract void dZZ();
+  public abstract boolean aXN();
   
-  public abstract void eaa();
+  public abstract void eIN();
   
-  public abstract void eie();
+  public abstract void eIO();
   
-  public abstract boolean emo();
+  public abstract void eIX();
   
-  public abstract void emt();
+  public abstract void eIY();
   
-  public abstract void emu();
+  public abstract void eRL();
   
-  public abstract void emv();
+  public abstract void eWh();
   
-  public abstract void emw();
+  public abstract void eWi();
   
-  public abstract void emx();
+  public abstract void eWj();
   
-  public abstract void emy();
+  public abstract void eWk();
   
-  public abstract void hh(int paramInt1, int paramInt2);
+  public abstract void eWl();
   
-  public abstract void onError(int paramInt);
+  public abstract void eWm();
   
-  public abstract void rv(boolean paramBoolean);
+  public abstract void im(int paramInt1, int paramInt2);
   
-  public abstract void rw(boolean paramBoolean);
+  public abstract void kv(int paramInt);
   
-  public abstract void rx(boolean paramBoolean);
+  public abstract void uA(boolean paramBoolean);
+  
+  public abstract void uy(boolean paramBoolean);
+  
+  public abstract void uz(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.e
  * JD-Core Version:    0.7.0.1
  */

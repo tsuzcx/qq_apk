@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.game.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -14,13 +15,13 @@ public final class f
       AppMethodBeat.o(41685);
       return;
     }
-    FileDownloadTaskInfo localFileDownloadTaskInfo = com.tencent.mm.plugin.downloader.model.f.cBv().alg(paramString);
+    FileDownloadTaskInfo localFileDownloadTaskInfo = com.tencent.mm.plugin.downloader.model.f.cPZ().asZ(paramString);
     if ((localFileDownloadTaskInfo != null) && (localFileDownloadTaskInfo.id > 0L))
     {
       long l = localFileDownloadTaskInfo.id;
       String str = localFileDownloadTaskInfo.url;
-      if (localFileDownloadTaskInfo.oJj == 0L) {}
-      for (int i = 0;; i = (int)(localFileDownloadTaskInfo.qJe * 100L / localFileDownloadTaskInfo.oJj))
+      if (localFileDownloadTaskInfo.rKZ == 0L) {}
+      for (int i = 0;; i = (int)(localFileDownloadTaskInfo.uih * 100L / localFileDownloadTaskInfo.rKZ))
       {
         a(paramString, l, str, i, paramInt1, paramInt2, false, false, false, false, false);
         AppMethodBeat.o(41685);
@@ -51,11 +52,11 @@ public final class f
     //   27: invokespecial 74	java/util/HashMap:<init>	()V
     //   30: astore 17
     //   32: ldc 76
-    //   34: invokestatic 82	com/tencent/mm/kernel/g:af	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+    //   34: invokestatic 82	com/tencent/mm/kernel/h:ae	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
     //   37: checkcast 76	com/tencent/mm/plugin/game/api/f
     //   40: invokeinterface 86 1 0
     //   45: aload_0
-    //   46: invokevirtual 92	com/tencent/mm/plugin/game/model/a/g:aAs	(Ljava/lang/String;)Lcom/tencent/mm/plugin/game/model/a/d;
+    //   46: invokevirtual 92	com/tencent/mm/plugin/game/model/a/g:aKe	(Ljava/lang/String;)Lcom/tencent/mm/plugin/game/model/a/d;
     //   49: astore 18
     //   51: aload 18
     //   53: ifnull +21 -> 74
@@ -217,7 +218,7 @@ public final class f
     //   329: aastore
     //   330: invokestatic 149	com/tencent/mm/plugin/game/model/a/f:s	([Ljava/lang/Object;)Ljava/lang/String;
     //   333: astore_0
-    //   334: getstatic 155	com/tencent/mm/game/report/api/a:hhr	Lcom/tencent/mm/game/report/api/a;
+    //   334: getstatic 155	com/tencent/mm/game/report/api/a:jTp	Lcom/tencent/mm/game/report/api/a;
     //   337: new 157	com/tencent/mm/game/report/api/b
     //   340: dup
     //   341: sipush 15547
@@ -280,7 +281,7 @@ public final class f
     //   74	93	396	java/io/UnsupportedEncodingException
   }
   
-  public static void aAr(String paramString)
+  public static void aKd(String paramString)
   {
     AppMethodBeat.i(41683);
     if (Util.isNullOrNil(paramString))
@@ -288,16 +289,16 @@ public final class f
       AppMethodBeat.o(41683);
       return;
     }
-    FileDownloadTaskInfo localFileDownloadTaskInfo = com.tencent.mm.plugin.downloader.model.f.cBv().alg(paramString);
-    Object localObject = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSM().aAs(paramString);
+    FileDownloadTaskInfo localFileDownloadTaskInfo = com.tencent.mm.plugin.downloader.model.f.cPZ().asZ(paramString);
+    Object localObject = ((com.tencent.mm.plugin.game.api.f)h.ae(com.tencent.mm.plugin.game.api.f.class)).evq().aKe(paramString);
     if ((localFileDownloadTaskInfo != null) && (localFileDownloadTaskInfo.id > 0L))
     {
       if (localObject != null)
       {
         l = localFileDownloadTaskInfo.id;
         String str = localFileDownloadTaskInfo.url;
-        if (localFileDownloadTaskInfo.oJj == 0L) {}
-        for (i = 0;; i = (int)(localFileDownloadTaskInfo.qJe * 100L / localFileDownloadTaskInfo.oJj))
+        if (localFileDownloadTaskInfo.rKZ == 0L) {}
+        for (i = 0;; i = (int)(localFileDownloadTaskInfo.uih * 100L / localFileDownloadTaskInfo.rKZ))
         {
           a(paramString, l, str, i, 3, 0, ((d)localObject).field_noWifi, ((d)localObject).field_noSdcard, ((d)localObject).field_noEnoughSpace, ((d)localObject).field_lowBattery, ((d)localObject).field_continueDelay);
           AppMethodBeat.o(41683);
@@ -306,8 +307,8 @@ public final class f
       }
       long l = localFileDownloadTaskInfo.id;
       localObject = localFileDownloadTaskInfo.url;
-      if (localFileDownloadTaskInfo.oJj == 0L) {}
-      for (int i = 0;; i = (int)(localFileDownloadTaskInfo.qJe * 100L / localFileDownloadTaskInfo.oJj))
+      if (localFileDownloadTaskInfo.rKZ == 0L) {}
+      for (int i = 0;; i = (int)(localFileDownloadTaskInfo.uih * 100L / localFileDownloadTaskInfo.rKZ))
       {
         a(paramString, l, (String)localObject, i, 3, 0, false, false, false, false, false);
         AppMethodBeat.o(41683);
@@ -324,7 +325,7 @@ public final class f
     AppMethodBeat.o(41683);
   }
   
-  static void ap(String paramString, int paramInt1, int paramInt2)
+  static void ar(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(41684);
     if (Util.isNullOrNil(paramString))
@@ -332,7 +333,7 @@ public final class f
       AppMethodBeat.o(41684);
       return;
     }
-    if (((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSM().aAs(paramString) != null) {
+    if (((com.tencent.mm.plugin.game.api.f)h.ae(com.tencent.mm.plugin.game.api.f.class)).evq().aKe(paramString) != null) {
       P(paramString, paramInt1, paramInt2);
     }
     AppMethodBeat.o(41684);
@@ -356,7 +357,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.a.f
  * JD-Core Version:    0.7.0.1
  */

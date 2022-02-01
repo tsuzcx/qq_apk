@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.b.g;
 import com.tencent.mm.pluginsdk.ui.tools.RedesignVideoPlayerSeekBar;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.f;
@@ -17,135 +18,150 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/FinderLongVideoPlayerSeekBar;", "Lcom/tencent/mm/pluginsdk/ui/tools/RedesignVideoPlayerSeekBar;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "downX", "downY", "hasStartTrackMove", "", "moveTime", "onCustomLoadingStatusChange", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "isLoading", "", "getOnCustomLoadingStatusChange", "()Lkotlin/jvm/functions/Function1;", "setOnCustomLoadingStatusChange", "(Lkotlin/jvm/functions/Function1;)V", "onSeekEnd", "Lkotlin/Function0;", "getOnSeekEnd", "()Lkotlin/jvm/functions/Function0;", "setOnSeekEnd", "(Lkotlin/jvm/functions/Function0;)V", "onSeekStart", "getOnSeekStart", "setOnSeekStart", "playStatusListener", "Lcom/tencent/mm/plugin/finder/video/FinderLongVideoPlayerSeekBar$PlayStatusListener;", "getPlayStatusListener", "()Lcom/tencent/mm/plugin/finder/video/FinderLongVideoPlayerSeekBar$PlayStatusListener;", "setPlayStatusListener", "(Lcom/tencent/mm/plugin/finder/video/FinderLongVideoPlayerSeekBar$PlayStatusListener;)V", "startTime", "touchSlop", "getTouchSlop", "()I", "touchSlop$delegate", "Lkotlin/Lazy;", "bindFinderVideoLayoutTouch", "videoLayout", "Lcom/tencent/mm/plugin/finder/video/FinderVideoLayout;", "getLayoutId", "onSeekTo", "timeStamp", "setIsPlay", "isPlay", "setPlayTimeText", "playTime", "updateTimeMs", "time", "", "Companion", "PlayStatusListener", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/FinderLongVideoPlayerSeekBar;", "Lcom/tencent/mm/pluginsdk/ui/tools/RedesignVideoPlayerSeekBar;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "downX", "downY", "hasStartTrackMove", "", "moveTime", "onCustomLoadingStatusChange", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "isLoading", "", "getOnCustomLoadingStatusChange", "()Lkotlin/jvm/functions/Function1;", "setOnCustomLoadingStatusChange", "(Lkotlin/jvm/functions/Function1;)V", "onSeekEnd", "Lkotlin/Function0;", "getOnSeekEnd", "()Lkotlin/jvm/functions/Function0;", "setOnSeekEnd", "(Lkotlin/jvm/functions/Function0;)V", "onSeekStart", "getOnSeekStart", "setOnSeekStart", "playStatusListener", "Lcom/tencent/mm/plugin/finder/video/FinderLongVideoPlayerSeekBar$PlayStatusListener;", "getPlayStatusListener", "()Lcom/tencent/mm/plugin/finder/video/FinderLongVideoPlayerSeekBar$PlayStatusListener;", "setPlayStatusListener", "(Lcom/tencent/mm/plugin/finder/video/FinderLongVideoPlayerSeekBar$PlayStatusListener;)V", "startTime", "touchSlop", "getTouchSlop", "()I", "touchSlop$delegate", "Lkotlin/Lazy;", "bindFinderVideoLayoutTouch", "videoLayout", "Lcom/tencent/mm/plugin/finder/video/FinderVideoLayout;", "getLayoutId", "onReplay", "onSeekTo", "timeStamp", "setIsPlay", "isPlay", "setPlayTimeText", "playTime", "updateTimeMs", "time", "", "Companion", "PlayStatusListener", "plugin-finder_release"})
 public final class FinderLongVideoPlayerSeekBar
   extends RedesignVideoPlayerSeekBar
 {
-  public static final a wcL;
-  private int dvv;
-  private int kuv;
-  private int kuw;
-  b uKd;
-  private kotlin.g.a.a<x> wcF;
-  private kotlin.g.a.a<x> wcG;
-  private b<? super Boolean, x> wcH;
-  private boolean wcI;
-  private final f wcJ;
-  private int wcK;
+  public static final a ALu;
+  private kotlin.g.a.a<x> ALo;
+  private kotlin.g.a.a<x> ALp;
+  private b<? super Boolean, x> ALq;
+  private boolean ALr;
+  private final f ALs;
+  private int ALt;
+  private int fod;
+  private int nmj;
+  private int nmk;
+  b zvL;
   
   static
   {
-    AppMethodBeat.i(254058);
-    wcL = new a((byte)0);
-    AppMethodBeat.o(254058);
+    AppMethodBeat.i(280318);
+    ALu = new a((byte)0);
+    AppMethodBeat.o(280318);
   }
   
   public FinderLongVideoPlayerSeekBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(254056);
-    this.wcJ = g.ah((kotlin.g.a.a)new d(this));
-    AppMethodBeat.o(254056);
+    AppMethodBeat.i(280316);
+    this.ALs = g.ar((kotlin.g.a.a)new d(this));
+    AppMethodBeat.o(280316);
   }
   
   public FinderLongVideoPlayerSeekBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(254057);
-    this.wcJ = g.ah((kotlin.g.a.a)new d(this));
-    AppMethodBeat.o(254057);
+    AppMethodBeat.i(280317);
+    this.ALs = g.ar((kotlin.g.a.a)new d(this));
+    AppMethodBeat.o(280317);
   }
   
   private final int getTouchSlop()
   {
-    AppMethodBeat.i(254055);
-    int i = ((Number)this.wcJ.getValue()).intValue();
-    AppMethodBeat.o(254055);
+    AppMethodBeat.i(280315);
+    int i = ((Number)this.ALs.getValue()).intValue();
+    AppMethodBeat.o(280315);
     return i;
   }
   
   public final int getLayoutId()
   {
-    return 2131494672;
+    return b.g.finder_video_player_seek_bar;
   }
   
   public final b<Boolean, x> getOnCustomLoadingStatusChange()
   {
-    return this.wcH;
+    return this.ALq;
   }
   
   public final kotlin.g.a.a<x> getOnSeekEnd()
   {
-    return this.wcG;
+    return this.ALp;
   }
   
   public final kotlin.g.a.a<x> getOnSeekStart()
   {
-    return this.wcF;
+    return this.ALo;
   }
   
   public final b getPlayStatusListener()
   {
-    return this.uKd;
+    return this.zvL;
   }
   
   public final void setIsPlay(boolean paramBoolean)
   {
-    AppMethodBeat.i(254053);
+    AppMethodBeat.i(280312);
     super.setIsPlay(paramBoolean);
-    b localb = this.uKd;
+    b localb = this.zvL;
     if (localb != null)
     {
-      localb.kr(paramBoolean);
-      AppMethodBeat.o(254053);
+      localb.lE(paramBoolean);
+      AppMethodBeat.o(280312);
       return;
     }
-    AppMethodBeat.o(254053);
+    AppMethodBeat.o(280312);
   }
   
   public final void setOnCustomLoadingStatusChange(b<? super Boolean, x> paramb)
   {
-    this.wcH = paramb;
+    this.ALq = paramb;
   }
   
   public final void setOnSeekEnd(kotlin.g.a.a<x> parama)
   {
-    this.wcG = parama;
+    this.ALp = parama;
   }
   
   public final void setOnSeekStart(kotlin.g.a.a<x> parama)
   {
-    this.wcF = parama;
+    this.ALo = parama;
   }
   
   public final void setPlayStatusListener(b paramb)
   {
-    this.uKd = paramb;
+    this.zvL = paramb;
   }
   
   public final void setPlayTimeText(int paramInt)
   {
-    AppMethodBeat.i(254054);
-    TextView localTextView = this.mCQ;
-    p.g(localTextView, "mPlaytimeTv");
-    localTextView.setText((CharSequence)(xt((getVideoTotalTime() - paramInt) / 60) + ":" + xt((getVideoTotalTime() - paramInt) % 60)));
-    AppMethodBeat.o(254054);
+    AppMethodBeat.i(280314);
+    TextView localTextView = this.pCd;
+    p.j(localTextView, "mPlaytimeTv");
+    localTextView.setText((CharSequence)(AQ(paramInt / 60) + ":" + AQ(paramInt % 60)));
+    AppMethodBeat.o(280314);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/FinderLongVideoPlayerSeekBar$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public final void tY(int paramInt)
+  {
+    AppMethodBeat.i(280313);
+    b localb = this.zvL;
+    if (localb != null)
+    {
+      localb.tY(paramInt);
+      AppMethodBeat.o(280313);
+      return;
+    }
+    AppMethodBeat.o(280313);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/FinderLongVideoPlayerSeekBar$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/FinderLongVideoPlayerSeekBar$PlayStatusListener;", "", "onPlayStatusChange", "", "isPlay", "", "onProgress", "times", "", "onSeekTo", "timeStamp", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/FinderLongVideoPlayerSeekBar$PlayStatusListener;", "", "onPlayStatusChange", "", "isPlay", "", "onProgress", "times", "", "onReplay", "onSeekTo", "timeStamp", "", "plugin-finder_release"})
   public static abstract interface b
   {
-    public abstract void kr(boolean paramBoolean);
+    public abstract void LX(long paramLong);
     
-    public abstract void onProgress(long paramLong);
+    public abstract void dJB();
     
-    public abstract void rk(int paramInt);
+    public abstract void lE(boolean paramBoolean);
+    
+    public abstract void tY(int paramInt);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
   static final class c
     implements View.OnTouchListener
   {
@@ -153,84 +169,87 @@ public final class FinderLongVideoPlayerSeekBar
     
     public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(254051);
-      p.g(paramMotionEvent, "event");
+      AppMethodBeat.i(274025);
+      p.j(paramMotionEvent, "event");
       switch (paramMotionEvent.getAction())
       {
       }
       for (;;)
       {
-        AppMethodBeat.o(254051);
+        AppMethodBeat.o(274025);
         return false;
-        FinderLongVideoPlayerSeekBar.a(this.wcM, (int)paramMotionEvent.getX());
-        FinderLongVideoPlayerSeekBar.b(this.wcM, (int)paramMotionEvent.getY());
-        AppMethodBeat.o(254051);
+        FinderLongVideoPlayerSeekBar.a(this.ALv, (int)paramMotionEvent.getX());
+        FinderLongVideoPlayerSeekBar.b(this.ALv, (int)paramMotionEvent.getY());
+        AppMethodBeat.o(274025);
         return true;
         if (paramMotionEvent.getPointerCount() > 1)
         {
-          AppMethodBeat.o(254051);
+          AppMethodBeat.o(274025);
           return false;
         }
         int j = (int)paramMotionEvent.getX();
         int i = (int)paramMotionEvent.getY();
-        if ((FinderLongVideoPlayerSeekBar.c(this.wcM)) || ((Math.abs((j - FinderLongVideoPlayerSeekBar.a(this.wcM)) / (i - FinderLongVideoPlayerSeekBar.b(this.wcM))) > 1.0F) && (Math.abs(j - FinderLongVideoPlayerSeekBar.a(this.wcM)) > FinderLongVideoPlayerSeekBar.d(this.wcM))))
+        if ((FinderLongVideoPlayerSeekBar.c(this.ALv)) || ((Math.abs((j - FinderLongVideoPlayerSeekBar.a(this.ALv)) / (i - FinderLongVideoPlayerSeekBar.b(this.ALv))) > 1.0F) && (Math.abs(j - FinderLongVideoPlayerSeekBar.a(this.ALv)) > FinderLongVideoPlayerSeekBar.d(this.ALv))))
         {
-          if (!FinderLongVideoPlayerSeekBar.c(this.wcM))
+          if (!FinderLongVideoPlayerSeekBar.c(this.ALv))
           {
-            paramView = this.wcM.getOnSeekStart();
+            paramView = this.ALv.getOnSeekStart();
             if (paramView != null) {
               paramView.invoke();
             }
-            paramView = this.wcM;
-            paramMotionEvent = this.wcN.getVideoView();
+            paramView = this.ALv;
+            paramMotionEvent = this.ALw.getVideoView();
             if (paramMotionEvent == null) {
-              break label369;
+              break label377;
             }
           }
-          label369:
+          label377:
           for (i = paramMotionEvent.getCurrentPlaySecond();; i = 0)
           {
             FinderLongVideoPlayerSeekBar.c(paramView, i);
-            this.wcN.oQ(false);
-            Log.i("FinderLongVideoPlayerSeekBar", "onFinderVideoLayoutTouch: start track move, startTime = " + FinderLongVideoPlayerSeekBar.e(this.wcM) + " videoTotalTime=" + this.wcM.getVideoTotalTime());
-            FinderLongVideoPlayerSeekBar.a(this.wcM, true);
-            float f = (j - FinderLongVideoPlayerSeekBar.a(this.wcM)) / this.wcN.getWidth();
-            paramView = this.wcM;
-            i = FinderLongVideoPlayerSeekBar.e(this.wcM);
-            FinderLongVideoPlayerSeekBar.d(paramView, kotlin.h.a.cR(f * this.wcM.getVideoTotalTime()) + i);
-            this.wcM.seek(FinderLongVideoPlayerSeekBar.f(this.wcM));
-            AppMethodBeat.o(254051);
+            this.ALw.rg(false);
+            this.ALv.setIsPlay(false);
+            Log.i("FinderLongVideoPlayerSeekBar", "onFinderVideoLayoutTouch: start track move, startTime = " + FinderLongVideoPlayerSeekBar.e(this.ALv) + " videoTotalTime=" + this.ALv.getVideoTotalTime());
+            FinderLongVideoPlayerSeekBar.a(this.ALv, true);
+            float f = (j - FinderLongVideoPlayerSeekBar.a(this.ALv)) / this.ALw.getWidth();
+            paramView = this.ALv;
+            i = FinderLongVideoPlayerSeekBar.e(this.ALv);
+            FinderLongVideoPlayerSeekBar.d(paramView, kotlin.h.a.dm(f * this.ALv.getVideoTotalTime()) + i);
+            this.ALv.seek(FinderLongVideoPlayerSeekBar.f(this.ALv));
+            AppMethodBeat.o(274025);
             return true;
           }
-          if (FinderLongVideoPlayerSeekBar.c(this.wcM))
+          if (FinderLongVideoPlayerSeekBar.c(this.ALv))
           {
-            Log.i("FinderLongVideoPlayerSeekBar", "onFinderVideoLayoutTouch: seek end, target time = " + FinderLongVideoPlayerSeekBar.f(this.wcM));
-            paramView = this.wcM.getOnSeekEnd();
+            Log.i("FinderLongVideoPlayerSeekBar", "onFinderVideoLayoutTouch: seek end, target time = " + FinderLongVideoPlayerSeekBar.f(this.ALv));
+            paramView = this.ALv.getOnSeekEnd();
             if (paramView != null) {
               paramView.invoke();
             }
-            FinderLongVideoPlayerSeekBar.a(this.wcM, false);
-            FinderLongVideoPlayerSeekBar.c(this.wcM, 0);
-            paramView = this.wcN.getVideoView();
+            FinderLongVideoPlayerSeekBar.a(this.ALv, false);
+            FinderLongVideoPlayerSeekBar.c(this.ALv, 0);
+            this.ALv.tY(FinderLongVideoPlayerSeekBar.f(this.ALv));
+            paramView = this.ALw.getVideoView();
             if (paramView != null) {
-              paramView.c(FinderLongVideoPlayerSeekBar.f(this.wcM), true);
+              paramView.a(FinderLongVideoPlayerSeekBar.f(this.ALv), true);
             }
-            this.wcN.oQ(true);
-            FinderLongVideoPlayerSeekBar.d(this.wcM, 0);
-            AppMethodBeat.o(254051);
+            this.ALw.rg(true);
+            this.ALv.setIsPlay(true);
+            FinderLongVideoPlayerSeekBar.d(this.ALv, 0);
+            AppMethodBeat.o(274025);
             return true;
           }
-          if ((Math.abs(paramMotionEvent.getX() - FinderLongVideoPlayerSeekBar.a(this.wcM)) < FinderLongVideoPlayerSeekBar.d(this.wcM)) && (Math.abs(paramMotionEvent.getY() - FinderLongVideoPlayerSeekBar.b(this.wcM)) < FinderLongVideoPlayerSeekBar.d(this.wcM)))
+          if ((Math.abs(paramMotionEvent.getX() - FinderLongVideoPlayerSeekBar.a(this.ALv)) < FinderLongVideoPlayerSeekBar.d(this.ALv)) && (Math.abs(paramMotionEvent.getY() - FinderLongVideoPlayerSeekBar.b(this.ALv)) < FinderLongVideoPlayerSeekBar.d(this.ALv)))
           {
             Log.i("FinderLongVideoPlayerSeekBar", "onFinderVideoLayoutTouch: performClick");
-            this.wcN.performClick();
+            this.ALw.performClick();
           }
         }
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class d
     extends q
     implements kotlin.g.a.a<Integer>
@@ -243,7 +262,7 @@ public final class FinderLongVideoPlayerSeekBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.FinderLongVideoPlayerSeekBar
  * JD-Core Version:    0.7.0.1
  */

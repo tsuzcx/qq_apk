@@ -35,25 +35,25 @@ public class MMStack
   
   public static String getStack(boolean paramBoolean)
   {
-    AppMethodBeat.i(230358);
+    AppMethodBeat.i(187560);
     Object localObject = new Throwable().getStackTrace();
     if ((localObject == null) || (localObject.length < 4))
     {
-      AppMethodBeat.o(230358);
+      AppMethodBeat.o(187560);
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 3;
     if (i < localObject.length)
     {
-      if ((localObject[i].getClassName().contains("com.tencent.mm")) && (!localObject[i].getClassName().contains("sdk.platformtools.Log")))
+      if ((localObject[i].getClassName().contains("com.tencent.")) && (!localObject[i].getClassName().contains("sdk.platformtools.Log")))
       {
         localStringBuilder.append("[");
-        localStringBuilder.append(localObject[i].getClassName().substring(15));
+        localStringBuilder.append(localObject[i].getClassName().replace("com.tencent.mm", ""));
         localStringBuilder.append(":");
         localStringBuilder.append(localObject[i].getMethodName());
         if (!paramBoolean) {
-          break label161;
+          break label163;
         }
         localStringBuilder.append("(" + localObject[i].getLineNumber() + ")]");
       }
@@ -61,12 +61,12 @@ public class MMStack
       {
         i += 1;
         break;
-        label161:
+        label163:
         localStringBuilder.append("]");
       }
     }
     localObject = localStringBuilder.toString();
-    AppMethodBeat.o(230358);
+    AppMethodBeat.o(187560);
     return localObject;
   }
   
@@ -133,7 +133,7 @@ public class MMStack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MMStack
  * JD-Core Version:    0.7.0.1
  */

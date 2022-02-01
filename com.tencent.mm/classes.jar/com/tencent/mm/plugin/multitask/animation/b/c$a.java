@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.multitask.animation.b;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/animation/floatball/TransformToMultiTaskFBAnimationMaskView$Companion;", "", "()V", "TAG", "", "plugin-multitask_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/animation/floatball/TransformToMultiTaskFBAnimationMaskView$Companion;", "", "()V", "TAG", "", "plugin-multitask_release"})
 public final class c$a {}
 
 

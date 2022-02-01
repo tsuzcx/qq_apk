@@ -5,14 +5,14 @@ import com.tencent.tinker.lib.b.b;
 
 public final class c
 {
-  public static void cY(Context paramContext, String paramString)
+  public static void dj(Context paramContext, String paramString)
   {
-    a.lk(paramContext).SjT.bqH(paramString);
+    a.mi(paramContext).ZME.bDE(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.lib.e.c
  * JD-Core Version:    0.7.0.1
  */

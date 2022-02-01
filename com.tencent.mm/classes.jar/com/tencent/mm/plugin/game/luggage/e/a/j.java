@@ -7,7 +7,7 @@ import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bb;
-import com.tencent.mm.protocal.protobuf.coq;
+import com.tencent.mm.protocal.protobuf.cxc;
 import org.json.JSONObject;
 
 public final class j
@@ -18,13 +18,13 @@ public final class j
     super(3);
   }
   
-  public final void a(Context paramContext, g paramg, coq paramcoq)
+  public final void a(Context paramContext, g paramg, cxc paramcxc)
   {
     AppMethodBeat.i(83115);
-    bb.afY(0);
-    paramg.ctS.a(new d()
+    bb.anM(0);
+    paramg.crX.a(new d()
     {
-      public final JSONObject Ld()
+      public final JSONObject NU()
       {
         return null;
       }

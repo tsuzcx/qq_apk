@@ -14,13 +14,13 @@ public final class m
   
   public final h[] getFeatures()
   {
-    if (this.Riw == null) {
-      this.Riw = new h[] { h.diH, h.diJ, h.diI, h.diK, h.diL };
+    if (this.YKd == null) {
+      this.YKd = new h[] { h.fan, h.fap, h.fao, h.faq, h.far };
     }
-    return this.Riw;
+    return this.YKd;
   }
   
-  protected final com.tencent.mm.view.b.a hfv()
+  protected final com.tencent.mm.view.b.a igR()
   {
     AppMethodBeat.i(9363);
     com.tencent.mm.view.b.c localc = new com.tencent.mm.view.b.c(getContext(), getPresenter());
@@ -28,7 +28,7 @@ public final class m
     return localc;
   }
   
-  protected final com.tencent.mm.view.footer.a hfw()
+  protected final com.tencent.mm.view.footer.a igS()
   {
     AppMethodBeat.i(9364);
     com.tencent.mm.view.footer.c localc = new com.tencent.mm.view.footer.c(getContext(), getPresenter());
@@ -38,7 +38,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.view.m
  * JD-Core Version:    0.7.0.1
  */

@@ -3,13 +3,13 @@ package com.tencent.mm.media.i;
 import kotlin.g.a.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16})
-final class b
+@l(iBK={1, 1, 16})
+public final class b
   implements Runnable
 {
-  b(a parama)
+  public b(a parama)
   {
-    this.cuq = parama;
+    this.csv = parama;
   }
 }
 

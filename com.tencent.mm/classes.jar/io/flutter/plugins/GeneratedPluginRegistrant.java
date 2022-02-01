@@ -1,5 +1,6 @@
 package io.flutter.plugins;
 
+import com.tencent.liteapp.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import io.flutter.plugin.a.m;
 import java.lang.reflect.Method;
@@ -10,32 +11,30 @@ public final class GeneratedPluginRegistrant
   
   private static boolean alreadyRegisteredWith(m paramm)
   {
-    AppMethodBeat.i(214853);
+    AppMethodBeat.i(253273);
     String str = GeneratedPluginRegistrant.class.getCanonicalName();
-    if (paramm.bsW(str))
+    if (paramm.bFX(str))
     {
-      AppMethodBeat.o(214853);
+      AppMethodBeat.o(253273);
       return true;
     }
-    paramm.bsX(str);
-    AppMethodBeat.o(214853);
+    paramm.bFY(str);
+    AppMethodBeat.o(253273);
     return false;
   }
   
   public static void registerWith(io.flutter.embedding.engine.a parama)
   {
-    AppMethodBeat.i(214852);
-    parama.SNX.a(new com.tencent.liteapp.b());
-    parama.SNX.a(new com.tencent.wxa.d());
-    parama.SNX.a(new io.flutter.plugins.a.a());
-    parama.SNX.a(new j.a.a.a());
-    parama.SNX.a(new com.tencent.j.b());
-    parama.SNX.a(new com.tencent.mm.flutter.plugins.a.d());
-    parama.SNX.a(new com.github.a.a.b());
+    AppMethodBeat.i(253272);
+    parama.aapV.a(new c());
+    parama.aapV.a(new com.tencent.wxa.d());
+    parama.aapV.a(new io.flutter.plugins.a.a());
+    parama.aapV.a(new com.tencent.mm.flutter.plugins.a.d());
+    parama.aapV.a(new com.github.a.a.b());
     try
     {
       Class.forName("com.tencent.mm.plugin.flutter.model.ChannelRegistrant").getMethod("registerWith", new Class[] { io.flutter.embedding.engine.a.class }).invoke(null, new Object[] { parama });
-      AppMethodBeat.o(214852);
+      AppMethodBeat.o(253272);
       return;
     }
     catch (ClassNotFoundException localClassNotFoundException)
@@ -43,18 +42,18 @@ public final class GeneratedPluginRegistrant
       try
       {
         Class.forName("com.tencent.mm.plugin.luggage.natives.flutter.channel.ChannelRegistrant").getMethod("registerWith", new Class[] { io.flutter.embedding.engine.a.class }).invoke(null, new Object[] { parama });
-        AppMethodBeat.o(214852);
+        AppMethodBeat.o(253272);
         return;
       }
       catch (Exception parama)
       {
-        AppMethodBeat.o(214852);
+        AppMethodBeat.o(253272);
         return;
       }
     }
     catch (Exception parama)
     {
-      AppMethodBeat.o(214852);
+      AppMethodBeat.o(253272);
     }
   }
   
@@ -95,7 +94,7 @@ public final class GeneratedPluginRegistrant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     io.flutter.plugins.GeneratedPluginRegistrant
  * JD-Core Version:    0.7.0.1
  */

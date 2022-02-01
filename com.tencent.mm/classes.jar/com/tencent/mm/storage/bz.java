@@ -9,7 +9,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MStorageEx;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 
 public final class bz
   extends MStorageEx
@@ -101,8 +101,8 @@ public final class bz
     //   162: astore_1
     //   163: aload 10
     //   165: invokeinterface 90 1 0
-    //   170: invokestatic 96	com/tencent/mm/kernel/g:aAh	()Lcom/tencent/mm/kernel/e;
-    //   173: getfield 102	com/tencent/mm/kernel/e:hqK	Lcom/tencent/mm/storagebase/h;
+    //   170: invokestatic 96	com/tencent/mm/kernel/h:aHG	()Lcom/tencent/mm/kernel/f;
+    //   173: getfield 102	com/tencent/mm/kernel/f:kcF	Lcom/tencent/mm/storagebase/h;
     //   176: invokestatic 108	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   179: invokevirtual 112	java/lang/Thread:getId	()J
     //   182: invokevirtual 118	com/tencent/mm/storagebase/h:beginTransaction	(J)J
@@ -144,8 +144,8 @@ public final class bz
     //   265: lconst_0
     //   266: lcmp
     //   267: ifle +15 -> 282
-    //   270: invokestatic 96	com/tencent/mm/kernel/g:aAh	()Lcom/tencent/mm/kernel/e;
-    //   273: getfield 102	com/tencent/mm/kernel/e:hqK	Lcom/tencent/mm/storagebase/h;
+    //   270: invokestatic 96	com/tencent/mm/kernel/h:aHG	()Lcom/tencent/mm/kernel/f;
+    //   273: getfield 102	com/tencent/mm/kernel/f:kcF	Lcom/tencent/mm/storagebase/h;
     //   276: lload 6
     //   278: invokevirtual 145	com/tencent/mm/storagebase/h:endTransaction	(J)I
     //   281: pop
@@ -390,7 +390,7 @@ public final class bz
     //   163	170	640	java/lang/Exception
   }
   
-  public final boolean P(String paramString1, int paramInt, String paramString2)
+  public final boolean U(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(152801);
     if (Util.isNullOrNil(paramString2))
@@ -402,7 +402,7 @@ public final class bz
     long l1 = paramInt;
     if (paramInt <= 0)
     {
-      l2 = (int)s.boW(paramString2);
+      l2 = (int)u.bBQ(paramString2);
       l1 = l2;
       if (l2 <= 0L)
       {
@@ -414,7 +414,7 @@ public final class bz
     String str = paramString1;
     if (Util.isNullOrNil(paramString1))
     {
-      paramString1 = s.bhK(paramString2);
+      paramString1 = u.buc(paramString2);
       str = paramString1;
       if (Util.isNullOrNil(paramString1))
       {
@@ -449,14 +449,14 @@ public final class bz
       AppMethodBeat.o(152804);
       return false;
     }
-    int i = (int)s.boW(paramString);
+    int i = (int)u.bBQ(paramString);
     if (i <= 0)
     {
       Log.w("MicroMsg.MediaCheckDuplicationStorage", "check video remuxing, but file size is zero. path : ".concat(String.valueOf(paramString)));
       AppMethodBeat.o(152804);
       return false;
     }
-    String str = s.bhK(paramString);
+    String str = u.buc(paramString);
     if (Util.isNullOrNil(str))
     {
       Log.w("MicroMsg.MediaCheckDuplicationStorage", "check video remuxing, but md5 is null. path : ".concat(String.valueOf(paramString)));
@@ -516,7 +516,7 @@ public final class bz
       return false;
     }
     label334:
-    if ((int)s.boW(paramPString.value) <= 0)
+    if ((int)u.bBQ(paramPString.value) <= 0)
     {
       Log.w("MicroMsg.MediaCheckDuplicationStorage", "remuxing file size is zero, delete db record now. remuxing path : " + paramPString.value);
       this.db.delete("MediaDuplication", "md5=? AND size=? AND status=?", new String[] { str, String.valueOf(i), "100" });
@@ -529,7 +529,7 @@ public final class bz
     return true;
   }
   
-  public final boolean ar(String paramString1, String paramString2, int paramInt)
+  public final boolean aB(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(152803);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
@@ -538,15 +538,15 @@ public final class bz
       AppMethodBeat.o(152803);
       return false;
     }
-    int i = (int)s.boW(paramString1);
-    int j = (int)s.boW(paramString2);
+    int i = (int)u.bBQ(paramString1);
+    int j = (int)u.bBQ(paramString2);
     if ((i <= 0) || (j <= 0))
     {
       Log.w("MicroMsg.MediaCheckDuplicationStorage", "insert video remuxing info, but file size is zero.[%d, %d]", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
       AppMethodBeat.o(152803);
       return false;
     }
-    String str = s.bhK(paramString1);
+    String str = u.buc(paramString1);
     if (Util.isNullOrNil(str))
     {
       Log.w("MicroMsg.MediaCheckDuplicationStorage", "import file is not null, but md5 is null, path " + paramString1 + " size : " + i);
@@ -572,7 +572,7 @@ public final class bz
     return false;
   }
   
-  public final String gS(String paramString, int paramInt)
+  public final String hA(String paramString, int paramInt)
   {
     AppMethodBeat.i(152802);
     if ((Util.isNullOrNil(paramString)) || (paramInt <= 0))
@@ -597,7 +597,7 @@ public final class bz
     localObject = str;
     if (!Util.isNullOrNil(str))
     {
-      int i = (int)s.boW(str);
+      int i = (int)u.bBQ(str);
       localObject = str;
       if (i <= 0)
       {
@@ -617,7 +617,7 @@ public final class bz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.bz
  * JD-Core Version:    0.7.0.1
  */

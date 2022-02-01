@@ -7,8 +7,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
@@ -20,233 +18,241 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.cgi.by;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.i;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.cgi.cb;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
+import com.tencent.mm.plugin.finder.utils.v;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.u;
+import com.tencent.mm.ui.base.w;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.util.HashMap;
+import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderOriginalRequestUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "button", "Landroid/widget/Button;", "getButton", "()Landroid/widget/Button;", "setButton", "(Landroid/widget/Button;)V", "descTv", "Landroid/widget/TextView;", "getDescTv", "()Landroid/widget/TextView;", "setDescTv", "(Landroid/widget/TextView;)V", "iconIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getIconIv", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setIconIv", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "pageState", "", "readCheckBox", "Landroid/widget/CheckBox;", "getReadCheckBox", "()Landroid/widget/CheckBox;", "setReadCheckBox", "(Landroid/widget/CheckBox;)V", "readContentTv", "getReadContentTv", "setReadContentTv", "readLayout", "Landroid/widget/LinearLayout;", "getReadLayout", "()Landroid/widget/LinearLayout;", "setReadLayout", "(Landroid/widget/LinearLayout;)V", "tipDialog", "Landroid/app/Dialog;", "titleTv", "getTitleTv", "setTitleTv", "getLayoutId", "initViews", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "refreshView", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderOriginalRequestUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "button", "Landroid/widget/Button;", "getButton", "()Landroid/widget/Button;", "setButton", "(Landroid/widget/Button;)V", "descTv", "Landroid/widget/TextView;", "getDescTv", "()Landroid/widget/TextView;", "setDescTv", "(Landroid/widget/TextView;)V", "iconIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getIconIv", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setIconIv", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "pageState", "", "readCheckBox", "Landroid/widget/CheckBox;", "getReadCheckBox", "()Landroid/widget/CheckBox;", "setReadCheckBox", "(Landroid/widget/CheckBox;)V", "readContentTv", "getReadContentTv", "setReadContentTv", "readLayout", "Landroid/widget/LinearLayout;", "getReadLayout", "()Landroid/widget/LinearLayout;", "setReadLayout", "(Landroid/widget/LinearLayout;)V", "tipDialog", "Landroid/app/Dialog;", "titleTv", "getTitleTv", "setTitleTv", "getLayoutId", "initViews", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "refreshView", "plugin-finder_release"})
 public final class FinderOriginalRequestUI
   extends MMFinderUI
   implements i
 {
   private final String TAG = "Finder.FinderOriginalRequestUI";
   private HashMap _$_findViewCache;
-  public TextView hPW;
+  public TextView kEs;
   private Dialog tipDialog;
   public TextView titleTv;
-  public WeImageView ubT;
-  public LinearLayout ubU;
-  public CheckBox ubV;
-  public TextView ubW;
-  public Button ubX;
-  private int ubY;
+  public WeImageView xQM;
+  public LinearLayout xQN;
+  public CheckBox xQO;
+  public TextView xQP;
+  public Button xQQ;
+  private int xQR;
   
   private final void refreshView()
   {
-    AppMethodBeat.i(245444);
-    if (this.ubY == 1)
+    AppMethodBeat.i(291134);
+    if (this.xQR == 1)
     {
-      localObject1 = this.ubT;
+      localObject1 = this.xQM;
       if (localObject1 == null) {
-        kotlin.g.b.p.btv("iconIv");
+        p.bGy("iconIv");
       }
-      ((WeImageView)localObject1).setImageResource(2131690538);
-      localObject1 = this.ubT;
+      ((WeImageView)localObject1).setImageResource(b.i.icons_filled_done2);
+      localObject1 = this.xQM;
       if (localObject1 == null) {
-        kotlin.g.b.p.btv("iconIv");
+        p.bGy("iconIv");
       }
-      ((WeImageView)localObject1).setIconColor(getResources().getColor(2131099710));
+      ((WeImageView)localObject1).setIconColor(getResources().getColor(b.c.Brand));
       localObject1 = this.titleTv;
       if (localObject1 == null) {
-        kotlin.g.b.p.btv("titleTv");
+        p.bGy("titleTv");
       }
-      ((TextView)localObject1).setText((CharSequence)getString(2131760387));
-      localObject1 = this.hPW;
+      ((TextView)localObject1).setText((CharSequence)getString(b.j.finder_original_has_apply_title));
+      localObject1 = this.kEs;
       if (localObject1 == null) {
-        kotlin.g.b.p.btv("descTv");
+        p.bGy("descTv");
       }
-      ((TextView)localObject1).setText(2131760386);
-      localObject1 = this.ubU;
+      ((TextView)localObject1).setText(b.j.finder_original_has_apply_desc);
+      localObject1 = this.xQN;
       if (localObject1 == null) {
-        kotlin.g.b.p.btv("readLayout");
+        p.bGy("readLayout");
       }
       ((LinearLayout)localObject1).setVisibility(8);
-      localObject1 = this.ubX;
+      localObject1 = this.xQQ;
       if (localObject1 == null) {
-        kotlin.g.b.p.btv("button");
+        p.bGy("button");
       }
       ((Button)localObject1).setClickable(true);
-      localObject1 = this.ubX;
+      localObject1 = this.xQQ;
       if (localObject1 == null) {
-        kotlin.g.b.p.btv("button");
+        p.bGy("button");
       }
       ((Button)localObject1).setEnabled(true);
-      localObject1 = this.ubX;
+      localObject1 = this.xQQ;
       if (localObject1 == null) {
-        kotlin.g.b.p.btv("button");
+        p.bGy("button");
       }
-      ((Button)localObject1).setText(2131755858);
-      localObject1 = this.ubX;
+      ((Button)localObject1).setText(b.j.app_finish);
+      localObject1 = this.xQQ;
       if (localObject1 == null) {
-        kotlin.g.b.p.btv("button");
+        p.bGy("button");
       }
       ((Button)localObject1).setOnClickListener((View.OnClickListener)new d(this));
-      AppMethodBeat.o(245444);
+      AppMethodBeat.o(291134);
       return;
     }
     Object localObject3;
     Object localObject4;
     TextView localTextView;
-    if (this.ubY == 0)
+    if (this.xQR == 0)
     {
-      localObject1 = this.ubT;
+      localObject1 = this.xQM;
       if (localObject1 == null) {
-        kotlin.g.b.p.btv("iconIv");
+        p.bGy("iconIv");
       }
-      ((WeImageView)localObject1).setImageResource(2131690279);
-      localObject1 = this.ubT;
+      ((WeImageView)localObject1).setImageResource(b.i.finder_original);
+      localObject1 = this.xQM;
       if (localObject1 == null) {
-        kotlin.g.b.p.btv("iconIv");
+        p.bGy("iconIv");
       }
-      ((WeImageView)localObject1).setIconColor(getResources().getColor(2131099793));
+      ((WeImageView)localObject1).setIconColor(getResources().getColor(b.c.Orange_100));
       localObject1 = this.titleTv;
       if (localObject1 == null) {
-        kotlin.g.b.p.btv("titleTv");
+        p.bGy("titleTv");
       }
-      ((TextView)localObject1).setText((CharSequence)getString(2131760379));
-      localObject1 = this.hPW;
+      ((TextView)localObject1).setText((CharSequence)getString(b.j.finder_original_apply_title));
+      localObject1 = this.kEs;
       if (localObject1 == null) {
-        kotlin.g.b.p.btv("descTv");
+        p.bGy("descTv");
       }
-      ((TextView)localObject1).setText((CharSequence)getString(2131760376));
-      localObject1 = getString(2131760373);
-      kotlin.g.b.p.g(localObject1, "getString(R.string.finde…original_agree_tips_link)");
-      localObject2 = getString(2131760372, new Object[] { localObject1 });
-      kotlin.g.b.p.g(localObject2, "getString(R.string.finde…_agree_tips, readingText)");
-      localObject3 = com.tencent.mm.plugin.finder.utils.p.vVY;
+      ((TextView)localObject1).setText((CharSequence)getString(b.j.finder_original_apply_desc));
+      localObject1 = getString(b.j.finder_original_agree_tips_link);
+      p.j(localObject1, "getString(R.string.finde…original_agree_tips_link)");
+      localObject2 = getString(b.j.finder_original_agree_tips, new Object[] { localObject1 });
+      p.j(localObject2, "getString(R.string.finde…_agree_tips, readingText)");
+      localObject3 = v.ADV;
       localObject3 = getContext();
-      kotlin.g.b.p.g(localObject3, "context");
+      p.j(localObject3, "context");
       localObject3 = (Context)localObject3;
-      localObject4 = com.tencent.mm.plugin.finder.utils.p.vVY;
-      localObject4 = com.tencent.mm.plugin.finder.utils.p.dBT();
-      localTextView = this.ubW;
+      localObject4 = v.ADV;
+      localObject4 = v.edh();
+      localTextView = this.xQP;
       if (localTextView == null) {
-        kotlin.g.b.p.btv("readContentTv");
+        p.bGy("readContentTv");
       }
-      com.tencent.mm.plugin.finder.utils.p.a((Context)localObject3, (String)localObject4, (String)localObject2, (String)localObject1, localTextView, this.TAG);
-      localObject1 = this.ubU;
+      v.a((Context)localObject3, (String)localObject4, (String)localObject2, (String)localObject1, localTextView, this.TAG);
+      localObject1 = this.xQN;
       if (localObject1 == null) {
-        kotlin.g.b.p.btv("readLayout");
+        p.bGy("readLayout");
       }
       ((LinearLayout)localObject1).setVisibility(0);
-      localObject1 = this.ubX;
+      localObject1 = this.xQQ;
       if (localObject1 == null) {
-        kotlin.g.b.p.btv("button");
+        p.bGy("button");
       }
       ((Button)localObject1).setVisibility(0);
-      localObject1 = this.ubX;
+      localObject1 = this.xQQ;
       if (localObject1 == null) {
-        kotlin.g.b.p.btv("button");
+        p.bGy("button");
       }
-      ((Button)localObject1).setText(2131760374);
-      localObject1 = this.ubX;
+      ((Button)localObject1).setText(b.j.finder_original_apply);
+      localObject1 = this.xQQ;
       if (localObject1 == null) {
-        kotlin.g.b.p.btv("button");
+        p.bGy("button");
       }
       ((Button)localObject1).setOnClickListener((View.OnClickListener)new e(this));
-      AppMethodBeat.o(245444);
+      AppMethodBeat.o(291134);
       return;
     }
-    Object localObject1 = this.ubT;
+    Object localObject1 = this.xQM;
     if (localObject1 == null) {
-      kotlin.g.b.p.btv("iconIv");
+      p.bGy("iconIv");
     }
-    ((WeImageView)localObject1).setImageResource(2131690547);
-    localObject1 = this.ubT;
+    ((WeImageView)localObject1).setImageResource(b.i.icons_filled_error);
+    localObject1 = this.xQM;
     if (localObject1 == null) {
-      kotlin.g.b.p.btv("iconIv");
+      p.bGy("iconIv");
     }
-    ((WeImageView)localObject1).setIconColor(getResources().getColor(2131099793));
+    ((WeImageView)localObject1).setIconColor(getResources().getColor(b.c.Orange_100));
     localObject1 = this.titleTv;
     if (localObject1 == null) {
-      kotlin.g.b.p.btv("titleTv");
+      p.bGy("titleTv");
     }
-    ((TextView)localObject1).setText(2131760393);
-    localObject1 = getString(2131760373);
-    kotlin.g.b.p.g(localObject1, "getString(R.string.finde…original_agree_tips_link)");
-    Object localObject2 = com.tencent.mm.plugin.finder.utils.p.vVY;
-    if (com.tencent.mm.plugin.finder.utils.p.dBX())
+    ((TextView)localObject1).setText(b.j.finder_original_spam_title);
+    localObject1 = getString(b.j.finder_original_agree_tips_link);
+    p.j(localObject1, "getString(R.string.finde…original_agree_tips_link)");
+    Object localObject2 = v.ADV;
+    if (v.edl())
     {
-      localObject2 = com.tencent.mm.plugin.finder.utils.p.vVY;
+      localObject2 = v.ADV;
       localObject2 = getContext();
-      kotlin.g.b.p.g(localObject2, "context");
+      p.j(localObject2, "context");
       localObject2 = (Context)localObject2;
-      localObject3 = com.tencent.mm.plugin.finder.utils.p.vVY;
-      localObject3 = com.tencent.mm.plugin.finder.utils.p.dBT();
-      localObject4 = getString(2131760392, new Object[] { localObject1 });
-      kotlin.g.b.p.g(localObject4, "getString(R.string.finde…nal_spam_desc2, linkText)");
-      localTextView = this.hPW;
+      localObject3 = v.ADV;
+      localObject3 = v.edh();
+      localObject4 = getString(b.j.finder_original_spam_desc2, new Object[] { localObject1 });
+      p.j(localObject4, "getString(R.string.finde…nal_spam_desc2, linkText)");
+      localTextView = this.kEs;
       if (localTextView == null) {
-        kotlin.g.b.p.btv("descTv");
+        p.bGy("descTv");
       }
-      com.tencent.mm.plugin.finder.utils.p.a((Context)localObject2, (String)localObject3, (String)localObject4, (String)localObject1, localTextView, this.TAG);
+      v.a((Context)localObject2, (String)localObject3, (String)localObject4, (String)localObject1, localTextView, this.TAG);
     }
     for (;;)
     {
-      localObject1 = this.ubU;
+      localObject1 = this.xQN;
       if (localObject1 == null) {
-        kotlin.g.b.p.btv("readLayout");
+        p.bGy("readLayout");
       }
       ((LinearLayout)localObject1).setVisibility(8);
-      localObject1 = this.ubX;
+      localObject1 = this.xQQ;
       if (localObject1 == null) {
-        kotlin.g.b.p.btv("button");
+        p.bGy("button");
       }
       ((Button)localObject1).setVisibility(8);
-      AppMethodBeat.o(245444);
+      AppMethodBeat.o(291134);
       return;
-      localObject2 = com.tencent.mm.plugin.finder.utils.p.vVY;
+      localObject2 = v.ADV;
       localObject2 = getContext();
-      kotlin.g.b.p.g(localObject2, "context");
+      p.j(localObject2, "context");
       localObject2 = (Context)localObject2;
-      localObject3 = com.tencent.mm.plugin.finder.utils.p.vVY;
-      localObject3 = com.tencent.mm.plugin.finder.utils.p.dBT();
-      localObject4 = com.tencent.mm.plugin.finder.utils.p.vVY;
-      localObject4 = getString(2131760391, new Object[] { localObject1, String.valueOf(com.tencent.mm.plugin.finder.utils.p.dBY()) });
-      kotlin.g.b.p.g(localObject4, "getString(R.string.finde….getSpamDay().toString())");
-      localTextView = this.hPW;
+      localObject3 = v.ADV;
+      localObject3 = v.edh();
+      int i = b.j.finder_original_spam_desc1;
+      localObject4 = v.ADV;
+      localObject4 = getString(i, new Object[] { localObject1, String.valueOf(v.edm()) });
+      p.j(localObject4, "getString(R.string.finde….getSpamDay().toString())");
+      localTextView = this.kEs;
       if (localTextView == null) {
-        kotlin.g.b.p.btv("descTv");
+        p.bGy("descTv");
       }
-      com.tencent.mm.plugin.finder.utils.p.a((Context)localObject2, (String)localObject3, (String)localObject4, (String)localObject1, localTextView, this.TAG);
+      v.a((Context)localObject2, (String)localObject3, (String)localObject4, (String)localObject1, localTextView, this.TAG);
     }
   }
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(245447);
+    AppMethodBeat.i(291137);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(245447);
+    AppMethodBeat.o(291137);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(245446);
+    AppMethodBeat.i(291136);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -257,102 +263,102 @@ public final class FinderOriginalRequestUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(245446);
+    AppMethodBeat.o(291136);
     return localView1;
   }
   
-  public final Button dek()
+  public final Button dvI()
   {
-    AppMethodBeat.i(245441);
-    Button localButton = this.ubX;
+    AppMethodBeat.i(291131);
+    Button localButton = this.xQQ;
     if (localButton == null) {
-      kotlin.g.b.p.btv("button");
+      p.bGy("button");
     }
-    AppMethodBeat.o(245441);
+    AppMethodBeat.o(291131);
     return localButton;
   }
   
   public final int getLayoutId()
   {
-    return 2131494554;
+    return b.g.finder_original_request_ui;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(245442);
+    AppMethodBeat.i(291132);
     super.onCreate(paramBundle);
-    paramBundle = com.tencent.mm.plugin.finder.utils.p.vVY;
-    if (com.tencent.mm.plugin.finder.utils.p.dBW() == 3) {}
+    paramBundle = v.ADV;
+    if (v.edk() == 3) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        this.ubY = 2;
+        this.xQR = 2;
       }
-      setActionbarColor(getResources().getColor(2131101424));
+      setActionbarColor(getResources().getColor(b.c.white));
       setMMTitle("");
       setBackBtn((MenuItem.OnMenuItemClickListener)new c(this));
-      paramBundle = findViewById(2131305706);
-      kotlin.g.b.p.g(paramBundle, "findViewById(R.id.original_icon_iv)");
-      this.ubT = ((WeImageView)paramBundle);
-      paramBundle = findViewById(2131305717);
-      kotlin.g.b.p.g(paramBundle, "findViewById(R.id.original_title_tv)");
+      paramBundle = findViewById(b.f.original_icon_iv);
+      p.j(paramBundle, "findViewById(R.id.original_icon_iv)");
+      this.xQM = ((WeImageView)paramBundle);
+      paramBundle = findViewById(b.f.original_title_tv);
+      p.j(paramBundle, "findViewById(R.id.original_title_tv)");
       this.titleTv = ((TextView)paramBundle);
-      paramBundle = findViewById(2131305704);
-      kotlin.g.b.p.g(paramBundle, "findViewById(R.id.original_desc_tv)");
-      this.hPW = ((TextView)paramBundle);
-      paramBundle = findViewById(2131305703);
-      kotlin.g.b.p.g(paramBundle, "findViewById(R.id.original_checkbox_layout)");
-      this.ubU = ((LinearLayout)paramBundle);
-      paramBundle = findViewById(2131305702);
-      kotlin.g.b.p.g(paramBundle, "findViewById(R.id.original_checkbox)");
-      this.ubV = ((CheckBox)paramBundle);
-      paramBundle = findViewById(2131305714);
-      kotlin.g.b.p.g(paramBundle, "findViewById(R.id.original_read_tv)");
-      this.ubW = ((TextView)paramBundle);
-      paramBundle = findViewById(2131297963);
-      kotlin.g.b.p.g(paramBundle, "findViewById(R.id.cancel_btn)");
-      this.ubX = ((Button)paramBundle);
-      paramBundle = this.ubV;
+      paramBundle = findViewById(b.f.original_desc_tv);
+      p.j(paramBundle, "findViewById(R.id.original_desc_tv)");
+      this.kEs = ((TextView)paramBundle);
+      paramBundle = findViewById(b.f.original_checkbox_layout);
+      p.j(paramBundle, "findViewById(R.id.original_checkbox_layout)");
+      this.xQN = ((LinearLayout)paramBundle);
+      paramBundle = findViewById(b.f.original_checkbox);
+      p.j(paramBundle, "findViewById(R.id.original_checkbox)");
+      this.xQO = ((CheckBox)paramBundle);
+      paramBundle = findViewById(b.f.original_read_tv);
+      p.j(paramBundle, "findViewById(R.id.original_read_tv)");
+      this.xQP = ((TextView)paramBundle);
+      paramBundle = findViewById(b.f.cancel_btn);
+      p.j(paramBundle, "findViewById(R.id.cancel_btn)");
+      this.xQQ = ((Button)paramBundle);
+      paramBundle = this.xQO;
       if (paramBundle == null) {
-        kotlin.g.b.p.btv("readCheckBox");
+        p.bGy("readCheckBox");
       }
       paramBundle.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener)new a(this));
-      paramBundle = this.ubU;
+      paramBundle = this.xQN;
       if (paramBundle == null) {
-        kotlin.g.b.p.btv("readLayout");
+        p.bGy("readLayout");
       }
       paramBundle.setOnClickListener((View.OnClickListener)new b(this));
       refreshView();
-      g.azz().a(3785, (i)this);
-      AppMethodBeat.o(245442);
+      com.tencent.mm.kernel.h.aGY().a(3785, (i)this);
+      AppMethodBeat.o(291132);
       return;
     }
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(245443);
+    AppMethodBeat.i(291133);
     super.onDestroy();
-    g.azz().b(3785, (i)this);
-    AppMethodBeat.o(245443);
+    com.tencent.mm.kernel.h.aGY().b(3785, (i)this);
+    AppMethodBeat.o(291133);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    AppMethodBeat.i(245445);
+    AppMethodBeat.i(291135);
     paramString = this.tipDialog;
     if (paramString != null) {
       paramString.dismiss();
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.ubY = 1;
+      this.xQR = 1;
       refreshView();
-      AppMethodBeat.o(245445);
+      AppMethodBeat.o(291135);
       return;
     }
-    u.makeText((Context)this, 2131760326, 0).show();
-    AppMethodBeat.o(245445);
+    w.makeText((Context)this, b.j.finder_network_failed, 0).show();
+    AppMethodBeat.o(291135);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -361,7 +367,7 @@ public final class FinderOriginalRequestUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "buttonView", "Landroid/widget/CompoundButton;", "kotlin.jvm.PlatformType", "isChecked", "", "onCheckedChanged"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "buttonView", "Landroid/widget/CompoundButton;", "kotlin.jvm.PlatformType", "isChecked", "", "onCheckedChanged"})
   static final class a
     implements CompoundButton.OnCheckedChangeListener
   {
@@ -369,14 +375,14 @@ public final class FinderOriginalRequestUI
     
     public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
     {
-      AppMethodBeat.i(245435);
-      this.ubZ.dek().setClickable(paramBoolean);
-      this.ubZ.dek().setEnabled(paramBoolean);
-      AppMethodBeat.o(245435);
+      AppMethodBeat.i(277830);
+      this.xQS.dvI().setClickable(paramBoolean);
+      this.xQS.dvI().setEnabled(paramBoolean);
+      AppMethodBeat.o(277830);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -384,21 +390,21 @@ public final class FinderOriginalRequestUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(245436);
+      AppMethodBeat.i(285858);
       b localb = new b();
-      localb.bm(paramView);
-      a.b("com/tencent/mm/plugin/finder/feed/ui/FinderOriginalRequestUI$initViews$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      paramView = this.ubZ.ubV;
+      localb.bn(paramView);
+      a.c("com/tencent/mm/plugin/finder/feed/ui/FinderOriginalRequestUI$initViews$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      paramView = this.xQS.xQO;
       if (paramView == null) {
-        kotlin.g.b.p.btv("readCheckBox");
+        p.bGy("readCheckBox");
       }
       paramView.toggle();
       a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderOriginalRequestUI$initViews$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(245436);
+      AppMethodBeat.o(285858);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class c
     implements MenuItem.OnMenuItemClickListener
   {
@@ -406,14 +412,14 @@ public final class FinderOriginalRequestUI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(245437);
-      this.ubZ.finish();
-      AppMethodBeat.o(245437);
+      AppMethodBeat.i(277569);
+      this.xQS.finish();
+      AppMethodBeat.o(277569);
       return true;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class d
     implements View.OnClickListener
   {
@@ -421,17 +427,17 @@ public final class FinderOriginalRequestUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(245438);
+      AppMethodBeat.i(265461);
       b localb = new b();
-      localb.bm(paramView);
-      a.b("com/tencent/mm/plugin/finder/feed/ui/FinderOriginalRequestUI$refreshView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      this.ubZ.finish();
+      localb.bn(paramView);
+      a.c("com/tencent/mm/plugin/finder/feed/ui/FinderOriginalRequestUI$refreshView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      this.xQS.finish();
       a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderOriginalRequestUI$refreshView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(245438);
+      AppMethodBeat.o(265461);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class e
     implements View.OnClickListener
   {
@@ -439,47 +445,47 @@ public final class FinderOriginalRequestUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(245440);
+      AppMethodBeat.i(288139);
       Object localObject = new b();
-      ((b)localObject).bm(paramView);
-      a.b("com/tencent/mm/plugin/finder/feed/ui/FinderOriginalRequestUI$refreshView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
-      paramView = z.aUg();
+      ((b)localObject).bn(paramView);
+      a.c("com/tencent/mm/plugin/finder/feed/ui/FinderOriginalRequestUI$refreshView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+      paramView = z.bdh();
       if (Util.isNullOrNil(paramView))
       {
         a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderOriginalRequestUI$refreshView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(245440);
+        AppMethodBeat.o(288139);
         return;
       }
-      localObject = FinderOriginalRequestUI.a(this.ubZ);
+      localObject = FinderOriginalRequestUI.a(this.xQS);
       if (localObject != null) {
         ((Dialog)localObject).show();
       }
       for (;;)
       {
-        kotlin.g.b.p.g(paramView, "username");
-        paramView = new by(paramView, (byte)0);
-        g.azz().b((q)paramView);
+        p.j(paramView, "username");
+        paramView = new cb(paramView, (byte)0);
+        com.tencent.mm.kernel.h.aGY().b((q)paramView);
         a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderOriginalRequestUI$refreshView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(245440);
+        AppMethodBeat.o(288139);
         return;
-        localObject = this.ubZ;
+        localObject = this.xQS;
         Context localContext = (Context)((FinderOriginalRequestUI)localObject).getContext();
-        ((FinderOriginalRequestUI)localObject).getContext().getString(2131755998);
-        FinderOriginalRequestUI.a((FinderOriginalRequestUI)localObject, (Dialog)h.a(localContext, ((FinderOriginalRequestUI)localObject).getContext().getString(2131756029), false, (DialogInterface.OnCancelListener)a.uca));
+        ((FinderOriginalRequestUI)localObject).getContext().getString(b.j.app_tip);
+        FinderOriginalRequestUI.a((FinderOriginalRequestUI)localObject, (Dialog)com.tencent.mm.ui.base.h.a(localContext, ((FinderOriginalRequestUI)localObject).getContext().getString(b.j.app_waiting), false, (DialogInterface.OnCancelListener)a.xQT));
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
     static final class a
       implements DialogInterface.OnCancelListener
     {
-      public static final a uca;
+      public static final a xQT;
       
       static
       {
-        AppMethodBeat.i(245439);
-        uca = new a();
-        AppMethodBeat.o(245439);
+        AppMethodBeat.i(225270);
+        xQT = new a();
+        AppMethodBeat.o(225270);
       }
       
       public final void onCancel(DialogInterface paramDialogInterface) {}

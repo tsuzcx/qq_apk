@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.voip;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ps;
+import com.tencent.mm.f.a.qq;
 import com.tencent.mm.sdk.event.IListener;
 
 public final class c$a
-  extends IListener<ps>
+  extends IListener<qq>
 {
   public c$a(c paramc)
   {
     AppMethodBeat.i(161651);
-    this.__eventId = ps.class.getName().hashCode();
+    this.__eventId = qq.class.getName().hashCode();
     AppMethodBeat.o(161651);
   }
 }

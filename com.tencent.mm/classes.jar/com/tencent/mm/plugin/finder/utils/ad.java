@@ -1,255 +1,537 @@
 package com.tencent.mm.plugin.finder.utils;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.storage.d;
+import com.tencent.mm.plugin.findersdk.a.ae;
+import com.tencent.mm.protocal.protobuf.cse;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.a.a;
+import java.util.HashMap<Ljava.lang.String;Lcom.tencent.mm.protocal.protobuf.cse;>;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.g.a.b;
+import kotlin.g.a.m;
+import kotlin.g.b.aa.d;
+import kotlin.g.b.af;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.t;
+import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/utils/LiveStatConstant;", "", "()V", "Companion", "LiveStage", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/FinderStyleUtil;", "", "()V", "AT", "", "getAT", "()Ljava/lang/String;", "FINDER", "getFINDER", "STYLE", "getSTYLE", "TAG", "TAG_AT_END", "TAG_AT_START", "TAG_CDATA", "TAG_FINDER_END", "TAG_FINDER_START", "TAG_STYLE_END", "TAG_STYLE_START", "TAG_TOPIC", "TAG_VALUE_COUNT", "TAG_VALUE_END", "TAG_VALUE_START", "TAG_VERSION", "TOPIC", "getTOPIC", "VALUE", "getVALUE", "VALUE_COUNT", "getVALUE_COUNT", "VERSION", "getVERSION", "version", "", "getVersion", "()I", "appendNormalValue", "", "xml", "Ljava/lang/StringBuilder;", "Lkotlin/text/StringBuilder;", "content", "count", "appendStyleAt", "atIndexs", "appendTopicValue", "appendVersionValue", "getDescXml", "curDesc", "atContactMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/protocal/protobuf/LocalFinderAtContact;", "Lkotlin/collections/HashMap;", "handleAt", "desc", "Landroid/text/SpannableString;", "atContactList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/utils/FinderAtUtil$AtStringInfo;", "onAtClick", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "username", "handleTopic", "feedId", "", "topicInfoList", "", "Lcom/tencent/mm/plugin/finder/utils/TopicStringInfo;", "onTopicClick", "Lkotlin/Function2;", "topic", "Lcom/tencent/mm/plugin/finder/utils/ClickExtra;", "clickExtra", "parseDefatultDesc", "defaultDesc", "parseXml", "atFinderContactList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "mentionedUserList", "Lcom/tencent/mm/protocal/protobuf/FinderMentionedUser;", "plugin-finder_release"})
 public final class ad
 {
-  private static final int vYG = 1;
-  private static final int vYH = 2;
-  private static final ArrayList<c> vYI;
-  private static final c vYJ;
-  private static final c vYK;
-  private static final c vYL;
-  private static final c vYM;
-  private static final c vYN;
-  private static final c vYO;
-  private static final c vYP;
-  private static final c vYQ;
-  private static final c vYR;
-  private static final c vYS;
-  private static final c vYT;
-  private static final c vYU;
-  private static final c vYV;
-  private static final c vYW;
-  private static final c vYX;
-  private static final c vYY;
-  private static final c vYZ;
-  private static final c vZa;
-  private static final c vZb;
-  private static final c vZc;
-  private static final c vZd;
-  private static final c vZe;
-  private static final c vZf;
-  private static final c vZg;
-  private static final c vZh;
-  private static final c vZi;
-  private static final c vZj;
-  private static final c vZk;
-  private static final c vZl;
-  private static final c vZm;
-  private static final c vZn;
-  private static final c vZo;
-  private static final c vZp;
-  private static final c vZq;
-  private static final c vZr;
-  private static final c vZs;
-  private static final f<HashMap<String, Integer>> vZt;
-  public static final a vZu;
+  public static final String AFa = "finder";
+  public static final String AFb = "style";
+  public static final String AFc = "valuecount";
+  public static final String AFd = "topic";
+  public static final String AFe = "at";
+  private static final String AFf = "<finder>";
+  private static final String AFg = "</finder>";
+  private static final String AFh = "<style>";
+  private static final String AFi = "</style>";
+  private static final String AFj = "<at>";
+  private static final String AFk = "</at>";
+  private static final String AFl = "<![CDATA[%s]]>";
+  private static final String AFm = "<valuecount>%d</valuecount>";
+  private static final String AFn = "<value%d>";
+  private static final String AFo = "</value%d>";
+  private static final String AFp = "<topic>%s</topic>";
+  private static final String AFq = "<version>%d</version>";
+  public static final ad AFr;
+  public static final String TAG = "Finder.FinderStyleUtil";
+  public static final String VALUE = "value";
+  public static final String VERSION = "version";
+  private static final int version = 1;
   
   static
   {
-    AppMethodBeat.i(253761);
-    vZu = new a((byte)0);
-    vYG = 1;
-    vYH = 2;
-    vYI = new ArrayList();
-    c localc = new c(10, "ViewHolderBegin");
-    vYI.add(localc);
-    vYJ = localc;
-    localc = new c(20, "ViewHolderEnd");
-    vYI.add(localc);
-    vYK = localc;
-    localc = new c(30, "ItemSelectedBegin");
-    vYI.add(localc);
-    vYL = localc;
-    localc = new c(40, "JoinLiveBegin");
-    vYI.add(localc);
-    vYM = localc;
-    localc = new c(50, "ItemSelectedEnd");
-    vYI.add(localc);
-    vYN = localc;
-    localc = new c(60, "JoinLiveCgiBack");
-    vYI.add(localc);
-    vYO = localc;
-    localc = new c(70, "JoinLiveEnd");
-    vYI.add(localc);
-    vYP = localc;
-    localc = new c(80, "StartLive");
-    vYI.add(localc);
-    vYQ = localc;
-    localc = new c(90, "JoinLiveFinish");
-    vYI.add(localc);
-    vYR = localc;
-    localc = new c(100, "ConnectSucc");
-    vYI.add(localc);
-    vYS = localc;
-    localc = new c(110, "FirstFrameEvent");
-    vYI.add(localc);
-    vYT = localc;
-    localc = new c(10, "AnchorDoPost");
-    vYI.add(localc);
-    vYU = localc;
-    localc = new c(20, "AnchorCreateLive");
-    vYI.add(localc);
-    vYV = localc;
-    localc = new c(21, "AnchorCreateLiveFailed");
-    vYI.add(localc);
-    vYW = localc;
-    localc = new c(22, "RecheckRealName");
-    vYI.add(localc);
-    vYX = localc;
-    localc = new c(30, "AnchorJoinLive");
-    vYI.add(localc);
-    vYY = localc;
-    localc = new c(31, "AnchorJoinLiveFailed");
-    vYI.add(localc);
-    vYZ = localc;
-    localc = new c(40, "AnchorEnterRoom");
-    vYI.add(localc);
-    vZa = localc;
-    localc = new c(41, "AnchorEnterRoomFailed");
-    vYI.add(localc);
-    vZb = localc;
-    localc = new c(50, "AnchorShareFeed");
-    vYI.add(localc);
-    vZc = localc;
-    localc = new c(51, "AnchorShareFeedFailed");
-    vYI.add(localc);
-    vZd = localc;
-    localc = new c(60, "AnchorCancelCreate");
-    vYI.add(localc);
-    vZe = localc;
-    localc = new c(70, "AnchorSuccessLive");
-    vYI.add(localc);
-    vZf = localc;
-    localc = new c(10, "AnchorLinkSelected");
-    vYI.add(localc);
-    vZg = localc;
-    localc = new c(20, "AnchorLinkAcceptSuc");
-    vYI.add(localc);
-    vZh = localc;
-    localc = new c(21, "AnchorLinkAcceptFail");
-    vYI.add(localc);
-    vZi = localc;
-    localc = new c(30, "AnchorLinkHangupSuc");
-    vYI.add(localc);
-    vZj = localc;
-    localc = new c(31, "AnchorLinkHangupFail");
-    vYI.add(localc);
-    vZk = localc;
-    localc = new c(10, "VisitorLinkApplySuc");
-    vYI.add(localc);
-    vZl = localc;
-    localc = new c(11, "VisitorLinkApplyFail");
-    vYI.add(localc);
-    vZm = localc;
-    localc = new c(20, "VisitorLinkAccepted");
-    vYI.add(localc);
-    vZn = localc;
-    localc = new c(30, "VisitorLinkHangupSuc");
-    vYI.add(localc);
-    vZo = localc;
-    localc = new c(31, "VisitorLinkHangupFail");
-    vYI.add(localc);
-    vZp = localc;
-    localc = new c(10, "VisitorRewardSuc");
-    vYI.add(localc);
-    vZq = localc;
-    localc = new c(11, "VisitorRewardFail");
-    vYI.add(localc);
-    vZr = localc;
-    localc = new c(12, "VisitorRewardConsumeFail");
-    vYI.add(localc);
-    vZs = localc;
-    vZt = g.ah((a)b.vZv);
-    AppMethodBeat.o(253761);
+    AppMethodBeat.i(284221);
+    AFr = new ad();
+    TAG = "Finder.FinderStyleUtil";
+    version = 1;
+    AFa = "finder";
+    AFb = "style";
+    AFc = "valuecount";
+    VALUE = "value";
+    AFd = "topic";
+    AFe = "at";
+    VERSION = "version";
+    AFf = "<" + AFa + '>';
+    AFg = "</" + AFa + '>';
+    AFh = "<" + AFb + '>';
+    AFi = "</" + AFb + '>';
+    AFj = "<" + AFe + '>';
+    AFk = "</" + AFe + '>';
+    AFl = "<![CDATA[%s]]>";
+    AFm = "<" + AFc + ">%d</" + AFc + '>';
+    AFn = "<" + VALUE + "%d>";
+    AFo = "</" + VALUE + "%d>";
+    AFp = "<" + AFd + ">%s</" + AFd + '>';
+    AFq = "<" + VERSION + ">%d</" + VERSION + '>';
+    AppMethodBeat.o(284221);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/utils/LiveStatConstant$Companion;", "", "()V", "AnchorCancelCreate", "Lcom/tencent/mm/plugin/finder/utils/LiveStatConstant$LiveStage;", "getAnchorCancelCreate", "()Lcom/tencent/mm/plugin/finder/utils/LiveStatConstant$LiveStage;", "AnchorCreateLive", "getAnchorCreateLive", "AnchorCreateLiveFailed", "getAnchorCreateLiveFailed", "AnchorDoPost", "getAnchorDoPost", "AnchorEnterRoom", "getAnchorEnterRoom", "AnchorEnterRoomFailed", "getAnchorEnterRoomFailed", "AnchorJoinLive", "getAnchorJoinLive", "AnchorJoinLiveFailed", "getAnchorJoinLiveFailed", "AnchorLinkAcceptFail", "getAnchorLinkAcceptFail", "AnchorLinkAcceptSuc", "getAnchorLinkAcceptSuc", "AnchorLinkHangupFail", "getAnchorLinkHangupFail", "AnchorLinkHangupSuc", "getAnchorLinkHangupSuc", "AnchorLinkSelected", "getAnchorLinkSelected", "AnchorShareFeed", "getAnchorShareFeed", "AnchorShareFeedFailed", "getAnchorShareFeedFailed", "AnchorSuccessLive", "getAnchorSuccessLive", "ConnectSucc", "getConnectSucc", "FirstFrameEvent", "getFirstFrameEvent", "ItemSelectedBegin", "getItemSelectedBegin", "ItemSelectedEnd", "getItemSelectedEnd", "JoinLiveBegin", "getJoinLiveBegin", "JoinLiveCgiBack", "getJoinLiveCgiBack", "JoinLiveEnd", "getJoinLiveEnd", "JoinLiveFinish", "getJoinLiveFinish", "RecheckRealName", "getRecheckRealName", "StartLive", "getStartLive", "TYPE_END", "", "getTYPE_END", "()I", "TYPE_START", "getTYPE_START", "ViewHolderBegin", "getViewHolderBegin", "ViewHolderEnd", "getViewHolderEnd", "VisitorLinkAccepted", "getVisitorLinkAccepted", "VisitorLinkApplyFail", "getVisitorLinkApplyFail", "VisitorLinkApplySuc", "getVisitorLinkApplySuc", "VisitorLinkHangupFail", "getVisitorLinkHangupFail", "VisitorLinkHangupSuc", "getVisitorLinkHangupSuc", "VisitorRewardConsumeFail", "getVisitorRewardConsumeFail", "VisitorRewardFail", "getVisitorRewardFail", "VisitorRewardSuc", "getVisitorRewardSuc", "stageList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "stageNameIdMap", "Lkotlin/Lazy;", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "invoke"})
-  static final class b
-    extends q
-    implements a<HashMap<String, Integer>>
+  public static SpannableString a(String paramString, SpannableString paramSpannableString, List<ax> paramList, final m<? super String, ? super c, x> paramm, final long paramLong)
   {
-    public static final b vZv;
-    
-    static
+    AppMethodBeat.i(284220);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.i(253756);
-      vZv = new b();
-      AppMethodBeat.o(253756);
+      paramString = ag.AFH;
+      paramString = paramSpannableString.toString();
+      p.j(paramString, "defaultDesc.toString()");
+      paramString = ((Iterable)ag.a(paramString, new ArrayList(), null)).iterator();
+      Object localObject;
+      int i;
+      while (paramString.hasNext())
+      {
+        localObject = (ax)paramString.next();
+        int j = ((ax)localObject).start - 1;
+        i = j;
+        if (j < 0) {
+          i = 0;
+        }
+        paramList.add(new ax(i, ((ax)localObject).count + 1, "#" + ((ax)localObject).topic));
+      }
+      paramString = SpannableString.valueOf((CharSequence)new SpannableStringBuilder((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(MMApplicationContext.getContext(), (CharSequence)paramSpannableString.toString())));
+      paramSpannableString = ((Iterable)paramList).iterator();
+      while (paramSpannableString.hasNext())
+      {
+        paramList = (ax)paramSpannableString.next();
+        localObject = paramList.topic;
+        if (localObject == null)
+        {
+          paramString = new t("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(284220);
+          throw paramString;
+        }
+        localObject = ((String)localObject).substring(1);
+        p.j(localObject, "(this as java.lang.String).substring(startIndex)");
+        Context localContext = MMApplicationContext.getContext();
+        p.j(localContext, "MMApplicationContext.getContext()");
+        i = localContext.getResources().getColor(b.c.Link_80);
+        localContext = MMApplicationContext.getContext();
+        p.j(localContext, "MMApplicationContext.getContext()");
+        paramString.setSpan(new com.tencent.mm.plugin.finder.view.o((String)localObject, i, localContext.getResources().getColor(b.c.BW_0_Alpha_0_2), false, true, (b)new c(paramString, paramm, paramLong)), paramList.start, paramList.start + paramList.count, 17);
+      }
+      p.j(paramString, "ret");
+      AppMethodBeat.o(284220);
+      return paramString;
     }
-    
-    b()
+    AppMethodBeat.o(284220);
+    return paramSpannableString;
+  }
+  
+  public static void a(final long paramLong, SpannableString paramSpannableString, List<ax> paramList, final m<? super String, ? super c, x> paramm)
+  {
+    AppMethodBeat.i(284217);
+    final aa.d locald = new aa.d();
+    Object localObject1 = h.ae(ae.class);
+    p.j(localObject1, "MMKernel.service(IFinder…enModeConfig::class.java)");
+    int i;
+    Object localObject2;
+    if (((ae)localObject1).dYT())
+    {
+      localObject1 = MMApplicationContext.getContext();
+      p.j(localObject1, "MMApplicationContext.getContext()");
+      i = ((Context)localObject1).getResources().getColor(b.c.FG_0);
+      locald.aaBA = i;
+      localObject1 = new aa.d();
+      localObject2 = h.ae(ae.class);
+      p.j(localObject2, "MMKernel.service(IFinder…enModeConfig::class.java)");
+      if (!((ae)localObject2).dYT()) {
+        break label238;
+      }
+      localObject2 = MMApplicationContext.getContext();
+      p.j(localObject2, "MMApplicationContext.getContext()");
+      i = ((Context)localObject2).getResources().getColor(b.c.transparent);
+      label141:
+      ((aa.d)localObject1).aaBA = i;
+      paramList = ((Iterable)paramList).iterator();
+    }
+    for (;;)
+    {
+      if (!paramList.hasNext()) {
+        break label357;
+      }
+      localObject2 = (ax)paramList.next();
+      Object localObject3 = ((ax)localObject2).topic;
+      if (localObject3 == null)
+      {
+        paramSpannableString = new t("null cannot be cast to non-null type java.lang.String");
+        AppMethodBeat.o(284217);
+        throw paramSpannableString;
+        localObject1 = MMApplicationContext.getContext();
+        p.j(localObject1, "MMApplicationContext.getContext()");
+        i = ((Context)localObject1).getResources().getColor(b.c.Link_80);
+        break;
+        label238:
+        localObject2 = MMApplicationContext.getContext();
+        p.j(localObject2, "MMApplicationContext.getContext()");
+        i = ((Context)localObject2).getResources().getColor(b.c.BW_0_Alpha_0_2);
+        break label141;
+      }
+      localObject3 = ((String)localObject3).substring(1);
+      p.j(localObject3, "(this as java.lang.String).substring(startIndex)");
+      localObject3 = new com.tencent.mm.plugin.finder.view.o((String)localObject3, locald.aaBA, ((aa.d)localObject1).aaBA, (b)new b(paramSpannableString, locald, (aa.d)localObject1, paramm, paramLong));
+      i = ((ax)localObject2).start;
+      int j = ((ax)localObject2).start;
+      paramSpannableString.setSpan(localObject3, i, ((ax)localObject2).count + j, 17);
+    }
+    label357:
+    AppMethodBeat.o(284217);
+  }
+  
+  public static void a(SpannableString paramSpannableString, ArrayList<e.a> paramArrayList, final b<? super String, x> paramb)
+  {
+    AppMethodBeat.i(284219);
+    final aa.d locald = new aa.d();
+    Object localObject1 = h.ae(ae.class);
+    p.j(localObject1, "MMKernel.service(IFinder…enModeConfig::class.java)");
+    int i;
+    Object localObject2;
+    label138:
+    label155:
+    e.a locala;
+    if (((ae)localObject1).dYT())
+    {
+      localObject1 = MMApplicationContext.getContext();
+      p.j(localObject1, "MMApplicationContext.getContext()");
+      i = ((Context)localObject1).getResources().getColor(b.c.FG_0);
+      locald.aaBA = i;
+      localObject1 = new aa.d();
+      localObject2 = h.ae(ae.class);
+      p.j(localObject2, "MMKernel.service(IFinder…enModeConfig::class.java)");
+      if (!((ae)localObject2).dYT()) {
+        break label272;
+      }
+      localObject2 = MMApplicationContext.getContext();
+      p.j(localObject2, "MMApplicationContext.getContext()");
+      i = ((Context)localObject2).getResources().getColor(b.c.transparent);
+      ((aa.d)localObject1).aaBA = i;
+      localObject2 = ((Iterable)paramArrayList).iterator();
+      if (!((Iterator)localObject2).hasNext()) {
+        break label300;
+      }
+      locala = (e.a)((Iterator)localObject2).next();
+      paramArrayList = locala.ACW;
+      if (paramArrayList != null) {
+        break label307;
+      }
+      paramArrayList = "";
+    }
+    label272:
+    label300:
+    label307:
+    for (;;)
+    {
+      paramSpannableString.setSpan(new com.tencent.mm.plugin.finder.view.o(paramArrayList, locald.aaBA, ((aa.d)localObject1).aaBA, (b)new a(paramSpannableString, locald, (aa.d)localObject1, paramb)), locala.start, locala.end, 17);
+      break label155;
+      localObject1 = MMApplicationContext.getContext();
+      p.j(localObject1, "MMApplicationContext.getContext()");
+      i = ((Context)localObject1).getResources().getColor(b.c.Link_80);
+      break;
+      localObject2 = MMApplicationContext.getContext();
+      p.j(localObject2, "MMApplicationContext.getContext()");
+      i = ((Context)localObject2).getResources().getColor(b.c.BW_0_Alpha_0_2);
+      break label138;
+      AppMethodBeat.o(284219);
+      return;
+    }
+  }
+  
+  private static void a(StringBuilder paramStringBuilder, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(284216);
+    Object localObject = af.aaBG;
+    localObject = String.format(AFn, Arrays.copyOf(new Object[] { Integer.valueOf(paramInt) }, 1));
+    p.j(localObject, "java.lang.String.format(format, *args)");
+    paramStringBuilder.append((String)localObject);
+    localObject = af.aaBG;
+    paramString = String.format(AFl, Arrays.copyOf(new Object[] { paramString }, 1));
+    p.j(paramString, "java.lang.String.format(format, *args)");
+    paramStringBuilder.append(paramString);
+    paramString = af.aaBG;
+    paramString = String.format(AFo, Arrays.copyOf(new Object[] { Integer.valueOf(paramInt) }, 1));
+    p.j(paramString, "java.lang.String.format(format, *args)");
+    paramStringBuilder.append(paramString);
+    AppMethodBeat.o(284216);
+  }
+  
+  public static String d(String paramString, HashMap<String, cse> paramHashMap)
+  {
+    AppMethodBeat.i(284215);
+    p.k(paramString, "curDesc");
+    p.k(paramHashMap, "atContactMap");
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(284215);
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder("");
+    Object localObject2 = (List)new ArrayList();
+    Object localObject1 = new ArrayList();
+    Object localObject3 = d.AjH;
+    if (d.dTe())
+    {
+      localObject1 = e.ACV;
+      localObject1 = (ArrayList)e.a(paramString, paramHashMap, null).My;
+    }
+    paramHashMap = d.AjH;
+    if (d.dTd()) {
+      paramHashMap = ag.AFH;
+    }
+    for (paramHashMap = ag.a(paramString, (ArrayList)localObject1, null);; paramHashMap = (HashMap<String, cse>)localObject2)
+    {
+      localStringBuilder.append(AFf);
+      if ((paramHashMap.isEmpty()) && (((ArrayList)localObject1).isEmpty()))
+      {
+        paramHashMap = af.aaBG;
+        paramHashMap = String.format(AFm, Arrays.copyOf(new Object[] { Integer.valueOf(1) }, 1));
+        p.j(paramHashMap, "java.lang.String.format(format, *args)");
+        localStringBuilder.append(paramHashMap);
+        a(localStringBuilder, paramString, 0);
+        paramString = af.aaBG;
+        paramString = String.format(AFq, Arrays.copyOf(new Object[] { Integer.valueOf(version) }, 1));
+        p.j(paramString, "java.lang.String.format(format, *args)");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(AFg);
+        Log.d(TAG, "xml:".concat(String.valueOf(localStringBuilder)));
+        paramString = localStringBuilder.toString();
+        p.j(paramString, "xml.toString()");
+        AppMethodBeat.o(284215);
+        return paramString;
+      }
+      int i = 0;
+      int j = 0;
+      localObject2 = "";
+      int k = 0;
+      label296:
+      int m;
+      int n;
+      label327:
+      int i1;
+      if (j < paramString.length()) {
+        if (!paramHashMap.isEmpty())
+        {
+          m = 0;
+          n = ((Collection)paramHashMap).size();
+          if (m >= n) {
+            break label1222;
+          }
+          localObject3 = (ax)paramHashMap.get(m);
+          i1 = ((ax)localObject3).start - 1;
+          if (i1 != j) {}
+        }
+      }
+      for (;;)
+      {
+        Object localObject4;
+        if (localObject3 != null)
+        {
+          paramHashMap.remove(localObject3);
+          n = ((ax)localObject3).start - 1;
+          m = ((ax)localObject3).count + n + 1;
+          if (n >= k)
+          {
+            j = i;
+            if (n > k)
+            {
+              localObject3 = paramString.substring(k, n);
+              p.j(localObject3, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+              a(localStringBuilder, (String)localObject3, i);
+              j = i + 1;
+            }
+            localObject3 = new StringBuilder();
+            localObject4 = paramString.substring(n, m);
+            p.j(localObject4, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+            localObject3 = (String)localObject4 + "#";
+            localObject4 = af.aaBG;
+            localObject4 = String.format(AFn, Arrays.copyOf(new Object[] { Integer.valueOf(j) }, 1));
+            p.j(localObject4, "java.lang.String.format(format, *args)");
+            localStringBuilder.append((String)localObject4);
+            localObject4 = af.aaBG;
+            localObject4 = AFp;
+            af localaf = af.aaBG;
+            localObject3 = String.format(AFl, Arrays.copyOf(new Object[] { localObject3 }, 1));
+            p.j(localObject3, "java.lang.String.format(format, *args)");
+            localObject3 = String.format((String)localObject4, Arrays.copyOf(new Object[] { localObject3 }, 1));
+            p.j(localObject3, "java.lang.String.format(format, *args)");
+            localStringBuilder.append((String)localObject3);
+            localObject3 = af.aaBG;
+            localObject3 = String.format(AFo, Arrays.copyOf(new Object[] { Integer.valueOf(j) }, 1));
+            p.j(localObject3, "java.lang.String.format(format, *args)");
+            localStringBuilder.append((String)localObject3);
+            i = m;
+            k = m;
+            m = j + 1;
+            j = i;
+            i = m;
+            break label296;
+            if (i1 > j) {
+              break label1222;
+            }
+            m += 1;
+            break label327;
+          }
+          Log.e(TAG, "topicStart:" + n + ", startIndex:" + k);
+        }
+        if (!((ArrayList)localObject1).isEmpty())
+        {
+          m = 0;
+          n = ((Collection)localObject1).size();
+          label749:
+          if (m >= n) {
+            break label1216;
+          }
+          localObject3 = ((ArrayList)localObject1).get(m);
+          p.j(localObject3, "atContactList[atIndex]");
+          localObject3 = (e.a)localObject3;
+          i1 = ((e.a)localObject3).start;
+          if (i1 != j) {}
+        }
+        for (;;)
+        {
+          if (localObject3 != null)
+          {
+            ((ArrayList)localObject1).remove(localObject3);
+            n = ((e.a)localObject3).start;
+            m = ((e.a)localObject3).end;
+            if (n >= k)
+            {
+              if (n <= k) {
+                break label1213;
+              }
+              localObject3 = paramString.substring(k, n);
+              p.j(localObject3, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+              j = i + 1;
+              a(localStringBuilder, (String)localObject3, i);
+              i = j;
+            }
+          }
+          label1213:
+          for (;;)
+          {
+            localObject3 = new StringBuilder();
+            localObject4 = paramString.substring(n, m);
+            p.j(localObject4, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+            localObject3 = (String)localObject4 + " ";
+            n = i + 1;
+            a(localStringBuilder, (String)localObject3, i);
+            localObject2 = (String)localObject2 + String.valueOf(n - 1) + ",";
+            j = m;
+            k = m;
+            i = n;
+            break label296;
+            if (i1 > j) {
+              break label1216;
+            }
+            m += 1;
+            break label749;
+            Log.e(TAG, "topicStart:" + n + ", startIndex:" + k);
+            j += 1;
+            break label296;
+            j = i;
+            if (k < paramString.length())
+            {
+              paramString = paramString.substring(k, paramString.length());
+              p.j(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+              a(localStringBuilder, paramString, i);
+              j = i + 1;
+            }
+            if (!Util.isNullOrNil((String)localObject2))
+            {
+              localStringBuilder.append(AFh);
+              localStringBuilder.append(AFj);
+              i = ((String)localObject2).length();
+              if (localObject2 == null)
+              {
+                paramString = new t("null cannot be cast to non-null type java.lang.String");
+                AppMethodBeat.o(284215);
+                throw paramString;
+              }
+              paramString = ((String)localObject2).substring(0, i - 1);
+              p.j(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+              localStringBuilder.append(paramString);
+              localStringBuilder.append(AFk);
+              localStringBuilder.append(AFi);
+            }
+            paramString = af.aaBG;
+            paramString = String.format(AFm, Arrays.copyOf(new Object[] { Integer.valueOf(j) }, 1));
+            p.j(paramString, "java.lang.String.format(format, *args)");
+            p.j(localStringBuilder.append(paramString), "xml.append(String.format(TAG_VALUE_COUNT, count))");
+            break;
+          }
+          label1216:
+          localObject3 = null;
+        }
+        label1222:
+        localObject3 = null;
+      }
+    }
+  }
+  
+  public static String edH()
+  {
+    return AFa;
+  }
+  
+  public static String edI()
+  {
+    return AFc;
+  }
+  
+  public static String edJ()
+  {
+    return VALUE;
+  }
+  
+  public static String edK()
+  {
+    return AFd;
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "username", "", "invoke", "com/tencent/mm/plugin/finder/utils/FinderStyleUtil$handleAt$1$1"})
+  static final class a
+    extends q
+    implements b<String, x>
+  {
+    a(SpannableString paramSpannableString, aa.d paramd1, aa.d paramd2, b paramb)
     {
       super();
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/utils/LiveStatConstant$LiveStage;", "", "id", "", "name", "", "(ILjava/lang/String;)V", "getId", "()I", "getName", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "plugin-finder_release"})
-  public static final class c
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "topic", "", "invoke", "com/tencent/mm/plugin/finder/utils/FinderStyleUtil$handleTopic$1$1"})
+  static final class b
+    extends q
+    implements b<String, x>
   {
-    final int id;
-    public final String name;
-    
-    public c(int paramInt, String paramString)
+    b(SpannableString paramSpannableString, aa.d paramd1, aa.d paramd2, m paramm, long paramLong)
     {
-      AppMethodBeat.i(253757);
-      this.id = paramInt;
-      this.name = paramString;
-      AppMethodBeat.o(253757);
+      super();
     }
-    
-    public final boolean equals(Object paramObject)
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "topic", "", "invoke", "com/tencent/mm/plugin/finder/utils/FinderStyleUtil$parseDefatultDesc$2$1"})
+  static final class c
+    extends q
+    implements b<String, x>
+  {
+    c(SpannableString paramSpannableString, m paramm, long paramLong)
     {
-      AppMethodBeat.i(253760);
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof c))
-        {
-          paramObject = (c)paramObject;
-          if ((this.id != paramObject.id) || (!p.j(this.name, paramObject.name))) {}
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(253760);
-        return true;
-      }
-      AppMethodBeat.o(253760);
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      AppMethodBeat.i(253759);
-      int j = this.id;
-      String str = this.name;
-      if (str != null) {}
-      for (int i = str.hashCode();; i = 0)
-      {
-        AppMethodBeat.o(253759);
-        return i + j * 31;
-      }
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(253758);
-      String str = "LiveStage(id=" + this.id + ", name=" + this.name + ")";
-      AppMethodBeat.o(253758);
-      return str;
+      super();
     }
   }
 }

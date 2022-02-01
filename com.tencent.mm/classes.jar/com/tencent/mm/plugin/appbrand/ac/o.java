@@ -8,26 +8,26 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class o
 {
-  private static DisplayMetrics ogw;
+  private static DisplayMetrics rii;
   
   static
   {
     AppMethodBeat.i(146132);
-    ogw = MMApplicationContext.getContext().getResources().getDisplayMetrics();
+    rii = MMApplicationContext.getContext().getResources().getDisplayMetrics();
     AppMethodBeat.o(146132);
   }
   
-  public static int zE(int paramInt)
+  public static int Dj(int paramInt)
   {
-    if (ogw == null) {
+    if (rii == null) {
       return paramInt;
     }
-    return (int)(ogw.density * paramInt);
+    return (int)(rii.density * paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ac.o
  * JD-Core Version:    0.7.0.1
  */

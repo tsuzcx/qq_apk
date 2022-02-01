@@ -7,15 +7,15 @@ public enum h
   static
   {
     AppMethodBeat.i(40545);
-    Uiu = new h("Header", 0);
-    Uiv = new h("QueryString", 1);
-    Uiw = new h[] { Uiu, Uiv };
+    abLP = new h("Header", 0);
+    abLQ = new h("QueryString", 1);
+    abLR = new h[] { abLP, abLQ };
     AppMethodBeat.o(40545);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     org.b.d.h
  * JD-Core Version:    0.7.0.1
  */

@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.multitask.animation.swipeahead;
 import android.view.View;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/animation/swipeahead/BaseViewAnimationHandler;", "", "targetView", "Landroid/view/View;", "(Landroid/view/View;)V", "hideAnimator", "Landroid/animation/Animator;", "getHideAnimator", "()Landroid/animation/Animator;", "setHideAnimator", "(Landroid/animation/Animator;)V", "isHiding", "", "()Z", "isShowing", "showAnimator", "getShowAnimator", "setShowAnimator", "getTargetView", "()Landroid/view/View;", "setTargetView", "cancelAnimations", "", "createHideAnimationSet", "animatorListenerAdapter", "Landroid/animation/AnimatorListenerAdapter;", "createShowAnimationSet", "playHideAnimation", "playShowAnimation", "Companion", "plugin-multitask_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/animation/swipeahead/BaseViewAnimationHandler;", "", "targetView", "Landroid/view/View;", "(Landroid/view/View;)V", "hideAnimator", "Landroid/animation/Animator;", "getHideAnimator", "()Landroid/animation/Animator;", "setHideAnimator", "(Landroid/animation/Animator;)V", "isHiding", "", "()Z", "isShowing", "showAnimator", "getShowAnimator", "setShowAnimator", "getTargetView", "()Landroid/view/View;", "setTargetView", "cancelAnimations", "", "createHideAnimationSet", "animatorListenerAdapter", "Landroid/animation/AnimatorListenerAdapter;", "createShowAnimationSet", "playHideAnimation", "playShowAnimation", "Companion", "plugin-multitask_release"})
 public abstract class a
 {
-  public static final a Aai = new a((byte)0);
-  private View targetView;
+  public static final a FFY = new a((byte)0);
+  private View kJL;
   
   public a(View paramView)
   {
-    this.targetView = paramView;
+    this.kJL = paramView;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/animation/swipeahead/BaseViewAnimationHandler$Companion;", "", "()V", "TAG", "", "plugin-multitask_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/animation/swipeahead/BaseViewAnimationHandler$Companion;", "", "()V", "TAG", "", "plugin-multitask_release"})
   public static final class a {}
 }
 

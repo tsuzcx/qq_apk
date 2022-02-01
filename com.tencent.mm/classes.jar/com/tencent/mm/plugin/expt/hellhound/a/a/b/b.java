@@ -9,41 +9,41 @@ import java.lang.ref.WeakReference;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/report/HellSampling;", "Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/report/IHellSamplingStagety;", "callback", "Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/report/IHellSamplingCallback;", "timeout", "", "(Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/report/IHellSamplingCallback;J)V", "getCallback", "()Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/report/IHellSamplingCallback;", "lastestTimestamp", "listViewRef", "Ljava/lang/ref/WeakReference;", "Landroid/widget/AbsListView;", "mUiHandler", "Landroid/os/Handler;", "getTimeout", "()J", "sendOnScroll", "", "listView", "firstVisibleItem", "", "visibleItemCount", "sendOnScrollStateChanged", "scrollState", "Companion", "plugin-expt_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/report/HellSampling;", "Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/report/IHellSamplingStagety;", "callback", "Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/report/IHellSamplingCallback;", "timeout", "", "(Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/report/IHellSamplingCallback;J)V", "getCallback", "()Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/report/IHellSamplingCallback;", "lastestTimestamp", "listViewRef", "Ljava/lang/ref/WeakReference;", "Landroid/widget/AbsListView;", "mUiHandler", "Landroid/os/Handler;", "getTimeout", "()J", "sendOnScroll", "", "listView", "firstVisibleItem", "", "visibleItemCount", "sendOnScrollStateChanged", "scrollState", "Companion", "plugin-expt_release"})
 public final class b
   implements f
 {
-  public static final a sCu;
-  final e sBU;
-  private long sCr;
-  private WeakReference<AbsListView> sCs;
-  private final Handler sCt;
+  public static final b.a wio;
+  private final Handler mUiHandler;
   private final long timeout;
+  final e whP;
+  private long wim;
+  private WeakReference<AbsListView> win;
   
   static
   {
-    AppMethodBeat.i(220801);
-    sCu = new a((byte)0);
-    AppMethodBeat.o(220801);
+    AppMethodBeat.i(256163);
+    wio = new b.a((byte)0);
+    AppMethodBeat.o(256163);
   }
   
   public b(e parame, long paramLong)
   {
-    AppMethodBeat.i(220800);
-    this.sBU = parame;
+    AppMethodBeat.i(256161);
+    this.whP = parame;
     this.timeout = paramLong;
-    this.sCs = null;
-    this.sCr = 0L;
-    this.sCt = ((Handler)new b(this, Looper.getMainLooper()));
-    AppMethodBeat.o(220800);
+    this.win = null;
+    this.wim = 0L;
+    this.mUiHandler = ((Handler)new b(this, Looper.getMainLooper()));
+    AppMethodBeat.o(256161);
   }
   
   public final void a(AbsListView paramAbsListView, int paramInt)
   {
-    AppMethodBeat.i(220798);
-    if (this.sCs != null)
+    AppMethodBeat.i(256156);
+    if (this.win != null)
     {
-      localObject = this.sCs;
+      localObject = this.win;
       if (localObject == null) {
         break label51;
       }
@@ -52,23 +52,23 @@ public final class b
     for (Object localObject = (AbsListView)((WeakReference)localObject).get();; localObject = null)
     {
       if (localObject == null) {
-        this.sCs = new WeakReference(paramAbsListView);
+        this.win = new WeakReference(paramAbsListView);
       }
-      AppMethodBeat.o(220798);
+      AppMethodBeat.o(256156);
       return;
     }
   }
   
   public final void a(AbsListView paramAbsListView, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(220799);
+    AppMethodBeat.i(256159);
     long l = System.currentTimeMillis();
-    if (l - this.sCr > this.timeout)
+    if (l - this.wim > this.timeout)
     {
-      this.sCr = l;
-      if (this.sCs != null)
+      this.wim = l;
+      if (this.win != null)
       {
-        localObject = this.sCs;
+        localObject = this.win;
         if (localObject == null) {
           break label111;
         }
@@ -78,22 +78,19 @@ public final class b
     for (Object localObject = (AbsListView)((WeakReference)localObject).get();; localObject = null)
     {
       if (localObject == null) {
-        this.sCs = new WeakReference(paramAbsListView);
+        this.win = new WeakReference(paramAbsListView);
       }
       paramAbsListView = Message.obtain();
       paramAbsListView.what = 100;
       paramAbsListView.arg1 = paramInt1;
       paramAbsListView.arg2 = paramInt2;
-      this.sCt.sendMessage(paramAbsListView);
-      AppMethodBeat.o(220799);
+      this.mUiHandler.sendMessage(paramAbsListView);
+      AppMethodBeat.o(256159);
       return;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/report/HellSampling$Companion;", "", "()V", "DEFAULT_TIMEOUT", "", "MSG_TIMEOUT", "", "plugin-expt_release"})
-  public static final class a {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/expt/hellhound/ext/feed/report/HellSampling$mUiHandler$1", "Landroid/os/Handler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-expt_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/expt/hellhound/ext/feed/report/HellSampling$mUiHandler$1", "Landroid/os/Handler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-expt_release"})
   public static final class b
     extends Handler
   {
@@ -104,8 +101,8 @@ public final class b
     
     public final void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(220797);
-      p.h(paramMessage, "msg");
+      AppMethodBeat.i(257492);
+      p.k(paramMessage, "msg");
       super.handleMessage(paramMessage);
       switch (paramMessage.what)
       {
@@ -113,16 +110,16 @@ public final class b
       e locale;
       do
       {
-        AppMethodBeat.o(220797);
+        AppMethodBeat.o(257492);
         return;
-        locale = this.sCv.sBU;
+        locale = this.wip.whP;
       } while (locale == null);
-      Object localObject = b.a(this.sCv);
+      Object localObject = b.a(this.wip);
       if (localObject != null) {}
       for (localObject = (AbsListView)((WeakReference)localObject).get();; localObject = null)
       {
         locale.c((AbsListView)localObject, paramMessage.arg1, paramMessage.arg2);
-        AppMethodBeat.o(220797);
+        AppMethodBeat.o(257492);
         return;
       }
     }
@@ -130,7 +127,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.a.b.b
  * JD-Core Version:    0.7.0.1
  */

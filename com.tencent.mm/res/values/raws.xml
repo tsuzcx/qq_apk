@@ -54,6 +54,8 @@
     <item type="raw" name="addfriend_icon_search">false</item>
     <item type="raw" name="addnew_wework">false</item>
     <item type="raw" name="album_abtesti_icon2">false</item>
+    <item type="raw" name="album_ad_finder_link_dark_icon">false</item>
+    <item type="raw" name="album_ad_finder_link_icon">false</item>
     <item type="raw" name="album_ad_link_tag_weapp">false</item>
     <item type="raw" name="album_ad_link_tag_weapp_dark">false</item>
     <item type="raw" name="album_advertise_link_dark_icon">false</item>
@@ -144,7 +146,7 @@
     <item type="raw" name="app_brand_desktop_delete_highlight">false</item>
     <item type="raw" name="app_brand_desktop_full_empty_icon">false</item>
     <item type="raw" name="app_brand_desktop_icon_info">false</item>
-    <item type="raw" name="app_brand_desktop_search_icon">false</item>
+    <item type="raw" name="app_brand_half_screenc_capsule_bar_close">false</item>
     <item type="raw" name="app_brand_destop_view_third_party_running_flag">false</item>
     <item type="raw" name="app_brand_evaluate_dialog_close">false</item>
     <item type="raw" name="app_brand_game_actionbar_option_light">false</item>
@@ -480,6 +482,7 @@
     <item type="raw" name="checkbox_select">false</item>
     <item type="raw" name="checkbox_selected">false</item>
     <item type="raw" name="checkbox_selected_black_small">false</item>
+    <item type="raw" name="checkbox_selected_finder_live">false</item>
     <item type="raw" name="checkbox_selected_game">false</item>
     <item type="raw" name="checkbox_selected_grey">false</item>
     <item type="raw" name="checkbox_selected_grey_dark">false</item>
@@ -593,6 +596,7 @@
     <item type="raw" name="default_qqmail">false</item>
     <item type="raw" name="default_qqsync">false</item>
     <item type="raw" name="default_readerapp">false</item>
+    <item type="raw" name="default_round_avatar">false</item>
     <item type="raw" name="default_servicebrand_contact">false</item>
     <item type="raw" name="default_shake">false</item>
     <item type="raw" name="default_voiceinput">false</item>
@@ -777,8 +781,10 @@
     <item type="raw" name="finder_icons_filled_share">false</item>
     <item type="raw" name="finder_icons_filled_sight">false</item>
     <item type="raw" name="finder_icons_filled_star">false</item>
+    <item type="raw" name="finder_icons_filled_star2">false</item>
     <item type="raw" name="finder_icons_filled_topic">false</item>
     <item type="raw" name="finder_icons_filled_unstar">false</item>
+    <item type="raw" name="finder_icons_filled_unstar2">false</item>
     <item type="raw" name="finder_icons_link">false</item>
     <item type="raw" name="finder_icons_outlined_max_window">false</item>
     <item type="raw" name="finder_icons_outlined_star">false</item>
@@ -810,9 +816,11 @@
     <item type="raw" name="finder_outlined_self_like">false</item>
     <item type="raw" name="finder_outlined_share">false</item>
     <item type="raw" name="finder_outlined_tag">false</item>
+    <item type="raw" name="finder_outlined_turnoff">false</item>
     <item type="raw" name="finder_self_feed_like_arrow">false</item>
     <item type="raw" name="finder_share_icon">false</item>
     <item type="raw" name="finder_shop">false</item>
+    <item type="raw" name="finder_shop_outlined">false</item>
     <item type="raw" name="finder_suggest_hot">false</item>
     <item type="raw" name="finder_teen_mode">false</item>
     <item type="raw" name="finder_topic_icon_filled">false</item>
@@ -847,7 +855,7 @@
     <item type="raw" name="font_chooser_slider">false</item>
     <item type="raw" name="force_notify_banner_icon">false</item>
     <item type="raw" name="force_notify_show_ui_icon">false</item>
-    <item type="raw" name="free_wifi_icon">false</item>
+    <item type="raw" name="biz_live_circle">false</item>
     <item type="raw" name="friendactivity_comment_icon_golden_normal">false</item>
     <item type="raw" name="friendactivity_comment_icon_golden_pressed">false</item>
     <item type="raw" name="friendactivity_comment_icon_normal">false</item>
@@ -955,6 +963,7 @@
     <item type="raw" name="icon_close">false</item>
     <item type="raw" name="icon_dot">false</item>
     <item type="raw" name="icon_fill_thumb">false</item>
+    <item type="raw" name="icon_filled_activity">false</item>
     <item type="raw" name="icon_filled_add">false</item>
     <item type="raw" name="icon_filled_awesome">false</item>
     <item type="raw" name="icon_filled_brand_followed">false</item>
@@ -965,7 +974,9 @@
     <item type="raw" name="icon_filled_mic_dialog_close">false</item>
     <item type="raw" name="icon_filled_mike_off">false</item>
     <item type="raw" name="icon_filled_min_window">false</item>
+    <item type="raw" name="icon_filled_return">false</item>
     <item type="raw" name="icon_filled_video_call_off">false</item>
+    <item type="raw" name="icon_finder_post_lucky_money">false</item>
     <item type="raw" name="icon_full_screen">false</item>
     <item type="raw" name="icon_history_card_empty">false</item>
     <item type="raw" name="icon_info">false</item>
@@ -1023,6 +1034,8 @@
     <item type="raw" name="icons_filled_call_good">false</item>
     <item type="raw" name="icons_filled_camera">false</item>
     <item type="raw" name="icons_filled_camera_switch">false</item>
+    <item type="raw" name="icons_filled_capslock">false</item>
+    <item type="raw" name="icons_filled_capslocked">false</item>
     <item type="raw" name="icons_filled_caption">false</item>
     <item type="raw" name="icons_filled_card">false</item>
     <item type="raw" name="icons_filled_cards_offers">false</item>
@@ -1053,6 +1066,7 @@
     <item type="raw" name="icons_filled_delete_on">false</item>
     <item type="raw" name="icons_filled_detail_skin_hb_mask">false</item>
     <item type="raw" name="icons_filled_detail_skin_hb_mask_dark">false</item>
+    <item type="raw" name="icons_filled_direction">false</item>
     <item type="raw" name="icons_filled_discover">false</item>
     <item type="raw" name="icons_filled_discover_hl">false</item>
     <item type="raw" name="icons_filled_display">false</item>
@@ -1075,6 +1089,8 @@
     <item type="raw" name="icons_filled_filter_none">false</item>
     <item type="raw" name="icons_filled_filter_select">false</item>
     <item type="raw" name="icons_filled_filters">false</item>
+    <item type="raw" name="icons_filled_finder_game">false</item>
+    <item type="raw" name="icons_filled_finder_icon">false</item>
     <item type="raw" name="icons_filled_fire">false</item>
     <item type="raw" name="icons_filled_fire_group">false</item>
     <item type="raw" name="icons_filled_float_window_off">false</item>
@@ -1097,6 +1113,7 @@
     <item type="raw" name="icons_filled_info">false</item>
     <item type="raw" name="icons_filled_keyboard">false</item>
     <item type="raw" name="icons_filled_keyboard_delete">false</item>
+    <item type="raw" name="icons_filled_keyboardlogo">false</item>
     <item type="raw" name="icons_filled_like">false</item>
     <item type="raw" name="icons_filled_like_group">false</item>
     <item type="raw" name="icons_filled_link">false</item>
@@ -1186,6 +1203,7 @@
     <item type="raw" name="icons_filled_retract">false</item>
     <item type="raw" name="icons_filled_return">false</item>
     <item type="raw" name="icons_filled_reward">false</item>
+    <item type="raw" name="icons_filled_room_live">false</item>
     <item type="raw" name="icons_filled_rotate">false</item>
     <item type="raw" name="icons_filled_scan">false</item>
     <item type="raw" name="icons_filled_scissor">false</item>
@@ -1273,6 +1291,7 @@
     <item type="raw" name="icons_outlined_bottle">false</item>
     <item type="raw" name="icons_outlined_camera">false</item>
     <item type="raw" name="icons_outlined_camera_switch">false</item>
+    <item type="raw" name="icons_outlined_capslock">false</item>
     <item type="raw" name="icons_outlined_card">false</item>
     <item type="raw" name="icons_outlined_cards_offers">false</item>
     <item type="raw" name="icons_outlined_cellphone">false</item>
@@ -1300,6 +1319,7 @@
     <item type="raw" name="icons_outlined_contacts_middle">false</item>
     <item type="raw" name="icons_outlined_continued_form">false</item>
     <item type="raw" name="icons_outlined_copy">false</item>
+    <item type="raw" name="icons_outlined_delemoji">false</item>
     <item type="raw" name="icons_outlined_delete">false</item>
     <item type="raw" name="icons_outlined_delete_on">false</item>
     <item type="raw" name="icons_outlined_discover">false</item>
@@ -1317,6 +1337,7 @@
     <item type="raw" name="icons_outlined_emoji_del">false</item>
     <item type="raw" name="icons_outlined_error">false</item>
     <item type="raw" name="icons_outlined_error1">false</item>
+    <item type="raw" name="icons_outlined_exchange">false</item>
     <item type="raw" name="icons_outlined_eyes_off">false</item>
     <item type="raw" name="icons_outlined_eyes_on">false</item>
     <item type="raw" name="icons_outlined_favorites">false</item>
@@ -1342,6 +1363,8 @@
     <item type="raw" name="icons_outlined_imac_lock">false</item>
     <item type="raw" name="icons_outlined_info">false</item>
     <item type="raw" name="icons_outlined_keyboard">false</item>
+    <item type="raw" name="icons_outlined_keyboard_9">false</item>
+    <item type="raw" name="icons_outlined_keyboardlogo">false</item>
     <item type="raw" name="icons_outlined_like">false</item>
     <item type="raw" name="icons_outlined_link">false</item>
     <item type="raw" name="icons_outlined_little_like">false</item>
@@ -1482,6 +1505,40 @@
     <item type="raw" name="image_gallery_video_pause_pressed">false</item>
     <item type="raw" name="image_gallery_video_play_normal">false</item>
     <item type="raw" name="image_gallery_video_play_pressed">false</item>
+    <item type="raw" name="ime_about">false</item>
+    <item type="raw" name="ime_about_large">false</item>
+    <item type="raw" name="ime_active_bg">false</item>
+    <item type="raw" name="ime_chinese_qwerty">false</item>
+    <item type="raw" name="ime_chinese_qwerty_selected">false</item>
+    <item type="raw" name="ime_chinese_t9">false</item>
+    <item type="raw" name="ime_chinese_t9_selected">false</item>
+    <item type="raw" name="ime_close">false</item>
+    <item type="raw" name="ime_cloud">false</item>
+    <item type="raw" name="ime_contact">false</item>
+    <item type="raw" name="ime_delete">false</item>
+    <item type="raw" name="ime_emoji">false</item>
+    <item type="raw" name="ime_emoji_selected">false</item>
+    <item type="raw" name="ime_english_qwerty">false</item>
+    <item type="raw" name="ime_english_qwerty_selected">false</item>
+    <item type="raw" name="ime_fault_deletion">false</item>
+    <item type="raw" name="ime_fault_exchange">false</item>
+    <item type="raw" name="ime_fault_insertion">false</item>
+    <item type="raw" name="ime_fault_replacement">false</item>
+    <item type="raw" name="ime_icon_chinese_comma">false</item>
+    <item type="raw" name="ime_icon_english_comma">false</item>
+    <item type="raw" name="ime_key_at">false</item>
+    <item type="raw" name="ime_key_sound_vibrate">false</item>
+    <item type="raw" name="ime_logo">false</item>
+    <item type="raw" name="ime_logo_selected">false</item>
+    <item type="raw" name="ime_more">false</item>
+    <item type="raw" name="ime_pack_up">false</item>
+    <item type="raw" name="ime_right">false</item>
+    <item type="raw" name="ime_shape">false</item>
+    <item type="raw" name="ime_strike_back">false</item>
+    <item type="raw" name="ime_strike_cursor_handle">false</item>
+    <item type="raw" name="ime_upper">false</item>
+    <item type="raw" name="ime_upper_click">false</item>
+    <item type="raw" name="ime_upper_double_click">false</item>
     <item type="raw" name="info_icon">false</item>
     <item type="raw" name="info_icon_disabled">false</item>
     <item type="raw" name="input_footer_mini_program_normal">false</item>
@@ -1522,7 +1579,7 @@
     <item type="raw" name="kinda_icon_filled_pay">false</item>
     <item type="raw" name="kinda_kinda_checkbox_selected">false</item>
     <item type="raw" name="kinda_kinda_checkbox_unselected">false</item>
-    <item type="raw" name="kinda_offline_shield_icon">false</item>
+    <item type="raw" name="appbrand_menu_sales_driving">false</item>
     <item type="raw" name="kinda_right_arrow">false</item>
     <item type="raw" name="lbs_icon_more">false</item>
     <item type="raw" name="list_deletetext_icon">false</item>
@@ -1811,6 +1868,7 @@
     <item type="raw" name="ofm_wallet_icon">false</item>
     <item type="raw" name="ofm_webwechat_icon">false</item>
     <item type="raw" name="ok_icon">false</item>
+    <item type="raw" name="on_error_info">false</item>
     <item type="raw" name="open_im_main_logo">false</item>
     <item type="raw" name="open_im_title_logo">false</item>
     <item type="raw" name="panel_icon_aa">false</item>
@@ -1838,6 +1896,8 @@
     <item type="raw" name="pause_video_icon">false</item>
     <item type="raw" name="pay_safe">false</item>
     <item type="raw" name="payinfoicon">false</item>
+    <item type="raw" name="pc_connect_succ">false</item>
+    <item type="raw" name="pc_with_phone">false</item>
     <item type="raw" name="peoplenearby_icon">false</item>
     <item type="raw" name="personactivity_takephoto_icon_normal">false</item>
     <item type="raw" name="personactivity_takephoto_icon_pressed">false</item>
@@ -1923,6 +1983,7 @@
     <item type="raw" name="round_selector_checked_orange">false</item>
     <item type="raw" name="safe">false</item>
     <item type="raw" name="safe_inline">false</item>
+    <item type="raw" name="safe_keyboard">false</item>
     <item type="raw" name="safe_line">false</item>
     <item type="raw" name="scan_back_white_default">false</item>
     <item type="raw" name="scan_back_white_pressed">false</item>
@@ -2120,6 +2181,7 @@
     <item type="raw" name="text_bg_selected">false</item>
     <item type="raw" name="text_bg_unselected">false</item>
     <item type="raw" name="text_selected">false</item>
+    <item type="raw" name="text_status_edit_poi_selected">false</item>
     <item type="raw" name="text_unselected">false</item>
     <item type="raw" name="textfield_icon_article_normal">false</item>
     <item type="raw" name="textfield_icon_article_pressed">false</item>
@@ -2297,6 +2359,7 @@
     <item type="raw" name="webviewtab_back_normal">false</item>
     <item type="raw" name="wechat_appicon">false</item>
     <item type="raw" name="wechat_gray_logo">false</item>
+    <item type="raw" name="wechat_icon">false</item>
     <item type="raw" name="wechat_wallet_authenticate">false</item>
     <item type="raw" name="wecoin_balance_icons">false</item>
     <item type="raw" name="wecoin_notice_icon">false</item>
@@ -2308,12 +2371,6 @@
     <item type="raw" name="welab_icon_grey">false</item>
     <item type="raw" name="welab_icon_light">false</item>
     <item type="raw" name="wifi_logo">false</item>
-    <item type="raw" name="wsn_text_1">false</item>
-    <item type="raw" name="wsn_text_2">false</item>
-    <item type="raw" name="wsn_text_3">false</item>
-    <item type="raw" name="wsn_text_4">false</item>
-    <item type="raw" name="wsn_text_5">false</item>
-    <item type="raw" name="wsn_title">false</item>
     <item type="raw" name="wu">false</item>
     <item type="raw" name="wxa_lucky_money_complete_icon">false</item>
     <item type="raw" name="wxa_lucky_money_share_arrow">false</item>
@@ -2324,6 +2381,96 @@
     <item type="raw" name="youzhuan">false</item>
     <item type="raw" name="zuoyi">false</item>
     <item type="raw" name="zuozhuan">false</item>
-    <item type="raw" name="finder_icons_filled_star2">false</item>
-    <item type="raw" name="finder_icons_filled_unstar2">false</item>
+    <item type="raw" name="app_attach_file_arrow_down">false</item>
+    <item type="raw" name="app_attach_file_arrow_up">false</item>
+    <item type="raw" name="app_attach_file_icon_epub_simple">false</item>
+    <item type="raw" name="app_attach_file_icon_excel_simple">false</item>
+    <item type="raw" name="app_attach_file_icon_pdf_simple">false</item>
+    <item type="raw" name="app_attach_file_icon_photo">false</item>
+    <item type="raw" name="app_attach_file_icon_photo_dark">false</item>
+    <item type="raw" name="app_attach_file_icon_ppt_simple">false</item>
+    <item type="raw" name="app_attach_file_icon_rar_simple">false</item>
+    <item type="raw" name="app_attach_file_icon_simple">false</item>
+    <item type="raw" name="app_attach_file_icon_simple_dark">false</item>
+    <item type="raw" name="app_attach_file_icon_txt_dark">false</item>
+    <item type="raw" name="app_attach_file_icon_unknow_dark">false</item>
+    <item type="raw" name="app_attach_file_icon_word_simple">false</item>
+    <item type="raw" name="appbrand_icon_star_off">false</item>
+    <item type="raw" name="appbrand_icon_star_on">false</item>
+    <item type="raw" name="finder_icon_miaojian">false</item>
+    <item type="raw" name="finder_live_icons_outlined_cast_screen">false</item>
+    <item type="raw" name="finder_live_music_add">false</item>
+    <item type="raw" name="finder_live_music_menu">false</item>
+    <item type="raw" name="chat_room_rule_pass_dark">false</item>
+    <item type="raw" name="finder_live_music_volume">false</item>
+    <item type="raw" name="finder_live_view_setting_icon">false</item>
+    <item type="raw" name="icon_ad_bg">false</item>
+    <item type="raw" name="icon_ad_thumbup">false</item>
+    <item type="raw" name="icon_ad_uninterest">false</item>
+    <item type="raw" name="icons_filled_blue_chatroom">false</item>
+    <item type="raw" name="icons_filled_camera_off">false</item>
+    <item type="raw" name="icons_filled_lens">false</item>
+    <item type="raw" name="icons_filled_notify">false</item>
+    <item type="raw" name="icons_outlined_camera_off">false</item>
+    <item type="raw" name="icons_outlined_camera_on">false</item>
+    <item type="raw" name="icons_outlined_display_off">false</item>
+    <item type="raw" name="icons_outlined_display_on">false</item>
+    <item type="raw" name="icons_outlined_play_control">false</item>
+    <item type="raw" name="icons_outlined_shift">false</item>
+    <item type="raw" name="remark_address_icon">false</item>
+    <item type="raw" name="spinner_green_16_outer_holo">false</item>
+    <item type="raw" name="spinner_green_48_outer_holo">false</item>
+    <item type="raw" name="spinner_green_76_outer_holo">false</item>
+    <item type="raw" name="c2c_remittance_expired_icon">false</item>
+    <item type="raw" name="finder_live_notice_icon">false</item>
+    <item type="raw" name="finder_live_popup_window_down_arrow">false</item>
+    <item type="raw" name="finder_icons_colorring">false</item>
+    <item type="raw" name="finder_left_arrows">false</item>
+    <item type="raw" name="finder_live_audio_tips">false</item>
+    <item type="raw" name="finder_live_move_icon">false</item>
+    <item type="raw" name="force_notify_icon_close">false</item>
+    <item type="raw" name="game_play">false</item>
+    <item type="raw" name="guide_ic_01">false</item>
+    <item type="raw" name="guide_ic_02">false</item>
+    <item type="raw" name="guide_ic_03">false</item>
+    <item type="raw" name="icons_filled_mic_off">false</item>
+    <item type="raw" name="icons_filled_next">false</item>
+    <item type="raw" name="icons_filled_pk">false</item>
+    <item type="raw" name="icons_filled_pk_thumb">false</item>
+    <item type="raw" name="icons_finder_msg_alias_holder">false</item>
+    <item type="raw" name="icons_outlined_finder_guarantee">false</item>
+    <item type="raw" name="icons_outlined_game_off">false</item>
+    <item type="raw" name="icons_outlined_game_on">false</item>
+    <item type="raw" name="icons_outlined_insurance">false</item>
+    <item type="raw" name="icons_outlined_mic_off">false</item>
+    <item type="raw" name="icons_outlined_mic_on">false</item>
+    <item type="raw" name="icons_outlined_nearby_person_divider">false</item>
+    <item type="raw" name="icons_outlined_stoptranslate">false</item>
+    <item type="raw" name="private_lock">false</item>
+    <item type="raw" name="chat_room_rule_pass_light">false</item>
+    <item type="raw" name="chat_room_rule_reject_dark">false</item>
+    <item type="raw" name="chat_room_rule_reject_light">false</item>
+    <item type="raw" name="icons_outlined_minus">false</item>
+    <item type="raw" name="music_mv_slider_left_bar">false</item>
+    <item type="raw" name="music_mv_slider_right_bar">false</item>
+    <item type="raw" name="finder_live_shopping_order">false</item>
+    <item type="raw" name="game_add_icon">false</item>
+    <item type="raw" name="icon_music_filled">false</item>
+    <item type="raw" name="icons_filled_game_add">false</item>
+    <item type="raw" name="icons_filled_live_screencast">false</item>
+    <item type="raw" name="icons_filled_mini_window_2">false</item>
+    <item type="raw" name="icons_outlined_bgm_play">false</item>
+    <item type="raw" name="icons_outlined_favour_off">false</item>
+    <item type="raw" name="icons_outlined_favour_on">false</item>
+    <item type="raw" name="icons_outlined_live_screencast_off">false</item>
+    <item type="raw" name="icons_outlined_live_screencast_on">false</item>
+    <item type="raw" name="icons_outlined_play_control_2">false</item>
+    <item type="raw" name="live_user_level_10_19">false</item>
+    <item type="raw" name="live_user_level_1_9">false</item>
+    <item type="raw" name="live_user_level_20_29">false</item>
+    <item type="raw" name="live_user_level_30_39">false</item>
+    <item type="raw" name="live_user_level_40_49">false</item>
+    <item type="raw" name="live_user_level_50_59">false</item>
+    <item type="raw" name="live_user_level_60_69">false</item>
+    <item type="raw" name="APKTOOL_DUMMY_97e" />
 </resources>

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.emoji.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ait;
+import com.tencent.mm.protocal.protobuf.aji;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.io.ByteArrayInputStream;
@@ -17,7 +17,7 @@ import org.xml.sax.InputSource;
 
 public final class b
 {
-  public static ArrayList<ait> amR(String paramString)
+  public static ArrayList<aji> auL(String paramString)
   {
     AppMethodBeat.i(108731);
     if (Util.isNullOrNil(paramString))
@@ -40,39 +40,39 @@ public final class b
         while (i < j)
         {
           Object localObject2 = paramString.item(i);
-          ait localait = new ait();
+          aji localaji = new aji();
           String str = ((Node)localObject2).getTextContent().toLowerCase();
           localObject2 = ((Node)localObject2).getAttributes();
           Node localNode = ((NamedNodeMap)localObject2).getNamedItem("thumburl");
           if (localNode != null) {
-            localait.ThumbUrl = localNode.getNodeValue();
+            localaji.ThumbUrl = localNode.getNodeValue();
           }
           localNode = ((NamedNodeMap)localObject2).getNamedItem("cdnurl");
           if (localNode != null) {
-            localait.Url = localNode.getNodeValue();
+            localaji.Url = localNode.getNodeValue();
           }
           localNode = ((NamedNodeMap)localObject2).getNamedItem("productid");
           if (localNode != null) {
-            localait.ProductID = localNode.getNodeValue();
+            localaji.ProductID = localNode.getNodeValue();
           }
           localNode = ((NamedNodeMap)localObject2).getNamedItem("designerid");
           if (localNode != null) {
-            localait.Lsl = localNode.getNodeValue();
+            localaji.DesignerID = localNode.getNodeValue();
           }
           localNode = ((NamedNodeMap)localObject2).getNamedItem("aeskey");
           if (localNode != null) {
-            localait.AesKey = localNode.getNodeValue();
+            localaji.AesKey = localNode.getNodeValue();
           }
           localNode = ((NamedNodeMap)localObject2).getNamedItem("encrypturl");
           if (localNode != null) {
-            localait.EncryptUrl = localNode.getNodeValue();
+            localaji.EncryptUrl = localNode.getNodeValue();
           }
           localObject2 = ((NamedNodeMap)localObject2).getNamedItem("activityid");
           if (localObject2 != null) {
-            localait.ActivityID = ((Node)localObject2).getNodeValue();
+            localaji.ActivityID = ((Node)localObject2).getNodeValue();
           }
-          localait.Md5 = str;
-          ((ArrayList)localObject1).add(localait);
+          localaji.Md5 = str;
+          ((ArrayList)localObject1).add(localaji);
           i += 1;
         }
         AppMethodBeat.o(108731);
@@ -87,7 +87,7 @@ public final class b
     return null;
   }
   
-  public static ArrayList<String> amS(String paramString)
+  public static ArrayList<String> auM(String paramString)
   {
     AppMethodBeat.i(108732);
     if (Util.isNullOrNil(paramString))
@@ -126,7 +126,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.g.b
  * JD-Core Version:    0.7.0.1
  */

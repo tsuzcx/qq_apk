@@ -5,9 +5,9 @@ import com.tencent.thumbplayer.api.composition.ITPMediaAsset;
 
 final class f$j
 {
-  long SbK;
-  TPVideoInfo SbL;
-  ITPMediaAsset Sby;
+  ITPMediaAsset ZEj;
+  long ZEv;
+  TPVideoInfo ZEw;
   int mode;
   String url;
 }

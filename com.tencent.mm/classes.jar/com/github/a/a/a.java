@@ -1,11 +1,14 @@
 package com.github.a.a;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.OrientationEventListener;
 import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import io.flutter.plugin.a.d;
+import io.flutter.plugin.a.d.a;
+import io.flutter.plugin.a.d.c;
 import io.flutter.plugin.a.j;
 import io.flutter.plugin.a.k;
 import io.flutter.plugin.a.k.c;
@@ -15,24 +18,24 @@ import java.util.List;
 public final class a
   implements k.c
 {
+  k aKT;
+  d aKU;
+  OrientationEventListener aKV;
+  int aKW = -1;
   Activity activity;
-  k bbv;
-  d bbw;
-  OrientationEventListener bbx;
-  int bby = -1;
   
   public final void a(j paramj, k.d paramd)
   {
     int j = 0;
-    AppMethodBeat.i(199077);
+    AppMethodBeat.i(215355);
     if (this.activity == null)
     {
       paramd.b("NO_ACTIVITY", "OrientationPlugin requires a foreground activity.", null);
-      AppMethodBeat.o(199077);
+      AppMethodBeat.o(215355);
       return;
     }
     String str = paramj.method;
-    paramj = paramj.SxX;
+    paramj = paramj.ZZe;
     int k;
     int i;
     if (str.equals("SystemChrome.setEnabledSystemUIOverlays"))
@@ -56,8 +59,8 @@ public final class a
         }
       }
       this.activity.getWindow().getDecorView().setSystemUiVisibility(k);
-      paramd.ba(null);
-      AppMethodBeat.o(199077);
+      paramd.bb(null);
+      AppMethodBeat.o(215355);
       return;
     }
     if (str.equals("SystemChrome.setPreferredOrientations"))
@@ -97,8 +100,8 @@ public final class a
       }
       for (;;)
       {
-        paramd.ba(null);
-        AppMethodBeat.o(199077);
+        paramd.bb(null);
+        AppMethodBeat.o(215355);
         return;
         this.activity.setRequestedOrientation(-1);
         continue;
@@ -129,8 +132,8 @@ public final class a
       }
       for (;;)
       {
-        paramd.ba(null);
-        AppMethodBeat.o(199077);
+        paramd.bb(null);
+        AppMethodBeat.o(215355);
         return;
         if (paramj.equals("DeviceOrientation.portraitDown")) {
           this.activity.setRequestedOrientation(9);
@@ -143,13 +146,13 @@ public final class a
         }
       }
     }
-    paramd.dLv();
-    AppMethodBeat.o(199077);
+    paramd.epZ();
+    AppMethodBeat.o(215355);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.github.a.a.a
  * JD-Core Version:    0.7.0.1
  */

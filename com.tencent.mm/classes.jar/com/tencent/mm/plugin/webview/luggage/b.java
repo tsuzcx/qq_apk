@@ -5,8 +5,8 @@ import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.xweb.WebView;
@@ -14,27 +14,27 @@ import com.tencent.xweb.WebView;
 public final class b
   extends RelativeLayout
 {
-  private WebView IJw;
-  private m ISN;
-  private boolean ISO;
-  private Runnable ISP;
-  private int ISQ;
-  private GestureDetector mDJ;
+  private WebView PFq;
+  private m PPg;
+  private boolean PPh;
+  private Runnable PPi;
+  private int PPj;
   private boolean mDisabled;
+  private GestureDetector pCU;
   
   public b(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(210868);
+    AppMethodBeat.i(214444);
     this.mDisabled = true;
-    this.ISP = new Runnable()
+    this.PPi = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(210861);
+        AppMethodBeat.i(267906);
         if ((!b.a(b.this)) || (b.b(b.this)))
         {
-          AppMethodBeat.o(210861);
+          AppMethodBeat.o(267906);
           return;
         }
         int i = b.c(b.this).getWebScrollY();
@@ -45,45 +45,45 @@ public final class b
           {
             public final void run()
             {
-              AppMethodBeat.i(210860);
+              AppMethodBeat.i(264869);
               b.e(b.this);
-              AppMethodBeat.o(210860);
+              AppMethodBeat.o(264869);
             }
           });
-          h.RTc.o(b.f(b.this), 100L);
+          h.ZvG.o(b.f(b.this), 100L);
         }
-        AppMethodBeat.o(210861);
+        AppMethodBeat.o(267906);
       }
     };
-    this.mDJ = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener()
+    this.pCU = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener()
     {
       public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(210867);
+        AppMethodBeat.i(268067);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/ImmersivePageView$2", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+        localb.bn(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/luggage/ImmersivePageView$2", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
         boolean bool = super.onContextClick(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/webview/luggage/ImmersivePageView$2", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(210867);
+        AppMethodBeat.o(268067);
         return bool;
       }
       
       public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(210866);
+        AppMethodBeat.i(268065);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/ImmersivePageView$2", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+        localb.bn(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/luggage/ImmersivePageView$2", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
         boolean bool = super.onDoubleTap(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/webview/luggage/ImmersivePageView$2", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(210866);
+        AppMethodBeat.o(268065);
         return bool;
       }
       
       public final boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
-        AppMethodBeat.i(210863);
+        AppMethodBeat.i(268058);
         if (!b.b(b.this))
         {
           b.g(b.this);
@@ -92,93 +92,93 @@ public final class b
           {
             public final void run()
             {
-              AppMethodBeat.i(210862);
+              AppMethodBeat.i(219689);
               b.e(b.this);
-              AppMethodBeat.o(210862);
+              AppMethodBeat.o(219689);
             }
           });
-          h.RTc.o(b.f(b.this), 100L);
+          h.ZvG.o(b.f(b.this), 100L);
         }
-        AppMethodBeat.o(210863);
+        AppMethodBeat.o(268058);
         return false;
       }
       
       public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(210865);
+        AppMethodBeat.i(268063);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/ImmersivePageView$2", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.axR());
+        localb.bn(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/luggage/ImmersivePageView$2", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
         super.onLongPress(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/luggage/ImmersivePageView$2", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-        AppMethodBeat.o(210865);
+        AppMethodBeat.o(268063);
       }
       
       public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(210864);
+        AppMethodBeat.i(268060);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/ImmersivePageView$2", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+        localb.bn(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/luggage/ImmersivePageView$2", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
         boolean bool = super.onSingleTapUp(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/webview/luggage/ImmersivePageView$2", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(210864);
+        AppMethodBeat.o(268060);
         return bool;
       }
     }, null);
-    AppMethodBeat.o(210868);
+    AppMethodBeat.o(214444);
   }
   
-  private void gbw()
+  private void gUq()
   {
-    AppMethodBeat.i(210870);
-    int i = this.IJw.getWebScrollY();
+    AppMethodBeat.i(214448);
+    int i = this.PFq.getWebScrollY();
     if (i < 300) {
-      this.ISN.gbZ();
+      this.PPg.gUV();
     }
     for (;;)
     {
       Log.i("MicroMsg.ImmersivePageView", "setActionBarAlpha, scrollY : %d", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(210870);
+      AppMethodBeat.o(214448);
       return;
       if (i > 450)
       {
-        this.ISN.setAlpha(1.0F);
+        this.PPg.setAlpha(1.0F);
       }
       else
       {
         float f = (i - 300) / 150.0F;
-        this.ISN.setAlpha(f);
+        this.PPg.setAlpha(f);
       }
     }
   }
   
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(210869);
-    this.ISO = false;
+    AppMethodBeat.i(214447);
+    this.PPh = false;
     if (this.mDisabled)
     {
       bool = super.onInterceptTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(210869);
+      AppMethodBeat.o(214447);
       return bool;
     }
-    GestureDetector localGestureDetector = this.mDJ;
-    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bl(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, locala.axQ(), "com/tencent/mm/plugin/webview/luggage/ImmersivePageView", "onInterceptTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.pG(0)), "com/tencent/mm/plugin/webview/luggage/ImmersivePageView", "onInterceptTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    GestureDetector localGestureDetector = this.pCU;
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bm(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b(localGestureDetector, locala.aFh(), "com/tencent/mm/plugin/webview/luggage/ImmersivePageView", "onInterceptTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.sf(0)), "com/tencent/mm/plugin/webview/luggage/ImmersivePageView", "onInterceptTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     int i = paramMotionEvent.getAction();
     if ((i == 2) || (i == 1)) {
-      gbw();
+      gUq();
     }
     boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(210869);
+    AppMethodBeat.o(214447);
     return bool;
   }
   
   public final void setActionBar(m paramm)
   {
-    this.ISN = paramm;
+    this.PPg = paramm;
   }
   
   public final void setDisable(boolean paramBoolean)
@@ -188,7 +188,7 @@ public final class b
   
   public final void setWebView(WebView paramWebView)
   {
-    this.IJw = paramWebView;
+    this.PFq = paramWebView;
   }
 }
 

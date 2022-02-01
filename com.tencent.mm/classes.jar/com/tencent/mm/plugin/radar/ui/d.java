@@ -3,30 +3,30 @@ package com.tencent.mm.plugin.radar.ui;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/radar/ui/RadarPressDetector;", "", "()V", "PressIsClickDuringThreshold", "", "getPressIsClickDuringThreshold", "()I", "PressTooShortDuringThreshold", "getPressTooShortDuringThreshold", "isClick", "", "during", "", "isPress", "isTooShort", "plugin-radar_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/radar/ui/RadarPressDetector;", "", "()V", "PressIsClickDuringThreshold", "", "getPressIsClickDuringThreshold", "()I", "PressTooShortDuringThreshold", "getPressTooShortDuringThreshold", "isClick", "", "during", "", "isPress", "isTooShort", "plugin-radar_release"})
 public final class d
 {
-  private static final int BzQ = 1000;
-  private static final int BzR = 500;
-  public static final d BzS;
+  private static final int Hvl = 1000;
+  private static final int Hvm = 500;
+  public static final d Hvn;
   
   static
   {
     AppMethodBeat.i(138634);
-    BzS = new d();
-    BzQ = 1000;
-    BzR = 500;
+    Hvn = new d();
+    Hvl = 1000;
+    Hvm = 500;
     AppMethodBeat.o(138634);
   }
   
-  public static boolean HO(long paramLong)
+  public static boolean Pj(long paramLong)
   {
-    return paramLong <= BzR;
+    return paramLong <= Hvm;
   }
   
-  public static int eHq()
+  public static int ftu()
   {
-    return BzQ;
+    return Hvl;
   }
 }
 

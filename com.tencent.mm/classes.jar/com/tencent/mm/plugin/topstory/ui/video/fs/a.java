@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.topstory.ui.video.fs;
 public abstract interface a
   extends com.tencent.mm.plugin.topstory.ui.video.a
 {
-  public abstract void acf(int paramInt);
+  public abstract void ajL(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.a
  * JD-Core Version:    0.7.0.1
  */

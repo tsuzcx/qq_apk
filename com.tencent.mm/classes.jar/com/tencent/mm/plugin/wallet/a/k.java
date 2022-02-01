@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.wallet.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jp;
+import com.tencent.mm.f.a.kf;
 import com.tencent.mm.sdk.event.IListener;
 
 public final class k
-  extends IListener<jp>
+  extends IListener<kf>
 {
   public k()
   {
     AppMethodBeat.i(160861);
-    this.__eventId = jp.class.getName().hashCode();
+    this.__eventId = kf.class.getName().hashCode();
     AppMethodBeat.o(160861);
   }
 }

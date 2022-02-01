@@ -2,17 +2,16 @@ package com.tencent.mm.plugin.emoji.f;
 
 import android.content.ContentValues;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.emoji.model.k;
-import com.tencent.mm.protocal.protobuf.GetEmotionRewardRequest;
-import com.tencent.mm.protocal.protobuf.GetEmotionRewardResponse;
-import com.tencent.mm.protocal.protobuf.ajg;
+import com.tencent.mm.protocal.protobuf.akg;
+import com.tencent.mm.protocal.protobuf.bui;
+import com.tencent.mm.protocal.protobuf.buj;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -22,47 +21,50 @@ import com.tencent.mm.storage.emotion.o;
 import java.io.IOException;
 
 public final class p
-  extends com.tencent.mm.ak.q
+  extends com.tencent.mm.an.q
   implements m
 {
-  public static int rde = 0;
-  public static int rdf = 1;
-  public static int rdg = 1;
-  public static int rdh = 2;
-  public static int rdi = 256;
-  private com.tencent.mm.ak.i callback;
-  private String rcq;
-  private int rdj;
+  public static int uGk = 0;
+  public static int uGl = 1;
+  public static int uGm = 1;
+  public static int uGn = 2;
+  public static int uGo = 256;
+  private com.tencent.mm.an.i callback;
   private final d rr;
+  private String uFv;
+  private int uGp;
   
   public p(String paramString, int paramInt)
   {
     AppMethodBeat.i(108712);
     d.a locala = new d.a();
-    locala.iLN = new GetEmotionRewardRequest();
-    locala.iLO = new GetEmotionRewardResponse();
+    locala.lBU = new bui();
+    locala.lBV = new buj();
     locala.uri = "/cgi-bin/micromsg-bin/mmgetemotionreward";
     locala.funcId = 822;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    this.rcq = paramString;
-    this.rdj = paramInt;
+    this.rr = locala.bgN();
+    this.uFv = paramString;
+    this.uGp = paramInt;
     AppMethodBeat.o(108712);
   }
   
-  public final GetEmotionRewardResponse cGz()
+  public final buj cVi()
   {
-    return (GetEmotionRewardResponse)this.rr.iLL.iLR;
+    AppMethodBeat.i(256917);
+    buj localbuj = (buj)d.c.b(this.rr.lBS);
+    AppMethodBeat.o(256917);
+    return localbuj;
   }
   
-  public final int doScene(g paramg, com.tencent.mm.ak.i parami)
+  public final int doScene(g paramg, com.tencent.mm.an.i parami)
   {
     AppMethodBeat.i(108714);
     this.callback = parami;
-    parami = (GetEmotionRewardRequest)this.rr.iLK.iLR;
-    parami.ProductID = this.rcq;
-    parami.OpCode = this.rdj;
+    parami = (bui)d.b.b(this.rr.lBR);
+    parami.ProductID = this.uFv;
+    parami.RLe = this.uGp;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(108714);
     return i;
@@ -79,22 +81,22 @@ public final class p
     Log.i("MicroMsg.emoji.NetSceneGetEmotionReward", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     Object localObject;
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      if (this.rdj == rde)
+      if (this.uGp == uGk)
       {
-        params = k.getEmojiStorageMgr().OpS;
-        paramArrayOfByte = this.rcq;
-        localObject = cGz();
+        params = com.tencent.mm.plugin.emoji.model.p.getEmojiStorageMgr().VFM;
+        paramArrayOfByte = this.uFv;
+        localObject = cVi();
         if ((Util.isNullOrNil(paramArrayOfByte)) || (localObject == null)) {
           Log.w("MicroMsg.emoji.EmotionRewardInfoStorage", "saveEmotionRewardResponseWithPID failed. productId or response is null.");
         }
       }
       else
       {
-        if ((cGz() == null) || (cGz().Reward == null)) {
-          break label285;
+        if ((cVi() == null) || (cVi().VIh == null)) {
+          break label286;
         }
-        k.getEmojiStorageMgr().OpU.gU(this.rcq, cGz().Reward.KHa);
-        k.cGj().dg(this.rcq, cGz().Reward.KHa);
+        com.tencent.mm.plugin.emoji.model.p.getEmojiStorageMgr().VFO.hD(this.uFv, cVi().VIh.RIs);
+        com.tencent.mm.plugin.emoji.model.p.cUS().dB(this.uFv, cVi().VIh.RIs);
       }
     }
     for (;;)
@@ -108,7 +110,7 @@ public final class p
         {
           n localn = new n();
           localn.field_productID = paramArrayOfByte;
-          localn.field_content = ((GetEmotionRewardResponse)localObject).toByteArray();
+          localn.field_content = ((buj)localObject).toByteArray();
           localObject = localn.convertTo();
           if (params.db.replace("EmotionRewardInfo", "productID", (ContentValues)localObject) <= 0L) {
             break label266;
@@ -124,22 +126,22 @@ public final class p
       label266:
       Log.i("MicroMsg.emoji.EmotionRewardInfoStorage", "saveEmotionRewardResponseWithPID failed. ProductId:%s", new Object[] { paramArrayOfByte });
       break;
-      label285:
+      label286:
       Log.i("MicroMsg.emoji.NetSceneGetEmotionReward", "getEmotionRewardRespone is null. so i think no such product reward information");
-      k.getEmojiStorageMgr().OpU.gU(this.rcq, rdi);
-      k.cGj().dg(this.rcq, rdi);
+      com.tencent.mm.plugin.emoji.model.p.getEmojiStorageMgr().VFO.hD(this.uFv, uGo);
+      com.tencent.mm.plugin.emoji.model.p.cUS().dB(this.uFv, uGo);
       continue;
       if (paramInt3 == 1)
       {
-        k.getEmojiStorageMgr().OpU.gU(this.rcq, rdi);
-        k.cGj().dg(this.rcq, rdi);
+        com.tencent.mm.plugin.emoji.model.p.getEmojiStorageMgr().VFO.hD(this.uFv, uGo);
+        com.tencent.mm.plugin.emoji.model.p.cUS().dB(this.uFv, uGo);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.f.p
  * JD-Core Version:    0.7.0.1
  */

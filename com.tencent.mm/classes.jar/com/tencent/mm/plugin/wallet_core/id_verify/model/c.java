@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.wallet_core.id_verify.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.protocal.protobuf.djx;
-import com.tencent.mm.protocal.protobuf.djy;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.protocal.protobuf.dtm;
+import com.tencent.mm.protocal.protobuf.dtn;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
-  extends com.tencent.mm.ak.c<djy>
+  extends com.tencent.mm.an.c<dtn>
 {
   public c(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(174503);
-    djx localdjx = new djx();
+    dtm localdtm = new dtm();
     d.a locala = new d.a();
-    localdjx.HQc = paramString2;
-    localdjx.HVd = paramString3;
-    localdjx.dNQ = paramString1;
-    localdjx.IaW = paramString4;
-    locala.iLN = localdjx;
-    locala.iLO = new djy();
+    localdtm.OIl = paramString2;
+    localdtm.ONe = paramString3;
+    localdtm.fHb = paramString1;
+    localdtm.OTh = paramString4;
+    locala.lBU = localdtm;
+    locala.lBV = new dtn();
     locala.funcId = 2752;
     locala.uri = "/cgi-bin/mmpay-bin/tenpay/realnameverifysms";
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    c(locala.aXF());
+    c(locala.bgN());
     Log.i("MicroMsg.CgiRealnameVerifySms", "verify sms: %s, %s, reqkey: %s", new Object[] { paramString3, paramString2, paramString1 });
     AppMethodBeat.o(174503);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.model.c
  * JD-Core Version:    0.7.0.1
  */

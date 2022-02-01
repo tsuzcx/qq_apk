@@ -5,19 +5,19 @@ import g.a.a.b;
 import java.util.LinkedList;
 
 public final class z
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String oTx;
-  public long oUG;
-  public long oUH;
-  public String oUI;
-  public String oUJ;
-  public LinkedList<String> oUn;
+  public String rVv;
+  public long rWF;
+  public long rWG;
+  public String rWH;
+  public String rWI;
+  public LinkedList<String> rWl;
   
   public z()
   {
     AppMethodBeat.i(22131);
-    this.oUn = new LinkedList();
+    this.rWl = new LinkedList();
     AppMethodBeat.o(22131);
   }
   
@@ -27,82 +27,82 @@ public final class z
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.oTx == null)
+      if (this.rVv == null)
       {
         paramVarArgs = new b("Not all required fields were included: BakChatName");
         AppMethodBeat.o(22132);
         throw paramVarArgs;
       }
-      if (this.oUI == null)
+      if (this.rWH == null)
       {
         paramVarArgs = new b("Not all required fields were included: MsgDataID");
         AppMethodBeat.o(22132);
         throw paramVarArgs;
       }
-      if (this.oUJ == null)
+      if (this.rWI == null)
       {
         paramVarArgs = new b("Not all required fields were included: NickName");
         AppMethodBeat.o(22132);
         throw paramVarArgs;
       }
-      if (this.oTx != null) {
-        paramVarArgs.e(1, this.oTx);
+      if (this.rVv != null) {
+        paramVarArgs.f(1, this.rVv);
       }
-      paramVarArgs.bb(2, this.oUG);
-      paramVarArgs.bb(3, this.oUH);
-      if (this.oUI != null) {
-        paramVarArgs.e(4, this.oUI);
+      paramVarArgs.bm(2, this.rWF);
+      paramVarArgs.bm(3, this.rWG);
+      if (this.rWH != null) {
+        paramVarArgs.f(4, this.rWH);
       }
-      if (this.oUJ != null) {
-        paramVarArgs.e(5, this.oUJ);
+      if (this.rWI != null) {
+        paramVarArgs.f(5, this.rWI);
       }
-      paramVarArgs.e(6, 1, this.oUn);
+      paramVarArgs.e(6, 1, this.rWl);
       AppMethodBeat.o(22132);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.oTx == null) {
+      if (this.rVv == null) {
         break label642;
       }
     }
     label642:
-    for (paramInt = g.a.a.b.b.a.f(1, this.oTx) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.rVv) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.r(2, this.oUG) + g.a.a.b.b.a.r(3, this.oUH);
+      int i = paramInt + g.a.a.b.b.a.p(2, this.rWF) + g.a.a.b.b.a.p(3, this.rWG);
       paramInt = i;
-      if (this.oUI != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.oUI);
+      if (this.rWH != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.rWH);
       }
       i = paramInt;
-      if (this.oUJ != null) {
-        i = paramInt + g.a.a.b.b.a.f(5, this.oUJ);
+      if (this.rWI != null) {
+        i = paramInt + g.a.a.b.b.a.g(5, this.rWI);
       }
-      paramInt = g.a.a.a.c(6, 1, this.oUn);
+      paramInt = g.a.a.a.c(6, 1, this.rWl);
       AppMethodBeat.o(22132);
       return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.oUn.clear();
+        this.rWl.clear();
         paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.oTx == null)
+        if (this.rVv == null)
         {
           paramVarArgs = new b("Not all required fields were included: BakChatName");
           AppMethodBeat.o(22132);
           throw paramVarArgs;
         }
-        if (this.oUI == null)
+        if (this.rWH == null)
         {
           paramVarArgs = new b("Not all required fields were included: MsgDataID");
           AppMethodBeat.o(22132);
           throw paramVarArgs;
         }
-        if (this.oUJ == null)
+        if (this.rWI == null)
         {
           paramVarArgs = new b("Not all required fields were included: NickName");
           AppMethodBeat.o(22132);
@@ -121,27 +121,27 @@ public final class z
           AppMethodBeat.o(22132);
           return -1;
         case 1: 
-          localz.oTx = locala.UbS.readString();
+          localz.rVv = locala.abFh.readString();
           AppMethodBeat.o(22132);
           return 0;
         case 2: 
-          localz.oUG = locala.UbS.zl();
+          localz.rWF = locala.abFh.AN();
           AppMethodBeat.o(22132);
           return 0;
         case 3: 
-          localz.oUH = locala.UbS.zl();
+          localz.rWG = locala.abFh.AN();
           AppMethodBeat.o(22132);
           return 0;
         case 4: 
-          localz.oUI = locala.UbS.readString();
+          localz.rWH = locala.abFh.readString();
           AppMethodBeat.o(22132);
           return 0;
         case 5: 
-          localz.oUJ = locala.UbS.readString();
+          localz.rWI = locala.abFh.readString();
           AppMethodBeat.o(22132);
           return 0;
         }
-        localz.oUn.add(locala.UbS.readString());
+        localz.rWl.add(locala.abFh.readString());
         AppMethodBeat.o(22132);
         return 0;
       }
@@ -152,7 +152,7 @@ public final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.z
  * JD-Core Version:    0.7.0.1
  */

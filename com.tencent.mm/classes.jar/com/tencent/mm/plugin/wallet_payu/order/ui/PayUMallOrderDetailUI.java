@@ -5,114 +5,117 @@ import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.wallet_payu.order.a.c;
-import com.tencent.mm.protocal.protobuf.daq;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.protocal.protobuf.dke;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.g;
 
 public class PayUMallOrderDetailUI
   extends WalletBaseUI
 {
-  private String AJn = "";
-  private TextView CrY;
-  private daq ItC;
-  private LinearLayout ItD;
-  private LinearLayout ItE;
-  private LinearLayout ItF;
-  private LinearLayout ItG;
-  private LinearLayout ItH;
-  private LinearLayout ItI;
-  private LinearLayout ItJ;
-  private TextView ItK;
-  private TextView ItL;
-  private TextView ItM;
-  private TextView ItN;
-  private TextView nnA;
-  private TextView yQj;
+  private TextView Eui;
+  private String GCu = "";
+  private TextView Ipw;
+  private dke Pmm;
+  private LinearLayout Pmn;
+  private LinearLayout Pmo;
+  private LinearLayout Pmp;
+  private LinearLayout Pmq;
+  private LinearLayout Pmr;
+  private LinearLayout Pms;
+  private LinearLayout Pmt;
+  private TextView Pmu;
+  private TextView Pmv;
+  private TextView Pmw;
+  private TextView Pmx;
+  private TextView qph;
   
-  private void eDD()
+  private void dBo()
   {
     AppMethodBeat.i(72068);
-    if (this.ItC == null)
+    if (this.Pmm == null)
     {
       AppMethodBeat.o(72068);
       return;
     }
-    if (!Util.isNullOrNil(this.ItC.AOT))
+    if (!Util.isNullOrNil(this.Pmm.GIh))
     {
-      this.ItD.setVisibility(0);
-      this.ItK.setText(this.ItC.AOT);
+      this.Pmn.setVisibility(0);
+      this.Pmu.setText(this.Pmm.GIh);
       label53:
-      if (Util.isNullOrNil(this.ItC.APc)) {
-        break label303;
+      if (Util.isNullOrNil(this.Pmm.GIq)) {
+        break label304;
       }
-      this.ItE.setVisibility(0);
-      this.ItL.setText(this.ItC.APc);
+      this.Pmo.setVisibility(0);
+      this.Pmv.setText(this.Pmm.GIq);
       label88:
-      if (Util.isNullOrNil(this.ItC.AOV)) {
-        break label315;
+      if (Util.isNullOrNil(this.Pmm.GIj)) {
+        break label316;
       }
-      this.ItF.setVisibility(0);
-      this.ItM.setText(this.ItC.AOV);
+      this.Pmp.setVisibility(0);
+      this.Pmw.setText(this.Pmm.GIj);
       label123:
-      if (Util.isNullOrNil(this.ItC.AOY)) {
-        break label327;
+      if (Util.isNullOrNil(this.Pmm.GIm)) {
+        break label328;
       }
-      this.ItG.setVisibility(0);
-      this.CrY.setText(f.d(this.ItC.MFR / 100.0D, this.ItC.AOY));
+      this.Pmq.setVisibility(0);
+      this.Ipw.setText(g.d(this.Pmm.TRD / 100.0D, this.Pmm.GIm));
       label173:
-      if (this.ItC.CreateTime < 0) {
-        break label339;
+      if (this.Pmm.CreateTime < 0) {
+        break label340;
       }
-      this.ItH.setVisibility(0);
-      this.yQj.setText(f.rZ(this.ItC.CreateTime));
+      this.Pmr.setVisibility(0);
+      this.Eui.setText(g.uW(this.Pmm.CreateTime));
       label208:
-      if (Util.isNullOrNil(this.ItC.AOW)) {
-        break label351;
+      if (Util.isNullOrNil(this.Pmm.GIk)) {
+        break label352;
       }
-      this.ItI.setVisibility(0);
-      this.nnA.setText(this.ItC.AOW);
+      this.Pms.setVisibility(0);
+      this.qph.setText(this.Pmm.GIk);
     }
     for (;;)
     {
-      switch (this.ItC.APa)
+      switch (this.Pmm.GIo)
       {
       case 4: 
       default: 
-        this.ItN.setText(2131768165);
+        this.Pmx.setText(a.i.wallet_payu_detail_type_reserve);
         AppMethodBeat.o(72068);
         return;
-        this.ItD.setVisibility(8);
+        this.Pmn.setVisibility(8);
         break label53;
-        label303:
-        this.ItE.setVisibility(8);
+        label304:
+        this.Pmo.setVisibility(8);
         break label88;
-        label315:
-        this.ItF.setVisibility(8);
+        label316:
+        this.Pmp.setVisibility(8);
         break label123;
-        label327:
-        this.ItG.setVisibility(8);
+        label328:
+        this.Pmq.setVisibility(8);
         break label173;
-        label339:
-        this.ItH.setVisibility(8);
+        label340:
+        this.Pmr.setVisibility(8);
         break label208;
-        label351:
-        this.ItI.setVisibility(8);
+        label352:
+        this.Pms.setVisibility(8);
       }
     }
-    this.ItN.setText(2131767450);
+    this.Pmx.setText(a.i.wallet_balance_manager_save);
     AppMethodBeat.o(72068);
     return;
-    this.ItN.setText(2131767761);
+    this.Pmx.setText(a.i.wallet_index_ui_transfer);
     AppMethodBeat.o(72068);
   }
   
   public int getLayoutId()
   {
-    return 2131495907;
+    return a.g.payu_mall_order_info_detail;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -120,28 +123,28 @@ public class PayUMallOrderDetailUI
     AppMethodBeat.i(72067);
     super.onCreate(paramBundle);
     addSceneEndListener(1520);
-    this.AJn = getInput().getString("key_trans_id");
-    if (Util.isNullOrNil(this.AJn))
+    this.GCu = getInput().getString("key_trans_id");
+    if (Util.isNullOrNil(this.GCu))
     {
       Log.e("MicroMsg.PayUMallOrderDetailUI", "hy: trans id is null");
       finish();
     }
-    doSceneProgress(new c(this.AJn));
-    this.ItD = ((LinearLayout)findViewById(2131299565));
-    this.ItE = ((LinearLayout)findViewById(2131299539));
-    this.ItF = ((LinearLayout)findViewById(2131299550));
-    this.ItG = ((LinearLayout)findViewById(2131299556));
-    this.ItH = ((LinearLayout)findViewById(2131299563));
-    this.ItI = ((LinearLayout)findViewById(2131299558));
-    this.ItJ = ((LinearLayout)findViewById(2131299568));
-    this.ItK = ((TextView)findViewById(2131299566));
-    this.ItL = ((TextView)findViewById(2131299540));
-    this.ItM = ((TextView)findViewById(2131299551));
-    this.CrY = ((TextView)findViewById(2131299557));
-    this.yQj = ((TextView)findViewById(2131299564));
-    this.nnA = ((TextView)findViewById(2131299559));
-    this.ItN = ((TextView)findViewById(2131299569));
-    eDD();
+    doSceneProgress(new c(this.GCu));
+    this.Pmn = ((LinearLayout)findViewById(a.f.detail_transid));
+    this.Pmo = ((LinearLayout)findViewById(a.f.detail_appname));
+    this.Pmp = ((LinearLayout)findViewById(a.f.detail_goodsname));
+    this.Pmq = ((LinearLayout)findViewById(a.f.detail_moneyspent));
+    this.Pmr = ((LinearLayout)findViewById(a.f.detail_time));
+    this.Pms = ((LinearLayout)findViewById(a.f.detail_status));
+    this.Pmt = ((LinearLayout)findViewById(a.f.detail_type));
+    this.Pmu = ((TextView)findViewById(a.f.detail_transid_tv));
+    this.Pmv = ((TextView)findViewById(a.f.detail_appname_tv));
+    this.Pmw = ((TextView)findViewById(a.f.detail_goodsname_tv));
+    this.Ipw = ((TextView)findViewById(a.f.detail_moneyspent_tv));
+    this.Eui = ((TextView)findViewById(a.f.detail_time_tv));
+    this.qph = ((TextView)findViewById(a.f.detail_status_tv));
+    this.Pmx = ((TextView)findViewById(a.f.detail_type_tv));
+    dBo();
     AppMethodBeat.o(72067);
   }
   
@@ -160,8 +163,8 @@ public class PayUMallOrderDetailUI
     {
       if ((paramq instanceof c))
       {
-        this.ItC = ((c)paramq).ItB;
-        eDD();
+        this.Pmm = ((c)paramq).Pml;
+        dBo();
       }
       AppMethodBeat.o(72069);
       return true;

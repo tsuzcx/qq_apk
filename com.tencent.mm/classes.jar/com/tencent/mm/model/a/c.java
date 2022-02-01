@@ -16,29 +16,29 @@ import org.xml.sax.InputSource;
 
 public final class c
 {
-  b iGA = null;
-  b iGz = null;
+  b lwB = null;
+  b lwC = null;
   
-  public final e KR(String paramString)
+  public final e Sk(String paramString)
   {
     AppMethodBeat.i(153092);
     e locale1 = null;
-    if (this.iGz != null) {
-      locale1 = this.iGz.KR(paramString);
+    if (this.lwB != null) {
+      locale1 = this.lwB.Sk(paramString);
     }
     e locale2 = locale1;
     if (locale1 == null)
     {
       locale2 = locale1;
-      if (this.iGA != null) {
-        locale2 = this.iGA.KR(paramString);
+      if (this.lwC != null) {
+        locale2 = this.lwC.Sk(paramString);
       }
     }
     AppMethodBeat.o(153092);
     return locale2;
   }
   
-  final void KS(String paramString)
+  final void Sl(String paramString)
   {
     AppMethodBeat.i(153091);
     if (Util.isNullOrNil(paramString))
@@ -93,20 +93,20 @@ public final class c
             {
               localObject4 = ((Node)localObject4).getNodeValue();
               Log.d("MicroMsg.abtest.AbTestManager", "[Abtest] reportIdValue:%s", new Object[] { localObject4 });
-              ((e)localObject2).iGB = ((String)localObject4);
+              ((e)localObject2).lwD = ((String)localObject4);
             }
           }
           localObject3 = ((Node)localObject3).getTextContent();
           Log.d("MicroMsg.abtest.AbTestManager", "[Abtest] casePointContent:%s", new Object[] { localObject3 });
           ((e)localObject2).value = ((String)localObject3);
           localObject3 = ((e)localObject2).id;
-          ((b)localObject1).iGy.put(localObject3, localObject2);
+          ((b)localObject1).lwA.put(localObject3, localObject2);
         }
         else if ((localObject3 != null) && (((Node)localObject3).getNodeName() != null) && (((Node)localObject3).getNodeName().equals("verifymd5")))
         {
           localObject2 = ((Node)localObject3).getTextContent();
           Log.d("MicroMsg.abtest.AbTestManager", "[Abtest] verifymd5Content:%s", new Object[] { localObject2 });
-          ((b)localObject1).gWQ = ((String)localObject2);
+          ((b)localObject1).jHO = ((String)localObject2);
         }
       }
       catch (Exception paramString)
@@ -119,13 +119,13 @@ public final class c
       {
         localObject2 = ((Node)localObject3).getTextContent();
         Log.d("MicroMsg.abtest.AbTestManager", "[Abtest] testcaseidContent:%s", new Object[] { localObject2 });
-        ((b)localObject1).iGw = ((String)localObject2);
+        ((b)localObject1).lwy = ((String)localObject2);
       }
       else if ((localObject3 != null) && (((Node)localObject3).getNodeName() != null) && (((Node)localObject3).getNodeName().equals("starttime")))
       {
         localObject2 = ((Node)localObject3).getTextContent();
         Log.d("MicroMsg.abtest.AbTestManager", "[Abtest] starttimeContent:%s", new Object[] { localObject2 });
-        ((b)localObject1).iGx = ((String)localObject2);
+        ((b)localObject1).lwz = ((String)localObject2);
       }
       else if ((localObject3 != null) && (((Node)localObject3).getNodeName() != null) && (((Node)localObject3).getNodeName().equals("endtime")))
       {
@@ -134,12 +134,12 @@ public final class c
         ((b)localObject1).endTime = ((String)localObject2);
         break label695;
         label647:
-        if ((!Util.isNullOrNil(((b)localObject1).iGw)) && ("0".equals(((b)localObject1).iGw)))
+        if ((!Util.isNullOrNil(((b)localObject1).lwy)) && ("0".equals(((b)localObject1).lwy)))
         {
-          this.iGA = ((b)localObject1);
+          this.lwC = ((b)localObject1);
           break label702;
         }
-        this.iGz = ((b)localObject1);
+        this.lwB = ((b)localObject1);
         break label702;
         label689:
         AppMethodBeat.o(153091);
@@ -153,14 +153,14 @@ public final class c
     }
   }
   
-  public final boolean aWR()
+  public final boolean bfY()
   {
-    return this.iGz != null;
+    return this.lwB != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.a.c
  * JD-Core Version:    0.7.0.1
  */

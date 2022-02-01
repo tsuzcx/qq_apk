@@ -1,29 +1,24 @@
 package kotlinx.coroutines;
 
-import java.util.concurrent.CancellationException;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/TimeoutCancellationException;", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "Lkotlinx/coroutines/CopyableThrowable;", "message", "", "(Ljava/lang/String;)V", "coroutine", "Lkotlinx/coroutines/Job;", "(Ljava/lang/String;Lkotlinx/coroutines/Job;)V", "createCopy", "kotlinx-coroutines-core"})
-public final class cs
-  extends CancellationException
-  implements ab<cs>
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/SupervisorJobImpl;", "Lkotlinx/coroutines/JobImpl;", "parent", "Lkotlinx/coroutines/Job;", "(Lkotlinx/coroutines/Job;)V", "childCancelled", "", "cause", "", "kotlinx-coroutines-core"})
+final class cs
+  extends cb
 {
-  public final bu TVm;
-  
-  public cs(String paramString)
+  public cs(by paramby)
   {
-    this(paramString, null);
+    super(null);
   }
   
-  public cs(String paramString, bu parambu)
+  public final boolean B(Throwable paramThrowable)
   {
-    super(paramString);
-    this.TVm = parambu;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.cs
  * JD-Core Version:    0.7.0.1
  */

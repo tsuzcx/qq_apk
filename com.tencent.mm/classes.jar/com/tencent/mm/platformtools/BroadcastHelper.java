@@ -10,6 +10,8 @@ import com.tencent.mm.booter.MMReceivers.ConnectionReceiver;
 import com.tencent.mm.booter.MountReceiver;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.downloader.model.FileDownloadReceiver;
+import com.tencent.mm.sdk.platformtools.ConnectivityCompat;
+import com.tencent.mm.sdk.platformtools.ConnectivityCompat.Companion;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -103,13 +105,17 @@ public class BroadcastHelper
     AppMethodBeat.i(20710);
     Log.i("MicroMsg.BroadcastHelper", "registerBroadcasts()");
     Object localObject;
-    if ((MMApplicationContext.isPushProcess()) && (d.oD(24)))
+    if (MMApplicationContext.isPushProcess())
     {
-      localObject = new MMReceivers.ConnectionReceiver();
-      broadcastReceiverHashMap.put(MMReceivers.ConnectionReceiver.class.getSimpleName(), localObject);
-      registerBroadcast((BroadcastReceiver)localObject, "android.net.conn.CONNECTIVITY_CHANGE");
+      if (d.qV(24))
+      {
+        localObject = new MMReceivers.ConnectionReceiver();
+        broadcastReceiverHashMap.put(MMReceivers.ConnectionReceiver.class.getSimpleName(), localObject);
+        registerBroadcast((BroadcastReceiver)localObject, "android.net.conn.CONNECTIVITY_CHANGE");
+      }
+      ConnectivityCompat.Companion.registerReceiver();
     }
-    if ((MMApplicationContext.isMMProcess()) && (d.oD(26)))
+    if ((MMApplicationContext.isMMProcess()) && (d.qV(26)))
     {
       localObject = new FileDownloadReceiver();
       broadcastReceiverHashMap.put(FileDownloadReceiver.class.getSimpleName(), localObject);
@@ -127,10 +133,14 @@ public class BroadcastHelper
     Log.i("MicroMsg.BroadcastHelper", "unRegisterBroadcasts()");
     try
     {
-      if ((MMApplicationContext.isPushProcess()) && (d.oD(24))) {
-        unRegisterBroadcast((MMReceivers.ConnectionReceiver)broadcastReceiverHashMap.get(MMReceivers.ConnectionReceiver.class.getSimpleName()));
+      if (MMApplicationContext.isPushProcess())
+      {
+        if (d.qV(24)) {
+          unRegisterBroadcast((MMReceivers.ConnectionReceiver)broadcastReceiverHashMap.get(MMReceivers.ConnectionReceiver.class.getSimpleName()));
+        }
+        ConnectivityCompat.Companion.unregisterReceiver();
       }
-      if ((MMApplicationContext.isMMProcess()) && (d.oD(26)))
+      if ((MMApplicationContext.isMMProcess()) && (d.qV(26)))
       {
         unRegisterBroadcast((FileDownloadReceiver)broadcastReceiverHashMap.get(FileDownloadReceiver.class.getSimpleName()));
         unRegisterBroadcast((InstallReceiver)broadcastReceiverHashMap.get(InstallReceiver.class.getSimpleName()));
@@ -148,7 +158,7 @@ public class BroadcastHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.platformtools.BroadcastHelper
  * JD-Core Version:    0.7.0.1
  */

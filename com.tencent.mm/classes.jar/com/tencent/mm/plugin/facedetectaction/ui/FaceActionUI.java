@@ -5,12 +5,13 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.view.Window;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
@@ -18,60 +19,66 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import androidx.appcompat.app.AppCompatActivity;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.v;
+import com.tencent.mm.compatible.deviceinfo.w;
+import com.tencent.mm.plugin.facedetect.a.b;
+import com.tencent.mm.plugin.facedetect.a.e;
+import com.tencent.mm.plugin.facedetect.a.g;
+import com.tencent.mm.plugin.facedetect.a.i;
 import com.tencent.mm.plugin.facedetect.model.c;
 import com.tencent.mm.plugin.facedetect.model.p;
 import com.tencent.mm.plugin.facedetectaction.b.a.a;
 import com.tencent.mm.plugin.facedetectaction.b.d;
 import com.tencent.mm.plugin.facedetectaction.b.d.a;
 import com.tencent.mm.plugin.facedetectlight.ui.PreviewFrameLayout;
-import com.tencent.mm.protocal.protobuf.bnh;
+import com.tencent.mm.protocal.protobuf.bux;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.base.MMTextureView;
 
 @com.tencent.mm.ui.base.a(3)
 public class FaceActionUI
   extends MMActivity
 {
-  int dGe;
   private long endTime;
+  int fyO;
   private int mStatus = 0;
-  RelativeLayout sXY;
-  RelativeLayout sXZ;
-  private int sXk;
-  private String sXl;
-  private a.a sXn;
-  RelativeLayout sYa;
-  RelativeLayout sYb;
-  private PreviewFrameLayout sYc;
-  private FaceActionMask sYd;
-  private MMTextureView sYe;
-  ImageView sYf;
-  private TextView sYg;
-  private TextView sYh;
-  ImageView sYi;
-  private ImageView sYj;
-  ImageView sYk;
-  ImageView sYl;
-  private Button sYm;
-  private Button sYn;
-  private TextView sYo;
-  public boolean sYp = false;
-  com.tencent.mm.plugin.facedetectlight.ui.a sYq;
-  private int sYr;
-  private int sYs;
-  private String sYt;
-  private int sYu;
-  private String sYv = "";
   private int scene;
   private long startTime;
+  RelativeLayout wDX;
+  RelativeLayout wDY;
+  RelativeLayout wDZ;
+  private int wDk;
+  private String wDl;
+  RelativeLayout wEa;
+  private PreviewFrameLayout wEb;
+  private FaceActionMask wEc;
+  private MMTextureView wEd;
+  ImageView wEe;
+  private TextView wEf;
+  private TextView wEg;
+  ImageView wEh;
+  private ImageView wEi;
+  ImageView wEj;
+  ImageView wEk;
+  private Button wEl;
+  private Button wEm;
+  private TextView wEn;
+  public boolean wEo = false;
+  com.tencent.mm.plugin.facedetectlight.ui.a wEp;
+  private a.a wEq;
+  private int wEr;
+  private int wEs;
+  private String wEt;
+  private int wEu;
+  private String wEv = "";
   
   private void c(String paramString, int paramInt, Bundle paramBundle)
   {
@@ -113,20 +120,42 @@ public class FaceActionUI
     setResult(1, paramBundle);
     AppMethodBeat.o(104260);
     return;
-    com.tencent.mm.plugin.flash.c.b.axn("usrCancel");
+    com.tencent.mm.plugin.flash.c.b.aHi("usrCancel");
     setResult(0, paramBundle);
     AppMethodBeat.o(104260);
   }
   
-  private void cTZ()
+  private Intent d(String paramString, int paramInt, Bundle paramBundle)
+  {
+    AppMethodBeat.i(104261);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("err_code", paramInt);
+    localBundle.putString("err_msg", paramString);
+    localBundle.putInt("scene", this.scene);
+    localBundle.putInt("countFace", this.wEu);
+    localBundle.putInt("err_type", this.fyO);
+    this.endTime = Util.currentTicks();
+    Log.i("MicroMsg.FaceActionUI", "endTime：" + this.endTime);
+    Log.i("MicroMsg.FaceActionUI", "startTime：" + this.startTime);
+    localBundle.putLong("totalTime", this.endTime - this.startTime);
+    if (paramBundle != null) {
+      localBundle.putAll(paramBundle);
+    }
+    paramString = new Intent();
+    paramString.putExtras(localBundle);
+    AppMethodBeat.o(104261);
+    return paramString;
+  }
+  
+  private void djf()
   {
     AppMethodBeat.i(104251);
-    this.sXn = new a.a() {};
-    d.sXz.sXE = new d.a()
+    this.wEq = new a.a() {};
+    d.wDy.wDD = new d.a()
     {
       public final void a(int paramAnonymousInt1, final int paramAnonymousInt2, final String paramAnonymousString1, final String paramAnonymousString2, final int paramAnonymousInt3)
       {
-        AppMethodBeat.i(186395);
+        AppMethodBeat.i(193990);
         Log.i("MicroMsg.FaceActionUI", "onError, err: %s, cgiErrCode: %s, cgiErrMsg: %s,retry: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString1, Integer.valueOf(paramAnonymousInt3) });
         FaceActionUI.b(FaceActionUI.this, paramAnonymousInt1);
         FaceActionUI.c(FaceActionUI.this, paramAnonymousInt2);
@@ -142,17 +171,17 @@ public class FaceActionUI
               FaceActionUI.f(FaceActionUI.this).setText(paramAnonymousString1);
               FaceActionUI.g(FaceActionUI.this);
               if (paramAnonymousInt3 != 1) {
-                break label191;
+                break label193;
               }
-              FaceActionUI.h(FaceActionUI.this).setText(2131759082);
+              FaceActionUI.h(FaceActionUI.this).setText(a.i.face_try);
               FaceActionUI.h(FaceActionUI.this).setOnClickListener(new View.OnClickListener()
               {
                 public final void onClick(View paramAnonymous3View)
                 {
                   AppMethodBeat.i(104235);
                   com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-                  localb.bm(paramAnonymous3View);
-                  com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$2$4$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+                  localb.bn(paramAnonymous3View);
+                  com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$2$4$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
                   Log.i("MicroMsg.FaceActionUI", "click retry");
                   FaceActionUI.i(FaceActionUI.this);
                   com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$2$4$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -164,29 +193,29 @@ public class FaceActionUI
             {
               FaceActionUI.e(FaceActionUI.this).clearAnimation();
               FaceActionUI localFaceActionUI = FaceActionUI.this;
-              localFaceActionUI.sXY.setVisibility(8);
-              localFaceActionUI.sYb.setVisibility(0);
-              localFaceActionUI.sYk.clearAnimation();
-              localFaceActionUI.sYf.setVisibility(0);
-              localFaceActionUI.sXZ.setVisibility(8);
-              d.sXz.mStatus = 3;
+              localFaceActionUI.wDX.setVisibility(8);
+              localFaceActionUI.wEa.setVisibility(0);
+              localFaceActionUI.wEj.clearAnimation();
+              localFaceActionUI.wEe.setVisibility(0);
+              localFaceActionUI.wDY.setVisibility(8);
+              d.wDy.mStatus = 3;
               FaceActionUI.j(FaceActionUI.this);
               AppMethodBeat.o(104237);
               return;
-              FaceActionUI.f(FaceActionUI.this).setText(2131758986);
+              FaceActionUI.f(FaceActionUI.this).setText(a.i.face_action_upload_failed_tips);
               break;
-              label191:
-              FaceActionUI.h(FaceActionUI.this).setText(2131759081);
+              label193:
+              FaceActionUI.h(FaceActionUI.this).setText(a.i.face_severe_error_main_btn);
               FaceActionUI.h(FaceActionUI.this).setOnClickListener(new View.OnClickListener()
               {
                 public final void onClick(View paramAnonymous3View)
                 {
                   AppMethodBeat.i(104236);
                   com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-                  localb.bm(paramAnonymous3View);
-                  com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$2$4$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+                  localb.bn(paramAnonymous3View);
+                  com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$2$4$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
                   Log.i("MicroMsg.FaceActionUI", "click finish");
-                  FaceActionUI.this.g("fail", FaceActionUI.3.4.this.sYE, "", FaceActionUI.3.4.this.sYF);
+                  FaceActionUI.this.h("fail", FaceActionUI.3.4.this.wEE, "", FaceActionUI.3.4.this.wEF);
                   com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$2$4$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                   AppMethodBeat.o(104236);
                 }
@@ -194,13 +223,13 @@ public class FaceActionUI
             }
           }
         });
-        AppMethodBeat.o(186395);
+        AppMethodBeat.o(193990);
       }
       
-      public final void a(final bnh paramAnonymousbnh)
+      public final void a(final bux paramAnonymousbux)
       {
-        AppMethodBeat.i(186394);
-        Log.i("MicroMsg.FaceActionUI", "onVerifyFinish:   authToken ：%s", new Object[] { paramAnonymousbnh.LpC });
+        AppMethodBeat.i(193988);
+        Log.i("MicroMsg.FaceActionUI", "onVerifyFinish:   authToken ：%s", new Object[] { paramAnonymousbux.SqY });
         MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
@@ -208,31 +237,31 @@ public class FaceActionUI
             AppMethodBeat.i(104234);
             FaceActionUI.e(FaceActionUI.this).clearAnimation();
             FaceActionUI localFaceActionUI = FaceActionUI.this;
-            localFaceActionUI.sXY.setVisibility(8);
-            localFaceActionUI.sYk.clearAnimation();
-            localFaceActionUI.sXZ.setVisibility(8);
-            localFaceActionUI.sYf.setVisibility(0);
-            localFaceActionUI.sYa.setVisibility(0);
-            localFaceActionUI.sYl.setScaleX(0.0F);
-            localFaceActionUI.sYl.setScaleY(0.0F);
-            localFaceActionUI.sYl.animate().scaleX(1.0F).scaleY(1.0F).setDuration(800L);
-            FaceActionUI.b(FaceActionUI.this, paramAnonymousbnh.LVU);
+            localFaceActionUI.wDX.setVisibility(8);
+            localFaceActionUI.wEj.clearAnimation();
+            localFaceActionUI.wDY.setVisibility(8);
+            localFaceActionUI.wEe.setVisibility(0);
+            localFaceActionUI.wDZ.setVisibility(0);
+            localFaceActionUI.wEk.setScaleX(0.0F);
+            localFaceActionUI.wEk.setScaleY(0.0F);
+            localFaceActionUI.wEk.animate().scaleX(1.0F).scaleY(1.0F).setDuration(800L);
+            FaceActionUI.b(FaceActionUI.this, paramAnonymousbux.Tfa);
             localFaceActionUI = FaceActionUI.this;
-            String str1 = paramAnonymousbnh.LpC;
-            String str2 = paramAnonymousbnh.LVU;
+            String str1 = paramAnonymousbux.SqY;
+            String str2 = paramAnonymousbux.Tfa;
             Log.i("MicroMsg.FaceActionUI", "callbackDetectSuccess（）");
             Bundle localBundle = new Bundle();
             localBundle.putString("token", str1);
             localBundle.putString("serial_id", str2);
-            localFaceActionUI.dGe = 0;
-            localFaceActionUI.a("ok", 0, localBundle, Boolean.valueOf(localFaceActionUI.sYp));
+            localFaceActionUI.fyO = 0;
+            localFaceActionUI.a("ok", 0, localBundle, Boolean.valueOf(localFaceActionUI.wEo));
             AppMethodBeat.o(104234);
           }
         });
-        AppMethodBeat.o(186394);
+        AppMethodBeat.o(193988);
       }
       
-      public final void aX(final int paramAnonymousInt, final String paramAnonymousString)
+      public final void aW(final int paramAnonymousInt, final String paramAnonymousString)
       {
         AppMethodBeat.i(104238);
         Log.i("MicroMsg.FaceActionUI", "onInitFaceCheckFinish: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
@@ -252,7 +281,7 @@ public class FaceActionUI
         AppMethodBeat.o(104238);
       }
       
-      public final void cTY()
+      public final void dje()
       {
         AppMethodBeat.i(104239);
         Log.i("MicroMsg.FaceActionUI", "onStartUpload");
@@ -262,22 +291,22 @@ public class FaceActionUI
           {
             AppMethodBeat.i(104233);
             FaceActionUI localFaceActionUI = FaceActionUI.this;
-            if (localFaceActionUI.sYq != null)
+            if (localFaceActionUI.wEp != null)
             {
-              localObject = localFaceActionUI.sYq;
-              Log.i("MicroMsg.FaceReflectCam", "stopPreview ,isPreview %s camera:%s", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.facedetectlight.ui.a)localObject).sZd), ((com.tencent.mm.plugin.facedetectlight.ui.a)localObject).sZb });
-              if (((com.tencent.mm.plugin.facedetectlight.ui.a)localObject).sZb != null)
+              localObject = localFaceActionUI.wEp;
+              Log.i("MicroMsg.FaceReflectCam", "stopPreview ,isPreview %s camera:%s", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.facedetectlight.ui.a)localObject).wFf), ((com.tencent.mm.plugin.facedetectlight.ui.a)localObject).wFd });
+              if (((com.tencent.mm.plugin.facedetectlight.ui.a)localObject).wFd != null)
               {
-                ((com.tencent.mm.plugin.facedetectlight.ui.a)localObject).sZd = false;
-                ((com.tencent.mm.plugin.facedetectlight.ui.a)localObject).sZb.stopPreview();
-                ((com.tencent.mm.plugin.facedetectlight.ui.a)localObject).sZb.setPreviewCallback(null);
-                ((com.tencent.mm.plugin.facedetectlight.ui.a)localObject).sZm.removeCallbacksAndMessages(null);
-                c.sQB.aRR();
+                ((com.tencent.mm.plugin.facedetectlight.ui.a)localObject).wFf = false;
+                ((com.tencent.mm.plugin.facedetectlight.ui.a)localObject).wFd.TL();
+                ((com.tencent.mm.plugin.facedetectlight.ui.a)localObject).wFd.a(null);
+                ((com.tencent.mm.plugin.facedetectlight.ui.a)localObject).wFo.removeCallbacksAndMessages(null);
+                c.wwx.baL();
               }
             }
-            localFaceActionUI.sXY.setVisibility(8);
-            localFaceActionUI.sXZ.setVisibility(0);
-            Object localObject = new TranslateAnimation(0.0F, 0.0F, 0.0F, localFaceActionUI.sYi.getHeight());
+            localFaceActionUI.wDX.setVisibility(8);
+            localFaceActionUI.wDY.setVisibility(0);
+            Object localObject = new TranslateAnimation(0.0F, 0.0F, 0.0F, localFaceActionUI.wEh.getHeight());
             ((Animation)localObject).setDuration(2000L);
             ((Animation)localObject).setRepeatMode(2);
             ((Animation)localObject).setRepeatCount(-1);
@@ -290,69 +319,91 @@ public class FaceActionUI
             localAnimationSet.addAnimation(localScaleAnimation);
             localAnimationSet.setAnimationListener(new FaceActionUI.8(localFaceActionUI));
             localAnimationSet.setRepeatCount(-1);
-            localFaceActionUI.sYk.startAnimation(localAnimationSet);
+            localFaceActionUI.wEj.startAnimation(localAnimationSet);
             AppMethodBeat.o(104233);
           }
         });
         AppMethodBeat.o(104239);
       }
     };
-    d.sXz.gte = this;
-    d.sXz.a(this);
+    d.wDy.iXq = this;
+    d.wDy.a(this);
     AppMethodBeat.o(104251);
   }
   
-  private void cUa()
+  private void djg()
   {
     AppMethodBeat.i(104257);
-    this.sXY = ((RelativeLayout)findViewById(2131300362));
-    this.sYc = ((PreviewFrameLayout)findViewById(2131300351));
-    this.sYe = ((MMTextureView)findViewById(2131300350));
-    this.sYe.setVisibility(4);
-    this.sYd = ((FaceActionMask)findViewById(2131300352));
-    this.sYj = ((ImageView)findViewById(2131300298));
-    this.sYj.post(new FaceActionUI.4(this));
-    this.sYg = ((TextView)findViewById(2131300353));
-    this.sYg.post(new FaceActionUI.5(this));
-    this.sYh = ((TextView)findViewById(2131300297));
-    this.sYh.setOnClickListener(new FaceActionUI.6(this));
+    this.wDX = ((RelativeLayout)findViewById(a.e.face_preview_layout));
+    this.wEb = ((PreviewFrameLayout)findViewById(a.e.face_live_preview_layout));
+    this.wEd = ((MMTextureView)findViewById(a.e.face_live_detection_preview));
+    this.wEd.setVisibility(4);
+    this.wEc = ((FaceActionMask)findViewById(a.e.face_live_preview_mask));
+    this.wEi = ((ImageView)findViewById(a.e.face_action_loading));
+    this.wEi.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(104242);
+        ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)FaceActionUI.k(FaceActionUI.this).getLayoutParams();
+        localMarginLayoutParams.topMargin = ((int)(FaceActionUI.l(FaceActionUI.this).getHeight() * 0.4D));
+        FaceActionUI.k(FaceActionUI.this).setLayoutParams(localMarginLayoutParams);
+        FaceActionUI.k(FaceActionUI.this).setVisibility(0);
+        AppMethodBeat.o(104242);
+      }
+    });
+    this.wEf = ((TextView)findViewById(a.e.face_live_tip_tv));
+    this.wEf.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(104243);
+        ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)FaceActionUI.m(FaceActionUI.this).getLayoutParams();
+        int i = (int)(FaceActionUI.l(FaceActionUI.this).getHeight() * 0.4D) + (int)(FaceActionUI.l(FaceActionUI.this).getWidth() * 0.35D) + aw.fromDPToPix(FaceActionUI.this, 30);
+        localMarginLayoutParams.topMargin = i;
+        Log.i("MicroMsg.FaceActionUI", "topMargin：%d", new Object[] { Integer.valueOf(i) });
+        FaceActionUI.m(FaceActionUI.this).setLayoutParams(localMarginLayoutParams);
+        FaceActionUI.m(FaceActionUI.this).setVisibility(0);
+        AppMethodBeat.o(104243);
+      }
+    });
+    this.wEg = ((TextView)findViewById(a.e.face__back));
+    this.wEg.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(104244);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        if (FaceActionUI.n(FaceActionUI.this) == 3) {
+          FaceActionUI.this.h("fail", FaceActionUI.o(FaceActionUI.this), "", FaceActionUI.p(FaceActionUI.this));
+        }
+        for (;;)
+        {
+          FaceActionUI.this.finish();
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(104244);
+          return;
+          d.wDy.onBackPressed();
+        }
+      }
+    });
     this.mStatus = 0;
     AppMethodBeat.o(104257);
   }
   
-  private void cUb()
+  private void djh()
   {
     AppMethodBeat.i(104263);
     Log.i("MicroMsg.FaceActionUI", "preview");
-    if (this.sYq != null)
+    if (this.wEp != null)
     {
-      this.sYq.sZd = true;
+      this.wEp.wFf = true;
       Log.i("MicroMsg.FaceActionUI", "mCamera ！= null");
     }
-    this.sYg.setText(2131759074);
+    this.wEf.setText(a.i.face_preview_tips);
     AppMethodBeat.o(104263);
-  }
-  
-  private Intent d(String paramString, int paramInt, Bundle paramBundle)
-  {
-    AppMethodBeat.i(104261);
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("err_code", paramInt);
-    localBundle.putString("err_msg", paramString);
-    localBundle.putInt("scene", this.scene);
-    localBundle.putInt("countFace", this.sYu);
-    localBundle.putInt("err_type", this.dGe);
-    this.endTime = Util.currentTicks();
-    Log.i("MicroMsg.FaceActionUI", "endTime：" + this.endTime);
-    Log.i("MicroMsg.FaceActionUI", "startTime：" + this.startTime);
-    localBundle.putLong("totalTime", this.endTime - this.startTime);
-    if (paramBundle != null) {
-      localBundle.putAll(paramBundle);
-    }
-    paramString = new Intent();
-    paramString.putExtras(localBundle);
-    AppMethodBeat.o(104261);
-    return paramString;
   }
   
   public final void a(String paramString, final int paramInt, Bundle paramBundle, Boolean paramBoolean)
@@ -367,19 +418,19 @@ public class FaceActionUI
       if (paramBundle != null) {
         localBundle.putAll(paramBundle);
       }
-      Log.i("MicroMsg.FaceActionUI", "seriaId:%s", new Object[] { this.sYv });
-      localBundle.putString("serial_id", this.sYv);
+      Log.i("MicroMsg.FaceActionUI", "seriaId:%s", new Object[] { this.wEv });
+      localBundle.putString("serial_id", this.wEv);
       c(paramString, paramInt, localBundle);
       if (paramInt != 0) {
         break;
       }
       Log.i("MicroMsg.FaceActionUI", "errCode == ConstantsFace.UploadErrCode.OK");
-      h.RTc.n(new Runnable()
+      h.ZvG.n(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(104249);
-          com.tencent.mm.plugin.flash.c.b.MX(paramInt);
+          com.tencent.mm.plugin.flash.c.b.St(paramInt);
           FaceActionUI.this.finish();
           AppMethodBeat.o(104249);
         }
@@ -387,86 +438,100 @@ public class FaceActionUI
       AppMethodBeat.o(104259);
       return;
     }
-    com.tencent.mm.plugin.flash.c.b.MX(paramInt);
+    com.tencent.mm.plugin.flash.c.b.St(paramInt);
     finish();
     AppMethodBeat.o(104259);
   }
   
-  public final void g(String paramString1, int paramInt, String paramString2, String paramString3)
+  public int getLayoutId()
   {
-    AppMethodBeat.i(186396);
+    return a.g.face_action_layout;
+  }
+  
+  public final void h(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(190443);
     Log.i("MicroMsg.FaceActionUI", "callbackDetectFailed（）");
     Bundle localBundle = new Bundle();
     localBundle.putString("token", paramString2);
     localBundle.putString("serial_id", paramString3);
-    a(paramString1, paramInt, localBundle, Boolean.valueOf(this.sYp));
-    AppMethodBeat.o(186396);
-  }
-  
-  public int getLayoutId()
-  {
-    return 2131494060;
+    a(paramString1, paramInt, localBundle, Boolean.valueOf(this.wEo));
+    AppMethodBeat.o(190443);
   }
   
   public void onBackPressed()
   {
     AppMethodBeat.i(104262);
     if (this.mStatus == 3) {
-      g("fail", this.sYs, "", this.sYv);
+      h("fail", this.wEs, "", this.wEv);
     }
     for (;;)
     {
       finish();
       AppMethodBeat.o(104262);
       return;
-      d.sXz.onBackPressed();
+      d.wDy.onBackPressed();
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(104250);
-    Log.d("MicroMsg.FaceActionUI", "start VerifyActivity");
+    Log.i("MicroMsg.FaceActionUI", "onCreate()");
     super.onCreate(paramBundle);
-    com.tencent.mm.plugin.flash.c.b.dLj().eqQ = 1L;
-    com.tencent.mm.plugin.flash.c.b.axn("enter");
+    com.tencent.mm.plugin.flash.c.b.epN().gmj = 1L;
+    com.tencent.mm.plugin.flash.c.b.aHi("enter");
     getWindow().setFlags(1024, 1024);
     getWindow().addFlags(2097280);
     this.scene = getIntent().getIntExtra("scene", 0);
-    this.sYu = 0;
+    this.wEu = 0;
     this.startTime = Util.currentTicks();
-    this.dGe = 4;
+    this.fyO = 4;
     if (Build.VERSION.SDK_INT >= 16) {
       getWindow().getDecorView().setSystemUiVisibility(1280);
     }
-    setActionbarColor(getContext().getResources().getColor(2131101424));
+    setActionbarColor(getContext().getResources().getColor(a.b.white));
     Log.d("MicroMsg.FaceActionUI", "initLayout");
-    this.sYf = ((ImageView)findViewById(2131297177));
-    cUa();
-    this.sXZ = ((RelativeLayout)findViewById(2131300397));
-    this.sYa = ((RelativeLayout)findViewById(2131300398));
-    this.sYb = ((RelativeLayout)findViewById(2131300396));
-    this.sXZ.setVisibility(4);
-    this.sYa.setVisibility(4);
-    this.sYb.setVisibility(4);
-    this.sYi = ((ImageView)findViewById(2131300325));
-    this.sYk = ((ImageView)findViewById(2131300322));
-    this.sYl = ((ImageView)findViewById(2131300332));
-    this.sYo = ((TextView)findViewById(2131300330));
-    this.sYm = ((Button)findViewById(2131300328));
-    this.sYn = ((Button)findViewById(2131300329));
-    if (!Util.isNullOrNil(d.sXz.dYL))
+    this.wEe = ((ImageView)findViewById(a.e.background_view));
+    djg();
+    this.wDY = ((RelativeLayout)findViewById(a.e.face_upload_layout));
+    this.wDZ = ((RelativeLayout)findViewById(a.e.face_upload_success_layout));
+    this.wEa = ((RelativeLayout)findViewById(a.e.face_upload_failed_layout));
+    this.wDY.setVisibility(4);
+    this.wDZ.setVisibility(4);
+    this.wEa.setVisibility(4);
+    this.wEh = ((ImageView)findViewById(a.e.face_detect_upload));
+    this.wEj = ((ImageView)findViewById(a.e.face_detect_scan));
+    this.wEk = ((ImageView)findViewById(a.e.face_detect_upload_success_right));
+    this.wEn = ((TextView)findViewById(a.e.face_detect_upload_failed_tips));
+    this.wEl = ((Button)findViewById(a.e.face_detect_upload_failed_btn1));
+    this.wEm = ((Button)findViewById(a.e.face_detect_upload_failed_btn2));
+    if (!Util.isNullOrNil(d.wDy.fSD))
     {
-      this.sYn.setText(d.sXz.dYL);
-      this.sYn.setOnClickListener(new FaceActionUI.7(this));
+      this.wEm.setText(d.wDy.fSD);
+      this.wEm.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(104245);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          Log.i("MicroMsg.FaceActionUI", "click mUploadFailedConfig");
+          FaceActionUI.q(FaceActionUI.this);
+          FaceActionUI.this.h("fail", FaceActionUI.o(FaceActionUI.this), "", FaceActionUI.p(FaceActionUI.this));
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(104245);
+        }
+      });
     }
-    while (p.aj(this))
+    while (p.ak(this))
     {
       Log.i("MicroMsg.FaceActionUI", "carson: checkFacePermissionAnd Request true and do init ");
-      cTZ();
+      djf();
       AppMethodBeat.o(104250);
       return;
-      this.sYn.setVisibility(8);
+      this.wEm.setVisibility(8);
     }
     Log.i("MicroMsg.FaceActionUI", "carson: no camera permission. request permission");
     AppMethodBeat.o(104250);
@@ -477,7 +542,8 @@ public class FaceActionUI
     AppMethodBeat.i(104256);
     super.onDestroy();
     Log.i("MicroMsg.FaceActionUI", "onDestroy");
-    d.sXz.release(true);
+    d.wDy.release(true);
+    d.wDy.iXq = null;
     AppMethodBeat.o(104256);
   }
   
@@ -520,28 +586,41 @@ public class FaceActionUI
       if (paramInt == 0) {
         break label300;
       }
-      cTZ();
+      djf();
     }
     String str1;
     Object localObject;
     if (paramArrayOfString[0].equals("android.permission.CAMERA"))
     {
       str1 = "camera permission not granted";
-      localObject = getString(2131763864);
+      localObject = getString(a.i.permission_camera_request_again_msg);
     }
     for (;;)
     {
       Log.i("MicroMsg.FaceActionUI", "carson PermissionsResult:errMsg".concat(String.valueOf(str1)));
       Log.i("MicroMsg.FaceActionUI", "carson PermissionsResult:showErrMsg".concat(String.valueOf(localObject)));
       Log.i("MicroMsg.FaceActionUI", "checkPermissionFailedAnimation");
-      this.sYo.setText((CharSequence)localObject);
-      this.sYm.setText(2131759081);
-      this.sYm.setOnClickListener(new FaceActionUI.9(this));
-      this.sXY.setVisibility(8);
-      this.sYb.setVisibility(0);
-      this.sYk.clearAnimation();
-      this.sYf.setVisibility(0);
-      this.sXZ.setVisibility(8);
+      this.wEn.setText((CharSequence)localObject);
+      this.wEl.setText(a.i.face_severe_error_main_btn);
+      this.wEl.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(104248);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          Log.i("MicroMsg.FaceActionUI", "click finish");
+          FaceActionUI.this.h("fail", 90010, "", "");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(104248);
+        }
+      });
+      this.wDX.setVisibility(8);
+      this.wEa.setVisibility(0);
+      this.wEj.clearAnimation();
+      this.wEe.setVisibility(0);
+      this.wDY.setVisibility(8);
       paramInt = 0;
       break label77;
       localObject = str3;
@@ -549,7 +628,7 @@ public class FaceActionUI
       if (paramArrayOfString[0].equals("android.permission.RECORD_AUDIO"))
       {
         str1 = "audio permission not granted";
-        localObject = getString(2131763876);
+        localObject = getString(a.i.permission_microphone_request_again_msg);
         continue;
         label271:
         localObject = str3;
@@ -567,12 +646,12 @@ public class FaceActionUI
           if (paramArrayOfInt[0] != 0)
           {
             str2 = "camera permission not granted";
-            paramArrayOfString = getString(2131763864);
+            paramArrayOfString = getString(a.i.permission_camera_request_again_msg);
           }
           if (paramArrayOfInt[1] != 0)
           {
             str2 = "audio permission not granted";
-            paramArrayOfString = getString(2131763876);
+            paramArrayOfString = getString(a.i.permission_microphone_request_again_msg);
           }
           localObject = paramArrayOfString;
           str1 = str2;
@@ -583,7 +662,7 @@ public class FaceActionUI
             if (paramArrayOfInt[1] != 0)
             {
               str1 = "both camera and audio permission not granted";
-              localObject = getString(2131763864);
+              localObject = getString(a.i.permission_camera_request_again_msg);
             }
           }
         }
@@ -596,7 +675,7 @@ public class FaceActionUI
     AppMethodBeat.i(104253);
     super.onResume();
     Log.d("MicroMsg.FaceActionUI", "onResume");
-    cUb();
+    djh();
     AppMethodBeat.o(104253);
   }
   
@@ -605,10 +684,10 @@ public class FaceActionUI
     AppMethodBeat.i(104252);
     Log.d("MicroMsg.FaceActionUI", "onStart");
     super.onStart();
-    if (this.sYq != null)
+    if (this.wEp != null)
     {
-      this.sYq.a(this.sYe);
-      this.sYq.cUd();
+      this.wEp.a(this.wEd);
+      this.wEp.djj();
     }
     AppMethodBeat.o(104252);
   }
@@ -618,8 +697,8 @@ public class FaceActionUI
     AppMethodBeat.i(104255);
     Log.i("MicroMsg.FaceActionUI", "onStop");
     super.onStop();
-    if (this.sYq != null) {
-      this.sYq.sTE = false;
+    if (this.wEp != null) {
+      this.wEp.wzA = false;
     }
     AppMethodBeat.o(104255);
   }

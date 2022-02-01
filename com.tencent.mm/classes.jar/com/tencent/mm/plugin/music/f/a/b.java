@@ -6,25 +6,25 @@ import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 public abstract class b
 {
-  protected com.tencent.mm.ay.f AiZ;
-  protected f Amh;
-  public g Ami = new g();
+  protected com.tencent.mm.bb.f FPX;
+  protected f FTo;
+  public g FTp = new g();
   
-  public final void R(com.tencent.mm.ay.f paramf)
+  public final void R(com.tencent.mm.bb.f paramf)
   {
-    this.AiZ = paramf;
+    this.FPX = paramf;
   }
   
-  public final void Tb(final int paramInt)
+  public final void Zw(final int paramInt)
   {
-    if (this.Amh != null) {
+    if (this.FTo != null) {
       MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(137403);
-          if (b.this.euR()) {
-            b.this.Amh.Q(b.this.AiZ);
+          if (b.this.ffl()) {
+            b.this.FTo.Q(b.this.FPX);
           }
           AppMethodBeat.o(137403);
         }
@@ -32,18 +32,18 @@ public abstract class b
     }
   }
   
-  public abstract String ZV();
-  
   public final void a(f paramf)
   {
-    this.Amh = paramf;
+    this.FTo = paramf;
   }
   
-  public abstract void aHY(String paramString);
+  public abstract void aSo(String paramString);
   
-  public abstract boolean euR();
+  public abstract String aeE();
   
-  public abstract int euS();
+  public abstract boolean ffl();
+  
+  public abstract int ffm();
   
   public abstract int getDuration();
   
@@ -51,14 +51,14 @@ public abstract class b
   
   public final void onStart()
   {
-    if (this.Amh != null) {
+    if (this.FTo != null) {
       MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(137402);
           Log.i("MicroMsg.Music.BasePlayer", "onStart %b", new Object[] { Boolean.valueOf(b.this.isPlaying()) });
-          b.this.Amh.n(b.this.AiZ);
+          b.this.FTo.n(b.this.FPX);
           AppMethodBeat.o(137402);
         }
       });
@@ -71,43 +71,43 @@ public abstract class b
   
   public abstract void seek(long paramLong);
   
-  public void sn(final boolean paramBoolean)
+  public abstract void stop();
+  
+  public void vt(final boolean paramBoolean)
   {
-    if (this.Amh != null) {
+    if (this.FTo != null) {
       MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(137401);
           Log.i("MicroMsg.Music.BasePlayer", "onError, needRetry:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-          b.this.Amh.d(b.this.AiZ, paramBoolean);
+          b.this.FTo.d(b.this.FPX, paramBoolean);
           AppMethodBeat.o(137401);
         }
       });
     }
   }
   
-  public void so(final boolean paramBoolean)
+  public void vu(final boolean paramBoolean)
   {
-    if (this.Amh != null) {
+    if (this.FTo != null) {
       MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(137404);
           Log.i("MicroMsg.Music.BasePlayer", "onStop, isComplete:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-          b.this.Amh.c(b.this.AiZ, paramBoolean);
+          b.this.FTo.c(b.this.FPX, paramBoolean);
           AppMethodBeat.o(137404);
         }
       });
     }
   }
-  
-  public abstract void stop();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.a.b
  * JD-Core Version:    0.7.0.1
  */

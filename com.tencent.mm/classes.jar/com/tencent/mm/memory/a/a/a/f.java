@@ -8,85 +8,85 @@ import com.tencent.mm.sdk.platformtools.Log;
 public abstract class f<T, V extends c<T>>
   implements d<T, V>
 {
-  h<T, V> iuA;
-  b<T, V> iuB = null;
-  f.b<T, V> iuC;
-  f.c<T, V> iuD;
-  a iuf = null;
+  h<T, V> ljJ;
+  b<T, V> ljK = null;
+  f.b<T, V> ljL;
+  f.c<T, V> ljM;
+  a ljo = null;
   
   public f(a parama, f.b<T, V> paramb, f.c<T, V> paramc)
   {
-    this.iuf = parama;
-    this.iuC = paramb;
-    this.iuD = paramc;
-    this.iuA = new h(this.iuf.iuk, new f.b()new f.c {}, new f.c() {});
-    this.iuB = new b(this.iuf, new b.a()new b.b {}, new b.b() {});
+    this.ljo = parama;
+    this.ljL = paramb;
+    this.ljM = paramc;
+    this.ljJ = new h(this.ljo.ljt, new f.b()new f.c {}, new f.c() {});
+    this.ljK = new b(this.ljo, new b.a()new b.b {}, new b.b() {});
   }
   
-  protected abstract T B(T paramT1, T paramT2);
-  
-  public final boolean C(T paramT1, T paramT2)
+  public final boolean A(T paramT1, T paramT2)
   {
-    return (this.iuA.check(B(paramT1, paramT2))) || (this.iuB.C(paramT1, paramT2));
-  }
-  
-  public final boolean H(T paramT1, T paramT2)
-  {
-    boolean bool1 = this.iuA.checkAndUpTime(B(paramT1, paramT2));
-    boolean bool2 = this.iuB.cc(paramT1).checkAndUpTime(paramT2);
+    boolean bool1 = this.ljJ.checkAndUpTime(u(paramT1, paramT2));
+    boolean bool2 = this.ljK.cc(paramT1).checkAndUpTime(paramT2);
     return (bool1) || (bool2);
   }
   
-  public final void aSq()
+  public final void aFa()
   {
-    Log.i("MicroMsg.UsageLruMap", "growMaxSize %s and old %s  result %s", new Object[] { Double.valueOf(1.0D), Integer.valueOf(this.iuf.iuk), Integer.valueOf((int)(this.iuf.iuk * 2.0D)) });
-    this.iuA.setMaxSize((int)(this.iuf.iuk * 2.0D));
+    Log.i("MicroMsg.UsageLruMap", "resetSize %s", new Object[] { Integer.valueOf(this.ljo.ljt) });
+    this.ljJ.setMaxSize(this.ljo.ljt);
   }
   
-  public final void axJ()
+  public final void bbn()
   {
-    Log.i("MicroMsg.UsageLruMap", "resetSize %s", new Object[] { Integer.valueOf(this.iuf.iuk) });
-    this.iuA.setMaxSize(this.iuf.iuk);
+    Log.i("MicroMsg.UsageLruMap", "growMaxSize %s and old %s  result %s", new Object[] { Double.valueOf(1.0D), Integer.valueOf(this.ljo.ljt), Integer.valueOf((int)(this.ljo.ljt * 2.0D)) });
+    this.ljJ.setMaxSize((int)(this.ljo.ljt * 2.0D));
   }
   
   public final int createCount()
   {
-    return this.iuA.createCount();
+    return this.ljJ.createCount();
   }
   
   public final int evictionCount()
   {
-    return this.iuA.evictionCount();
+    return this.ljJ.evictionCount();
   }
   
   public final int hitCount()
   {
-    return this.iuA.hitCount();
+    return this.ljJ.hitCount();
   }
   
   public final int maxSize()
   {
-    return this.iuA.maxSize();
+    return this.ljJ.maxSize();
   }
   
   public final int missCount()
   {
-    return this.iuA.missCount();
+    return this.ljJ.missCount();
   }
   
   public final int putCount()
   {
-    return this.iuA.putCount();
+    return this.ljJ.putCount();
   }
   
   public final int size()
   {
-    return this.iuA.size();
+    return this.ljJ.size();
   }
   
   public final void trimToSize(int paramInt)
   {
-    this.iuA.trimToSize(paramInt);
+    this.ljJ.trimToSize(paramInt);
+  }
+  
+  protected abstract T u(T paramT1, T paramT2);
+  
+  public final boolean v(T paramT1, T paramT2)
+  {
+    return (this.ljJ.check(u(paramT1, paramT2))) || (this.ljK.v(paramT1, paramT2));
   }
 }
 

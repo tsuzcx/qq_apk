@@ -49,12 +49,12 @@ public class HttpURLConnectionWrapper
   
   public void cancel()
   {
-    AppMethodBeat.i(230277);
+    AppMethodBeat.i(193516);
     Log.d("MicroMsg.HttpURLConnectionWrapper", "cancel conection.");
     if (this.conn != null) {
       this.conn.disconnect();
     }
-    AppMethodBeat.o(230277);
+    AppMethodBeat.o(193516);
   }
   
   /* Error */
@@ -199,14 +199,14 @@ public class HttpURLConnectionWrapper
     //   284: getfield 246	com/tencent/mm/sdk/http/HttpWrapperBase$Attachment:filePath	Ljava/lang/String;
     //   287: invokestatic 252	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   290: ifeq +212 -> 502
-    //   293: new 254	com/tencent/mm/vfs/o
+    //   293: new 254	com/tencent/mm/vfs/q
     //   296: dup
     //   297: aload_2
     //   298: getfield 241	com/tencent/mm/sdk/http/HttpWrapperBase$Response:attachment	Lcom/tencent/mm/sdk/http/HttpWrapperBase$Attachment;
     //   301: getfield 246	com/tencent/mm/sdk/http/HttpWrapperBase$Attachment:filePath	Ljava/lang/String;
-    //   304: invokespecial 256	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   304: invokespecial 256	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   307: iconst_1
-    //   308: invokestatic 261	com/tencent/mm/vfs/s:d	(Lcom/tencent/mm/vfs/o;Z)Ljava/io/OutputStream;
+    //   308: invokestatic 262	com/tencent/mm/vfs/u:e	(Lcom/tencent/mm/vfs/q;Z)Ljava/io/OutputStream;
     //   311: astore 5
     //   313: aload 5
     //   315: astore 7
@@ -217,7 +217,7 @@ public class HttpURLConnectionWrapper
     //   326: astore 7
     //   328: aload_1
     //   329: aload 9
-    //   331: invokevirtual 267	java/io/InputStream:read	([B)I
+    //   331: invokevirtual 268	java/io/InputStream:read	([B)I
     //   334: istore 4
     //   336: iload 4
     //   338: ifle +184 -> 522
@@ -227,7 +227,7 @@ public class HttpURLConnectionWrapper
     //   347: aload 9
     //   349: iconst_0
     //   350: iload 4
-    //   352: invokevirtual 270	java/io/OutputStream:write	([BII)V
+    //   352: invokevirtual 271	java/io/OutputStream:write	([BII)V
     //   355: aload 5
     //   357: astore 7
     //   359: aload 5
@@ -241,7 +241,7 @@ public class HttpURLConnectionWrapper
     //   377: ldc 68
     //   379: iconst_0
     //   380: anewarray 129	java/lang/Object
-    //   383: invokestatic 274	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   383: invokestatic 275	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   386: iload_3
     //   387: ifne +319 -> 706
     //   390: sipush 503
@@ -250,7 +250,7 @@ public class HttpURLConnectionWrapper
     //   397: astore 7
     //   399: aload_2
     //   400: iload 4
-    //   402: putfield 277	com/tencent/mm/sdk/http/HttpWrapperBase$Response:status	I
+    //   402: putfield 278	com/tencent/mm/sdk/http/HttpWrapperBase$Response:status	I
     //   405: aload 5
     //   407: ifnull +27 -> 434
     //   410: aload_1
@@ -264,25 +264,25 @@ public class HttpURLConnectionWrapper
     //   425: aload 6
     //   427: astore 8
     //   429: aload 5
-    //   431: invokevirtual 280	java/io/OutputStream:close	()V
+    //   431: invokevirtual 281	java/io/OutputStream:close	()V
     //   434: aload_1
     //   435: astore 7
     //   437: aload 6
     //   439: astore 8
     //   441: ldc 11
-    //   443: ldc_w 282
+    //   443: ldc_w 283
     //   446: aload_2
-    //   447: invokestatic 286	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   450: invokevirtual 289	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   447: invokestatic 287	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   450: invokevirtual 290	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   453: invokestatic 113	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   456: aload 6
     //   458: ifnull +8 -> 466
     //   461: aload 6
-    //   463: invokevirtual 280	java/io/OutputStream:close	()V
+    //   463: invokevirtual 281	java/io/OutputStream:close	()V
     //   466: aload_1
     //   467: ifnull +7 -> 474
     //   470: aload_1
-    //   471: invokevirtual 290	java/io/InputStream:close	()V
+    //   471: invokevirtual 291	java/io/InputStream:close	()V
     //   474: aload_0
     //   475: getfield 20	com/tencent/mm/sdk/http/HttpURLConnectionWrapper:conn	Ljava/net/HttpURLConnection;
     //   478: ifnull +444 -> 922
@@ -292,12 +292,12 @@ public class HttpURLConnectionWrapper
     //   488: ldc 125
     //   490: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   493: return
-    //   494: ldc_w 292
+    //   494: ldc_w 293
     //   497: astore 5
     //   499: goto -451 -> 48
-    //   502: new 294	java/io/ByteArrayOutputStream
+    //   502: new 295	java/io/ByteArrayOutputStream
     //   505: dup
-    //   506: invokespecial 295	java/io/ByteArrayOutputStream:<init>	()V
+    //   506: invokespecial 296	java/io/ByteArrayOutputStream:<init>	()V
     //   509: astore 5
     //   511: goto -198 -> 313
     //   514: astore 8
@@ -308,32 +308,32 @@ public class HttpURLConnectionWrapper
     //   524: astore 7
     //   526: aload_2
     //   527: iload_3
-    //   528: putfield 277	com/tencent/mm/sdk/http/HttpWrapperBase$Response:status	I
+    //   528: putfield 278	com/tencent/mm/sdk/http/HttpWrapperBase$Response:status	I
     //   531: aload 5
     //   533: astore 7
     //   535: aload_2
     //   536: aload 8
-    //   538: invokestatic 299	com/tencent/mm/sdk/http/HttpURLConnectionWrapper:parseCookie	(Ljava/lang/String;)Ljava/util/Map;
-    //   541: putfield 300	com/tencent/mm/sdk/http/HttpWrapperBase$Response:cookie	Ljava/util/Map;
+    //   538: invokestatic 300	com/tencent/mm/sdk/http/HttpURLConnectionWrapper:parseCookie	(Ljava/lang/String;)Ljava/util/Map;
+    //   541: putfield 301	com/tencent/mm/sdk/http/HttpWrapperBase$Response:cookie	Ljava/util/Map;
     //   544: aload 5
     //   546: astore 7
     //   548: aload 5
-    //   550: instanceof 294
+    //   550: instanceof 295
     //   553: ifeq +146 -> 699
     //   556: aload 5
     //   558: astore 7
     //   560: new 66	java/lang/String
     //   563: dup
     //   564: aload 5
-    //   566: checkcast 294	java/io/ByteArrayOutputStream
-    //   569: invokevirtual 303	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   572: invokespecial 305	java/lang/String:<init>	([B)V
+    //   566: checkcast 295	java/io/ByteArrayOutputStream
+    //   569: invokevirtual 304	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   572: invokespecial 306	java/lang/String:<init>	([B)V
     //   575: astore 8
     //   577: aload 5
     //   579: astore 7
     //   581: aload_2
     //   582: aload 8
-    //   584: putfield 308	com/tencent/mm/sdk/http/HttpWrapperBase$Response:content	Ljava/lang/String;
+    //   584: putfield 309	com/tencent/mm/sdk/http/HttpWrapperBase$Response:content	Ljava/lang/String;
     //   587: aload 5
     //   589: ifnull -155 -> 434
     //   592: aload_1
@@ -347,7 +347,7 @@ public class HttpURLConnectionWrapper
     //   607: aload 6
     //   609: astore 8
     //   611: aload 5
-    //   613: invokevirtual 280	java/io/OutputStream:close	()V
+    //   613: invokevirtual 281	java/io/OutputStream:close	()V
     //   616: goto -182 -> 434
     //   619: astore 5
     //   621: aload_1
@@ -359,7 +359,7 @@ public class HttpURLConnectionWrapper
     //   632: ldc 68
     //   634: iconst_0
     //   635: anewarray 129	java/lang/Object
-    //   638: invokestatic 274	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   638: invokestatic 275	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   641: iload_3
     //   642: ifne +207 -> 849
     //   645: sipush 503
@@ -370,15 +370,15 @@ public class HttpURLConnectionWrapper
     //   654: astore 8
     //   656: aload_2
     //   657: iload_3
-    //   658: putfield 277	com/tencent/mm/sdk/http/HttpWrapperBase$Response:status	I
+    //   658: putfield 278	com/tencent/mm/sdk/http/HttpWrapperBase$Response:status	I
     //   661: aload 6
     //   663: ifnull +8 -> 671
     //   666: aload 6
-    //   668: invokevirtual 280	java/io/OutputStream:close	()V
+    //   668: invokevirtual 281	java/io/OutputStream:close	()V
     //   671: aload_1
     //   672: ifnull +7 -> 679
     //   675: aload_1
-    //   676: invokevirtual 290	java/io/InputStream:close	()V
+    //   676: invokevirtual 291	java/io/InputStream:close	()V
     //   679: aload_0
     //   680: getfield 20	com/tencent/mm/sdk/http/HttpURLConnectionWrapper:conn	Ljava/net/HttpURLConnection;
     //   683: ifnull +239 -> 922
@@ -410,7 +410,7 @@ public class HttpURLConnectionWrapper
     //   739: aload 6
     //   741: astore 8
     //   743: aload 9
-    //   745: invokevirtual 280	java/io/OutputStream:close	()V
+    //   745: invokevirtual 281	java/io/OutputStream:close	()V
     //   748: aload_1
     //   749: astore 7
     //   751: aload 6
@@ -431,11 +431,11 @@ public class HttpURLConnectionWrapper
     //   778: aload 6
     //   780: ifnull +8 -> 788
     //   783: aload 6
-    //   785: invokevirtual 280	java/io/OutputStream:close	()V
+    //   785: invokevirtual 281	java/io/OutputStream:close	()V
     //   788: aload_2
     //   789: ifnull +7 -> 796
     //   792: aload_2
-    //   793: invokevirtual 290	java/io/InputStream:close	()V
+    //   793: invokevirtual 291	java/io/InputStream:close	()V
     //   796: aload_0
     //   797: getfield 20	com/tencent/mm/sdk/http/HttpURLConnectionWrapper:conn	Ljava/net/HttpURLConnection;
     //   800: ifnull +10 -> 810
@@ -452,7 +452,7 @@ public class HttpURLConnectionWrapper
     //   821: ldc 68
     //   823: iconst_0
     //   824: anewarray 129	java/lang/Object
-    //   827: invokestatic 274	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   827: invokestatic 275	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   830: goto -364 -> 466
     //   833: astore_1
     //   834: ldc 11
@@ -460,7 +460,7 @@ public class HttpURLConnectionWrapper
     //   837: ldc 68
     //   839: iconst_0
     //   840: anewarray 129	java/lang/Object
-    //   843: invokestatic 274	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   843: invokestatic 275	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   846: goto -372 -> 474
     //   849: sipush 500
     //   852: istore_3
@@ -471,7 +471,7 @@ public class HttpURLConnectionWrapper
     //   860: ldc 68
     //   862: iconst_0
     //   863: anewarray 129	java/lang/Object
-    //   866: invokestatic 274	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   866: invokestatic 275	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   869: goto -198 -> 671
     //   872: astore_1
     //   873: ldc 11
@@ -479,7 +479,7 @@ public class HttpURLConnectionWrapper
     //   876: ldc 68
     //   878: iconst_0
     //   879: anewarray 129	java/lang/Object
-    //   882: invokestatic 274	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   882: invokestatic 275	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   885: goto -206 -> 679
     //   888: astore 5
     //   890: ldc 11
@@ -487,7 +487,7 @@ public class HttpURLConnectionWrapper
     //   894: ldc 68
     //   896: iconst_0
     //   897: anewarray 129	java/lang/Object
-    //   900: invokestatic 274	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   900: invokestatic 275	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   903: goto -115 -> 788
     //   906: astore_2
     //   907: ldc 11
@@ -495,7 +495,7 @@ public class HttpURLConnectionWrapper
     //   910: ldc 68
     //   912: iconst_0
     //   913: anewarray 129	java/lang/Object
-    //   916: invokestatic 274	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   916: invokestatic 275	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   919: goto -123 -> 796
     //   922: ldc 125
     //   924: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -657,7 +657,7 @@ public class HttpURLConnectionWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.http.HttpURLConnectionWrapper
  * JD-Core Version:    0.7.0.1
  */

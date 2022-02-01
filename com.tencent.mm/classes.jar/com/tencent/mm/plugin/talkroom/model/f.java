@@ -5,116 +5,116 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class f
 {
-  private int FPN;
-  private long FPO;
-  int FPP = 0;
-  private int FPQ;
-  long FPR;
-  int FPS;
-  int FPT;
-  private int FPU;
-  private int FPV;
-  private int FPW;
-  int FPX;
-  int FPY;
-  public int FPZ = 0;
-  private int FQa;
-  private int FQb;
-  private int FQc;
-  private int FQd;
-  private int FQe;
-  private int FQf;
-  private int FQg;
-  private int FQh;
-  private int FQi;
-  String FQj;
-  int FQk;
-  int FQl;
-  long FQm;
-  int FQn;
-  long FQo;
-  long FQp;
-  boolean FQq;
-  boolean FQr;
-  private long hlg;
+  long DPJ;
+  private int MjO;
+  private long MjP;
+  int MjQ = 0;
+  private int MjR;
+  long MjS;
+  int MjT;
+  int MjU;
+  private int MjV;
+  private int MjW;
+  private int MjX;
+  int MjY;
+  int MjZ;
+  public int Mka = 0;
+  private int Mkb;
+  private int Mkc;
+  private int Mkd;
+  private int Mke;
+  private int Mkf;
+  private int Mkg;
+  private int Mkh;
+  private int Mki;
+  private int Mkj;
+  String Mkk;
+  int Mkl;
+  int Mkm;
+  long Mkn;
+  int Mko;
+  long Mkp;
+  long Mkq;
+  boolean Mkr;
+  boolean Mks;
+  private long jWP;
   int roomId;
-  long ypH;
   
-  public final void abp(int paramInt)
+  public final void aiL(int paramInt)
   {
     AppMethodBeat.i(29477);
-    if (this.FQm == 0L)
+    if (this.Mkn == 0L)
     {
       AppMethodBeat.o(29477);
       return;
     }
-    this.FPN = paramInt;
-    this.FPO = Util.ticksToNow(this.FQm);
+    this.MjO = paramInt;
+    this.MjP = Util.ticksToNow(this.Mkn);
     AppMethodBeat.o(29477);
   }
   
   public final void exitRoom()
   {
     AppMethodBeat.i(29479);
-    if (this.FQm == 0L)
+    if (this.Mkn == 0L)
     {
       AppMethodBeat.o(29479);
       return;
     }
-    this.FPQ = ((int)(Util.ticksToNow(this.FQm) / 1000L));
+    this.MjR = ((int)(Util.ticksToNow(this.Mkn) / 1000L));
     AppMethodBeat.o(29479);
   }
   
-  public final void ftV()
+  public final void gix()
   {
     AppMethodBeat.i(29478);
-    if (this.FQm == 0L)
+    if (this.Mkn == 0L)
     {
       AppMethodBeat.o(29478);
       return;
     }
-    this.hlg = Util.ticksToNow(this.FQm);
+    this.jWP = Util.ticksToNow(this.Mkn);
     AppMethodBeat.o(29478);
   }
   
-  public final void ftW()
+  public final void giy()
   {
-    this.FPW += 1;
+    this.MjX += 1;
   }
   
-  public final void ftX()
+  public final void giz()
   {
     AppMethodBeat.i(29480);
-    if (this.FQp == 0L)
+    if (this.Mkq == 0L)
     {
       AppMethodBeat.o(29480);
       return;
     }
-    long l = Util.ticksToNow(this.FQp) / 1000L;
+    long l = Util.ticksToNow(this.Mkq) / 1000L;
     if (l < 2L) {
-      this.FQa += 1;
+      this.Mkb += 1;
     }
     for (;;)
     {
-      this.FQp = 0L;
+      this.Mkq = 0L;
       AppMethodBeat.o(29480);
       return;
       if (l < 6L) {
-        this.FQb += 1;
+        this.Mkc += 1;
       } else if (l < 11L) {
-        this.FQc += 1;
+        this.Mkd += 1;
       } else if (l < 21L) {
-        this.FQd += 1;
+        this.Mke += 1;
       } else if (l < 31L) {
-        this.FQe += 1;
+        this.Mkf += 1;
       } else if (l < 41L) {
-        this.FQf += 1;
+        this.Mkg += 1;
       } else if (l < 51L) {
-        this.FQg += 1;
+        this.Mkh += 1;
       } else if (l < 61L) {
-        this.FQh += 1;
+        this.Mki += 1;
       } else {
-        this.FQi += 1;
+        this.Mkj += 1;
       }
     }
   }
@@ -122,14 +122,14 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(29481);
-    String str = this.FPN + "," + this.FPO + "," + this.hlg + "," + this.FPP + "," + this.FPQ + "," + this.FPR + "," + this.FPS + "," + this.FPT + "," + this.FPU + "," + this.FPV + "," + this.FPW + "," + this.FPX + "," + this.FPY + "," + this.FPZ + "," + this.FQa + "," + this.FQb + "," + this.FQc + "," + this.FQd + "," + this.FQe + "," + this.FQf + "," + this.FQg + "," + this.FQh + "," + this.FQi + "," + this.FQj + "," + this.roomId + "," + this.ypH + "," + this.FQk + "," + this.FQl;
+    String str = this.MjO + "," + this.MjP + "," + this.jWP + "," + this.MjQ + "," + this.MjR + "," + this.MjS + "," + this.MjT + "," + this.MjU + "," + this.MjV + "," + this.MjW + "," + this.MjX + "," + this.MjY + "," + this.MjZ + "," + this.Mka + "," + this.Mkb + "," + this.Mkc + "," + this.Mkd + "," + this.Mke + "," + this.Mkf + "," + this.Mkg + "," + this.Mkh + "," + this.Mki + "," + this.Mkj + "," + this.Mkk + "," + this.roomId + "," + this.DPJ + "," + this.Mkl + "," + this.Mkm;
     AppMethodBeat.o(29481);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.model.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,127 +1,79 @@
 package com.tencent.mm.live.core.b;
 
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.a.a;
-import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.x;
+import com.tencent.mm.live.core.c.c;
+import com.tencent.mm.media.j.b.d;
+import com.tencent.mm.media.j.b.e;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/render/RenderSurfaceHolder;", "", "surfaceHolder", "Landroid/view/SurfaceHolder;", "(Landroid/view/SurfaceHolder;)V", "onViewCreated", "Lkotlin/Function0;", "", "getOnViewCreated", "()Lkotlin/jvm/functions/Function0;", "setOnViewCreated", "(Lkotlin/jvm/functions/Function0;)V", "onViewSizeChanged", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "w", "h", "getOnViewSizeChanged", "()Lkotlin/jvm/functions/Function2;", "setOnViewSizeChanged", "(Lkotlin/jvm/functions/Function2;)V", "getSurfaceHolder", "()Landroid/view/SurfaceHolder;", "setSurfaceHolder", "component1", "copy", "equals", "", "other", "hashCode", "toString", "", "Companion", "plugin-core_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/render/LiveVisitorRenderer;", "", "userId", "", "streamType", "", "(Ljava/lang/String;I)V", "drawHeight", "drawWidth", "mCost", "", "mFps", "mRendererAnchorTimerCount", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "renderMode", "renderType", "getStreamType", "()I", "setStreamType", "(I)V", "textureRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcTexture;", "getUserId", "()Ljava/lang/String;", "setUserId", "(Ljava/lang/String;)V", "yuvRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcI420ToRgb;", "release", "", "render", "frame", "Lcom/tencent/trtc/TRTCCloudDef$TRTCVideoFrame;", "updateDrawSize", "width", "height", "updateRenderMode", "Companion", "plugin-core_release"})
 public final class l
 {
-  public static final a hEE;
-  public SurfaceHolder beb;
-  public a<x> hEC;
-  public m<? super Integer, ? super Integer, x> hED;
+  public static final a ksy;
+  int ksc;
+  int ksn;
+  int ksr;
+  e kss;
+  d kst;
+  int ksu;
+  int ksv;
+  MTimerHandler ksw;
+  long ksx;
+  private int streamType;
+  private String userId;
   
   static
   {
-    AppMethodBeat.i(196695);
-    hEE = new a((byte)0);
-    AppMethodBeat.o(196695);
+    AppMethodBeat.i(200153);
+    ksy = new a((byte)0);
+    AppMethodBeat.o(200153);
   }
   
-  public l(SurfaceHolder paramSurfaceHolder)
+  public l(String paramString, int paramInt)
   {
-    AppMethodBeat.i(196694);
-    this.beb = paramSurfaceHolder;
-    paramSurfaceHolder = this.beb;
-    if (paramSurfaceHolder != null)
-    {
-      paramSurfaceHolder.addCallback((SurfaceHolder.Callback)new SurfaceHolder.Callback()
-      {
-        public final void surfaceChanged(SurfaceHolder paramAnonymousSurfaceHolder, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
-        {
-          AppMethodBeat.i(196693);
-          Log.i("MicroMsg.RenderSurfaceHolder", "RenderSurfaceHolder has been surfaceChanged width is " + paramAnonymousInt2 + " and height is " + paramAnonymousInt3);
-          paramAnonymousSurfaceHolder = this.hEF.hED;
-          if (paramAnonymousSurfaceHolder != null)
-          {
-            paramAnonymousSurfaceHolder.invoke(Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3));
-            AppMethodBeat.o(196693);
-            return;
-          }
-          AppMethodBeat.o(196693);
-        }
-        
-        public final void surfaceCreated(SurfaceHolder paramAnonymousSurfaceHolder)
-        {
-          AppMethodBeat.i(196692);
-          Log.i("MicroMsg.RenderSurfaceHolder", "RenderSurfaceHolder has been surfaceCreated");
-          paramAnonymousSurfaceHolder = this.hEF.hEC;
-          if (paramAnonymousSurfaceHolder != null)
-          {
-            paramAnonymousSurfaceHolder.invoke();
-            AppMethodBeat.o(196692);
-            return;
-          }
-          AppMethodBeat.o(196692);
-        }
-        
-        public final void surfaceDestroyed(SurfaceHolder paramAnonymousSurfaceHolder)
-        {
-          AppMethodBeat.i(196691);
-          Log.i("MicroMsg.RenderSurfaceHolder", "RenderSurfaceHolder has been surfaceDestroyed");
-          AppMethodBeat.o(196691);
-        }
-      });
-      AppMethodBeat.o(196694);
-      return;
-    }
-    AppMethodBeat.o(196694);
+    AppMethodBeat.i(200151);
+    this.userId = paramString;
+    this.streamType = paramInt;
+    this.ksr = 1;
+    this.ksn = 2;
+    this.ksw = new MTimerHandler("LiveVisitorRendererCounter", (MTimerHandler.CallBack)new b(this), true);
+    AppMethodBeat.o(200151);
   }
   
-  public final boolean equals(Object paramObject)
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/render/LiveVisitorRenderer$Companion;", "", "()V", "RENDER_TYPE_I420", "", "RENDER_TYPE_TEXTURE", "TAG", "", "plugin-core_release"})
+  public static final class a {}
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onTimerExpired"})
+  static final class b
+    implements MTimerHandler.CallBack
   {
-    AppMethodBeat.i(196698);
-    if (this != paramObject)
+    b(l paraml) {}
+    
+    public final boolean onTimerExpired()
     {
-      if ((paramObject instanceof l))
+      AppMethodBeat.i(199031);
+      if (l.a(this.ksz) <= 5) {
+        c.aNf();
+      }
+      for (;;)
       {
-        paramObject = (l)paramObject;
-        if (!p.j(this.beb, paramObject.beb)) {}
+        c.tu(l.a(this.ksz));
+        l.b(this.ksz);
+        AppMethodBeat.o(199031);
+        return true;
+        if (l.a(this.ksz) <= 10) {
+          c.aNg();
+        } else if (l.a(this.ksz) > 10) {
+          c.aNh();
+        }
       }
     }
-    else
-    {
-      AppMethodBeat.o(196698);
-      return true;
-    }
-    AppMethodBeat.o(196698);
-    return false;
   }
-  
-  public final int hashCode()
-  {
-    AppMethodBeat.i(196697);
-    SurfaceHolder localSurfaceHolder = this.beb;
-    if (localSurfaceHolder != null)
-    {
-      int i = localSurfaceHolder.hashCode();
-      AppMethodBeat.o(196697);
-      return i;
-    }
-    AppMethodBeat.o(196697);
-    return 0;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(196696);
-    String str = "RenderSurfaceHolder(surfaceHolder=" + this.beb + ")";
-    AppMethodBeat.o(196696);
-    return str;
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/render/RenderSurfaceHolder$Companion;", "", "()V", "TAG", "", "plugin-core_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.core.b.l
  * JD-Core Version:    0.7.0.1
  */

@@ -7,21 +7,21 @@ import com.tencent.mm.plugin.card.base.b;
 
 public abstract interface g
 {
-  public abstract void EK(int paramInt);
+  public abstract void Il(int paramInt);
   
-  public abstract void H(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void L(boolean paramBoolean1, boolean paramBoolean2);
   
   public abstract void a(ShapeDrawable paramShapeDrawable);
   
   public abstract void d(b paramb);
   
+  public abstract View eW();
+  
   public abstract void i(b paramb);
   
-  public abstract View jz();
+  public abstract void lP(boolean paramBoolean);
   
-  public abstract void kD(boolean paramBoolean);
-  
-  public abstract void kE(boolean paramBoolean);
+  public abstract void lQ(boolean paramBoolean);
   
   public abstract void release();
   

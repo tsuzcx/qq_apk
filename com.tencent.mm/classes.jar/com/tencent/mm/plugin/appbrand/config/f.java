@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.config;
 
 import com.tencent.luggage.a.e;
+import com.tencent.luggage.l.a.g;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -8,9 +9,9 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.ac.i;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.appcache.j.a;
-import com.tencent.mm.plugin.appbrand.appstorage.q;
-import com.tencent.mm.plugin.appbrand.utils.x.a;
-import com.tencent.mm.protocal.protobuf.clx;
+import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.utils.z.a;
+import com.tencent.mm.protocal.protobuf.cuu;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -24,16 +25,16 @@ import java.util.Set;
 
 public final class f
 {
-  private static final String czw;
+  private static final String cys;
   
   static
   {
-    AppMethodBeat.i(229880);
-    czw = WeChatHosts.domainString(2131761738);
-    AppMethodBeat.o(229880);
+    AppMethodBeat.i(234161);
+    cys = WeChatHosts.domainString(a.g.host_servicewechat_com);
+    AppMethodBeat.o(234161);
   }
   
-  private static ArrayList<byte[]> P(AppBrandRuntime paramAppBrandRuntime)
+  private static ArrayList<byte[]> Q(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(146963);
     localArrayList = new ArrayList();
@@ -44,20 +45,20 @@ public final class f
       AppMethodBeat.o(146963);
       return localArrayList;
     }
-    localObject = com.tencent.mm.plugin.appbrand.ac.d.p((ByteBuffer)((i)localObject).value);
+    localObject = com.tencent.mm.plugin.appbrand.ac.d.m((ByteBuffer)((i)localObject).value);
     try
     {
-      paramAppBrandRuntime = new clx();
+      paramAppBrandRuntime = new cuu();
       paramAppBrandRuntime.parseFrom((byte[])localObject);
-      localObject = paramAppBrandRuntime.Mrl;
+      localObject = paramAppBrandRuntime.TCy;
       if (localObject == null)
       {
         AppMethodBeat.o(146963);
         return localArrayList;
       }
-      paramAppBrandRuntime = paramAppBrandRuntime.Mrl.iterator();
+      paramAppBrandRuntime = paramAppBrandRuntime.TCy.iterator();
       while (paramAppBrandRuntime.hasNext()) {
-        localArrayList.add(((com.tencent.mm.bw.b)paramAppBrandRuntime.next()).zy);
+        localArrayList.add(((com.tencent.mm.cd.b)paramAppBrandRuntime.next()).UH);
       }
       return localArrayList;
     }
@@ -72,110 +73,157 @@ public final class f
   {
     AppMethodBeat.i(146964);
     com.tencent.mm.plugin.appbrand.jsapi.file.d locald = new com.tencent.mm.plugin.appbrand.jsapi.file.d();
-    locald.cyR = paramAppBrandSysConfigLU.cyR;
-    if (locald.cyR <= 0L) {
-      locald.cyR = 10L;
+    locald.oRG = AppBrandGlobalSystemConfig.bLe().nWU;
+    if (locald.oRG <= 0L) {
+      locald.oRG = 300L;
     }
-    locald.ldl = paramAppBrandSysConfigLU.czd.ldl;
-    if (locald.ldl <= 0L) {
-      locald.ldl = 30L;
+    locald.cxy = paramAppBrandSysConfigLU.cxy;
+    if (locald.cxy <= 0L) {
+      locald.cxy = 10L;
+    }
+    locald.cxw = paramAppBrandSysConfigLU.cxw;
+    if (locald.cxw <= 0L) {
+      locald.cxw = 300L;
+    }
+    locald.cxx = paramAppBrandSysConfigLU.cxx;
+    if (locald.cxx <= 0L) {
+      locald.cxx = 100L;
+    }
+    locald.nXu = paramAppBrandSysConfigLU.cxL.nXu;
+    if (locald.nXu <= 0L) {
+      locald.nXu = 30L;
     }
     AppMethodBeat.o(146964);
     return locald;
   }
   
-  public static com.tencent.mm.plugin.appbrand.s.a a(com.tencent.luggage.sdk.d.d paramd)
+  public static z.a b(AppBrandSysConfigLU paramAppBrandSysConfigLU)
   {
-    AppMethodBeat.i(229876);
-    AppBrandInitConfigLU localAppBrandInitConfigLU = paramd.ON();
-    AppBrandSysConfigLU localAppBrandSysConfigLU = paramd.OM();
+    AppMethodBeat.i(234154);
+    z.a locala = new z.a();
+    locala.nXk = paramAppBrandSysConfigLU.cxL.nXk;
+    AppMethodBeat.o(234154);
+    return locala;
+  }
+  
+  public static com.tencent.mm.plugin.appbrand.performance.a c(AppBrandSysConfigLU paramAppBrandSysConfigLU)
+  {
+    boolean bool2 = true;
+    AppMethodBeat.i(234158);
+    com.tencent.mm.plugin.appbrand.performance.a locala = new com.tencent.mm.plugin.appbrand.performance.a();
+    if ((paramAppBrandSysConfigLU.cxi) && ((paramAppBrandSysConfigLU.nYR.nHY == 1) || (paramAppBrandSysConfigLU.nYR.nHY == 2) || (WeChatEnvironment.hasDebugger())))
+    {
+      bool1 = true;
+      locala.qyB = bool1;
+      if (paramAppBrandSysConfigLU.nYR.nHY == 0) {
+        break label94;
+      }
+    }
+    label94:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      locala.qyC = bool1;
+      locala.qyD = paramAppBrandSysConfigLU.cxh;
+      AppMethodBeat.o(234158);
+      return locala;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  public static com.tencent.mm.plugin.appbrand.s.a g(com.tencent.luggage.sdk.e.d paramd)
+  {
+    AppMethodBeat.i(234144);
+    AppBrandInitConfigLU localAppBrandInitConfigLU = paramd.Sk();
+    AppBrandSysConfigLU localAppBrandSysConfigLU = paramd.Sj();
     Object localObject = paramd.getAppConfig();
     com.tencent.mm.plugin.appbrand.s.a locala = new com.tencent.mm.plugin.appbrand.s.a();
     boolean bool;
     int i;
-    if ((localAppBrandInitConfigLU.Nx()) || (localAppBrandInitConfigLU.NA()))
+    if ((localAppBrandInitConfigLU.Qs()) || (localAppBrandInitConfigLU.Qv()))
     {
       bool = true;
-      locala.nhC = bool;
-      if ((localAppBrandSysConfigLU.leE.kNW != 1) && (localAppBrandSysConfigLU.leE.kNW != 2)) {
-        break label652;
+      locala.qil = bool;
+      if ((localAppBrandSysConfigLU.nYR.nHY != 1) && (localAppBrandSysConfigLU.nYR.nHY != 2)) {
+        break label662;
       }
       i = 1;
       label81:
-      if (!localAppBrandSysConfigLU.cyp) {
-        break label662;
+      if (!localAppBrandSysConfigLU.cwS) {
+        break label672;
       }
-      if ((i != 0) && (localAppBrandSysConfigLU.cyF)) {
-        break label657;
+      if ((i != 0) && (localAppBrandSysConfigLU.cxj)) {
+        break label667;
       }
       bool = true;
       label103:
-      locala.nhD = bool;
-      i = ((b)localObject).lbO.egB;
+      locala.qim = bool;
+      i = ((b)localObject).nVX.gaR;
       if (i > 0) {
-        locala.nhE = i;
+        locala.qin = i;
       }
-      i = ((b)localObject).lbO.lce;
+      i = ((b)localObject).nVX.nWn;
       if (i > 0) {
-        locala.nhF = i;
+        locala.qio = i;
       }
-      i = ((b)localObject).lbO.lcf;
+      i = ((b)localObject).nVX.nWo;
       if (i > 0) {
-        locala.nhG = i;
+        locala.qip = i;
       }
-      i = ((b)localObject).lbO.lcg;
+      i = ((b)localObject).nVX.nWp;
       if (i > 0) {
-        locala.nhH = i;
+        locala.qiq = i;
       }
-      locala.cyK = localAppBrandSysConfigLU.cyK;
-      locala.nhI = localAppBrandSysConfigLU.cyN;
-      locala.cyL = localAppBrandSysConfigLU.cyL;
-      locala.cyM = localAppBrandSysConfigLU.cyM;
-      locala.cyT = localAppBrandSysConfigLU.cyT;
-      locala.cyU = localAppBrandSysConfigLU.cyU;
-      locala.cyV = localAppBrandSysConfigLU.cyV;
-      locala.cyW = localAppBrandSysConfigLU.cyW;
-      locala.cyX = localAppBrandSysConfigLU.cyX;
-      if (localAppBrandSysConfigLU.czd.lcS.mode != 1) {
-        break label684;
+      locala.cxp = localAppBrandSysConfigLU.cxp;
+      locala.qir = localAppBrandSysConfigLU.cxs;
+      locala.cxq = localAppBrandSysConfigLU.cxq;
+      locala.cxr = localAppBrandSysConfigLU.cxr;
+      locala.cxA = localAppBrandSysConfigLU.cxA;
+      locala.cxB = localAppBrandSysConfigLU.cxB;
+      locala.cxC = localAppBrandSysConfigLU.cxC;
+      locala.cxD = localAppBrandSysConfigLU.cxD;
+      locala.cxE = localAppBrandSysConfigLU.cxE;
+      locala.cxF = localAppBrandSysConfigLU.cxF;
+      if (localAppBrandSysConfigLU.cxL.nXb.mode != 1) {
+        break label694;
       }
-      if (localAppBrandSysConfigLU.czd.lcS.ldu != null) {
-        locala.nhJ = localAppBrandSysConfigLU.czd.lcS.ldu;
+      if (localAppBrandSysConfigLU.cxL.nXb.nXH != null) {
+        locala.qis = localAppBrandSysConfigLU.cxL.nXb.nXH;
       }
-      label316:
-      locala.mode = localAppBrandSysConfigLU.czd.lcS.mode;
-      locala.nhL = P(paramd);
-      if (!localAppBrandInitConfigLU.NA()) {
-        break label732;
+      label326:
+      locala.mode = localAppBrandSysConfigLU.cxL.nXb.mode;
+      locala.qiu = Q(paramd);
+      if (!localAppBrandInitConfigLU.Qv()) {
+        break label742;
       }
-      i = localAppBrandSysConfigLU.czd.lde;
-      label358:
-      locala.lcM = i;
-      locala.cyP = localAppBrandSysConfigLU.cyP;
-      locala.cyQ = localAppBrandSysConfigLU.cyQ;
-      String str = j.bzW();
-      locala.nhM = s.aa(MMApplicationContext.getContext(), str);
-      Log.i("Luggage.FULL.AppBrandConfigAdapter", "runtime(%s).getNetworkConfig.userAgentString = [ %s ]", new Object[] { paramd.mAppId, locala.nhM });
-      paramd = (com.tencent.mm.plugin.appbrand.jsapi.u.a)e.M(com.tencent.mm.plugin.appbrand.jsapi.u.a.class);
+      i = localAppBrandSysConfigLU.cxL.nXn;
+      label368:
+      locala.nWV = i;
+      locala.cxu = localAppBrandSysConfigLU.cxu;
+      locala.cxv = localAppBrandSysConfigLU.cxv;
+      String str = j.bLl();
+      locala.qiv = s.Y(MMApplicationContext.getContext(), str);
+      Log.i("Luggage.FULL.AppBrandConfigAdapter", "runtime(%s).getNetworkConfig.userAgentString = [ %s ]", new Object[] { paramd.mAppId, locala.qiv });
+      paramd = (com.tencent.mm.plugin.appbrand.jsapi.v.a)e.K(com.tencent.mm.plugin.appbrand.jsapi.v.a.class);
       if (paramd == null) {
-        break label744;
+        break label754;
       }
-      locala.nhN = paramd.aaF(((b)localObject).iJP);
+      locala.qiw = paramd.aix(((b)localObject).lzT);
     }
     for (;;)
     {
       localObject = "";
-      paramd = (com.tencent.luggage.sdk.d.d)localObject;
-      if (localAppBrandSysConfigLU.czd != null)
+      paramd = (com.tencent.luggage.sdk.e.d)localObject;
+      if (localAppBrandSysConfigLU.cxL != null)
       {
-        paramd = (com.tencent.luggage.sdk.d.d)localObject;
-        if (localAppBrandSysConfigLU.czd.lcS != null) {
-          paramd = localAppBrandSysConfigLU.czd.lcS.ldA;
+        paramd = (com.tencent.luggage.sdk.e.d)localObject;
+        if (localAppBrandSysConfigLU.cxL.nXb != null) {
+          paramd = localAppBrandSysConfigLU.cxL.nXb.nXN;
         }
       }
       localObject = paramd;
       if (Util.isNullOrNil(paramd)) {
-        localObject = czw;
+        localObject = cys;
       }
       paramd = new StringBuilder();
       paramd.append("https://");
@@ -183,105 +231,71 @@ public final class f
       paramd.append("/");
       paramd.append(localAppBrandSysConfigLU.appId);
       paramd.append("/");
-      paramd.append(localAppBrandSysConfigLU.leE.pkgVersion);
+      paramd.append(localAppBrandSysConfigLU.nYR.pkgVersion);
       paramd.append("/page-frame.html");
       locala.referer = paramd.toString();
-      locala.cyp = localAppBrandInitConfigLU.cyp;
-      locala.nhO = j.a.sE(localAppBrandSysConfigLU.leE.kNW);
-      if ((locala.nhO) || (!Util.isNullOrNil(locala.nhL))) {
+      locala.cwS = localAppBrandInitConfigLU.cwS;
+      locala.qix = j.a.vB(localAppBrandSysConfigLU.nYR.nHY);
+      if ((locala.qix) || (!Util.isNullOrNil(locala.qiu))) {
         com.tencent.mm.plugin.appbrand.s.j.b(locala);
       }
-      AppMethodBeat.o(229876);
+      AppMethodBeat.o(234144);
       return locala;
       bool = false;
       break;
-      label652:
+      label662:
       i = 0;
       break label81;
-      label657:
+      label667:
       bool = false;
       break label103;
-      label662:
-      if ((i == 0) || (!localAppBrandSysConfigLU.cyC))
+      label672:
+      if ((i == 0) || (!localAppBrandSysConfigLU.cxh))
       {
         bool = true;
         break label103;
       }
       bool = false;
       break label103;
-      label684:
-      if ((localAppBrandSysConfigLU.czd.lcS.mode != 2) || (localAppBrandSysConfigLU.czd.lcS.ldv == null)) {
-        break label316;
+      label694:
+      if ((localAppBrandSysConfigLU.cxL.nXb.mode != 2) || (localAppBrandSysConfigLU.cxL.nXb.nXI == null)) {
+        break label326;
       }
-      locala.nhK = localAppBrandSysConfigLU.czd.lcS.ldv;
-      break label316;
-      label732:
-      i = localAppBrandSysConfigLU.czd.lcM;
-      break label358;
-      label744:
+      locala.qit = localAppBrandSysConfigLU.cxL.nXb.nXI;
+      break label326;
+      label742:
+      i = localAppBrandSysConfigLU.cxL.nWV;
+      break label368;
+      label754:
       Log.w("", "getNetworkConfig, referrerHelper is null");
     }
   }
   
-  public static com.tencent.mm.plugin.appbrand.a.a b(com.tencent.luggage.sdk.d.d paramd)
+  public static com.tencent.mm.plugin.appbrand.a.a h(com.tencent.luggage.sdk.e.d paramd)
   {
-    AppMethodBeat.i(229877);
-    AppBrandSysConfigLU localAppBrandSysConfigLU = paramd.OM();
+    AppMethodBeat.i(234147);
+    AppBrandSysConfigLU localAppBrandSysConfigLU = paramd.Sj();
     paramd = paramd.getAppConfig();
     com.tencent.mm.plugin.appbrand.a.a locala = new com.tencent.mm.plugin.appbrand.a.a();
     if ((localAppBrandSysConfigLU == null) || (paramd == null))
     {
-      AppMethodBeat.o(229877);
+      AppMethodBeat.o(234147);
       return locala;
     }
-    if (j.a.sE(localAppBrandSysConfigLU.leE.kNW)) {
-      locala.kQF = paramd.lbS.contains("audio");
+    if (j.a.vB(localAppBrandSysConfigLU.nYR.nHY)) {
+      locala.nKN = paramd.nWb.contains("audio");
     }
-    for (locala.kQG = paramd.lbS.contains("location");; locala.kQG = localAppBrandSysConfigLU.lez)
+    for (locala.nKO = paramd.nWb.contains("location");; locala.nKO = localAppBrandSysConfigLU.nYM)
     {
-      AppMethodBeat.o(229877);
+      AppMethodBeat.o(234147);
       return locala;
-      locala.kQF = localAppBrandSysConfigLU.ley;
-    }
-  }
-  
-  public static x.a b(AppBrandSysConfigLU paramAppBrandSysConfigLU)
-  {
-    AppMethodBeat.i(229878);
-    x.a locala = new x.a();
-    locala.ldb = paramAppBrandSysConfigLU.czd.ldb;
-    AppMethodBeat.o(229878);
-    return locala;
-  }
-  
-  public static com.tencent.mm.plugin.appbrand.performance.a c(AppBrandSysConfigLU paramAppBrandSysConfigLU)
-  {
-    boolean bool2 = true;
-    AppMethodBeat.i(229879);
-    com.tencent.mm.plugin.appbrand.performance.a locala = new com.tencent.mm.plugin.appbrand.performance.a();
-    if ((paramAppBrandSysConfigLU.cyD) && ((paramAppBrandSysConfigLU.leE.kNW == 1) || (paramAppBrandSysConfigLU.leE.kNW == 2) || (WeChatEnvironment.hasDebugger())))
-    {
-      bool1 = true;
-      locala.nwy = bool1;
-      if (paramAppBrandSysConfigLU.leE.kNW == 0) {
-        break label96;
-      }
-    }
-    label96:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      locala.nwz = bool1;
-      locala.nwA = paramAppBrandSysConfigLU.cyC;
-      AppMethodBeat.o(229879);
-      return locala;
-      bool1 = false;
-      break;
+      locala.nKN = localAppBrandSysConfigLU.nYL;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dsc;
-import com.tencent.mm.protocal.protobuf.dsd;
+import com.tencent.mm.protocal.protobuf.eby;
+import com.tencent.mm.protocal.protobuf.ebz;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class at
@@ -18,23 +18,23 @@ public final class at
   implements m
 {
   private i callback;
-  final d hhm;
+  final d jTk;
   
   public at(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(41622);
     Log.i("MicroMsg.NetSceneSearchGameList", "offset: %d, limit: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new dsc();
-    ((d.a)localObject).iLO = new dsd();
+    ((d.a)localObject).lBU = new eby();
+    ((d.a)localObject).lBV = new ebz();
     ((d.a)localObject).uri = "/cgi-bin/mmgame-bin/searchgamelist";
     ((d.a)localObject).funcId = getType();
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.hhm = ((d.a)localObject).aXF();
-    localObject = (dsc)this.hhm.iLK.iLR;
-    ((dsc)localObject).xLV = paramInt1;
-    ((dsc)localObject).xLW = paramInt2;
+    this.jTk = ((d.a)localObject).bgN();
+    localObject = (eby)d.b.b(this.jTk.lBR);
+    ((eby)localObject).CQe = paramInt1;
+    ((eby)localObject).CQf = paramInt2;
     AppMethodBeat.o(41622);
   }
   
@@ -42,7 +42,7 @@ public final class at
   {
     AppMethodBeat.i(41623);
     this.callback = parami;
-    int i = dispatch(paramg, this.hhm, this);
+    int i = dispatch(paramg, this.jTk, this);
     AppMethodBeat.o(41623);
     return i;
   }

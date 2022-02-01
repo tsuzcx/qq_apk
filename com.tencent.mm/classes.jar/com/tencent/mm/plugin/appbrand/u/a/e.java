@@ -1,59 +1,54 @@
 package com.tencent.mm.plugin.appbrand.u.a;
 
-import android.support.v4.e.b;
-import com.tencent.mm.plugin.appbrand.s;
+import androidx.b.b;
+import com.tencent.mm.plugin.appbrand.v;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 public abstract class e
 {
-  public final s cAJ;
-  private final a nkd;
-  private final Set<Integer> nke = new b();
+  public final v czP;
+  private final a qlB;
+  private final Set<Integer> qlC = new b();
   
-  public e(a parama, s params)
+  public e(a parama, v paramv)
   {
-    this.nkd = parama;
-    this.cAJ = params;
+    this.qlB = parama;
+    this.czP = paramv;
   }
   
-  public final void aa(Map<String, Object> paramMap)
+  public final void Cl(int paramInt)
   {
-    Iterator localIterator = this.nke.iterator();
+    try
+    {
+      if (!this.qlC.isEmpty()) {}
+      for (int i = 1;; i = 0)
+      {
+        this.qlC.add(Integer.valueOf(paramInt));
+        if (i == 0) {
+          break;
+        }
+        return;
+      }
+      ccC();
+    }
+    finally {}
+  }
+  
+  public final void T(Map<String, Object> paramMap)
+  {
+    Iterator localIterator = this.qlC.iterator();
     while (localIterator.hasNext())
     {
       int i = ((Integer)localIterator.next()).intValue();
-      this.nkd.f(i, paramMap);
+      this.qlB.e(i, paramMap);
     }
   }
   
-  protected abstract void bPV();
+  protected abstract void ccC();
   
   public abstract int getType();
-  
-  public final void listen(int paramInt)
-  {
-    for (;;)
-    {
-      try
-      {
-        if (this.nke.isEmpty()) {
-          break label47;
-        }
-        i = 1;
-        this.nke.add(Integer.valueOf(paramInt));
-        if (i != 0) {
-          return;
-        }
-      }
-      finally {}
-      bPV();
-      return;
-      label47:
-      int i = 0;
-    }
-  }
   
   protected abstract void removeListener();
   
@@ -61,10 +56,10 @@ public abstract class e
   {
     try
     {
-      if (this.nke.contains(Integer.valueOf(paramInt))) {
-        this.nke.remove(Integer.valueOf(paramInt));
+      if (this.qlC.contains(Integer.valueOf(paramInt))) {
+        this.qlC.remove(Integer.valueOf(paramInt));
       }
-      if (!this.nke.isEmpty()) {
+      if (!this.qlC.isEmpty()) {
         return;
       }
       removeListener();
@@ -75,12 +70,12 @@ public abstract class e
   
   public static abstract interface a
   {
-    public abstract void f(int paramInt, Map<String, Object> paramMap);
+    public abstract void e(int paramInt, Map<String, Object> paramMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.u.a.e
  * JD-Core Version:    0.7.0.1
  */

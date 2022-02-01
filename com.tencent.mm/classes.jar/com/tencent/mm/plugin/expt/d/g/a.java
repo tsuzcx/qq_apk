@@ -1,112 +1,167 @@
 package com.tencent.mm.plugin.expt.d.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.d.e.b;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public final class a
 {
-  public static void p(List<b> paramList, int paramInt)
+  private static Boolean wep;
+  
+  public static void Kv(int paramInt)
   {
-    AppMethodBeat.i(220352);
-    if ((paramList == null) || (paramList.size() <= 0) || (paramInt <= 0))
+    AppMethodBeat.i(251563);
+    if (paramInt == 1) {
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 38L, 1L, false);
+    }
+    for (;;)
     {
-      AppMethodBeat.o(220352);
+      Log.d("EdgeComputingMonitor", "[EdgeComputingMonitor] statRealReportProcess reportProcess : ".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(251563);
       return;
-    }
-    Log.i("EdgeComputingReporter", "[EdgeComputingReporter] reportData logID : ".concat(String.valueOf(paramInt)));
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      if (localIterator.hasNext())
+      if (paramInt == 2)
       {
-        paramList = (b)localIterator.next();
-        j = i;
-        if (paramList == null)
-        {
-          AppMethodBeat.o(220352);
-          return;
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 30L, 1L, false);
+      }
+      else if (paramInt == 3)
+      {
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 31L, 1L, false);
+      }
+      else if (paramInt == 4)
+      {
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 32L, 1L, false);
+      }
+      else
+      {
+        if (paramInt != 5) {
+          break;
         }
-        while (paramList.index > j)
-        {
-          localArrayList.add("");
-          j += 1;
-        }
-        i = j;
-        if (paramList.index >= j) {
-          if (paramList.type == 2) {
-            paramList = String.valueOf(paramList.syi);
-          }
-        }
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 33L, 1L, false);
       }
     }
+    AppMethodBeat.o(251563);
+  }
+  
+  public static boolean dbP()
+  {
+    AppMethodBeat.i(251566);
+    if (wep == null) {
+      if (!com.tencent.mm.plugin.expt.d.b.No()) {
+        break label60;
+      }
+    }
+    label60:
+    for (wep = Boolean.TRUE;; wep = Boolean.valueOf(((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vXA, false)))
+    {
+      Log.i("EdgeComputingMonitor", "[EdgeComputingMonitor] getMonitorPerformanceSwitch sMonitorSwitch : " + wep);
+      boolean bool = wep.booleanValue();
+      AppMethodBeat.o(251566);
+      return bool;
+    }
+  }
+  
+  public static void e(String paramString, long paramLong, int paramInt)
+  {
+    AppMethodBeat.i(251558);
+    if (paramLong <= 10L) {
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 8L, 1L, false);
+    }
     for (;;)
     {
-      Object localObject = paramList;
-      if (paramList.contains(",")) {
-        localObject = paramList.replace(",", "\\$");
-      }
-      localArrayList.add(localObject);
-      i = j + 1;
-      break;
-      if (paramList.type == 1) {
-        paramList = String.valueOf(paramList.intValue);
-      } else if (paramList.type == 0)
+      if (paramLong <= 1000L)
       {
-        if (paramList.stringValue == null)
-        {
-          paramList = "";
-        }
-        else
-        {
-          paramList = paramList.stringValue;
-          continue;
-          if (localArrayList.size() > 0)
-          {
-            paramList = h.CyF;
-            h.r(paramInt, localArrayList);
-            Log.d("EdgeComputingReporter", "[EdgeComputingReporter] reportData vals : " + localArrayList.size());
-          }
-          AppMethodBeat.o(220352);
-        }
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 45L, paramLong, false);
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 46L, 1L, false);
       }
-      else {
-        paramList = "";
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 91L, 1L, false);
+      if (dbP()) {
+        com.tencent.mm.plugin.report.service.h.IzE.a(20176, new Object[] { paramString, Integer.valueOf(2), Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+      }
+      Log.d("EdgeComputingMonitor", "[EdgeComputingMonitor] statStorageCostTime configID : %s, costTime : %d, dataSzie : %d", new Object[] { paramString, Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(251558);
+      return;
+      if (paramLong <= 100L) {
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 9L, 1L, false);
+      } else if (paramLong <= 1000L) {
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 10L, 1L, false);
+      } else {
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 11L, 1L, false);
       }
     }
   }
   
-  public static void q(List<String> paramList, int paramInt)
+  public static void l(String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(220353);
-    if ((paramList == null) || (paramList.size() <= 0) || (paramInt <= 0))
+    AppMethodBeat.i(251557);
+    if (dbP()) {
+      com.tencent.mm.plugin.report.service.h.IzE.a(20177, new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    }
+    Log.d("EdgeComputingMonitor", "[EdgeComputingMonitor] monitorProcess configID : %s, process : %d, reportTimeEC : %d", new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    AppMethodBeat.o(251557);
+  }
+  
+  public static void ne(boolean paramBoolean)
+  {
+    AppMethodBeat.i(251559);
+    if (paramBoolean) {
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 20L, 1L, false);
+    }
+    for (;;)
     {
-      AppMethodBeat.o(220353);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 55L, 1L, false);
+      Log.d("EdgeComputingMonitor", "[EdgeComputingMonitor] statScriptConfigParseError success : ".concat(String.valueOf(paramBoolean)));
+      AppMethodBeat.o(251559);
       return;
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 21L, 1L, false);
     }
-    Log.i("EdgeComputingReporter", "[EdgeComputingReporter] reportStrData logID : ".concat(String.valueOf(paramInt)));
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
+  }
+  
+  public static void nf(boolean paramBoolean)
+  {
+    AppMethodBeat.i(251561);
+    if (paramBoolean) {
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 22L, 1L, false);
+    }
+    for (;;)
     {
-      String str = (String)localIterator.next();
-      paramList = str;
-      if (str.contains(",")) {
-        paramList = str.replace(",", "\\$");
-      }
-      localArrayList.add(paramList);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 36L, 1L, false);
+      Log.d("EdgeComputingMonitor", "[EdgeComputingMonitor] statSqlConfigParseError success : ".concat(String.valueOf(paramBoolean)));
+      AppMethodBeat.o(251561);
+      return;
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 23L, 1L, false);
     }
-    paramList = h.CyF;
-    h.r(paramInt, localArrayList);
-    Log.d("EdgeComputingReporter", "[EdgeComputingReporter] reportStrData vals : " + localArrayList.size());
-    AppMethodBeat.o(220353);
+  }
+  
+  public static void ng(boolean paramBoolean)
+  {
+    AppMethodBeat.i(251562);
+    if (paramBoolean) {
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 24L, 1L, false);
+    }
+    for (;;)
+    {
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 37L, 1L, false);
+      Log.d("EdgeComputingMonitor", "[EdgeComputingMonitor] statV8ScriptEngineInitError success : ".concat(String.valueOf(paramBoolean)));
+      AppMethodBeat.o(251562);
+      return;
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 25L, 1L, false);
+    }
+  }
+  
+  public static void nh(boolean paramBoolean)
+  {
+    AppMethodBeat.i(251564);
+    if (paramBoolean) {
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 177L, 1L, false);
+    }
+    for (;;)
+    {
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 179L, 1L, false);
+      Log.d("EdgeComputingMonitor", "[EdgeComputingMonitor] statScriptDownloadSuccess success : ".concat(String.valueOf(paramBoolean)));
+      AppMethodBeat.o(251564);
+      return;
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1409L, 178L, 1L, false);
+    }
   }
 }
 

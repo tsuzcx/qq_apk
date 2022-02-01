@@ -33,11 +33,11 @@ public class MarkerTranslateAnimator
   public MarkerTranslateAnimator(Marker paramMarker, long paramLong, LatLng[] paramArrayOfLatLng, boolean paramBoolean)
   {
     super(paramMarker, paramLong);
-    AppMethodBeat.i(199627);
+    AppMethodBeat.i(247301);
     this.g = false;
     if (paramArrayOfLatLng == null)
     {
-      AppMethodBeat.o(199627);
+      AppMethodBeat.o(247301);
       return;
     }
     this.a = paramArrayOfLatLng;
@@ -62,16 +62,16 @@ public class MarkerTranslateAnimator
     if (paramBoolean) {
       a();
     }
-    AppMethodBeat.o(199627);
+    AppMethodBeat.o(247301);
   }
   
   private double a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
   {
-    AppMethodBeat.i(199630);
+    AppMethodBeat.i(247309);
     double d2 = (paramDouble1 * paramDouble3 + paramDouble2 * paramDouble4) / (Math.sqrt(paramDouble1 * paramDouble1 + paramDouble2 * paramDouble2) * Math.sqrt(paramDouble3 * paramDouble3 + paramDouble4 * paramDouble4));
     if (Double.isNaN(d2))
     {
-      AppMethodBeat.o(199630);
+      AppMethodBeat.o(247309);
       return 0.0D;
     }
     double d1 = d2;
@@ -88,13 +88,13 @@ public class MarkerTranslateAnimator
       d1 = -d2;
     }
     paramDouble1 = (float)d1;
-    AppMethodBeat.o(199630);
+    AppMethodBeat.o(247309);
     return paramDouble1;
   }
   
   private long a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(199631);
+    AppMethodBeat.i(247310);
     double d1 = 0.0D;
     while (paramInt1 < paramInt2)
     {
@@ -102,13 +102,13 @@ public class MarkerTranslateAnimator
       paramInt1 += 1;
     }
     long l = (d1 * getDuration() / this.c);
-    AppMethodBeat.o(199631);
+    AppMethodBeat.o(247310);
     return l;
   }
   
   private ValueAnimator a(float paramFloat1, float paramFloat2, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(199632);
+    AppMethodBeat.i(247312);
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2 });
     localValueAnimator.setDuration(paramLong1);
     localValueAnimator.setStartDelay(paramLong2);
@@ -117,39 +117,39 @@ public class MarkerTranslateAnimator
     {
       public void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
-        AppMethodBeat.i(199636);
+        AppMethodBeat.i(247326);
         double d = Double.parseDouble(String.valueOf(paramAnonymousValueAnimator.getAnimatedValue()));
         if (MarkerTranslateAnimator.this.getObject() == null)
         {
-          AppMethodBeat.o(199636);
+          AppMethodBeat.o(247326);
           return;
         }
         ((Marker)MarkerTranslateAnimator.this.getObject()).setRotation((float)d);
-        AppMethodBeat.o(199636);
+        AppMethodBeat.o(247326);
       }
     });
-    AppMethodBeat.o(199632);
+    AppMethodBeat.o(247312);
     return localValueAnimator;
   }
   
   private void a()
   {
-    AppMethodBeat.i(199629);
+    AppMethodBeat.i(247308);
     this.e = new AnimatorSet();
     this.e.addListener(new Animator.AnimatorListener()
     {
       public void onAnimationCancel(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(199625);
+        AppMethodBeat.i(247290);
         MarkerTranslateAnimator.a(MarkerTranslateAnimator.this, false);
-        AppMethodBeat.o(199625);
+        AppMethodBeat.o(247290);
       }
       
       public void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(199624);
+        AppMethodBeat.i(247289);
         MarkerTranslateAnimator.a(MarkerTranslateAnimator.this, false);
-        AppMethodBeat.o(199624);
+        AppMethodBeat.o(247289);
       }
       
       public void onAnimationRepeat(Animator paramAnonymousAnimator) {}
@@ -177,7 +177,7 @@ public class MarkerTranslateAnimator
       {
         if (getObject() == null)
         {
-          AppMethodBeat.o(199629);
+          AppMethodBeat.o(247308);
           return;
         }
         f1 = ((Marker)getObject()).getRotation();
@@ -200,14 +200,14 @@ public class MarkerTranslateAnimator
       l1 = a(k, i) - l2 / 2L;
       break label250;
       this.e.playSequentially(localArrayList);
-      AppMethodBeat.o(199629);
+      AppMethodBeat.o(247308);
       return;
     }
   }
   
   public void cancelAnimation()
   {
-    AppMethodBeat.i(199634);
+    AppMethodBeat.i(247316);
     super.cancelAnimation();
     try
     {
@@ -218,13 +218,13 @@ public class MarkerTranslateAnimator
     }
     finally
     {
-      AppMethodBeat.o(199634);
+      AppMethodBeat.o(247316);
     }
   }
   
   protected ValueAnimator createSegmentAnimator(final int paramInt)
   {
-    AppMethodBeat.i(199628);
+    AppMethodBeat.i(247305);
     final b localb1 = this.f.a(this.a[paramInt]);
     final b localb2 = this.f.a(this.a[(paramInt + 1)]);
     ValueAnimator localValueAnimator = new ValueAnimator();
@@ -235,10 +235,10 @@ public class MarkerTranslateAnimator
     {
       public void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
-        AppMethodBeat.i(199626);
+        AppMethodBeat.i(247296);
         if (localb1.equals(localb2))
         {
-          AppMethodBeat.o(199626);
+          AppMethodBeat.o(247296);
           return;
         }
         double d4 = Double.parseDouble(String.valueOf(paramAnonymousValueAnimator.getAnimatedValue()));
@@ -248,20 +248,20 @@ public class MarkerTranslateAnimator
         d4 = d4 * (localb2.b - localb1.b) / MarkerTranslateAnimator.a(MarkerTranslateAnimator.this)[paramInt];
         if (MarkerTranslateAnimator.this.getObject() == null)
         {
-          AppMethodBeat.o(199626);
+          AppMethodBeat.o(247296);
           return;
         }
         ((Marker)MarkerTranslateAnimator.this.getObject()).setPosition(MarkerTranslateAnimator.b(MarkerTranslateAnimator.this).a(new b(d1 + d2, d3 + d4)));
-        AppMethodBeat.o(199626);
+        AppMethodBeat.o(247296);
       }
     });
-    AppMethodBeat.o(199628);
+    AppMethodBeat.o(247305);
     return localValueAnimator;
   }
   
   public void endAnimation()
   {
-    AppMethodBeat.i(199635);
+    AppMethodBeat.i(247318);
     super.endAnimation();
     try
     {
@@ -272,13 +272,13 @@ public class MarkerTranslateAnimator
     }
     finally
     {
-      AppMethodBeat.o(199635);
+      AppMethodBeat.o(247318);
     }
   }
   
   public void startAnimation()
   {
-    AppMethodBeat.i(199633);
+    AppMethodBeat.i(247314);
     super.startAnimation();
     try
     {
@@ -291,13 +291,13 @@ public class MarkerTranslateAnimator
     }
     finally
     {
-      AppMethodBeat.o(199633);
+      AppMethodBeat.o(247314);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.vector.compat.utils.animation.MarkerTranslateAnimator
  * JD-Core Version:    0.7.0.1
  */

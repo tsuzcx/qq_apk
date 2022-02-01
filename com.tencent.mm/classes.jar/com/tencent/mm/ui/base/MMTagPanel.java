@@ -19,12 +19,19 @@ import android.view.View.OnFocusChangeListener;
 import android.view.View.OnKeyListener;
 import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.d;
+import com.tencent.mm.ah.a.e;
+import com.tencent.mm.ah.a.f;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.ah.a.k;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.tools.f;
+import com.tencent.mm.ui.tools.g;
 import com.tencent.mm.ui.widget.MMEditText;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -37,71 +44,72 @@ import java.util.TreeSet;
 public class MMTagPanel
   extends FlowLayout
 {
-  public boolean OTd;
-  private boolean OTe;
-  public boolean OTf;
-  public boolean OTg;
-  public boolean OTh;
-  private int OTi;
-  private int OTj;
-  private int OTk;
-  private int OTl;
-  private d OTm;
-  private LinkedList<d> OTn;
-  private a OTo;
-  private int OTp;
-  private View OTq;
-  MMEditText OTr;
-  private boolean OTs;
-  private View.OnClickListener OTt;
+  protected LinkedList<MMTagPanel.d> Crg;
+  private int DWi;
+  private int DWj;
+  private LinkedList<MMTagPanel.d> WmA;
+  private a WmB;
+  private int WmC;
+  protected View WmD;
+  public MMEditText WmE;
+  public int WmF;
+  private boolean WmG;
+  protected View.OnClickListener WmH;
+  protected boolean Wmq;
+  protected boolean Wmr;
+  public boolean Wms;
+  public boolean Wmt;
+  public boolean Wmu;
+  private int Wmv;
+  private int Wmw;
+  private int Wmx;
+  private int Wmy;
+  private MMTagPanel.d Wmz;
   public boolean mClickable;
-  private boolean tfY;
-  private int thx;
-  private int thy;
-  private LinkedList<d> xuO;
-  private int ywe;
-  private int ywf;
+  private boolean wMn;
+  private int wNO;
+  private int wNP;
   
   public MMTagPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142188);
-    this.tfY = false;
-    this.OTd = true;
-    this.OTe = false;
-    this.OTf = true;
-    this.OTg = false;
-    this.OTh = false;
-    this.OTi = 2131235167;
-    this.OTj = 0;
-    this.thy = 2131235181;
-    this.thx = 2131100904;
-    this.ywe = 2131235171;
-    this.ywf = 2131101414;
-    this.OTk = 2131235174;
-    this.OTl = 2131101427;
-    this.OTm = null;
-    this.xuO = new LinkedList();
-    this.OTn = new LinkedList();
-    this.OTs = false;
-    this.OTt = new View.OnClickListener()
+    this.wMn = false;
+    this.Wmq = true;
+    this.Wmr = false;
+    this.Wms = true;
+    this.Wmt = false;
+    this.Wmu = false;
+    this.Wmv = a.f.tag_deletetab;
+    this.Wmw = 0;
+    this.wNP = a.f.tag_white_tab_selector;
+    this.wNO = a.d.normal_text_color;
+    this.DWi = a.f.tag_green_tab_selector;
+    this.DWj = a.d.wechat_green;
+    this.Wmx = a.f.tag_highlight_tab_selector;
+    this.Wmy = a.d.white_text_color;
+    this.Wmz = null;
+    this.Crg = new LinkedList();
+    this.WmA = new LinkedList();
+    this.WmG = false;
+    this.WmH = new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
         AppMethodBeat.i(142179);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMTagPanel$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/MMTagPanel$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (((Integer)paramAnonymousView.getTag()).intValue() == 0)
         {
           MMTagPanel.this.a((TextView)paramAnonymousView, true, false);
-          if (MMTagPanel.e(MMTagPanel.this) != null) {
+          if (MMTagPanel.d(MMTagPanel.this) != null) {
             paramAnonymousView.post(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(142176);
-                MMTagPanel.e(MMTagPanel.this).anc(((TextView)paramAnonymousView).getText().toString());
+                MMTagPanel.d(MMTagPanel.this).auW(((TextView)paramAnonymousView).getText().toString());
                 AppMethodBeat.o(142176);
               }
             });
@@ -112,39 +120,39 @@ public class MMTagPanel
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/base/MMTagPanel$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(142179);
           return;
-          if ((!MMTagPanel.f(MMTagPanel.this)) || (MMTagPanel.c(MMTagPanel.this)))
+          if ((!MMTagPanel.this.Wmr) || (MMTagPanel.b(MMTagPanel.this)))
           {
             MMTagPanel.this.a((TextView)paramAnonymousView, false, false);
-            if (MMTagPanel.e(MMTagPanel.this) != null) {
+            if (MMTagPanel.d(MMTagPanel.this) != null) {
               paramAnonymousView.post(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(142177);
-                  MMTagPanel.e(MMTagPanel.this).anb(((TextView)paramAnonymousView).getText().toString());
+                  MMTagPanel.d(MMTagPanel.this).auV(((TextView)paramAnonymousView).getText().toString());
                   AppMethodBeat.o(142177);
                 }
               });
             }
           }
-          else if (MMTagPanel.d(MMTagPanel.this) == null)
+          else if (MMTagPanel.c(MMTagPanel.this) == null)
           {
             MMTagPanel.a(MMTagPanel.this, MMTagPanel.a(MMTagPanel.this, ((TextView)paramAnonymousView).getText().toString()));
-            if (MMTagPanel.d(MMTagPanel.this) != null) {
-              MMTagPanel.this.a(MMTagPanel.d(MMTagPanel.this).OTG, false, true);
+            if (MMTagPanel.c(MMTagPanel.this) != null) {
+              MMTagPanel.this.a(MMTagPanel.c(MMTagPanel.this).WmT, false, true);
             }
           }
-          else if (MMTagPanel.d(MMTagPanel.this).OTG == paramAnonymousView)
+          else if (MMTagPanel.c(MMTagPanel.this).WmT == paramAnonymousView)
           {
             MMTagPanel.a(MMTagPanel.this, null);
             MMTagPanel.this.a((TextView)paramAnonymousView, false, false);
-            if (MMTagPanel.e(MMTagPanel.this) != null) {
+            if (MMTagPanel.d(MMTagPanel.this) != null) {
               paramAnonymousView.post(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(142178);
-                  MMTagPanel.e(MMTagPanel.this).anb(((TextView)paramAnonymousView).getText().toString());
+                  MMTagPanel.d(MMTagPanel.this).auV(((TextView)paramAnonymousView).getText().toString());
                   AppMethodBeat.o(142178);
                 }
               });
@@ -152,10 +160,10 @@ public class MMTagPanel
           }
           else
           {
-            MMTagPanel.this.gLg();
+            MMTagPanel.this.hKe();
             MMTagPanel.a(MMTagPanel.this, MMTagPanel.a(MMTagPanel.this, ((TextView)paramAnonymousView).getText().toString()));
-            if (MMTagPanel.d(MMTagPanel.this) != null) {
-              MMTagPanel.this.a(MMTagPanel.d(MMTagPanel.this).OTG, false, true);
+            if (MMTagPanel.c(MMTagPanel.this) != null) {
+              MMTagPanel.this.a(MMTagPanel.c(MMTagPanel.this).WmT, false, true);
             }
           }
         }
@@ -170,42 +178,42 @@ public class MMTagPanel
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142187);
-    this.tfY = false;
-    this.OTd = true;
-    this.OTe = false;
-    this.OTf = true;
-    this.OTg = false;
-    this.OTh = false;
-    this.OTi = 2131235167;
-    this.OTj = 0;
-    this.thy = 2131235181;
-    this.thx = 2131100904;
-    this.ywe = 2131235171;
-    this.ywf = 2131101414;
-    this.OTk = 2131235174;
-    this.OTl = 2131101427;
-    this.OTm = null;
-    this.xuO = new LinkedList();
-    this.OTn = new LinkedList();
-    this.OTs = false;
-    this.OTt = new View.OnClickListener()
+    this.wMn = false;
+    this.Wmq = true;
+    this.Wmr = false;
+    this.Wms = true;
+    this.Wmt = false;
+    this.Wmu = false;
+    this.Wmv = a.f.tag_deletetab;
+    this.Wmw = 0;
+    this.wNP = a.f.tag_white_tab_selector;
+    this.wNO = a.d.normal_text_color;
+    this.DWi = a.f.tag_green_tab_selector;
+    this.DWj = a.d.wechat_green;
+    this.Wmx = a.f.tag_highlight_tab_selector;
+    this.Wmy = a.d.white_text_color;
+    this.Wmz = null;
+    this.Crg = new LinkedList();
+    this.WmA = new LinkedList();
+    this.WmG = false;
+    this.WmH = new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
         AppMethodBeat.i(142179);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMTagPanel$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/MMTagPanel$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (((Integer)paramAnonymousView.getTag()).intValue() == 0)
         {
           MMTagPanel.this.a((TextView)paramAnonymousView, true, false);
-          if (MMTagPanel.e(MMTagPanel.this) != null) {
+          if (MMTagPanel.d(MMTagPanel.this) != null) {
             paramAnonymousView.post(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(142176);
-                MMTagPanel.e(MMTagPanel.this).anc(((TextView)paramAnonymousView).getText().toString());
+                MMTagPanel.d(MMTagPanel.this).auW(((TextView)paramAnonymousView).getText().toString());
                 AppMethodBeat.o(142176);
               }
             });
@@ -216,39 +224,39 @@ public class MMTagPanel
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/base/MMTagPanel$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(142179);
           return;
-          if ((!MMTagPanel.f(MMTagPanel.this)) || (MMTagPanel.c(MMTagPanel.this)))
+          if ((!MMTagPanel.this.Wmr) || (MMTagPanel.b(MMTagPanel.this)))
           {
             MMTagPanel.this.a((TextView)paramAnonymousView, false, false);
-            if (MMTagPanel.e(MMTagPanel.this) != null) {
+            if (MMTagPanel.d(MMTagPanel.this) != null) {
               paramAnonymousView.post(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(142177);
-                  MMTagPanel.e(MMTagPanel.this).anb(((TextView)paramAnonymousView).getText().toString());
+                  MMTagPanel.d(MMTagPanel.this).auV(((TextView)paramAnonymousView).getText().toString());
                   AppMethodBeat.o(142177);
                 }
               });
             }
           }
-          else if (MMTagPanel.d(MMTagPanel.this) == null)
+          else if (MMTagPanel.c(MMTagPanel.this) == null)
           {
             MMTagPanel.a(MMTagPanel.this, MMTagPanel.a(MMTagPanel.this, ((TextView)paramAnonymousView).getText().toString()));
-            if (MMTagPanel.d(MMTagPanel.this) != null) {
-              MMTagPanel.this.a(MMTagPanel.d(MMTagPanel.this).OTG, false, true);
+            if (MMTagPanel.c(MMTagPanel.this) != null) {
+              MMTagPanel.this.a(MMTagPanel.c(MMTagPanel.this).WmT, false, true);
             }
           }
-          else if (MMTagPanel.d(MMTagPanel.this).OTG == paramAnonymousView)
+          else if (MMTagPanel.c(MMTagPanel.this).WmT == paramAnonymousView)
           {
             MMTagPanel.a(MMTagPanel.this, null);
             MMTagPanel.this.a((TextView)paramAnonymousView, false, false);
-            if (MMTagPanel.e(MMTagPanel.this) != null) {
+            if (MMTagPanel.d(MMTagPanel.this) != null) {
               paramAnonymousView.post(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(142178);
-                  MMTagPanel.e(MMTagPanel.this).anb(((TextView)paramAnonymousView).getText().toString());
+                  MMTagPanel.d(MMTagPanel.this).auV(((TextView)paramAnonymousView).getText().toString());
                   AppMethodBeat.o(142178);
                 }
               });
@@ -256,10 +264,10 @@ public class MMTagPanel
           }
           else
           {
-            MMTagPanel.this.gLg();
+            MMTagPanel.this.hKe();
             MMTagPanel.a(MMTagPanel.this, MMTagPanel.a(MMTagPanel.this, ((TextView)paramAnonymousView).getText().toString()));
-            if (MMTagPanel.d(MMTagPanel.this) != null) {
-              MMTagPanel.this.a(MMTagPanel.d(MMTagPanel.this).OTG, false, true);
+            if (MMTagPanel.c(MMTagPanel.this) != null) {
+              MMTagPanel.this.a(MMTagPanel.c(MMTagPanel.this).WmT, false, true);
             }
           }
         }
@@ -270,35 +278,35 @@ public class MMTagPanel
     AppMethodBeat.o(142187);
   }
   
-  private void a(d paramd)
+  private void a(MMTagPanel.d paramd)
   {
     AppMethodBeat.i(142204);
-    paramd.OTG.setOnClickListener(null);
-    if (this.OTn.size() >= 16)
+    paramd.WmT.setOnClickListener(null);
+    if (this.WmA.size() >= 16)
     {
       AppMethodBeat.o(142204);
       return;
     }
-    this.OTn.add(paramd);
+    this.WmA.add(paramd);
     AppMethodBeat.o(142204);
   }
   
   private void init()
   {
     AppMethodBeat.i(142189);
-    this.OTp = getContext().getResources().getDimensionPixelSize(2131165482);
-    this.OTq = LayoutInflater.from(getContext()).inflate(2131495646, null);
-    this.OTr = ((MMEditText)this.OTq.findViewById(2131299910));
-    this.OTr.setOnKeyListener(new View.OnKeyListener()
+    this.WmC = getContext().getResources().getDimensionPixelSize(a.e.HintTextSize);
+    this.WmD = LayoutInflater.from(getContext()).inflate(getEditViewLayoutId(), null);
+    this.WmE = ((MMEditText)this.WmD.findViewById(a.g.edittext));
+    this.WmE.setOnKeyListener(new View.OnKeyListener()
     {
       public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
         AppMethodBeat.i(142169);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.bm(paramAnonymousKeyEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMTagPanel$1", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.bn(paramAnonymousKeyEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/MMTagPanel$1", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.aFi());
         if ((paramAnonymousKeyEvent.getAction() == 0) && (67 == paramAnonymousInt))
         {
           Log.d("MicroMsg.MMTagPanel", "on del click, selection[%d, %d]", new Object[] { Integer.valueOf(MMTagPanel.a(MMTagPanel.this).getSelectionStart()), Integer.valueOf(MMTagPanel.a(MMTagPanel.this).getSelectionEnd()) });
@@ -309,18 +317,18 @@ public class MMTagPanel
             AppMethodBeat.o(142169);
             return false;
           }
-          MMTagPanel.this.cWT();
-          if ((MMTagPanel.b(MMTagPanel.this) == null) || (MMTagPanel.b(MMTagPanel.this).isEmpty()))
+          MMTagPanel.this.dmb();
+          if ((MMTagPanel.this.Crg == null) || (MMTagPanel.this.Crg.isEmpty()))
           {
             com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/base/MMTagPanel$1", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
             AppMethodBeat.o(142169);
             return false;
           }
-          if ((MMTagPanel.c(MMTagPanel.this)) || (MMTagPanel.d(MMTagPanel.this) != null)) {
+          if ((MMTagPanel.b(MMTagPanel.this)) || (MMTagPanel.c(MMTagPanel.this) != null)) {
             break label313;
           }
-          MMTagPanel.a(MMTagPanel.this, (MMTagPanel.d)MMTagPanel.b(MMTagPanel.this).getLast());
-          MMTagPanel.this.a(MMTagPanel.d(MMTagPanel.this).OTG, false, true);
+          MMTagPanel.a(MMTagPanel.this, (MMTagPanel.d)MMTagPanel.this.Crg.getLast());
+          MMTagPanel.this.a(MMTagPanel.c(MMTagPanel.this).WmT, false, true);
           MMTagPanel.a(MMTagPanel.this).setCursorVisible(false);
         }
         for (;;)
@@ -329,38 +337,43 @@ public class MMTagPanel
           AppMethodBeat.o(142169);
           return false;
           label313:
-          if ((MMTagPanel.d(MMTagPanel.this) != null) && (MMTagPanel.b(MMTagPanel.this) != null) && (MMTagPanel.b(MMTagPanel.this).getLast() != null) && (!Util.isNullOrNil(MMTagPanel.d(MMTagPanel.this).OTF)) && (!Util.isNullOrNil(((MMTagPanel.d)MMTagPanel.b(MMTagPanel.this).getLast()).OTF)) && (!MMTagPanel.d(MMTagPanel.this).OTF.equals(((MMTagPanel.d)MMTagPanel.b(MMTagPanel.this).getLast()).OTF)))
+          if ((MMTagPanel.c(MMTagPanel.this) != null) && (MMTagPanel.this.Crg != null) && (MMTagPanel.this.Crg.getLast() != null) && (!Util.isNullOrNil(MMTagPanel.c(MMTagPanel.this).WmS)) && (!Util.isNullOrNil(((MMTagPanel.d)MMTagPanel.this.Crg.getLast()).WmS)) && (!MMTagPanel.c(MMTagPanel.this).WmS.equals(((MMTagPanel.d)MMTagPanel.this.Crg.getLast()).WmS)))
           {
             Log.i("MicroMsg.MMTagPanel", "change hight");
-            MMTagPanel.this.gLg();
-            MMTagPanel.a(MMTagPanel.this, (MMTagPanel.d)MMTagPanel.b(MMTagPanel.this).getLast());
-            MMTagPanel.this.a(MMTagPanel.d(MMTagPanel.this).OTG, false, true);
+            MMTagPanel.this.hKe();
+            MMTagPanel.a(MMTagPanel.this, (MMTagPanel.d)MMTagPanel.this.Crg.getLast());
+            MMTagPanel.this.a(MMTagPanel.c(MMTagPanel.this).WmT, false, true);
             MMTagPanel.a(MMTagPanel.this).setCursorVisible(false);
           }
           else
           {
-            paramAnonymousView = ((MMTagPanel.d)MMTagPanel.b(MMTagPanel.this).getLast()).OTF;
+            paramAnonymousView = ((MMTagPanel.d)MMTagPanel.this.Crg.getLast()).WmS;
             MMTagPanel.this.removeTag(paramAnonymousView);
-            if (MMTagPanel.e(MMTagPanel.this) != null) {
-              MMTagPanel.e(MMTagPanel.this).and(paramAnonymousView);
+            if (MMTagPanel.d(MMTagPanel.this) != null) {
+              MMTagPanel.d(MMTagPanel.this).auX(paramAnonymousView);
             }
-            MMTagPanel.this.gLg();
+            MMTagPanel.this.hKe();
           }
         }
       }
     });
-    this.OTr.addTextChangedListener(new TextWatcher()
+    this.WmE.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
         AppMethodBeat.i(142170);
-        paramAnonymousEditable = paramAnonymousEditable.toString();
-        if (MMTagPanel.e(MMTagPanel.this) != null) {
-          MMTagPanel.e(MMTagPanel.this).ane(paramAnonymousEditable);
+        String str = paramAnonymousEditable.toString();
+        if (MMTagPanel.d(MMTagPanel.this) != null) {
+          MMTagPanel.d(MMTagPanel.this).auY(str);
         }
-        if (paramAnonymousEditable.length() > 0) {
-          MMTagPanel.this.gLg();
+        if (MMTagPanel.this.a(MMTagPanel.a(MMTagPanel.this), paramAnonymousEditable, str, this).length() > 0)
+        {
+          MMTagPanel.this.hKe();
+          MMTagPanel.a(MMTagPanel.this).setBackground(MMTagPanel.this.getResources().getDrawable(a.f.lebal_edittext_gb));
+          AppMethodBeat.o(142170);
+          return;
         }
+        MMTagPanel.a(MMTagPanel.this).setBackground(null);
         AppMethodBeat.o(142170);
       }
       
@@ -368,36 +381,36 @@ public class MMTagPanel
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    this.OTr.setOnFocusChangeListener(new View.OnFocusChangeListener()
+    this.WmE.setOnFocusChangeListener(new View.OnFocusChangeListener()
     {
       public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(142171);
         Log.d("MicroMsg.MMTagPanel", "on edittext focus changed %B", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
-        if ((paramAnonymousBoolean) && (MMTagPanel.e(MMTagPanel.this) != null)) {
-          MMTagPanel.e(MMTagPanel.this).cIk();
+        if ((paramAnonymousBoolean) && (MMTagPanel.d(MMTagPanel.this) != null)) {
+          MMTagPanel.d(MMTagPanel.this).cWR();
         }
         AppMethodBeat.o(142171);
       }
     });
-    this.OTr.setOnClickListener(new View.OnClickListener()
+    this.WmE.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(142172);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMTagPanel$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/MMTagPanel$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         Log.d("MicroMsg.MMTagPanel", "on edittext click");
-        MMTagPanel.this.gLg();
-        if (MMTagPanel.e(MMTagPanel.this) != null) {
-          MMTagPanel.e(MMTagPanel.this).cIk();
+        MMTagPanel.this.hKe();
+        if (MMTagPanel.d(MMTagPanel.this) != null) {
+          MMTagPanel.d(MMTagPanel.this).cWR();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/base/MMTagPanel$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(142172);
       }
     });
-    this.OTr.setOnEditorActionListener(new TextView.OnEditorActionListener()
+    this.WmE.setOnEditorActionListener(new TextView.OnEditorActionListener()
     {
       public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
@@ -409,26 +422,26 @@ public class MMTagPanel
     });
     final c localc = new c();
     b localb = new b();
-    this.OTr.setFilters(new InputFilter[] { localc, localb });
-    gLe();
+    this.WmE.setFilters(new InputFilter[] { localc, localb });
+    hKb();
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(142174);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMTagPanel$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        Log.d("MicroMsg.MMTagPanel", "on panel click, enableEditMode %B", new Object[] { Boolean.valueOf(MMTagPanel.f(MMTagPanel.this)) });
-        if (MMTagPanel.f(MMTagPanel.this))
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/MMTagPanel$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        Log.d("MicroMsg.MMTagPanel", "on panel click, enableEditMode %B", new Object[] { Boolean.valueOf(MMTagPanel.this.Wmr) });
+        if (MMTagPanel.this.Wmr)
         {
-          MMTagPanel.this.gLg();
+          MMTagPanel.this.hKe();
           MMTagPanel.a(MMTagPanel.this).requestFocus();
           MMTagPanel.a(MMTagPanel.this).setSelection(MMTagPanel.a(MMTagPanel.this).getText().length());
           ((InputMethodManager)MMTagPanel.this.getContext().getSystemService("input_method")).showSoftInput(MMTagPanel.a(MMTagPanel.this), 0);
           Log.d("MicroMsg.MMTagPanel", "on content click");
-          if (MMTagPanel.e(MMTagPanel.this) != null) {
-            MMTagPanel.e(MMTagPanel.this).cIk();
+          if (MMTagPanel.d(MMTagPanel.this) != null) {
+            MMTagPanel.d(MMTagPanel.this).cWR();
           }
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/base/MMTagPanel$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -440,7 +453,7 @@ public class MMTagPanel
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(142175);
-        if (MMTagPanel.g(MMTagPanel.this))
+        if (MMTagPanel.e(MMTagPanel.this))
         {
           paramAnonymousMotionEvent = MMTagPanel.this.getEditText();
           if (!Util.isNullOrNil(paramAnonymousMotionEvent))
@@ -449,20 +462,20 @@ public class MMTagPanel
             if (localc != null)
             {
               paramAnonymousView = paramAnonymousMotionEvent;
-              if (f.bnP(paramAnonymousMotionEvent) > localc.OTB)
+              if (g.bAB(paramAnonymousMotionEvent) > localc.WmO)
               {
-                int i = localc.OTB - f.bnR(paramAnonymousMotionEvent);
+                int i = localc.WmO - g.bAE(paramAnonymousMotionEvent);
                 paramAnonymousView = paramAnonymousMotionEvent;
                 if (i < paramAnonymousMotionEvent.length()) {
                   paramAnonymousView = paramAnonymousMotionEvent.substring(0, i);
                 }
               }
             }
-            MMTagPanel.this.dm(paramAnonymousView, true);
-            if (MMTagPanel.e(MMTagPanel.this) != null) {
-              MMTagPanel.e(MMTagPanel.this).anf(paramAnonymousView);
+            MMTagPanel.this.bR(paramAnonymousView, true);
+            if (MMTagPanel.d(MMTagPanel.this) != null) {
+              MMTagPanel.d(MMTagPanel.this).auZ(paramAnonymousView);
             }
-            MMTagPanel.this.gLc();
+            MMTagPanel.this.hKa();
           }
         }
         AppMethodBeat.o(142175);
@@ -472,74 +485,79 @@ public class MMTagPanel
     AppMethodBeat.o(142189);
   }
   
-  public final void Bz(boolean paramBoolean)
+  public final void FR(boolean paramBoolean)
   {
     AppMethodBeat.i(142197);
-    if (paramBoolean == this.OTe)
+    if (paramBoolean == this.Wmr)
     {
       AppMethodBeat.o(142197);
       return;
     }
-    this.OTe = paramBoolean;
-    removeView(this.OTq);
-    if (this.OTe)
+    this.Wmr = paramBoolean;
+    removeView(this.WmD);
+    if (this.Wmr)
     {
-      addView(this.OTq);
-      gLe();
+      addView(this.WmD);
+      hKb();
     }
     AppMethodBeat.o(142197);
+  }
+  
+  protected String a(EditText paramEditText, Editable paramEditable, String paramString, TextWatcher paramTextWatcher)
+  {
+    return paramString;
   }
   
   public final void a(TextView paramTextView, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(142207);
-    paramTextView.setTextSize(0, getContext().getResources().getDimension(2131165482) * com.tencent.mm.cb.a.ez(getContext()));
+    paramTextView.setTextSize(0, this.WmC);
     if (paramBoolean2)
     {
-      paramTextView.setBackgroundResource(this.OTk);
-      paramTextView.setTextColor(getResources().getColor(this.OTl));
-      paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, this.OTi, 0);
+      paramTextView.setBackgroundResource(this.Wmx);
+      paramTextView.setTextColor(getResources().getColor(this.Wmy));
+      paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, this.Wmv, 0);
       AppMethodBeat.o(142207);
       return;
     }
     if (paramBoolean1)
     {
       paramTextView.setTag(Integer.valueOf(1));
-      paramTextView.setBackgroundResource(this.ywe);
-      paramTextView.setTextColor(getResources().getColor(this.ywf));
+      paramTextView.setBackgroundResource(this.DWi);
+      paramTextView.setTextColor(getResources().getColor(this.DWj));
       paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       AppMethodBeat.o(142207);
       return;
     }
     paramTextView.setTag(Integer.valueOf(0));
-    paramTextView.setBackgroundResource(this.thy);
-    paramTextView.setTextColor(getResources().getColor(this.thx));
+    paramTextView.setBackgroundResource(this.wNP);
+    paramTextView.setTextColor(getResources().getColor(this.wNO));
     paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     AppMethodBeat.o(142207);
   }
   
-  protected final void a(d paramd, String paramString, boolean paramBoolean)
+  protected final void a(MMTagPanel.d paramd, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(142205);
-    paramd.OTF = paramString;
-    paramd.OTG.setText(com.tencent.mm.ui.g.c.b.a(getContext(), paramString, this.OTp));
-    TextView localTextView = paramd.OTG;
-    if (this.OTd) {}
-    for (paramString = this.OTt;; paramString = null)
+    paramd.WmS = paramString;
+    paramd.WmT.setText(com.tencent.mm.ui.h.c.b.a(getContext(), paramString, this.WmC));
+    TextView localTextView = paramd.WmT;
+    if (this.Wmq) {}
+    for (paramString = this.WmH;; paramString = null)
     {
       localTextView.setOnClickListener(paramString);
-      a(paramd.OTG, paramBoolean, false);
+      a(paramd.WmT, paramBoolean, false);
       AppMethodBeat.o(142205);
       return;
     }
   }
   
-  public final void a(Collection<String> paramCollection, List<String> paramList)
+  public void a(Collection<String> paramCollection, List<String> paramList)
   {
     AppMethodBeat.i(142202);
-    gKV();
-    if (this.OTe) {
-      addView(this.OTq);
+    hJT();
+    if (this.Wmr) {
+      addView(this.WmD);
     }
     if ((paramList == null) || (paramList.isEmpty()))
     {
@@ -553,16 +571,14 @@ public class MMTagPanel
       if (paramCollection == null) {}
       for (boolean bool = false;; bool = paramCollection.contains(str))
       {
-        dm(str, bool);
+        bR(str, bool);
         break;
       }
     }
     AppMethodBeat.o(142202);
   }
   
-  protected void cWT() {}
-  
-  public final void dm(String paramString, boolean paramBoolean)
+  public void bR(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(142208);
     if (Util.isNullOrNil(paramString))
@@ -574,31 +590,33 @@ public class MMTagPanel
     paramString = paramString.trim();
     Log.d("MicroMsg.MMTagPanel", "want to add tag %s, do remove tag first", new Object[] { paramString });
     removeTag(paramString);
-    Object localObject = this.xuO.iterator();
+    Object localObject = this.Crg.iterator();
     while (((Iterator)localObject).hasNext()) {
-      if (paramString.equals(((d)((Iterator)localObject).next()).OTF))
+      if (paramString.equals(((MMTagPanel.d)((Iterator)localObject).next()).WmS))
       {
         Log.w("MicroMsg.MMTagPanel", "want to add tag %s, but it exsited!", new Object[] { paramString });
         AppMethodBeat.o(142208);
         return;
       }
     }
-    localObject = gLf();
-    a((d)localObject, paramString, paramBoolean);
-    this.xuO.add(localObject);
-    if (this.OTe) {
-      addView(((d)localObject).OTG, getChildCount() - 1);
+    localObject = hKd();
+    a((MMTagPanel.d)localObject, paramString, paramBoolean);
+    this.Crg.add(localObject);
+    if (this.Wmr) {
+      addView(((MMTagPanel.d)localObject).WmT, getChildCount() - 1);
     }
     for (;;)
     {
-      gLg();
+      hKe();
       AppMethodBeat.o(142208);
       return;
-      addView(((d)localObject).OTG);
+      addView(((MMTagPanel.d)localObject).WmT);
     }
   }
   
-  public final void dn(String paramString, boolean paramBoolean)
+  protected void dmb() {}
+  
+  public final void dy(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(142211);
     if (Util.isNullOrNil(paramString))
@@ -607,14 +625,14 @@ public class MMTagPanel
       AppMethodBeat.o(142211);
       return;
     }
-    Iterator localIterator = this.xuO.iterator();
+    Iterator localIterator = this.Crg.iterator();
     while (localIterator.hasNext())
     {
-      d locald = (d)localIterator.next();
-      if (paramString.equals(locald.OTF))
+      MMTagPanel.d locald = (MMTagPanel.d)localIterator.next();
+      if (paramString.equals(locald.WmS))
       {
         a(locald, paramString, paramBoolean);
-        gLg();
+        hKe();
         AppMethodBeat.o(142211);
         return;
       }
@@ -623,136 +641,32 @@ public class MMTagPanel
     AppMethodBeat.o(142211);
   }
   
-  public void gKV()
+  protected TextView eLu()
   {
-    AppMethodBeat.i(142201);
-    this.xuO.clear();
-    removeAllViews();
-    Iterator localIterator = this.xuO.iterator();
-    while (localIterator.hasNext()) {
-      a((d)localIterator.next());
-    }
-    AppMethodBeat.o(142201);
-  }
-  
-  public final void gLc()
-  {
-    AppMethodBeat.i(142194);
-    if (this.OTr != null) {
-      this.OTr.setText("");
-    }
-    AppMethodBeat.o(142194);
-  }
-  
-  public final void gLd()
-  {
-    AppMethodBeat.i(142195);
-    if ((this.OTr == null) || (this.OTr.isFocused()))
-    {
-      AppMethodBeat.o(142195);
-      return;
-    }
-    this.OTr.requestFocus();
-    AppMethodBeat.o(142195);
-  }
-  
-  public final void gLe()
-  {
-    AppMethodBeat.i(142196);
-    if ((this.OTr != null) && (this.OTr.isFocused()))
-    {
-      Log.d("MicroMsg.MMTagPanel", "do clear edit focus");
-      InputMethodManager localInputMethodManager = (InputMethodManager)getContext().getSystemService("input_method");
-      if (localInputMethodManager == null)
-      {
-        AppMethodBeat.o(142196);
-        return;
-      }
-      IBinder localIBinder = this.OTr.getWindowToken();
-      if (localIBinder == null)
-      {
-        AppMethodBeat.o(142196);
-        return;
-      }
-      localInputMethodManager.hideSoftInputFromWindow(localIBinder, 0);
-      this.OTr.clearFocus();
-    }
-    AppMethodBeat.o(142196);
-  }
-  
-  protected final d gLf()
-  {
-    AppMethodBeat.i(142203);
-    if (!this.OTn.isEmpty())
-    {
-      localObject = (d)this.OTn.removeFirst();
-      AppMethodBeat.o(142203);
-      return localObject;
-    }
-    d locald = new d();
+    AppMethodBeat.i(190847);
     TextView localTextView = new TextView(getContext());
-    localTextView.setBackgroundResource(this.thy);
-    localTextView.setTextColor(getResources().getColor(this.thx));
+    localTextView.setBackgroundResource(this.wNP);
+    localTextView.setTextColor(getResources().getColor(this.wNO));
     localTextView.setTag(Integer.valueOf(0));
     localTextView.setGravity(17);
-    localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, this.OTi, 0);
-    if (this.OTd) {}
-    for (Object localObject = this.OTt;; localObject = null)
+    localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, this.Wmv, 0);
+    if (this.Wmq) {}
+    for (View.OnClickListener localOnClickListener = this.WmH;; localOnClickListener = null)
     {
-      localTextView.setOnClickListener((View.OnClickListener)localObject);
+      localTextView.setOnClickListener(localOnClickListener);
       localTextView.setEllipsize(TextUtils.TruncateAt.END);
       localTextView.setSingleLine();
-      locald.OTG = localTextView;
-      AppMethodBeat.o(142203);
-      return locald;
+      AppMethodBeat.o(190847);
+      return localTextView;
     }
-  }
-  
-  protected final void gLg()
-  {
-    AppMethodBeat.i(142206);
-    if (this.OTr != null)
-    {
-      Log.d("MicroMsg.MMTagPanel", "do clear high light info, edittext is focus %B", new Object[] { Boolean.valueOf(this.OTr.isFocused()) });
-      this.OTr.setCursorVisible(true);
-    }
-    if (this.OTm == null)
-    {
-      AppMethodBeat.o(142206);
-      return;
-    }
-    TextView localTextView = this.OTm.OTG;
-    if (((Integer)this.OTm.OTG.getTag()).intValue() == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(localTextView, bool, false);
-      this.OTm = null;
-      AppMethodBeat.o(142206);
-      return;
-    }
-  }
-  
-  public final void gLh()
-  {
-    AppMethodBeat.i(142210);
-    Iterator localIterator = this.xuO.iterator();
-    while (localIterator.hasNext())
-    {
-      d locald = (d)localIterator.next();
-      removeView(locald.OTG);
-      a(locald);
-    }
-    this.xuO.clear();
-    gLg();
-    AppMethodBeat.o(142210);
   }
   
   public String getEditText()
   {
     AppMethodBeat.i(142193);
-    if (this.OTr != null)
+    if (this.WmE != null)
     {
-      String str = this.OTr.getText().toString();
+      String str = this.WmE.getText().toString();
       AppMethodBeat.o(142193);
       return str;
     }
@@ -760,10 +674,44 @@ public class MMTagPanel
     return "";
   }
   
+  protected int getEditViewLayoutId()
+  {
+    return a.h.mm_tag_panel_edittext;
+  }
+  
+  public String getEdittextText()
+  {
+    AppMethodBeat.i(190802);
+    if ((this.Wmr) && (!Util.isNullOrNil(this.WmE.getText())))
+    {
+      String str = this.WmE.getText().toString();
+      AppMethodBeat.o(190802);
+      return str;
+    }
+    AppMethodBeat.o(190802);
+    return "";
+  }
+  
+  public ArrayList<String> getSelectTagList()
+  {
+    AppMethodBeat.i(190824);
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.Crg.iterator();
+    while (localIterator.hasNext())
+    {
+      MMTagPanel.d locald = (MMTagPanel.d)localIterator.next();
+      if ((locald != null) && (!Util.isNullOrNil(locald.WmS)) && (locald.WmT != null) && (((Integer)locald.WmT.getTag()).intValue() == 1)) {
+        localArrayList.add(locald.WmS);
+      }
+    }
+    AppMethodBeat.o(190824);
+    return localArrayList;
+  }
+  
   public int getTagCount()
   {
     AppMethodBeat.i(142200);
-    int i = this.xuO.size();
+    int i = this.Crg.size();
     AppMethodBeat.o(142200);
     return i;
   }
@@ -772,12 +720,12 @@ public class MMTagPanel
   {
     AppMethodBeat.i(142199);
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.xuO.iterator();
+    Iterator localIterator = this.Crg.iterator();
     while (localIterator.hasNext())
     {
-      d locald = (d)localIterator.next();
-      if (!Util.isNullOrNil(locald.OTF)) {
-        localArrayList.add(locald.OTF);
+      MMTagPanel.d locald = (MMTagPanel.d)localIterator.next();
+      if (!Util.isNullOrNil(locald.WmS)) {
+        localArrayList.add(locald.WmS);
       }
     }
     AppMethodBeat.o(142199);
@@ -788,16 +736,132 @@ public class MMTagPanel
   {
     AppMethodBeat.i(142198);
     TreeSet localTreeSet = new TreeSet();
-    Iterator localIterator = this.xuO.iterator();
+    Iterator localIterator = this.Crg.iterator();
     while (localIterator.hasNext())
     {
-      d locald = (d)localIterator.next();
-      if (!Util.isNullOrNil(locald.OTF)) {
-        localTreeSet.add(locald.OTF);
+      MMTagPanel.d locald = (MMTagPanel.d)localIterator.next();
+      if (!Util.isNullOrNil(locald.WmS)) {
+        localTreeSet.add(locald.WmS);
       }
     }
     AppMethodBeat.o(142198);
     return localTreeSet;
+  }
+  
+  public void hJT()
+  {
+    AppMethodBeat.i(142201);
+    this.Crg.clear();
+    removeAllViews();
+    Iterator localIterator = this.Crg.iterator();
+    while (localIterator.hasNext()) {
+      a((MMTagPanel.d)localIterator.next());
+    }
+    AppMethodBeat.o(142201);
+  }
+  
+  public final void hKa()
+  {
+    AppMethodBeat.i(142194);
+    if (this.WmE != null) {
+      this.WmE.setText("");
+    }
+    AppMethodBeat.o(142194);
+  }
+  
+  public final void hKb()
+  {
+    AppMethodBeat.i(142196);
+    if ((this.WmE != null) && (this.WmE.isFocused()))
+    {
+      Log.d("MicroMsg.MMTagPanel", "do clear edit focus");
+      InputMethodManager localInputMethodManager = (InputMethodManager)getContext().getSystemService("input_method");
+      if (localInputMethodManager == null)
+      {
+        AppMethodBeat.o(142196);
+        return;
+      }
+      IBinder localIBinder = this.WmE.getWindowToken();
+      if (localIBinder == null)
+      {
+        AppMethodBeat.o(142196);
+        return;
+      }
+      localInputMethodManager.hideSoftInputFromWindow(localIBinder, 0);
+      this.WmE.clearFocus();
+    }
+    AppMethodBeat.o(142196);
+  }
+  
+  public final void hKc()
+  {
+    this.Wmq = false;
+  }
+  
+  protected final MMTagPanel.d hKd()
+  {
+    AppMethodBeat.i(142203);
+    if (!this.WmA.isEmpty())
+    {
+      locald = (MMTagPanel.d)this.WmA.removeFirst();
+      AppMethodBeat.o(142203);
+      return locald;
+    }
+    MMTagPanel.d locald = new MMTagPanel.d();
+    locald.WmT = eLu();
+    AppMethodBeat.o(142203);
+    return locald;
+  }
+  
+  protected final void hKe()
+  {
+    AppMethodBeat.i(142206);
+    if (this.WmE != null)
+    {
+      Log.d("MicroMsg.MMTagPanel", "do clear high light info, edittext is focus %B", new Object[] { Boolean.valueOf(this.WmE.isFocused()) });
+      this.WmE.setCursorVisible(true);
+    }
+    if (this.Wmz == null)
+    {
+      AppMethodBeat.o(142206);
+      return;
+    }
+    TextView localTextView = this.Wmz.WmT;
+    if (((Integer)this.Wmz.WmT.getTag()).intValue() == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a(localTextView, bool, false);
+      this.Wmz = null;
+      AppMethodBeat.o(142206);
+      return;
+    }
+  }
+  
+  public final void hKf()
+  {
+    AppMethodBeat.i(142210);
+    Iterator localIterator = this.Crg.iterator();
+    while (localIterator.hasNext())
+    {
+      MMTagPanel.d locald = (MMTagPanel.d)localIterator.next();
+      removeView(locald.WmT);
+      a(locald);
+    }
+    this.Crg.clear();
+    hKe();
+    AppMethodBeat.o(142210);
+  }
+  
+  public final void hch()
+  {
+    AppMethodBeat.i(142195);
+    if ((this.WmE == null) || (this.WmE.isFocused()))
+    {
+      AppMethodBeat.o(142195);
+      return;
+    }
+    this.WmE.requestFocus();
+    AppMethodBeat.o(142195);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -822,16 +886,16 @@ public class MMTagPanel
       AppMethodBeat.o(142209);
       return;
     }
-    Iterator localIterator = this.xuO.iterator();
+    Iterator localIterator = this.Crg.iterator();
     while (localIterator.hasNext())
     {
-      d locald = (d)localIterator.next();
-      if (paramString.equals(locald.OTF))
+      MMTagPanel.d locald = (MMTagPanel.d)localIterator.next();
+      if (paramString.equals(locald.WmS))
       {
-        this.xuO.remove(locald);
-        removeView(locald.OTG);
+        this.Crg.remove(locald);
+        removeView(locald.WmT);
         a(locald);
-        gLg();
+        hKe();
         AppMethodBeat.o(142209);
         return;
       }
@@ -842,14 +906,14 @@ public class MMTagPanel
   
   public void setCallBack(a parama)
   {
-    this.OTo = parama;
+    this.WmB = parama;
   }
   
   public void setEditHint(String paramString)
   {
     AppMethodBeat.i(142192);
-    if (this.OTr != null) {
-      this.OTr.setHint(paramString);
+    if (this.WmE != null) {
+      this.WmE.setHint(paramString);
     }
     AppMethodBeat.o(142192);
   }
@@ -857,8 +921,8 @@ public class MMTagPanel
   public void setEditTextColor(int paramInt)
   {
     AppMethodBeat.i(142191);
-    if (this.OTr != null) {
-      this.OTr.setTextColor(paramInt);
+    if (this.WmE != null) {
+      this.WmE.setTextColor(paramInt);
     }
     AppMethodBeat.o(142191);
   }
@@ -866,22 +930,37 @@ public class MMTagPanel
   public void setEditTextHit(boolean paramBoolean)
   {
     AppMethodBeat.i(142213);
-    if (this.OTr != null)
+    if (this.WmE != null)
     {
       if (paramBoolean)
       {
-        this.OTr.setHint(2131755176);
+        this.WmE.setHint(a.k.add_tag_tips);
         AppMethodBeat.o(142213);
         return;
       }
-      this.OTr.setHint("");
+      this.WmE.setHint("");
     }
     AppMethodBeat.o(142213);
   }
   
+  public void setEdittextMaxSize(int paramInt)
+  {
+    AppMethodBeat.i(190761);
+    this.WmF = paramInt;
+    if (this.WmE != null) {
+      this.WmE.setMaxEms(paramInt);
+    }
+    AppMethodBeat.o(190761);
+  }
+  
+  public void setHintTextSize(int paramInt)
+  {
+    this.WmC = paramInt;
+  }
+  
   public void setIsAllowEnterCharacter(boolean paramBoolean)
   {
-    this.OTs = paramBoolean;
+    this.WmG = paramBoolean;
   }
   
   public void setPanelClickable(boolean paramBoolean)
@@ -892,90 +971,90 @@ public class MMTagPanel
   public void setTagEditTextBG(int paramInt)
   {
     AppMethodBeat.i(142190);
-    this.OTj = paramInt;
-    if (this.OTr != null)
+    this.Wmw = paramInt;
+    if (this.WmE != null)
     {
-      com.tencent.mm.cb.a.fromDPToPix(getContext(), 6);
-      getResources().getDimensionPixelSize(2131165534);
-      this.OTr.setBackgroundResource(this.OTj);
+      com.tencent.mm.ci.a.fromDPToPix(getContext(), 6);
+      getResources().getDimensionPixelSize(a.e.NormalPadding);
+      this.WmE.setBackgroundResource(this.Wmw);
     }
     AppMethodBeat.o(142190);
   }
   
   public void setTagHighlineBG(int paramInt)
   {
-    this.OTk = paramInt;
+    this.Wmx = paramInt;
   }
   
   public void setTagNormalBG(int paramInt)
   {
-    this.thy = paramInt;
+    this.wNP = paramInt;
   }
   
   public void setTagNormalTextColorRes(int paramInt)
   {
-    this.thx = paramInt;
+    this.wNO = paramInt;
   }
   
   public void setTagSelectedBG(int paramInt)
   {
-    this.ywe = paramInt;
+    this.DWi = paramInt;
   }
   
   public void setTagSelectedTextColorRes(int paramInt)
   {
-    this.ywf = paramInt;
+    this.DWj = paramInt;
   }
   
   public void setTagTipsDrawable(int paramInt)
   {
-    this.OTi = paramInt;
+    this.Wmv = paramInt;
   }
   
   public void setTaghighlineTextColorRes(int paramInt)
   {
-    this.OTl = paramInt;
+    this.Wmy = paramInt;
   }
   
   public static abstract interface a
   {
-    public abstract void E(boolean paramBoolean, int paramInt);
+    public abstract void I(boolean paramBoolean, int paramInt);
     
-    public abstract void anb(String paramString);
+    public abstract void auV(String paramString);
     
-    public abstract void anc(String paramString);
+    public abstract void auW(String paramString);
     
-    public abstract void and(String paramString);
+    public abstract void auX(String paramString);
     
-    public abstract void ane(String paramString);
+    public abstract void auY(String paramString);
     
-    public abstract void anf(String paramString);
+    public abstract void auZ(String paramString);
     
-    public abstract void cIk();
+    public abstract void cWR();
   }
   
   public final class b
     implements InputFilter
   {
-    List<String> OTx;
-    int mark;
+    List<String> WmL;
+    int iSy;
     
     public b()
     {
       AppMethodBeat.i(142183);
-      this.OTx = new LinkedList();
+      this.WmL = new LinkedList();
       AppMethodBeat.o(142183);
     }
     
     public final CharSequence filter(final CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
     {
       AppMethodBeat.i(142184);
-      Log.d("MicroMsg.MMTagPanel", "on create tag filter, %s [%d, %d) %s [%d, %d), maxlength[%B]", new Object[] { paramCharSequence, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramSpanned, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Boolean.valueOf(MMTagPanel.i(MMTagPanel.this)) });
-      this.mark = -1;
-      this.OTx.clear();
+      Log.d("MicroMsg.MMTagPanel", "on create tag filter, %s [%d, %d) %s [%d, %d), maxlength[%B]", new Object[] { paramCharSequence, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramSpanned, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Boolean.valueOf(MMTagPanel.g(MMTagPanel.this)) });
+      this.iSy = -1;
+      this.WmL.clear();
       Object localObject = new char[paramInt2 - paramInt1];
       TextUtils.getChars(paramCharSequence, paramInt1, paramInt2, (char[])localObject, 0);
-      if (!MMTagPanel.j(MMTagPanel.this))
+      if (!MMTagPanel.h(MMTagPanel.this))
       {
         i = 0;
         paramCharSequence = new StringBuilder();
@@ -1001,7 +1080,7 @@ public class MMTagPanel
             public final void run()
             {
               AppMethodBeat.i(142180);
-              MMTagPanel.e(MMTagPanel.this).anf(paramCharSequence.toString());
+              MMTagPanel.d(MMTagPanel.this).auZ(paramCharSequence.toString());
               AppMethodBeat.o(142180);
             }
           });
@@ -1016,35 +1095,35 @@ public class MMTagPanel
       {
         if ((localObject[i] == '\n') || (localObject[i] == ',') || (localObject[i] == ';') || (localObject[i] == '、') || (localObject[i] == 65292) || (localObject[i] == 65307))
         {
-          if (-1 != this.mark) {
+          if (-1 != this.iSy) {
             break label385;
           }
-          this.OTx.add((paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, i)).trim());
+          this.WmL.add((paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, i)).trim());
         }
         for (;;)
         {
-          this.mark = (i + 1);
+          this.iSy = (i + 1);
           i += 1;
           break;
           label385:
-          this.OTx.add(paramCharSequence.subSequence(this.mark, i).toString().trim());
+          this.WmL.add(paramCharSequence.subSequence(this.iSy, i).toString().trim());
         }
       }
-      if (MMTagPanel.h(MMTagPanel.this))
+      if (MMTagPanel.f(MMTagPanel.this))
       {
-        paramInt1 = f.bnP(paramSpanned.toString());
-        if ((MMTagPanel.i(MMTagPanel.this)) && (paramCharSequence.equals("\n")) && (36 < paramInt1)) {
-          this.OTx.clear();
+        paramInt1 = g.bAB(paramSpanned.toString());
+        if ((MMTagPanel.g(MMTagPanel.this)) && (paramCharSequence.equals("\n")) && (36 < paramInt1)) {
+          this.WmL.clear();
         }
       }
-      if (this.OTx.isEmpty())
+      if (this.WmL.isEmpty())
       {
         AppMethodBeat.o(142184);
         return null;
       }
-      if (MMTagPanel.e(MMTagPanel.this) != null)
+      if (MMTagPanel.d(MMTagPanel.this) != null)
       {
-        localObject = this.OTx.iterator();
+        localObject = this.WmL.iterator();
         while (((Iterator)localObject).hasNext())
         {
           final String str = (String)((Iterator)localObject).next();
@@ -1054,17 +1133,17 @@ public class MMTagPanel
               public final void run()
               {
                 AppMethodBeat.i(142181);
-                MMTagPanel.e(MMTagPanel.this).anf(str.trim());
+                MMTagPanel.d(MMTagPanel.this).auZ(str.trim());
                 AppMethodBeat.o(142181);
               }
             });
           }
         }
       }
-      if (this.mark >= paramInt2) {
+      if (this.iSy >= paramInt2) {
         paramSpanned.length();
       }
-      for (paramCharSequence = paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();; paramCharSequence = paramCharSequence.subSequence(this.mark, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()))
+      for (paramCharSequence = paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();; paramCharSequence = paramCharSequence.subSequence(this.iSy, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()))
       {
         MMTagPanel.this.post(new Runnable()
         {
@@ -1085,50 +1164,50 @@ public class MMTagPanel
   public final class c
     implements InputFilter
   {
-    int OTB = 36;
-    private int OTC = 256;
-    private int OTD;
+    int WmO = 36;
+    private int WmP = 256;
+    private int WmQ;
     
     public c() {}
     
     public final CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
     {
       AppMethodBeat.i(142186);
-      paramInt1 = f.bnP(paramSpanned.toString()) + f.bnP(paramCharSequence.toString());
+      paramInt1 = g.bAB(paramSpanned.toString()) + g.bAB(paramCharSequence.toString());
       if (paramInt4 > paramInt3) {
-        if (paramInt1 - (paramInt4 - paramInt3) > this.OTB)
+        if (paramInt1 - (paramInt4 - paramInt3) > this.WmO)
         {
           MMTagPanel.a(MMTagPanel.this, true);
-          this.OTD = (paramInt1 - (paramInt4 - paramInt3) - this.OTB);
+          this.WmQ = (paramInt1 - (paramInt4 - paramInt3) - this.WmO);
         }
       }
       for (;;)
       {
-        if ((MMTagPanel.h(MMTagPanel.this)) && (1 == this.OTD) && (paramCharSequence.equals("\n"))) {
-          this.OTD = 0;
+        if ((MMTagPanel.f(MMTagPanel.this)) && (1 == this.WmQ) && (paramCharSequence.equals("\n"))) {
+          this.WmQ = 0;
         }
-        if (MMTagPanel.e(MMTagPanel.this) != null) {
+        if (MMTagPanel.d(MMTagPanel.this) != null) {
           MMTagPanel.this.post(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(142185);
-              MMTagPanel.e(MMTagPanel.this).E(MMTagPanel.i(MMTagPanel.this), f.dp(MMTagPanel.c.a(MMTagPanel.c.this), ""));
+              MMTagPanel.d(MMTagPanel.this).I(MMTagPanel.g(MMTagPanel.this), g.dq(MMTagPanel.c.a(MMTagPanel.c.this), ""));
               AppMethodBeat.o(142185);
             }
           });
         }
-        if (paramInt1 <= this.OTC) {
+        if (paramInt1 <= this.WmP) {
           break;
         }
         AppMethodBeat.o(142186);
         return "";
         MMTagPanel.a(MMTagPanel.this, false);
         continue;
-        if (paramInt1 > this.OTB)
+        if (paramInt1 > this.WmO)
         {
           MMTagPanel.a(MMTagPanel.this, true);
-          this.OTD = (paramInt1 - this.OTB);
+          this.WmQ = (paramInt1 - this.WmO);
         }
         else
         {
@@ -1139,16 +1218,10 @@ public class MMTagPanel
       return paramCharSequence;
     }
   }
-  
-  public static final class d
-  {
-    public String OTF;
-    public TextView OTG;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMTagPanel
  * JD-Core Version:    0.7.0.1
  */

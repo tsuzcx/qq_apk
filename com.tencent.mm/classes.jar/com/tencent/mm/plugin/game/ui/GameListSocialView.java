@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.g.e;
+import com.tencent.mm.plugin.game.g.f;
 import com.tencent.mm.pluginsdk.ui.span.l;
 import java.util.LinkedList;
 
@@ -41,7 +43,7 @@ public class GameListSocialView
       i = 0;
       while (i < j - k)
       {
-        inflate(getContext(), 2131494904, this);
+        inflate(getContext(), g.f.CnJ, this);
         i += 1;
       }
     }
@@ -62,8 +64,8 @@ public class GameListSocialView
     while (i < paramLinkedList.size() / 2)
     {
       Object localObject = getChildAt(i);
-      TextView localTextView = (TextView)((View)localObject).findViewById(2131302083);
-      localObject = (TextView)((View)localObject).findViewById(2131302084);
+      TextView localTextView = (TextView)((View)localObject).findViewById(g.e.Cks);
+      localObject = (TextView)((View)localObject).findViewById(g.e.Ckt);
       localTextView.setText(l.b(getContext(), (CharSequence)paramLinkedList.get(i * 2), localTextView.getTextSize()));
       ((TextView)localObject).setText(l.b(getContext(), (CharSequence)paramLinkedList.get(i * 2 + 1), ((TextView)localObject).getTextSize()));
       i += 1;

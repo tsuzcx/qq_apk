@@ -1,39 +1,23 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.loader.e.c.a;
 
 final class SnsCommentDetailUI$46
-  implements View.OnClickListener
+  extends com.tencent.mm.loader.c.c
 {
-  SnsCommentDetailUI$46(SnsCommentDetailUI paramSnsCommentDetailUI) {}
-  
-  public final void onClick(View paramView)
+  public final a<Bitmap> aRK()
   {
-    AppMethodBeat.i(163116);
-    b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/sns/ui/SnsCommentDetailUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    Log.e("MicroMsg.SnsCommentDetailUI", "scrollTopClickListener");
-    SnsCommentDetailUI.f(this.ECd);
-    if (!SnsCommentDetailUI.g(this.ECd))
-    {
-      a.a(this, "com/tencent/mm/plugin/sns/ui/SnsCommentDetailUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(163116);
-      return;
-    }
-    SnsCommentDetailUI.h(this.ECd);
-    a.a(this, "com/tencent/mm/plugin/sns/ui/SnsCommentDetailUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(163116);
+    AppMethodBeat.i(163115);
+    a locala = new a(new com.tencent.mm.loader.e.c.c(0.5F).aRY());
+    AppMethodBeat.o(163115);
+    return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsCommentDetailUI.46
  * JD-Core Version:    0.7.0.1
  */

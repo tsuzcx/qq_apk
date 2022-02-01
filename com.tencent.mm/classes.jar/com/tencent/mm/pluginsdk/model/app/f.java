@@ -3,8 +3,9 @@ package com.tencent.mm.pluginsdk.model.app;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.y;
-import com.tencent.mm.plugin.r.a;
+import com.tencent.mm.f.c.y;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.ab.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -18,48 +19,48 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class f
 {
-  public List<s> JVN;
-  public ConcurrentHashMap<String, Integer> JVO;
-  private MTimerHandler JVP;
+  public List<s> QWa;
+  public ConcurrentHashMap<String, Integer> QWb;
+  private MTimerHandler QWc;
   private MMHandler handler;
-  public List<s> hiK;
+  public List<s> jUI;
   
   public f()
   {
     AppMethodBeat.i(151668);
-    this.JVN = null;
-    this.hiK = null;
-    this.JVO = null;
-    this.JVP = new MTimerHandler("AppIconServiceTimer", new MTimerHandler.CallBack()
+    this.QWa = null;
+    this.jUI = null;
+    this.QWb = null;
+    this.QWc = new MTimerHandler("AppIconServiceTimer", new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(151666);
-        f.this.JVO.clear();
+        f.this.QWb.clear();
         AppMethodBeat.o(151666);
         return false;
       }
     }, false);
-    this.handler = new MMHandler(com.tencent.mm.kernel.g.aAk().getLooper())
+    this.handler = new MMHandler(h.aHJ().getLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(151667);
         paramAnonymousMessage = (x)paramAnonymousMessage.obj;
-        s locals = new s(paramAnonymousMessage.appId, paramAnonymousMessage.jjN);
-        if (f.this.JVN.contains(locals))
+        s locals = new s(paramAnonymousMessage.appId, paramAnonymousMessage.lZJ);
+        if (f.this.QWa.contains(locals))
         {
-          f.this.JVN.remove(locals);
-          if (!a.eAS().d(paramAnonymousMessage.appId, paramAnonymousMessage.data, paramAnonymousMessage.jjN)) {
+          f.this.QWa.remove(locals);
+          if (!a.fmz().d(paramAnonymousMessage.appId, paramAnonymousMessage.data, paramAnonymousMessage.lZJ)) {
             Log.e("MicroMsg.AppIconService", "handleMessage, saveIcon fail");
           }
         }
-        while (f.this.hiK.size() > 0)
+        while (f.this.jUI.size() > 0)
         {
-          paramAnonymousMessage = (s)f.this.hiK.remove(0);
+          paramAnonymousMessage = (s)f.this.jUI.remove(0);
           if (f.this.a(paramAnonymousMessage))
           {
-            f.this.JVN.add(paramAnonymousMessage);
+            f.this.QWa.add(paramAnonymousMessage);
             AppMethodBeat.o(151667);
             return;
           }
@@ -67,10 +68,10 @@ public final class f
         AppMethodBeat.o(151667);
       }
     };
-    this.JVN = new ArrayList();
-    this.hiK = new ArrayList();
-    this.JVO = new ConcurrentHashMap();
-    this.JVP.startTimer(600000L);
+    this.QWa = new ArrayList();
+    this.jUI = new ArrayList();
+    this.QWb = new ConcurrentHashMap();
+    this.QWc.startTimer(600000L);
     AppMethodBeat.o(151668);
   }
   
@@ -83,14 +84,14 @@ public final class f
       AppMethodBeat.o(151671);
       return false;
     }
-    Integer localInteger = Integer.valueOf(Util.nullAs((Integer)this.JVO.get(params.toString()), 0));
+    Integer localInteger = Integer.valueOf(Util.nullAs((Integer)this.QWb.get(params.toString()), 0));
     if (localInteger.intValue() >= 5)
     {
       Log.e("MicroMsg.AppIconService", "increaseCounter fail, has reached the max try count");
       AppMethodBeat.o(151671);
       return false;
     }
-    this.JVO.put(params.toString(), Integer.valueOf(localInteger.intValue() + 1));
+    this.QWb.put(params.toString(), Integer.valueOf(localInteger.intValue() + 1));
     AppMethodBeat.o(151671);
     return true;
   }
@@ -110,17 +111,17 @@ public final class f
       AppMethodBeat.o(151670);
       return false;
     }
-    Object localObject = a.eAS().bdG(params.appId);
+    Object localObject = a.fmz().bqc(params.appId);
     if (localObject == null)
     {
       Log.e("MicroMsg.AppIconService", "push, appinfo does not exist, appId = " + params.appId);
       AppMethodBeat.o(151670);
       return false;
     }
-    switch (params.jjN)
+    switch (params.lZJ)
     {
     default: 
-      Log.e("MicroMsg.AppIconService", "push, unknown iconType = " + params.jjN);
+      Log.e("MicroMsg.AppIconService", "push, unknown iconType = " + params.lZJ);
       AppMethodBeat.o(151670);
       return false;
     case 1: 
@@ -135,7 +136,7 @@ public final class f
     for (;;)
     {
       Log.i("MicroMsg.AppIconService", "appIconUrl = ".concat(String.valueOf(localObject)));
-      ThreadPool.post(new t(this.handler, params.appId, params.jjN, (String)localObject), "AppIconService_getIcon");
+      ThreadPool.post(new t(this.handler, params.appId, params.lZJ, (String)localObject), "AppIconService_getIcon");
       AppMethodBeat.o(151670);
       return true;
       if ((((g)localObject).field_appWatermarkUrl == null) || (((g)localObject).field_appWatermarkUrl.length() == 0))
@@ -146,33 +147,33 @@ public final class f
       }
       localObject = ((g)localObject).field_appWatermarkUrl;
       continue;
-      if ((((y)localObject).fmL == null) || (((y)localObject).fmL.length() == 0))
+      if ((((y)localObject).hrK == null) || (((y)localObject).hrK.length() == 0))
       {
         Log.e("MicroMsg.AppIconService", "push, appSuggestionIconUrl is null, appId = " + params.appId);
         AppMethodBeat.o(151670);
         return false;
       }
-      localObject = ((y)localObject).fmL;
+      localObject = ((y)localObject).hrK;
       continue;
-      if ((((y)localObject).fmW == null) || (((y)localObject).fmW.length() == 0))
+      if ((((y)localObject).hrV == null) || (((y)localObject).hrV.length() == 0))
       {
         Log.e("MicroMsg.AppIconService", "push, servicePanelIconUrl is null, appId = " + params.appId);
         AppMethodBeat.o(151670);
         return false;
       }
-      localObject = ((y)localObject).fmW;
+      localObject = ((y)localObject).hrV;
       continue;
-      if ((((y)localObject).fmX == null) || (((y)localObject).fmX.length() == 0))
+      if ((((y)localObject).hrW == null) || (((y)localObject).hrW.length() == 0))
       {
         Log.e("MicroMsg.AppIconService", "push, serviceListIconUrl is null, appId = " + params.appId);
         AppMethodBeat.o(151670);
         return false;
       }
-      localObject = ((y)localObject).fmX;
+      localObject = ((y)localObject).hrW;
     }
   }
   
-  public final void gD(String paramString, int paramInt)
+  public final void hm(String paramString, int paramInt)
   {
     AppMethodBeat.i(151669);
     if ((paramString == null) || (paramString.length() == 0))
@@ -182,23 +183,23 @@ public final class f
       return;
     }
     s locals = new s(paramString, paramInt);
-    if (this.JVN.contains(locals))
+    if (this.QWa.contains(locals))
     {
       Log.i("MicroMsg.AppIconService", "push, appId = " + paramString + ", iconType = " + paramInt + " already in running list");
       AppMethodBeat.o(151669);
       return;
     }
-    if (this.JVN.size() >= 5)
+    if (this.QWa.size() >= 5)
     {
       Log.i("MicroMsg.AppIconService", "running list has reached the max count");
-      if (!this.hiK.contains(locals)) {
-        this.hiK.add(locals);
+      if (!this.jUI.contains(locals)) {
+        this.jUI.add(locals);
       }
       AppMethodBeat.o(151669);
       return;
     }
     if (a(locals)) {
-      this.JVN.add(locals);
+      this.QWa.add(locals);
     }
     AppMethodBeat.o(151669);
   }

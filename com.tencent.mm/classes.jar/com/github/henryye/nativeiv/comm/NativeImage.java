@@ -1,7 +1,7 @@
 package com.github.henryye.nativeiv.comm;
 
 import android.graphics.Rect;
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.github.henryye.nativeiv.ImageDecodeConfig;
 import com.github.henryye.nativeiv.bitmap.BitmapType;
 import com.github.henryye.nativeiv.bitmap.IBitmap;
@@ -46,7 +46,7 @@ class NativeImage
     //   33: aload_2
     //   34: monitorenter
     //   35: aload_2
-    //   36: getfield 48	com/github/henryye/nativeiv/comm/a:bbp	Ljava/util/HashMap;
+    //   36: getfield 48	com/github/henryye/nativeiv/comm/a:aKN	Ljava/util/HashMap;
     //   39: aload_0
     //   40: invokevirtual 52	java/lang/Object:hashCode	()I
     //   43: invokestatic 58	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
@@ -82,11 +82,9 @@ class NativeImage
     // Exception table:
     //   from	to	target	type
     //   35	53	61	finally
-    //   62	64	61	finally
     //   33	35	71	finally
     //   53	55	71	finally
-    //   64	71	71	finally
-    //   72	74	71	finally
+    //   62	71	71	finally
   }
   
   /* Error */
@@ -117,7 +115,7 @@ class NativeImage
     //   42: aload_0
     //   43: invokevirtual 88	com/github/henryye/nativeiv/comm/NativeImage:recycle	()V
     //   46: aload_1
-    //   47: invokestatic 94	com/github/henryye/nativeiv/c/a:j	(Ljava/io/InputStream;)Ljava/nio/ByteBuffer;
+    //   47: invokestatic 94	com/github/henryye/nativeiv/c/a:h	(Ljava/io/InputStream;)Ljava/nio/ByteBuffer;
     //   50: astore_3
     //   51: aload_2
     //   52: getfield 100	com/github/henryye/nativeiv/ImageDecodeConfig:mConfig	Landroid/graphics/Bitmap$Config;
@@ -268,9 +266,9 @@ class NativeImage
       {
         locala.width = this.mNativeBitmapStruct.width;
         locala.height = this.mNativeBitmapStruct.height;
-        locala.bbd = true;
-        locala.bbe = Integer.valueOf(this.mNativeBitmapStruct.glFormat);
-        locala.bbf = this.lastDecodeUsing;
+        locala.aKB = true;
+        locala.aKC = Integer.valueOf(this.mNativeBitmapStruct.glFormat);
+        locala.aKD = this.lastDecodeUsing;
       }
       AppMethodBeat.o(127369);
       return locala;
@@ -347,7 +345,7 @@ class NativeImage
     //   76: aload_3
     //   77: monitorenter
     //   78: aload_3
-    //   79: getfield 48	com/github/henryye/nativeiv/comm/a:bbp	Ljava/util/HashMap;
+    //   79: getfield 48	com/github/henryye/nativeiv/comm/a:aKN	Ljava/util/HashMap;
     //   82: aload_0
     //   83: invokevirtual 52	java/lang/Object:hashCode	()I
     //   86: invokestatic 58	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
@@ -384,18 +382,17 @@ class NativeImage
     // Exception table:
     //   from	to	target	type
     //   78	95	108	finally
-    //   110	112	108	finally
     //   2	59	120	finally
     //   59	64	120	finally
     //   64	78	120	finally
     //   95	100	120	finally
     //   100	105	120	finally
-    //   112	120	120	finally
+    //   110	120	120	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.github.henryye.nativeiv.comm.NativeImage
  * JD-Core Version:    0.7.0.1
  */

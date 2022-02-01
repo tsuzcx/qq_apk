@@ -1,6 +1,6 @@
 package kotlin;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/Lazy;", "T", "", "value", "getValue", "()Ljava/lang/Object;", "isInitialized", "", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/Lazy;", "T", "", "value", "getValue", "()Ljava/lang/Object;", "isInitialized", "", "kotlin-stdlib"})
 public abstract interface f<T>
 {
   public abstract T getValue();

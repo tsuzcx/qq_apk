@@ -29,14 +29,6 @@ public final class e
     AppMethodBeat.o(154129);
   }
   
-  public final boolean a(Context paramContext, String paramString, HashMap<String, String> paramHashMap, ValueCallback<String> paramValueCallback)
-  {
-    AppMethodBeat.i(154131);
-    boolean bool = QbSdk.startQbOrMiniQBToLoadUrl(paramContext, paramString, paramHashMap, new a.d(paramValueCallback));
-    AppMethodBeat.o(154131);
-    return bool;
-  }
-  
   public final boolean canOpenWebPlus(Context paramContext)
   {
     AppMethodBeat.i(154135);
@@ -54,9 +46,16 @@ public final class e
   
   public final void disableAutoCreateX5Webview()
   {
-    AppMethodBeat.i(207240);
+    AppMethodBeat.i(206521);
     QbSdk.disableAutoCreateX5Webview();
-    AppMethodBeat.o(207240);
+    AppMethodBeat.o(206521);
+  }
+  
+  public final void disableSensitiveApi()
+  {
+    AppMethodBeat.i(206522);
+    QbSdk.disableSensitiveApi();
+    AppMethodBeat.o(206522);
   }
   
   public final void forceSysWebView()
@@ -68,9 +67,9 @@ public final class e
   
   public final String getMiniQBVersion(Context paramContext)
   {
-    AppMethodBeat.i(207241);
+    AppMethodBeat.i(206525);
     paramContext = QbSdk.getMiniQBVersion(paramContext);
-    AppMethodBeat.o(207241);
+    AppMethodBeat.o(206525);
     return paramContext;
   }
   
@@ -106,9 +105,9 @@ public final class e
   
   public final void setNewDnsHostList(String paramString)
   {
-    AppMethodBeat.i(207243);
+    AppMethodBeat.i(206527);
     QbSdk.setNewDnsHostList(paramString);
-    AppMethodBeat.o(207243);
+    AppMethodBeat.o(206527);
   }
   
   public final void setUploadCode(Context paramContext, int paramInt)
@@ -120,9 +119,9 @@ public final class e
   
   public final void setWebContentsDebuggingEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(207242);
+    AppMethodBeat.i(206526);
     WebView.setWebContentsDebuggingEnabled(paramBoolean);
-    AppMethodBeat.o(207242);
+    AppMethodBeat.o(206526);
   }
   
   public final int startMiniQBToLoadUrl(Context paramContext, String paramString, HashMap<String, String> paramHashMap, ValueCallback<String> paramValueCallback)
@@ -136,18 +135,18 @@ public final class e
   static final class a
     implements TbsListener
   {
-    h SFI;
+    h aagX;
     
     public a(h paramh)
     {
-      this.SFI = paramh;
+      this.aagX = paramh;
     }
     
     public final void onDownloadFinish(int paramInt)
     {
       AppMethodBeat.i(154121);
-      if (this.SFI != null) {
-        this.SFI.onDownloadFinish(paramInt);
+      if (this.aagX != null) {
+        this.aagX.onDownloadFinish(paramInt);
       }
       AppMethodBeat.o(154121);
     }
@@ -155,8 +154,8 @@ public final class e
     public final void onDownloadProgress(int paramInt)
     {
       AppMethodBeat.i(154123);
-      if (this.SFI != null) {
-        this.SFI.onDownloadProgress(paramInt);
+      if (this.aagX != null) {
+        this.aagX.onDownloadProgress(paramInt);
       }
       AppMethodBeat.o(154123);
     }
@@ -164,8 +163,8 @@ public final class e
     public final void onInstallFinish(int paramInt)
     {
       AppMethodBeat.i(154122);
-      if (this.SFI != null) {
-        this.SFI.onInstallFinish(paramInt);
+      if (this.aagX != null) {
+        this.aagX.onInstallFinish(paramInt);
       }
       AppMethodBeat.o(154122);
     }
@@ -173,7 +172,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.x5.sdk.e
  * JD-Core Version:    0.7.0.1
  */

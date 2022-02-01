@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.a;
+import com.tencent.mm.R.g;
 import com.tencent.mm.plugin.sight.decode.a.a;
 import com.tencent.mm.plugin.sight.decode.a.b;
 import com.tencent.mm.plugin.sight.decode.a.b.e;
@@ -21,7 +23,7 @@ public class SightPlayAutoSizeImageView
   extends ImageView
   implements a
 {
-  private b Dnr;
+  private b JsW;
   
   public SightPlayAutoSizeImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,29 +34,29 @@ public class SightPlayAutoSizeImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(28627);
-    this.Dnr = new a(this);
+    this.JsW = new a(this);
     AppMethodBeat.o(28627);
   }
   
   public final void clear()
   {
     AppMethodBeat.i(28628);
-    this.Dnr.clear();
+    this.JsW.clear();
     AppMethodBeat.o(28628);
   }
   
-  public final void e(String paramString, boolean paramBoolean, int paramInt)
+  public final void f(String paramString, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(169763);
-    this.Dnr.cd(paramString, paramBoolean);
+    this.JsW.cm(paramString, paramBoolean);
     AppMethodBeat.o(169763);
   }
   
-  public final void eVw()
+  public final void fIz()
   {
     AppMethodBeat.i(28634);
     setImageBitmap(null);
-    setImageResource(2131234279);
+    setImageResource(R.g.nosdcard_chatting_bg);
     AppMethodBeat.o(28634);
   }
   
@@ -76,17 +78,17 @@ public class SightPlayAutoSizeImageView
   
   public String getVideoPath()
   {
-    return this.Dnr.cJp;
+    return this.JsW.cJT;
   }
   
-  public final void im(int paramInt1, int paramInt2) {}
+  public final void ju(int paramInt1, int paramInt2) {}
   
   protected void onAttachedToWindow()
   {
     AppMethodBeat.i(28632);
     Log.d("MicroMsg.SightPlayAutoSizeImageView", "#0x%x on attached from window", new Object[] { Integer.valueOf(hashCode()) });
     super.onAttachedToWindow();
-    EventCenter.instance.addListener(this.Dnr.eVB());
+    EventCenter.instance.addListener(this.JsW.fIE());
     AppMethodBeat.o(28632);
   }
   
@@ -95,53 +97,53 @@ public class SightPlayAutoSizeImageView
     AppMethodBeat.i(28631);
     super.onDetachedFromWindow();
     Log.i("MicroMsg.SightPlayAutoSizeImageView", "#0x%x clear, on deattached to window", new Object[] { Integer.valueOf(hashCode()) });
-    this.Dnr.clear();
-    EventCenter.instance.removeListener(this.Dnr.eVB());
+    this.JsW.clear();
+    EventCenter.instance.removeListener(this.JsW.fIE());
     AppMethodBeat.o(28631);
   }
   
   public void setCanPlay(boolean paramBoolean)
   {
-    this.Dnr.DmM = paramBoolean;
+    this.JsW.Jsr = paramBoolean;
   }
   
   public void setDrawableWidth(int paramInt) {}
   
   public void setForceRecordState(boolean paramBoolean)
   {
-    this.Dnr.DmX = paramBoolean;
+    this.JsW.JsC = paramBoolean;
   }
   
   public void setIsWhatsNew(boolean paramBoolean)
   {
-    this.Dnr.DmR = paramBoolean;
+    this.JsW.Jsw = paramBoolean;
   }
   
   public void setMaskID(int paramInt) {}
   
   public void setOnCompletionListener(b.e parame)
   {
-    this.Dnr.DmZ = parame;
+    this.JsW.JsE = parame;
   }
   
   public void setOnDecodeDurationListener(b.f paramf)
   {
-    AppMethodBeat.i(232058);
-    this.Dnr.setOnDecodeDurationListener(paramf);
-    AppMethodBeat.o(232058);
+    AppMethodBeat.i(279198);
+    this.JsW.setOnDecodeDurationListener(paramf);
+    AppMethodBeat.o(279198);
   }
   
   public void setOnSightCompletionAction(b.g paramg) {}
   
   public void setPosition(int paramInt)
   {
-    this.Dnr.position = paramInt;
+    this.JsW.position = paramInt;
   }
   
   public void setSightInfoView(TextView paramTextView)
   {
     AppMethodBeat.i(28639);
-    this.Dnr.setSightInfoView(paramTextView);
+    this.JsW.setSightInfoView(paramTextView);
     AppMethodBeat.o(28639);
   }
   
@@ -155,7 +157,7 @@ public class SightPlayAutoSizeImageView
   public void setThumbBgView(View paramView)
   {
     AppMethodBeat.i(28638);
-    this.Dnr.setThumbBgView(paramView);
+    this.JsW.setThumbBgView(paramView);
     AppMethodBeat.o(28638);
   }
   
@@ -169,20 +171,20 @@ public class SightPlayAutoSizeImageView
   static final class a
     extends b
   {
-    private WeakReference<SightPlayAutoSizeImageView> Dns;
+    private WeakReference<SightPlayAutoSizeImageView> JsX;
     
     public a(SightPlayAutoSizeImageView paramSightPlayAutoSizeImageView)
     {
       super(paramSightPlayAutoSizeImageView);
       AppMethodBeat.i(28625);
-      this.Dns = new WeakReference(paramSightPlayAutoSizeImageView);
+      this.JsX = new WeakReference(paramSightPlayAutoSizeImageView);
       AppMethodBeat.o(28625);
     }
     
-    public final void at(Bitmap paramBitmap)
+    public final void aq(Bitmap paramBitmap)
     {
       AppMethodBeat.i(28626);
-      SightPlayAutoSizeImageView localSightPlayAutoSizeImageView = (SightPlayAutoSizeImageView)this.Dns.get();
+      SightPlayAutoSizeImageView localSightPlayAutoSizeImageView = (SightPlayAutoSizeImageView)this.JsX.get();
       if (localSightPlayAutoSizeImageView == null)
       {
         Log.e("MicroMsg.SightPlayAutoSizeImageView", "onGetFrameBmp, imageView is null, do clear");
@@ -195,17 +197,17 @@ public class SightPlayAutoSizeImageView
       AppMethodBeat.o(28626);
     }
     
-    public final int eVx()
-    {
-      return 2130772160;
-    }
+    public final void eM(int paramInt1, int paramInt2) {}
     
-    public final void eo(int paramInt1, int paramInt2) {}
+    public final int fIA()
+    {
+      return R.a.sight_loop;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.decode.ui.SightPlayAutoSizeImageView
  * JD-Core Version:    0.7.0.1
  */

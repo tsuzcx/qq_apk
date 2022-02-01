@@ -15,12 +15,15 @@ import android.os.Debug.MemoryInfo;
 import android.os.Process;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.f.i;
+import android.widget.Toast;
+import com.tencent.e.i;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.a.mv;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -28,13 +31,14 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo;
 import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo.WhichApp;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -42,6 +46,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import junit.framework.Assert;
@@ -49,194 +54,187 @@ import junit.framework.Assert;
 public final class c
   implements Application.ActivityLifecycleCallbacks, Runnable
 {
-  private static final c AXa;
-  public int AXb;
-  public int AXc;
-  private int AXd;
-  private final Set<String> AXe;
-  private boolean AXf;
-  private volatile boolean AXg;
-  private long AXh;
-  private long AXi;
-  private long AXj;
-  private long AXk;
-  public long AXl;
-  private boolean AXm;
-  private boolean AXn;
-  private long AXo;
-  public final ActivityManager aJf;
-  private volatile String activity;
-  public volatile boolean cPB;
+  private static final c GQA;
+  public int GQB;
+  public int GQC;
+  private int GQD;
+  private final Set<String> GQE;
+  private boolean GQF;
+  private volatile boolean GQG;
+  private long GQH;
+  private long GQI;
+  private long GQJ;
+  private long GQK;
+  public long GQL;
+  private boolean GQM;
+  private boolean GQN;
+  public a GQO;
+  private int GQP;
+  private long GQQ;
+  private long GQR;
+  public volatile boolean cQt;
+  private volatile String fca;
+  public final ActivityManager wBe;
   
   static
   {
-    AppMethodBeat.i(201176);
-    AXa = new c();
-    AppMethodBeat.o(201176);
+    AppMethodBeat.i(202279);
+    GQA = new c();
+    AppMethodBeat.o(202279);
   }
   
   private c()
   {
-    AppMethodBeat.i(201152);
-    this.AXd = 0;
-    this.AXe = new HashSet();
-    this.AXf = true;
-    this.cPB = true;
-    this.AXg = false;
-    this.aJf = ((ActivityManager)MMApplicationContext.getContext().getSystemService("activity"));
-    this.AXh = 524288000L;
-    this.AXi = 1258291L;
-    this.AXm = false;
-    this.AXn = false;
-    com.tencent.mm.performance.a.a.jJE = new com.tencent.mm.performance.a.a.a()
-    {
-      public final void bkR()
-      {
-        AppMethodBeat.i(201144);
-        c.this.S(true, 0);
-        AppMethodBeat.o(201144);
-      }
-    };
-    com.tencent.matrix.a.cPA.a(new com.tencent.matrix.b.c()
+    AppMethodBeat.i(202105);
+    this.GQD = 0;
+    this.GQE = new HashSet();
+    this.GQF = true;
+    this.cQt = true;
+    this.GQG = false;
+    this.wBe = ((ActivityManager)MMApplicationContext.getContext().getSystemService("activity"));
+    this.GQH = 524288000L;
+    this.GQI = 1258291L;
+    this.GQM = false;
+    this.GQN = false;
+    this.GQP = 0;
+    this.GQQ = 0L;
+    com.tencent.mm.bs.a.a.mAJ = new com.tencent.mm.bs.a.a.a() {};
+    com.tencent.matrix.a.cQs.a(new com.tencent.matrix.b.a()
     {
       public final void onForeground(boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(201145);
+        AppMethodBeat.i(200810);
         Log.d("MicroMsg.MemoryWatchDog", "[%s] isProcessForeground: %s", new Object[] { MMApplicationContext.getProcessName(), Boolean.valueOf(paramAnonymousBoolean) });
         c.a(c.this, paramAnonymousBoolean);
         if (!paramAnonymousBoolean) {
           c.a(c.this, System.currentTimeMillis());
         }
-        AppMethodBeat.o(201145);
+        AppMethodBeat.o(200810);
       }
     });
-    com.tencent.mm.plugin.performance.b.a.AUa.a(new com.tencent.mm.plugin.performance.b.a.a()
+    com.tencent.mm.plugin.performance.b.a.GNv.a(new com.tencent.mm.plugin.performance.b.a.a()
     {
-      public final String Lb()
+      public final void action(double paramAnonymousDouble)
+      {
+        AppMethodBeat.i(201332);
+        c.a(c.this);
+        AppMethodBeat.o(201332);
+      }
+      
+      public final long cycleMinutes()
+      {
+        return 0L;
+      }
+      
+      public final String key()
       {
         return "MicroMsg.MemoryWatchDog";
       }
       
-      public final void eCj()
+      public final double rate()
       {
-        AppMethodBeat.i(201146);
-        c.a(c.this);
-        AppMethodBeat.o(201146);
-      }
-      
-      public final double eCk()
-      {
-        AppMethodBeat.i(201147);
-        double d = 1.0D / ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.shf, -1L);
-        AppMethodBeat.o(201147);
+        AppMethodBeat.i(201334);
+        double d = 1.0D / ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vRd, -1L);
+        AppMethodBeat.o(201334);
         return d;
       }
-      
-      public final long eCl()
-      {
-        return 0L;
-      }
     });
-    AppMethodBeat.o(201152);
-  }
-  
-  private void Us(final int paramInt)
-  {
-    AppMethodBeat.i(201157);
-    com.tencent.f.h.RTc.o(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(201148);
-        c.a locala = c.this.S(false, paramInt);
-        Log.i("MicroMsg.MemoryWatchDog", "[dumpMemoryAsync] %s", new Object[] { locala });
-        if (c.b(c.this)) {
-          c.a(c.this, locala, paramInt);
-        }
-        AppMethodBeat.o(201148);
-      }
-    }, 2000L);
-    AppMethodBeat.o(201157);
-  }
-  
-  private void a(a parama, int paramInt)
-  {
-    AppMethodBeat.i(201170);
-    Log.i("MicroMsg.MemoryWatchDog", "check triggerMemoryHook");
-    if (!BuildInfo.IS_ARM64)
-    {
-      Log.i("MicroMsg.MemoryWatchDog", "not trigger on 32-bit devices");
-      AppMethodBeat.o(201170);
-      return;
+    new IListener() {}.alive();
+    if (!BuildInfo.IS_ARM64) {
+      com.tencent.mm.plugin.performance.c.fnj();
     }
-    if (!this.AXn)
+    AppMethodBeat.o(202105);
+  }
+  
+  private void a(b paramb, int paramInt)
+  {
+    AppMethodBeat.i(202251);
+    Log.i("MicroMsg.MemoryWatchDog", "check triggerMemoryHook");
+    if (!this.GQN)
     {
-      if (((parama.AXv > 209715200L) || (parama.AXF > 1048576)) && (Build.VERSION.SDK_INT >= 26))
+      if (((paramb.GRa > 209715200L) || (paramb.GRk > 1048576)) && (Build.VERSION.SDK_INT >= 26))
       {
         Log.i("MicroMsg.MemoryWatchDog", "trigger hook");
-        parama = "<cmd><diagnostic><MemoryHook enable='1' source='auto' process='" + processCmd() + "' duration='24' hook='" + ".*com\\.tencent\\.mm.*\\.so$" + "' stack='1' min='0' max='0' force='1' enableExpt='0' sampling='1' mmap='0'/></diagnostic></cmd>";
-        com.tencent.mm.plugin.performance.a.a.ASb.aJQ(parama);
-        parama = new ArrayList();
+        paramb = "<cmd><diagnostic><MemoryHook enable='1' source='auto' process='" + processCmd() + "' duration='24' hook='" + ".*com\\.tencent\\.mm.*\\.so$" + "' stack='1' min='0' max='0' force='1' enableExpt='0' sampling='1' mmap='0'/></diagnostic></cmd>";
+        com.tencent.mm.plugin.performance.a.a.GLp.aUm(paramb);
+        paramb = new ArrayList();
         IDKey localIDKey1 = new IDKey(1571, 1, 1);
         IDKey localIDKey2 = new IDKey(1571, getWatchDogTriggerProcessKey(), 1);
-        parama.add(localIDKey1);
-        parama.add(localIDKey2);
-        com.tencent.mm.plugin.report.service.h.CyF.b(parama, false);
-        this.AXn = true;
+        paramb.add(localIDKey1);
+        paramb.add(localIDKey2);
+        com.tencent.mm.plugin.report.service.h.IzE.b(paramb, false);
+        this.GQN = true;
+        if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE) || (WeChatEnvironment.hasDebugger())) {
+          com.tencent.e.h.ZvG.bc(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(202300);
+              Toast.makeText(MMApplicationContext.getContext(), "trigger memory hook\n(toast for debug/coolassist)", 0).show();
+              AppMethodBeat.o(202300);
+            }
+          });
+        }
       }
-      AppMethodBeat.o(201170);
+      AppMethodBeat.o(202251);
       return;
     }
-    if ((parama.AXv > this.AXh) || (parama.AXF > this.AXi))
+    if ((paramb.GRa > this.GQH) || (paramb.GRk > this.GQI))
     {
-      this.AXh = (parama.AXv + 104857600L);
-      if (this.AXi >= 2097152L) {
-        break label350;
+      this.GQH = (paramb.GRa + 104857600L);
+      if (this.GQI >= 2097152L) {
+        break label373;
       }
     }
-    label350:
-    for (this.AXi = (parama.AXF + 102400);; this.AXi = 9223372036854775807L)
+    label373:
+    for (this.GQI = (paramb.GRk + 102400);; this.GQI = 9223372036854775807L)
     {
-      Log.i("MicroMsg.MemoryWatchDog", "trigger report, next threshold : native %s pss %s, isFg=%s, fgSvs=%s, bgDur=%s", new Object[] { Long.valueOf(this.AXh), Long.valueOf(this.AXi), Boolean.valueOf(parama.cPB), Arrays.toString(parama.AXr.toArray()), Long.valueOf(parama.AXD) });
+      Log.i("MicroMsg.MemoryWatchDog", "trigger report, next threshold : native %s pss %s, isFg=%s, fgSvs=%s, bgDur=%s", new Object[] { Long.valueOf(this.GQH), Long.valueOf(this.GQI), Boolean.valueOf(paramb.cQt), Arrays.toString(paramb.GQW.toArray()), Long.valueOf(paramb.GRi) });
       if (paramInt != 3)
       {
         Log.i("MicroMsg.MemoryWatchDog", "not SOURCE_AUTO_CHECK, dumpForegroundService");
-        i(parama);
+        i(paramb);
       }
-      ((com.tencent.mm.plugin.performance.diagnostic.b.b)com.tencent.mm.plugin.performance.a.a.ASb.aT(com.tencent.mm.plugin.performance.diagnostic.b.b.class)).a(parama);
-      AppMethodBeat.o(201170);
+      ((com.tencent.mm.plugin.performance.diagnostic.b.b)com.tencent.mm.plugin.performance.a.a.GLp.bn(com.tencent.mm.plugin.performance.diagnostic.b.b.class)).b(paramb);
+      AppMethodBeat.o(202251);
       return;
     }
   }
   
-  private static int[] a(a[] paramArrayOfa)
+  private static int[] a(b[] paramArrayOfb)
   {
-    int[] arrayOfInt = new int[paramArrayOfa.length];
+    int[] arrayOfInt = new int[paramArrayOfb.length];
     int i = 0;
-    while (i < paramArrayOfa.length)
+    while (i < paramArrayOfb.length)
     {
-      arrayOfInt[i] = paramArrayOfa[i].pid;
+      arrayOfInt[i] = paramArrayOfb[i].pid;
       i += 1;
     }
     return arrayOfInt;
   }
   
-  private boolean axz()
+  private void abd(final int paramInt)
   {
-    AppMethodBeat.i(201161);
-    long l = SystemClock.uptimeMillis();
-    if (l - this.AXo > 2000L) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(202199);
+    com.tencent.e.h.ZvG.o(new Runnable()
     {
-      this.AXo = l;
-      AppMethodBeat.o(201161);
-      return bool;
-    }
+      public final void run()
+      {
+        AppMethodBeat.i(201376);
+        c.b localb = c.this.ad(false, paramInt);
+        Log.i("MicroMsg.MemoryWatchDog", "[dumpMemoryAsync] %s", new Object[] { localb });
+        if (c.b(c.this)) {
+          c.a(c.this, localb, paramInt);
+        }
+        AppMethodBeat.o(201376);
+      }
+    }, 2000L);
+    AppMethodBeat.o(202199);
   }
   
   private static String convertStreamToString(InputStream paramInputStream)
   {
-    AppMethodBeat.i(201159);
+    AppMethodBeat.i(202210);
     StringBuilder localStringBuilder = new StringBuilder();
     try
     {
@@ -266,23 +264,23 @@ public final class c
     }
     localBufferedReader.close();
     label62:
-    AppMethodBeat.o(201159);
+    AppMethodBeat.o(202210);
     throw paramInputStream;
     localBufferedReader.close();
     paramInputStream = localStringBuilder.toString();
-    AppMethodBeat.o(201159);
+    AppMethodBeat.o(202210);
     return paramInputStream;
   }
   
-  public static c eCH()
+  public static c fou()
   {
-    return AXa;
+    return GQA;
   }
   
-  private a[] eCI()
+  private b[] fov()
   {
-    AppMethodBeat.i(201155);
-    Object localObject1 = this.aJf.getRunningAppProcesses();
+    AppMethodBeat.i(202193);
+    Object localObject1 = this.wBe.getRunningAppProcesses();
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     if (i < ((List)localObject1).size())
@@ -297,62 +295,82 @@ public final class c
       {
         i += 1;
         break;
-        localObject2 = new a();
-        ((a)localObject2).pid = ((ActivityManager.RunningAppProcessInfo)((List)localObject1).get(i)).pid;
-        ((a)localObject2).processName = ((ActivityManager.RunningAppProcessInfo)((List)localObject1).get(i)).processName;
+        localObject2 = new b();
+        ((b)localObject2).pid = ((ActivityManager.RunningAppProcessInfo)((List)localObject1).get(i)).pid;
+        ((b)localObject2).processName = ((ActivityManager.RunningAppProcessInfo)((List)localObject1).get(i)).processName;
         localArrayList.add(localObject2);
-        Log.d("MicroMsg.MemoryWatchDog", "pid = %s, process = %s", new Object[] { Integer.valueOf(((a)localObject2).pid), ((a)localObject2).processName });
+        Log.d("MicroMsg.MemoryWatchDog", "pid = %s, process = %s", new Object[] { Integer.valueOf(((b)localObject2).pid), ((b)localObject2).processName });
       }
     }
-    localObject1 = new a[localArrayList.size()];
+    localObject1 = new b[localArrayList.size()];
     localArrayList.toArray((Object[])localObject1);
-    AppMethodBeat.o(201155);
+    AppMethodBeat.o(202193);
     return localObject1;
   }
   
-  static boolean eCK()
+  private boolean fox()
   {
-    AppMethodBeat.i(201165);
+    AppMethodBeat.i(202215);
+    long l = SystemClock.uptimeMillis();
+    if (l - this.GQR > 2000L) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.GQR = l;
+      AppMethodBeat.o(202215);
+      return bool;
+    }
+  }
+  
+  static boolean foy()
+  {
+    AppMethodBeat.i(202225);
     if ((MMApplicationContext.isAppBrandProcess()) || (MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isToolsMpProcess()))
     {
-      AppMethodBeat.o(201165);
+      AppMethodBeat.o(202225);
       return true;
     }
-    AppMethodBeat.o(201165);
+    AppMethodBeat.o(202225);
     return false;
   }
   
-  private boolean eCM()
+  private boolean foz()
   {
-    AppMethodBeat.i(201167);
-    if (((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.sok, false))
+    AppMethodBeat.i(202237);
+    com.tencent.mm.booter.d locald = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).iQW;
+    if ((locald != null) && (Util.nullAs(locald.JE(".com.tencent.mm.debug.disable_memory_hook"), false)))
     {
-      AppMethodBeat.o(201167);
+      Log.e("MicroMsg.MemoryWatchDog", "disabled by assist");
+      AppMethodBeat.o(202237);
       return false;
     }
-    if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE) || (d.KyR) || (WeChatEnvironment.hasDebugger()) || (this.AXm))
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vZH, false))
     {
-      AppMethodBeat.o(201167);
+      AppMethodBeat.o(202237);
+      return false;
+    }
+    if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE) || (com.tencent.mm.protocal.d.RAG) || (WeChatEnvironment.hasDebugger()) || (this.GQM))
+    {
+      AppMethodBeat.o(202237);
       return true;
     }
-    AppMethodBeat.o(201167);
+    AppMethodBeat.o(202237);
     return false;
   }
   
   private static String getStringFromFile(String paramString)
   {
-    AppMethodBeat.i(201160);
-    Object localObject1 = new o(paramString);
+    AppMethodBeat.i(202213);
+    Object localObject1 = new q(paramString);
     paramString = null;
     try
     {
-      localObject1 = s.ao((o)localObject1);
+      localObject1 = u.al((q)localObject1);
       paramString = (String)localObject1;
       String str = convertStreamToString((InputStream)localObject1);
       if (localObject1 != null) {
         ((InputStream)localObject1).close();
       }
-      AppMethodBeat.o(201160);
+      AppMethodBeat.o(202213);
       return str;
     }
     finally
@@ -360,13 +378,13 @@ public final class c
       if (paramString != null) {
         paramString.close();
       }
-      AppMethodBeat.o(201160);
+      AppMethodBeat.o(202213);
     }
   }
   
   private static String getVmSize()
   {
-    AppMethodBeat.i(201158);
+    AppMethodBeat.i(202208);
     Object localObject = String.format("/proc/%s/status", new Object[] { Integer.valueOf(Process.myPid()) });
     try
     {
@@ -379,50 +397,50 @@ public final class c
         boolean bool = str.startsWith("VmSize");
         if (bool)
         {
-          AppMethodBeat.o(201158);
+          AppMethodBeat.o(202208);
           return str;
         }
         i += 1;
       }
       Log.w("MicroMsg.MemoryWatchDog", "[getVmSize] Wrong!", new Object[] { localObject[12] });
       localObject = localObject[12];
-      AppMethodBeat.o(201158);
+      AppMethodBeat.o(202208);
       return localObject;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(201158);
+      AppMethodBeat.o(202208);
     }
     return "";
   }
   
   private static int getWatchDogTriggerProcessKey()
   {
-    AppMethodBeat.i(201169);
+    AppMethodBeat.i(202243);
     if (MMApplicationContext.isMainProcess())
     {
-      AppMethodBeat.o(201169);
+      AppMethodBeat.o(202243);
       return 30;
     }
     if (MMApplicationContext.isAppBrandProcess())
     {
-      AppMethodBeat.o(201169);
+      AppMethodBeat.o(202243);
       return 31;
     }
     if ((MMApplicationContext.isToolsMpProcess()) || (MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isToolsIsolatedProcess()))
     {
-      AppMethodBeat.o(201169);
+      AppMethodBeat.o(202243);
       return 32;
     }
-    AppMethodBeat.o(201169);
+    AppMethodBeat.o(202243);
     return -1;
   }
   
-  private void i(a parama)
+  private void i(b paramb)
   {
-    AppMethodBeat.i(201154);
+    AppMethodBeat.i(202153);
     long l = System.currentTimeMillis();
-    Iterator localIterator = this.aJf.getRunningServices(2147483647).iterator();
+    Iterator localIterator = this.wBe.getRunningServices(2147483647).iterator();
     while (localIterator.hasNext())
     {
       ActivityManager.RunningServiceInfo localRunningServiceInfo = (ActivityManager.RunningServiceInfo)localIterator.next();
@@ -430,276 +448,774 @@ public final class c
       {
         Log.d("MicroMsg.MemoryWatchDog", "foreground %s, stared %s, lastActivityTime %s, activeSince %s, class %s", new Object[] { Boolean.valueOf(localRunningServiceInfo.foreground), Boolean.valueOf(localRunningServiceInfo.started), Long.valueOf(localRunningServiceInfo.lastActivityTime), Long.valueOf(localRunningServiceInfo.activeSince), localRunningServiceInfo.service.getClassName() });
         if (localRunningServiceInfo.foreground) {
-          parama.AXr.add(localRunningServiceInfo.service.getClassName());
+          paramb.GQW.add(localRunningServiceInfo.service.getClassName());
         }
       }
     }
     Log.d("MicroMsg.MemoryWatchDog", "getting running service info cost %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    AppMethodBeat.o(201154);
+    AppMethodBeat.o(202153);
+  }
+  
+  /* Error */
+  private void j(b paramb)
+  {
+    // Byte code:
+    //   0: ldc_w 654
+    //   3: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: invokestatic 604	java/lang/System:currentTimeMillis	()J
+    //   9: lstore 11
+    //   11: aload_1
+    //   12: getfield 657	com/tencent/mm/plugin/performance/watchdogs/c$b:GRo	Ljava/util/List;
+    //   15: invokeinterface 660 1 0
+    //   20: new 662	java/util/HashMap
+    //   23: dup
+    //   24: invokespecial 663	java/util/HashMap:<init>	()V
+    //   27: astore 17
+    //   29: aconst_null
+    //   30: astore 15
+    //   32: new 370	java/io/BufferedReader
+    //   35: dup
+    //   36: new 665	java/io/FileReader
+    //   39: dup
+    //   40: ldc_w 667
+    //   43: invokespecial 668	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   46: invokespecial 378	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   49: astore 16
+    //   51: aload 16
+    //   53: invokevirtual 381	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   56: astore 15
+    //   58: aload 15
+    //   60: ifnull +389 -> 449
+    //   63: aload 15
+    //   65: invokevirtual 576	java/lang/String:trim	()Ljava/lang/String;
+    //   68: astore 18
+    //   70: aload 18
+    //   72: invokevirtual 670	java/lang/String:isEmpty	()Z
+    //   75: ifne -24 -> 51
+    //   78: iconst_1
+    //   79: istore_3
+    //   80: iconst_0
+    //   81: istore_2
+    //   82: iconst_0
+    //   83: istore 4
+    //   85: lconst_0
+    //   86: lstore 7
+    //   88: iconst_0
+    //   89: istore 6
+    //   91: iconst_0
+    //   92: istore 5
+    //   94: iload_2
+    //   95: aload 18
+    //   97: invokevirtual 673	java/lang/String:length	()I
+    //   100: if_icmpge +464 -> 564
+    //   103: iload_3
+    //   104: tableswitch	default:+466 -> 570, 1:+94->198, 2:+113->217, 3:+133->237
+    //   133: iconst_m1
+    //   134: if_icmpgt +22803 -> 22937
+    //   137: iconst_m1
+    //   138: if_acmpeq -18686 -> -18548
+    //   141: if_acmpne +14863 -> 15004
+    //   144: ldc_w 654
+    //   147: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   150: aload 15
+    //   152: athrow
+    //   153: astore 17
+    //   155: aload 16
+    //   157: astore 15
+    //   159: aload 17
+    //   161: astore 16
+    //   163: ldc 177
+    //   165: aload 16
+    //   167: ldc_w 680
+    //   170: iconst_0
+    //   171: anewarray 4	java/lang/Object
+    //   174: invokestatic 684	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   177: aload_1
+    //   178: getfield 657	com/tencent/mm/plugin/performance/watchdogs/c$b:GRo	Ljava/util/List;
+    //   181: invokeinterface 660 1 0
+    //   186: aload 15
+    //   188: invokestatic 688	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   191: ldc_w 654
+    //   194: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   197: return
+    //   198: aload 18
+    //   200: iload_2
+    //   201: invokevirtual 692	java/lang/String:charAt	(I)C
+    //   204: invokestatic 698	java/lang/Character:isSpaceChar	(C)Z
+    //   207: ifeq +366 -> 573
+    //   210: iload_2
+    //   211: iconst_1
+    //   212: iadd
+    //   213: istore_2
+    //   214: goto -120 -> 94
+    //   217: aload 18
+    //   219: iload_2
+    //   220: invokevirtual 692	java/lang/String:charAt	(I)C
+    //   223: invokestatic 698	java/lang/Character:isSpaceChar	(C)Z
+    //   226: ifeq +355 -> 581
+    //   229: iload_2
+    //   230: istore 6
+    //   232: iconst_3
+    //   233: istore_3
+    //   234: goto -140 -> 94
+    //   237: iload 4
+    //   239: ifne +189 -> 428
+    //   242: aload 18
+    //   244: iload 5
+    //   246: iload 6
+    //   248: invokevirtual 702	java/lang/String:substring	(II)Ljava/lang/String;
+    //   251: invokevirtual 576	java/lang/String:trim	()Ljava/lang/String;
+    //   254: astore 19
+    //   256: aload 19
+    //   258: bipush 45
+    //   260: invokevirtual 706	java/lang/String:indexOf	(I)I
+    //   263: istore_3
+    //   264: iload_3
+    //   265: iflt +299 -> 564
+    //   268: aload 19
+    //   270: iconst_0
+    //   271: iload_3
+    //   272: invokevirtual 702	java/lang/String:substring	(II)Ljava/lang/String;
+    //   275: astore 15
+    //   277: aload 19
+    //   279: iload_3
+    //   280: iconst_1
+    //   281: iadd
+    //   282: invokevirtual 709	java/lang/String:substring	(I)Ljava/lang/String;
+    //   285: astore 19
+    //   287: aload 19
+    //   289: bipush 16
+    //   291: invokestatic 713	java/lang/Long:parseLong	(Ljava/lang/String;I)J
+    //   294: lstore 9
+    //   296: aload 15
+    //   298: bipush 16
+    //   300: invokestatic 713	java/lang/Long:parseLong	(Ljava/lang/String;I)J
+    //   303: lstore 13
+    //   305: lload 9
+    //   307: lload 13
+    //   309: lsub
+    //   310: lstore 7
+    //   312: iload 4
+    //   314: iconst_1
+    //   315: iadd
+    //   316: istore 4
+    //   318: iconst_1
+    //   319: istore_3
+    //   320: goto -226 -> 94
+    //   323: astore 15
+    //   325: aconst_null
+    //   326: astore 15
+    //   328: iload_2
+    //   329: aload 18
+    //   331: invokevirtual 673	java/lang/String:length	()I
+    //   334: if_icmpne +224 -> 558
+    //   337: aload 15
+    //   339: ifnonnull +219 -> 558
+    //   342: ldc_w 591
+    //   345: astore 15
+    //   347: aload 15
+    //   349: ifnull -298 -> 51
+    //   352: lload 7
+    //   354: lconst_0
+    //   355: lcmp
+    //   356: ifle -305 -> 51
+    //   359: aload 17
+    //   361: aload 15
+    //   363: invokeinterface 718 2 0
+    //   368: checkcast 294	java/lang/Long
+    //   371: astore 18
+    //   373: lload 7
+    //   375: lstore 9
+    //   377: aload 18
+    //   379: ifnull +13 -> 392
+    //   382: lload 7
+    //   384: aload 18
+    //   386: invokevirtual 721	java/lang/Long:longValue	()J
+    //   389: ladd
+    //   390: lstore 9
+    //   392: aload 17
+    //   394: aload 15
+    //   396: lload 9
+    //   398: invokestatic 298	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   401: invokeinterface 725 3 0
+    //   406: pop
+    //   407: goto -356 -> 51
+    //   410: astore_1
+    //   411: aload 16
+    //   413: astore 15
+    //   415: aload 15
+    //   417: invokestatic 688	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   420: ldc_w 654
+    //   423: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   426: aload_1
+    //   427: athrow
+    //   428: iload 4
+    //   430: iconst_4
+    //   431: if_icmpne +130 -> 561
+    //   434: aload 18
+    //   436: iload 6
+    //   438: invokevirtual 709	java/lang/String:substring	(I)Ljava/lang/String;
+    //   441: invokevirtual 576	java/lang/String:trim	()Ljava/lang/String;
+    //   444: astore 15
+    //   446: goto -118 -> 328
+    //   449: aload 16
+    //   451: invokestatic 688	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   454: aload_1
+    //   455: getfield 657	com/tencent/mm/plugin/performance/watchdogs/c$b:GRo	Ljava/util/List;
+    //   458: aload 17
+    //   460: invokeinterface 729 1 0
+    //   465: invokeinterface 733 2 0
+    //   470: pop
+    //   471: aload_1
+    //   472: getfield 657	com/tencent/mm/plugin/performance/watchdogs/c$b:GRo	Ljava/util/List;
+    //   475: new 18	com/tencent/mm/plugin/performance/watchdogs/c$5
+    //   478: dup
+    //   479: aload_0
+    //   480: invokespecial 734	com/tencent/mm/plugin/performance/watchdogs/c$5:<init>	(Lcom/tencent/mm/plugin/performance/watchdogs/c;)V
+    //   483: invokestatic 740	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
+    //   486: aload_1
+    //   487: getfield 657	com/tencent/mm/plugin/performance/watchdogs/c$b:GRo	Ljava/util/List;
+    //   490: bipush 20
+    //   492: aload_1
+    //   493: getfield 657	com/tencent/mm/plugin/performance/watchdogs/c$b:GRo	Ljava/util/List;
+    //   496: invokeinterface 399 1 0
+    //   501: invokeinterface 744 3 0
+    //   506: invokeinterface 660 1 0
+    //   511: ldc 177
+    //   513: ldc_w 746
+    //   516: iconst_1
+    //   517: anewarray 4	java/lang/Object
+    //   520: dup
+    //   521: iconst_0
+    //   522: invokestatic 604	java/lang/System:currentTimeMillis	()J
+    //   525: lload 11
+    //   527: lsub
+    //   528: invokestatic 298	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   531: aastore
+    //   532: invokestatic 421	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   535: ldc_w 654
+    //   538: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   541: return
+    //   542: astore_1
+    //   543: aconst_null
+    //   544: astore 15
+    //   546: goto -131 -> 415
+    //   549: astore_1
+    //   550: goto -135 -> 415
+    //   553: astore 16
+    //   555: goto -392 -> 163
+    //   558: goto -211 -> 347
+    //   561: goto -249 -> 312
+    //   564: aconst_null
+    //   565: astore 15
+    //   567: goto -239 -> 328
+    //   570: goto -438 -> 132
+    //   573: iload_2
+    //   574: istore 5
+    //   576: iconst_2
+    //   577: istore_3
+    //   578: goto -484 -> 94
+    //   581: iload_2
+    //   582: iconst_1
+    //   583: iadd
+    //   584: istore_2
+    //   585: goto -491 -> 94
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	588	0	this	c
+    //   0	588	1	paramb	b
+    //   81	504	2	i	int
+    //   79	499	3	j	int
+    //   83	349	4	k	int
+    //   92	483	5	m	int
+    //   89	348	6	n	int
+    //   86	297	7	l1	long
+    //   294	103	9	l2	long
+    //   9	517	11	l3	long
+    //   303	5	13	l4	long
+    //   30	267	15	localObject1	Object
+    //   323	1	15	localThrowable1	java.lang.Throwable
+    //   326	240	15	localObject2	Object
+    //   49	401	16	localObject3	Object
+    //   553	1	16	localThrowable2	java.lang.Throwable
+    //   27	1	17	localHashMap	HashMap
+    //   153	306	17	localThrowable3	java.lang.Throwable
+    //   68	367	18	localObject4	Object
+    //   254	34	19	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   51	58	153	java/lang/Throwable
+    //   63	78	153	java/lang/Throwable
+    //   94	103	153	java/lang/Throwable
+    //   132	153	153	java/lang/Throwable
+    //   198	210	153	java/lang/Throwable
+    //   217	229	153	java/lang/Throwable
+    //   242	264	153	java/lang/Throwable
+    //   268	287	153	java/lang/Throwable
+    //   328	337	153	java/lang/Throwable
+    //   359	373	153	java/lang/Throwable
+    //   382	392	153	java/lang/Throwable
+    //   392	407	153	java/lang/Throwable
+    //   434	446	153	java/lang/Throwable
+    //   287	305	323	java/lang/Throwable
+    //   51	58	410	finally
+    //   63	78	410	finally
+    //   94	103	410	finally
+    //   132	153	410	finally
+    //   198	210	410	finally
+    //   217	229	410	finally
+    //   242	264	410	finally
+    //   268	287	410	finally
+    //   287	305	410	finally
+    //   328	337	410	finally
+    //   359	373	410	finally
+    //   382	392	410	finally
+    //   392	407	410	finally
+    //   434	446	410	finally
+    //   32	51	542	finally
+    //   163	186	549	finally
+    //   32	51	553	java/lang/Throwable
   }
   
   private static String processCmd()
   {
-    AppMethodBeat.i(201171);
+    AppMethodBeat.i(202255);
     if (MMApplicationContext.isMainProcess())
     {
-      AppMethodBeat.o(201171);
+      AppMethodBeat.o(202255);
       return "mm";
     }
     if (MMApplicationContext.isAppBrandProcess())
     {
-      AppMethodBeat.o(201171);
+      AppMethodBeat.o(202255);
       return "appbrand";
     }
     if ((MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isToolsMpProcess()))
     {
-      AppMethodBeat.o(201171);
+      AppMethodBeat.o(202255);
       return "tools";
     }
-    AppMethodBeat.o(201171);
+    AppMethodBeat.o(202255);
     return "all";
   }
   
-  public final a S(boolean paramBoolean, int paramInt)
+  public final b ad(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(201153);
+    AppMethodBeat.i(202139);
     long l1 = System.currentTimeMillis();
-    a locala = new a();
-    if (this.activity != null) {
-      locala.activity = this.activity;
+    b localb = new b();
+    if (this.fca != null) {
+      localb.fca = this.fca;
     }
-    locala.source = paramInt;
-    locala.AXA = this.AXb;
-    locala.AXB = this.AXc;
-    if (paramBoolean) {}
-    for (;;)
+    localb.source = paramInt;
+    localb.GRf = this.GQB;
+    localb.GRg = this.GQC;
+    long l2;
+    if (paramBoolean)
     {
-      int i;
       try
       {
-        long l2 = System.currentTimeMillis();
-        Object localObject1 = this.aJf.getProcessMemoryInfo(new int[] { Process.myPid() });
-        Log.d("MicroMsg.MemoryWatchDog", "pidMemInfoArray size = " + localObject1.length);
+        l2 = System.currentTimeMillis();
+        localObject1 = new Debug.MemoryInfo();
+        Debug.getMemoryInfo((Debug.MemoryInfo)localObject1);
+        localb.GRk = ((Debug.MemoryInfo)localObject1).getTotalPss();
+        if (Build.VERSION.SDK_INT < 23) {
+          break label397;
+        }
+        localb.GQT = ((Debug.MemoryInfo)localObject1).getMemoryStats();
+        localObject1 = this.wBe.getProcessMemoryInfo(new int[] { Process.myPid() });
         if ((localObject1 != null) && (localObject1.length == 1))
         {
           localObject1 = localObject1[0];
-          locala.AXF = ((Debug.MemoryInfo)localObject1).getTotalPss();
-          if (Build.VERSION.SDK_INT >= 23) {
-            locala.map = ((Debug.MemoryInfo)localObject1).getMemoryStats();
+          localb.GRl = ((Debug.MemoryInfo)localObject1).getTotalPss();
+          if (Build.VERSION.SDK_INT < 23) {
+            break label898;
           }
-        }
-        else
-        {
-          Log.d("MicroMsg.MemoryWatchDog", "getting process memory info costs %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
-          if (!MMApplicationContext.isMainProcess()) {
-            continue;
-          }
-          l2 = System.currentTimeMillis();
-          localObject1 = eCI();
-          Debug.MemoryInfo[] arrayOfMemoryInfo = this.aJf.getProcessMemoryInfo(a((a[])localObject1));
-          if (arrayOfMemoryInfo == null) {
-            continue;
-          }
-          Log.d("MicroMsg.MemoryWatchDog", "pidMemInfoArray2 size = %s, memoryInfos size = %s", new Object[] { Integer.valueOf(arrayOfMemoryInfo.length), Integer.valueOf(localObject1.length) });
-          if ((!BuildInfo.DEBUG) && (!BuildInfo.IS_FLAVOR_RED) && (!WeChatEnvironment.isCoolassistEnv())) {
-            break label1199;
-          }
-          Assert.assertEquals(localObject1.length, arrayOfMemoryInfo.length);
-          break label1199;
-          if (paramInt >= Math.min(arrayOfMemoryInfo.length, localObject1.length)) {
-            continue;
-          }
-          Log.d("MicroMsg.MemoryWatchDog", "total pss = %d", new Object[] { Integer.valueOf(arrayOfMemoryInfo[paramInt].getTotalPss()) });
-          localObject1[paramInt].AXF = arrayOfMemoryInfo[paramInt].getTotalPss();
-          i += localObject1[paramInt].AXF;
-          paramInt += 1;
-          continue;
-        }
-        Log.d("MicroMsg.MemoryWatchDog", "API level < 23, reflect to get stat");
-        locala.map = new HashMap();
-        locala.map.put("summary.java-heap", String.valueOf(((Debug.MemoryInfo)localObject1).dalvikPrivateDirty));
-        locala.map.put("summary.native-heap", String.valueOf(((Debug.MemoryInfo)localObject1).nativePrivateDirty));
-        locala.map.put("summary.code", "-1");
-        locala.map.put("summary.stack", "-1");
-        locala.map.put("summary.graphics", "-1");
-        locala.map.put("summary.private-other", "-1");
-        locala.map.put("summary.system", String.valueOf(((Debug.MemoryInfo)localObject1).getTotalPss() - ((Debug.MemoryInfo)localObject1).getTotalPrivateClean() - ((Debug.MemoryInfo)localObject1).getTotalPrivateDirty()));
-        locala.map.put("summary.total-pss", String.valueOf(((Debug.MemoryInfo)localObject1).getTotalPss()));
-        locala.map.put("summary.total-swap", "-1");
-        Log.d("MicroMsg.MemoryWatchDog", "reflect stat: %s", new Object[] { locala.map });
-        continue;
-        Object localObject2;
-        if (eCK()) {
-          continue;
+          localb.GQT.put("summary.graphics", ((Debug.MemoryInfo)localObject1).getMemoryStat("summary.graphics"));
+          localb.GQU = ((Debug.MemoryInfo)localObject1).getMemoryStats();
         }
       }
       catch (Exception localException)
       {
-        Log.printErrStackTrace("MicroMsg.MemoryWatchDog", localException, "", new Object[0]);
-        locala.hju = (System.currentTimeMillis() - l1);
-        if ((!BuildInfo.IS_FLAVOR_RED) && (!BuildInfo.IS_FLAVOR_PURPLE) && (!paramBoolean) && (locala.hju > 30L) && (this.AXf))
+        for (;;)
         {
-          this.AXd += 1;
-          if (this.AXd > 10)
+          Object localObject1;
+          Log.printErrStackTrace("MicroMsg.MemoryWatchDog", localException, "", new Object[0]);
+          localb.jVo = (System.currentTimeMillis() - l1);
+          if ((!BuildInfo.IS_FLAVOR_RED) && (!BuildInfo.IS_FLAVOR_PURPLE) && (!paramBoolean) && (localb.jVo > 30L) && (this.GQF))
           {
-            Log.w("MicroMsg.MemoryWatchDog", "adjust for printing async!");
-            this.AXf = false;
-          }
-        }
-        if (locala.AXE == null)
-        {
-          Log.e("MicroMsg.MemoryWatchDog", "Something wrong when dumping memory");
-          locala.AXE = new ActivityManager.MemoryInfo();
-        }
-        locala.cPB = this.cPB;
-        locala.AXg = this.AXg;
-        if (eCK()) {
-          locala.AXt = this.AXe.isEmpty();
-        }
-        if ((eCK()) && (!locala.AXg))
-        {
-          locala.AXD = (System.currentTimeMillis() - this.AXk);
-          AppMethodBeat.o(201153);
-          return locala;
-          locala.AXG = i;
-          locala.AXH = localException;
-          Log.d("MicroMsg.MemoryWatchDog", "getting process memory info costs %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
-          i(locala);
-          localObject2 = Pattern.compile("\\d+").matcher(getVmSize());
-          if (((Matcher)localObject2).find()) {
-            locala.AXq = Util.safeParseInt(((Matcher)localObject2).group());
-          }
-          locala.AXu = Debug.getNativeHeapSize();
-          locala.AXv = Debug.getNativeHeapAllocatedSize();
-          locala.AXw = Debug.getNativeHeapFreeSize();
-          locala.AXx = Runtime.getRuntime().totalMemory();
-          locala.AXy = Runtime.getRuntime().freeMemory();
-          locala.AXz = Runtime.getRuntime().maxMemory();
-          localObject2 = new ActivityManager.MemoryInfo();
-          this.aJf.getMemoryInfo((ActivityManager.MemoryInfo)localObject2);
-          locala.AXE = ((ActivityManager.MemoryInfo)localObject2);
-          locala.hju = (System.currentTimeMillis() - l1);
-          if ((!BuildInfo.IS_FLAVOR_RED) && (!BuildInfo.IS_FLAVOR_PURPLE) && (!paramBoolean) && (locala.hju > 30L) && (this.AXf))
-          {
-            this.AXd += 1;
-            if (this.AXd > 10)
+            this.GQD += 1;
+            if (this.GQD > 10)
             {
               Log.w("MicroMsg.MemoryWatchDog", "adjust for printing async!");
-              this.AXf = false;
+              this.GQF = false;
             }
           }
-          if (locala.AXE != null) {
-            continue;
+          if (localb.GRj == null)
+          {
+            Log.e("MicroMsg.MemoryWatchDog", "Something wrong when dumping memory");
+            localb.GRj = new ActivityManager.MemoryInfo();
           }
-          Log.e("MicroMsg.MemoryWatchDog", "Something wrong when dumping memory");
-          locala.AXE = new ActivityManager.MemoryInfo();
-          continue;
-          Log.e("MicroMsg.MemoryWatchDog", "pidMemInfoArray2 == null");
-          continue;
+          localb.cQt = this.cQt;
+          localb.GQG = this.GQG;
+          if (foy())
+          {
+            if (this.GQE.isEmpty()) {
+              break;
+            }
+            bool = true;
+            localb.GQY = bool;
+          }
+          if ((!foy()) || (localb.GQG)) {
+            break label1646;
+          }
+          localb.GRi = (System.currentTimeMillis() - this.GQK);
+          localb1 = (com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class);
+          Object localObject4 = b.a.wbU;
+          if ((!BuildInfo.DEBUG) && (!com.tencent.mm.protocal.d.RAG) && (!WeChatEnvironment.hasDebugger())) {
+            break label1676;
+          }
+          bool = true;
+          if (localb1.a((b.a)localObject4, bool))
+          {
+            l1 = System.currentTimeMillis();
+            if (l1 - this.GQQ >= TimeUnit.SECONDS.toMillis(30L)) {
+              break label1682;
+            }
+            Log.i("MicroMsg.MemoryWatchDog", "less than 30 seconds since last publish");
+          }
+          paramInt = 0;
+          if (paramInt != 0) {
+            c(localb, paramBoolean);
+          }
+          AppMethodBeat.o(202139);
+          return localb;
+          localb.GQU = new HashMap();
+          localb.GQU.put("summary.java-heap", String.valueOf(localb1.dalvikPrivateDirty));
+          localb.GQU.put("summary.native-heap", String.valueOf(localb1.nativePrivateDirty));
+          localb.GQU.put("summary.code", "-1");
+          localb.GQU.put("summary.stack", "-1");
+          localb.GQU.put("summary.graphics", "-1");
+          localb.GQU.put("summary.private-other", "-1");
+          localb.GQU.put("summary.system", String.valueOf(localb1.getTotalPss() - localb1.getTotalPrivateClean() - localb1.getTotalPrivateDirty()));
+          localb.GQU.put("summary.total-pss", String.valueOf(localb1.getTotalPss()));
+          localb.GQU.put("summary.total-swap", "-1");
         }
       }
       finally
       {
-        locala.hju = (System.currentTimeMillis() - l1);
-        if ((!BuildInfo.IS_FLAVOR_RED) && (!BuildInfo.IS_FLAVOR_PURPLE) && (!paramBoolean) && (locala.hju > 30L) && (this.AXf))
+        localb.jVo = (System.currentTimeMillis() - l1);
+        if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE) || (paramBoolean) || (localb.jVo <= 30L) || (!this.GQF)) {
+          break label1178;
+        }
+        this.GQD += 1;
+        if (this.GQD <= 10) {
+          break label1178;
+        }
+        Log.w("MicroMsg.MemoryWatchDog", "adjust for printing async!");
+        this.GQF = false;
+        if (localb.GRj != null) {
+          break label1206;
+        }
+        Log.e("MicroMsg.MemoryWatchDog", "Something wrong when dumping memory");
+        localb.GRj = new ActivityManager.MemoryInfo();
+        AppMethodBeat.o(202139);
+      }
+      Log.d("MicroMsg.MemoryWatchDog", "getting process memory info costs %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
+      if (MMApplicationContext.isMainProcess())
+      {
+        l2 = System.currentTimeMillis();
+        localObject1 = fov();
+        localObject4 = this.wBe.getProcessMemoryInfo(a((b[])localObject1));
+        if (localObject4 == null) {
+          break label1549;
+        }
+        Log.d("MicroMsg.MemoryWatchDog", "pidMemInfoArray2 size = %s, memoryInfos size = %s", new Object[] { Integer.valueOf(localObject4.length), Integer.valueOf(localObject1.length) });
+        if ((!BuildInfo.DEBUG) && (!BuildInfo.IS_FLAVOR_RED) && (!WeChatEnvironment.isCoolassistEnv())) {
+          break label2033;
+        }
+        Assert.assertEquals(localObject1.length, localObject4.length);
+        break label2033;
+      }
+    }
+    for (;;)
+    {
+      if (i < Math.min(localObject4.length, localObject1.length))
+      {
+        Log.d("MicroMsg.MemoryWatchDog", "total pss = %d", new Object[] { Integer.valueOf(localObject4[i].getTotalPss()) });
+        localObject1[i].GRk = localObject4[i].getTotalPss();
+        j += localObject1[i].GRk;
+        i += 1;
+        continue;
+        label397:
+        localb.GQT = new HashMap();
+        localb.GQT.put("summary.java-heap", String.valueOf(((Debug.MemoryInfo)localObject1).dalvikPrivateDirty));
+        localb.GQT.put("summary.native-heap", String.valueOf(((Debug.MemoryInfo)localObject1).nativePrivateDirty));
+        localb.GQT.put("summary.code", "-1");
+        localb.GQT.put("summary.stack", "-1");
+        localb.GQT.put("summary.graphics", "-1");
+        localb.GQT.put("summary.private-other", "-1");
+        localb.GQT.put("summary.system", String.valueOf(((Debug.MemoryInfo)localObject1).getTotalPss() - ((Debug.MemoryInfo)localObject1).getTotalPrivateClean() - ((Debug.MemoryInfo)localObject1).getTotalPrivateDirty()));
+        localb.GQT.put("summary.total-pss", String.valueOf(((Debug.MemoryInfo)localObject1).getTotalPss()));
+        localb.GQT.put("summary.total-swap", "-1");
+        break;
+      }
+      label878:
+      label1274:
+      double d;
+      label898:
+      label1178:
+      label1206:
+      label1229:
+      Object localObject3;
+      label1549:
+      label1682:
+      for (;;)
+      {
+        com.tencent.mm.plugin.expt.b.b localb1;
+        localb.GRm = j;
+        localb.GRn = localObject2;
+        Log.d("MicroMsg.MemoryWatchDog", "getting process memory info costs %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
+        i(localb);
+        if (this.GQO == null)
         {
-          this.AXd += 1;
-          if (this.AXd > 10)
-          {
-            Log.w("MicroMsg.MemoryWatchDog", "adjust for printing async!");
-            this.AXf = false;
+          Log.e("MicroMsg.MemoryWatchDog", "mAppbrandExtraMemoryInfo == null");
+          if ((!BuildInfo.IS_ARM64) && (paramInt == 4) && (com.tencent.mm.protocal.d.RAG)) {
+            if (!com.tencent.mm.plugin.performance.c.fnj()) {
+              break label1633;
+            }
           }
         }
-        if (locala.AXE == null)
+        label1633:
+        for (d = 2700000.0D;; d = 3400000.0D)
         {
+          l2 = d;
+          if (localb.GQV > l2) {
+            j(localb);
+          }
+          localObject3 = Pattern.compile("\\d+").matcher(getVmSize());
+          if (((Matcher)localObject3).find()) {
+            localb.GQV = Util.safeParseInt(((Matcher)localObject3).group());
+          }
+          localb.GQZ = Debug.getNativeHeapSize();
+          localb.GRa = Debug.getNativeHeapAllocatedSize();
+          localb.GRb = Debug.getNativeHeapFreeSize();
+          localb.GRc = Runtime.getRuntime().totalMemory();
+          localb.GRd = Runtime.getRuntime().freeMemory();
+          localb.GRe = Runtime.getRuntime().maxMemory();
+          localObject3 = new ActivityManager.MemoryInfo();
+          this.wBe.getMemoryInfo((ActivityManager.MemoryInfo)localObject3);
+          localb.GRj = ((ActivityManager.MemoryInfo)localObject3);
+          localb.jVo = (System.currentTimeMillis() - l1);
+          if ((!BuildInfo.IS_FLAVOR_RED) && (!BuildInfo.IS_FLAVOR_PURPLE) && (!paramBoolean) && (localb.jVo > 30L) && (this.GQF))
+          {
+            this.GQD += 1;
+            if (this.GQD > 10)
+            {
+              Log.w("MicroMsg.MemoryWatchDog", "adjust for printing async!");
+              this.GQF = false;
+            }
+          }
+          if (localb.GRj != null) {
+            break;
+          }
           Log.e("MicroMsg.MemoryWatchDog", "Something wrong when dumping memory");
-          locala.AXE = new ActivityManager.MemoryInfo();
+          localb.GRj = new ActivityManager.MemoryInfo();
+          break;
+          Log.e("MicroMsg.MemoryWatchDog", "pidMemInfoArray2 == null");
+          break label1229;
+          localb.extra = this.GQO.chx();
+          localb.GRp = this.GQO.chy();
+          localb.GRq = this.GQO.chz();
+          localb.GRr = this.GQO.chA();
+          localb.GRs = this.GQO.chB();
+          break label1274;
         }
-        AppMethodBeat.o(201153);
-      }
-      if (!locala.cPB)
-      {
-        locala.AXD = (System.currentTimeMillis() - this.AXj);
+        boolean bool = false;
         continue;
-        label1199:
-        i = 0;
-        paramInt = 0;
+        label1646:
+        if ((!foy()) && (!localb.cQt))
+        {
+          localb.GRi = (System.currentTimeMillis() - this.GQJ);
+          continue;
+          bool = false;
+          continue;
+          if (l1 - this.GQQ > TimeUnit.MINUTES.toMinutes(30L))
+          {
+            Log.i("MicroMsg.MemoryWatchDog", "has not published for more than 30 minutes. reset publish times limit");
+            this.GQP = 0;
+          }
+          if (this.GQP <= 5) {
+            break;
+          }
+          Log.i("MicroMsg.MemoryWatchDog", "has published more than 5 times, ignore in 30 minutes");
+        }
       }
+      label1676:
+      if ((!BuildInfo.IS_ARM64) && (com.tencent.mm.plugin.performance.c.fnj()))
+      {
+        paramInt = 1;
+        label1748:
+        localObject3 = new ArrayList();
+        ((ArrayList)localObject3).add(new IDKey(1660, 0, 1));
+        if (BuildInfo.IS_ARM64) {
+          break label1868;
+        }
+        if (paramInt == 0) {
+          break label1856;
+        }
+        d = 2700000.0D;
+        label1789:
+        l1 = d;
+        if (localb.GQV <= l1) {
+          break label1868;
+        }
+        Log.i("MicroMsg.MemoryWatchDog", "shouldPublish: vmsize");
+        if (paramInt == 0) {
+          break label1863;
+        }
+      }
+      label1856:
+      label1863:
+      for (paramInt = 1;; paramInt = 4)
+      {
+        ((ArrayList)localObject3).add(new IDKey(1660, paramInt, 1));
+        com.tencent.mm.plugin.report.service.h.IzE.b((ArrayList)localObject3, false);
+        paramInt = 1;
+        break;
+        paramInt = 0;
+        break label1748;
+        d = 3700000.0D;
+        break label1789;
+      }
+      label1868:
+      if (paramInt != 0)
+      {
+        l1 = 367001600L;
+        label1877:
+        if (localb.GRc - localb.GRd <= l1) {
+          break label1953;
+        }
+        Log.i("MicroMsg.MemoryWatchDog", "shouldPublish: java heap");
+        if (paramInt == 0) {
+          break label1948;
+        }
+      }
+      label1948:
+      for (paramInt = 2;; paramInt = 5)
+      {
+        ((ArrayList)localObject3).add(new IDKey(1660, paramInt, 1));
+        com.tencent.mm.plugin.report.service.h.IzE.b((ArrayList)localObject3, false);
+        paramInt = 1;
+        break;
+        l1 = 471859200L;
+        break label1877;
+      }
+      label1953:
+      if (paramInt != 0)
+      {
+        l1 = 734003200L;
+        label1962:
+        if (localb.GRa <= l1) {
+          break label2025;
+        }
+        Log.i("MicroMsg.MemoryWatchDog", "shouldPublish: native heap");
+        if (paramInt == 0) {
+          break label2027;
+        }
+      }
+      label2025:
+      label2027:
+      for (paramInt = 3;; paramInt = 6)
+      {
+        ((ArrayList)localObject3).add(new IDKey(1660, paramInt, 1));
+        com.tencent.mm.plugin.report.service.h.IzE.b((ArrayList)localObject3, false);
+        paramInt = 1;
+        break label878;
+        l1 = 943718400L;
+        break label1962;
+        break;
+      }
+      label2033:
+      int j = 0;
+      int i = 0;
     }
   }
   
-  public final void cy(boolean paramBoolean)
+  public final void c(b paramb, boolean paramBoolean)
   {
-    AppMethodBeat.i(201162);
+    AppMethodBeat.i(202145);
+    this.GQQ = System.currentTimeMillis();
+    this.GQP += 1;
+    mv localmv = new mv();
+    localmv.fKU.bnA = 1;
+    localmv.fKU.fKV = paramb.GQV;
+    localmv.fKU.fKW = paramb.GQZ;
+    localmv.fKU.fKX = paramb.GRa;
+    localmv.fKU.fKY = (paramb.GRc - paramb.GRd);
+    if (paramBoolean)
+    {
+      localmv.fKU.fKZ = paramb.GRk;
+      localmv.fKU.fLa = Util.getInt((String)paramb.GQT.get("summary.graphics"), 0);
+      localmv.fKU.fLb = Util.getInt((String)paramb.GQT.get("summary.native-heap"), 0);
+      localmv.fKU.fLc = paramb.GRm;
+    }
+    EventCenter.instance.publish(localmv);
+    AppMethodBeat.o(202145);
+  }
+  
+  public final void cN(boolean paramBoolean)
+  {
+    AppMethodBeat.i(202219);
     Log.d("MicroMsg.MemoryWatchDog", "isAppForeground: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.cPB = paramBoolean;
+    this.cQt = paramBoolean;
     if (!paramBoolean)
     {
-      this.AXj = System.currentTimeMillis();
-      AppMethodBeat.o(201162);
+      this.GQJ = System.currentTimeMillis();
+      AppMethodBeat.o(202219);
       return;
     }
     long l = System.currentTimeMillis();
-    if (l - this.AXl > 300000L)
+    if (l - this.GQL > 300000L)
     {
       Log.i("MicroMsg.MemoryWatchDog", "onAppForeground: forward check");
-      this.AXl = l;
-      com.tencent.f.h.RTc.bqo("MicroMsg.MemoryWatchDog");
-      com.tencent.f.h.RTc.a(this, 300000L, "MicroMsg.MemoryWatchDog");
+      this.GQL = l;
+      com.tencent.e.h.ZvG.bDh("MicroMsg.MemoryWatchDog");
+      com.tencent.e.h.ZvG.a(this, 300000L, "MicroMsg.MemoryWatchDog");
     }
-    AppMethodBeat.o(201162);
+    AppMethodBeat.o(202219);
   }
   
-  public final a eCJ()
+  public final b fow()
   {
-    AppMethodBeat.i(258590);
-    a locala = S(true, 0);
-    AppMethodBeat.o(258590);
-    return locala;
-  }
-  
-  public final void eCL()
-  {
-    boolean bool = true;
-    AppMethodBeat.i(201166);
-    a locala = S(true, 3);
-    new StringBuilder("[AutoCheck] ").append(locala);
-    Log.i("MicroMsg.MemoryWatchDog", "[AutoCheck] process = %s AppForeground = %s %s", new Object[] { MMApplicationContext.getProcessName(), Boolean.valueOf(this.cPB), locala });
-    if (!this.AXe.isEmpty()) {}
-    for (;;)
-    {
-      b.a(locala, bool);
-      if (eCM()) {
-        a(locala, 3);
-      }
-      AppMethodBeat.o(201166);
-      return;
-      bool = false;
-    }
+    AppMethodBeat.i(293064);
+    b localb = ad(true, 0);
+    AppMethodBeat.o(293064);
+    return localb;
   }
   
   public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
-    AppMethodBeat.i(201172);
+    AppMethodBeat.i(202259);
     if ((MMApplicationContext.isAppBrandProcess()) || (MMApplicationContext.isToolsMpProcess()) || (MMApplicationContext.isToolsProcess()))
     {
       paramActivity = paramActivity.toString() + ":" + paramActivity.hashCode();
-      this.AXe.add(paramActivity);
-      Log.i("MicroMsg.MemoryWatchDog", "onActivityCreated: %s, mActivities.size = %s", new Object[] { paramActivity, Integer.valueOf(this.AXe.size()) });
+      this.GQE.add(paramActivity);
+      Log.i("MicroMsg.MemoryWatchDog", "onActivityCreated: %s, mActivities.size = %s", new Object[] { paramActivity, Integer.valueOf(this.GQE.size()) });
     }
-    AppMethodBeat.o(201172);
+    AppMethodBeat.o(202259);
   }
   
   public final void onActivityDestroyed(Activity paramActivity)
   {
-    AppMethodBeat.i(201173);
+    AppMethodBeat.i(202267);
     if ((MMApplicationContext.isAppBrandProcess()) || (MMApplicationContext.isToolsMpProcess()) || (MMApplicationContext.isToolsProcess()))
     {
       paramActivity = paramActivity.toString() + ":" + paramActivity.hashCode();
-      this.AXe.remove(paramActivity);
-      Log.i("MicroMsg.MemoryWatchDog", "onActivityDestroyed: %s, mActivities.size = %s", new Object[] { paramActivity, Integer.valueOf(this.AXe.size()) });
+      this.GQE.remove(paramActivity);
+      Log.i("MicroMsg.MemoryWatchDog", "onActivityDestroyed: %s, mActivities.size = %s", new Object[] { paramActivity, Integer.valueOf(this.GQE.size()) });
     }
-    AppMethodBeat.o(201173);
+    AppMethodBeat.o(202267);
   }
   
   public final void onActivityPaused(Activity paramActivity) {}
@@ -710,86 +1226,129 @@ public final class c
   
   public final void onActivityStarted(Activity paramActivity)
   {
-    AppMethodBeat.i(201163);
-    this.activity = paramActivity.getClass().getSimpleName();
-    if (axz()) {
-      Us(1);
+    AppMethodBeat.i(202222);
+    this.fca = paramActivity.getClass().getSimpleName();
+    if (fox()) {
+      abd(1);
     }
-    AppMethodBeat.o(201163);
+    AppMethodBeat.o(202222);
   }
   
   public final void onActivityStopped(Activity paramActivity)
   {
-    AppMethodBeat.i(201164);
-    if (axz()) {
-      Us(2);
+    AppMethodBeat.i(202223);
+    if (fox()) {
+      abd(2);
     }
-    AppMethodBeat.o(201164);
+    AppMethodBeat.o(202223);
   }
   
   public final void run()
   {
-    AppMethodBeat.i(201168);
-    eCL();
-    this.AXl = System.currentTimeMillis();
-    i locali = com.tencent.f.h.RTc;
-    if (this.cPB) {}
+    AppMethodBeat.i(202240);
+    vU(false);
+    this.GQL = System.currentTimeMillis();
+    i locali = com.tencent.e.h.ZvG;
+    if (this.cQt) {}
     for (long l = 300000L;; l = 1800000L)
     {
       locali.a(this, l, "MicroMsg.MemoryWatchDog");
-      AppMethodBeat.o(201168);
+      AppMethodBeat.o(202240);
       return;
     }
   }
   
-  public static final class a
+  public final void vU(boolean paramBoolean)
   {
-    public long AXA;
-    public long AXB;
-    public long AXC;
-    public long AXD;
-    public ActivityManager.MemoryInfo AXE;
-    public int AXF;
-    public int AXG;
-    public a[] AXH;
-    public boolean AXg;
-    public int AXq;
-    public List<String> AXr;
-    public boolean AXs;
-    public boolean AXt;
-    public long AXu;
-    public long AXv;
-    public long AXw;
-    public long AXx;
-    public long AXy;
-    public long AXz;
-    public String activity;
-    public boolean cPB;
-    public long hju;
-    public Map<String, String> map;
+    boolean bool = true;
+    AppMethodBeat.i(202230);
+    b localb = ad(true, 3);
+    new StringBuilder("[AutoCheck] ").append(localb);
+    Log.i("MicroMsg.MemoryWatchDog", "[AutoCheck] process = %s AppForeground = %s %s", new Object[] { MMApplicationContext.getProcessName(), Boolean.valueOf(this.cQt), localb });
+    if (!this.GQE.isEmpty()) {}
+    for (;;)
+    {
+      b.a(localb, bool, paramBoolean);
+      if (foz()) {
+        a(localb, 3);
+      }
+      AppMethodBeat.o(202230);
+      return;
+      bool = false;
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract String chA();
+    
+    public abstract String chB();
+    
+    public abstract String chx();
+    
+    public abstract String chy();
+    
+    public abstract String chz();
+  }
+  
+  public static final class b
+  {
+    public boolean GQG;
+    public Map<String, String> GQT;
+    public Map<String, String> GQU;
+    public int GQV;
+    public List<String> GQW;
+    public boolean GQX;
+    public boolean GQY;
+    public long GQZ;
+    public long GRa;
+    public long GRb;
+    public long GRc;
+    public long GRd;
+    public long GRe;
+    public long GRf;
+    public long GRg;
+    public long GRh;
+    public long GRi;
+    public ActivityManager.MemoryInfo GRj;
+    public int GRk;
+    public int GRl;
+    public int GRm;
+    public b[] GRn;
+    public List<Map.Entry<String, Long>> GRo;
+    public String GRp;
+    public String GRq;
+    public String GRr;
+    public String GRs;
+    public boolean cQt;
+    public String extra;
+    public String fca;
+    public long jVo;
     public int pid;
     public String processName;
     public int source;
     
-    public a()
+    public b()
     {
-      AppMethodBeat.i(201149);
+      AppMethodBeat.i(201358);
       this.processName = "current";
       this.source = 0;
-      this.activity = "default";
-      this.AXr = new ArrayList();
-      this.AXs = c.eCK();
-      this.AXC = Thread.currentThread().getId();
-      this.AXD = -1L;
-      AppMethodBeat.o(201149);
+      this.fca = "default";
+      this.GQW = new ArrayList();
+      this.GQX = c.foy();
+      this.GRh = Thread.currentThread().getId();
+      this.GRi = -1L;
+      this.GRn = new b[0];
+      this.GRo = new ArrayList();
+      AppMethodBeat.o(201358);
     }
     
-    private static String aE(Map<String, String> paramMap)
+    private static String ay(Map<String, String> paramMap)
     {
-      AppMethodBeat.i(201151);
+      AppMethodBeat.i(201368);
       if (paramMap == null)
       {
-        AppMethodBeat.o(201151);
+        AppMethodBeat.o(201368);
         return "null";
       }
       StringBuilder localStringBuilder = new StringBuilder();
@@ -803,52 +1362,76 @@ public final class c
       }
       localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length());
       paramMap = localStringBuilder.toString();
-      AppMethodBeat.o(201151);
+      AppMethodBeat.o(201368);
       return paramMap;
+    }
+    
+    public final String foA()
+    {
+      AppMethodBeat.i(201360);
+      StringBuilder localStringBuilder = new StringBuilder();
+      if (!this.GRo.isEmpty())
+      {
+        localStringBuilder.append("| Top 20 mapped memory region sizes:\n");
+        Iterator localIterator = this.GRo.iterator();
+        if (localIterator.hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)localIterator.next();
+          if (TextUtils.isEmpty((CharSequence)localEntry.getKey())) {}
+          for (str = "!no-name!";; str = "'" + (String)localEntry.getKey() + "'")
+          {
+            localStringBuilder.append("|   name: ").append(str).append(", size: ").append(localEntry.getValue()).append(" bytes\n");
+            break;
+          }
+        }
+      }
+      String str = localStringBuilder.toString();
+      AppMethodBeat.o(201360);
+      return str;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(201150);
+      AppMethodBeat.i(201362);
       StringBuilder localStringBuilder1 = new StringBuilder(" \n");
-      StringBuilder localStringBuilder2 = localStringBuilder1.append(String.format(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> MemoryInfo(tid=%s) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<", new Object[] { Long.valueOf(this.AXC) })).append("\n| Activity:\t").append(this.activity).append("\tAppForeground:").append(this.cPB).append("\tProcessForeground:").append(this.AXg);
-      if (c.eCK())
+      StringBuilder localStringBuilder2 = localStringBuilder1.append(String.format(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> MemoryInfo(tid=%s) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<", new Object[] { Long.valueOf(this.GRh) })).append("\n| Activity:\t").append(this.fca).append("\tAppForeground:").append(this.cQt).append("\tProcessForeground:").append(this.GQG);
+      if (c.foy())
       {
         localObject = "\thasActivity:";
         localStringBuilder2 = localStringBuilder2.append((String)localObject);
-        if (!c.eCK()) {
-          break label463;
+        if (!c.foy()) {
+          break label486;
         }
       }
-      label463:
-      for (Object localObject = Boolean.valueOf(this.AXt);; localObject = "")
+      label486:
+      for (Object localObject = Boolean.valueOf(this.GQY);; localObject = "")
       {
-        localStringBuilder2.append(localObject).append("\n| Source:\t ").append(this.source).append("\n| VmSize:\t ").append(this.AXq).append("kB\n| SystemMemoryInfo:\t totalMem=").append(this.AXE.totalMem).append(", availMem=").append(this.AXE.availMem).append(", lowMemory=").append(this.AXE.lowMemory).append(", threshold=").append(this.AXE.threshold).append("\n| Dalvik:\t memClass=").append(this.AXA).append(", memLargeClass=").append(this.AXB).append(" B, TalMemory=").append(this.AXx).append(" B, FreeMemory=").append(this.AXy).append(" B, MaxMemory=").append(this.AXz).append(" B\n| NATIVE:\t HeapSize=").append(this.AXu).append(" B, AllocatedSize=").append(this.AXv).append(" B, FreeSize=").append(this.AXw).append(" B\n| Stats:\t pss-sum:").append(this.AXG).append(" KB, ").append(aE(this.map)).append("\n| FgService:\t").append(Arrays.toString(this.AXr.toArray())).append("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END(cost:").append(this.hju).append("ms) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
-        if (this.AXH == null) {
-          break label469;
+        localStringBuilder2.append(localObject).append("\n| Source:\t ").append(this.source).append("\n| VmSize:\t ").append(this.GQV).append("kB\n| SystemMemoryInfo:\t totalMem=").append(this.GRj.totalMem).append(", availMem=").append(this.GRj.availMem).append(", lowMemory=").append(this.GRj.lowMemory).append(", threshold=").append(this.GRj.threshold).append("\n| Dalvik:\t memClass=").append(this.GRf).append(", memLargeClass=").append(this.GRg).append(" B, TalMemory=").append(this.GRc).append(" B, FreeMemory=").append(this.GRd).append(" B, MaxMemory=").append(this.GRe).append(" B\n| NATIVE:\t HeapSize=").append(this.GQZ).append(" B, AllocatedSize=").append(this.GRa).append(" B, FreeSize=").append(this.GRb).append(" B\n| Stats:\t pss-sum:").append(this.GRm).append(" KB, ").append(ay(this.GQT)).append("\n| AMSStats:\t ").append(ay(this.GQU)).append("\n| FgService:\t").append(Arrays.toString(this.GQW.toArray())).append("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END(cost:").append(this.jVo).append("ms) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
+        if (this.GRn == null) {
+          break label492;
         }
-        localObject = this.AXH;
+        localObject = this.GRn;
         int j = localObject.length;
         int i = 0;
         while (i < j)
         {
           localStringBuilder2 = localObject[i];
-          localStringBuilder1.append("| Process: ").append(localStringBuilder2.processName).append(", pid: ").append(localStringBuilder2.pid).append(", totalPss: ").append(localStringBuilder2.AXF).append("\n");
+          localStringBuilder1.append("| Process: ").append(localStringBuilder2.processName).append(", pid: ").append(localStringBuilder2.pid).append(", totalPss: ").append(localStringBuilder2.GRk).append("\n");
           i += 1;
         }
         localObject = "";
         break;
       }
-      label469:
+      label492:
       localObject = localStringBuilder1.toString();
-      AppMethodBeat.o(201150);
+      AppMethodBeat.o(201362);
       return localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.watchdogs.c
  * JD-Core Version:    0.7.0.1
  */

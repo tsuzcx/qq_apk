@@ -8,20 +8,20 @@ import kotlin.l;
 import kotlin.m;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/magicbrush/ui/AnimationFrameHandler;", "", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "jsThreadHandler", "Lcom/tencent/magicbrush/handler/MBJsThreadHandler;", "(Lcom/tencent/magicbrush/MBRuntime;Lcom/tencent/magicbrush/handler/MBJsThreadHandler;)V", "isRunning", "", "()Z", "setRunning", "(Z)V", "getJsThreadHandler", "()Lcom/tencent/magicbrush/handler/MBJsThreadHandler;", "locker", "Ljava/lang/Object;", "getLocker", "()Ljava/lang/Object;", "getRuntime", "()Lcom/tencent/magicbrush/MBRuntime;", "strategy", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "getStrategy", "()Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "create", "", "destroy", "getLatency", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Latency;", "notifyAnimationFrame", "frameTimeMillis", "", "onCreate", "onDestroy", "onPause", "onResume", "pause", "resume", "Companion", "Latency", "Strategy", "lib-magicbrush-nano_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/magicbrush/ui/AnimationFrameHandler;", "", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "jsThreadHandler", "Lcom/tencent/magicbrush/handler/MBJsThreadHandler;", "(Lcom/tencent/magicbrush/MBRuntime;Lcom/tencent/magicbrush/handler/MBJsThreadHandler;)V", "isRunning", "", "()Z", "setRunning", "(Z)V", "getJsThreadHandler", "()Lcom/tencent/magicbrush/handler/MBJsThreadHandler;", "locker", "Ljava/lang/Object;", "getLocker", "()Ljava/lang/Object;", "getRuntime", "()Lcom/tencent/magicbrush/MBRuntime;", "strategy", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "getStrategy", "()Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "create", "", "destroy", "getLatency", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Latency;", "notifyAnimationFrame", "frameTimeMillis", "", "onCreate", "onDestroy", "onPause", "onResume", "pause", "resume", "Companion", "Latency", "Strategy", "lib-magicbrush-nano_release"})
 public abstract class a
 {
-  public static final a cOx = new a((byte)0);
-  final MBRuntime cKJ;
-  final Object cOv;
-  final com.tencent.magicbrush.handler.c cOw;
+  public static final a cPm = new a((byte)0);
+  final MBRuntime cLt;
+  final Object cPk;
+  final com.tencent.magicbrush.handler.c cPl;
   boolean isRunning;
   
   public a(MBRuntime paramMBRuntime, com.tencent.magicbrush.handler.c paramc)
   {
-    this.cKJ = paramMBRuntime;
-    this.cOw = paramc;
-    this.cOv = new Object();
+    this.cLt = paramMBRuntime;
+    this.cPl = paramc;
+    this.cPk = new Object();
   }
   
   public static final a a(MBRuntime paramMBRuntime, com.tencent.magicbrush.handler.c paramc, b paramb)
@@ -29,26 +29,26 @@ public abstract class a
     return a.a(paramMBRuntime, paramc, paramb);
   }
   
-  public abstract b RB();
+  public abstract b Vo();
   
   public final void destroy()
   {
-    c.c.i("AnimationFrameHandler", "AnimationFrameHandler[%s] destroy", new Object[] { RB().name() });
-    synchronized (this.cOv)
+    c.c.i("AnimationFrameHandler", "AnimationFrameHandler[%s] destroy", new Object[] { Vo().name() });
+    synchronized (this.cPk)
     {
       if (this.isRunning)
       {
-        c.c.i("AnimationFrameHandler", "AnimationFrameHandler[%s] pause automatically", new Object[] { RB().name() });
+        c.c.i("AnimationFrameHandler", "AnimationFrameHandler[%s] pause automatically", new Object[] { Vo().name() });
         pause();
       }
-      x localx = x.SXb;
+      x localx = x.aazN;
       return;
     }
   }
   
   public final void h(double paramDouble)
   {
-    this.cKJ.h(paramDouble);
+    this.cLt.h(paramDouble);
   }
   
   public abstract void onCreate();
@@ -59,8 +59,8 @@ public abstract class a
   
   public final void pause()
   {
-    c.c.i("AnimationFrameHandler", "AnimationFrameHandler[%s] pause", new Object[] { RB().name() });
-    synchronized (this.cOv)
+    c.c.i("AnimationFrameHandler", "AnimationFrameHandler[%s] pause", new Object[] { Vo().name() });
+    synchronized (this.cPk)
     {
       boolean bool = this.isRunning;
       if (!bool) {
@@ -68,15 +68,15 @@ public abstract class a
       }
       onPause();
       this.isRunning = false;
-      x localx = x.SXb;
+      x localx = x.aazN;
       return;
     }
   }
   
   public final void resume()
   {
-    c.c.i("AnimationFrameHandler", "AnimationFrameHandler[%s] resume", new Object[] { RB().name() });
-    synchronized (this.cOv)
+    c.c.i("AnimationFrameHandler", "AnimationFrameHandler[%s] resume", new Object[] { Vo().name() });
+    synchronized (this.cPk)
     {
       boolean bool = this.isRunning;
       if (bool) {
@@ -84,25 +84,25 @@ public abstract class a
       }
       onResume();
       this.isRunning = true;
-      x localx = x.SXb;
+      x localx = x.aazN;
       return;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Companion;", "", "()V", "TAG", "", "create", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler;", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "jsThreadHandler", "Lcom/tencent/magicbrush/handler/MBJsThreadHandler;", "strategy", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "lib-magicbrush-nano_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Companion;", "", "()V", "TAG", "", "create", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler;", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "jsThreadHandler", "Lcom/tencent/magicbrush/handler/MBJsThreadHandler;", "strategy", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "lib-magicbrush-nano_release"})
   public static final class a
   {
     public static a a(MBRuntime paramMBRuntime, com.tencent.magicbrush.handler.c paramc, a.b paramb)
     {
-      AppMethodBeat.i(206868);
-      p.h(paramMBRuntime, "runtime");
-      p.h(paramc, "jsThreadHandler");
-      p.h(paramb, "strategy");
+      AppMethodBeat.i(204894);
+      p.k(paramMBRuntime, "runtime");
+      p.k(paramc, "jsThreadHandler");
+      p.k(paramb, "strategy");
       switch (b.$EnumSwitchMapping$0[paramb.ordinal()])
       {
       default: 
         paramMBRuntime = new m();
-        AppMethodBeat.o(206868);
+        AppMethodBeat.o(204894);
         throw paramMBRuntime;
       case 1: 
         paramMBRuntime = (a)new c(paramMBRuntime, paramc);
@@ -110,7 +110,7 @@ public abstract class a
       for (;;)
       {
         a.a(paramMBRuntime);
-        AppMethodBeat.o(206868);
+        AppMethodBeat.o(204894);
         return paramMBRuntime;
         paramMBRuntime = (a)new d(paramMBRuntime, paramc);
         continue;
@@ -123,23 +123,23 @@ public abstract class a
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "", "(Ljava/lang/String;I)V", "ChoreographerInJsThread", "ChoreographerInMainThread", "EglSurfaceSwapLocker", "SchedulerLocker", "NativeLocker", "lib-magicbrush-nano_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "", "(Ljava/lang/String;I)V", "ChoreographerInJsThread", "ChoreographerInMainThread", "EglSurfaceSwapLocker", "SchedulerLocker", "NativeLocker", "lib-magicbrush-nano_release"})
   public static enum b
   {
     static
     {
       AppMethodBeat.i(140205);
       b localb1 = new b("ChoreographerInJsThread", 0);
-      cOy = localb1;
+      cPn = localb1;
       b localb2 = new b("ChoreographerInMainThread", 1);
-      cOz = localb2;
+      cPo = localb2;
       b localb3 = new b("EglSurfaceSwapLocker", 2);
-      cOA = localb3;
+      cPp = localb3;
       b localb4 = new b("SchedulerLocker", 3);
-      cOB = localb4;
+      cPq = localb4;
       b localb5 = new b("NativeLocker", 4);
-      cOC = localb5;
-      cOD = new b[] { localb1, localb2, localb3, localb4, localb5 };
+      cPr = localb5;
+      cPs = new b[] { localb1, localb2, localb3, localb4, localb5 };
       AppMethodBeat.o(140205);
     }
     
@@ -148,7 +148,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.magicbrush.ui.a
  * JD-Core Version:    0.7.0.1
  */

@@ -3,94 +3,91 @@ package com.tencent.mm.plugin.expt.d;
 import android.os.Message;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.l;
-import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
 import com.tencent.mm.sdk.platformtools.MMHandler;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ThreadPoolExecutor;
+import org.apache.commons.b.g;
 
 public class a
-  implements com.tencent.mm.plugin.expt.d.b.c, com.tencent.mm.plugin.expt.d.d.b
+  implements com.tencent.mm.plugin.expt.d.c.c, com.tencent.mm.plugin.expt.d.e.b
 {
-  private static volatile a sxr;
-  public com.tencent.mm.plugin.expt.d.b.b.a sxA;
-  public MMHandler sxB;
-  private IListener sxC;
-  public com.tencent.mm.plugin.expt.d.d.a sxs;
-  private com.tencent.mm.plugin.expt.d.a.c sxt;
-  private com.tencent.mm.plugin.expt.d.a.c sxu;
-  public com.tencent.mm.plugin.expt.d.i.b sxv;
-  private com.tencent.mm.plugin.expt.d.g.a sxw;
-  public com.tencent.mm.plugin.expt.d.c.a sxx;
-  private ThreadPoolExecutor sxy;
-  public com.tencent.mm.plugin.expt.d.b.a.a sxz;
+  private static volatile a wcX;
+  public com.tencent.mm.plugin.expt.d.e.a wcY;
+  private com.tencent.mm.plugin.expt.d.a.c wcZ;
+  private com.tencent.mm.plugin.expt.d.a.c wda;
+  public com.tencent.mm.plugin.expt.d.j.b wdb;
+  private com.tencent.mm.plugin.expt.d.h.a wdc;
+  public com.tencent.mm.plugin.expt.d.d.a wdd;
+  public com.tencent.mm.plugin.expt.d.c.a.a wde;
+  public com.tencent.mm.plugin.expt.d.c.b.a wdf;
+  public MMHandler wdg;
+  private IListener wdh;
   
   private a()
   {
-    AppMethodBeat.i(220270);
-    this.sxB = new MMHandler("EdgeComputingMgr#mExecuteScriptHandler")
+    AppMethodBeat.i(254597);
+    this.wdg = new MMHandler("EdgeComputingMgr#mExecuteScriptHandler")
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
-        AppMethodBeat.i(220264);
+        AppMethodBeat.i(255124);
         switch (paramAnonymousMessage.what)
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(220264);
+          AppMethodBeat.o(255124);
           return;
           a.a(a.this, true);
-          AppMethodBeat.o(220264);
+          AppMethodBeat.o(255124);
           return;
           a.a(a.this, false);
-          AppMethodBeat.o(220264);
+          AppMethodBeat.o(255124);
           return;
           a.a(a.this);
         }
       }
     };
-    this.sxC = new IListener() {};
-    this.sxs = new com.tencent.mm.plugin.expt.d.d.a(this);
-    this.sxt = com.tencent.mm.plugin.expt.d.a.b.GM(1);
-    this.sxu = com.tencent.mm.plugin.expt.d.a.b.GM(2);
-    this.sxw = new com.tencent.mm.plugin.expt.d.g.a();
-    this.sxx = new com.tencent.mm.plugin.expt.d.c.a();
-    this.sxz = new com.tencent.mm.plugin.expt.d.b.a.a();
-    this.sxA = new com.tencent.mm.plugin.expt.d.b.b.a();
-    this.sxv = new com.tencent.mm.plugin.expt.d.i.b();
-    this.sxy = b.cMK();
-    com.tencent.mm.plugin.expt.d.b.b.cMS().sxQ = this;
-    EventCenter.instance.add(this.sxC);
-    AppMethodBeat.o(220270);
+    this.wdh = new a.2(this);
+    this.wcY = new com.tencent.mm.plugin.expt.d.e.a(this);
+    this.wcZ = com.tencent.mm.plugin.expt.d.a.b.Ku(1);
+    this.wda = com.tencent.mm.plugin.expt.d.a.b.Ku(2);
+    this.wdc = new com.tencent.mm.plugin.expt.d.h.a();
+    this.wdd = new com.tencent.mm.plugin.expt.d.d.a();
+    this.wde = new com.tencent.mm.plugin.expt.d.c.a.a();
+    this.wdf = new com.tencent.mm.plugin.expt.d.c.b.a();
+    this.wdb = new com.tencent.mm.plugin.expt.d.j.b();
+    com.tencent.mm.plugin.expt.d.c.b.dbG().wdw = this;
+    EventCenter.instance.add(this.wdh);
+    AppMethodBeat.o(254597);
   }
   
-  private Map<Long, List<List<com.tencent.mm.plugin.expt.d.e.b>>> a(com.tencent.mm.plugin.expt.d.h.a parama, com.tencent.mm.plugin.expt.d.e.a.b paramb, Map<Long, List<String>> paramMap, long paramLong1, long paramLong2)
+  private Map<Long, List<List<com.tencent.mm.plugin.expt.d.f.b>>> a(com.tencent.mm.plugin.expt.d.i.a parama, com.tencent.mm.plugin.expt.d.f.a.b paramb, Map<Long, List<String>> paramMap, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(220273);
+    AppMethodBeat.i(254610);
     if ((parama != null) && (paramb != null) && (paramMap.size() > 0))
     {
-      localObject = this.sxz;
-      str = paramb.syg;
-      if (!org.apache.commons.b.g.eP(str)) {
+      locala = this.wde;
+      str = paramb.wdY;
+      if (!g.fK(str)) {
         break label57;
       }
       i = 1;
     }
     while (i != 0)
     {
-      AppMethodBeat.o(220273);
+      AppMethodBeat.o(254610);
       return null;
       label57:
-      if ((!b.KB()) && (((com.tencent.mm.plugin.expt.d.b.a.a)localObject).sxY.containsKey(str)))
+      if ((!b.No()) && (locala.wdQ.containsKey(str)))
       {
         Log.i("EdgeComputingConfigBreaker", "[EdgeComputingConfigBreaker] isErrorScriptConfig configID : ".concat(String.valueOf(str)));
         i = 1;
@@ -100,382 +97,396 @@ public class a
         i = 0;
       }
     }
-    Log.d("EdgeComputingMgr", "[EdgeComputingMgr] edgeComputing configID : " + paramb.syg);
     long l = SystemClock.uptimeMillis();
-    Object localObject = this.sxz;
-    String str = paramb.syg;
-    if (!org.apache.commons.b.g.eP(str))
+    com.tencent.mm.plugin.expt.d.c.a.a locala = this.wde;
+    String str = paramb.wdY;
+    if (!g.fK(str))
     {
-      ((com.tencent.mm.plugin.expt.d.b.a.a)localObject).sya.put(str, Long.valueOf(System.currentTimeMillis()));
-      ((com.tencent.mm.plugin.expt.d.b.a.a)localObject).cMX();
+      locala.wdS.put(str, Long.valueOf(System.currentTimeMillis()));
+      locala.dbM();
     }
     parama = parama.a(paramb, paramMap, paramLong1, paramLong2);
-    paramMap = this.sxz;
-    localObject = paramb.syg;
-    if (!org.apache.commons.b.g.eP((String)localObject))
+    Log.i("EdgeComputingMgr", "[EdgeComputingMgr] edgeComputing configID : " + paramb.wdY);
+    Log.d("EdgeComputingMgr", "[EdgeComputingMgr] edgeComputing configID : " + paramb.wdY + ", ecResult : " + parama);
+    locala = this.wde;
+    str = paramb.wdY;
+    if (!g.fK(str))
     {
-      paramMap.sya.remove(localObject);
-      paramMap.cMX();
+      locala.wdS.remove(str);
+      locala.dbM();
     }
-    if ((parama == null) || (parama.size() <= 0))
-    {
-      AppMethodBeat.o(220273);
-      return null;
-    }
-    paramMap = parama.values().iterator();
+    paramMap = paramMap.values().iterator();
     for (int i = 0; paramMap.hasNext(); i = ((List)paramMap.next()).size() + i) {}
-    paramb = paramb.syg;
+    paramb = paramb.wdY;
     paramLong1 = SystemClock.uptimeMillis() - l;
     if (paramLong1 <= 10L) {
-      h.CyF.idkeyStat(1409L, 0L, 1L, false);
+      h.IzE.idkeyStat(1409L, 0L, 1L, false);
     }
     for (;;)
     {
+      if (paramLong1 <= 1000L)
+      {
+        h.IzE.idkeyStat(1409L, 34L, paramLong1, false);
+        h.IzE.idkeyStat(1409L, 35L, 1L, false);
+      }
+      h.IzE.idkeyStat(1409L, 89L, 1L, false);
+      if (com.tencent.mm.plugin.expt.d.g.a.dbP()) {
+        h.IzE.a(20176, new Object[] { paramb, Integer.valueOf(0), Long.valueOf(paramLong1), Integer.valueOf(i) });
+      }
       Log.d("EdgeComputingMonitor", "[EdgeComputingMonitor] statComputingCostTime configID : %s, costTime : %d, dataSzie : %d", new Object[] { paramb, Long.valueOf(paramLong1), Integer.valueOf(i) });
-      AppMethodBeat.o(220273);
+      AppMethodBeat.o(254610);
       return parama;
-      if (paramLong1 <= 100L)
-      {
-        h.CyF.idkeyStat(1409L, 1L, 1L, false);
-      }
-      else if (paramLong1 <= 1000L)
-      {
-        h.CyF.idkeyStat(1409L, 2L, 1L, false);
-      }
-      else
-      {
-        h.CyF.idkeyStat(1409L, 3L, 1L, false);
-        if (com.tencent.mm.plugin.expt.d.f.a.syv == null)
-        {
-          com.tencent.mm.plugin.expt.d.f.a.syv = Boolean.valueOf(((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.smE, false));
-          Log.i("EdgeComputingMonitor", "[EdgeComputingMonitor] statComputingCostTime sIsMonitorPerformance : " + com.tencent.mm.plugin.expt.d.f.a.syv);
-        }
-        if (com.tencent.mm.plugin.expt.d.f.a.syv.booleanValue()) {
-          h.CyF.a(20176, new Object[] { paramb, Integer.valueOf(0), Long.valueOf(paramLong1), Integer.valueOf(i) });
-        }
+      if (paramLong1 <= 100L) {
+        h.IzE.idkeyStat(1409L, 1L, 1L, false);
+      } else if (paramLong1 <= 1000L) {
+        h.IzE.idkeyStat(1409L, 2L, 1L, false);
+      } else {
+        h.IzE.idkeyStat(1409L, 3L, 1L, false);
       }
     }
   }
   
-  public static a cMI()
+  public static a dbw()
   {
-    AppMethodBeat.i(220271);
-    if (sxr == null) {}
+    AppMethodBeat.i(254599);
+    if (wcX == null) {}
     try
     {
-      if (sxr == null) {
-        sxr = new a();
+      if (wcX == null) {
+        wcX = new a();
       }
-      a locala = sxr;
-      AppMethodBeat.o(220271);
+      a locala = wcX;
+      AppMethodBeat.o(254599);
       return locala;
     }
     finally
     {
-      AppMethodBeat.o(220271);
+      AppMethodBeat.o(254599);
     }
   }
   
-  private void cMJ()
+  private void dbx()
   {
-    AppMethodBeat.i(220274);
-    Object localObject1 = com.tencent.mm.plugin.expt.d.b.b.cMS().cMV();
+    AppMethodBeat.i(254617);
+    Object localObject1 = com.tencent.mm.plugin.expt.d.c.b.dbG().dbJ();
     if (((List)localObject1).size() <= 0)
     {
-      AppMethodBeat.o(220274);
+      AppMethodBeat.o(254617);
       return;
     }
     Log.i("EdgeComputingMgr", "[EdgeComputingMgr] runSqlOnRegularTime!");
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
+    Iterator localIterator1 = ((List)localObject1).iterator();
+    while (localIterator1.hasNext())
     {
-      ??? = (com.tencent.mm.plugin.expt.d.e.a.c)((Iterator)localObject1).next();
-      if (org.apache.commons.b.g.equals(MD5Util.getMD5String(((com.tencent.mm.plugin.expt.d.e.a.c)???).sql), ((com.tencent.mm.plugin.expt.d.e.a.c)???).syt))
+      Object localObject4 = (com.tencent.mm.plugin.expt.d.f.a.c)localIterator1.next();
+      if ((!g.fK(((com.tencent.mm.plugin.expt.d.f.a.c)localObject4).sql)) && (g.oC(MD5Util.getMD5String(((com.tencent.mm.plugin.expt.d.f.a.c)localObject4).sql), ((com.tencent.mm.plugin.expt.d.f.a.c)localObject4).weo)))
       {
-        Object localObject4 = this.sxz;
-        Object localObject5 = ((com.tencent.mm.plugin.expt.d.e.a.c)???).syg;
-        if (!org.apache.commons.b.g.eP((String)localObject5))
+        localObject1 = this.wde;
+        ??? = ((com.tencent.mm.plugin.expt.d.f.a.c)localObject4).wdY;
+        if (!g.fK((String)???))
         {
-          ((com.tencent.mm.plugin.expt.d.b.a.a)localObject4).syb.put(localObject5, Long.valueOf(System.currentTimeMillis()));
-          ((com.tencent.mm.plugin.expt.d.b.a.a)localObject4).cMX();
+          ((com.tencent.mm.plugin.expt.d.c.a.a)localObject1).wdT.put(???, Long.valueOf(System.currentTimeMillis()));
+          ((com.tencent.mm.plugin.expt.d.c.a.a)localObject1).dbM();
         }
         long l = SystemClock.uptimeMillis();
-        localObject4 = aok(((com.tencent.mm.plugin.expt.d.e.a.c)???).sql);
-        localObject5 = ((com.tencent.mm.plugin.expt.d.e.a.c)???).syg;
+        localObject1 = awi(((com.tencent.mm.plugin.expt.d.f.a.c)localObject4).sql);
+        ??? = ((com.tencent.mm.plugin.expt.d.f.a.c)localObject4).wdY;
         l = SystemClock.uptimeMillis() - l;
         int i;
-        if (localObject4 != null)
+        label208:
+        Object localObject5;
+        if (localObject1 != null)
         {
-          i = ((List)localObject4).size();
-          label175:
+          i = ((List)localObject1).size();
           if (l > 10L) {
-            break label336;
+            break label563;
           }
-          h.CyF.idkeyStat(1409L, 12L, 1L, false);
+          h.IzE.idkeyStat(1409L, 12L, 1L, false);
+          if (l <= 1000L)
+          {
+            h.IzE.idkeyStat(1409L, 47L, l, false);
+            h.IzE.idkeyStat(1409L, 48L, 1L, false);
+          }
+          h.IzE.idkeyStat(1409L, 92L, 1L, false);
+          if (com.tencent.mm.plugin.expt.d.g.a.dbP()) {
+            h.IzE.a(20176, new Object[] { ???, Integer.valueOf(3), Long.valueOf(l), Integer.valueOf(i) });
+          }
+          Log.d("EdgeComputingMonitor", "[EdgeComputingMonitor] statSQLQueryCostTime configID : %s, costTime : %d, dataSzie : %d", new Object[] { ???, Long.valueOf(l), Integer.valueOf(i) });
+          ??? = this.wde;
+          localObject5 = ((com.tencent.mm.plugin.expt.d.f.a.c)localObject4).wdY;
+          if (!g.fK((String)localObject5))
+          {
+            ((com.tencent.mm.plugin.expt.d.c.a.a)???).wdT.remove(localObject5);
+            ((com.tencent.mm.plugin.expt.d.c.a.a)???).dbM();
+          }
+          if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {
+            continue;
+          }
+          if (((com.tencent.mm.plugin.expt.d.f.a.c)localObject4).wed <= 0) {
+            break label658;
+          }
+          localObject5 = ((List)localObject1).iterator();
         }
         for (;;)
         {
-          Log.d("EdgeComputingMonitor", "[EdgeComputingMonitor] statSQLQueryCostTime configID : %s, costTime : %d, dataSzie : %d", new Object[] { localObject5, Long.valueOf(l), Integer.valueOf(i) });
-          localObject5 = this.sxz;
-          String str = ((com.tencent.mm.plugin.expt.d.e.a.c)???).syg;
-          if (!org.apache.commons.b.g.eP(str))
+          if (!((Iterator)localObject5).hasNext()) {
+            break label658;
+          }
+          List localList = (List)((Iterator)localObject5).next();
+          if (((com.tencent.mm.plugin.expt.d.f.a.c)localObject4).wej == 1)
           {
-            ((com.tencent.mm.plugin.expt.d.b.a.a)localObject5).syb.remove(str);
-            ((com.tencent.mm.plugin.expt.d.b.a.a)localObject5).cMX();
-          }
-          if ((localObject4 == null) || (((List)localObject4).size() <= 0)) {
-            break;
-          }
-          if (((com.tencent.mm.plugin.expt.d.e.a.c)???).syl <= 0) {
-            break label506;
-          }
-          localObject4 = ((List)localObject4).iterator();
-          while (((Iterator)localObject4).hasNext()) {
-            com.tencent.mm.plugin.expt.d.g.a.q((List)((Iterator)localObject4).next(), ((com.tencent.mm.plugin.expt.d.e.a.c)???).syl);
-          }
-          i = 0;
-          break label175;
-          label336:
-          if (l <= 100L)
-          {
-            h.CyF.idkeyStat(1409L, 13L, 1L, false);
-          }
-          else if (l <= 1000L)
-          {
-            h.CyF.idkeyStat(1409L, 14L, 1L, false);
+            String str = ((com.tencent.mm.plugin.expt.d.f.a.c)localObject4).wdY;
+            i = ((com.tencent.mm.plugin.expt.d.f.a.c)localObject4).wed;
+            if ((!g.fK(str)) && (i > 0) && (localList != null) && (localList.size() > 0))
+            {
+              ArrayList localArrayList = new ArrayList();
+              Iterator localIterator2 = localList.iterator();
+              for (;;)
+              {
+                if (localIterator2.hasNext())
+                {
+                  ??? = (String)localIterator2.next();
+                  localObject1 = ???;
+                  if (((String)???).contains(",")) {
+                    localObject1 = ((String)???).replace(",", "\\$");
+                  }
+                  localArrayList.add(localObject1);
+                  continue;
+                  i = 0;
+                  break;
+                  label563:
+                  if (l <= 100L)
+                  {
+                    h.IzE.idkeyStat(1409L, 13L, 1L, false);
+                    break label208;
+                  }
+                  if (l <= 1000L)
+                  {
+                    h.IzE.idkeyStat(1409L, 14L, 1L, false);
+                    break label208;
+                  }
+                  h.IzE.idkeyStat(1409L, 15L, 1L, false);
+                  break label208;
+                }
+              }
+              com.tencent.mm.plugin.expt.d.h.b.J(str, i, com.tencent.mm.plugin.expt.d.h.a.dt(localList));
+            }
           }
           else
           {
-            h.CyF.idkeyStat(1409L, 15L, 1L, false);
-            if (com.tencent.mm.plugin.expt.d.f.a.syv == null)
-            {
-              com.tencent.mm.plugin.expt.d.f.a.syv = Boolean.valueOf(((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.smE, false));
-              Log.i("EdgeComputingMonitor", "[EdgeComputingMonitor] statRegularWorkTime sIsMonitorPerformance : " + com.tencent.mm.plugin.expt.d.f.a.syv);
-            }
-            if (com.tencent.mm.plugin.expt.d.f.a.syv.booleanValue()) {
-              h.CyF.a(20176, new Object[] { localObject5, Integer.valueOf(3), Long.valueOf(l), Integer.valueOf(i) });
-            }
+            com.tencent.mm.plugin.expt.d.h.a.g(((com.tencent.mm.plugin.expt.d.f.a.c)localObject4).wed, localList);
           }
         }
-        label506:
-        localObject4 = com.tencent.mm.plugin.expt.d.b.b.cMS();
-        localObject5 = ((com.tencent.mm.plugin.expt.d.e.a.c)???).syg;
-        if (!org.apache.commons.b.g.eP((String)localObject5))
+        label658:
+        localObject1 = com.tencent.mm.plugin.expt.d.c.b.dbG();
+        localObject4 = ((com.tencent.mm.plugin.expt.d.f.a.c)localObject4).wdY;
+        if (!g.fK((String)localObject4))
         {
-          Log.i("EdgeComputingConfigService", "[EdgeComputingConfigService] removeSqlConfigModel, configID : ".concat(String.valueOf(localObject5)));
-          synchronized (((com.tencent.mm.plugin.expt.d.b.b)localObject4).sxN)
+          Log.i("EdgeComputingConfigService", "[EdgeComputingConfigService] removeSqlConfigModel, configID : ".concat(String.valueOf(localObject4)));
+          synchronized (((com.tencent.mm.plugin.expt.d.c.b)localObject1).wdt)
           {
-            ((com.tencent.mm.plugin.expt.d.b.b)localObject4).sxN.remove(localObject5);
-            ((com.tencent.mm.plugin.expt.d.b.b)localObject4).cMW();
+            ((com.tencent.mm.plugin.expt.d.c.b)localObject1).wdt.remove(localObject4);
+            ((com.tencent.mm.plugin.expt.d.c.b)localObject1).dbK();
           }
         }
       }
     }
-    AppMethodBeat.o(220274);
+    this.wdc.dbQ();
+    AppMethodBeat.o(254617);
   }
   
-  public final void a(long paramLong, final com.tencent.mm.plugin.expt.d.e.a.b paramb, String paramString)
+  public final void a(long paramLong, final com.tencent.mm.plugin.expt.d.f.a.b paramb, String paramString)
   {
-    AppMethodBeat.i(220272);
-    if ((paramb == null) || (org.apache.commons.b.g.eP(paramString)))
+    AppMethodBeat.i(254605);
+    if ((paramb == null) || (g.fK(paramString)))
     {
-      AppMethodBeat.o(220272);
+      AppMethodBeat.o(254605);
       return;
     }
-    Log.d("EdgeComputingMgr", "[EdgeComputingMgr] onDataReceive configID : " + paramb.syg + ", data : " + paramString);
-    if (this.sxv == null)
-    {
-      Log.e("EdgeComputingMgr", "[EdgeComputingMgr] edgeComputing please resetDB!");
-      AppMethodBeat.o(220272);
-      return;
-    }
-    com.tencent.mm.plugin.expt.d.f.a.k(paramb.syg, 3, paramLong);
-    final com.tencent.mm.plugin.expt.d.e.a locala = new com.tencent.mm.plugin.expt.d.e.a();
+    Log.d("EdgeComputingMgr", "[EdgeComputingMgr] onDataReceive configID : " + paramb.wdY + ", data : " + paramString);
+    com.tencent.mm.plugin.expt.d.g.a.l(paramb.wdY, 3, paramLong);
+    final com.tencent.mm.plugin.expt.d.f.a locala = new com.tencent.mm.plugin.expt.d.f.a();
     locala.data = paramString;
-    locala.syg = paramb.syg;
-    locala.syh = paramLong;
-    this.sxB.post(new Runnable()
+    locala.wdY = paramb.wdY;
+    locala.wdZ = paramLong;
+    this.wdg.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(220267);
+        AppMethodBeat.i(251972);
         long l = SystemClock.uptimeMillis();
         String str;
-        if (paramb.syn == 1)
+        if (paramb.wef == 1)
         {
           a.c(a.this).a(locala);
           a.b(a.this).removeMessages(1003);
           a.b(a.this).sendEmptyMessageDelayed(1003, 30000L);
-          str = paramb.syg;
+          str = paramb.wdY;
           l = SystemClock.uptimeMillis() - l;
           if (l > 10L) {
-            break label174;
+            break label268;
           }
-          h.CyF.idkeyStat(1409L, 4L, 1L, false);
+          h.IzE.idkeyStat(1409L, 4L, 1L, false);
         }
         for (;;)
         {
+          if (l <= 1000L)
+          {
+            h.IzE.idkeyStat(1409L, 43L, l, false);
+            h.IzE.idkeyStat(1409L, 44L, 1L, false);
+          }
+          h.IzE.idkeyStat(1409L, 90L, 1L, false);
+          if (com.tencent.mm.plugin.expt.d.g.a.dbP()) {
+            h.IzE.a(20176, new Object[] { str, Integer.valueOf(1), Long.valueOf(l), Integer.valueOf(1) });
+          }
           Log.d("EdgeComputingMonitor", "[EdgeComputingMonitor] statCacheCostTime configID : %s, costTime : %d, dataSzie : %d", new Object[] { str, Long.valueOf(l), Integer.valueOf(1) });
-          com.tencent.mm.plugin.expt.d.f.a.k(paramb.syg, 5, locala.syh);
-          AppMethodBeat.o(220267);
+          com.tencent.mm.plugin.expt.d.g.a.l(paramb.wdY, 5, locala.wdZ);
+          AppMethodBeat.o(251972);
           return;
           a.d(a.this).a(locala);
           break;
-          label174:
-          if (l <= 100L)
-          {
-            h.CyF.idkeyStat(1409L, 5L, 1L, false);
-          }
-          else if (l <= 1000L)
-          {
-            h.CyF.idkeyStat(1409L, 6L, 1L, false);
-          }
-          else
-          {
-            h.CyF.idkeyStat(1409L, 7L, 1L, false);
-            if (com.tencent.mm.plugin.expt.d.f.a.syv == null)
-            {
-              com.tencent.mm.plugin.expt.d.f.a.syv = Boolean.valueOf(((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.smE, false));
-              Log.i("EdgeComputingMonitor", "[EdgeComputingMonitor] statCacheCostTime sIsMonitorPerformance : " + com.tencent.mm.plugin.expt.d.f.a.syv);
-            }
-            if (com.tencent.mm.plugin.expt.d.f.a.syv.booleanValue()) {
-              h.CyF.a(20176, new Object[] { str, Integer.valueOf(1), Long.valueOf(l), Integer.valueOf(1) });
-            }
+          label268:
+          if (l <= 100L) {
+            h.IzE.idkeyStat(1409L, 5L, 1L, false);
+          } else if (l <= 1000L) {
+            h.IzE.idkeyStat(1409L, 6L, 1L, false);
+          } else {
+            h.IzE.idkeyStat(1409L, 7L, 1L, false);
           }
         }
       }
     });
-    this.sxB.removeMessages(1002);
-    this.sxB.sendEmptyMessageDelayed(1002, 3000L);
-    AppMethodBeat.o(220272);
+    this.wdg.removeMessages(1002);
+    this.wdg.sendEmptyMessageDelayed(1002, 3000L);
+    AppMethodBeat.o(254605);
   }
   
-  public final void a(com.tencent.mm.plugin.expt.d.e.a.b paramb)
+  public final void a(com.tencent.mm.plugin.expt.d.f.a.b paramb)
   {
-    AppMethodBeat.i(220276);
+    AppMethodBeat.i(254621);
     if (paramb == null)
     {
-      AppMethodBeat.o(220276);
+      AppMethodBeat.o(254621);
       return;
     }
-    Log.i("EdgeComputingMgr", "[EdgeComputingMgr] onScriptConfigUpdate newConfig : " + paramb.syg);
-    AppMethodBeat.o(220276);
+    Log.i("EdgeComputingMgr", "[EdgeComputingMgr] onScriptConfigUpdate newConfig : " + paramb.wdY);
+    AppMethodBeat.o(254621);
   }
   
-  public final void a(com.tencent.mm.plugin.expt.d.e.a.c paramc)
+  public final void a(com.tencent.mm.plugin.expt.d.f.a.c paramc)
   {
-    AppMethodBeat.i(220279);
+    AppMethodBeat.i(254627);
     if (paramc == null)
     {
-      AppMethodBeat.o(220279);
+      AppMethodBeat.o(254627);
       return;
     }
-    Log.i("EdgeComputingMgr", "[EdgeComputingMgr] onSqlConfigUpdate newConfig : " + paramc.syg);
-    AppMethodBeat.o(220279);
+    Log.i("EdgeComputingMgr", "[EdgeComputingMgr] onSqlConfigUpdate newConfig : " + paramc.wdY);
+    AppMethodBeat.o(254627);
   }
   
-  public final List<List<String>> aok(String paramString)
+  public final List<List<String>> awi(String paramString)
   {
-    AppMethodBeat.i(220275);
-    if (org.apache.commons.b.g.eP(paramString))
+    AppMethodBeat.i(254619);
+    if (g.fK(paramString))
     {
-      AppMethodBeat.o(220275);
+      AppMethodBeat.o(254619);
       return null;
     }
-    paramString = this.sxx.gn("Edge.db", paramString);
-    AppMethodBeat.o(220275);
+    paramString = this.wdd.gB("Edge.db", paramString);
+    AppMethodBeat.o(254619);
     return paramString;
   }
   
-  public final void b(final com.tencent.mm.plugin.expt.d.e.a.b paramb)
+  public final void b(final com.tencent.mm.plugin.expt.d.f.a.b paramb)
   {
-    AppMethodBeat.i(220277);
+    AppMethodBeat.i(254623);
     if (paramb == null)
     {
-      AppMethodBeat.o(220277);
+      AppMethodBeat.o(254623);
       return;
     }
-    Log.i("EdgeComputingMgr", "[EdgeComputingMgr] onScriptConfigOffline offlineConfig : " + paramb.syg);
-    this.sxB.post(new Runnable()
+    Log.i("EdgeComputingMgr", "[EdgeComputingMgr] onScriptConfigOffline offlineConfig : " + paramb.wdY);
+    this.wdg.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(220268);
-        a.d(a.this).clear(paramb.syg);
-        a.c(a.this).clear(paramb.syg);
-        com.tencent.mm.plugin.expt.d.i.b localb = a.e(a.this);
-        com.tencent.mm.plugin.expt.d.e.a.b localb1 = paramb;
-        if ((localb.syB == null) || (localb1 == null))
+        AppMethodBeat.i(255475);
+        a.d(a.this).clear(paramb.wdY);
+        a.c(a.this).clear(paramb.wdY);
+        com.tencent.mm.plugin.expt.d.j.b localb = a.e(a.this);
+        com.tencent.mm.plugin.expt.d.f.a.b localb1 = paramb;
+        if ((localb.wex == null) || (localb1 == null))
         {
-          AppMethodBeat.o(220268);
+          AppMethodBeat.o(255475);
           return;
         }
-        new com.tencent.mm.plugin.expt.d.i.a(localb.syB, localb1.syg, localb1.sym).cNg();
-        Log.i("EdgeComputingDataStorage", "[EdgeComputingDataStorage] clearAllData configID : " + localb1.syg);
-        AppMethodBeat.o(220268);
+        new com.tencent.mm.plugin.expt.d.j.a(localb.wex, localb1.wdY, localb1.wee).dbY();
+        Log.i("EdgeComputingDataStorage", "[EdgeComputingDataStorage] clearAllData configID : " + localb1.wdY);
+        AppMethodBeat.o(255475);
       }
     });
-    AppMethodBeat.o(220277);
+    AppMethodBeat.o(254623);
   }
   
-  public final void b(com.tencent.mm.plugin.expt.d.e.a.c paramc)
+  public final void b(com.tencent.mm.plugin.expt.d.f.a.c paramc)
   {
-    AppMethodBeat.i(220280);
+    AppMethodBeat.i(254630);
     if (paramc == null)
     {
-      AppMethodBeat.o(220280);
+      AppMethodBeat.o(254630);
       return;
     }
-    Log.i("EdgeComputingMgr", "[EdgeComputingMgr] onSqlConfigOffline offlineConfig : " + paramc.syg);
-    AppMethodBeat.o(220280);
+    Log.i("EdgeComputingMgr", "[EdgeComputingMgr] onSqlConfigOffline offlineConfig : " + paramc.wdY);
+    AppMethodBeat.o(254630);
   }
   
-  public final void c(final com.tencent.mm.plugin.expt.d.e.a.b paramb)
+  public final void c(final com.tencent.mm.plugin.expt.d.f.a.b paramb)
   {
-    AppMethodBeat.i(220278);
+    AppMethodBeat.i(254626);
     if (paramb == null)
     {
-      AppMethodBeat.o(220278);
+      AppMethodBeat.o(254626);
       return;
     }
-    if (b.KB()) {
-      this.sxB.post(new Runnable()
+    if (b.No()) {
+      this.wdg.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(220269);
-          if (paramb.syo == 0)
+          AppMethodBeat.i(250960);
+          if (paramb.weg == 0)
           {
-            com.tencent.mm.plugin.expt.d.b.b.a locala = a.f(a.this);
-            String str = paramb.syg;
-            if (!org.apache.commons.b.g.eP(str)) {
-              synchronized (locala.syc)
+            com.tencent.mm.plugin.expt.d.c.b.a locala = a.f(a.this);
+            String str = paramb.wdY;
+            if (!g.fK(str)) {
+              synchronized (locala.wdU)
               {
-                locala.syc.remove(str);
-                locala.cMZ();
-                AppMethodBeat.o(220269);
+                locala.wdU.remove(str);
+                locala.dbO();
+                AppMethodBeat.o(250960);
                 return;
               }
             }
           }
-          AppMethodBeat.o(220269);
+          AppMethodBeat.o(250960);
         }
       });
     }
-    Log.i("EdgeComputingMgr", "[EdgeComputingMgr] onScriptConfigSame sameConfig : " + paramb.syg);
-    AppMethodBeat.o(220278);
+    Log.i("EdgeComputingMgr", "[EdgeComputingMgr] onScriptConfigSame sameConfig : " + paramb.wdY);
+    AppMethodBeat.o(254626);
   }
   
-  public final void c(com.tencent.mm.plugin.expt.d.e.a.c paramc)
+  public final void c(com.tencent.mm.plugin.expt.d.f.a.c paramc)
   {
-    AppMethodBeat.i(220281);
+    AppMethodBeat.i(254633);
     if (paramc == null)
     {
-      AppMethodBeat.o(220281);
+      AppMethodBeat.o(254633);
       return;
     }
-    Log.i("EdgeComputingMgr", "[EdgeComputingMgr] onSqlConfigSame sameConfig : " + paramc.syg);
-    AppMethodBeat.o(220281);
+    Log.i("EdgeComputingMgr", "[EdgeComputingMgr] onSqlConfigSame sameConfig : " + paramc.wdY);
+    AppMethodBeat.o(254633);
   }
 }
 

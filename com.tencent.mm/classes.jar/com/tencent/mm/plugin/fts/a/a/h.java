@@ -13,31 +13,31 @@ import java.util.regex.Pattern;
 
 public final class h
 {
-  private static final a wWG;
-  public String wWB;
-  public String wWC;
-  public String[] wWD;
-  public String[] wWE;
-  public List<c> wWF;
+  private static final a BIB;
+  public List<c> BIA;
+  public String BIw;
+  public String BIx;
+  public String[] BIy;
+  public String[] BIz;
   
   static
   {
     AppMethodBeat.i(131701);
-    wWG = new a()
+    BIB = new a()
     {
-      public final String[] ayy(String paramAnonymousString)
+      public final String[] aHS(String paramAnonymousString)
       {
-        AppMethodBeat.i(131689);
-        paramAnonymousString = c.a.wVe.split(paramAnonymousString, 2);
-        AppMethodBeat.o(131689);
+        AppMethodBeat.i(131688);
+        paramAnonymousString = c.a.BHa.split(paramAnonymousString);
+        AppMethodBeat.o(131688);
         return paramAnonymousString;
       }
       
-      public final String[] split(String paramAnonymousString)
+      public final String[] aHT(String paramAnonymousString)
       {
-        AppMethodBeat.i(131688);
-        paramAnonymousString = c.a.wVe.split(paramAnonymousString);
-        AppMethodBeat.o(131688);
+        AppMethodBeat.i(131689);
+        paramAnonymousString = c.a.BHa.split(paramAnonymousString, 2);
+        AppMethodBeat.o(131689);
         return paramAnonymousString;
       }
     };
@@ -47,7 +47,7 @@ public final class h
   private h()
   {
     AppMethodBeat.i(131696);
-    this.wWF = new ArrayList();
+    this.BIA = new ArrayList();
     AppMethodBeat.o(131696);
   }
   
@@ -55,24 +55,24 @@ public final class h
   {
     AppMethodBeat.i(131700);
     h localh = new h();
-    localh.wWB = paramString;
-    localh.wWC = d.ayq(paramString);
-    localh.wWD = parama.split(localh.wWC);
-    localh.wWE = parama.ayy(localh.wWC);
-    paramString = localh.wWD;
+    localh.BIw = paramString;
+    localh.BIx = d.aHJ(paramString);
+    localh.BIy = parama.aHS(localh.BIx);
+    localh.BIz = parama.aHT(localh.BIx);
+    paramString = localh.BIy;
     int j = paramString.length;
     int i = 0;
     while (i < j)
     {
       parama = paramString[i];
-      localh.wWF.add(bD(parama, paramBoolean));
+      localh.BIA.add(bI(parama, paramBoolean));
       i += 1;
     }
     AppMethodBeat.o(131700);
     return localh;
   }
   
-  private static c bD(String paramString, boolean paramBoolean)
+  private static c bI(String paramString, boolean paramBoolean)
   {
     int j = 0;
     AppMethodBeat.i(131698);
@@ -89,7 +89,7 @@ public final class h
       bool = paramBoolean;
       if (i < paramString.length())
       {
-        if (!g.C(paramString.charAt(i))) {
+        if (!g.K(paramString.charAt(i))) {
           bool = false;
         }
       }
@@ -99,7 +99,7 @@ public final class h
         if (!bool) {
           break label359;
         }
-        localObject2 = g.wVM;
+        localObject2 = g.BHI;
         localObject1 = new ArrayList();
         localObject3 = paramString.toLowerCase().toCharArray();
         i = j;
@@ -109,7 +109,7 @@ public final class h
             break label144;
           }
           j = localObject3[i];
-          if (localObject2.wXu.wXv[(j - 97)] == null) {
+          if (localObject2.BJq.BJr[(j - 97)] == null) {
             break;
           }
           ((List)localObject1).add(String.valueOf(localObject3[i]));
@@ -123,12 +123,12 @@ public final class h
     if (((List)localObject1).size() > 0)
     {
       localObject2 = new b();
-      ((b)localObject2).wWH = d.wWL;
+      ((b)localObject2).BIC = d.BIG;
       ((b)localObject2).content = Util.listToString((List)localObject1, "​");
-      ((b)localObject2).wWI = ((List)localObject1);
-      localc.wWJ.add(localObject2);
+      ((b)localObject2).BID = ((List)localObject1);
+      localc.BIE.add(localObject2);
     }
-    Object localObject1 = g.wVM.ayA(paramString);
+    Object localObject1 = g.BHI.aHV(paramString);
     if (((List)localObject1).size() > 0)
     {
       localObject1 = ((List)localObject1).iterator();
@@ -138,48 +138,48 @@ public final class h
         if (((List)localObject2).size() > 0)
         {
           localObject3 = new b();
-          ((b)localObject3).wWH = d.wWK;
+          ((b)localObject3).BIC = d.BIF;
           ((b)localObject3).content = Util.listToString((List)localObject2, "​");
-          ((b)localObject3).wWI = ((List)localObject2);
-          localc.wWJ.add(localObject3);
+          ((b)localObject3).BID = ((List)localObject2);
+          localc.BIE.add(localObject3);
         }
       }
     }
     localObject1 = new b();
-    ((b)localObject1).wWH = d.wWM;
+    ((b)localObject1).BIC = d.BIH;
     ((b)localObject1).content = paramString;
-    localc.wWJ.add(localObject1);
+    localc.BIE.add(localObject1);
     for (;;)
     {
       AppMethodBeat.o(131698);
       return localc;
       label359:
       localObject1 = new b();
-      ((b)localObject1).wWH = d.wWM;
+      ((b)localObject1).BIC = d.BIH;
       ((b)localObject1).content = paramString;
-      localc.wWJ.add(localObject1);
+      localc.BIE.add(localObject1);
     }
   }
   
-  public static h bE(String paramString, boolean paramBoolean)
+  public static h bJ(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(131699);
-    paramString = a(paramString, paramBoolean, wWG);
+    paramString = a(paramString, paramBoolean, BIB);
     AppMethodBeat.o(131699);
     return paramString;
   }
   
-  public final String dOz()
+  public final String eqQ()
   {
     AppMethodBeat.i(131697);
     Object localObject = new StringBuffer();
     int i = 0;
-    while (i < this.wWF.size())
+    while (i < this.BIA.size())
     {
       ((StringBuffer)localObject).append("(");
-      ((StringBuffer)localObject).append(((c)this.wWF.get(i)).dOB());
+      ((StringBuffer)localObject).append(((c)this.BIA.get(i)).eqS());
       ((StringBuffer)localObject).append(")");
-      if (i != this.wWF.size() - 1) {
+      if (i != this.BIA.size() - 1) {
         ((StringBuffer)localObject).append(" AND ");
       }
       i += 1;
@@ -191,34 +191,34 @@ public final class h
   
   public static abstract interface a
   {
-    public abstract String[] ayy(String paramString);
+    public abstract String[] aHS(String paramString);
     
-    public abstract String[] split(String paramString);
+    public abstract String[] aHT(String paramString);
   }
   
   public static final class b
   {
+    public h.d BIC;
+    public List<String> BID;
     public String content;
-    public h.d wWH;
-    public List<String> wWI;
   }
   
   public static final class c
   {
-    public List<h.b> wWJ;
+    public List<h.b> BIE;
     
     public c()
     {
       AppMethodBeat.i(131690);
-      this.wWJ = new ArrayList();
+      this.BIE = new ArrayList();
       AppMethodBeat.o(131690);
     }
     
-    private List<String> dOA()
+    private List<String> eqR()
     {
       AppMethodBeat.i(131691);
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.wWJ.iterator();
+      Iterator localIterator = this.BIE.iterator();
       while (localIterator.hasNext())
       {
         h.b localb = (h.b)localIterator.next();
@@ -230,10 +230,10 @@ public final class h
       return localArrayList;
     }
     
-    public final String dOB()
+    public final String eqS()
     {
       AppMethodBeat.i(131692);
-      Object localObject = dOA();
+      Object localObject = eqR();
       StringBuilder localStringBuilder = new StringBuilder();
       int i = 0;
       if (i < ((List)localObject).size())
@@ -242,7 +242,7 @@ public final class h
         localStringBuilder.append("\"");
         localStringBuilder.append(str);
         char c = str.charAt(str.length() - 1);
-        if ((g.C(c)) || (g.D(c))) {
+        if ((g.K(c)) || (g.L(c))) {
           localStringBuilder.append("\"*");
         }
         for (;;)
@@ -266,10 +266,10 @@ public final class h
     static
     {
       AppMethodBeat.i(131695);
-      wWK = new d("FullPY", 0);
-      wWL = new d("ShortPY", 1);
-      wWM = new d("OTHER", 2);
-      wWN = new d[] { wWK, wWL, wWM };
+      BIF = new d("FullPY", 0);
+      BIG = new d("ShortPY", 1);
+      BIH = new d("OTHER", 2);
+      BII = new d[] { BIF, BIG, BIH };
       AppMethodBeat.o(131695);
     }
     
@@ -278,7 +278,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.h
  * JD-Core Version:    0.7.0.1
  */

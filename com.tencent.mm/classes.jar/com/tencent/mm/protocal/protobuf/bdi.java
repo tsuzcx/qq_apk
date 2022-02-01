@@ -1,66 +1,46 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
 
 public final class bdi
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int LNf;
-  public b LNg;
-  public b LNh;
-  public String dQx;
-  public int position;
-  public long twp;
+  public int SOq;
+  public int bitrate;
+  public int percent;
+  public int type;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209696);
+    AppMethodBeat.i(200242);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.LNf);
-      paramVarArgs.bb(2, this.twp);
-      paramVarArgs.aM(3, this.position);
-      if (this.dQx != null) {
-        paramVarArgs.e(4, this.dQx);
-      }
-      if (this.LNg != null) {
-        paramVarArgs.c(5, this.LNg);
-      }
-      if (this.LNh != null) {
-        paramVarArgs.c(6, this.LNh);
-      }
-      AppMethodBeat.o(209696);
+      paramVarArgs.aY(1, this.type);
+      paramVarArgs.aY(2, this.percent);
+      paramVarArgs.aY(3, this.SOq);
+      paramVarArgs.aY(4, this.bitrate);
+      AppMethodBeat.o(200242);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bu(1, this.LNf) + 0 + g.a.a.b.b.a.r(2, this.twp) + g.a.a.b.b.a.bu(3, this.position);
-      paramInt = i;
-      if (this.dQx != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.dQx);
-      }
-      i = paramInt;
-      if (this.LNg != null) {
-        i = paramInt + g.a.a.b.b.a.b(5, this.LNg);
-      }
-      paramInt = i;
-      if (this.LNh != null) {
-        paramInt = i + g.a.a.b.b.a.b(6, this.LNh);
-      }
-      AppMethodBeat.o(209696);
-      return paramInt;
+      paramInt = g.a.a.b.b.a.bM(1, this.type);
+      int i = g.a.a.b.b.a.bM(2, this.percent);
+      int j = g.a.a.b.b.a.bM(3, this.SOq);
+      int k = g.a.a.b.b.a.bM(4, this.bitrate);
+      AppMethodBeat.o(200242);
+      return paramInt + 0 + i + j + k;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(209696);
+      AppMethodBeat.o(200242);
       return 0;
     }
     if (paramInt == 3)
@@ -70,34 +50,26 @@ public final class bdi
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(209696);
+        AppMethodBeat.o(200242);
         return -1;
       case 1: 
-        localbdi.LNf = locala.UbS.zi();
-        AppMethodBeat.o(209696);
+        localbdi.type = locala.abFh.AK();
+        AppMethodBeat.o(200242);
         return 0;
       case 2: 
-        localbdi.twp = locala.UbS.zl();
-        AppMethodBeat.o(209696);
+        localbdi.percent = locala.abFh.AK();
+        AppMethodBeat.o(200242);
         return 0;
       case 3: 
-        localbdi.position = locala.UbS.zi();
-        AppMethodBeat.o(209696);
-        return 0;
-      case 4: 
-        localbdi.dQx = locala.UbS.readString();
-        AppMethodBeat.o(209696);
-        return 0;
-      case 5: 
-        localbdi.LNg = locala.UbS.hPo();
-        AppMethodBeat.o(209696);
+        localbdi.SOq = locala.abFh.AK();
+        AppMethodBeat.o(200242);
         return 0;
       }
-      localbdi.LNh = locala.UbS.hPo();
-      AppMethodBeat.o(209696);
+      localbdi.bitrate = locala.abFh.AK();
+      AppMethodBeat.o(200242);
       return 0;
     }
-    AppMethodBeat.o(209696);
+    AppMethodBeat.o(200242);
     return -1;
   }
 }

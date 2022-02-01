@@ -1,139 +1,111 @@
 package com.tencent.mm.plugin.music.ui;
 
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.f;
-import com.tencent.mm.br.c;
-import com.tencent.mm.g.a.mx;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.bb.f;
+import com.tencent.mm.plugin.music.a.c;
+import com.tencent.mm.plugin.music.a.d;
+import com.tencent.mm.plugin.music.a.e;
+import com.tencent.mm.plugin.music.a.g;
+import com.tencent.mm.plugin.music.a.h;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import java.lang.ref.WeakReference;
 
 public final class a
   extends com.tencent.mm.pluginsdk.ui.b.b
 {
-  private TextView And;
-  private f Ane;
-  private IListener lEl;
-  private View oQL;
-  private View oQM;
+  private TextView FUk;
+  private f FUl;
+  private IListener ozM;
+  private View rSI;
+  private View rSJ;
   
   public a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(63196);
-    this.Ane = null;
+    this.FUl = null;
     if (this.view != null)
     {
-      this.And = ((TextView)this.view.findViewById(2131305083));
-      this.oQL = this.view.findViewById(2131305084);
-      this.oQM = this.view.findViewById(2131297327);
-      this.And.setTextSize(0, com.tencent.mm.cb.a.aG(MMApplicationContext.getContext(), 2131165482));
-      this.view.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(63194);
-          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/music/ui/MusicBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-          paramAnonymousView = com.tencent.mm.ay.a.bef();
-          if ((paramAnonymousView != null) && (paramAnonymousView.jfu) && (!TextUtils.isEmpty(paramAnonymousView.jfv)))
-          {
-            paramAnonymousView = paramAnonymousView.jfv;
-            Log.i("MusicBanner", "barBackToWebView is true, start to jump Url:%s", new Object[] { paramAnonymousView });
-            localObject = new Intent();
-            ((Intent)localObject).putExtra("rawUrl", paramAnonymousView);
-            c.b((Context)a.this.Kgr.get(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
-          }
-          for (;;)
-          {
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/music/ui/MusicBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(63194);
-            return;
-            paramAnonymousView = new Intent();
-            h.CyF.a(11992, new Object[] { Integer.valueOf(1) });
-            paramAnonymousView.putExtra("key_scene", 1);
-            c.b((Context)a.this.Kgr.get(), "music", ".ui.MusicMainUI", paramAnonymousView);
-          }
-        }
-      });
+      this.FUk = ((TextView)this.view.findViewById(a.e.music_banner_text_view));
+      this.rSI = this.view.findViewById(a.e.music_banner_view);
+      this.rSJ = this.view.findViewById(a.e.banner_root);
+      this.FUk.setTextSize(0, com.tencent.mm.ci.a.aY(MMApplicationContext.getContext(), a.c.HintTextSize));
+      this.view.setOnClickListener(new a.1(this));
     }
-    this.lEl = new IListener() {};
-    EventCenter.instance.addListener(this.lEl);
+    this.ozM = new a.2(this);
+    EventCenter.instance.addListener(this.ozM);
     AppMethodBeat.o(63196);
   }
   
-  private void aIa(String paramString)
+  private void aSq(String paramString)
   {
     AppMethodBeat.i(63200);
-    if (this.And != null) {
-      this.And.setText(paramString);
+    if (this.FUk != null) {
+      this.FUk.setText(paramString);
     }
     AppMethodBeat.o(63200);
   }
   
-  private boolean evf()
+  private boolean ffz()
   {
+    int i = 8;
     AppMethodBeat.i(63201);
     f localf;
-    if ((this.isFirst) && (this.ifo))
+    if ((this.isFirst) && (this.kUc))
     {
-      this.oQM.setBackgroundResource(2131235299);
-      this.oQL.setBackground(null);
-      this.And.setBackground(null);
-      if (!com.tencent.mm.ay.a.bec()) {
-        break label250;
+      this.rSJ.setBackgroundResource(a.d.tips_bar_white_selector);
+      this.rSI.setBackground(null);
+      this.FUk.setBackground(null);
+      if (!com.tencent.mm.bb.a.bnx()) {
+        break label260;
       }
-      localf = com.tencent.mm.ay.a.bef();
-      this.Ane = localf;
-      aIa(MMApplicationContext.getContext().getString(2131763333) + MMApplicationContext.getContext().getString(2131763334) + localf.jeX);
-      if (!localf.jfr) {
-        break label238;
+      localf = com.tencent.mm.bb.a.bnA();
+      this.FUl = localf;
+      aSq(MMApplicationContext.getContext().getString(a.h.music_detail_playing) + MMApplicationContext.getContext().getString(a.h.music_detail_split) + localf.lVv);
+      if (!localf.lVP) {
+        break label248;
       }
     }
-    label238:
-    for (int i = 8;; i = 0)
+    for (;;)
     {
       setVisibility(i);
-      this.Ane = null;
-      if (localf.jfr) {
-        break label243;
+      this.FUl = null;
+      if (localf.lVP) {
+        break label253;
       }
       AppMethodBeat.o(63201);
       return true;
       if (this.isFirst)
       {
-        this.oQM.setBackgroundResource(2131233332);
-        this.oQL.setBackgroundResource(2131233330);
-        this.And.setBackgroundResource(2131233327);
+        this.rSJ.setBackgroundResource(a.d.list_item_top_selector);
+        this.rSI.setBackgroundResource(a.d.list_item_top_normal);
+        this.FUk.setBackgroundResource(a.d.list_item_normal);
         break;
       }
-      if (this.ifo)
+      if (this.kUc)
       {
-        this.oQM.setBackgroundResource(2131233332);
-        this.oQL.setBackgroundResource(2131233327);
-        this.And.setBackground(null);
+        this.rSJ.setBackgroundResource(a.d.list_item_top_selector);
+        this.rSI.setBackgroundResource(a.d.list_item_normal);
+        this.FUk.setBackground(null);
         break;
       }
-      this.oQM.setBackgroundResource(2131233332);
-      this.oQL.setBackground(null);
-      this.And.setBackgroundResource(2131233327);
+      this.rSJ.setBackgroundResource(a.d.list_item_top_selector);
+      this.rSI.setBackground(null);
+      this.FUk.setBackgroundResource(a.d.list_item_normal);
       break;
+      label248:
+      i = 0;
     }
-    label243:
+    label253:
     AppMethodBeat.o(63201);
     return false;
-    label250:
-    if (com.tencent.mm.ay.a.bed())
+    label260:
+    if (com.tencent.mm.bb.a.bny())
     {
       setVisibility(0);
       AppMethodBeat.o(63201);
@@ -144,10 +116,10 @@ public final class a
     return false;
   }
   
-  public final boolean bYa()
+  public final boolean ckL()
   {
     AppMethodBeat.i(63198);
-    boolean bool = evf();
+    boolean bool = ffz();
     AppMethodBeat.o(63198);
     return bool;
   }
@@ -155,13 +127,13 @@ public final class a
   public final void destroy()
   {
     AppMethodBeat.i(63199);
-    EventCenter.instance.removeListener(this.lEl);
+    EventCenter.instance.removeListener(this.ozM);
     AppMethodBeat.o(63199);
   }
   
   public final int getLayoutId()
   {
-    return 2131495767;
+    return a.g.music_banner_view;
   }
   
   public final int getOrder()
@@ -174,17 +146,17 @@ public final class a
     AppMethodBeat.i(63197);
     if (this.view != null)
     {
-      View localView = this.view.findViewById(2131305084);
+      View localView = this.view.findViewById(a.e.music_banner_view);
       if (paramInt == 0)
       {
-        if (com.tencent.mm.compatible.e.b.cx(MMApplicationContext.getContext()))
+        if (com.tencent.mm.compatible.e.b.ct(MMApplicationContext.getContext()))
         {
           Log.e("MicroMsg.MusicBanner", "isFloatWindowOpAllowed return true");
           localView.setVisibility(8);
-          if (com.tencent.mm.ay.a.bec())
+          if (com.tencent.mm.bb.a.bnx())
           {
             Log.i("MicroMsg.MusicBanner", "resume music to float ball");
-            com.tencent.mm.plugin.music.model.b.x(this.Ane);
+            com.tencent.mm.plugin.music.model.b.x(this.FUl);
             AppMethodBeat.o(63197);
           }
         }
@@ -202,7 +174,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.a
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ final class ah
     AppMethodBeat.o(60782);
   }
   
-  public final boolean hEa()
+  public final boolean iIu()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.ah
  * JD-Core Version:    0.7.0.1
  */

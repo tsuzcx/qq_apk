@@ -8,9 +8,9 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.ak;
-import com.tencent.mm.plugin.wallet_core.model.t;
-import com.tencent.mm.plugin.wallet_core.ui.k;
+import com.tencent.mm.plugin.wallet_core.model.al;
+import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.plugin.wallet_core.ui.l;
 import com.tencent.mm.ui.base.a;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,22 +19,24 @@ import java.util.Collections;
 public class WalletChangeLoanRepayBankcardUI
   extends WalletChangeBankcardUI
 {
-  protected final void aex(int paramInt)
+  private String Oyf;
+  
+  protected final void amk(int paramInt)
   {
     AppMethodBeat.i(69339);
     int i;
     Object localObject;
-    if (this.Hva != null)
+    if (this.OmN != null)
     {
-      i = this.Hva.size();
-      if ((this.Hva == null) || (paramInt >= i)) {
+      i = this.OmN.size();
+      if ((this.OmN == null) || (paramInt >= i)) {
         break label127;
       }
-      localObject = (Bankcard)this.Hva.get(paramInt);
-      this.Hvb = ((Bankcard)localObject);
-      this.HGd.IfW = ((Bankcard)localObject).field_bindSerial;
-      this.Cwg.setEnabled(true);
-      this.HGd.notifyDataSetChanged();
+      localObject = (Bankcard)this.OmN.get(paramInt);
+      this.OmO = ((Bankcard)localObject);
+      this.OxW.OYl = ((Bankcard)localObject).field_bindSerial;
+      this.Iub.setEnabled(true);
+      this.OxW.notifyDataSetChanged();
       Intent localIntent = new Intent();
       localIntent.putExtra("bindSerial", ((Bankcard)localObject).field_bindSerial);
       localIntent.putExtra("ret", 0);
@@ -57,16 +59,17 @@ public class WalletChangeLoanRepayBankcardUI
     }
   }
   
-  protected final k fOr()
+  protected final l gGX()
   {
     AppMethodBeat.i(69338);
-    this.Hva = t.fQJ().IbD;
-    if (this.Hva != null) {
-      Collections.sort(this.Hva, new WalletChangeBankcardUI.2(this));
+    this.OmN = u.gJp().OTP;
+    if (this.OmN != null) {
+      Collections.sort(this.OmN, new WalletChangeBankcardUI.2(this));
     }
-    k localk = new k(this, this.Hva, this.HGc, this.CwO);
+    l locall = new l(this, this.OmN, this.OxV, this.Ivh);
+    locall.OYl = this.Oyf;
     AppMethodBeat.o(69338);
-    return localk;
+    return locall;
   }
   
   public int getForceOrientation()
@@ -77,6 +80,7 @@ public class WalletChangeLoanRepayBankcardUI
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(69337);
+    this.Oyf = getIntent().getStringExtra("bindSerial");
     super.onCreate(paramBundle);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {

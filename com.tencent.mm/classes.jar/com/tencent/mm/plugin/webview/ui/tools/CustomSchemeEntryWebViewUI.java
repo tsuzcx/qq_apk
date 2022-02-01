@@ -10,10 +10,10 @@ public class CustomSchemeEntryWebViewUI
 {
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(211040);
+    AppMethodBeat.i(257902);
     super.onCreate(paramBundle);
     Log.i("MicroMsg.CustomSchemeEntryWebViewUI", "CustomSchemeEntryWebViewUI onCreate");
-    AppMethodBeat.o(211040);
+    AppMethodBeat.o(257902);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

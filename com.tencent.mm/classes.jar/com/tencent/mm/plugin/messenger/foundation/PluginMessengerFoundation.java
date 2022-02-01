@@ -1,30 +1,29 @@
 package com.tencent.mm.plugin.messenger.foundation;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.d;
-import com.tencent.mm.ba.j;
-import com.tencent.mm.ba.o;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.d;
+import com.tencent.mm.bd.j;
 import com.tencent.mm.booter.CoreService;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.as;
+import com.tencent.mm.f.a.df;
+import com.tencent.mm.f.a.df.a;
+import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.model.at;
+import com.tencent.mm.model.au;
 import com.tencent.mm.model.y;
-import com.tencent.mm.modelmulti.n;
 import com.tencent.mm.plugin.messenger.foundation.a.aa;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.ab.a;
+import com.tencent.mm.plugin.messenger.foundation.a.ad;
+import com.tencent.mm.plugin.messenger.foundation.a.ae;
 import com.tencent.mm.plugin.messenger.foundation.a.m;
-import com.tencent.mm.plugin.messenger.foundation.a.s;
-import com.tencent.mm.plugin.messenger.foundation.a.w;
-import com.tencent.mm.plugin.messenger.foundation.a.x;
-import com.tencent.mm.plugin.messenger.foundation.a.x.a;
-import com.tencent.mm.plugin.messenger.foundation.a.z;
+import com.tencent.mm.plugin.messenger.foundation.a.r;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
 import com.tencent.mm.plugin.zero.PluginZero;
-import com.tencent.mm.protocal.protobuf.cpl;
+import com.tencent.mm.protocal.protobuf.cyb;
+import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.a.b.a;
 import com.tencent.mm.storage.ak;
 import com.tencent.mm.storage.ay;
 import com.tencent.mm.storage.ba;
@@ -35,10 +34,9 @@ import com.tencent.mm.storage.br;
 import com.tencent.mm.storage.bu;
 import com.tencent.mm.storage.by;
 import com.tencent.mm.storage.cb;
-import com.tencent.mm.storage.cm;
-import com.tencent.mm.storage.co;
-import com.tencent.mm.storage.ct;
-import com.tencent.mm.storagebase.h;
+import com.tencent.mm.storage.cn;
+import com.tencent.mm.storage.cp;
+import com.tencent.mm.storage.cu;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,24 +44,48 @@ import junit.framework.Assert;
 
 public class PluginMessengerFoundation
   extends com.tencent.mm.kernel.b.f
-  implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.kernel.api.bucket.d, at, s
+  implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.kernel.api.bucket.d, au, v
 {
-  private d Uqf;
-  private e Uqg;
-  private com.tencent.mm.model.cj Uqh;
-  private com.tencent.mm.plugin.chatroom.a Uqi;
-  public int Uqj;
-  private at Uqk;
-  private com.tencent.mm.plugin.messenger.foundation.a.b Uql;
-  private com.tencent.mm.model.e iDE;
+  private au OdA;
+  private com.tencent.mm.plugin.messenger.foundation.a.d OdB;
+  private e Odi;
+  private f Odj;
+  private com.tencent.mm.storage.a.b Odk;
+  private com.tencent.mm.model.ck Odl;
+  private com.tencent.mm.plugin.chatroom.a Ody;
+  public int Odz;
+  private final IListener<df> jxr;
+  private com.tencent.mm.model.e ltF;
   
   public PluginMessengerFoundation()
   {
     AppMethodBeat.i(116903);
-    this.iDE = new com.tencent.mm.model.e();
-    this.Uqh = new com.tencent.mm.model.cj();
-    this.Uqi = new com.tencent.mm.plugin.chatroom.a();
-    this.Uqj = 0;
+    this.ltF = new com.tencent.mm.model.e();
+    this.Odl = new com.tencent.mm.model.ck();
+    this.Ody = new com.tencent.mm.plugin.chatroom.a();
+    this.Odz = 0;
+    this.jxr = new IListener()
+    {
+      public boolean callback(df paramAnonymousdf)
+      {
+        AppMethodBeat.i(189610);
+        if (paramAnonymousdf.fyV.action == 1)
+        {
+          Log.i("MicroMsg.TAG", "do init start");
+          com.tencent.mm.model.ab.jxo = true;
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(189610);
+          return false;
+          if (paramAnonymousdf.fyV.action == 2)
+          {
+            Log.i("MicroMsg.TAG", "do init end");
+            com.tencent.mm.model.ab.jxo = false;
+          }
+        }
+      }
+    };
     AppMethodBeat.o(116903);
   }
   
@@ -103,14 +125,14 @@ public class PluginMessengerFoundation
     {
       public String[] getSQLs()
       {
-        return com.tencent.mm.storage.cj.SQL_CREATE;
+        return com.tencent.mm.storage.ck.SQL_CREATE;
       }
     });
     localHashMap.put(Integer.valueOf("STRANGER_TABLE".hashCode()), new com.tencent.mm.storagebase.h.b()
     {
       public String[] getSQLs()
       {
-        return co.SQL_CREATE;
+        return cp.SQL_CREATE;
       }
     });
     localHashMap.put(Integer.valueOf("FRIEND_USER_TABLE".hashCode()), new com.tencent.mm.storagebase.h.b()
@@ -138,14 +160,14 @@ public class PluginMessengerFoundation
     {
       public String[] getSQLs()
       {
-        return cm.SQL_CREATE;
+        return cn.SQL_CREATE;
       }
     });
     localHashMap.put(Integer.valueOf("VERIFY_CONTACT_TABLE".hashCode()), new com.tencent.mm.storagebase.h.b()
     {
       public String[] getSQLs()
       {
-        return ct.SQL_CREATE;
+        return cu.SQL_CREATE;
       }
     });
     localHashMap.put(Integer.valueOf("FMESSAGE_MSGINFO_TABLE".hashCode()), new com.tencent.mm.storagebase.h.b()
@@ -176,6 +198,18 @@ public class PluginMessengerFoundation
         return bu.SQL_CREATE;
       }
     });
+    b.a locala = com.tencent.mm.storage.a.b.VIT;
+    localHashMap.put(Integer.valueOf(com.tencent.mm.storage.a.b.fuQ().hashCode()), new com.tencent.mm.storagebase.h.b()
+    {
+      public String[] getSQLs()
+      {
+        AppMethodBeat.i(187713);
+        Object localObject = com.tencent.mm.storage.a.b.VIT;
+        localObject = com.tencent.mm.storage.a.b.dqy();
+        AppMethodBeat.o(187713);
+        return localObject;
+      }
+    });
     AppMethodBeat.o(116908);
     return localHashMap;
   }
@@ -183,81 +217,83 @@ public class PluginMessengerFoundation
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(116906);
-    com.tencent.mm.plugin.zero.c.JSe = new com.tencent.mm.co.c()
+    com.tencent.mm.plugin.zero.c.QRh = new com.tencent.mm.cw.c()
     {
       public com.tencent.mm.plugin.zero.a.f get()
       {
         AppMethodBeat.i(169107);
-        f localf = new f();
+        h localh = new h();
         AppMethodBeat.o(169107);
-        return localf;
+        return localh;
       }
     };
-    Object localObject = new a();
-    x.a.a(2, (x)localObject);
-    x.a.a(17, (x)localObject);
-    x.a.a(4, (x)localObject);
-    x.a.a(7, new b());
-    localObject = new c();
-    x.a.a(5, (x)localObject);
-    x.a.a(8, (x)localObject);
-    x.a.a(9, (x)localObject);
-    x.a.a(1, new g());
-    com.tencent.mm.kernel.g.aAd().a(w.class, new com.tencent.mm.kernel.c.e(new n()));
-    com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.zero.a.d.class);
-    if (paramg.aBb())
+    Object localObject = new b();
+    ab.a.a(2, (com.tencent.mm.plugin.messenger.foundation.a.ab)localObject);
+    ab.a.a(17, (com.tencent.mm.plugin.messenger.foundation.a.ab)localObject);
+    ab.a.a(4, (com.tencent.mm.plugin.messenger.foundation.a.ab)localObject);
+    ab.a.a(7, new c());
+    localObject = new d();
+    ab.a.a(5, (com.tencent.mm.plugin.messenger.foundation.a.ab)localObject);
+    ab.a.a(8, (com.tencent.mm.plugin.messenger.foundation.a.ab)localObject);
+    ab.a.a(9, (com.tencent.mm.plugin.messenger.foundation.a.ab)localObject);
+    ab.a.a(1, new i());
+    com.tencent.mm.kernel.h.aHC().a(aa.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.modelmulti.n()));
+    com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.zero.a.d.class);
+    if (paramg.aIE())
     {
       new com.tencent.mm.plugin.zero.tasks.b().before(this);
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.messenger.foundation.a.e.class, new com.tencent.mm.plugin.messenger.foundation.a.e()
+      com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.messenger.foundation.a.g.class, new com.tencent.mm.plugin.messenger.foundation.a.g()
       {
-        public com.tencent.mm.vending.b.b addContactAssembler(com.tencent.mm.plugin.messenger.foundation.a.d paramAnonymousd)
+        public com.tencent.mm.vending.b.b addContactAssembler(com.tencent.mm.plugin.messenger.foundation.a.f paramAnonymousf)
         {
           AppMethodBeat.i(116899);
-          paramAnonymousd = a.addContactAssembler(paramAnonymousd);
+          paramAnonymousf = b.addContactAssembler(paramAnonymousf);
           AppMethodBeat.o(116899);
-          return paramAnonymousd;
+          return paramAnonymousf;
         }
         
-        public void processModContact(cpl paramAnonymouscpl, String paramAnonymousString, byte[] paramAnonymousArrayOfByte, boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2, int paramAnonymousInt)
+        public void processModContact(cyb paramAnonymouscyb, String paramAnonymousString, byte[] paramAnonymousArrayOfByte, boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2, int paramAnonymousInt)
         {
-          AppMethodBeat.i(187480);
-          a.processModContact(paramAnonymouscpl, paramAnonymousString, paramAnonymousArrayOfByte, paramAnonymousBoolean1, paramAnonymousBoolean2, paramAnonymousInt);
-          AppMethodBeat.o(187480);
+          AppMethodBeat.i(187767);
+          b.processModContact(paramAnonymouscyb, paramAnonymousString, paramAnonymousArrayOfByte, paramAnonymousBoolean1, paramAnonymousBoolean2, paramAnonymousInt);
+          AppMethodBeat.o(187767);
         }
         
-        public void removeContactAssembler(com.tencent.mm.plugin.messenger.foundation.a.d paramAnonymousd)
+        public void removeContactAssembler(com.tencent.mm.plugin.messenger.foundation.a.f paramAnonymousf)
         {
           AppMethodBeat.i(169109);
-          a.removeContactAssembler(paramAnonymousd);
+          b.removeContactAssembler(paramAnonymousf);
           AppMethodBeat.o(169109);
         }
       });
-      com.tencent.mm.kernel.g.b(k.class, new k()
+      com.tencent.mm.kernel.h.b(m.class, new m()
       {
-        public void addSyncDoCmdCallback(z paramAnonymousz)
+        public void addSyncDoCmdCallback(ad paramAnonymousad)
         {
           AppMethodBeat.i(116901);
-          f.addSyncDoCmdCallback(paramAnonymousz);
+          h.addSyncDoCmdCallback(paramAnonymousad);
           AppMethodBeat.o(116901);
         }
         
-        public com.tencent.mm.ak.h.b processAddMsg(h.a paramAnonymousa, aa paramAnonymousaa)
+        public com.tencent.mm.an.h.b processAddMsg(h.a paramAnonymousa, ae paramAnonymousae)
         {
           AppMethodBeat.i(116900);
-          paramAnonymousa = c.processAddMsg(paramAnonymousa, paramAnonymousaa);
+          paramAnonymousa = d.processAddMsg(paramAnonymousa, paramAnonymousae);
           AppMethodBeat.o(116900);
           return paramAnonymousa;
         }
         
-        public void removeSyncDoCmdCallback(z paramAnonymousz)
+        public void removeSyncDoCmdCallback(ad paramAnonymousad)
         {
           AppMethodBeat.i(116902);
-          f.removeSyncDoCmdCallback(paramAnonymousz);
+          h.removeSyncDoCmdCallback(paramAnonymousad);
           AppMethodBeat.o(116902);
         }
       });
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.chatroom.a.c.class, this.Uqi);
-      CoreService.akv();
+      com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.chatroom.a.b.class, this.Ody);
+      com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.messenger.foundation.a.b.class, new a());
+      com.tencent.mm.kernel.h.b(r.class, new g());
+      CoreService.aqr();
     }
     AppMethodBeat.o(116906);
   }
@@ -272,27 +308,27 @@ public class PluginMessengerFoundation
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(116907);
-    if (paramg.aBb())
+    if (paramg.aIE())
     {
-      this.Uqf = new d();
-      com.tencent.mm.kernel.g.a(l.class, new com.tencent.mm.kernel.c.e(this.Uqf));
-      this.Uqg = new e();
-      com.tencent.mm.kernel.g.a(m.class, new com.tencent.mm.kernel.c.e(this.Uqg));
+      this.Odi = new e();
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.messenger.foundation.a.n.class, new com.tencent.mm.kernel.c.e(this.Odi));
+      this.Odj = new f();
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.messenger.foundation.a.o.class, new com.tencent.mm.kernel.c.e(this.Odj));
     }
     AppMethodBeat.o(116907);
   }
   
-  public com.tencent.mm.plugin.messenger.foundation.a.b getBizTimeLineCallback()
+  public com.tencent.mm.plugin.messenger.foundation.a.d getBizTimeLineCallback()
   {
-    return this.Uql;
+    return this.OdB;
   }
   
-  public List<as> getDataTransferList()
+  public List<at> getDataTransferList()
   {
     AppMethodBeat.i(116912);
-    if (this.Uqk != null)
+    if (this.OdA != null)
     {
-      localObject = this.Uqk.getDataTransferList();
+      localObject = this.OdA.getDataTransferList();
       if (((List)localObject).size() > 8) {
         Assert.assertTrue("Do not add more IDataTransfer from mIDataTransferFactoryDelegate!!!!!!!!!!!", false);
       }
@@ -304,16 +340,30 @@ public class PluginMessengerFoundation
     return localObject;
   }
   
-  public com.tencent.mm.model.cj getSysCmdMsgExtension()
+  public com.tencent.mm.storage.a.b getFileMsgInfoStorage()
   {
-    return this.Uqh;
+    AppMethodBeat.i(188415);
+    com.tencent.mm.kernel.h.aHE().aGH();
+    if (this.Odk == null)
+    {
+      com.tencent.mm.kernel.h.aHH();
+      this.Odk = new com.tencent.mm.storage.a.b(com.tencent.mm.kernel.h.aHG().kcF);
+    }
+    com.tencent.mm.storage.a.b localb = this.Odk;
+    AppMethodBeat.o(188415);
+    return localb;
+  }
+  
+  public com.tencent.mm.model.ck getSysCmdMsgExtension()
+  {
+    return this.Odl;
   }
   
   public boolean ifAddTicketByActionFlag(String paramString)
   {
     AppMethodBeat.i(116914);
     boolean bool;
-    if (this.Uqj == 0) {
+    if (this.Odz == 0) {
       bool = false;
     }
     for (;;)
@@ -321,13 +371,13 @@ public class PluginMessengerFoundation
       Log.i("MicroMsg.TAG", "ifAddTicketByActionFlag %s %s", new Object[] { paramString, Boolean.valueOf(bool) });
       AppMethodBeat.o(116914);
       return bool;
-      if (ab.Iu(paramString))
+      if (com.tencent.mm.model.ab.PM(paramString))
       {
-        if (Util.isEqual(this.Uqj & 0x1, 1)) {
+        if (Util.isEqual(this.Odz & 0x1, 1)) {
           bool = true;
         }
       }
-      else if ((ab.Eq(paramString)) && (Util.isEqual(this.Uqj & 0x2, 2)))
+      else if ((com.tencent.mm.model.ab.Lj(paramString)) && (Util.isEqual(this.Odz & 0x2, 2)))
       {
         bool = true;
         continue;
@@ -339,74 +389,76 @@ public class PluginMessengerFoundation
   public void installed()
   {
     AppMethodBeat.i(116904);
-    alias(s.class);
+    alias(v.class);
     AppMethodBeat.o(116904);
   }
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(116909);
-    h.d.a(Integer.valueOf(10000), this.iDE);
-    h.d.a(Integer.valueOf(1), this.iDE);
-    h.d.a(Integer.valueOf(10001), this.Uqh);
-    h.d.a(Integer.valueOf(10002), this.Uqh);
+    this.jxr.alive();
+    h.d.a(Integer.valueOf(10000), this.ltF);
+    h.d.a(Integer.valueOf(1), this.ltF);
+    h.d.a(Integer.valueOf(10001), this.Odl);
+    h.d.a(Integer.valueOf(10002), this.Odl);
     AppMethodBeat.o(116909);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(116910);
-    h.d.b(Integer.valueOf(10000), this.iDE);
-    h.d.b(Integer.valueOf(1), this.iDE);
-    h.d.b(Integer.valueOf(10001), this.Uqh);
-    h.d.b(Integer.valueOf(10002), this.Uqh);
+    this.jxr.dead();
+    h.d.b(Integer.valueOf(10000), this.ltF);
+    h.d.b(Integer.valueOf(1), this.ltF);
+    h.d.b(Integer.valueOf(10001), this.Odl);
+    h.d.b(Integer.valueOf(10002), this.Odl);
     AppMethodBeat.o(116910);
   }
   
-  public void onDataBaseClosed(h paramh1, h paramh2) {}
+  public void onDataBaseClosed(com.tencent.mm.storagebase.h paramh1, com.tencent.mm.storagebase.h paramh2) {}
   
-  public void onDataBaseOpened(h paramh1, h paramh2)
+  public void onDataBaseOpened(com.tencent.mm.storagebase.h paramh1, com.tencent.mm.storagebase.h paramh2)
   {
     AppMethodBeat.i(116911);
-    y.aTW();
-    paramh1 = this.Uqf;
-    paramh2 = com.tencent.mm.kernel.g.aAh().hqK;
-    com.tencent.mm.kernel.g.aAh();
-    paramh1.zpB = new o(new j(paramh2));
-    paramh1.zpC = new com.tencent.mm.ba.a();
-    paramh1.zpw = new ay(paramh2);
-    paramh1.zpx = new co(paramh2);
-    paramh1.zpy = new br(paramh2);
-    paramh1.zpA = new ba(paramh2);
-    paramh1.zpz = new cb(paramh2, paramh1.zpw, paramh1.zpA);
-    paramh1.zpD = new com.tencent.mm.storage.cj(paramh2);
-    paramh1.zpE = new bd(paramh2);
-    paramh1.zpF = new bo(paramh2);
-    paramh1.zpG = new bm(paramh2);
-    paramh1.zpH = new by(paramh2);
-    paramh1.zpI = new cm(paramh2);
-    paramh1.zpJ = new ct(paramh2);
-    paramh1.zpK = new ak(paramh2);
-    paramh1.zpL = new bu(paramh2);
+    y.bcX();
+    paramh1 = this.Odi;
+    paramh2 = com.tencent.mm.kernel.h.aHG().kcF;
+    com.tencent.mm.kernel.h.aHG();
+    paramh1.EUZ = new com.tencent.mm.bd.o(new j(paramh2));
+    paramh1.EVa = new com.tencent.mm.bd.a();
+    paramh1.EUU = new ay(paramh2);
+    paramh1.EUV = new cp(paramh2);
+    paramh1.EUW = new br(paramh2);
+    paramh1.EUY = new ba(paramh2);
+    paramh1.EUX = new cb(paramh2, paramh1.EUU, paramh1.EUY);
+    paramh1.EVb = new com.tencent.mm.storage.ck(paramh2);
+    paramh1.EVc = new bd(paramh2);
+    paramh1.EVd = new bo(paramh2);
+    paramh1.EVe = new bm(paramh2);
+    paramh1.EVf = new by(paramh2);
+    paramh1.EVg = new cn(paramh2);
+    paramh1.EVh = new cu(paramh2);
+    paramh1.EVi = new ak(paramh2);
+    paramh1.EVj = new bu(paramh2);
     AppMethodBeat.o(116911);
   }
   
-  public void setBizTimeLineCallback(com.tencent.mm.plugin.messenger.foundation.a.b paramb)
+  public void setBizTimeLineCallback(com.tencent.mm.plugin.messenger.foundation.a.d paramd)
   {
-    this.Uql = paramb;
+    this.OdB = paramd;
   }
   
   public void setEnSendMsgActionFlag(int paramInt)
   {
     AppMethodBeat.i(116913);
     Log.i("MicroMsg.TAG", "setEnSendMsgActionFlag %s", new Object[] { Integer.valueOf(paramInt) });
-    this.Uqj = paramInt;
+    this.Odz = paramInt;
     AppMethodBeat.o(116913);
   }
   
-  public void setIDataTransferFactoryDelegate(at paramat)
+  public void setIDataTransferFactoryDelegate(au paramau)
   {
-    this.Uqk = paramat;
+    this.OdA = paramau;
   }
   
   public String toString()

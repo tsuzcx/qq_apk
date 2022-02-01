@@ -7,17 +7,17 @@ import java.util.Map;
 
 public final class e
 {
-  public static boolean eRU()
+  public static boolean fET()
   {
     AppMethodBeat.i(52058);
-    Object localObject = com.tencent.mm.model.c.d.aXu().Fu("100027");
+    Object localObject = com.tencent.mm.model.c.d.bgB().Mu("100027");
     if (!((c)localObject).isValid())
     {
       Log.e("MicroMsg.ScanHistoryUtil", "shouldShowHistoryList item.isValid is false");
       AppMethodBeat.o(52058);
       return false;
     }
-    localObject = ((c)localObject).gzz();
+    localObject = ((c)localObject).hvz();
     if (localObject == null)
     {
       Log.e("MicroMsg.ScanHistoryUtil", "shouldShowHistoryList args == null");

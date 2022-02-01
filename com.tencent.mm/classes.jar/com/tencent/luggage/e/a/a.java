@@ -8,7 +8,7 @@ import java.io.InputStream;
 
 public final class a
 {
-  public static boolean d(BitmapFactory.Options paramOptions)
+  public static boolean a(BitmapFactory.Options paramOptions)
   {
     AppMethodBeat.i(138796);
     if (paramOptions == null)
@@ -37,7 +37,7 @@ public final class a
     return false;
   }
   
-  public static String e(BitmapFactory.Options paramOptions)
+  public static String b(BitmapFactory.Options paramOptions)
   {
     AppMethodBeat.i(138797);
     paramOptions = paramOptions.outMimeType;
@@ -78,27 +78,27 @@ public final class a
     //   0: ldc 52
     //   2: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokestatic 58	com/tencent/mm/vfs/s:YS	(Ljava/lang/String;)Z
+    //   6: invokestatic 58	com/tencent/mm/vfs/u:agG	(Ljava/lang/String;)Z
     //   9: ifne +17 -> 26
     //   12: ldc 60
     //   14: ldc 62
-    //   16: invokestatic 67	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   16: invokestatic 68	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   19: ldc 52
     //   21: invokestatic 16	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   24: iconst_0
     //   25: ireturn
     //   26: aload_0
-    //   27: invokestatic 71	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   27: invokestatic 72	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
     //   30: astore 4
     //   32: aconst_null
     //   33: astore_2
     //   34: aload 4
-    //   36: invokestatic 77	com/tencent/mm/plugin/appbrand/l/b:m	(Ljava/io/InputStream;)I
+    //   36: invokestatic 78	com/tencent/mm/plugin/appbrand/l/b:k	(Ljava/io/InputStream;)I
     //   39: istore_1
     //   40: aload 4
     //   42: ifnull +8 -> 50
     //   45: aload 4
-    //   47: invokevirtual 83	java/io/InputStream:close	()V
+    //   47: invokevirtual 84	java/io/InputStream:close	()V
     //   50: ldc 52
     //   52: invokestatic 16	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   55: iload_1
@@ -118,14 +118,14 @@ public final class a
     //   75: aload_2
     //   76: ifnull +53 -> 129
     //   79: aload 4
-    //   81: invokevirtual 83	java/io/InputStream:close	()V
+    //   81: invokevirtual 84	java/io/InputStream:close	()V
     //   84: ldc 52
     //   86: invokestatic 16	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   89: aload_3
     //   90: athrow
     //   91: astore_2
     //   92: ldc 60
-    //   94: ldc 85
+    //   94: ldc 86
     //   96: iconst_2
     //   97: anewarray 4	java/lang/Object
     //   100: dup
@@ -136,7 +136,7 @@ public final class a
     //   105: iconst_1
     //   106: aload_2
     //   107: aastore
-    //   108: invokestatic 88	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   108: invokestatic 89	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   111: ldc 52
     //   113: invokestatic 16	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   116: iconst_0
@@ -144,10 +144,10 @@ public final class a
     //   118: astore 4
     //   120: aload_2
     //   121: aload 4
-    //   123: invokevirtual 92	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   123: invokevirtual 93	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   126: goto -42 -> 84
     //   129: aload 4
-    //   131: invokevirtual 83	java/io/InputStream:close	()V
+    //   131: invokevirtual 84	java/io/InputStream:close	()V
     //   134: goto -50 -> 84
     // Local variable table:
     //   start	length	slot	name	signature
@@ -174,7 +174,7 @@ public final class a
     //   79	84	118	java/lang/Throwable
   }
   
-  public static String hN(int paramInt)
+  public static String iN(int paramInt)
   {
     switch (paramInt)
     {
@@ -200,12 +200,12 @@ public final class a
     return "up";
   }
   
-  public static int m(InputStream paramInputStream)
+  public static int k(InputStream paramInputStream)
   {
     AppMethodBeat.i(138794);
     try
     {
-      int i = b.m(paramInputStream);
+      int i = b.k(paramInputStream);
       AppMethodBeat.o(138794);
       return i;
     }
@@ -219,7 +219,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.luggage.e.a.a
  * JD-Core Version:    0.7.0.1
  */

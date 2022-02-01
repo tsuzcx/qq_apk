@@ -13,14 +13,14 @@ final class d
   
   public final void destroy() {}
   
-  public final Bitmap.Config gMq()
+  public final Bitmap.Config hLx()
   {
     return Bitmap.Config.ARGB_8888;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.blur.d
  * JD-Core Version:    0.7.0.1
  */

@@ -5,8 +5,10 @@ import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.handoff.a.a;
 import com.tencent.mm.plugin.handoff.model.HandOffURL;
+import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.q;
 import com.tencent.mm.plugin.webview.luggage.t;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -15,47 +17,47 @@ import kotlin.g.b.p;
 import org.json.JSONObject;
 
 public class n
-  extends bs<com.tencent.mm.plugin.webview.luggage.g>
+  extends bs<g>
 {
   public final void a(Context paramContext, String paramString, br.a parama) {}
   
-  public final void b(b<com.tencent.mm.plugin.webview.luggage.g>.a paramb)
+  public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(78546);
-    Object localObject = paramb.ctb.csi;
+    Object localObject = paramb.crh.cqn;
     String str1 = ((JSONObject)localObject).optString("brandIcon");
     String str2 = ((JSONObject)localObject).optString("brandName");
     localObject = ((JSONObject)localObject).optString("title");
     Log.i("MicroMsg.JsApiCurrentMpInfo", "doCurrentMpInfo brandIcon:%s", new Object[] { str1 });
     if (!Util.isNullOrNil(str1))
     {
-      ((com.tencent.mm.plugin.webview.luggage.g)paramb.cta).gbI().agS(str1);
-      t localt = ((com.tencent.mm.plugin.webview.luggage.g)paramb.cta).gbJ();
-      p.h(str1, "icon");
-      localt.IVc = str1;
-      localt.agS(str1);
+      ((g)paramb.crg).gUD().aox(str1);
+      t localt = ((g)paramb.crg).gUE();
+      p.k(str1, "icon");
+      localt.PRs = str1;
+      localt.aox(str1);
     }
     if (!Util.isNullOrNil(str2)) {
-      ((com.tencent.mm.plugin.webview.luggage.g)paramb.cta).gbJ().aGL(str2);
+      ((g)paramb.crg).gUE().aQZ(str2);
     }
     if (!Util.isNullOrNil((String)localObject))
     {
-      ((com.tencent.mm.plugin.webview.luggage.g)paramb.cta).gbI().agT((String)localObject);
-      ((com.tencent.mm.plugin.webview.luggage.g)paramb.cta).gbJ().aCM((String)localObject);
+      ((g)paramb.crg).gUD().aoy((String)localObject);
+      ((g)paramb.crg).gUE().aMT((String)localObject);
     }
-    if (((com.tencent.mm.plugin.webview.luggage.g)paramb.cta).gbK() != null)
+    if (((g)paramb.crg).gUF() != null)
     {
-      ((com.tencent.mm.plugin.webview.luggage.g)paramb.cta).gbK().setIcon(Util.nullAsNil(str1));
+      ((g)paramb.crg).gUF().setIcon(Util.nullAsNil(str1));
       if (!Util.isNullOrNil(str2)) {
-        ((com.tencent.mm.plugin.webview.luggage.g)paramb.cta).gbK().setTitle(str2);
+        ((g)paramb.crg).gUF().setTitle(str2);
       }
-      ((a)com.tencent.mm.kernel.g.af(a.class)).e(((com.tencent.mm.plugin.webview.luggage.g)paramb.cta).gbK());
+      ((a)h.ae(a.class)).e(((g)paramb.crg).gUF());
     }
-    paramb.c("", null);
+    paramb.a("", null);
     AppMethodBeat.o(78546);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

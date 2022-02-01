@@ -9,8 +9,8 @@ public class AppBrandWeishiVideoOperation
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandWeishiVideoOperation> CREATOR;
-  public long boS;
-  public long length;
+  public long aFL;
+  public long aYu;
   public String url;
   
   static
@@ -24,16 +24,16 @@ public class AppBrandWeishiVideoOperation
   {
     AppMethodBeat.i(50035);
     this.url = paramParcel.readString();
-    this.boS = paramParcel.readLong();
-    this.length = paramParcel.readLong();
+    this.aYu = paramParcel.readLong();
+    this.aFL = paramParcel.readLong();
     AppMethodBeat.o(50035);
   }
   
   public AppBrandWeishiVideoOperation(String paramString, long paramLong)
   {
     this.url = paramString;
-    this.boS = 0L;
-    this.length = paramLong;
+    this.aYu = 0L;
+    this.aFL = paramLong;
   }
   
   public int describeContents()
@@ -45,14 +45,14 @@ public class AppBrandWeishiVideoOperation
   {
     AppMethodBeat.i(50036);
     paramParcel.writeString(this.url);
-    paramParcel.writeLong(this.boS);
-    paramParcel.writeLong(this.length);
+    paramParcel.writeLong(this.aYu);
+    paramParcel.writeLong(this.aFL);
     AppMethodBeat.o(50036);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.xweb_ext.video.AppBrandWeishiVideoOperation
  * JD-Core Version:    0.7.0.1
  */

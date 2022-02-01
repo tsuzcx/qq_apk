@@ -17,10 +17,10 @@ public class s
   extends h
   implements a
 {
-  private q ctJ;
-  public p ctS;
-  SwipeBackLayout ctT;
-  private String ctU;
+  private q crO;
+  public p crX;
+  SwipeBackLayout crY;
+  private String crZ;
   public View mContentView;
   public Bundle mParams;
   
@@ -33,10 +33,10 @@ public class s
   {
     super(paramj);
     AppMethodBeat.i(140451);
-    this.ctU = null;
-    this.ctJ = new q()
+    this.crZ = null;
+    this.crO = new q()
     {
-      public final String LJ()
+      public final String Oz()
       {
         AppMethodBeat.i(140446);
         String str = s.a(s.this);
@@ -47,9 +47,9 @@ public class s
       public final WebResourceResponse a(WebResourceRequest paramAnonymousWebResourceRequest, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(140447);
-        if (s.this.LL() != null)
+        if (s.this.OC() != null)
         {
-          paramAnonymousWebResourceRequest = s.this.LL().a(paramAnonymousWebResourceRequest, paramAnonymousBundle);
+          paramAnonymousWebResourceRequest = s.this.OC().a(paramAnonymousWebResourceRequest, paramAnonymousBundle);
           AppMethodBeat.o(140447);
           return paramAnonymousWebResourceRequest;
         }
@@ -57,22 +57,22 @@ public class s
         return null;
       }
       
-      public final void cV(String paramAnonymousString)
+      public final void dv(String paramAnonymousString)
       {
         AppMethodBeat.i(140444);
-        if (s.this.LL() != null) {
-          s.this.LL().a(s.this, paramAnonymousString);
+        if (s.this.OC() != null) {
+          s.this.OC().a(s.this, paramAnonymousString);
         }
         AppMethodBeat.o(140444);
       }
       
-      public final void cW(String paramAnonymousString)
+      public final void dw(String paramAnonymousString)
       {
         AppMethodBeat.i(140445);
-        if (s.this.LL() != null) {
-          s.this.LL().b(s.this, paramAnonymousString);
+        if (s.this.OC() != null) {
+          s.this.OC().b(s.this, paramAnonymousString);
         }
-        s.this.Lh();
+        s.this.crl.P(l.e.class);
         AppMethodBeat.o(140445);
       }
     };
@@ -80,59 +80,59 @@ public class s
     for (;;)
     {
       this.mParams = paramBundle;
-      this.ctS = paramp;
-      paramp = this.ctS;
+      this.crX = paramp;
+      paramp = this.crX;
       paramj = paramp;
       if (paramp == null) {
-        paramj = this.ctg.Lq();
+        paramj = this.crm.Og();
       }
       paramp = paramj;
       if (paramj == null) {
-        paramp = new p(this.mContext, this.ctg.Lr());
+        paramp = new p(getContext(), this.crm.Oh());
       }
-      this.ctS = paramp;
-      paramj = this.ctS;
-      paramj.a(this.ctg.Lz(), this);
-      paramj.ctJ = this.ctJ;
-      paramj = Lf();
-      this.ctT = new SwipeBackLayout(this.mContext);
-      this.ctT.setScrimColor(0);
-      this.ctT.addView(paramj);
-      this.ctT.setContentView(paramj);
-      this.ctT.a(new SwipeBackLayout.a()
+      this.crX = paramp;
+      paramj = this.crX;
+      paramj.a(this.crm.Op(), this);
+      paramj.crO = this.crO;
+      paramj = NW();
+      this.crY = new SwipeBackLayout(getContext());
+      this.crY.setScrimColor(0);
+      this.crY.addView(paramj);
+      this.crY.setContentView(paramj);
+      this.crY.a(new SwipeBackLayout.a()
       {
-        public final void LN()
+        public final void OE()
         {
           AppMethodBeat.i(140442);
-          if (s.this.ctg.Lx().size() <= 1) {
-            s.this.ctT.setEnableGesture(false);
+          if (s.this.crm.On().size() <= 1) {
+            s.this.crY.setEnableGesture(false);
           }
           AppMethodBeat.o(140442);
         }
         
-        public final int bS(boolean paramAnonymousBoolean)
+        public final int cc(boolean paramAnonymousBoolean)
         {
           return 1;
         }
         
-        public final void i(int paramAnonymousInt, float paramAnonymousFloat)
+        public final void j(int paramAnonymousInt, float paramAnonymousFloat)
         {
           AppMethodBeat.i(140443);
           Object localObject = s.this;
-          paramAnonymousInt = ((h)localObject).ctg.Lx().indexOf(localObject);
-          if (paramAnonymousInt >= ((h)localObject).ctg.Lx().size() - 1) {}
-          for (localObject = null; localObject == null; localObject = (h)((h)localObject).ctg.Lx().get(paramAnonymousInt + 1))
+          paramAnonymousInt = ((h)localObject).crm.On().indexOf(localObject);
+          if (paramAnonymousInt >= ((h)localObject).crm.On().size() - 1) {}
+          for (localObject = null; localObject == null; localObject = (h)((h)localObject).crm.On().get(paramAnonymousInt + 1))
           {
             AppMethodBeat.o(140443);
             return;
           }
-          if ((Float.compare(1.0F, paramAnonymousFloat) <= 0) && (this.ctV[0] == 0))
+          if ((Float.compare(1.0F, paramAnonymousFloat) <= 0) && (this.csa[0] == 0))
           {
             localObject = ((h)localObject).getContentView();
             ((View)localObject).clearAnimation();
             ((View)localObject).setTranslationX(0.0F);
-            s.this.ctg.Ly().bR(false);
-            this.ctV[0] = true;
+            s.this.crm.Oo().cb(false);
+            this.csa[0] = true;
           }
           Log.i("", "scrollPercent %f", new Object[] { Float.valueOf(paramAnonymousFloat) });
           AppMethodBeat.o(140443);
@@ -140,50 +140,55 @@ public class s
         
         public final void n(MotionEvent paramAnonymousMotionEvent) {}
       });
-      this.mContentView = this.ctT;
+      this.mContentView = this.crY;
       AppMethodBeat.o(140451);
       return;
       paramBundle = new Bundle();
     }
   }
   
-  protected String LJ()
+  public final n NS()
   {
-    return "";
+    return this.crX;
   }
   
-  public final void LK()
+  protected View NW()
+  {
+    AppMethodBeat.i(140454);
+    View localView = this.crX.getView();
+    AppMethodBeat.o(140454);
+    return localView;
+  }
+  
+  public final Bundle OA()
+  {
+    return this.mParams;
+  }
+  
+  public final void OB()
   {
     AppMethodBeat.i(140452);
-    if (this.ctT != null) {
-      this.ctT.setEnableGesture(false);
+    if (this.crY != null) {
+      this.crY.setEnableGesture(false);
     }
     AppMethodBeat.o(140452);
   }
   
-  public final a LL()
+  public final a OC()
   {
-    return (a)this.cth;
+    return (a)this.crn;
   }
   
-  public void LM()
+  public void OD()
   {
-    AppMethodBeat.i(221201);
-    this.ctS.destroy();
-    AppMethodBeat.o(221201);
+    AppMethodBeat.i(209608);
+    this.crX.destroy();
+    AppMethodBeat.o(209608);
   }
   
-  public final n Lc()
+  protected String Oz()
   {
-    return this.ctS;
-  }
-  
-  protected View Lf()
-  {
-    AppMethodBeat.i(140454);
-    View localView = this.ctS.getView();
-    AppMethodBeat.o(140454);
-    return localView;
+    return "";
   }
   
   public final void a(h.a parama)
@@ -191,34 +196,27 @@ public class s
     AppMethodBeat.i(140455);
     if ((parama instanceof a))
     {
-      this.cth = parama;
+      this.crn = parama;
       AppMethodBeat.o(140455);
       return;
     }
-    this.cth = new a(parama);
+    this.crn = new a(parama);
     AppMethodBeat.o(140455);
   }
   
   public void destroy()
   {
     AppMethodBeat.i(140457);
-    Ll();
-    p localp = this.ctS;
+    Ob();
+    p localp = this.crX;
     ViewParent localViewParent = localp.getView().getParent();
     if ((localViewParent instanceof ViewGroup))
     {
       Log.i("Luggage.LuggageWebCore", "removeSelfFromParent");
       ((ViewGroup)localViewParent).removeView(localp.getView());
     }
-    LM();
+    OD();
     AppMethodBeat.o(140457);
-  }
-  
-  public void g(String paramString, Bundle paramBundle)
-  {
-    AppMethodBeat.i(140453);
-    this.ctS.loadUrl(paramString);
-    AppMethodBeat.o(140453);
   }
   
   public final View getContentView()
@@ -226,17 +224,19 @@ public class s
     return this.mContentView;
   }
   
-  public final Bundle getParams()
+  public void l(String paramString, Bundle paramBundle)
   {
-    return this.mParams;
+    AppMethodBeat.i(140453);
+    this.crX.loadUrl(paramString);
+    AppMethodBeat.o(140453);
   }
   
   protected boolean onBackPressed()
   {
     AppMethodBeat.i(140456);
-    if (this.ctS.ctK.canGoBack())
+    if (this.crX.crP.canGoBack())
     {
-      this.ctS.ctK.goBack();
+      this.crX.crP.goBack();
       AppMethodBeat.o(140456);
       return true;
     }
@@ -257,9 +257,9 @@ public class s
     public WebResourceResponse a(WebResourceRequest paramWebResourceRequest, Bundle paramBundle)
     {
       AppMethodBeat.i(140450);
-      if ((this.ctj instanceof a))
+      if ((this.crp instanceof a))
       {
-        paramWebResourceRequest = ((a)this.ctj).a(paramWebResourceRequest, paramBundle);
+        paramWebResourceRequest = ((a)this.crp).a(paramWebResourceRequest, paramBundle);
         AppMethodBeat.o(140450);
         return paramWebResourceRequest;
       }
@@ -270,8 +270,8 @@ public class s
     public void a(s params, String paramString)
     {
       AppMethodBeat.i(140448);
-      if ((this.ctj instanceof a)) {
-        ((a)this.ctj).a(params, paramString);
+      if ((this.crp instanceof a)) {
+        ((a)this.crp).a(params, paramString);
       }
       AppMethodBeat.o(140448);
     }
@@ -279,8 +279,8 @@ public class s
     public void b(s params, String paramString)
     {
       AppMethodBeat.i(140449);
-      if ((this.ctj instanceof a)) {
-        ((a)this.ctj).b(params, paramString);
+      if ((this.crp instanceof a)) {
+        ((a)this.crp).b(params, paramString);
       }
       AppMethodBeat.o(140449);
     }

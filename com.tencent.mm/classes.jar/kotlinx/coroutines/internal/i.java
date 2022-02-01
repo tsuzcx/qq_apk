@@ -1,28 +1,70 @@
 package kotlinx.coroutines.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.ArrayList;
+import java.util.List;
 import kotlin.l;
+import kotlin.t;
+import kotlinx.coroutines.ap;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/internal/LockFreeLinkedListHead;", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "()V", "isEmpty", "", "()Z", "isRemoved", "forEach", "", "T", "Lkotlinx/coroutines/internal/Node;", "block", "Lkotlin/Function1;", "nextIfRemoved", "remove", "validate", "validate$kotlinx_coroutines_core", "kotlinx-coroutines-core"})
-public class i
-  extends k
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/internal/InlineList;", "E", "", "holder", "constructor-impl", "(Ljava/lang/Object;)Ljava/lang/Object;", "equals", "", "other", "forEachReversed", "", "action", "Lkotlin/Function1;", "forEachReversed-impl", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)V", "hashCode", "", "plus", "element", "plus-impl", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "toString", "", "kotlinx-coroutines-core"})
+public final class i<E>
 {
-  public final boolean isRemoved()
+  public static final Object S(Object paramObject, E paramE)
   {
-    return false;
+    AppMethodBeat.i(205068);
+    if (ap.iRg())
+    {
+      if (!(paramE instanceof List)) {}
+      for (int i = 1; i == 0; i = 0)
+      {
+        paramObject = (Throwable)new AssertionError();
+        AppMethodBeat.o(205068);
+        throw paramObject;
+      }
+    }
+    if (paramObject == null)
+    {
+      AppMethodBeat.o(205068);
+      return paramE;
+    }
+    if ((paramObject instanceof ArrayList))
+    {
+      if (paramObject == null)
+      {
+        paramObject = new t("null cannot be cast to non-null type kotlin.collections.ArrayList<E> /* = java.util.ArrayList<E> */");
+        AppMethodBeat.o(205068);
+        throw paramObject;
+      }
+      ((ArrayList)paramObject).add(paramE);
+      AppMethodBeat.o(205068);
+      return paramObject;
+    }
+    ArrayList localArrayList = new ArrayList(4);
+    localArrayList.add(paramObject);
+    localArrayList.add(paramE);
+    AppMethodBeat.o(205068);
+    return localArrayList;
   }
   
-  public final boolean remove()
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(118107);
-    Throwable localThrowable = (Throwable)new IllegalStateException("head cannot be removed".toString());
-    AppMethodBeat.o(118107);
-    throw localThrowable;
+    throw null;
+  }
+  
+  public final int hashCode()
+  {
+    throw null;
+  }
+  
+  public final String toString()
+  {
+    throw null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlinx.coroutines.internal.i
  * JD-Core Version:    0.7.0.1
  */

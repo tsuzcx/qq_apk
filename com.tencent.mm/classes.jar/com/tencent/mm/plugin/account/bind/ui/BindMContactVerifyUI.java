@@ -17,11 +17,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
-import com.tencent.mm.g.a.yo;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.by.c;
+import com.tencent.mm.f.a.zv;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.account.bind.a.e;
+import com.tencent.mm.plugin.account.bind.a.f;
+import com.tencent.mm.plugin.account.bind.a.i;
 import com.tencent.mm.plugin.account.friend.ui.i;
 import com.tencent.mm.plugin.account.friend.ui.i.a;
 import com.tencent.mm.pluginsdk.m;
@@ -34,41 +36,41 @@ import com.tencent.mm.ui.MMWizardActivity;
 public class BindMContactVerifyUI
   extends MMWizardActivity
 {
-  private String dSf;
+  private String fLC;
   private int fromScene = 0;
-  private boolean jZU = false;
-  private EditText kbd;
-  private TextView kbe;
-  private Button kbf;
-  private i kbg;
+  private boolean mRn = false;
+  private Button mSA;
+  private i mSB;
+  private EditText mSy;
+  private TextView mSz;
   private SharedPreferences sp;
   private int status;
   
   private void goBack()
   {
     AppMethodBeat.i(109917);
-    if (this.kbg != null) {
-      this.kbg.recycle();
+    if (this.mSB != null) {
+      this.mSB.recycle();
     }
-    ala(1);
+    atX(1);
     AppMethodBeat.o(109917);
   }
   
   public int getLayoutId()
   {
-    return 2131493228;
+    return a.f.bindmcontact_verify;
   }
   
   public void initView()
   {
     AppMethodBeat.i(109915);
-    this.dSf = ((String)g.aAh().azQ().get(4097, null));
-    this.kbd = ((EditText)findViewById(2131297407));
-    this.jZU = getIntent().getBooleanExtra("KEnterFromBanner", false);
+    this.fLC = ((String)com.tencent.mm.kernel.h.aHG().aHp().b(4097, null));
+    this.mSy = ((EditText)findViewById(a.e.bind_mcontact_verify_num));
+    this.mRn = getIntent().getBooleanExtra("KEnterFromBanner", false);
     this.fromScene = getIntent().getIntExtra("bind_scene", 0);
-    Button localButton = (Button)findViewById(2131297404);
-    if ((this.dSf == null) || (this.dSf.equals(""))) {
-      this.dSf = ((String)g.aAh().azQ().get(6, null));
+    Button localButton = (Button)findViewById(a.e.bind_mcontact_verify_btn);
+    if ((this.fLC == null) || (this.fLC.equals(""))) {
+      this.fLC = ((String)com.tencent.mm.kernel.h.aHG().aHp().b(6, null));
     }
     InputFilter local1 = new InputFilter()
     {
@@ -80,22 +82,22 @@ public class BindMContactVerifyUI
         return paramAnonymousCharSequence;
       }
     };
-    this.kbd.setFilters(new InputFilter[] { local1 });
-    this.kbf = ((Button)findViewById(2131297409));
-    this.kbe = ((TextView)findViewById(2131297405));
-    this.kbe.setText(getString(2131756612, new Object[] { this.dSf }));
+    this.mSy.setFilters(new InputFilter[] { local1 });
+    this.mSA = ((Button)findViewById(a.e.bind_mcontact_voice_code));
+    this.mSz = ((TextView)findViewById(a.e.bind_mcontact_verify_hint));
+    this.mSz.setText(getString(a.i.bind_mcontact_input_verify_hint, new Object[] { this.fLC }));
     localButton.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(109907);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/bind/ui/BindMContactVerifyUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMContactVerifyUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         paramAnonymousView = BindMContactVerifyUI.a(BindMContactVerifyUI.this).getText().toString().trim();
         if (Util.isNullOrNil(paramAnonymousView))
         {
-          com.tencent.mm.ui.base.h.n(BindMContactVerifyUI.this, 2131756651, 2131755998);
+          com.tencent.mm.ui.base.h.p(BindMContactVerifyUI.this, a.i.bind_mcontact_verifynull, a.i.app_tip);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMContactVerifyUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(109907);
           return;
@@ -116,26 +118,26 @@ public class BindMContactVerifyUI
         return true;
       }
     });
-    localButton = this.kbf;
-    if (com.tencent.mm.aw.b.Pg(this.dSf)) {}
+    localButton = this.mSA;
+    if (com.tencent.mm.az.b.WD(this.fLC)) {}
     for (int i = 0;; i = 8)
     {
       localButton.setVisibility(i);
-      this.kbf.setOnClickListener(new View.OnClickListener()
+      this.mSA.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(109909);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/bind/ui/BindMContactVerifyUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMContactVerifyUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
           BindMContactVerifyUI.this.hideVKB();
           paramAnonymousView = new Intent();
           localObject = new Bundle();
           ((Bundle)localObject).putString("bindmcontact_mobile", BindMContactVerifyUI.c(BindMContactVerifyUI.this));
           ((Bundle)localObject).putInt("voice_verify_type", 4);
           paramAnonymousView.putExtras((Bundle)localObject);
-          com.tencent.mm.plugin.account.a.a.jRt.f(BindMContactVerifyUI.this, paramAnonymousView);
+          com.tencent.mm.plugin.account.sdk.a.mIG.f(BindMContactVerifyUI.this, paramAnonymousView);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMContactVerifyUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(109909);
         }
@@ -149,9 +151,9 @@ public class BindMContactVerifyUI
   {
     AppMethodBeat.i(109913);
     super.onCreate(paramBundle);
-    setMMTitle(2131756626);
+    setMMTitle(a.i.bind_mcontact_title_verify);
     this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
-    this.status = z.aUc();
+    this.status = z.bdd();
     initView();
     AppMethodBeat.o(109913);
   }
@@ -185,7 +187,7 @@ public class BindMContactVerifyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindMContactVerifyUI
  * JD-Core Version:    0.7.0.1
  */

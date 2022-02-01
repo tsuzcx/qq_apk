@@ -20,11 +20,11 @@ public class ax
   public final void b(b.a parama)
   {
     AppMethodBeat.i(78611);
-    JSONArray localJSONArray = parama.ctb.csi.optJSONArray("idKeyDataInfo");
+    JSONArray localJSONArray = parama.crh.cqn.optJSONArray("idKeyDataInfo");
     if ((localJSONArray == null) || (localJSONArray.length() == 0))
     {
       Log.e("MicroMsg.JsApiReportIDKey", "idkey data is null");
-      parama.c("invaild_parms", null);
+      parama.a("invaild_parms", null);
       AppMethodBeat.o(78611);
       return;
     }
@@ -41,13 +41,13 @@ public class ax
       i += 1;
     }
     if (localArrayList.size() > 0) {
-      h.CyF.b(localArrayList, true);
+      h.IzE.b(localArrayList, true);
     }
-    parama.c("", null);
+    parama.a("", null);
     AppMethodBeat.o(78611);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

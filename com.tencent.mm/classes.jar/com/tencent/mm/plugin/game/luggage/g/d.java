@@ -3,22 +3,33 @@ package com.tencent.mm.plugin.game.luggage.g;
 import android.os.Bundle;
 import com.tencent.luggage.d.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/game/luggage/page/GameNoActionBarWebPage;", "Lcom/tencent/mm/plugin/game/luggage/page/GameWebPage;", "ctrl", "Lcom/tencent/luggage/container/LuggagePageContainerCtrl;", "wc", "Lcom/tencent/luggage/container/LuggageWebCore;", "params", "Landroid/os/Bundle;", "(Lcom/tencent/luggage/container/LuggagePageContainerCtrl;Lcom/tencent/luggage/container/LuggageWebCore;Landroid/os/Bundle;)V", "enableMinimize", "", "noActionBar", "luggage-game_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/game/luggage/page/GameNoActionBarWebPage;", "Lcom/tencent/mm/plugin/game/luggage/page/GameWebPage;", "ctrl", "Lcom/tencent/luggage/container/LuggagePageContainerCtrl;", "wc", "Lcom/tencent/luggage/container/LuggageWebCore;", "params", "Landroid/os/Bundle;", "(Lcom/tencent/luggage/container/LuggagePageContainerCtrl;Lcom/tencent/luggage/container/LuggageWebCore;Landroid/os/Bundle;)V", "enableMinimize", "", "hideLoadingView", "", "noActionBar", "onForeground", "showLoadingView", "luggage-game_release"})
 public final class d
   extends i
 {
   public d(j paramj, Bundle paramBundle)
   {
     super(paramj, null, paramBundle);
-    AppMethodBeat.i(187040);
-    AppMethodBeat.o(187040);
+    AppMethodBeat.i(231989);
+    AppMethodBeat.o(231989);
   }
   
-  public final boolean cpz()
+  public final boolean cDX()
   {
     return false;
+  }
+  
+  public final void dwZ() {}
+  
+  public final void ewK() {}
+  
+  public final void onForeground()
+  {
+    AppMethodBeat.i(231982);
+    super.onForeground();
+    this.PPw.gUR();
+    AppMethodBeat.o(231982);
   }
 }
 

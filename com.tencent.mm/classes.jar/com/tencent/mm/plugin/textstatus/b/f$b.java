@@ -1,37 +1,34 @@
 package com.tencent.mm.plugin.textstatus.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.textstatus.f.f.c;
-import com.tencent.mm.plugin.textstatus.f.f.d;
-import com.tencent.mm.plugin.textstatus.f.f.f;
-import com.tencent.mm.storagebase.h;
-import com.tencent.mm.storagebase.h.b;
-import kotlin.g.a.a;
-import kotlin.g.b.q;
+import com.tencent.mm.aa.a.a;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/storagebase/SqliteDB;", "invoke"})
-final class f$b
-  extends q
-  implements a<h>
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/textstatus/convert/TextStatusInfoManager$badgeListener$1", "Lcom/tencent/mm/hub/NewBadge$ISourceListener;", "onChanged", "", "dataSourceKey", "Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "type", "", "value", "", "dataSourceId", "plugin-textstatus_release"})
+public final class f$b
+  implements a.a
 {
-  public static final b FXK;
-  
-  static
+  public final void E(int paramInt, String paramString)
   {
-    AppMethodBeat.i(216074);
-    FXK = new b();
-    AppMethodBeat.o(216074);
+    AppMethodBeat.i(237746);
+    paramString = h.aHG();
+    p.j(paramString, "MMKernel.storage()");
+    paramString.aHp().set(ar.a.VDK, Long.valueOf(System.currentTimeMillis()));
+    Log.i("MicroMsg.TextStatus.TextStatusInfoManager", "bradge mark read");
+    AppMethodBeat.o(237746);
   }
   
-  f$b()
-  {
-    super(0);
-  }
+  public final void b(ar.a parama) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.b.f.b
  * JD-Core Version:    0.7.0.1
  */

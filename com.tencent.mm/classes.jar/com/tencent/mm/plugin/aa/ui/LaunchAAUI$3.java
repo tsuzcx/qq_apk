@@ -4,7 +4,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.fts.a.a.a;
 import com.tencent.mm.plugin.fts.a.n;
 
@@ -15,13 +15,13 @@ final class LaunchAAUI$3
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(213023);
-    if ((LaunchAAUI.i(this.jXQ) != null) && (LaunchAAUI.i(this.jXQ).isShowing())) {
-      LaunchAAUI.i(this.jXQ).dismiss();
+    AppMethodBeat.i(220087);
+    if ((LaunchAAUI.j(this.mPg) != null) && (LaunchAAUI.j(this.mPg).isShowing())) {
+      LaunchAAUI.j(this.mPg).dismiss();
     }
-    ((n)g.ah(n.class)).cancelSearchTask(this.jXT);
-    LaunchAAUI.j(this.jXQ);
-    AppMethodBeat.o(213023);
+    ((n)h.ag(n.class)).cancelSearchTask(this.mPj);
+    LaunchAAUI.k(this.mPg);
+    AppMethodBeat.o(220087);
   }
 }
 

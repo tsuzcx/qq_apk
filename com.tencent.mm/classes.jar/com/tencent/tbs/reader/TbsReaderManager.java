@@ -10,11 +10,11 @@ public class TbsReaderManager
   
   public ReaderMixerMode createReaderMode(Context paramContext, ITbsReaderCallback paramITbsReaderCallback)
   {
-    AppMethodBeat.i(187986);
+    AppMethodBeat.i(186831);
     destroy();
     this.a = ReaderEngine.getInstance().createTbsReader(paramContext.getApplicationContext(), Integer.valueOf(3), paramITbsReaderCallback);
     paramContext = new ReaderMixerMode(paramContext, this.a);
-    AppMethodBeat.o(187986);
+    AppMethodBeat.o(186831);
     return paramContext;
   }
   
@@ -62,7 +62,7 @@ public class TbsReaderManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tbs.reader.TbsReaderManager
  * JD-Core Version:    0.7.0.1
  */

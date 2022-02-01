@@ -26,14 +26,14 @@ public final class c
   
   public static TPAudioFrameBuffer a(TPAudioFrame paramTPAudioFrame)
   {
-    AppMethodBeat.i(188984);
+    AppMethodBeat.i(219639);
     if (paramTPAudioFrame == null)
     {
-      AppMethodBeat.o(188984);
+      AppMethodBeat.o(219639);
       return null;
     }
     TPAudioFrameBuffer localTPAudioFrameBuffer = new TPAudioFrameBuffer();
-    localTPAudioFrameBuffer.format = d.arF(paramTPAudioFrame.format);
+    localTPAudioFrameBuffer.format = d.aBt(paramTPAudioFrame.format);
     localTPAudioFrameBuffer.data = paramTPAudioFrame.data;
     localTPAudioFrameBuffer.size = paramTPAudioFrame.linesize;
     localTPAudioFrameBuffer.sampleRate = paramTPAudioFrame.sampleRate;
@@ -41,16 +41,16 @@ public final class c
     localTPAudioFrameBuffer.ptsMs = (paramTPAudioFrame.ptsUs / 1000L);
     localTPAudioFrameBuffer.nbSamples = paramTPAudioFrame.nbSamples;
     localTPAudioFrameBuffer.channels = paramTPAudioFrame.channels;
-    AppMethodBeat.o(188984);
+    AppMethodBeat.o(219639);
     return localTPAudioFrameBuffer;
   }
   
   public static TPPlayerMsg.TPMediaCodecInfo a(ITPNativePlayerMessageCallback.MediaCodecInfo paramMediaCodecInfo)
   {
-    AppMethodBeat.i(188988);
+    AppMethodBeat.i(219657);
     if (paramMediaCodecInfo == null)
     {
-      AppMethodBeat.o(188988);
+      AppMethodBeat.o(219657);
       return null;
     }
     TPPlayerMsg.TPMediaCodecInfo localTPMediaCodecInfo = new TPPlayerMsg.TPMediaCodecInfo();
@@ -68,7 +68,7 @@ public final class c
     for (;;)
     {
       localTPMediaCodecInfo.msg = paramMediaCodecInfo.msg;
-      AppMethodBeat.o(188988);
+      AppMethodBeat.o(219657);
       return localTPMediaCodecInfo;
       localTPMediaCodecInfo.mediaType = TPPlayerMsg.TPMediaCodecInfo.TP_DEC_MEDIA_TYPE_VIDEO;
       break;
@@ -82,10 +82,10 @@ public final class c
   
   public static TPPlayerMsg.TPVideoCropInfo a(ITPNativePlayerMessageCallback.VideoCropInfo paramVideoCropInfo)
   {
-    AppMethodBeat.i(188981);
+    AppMethodBeat.i(219629);
     if (paramVideoCropInfo == null)
     {
-      AppMethodBeat.o(188981);
+      AppMethodBeat.o(219629);
       return null;
     }
     TPPlayerMsg.TPVideoCropInfo localTPVideoCropInfo = new TPPlayerMsg.TPVideoCropInfo();
@@ -95,17 +95,17 @@ public final class c
     localTPVideoCropInfo.cropRight = paramVideoCropInfo.cropRight;
     localTPVideoCropInfo.cropTop = paramVideoCropInfo.cropTop;
     localTPVideoCropInfo.cropBottom = paramVideoCropInfo.cropBottom;
-    AppMethodBeat.o(188981);
+    AppMethodBeat.o(219629);
     return localTPVideoCropInfo;
   }
   
   public static TPPostProcessFrameBuffer a(TPPostProcessFrame paramTPPostProcessFrame)
   {
     int i = 2;
-    AppMethodBeat.i(188986);
+    AppMethodBeat.i(219650);
     if (paramTPPostProcessFrame == null)
     {
-      AppMethodBeat.o(188986);
+      AppMethodBeat.o(219650);
       return null;
     }
     TPPostProcessFrameBuffer localTPPostProcessFrameBuffer = new TPPostProcessFrameBuffer();
@@ -118,7 +118,7 @@ public final class c
         if (localTPPostProcessFrameBuffer.mediaType != 0) {
           break label220;
         }
-        localTPPostProcessFrameBuffer.format = d.arE(paramTPPostProcessFrame.format);
+        localTPPostProcessFrameBuffer.format = d.aBs(paramTPPostProcessFrame.format);
       }
     }
     for (;;)
@@ -136,7 +136,7 @@ public final class c
       localTPPostProcessFrameBuffer.sampleAspectRatioDen = paramTPPostProcessFrame.sampleAspectRatioDen;
       localTPPostProcessFrameBuffer.rotation = paramTPPostProcessFrame.rotation;
       localTPPostProcessFrameBuffer.perfData = paramTPPostProcessFrame.perfData;
-      AppMethodBeat.o(188986);
+      AppMethodBeat.o(219650);
       return localTPPostProcessFrameBuffer;
       if (1 == j)
       {
@@ -160,7 +160,7 @@ public final class c
       break;
       label220:
       if (localTPPostProcessFrameBuffer.mediaType == 1) {
-        localTPPostProcessFrameBuffer.format = d.arF(paramTPPostProcessFrame.format);
+        localTPPostProcessFrameBuffer.format = d.aBt(paramTPPostProcessFrame.format);
       }
     }
   }
@@ -168,10 +168,10 @@ public final class c
   public static TPSubtitleFrameBuffer a(TPSubtitleFrame paramTPSubtitleFrame)
   {
     int i = 26;
-    AppMethodBeat.i(188985);
+    AppMethodBeat.i(219643);
     if (paramTPSubtitleFrame == null)
     {
-      AppMethodBeat.o(188985);
+      AppMethodBeat.o(219643);
       return null;
     }
     TPSubtitleFrameBuffer localTPSubtitleFrameBuffer = new TPSubtitleFrameBuffer();
@@ -188,7 +188,7 @@ public final class c
       localTPSubtitleFrameBuffer.dstWidth = paramTPSubtitleFrame.width;
       localTPSubtitleFrameBuffer.rotation = paramTPSubtitleFrame.rotation;
       localTPSubtitleFrameBuffer.ptsMs = (paramTPSubtitleFrame.ptsUs / 1000L);
-      AppMethodBeat.o(188985);
+      AppMethodBeat.o(219643);
       return localTPSubtitleFrameBuffer;
       i = -1;
     }
@@ -197,10 +197,10 @@ public final class c
   public static TPSurfaceRenderInfo a(TPNativePlayerSurfaceRenderInfo paramTPNativePlayerSurfaceRenderInfo)
   {
     Object localObject = null;
-    AppMethodBeat.i(188989);
+    AppMethodBeat.i(219661);
     if (paramTPNativePlayerSurfaceRenderInfo == null)
     {
-      AppMethodBeat.o(188989);
+      AppMethodBeat.o(219661);
       return null;
     }
     TPSurfaceRenderInfo localTPSurfaceRenderInfo = new TPSurfaceRenderInfo();
@@ -213,7 +213,7 @@ public final class c
     for (;;)
     {
       localTPSurfaceRenderInfo.videoCropInfo = paramTPNativePlayerSurfaceRenderInfo;
-      AppMethodBeat.o(188989);
+      AppMethodBeat.o(219661);
       return localTPSurfaceRenderInfo;
       paramTPNativePlayerSurfaceRenderInfo = new TPSurfaceRenderInfo.TPVideoCropInfo();
       paramTPNativePlayerSurfaceRenderInfo.cropLeft = localTPVideoCropInfo.cropLeft;
@@ -227,11 +227,11 @@ public final class c
   
   public static TPVideoFrameBuffer a(TPVideoFrame paramTPVideoFrame)
   {
-    AppMethodBeat.i(188983);
+    AppMethodBeat.i(219633);
     TPVideoFrameBuffer localTPVideoFrameBuffer = new TPVideoFrameBuffer();
     localTPVideoFrameBuffer.data = paramTPVideoFrame.data;
     localTPVideoFrameBuffer.lineSize = paramTPVideoFrame.linesize;
-    localTPVideoFrameBuffer.format = d.arE(paramTPVideoFrame.format);
+    localTPVideoFrameBuffer.format = d.aBs(paramTPVideoFrame.format);
     localTPVideoFrameBuffer.srcHeight = paramTPVideoFrame.height;
     localTPVideoFrameBuffer.srcWidth = paramTPVideoFrame.width;
     localTPVideoFrameBuffer.dstHeight = paramTPVideoFrame.height;
@@ -241,13 +241,13 @@ public final class c
     }
     localTPVideoFrameBuffer.rotation = paramTPVideoFrame.rotation;
     localTPVideoFrameBuffer.ptsMs = (paramTPVideoFrame.ptsUs / 1000L);
-    AppMethodBeat.o(188983);
+    AppMethodBeat.o(219633);
     return localTPVideoFrameBuffer;
   }
   
-  public static int aqZ(int paramInt)
+  public static int aAM(int paramInt)
   {
-    AppMethodBeat.i(188982);
+    AppMethodBeat.i(219630);
     switch (paramInt)
     {
     default: 
@@ -256,7 +256,7 @@ public final class c
     }
     for (;;)
     {
-      AppMethodBeat.o(188982);
+      AppMethodBeat.o(219630);
       return paramInt;
       paramInt = 1;
       continue;
@@ -272,10 +272,10 @@ public final class c
   {
     int k = 1;
     int j = -1;
-    AppMethodBeat.i(188987);
+    AppMethodBeat.i(219655);
     if (paramTPPostProcessFrameBuffer == null)
     {
-      AppMethodBeat.o(188987);
+      AppMethodBeat.o(219655);
       return null;
     }
     TPPostProcessFrame localTPPostProcessFrame = new TPPostProcessFrame();
@@ -318,7 +318,7 @@ public final class c
         localTPPostProcessFrame.sampleAspectRatioDen = paramTPPostProcessFrameBuffer.sampleAspectRatioDen;
         localTPPostProcessFrame.rotation = paramTPPostProcessFrameBuffer.rotation;
         localTPPostProcessFrame.perfData = paramTPPostProcessFrameBuffer.perfData;
-        AppMethodBeat.o(188987);
+        AppMethodBeat.o(219655);
         return localTPPostProcessFrame;
         if (1 == i)
         {

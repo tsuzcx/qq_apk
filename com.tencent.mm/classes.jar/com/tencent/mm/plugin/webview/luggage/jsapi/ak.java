@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.by.c;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
@@ -38,14 +40,14 @@ public class ak
       AppMethodBeat.o(78586);
       return;
     }
-    Object localObject = ((l)g.af(l.class)).aSN().Kn(paramString);
-    if ((localObject == null) || (!((as)localObject).gBM()))
+    Object localObject = ((n)h.ae(n.class)).bbL().RG(paramString);
+    if ((localObject == null) || (!((as)localObject).hxX()))
     {
       parama.i("not biz username", null);
       AppMethodBeat.o(78586);
       return;
     }
-    if (!com.tencent.mm.contact.c.oR(((ax)localObject).field_type))
+    if (!d.rk(((ax)localObject).field_type))
     {
       parama.i("open_biz_chat", null);
       AppMethodBeat.o(78586);
@@ -54,14 +56,14 @@ public class ak
     localObject = new Intent();
     ((Intent)localObject).putExtra("Chat_User", paramString);
     ((Intent)localObject).putExtra("finish_direct", true);
-    com.tencent.mm.br.c.f(paramContext, ".ui.chatting.ChattingUI", (Intent)localObject);
+    c.f(paramContext, ".ui.chatting.ChattingUI", (Intent)localObject);
     parama.i(null, null);
     AppMethodBeat.o(78586);
   }
   
   public final void b(b.a parama) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 1;
   }

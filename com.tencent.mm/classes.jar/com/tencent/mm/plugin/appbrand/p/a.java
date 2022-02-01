@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.p;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
 
 public abstract interface a
 {
@@ -8,13 +9,13 @@ public abstract interface a
   
   public abstract void a(String paramString, b paramb, a parama);
   
-  public abstract String acN(String paramString);
+  public abstract String akH(String paramString);
   
-  public abstract boolean bPn();
+  public abstract boolean cbE();
   
   public static abstract interface a
   {
-    public abstract void b(c paramc);
+    public abstract void b(WxaPkgLoadProgress paramWxaPkgLoadProgress);
   }
   
   public static abstract interface b
@@ -29,24 +30,24 @@ public abstract interface a
     {
       AppMethodBeat.i(176556);
       if (paramb != null) {
-        paramb.a(a.d.ngF);
+        paramb.a(a.d.qhp);
       }
       AppMethodBeat.o(176556);
     }
     
     public final void a(String paramString, a.b paramb, a.a parama)
     {
-      AppMethodBeat.i(219353);
+      AppMethodBeat.i(243527);
       a(paramString, paramb);
-      AppMethodBeat.o(219353);
+      AppMethodBeat.o(243527);
     }
     
-    public final String acN(String paramString)
+    public final String akH(String paramString)
     {
       return "__APP__";
     }
     
-    public final boolean bPn()
+    public final boolean cbE()
     {
       return false;
     }
@@ -57,11 +58,11 @@ public abstract interface a
     static
     {
       AppMethodBeat.i(134931);
-      ngF = new d("OK", 0);
-      ngG = new d("FAIL", 1);
-      ngH = new d("CANCEL", 2);
-      ngI = new d("MODULE_NOT_FOUND", 3);
-      ngJ = new d[] { ngF, ngG, ngH, ngI };
+      qhp = new d("OK", 0);
+      qhq = new d("FAIL", 1);
+      qhr = new d("CANCEL", 2);
+      qhs = new d("MODULE_NOT_FOUND", 3);
+      qht = new d[] { qhp, qhq, qhr, qhs };
       AppMethodBeat.o(134931);
     }
     
@@ -70,7 +71,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.p.a
  * JD-Core Version:    0.7.0.1
  */

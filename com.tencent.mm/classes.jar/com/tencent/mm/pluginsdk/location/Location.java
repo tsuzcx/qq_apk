@@ -9,8 +9,8 @@ public class Location
   implements Parcelable
 {
   public static final Parcelable.Creator<Location> CREATOR;
-  public final float dTj;
   public final float latitude;
+  public final float longitude;
   
   static
   {
@@ -22,14 +22,14 @@ public class Location
   public Location(float paramFloat1, float paramFloat2)
   {
     this.latitude = paramFloat1;
-    this.dTj = paramFloat2;
+    this.longitude = paramFloat2;
   }
   
   protected Location(Parcel paramParcel)
   {
     AppMethodBeat.i(169196);
     this.latitude = paramParcel.readFloat();
-    this.dTj = paramParcel.readFloat();
+    this.longitude = paramParcel.readFloat();
     AppMethodBeat.o(169196);
   }
   
@@ -42,7 +42,7 @@ public class Location
   {
     AppMethodBeat.i(169197);
     paramParcel.writeFloat(this.latitude);
-    paramParcel.writeFloat(this.dTj);
+    paramParcel.writeFloat(this.longitude);
     AppMethodBeat.o(169197);
   }
 }

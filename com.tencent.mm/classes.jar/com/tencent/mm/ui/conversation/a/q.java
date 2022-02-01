@@ -1,113 +1,116 @@
 package com.tencent.mm.ui.conversation.a;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.f.a.lr;
+import com.tencent.mm.f.a.zm;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.modelmulti.l;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.base.h;
-import java.lang.ref.WeakReference;
 
 public final class q
   extends com.tencent.mm.pluginsdk.ui.b.b
-  implements View.OnClickListener
 {
-  private View jxm;
+  private boolean XFO;
+  boolean XGc;
+  private View bvK;
+  private TextView mNb;
+  private ImageView qps;
+  private IListener tLW;
   
   public q(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(163383);
-    this.jxm = getView().findViewById(2131297323);
-    paramContext = (ImageView)getView().findViewById(2131305571);
-    TextView localTextView = (TextView)getView().findViewById(2131305569);
-    View localView = getView().findViewById(2131298778);
-    paramContext.setImageDrawable(ar.m((Context)this.Kgr.get(), 2131690547, ((Context)this.Kgr.get()).getResources().getColor(2131099818)));
-    localTextView.setText(2131756558);
-    this.view.setOnClickListener(this);
-    localView.setOnClickListener(this);
-    AppMethodBeat.o(163383);
+    AppMethodBeat.i(38859);
+    this.XFO = false;
+    this.bvK = null;
+    this.XGc = false;
+    if ((!this.XFO) && (this.view != null))
+    {
+      this.bvK = this.view.findViewById(R.h.dXD);
+      this.mNb = ((TextView)this.view.findViewById(R.h.dXB));
+      this.qps = ((ImageView)this.view.findViewById(R.h.dXC));
+      this.XFO = true;
+      this.tLW = new IListener() {};
+      EventCenter.instance.addListener(this.tLW);
+    }
+    AppMethodBeat.o(38859);
   }
   
-  public final boolean bYa()
+  public final boolean ckL()
   {
-    AppMethodBeat.i(163385);
-    boolean bool = g.aAh().azQ().getBoolean(ar.a.OnE, false);
-    int i;
-    if ((android.support.v4.content.b.checkSelfPermission((Activity)this.Kgr.get(), "android.permission.WRITE_EXTERNAL_STORAGE") != 0) && (android.support.v4.app.a.a((Activity)this.Kgr.get(), "android.permission.WRITE_EXTERNAL_STORAGE")) && (!com.tencent.mm.sdcard_migrate.b.bhQ(com.tencent.mm.loader.j.b.aKI())))
+    AppMethodBeat.i(38860);
+    if (!this.XGc)
     {
-      i = 1;
-      if ((bool) || (i == 0)) {
-        break label107;
-      }
-      this.jxm.setVisibility(0);
-      getView().setVisibility(0);
+      Log.i("MicroMsg.TryNewInitBanner", "summerinit update but initFailed[%b] just ret update false", new Object[] { Boolean.valueOf(this.XGc) });
+      this.bvK.setVisibility(8);
+      AppMethodBeat.o(38860);
+      return false;
     }
-    for (;;)
+    if (!l.bni())
     {
-      bool = super.bYa();
-      AppMethodBeat.o(163385);
-      return bool;
-      i = 0;
-      break;
-      label107:
-      this.jxm.setVisibility(8);
-      getView().setVisibility(8);
+      Log.i("MicroMsg.TryNewInitBanner", "summerinit update but not need init just update false");
+      this.XGc = false;
+      this.bvK.setVisibility(8);
+      AppMethodBeat.o(38860);
+      return false;
+    }
+    this.mNb.setText(R.l.esB);
+    this.qps.setVisibility(0);
+    this.bvK.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(38858);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/ui/conversation/banner/TryNewInitBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        Log.i("MicroMsg.TryNewInitBanner", "summerinit onClick trynewinit layout start try");
+        q.this.setVisibility(8);
+        EventCenter.instance.publish(new zm());
+        Log.i("MicroMsg.TryNewInitBanner", "summerinit onClick tryNeeInitAgain done callBack (now by event to notice initbanner)");
+        a.a(this, "com/tencent/mm/ui/conversation/banner/TryNewInitBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(38858);
+      }
+    });
+    this.bvK.setVisibility(0);
+    if (this.bvK.getVisibility() == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.TryNewInitBanner", "summerinit update set visible [%b]", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(38860);
+      return true;
     }
   }
   
-  public final void destroy() {}
+  public final void destroy()
+  {
+    AppMethodBeat.i(38862);
+    EventCenter.instance.removeListener(this.tLW);
+    AppMethodBeat.o(38862);
+  }
   
   public final int getLayoutId()
   {
-    return 2131496550;
+    return R.i.elA;
   }
   
-  public final int getOrder()
+  public final void setVisibility(int paramInt)
   {
-    return 4;
-  }
-  
-  public final void onClick(View paramView)
-  {
-    AppMethodBeat.i(163384);
-    Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/StoragePermissionBanner", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-    Log.i("MicroMsg.StoragePermissionBanner", "onClick, %d", new Object[] { Integer.valueOf(paramView.getId()) });
-    localObject = (Activity)this.Kgr.get();
-    if (paramView.getId() == 2131298778)
-    {
-      h.a((Context)localObject, ((Activity)localObject).getString(2131756559), ((Activity)localObject).getString(2131755998), ((Activity)localObject).getString(2131763873), new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(163382);
-          g.aAh().azQ().set(ar.a.OnE, Boolean.TRUE);
-          q.this.bYa();
-          AppMethodBeat.o(163382);
-        }
-      });
-      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(462L, 25L, 1L, true);
+    AppMethodBeat.i(38861);
+    if (this.bvK != null) {
+      this.bvK.setVisibility(paramInt);
     }
-    for (;;)
-    {
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/StoragePermissionBanner", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(163384);
-      return;
-      com.tencent.mm.pluginsdk.permission.b.a((Activity)this.Kgr.get(), "android.permission.WRITE_EXTERNAL_STORAGE", 33, "", "");
-      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(462L, 24L, 1L, true);
-    }
+    AppMethodBeat.o(38861);
   }
 }
 

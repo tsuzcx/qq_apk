@@ -33,14 +33,14 @@ public class KindaPayCardManagerImpl
     localBundle.putBoolean("is_from_new_cashier", true);
     localBundle.putString("start_activity_class", localObject.getClass().getName());
     a.a((Activity)localObject, b.class, localBundle);
-    localObject = a.by((Activity)localObject);
+    localObject = a.bF((Activity)localObject);
     if (!(localObject instanceof b))
     {
       Log.e("KindaPayCardManagerImpl", "Fail to get correct wallet process in addPayCardImpl, expect BindCardProcess got %s", new Object[] { localObject.getClass().getName() });
       AppMethodBeat.o(18461);
       return;
     }
-    ((b)localObject).HPw = new b.a()
+    ((b)localObject).OHE = new b.a()
     {
       public void run(int paramAnonymousInt)
       {

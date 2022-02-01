@@ -1,8 +1,10 @@
 package com.tencent.mm.emoji.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.emoji.b.d;
+import com.tencent.mm.pluginsdk.b.e;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.storage.ao;
 import java.util.Iterator;
@@ -12,54 +14,54 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/model/panel/EmojiPanelConfig;", "", "()V", "value", "", "canSend", "getCanSend", "()Z", "setCanSend", "(Z)V", "hasCapture", "getHasCapture", "setHasCapture", "hasCaptureEntrance", "getHasCaptureEntrance", "setHasCaptureEntrance", "hasCustom", "getHasCustom", "setHasCustom", "hasCustomEntrance", "getHasCustomEntrance", "setHasCustomEntrance", "hasSendBtn", "getHasSendBtn", "setHasSendBtn", "hasSetting", "getHasSetting", "setHasSetting", "hasSmiley", "getHasSmiley", "setHasSmiley", "hasStore", "getHasStore", "setHasStore", "hasSysCustom", "getHasSysCustom", "setHasSysCustom", "scene", "", "getScene", "()I", "setScene", "(I)V", "sendListeners", "Ljava/util/LinkedList;", "Lkotlin/Function0;", "", "smileyRecentMaxCount", "getSmileyRecentMaxCount", "setSmileyRecentMaxCount", "addSendListener", "listener", "refreshSend", "removeSendListener", "Companion", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/model/panel/EmojiPanelConfig;", "", "()V", "value", "", "canSend", "getCanSend", "()Z", "setCanSend", "(Z)V", "hasCapture", "getHasCapture", "setHasCapture", "hasCaptureEntrance", "getHasCaptureEntrance", "setHasCaptureEntrance", "hasCustom", "getHasCustom", "setHasCustom", "hasCustomEntrance", "getHasCustomEntrance", "setHasCustomEntrance", "hasSendBtn", "getHasSendBtn", "setHasSendBtn", "hasSetting", "getHasSetting", "setHasSetting", "hasSmiley", "getHasSmiley", "setHasSmiley", "hasStore", "getHasStore", "setHasStore", "hasSysCustom", "getHasSysCustom", "setHasSysCustom", "scene", "", "getScene", "()I", "setScene", "(I)V", "sendListeners", "Ljava/util/LinkedList;", "Lkotlin/Function0;", "", "smileyRecentMaxCount", "getSmileyRecentMaxCount", "setSmileyRecentMaxCount", "addSendListener", "listener", "refreshSend", "removeSendListener", "Companion", "plugin-emojisdk_release"})
 public final class i
 {
-  public static final i.a gYr;
-  public boolean gYf;
-  public boolean gYg;
-  public boolean gYh;
-  public boolean gYi;
-  public boolean gYj;
-  public boolean gYk;
-  public boolean gYl;
-  public boolean gYm;
-  public boolean gYn;
-  public boolean gYo;
-  public int gYp;
-  public final LinkedList<a<x>> gYq;
+  public static final a jJr;
+  public boolean jJf;
+  public boolean jJg;
+  public boolean jJh;
+  public boolean jJi;
+  public boolean jJj;
+  public boolean jJk;
+  public boolean jJl;
+  public boolean jJm;
+  public boolean jJn;
+  public boolean jJo;
+  public int jJp;
+  public final LinkedList<a<x>> jJq;
   public int scene;
   
   static
   {
     AppMethodBeat.i(105543);
-    gYr = new i.a((byte)0);
+    jJr = new a((byte)0);
     AppMethodBeat.o(105543);
   }
   
   public i()
   {
     AppMethodBeat.i(105542);
-    this.scene = ChatFooterPanel.KbB;
-    this.gYg = true;
-    this.gYh = true;
-    this.gYi = true;
-    this.gYk = true;
-    this.gYm = true;
-    this.gYo = true;
-    this.gYp = 8;
-    this.gYq = new LinkedList();
+    this.scene = ChatFooterPanel.Rcg;
+    this.jJg = true;
+    this.jJh = true;
+    this.jJi = true;
+    this.jJk = true;
+    this.jJm = true;
+    this.jJo = true;
+    this.jJp = 8;
+    this.jJq = new LinkedList();
     AppMethodBeat.o(105542);
   }
   
-  public static final boolean pf(int paramInt)
+  public static final boolean ry(int paramInt)
   {
     AppMethodBeat.i(105544);
-    Object localObject = g.ah(d.class);
-    p.g(localObject, "MMKernel.plugin(IPluginEmoji::class.java)");
+    Object localObject = h.ag(d.class);
+    p.j(localObject, "MMKernel.plugin(IPluginEmoji::class.java)");
     localObject = ((d)localObject).getProvider();
-    p.g(localObject, "MMKernel.plugin(IPluginEmoji::class.java).provider");
-    if ((((com.tencent.mm.pluginsdk.a.e)localObject).avf()) && ((paramInt == ChatFooterPanel.KbC) || (paramInt == ChatFooterPanel.KbH) || (paramInt == ChatFooterPanel.KbI) || (paramInt == ChatFooterPanel.KbJ)))
+    p.j(localObject, "MMKernel.plugin(IPluginEmoji::class.java).provider");
+    if ((((e)localObject).aCa()) && ((paramInt == ChatFooterPanel.Rch) || (paramInt == ChatFooterPanel.Rcm) || (paramInt == ChatFooterPanel.Rcn) || (paramInt == ChatFooterPanel.Rco)))
     {
       AppMethodBeat.o(105544);
       return true;
@@ -68,20 +70,20 @@ public final class i
     return false;
   }
   
-  public static final boolean pg(int paramInt)
+  public static final boolean rz(int paramInt)
   {
-    return paramInt == ChatFooterPanel.KbC;
+    return paramInt == ChatFooterPanel.Rch;
   }
   
-  public final void avt()
+  public final void aCo()
   {
     AppMethodBeat.i(105541);
     Object localObject1;
-    if (this.scene == ChatFooterPanel.KbC)
+    if (this.scene == ChatFooterPanel.Rch)
     {
-      localObject1 = g.aAh();
-      p.g(localObject1, "MMKernel.storage()");
-      Object localObject2 = ((com.tencent.mm.kernel.e)localObject1).azQ().get(66832, Boolean.FALSE);
+      localObject1 = h.aHG();
+      p.j(localObject1, "MMKernel.storage()");
+      Object localObject2 = ((f)localObject1).aHp().b(66832, Boolean.FALSE);
       localObject1 = localObject2;
       if (!(localObject2 instanceof Boolean)) {
         localObject1 = null;
@@ -94,19 +96,19 @@ public final class i
     label82:
     for (boolean bool = ((Boolean)localObject1).booleanValue();; bool = false)
     {
-      if (bool != this.gYn) {
-        eb(bool);
+      if (bool != this.jJn) {
+        ey(bool);
       }
       AppMethodBeat.o(105541);
       return;
     }
   }
   
-  public final void eb(boolean paramBoolean)
+  public final void ey(boolean paramBoolean)
   {
     AppMethodBeat.i(105539);
-    this.gYn = paramBoolean;
-    Iterator localIterator = ((Iterable)this.gYq).iterator();
+    this.jJn = paramBoolean;
+    Iterator localIterator = ((Iterable)this.jJq).iterator();
     while (localIterator.hasNext()) {
       ((a)localIterator.next()).invoke();
     }
@@ -116,14 +118,35 @@ public final class i
   public final void g(a<x> parama)
   {
     AppMethodBeat.i(105540);
-    p.h(parama, "listener");
-    this.gYq.remove(parama);
+    p.k(parama, "listener");
+    this.jJq.remove(parama);
     AppMethodBeat.o(105540);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/model/panel/EmojiPanelConfig$Companion;", "", "()V", "convertScene", "", "panelScene", "isShowCaptureEntrance", "", "scene", "isShowCustomEntrance", "plugin-emojisdk_release"})
+  public static final class a
+  {
+    public static int rA(int paramInt)
+    {
+      if (paramInt != ChatFooterPanel.Rch)
+      {
+        if (paramInt == ChatFooterPanel.Rcm) {
+          return 3;
+        }
+        if (paramInt == ChatFooterPanel.Rcn) {
+          return 4;
+        }
+        if (paramInt == ChatFooterPanel.Rco) {
+          return 5;
+        }
+      }
+      return 2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.b.b.i
  * JD-Core Version:    0.7.0.1
  */

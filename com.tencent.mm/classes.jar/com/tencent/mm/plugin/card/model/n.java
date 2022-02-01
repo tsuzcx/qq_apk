@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.card.model;
 
 public final class n
 {
-  public static int pTP = 1;
+  public static int tpQ = 1;
 }
 
 

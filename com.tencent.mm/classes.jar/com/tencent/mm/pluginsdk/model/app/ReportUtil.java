@@ -9,7 +9,7 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ad;
 import com.tencent.mm.model.ad.b;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.opensdk.channel.MMessageActV2;
 import com.tencent.mm.opensdk.channel.MMessageActV2.Args;
 import com.tencent.mm.opensdk.modelmsg.SendAuth.Resp;
@@ -17,6 +17,7 @@ import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Resp;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.IntentUtil;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public final class ReportUtil
@@ -24,7 +25,7 @@ public final class ReportUtil
   public static void a(Context paramContext, ReportArgs paramReportArgs)
   {
     AppMethodBeat.i(31090);
-    if (paramReportArgs.EX == 1)
+    if (paramReportArgs.Vh == 1)
     {
       b(paramContext, paramReportArgs);
       AppMethodBeat.o(31090);
@@ -36,9 +37,9 @@ public final class ReportUtil
     ((SendMessageToWX.Resp)localObject).openId = paramReportArgs.openId;
     Bundle localBundle = new Bundle();
     ((SendMessageToWX.Resp)localObject).toBundle(localBundle);
-    q.bo(localBundle);
+    q.bm(localBundle);
     localObject = new MMessageActV2.Args();
-    ((MMessageActV2.Args)localObject).targetPkgName = paramReportArgs.LG;
+    ((MMessageActV2.Args)localObject).targetPkgName = paramReportArgs.abY;
     ((MMessageActV2.Args)localObject).bundle = localBundle;
     MMessageActV2.send(paramContext, (MMessageActV2.Args)localObject);
     AppMethodBeat.o(31090);
@@ -48,11 +49,16 @@ public final class ReportUtil
   {
     boolean bool = false;
     AppMethodBeat.i(31089);
-    ad.b localb = ad.aVe().G("kWXEntryActivity_data_center_session_id", true);
+    if (paramReportArgs == null)
+    {
+      AppMethodBeat.o(31089);
+      return;
+    }
+    ad.b localb = ad.beh().I("kWXEntryActivity_data_center_session_id", true);
     if (localb != null) {
       bool = localb.getBoolean("kWXEntryActivity_data_center_can_return_cancel", false);
     }
-    ab(paramBoolean, paramReportArgs.errCode);
+    ao(paramBoolean, paramReportArgs.errCode);
     if ((bool) && (paramBoolean)) {
       paramReportArgs.errCode = -2;
     }
@@ -60,10 +66,10 @@ public final class ReportUtil
     AppMethodBeat.o(31089);
   }
   
-  public static void ab(boolean paramBoolean, int paramInt)
+  public static void ao(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(31088);
-    ad.b localb = ad.aVe().G("kWXEntryActivity_data_center_session_id", true);
+    ad.b localb = ad.beh().I("kWXEntryActivity_data_center_session_id", true);
     String str;
     int j;
     int k;
@@ -83,7 +89,7 @@ public final class ReportUtil
     label130:
     for (int i = 0;; i = -1)
     {
-      h.CyF.a(15632, new Object[] { str, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(paramInt), Integer.valueOf(i) });
+      h.IzE.a(15632, new Object[] { str, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(paramInt), Integer.valueOf(i) });
       AppMethodBeat.o(31088);
       return;
     }
@@ -98,15 +104,15 @@ public final class ReportUtil
     ((SendAuth.Resp)localObject).openId = paramReportArgs.openId;
     Bundle localBundle = new Bundle();
     ((SendAuth.Resp)localObject).toBundle(localBundle);
-    q.bo(localBundle);
+    q.bm(localBundle);
     localObject = new MMessageActV2.Args();
-    ((MMessageActV2.Args)localObject).targetPkgName = paramReportArgs.LG;
+    ((MMessageActV2.Args)localObject).targetPkgName = paramReportArgs.abY;
     ((MMessageActV2.Args)localObject).bundle = localBundle;
     MMessageActV2.send(paramContext, (MMessageActV2.Args)localObject);
     AppMethodBeat.o(31091);
   }
   
-  private static String bq(Bundle paramBundle)
+  private static String bo(Bundle paramBundle)
   {
     AppMethodBeat.i(31093);
     SendMessageToWX.Req localReq = new SendMessageToWX.Req();
@@ -142,29 +148,31 @@ public final class ReportUtil
     }
     localObject1 = new g();
     ((g)localObject1).field_appId = ((String)localObject2);
-    if ((bg.aVG()) && (bg.aAc())) {
-      ao.eAS().get((IAutoDBItem)localObject1, new String[0]);
-    }
-    for (;;)
+    if ((bh.beJ()) && (bh.aHB()))
     {
-      localObject2 = new ReportArgs();
-      ((ReportArgs)localObject2).LG = ((g)localObject1).field_packageName;
-      ((ReportArgs)localObject2).errCode = paramInt;
-      ((ReportArgs)localObject2).transaction = bq(paramBundle);
-      ((ReportArgs)localObject2).openId = ((g)localObject1).field_openId;
-      ((ReportArgs)localObject2).EX = paramBundle.getInt("_wxapi_command_type");
-      AppMethodBeat.o(31092);
-      return localObject2;
+      ao.fmz().get((IAutoDBItem)localObject1, new String[0]);
+      if (!Util.isNullOrNil(((g)localObject1).field_packageName)) {}
+    }
+    else
+    {
       ((g)localObject1).field_packageName = paramBundle.getString("_mmessage_appPackage");
     }
+    localObject2 = new ReportArgs();
+    ((ReportArgs)localObject2).abY = ((g)localObject1).field_packageName;
+    ((ReportArgs)localObject2).errCode = paramInt;
+    ((ReportArgs)localObject2).transaction = bo(paramBundle);
+    ((ReportArgs)localObject2).openId = ((g)localObject1).field_openId;
+    ((ReportArgs)localObject2).Vh = paramBundle.getInt("_wxapi_command_type");
+    AppMethodBeat.o(31092);
+    return localObject2;
   }
   
   public static class ReportArgs
     implements Parcelable
   {
     public static final Parcelable.Creator<ReportArgs> CREATOR;
-    public int EX;
-    public String LG;
+    public int Vh;
+    public String abY;
     public int errCode;
     public String openId;
     public String transaction;
@@ -181,7 +189,7 @@ public final class ReportUtil
     private ReportArgs(Parcel paramParcel)
     {
       AppMethodBeat.i(31086);
-      this.LG = paramParcel.readString();
+      this.abY = paramParcel.readString();
       this.errCode = paramParcel.readInt();
       this.transaction = paramParcel.readString();
       this.openId = paramParcel.readString();
@@ -196,7 +204,7 @@ public final class ReportUtil
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(31085);
-      paramParcel.writeString(this.LG);
+      paramParcel.writeString(this.abY);
       paramParcel.writeInt(this.errCode);
       paramParcel.writeString(this.transaction);
       paramParcel.writeString(this.openId);
@@ -206,7 +214,7 @@ public final class ReportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.ReportUtil
  * JD-Core Version:    0.7.0.1
  */

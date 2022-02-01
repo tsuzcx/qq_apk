@@ -6,18 +6,18 @@ import java.util.LinkedList;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/floatball/WebViewFloatBallInfo;", "", "()V", "canAddJsApiNow", "", "getCanAddJsApiNow", "()Z", "setCanAddJsApiNow", "(Z)V", "jsApiList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/webview/ui/tools/floatball/JSApiInfo;", "title", "", "getTitle", "()Ljava/lang/String;", "setTitle", "(Ljava/lang/String;)V", "addJsApi", "", "jsApiInfo", "getJsApiList", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/floatball/WebViewFloatBallInfo;", "", "()V", "canAddJsApiNow", "", "getCanAddJsApiNow", "()Z", "setCanAddJsApiNow", "(Z)V", "jsApiList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/webview/ui/tools/floatball/JSApiInfo;", "title", "", "getTitle", "()Ljava/lang/String;", "setTitle", "(Ljava/lang/String;)V", "addJsApi", "", "jsApiInfo", "getJsApiList", "plugin-webview_release"})
 public final class c
 {
-  public boolean JmM;
+  public final LinkedList<a> CAI;
+  public boolean Qkd;
   public String title;
-  public final LinkedList<a> xwA;
   
   public c()
   {
-    AppMethodBeat.i(210491);
-    this.xwA = new LinkedList();
-    AppMethodBeat.o(210491);
+    AppMethodBeat.i(226305);
+    this.CAI = new LinkedList();
+    AppMethodBeat.o(226305);
   }
   
   public final void a(a parama)
@@ -26,14 +26,14 @@ public final class c
     {
       try
       {
-        AppMethodBeat.i(210490);
-        p.h(parama, "jsApiInfo");
-        if (!this.JmM)
+        AppMethodBeat.i(226303);
+        p.k(parama, "jsApiInfo");
+        if (!this.Qkd)
         {
-          AppMethodBeat.o(210490);
+          AppMethodBeat.o(226303);
           return;
         }
-        Iterator localIterator = ((Iterable)this.xwA).iterator();
+        Iterator localIterator = ((Iterable)this.CAI).iterator();
         a locala;
         if (localIterator.hasNext())
         {
@@ -41,10 +41,10 @@ public final class c
           if (locala.id == parama.id)
           {
             if (locala != null) {
-              this.xwA.remove(locala);
+              this.CAI.remove(locala);
             }
-            this.xwA.add(parama);
-            AppMethodBeat.o(210490);
+            this.CAI.add(parama);
+            AppMethodBeat.o(226303);
           }
         }
         else
@@ -58,7 +58,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.floatball.c
  * JD-Core Version:    0.7.0.1
  */

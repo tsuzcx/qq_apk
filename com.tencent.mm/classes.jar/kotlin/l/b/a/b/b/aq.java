@@ -15,22 +15,22 @@ public abstract interface aq
   public static final class a
     implements aq
   {
-    public static final a ThM;
+    public static final a aaKG;
     
     static
     {
       AppMethodBeat.i(56886);
-      ThM = new a();
+      aaKG = new a();
       AppMethodBeat.o(56886);
     }
     
     public final Collection<ab> a(at paramat, Collection<? extends ab> paramCollection, b<? super at, ? extends Iterable<? extends ab>> paramb, b<? super ab, x> paramb1)
     {
       AppMethodBeat.i(56885);
-      p.h(paramat, "currentTypeConstructor");
-      p.h(paramCollection, "superTypes");
-      p.h(paramb, "neighbors");
-      p.h(paramb1, "reportLoop");
+      p.k(paramat, "currentTypeConstructor");
+      p.k(paramCollection, "superTypes");
+      p.k(paramb, "neighbors");
+      p.k(paramb1, "reportLoop");
       AppMethodBeat.o(56885);
       return paramCollection;
     }
@@ -38,7 +38,7 @@ public abstract interface aq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.aq
  * JD-Core Version:    0.7.0.1
  */

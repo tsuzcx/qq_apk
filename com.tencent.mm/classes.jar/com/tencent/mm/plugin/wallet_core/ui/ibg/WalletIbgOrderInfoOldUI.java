@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.wallet_core.ui.ibg;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.ui.WalletOrderInfoOldUI;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -19,15 +19,15 @@ public class WalletIbgOrderInfoOldUI
   {
     AppMethodBeat.i(71447);
     Log.i("MicroMsg.WalletIbgOrderInfoOldUI", "hy: result is not set manly. set to OK");
-    Iterator localIterator = this.Ihn.iterator();
+    Iterator localIterator = this.OZt.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
       if (!Util.isNullOrNil(str))
       {
         Log.d("MicroMsg.WalletIbgOrderInfoOldUI", "hy: doing netscene subscribe...appName: %s", new Object[] { str });
-        g.aAi();
-        g.aAg().hqi.a(new com.tencent.mm.wallet_core.c.t(str), 0);
+        h.aHH();
+        h.aHF().kcd.a(new com.tencent.mm.wallet_core.c.t(str), 0);
       }
     }
     setResult(-1);
@@ -35,15 +35,15 @@ public class WalletIbgOrderInfoOldUI
     AppMethodBeat.o(71447);
   }
   
-  public final Orders fSS()
+  public final Orders gLy()
   {
-    return this.HFH;
+    return this.OxA;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(71446);
-    this.HFH = WalletIbgOrderInfoUI.HFH;
+    this.OxA = WalletIbgOrderInfoUI.OxA;
     super.onCreate(paramBundle);
     AppMethodBeat.o(71446);
   }

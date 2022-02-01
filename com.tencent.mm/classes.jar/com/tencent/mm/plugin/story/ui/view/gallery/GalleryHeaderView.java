@@ -8,19 +8,22 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.story.a.d;
+import com.tencent.mm.plugin.story.a.e;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.ax;
 import kotlin.g.b.p;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryHeaderView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "avatarIv", "Landroid/widget/ImageView;", "getAvatarIv", "()Landroid/widget/ImageView;", "setAvatarIv", "(Landroid/widget/ImageView;)V", "nickNameTv", "Landroid/widget/TextView;", "getNickNameTv", "()Landroid/widget/TextView;", "setNickNameTv", "(Landroid/widget/TextView;)V", "setUserName", "", "user", "", "plugin-story_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryHeaderView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "avatarIv", "Landroid/widget/ImageView;", "getAvatarIv", "()Landroid/widget/ImageView;", "setAvatarIv", "(Landroid/widget/ImageView;)V", "nickNameTv", "Landroid/widget/TextView;", "getNickNameTv", "()Landroid/widget/TextView;", "setNickNameTv", "(Landroid/widget/TextView;)V", "setUserName", "", "user", "", "plugin-story_release"})
 public final class GalleryHeaderView
   extends RelativeLayout
 {
-  private ImageView gyr;
-  private TextView kcZ;
+  private ImageView jiu;
+  private TextView mUy;
   
   public GalleryHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,31 +36,31 @@ public final class GalleryHeaderView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120333);
-    View.inflate(paramContext, 2131496597, (ViewGroup)this);
-    this.gyr = ((ImageView)findViewById(2131297134));
-    this.kcZ = ((TextView)findViewById(2131305440));
-    setPadding(0, 0, 0, au.aD(paramContext));
+    View.inflate(paramContext, a.e.LCW, (ViewGroup)this);
+    this.jiu = ((ImageView)findViewById(a.d.avatar_iv));
+    this.mUy = ((TextView)findViewById(a.d.nickname_tv));
+    setPadding(0, 0, 0, ax.aB(paramContext));
     AppMethodBeat.o(120333);
   }
   
   public final ImageView getAvatarIv()
   {
-    return this.gyr;
+    return this.jiu;
   }
   
   public final TextView getNickNameTv()
   {
-    return this.kcZ;
+    return this.mUy;
   }
   
   public final void setAvatarIv(ImageView paramImageView)
   {
-    this.gyr = paramImageView;
+    this.jiu = paramImageView;
   }
   
   public final void setNickNameTv(TextView paramTextView)
   {
-    this.kcZ = paramTextView;
+    this.mUy = paramTextView;
   }
   
   public final void setUserName(String paramString)
@@ -65,17 +68,17 @@ public final class GalleryHeaderView
     AppMethodBeat.i(120332);
     if (paramString != null)
     {
-      Object localObject = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-      p.g(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).aSN().Kn(paramString);
-      TextView localTextView = this.kcZ;
+      Object localObject = h.ae(n.class);
+      p.j(localObject, "MMKernel.service(IMessengerStorage::class.java)");
+      localObject = ((n)localObject).bbL().RG(paramString);
+      TextView localTextView = this.mUy;
       if (localTextView != null)
       {
         Context localContext = getContext();
-        p.g(localObject, "contact");
-        localTextView.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.b(localContext, (CharSequence)((as)localObject).arJ(), localTextView.getTextSize()));
+        p.j(localObject, "contact");
+        localTextView.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.b(localContext, (CharSequence)((as)localObject).ays(), localTextView.getTextSize()));
       }
-      a.b.d(this.gyr, paramString, 0.5F);
+      a.b.d(this.jiu, paramString, 0.5F);
     }
     AppMethodBeat.o(120332);
   }

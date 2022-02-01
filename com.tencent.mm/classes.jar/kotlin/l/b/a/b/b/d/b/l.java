@@ -17,20 +17,20 @@ public final class l
   extends w
   implements kotlin.l.b.a.b.d.a.e.j
 {
-  final Type Tnf;
-  private final i Tno;
+  final Type aaPZ;
+  private final i aaQi;
   
   public l(Type paramType)
   {
     AppMethodBeat.i(57475);
-    this.Tnf = paramType;
-    paramType = ((l)this).Tnf;
+    this.aaPZ = paramType;
+    paramType = ((l)this).aaPZ;
     if ((paramType instanceof Class)) {
       paramType = (i)new j((Class)paramType);
     }
     for (;;)
     {
-      this.Tno = paramType;
+      this.aaQi = paramType;
       AppMethodBeat.o(57475);
       return;
       if ((paramType instanceof TypeVariable))
@@ -57,45 +57,45 @@ public final class l
     throw paramType;
   }
   
-  public final Type hCJ()
+  public final Type iHa()
   {
-    return this.Tnf;
+    return this.aaPZ;
   }
   
-  public final Collection<a> hCP()
+  public final Collection<a> iHj()
   {
-    return (Collection)kotlin.a.v.SXr;
+    return (Collection)kotlin.a.v.aaAd;
   }
   
-  public final i hCT()
+  public final i iHn()
   {
-    return this.Tno;
+    return this.aaQi;
   }
   
-  public final String hCU()
+  public final String iHo()
   {
     AppMethodBeat.i(57470);
-    Throwable localThrowable = (Throwable)new UnsupportedOperationException("Type not found: " + this.Tnf);
+    Throwable localThrowable = (Throwable)new UnsupportedOperationException("Type not found: " + this.aaPZ);
     AppMethodBeat.o(57470);
     throw localThrowable;
   }
   
-  public final String hCV()
+  public final String iHp()
   {
     AppMethodBeat.i(57471);
-    String str = this.Tnf.toString();
+    String str = this.aaPZ.toString();
     AppMethodBeat.o(57471);
     return str;
   }
   
-  public final boolean hCW()
+  public final boolean iHq()
   {
     AppMethodBeat.i(57472);
-    Object localObject = this.Tnf;
+    Object localObject = this.aaPZ;
     if ((localObject instanceof Class))
     {
       localObject = ((Class)localObject).getTypeParameters();
-      p.g(localObject, "getTypeParameters()");
+      p.j(localObject, "getTypeParameters()");
       if (localObject.length == 0)
       {
         i = 1;
@@ -120,14 +120,14 @@ public final class l
     return false;
   }
   
-  public final List<kotlin.l.b.a.b.d.a.e.v> hCX()
+  public final List<kotlin.l.b.a.b.d.a.e.v> iHr()
   {
     AppMethodBeat.i(57473);
-    Object localObject2 = (Iterable)b.a(this.Tnf);
+    Object localObject2 = (Iterable)b.i(this.aaPZ);
     Object localObject1 = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
-      ((Collection)localObject1).add(w.a.b((Type)((Iterator)localObject2).next()));
+      ((Collection)localObject1).add(w.a.j((Type)((Iterator)localObject2).next()));
     }
     localObject1 = (List)localObject1;
     AppMethodBeat.o(57473);
@@ -137,14 +137,14 @@ public final class l
   public final a l(kotlin.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(57474);
-    p.h(paramb, "fqName");
+    p.k(paramb, "fqName");
     AppMethodBeat.o(57474);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d.b.l
  * JD-Core Version:    0.7.0.1
  */

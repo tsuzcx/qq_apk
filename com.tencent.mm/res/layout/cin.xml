@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/kdv" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/ke2" android:background="@android:color/black" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/kdz" android:background="@drawable/cu8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kdy" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginBottom="@dimen/bt" android:src="@raw/icons_outlined_error" app:iconColor="@android:color/white" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/ag2" android:id="@id/ke0" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <com.tencent.mm.ui.widget.MMProcessBar android:layout_gravity="center" android:id="@id/ke1" android:background="@drawable/ahn" android:visibility="gone" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" />
+    <FrameLayout android:id="@id/kdx" android:background="@drawable/ad4" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="end" android:id="@id/kdw" android:padding="@dimen/bt" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_filled_close" app:iconColor="@color/ag2" />
+    </FrameLayout>
+</FrameLayout>

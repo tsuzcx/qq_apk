@@ -5,13 +5,14 @@ import android.database.Cursor;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.p;
-import com.tencent.mm.plugin.appbrand.appcache.ac;
-import com.tencent.mm.plugin.appbrand.appcache.bh;
+import com.tencent.mm.f.c.p;
+import com.tencent.mm.plugin.appbrand.app.m;
+import com.tencent.mm.plugin.appbrand.appcache.ad;
+import com.tencent.mm.plugin.appbrand.appcache.bm;
 import com.tencent.mm.plugin.appbrand.appcache.predownload.c.a;
 import com.tencent.mm.plugin.appbrand.appcache.predownload.e.b;
 import com.tencent.mm.plugin.appbrand.config.y;
-import com.tencent.mm.protocal.protobuf.fcn;
+import com.tencent.mm.protocal.protobuf.fno;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
@@ -31,24 +32,24 @@ import java.util.Map;
 public final class x
   extends MStorage
 {
-  public static final String[] iBh;
-  private final b kVA;
-  public final c kVB;
-  public final h kVs;
+  public static final String[] lqL;
+  public final h nPF;
+  private final b nPN;
+  public final c nPO;
   
   static
   {
     AppMethodBeat.i(44627);
-    iBh = new String[] { MAutoStorage.getCreateSQLs(a.iBg, "AppBrandLauncherLayoutItem") };
+    lqL = new String[] { MAutoStorage.getCreateSQLs(a.lqK, "AppBrandLauncherLayoutItem") };
     AppMethodBeat.o(44627);
   }
   
   public x(h paramh)
   {
     AppMethodBeat.i(44609);
-    this.kVB = new c((byte)0);
-    this.kVs = paramh;
-    this.kVA = new b(paramh);
+    this.nPO = new c((byte)0);
+    this.nPF = paramh;
+    this.nPN = new b(paramh);
     AppMethodBeat.o(44609);
   }
   
@@ -68,7 +69,7 @@ public final class x
       AppMethodBeat.o(44624);
       return false;
     }
-    long l = this.kVs.insert("AppBrandLauncherLayoutItem", "", parama.convertTo());
+    long l = this.nPF.insert("AppBrandLauncherLayoutItem", "", parama.convertTo());
     if ((l > 0L) || (l == parama.field_recordId))
     {
       AppMethodBeat.o(44624);
@@ -87,7 +88,7 @@ public final class x
       return false;
     }
     Object localObject = String.format(Locale.US, "select max(%s) from %s where %s=?", new Object[] { "updateTime", "AppBrandLauncherLayoutItem", "scene" });
-    localObject = this.kVs.rawQuery((String)localObject, new String[] { "2" });
+    localObject = this.nPF.rawQuery((String)localObject, new String[] { "2" });
     long l;
     int i;
     label190:
@@ -102,7 +103,7 @@ public final class x
       ((ContentValues)localObject).put("updateTime", Long.valueOf(l));
       ((ContentValues)localObject).put("usedInThirdPartyAppRecently", Boolean.FALSE);
       ((ContentValues)localObject).put("thirdPartyAppUsingDesc", "");
-      if (this.kVs.update("AppBrandLauncherLayoutItem", (ContentValues)localObject, String.format(Locale.US, "%s=?", new Object[] { "recordId" }), new String[] { String.valueOf(j) }) <= 0) {
+      if (this.nPF.update("AppBrandLauncherLayoutItem", (ContentValues)localObject, String.format(Locale.US, "%s=?", new Object[] { "recordId" }), new String[] { String.valueOf(j) }) <= 0) {
         break label444;
       }
       i = 1;
@@ -123,30 +124,30 @@ public final class x
       }
       bool1 = bool2;
       label275:
-      if ((bool2) && (paramBoolean1))
+      if ((bool1) && (paramBoolean1))
       {
-        localObject = ((b)com.tencent.mm.plugin.appbrand.app.n.W(b.class)).I(paramString1, 3, paramInt2);
+        localObject = ((b)m.W(b.class)).I(paramString1, 3, paramInt2);
         if (!((Boolean)((Pair)localObject).first).booleanValue()) {
           break label459;
         }
         Log.i("MicroMsg.AppBrandUsageStorage", "addRecord, addOk TRUE, cgi blocked by username(%s), scene(%d)", new Object[] { paramString1, Integer.valueOf(paramInt2) });
-        paramString2 = a.kQt;
+        paramString2 = a.nKB;
         a.F(((Integer)((Pair)localObject).second).intValue(), 165L);
       }
     }
     for (;;)
     {
+      if (bool1) {
+        ad.bj(paramString1, paramInt1);
+      }
       if (bool2) {
-        ac.aR(paramString1, paramInt1);
+        bJE();
       }
       if (bool1) {
-        byq();
-      }
-      if (bool2) {
-        ((n)com.tencent.mm.plugin.appbrand.app.n.W(n.class)).a(paramString1, paramInt1, n.a.kUM);
+        ((n)m.W(n.class)).a(paramString1, paramInt1, n.a.nOZ);
       }
       AppMethodBeat.o(44617);
-      return bool2;
+      return bool1;
       l = 0L;
       if (((Cursor)localObject).moveToFirst()) {
         l = ((Cursor)localObject).getLong(0);
@@ -157,15 +158,15 @@ public final class x
       i = 0;
       break label190;
       label450:
-      bool2 = true;
-      bool1 = false;
+      bool1 = true;
+      bool2 = false;
       break label275;
       label459:
-      new ab(paramInt2, paramBoolean2, paramInt1, 1, paramString1, paramInt3, paramString2).aYI();
+      ab.a(paramString1, paramInt1, paramBoolean2, paramInt2, paramInt3, paramString2).bhW();
     }
   }
   
-  private boolean bn(String paramString, int paramInt)
+  private boolean bG(String paramString, int paramInt)
   {
     boolean bool = true;
     AppMethodBeat.i(44619);
@@ -174,11 +175,11 @@ public final class x
       AppMethodBeat.o(44619);
       return false;
     }
-    if (this.kVs.delete("AppBrandLauncherLayoutItem", String.format(Locale.US, "%s=?", new Object[] { "recordId" }), new String[] { String.valueOf(K(paramString, paramInt, 2)) }) > 0) {}
+    if (this.nPF.delete("AppBrandLauncherLayoutItem", String.format(Locale.US, "%s=?", new Object[] { "recordId" }), new String[] { String.valueOf(K(paramString, paramInt, 2)) }) > 0) {}
     for (;;)
     {
       if (bool) {
-        ((n)com.tencent.mm.plugin.appbrand.app.n.W(n.class)).b(paramString, paramInt, n.a.kUM);
+        ((n)m.W(n.class)).b(paramString, paramInt, n.a.nOZ);
       }
       AppMethodBeat.o(44619);
       return bool;
@@ -186,10 +187,10 @@ public final class x
     }
   }
   
-  private void byq()
+  private void bJE()
   {
     AppMethodBeat.i(44618);
-    Object localObject1 = this.kVs.rawQuery(String.format(Locale.US, "select count(*) from %s where %s=?", new Object[] { "AppBrandLauncherLayoutItem", "scene" }), new String[] { "2" });
+    Object localObject1 = this.nPF.rawQuery(String.format(Locale.US, "select count(*) from %s where %s=?", new Object[] { "AppBrandLauncherLayoutItem", "scene" }), new String[] { "2" });
     int i;
     if (localObject1 == null) {
       i = 0;
@@ -226,20 +227,20 @@ public final class x
           AppMethodBeat.o(44618);
           return;
         }
-        long l = this.kVs.beginTransaction(Thread.currentThread().getId());
+        long l = this.nPF.beginTransaction(Thread.currentThread().getId());
         localObject2 = ((List)localObject1).iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (String)((Iterator)localObject2).next();
-          this.kVs.delete("AppBrandLauncherLayoutItem", String.format(Locale.US, "%s=?", new Object[] { "recordId" }), new String[] { localObject3 });
+          this.nPF.delete("AppBrandLauncherLayoutItem", String.format(Locale.US, "%s=?", new Object[] { "recordId" }), new String[] { localObject3 });
         }
-        this.kVs.endTransaction(l);
+        this.nPF.endTransaction(l);
         localObject2 = new ArrayList(localArrayList1.size());
         Object localObject3 = new ArrayList(localArrayList1.size());
         i = 0;
         while (i < localArrayList1.size())
         {
-          String str = y.Xw((String)localArrayList1.get(i));
+          String str = y.afi((String)localArrayList1.get(i));
           if (!Util.isNullOrNil(str))
           {
             ((List)localObject2).add(str);
@@ -247,8 +248,8 @@ public final class x
           }
           i += 1;
         }
-        if (com.tencent.mm.plugin.appbrand.app.n.buL() != null) {
-          com.tencent.mm.plugin.appbrand.app.n.buL().f((List)localObject2, (List)localObject3);
+        if (m.bFP() != null) {
+          m.bFP().h((List)localObject2, (List)localObject3);
         }
         doNotify("batch", 5, localObject1);
       }
@@ -257,7 +258,7 @@ public final class x
   }
   
   /* Error */
-  public static ArrayList<AppBrandRecentTaskInfo> d(Cursor paramCursor)
+  public static ArrayList<AppBrandRecentTaskInfo> f(Cursor paramCursor)
   {
     // Byte code:
     //   0: ldc_w 406
@@ -387,32 +388,6 @@ public final class x
     //   142	150	208	android/database/sqlite/SQLiteDiskIOException
   }
   
-  public final List<String> Ww(String paramString)
-  {
-    AppMethodBeat.i(44616);
-    LinkedList localLinkedList = new LinkedList();
-    if (!Util.isNullOrNil(paramString))
-    {
-      h localh = this.kVs;
-      String str = String.format(Locale.US, "%s=? and %s=?", new Object[] { "scene", "brandId" });
-      paramString = localh.query("AppBrandLauncherLayoutItem", new String[] { "recordId" }, str, new String[] { "2", paramString }, null, null, null);
-      if (paramString == null)
-      {
-        AppMethodBeat.o(44616);
-        return null;
-      }
-      if (paramString.moveToFirst()) {
-        do
-        {
-          localLinkedList.add(String.valueOf(paramString.getInt(paramString.getColumnIndex("recordId"))));
-        } while (paramString.moveToNext());
-      }
-      paramString.close();
-    }
-    AppMethodBeat.o(44616);
-    return localLinkedList;
-  }
-  
   final Cursor a(String[] paramArrayOfString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(44612);
@@ -434,7 +409,7 @@ public final class x
     }
     for (;;)
     {
-      paramArrayOfString = this.kVs.query("AppBrandLauncherLayoutItem", paramArrayOfString, str, arrayOfString, null, null, null);
+      paramArrayOfString = this.nPF.query("AppBrandLauncherLayoutItem", paramArrayOfString, str, arrayOfString, null, null, null);
       AppMethodBeat.o(44613);
       return paramArrayOfString;
       str = String.format(Locale.US, "%s=? and %s=? order by %s desc limit %d offset %d", new Object[] { "scene", "versionType", "updateTime", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
@@ -446,7 +421,7 @@ public final class x
   
   public final boolean a(String paramString1, int paramInt1, boolean paramBoolean1, int paramInt2, int paramInt3, String paramString2, boolean paramBoolean2)
   {
-    AppMethodBeat.i(226396);
+    AppMethodBeat.i(270670);
     boolean bool = a(paramString1, paramInt1, true, paramBoolean1, paramInt2, paramInt3, paramString2);
     if (bool) {
       if (paramBoolean2) {
@@ -456,8 +431,8 @@ public final class x
     label50:
     for (paramBoolean1 = true;; paramBoolean1 = false)
     {
-      i.b(true, paramBoolean1, paramString2);
-      AppMethodBeat.o(226396);
+      i.a(true, paramBoolean1, paramString2);
+      AppMethodBeat.o(270670);
       return bool;
     }
   }
@@ -469,53 +444,33 @@ public final class x
     AppMethodBeat.o(44610);
   }
   
-  final void bk(List<fcn> paramList)
+  public final List<String> aei(String paramString)
   {
-    AppMethodBeat.i(226397);
-    a locala = new a();
-    LinkedList localLinkedList1 = new LinkedList();
-    LinkedList localLinkedList2 = new LinkedList();
-    long l = this.kVs.beginTransaction(Thread.currentThread().getId());
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    AppMethodBeat.i(44616);
+    LinkedList localLinkedList = new LinkedList();
+    if (!Util.isNullOrNil(paramString))
     {
-      fcn localfcn = (fcn)paramList.next();
-      if (!Util.isNullOrNil(localfcn.username))
+      h localh = this.nPF;
+      String str = String.format(Locale.US, "%s=? and %s=?", new Object[] { "scene", "brandId" });
+      paramString = localh.query("AppBrandLauncherLayoutItem", new String[] { "recordId" }, str, new String[] { "2", paramString }, null, null, null);
+      if (paramString == null)
       {
-        locala.field_brandId = localfcn.username;
-        locala.field_versionType = localfcn.KXC;
-        locala.field_scene = 2;
-        if (!this.kVA.get(locala, new String[0]))
-        {
-          locala.field_updateTime = localfcn.KWR;
-          locala.field_usedInThirdPartyAppRecently = localfcn.Nyt;
-          locala.field_thirdPartyAppUsingDesc = localfcn.Nyu;
-          if (a(locala)) {
-            localLinkedList1.add(String.valueOf(locala.field_recordId));
-          }
-        }
-        else
-        {
-          locala.field_updateTime = Math.max(localfcn.KWR, locala.field_updateTime);
-          locala.field_usedInThirdPartyAppRecently = localfcn.Nyt;
-          locala.field_thirdPartyAppUsingDesc = localfcn.Nyu;
-          if (this.kVA.update(locala, new String[0])) {
-            localLinkedList2.add(String.valueOf(locala.field_recordId));
-          }
-        }
+        AppMethodBeat.o(44616);
+        return null;
       }
+      if (paramString.moveToFirst()) {
+        do
+        {
+          localLinkedList.add(String.valueOf(paramString.getInt(paramString.getColumnIndex("recordId"))));
+        } while (paramString.moveToNext());
+      }
+      paramString.close();
     }
-    this.kVs.endTransaction(l);
-    if (!Util.isNullOrNil(localLinkedList1)) {
-      doNotify("batch", 2, localLinkedList1);
-    }
-    if (!Util.isNullOrNil(localLinkedList2)) {
-      doNotify("batch", 3, localLinkedList2);
-    }
-    AppMethodBeat.o(226397);
+    AppMethodBeat.o(44616);
+    return localLinkedList;
   }
   
-  public final boolean bm(String paramString, int paramInt)
+  public final boolean bF(String paramString, int paramInt)
   {
     boolean bool = true;
     AppMethodBeat.i(44611);
@@ -524,7 +479,7 @@ public final class x
       AppMethodBeat.o(44611);
       return false;
     }
-    paramString = this.kVs.rawQuery(String.format(Locale.US, "select count(*) from %s where %s=? and %s=? and %s=?", new Object[] { "AppBrandLauncherLayoutItem", "brandId", "versionType", "scene" }), new String[] { paramString, String.valueOf(paramInt), "2" });
+    paramString = this.nPF.rawQuery(String.format(Locale.US, "select count(*) from %s where %s=? and %s=? and %s=?", new Object[] { "AppBrandLauncherLayoutItem", "brandId", "versionType", "scene" }), new String[] { paramString, String.valueOf(paramInt), "2" });
     if (paramString == null)
     {
       AppMethodBeat.o(44611);
@@ -544,27 +499,27 @@ public final class x
     }
   }
   
-  public final void bo(String paramString, int paramInt)
+  public final void bH(String paramString, int paramInt)
   {
     AppMethodBeat.i(44621);
     a(paramString, paramInt, false, false, 0, 0, null);
     AppMethodBeat.o(44621);
   }
   
-  public final boolean bp(String paramString, int paramInt)
+  public final boolean bI(String paramString, int paramInt)
   {
     AppMethodBeat.i(44622);
-    boolean bool = bn(paramString, paramInt);
+    boolean bool = bG(paramString, paramInt);
     if (bool)
     {
-      ab.br(paramString, paramInt).aYI();
+      ab.bK(paramString, paramInt).bhW();
       doNotify("single", 5, String.valueOf(K(paramString, paramInt, 2)));
     }
     AppMethodBeat.o(44622);
     return bool;
   }
   
-  public final boolean bq(String paramString, int paramInt)
+  public final boolean bJ(String paramString, int paramInt)
   {
     boolean bool = true;
     AppMethodBeat.i(44623);
@@ -574,7 +529,7 @@ public final class x
       return false;
     }
     String str = String.format("select count(*) from %s where %s=?", new Object[] { "AppBrandLauncherLayoutItem", "recordId" });
-    paramString = this.kVs.rawQuery(str, new String[] { String.valueOf(K(paramString, paramInt, 2)) }, 2);
+    paramString = this.nPF.rawQuery(str, new String[] { String.valueOf(K(paramString, paramInt, 2)) }, 2);
     if ((paramString == null) || (paramString.isClosed()))
     {
       AppMethodBeat.o(44623);
@@ -601,15 +556,61 @@ public final class x
     }
   }
   
-  public final c byp()
+  public final c bJD()
   {
-    return this.kVB;
+    return this.nPO;
   }
   
-  public final ArrayList<AppBrandRecentTaskInfo> vZ(int paramInt)
+  final void bi(List<fno> paramList)
+  {
+    AppMethodBeat.i(270671);
+    a locala = new a();
+    LinkedList localLinkedList1 = new LinkedList();
+    LinkedList localLinkedList2 = new LinkedList();
+    long l = this.nPF.beginTransaction(Thread.currentThread().getId());
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      fno localfno = (fno)paramList.next();
+      if (!Util.isNullOrNil(localfno.username))
+      {
+        locala.field_brandId = localfno.username;
+        locala.field_versionType = localfno.RYL;
+        locala.field_scene = 2;
+        if (!this.nPN.get(locala, new String[0]))
+        {
+          locala.field_updateTime = localfno.update_time;
+          locala.field_usedInThirdPartyAppRecently = localfno.ULW;
+          locala.field_thirdPartyAppUsingDesc = localfno.ULX;
+          if (a(locala)) {
+            localLinkedList1.add(String.valueOf(locala.field_recordId));
+          }
+        }
+        else
+        {
+          locala.field_updateTime = Math.max(localfno.update_time, locala.field_updateTime);
+          locala.field_usedInThirdPartyAppRecently = localfno.ULW;
+          locala.field_thirdPartyAppUsingDesc = localfno.ULX;
+          if (this.nPN.update(locala, new String[0])) {
+            localLinkedList2.add(String.valueOf(locala.field_recordId));
+          }
+        }
+      }
+    }
+    this.nPF.endTransaction(l);
+    if (!Util.isNullOrNil(localLinkedList1)) {
+      doNotify("batch", 2, localLinkedList1);
+    }
+    if (!Util.isNullOrNil(localLinkedList2)) {
+      doNotify("batch", 3, localLinkedList2);
+    }
+    AppMethodBeat.o(270671);
+  }
+  
+  public final ArrayList<AppBrandRecentTaskInfo> zk(int paramInt)
   {
     AppMethodBeat.i(44615);
-    ArrayList localArrayList = d(a(null, paramInt, 0));
+    ArrayList localArrayList = f(a(null, paramInt, 0));
     AppMethodBeat.o(44615);
     return localArrayList;
   }
@@ -617,13 +618,13 @@ public final class x
   public static final class a
     extends p
   {
-    static final IAutoDBItem.MAutoDBInfo iBg;
-    static final String[] kJX;
+    static final IAutoDBItem.MAutoDBInfo lqK;
+    static final String[] nDP;
     
     static
     {
       AppMethodBeat.i(44607);
-      kJX = new String[] { "brandId", "versionType", "scene" };
+      nDP = new String[] { "brandId", "versionType", "scene" };
       IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
       localMAutoDBInfo.fields = new Field[7];
       localMAutoDBInfo.columns = new String[8];
@@ -658,7 +659,7 @@ public final class x
       localStringBuilder.append(" thirdPartyAppUsingDesc TEXT");
       localMAutoDBInfo.columns[7] = "rowid";
       localMAutoDBInfo.sql = localStringBuilder.toString();
-      iBg = localMAutoDBInfo;
+      lqK = localMAutoDBInfo;
       AppMethodBeat.o(44607);
     }
     
@@ -676,7 +677,7 @@ public final class x
     
     public final IAutoDBItem.MAutoDBInfo getDBInfo()
     {
-      return iBg;
+      return lqK;
     }
   }
   
@@ -685,7 +686,7 @@ public final class x
   {
     b(ISQLiteDatabase paramISQLiteDatabase)
     {
-      super(x.a.iBg, "AppBrandLauncherLayoutItem", x.a.INDEX_CREATE);
+      super(x.a.lqK, "AppBrandLauncherLayoutItem", x.a.INDEX_CREATE);
     }
   }
   
@@ -693,29 +694,29 @@ public final class x
   {
     private c() {}
     
-    public final ArrayList<AppBrandRecentTaskInfo> byr()
+    public final ArrayList<AppBrandRecentTaskInfo> bJF()
     {
-      AppMethodBeat.i(226394);
-      ArrayList localArrayList = g(9223372036854775807L, 30);
-      AppMethodBeat.o(226394);
+      AppMethodBeat.i(274795);
+      ArrayList localArrayList = j(9223372036854775807L, 32);
+      AppMethodBeat.o(274795);
       return localArrayList;
     }
     
-    public final ArrayList<AppBrandRecentTaskInfo> g(long paramLong, int paramInt)
+    public final ArrayList<AppBrandRecentTaskInfo> j(long paramLong, int paramInt)
     {
-      AppMethodBeat.i(226395);
+      AppMethodBeat.i(274797);
       Object localObject = x.a(x.this);
       String str1 = String.format(Locale.US, "%s=? and %s<? ", new Object[] { "scene", "updateTime" });
       String str2 = String.format(Locale.US, "%s desc limit %d offset 0 ", new Object[] { "updateTime", Integer.valueOf(paramInt) });
-      localObject = x.d(((h)localObject).query("AppBrandLauncherLayoutItem", null, str1, new String[] { "2", String.valueOf(paramLong) }, null, null, str2, 2));
-      AppMethodBeat.o(226395);
+      localObject = x.f(((h)localObject).query("AppBrandLauncherLayoutItem", null, str1, new String[] { "2", String.valueOf(paramLong) }, null, null, str2, 2));
+      AppMethodBeat.o(274797);
       return localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.x
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.ArrayMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.i.c;
-import com.tencent.mm.protocal.protobuf.bz;
+import com.tencent.mm.plugin.sns.ad.i.d;
+import com.tencent.mm.protocal.protobuf.bx;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -17,21 +17,21 @@ import org.json.JSONObject;
 
 public class b
 {
-  static volatile b DAI;
-  private final Map<String, Integer> DAJ;
-  private final Map<String, WeakReference<a>> DAK;
+  static volatile b JMv;
+  private final Map<String, Integer> JMw;
+  private final Map<String, WeakReference<a>> JMx;
   
   public b()
   {
-    AppMethodBeat.i(202425);
-    this.DAJ = new ArrayMap();
-    this.DAK = new ArrayMap();
-    AppMethodBeat.o(202425);
+    AppMethodBeat.i(218716);
+    this.JMw = new ArrayMap();
+    this.JMx = new ArrayMap();
+    AppMethodBeat.o(218716);
   }
   
-  public static int C(String paramString, List<bz> paramList)
+  public static int C(String paramString, List<bx> paramList)
   {
-    AppMethodBeat.i(202431);
+    AppMethodBeat.i(218730);
     try
     {
       Iterator localIterator = paramList.iterator();
@@ -40,8 +40,8 @@ public class b
         if (!localIterator.hasNext()) {
           break;
         }
-        paramList = (bz)localIterator.next();
-      } while (paramList.pTI != 2);
+        paramList = (bx)localIterator.next();
+      } while (paramList.tpK != 2);
     }
     catch (Throwable paramString)
     {
@@ -54,20 +54,20 @@ public class b
     }
     if (paramList != null)
     {
-      i = aNU(paramList.data);
+      i = aYM(paramList.data);
       Log.d("SnsAd.LivingStatusManager", "parseAndPutLivingStatus:: the sns id is " + paramString + ", the living status is " + i);
-      eYv().ft(paramString, i);
-      AppMethodBeat.o(202431);
+      fMf().fW(paramString, i);
+      AppMethodBeat.o(218730);
       return i;
     }
     Log.d("SnsAd.LivingStatusManager", "parseAndPutLivingStatus:: the sns id is " + paramString + " and the living item is null!!");
-    AppMethodBeat.o(202431);
+    AppMethodBeat.o(218730);
     return 0;
   }
   
   public static void a(String paramString, a parama)
   {
-    AppMethodBeat.i(202432);
+    AppMethodBeat.i(218732);
     label339:
     label345:
     label352:
@@ -77,11 +77,11 @@ public class b
       int i;
       try
       {
-        localb = eYv();
+        localb = fMf();
         l = SystemClock.elapsedRealtimeNanos();
         if ((parama != null) && (!TextUtils.isEmpty(paramString)))
         {
-          localObject1 = (WeakReference)localb.DAK.get(paramString);
+          localObject1 = (WeakReference)localb.JMx.get(paramString);
           if ((localObject1 == null) || (parama != ((WeakReference)localObject1).get())) {
             break label352;
           }
@@ -89,7 +89,7 @@ public class b
           break label345;
         }
         Log.i("SnsAd.LivingStatusManager", "the input sns id or listener is invalid, or there is same key-value of them.");
-        AppMethodBeat.o(202432);
+        AppMethodBeat.o(218732);
         return;
       }
       catch (Throwable paramString)
@@ -100,15 +100,15 @@ public class b
         boolean bool;
         Map.Entry localEntry;
         WeakReference localWeakReference;
-        AppMethodBeat.o(202432);
+        AppMethodBeat.o(218732);
         return;
       }
-      bool = c.aI(localb.DAK);
+      bool = d.aC(localb.JMx);
       if (bool)
       {
         try
         {
-          localObject1 = localb.DAK.entrySet().iterator();
+          localObject1 = localb.JMx.entrySet().iterator();
           if (((Iterator)localObject1).hasNext())
           {
             localEntry = (Map.Entry)((Iterator)localObject1).next();
@@ -118,7 +118,7 @@ public class b
             ((Iterator)localObject1).remove();
             continue;
           }
-          if (c.isEmpty(localb.DAK)) {
+          if (d.isEmpty(localb.JMx)) {
             continue;
           }
         }
@@ -126,7 +126,7 @@ public class b
       }
       else
       {
-        localObject2 = localb.DAK.entrySet().iterator();
+        localObject2 = localb.JMx.entrySet().iterator();
         if (!((Iterator)localObject2).hasNext()) {
           break label339;
         }
@@ -137,12 +137,12 @@ public class b
         }
         localObject2 = (String)localEntry.getKey();
         if (localObject2 != null) {
-          localb.DAK.remove(localObject2);
+          localb.JMx.remove(localObject2);
         }
       }
-      localb.DAK.put(paramString, new WeakReference(parama));
+      localb.JMx.put(paramString, new WeakReference(parama));
       Log.d("SnsAd.LivingStatusManager", "addStatusChangedListener new take times is " + (SystemClock.elapsedRealtimeNanos() - l) + "ns");
-      AppMethodBeat.o(202432);
+      AppMethodBeat.o(218732);
       return;
       Object localObject2 = null;
       continue;
@@ -157,48 +157,48 @@ public class b
     }
   }
   
-  private static int aNU(String paramString)
+  private static int aYM(String paramString)
   {
-    AppMethodBeat.i(202428);
+    AppMethodBeat.i(218724);
     try
     {
       int i = new JSONObject(paramString).optInt("liveStatus", 0);
-      AppMethodBeat.o(202428);
+      AppMethodBeat.o(218724);
       return i;
     }
     catch (Throwable paramString)
     {
-      AppMethodBeat.o(202428);
+      AppMethodBeat.o(218724);
     }
     return 0;
   }
   
-  private static b eYv()
+  private static b fMf()
   {
-    AppMethodBeat.i(202426);
-    if (DAI == null) {}
+    AppMethodBeat.i(218720);
+    if (JMv == null) {}
     try
     {
-      if (DAI == null) {
-        DAI = new b();
+      if (JMv == null) {
+        JMv = new b();
       }
-      b localb = DAI;
-      AppMethodBeat.o(202426);
+      b localb = JMv;
+      AppMethodBeat.o(218720);
       return localb;
     }
     finally
     {
-      AppMethodBeat.o(202426);
+      AppMethodBeat.o(218720);
     }
   }
   
-  private void ft(String paramString, int paramInt)
+  private void fW(String paramString, int paramInt)
   {
-    AppMethodBeat.i(202427);
-    Integer localInteger = (Integer)this.DAJ.put(paramString, Integer.valueOf(paramInt));
+    AppMethodBeat.i(218723);
+    Integer localInteger = (Integer)this.JMw.put(paramString, Integer.valueOf(paramInt));
     if ((localInteger == null) || (!localInteger.equals(Integer.valueOf(paramInt))))
     {
-      Object localObject = (WeakReference)this.DAK.get(paramString);
+      Object localObject = (WeakReference)this.JMx.get(paramString);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();
@@ -207,19 +207,19 @@ public class b
           if (localInteger != null) {
             localInteger.intValue();
           }
-          ((a)localObject).fw(paramString, paramInt);
+          ((a)localObject).fZ(paramString, paramInt);
         }
       }
     }
-    AppMethodBeat.o(202427);
+    AppMethodBeat.o(218723);
   }
   
-  public static int fu(String paramString, int paramInt)
+  public static int fX(String paramString, int paramInt)
   {
-    AppMethodBeat.i(202429);
+    AppMethodBeat.i(218726);
     try
     {
-      paramString = (Integer)eYv().DAJ.get(paramString);
+      paramString = (Integer)fMf().JMw.get(paramString);
       int i;
       int j;
       if (paramString != null)
@@ -236,7 +236,7 @@ public class b
       }
       for (;;)
       {
-        AppMethodBeat.o(202429);
+        AppMethodBeat.o(218726);
         return j;
         i = 0;
         break;
@@ -250,35 +250,35 @@ public class b
     }
     catch (Throwable paramString)
     {
-      AppMethodBeat.o(202429);
+      AppMethodBeat.o(218726);
     }
   }
   
-  public static void fv(String paramString, int paramInt)
+  public static void fY(String paramString, int paramInt)
   {
-    AppMethodBeat.i(202430);
+    AppMethodBeat.i(218727);
     try
     {
       if (!TextUtils.isEmpty(paramString)) {
-        eYv().ft(paramString, paramInt);
+        fMf().fW(paramString, paramInt);
       }
-      AppMethodBeat.o(202430);
+      AppMethodBeat.o(218727);
       return;
     }
     catch (Throwable paramString)
     {
-      AppMethodBeat.o(202430);
+      AppMethodBeat.o(218727);
     }
   }
   
   public static abstract interface a
   {
-    public abstract void fw(String paramString, int paramInt);
+    public abstract void fZ(String paramString, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.living.b
  * JD-Core Version:    0.7.0.1
  */

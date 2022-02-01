@@ -1,301 +1,178 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.item;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.m;
-import com.tencent.mm.al.ag;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.ad;
-import com.tencent.mm.model.ad.b;
-import com.tencent.mm.model.bp;
-import com.tencent.mm.plugin.brandservice.ui.timeline.b;
-import com.tencent.mm.plugin.brandservice.ui.timeline.offenread.BizTimeLineHotView;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.protocal.protobuf.ale;
-import com.tencent.mm.protocal.protobuf.ege;
-import com.tencent.mm.protocal.protobuf.pi;
-import com.tencent.mm.protocal.protobuf.pj;
-import com.tencent.mm.sdk.platformtools.ClipboardHelper;
+import com.tencent.mm.aj.n;
+import com.tencent.mm.aj.o;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.aj.v;
+import com.tencent.mm.ao.af;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.brandservice.a.c;
+import com.tencent.mm.plugin.brandservice.d.e;
+import com.tencent.mm.plugin.brandservice.ui.timeline.f;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.aa;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
 import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.base.o.g;
-import java.util.LinkedList;
 
-public final class al
-  implements o.g
+public class al
+  extends a
 {
-  private Context mContext;
-  b pxE;
-  private long pxY;
-  private boolean pxZ = false;
+  public ImageView iZG;
+  public Context mContext;
+  public View sDd;
+  public TextView sEX;
+  public View sEi;
+  private View.OnClickListener sGY;
+  public com.tencent.mm.plugin.brandservice.ui.timeline.b sHf;
+  public View sHg;
+  public View sHh;
+  public View sHi;
+  public TextView timeTV;
   
-  public al(b paramb, Context paramContext)
+  public al()
   {
-    this.pxE = paramb;
-    this.mContext = paramContext;
+    AppMethodBeat.i(6020);
+    this.sGY = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(6019);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTimeLineItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        long l = ((com.tencent.mm.plugin.brandservice.a.b)h.ae(com.tencent.mm.plugin.brandservice.a.b.class)).dN(paramAnonymousView);
+        paramAnonymousView = af.bjB().ad(l, "msgId");
+        if (paramAnonymousView != null) {
+          al.this.sHf.szZ.g(paramAnonymousView, 4);
+        }
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTimeLineItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(6019);
+          return;
+          Log.w("MicroMsg.BizTimeLineItem", "mediaIconClickListener info is null");
+        }
+      }
+    };
+    AppMethodBeat.o(6020);
   }
   
-  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+  public static void Y(View paramView, int paramInt)
   {
-    AppMethodBeat.i(6036);
-    if (this.pxE.pqY == null)
+    AppMethodBeat.i(6024);
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    localLayoutParams.height = paramInt;
+    paramView.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(6024);
+  }
+  
+  public final void a(Context paramContext, com.tencent.mm.plugin.brandservice.ui.timeline.b paramb)
+  {
+    this.mContext = paramContext;
+    this.sHf = paramb;
+  }
+  
+  public void a(View paramView, com.tencent.mm.plugin.brandservice.ui.timeline.b paramb)
+  {
+    AppMethodBeat.i(6021);
+    a(paramView.getContext(), paramb);
+    AppMethodBeat.o(6021);
+  }
+  
+  public void a(ImageView paramImageView, z paramz, int paramInt, String paramString)
+  {
+    AppMethodBeat.i(6027);
+    ((com.tencent.mm.plugin.brandservice.a.b)h.ae(com.tencent.mm.plugin.brandservice.a.b.class)).a(paramImageView, paramz.field_msgId, paramString, paramz.field_content, paramInt);
+    paramImageView.setOnClickListener(this.sGY);
+    AppMethodBeat.o(6027);
+  }
+  
+  public void a(z paramz, v paramv, View paramView, TextView paramTextView, int paramInt) {}
+  
+  public final boolean a(View paramView, TextView paramTextView, z paramz, v paramv)
+  {
+    AppMethodBeat.i(6026);
+    if ((paramv == null) || (Util.isNullOrNil(paramv.url)))
     {
-      Log.w("MicroMsg.BizTimeLineMMMenuItemListener", "onMMMenuItemSelected mInfo == null");
-      AppMethodBeat.o(6036);
-      return;
+      paramView.setVisibility(8);
+      a(paramz, paramv, paramView, paramTextView, 0);
+      AppMethodBeat.o(6026);
+      return false;
     }
-    final z localz = this.pxE.pqY;
-    this.pxY = Util.nowSecond();
-    switch (paramMenuItem.getItemId())
-    {
+    p localp = ((c)h.ae(c.class)).apc(paramv.url);
+    String str2 = "";
+    String str1;
+    if ((localp != null) && (localp.lpt != null) && (!Util.isNullOrNil(localp.lpt.lpr))) {
+      str1 = localp.lpt.lpr;
     }
-    for (;;)
+    while (!Util.isNullOrNil(str1))
     {
-      AppMethodBeat.o(6036);
-      return;
-      paramMenuItem = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(localz.field_talker);
-      if (paramMenuItem == null)
+      paramView.setVisibility(0);
+      paramTextView.setText(str1);
+      a(paramz, paramv, paramView, paramTextView, localp.lpu.lpo);
+      AppMethodBeat.o(6026);
+      return true;
+      str1 = str2;
+      if (localp != null)
       {
-        Log.e("MicroMsg.BizTimeLineMMMenuItemListener", "changed biz stick status failed, contact is null, talker = " + localz.field_talker);
-        AppMethodBeat.o(6036);
-        return;
-      }
-      if (paramMenuItem.arE())
-      {
-        com.tencent.mm.plugin.report.service.h.CyF.a(13307, new Object[] { paramMenuItem.field_username, Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3) });
-        ab.F(localz.field_talker, true);
-        com.tencent.mm.ui.base.h.cD(this.mContext, this.mContext.getString(2131756793));
-        this.pxE.pqZ.a(localz, false);
-        AppMethodBeat.o(6036);
-        return;
-      }
-      com.tencent.mm.plugin.report.service.h.CyF.a(13307, new Object[] { paramMenuItem.field_username, Integer.valueOf(1), Integer.valueOf(1), Integer.valueOf(3) });
-      ab.E(localz.field_talker, true);
-      com.tencent.mm.ui.base.h.cD(this.mContext, this.mContext.getString(2131756785));
-      this.pxE.pqZ.a(localz, true);
-      AppMethodBeat.o(6036);
-      return;
-      paramMenuItem = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(localz.field_talker);
-      Object localObject1 = ag.bah().MT(localz.field_talker);
-      ((com.tencent.mm.plugin.brandservice.a.a)g.af(com.tencent.mm.plugin.brandservice.a.a.class)).b((com.tencent.mm.api.c)localObject1, (Activity)this.mContext, paramMenuItem);
-      this.pxE.pqZ.f(localz, 2);
-      AppMethodBeat.o(6036);
-      return;
-      if (localz.gAu()) {}
-      for (paramMenuItem = this.mContext.getString(2131756792);; paramMenuItem = this.mContext.getString(2131756791))
-      {
-        com.tencent.mm.ui.base.h.a(this.mContext, paramMenuItem, "", this.mContext.getString(2131755921), this.mContext.getString(2131755761), true, new DialogInterface.OnClickListener()
+        str1 = str2;
+        if (localp.lpu != null)
         {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(6035);
-            Object localObject1;
-            ale localale;
-            pi localpi;
-            Object localObject2;
-            int i;
-            if (localz.gAu())
-            {
-              ag.ban().MX(localz.field_msgId);
-              l.a(3, localz.gAD(), null, localz);
-              paramAnonymousDialogInterface = al.this.pxE.pqZ;
-              localObject1 = localz;
-              if (!((z)localObject1).gAu()) {
-                break label527;
-              }
-              localObject1 = ((z)localObject1).gAD();
-              if ((localObject1 == null) || (((ege)localObject1).style != 101)) {
-                break label288;
-              }
-              localale = ((ege)localObject1).Nga;
-              localpi = (pi)((pj)localale.KUf.get(0)).KWy.get(0);
-              localObject2 = localpi.KSj;
-              i = 0;
-              paramAnonymousInt = 0;
-              l2 = 0L;
-              l1 = l2;
-              if (!Util.isNullOrNil((String)localObject2)) {
-                paramAnonymousInt = i;
-              }
-            }
-            try
-            {
-              localObject2 = Uri.parse((String)localObject2);
-              paramAnonymousInt = i;
-              i = Util.getInt(((Uri)localObject2).getQueryParameter("idx"), 0);
-              paramAnonymousInt = i;
-              l1 = Util.getLong(((Uri)localObject2).getQueryParameter("mid"), 0L);
-              paramAnonymousInt = i;
-            }
-            catch (Exception localException2)
-            {
-              label525:
-              label527:
-              for (;;)
-              {
-                label288:
-                l1 = l2;
-              }
-            }
-            paramAnonymousDialogInterface.a(((pj)localale.KUf.get(0)).UserName, l1, paramAnonymousInt, 3, ((ege)localObject1).MOC, "", 0, localale.KUo, ((ege)localObject1).event, localale.KUk, localpi.KWv, ((ege)localObject1).style, localpi.KWw);
-            for (;;)
-            {
-              al.this.pxE.prb.p(localz);
-              AppMethodBeat.o(6035);
-              return;
-              bp.Ad(localz.field_msgId);
-              break;
-              if ((localObject1 != null) && ((((ege)localObject1).style == 102) || (((ege)localObject1).style == 103)))
-              {
-                i = 0;
-                for (;;)
-                {
-                  if (i >= ((ege)localObject1).Nga.KUf.size()) {
-                    break label525;
-                  }
-                  localale = ((ege)localObject1).Nga;
-                  int j;
-                  if (((pj)localale.KUf.get(i)).KHa == 0)
-                  {
-                    localpi = (pi)((pj)localale.KUf.get(i)).KWy.get(0);
-                    if (localpi != null)
-                    {
-                      localObject2 = localpi.KSj;
-                      j = 0;
-                      paramAnonymousInt = 0;
-                      l2 = 0L;
-                      l1 = l2;
-                      if (!Util.isNullOrNil((String)localObject2)) {
-                        paramAnonymousInt = j;
-                      }
-                    }
-                  }
-                  try
-                  {
-                    localObject2 = Uri.parse((String)localObject2);
-                    paramAnonymousInt = j;
-                    j = Util.getInt(((Uri)localObject2).getQueryParameter("idx"), 0);
-                    paramAnonymousInt = j;
-                    l1 = Util.getLong(((Uri)localObject2).getQueryParameter("mid"), 0L);
-                    paramAnonymousInt = j;
-                  }
-                  catch (Exception localException1)
-                  {
-                    for (;;)
-                    {
-                      l1 = l2;
-                    }
-                  }
-                  paramAnonymousDialogInterface.a(((pj)localale.KUf.get(i)).UserName, l1, paramAnonymousInt, 3, ((ege)localObject1).MOC, "", 0, localale.KUo, ((ege)localObject1).event, localale.KUk, localpi.KWv, ((ege)localObject1).style, localpi.KWw);
-                  break;
-                  i += 1;
-                }
-                continue;
-                paramAnonymousDialogInterface.f((z)localObject1, 3);
-              }
-            }
+          str1 = str2;
+          if (!Util.isNullOrNil(localp.lpu.lpn)) {
+            str1 = localp.lpu.lpn;
           }
-        }, null, 2131100994);
-        AppMethodBeat.o(6036);
-        return;
-      }
-      AppMethodBeat.o(6036);
-      return;
-      paramMenuItem = new Intent();
-      paramMenuItem.putExtra("Contact_User", localz.field_talker);
-      paramMenuItem.putExtra("Contact_Scene", 90);
-      com.tencent.mm.br.c.b(this.mContext, "profile", ".ui.ContactInfoUI", paramMenuItem);
-      this.pxE.pqZ.f(localz, 1);
-      AppMethodBeat.o(6036);
-      return;
-      if (this.pxZ)
-      {
-        ((com.tencent.mm.plugin.brandservice.a.a)g.af(com.tencent.mm.plugin.brandservice.a.a.class)).a(this.pxE.pra, this.mContext, localz.field_content, localz.field_talker, localz.field_msgId, localz.field_msgSvrId);
-        AppMethodBeat.o(6036);
-        return;
-      }
-      localObject1 = m.a(this.mContext, this.pxE.pra, localz.field_content, localz.field_talker, localz.field_msgId);
-      if (!Util.isNullOrNil((String)localObject1))
-      {
-        paramMenuItem = new Intent();
-        paramMenuItem.putExtra("Retr_Msg_content", (String)localObject1);
-        paramMenuItem.putExtra("Retr_Msg_Type", 2);
-        paramMenuItem.putExtra("Retr_Biz_Msg_Selected_Msg_Index", this.pxE.pra);
-        paramMenuItem.putExtra("Retr_Msg_Id", localz.field_msgId);
-        paramMenuItem.putExtra("Retr_MsgFromScene", 1);
-        localObject1 = localz.field_talker;
-        Object localObject2 = ad.JX(localz.field_msgSvrId);
-        paramMenuItem.putExtra("reportSessionId", (String)localObject2);
-        localObject2 = ad.aVe().G((String)localObject2, true);
-        ((ad.b)localObject2).l("prePublishId", "msg_" + localz.field_msgSvrId);
-        ((ad.b)localObject2).l("preUsername", localObject1);
-        ((ad.b)localObject2).l("preChatName", localObject1);
-        ((ad.b)localObject2).l("preMsgIndex", Integer.valueOf(this.pxE.pra));
-        ((ad.b)localObject2).l("sendAppMsgScene", Integer.valueOf(1));
-        com.tencent.mm.br.c.f(this.mContext, ".ui.transmit.MsgRetransmitUI", paramMenuItem);
-        AppMethodBeat.o(6036);
-        return;
-        paramMenuItem = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).eiy().Hb(localz.field_msgId);
-        if (paramMenuItem.field_msgId == 0L)
-        {
-          Log.w("MicroMsg.BizTimeLineMMMenuItemListener", "favAppBrandMsg msg is null");
-          AppMethodBeat.o(6036);
-          return;
         }
-        ((com.tencent.mm.plugin.brandservice.a.a)g.af(com.tencent.mm.plugin.brandservice.a.a.class)).a(this.pxY, this.pxE.pra, this.mContext, (Activity)this.mContext, paramMenuItem);
-        AppMethodBeat.o(6036);
-        return;
-        paramMenuItem = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).eiy().Hb(localz.field_msgId);
-        if (paramMenuItem.field_msgId == 0L)
-        {
-          Log.w("MicroMsg.BizTimeLineMMMenuItemListener", "favAppBrandMsg msg is null");
-          AppMethodBeat.o(6036);
-          return;
-        }
-        ((com.tencent.mm.plugin.brandservice.a.a)g.af(com.tencent.mm.plugin.brandservice.a.a.class)).a(paramMenuItem, (Activity)this.mContext);
-        AppMethodBeat.o(6036);
-        return;
-        paramMenuItem = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).eiy().Hb(localz.field_msgId);
-        if (paramMenuItem.field_msgId == 0L)
-        {
-          Log.w("MicroMsg.BizTimeLineMMMenuItemListener", "favAppBrandMsg msg is null");
-          AppMethodBeat.o(6036);
-          return;
-        }
-        ((com.tencent.mm.plugin.brandservice.a.a)g.af(com.tencent.mm.plugin.brandservice.a.a.class)).a(paramMenuItem, this.mContext);
-        AppMethodBeat.o(6036);
-        return;
-        paramMenuItem = new Intent();
-        paramMenuItem.putExtra("Retr_Msg_content", localz.field_content);
-        paramMenuItem.putExtra("Retr_Msg_Type", 4);
-        com.tencent.mm.br.c.f(this.mContext, ".ui.transmit.MsgRetransmitUI", paramMenuItem);
-        AppMethodBeat.o(6036);
-        return;
-        ClipboardHelper.setText(MMApplicationContext.getContext(), localz.field_content);
-        com.tencent.mm.ui.base.h.cD(this.mContext, this.mContext.getString(2131755773));
-        paramMenuItem = com.tencent.mm.plugin.secinforeport.a.a.CWD;
-        com.tencent.mm.plugin.secinforeport.a.a.q(1, localz.field_msgSvrId, Util.getUTF8ByteLength(localz.field_content));
       }
     }
+    paramView.setVisibility(8);
+    a(paramz, paramv, paramView, paramTextView, 0);
+    AppMethodBeat.o(6026);
+    return false;
+  }
+  
+  public final boolean a(ak paramak, z paramz, v paramv)
+  {
+    AppMethodBeat.i(6025);
+    boolean bool = a(paramak.sDk, paramak.sDl, paramz, paramv);
+    AppMethodBeat.o(6025);
+    return bool;
+  }
+  
+  public void cAQ()
+  {
+    AppMethodBeat.i(6022);
+    if (this.sEi == null)
+    {
+      AppMethodBeat.o(6022);
+      return;
+    }
+    this.iZG = ((ImageView)this.sEi.findViewById(d.e.avatar_iv));
+    this.sEX = ((TextView)this.sEi.findViewById(d.e.nick_name_tv));
+    this.sHh = this.sEi.findViewById(d.e.sru);
+    this.timeTV = ((TextView)this.sEi.findViewById(d.e.time_tv));
+    this.sHg = this.sEi.findViewById(d.e.spQ);
+    this.sHi = this.sEi.findViewById(d.e.srv);
+    AppMethodBeat.o(6022);
+  }
+  
+  public void dU(View paramView)
+  {
+    AppMethodBeat.i(6023);
+    Y(paramView, com.tencent.mm.plugin.brandservice.ui.timeline.b.sAo);
+    AppMethodBeat.o(6023);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.item.al
  * JD-Core Version:    0.7.0.1
  */

@@ -3,34 +3,42 @@ package com.tencent.mm.live.core.core;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$Role;", "", "()V", "ANCHOR", "", "getANCHOR", "()I", "VISITOR", "getVISITOR", "plugin-core_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$MicSettingSwitchFlag;", "", "()V", "DisableBuyProductAudienceSetting", "", "getDisableBuyProductAudienceSetting", "()I", "DisableFollowedAnchorAudienceSetting", "getDisableFollowedAnchorAudienceSetting", "DisableRewardedAnchorAudienceSetting", "getDisableRewardedAnchorAudienceSetting", "plugin-core_release"})
 public final class e$i
 {
-  private static final int hyb = 0;
-  private static final int hyc = 1;
-  public static final i hyd;
+  private static final int kkr = 1;
+  private static final int kks = 2;
+  private static final int kkt = 4;
+  public static final i kku;
   
   static
   {
-    AppMethodBeat.i(196410);
-    hyd = new i();
-    hyc = 1;
-    AppMethodBeat.o(196410);
+    AppMethodBeat.i(198523);
+    kku = new i();
+    kkr = 1;
+    kks = 2;
+    kkt = 4;
+    AppMethodBeat.o(198523);
   }
   
-  public static int aCW()
+  public static int aKx()
   {
-    return hyb;
+    return kkr;
   }
   
-  public static int aCX()
+  public static int aKy()
   {
-    return hyc;
+    return kks;
+  }
+  
+  public static int aKz()
+  {
+    return kkt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.core.core.e.i
  * JD-Core Version:    0.7.0.1
  */

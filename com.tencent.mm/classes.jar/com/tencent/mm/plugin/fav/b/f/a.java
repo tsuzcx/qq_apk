@@ -4,8 +4,8 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.c;
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.plugin.fav.a.p;
 import com.tencent.mm.plugin.fav.a.q;
+import com.tencent.mm.plugin.fav.a.r;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -18,10 +18,10 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public final class a
   extends MAutoStorage<c>
-  implements q
+  implements r
 {
   private ISQLiteDatabase db;
-  private List<p> listeners;
+  private List<q> listeners;
   
   public a(ISQLiteDatabase paramISQLiteDatabase)
   {
@@ -32,7 +32,7 @@ public final class a
     AppMethodBeat.o(101664);
   }
   
-  public final List<c> DT(long paramLong)
+  public final List<c> Kh(long paramLong)
   {
     AppMethodBeat.i(101672);
     ArrayList localArrayList = new ArrayList();
@@ -53,7 +53,7 @@ public final class a
     return localArrayList;
   }
   
-  public final List<c> DU(long paramLong)
+  public final List<c> Ki(long paramLong)
   {
     AppMethodBeat.i(101673);
     LinkedList localLinkedList = new LinkedList();
@@ -75,7 +75,7 @@ public final class a
     return localLinkedList;
   }
   
-  public final void DV(long paramLong)
+  public final void Kj(long paramLong)
   {
     AppMethodBeat.i(101674);
     String str = String.format("delete from %s where %s = %d and %s = %d", new Object[] { "FavCdnInfo", "favLocalId", Long.valueOf(paramLong), "type", Integer.valueOf(0) });
@@ -83,7 +83,7 @@ public final class a
     AppMethodBeat.o(101674);
   }
   
-  public final boolean DW(long paramLong)
+  public final boolean Kk(long paramLong)
   {
     AppMethodBeat.i(101678);
     c localc = new c();
@@ -93,11 +93,11 @@ public final class a
     return bool;
   }
   
-  public final void a(p paramp)
+  public final void a(q paramq)
   {
     AppMethodBeat.i(101662);
-    if (paramp != null) {
-      this.listeners.add(paramp);
+    if (paramq != null) {
+      this.listeners.add(paramq);
     }
     AppMethodBeat.o(101662);
   }
@@ -110,9 +110,9 @@ public final class a
       paramVarArgs = this.listeners.iterator();
       while (paramVarArgs.hasNext())
       {
-        p localp = (p)paramVarArgs.next();
-        if (localp != null) {
-          localp.e(paramc);
+        q localq = (q)paramVarArgs.next();
+        if (localq != null) {
+          localq.e(paramc);
         }
       }
       AppMethodBeat.o(101667);
@@ -122,7 +122,7 @@ public final class a
     return false;
   }
   
-  public final c asa(String paramString)
+  public final c aAb(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(101669);
@@ -150,11 +150,11 @@ public final class a
     return paramString;
   }
   
-  public final void b(p paramp)
+  public final void b(q paramq)
   {
     AppMethodBeat.i(101663);
-    if (paramp != null) {
-      this.listeners.remove(paramp);
+    if (paramq != null) {
+      this.listeners.remove(paramq);
     }
     AppMethodBeat.o(101663);
   }
@@ -167,9 +167,9 @@ public final class a
       paramVarArgs = this.listeners.iterator();
       while (paramVarArgs.hasNext())
       {
-        p localp = (p)paramVarArgs.next();
-        if (localp != null) {
-          localp.e(paramc);
+        q localq = (q)paramVarArgs.next();
+        if (localq != null) {
+          localq.e(paramc);
         }
       }
       AppMethodBeat.o(101668);
@@ -179,7 +179,7 @@ public final class a
     return false;
   }
   
-  public final LinkedList<c> cUK()
+  public final LinkedList<c> djQ()
   {
     AppMethodBeat.i(101671);
     Object localObject = "select * from FavCdnInfo where status = 1 order by modifyTime asc " + " limit 1";
@@ -207,7 +207,7 @@ public final class a
     return localLinkedList;
   }
   
-  public final Cursor cUL()
+  public final Cursor djR()
   {
     AppMethodBeat.i(101676);
     Cursor localCursor = this.db.rawQuery("select * from FavCdnInfo where type = 0 and status = 1", null);
@@ -215,7 +215,7 @@ public final class a
     return localCursor;
   }
   
-  public final Cursor cUM()
+  public final Cursor djS()
   {
     AppMethodBeat.i(101677);
     Cursor localCursor = this.db.rawQuery("select * from FavCdnInfo where type = 1 and status = 1", null);
@@ -236,9 +236,9 @@ public final class a
       Iterator localIterator = this.listeners.iterator();
       while (localIterator.hasNext())
       {
-        p localp = (p)localIterator.next();
-        if (localp != null) {
-          localp.e(paramc);
+        q localq = (q)localIterator.next();
+        if (localq != null) {
+          localq.e(paramc);
         }
       }
       AppMethodBeat.o(101666);
@@ -255,7 +255,16 @@ public final class a
     AppMethodBeat.o(101665);
   }
   
-  public final int x(long paramLong, int paramInt)
+  public final void y(g paramg)
+  {
+    AppMethodBeat.i(101670);
+    long l = Util.nowMilliSecond();
+    paramg = "update FavCdnInfo set status = 1,modifyTime = " + l + " where favLocalId = " + paramg.field_localId + " and type = 0 and status <> 3";
+    this.db.execSQL("FavCdnInfo", paramg);
+    AppMethodBeat.o(101670);
+  }
+  
+  public final int z(long paramLong, int paramInt)
   {
     AppMethodBeat.i(101675);
     Object localObject = "select status from FavCdnInfo where favLocalId = " + paramLong + " and type = " + paramInt;
@@ -320,15 +329,6 @@ public final class a
     }
     AppMethodBeat.o(101675);
     return 0;
-  }
-  
-  public final void y(g paramg)
-  {
-    AppMethodBeat.i(101670);
-    long l = Util.nowMilliSecond();
-    paramg = "update FavCdnInfo set status = 1,modifyTime = " + l + " where favLocalId = " + paramg.field_localId + " and type = 0 and status <> 3";
-    this.db.execSQL("FavCdnInfo", paramg);
-    AppMethodBeat.o(101670);
   }
 }
 

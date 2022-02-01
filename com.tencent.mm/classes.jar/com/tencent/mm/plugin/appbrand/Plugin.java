@@ -1,25 +1,27 @@
 package com.tencent.mm.plugin.appbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.appbrand.app.m;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
 
 @Deprecated
 public final class Plugin
   implements d
 {
-  public final com.tencent.mm.pluginsdk.n createApplication()
+  public final n createApplication()
   {
     return null;
   }
   
-  public final bd createSubCore()
+  public final be createSubCore()
   {
     AppMethodBeat.i(43979);
-    com.tencent.mm.plugin.appbrand.app.n localn = new com.tencent.mm.plugin.appbrand.app.n();
+    m localm = new m();
     AppMethodBeat.o(43979);
-    return localn;
+    return localm;
   }
   
   public final c getContactWidgetFactory()

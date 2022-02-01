@@ -1,50 +1,41 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.plugin.appbrand.appcache.predownload.c;
-import kotlin.g.a.a;
-import kotlin.g.b.q;
+import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.utils.e.a;
+import com.tencent.mm.vfs.q;
+import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.x;
+import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/TaskCallPredownload;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/jsapi/TaskParamsCallPredownload;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
-final class dd
-  implements b<TaskParamsCallPredownload, IPCVoid>
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"loadAppBrandImage", "", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "path", "", "md5", "onLoadCallback", "Lcom/tencent/mm/plugin/appbrand/utils/AppBrandFileLoadHelper$IOnLoadCallback;", "plugin-appbrand-integration_release"})
+public final class dd
 {
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements a<x>
+  public static final void a(e parame, String paramString, e.a parama)
   {
-    public static final a lCL;
-    
-    static
+    Object localObject = null;
+    AppMethodBeat.i(273272);
+    p.k(parame, "component");
+    p.k(paramString, "path");
+    p.k(parama, "onLoadCallback");
+    if ((n.M(paramString, "http://", false)) || (n.M(paramString, "https://", false)))
     {
-      AppMethodBeat.i(50420);
-      lCL = new a();
-      AppMethodBeat.o(50420);
+      com.tencent.mm.plugin.appbrand.utils.e.a(parame, paramString, null, parama);
+      AppMethodBeat.o(273272);
+      return;
     }
-    
-    a()
+    r localr = parame.getFileSystem();
+    parame = localObject;
+    if (localr != null)
     {
-      super();
+      paramString = localr.adL(paramString);
+      parame = localObject;
+      if (paramString != null) {
+        parame = paramString.bOF();
+      }
     }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(String paramString1, String paramString2, int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(50421);
-      c.a(new c(this.hLl, this.lCM, this.$scene), true, 2);
-      AppMethodBeat.o(50421);
-    }
+    parama.dR(parame);
+    AppMethodBeat.o(273272);
   }
 }
 

@@ -13,8 +13,8 @@ import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 
 public final class b
 {
-  private final String yni;
-  private final String ynj;
+  private final String DNk;
+  private final String DNl;
   
   private b(String paramString1, String paramString2)
   {
@@ -31,12 +31,12 @@ public final class b
       AppMethodBeat.o(117456);
       throw paramString1;
     }
-    this.yni = paramString1;
-    this.ynj = paramString2;
+    this.DNk = paramString1;
+    this.DNl = paramString2;
     AppMethodBeat.o(117456);
   }
   
-  private static int aBH(String paramString)
+  private static int aLO(String paramString)
   {
     AppMethodBeat.i(117459);
     Object localObject = paramString;
@@ -77,10 +77,10 @@ public final class b
   }
   
   @SuppressLint({"ApplySharedPref"})
-  private static void aBI(String paramString)
+  private static void aLP(String paramString)
   {
     AppMethodBeat.i(117462);
-    SharedPreferences localSharedPreferences = dZh();
+    SharedPreferences localSharedPreferences = eIe();
     if (!localSharedPreferences.contains(paramString))
     {
       long l = System.currentTimeMillis();
@@ -89,7 +89,7 @@ public final class b
     AppMethodBeat.o(117462);
   }
   
-  public static SharedPreferences dZh()
+  public static SharedPreferences eIe()
   {
     AppMethodBeat.i(117458);
     try
@@ -107,7 +107,7 @@ public final class b
     }
   }
   
-  public static b ii(String paramString1, String paramString2)
+  public static b iv(String paramString1, String paramString2)
   {
     AppMethodBeat.i(117457);
     paramString1 = new b(paramString1, paramString2);
@@ -115,54 +115,54 @@ public final class b
     return paramString1;
   }
   
-  public final String OW(int paramInt)
+  public final String Ve(int paramInt)
   {
     AppMethodBeat.i(117460);
-    String str = "mmkv_key_" + aBH(this.yni) + "_" + aBH(this.ynj) + "_" + paramInt;
+    String str = "mmkv_key_" + aLO(this.DNk) + "_" + aLO(this.DNl) + "_" + paramInt;
     AppMethodBeat.o(117460);
     return str;
   }
   
-  public final void aq(int paramInt, long paramLong)
+  public final void ay(int paramInt, long paramLong)
   {
     AppMethodBeat.i(184835);
-    String str = String.valueOf(paramInt) + ',' + aBH(this.yni) + ',' + aBH(this.ynj) + ',' + paramLong;
-    h.CyF.a(17676, str, true, true);
+    String str = String.valueOf(paramInt) + ',' + aLO(this.DNk) + ',' + aLO(this.DNl) + ',' + paramLong;
+    h.IzE.b(17676, str, true, true);
     AppMethodBeat.o(184835);
   }
   
-  public final void dZi()
+  public final void eIf()
   {
     AppMethodBeat.i(117463);
-    aBI(OW(1));
+    aLP(Ve(1));
     AppMethodBeat.o(117463);
   }
   
-  public final void dZj()
+  public final void eIg()
   {
-    AppMethodBeat.i(196793);
-    aBI(OW(2));
-    AppMethodBeat.o(196793);
+    AppMethodBeat.i(195475);
+    aLP(Ve(2));
+    AppMethodBeat.o(195475);
   }
   
   @SuppressLint({"ApplySharedPref"})
-  public final void dZk()
+  public final void eIh()
   {
-    AppMethodBeat.i(196794);
-    SharedPreferences localSharedPreferences = dZh();
-    String str = OW(1);
+    AppMethodBeat.i(195477);
+    SharedPreferences localSharedPreferences = eIe();
+    String str = Ve(1);
     if (localSharedPreferences.contains(str))
     {
       long l = localSharedPreferences.getLong(str, 0L);
-      aq(1, System.currentTimeMillis() - l);
+      ay(1, System.currentTimeMillis() - l);
       localSharedPreferences.edit().remove(str).commit();
     }
-    AppMethodBeat.o(196794);
+    AppMethodBeat.o(195477);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.tinker.b
  * JD-Core Version:    0.7.0.1
  */

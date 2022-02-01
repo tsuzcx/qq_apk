@@ -1,8 +1,8 @@
 package com.tencent.mm.ui.widget.cedit.edit;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
+import androidx.appcompat.widget.AppCompatEditText;
 
 public class AdaptEditText
   extends AppCompatEditText
@@ -29,7 +29,7 @@ public class AdaptEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cedit.edit.AdaptEditText
  * JD-Core Version:    0.7.0.1
  */

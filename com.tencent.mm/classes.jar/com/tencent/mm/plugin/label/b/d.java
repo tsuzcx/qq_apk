@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.label.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cqn;
-import com.tencent.mm.protocal.protobuf.cqo;
-import com.tencent.mm.protocal.protobuf.eov;
+import com.tencent.mm.protocal.protobuf.cze;
+import com.tencent.mm.protocal.protobuf.czf;
+import com.tencent.mm.protocal.protobuf.ezd;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
@@ -18,23 +18,23 @@ public final class d
   extends q
   implements m
 {
+  private LinkedList<ezd> Edl;
   private i callback;
-  private final com.tencent.mm.ak.d rr;
-  private LinkedList<eov> yBV;
+  private final com.tencent.mm.an.d rr;
   
-  public d(LinkedList<eov> paramLinkedList)
+  public d(LinkedList<ezd> paramLinkedList)
   {
     AppMethodBeat.i(26152);
-    this.yBV = new LinkedList();
+    this.Edl = new LinkedList();
     d.a locala = new d.a();
-    locala.iLN = new cqn();
-    locala.iLO = new cqo();
+    locala.lBU = new cze();
+    locala.lBV = new czf();
     locala.uri = "/cgi-bin/micromsg-bin/modifycontactlabellist";
     locala.funcId = 638;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    this.yBV = paramLinkedList;
+    this.rr = locala.bgN();
+    this.Edl = paramLinkedList;
     AppMethodBeat.o(26152);
   }
   
@@ -43,9 +43,9 @@ public final class d
     AppMethodBeat.i(26154);
     Log.d("MicroMsg.Label.NetSceneModifyContactLabelList", "cpan[doScene].");
     this.callback = parami;
-    parami = (cqn)this.rr.iLK.iLR;
-    parami.Mwq = this.yBV;
-    parami.LUu = this.yBV.size();
+    parami = (cze)d.b.b(this.rr.lBR);
+    parami.THo = this.Edl;
+    parami.Tdc = this.Edl.size();
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(26154);
     return i;

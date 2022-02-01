@@ -19,13 +19,14 @@ import java.util.List;
 public class APLogInfo
 {
   public static final String LOG_TAG = "MidasComm<Log>";
-  public static final int LOG_VERSION_CODE = 39;
-  public static final String LOG_VERSION_NAME = "1.2.19";
+  public static final int LOG_VERSION_CODE = 43;
+  public static final String LOG_VERSION_NAME = "1.2.23";
   private boolean autoFlush = true;
   private boolean compressLog = true;
   private Context context = null;
   private boolean encryptLog = true;
   private boolean hasWritePermission = false;
+  private String logCallbackClassName;
   private boolean logEnable = true;
   private String logPath = "";
   private String logTag = "Midas";
@@ -36,7 +37,7 @@ public class APLogInfo
   
   private void initLogPath()
   {
-    AppMethodBeat.i(193395);
+    AppMethodBeat.i(253940);
     try
     {
       if (!this.hasWritePermission)
@@ -53,7 +54,7 @@ public class APLogInfo
         if ((TextUtils.isEmpty(this.logPath)) || (!new File(this.logPath).canWrite())) {
           this.logPath = (Environment.getExternalStorageDirectory() + File.separator + "tencent" + File.separator + "Midas" + File.separator + "Log" + File.separator);
         }
-        AppMethodBeat.o(193395);
+        AppMethodBeat.o(253940);
         return;
       }
       return;
@@ -62,29 +63,29 @@ public class APLogInfo
     {
       new StringBuilder("init log path error: ").append(localThrowable.getMessage());
       this.logPath = (Environment.getExternalStorageDirectory() + File.separator + "tencent" + File.separator + "Midas" + File.separator + "Log" + File.separator);
-      AppMethodBeat.o(193395);
+      AppMethodBeat.o(253940);
     }
   }
   
   private void initPermission()
   {
-    AppMethodBeat.i(193393);
+    AppMethodBeat.i(253936);
     if (this.context.getPackageManager().checkPermission("android.permission.WRITE_EXTERNAL_STORAGE", this.pkgName) == 0) {}
     for (boolean bool = true;; bool = false)
     {
       this.hasWritePermission = bool;
       new StringBuilder("has WRITE_EXTERNAL_STORAGE? : ").append(this.hasWritePermission);
-      AppMethodBeat.o(193393);
+      AppMethodBeat.o(253936);
       return;
     }
   }
   
   private void initPkgName()
   {
-    AppMethodBeat.i(193392);
+    AppMethodBeat.i(253934);
     if (this.context == null)
     {
-      AppMethodBeat.o(193392);
+      AppMethodBeat.o(253934);
       return;
     }
     PackageManager localPackageManager = this.context.getPackageManager();
@@ -92,7 +93,7 @@ public class APLogInfo
     {
       this.pkgName = localPackageManager.getPackageInfo(this.context.getApplicationContext().getPackageName(), 0).packageName;
       new StringBuilder("get pkgName: ").append(this.pkgName);
-      AppMethodBeat.o(193392);
+      AppMethodBeat.o(253934);
       return;
     }
     catch (Throwable localThrowable)
@@ -106,7 +107,7 @@ public class APLogInfo
   
   private void initProcessName()
   {
-    AppMethodBeat.i(193394);
+    AppMethodBeat.i(253938);
     for (;;)
     {
       try
@@ -136,7 +137,7 @@ public class APLogInfo
         continue;
       }
       new StringBuilder("get process name: ").append(this.processName);
-      AppMethodBeat.o(193394);
+      AppMethodBeat.o(253938);
       return;
       this.processName = "";
     }
@@ -155,6 +156,11 @@ public class APLogInfo
   public Context getContext()
   {
     return this.context;
+  }
+  
+  public String getLogCallbackClassName()
+  {
+    return this.logCallbackClassName;
   }
   
   public String getLogPath()
@@ -179,17 +185,17 @@ public class APLogInfo
   
   public void init()
   {
-    AppMethodBeat.i(193391);
+    AppMethodBeat.i(253932);
     if (this.context == null)
     {
-      AppMethodBeat.o(193391);
+      AppMethodBeat.o(253932);
       return;
     }
     initPkgName();
     initPermission();
     initProcessName();
     initLogPath();
-    AppMethodBeat.o(193391);
+    AppMethodBeat.o(253932);
   }
   
   public boolean isAutoFlush()
@@ -239,16 +245,16 @@ public class APLogInfo
   
   public void setContext(Context paramContext)
   {
-    AppMethodBeat.i(193396);
+    AppMethodBeat.i(253944);
     this.context = paramContext.getApplicationContext();
-    AppMethodBeat.o(193396);
+    AppMethodBeat.o(253944);
   }
   
   public void setEncryptKey(String paramString)
   {
-    AppMethodBeat.i(193400);
+    AppMethodBeat.i(253955);
     APLogEncryptor.setEncryptKey(paramString);
-    AppMethodBeat.o(193400);
+    AppMethodBeat.o(253955);
   }
   
   public void setEncryptLog(boolean paramBoolean)
@@ -258,9 +264,14 @@ public class APLogInfo
   
   public void setEncryptProtocolVersion(byte paramByte)
   {
-    AppMethodBeat.i(193401);
+    AppMethodBeat.i(253957);
     APLogEncryptor.setProtocolVersion(paramByte);
-    AppMethodBeat.o(193401);
+    AppMethodBeat.o(253957);
+  }
+  
+  public void setLogCallbackClassName(String paramString)
+  {
+    this.logCallbackClassName = paramString;
   }
   
   public void setLogEnable(boolean paramBoolean)
@@ -280,17 +291,17 @@ public class APLogInfo
   
   public void setLogFileSizeMB(int paramInt)
   {
-    AppMethodBeat.i(193402);
+    AppMethodBeat.i(253959);
     APLogFileUtil.maxLogFileSizeMB = paramInt;
     new StringBuilder("set log file size: ").append(paramInt).append(" MB");
-    AppMethodBeat.o(193402);
+    AppMethodBeat.o(253959);
   }
   
   public void setLogParamFromServer(String paramString)
   {
-    AppMethodBeat.i(193397);
+    AppMethodBeat.i(253948);
     setLogWrite(paramString);
-    AppMethodBeat.o(193397);
+    AppMethodBeat.o(253948);
   }
   
   public void setLogPath(String paramString)
@@ -306,7 +317,7 @@ public class APLogInfo
   public void setLogWrite(String paramString)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(193398);
+    AppMethodBeat.i(253949);
     try
     {
       i = Integer.valueOf(paramString).intValue();
@@ -319,7 +330,7 @@ public class APLogInfo
         }
         bool1 = bool2;
         setWriteLog(bool1);
-        AppMethodBeat.o(193398);
+        AppMethodBeat.o(253949);
       }
     }
     catch (Throwable paramString)
@@ -338,19 +349,19 @@ public class APLogInfo
   
   public boolean shouldPrintLog()
   {
-    AppMethodBeat.i(193399);
+    AppMethodBeat.i(253951);
     if ((this.logEnable) || (this.printLog) || (APLogFileUtil.isDebugMode(APLogFileInfo.dirName)))
     {
-      AppMethodBeat.o(193399);
+      AppMethodBeat.o(253951);
       return true;
     }
-    AppMethodBeat.o(193399);
+    AppMethodBeat.o(253951);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.comm.APLogInfo
  * JD-Core Version:    0.7.0.1
  */

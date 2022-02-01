@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
 import com.tencent.mm.ui.MMActivity;
 
 public class ExdeviceExpireUI
@@ -12,14 +14,14 @@ public class ExdeviceExpireUI
 {
   public int getLayoutId()
   {
-    return 2131494020;
+    return R.i.egr;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(24036);
     super.onCreate(paramBundle);
-    setMMTitle(2131758892);
+    setMMTitle(R.l.eDY);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)

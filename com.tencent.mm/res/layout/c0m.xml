@@ -2,5 +2,5 @@
 <merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:textSize="14.0dip" android:textColor="@color/aac" android:id="@id/ic1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="84.0dip" android:layout_centerHorizontal="true" />
-    <android.support.v7.widget.RecyclerView android:id="@id/ic4" android:fadingEdge="vertical" android:fadingEdgeLength="50.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:requiresFadingEdge="vertical" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/ic4" android:fadingEdge="vertical" android:fadingEdgeLength="50.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:requiresFadingEdge="vertical" />
 </merge>

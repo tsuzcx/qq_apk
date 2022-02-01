@@ -2,14 +2,15 @@ package com.tencent.mm.plugin.vlog.ui.plugin.imageenhancement;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.vlog.a.i;
+import com.tencent.mm.plugin.vlog.model.local.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.xeffect.a.a;
-import com.tencent.mm.xeffect.a.b;
-import com.tencent.mm.xeffect.a.c;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.xeffect.b.b;
+import com.tencent.mm.xeffect.b.c;
 import com.tencent.mm.xeffect.effect.n;
 import com.tencent.mm.xeffect.effect.n.a;
 import java.nio.charset.Charset;
@@ -26,107 +27,108 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.n.d;
 import kotlin.o;
+import kotlin.s;
 import kotlin.t;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/imageenhancement/ImageEnhancementFilterSettingLogic;", "", "()V", "TAG", "", "currentSettings", "Ljava/util/HashMap;", "", "", "Lcom/tencent/mm/xeffect/ImageEnhancementSceneFilterInfo;", "Lkotlin/collections/HashMap;", "getCurrentSettings", "()Ljava/util/HashMap;", "defaultSceneFilterSettings", "getDefaultSceneFilterSettings", "eyeBright", "", "getEyeBright", "()F", "setEyeBright", "(F)V", "eyeMorph", "getEyeMorph", "setEyeMorph", "faceBeautyWeights", "", "getFaceBeautyWeights", "()[F", "faceBeautyWeightsIndex", "", "Lcom/tencent/mm/xeffect/ImageEnhancementSceneFilterInfo$FaceBeautyType;", "getFaceBeautyWeightsIndex", "()Ljava/util/Map;", "faceMorph", "getFaceMorph", "setFaceMorph", "sceneSaveJsonFileName", "skinBright", "getSkinBright", "setSkinBright", "skinSmooth", "getSkinSmooth", "setSkinSmooth", "applyFilterSettings", "", "applyImageEnhancementSettings", "effect", "Lcom/tencent/mm/xeffect/effect/ImageEnhanceEffect;", "builtinLutTypeFromIntValue", "Lcom/tencent/mm/xeffect/ImageEnhancementSceneFilterInfo$BuiltinLutFilterType;", "value", "createFilter", "type", "Lcom/tencent/mm/xeffect/ImageEnhancementSceneFilterInfo$FilterType;", "weight", "filterPath", "builtinLutFilterType", "filterWeights", "createSettingsFromFile", "createSettingsFromServerConfig", "faceBeautyTypeToDesc", "filterInfoDesc", "info", "filterTypeFromIntValue", "filterTypeToDesc", "imageLabelToDesc", "label", "initConfig", "isEnableDebug", "", "isShowSceneDesc", "jsonArrayToSceneFilterInfoList", "jsonArray", "Lorg/json/JSONArray;", "jsonToSceneFilterInfo", "json", "Lorg/json/JSONObject;", "jsonToSceneFiltersInfoMap", "loadFaceBeautySettings", "saveSettings", "infoMap", "sceneFilterInfoListToJson", "filtersInfo", "sceneFilterInfoToJson", "sceneFiltersInfoMapToJson", "sceneFiltersInfoMap", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/imageenhancement/ImageEnhancementFilterSettingLogic;", "", "()V", "TAG", "", "currentSettings", "Ljava/util/HashMap;", "", "", "Lcom/tencent/mm/xeffect/ImageEnhancementSceneFilterInfo;", "Lkotlin/collections/HashMap;", "getCurrentSettings", "()Ljava/util/HashMap;", "defaultSceneFilterSettings", "getDefaultSceneFilterSettings", "eyeBright", "", "getEyeBright", "()F", "setEyeBright", "(F)V", "eyeMorph", "getEyeMorph", "setEyeMorph", "faceBeautyWeights", "", "getFaceBeautyWeights", "()[F", "faceBeautyWeightsIndex", "", "Lcom/tencent/mm/xeffect/ImageEnhancementSceneFilterInfo$FaceBeautyType;", "getFaceBeautyWeightsIndex", "()Ljava/util/Map;", "faceMorph", "getFaceMorph", "setFaceMorph", "sceneSaveJsonFileName", "skinBright", "getSkinBright", "setSkinBright", "skinSmooth", "getSkinSmooth", "setSkinSmooth", "applyFilterSettings", "", "applyImageEnhancementSettings", "effect", "Lcom/tencent/mm/xeffect/effect/ImageEnhanceEffect;", "builtinLutTypeFromIntValue", "Lcom/tencent/mm/xeffect/ImageEnhancementSceneFilterInfo$BuiltinLutFilterType;", "value", "createFilter", "type", "Lcom/tencent/mm/xeffect/ImageEnhancementSceneFilterInfo$FilterType;", "weight", "filterPath", "builtinLutFilterType", "filterWeights", "createSettingsFromFile", "createSettingsFromServerConfig", "faceBeautyTypeToDesc", "filterInfoDesc", "info", "filterTypeFromIntValue", "filterTypeToDesc", "imageLabelToDesc", "label", "initConfig", "isEnableDebug", "", "isShowSceneDesc", "jsonArrayToSceneFilterInfoList", "jsonArray", "Lorg/json/JSONArray;", "jsonToSceneFilterInfo", "json", "Lorg/json/JSONObject;", "jsonToSceneFiltersInfoMap", "loadFaceBeautySettings", "saveSettings", "infoMap", "sceneFilterInfoListToJson", "filtersInfo", "sceneFilterInfoToJson", "sceneFiltersInfoMapToJson", "sceneFiltersInfoMap", "plugin-vlog_release"})
 public final class b
 {
-  private static float GLA;
-  private static float GLB;
-  private static float GLC;
-  private static final Map<a.b, Integer> GLD;
-  private static final float[] GLE;
-  public static final b GLF;
-  private static final String GLv;
-  private static final HashMap<Integer, List<com.tencent.mm.xeffect.a>> GLw;
-  private static final HashMap<Integer, List<com.tencent.mm.xeffect.a>> GLx;
-  private static float GLy;
-  private static float GLz;
+  private static final String NyV;
+  private static final HashMap<Integer, List<com.tencent.mm.xeffect.b>> NyW;
+  private static final HashMap<Integer, List<com.tencent.mm.xeffect.b>> NyX;
+  private static float NyY;
+  private static float NyZ;
+  private static float Nza;
+  private static float Nzb;
+  private static float Nzc;
+  private static final Map<b.b, Integer> Nzd;
+  private static final float[] Nze;
+  public static final b Nzf;
   
   static
   {
-    AppMethodBeat.i(191770);
-    GLF = new b();
-    GLv = com.tencent.mm.loader.j.b.aKB() + "imageEnhancementSceneFilterSettings.json";
-    GLw = new HashMap();
-    GLx = new HashMap();
-    GLy = 0.45F;
-    GLz = 0.1F;
-    GLA = 0.1F;
-    GLB = 0.2F;
-    GLC = 0.4F;
-    GLD = ae.e(new o[] { kotlin.s.U(a.b.Rxq, Integer.valueOf(0)), kotlin.s.U(a.b.Rxu, Integer.valueOf(1)), kotlin.s.U(a.b.Rxt, Integer.valueOf(2)), kotlin.s.U(a.b.Rxr, Integer.valueOf(3)), kotlin.s.U(a.b.Rxs, Integer.valueOf(4)) });
-    GLE = new float[] { GLy, GLC, GLB, GLz, GLA };
+    AppMethodBeat.i(247216);
+    Nzf = new b();
+    NyV = com.tencent.mm.loader.j.b.aSD() + "imageEnhancementSceneFilterSettings.json";
+    NyW = new HashMap();
+    NyX = new HashMap();
+    NyY = 0.45F;
+    NyZ = 0.1F;
+    Nza = 0.1F;
+    Nzb = 0.2F;
+    Nzc = 0.4F;
+    Nzd = ae.e(new o[] { s.M(b.b.YYP, Integer.valueOf(0)), s.M(b.b.YYT, Integer.valueOf(1)), s.M(b.b.YYS, Integer.valueOf(2)), s.M(b.b.YYQ, Integer.valueOf(3)), s.M(b.b.YYR, Integer.valueOf(4)) });
+    Nze = new float[] { NyY, Nzc, Nzb, NyZ, Nza };
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(a(a.c.RxA, 0.3F, null, null, null, 28));
-    localArrayList.add(a(a.c.Rxy, 0.3F, null, a.a.Rxm, null, 20));
-    ((Map)GLw).put(Integer.valueOf(n.a.Rys.ordinal()), localArrayList);
+    localArrayList.add(a(b.c.YYZ, 0.3F, null, null, null, 28));
+    localArrayList.add(a(b.c.YYX, 0.3F, null, com.tencent.mm.xeffect.b.a.YYL, null, 20));
+    ((Map)NyW).put(Integer.valueOf(n.a.Zaa.ordinal()), localArrayList);
     localArrayList = new ArrayList();
-    localArrayList.add(a(a.c.RxD, 0.0F, null, null, new float[] { GLy, GLC, GLB, GLz, GLA }, 14));
-    ((Map)GLw).put(Integer.valueOf(n.a.Ryt.ordinal()), localArrayList);
+    localArrayList.add(a(b.c.YZc, 0.0F, null, null, new float[] { NyY, Nzc, Nzb, NyZ, Nza }, 14));
+    ((Map)NyW).put(Integer.valueOf(n.a.Zab.ordinal()), localArrayList);
     localArrayList = new ArrayList();
-    localArrayList.add(a(a.c.Rxx, 0.5F, null, null, null, 28));
-    localArrayList.add(a(a.c.Rxy, 0.3F, null, a.a.Rxk, null, 20));
-    ((Map)GLw).put(Integer.valueOf(n.a.Ryu.ordinal()), localArrayList);
+    localArrayList.add(a(b.c.YYW, 0.5F, null, null, null, 28));
+    localArrayList.add(a(b.c.YYX, 0.3F, null, com.tencent.mm.xeffect.b.a.YYJ, null, 20));
+    ((Map)NyW).put(Integer.valueOf(n.a.Zac.ordinal()), localArrayList);
     localArrayList = new ArrayList();
-    localArrayList.add(a(a.c.Rxy, 0.3F, null, a.a.Rxl, null, 20));
-    ((Map)GLw).put(Integer.valueOf(n.a.Ryv.ordinal()), localArrayList);
+    localArrayList.add(a(b.c.YYX, 0.3F, null, com.tencent.mm.xeffect.b.a.YYK, null, 20));
+    ((Map)NyW).put(Integer.valueOf(n.a.Zad.ordinal()), localArrayList);
     localArrayList = new ArrayList();
-    localArrayList.add(a(a.c.Rxy, 0.6F, null, a.a.Rxn, null, 20));
-    ((Map)GLw).put(Integer.valueOf(n.a.Ryw.ordinal()), localArrayList);
+    localArrayList.add(a(b.c.YYX, 0.6F, null, com.tencent.mm.xeffect.b.a.YYM, null, 20));
+    ((Map)NyW).put(Integer.valueOf(n.a.Zae.ordinal()), localArrayList);
     localArrayList = new ArrayList();
-    localArrayList.add(a(a.c.Rxy, 0.6F, null, a.a.Rxo, null, 20));
-    ((Map)GLw).put(Integer.valueOf(n.a.Ryx.ordinal()), localArrayList);
+    localArrayList.add(a(b.c.YYX, 0.6F, null, com.tencent.mm.xeffect.b.a.YYN, null, 20));
+    ((Map)NyW).put(Integer.valueOf(n.a.Zaf.ordinal()), localArrayList);
     localArrayList = new ArrayList();
-    localArrayList.add(a(a.c.RxC, 0.5F, null, null, null, 28));
-    ((Map)GLw).put(Integer.valueOf(n.a.Ryy.ordinal()), localArrayList);
+    localArrayList.add(a(b.c.YZb, 0.5F, null, null, null, 28));
+    ((Map)NyW).put(Integer.valueOf(n.a.Zag.ordinal()), localArrayList);
     localArrayList = new ArrayList();
-    localArrayList.add(a(a.c.RxB, 1.0F, null, null, null, 28));
-    localArrayList.add(a(a.c.RxA, 0.5F, null, null, null, 28));
-    ((Map)GLw).put(Integer.valueOf(n.a.Ryz.ordinal()), localArrayList);
+    localArrayList.add(a(b.c.YZa, 1.0F, null, null, null, 28));
+    localArrayList.add(a(b.c.YYZ, 0.5F, null, null, null, 28));
+    ((Map)NyW).put(Integer.valueOf(n.a.Zah.ordinal()), localArrayList);
     localArrayList = new ArrayList();
-    localArrayList.add(a(a.c.Rxx, 0.3F, null, null, null, 28));
-    localArrayList.add(a(a.c.RxC, 0.5F, null, null, null, 28));
-    ((Map)GLw).put(Integer.valueOf(n.a.RyA.ordinal()), localArrayList);
+    localArrayList.add(a(b.c.YYW, 0.3F, null, null, null, 28));
+    localArrayList.add(a(b.c.YZb, 0.5F, null, null, null, 28));
+    ((Map)NyW).put(Integer.valueOf(n.a.Zai.ordinal()), localArrayList);
     localArrayList = new ArrayList();
-    localArrayList.add(a(a.c.Rxx, 0.5F, null, null, null, 28));
-    ((Map)GLw).put(Integer.valueOf(n.a.RyB.ordinal()), localArrayList);
+    localArrayList.add(a(b.c.YYW, 0.5F, null, null, null, 28));
+    ((Map)NyW).put(Integer.valueOf(n.a.Zaj.ordinal()), localArrayList);
     localArrayList = new ArrayList();
-    localArrayList.add(a(a.c.RxA, 0.3F, null, null, null, 28));
-    localArrayList.add(a(a.c.Rxy, 0.2F, null, a.a.Rxm, null, 20));
-    ((Map)GLw).put(Integer.valueOf(n.a.RyC.ordinal()), localArrayList);
+    localArrayList.add(a(b.c.YYZ, 0.3F, null, null, null, 28));
+    localArrayList.add(a(b.c.YYX, 0.2F, null, com.tencent.mm.xeffect.b.a.YYL, null, 20));
+    ((Map)NyW).put(Integer.valueOf(n.a.Zak.ordinal()), localArrayList);
     localArrayList = new ArrayList();
-    localArrayList.add(a(a.c.RxB, 0.0F, null, null, null, 28));
-    localArrayList.add(a(a.c.Rxx, 0.6F, null, null, null, 28));
-    ((Map)GLw).put(Integer.valueOf(n.a.RyD.ordinal()), localArrayList);
-    AppMethodBeat.o(191770);
+    localArrayList.add(a(b.c.YZa, 0.0F, null, null, null, 28));
+    localArrayList.add(a(b.c.YYW, 0.6F, null, null, null, 28));
+    ((Map)NyW).put(Integer.valueOf(n.a.Zal.ordinal()), localArrayList);
+    AppMethodBeat.o(247216);
   }
   
-  private static List<com.tencent.mm.xeffect.a> J(JSONArray paramJSONArray)
+  private static List<com.tencent.mm.xeffect.b> L(JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(191762);
-    p.h(paramJSONArray, "jsonArray");
+    AppMethodBeat.i(247201);
+    p.k(paramJSONArray, "jsonArray");
     ArrayList localArrayList = new ArrayList();
     int j = paramJSONArray.length();
     int i = 0;
     while (i < j)
     {
       JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-      p.g(localJSONObject, "jsonArray.getJSONObject(i)");
-      localArrayList.add(bs(localJSONObject));
+      p.j(localJSONObject, "jsonArray.getJSONObject(i)");
+      localArrayList.add(bD(localJSONObject));
       i += 1;
     }
     paramJSONArray = (List)localArrayList;
-    AppMethodBeat.o(191762);
+    AppMethodBeat.o(247201);
     return paramJSONArray;
   }
   
-  private HashMap<Integer, List<com.tencent.mm.xeffect.a>> K(JSONArray paramJSONArray)
+  private HashMap<Integer, List<com.tencent.mm.xeffect.b>> M(JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(191764);
-    p.h(paramJSONArray, "json");
+    AppMethodBeat.i(247205);
+    p.k(paramJSONArray, "json");
     HashMap localHashMap = new HashMap();
     int j = paramJSONArray.length();
     int i = 0;
@@ -137,174 +139,174 @@ public final class b
       localObject = ((JSONObject)localObject).optJSONArray("filters");
       if ((k >= 0) && (localObject != null))
       {
-        localObject = J((JSONArray)localObject);
+        localObject = L((JSONArray)localObject);
         ((Map)localHashMap).put(Integer.valueOf(k), localObject);
       }
       i += 1;
     }
-    AppMethodBeat.o(191764);
+    AppMethodBeat.o(247205);
     return localHashMap;
   }
   
-  private static JSONObject a(com.tencent.mm.xeffect.a parama)
+  private static JSONObject a(com.tencent.mm.xeffect.b paramb)
   {
-    AppMethodBeat.i(191759);
-    p.h(parama, "info");
+    AppMethodBeat.i(247195);
+    p.k(paramb, "info");
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("type", parama.Rxf.ordinal());
-    localJSONObject.put("filterWeight", Float.valueOf(parama.Rxg));
-    localJSONObject.put("filterPath", parama.hDj);
-    localJSONObject.put("builtinLutFilterType", parama.Rxh.ordinal());
+    localJSONObject.put("type", paramb.YYE.ordinal());
+    localJSONObject.put("filterWeight", Float.valueOf(paramb.YYF));
+    localJSONObject.put("filterPath", paramb.krc);
+    localJSONObject.put("builtinLutFilterType", paramb.YYG.ordinal());
     JSONArray localJSONArray = new JSONArray();
-    parama = parama.Rxi;
-    p.g(parama, "info.filterWeights");
-    int j = parama.length;
+    paramb = paramb.YYH;
+    p.j(paramb, "info.filterWeights");
+    int j = paramb.length;
     int i = 0;
     while (i < j)
     {
-      localJSONArray.put(Float.valueOf(parama[i]));
+      localJSONArray.put(Float.valueOf(paramb[i]));
       i += 1;
     }
     localJSONObject.put("filterWeights", localJSONArray);
-    AppMethodBeat.o(191759);
+    AppMethodBeat.o(247195);
     return localJSONObject;
   }
   
   public static void a(n paramn)
   {
-    AppMethodBeat.i(191758);
-    String str = com.tencent.mm.vfs.s.boY(GLv);
-    p.g(str, "json");
+    AppMethodBeat.i(247193);
+    String str = u.bBS(NyV);
+    p.j(str, "json");
     if (((CharSequence)str).length() > 0) {}
     for (int i = 1; (i != 0) && (paramn != null); i = 0)
     {
-      paramn.bpE(str);
-      AppMethodBeat.o(191758);
+      paramn.bCB(str);
+      AppMethodBeat.o(247193);
       return;
     }
-    AppMethodBeat.o(191758);
+    AppMethodBeat.o(247193);
   }
   
-  public static String acJ(int paramInt)
+  public static String aks(int paramInt)
   {
-    AppMethodBeat.i(191756);
+    AppMethodBeat.i(247189);
     Object localObject = MMApplicationContext.getContext();
-    if (paramInt == n.a.Rys.ordinal())
+    if (paramInt == n.a.Zaa.ordinal())
     {
-      localObject = ((Context)localObject).getString(2131767084);
-      p.g(localObject, "context.getString(R.string.video_label_pet)");
-      AppMethodBeat.o(191756);
+      localObject = ((Context)localObject).getString(a.i.video_label_pet);
+      p.j(localObject, "context.getString(R.string.video_label_pet)");
+      AppMethodBeat.o(247189);
       return localObject;
     }
-    if (paramInt == n.a.Ryt.ordinal())
+    if (paramInt == n.a.Zab.ordinal())
     {
-      localObject = ((Context)localObject).getString(2131767083);
-      p.g(localObject, "context.getString(R.string.video_label_people)");
-      AppMethodBeat.o(191756);
+      localObject = ((Context)localObject).getString(a.i.video_label_people);
+      p.j(localObject, "context.getString(R.string.video_label_people)");
+      AppMethodBeat.o(247189);
       return localObject;
     }
-    if (paramInt == n.a.Ryu.ordinal())
+    if (paramInt == n.a.Zac.ordinal())
     {
-      localObject = ((Context)localObject).getString(2131767080);
-      p.g(localObject, "context.getString(R.string.video_label_food)");
-      AppMethodBeat.o(191756);
+      localObject = ((Context)localObject).getString(a.i.video_label_food);
+      p.j(localObject, "context.getString(R.string.video_label_food)");
+      AppMethodBeat.o(247189);
       return localObject;
     }
-    if (paramInt == n.a.Ryv.ordinal())
+    if (paramInt == n.a.Zad.ordinal())
     {
-      localObject = ((Context)localObject).getString(2131767085);
-      p.g(localObject, "context.getString(R.string.video_label_plant)");
-      AppMethodBeat.o(191756);
+      localObject = ((Context)localObject).getString(a.i.video_label_plant);
+      p.j(localObject, "context.getString(R.string.video_label_plant)");
+      AppMethodBeat.o(247189);
       return localObject;
     }
-    if (paramInt == n.a.Ryw.ordinal())
+    if (paramInt == n.a.Zae.ordinal())
     {
-      localObject = ((Context)localObject).getString(2131767079);
-      p.g(localObject, "context.getString(R.string.video_label_flower)");
-      AppMethodBeat.o(191756);
+      localObject = ((Context)localObject).getString(a.i.video_label_flower);
+      p.j(localObject, "context.getString(R.string.video_label_flower)");
+      AppMethodBeat.o(247189);
       return localObject;
     }
-    if (paramInt == n.a.Ryx.ordinal())
+    if (paramInt == n.a.Zaf.ordinal())
     {
-      localObject = ((Context)localObject).getString(2131767087);
-      p.g(localObject, "context.getString(R.string.video_label_sky)");
-      AppMethodBeat.o(191756);
+      localObject = ((Context)localObject).getString(a.i.video_label_sky);
+      p.j(localObject, "context.getString(R.string.video_label_sky)");
+      AppMethodBeat.o(247189);
       return localObject;
     }
-    if (paramInt == n.a.Ryy.ordinal())
+    if (paramInt == n.a.Zag.ordinal())
     {
-      localObject = ((Context)localObject).getString(2131767089);
-      p.g(localObject, "context.getString(R.stri…ideo_label_sunrisesunset)");
-      AppMethodBeat.o(191756);
+      localObject = ((Context)localObject).getString(a.i.video_label_sunrisesunset);
+      p.j(localObject, "context.getString(R.stri…ideo_label_sunrisesunset)");
+      AppMethodBeat.o(247189);
       return localObject;
     }
-    if (paramInt == n.a.Ryz.ordinal())
+    if (paramInt == n.a.Zah.ordinal())
     {
-      localObject = ((Context)localObject).getString(2131767088);
-      p.g(localObject, "context.getString(R.string.video_label_snow)");
-      AppMethodBeat.o(191756);
+      localObject = ((Context)localObject).getString(a.i.video_label_snow);
+      p.j(localObject, "context.getString(R.string.video_label_snow)");
+      AppMethodBeat.o(247189);
       return localObject;
     }
-    if (paramInt == n.a.RyA.ordinal())
+    if (paramInt == n.a.Zai.ordinal())
     {
-      localObject = ((Context)localObject).getString(2131767077);
-      p.g(localObject, "context.getString(R.string.video_label_city)");
-      AppMethodBeat.o(191756);
+      localObject = ((Context)localObject).getString(a.i.video_label_city);
+      p.j(localObject, "context.getString(R.string.video_label_city)");
+      AppMethodBeat.o(247189);
       return localObject;
     }
-    if (paramInt == n.a.RyB.ordinal())
+    if (paramInt == n.a.Zaj.ordinal())
     {
-      localObject = ((Context)localObject).getString(2131767081);
-      p.g(localObject, "context.getString(R.string.video_label_night)");
-      AppMethodBeat.o(191756);
+      localObject = ((Context)localObject).getString(a.i.video_label_night);
+      p.j(localObject, "context.getString(R.string.video_label_night)");
+      AppMethodBeat.o(247189);
       return localObject;
     }
-    if (paramInt == n.a.RyC.ordinal())
+    if (paramInt == n.a.Zak.ordinal())
     {
-      localObject = ((Context)localObject).getString(2131767086);
-      p.g(localObject, "context.getString(R.string.video_label_room)");
-      AppMethodBeat.o(191756);
+      localObject = ((Context)localObject).getString(a.i.video_label_room);
+      p.j(localObject, "context.getString(R.string.video_label_room)");
+      AppMethodBeat.o(247189);
       return localObject;
     }
-    if (paramInt == n.a.RyD.ordinal())
+    if (paramInt == n.a.Zal.ordinal())
     {
-      localObject = ((Context)localObject).getString(2131767078);
-      p.g(localObject, "context.getString(R.string.video_label_doc)");
-      AppMethodBeat.o(191756);
+      localObject = ((Context)localObject).getString(a.i.video_label_doc);
+      p.j(localObject, "context.getString(R.string.video_label_doc)");
+      AppMethodBeat.o(247189);
       return localObject;
     }
-    if (paramInt == n.a.RyE.ordinal())
+    if (paramInt == n.a.Zam.ordinal())
     {
-      localObject = ((Context)localObject).getString(2131767082);
-      p.g(localObject, "context.getString(R.string.video_label_origin)");
-      AppMethodBeat.o(191756);
+      localObject = ((Context)localObject).getString(a.i.video_label_origin);
+      p.j(localObject, "context.getString(R.string.video_label_origin)");
+      AppMethodBeat.o(247189);
       return localObject;
     }
-    AppMethodBeat.o(191756);
+    AppMethodBeat.o(247189);
     return "Unknown type";
   }
   
-  private static com.tencent.mm.xeffect.a bs(JSONObject paramJSONObject)
+  private static com.tencent.mm.xeffect.b bD(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(191760);
-    p.h(paramJSONObject, "json");
-    com.tencent.mm.xeffect.a locala = new com.tencent.mm.xeffect.a();
+    AppMethodBeat.i(247198);
+    p.k(paramJSONObject, "json");
+    com.tencent.mm.xeffect.b localb = new com.tencent.mm.xeffect.b();
     int j = paramJSONObject.optInt("type", 0);
-    Object localObject2 = a.c.values();
+    Object localObject2 = b.c.values();
     int k = localObject2.length;
     int i = 0;
     Object localObject1;
     if (i < k)
     {
       localObject1 = localObject2[i];
-      if (((a.c)localObject1).ordinal() == j)
+      if (((b.c)localObject1).ordinal() == j)
       {
         label62:
-        locala.Rxf = ((a.c)localObject1);
-        locala.Rxg = ((float)paramJSONObject.optDouble("filterWeight", 0.0D));
-        locala.hDj = paramJSONObject.optString("filterPath");
+        localb.YYE = ((b.c)localObject1);
+        localb.YYF = ((float)paramJSONObject.optDouble("filterWeight", 0.0D));
+        localb.krc = paramJSONObject.optString("filterPath");
         j = paramJSONObject.optInt("builtinLutFilterType", 0);
-        localObject2 = a.a.values();
+        localObject2 = com.tencent.mm.xeffect.b.a.values();
         k = localObject2.length;
         i = 0;
         label115:
@@ -312,45 +314,45 @@ public final class b
           break label219;
         }
         localObject1 = localObject2[i];
-        if (((a.a)localObject1).ordinal() != j) {
+        if (((com.tencent.mm.xeffect.b.a)localObject1).ordinal() != j) {
           break label212;
         }
       }
     }
     for (;;)
     {
-      locala.Rxh = ((a.a)localObject1);
+      localb.YYG = ((com.tencent.mm.xeffect.b.a)localObject1);
       paramJSONObject = paramJSONObject.optJSONArray("filterWeights");
       if (paramJSONObject == null) {
         break label227;
       }
-      locala.Rxi = new float[paramJSONObject.length()];
+      localb.YYH = new float[paramJSONObject.length()];
       j = paramJSONObject.length();
       i = 0;
       while (i < j)
       {
-        locala.Rxi[i] = ((float)paramJSONObject.getDouble(i));
+        localb.YYH[i] = ((float)paramJSONObject.getDouble(i));
         i += 1;
       }
       i += 1;
       break;
-      localObject1 = a.c.RxE;
+      localObject1 = b.c.YZd;
       break label62;
       label212:
       i += 1;
       break label115;
       label219:
-      localObject1 = a.a.Rxj;
+      localObject1 = com.tencent.mm.xeffect.b.a.YYI;
     }
     label227:
-    AppMethodBeat.o(191760);
-    return locala;
+    AppMethodBeat.o(247198);
+    return localb;
   }
   
-  private static void fDX()
+  private static void gvX()
   {
-    AppMethodBeat.i(191754);
-    Object localObject1 = (List)GLx.get(Integer.valueOf(n.a.Ryt.ordinal()));
+    AppMethodBeat.i(247184);
+    Object localObject1 = (List)NyX.get(Integer.valueOf(n.a.Zab.ordinal()));
     Object localObject2;
     int i;
     if (localObject1 != null)
@@ -360,7 +362,7 @@ public final class b
         break label200;
       }
       localObject1 = ((Iterator)localObject2).next();
-      if (((com.tencent.mm.xeffect.a)localObject1).Rxf != a.c.RxD) {
+      if (((com.tencent.mm.xeffect.b)localObject1).YYE != b.c.YZc) {
         break label195;
       }
       i = 1;
@@ -369,21 +371,21 @@ public final class b
         break label198;
       }
       label74:
-      localObject2 = (com.tencent.mm.xeffect.a)localObject1;
+      localObject2 = (com.tencent.mm.xeffect.b)localObject1;
       if (localObject2 != null)
       {
-        if (((com.tencent.mm.xeffect.a)localObject2).Rxi.length != GLE.length) {
+        if (((com.tencent.mm.xeffect.b)localObject2).YYH.length != Nze.length) {
           break label205;
         }
-        localObject1 = ((com.tencent.mm.xeffect.a)localObject2).Rxi;
-        p.g(localObject1, "it.filterWeights");
-        e.f((float[])localObject1, GLE);
+        localObject1 = ((com.tencent.mm.xeffect.b)localObject2).YYH;
+        p.j(localObject1, "it.filterWeights");
+        e.e((float[])localObject1, Nze);
       }
     }
     for (;;)
     {
-      Log.i("MicroMsg.ImageEnhancementFilterSettingLogic", "loadFaceBeautySettings, skinSmooth:" + GLy + ", skinBright:" + GLB + ", faceMorph:" + GLA + ", eyeBright:" + GLC + ", eyeMorph:" + GLz);
-      AppMethodBeat.o(191754);
+      Log.i("MicroMsg.ImageEnhancementFilterSettingLogic", "loadFaceBeautySettings, skinSmooth:" + NyY + ", skinBright:" + Nzb + ", faceMorph:" + Nza + ", eyeBright:" + Nzc + ", eyeMorph:" + NyZ);
+      AppMethodBeat.o(247184);
       return;
       label195:
       i = 0;
@@ -394,40 +396,40 @@ public final class b
       localObject1 = null;
       break label74;
       label205:
-      ((com.tencent.mm.xeffect.a)localObject2).Rxi = new float[GLE.length];
-      localObject1 = GLE;
-      localObject2 = ((com.tencent.mm.xeffect.a)localObject2).Rxi;
-      p.g(localObject2, "it.filterWeights");
-      e.f((float[])localObject1, (float[])localObject2);
+      ((com.tencent.mm.xeffect.b)localObject2).YYH = new float[Nze.length];
+      localObject1 = Nze;
+      localObject2 = ((com.tencent.mm.xeffect.b)localObject2).YYH;
+      p.j(localObject2, "it.filterWeights");
+      e.e((float[])localObject1, (float[])localObject2);
     }
   }
   
-  private final HashMap<Integer, List<com.tencent.mm.xeffect.a>> fDZ()
+  private final HashMap<Integer, List<com.tencent.mm.xeffect.b>> gvZ()
   {
-    AppMethodBeat.i(191766);
+    AppMethodBeat.i(247209);
     try
     {
-      HashMap localHashMap1 = K(new JSONArray(com.tencent.mm.vfs.s.boY(GLv)));
-      AppMethodBeat.o(191766);
+      HashMap localHashMap1 = M(new JSONArray(u.bBS(NyV)));
+      AppMethodBeat.o(247209);
       return localHashMap1;
     }
     catch (Exception localException)
     {
-      HashMap localHashMap2 = GLw;
-      AppMethodBeat.o(191766);
+      HashMap localHashMap2 = NyW;
+      AppMethodBeat.o(247209);
       return localHashMap2;
     }
   }
   
-  private final void fEa()
+  private final void gwa()
   {
-    AppMethodBeat.i(191767);
-    int m = b.a.snn.ordinal();
+    AppMethodBeat.i(247211);
+    int m = com.tencent.mm.plugin.expt.b.b.a.vYz.ordinal();
     JSONArray localJSONArray = new JSONArray();
     int i = 0;
     while (i < 5)
     {
-      localObject3 = b.a.values();
+      localObject3 = com.tencent.mm.plugin.expt.b.b.a.values();
       int n = localObject3.length;
       int j = 0;
       Object localObject1;
@@ -435,16 +437,16 @@ public final class b
       if (j < n)
       {
         localObject1 = localObject3[j];
-        if (((b.a)localObject1).ordinal() == m + i)
+        if (((com.tencent.mm.plugin.expt.b.b.a)localObject1).ordinal() == m + i)
         {
           k = 1;
           if (k == 0) {
             break label256;
           }
           label72:
-          localObject1 = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a((b.a)localObject1, "");
+          localObject1 = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a((com.tencent.mm.plugin.expt.b.b.a)localObject1, "");
           Log.i("MicroMsg.ImageEnhancementFilterSettingLogic", "scene_config_" + i + " json:" + (String)localObject1);
-          p.g(localObject1, "sceneJson");
+          p.j(localObject1, "sceneJson");
           if (((CharSequence)localObject1).length() <= 0) {
             break label269;
           }
@@ -488,66 +490,66 @@ public final class b
       label276:
       i += 1;
     }
-    Log.i("MicroMsg.ImageEnhancementFilterSettingLogic", "finalConfigJson:" + localJSONArray + ", save to file:" + GLv);
-    Object localObject2 = GLv;
+    Log.i("MicroMsg.ImageEnhancementFilterSettingLogic", "finalConfigJson:" + localJSONArray + ", save to file:" + NyV);
+    Object localObject2 = NyV;
     Object localObject3 = localJSONArray.toString();
-    p.g(localObject3, "finalConfigJson.toString()");
+    p.j(localObject3, "finalConfigJson.toString()");
     Charset localCharset = d.UTF_8;
     if (localObject3 == null)
     {
       localObject2 = new t("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(191767);
+      AppMethodBeat.o(247211);
       throw ((Throwable)localObject2);
     }
     localObject3 = ((String)localObject3).getBytes(localCharset);
-    p.g(localObject3, "(this as java.lang.String).getBytes(charset)");
-    com.tencent.mm.vfs.s.C((String)localObject2, (byte[])localObject3);
-    GLx.clear();
-    GLx.putAll((Map)K(localJSONArray));
-    AppMethodBeat.o(191767);
+    p.j(localObject3, "(this as java.lang.String).getBytes(charset)");
+    u.H((String)localObject2, (byte[])localObject3);
+    NyX.clear();
+    NyX.putAll((Map)M(localJSONArray));
+    AppMethodBeat.o(247211);
   }
   
-  private static boolean fEb()
+  private static boolean gwb()
   {
-    AppMethodBeat.i(191768);
+    AppMethodBeat.i(247214);
     if (MultiProcessMMKV.getMMKV("FINDER_CONFIG_USER_KEY").getInt("USERINFO_FINDER_SHOW_IMAGE_ENHANCEMENT_SETTING_INT_SYNC", 0) == 1)
     {
-      AppMethodBeat.o(191768);
+      AppMethodBeat.o(247214);
       return true;
     }
-    AppMethodBeat.o(191768);
+    AppMethodBeat.o(247214);
     return false;
   }
   
-  public static boolean fEc()
+  public static boolean gwc()
   {
-    AppMethodBeat.i(191769);
+    AppMethodBeat.i(247215);
     if (MultiProcessMMKV.getMMKV("FINDER_CONFIG_USER_KEY").getInt("USERINFO_FINDER_SHOW_IMAGE_ENHANCEMENT_SCENE_INT_SYNC", 0) == 1)
     {
-      AppMethodBeat.o(191769);
+      AppMethodBeat.o(247215);
       return true;
     }
-    AppMethodBeat.o(191769);
+    AppMethodBeat.o(247215);
     return false;
   }
   
-  private static JSONArray hV(List<? extends com.tencent.mm.xeffect.a> paramList)
+  private static JSONArray iI(List<? extends com.tencent.mm.xeffect.b> paramList)
   {
-    AppMethodBeat.i(191761);
-    p.h(paramList, "filtersInfo");
+    AppMethodBeat.i(247199);
+    p.k(paramList, "filtersInfo");
     JSONArray localJSONArray = new JSONArray();
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      localJSONArray.put(a((com.tencent.mm.xeffect.a)paramList.next()));
+      localJSONArray.put(a((com.tencent.mm.xeffect.b)paramList.next()));
     }
-    AppMethodBeat.o(191761);
+    AppMethodBeat.o(247199);
     return localJSONArray;
   }
   
-  private static JSONArray q(HashMap<Integer, List<com.tencent.mm.xeffect.a>> paramHashMap)
+  private static JSONArray t(HashMap<Integer, List<com.tencent.mm.xeffect.b>> paramHashMap)
   {
-    AppMethodBeat.i(191763);
-    p.h(paramHashMap, "sceneFiltersInfoMap");
+    AppMethodBeat.i(247203);
+    p.k(paramHashMap, "sceneFiltersInfoMap");
     JSONArray localJSONArray = new JSONArray();
     paramHashMap = ((Map)paramHashMap).entrySet().iterator();
     while (paramHashMap.hasNext())
@@ -555,73 +557,73 @@ public final class b
       Map.Entry localEntry = (Map.Entry)paramHashMap.next();
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("scene", ((Number)localEntry.getKey()).intValue());
-      localJSONObject.put("filters", hV((List)localEntry.getValue()));
+      localJSONObject.put("filters", iI((List)localEntry.getValue()));
       localJSONArray.put(localJSONObject);
     }
-    AppMethodBeat.o(191763);
+    AppMethodBeat.o(247203);
     return localJSONArray;
   }
   
-  private void r(HashMap<Integer, List<com.tencent.mm.xeffect.a>> paramHashMap)
+  private void u(HashMap<Integer, List<com.tencent.mm.xeffect.b>> paramHashMap)
   {
-    AppMethodBeat.i(191765);
-    p.h(paramHashMap, "infoMap");
-    Object localObject = q(paramHashMap);
-    paramHashMap = GLv;
+    AppMethodBeat.i(247207);
+    p.k(paramHashMap, "infoMap");
+    Object localObject = t(paramHashMap);
+    paramHashMap = NyV;
     localObject = ((JSONArray)localObject).toString();
-    p.g(localObject, "json.toString()");
+    p.j(localObject, "json.toString()");
     Charset localCharset = d.UTF_8;
     if (localObject == null)
     {
       paramHashMap = new t("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(191765);
+      AppMethodBeat.o(247207);
       throw paramHashMap;
     }
     localObject = ((String)localObject).getBytes(localCharset);
-    p.g(localObject, "(this as java.lang.String).getBytes(charset)");
-    com.tencent.mm.vfs.s.C(paramHashMap, (byte[])localObject);
-    AppMethodBeat.o(191765);
+    p.j(localObject, "(this as java.lang.String).getBytes(charset)");
+    u.H(paramHashMap, (byte[])localObject);
+    AppMethodBeat.o(247207);
   }
   
-  public final void cMT()
+  public final void dbH()
   {
-    AppMethodBeat.i(191753);
-    if (fEb())
+    AppMethodBeat.i(247179);
+    if (gwb())
     {
-      HashMap localHashMap = fDZ();
+      HashMap localHashMap = gvZ();
       if (localHashMap != null)
       {
-        GLx.clear();
-        GLx.putAll((Map)localHashMap);
-        fDX();
-        AppMethodBeat.o(191753);
+        NyX.clear();
+        NyX.putAll((Map)localHashMap);
+        gvX();
+        AppMethodBeat.o(247179);
         return;
       }
-      AppMethodBeat.o(191753);
+      AppMethodBeat.o(247179);
       return;
     }
-    fEa();
-    AppMethodBeat.o(191753);
+    gwa();
+    AppMethodBeat.o(247179);
   }
   
-  public final void fDY()
+  public final void gvY()
   {
-    AppMethodBeat.i(191757);
-    if (fEb())
+    AppMethodBeat.i(247190);
+    if (gwb())
     {
-      fDX();
-      r(GLx);
+      gvX();
+      u(NyX);
     }
-    String str = com.tencent.mm.vfs.s.boY(GLv);
-    com.tencent.mm.plugin.vlog.model.local.a locala = com.tencent.mm.plugin.vlog.model.local.a.GAD;
-    p.g(str, "settingsJson");
-    com.tencent.mm.plugin.vlog.model.local.a.aUd(str);
-    AppMethodBeat.o(191757);
+    String str = u.bBS(NyV);
+    a locala = a.Nol;
+    p.j(str, "settingsJson");
+    a.bfA(str);
+    AppMethodBeat.o(247190);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.imageenhancement.b
  * JD-Core Version:    0.7.0.1
  */

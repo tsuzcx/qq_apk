@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.mobile.verify;
 
 import android.os.Bundle;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
@@ -22,46 +22,46 @@ public class PluginMobileVerify
   
   public PluginMobileVerify()
   {
-    AppMethodBeat.i(224125);
+    AppMethodBeat.i(187517);
     this.callbacks = new ConcurrentHashMap();
-    AppMethodBeat.o(224125);
+    AppMethodBeat.o(187517);
   }
   
   public void execute(g paramg) {}
   
   public a.a getCallback(String paramString)
   {
-    AppMethodBeat.i(224126);
+    AppMethodBeat.i(187522);
     paramString = (a.a)this.callbacks.get(paramString);
-    AppMethodBeat.o(224126);
+    AppMethodBeat.o(187522);
     return paramString;
   }
   
   public void getMobileToken(String paramString1, String paramString2, a.a parama)
   {
-    AppMethodBeat.i(224127);
+    AppMethodBeat.i(187530);
     if (Util.isNullOrNil(paramString1))
     {
       Log.w("MicroMsg.PluginMobileVerify", "sessionId  is empty!");
       paramString2 = new Bundle();
       paramString2.putString("session", paramString1);
-      parama.F(paramString2);
-      AppMethodBeat.o(224127);
+      parama.L(paramString2);
+      AppMethodBeat.o(187530);
       return;
     }
     Log.i("MicroMsg.PluginMobileVerify", "getMobileNumber %s, callback %s", new Object[] { paramString1, parama });
     if (parama != null) {
       this.callbacks.put(paramString1, parama);
     }
-    h.RTc.aX(new b(paramString1, paramString2));
-    AppMethodBeat.o(224127);
+    h.ZvG.be(new b(paramString1, paramString2));
+    AppMethodBeat.o(187530);
   }
   
   public void removeCallback(String paramString)
   {
-    AppMethodBeat.i(224128);
+    AppMethodBeat.i(187532);
     this.callbacks.remove(paramString);
-    AppMethodBeat.o(224128);
+    AppMethodBeat.o(187532);
   }
 }
 

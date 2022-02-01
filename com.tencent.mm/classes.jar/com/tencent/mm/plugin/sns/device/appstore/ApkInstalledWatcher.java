@@ -20,7 +20,7 @@ public abstract class ApkInstalledWatcher
     return "";
   }
   
-  protected abstract boolean aOB(String paramString);
+  protected abstract boolean aZx(String paramString);
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
@@ -32,7 +32,7 @@ public abstract class ApkInstalledWatcher
         {
           paramContext = aW(paramIntent);
           if (!TextUtils.isEmpty(paramContext)) {
-            aOB(paramContext);
+            aZx(paramContext);
           }
         }
         else if ("android.intent.action.PACKAGE_REMOVED".equals(paramContext))
@@ -47,7 +47,7 @@ public abstract class ApkInstalledWatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.device.appstore.ApkInstalledWatcher
  * JD-Core Version:    0.7.0.1
  */

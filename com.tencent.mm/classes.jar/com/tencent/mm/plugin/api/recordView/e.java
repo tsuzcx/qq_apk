@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.e;
 public final class e
   implements MMSightRecordView.b
 {
-  public final MMSightRecordView.e bqH()
+  public final MMSightRecordView.e bBw()
   {
     AppMethodBeat.i(89219);
     f localf = new f();

@@ -5,52 +5,45 @@ import com.tencent.mm.dynamicbackground.a.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/taskbar/ui/dynamicbackground/DynamicBgLogImpl;", "Lcom/tencent/mm/dynamicbackground/util/DynamicBgLog$LogImp;", "()V", "d", "", "tag", "", "log", "e", "i", "v", "w", "plugin-taskbar_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/taskbar/ui/dynamicbackground/DynamicBgLogImpl;", "Lcom/tencent/mm/dynamicbackground/util/DynamicBgLog$LogImp;", "()V", "d", "", "tag", "", "log", "e", "i", "v", "w", "plugin-taskbar_release"})
 public final class d
   implements c.a
 {
-  public static final d FVe;
+  public static final d Mqz;
   
   static
   {
-    AppMethodBeat.i(238477);
-    FVe = new d();
-    AppMethodBeat.o(238477);
-  }
-  
-  public final void d(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(238476);
-    Log.d(paramString1, paramString2);
-    AppMethodBeat.o(238476);
+    AppMethodBeat.i(214948);
+    Mqz = new d();
+    AppMethodBeat.o(214948);
   }
   
   public final void e(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(238475);
+    AppMethodBeat.i(214945);
     Log.e(paramString1, paramString2);
-    AppMethodBeat.o(238475);
+    AppMethodBeat.o(214945);
   }
   
   public final void i(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(238472);
+    AppMethodBeat.i(214938);
     Log.i(paramString1, paramString2);
-    AppMethodBeat.o(238472);
+    AppMethodBeat.o(214938);
   }
   
   public final void v(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(238474);
+    AppMethodBeat.i(214944);
     Log.v(paramString1, paramString2);
-    AppMethodBeat.o(238474);
+    AppMethodBeat.o(214944);
   }
   
   public final void w(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(238473);
+    AppMethodBeat.i(214942);
     Log.w(paramString1, paramString2);
-    AppMethodBeat.o(238473);
+    AppMethodBeat.o(214942);
   }
 }
 

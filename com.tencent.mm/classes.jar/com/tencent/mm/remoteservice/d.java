@@ -17,22 +17,22 @@ import java.util.List;
 
 public final class d
 {
-  List<Runnable> NCB;
-  c NCC;
+  private List<Runnable> UQd;
+  private c UQe;
   private Context context;
-  private ServiceConnection qmC;
+  private ServiceConnection tLt;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(152748);
-    this.NCB = new LinkedList();
-    this.qmC = new ServiceConnection()
+    this.UQd = new LinkedList();
+    this.tLt = new ServiceConnection()
     {
       public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
       {
         AppMethodBeat.i(152747);
-        d.this.NCC = c.a.L(paramAnonymousIBinder);
-        paramAnonymousComponentName = (Runnable[])d.this.NCB.toArray(new Runnable[d.this.NCB.size()]);
+        d.a(d.this, c.a.P(paramAnonymousIBinder));
+        paramAnonymousComponentName = (Runnable[])d.a(d.this).toArray(new Runnable[d.a(d.this).size()]);
         int j = paramAnonymousComponentName.length;
         int i = 0;
         while (i < j)
@@ -43,13 +43,15 @@ public final class d
           }
           i += 1;
         }
-        d.this.NCB.clear();
+        d.a(d.this).clear();
         AppMethodBeat.o(152747);
       }
       
       public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
       {
-        d.this.NCC = null;
+        AppMethodBeat.i(224901);
+        d.a(d.this, null);
+        AppMethodBeat.o(224901);
       }
     };
     Context localContext = paramContext;
@@ -66,7 +68,7 @@ public final class d
     if (isConnected()) {
       try
       {
-        this.NCC.a(paramb.getClass().getName(), paramString, paramBundle, paramb);
+        this.UQe.a(paramb.getClass().getName(), paramString, paramBundle, paramb);
         AppMethodBeat.o(152752);
         return;
       }
@@ -93,16 +95,16 @@ public final class d
       AppMethodBeat.o(152749);
       return;
     }
-    this.NCB.add(paramRunnable);
+    this.UQd.add(paramRunnable);
     paramRunnable = new Intent(this.context, RemoteService.class);
-    this.context.bindService(paramRunnable, this.qmC, 1);
+    this.context.bindService(paramRunnable, this.tLt, 1);
     AppMethodBeat.o(152749);
   }
   
   public final boolean isConnected()
   {
     AppMethodBeat.i(152750);
-    if ((this.NCC != null) && (this.NCC.asBinder().isBinderAlive()))
+    if ((this.UQe != null) && (this.UQe.asBinder().isBinderAlive()))
     {
       AppMethodBeat.o(152750);
       return true;
@@ -114,10 +116,10 @@ public final class d
   public final void release()
   {
     AppMethodBeat.i(152751);
-    if ((this.NCC != null) && (this.qmC != null))
+    if ((this.UQe != null) && (this.tLt != null))
     {
-      this.context.unbindService(this.qmC);
-      this.NCC = null;
+      this.context.unbindService(this.tLt);
+      this.UQe = null;
     }
     this.context = null;
     AppMethodBeat.o(152751);
@@ -125,7 +127,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.remoteservice.d
  * JD-Core Version:    0.7.0.1
  */

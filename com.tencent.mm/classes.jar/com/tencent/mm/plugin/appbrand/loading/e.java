@@ -8,21 +8,21 @@ import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/loading/PendingIntentTask;", "", "ctx", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "initConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "statObject", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "(Landroid/content/Context;Landroid/content/Intent;Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;)V", "getCtx", "()Landroid/content/Context;", "setCtx", "(Landroid/content/Context;)V", "getInitConfig", "()Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "getIntent", "()Landroid/content/Intent;", "setIntent", "(Landroid/content/Intent;)V", "getStatObject", "()Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/loading/PendingIntentTask;", "", "ctx", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "initConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "statObject", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "(Landroid/content/Context;Landroid/content/Intent;Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;)V", "getCtx", "()Landroid/content/Context;", "setCtx", "(Landroid/content/Context;)V", "getInitConfig", "()Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "getIntent", "()Landroid/content/Intent;", "setIntent", "(Landroid/content/Intent;)V", "getStatObject", "()Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-appbrand-integration_release"})
 public final class e
 {
   Context ctx;
-  public final AppBrandStatObject cyA;
+  public final AppBrandStatObject cxf;
   public Intent intent;
-  public final AppBrandInitConfigWC kEG;
+  public final AppBrandInitConfigWC nyg;
   
   public e(Context paramContext, Intent paramIntent, AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
     AppMethodBeat.i(50841);
     this.ctx = paramContext;
     this.intent = paramIntent;
-    this.kEG = paramAppBrandInitConfigWC;
-    this.cyA = paramAppBrandStatObject;
+    this.nyg = paramAppBrandInitConfigWC;
+    this.cxf = paramAppBrandStatObject;
     AppMethodBeat.o(50841);
   }
   
@@ -34,7 +34,7 @@ public final class e
       if ((paramObject instanceof e))
       {
         paramObject = (e)paramObject;
-        if ((!p.j(this.ctx, paramObject.ctx)) || (!p.j(this.intent, paramObject.intent)) || (!p.j(this.kEG, paramObject.kEG)) || (!p.j(this.cyA, paramObject.cyA))) {}
+        if ((!p.h(this.ctx, paramObject.ctx)) || (!p.h(this.intent, paramObject.intent)) || (!p.h(this.nyg, paramObject.nyg)) || (!p.h(this.cxf, paramObject.cxf))) {}
       }
     }
     else
@@ -62,7 +62,7 @@ public final class e
       }
       j = localObject.hashCode();
       label42:
-      localObject = this.kEG;
+      localObject = this.nyg;
       if (localObject == null) {
         break label110;
       }
@@ -71,7 +71,7 @@ public final class e
     label110:
     for (int k = localObject.hashCode();; k = 0)
     {
-      localObject = this.cyA;
+      localObject = this.cxf;
       if (localObject != null) {
         m = localObject.hashCode();
       }
@@ -87,14 +87,14 @@ public final class e
   public final String toString()
   {
     AppMethodBeat.i(50842);
-    String str = "PendingIntentTask(ctx=" + this.ctx + ", intent=" + this.intent + ", initConfig=" + this.kEG + ", statObject=" + this.cyA + ")";
+    String str = "PendingIntentTask(ctx=" + this.ctx + ", intent=" + this.intent + ", initConfig=" + this.nyg + ", statObject=" + this.cxf + ")";
     AppMethodBeat.o(50842);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.loading.e
  * JD-Core Version:    0.7.0.1
  */

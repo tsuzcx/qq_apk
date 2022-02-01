@@ -9,12 +9,12 @@ final class s$b
   extends q
   implements b<a, Integer>
 {
-  public static final b Thn;
+  public static final b aaKh;
   
   static
   {
     AppMethodBeat.i(56855);
-    Thn = new b();
+    aaKh = new b();
     AppMethodBeat.o(56855);
   }
   
@@ -25,7 +25,7 @@ final class s$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlin.l.b.a.b.b.s.b
  * JD-Core Version:    0.7.0.1
  */

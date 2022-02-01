@@ -6,23 +6,23 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  public static boolean kS(String paramString1, String paramString2)
+  public static boolean lo(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(203998);
+    AppMethodBeat.i(269503);
     if ((TextUtils.isEmpty(paramString1)) || (!paramString1.equals(paramString2)))
     {
       Log.d("SnsCardAdTagUtils", "should refresh adTag");
-      AppMethodBeat.o(203998);
+      AppMethodBeat.o(269503);
       return false;
     }
     Log.d("SnsCardAdTagUtils", "should not refresh adTag, show origin adTag");
-    AppMethodBeat.o(203998);
+    AppMethodBeat.o(269503);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,46 @@
 package kotlin.l.b.a.b.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l.b.a.b.h.j.a;
-import kotlin.l.b.a.b.h.j.b;
+import kotlin.l.b.a.b.h.k.a;
+import kotlin.l.b.a.b.h.k.b;
 
 public enum a$j
-  implements j.a
+  implements k.a
 {
-  private static j.b<j> Txp;
+  private static k.b<j> abag;
   private final int value;
   
   static
   {
     AppMethodBeat.i(58626);
-    TyI = new j("FINAL", 0, 0);
-    TyJ = new j("OPEN", 1, 1);
-    TyK = new j("ABSTRACT", 2, 2);
-    TyL = new j("SEALED", 3, 3);
-    TyM = new j[] { TyI, TyJ, TyK, TyL };
-    Txp = new j.b() {};
+    abbz = new j("FINAL", 0, 0);
+    abbA = new j("OPEN", 1, 1);
+    abbB = new j("ABSTRACT", 2, 2);
+    abbC = new j("SEALED", 3, 3);
+    abbD = new j[] { abbz, abbA, abbB, abbC };
+    abag = new k.b() {};
     AppMethodBeat.o(58626);
   }
   
-  private a$j(int paramInt1, int paramInt2)
+  private a$j(int paramInt)
   {
-    this.value = paramInt1;
+    this.value = paramInt;
   }
   
-  public static j auu(int paramInt)
+  public static j aEo(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 0: 
-      return TyI;
+      return abbz;
     case 1: 
-      return TyJ;
+      return abbA;
     case 2: 
-      return TyK;
+      return abbB;
     }
-    return TyL;
+    return abbC;
   }
   
   public final int getNumber()
@@ -50,7 +50,7 @@ public enum a$j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.e.a.j
  * JD-Core Version:    0.7.0.1
  */

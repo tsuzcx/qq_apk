@@ -1,44 +1,45 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.InputFilter.LengthFilter;
+import android.text.TextWatcher;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.MMEntryLock;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.widget.MMEditText.b;
 
 public final class m
 {
-  public static boolean iC(Context paramContext)
+  public static InputFilter[] Rxd;
+  
+  static
   {
-    AppMethodBeat.i(152416);
-    if (!MMEntryLock.lock("network_doctor_shown"))
+    AppMethodBeat.i(141184);
+    Rxd = new InputFilter[] { new InputFilter.LengthFilter(50) };
+    AppMethodBeat.o(141184);
+  }
+  
+  public static final class a
+    implements TextWatcher
+  {
+    public MMEditText.b Rxe = null;
+    
+    public final void afterTextChanged(Editable paramEditable) {}
+    
+    public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+    
+    public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.o(152416);
-      return false;
-    }
-    h.a(paramContext, 2131763512, 2131755998, new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(152415);
-        paramAnonymousDialogInterface = this.val$context;
-        Object localObject = new Intent("android.settings.WIRELESS_SETTINGS");
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/pluginsdk/ui/tools/NetworkErrAlert$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/pluginsdk/ui/tools/NetworkErrAlert$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        AppMethodBeat.o(152415);
+      AppMethodBeat.i(141183);
+      if (this.Rxe != null) {
+        this.Rxe.bzd();
       }
-    }, null);
-    AppMethodBeat.o(152416);
-    return true;
+      AppMethodBeat.o(141183);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.m
  * JD-Core Version:    0.7.0.1
  */

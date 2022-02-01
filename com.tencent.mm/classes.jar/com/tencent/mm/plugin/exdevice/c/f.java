@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.exdevice.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.plugin.exdevice.f.k;
 import com.tencent.mm.plugin.exdevice.f.l;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -24,18 +24,18 @@ public final class f
     AppMethodBeat.i(23154);
     Log.i("MicroMsg.exdevice.ExDeviceCmdSendDataToManufacturer", "setSendDataToManufacturerResponse ret = " + paramInt + paramString);
     l locall = new l();
-    locall.rCc = aQ(paramInt, paramString);
+    locall.vhK = aP(paramInt, paramString);
     paramString = paramArrayOfByte;
     if (paramArrayOfByte == null) {
       paramString = new byte[0];
     }
-    locall.oTm = new b(paramString);
-    this.rxz = locall;
-    this.rxx = 20002;
+    locall.rVk = new b(paramString);
+    this.vdf = locall;
+    this.vdd = 20002;
     AppMethodBeat.o(23154);
   }
   
-  protected final a bu(byte[] paramArrayOfByte)
+  protected final a bI(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23155);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
@@ -48,7 +48,7 @@ public final class f
     try
     {
       localk.parseFrom(paramArrayOfByte);
-      this.rxA = localk;
+      this.vdg = localk;
       Log.i("MicroMsg.exdevice.ExDeviceCmdSendDataToManufacturer", "SendDataToManufacturerSvrRequest cmd has been received");
       AppMethodBeat.o(23155);
       return localk;
@@ -64,7 +64,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.c.f
  * JD-Core Version:    0.7.0.1
  */

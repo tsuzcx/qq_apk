@@ -3,68 +3,96 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bd
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String AZI;
-  public String IconUrl;
-  public String Name;
-  public String iAc;
-  public int oUv;
+  public long RFU;
+  public String RFV;
+  public String RFW;
+  public String RFX;
+  public String RFY;
+  public String RFZ;
+  public String city;
+  public double latitude;
+  public double longitude;
+  public String province;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91340);
+    AppMethodBeat.i(91341);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Name != null) {
-        paramVarArgs.e(1, this.Name);
+      if (this.province != null) {
+        paramVarArgs.f(1, this.province);
       }
-      if (this.AZI != null) {
-        paramVarArgs.e(2, this.AZI);
+      if (this.city != null) {
+        paramVarArgs.f(2, this.city);
       }
-      paramVarArgs.aM(3, this.oUv);
-      if (this.iAc != null) {
-        paramVarArgs.e(4, this.iAc);
+      paramVarArgs.e(3, this.latitude);
+      paramVarArgs.e(4, this.longitude);
+      paramVarArgs.bm(5, this.RFU);
+      if (this.RFV != null) {
+        paramVarArgs.f(6, this.RFV);
       }
-      if (this.IconUrl != null) {
-        paramVarArgs.e(5, this.IconUrl);
+      if (this.RFW != null) {
+        paramVarArgs.f(7, this.RFW);
       }
-      AppMethodBeat.o(91340);
+      if (this.RFX != null) {
+        paramVarArgs.f(8, this.RFX);
+      }
+      if (this.RFY != null) {
+        paramVarArgs.f(9, this.RFY);
+      }
+      if (this.RFZ != null) {
+        paramVarArgs.f(10, this.RFZ);
+      }
+      AppMethodBeat.o(91341);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Name == null) {
-        break label438;
+      if (this.province == null) {
+        break label716;
       }
     }
-    label438:
-    for (paramInt = g.a.a.b.b.a.f(1, this.Name) + 0;; paramInt = 0)
+    label716:
+    for (paramInt = g.a.a.b.b.a.g(1, this.province) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.AZI != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.AZI);
+      if (this.city != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.city);
       }
-      i += g.a.a.b.b.a.bu(3, this.oUv);
+      i = i + (g.a.a.b.b.a.gL(3) + 8) + (g.a.a.b.b.a.gL(4) + 8) + g.a.a.b.b.a.p(5, this.RFU);
       paramInt = i;
-      if (this.iAc != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.iAc);
+      if (this.RFV != null) {
+        paramInt = i + g.a.a.b.b.a.g(6, this.RFV);
       }
       i = paramInt;
-      if (this.IconUrl != null) {
-        i = paramInt + g.a.a.b.b.a.f(5, this.IconUrl);
+      if (this.RFW != null) {
+        i = paramInt + g.a.a.b.b.a.g(7, this.RFW);
       }
-      AppMethodBeat.o(91340);
-      return i;
+      paramInt = i;
+      if (this.RFX != null) {
+        paramInt = i + g.a.a.b.b.a.g(8, this.RFX);
+      }
+      i = paramInt;
+      if (this.RFY != null) {
+        i = paramInt + g.a.a.b.b.a.g(9, this.RFY);
+      }
+      paramInt = i;
+      if (this.RFZ != null) {
+        paramInt = i + g.a.a.b.b.a.g(10, this.RFZ);
+      }
+      AppMethodBeat.o(91341);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(91340);
+        AppMethodBeat.o(91341);
         return 0;
       }
       if (paramInt == 3)
@@ -74,30 +102,50 @@ public final class bd
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(91340);
+          AppMethodBeat.o(91341);
           return -1;
         case 1: 
-          localbd.Name = locala.UbS.readString();
-          AppMethodBeat.o(91340);
+          localbd.province = locala.abFh.readString();
+          AppMethodBeat.o(91341);
           return 0;
         case 2: 
-          localbd.AZI = locala.UbS.readString();
-          AppMethodBeat.o(91340);
+          localbd.city = locala.abFh.readString();
+          AppMethodBeat.o(91341);
           return 0;
         case 3: 
-          localbd.oUv = locala.UbS.zi();
-          AppMethodBeat.o(91340);
+          localbd.latitude = Double.longBitsToDouble(locala.abFh.AP());
+          AppMethodBeat.o(91341);
           return 0;
         case 4: 
-          localbd.iAc = locala.UbS.readString();
-          AppMethodBeat.o(91340);
+          localbd.longitude = Double.longBitsToDouble(locala.abFh.AP());
+          AppMethodBeat.o(91341);
+          return 0;
+        case 5: 
+          localbd.RFU = locala.abFh.AN();
+          AppMethodBeat.o(91341);
+          return 0;
+        case 6: 
+          localbd.RFV = locala.abFh.readString();
+          AppMethodBeat.o(91341);
+          return 0;
+        case 7: 
+          localbd.RFW = locala.abFh.readString();
+          AppMethodBeat.o(91341);
+          return 0;
+        case 8: 
+          localbd.RFX = locala.abFh.readString();
+          AppMethodBeat.o(91341);
+          return 0;
+        case 9: 
+          localbd.RFY = locala.abFh.readString();
+          AppMethodBeat.o(91341);
           return 0;
         }
-        localbd.IconUrl = locala.UbS.readString();
-        AppMethodBeat.o(91340);
+        localbd.RFZ = locala.abFh.readString();
+        AppMethodBeat.o(91341);
         return 0;
       }
-      AppMethodBeat.o(91340);
+      AppMethodBeat.o(91341);
       return -1;
     }
   }

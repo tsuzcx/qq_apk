@@ -14,14 +14,14 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasView;", "Landroid/widget/FrameLayout;", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasLifecycleObserver;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "canvasId", "getCanvasId", "()Ljava/lang/String;", "setCanvasId", "(Ljava/lang/String;)V", "jsEngine", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;", "getJsEngine", "()Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;", "lastCanvasId", "init", "", "type", "data", "onAttachedToWindow", "onDestroy", "onPause", "onResume", "webview-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasView;", "Landroid/widget/FrameLayout;", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasLifecycleObserver;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "canvasId", "getCanvasId", "()Ljava/lang/String;", "setCanvasId", "(Ljava/lang/String;)V", "jsEngine", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;", "getJsEngine", "()Lcom/tencent/mm/plugin/webcanvas/WebCanvasJsEngine;", "lastCanvasId", "init", "", "type", "data", "onAttachedToWindow", "onDestroy", "onPause", "onResume", "webview-sdk_release"})
 public abstract class WebCanvasView
   extends FrameLayout
   implements f
 {
-  private String IAQ = "none";
+  private String PuZ = "none";
   private final String TAG = "MicroMsg.WebCanvasView:" + hashCode();
-  private String lAN = "";
+  private String owd = "";
   
   public WebCanvasView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,19 +33,19 @@ public abstract class WebCanvasView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void bb(String paramString1, String paramString2, String paramString3)
+  public final void aV(String paramString1, String paramString2, String paramString3)
   {
-    p.h(paramString1, "canvasId");
-    p.h(paramString2, "type");
-    p.h(paramString3, "data");
-    this.lAN = paramString1;
+    p.k(paramString1, "canvasId");
+    p.k(paramString2, "type");
+    p.k(paramString3, "data");
+    this.owd = paramString1;
     Log.i(this.TAG, "init:#".concat(String.valueOf(paramString1)));
     Object localObject = getJsEngine();
     Context localContext = getContext();
-    p.g(localContext, "context");
+    p.j(localContext, "context");
     paramString1 = ((c)localObject).a(paramString2, paramString1, paramString3, localContext);
     paramString2 = (ViewGroup)this;
-    p.h(paramString2, "view");
+    p.k(paramString2, "view");
     paramString3 = new ArrayList();
     int i = 0;
     int j = paramString2.getChildCount();
@@ -58,48 +58,48 @@ public abstract class WebCanvasView
     while (paramString3.hasNext())
     {
       localObject = (View)paramString3.next();
-      if ((p.j(localObject, paramString1.MQ()) ^ true)) {
+      if ((p.h(localObject, paramString1.PI()) ^ true)) {
         paramString2.removeView((View)localObject);
       }
     }
-    paramString1.fWl().cna().eQ(paramString2.getContext());
-    paramString3 = paramString1.IyU;
+    paramString1.gOU().cAI().eU(paramString2.getContext());
+    paramString3 = paramString1.PsX;
     if (paramString3 != null)
     {
-      localObject = paramString3.MQ().getContext();
+      localObject = paramString3.PI().getContext();
       if (localObject == null) {
         throw new t("null cannot be cast to non-null type android.content.MutableContextWrapper");
       }
       localObject = (MutableContextWrapper)localObject;
-      Log.i(a.TAG, "reuseCanvasView:#" + paramString1.lAN + ':' + paramString3.IAR + '@' + paramString3.biJ + " sameContext:" + p.j(((MutableContextWrapper)localObject).getBaseContext(), paramString2.getContext()));
-      if (((p.j(((MutableContextWrapper)localObject).getBaseContext(), paramString2.getContext()) ^ true)) || ((p.j(paramString3.MQ().getParent(), paramString2) ^ true))) {
-        com.tencent.mm.ac.d.h((kotlin.g.a.a)new a.h(paramString3, (MutableContextWrapper)localObject, paramString1, paramString2));
+      Log.i(a.TAG, "reuseCanvasView:#" + paramString1.owd + ':' + paramString3.Pva + '@' + paramString3.aSn + " sameContext:" + p.h(((MutableContextWrapper)localObject).getBaseContext(), paramString2.getContext()));
+      if (((p.h(((MutableContextWrapper)localObject).getBaseContext(), paramString2.getContext()) ^ true)) || ((p.h(paramString3.PI().getParent(), paramString2) ^ true))) {
+        com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a.h(paramString3, (MutableContextWrapper)localObject, paramString1, paramString2));
       }
     }
     do
     {
       return;
-      paramString1.e(paramString3.MQ());
+      paramString1.f(paramString3.PI());
       return;
       paramString3 = new n(paramString1, (Context)new MutableContextWrapper(paramString2.getContext()));
-      paramString2.addView((View)paramString3.MQ());
-      paramString1.e(paramString3.MQ());
-      paramString1.IyU = paramString3;
-      paramString1 = paramString1.IyU;
+      paramString2.addView((View)paramString3.PI());
+      paramString1.f(paramString3.PI());
+      paramString1.PsX = paramString3;
+      paramString1 = paramString1.PsX;
     } while (paramString1 == null);
-    paramString1.cYb();
+    paramString1.dnQ();
   }
   
   public final String getCanvasId()
   {
-    return this.lAN;
+    return this.owd;
   }
   
   protected abstract c getJsEngine();
   
   protected void onAttachedToWindow()
   {
-    Log.i(this.TAG, "onAttachedToWindow#" + this.lAN);
+    Log.i(this.TAG, "onAttachedToWindow#" + this.owd);
     Context localContext = getContext();
     Object localObject = localContext;
     if (!(localContext instanceof g)) {
@@ -114,14 +114,14 @@ public abstract class WebCanvasView
   
   public final void onDestroy()
   {
-    if (!kotlin.n.n.aL((CharSequence)this.lAN)) {}
+    if (!kotlin.n.n.ba((CharSequence)this.owd)) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
         c localc = getJsEngine();
-        String str = this.lAN;
-        p.h(str, "canvasId");
+        String str = this.owd;
+        p.k(str, "canvasId");
         Log.i(localc.TAG, "stop #".concat(String.valueOf(str)));
         c.a(localc, "stop", str);
       }
@@ -133,11 +133,11 @@ public abstract class WebCanvasView
   
   public final void onPause()
   {
-    if (!kotlin.n.n.aL((CharSequence)this.lAN)) {}
+    if (!kotlin.n.n.ba((CharSequence)this.owd)) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        getJsEngine().hd(this.lAN);
+        getJsEngine().hQ(this.owd);
       }
       return;
     }
@@ -145,11 +145,11 @@ public abstract class WebCanvasView
   
   public final void onResume()
   {
-    if (!kotlin.n.n.aL((CharSequence)this.lAN)) {}
+    if (!kotlin.n.n.ba((CharSequence)this.owd)) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        getJsEngine().hc(this.lAN);
+        getJsEngine().hP(this.owd);
       }
       return;
     }
@@ -157,13 +157,13 @@ public abstract class WebCanvasView
   
   protected final void setCanvasId(String paramString)
   {
-    p.h(paramString, "<set-?>");
-    this.lAN = paramString;
+    p.k(paramString, "<set-?>");
+    this.owd = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webcanvas.WebCanvasView
  * JD-Core Version:    0.7.0.1
  */

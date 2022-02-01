@@ -3,20 +3,20 @@ package com.tencent.scanlib.a;
 import android.hardware.Camera;
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.scanlib.a;
+import com.tencent.scanlib.b;
 
 final class e
   implements g.a
 {
-  public static g.a.a hla()
+  public static g.a.a ioz()
   {
     AppMethodBeat.i(3545);
     g.a.a locala = new g.a.a();
     try
     {
-      locala.gII = Camera.open();
-      locala.dYT = 0;
-      if (locala.gII == null)
+      locala.jta = Camera.open();
+      locala.fSM = 0;
+      if (locala.jta == null)
       {
         AppMethodBeat.o(3545);
         return null;
@@ -29,8 +29,8 @@ final class e
     }
     if (Build.DISPLAY.startsWith("Flyme"))
     {
-      localException.dYT = 90;
-      localException.gII.setDisplayOrientation(90);
+      localException.fSM = 90;
+      localException.jta.setDisplayOrientation(90);
     }
     label176:
     for (;;)
@@ -46,8 +46,8 @@ final class e
         if (i < 7093) {
           break label176;
         }
-        localException.dYT = 90;
-        localException.gII.setDisplayOrientation(180);
+        localException.fSM = 90;
+        localException.jta.setDisplayOrientation(180);
         break;
         Object localObject = Build.DISPLAY;
         if (((String)localObject).substring(0, 0).equals("1"))
@@ -60,7 +60,7 @@ final class e
           if ((localObject == null) || (localObject.length < 2)) {
             i = -1;
           } else {
-            i = a.cL(localObject[1]);
+            i = b.df(localObject[1]);
           }
         }
       }
@@ -69,7 +69,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.scanlib.a.e
  * JD-Core Version:    0.7.0.1
  */

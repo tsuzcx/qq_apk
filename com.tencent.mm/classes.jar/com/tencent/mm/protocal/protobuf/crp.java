@@ -3,45 +3,38 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class crp
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public long MwA;
-  public String MwB;
-  public long jii;
+  public int key;
+  public int value;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(208703);
+    AppMethodBeat.i(229732);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bb(1, this.MwA);
-      paramVarArgs.bb(2, this.jii);
-      if (this.MwB != null) {
-        paramVarArgs.e(3, this.MwB);
-      }
-      AppMethodBeat.o(208703);
+      paramVarArgs.aY(1, this.key);
+      paramVarArgs.aY(2, this.value);
+      AppMethodBeat.o(229732);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.r(1, this.MwA) + 0 + g.a.a.b.b.a.r(2, this.jii);
-      paramInt = i;
-      if (this.MwB != null) {
-        paramInt = i + g.a.a.b.b.a.f(3, this.MwB);
-      }
-      AppMethodBeat.o(208703);
-      return paramInt;
+      paramInt = g.a.a.b.b.a.bM(1, this.key);
+      int i = g.a.a.b.b.a.bM(2, this.value);
+      AppMethodBeat.o(229732);
+      return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(208703);
+      AppMethodBeat.o(229732);
       return 0;
     }
     if (paramInt == 3)
@@ -51,28 +44,24 @@ public final class crp
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(208703);
+        AppMethodBeat.o(229732);
         return -1;
       case 1: 
-        localcrp.MwA = locala.UbS.zl();
-        AppMethodBeat.o(208703);
-        return 0;
-      case 2: 
-        localcrp.jii = locala.UbS.zl();
-        AppMethodBeat.o(208703);
+        localcrp.key = locala.abFh.AK();
+        AppMethodBeat.o(229732);
         return 0;
       }
-      localcrp.MwB = locala.UbS.readString();
-      AppMethodBeat.o(208703);
+      localcrp.value = locala.abFh.AK();
+      AppMethodBeat.o(229732);
       return 0;
     }
-    AppMethodBeat.o(208703);
+    AppMethodBeat.o(229732);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.crp
  * JD-Core Version:    0.7.0.1
  */

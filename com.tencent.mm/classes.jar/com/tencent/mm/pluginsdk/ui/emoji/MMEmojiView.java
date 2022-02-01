@@ -7,15 +7,14 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.plugin.emoji.PluginEmoji;
 import com.tencent.mm.plugin.gif.MMAnimateView;
 import com.tencent.mm.plugin.gif.MMGIFException;
 import com.tencent.mm.plugin.gif.b;
 import com.tencent.mm.plugin.gif.c;
-import com.tencent.mm.plugin.gif.h;
-import com.tencent.mm.pluginsdk.a.e;
+import com.tencent.mm.plugin.m.a.e;
+import com.tencent.mm.pluginsdk.b.e;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.ImgUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -26,13 +25,13 @@ import java.io.IOException;
 public class MMEmojiView
   extends MMAnimateView
 {
-  protected int Kor;
-  protected int Kos;
-  private boolean Kot;
-  private boolean Kou;
-  private boolean Kov;
+  protected int Rpd;
+  protected int Rpe;
+  private boolean Rpf;
+  private boolean Rpg;
+  private boolean Rph;
   private int mScreenWidth;
-  protected EmojiInfo rfq;
+  protected EmojiInfo uIz;
   
   public MMEmojiView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -46,9 +45,9 @@ public class MMEmojiView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(104710);
-    this.Kot = false;
-    this.Kou = false;
-    this.Kov = false;
+    this.Rpf = false;
+    this.Rpg = false;
+    this.Rph = false;
     init(paramContext);
     AppMethodBeat.o(104710);
   }
@@ -56,33 +55,33 @@ public class MMEmojiView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(104711);
-    this.Kor = paramContext.getResources().getDimensionPixelSize(2131166307);
-    this.Kos = paramContext.getResources().getDimensionPixelSize(2131166305);
-    this.mScreenWidth = a.jn(paramContext);
+    this.Rpd = paramContext.getResources().getDimensionPixelSize(a.e.emoji_view_image_size);
+    this.Rpe = paramContext.getResources().getDimensionPixelSize(a.e.emoji_view_image_min_size);
+    this.mScreenWidth = a.kr(paramContext);
     setAdjustViewBounds(true);
-    setMaxWidth(this.Kor);
-    setMaxHeight(this.Kor);
-    setMinimumWidth(this.Kos);
-    setMinimumHeight(this.Kos);
+    setMaxWidth(this.Rpd);
+    setMaxHeight(this.Rpd);
+    setMinimumWidth(this.Rpe);
+    setMinimumHeight(this.Rpe);
     AppMethodBeat.o(104711);
   }
   
   public final void b(EmojiInfo paramEmojiInfo, String paramString)
   {
     AppMethodBeat.i(104712);
-    this.rfq = paramEmojiInfo;
-    Object localObject = paramEmojiInfo.hRM();
-    if ((paramEmojiInfo.field_reserved4 & EmojiInfo.UuK) == EmojiInfo.UuK)
+    this.uIz = paramEmojiInfo;
+    Object localObject = paramEmojiInfo.ifh();
+    if ((paramEmojiInfo.field_reserved4 & EmojiInfo.ZuM) == EmojiInfo.ZuM)
     {
-      if (c.dXx().aBd(paramString) != null)
+      if (c.eAV().aKR(paramString) != null)
       {
-        setImageDrawable(c.dXx().aBd(paramString));
+        setImageDrawable(c.eAV().aKR(paramString));
         AppMethodBeat.o(104712);
         return;
       }
-      paramEmojiInfo = this.rfq;
-      localObject = ((PluginEmoji)g.ah(PluginEmoji.class)).getProvider().a(this.rfq);
-      this.rfq = paramEmojiInfo;
+      paramEmojiInfo = this.uIz;
+      localObject = ((PluginEmoji)com.tencent.mm.kernel.h.ag(PluginEmoji.class)).getProvider().a(this.uIz);
+      this.uIz = paramEmojiInfo;
       for (;;)
       {
         try
@@ -93,16 +92,16 @@ public class MMEmojiView
           if (!Util.isNullOrNil(paramString))
           {
             setCacheKey(paramString);
-            paramString = c.dXx().s(getCacheKey(), (byte[])localObject);
+            paramString = c.eAV().v(getCacheKey(), (byte[])localObject);
             setImageDrawable(paramString);
             AppMethodBeat.o(104712);
             return;
           }
-          if ((!ImgUtil.isWXGF((byte[])localObject)) || (!((PluginEmoji)g.ah(PluginEmoji.class)).getProvider().cFP())) {
+          if ((!ImgUtil.isWXGF((byte[])localObject)) || (!((PluginEmoji)com.tencent.mm.kernel.h.ag(PluginEmoji.class)).getProvider().cUw())) {
             continue;
           }
-          paramEmojiInfo = new h((byte[])localObject);
-          this.Kou = true;
+          paramEmojiInfo = new com.tencent.mm.plugin.gif.h((byte[])localObject);
+          this.Rpg = true;
         }
         catch (MMGIFException paramEmojiInfo)
         {
@@ -126,28 +125,28 @@ public class MMEmojiView
         catch (IOException paramEmojiInfo)
         {
           Log.e("MicroMsg.emoji.MMEmojiView", "setMMGIFFileByteArray failed. %s", new Object[] { paramEmojiInfo.toString() });
-          if (this.rfq == null) {
+          if (this.uIz == null) {
             continue;
           }
-          this.rfq.hRy();
+          this.uIz.hBq();
           Log.i("MicroMsg.emoji.MMEmojiView", "delete file.");
           init();
           AppMethodBeat.o(104712);
           return;
           Log.w("MicroMsg.emoji.MMEmojiView", "setMMGIFFileByteArray failed bitmap is null. bytes %s", new Object[] { localObject.toString() });
-          if (this.rfq == null) {
+          if (this.uIz == null) {
             continue;
           }
-          this.rfq.hRy();
+          this.uIz.hBq();
           Log.i("MicroMsg.emoji.MMEmojiView", "delete file.");
           init();
           AppMethodBeat.o(104712);
           return;
           Log.e("MicroMsg.emoji.MMEmojiView", "setMMGIFFileByteArray failed. %s", new Object[] { paramEmojiInfo.toString() });
-          if (this.rfq == null) {
+          if (this.uIz == null) {
             continue;
           }
-          this.rfq.hRy();
+          this.uIz.hBq();
           Log.i("MicroMsg.emoji.MMEmojiView", "delete file.");
           continue;
         }
@@ -164,7 +163,7 @@ public class MMEmojiView
         }
       }
     }
-    hU((String)localObject, paramString);
+    id((String)localObject, paramString);
     AppMethodBeat.o(104712);
   }
   
@@ -173,7 +172,7 @@ public class MMEmojiView
     AppMethodBeat.i(104713);
     super.setImageDrawable(paramDrawable);
     float f1;
-    if ((paramDrawable != null) && (this.rfq != null))
+    if ((paramDrawable != null) && (this.uIz != null))
     {
       f1 = 1.0F;
       if (!(paramDrawable instanceof com.tencent.mm.plugin.gif.d)) {
@@ -188,18 +187,18 @@ public class MMEmojiView
       {
         float f2 = paramDrawable.getIntrinsicWidth() / f1;
         f1 = paramDrawable.getIntrinsicHeight() / f1;
-        if ((this.Kov) && ((this.rfq.field_width == 0) || (this.rfq.field_height == 0)))
+        if ((this.Rph) && ((this.uIz.field_width == 0) || (this.uIz.field_height == 0)))
         {
-          this.rfq.field_width = ((int)f2);
-          this.rfq.field_height = ((int)f1);
-          ((com.tencent.mm.plugin.emoji.b.d)g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().updateEmojiInfo(this.rfq);
+          this.uIz.field_width = ((int)f2);
+          this.uIz.field_height = ((int)f1);
+          ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().updateEmojiInfo(this.uIz);
         }
         AppMethodBeat.o(104713);
         return;
-        if (!(paramDrawable instanceof h)) {
+        if (!(paramDrawable instanceof com.tencent.mm.plugin.gif.h)) {
           break;
         }
-        f1 = ((h)paramDrawable).getEmojiDensityScale();
+        f1 = ((com.tencent.mm.plugin.gif.h)paramDrawable).getEmojiDensityScale();
       }
     } while ((paramDrawable instanceof BitmapDrawable));
     AppMethodBeat.o(104713);
@@ -208,12 +207,12 @@ public class MMEmojiView
   public void setIsMaxSizeLimit(boolean paramBoolean)
   {
     AppMethodBeat.i(104714);
-    this.Kot = paramBoolean;
+    this.Rpf = paramBoolean;
     if (paramBoolean)
     {
       setAdjustViewBounds(true);
-      setMaxWidth(this.Kor);
-      setMaxHeight(this.Kor);
+      setMaxWidth(this.Rpd);
+      setMaxHeight(this.Rpd);
       AppMethodBeat.o(104714);
       return;
     }
@@ -224,17 +223,17 @@ public class MMEmojiView
   
   public void setMaxSize(int paramInt)
   {
-    this.Kor = paramInt;
+    this.Rpd = paramInt;
   }
   
   public void setUpdateEmojiSize(boolean paramBoolean)
   {
-    this.Kov = paramBoolean;
+    this.Rph = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.emoji.MMEmojiView
  * JD-Core Version:    0.7.0.1
  */

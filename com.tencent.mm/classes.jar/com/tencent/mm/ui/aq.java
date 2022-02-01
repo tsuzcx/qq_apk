@@ -1,67 +1,127 @@
 package com.tencent.mm.ui;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.reflect.Field;
 
-public final class aq
+public final class aq<T>
 {
-  public static Bitmap a(Bitmap paramBitmap, float paramFloat)
+  private Field bKF;
+  private String jva;
+  private boolean jvb;
+  private String jvc;
+  private Object obj;
+  
+  public aq(Object paramObject, String paramString)
   {
-    AppMethodBeat.i(159110);
-    if ((paramBitmap == null) || (paramBitmap.isRecycled()))
+    AppMethodBeat.i(159106);
+    if (paramObject == null)
     {
-      as.e("WeUIBitmapUtil", "getRoundedCornerBitmap in bitmap is null", new Object[0]);
-      AppMethodBeat.o(159110);
-      return null;
+      paramObject = new IllegalArgumentException("obj cannot be null");
+      AppMethodBeat.o(159106);
+      throw paramObject;
     }
-    Bitmap localBitmap = j(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-    if (localBitmap == null)
-    {
-      AppMethodBeat.o(159110);
-      return null;
-    }
-    Canvas localCanvas = new Canvas(localBitmap);
-    Paint localPaint = new Paint();
-    Rect localRect = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-    RectF localRectF = new RectF(localRect);
-    localPaint.setAntiAlias(true);
-    localPaint.setDither(true);
-    localPaint.setFilterBitmap(true);
-    localCanvas.drawARGB(0, 0, 0, 0);
-    localPaint.setColor(-4144960);
-    localCanvas.drawRoundRect(localRectF, paramFloat, paramFloat, localPaint);
-    localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-    localCanvas.drawBitmap(paramBitmap, localRect, localRect, localPaint);
-    as.i("WeUIBitmapUtil", "getRoundedCornerBitmap bitmap recycle %s", new Object[] { paramBitmap });
-    paramBitmap.recycle();
-    AppMethodBeat.o(159110);
-    return localBitmap;
+    this.obj = paramObject;
+    this.jva = paramString;
+    this.jvc = null;
+    AppMethodBeat.o(159106);
   }
   
-  private static Bitmap j(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
+  private void prepare()
   {
-    AppMethodBeat.i(159111);
-    Object localObject = null;
-    try
+    AppMethodBeat.i(159107);
+    if (this.jvb)
     {
-      paramConfig = Bitmap.createBitmap(paramInt1, paramInt2, paramConfig);
-      AppMethodBeat.o(159111);
-      return paramConfig;
+      AppMethodBeat.o(159107);
+      return;
     }
-    catch (Throwable paramConfig)
-    {
-      for (;;)
+    this.jvb = true;
+    Class localClass = this.obj.getClass();
+    while (localClass != null) {
+      try
       {
-        paramConfig = localObject;
+        Field localField1 = localClass.getDeclaredField(this.jva);
+        localField1.setAccessible(true);
+        this.bKF = localField1;
+        return;
+      }
+      catch (Exception localException1)
+      {
+        for (;;)
+        {
+          try
+          {
+            if ((this.jvc != null) && (!this.jvc.equals("")))
+            {
+              Field[] arrayOfField = localClass.getDeclaredFields();
+              int j = arrayOfField.length;
+              i = 0;
+              if (i < j)
+              {
+                Field localField2 = arrayOfField[i];
+                if (!localField2.getType().getName().equals(this.jvc)) {
+                  continue;
+                }
+                localField2.setAccessible(true);
+                this.bKF = localField2;
+              }
+            }
+          }
+          catch (Exception localException2)
+          {
+            int i;
+            continue;
+          }
+          localClass = localClass.getSuperclass();
+          break;
+          i += 1;
+        }
+      }
+      finally
+      {
+        localClass.getSuperclass();
+        AppMethodBeat.o(159107);
       }
     }
+    AppMethodBeat.o(159107);
+  }
+  
+  public final T get()
+  {
+    AppMethodBeat.i(159108);
+    prepare();
+    Object localObject;
+    if (this.bKF == null)
+    {
+      localObject = new NoSuchFieldException();
+      AppMethodBeat.o(159108);
+      throw ((Throwable)localObject);
+    }
+    try
+    {
+      localObject = this.bKF.get(this.obj);
+      AppMethodBeat.o(159108);
+      return localObject;
+    }
+    catch (ClassCastException localClassCastException)
+    {
+      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("unable to cast object");
+      AppMethodBeat.o(159108);
+      throw localIllegalArgumentException;
+    }
+  }
+  
+  public final void set(T paramT)
+  {
+    AppMethodBeat.i(159109);
+    prepare();
+    if (this.bKF == null)
+    {
+      paramT = new NoSuchFieldException();
+      AppMethodBeat.o(159109);
+      throw paramT;
+    }
+    this.bKF.set(this.obj, paramT);
+    AppMethodBeat.o(159109);
   }
 }
 

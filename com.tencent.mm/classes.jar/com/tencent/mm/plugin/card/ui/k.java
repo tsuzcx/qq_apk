@@ -17,44 +17,44 @@ public final class k
 {
   private final String TAG;
   private int count;
-  private com.tencent.mm.plugin.card.base.c pXo;
-  private n.a pYR;
-  private final String qee;
-  private final String qef;
-  private ArrayList<CardInfo> qeg;
-  private ArrayList<CardInfo> qeh;
-  private ArrayList<CardInfo> qei;
+  private final String tAb;
+  private final String tAc;
+  private ArrayList<CardInfo> tAd;
+  private ArrayList<CardInfo> tAe;
+  private ArrayList<CardInfo> tAf;
+  private com.tencent.mm.plugin.card.base.c ttl;
+  private n.a tuN;
   
   public k(Context paramContext, n.a parama)
   {
     super(paramContext, parama);
     AppMethodBeat.i(113581);
     this.TAG = "MicroMsg.CardTicketAdapter";
-    this.qee = "PRIVATE_TICKET_TITLE";
-    this.qef = "PRIVATE_INVOICE_TITLE";
+    this.tAb = "PRIVATE_TICKET_TITLE";
+    this.tAc = "PRIVATE_INVOICE_TITLE";
     this.count = 0;
-    this.pYR = parama;
-    this.pXo = new aa(paramContext, this);
-    this.qeg = new ArrayList();
-    this.qeh = new ArrayList();
-    this.qei = new ArrayList();
+    this.tuN = parama;
+    this.ttl = new aa(paramContext, this);
+    this.tAd = new ArrayList();
+    this.tAe = new ArrayList();
+    this.tAf = new ArrayList();
     AppMethodBeat.o(113581);
   }
   
-  private CardInfo Ep(int paramInt)
+  private CardInfo HQ(int paramInt)
   {
     AppMethodBeat.i(113585);
-    CardInfo localCardInfo = (CardInfo)this.qeg.get(paramInt);
+    CardInfo localCardInfo = (CardInfo)this.tAd.get(paramInt);
     AppMethodBeat.o(113585);
     return localCardInfo;
   }
   
-  private void cwo()
+  private void cJQ()
   {
     AppMethodBeat.i(113582);
-    this.qeg.clear();
-    this.qeh.clear();
-    this.qei.clear();
+    this.tAd.clear();
+    this.tAe.clear();
+    this.tAf.clear();
     int i = 0;
     CardInfo localCardInfo;
     if (i < this.count)
@@ -62,72 +62,72 @@ public final class k
       localCardInfo = (CardInfo)super.getItem(i);
       if (localCardInfo != null)
       {
-        if (!localCardInfo.csB()) {
+        if (!localCardInfo.cGc()) {
           break label72;
         }
-        this.qei.add(localCardInfo);
+        this.tAf.add(localCardInfo);
       }
       for (;;)
       {
         i += 1;
         break;
         label72:
-        this.qeh.add(localCardInfo);
+        this.tAe.add(localCardInfo);
       }
     }
-    if (!this.qeh.isEmpty())
+    if (!this.tAe.isEmpty())
     {
       localCardInfo = new CardInfo();
       localCardInfo.field_card_id = "PRIVATE_TICKET_TITLE";
-      this.qeg.add(localCardInfo);
-      this.qeg.addAll(this.qeh);
+      this.tAd.add(localCardInfo);
+      this.tAd.addAll(this.tAe);
     }
-    if (!this.qei.isEmpty())
+    if (!this.tAf.isEmpty())
     {
       localCardInfo = new CardInfo();
       localCardInfo.field_card_id = "PRIVATE_INVOICE_TITLE";
-      this.qeg.add(localCardInfo);
-      this.qeg.addAll(this.qei);
+      this.tAd.add(localCardInfo);
+      this.tAd.addAll(this.tAf);
     }
-    this.count = this.qeg.size();
+    this.count = this.tAd.size();
     AppMethodBeat.o(113582);
   }
   
-  public final void anp()
+  public final void atr()
   {
     AppMethodBeat.i(113583);
     Log.v("MicroMsg.CardTicketAdapter", "resetCursor");
-    ebf();
-    Cursor localCursor = am.ctQ().a(this.pYR);
+    eKd();
+    Cursor localCursor = am.cHs().a(this.tuN);
     if (localCursor != null)
     {
       this.count = localCursor.getCount();
       Log.v("MicroMsg.CardTicketAdapter", "card count:" + this.count);
     }
-    setCursor(localCursor);
-    cwo();
+    v(localCursor);
+    cJQ();
     notifyDataSetChanged();
     AppMethodBeat.o(113583);
   }
   
-  public final void anq()
+  public final void ats()
   {
     AppMethodBeat.i(113584);
-    ebf();
-    anp();
+    eKd();
+    atr();
     AppMethodBeat.o(113584);
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(113587);
-    if (this.qeg.isEmpty())
+    if (this.tAd.isEmpty())
     {
       i = super.getCount();
       AppMethodBeat.o(113587);
       return i;
     }
-    int i = this.qeg.size();
+    int i = this.tAd.size();
     AppMethodBeat.o(113587);
     return i;
   }
@@ -135,13 +135,13 @@ public final class k
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(113586);
-    CardInfo localCardInfo = Ep(paramInt);
+    CardInfo localCardInfo = HQ(paramInt);
     if ((localCardInfo.field_card_id.equals("PRIVATE_TICKET_TITLE")) || (localCardInfo.field_card_id.equals("PRIVATE_INVOICE_TITLE")))
     {
       AppMethodBeat.o(113586);
       return 0;
     }
-    if (localCardInfo.csB())
+    if (localCardInfo.cGc())
     {
       AppMethodBeat.o(113586);
       return 2;
@@ -153,8 +153,8 @@ public final class k
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(113588);
-    paramViewGroup = Ep(paramInt);
-    paramView = this.pXo.a(paramInt, paramView, paramViewGroup);
+    paramViewGroup = HQ(paramInt);
+    paramView = this.ttl.a(paramInt, paramView, paramViewGroup);
     AppMethodBeat.o(113588);
     return paramView;
   }
@@ -167,9 +167,9 @@ public final class k
   public final void release()
   {
     AppMethodBeat.i(113589);
-    ebf();
-    this.pXo.release();
-    this.pXo = null;
+    eKd();
+    this.ttl.release();
+    this.ttl = null;
     AppMethodBeat.o(113589);
   }
 }

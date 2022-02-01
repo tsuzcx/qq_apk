@@ -1,7 +1,10 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet_core.model.BindCardOrder;
+import com.tencent.mm.pluginsdk.wallet.PayInfo;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.c.z;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
@@ -11,57 +14,75 @@ import org.json.JSONObject;
 public final class w
   extends m
 {
-  public String HPZ;
-  private int scene;
-  public String token;
+  public BindCardOrder OHI;
+  public String action;
   
-  public w(String paramString1, int paramInt, String paramString2)
+  public w(com.tencent.mm.plugin.wallet_core.model.w paramw)
   {
-    AppMethodBeat.i(69937);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("passwd", paramString1);
-    localHashMap.put("req_key", paramString2);
-    if (paramInt == 6) {
-      localHashMap.put("time_stamp", System.currentTimeMillis());
+    this(paramw, -1, "");
+  }
+  
+  public w(com.tencent.mm.plugin.wallet_core.model.w paramw, int paramInt, String paramString)
+  {
+    AppMethodBeat.i(69935);
+    HashMap localHashMap1 = new HashMap();
+    HashMap localHashMap2 = new HashMap();
+    setPayInfo(paramw.HzF, localHashMap1, localHashMap2);
+    localHashMap1.put("flag", paramw.flag);
+    if ("2".equals(paramw.flag)) {
+      localHashMap1.put("passwd", paramw.mVf);
     }
-    setRequestData(localHashMap);
-    paramString1 = new HashMap();
-    paramString1.put("check_pwd_scene", String.valueOf(paramInt));
-    if (z.hhq())
+    localHashMap1.put("verify_code", paramw.OTh);
+    localHashMap1.put("token", paramw.token);
+    if ((paramw.HzF != null) && (!Util.isNullOrNil(paramw.HzF.fwv))) {
+      localHashMap1.put("req_key", paramw.HzF.fwv);
+    }
+    if (paramInt >= 0)
     {
-      paramString1.put("uuid_for_bindcard", z.getBindCardUuid());
-      paramString1.put("bindcard_scene", z.hhr());
+      localHashMap1.put("realname_scene", String.valueOf(paramInt));
+      Log.i("MicroMsg.NetSenceTenPayBase", "realname_scene=%d", new Object[] { Integer.valueOf(paramInt) });
     }
-    setWXRequestData(paramString1);
-    this.scene = paramInt;
-    AppMethodBeat.o(69937);
+    if (!Util.isNullOrNil(paramw.fvP)) {
+      localHashMap1.put("bank_type", paramw.fvP);
+    }
+    if ((paramw.flag == "2") && (paramw.ONf == 1) && (!Util.isNullOrNil(paramw.OIv)))
+    {
+      localHashMap1.put("verify_user_token", "1");
+      localHashMap1.put("usertoken", paramw.OIv);
+    }
+    localHashMap1.put("session_id", paramString);
+    if (z.iiS())
+    {
+      localHashMap2.put("uuid_for_bindcard", z.getBindCardUuid());
+      localHashMap2.put("bindcard_scene", z.iiT());
+    }
+    setRequestData(localHashMap1);
+    setWXRequestData(localHashMap2);
+    AppMethodBeat.o(69935);
   }
   
   public final int getFuncId()
   {
-    return 476;
+    return 472;
   }
   
   public final int getTenpayCgicmd()
   {
-    return 18;
+    return 13;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/checkpwd";
+    return "/cgi-bin/mmpay-bin/tenpay/bindverify";
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(69938);
-    Log.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
-    if ((this.scene == 6) || (this.scene == 8) || (this.scene == 18) || (this.scene == 1))
-    {
-      this.token = paramJSONObject.optString("usertoken");
-      this.HPZ = paramJSONObject.optString("token_type");
-    }
-    AppMethodBeat.o(69938);
+    AppMethodBeat.i(69936);
+    this.OHI = new BindCardOrder();
+    this.OHI.bM(paramJSONObject);
+    this.action = paramJSONObject.optString("action");
+    AppMethodBeat.o(69936);
   }
 }
 

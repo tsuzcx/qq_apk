@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 public final class i
 {
-  public static f akc(String paramString)
+  public static f arP(String paramString)
   {
     AppMethodBeat.i(113804);
     if (TextUtils.isEmpty(paramString))
@@ -22,13 +22,13 @@ public final class i
     {
       paramString = new JSONObject(paramString);
       f localf = new f();
-      localf.pTq = paramString.optString("empty_tips");
-      localf.pTr = paramString.optString("shoppingmall_title");
-      localf.pTs = paramString.optString("shoppingmall_url");
+      localf.tpr = paramString.optString("empty_tips");
+      localf.tps = paramString.optString("shoppingmall_title");
+      localf.tpt = paramString.optString("shoppingmall_url");
       if (paramString.optInt("is_show") == 0) {}
       for (boolean bool = false;; bool = true)
       {
-        localf.pTt = bool;
+        localf.tpu = bool;
         AppMethodBeat.o(113804);
         return localf;
       }

@@ -1,28 +1,30 @@
 package com.tencent.mm.sdk.storage;
 
 import android.os.Looper;
-import com.tencent.f.j.a;
+import com.tencent.e.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.storage.observer.StorageObserverOwner;
 
 public abstract class MStorage
+  extends ObservableStorage<Object>
   implements IStorage
 {
   private final MStorageEvent<IOnStorageChange, MStorageEventData> defaults = new MStorageEvent()
   {
     protected void processEvent(MStorage.IOnStorageChange paramAnonymousIOnStorageChange, MStorageEventData paramAnonymousMStorageEventData)
     {
-      AppMethodBeat.i(230534);
+      AppMethodBeat.i(192915);
       MStorage.this.processEvent(paramAnonymousIOnStorageChange, paramAnonymousMStorageEventData);
-      AppMethodBeat.o(230534);
+      AppMethodBeat.o(192915);
     }
   };
   private final MStorageEvent<IOnStorageLoaded, String> loadedListener = new MStorageEvent()
   {
     protected void processEvent(MStorage.IOnStorageLoaded paramAnonymousIOnStorageLoaded, String paramAnonymousString)
     {
-      AppMethodBeat.i(230535);
+      AppMethodBeat.i(193769);
       MStorage.this.processLoaded(paramAnonymousIOnStorageLoaded, paramAnonymousString);
-      AppMethodBeat.o(230535);
+      AppMethodBeat.o(193769);
     }
   };
   
@@ -53,7 +55,7 @@ public abstract class MStorage
   
   public void add(String paramString, IOnStorageChange paramIOnStorageChange)
   {
-    this.defaults.add(paramIOnStorageChange, a.bqt(paramString));
+    this.defaults.add(paramIOnStorageChange, a.bDn(paramString));
   }
   
   public void addLoadedListener(IOnStorageLoaded paramIOnStorageLoaded)
@@ -66,6 +68,7 @@ public abstract class MStorage
     MStorageEventData localMStorageEventData = new MStorageEventData("*");
     this.defaults.event(localMStorageEventData);
     this.defaults.doNotify();
+    getOwner().doNotify(localMStorageEventData);
   }
   
   public void doNotify(String paramString)
@@ -73,6 +76,7 @@ public abstract class MStorage
     paramString = new MStorageEventData(paramString);
     this.defaults.event(paramString);
     this.defaults.doNotify();
+    getOwner().doNotify(paramString);
   }
   
   public void doNotify(String paramString, int paramInt, Object paramObject)
@@ -84,11 +88,13 @@ public abstract class MStorage
     localMStorageEventData.stg = this;
     this.defaults.event(localMStorageEventData);
     this.defaults.doNotify();
+    getOwner().doNotify(localMStorageEventData);
   }
   
   public void lock()
   {
     this.defaults.lock();
+    getOwner().lock();
   }
   
   public int lockCount()
@@ -109,6 +115,7 @@ public abstract class MStorage
   public void unlock()
   {
     this.defaults.unlock();
+    getOwner().unlock();
   }
   
   public static abstract interface IOnStorageChange
@@ -123,7 +130,7 @@ public abstract class MStorage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sdk.storage.MStorage
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bow;
-import com.tencent.mm.protocal.protobuf.box;
+import com.tencent.mm.protocal.protobuf.bwr;
+import com.tencent.mm.protocal.protobuf.bws;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
@@ -24,17 +24,17 @@ public final class e
   {
     AppMethodBeat.i(97137);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bow();
-    ((d.a)localObject).iLO = new box();
+    ((d.a)localObject).lBU = new bwr();
+    ((d.a)localObject).lBV = new bws();
     ((d.a)localObject).uri = "/cgi-bin/mmoc-bin/adplayinfo/get_landpage_smartphone";
     ((d.a)localObject).funcId = 2605;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (bow)this.rr.iLK.iLR;
-    ((bow)localObject).DYn = paramLong;
-    ((bow)localObject).LWW = paramInt1;
-    ((bow)localObject).gTl = paramString1;
-    ((bow)localObject).gTk = paramString2;
-    ((bow)localObject).DYl = paramInt2;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (bwr)d.b.b(this.rr.lBR);
+    ((bwr)localObject).KlG = paramLong;
+    ((bwr)localObject).Tgu = paramInt1;
+    ((bwr)localObject).jDM = paramString1;
+    ((bwr)localObject).jDL = paramString2;
+    ((bwr)localObject).KlE = paramInt2;
     AppMethodBeat.o(97137);
   }
   

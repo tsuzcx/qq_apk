@@ -9,32 +9,32 @@ import com.tencent.mm.sdk.platformtools.BitmapUtil;
 public final class c
   extends b<Bitmap>
 {
-  private boolean iaT = true;
-  private float iaU;
+  private float kPA;
+  private boolean kPz = true;
   
   public c()
   {
-    this.iaU = 0.1F;
+    this.kPA = 0.1F;
   }
   
   public c(float paramFloat)
   {
-    this.iaU = paramFloat;
+    this.kPA = paramFloat;
   }
   
-  public final String Hi(String paramString)
+  public final String Ot(String paramString)
   {
-    return String.format("_round_%.2f_", new Object[] { Float.valueOf(this.iaU) });
+    return "_round_" + this.kPA + "_";
   }
   
   public final e<? extends Bitmap> a(g<?> paramg, f<?, Bitmap> paramf, e<Bitmap> parame)
   {
     paramg = (Bitmap)parame.value;
     paramf = paramg;
-    if (this.iaT)
+    if (this.kPz)
     {
       paramf = paramg;
-      if (this.iaU == 0.0F)
+      if (this.kPA == 0.0F)
       {
         paramf = paramg;
         if (paramg.getWidth() != paramg.getHeight())
@@ -47,7 +47,7 @@ public final class c
           paramf = BitmapUtil.getCenterCropBitmap(paramg, i, i, true);
         }
       }
-      paramf = BitmapUtil.getRoundedCornerBitmap(paramf, false, paramf.getWidth() * this.iaU);
+      paramf = BitmapUtil.getRoundedCornerBitmap(paramf, false, paramf.getWidth() * this.kPA);
     }
     return new e(paramf);
   }

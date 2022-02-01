@@ -10,18 +10,22 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.aa;
-import com.tencent.mm.ak.aa.a;
-import com.tencent.mm.ak.d.a;
+import com.tencent.mm.an.aa;
+import com.tencent.mm.an.aa.a;
+import com.tencent.mm.an.d.a;
 import com.tencent.mm.model.p.a.b;
+import com.tencent.mm.plugin.brandservice.d.b;
+import com.tencent.mm.plugin.brandservice.d.e;
+import com.tencent.mm.plugin.brandservice.d.f;
 import com.tencent.mm.plugin.brandservice.ui.timeline.f;
-import com.tencent.mm.protocal.protobuf.bub;
-import com.tencent.mm.protocal.protobuf.cdu;
-import com.tencent.mm.protocal.protobuf.dkq;
-import com.tencent.mm.protocal.protobuf.dkr;
-import com.tencent.mm.protocal.protobuf.dkv;
-import com.tencent.mm.protocal.protobuf.dlb;
-import com.tencent.mm.protocal.protobuf.mr;
+import com.tencent.mm.protocal.protobuf.cbt;
+import com.tencent.mm.protocal.protobuf.cmo;
+import com.tencent.mm.protocal.protobuf.duf;
+import com.tencent.mm.protocal.protobuf.dug;
+import com.tencent.mm.protocal.protobuf.dul;
+import com.tencent.mm.protocal.protobuf.dur;
+import com.tencent.mm.protocal.protobuf.mh;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.af;
 import com.tencent.mm.storage.z;
@@ -36,50 +40,51 @@ import java.util.List;
 import kotlin.a.j;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecFeedNegativeDialog;", "Lcom/tencent/mm/ui/widget/happybubble/BubbleDialog;", "Landroid/view/View$OnClickListener;", "context", "Landroid/content/Context;", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "showPos", "", "(Landroid/content/Context;Lcom/tencent/mm/storage/BizTimeLineInfo;Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;I)V", "getAdapter", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "getInfo", "()Lcom/tencent/mm/storage/BizTimeLineInfo;", "mViewHolder", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecFeedNegativeDialog$ViewHolder;", "recCard", "Lcom/tencent/mm/protocal/protobuf/RecommendCardMsg;", "getRecCard", "()Lcom/tencent/mm/protocal/protobuf/RecommendCardMsg;", "getShowPos", "()I", "initTag", "", "onClick", "v", "Landroid/view/View;", "setRootViewWidth", "rootView", "ViewHolder", "plugin-brandservice_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecFeedNegativeDialog;", "Lcom/tencent/mm/ui/widget/happybubble/BubbleDialog;", "Landroid/view/View$OnClickListener;", "context", "Landroid/content/Context;", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "showPos", "", "(Landroid/content/Context;Lcom/tencent/mm/storage/BizTimeLineInfo;Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;I)V", "getAdapter", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "getInfo", "()Lcom/tencent/mm/storage/BizTimeLineInfo;", "mViewHolder", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecFeedNegativeDialog$ViewHolder;", "recCard", "Lcom/tencent/mm/protocal/protobuf/RecommendCardMsg;", "getRecCard", "()Lcom/tencent/mm/protocal/protobuf/RecommendCardMsg;", "getShowPos", "()I", "initTag", "", "onClick", "v", "Landroid/view/View;", "setRootViewWidth", "rootView", "ViewHolder", "plugin-brandservice_release"})
 public final class h
   extends com.tencent.mm.ui.widget.happybubble.b
   implements View.OnClickListener
 {
-  private final com.tencent.mm.plugin.brandservice.ui.timeline.b psQ;
-  private final z psm;
-  private final int ptN;
-  private final a puf;
-  private final dkr pug;
+  private final z sBt;
+  private final com.tencent.mm.plugin.brandservice.ui.timeline.b sCg;
+  private final int sDa;
+  private final a sDs;
+  private final dug sDt;
   
   public h(Context paramContext, z paramz, com.tencent.mm.plugin.brandservice.ui.timeline.b paramb, int paramInt)
   {
     super(paramContext);
-    AppMethodBeat.i(195281);
-    this.psm = paramz;
-    this.psQ = paramb;
-    this.ptN = paramInt;
-    paramz = this.psm.NQr;
-    kotlin.g.b.p.g(paramz, "info.recFeed");
-    this.pug = paramz;
-    a(new b.a[] { b.a.QQh, b.a.QQf });
+    AppMethodBeat.i(258995);
+    this.sBt = paramz;
+    this.sCg = paramb;
+    this.sDa = paramInt;
+    paramz = this.sBt.Ven;
+    kotlin.g.b.p.j(paramz, "info.recFeed");
+    this.sDt = paramz;
+    a(new b.a[] { b.a.YoS, b.a.YoQ });
     paramz = new BubbleLayout(paramContext);
-    paramz.setBubbleColor(paramContext.getResources().getColor(2131099672));
-    paramz.setBubbleRadius(com.tencent.mm.cb.a.fromDPToPix(paramContext, 8));
+    paramz.setBubbleColor(paramContext.getResources().getColor(d.b.BW_100));
+    paramz.setBubbleRadius(com.tencent.mm.ci.a.fromDPToPix(paramContext, 8));
     paramz.setShadowColor(0);
-    paramz.setLookWidth(com.tencent.mm.cb.a.fromDPToPix(paramContext, 14));
-    paramz.setLookLength(com.tencent.mm.cb.a.fromDPToPix(paramContext, 7));
+    paramz.setLookWidth(com.tencent.mm.ci.a.fromDPToPix(paramContext, 14));
+    paramz.setLookLength(com.tencent.mm.ci.a.fromDPToPix(paramContext, 7));
     a(paramz);
-    paramb = LayoutInflater.from(paramContext).inflate(2131493277, null);
-    kotlin.g.b.p.g(paramb, "rootView");
-    this.puf = new a(paramb);
-    paramz = paramb.findViewById(2131299215);
-    kotlin.g.b.p.g(paramz, "rootView.findViewById(R.id.content_root_layout)");
-    paramInt = com.tencent.mm.cb.a.jn(paramContext);
-    int j = com.tencent.mm.cb.a.jo(paramContext);
-    Object localObject = paramz.getLayoutParams();
+    paramb = LayoutInflater.from(paramContext).inflate(d.f.stV, null);
+    kotlin.g.b.p.j(paramb, "rootView");
+    this.sDs = new a(paramb);
+    paramz = paramb.findViewById(d.e.srK);
+    kotlin.g.b.p.j(paramz, "rootView.findViewById(R.id.content_root_layout)");
+    Object localObject = com.tencent.mm.plugin.bizui.a.a.shG;
+    paramInt = com.tencent.mm.plugin.bizui.a.a.eO(paramContext);
+    int j = com.tencent.mm.ci.a.ks(paramContext);
+    localObject = paramz.getLayoutParams();
     if (paramInt < j) {}
     for (;;)
     {
-      ((ViewGroup.LayoutParams)localObject).width = (paramInt - com.tencent.mm.cb.a.fromDPToPix(paramContext, 82));
+      ((ViewGroup.LayoutParams)localObject).width = (paramInt - com.tencent.mm.ci.a.fromDPToPix(paramContext, 82));
       paramz.setLayoutParams((ViewGroup.LayoutParams)localObject);
       paramContext = new LinkedList();
-      paramz = this.pug.KWr;
+      paramz = this.sDt.RXF;
       if (paramz == null) {
         break;
       }
@@ -89,16 +94,16 @@ public final class h
       {
         localObject = paramz.next();
         if (paramInt < 0) {
-          j.hxH();
+          j.iBO();
         }
         paramContext.add(new c((String)localObject, paramInt));
         paramInt += 1;
       }
       paramInt = j;
     }
-    this.puf.ptA.a((List)paramContext, (LabelsView.a)b.puh);
-    this.puf.ptA.hbO();
-    this.puf.ptA.setOnLabelClickListener((LabelsView.b)new c(this));
+    this.sDs.sCN.a((List)paramContext, (LabelsView.a)b.sDu);
+    this.sDs.sCN.icV();
+    this.sDs.sCN.setOnLabelClickListener((LabelsView.b)new c(this));
     localObject = ((Iterable)paramContext).iterator();
     c localc;
     for (paramContext = ""; ((Iterator)localObject).hasNext(); paramContext = paramz + localc.getName())
@@ -109,30 +114,30 @@ public final class h
         paramz = paramContext + "#";
       }
     }
-    hx(paramb);
-    this.puf.hPX.setOnClickListener((View.OnClickListener)this);
-    AppMethodBeat.o(195281);
+    iN(paramb);
+    this.sDs.kEt.setOnClickListener((View.OnClickListener)this);
+    AppMethodBeat.o(258995);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(195280);
+    AppMethodBeat.i(258993);
     Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject1).bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecFeedNegativeDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).axR());
-    kotlin.g.b.p.h(paramView, "v");
+    ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecFeedNegativeDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aFi());
+    kotlin.g.b.p.k(paramView, "v");
     LinkedList localLinkedList;
     Object localObject2;
     Object localObject3;
     long l;
     int i;
-    if (paramView.getId() == 2131305592)
+    if (paramView.getId() == d.e.ok_btn)
     {
       localLinkedList = new LinkedList();
-      localObject1 = this.puf.ptA.getSelectLabelDatas();
+      localObject1 = this.sDs.sCN.getSelectLabelDatas();
       paramView = "";
       if (localObject1 == null) {
-        break label529;
+        break label551;
       }
       localObject2 = ((Iterable)localObject1).iterator();
       while (((Iterator)localObject2).hasNext())
@@ -143,111 +148,115 @@ public final class h
           localObject1 = paramView + "#";
         }
         paramView = new StringBuilder().append((String)localObject1);
-        kotlin.g.b.p.g(localObject3, "tag");
+        kotlin.g.b.p.j(localObject3, "tag");
         paramView = ((c)localObject3).getName();
         localLinkedList.add(((c)localObject3).getName());
       }
-      localObject2 = (dlb)this.pug.MOG.get(0);
-      localObject3 = ((dlb)localObject2).MOY;
-      localObject1 = ((dlb)localObject2).MOX;
-      localObject3 = ((cdu)localObject3).KSj;
-      kotlin.g.b.p.g(localObject3, "appMsg.ContentUrl");
-      localObject3 = af.bjc((String)localObject3);
+      localObject2 = (dur)this.sDt.UaA.get(0);
+      localObject3 = ((dur)localObject2).UaX;
+      localObject1 = ((dur)localObject2).UaW;
+      localObject3 = ((cmo)localObject3).RTk;
+      kotlin.g.b.p.j(localObject3, "appMsg.ContentUrl");
+      localObject3 = af.bvx((String)localObject3);
       l = Util.getLong(localObject3[0], 0L);
       i = Util.getInt(localObject3[1], 0);
-      localObject3 = this.psQ.pqZ;
+      localObject3 = this.sCg.szZ;
       if (localObject1 == null) {
-        break label536;
+        break label558;
       }
     }
-    label529:
-    label536:
-    for (localObject1 = ((mr)localObject1).UserName;; localObject1 = null)
+    label551:
+    label558:
+    for (localObject1 = ((mh)localObject1).UserName;; localObject1 = null)
     {
-      ((f)localObject3).a((String)localObject1, l, i, paramView, this.pug.KUk, this.pug.KUh, ((dlb)localObject2).KWw, af.G(this.psm));
-      paramView = com.tencent.mm.model.p.iCa;
-      paramView = this.psm;
-      kotlin.g.b.p.h(paramView, "info");
-      kotlin.g.b.p.h(localLinkedList, "negativeFeedbackReason");
+      ((f)localObject3).a((String)localObject1, l, i, paramView, this.sDt.RVi, this.sDt.RVf, ((dur)localObject2).RXK, af.L(this.sBt));
+      paramView = com.tencent.mm.model.p.lrH;
+      paramView = this.sBt;
+      kotlin.g.b.p.k(paramView, "info");
+      kotlin.g.b.p.k(localLinkedList, "negativeFeedbackReason");
       localObject1 = new d.a();
-      localObject2 = new dkv();
-      ((dkv)localObject2).MaI = new LinkedList();
-      localObject3 = ((dkv)localObject2).MaI;
-      dkq localdkq = new dkq();
-      localdkq.KWr = localLinkedList;
-      localdkq.KWA = paramView.NQr.KWA;
-      localdkq.MOF = paramView.field_orderFlag;
-      ((LinkedList)localObject3).add(localdkq);
-      ((d.a)localObject1).c((com.tencent.mm.bw.a)localObject2);
-      ((d.a)localObject1).d((com.tencent.mm.bw.a)new bub());
-      ((d.a)localObject1).MB("/cgi-bin/mmbiz-bin/timeline/recommendfeedsfeedback");
-      ((d.a)localObject1).sG(5198);
-      aa.a(((d.a)localObject1).aXF(), (aa.a)p.a.b.iCe);
-      this.psQ.c(this.psm);
+      localObject2 = new dul();
+      ((dul)localObject2).Tkd = new LinkedList();
+      localObject3 = ((dul)localObject2).Tkd;
+      duf localduf = new duf();
+      localduf.RXF = localLinkedList;
+      localduf.RXO = paramView.Ven.RXO;
+      localduf.Uaz = paramView.field_orderFlag;
+      ((LinkedList)localObject3).add(localduf);
+      ((d.a)localObject1).c((com.tencent.mm.cd.a)localObject2);
+      ((d.a)localObject1).d((com.tencent.mm.cd.a)new cbt());
+      ((d.a)localObject1).TW("/cgi-bin/mmbiz-bin/timeline/recommendfeedsfeedback");
+      ((d.a)localObject1).vD(5198);
+      aa.a(((d.a)localObject1).bgN(), (aa.a)p.a.b.lrO);
+      paramView = this.sCg;
+      localObject1 = this.sBt;
+      kotlin.g.b.p.k(localObject1, "info");
+      Log.i("MicroMsg.BizTimeLineAdapter", "onFeedBack");
+      paramView.c((z)localObject1);
       dismiss();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecFeedNegativeDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(195280);
+      AppMethodBeat.o(258993);
       return;
       paramView = "";
       break;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecFeedNegativeDialog$ViewHolder;", "", "rootView", "Landroid/view/View;", "(Landroid/view/View;)V", "labelsView", "Lcom/tencent/mm/ui/widget/happybubble/LabelsView;", "getLabelsView", "()Lcom/tencent/mm/ui/widget/happybubble/LabelsView;", "setLabelsView", "(Lcom/tencent/mm/ui/widget/happybubble/LabelsView;)V", "okBtn", "Landroid/widget/Button;", "getOkBtn", "()Landroid/widget/Button;", "setOkBtn", "(Landroid/widget/Button;)V", "unLikeTv", "Landroid/widget/TextView;", "getUnLikeTv", "()Landroid/widget/TextView;", "setUnLikeTv", "(Landroid/widget/TextView;)V", "plugin-brandservice_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecFeedNegativeDialog$ViewHolder;", "", "rootView", "Landroid/view/View;", "(Landroid/view/View;)V", "labelsView", "Lcom/tencent/mm/ui/widget/happybubble/LabelsView;", "getLabelsView", "()Lcom/tencent/mm/ui/widget/happybubble/LabelsView;", "setLabelsView", "(Lcom/tencent/mm/ui/widget/happybubble/LabelsView;)V", "okBtn", "Landroid/widget/Button;", "getOkBtn", "()Landroid/widget/Button;", "setOkBtn", "(Landroid/widget/Button;)V", "unLikeTv", "Landroid/widget/TextView;", "getUnLikeTv", "()Landroid/widget/TextView;", "setUnLikeTv", "(Landroid/widget/TextView;)V", "plugin-brandservice_release"})
   static final class a
   {
-    Button hPX;
-    LabelsView ptA;
-    private TextView ptB;
+    Button kEt;
+    LabelsView sCN;
+    private TextView sCO;
     
     public a(View paramView)
     {
-      AppMethodBeat.i(195276);
-      View localView = paramView.findViewById(2131305592);
-      kotlin.g.b.p.g(localView, "rootView.findViewById(R.id.ok_btn)");
-      this.hPX = ((Button)localView);
-      localView = paramView.findViewById(2131308869);
-      kotlin.g.b.p.g(localView, "rootView.findViewById(R.id.tag_layout)");
-      this.ptA = ((LabelsView)localView);
-      paramView = paramView.findViewById(2131297499);
-      kotlin.g.b.p.g(paramView, "rootView.findViewById(R.id.biz_rec_card_reason_tv)");
-      this.ptB = ((TextView)paramView);
-      paramView = this.ptB.getPaint();
-      kotlin.g.b.p.g(paramView, "unLikeTv.paint");
+      AppMethodBeat.i(265646);
+      View localView = paramView.findViewById(d.e.ok_btn);
+      kotlin.g.b.p.j(localView, "rootView.findViewById(R.id.ok_btn)");
+      this.kEt = ((Button)localView);
+      localView = paramView.findViewById(d.e.std);
+      kotlin.g.b.p.j(localView, "rootView.findViewById(R.id.tag_layout)");
+      this.sCN = ((LabelsView)localView);
+      paramView = paramView.findViewById(d.e.sqi);
+      kotlin.g.b.p.j(paramView, "rootView.findViewById(R.id.biz_rec_card_reason_tv)");
+      this.sCO = ((TextView)paramView);
+      paramView = this.sCO.getPaint();
+      kotlin.g.b.p.j(paramView, "unLikeTv.paint");
       paramView.setFakeBoldText(true);
-      AppMethodBeat.o(195276);
+      AppMethodBeat.o(265646);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "kotlin.jvm.PlatformType", "label", "Landroid/widget/TextView;", "position", "", "data", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardTag;", "getLabelText"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "kotlin.jvm.PlatformType", "label", "Landroid/widget/TextView;", "position", "", "data", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardTag;", "getLabelText"})
   static final class b<T>
     implements LabelsView.a<c>
   {
-    public static final b puh;
+    public static final b sDu;
     
     static
     {
-      AppMethodBeat.i(195278);
-      puh = new b();
-      AppMethodBeat.o(195278);
+      AppMethodBeat.i(259774);
+      sDu = new b();
+      AppMethodBeat.o(259774);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "label", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "data", "", "position", "", "onLabelClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "label", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "data", "", "position", "", "onLabelClick"})
   static final class c
     implements LabelsView.b
   {
     c(h paramh) {}
     
-    public final void j(Object paramObject, int paramInt)
+    public final void n(Object paramObject, int paramInt)
     {
-      AppMethodBeat.i(195279);
-      paramObject = h.a(this.pui).hPX;
-      if (h.a(this.pui).ptA.getSelectLabels().size() > 0) {}
+      AppMethodBeat.i(258865);
+      paramObject = h.a(this.sDv).kEt;
+      if (h.a(this.sDv).sCN.getSelectLabels().size() > 0) {}
       for (boolean bool = true;; bool = false)
       {
         paramObject.setEnabled(bool);
-        AppMethodBeat.o(195279);
+        AppMethodBeat.o(258865);
         return;
       }
     }
@@ -255,7 +264,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.item.h
  * JD-Core Version:    0.7.0.1
  */

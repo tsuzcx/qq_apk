@@ -116,7 +116,7 @@ public class mmsight_camera_navbar_icon_switch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.mmsight_camera_navbar_icon_switch
  * JD-Core Version:    0.7.0.1
  */

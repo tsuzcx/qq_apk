@@ -1,41 +1,41 @@
 package com.tencent.mm.plugin.gamelife.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cy;
+import com.tencent.mm.f.c.dc;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessage;", "Lcom/tencent/mm/autogen/table/BaseGameLifeAppMessage;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "toWxAppMessage", "Lcom/tencent/mm/message/AppMessage;", "Companion", "plugin-gamelife_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessage;", "Lcom/tencent/mm/autogen/table/BaseGameLifeAppMessage;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "toWxAppMessage", "Lcom/tencent/mm/message/AppMessage;", "Companion", "plugin-gamelife_release"})
 public final class a
-  extends cy
+  extends dc
 {
+  public static final a DhN;
   private static final IAutoDBItem.MAutoDBInfo info;
-  public static final a ych;
   
   static
   {
-    AppMethodBeat.i(241391);
-    ych = new a((byte)0);
-    info = cy.ajs();
-    AppMethodBeat.o(241391);
+    AppMethodBeat.i(202683);
+    DhN = new a((byte)0);
+    info = dc.aoY();
+    AppMethodBeat.o(202683);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(241390);
+    AppMethodBeat.i(202682);
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = info;
-    p.g(localMAutoDBInfo, "info");
-    AppMethodBeat.o(241390);
+    p.j(localMAutoDBInfo, "info");
+    AppMethodBeat.o(202682);
     return localMAutoDBInfo;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessage$Companion;", "", "()V", "TABLE_NAME", "", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-gamelife_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessage$Companion;", "", "()V", "TABLE_NAME", "", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-gamelife_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.g.a
  * JD-Core Version:    0.7.0.1
  */

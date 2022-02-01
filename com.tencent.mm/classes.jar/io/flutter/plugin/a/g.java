@@ -9,16 +9,16 @@ import org.json.JSONObject;
 public final class g
   implements l
 {
-  public static final g SSl;
+  public static final g aauM;
   
   static
   {
     AppMethodBeat.i(9879);
-    SSl = new g();
+    aauM = new g();
     AppMethodBeat.o(9879);
   }
   
-  private static Object aF(Object paramObject)
+  private static Object aC(Object paramObject)
   {
     Object localObject = paramObject;
     if (paramObject == JSONObject.NULL) {
@@ -27,17 +27,17 @@ public final class g
     return localObject;
   }
   
-  public final j K(ByteBuffer paramByteBuffer)
+  public final j G(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(9875);
     try
     {
-      paramByteBuffer = f.SSk.J(paramByteBuffer);
+      paramByteBuffer = f.aauL.F(paramByteBuffer);
       if ((paramByteBuffer instanceof JSONObject))
       {
         Object localObject2 = (JSONObject)paramByteBuffer;
         Object localObject1 = ((JSONObject)localObject2).get("method");
-        localObject2 = aF(((JSONObject)localObject2).opt("args"));
+        localObject2 = aC(((JSONObject)localObject2).opt("args"));
         if ((localObject1 instanceof String))
         {
           paramByteBuffer = new j((String)localObject1, localObject2);
@@ -57,26 +57,26 @@ public final class g
     }
   }
   
-  public final Object L(ByteBuffer paramByteBuffer)
+  public final Object H(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(9878);
     try
     {
-      paramByteBuffer = f.SSk.J(paramByteBuffer);
+      paramByteBuffer = f.aauL.F(paramByteBuffer);
       if ((paramByteBuffer instanceof JSONArray))
       {
         Object localObject3 = (JSONArray)paramByteBuffer;
         if (((JSONArray)localObject3).length() == 1)
         {
-          paramByteBuffer = aF(((JSONArray)localObject3).opt(0));
+          paramByteBuffer = aC(((JSONArray)localObject3).opt(0));
           AppMethodBeat.o(9878);
           return paramByteBuffer;
         }
         if (((JSONArray)localObject3).length() == 3)
         {
           Object localObject1 = ((JSONArray)localObject3).get(0);
-          Object localObject2 = aF(((JSONArray)localObject3).opt(1));
-          localObject3 = aF(((JSONArray)localObject3).opt(2));
+          Object localObject2 = aC(((JSONArray)localObject3).opt(1));
+          localObject3 = aC(((JSONArray)localObject3).opt(2));
           if (((localObject1 instanceof String)) && ((localObject2 == null) || ((localObject2 instanceof String))))
           {
             paramByteBuffer = new e((String)localObject1, (String)localObject2, localObject3);
@@ -104,8 +104,8 @@ public final class g
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("method", paramj.method);
-      localJSONObject.put("args", h.wrap(paramj.SxX));
-      paramj = f.SSk.eP(localJSONObject);
+      localJSONObject.put("args", h.eW(paramj.ZZe));
+      paramj = f.aauL.eU(localJSONObject);
       AppMethodBeat.o(9874);
       return paramj;
     }
@@ -117,10 +117,18 @@ public final class g
     }
   }
   
-  public final ByteBuffer eQ(Object paramObject)
+  public final ByteBuffer bw(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(255413);
+    paramString1 = f.aauL.eU(new JSONArray().put(paramString1).put(h.eW(paramString2)).put(h.eW(null)).put(h.eW(paramString3)));
+    AppMethodBeat.o(255413);
+    return paramString1;
+  }
+  
+  public final ByteBuffer eV(Object paramObject)
   {
     AppMethodBeat.i(9876);
-    paramObject = f.SSk.eP(new JSONArray().put(h.wrap(paramObject)));
+    paramObject = f.aauL.eU(new JSONArray().put(h.eW(paramObject)));
     AppMethodBeat.o(9876);
     return paramObject;
   }
@@ -128,14 +136,14 @@ public final class g
   public final ByteBuffer h(String paramString1, String paramString2, Object paramObject)
   {
     AppMethodBeat.i(9877);
-    paramString1 = f.SSk.eP(new JSONArray().put(paramString1).put(h.wrap(paramString2)).put(h.wrap(paramObject)));
+    paramString1 = f.aauL.eU(new JSONArray().put(paramString1).put(h.eW(paramString2)).put(h.eW(paramObject)));
     AppMethodBeat.o(9877);
     return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.plugin.a.g
  * JD-Core Version:    0.7.0.1
  */

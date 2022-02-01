@@ -7,6 +7,7 @@ import android.text.InputFilter;
 import android.text.InputFilter.LengthFilter;
 import android.text.TextUtils.TruncateAt;
 import android.widget.TextView;
+import com.tencent.kinda.framework.R.color;
 import com.tencent.kinda.framework.widget.tools.ColorUtil;
 import com.tencent.kinda.framework.widget.tools.ColorUtil.MMViewType;
 import com.tencent.kinda.framework.widget.tools.MMKViewUtil;
@@ -17,13 +18,13 @@ import com.tencent.kinda.gen.FontStyle;
 import com.tencent.kinda.gen.KLabelView;
 import com.tencent.kinda.gen.TextAlign;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.pluginsdk.ui.span.o;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.wallet_core.ui.g;
 
 public class MMKLabelView
   extends MMKView<TextView>
@@ -60,7 +61,7 @@ public class MMKLabelView
     {
       if (i != -1)
       {
-        String str = f.aqk(i);
+        String str = g.azI(i);
         try
         {
           ((TextView)getView()).setTypeface(Typeface.createFromAsset(MMApplicationContext.getContext().getAssets(), str));
@@ -117,7 +118,7 @@ public class MMKLabelView
       }
       if (this.fontStyle == FontStyle.MEDIUM)
       {
-        ao.a(((TextView)getView()).getPaint(), 0.8F);
+        ar.a(((TextView)getView()).getPaint(), 0.8F);
         AppMethodBeat.o(19064);
         return;
       }
@@ -137,7 +138,7 @@ public class MMKLabelView
     localTextView.setGravity(19);
     if (ColorUtil.ifCompatKindaDarkModeDefaultColor())
     {
-      localTextView.setTextColor(paramContext.getResources().getColor(2131100904));
+      localTextView.setTextColor(paramContext.getResources().getColor(R.color.normal_text_color));
       this.textColor = new DynamicColor(Long.parseLong("E6000000", 16), Long.parseLong("CCFFFFFF", 16));
     }
     AppMethodBeat.o(19065);
@@ -210,7 +211,7 @@ public class MMKLabelView
   public float getTextSize()
   {
     AppMethodBeat.i(19072);
-    float f = a.E(MMApplicationContext.getContext(), (int)((TextView)getView()).getTextSize());
+    float f = a.H(MMApplicationContext.getContext(), (int)((TextView)getView()).getTextSize());
     AppMethodBeat.o(19072);
     return f;
   }
@@ -347,7 +348,7 @@ public class MMKLabelView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKLabelView
  * JD-Core Version:    0.7.0.1
  */

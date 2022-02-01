@@ -15,19 +15,21 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bb;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.f.c.bb;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.aa;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.appbrand.config.ae;
 import com.tencent.mm.plugin.appbrand.config.y;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
@@ -40,7 +42,7 @@ import com.tencent.mm.ui.base.MMSlideDelView.c;
 import com.tencent.mm.ui.base.MMSlideDelView.g;
 import com.tencent.mm.ui.base.NoMeasuredTextView;
 import com.tencent.mm.ui.chatting.ChattingUI;
-import com.tencent.mm.ui.s.a;
+import com.tencent.mm.ui.v.a;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -50,31 +52,31 @@ import java.util.Set;
 public class ServiceNotifyConversationUI
   extends MMActivity
 {
-  private String Qbv;
-  private ListView Qhj;
-  private a Qhk;
-  private i.a Qhl;
+  private ListView XEt;
+  private a XEu;
+  private i.a XEv;
+  private String XzI;
   private az conversation;
   private TextView emptyTipTv;
-  private String iNV;
+  private String lEm;
   private String talker = "";
   
   public int getLayoutId()
   {
-    return 2131496720;
+    return R.i.tmessage;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(234279);
-    setMMTitle(this.Qbv);
+    AppMethodBeat.i(219070);
+    setMMTitle(this.XzI);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(234259);
+        AppMethodBeat.i(274279);
         ServiceNotifyConversationUI.this.finish();
-        AppMethodBeat.o(234259);
+        AppMethodBeat.o(274279);
         return true;
       }
     });
@@ -82,59 +84,59 @@ public class ServiceNotifyConversationUI
     {
       public final void run()
       {
-        AppMethodBeat.i(234260);
+        AppMethodBeat.i(287842);
         if ((ServiceNotifyConversationUI.this.activityHasDestroyed()) || (ServiceNotifyConversationUI.this.isFinishing()))
         {
-          AppMethodBeat.o(234260);
+          AppMethodBeat.o(287842);
           return;
         }
         ServiceNotifyConversationUI.b(ServiceNotifyConversationUI.this);
-        AppMethodBeat.o(234260);
+        AppMethodBeat.o(287842);
       }
     });
-    this.Qhj = ((ListView)findViewById(2131309254));
-    this.emptyTipTv = ((TextView)findViewById(2131300096));
-    this.emptyTipTv.setText(2131763702);
-    this.Qhk = new a(this, this.iNV, new s.a()
+    this.XEt = ((ListView)findViewById(R.h.tmessage_lv));
+    this.emptyTipTv = ((TextView)findViewById(R.h.empty_msg_tip_tv));
+    this.emptyTipTv.setText(R.l.eNO);
+    this.XEu = new a(this, this.lEm, new v.a()
     {
-      public final void bnE()
+      public final void bxN()
       {
-        AppMethodBeat.i(234261);
+        AppMethodBeat.i(290884);
         ServiceNotifyConversationUI.a(ServiceNotifyConversationUI.this, ServiceNotifyConversationUI.a(ServiceNotifyConversationUI.this).getCount());
-        AppMethodBeat.o(234261);
+        AppMethodBeat.o(290884);
       }
     });
-    this.Qhk.setGetViewPositionCallback(new MMSlideDelView.c()
+    this.XEu.setGetViewPositionCallback(new MMSlideDelView.c()
     {
-      public final int dr(View paramAnonymousView)
+      public final int dO(View paramAnonymousView)
       {
-        AppMethodBeat.i(234262);
+        AppMethodBeat.i(285570);
         int i = ServiceNotifyConversationUI.c(ServiceNotifyConversationUI.this).getPositionForView(paramAnonymousView);
-        AppMethodBeat.o(234262);
+        AppMethodBeat.o(285570);
         return i;
       }
     });
-    this.Qhk.setPerformItemClickListener(new MMSlideDelView.g()
+    this.XEu.setPerformItemClickListener(new MMSlideDelView.g()
     {
-      public final void r(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void s(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(234263);
+        AppMethodBeat.i(279513);
         ServiceNotifyConversationUI.c(ServiceNotifyConversationUI.this).performItemClick(paramAnonymousView, paramAnonymousInt1, paramAnonymousInt2);
-        AppMethodBeat.o(234263);
+        AppMethodBeat.o(279513);
       }
     });
-    this.Qhj.setAdapter(this.Qhk);
-    this.Qhj.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.XEt.setAdapter(this.XEu);
+    this.XEt.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
-        AppMethodBeat.i(234264);
+        AppMethodBeat.i(283284);
         Object localObject = new b();
-        ((b)localObject).bm(paramAnonymousAdapterView);
-        ((b)localObject).bm(paramAnonymousView);
-        ((b)localObject).pH(paramAnonymousInt);
-        ((b)localObject).zo(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/ServiceNotifyConversationUI$8", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((b)localObject).axR());
+        ((b)localObject).bn(paramAnonymousAdapterView);
+        ((b)localObject).bn(paramAnonymousView);
+        ((b)localObject).sg(paramAnonymousInt);
+        ((b)localObject).Fs(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/conversation/ServiceNotifyConversationUI$8", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((b)localObject).aFi());
         ServiceNotifyConversationUI.a(ServiceNotifyConversationUI.this, (az)ServiceNotifyConversationUI.a(ServiceNotifyConversationUI.this).getItem(paramAnonymousInt));
         ServiceNotifyConversationUI.a(ServiceNotifyConversationUI.this, ServiceNotifyConversationUI.d(ServiceNotifyConversationUI.this).field_username);
         paramAnonymousView = ServiceNotifyConversationUI.d(ServiceNotifyConversationUI.this);
@@ -143,7 +145,7 @@ public class ServiceNotifyConversationUI
           Log.e("MicroMsg.ServiceNotifyConversationUI", "user should not be null. position:%d, size:%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(ServiceNotifyConversationUI.a(ServiceNotifyConversationUI.this).getCount()) });
           ServiceNotifyConversationUI.a(ServiceNotifyConversationUI.this).notifyDataSetChanged();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/ServiceNotifyConversationUI$8", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-          AppMethodBeat.o(234264);
+          AppMethodBeat.o(283284);
           return;
         }
         localObject = new Intent(ServiceNotifyConversationUI.this, ChattingUI.class);
@@ -158,145 +160,145 @@ public class ServiceNotifyConversationUI
           ((Intent)localObject).putExtra("KOpenArticleSceneFromScene", 92);
           ((Intent)localObject).putExtra("specific_chat_from_scene", 6);
           paramAnonymousAdapterView = ServiceNotifyConversationUI.this;
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/ui/conversation/ServiceNotifyConversationUI$8", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousAdapterView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, "com/tencent/mm/ui/conversation/ServiceNotifyConversationUI$8", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousAdapterView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/ui/conversation/ServiceNotifyConversationUI$8", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousAdapterView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousAdapterView, "com/tencent/mm/ui/conversation/ServiceNotifyConversationUI$8", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           ServiceNotifyConversationUI.a(ServiceNotifyConversationUI.this);
-          ServiceNotifyConversationUI.a.n(paramAnonymousView);
+          ServiceNotifyConversationUI.a.m(paramAnonymousView);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/ServiceNotifyConversationUI$8", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-          AppMethodBeat.o(234264);
+          AppMethodBeat.o(283284);
           return;
         }
       }
     });
-    this.Qhk.setGetViewPositionCallback(new MMSlideDelView.c()
+    this.XEu.setGetViewPositionCallback(new MMSlideDelView.c()
     {
-      public final int dr(View paramAnonymousView)
+      public final int dO(View paramAnonymousView)
       {
-        AppMethodBeat.i(234265);
+        AppMethodBeat.i(287400);
         int i = ServiceNotifyConversationUI.c(ServiceNotifyConversationUI.this).getPositionForView(paramAnonymousView);
-        AppMethodBeat.o(234265);
+        AppMethodBeat.o(287400);
         return i;
       }
     });
-    this.Qhk.setPerformItemClickListener(new MMSlideDelView.g()
+    this.XEu.setPerformItemClickListener(new MMSlideDelView.g()
     {
-      public final void r(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void s(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(234257);
+        AppMethodBeat.i(270902);
         ServiceNotifyConversationUI.c(ServiceNotifyConversationUI.this).performItemClick(paramAnonymousView, paramAnonymousInt1, paramAnonymousInt2);
-        AppMethodBeat.o(234257);
+        AppMethodBeat.o(270902);
       }
     });
-    AppMethodBeat.o(234279);
+    AppMethodBeat.o(219070);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(234280);
+    AppMethodBeat.i(219073);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((this.talker != null) && (!this.talker.isEmpty())) {
       this.talker = "";
     }
     if (paramInt2 != -1)
     {
-      AppMethodBeat.o(234280);
+      AppMethodBeat.o(219073);
       return;
     }
-    AppMethodBeat.o(234280);
+    AppMethodBeat.o(219073);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(234275);
+    AppMethodBeat.i(219057);
     super.onCreate(paramBundle);
-    if (!bg.aAc())
+    if (!bh.aHB())
     {
       Log.e("MicroMsg.ServiceNotifyConversationUI", "onCreate acc not ready!!!");
       finish();
-      AppMethodBeat.o(234275);
+      AppMethodBeat.o(219057);
       return;
     }
-    this.iNV = "notifymessage";
-    this.Qbv = getIntent().getStringExtra("enterprise_biz_display_name");
-    if (Util.isNullOrNil(this.Qbv)) {
-      this.Qbv = getString(2131761573);
+    this.lEm = "notifymessage";
+    this.XzI = getIntent().getStringExtra("enterprise_biz_display_name");
+    if (Util.isNullOrNil(this.XzI)) {
+      this.XzI = getString(R.l.eHi);
     }
     initView();
     removeAllOptionMenu();
-    addIconOptionMenu(0, 2131755153, 2131689513, false, new ServiceNotifyConversationUI.3(this));
-    bg.aVF();
-    c.aST().add(this.Qhk);
-    this.Qhl = new i.a()
+    addIconOptionMenu(0, R.l.actionbar_title_setting, R.k.actionbar_setting_icon, false, new ServiceNotifyConversationUI.3(this));
+    bh.beI();
+    c.bbR().add(this.XEu);
+    this.XEv = new i.a()
     {
-      public final void a(i paramAnonymousi, i.c paramAnonymousc)
+      public final void onNotifyChange(i paramAnonymousi, i.c paramAnonymousc)
       {
-        AppMethodBeat.i(234256);
-        if ((paramAnonymousi != null) && (paramAnonymousc.hIs != null))
+        AppMethodBeat.i(291339);
+        if ((paramAnonymousi != null) && (paramAnonymousc.kvM != null))
         {
-          paramAnonymousi = paramAnonymousc.hIs.iterator();
+          paramAnonymousi = paramAnonymousc.kvM.iterator();
           while (paramAnonymousi.hasNext())
           {
             Object localObject = (ca)paramAnonymousi.next();
             if ((localObject != null) && ("notifymessage".equals(paramAnonymousc.talker)))
             {
-              bg.aVF();
+              bh.beI();
               c.getNotifyMessageRecordStorage();
-              localObject = cf.bc((ca)localObject);
+              localObject = cf.bv((ca)localObject);
               if ((!Util.isNullOrNil((String)localObject)) && (ServiceNotifyConversationUI.a(ServiceNotifyConversationUI.this) != null)) {
                 ServiceNotifyConversationUI.a(ServiceNotifyConversationUI.this).onNotifyChange((String)localObject, null);
               }
             }
           }
         }
-        AppMethodBeat.o(234256);
+        AppMethodBeat.o(291339);
       }
     };
-    ((l)g.af(l.class)).eiy().a(this.Qhl, Looper.getMainLooper());
-    AppMethodBeat.o(234275);
+    ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().a(this.XEv, Looper.getMainLooper());
+    AppMethodBeat.o(219057);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(234276);
-    if (this.Qhl != null)
+    AppMethodBeat.i(219059);
+    if (this.XEv != null)
     {
-      ((l)g.af(l.class)).eiy().a(this.Qhl);
-      this.Qhl = null;
+      ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().a(this.XEv);
+      this.XEv = null;
     }
-    if (bg.aAc())
+    if (bh.aHB())
     {
-      bg.aVF();
-      c.aST().remove(this.Qhk);
+      bh.beI();
+      c.bbR().remove(this.XEu);
     }
-    if (this.Qhk != null) {
-      this.Qhk.onDestroy();
+    if (this.XEu != null) {
+      this.XEu.onDestroy();
     }
     super.onDestroy();
-    AppMethodBeat.o(234276);
+    AppMethodBeat.o(219059);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(234278);
+    AppMethodBeat.i(219064);
     Log.i("MicroMsg.ServiceNotifyConversationUI", "on pause");
-    if (this.Qhk != null) {
-      this.Qhk.onPause();
+    if (this.XEu != null) {
+      this.XEu.onPause();
     }
     super.onPause();
-    AppMethodBeat.o(234278);
+    AppMethodBeat.o(219064);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(234277);
+    AppMethodBeat.i(219062);
     Log.v("MicroMsg.ServiceNotifyConversationUI", "on resume");
-    if (this.Qhk != null) {
-      this.Qhk.onResume();
+    if (this.XEu != null) {
+      this.XEu.onResume();
     }
     super.onResume();
-    AppMethodBeat.o(234277);
+    AppMethodBeat.o(219062);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -306,55 +308,55 @@ public class ServiceNotifyConversationUI
   }
   
   static final class a
-    extends e
+    extends f
   {
-    private Set<String> Qhn;
+    private Set<String> XEx;
     private String username;
     
-    public a(Context paramContext, String paramString, s.a parama)
+    public a(Context paramContext, String paramString, v.a parama)
     {
       super(parama);
-      AppMethodBeat.i(234266);
-      this.Qhn = new HashSet();
+      AppMethodBeat.i(275798);
+      this.XEx = new HashSet();
       this.username = paramString;
-      AppMethodBeat.o(234266);
+      AppMethodBeat.o(275798);
     }
     
-    public static void n(az paramaz)
+    public static void m(az paramaz)
     {
-      AppMethodBeat.i(234272);
-      h.CyF.a(21825, new Object[] { Integer.valueOf(5), paramaz.field_username, Long.valueOf(Util.nowSecond()), null, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
-      AppMethodBeat.o(234272);
+      AppMethodBeat.i(275805);
+      com.tencent.mm.plugin.report.service.h.IzE.a(21825, new Object[] { Integer.valueOf(5), paramaz.field_username, Long.valueOf(Util.nowSecond()), null, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+      AppMethodBeat.o(275805);
     }
     
-    private static String s(Cursor paramCursor)
+    private static String w(Cursor paramCursor)
     {
-      AppMethodBeat.i(234273);
+      AppMethodBeat.i(275806);
       int i = paramCursor.getColumnIndex("talker");
       if (i >= 0)
       {
         paramCursor = paramCursor.getString(i);
-        AppMethodBeat.o(234273);
+        AppMethodBeat.o(275806);
         return paramCursor;
       }
-      AppMethodBeat.o(234273);
+      AppMethodBeat.o(275806);
       return null;
     }
     
     public final az a(az paramaz, Cursor paramCursor)
     {
-      AppMethodBeat.i(234268);
+      AppMethodBeat.i(275800);
       az localaz = paramaz;
       if (paramaz == null) {
         localaz = new az();
       }
-      localaz.setUsername(s(paramCursor));
+      localaz.setUsername(w(paramCursor));
       int i = paramCursor.getColumnIndex("createTime");
       long l;
       if (i >= 0)
       {
         l = paramCursor.getLong(i);
-        localaz.yA(l);
+        localaz.EB(l);
         i = paramCursor.getColumnIndex("digest");
         if (i < 0) {
           break label141;
@@ -363,14 +365,14 @@ public class ServiceNotifyConversationUI
       label141:
       for (paramaz = paramCursor.getString(i);; paramaz = null)
       {
-        localaz.Cm(paramaz);
-        localaz.Co("notifymessage");
+        localaz.Ja(paramaz);
+        localaz.Jc("notifymessage");
         localaz.setStatus(2);
-        localaz.nv(1);
-        localaz.nt(0);
-        localaz.Cl(Integer.toString(1));
-        localaz.Cn("");
-        AppMethodBeat.o(234268);
+        localaz.pJ(1);
+        localaz.pH(0);
+        localaz.IZ(Integer.toString(1));
+        localaz.Jb("");
+        AppMethodBeat.o(275800);
         return localaz;
         l = 0L;
         break;
@@ -379,61 +381,61 @@ public class ServiceNotifyConversationUI
     
     protected final void a(az paramaz, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
     {
-      AppMethodBeat.i(234270);
+      AppMethodBeat.i(275802);
       if (Util.isNullOrNil(paramaz.field_username))
       {
-        AppMethodBeat.o(234270);
+        AppMethodBeat.o(275802);
         return;
       }
-      this.Qhn.add(paramaz.field_username);
-      AppMethodBeat.o(234270);
+      this.XEx.add(paramaz.field_username);
+      AppMethodBeat.o(275802);
     }
     
-    public final void anp()
+    public final void atr()
     {
-      AppMethodBeat.i(234267);
-      ebf();
-      bg.aVF();
-      setCursor(c.getNotifyMessageRecordStorage().gEk());
-      if (this.OFI != null) {
-        this.OFI.bnE();
+      AppMethodBeat.i(275799);
+      eKd();
+      bh.beI();
+      v(c.getNotifyMessageRecordStorage().hAA());
+      if (this.VZc != null) {
+        this.VZc.bxN();
       }
       super.notifyDataSetChanged();
-      AppMethodBeat.o(234267);
+      AppMethodBeat.o(275799);
     }
     
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(234269);
+      AppMethodBeat.i(275801);
       paramViewGroup = super.getView(paramInt, paramView, paramViewGroup);
-      e.g localg = (e.g)paramViewGroup.getTag();
-      if (localg.PaE.getText() == null)
+      f.g localg = (f.g)paramViewGroup.getTag();
+      if (localg.WtR.getText() == null)
       {
-        AppMethodBeat.o(234269);
+        AppMethodBeat.o(275801);
         return paramViewGroup;
       }
-      String str = localg.PaE.getText().toString();
+      String str = localg.WtR.getText().toString();
       paramView = null;
       ae localae;
-      if (as.HF(str))
+      if (as.OS(str))
       {
-        localae = y.Xr(str);
+        localae = y.afd(str);
         if (localae == null) {}
       }
-      for (paramView = localae.nickname;; paramView = aa.getDisplayName(str))
+      for (paramView = localae.nickname;; paramView = aa.PJ(str))
       {
         if (!Util.nullAsNil(str).equals(paramView)) {
-          localg.PaE.setText(paramView);
+          localg.WtR.setText(paramView);
         }
-        AppMethodBeat.o(234269);
+        AppMethodBeat.o(275801);
         return paramViewGroup;
       }
     }
     
     public final void onDestroy()
     {
-      AppMethodBeat.i(234271);
-      Object localObject1 = getCursor();
+      AppMethodBeat.i(275804);
+      Object localObject1 = hK();
       if (localObject1 != null)
       {
         if ((localObject1 != null) && (!((Cursor)localObject1).isClosed()) && (((Cursor)localObject1).moveToFirst())) {
@@ -447,18 +449,18 @@ public class ServiceNotifyConversationUI
         }
       }
       label268:
-      for (localObject1 = null;; localObject1 = String.format(Locale.US, "%d,%d,%d", new Object[] { Integer.valueOf(((ServiceNotifyConversationUI.b)localObject1).Qhp), Integer.valueOf(((ServiceNotifyConversationUI.b)localObject1).Qho), Integer.valueOf(((ServiceNotifyConversationUI.b)localObject1).Qhq) }))
+      for (localObject1 = null;; localObject1 = String.format(Locale.US, "%d:%d:%d", new Object[] { Integer.valueOf(((ServiceNotifyConversationUI.b)localObject1).XEz), Integer.valueOf(((ServiceNotifyConversationUI.b)localObject1).XEy), Integer.valueOf(((ServiceNotifyConversationUI.b)localObject1).XEA) }))
       {
-        h.CyF.a(21825, new Object[] { Integer.valueOf(4), null, Long.valueOf(Util.nowSecond()), localObject1, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(21825, new Object[] { Integer.valueOf(4), null, Long.valueOf(Util.nowSecond()), localObject1, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
         super.onDestroy();
-        AppMethodBeat.o(234271);
+        AppMethodBeat.o(275804);
         return;
         label125:
         Object localObject2 = new HashSet();
         String str;
         do
         {
-          str = s((Cursor)localObject1);
+          str = w((Cursor)localObject1);
           if (!Util.isNullOrNil(str)) {
             ((Set)localObject2).add(str);
           }
@@ -470,12 +472,12 @@ public class ServiceNotifyConversationUI
           while (((Iterator)localObject2).hasNext())
           {
             str = (String)((Iterator)localObject2).next();
-            if (as.HF(str)) {
-              ((ServiceNotifyConversationUI.b)localObject1).Qho += 1;
+            if (as.OS(str)) {
+              ((ServiceNotifyConversationUI.b)localObject1).XEy += 1;
             } else if (Util.nullAsNil(str).startsWith("gh_")) {
-              ((ServiceNotifyConversationUI.b)localObject1).Qhp += 1;
+              ((ServiceNotifyConversationUI.b)localObject1).XEz += 1;
             } else {
-              ((ServiceNotifyConversationUI.b)localObject1).Qhq += 1;
+              ((ServiceNotifyConversationUI.b)localObject1).XEA += 1;
             }
           }
         }
@@ -486,14 +488,14 @@ public class ServiceNotifyConversationUI
   
   static final class b
   {
-    public int Qho;
-    public int Qhp;
-    public int Qhq;
+    public int XEA;
+    public int XEy;
+    public int XEz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.ServiceNotifyConversationUI
  * JD-Core Version:    0.7.0.1
  */

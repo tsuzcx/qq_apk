@@ -12,30 +12,30 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/secdata/ActivityNamesSecData;", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "Lcom/tencent/mm/plugin/secdata/ISecData;", "activityNameList", "", "", "clazz", "Ljava/lang/Class;", "type", "", "reuse", "", "(Ljava/util/List;Ljava/lang/Class;IZ)V", "getActivityNameList", "()Ljava/util/List;", "getClazz", "()Ljava/lang/Class;", "data", "getData", "()Lcom/tencent/mm/protobuf/BaseProtoBuf;", "data$delegate", "Lkotlin/Lazy;", "check", "intent", "Landroid/content/Intent;", "getTransformData", "getType", "plugin-sec-data_release"})
-public class b<T extends com.tencent.mm.bw.a>
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/secdata/ActivityNamesSecData;", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "Lcom/tencent/mm/plugin/secdata/ISecData;", "activityNameList", "", "", "clazz", "Ljava/lang/Class;", "type", "", "reuse", "", "(Ljava/util/List;Ljava/lang/Class;IZ)V", "getActivityNameList", "()Ljava/util/List;", "getClazz", "()Ljava/lang/Class;", "data", "getData", "()Lcom/tencent/mm/protobuf/BaseProtoBuf;", "data$delegate", "Lkotlin/Lazy;", "check", "intent", "Landroid/content/Intent;", "getTransformData", "getType", "plugin-sec-data_release"})
+public class b<T extends com.tencent.mm.cd.a>
   implements h<T>
 {
-  private final f CVQ;
-  private final List<String> CVR;
-  private final boolean CVS;
-  final Class<T> aWC;
+  private final f JbC;
+  private final List<String> JbD;
+  private final boolean JbE;
+  final Class<T> aFS;
   private final int type;
   
   public b(List<String> paramList, Class<T> paramClass, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(219134);
-    this.CVR = paramList;
-    this.aWC = paramClass;
+    AppMethodBeat.i(197936);
+    this.JbD = paramList;
+    this.aFS = paramClass;
     this.type = paramInt;
-    this.CVS = paramBoolean;
-    this.CVQ = g.ah((kotlin.g.a.a)new a(this));
-    AppMethodBeat.o(219134);
+    this.JbE = paramBoolean;
+    this.JbC = g.ar((kotlin.g.a.a)new a(this));
+    AppMethodBeat.o(197936);
   }
   
-  public final boolean aS(Intent paramIntent)
+  public final boolean aR(Intent paramIntent)
   {
-    AppMethodBeat.i(219132);
+    AppMethodBeat.i(197929);
     if (paramIntent != null)
     {
       paramIntent = paramIntent.getComponent();
@@ -47,7 +47,7 @@ public class b<T extends com.tencent.mm.bw.a>
           paramIntent = n.a((CharSequence)paramIntent, new String[] { "." });
           if (paramIntent != null)
           {
-            String str = (String)j.kv(paramIntent);
+            String str = (String)j.lr(paramIntent);
             paramIntent = str;
             if (str != null) {
               break label65;
@@ -57,26 +57,26 @@ public class b<T extends com.tencent.mm.bw.a>
       }
       paramIntent = "";
       label65:
-      boolean bool = this.CVR.contains(paramIntent);
-      AppMethodBeat.o(219132);
+      boolean bool = this.JbD.contains(paramIntent);
+      AppMethodBeat.o(197929);
       return bool;
     }
-    AppMethodBeat.o(219132);
+    AppMethodBeat.o(197929);
     return false;
   }
   
-  public final T eSl()
+  public final T fFn()
   {
-    AppMethodBeat.i(219133);
-    com.tencent.mm.bw.a locala = (com.tencent.mm.bw.a)this.CVQ.getValue();
-    p.g(locala, "data");
-    AppMethodBeat.o(219133);
+    AppMethodBeat.i(197932);
+    com.tencent.mm.cd.a locala = (com.tencent.mm.cd.a)this.JbC.getValue();
+    p.j(locala, "data");
+    AppMethodBeat.o(197932);
     return locala;
   }
   
-  public final boolean eSm()
+  public final boolean fFo()
   {
-    return this.CVS;
+    return this.JbE;
   }
   
   public final int getType()
@@ -84,7 +84,7 @@ public class b<T extends com.tencent.mm.bw.a>
     return this.type;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "invoke", "()Lcom/tencent/mm/protobuf/BaseProtoBuf;"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "invoke", "()Lcom/tencent/mm/protobuf/BaseProtoBuf;"})
   static final class a
     extends q
     implements kotlin.g.a.a<T>
@@ -97,7 +97,7 @@ public class b<T extends com.tencent.mm.bw.a>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.secdata.b
  * JD-Core Version:    0.7.0.1
  */

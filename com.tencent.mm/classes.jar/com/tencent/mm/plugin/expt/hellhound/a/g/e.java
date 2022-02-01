@@ -13,23 +13,23 @@ import java.lang.reflect.Field;
 public final class e
 {
   @SuppressLint({"StaticFieldLeak"})
-  public static volatile e sJt;
+  public static volatile e wpr;
   public WeakReference<Activity> mActivityRef;
   private int mScrollState;
-  public final f sCN;
-  public com.tencent.mm.plugin.expt.hellhound.a.a.a sDg;
-  public c sJs;
-  public final b sJu;
-  private Field sJv;
-  private int sJw;
-  private int sJx;
+  public final f wiH;
+  public com.tencent.mm.plugin.expt.hellhound.a.a.a wja;
+  public c wpq;
+  public final b wps;
+  private Field wpt;
+  private int wpu;
+  private int wpv;
   
   @SuppressLint({"NewApi"})
   private e()
   {
     AppMethodBeat.i(169377);
     this.mScrollState = 0;
-    this.sCN = new f()
+    this.wiH = new f()
     {
       public final void a(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
@@ -53,37 +53,37 @@ public final class e
       public final void k(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt)
       {
         AppMethodBeat.i(169374);
-        e.a(e.this, paramAnonymousViewGroup, e.Hs(paramAnonymousInt));
+        e.a(e.this, paramAnonymousViewGroup, e.Lc(paramAnonymousInt));
         AppMethodBeat.o(169374);
       }
     };
-    this.sJu = new b()
+    this.wps = new b()
     {
-      public final void Hr(int paramAnonymousInt)
+      public final void Lb(int paramAnonymousInt)
       {
         AppMethodBeat.i(184396);
         Log.i("HABBYGE-MALI.SnsMonitor", "SnsMonitor, smoothScrollToPositionFromTop: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         if (e.b(e.this) != null) {
-          e.b(e.this).sBr = paramAnonymousInt;
+          e.b(e.this).whl = paramAnonymousInt;
         }
         AppMethodBeat.o(184396);
       }
       
-      public final void cQS()
+      public final void dfN()
       {
         AppMethodBeat.i(184397);
         Log.i("HABBYGE-MALI.SnsMonitor", "SnsMonitor, scrollToTop...");
         if (e.b(e.this) != null) {
-          e.b(e.this).sBr = 0;
+          e.b(e.this).whl = 0;
         }
         AppMethodBeat.o(184397);
       }
       
-      public final void cQT()
+      public final void dfO()
       {
         AppMethodBeat.i(184398);
         if (e.b(e.this) != null) {
-          e.b(e.this).mc(false);
+          e.b(e.this).no(false);
         }
         AppMethodBeat.o(184398);
       }
@@ -93,19 +93,19 @@ public final class e
         AppMethodBeat.i(184395);
         Log.i("HABBYGE-MALI.SnsMonitor", "SnsMonitor, smoothScrollToPosition: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         if (e.b(e.this) != null) {
-          e.b(e.this).sBr = paramAnonymousInt;
+          e.b(e.this).whl = paramAnonymousInt;
         }
         AppMethodBeat.o(184395);
       }
     };
-    this.sJw = 0;
-    this.sJx = 0;
-    this.sDg = new com.tencent.mm.plugin.expt.hellhound.a.a.a(0, "16242", "1000");
-    this.sJs = new c();
+    this.wpu = 0;
+    this.wpv = 0;
+    this.wja = new com.tencent.mm.plugin.expt.hellhound.a.a.a(0, "16242", "1000");
+    this.wpq = new c();
     try
     {
-      this.sJv = AbsListView.class.getDeclaredField("mMotionY");
-      this.sJv.setAccessible(true);
+      this.wpt = AbsListView.class.getDeclaredField("mMotionY");
+      this.wpt.setAccessible(true);
       AppMethodBeat.o(169377);
       return;
     }
@@ -116,16 +116,16 @@ public final class e
     }
   }
   
-  public static e cQV()
+  public static e dfQ()
   {
     AppMethodBeat.i(169376);
-    if (sJt == null) {}
+    if (wpr == null) {}
     try
     {
-      if (sJt == null) {
-        sJt = new e();
+      if (wpr == null) {
+        wpr = new e();
       }
-      e locale = sJt;
+      e locale = wpr;
       AppMethodBeat.o(169376);
       return locale;
     }
@@ -135,10 +135,10 @@ public final class e
     }
   }
   
-  private static boolean cQW()
+  private static boolean dfR()
   {
     AppMethodBeat.i(169380);
-    if ((!com.tencent.mm.plugin.expt.hellhound.a.cNo()) || (!com.tencent.mm.plugin.expt.hellhound.a.cNs()))
+    if ((!com.tencent.mm.plugin.expt.hellhound.a.dcg()) || (!com.tencent.mm.plugin.expt.hellhound.a.dck()))
     {
       AppMethodBeat.o(169380);
       return true;
@@ -147,12 +147,12 @@ public final class e
     return false;
   }
   
-  private void p(ViewGroup paramViewGroup)
+  private void q(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(169379);
     try
     {
-      this.sJx = (((Integer)this.sJv.get(paramViewGroup)).intValue() - this.sJw);
+      this.wpv = (((Integer)this.wpt.get(paramViewGroup)).intValue() - this.wpu);
       AppMethodBeat.o(169379);
       return;
     }
@@ -171,7 +171,7 @@ public final class e
       AppMethodBeat.o(169378);
       return;
     }
-    if (cQW())
+    if (dfR())
     {
       Log.i("HABBYGE-MALI.SnsMonitor", "SnsMonitor, monitor, dontNeedMonitorTimeline true !!");
       AppMethodBeat.o(169378);
@@ -186,22 +186,22 @@ public final class e
       AppMethodBeat.o(169378);
       return;
       this.mActivityRef = new WeakReference(paramActivity);
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().GP(700);
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.dcB().Kz(700);
       AppMethodBeat.o(169378);
       return;
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().GP(701);
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.dcB().Kz(701);
       AppMethodBeat.o(169378);
       return;
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().GP(702);
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.dcB().Kz(702);
       AppMethodBeat.o(169378);
       return;
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().GP(703);
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.dcB().Kz(703);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.g.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,487 +1,273 @@
 package com.tencent.mm.ui.chatting.d;
 
 import android.app.Activity;
-import android.content.res.Resources;
-import android.util.SparseArray;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.jd;
-import com.tencent.mm.g.b.a.jg;
-import com.tencent.mm.g.b.a.jo;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.t;
+import com.tencent.mm.compatible.deviceinfo.n;
+import com.tencent.mm.f.a.cn;
+import com.tencent.mm.f.a.cn.b;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.hardcoder.WXHardCoderJNI;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.n.f;
-import com.tencent.mm.plugin.story.api.l;
-import com.tencent.mm.plugin.story.api.l.a;
-import com.tencent.mm.plugin.story.api.o;
-import com.tencent.mm.plugin.story.h.i;
-import com.tencent.mm.plugin.story.h.i.a;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.cg;
+import com.tencent.mm.modelmulti.o;
+import com.tencent.mm.modelmulti.o.b;
+import com.tencent.mm.modelmulti.o.e;
+import com.tencent.mm.plugin.notification.f;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.plugin.setting.model.m;
+import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
+import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.MMFragment;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.cl;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.d.b.aa;
-import com.tencent.mm.ui.chatting.d.b.m;
-import com.tencent.mm.ui.chatting.view.AvatarImageView;
-import com.tencent.mm.ui.chatting.viewitems.bq;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.tencent.mm.ui.chatting.d.b.ac;
+import com.tencent.mm.ui.chatting.d.b.ar;
+import com.tencent.mm.ui.chatting.d.b.k;
+import com.tencent.mm.ui.chatting.d.b.r;
+import com.tencent.mm.ui.chatting.d.b.u;
+import com.tencent.mm.ui.chatting.y;
 
-@com.tencent.mm.ui.chatting.d.a.a(gRF=ai.class)
+@com.tencent.mm.ui.chatting.d.a.a(hRc=ar.class)
 public class bb
   extends a
-  implements l.a, ai
+  implements com.tencent.mm.an.i, ar
 {
-  private boolean BdH;
-  private boolean FpT;
-  private List<String> Fue;
-  private MenuItem.OnMenuItemClickListener ORI;
-  private l Pul;
-  private List<String> Pum;
-  private boolean Pun;
-  private long Puo;
-  private boolean Pup;
-  private SparseArray<WeakReference<AvatarImageView>> Puq;
-  private long nJh;
-  private String sessionId;
-  private boolean tcb;
-  private boolean thE;
+  private boolean WHy = false;
+  private y WOu;
+  private int WOv;
   
-  public bb()
+  private boolean hL(final String paramString, final int paramInt)
   {
-    AppMethodBeat.i(35625);
-    this.Pum = Collections.synchronizedList(new ArrayList());
-    this.Fue = Collections.synchronizedList(new ArrayList());
-    this.Pun = false;
-    this.tcb = true;
-    this.BdH = false;
-    this.FpT = false;
-    this.Puo = 500L;
-    this.nJh = 0L;
-    this.sessionId = null;
-    this.thE = false;
-    this.Pup = false;
-    this.Puq = new SparseArray();
-    this.ORI = new MenuItem.OnMenuItemClickListener()
+    int i = 0;
+    AppMethodBeat.i(35586);
+    paramString = Util.getFilterString(paramString);
+    if ((paramString == null) || (paramString.length() == 0))
     {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      Log.e("MicroMsg.ChattingUI.SendTextComponent", "doSendMessage null");
+      AppMethodBeat.o(35586);
+      return false;
+    }
+    cn localcn = new cn();
+    localcn.fyi.fyk = paramString;
+    localcn.fyi.context = this.fgR.WQv.getContext();
+    localcn.fyi.username = this.fgR.getTalkerUserName();
+    EventCenter.instance.publish(localcn);
+    if (localcn.fyj.fyl)
+    {
+      AppMethodBeat.o(35586);
+      return true;
+    }
+    boolean bool = WXHardCoderJNI.hcSendMsgEnable;
+    int j = WXHardCoderJNI.hcSendMsgDelay;
+    int k = WXHardCoderJNI.hcSendMsgCPU;
+    int m = WXHardCoderJNI.hcSendMsgIO;
+    if (WXHardCoderJNI.hcSendMsgThr) {
+      i = h.aHJ().getProcessTid();
+    }
+    this.WOv = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcSendMsgTimeout, 202, WXHardCoderJNI.hcSendMsgAction, "MicroMsg.ChattingUI.SendTextComponent");
+    com.tencent.mm.ui.chatting.e.a.hRl().post(new Runnable()
+    {
+      public final void run()
       {
-        long l = 1L;
-        AppMethodBeat.i(35622);
-        if (System.currentTimeMillis() - bb.a(bb.this) <= bb.b(bb.this))
+        AppMethodBeat.i(35582);
+        if (bb.this.fgR == null)
         {
-          Log.i("MicroMsg.StoryStateComponent", "onclick pass $clickTime now: %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-          AppMethodBeat.o(35622);
-          return true;
+          Log.w("MicroMsg.ChattingUI.SendTextComponent", "NULL == mChattingContext");
+          AppMethodBeat.o(35582);
+          return;
         }
-        bb.a(bb.this, System.currentTimeMillis());
-        Log.i("MicroMsg.StoryStateComponent", "menuItemClickListener clickTime %s storyUserList size %s", new Object[] { Long.valueOf(bb.a(bb.this)), Integer.valueOf(bb.c(bb.this).size()) });
-        if (bb.c(bb.this).size() > 0)
+        g.ada(20);
+        if (bb.a(bb.this))
         {
-          paramAnonymousMenuItem = (String)bb.c(bb.this).get(0);
-          Log.i("MicroMsg.StoryStateComponent", "menuItemClickListener click go %s", new Object[] { paramAnonymousMenuItem });
-          ((com.tencent.mm.plugin.story.api.e)g.ah(com.tencent.mm.plugin.story.api.e.class)).checkReportFromChatting(1, paramAnonymousMenuItem);
-          List localList = bb.d(bb.this);
-          ((com.tencent.mm.plugin.story.api.e)g.ah(com.tencent.mm.plugin.story.api.e.class)).enterGallery(localList);
-          ((com.tencent.mm.plugin.story.api.e)g.ah(com.tencent.mm.plugin.story.api.e.class)).preLoadVideoViewMgr(paramAnonymousMenuItem);
-          paramAnonymousMenuItem = com.tencent.mm.plugin.story.h.h.FuH;
-          com.tencent.mm.plugin.story.h.h.fqi().wU(bb.e(bb.this));
-          if (bb.f(bb.this))
-          {
-            paramAnonymousMenuItem = com.tencent.mm.plugin.story.h.h.FuH;
-            com.tencent.mm.plugin.story.h.h.fqi().eQv = 4L;
-            o.a(bb.this.dom.Pwc.getContext(), bb.c(bb.this), bb.this.dom.getTalkerUserName(), bb.e(bb.this));
-            paramAnonymousMenuItem = com.tencent.mm.plugin.story.h.h.FuH;
-            paramAnonymousMenuItem = com.tencent.mm.plugin.story.h.h.fqi();
-            if (!bb.g(bb.this)) {
-              break label372;
-            }
-          }
-          label372:
-          for (l = 1L;; l = 0L)
-          {
-            paramAnonymousMenuItem.eQw = l;
-            AppMethodBeat.o(35622);
-            return true;
-            paramAnonymousMenuItem = com.tencent.mm.plugin.story.h.h.FuH;
-            com.tencent.mm.plugin.story.h.h.fqi().eQv = 5L;
-            o.bB(bb.this.dom.Pwc.getContext(), (String)bb.c(bb.this).get(0));
-            break;
-          }
+          bb.this.fgR.getSelfUserName();
+          localObject1 = new com.tencent.mm.au.a(bb.this.fgR.NKq.field_username, paramString);
+          bh.aGY().a((com.tencent.mm.an.q)localObject1, 0);
+          AppMethodBeat.o(35582);
+          return;
         }
-        if ((bb.h(bb.this)) && (bb.f(bb.this)))
+        if ((((k)bb.this.fgR.bC(k.class)).getCount() == 0) && (as.bvJ(bb.this.fgR.getTalkerUserName()))) {
+          cg.bfp().e(10076, new Object[] { Integer.valueOf(1) });
+        }
+        String str2 = bb.this.fgR.getTalkerUserName();
+        if (Util.isNullOrNil(str2))
         {
-          paramAnonymousMenuItem = com.tencent.mm.plugin.story.h.h.FuH;
-          paramAnonymousMenuItem = com.tencent.mm.plugin.story.h.h.fqi();
-          if (bb.g(bb.this)) {}
+          Log.e("MicroMsg.ChattingUI.SendTextComponent", "toUser is null or nil!");
+          AppMethodBeat.o(35582);
+          return;
+        }
+        int i = ab.QZ(str2);
+        String str3 = paramString;
+        Object localObject1 = null;
+        try
+        {
+          String str1 = ((ac)bb.this.fgR.bC(ac.class)).bzn(str2);
+          localObject1 = str1;
+        }
+        catch (NullPointerException localNullPointerException)
+        {
           for (;;)
           {
-            paramAnonymousMenuItem.eQw = l;
-            o.a(bb.this.dom.Pwc.getContext(), bb.c(bb.this), bb.this.dom.getTalkerUserName(), bb.e(bb.this));
-            paramAnonymousMenuItem = com.tencent.mm.plugin.story.h.h.FuH;
-            com.tencent.mm.plugin.story.h.h.fqi().eQv = 4L;
-            AppMethodBeat.o(35622);
-            return true;
-            l = 0L;
+            Log.printErrStackTrace("MicroMsg.ChattingUI.SendTextComponent", localNullPointerException, "", new Object[0]);
           }
+          Object localObject2 = (u)bb.this.fgR.bC(u.class);
+          o.e locale = o.WI((String)localObject1).wD(i);
+          locale.cUP = ((u)localObject2).hPj().ht(str2, paramInt);
+          locale.content = str3;
+          locale.toUser = ((String)localObject1);
+          locale.lUp = ((u)localObject2).hPj().nt(str2, str3);
+          locale.lUq = 5;
+          localObject1 = locale.bnl();
+          localObject2 = ((o.b)localObject1).lUi;
+          if (!(localObject2 instanceof com.tencent.mm.modelmulti.i)) {
+            break label386;
+          }
+          ((ac)bb.this.fgR.bC(ac.class)).g((com.tencent.mm.modelmulti.i)localObject2);
+          ((o.b)localObject1).aEv();
+          if (!ab.QT(str2)) {
+            break label521;
+          }
+          localObject1 = new m(com.tencent.mm.compatible.deviceinfo.q.auR(), paramString + " key " + cl.hAM() + " local key " + cl.hAL() + "NetType:" + NetStatusUtil.getNetTypeString(bb.this.fgR.WQv.getContext().getApplicationContext()) + " hasNeon: " + n.aux() + " isArmv6: " + n.auz() + " isArmv7: " + n.auy());
+          bh.aGY().a((com.tencent.mm.an.q)localObject1, 0);
+          AppMethodBeat.o(35582);
         }
-        AppMethodBeat.o(35622);
-        return false;
+        if (Util.isNullOrNil((String)localObject1))
+        {
+          Log.w("MicroMsg.ChattingUI.SendTextComponent", "tempUser is null");
+          AppMethodBeat.o(35582);
+          return;
+        }
+        label386:
+        label521:
+        return;
       }
-    };
-    AppMethodBeat.o(35625);
+    });
+    this.fgR.Gi(true);
+    AppMethodBeat.o(35586);
+    return true;
   }
   
-  private void a(int paramInt1, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, int paramInt2)
+  private void hjX()
   {
-    AppMethodBeat.i(35635);
-    if (this.dom.Pwc.findMenuInfo(3) == null)
-    {
-      this.dom.Pwc.addIconOptionMenu(3, paramInt1, paramOnMenuItemClickListener, paramInt2);
-      AppMethodBeat.o(35635);
-      return;
+    AppMethodBeat.i(35583);
+    f.b(this.WOu);
+    WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcSendMsgEnable, this.WOv);
+    this.WOv = 0;
+    AppMethodBeat.o(35583);
+  }
+  
+  public final void a(com.tencent.mm.ui.chatting.e.a parama)
+  {
+    AppMethodBeat.i(35587);
+    super.a(parama);
+    this.WOu = new y(this.fgR);
+    AppMethodBeat.o(35587);
+  }
+  
+  public final void aLh(String paramString)
+  {
+    AppMethodBeat.i(35585);
+    ((r)this.fgR.bC(r.class)).bzj(paramString);
+    AppMethodBeat.o(35585);
+  }
+  
+  public final boolean bzp(String paramString)
+  {
+    AppMethodBeat.i(35584);
+    boolean bool = hL(paramString, 0);
+    AppMethodBeat.o(35584);
+    return bool;
+  }
+  
+  public final void hGV()
+  {
+    AppMethodBeat.i(35589);
+    f.a(this.WOu);
+    this.WHy = true;
+    AppMethodBeat.o(35589);
+  }
+  
+  public final void hGW()
+  {
+    AppMethodBeat.i(35590);
+    bh.aGY().a(522, this);
+    AppMethodBeat.o(35590);
+  }
+  
+  public final void hGX()
+  {
+    AppMethodBeat.i(35591);
+    if (!this.WHy) {
+      f.a(this.WOu);
     }
-    this.dom.Pwc.updateOptionMenu(3, paramInt1, paramOnMenuItemClickListener, paramInt2);
-    AppMethodBeat.o(35635);
+    this.WHy = false;
+    AppMethodBeat.o(35591);
   }
   
-  private void gRf()
+  public final void hGY()
   {
-    AppMethodBeat.i(35632);
-    if (this.Pul != null)
+    AppMethodBeat.i(35592);
+    f.b(this.WOu);
+    AppMethodBeat.o(35592);
+  }
+  
+  public final void hGZ()
+  {
+    AppMethodBeat.i(35593);
+    bh.aGY().b(522, this);
+    hjX();
+    AppMethodBeat.o(35593);
+  }
+  
+  public final void hNZ()
+  {
+    AppMethodBeat.i(35594);
+    super.hNZ();
+    bh.aGY().b(522, this);
+    hjX();
+    AppMethodBeat.o(35594);
+  }
+  
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(35588);
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    switch (paramInt1)
     {
-      this.Pul.destroy();
-      this.Pul.a(null);
-      this.Pul = null;
-    }
-    this.BdH = false;
-    this.FpT = false;
-    this.Pum.clear();
-    this.Puq.clear();
-    AppMethodBeat.o(35632);
-  }
-  
-  private void gRg()
-  {
-    AppMethodBeat.i(35640);
-    Object localObject;
-    if ((this.BdH) && (this.thE))
-    {
-      this.thE = false;
-      localObject = com.tencent.mm.plugin.story.h.h.FuH;
-      localObject = com.tencent.mm.plugin.story.h.h.fqo();
-      if (!this.FpT) {
-        break label59;
-      }
-    }
-    label59:
-    for (long l = 1L;; l = 0L)
-    {
-      ((jd)localObject).eQw = l;
-      localObject = com.tencent.mm.plugin.story.h.h.FuH;
-      com.tencent.mm.plugin.story.h.h.fqp();
-      AppMethodBeat.o(35640);
-      return;
-    }
-  }
-  
-  public final void a(List<String> paramList, ArrayList<String> paramArrayList)
-  {
-    AppMethodBeat.i(35637);
-    Log.i("MicroMsg.StoryStateComponent", "updateGalleryUserList: size is %s %s hashCode:%s", new Object[] { this.dom.GUe, Integer.valueOf(paramList.size()), Integer.valueOf(hashCode()) });
-    this.Pum.clear();
-    this.Pum.addAll(paramList);
-    this.Fue.clear();
-    this.Fue.addAll(paramArrayList);
-    AppMethodBeat.o(35637);
-  }
-  
-  public final void as(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(35638);
-    m localm = (m)this.dom.bh(m.class);
-    int i;
-    if (paramBoolean2) {
-      i = 1;
     }
     for (;;)
     {
-      localm.amA(i);
-      if ((this.BdH != paramBoolean1) || (this.FpT != paramBoolean2)) {
-        break;
-      }
-      AppMethodBeat.o(35638);
+      AppMethodBeat.o(35588);
       return;
-      if (paramBoolean1) {
-        i = 2;
-      } else {
-        i = 0;
-      }
-    }
-    Log.i("MicroMsg.StoryStateComponent", "updateChatRoomState: hasStory %s, hasUnread %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
-    this.BdH = paramBoolean1;
-    this.FpT = paramBoolean2;
-    MMHandlerThread.postToMainThread(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(35623);
-        ((aa)bb.this.dom.bh(aa.class)).gQp();
-        AppMethodBeat.o(35623);
-      }
-    });
-    gRg();
-    AppMethodBeat.o(35638);
-  }
-  
-  public final void cFx()
-  {
-    long l2 = 2L;
-    AppMethodBeat.i(35628);
-    super.cFx();
-    Log.i("MicroMsg.StoryStateComponent", "onChattingResume: hashCode:%s", new Object[] { Integer.valueOf(hashCode()) });
-    this.thE = true;
-    gRg();
-    Object localObject;
-    if (this.Pul != null)
-    {
-      this.Pul.resume();
-      localObject = com.tencent.mm.plugin.story.h.h.FuH;
-      localObject = com.tencent.mm.plugin.story.h.h.fqi();
-      if (this.tcb)
-      {
-        l1 = 10L;
-        ((jo)localObject).eQv = l1;
-        localObject = com.tencent.mm.plugin.story.h.h.FuH;
-        com.tencent.mm.plugin.story.h.h.fqi().wS(this.dom.getTalkerUserName());
-        localObject = com.tencent.mm.plugin.story.h.h.FuH;
-        localObject = com.tencent.mm.plugin.story.h.h.fqi();
-        if (!this.tcb) {
-          break label189;
-        }
-        l1 = 2L;
-        label126:
-        ((jo)localObject).eQZ = l1;
-      }
-    }
-    else
-    {
-      localObject = com.tencent.mm.plugin.story.h.h.FuH;
-      com.tencent.mm.plugin.story.h.h.fqq().wJ(this.dom.getTalkerUserName());
-      localObject = com.tencent.mm.plugin.story.h.h.FuH;
-      localObject = com.tencent.mm.plugin.story.h.h.fqq();
-      if (!this.tcb) {
-        break label209;
-      }
-    }
-    for (long l1 = l2;; l1 = i.a.aSq(this.dom.getTalkerUserName()))
-    {
-      ((jg)localObject).eQZ = l1;
-      AppMethodBeat.o(35628);
-      return;
-      l1 = 11L;
-      break;
-      label189:
-      i.a locala = i.FuI;
-      l1 = i.a.aSq(this.dom.getTalkerUserName());
-      break label126;
-      label209:
-      locala = i.FuI;
+      hL(paramIntent.getStringExtra("art_smiley_slelct_data"), 4);
     }
   }
   
-  public final void cFy()
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
   {
-    AppMethodBeat.i(35629);
-    super.cFy();
-    this.thE = false;
-    Log.i("MicroMsg.StoryStateComponent", "onChattingPause: hashCode:%s", new Object[] { Integer.valueOf(hashCode()) });
-    if (this.Pul != null) {
-      this.Pul.pause();
+    AppMethodBeat.i(35595);
+    if (this.fgR != null) {
+      this.fgR.dismissDialog();
     }
-    AppMethodBeat.o(35629);
-  }
-  
-  public final void cs(final String paramString, final boolean paramBoolean)
-  {
-    AppMethodBeat.i(35639);
-    Log.i("MicroMsg.StoryStateComponent", "notifyAvatar: ");
-    MMHandlerThread.postToMainThread(new Runnable()
+    if (522 == paramq.getType())
     {
-      public final void run()
-      {
-        AppMethodBeat.i(35624);
-        int i = 0;
-        while (i < bb.i(bb.this).size())
-        {
-          AvatarImageView localAvatarImageView = (AvatarImageView)((WeakReference)bb.i(bb.this).valueAt(i)).get();
-          if (localAvatarImageView != null)
-          {
-            Object localObject = localAvatarImageView.getTag();
-            if (((localObject instanceof bq)) && (paramString.equals(((bq)localObject).userName)))
-            {
-              localAvatarImageView.fL(((bq)localObject).userName, 5);
-              localAvatarImageView.setShowStoryHint(paramBoolean);
-            }
-          }
-          i += 1;
-        }
-        AppMethodBeat.o(35624);
-      }
-    });
-    AppMethodBeat.o(35639);
-  }
-  
-  public final void gIl()
-  {
-    boolean bool = false;
-    AppMethodBeat.i(35626);
-    super.gIl();
-    Log.i("MicroMsg.StoryStateComponent", "onChattingEnterAnimStart: user %s hashCode:%s", new Object[] { this.dom.getTalkerUserName(), Integer.valueOf(hashCode()) });
-    this.dom.Pwc.removeOptionMenu(3);
-    this.BdH = false;
-    this.FpT = false;
-    this.Pum.clear();
-    this.Fue.clear();
-    this.sessionId = "";
-    this.Pup = false;
-    ((m)this.dom.bh(m.class)).amA(0);
-    Object localObject = this.dom.getTalkerUserName();
-    if (Util.isNullOrNil((String)localObject)) {}
-    label275:
-    label459:
-    label464:
-    label480:
-    for (;;)
-    {
-      localObject = this;
-      ((bb)localObject).Pun = bool;
-      if (this.Pun)
-      {
-        this.Pul = ((com.tencent.mm.plugin.story.api.e)g.ah(com.tencent.mm.plugin.story.api.e.class)).getStoryStateFetcher(this.dom.getTalkerUserName());
-        if (this.Pul != null)
-        {
-          this.Pul.a(this);
-          this.Pul.start();
-        }
-      }
-      localObject = com.tencent.mm.plugin.story.h.h.FuH;
-      localObject = com.tencent.mm.plugin.story.h.h.fqo();
-      ((jd)localObject).eoK = ((jd)localObject).x("UserName", this.dom.getTalkerUserName(), true);
-      localObject = com.tencent.mm.plugin.story.h.h.FuH;
-      localObject = com.tencent.mm.plugin.story.h.h.fqo();
-      long l;
-      if (this.tcb)
-      {
-        l = 4L;
-        label250:
-        ((jd)localObject).eQv = l;
-        localObject = com.tencent.mm.plugin.story.h.h.FuH;
-        localObject = com.tencent.mm.plugin.story.h.h.fqo();
-        if (!this.FpT) {
-          break label459;
-        }
-        l = 1L;
-        ((jd)localObject).eQw = l;
-        if (!this.tcb) {
-          break label464;
-        }
-      }
-      for (this.dom.kIg = com.tencent.mm.ui.e.avA("4");; this.dom.kIg = com.tencent.mm.ui.e.avA("5"))
-      {
-        this.sessionId = this.dom.bul();
-        AppMethodBeat.o(35626);
-        return;
-        this.tcb = ab.Eq((String)localObject);
-        if (ab.Ix((String)localObject))
-        {
-          bool = ab.Ix((String)localObject);
-          localObject = this;
-          break;
-        }
-        if ((ab.IG((String)localObject)) || (ab.IT((String)localObject)) || (ab.IJ((String)localObject)) || (ab.IP((String)localObject)) || (ab.IW((String)localObject)) || (ab.IX((String)localObject)) || (ab.Jx((String)localObject)) || (ab.JC((String)localObject)) || (ab.JE((String)localObject)) || (ab.Ji((String)localObject)) || (ab.Iy((String)localObject)) || (ab.Ix((String)localObject))) {
-          break label480;
-        }
-        bool = true;
-        localObject = this;
-        break;
-        l = 5L;
-        break label250;
-        l = 0L;
-        break label275;
-      }
+      WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcSendMsgEnable, this.WOv);
+      this.WOv = 0;
     }
-  }
-  
-  public final void gIm()
-  {
-    AppMethodBeat.i(35627);
-    super.gIm();
-    Log.i("MicroMsg.StoryStateComponent", "onChattingEnterAnimEnd: hashCode:%s", new Object[] { Integer.valueOf(hashCode()) });
-    AppMethodBeat.o(35627);
-  }
-  
-  public final void gIn()
-  {
-    AppMethodBeat.i(35630);
-    super.gIn();
-    Log.i("MicroMsg.StoryStateComponent", "onChattingExitAnimStart: hashCode:%s", new Object[] { Integer.valueOf(hashCode()) });
-    gRf();
-    com.tencent.mm.plugin.story.h.h localh = com.tencent.mm.plugin.story.h.h.FuH;
-    com.tencent.mm.plugin.story.h.h.fqi().wS("");
-    localh = com.tencent.mm.plugin.story.h.h.FuH;
-    com.tencent.mm.plugin.story.h.h.fqi().eRK = 0L;
-    localh = com.tencent.mm.plugin.story.h.h.FuH;
-    com.tencent.mm.plugin.story.h.h.fqi().eQZ = 0L;
-    localh = com.tencent.mm.plugin.story.h.h.FuH;
-    com.tencent.mm.plugin.story.h.h.fqq().wJ("");
-    localh = com.tencent.mm.plugin.story.h.h.FuH;
-    com.tencent.mm.plugin.story.h.h.fqq().eQZ = 0L;
-    AppMethodBeat.o(35630);
-  }
-  
-  public final void gOK()
-  {
-    AppMethodBeat.i(35631);
-    super.gOK();
-    Log.i("MicroMsg.StoryStateComponent", "onComponentUnInstall: hashCode:%s", new Object[] { Integer.valueOf(hashCode()) });
-    gRf();
-    AppMethodBeat.o(35631);
-  }
-  
-  public final void gQG()
-  {
-    AppMethodBeat.i(35634);
-    int i = com.tencent.mm.n.h.aqJ().getInt("StoryShouldShowEntraceInChatRoom", 1);
-    if ((!this.BdH) || (i == 0))
-    {
-      Log.i("MicroMsg.StoryStateComponent", "updateMenuItem enable %s", new Object[] { Integer.valueOf(i) });
-      this.dom.Pwc.removeOptionMenu(3);
-      AppMethodBeat.o(35634);
-      return;
-    }
-    if ((this.Pun) && (o.isShowStoryCheck()))
-    {
-      Log.i("MicroMsg.StoryStateComponent", "updateMenuItem: hasUnread %s hashCode:%s", new Object[] { Boolean.valueOf(this.FpT), Integer.valueOf(hashCode()) });
-      if (this.FpT)
-      {
-        this.dom.Pwc.removeOptionMenu(3);
-        a(2131690858, this.ORI, this.dom.Pwc.getContext().getResources().getColor(2131099700));
-        AppMethodBeat.o(35634);
-        return;
-      }
-      a(2131690859, this.ORI, 0);
-    }
-    AppMethodBeat.o(35634);
+    AppMethodBeat.o(35595);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.bb
  * JD-Core Version:    0.7.0.1
  */

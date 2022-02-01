@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  private boolean VC;
+  private boolean gZ;
   
   public final void block()
   {
     try
     {
       AppMethodBeat.i(93134);
-      while (!this.VC) {
+      while (!this.gZ) {
         wait();
       }
       AppMethodBeat.o(93134);
@@ -23,8 +23,8 @@ public final class f
   {
     try
     {
-      boolean bool = this.VC;
-      this.VC = false;
+      boolean bool = this.gZ;
+      this.gZ = false;
       return bool;
     }
     finally
@@ -45,7 +45,7 @@ public final class f
     //   4: ldc 31
     //   6: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
-    //   10: getfield 21	com/google/android/exoplayer2/i/f:VC	Z
+    //   10: getfield 21	com/google/android/exoplayer2/i/f:gZ	Z
     //   13: ifeq +14 -> 27
     //   16: iconst_0
     //   17: istore_1
@@ -57,7 +57,7 @@ public final class f
     //   26: ireturn
     //   27: aload_0
     //   28: iconst_1
-    //   29: putfield 21	com/google/android/exoplayer2/i/f:VC	Z
+    //   29: putfield 21	com/google/android/exoplayer2/i/f:gZ	Z
     //   32: aload_0
     //   33: invokevirtual 34	java/lang/Object:notifyAll	()V
     //   36: ldc 31
@@ -82,7 +82,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.i.f
  * JD-Core Version:    0.7.0.1
  */

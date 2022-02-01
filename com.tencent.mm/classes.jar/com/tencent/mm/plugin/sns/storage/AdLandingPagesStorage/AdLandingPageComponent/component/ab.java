@@ -1,291 +1,143 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.view.View;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.ViewGroup;
-import android.widget.HorizontalScrollView;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout.LayoutParams;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.plugin.sns.i.j;
+import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
+import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy.e;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n;
+import com.tencent.mm.plugin.sns.ui.SnsAdProxyUI;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MD5Util;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import org.json.JSONException;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.w;
+import java.io.Serializable;
 import org.json.JSONObject;
 
 public final class ab
-  extends m
-  implements SensorEventListener
+  extends q
+  implements Serializable
 {
-  int Efs;
-  final float Eft = 10.0F;
-  final int Efu = 1;
-  HorizontalScrollView Efv;
-  float[] Efw;
-  float[] Efx;
-  private int Efy = 0;
-  boolean Efz = true;
-  Sensor cle;
-  Sensor clg;
-  ImageView dKU;
-  private SensorManager mSensorManager;
-  ProgressBar progressBar;
+  protected AdLandingPagesProxy.e KrT;
+  protected n KsG;
+  protected String KsH;
+  protected String iSn;
+  protected s jhZ;
   
-  public ab(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s params, ViewGroup paramViewGroup)
+  public ab(Context paramContext, n paramn, ViewGroup paramViewGroup)
   {
-    super(paramContext, params, paramViewGroup);
-  }
-  
-  public final boolean bp(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(96676);
-    if (!super.bp(paramJSONObject))
+    super(paramContext, paramn, paramViewGroup);
+    AppMethodBeat.i(201174);
+    this.KrT = new AdLandingPagesProxy.e()
     {
-      AppMethodBeat.o(96676);
-      return false;
-    }
-    try
-    {
-      paramJSONObject.put("swipeCount", this.Efy);
-      if (!this.Efz)
+      public final void aH(Object paramAnonymousObject)
       {
-        String str = MD5Util.getMD5String(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s)this.EcX).DYK);
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("urlMd5", str);
-        localJSONObject.put("needDownload", 1);
-        paramJSONObject.put("imgUrlInfo", localJSONObject);
+        AppMethodBeat.i(239466);
+        if ((paramAnonymousObject instanceof String)) {
+          try
+          {
+            paramAnonymousObject = new JSONObject((String)paramAnonymousObject);
+            ab.this.iSn = paramAnonymousObject.optString("username");
+            ab.this.KsH = paramAnonymousObject.optString("aliasname");
+            AppMethodBeat.o(239466);
+            return;
+          }
+          catch (Exception paramAnonymousObject)
+          {
+            Log.e("MicroMsg.AdLandingPagePersonalProfileBtnComp", "parse username exp=" + paramAnonymousObject.toString());
+          }
+        }
+        AppMethodBeat.o(239466);
       }
-      AppMethodBeat.o(96676);
-      return true;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      Log.printErrStackTrace("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", paramJSONObject, "", new Object[0]);
-      AppMethodBeat.o(96676);
-    }
-    return false;
-  }
-  
-  protected final void eWT()
-  {
-    AppMethodBeat.i(96669);
-    if (!com.tencent.mm.vfs.s.YS(h.kz("adId", ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s)this.EcX).DYK))) {
-      this.Efz = false;
-    }
-    String str = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s)this.EcX).DYK;
-    Bitmap localBitmap = h.kD("adId", str);
-    if (localBitmap != null)
-    {
-      Log.i("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "loaded cached image with  ".concat(String.valueOf(str)));
-      setImage(localBitmap);
-      AppMethodBeat.o(96669);
-      return;
-    }
-    startLoading();
-    h.a(str, ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s)this.EcX).DZj, new f.a()
-    {
-      public final void aNH(String paramAnonymousString)
+      
+      public final void i(int paramAnonymousInt1, int paramAnonymousInt2, Object paramAnonymousObject)
       {
-        AppMethodBeat.i(96666);
-        try
+        AppMethodBeat.i(239465);
+        Log.i("MicroMsg.AdLandingPagePersonalProfileBtnComp", "onCallback, errType=" + paramAnonymousInt1 + ", errNo=" + paramAnonymousInt2);
+        if (((ab.this.context instanceof Activity)) && (((Activity)ab.this.context).isFinishing()))
         {
-          paramAnonymousString = BitmapUtil.decodeFile(paramAnonymousString);
-          ab.this.setImage(paramAnonymousString);
-          AppMethodBeat.o(96666);
+          Log.i("MicroMsg.AdLandingPagePersonalProfileBtnComp", "onCallback, isFinishing return");
+          AppMethodBeat.o(239465);
           return;
         }
-        catch (Exception paramAnonymousString)
+        MMHandlerThread.postToMainThread(new ab.2(ab.this));
+        if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (!(paramAnonymousObject instanceof byte[])))
         {
-          Log.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "%s" + Util.stackTraceToString(paramAnonymousString));
-          AppMethodBeat.o(96666);
+          MMHandlerThread.postToMainThread(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(209176);
+              w.makeText(ab.this.context, i.j.sns_ad_open_service_chat_failed, 0).show();
+              AppMethodBeat.o(209176);
+            }
+          });
+          AppMethodBeat.o(239465);
+          return;
+        }
+        Object localObject = new Intent(ab.this.context, SnsAdProxyUI.class);
+        ((Intent)localObject).putExtra("action_type", 3);
+        ((Intent)localObject).putExtra("searchContactResponseByte", (byte[])paramAnonymousObject);
+        ((Intent)localObject).putExtra("searchWord", Util.nullAsNil(ab.this.KsH));
+        paramAnonymousObject = ab.this.context;
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousObject, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPagePersonalProfileBtnComp$1", "onCallback", "(IILjava/lang/Object;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousObject.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousObject, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPagePersonalProfileBtnComp$1", "onCallback", "(IILjava/lang/Object;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(239465);
+      }
+    };
+    this.KsG = paramn;
+    this.KqQ.kQ("wxGroupInfo", paramn.KlB);
+    AppMethodBeat.o(201174);
+  }
+  
+  protected final void fRb()
+  {
+    AppMethodBeat.i(201178);
+    String str = Util.nullAsNil(fRp().uxInfo);
+    if (!TextUtils.isEmpty(this.KsG.KlB))
+    {
+      Log.i("MicroMsg.AdLandingPagePersonalProfileBtnComp", "onBtnClick, btnInfo=" + this.KsG + ", uxinfo=" + str);
+      try
+      {
+        if (this.jhZ == null) {
+          this.jhZ = h.a(this.context, this.context.getString(i.j.loading_tips), true, null);
+        }
+        if (!this.jhZ.isShowing()) {
+          this.jhZ.show();
         }
       }
-      
-      public final void eWN()
+      catch (Throwable localThrowable)
       {
-        AppMethodBeat.i(96664);
-        ab.this.startLoading();
-        AppMethodBeat.o(96664);
-      }
-      
-      public final void eWO()
-      {
-        AppMethodBeat.i(96665);
-        ab.this.progressBar.setVisibility(8);
-        AppMethodBeat.o(96665);
-      }
-    });
-    AppMethodBeat.o(96669);
-  }
-  
-  public final void eWZ()
-  {
-    AppMethodBeat.i(96674);
-    super.eWZ();
-    this.mSensorManager.registerListener(this, this.cle, 1);
-    this.mSensorManager.registerListener(this, this.clg, 1);
-    AppMethodBeat.o(96674);
-  }
-  
-  public final void eXa()
-  {
-    AppMethodBeat.i(96675);
-    super.eXa();
-    this.mSensorManager.unregisterListener(this);
-    AppMethodBeat.o(96675);
-  }
-  
-  public final void eXe()
-  {
-    AppMethodBeat.i(96668);
-    View localView = this.contentView;
-    this.mSensorManager = ((SensorManager)MMApplicationContext.getContext().getSystemService("sensor"));
-    this.cle = this.mSensorManager.getDefaultSensor(1);
-    this.clg = this.mSensorManager.getDefaultSensor(2);
-    this.Efv = ((HorizontalScrollView)localView.findViewById(2131296458));
-    this.dKU = ((ImageView)localView.findViewById(2131296459));
-    this.progressBar = ((ProgressBar)localView.findViewById(2131306302));
-    this.progressBar.setVisibility(8);
-    AppMethodBeat.o(96668);
-  }
-  
-  public final boolean fdm()
-  {
-    AppMethodBeat.i(96673);
-    if (fdl() >= (int)(getView().getHeight() * 0.1F))
-    {
-      AppMethodBeat.o(96673);
-      return true;
-    }
-    AppMethodBeat.o(96673);
-    return false;
-  }
-  
-  protected final int getLayout()
-  {
-    return 2131496377;
-  }
-  
-  public final void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public final void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    float f2 = -10.0F;
-    AppMethodBeat.i(96672);
-    if (paramSensorEvent.sensor.getType() == 1) {
-      this.Efw = paramSensorEvent.values;
-    }
-    if (paramSensorEvent.sensor.getType() == 2) {
-      this.Efx = paramSensorEvent.values;
-    }
-    float f1;
-    if ((this.Efw != null) && (this.Efx != null))
-    {
-      paramSensorEvent = new float[9];
-      if (SensorManager.getRotationMatrix(paramSensorEvent, new float[9], this.Efw, this.Efx))
-      {
-        float[] arrayOfFloat = new float[3];
-        SensorManager.getOrientation(paramSensorEvent, arrayOfFloat);
-        float f3 = arrayOfFloat[2];
-        if (this.Efs != 0)
+        for (;;)
         {
-          f1 = f3;
-          if (f3 > 10.0F) {
-            f1 = 10.0F;
-          }
-          if (f1 >= -10.0F) {
-            break label163;
-          }
-          f1 = f2;
+          Log.e("MicroMsg.AdLandingPagePersonalProfileBtnComp", "showLoading exp=" + localThrowable.toString());
         }
       }
+      AdLandingPagesProxy.getInstance().getBtnPersonalWxUserName(str, this.KsG.KlB, this.KrT);
     }
-    label163:
     for (;;)
     {
-      f1 = f1 * this.Efs / 10.0F;
-      this.Efv.scrollBy((int)f1, 0);
-      AppMethodBeat.o(96672);
+      fRc();
+      AppMethodBeat.o(201178);
       return;
+      Log.e("MicroMsg.AdLandingPagePersonalProfileBtnComp", "onBtnClick, wxGroupInfo==null");
     }
-  }
-  
-  public final void setImage(Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(96671);
-    if (paramBitmap == null)
-    {
-      Log.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the bmp is null!");
-      AppMethodBeat.o(96671);
-      return;
-    }
-    if (this.dKU == null)
-    {
-      Log.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the imageView is null!");
-      AppMethodBeat.o(96671);
-      return;
-    }
-    if (paramBitmap.getHeight() == 0)
-    {
-      Log.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the bmp.getHeight is 0!");
-      AppMethodBeat.o(96671);
-      return;
-    }
-    this.progressBar.setVisibility(8);
-    this.dKU.setImageBitmap(paramBitmap);
-    this.dKU.post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(96667);
-        int i = ab.this.dKU.getMeasuredWidth();
-        if (i > ab.this.mEX)
-        {
-          ab localab = ab.this;
-          localab.Efs = ((i - localab.mEX) / 2);
-          ab.this.Efv.scrollBy(ab.this.Efs, 0);
-        }
-        AppMethodBeat.o(96667);
-      }
-    });
-    int i;
-    if (paramBitmap.getHeight() != 0)
-    {
-      i = this.mEY;
-      if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s)this.EcX).DZl == 2.147484E+009F) {
-        break label176;
-      }
-      i = (int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s)this.EcX).DZl;
-    }
-    label176:
-    for (;;)
-    {
-      this.dKU.setLayoutParams(new RelativeLayout.LayoutParams(paramBitmap.getWidth() * i / paramBitmap.getHeight(), i));
-      AppMethodBeat.o(96671);
-      return;
-    }
-  }
-  
-  public final void startLoading()
-  {
-    AppMethodBeat.i(96670);
-    this.progressBar.setVisibility(0);
-    AppMethodBeat.o(96670);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ab
  * JD-Core Version:    0.7.0.1
  */

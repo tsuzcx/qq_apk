@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.mmsight;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vq;
-import com.tencent.mm.g.a.wb;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.modelvideo.o;
-import com.tencent.mm.modelvideo.y.a;
-import com.tencent.mm.plugin.mmsight.model.a.k;
-import com.tencent.mm.plugin.mmsight.model.n;
+import com.tencent.mm.f.a.wv;
+import com.tencent.mm.f.a.xg;
+import com.tencent.mm.model.be;
+import com.tencent.mm.modelvideo.ac.a;
+import com.tencent.mm.modelvideo.s;
+import com.tencent.mm.plugin.mmsight.model.a.j;
+import com.tencent.mm.plugin.mmsight.model.m;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class e
-  implements bd
+  implements be
 {
-  private n zsS;
-  private IListener zsT;
-  private IListener zsU;
+  private m EYt;
+  private IListener EYu;
+  private IListener EYv;
   
   public e()
   {
     AppMethodBeat.i(89317);
-    this.zsS = new n();
-    this.zsT = new IListener() {};
-    this.zsU = new IListener() {};
+    this.EYt = new m();
+    this.EYu = new IListener() {};
+    this.EYv = new IListener() {};
     AppMethodBeat.o(89317);
   }
   
@@ -39,19 +39,19 @@ public class e
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(89318);
-    o.bho().a(this.zsS);
-    EventCenter.instance.add(this.zsU);
-    EventCenter.instance.addListener(this.zsT);
+    s.bqG().a(this.EYt);
+    EventCenter.instance.add(this.EYv);
+    EventCenter.instance.addListener(this.EYu);
     AppMethodBeat.o(89318);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(89319);
-    o.bho().b(this.zsS);
-    EventCenter.instance.removeListener(this.zsU);
-    k.zwi.aRR();
-    EventCenter.instance.removeListener(this.zsT);
+    s.bqG().b(this.EYt);
+    EventCenter.instance.removeListener(this.EYv);
+    j.FbH.baL();
+    EventCenter.instance.removeListener(this.EYu);
     AppMethodBeat.o(89319);
   }
   
@@ -59,7 +59,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.e
  * JD-Core Version:    0.7.0.1
  */

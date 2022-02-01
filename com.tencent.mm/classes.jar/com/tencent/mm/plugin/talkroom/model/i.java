@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.talkroom.model;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bh.d;
+import com.tencent.mm.bj.d;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -21,7 +21,7 @@ public final class i
     AppMethodBeat.o(29541);
   }
   
-  public final void PX(final String paramString)
+  public final void Xu(final String paramString)
   {
     AppMethodBeat.i(29545);
     paramString = new Runnable()
@@ -33,7 +33,7 @@ public final class i
         {
           Iterator localIterator = i.this.callbacks.iterator();
           if (localIterator.hasNext()) {
-            ((d)localIterator.next()).PX(paramString);
+            ((d)localIterator.next()).Xu(paramString);
           }
         }
         AppMethodBeat.o(29536);
@@ -49,35 +49,7 @@ public final class i
     AppMethodBeat.o(29545);
   }
   
-  public final void bgB()
-  {
-    AppMethodBeat.i(29547);
-    Runnable local12 = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(29540);
-        synchronized (i.this.callbacks)
-        {
-          Iterator localIterator = i.this.callbacks.iterator();
-          if (localIterator.hasNext()) {
-            ((d)localIterator.next()).bgB();
-          }
-        }
-        AppMethodBeat.o(29540);
-      }
-    };
-    if (Looper.myLooper() == Looper.getMainLooper())
-    {
-      local12.run();
-      AppMethodBeat.o(29547);
-      return;
-    }
-    this.handler.post(local12);
-    AppMethodBeat.o(29547);
-  }
-  
-  public final void bgE()
+  public final void aFx()
   {
     AppMethodBeat.i(29548);
     Runnable local4 = new Runnable()
@@ -89,7 +61,7 @@ public final class i
         {
           Iterator localIterator = i.this.callbacks.iterator();
           if (localIterator.hasNext()) {
-            ((d)localIterator.next()).bgE();
+            ((d)localIterator.next()).aFx();
           }
         }
         AppMethodBeat.o(29532);
@@ -105,7 +77,7 @@ public final class i
     AppMethodBeat.o(29548);
   }
   
-  public final void bgz()
+  public final void bpP()
   {
     AppMethodBeat.i(29542);
     Runnable local1 = new Runnable()
@@ -117,7 +89,7 @@ public final class i
         {
           Iterator localIterator = i.this.callbacks.iterator();
           if (localIterator.hasNext()) {
-            ((d)localIterator.next()).bgz();
+            ((d)localIterator.next()).bpP();
           }
         }
         AppMethodBeat.o(29529);
@@ -131,6 +103,34 @@ public final class i
     }
     this.handler.post(local1);
     AppMethodBeat.o(29542);
+  }
+  
+  public final void bpR()
+  {
+    AppMethodBeat.i(29547);
+    Runnable local12 = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(29540);
+        synchronized (i.this.callbacks)
+        {
+          Iterator localIterator = i.this.callbacks.iterator();
+          if (localIterator.hasNext()) {
+            ((d)localIterator.next()).bpR();
+          }
+        }
+        AppMethodBeat.o(29540);
+      }
+    };
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      local12.run();
+      AppMethodBeat.o(29547);
+      return;
+    }
+    this.handler.post(local12);
+    AppMethodBeat.o(29547);
   }
   
   public final void j(final int paramInt1, final int paramInt2, final String paramString)
@@ -161,7 +161,7 @@ public final class i
     AppMethodBeat.o(29546);
   }
   
-  public final void s(final String paramString, final int paramInt1, final int paramInt2)
+  public final void t(final String paramString, final int paramInt1, final int paramInt2)
   {
     AppMethodBeat.i(29543);
     paramString = new Runnable()
@@ -173,7 +173,7 @@ public final class i
         {
           Iterator localIterator = i.this.callbacks.iterator();
           if (localIterator.hasNext()) {
-            ((d)localIterator.next()).s(paramString, paramInt1, paramInt2);
+            ((d)localIterator.next()).t(paramString, paramInt1, paramInt2);
           }
         }
         AppMethodBeat.o(29533);
@@ -189,7 +189,7 @@ public final class i
     AppMethodBeat.o(29543);
   }
   
-  public final void ua(final int paramInt)
+  public final void wZ(final int paramInt)
   {
     AppMethodBeat.i(29544);
     Runnable local7 = new Runnable()
@@ -201,7 +201,7 @@ public final class i
         {
           Iterator localIterator = i.this.callbacks.iterator();
           if (localIterator.hasNext()) {
-            ((d)localIterator.next()).ua(paramInt);
+            ((d)localIterator.next()).wZ(paramInt);
           }
         }
         AppMethodBeat.o(29535);
@@ -219,7 +219,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.model.i
  * JD-Core Version:    0.7.0.1
  */

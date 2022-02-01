@@ -3,14 +3,15 @@ package com.tencent.luggage.xweb_ext.extendplugin.component.video;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
-import android.support.constraint.ConstraintLayout;
-import android.support.constraint.ConstraintLayout.LayoutParams;
-import android.support.constraint.ConstraintSet;
 import android.util.AttributeSet;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintLayout.LayoutParams;
+import androidx.constraintlayout.widget.a;
+import com.tencent.luggage.xweb_ext.a.b;
 import com.tencent.luggage.xweb_ext.extendplugin.component.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -19,9 +20,9 @@ public class TextureImageViewLikeImpl
   extends ConstraintLayout
   implements h
 {
-  private final FrameLayout cIL;
-  private final TextureView cIM;
-  private final ImageView cIN;
+  private final FrameLayout cJp;
+  private final TextureView cJq;
+  private final ImageView cJr;
   
   public TextureImageViewLikeImpl(Context paramContext)
   {
@@ -36,94 +37,94 @@ public class TextureImageViewLikeImpl
   public TextureImageViewLikeImpl(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(215668);
-    setId(2131296880);
+    AppMethodBeat.i(222514);
+    setId(a.b.app_brand_pip_video_image_container);
     setBackgroundColor(-16777216);
-    this.cIL = new FrameLayout(paramContext);
-    addView(this.cIL, -1, -1);
-    this.cIL.setId(2131296879);
-    this.cIM = new TextureView(paramContext);
-    this.cIL.addView(this.cIM, -1, -1);
-    this.cIN = new ImageView(paramContext);
-    this.cIL.addView(this.cIN, -1, -1);
-    this.cIN.setVisibility(4);
-    paramContext = new ConstraintSet();
-    paramContext.clone(this);
-    paramContext.connect(2131296879, 3, 2131296880, 3, 0);
-    paramContext.connect(2131296879, 4, 2131296880, 4, 0);
-    paramContext.connect(2131296879, 1, 2131296880, 1, 0);
-    paramContext.connect(2131296879, 2, 2131296880, 2, 0);
-    paramContext.applyTo(this);
-    AppMethodBeat.o(215668);
+    this.cJp = new FrameLayout(paramContext);
+    addView(this.cJp, -1, -1);
+    this.cJp.setId(a.b.app_brand_pip_video_image_area);
+    this.cJq = new TextureView(paramContext);
+    this.cJp.addView(this.cJq, -1, -1);
+    this.cJr = new ImageView(paramContext);
+    this.cJp.addView(this.cJr, -1, -1);
+    this.cJr.setVisibility(4);
+    paramContext = new a();
+    paramContext.b(this);
+    paramContext.d(a.b.app_brand_pip_video_image_area, 3, a.b.app_brand_pip_video_image_container, 3);
+    paramContext.d(a.b.app_brand_pip_video_image_area, 4, a.b.app_brand_pip_video_image_container, 4);
+    paramContext.d(a.b.app_brand_pip_video_image_area, 1, a.b.app_brand_pip_video_image_container, 1);
+    paramContext.d(a.b.app_brand_pip_video_image_area, 2, a.b.app_brand_pip_video_image_container, 2);
+    paramContext.c(this);
+    AppMethodBeat.o(222514);
   }
   
   public Bitmap getBitmap()
   {
-    AppMethodBeat.i(215673);
-    Bitmap localBitmap = this.cIM.getBitmap();
-    AppMethodBeat.o(215673);
+    AppMethodBeat.i(222530);
+    Bitmap localBitmap = this.cJq.getBitmap();
+    AppMethodBeat.o(222530);
     return localBitmap;
   }
   
   public SurfaceTexture getSurfaceTexture()
   {
-    AppMethodBeat.i(215674);
-    SurfaceTexture localSurfaceTexture = this.cIM.getSurfaceTexture();
-    AppMethodBeat.o(215674);
+    AppMethodBeat.i(222533);
+    SurfaceTexture localSurfaceTexture = this.cJq.getSurfaceTexture();
+    AppMethodBeat.o(222533);
     return localSurfaceTexture;
   }
   
   public TextureView.SurfaceTextureListener getSurfaceTextureListener()
   {
-    AppMethodBeat.i(215672);
-    TextureView.SurfaceTextureListener localSurfaceTextureListener = this.cIM.getSurfaceTextureListener();
-    AppMethodBeat.o(215672);
+    AppMethodBeat.i(222529);
+    TextureView.SurfaceTextureListener localSurfaceTextureListener = this.cJq.getSurfaceTextureListener();
+    AppMethodBeat.o(222529);
     return localSurfaceTextureListener;
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(215675);
+    AppMethodBeat.i(222535);
     if (paramBitmap != null)
     {
-      this.cIN.setImageBitmap(paramBitmap);
-      this.cIN.setVisibility(0);
-      AppMethodBeat.o(215675);
+      this.cJr.setImageBitmap(paramBitmap);
+      this.cJr.setVisibility(0);
+      AppMethodBeat.o(222535);
       return;
     }
-    this.cIN.setVisibility(4);
-    AppMethodBeat.o(215675);
+    this.cJr.setVisibility(4);
+    AppMethodBeat.o(222535);
   }
   
   public void setSurfaceTextureListener(TextureView.SurfaceTextureListener paramSurfaceTextureListener)
   {
-    AppMethodBeat.i(215671);
-    this.cIM.setSurfaceTextureListener(paramSurfaceTextureListener);
-    AppMethodBeat.o(215671);
+    AppMethodBeat.i(222526);
+    this.cJq.setSurfaceTextureListener(paramSurfaceTextureListener);
+    AppMethodBeat.o(222526);
   }
   
   public void setTextureViewHeightWeight(float paramFloat)
   {
-    AppMethodBeat.i(215670);
+    AppMethodBeat.i(222524);
     Log.i("MicroMsg.AppBrand.TextureImageViewLikeImpl", "setTextureViewHeightWeight, heightWeight: ".concat(String.valueOf(paramFloat)));
-    ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)this.cIL.getLayoutParams();
+    ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)this.cJp.getLayoutParams();
     localLayoutParams.height = 0;
-    localLayoutParams.matchConstraintPercentHeight = paramFloat;
+    localLayoutParams.FL = paramFloat;
     localLayoutParams.width = -1;
-    this.cIL.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(215670);
+    this.cJp.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(222524);
   }
   
   public void setTextureViewWidthWeight(float paramFloat)
   {
-    AppMethodBeat.i(215669);
+    AppMethodBeat.i(222519);
     Log.i("MicroMsg.AppBrand.TextureImageViewLikeImpl", "setTextureViewWidthWeight, widthWeight: ".concat(String.valueOf(paramFloat)));
-    ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)this.cIL.getLayoutParams();
+    ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)this.cJp.getLayoutParams();
     localLayoutParams.width = 0;
-    localLayoutParams.matchConstraintPercentWidth = paramFloat;
+    localLayoutParams.FK = paramFloat;
     localLayoutParams.height = -1;
-    this.cIL.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(215669);
+    this.cJp.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(222519);
   }
 }
 

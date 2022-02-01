@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class SingleViewPresentation$c
   extends ContextWrapper
 {
-  private final InputMethodManager KiQ;
+  private final InputMethodManager RjE;
   
   SingleViewPresentation$c(Context paramContext)
   {
@@ -19,12 +19,12 @@ final class SingleViewPresentation$c
   private SingleViewPresentation$c(Context paramContext, InputMethodManager paramInputMethodManager)
   {
     super(paramContext);
-    AppMethodBeat.i(214865);
+    AppMethodBeat.i(255727);
     if (paramInputMethodManager != null) {}
     for (;;)
     {
-      this.KiQ = paramInputMethodManager;
-      AppMethodBeat.o(214865);
+      this.RjE = paramInputMethodManager;
+      AppMethodBeat.o(255727);
       return;
       paramInputMethodManager = (InputMethodManager)paramContext.getSystemService("input_method");
     }
@@ -32,29 +32,29 @@ final class SingleViewPresentation$c
   
   public final Context createDisplayContext(Display paramDisplay)
   {
-    AppMethodBeat.i(214867);
-    paramDisplay = new c(super.createDisplayContext(paramDisplay), this.KiQ);
-    AppMethodBeat.o(214867);
+    AppMethodBeat.i(255732);
+    paramDisplay = new c(super.createDisplayContext(paramDisplay), this.RjE);
+    AppMethodBeat.o(255732);
     return paramDisplay;
   }
   
   public final Object getSystemService(String paramString)
   {
-    AppMethodBeat.i(214866);
+    AppMethodBeat.i(255730);
     if ("input_method".equals(paramString))
     {
-      paramString = this.KiQ;
-      AppMethodBeat.o(214866);
+      paramString = this.RjE;
+      AppMethodBeat.o(255730);
       return paramString;
     }
     paramString = super.getSystemService(paramString);
-    AppMethodBeat.o(214866);
+    AppMethodBeat.o(255730);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.plugin.platform.SingleViewPresentation.c
  * JD-Core Version:    0.7.0.1
  */

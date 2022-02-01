@@ -4,9 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.app.n;
-import com.tencent.mm.plugin.appbrand.appcache.predownload.e.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.app.m;
+import com.tencent.mm.plugin.appbrand.appcache.predownload.c.a;
 import com.tencent.mm.plugin.appbrand.config.q;
 import com.tencent.mm.plugin.appbrand.config.q.c;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
@@ -17,7 +17,7 @@ class JsApiGetAppConfigTask
   public static final Parcelable.Creator<JsApiGetAppConfigTask> CREATOR;
   public String appId;
   public String key;
-  public Runnable lyv;
+  public Runnable otv;
   public int scene;
   public int type;
   public String value;
@@ -38,26 +38,26 @@ class JsApiGetAppConfigTask
     AppMethodBeat.o(45485);
   }
   
-  public final void bjj()
+  public final void RW()
   {
     AppMethodBeat.i(45486);
-    if (!g.aAf().hpY)
+    if (!h.aHE().kbT)
     {
       AppMethodBeat.o(45486);
       return;
     }
-    Pair localPair = ((b)n.W(b.class)).J(this.appId, 4, this.scene);
+    Pair localPair = ((com.tencent.mm.plugin.appbrand.appcache.predownload.e.b)m.W(com.tencent.mm.plugin.appbrand.appcache.predownload.e.b.class)).J(this.appId, 4, this.scene);
     if (((Boolean)localPair.first).booleanValue())
     {
-      com.tencent.mm.plugin.appbrand.appcache.predownload.c.a locala = com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.kQt;
-      com.tencent.mm.plugin.appbrand.appcache.predownload.c.a.F(((Integer)localPair.second).intValue(), 166L);
+      a locala = a.nKB;
+      a.F(((Integer)localPair.second).intValue(), 166L);
     }
     if (!((Boolean)localPair.first).booleanValue()) {}
     for (boolean bool = true;; bool = false)
     {
       q.a(this.appId, this.type, 0, new q.c()
       {
-        public final void Vo(String paramAnonymousString)
+        public final void acY(String paramAnonymousString)
         {
           AppMethodBeat.i(45483);
           JsApiGetAppConfigTask.this.value = paramAnonymousString;
@@ -70,11 +70,11 @@ class JsApiGetAppConfigTask
     }
   }
   
-  public final void bjk()
+  public final void bsK()
   {
     AppMethodBeat.i(45487);
-    if (this.lyv != null) {
-      this.lyv.run();
+    if (this.otv != null) {
+      this.otv.run();
     }
     AppMethodBeat.o(45487);
   }

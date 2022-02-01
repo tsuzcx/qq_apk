@@ -14,14 +14,14 @@ public final class a
   public final void execute(g paramg)
   {
     AppMethodBeat.i(133029);
-    if (!j.Ee("wcdb"))
+    if (!j.KX("wcdb"))
     {
       getClass().getClassLoader();
-      j.Ed("wcdb");
+      j.KW("wcdb");
     }
     com.tencent.wcdb.support.Log.setLogger(new Log.LogCallback()
     {
-      private final HashSet<String> JSg;
+      private final HashSet<String> QRj;
       
       public final void println(int paramAnonymousInt, String arg2, String paramAnonymousString2)
       {
@@ -51,9 +51,9 @@ public final class a
           if ((???.equals("WCDB.SQLite")) && (paramAnonymousString2.startsWith("[SQLite ErrCode: 284] automatic index on ")))
           {
             paramAnonymousString2 = paramAnonymousString2.substring(41);
-            synchronized (this.JSg)
+            synchronized (this.QRj)
             {
-              boolean bool = this.JSg.add(paramAnonymousString2);
+              boolean bool = this.QRj.add(paramAnonymousString2);
               if (bool) {}
             }
           }
@@ -78,7 +78,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.zero.tasks.a
  * JD-Core Version:    0.7.0.1
  */

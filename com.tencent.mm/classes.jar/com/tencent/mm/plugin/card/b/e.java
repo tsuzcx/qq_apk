@@ -8,15 +8,15 @@ import java.util.Map;
 
 public final class e
 {
-  public Map<String, Object> pQY;
-  public CardInfo pQy;
+  public Map<String, Object> tmX;
+  public CardInfo tmy;
   
   public e()
   {
     AppMethodBeat.i(112615);
-    this.pQY = new HashMap();
-    this.pQy = null;
-    this.pQY.clear();
+    this.tmX = new HashMap();
+    this.tmy = null;
+    this.tmX.clear();
     AppMethodBeat.o(112615);
   }
   
@@ -28,9 +28,9 @@ public final class e
       AppMethodBeat.o(112617);
       return null;
     }
-    if (this.pQY.containsKey(paramString))
+    if (this.tmX.containsKey(paramString))
     {
-      paramString = this.pQY.get(paramString);
+      paramString = this.tmX.get(paramString);
       AppMethodBeat.o(112617);
       return paramString;
     }
@@ -38,7 +38,7 @@ public final class e
     return null;
   }
   
-  public final void putValue(String paramString, Object paramObject)
+  public final void r(String paramString, Object paramObject)
   {
     AppMethodBeat.i(112616);
     if (TextUtils.isEmpty(paramString))
@@ -46,13 +46,13 @@ public final class e
       AppMethodBeat.o(112616);
       return;
     }
-    this.pQY.put(paramString, paramObject);
+    this.tmX.put(paramString, paramObject);
     AppMethodBeat.o(112616);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -21,29 +21,32 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.game.report.f;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.game.report.g;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.game.g.e;
+import com.tencent.mm.plugin.game.g.f;
+import com.tencent.mm.plugin.game.g.i;
 import com.tencent.mm.plugin.game.model.ak;
 import com.tencent.mm.plugin.game.model.al;
 import com.tencent.mm.plugin.game.model.e;
-import com.tencent.mm.protocal.protobuf.bgd;
-import com.tencent.mm.protocal.protobuf.bgf;
-import com.tencent.mm.protocal.protobuf.bgh;
-import com.tencent.mm.protocal.protobuf.bgi;
-import com.tencent.mm.protocal.protobuf.bgj;
-import com.tencent.mm.protocal.protobuf.bgk;
-import com.tencent.mm.protocal.protobuf.bgl;
+import com.tencent.mm.protocal.protobuf.bnf;
+import com.tencent.mm.protocal.protobuf.bnh;
+import com.tencent.mm.protocal.protobuf.bnj;
+import com.tencent.mm.protocal.protobuf.bnk;
+import com.tencent.mm.protocal.protobuf.bnl;
+import com.tencent.mm.protocal.protobuf.bnm;
+import com.tencent.mm.protocal.protobuf.bnn;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.tools.s.b;
+import com.tencent.mm.ui.tools.t.b;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -53,54 +56,54 @@ import java.util.regex.Pattern;
 
 public class GameSearchUI
   extends MMActivity
-  implements i, s.b
+  implements i, t.b
 {
-  private static final Pattern xWu;
+  private static final Pattern DaE;
+  private ViewGroup DaF;
+  private ListView DaG;
+  private ListView DaH;
+  private r DaI;
+  private s DaJ;
+  private String DaK;
+  private String DaL;
+  private LinkedList<String> DaM;
+  private String DaN;
+  private LinkedList<q> DaO;
+  private boolean DaP;
+  private AdapterView.OnItemClickListener DaQ;
+  private AdapterView.OnItemClickListener DaR;
   private int fromScene;
-  private View gAy;
-  private com.tencent.mm.ui.tools.s gzP;
+  private com.tencent.mm.ui.tools.t jjS;
+  private View jkB;
   private ProgressBar progressBar;
-  private TextView vtJ;
-  private String xWA;
-  private String xWB;
-  private LinkedList<String> xWC;
-  private String xWD;
-  private LinkedList<q> xWE;
-  private boolean xWF;
-  private AdapterView.OnItemClickListener xWG;
-  private AdapterView.OnItemClickListener xWH;
-  private ViewGroup xWv;
-  private ListView xWw;
-  private ListView xWx;
-  private r xWy;
-  private s xWz;
+  private TextView xND;
   
   static
   {
     AppMethodBeat.i(42410);
-    xWu = Pattern.compile("\\s+");
+    DaE = Pattern.compile("\\s+");
     AppMethodBeat.o(42410);
   }
   
   public GameSearchUI()
   {
     AppMethodBeat.i(42392);
-    this.xWE = new LinkedList();
-    this.xWF = false;
-    this.xWG = new AdapterView.OnItemClickListener()
+    this.DaO = new LinkedList();
+    this.DaP = false;
+    this.DaQ = new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(42390);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousAdapterView);
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.zo(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameSearchUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+        b localb = new b();
+        localb.bn(paramAnonymousAdapterView);
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.Fs(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/GameSearchUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
         paramAnonymousAdapterView = GameSearchUI.b(GameSearchUI.this);
         if ((paramAnonymousInt < 0) || (paramAnonymousInt >= paramAnonymousAdapterView.getCount())) {}
-        for (paramAnonymousAdapterView = null; paramAnonymousAdapterView == null; paramAnonymousAdapterView = ((r.b)paramAnonymousAdapterView.getItem(paramAnonymousInt)).xWl)
+        for (paramAnonymousAdapterView = null; paramAnonymousAdapterView == null; paramAnonymousAdapterView = ((r.b)paramAnonymousAdapterView.getItem(paramAnonymousInt)).Dav)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameSearchUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(42390);
@@ -110,14 +113,14 @@ public class GameSearchUI
         {
           paramAnonymousView = new Bundle();
           paramAnonymousView.putCharSequence("game_app_id", paramAnonymousAdapterView.appId);
-          paramAnonymousView.putInt("game_report_from_scene", paramAnonymousAdapterView.dYu);
-          paramAnonymousInt = com.tencent.mm.plugin.game.e.c.b(GameSearchUI.this, paramAnonymousAdapterView.appId, null, paramAnonymousView);
+          paramAnonymousView.putInt("game_report_from_scene", paramAnonymousAdapterView.fSl);
+          paramAnonymousInt = com.tencent.mm.plugin.game.d.c.b(GameSearchUI.this, paramAnonymousAdapterView.appId, null, paramAnonymousView);
           paramAnonymousView = new HashMap();
           paramAnonymousView.put("function_type", "search");
-          paramAnonymousView.put("funtion_value", paramAnonymousAdapterView.xWm);
+          paramAnonymousView.put("funtion_value", paramAnonymousAdapterView.Daw);
           paramAnonymousView.put("keyword", GameSearchUI.f(GameSearchUI.this));
-          paramAnonymousView = com.tencent.mm.plugin.game.d.a.u(paramAnonymousView);
-          f.a(GameSearchUI.this, 14, paramAnonymousAdapterView.dYu, paramAnonymousAdapterView.position, paramAnonymousInt, paramAnonymousAdapterView.appId, GameSearchUI.g(GameSearchUI.this), paramAnonymousView);
+          paramAnonymousView = com.tencent.mm.plugin.game.c.a.m(paramAnonymousView);
+          g.a(GameSearchUI.this, 14, paramAnonymousAdapterView.fSl, paramAnonymousAdapterView.position, paramAnonymousInt, paramAnonymousAdapterView.appId, GameSearchUI.g(GameSearchUI.this), paramAnonymousView);
         }
         for (;;)
         {
@@ -126,29 +129,29 @@ public class GameSearchUI
           return;
           if ((paramAnonymousAdapterView.actionType == 2) && (!Util.isNullOrNil(paramAnonymousAdapterView.h5Url)))
           {
-            paramAnonymousInt = com.tencent.mm.plugin.game.e.c.D(GameSearchUI.this, paramAnonymousAdapterView.h5Url, "game_center_detail");
+            paramAnonymousInt = com.tencent.mm.plugin.game.d.c.I(GameSearchUI.this, paramAnonymousAdapterView.h5Url, "game_center_detail");
             paramAnonymousView = new HashMap();
             paramAnonymousView.put("function_type", "search");
-            paramAnonymousView.put("funtion_value", paramAnonymousAdapterView.xWm);
+            paramAnonymousView.put("funtion_value", paramAnonymousAdapterView.Daw);
             paramAnonymousView.put("keyword", GameSearchUI.f(GameSearchUI.this));
-            paramAnonymousView = com.tencent.mm.plugin.game.d.a.u(paramAnonymousView);
-            f.a(GameSearchUI.this, 14, paramAnonymousAdapterView.dYu, paramAnonymousAdapterView.position, paramAnonymousInt, 0, paramAnonymousAdapterView.appId, GameSearchUI.g(GameSearchUI.this), paramAnonymousAdapterView.xWh, String.valueOf(paramAnonymousAdapterView.xWi), null, paramAnonymousView);
+            paramAnonymousView = com.tencent.mm.plugin.game.c.a.m(paramAnonymousView);
+            g.a(GameSearchUI.this, 14, paramAnonymousAdapterView.fSl, paramAnonymousAdapterView.position, paramAnonymousInt, 0, paramAnonymousAdapterView.appId, GameSearchUI.g(GameSearchUI.this), paramAnonymousAdapterView.Dar, String.valueOf(paramAnonymousAdapterView.Das), null, paramAnonymousView);
           }
         }
       }
     };
-    this.xWH = new AdapterView.OnItemClickListener()
+    this.DaR = new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(42391);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousAdapterView);
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.zo(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameSearchUI$6", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
-        paramAnonymousAdapterView = ((s)paramAnonymousAdapterView.getAdapter()).OB(paramAnonymousInt);
+        b localb = new b();
+        localb.bn(paramAnonymousAdapterView);
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.Fs(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/GameSearchUI$6", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+        paramAnonymousAdapterView = ((s)paramAnonymousAdapterView.getAdapter()).TV(paramAnonymousInt);
         if (Util.isNullOrNil(paramAnonymousAdapterView.text))
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameSearchUI$6", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
@@ -177,12 +180,12 @@ public class GameSearchUI
             paramAnonymousView = new Bundle();
             paramAnonymousView.putCharSequence("game_app_id", paramAnonymousAdapterView.appId);
             paramAnonymousView.putInt("game_report_from_scene", 1402);
-            i = com.tencent.mm.plugin.game.e.c.b(GameSearchUI.this, paramAnonymousAdapterView.appId, null, paramAnonymousView);
-            f.a(GameSearchUI.this, 14, 1402, paramAnonymousInt, i, paramAnonymousAdapterView.appId, GameSearchUI.g(GameSearchUI.this), null);
+            i = com.tencent.mm.plugin.game.d.c.b(GameSearchUI.this, paramAnonymousAdapterView.appId, null, paramAnonymousView);
+            g.a(GameSearchUI.this, 14, 1402, paramAnonymousInt, i, paramAnonymousAdapterView.appId, GameSearchUI.g(GameSearchUI.this), null);
             break;
           case 2: 
-            i = com.tencent.mm.plugin.game.e.c.D(GameSearchUI.this.getContext(), paramAnonymousAdapterView.xWn, "game_center_detail");
-            f.a(GameSearchUI.this, 14, 1402, paramAnonymousInt, i, paramAnonymousAdapterView.appId, GameSearchUI.g(GameSearchUI.this), null);
+            i = com.tencent.mm.plugin.game.d.c.I(GameSearchUI.this.getContext(), paramAnonymousAdapterView.Dax, "game_center_detail");
+            g.a(GameSearchUI.this, 14, 1402, paramAnonymousInt, i, paramAnonymousAdapterView.appId, GameSearchUI.g(GameSearchUI.this), null);
           }
         }
       }
@@ -190,40 +193,7 @@ public class GameSearchUI
     AppMethodBeat.o(42392);
   }
   
-  private void a(LinkedList<String> paramLinkedList, int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(42399);
-    while (!this.xWE.isEmpty())
-    {
-      g.aAi();
-      g.aAg().hqi.a((q)this.xWE.pop());
-    }
-    if (paramBoolean) {
-      this.xWy.reset();
-    }
-    this.xWC = paramLinkedList;
-    ak localak = new ak(LocaleUtil.getApplicationLanguage(), paramLinkedList, e.dUR(), this.xWy.xGW);
-    g.azz().a(localak, 0);
-    this.xWE.add(localak);
-    paramLinkedList = paramLinkedList.iterator();
-    for (this.xWA = ""; paramLinkedList.hasNext(); this.xWA = (this.xWA + " " + (String)paramLinkedList.next())) {}
-    this.xWA = this.xWA.trim();
-    if ((paramInt == 1) || (paramInt == 2))
-    {
-      this.xWF = true;
-      this.gzP.setSearchContent(this.xWA);
-    }
-    AppMethodBeat.o(42399);
-  }
-  
-  private void aW(LinkedList<String> paramLinkedList)
-  {
-    AppMethodBeat.i(42398);
-    a(paramLinkedList, 0, true);
-    AppMethodBeat.o(42398);
-  }
-  
-  private void xI(int paramInt)
+  private void Bg(int paramInt)
   {
     AppMethodBeat.i(42397);
     switch (paramInt)
@@ -233,77 +203,110 @@ public class GameSearchUI
     {
       AppMethodBeat.o(42397);
       return;
-      this.xWv.setVisibility(8);
-      this.vtJ.setVisibility(8);
-      this.xWw.setVisibility(8);
-      this.xWx.setVisibility(8);
+      this.DaF.setVisibility(8);
+      this.xND.setVisibility(8);
+      this.DaG.setVisibility(8);
+      this.DaH.setVisibility(8);
       this.progressBar.setVisibility(8);
       AppMethodBeat.o(42397);
       return;
       hideVKB();
-      ListView localListView = this.xWw;
+      ListView localListView = this.DaG;
       com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-      com.tencent.mm.hellhoundlib.a.a.a(localListView, locala.axQ(), "com/tencent/mm/plugin/game/ui/GameSearchUI", "updateUI", "(I)V", "Undefined", "smoothScrollToPosition", "(I)V");
-      localListView.smoothScrollToPosition(((Integer)locala.pG(0)).intValue());
-      com.tencent.mm.hellhoundlib.a.a.a(localListView, "com/tencent/mm/plugin/game/ui/GameSearchUI", "updateUI", "(I)V", "Undefined", "smoothScrollToPosition", "(I)V");
-      this.gzP.clearFocus();
-      this.xWv.setVisibility(8);
-      this.vtJ.setVisibility(8);
-      this.xWw.setVisibility(8);
-      this.xWx.setVisibility(8);
+      com.tencent.mm.hellhoundlib.a.a.b(localListView, locala.aFh(), "com/tencent/mm/plugin/game/ui/GameSearchUI", "updateUI", "(I)V", "Undefined", "smoothScrollToPosition", "(I)V");
+      localListView.smoothScrollToPosition(((Integer)locala.sf(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.c(localListView, "com/tencent/mm/plugin/game/ui/GameSearchUI", "updateUI", "(I)V", "Undefined", "smoothScrollToPosition", "(I)V");
+      this.jjS.clearFocus();
+      this.DaF.setVisibility(8);
+      this.xND.setVisibility(8);
+      this.DaG.setVisibility(8);
+      this.DaH.setVisibility(8);
       this.progressBar.setVisibility(0);
       AppMethodBeat.o(42397);
       return;
-      localListView = this.xWw;
+      localListView = this.DaG;
       locala = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-      com.tencent.mm.hellhoundlib.a.a.a(localListView, locala.axQ(), "com/tencent/mm/plugin/game/ui/GameSearchUI", "updateUI", "(I)V", "Undefined", "smoothScrollToPosition", "(I)V");
-      localListView.smoothScrollToPosition(((Integer)locala.pG(0)).intValue());
-      com.tencent.mm.hellhoundlib.a.a.a(localListView, "com/tencent/mm/plugin/game/ui/GameSearchUI", "updateUI", "(I)V", "Undefined", "smoothScrollToPosition", "(I)V");
-      this.xWv.setVisibility(8);
-      this.vtJ.setVisibility(8);
-      this.xWw.setVisibility(8);
-      this.xWx.setVisibility(8);
+      com.tencent.mm.hellhoundlib.a.a.b(localListView, locala.aFh(), "com/tencent/mm/plugin/game/ui/GameSearchUI", "updateUI", "(I)V", "Undefined", "smoothScrollToPosition", "(I)V");
+      localListView.smoothScrollToPosition(((Integer)locala.sf(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.c(localListView, "com/tencent/mm/plugin/game/ui/GameSearchUI", "updateUI", "(I)V", "Undefined", "smoothScrollToPosition", "(I)V");
+      this.DaF.setVisibility(8);
+      this.xND.setVisibility(8);
+      this.DaG.setVisibility(8);
+      this.DaH.setVisibility(8);
       this.progressBar.setVisibility(0);
       AppMethodBeat.o(42397);
       return;
-      this.xWv.setVisibility(8);
-      if (this.xWy.getCount() > 0)
+      this.DaF.setVisibility(8);
+      if (this.DaI.getCount() > 0)
       {
-        this.vtJ.setVisibility(8);
-        this.xWw.setVisibility(0);
+        this.xND.setVisibility(8);
+        this.DaG.setVisibility(0);
       }
       for (;;)
       {
-        this.xWx.setVisibility(8);
+        this.DaH.setVisibility(8);
         this.progressBar.setVisibility(8);
         AppMethodBeat.o(42397);
         return;
-        this.vtJ.setVisibility(0);
-        this.xWw.setVisibility(8);
+        this.xND.setVisibility(0);
+        this.DaG.setVisibility(8);
       }
-      this.xWv.setVisibility(0);
-      this.vtJ.setVisibility(8);
-      this.xWw.setVisibility(8);
-      this.xWx.setVisibility(8);
+      this.DaF.setVisibility(0);
+      this.xND.setVisibility(8);
+      this.DaG.setVisibility(8);
+      this.DaH.setVisibility(8);
       this.progressBar.setVisibility(8);
       AppMethodBeat.o(42397);
       return;
-      this.xWv.setVisibility(8);
-      this.vtJ.setVisibility(0);
-      this.xWw.setVisibility(8);
-      this.xWx.setVisibility(8);
+      this.DaF.setVisibility(8);
+      this.xND.setVisibility(0);
+      this.DaG.setVisibility(8);
+      this.DaH.setVisibility(8);
       this.progressBar.setVisibility(8);
       AppMethodBeat.o(42397);
       return;
-      this.xWv.setVisibility(8);
-      this.vtJ.setVisibility(8);
-      this.xWw.setVisibility(8);
-      this.xWx.setVisibility(0);
+      this.DaF.setVisibility(8);
+      this.xND.setVisibility(8);
+      this.DaG.setVisibility(8);
+      this.DaH.setVisibility(0);
       this.progressBar.setVisibility(8);
     }
   }
   
-  public final boolean SN(String paramString)
+  private void a(LinkedList<String> paramLinkedList, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(42399);
+    while (!this.DaO.isEmpty())
+    {
+      h.aHH();
+      h.aHF().kcd.a((q)this.DaO.pop());
+    }
+    if (paramBoolean) {
+      this.DaI.reset();
+    }
+    this.DaM = paramLinkedList;
+    ak localak = new ak(LocaleUtil.getApplicationLanguage(), paramLinkedList, e.exY(), this.DaI.CKZ);
+    h.aGY().a(localak, 0);
+    this.DaO.add(localak);
+    paramLinkedList = paramLinkedList.iterator();
+    for (this.DaK = ""; paramLinkedList.hasNext(); this.DaK = (this.DaK + " " + (String)paramLinkedList.next())) {}
+    this.DaK = this.DaK.trim();
+    if ((paramInt == 1) || (paramInt == 2))
+    {
+      this.DaP = true;
+      this.jjS.setSearchContent(this.DaK);
+    }
+    AppMethodBeat.o(42399);
+  }
+  
+  private void bp(LinkedList<String> paramLinkedList)
+  {
+    AppMethodBeat.i(42398);
+    a(paramLinkedList, 0, true);
+    AppMethodBeat.o(42398);
+  }
+  
+  public final boolean aat(String paramString)
   {
     AppMethodBeat.i(42406);
     if (Util.isNullOrNil(paramString))
@@ -312,66 +315,62 @@ public class GameSearchUI
       return true;
     }
     LinkedList localLinkedList = new LinkedList();
-    paramString = xWu.split(paramString.replace('*', ' '));
+    paramString = DaE.split(paramString.replace('*', ' '));
     int i = 0;
     while (i < paramString.length)
     {
       localLinkedList.add(paramString[i]);
       i += 1;
     }
-    aW(localLinkedList);
-    xI(1);
+    bp(localLinkedList);
+    Bg(1);
     AppMethodBeat.o(42406);
     return true;
   }
   
-  public final void SO(String paramString)
+  public final void aau(String paramString)
   {
     AppMethodBeat.i(42405);
-    if (this.xWF)
+    if (this.DaP)
     {
-      this.xWF = false;
+      this.DaP = false;
       AppMethodBeat.o(42405);
       return;
     }
-    if ((this.xWD != null) && (this.xWD.equals(Util.nullAsNil(paramString))))
+    if ((this.DaN != null) && (this.DaN.equals(Util.nullAsNil(paramString))))
     {
       Log.d("MicroMsg.GameSearchUI", "repeat searchChange");
       AppMethodBeat.o(42405);
       return;
     }
-    this.xWD = paramString;
+    this.DaN = paramString;
     if (Util.isNullOrNil(paramString))
     {
-      while (!this.xWE.isEmpty())
+      while (!this.DaO.isEmpty())
       {
-        g.aAi();
-        g.aAg().hqi.a((q)this.xWE.pop());
+        h.aHH();
+        h.aHF().kcd.a((q)this.DaO.pop());
       }
-      paramString = new al(LocaleUtil.getApplicationLanguage(), paramString, e.dUR());
-      g.azz().a(paramString, 0);
-      this.xWE.add(paramString);
+      paramString = new al(LocaleUtil.getApplicationLanguage(), paramString, e.exY());
+      h.aGY().a(paramString, 0);
+      this.DaO.add(paramString);
       AppMethodBeat.o(42405);
       return;
     }
     LinkedList localLinkedList = new LinkedList();
-    paramString = xWu.split(paramString.replace('*', ' '));
+    paramString = DaE.split(paramString.replace('*', ' '));
     int i = 0;
     while (i < paramString.length)
     {
       localLinkedList.add(paramString[i]);
       i += 1;
     }
-    aW(localLinkedList);
-    xI(6);
+    bp(localLinkedList);
+    Bg(6);
     AppMethodBeat.o(42405);
   }
   
-  public final void bnA() {}
-  
-  public final void bnB() {}
-  
-  public final void bny()
+  public final void bxH()
   {
     AppMethodBeat.i(42404);
     hideVKB();
@@ -379,11 +378,15 @@ public class GameSearchUI
     AppMethodBeat.o(42404);
   }
   
-  public final void bnz() {}
+  public final void bxI() {}
+  
+  public final void bxJ() {}
+  
+  public final void bxK() {}
   
   public int getLayoutId()
   {
-    return 2131494944;
+    return g.f.Coa;
   }
   
   public void initView()
@@ -399,17 +402,17 @@ public class GameSearchUI
         return true;
       }
     });
-    this.gzP = new com.tencent.mm.ui.tools.s();
-    this.gzP.CK(true);
-    this.gzP.Qwi = this;
-    this.xWv = ((ViewGroup)findViewById(2131310010));
-    this.progressBar = ((ProgressBar)findViewById(2131307415));
-    this.vtJ = ((TextView)findViewById(2131305459));
-    this.xWw = ((ListView)findViewById(2131307418));
-    this.xWy = new r(this);
-    this.xWw.setAdapter(this.xWy);
-    this.xWw.setOnItemClickListener(this.xWG);
-    this.xWw.setOnTouchListener(new View.OnTouchListener()
+    this.jjS = new com.tencent.mm.ui.tools.t();
+    this.jjS.He(true);
+    this.jjS.XUl = this;
+    this.DaF = ((ViewGroup)findViewById(g.e.eat));
+    this.progressBar = ((ProgressBar)findViewById(g.e.ukq));
+    this.xND = ((TextView)findViewById(g.e.no_result));
+    this.DaG = ((ListView)findViewById(g.e.ukr));
+    this.DaI = new r(this);
+    this.DaG.setAdapter(this.DaI);
+    this.DaG.setOnItemClickListener(this.DaQ);
+    this.DaG.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -420,14 +423,14 @@ public class GameSearchUI
         return false;
       }
     });
-    this.xWw.setOnScrollListener(new AbsListView.OnScrollListener()
+    this.DaG.setOnScrollListener(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
       public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt)
       {
         AppMethodBeat.i(42388);
-        if ((paramAnonymousInt == 0) && (paramAnonymousAbsListView.getLastVisiblePosition() == paramAnonymousAbsListView.getCount() - 1) && (GameSearchUI.b(GameSearchUI.this).xVQ))
+        if ((paramAnonymousInt == 0) && (paramAnonymousAbsListView.getLastVisiblePosition() == paramAnonymousAbsListView.getCount() - 1) && (GameSearchUI.b(GameSearchUI.this).Dab))
         {
           if (GameSearchUI.c(GameSearchUI.this) != null) {
             GameSearchUI.c(GameSearchUI.this).setVisibility(0);
@@ -437,14 +440,14 @@ public class GameSearchUI
         AppMethodBeat.o(42388);
       }
     });
-    this.gAy = getLayoutInflater().inflate(2131494902, this.xWw, false);
-    this.gAy.setVisibility(8);
-    this.xWw.addFooterView(this.gAy);
-    this.xWx = ((ListView)findViewById(2131307416));
-    this.xWz = new s(this);
-    this.xWx.setAdapter(this.xWz);
-    this.xWx.setOnItemClickListener(this.xWH);
-    this.xWx.setOnTouchListener(new View.OnTouchListener()
+    this.jkB = getLayoutInflater().inflate(g.f.CnH, this.DaG, false);
+    this.jkB.setVisibility(8);
+    this.DaG.addFooterView(this.jkB);
+    this.DaH = ((ListView)findViewById(g.e.Clw));
+    this.DaJ = new s(this);
+    this.DaH.setAdapter(this.DaJ);
+    this.DaH.setOnItemClickListener(this.DaR);
+    this.DaH.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -470,18 +473,18 @@ public class GameSearchUI
     AppMethodBeat.i(42393);
     long l = System.currentTimeMillis();
     super.onCreate(paramBundle);
-    if (!g.aAc())
+    if (!h.aHB())
     {
       Log.e("MicroMsg.GameSearchUI", "account not ready");
       finish();
       AppMethodBeat.o(42393);
       return;
     }
-    g.azz().a(1328, this);
-    g.azz().a(1329, this);
+    h.aGY().a(1328, this);
+    h.aGY().a(1329, this);
     this.fromScene = getIntent().getIntExtra("game_report_from_scene", 0);
     initView();
-    f.a(this, 14, 1401, 0, 2, this.fromScene, null);
+    g.a(this, 14, 1401, 0, 2, this.fromScene, null);
     Log.i("MicroMsg.GameSearchUI", "[onCreate] time:" + (System.currentTimeMillis() - l));
     AppMethodBeat.o(42393);
   }
@@ -489,8 +492,8 @@ public class GameSearchUI
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
     AppMethodBeat.i(42395);
-    this.gzP.a(this, paramMenu);
-    this.gzP.setHint(e.dVf());
+    this.jjS.a(this, paramMenu);
+    this.jjS.setHint(e.eym());
     AppMethodBeat.o(42395);
     return true;
   }
@@ -500,8 +503,8 @@ public class GameSearchUI
     AppMethodBeat.i(42403);
     Log.i("MicroMsg.GameSearchUI", "onDestroy");
     super.onDestroy();
-    g.azz().b(1328, this);
-    g.azz().b(1329, this);
+    h.aGY().b(1328, this);
+    h.aGY().b(1329, this);
     AppMethodBeat.o(42403);
   }
   
@@ -522,7 +525,7 @@ public class GameSearchUI
   public boolean onPrepareOptionsMenu(Menu paramMenu)
   {
     AppMethodBeat.i(42396);
-    this.gzP.a(this, paramMenu);
+    this.jjS.a(this, paramMenu);
     AppMethodBeat.o(42396);
     return true;
   }
@@ -535,10 +538,10 @@ public class GameSearchUI
       AppMethodBeat.o(42400);
       return;
     }
-    if (this.xWE.contains(paramq)) {
-      this.xWE.remove(paramq);
+    if (this.DaO.contains(paramq)) {
+      this.DaO.remove(paramq);
     }
-    this.gAy.setVisibility(8);
+    this.jkB.setVisibility(8);
     switch (paramq.getType())
     {
     }
@@ -546,26 +549,26 @@ public class GameSearchUI
     {
       AppMethodBeat.o(42400);
       return;
-      paramString = (bgh)((ak)paramq).hhm.iLK.iLR;
-      Log.d("MicroMsg.GameSearchUI", "keywords = %s, offset = %d", new Object[] { paramString.LQa, Integer.valueOf(paramString.LQb) });
+      paramString = (bnj)d.b.b(((ak)paramq).jTk.lBR);
+      Log.d("MicroMsg.GameSearchUI", "keywords = %s, offset = %d", new Object[] { paramString.SYu, Integer.valueOf(paramString.SYv) });
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = (bgi)((ak)paramq).hhm.iLL.iLR;
+        paramString = (bnk)d.c.b(((ak)paramq).jTk.lBS);
         label212:
         Object localObject3;
         label282:
         Object localObject4;
         if (paramString != null)
         {
-          paramString = paramString.LQc;
+          paramString = paramString.SYw;
           if (Util.isNullOrNil(paramString)) {
             break label1767;
           }
-          this.xWB = this.xWA;
-          if (this.xWy.xGW != 0)
+          this.DaL = this.DaK;
+          if (this.DaI.CKZ != 0)
           {
-            paramq = this.xWy;
-            localObject1 = this.xWB;
+            paramq = this.DaI;
+            localObject1 = this.DaL;
             paramString = paramString.iterator();
           }
         }
@@ -576,74 +579,74 @@ public class GameSearchUI
             if (!paramString.hasNext()) {
               break label1767;
             }
-            localObject2 = (bgj)paramString.next();
-            if ((((bgj)localObject2).type == 3) && (!Util.isNullOrNil(((bgj)localObject2).LQe)))
+            localObject2 = (bnl)paramString.next();
+            if ((((bnl)localObject2).type == 3) && (!Util.isNullOrNil(((bnl)localObject2).SYy)))
             {
-              paramq.xGW = ((bgj)localObject2).LQi;
-              paramq.xVQ = ((bgj)localObject2).LQj;
-              localObject2 = ((bgj)localObject2).LQe.iterator();
+              paramq.CKZ = ((bnl)localObject2).SYC;
+              paramq.Dab = ((bnl)localObject2).SYD;
+              localObject2 = ((bnl)localObject2).SYy.iterator();
               if (((Iterator)localObject2).hasNext())
               {
-                localObject3 = r.b.a((bgl)((Iterator)localObject2).next());
-                ((r.b)localObject3).dDv = ((String)localObject1);
-                ((r.b)localObject3).xWl.appId = ((r.b)localObject3).appId;
-                ((r.b)localObject3).xWl.xWh = ((r.b)localObject3).xWh;
-                ((r.b)localObject3).xWl.xWi = ((r.b)localObject3).xWi;
-                ((r.b)localObject3).xWl.xWm = "2";
-                localObject4 = ((r.b)localObject3).xWl;
-                paramInt1 = paramq.xVN;
-                paramq.xVN = (paramInt1 + 1);
+                localObject3 = r.b.a((bnn)((Iterator)localObject2).next());
+                ((r.b)localObject3).fwe = ((String)localObject1);
+                ((r.b)localObject3).Dav.appId = ((r.b)localObject3).appId;
+                ((r.b)localObject3).Dav.Dar = ((r.b)localObject3).Dar;
+                ((r.b)localObject3).Dav.Das = ((r.b)localObject3).Das;
+                ((r.b)localObject3).Dav.Daw = "2";
+                localObject4 = ((r.b)localObject3).Dav;
+                paramInt1 = paramq.CZY;
+                paramq.CZY = (paramInt1 + 1);
                 ((r.c)localObject4).position = (paramInt1 + 301);
-                localObject4 = ((r.b)localObject3).xWl;
-                if (!paramq.dDz) {
+                localObject4 = ((r.b)localObject3).Dav;
+                if (!paramq.fwi) {
                   break label439;
                 }
               }
               label439:
               for (paramInt1 = 1403;; paramInt1 = 1405)
               {
-                ((r.c)localObject4).dYu = paramInt1;
-                paramq.gUV.add(localObject3);
+                ((r.c)localObject4).fSl = paramInt1;
+                paramq.jFL.add(localObject3);
                 break label282;
                 break label212;
                 paramString = null;
                 break;
               }
             }
-            paramq.xVQ = false;
+            paramq.Dab = false;
           }
         }
-        paramq = this.xWy;
-        localObject1 = this.xWB;
-        if (paramq.gUV == null) {
-          paramq.gUV = new ArrayList();
+        paramq = this.DaI;
+        localObject1 = this.DaL;
+        if (paramq.jFL == null) {
+          paramq.jFL = new ArrayList();
         }
-        paramq.xTs = 0;
-        paramq.xVL = 0;
-        paramq.xVM = 0;
-        paramq.xVN = 0;
-        paramq.xVO = 0;
-        paramq.dDz = false;
-        paramq.xVK = false;
-        paramq.xVQ = false;
-        paramq.xGW = 0;
-        paramq.gUV.clear();
-        paramq.xVR = false;
+        paramq.CXD = 0;
+        paramq.CZW = 0;
+        paramq.CZX = 0;
+        paramq.CZY = 0;
+        paramq.CZZ = 0;
+        paramq.fwi = false;
+        paramq.CZV = false;
+        paramq.Dab = false;
+        paramq.CKZ = 0;
+        paramq.jFL.clear();
+        paramq.Dac = false;
         Object localObject2 = paramString.iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          paramString = (bgj)((Iterator)localObject2).next();
+          paramString = (bnl)((Iterator)localObject2).next();
           label601:
           label620:
           int i;
-          if ((paramString.LQd == null) || (paramString.LQd.size() == 0))
+          if ((paramString.SYx == null) || (paramString.SYx.size() == 0))
           {
             paramInt1 = 1;
-            if ((paramString.LQe != null) && (paramString.LQe.size() != 0)) {
+            if ((paramString.SYy != null) && (paramString.SYy.size() != 0)) {
               break label725;
             }
             paramInt2 = 1;
-            if ((paramString.LQh != null) && (paramString.LQh.size() != 0)) {
+            if ((paramString.SYB != null) && (paramString.SYB.size() != 0)) {
               break label730;
             }
             i = 1;
@@ -667,10 +670,10 @@ public class GameSearchUI
           label730:
           label736:
           label741:
-          for (paramString = paramq.context.getString(2131761337, new Object[] { localObject1 });; paramString = paramq.context.getString(2131761336))
+          for (paramString = paramq.context.getString(g.i.CpI, new Object[] { localObject1 });; paramString = paramq.context.getString(g.i.CpH))
           {
-            paramq.gUV.add(r.b.bA(6, paramString));
-            paramq.xVR = true;
+            paramq.jFL.add(r.b.bx(6, paramString));
+            paramq.Dac = true;
             break;
             paramInt1 = 0;
             break label601;
@@ -682,132 +685,132 @@ public class GameSearchUI
             break label655;
           }
           label756:
-          paramq.gUV.add(r.b.bA(0, paramString.Title));
-          if (!paramq.xVR)
+          paramq.jFL.add(r.b.bx(0, paramString.fwr));
+          if (!paramq.Dac)
           {
-            ((r.b)paramq.gUV.get(paramq.gUV.size() - 1)).xWj = true;
-            paramq.xVR = true;
+            ((r.b)paramq.jFL.get(paramq.jFL.size() - 1)).Dat = true;
+            paramq.Dac = true;
           }
           Object localObject5;
-          if ((paramString.type == 4) && (paramString.LQh != null))
+          if ((paramString.type == 4) && (paramString.SYB != null))
           {
-            localObject3 = paramString.LQh.iterator();
+            localObject3 = paramString.SYB.iterator();
             while (((Iterator)localObject3).hasNext())
             {
-              localObject5 = (bgk)((Iterator)localObject3).next();
+              localObject5 = (bnm)((Iterator)localObject3).next();
               localObject4 = new r.b();
               ((r.b)localObject4).type = 3;
-              ((r.b)localObject4).appId = ((bgk)localObject5).LQk.jfi;
-              ((r.b)localObject4).name = ((bgk)localObject5).LQk.Name;
-              ((r.b)localObject4).remark = ((bgk)localObject5).LQk.LoI;
-              ((r.b)localObject4).iconUrl = ((bgk)localObject5).LQk.IconUrl;
-              ((r.b)localObject4).xWd = ((bgk)localObject5).LQk.xIK;
-              ((r.b)localObject4).xWe = ((bgk)localObject5).LQk.LPR;
-              ((r.b)localObject4).actionType = ((bgk)localObject5).LQk.KWb;
-              ((r.b)localObject4).xWf = ((bgk)localObject5).LQk.LPS;
-              ((r.b)localObject4).xWg = ((bgk)localObject5).LQl;
-              ((r.b)localObject4).xWl = new r.c(((bgk)localObject5).LQk.KWb, 4, ((bgk)localObject5).LQk.jfi, ((bgk)localObject5).LQk.LPS);
-              ((r.b)localObject4).dDv = ((String)localObject1);
-              ((r.b)localObject4).xWl.xWm = "3";
-              localObject5 = ((r.b)localObject4).xWl;
-              paramInt1 = paramq.xVM;
-              paramq.xVM = (paramInt1 + 1);
+              ((r.b)localObject4).appId = ((bnm)localObject5).SYE.lVG;
+              ((r.b)localObject4).name = ((bnm)localObject5).SYE.CMP;
+              ((r.b)localObject4).remark = ((bnm)localObject5).SYE.Sqe;
+              ((r.b)localObject4).iconUrl = ((bnm)localObject5).SYE.CNj;
+              ((r.b)localObject4).Dan = ((bnm)localObject5).SYE.CMQ;
+              ((r.b)localObject4).Dao = ((bnm)localObject5).SYE.SYl;
+              ((r.b)localObject4).actionType = ((bnm)localObject5).SYE.RXp;
+              ((r.b)localObject4).Dap = ((bnm)localObject5).SYE.SYm;
+              ((r.b)localObject4).Daq = ((bnm)localObject5).SYF;
+              ((r.b)localObject4).Dav = new r.c(((bnm)localObject5).SYE.RXp, 4, ((bnm)localObject5).SYE.lVG, ((bnm)localObject5).SYE.SYm);
+              ((r.b)localObject4).fwe = ((String)localObject1);
+              ((r.b)localObject4).Dav.Daw = "3";
+              localObject5 = ((r.b)localObject4).Dav;
+              paramInt1 = paramq.CZX;
+              paramq.CZX = (paramInt1 + 1);
               ((r.c)localObject5).position = (paramInt1 + 601);
-              paramq.gUV.add(localObject4);
+              paramq.jFL.add(localObject4);
             }
           }
-          if (((paramString.type == 1) || (paramString.type == 2)) && (paramString.LQd != null))
+          if (((paramString.type == 1) || (paramString.type == 2)) && (paramString.SYx != null))
           {
-            localObject3 = paramString.LQd.iterator();
+            localObject3 = paramString.SYx.iterator();
             if (((Iterator)localObject3).hasNext())
             {
-              localObject5 = (bgd)((Iterator)localObject3).next();
+              localObject5 = (bnf)((Iterator)localObject3).next();
               localObject4 = new r.b();
               ((r.b)localObject4).type = 1;
-              ((r.b)localObject4).appId = ((bgd)localObject5).jfi;
-              ((r.b)localObject4).name = ((bgd)localObject5).Name;
-              ((r.b)localObject4).remark = ((bgd)localObject5).LoI;
-              ((r.b)localObject4).iconUrl = ((bgd)localObject5).IconUrl;
-              ((r.b)localObject4).xWd = ((bgd)localObject5).xIK;
-              ((r.b)localObject4).xWe = ((bgd)localObject5).LPR;
-              ((r.b)localObject4).actionType = ((bgd)localObject5).KWb;
-              ((r.b)localObject4).xWf = ((bgd)localObject5).LPS;
-              ((r.b)localObject4).xWl = new r.c(((bgd)localObject5).KWb, 1, ((bgd)localObject5).jfi, ((bgd)localObject5).LPS);
-              ((r.b)localObject4).dDv = ((String)localObject1);
+              ((r.b)localObject4).appId = ((bnf)localObject5).lVG;
+              ((r.b)localObject4).name = ((bnf)localObject5).CMP;
+              ((r.b)localObject4).remark = ((bnf)localObject5).Sqe;
+              ((r.b)localObject4).iconUrl = ((bnf)localObject5).CNj;
+              ((r.b)localObject4).Dan = ((bnf)localObject5).CMQ;
+              ((r.b)localObject4).Dao = ((bnf)localObject5).SYl;
+              ((r.b)localObject4).actionType = ((bnf)localObject5).RXp;
+              ((r.b)localObject4).Dap = ((bnf)localObject5).SYm;
+              ((r.b)localObject4).Dav = new r.c(((bnf)localObject5).RXp, 1, ((bnf)localObject5).lVG, ((bnf)localObject5).SYm);
+              ((r.b)localObject4).fwe = ((String)localObject1);
               if (paramString.type == 1)
               {
-                paramq.dDz = true;
-                localObject5 = ((r.b)localObject4).xWl;
-                paramInt1 = paramq.xTs;
-                paramq.xTs = (paramInt1 + 1);
+                paramq.fwi = true;
+                localObject5 = ((r.b)localObject4).Dav;
+                paramInt1 = paramq.CXD;
+                paramq.CXD = (paramInt1 + 1);
                 ((r.c)localObject5).position = (paramInt1 + 1);
               }
               for (;;)
               {
-                ((r.b)localObject4).xWl.xWm = "1";
-                paramq.gUV.add(localObject4);
+                ((r.b)localObject4).Dav.Daw = "1";
+                paramq.jFL.add(localObject4);
                 break;
                 if (paramString.type == 2)
                 {
-                  paramq.xVK = true;
-                  localObject5 = ((r.b)localObject4).xWl;
-                  paramInt1 = paramq.xVL;
-                  paramq.xVL = (paramInt1 + 1);
+                  paramq.CZV = true;
+                  localObject5 = ((r.b)localObject4).Dav;
+                  paramInt1 = paramq.CZW;
+                  paramq.CZW = (paramInt1 + 1);
                   ((r.c)localObject5).position = (paramInt1 + 1);
                 }
               }
             }
           }
-          else if ((paramString.type == 3) && (paramString.LQe != null))
+          else if ((paramString.type == 3) && (paramString.SYy != null))
           {
-            paramq.xGW = paramString.LQi;
-            paramq.xVQ = paramString.LQj;
-            localObject3 = paramString.LQe.iterator();
+            paramq.CKZ = paramString.SYC;
+            paramq.Dab = paramString.SYD;
+            localObject3 = paramString.SYy.iterator();
             while (((Iterator)localObject3).hasNext())
             {
-              localObject4 = r.b.a((bgl)((Iterator)localObject3).next());
-              ((r.b)localObject4).dDv = ((String)localObject1);
-              ((r.b)localObject4).xWl.appId = ((r.b)localObject4).appId;
-              ((r.b)localObject4).xWl.xWh = ((r.b)localObject4).xWh;
-              ((r.b)localObject4).xWl.xWi = ((r.b)localObject4).xWi;
-              ((r.b)localObject4).xWl.xWm = "2";
-              localObject5 = ((r.b)localObject4).xWl;
-              paramInt1 = paramq.xVN;
-              paramq.xVN = (paramInt1 + 1);
+              localObject4 = r.b.a((bnn)((Iterator)localObject3).next());
+              ((r.b)localObject4).fwe = ((String)localObject1);
+              ((r.b)localObject4).Dav.appId = ((r.b)localObject4).appId;
+              ((r.b)localObject4).Dav.Dar = ((r.b)localObject4).Dar;
+              ((r.b)localObject4).Dav.Das = ((r.b)localObject4).Das;
+              ((r.b)localObject4).Dav.Daw = "2";
+              localObject5 = ((r.b)localObject4).Dav;
+              paramInt1 = paramq.CZY;
+              paramq.CZY = (paramInt1 + 1);
               ((r.c)localObject5).position = (paramInt1 + 301);
-              paramq.gUV.add(localObject4);
+              paramq.jFL.add(localObject4);
             }
           }
-          if ((!Util.isNullOrNil(paramString.LQf)) && (!Util.isNullOrNil(paramString.LQg)) && (paramString.type == 1))
+          if ((!Util.isNullOrNil(paramString.SYz)) && (!Util.isNullOrNil(paramString.SYA)) && (paramString.type == 1))
           {
-            localObject3 = paramString.LQf;
-            paramString = paramString.LQg;
+            localObject3 = paramString.SYz;
+            paramString = paramString.SYA;
             localObject4 = new r.b();
             ((r.b)localObject4).type = 5;
             ((r.b)localObject4).name = ((String)localObject3);
-            ((r.b)localObject4).xWl = new r.c(paramString);
-            ((r.b)localObject4).xWl.appId = "wx62d9035fd4fd2059";
-            ((r.b)localObject4).xWl.xWm = "1";
-            ((r.b)localObject4).xWl.position = 300;
-            paramq.gUV.add(localObject4);
+            ((r.b)localObject4).Dav = new r.c(paramString);
+            ((r.b)localObject4).Dav.appId = "wx62d9035fd4fd2059";
+            ((r.b)localObject4).Dav.Daw = "1";
+            ((r.b)localObject4).Dav.position = 300;
+            paramq.jFL.add(localObject4);
           }
         }
-        paramString = paramq.gUV.iterator();
+        paramString = paramq.jFL.iterator();
         while (paramString.hasNext())
         {
           localObject1 = (r.b)paramString.next();
-          if (paramq.dDz) {
-            ((r.b)localObject1).xWl.dYu = 1403;
-          } else if (paramq.xVK) {
-            ((r.b)localObject1).xWl.dYu = 1404;
+          if (paramq.fwi) {
+            ((r.b)localObject1).Dav.fSl = 1403;
+          } else if (paramq.CZV) {
+            ((r.b)localObject1).Dav.fSl = 1404;
           } else {
-            ((r.b)localObject1).xWl.dYu = 1405;
+            ((r.b)localObject1).Dav.fSl = 1405;
           }
         }
         paramq.notifyDataSetChanged();
       }
       label1767:
-      xI(2);
+      Bg(2);
       AppMethodBeat.o(42400);
       return;
       if ((paramInt1 != 0) || (paramInt2 != 0))
@@ -815,11 +818,11 @@ public class GameSearchUI
         AppMethodBeat.o(42400);
         return;
       }
-      paramString = ((al)paramq).dDv;
-      Object localObject1 = ((bgf)((al)paramq).hhm.iLL.iLR).Title;
-      paramq = ((bgf)((al)paramq).hhm.iLL.iLR).LPY;
-      this.xWz.b(paramString, (String)localObject1, paramq);
-      xI(5);
+      paramString = ((al)paramq).fwe;
+      Object localObject1 = ((bnh)d.c.b(((al)paramq).jTk.lBS)).fwr;
+      paramq = ((bnh)d.c.b(((al)paramq).jTk.lBS)).SYs;
+      this.DaJ.a(paramString, (String)localObject1, paramq);
+      Bg(5);
     }
   }
   
@@ -831,7 +834,7 @@ public class GameSearchUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameSearchUI
  * JD-Core Version:    0.7.0.1
  */

@@ -15,20 +15,20 @@ import com.tencent.neattextview.textview.view.NeatTextView;
 public final class c
   implements LineBackgroundSpan
 {
-  private View ONY;
+  private View Whj;
+  private Rect byG;
   private final int color;
   private int end;
-  private Rect rect;
   private int start;
   
   public c(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(159148);
-    this.ONY = paramView;
+    this.Whj = paramView;
     this.color = paramInt1;
     this.start = paramInt2;
     this.end = paramInt3;
-    this.rect = new Rect();
+    this.byG = new Rect();
     AppMethodBeat.o(159148);
   }
   
@@ -46,8 +46,8 @@ public final class c
       return;
     }
     int i = paramPaint.getColor();
-    int k = b.aQ(this.ONY, this.start);
-    int j = b.aQ(this.ONY, this.end);
+    int k = b.aZ(this.Whj, this.start);
+    int j = b.aZ(this.Whj, this.end);
     paramInt7 = paramInt1;
     paramInt5 = paramInt2;
     float f;
@@ -60,7 +60,7 @@ public final class c
         if (k != paramInt8) {
           break label269;
         }
-        f = b.aR(this.ONY, this.start);
+        f = b.ba(this.Whj, this.start);
         paramInt7 = (int)f;
         if (j != paramInt8) {
           break label360;
@@ -70,36 +70,36 @@ public final class c
     label269:
     label354:
     label360:
-    for (paramInt5 = (int)b.aR(this.ONY, this.end);; paramInt5 = (int)b.aU(this.ONY, paramInt8) + paramInt7)
+    for (paramInt5 = (int)b.ba(this.Whj, this.end);; paramInt5 = (int)b.bd(this.Whj, paramInt8) + paramInt7)
     {
       paramInt1 = (int)(paramInt4 + paramPaint.descent());
-      this.rect.left = paramInt7;
+      this.byG.left = paramInt7;
       if (this.start == paramInt6)
       {
-        paramCharSequence = this.rect;
+        paramCharSequence = this.byG;
         paramCharSequence.left -= 4;
       }
-      this.rect.right = paramInt5;
+      this.byG.right = paramInt5;
       if (this.end == paramInt5)
       {
-        paramCharSequence = this.rect;
+        paramCharSequence = this.byG;
         paramCharSequence.right += 4;
       }
-      this.rect.top = paramInt3;
-      this.rect.bottom = paramInt1;
+      this.byG.top = paramInt3;
+      this.byG.bottom = paramInt1;
       paramPaint.setColor(this.color);
-      paramCanvas.drawRect(this.rect, paramPaint);
+      paramCanvas.drawRect(this.byG, paramPaint);
       paramPaint.setColor(i);
       AppMethodBeat.o(159149);
       return;
-      paramCharSequence = this.ONY;
+      paramCharSequence = this.Whj;
       if ((paramCharSequence instanceof NeatTextView))
       {
         paramCharSequence = ((NeatTextView)paramCharSequence).getLayout();
         if (paramCharSequence == null) {
           break label354;
         }
-        f = paramCharSequence.getPrimaryHorizontal(paramCharSequence.getLineStart(paramInt8));
+        f = paramCharSequence.azU(paramCharSequence.azW(paramInt8));
         break;
       }
       if ((paramCharSequence instanceof TextView))

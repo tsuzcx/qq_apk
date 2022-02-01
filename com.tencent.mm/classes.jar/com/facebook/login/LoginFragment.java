@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import com.facebook.common.R.id;
+import com.facebook.common.R.layout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class LoginFragment
@@ -68,7 +70,7 @@ public class LoginFragment
   
   protected int getLayoutResId()
   {
-    return 2131493685;
+    return R.layout.com_facebook_login_fragment;
   }
   
   LoginClient getLoginClient()
@@ -128,7 +130,7 @@ public class LoginFragment
   {
     AppMethodBeat.i(7873);
     paramLayoutInflater = paramLayoutInflater.inflate(getLayoutResId(), paramViewGroup, false);
-    paramViewGroup = paramLayoutInflater.findViewById(2131298919);
+    paramViewGroup = paramLayoutInflater.findViewById(R.id.com_facebook_login_fragment_progress_bar);
     this.loginClient.setBackgroundProcessingListener(new LoginClient.BackgroundProcessingListener()
     {
       public void onBackgroundProcessingStarted()
@@ -162,7 +164,7 @@ public class LoginFragment
     AppMethodBeat.i(7876);
     super.onPause();
     if (getView() == null) {}
-    for (View localView = null;; localView = getView().findViewById(2131298919))
+    for (View localView = null;; localView = getView().findViewById(R.id.com_facebook_login_fragment_progress_bar))
     {
       if (localView != null) {
         localView.setVisibility(8);
@@ -196,7 +198,7 @@ public class LoginFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.login.LoginFragment
  * JD-Core Version:    0.7.0.1
  */

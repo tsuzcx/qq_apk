@@ -29,14 +29,14 @@ public class b
   
   static
   {
-    AppMethodBeat.i(222359);
+    AppMethodBeat.i(244959);
     a = b.class.getSimpleName();
-    AppMethodBeat.o(222359);
+    AppMethodBeat.o(244959);
   }
   
   public b(b paramb)
   {
-    AppMethodBeat.i(222353);
+    AppMethodBeat.i(244938);
     this.b = 300;
     this.c = 0L;
     this.f = false;
@@ -46,7 +46,7 @@ public class b
     this.j = 0;
     this.k = null;
     this.k = new WeakReference(paramb);
-    AppMethodBeat.o(222353);
+    AppMethodBeat.o(244938);
   }
   
   private void b(int paramInt1, int paramInt2)
@@ -87,17 +87,17 @@ public class b
   
   private void d()
   {
-    AppMethodBeat.i(222355);
+    AppMethodBeat.i(244949);
     e();
     this.e = new HandlerThread("TXImageCapturer");
     this.e.start();
     this.d = new a(this.e.getLooper(), this.b, this.c);
-    AppMethodBeat.o(222355);
+    AppMethodBeat.o(244949);
   }
   
   private void e()
   {
-    AppMethodBeat.i(222356);
+    AppMethodBeat.i(244951);
     if (this.d != null)
     {
       this.d.removeCallbacksAndMessages(null);
@@ -108,7 +108,7 @@ public class b
       this.e.quit();
       this.e = null;
     }
-    AppMethodBeat.o(222356);
+    AppMethodBeat.o(244951);
   }
   
   /* Error */
@@ -315,11 +315,11 @@ public class b
   
   public void a(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(222354);
+    AppMethodBeat.i(244941);
     if (this.f)
     {
       TXCLog.w(a, "bkgpush: start background publish return when started");
-      AppMethodBeat.o(222354);
+      AppMethodBeat.o(244941);
       return;
     }
     Bitmap localBitmap = paramBitmap;
@@ -350,7 +350,7 @@ public class b
     this.i = paramInt3;
     this.j = paramInt4;
     a(paramInt1, paramInt2);
-    AppMethodBeat.o(222354);
+    AppMethodBeat.o(244941);
   }
   
   public boolean a()
@@ -378,18 +378,18 @@ public class b
     public a(Looper paramLooper, int paramInt, long paramLong)
     {
       super();
-      AppMethodBeat.i(222589);
+      AppMethodBeat.i(221764);
       this.b = 300;
       this.c = 0L;
       this.b = paramInt;
       this.c = paramLong;
       TXCLog.w(b.c(), "bkgpush:init publish time delay:" + this.b + ", end:" + this.c);
-      AppMethodBeat.o(222589);
+      AppMethodBeat.o(221764);
     }
     
     public void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(222590);
+      AppMethodBeat.i(221771);
       if (paramMessage.what == 1001) {
         try
         {
@@ -397,7 +397,7 @@ public class b
           if ((this.c < 0L) || (System.currentTimeMillis() < this.c))
           {
             sendEmptyMessageDelayed(1001, this.b);
-            AppMethodBeat.o(222590);
+            AppMethodBeat.o(221771);
             return;
           }
           TXCLog.w(b.c(), "bkgpush:stop background publish when timeout");
@@ -409,7 +409,7 @@ public class b
             }
             b.a(b.this, false);
           }
-          AppMethodBeat.o(222590);
+          AppMethodBeat.o(221771);
           return;
         }
         catch (Exception paramMessage)
@@ -417,7 +417,7 @@ public class b
           TXCLog.e(b.c(), "publish image failed." + paramMessage.getMessage());
         }
       }
-      AppMethodBeat.o(222590);
+      AppMethodBeat.o(221771);
     }
   }
   
@@ -430,7 +430,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.b
  * JD-Core Version:    0.7.0.1
  */

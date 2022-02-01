@@ -3,66 +3,74 @@ package com.tencent.mm.plugin.appbrand.ui;
 import android.app.Activity;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.content.ComponentName;
-import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.f.a.n;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntimeWCAccessible;
-import com.tencent.mm.plugin.appbrand.af.e;
-import com.tencent.mm.plugin.appbrand.af.g;
+import com.tencent.mm.plugin.appbrand.ag.e;
+import com.tencent.mm.plugin.appbrand.ag.g;
 import com.tencent.mm.plugin.appbrand.ak;
-import com.tencent.mm.plugin.appbrand.ap;
+import com.tencent.mm.plugin.appbrand.aq;
+import com.tencent.mm.plugin.appbrand.au.a;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.HalfScreenConfig;
-import com.tencent.mm.plugin.appbrand.config.HalfScreenConfig.CloseWhenClickEmptyAreaConfig;
 import com.tencent.mm.plugin.appbrand.config.HalfScreenConfig.a;
 import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.m;
-import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.ui.wxa_container.BaseAppBrandUIClipped.a;
+import com.tencent.mm.plugin.appbrand.t;
+import com.tencent.mm.plugin.appbrand.ui.wxa_container.AppBrandContainerFragmentActivity.a;
+import com.tencent.mm.plugin.appbrand.utils.d;
 import com.tencent.mm.plugin.ball.f.f;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.a;
+import com.tencent.mm.ui.base.b;
 
 @a(1)
 public class AppBrandPluginUI
   extends AppBrandUI
 {
-  private void bXj()
+  public static int qVS = -1;
+  public static int qVT = -1;
+  private IListener<n> qVU;
+  
+  private void cjN()
   {
-    AppMethodBeat.i(227628);
-    if (bXk())
+    AppMethodBeat.i(246625);
+    if (cjO())
     {
-      y.a(getWindow(), true, false);
-      f.e(true, true, true);
-      com.tencent.mm.ui.base.b.a(this, null);
+      x.a(getWindow(), true, false);
+      f.d(true, true, true);
+      b.a(this, null);
     }
-    AppMethodBeat.o(227628);
+    AppMethodBeat.o(246625);
   }
   
-  private boolean bXk()
+  private boolean cjO()
   {
     AppMethodBeat.i(48677);
     if (this.mRuntimeContainer == null) {}
     for (AppBrandRuntime localAppBrandRuntime = null;; localAppBrandRuntime = this.mRuntimeContainer.getActiveRuntime())
     {
-      boolean bool = g.an(localAppBrandRuntime);
+      boolean bool = g.ap(localAppBrandRuntime);
       AppMethodBeat.o(48677);
       return bool;
     }
   }
   
-  private boolean bXl()
+  private boolean cjP()
   {
     AppMethodBeat.i(162169);
-    if (bXk())
+    if (cjO())
     {
       AppMethodBeat.o(162169);
       return false;
     }
     if (this.mRuntimeContainer == null) {}
-    for (Object localObject = null; ((localObject instanceof q)) && (((q)localObject).bsC().kHM); localObject = this.mRuntimeContainer.getActiveRuntime())
+    for (Object localObject = null; ((localObject instanceof t)) && (((t)localObject).bDy().nBF); localObject = this.mRuntimeContainer.getActiveRuntime())
     {
       AppMethodBeat.o(162169);
       return true;
@@ -108,140 +116,118 @@ public class AppBrandPluginUI
     }
   }
   
-  final void M(Intent paramIntent)
+  protected final void am(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(48680);
-    AppBrandInitConfigWC localAppBrandInitConfigWC;
-    try
+    AppMethodBeat.i(246638);
+    if ((paramAppBrandRuntime != null) && ((AppBrandRuntimeWCAccessible.E(paramAppBrandRuntime)) || (((AppBrandInitConfigWC)paramAppBrandRuntime.Sq()).nBE.isEnable())))
     {
-      localAppBrandInitConfigWC = (AppBrandInitConfigWC)paramIntent.getParcelableExtra("key_appbrand_init_config");
-      paramIntent = (AppBrandStatObject)paramIntent.getParcelableExtra("key_appbrand_stat_object");
-      if ((localAppBrandInitConfigWC == null) || (paramIntent == null))
+      paramAppBrandRuntime.he(true);
+      paramAppBrandRuntime.ntY = new aq()
       {
-        AppMethodBeat.o(48680);
-        return;
-      }
-    }
-    catch (Exception paramIntent)
-    {
-      Log.printErrStackTrace("MicroMsg.AppBrandPluginUI", paramIntent, "resumeAnim caught exception", new Object[0]);
-      AppMethodBeat.o(48680);
-      return;
-    }
-    h(localAppBrandInitConfigWC, paramIntent);
-    AppMethodBeat.o(48680);
-  }
-  
-  protected final void N(Intent paramIntent)
-  {
-    AppMethodBeat.i(48683);
-    super.N(paramIntent);
-    if (this.mRuntimeContainer == null) {}
-    for (paramIntent = null;; paramIntent = this.mRuntimeContainer.getActiveRuntime())
-    {
-      if ((paramIntent != null) && ((AppBrandRuntimeWCAccessible.D(paramIntent)) || (((AppBrandInitConfigWC)paramIntent.OU()).kHL.isEnable())))
-      {
-        paramIntent.gs(true);
-        paramIntent.kAM = new ap()
+        public final void yN(int paramAnonymousInt)
         {
-          public final void vC(int paramAnonymousInt)
+          AppMethodBeat.i(281046);
+          if (1 == paramAnonymousInt)
           {
-            AppMethodBeat.i(48673);
-            if (1 == paramAnonymousInt)
-            {
-              Log.i("MicroMsg.AppBrandPluginUI", "load convertActivityToTranslucent");
-              com.tencent.mm.ui.base.b.a(AppBrandPluginUI.this, null);
-            }
-            AppMethodBeat.o(48673);
+            Log.i("MicroMsg.AppBrandPluginUI", "load convertActivityToTranslucent");
+            b.a(AppBrandPluginUI.this, null);
           }
-        };
-      }
-      AppMethodBeat.o(48683);
-      return;
+          AppMethodBeat.o(281046);
+        }
+      };
     }
+    AppMethodBeat.o(246638);
   }
   
-  protected final void h(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
+  protected final void g(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
     AppMethodBeat.i(48679);
     if (m.a(this, paramAppBrandInitConfigWC, paramAppBrandStatObject))
     {
-      com.tencent.mm.ui.base.b.a(this, null);
+      b.a(this, null);
       Log.i("MicroMsg.AppBrandPluginUI", "init convertActivityToTranslucent");
       AppMethodBeat.o(48679);
       return;
     }
-    AppBrandInitConfigWC localAppBrandInitConfigWC = bsC();
-    if (com.tencent.mm.plugin.appbrand.utils.b.afF(this.ldT))
+    AppBrandInitConfigWC localAppBrandInitConfigWC = bDy();
+    if (d.anh(paramAppBrandInitConfigWC.nYh))
     {
       super.overridePendingTransition(0, 0);
       AppMethodBeat.o(48679);
       return;
     }
-    if (bXk())
+    if (cjO())
     {
       e.b(this, paramAppBrandInitConfigWC);
       AppMethodBeat.o(48679);
       return;
     }
-    if (paramAppBrandInitConfigWC.kHL.isEnable())
+    if (paramAppBrandInitConfigWC.nBE.isEnable())
     {
-      if (paramAppBrandInitConfigWC.kHL.lfn == HalfScreenConfig.a.lft)
+      if (paramAppBrandInitConfigWC.nBE.nZz == HalfScreenConfig.a.nZL)
       {
-        overridePendingTransition(2130772009, 0);
+        overridePendingTransition(au.a.appbrand_ui_push_open_enter, 0);
         AppMethodBeat.o(48679);
         return;
       }
-      super.overridePendingTransition(this.ogk.ogm, 0);
+      super.overridePendingTransition(this.rhW.rhY, 0);
       AppMethodBeat.o(48679);
       return;
     }
-    if ((localAppBrandInitConfigWC != null) && (localAppBrandInitConfigWC.leg))
+    if ((localAppBrandInitConfigWC != null) && (localAppBrandInitConfigWC.nYu))
     {
-      super.h(paramAppBrandInitConfigWC, paramAppBrandStatObject);
+      super.g(paramAppBrandInitConfigWC, paramAppBrandStatObject);
       AppMethodBeat.o(48679);
       return;
     }
-    if ((localAppBrandInitConfigWC.lei) && (!localAppBrandInitConfigWC.ldN))
+    if ((localAppBrandInitConfigWC.nYw) && (!localAppBrandInitConfigWC.nYb))
     {
-      super.h(paramAppBrandInitConfigWC, paramAppBrandStatObject);
+      super.g(paramAppBrandInitConfigWC, paramAppBrandStatObject);
       AppMethodBeat.o(48679);
       return;
     }
-    super.overridePendingTransition(this.ogk.ogm, this.ogk.ogn);
+    super.overridePendingTransition(this.rhW.rhY, this.rhW.rhZ);
     AppMethodBeat.o(48679);
   }
   
   public void initActivityCloseAnimation()
   {
     AppMethodBeat.i(48681);
-    Object localObject = bZi();
+    Object localObject = ckf();
     if ((localObject != null) && (((HalfScreenConfig)localObject).isEnable()))
     {
-      if ((((HalfScreenConfig)localObject).lfn == HalfScreenConfig.a.lft) || (((HalfScreenConfig)localObject).lfq.lfD == HalfScreenConfig.a.lft))
+      if ((qVS != -1) && (qVT != -1))
       {
-        overridePendingTransition(0, 2130772007);
+        overridePendingTransition(qVT, qVS);
+        qVS = -1;
+        qVT = -1;
         AppMethodBeat.o(48681);
         return;
       }
-      super.overridePendingTransition(0, this.ogk.ogp);
+      if (((HalfScreenConfig)localObject).nZz == HalfScreenConfig.a.nZL)
+      {
+        overridePendingTransition(0, au.a.appbrand_ui_push_close_exit);
+        AppMethodBeat.o(48681);
+        return;
+      }
+      super.overridePendingTransition(0, this.rhW.rib);
       AppMethodBeat.o(48681);
       return;
     }
-    localObject = bsC();
-    if ((localObject != null) && (((AppBrandInitConfigWC)localObject).leg))
+    localObject = bDy();
+    if ((localObject != null) && (((AppBrandInitConfigWC)localObject).nYu))
     {
-      overridePendingTransition(2130772006, 2130772007);
+      overridePendingTransition(au.a.appbrand_ui_push_close_enter, au.a.appbrand_ui_push_close_exit);
       AppMethodBeat.o(48681);
       return;
     }
-    if ((((AppBrandInitConfigWC)localObject).lei) && (!((AppBrandInitConfigWC)localObject).ldN))
+    if ((((AppBrandInitConfigWC)localObject).nYw) && (!((AppBrandInitConfigWC)localObject).nYb))
     {
-      overridePendingTransition(2130772006, 2130772007);
+      overridePendingTransition(au.a.appbrand_ui_push_close_enter, au.a.appbrand_ui_push_close_exit);
       AppMethodBeat.o(48681);
       return;
     }
-    super.overridePendingTransition(this.ogk.ogo, this.ogk.ogp);
+    super.overridePendingTransition(this.rhW.ria, this.rhW.rib);
     AppMethodBeat.o(48681);
   }
   
@@ -249,7 +235,17 @@ public class AppBrandPluginUI
   {
     AppMethodBeat.i(48674);
     super.onCreate(paramBundle);
+    this.qVU = new AppBrandPluginUI.1(this);
+    EventCenter.instance.add(this.qVU);
     AppMethodBeat.o(48674);
+  }
+  
+  public void onDestroy()
+  {
+    AppMethodBeat.i(246639);
+    super.onDestroy();
+    EventCenter.instance.removeListener(this.qVU);
+    AppMethodBeat.o(246639);
   }
   
   public void onEnterAnimationComplete()
@@ -257,13 +253,13 @@ public class AppBrandPluginUI
     AppBrandRuntime localAppBrandRuntime = null;
     AppMethodBeat.i(48678);
     super.onEnterAnimationComplete();
-    if (bXl())
+    if (cjP())
     {
       if (this.mRuntimeContainer == null) {}
       for (;;)
       {
         if (localAppBrandRuntime != null) {
-          localAppBrandRuntime.gs(false);
+          localAppBrandRuntime.he(false);
         }
         AppMethodBeat.o(48678);
         return;
@@ -271,7 +267,7 @@ public class AppBrandPluginUI
       }
     }
     Log.i("MicroMsg.AppBrandPluginUI", "onEnterAnimationComplete convert PluginUI to translucent");
-    com.tencent.mm.ui.base.b.a(this, null);
+    b.a(this, null);
     Log.i("MicroMsg.AppBrandPluginUI", "onEnter convertActivityToTranslucent");
     AppMethodBeat.o(48678);
   }
@@ -280,25 +276,25 @@ public class AppBrandPluginUI
   {
     AppMethodBeat.i(48676);
     super.onPause();
-    if (bXk()) {
-      f.e(false, true, true);
+    if (cjO()) {
+      f.d(false, true, true);
     }
     AppMethodBeat.o(48676);
   }
   
   public void onPostCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(227627);
+    AppMethodBeat.i(246624);
     super.onPostCreate(paramBundle);
-    bXj();
-    AppMethodBeat.o(227627);
+    cjN();
+    AppMethodBeat.o(246624);
   }
   
   public void onResume()
   {
     AppMethodBeat.i(48675);
     super.onResume();
-    bXj();
+    cjN();
     AppMethodBeat.o(48675);
   }
   
@@ -310,7 +306,7 @@ public class AppBrandPluginUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI
  * JD-Core Version:    0.7.0.1
  */

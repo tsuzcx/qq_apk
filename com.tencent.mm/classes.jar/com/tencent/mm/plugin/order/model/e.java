@@ -14,17 +14,17 @@ import org.json.JSONObject;
 public final class e
   extends m
 {
-  public List<i> AOO;
-  public List<d> AOP;
-  public String AOQ;
-  public int qwe;
-  private int yWN;
+  private int EAR;
+  public List<i> GIc;
+  public List<d> GId;
+  public String GIe;
+  public int tVd;
   
   public e(int paramInt, String paramString)
   {
     AppMethodBeat.i(66681);
-    this.AOO = null;
-    this.AOP = null;
+    this.GIc = null;
+    this.GId = null;
     HashMap localHashMap = new HashMap();
     localHashMap.put("Limit", "10");
     localHashMap.put("Offset", String.valueOf(paramInt));
@@ -43,12 +43,12 @@ public final class e
     int i = 0;
     AppMethodBeat.i(66682);
     Log.d("MicroMsg.NetScenePatchQueryUserRoll", "errCode " + paramInt + " errMsg: " + paramString);
-    this.AOO = new LinkedList();
+    this.GIc = new LinkedList();
     try
     {
-      this.qwe = paramJSONObject.getInt("TotalNum");
-      this.yWN = paramJSONObject.getInt("RecNum");
-      this.AOQ = paramJSONObject.optString("Extbuf");
+      this.tVd = paramJSONObject.getInt("TotalNum");
+      this.EAR = paramJSONObject.getInt("RecNum");
+      this.GIe = paramJSONObject.optString("Extbuf");
       paramString = paramJSONObject.getJSONArray("UserRollList");
       Object localObject;
       if (paramString != null)
@@ -58,24 +58,24 @@ public final class e
         {
           localObject = new i();
           JSONObject localJSONObject = paramString.getJSONObject(paramInt);
-          ((i)localObject).APa = localJSONObject.optInt("PayType");
-          ((i)localObject).AOT = localJSONObject.optString("Transid");
-          ((i)localObject).AOU = localJSONObject.optDouble("TotalFee");
-          ((i)localObject).AOV = localJSONObject.optString("GoodsName");
+          ((i)localObject).GIo = localJSONObject.optInt("PayType");
+          ((i)localObject).GIh = localJSONObject.optString("Transid");
+          ((i)localObject).GIi = localJSONObject.optDouble("TotalFee");
+          ((i)localObject).GIj = localJSONObject.optString("GoodsName");
           ((i)localObject).CreateTime = localJSONObject.optInt("CreateTime");
-          ((i)localObject).AOX = localJSONObject.optInt("ModifyTime");
-          ((i)localObject).AOY = localJSONObject.optString("FeeType");
-          ((i)localObject).APd = localJSONObject.optString("AppThumbUrl");
-          ((i)localObject).AOW = localJSONObject.optString("TradeStateName");
-          ((i)localObject).APi = localJSONObject.optString("StatusColor");
-          ((i)localObject).APj = localJSONObject.optString("FeeColor");
-          ((i)localObject).APk = localJSONObject.optDouble("ActualPayFee");
-          ((i)localObject).APl = localJSONObject.optString("BillId");
-          this.AOO.add(localObject);
+          ((i)localObject).GIl = localJSONObject.optInt("ModifyTime");
+          ((i)localObject).GIm = localJSONObject.optString("FeeType");
+          ((i)localObject).GIr = localJSONObject.optString("AppThumbUrl");
+          ((i)localObject).GIk = localJSONObject.optString("TradeStateName");
+          ((i)localObject).GIw = localJSONObject.optString("StatusColor");
+          ((i)localObject).GIx = localJSONObject.optString("FeeColor");
+          ((i)localObject).GIy = localJSONObject.optDouble("ActualPayFee");
+          ((i)localObject).GIz = localJSONObject.optString("BillId");
+          this.GIc.add(localObject);
           paramInt += 1;
         }
       }
-      this.AOP = new LinkedList();
+      this.GId = new LinkedList();
       paramString = paramJSONObject.optJSONArray("month_info");
       if (paramString != null)
       {
@@ -86,8 +86,8 @@ public final class e
           localObject = new d();
           ((d)localObject).year = paramJSONObject.optInt("year");
           ((d)localObject).month = paramJSONObject.optInt("month");
-          ((d)localObject).AON = paramJSONObject.optString("feetext");
-          this.AOP.add(localObject);
+          ((d)localObject).GIb = paramJSONObject.optString("feetext");
+          this.GId.add(localObject);
           paramInt += 1;
         }
       }

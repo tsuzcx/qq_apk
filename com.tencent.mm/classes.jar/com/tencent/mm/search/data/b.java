@@ -1,33 +1,33 @@
 package com.tencent.mm.search.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.a;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dlc;
-import com.tencent.mm.protocal.protobuf.dld;
+import com.tencent.mm.protocal.protobuf.dus;
+import com.tencent.mm.protocal.protobuf.dut;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/search/data/NetSceneGetSimilarEmoji;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "model", "Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "(Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;)V", "mCallback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "callback", "getSimilarList", "", "Lcom/tencent/mm/protocal/protobuf/RecommendEmoji;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/search/data/NetSceneGetSimilarEmoji;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "model", "Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "(Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;)V", "mCallback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "callback", "getSimilarList", "", "Lcom/tencent/mm/protocal/protobuf/RecommendEmoji;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-emojisdk_release"})
 public final class b
   extends q
   implements m
 {
-  public static final a NJi;
-  private i heq;
+  public static final a UWJ;
+  private i jQg;
   public final d rr;
   
   static
   {
     AppMethodBeat.i(105820);
-    NJi = new a((byte)0);
+    UWJ = new a((byte)0);
     AppMethodBeat.o(105820);
   }
   
@@ -35,62 +35,62 @@ public final class b
   {
     AppMethodBeat.i(105819);
     Object localObject = new d.a();
-    ((d.a)localObject).c((a)new dlc());
-    ((d.a)localObject).d((a)new dld());
-    ((d.a)localObject).MB("/cgi-bin/micromsg-bin/mmrecommendpanelemoji");
-    ((d.a)localObject).sG(3793);
-    ((d.a)localObject).sI(0);
-    ((d.a)localObject).sJ(0);
-    localObject = ((d.a)localObject).aXF();
-    p.g(localObject, "builder.buildInstance()");
+    ((d.a)localObject).c((a)new dus());
+    ((d.a)localObject).d((a)new dut());
+    ((d.a)localObject).TW("/cgi-bin/micromsg-bin/mmrecommendpanelemoji");
+    ((d.a)localObject).vD(3793);
+    ((d.a)localObject).vF(0);
+    ((d.a)localObject).vG(0);
+    localObject = ((d.a)localObject).bgN();
+    p.j(localObject, "builder.buildInstance()");
     this.rr = ((d)localObject);
-    localObject = this.rr.aYJ();
+    localObject = this.rr.bhX();
     if (localObject == null)
     {
       paramSimilarEmojiQueryModel = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.RecommendPanelEmojiRequest");
       AppMethodBeat.o(105819);
       throw paramSimilarEmojiQueryModel;
     }
-    ((dlc)localObject).KXA = paramSimilarEmojiQueryModel.emojiMD5;
-    localObject = this.rr.aYJ();
+    ((dus)localObject).RYJ = paramSimilarEmojiQueryModel.emojiMD5;
+    localObject = this.rr.bhX();
     if (localObject == null)
     {
       paramSimilarEmojiQueryModel = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.RecommendPanelEmojiRequest");
       AppMethodBeat.o(105819);
       throw paramSimilarEmojiQueryModel;
     }
-    ((dlc)localObject).MOZ = paramSimilarEmojiQueryModel.NJk;
-    localObject = this.rr.aYJ();
+    ((dus)localObject).UaY = paramSimilarEmojiQueryModel.UWL;
+    localObject = this.rr.bhX();
     if (localObject == null)
     {
       paramSimilarEmojiQueryModel = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.RecommendPanelEmojiRequest");
       AppMethodBeat.o(105819);
       throw paramSimilarEmojiQueryModel;
     }
-    ((dlc)localObject).SessionId = String.valueOf(paramSimilarEmojiQueryModel.timestamp);
-    localObject = this.rr.aYJ();
+    ((dus)localObject).SessionId = String.valueOf(paramSimilarEmojiQueryModel.timestamp);
+    localObject = this.rr.bhX();
     if (localObject == null)
     {
       paramSimilarEmojiQueryModel = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.RecommendPanelEmojiRequest");
       AppMethodBeat.o(105819);
       throw paramSimilarEmojiQueryModel;
     }
-    ((dlc)localObject).LXC = paramSimilarEmojiQueryModel.NJl;
-    localObject = this.rr.aYJ();
+    ((dus)localObject).TgT = paramSimilarEmojiQueryModel.UWM;
+    localObject = this.rr.bhX();
     if (localObject == null)
     {
       paramSimilarEmojiQueryModel = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.RecommendPanelEmojiRequest");
       AppMethodBeat.o(105819);
       throw paramSimilarEmojiQueryModel;
     }
-    ((dlc)localObject).Scene = paramSimilarEmojiQueryModel.scene;
+    ((dus)localObject).CPw = paramSimilarEmojiQueryModel.scene;
     AppMethodBeat.o(105819);
   }
   
   public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(105817);
-    this.heq = parami;
+    this.jQg = parami;
     int i = dispatch(paramg, (s)this.rr, (m)this);
     AppMethodBeat.o(105817);
     return i;
@@ -104,7 +104,7 @@ public final class b
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(105818);
-    params = this.heq;
+    params = this.jQg;
     if (params != null)
     {
       params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
@@ -114,7 +114,7 @@ public final class b
     AppMethodBeat.o(105818);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/search/data/NetSceneGetSimilarEmoji$Companion;", "", "()V", "TAG", "", "plugin-emojisdk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/search/data/NetSceneGetSimilarEmoji$Companion;", "", "()V", "TAG", "", "plugin-emojisdk_release"})
   public static final class a {}
 }
 

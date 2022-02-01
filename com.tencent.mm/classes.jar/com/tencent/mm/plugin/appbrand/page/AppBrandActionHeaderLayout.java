@@ -10,28 +10,31 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.luggage.l.a.a;
+import com.tencent.luggage.l.a.d;
+import com.tencent.luggage.l.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class AppBrandActionHeaderLayout
   extends LinearLayout
 {
-  private int crI;
+  private int cpO;
   private Context mContext;
-  private TextView nnA;
-  private LinearLayout nnt;
-  private HorizontalScrollView nnu;
-  private AppBrandActionSingleHeaderView nnv;
-  private AppBrandActionMultipleHeaderView nnw;
-  private AppBrandActionMultipleHeaderView nnx;
-  private AppBrandActionMultipleHeaderView nny;
-  private AppBrandActionMultipleHeaderView nnz;
+  private LinearLayout qpa;
+  private HorizontalScrollView qpb;
+  private AppBrandActionSingleHeaderView qpc;
+  private AppBrandActionMultipleHeaderView qpd;
+  private AppBrandActionMultipleHeaderView qpe;
+  private AppBrandActionMultipleHeaderView qpf;
+  private AppBrandActionMultipleHeaderView qpg;
+  private TextView qph;
   
   public AppBrandActionHeaderLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(147431);
-    this.crI = -1;
-    bh(paramContext);
+    this.cpO = -1;
+    bv(paramContext);
     AppMethodBeat.o(147431);
   }
   
@@ -40,43 +43,43 @@ public class AppBrandActionHeaderLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(147432);
-    this.crI = -1;
-    bh(paramContext);
+    this.cpO = -1;
+    bv(paramContext);
     AppMethodBeat.o(147432);
   }
   
-  private void bh(Context paramContext)
+  private void bv(Context paramContext)
   {
     AppMethodBeat.i(147436);
     this.mContext = paramContext;
-    View.inflate(paramContext, 2131493131, this);
-    this.nnt = ((LinearLayout)findViewById(2131296975));
-    this.nnu = ((HorizontalScrollView)findViewById(2131296973));
-    this.nnv = ((AppBrandActionSingleHeaderView)findViewById(2131296985));
-    this.nnw = ((AppBrandActionMultipleHeaderView)findViewById(2131296979));
-    this.nnx = ((AppBrandActionMultipleHeaderView)findViewById(2131296980));
-    this.nny = ((AppBrandActionMultipleHeaderView)findViewById(2131296981));
-    this.nnz = ((AppBrandActionMultipleHeaderView)findViewById(2131296982));
-    this.nnA = ((TextView)findViewById(2131296976));
-    this.nnw.setVisibility(8);
-    this.nnx.setVisibility(8);
-    this.nny.setVisibility(8);
-    this.nnz.setVisibility(8);
-    this.nnA.setVisibility(8);
+    View.inflate(paramContext, a.e.appbrand_action_game_header_layout, this);
+    this.qpa = ((LinearLayout)findViewById(a.d.appbrand_action_header_single_layout));
+    this.qpb = ((HorizontalScrollView)findViewById(a.d.appbrand_action_header_hscrollview));
+    this.qpc = ((AppBrandActionSingleHeaderView)findViewById(a.d.appbrand_action_single_header_view));
+    this.qpd = ((AppBrandActionMultipleHeaderView)findViewById(a.d.appbrand_action_multiple_header_view1));
+    this.qpe = ((AppBrandActionMultipleHeaderView)findViewById(a.d.appbrand_action_multiple_header_view2));
+    this.qpf = ((AppBrandActionMultipleHeaderView)findViewById(a.d.appbrand_action_multiple_header_view3));
+    this.qpg = ((AppBrandActionMultipleHeaderView)findViewById(a.d.appbrand_action_multiple_header_view4));
+    this.qph = ((TextView)findViewById(a.d.appbrand_action_header_status));
+    this.qpd.setVisibility(8);
+    this.qpe.setVisibility(8);
+    this.qpf.setVisibility(8);
+    this.qpg.setVisibility(8);
+    this.qph.setVisibility(8);
     AppMethodBeat.o(147436);
   }
   
   public TextView getStatusTextView()
   {
-    return this.nnA;
+    return this.qph;
   }
   
   protected void onAttachedToWindow()
   {
     AppMethodBeat.i(147435);
     super.onAttachedToWindow();
-    if (this.crI > 0) {
-      setForceHeight(this.crI);
+    if (this.cpO > 0) {
+      setForceHeight(this.cpO);
     }
     AppMethodBeat.o(147435);
   }
@@ -84,12 +87,12 @@ public class AppBrandActionHeaderLayout
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(147433);
-    if (this.crI > 0) {
-      paramInt2 = View.MeasureSpec.makeMeasureSpec(this.crI, 1073741824);
+    if (this.cpO > 0) {
+      paramInt2 = View.MeasureSpec.makeMeasureSpec(this.cpO, 1073741824);
     }
     super.onMeasure(paramInt1, paramInt2);
-    if ((this.crI > 0) && (getMeasuredHeight() > this.crI)) {
-      super.setMeasuredDimension(getMeasuredWidth(), this.crI);
+    if ((this.cpO > 0) && (getMeasuredHeight() > this.cpO)) {
+      super.setMeasuredDimension(getMeasuredWidth(), this.cpO);
     }
     AppMethodBeat.o(147433);
   }
@@ -99,21 +102,21 @@ public class AppBrandActionHeaderLayout
     AppMethodBeat.i(147437);
     if (paramBoolean)
     {
-      this.nnv.setTextViewTextColor(this.mContext.getResources().getColor(2131101427));
-      this.nnw.setTextViewTextColor(this.mContext.getResources().getColor(2131101427));
-      this.nnx.setTextViewTextColor(this.mContext.getResources().getColor(2131101427));
-      this.nny.setTextViewTextColor(this.mContext.getResources().getColor(2131101427));
-      this.nnz.setTextViewTextColor(this.mContext.getResources().getColor(2131101427));
-      this.nnA.setTextColor(this.mContext.getResources().getColor(2131101427));
+      this.qpc.setTextViewTextColor(this.mContext.getResources().getColor(a.a.white_text_color));
+      this.qpd.setTextViewTextColor(this.mContext.getResources().getColor(a.a.white_text_color));
+      this.qpe.setTextViewTextColor(this.mContext.getResources().getColor(a.a.white_text_color));
+      this.qpf.setTextViewTextColor(this.mContext.getResources().getColor(a.a.white_text_color));
+      this.qpg.setTextViewTextColor(this.mContext.getResources().getColor(a.a.white_text_color));
+      this.qph.setTextColor(this.mContext.getResources().getColor(a.a.white_text_color));
       AppMethodBeat.o(147437);
       return;
     }
-    this.nnv.setTextViewTextColor(this.mContext.getResources().getColor(2131100056));
-    this.nnw.setTextViewTextColor(this.mContext.getResources().getColor(2131100056));
-    this.nnx.setTextViewTextColor(this.mContext.getResources().getColor(2131100056));
-    this.nny.setTextViewTextColor(this.mContext.getResources().getColor(2131100056));
-    this.nnz.setTextViewTextColor(this.mContext.getResources().getColor(2131100056));
-    this.nnA.setTextColor(this.mContext.getResources().getColor(2131100056));
+    this.qpc.setTextViewTextColor(this.mContext.getResources().getColor(a.a.bottom_sheet_text_color));
+    this.qpd.setTextViewTextColor(this.mContext.getResources().getColor(a.a.bottom_sheet_text_color));
+    this.qpe.setTextViewTextColor(this.mContext.getResources().getColor(a.a.bottom_sheet_text_color));
+    this.qpf.setTextViewTextColor(this.mContext.getResources().getColor(a.a.bottom_sheet_text_color));
+    this.qpg.setTextViewTextColor(this.mContext.getResources().getColor(a.a.bottom_sheet_text_color));
+    this.qph.setTextColor(this.mContext.getResources().getColor(a.a.bottom_sheet_text_color));
     AppMethodBeat.o(147437);
   }
   
@@ -123,12 +126,12 @@ public class AppBrandActionHeaderLayout
   public void setForceHeight(int paramInt)
   {
     AppMethodBeat.i(169505);
-    this.crI = Math.max(paramInt, -1);
+    this.cpO = Math.max(paramInt, -1);
     if ((getParent() instanceof ViewGroup))
     {
       ViewGroup localViewGroup = (ViewGroup)getParent();
-      if (this.crI > 0) {
-        localViewGroup.setMinimumHeight(this.crI);
+      if (this.cpO > 0) {
+        localViewGroup.setMinimumHeight(this.cpO);
       }
       requestLayout();
     }
@@ -138,16 +141,16 @@ public class AppBrandActionHeaderLayout
   public void setStatusDescription(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(147438);
-    this.nnA.setText(paramCharSequence);
-    this.nnA.setVisibility(0);
-    this.nnt.setVisibility(8);
-    this.nnu.setVisibility(8);
+    this.qph.setText(paramCharSequence);
+    this.qph.setVisibility(0);
+    this.qpa.setVisibility(8);
+    this.qpb.setVisibility(8);
     AppMethodBeat.o(147438);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.AppBrandActionHeaderLayout
  * JD-Core Version:    0.7.0.1
  */

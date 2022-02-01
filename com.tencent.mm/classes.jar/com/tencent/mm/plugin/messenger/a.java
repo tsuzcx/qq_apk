@@ -8,20 +8,36 @@ import com.tencent.mm.storage.as;
 public final class a
   implements b
 {
-  public final String Ir(String paramString)
+  public final String PI(String paramString)
   {
     AppMethodBeat.i(90703);
-    paramString = aa.Ir(paramString);
+    paramString = aa.PI(paramString);
     AppMethodBeat.o(90703);
     return paramString;
   }
   
-  public final String It(String paramString)
+  public final String PJ(String paramString)
+  {
+    AppMethodBeat.i(90701);
+    paramString = aa.PJ(paramString);
+    AppMethodBeat.o(90701);
+    return paramString;
+  }
+  
+  public final String PL(String paramString)
   {
     AppMethodBeat.i(168685);
-    paramString = aa.It(paramString);
+    paramString = aa.PL(paramString);
     AppMethodBeat.o(168685);
     return paramString;
+  }
+  
+  public final String aL(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(90700);
+    paramString1 = aa.aL(paramString1, paramString2);
+    AppMethodBeat.o(90700);
+    return paramString1;
   }
   
   public final String b(as paramas)
@@ -39,26 +55,10 @@ public final class a
     AppMethodBeat.o(90702);
     return paramas;
   }
-  
-  public final String getDisplayName(String paramString)
-  {
-    AppMethodBeat.i(90701);
-    paramString = aa.getDisplayName(paramString);
-    AppMethodBeat.o(90701);
-    return paramString;
-  }
-  
-  public final String getDisplayName(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(90700);
-    paramString1 = aa.getDisplayName(paramString1, paramString2);
-    AppMethodBeat.o(90700);
-    return paramString1;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.a
  * JD-Core Version:    0.7.0.1
  */

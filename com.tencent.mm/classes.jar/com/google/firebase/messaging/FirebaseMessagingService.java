@@ -9,6 +9,7 @@ import android.util.Log;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.iid.ai;
+import com.google.firebase.iid.b;
 import com.google.firebase.iid.o;
 import com.google.firebase.iid.zzb;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -23,16 +24,16 @@ import java.util.concurrent.TimeoutException;
 public class FirebaseMessagingService
   extends zzb
 {
-  private static final Queue<String> bMS;
+  private static final Queue<String> bKx;
   
   static
   {
     AppMethodBeat.i(116785);
-    bMS = new ArrayDeque(10);
+    bKx = new ArrayDeque(10);
     AppMethodBeat.o(116785);
   }
   
-  static void k(Bundle paramBundle)
+  static void m(Bundle paramBundle)
   {
     AppMethodBeat.i(116783);
     paramBundle = paramBundle.keySet().iterator();
@@ -46,7 +47,7 @@ public class FirebaseMessagingService
     AppMethodBeat.o(116783);
   }
   
-  static boolean l(Bundle paramBundle)
+  static boolean n(Bundle paramBundle)
   {
     AppMethodBeat.i(116784);
     if (paramBundle == null)
@@ -66,7 +67,7 @@ public class FirebaseMessagingService
   public final Intent e(Intent paramIntent)
   {
     AppMethodBeat.i(116780);
-    paramIntent = (Intent)o.yr().bLP.poll();
+    paramIntent = (Intent)o.yL().bJu.poll();
     AppMethodBeat.o(116780);
     return paramIntent;
   }
@@ -160,10 +161,10 @@ public class FirebaseMessagingService
         new StringBuilder(String.valueOf(paramIntent).length() + 20).append("Message ack failed: ").append(paramIntent);
         AppMethodBeat.o(116782);
         return;
-        if (!l(paramIntent.getExtras())) {
+        if (!n(paramIntent.getExtras())) {
           continue;
         }
-        d.a("_nd", paramIntent);
+        e.a("_nd", paramIntent);
         AppMethodBeat.o(116782);
         return;
         new String("Unknown intent action: ");
@@ -181,10 +182,10 @@ public class FirebaseMessagingService
       }
       localObject1 = new Bundle();
       ((Bundle)localObject1).putString("google.message_id", (String)localObject2);
-      localObject3 = ai.as(this);
-      localObject1 = ((ai)localObject3).a(new com.google.firebase.iid.b(((ai)localObject3).yw(), (Bundle)localObject1));
+      localObject3 = ai.ao(this);
+      localObject1 = ((ai)localObject3).a(new b(((ai)localObject3).yQ(), (Bundle)localObject1));
       break;
-      if (bMS.contains(localObject2))
+      if (bKx.contains(localObject2))
       {
         if (Log.isLoggable("FirebaseMessaging", 3))
         {
@@ -201,10 +202,10 @@ public class FirebaseMessagingService
         new String("Received duplicate message: ");
         continue;
       }
-      if (bMS.size() >= 10) {
-        bMS.remove();
+      if (bKx.size() >= 10) {
+        bKx.remove();
       }
-      bMS.add(localObject2);
+      bKx.add(localObject2);
       i = 0;
       break label174;
       i = k;
@@ -231,19 +232,19 @@ public class FirebaseMessagingService
       }
       i = 3;
       break label251;
-      if (l(paramIntent.getExtras())) {
-        d.a("_nr", paramIntent);
+      if (n(paramIntent.getExtras())) {
+        e.a("_nr", paramIntent);
       }
       localObject3 = paramIntent.getExtras();
       localObject2 = localObject3;
       if (localObject3 == null) {
         localObject2 = new Bundle();
       }
-      ((Bundle)localObject2).remove("android.support.content.wakelockid");
-      if (!"1".equals(c.c((Bundle)localObject2, "gcm.n.e")))
+      ((Bundle)localObject2).remove("androidx.contentpager.content.wakelockid");
+      if (!"1".equals(d.c((Bundle)localObject2, "gcm.n.e")))
       {
         i = j;
-        if (c.c((Bundle)localObject2, "gcm.n.icon") == null) {}
+        if (d.c((Bundle)localObject2, "gcm.n.icon") == null) {}
       }
       else
       {
@@ -251,11 +252,11 @@ public class FirebaseMessagingService
       }
       if (i != 0)
       {
-        if (c.at(this).m((Bundle)localObject2)) {
+        if (d.ap(this).o((Bundle)localObject2)) {
           continue;
         }
-        if (l((Bundle)localObject2)) {
-          d.a("_nf", paramIntent);
+        if (n((Bundle)localObject2)) {
+          e.a("_nf", paramIntent);
         }
       }
       a(new RemoteMessage((Bundle)localObject2));
@@ -269,7 +270,7 @@ public class FirebaseMessagingService
       if (localObject3 == null) {
         localObject2 = paramIntent.getStringExtra("message_id");
       }
-      a((String)localObject2, new b(paramIntent.getStringExtra("error")));
+      a((String)localObject2, new c(paramIntent.getStringExtra("error")));
       continue;
       new String("Received message with unknown type: ");
     }
@@ -288,13 +289,13 @@ public class FirebaseMessagingService
     {
       ((PendingIntent)localObject).send();
       label38:
-      if (l(paramIntent.getExtras())) {
+      if (n(paramIntent.getExtras())) {
         if (paramIntent != null)
         {
           if (!"1".equals(paramIntent.getStringExtra("google.c.a.tc"))) {
             break label181;
           }
-          localObject = (com.google.firebase.analytics.connector.a)com.google.firebase.a.xS().y(com.google.firebase.analytics.connector.a.class);
+          localObject = (com.google.firebase.analytics.connector.a)com.google.firebase.a.ym().m(com.google.firebase.analytics.connector.a.class);
           Log.isLoggable("FirebaseMessaging", 3);
           if (localObject != null)
           {
@@ -310,7 +311,7 @@ public class FirebaseMessagingService
       }
       for (;;)
       {
-        d.a("_no", paramIntent);
+        e.a("_no", paramIntent);
         AppMethodBeat.o(116781);
         return true;
         label181:
@@ -329,7 +330,7 @@ public class FirebaseMessagingService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.messaging.FirebaseMessagingService
  * JD-Core Version:    0.7.0.1
  */

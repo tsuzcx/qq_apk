@@ -22,7 +22,7 @@
         </FrameLayout>
         <View android:id="@id/huq" android:background="@color/a8e" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/huj" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip" />
         <LinearLayout android:orientation="horizontal" android:id="@id/hug" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="16.0dip" android:layout_below="@id/huq">
-            <TextView android:textSize="14.0sp" android:textColor="@color/a8f" android:id="@id/huh" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/h49" android:layout_weight="1.0" android:lineSpacingExtra="0.0dip" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/a8f" android:ellipsize="end" android:id="@id/huh" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/h49" android:singleLine="true" android:layout_weight="1.0" android:lineSpacingExtra="0.0dip" />
             <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/huf" android:layout_width="6.0dip" android:layout_height="12.0dip" android:scaleType="fitXY" app:iconColor="@color/a8f" />
         </LinearLayout>
     </RelativeLayout>

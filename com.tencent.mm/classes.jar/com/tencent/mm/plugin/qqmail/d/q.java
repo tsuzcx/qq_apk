@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.qqmail.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -14,25 +14,25 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class q
-  extends com.tencent.mm.ak.q
+  extends com.tencent.mm.an.q
   implements m
 {
-  private ArrayList<Long> BrQ;
+  private ArrayList<Long> Hmj;
   private i callback;
   private d rr;
   
   public q(ArrayList<Long> paramArrayList)
   {
     AppMethodBeat.i(122712);
-    this.BrQ = paramArrayList;
+    this.Hmj = paramArrayList;
     paramArrayList = new d.a();
-    paramArrayList.iLN = new b();
-    paramArrayList.iLO = new c();
+    paramArrayList.lBU = new b();
+    paramArrayList.lBV = new c();
     paramArrayList.uri = "/cgi-bin/micromsg-bin/checkconversationfile";
     paramArrayList.funcId = 483;
-    paramArrayList.iLP = 0;
+    paramArrayList.lBW = 0;
     paramArrayList.respCmdId = 0;
-    this.rr = paramArrayList.aXF();
+    this.rr = paramArrayList.bgN();
     AppMethodBeat.o(122712);
   }
   
@@ -40,28 +40,31 @@ public final class q
   {
     AppMethodBeat.i(122714);
     this.callback = parami;
-    parami = (b)this.rr.iLK.iLR;
-    parami.oTz = this.BrQ.size();
+    parami = (b)d.b.b(this.rr.lBR);
+    parami.rVx = this.Hmj.size();
     LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.BrQ.iterator();
+    Iterator localIterator = this.Hmj.iterator();
     while (localIterator.hasNext())
     {
       long l = ((Long)localIterator.next()).longValue();
       g localg = new g();
-      localg.Brn = l;
+      localg.HlH = l;
       localLinkedList.add(localg);
       Log.i("MicroMsg.NetSceneCheckConversationFile", "MsgId: %d", new Object[] { Long.valueOf(l) });
     }
-    parami.Brd = localLinkedList;
-    Log.i("MicroMsg.NetSceneCheckConversationFile", "Count = %d, MsgInfoList.size = %d", new Object[] { Integer.valueOf(parami.oTz), Integer.valueOf(parami.Brd.size()) });
+    parami.Hlw = localLinkedList;
+    Log.i("MicroMsg.NetSceneCheckConversationFile", "Count = %d, MsgInfoList.size = %d", new Object[] { Integer.valueOf(parami.rVx), Integer.valueOf(parami.Hlw.size()) });
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(122714);
     return i;
   }
   
-  public final LinkedList<f> eGp()
+  public final LinkedList<f> fsq()
   {
-    return ((c)this.rr.iLL.iLR).Bre;
+    AppMethodBeat.i(249743);
+    LinkedList localLinkedList = ((c)d.c.b(this.rr.lBS)).Hlx;
+    AppMethodBeat.o(249743);
+    return localLinkedList;
   }
   
   public final int getType()

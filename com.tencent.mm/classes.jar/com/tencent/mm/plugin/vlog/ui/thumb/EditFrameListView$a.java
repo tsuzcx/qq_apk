@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.vlog.ui.thumb;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/thumb/EditFrameListView$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/thumb/EditFrameListView$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
 public final class EditFrameListView$a {}
 
 

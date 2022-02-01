@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.wepkg;
 
 import android.os.Bundle;
-import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.m;
 
 public class c
-  implements k<Bundle, Bundle>
+  implements m<Bundle, Bundle>
 {}
 
 

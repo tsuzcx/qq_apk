@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.music.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.f;
+import com.tencent.mm.bb.f;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class k
   extends h
 {
-  private static k AjD;
-  public a AjC = null;
-  private com.tencent.mm.plugin.music.h.a AjE;
+  private static k FQB;
+  public a FQA = null;
+  private com.tencent.mm.plugin.music.h.a FQC;
   
   private k(a parama)
   {
-    this.AjC = parama;
+    this.FQA = parama;
   }
   
   /* Error */
@@ -24,16 +24,16 @@ public final class k
     //   2: monitorenter
     //   3: ldc 20
     //   5: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 28	com/tencent/mm/plugin/music/e/k:AjD	Lcom/tencent/mm/plugin/music/e/k;
+    //   8: getstatic 28	com/tencent/mm/plugin/music/e/k:FQB	Lcom/tencent/mm/plugin/music/e/k;
     //   11: ifnull +41 -> 52
     //   14: ldc 30
     //   16: ldc 32
     //   18: invokestatic 38	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   21: getstatic 28	com/tencent/mm/plugin/music/e/k:AjD	Lcom/tencent/mm/plugin/music/e/k;
+    //   21: getstatic 28	com/tencent/mm/plugin/music/e/k:FQB	Lcom/tencent/mm/plugin/music/e/k;
     //   24: aload_0
-    //   25: putfield 17	com/tencent/mm/plugin/music/e/k:AjC	Lcom/tencent/mm/plugin/music/e/a;
+    //   25: putfield 17	com/tencent/mm/plugin/music/e/k:FQA	Lcom/tencent/mm/plugin/music/e/a;
     //   28: aload_0
-    //   29: getstatic 28	com/tencent/mm/plugin/music/e/k:AjD	Lcom/tencent/mm/plugin/music/e/k;
+    //   29: getstatic 28	com/tencent/mm/plugin/music/e/k:FQB	Lcom/tencent/mm/plugin/music/e/k;
     //   32: invokeinterface 43 2 0
     //   37: aload_0
     //   38: invokeinterface 46 1 0
@@ -46,9 +46,9 @@ public final class k
     //   55: dup
     //   56: aload_0
     //   57: invokespecial 51	com/tencent/mm/plugin/music/e/k:<init>	(Lcom/tencent/mm/plugin/music/e/a;)V
-    //   60: putstatic 28	com/tencent/mm/plugin/music/e/k:AjD	Lcom/tencent/mm/plugin/music/e/k;
+    //   60: putstatic 28	com/tencent/mm/plugin/music/e/k:FQB	Lcom/tencent/mm/plugin/music/e/k;
     //   63: aload_0
-    //   64: getstatic 28	com/tencent/mm/plugin/music/e/k:AjD	Lcom/tencent/mm/plugin/music/e/k;
+    //   64: getstatic 28	com/tencent/mm/plugin/music/e/k:FQB	Lcom/tencent/mm/plugin/music/e/k;
     //   67: invokeinterface 43 2 0
     //   72: aload_0
     //   73: invokeinterface 46 1 0
@@ -69,30 +69,30 @@ public final class k
     //   52	83	86	finally
   }
   
-  public static k euj()
+  public static k fet()
   {
     AppMethodBeat.i(137285);
-    if (AjD == null)
+    if (FQB == null)
     {
       localObject = new NullPointerException("must init MusicPlayerManager with your impl logic first!!!");
       AppMethodBeat.o(137285);
       throw ((Throwable)localObject);
     }
-    if (AjD.AjC == null) {
-      AjD.AjC = new i();
+    if (FQB.FQA == null) {
+      FQB.FQA = new i();
     }
-    Object localObject = AjD;
+    Object localObject = FQB;
     AppMethodBeat.o(137285);
     return localObject;
   }
   
-  public static void euk()
+  public static void feu()
   {
     try
     {
       AppMethodBeat.i(137286);
-      if (AjD != null) {
-        AjD.finish();
+      if (FQB != null) {
+        FQB.finish();
       }
       AppMethodBeat.o(137286);
       return;
@@ -100,48 +100,48 @@ public final class k
     finally {}
   }
   
-  public static com.tencent.mm.plugin.music.h.a eul()
+  public static com.tencent.mm.plugin.music.h.a fev()
   {
     AppMethodBeat.i(137296);
-    if (euj().AjE == null) {
-      euj().AjE = new com.tencent.mm.plugin.music.h.a();
+    if (fet().FQC == null) {
+      fet().FQC = new com.tencent.mm.plugin.music.h.a();
     }
-    com.tencent.mm.plugin.music.h.a locala = euj().AjE;
+    com.tencent.mm.plugin.music.h.a locala = fet().FQC;
     AppMethodBeat.o(137296);
     return locala;
   }
   
   public static boolean isInit()
   {
-    return AjD != null;
+    return FQB != null;
   }
   
-  public final void SP(int paramInt)
+  public final void Zl(int paramInt)
   {
     AppMethodBeat.i(137294);
-    super.SP(paramInt);
+    super.Zl(paramInt);
     AppMethodBeat.o(137294);
   }
   
-  public final void bea()
+  public final void bnv()
   {
     AppMethodBeat.i(137290);
-    super.bea();
+    super.bnv();
     AppMethodBeat.o(137290);
   }
   
-  public final f etU()
+  public final f fed()
   {
     AppMethodBeat.i(137295);
-    f localf = this.AjC.etU();
+    f localf = this.FQA.fed();
     AppMethodBeat.o(137295);
     return localf;
   }
   
-  public final com.tencent.mm.plugin.music.f.a.d etW()
+  public final com.tencent.mm.plugin.music.f.a.d feg()
   {
     AppMethodBeat.i(137289);
-    com.tencent.mm.plugin.music.f.a.d locald = super.etW();
+    com.tencent.mm.plugin.music.f.a.d locald = super.feg();
     AppMethodBeat.o(137289);
     return locald;
   }
@@ -150,17 +150,17 @@ public final class k
   {
     AppMethodBeat.i(137292);
     super.finish();
-    this.AjC.release();
-    this.AjE = null;
+    this.FQA.release();
+    this.FQC = null;
     AppMethodBeat.o(137292);
   }
   
   public final void m(f paramf)
   {
-    AppMethodBeat.i(198179);
+    AppMethodBeat.i(257197);
     super.m(paramf);
-    this.AjC.m(paramf);
-    AppMethodBeat.o(198179);
+    this.FQA.m(paramf);
+    AppMethodBeat.o(257197);
   }
   
   public final void release()
@@ -175,17 +175,17 @@ public final class k
   {
     AppMethodBeat.i(137287);
     if (paramf != null) {
-      Log.i("MicroMsg.Music.MusicPlayerManager", "MusicType %d", new Object[] { Integer.valueOf(paramf.jeT) });
+      Log.i("MicroMsg.Music.MusicPlayerManager", "MusicType %d", new Object[] { Integer.valueOf(paramf.lVr) });
     }
     Log.i("MicroMsg.Music.MusicPlayerManager", "startPlayNewMusic");
-    w(this.AjC.k(paramf));
+    w(this.FQA.k(paramf));
     AppMethodBeat.o(137287);
   }
   
-  public final void sl(boolean paramBoolean)
+  public final void vq(boolean paramBoolean)
   {
     AppMethodBeat.i(137293);
-    super.sl(paramBoolean);
+    super.vq(paramBoolean);
     AppMethodBeat.o(137293);
   }
   
@@ -193,19 +193,20 @@ public final class k
   {
     AppMethodBeat.i(137288);
     com.tencent.mm.plugin.music.h.d.V(paramf);
-    if (this.AjC.i(paramf))
+    if (this.FQA.i(paramf))
     {
       t(paramf);
       AppMethodBeat.o(137288);
       return;
     }
+    fer();
     Log.e("MicroMsg.Music.MusicPlayerManager", "prepare is fail, not to play or wait for callback onStart");
     AppMethodBeat.o(137288);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.e.k
  * JD-Core Version:    0.7.0.1
  */

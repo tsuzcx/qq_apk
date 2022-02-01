@@ -12,10 +12,10 @@ public class k
   
   public k(Context paramContext)
   {
-    AppMethodBeat.i(222987);
+    AppMethodBeat.i(254714);
     if (paramContext == null)
     {
-      AppMethodBeat.o(222987);
+      AppMethodBeat.o(254714);
       return;
     }
     this.c = paramContext.getApplicationContext();
@@ -24,19 +24,19 @@ public class k
       StringBuilder localStringBuilder = new StringBuilder();
       paramContext = localStringBuilder.append(paramContext.getExternalFilesDir("data").getAbsolutePath());
       this.a = new File("/d_l");
-      AppMethodBeat.o(222987);
+      AppMethodBeat.o(254714);
       return;
     }
     catch (Throwable paramContext)
     {
       this.a = null;
-      AppMethodBeat.o(222987);
+      AppMethodBeat.o(254714);
     }
   }
   
   public final File a()
   {
-    AppMethodBeat.i(222989);
+    AppMethodBeat.i(254718);
     try
     {
       File localFile = this.a;
@@ -48,12 +48,12 @@ public class k
       localObject = q.c("");
       StringBuilder localStringBuilder = new StringBuilder();
       localFile = new File(localFile, "d_" + (String)localObject);
-      AppMethodBeat.o(222989);
+      AppMethodBeat.o(254718);
       return localFile;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(222989);
+      AppMethodBeat.o(254718);
     }
     return null;
   }
@@ -188,7 +188,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     c.t.m.sapp.c.k
  * JD-Core Version:    0.7.0.1
  */

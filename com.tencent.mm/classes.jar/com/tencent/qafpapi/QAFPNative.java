@@ -9,7 +9,7 @@ public class QAFPNative
   {
     AppMethodBeat.i(39594);
     QAFPNative.class.getClassLoader();
-    j.Ed("wechatQAFP");
+    j.KW("wechatQAFP");
     AppMethodBeat.o(39594);
   }
   

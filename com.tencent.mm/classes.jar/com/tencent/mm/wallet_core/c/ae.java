@@ -4,14 +4,14 @@ public final class ae
 {
   private static final String[] columns = { "_id", "key", "type", "value" };
   
-  public static String hhx()
+  public static String iiZ()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.ae
  * JD-Core Version:    0.7.0.1
  */

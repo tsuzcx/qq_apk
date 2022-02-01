@@ -1,9 +1,12 @@
 package com.tencent.mm.picker.d;
 
-public abstract interface d {}
+public abstract interface d
+{
+  public abstract void buP();
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.picker.d.d
  * JD-Core Version:    0.7.0.1
  */

@@ -5,9 +5,9 @@
         <item quantity="one">%d个群聊</item>
     </plurals>
     <plurals name="b">
-        <item quantity="other">%d位联系人</item>
-        <item quantity="zero">%d位联系人</item>
-        <item quantity="one">%d位联系人</item>
+        <item quantity="other">%d个朋友</item>
+        <item quantity="zero">%d个朋友</item>
+        <item quantity="one">%d个朋友</item>
     </plurals>
     <plurals name="c">
         <item quantity="other">还可以说 %d 秒</item>
@@ -82,8 +82,8 @@
         <item quantity="one">%s位收件人：</item>
     </plurals>
     <plurals name="u">
-        <item quantity="other">你将发消息给 %s 位朋友</item>
-        <item quantity="one">你将发消息给 %s 位朋友</item>
+        <item quantity="other">你将发消息给 %s 个朋友</item>
+        <item quantity="one">你将发消息给 %s 个朋友</item>
     </plurals>
     <plurals name="v">
         <item quantity="other">接收短信大约需要%d秒钟</item>

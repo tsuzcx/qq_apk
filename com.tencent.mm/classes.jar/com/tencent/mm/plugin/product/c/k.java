@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.product.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class k
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String qGB;
+  public String ufC;
   public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -14,35 +14,35 @@ public final class k
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.qGB != null) {
-        paramVarArgs.e(1, this.qGB);
+      if (this.ufC != null) {
+        paramVarArgs.f(1, this.ufC);
       }
       if (this.url != null) {
-        paramVarArgs.e(2, this.url);
+        paramVarArgs.f(2, this.url);
       }
       AppMethodBeat.o(91277);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.qGB == null) {
+      if (this.ufC == null) {
         break label274;
       }
     }
     label274:
-    for (paramInt = g.a.a.b.b.a.f(1, this.qGB) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.ufC) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.url != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.url);
+        i = paramInt + g.a.a.b.b.a.g(2, this.url);
       }
       AppMethodBeat.o(91277);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         AppMethodBeat.o(91277);
@@ -58,11 +58,11 @@ public final class k
           AppMethodBeat.o(91277);
           return -1;
         case 1: 
-          localk.qGB = locala.UbS.readString();
+          localk.ufC = locala.abFh.readString();
           AppMethodBeat.o(91277);
           return 0;
         }
-        localk.url = locala.UbS.readString();
+        localk.url = locala.abFh.readString();
         AppMethodBeat.o(91277);
         return 0;
       }
@@ -73,7 +73,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.product.c.k
  * JD-Core Version:    0.7.0.1
  */

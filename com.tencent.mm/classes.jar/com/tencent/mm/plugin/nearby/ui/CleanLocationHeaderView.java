@@ -7,18 +7,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.nearby.b.c;
+import com.tencent.mm.plugin.nearby.b.d;
+import com.tencent.mm.plugin.nearby.b.f;
+import com.tencent.mm.plugin.nearby.b.g;
 
 public class CleanLocationHeaderView
   extends LinearLayout
 {
-  private TextView AzH;
-  private ImageView gBZ;
+  private TextView GsK;
+  private ImageView jmf;
   
   public CleanLocationHeaderView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(89807);
-    bh(paramContext);
+    bv(paramContext);
     AppMethodBeat.o(89807);
   }
   
@@ -26,25 +30,25 @@ public class CleanLocationHeaderView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(89806);
-    bh(paramContext);
+    bv(paramContext);
     AppMethodBeat.o(89806);
   }
   
-  private void bh(Context paramContext)
+  private void bv(Context paramContext)
   {
     AppMethodBeat.i(89808);
-    paramContext = View.inflate(paramContext, 2131495812, this);
-    this.AzH = ((TextView)paramContext.findViewById(2131305255));
-    this.AzH.setSingleLine(false);
-    this.gBZ = ((ImageView)paramContext.findViewById(2131305237));
-    this.AzH.setText(2131757608);
-    this.gBZ.setImageResource(2131691325);
+    paramContext = View.inflate(paramContext, b.d.nearby_bindmobile_header_view, this);
+    this.GsK = ((TextView)paramContext.findViewById(b.c.nearby_header_text));
+    this.GsK.setSingleLine(false);
+    this.jmf = ((ImageView)paramContext.findViewById(b.c.nearby_bind_icon));
+    this.GsK.setText(b.g.clean_loaction_header_title);
+    this.jmf.setImageResource(b.f.peoplenearby_icon);
     AppMethodBeat.o(89808);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.ui.CleanLocationHeaderView
  * JD-Core Version:    0.7.0.1
  */

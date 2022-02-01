@@ -1,57 +1,49 @@
 package com.tencent.mm.plugin.scanner.model;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fx;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
+import java.util.List;
 
 public final class aj
-  extends fx
 {
-  public static IAutoDBItem.MAutoDBInfo info;
+  public static aj IMZ;
+  public aj.b IMI;
+  c IMJ;
+  public c IMK;
+  c IML;
+  public String IMM;
+  public aj.a IMN;
+  public aj.a IMO;
+  public aj.a IMP;
+  public aj.a IMQ;
+  public List<String> IMR;
+  public List<String> IMS;
+  public List<String> IMT;
+  public List<String> IMU;
+  public List<String> IMV;
+  public String IMW;
+  public String IMX;
+  public String IMY;
+  public String hDf;
+  public String nickName;
+  public String oOi;
+  public String oOq;
+  public String title;
+  public String url;
   
-  static
+  public static final class c
   {
-    AppMethodBeat.i(120859);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[5];
-    localMAutoDBInfo.columns = new String[6];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "originMD5";
-    localMAutoDBInfo.colsMap.put("originMD5", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" originMD5 TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "originMD5";
-    localMAutoDBInfo.columns[1] = "resultFile";
-    localMAutoDBInfo.colsMap.put("resultFile", "TEXT");
-    localStringBuilder.append(" resultFile TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "fromLang";
-    localMAutoDBInfo.colsMap.put("fromLang", "TEXT");
-    localStringBuilder.append(" fromLang TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[3] = "toLang";
-    localMAutoDBInfo.colsMap.put("toLang", "TEXT");
-    localStringBuilder.append(" toLang TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[4] = "brand";
-    localMAutoDBInfo.colsMap.put("brand", "TEXT");
-    localStringBuilder.append(" brand TEXT");
-    localMAutoDBInfo.columns[5] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
-    AppMethodBeat.o(120859);
-  }
-  
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
-  {
-    return info;
+    public String INc;
+    public String kVJ;
+    
+    public c(String paramString1, String paramString2)
+    {
+      this.kVJ = paramString1;
+      this.INc = paramString2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.aj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/auc" style="@style/rj"
+<FrameLayout android:id="@id/auc" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ListView android:id="@id/ark" android:background="@color/a2h" android:scrollbars="vertical" style="@style/np" />
-</LinearLayout>
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:gravity="center_horizontal" android:id="@id/c3d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/c6" />
+</FrameLayout>

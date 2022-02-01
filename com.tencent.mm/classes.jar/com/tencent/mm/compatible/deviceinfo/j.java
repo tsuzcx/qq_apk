@@ -8,15 +8,15 @@ import com.tencent.mm.sdk.platformtools.Util;
 final class j
   implements d.a
 {
-  public static d.a.a d(Looper paramLooper)
+  public static d.a.a e(Looper paramLooper)
   {
     AppMethodBeat.i(155653);
     d.a.a locala = new d.a.a();
     try
     {
-      locala.gGr = w.e(paramLooper);
-      locala.dYT = 0;
-      if (locala.gGr == null)
+      locala.jqD = x.f(paramLooper);
+      locala.fSM = 0;
+      if (locala.jqD == null)
       {
         AppMethodBeat.o(155653);
         return null;
@@ -29,8 +29,8 @@ final class j
     }
     if (Build.DISPLAY.startsWith("Flyme"))
     {
-      locala.dYT = 90;
-      locala.gGr.setDisplayOrientation(90);
+      locala.fSM = 90;
+      locala.jqD.qO(90);
     }
     label174:
     for (;;)
@@ -46,8 +46,8 @@ final class j
         if (i < 7093) {
           break label174;
         }
-        locala.dYT = 90;
-        locala.gGr.setDisplayOrientation(180);
+        locala.fSM = 90;
+        locala.jqD.qO(180);
         break;
         paramLooper = Build.DISPLAY;
         if (paramLooper.substring(0, 0).equals("1"))

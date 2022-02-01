@@ -2,13 +2,14 @@ package com.tencent.mm.plugin.welab.ui;
 
 import android.content.Intent;
 import android.content.res.Resources;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.welab.a.e;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 
@@ -21,11 +22,11 @@ final class WelabMainUI$1
   {
     AppMethodBeat.i(146285);
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    a.b("com/tencent/mm/plugin/welab/ui/WelabMainUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+    ((b)localObject).bn(paramView);
+    a.c("com/tencent/mm/plugin/welab/ui/WelabMainUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
     localObject = new Intent();
-    ((Intent)localObject).putExtra("title", paramView.getResources().getString(2131768711));
-    ((Intent)localObject).putExtra("rawUrl", this.JGz.getContext().getString(2131768706, new Object[] { LocaleUtil.getApplicationLanguage(), Integer.valueOf(d.KyO) }));
+    ((Intent)localObject).putExtra("title", paramView.getResources().getString(a.e.QFb));
+    ((Intent)localObject).putExtra("rawUrl", this.QFN.getContext().getString(a.e.QEX, new Object[] { LocaleUtil.getApplicationLanguage(), Integer.valueOf(d.RAD) }));
     ((Intent)localObject).putExtra("showShare", false);
     c.b(paramView.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
     a.a(this, "com/tencent/mm/plugin/welab/ui/WelabMainUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");

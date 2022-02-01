@@ -37,6 +37,10 @@ public class TRTCCloudDef
   public static final int TRTC_LOG_LEVEL_NULL = 6;
   public static final int TRTC_LOG_LEVEL_VERBOSE = 0;
   public static final int TRTC_LOG_LEVEL_WARN = 3;
+  public static final int TRTC_MixInputType_AudioVideo = 1;
+  public static final int TRTC_MixInputType_PureAudio = 3;
+  public static final int TRTC_MixInputType_PureVideo = 2;
+  public static final int TRTC_MixInputType_Undefined = 0;
   public static final int TRTC_QUALITY_Bad = 4;
   public static final int TRTC_QUALITY_Down = 6;
   public static final int TRTC_QUALITY_Excellent = 1;
@@ -44,6 +48,9 @@ public class TRTCCloudDef
   public static final int TRTC_QUALITY_Poor = 3;
   public static final int TRTC_QUALITY_UNKNOWN = 0;
   public static final int TRTC_QUALITY_Vbad = 5;
+  public static final int TRTC_RECORD_TYPE_AUDIO = 0;
+  public static final int TRTC_RECORD_TYPE_BOTH = 2;
+  public static final int TRTC_RECORD_TYPE_VIDEO = 1;
   public static final int TRTC_REVERB_TYPE_0 = 0;
   public static final int TRTC_REVERB_TYPE_1 = 1;
   public static final int TRTC_REVERB_TYPE_2 = 2;
@@ -67,6 +74,7 @@ public class TRTCCloudDef
   public static final int TRTC_VIDEO_MIRROR_TYPE_ENABLE = 1;
   public static final int TRTC_VIDEO_PIXEL_FORMAT_I420 = 1;
   public static final int TRTC_VIDEO_PIXEL_FORMAT_NV21 = 4;
+  public static final int TRTC_VIDEO_PIXEL_FORMAT_RGBA = 5;
   public static final int TRTC_VIDEO_PIXEL_FORMAT_TEXTURE_EXTERNAL_OES = 3;
   public static final int TRTC_VIDEO_PIXEL_FORMAT_Texture_2D = 2;
   public static final int TRTC_VIDEO_PIXEL_FORMAT_UNKNOWN = 0;

@@ -12,13 +12,13 @@ public class WxaExposedParams
   public String appId;
   public int from;
   public String iconUrl;
-  public int kNW;
-  public String lhn;
-  public String lho;
-  public String lhp;
-  public String lhq;
   public String msgId;
+  public int nHY;
   public String nickname;
+  public String obW;
+  public String obX;
+  public String obY;
+  public String obZ;
   public String pageId;
   public int pkgVersion;
   public String sessionId;
@@ -38,15 +38,15 @@ public class WxaExposedParams
     this.username = paramParcel.readString();
     this.nickname = paramParcel.readString();
     this.iconUrl = paramParcel.readString();
-    this.kNW = paramParcel.readInt();
+    this.nHY = paramParcel.readInt();
     this.pkgVersion = paramParcel.readInt();
-    this.lhn = paramParcel.readString();
+    this.obW = paramParcel.readString();
     this.from = paramParcel.readInt();
     this.pageId = paramParcel.readString();
-    this.lho = paramParcel.readString();
-    this.lhp = paramParcel.readString();
+    this.obX = paramParcel.readString();
+    this.obY = paramParcel.readString();
     this.sessionId = paramParcel.readString();
-    this.lhq = paramParcel.readString();
+    this.obZ = paramParcel.readString();
     this.msgId = paramParcel.readString();
     AppMethodBeat.o(153221);
   }
@@ -57,15 +57,15 @@ public class WxaExposedParams
     this.username = parama.username;
     this.nickname = parama.nickname;
     this.iconUrl = parama.iconUrl;
-    this.kNW = parama.kNW;
+    this.nHY = parama.nHY;
     this.pkgVersion = parama.pkgVersion;
-    this.lhn = parama.lhn;
+    this.obW = parama.obW;
     this.from = parama.from;
     this.pageId = parama.pageId;
-    this.lho = parama.lho;
-    this.lhp = parama.lhp;
+    this.obX = parama.obX;
+    this.obY = parama.obY;
     this.sessionId = parama.sessionId;
-    this.lhq = parama.lhq;
+    this.obZ = parama.obZ;
     this.msgId = parama.msgId;
   }
   
@@ -77,7 +77,7 @@ public class WxaExposedParams
   public String toString()
   {
     AppMethodBeat.i(153223);
-    String str = "WxaExposedParams{appId='" + this.appId + '\'' + ", username='" + this.username + '\'' + ", nickname='" + this.nickname + '\'' + ", iconUrl='" + this.iconUrl + '\'' + ", pkgDebugType=" + this.kNW + ", pkgVersion=" + this.pkgVersion + ", pkgMD5='" + this.lhn + '\'' + ", from=" + this.from + ", pageId='" + this.pageId + '\'' + ", errorUrl='" + this.lho + '\'' + ", screenshotLocalId='" + this.lhp + '\'' + ", sessionId='" + this.sessionId + '\'' + ", businessAppId='" + this.lhq + '\'' + ", msgId='" + this.msgId + '\'' + '}';
+    String str = "WxaExposedParams{appId='" + this.appId + '\'' + ", username='" + this.username + '\'' + ", nickname='" + this.nickname + '\'' + ", iconUrl='" + this.iconUrl + '\'' + ", pkgDebugType=" + this.nHY + ", pkgVersion=" + this.pkgVersion + ", pkgMD5='" + this.obW + '\'' + ", from=" + this.from + ", pageId='" + this.pageId + '\'' + ", errorUrl='" + this.obX + '\'' + ", screenshotLocalId='" + this.obY + '\'' + ", sessionId='" + this.sessionId + '\'' + ", businessAppId='" + this.obZ + '\'' + ", msgId='" + this.msgId + '\'' + '}';
     AppMethodBeat.o(153223);
     return str;
   }
@@ -89,15 +89,15 @@ public class WxaExposedParams
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.nickname);
     paramParcel.writeString(this.iconUrl);
-    paramParcel.writeInt(this.kNW);
+    paramParcel.writeInt(this.nHY);
     paramParcel.writeInt(this.pkgVersion);
-    paramParcel.writeString(this.lhn);
+    paramParcel.writeString(this.obW);
     paramParcel.writeInt(this.from);
     paramParcel.writeString(this.pageId);
-    paramParcel.writeString(this.lho);
-    paramParcel.writeString(this.lhp);
+    paramParcel.writeString(this.obX);
+    paramParcel.writeString(this.obY);
     paramParcel.writeString(this.sessionId);
-    paramParcel.writeString(this.lhq);
+    paramParcel.writeString(this.obZ);
     paramParcel.writeString(this.msgId);
     AppMethodBeat.o(153222);
   }
@@ -107,49 +107,49 @@ public class WxaExposedParams
     public String appId = "";
     public int from = 0;
     public String iconUrl = "";
-    public int kNW = -1;
-    public String lhn = "";
-    public String lho = "";
-    public String lhp = "";
-    public String lhq = "";
     public String msgId = "";
+    public int nHY = -1;
     public String nickname = "";
+    public String obW = "";
+    public String obX = "";
+    public String obY = "";
+    public String obZ = "";
     public String pageId = "";
     public int pkgVersion = -1;
     public String sessionId = "";
     public String username = "";
     
-    public final a XN(String paramString)
-    {
-      this.appId = paramString;
-      return this;
-    }
-    
-    public final a XO(String paramString)
+    public final a afA(String paramString)
     {
       this.username = paramString;
       return this;
     }
     
-    public final a XP(String paramString)
+    public final a afB(String paramString)
     {
       this.nickname = paramString;
       return this;
     }
     
-    public final a XQ(String paramString)
+    public final a afC(String paramString)
     {
       this.iconUrl = paramString;
       return this;
     }
     
-    public final a XR(String paramString)
+    public final a afD(String paramString)
     {
       this.pageId = paramString;
       return this;
     }
     
-    public final WxaExposedParams bAv()
+    public final a afz(String paramString)
+    {
+      this.appId = paramString;
+      return this;
+    }
+    
+    public final WxaExposedParams bLN()
     {
       AppMethodBeat.i(153220);
       WxaExposedParams localWxaExposedParams = new WxaExposedParams(this, (byte)0);
@@ -157,19 +157,19 @@ public class WxaExposedParams
       return localWxaExposedParams;
     }
     
-    public final a wf(int paramInt)
+    public final a zs(int paramInt)
     {
       this.pkgVersion = paramInt;
       return this;
     }
     
-    public final a wg(int paramInt)
+    public final a zt(int paramInt)
     {
-      this.kNW = paramInt;
+      this.nHY = paramInt;
       return this;
     }
     
-    public final a wh(int paramInt)
+    public final a zu(int paramInt)
     {
       this.from = paramInt;
       return this;
@@ -178,7 +178,7 @@ public class WxaExposedParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.WxaExposedParams
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,35 @@
 package com.tencent.mm.modelmulti;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.q.b;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.g.a.tx;
-import com.tencent.mm.g.a.tz;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.model.bp;
-import com.tencent.mm.model.br;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.q.b;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.f.a.va;
+import com.tencent.mm.f.a.vc;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.bq;
+import com.tencent.mm.model.bs;
 import com.tencent.mm.model.x;
 import com.tencent.mm.model.z;
 import com.tencent.mm.modelsimple.ad;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.platformtools.ac;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.aa;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.messenger.foundation.a.o;
-import com.tencent.mm.plugin.messenger.foundation.a.w;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.protocal.protobuf.cot;
-import com.tencent.mm.protocal.protobuf.cou;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.dtt;
-import com.tencent.mm.protocal.protobuf.dtu;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
+import com.tencent.mm.plugin.report.f;
+import com.tencent.mm.protocal.protobuf.cxi;
+import com.tencent.mm.protocal.protobuf.cxj;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.edv;
+import com.tencent.mm.protocal.protobuf.edw;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -46,38 +48,38 @@ import java.util.Set;
 import junit.framework.Assert;
 
 public final class i
-  extends q
+  extends com.tencent.mm.an.q
   implements m
 {
-  private static final List<Object> jcO;
-  private com.tencent.mm.ak.i callback;
-  private int jcN;
-  private final List<ca> jcP;
-  private int jcQ;
-  private boolean jcR;
-  private final List<ca> jcS;
-  private ca jcT;
-  public o jcU;
+  private static final List<Object> lTn;
+  private com.tencent.mm.an.i callback;
+  private int lTm;
+  private final List<ca> lTo;
+  private int lTp;
+  private boolean lTq;
+  private final List<ca> lTr;
+  private ca lTs;
+  public com.tencent.mm.plugin.messenger.foundation.a.q lTt;
   public long msgId;
   private d rr;
   
   static
   {
     AppMethodBeat.i(43043);
-    jcO = new ArrayList();
+    lTn = new ArrayList();
     AppMethodBeat.o(43043);
   }
   
   public i()
   {
     AppMethodBeat.i(43027);
-    this.jcN = 15;
-    this.jcP = new LinkedList();
-    this.jcQ = 3;
-    this.jcR = false;
-    this.jcS = new ArrayList();
-    this.jcT = null;
-    this.jcU = null;
+    this.lTm = 15;
+    this.lTo = new LinkedList();
+    this.lTp = 3;
+    this.lTq = false;
+    this.lTr = new ArrayList();
+    this.lTs = null;
+    this.lTt = null;
     Log.d("MicroMsg.NetSceneSendMsg", "dktext :%s", new Object[] { Util.getStack() });
     Log.i("MicroMsg.NetSceneSendMsg", "empty msg sender created");
     AppMethodBeat.o(43027);
@@ -86,17 +88,17 @@ public final class i
   public i(long paramLong)
   {
     AppMethodBeat.i(43026);
-    this.jcN = 15;
-    this.jcP = new LinkedList();
-    this.jcQ = 3;
-    this.jcR = false;
-    this.jcS = new ArrayList();
-    this.jcT = null;
-    this.jcU = null;
+    this.lTm = 15;
+    this.lTo = new LinkedList();
+    this.lTp = 3;
+    this.lTq = false;
+    this.lTr = new ArrayList();
+    this.lTs = null;
+    this.lTt = null;
     Log.i("MicroMsg.NetSceneSendMsg", "resend msg , local id = ".concat(String.valueOf(paramLong)));
     this.msgId = paramLong;
-    this.jcT = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().Hb(paramLong);
-    if (this.jcT == null) {
+    this.lTs = ((n)h.ae(n.class)).eSe().Oq(paramLong);
+    if (this.lTs == null) {
       Log.e("MicroMsg.NetSceneSendMsg", "resend msg , msg is null localid:%d", new Object[] { Long.valueOf(paramLong) });
     }
     AppMethodBeat.o(43026);
@@ -105,13 +107,13 @@ public final class i
   public i(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(43025);
-    this.jcN = 15;
-    this.jcP = new LinkedList();
-    this.jcQ = 3;
-    this.jcR = false;
-    this.jcS = new ArrayList();
-    this.jcT = null;
-    this.jcU = null;
+    this.lTm = 15;
+    this.lTo = new LinkedList();
+    this.lTp = 3;
+    this.lTq = false;
+    this.lTr = new ArrayList();
+    this.lTs = null;
+    this.lTt = null;
     if (Log.getLogLevel() <= 1) {
       Log.d("MicroMsg.NetSceneSendMsg", "dktext :%s", new Object[] { Util.getStack() });
     }
@@ -120,26 +122,26 @@ public final class i
     {
       localca = new ca();
       localca.setStatus(1);
-      localca.Cy(paramString1);
-      localca.setCreateTime(bp.Kw(paramString1));
-      localca.nv(1);
+      localca.Jm(paramString1);
+      localca.setCreateTime(bq.RP(paramString1));
+      localca.pJ(1);
       localca.setContent(paramString2);
       localca.setType(paramInt1);
       if ((paramInt2 == 1) && (paramInt1 == 42)) {
-        localca.gDE();
+        localca.hzR();
       }
-      String str = ((w)com.tencent.mm.kernel.g.af(w.class)).Z(localca);
+      String str = ((aa)h.ae(aa.class)).af(localca);
       if (!Util.isNullOrNil(str))
       {
-        localca.BB(str);
-        Log.i("MicroMsg.NetSceneSendMsg", "NetSceneSendMsg:MsgSource:%s", new Object[] { localca.fqK });
+        localca.Ip(str);
+        Log.i("MicroMsg.NetSceneSendMsg", "NetSceneSendMsg:MsgSource:%s", new Object[] { localca.hxy });
       }
     }
     try
     {
-      this.msgId = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().c(localca, true);
-      if ((this.msgId != -1L) && (((j)com.tencent.mm.kernel.g.af(j.class)).aBf(paramString1))) {
-        ((j)com.tencent.mm.kernel.g.af(j.class)).a(paramString1, z.aTY(), paramString2, this.msgId);
+      this.msgId = ((n)h.ae(n.class)).eSe().c(localca, true);
+      if ((this.msgId != -1L) && (((l)h.ae(l.class)).aKT(paramString1))) {
+        ((l)h.ae(l.class)).a(paramString1, z.bcZ(), paramString2, this.msgId);
       }
       if (this.msgId != -1L)
       {
@@ -154,13 +156,13 @@ public final class i
     {
       for (;;)
       {
-        e.Cxv.idkeyStat(111L, 255L, 1L, false);
+        f.Iyx.idkeyStat(111L, 255L, 1L, false);
         if (!localSQLiteException.toString().contains("UNIQUE constraint failed")) {
           break;
         }
         Log.e("MicroMsg.NetSceneSendMsg", "fallback to insert");
-        ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().eiI();
-        this.msgId = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().c(localca, true);
+        ((n)h.ae(n.class)).eSe().eSo();
+        this.msgId = ((n)h.ae(n.class)).eSe().c(localca, true);
       }
       AppMethodBeat.o(43025);
       throw localSQLiteException;
@@ -179,13 +181,13 @@ public final class i
   public i(String paramString1, String paramString2, int paramInt1, int paramInt2, Object paramObject)
   {
     AppMethodBeat.i(43024);
-    this.jcN = 15;
-    this.jcP = new LinkedList();
-    this.jcQ = 3;
-    this.jcR = false;
-    this.jcS = new ArrayList();
-    this.jcT = null;
-    this.jcU = null;
+    this.lTm = 15;
+    this.lTo = new LinkedList();
+    this.lTp = 3;
+    this.lTq = false;
+    this.lTr = new ArrayList();
+    this.lTs = null;
+    this.lTt = null;
     if (Log.getLogLevel() <= 1) {
       Log.d("MicroMsg.NetSceneSendMsg", "dktext :%s", new Object[] { Util.getStack() });
     }
@@ -194,60 +196,74 @@ public final class i
     {
       localca = new ca();
       localca.setStatus(1);
-      localca.Cy(paramString1);
-      localca.setCreateTime(bp.Kw(paramString1));
-      localca.nv(1);
+      localca.Jm(paramString1);
+      localca.setCreateTime(bq.RP(paramString1));
+      localca.pJ(1);
       localca.setContent(paramString2);
       localca.setType(paramInt1);
-      paramObject = a(((w)com.tencent.mm.kernel.g.af(w.class)).Z(localca), paramObject, paramInt2);
+      paramObject = a(((aa)h.ae(aa.class)).af(localca), paramObject, paramInt2);
       if (!Util.isNullOrNil(paramObject))
       {
-        localca.BB(paramObject);
-        Log.i("MicroMsg.NetSceneSendMsg", "NetSceneSendMsg:MsgSource:%s", new Object[] { localca.fqK });
+        localca.Ip(paramObject);
+        Log.i("MicroMsg.NetSceneSendMsg", "NetSceneSendMsg:MsgSource:%s", new Object[] { localca.hxy });
       }
-      if (((paramInt2 & 0x4) != 0) || ((paramInt2 & 0x8) != 0))
-      {
-        if ((paramInt2 & 0x4) == 0) {
-          break label372;
-        }
-        paramInt1 = 2;
+      if (((paramInt2 & 0x4) == 0) && ((paramInt2 & 0x8) == 0)) {
+        break label377;
       }
+      if ((paramInt2 & 0x4) == 0) {
+        break label372;
+      }
+      paramInt1 = 2;
     }
     for (;;)
     {
       Log.i("MicroMsg.NetSceneSendMsg", "has paste fully flag, %d", new Object[] { Integer.valueOf(paramInt1) });
       paramObject = new HashMap();
       paramObject.put(".msgsource.alnode.cf", String.valueOf(paramInt1));
-      br.b(localca, br.B(paramObject));
+      bs.b(localca, bs.u(paramObject));
       try
       {
-        this.msgId = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().c(localca, true);
-        if (this.msgId == -1L)
+        label372:
+        label377:
+        do
         {
-          e.Cxv.idkeyStat(111L, 255L, 1L, false);
+          this.msgId = ((n)h.ae(n.class)).eSe().c(localca, true);
+          if (this.msgId != -1L) {
+            break label576;
+          }
+          f.Iyx.idkeyStat(111L, 255L, 1L, false);
           if (this.msgId == -1L) {
-            break label531;
+            break label618;
           }
           bool = true;
           Assert.assertTrue(bool);
           Log.i("MicroMsg.NetSceneSendMsg", "new msg inserted to db , local id = " + this.msgId);
           AppMethodBeat.o(43024);
           return;
-          label372:
           paramInt1 = 3;
+          break;
+        } while (((paramInt2 & 0x10) == 0) && ((paramInt2 & 0x20) == 0));
+        if ((paramInt2 & 0x10) != 0) {}
+        for (paramInt1 = 4;; paramInt1 = 5)
+        {
+          Log.i("MicroMsg.NetSceneSendMsg", "has paste similar change flag, %d", new Object[] { Integer.valueOf(paramInt1) });
+          paramObject = new HashMap();
+          paramObject.put(".msgsource.alnode.cf", String.valueOf(paramInt1));
+          bs.b(localca, bs.u(paramObject));
+          break;
         }
       }
       catch (SQLiteException paramObject)
       {
         for (;;)
         {
-          e.Cxv.idkeyStat(111L, 255L, 1L, false);
+          f.Iyx.idkeyStat(111L, 255L, 1L, false);
           if (!paramObject.toString().contains("UNIQUE constraint failed")) {
             break;
           }
           Log.e("MicroMsg.NetSceneSendMsg", "fallback to insert");
-          ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().eiI();
-          this.msgId = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().c(localca, true);
+          ((n)h.ae(n.class)).eSe().eSo();
+          this.msgId = ((n)h.ae(n.class)).eSe().c(localca, true);
         }
         AppMethodBeat.o(43024);
         throw paramObject;
@@ -259,11 +275,12 @@ public final class i
           boolean bool;
           Log.printErrStackTrace("MicroMsg.NetSceneSendMsg", paramObject, "", new Object[0]);
           continue;
-          if (((j)com.tencent.mm.kernel.g.af(j.class)).aBf(paramString1))
+          label576:
+          if (((l)h.ae(l.class)).aKT(paramString1))
           {
-            ((j)com.tencent.mm.kernel.g.af(j.class)).a(paramString1, z.aTY(), paramString2, this.msgId);
+            ((l)h.ae(l.class)).a(paramString1, z.bcZ(), paramString2, this.msgId);
             continue;
-            label531:
+            label618:
             bool = false;
           }
         }
@@ -271,7 +288,7 @@ public final class i
     }
   }
   
-  private void Pk(String paramString)
+  private void WH(String paramString)
   {
     AppMethodBeat.i(43035);
     Log.d("MicroMsg.NetSceneSendMsg", "continue send msg in list");
@@ -286,29 +303,6 @@ public final class i
       this.callback.onSceneEnd(3, -1, paramString, this);
     }
     AppMethodBeat.o(43035);
-  }
-  
-  private static void X(ca paramca)
-  {
-    AppMethodBeat.i(43033);
-    tx localtx = new tx();
-    localtx.ear.dCM = paramca;
-    EventCenter.instance.publish(localtx);
-    Log.d("MicroMsg.NetSceneSendMsg", "publishMsgSendFailEvent for msgId:%d", new Object[] { Long.valueOf(paramca.field_msgId) });
-    AppMethodBeat.o(43033);
-  }
-  
-  private static void Y(ca paramca)
-  {
-    AppMethodBeat.i(43038);
-    paramca.setStatus(5);
-    e.Cxv.idkeyStat(111L, 30L, 1L, true);
-    ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().a(paramca.field_msgId, paramca);
-    paramca = jcO.iterator();
-    while (paramca.hasNext()) {
-      paramca.next();
-    }
-    AppMethodBeat.o(43038);
   }
   
   private static String a(String paramString, Object paramObject, int paramInt)
@@ -363,113 +357,136 @@ public final class i
     return paramString;
   }
   
-  private void bdJ()
+  private static void ad(ca paramca)
   {
-    AppMethodBeat.i(225960);
-    int i = 0;
-    while (i < this.jcP.size())
-    {
-      tB(i);
-      i += 1;
-    }
-    AppMethodBeat.o(225960);
+    AppMethodBeat.i(43033);
+    va localva = new va();
+    localva.fUo.fvt = paramca;
+    EventCenter.instance.publish(localva);
+    Log.d("MicroMsg.NetSceneSendMsg", "publishMsgSendFailEvent for msgId:%d", new Object[] { Long.valueOf(paramca.field_msgId) });
+    AppMethodBeat.o(43033);
   }
   
-  private void bdK()
+  private static void ae(ca paramca)
+  {
+    AppMethodBeat.i(43038);
+    paramca.setStatus(5);
+    f.Iyx.idkeyStat(111L, 30L, 1L, true);
+    ((n)h.ae(n.class)).eSe().a(paramca.field_msgId, paramca);
+    paramca = lTn.iterator();
+    while (paramca.hasNext()) {
+      paramca.next();
+    }
+    AppMethodBeat.o(43038);
+  }
+  
+  private void bne()
+  {
+    AppMethodBeat.i(238973);
+    int i = 0;
+    while (i < this.lTo.size())
+    {
+      wB(i);
+      i += 1;
+    }
+    AppMethodBeat.o(238973);
+  }
+  
+  private void bnf()
   {
     AppMethodBeat.i(43036);
     int i = 0;
-    while (i < this.jcP.size())
+    while (i < this.lTo.size())
     {
-      tC(i);
+      wC(i);
       i += 1;
     }
     AppMethodBeat.o(43036);
   }
   
-  private void tB(int paramInt)
+  private void wB(int paramInt)
   {
     AppMethodBeat.i(43032);
-    if (this.jcP == null)
+    if (this.lTo == null)
     {
       Log.e("MicroMsg.NetSceneSendMsg", "publishMsgSendFailEvent, sendingList is null");
       AppMethodBeat.o(43032);
       return;
     }
-    if ((paramInt >= this.jcP.size()) || (paramInt < 0))
+    if ((paramInt >= this.lTo.size()) || (paramInt < 0))
     {
-      Log.e("MicroMsg.NetSceneSendMsg", "publishMsgSendFailEvent, index:%d, sendingList.size:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jcP.size()) });
+      Log.e("MicroMsg.NetSceneSendMsg", "publishMsgSendFailEvent, index:%d, sendingList.size:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.lTo.size()) });
       AppMethodBeat.o(43032);
       return;
     }
-    X((ca)this.jcP.get(paramInt));
+    ad((ca)this.lTo.get(paramInt));
     AppMethodBeat.o(43032);
   }
   
-  private void tC(int paramInt)
+  private void wC(int paramInt)
   {
     AppMethodBeat.i(43037);
-    ca localca = (ca)this.jcP.get(paramInt);
+    ca localca = (ca)this.lTo.get(paramInt);
     Log.d("MicroMsg.NetSceneSendMsg", "markMsgFailed for id:%d", new Object[] { Long.valueOf(localca.field_msgId) });
-    Y(localca);
+    ae(localca);
     AppMethodBeat.o(43037);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, com.tencent.mm.ak.i parami)
+  public final int doScene(g paramg, com.tencent.mm.an.i parami)
   {
     AppMethodBeat.i(43031);
     this.callback = parami;
     parami = new d.a();
-    parami.iLN = new dtt();
-    parami.iLO = new dtu();
+    parami.lBU = new edv();
+    parami.lBV = new edw();
     parami.uri = "/cgi-bin/micromsg-bin/newsendmsg";
     parami.funcId = 522;
-    parami.iLP = 237;
+    parami.lBW = 237;
     parami.respCmdId = 1000000237;
-    this.rr = parami.aXF();
-    dtt localdtt = (dtt)this.rr.iLK.iLR;
-    if (this.jcT == null) {
-      parami = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().Qp(this.jcN);
+    this.rr = parami.bgN();
+    edv localedv = (edv)d.b.b(this.rr.lBR);
+    if (this.lTs == null) {
+      parami = ((n)h.ae(n.class)).eSe().WC(this.lTm);
     }
     while ((parami == null) || (parami.size() == 0))
     {
       Log.w("MicroMsg.NetSceneSendMsg", "no sending message");
       AppMethodBeat.o(43031);
       return -2;
-      if (this.jcT.field_status != 5) {
-        Log.w("MicroMsg.NetSceneSendMsg", "msg:%d status:%d should not be resend !", new Object[] { Long.valueOf(this.jcT.field_msgId), Integer.valueOf(this.jcT.field_status) });
+      if (this.lTs.field_status != 5) {
+        Log.w("MicroMsg.NetSceneSendMsg", "msg:%d status:%d should not be resend !", new Object[] { Long.valueOf(this.lTs.field_msgId), Integer.valueOf(this.lTs.field_status) });
       }
-      this.jcT.setStatus(1);
-      ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().a(this.msgId, this.jcT);
+      this.lTs.setStatus(1);
+      ((n)h.ae(n.class)).eSe().a(this.msgId, this.lTs);
       parami = new ArrayList();
-      parami.add(this.jcT);
-      this.jcT = null;
+      parami.add(this.lTs);
+      this.lTs = null;
     }
-    this.jcP.clear();
+    this.lTo.clear();
     int i = 0;
     while (i < parami.size())
     {
       ca localca = (ca)parami.get(i);
       if (localca.field_isSend == 1)
       {
-        cot localcot = new cot();
-        localcot.KHm = new dqi().bhy(localca.field_talker);
-        localcot.CreateTime = ((int)(localca.field_createTime / 1000L));
-        localcot.oUv = localca.getType();
-        localcot.iAc = localca.field_content;
-        localcot.MuU = x.x(z.aTY(), localca.field_createTime).hashCode();
-        if (((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).ifAddTicketByActionFlag(localca.field_talker)) {
-          localcot.LbN = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().bjT(localca.field_talker);
+        cxi localcxi = new cxi();
+        localcxi.RIE = new eaf().btQ(localca.field_talker);
+        localcxi.CreateTime = ((int)(localca.field_createTime / 1000L));
+        localcxi.rWu = localca.getType();
+        localcxi.lpy = localca.field_content;
+        localcxi.TFR = x.u(z.bcZ(), localca.field_createTime).hashCode();
+        if (((v)h.ag(v.class)).ifAddTicketByActionFlag(localca.field_talker)) {
+          localcxi.ScZ = ((n)h.ae(n.class)).bbL().bws(localca.field_talker);
         }
-        if (this.jcU == null) {
-          this.jcU = ((w)com.tencent.mm.kernel.g.af(w.class)).bdO();
+        if (this.lTt == null) {
+          this.lTt = ((aa)h.ae(aa.class)).bnj();
         }
-        Log.i("MicroMsg.NetSceneSendMsg", "using message source assembler %s", new Object[] { this.jcU });
-        this.jcU.a(localcot, localca);
-        Log.i("MicroMsg.NetSceneSendMsg", "reqCmd.MsgSource:%s", new Object[] { localcot.KHq });
-        localdtt.oTA.add(localcot);
-        localdtt.oTz = localdtt.oTA.size();
-        this.jcP.add(localca);
+        Log.i("MicroMsg.NetSceneSendMsg", "using message source assembler %s", new Object[] { this.lTt });
+        this.lTt.a(localcxi, localca);
+        Log.i("MicroMsg.NetSceneSendMsg", "reqCmd.MsgSource:%s", new Object[] { localcxi.RII });
+        localedv.rVy.add(localcxi);
+        localedv.rVx = localedv.rVy.size();
+        this.lTo.add(localca);
       }
       i += 1;
     }
@@ -477,7 +494,7 @@ public final class i
     if (i < 0)
     {
       Log.i("MicroMsg.NetSceneSendMsg", "mark all failed. do scene %d", new Object[] { Integer.valueOf(i) });
-      bdK();
+      bnf();
     }
     AppMethodBeat.o(43031);
     return i;
@@ -488,30 +505,30 @@ public final class i
     return 522;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, final String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, final String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(43034);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       Log.i("MicroMsg.NetSceneSendMsg", "mark all failed. onGYNetEnd. errType:%d errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-      e.Cxv.idkeyStat(111L, paramInt2 + 40, 1L, true);
-      e.Cxv.idkeyStat(111L, 253L, 1L, false);
+      f.Iyx.idkeyStat(111L, paramInt2 + 40, 1L, true);
+      f.Iyx.idkeyStat(111L, 253L, 1L, false);
       if (paramInt3 == 413)
       {
-        paramInt1 = this.rr.iLK.iLR.computeSize();
-        int i = this.jcN / 2;
-        Log.e("MicroMsg.NetSceneSendMsg", "send msgs req exceed max limit, size %s, sendMsgMaxNum %s, newSendMsgMaxNum %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.jcN), Integer.valueOf(i) });
-        if (this.jcN == 1)
+        paramInt1 = d.b.b(this.rr.lBR).computeSize();
+        int i = this.lTm / 2;
+        Log.e("MicroMsg.NetSceneSendMsg", "send msgs req exceed max limit, size %s, sendMsgMaxNum %s, newSendMsgMaxNum %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.lTm), Integer.valueOf(i) });
+        if (this.lTm == 1)
         {
           Log.e("MicroMsg.NetSceneSendMsg", "one msg exceed?????");
-          bdK();
+          bnf();
           this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-          bdJ();
+          bne();
           AppMethodBeat.o(43034);
           return;
         }
-        this.jcN = i;
-        Pk(paramString);
+        this.lTm = i;
+        WH(paramString);
         Log.d("MicroMsg.NetSceneSendMsg", "resend SENDING msg");
         AppMethodBeat.o(43034);
         return;
@@ -523,59 +540,59 @@ public final class i
         AppMethodBeat.o(43034);
         return;
       }
-      bdK();
+      bnf();
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      bdJ();
+      bne();
       Log.d("MicroMsg.NetSceneSendMsg", "send fail, continue send SENDING msg");
-      Pk(paramString);
+      WH(paramString);
       AppMethodBeat.o(43034);
       return;
     }
-    paramArrayOfByte = (dtu)this.rr.iLL.iLR;
-    params = paramArrayOfByte.oTA;
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).setEnSendMsgActionFlag(paramArrayOfByte.LbO);
+    paramArrayOfByte = (edw)d.c.b(this.rr.lBS);
+    params = paramArrayOfByte.rVy;
+    ((v)h.ag(v.class)).setEnSendMsgActionFlag(paramArrayOfByte.Sda);
     paramArrayOfByte = new ArrayList();
-    if (this.jcP.size() == params.size())
+    if (this.lTo.size() == params.size())
     {
       paramInt1 = 0;
       if (paramInt1 < params.size())
       {
-        Object localObject = (cou)params.get(paramInt1);
-        if ((((cou)localObject).Ret != 0) || (ac.jPl))
+        Object localObject = (cxj)params.get(paramInt1);
+        if ((((cxj)localObject).CqV != 0) || (ac.mGv))
         {
-          e.Cxv.idkeyStat(111L, 252L, 1L, false);
-          if ((((cou)localObject).Ret == -49) || (ac.jPl))
+          f.Iyx.idkeyStat(111L, 252L, 1L, false);
+          if ((((cxj)localObject).CqV == -49) || (ac.mGv))
           {
-            Log.i("MicroMsg.NetSceneSendMsg", "summerdktext send msg failed: item ret code[%d], index[%d], testVerifyPsw[%b], retryVerifyCount[%d]", new Object[] { Integer.valueOf(((cou)localObject).Ret), Integer.valueOf(paramInt1), Boolean.valueOf(ac.jPl), Integer.valueOf(this.jcQ) });
-            if (this.jcR)
+            Log.i("MicroMsg.NetSceneSendMsg", "summerdktext send msg failed: item ret code[%d], index[%d], testVerifyPsw[%b], retryVerifyCount[%d]", new Object[] { Integer.valueOf(((cxj)localObject).CqV), Integer.valueOf(paramInt1), Boolean.valueOf(ac.mGv), Integer.valueOf(this.lTp) });
+            if (this.lTq)
             {
-              localObject = (ca)this.jcP.get(paramInt1);
-              this.jcS.add(localObject);
+              localObject = (ca)this.lTo.get(paramInt1);
+              this.lTr.add(localObject);
             }
             for (;;)
             {
               paramInt1 += 1;
               break;
-              if (this.jcQ < 0)
+              if (this.lTp < 0)
               {
-                tC(paramInt1);
-                this.callback.onSceneEnd(4, ((cou)localObject).Ret, paramString, this);
-                tB(paramInt1);
+                wC(paramInt1);
+                this.callback.onSceneEnd(4, ((cxj)localObject).CqV, paramString, this);
+                wB(paramInt1);
                 AppMethodBeat.o(43034);
                 return;
               }
-              this.jcR = true;
-              this.jcQ -= 1;
-              localObject = (ca)this.jcP.get(paramInt1);
-              this.jcS.add(localObject);
-              com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
+              this.lTq = true;
+              this.lTp -= 1;
+              localObject = (ca)this.lTo.get(paramInt1);
+              this.lTr.add(localObject);
+              h.aHJ().postToWorker(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(43023);
-                  new ad(5, "", "", "", "", false, 1, false).doScene(i.a(i.this), new com.tencent.mm.ak.i()
+                  new ad(5, "", "", "", "", false, 1, false).doScene(i.a(i.this), new com.tencent.mm.an.i()
                   {
-                    public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, q paramAnonymous2q)
+                    public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, com.tencent.mm.an.q paramAnonymous2q)
                     {
                       AppMethodBeat.i(43022);
                       paramAnonymous2q.setHasCallbackToQueue(true);
@@ -588,12 +605,12 @@ public final class i
                       for (;;)
                       {
                         i.f(i.this);
-                        ac.jPl = false;
+                        ac.mGv = false;
                         AppMethodBeat.o(43022);
                         return;
-                        i.ax(i.b(i.this));
-                        i.e(i.this).onSceneEnd(4, -49, i.1.this.jcV, i.this);
-                        i.ay(i.b(i.this));
+                        i.av(i.b(i.this));
+                        i.e(i.this).onSceneEnd(4, -49, i.1.this.lTu, i.this);
+                        i.aw(i.b(i.this));
                         i.b(i.this).clear();
                       }
                     }
@@ -603,64 +620,64 @@ public final class i
               });
             }
           }
-          tC(paramInt1);
-          this.callback.onSceneEnd(4, ((cou)localObject).Ret, paramString, this);
-          tB(paramInt1);
+          wC(paramInt1);
+          this.callback.onSceneEnd(4, ((cxj)localObject).CqV, paramString, this);
+          wB(paramInt1);
           AppMethodBeat.o(43034);
           return;
         }
-        long l = ((ca)this.jcP.get(paramInt1)).field_msgId;
-        Log.i("MicroMsg.NetSceneSendMsg", "msg local id = " + l + ", SvrId = " + ((cou)localObject).Brn + " sent successfully!");
-        ca localca = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().Hb(l);
-        localca.yF(((cou)localObject).Brn);
-        Log.d("MicroMsg.NetSceneSendMsg", "dkmsgid  set svrmsgid %d -> %d", new Object[] { Long.valueOf(((cou)localObject).Brn), Integer.valueOf(ac.jOD) });
-        if ((10007 == ac.jOC) && (ac.jOD != 0))
+        long l = ((ca)this.lTo.get(paramInt1)).field_msgId;
+        Log.i("MicroMsg.NetSceneSendMsg", "msg local id = " + l + ", SvrId = " + ((cxj)localObject).HlH + " sent successfully!");
+        ca localca = ((n)h.ae(n.class)).eSe().Oq(l);
+        localca.EG(((cxj)localObject).HlH);
+        Log.d("MicroMsg.NetSceneSendMsg", "dkmsgid  set svrmsgid %d -> %d", new Object[] { Long.valueOf(((cxj)localObject).HlH), Integer.valueOf(ac.mFN) });
+        if ((10007 == ac.mFM) && (ac.mFN != 0))
         {
-          localca.yF(ac.jOD);
-          ac.jOD = 0;
+          localca.EG(ac.mFN);
+          ac.mFN = 0;
         }
         localca.setStatus(2);
-        ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().a(l, localca);
-        if (this.jcP == null) {
+        ((n)h.ae(n.class)).eSe().a(l, localca);
+        if (this.lTo == null) {
           Log.e("MicroMsg.NetSceneSendMsg", "publishMsgSendSuccessEvent, sendingList is null");
         }
         for (;;)
         {
           paramArrayOfByte.add(Integer.valueOf(paramInt1));
-          if (1 != ((cou)localObject).oUv) {
+          if (1 != ((cxj)localObject).rWu) {
             break;
           }
-          e.Cxv.a(11942, true, false, new Object[] { Long.valueOf(((cou)localObject).Brn) });
-          e.Cxv.a(11945, false, true, new Object[] { Long.valueOf(((cou)localObject).Brn) });
-          e.Cxv.a(11946, false, false, new Object[] { Long.valueOf(((cou)localObject).Brn) });
-          e.Cxv.idkeyStat(90L, 0L, 1L, false);
-          e.Cxv.idkeyStat(90L, 1L, 1L, true);
+          f.Iyx.a(11942, true, false, new Object[] { Long.valueOf(((cxj)localObject).HlH) });
+          f.Iyx.a(11945, false, true, new Object[] { Long.valueOf(((cxj)localObject).HlH) });
+          f.Iyx.a(11946, false, false, new Object[] { Long.valueOf(((cxj)localObject).HlH) });
+          f.Iyx.idkeyStat(90L, 0L, 1L, false);
+          f.Iyx.idkeyStat(90L, 1L, 1L, true);
           break;
-          if ((paramInt1 >= this.jcP.size()) || (paramInt1 < 0))
+          if ((paramInt1 >= this.lTo.size()) || (paramInt1 < 0))
           {
-            Log.e("MicroMsg.NetSceneSendMsg", "publishMsgSendSuccessEvent, index:%d, sendingList.size:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.jcP.size()) });
+            Log.e("MicroMsg.NetSceneSendMsg", "publishMsgSendSuccessEvent, index:%d, sendingList.size:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.lTo.size()) });
           }
           else
           {
-            l = ((ca)this.jcP.get(paramInt1)).field_msgId;
+            l = ((ca)this.lTo.get(paramInt1)).field_msgId;
             Log.d("MicroMsg.NetSceneSendMsg", "publishMsgSendSuccessEvent for msgId:%d", new Object[] { Long.valueOf(l) });
-            localca = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().Hb(l);
-            tz localtz = new tz();
-            localtz.eat.dCM = localca;
-            EventCenter.instance.publish(localtz);
+            localca = ((n)h.ae(n.class)).eSe().Oq(l);
+            vc localvc = new vc();
+            localvc.fUq.fvt = localca;
+            EventCenter.instance.publish(localvc);
           }
         }
       }
-      Log.i("MicroMsg.NetSceneSendMsg", "summerdktext total  [%d]msgs sent successfully, [%d]msgs need verifypsw", new Object[] { Integer.valueOf(paramInt1 - this.jcS.size()), Integer.valueOf(this.jcS.size()) });
+      Log.i("MicroMsg.NetSceneSendMsg", "summerdktext total  [%d]msgs sent successfully, [%d]msgs need verifypsw", new Object[] { Integer.valueOf(paramInt1 - this.lTr.size()), Integer.valueOf(this.lTr.size()) });
     }
-    Log.d("MicroMsg.NetSceneSendMsg", "summerdktext send finish, continue send SENDING msg verifyingPsw[%b]", new Object[] { Boolean.valueOf(this.jcR) });
-    if (this.jcR)
+    Log.d("MicroMsg.NetSceneSendMsg", "summerdktext send finish, continue send SENDING msg verifyingPsw[%b]", new Object[] { Boolean.valueOf(this.lTq) });
+    if (this.lTq)
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(43034);
       return;
     }
-    Pk(paramString);
+    WH(paramString);
     AppMethodBeat.o(43034);
   }
   
@@ -674,22 +691,22 @@ public final class i
     AppMethodBeat.i(43028);
     boolean bool = super.securityLimitCountReach();
     if (bool) {
-      e.Cxv.idkeyStat(111L, 254L, 1L, false);
+      f.Iyx.idkeyStat(111L, 254L, 1L, false);
     }
     AppMethodBeat.o(43028);
     return bool;
   }
   
-  public final q.b securityVerificationChecked(com.tencent.mm.network.s params)
+  public final q.b securityVerificationChecked(s params)
   {
     AppMethodBeat.i(43029);
-    if (this.jcP.size() > 0)
+    if (this.lTo.size() > 0)
     {
-      params = q.b.iMq;
+      params = q.b.lCx;
       AppMethodBeat.o(43029);
       return params;
     }
-    params = q.b.iMr;
+    params = q.b.lCy;
     AppMethodBeat.o(43029);
     return params;
   }
@@ -701,7 +718,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelmulti.i
  * JD-Core Version:    0.7.0.1
  */

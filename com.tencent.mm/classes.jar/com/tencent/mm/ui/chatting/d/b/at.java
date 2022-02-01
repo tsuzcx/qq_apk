@@ -1,37 +1,29 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.chatting.d.af;
-import com.tencent.mm.ui.chatting.viewitems.ChattingItemTranslate.c;
+import com.tencent.mm.ui.chatting.d.ag;
 
 public abstract interface at
-  extends af
+  extends ag
 {
-  public abstract ChattingItemTranslate.c NB(long paramLong);
+  public abstract void Gp(boolean paramBoolean);
   
-  public abstract boolean NC(long paramLong);
+  public abstract void aR(Runnable paramRunnable);
   
-  public abstract boolean NF(long paramLong);
+  public abstract void bzq(String paramString);
   
-  public abstract void NG(long paramLong);
+  public abstract void dC(String paramString, boolean paramBoolean);
   
-  public abstract boolean NH(long paramLong);
+  public abstract boolean hQE();
   
-  public abstract String S(long paramLong, String paramString);
+  public abstract boolean hQF();
   
-  public abstract void a(ca paramca, boolean paramBoolean, int paramInt1, int paramInt2);
+  public abstract boolean hQG();
   
-  public abstract void amG(int paramInt);
-  
-  public abstract boolean ch(ca paramca);
-  
-  public abstract boolean gRs();
-  
-  public abstract void gRt();
+  public abstract int hQH();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.b.at
  * JD-Core Version:    0.7.0.1
  */

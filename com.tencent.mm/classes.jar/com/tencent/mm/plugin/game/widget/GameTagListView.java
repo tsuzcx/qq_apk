@@ -10,6 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.g.b;
+import com.tencent.mm.plugin.game.g.c;
+import com.tencent.mm.plugin.game.g.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
@@ -25,7 +28,7 @@ public class GameTagListView
     super(paramContext, paramAttributeSet);
   }
   
-  public final void h(LinkedList<String> paramLinkedList, int paramInt)
+  public final void i(LinkedList<String> paramLinkedList, int paramInt)
   {
     AppMethodBeat.i(42623);
     if (Util.isNullOrNil(paramLinkedList))
@@ -40,12 +43,12 @@ public class GameTagListView
     while (getChildCount() < paramLinkedList.size())
     {
       localObject1 = new TextView(getContext());
-      ((TextView)localObject1).setBackgroundResource(2131232966);
+      ((TextView)localObject1).setBackgroundResource(g.d.Chk);
       ((TextView)localObject1).setMaxLines(1);
       ((TextView)localObject1).setTextColor(this.textColor);
       ((TextView)localObject1).setTextSize(0, this.textSize);
       localObject2 = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject2).setMargins(0, 0, getResources().getDimensionPixelSize(2131165453), 0);
+      ((LinearLayout.LayoutParams)localObject2).setMargins(0, 0, getResources().getDimensionPixelSize(g.c.CgU), 0);
       ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       addView((View)localObject1);
     }
@@ -64,7 +67,7 @@ public class GameTagListView
         float f2 = ((TextView)localObject2).getPaint().measureText((String)localObject1);
         float f3 = ((TextView)localObject2).getPaddingLeft();
         float f4 = ((TextView)localObject2).getPaddingRight();
-        f1 = getResources().getDimensionPixelSize(2131165453) + (f2 + f3 + f4 + f1);
+        f1 = getResources().getDimensionPixelSize(g.c.CgU) + (f2 + f3 + f4 + f1);
         if (f1 > paramInt)
         {
           ((TextView)localObject2).setVisibility(8);
@@ -88,14 +91,14 @@ public class GameTagListView
   {
     AppMethodBeat.i(42622);
     super.onFinishInflate();
-    this.textColor = getResources().getColor(2131100534);
-    this.textSize = getResources().getDimensionPixelSize(2131165457);
+    this.textColor = getResources().getColor(g.b.CgG);
+    this.textSize = getResources().getDimensionPixelSize(g.c.CgV);
     AppMethodBeat.o(42622);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.GameTagListView
  * JD-Core Version:    0.7.0.1
  */

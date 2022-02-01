@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.topstory.ui.video;
 
 public abstract interface a
 {
-  public abstract void fyx();
+  public abstract void gqu();
   
-  public abstract void fyy();
+  public abstract void gqv();
   
-  public abstract int fyz();
+  public abstract int gqw();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.a
  * JD-Core Version:    0.7.0.1
  */

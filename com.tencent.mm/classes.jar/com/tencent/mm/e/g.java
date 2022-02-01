@@ -5,111 +5,112 @@ import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.view.MotionEvent;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bv.a.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class g
 {
-  c dgO;
-  Rect dgS;
-  float dsA;
-  float dsB;
-  float dsC;
-  float dsD;
-  private int dsd;
-  Rect dsl;
-  private boolean dsr;
-  private float dsy;
-  private float dsz;
-  float dtn;
-  private int dto;
-  private Rect dtp;
-  int dtq;
-  int dtr;
-  int dtt;
-  int dtu;
+  c eYv;
+  Rect eYz;
+  private int fkQ;
+  Rect fkY;
+  float flW;
+  private int flX;
+  private Rect flY;
+  int flZ;
+  private boolean fle;
+  private float flk;
+  private float fll;
+  float flm;
+  float fln;
+  float flo;
+  float flp;
+  int fma;
+  int fmb;
+  int fmc;
   
   public g(c paramc, float paramFloat, Rect paramRect)
   {
-    AppMethodBeat.i(204729);
-    this.dsd = ((int)MMApplicationContext.getResources().getDimension(2131165963));
-    this.dto = 0;
-    this.dsr = false;
-    this.dtn = paramFloat;
-    this.dgO = paramc;
-    this.dgS = paramRect;
-    this.dsl = paramc.dsl;
-    AppMethodBeat.o(204729);
+    AppMethodBeat.i(260032);
+    this.fkQ = ((int)MMApplicationContext.getResources().getDimension(a.c.box_padding));
+    this.flX = 0;
+    this.fle = false;
+    this.flW = paramFloat;
+    this.eYv = paramc;
+    this.eYz = paramRect;
+    this.fkY = paramc.fkY;
+    AppMethodBeat.o(260032);
   }
   
   private void a(RectF paramRectF, float paramFloat, int paramInt)
   {
-    AppMethodBeat.i(204735);
+    AppMethodBeat.i(260052);
     Log.i("FixRatioCropHelper", "translateImage cropDirection:" + paramInt + " eventPosDelta:" + paramFloat);
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(204735);
+      AppMethodBeat.o(260052);
       return;
-      if (((int)paramRectF.bottom <= (int)this.dsB) && ((int)paramRectF.bottom <= this.dgS.bottom))
+      if (((int)paramRectF.bottom <= (int)this.fln) && ((int)paramRectF.bottom <= this.eYz.bottom))
       {
-        if (paramFloat > this.dsB - paramRectF.bottom)
+        if (paramFloat > this.fln - paramRectF.bottom)
         {
-          Log.i("FixRatioCropHelper", "translateImage bottom 11:" + (this.dsB - paramRectF.bottom));
-          getMainMatrix().postTranslate(0.0F, this.dsB - paramRectF.bottom);
-          AppMethodBeat.o(204735);
+          Log.i("FixRatioCropHelper", "translateImage bottom 11:" + (this.fln - paramRectF.bottom));
+          getMainMatrix().postTranslate(0.0F, this.fln - paramRectF.bottom);
+          AppMethodBeat.o(260052);
           return;
         }
         Log.i("FixRatioCropHelper", "translateImage bottom 22:".concat(String.valueOf(paramFloat)));
         getMainMatrix().postTranslate(0.0F, paramFloat);
-        AppMethodBeat.o(204735);
+        AppMethodBeat.o(260052);
         return;
       }
       Log.i("FixRatioCropHelper", "translateImage bottom else :".concat(String.valueOf(paramFloat)));
-      AppMethodBeat.o(204735);
+      AppMethodBeat.o(260052);
       return;
-      if (((int)paramRectF.top >= (int)this.dsA) && ((int)paramRectF.top >= this.dgS.top))
+      if (((int)paramRectF.top >= (int)this.flm) && ((int)paramRectF.top >= this.eYz.top))
       {
-        if (paramFloat > paramRectF.top - this.dsA)
+        if (paramFloat > paramRectF.top - this.flm)
         {
-          Log.i("FixRatioCropHelper", "translateImage imageRect.top - mEdgeTop - imageRect.left:" + (paramRectF.top - this.dsA));
-          getMainMatrix().postTranslate(0.0F, this.dsA - paramRectF.top);
-          AppMethodBeat.o(204735);
+          Log.i("FixRatioCropHelper", "translateImage imageRect.top - mEdgeTop - imageRect.left:" + (paramRectF.top - this.flm));
+          getMainMatrix().postTranslate(0.0F, this.flm - paramRectF.top);
+          AppMethodBeat.o(260052);
           return;
         }
         Log.i("FixRatioCropHelper", "translateImage top eventPosDelta:".concat(String.valueOf(paramFloat)));
         getMainMatrix().postTranslate(0.0F, paramFloat);
-        AppMethodBeat.o(204735);
+        AppMethodBeat.o(260052);
         return;
-        if (((int)paramRectF.right <= (int)this.dsD) && ((int)paramRectF.right <= this.dgS.right))
+        if (((int)paramRectF.right <= (int)this.flp) && ((int)paramRectF.right <= this.eYz.right))
         {
-          if (paramFloat > this.dsD - paramRectF.right)
+          if (paramFloat > this.flp - paramRectF.right)
           {
-            getMainMatrix().postTranslate(this.dsD - paramRectF.right, 0.0F);
-            AppMethodBeat.o(204735);
+            getMainMatrix().postTranslate(this.flp - paramRectF.right, 0.0F);
+            AppMethodBeat.o(260052);
             return;
           }
           getMainMatrix().postTranslate(paramFloat, 0.0F);
-          AppMethodBeat.o(204735);
+          AppMethodBeat.o(260052);
           return;
           Log.i("FixRatioCropHelper", "translateImage LEFT begin");
-          if (((int)paramRectF.left >= (int)this.dsC) && ((int)paramRectF.left >= this.dgS.left))
+          if (((int)paramRectF.left >= (int)this.flo) && ((int)paramRectF.left >= this.eYz.left))
           {
-            if (paramFloat > paramRectF.left - this.dsC)
+            if (paramFloat > paramRectF.left - this.flo)
             {
-              Log.i("FixRatioCropHelper", "translateImage left mEdgeLeft - imageRect.left:" + (this.dsC - paramRectF.left));
-              getMainMatrix().postTranslate(this.dsC - paramRectF.left, 0.0F);
-              AppMethodBeat.o(204735);
+              Log.i("FixRatioCropHelper", "translateImage left mEdgeLeft - imageRect.left:" + (this.flo - paramRectF.left));
+              getMainMatrix().postTranslate(this.flo - paramRectF.left, 0.0F);
+              AppMethodBeat.o(260052);
               return;
             }
             Log.i("FixRatioCropHelper", "translateImage left eventPosDelta:".concat(String.valueOf(paramFloat)));
             getMainMatrix().postTranslate(paramFloat, 0.0F);
-            AppMethodBeat.o(204735);
+            AppMethodBeat.o(260052);
             return;
           }
           Log.i("FixRatioCropHelper", "translateImage LEFT else");
@@ -120,66 +121,66 @@ public final class g
   
   private void a(RectF paramRectF, int paramInt)
   {
-    AppMethodBeat.i(204733);
+    AppMethodBeat.i(260047);
     Log.i("FixRatioCropHelper", "scaleImage cropDirection:".concat(String.valueOf(paramInt)));
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(204733);
+      AppMethodBeat.o(260047);
       return;
       float f;
-      if ((this.dgS.height() > paramRectF.height()) && (this.dgS.bottom < this.dsl.bottom))
+      if ((this.eYz.height() > paramRectF.height()) && (this.eYz.bottom < this.fkY.bottom))
       {
-        f = this.dgS.height() / paramRectF.height();
-        getMainMatrix().postScale(f, f, this.dgS.centerX(), this.dgS.top);
+        f = this.eYz.height() / paramRectF.height();
+        getMainMatrix().postScale(f, f, this.eYz.centerX(), this.eYz.top);
         Log.i("FixRatioCropHelper", "scaleImage bottom 11 :".concat(String.valueOf(f)));
       }
-      if (this.dgS.width() > paramRectF.width())
+      if (this.eYz.width() > paramRectF.width())
       {
-        f = this.dgS.width() / paramRectF.width();
-        getMainMatrix().postScale(f, f, this.dgS.centerX(), this.dgS.top);
+        f = this.eYz.width() / paramRectF.width();
+        getMainMatrix().postScale(f, f, this.eYz.centerX(), this.eYz.top);
         Log.i("FixRatioCropHelper", "scaleImage bottom 22 :".concat(String.valueOf(f)));
-        AppMethodBeat.o(204733);
+        AppMethodBeat.o(260047);
         return;
-        if ((this.dgS.height() > paramRectF.height()) && (this.dgS.top > this.dsl.top))
+        if ((this.eYz.height() > paramRectF.height()) && (this.eYz.top > this.fkY.top))
         {
-          f = this.dgS.height() / paramRectF.height();
+          f = this.eYz.height() / paramRectF.height();
           Log.i("FixRatioCropHelper", "scaleImage TOP 11 :".concat(String.valueOf(f)));
-          getMainMatrix().postScale(f, f, this.dgS.centerX(), this.dgS.bottom);
+          getMainMatrix().postScale(f, f, this.eYz.centerX(), this.eYz.bottom);
         }
-        if (this.dgS.width() > paramRectF.width())
+        if (this.eYz.width() > paramRectF.width())
         {
-          f = this.dgS.width() / paramRectF.width();
+          f = this.eYz.width() / paramRectF.width();
           Log.i("FixRatioCropHelper", "scaleImage TOP 22 :".concat(String.valueOf(f)));
-          getMainMatrix().postScale(f, f, this.dgS.centerX(), this.dgS.bottom);
-          AppMethodBeat.o(204733);
+          getMainMatrix().postScale(f, f, this.eYz.centerX(), this.eYz.bottom);
+          AppMethodBeat.o(260047);
           return;
-          if ((this.dgS.width() > paramRectF.width()) && (this.dgS.right < this.dsl.right))
+          if ((this.eYz.width() > paramRectF.width()) && (this.eYz.right < this.fkY.right))
           {
-            f = this.dgS.width() / paramRectF.width();
+            f = this.eYz.width() / paramRectF.width();
             Log.i("FixRatioCropHelper", "scaleImage RIGHT 11 :".concat(String.valueOf(f)));
-            getMainMatrix().postScale(f, f, this.dgS.left, this.dgS.centerY());
+            getMainMatrix().postScale(f, f, this.eYz.left, this.eYz.centerY());
           }
-          if (this.dgS.height() > paramRectF.height())
+          if (this.eYz.height() > paramRectF.height())
           {
-            f = this.dgS.height() / paramRectF.height();
+            f = this.eYz.height() / paramRectF.height();
             Log.i("FixRatioCropHelper", "scaleImage RIGHT 22 :".concat(String.valueOf(f)));
-            getMainMatrix().postScale(f, f, this.dgS.left, this.dgS.centerY());
-            AppMethodBeat.o(204733);
+            getMainMatrix().postScale(f, f, this.eYz.left, this.eYz.centerY());
+            AppMethodBeat.o(260047);
             return;
-            if ((this.dgS.width() > paramRectF.width()) && (this.dgS.left > this.dsl.left))
+            if ((this.eYz.width() > paramRectF.width()) && (this.eYz.left > this.fkY.left))
             {
-              f = this.dgS.width() / paramRectF.width();
+              f = this.eYz.width() / paramRectF.width();
               Log.i("FixRatioCropHelper", "scaleImage LEFT 11 :".concat(String.valueOf(f)));
-              getMainMatrix().postScale(f, f, this.dgS.right, this.dgS.centerY());
+              getMainMatrix().postScale(f, f, this.eYz.right, this.eYz.centerY());
             }
-            if (this.dgS.height() > paramRectF.height())
+            if (this.eYz.height() > paramRectF.height())
             {
-              f = this.dgS.height() / paramRectF.height();
+              f = this.eYz.height() / paramRectF.height();
               Log.i("FixRatioCropHelper", "scaleImage LEFT 22 :".concat(String.valueOf(f)));
-              getMainMatrix().postScale(f, f, this.dgS.right, this.dgS.centerY());
+              getMainMatrix().postScale(f, f, this.eYz.right, this.eYz.centerY());
             }
           }
         }
@@ -189,40 +190,40 @@ public final class g
   
   private void b(RectF paramRectF, int paramInt)
   {
-    AppMethodBeat.i(204734);
+    AppMethodBeat.i(260049);
     if ((paramInt & 0x1) == 1) {
-      a(paramRectF, this.dgS.left - this.dtp.left, 1);
+      a(paramRectF, this.eYz.left - this.flY.left, 1);
     }
     if ((paramInt & 0x4) == 4) {
-      a(paramRectF, this.dgS.right - this.dtp.right, 4);
+      a(paramRectF, this.eYz.right - this.flY.right, 4);
     }
     if ((paramInt & 0x2) == 2) {
-      a(paramRectF, this.dgS.top - this.dtp.top, 2);
+      a(paramRectF, this.eYz.top - this.flY.top, 2);
     }
     if ((paramInt & 0x8) == 8) {
-      a(paramRectF, this.dgS.bottom - this.dtp.bottom, 8);
+      a(paramRectF, this.eYz.bottom - this.flY.bottom, 8);
     }
-    AppMethodBeat.o(204734);
+    AppMethodBeat.o(260049);
   }
   
   private void c(int paramInt1, int paramInt2, Rect paramRect)
   {
-    AppMethodBeat.i(204731);
-    if (this.dgS.top >= this.dsl.top)
+    AppMethodBeat.i(260039);
+    if (this.eYz.top >= this.fkY.top)
     {
-      if (paramInt1 > this.dgS.top - this.dsl.top) {
-        e(this.dsl.top, paramInt2, paramRect);
+      if (paramInt1 > this.eYz.top - this.fkY.top) {
+        e(this.fkY.top, paramInt2, paramRect);
       }
     }
     else
     {
-      if (this.dgS.top > this.dgS.bottom - this.dsd * 2) {
-        e(this.dgS.bottom - this.dsd * 2, paramInt2, paramRect);
+      if (this.eYz.top > this.eYz.bottom - this.fkQ * 2) {
+        e(this.eYz.bottom - this.fkQ * 2, paramInt2, paramRect);
       }
-      if (this.dgS.top < this.dsl.top) {
-        e(this.dsl.top, paramInt2, paramRect);
+      if (this.eYz.top < this.fkY.top) {
+        e(this.fkY.top, paramInt2, paramRect);
       }
-      paramRect = this.dgO.drS.gth().getBaseBoardView().getCurImageRect();
+      paramRect = this.eYv.fkE.hou().getBaseBoardView().getCurImageRect();
       if (paramInt2 <= 2) {
         break label188;
       }
@@ -231,9 +232,9 @@ public final class g
     for (;;)
     {
       a(paramRect, 2);
-      AppMethodBeat.o(204731);
+      AppMethodBeat.o(260039);
       return;
-      e(this.dgS.top - paramInt1, paramInt2, paramRect);
+      e(this.eYz.top - paramInt1, paramInt2, paramRect);
       break;
       label188:
       b(paramRect, 2);
@@ -244,20 +245,20 @@ public final class g
   
   private void d(int paramInt1, int paramInt2, Rect paramRect)
   {
-    AppMethodBeat.i(204732);
-    if (this.dgS.bottom <= this.dsl.bottom)
+    AppMethodBeat.i(260042);
+    if (this.eYz.bottom <= this.fkY.bottom)
     {
-      if (paramInt1 <= this.dsl.bottom - this.dgS.bottom) {
+      if (paramInt1 <= this.fkY.bottom - this.eYz.bottom) {
         break label174;
       }
-      f(this.dsl.bottom, paramInt2, paramRect);
-      if (this.dgS.bottom < this.dgS.top + this.dsd * 2) {
-        f(this.dgS.top + this.dsd * 2, paramInt2, paramRect);
+      f(this.fkY.bottom, paramInt2, paramRect);
+      if (this.eYz.bottom < this.eYz.top + this.fkQ * 2) {
+        f(this.eYz.top + this.fkQ * 2, paramInt2, paramRect);
       }
-      if (this.dgS.bottom > this.dsl.bottom) {
-        f(this.dgS.bottom, paramInt2, paramRect);
+      if (this.eYz.bottom > this.fkY.bottom) {
+        f(this.eYz.bottom, paramInt2, paramRect);
       }
-      paramRect = this.dgO.drS.gth().getBaseBoardView().getCurImageRect();
+      paramRect = this.eYv.fkE.hou().getBaseBoardView().getCurImageRect();
       if (paramInt2 <= 8) {
         break label192;
       }
@@ -266,10 +267,10 @@ public final class g
     for (;;)
     {
       a(paramRect, 8);
-      AppMethodBeat.o(204732);
+      AppMethodBeat.o(260042);
       return;
       label174:
-      f(this.dgS.bottom + paramInt1, paramInt2, paramRect);
+      f(this.eYz.bottom + paramInt1, paramInt2, paramRect);
       break;
       label192:
       b(paramRect, 8);
@@ -280,32 +281,32 @@ public final class g
   
   private void e(int paramInt1, int paramInt2, Rect paramRect)
   {
-    AppMethodBeat.i(204736);
+    AppMethodBeat.i(260056);
     int i;
     for (;;)
     {
-      i = (int)((paramRect.bottom - paramInt1) * this.dtn);
+      i = (int)((paramRect.bottom - paramInt1) * this.flW);
       switch (paramInt2)
       {
       case 4: 
       case 5: 
       default: 
-        AppMethodBeat.o(204736);
+        AppMethodBeat.o(260056);
         return;
       case 2: 
         paramInt2 = paramRect.centerX();
-        this.dtu = (paramInt2 - i / 2);
-        this.dtt = (i / 2 + paramInt2);
-        if (paramInt2 < this.dsl.centerX())
+        this.fmc = (paramInt2 - i / 2);
+        this.fmb = (i / 2 + paramInt2);
+        if (paramInt2 < this.fkY.centerX())
         {
-          if (this.dtu >= this.dsl.left) {
+          if (this.fmc >= this.fkY.left) {
             break label138;
           }
           paramInt2 = 6;
         }
         else
         {
-          if (this.dtt <= this.dsl.right) {
+          if (this.fmb <= this.fkY.right) {
             break label138;
           }
           paramInt2 = 3;
@@ -314,56 +315,56 @@ public final class g
       }
     }
     label138:
-    this.dgS.left = this.dtu;
+    this.eYz.left = this.fmc;
     do
     {
-      this.dgS.right = this.dtt;
-      this.dgS.top = paramInt1;
+      this.eYz.right = this.fmb;
+      this.eYz.top = paramInt1;
       break;
-      this.dtu = (paramRect.right - i);
-      if (this.dtu < this.dsl.left)
+      this.fmc = (paramRect.right - i);
+      if (this.fmc < this.fkY.left)
       {
         paramInt1 = paramRect.right;
-        paramInt2 = this.dsl.left;
-        this.dgS.left = this.dsl.left;
-        this.dgS.top = ((int)(paramRect.bottom - (paramInt1 - paramInt2) / this.dtn));
-        AppMethodBeat.o(204736);
+        paramInt2 = this.fkY.left;
+        this.eYz.left = this.fkY.left;
+        this.eYz.top = ((int)(paramRect.bottom - (paramInt1 - paramInt2) / this.flW));
+        AppMethodBeat.o(260056);
         return;
       }
-      this.dgS.left = this.dtu;
-      this.dgS.top = paramInt1;
-      AppMethodBeat.o(204736);
+      this.eYz.left = this.fmc;
+      this.eYz.top = paramInt1;
+      AppMethodBeat.o(260056);
       return;
-      this.dtt = (i + paramRect.left);
-    } while (this.dgS.right <= this.dsl.right);
-    paramInt1 = this.dsl.right;
+      this.fmb = (i + paramRect.left);
+    } while (this.eYz.right <= this.fkY.right);
+    paramInt1 = this.fkY.right;
     paramInt2 = paramRect.left;
-    this.dgS.right = this.dsl.right;
-    this.dgS.top = ((int)(paramRect.bottom - (paramInt1 - paramInt2) / this.dtn));
-    AppMethodBeat.o(204736);
+    this.eYz.right = this.fkY.right;
+    this.eYz.top = ((int)(paramRect.bottom - (paramInt1 - paramInt2) / this.flW));
+    AppMethodBeat.o(260056);
   }
   
   private void f(int paramInt1, int paramInt2, Rect paramRect)
   {
-    AppMethodBeat.i(204737);
+    AppMethodBeat.i(260060);
     int i;
     for (;;)
     {
-      i = (int)((paramInt1 - paramRect.top) * this.dtn);
+      i = (int)((paramInt1 - paramRect.top) * this.flW);
       switch (paramInt2)
       {
       case 10: 
       case 11: 
       default: 
-        AppMethodBeat.o(204737);
+        AppMethodBeat.o(260060);
         return;
       case 8: 
         paramInt2 = paramRect.centerX();
-        this.dtu = (paramInt2 - i / 2);
-        this.dtt = (i / 2 + paramInt2);
-        if (paramInt2 < this.dsl.centerX())
+        this.fmc = (paramInt2 - i / 2);
+        this.fmb = (i / 2 + paramInt2);
+        if (paramInt2 < this.fkY.centerX())
         {
-          if (this.dtu >= this.dsl.left) {
+          if (this.fmc >= this.fkY.left) {
             break label155;
           }
           Log.i("FixRatioCropHelper", "change direct to right_bottom");
@@ -371,7 +372,7 @@ public final class g
         }
         else
         {
-          if (this.dtt <= this.dsl.right) {
+          if (this.fmb <= this.fkY.right) {
             break label155;
           }
           Log.i("FixRatioCropHelper", "change direct to RIGHT_TOP");
@@ -381,59 +382,59 @@ public final class g
       }
     }
     label155:
-    this.dgS.left = this.dtu;
+    this.eYz.left = this.fmc;
     do
     {
-      this.dgS.right = this.dtt;
-      this.dgS.bottom = paramInt1;
+      this.eYz.right = this.fmb;
+      this.eYz.bottom = paramInt1;
       break;
-      this.dtu = (paramRect.right - i);
-      Log.i("FixRatioCropHelper", "adjustBottom RIGHT_BOTTOM :" + this.dgS);
-      if (this.dtu < this.dsl.left)
+      this.fmc = (paramRect.right - i);
+      Log.i("FixRatioCropHelper", "adjustBottom RIGHT_BOTTOM :" + this.eYz);
+      if (this.fmc < this.fkY.left)
       {
         paramInt1 = paramRect.right;
-        paramInt2 = this.dsl.left;
-        this.dgS.left = this.dsl.left;
-        Rect localRect = this.dgS;
+        paramInt2 = this.fkY.left;
+        this.eYz.left = this.fkY.left;
+        Rect localRect = this.eYz;
         f = paramRect.top;
-        localRect.bottom = ((int)((paramInt1 - paramInt2) / this.dtn + f));
-        AppMethodBeat.o(204737);
+        localRect.bottom = ((int)((paramInt1 - paramInt2) / this.flW + f));
+        AppMethodBeat.o(260060);
         return;
       }
-      this.dgS.left = this.dtu;
-      this.dgS.bottom = paramInt1;
-      AppMethodBeat.o(204737);
+      this.eYz.left = this.fmc;
+      this.eYz.bottom = paramInt1;
+      AppMethodBeat.o(260060);
       return;
-      this.dtt = (i + paramRect.left);
-      Log.i("FixRatioCropHelper", "adjustBottom RIGHT_BOTTOM" + this.dgS);
-    } while (this.dtt <= this.dsl.right);
-    paramInt1 = this.dsl.right;
+      this.fmb = (i + paramRect.left);
+      Log.i("FixRatioCropHelper", "adjustBottom RIGHT_BOTTOM" + this.eYz);
+    } while (this.fmb <= this.fkY.right);
+    paramInt1 = this.fkY.right;
     paramInt2 = paramRect.left;
-    this.dgS.right = this.dsl.right;
-    paramRect = this.dgS;
-    float f = this.dgS.top;
-    paramRect.bottom = ((int)((paramInt1 - paramInt2) / this.dtn + f));
-    AppMethodBeat.o(204737);
+    this.eYz.right = this.fkY.right;
+    paramRect = this.eYz;
+    float f = this.eYz.top;
+    paramRect.bottom = ((int)((paramInt1 - paramInt2) / this.flW + f));
+    AppMethodBeat.o(260060);
   }
   
   private void g(int paramInt1, int paramInt2, Rect paramRect)
   {
-    AppMethodBeat.i(204738);
-    if (this.dgS.left >= this.dsl.left)
+    AppMethodBeat.i(260062);
+    if (this.eYz.left >= this.fkY.left)
     {
-      if (paramInt1 > this.dgS.left - this.dsl.left) {
-        h(this.dsl.left, paramInt2, paramRect);
+      if (paramInt1 > this.eYz.left - this.fkY.left) {
+        h(this.fkY.left, paramInt2, paramRect);
       }
     }
     else
     {
-      if (this.dgS.left > this.dgS.right - this.dsd * 2) {
-        h(this.dgS.right - this.dsd * 2, paramInt2, paramRect);
+      if (this.eYz.left > this.eYz.right - this.fkQ * 2) {
+        h(this.eYz.right - this.fkQ * 2, paramInt2, paramRect);
       }
-      if (this.dgS.left < this.dsl.left) {
-        h(this.dsl.left, paramInt2, paramRect);
+      if (this.eYz.left < this.fkY.left) {
+        h(this.fkY.left, paramInt2, paramRect);
       }
-      paramRect = this.dgO.drS.gth().getBaseBoardView().getCurImageRect();
+      paramRect = this.eYv.fkE.hou().getBaseBoardView().getCurImageRect();
       if (paramInt2 <= 1) {
         break label190;
       }
@@ -442,9 +443,9 @@ public final class g
     for (;;)
     {
       a(paramRect, 1);
-      AppMethodBeat.o(204738);
+      AppMethodBeat.o(260062);
       return;
-      h(this.dgS.left - paramInt1, paramInt2, paramRect);
+      h(this.eYz.left - paramInt1, paramInt2, paramRect);
       break;
       label190:
       b(paramRect, 1);
@@ -455,39 +456,39 @@ public final class g
   
   private Matrix getMainMatrix()
   {
-    AppMethodBeat.i(204742);
-    Matrix localMatrix = this.dgO.drS.gth().getBaseBoardView().getMainMatrix();
-    AppMethodBeat.o(204742);
+    AppMethodBeat.i(260076);
+    Matrix localMatrix = this.eYv.fkE.hou().getBaseBoardView().getMainMatrix();
+    AppMethodBeat.o(260076);
     return localMatrix;
   }
   
   private void h(int paramInt1, int paramInt2, Rect paramRect)
   {
-    AppMethodBeat.i(204739);
+    AppMethodBeat.i(260067);
     int i;
     for (;;)
     {
-      i = (int)((paramRect.right - paramInt1) / this.dtn);
+      i = (int)((paramRect.right - paramInt1) / this.flW);
       switch (paramInt2)
       {
       default: 
-        AppMethodBeat.o(204739);
+        AppMethodBeat.o(260067);
         return;
       case 1: 
         float f = paramRect.centerY();
-        this.dtq = ((int)(f - i / 2));
-        this.dtr = ((int)(i / 2 + f));
-        Log.i("FixRatioCropHelper", "adjustLeft :" + this.dgS + " LEFT");
-        if (f >= this.dsl.centerY())
+        this.flZ = ((int)(f - i / 2));
+        this.fma = ((int)(i / 2 + f));
+        Log.i("FixRatioCropHelper", "adjustLeft :" + this.eYz + " LEFT");
+        if (f >= this.fkY.centerY())
         {
-          if (this.dtr <= this.dsl.bottom) {
+          if (this.fma <= this.fkY.bottom) {
             break label180;
           }
           paramInt2 = 3;
         }
         else
         {
-          if (this.dtq >= this.dsl.top) {
+          if (this.flZ >= this.fkY.top) {
             break label180;
           }
           paramInt2 = 9;
@@ -496,60 +497,60 @@ public final class g
       }
     }
     label180:
-    this.dgS.top = this.dtq;
+    this.eYz.top = this.flZ;
     do
     {
-      this.dgS.bottom = this.dtr;
-      this.dgS.left = paramInt1;
+      this.eYz.bottom = this.fma;
+      this.eYz.left = paramInt1;
       break;
-      this.dtq = (paramRect.bottom - i);
-      if (this.dtq <= this.dsl.top)
+      this.flZ = (paramRect.bottom - i);
+      if (this.flZ <= this.fkY.top)
       {
         paramInt1 = paramRect.bottom;
-        paramInt2 = this.dsl.top;
-        this.dgS.top = this.dsl.top;
+        paramInt2 = this.fkY.top;
+        this.eYz.top = this.fkY.top;
       }
-      for (this.dgS.left = ((int)(paramRect.right - (paramInt1 - paramInt2) * this.dtn));; this.dgS.left = paramInt1)
+      for (this.eYz.left = ((int)(paramRect.right - (paramInt1 - paramInt2) * this.flW));; this.eYz.left = paramInt1)
       {
-        Log.i("FixRatioCropHelper", "adjustLeft :" + this.dgS + " LEFT_TOP");
-        AppMethodBeat.o(204739);
+        Log.i("FixRatioCropHelper", "adjustLeft :" + this.eYz + " LEFT_TOP");
+        AppMethodBeat.o(260067);
         return;
-        this.dgS.top = this.dtq;
+        this.eYz.top = this.flZ;
       }
-      this.dtr = (i + paramRect.top);
-      Log.i("FixRatioCropHelper", "adjustLeft :" + this.dgS + " LEFT_BOTTOM");
-    } while (this.dtr < this.dsl.bottom);
-    paramInt1 = this.dsl.bottom;
+      this.fma = (i + paramRect.top);
+      Log.i("FixRatioCropHelper", "adjustLeft :" + this.eYz + " LEFT_BOTTOM");
+    } while (this.fma < this.fkY.bottom);
+    paramInt1 = this.fkY.bottom;
     paramInt2 = paramRect.top;
-    this.dgS.bottom = this.dsl.bottom;
-    this.dgS.left = ((int)(paramRect.right - (paramInt1 - paramInt2) * this.dtn));
-    AppMethodBeat.o(204739);
+    this.eYz.bottom = this.fkY.bottom;
+    this.eYz.left = ((int)(paramRect.right - (paramInt1 - paramInt2) * this.flW));
+    AppMethodBeat.o(260067);
   }
   
   private void i(int paramInt1, int paramInt2, Rect paramRect)
   {
-    AppMethodBeat.i(204740);
-    if (this.dgS.right <= this.dsl.right)
+    AppMethodBeat.i(260069);
+    if (this.eYz.right <= this.fkY.right)
     {
-      if (paramInt1 > this.dsl.right - this.dgS.right)
+      if (paramInt1 > this.fkY.right - this.eYz.right)
       {
         Log.i("FixRatioCropHelper", "changeRight outof bound:");
-        j(this.dsl.right, paramInt2, paramRect);
+        j(this.fkY.right, paramInt2, paramRect);
       }
     }
     else
     {
-      if (this.dgS.right < this.dgS.left + this.dsd * 2)
+      if (this.eYz.right < this.eYz.left + this.fkQ * 2)
       {
-        Log.i("FixRatioCropHelper", "changeRight < 2 padding>: " + this.dgS.right);
-        j(this.dgS.left + this.dsd * 2, paramInt2, paramRect);
+        Log.i("FixRatioCropHelper", "changeRight < 2 padding>: " + this.eYz.right);
+        j(this.eYz.left + this.fkQ * 2, paramInt2, paramRect);
       }
-      if (this.dgS.right > this.dsl.right)
+      if (this.eYz.right > this.fkY.right)
       {
-        Log.i("FixRatioCropHelper", "changeRight after out of bound>: " + this.dgS.right);
-        j(this.dsl.right, paramInt2, paramRect);
+        Log.i("FixRatioCropHelper", "changeRight after out of bound>: " + this.eYz.right);
+        j(this.fkY.right, paramInt2, paramRect);
       }
-      paramRect = this.dgO.drS.gth().getBaseBoardView().getCurImageRect();
+      paramRect = this.eYv.fkE.hou().getBaseBoardView().getCurImageRect();
       if (paramInt2 <= 4) {
         break label269;
       }
@@ -558,10 +559,10 @@ public final class g
     for (;;)
     {
       a(paramRect, 4);
-      AppMethodBeat.o(204740);
+      AppMethodBeat.o(260069);
       return;
       Log.i("FixRatioCropHelper", "changeRight normal eventPosDelta: ".concat(String.valueOf(paramInt1)));
-      j(this.dgS.right + paramInt1, paramInt2, paramRect);
+      j(this.eYz.right + paramInt1, paramInt2, paramRect);
       break;
       label269:
       b(paramRect, 4);
@@ -572,92 +573,92 @@ public final class g
   
   private void j(int paramInt1, int paramInt2, Rect paramRect)
   {
-    AppMethodBeat.i(204741);
-    int i = (int)((paramInt1 - paramRect.left) / this.dtn);
+    AppMethodBeat.i(260074);
+    int i = (int)((paramInt1 - paramRect.left) / this.flW);
     Log.i("FixRatioCropHelper", "adjustRight delta:".concat(String.valueOf(i)));
     switch (paramInt2)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(204741);
+      AppMethodBeat.o(260074);
       return;
       paramInt2 = paramRect.centerY();
-      this.dtq = (paramInt2 - i / 2);
-      this.dtr = (i / 2 + paramInt2);
-      Log.i("FixRatioCropHelper", "adjustRight right mBoxRect :" + this.dgS);
-      if (paramInt2 > this.dsl.centerY())
+      this.flZ = (paramInt2 - i / 2);
+      this.fma = (i / 2 + paramInt2);
+      Log.i("FixRatioCropHelper", "adjustRight right mBoxRect :" + this.eYz);
+      if (paramInt2 > this.fkY.centerY())
       {
-        if (this.dtr <= this.dsl.bottom) {
+        if (this.fma <= this.fkY.bottom) {
           break label180;
         }
         paramInt2 = 6;
         break;
       }
-      if (this.dtq < this.dsl.top)
+      if (this.flZ < this.fkY.top)
       {
         paramInt2 = 12;
         break;
       }
       label180:
-      this.dgS.right = paramInt1;
-      this.dgS.top = this.dtq;
-      this.dgS.bottom = this.dtr;
-      AppMethodBeat.o(204741);
+      this.eYz.right = paramInt1;
+      this.eYz.top = this.flZ;
+      this.eYz.bottom = this.fma;
+      AppMethodBeat.o(260074);
       return;
-      this.dtq = (paramRect.bottom - i);
-      Log.i("FixRatioCropHelper", "adjustRight RIGHT_TOP mBoxRect :" + this.dgS);
-      if (this.dtq < this.dsl.top)
+      this.flZ = (paramRect.bottom - i);
+      Log.i("FixRatioCropHelper", "adjustRight RIGHT_TOP mBoxRect :" + this.eYz);
+      if (this.flZ < this.fkY.top)
       {
         paramInt1 = paramRect.bottom;
-        paramInt2 = this.dsl.top;
-        this.dgS.top = this.dsl.top;
-        paramRect = this.dgS;
-        float f = this.dgS.left;
-        paramRect.right = ((int)((paramInt1 - paramInt2) * this.dtn + f));
-        AppMethodBeat.o(204741);
+        paramInt2 = this.fkY.top;
+        this.eYz.top = this.fkY.top;
+        paramRect = this.eYz;
+        float f = this.eYz.left;
+        paramRect.right = ((int)((paramInt1 - paramInt2) * this.flW + f));
+        AppMethodBeat.o(260074);
         return;
       }
-      this.dgS.top = this.dtq;
-      this.dgS.right = paramInt1;
-      AppMethodBeat.o(204741);
+      this.eYz.top = this.flZ;
+      this.eYz.right = paramInt1;
+      AppMethodBeat.o(260074);
       return;
-      this.dtr = (i + paramRect.top);
-      Log.i("FixRatioCropHelper", "adjustRight RIGHT_BOTTOM mBoxRect.top :" + this.dgS);
-      if (this.dgS.bottom > this.dsl.bottom)
+      this.fma = (i + paramRect.top);
+      Log.i("FixRatioCropHelper", "adjustRight RIGHT_BOTTOM mBoxRect.top :" + this.eYz);
+      if (this.eYz.bottom > this.fkY.bottom)
       {
-        paramInt1 = this.dsl.bottom;
+        paramInt1 = this.fkY.bottom;
         paramInt2 = paramRect.top;
-        this.dgS.bottom = this.dsl.bottom;
-        this.dgS.right = (paramInt1 - paramInt2 + this.dgS.left);
-        AppMethodBeat.o(204741);
+        this.eYz.bottom = this.fkY.bottom;
+        this.eYz.right = (paramInt1 - paramInt2 + this.eYz.left);
+        AppMethodBeat.o(260074);
         return;
       }
-      this.dgS.bottom = this.dtr;
-      this.dgS.right = paramInt1;
+      this.eYz.bottom = this.fma;
+      this.eYz.right = paramInt1;
     }
   }
   
-  final boolean v(MotionEvent paramMotionEvent)
+  final boolean w(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(204730);
-    Object localObject = this.dgO.drS.gth().getBaseBoardView().getCurImageRect();
-    this.dsA = (((RectF)localObject).top - (((RectF)localObject).bottom - this.dgS.bottom));
-    this.dsB = (((RectF)localObject).bottom + (this.dgS.top - ((RectF)localObject).top));
-    this.dsC = (((RectF)localObject).left - (((RectF)localObject).right - this.dgS.right));
+    AppMethodBeat.i(260037);
+    Object localObject = this.eYv.fkE.hou().getBaseBoardView().getCurImageRect();
+    this.flm = (((RectF)localObject).top - (((RectF)localObject).bottom - this.eYz.bottom));
+    this.fln = (((RectF)localObject).bottom + (this.eYz.top - ((RectF)localObject).top));
+    this.flo = (((RectF)localObject).left - (((RectF)localObject).right - this.eYz.right));
     final float f1 = ((RectF)localObject).right;
-    this.dsD = (this.dgS.left - ((RectF)localObject).left + f1);
-    if (this.dsD > this.dsl.right) {
-      this.dsD = this.dsl.right;
+    this.flp = (this.eYz.left - ((RectF)localObject).left + f1);
+    if (this.flp > this.fkY.right) {
+      this.flp = this.fkY.right;
     }
-    if (this.dsC < this.dsd) {
-      this.dsC = this.dsd;
+    if (this.flo < this.fkQ) {
+      this.flo = this.fkQ;
     }
-    if (this.dsB > this.dsl.bottom) {
-      this.dsB = this.dsl.bottom;
+    if (this.fln > this.fkY.bottom) {
+      this.fln = this.fkY.bottom;
     }
-    if (this.dsA < this.dsd) {
-      this.dsA = this.dsd;
+    if (this.flm < this.fkQ) {
+      this.flm = this.fkQ;
     }
     switch (paramMotionEvent.getActionMasked())
     {
@@ -671,42 +672,42 @@ public final class g
       {
         for (;;)
         {
-          boolean bool = this.dsr;
-          AppMethodBeat.o(204730);
+          boolean bool = this.fle;
+          AppMethodBeat.o(260037);
           return bool;
-          this.dto = 0;
-          this.dsr = false;
+          this.flX = 0;
+          this.fle = false;
           continue;
-          Log.i("FixRatioCropHelper", "ACTION_DOWN moveDirection :" + this.dto);
-          this.dsr = false;
-          if (this.dgO.dsp != null) {
-            this.dgO.dsp.cancel();
+          Log.i("FixRatioCropHelper", "ACTION_DOWN moveDirection :" + this.flX);
+          this.fle = false;
+          if (this.eYv.flc != null) {
+            this.eYv.flc.cancel();
           }
-          if (this.dgO.dsi.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-            this.dto |= 0x8;
+          if (this.eYv.fkV.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+            this.flX |= 0x8;
           }
-          if (this.dgO.dsh.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-            this.dto |= 0x2;
+          if (this.eYv.fkU.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+            this.flX |= 0x2;
           }
-          if (this.dgO.dsj.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-            this.dto |= 0x1;
+          if (this.eYv.fkW.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+            this.flX |= 0x1;
           }
-          if (this.dgO.dsk.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-            this.dto |= 0x4;
+          if (this.eYv.fkX.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+            this.flX |= 0x4;
           }
-          this.dgO.dsx = false;
-          if (this.dto > 0)
+          this.eYv.flj = false;
+          if (this.flX > 0)
           {
-            this.dsr = true;
-            this.dsy = paramMotionEvent.getX();
-            this.dsz = paramMotionEvent.getY();
+            this.fle = true;
+            this.flk = paramMotionEvent.getX();
+            this.fll = paramMotionEvent.getY();
           }
         }
-      } while (!this.dsr);
-      Log.i("FixRatioCropHelper", "ACTION_MOVE moveDirection :" + this.dto + "mBoxRect：" + this.dgS + " originRect:" + this.dtp);
-      this.dtp = new Rect(this.dgS);
-      if ((paramMotionEvent.getPointerCount() == 1) && (this.dto > 0)) {
-        switch (this.dto)
+      } while (!this.fle);
+      Log.i("FixRatioCropHelper", "ACTION_MOVE moveDirection :" + this.flX + "mBoxRect：" + this.eYz + " originRect:" + this.flY);
+      this.flY = new Rect(this.eYz);
+      if ((paramMotionEvent.getPointerCount() == 1) && (this.flX > 0)) {
+        switch (this.flX)
         {
         case 5: 
         case 7: 
@@ -714,134 +715,134 @@ public final class g
         case 11: 
         default: 
           label664:
-          this.dgO.Ye();
-          this.dsr = true;
-          this.dgO.Yb();
-          this.dsy = paramMotionEvent.getX();
-          this.dsz = paramMotionEvent.getY();
+          this.eYv.acK();
+          this.fle = true;
+          this.eYv.acH();
+          this.flk = paramMotionEvent.getX();
+          this.fll = paramMotionEvent.getY();
         }
       }
       for (;;)
       {
-        this.dgO.t(paramMotionEvent);
+        this.eYv.u(paramMotionEvent);
         break;
-        if (this.dgS.right < this.dgS.left) {
+        if (this.eYz.right < this.eYz.left) {
           break label664;
         }
-        Log.i("FixRatioCropHelper", "moveDirection: RIGHT xDelta:" + (paramMotionEvent.getX() - this.dsy));
-        i((int)(paramMotionEvent.getX() - this.dsy), this.dto, this.dtp);
+        Log.i("FixRatioCropHelper", "moveDirection: RIGHT xDelta:" + (paramMotionEvent.getX() - this.flk));
+        i((int)(paramMotionEvent.getX() - this.flk), this.flX, this.flY);
         break label664;
-        if ((this.dgS.right < this.dgS.left) || (this.dgS.bottom < this.dgS.top)) {
+        if ((this.eYz.right < this.eYz.left) || (this.eYz.bottom < this.eYz.top)) {
           break label664;
         }
-        f1 = this.dsz - paramMotionEvent.getY();
-        f2 = paramMotionEvent.getX() - this.dsy;
-        Log.i("FixRatioCropHelper", "moveDirection: " + this.dto + " xDelta:" + f2 + " yDelta:" + f1);
+        f1 = this.fll - paramMotionEvent.getY();
+        f2 = paramMotionEvent.getX() - this.flk;
+        Log.i("FixRatioCropHelper", "moveDirection: " + this.flX + " xDelta:" + f2 + " yDelta:" + f1);
         if (Math.abs(f1) >= Math.abs(f2))
         {
-          i((int)f1, this.dto, this.dtp);
+          i((int)f1, this.flX, this.flY);
           break label664;
         }
-        i((int)f2, this.dto, this.dtp);
+        i((int)f2, this.flX, this.flY);
         break label664;
-        if ((this.dgS.right < this.dgS.left) || (this.dgS.bottom < this.dgS.top)) {
+        if ((this.eYz.right < this.eYz.left) || (this.eYz.bottom < this.eYz.top)) {
           break label664;
         }
-        f1 = paramMotionEvent.getY() - this.dsz;
-        f2 = paramMotionEvent.getX() - this.dsy;
-        Log.i("FixRatioCropHelper", "moveDirection: " + this.dto + " xDelta:" + f2 + " yDelta:" + f1);
-        if (Math.abs(f1) >= Math.abs(f2 / this.dtn))
+        f1 = paramMotionEvent.getY() - this.fll;
+        f2 = paramMotionEvent.getX() - this.flk;
+        Log.i("FixRatioCropHelper", "moveDirection: " + this.flX + " xDelta:" + f2 + " yDelta:" + f1);
+        if (Math.abs(f1) >= Math.abs(f2 / this.flW))
         {
-          Log.i("FixRatioCropHelper", "moveDirection: " + this.dto + " yDelta:" + f1);
-          d((int)f1, this.dto, this.dtp);
+          Log.i("FixRatioCropHelper", "moveDirection: " + this.flX + " yDelta:" + f1);
+          d((int)f1, this.flX, this.flY);
           break label664;
         }
-        Log.i("FixRatioCropHelper", "moveDirection: " + this.dto + " xDelta:" + f2 / this.dtn);
-        d((int)(f2 / this.dtn), this.dto, this.dtp);
+        Log.i("FixRatioCropHelper", "moveDirection: " + this.flX + " xDelta:" + f2 / this.flW);
+        d((int)(f2 / this.flW), this.flX, this.flY);
         break label664;
-        Log.i("FixRatioCropHelper", "moveDirection: LEFT xDelta:" + (this.dsy - paramMotionEvent.getX()));
-        if (this.dgS.right < this.dgS.left) {
+        Log.i("FixRatioCropHelper", "moveDirection: LEFT xDelta:" + (this.flk - paramMotionEvent.getX()));
+        if (this.eYz.right < this.eYz.left) {
           break label664;
         }
-        g((int)(this.dsy - paramMotionEvent.getX()), this.dto, this.dtp);
+        g((int)(this.flk - paramMotionEvent.getX()), this.flX, this.flY);
         break label664;
-        if ((this.dgS.right < this.dgS.left) || (this.dgS.bottom < this.dgS.top)) {
+        if ((this.eYz.right < this.eYz.left) || (this.eYz.bottom < this.eYz.top)) {
           break label664;
         }
-        f1 = this.dsz - paramMotionEvent.getY();
-        f2 = this.dsy - paramMotionEvent.getX();
-        Log.i("FixRatioCropHelper", "moveDirection: " + this.dto + " xDelta:" + f2 + " yDelta:" + f1);
+        f1 = this.fll - paramMotionEvent.getY();
+        f2 = this.flk - paramMotionEvent.getX();
+        Log.i("FixRatioCropHelper", "moveDirection: " + this.flX + " xDelta:" + f2 + " yDelta:" + f1);
         if (Math.abs(f1) >= Math.abs(f2))
         {
-          c((int)f1, this.dto, this.dtp);
+          c((int)f1, this.flX, this.flY);
           break label664;
         }
-        c((int)f2, this.dto, this.dtp);
+        c((int)f2, this.flX, this.flY);
         break label664;
-        if ((this.dgS.right < this.dgS.left) || (this.dgS.bottom < this.dgS.top)) {
+        if ((this.eYz.right < this.eYz.left) || (this.eYz.bottom < this.eYz.top)) {
           break label664;
         }
-        f1 = paramMotionEvent.getY() - this.dsz;
-        f2 = this.dsy - paramMotionEvent.getX();
-        Log.i("FixRatioCropHelper", "moveDirection: " + this.dto + " xDelta:" + f2 + " yDelta:" + f1);
+        f1 = paramMotionEvent.getY() - this.fll;
+        f2 = this.flk - paramMotionEvent.getX();
+        Log.i("FixRatioCropHelper", "moveDirection: " + this.flX + " xDelta:" + f2 + " yDelta:" + f1);
         if (Math.abs(f1) >= Math.abs(f2))
         {
-          g((int)f1, this.dto, this.dtp);
+          g((int)f1, this.flX, this.flY);
           break label664;
         }
-        g((int)f2, this.dto, this.dtp);
+        g((int)f2, this.flX, this.flY);
         break label664;
-        if (this.dgS.bottom < this.dgS.top) {
+        if (this.eYz.bottom < this.eYz.top) {
           break label664;
         }
-        c((int)(this.dsz - paramMotionEvent.getY()), this.dto, this.dtp);
+        c((int)(this.fll - paramMotionEvent.getY()), this.flX, this.flY);
         break label664;
-        if (this.dgS.bottom < this.dgS.top) {
+        if (this.eYz.bottom < this.eYz.top) {
           break label664;
         }
-        d((int)(paramMotionEvent.getY() - this.dsz), this.dto, this.dtp);
+        d((int)(paramMotionEvent.getY() - this.fll), this.flX, this.flY);
         break label664;
-        this.dsr = false;
+        this.fle = false;
       }
     }
-    f1 = this.dsl.width() * 1.0F / this.dgS.width();
-    float f2 = this.dsl.height() * 1.0F / this.dgS.height();
+    f1 = this.fkY.width() * 1.0F / this.eYz.width();
+    float f2 = this.fkY.height() * 1.0F / this.eYz.height();
     label1657:
     long l;
     if (f1 < f2)
     {
-      f2 = this.dsl.centerX();
-      float f3 = this.dsl.centerY();
-      float f4 = this.dgS.centerX();
-      float f5 = this.dgS.centerY();
-      paramMotionEvent = h.RTc;
+      f2 = this.fkY.centerX();
+      float f3 = this.fkY.centerY();
+      float f4 = this.eYz.centerX();
+      float f5 = this.eYz.centerY();
+      paramMotionEvent = h.ZvG;
       localObject = new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(204728);
-          g.this.dgO.dsp.dgV = 1000L;
-          g.this.dgO.dsp.a(f1, g.this.dgS, this.dsK, this.dsL);
-          g.this.dgO.dsp.play();
-          AppMethodBeat.o(204728);
+          AppMethodBeat.i(259762);
+          g.this.eYv.flc.eYC = 1000L;
+          g.this.eYv.flc.a(f1, g.this.eYz, this.flv, this.flw);
+          g.this.eYv.flc.play();
+          AppMethodBeat.o(259762);
         }
       };
-      if (!this.dsr) {
+      if (!this.fle) {
         break label1773;
       }
       l = 0L;
       label1730:
       paramMotionEvent.n((Runnable)localObject, l);
-      if (this.dto <= 0) {
+      if (this.flX <= 0) {
         break label1781;
       }
     }
     label1773:
     label1781:
-    for (this.dsr = true;; this.dsr = false)
+    for (this.fle = true;; this.fle = false)
     {
-      this.dto = 0;
-      this.dgO.Yc();
+      this.flX = 0;
+      this.eYv.acI();
       break;
       f1 = f2;
       break label1657;
@@ -852,7 +853,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.e.g
  * JD-Core Version:    0.7.0.1
  */

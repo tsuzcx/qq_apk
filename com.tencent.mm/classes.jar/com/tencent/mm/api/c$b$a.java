@@ -9,9 +9,9 @@ import org.json.JSONObject;
 
 public final class c$b$a
 {
-  public ArrayList<String> die;
+  public ArrayList<String> eZL;
   
-  public static a fq(String paramString)
+  public static a gb(String paramString)
   {
     AppMethodBeat.i(116356);
     if (Util.isNullOrNil(paramString))
@@ -26,11 +26,11 @@ public final class c$b$a
       paramString = new JSONObject(paramString).optJSONArray("origin_name_list");
       if (paramString != null)
       {
-        locala.die = new ArrayList();
+        locala.eZL = new ArrayList();
         int i = 0;
         while (i < paramString.length())
         {
-          locala.die.add(paramString.optString(i));
+          locala.eZL.add(paramString.optString(i));
           i += 1;
         }
       }

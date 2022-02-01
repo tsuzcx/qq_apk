@@ -532,7 +532,7 @@ public class TXCloudVideoView
   
   public void start(boolean paramBoolean1, boolean paramBoolean2, k paramk)
   {
-    AppMethodBeat.i(222662);
+    AppMethodBeat.i(219056);
     this.mFocus = paramBoolean1;
     this.mZoom = paramBoolean2;
     if ((this.mFocus) || (this.mZoom))
@@ -543,7 +543,7 @@ public class TXCloudVideoView
     if (this.mGLSurfaceView != null) {
       this.mGLSurfaceView.setVisibility(0);
     }
-    AppMethodBeat.o(222662);
+    AppMethodBeat.o(219056);
   }
   
   public void stop(boolean paramBoolean)
@@ -654,7 +654,7 @@ public class TXCloudVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.rtmp.ui.TXCloudVideoView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,81 +1,59 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
 
 public final class ev
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int KIl;
-  public String dNI;
-  public String nHe;
-  public String nHi;
-  public int position;
-  public String request_id;
-  public String username;
+  public String appid;
+  public int status;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(50080);
+    AppMethodBeat.i(122485);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.username != null) {
-        paramVarArgs.e(1, this.username);
+      if (this.appid == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: appid");
+        AppMethodBeat.o(122485);
+        throw paramVarArgs;
       }
-      if (this.request_id != null) {
-        paramVarArgs.e(2, this.request_id);
+      if (this.appid != null) {
+        paramVarArgs.f(1, this.appid);
       }
-      if (this.nHe != null) {
-        paramVarArgs.e(3, this.nHe);
-      }
-      if (this.dNI != null) {
-        paramVarArgs.e(4, this.dNI);
-      }
-      if (this.nHi != null) {
-        paramVarArgs.e(5, this.nHi);
-      }
-      paramVarArgs.aM(6, this.position);
-      paramVarArgs.aM(7, this.KIl);
-      AppMethodBeat.o(50080);
+      paramVarArgs.aY(2, this.status);
+      AppMethodBeat.o(122485);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.username == null) {
-        break label550;
+      if (this.appid == null) {
+        break label306;
       }
     }
-    label550:
-    for (int i = g.a.a.b.b.a.f(1, this.username) + 0;; i = 0)
+    label306:
+    for (paramInt = g.a.a.b.b.a.g(1, this.appid) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.request_id != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.request_id);
-      }
-      i = paramInt;
-      if (this.nHe != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.nHe);
-      }
-      paramInt = i;
-      if (this.dNI != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.dNI);
-      }
-      i = paramInt;
-      if (this.nHi != null) {
-        i = paramInt + g.a.a.b.b.a.f(5, this.nHi);
-      }
-      paramInt = g.a.a.b.b.a.bu(6, this.position);
-      int j = g.a.a.b.b.a.bu(7, this.KIl);
-      AppMethodBeat.o(50080);
-      return i + paramInt + j;
+      int i = g.a.a.b.b.a.bM(2, this.status);
+      AppMethodBeat.o(122485);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(50080);
+        if (this.appid == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: appid");
+          AppMethodBeat.o(122485);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(122485);
         return 0;
       }
       if (paramInt == 3)
@@ -85,45 +63,25 @@ public final class ev
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(50080);
+          AppMethodBeat.o(122485);
           return -1;
         case 1: 
-          localev.username = locala.UbS.readString();
-          AppMethodBeat.o(50080);
-          return 0;
-        case 2: 
-          localev.request_id = locala.UbS.readString();
-          AppMethodBeat.o(50080);
-          return 0;
-        case 3: 
-          localev.nHe = locala.UbS.readString();
-          AppMethodBeat.o(50080);
-          return 0;
-        case 4: 
-          localev.dNI = locala.UbS.readString();
-          AppMethodBeat.o(50080);
-          return 0;
-        case 5: 
-          localev.nHi = locala.UbS.readString();
-          AppMethodBeat.o(50080);
-          return 0;
-        case 6: 
-          localev.position = locala.UbS.zi();
-          AppMethodBeat.o(50080);
+          localev.appid = locala.abFh.readString();
+          AppMethodBeat.o(122485);
           return 0;
         }
-        localev.KIl = locala.UbS.zi();
-        AppMethodBeat.o(50080);
+        localev.status = locala.abFh.AK();
+        AppMethodBeat.o(122485);
         return 0;
       }
-      AppMethodBeat.o(50080);
+      AppMethodBeat.o(122485);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ev
  * JD-Core Version:    0.7.0.1
  */

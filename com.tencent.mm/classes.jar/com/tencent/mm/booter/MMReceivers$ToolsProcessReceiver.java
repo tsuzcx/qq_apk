@@ -9,11 +9,11 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class MMReceivers$ToolsProcessReceiver
   extends BroadcastReceiver
 {
-  private static MMReceivers.a glx = null;
+  private static MMReceivers.a iPF = null;
   
   public static void a(MMReceivers.a parama)
   {
-    glx = parama;
+    iPF = parama;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -21,8 +21,8 @@ public class MMReceivers$ToolsProcessReceiver
     AppMethodBeat.i(131894);
     try
     {
-      if (glx != null) {
-        glx.onReceive(paramContext, paramIntent);
+      if (iPF != null) {
+        iPF.onReceive(paramContext, paramIntent);
       }
       AppMethodBeat.o(131894);
       return;
@@ -36,7 +36,7 @@ public class MMReceivers$ToolsProcessReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.booter.MMReceivers.ToolsProcessReceiver
  * JD-Core Version:    0.7.0.1
  */

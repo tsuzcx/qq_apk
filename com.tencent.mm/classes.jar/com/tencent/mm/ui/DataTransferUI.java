@@ -5,17 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.l;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.q;
+import com.tencent.mm.ui.base.s;
 
 @a(19)
 public class DataTransferUI
   extends MMBaseActivity
 {
-  private q nUq;
+  private s oTk;
   private long startTime = 0L;
   
   private void by(Intent paramIntent)
@@ -35,8 +36,8 @@ public class DataTransferUI
     super.onCreate(paramBundle);
     Log.d("MicroMsg.DataTransferUI", "onCreate, timestamp = " + System.currentTimeMillis());
     this.startTime = System.currentTimeMillis();
-    getString(2131755998);
-    this.nUq = h.a(this, getString(2131755775), false, null);
+    getString(R.l.app_tip);
+    this.oTk = h.a(this, getString(R.l.app_data_transfering), false, null);
     new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
@@ -60,8 +61,8 @@ public class DataTransferUI
     AppMethodBeat.i(33020);
     super.onDestroy();
     Log.d("MicroMsg.DataTransferUI", "onDestroy");
-    if ((this.nUq != null) && (this.nUq.isShowing())) {
-      this.nUq.dismiss();
+    if ((this.oTk != null) && (this.oTk.isShowing())) {
+      this.oTk.dismiss();
     }
     AppMethodBeat.o(33020);
   }

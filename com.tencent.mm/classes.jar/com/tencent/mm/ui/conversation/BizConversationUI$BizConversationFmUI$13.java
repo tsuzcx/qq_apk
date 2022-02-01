@@ -12,7 +12,7 @@ final class BizConversationUI$BizConversationFmUI$13
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(38248);
-    this.Qbw.finish();
+    this.XzJ.finish();
     AppMethodBeat.o(38248);
     return true;
   }

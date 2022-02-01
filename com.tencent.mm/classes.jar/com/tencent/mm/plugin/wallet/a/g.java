@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class g
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public m HEb;
-  public String HEd;
+  public m OvU;
+  public String OvW;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,37 +15,37 @@ public final class g
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.HEb != null)
+      if (this.OvU != null)
       {
-        paramVarArgs.ni(1, this.HEb.computeSize());
-        this.HEb.writeFields(paramVarArgs);
+        paramVarArgs.oE(1, this.OvU.computeSize());
+        this.OvU.writeFields(paramVarArgs);
       }
-      if (this.HEd != null) {
-        paramVarArgs.e(2, this.HEd);
+      if (this.OvW != null) {
+        paramVarArgs.f(2, this.OvW);
       }
       AppMethodBeat.o(91291);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.HEb == null) {
-        break label370;
+      if (this.OvU == null) {
+        break label348;
       }
     }
-    label370:
-    for (paramInt = g.a.a.a.nh(1, this.HEb.computeSize()) + 0;; paramInt = 0)
+    label348:
+    for (paramInt = g.a.a.a.oD(1, this.OvU.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.HEd != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.HEd);
+      if (this.OvW != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.OvW);
       }
       AppMethodBeat.o(91291);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         AppMethodBeat.o(91291);
@@ -53,7 +53,7 @@ public final class g
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         g localg = (g)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
@@ -62,22 +62,23 @@ public final class g
           AppMethodBeat.o(91291);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new m();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((m)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localg.HEb = ((m)localObject1);
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            m localm = new m();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localm.parseFrom((byte[])localObject);
+            }
+            localg.OvU = localm;
             paramInt += 1;
           }
           AppMethodBeat.o(91291);
           return 0;
         }
-        localg.HEd = ((g.a.a.a.a)localObject1).UbS.readString();
+        localg.OvW = ((g.a.a.a.a)localObject).abFh.readString();
         AppMethodBeat.o(91291);
         return 0;
       }
@@ -88,7 +89,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.a.g
  * JD-Core Version:    0.7.0.1
  */

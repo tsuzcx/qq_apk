@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
+import com.tencent.kinda.framework.R.color;
 import com.tencent.kinda.gen.KLoadingImage;
 import com.tencent.kinda.gen.LoadingImageStyle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -23,7 +24,7 @@ public class MMKLoadingImage
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
     this.progressBar = new ProgressBar(paramContext);
     this.circleProgressDrawable = new CircleProgressDrawable(paramContext);
-    this.circleProgressDrawable.setStrokeColor(2131100572);
+    this.circleProgressDrawable.setStrokeColor(R.color.grey_bg_color);
     this.progressBar.setIndeterminateDrawable(this.circleProgressDrawable);
     this.progressBar.setVisibility(8);
     paramContext = new LinearLayout.LayoutParams(-1, -1);
@@ -42,7 +43,7 @@ public class MMKLoadingImage
     AppMethodBeat.i(19087);
     this.loadingImageStype = paramLoadingImageStyle;
     if (paramLoadingImageStyle == LoadingImageStyle.WHITE) {
-      this.circleProgressDrawable.setStrokeColor(2131101426);
+      this.circleProgressDrawable.setStrokeColor(R.color.white_color);
     }
     for (;;)
     {
@@ -50,9 +51,9 @@ public class MMKLoadingImage
       AppMethodBeat.o(19087);
       return;
       if (paramLoadingImageStyle == LoadingImageStyle.WHITELARGE) {
-        this.circleProgressDrawable.setStrokeColor(2131101426);
+        this.circleProgressDrawable.setStrokeColor(R.color.white_color);
       } else if (paramLoadingImageStyle == LoadingImageStyle.GRAY) {
-        this.circleProgressDrawable.setStrokeColor(2131100572);
+        this.circleProgressDrawable.setStrokeColor(R.color.grey_bg_color);
       }
     }
   }
@@ -60,7 +61,7 @@ public class MMKLoadingImage
   public void startAnimating()
   {
     AppMethodBeat.i(19085);
-    this.circleProgressDrawable.caK();
+    this.circleProgressDrawable.cmW();
     this.circleProgressDrawable.start();
     this.progressBar.setVisibility(0);
     AppMethodBeat.o(19085);
@@ -76,7 +77,7 @@ public class MMKLoadingImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKLoadingImage
  * JD-Core Version:    0.7.0.1
  */

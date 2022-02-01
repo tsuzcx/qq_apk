@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import g.a.a.b;
 
 public final class y
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String Bru;
+  public String BDX;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -14,37 +14,37 @@ public final class y
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Bru == null)
+      if (this.BDX == null)
       {
         paramVarArgs = new b("Not all required fields were included: subject");
         AppMethodBeat.o(122757);
         throw paramVarArgs;
       }
-      if (this.Bru != null) {
-        paramVarArgs.e(1, this.Bru);
+      if (this.BDX != null) {
+        paramVarArgs.f(1, this.BDX);
       }
       AppMethodBeat.o(122757);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Bru == null) {
+      if (this.BDX == null) {
         break label261;
       }
     }
     label261:
-    for (paramInt = g.a.a.b.b.a.f(1, this.Bru) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.BDX) + 0;; paramInt = 0)
     {
       AppMethodBeat.o(122757);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.Bru == null)
+        if (this.BDX == null)
         {
           paramVarArgs = new b("Not all required fields were included: subject");
           AppMethodBeat.o(122757);
@@ -63,7 +63,7 @@ public final class y
           AppMethodBeat.o(122757);
           return -1;
         }
-        localy.Bru = locala.UbS.readString();
+        localy.BDX = locala.abFh.readString();
         AppMethodBeat.o(122757);
         return 0;
       }

@@ -12,19 +12,19 @@ import kotlin.l.b.a.b.b.a.g.b;
 final class b
   implements g
 {
-  private final kotlin.l.b.a.b.f.b TtH;
+  private final kotlin.l.b.a.b.f.b aaWB;
   
   public b(kotlin.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(58019);
-    this.TtH = paramb;
+    this.aaWB = paramb;
     AppMethodBeat.o(58019);
   }
   
   public final boolean h(kotlin.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(58020);
-    p.h(paramb, "fqName");
+    p.k(paramb, "fqName");
     boolean bool = g.b.b(this, paramb);
     AppMethodBeat.o(58020);
     return bool;
@@ -38,14 +38,14 @@ final class b
   public final Iterator<c> iterator()
   {
     AppMethodBeat.i(58018);
-    Iterator localIterator = ((List)v.SXr).iterator();
+    Iterator localIterator = ((List)v.aaAd).iterator();
     AppMethodBeat.o(58018);
     return localIterator;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.f.b
  * JD-Core Version:    0.7.0.1
  */

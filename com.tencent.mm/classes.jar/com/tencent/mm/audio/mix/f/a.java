@@ -1,52 +1,86 @@
 package com.tencent.mm.audio.mix.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.audio.mix.h.b;
 
 public final class a
-  extends f
 {
-  protected final byte[] H(int paramInt1, int paramInt2, int paramInt3)
+  public static boolean L(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(136834);
-    int j = 0;
-    if (j < paramInt2)
+    AppMethodBeat.i(136884);
+    if (!ky(paramInt1))
     {
-      int k = 0;
-      float f2 = 0.0F;
-      float f3;
-      for (float f1 = 0.0F; k < paramInt1; f1 = f3 + f1)
-      {
-        f2 = (float)(f2 + Math.pow(this.dwL[k][j], 2.0D) * Math.signum(this.dwL[k][j]));
-        f3 = Math.abs(this.dwL[k][j]);
-        k += 1;
-      }
-      if (f1 == 0.0F)
-      {
-        k = 0;
-        label111:
-        localObject = this.dwO;
-        if (f1 != 0.0F) {
-          break label154;
-        }
-      }
-      label154:
-      for (int i = 0;; i = jf(k))
-      {
-        localObject[j] = i;
-        j += 1;
-        break;
-        k = (int)(f2 / f1);
-        break label111;
-      }
+      AppMethodBeat.o(136884);
+      return false;
     }
-    Object localObject = ci(paramInt3, paramInt2);
-    AppMethodBeat.o(136834);
-    return localObject;
+    if (!kz(paramInt2))
+    {
+      AppMethodBeat.o(136884);
+      return false;
+    }
+    if (!kA(paramInt3))
+    {
+      AppMethodBeat.o(136884);
+      return false;
+    }
+    AppMethodBeat.o(136884);
+    return true;
+  }
+  
+  private static boolean kA(int paramInt)
+  {
+    AppMethodBeat.i(136887);
+    if (paramInt <= 0) {
+      b.e("MicroMsg.Mix.AudioMixConfig", "encode is illegal, %d", new Object[] { Integer.valueOf(paramInt) });
+    }
+    if (paramInt == 2)
+    {
+      AppMethodBeat.o(136887);
+      return true;
+    }
+    AppMethodBeat.o(136887);
+    return false;
+  }
+  
+  private static boolean ky(int paramInt)
+  {
+    AppMethodBeat.i(136885);
+    if (paramInt <= 0)
+    {
+      b.e("MicroMsg.Mix.AudioMixConfig", "sampleRate is illegal! %d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(136885);
+      return false;
+    }
+    if (paramInt == 44100)
+    {
+      AppMethodBeat.o(136885);
+      return true;
+    }
+    AppMethodBeat.o(136885);
+    return false;
+  }
+  
+  private static boolean kz(int paramInt)
+  {
+    AppMethodBeat.i(136886);
+    if (paramInt <= 0)
+    {
+      b.e("MicroMsg.Mix.AudioMixConfig", "channels is illegal, %d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(136886);
+      return false;
+    }
+    if (paramInt == 2)
+    {
+      AppMethodBeat.o(136886);
+      return true;
+    }
+    AppMethodBeat.o(136886);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.f.a
  * JD-Core Version:    0.7.0.1
  */

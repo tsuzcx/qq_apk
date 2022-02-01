@@ -159,7 +159,7 @@ public class c
     //   59	76	255	finally
   }
   
-  public static int asu(int paramInt)
+  public static int aCh(int paramInt)
   {
     if (paramInt == 3) {
       return -3;
@@ -175,7 +175,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.lib.c.c
  * JD-Core Version:    0.7.0.1
  */

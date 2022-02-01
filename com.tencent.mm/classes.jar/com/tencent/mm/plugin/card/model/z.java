@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bkh;
-import com.tencent.mm.protocal.protobuf.bki;
+import com.tencent.mm.protocal.protobuf.brq;
+import com.tencent.mm.protocal.protobuf.brr;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class z
@@ -19,23 +19,23 @@ public final class z
   implements m
 {
   private i callback;
-  public CardGiftInfo pUb;
   private final d rr;
+  public CardGiftInfo tqc;
   
   public z(int paramInt, String paramString)
   {
     AppMethodBeat.i(112834);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bkh();
-    ((d.a)localObject).iLO = new bki();
+    ((d.a)localObject).lBU = new brq();
+    ((d.a)localObject).lBV = new brr();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getcardgiftinfo";
     ((d.a)localObject).funcId = 1165;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (bkh)this.rr.iLK.iLR;
-    ((bkh)localObject).KDl = paramInt;
-    ((bkh)localObject).KDm = paramString;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (brq)d.b.b(this.rr.lBR);
+    ((brq)localObject).REC = paramInt;
+    ((brq)localObject).REE = paramString;
     AppMethodBeat.o(112834);
   }
   
@@ -59,8 +59,8 @@ public final class z
     Log.i("MicroMsg.NetSceneGetCardGiftInfo", "onGYNetEnd, errType = %d, errCode = %d ,errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      this.pUb = CardGiftInfo.a((bki)this.rr.iLL.iLR);
-      Log.d("MicroMsg.NetSceneGetCardGiftInfo", "%s", new Object[] { this.pUb.toString() });
+      this.tqc = CardGiftInfo.a((brr)d.c.b(this.rr.lBS));
+      Log.d("MicroMsg.NetSceneGetCardGiftInfo", "%s", new Object[] { this.tqc.toString() });
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(112835);

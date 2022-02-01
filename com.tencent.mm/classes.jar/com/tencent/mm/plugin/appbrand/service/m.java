@@ -8,11 +8,11 @@ public abstract interface m
 {
   public abstract void a(Context paramContext, int paramInt, String paramString);
   
-  public abstract void af(Context paramContext, String paramString);
+  public abstract void ae(Context paramContext, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.service.m
  * JD-Core Version:    0.7.0.1
  */

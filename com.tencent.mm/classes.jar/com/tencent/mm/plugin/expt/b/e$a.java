@@ -9,16 +9,16 @@ public enum e$a
   static
   {
     AppMethodBeat.i(121046);
-    swZ = new a("MM_DEFAULT", 0, 0);
-    sxa = new a("MMAppMgr_Activated", 1, 1);
-    sxb = new a("MMAppMgr_Deactivated", 2, 2);
-    sxc = new a("MMLifeCall_OnResume", 3, 3);
-    sxd = new a("MMLifeCall_OnPause", 4, 4);
-    sxe = new a("MMActivity_OnResume", 5, 5);
-    sxf = new a("MMActivity_OnPause", 6, 6);
-    sxg = new a("MMActivity_Back2Front", 7, 7);
-    sxh = new a("MMActivity_Front2Back", 8, 8);
-    sxi = new a[] { swZ, sxa, sxb, sxc, sxd, sxe, sxf, sxg, sxh };
+    wcB = new a("MM_DEFAULT", 0, 0);
+    wcC = new a("MMAppMgr_Activated", 1, 1);
+    wcD = new a("MMAppMgr_Deactivated", 2, 2);
+    wcE = new a("MMLifeCall_OnResume", 3, 3);
+    wcF = new a("MMLifeCall_OnPause", 4, 4);
+    wcG = new a("MMActivity_OnResume", 5, 5);
+    wcH = new a("MMActivity_OnPause", 6, 6);
+    wcI = new a("MMActivity_Back2Front", 7, 7);
+    wcJ = new a("MMActivity_Front2Back", 8, 8);
+    wcK = new a[] { wcB, wcC, wcD, wcE, wcF, wcG, wcH, wcI, wcJ };
     AppMethodBeat.o(121046);
   }
   
@@ -27,33 +27,33 @@ public enum e$a
     this.value = paramInt;
   }
   
-  public static a GL(int paramInt)
+  public static a Kt(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return swZ;
+      return wcB;
     case 1: 
-      return sxa;
+      return wcC;
     case 2: 
-      return sxb;
+      return wcD;
     case 3: 
-      return sxc;
+      return wcE;
     case 4: 
-      return sxd;
+      return wcF;
     case 5: 
-      return sxe;
+      return wcG;
     case 6: 
-      return sxf;
+      return wcH;
     case 7: 
-      return sxg;
+      return wcI;
     }
-    return sxh;
+    return wcJ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.b.e.a
  * JD-Core Version:    0.7.0.1
  */

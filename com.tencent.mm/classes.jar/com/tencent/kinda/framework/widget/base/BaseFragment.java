@@ -8,12 +8,8 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
+import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.g;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.ActionBarContainer;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
@@ -23,7 +19,19 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewStub;
+import android.view.Window;
+import android.widget.FrameLayout;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.ActionBarContainer;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.e;
 import com.facebook.yoga.android.YogaLayout;
+import com.tencent.kinda.framework.R.color;
+import com.tencent.kinda.framework.R.drawable;
+import com.tencent.kinda.framework.R.id;
+import com.tencent.kinda.framework.R.layout;
+import com.tencent.kinda.framework.R.raw;
 import com.tencent.kinda.framework.animate.KindaAnimatorWatch;
 import com.tencent.kinda.framework.app.UIPagePlatformFuncDelegateImpl;
 import com.tencent.kinda.framework.widget.PlatformWrapLayout;
@@ -32,13 +40,16 @@ import com.tencent.kinda.gen.ITransmitKvData;
 import com.tencent.kinda.gen.LeftBarButtonType;
 import com.tencent.kinda.gen.NavigationBarConfig;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.d;
+import com.tencent.mm.compatible.util.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragment;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.au;
 import com.tencent.mm.ui.b.b;
-import com.tencent.mm.ui.t;
-import com.tencent.mm.ui.v;
+import com.tencent.mm.ui.w;
+import com.tencent.mm.ui.y;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -49,6 +60,7 @@ public abstract class BaseFragment
   implements View.OnTouchListener, FragmentLifecycle
 {
   public static final String TAG = "MicroMsg.BaseFragment";
+  public int enterAnimStyle = 1;
   protected IEventFragment fragEvent;
   private boolean isActive = false;
   private boolean isEnterBackground = false;
@@ -56,15 +68,40 @@ public abstract class BaseFragment
   private FrLifeController.IFrLife life;
   private ActionBarContainer mActionBarContainer = null;
   private BaseFragment mCoveredFragment;
-  public v mCustomActioinBarController = null;
+  public y mCustomActioinBarController = null;
   protected UIPagePlatformDelegateImpl pagePlatformDelegate;
   protected UIPagePlatformFuncDelegateImpl pagePlatformFuncDelegate;
+  private long statusBarColor = -1L;
+  protected FrameLayout statusBarSpaceView;
   public String tinyAppUserName = "";
+  protected UIModalFuncDelegateImpl uiModalFuncDelegate;
   private boolean willBeRemoved = false;
   
   public BaseFragment()
   {
     KindaAnimatorWatch.didObjCreated(hashCode());
+  }
+  
+  private void calculateStatusBarColor(int paramInt)
+  {
+    if (Build.VERSION.SDK_INT < 21) {
+      return;
+    }
+    if ((Build.VERSION.SDK_INT >= 23) && (!g.isMIUIV8())) {}
+    for (;;)
+    {
+      this.statusBarSpaceView.setBackgroundColor(paramInt);
+      boolean bool = au.auk(paramInt);
+      getController().updataStatusBarIcon(bool);
+      getController().q(getActivity(), 0);
+      getController().setNavigationbarColor(getResources().getColor(a.d.BG_0));
+      return;
+      if (Build.VERSION.SDK_INT >= 21) {
+        paramInt = au.A(getResources().getColor(R.color.statusbar_fg_drak_color), paramInt);
+      } else {
+        paramInt = 0;
+      }
+    }
   }
   
   public ITransmitKvData covertPlatformData(Bundle paramBundle)
@@ -114,11 +151,11 @@ public abstract class BaseFragment
     if (isSupportCustomActionBar())
     {
       if (this.mActionBarContainer == null) {
-        this.mActionBarContainer = ((ActionBarContainer)((ViewStub)paramView.findViewById(2131302966)).inflate());
+        this.mActionBarContainer = ((ActionBarContainer)((ViewStub)paramView.findViewById(R.id.kinda_custom_action_bar)).inflate());
       }
-      v localv = this.mCustomActioinBarController;
+      y localy = this.mCustomActioinBarController;
       paramView = (ViewGroup)paramView;
-      localv.OHt.WN = paramView;
+      localy.WaO.Rx = paramView;
     }
   }
   
@@ -147,7 +184,7 @@ public abstract class BaseFragment
   
   public int getLayoutId()
   {
-    return 2131495146;
+    return R.layout.kinda_main_container_layout_with_keyboard;
   }
   
   protected Fragment getPrevFragment()
@@ -183,13 +220,14 @@ public abstract class BaseFragment
   {
     this.pagePlatformDelegate = new UIPagePlatformDelegateImpl(getActivity());
     this.pagePlatformFuncDelegate = new UIPagePlatformFuncDelegateImpl(this);
+    this.uiModalFuncDelegate = new UIModalFuncDelegateImpl(this);
   }
   
   protected void initPageView()
   {
     YogaLayout localYogaLayout = new YogaLayout(getActivity());
     localYogaLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    ((ViewGroup)getView().findViewById(2131299174)).addView(localYogaLayout);
+    ((ViewGroup)getView().findViewById(R.id.container)).addView(localYogaLayout);
     Log.i("MicroMsg.BaseFragment", "initPageView rootLayout %s", new Object[] { localYogaLayout });
     onCreateLayout(new PlatformWrapLayout(localYogaLayout));
   }
@@ -202,7 +240,7 @@ public abstract class BaseFragment
       if (paramNavigationBarConfig.mBackgroundColor != null)
       {
         getController().mActionBar.setBackgroundDrawable(new ColorDrawable((int)ColorUtil.getColorByMode(paramNavigationBarConfig.mBackgroundColor)));
-        setActionBarColor((int)ColorUtil.getColorByModeNoCompat(paramNavigationBarConfig.mBackgroundColor));
+        calculateStatusBarColor((int)ColorUtil.getColorByMode(paramNavigationBarConfig.mBackgroundColor));
       }
       if (paramNavigationBarConfig.mBarTitle != null) {
         setMMTitle(paramNavigationBarConfig.mBarTitle);
@@ -213,11 +251,11 @@ public abstract class BaseFragment
     {
       try
       {
-        localObject = getResources().getDrawable(2131230849).mutate();
+        localObject = getResources().getDrawable(R.drawable.actionbar_back_icon).mutate();
         if (!(localObject instanceof StateListDrawable)) {
           continue;
         }
-        localObject = getResources().getDrawable(2131689733);
+        localObject = getResources().getDrawable(R.raw.back_icon_normal);
         ((Drawable)localObject).setColorFilter(Color.parseColor(paramNavigationBarConfig.mLeftButtonColor), PorterDuff.Mode.SRC_ATOP);
         getController().updateBackBtn((Drawable)localObject);
         getController().setBackBtnColorFilter(Color.parseColor(paramNavigationBarConfig.mLeftButtonColor));
@@ -233,12 +271,12 @@ public abstract class BaseFragment
         {
           public boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
           {
-            AppMethodBeat.i(18763);
+            AppMethodBeat.i(265144);
             BaseFragment.this.popFragment();
-            AppMethodBeat.o(18763);
+            AppMethodBeat.o(265144);
             return true;
           }
-        }, 2131689494);
+        }, R.raw.actionbar_icon_dark_close);
         continue;
         if (paramNavigationBarConfig.mLeftBarButtonType != LeftBarButtonType.NONE) {
           continue;
@@ -248,7 +286,7 @@ public abstract class BaseFragment
       }
       localObject = getController().mActionBar;
       if (localObject != null) {
-        ((ActionBar)localObject).setElevation(0.0F);
+        ((ActionBar)localObject).e(0.0F);
       }
       if (paramNavigationBarConfig.mLeftBarButtonType != LeftBarButtonType.BACK) {
         continue;
@@ -257,9 +295,9 @@ public abstract class BaseFragment
       {
         public boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
-          AppMethodBeat.i(18762);
+          AppMethodBeat.i(18763);
           BaseFragment.this.popFragment();
-          AppMethodBeat.o(18762);
+          AppMethodBeat.o(18763);
           return true;
         }
       });
@@ -273,6 +311,19 @@ public abstract class BaseFragment
   public boolean isActive()
   {
     return this.isActive;
+  }
+  
+  public boolean isContainSecureView()
+  {
+    if (this.pagePlatformDelegate != null)
+    {
+      int i = this.pagePlatformDelegate.getSecureViews().size();
+      Log.i("MicroMsg.BaseFragment", "Fragment contains secure view size: %s.", new Object[] { Integer.valueOf(i) });
+      if (i > 0) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public boolean isSupportCustomActionBar()
@@ -306,10 +357,10 @@ public abstract class BaseFragment
     super.onAttach(paramContext);
     if (isSupportCustomActionBar())
     {
-      this.mCustomActioinBarController = new v();
+      this.mCustomActioinBarController = new y();
       paramContext = this.mCustomActioinBarController;
-      paramContext.OHs = this;
-      paramContext.OHt = new b(thisActivity(), paramContext);
+      paramContext.WaN = this;
+      paramContext.WaO = new b(thisActivity(), paramContext);
       setActivityController(this.mCustomActioinBarController);
     }
   }
@@ -326,7 +377,6 @@ public abstract class BaseFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    KindaActionBarColorManager.getInstance().pushActionBarColorItem(this, getController().gIN());
     return super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
   }
   
@@ -336,6 +386,7 @@ public abstract class BaseFragment
     Log.d("MicroMsg.BaseFragment", "onDestroyView %s %s", new Object[] { getTagName(), this });
     this.pagePlatformDelegate = null;
     this.pagePlatformFuncDelegate = null;
+    this.uiModalFuncDelegate = null;
     restoreActionBarColor();
     if (this.life != null) {
       this.life.onDestroyView();
@@ -350,6 +401,8 @@ public abstract class BaseFragment
     this.fragEvent = null;
   }
   
+  protected void onFirstRenderFinish() {}
+  
   public void onFragmentOnDestroy()
   {
     super.onFragmentOnDestroy();
@@ -357,10 +410,38 @@ public abstract class BaseFragment
     this.mCustomActioinBarController = null;
   }
   
+  public void onFragmentOnPause()
+  {
+    super.onFragmentOnPause();
+    if (isContainSecureView()) {
+      getActivity().getWindow().clearFlags(8192);
+    }
+    Log.d("MicroMsg.BaseFragment", "lifecycle: onFragmentOnPause, class: %s", new Object[] { toString() });
+  }
+  
+  public void onFragmentOnResume()
+  {
+    super.onFragmentOnResume();
+    if (isContainSecureView()) {
+      getActivity().getWindow().addFlags(8192);
+    }
+    Log.d("MicroMsg.BaseFragment", "lifecycle: onFragmentOnResume, class: %s", new Object[] { toString() });
+  }
+  
   public void onHiddenChanged(boolean paramBoolean)
   {
     super.onHiddenChanged(paramBoolean);
-    Log.i("MicroMsg.BaseFragment", "onHiddenChanged %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (paramBoolean) {
+      getActivity().getWindow().clearFlags(8192);
+    }
+    for (;;)
+    {
+      Log.i("MicroMsg.BaseFragment", "onHiddenChanged %s", new Object[] { Boolean.valueOf(paramBoolean) });
+      return;
+      if (isContainSecureView()) {
+        getActivity().getWindow().addFlags(8192);
+      }
+    }
   }
   
   public abstract void onKeyboardShow(boolean paramBoolean, int paramInt);
@@ -396,15 +477,39 @@ public abstract class BaseFragment
     return true;
   }
   
-  public void onViewCreated(View paramView, Bundle paramBundle)
+  public void onViewCreated(final View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
+    this.statusBarSpaceView = ((FrameLayout)paramView.findViewById(R.id.kinda_status_bar_placeholder_view));
+    int i = ar.getStatusBarHeight(getContext());
+    ViewGroup.LayoutParams localLayoutParams = this.statusBarSpaceView.getLayoutParams();
+    if (localLayoutParams != null)
+    {
+      localLayoutParams.height = i;
+      this.statusBarSpaceView.setLayoutParams(localLayoutParams);
+    }
     Log.d("MicroMsg.BaseFragment", "onViewCreated %s %s", new Object[] { getTagName(), this });
     this.pagePlatformDelegate = new UIPagePlatformDelegateImpl(getActivity());
     this.pagePlatformFuncDelegate = new UIPagePlatformFuncDelegateImpl(this);
+    this.uiModalFuncDelegate = new UIModalFuncDelegateImpl(this);
+    if (usePanelModalMode()) {
+      paramView.setVisibility(4);
+    }
     initOnCreate();
     KindaAnimatorWatch.didViewCreated(hashCode());
     paramView.setOnTouchListener(this);
+    paramView.post(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(264063);
+        BaseFragment.this.onFirstRenderFinish();
+        if (BaseFragment.this.usePanelModalMode()) {
+          paramView.setVisibility(0);
+        }
+        AppMethodBeat.o(264063);
+      }
+    });
     if (this.life != null) {
       this.life.onViewCreate(paramBundle);
     }
@@ -422,24 +527,14 @@ public abstract class BaseFragment
     this.mCoveredFragment = paramBaseFragment;
   }
   
-  protected void restoreActionBarColor()
-  {
-    if (isFinishing()) {}
-    FragmentActivity localFragmentActivity;
-    do
-    {
-      return;
-      localFragmentActivity = getActivity();
-    } while ((localFragmentActivity == null) || (((localFragmentActivity instanceof MMActivity)) && (((MMActivity)localFragmentActivity).activityHasDestroyed())));
-    KindaActionBarColorManager.getInstance().onRestoreActionBarColor(this);
-  }
+  protected void restoreActionBarColor() {}
   
   protected void setActionBarColor(int paramInt)
   {
     if (getContext() != null)
     {
-      getController().setActionbarColor(paramInt);
-      KindaActionBarColorManager.getInstance().pushActionBarColorItem(this, paramInt);
+      getController().mActionBar.setBackgroundDrawable(new ColorDrawable(paramInt));
+      calculateStatusBarColor(paramInt);
     }
   }
   
@@ -458,6 +553,16 @@ public abstract class BaseFragment
   }
   
   public boolean supportNavigationSwipeBack()
+  {
+    return false;
+  }
+  
+  public boolean useKeyboardCoverMode()
+  {
+    return false;
+  }
+  
+  protected boolean usePanelModalMode()
   {
     return false;
   }
@@ -481,7 +586,7 @@ public abstract class BaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.BaseFragment
  * JD-Core Version:    0.7.0.1
  */

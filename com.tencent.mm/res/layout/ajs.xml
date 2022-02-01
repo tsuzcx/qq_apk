@@ -43,7 +43,7 @@
                 </LinearLayout>
                 <LinearLayout android:orientation="horizontal" android:id="@id/e5l" android:background="@drawable/asu" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/bb">
                     <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                        <TextView android:gravity="center_vertical" android:text="@string/cph" android:layout_weight="0.0" style="@style/mi" />
+                        <TextView android:gravity="center_vertical" android:text="@string/j_f" android:layout_weight="0.0" style="@style/mi" />
                         <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
                         <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:src="@raw/arrow_right" android:tint="@color/BW_50" />
                     </LinearLayout>

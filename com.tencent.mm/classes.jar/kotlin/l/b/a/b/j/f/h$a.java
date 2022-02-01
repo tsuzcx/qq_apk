@@ -7,31 +7,31 @@ import kotlin.l.b.a.b.f.f;
 
 public final class h$a
 {
-  private static final b<f, Boolean> TJX;
+  private static final b<f, Boolean> abmz;
   
   static
   {
     AppMethodBeat.i(60215);
-    TJY = new a();
-    TJX = (b)a.TJZ;
+    abmA = new a();
+    abmz = (b)a.abmB;
     AppMethodBeat.o(60215);
   }
   
-  public static b<f, Boolean> hKZ()
+  public static b<f, Boolean> iPp()
   {
-    return TJX;
+    return abmz;
   }
   
   static final class a
     extends q
     implements b<f, Boolean>
   {
-    public static final a TJZ;
+    public static final a abmB;
     
     static
     {
       AppMethodBeat.i(60214);
-      TJZ = new a();
+      abmB = new a();
       AppMethodBeat.o(60214);
     }
     

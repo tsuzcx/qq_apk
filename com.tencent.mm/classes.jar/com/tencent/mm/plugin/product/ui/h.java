@@ -20,17 +20,17 @@ public final class h
   extends BaseAdapter
   implements Filterable
 {
-  private List<String> AZp;
-  private List<String> Bbc;
-  Filter Bbd;
+  private List<String> GTn;
+  private List<String> GVa;
+  Filter GVb;
   private Context mContext;
   
   public h(Context paramContext)
   {
     AppMethodBeat.i(66991);
-    this.Bbc = null;
-    this.AZp = null;
-    this.Bbd = new Filter()
+    this.GVa = null;
+    this.GTn = null;
+    this.GVb = new Filter()
     {
       protected final Filter.FilterResults performFiltering(CharSequence paramAnonymousCharSequence)
       {
@@ -69,14 +69,14 @@ public final class h
       }
     };
     this.mContext = paramContext;
-    this.Bbc = a.eDb().eDd().AZp;
+    this.GVa = a.foU().foW().GTn;
     AppMethodBeat.o(66991);
   }
   
   private String getItem(int paramInt)
   {
     AppMethodBeat.i(66993);
-    String str = (String)this.AZp.get(paramInt);
+    String str = (String)this.GTn.get(paramInt);
     AppMethodBeat.o(66993);
     return str;
   }
@@ -84,9 +84,9 @@ public final class h
   public final int getCount()
   {
     AppMethodBeat.i(66992);
-    if (this.AZp != null)
+    if (this.GTn != null)
     {
-      int i = this.AZp.size();
+      int i = this.GTn.size();
       AppMethodBeat.o(66992);
       return i;
     }
@@ -96,7 +96,7 @@ public final class h
   
   public final Filter getFilter()
   {
-    return this.Bbd;
+    return this.GVb;
   }
   
   public final long getItemId(int paramInt)
@@ -112,13 +112,13 @@ public final class h
     {
       paramView = new a();
       localView = LayoutInflater.from(this.mContext).inflate(17367043, null);
-      paramView.BaI = ((TextView)localView.findViewById(16908308));
+      paramView.zlv = ((TextView)localView.findViewById(16908308));
       localView.setTag(paramView);
       paramViewGroup = paramView;
     }
     for (;;)
     {
-      paramViewGroup.BaI.setText(getItem(paramInt));
+      paramViewGroup.zlv.setText(getItem(paramInt));
       AppMethodBeat.o(66994);
       return localView;
       paramViewGroup = (a)paramView.getTag();
@@ -128,14 +128,14 @@ public final class h
   
   final class a
   {
-    TextView BaI;
+    TextView zlv;
     
     a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.h
  * JD-Core Version:    0.7.0.1
  */

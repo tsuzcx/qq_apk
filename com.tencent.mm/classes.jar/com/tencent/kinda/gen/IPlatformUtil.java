@@ -16,6 +16,8 @@ public abstract interface IPlatformUtil
   
   public abstract Platform currentPlatform();
   
+  public abstract boolean delSecurityStore(String paramString);
+  
   public abstract void endIgnoringInteractionEvents();
   
   public abstract String genUUID();
@@ -58,6 +60,8 @@ public abstract interface IPlatformUtil
   
   public abstract boolean isPad();
   
+  public abstract byte[] loadSecurityStore(String paramString);
+  
   public abstract void makesureLonglink();
   
   public abstract String md5(String paramString);
@@ -67,6 +71,8 @@ public abstract interface IPlatformUtil
   public abstract String resolveLanguageStringForGlobal(String paramString);
   
   public abstract String resolveURLStringForGlobal(String paramString);
+  
+  public abstract boolean saveSecurityStore(String paramString, byte[] paramArrayOfByte);
   
   public abstract void setIdleTimerDisable(boolean paramBoolean);
   
@@ -80,11 +86,15 @@ public abstract interface IPlatformUtil
   
   public abstract void setStatusBarHidden(boolean paramBoolean1, boolean paramBoolean2);
   
+  public abstract String sha256(byte[] paramArrayOfByte, boolean paramBoolean);
+  
   public abstract boolean shouldReportCellInfo();
   
   public abstract boolean shouldReportLocation();
   
   public abstract boolean shouldReportWifiSsid();
+  
+  public abstract boolean supportSecurityStore();
 }
 
 

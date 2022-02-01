@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.video.ObservableSurfaceView;
-import com.tencent.mm.plugin.voip.video.camera.a.c;
+import com.tencent.mm.plugin.voip.video.camera.a.d;
 
 public class CaptureView
   extends ObservableSurfaceView
@@ -12,39 +12,39 @@ public class CaptureView
   public CaptureView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(235866);
+    AppMethodBeat.i(241216);
     init();
-    AppMethodBeat.o(235866);
+    AppMethodBeat.o(241216);
   }
   
   public CaptureView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(235867);
+    AppMethodBeat.i(241221);
     init();
-    AppMethodBeat.o(235867);
+    AppMethodBeat.o(241221);
   }
   
   public CaptureView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(235868);
+    AppMethodBeat.i(241225);
     init();
-    AppMethodBeat.o(235868);
+    AppMethodBeat.o(241225);
   }
   
   private void init()
   {
-    AppMethodBeat.i(235869);
-    if (c.fLj()) {
+    AppMethodBeat.i(241228);
+    if (d.gDJ()) {
       setNeedSetType(true);
     }
-    AppMethodBeat.o(235869);
+    AppMethodBeat.o(241228);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.camera.prev.CaptureView
  * JD-Core Version:    0.7.0.1
  */

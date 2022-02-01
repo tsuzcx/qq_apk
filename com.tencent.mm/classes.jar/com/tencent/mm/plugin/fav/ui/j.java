@@ -6,140 +6,141 @@ import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.oc;
+import com.tencent.mm.f.a.oz;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.fav.a.af;
+import com.tencent.mm.plugin.fav.a.ag;
 import com.tencent.mm.plugin.fav.a.b;
+import com.tencent.mm.plugin.fav.a.g;
 import com.tencent.mm.plugin.fav.a.h.a;
-import com.tencent.mm.plugin.fav.a.x;
+import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.protocal.protobuf.amj;
-import com.tencent.mm.protocal.protobuf.aml;
-import com.tencent.mm.protocal.protobuf.amm;
-import com.tencent.mm.protocal.protobuf.amn;
-import com.tencent.mm.protocal.protobuf.amv;
-import com.tencent.mm.protocal.protobuf.anb;
-import com.tencent.mm.protocal.protobuf.and;
-import com.tencent.mm.protocal.protobuf.anh;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.protocal.protobuf.ank;
+import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.protocal.protobuf.ann;
+import com.tencent.mm.protocal.protobuf.ano;
+import com.tencent.mm.protocal.protobuf.anw;
+import com.tencent.mm.protocal.protobuf.aoc;
+import com.tencent.mm.protocal.protobuf.aoe;
+import com.tencent.mm.protocal.protobuf.aoi;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ca.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class j
 {
-  private static String a(Context paramContext, aml paramaml)
+  private static String a(Context paramContext, anm paramanm)
   {
     AppMethodBeat.i(106781);
-    switch (paramaml.dataType)
+    switch (paramanm.dataType)
     {
     default: 
-      paramContext = paramaml.desc;
+      paramContext = paramanm.desc;
       AppMethodBeat.o(106781);
       return paramContext;
     case 5: 
       str = "";
       paramContext = str;
-      if (paramaml.Lwh != null)
+      if (paramanm.SyG != null)
       {
         paramContext = str;
-        if (paramaml.Lwh.LwO != null) {
-          paramContext = paramaml.Lwh.LwO.link;
+        if (paramanm.SyG.Szn != null) {
+          paramContext = paramanm.SyG.Szn.link;
         }
       }
       if (Util.isNullOrNil(paramContext))
       {
-        paramContext = paramaml.Lvu;
+        paramContext = paramanm.SxU;
         AppMethodBeat.o(106781);
         return paramContext;
       }
       AppMethodBeat.o(106781);
       return paramContext;
     case 22: 
-      if (b.cUq())
+      if (b.djw())
       {
         AppMethodBeat.o(106781);
         return "";
       }
-      paramContext = paramContext.getString(2131755853);
+      paramContext = paramContext.getString(s.i.app_finder);
       AppMethodBeat.o(106781);
       return paramContext;
     case 17: 
-      paramContext = paramContext.getString(2131755961);
+      paramContext = paramContext.getString(s.i.app_record);
       AppMethodBeat.o(106781);
       return paramContext;
     case 4: 
-      paramContext = paramContext.getString(2131756018);
+      paramContext = paramContext.getString(s.i.app_video);
       AppMethodBeat.o(106781);
       return paramContext;
     case 19: 
-      paramContext = paramContext.getString(2131755314);
+      paramContext = paramContext.getString(s.i.app_app_brand);
     }
     try
     {
-      paramaml = paramContext + " " + paramaml.Lwh.Lxf.Lve;
-      paramContext = paramaml;
+      paramanm = paramContext + " " + paramanm.SyG.SzE.SxE;
+      paramContext = paramanm;
     }
-    catch (Exception paramaml)
+    catch (Exception paramanm)
     {
-      label263:
-      break label263;
+      label267:
+      break label267;
     }
     AppMethodBeat.o(106781);
     return paramContext;
-    paramContext = paramContext.getString(2131755862);
+    paramContext = paramContext.getString(s.i.app_friend_card);
     try
     {
-      com.tencent.mm.kernel.g.aAi();
-      paramaml = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().aEK(paramaml.desc);
-      paramaml = paramContext + " " + paramaml.nickname;
-      paramContext = paramaml;
+      com.tencent.mm.kernel.h.aHH();
+      paramanm = ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().aOU(paramanm.desc);
+      paramanm = paramContext + " " + paramanm.nickname;
+      paramContext = paramanm;
     }
-    catch (Exception paramaml)
+    catch (Exception paramanm)
     {
-      label333:
-      break label333;
+      label338:
+      break label338;
     }
     AppMethodBeat.o(106781);
     return paramContext;
-    paramContext = paramContext.getString(2131756022) + " " + m.J(paramContext, paramaml.duration / 1000) + "\n";
+    paramContext = paramContext.getString(s.i.app_voice) + " " + m.N(paramContext, paramanm.duration / 1000) + "\n";
     AppMethodBeat.o(106781);
     return paramContext;
-    String str = paramaml.desc;
+    String str = paramanm.desc;
     paramContext = str;
-    if (!Util.isNullOrNil(paramaml.title)) {
-      paramContext = paramaml.title + " " + str;
+    if (!Util.isNullOrNil(paramanm.title)) {
+      paramContext = paramanm.title + " " + str;
     }
     AppMethodBeat.o(106781);
     return paramContext;
   }
   
-  private static void a(Context paramContext, com.tencent.mm.plugin.fav.a.g paramg, int paramInt, aml paramaml)
+  private static void a(Context paramContext, g paramg, int paramInt, anm paramanm)
   {
     AppMethodBeat.i(106779);
-    paramg.field_favProto.ppH.remove(paramInt);
-    paramContext = a(paramContext, paramaml);
+    paramg.field_favProto.syG.remove(paramInt);
+    paramContext = a(paramContext, paramanm);
     if (paramContext == null) {}
     for (paramContext = "\n\n";; paramContext = "\n" + paramContext + "\n\n")
     {
-      a(paramg, paramInt, asn(paramContext));
+      a(paramg, paramInt, aAo(paramContext));
       AppMethodBeat.o(106779);
       return;
     }
   }
   
-  private static void a(com.tencent.mm.plugin.fav.a.g paramg, int paramInt, String paramString)
+  private static void a(g paramg, int paramInt, String paramString)
   {
     AppMethodBeat.i(106782);
-    aml localaml = new aml();
-    localaml.ajd(1);
-    localaml.bgg(paramString);
-    paramg.field_favProto.ppH.add(paramInt, localaml);
+    anm localanm = new anm();
+    localanm.arq(1);
+    localanm.bsy(paramString);
+    paramg.field_favProto.syG.add(paramInt, localanm);
     AppMethodBeat.o(106782);
   }
   
@@ -152,20 +153,20 @@ public final class j
       int k;
       try
       {
-        localg = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(paramLong);
-        if ((localg.field_favProto != null) && (localg.field_favProto.ppH != null))
+        localg = ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().Km(paramLong);
+        if ((localg.field_favProto != null) && (localg.field_favProto.syG != null))
         {
-          localObject1 = localg.field_favProto.ppH.iterator();
+          localObject1 = localg.field_favProto.syG.iterator();
           if (((Iterator)localObject1).hasNext())
           {
-            if (((aml)((Iterator)localObject1).next()).LvI <= ((af)com.tencent.mm.kernel.g.ah(af.class)).getFileSizeLimit(false)) {
+            if (((anm)((Iterator)localObject1).next()).Syi <= ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFileSizeLimit(false)) {
               continue;
             }
             i = 0;
             if (i != 0) {
               continue;
             }
-            com.tencent.mm.ui.base.h.d(paramMMActivity, paramMMActivity.getString(2131759317, new Object[] { Integer.valueOf(((af)com.tencent.mm.kernel.g.ah(af.class)).getFileSizeLimitInMB(false)) }), "", new DialogInterface.OnClickListener()
+            com.tencent.mm.ui.base.h.d(paramMMActivity, paramMMActivity.getString(s.i.favorite_save_as_note_failed_bigfile, new Object[] { Integer.valueOf(((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFileSizeLimitInMB(false)) }), "", new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
@@ -182,129 +183,129 @@ public final class j
         }
         i = 1;
         continue;
-        com.tencent.mm.plugin.report.service.h.CyF.a(15378, new Object[] { Integer.valueOf(localg.field_id), Integer.valueOf(localg.field_type) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(15378, new Object[] { Integer.valueOf(localg.field_id), Integer.valueOf(localg.field_type) });
         Log.d("fav.FavNoteConvertLogic", "report 15378, id:%s, type:%s", new Object[] { Integer.valueOf(localg.field_id), Integer.valueOf(localg.field_type) });
         localg.field_flag = 0;
         localg.field_updateTime = System.currentTimeMillis();
         localg.field_localId = -1L;
         localg.field_sourceType = 6;
-        if (localg.field_favProto.Lya != null)
+        if (localg.field_favProto.SAB != null)
         {
-          localg.field_favProto.Lya.bhh("");
-          localg.field_favProto.Lya.ajm(6);
-          localg.field_favProto.Lya.bhf(z.aTY());
+          localg.field_favProto.SAB.btz("");
+          localg.field_favProto.SAB.arz(6);
+          localg.field_favProto.SAB.btx(z.bcZ());
         }
-        localg.field_fromUser = z.aTY();
+        localg.field_fromUser = z.bcZ();
         Object localObject2;
         if (localg.field_type == 1)
         {
           localObject1 = new LinkedList();
-          localg.field_favProto.bH((LinkedList)localObject1);
-          a(localg, 0, asn(localg.field_favProto.desc));
+          localg.field_favProto.cg((LinkedList)localObject1);
+          a(localg, 0, aAo(localg.field_favProto.desc));
           localg.field_localId = System.currentTimeMillis();
           localg.field_type = 18;
-          localg.field_xml = com.tencent.mm.plugin.fav.a.g.t(localg);
-          localObject1 = new and();
+          localg.field_xml = g.t(localg);
+          localObject1 = new aoe();
           if (parama != null)
           {
-            ((and)localObject1).scene = parama.scene;
-            ((and)localObject1).pHw = parama.pHw;
-            ((and)localObject1).index = parama.index;
-            ((and)localObject1).query = parama.query;
-            ((and)localObject1).sessionId = parama.sGF;
-            ((and)localObject1).tay = parama.tay;
+            ((aoe)localObject1).scene = parama.scene;
+            ((aoe)localObject1).wGA = parama.wGA;
+            ((aoe)localObject1).index = parama.index;
+            ((aoe)localObject1).query = parama.query;
+            ((aoe)localObject1).sessionId = parama.wmA;
+            ((aoe)localObject1).wGC = parama.wGC;
           }
-          parama = new oc();
-          parama.dUe.field_localId = localg.field_localId;
-          parama.dUe.dUn = 5;
-          parama.dUe.dUg = localg.field_xml;
-          parama.dUe.context = paramMMActivity;
+          parama = new oz();
+          parama.fNG.field_localId = localg.field_localId;
+          parama.fNG.fNP = 5;
+          parama.fNG.fNI = localg.field_xml;
+          parama.fNG.context = paramMMActivity;
           localObject2 = new Bundle();
-          localObject3 = localg.field_favProto.KBr;
+          localObject3 = localg.field_favProto.RDh;
           if (localObject3 != null)
           {
-            ((Bundle)localObject2).putString("noteauthor", ((amv)localObject3).LxT);
-            ((Bundle)localObject2).putString("noteeditor", ((amv)localObject3).LxU);
+            ((Bundle)localObject2).putString("noteauthor", ((anw)localObject3).SAu);
+            ((Bundle)localObject2).putString("noteeditor", ((anw)localObject3).SAv);
           }
           ((Bundle)localObject2).putLong("edittime", localg.field_updateTime);
-          parama.dUe.dUl = ((Bundle)localObject2);
-          parama.dUe.field_favProto = localg.field_favProto;
-          parama.dUe.type = 2;
-          parama.dUe.dUo = true;
-          parama.dUe.dUp = ((and)localObject1);
+          parama.fNG.fNN = ((Bundle)localObject2);
+          parama.fNG.field_favProto = localg.field_favProto;
+          parama.fNG.type = 2;
+          parama.fNG.fNQ = true;
+          parama.fNG.fNR = ((aoe)localObject1);
           EventCenter.instance.publish(parama);
           paramMMActivity.finish();
           AppMethodBeat.o(106778);
           return;
         }
-        if (localg.field_favProto.ppH == null) {
+        if (localg.field_favProto.syG == null) {
           continue;
         }
         j = 1;
         i = 0;
-        if (i >= localg.field_favProto.ppH.size()) {
+        if (i >= localg.field_favProto.syG.size()) {
           continue;
         }
-        localObject3 = (aml)localg.field_favProto.ppH.get(i);
-        if ((localg.field_type != 18) || (!((aml)localObject3).Lwp.equals("WeNoteHtmlFile")))
+        localObject3 = (anm)localg.field_favProto.syG.get(i);
+        if ((localg.field_type != 18) || (!((anm)localObject3).SyO.equals("WeNoteHtmlFile")))
         {
-          localObject1 = b.d((aml)localObject3);
-          localObject2 = b.a((aml)localObject3);
-          ((aml)localObject3).bgs(b.ds(localObject3.toString(), 18));
-          String str1 = b.d((aml)localObject3);
-          String str2 = b.a((aml)localObject3);
-          if ((!Util.isNullOrNil((String)localObject1)) && (!Util.isNullOrNil(str1)) && (s.YS((String)localObject1))) {
-            s.nw((String)localObject1, str1);
+          localObject1 = b.d((anm)localObject3);
+          localObject2 = b.a((anm)localObject3);
+          ((anm)localObject3).bsK(b.dN(localObject3.toString(), 18));
+          String str1 = b.d((anm)localObject3);
+          String str2 = b.a((anm)localObject3);
+          if ((!Util.isNullOrNil((String)localObject1)) && (!Util.isNullOrNil(str1)) && (u.agG((String)localObject1))) {
+            u.on((String)localObject1, str1);
           }
-          if ((!Util.isNullOrNil((String)localObject2)) && (!Util.isNullOrNil(str2)) && (s.YS((String)localObject2))) {
-            s.nw((String)localObject2, str2);
+          if ((!Util.isNullOrNil((String)localObject2)) && (!Util.isNullOrNil(str2)) && (u.agG((String)localObject2))) {
+            u.on((String)localObject2, str2);
           }
         }
         if (localg.field_type == 18) {
           break label1262;
         }
-        if (((aml)localObject3).dataType == 1)
+        if (((anm)localObject3).dataType == 1)
         {
           if (localg.field_type == 14)
           {
-            if (((aml)localObject3).desc == null)
+            if (((anm)localObject3).desc == null)
             {
               localObject1 = "\n";
-              if (((aml)localObject3).Lwj == null)
+              if (((anm)localObject3).SyI == null)
               {
                 localObject2 = "";
-                ((aml)localObject3).bgg(asn((String)localObject2 + (String)localObject1 + "\n"));
+                ((anm)localObject3).bsy(aAo((String)localObject2 + (String)localObject1 + "\n"));
                 break label1299;
               }
             }
             else
             {
-              localObject1 = ((aml)localObject3).desc + "\n";
+              localObject1 = ((anm)localObject3).desc + "\n";
               continue;
             }
-            localObject2 = ((aml)localObject3).Lwj + ":\n";
+            localObject2 = ((anm)localObject3).SyI + ":\n";
             continue;
           }
-          if (Util.isNullOrNil(((aml)localObject3).desc)) {
+          if (Util.isNullOrNil(((anm)localObject3).desc)) {
             break label1288;
           }
-          ((aml)localObject3).bgg(asn(((aml)localObject3).desc));
+          ((anm)localObject3).bsy(aAo(((anm)localObject3).desc));
           break label1299;
         }
         Object localObject1 = new StringBuilder("WeNote_");
         k = j + 1;
-        ((aml)localObject3).bgC(j);
+        ((anm)localObject3).bsU(j);
         j = i;
         if (localg.field_type == 14)
         {
           j = i;
-          if (((aml)localObject3).Lwj != null)
+          if (((anm)localObject3).SyI != null)
           {
-            a(localg, i, asn(((aml)localObject3).Lwj + ":"));
+            a(localg, i, aAo(((anm)localObject3).SyI + ":"));
             j = i + 1;
           }
         }
-        i = ((aml)localObject3).dataType;
+        i = ((anm)localObject3).dataType;
         if ((i == 1) || (i == 2) || (i == 3) || (i == 6) || (i == 8) || (i == 4) || (i == 0)) {
           break label1308;
         }
@@ -314,17 +315,17 @@ public final class j
       }
       catch (Throwable parama)
       {
-        com.tencent.mm.plugin.fav.a.g localg;
-        Toast.makeText(paramMMActivity, paramMMActivity.getString(2131759315), 0).show();
+        g localg;
+        Toast.makeText(paramMMActivity, paramMMActivity.getString(s.i.favorite_save_as_note_failed), 0).show();
         AppMethodBeat.o(106778);
         return;
       }
       if (i == 0)
       {
-        a(paramMMActivity, localg, j, (aml)localObject3);
-        if (((aml)localObject3).dataType == 3)
+        a(paramMMActivity, localg, j, (anm)localObject3);
+        if (((anm)localObject3).dataType == 3)
         {
-          ((aml)localObject3).ajd(20);
+          ((anm)localObject3).arq(20);
           i = j;
           j = k;
           break label1299;
@@ -332,16 +333,16 @@ public final class j
       }
       else
       {
-        if ((((aml)localObject3).dataType != 4) || (((aml)localObject3).Lwh == null) || (((aml)localObject3).Lwh.Lxi == null)) {
+        if ((((anm)localObject3).dataType != 4) || (((anm)localObject3).SyG == null) || (((anm)localObject3).SyG.SzH == null)) {
           continue;
         }
-        a(paramMMActivity, localg, j, (aml)localObject3);
+        a(paramMMActivity, localg, j, (anm)localObject3);
         continue;
         label1262:
-        if (((aml)localObject3).dataType == 20)
+        if (((anm)localObject3).dataType == 20)
         {
-          ((aml)localObject3).bgj("");
-          ((aml)localObject3).bgk("");
+          ((anm)localObject3).bsB("");
+          ((anm)localObject3).bsC("");
         }
         label1288:
         break label1299;
@@ -359,7 +360,7 @@ public final class j
     }
   }
   
-  private static String asn(String paramString)
+  private static String aAo(String paramString)
   {
     AppMethodBeat.i(106780);
     paramString = paramString.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll(" ", "&nbsp;");
@@ -369,7 +370,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.j
  * JD-Core Version:    0.7.0.1
  */

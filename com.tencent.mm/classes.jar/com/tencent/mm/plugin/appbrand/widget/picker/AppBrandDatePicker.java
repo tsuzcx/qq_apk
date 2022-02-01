@@ -2,16 +2,18 @@ package com.tencent.mm.plugin.appbrand.widget.picker;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.annotation.Keep;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.NumberPicker.OnValueChangeListener;
+import androidx.annotation.Keep;
+import com.tencent.luggage.b.a.a.d;
+import com.tencent.luggage.b.a.a.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.picker.YADatePicker;
 import com.tencent.mm.ui.widget.picker.YADatePicker.c;
 import com.tencent.mm.ui.widget.picker.YADatePicker.d;
-import com.tencent.mm.ui.widget.picker.f;
+import com.tencent.mm.ui.widget.picker.e;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -19,50 +21,50 @@ import java.util.Locale;
 
 public final class AppBrandDatePicker
   extends YADatePicker
-  implements com.tencent.mm.plugin.appbrand.jsapi.r.c<String>
+  implements com.tencent.mm.plugin.appbrand.jsapi.s.c<String>
 {
-  public boolean ozb;
-  public boolean ozc;
-  public boolean ozd;
-  public NumberPicker oze;
-  public NumberPicker ozf;
-  public NumberPicker ozg;
-  private Date ozh;
-  private Date ozi;
-  private final Calendar ozj;
-  private final String[] ozk;
+  public boolean rBI;
+  public boolean rBJ;
+  public boolean rBK;
+  public NumberPicker rBL;
+  public NumberPicker rBM;
+  public NumberPicker rBN;
+  private Date rBO;
+  private Date rBP;
+  private final Calendar rBQ;
+  private final String[] rBR;
   
   @Keep
   public AppBrandDatePicker(Context paramContext)
   {
-    super(new ContextThemeWrapper(paramContext, 2131821601));
+    super(new ContextThemeWrapper(paramContext, a.h.Widget_AppBrand_Picker));
     AppMethodBeat.i(137973);
-    this.ozb = true;
-    this.ozc = true;
-    this.ozd = true;
-    this.ozk = new String[12];
+    this.rBI = true;
+    this.rBJ = true;
+    this.rBK = true;
+    this.rBR = new String[12];
     int i = 0;
-    while (i < this.ozk.length)
+    while (i < this.rBR.length)
     {
-      this.ozk[i] = (i + 1);
+      this.rBR[i] = (i + 1);
       i += 1;
     }
-    this.ozj = Calendar.getInstance(Locale.US);
+    this.rBQ = Calendar.getInstance(Locale.US);
     setCalendarViewShown(false);
     setSpinnersShown(true);
-    this.oze = ((YADatePicker.c)getUIDelegate()).QUi;
-    this.ozf = ((YADatePicker.c)getUIDelegate()).QUh;
-    this.ozg = ((YADatePicker.c)getUIDelegate()).QUg;
-    paramContext = getResources().getDrawable(2131231090);
-    f.a(this.oze, paramContext);
-    f.a(this.ozf, paramContext);
-    f.a(this.ozg, paramContext);
-    f.d(this.oze);
-    f.d(this.ozf);
-    f.d(this.ozg);
-    d.a(this.oze);
-    d.a(this.ozf);
-    d.a(this.ozg);
+    this.rBL = ((YADatePicker.c)getUIDelegate()).Yst;
+    this.rBM = ((YADatePicker.c)getUIDelegate()).Yss;
+    this.rBN = ((YADatePicker.c)getUIDelegate()).Ysr;
+    paramContext = getResources().getDrawable(a.d.appbrand_picker_divider);
+    e.a(this.rBL, paramContext);
+    e.a(this.rBM, paramContext);
+    e.a(this.rBN, paramContext);
+    e.d(this.rBL);
+    e.d(this.rBM);
+    e.d(this.rBN);
+    d.a(this.rBL);
+    d.a(this.rBM);
+    d.a(this.rBN);
     paramContext = new NumberPicker.OnValueChangeListener()
     {
       public final void onValueChange(NumberPicker paramAnonymousNumberPicker, int paramAnonymousInt1, int paramAnonymousInt2)
@@ -72,80 +74,80 @@ public final class AppBrandDatePicker
         AppMethodBeat.o(137972);
       }
     };
-    if (this.oze != null)
+    if (this.rBL != null)
     {
-      this.oze.setOnValueChangedListener(paramContext);
-      this.oze.setMinValue(1900);
+      this.rBL.setOnValueChangedListener(paramContext);
+      this.rBL.setMinValue(1900);
     }
-    if (this.ozf != null) {
-      this.ozf.setOnValueChangedListener(paramContext);
+    if (this.rBM != null) {
+      this.rBM.setOnValueChangedListener(paramContext);
     }
-    if (this.ozg != null) {
-      this.ozg.setOnValueChangedListener(paramContext);
+    if (this.rBN != null) {
+      this.rBN.setOnValueChangedListener(paramContext);
     }
-    ccq();
-    f.f(this.oze);
-    f.f(this.ozf);
-    f.f(this.ozg);
+    cpH();
+    e.f(this.rBL);
+    e.f(this.rBM);
+    e.f(this.rBN);
     AppMethodBeat.o(137973);
   }
   
-  private void ccq()
+  private void cpH()
   {
     int j = 0;
     AppMethodBeat.i(137974);
-    if ((this.oze == null) || (this.ozf == null) || (this.ozg == null))
+    if ((this.rBL == null) || (this.rBM == null) || (this.rBN == null))
     {
       AppMethodBeat.o(137974);
       return;
     }
-    this.ozf.setDisplayedValues(null);
-    if ((this.oze.getValue() == this.oze.getMaxValue()) && (this.ozi != null))
+    this.rBM.setDisplayedValues(null);
+    if ((this.rBL.getValue() == this.rBL.getMaxValue()) && (this.rBP != null))
     {
-      this.ozf.setMaxValue(this.ozi.getMonth());
-      if ((this.ozf.getValue() != this.ozf.getMaxValue()) || (this.ozi == null)) {
+      this.rBM.setMaxValue(this.rBP.getMonth());
+      if ((this.rBM.getValue() != this.rBM.getMaxValue()) || (this.rBP == null)) {
         break label333;
       }
-      this.ozg.setMaxValue(this.ozi.getDate());
+      this.rBN.setMaxValue(this.rBP.getDate());
       i = 1;
       if (i == 0)
       {
-        i = this.oze.getValue();
-        int k = this.ozf.getValue();
-        this.ozj.set(i, k, 1);
-        i = this.ozj.getActualMaximum(5);
-        this.ozg.setMaxValue(i);
+        i = this.rBL.getValue();
+        int k = this.rBM.getValue();
+        this.rBQ.set(i, k, 1);
+        i = this.rBQ.getActualMaximum(5);
+        this.rBN.setMaxValue(i);
       }
-      if ((this.oze.getValue() != this.oze.getMinValue()) || (this.ozh == null)) {
+      if ((this.rBL.getValue() != this.rBL.getMinValue()) || (this.rBO == null)) {
         break label338;
       }
-      this.ozf.setMinValue(this.ozh.getMonth());
+      this.rBM.setMinValue(this.rBO.getMonth());
       i = j;
-      if (this.ozf.getValue() == this.ozf.getMinValue())
+      if (this.rBM.getValue() == this.rBM.getMinValue())
       {
         i = j;
-        if (this.ozh != null) {
-          this.ozg.setMinValue(this.ozh.getDate());
+        if (this.rBO != null) {
+          this.rBN.setMinValue(this.rBO.getDate());
         }
       }
     }
     for (int i = 1;; i = j)
     {
       if (i == 0) {
-        this.ozg.setMinValue(1);
+        this.rBN.setMinValue(1);
       }
-      this.ozf.setDisplayedValues((String[])Arrays.copyOfRange(this.ozk, this.ozf.getMinValue(), this.ozf.getMaxValue() + 1));
-      this.oze.setWrapSelectorWheel(true);
-      this.ozf.setWrapSelectorWheel(true);
-      this.ozg.setWrapSelectorWheel(true);
+      this.rBM.setDisplayedValues((String[])Arrays.copyOfRange(this.rBR, this.rBM.getMinValue(), this.rBM.getMaxValue() + 1));
+      this.rBL.setWrapSelectorWheel(true);
+      this.rBM.setWrapSelectorWheel(true);
+      this.rBN.setWrapSelectorWheel(true);
       AppMethodBeat.o(137974);
       return;
-      this.ozf.setMaxValue(11);
+      this.rBM.setMaxValue(11);
       label333:
       i = 0;
       break;
       label338:
-      this.ozf.setMinValue(0);
+      this.rBM.setMinValue(0);
     }
   }
   
@@ -153,16 +155,16 @@ public final class AppBrandDatePicker
   {
     AppMethodBeat.i(137979);
     super.a(paramInt1, Math.max(paramInt2 - 1, 0), paramInt3, paramd);
-    ccq();
+    cpH();
     AppMethodBeat.o(137979);
   }
   
   public final int getDayOfMonth()
   {
     AppMethodBeat.i(137982);
-    if (this.ozg != null)
+    if (this.rBN != null)
     {
-      i = this.ozg.getValue();
+      i = this.rBN.getValue();
       AppMethodBeat.o(137982);
       return i;
     }
@@ -174,8 +176,8 @@ public final class AppBrandDatePicker
   public final int getMonth()
   {
     AppMethodBeat.i(137981);
-    if (this.ozf != null) {}
-    for (int i = this.ozf.getValue() + 1;; i = super.getMonth() + 1)
+    if (this.rBM != null) {}
+    for (int i = this.rBM.getValue() + 1;; i = super.getMonth() + 1)
     {
       i = Math.max(Math.min(i, 12), 0);
       AppMethodBeat.o(137981);
@@ -191,9 +193,9 @@ public final class AppBrandDatePicker
   public final int getYear()
   {
     AppMethodBeat.i(137980);
-    if (this.oze != null)
+    if (this.rBL != null)
     {
-      i = this.oze.getValue();
+      i = this.rBL.getValue();
       AppMethodBeat.o(137980);
       return i;
     }
@@ -208,9 +210,9 @@ public final class AppBrandDatePicker
   {
     AppMethodBeat.i(137977);
     super.onAttachedToWindow();
-    f.e(this.oze);
-    f.e(this.ozf);
-    f.e(this.ozg);
+    e.e(this.rBL);
+    e.e(this.rBM);
+    e.e(this.rBN);
     AppMethodBeat.o(137977);
   }
   
@@ -221,7 +223,7 @@ public final class AppBrandDatePicker
   public final void onShow(c paramc)
   {
     AppMethodBeat.i(137978);
-    ccq();
+    cpH();
     AppMethodBeat.o(137978);
   }
   
@@ -229,9 +231,9 @@ public final class AppBrandDatePicker
   {
     AppMethodBeat.i(137975);
     super.setMaxDate(paramLong);
-    this.ozi = new Date(paramLong);
-    if (this.oze != null) {
-      this.oze.setMaxValue(this.ozi.getYear() + 1900);
+    this.rBP = new Date(paramLong);
+    if (this.rBL != null) {
+      this.rBL.setMaxValue(this.rBP.getYear() + 1900);
     }
     AppMethodBeat.o(137975);
   }
@@ -240,16 +242,16 @@ public final class AppBrandDatePicker
   {
     AppMethodBeat.i(137976);
     super.setMinDate(paramLong);
-    this.ozh = new Date(paramLong);
-    if (this.oze != null) {
-      this.oze.setMinValue(this.ozh.getYear() + 1900);
+    this.rBO = new Date(paramLong);
+    if (this.rBL != null) {
+      this.rBL.setMinValue(this.rBO.getYear() + 1900);
     }
     AppMethodBeat.o(137976);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.AppBrandDatePicker
  * JD-Core Version:    0.7.0.1
  */

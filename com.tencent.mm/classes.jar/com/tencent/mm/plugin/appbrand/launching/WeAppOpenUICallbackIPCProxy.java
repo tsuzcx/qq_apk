@@ -6,13 +6,15 @@ import android.os.Parcelable.Creator;
 import com.tencent.luggage.sdk.launching.OnWXAppResultXPCWrapper;
 import com.tencent.luggage.sdk.launching.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.m;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.o;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.plugin.appbrand.api.g;
 import com.tencent.mm.plugin.appbrand.api.i;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
+import com.tencent.mm.plugin.report.service.h;
 import java.util.Map;
 import java.util.WeakHashMap;
 import java.util.concurrent.ConcurrentHashMap;
@@ -21,37 +23,37 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/launching/WeAppOpenUICallbackIPCProxy;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "onUIEnterInvokeProxy", "Lcom/tencent/luggage/sdk/launching/OnWXAppResultListener;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "onUIExitInvokeProxy", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "(Lcom/tencent/luggage/sdk/launching/OnWXAppResultListener;Lcom/tencent/luggage/sdk/launching/OnWXAppResultListener;)V", "isUIExitInvokeIgnored", "", "describeContents", "", "onUIEnter", "", "onUIExit", "isFinish", "setIgnoreUIExitInvoke", "ignore", "writeToParcel", "dest", "flags", "Companion", "MM", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/launching/WeAppOpenUICallbackIPCProxy;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "onUIEnterInvokeProxy", "Lcom/tencent/luggage/sdk/launching/OnWXAppResultListener;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "onUIExitInvokeProxy", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "(Lcom/tencent/luggage/sdk/launching/OnWXAppResultListener;Lcom/tencent/luggage/sdk/launching/OnWXAppResultListener;)V", "isUIExitInvokeIgnored", "", "describeContents", "", "onUIEnter", "", "onUIExit", "isFinish", "setIgnoreUIExitInvoke", "ignore", "writeToParcel", "dest", "flags", "Companion", "MM", "plugin-appbrand-integration_release"})
 public final class WeAppOpenUICallbackIPCProxy
   implements Parcelable
 {
   public static final Parcelable.Creator<WeAppOpenUICallbackIPCProxy> CREATOR;
-  public static final a mXz;
-  public boolean mXw;
-  public a<IPCVoid> mXx;
-  private a<IPCBoolean> mXy;
+  public static final WeAppOpenUICallbackIPCProxy.a pXT;
+  public boolean pXQ;
+  public a<IPCVoid> pXR;
+  private a<IPCBoolean> pXS;
   
   static
   {
-    AppMethodBeat.i(228740);
-    mXz = new a((byte)0);
+    AppMethodBeat.i(281680);
+    pXT = new WeAppOpenUICallbackIPCProxy.a((byte)0);
     CREATOR = (Parcelable.Creator)new b();
-    AppMethodBeat.o(228740);
+    AppMethodBeat.o(281680);
   }
   
   public WeAppOpenUICallbackIPCProxy(Parcel paramParcel)
   {
     this(locala, paramParcel);
-    AppMethodBeat.i(228739);
-    AppMethodBeat.o(228739);
+    AppMethodBeat.i(281678);
+    AppMethodBeat.o(281678);
   }
   
   public WeAppOpenUICallbackIPCProxy(a<IPCVoid> parama, a<IPCBoolean> parama1)
   {
-    AppMethodBeat.i(228738);
-    this.mXx = parama;
-    this.mXy = parama1;
-    AppMethodBeat.o(228738);
+    AppMethodBeat.i(281676);
+    this.pXR = parama;
+    this.pXS = parama1;
+    AppMethodBeat.o(281676);
   }
   
   public final int describeContents()
@@ -59,81 +61,78 @@ public final class WeAppOpenUICallbackIPCProxy
     return 0;
   }
   
-  public final void hY(boolean paramBoolean)
+  public final void iT(boolean paramBoolean)
   {
-    AppMethodBeat.i(228736);
-    if (this.mXw)
+    AppMethodBeat.i(281671);
+    if (this.pXQ)
     {
-      AppMethodBeat.o(228736);
+      AppMethodBeat.o(281671);
       return;
     }
-    this.mXy.b((Parcelable)new IPCBoolean(paramBoolean));
-    AppMethodBeat.o(228736);
+    this.pXS.b((Parcelable)new IPCBoolean(paramBoolean));
+    AppMethodBeat.o(281671);
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(228737);
-    p.h(paramParcel, "dest");
-    OnWXAppResultXPCWrapper.a(this.mXx, paramParcel);
-    OnWXAppResultXPCWrapper.a(this.mXy, paramParcel);
-    AppMethodBeat.o(228737);
+    AppMethodBeat.i(281674);
+    p.k(paramParcel, "dest");
+    OnWXAppResultXPCWrapper.a(this.pXR, paramParcel);
+    OnWXAppResultXPCWrapper.a(this.pXS, paramParcel);
+    AppMethodBeat.o(281674);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/launching/WeAppOpenUICallbackIPCProxy$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/launching/WeAppOpenUICallbackIPCProxy;", "plugin-appbrand-integration_release"})
-  public static final class a {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/launching/WeAppOpenUICallbackIPCProxy$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/launching/WeAppOpenUICallbackIPCProxy;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/launching/WeAppOpenUICallbackIPCProxy;", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/launching/WeAppOpenUICallbackIPCProxy$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/launching/WeAppOpenUICallbackIPCProxy;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/launching/WeAppOpenUICallbackIPCProxy;", "plugin-appbrand-integration_release"})
   public static final class b
     implements Parcelable.Creator<WeAppOpenUICallbackIPCProxy>
   {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/launching/WeAppOpenUICallbackIPCProxy$MM;", "", "()V", "TAG", "", "mReleasedUICallbacks", "Ljava/util/WeakHashMap;", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenUICallback;", "", "mUICallbackHashMap", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "beforeStartAppBrandUI", "", "initConfig", "targetProcess", "isUICallbackReleased", "uiCallback", "markUICallbackReleased", "stashUICallback", "launchParcel", "Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/launching/WeAppOpenUICallbackIPCProxy$MM;", "", "()V", "TAG", "", "mReleasedUICallbacks", "Ljava/util/WeakHashMap;", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenUICallback;", "", "mUICallbackHashMap", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "beforeStartAppBrandUI", "", "initConfig", "targetProcess", "isUICallbackReleased", "uiCallback", "markUICallbackReleased", "stashUICallback", "launchParcel", "Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;", "plugin-appbrand-integration_release"})
   public static final class c
   {
-    private static final ConcurrentHashMap<AppBrandInitConfigWC, i> mXA;
-    private static final WeakHashMap<i, Boolean> mXB;
-    public static final c mXC;
+    private static final ConcurrentHashMap<AppBrandInitConfigWC, i> pXU;
+    private static final WeakHashMap<i, Boolean> pXV;
+    public static final c pXW;
     
     static
     {
-      AppMethodBeat.i(228734);
-      mXC = new c();
-      mXA = new ConcurrentHashMap();
-      mXB = new WeakHashMap();
-      AppMethodBeat.o(228734);
+      AppMethodBeat.i(279408);
+      pXW = new c();
+      pXU = new ConcurrentHashMap();
+      pXV = new WeakHashMap();
+      AppMethodBeat.o(279408);
     }
     
     public static final void a(AppBrandInitConfigWC paramAppBrandInitConfigWC, LaunchParcel paramLaunchParcel)
     {
-      AppMethodBeat.i(228732);
-      p.h(paramAppBrandInitConfigWC, "initConfig");
-      p.h(paramLaunchParcel, "launchParcel");
-      Object localObject = u.mTD;
-      localObject = u.yi(paramLaunchParcel.mYS);
+      AppMethodBeat.i(279403);
+      p.k(paramAppBrandInitConfigWC, "initConfig");
+      p.k(paramLaunchParcel, "launchParcel");
+      Object localObject = t.pUE;
+      localObject = t.BI(paramLaunchParcel.pZq);
       boolean bool;
       if (localObject != null)
       {
-        paramLaunchParcel = ((g)localObject).kHN;
+        paramLaunchParcel = ((g)localObject).nBG;
         if ((paramLaunchParcel != null) && (!c(paramLaunchParcel))) {
-          ((Map)mXA).put(paramAppBrandInitConfigWC, paramLaunchParcel);
+          ((Map)pXU).put(paramAppBrandInitConfigWC, paramLaunchParcel);
         }
         if (localObject == null) {
           break label102;
         }
-        bool = ((g)localObject).kHO;
+        bool = ((g)localObject).nBH;
         label72:
-        paramAppBrandInitConfigWC.lei = bool;
+        paramAppBrandInitConfigWC.nYw = bool;
         if (localObject == null) {
           break label107;
         }
       }
       label102:
       label107:
-      for (paramLaunchParcel = ((g)localObject).kHP;; paramLaunchParcel = null)
+      for (paramLaunchParcel = ((g)localObject).nBI;; paramLaunchParcel = null)
       {
-        paramAppBrandInitConfigWC.kHP = paramLaunchParcel;
-        AppMethodBeat.o(228732);
+        paramAppBrandInitConfigWC.nBI = paramLaunchParcel;
+        AppMethodBeat.o(279403);
         return;
         paramLaunchParcel = null;
         break;
@@ -144,88 +143,88 @@ public final class WeAppOpenUICallbackIPCProxy
     
     public static final void a(final AppBrandInitConfigWC paramAppBrandInitConfigWC, final String paramString)
     {
-      AppMethodBeat.i(228733);
-      p.h(paramAppBrandInitConfigWC, "initConfig");
+      AppMethodBeat.i(279404);
+      p.k(paramAppBrandInitConfigWC, "initConfig");
       if (paramString == null)
       {
-        com.tencent.mm.plugin.report.service.h.CyF.dN(915, 35);
+        h.IzE.el(915, 35);
         com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.WeAppOpenUICallbackIPCProxy", "beforeStartAppBrandUI: [%s]", new Object[] { android.util.Log.getStackTraceString(new Throwable()) });
-        AppMethodBeat.o(228733);
+        AppMethodBeat.o(279404);
         return;
       }
-      Object localObject = (i)mXA.remove(paramAppBrandInitConfigWC);
+      Object localObject = (i)pXU.remove(paramAppBrandInitConfigWC);
       if (localObject != null)
       {
         localObject = new AtomicReference(localObject);
         final a locala = new a((AtomicReference)localObject, paramString, paramAppBrandInitConfigWC);
-        com.tencent.mm.ipcinvoker.h.b(paramString, (m)locala);
-        paramAppBrandInitConfigWC.leh = new WeAppOpenUICallbackIPCProxy((a)new c((AtomicReference)localObject), (a)new b((AtomicReference)localObject, locala, paramString, paramAppBrandInitConfigWC));
-        AppMethodBeat.o(228733);
+        j.b(paramString, (o)locala);
+        paramAppBrandInitConfigWC.nYv = new WeAppOpenUICallbackIPCProxy((a)new c((AtomicReference)localObject), (a)new b((AtomicReference)localObject, locala, paramString, paramAppBrandInitConfigWC));
+        AppMethodBeat.o(279404);
         return;
       }
-      AppMethodBeat.o(228733);
+      AppMethodBeat.o(279404);
     }
     
     public static final void b(i parami)
     {
-      AppMethodBeat.i(228730);
-      p.h(parami, "uiCallback");
-      synchronized (mXB)
+      AppMethodBeat.i(279398);
+      p.k(parami, "uiCallback");
+      synchronized (pXV)
       {
-        ((Map)mXB).put(parami, Boolean.TRUE);
-        parami = x.SXb;
-        AppMethodBeat.o(228730);
+        ((Map)pXV).put(parami, Boolean.TRUE);
+        parami = x.aazN;
+        AppMethodBeat.o(279398);
         return;
       }
     }
     
     private static boolean c(i parami)
     {
-      AppMethodBeat.i(228731);
-      synchronized (mXB)
+      AppMethodBeat.i(279400);
+      synchronized (pXV)
       {
-        boolean bool = mXB.containsKey(parami);
-        AppMethodBeat.o(228731);
+        boolean bool = pXV.containsKey(parami);
+        AppMethodBeat.o(279400);
         return bool;
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/launching/WeAppOpenUICallbackIPCProxy$MM$beforeStartAppBrandUI$1$processDiedListener$1", "Lcom/tencent/mm/ipcinvoker/IRemoteProcDied;", "onDied", "", "plugin-appbrand-integration_release"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/launching/WeAppOpenUICallbackIPCProxy$MM$beforeStartAppBrandUI$1$processDiedListener$1", "Lcom/tencent/mm/ipcinvoker/IRemoteProcDied;", "onDied", "", "plugin-appbrand-integration_release"})
     public static final class a
-      implements m
+      implements o
     {
       a(AtomicReference paramAtomicReference, String paramString, AppBrandInitConfigWC paramAppBrandInitConfigWC) {}
       
-      public final void aye()
+      public final void RQ()
       {
-        AppMethodBeat.i(228727);
-        com.tencent.mm.ipcinvoker.h.a(paramString, (m)this);
-        i locali = (i)this.mXD.get();
+        AppMethodBeat.i(263911);
+        j.a(paramString, (o)this);
+        i locali = (i)this.pXX.get();
         if (locali != null)
         {
-          WeAppOpenUICallbackIPCProxy.c localc = WeAppOpenUICallbackIPCProxy.c.mXC;
+          WeAppOpenUICallbackIPCProxy.c localc = WeAppOpenUICallbackIPCProxy.c.pXW;
           if (!WeAppOpenUICallbackIPCProxy.c.d(locali)) {}
         }
         else
         {
-          this.mXD.set(null);
-          AppMethodBeat.o(228727);
+          this.pXX.set(null);
+          AppMethodBeat.o(263911);
           return;
         }
-        locali.buf();
-        this.mXD.set(null);
-        AppMethodBeat.o(228727);
+        locali.bFf();
+        this.pXX.set(null);
+        AppMethodBeat.o(263911);
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "result", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "onWXAppResult", "com/tencent/mm/plugin/appbrand/launching/WeAppOpenUICallbackIPCProxy$MM$beforeStartAppBrandUI$1$2"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "result", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "onWXAppResult", "com/tencent/mm/plugin/appbrand/launching/WeAppOpenUICallbackIPCProxy$MM$beforeStartAppBrandUI$1$2"})
     static final class b<R extends Parcelable>
       implements a<IPCBoolean>
     {
       b(AtomicReference paramAtomicReference, WeAppOpenUICallbackIPCProxy.c.a parama, String paramString, AppBrandInitConfigWC paramAppBrandInitConfigWC) {}
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "onWXAppResult"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "onWXAppResult"})
     static final class c<R extends Parcelable>
       implements a<IPCVoid>
     {
@@ -235,7 +234,7 @@ public final class WeAppOpenUICallbackIPCProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.WeAppOpenUICallbackIPCProxy
  * JD-Core Version:    0.7.0.1
  */

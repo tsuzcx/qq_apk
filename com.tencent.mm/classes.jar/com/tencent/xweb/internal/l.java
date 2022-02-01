@@ -13,23 +13,25 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class l
 {
-  static a SDR;
-  static a SDS;
-  static a SDT;
+  static a aafb;
+  static a aafc;
+  static a aafd;
   
   public static IWebView a(WebView.c paramc, WebView paramWebView)
   {
     Object localObject2 = null;
     AppMethodBeat.i(156982);
     Log.i("WebViewWrapperFactory", "try to create webview  = ".concat(String.valueOf(paramc)));
-    b localb = b.c("CREATE_WEBVIEW", paramc);
-    localb.htA();
+    b localb1 = b.c("CREATE_WEBVIEW", paramc);
+    localb1.ixj();
+    b localb2 = b.d("CREATE_WEBVIEW", paramc);
+    localb2.ixj();
     localObject1 = localObject2;
     for (;;)
     {
       try
       {
-        if (g(paramc) == null)
+        if (h(paramc) == null)
         {
           localObject1 = localObject2;
           Log.e("WebViewWrapperFactory", "the kind of " + paramc + " this provider does not exist!");
@@ -37,17 +39,19 @@ public final class l
           return null;
         }
         localObject1 = localObject2;
-        paramWebView = g(paramc).createWebView(paramWebView);
+        paramWebView = h(paramc).createWebView(paramWebView);
         if (paramWebView == null) {
           continue;
         }
         localObject1 = paramWebView;
-        localb.htB();
+        localb1.ixk();
+        localObject1 = paramWebView;
+        localb2.ixk();
       }
       catch (Exception paramWebView)
       {
         XWalkEnvironment.addXWalkInitializeLog("WebViewWrapperFactory", "create webview with exception  type = " + paramc + ", error msg:" + paramWebView.getMessage());
-        h.l(paramc);
+        h.m(paramc);
         paramWebView = (WebView)localObject1;
         continue;
       }
@@ -58,57 +62,57 @@ public final class l
     }
   }
   
-  public static a g(WebView.c paramc)
+  public static a h(WebView.c paramc)
   {
     AppMethodBeat.i(156981);
-    if (paramc == WebView.c.SAt)
+    if (paramc == WebView.c.aabm)
     {
-      if (SDR == null)
+      if (aafb == null)
       {
-        paramc = g.oj("com.tencent.xweb.xwalk.XWalkWebFactory", "getInstance");
+        paramc = g.pf("com.tencent.xweb.xwalk.XWalkWebFactory", "getInstance");
         if ((paramc == null) || (!(paramc instanceof a)))
         {
           Log.e("WebViewWrapperFactory", "find com.tencent.xweb.XWalkWebFactory failed");
           AppMethodBeat.o(156981);
           return null;
         }
-        SDR = (a)paramc;
+        aafb = (a)paramc;
       }
-      paramc = SDR;
+      paramc = aafb;
       AppMethodBeat.o(156981);
       return paramc;
     }
-    if (paramc == WebView.c.SAu)
+    if (paramc == WebView.c.aabn)
     {
-      if (SDS == null)
+      if (aafc == null)
       {
-        paramc = g.oj("com.tencent.xweb.x5.X5WebFactory", "getInstance");
+        paramc = g.pf("com.tencent.xweb.x5.X5WebFactory", "getInstance");
         if ((paramc == null) || (!(paramc instanceof a)))
         {
           Log.e("WebViewWrapperFactory", "find X5WebFactory failed");
           AppMethodBeat.o(156981);
           return null;
         }
-        SDS = (a)paramc;
+        aafc = (a)paramc;
       }
-      paramc = SDS;
+      paramc = aafc;
       AppMethodBeat.o(156981);
       return paramc;
     }
-    if (paramc == WebView.c.SAv)
+    if (paramc == WebView.c.aabo)
     {
-      if (SDT == null)
+      if (aafd == null)
       {
-        paramc = g.oj("com.tencent.xweb.sys.SysWebFactory", "getInstance");
+        paramc = g.pf("com.tencent.xweb.sys.SysWebFactory", "getInstance");
         if ((paramc == null) || (!(paramc instanceof a)))
         {
           Log.e("WebViewWrapperFactory", "find SysWebFactory failed");
           AppMethodBeat.o(156981);
           return null;
         }
-        SDT = (a)paramc;
+        aafd = (a)paramc;
       }
-      paramc = SDT;
+      paramc = aafd;
       AppMethodBeat.o(156981);
       return paramc;
     }
@@ -145,7 +149,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.internal.l
  * JD-Core Version:    0.7.0.1
  */

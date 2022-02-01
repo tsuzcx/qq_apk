@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.config;
 import android.os.SystemClock;
 import android.webkit.WebSettings;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.utils.ag;
+import com.tencent.mm.plugin.appbrand.utils.ai;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
@@ -13,44 +13,44 @@ import kotlin.g.b.p;
 import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/config/AppBrandNetworkConfigUserAgentHelper;", "", "()V", "MMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMMKV", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "MMKV_KEY", "", "MMKV_NAME", "TAG", "mMemoryCachedUA", "Ljava/util/concurrent/atomic/AtomicReference;", "getByMMKV", "getByWebkit", "getSystemUserAgent", "setMMKV", "", "ua", "warmUpMemoryCache", "_ua", "luggage-wechat-full-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/config/AppBrandNetworkConfigUserAgentHelper;", "", "()V", "MMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMMKV", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "MMKV_KEY", "", "MMKV_NAME", "TAG", "mMemoryCachedUA", "Ljava/util/concurrent/atomic/AtomicReference;", "getByMMKV", "getByWebkit", "getSystemUserAgent", "setMMKV", "", "ua", "warmUpMemoryCache", "_ua", "luggage-wechat-full-sdk_release"})
 public final class j
 {
-  private static final AtomicReference<String> let;
-  public static final j leu;
+  private static final AtomicReference<String> nYG;
+  public static final j nYH;
   
   static
   {
     AppMethodBeat.i(169550);
-    leu = new j();
-    let = new AtomicReference();
+    nYH = new j();
+    nYG = new AtomicReference();
     AppMethodBeat.o(169550);
   }
   
-  public static final String Xb(String paramString)
+  public static final String aeN(String paramString)
   {
-    AppMethodBeat.i(230054);
+    AppMethodBeat.i(246241);
     Object localObject = (CharSequence)paramString;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        paramString = bzX();
+        paramString = bLm();
       }
-      localObject = (String)let.getAndSet(paramString);
+      localObject = (String)nYG.getAndSet(paramString);
       Log.i("Luggage.WXA.FULL.AppBrandNetworkConfigUserAgentHelper", "warmUpMemoryCache updated value = [ " + paramString + " ]");
-      if ((p.j(paramString, localObject) ^ true)) {
+      if ((p.h(paramString, localObject) ^ true)) {
         MultiProcessMMKV.getMMKV("AppBrandNetworkConfigUserAgentHelper", 2).encode("UserAgent", paramString);
       }
-      AppMethodBeat.o(230054);
+      AppMethodBeat.o(246241);
       return paramString;
     }
   }
   
-  public static final String bzW()
+  public static final String bLl()
   {
     AppMethodBeat.i(169547);
-    Object localObject = (String)let.get();
+    Object localObject = (String)nYG.get();
     CharSequence localCharSequence = (CharSequence)localObject;
     if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
     for (int i = 1; i == 0; i = 0)
@@ -59,20 +59,20 @@ public final class j
       AppMethodBeat.o(169547);
       return localObject;
     }
-    localObject = a.lev;
-    localObject = a.bAa();
-    let.set(localObject);
+    localObject = a.nYI;
+    localObject = a.bLp();
+    nYG.set(localObject);
     AppMethodBeat.o(169547);
     return localObject;
   }
   
-  private static String bzX()
+  private static String bLm()
   {
     AppMethodBeat.i(169549);
     try
     {
       String str1 = WebSettings.getDefaultUserAgent(MMApplicationContext.getContext());
-      p.g(str1, "WebSettings.getDefaultUs…tionContext.getContext())");
+      p.j(str1, "WebSettings.getDefaultUs…tionContext.getContext())");
       AppMethodBeat.o(169549);
       return str1;
     }
@@ -89,17 +89,17 @@ public final class j
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"getByHeavyInvoke", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"getByHeavyInvoke", "", "invoke"})
   static final class a
     extends q
     implements a<String>
   {
-    public static final a lev;
+    public static final a nYI;
     
     static
     {
       AppMethodBeat.i(169546);
-      lev = new a();
+      nYI = new a();
       AppMethodBeat.o(169546);
     }
     
@@ -108,12 +108,12 @@ public final class j
       super();
     }
     
-    public static String bAa()
+    public static String bLp()
     {
       AppMethodBeat.i(169545);
       long l = SystemClock.elapsedRealtime();
-      Object localObject = j.leu;
-      String str2 = j.bzY();
+      Object localObject = j.nYH;
+      String str2 = j.bLn();
       String str1;
       if (str2 != null)
       {
@@ -125,7 +125,7 @@ public final class j
       {
         localObject = "";
       }
-      boolean bool = ag.LB();
+      boolean bool = ai.Or();
       l = SystemClock.elapsedRealtime() - l;
       if ((l > 32L) && (bool))
       {
@@ -148,8 +148,8 @@ public final class j
       }
       label234:
       l = SystemClock.elapsedRealtime();
-      localObject = j.leu;
-      str2 = j.bzZ();
+      localObject = j.nYH;
+      str2 = j.bLo();
       if (str2 != null)
       {
         str1 = str2.toString();
@@ -160,7 +160,7 @@ public final class j
       {
         localObject = "";
       }
-      bool = ag.LB();
+      bool = ai.Or();
       l = SystemClock.elapsedRealtime() - l;
       if ((l > 32L) && (bool)) {
         Log.w("Luggage.Utils.Profile", "block main thread and skip " + (int)(l / 16L) + " frames! runProfiled:log:" + "Luggage.WXA.FULL.AppBrandNetworkConfigUserAgentHelper: getSystemUserAgent by webkit" + " cost " + l + " ms result:" + (String)localObject + " isMainThread: " + bool + ' ');
@@ -168,7 +168,7 @@ public final class j
       for (;;)
       {
         if (str2 == null) {
-          p.hyc();
+          p.iCn();
         }
         AppMethodBeat.o(169545);
         return str2;
@@ -179,7 +179,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.j
  * JD-Core Version:    0.7.0.1
  */

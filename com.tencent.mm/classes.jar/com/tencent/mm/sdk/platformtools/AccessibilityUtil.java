@@ -3,8 +3,8 @@ package com.tencent.mm.sdk.platformtools;
 import android.accessibilityservice.AccessibilityServiceInfo;
 import android.content.Context;
 import android.view.accessibility.AccessibilityManager;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -19,7 +19,7 @@ public class AccessibilityUtil
   
   static
   {
-    AppMethodBeat.i(215281);
+    AppMethodBeat.i(263311);
     TAG = "AccessibilityUtil";
     HashSet localHashSet = new HashSet();
     spokenServiceBlackSet = localHashSet;
@@ -28,12 +28,14 @@ public class AccessibilityUtil
     spokenServiceBlackSet.add("com.tencent.android.qqdownloader/com.tencent.nucleus.manager.accessibility.YYBAccessibilityService");
     spokenServiceBlackSet.add("com.huawei.recsys/.service.PortraitDaService");
     spokenServiceBlackSet.add("com.samsung.android.app.sreminder/.phone.shoppingassistant.ShoppingAssistantService");
-    AppMethodBeat.o(215281);
+    spokenServiceBlackSet.add("com.liuzh.quickly/.accservice.QuicklyAccService");
+    spokenServiceBlackSet.add("com.whatsbug.litiaotiao/.MyAccessibilityService");
+    AppMethodBeat.o(263311);
   }
   
   private static void printEnabledAccessibilityServiceInfo(AccessibilityManager paramAccessibilityManager)
   {
-    AppMethodBeat.i(215279);
+    AppMethodBeat.i(263309);
     Log.i(TAG, "printEnabledAccessibilityServiceInfo");
     try
     {
@@ -44,19 +46,19 @@ public class AccessibilityUtil
         AccessibilityServiceInfo localAccessibilityServiceInfo = (AccessibilityServiceInfo)paramAccessibilityManager.next();
         Log.i(TAG, "enabledAccessibilityServiceInfo : %s", new Object[] { localAccessibilityServiceInfo.toString() });
       }
-      AppMethodBeat.o(215279);
+      AppMethodBeat.o(263309);
     }
     catch (Throwable paramAccessibilityManager)
     {
       Log.e(TAG, "printEnabledAccessibilityServiceInfo error : %s", new Object[] { paramAccessibilityManager.getMessage() });
-      AppMethodBeat.o(215279);
+      AppMethodBeat.o(263309);
       return;
     }
   }
   
   private static void recoverAccessibilityEnable(AccessibilityManager paramAccessibilityManager, boolean paramBoolean)
   {
-    AppMethodBeat.i(215278);
+    AppMethodBeat.i(263308);
     for (;;)
     {
       try
@@ -73,12 +75,12 @@ public class AccessibilityUtil
       {
         Method localMethod;
         Log.e(TAG, "recoverAccessibilityEnable error : %s", new Object[] { paramAccessibilityManager.getMessage() });
-        AppMethodBeat.o(215278);
+        AppMethodBeat.o(263308);
         return;
       }
       localMethod.invoke(paramAccessibilityManager, new Object[] { Integer.valueOf(j) });
       Log.i(TAG, "recoverAccessibilityEnable setStateLocked is invoked, flag = %d", new Object[] { Integer.valueOf(j) });
-      AppMethodBeat.o(215278);
+      AppMethodBeat.o(263308);
       return;
       label119:
       int i = 1;
@@ -91,7 +93,7 @@ public class AccessibilityUtil
   
   public static void smartDisableAccessibility()
   {
-    AppMethodBeat.i(215277);
+    AppMethodBeat.i(263307);
     for (;;)
     {
       try
@@ -108,7 +110,7 @@ public class AccessibilityUtil
         if ((WeChatEnvironment.isCoolassistEnv()) || (BuildInfo.IS_FLAVOR_RED))
         {
           Log.i(TAG, "isCoolassistEnv or flavor red, return");
-          AppMethodBeat.o(215277);
+          AppMethodBeat.o(263307);
           return;
         }
         localObject = localAccessibilityManager.getEnabledAccessibilityServiceList(1).iterator();
@@ -120,13 +122,13 @@ public class AccessibilityUtil
           }
           Log.i(TAG, "has spoken service, return");
           printEnabledAccessibilityServiceInfo(localAccessibilityManager);
-          AppMethodBeat.o(215277);
+          AppMethodBeat.o(263307);
           return;
         }
         if (localAccessibilityManager.isTouchExplorationEnabled())
         {
           Log.i(TAG, "isTouchExplorationEnabled is true, return");
-          AppMethodBeat.o(215277);
+          AppMethodBeat.o(263307);
           return;
         }
         Log.i(TAG, "disableAccessibility");
@@ -137,23 +139,23 @@ public class AccessibilityUtil
           i = 4;
           ((Method)localObject).invoke(localAccessibilityManager, new Object[] { Integer.valueOf(i) });
           Log.i(TAG, "smartDisableAccessibility setStateLocked is invoked, flag = %d", new Object[] { Integer.valueOf(i) });
-          h.RTc.aX(new Runnable()
+          h.ZvG.be(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(215276);
+              AppMethodBeat.i(263039);
               AccessibilityUtil.access$000(this.val$accessibilityManager);
-              AppMethodBeat.o(215276);
+              AppMethodBeat.o(263039);
             }
           });
-          AppMethodBeat.o(215277);
+          AppMethodBeat.o(263307);
           return;
         }
       }
       catch (Throwable localThrowable)
       {
         Log.w(TAG, "disableAccessibility exception -> " + localThrowable.getMessage());
-        AppMethodBeat.o(215277);
+        AppMethodBeat.o(263307);
         return;
       }
       int i = 0;

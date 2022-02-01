@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.game.luggage.d.a;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ch.a;
+import com.tencent.mm.co.a;
 import com.tencent.mm.plugin.lite.jsapi.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -17,15 +17,15 @@ import org.json.JSONObject;
 public class e
   extends com.tencent.mm.plugin.lite.jsapi.b
 {
-  public final void a(String paramString, final JSONObject paramJSONObject)
+  public final void a(String paramString, final JSONObject paramJSONObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(186906);
+    AppMethodBeat.i(231232);
     a.post(new Runnable()
     {
       public final void run()
       {
         int i = 0;
-        AppMethodBeat.i(186905);
+        AppMethodBeat.i(231900);
         Object localObject5 = MMApplicationContext.getContext();
         Object localObject6 = paramJSONObject.optJSONArray("packageName");
         Object localObject3;
@@ -89,8 +89,8 @@ public class e
             ((HashMap)localObject2).put("versionCode", localObject3);
             ((HashMap)localObject2).put("versionName", localObject4);
             ((HashMap)localObject2).put("state", Boolean.valueOf(bool3));
-            e.a(e.this).aq((Map)localObject2);
-            AppMethodBeat.o(186905);
+            e.a(e.this).aj((Map)localObject2);
+            AppMethodBeat.o(231900);
             return;
           }
           bool2 = bool1;
@@ -100,8 +100,8 @@ public class e
           if (Util.isNullOrNil((String)localObject3))
           {
             Log.i("LiteAppJsApiGetInstallState", "packageName is null or nil");
-            e.b(e.this).aCS("get_install_state:no_null_packageName");
-            AppMethodBeat.o(186905);
+            e.b(e.this).aNa("get_install_state:no_null_packageName");
+            AppMethodBeat.o(231900);
             return;
           }
           localObject4 = com.tencent.mm.plugin.appbrand.ac.b.getPackageInfo((Context)localObject5, (String)localObject3);
@@ -119,8 +119,8 @@ public class e
             }
             localObject2 = new HashMap();
             ((HashMap)localObject2).put("state", Boolean.FALSE);
-            e.c(e.this).aq((Map)localObject2);
-            AppMethodBeat.o(186905);
+            e.c(e.this).aj((Map)localObject2);
+            AppMethodBeat.o(231900);
             return;
             i = ((PackageInfo)localObject4).versionCode;
             break;
@@ -137,8 +137,8 @@ public class e
             ((Map)localObject4).put("versionCode", localObject5);
             ((Map)localObject4).put("versionName", localObject6);
             ((Map)localObject4).put("state", Boolean.TRUE);
-            e.d(e.this).aq((Map)localObject4);
-            AppMethodBeat.o(186905);
+            e.d(e.this).aj((Map)localObject4);
+            AppMethodBeat.o(231900);
             return;
           }
           catch (JSONException localJSONException)
@@ -152,10 +152,10 @@ public class e
         }
       }
     });
-    AppMethodBeat.o(186906);
+    AppMethodBeat.o(231232);
   }
   
-  public final int dTw()
+  public final int ewF()
   {
     return 0;
   }

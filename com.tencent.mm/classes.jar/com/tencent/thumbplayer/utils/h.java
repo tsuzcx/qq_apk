@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public final class h
   implements a
 {
-  protected final Properties Sft;
+  protected final Properties ZIe;
   
   public h()
   {
@@ -22,8 +22,8 @@ public final class h
   
   public h(Properties paramProperties)
   {
-    AppMethodBeat.i(189659);
-    this.Sft = new Properties();
+    AppMethodBeat.i(222289);
+    this.ZIe = new Properties();
     if (paramProperties != null)
     {
       paramProperties = paramProperties.entrySet().iterator();
@@ -33,55 +33,55 @@ public final class h
         put((String)localEntry.getKey(), (String)localEntry.getValue());
       }
     }
-    AppMethodBeat.o(189659);
+    AppMethodBeat.o(222289);
   }
   
-  public final Properties getProperties()
+  public final void bR(String paramString, int paramInt)
   {
-    return this.Sft;
+    AppMethodBeat.i(222293);
+    this.ZIe.put(paramString, String.valueOf(paramInt));
+    AppMethodBeat.o(222293);
   }
   
-  public final void put(String paramString, float paramFloat)
+  public final void cu(String paramString, long paramLong)
   {
-    AppMethodBeat.i(189663);
-    this.Sft.put(paramString, String.valueOf(paramFloat));
-    AppMethodBeat.o(189663);
+    AppMethodBeat.i(222295);
+    this.ZIe.put(paramString, String.valueOf(paramLong));
+    AppMethodBeat.o(222295);
   }
   
-  public final void put(String paramString, int paramInt)
+  public final Properties irU()
   {
-    AppMethodBeat.i(189661);
-    this.Sft.put(paramString, String.valueOf(paramInt));
-    AppMethodBeat.o(189661);
+    return this.ZIe;
   }
   
-  public final void put(String paramString, long paramLong)
+  public final void o(String paramString, float paramFloat)
   {
-    AppMethodBeat.i(189662);
-    this.Sft.put(paramString, String.valueOf(paramLong));
-    AppMethodBeat.o(189662);
+    AppMethodBeat.i(222297);
+    this.ZIe.put(paramString, String.valueOf(paramFloat));
+    AppMethodBeat.o(222297);
   }
   
   public final void put(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(189660);
+    AppMethodBeat.i(222292);
     if (paramString1 != null)
     {
       if (!TextUtils.isEmpty(paramString2))
       {
-        this.Sft.put(paramString1, paramString2);
-        AppMethodBeat.o(189660);
+        this.ZIe.put(paramString1, paramString2);
+        AppMethodBeat.o(222292);
         return;
       }
-      this.Sft.put(paramString1, "");
+      this.ZIe.put(paramString1, "");
     }
-    AppMethodBeat.o(189660);
+    AppMethodBeat.o(222292);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(189664);
-    Object localObject = new JSONObject(this.Sft);
+    AppMethodBeat.i(222300);
+    Object localObject = new JSONObject(this.ZIe);
     if (((JSONObject)localObject).has("data")) {}
     try
     {
@@ -89,7 +89,7 @@ public final class h
       ((JSONObject)localObject).remove("data");
       ((JSONObject)localObject).put("data", new JSONObject(str));
       localObject = ((JSONObject)localObject).toString();
-      AppMethodBeat.o(189664);
+      AppMethodBeat.o(222300);
       return localObject;
     }
     catch (JSONException localJSONException)
@@ -103,7 +103,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.h
  * JD-Core Version:    0.7.0.1
  */

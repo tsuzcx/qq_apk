@@ -1,29 +1,28 @@
 package com.tencent.mm.chatroom.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.b;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.b;
 import com.tencent.mm.chatroom.d.y;
 import com.tencent.mm.chatroom.plugin.PluginChatroomUI;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.ap;
-import com.tencent.mm.model.ay.a;
-import com.tencent.mm.model.ay.b;
-import com.tencent.mm.model.ay.b.a;
-import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.plugin.messenger.foundation.a.p;
+import com.tencent.mm.model.aq;
+import com.tencent.mm.model.az.a;
+import com.tencent.mm.model.az.b;
+import com.tencent.mm.model.az.b.a;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ah;
 import java.util.Map;
 
 public final class b
-  implements p
+  implements s
 {
   static void a(ah paramah, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(194043);
+    AppMethodBeat.i(194642);
     if (paramah != null) {}
     for (;;)
     {
@@ -33,36 +32,36 @@ public final class b
       {
         if (Util.isNullOrNil(paramah.field_associateOpenIMRoomName))
         {
-          localah = ((c)g.af(c.class)).aSX().Kd(paramString2);
+          localah = ((com.tencent.mm.plugin.chatroom.a.b)h.ae(com.tencent.mm.plugin.chatroom.a.b.class)).bbV().Rw(paramString2);
           Object localObject1;
           if (paramah == null)
           {
             localObject1 = "null";
             break label302;
             Log.i("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "associateRoomName %s finish %s, imunionRoomName %s finish %s", new Object[] { paramString1, localObject1, paramString2, localObject2 });
-            if ((localah == null) || (localah.gBC())) {
+            if ((localah == null) || (localah.hxN())) {
               break label297;
             }
             localah.field_openIMRoomMigrateStatus = 2;
             localah.field_associateOpenIMRoomName = paramString1;
-            ((c)g.af(c.class)).aSX().replace(localah);
+            ((com.tencent.mm.plugin.chatroom.a.b)h.ae(com.tencent.mm.plugin.chatroom.a.b.class)).bbV().replace(localah);
             i = 1;
             if (i != 0)
             {
               paramah.field_openIMRoomMigrateStatus = 1;
               paramah.field_associateOpenIMRoomName = paramString2;
-              ((c)g.af(c.class)).aSX().replace(paramah);
+              ((com.tencent.mm.plugin.chatroom.a.b)h.ae(com.tencent.mm.plugin.chatroom.a.b.class)).bbV().replace(paramah);
               if (i != 0) {
-                ((PluginChatroomUI)g.ah(PluginChatroomUI.class)).getOpenImMigrateService().ae(paramString1, paramString2);
+                ((PluginChatroomUI)h.ag(PluginChatroomUI.class)).getOpenImMigrateService().ai(paramString1, paramString2);
               }
-              AppMethodBeat.o(194043);
+              AppMethodBeat.o(194642);
             }
           }
           else
           {
-            localObject1 = Boolean.valueOf(paramah.gBC());
+            localObject1 = Boolean.valueOf(paramah.hxN());
             break label302;
-            localObject2 = Boolean.valueOf(localah.gBC());
+            localObject2 = Boolean.valueOf(localah.hxN());
             continue;
           }
           paramah.field_openIMRoomMigrateStatus = 3;
@@ -73,13 +72,13 @@ public final class b
       catch (Exception paramah)
       {
         Log.e("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "handleInfo Exception:%s %s", new Object[] { paramah.getClass().getSimpleName(), paramah.getMessage() });
-        AppMethodBeat.o(194043);
+        AppMethodBeat.o(194642);
         return;
       }
       for (paramah = "null";; paramah = Util.nullAs(paramah.field_associateOpenIMRoomName, ""))
       {
         Log.e("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "handleInfo member:%s", new Object[] { paramah });
-        AppMethodBeat.o(194043);
+        AppMethodBeat.o(194642);
         return;
       }
       label297:
@@ -94,13 +93,13 @@ public final class b
   
   public final h.b a(final String paramString, final Map<String, String> paramMap, h.a parama)
   {
-    AppMethodBeat.i(194042);
+    AppMethodBeat.i(194636);
     if (Util.nullAsNil(paramString).equals("IMUnionRoom2AssociateRoom"))
     {
       Log.i("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "consumeNewXml subType:%s", new Object[] { Util.nullAs(paramString, "") });
-      if (!y.ama())
+      if (!y.asb())
       {
-        AppMethodBeat.o(194042);
+        AppMethodBeat.o(194636);
         return null;
       }
       if (paramMap == null) {}
@@ -112,22 +111,22 @@ public final class b
         paramString = Util.nullAsNil((String)paramMap.get(".sysmsg.associateroomname")).trim();
         paramMap = Util.nullAsNil((String)paramMap.get(".sysmsg.imunionroomname")).trim();
         Log.i("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "consumeNewXml %s %s", new Object[] { Util.nullAs(paramMap, ""), Util.nullAs(paramString, "") });
-        if ((ab.Ix(paramString)) && (!Util.isNullOrNil(paramMap)))
+        if ((ab.PP(paramString)) && (!Util.isNullOrNil(paramMap)))
         {
-          parama = ((c)g.af(c.class)).aSX().Kd(paramString);
+          parama = ((com.tencent.mm.plugin.chatroom.a.b)h.ae(com.tencent.mm.plugin.chatroom.a.b.class)).bbV().Rw(paramString);
           if (parama != null) {
             continue;
           }
-          ay.a.iDq.a(paramString, null, new ay.b.a()
+          az.a.ltq.a(paramString, null, new az.b.a()
           {
-            public final void p(String paramAnonymousString, boolean paramAnonymousBoolean)
+            public final void s(String paramAnonymousString, boolean paramAnonymousBoolean)
             {
-              AppMethodBeat.i(194041);
+              AppMethodBeat.i(191406);
               Log.i("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "getContactCallBack username:%s succ:%s", new Object[] { Util.nullAs(paramAnonymousString, ""), Boolean.valueOf(paramAnonymousBoolean) });
               if (paramAnonymousBoolean) {
-                b.a(((c)g.af(c.class)).aSX().Kd(paramString), paramString, paramMap);
+                b.a(((com.tencent.mm.plugin.chatroom.a.b)h.ae(com.tencent.mm.plugin.chatroom.a.b.class)).bbV().Rw(paramString), paramString, paramMap);
               }
-              AppMethodBeat.o(194041);
+              AppMethodBeat.o(191406);
             }
           });
         }
@@ -137,7 +136,7 @@ public final class b
         Log.e("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "consumeNewXml Exception:%s %s", new Object[] { paramString.getClass().getSimpleName(), paramString.getMessage() });
         continue;
       }
-      AppMethodBeat.o(194042);
+      AppMethodBeat.o(194636);
       return null;
       a(parama, paramString, paramMap);
     }
@@ -145,7 +144,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.chatroom.e.b
  * JD-Core Version:    0.7.0.1
  */

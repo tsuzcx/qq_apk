@@ -6,16 +6,27 @@ import com.google.android.gms.tasks.TaskCompletionSource;
 
 abstract class c<T>
 {
-  final int bLs;
-  final TaskCompletionSource<T> bLt = new TaskCompletionSource();
-  final Bundle bLu;
+  final int bIX;
+  final TaskCompletionSource<T> bIY = new TaskCompletionSource();
+  final Bundle bIZ;
   final int what;
   
   c(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    this.bLs = paramInt1;
+    this.bIX = paramInt1;
     this.what = paramInt2;
-    this.bLu = paramBundle;
+    this.bIZ = paramBundle;
+  }
+  
+  final void P(T paramT)
+  {
+    if (Log.isLoggable("MessengerIpcClient", 3))
+    {
+      String str1 = String.valueOf(this);
+      String str2 = String.valueOf(paramT);
+      new StringBuilder(String.valueOf(str1).length() + 16 + String.valueOf(str2).length()).append("Finishing ").append(str1).append(" with ").append(str2);
+    }
+    this.bIY.setResult(paramT);
   }
   
   final void a(d paramd)
@@ -26,24 +37,13 @@ abstract class c<T>
       String str2 = String.valueOf(paramd);
       new StringBuilder(String.valueOf(str1).length() + 14 + String.valueOf(str2).length()).append("Failing ").append(str1).append(" with ").append(str2);
     }
-    this.bLt.setException(paramd);
-  }
-  
-  final void p(T paramT)
-  {
-    if (Log.isLoggable("MessengerIpcClient", 3))
-    {
-      String str1 = String.valueOf(this);
-      String str2 = String.valueOf(paramT);
-      new StringBuilder(String.valueOf(str1).length() + 16 + String.valueOf(str2).length()).append("Finishing ").append(str1).append(" with ").append(str2);
-    }
-    this.bLt.setResult(paramT);
+    this.bIY.setException(paramd);
   }
   
   public String toString()
   {
     int i = this.what;
-    int j = this.bLs;
+    int j = this.bIX;
     boolean bool = zzw();
     return 55 + "Request { what=" + i + " id=" + j + " oneWay=" + bool + "}";
   }
@@ -54,7 +54,7 @@ abstract class c<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.c
  * JD-Core Version:    0.7.0.1
  */

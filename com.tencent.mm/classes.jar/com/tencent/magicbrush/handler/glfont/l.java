@@ -7,19 +7,19 @@ import java.util.ArrayList;
 final class l
   implements d
 {
-  private d.a cNO;
-  private int cNP;
-  private d.c cNQ;
+  private ArrayList<d.b> Bb;
+  private d.a cOC;
+  private int cOD;
+  private d.c cOE;
   private int mHeight;
-  private ArrayList<d.b> mNodes;
   private int mWidth;
   
   l()
   {
     AppMethodBeat.i(140057);
-    this.mNodes = new ArrayList();
-    this.cNO = new d.a();
-    this.cNQ = new d.c();
+    this.Bb = new ArrayList();
+    this.cOC = new d.a();
+    this.cOE = new d.c();
     AppMethodBeat.o(140057);
   }
   
@@ -37,7 +37,7 @@ final class l
       AppMethodBeat.o(140059);
       return;
     }
-    d.c localc = this.cNQ;
+    d.c localc = this.cOE;
     localc.x = 0;
     localc.y = 0;
     localc.width = paramInt1;
@@ -48,9 +48,9 @@ final class l
     int n = 2147483647;
     d.b localb1;
     int m;
-    if (i < this.mNodes.size())
+    if (i < this.Bb.size())
     {
-      localb1 = (d.b)this.mNodes.get(i);
+      localb1 = (d.b)this.Bb.get(i);
       if (localb1.x + paramInt1 > this.mWidth - 1)
       {
         m = -1;
@@ -58,7 +58,7 @@ final class l
         if (m < 0) {
           break label758;
         }
-        localb1 = (d.b)this.mNodes.get(i);
+        localb1 = (d.b)this.Bb.get(i);
         if ((m + paramInt2 >= n) && ((m + paramInt2 != n) || (localb1.z <= 0) || (localb1.z >= j))) {
           break label758;
         }
@@ -83,7 +83,7 @@ final class l
         if (i2 <= 0) {
           break label316;
         }
-        localb1 = (d.b)this.mNodes.get(i1);
+        localb1 = (d.b)this.Bb.get(i1);
         int i3 = m;
         if (localb1.y > m) {
           i3 = localb1.y;
@@ -110,16 +110,16 @@ final class l
         paramRect.setEmpty();
         AppMethodBeat.o(140059);
         return;
-        localb1 = this.cNO.Ry();
+        localb1 = this.cOC.Vi();
         localb1.x = localc.x;
         localb1.y = (localc.y + paramInt2);
         localb1.z = paramInt1;
-        this.mNodes.add(k, localb1);
+        this.Bb.add(k, localb1);
         d.b localb2;
-        for (i = k + 1; i < this.mNodes.size(); i = i - 1 + 1)
+        for (i = k + 1; i < this.Bb.size(); i = i - 1 + 1)
         {
-          localb1 = (d.b)this.mNodes.get(i);
-          localb2 = (d.b)this.mNodes.get(i - 1);
+          localb1 = (d.b)this.Bb.get(i);
+          localb2 = (d.b)this.Bb.get(i - 1);
           if (localb1.x >= localb2.x + localb2.z) {
             break;
           }
@@ -130,24 +130,24 @@ final class l
           if (localb1.z > 0) {
             break;
           }
-          localb1 = (d.b)this.mNodes.remove(i);
-          this.cNO.a(localb1);
+          localb1 = (d.b)this.Bb.remove(i);
+          this.cOC.a(localb1);
         }
-        for (i = 0; i < this.mNodes.size() - 1; i = j + 1)
+        for (i = 0; i < this.Bb.size() - 1; i = j + 1)
         {
-          localb1 = (d.b)this.mNodes.get(i);
-          localb2 = (d.b)this.mNodes.get(i + 1);
+          localb1 = (d.b)this.Bb.get(i);
+          localb2 = (d.b)this.Bb.get(i + 1);
           j = i;
           if (localb1.y == localb2.y)
           {
             j = localb1.z;
             localb2.z += j;
-            localb1 = (d.b)this.mNodes.remove(i + 1);
-            this.cNO.a(localb1);
+            localb1 = (d.b)this.Bb.remove(i + 1);
+            this.cOC.a(localb1);
             j = i - 1;
           }
         }
-        this.cNP += paramInt1 * paramInt2;
+        this.cOD += paramInt1 * paramInt2;
       }
       paramRect.set(localc.x, localc.y, localc.x + paramInt1 - 1, localc.y + paramInt2 - 1);
       AppMethodBeat.o(140059);
@@ -167,17 +167,17 @@ final class l
   public final void reset()
   {
     AppMethodBeat.i(140060);
-    this.cNP = 0;
-    this.cNO.e(this.mNodes);
-    d.b localb = this.cNO.Ry();
-    localb.im(this.mWidth - 2);
-    this.mNodes.add(localb);
+    this.cOD = 0;
+    this.cOC.f(this.Bb);
+    d.b localb = this.cOC.Vi();
+    localb.jp(this.mWidth - 2);
+    this.Bb.add(localb);
     AppMethodBeat.o(140060);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.magicbrush.handler.glfont.l
  * JD-Core Version:    0.7.0.1
  */

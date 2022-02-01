@@ -6,38 +6,44 @@ import android.view.View.AccessibilityDelegate;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 @TargetApi(14)
 public final class c
   extends View.AccessibilityDelegate
 {
-  private boolean OLZ;
+  private boolean Wfy;
   
   public c()
   {
-    AppMethodBeat.i(205155);
-    this.OLZ = false;
-    this.OLZ = a.a.gKe().gKd();
-    AppMethodBeat.o(205155);
+    AppMethodBeat.i(217597);
+    this.Wfy = false;
+    this.Wfy = a.a.hJg().hJf();
+    AppMethodBeat.o(217597);
   }
   
   public final void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    AppMethodBeat.i(205156);
-    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.MMSecureAccessibilityAndroidRDelegate", "sendAccessibilityEventt: eventType:%s, trace: %s", new Object[] { Integer.valueOf(paramInt), android.util.Log.getStackTraceString(new Throwable()) });
+    AppMethodBeat.i(217601);
+    if (!a.a.hJg().hJd())
+    {
+      AppMethodBeat.o(217601);
+      return;
+    }
+    Log.i("MicroMsg.MMSecureAccessibilityAndroidRDelegate", "shouldSpeakPassWord: %s, sendAccessibilityEvent eventType:%s", new Object[] { Boolean.valueOf(this.Wfy), Integer.valueOf(paramInt) });
     if (paramInt == 32768)
     {
       super.sendAccessibilityEvent(paramView, paramInt);
-      AppMethodBeat.o(205156);
+      AppMethodBeat.o(217601);
       return;
     }
-    if (!this.OLZ)
+    if (!this.Wfy)
     {
       if ((paramView != null) && ((paramInt == 128) || (paramInt == 1))) {
-        a.a.gKe().gs(paramView);
+        a.a.hJg().hD(paramView);
       }
-      AppMethodBeat.o(205156);
+      AppMethodBeat.o(217601);
       return;
     }
     Object localObject;
@@ -52,10 +58,9 @@ public final class c
     }
     for (;;)
     {
-      com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.MMSecureAccessibilityAndroidRDelegate", "speak content: %s", new Object[] { localObject });
       if (Util.isNullOrNil((CharSequence)localObject))
       {
-        AppMethodBeat.o(205156);
+        AppMethodBeat.o(217601);
         return;
         if (!Util.isNullOrNil(((EditText)localObject).getContentDescription()))
         {
@@ -81,8 +86,8 @@ public final class c
       }
       else
       {
-        a.a.gKe().g(paramView, ((CharSequence)localObject).toString());
-        AppMethodBeat.o(205156);
+        a.a.hJg().j(paramView, ((CharSequence)localObject).toString());
+        AppMethodBeat.o(217601);
         return;
       }
       localObject = null;
@@ -91,7 +96,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.a.c
  * JD-Core Version:    0.7.0.1
  */

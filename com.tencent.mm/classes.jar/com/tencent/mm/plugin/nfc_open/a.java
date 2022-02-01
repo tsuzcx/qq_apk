@@ -2,19 +2,22 @@ package com.tencent.mm.plugin.nfc_open;
 
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.an.t;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.cg;
-import com.tencent.mm.plugin.nfc_open.a.b;
-import com.tencent.mm.protocal.protobuf.ctt;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.d;
+import com.tencent.mm.protocal.protobuf.dcs;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessSharedPreferences;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.thread.ThreadPool;
 import com.tencent.mm.storage.ao;
@@ -23,27 +26,27 @@ import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class a
-  implements bd
+  implements be
 {
-  private com.tencent.mm.plugin.nfc_open.b.a AEl;
+  private com.tencent.mm.plugin.nfc_open.b.a Gxp;
   
-  private static a exy()
+  private static a fjc()
   {
     AppMethodBeat.i(26681);
-    bg.aVz();
-    a locala2 = (a)cg.KG("plugin.nfc_open");
+    bh.beC();
+    a locala2 = (a)ch.RZ("plugin.nfc_open");
     a locala1 = locala2;
     if (locala2 == null)
     {
       Log.w("MicroMsg.SubCoreCpuCard", "[NFC]not found in MMCore, new one");
       locala1 = new a();
-      bg.aVz().a("plugin.nfc_open", locala1);
+      bh.beC().a("plugin.nfc_open", locala1);
     }
     AppMethodBeat.o(26681);
     return locala1;
   }
   
-  private static void st(boolean paramBoolean)
+  private static void vH(boolean paramBoolean)
   {
     AppMethodBeat.i(26683);
     if (paramBoolean)
@@ -67,38 +70,73 @@ public final class a
   {
     AppMethodBeat.i(26682);
     Log.i("MicroMsg.SubCoreCpuCard", "alvinluo process: %s", new Object[] { Util.getProcessNameByPid(MMApplicationContext.getContext(), Process.myPid()) });
-    g.aAf().azk();
-    if (exy().AEl == null) {
-      exy().AEl = new com.tencent.mm.plugin.nfc_open.b.a();
+    com.tencent.mm.kernel.h.aHE().aGH();
+    if (fjc().Gxp == null) {
+      fjc().Gxp = new com.tencent.mm.plugin.nfc_open.b.a();
     }
-    com.tencent.mm.plugin.nfc_open.b.a locala = exy().AEl;
-    if (locala.dZt())
+    com.tencent.mm.plugin.nfc_open.b.a locala = fjc().Gxp;
+    if (locala.eIq())
     {
       Log.i("MicroMsg.CpuCardConfigManager", "do update cpu card config");
-      bg.azz().a(1561, locala);
-      bg.azz().a(new b(locala.AEn.version), 0);
+      bh.aGY().a(1561, locala);
+      bh.aGY().a(new com.tencent.mm.plugin.nfc_open.a.b(locala.Gxr.version), 0);
     }
-    bg.aVF();
-    int i = ((Integer)c.azQ().get(ar.a.NUQ, Integer.valueOf(0))).intValue();
+    bh.beI();
+    int i = ((Integer)c.aHp().get(ar.a.ViP, Integer.valueOf(0))).intValue();
     if (i == 0)
     {
-      bg.aVF();
-      if (((Integer)c.azQ().get(ar.a.NUR, Integer.valueOf(0))).intValue() == 1) {
-        st(true);
+      bh.beI();
+      if (((Integer)c.aHp().get(ar.a.ViQ, Integer.valueOf(0))).intValue() == 1) {
+        vH(true);
       }
     }
     for (;;)
     {
       Log.i("MicroMsg.SubCoreCpuCard", "doNFCReport start");
-      ThreadPool.post(new a.1(this), getClass().getName());
+      ThreadPool.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(26680);
+          Object localObject = MultiProcessSharedPreferences.getSharedPreferences(MMApplicationContext.getContext(), "system_config_prefs", 4);
+          int k;
+          int i;
+          if (Util.ticksToNow(((SharedPreferences)localObject).getLong("NFC_REPORT_TIME", 0L)) > 86400000L)
+          {
+            k = com.tencent.mm.plugin.nfc.b.a.a.fja().hJ(MMApplicationContext.getContext());
+            if (k != 0) {
+              break label171;
+            }
+            i = 0;
+            if (!d.bTF()) {
+              break label176;
+            }
+          }
+          label171:
+          label176:
+          for (int j = 1;; j = 0)
+          {
+            Log.i("MicroMsg.SubCoreCpuCard", "alvinluo NFC report isSupportNFC: %d, isSupportHCE: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+            com.tencent.mm.plugin.report.service.h.IzE.a(12779, new Object[] { q.dR(true), Integer.valueOf(i), Integer.valueOf(j) });
+            localObject = ((SharedPreferences)localObject).edit();
+            ((SharedPreferences.Editor)localObject).putLong("NFC_REPORT_TIME", Util.currentTicks());
+            ((SharedPreferences.Editor)localObject).commit();
+            Log.i("MicroMsg.SubCoreCpuCard", "doNFCReport status = ".concat(String.valueOf(k)));
+            AppMethodBeat.o(26680);
+            return;
+            i = 1;
+            break;
+          }
+        }
+      }, getClass().getName());
       AppMethodBeat.o(26682);
       return;
-      st(false);
+      vH(false);
       continue;
       if (i == 1) {
-        st(true);
+        vH(true);
       } else {
-        st(false);
+        vH(false);
       }
     }
   }
@@ -109,7 +147,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.nfc_open.a
  * JD-Core Version:    0.7.0.1
  */

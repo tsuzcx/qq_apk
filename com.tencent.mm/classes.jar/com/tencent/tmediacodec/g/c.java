@@ -5,27 +5,27 @@ import java.lang.reflect.Field;
 
 public final class c
 {
-  public static final Class<?>[] SmY = new Class[0];
-  public static final Object[] SmZ = new Object[0];
+  public static final Class<?>[] ZPJ = new Class[0];
+  public static final Object[] ZPK = new Object[0];
   
-  public static Field k(Class<?> paramClass, String paramString)
+  public static Field j(Class<?> paramClass, String paramString)
   {
-    AppMethodBeat.i(190192);
-    paramClass = m(paramClass, paramString);
-    AppMethodBeat.o(190192);
+    AppMethodBeat.i(224609);
+    paramClass = l(paramClass, paramString);
+    AppMethodBeat.o(224609);
     return paramClass;
   }
   
-  private static Field m(Class<?> paramClass, String paramString)
+  private static Field l(Class<?> paramClass, String paramString)
   {
-    AppMethodBeat.i(190191);
+    AppMethodBeat.i(224607);
     Object localObject = null;
     Class localClass;
     try
     {
       Field localField = paramClass.getDeclaredField(paramString);
       localObject = localField;
-      AppMethodBeat.o(190191);
+      AppMethodBeat.o(224607);
       return localObject;
     }
     catch (NoSuchFieldException localNoSuchFieldException1)
@@ -57,7 +57,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tmediacodec.g.c
  * JD-Core Version:    0.7.0.1
  */

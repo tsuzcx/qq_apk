@@ -18,17 +18,17 @@ final class n
     AppMethodBeat.i(176758);
     int i = parama.colorPrimary;
     i = Color.rgb(Color.red(i), Color.green(i), Color.blue(i));
-    if (parama.noe > 0)
+    if (parama.qpN > 0)
     {
       if (Build.VERSION.SDK_INT >= 28)
       {
-        parama = new ActivityManager.TaskDescription(parama.label, parama.noe, i);
+        parama = new ActivityManager.TaskDescription(parama.label, parama.qpN, i);
         AppMethodBeat.o(176758);
         return parama;
       }
       try
       {
-        Object localObject = MMBitmapFactory.decodeResource(MMApplicationContext.getResources(), parama.noe);
+        Object localObject = MMBitmapFactory.decodeResource(MMApplicationContext.getResources(), parama.qpN);
         localObject = new ActivityManager.TaskDescription(parama.label, (Bitmap)localObject, i);
         AppMethodBeat.o(176758);
         return localObject;
@@ -41,7 +41,7 @@ final class n
         return parama;
       }
     }
-    parama = new ActivityManager.TaskDescription(parama.label, parama.nEk, i);
+    parama = new ActivityManager.TaskDescription(parama.label, parama.qGu, i);
     AppMethodBeat.o(176758);
     return parama;
   }
@@ -57,7 +57,7 @@ final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.platform.window.a.n
  * JD-Core Version:    0.7.0.1
  */

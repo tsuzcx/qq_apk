@@ -1,93 +1,93 @@
 package com.tencent.mm.plugin.ipcall.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.protocal.protobuf.dfe;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.protocal.protobuf.doy;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class c
 {
-  public String dkV;
-  public String edf;
-  public int lPy;
+  public long DPJ;
+  public long DPK;
+  public int DPL;
+  public int DPM;
+  public int DPN;
+  public int DPO;
+  public String DPP;
+  public int DPQ;
+  public int DPR;
+  public int DPS;
+  public int DPT;
+  public boolean DPU;
+  public boolean DPV;
+  public boolean DPW;
+  public boolean DPX;
+  public int DPY;
+  public int DPZ;
+  public int DQa;
+  public int DQb;
+  public b DQc;
+  public int DQd;
+  public int DQe;
+  public b DQf;
+  public LinkedList<doy> DQg;
+  public int DQh;
+  public LinkedList<d> DQi;
+  public String DQj;
+  public String DQk;
+  public String DQl;
+  public boolean DQm;
+  public String fXl;
+  public String fcD;
   public String nickname;
-  public LinkedList<dfe> oMr;
+  public int oLS;
   public int phoneType;
-  public int rBL;
-  public String rBM;
+  public LinkedList<doy> rOm;
   public int roomId;
-  public long ypH;
-  public long ypI;
-  public int ypJ;
-  public int ypK;
-  public int ypL;
-  public int ypM;
-  public String ypN;
-  public int ypO;
-  public int ypP;
-  public int ypQ;
-  public int ypR;
-  public boolean ypS;
-  public boolean ypT;
-  public boolean ypU;
-  public boolean ypV;
-  public int ypW;
-  public int ypX;
-  public int ypY;
-  public int ypZ;
-  public b yqa;
-  public int yqb;
-  public int yqc;
-  public b yqd;
-  public LinkedList<dfe> yqe;
-  public int yqf;
-  public LinkedList<d> yqg;
-  public String yqh;
-  public String yqi;
-  public String yqj;
-  public boolean yqk;
+  public int vht;
+  public String vhu;
   
   public c()
   {
     AppMethodBeat.i(25408);
-    this.ypS = false;
-    this.ypT = false;
-    this.ypU = false;
-    this.ypV = true;
-    this.ypW = 0;
-    this.oMr = new LinkedList();
-    this.yqe = new LinkedList();
-    this.yqf = 999;
-    this.yqg = new LinkedList();
-    this.yqk = false;
+    this.DPU = false;
+    this.DPV = false;
+    this.DPW = false;
+    this.DPX = true;
+    this.DPY = 0;
+    this.rOm = new LinkedList();
+    this.DQg = new LinkedList();
+    this.DQh = 999;
+    this.DQi = new LinkedList();
+    this.DQm = false;
     AppMethodBeat.o(25408);
   }
   
-  public final int eaI()
+  public final int eJG()
   {
     AppMethodBeat.i(25409);
-    if ((this.yqg != null) && (this.yqg.size() > 0))
+    if ((this.DQi != null) && (this.DQi.size() > 0))
     {
-      i = ((d)this.yqg.get(0)).ypP;
+      i = ((d)this.DQi.get(0)).DPR;
       AppMethodBeat.o(25409);
       return i;
     }
-    int i = this.ypP;
+    int i = this.DPR;
     AppMethodBeat.o(25409);
     return i;
   }
   
-  public final int eaJ()
+  public final int eJH()
   {
     AppMethodBeat.i(25410);
-    if ((this.yqg != null) && (this.yqg.size() > 0))
+    if ((this.DQi != null) && (this.DQi.size() > 0))
     {
-      i = ((d)this.yqg.get(0)).hpS;
+      i = ((d)this.DQi.get(0)).kbN;
       AppMethodBeat.o(25410);
       return i;
     }
-    int i = this.lPy;
+    int i = this.oLS;
     AppMethodBeat.o(25410);
     return i;
   }
@@ -97,22 +97,22 @@ public final class c
     AppMethodBeat.i(25411);
     Object localObject1 = new StringBuilder("");
     ((StringBuilder)localObject1).append("IPCallInfo: ");
-    ((StringBuilder)localObject1).append(String.format("[roomId: %d, roomKey: %d, callSeq: %d, inviteId: %d, roomMemberId: %d, syncKey: %d, syncInterval: %d, currentStatus: %d, ErrMsg: %s, ErrCode：%d, ErrLevel：%d]\n", new Object[] { Integer.valueOf(this.roomId), Long.valueOf(this.ypH), Long.valueOf(this.ypI), Integer.valueOf(this.ypJ), Integer.valueOf(this.ypO), Integer.valueOf(this.ypP), Integer.valueOf(this.ypQ), Integer.valueOf(this.lPy), this.rBM, Integer.valueOf(this.rBL), Integer.valueOf(this.ypM) }));
-    ((StringBuilder)localObject1).append(String.format("[toUsername: %s, toPhoneNumber: %s]\n", new Object[] { this.dkV, this.yqi }));
+    ((StringBuilder)localObject1).append(String.format("[roomId: %d, roomKey: %d, callSeq: %d, inviteId: %d, roomMemberId: %d, syncKey: %d, syncInterval: %d, currentStatus: %d, ErrMsg: %s, ErrCode：%d, ErrLevel：%d]\n", new Object[] { Integer.valueOf(this.roomId), Long.valueOf(this.DPJ), Long.valueOf(this.DPK), Integer.valueOf(this.DPL), Integer.valueOf(this.DPQ), Integer.valueOf(this.DPR), Integer.valueOf(this.DPS), Integer.valueOf(this.oLS), this.vhu, Integer.valueOf(this.vht), Integer.valueOf(this.DPO) }));
+    ((StringBuilder)localObject1).append(String.format("[toUsername: %s, toPhoneNumber: %s]\n", new Object[] { this.fcD, this.DQk }));
     ((StringBuilder)localObject1).append("[addrList: ");
-    Iterator localIterator = this.oMr.iterator();
+    Iterator localIterator = this.rOm.iterator();
     Object localObject2;
     while (localIterator.hasNext())
     {
-      localObject2 = (dfe)localIterator.next();
-      ((StringBuilder)localObject1).append(String.format("{IP: %s, port: %d}", new Object[] { ((dfe)localObject2).MpA, Integer.valueOf(((dfe)localObject2).MKe) }));
+      localObject2 = (doy)localIterator.next();
+      ((StringBuilder)localObject1).append(String.format("{IP: %s, port: %d}", new Object[] { ((doy)localObject2).TVX, Integer.valueOf(((doy)localObject2).TVY) }));
     }
     ((StringBuilder)localObject1).append("]");
     ((StringBuilder)localObject1).append("\n");
-    if ((this.yqg != null) && (this.yqg.size() > 0))
+    if ((this.DQi != null) && (this.DQi.size() > 0))
     {
       ((StringBuilder)localObject1).append("[userInfoList: ");
-      localIterator = this.yqg.iterator();
+      localIterator = this.DQi.iterator();
       while (localIterator.hasNext())
       {
         localObject2 = (d)localIterator.next();
@@ -133,7 +133,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.b.c
  * JD-Core Version:    0.7.0.1
  */

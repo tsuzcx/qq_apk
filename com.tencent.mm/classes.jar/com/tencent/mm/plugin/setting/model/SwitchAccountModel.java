@@ -9,11 +9,11 @@ public class SwitchAccountModel
   implements Parcelable
 {
   public static final Parcelable.Creator<SwitchAccountModel> CREATOR;
-  public final String CXS;
-  public final String CXT;
-  public final int CXU;
-  public final String tjJ;
+  public final int JdA;
+  public final String Jdy;
+  public final String Jdz;
   public final String username;
+  public final String wQa;
   
   static
   {
@@ -24,11 +24,11 @@ public class SwitchAccountModel
   
   public SwitchAccountModel(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
-    this.CXS = paramString1;
+    this.Jdy = paramString1;
     this.username = paramString2;
-    this.tjJ = paramString3;
-    this.CXT = paramString4;
-    this.CXU = paramInt;
+    this.wQa = paramString3;
+    this.Jdz = paramString4;
+    this.JdA = paramInt;
   }
   
   public int describeContents()
@@ -39,17 +39,17 @@ public class SwitchAccountModel
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(73785);
-    paramParcel.writeString(this.CXS);
+    paramParcel.writeString(this.Jdy);
     paramParcel.writeString(this.username);
-    paramParcel.writeString(this.tjJ);
-    paramParcel.writeString(this.CXT);
-    paramParcel.writeInt(this.CXU);
+    paramParcel.writeString(this.wQa);
+    paramParcel.writeString(this.Jdz);
+    paramParcel.writeInt(this.JdA);
     AppMethodBeat.o(73785);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.model.SwitchAccountModel
  * JD-Core Version:    0.7.0.1
  */

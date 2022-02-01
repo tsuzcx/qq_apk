@@ -10,7 +10,7 @@ import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class b
+public class b
   extends MAutoStorage<a>
 {
   public static final String[] INDEX_CREATE;
@@ -31,7 +31,7 @@ public final class b
     this.db = paramISQLiteDatabase;
   }
   
-  public final boolean asj(String paramString)
+  public final boolean aAk(String paramString)
   {
     AppMethodBeat.i(73569);
     if (Util.isNullOrNil(paramString))
@@ -61,7 +61,7 @@ public final class b
     return false;
   }
   
-  public final a ask(String paramString)
+  public final a aAl(String paramString)
   {
     AppMethodBeat.i(73570);
     if (Util.isNullOrNil(paramString))
@@ -108,7 +108,7 @@ public final class b
     return bool;
   }
   
-  public final List<a> cVx()
+  public final List<a> dkD()
   {
     AppMethodBeat.i(73567);
     ArrayList localArrayList = new ArrayList();
@@ -128,7 +128,7 @@ public final class b
     return localArrayList;
   }
   
-  public final List<a> cVy()
+  public final List<a> dkE()
   {
     AppMethodBeat.i(73571);
     Cursor localCursor = this.db.query("FavOffline", a.info.columns, "status!=? and failNum<?", new String[] { "2", "5" }, null, null, "rowid");

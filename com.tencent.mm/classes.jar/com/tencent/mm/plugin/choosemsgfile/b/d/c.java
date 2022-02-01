@@ -7,18 +7,18 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.ay.a.a.c.a;
 import com.tencent.mm.choosemsgfile.compat.a.a;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.f.c.et;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.ap;
-import com.tencent.mm.model.bp;
+import com.tencent.mm.model.aq;
+import com.tencent.mm.model.bq;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.choosemsgfile.b.b.h;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.choosemsgfile.a.b;
+import com.tencent.mm.plugin.choosemsgfile.a.h;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.LruCache;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -26,7 +26,7 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ah;
 import com.tencent.mm.storage.bv;
 import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.base.u;
+import com.tencent.mm.ui.base.w;
 import com.tencent.mm.ui.widget.a.f.a;
 import com.tencent.mm.ui.widget.a.f.c;
 import java.util.ArrayList;
@@ -36,46 +36,46 @@ import java.util.List;
 
 public final class c
 {
-  private static LruCache<Integer, com.tencent.mm.av.a.a.c> qoO;
+  private static LruCache<Integer, com.tencent.mm.ay.a.a.c> tNx;
   
   static
   {
     AppMethodBeat.i(123381);
-    qoO = new LruCache(3);
+    tNx = new LruCache(3);
     AppMethodBeat.o(123381);
   }
   
-  public static String Cc(long paramLong)
+  public static String Il(long paramLong)
   {
     AppMethodBeat.i(123369);
     Object localObject = new Date(paramLong);
-    localObject = com.tencent.mm.ui.gridviewheaders.a.gWr().a((Date)localObject, MMApplicationContext.getContext());
+    localObject = com.tencent.mm.ui.gridviewheaders.a.hWZ().a((Date)localObject, MMApplicationContext.getContext());
     AppMethodBeat.o(123369);
     return localObject;
   }
   
-  public static long Cd(long paramLong)
+  public static long Im(long paramLong)
   {
     AppMethodBeat.i(123370);
     Date localDate = new Date(paramLong);
-    paramLong = com.tencent.mm.ui.gridviewheaders.a.gWr().b(localDate);
+    paramLong = com.tencent.mm.ui.gridviewheaders.a.hWZ().b(localDate);
     AppMethodBeat.o(123370);
     return paramLong;
   }
   
-  public static String Ir(String paramString)
+  public static String PI(String paramString)
   {
     AppMethodBeat.i(123374);
-    if (ab.Eq(paramString))
+    if (ab.Lj(paramString))
     {
-      localObject = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().Kn(paramString);
+      localObject = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG(paramString);
       if ((localObject != null) && (!Util.isNullOrNil(((ax)localObject).field_nickname)))
       {
         paramString = ((ax)localObject).field_nickname;
         AppMethodBeat.o(123374);
         return paramString;
       }
-      localObject = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kd(paramString);
+      localObject = ((com.tencent.mm.plugin.chatroom.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.chatroom.a.b.class)).bbV().Rw(paramString);
       if (localObject == null)
       {
         Log.e("MicroMsg.MsgFileUtils", "%s chatRoomMember is null", new Object[] { paramString });
@@ -86,7 +86,7 @@ public final class c
       AppMethodBeat.o(123374);
       return paramString;
     }
-    Object localObject = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().Kn(paramString);
+    Object localObject = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG(paramString);
     if (localObject == null)
     {
       Log.e("MicroMsg.MsgFileUtils", "%s, contact is null", new Object[] { paramString });
@@ -98,29 +98,16 @@ public final class c
     return paramString;
   }
   
-  public static void V(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(123380);
-    String str = String.format(paramContext.getString(2131757566), new Object[] { Integer.valueOf(paramInt) });
-    paramContext = new f.a(paramContext);
-    paramContext.bow(str).Dq(false);
-    paramContext.b(new f.c()
-    {
-      public final void e(boolean paramAnonymousBoolean, String paramAnonymousString) {}
-    }).show();
-    AppMethodBeat.o(123380);
-  }
-  
   private static com.tencent.mm.plugin.choosemsgfile.b.b.a a(com.tencent.mm.plugin.choosemsgfile.b.c.c paramc, ca paramca)
   {
     AppMethodBeat.i(123366);
-    if (paramca.gDr())
+    if (paramca.hzF())
     {
       paramc = new com.tencent.mm.plugin.choosemsgfile.b.b.b(paramc, paramca);
       AppMethodBeat.o(123366);
       return paramc;
     }
-    if (paramca.gAz())
+    if (paramca.hwG())
     {
       paramc = new com.tencent.mm.plugin.choosemsgfile.b.b.g(paramc, paramca);
       AppMethodBeat.o(123366);
@@ -137,7 +124,7 @@ public final class c
     if (Util.isNullOrNil(paramString2)) {
       str = "all";
     }
-    paramString2 = akz(paramString3);
+    paramString2 = asn(paramString3);
     paramString3 = str.toLowerCase();
     int i = -1;
     switch (paramString3.hashCode())
@@ -197,12 +184,12 @@ public final class c
   private static com.tencent.mm.plugin.choosemsgfile.b.b.a a(com.tencent.mm.plugin.choosemsgfile.b.c.c paramc, ca paramca, String paramString, List<String> paramList)
   {
     AppMethodBeat.i(123365);
-    if (paramca.dOQ())
+    if (paramca.erk())
     {
       Object localObject = paramca.field_content;
       if (localObject != null)
       {
-        localObject = k.b.HD((String)localObject);
+        localObject = k.b.OQ((String)localObject);
         if ((localObject != null) && (((k.b)localObject).type == 6))
         {
           paramc = new com.tencent.mm.plugin.choosemsgfile.b.b.f(paramc, paramca, paramString);
@@ -231,7 +218,7 @@ public final class c
   public static void a(int paramInt1, int paramInt2, Intent paramIntent, a.a parama)
   {
     AppMethodBeat.i(123377);
-    if (paramInt1 == b.qoN) {
+    if (paramInt1 == b.tNw) {
       switch (paramInt2)
       {
       }
@@ -286,7 +273,7 @@ public final class c
       AppMethodBeat.o(123372);
       return;
     }
-    parama = parama.qnv;
+    parama = parama.tMi;
     if (parama == null)
     {
       Log.e("MicroMsg.MsgFileUtils", "[enterGallery] msg == null");
@@ -310,7 +297,7 @@ public final class c
     }
     for (;;)
     {
-      com.tencent.mm.br.c.f(paramContext, "com.tencent.mm.ui.chatting.gallery.ImageGalleryUI", localIntent);
+      com.tencent.mm.by.c.f(paramContext, "com.tencent.mm.ui.chatting.gallery.ImageGalleryUI", localIntent);
       ((Activity)paramContext).overridePendingTransition(0, 0);
       AppMethodBeat.o(123372);
       return;
@@ -327,7 +314,50 @@ public final class c
     AppMethodBeat.o(123378);
   }
   
-  public static String akA(String paramString)
+  public static void aa(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(123380);
+    String str = String.format(paramContext.getString(a.h.choose_msg_file_exceed_max_count), new Object[] { Integer.valueOf(paramInt) });
+    paramContext = new f.a(paramContext);
+    paramContext.bBl(str).HL(false);
+    paramContext.b(new f.c()
+    {
+      public final void g(boolean paramAnonymousBoolean, String paramAnonymousString) {}
+    }).show();
+    AppMethodBeat.o(123380);
+  }
+  
+  public static List<String> asn(String paramString)
+  {
+    AppMethodBeat.i(123364);
+    localArrayList = new ArrayList();
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(123364);
+      return localArrayList;
+    }
+    try
+    {
+      paramString = new com.tencent.mm.ad.f(paramString);
+      int i = 0;
+      while (i < paramString.length())
+      {
+        String str = paramString.optString(i, "");
+        if (!Util.isNullOrNil(str)) {
+          localArrayList.add(str);
+        }
+        i += 1;
+      }
+      return localArrayList;
+    }
+    catch (com.tencent.mm.ad.g paramString)
+    {
+      Log.printErrStackTrace("MicroMsg.MsgFileUtils", paramString, "", new Object[0]);
+      AppMethodBeat.o(123364);
+    }
+  }
+  
+  public static String aso(String paramString)
   {
     AppMethodBeat.i(123373);
     if (Util.isNullOrNil(paramString))
@@ -346,7 +376,7 @@ public final class c
     return "all";
   }
   
-  public static String akB(String paramString)
+  public static String asp(String paramString)
   {
     AppMethodBeat.i(123376);
     int i = -1;
@@ -687,7 +717,7 @@ public final class c
     return "#6781F0";
   }
   
-  public static String akC(String paramString)
+  public static String asq(String paramString)
   {
     AppMethodBeat.i(123379);
     if (Util.isNullOrNil(paramString))
@@ -706,42 +736,12 @@ public final class c
     return paramString;
   }
   
-  public static List<String> akz(String paramString)
-  {
-    AppMethodBeat.i(123364);
-    localArrayList = new ArrayList();
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(123364);
-      return localArrayList;
-    }
-    try
-    {
-      paramString = new com.tencent.mm.ab.f(paramString);
-      int i = 0;
-      while (i < paramString.length())
-      {
-        String str = paramString.optString(i, "");
-        if (!Util.isNullOrNil(str)) {
-          localArrayList.add(str);
-        }
-        i += 1;
-      }
-      return localArrayList;
-    }
-    catch (com.tencent.mm.ab.g paramString)
-    {
-      Log.printErrStackTrace("MicroMsg.MsgFileUtils", paramString, "", new Object[0]);
-      AppMethodBeat.o(123364);
-    }
-  }
-  
   private static com.tencent.mm.plugin.choosemsgfile.b.b.a b(com.tencent.mm.plugin.choosemsgfile.b.c.c paramc, ca paramca)
   {
     AppMethodBeat.i(123367);
-    if ((paramca.cWJ()) || (paramca.cWL()))
+    if ((paramca.dlR()) || (paramca.dlT()))
     {
-      paramc = new h(paramc, paramca);
+      paramc = new com.tencent.mm.plugin.choosemsgfile.b.b.h(paramc, paramca);
       AppMethodBeat.o(123367);
       return paramc;
     }
@@ -760,12 +760,12 @@ public final class c
     }
     if (paramca.field_isSend == 1)
     {
-      paramca = z.aTY();
+      paramca = z.bcZ();
       AppMethodBeat.o(123368);
       return paramca;
     }
     if (paramBoolean) {
-      str1 = bp.Ks(paramca.field_content);
+      str1 = bq.RL(paramca.field_content);
     }
     String str2 = str1;
     if (Util.isNullOrNil(str1)) {
@@ -775,21 +775,21 @@ public final class c
     return str2;
   }
   
-  public static final com.tencent.mm.av.a.a.c eT(Context paramContext)
+  public static final com.tencent.mm.ay.a.a.c eX(Context paramContext)
   {
     AppMethodBeat.i(123371);
-    com.tencent.mm.av.a.a.c localc = (com.tencent.mm.av.a.a.c)qoO.get(Integer.valueOf(4));
+    com.tencent.mm.ay.a.a.c localc = (com.tencent.mm.ay.a.a.c)tNx.get(Integer.valueOf(4));
     Object localObject = localc;
     if (localc == null)
     {
       localObject = new c.a();
-      ((c.a)localObject).jbi = 1;
-      ((c.a)localObject).jby = true;
-      ((c.a)localObject).hZA = (com.tencent.mm.cb.a.jn(paramContext) / 4);
-      ((c.a)localObject).hZz = (com.tencent.mm.cb.a.jn(paramContext) / 4);
-      ((c.a)localObject).jbt = 2131100928;
-      localObject = ((c.a)localObject).bdv();
-      qoO.put(Integer.valueOf(4), localObject);
+      ((c.a)localObject).lRG = 1;
+      ((c.a)localObject).lRX = true;
+      ((c.a)localObject).kOg = (com.tencent.mm.ci.a.kr(paramContext) / 4);
+      ((c.a)localObject).kOf = (com.tencent.mm.ci.a.kr(paramContext) / 4);
+      ((c.a)localObject).lRS = a.b.pic_thum_bg_color;
+      localObject = ((c.a)localObject).bmL();
+      tNx.put(Integer.valueOf(4), localObject);
     }
     AppMethodBeat.o(123371);
     return localObject;
@@ -798,9 +798,9 @@ public final class c
   public static void g(Context paramContext, long paramLong)
   {
     AppMethodBeat.i(123375);
-    if (!com.tencent.mm.kernel.g.aAh().isSDCardAvailable())
+    if (!com.tencent.mm.kernel.h.aHG().isSDCardAvailable())
     {
-      u.g(paramContext, null);
+      w.g(paramContext, null);
       AppMethodBeat.o(123375);
       return;
     }
@@ -808,16 +808,16 @@ public final class c
     ((Intent)localObject).setClassName(paramContext, "com.tencent.mm.ui.chatting.AppAttachDownloadUI");
     ((Intent)localObject).putExtra("app_msg_id", paramLong);
     ((Intent)localObject).putExtra("scene", 1);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/choosemsgfile/logic/util/MsgFileUtils", "enterFileProfile", "(Landroid/content/Context;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/choosemsgfile/logic/util/MsgFileUtils", "enterFileProfile", "(Landroid/content/Context;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/choosemsgfile/logic/util/MsgFileUtils", "enterFileProfile", "(Landroid/content/Context;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/choosemsgfile/logic/util/MsgFileUtils", "enterFileProfile", "(Landroid/content/Context;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(123375);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.d.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.media;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16})
+@l(iBK={1, 1, 16})
 public final class b {}
 
 

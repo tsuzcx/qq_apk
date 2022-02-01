@@ -5,20 +5,23 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader_app.api.c;
+import com.tencent.mm.plugin.downloader_app.e.b;
+import com.tencent.mm.plugin.downloader_app.e.e;
+import com.tencent.mm.plugin.downloader_app.e.h;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,14 +30,14 @@ public final class a
 {
   private Context mContext;
   ArrayList<b> mDataList;
-  private DownloadSearchListView qLp;
+  private DownloadSearchListView umB;
   
   a(Context paramContext, DownloadSearchListView paramDownloadSearchListView)
   {
     AppMethodBeat.i(8929);
     this.mDataList = new ArrayList();
     this.mContext = paramContext;
-    this.qLp = paramDownloadSearchListView;
+    this.umB = paramDownloadSearchListView;
     AppMethodBeat.o(8929);
   }
   
@@ -58,37 +61,37 @@ public final class a
     extends RecyclerView.v
   {
     public View contentView;
-    public TextView jBQ;
-    public View qLq;
-    public TextView qLr;
-    public View qLs;
-    public TextView qLt;
-    public ImageView qLu;
-    public View qLv;
-    public ImageView qLw;
-    public Button qLx;
-    public LinearLayout qLy;
-    public TextView qLz;
+    public TextView mrL;
+    public View umC;
+    public TextView umD;
+    public View umE;
+    public TextView umF;
+    public ImageView umG;
+    public View umH;
+    public ImageView umI;
+    public Button umJ;
+    public LinearLayout umK;
+    public TextView umL;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(8927);
       this.contentView = paramView;
-      this.qLq = this.contentView.findViewById(2131307386);
-      this.qLr = ((TextView)this.contentView.findViewById(2131302336));
-      this.qLr.setOnClickListener(new View.OnClickListener()
+      this.umC = this.contentView.findViewById(e.e.ukn);
+      this.umD = ((TextView)this.contentView.findViewById(e.e.ukf));
+      this.umD.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(8924);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/downloader_app/search/DownloadSearchAdapter$SearchViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/downloader_app/search/DownloadSearchAdapter$SearchViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           paramAnonymousView = a.a(a.this);
           paramAnonymousView.mContext.getSharedPreferences("search_history_href", 0).edit().putString("search_history_list", "").commit();
-          if (paramAnonymousView.qLE != null) {
-            paramAnonymousView.qLE.clear();
+          if (paramAnonymousView.umQ != null) {
+            paramAnonymousView.umQ.clear();
           }
           paramAnonymousView.setData(null);
           com.tencent.mm.plugin.downloader_app.b.a.a(13, 1302, 21, 81, "", "", "");
@@ -96,45 +99,45 @@ public final class a
           AppMethodBeat.o(8924);
         }
       });
-      this.qLs = this.contentView.findViewById(2131307389);
-      this.qLt = ((TextView)this.contentView.findViewById(2131307400));
-      this.qLu = ((ImageView)this.contentView.findViewById(2131307375));
-      this.qLu.setOnClickListener(new View.OnClickListener()
+      this.umE = this.contentView.findViewById(e.e.uko);
+      this.umF = ((TextView)this.contentView.findViewById(e.e.ukp));
+      this.umG = ((ImageView)this.contentView.findViewById(e.e.ukm));
+      this.umG.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(8925);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/downloader_app/search/DownloadSearchAdapter$SearchViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/downloader_app/search/DownloadSearchAdapter$SearchViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
           paramAnonymousView = (b)paramAnonymousView.getTag();
           localObject = a.a(a.this);
-          String str = paramAnonymousView.qLO;
+          String str = paramAnonymousView.una;
           if (!Util.isNullOrNil(str))
           {
             b.av(((DownloadSearchListView)localObject).mContext, str);
-            ((DownloadSearchListView)localObject).qLE = b.eX(((DownloadSearchListView)localObject).mContext);
-            ((DownloadSearchListView)localObject).setData(((DownloadSearchListView)localObject).qLE);
+            ((DownloadSearchListView)localObject).umQ = b.fb(((DownloadSearchListView)localObject).mContext);
+            ((DownloadSearchListView)localObject).setData(((DownloadSearchListView)localObject).umQ);
           }
           com.tencent.mm.plugin.downloader_app.b.a.a(13, 1302, paramAnonymousView.position, 81, "", "", "");
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/downloader_app/search/DownloadSearchAdapter$SearchViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(8925);
         }
       });
-      this.qLv = this.contentView.findViewById(2131307420);
-      this.qLw = ((ImageView)this.contentView.findViewById(2131296944));
-      this.qLx = ((Button)this.contentView.findViewById(2131302795));
-      this.qLx.setOnClickListener(new View.OnClickListener()
+      this.umH = this.contentView.findViewById(e.e.search_result_layout);
+      this.umI = ((ImageView)this.contentView.findViewById(e.e.app_icon));
+      this.umJ = ((Button)this.contentView.findViewById(e.e.ukh));
+      this.umJ.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(8926);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/downloader_app/search/DownloadSearchAdapter$SearchViewHolder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/downloader_app/search/DownloadSearchAdapter$SearchViewHolder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
           paramAnonymousView = (b)paramAnonymousView.getTag();
-          a.a(a.this).alC(paramAnonymousView.qLO);
-          if (a.b(a.this).getResources().getString(2131762201).equals(a.a.this.qLx.getText().toString()))
+          a.a(a.this).atv(paramAnonymousView.una);
+          if (a.b(a.this).getResources().getString(e.h.ulf).equals(a.a.this.umJ.getText().toString()))
           {
             com.tencent.mm.plugin.downloader.i.a.as(a.b(a.this), paramAnonymousView.appId);
             com.tencent.mm.plugin.downloader_app.b.a.a(13, 1303, paramAnonymousView.position, 22, paramAnonymousView.appId, "", "");
@@ -144,16 +147,16 @@ public final class a
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/downloader_app/search/DownloadSearchAdapter$SearchViewHolder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(8926);
             return;
-            if (a.b(a.this).getResources().getString(2131761786).equals(a.a.this.qLx.getText().toString()))
+            if (a.b(a.this).getResources().getString(e.h.uld).equals(a.a.this.umJ.getText().toString()))
             {
-              localObject = d.alb(paramAnonymousView.appId);
+              localObject = d.asU(paramAnonymousView.appId);
               if (localObject == null)
               {
                 com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/downloader_app/search/DownloadSearchAdapter$SearchViewHolder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                 AppMethodBeat.o(8926);
                 return;
               }
-              if (s.YS(((com.tencent.mm.plugin.downloader.g.a)localObject).field_filePath))
+              if (u.agG(((com.tencent.mm.plugin.downloader.g.a)localObject).field_filePath))
               {
                 com.tencent.mm.plugin.downloader.i.a.a(((com.tencent.mm.plugin.downloader.g.a)localObject).field_downloadId, false, null);
                 com.tencent.mm.plugin.downloader_app.b.a.a(13, 1303, paramAnonymousView.position, 44, paramAnonymousView.appId, "", "");
@@ -164,19 +167,19 @@ public final class a
               localObject = new Intent();
               ((Intent)localObject).putExtra("appId", paramAnonymousView.appId);
               ((Intent)localObject).addFlags(67108864);
-              ((c)g.af(c.class)).a(a.b(a.this), (Intent)localObject, null);
+              ((c)h.ae(c.class)).a(a.b(a.this), (Intent)localObject, null);
               com.tencent.mm.plugin.downloader_app.b.a.a(13, 1303, paramAnonymousView.position, 23, paramAnonymousView.appId, "", "");
             }
           }
         }
       });
-      this.jBQ = ((TextView)this.contentView.findViewById(2131296959));
-      this.qLy = ((LinearLayout)this.contentView.findViewById(2131296970));
-      this.qLz = ((TextView)this.contentView.findViewById(2131296966));
+      this.mrL = ((TextView)this.contentView.findViewById(e.e.app_name_tv));
+      this.umK = ((LinearLayout)this.contentView.findViewById(e.e.ujP));
+      this.umL = ((TextView)this.contentView.findViewById(e.e.ujO));
       AppMethodBeat.o(8927);
     }
     
-    static String CJ(long paramLong)
+    static String IS(long paramLong)
     {
       AppMethodBeat.i(8928);
       if (paramLong >= 1073741824L)
@@ -199,25 +202,25 @@ public final class a
     final void setButtonText(int paramInt)
     {
       AppMethodBeat.i(183809);
-      if (paramInt == 2131761786)
+      if (paramInt == e.h.uld)
       {
-        this.qLx.setBackgroundColor(android.support.v4.content.b.n(a.b(a.this), 2131099710));
-        this.qLx.setTextColor(android.support.v4.content.b.n(a.b(a.this), 2131101424));
+        this.umJ.setBackgroundColor(androidx.core.content.a.w(a.b(a.this), e.b.Brand));
+        this.umJ.setTextColor(androidx.core.content.a.w(a.b(a.this), e.b.white));
       }
       for (;;)
       {
-        this.qLx.setText(paramInt);
+        this.umJ.setText(paramInt);
         AppMethodBeat.o(183809);
         return;
-        this.qLx.setBackgroundColor(android.support.v4.content.b.n(a.b(a.this), 2131099655));
-        this.qLx.setTextColor(android.support.v4.content.b.n(a.b(a.this), 2131099715));
+        this.umJ.setBackgroundColor(androidx.core.content.a.w(a.b(a.this), e.b.BW_0_Alpha_0_0_5));
+        this.umJ.setTextColor(androidx.core.content.a.w(a.b(a.this), e.b.Brand_90));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.search.a
  * JD-Core Version:    0.7.0.1
  */

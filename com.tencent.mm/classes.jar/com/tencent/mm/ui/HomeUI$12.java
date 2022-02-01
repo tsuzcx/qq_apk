@@ -15,19 +15,19 @@ final class HomeUI$12
   public final void run()
   {
     AppMethodBeat.i(33189);
-    HomeUI.hRP();
-    h localh = h.CyF;
-    synchronized (localh.CyI)
+    HomeUI.hGR();
+    h localh = h.IzE;
+    synchronized (localh.IzH)
     {
-      Iterator localIterator = localh.CyI.iterator();
+      Iterator localIterator = localh.IzH.iterator();
       if (localIterator.hasNext())
       {
         Pair localPair = (Pair)localIterator.next();
-        localh.n(((Long)localPair.first).longValue(), ((Long)localPair.second).longValue(), 1L);
+        localh.p(((Long)localPair.first).longValue(), ((Long)localPair.second).longValue(), 1L);
       }
     }
-    Log.i("MicroMsg.ReportManagerKvCheck", "clear all pendding stat %d", new Object[] { Integer.valueOf(localObject.CyI.size()) });
-    localObject.CyI.clear();
+    Log.i("MicroMsg.ReportManagerKvCheck", "clear all pendding stat %d", new Object[] { Integer.valueOf(localObject.IzH.size()) });
+    localObject.IzH.clear();
     AppMethodBeat.o(33189);
   }
 }

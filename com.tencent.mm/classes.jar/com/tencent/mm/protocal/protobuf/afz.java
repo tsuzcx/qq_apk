@@ -1,86 +1,89 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
 import java.util.LinkedList;
 
 public final class afz
-  extends dop
+  extends com.tencent.mm.cd.a
 {
-  public String eaO;
+  public eaf SrM;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(113986);
+    AppMethodBeat.i(101806);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      if (this.SrM == null)
       {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: MemberName");
+        AppMethodBeat.o(101806);
+        throw paramVarArgs;
       }
-      if (this.eaO != null) {
-        paramVarArgs.e(2, this.eaO);
+      if (this.SrM != null)
+      {
+        paramVarArgs.oE(1, this.SrM.computeSize());
+        this.SrM.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(113986);
+      AppMethodBeat.o(101806);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label370;
+      if (this.SrM == null) {
+        break label336;
       }
     }
-    label370:
-    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label336:
+    for (paramInt = g.a.a.a.oD(1, this.SrM.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.eaO != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.eaO);
-      }
-      AppMethodBeat.o(113986);
-      return i;
+      AppMethodBeat.o(101806);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(113986);
+        if (this.SrM == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: MemberName");
+          AppMethodBeat.o(101806);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(101806);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         afz localafz = (afz)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(113986);
+          AppMethodBeat.o(101806);
           return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localafz.BaseRequest = ((jr)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(113986);
-          return 0;
         }
-        localafz.eaO = ((g.a.a.a.a)localObject1).UbS.readString();
-        AppMethodBeat.o(113986);
+        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          eaf localeaf = new eaf();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localeaf.de((byte[])localObject);
+          }
+          localafz.SrM = localeaf;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(101806);
         return 0;
       }
-      AppMethodBeat.o(113986);
+      AppMethodBeat.o(101806);
       return -1;
     }
   }

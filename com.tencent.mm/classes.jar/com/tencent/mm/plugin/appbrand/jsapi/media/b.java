@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "", "()V", "CANCELED", "Companion", "FAILED", "OK", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$FAILED;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$OK;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$CANCELED;", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "", "()V", "CANCELED", "Companion", "FAILED", "OK", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$FAILED;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$OK;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$CANCELED;", "plugin-appbrand-integration_release"})
 public abstract class b
 {
-  public static final b mbI = new b((byte)0);
+  public static final b oZz = new b((byte)0);
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$CANCELED;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "()V", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$CANCELED;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "()V", "plugin-appbrand-integration_release"})
   public static final class a
     extends b
   {
-    public static final a mbJ;
+    public static final a oZA;
     
     static
     {
       AppMethodBeat.i(50514);
-      mbJ = new a();
+      oZA = new a();
       AppMethodBeat.o(50514);
     }
     
@@ -30,10 +30,10 @@ public abstract class b
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$Companion;", "", "()V", "FROM_ALBUM", "", "FROM_CAMERA", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$Companion;", "", "()V", "FROM_ALBUM", "", "FROM_CAMERA", "plugin-appbrand-integration_release"})
   public static final class b {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$FAILED;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "message", "", "(Ljava/lang/String;)V", "getMessage", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "", "hashCode", "", "toString", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$FAILED;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "message", "", "(Ljava/lang/String;)V", "getMessage", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "", "hashCode", "", "toString", "plugin-appbrand-integration_release"})
   public static final class c
     extends b
   {
@@ -53,7 +53,7 @@ public abstract class b
         if ((paramObject instanceof c))
         {
           paramObject = (c)paramObject;
-          if (!p.j(this.message, paramObject.message)) {}
+          if (!p.h(this.message, paramObject.message)) {}
         }
       }
       else
@@ -88,18 +88,18 @@ public abstract class b
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$OK;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "files", "", "Lcom/tencent/mm/vfs/VFSFile;", "from", "", "(Ljava/util/List;I)V", "getFiles", "()Ljava/util/List;", "getFrom", "()I", "component1", "component2", "copy", "equals", "", "other", "", "hashCode", "toString", "", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$OK;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "files", "", "Lcom/tencent/mm/vfs/VFSFile;", "from", "", "(Ljava/util/List;I)V", "getFiles", "()Ljava/util/List;", "getFrom", "()I", "component1", "component2", "copy", "equals", "", "other", "", "hashCode", "toString", "", "plugin-appbrand-integration_release"})
   public static final class d
     extends b
   {
     final int from;
-    final List<o> mbK;
+    final List<q> oZB;
     
-    public d(List<? extends o> paramList, int paramInt)
+    public d(List<? extends q> paramList, int paramInt)
     {
       super();
       AppMethodBeat.i(50518);
-      this.mbK = paramList;
+      this.oZB = paramList;
       this.from = paramInt;
       AppMethodBeat.o(50518);
     }
@@ -112,7 +112,7 @@ public abstract class b
         if ((paramObject instanceof d))
         {
           paramObject = (d)paramObject;
-          if ((!p.j(this.mbK, paramObject.mbK)) || (this.from != paramObject.from)) {}
+          if ((!p.h(this.oZB, paramObject.oZB)) || (this.from != paramObject.from)) {}
         }
       }
       else
@@ -127,7 +127,7 @@ public abstract class b
     public final int hashCode()
     {
       AppMethodBeat.i(50520);
-      List localList = this.mbK;
+      List localList = this.oZB;
       if (localList != null) {}
       for (int i = localList.hashCode();; i = 0)
       {
@@ -140,7 +140,7 @@ public abstract class b
     public final String toString()
     {
       AppMethodBeat.i(50519);
-      String str = "OK(files=" + this.mbK + ", from=" + this.from + ")";
+      String str = "OK(files=" + this.oZB + ", from=" + this.from + ")";
       AppMethodBeat.o(50519);
       return str;
     }

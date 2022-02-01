@@ -8,40 +8,46 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Parcel;
+import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.provider.MediaStore.Images.Media;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
 import android.view.Window;
 import android.widget.Toast;
-import com.tencent.luggage.h.i;
+import com.tencent.luggage.k.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.ac.m;
 import com.tencent.mm.plugin.appbrand.ac.m.a;
 import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObject;
 import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObjectManager;
-import com.tencent.mm.plugin.appbrand.h.c;
+import com.tencent.mm.plugin.appbrand.au.i;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
 import com.tencent.mm.plugin.appbrand.ipc.a;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.k;
+import com.tencent.mm.plugin.appbrand.k.c;
 import com.tencent.mm.plugin.appbrand.utils.b.a.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.mmsight.SightCaptureResult;
-import com.tencent.mm.pluginsdk.ui.tools.s;
+import com.tencent.mm.plugin.mmsight.SightParams;
+import com.tencent.mm.pluginsdk.ui.tools.u;
 import com.tencent.mm.sdk.platformtools.ImgUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.o.g;
-import com.tencent.mm.ui.base.q;
-import com.tencent.mm.ui.base.u;
+import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.base.w;
 import com.tencent.mm.ui.widget.a.e.a;
 import com.tencent.mm.ui.widget.a.e.b;
 import java.util.ArrayList;
@@ -51,51 +57,51 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class JsApiChooseImage
-  extends d
+  extends c
 {
   public static final int CTRL_INDEX = 29;
   public static final String NAME = "chooseImage";
-  private static Boolean mcb = null;
+  private static Boolean oZS = null;
   
-  private static boolean bHo()
+  private static boolean bSW()
   {
-    AppMethodBeat.i(226877);
-    if (mcb == null)
+    AppMethodBeat.i(284656);
+    if (oZS == null)
     {
       Log.i("MicroMsg.JsApiChooseImage", "inti wx style field");
-      mcb = Boolean.valueOf(((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rXA, false));
+      oZS = Boolean.valueOf(((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vEs, false));
     }
-    if (mcb == null)
+    if (oZS == null)
     {
       Log.e("MicroMsg.JsApiChooseImage", "get shoot style fail, use default style");
-      AppMethodBeat.o(226877);
+      AppMethodBeat.o(284656);
       return false;
     }
-    Log.i("MicroMsg.JsApiChooseImage", "isWxStyleShoot, flag: %b", new Object[] { mcb });
-    boolean bool = mcb.booleanValue();
-    AppMethodBeat.o(226877);
+    Log.i("MicroMsg.JsApiChooseImage", "isWxStyleShoot, flag: %b", new Object[] { oZS });
+    boolean bool = oZS.booleanValue();
+    AppMethodBeat.o(284656);
     return bool;
   }
   
-  public final void a(final f paramf, final JSONObject paramJSONObject, final int paramInt)
+  public final void a(final e parame, final JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(46425);
-    if (paramf.getAppId() == null)
+    if (parame.getAppId() == null)
     {
-      paramf.i(paramInt, h("fail", null));
+      parame.j(paramInt, h("fail", null));
       AppMethodBeat.o(46425);
       return;
     }
-    if (com.tencent.mm.plugin.appbrand.p.Um(paramf.getAppId()).kCV)
+    if (com.tencent.mm.plugin.appbrand.s.abV(parame.getAppId()).nwg)
     {
-      paramf.i(paramInt, h("cancel", null));
+      parame.j(paramInt, h("cancel", null));
       AppMethodBeat.o(46425);
       return;
     }
-    final Context localContext = paramf.getContext();
+    final Context localContext = parame.getContext();
     if ((localContext == null) || (!(localContext instanceof Activity)))
     {
-      paramf.i(paramInt, h("fail", null));
+      parame.j(paramInt, h("fail", null));
       AppMethodBeat.o(46425);
       return;
     }
@@ -107,36 +113,36 @@ public final class JsApiChooseImage
     int i;
     if ((localJSONArray == null) || (localJSONArray.length() == 0))
     {
-      localChooseRequest.mch = true;
-      localChooseRequest.mci = true;
-      if (!localChooseRequest.mch) {
+      localChooseRequest.oZX = true;
+      localChooseRequest.oZY = true;
+      if (!localChooseRequest.oZX) {
         break label347;
       }
-      com.tencent.mm.plugin.appbrand.permission.r.b(paramf.getAppId(), new android.support.v4.app.a.a()
+      com.tencent.mm.plugin.appbrand.permission.r.b(parame.getAppId(), new androidx.core.app.a.a()
       {
         public final void onRequestPermissionsResult(int paramAnonymousInt, String[] paramAnonymousArrayOfString, int[] paramAnonymousArrayOfInt)
         {
-          AppMethodBeat.i(226861);
+          AppMethodBeat.i(268691);
           if (paramAnonymousInt != 113)
           {
-            AppMethodBeat.o(226861);
+            AppMethodBeat.o(268691);
             return;
           }
           if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
           {
-            JsApiChooseImage.this.a(paramf, paramJSONObject, paramInt);
-            AppMethodBeat.o(226861);
+            JsApiChooseImage.this.a(parame, paramJSONObject, paramInt);
+            AppMethodBeat.o(268691);
             return;
           }
-          paramf.i(paramInt, JsApiChooseImage.this.h("fail:system permission denied", null));
-          AppMethodBeat.o(226861);
+          parame.j(paramInt, JsApiChooseImage.this.h("fail:system permission denied", null));
+          AppMethodBeat.o(268691);
         }
       });
-      paramJSONObject = paramf.getContext();
+      paramJSONObject = parame.getContext();
       if ((paramJSONObject != null) && ((paramJSONObject instanceof Activity))) {
         break label302;
       }
-      paramf.i(paramInt, h("fail", null));
+      parame.j(paramInt, h("fail", null));
       i = 0;
     }
     for (;;)
@@ -146,78 +152,78 @@ public final class JsApiChooseImage
       }
       AppMethodBeat.o(46425);
       return;
-      localChooseRequest.mch = localJSONArray.toString().contains("camera");
-      localChooseRequest.mci = localJSONArray.toString().contains("album");
+      localChooseRequest.oZX = localJSONArray.toString().contains("camera");
+      localChooseRequest.oZY = localJSONArray.toString().contains("album");
       break;
       label302:
       boolean bool = com.tencent.mm.pluginsdk.permission.b.a((Activity)paramJSONObject, "android.permission.CAMERA", 113, "", "");
       i = bool;
       if (bool)
       {
-        com.tencent.mm.plugin.appbrand.permission.r.aeq(paramf.getAppId());
+        com.tencent.mm.plugin.appbrand.permission.r.amk(parame.getAppId());
         i = bool;
       }
     }
     label347:
-    com.tencent.mm.plugin.appbrand.p.Un(paramf.getAppId()).kCV = true;
-    com.tencent.mm.plugin.appbrand.h.a(paramf.getAppId(), new h.c()
+    com.tencent.mm.plugin.appbrand.s.abW(parame.getAppId()).nwg = true;
+    k.a(parame.getAppId(), new k.c()
     {
       public final void onDestroy()
       {
         AppMethodBeat.i(180217);
-        if (paramf.getAppId() != null) {
-          com.tencent.mm.plugin.appbrand.p.Un(paramf.getAppId()).kCV = false;
+        if (parame.getAppId() != null) {
+          com.tencent.mm.plugin.appbrand.s.abW(parame.getAppId()).nwg = false;
         }
-        com.tencent.mm.plugin.appbrand.h.b(paramf.getAppId(), this);
+        k.b(parame.getAppId(), this);
         AppMethodBeat.o(180217);
       }
     });
     if (Util.isNullOrNil(str1)) {}
     for (paramJSONObject = "compressed";; paramJSONObject = str1)
     {
-      localChooseRequest.mcj = paramJSONObject.contains("compressed");
-      localChooseRequest.mck = paramJSONObject.contains("original");
+      localChooseRequest.oZZ = paramJSONObject.contains("compressed");
+      localChooseRequest.paa = paramJSONObject.contains("original");
       localChooseRequest.count = Util.getInt(str2, 9);
-      localChooseRequest.appId = paramf.getAppId();
+      localChooseRequest.appId = parame.getAppId();
       paramJSONObject = new AppBrandProxyUIProcessTask.b() {};
-      if ((localChooseRequest.mch) && (localChooseRequest.mci) && (bHo()))
+      if ((localChooseRequest.oZX) && (localChooseRequest.oZY) && (bSW()))
       {
         m.runOnUiThread(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(226860);
-            JsApiChooseImage.a(JsApiChooseImage.this, paramf.getContext(), new o.g()new DialogInterface.OnCancelListener
+            AppMethodBeat.i(278936);
+            JsApiChooseImage.a(JsApiChooseImage.this, parame.getContext(), new q.g()new DialogInterface.OnCancelListener
             {
               public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
               {
-                AppMethodBeat.i(226858);
+                AppMethodBeat.i(278626);
                 switch (paramAnonymous2MenuItem.getItemId())
                 {
                 }
                 for (;;)
                 {
                   Log.i("MicroMsg.JsApiChooseImage", "start select after source choose");
-                  a.b(JsApiChooseImage.3.this.lVp, JsApiChooseImage.3.this.mce, JsApiChooseImage.3.this.mcf);
-                  AppMethodBeat.o(226858);
+                  a.b(JsApiChooseImage.3.this.oSt, JsApiChooseImage.3.this.oZU, JsApiChooseImage.3.this.oZV);
+                  AppMethodBeat.o(278626);
                   return;
-                  JsApiChooseImage.3.this.mce.mci = false;
+                  JsApiChooseImage.3.this.oZU.oZY = false;
                   continue;
-                  JsApiChooseImage.3.this.mce.mch = false;
+                  JsApiChooseImage.3.this.oZU.oZX = false;
                 }
               }
             }, new DialogInterface.OnCancelListener()
             {
               public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
               {
-                AppMethodBeat.i(226859);
+                AppMethodBeat.i(264906);
                 Log.i("MicroMsg.JsApiChooseImage", "cancel when select source from");
-                com.tencent.mm.plugin.appbrand.p.Un(JsApiChooseImage.3.this.czN.getAppId()).kCV = false;
-                JsApiChooseImage.3.this.czN.i(JsApiChooseImage.3.this.cvP, JsApiChooseImage.this.h("cancel", null));
-                AppMethodBeat.o(226859);
+                com.tencent.mm.plugin.appbrand.s.abW(JsApiChooseImage.3.this.cyJ.getAppId()).nwg = false;
+                JsApiChooseImage.3.this.cyJ.j(JsApiChooseImage.3.this.cuf, JsApiChooseImage.this.h("cancel", null));
+                AppMethodBeat.o(264906);
               }
             });
-            AppMethodBeat.o(226860);
+            AppMethodBeat.o(278936);
           }
         });
         AppMethodBeat.o(46425);
@@ -236,11 +242,11 @@ public final class JsApiChooseImage
     public static final Parcelable.Creator<ChooseRequest> CREATOR;
     String appId;
     int count;
-    boolean mch;
-    boolean mci;
-    boolean mcj;
-    boolean mck;
-    boolean mcl;
+    boolean oZX;
+    boolean oZY;
+    boolean oZZ;
+    boolean paa;
+    boolean pab;
     
     static
     {
@@ -251,34 +257,34 @@ public final class JsApiChooseImage
     
     ChooseRequest()
     {
-      this.mcl = true;
+      this.pab = true;
     }
     
     ChooseRequest(Parcel paramParcel)
     {
       AppMethodBeat.i(46402);
-      this.mcl = true;
+      this.pab = true;
       k(paramParcel);
       AppMethodBeat.o(46402);
     }
     
-    public final Class<? extends AppBrandProxyUIProcessTask> bCJ()
+    public final Class<? extends AppBrandProxyUIProcessTask> bOe()
     {
       return JsApiChooseImage.a.class;
     }
     
-    public final boolean bDN()
+    public final boolean bPn()
     {
       boolean bool = true;
-      if (!this.mcl)
+      if (!this.pab)
       {
-        this.mcl = true;
+        this.pab = true;
         bool = false;
       }
       return bool;
     }
     
-    public final String bDO()
+    public final String bPo()
     {
       return "GalleryChooseImage";
     }
@@ -297,19 +303,19 @@ public final class JsApiChooseImage
       if (paramParcel.readByte() != 0)
       {
         bool1 = true;
-        this.mch = bool1;
+        this.oZX = bool1;
         if (paramParcel.readByte() == 0) {
           break label90;
         }
         bool1 = true;
         label46:
-        this.mci = bool1;
+        this.oZY = bool1;
         if (paramParcel.readByte() == 0) {
           break label95;
         }
         bool1 = true;
         label60:
-        this.mcj = bool1;
+        this.oZZ = bool1;
         if (paramParcel.readByte() == 0) {
           break label100;
         }
@@ -319,7 +325,7 @@ public final class JsApiChooseImage
       label100:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.mck = bool1;
+        this.paa = bool1;
         AppMethodBeat.o(46400);
         return;
         bool1 = false;
@@ -337,23 +343,23 @@ public final class JsApiChooseImage
       AppMethodBeat.i(46401);
       paramParcel.writeString(this.appId);
       paramParcel.writeInt(this.count);
-      if (this.mch)
+      if (this.oZX)
       {
         b1 = 1;
         paramParcel.writeByte(b1);
-        if (!this.mci) {
+        if (!this.oZY) {
           break label92;
         }
         b1 = 1;
         label47:
         paramParcel.writeByte(b1);
-        if (!this.mcj) {
+        if (!this.oZZ) {
           break label97;
         }
         b1 = 1;
         label61:
         paramParcel.writeByte(b1);
-        if (!this.mck) {
+        if (!this.paa) {
           break label102;
         }
       }
@@ -379,7 +385,7 @@ public final class JsApiChooseImage
     extends AppBrandProxyUIProcessTask.ProcessResult
   {
     public static final Parcelable.Creator<ChooseResult> CREATOR;
-    ArrayList<AppBrandLocalMediaObject> mcm;
+    ArrayList<AppBrandLocalMediaObject> pac;
     int resultCode;
     
     static
@@ -405,7 +411,7 @@ public final class JsApiChooseImage
     {
       AppMethodBeat.i(46405);
       this.resultCode = paramParcel.readInt();
-      this.mcm = paramParcel.createTypedArrayList(AppBrandLocalMediaObject.CREATOR);
+      this.pac = paramParcel.createTypedArrayList(AppBrandLocalMediaObject.CREATOR);
       AppMethodBeat.o(46405);
     }
     
@@ -413,7 +419,7 @@ public final class JsApiChooseImage
     {
       AppMethodBeat.i(46406);
       paramParcel.writeInt(this.resultCode);
-      paramParcel.writeTypedList(this.mcm);
+      paramParcel.writeTypedList(this.pac);
       AppMethodBeat.o(46406);
     }
   }
@@ -421,178 +427,200 @@ public final class JsApiChooseImage
   static final class a
     extends AppBrandProxyUIProcessTask
   {
-    private q gxX;
+    private com.tencent.mm.ui.base.s jhZ;
     double latitude;
     double longitude;
-    JsApiChooseImage.ChooseRequest mcn;
-    JsApiChooseImage.ChooseResult mco;
-    final int mcp;
-    int mcq;
-    boolean mcr;
-    boolean mcs;
-    boolean mct;
-    private DialogInterface.OnCancelListener mcu;
+    JsApiChooseImage.ChooseRequest pad;
+    JsApiChooseImage.ChooseResult pae;
+    final int paf;
+    int pag;
+    boolean pah;
+    boolean pai;
+    boolean paj;
+    private DialogInterface.OnCancelListener pak;
     
     private a()
     {
       AppMethodBeat.i(46412);
-      this.mco = new JsApiChooseImage.ChooseResult();
-      this.mcp = (hashCode() % 10000);
+      this.pae = new JsApiChooseImage.ChooseResult();
+      this.paf = (hashCode() % 10000);
       AppMethodBeat.o(46412);
     }
     
-    private void aML()
+    private void AD(int paramInt)
+    {
+      AppMethodBeat.i(46414);
+      this.pak = new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(249422);
+          JsApiChooseImage.a.this.pae.resultCode = 0;
+          JsApiChooseImage.a.a(JsApiChooseImage.a.this, JsApiChooseImage.a.this.pae);
+          AppMethodBeat.o(249422);
+        }
+      };
+      MMActivity localMMActivity = bPf();
+      int i = au.i.app_tip;
+      MMApplicationContext.getResources().getString(i);
+      this.jhZ = com.tencent.mm.ui.base.h.a(localMMActivity, MMApplicationContext.getResources().getString(paramInt), true, this.pak);
+      AppMethodBeat.o(46414);
+    }
+    
+    private void aVe()
     {
       AppMethodBeat.i(180231);
-      if ((!bHq()) && (!this.mcr))
+      if ((!bSY()) && (!this.pah))
       {
         Log.i("MicroMsg.JsApiChooseImage", "requestLocationPermission fail, abort");
         AppMethodBeat.o(180231);
         return;
       }
-      m.bZn().postToWorker(new JsApiChooseImage.a.2(this));
+      m.clV().postToWorker(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(46410);
+          if (JsApiChooseImage.a.this.pai) {
+            JsApiChooseImage.a.a(JsApiChooseImage.a.this);
+          }
+          Object localObject = GetSightParamsIPCTask.oZP;
+          localObject = GetSightParamsIPCTask.a.q(2, 0, false);
+          ((SightParams)localObject).EYq = false;
+          Intent localIntent = new Intent();
+          localIntent.setClassName(JsApiChooseImage.a.b(JsApiChooseImage.a.this), "com.tencent.mm.plugin.mmsight.ui.SightCaptureUI");
+          localIntent.putExtra("KEY_SIGHT_PARAMS", (Parcelable)localObject);
+          JsApiChooseImage.a.a(JsApiChooseImage.a.this, localIntent);
+          AppMethodBeat.o(46410);
+        }
+      });
       AppMethodBeat.o(180231);
     }
     
-    private boolean bHq()
+    private boolean bSY()
     {
       AppMethodBeat.i(180229);
-      MMActivity localMMActivity = bDF();
+      MMActivity localMMActivity = bPf();
       if (localMMActivity == null)
       {
         Log.e("MicroMsg.JsApiChooseImage", "requestLocationPermission, pageContext is null");
         AppMethodBeat.o(180229);
         return false;
       }
-      if (i.n(localMMActivity, "android.permission.ACCESS_FINE_LOCATION"))
+      if (i.o(localMMActivity, "android.permission.ACCESS_FINE_LOCATION"))
       {
-        this.mcs = true;
+        this.pai = true;
         AppMethodBeat.o(180229);
         return true;
       }
-      if (this.mcr)
+      if (this.pah)
       {
         AppMethodBeat.o(180229);
         return false;
       }
-      if (this.mcn != null) {
-        this.mcn.mcl = false;
+      if (this.pad != null) {
+        this.pad.pab = false;
       }
-      boolean bool = i.a(localMMActivity, "android.permission.ACCESS_FINE_LOCATION", this.mcp, null, null);
+      boolean bool = i.a(localMMActivity, "android.permission.ACCESS_FINE_LOCATION", this.paf, null, null);
       AppMethodBeat.o(180229);
       return bool;
-    }
-    
-    private void xh(int paramInt)
-    {
-      AppMethodBeat.i(46414);
-      this.mcu = new DialogInterface.OnCancelListener()
-      {
-        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-        {
-          AppMethodBeat.i(226866);
-          JsApiChooseImage.a.this.mco.resultCode = 0;
-          JsApiChooseImage.a.a(JsApiChooseImage.a.this, JsApiChooseImage.a.this.mco);
-          AppMethodBeat.o(226866);
-        }
-      };
-      MMActivity localMMActivity = bDF();
-      MMApplicationContext.getResources().getString(2131755998);
-      this.gxX = com.tencent.mm.ui.base.h.a(localMMActivity, MMApplicationContext.getResources().getString(paramInt), true, this.mcu);
-      AppMethodBeat.o(46414);
     }
     
     public final void a(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
     {
       AppMethodBeat.i(46413);
-      this.mcn = ((JsApiChooseImage.ChooseRequest)paramProcessRequest);
-      this.mcn.mcl = true;
-      this.mcn.count = Math.max(1, Math.min(9, this.mcn.count));
-      this.mcq = 16;
+      this.pad = ((JsApiChooseImage.ChooseRequest)paramProcessRequest);
+      this.pad.pab = true;
+      this.pad.count = Math.max(1, Math.min(9, this.pad.count));
+      this.pag = 16;
       int i;
-      if (Util.getAvailableMemoryMB(bDF()) > 200L)
+      if (Util.getAvailableMemoryMB(bPf()) > 200L)
       {
         i = 1;
-        if (i == 0) {
-          u.makeText(bDF(), MMApplicationContext.getResources().getString(2131755395), 1).show();
+        if (i == 0)
+        {
+          paramProcessRequest = bPf();
+          i = au.i.app_brand_choose_media_memory_check_message;
+          w.makeText(paramProcessRequest, MMApplicationContext.getResources().getString(i), 1).show();
         }
-        this.mct = JsApiChooseImage.bHp();
-        Log.i("MicroMsg.JsApiChooseImage", "isWxStyleShoot: %b", new Object[] { Boolean.valueOf(this.mct) });
-        bDF().mmSetOnActivityResultCallback(this);
+        this.paj = JsApiChooseImage.bSX();
+        Log.i("MicroMsg.JsApiChooseImage", "isWxStyleShoot: %b", new Object[] { Boolean.valueOf(this.paj) });
+        bPf().mmSetOnActivityResultCallback(this);
         paramProcessRequest = new Intent();
-        if (this.mcn.mcj) {
-          break label291;
+        if (this.pad.oZZ) {
+          break label308;
         }
         bool = true;
-        label145:
+        label151:
         paramProcessRequest.putExtra("key_send_raw_image", bool);
-        paramProcessRequest.putExtra("key_force_show_raw_image_button", this.mcn.mck);
-        if ((!this.mcn.mck) || (this.mcn.mcj)) {
-          break label296;
+        paramProcessRequest.putExtra("key_force_show_raw_image_button", this.pad.paa);
+        if ((!this.pad.paa) || (this.pad.oZZ)) {
+          break label313;
         }
       }
-      label291:
-      label296:
+      label308:
+      label313:
       for (boolean bool = true;; bool = false)
       {
         paramProcessRequest.putExtra("key_is_raw_image_button_disable", bool);
         paramProcessRequest.putExtra("query_media_type", 1);
         paramProcessRequest.putExtra("key_force_hide_edit_image_button_after_album_take_image", true);
+        paramProcessRequest.putExtra("album_business_tag", "album_business_bubble_media_by_jsapi_chooseimage");
         paramProcessRequest.putExtra("gallery_report_tag", 16);
-        if ((!this.mcn.mch) || (!this.mcn.mci)) {
-          break label327;
+        if ((!this.pad.oZX) || (!this.pad.oZY)) {
+          break label344;
         }
-        if (!this.mct) {
-          break label301;
+        if (!this.paj) {
+          break label318;
         }
         Log.e("MicroMsg.JsApiChooseImage", "illegal scene, ignore this request");
-        this.mco.resultCode = -2;
-        b(this.mco);
+        this.pae.resultCode = -2;
+        b(this.pae);
         AppMethodBeat.o(46413);
         return;
         i = 0;
         break;
         bool = false;
-        break label145;
+        break label151;
       }
-      label301:
-      s.a(bDF(), 1, this.mcn.count, this.mcq, paramProcessRequest);
+      label318:
+      u.a(bPf(), 1, this.pad.count, this.pag, paramProcessRequest);
       AppMethodBeat.o(46413);
       return;
-      label327:
-      if (this.mcn.mci)
+      label344:
+      if (this.pad.oZY)
       {
         paramProcessRequest.putExtra("show_header_view", false);
-        s.a(bDF(), 1, this.mcn.count, this.mcq, paramProcessRequest);
+        u.a(bPf(), 1, this.pad.count, this.pag, paramProcessRequest);
         AppMethodBeat.o(46413);
         return;
       }
-      if (this.mcn.mch)
+      if (this.pad.oZX)
       {
-        if (this.mct)
+        if (this.paj)
         {
-          aML();
+          aVe();
           AppMethodBeat.o(46413);
           return;
         }
-        s.d(bDF(), com.tencent.mm.loader.j.b.aKV(), "microMsg." + System.currentTimeMillis() + ".jpg", 2);
+        u.d(bPf(), com.tencent.mm.loader.j.b.aSX(), "microMsg." + System.currentTimeMillis() + ".jpg", 2);
         AppMethodBeat.o(46413);
         return;
       }
       Log.e("MicroMsg.JsApiChooseImage", "unknown scene, ignore this request");
-      this.mco.resultCode = -2;
-      b(this.mco);
+      this.pae.resultCode = -2;
+      b(this.pae);
       AppMethodBeat.o(46413);
     }
     
-    public final void bDM()
+    public final void bPm()
     {
       AppMethodBeat.i(46417);
-      super.bDM();
-      if (this.gxX != null)
+      super.bPm();
+      if (this.jhZ != null)
       {
-        this.gxX.dismiss();
-        this.gxX = null;
+        this.jhZ.dismiss();
+        this.jhZ = null;
       }
       AppMethodBeat.o(46417);
     }
@@ -602,36 +630,36 @@ public final class JsApiChooseImage
       AppMethodBeat.i(46418);
       if (paramInt2 == 0)
       {
-        this.mco.resultCode = 0;
-        b(this.mco);
+        this.pae.resultCode = 0;
+        b(this.pae);
         AppMethodBeat.o(46418);
         return;
       }
       switch (paramInt1)
       {
       default: 
-        this.mco.resultCode = -2;
-        b(this.mco);
+        this.pae.resultCode = -2;
+        b(this.pae);
         AppMethodBeat.o(46418);
         return;
       case 1: 
       case 3: 
         if (paramIntent == null)
         {
-          this.mco.resultCode = 0;
-          b(this.mco);
+          this.pae.resultCode = 0;
+          b(this.pae);
           AppMethodBeat.o(46418);
           return;
         }
         final ArrayList localArrayList = paramIntent.getStringArrayListExtra("CropImage_OutputPath_List");
         final boolean bool2 = paramIntent.getBooleanExtra("CropImage_Compress_Img", false);
-        final int i = this.mcn.mcj;
+        final int i = this.pad.oZZ;
         label182:
         final boolean bool1;
-        if (!this.mcn.mck)
+        if (!this.pad.paa)
         {
           paramInt1 = 1;
-          if (((paramInt1 & i) == 0) && (!(this.mcn.mcj & this.mcn.mck & bool2))) {
+          if (((paramInt1 & i) == 0) && (!(this.pad.oZZ & this.pad.paa & bool2))) {
             break label344;
           }
           i = 1;
@@ -640,11 +668,11 @@ public final class JsApiChooseImage
           }
           bool1 = true;
           label207:
-          Log.d("MicroMsg.JsApiChooseImage", "onActivityResult, fromCamera = %b, canCompress = %b, canOriginal = %b, CropImageUI.KCompressImg = %b, doCompress = %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(this.mcn.mcj), Boolean.valueOf(this.mcn.mck), Boolean.valueOf(bool2), Boolean.valueOf(i) });
+          Log.d("MicroMsg.JsApiChooseImage", "onActivityResult, fromCamera = %b, canCompress = %b, canOriginal = %b, CropImageUI.KCompressImg = %b, doCompress = %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(this.pad.oZZ), Boolean.valueOf(this.pad.paa), Boolean.valueOf(bool2), Boolean.valueOf(i) });
           if (i != 0) {
-            xh(2131755396);
+            AD(au.i.app_brand_choose_media_video_compressing);
           }
-          if ((i != 0) || (!r.bD(localArrayList))) {
+          if ((i != 0) || (!r.bC(localArrayList))) {
             break label356;
           }
         }
@@ -654,13 +682,13 @@ public final class JsApiChooseImage
         for (bool2 = true;; bool2 = false)
         {
           if (bool2) {
-            xh(2131755519);
+            AD(au.i.app_brand_jsapi_choose_image_processing);
           }
-          m.bZn().postToWorker(new Runnable()
+          m.clV().postToWorker(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(226868);
+              AppMethodBeat.i(270314);
               final ArrayList localArrayList = new ArrayList(localArrayList.size());
               Iterator localIterator = localArrayList.iterator();
               for (;;)
@@ -678,7 +706,7 @@ public final class JsApiChooseImage
                   if (!bool1) {
                     if (i)
                     {
-                      str = r.aah((String)localObject2);
+                      str = r.ahY((String)localObject2);
                       localObject1 = localObject2;
                       bool1 = bool2;
                       if (str != null)
@@ -692,7 +720,7 @@ public final class JsApiChooseImage
                         }
                       }
                       label115:
-                      localObject2 = AppBrandLocalMediaObjectManager.h(JsApiChooseImage.a.this.mcn.appId, (String)localObject1, bool1);
+                      localObject2 = AppBrandLocalMediaObjectManager.h(JsApiChooseImage.a.this.pad.appId, (String)localObject1, bool1);
                       if ((localObject2 != null) && (!bool1)) {}
                     }
                   }
@@ -708,7 +736,7 @@ public final class JsApiChooseImage
                   if (!bool2) {
                     break label115;
                   }
-                  str = r.aai((String)localObject2);
+                  str = r.ahZ((String)localObject2);
                   localObject1 = localObject2;
                   bool1 = bool2;
                   if (str.equals(localObject2)) {
@@ -727,14 +755,14 @@ public final class JsApiChooseImage
                   {
                     public final void run()
                     {
-                      AppMethodBeat.i(226867);
-                      JsApiChooseImage.a.this.mco.resultCode = -1;
-                      JsApiChooseImage.a.this.mco.mcm = localArrayList;
-                      JsApiChooseImage.a.b(JsApiChooseImage.a.this, JsApiChooseImage.a.this.mco);
-                      AppMethodBeat.o(226867);
+                      AppMethodBeat.i(279241);
+                      JsApiChooseImage.a.this.pae.resultCode = -1;
+                      JsApiChooseImage.a.this.pae.pac = localArrayList;
+                      JsApiChooseImage.a.b(JsApiChooseImage.a.this, JsApiChooseImage.a.this.pae);
+                      AppMethodBeat.o(279241);
                     }
                   });
-                  AppMethodBeat.o(226868);
+                  AppMethodBeat.o(270314);
                   return;
                 }
                 catch (Exception localException)
@@ -754,40 +782,40 @@ public final class JsApiChooseImage
           break label207;
         }
       }
-      if (this.mct)
+      if (this.paj)
       {
         if (paramIntent == null)
         {
-          this.mco.resultCode = 0;
-          b(this.mco);
+          this.pae.resultCode = 0;
+          b(this.pae);
           AppMethodBeat.o(46418);
           return;
         }
         paramIntent = (SightCaptureResult)paramIntent.getParcelableExtra("key_req_result");
         if (paramIntent == null)
         {
-          this.mco.resultCode = 0;
-          b(this.mco);
+          this.pae.resultCode = 0;
+          b(this.pae);
           AppMethodBeat.o(46418);
           return;
         }
       }
-      for (paramIntent = paramIntent.zsG; Util.isNullOrNil(paramIntent); paramIntent = s.h(bDF().getApplicationContext(), paramIntent, com.tencent.mm.loader.j.b.aKV()))
+      for (paramIntent = paramIntent.EYh; Util.isNullOrNil(paramIntent); paramIntent = u.g(bPf().getApplicationContext(), paramIntent, com.tencent.mm.loader.j.b.aSX()))
       {
         Log.w("MicroMsg.JsApiChooseImage", "take photo, but result is null");
-        this.mco.resultCode = -2;
-        b(this.mco);
+        this.pae.resultCode = -2;
+        b(this.pae);
         AppMethodBeat.o(46418);
         return;
       }
-      if ((bDF() != null) && (bDF().getWindow() != null)) {
-        bDF().getWindow().getDecorView().setBackgroundColor(-16777216);
+      if ((bPf() != null) && (bPf().getWindow() != null)) {
+        bPf().getWindow().getDecorView().setBackgroundColor(-16777216);
       }
-      m.bZn().postToWorker(new Runnable()
+      m.clV().postToWorker(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(226870);
+          AppMethodBeat.i(278464);
           try
           {
             com.tencent.mm.plugin.appbrand.l.b.a(paramIntent, JsApiChooseImage.a.this.latitude, JsApiChooseImage.a.this.longitude, System.currentTimeMillis());
@@ -797,24 +825,24 @@ public final class JsApiChooseImage
               public final void run()
               {
                 boolean bool2 = false;
-                AppMethodBeat.i(226869);
+                AppMethodBeat.i(282427);
                 Intent localIntent = new Intent();
-                if (!JsApiChooseImage.a.this.mcn.mcj) {}
+                if (!JsApiChooseImage.a.this.pad.oZZ) {}
                 for (boolean bool1 = true;; bool1 = false)
                 {
                   localIntent.putExtra("key_send_raw_image", bool1);
-                  localIntent.putExtra("key_force_show_raw_image_button", JsApiChooseImage.a.this.mcn.mck);
+                  localIntent.putExtra("key_force_show_raw_image_button", JsApiChooseImage.a.this.pad.paa);
                   bool1 = bool2;
-                  if (JsApiChooseImage.a.this.mcn.mck)
+                  if (JsApiChooseImage.a.this.pad.paa)
                   {
                     bool1 = bool2;
-                    if (!JsApiChooseImage.a.this.mcn.mcj) {
+                    if (!JsApiChooseImage.a.this.pad.oZZ) {
                       bool1 = true;
                     }
                   }
                   localIntent.putExtra("key_is_raw_image_button_disable", bool1);
-                  localIntent.putExtra("max_select_count", JsApiChooseImage.a.this.mcn.count);
-                  localIntent.putExtra("query_source_type", JsApiChooseImage.a.this.mcq);
+                  localIntent.putExtra("max_select_count", JsApiChooseImage.a.this.pad.count);
+                  localIntent.putExtra("query_source_type", JsApiChooseImage.a.this.pag);
                   localIntent.putExtra("isPreviewPhoto", true);
                   localIntent.putExtra("max_select_count", 1);
                   ArrayList localArrayList = new ArrayList(1);
@@ -824,12 +852,12 @@ public final class JsApiChooseImage
                   localIntent.putExtra("key_force_hide_edit_image_button", true);
                   localIntent.addFlags(67108864);
                   JsApiChooseImage.a.a(JsApiChooseImage.a.this, "gallery", ".ui.GalleryEntryUI", localIntent);
-                  AppMethodBeat.o(226869);
+                  AppMethodBeat.o(282427);
                   return;
                 }
               }
             });
-            AppMethodBeat.o(226870);
+            AppMethodBeat.o(278464);
             return;
           }
           catch (Exception localException)
@@ -850,15 +878,15 @@ public final class JsApiChooseImage
       if ((paramArrayOfInt.length > 0) && (paramArrayOfInt[0] == 0))
       {
         Log.i("MicroMsg.JsApiChooseImage", "PERMISSION_GRANTED, take photo again");
-        this.mcs = true;
+        this.pai = true;
       }
       for (;;)
       {
-        aML();
+        aVe();
         AppMethodBeat.o(180230);
         return;
         Log.e("MicroMsg.JsApiChooseImage", "SYS_PERM_DENIED");
-        this.mcr = true;
+        this.pah = true;
       }
     }
   }

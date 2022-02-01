@@ -11,19 +11,19 @@ import org.b.g.c;
 
 public final class e
 {
-  public final List<d> Uil;
+  public final List<d> abLG;
   
   public e()
   {
     AppMethodBeat.i(40530);
-    this.Uil = new ArrayList();
+    this.abLG = new ArrayList();
     AppMethodBeat.o(40530);
   }
   
   public e(List<d> paramList)
   {
     AppMethodBeat.i(40531);
-    this.Uil = new ArrayList(paramList);
+    this.abLG = new ArrayList(paramList);
     AppMethodBeat.o(40531);
   }
   
@@ -40,18 +40,18 @@ public final class e
         return;
       }
       Map.Entry localEntry = (Map.Entry)paramMap.next();
-      this.Uil.add(new d((String)localEntry.getKey(), (String)localEntry.getValue()));
+      this.abLG.add(new d((String)localEntry.getKey(), (String)localEntry.getValue()));
     }
   }
   
   public final void a(e parame)
   {
     AppMethodBeat.i(40534);
-    this.Uil.addAll(parame.Uil);
+    this.abLG.addAll(parame.abLG);
     AppMethodBeat.o(40534);
   }
   
-  public final void bvv(String paramString)
+  public final void bIC(String paramString)
   {
     AppMethodBeat.i(40535);
     String[] arrayOfString;
@@ -69,26 +69,26 @@ public final class e
       return;
     }
     paramString = arrayOfString[i].split("=");
-    String str = c.decode(paramString[0]);
+    String str = c.aU(paramString[0]);
     if (paramString.length > 1) {}
-    for (paramString = c.decode(paramString[1]);; paramString = "")
+    for (paramString = c.aU(paramString[1]);; paramString = "")
     {
-      this.Uil.add(new d(str, paramString));
+      this.abLG.add(new d(str, paramString));
       i += 1;
       break;
     }
   }
   
-  public final String hQj()
+  public final String iVs()
   {
     AppMethodBeat.i(40533);
-    if (this.Uil.size() == 0)
+    if (this.abLG.size() == 0)
     {
       AppMethodBeat.o(40533);
       return "";
     }
     Object localObject = new StringBuilder();
-    Iterator localIterator = this.Uil.iterator();
+    Iterator localIterator = this.abLG.iterator();
     for (;;)
     {
       if (!localIterator.hasNext())
@@ -98,13 +98,13 @@ public final class e
         return localObject;
       }
       d locald = (d)localIterator.next();
-      ((StringBuilder)localObject).append('&').append(locald.hQi());
+      ((StringBuilder)localObject).append('&').append(locald.iVr());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     org.b.d.e
  * JD-Core Version:    0.7.0.1
  */

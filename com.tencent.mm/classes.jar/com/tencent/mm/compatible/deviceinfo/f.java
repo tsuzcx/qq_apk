@@ -8,6 +8,7 @@ import android.os.Looper;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
@@ -21,9 +22,9 @@ final class f
     d.a.a locala = new d.a.a();
     try
     {
-      locala.gGr = w.e(paramLooper);
-      locala.dYT = 90;
-      if (locala.gGr == null)
+      locala.jqD = x.f(paramLooper);
+      locala.fSM = 90;
+      if (locala.jqD == null)
       {
         AppMethodBeat.o(155649);
         return null;
@@ -35,29 +36,35 @@ final class f
       return null;
     }
     paramLooper = new Camera.CameraInfo();
-    Camera.getCameraInfo(paramInt, paramLooper);
-    switch (((WindowManager)MMApplicationContext.getContext().getSystemService("window")).getDefaultDisplay().getRotation())
+    if (d.gaj)
     {
-    default: 
-      paramInt = 0;
-      if (paramLooper.facing != 1) {
-        break;
+      paramLooper = a.jnC.qJ(paramInt);
+      switch (((WindowManager)MMApplicationContext.getContext().getSystemService("window")).getDefaultDisplay().getRotation())
+      {
+      default: 
+        paramInt = 0;
+        label122:
+        if (paramLooper.facing != 1) {
+          break;
+        }
       }
     }
     for (int i = (360 - (paramLooper.orientation + paramInt) % 360) % 360;; i = (paramLooper.orientation - paramInt + 360) % 360)
     {
       Log.d("MicroMsg.CameraUtil.CameraUtilImpl22", "CameraUtilImpl22, open camera, info.orientation: %d, degrees: %d, result:%d", new Object[] { Integer.valueOf(paramLooper.orientation), Integer.valueOf(paramInt), Integer.valueOf(i) });
-      locala.gGr.setDisplayOrientation(i);
+      locala.jqD.qO(i);
       AppMethodBeat.o(155649);
       return locala;
+      Camera.getCameraInfo(paramInt, paramLooper);
+      break;
       paramInt = 0;
-      break;
+      break label122;
       paramInt = 90;
-      break;
+      break label122;
       paramInt = 180;
-      break;
+      break label122;
       paramInt = 270;
-      break;
+      break label122;
     }
   }
 }

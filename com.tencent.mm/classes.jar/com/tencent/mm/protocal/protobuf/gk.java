@@ -1,60 +1,106 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class gk
-  extends com.tencent.mm.bw.a
+  extends dyl
 {
-  public String hik;
+  public String RFj;
+  public String cli_msg_id;
+  public long klE;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152495);
+    AppMethodBeat.i(199745);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.hik != null) {
-        paramVarArgs.e(1, this.hik);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(152495);
+      paramVarArgs.bm(2, this.klE);
+      if (this.RFj != null) {
+        paramVarArgs.f(3, this.RFj);
+      }
+      if (this.cli_msg_id != null) {
+        paramVarArgs.f(4, this.cli_msg_id);
+      }
+      AppMethodBeat.o(199745);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.hik == null) {
-        break label213;
+      if (this.BaseRequest == null) {
+        break label452;
       }
     }
-    label213:
-    for (paramInt = g.a.a.b.b.a.f(1, this.hik) + 0;; paramInt = 0)
+    label452:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(152495);
-      return paramInt;
+      int i = paramInt + g.a.a.b.b.a.p(2, this.klE);
+      paramInt = i;
+      if (this.RFj != null) {
+        paramInt = i + g.a.a.b.b.a.g(3, this.RFj);
+      }
+      i = paramInt;
+      if (this.cli_msg_id != null) {
+        i = paramInt + g.a.a.b.b.a.g(4, this.cli_msg_id);
+      }
+      AppMethodBeat.o(199745);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(152495);
+        AppMethodBeat.o(199745);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         gk localgk = (gk)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(152495);
+          AppMethodBeat.o(199745);
           return -1;
+        case 1: 
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            jg localjg = new jg();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localjg.parseFrom((byte[])localObject);
+            }
+            localgk.BaseRequest = localjg;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(199745);
+          return 0;
+        case 2: 
+          localgk.klE = ((g.a.a.a.a)localObject).abFh.AN();
+          AppMethodBeat.o(199745);
+          return 0;
+        case 3: 
+          localgk.RFj = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(199745);
+          return 0;
         }
-        localgk.hik = locala.UbS.readString();
-        AppMethodBeat.o(152495);
+        localgk.cli_msg_id = ((g.a.a.a.a)localObject).abFh.readString();
+        AppMethodBeat.o(199745);
         return 0;
       }
-      AppMethodBeat.o(152495);
+      AppMethodBeat.o(199745);
       return -1;
     }
   }

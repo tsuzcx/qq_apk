@@ -5,26 +5,27 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMStack;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  public static a dgB = null;
-  public static int dgC = 0;
+  public static a eYi = null;
+  public static int eYj = 0;
   
-  private static String Uq()
+  private static String YI()
   {
-    AppMethodBeat.i(215246);
-    if (dgB != null)
+    AppMethodBeat.i(261378);
+    if (eYi != null)
     {
-      str = dgB.getStack();
-      AppMethodBeat.o(215246);
+      str = eYi.getStack();
+      AppMethodBeat.o(261378);
       return str;
     }
     String str = Util.getStack().toString();
-    AppMethodBeat.o(215246);
+    AppMethodBeat.o(261378);
     return str;
   }
   
@@ -42,7 +43,7 @@ public final class a
     if (paramIntent != null) {}
     for (Object localObject = paramIntent;; localObject = "null")
     {
-      Log.i("MicroMsg.AlarmHelper", "set(type:%s requestCode:%s triggerAtMillis:%s intent:%s flags:%s stack:%s)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Long.valueOf(paramLong), localObject, Integer.valueOf(paramInt3), Uq() });
+      Log.i("MicroMsg.AlarmHelper", "set(type:%s requestCode:%s triggerAtMillis:%s intent:%s flags:%s stack:%s)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Long.valueOf(paramLong), localObject, Integer.valueOf(paramInt3), YI() });
       if (paramContext != null) {
         break;
       }
@@ -70,7 +71,10 @@ public final class a
     {
       for (;;)
       {
-        ((AlarmManager)localObject).set(paramInt2, paramLong, paramContext);
+        paramIntent = c.a(paramInt2, c.a(paramLong, new com.tencent.mm.hellhoundlib.b.a().bm(paramContext)));
+        com.tencent.mm.hellhoundlib.a.a.b(localObject, paramIntent.aFh(), "com/tencent/mm/alarm/AlarmHelper", "set", "(Landroid/content/Context;IIJLandroid/content/Intent;IZ)Landroid/app/PendingIntent;", "android/app/AlarmManager_EXEC_", "set", "(IJLandroid/app/PendingIntent;)V");
+        ((AlarmManager)localObject).set(((Integer)paramIntent.sf(0)).intValue(), ((Long)c.a(paramIntent).sf(1)).longValue(), (PendingIntent)c.aFj().sf(2));
+        com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/alarm/AlarmHelper", "set", "(Landroid/content/Context;IIJLandroid/content/Intent;IZ)Landroid/app/PendingIntent;", "android/app/AlarmManager_EXEC_", "set", "(IJLandroid/app/PendingIntent;)V");
         AppMethodBeat.o(185210);
         return paramContext;
         paramContext = PendingIntent.getActivity(paramContext, paramInt1, paramIntent, paramInt3);
@@ -81,11 +85,11 @@ public final class a
       for (;;)
       {
         Log.e("MicroMsg.AlarmHelper", "set Exception:%s %s", new Object[] { paramIntent.getClass().getSimpleName(), paramIntent.getMessage() });
-        if (dgB != null)
+        if (eYi != null)
         {
-          paramIntent = dgB;
-          Uq();
-          paramIntent.cg(paramInt1, 1);
+          paramIntent = eYi;
+          YI();
+          paramIntent.cz(paramInt1, 1);
         }
       }
     }
@@ -130,7 +134,7 @@ public final class a
     if (paramIntent != null) {}
     for (Object localObject = paramIntent;; localObject = "null")
     {
-      Log.i("MicroMsg.AlarmHelper", "setRepeating(type:%s requestCode:%s triggerAtMillis:%s intervalMillis:%s intent:%s flags:%s stack:%s)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Long.valueOf(paramLong1), Long.valueOf(paramLong2), localObject, Integer.valueOf(268435456), Uq() });
+      Log.i("MicroMsg.AlarmHelper", "setRepeating(type:%s requestCode:%s triggerAtMillis:%s intervalMillis:%s intent:%s flags:%s stack:%s)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Long.valueOf(paramLong1), Long.valueOf(paramLong2), localObject, Integer.valueOf(268435456), YI() });
       if (paramContext != null) {
         break;
       }
@@ -154,7 +158,10 @@ public final class a
     paramContext = PendingIntent.getBroadcast(paramContext, paramInt1, paramIntent, 268435456);
     try
     {
-      ((AlarmManager)localObject).setRepeating(paramInt2, paramLong1, paramLong2, paramContext);
+      paramIntent = c.a(paramInt2, c.a(paramLong1, c.a(paramLong2, new com.tencent.mm.hellhoundlib.b.a().bm(paramContext))));
+      com.tencent.mm.hellhoundlib.a.a.b(localObject, paramIntent.aFh(), "com/tencent/mm/alarm/AlarmHelper", "setRepeating", "(Landroid/content/Context;IIJJLandroid/content/Intent;IZ)Landroid/app/PendingIntent;", "android/app/AlarmManager_EXEC_", "setRepeating", "(IJJLandroid/app/PendingIntent;)V");
+      ((AlarmManager)localObject).setRepeating(((Integer)paramIntent.sf(0)).intValue(), ((Long)c.a(paramIntent).sf(1)).longValue(), ((Long)c.a(c.aFj()).sf(2)).longValue(), (PendingIntent)c.aFj().sf(3));
+      com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/alarm/AlarmHelper", "setRepeating", "(Landroid/content/Context;IIJJLandroid/content/Intent;IZ)Landroid/app/PendingIntent;", "android/app/AlarmManager_EXEC_", "setRepeating", "(IJJLandroid/app/PendingIntent;)V");
       AppMethodBeat.o(186107);
       return paramContext;
     }
@@ -163,11 +170,11 @@ public final class a
       for (;;)
       {
         Log.e("MicroMsg.AlarmHelper", "setRepeating Exception:%s %s", new Object[] { paramIntent.getClass().getSimpleName(), paramIntent.getMessage() });
-        if (dgB != null)
+        if (eYi != null)
         {
-          paramIntent = dgB;
-          Uq();
-          paramIntent.cg(paramInt1, 1);
+          paramIntent = eYi;
+          YI();
+          paramIntent.cz(paramInt1, 1);
         }
       }
     }
@@ -179,8 +186,8 @@ public final class a
     if (paramIntent != null) {}
     for (Object localObject = paramIntent;; localObject = "null")
     {
-      Log.i("MicroMsg.AlarmHelper", "setExact(type:%s requestCode:%s triggerAtMillis:%s intent:%s flags:%s stack:%s)", new Object[] { Integer.valueOf(2), Integer.valueOf(paramInt), Long.valueOf(paramLong), localObject, Integer.valueOf(268435456), Uq() });
-      dgC += 1;
+      Log.i("MicroMsg.AlarmHelper", "setExact(type:%s requestCode:%s triggerAtMillis:%s intent:%s flags:%s stack:%s)", new Object[] { Integer.valueOf(2), Integer.valueOf(paramInt), Long.valueOf(paramLong), localObject, Integer.valueOf(268435456), YI() });
+      eYj += 1;
       if (paramContext != null) {
         break;
       }
@@ -213,11 +220,11 @@ public final class a
       for (;;)
       {
         Log.e("MicroMsg.AlarmHelper", "setExact Exception:%s %s", new Object[] { paramIntent.getClass().getSimpleName(), paramIntent.getMessage() });
-        if (dgB != null)
+        if (eYi != null)
         {
-          paramIntent = dgB;
-          Uq();
-          paramIntent.cg(paramInt, 1);
+          paramIntent = eYi;
+          YI();
+          paramIntent.cz(paramInt, 1);
         }
       }
     }
@@ -251,18 +258,21 @@ public final class a
     paramContext = a(paramContext, 111, paramIntent, 268435456);
     try
     {
-      localAlarmManager.cancel(paramContext);
+      paramContext = new com.tencent.mm.hellhoundlib.b.a().bm(paramContext);
+      com.tencent.mm.hellhoundlib.a.a.b(localAlarmManager, paramContext.aFh(), "com/tencent/mm/alarm/AlarmHelper", "cancel", "(Landroid/content/Context;ILandroid/content/Intent;IZ)V", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
+      localAlarmManager.cancel((PendingIntent)paramContext.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(localAlarmManager, "com/tencent/mm/alarm/AlarmHelper", "cancel", "(Landroid/content/Context;ILandroid/content/Intent;IZ)V", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
       AppMethodBeat.o(186108);
       return;
     }
     catch (Exception paramContext)
     {
       Log.e("MicroMsg.AlarmHelper", "cancel Exception:%s %s", new Object[] { paramContext.getClass().getSimpleName(), paramContext.getMessage() });
-      if (dgB != null)
+      if (eYi != null)
       {
-        paramContext = dgB;
-        Uq();
-        paramContext.cg(111, 2);
+        paramContext = eYi;
+        YI();
+        paramContext.cz(111, 2);
       }
       AppMethodBeat.o(186108);
     }
@@ -291,18 +301,21 @@ public final class a
     }
     try
     {
-      paramContext.cancel(paramPendingIntent);
+      paramPendingIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramPendingIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramPendingIntent.aFh(), "com/tencent/mm/alarm/AlarmHelper", "cancel", "(Landroid/content/Context;ILandroid/app/PendingIntent;)V", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
+      paramContext.cancel((PendingIntent)paramPendingIntent.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/alarm/AlarmHelper", "cancel", "(Landroid/content/Context;ILandroid/app/PendingIntent;)V", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
       AppMethodBeat.o(182035);
       return;
     }
     catch (Exception paramContext)
     {
       Log.e("MicroMsg.AlarmHelper", "cancel Exception:%s %s", new Object[] { paramContext.getClass().getSimpleName(), paramContext.getMessage() });
-      if (dgB != null)
+      if (eYi != null)
       {
-        paramContext = dgB;
-        Uq();
-        paramContext.cg(paramInt, 2);
+        paramContext = eYi;
+        YI();
+        paramContext.cz(paramInt, 2);
       }
       AppMethodBeat.o(182035);
     }
@@ -323,14 +336,14 @@ public final class a
   
   public static abstract interface a
   {
-    public abstract void cg(int paramInt1, int paramInt2);
+    public abstract void cz(int paramInt1, int paramInt2);
     
     public abstract String getStack();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.a.a
  * JD-Core Version:    0.7.0.1
  */

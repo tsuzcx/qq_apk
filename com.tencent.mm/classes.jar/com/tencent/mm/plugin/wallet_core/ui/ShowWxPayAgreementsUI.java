@@ -4,96 +4,99 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.wxpay.a.a;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.a;
-import com.tencent.xweb.z;
+import com.tencent.xweb.aa;
 
 @com.tencent.mm.ui.base.a(3)
 public class ShowWxPayAgreementsUI
   extends MMActivity
 {
-  private TextView IcX;
-  private TextView IcY;
+  private TextView OVo;
+  private TextView OVp;
   private String content;
-  private MMWebView tcN;
   private int type;
+  private MMWebView wIY;
   
   public void finish()
   {
     AppMethodBeat.i(70686);
     Log.i("MicroMsg.ShowWxPayAgreementsUI", "onRefreshed");
     super.finish();
-    overridePendingTransition(2130771986, 2130772130);
+    overridePendingTransition(a.a.anim_not_change, a.a.push_down_out);
     AppMethodBeat.o(70686);
   }
   
   public int getLayoutId()
   {
-    return 2131496317;
+    return a.g.show_wxpayagreements_ui;
   }
   
   public void initView()
   {
     AppMethodBeat.i(70685);
-    h.CyF.a(15236, new Object[] { Integer.valueOf(1) });
+    h.IzE.a(15236, new Object[] { Integer.valueOf(1) });
     getSupportActionBar().hide();
-    overridePendingTransition(2130772132, 2130771986);
+    overridePendingTransition(a.a.push_up_in, a.a.anim_not_change);
     this.type = getIntent().getIntExtra("agreement_type", 0);
-    this.tcN = MMWebView.a.a(this, getContentView(), 2131296600);
-    this.tcN.getSettings().setJavaScriptEnabled(true);
-    this.IcX = ((TextView)findViewById(2131296598));
-    this.IcY = ((TextView)findViewById(2131296595));
+    this.wIY = MMWebView.a.a(this, getContentView(), a.f.agreement_webview);
+    this.wIY.getSettings().setJavaScriptEnabled(true);
+    this.OVo = ((TextView)findViewById(a.f.agreement_disagree_btn));
+    this.OVp = ((TextView)findViewById(a.f.agreement_agree_btn));
     this.content = getIntent().getStringExtra("agreement_content");
-    this.IcY.setOnClickListener(new View.OnClickListener()
+    this.OVp.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(70682);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/ShowWxPayAgreementsUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        h.CyF.a(15236, new Object[] { Integer.valueOf(2) });
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_core/ui/ShowWxPayAgreementsUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        h.IzE.a(15236, new Object[] { Integer.valueOf(2) });
         ShowWxPayAgreementsUI.this.setResult(-1);
         ShowWxPayAgreementsUI.this.finish();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/ShowWxPayAgreementsUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(70682);
       }
     });
-    this.IcX.setOnClickListener(new View.OnClickListener()
+    this.OVo.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(70683);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/ShowWxPayAgreementsUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        h.CyF.a(15236, new Object[] { Integer.valueOf(3) });
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_core/ui/ShowWxPayAgreementsUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        h.IzE.a(15236, new Object[] { Integer.valueOf(3) });
         ShowWxPayAgreementsUI.this.finish();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/ShowWxPayAgreementsUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(70683);
       }
     });
-    this.tcN.setWebViewClient(new i(this));
+    this.wIY.setWebViewClient(new j(this));
     if (getContext().getApplicationInfo().targetSdkVersion >= 29)
     {
       String str = Base64.encodeToString(this.content.getBytes(), 0);
-      this.tcN.loadData(str, "text/html; charset=UTF-8", "base64");
+      this.wIY.loadData(str, "text/html; charset=UTF-8", "base64");
       AppMethodBeat.o(70685);
       return;
     }
-    this.tcN.loadData(this.content, "text/html; charset=UTF-8", null);
+    this.wIY.loadData(this.content, "text/html; charset=UTF-8", null);
     AppMethodBeat.o(70685);
   }
   
@@ -103,6 +106,16 @@ public class ShowWxPayAgreementsUI
     super.onCreate(paramBundle);
     initView();
     AppMethodBeat.o(70684);
+  }
+  
+  public void onDestroy()
+  {
+    AppMethodBeat.i(274233);
+    super.onDestroy();
+    if (this.wIY != null) {
+      this.wIY.destroy();
+    }
+    AppMethodBeat.o(274233);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)

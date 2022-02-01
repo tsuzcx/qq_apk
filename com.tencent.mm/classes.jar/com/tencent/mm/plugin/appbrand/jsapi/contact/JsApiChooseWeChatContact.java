@@ -4,33 +4,34 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import com.tencent.luggage.h.f.c;
-import com.tencent.luggage.sdk.g.a;
+import com.tencent.luggage.k.f.c;
+import com.tencent.luggage.sdk.h.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.i;
-import com.tencent.mm.aj.j;
+import com.tencent.mm.am.j;
+import com.tencent.mm.am.k;
+import com.tencent.mm.am.q;
 import com.tencent.mm.model.aa;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class JsApiChooseWeChatContact
-  extends d<s>
+  extends c<v>
 {
   public static final int CTRL_INDEX = 195;
   public static final String NAME = "chooseWeChatContact";
-  final int lSc;
+  final int oOH;
   
   public JsApiChooseWeChatContact()
   {
     AppMethodBeat.i(174781);
-    this.lSc = a.aK(this);
+    this.oOH = a.aI(this);
     AppMethodBeat.o(174781);
   }
   
@@ -38,10 +39,10 @@ public final class JsApiChooseWeChatContact
     extends MainProcessTask
   {
     public static final Parcelable.Creator<GetUserDataTask> CREATOR;
-    String cgo;
-    String kog;
-    public String lSe;
+    String cip;
+    String nfY;
     String nickName;
+    public String oOJ;
     public String userName;
     
     static
@@ -54,31 +55,31 @@ public final class JsApiChooseWeChatContact
     public GetUserDataTask(Parcel paramParcel)
     {
       AppMethodBeat.i(46249);
-      this.kog = "";
+      this.nfY = "";
       f(paramParcel);
       AppMethodBeat.o(46249);
     }
     
     public GetUserDataTask(String paramString)
     {
-      this.kog = "";
+      this.nfY = "";
       this.userName = paramString;
     }
     
-    public final void bjj()
+    public final void RW()
     {
       AppMethodBeat.i(46250);
-      this.lSe = z.aTY();
+      this.oOJ = z.bcZ();
       if (!TextUtils.isEmpty(this.userName))
       {
-        this.nickName = aa.Ir(this.userName);
-        this.cgo = aa.Is(this.userName);
-        i locali = com.tencent.mm.aj.p.aYB().Mx(this.userName);
-        if (locali != null)
+        this.nickName = aa.PI(this.userName);
+        this.cip = aa.PK(this.userName);
+        j localj = q.bhP().TS(this.userName);
+        if (localj != null)
         {
-          this.kog = locali.aYt();
-          if (Util.isNullOrNil(this.kog)) {
-            this.kog = locali.aYu();
+          this.nfY = localj.bhH();
+          if (Util.isNullOrNil(this.nfY)) {
+            this.nfY = localj.bhI();
           }
         }
       }
@@ -88,22 +89,22 @@ public final class JsApiChooseWeChatContact
     public final void f(Parcel paramParcel)
     {
       AppMethodBeat.i(46251);
-      this.lSe = paramParcel.readString();
+      this.oOJ = paramParcel.readString();
       this.userName = paramParcel.readString();
       this.nickName = paramParcel.readString();
-      this.cgo = paramParcel.readString();
-      this.kog = paramParcel.readString();
+      this.cip = paramParcel.readString();
+      this.nfY = paramParcel.readString();
       AppMethodBeat.o(46251);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(46252);
-      paramParcel.writeString(this.lSe);
+      paramParcel.writeString(this.oOJ);
       paramParcel.writeString(this.userName);
       paramParcel.writeString(this.nickName);
-      paramParcel.writeString(this.cgo);
-      paramParcel.writeString(this.kog);
+      paramParcel.writeString(this.cip);
+      paramParcel.writeString(this.nfY);
       AppMethodBeat.o(46252);
     }
   }

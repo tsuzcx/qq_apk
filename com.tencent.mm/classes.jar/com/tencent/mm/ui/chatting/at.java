@@ -8,16 +8,17 @@ import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.cf;
+import com.tencent.mm.model.cg;
 import com.tencent.mm.opensdk.channel.MMessageActV2;
 import com.tencent.mm.opensdk.channel.MMessageActV2.Args;
 import com.tencent.mm.opensdk.modelmsg.GetMessageFromWX.Req;
 import com.tencent.mm.opensdk.modelmsg.GetMessageFromWX.Resp;
 import com.tencent.mm.opensdk.modelmsg.WXImageObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.pluginsdk.model.app.j;
 import com.tencent.mm.pluginsdk.model.app.m;
 import com.tencent.mm.pluginsdk.model.app.q;
@@ -31,7 +32,7 @@ import com.tencent.mm.sdk.storage.IAutoDBItem;
 import com.tencent.mm.sdk.storage.MStorageEvent;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.chatting.e.a;
-import com.tencent.mm.ui.t;
+import com.tencent.mm.ui.w;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -40,24 +41,24 @@ import java.util.Set;
 public final class at
   implements ab
 {
-  private static MStorageEvent<ab, Bundle> Plk;
-  private MMFragment Pli;
-  private final Set<String> Plj;
-  private a dom;
+  private static MStorageEvent<ab, Bundle> WEU;
+  private MMFragment WES;
+  private final Set<String> WET;
+  private a fgR;
   
   static
   {
     AppMethodBeat.i(34974);
-    Plk = new MStorageEvent() {};
+    WEU = new MStorageEvent() {};
     AppMethodBeat.o(34974);
   }
   
   public at(a parama)
   {
     AppMethodBeat.i(34965);
-    this.Plj = new HashSet();
-    this.Pli = parama.Pwc;
-    this.dom = parama;
+    this.WET = new HashSet();
+    this.WES = parama.WQv;
+    this.fgR = parama;
     AppMethodBeat.o(34965);
   }
   
@@ -80,7 +81,7 @@ public final class at
               AppMethodBeat.o(34964);
               return;
             }
-            String str = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a(at.c(at.this).getContext(), paramWXMediaMessage, paramg.field_appId);
+            String str = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a(at.c(at.this).getContext(), paramWXMediaMessage, paramg.field_appId);
             paramAnonymousString = str;
             if (str == null)
             {
@@ -89,7 +90,7 @@ public final class at
               return;
             }
           }
-          cf.aWl().f(27, new Object[] { Integer.valueOf(1) });
+          cg.bfp().e(27, new Object[] { Integer.valueOf(1) });
           Log.v("MicroMsg.WXAppMessageReceiver", "onDialogClick, messageAction = %s, messageExt = %s", new Object[] { paramWXMediaMessage.messageAction, paramWXMediaMessage.messageExt });
           m.a(paramWXMediaMessage, paramg.field_appId, paramg.field_appName, at.d(at.this).getTalkerUserName(), 1, paramAnonymousString);
         }
@@ -103,7 +104,7 @@ public final class at
   public static void a(at paramat)
   {
     AppMethodBeat.i(34969);
-    Plk.add(paramat, null);
+    WEU.add(paramat, null);
     AppMethodBeat.o(34969);
   }
   
@@ -143,34 +144,34 @@ public final class at
   public static void b(at paramat)
   {
     AppMethodBeat.i(34970);
-    Plk.remove(paramat);
-    paramat.Plj.clear();
-    b(paramat.Pli.getContext(), null);
+    WEU.remove(paramat);
+    paramat.WET.clear();
+    b(paramat.WES.getContext(), null);
     AppMethodBeat.o(34970);
   }
   
-  public static void bv(Bundle paramBundle)
+  public static void bs(Bundle paramBundle)
   {
     AppMethodBeat.i(34966);
-    Plk.event(paramBundle);
-    Plk.doNotify();
+    WEU.event(paramBundle);
+    WEU.doNotify();
     AppMethodBeat.o(34966);
   }
   
   private String t(com.tencent.mm.pluginsdk.model.app.g paramg)
   {
     AppMethodBeat.i(34971);
-    paramg = this.Pli.getString(2131757790, new Object[] { h.a(this.Pli.getContext(), paramg, null) });
+    paramg = this.WES.getString(R.l.confirm_dialog_source, new Object[] { com.tencent.mm.pluginsdk.model.app.h.a(this.WES.getContext(), paramg, null) });
     AppMethodBeat.o(34971);
     return paramg;
   }
   
-  public final void bu(Bundle paramBundle)
+  public final void br(Bundle paramBundle)
   {
     int j = 1;
     int k = 0;
     AppMethodBeat.i(34967);
-    if ((this.dom == null) || (!this.dom.cQp))
+    if ((this.fgR == null) || (!this.fgR.dgo))
     {
       Log.v("MicroMsg.WXAppMessageReceiver", "handleResp Chatting is a fragment but not foregound");
       AppMethodBeat.o(34967);
@@ -181,9 +182,9 @@ public final class at
     paramBundle = ((GetMessageFromWX.Resp)localObject1).message;
     Object localObject4;
     Object localObject3;
-    if (this.Plj.size() == 0)
+    if (this.WET.size() == 0)
     {
-      localObject4 = this.Pli.getContext();
+      localObject4 = this.WES.getContext();
       localObject3 = new HashSet();
       localObject4 = ((Context)localObject4).getSharedPreferences(MMApplicationContext.getTmpPreferencePath(), 0).getString("transactions_array_key", null);
       if ((localObject4 != null) && (((String)localObject4).length() > 0))
@@ -197,20 +198,20 @@ public final class at
           i += 1;
         }
       }
-      this.Plj.addAll((Collection)localObject3);
+      this.WET.addAll((Collection)localObject3);
     }
-    if (!this.Plj.contains(((GetMessageFromWX.Resp)localObject1).transaction))
+    if (!this.WET.contains(((GetMessageFromWX.Resp)localObject1).transaction))
     {
       Log.e("MicroMsg.WXAppMessageReceiver", "invalid resp, check transaction failed, transaction=" + ((GetMessageFromWX.Resp)localObject1).transaction);
       AppMethodBeat.o(34967);
       return;
     }
-    this.Plj.remove(((GetMessageFromWX.Resp)localObject1).transaction);
-    b(this.Pli.getContext(), this.Plj);
+    this.WET.remove(((GetMessageFromWX.Resp)localObject1).transaction);
+    b(this.WES.getContext(), this.WET);
     localObject1 = new com.tencent.mm.pluginsdk.model.app.g();
     ((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_appId = ((String)localObject2);
     Log.d("MicroMsg.WXAppMessageReceiver", "handleResp, appId = ".concat(String.valueOf(localObject2)));
-    if (!com.tencent.mm.pluginsdk.model.app.ao.eAS().get((IAutoDBItem)localObject1, new String[0]))
+    if (!com.tencent.mm.pluginsdk.model.app.ao.fmz().get((IAutoDBItem)localObject1, new String[0]))
     {
       Log.e("MicroMsg.WXAppMessageReceiver", "unregistered app, ignore request, appId = ".concat(String.valueOf(localObject2)));
       AppMethodBeat.o(34967);
@@ -235,19 +236,19 @@ public final class at
         }
         AppMethodBeat.o(34967);
         return;
-        localObject2 = this.Pli.getController();
+        localObject2 = this.WES.getController();
         localObject3 = paramBundle.description;
         t((com.tencent.mm.pluginsdk.model.app.g)localObject1);
-        if (o.a((t)localObject2, (String)localObject3, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1)) != null) {}
+        if (o.a((w)localObject2, (String)localObject3, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1)) != null) {}
         for (i = 1;; i = 0) {
           break;
         }
         if ((paramBundle.thumbData != null) && (paramBundle.thumbData.length > 0))
         {
-          localObject2 = this.Pli.getController();
+          localObject2 = this.WES.getController();
           localObject3 = paramBundle.thumbData;
           t((com.tencent.mm.pluginsdk.model.app.g)localObject1);
-          paramBundle = o.a((t)localObject2, (byte[])localObject3, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1));
+          paramBundle = o.a((w)localObject2, (byte[])localObject3, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1));
           if (paramBundle != null) {
             break label654;
           }
@@ -259,25 +260,25 @@ public final class at
           localObject2 = (WXImageObject)paramBundle.mediaObject;
           if ((((WXImageObject)localObject2).imageData != null) && (((WXImageObject)localObject2).imageData.length > 0))
           {
-            localObject3 = this.Pli.getController();
+            localObject3 = this.WES.getController();
             localObject2 = ((WXImageObject)localObject2).imageData;
             t((com.tencent.mm.pluginsdk.model.app.g)localObject1);
-            paramBundle = o.a((t)localObject3, (byte[])localObject2, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1));
+            paramBundle = o.a((w)localObject3, (byte[])localObject2, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1));
             break label526;
           }
-          localObject3 = this.Pli.getController();
+          localObject3 = this.WES.getController();
           localObject2 = ((WXImageObject)localObject2).imagePath;
           t((com.tencent.mm.pluginsdk.model.app.g)localObject1);
-          paramBundle = o.b((t)localObject3, (String)localObject2, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1));
+          paramBundle = o.b((w)localObject3, (String)localObject2, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1));
           break label526;
         }
         if ((paramBundle.thumbData != null) && (paramBundle.thumbData.length > 0))
         {
-          localObject2 = this.Pli.getController();
+          localObject2 = this.WES.getController();
           localObject3 = paramBundle.title;
           t((com.tencent.mm.pluginsdk.model.app.g)localObject1);
         }
-        for (paramBundle = o.a((t)localObject2, (String)localObject3, false, 2, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1));; paramBundle = o.a((t)localObject2, 2131689567, (String)localObject3, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1)))
+        for (paramBundle = o.a((w)localObject2, (String)localObject3, false, 2, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1));; paramBundle = o.a((w)localObject2, i, (String)localObject3, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1)))
         {
           i = j;
           if (paramBundle != null) {
@@ -285,17 +286,18 @@ public final class at
           }
           i = 0;
           break;
-          localObject2 = this.Pli.getController();
+          localObject2 = this.WES.getController();
+          i = R.k.app_attach_file_icon_music;
           localObject3 = paramBundle.title;
           t((com.tencent.mm.pluginsdk.model.app.g)localObject1);
         }
         if ((paramBundle.thumbData != null) && (paramBundle.thumbData.length > 0))
         {
-          localObject2 = this.Pli.getController();
+          localObject2 = this.WES.getController();
           localObject3 = paramBundle.title;
           t((com.tencent.mm.pluginsdk.model.app.g)localObject1);
         }
-        for (paramBundle = o.a((t)localObject2, (String)localObject3, false, 1, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1));; paramBundle = o.a((t)localObject2, 2131689584, (String)localObject3, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1)))
+        for (paramBundle = o.a((w)localObject2, (String)localObject3, false, 1, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1));; paramBundle = o.a((w)localObject2, i, (String)localObject3, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1)))
         {
           i = j;
           if (paramBundle != null) {
@@ -303,16 +305,17 @@ public final class at
           }
           i = 0;
           break;
-          localObject2 = this.Pli.getController();
+          localObject2 = this.WES.getController();
+          i = R.k.app_attach_file_icon_video;
           localObject3 = paramBundle.title;
           t((com.tencent.mm.pluginsdk.model.app.g)localObject1);
         }
-        localObject2 = this.Pli.getController();
+        localObject2 = this.WES.getController();
         localObject3 = paramBundle.title;
         localObject4 = paramBundle.description;
         t((com.tencent.mm.pluginsdk.model.app.g)localObject1);
         i = j;
-        if (o.a((t)localObject2, (String)localObject3, (String)localObject4, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1)) == null) {
+        if (o.a((w)localObject2, (String)localObject3, (String)localObject4, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1)) == null) {
           i = 0;
         }
       }
@@ -320,12 +323,12 @@ public final class at
       label526:
       if ((paramBundle.thumbData != null) && (paramBundle.thumbData.length > 0))
       {
-        localObject2 = this.Pli.getController();
+        localObject2 = this.WES.getController();
         localObject3 = paramBundle.title;
         t((com.tencent.mm.pluginsdk.model.app.g)localObject1);
       }
       label654:
-      for (paramBundle = o.a((t)localObject2, (String)localObject3, false, 0, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1));; paramBundle = o.a((t)localObject2, 2131689587, (String)localObject3, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1)))
+      for (paramBundle = o.a((w)localObject2, (String)localObject3, false, 0, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1));; paramBundle = o.a((w)localObject2, i, (String)localObject3, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1)))
       {
         i = j;
         if (paramBundle != null) {
@@ -333,18 +336,19 @@ public final class at
         }
         i = 0;
         break;
-        localObject2 = this.Pli.getController();
+        localObject2 = this.WES.getController();
+        i = R.k.app_attach_file_icon_webpage;
         localObject3 = paramBundle.title;
         t((com.tencent.mm.pluginsdk.model.app.g)localObject1);
       }
     }
     if ((paramBundle.thumbData != null) && (paramBundle.thumbData.length > 0))
     {
-      localObject2 = this.Pli.getController();
+      localObject2 = this.WES.getController();
       localObject3 = paramBundle.thumbData;
       t((com.tencent.mm.pluginsdk.model.app.g)localObject1);
     }
-    for (paramBundle = o.a((t)localObject2, (byte[])localObject3, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1));; paramBundle = o.a((t)localObject2, 2131689587, (String)localObject3, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1)))
+    for (paramBundle = o.a((w)localObject2, (byte[])localObject3, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1));; paramBundle = o.a((w)localObject2, i, (String)localObject3, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1)))
     {
       i = j;
       if (paramBundle != null) {
@@ -352,40 +356,41 @@ public final class at
       }
       i = 0;
       break;
-      localObject2 = this.Pli.getController();
+      localObject2 = this.WES.getController();
+      i = R.k.app_attach_file_icon_webpage;
       localObject3 = paramBundle.title;
       t((com.tencent.mm.pluginsdk.model.app.g)localObject1);
     }
   }
   
-  public final boolean nf(String paramString1, String paramString2)
+  public final boolean nY(String paramString1, String paramString2)
   {
     AppMethodBeat.i(34968);
     Log.d("MicroMsg.WXAppMessageReceiver", "request, pkg = " + paramString1 + ", openId = " + paramString2);
     GetMessageFromWX.Req localReq = new GetMessageFromWX.Req();
-    localReq.username = this.dom.getTalkerUserName();
+    localReq.username = this.fgR.getTalkerUserName();
     localReq.transaction = com.tencent.mm.b.g.getMessageDigest(Util.nowMilliSecond().getBytes());
     localReq.openId = paramString2;
-    localReq.lang = LocaleUtil.loadApplicationLanguage(this.Pli.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0), this.Pli.getContext());
-    bg.aVF();
-    localReq.country = ((String)c.azQ().get(274436, null));
+    localReq.lang = LocaleUtil.loadApplicationLanguage(this.WES.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0), this.WES.getContext());
+    bh.beI();
+    localReq.country = ((String)c.aHp().b(274436, null));
     paramString2 = new Bundle();
     localReq.toBundle(paramString2);
-    q.bo(paramString2);
-    q.bp(paramString2);
+    q.bm(paramString2);
+    q.bn(paramString2);
     MMessageActV2.Args localArgs = new MMessageActV2.Args();
     localArgs.targetPkgName = paramString1;
     localArgs.bundle = paramString2;
-    boolean bool = MMessageActV2.send(this.Pli.getContext(), localArgs);
-    this.Plj.add(localReq.transaction);
-    b(this.Pli.getContext(), this.Plj);
+    boolean bool = MMessageActV2.send(this.WES.getContext(), localArgs);
+    this.WET.add(localReq.transaction);
+    b(this.WES.getContext(), this.WET);
     AppMethodBeat.o(34968);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.at
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.os.CancellationSignal;
 import android.os.Handler;
 import android.os.Handler.Callback;
-import android.os.HandlerThread;
 import android.os.Message;
 import android.os.Parcel;
 import android.os.ParcelFileDescriptor;
@@ -14,8 +13,11 @@ import android.system.ErrnoException;
 import android.system.Os;
 import android.system.StructStat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.f.a.wl;
 import com.tencent.mm.pointers.PLong;
-import com.tencent.mm.protocal.protobuf.aai;
+import com.tencent.mm.protocal.protobuf.aan;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -41,27 +43,27 @@ public class CleanExpireFileSystem
   extends ExpireFileSystem
 {
   public static final Parcelable.Creator<CleanExpireFileSystem> CREATOR;
-  private final boolean RaW;
-  private final long RaX;
+  private final boolean YBm;
+  private final long YBn;
   
   static
   {
-    AppMethodBeat.i(197203);
+    AppMethodBeat.i(196936);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(197203);
+    AppMethodBeat.o(196936);
   }
   
   protected CleanExpireFileSystem(Parcel paramParcel)
   {
     super(paramParcel);
-    AppMethodBeat.i(197199);
-    this.RaX = 60000L;
-    aa.a(paramParcel, CleanExpireFileSystem.class, 2);
+    AppMethodBeat.i(196924);
+    this.YBn = 60000L;
+    ad.a(paramParcel, CleanExpireFileSystem.class, 2);
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.RaW = bool;
-      AppMethodBeat.o(197199);
+      this.YBm = bool;
+      AppMethodBeat.o(196924);
       return;
     }
   }
@@ -69,38 +71,38 @@ public class CleanExpireFileSystem
   public CleanExpireFileSystem(FileSystem paramFileSystem)
   {
     super(paramFileSystem, l1);
-    AppMethodBeat.i(197198);
-    this.RaX = 60000L;
-    this.RaW = true;
-    AppMethodBeat.o(197198);
+    AppMethodBeat.i(196922);
+    this.YBn = 60000L;
+    this.YBm = true;
+    AppMethodBeat.o(196922);
   }
   
-  public final FileSystem.b cj(Map<String, String> paramMap)
+  public final FileSystem.b cp(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(197200);
-    paramMap = new a(this.Rbo.cj(paramMap));
-    AppMethodBeat.o(197200);
+    AppMethodBeat.i(196927);
+    paramMap = new a(this.YBI.cp(paramMap));
+    AppMethodBeat.o(196927);
     return paramMap;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(197202);
-    String str = "CleanExpire [" + this.Rbo.toString() + "]";
-    AppMethodBeat.o(197202);
+    AppMethodBeat.i(196932);
+    String str = "CleanExpire [" + this.YBI.toString() + "]";
+    AppMethodBeat.o(196932);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(197201);
+    AppMethodBeat.i(196930);
     super.writeToParcel(paramParcel, paramInt);
-    aa.b(paramParcel, CleanExpireFileSystem.class, 2);
-    if (this.RaW) {}
+    ad.b(paramParcel, CleanExpireFileSystem.class, 2);
+    if (this.YBm) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      AppMethodBeat.o(197201);
+      AppMethodBeat.o(196930);
       return;
     }
   }
@@ -109,104 +111,113 @@ public class CleanExpireFileSystem
     extends ExpireFileSystem.a
     implements Handler.Callback
   {
-    private final Object RaY;
-    private HashMap<String, Long> RaZ;
-    private final Handler Rba;
+    private final Object YBo;
+    private HashMap<String, Long> YBp;
+    private final Handler YBq;
     
     public a(FileSystem.b paramb)
     {
       super(paramb);
-      AppMethodBeat.i(197187);
-      this.RaY = new Object();
+      AppMethodBeat.i(197694);
+      this.YBo = new Object();
       if (CleanExpireFileSystem.a(CleanExpireFileSystem.this))
       {
-        this.RaZ = new HashMap();
-        this.Rba = new Handler(g.hRR().Uvj.getLooper(), this);
-        AppMethodBeat.o(197187);
+        this.YBp = new HashMap();
+        this.YBq = new Handler(h.iWH().iWJ(), this);
+        AppMethodBeat.o(197694);
         return;
       }
-      this.RaZ = null;
-      this.Rba = null;
-      AppMethodBeat.o(197187);
+      this.YBp = null;
+      this.YBq = null;
+      AppMethodBeat.o(197694);
     }
     
     @TargetApi(21)
-    private static long c(e parame)
+    private static long a(f paramf)
     {
-      AppMethodBeat.i(197196);
+      AppMethodBeat.i(197734);
       Object localObject2 = null;
       Object localObject1 = localObject2;
-      if (parame != null) {
+      if (paramf != null) {
         localObject1 = localObject2;
       }
       try
       {
-        if (parame.RbK != null)
+        if (paramf.YCk != null)
         {
           localObject1 = localObject2;
-          if ((parame.RbK.hdQ() instanceof NativeFileSystem)) {
-            localObject1 = Os.stat(parame.RbK.dz(parame.NGP, false));
+          if ((paramf.YCk.ieX() instanceof NativeFileSystem)) {
+            localObject1 = Os.stat(paramf.YCk.dL(paramf.UUr, false));
           }
         }
         if (localObject1 == null)
         {
-          AppMethodBeat.o(197196);
+          AppMethodBeat.o(197734);
           return -1L;
         }
         long l = ((StructStat)localObject1).st_ctime;
-        AppMethodBeat.o(197196);
+        AppMethodBeat.o(197734);
         return l;
       }
-      catch (ErrnoException parame)
+      catch (ErrnoException paramf)
       {
-        AppMethodBeat.o(197196);
+        AppMethodBeat.o(197734);
       }
       return -1L;
     }
     
-    private void dA(String paramString, boolean paramBoolean)
+    private void dM(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(197188);
+      AppMethodBeat.i(197697);
       if (!CleanExpireFileSystem.a(CleanExpireFileSystem.this))
       {
-        AppMethodBeat.o(197188);
+        AppMethodBeat.o(197697);
         return;
       }
       if (paramBoolean) {
-        synchronized (this.RaY)
+        synchronized (this.YBo)
         {
-          this.RaZ.remove(paramString);
-          AppMethodBeat.o(197188);
+          this.YBp.remove(paramString);
+          AppMethodBeat.o(197697);
           return;
         }
       }
       long l = System.currentTimeMillis();
-      synchronized (this.RaY)
+      synchronized (this.YBo)
       {
-        paramBoolean = this.RaZ.isEmpty();
-        this.RaZ.put(paramString, Long.valueOf(l));
+        paramBoolean = this.YBp.isEmpty();
+        this.YBp.put(paramString, Long.valueOf(l));
         if (paramBoolean) {
-          this.Rba.sendMessageDelayed(Message.obtain(), 60000L);
+          this.YBq.sendMessageDelayed(Message.obtain(), 60000L);
         }
-        AppMethodBeat.o(197188);
+        AppMethodBeat.o(197697);
         return;
       }
     }
     
+    public final InputStream Tf(String paramString)
+    {
+      AppMethodBeat.i(197698);
+      InputStream localInputStream = this.YBJ.Tf(paramString);
+      dM(paramString, false);
+      AppMethodBeat.o(197698);
+      return localInputStream;
+    }
+    
     public final void a(CancellationSignal paramCancellationSignal)
     {
-      AppMethodBeat.i(197195);
-      CleanExpireFileSystem.this.l(1, new Object[0]);
+      AppMethodBeat.i(197731);
+      CleanExpireFileSystem.this.k(1, new Object[0]);
       Object localObject1;
       if (CleanExpireFileSystem.a(CleanExpireFileSystem.this))
       {
         localObject1 = null;
-        synchronized (this.RaY)
+        synchronized (this.YBo)
         {
-          if (!this.RaZ.isEmpty())
+          if (!this.YBp.isEmpty())
           {
-            localObject1 = this.RaZ;
-            this.RaZ = new HashMap();
+            localObject1 = this.YBp;
+            this.YBp = new HashMap();
           }
           if (localObject1 != null)
           {
@@ -215,7 +226,7 @@ public class CleanExpireFileSystem
             {
               ??? = (Map.Entry)((Iterator)localObject1).next();
               paramCancellationSignal.throwIfCanceled();
-              this.Rbp.ck((String)((Map.Entry)???).getKey(), ((Long)((Map.Entry)???).getValue()).longValue());
+              this.YBJ.ct((String)((Map.Entry)???).getKey(), ((Long)((Map.Entry)???).getValue()).longValue());
             }
           }
         }
@@ -228,8 +239,8 @@ public class CleanExpireFileSystem
       int m = -1;
       Object localObject6 = MultiProcessMMKV.getMMKV("CleanExpireFileSystem");
       long l1 = ((MultiProcessMMKV)localObject6).getLong("CleanExpireCurrentExpireTime", 0L);
-      long l4 = Util.getLong(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_clean_expire_default_expire_time", Long.toString(604800000L), false, true), 604800000L);
-      if ((l1 < 0L) || (l1 > l4))
+      long l4 = Util.getLong(com.tencent.mm.plugin.expt.h.d.dgX().a("clicfg_clean_expire_default_expire_time", Long.toString(604800000L), false, true), 604800000L);
+      if ((l1 < 43200000.0D) || (l1 > l4))
       {
         ((MultiProcessMMKV)localObject6).encode("CleanExpireCurrentExpireTime", l4);
         l1 = l4;
@@ -237,13 +248,13 @@ public class CleanExpireFileSystem
       for (;;)
       {
         long l6 = System.currentTimeMillis();
-        int n = am.gBD().getCount();
-        int i1 = Util.getInt(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_clean_expire_storage_min", "100", false, true), 100);
+        int n = am.hxO().getCount();
+        int i1 = Util.getInt(com.tencent.mm.plugin.expt.h.d.dgX().a("clicfg_clean_expire_storage_min", "100", false, true), 100);
         float f2;
         int j;
         if (n > i1)
         {
-          localObject1 = am.gBD();
+          localObject1 = am.hxO();
           ??? = String.format("SELECT SUM(IdCount) FROM (SELECT COUNT( %s ) AS IdCount FROM %s GROUP BY %s ) %s WHERE IdCount > 1", new Object[] { "id", "CleanDeleteItem", "id", "CleanDeleteItem" });
           Log.d("MicroMsg.CleanDeleteItemStorage", "calculateRepetitionCount:".concat(String.valueOf(???)));
           localObject1 = ((am)localObject1).db.rawQuery((String)???, null);
@@ -256,19 +267,19 @@ public class CleanExpireFileSystem
           for (;;)
           {
             f2 = i * 1000000.0F / n;
-            i = Util.getInt(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_clean_expire_repetition_ratio_list_size", "28", false, true), 28);
+            i = Util.getInt(com.tencent.mm.plugin.expt.h.d.dgX().a("clicfg_clean_expire_repetition_ratio_list_size", "28", false, true), 28);
             ??? = ((MultiProcessMMKV)localObject6).getString("CleanExpireRepetitionRatioList", "");
-            localObject1 = new aai();
+            localObject1 = new aan();
             if (!Util.isNullOrNil((String)???)) {}
             try
             {
-              ((aai)localObject1).parseFrom(((String)???).getBytes("ISO-8859-1"));
-              if (((aai)localObject1).Llw == null) {
-                ((aai)localObject1).Llw = new LinkedList();
+              ((aan)localObject1).parseFrom(((String)???).getBytes("ISO-8859-1"));
+              if (((aan)localObject1).SmG == null) {
+                ((aan)localObject1).SmG = new LinkedList();
               }
-              while (((aai)localObject1).Llw.size() > i)
+              while (((aan)localObject1).SmG.size() > i)
               {
-                ((aai)localObject1).Llw.removeFirst();
+                ((aan)localObject1).SmG.removeFirst();
                 continue;
                 if (((Cursor)localObject1).moveToFirst()) {
                   i = ((Cursor)localObject1).getInt(0);
@@ -283,8 +294,8 @@ public class CleanExpireFileSystem
               {
                 Log.e("VFS.CleanExpireFileSystem", "Parsing Failed: %s", new Object[] { localIOException1.getMessage() });
               }
-              ((aai)localObject1).Llw.add(Float.valueOf(f2));
-              j = ((aai)localObject1).Llw.size();
+              ((aan)localObject1).SmG.add(Float.valueOf(f2));
+              j = ((aan)localObject1).SmG.size();
             }
           }
         }
@@ -292,20 +303,20 @@ public class CleanExpireFileSystem
         {
           try
           {
-            ((MultiProcessMMKV)localObject6).encode("CleanExpireRepetitionRatioList", new String(((aai)localObject1).toByteArray(), kotlin.n.d.ISO_8859_1));
-            if (j >= Util.getInt(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_clean_expire_repetition_ratio_min_size", "7", false, true), 7))
+            ((MultiProcessMMKV)localObject6).encode("CleanExpireRepetitionRatioList", new String(((aan)localObject1).toByteArray(), kotlin.n.d.ISO_8859_1));
+            if (j >= Util.getInt(com.tencent.mm.plugin.expt.h.d.dgX().a("clicfg_clean_expire_repetition_ratio_min_size", "7", false, true), 7))
             {
-              m = Util.getInt(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_clean_expire_change_switch", "2", false, true), 2);
+              m = Util.getInt(com.tencent.mm.plugin.expt.h.d.dgX().a("clicfg_clean_expire_change_switch", "2", false, true), 2);
               if (m > 0)
               {
                 d2 = 0.0D;
                 if (m == 1)
                 {
-                  d2 = Util.getFloat(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_clean_expire_repetition_ratio_left_range", "0.009", false, true), 0.009F) * 1000000.0F;
-                  d1 = Util.getFloat(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_clean_expire_repetition_ratio_right_range", "0.011", false, true), 0.011F) * 1000000.0F;
-                  l2 = Util.getLong(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_clean_expire_time_change_threshold", Long.valueOf(259200000L).toString(), false, true), 259200000L);
-                  l3 = Util.getLong(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_clean_expire_time_change_step", Long.valueOf(86400000L).toString(), false, true), 86400000L);
-                  f1 = Util.getFloat(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_clean_expire_time_change_step_ratio", Float.valueOf(888888.88F).toString(), false, true), 888888.88F);
+                  d2 = Util.getFloat(com.tencent.mm.plugin.expt.h.d.dgX().a("clicfg_clean_expire_repetition_ratio_left_range", "0.009", false, true), 0.009F) * 1000000.0F;
+                  d1 = Util.getFloat(com.tencent.mm.plugin.expt.h.d.dgX().a("clicfg_clean_expire_repetition_ratio_right_range", "0.011", false, true), 0.011F) * 1000000.0F;
+                  l2 = Util.getLong(com.tencent.mm.plugin.expt.h.d.dgX().a("clicfg_clean_expire_time_change_threshold", Long.valueOf(259200000L).toString(), false, true), 259200000L);
+                  l3 = Util.getLong(com.tencent.mm.plugin.expt.h.d.dgX().a("clicfg_clean_expire_time_change_step", Long.valueOf(86400000L).toString(), false, true), 86400000L);
+                  f1 = Util.getFloat(com.tencent.mm.plugin.expt.h.d.dgX().a("clicfg_clean_expire_time_change_step_ratio", Float.valueOf(888888.88F).toString(), false, true), 888888.88F);
                   if (f2 <= d1) {
                     continue;
                   }
@@ -320,8 +331,8 @@ public class CleanExpireFileSystem
                   }
                   ((MultiProcessMMKV)localObject6).encode("CleanExpireCurrentExpireTime", l2);
                   k = i;
-                  am.gBD().a(l4, localPLong1, localPLong2);
-                  localObject1 = am.gBD();
+                  am.hxO().a(l4, localPLong1, localPLong2);
+                  localObject1 = am.hxO();
                   Object localObject3 = String.format("SELECT SUM(IdCount) FROM (SELECT COUNT( %s ) AS IdCount FROM %s WHERE %s >= %d GROUP BY %s ) %s WHERE IdCount > 1", new Object[] { "id", "CleanDeleteItem", "saveTime", Long.valueOf(l4), "id", "CleanDeleteItem" });
                   Log.d("MicroMsg.CleanDeleteItemStorage", "calculateDefaultRepetitionCount:".concat(String.valueOf(localObject3)));
                   localObject1 = ((am)localObject1).db.rawQuery((String)localObject3, null);
@@ -340,7 +351,8 @@ public class CleanExpireFileSystem
                   j = m;
                   l7 = System.currentTimeMillis();
                   l8 = System.currentTimeMillis();
-                  localObject1 = this.Rbp.dx("", true);
+                  Log.i("VFS.CleanExpireFileSystem", "newExpireTime:%s = %s h", new Object[] { Long.valueOf(l2), Long.valueOf(l2 / 1000L / 60L / 60L) });
+                  localObject1 = this.YBJ.dJ("", true);
                   if (localObject1 == null) {
                     continue;
                   }
@@ -350,35 +362,35 @@ public class CleanExpireFileSystem
                   if (!((Iterator)localObject1).hasNext()) {
                     continue;
                   }
-                  localObject3 = (e)((Iterator)localObject1).next();
+                  localObject3 = (f)((Iterator)localObject1).next();
                   paramCancellationSignal.throwIfCanceled();
-                  if ((((e)localObject3).RbJ) || (((e)localObject3).RbI > l8 - l2)) {
+                  if ((((f)localObject3).YCj) || (((f)localObject3).YCi > l8 - l2)) {
                     continue;
                   }
-                  long l9 = c((e)localObject3);
+                  long l9 = a((f)localObject3);
                   l4 = l3;
-                  if (((e)localObject3).hdW())
+                  if (((f)localObject3).cFq())
                   {
-                    if (((e)localObject3).RbH >= 0L) {
+                    if (((f)localObject3).YCh >= 0L) {
                       continue;
                     }
-                    l5 = ((e)localObject3).size;
+                    l5 = ((f)localObject3).size;
                     l3 += l5;
                     l4 = l3;
-                    if (!((e)localObject3).name.endsWith(".nomedia"))
+                    if (!((f)localObject3).name.endsWith(".nomedia"))
                     {
                       localObject6 = new al();
                       ((al)localObject6).field_createTime = l9;
                       if (((al)localObject6).field_createTime < 0L) {
-                        ((al)localObject6).field_createTime = ((e)localObject3).RbI;
+                        ((al)localObject6).field_createTime = ((f)localObject3).YCi;
                       }
-                      ((al)localObject6).field_modifyTime = ((e)localObject3).RbI;
+                      ((al)localObject6).field_modifyTime = ((f)localObject3).YCi;
                       ((al)localObject6).field_deleteTime = System.currentTimeMillis();
-                      ((al)localObject6).field_id = ((e)localObject3).name;
+                      ((al)localObject6).field_id = ((f)localObject3).name;
                       ((al)localObject6).field_saveTime = (((al)localObject6).field_deleteTime - ((al)localObject6).field_createTime);
                       ((al)localObject6).field_size = l5;
                       ((al)localObject6).field_flags = 0L;
-                      am.gBD().insert((IAutoDBItem)localObject6);
+                      am.hxO().insert((IAutoDBItem)localObject6);
                       l4 = l3;
                     }
                   }
@@ -399,24 +411,24 @@ public class CleanExpireFileSystem
             continue;
             if (m == 2)
             {
-              if (((aai)localObject1).Llw == null)
+              if (((aan)localObject1).SmG == null)
               {
                 Object localObject4 = ((MultiProcessMMKV)localObject6).getString("CleanExpireRepetitionRatioList", "");
-                localObject1 = new aai();
+                localObject1 = new aan();
                 if (!Util.isNullOrNil((String)localObject4)) {}
                 Object localObject5;
                 try
                 {
-                  ((aai)localObject1).parseFrom(((String)localObject4).getBytes("ISO-8859-1"));
-                  if (((aai)localObject1).Llw == null) {
-                    ((aai)localObject1).Llw = new LinkedList();
+                  ((aan)localObject1).parseFrom(((String)localObject4).getBytes("ISO-8859-1"));
+                  if (((aan)localObject1).SmG == null) {
+                    ((aan)localObject1).SmG = new LinkedList();
                   }
-                  i = ((aai)localObject1).Llw.size();
+                  i = ((aan)localObject1).SmG.size();
                   f1 = 0.0F;
                   if (i <= 0) {
                     continue;
                   }
-                  localObject7 = ((aai)localObject1).Llw.iterator();
+                  localObject7 = ((aan)localObject1).SmG.iterator();
                   localObject4 = Float.valueOf(0.0F);
                   if (((Iterator)localObject7).hasNext())
                   {
@@ -432,7 +444,7 @@ public class CleanExpireFileSystem
                   Log.e("VFS.CleanExpireFileSystem", "Parsing Failed: %s", new Object[] { localIOException3.getMessage() });
                   continue;
                   f1 = localIOException3.floatValue() / i;
-                  localObject5 = ((aai)localObject1).Llw.iterator();
+                  localObject5 = ((aan)localObject1).SmG.iterator();
                   localObject1 = Double.valueOf(0.0D);
                   if (((Iterator)localObject5).hasNext())
                   {
@@ -443,10 +455,10 @@ public class CleanExpireFileSystem
                   }
                   d1 = Math.sqrt(((Double)localObject1).doubleValue() / i);
                 }
-                i = Util.getInt(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_clean_expire_repetition_ratio_left_range_var_count", "1", false, true), 1);
-                k = Util.getInt(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_clean_expire_repetition_ratio_right_range_var_count", "2", false, true), 2);
-                float f3 = 1000000.0F * Util.getFloat(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_clean_expire_repetition_min", "-1", false, true), -1.0F);
-                float f4 = 1000000.0F * Util.getFloat(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_clean_expire_repetition_max", "-1", false, true), -1.0F);
+                i = Util.getInt(com.tencent.mm.plugin.expt.h.d.dgX().a("clicfg_clean_expire_repetition_ratio_left_range_var_count", "1", false, true), 1);
+                k = Util.getInt(com.tencent.mm.plugin.expt.h.d.dgX().a("clicfg_clean_expire_repetition_ratio_right_range_var_count", "2", false, true), 2);
+                float f3 = 1000000.0F * Util.getFloat(com.tencent.mm.plugin.expt.h.d.dgX().a("clicfg_clean_expire_repetition_min", "-1", false, true), -1.0F);
+                float f4 = 1000000.0F * Util.getFloat(com.tencent.mm.plugin.expt.h.d.dgX().a("clicfg_clean_expire_repetition_max", "-1", false, true), -1.0F);
                 d2 = f1;
                 double d3 = i * d1 + d2;
                 d2 = f1;
@@ -480,7 +492,7 @@ public class CleanExpireFileSystem
                           l3 = l1 - l3;
                           l2 = l3;
                           i = k;
-                          if (l3 >= 0L) {
+                          if (l3 >= 43200000.0D) {
                             continue;
                           }
                           l2 = l1;
@@ -499,14 +511,14 @@ public class CleanExpireFileSystem
                       ((Cursor)localObject1).close();
                       Log.i("MicroMsg.CleanDeleteItemStorage", "calculateDefaultRepetitionCount, threshold:%d, count:%d,", new Object[] { Long.valueOf(l4), Integer.valueOf(i) });
                       continue;
-                      l5 = ((e)localObject5).RbH;
+                      l5 = ((f)localObject5).YCh;
                       continue;
                       l4 = 0L;
                       l3 = System.currentTimeMillis();
-                      l5 = Util.getLong(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_clean_expire_storage_count", "50000", false, true), 20000L);
-                      if (am.gBD().getCount() > l5)
+                      l5 = Util.getLong(com.tencent.mm.plugin.expt.h.d.dgX().a("clicfg_clean_expire_storage_count", "50000", false, true), 20000L);
+                      if (am.hxO().getCount() > l5)
                       {
-                        localObject1 = am.gBD();
+                        localObject1 = am.hxO();
                         l8 = ((am)localObject1).getCount();
                         if (l8 <= l5) {
                           Log.i("MicroMsg.CleanDeleteItemStorage", "cleanDate don't need to clean");
@@ -516,8 +528,12 @@ public class CleanExpireFileSystem
                         Log.i("MicroMsg.CleanDeleteItemStorage", "cleanData result:%b, size:%d, originCount:%d, finalCount:%d", new Object[] { Boolean.valueOf(((am)localObject1).db.execSQL("CleanDeleteItem", (String)localObject5)), Long.valueOf(l5), Long.valueOf(l8), Integer.valueOf(((am)localObject1).getCount()) });
                       }
                       l5 = System.currentTimeMillis();
-                      CleanExpireFileSystem.this.l(3, new Object[] { "cleanStorageCount", Integer.valueOf(n), "cleanRepetitionRatio", Float.valueOf(f2), "cleanRepetitionRatioCount", Integer.valueOf(i), "cleanStorageRepetitionRatio", Float.valueOf(f1), "cleanStorageDeleteSize", Long.valueOf(localPLong1.value), "cleanStorageFreeSize", Long.valueOf(localPLong2.value), "deleteSize", Long.valueOf(l4), "cleanOriginExpireTime", Long.valueOf(l1), "cleanNewExpireTime", Long.valueOf(l2), "cleanExtraCostTime", Long.valueOf(l5 - l3 + (-1L + (l7 - l6))), "cleanTrend", Integer.valueOf(k), "changeSwitch", Integer.valueOf(j) });
-                      localObject1 = hdS().iterator();
+                      CleanExpireFileSystem.this.k(3, new Object[] { "cleanStorageCount", Integer.valueOf(n), "cleanRepetitionRatio", Float.valueOf(f2), "cleanRepetitionRatioCount", Integer.valueOf(i), "cleanStorageRepetitionRatio", Float.valueOf(f1), "cleanStorageDeleteSize", Long.valueOf(localPLong1.value), "cleanStorageFreeSize", Long.valueOf(localPLong2.value), "deleteSize", Long.valueOf(l4), "cleanOriginExpireTime", Long.valueOf(l1), "cleanNewExpireTime", Long.valueOf(l2), "cleanExtraCostTime", Long.valueOf(l5 - l3 + (-1L + (l7 - l6))), "cleanTrend", Integer.valueOf(k), "changeSwitch", Integer.valueOf(j) });
+                      localObject1 = new wl();
+                      ((wl)localObject1).fVD.fVE = (l2 / 60L / 1000L);
+                      ((wl)localObject1).fVD.fVF = paramCancellationSignal;
+                      EventCenter.instance.publish((IEvent)localObject1);
+                      localObject1 = ifa().iterator();
                       if (((Iterator)localObject1).hasNext())
                       {
                         localObject5 = (FileSystem.b)((Iterator)localObject1).next();
@@ -525,7 +541,7 @@ public class CleanExpireFileSystem
                         ((FileSystem.b)localObject5).a(paramCancellationSignal);
                         continue;
                       }
-                      AppMethodBeat.o(197195);
+                      AppMethodBeat.o(197731);
                       return;
                       f1 = -1.0F;
                       i = j;
@@ -559,54 +575,54 @@ public class CleanExpireFileSystem
       }
     }
     
-    public final ReadableByteChannel boI(String paramString)
+    public final ReadableByteChannel bBy(String paramString)
     {
-      AppMethodBeat.i(197190);
-      ReadableByteChannel localReadableByteChannel = this.Rbp.boI(paramString);
-      dA(paramString, false);
-      AppMethodBeat.o(197190);
+      AppMethodBeat.i(197699);
+      ReadableByteChannel localReadableByteChannel = this.YBJ.bBy(paramString);
+      dM(paramString, false);
+      AppMethodBeat.o(197699);
       return localReadableByteChannel;
     }
     
-    public final ByteChannel boJ(String paramString)
+    public final ByteChannel bBz(String paramString)
     {
-      AppMethodBeat.i(197193);
-      ByteChannel localByteChannel = this.Rbp.boJ(paramString);
-      dA(paramString, true);
-      AppMethodBeat.o(197193);
+      AppMethodBeat.i(197703);
+      ByteChannel localByteChannel = this.YBJ.bBz(paramString);
+      dM(paramString, true);
+      AppMethodBeat.o(197703);
       return localByteChannel;
     }
     
-    public final WritableByteChannel dv(String paramString, boolean paramBoolean)
+    public final WritableByteChannel dH(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(197192);
-      WritableByteChannel localWritableByteChannel = this.Rbp.dv(paramString, paramBoolean);
-      dA(paramString, true);
-      AppMethodBeat.o(197192);
+      AppMethodBeat.i(197702);
+      WritableByteChannel localWritableByteChannel = this.YBJ.dH(paramString, paramBoolean);
+      dM(paramString, true);
+      AppMethodBeat.o(197702);
       return localWritableByteChannel;
     }
     
-    public final OutputStream dw(String paramString, boolean paramBoolean)
+    public final OutputStream dI(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(197191);
-      OutputStream localOutputStream = this.Rbp.dw(paramString, paramBoolean);
-      dA(paramString, true);
-      AppMethodBeat.o(197191);
+      AppMethodBeat.i(197700);
+      OutputStream localOutputStream = this.YBJ.dI(paramString, paramBoolean);
+      dM(paramString, true);
+      AppMethodBeat.o(197700);
       return localOutputStream;
     }
     
     public final boolean handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(197197);
+      AppMethodBeat.i(197735);
       for (;;)
       {
-        synchronized (this.RaY)
+        synchronized (this.YBo)
         {
-          if (this.RaZ.isEmpty()) {
+          if (this.YBp.isEmpty()) {
             break label153;
           }
-          paramMessage = this.RaZ;
-          this.RaZ = new HashMap();
+          paramMessage = this.YBp;
+          this.YBp = new HashMap();
           if (paramMessage == null) {
             break label145;
           }
@@ -614,40 +630,31 @@ public class CleanExpireFileSystem
           if (((Iterator)???).hasNext())
           {
             Map.Entry localEntry = (Map.Entry)((Iterator)???).next();
-            this.Rbp.ck((String)localEntry.getKey(), ((Long)localEntry.getValue()).longValue());
+            this.YBJ.ct((String)localEntry.getKey(), ((Long)localEntry.getValue()).longValue());
           }
         }
         Log.d("VFS.CleanExpireFileSystem", "Flush access time cache entries: " + paramMessage.size());
         label145:
-        AppMethodBeat.o(197197);
+        AppMethodBeat.o(197735);
         return true;
         label153:
         paramMessage = null;
       }
     }
     
-    public final ParcelFileDescriptor nr(String paramString1, String paramString2)
+    public final ParcelFileDescriptor oh(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(197194);
-      ParcelFileDescriptor localParcelFileDescriptor = this.Rbp.nr(paramString1, paramString2);
-      dA(paramString1, paramString2.contains("w"));
-      AppMethodBeat.o(197194);
+      AppMethodBeat.i(197704);
+      ParcelFileDescriptor localParcelFileDescriptor = this.YBJ.oh(paramString1, paramString2);
+      dM(paramString1, paramString2.contains("w"));
+      AppMethodBeat.o(197704);
       return localParcelFileDescriptor;
-    }
-    
-    public final InputStream openRead(String paramString)
-    {
-      AppMethodBeat.i(197189);
-      InputStream localInputStream = this.Rbp.openRead(paramString);
-      dA(paramString, false);
-      AppMethodBeat.o(197189);
-      return localInputStream;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vfs.CleanExpireFileSystem
  * JD-Core Version:    0.7.0.1
  */

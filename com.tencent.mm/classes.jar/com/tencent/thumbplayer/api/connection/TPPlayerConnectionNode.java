@@ -10,16 +10,16 @@ public class TPPlayerConnectionNode
   
   public TPPlayerConnectionNode()
   {
-    AppMethodBeat.i(189081);
+    AppMethodBeat.i(219975);
     this.nativeNode = new TPNativePlayerConnectionNode();
-    AppMethodBeat.o(189081);
+    AppMethodBeat.o(219975);
   }
   
   public boolean addAction(@TPPlayerConnectionConstant.Action int paramInt)
   {
-    AppMethodBeat.i(189082);
-    boolean bool = this.nativeNode.addAction(b.arj(paramInt));
-    AppMethodBeat.o(189082);
+    AppMethodBeat.i(219976);
+    boolean bool = this.nativeNode.addAction(b.aAW(paramInt));
+    AppMethodBeat.o(219976);
     return bool;
   }
   
@@ -30,22 +30,22 @@ public class TPPlayerConnectionNode
   
   public void removeAction(@TPPlayerConnectionConstant.Action int paramInt)
   {
-    AppMethodBeat.i(189083);
-    this.nativeNode.removeAction(b.arj(paramInt));
-    AppMethodBeat.o(189083);
+    AppMethodBeat.i(219977);
+    this.nativeNode.removeAction(b.aAW(paramInt));
+    AppMethodBeat.o(219977);
   }
   
   public boolean setLongActionConfig(@TPPlayerConnectionConstant.Action int paramInt1, int paramInt2, long paramLong)
   {
-    AppMethodBeat.i(189084);
-    boolean bool = this.nativeNode.setLongActionConfig(b.arj(paramInt1), b.ark(paramInt2), paramLong);
-    AppMethodBeat.o(189084);
+    AppMethodBeat.i(219979);
+    boolean bool = this.nativeNode.setLongActionConfig(b.aAW(paramInt1), b.aAX(paramInt2), paramLong);
+    AppMethodBeat.o(219979);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.api.connection.TPPlayerConnectionNode
  * JD-Core Version:    0.7.0.1
  */

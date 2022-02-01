@@ -1,13 +1,16 @@
 package com.tencent.mm.plugin.wallet_core.id_verify;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.q;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.wallet.e;
-import com.tencent.mm.protocal.protobuf.zf;
+import com.tencent.mm.protocal.protobuf.zj;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.h;
@@ -18,11 +21,11 @@ import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 public class WalletRealNameProcessProxyUI
   extends WalletBaseUI
 {
-  private d.a HKI;
+  private d.a OCD;
   private String scene;
   private String sessionId;
   
-  private void aJ(Bundle paramBundle)
+  private void aF(Bundle paramBundle)
   {
     AppMethodBeat.i(70044);
     Log.i("MicroMsg.WalletRealNameProcessProxyUI", "goRealNameUI");
@@ -37,8 +40,18 @@ public class WalletRealNameProcessProxyUI
     localBundle.putString("realname_verify_process_jump_plugin", "wallet_core");
     localBundle.putString("realname_verify_process_jump_activity", ".id_verify.WalletRealNameProcessProxyUI");
     localBundle.putBoolean("process_finish_stay_orgpage", false);
-    this.HKI = new WalletRealNameProcessProxyUI.1(this);
-    com.tencent.mm.wallet_core.a.a(this, a.class, localBundle, this.HKI);
+    this.OCD = new d.a()
+    {
+      public final Intent s(int paramAnonymousInt, Bundle paramAnonymousBundle)
+      {
+        AppMethodBeat.i(70040);
+        Log.i("MicroMsg.WalletRealNameProcessProxyUI", "realname end: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        paramAnonymousBundle = new Intent();
+        AppMethodBeat.o(70040);
+        return paramAnonymousBundle;
+      }
+    };
+    com.tencent.mm.wallet_core.a.a(this, a.class, localBundle, this.OCD);
     AppMethodBeat.o(70044);
   }
   
@@ -72,9 +85,18 @@ public class WalletRealNameProcessProxyUI
         {
           paramBundle = "";
           if (Util.isNullOrNil("")) {
-            paramBundle = getString(2131768354);
+            paramBundle = getString(a.i.wallet_unknown_err);
           }
-          h.a(this, paramBundle, null, false, new WalletRealNameProcessProxyUI.2(this));
+          h.a(this, paramBundle, null, false, new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(70041);
+              WalletRealNameProcessProxyUI.this.setResult(1);
+              WalletRealNameProcessProxyUI.this.finish();
+              AppMethodBeat.o(70041);
+            }
+          });
           AppMethodBeat.o(70042);
           return;
         }
@@ -93,7 +115,7 @@ public class WalletRealNameProcessProxyUI
         AppMethodBeat.o(70042);
         return;
       }
-      aJ(paramBundle);
+      aF(paramBundle);
       AppMethodBeat.o(70042);
       return;
     }
@@ -145,10 +167,10 @@ public class WalletRealNameProcessProxyUI
       Log.e("MicroMsg.WalletRealNameProcessProxyUI", "NetSceneCheckPayJsapi resp,errType = " + paramInt1 + ",errCode=" + paramInt2);
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        e.bfP(((com.tencent.mm.plugin.wallet_core.c.d)paramq).fPP());
-        this.sessionId = ((zf)((com.tencent.mm.plugin.wallet_core.c.d)paramq).rr.iLL.iLR).session_id;
-        this.scene = ((zf)((com.tencent.mm.plugin.wallet_core.c.d)paramq).rr.iLL.iLR).scene;
-        aJ(getInput());
+        e.bsi(((com.tencent.mm.plugin.wallet_core.c.d)paramq).gIv());
+        this.sessionId = ((zj)d.c.b(((com.tencent.mm.plugin.wallet_core.c.d)paramq).rr.lBS)).session_id;
+        this.scene = ((zj)d.c.b(((com.tencent.mm.plugin.wallet_core.c.d)paramq).rr.lBS)).scene;
+        aF(getInput());
         AppMethodBeat.o(70045);
         return true;
       }
@@ -165,7 +187,7 @@ public class WalletRealNameProcessProxyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.WalletRealNameProcessProxyUI
  * JD-Core Version:    0.7.0.1
  */

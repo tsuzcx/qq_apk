@@ -6,9 +6,9 @@ public abstract interface a
   
   public abstract void b(c paramc);
   
-  public abstract void sU();
+  public abstract void qI();
   
-  public abstract void sV();
+  public abstract void qJ();
 }
 
 

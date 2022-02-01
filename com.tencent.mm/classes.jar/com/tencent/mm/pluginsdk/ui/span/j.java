@@ -4,10 +4,10 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bp;
+import com.tencent.mm.model.bq;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.comm.a.b;
 import com.tencent.mm.pluginsdk.ui.applet.u;
@@ -19,8 +19,8 @@ import java.util.LinkedList;
 
 public class j
 {
-  private int HQW = 500;
-  private long HQX = 0L;
+  private int OJe = 500;
+  private long OJf = 0L;
   Context mContext;
   String mSessionId;
   
@@ -28,13 +28,13 @@ public class j
   {
     int j = 0;
     AppMethodBeat.i(152273);
-    if (System.currentTimeMillis() - this.HQX <= this.HQW)
+    if (System.currentTimeMillis() - this.OJf <= this.OJe)
     {
       Log.e("MicroMsg.MMSpanClickListener", "process pass");
       AppMethodBeat.o(152273);
       return;
     }
-    this.HQX = System.currentTimeMillis();
+    this.OJf = System.currentTimeMillis();
     if (paramu == null)
     {
       Log.e("MicroMsg.MMSpanClickListener", "onClick error, hrefInfo is null!");
@@ -50,65 +50,65 @@ public class j
     }
     int i;
     i locali;
-    if ((l.Krd != null) && (l.Krd.size() > 0))
+    if ((l.Rsk != null) && (l.Rsk.size() > 0))
     {
-      i = l.Krd.size();
-      locali = (i)l.Krd.getLast();
+      i = l.Rsk.size();
+      locali = (i)l.Rsk.getLast();
       Log.d("MicroMsg.MMSpanClickListener", "spanCallbackList.size:%d, get the last callback", new Object[] { Integer.valueOf(i) });
     }
     for (;;)
     {
       if ((paramView != null) && ((paramView.getTag() instanceof c)))
       {
-        ca localca = ((c)paramView.getTag()).dTX;
+        ca localca = ((c)paramView.getTag()).fNz;
         if (localca != null)
         {
           String str = localca.field_talker;
           localObject = str;
-          if (ab.Iw(str)) {
-            localObject = bp.Ks(localca.field_content);
+          if (ab.PO(str)) {
+            localObject = bq.RL(localca.field_content);
           }
           paramu.username = ((String)localObject);
           if ((paramView == null) || (!(paramView.getTag() instanceof c))) {
             break label589;
           }
-          localObject = ((c)paramView.getTag()).dTX;
-          if ((localObject == null) || (((eo)localObject).field_isSend != 1)) {
+          localObject = ((c)paramView.getTag()).fNz;
+          if ((localObject == null) || (((et)localObject).field_isSend != 1)) {
             break label589;
           }
-          localObject = z.aTY();
+          localObject = z.bcZ();
           label265:
-          paramu.tOw = ((String)localObject);
+          paramu.xyW = ((String)localObject);
           if ((paramView == null) || (!(paramView.getTag() instanceof c))) {
             break label595;
           }
-          localObject = ((c)paramView.getTag()).dTX;
+          localObject = ((c)paramView.getTag()).fNz;
           if (localObject == null) {
             break label595;
           }
-          localObject = ((eo)localObject).field_content;
+          localObject = ((et)localObject).field_content;
           label309:
-          paramu.tXF = localObject;
+          paramu.xJA = localObject;
           if ((paramView == null) || (!(paramView.getTag() instanceof c))) {
             break label601;
           }
-          localObject = ((c)paramView.getTag()).dTX;
+          localObject = ((c)paramView.getTag()).fNz;
           if (localObject == null) {
             break label601;
           }
-          localObject = ((eo)localObject).field_talker;
+          localObject = ((et)localObject).field_talker;
           label353:
           paramu.chatroomName = ((String)localObject);
           if ((paramView == null) || (!(paramView.getTag() instanceof c))) {
             break label607;
           }
-          localObject = ((c)paramView.getTag()).dTX;
+          localObject = ((c)paramView.getTag()).fNz;
           if ((localObject == null) || (((ca)localObject).getType() != 10000)) {
             break label607;
           }
-          i = ((eo)localObject).fRg;
+          i = ((et)localObject).ilw;
           label407:
-          paramu.fRg = i;
+          paramu.ilw = i;
           if ((paramView == null) || (!(paramView.getTag() instanceof c))) {
             break label612;
           }
@@ -119,9 +119,9 @@ public class j
       label601:
       label607:
       label612:
-      for (Object localObject = ((c)paramView.getTag()).dTX;; localObject = null)
+      for (Object localObject = ((c)paramView.getTag()).fNz;; localObject = null)
       {
-        paramu.dTX = ((ca)localObject);
+        paramu.fNz = ((ca)localObject);
         i = j;
         if (paramView != null)
         {
@@ -136,9 +136,9 @@ public class j
         if (!TextUtils.isEmpty(this.mSessionId)) {
           paramu.mSessionId = this.mSessionId;
         }
-        d.a.KqD.a(this.mContext, paramView, paramu, locali);
+        d.a.RrK.a(this.mContext, paramView, paramu, locali);
         if ((paramView != null) && ((paramView.getTag() instanceof c))) {
-          ((b)g.af(b.class)).akR(paramu.username);
+          ((b)h.ae(b.class)).asK(paramu.username);
         }
         paramu.mSessionId = null;
         AppMethodBeat.o(152273);

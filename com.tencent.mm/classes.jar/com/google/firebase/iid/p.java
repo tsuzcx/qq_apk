@@ -3,8 +3,6 @@ package com.google.firebase.iid;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.support.v4.content.b;
-import android.support.v4.e.a;
 import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
@@ -15,10 +13,10 @@ import java.util.Set;
 
 final class p
 {
-  private final SharedPreferences bLQ;
-  private final af bLR;
-  private final Map<String, ag> bLS;
-  private final Context bLv;
+  private final Context bJa;
+  private final SharedPreferences bJv;
+  private final af bJw;
+  private final Map<String, ag> bJx;
   
   public p(Context paramContext)
   {
@@ -30,18 +28,18 @@ final class p
   private p(Context paramContext, af paramaf)
   {
     AppMethodBeat.i(4186);
-    this.bLS = new a();
-    this.bLv = paramContext;
-    this.bLQ = paramContext.getSharedPreferences("com.google.android.gms.appid", 0);
-    this.bLR = paramaf;
-    paramContext = new File(b.U(this.bLv), "com.google.android.gms.appid-no-backup");
+    this.bJx = new androidx.b.a();
+    this.bJa = paramContext;
+    this.bJv = paramContext.getSharedPreferences("com.google.android.gms.appid", 0);
+    this.bJw = paramaf;
+    paramContext = new File(androidx.core.content.a.R(this.bJa), "com.google.android.gms.appid-no-backup");
     if (!paramContext.exists()) {
       try
       {
         if ((paramContext.createNewFile()) && (!isEmpty()))
         {
           zzag();
-          FirebaseInstanceId.yc().yh();
+          FirebaseInstanceId.yw().yB();
         }
         AppMethodBeat.o(4186);
         return;
@@ -77,7 +75,7 @@ final class p
     try
     {
       AppMethodBeat.i(4189);
-      boolean bool = this.bLQ.getAll().isEmpty();
+      boolean bool = this.bJv.getAll().isEmpty();
       AppMethodBeat.o(4189);
       return bool;
     }
@@ -88,7 +86,7 @@ final class p
     }
   }
   
-  static String o(String paramString1, String paramString2)
+  static String t(String paramString1, String paramString2)
   {
     AppMethodBeat.i(4191);
     paramString1 = String.valueOf(paramString1).length() + 3 + String.valueOf(paramString2).length() + paramString1 + "|S|" + paramString2;
@@ -106,8 +104,8 @@ final class p
     //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload 4
     //   10: aload 5
-    //   12: invokestatic 157	java/lang/System:currentTimeMillis	()J
-    //   15: invokestatic 162	com/google/firebase/iid/q:b	(Ljava/lang/String;Ljava/lang/String;J)Ljava/lang/String;
+    //   12: invokestatic 158	java/lang/System:currentTimeMillis	()J
+    //   15: invokestatic 163	com/google/firebase/iid/q:b	(Ljava/lang/String;Ljava/lang/String;J)Ljava/lang/String;
     //   18: astore 4
     //   20: aload 4
     //   22: ifnonnull +12 -> 34
@@ -117,19 +115,19 @@ final class p
     //   32: monitorexit
     //   33: return
     //   34: aload_0
-    //   35: getfield 53	com/google/firebase/iid/p:bLQ	Landroid/content/SharedPreferences;
-    //   38: invokeinterface 166 1 0
+    //   35: getfield 53	com/google/firebase/iid/p:bJv	Landroid/content/SharedPreferences;
+    //   38: invokeinterface 167 1 0
     //   43: astore 5
     //   45: aload 5
     //   47: aload_1
     //   48: aload_2
     //   49: aload_3
-    //   50: invokestatic 168	com/google/firebase/iid/p:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   50: invokestatic 169	com/google/firebase/iid/p:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   53: aload 4
-    //   55: invokeinterface 174 3 0
+    //   55: invokeinterface 175 3 0
     //   60: pop
     //   61: aload 5
-    //   63: invokeinterface 177 1 0
+    //   63: invokeinterface 178 1 0
     //   68: pop
     //   69: sipush 4194
     //   72: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -154,8 +152,24 @@ final class p
     //   34	75	78	finally
   }
   
+  public final q c(String paramString1, String paramString2, String paramString3)
+  {
+    try
+    {
+      AppMethodBeat.i(4193);
+      paramString1 = q.cd(this.bJv.getString(b(paramString1, paramString2, paramString3), null));
+      AppMethodBeat.o(4193);
+      return paramString1;
+    }
+    finally
+    {
+      paramString1 = finally;
+      throw paramString1;
+    }
+  }
+  
   /* Error */
-  public final ag bP(String paramString)
+  public final ag cb(String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -163,10 +177,10 @@ final class p
     //   2: sipush 4195
     //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 41	com/google/firebase/iid/p:bLS	Ljava/util/Map;
+    //   9: getfield 41	com/google/firebase/iid/p:bJx	Ljava/util/Map;
     //   12: aload_1
-    //   13: invokeinterface 185 2 0
-    //   18: checkcast 187	com/google/firebase/iid/ag
+    //   13: invokeinterface 195 2 0
+    //   18: checkcast 197	com/google/firebase/iid/ag
     //   21: astore_2
     //   22: aload_2
     //   23: ifnull +13 -> 36
@@ -177,19 +191,19 @@ final class p
     //   34: aload_2
     //   35: areturn
     //   36: aload_0
-    //   37: getfield 43	com/google/firebase/iid/p:bLv	Landroid/content/Context;
+    //   37: getfield 43	com/google/firebase/iid/p:bJa	Landroid/content/Context;
     //   40: astore_3
     //   41: aload_3
     //   42: aload_1
-    //   43: invokestatic 191	com/google/firebase/iid/af:k	(Landroid/content/Context;Ljava/lang/String;)Lcom/google/firebase/iid/ag;
+    //   43: invokestatic 201	com/google/firebase/iid/af:l	(Landroid/content/Context;Ljava/lang/String;)Lcom/google/firebase/iid/ag;
     //   46: astore_2
     //   47: aload_2
     //   48: ifnull +29 -> 77
     //   51: aload_0
-    //   52: getfield 41	com/google/firebase/iid/p:bLS	Ljava/util/Map;
+    //   52: getfield 41	com/google/firebase/iid/p:bJx	Ljava/util/Map;
     //   55: aload_1
     //   56: aload_2
-    //   57: invokeinterface 195 3 0
+    //   57: invokeinterface 205 3 0
     //   62: pop
     //   63: sipush 4195
     //   66: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -201,16 +215,16 @@ final class p
     //   76: athrow
     //   77: aload_3
     //   78: aload_1
-    //   79: invokestatic 198	com/google/firebase/iid/af:j	(Landroid/content/Context;Ljava/lang/String;)Lcom/google/firebase/iid/ag;
+    //   79: invokestatic 208	com/google/firebase/iid/af:k	(Landroid/content/Context;Ljava/lang/String;)Lcom/google/firebase/iid/ag;
     //   82: astore_2
     //   83: goto -32 -> 51
     //   86: astore_2
-    //   87: invokestatic 87	com/google/firebase/iid/FirebaseInstanceId:yc	()Lcom/google/firebase/iid/FirebaseInstanceId;
-    //   90: invokevirtual 90	com/google/firebase/iid/FirebaseInstanceId:yh	()V
+    //   87: invokestatic 87	com/google/firebase/iid/FirebaseInstanceId:yw	()Lcom/google/firebase/iid/FirebaseInstanceId;
+    //   90: invokevirtual 90	com/google/firebase/iid/FirebaseInstanceId:yB	()V
     //   93: aload_0
-    //   94: getfield 43	com/google/firebase/iid/p:bLv	Landroid/content/Context;
+    //   94: getfield 43	com/google/firebase/iid/p:bJa	Landroid/content/Context;
     //   97: aload_1
-    //   98: invokestatic 198	com/google/firebase/iid/af:j	(Landroid/content/Context;Ljava/lang/String;)Lcom/google/firebase/iid/ag;
+    //   98: invokestatic 208	com/google/firebase/iid/af:k	(Landroid/content/Context;Ljava/lang/String;)Lcom/google/firebase/iid/ag;
     //   101: astore_2
     //   102: goto -51 -> 51
     // Local variable table:
@@ -233,14 +247,14 @@ final class p
     //   77	83	86	com/google/firebase/iid/ah
   }
   
-  public final void bQ(String paramString)
+  public final void cc(String paramString)
   {
     try
     {
       AppMethodBeat.i(4196);
       paramString = String.valueOf(paramString).concat("|T|");
-      SharedPreferences.Editor localEditor = this.bLQ.edit();
-      Iterator localIterator = this.bLQ.getAll().keySet().iterator();
+      SharedPreferences.Editor localEditor = this.bJv.edit();
+      Iterator localIterator = this.bJv.getAll().keySet().iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
@@ -254,24 +268,8 @@ final class p
     AppMethodBeat.o(4196);
   }
   
-  public final q c(String paramString1, String paramString2, String paramString3)
-  {
-    try
-    {
-      AppMethodBeat.i(4193);
-      paramString1 = q.bR(this.bLQ.getString(b(paramString1, paramString2, paramString3), null));
-      AppMethodBeat.o(4193);
-      return paramString1;
-    }
-    finally
-    {
-      paramString1 = finally;
-      throw paramString1;
-    }
-  }
-  
   /* Error */
-  public final String ys()
+  public final String yM()
   {
     // Byte code:
     //   0: aconst_null
@@ -281,16 +279,16 @@ final class p
     //   4: sipush 4187
     //   7: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   10: aload_0
-    //   11: getfield 53	com/google/firebase/iid/p:bLQ	Landroid/content/SharedPreferences;
-    //   14: ldc 238
+    //   11: getfield 53	com/google/firebase/iid/p:bJv	Landroid/content/SharedPreferences;
+    //   14: ldc 239
     //   16: aconst_null
-    //   17: invokeinterface 231 3 0
+    //   17: invokeinterface 183 3 0
     //   22: astore_2
     //   23: aload_2
     //   24: ifnull +39 -> 63
     //   27: aload_2
-    //   28: ldc 240
-    //   30: invokevirtual 244	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   28: ldc 241
+    //   30: invokevirtual 245	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   33: astore_2
     //   34: aload_2
     //   35: arraylength
@@ -299,7 +297,7 @@ final class p
     //   40: aload_2
     //   41: iconst_1
     //   42: aaload
-    //   43: invokestatic 249	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   43: invokestatic 250	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   46: ifne +17 -> 63
     //   49: aload_2
     //   50: iconst_1
@@ -341,8 +339,8 @@ final class p
       try
       {
         AppMethodBeat.i(4192);
-        this.bLS.clear();
-        File[] arrayOfFile = af.ar(this.bLv).listFiles();
+        this.bJx.clear();
+        File[] arrayOfFile = af.an(this.bJa).listFiles();
         int j = arrayOfFile.length;
         i = 0;
         if (i < j)
@@ -354,7 +352,7 @@ final class p
         }
         else
         {
-          this.bLQ.edit().clear().commit();
+          this.bJv.edit().clear().commit();
           AppMethodBeat.o(4192);
           return;
         }
@@ -371,7 +369,7 @@ final class p
       try
       {
         AppMethodBeat.i(4188);
-        String str2 = this.bLQ.getString("topic_operaion_queue", "");
+        String str2 = this.bJv.getString("topic_operaion_queue", "");
         String str1 = String.valueOf(",");
         String str3 = String.valueOf(paramString);
         if (str3.length() != 0)
@@ -386,7 +384,7 @@ final class p
           {
             paramString = str1.concat(paramString);
             paramString = str2.substring(paramString.length());
-            this.bLQ.edit().putString("topic_operaion_queue", paramString).apply();
+            this.bJv.edit().putString("topic_operaion_queue", paramString).apply();
             bool = true;
             AppMethodBeat.o(4188);
             return bool;
@@ -409,7 +407,7 @@ final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.p
  * JD-Core Version:    0.7.0.1
  */

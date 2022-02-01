@@ -18,22 +18,22 @@ public class b
   
   public b(Context paramContext)
   {
-    AppMethodBeat.i(222935);
+    AppMethodBeat.i(254579);
     this.c = null;
     this.d = "";
     this.b = paramContext;
     this.c = new ArrayList();
-    AppMethodBeat.o(222935);
+    AppMethodBeat.o(254579);
   }
   
   public static b a(Context paramContext)
   {
-    AppMethodBeat.i(222936);
+    AppMethodBeat.i(254581);
     if (a == null) {
       a = new b(paramContext);
     }
     paramContext = a;
-    AppMethodBeat.o(222936);
+    AppMethodBeat.o(254581);
     return paramContext;
   }
   
@@ -42,7 +42,7 @@ public class b
   {
     try
     {
-      AppMethodBeat.i(222938);
+      AppMethodBeat.i(254584);
       l.a(this.b);
       Object localObject1 = this.c;
       Object localObject6;
@@ -114,7 +114,7 @@ public class b
           localObject3 = e.a(this.b);
           localObject6 = new StringBuilder();
           ((e)localObject3).a("CPL", "suc:" + q.d);
-          AppMethodBeat.o(222938);
+          AppMethodBeat.o(254584);
           localObject3 = localObject5;
           return localObject3;
         }
@@ -159,7 +159,7 @@ public class b
         localObject3 = e.a(this.b);
         localObject7 = new StringBuilder();
         ((e)localObject3).a("CPL", "suc:c" + q.d);
-        AppMethodBeat.o(222938);
+        AppMethodBeat.o(254584);
         localObject3 = localDexClassLoader;
       }
       catch (Throwable localThrowable1)
@@ -168,16 +168,16 @@ public class b
         break label622;
       }
       j.a("try once failed", (Throwable)localObject5);
-      AppMethodBeat.o(222938);
+      AppMethodBeat.o(254584);
       continue;
-      AppMethodBeat.o(222938);
+      AppMethodBeat.o(254584);
       Object localObject3 = null;
     }
   }
   
   public DexClassLoader a(List<a> paramList, String paramString)
   {
-    AppMethodBeat.i(222937);
+    AppMethodBeat.i(254583);
     this.c = paramList;
     this.d = paramString;
     int i = 0;
@@ -204,7 +204,7 @@ public class b
           if (paramList != null)
           {
             l.f(this.b);
-            AppMethodBeat.o(222937);
+            AppMethodBeat.o(254583);
             return paramList;
           }
           i = j;
@@ -220,13 +220,13 @@ public class b
     paramString = paramList;
     label126:
     l.f(this.b);
-    AppMethodBeat.o(222937);
+    AppMethodBeat.o(254583);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     c.t.m.sapp.c.b
  * JD-Core Version:    0.7.0.1
  */

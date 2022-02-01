@@ -4,44 +4,44 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import g.a.a.a.a.b;
 import java.util.LinkedList;
 
-public final class a
+public class a
 {
-  public final g.a.a.b.a.a UbS;
-  private int UbT;
+  public final g.a.a.b.a.a abFh;
+  private int abFi;
   private final b unknownTagHandler;
   
   public a(byte[] paramArrayOfByte, b paramb)
   {
     AppMethodBeat.i(2399);
-    this.UbT = 0;
-    this.UbS = new g.a.a.b.a.a(paramArrayOfByte, paramArrayOfByte.length);
+    this.abFi = 0;
+    this.abFh = new g.a.a.b.a.a(paramArrayOfByte, paramArrayOfByte.length);
     this.unknownTagHandler = paramb;
     AppMethodBeat.o(2399);
   }
   
-  public final LinkedList<byte[]> awh(int paramInt)
+  public final LinkedList<byte[]> aGc(int paramInt)
   {
     AppMethodBeat.i(2404);
-    LinkedList localLinkedList = this.UbS.awh(paramInt);
+    LinkedList localLinkedList = this.abFh.aGc(paramInt);
     AppMethodBeat.o(2404);
     return localLinkedList;
   }
   
-  public final int hPk()
+  public final int iUr()
   {
     AppMethodBeat.i(168735);
-    this.UbT = this.UbS.yT();
-    int i = g.a.a.b.a.gY(this.UbT);
+    this.abFi = this.abFh.Av();
+    int i = g.a.a.b.a.hP(this.abFi);
     AppMethodBeat.o(168735);
     return i;
   }
   
-  public final void hPl()
+  public final void iUs()
   {
     AppMethodBeat.i(2403);
-    int i = g.a.a.b.a.gX(this.UbT);
+    int i = g.a.a.b.a.hO(this.abFi);
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("FieldNumber: ").append(g.a.a.b.a.gY(this.UbT)).append(" - ");
+    localStringBuffer.append("FieldNumber: ").append(g.a.a.b.a.hP(this.abFi)).append(" - ");
     switch (i)
     {
     }
@@ -49,22 +49,22 @@ public final class a
     {
       AppMethodBeat.o(2403);
       return;
-      localStringBuffer.append("float value: ").append(Float.toString(Float.intBitsToFloat(this.UbS.zm())));
+      localStringBuffer.append("float value: ").append(Float.toString(Float.intBitsToFloat(this.abFh.AO())));
       AppMethodBeat.o(2403);
       return;
-      localStringBuffer.append("double value: ").append(Double.toString(Double.longBitsToDouble(this.UbS.zn())));
+      localStringBuffer.append("double value: ").append(Double.toString(Double.longBitsToDouble(this.abFh.AP())));
       AppMethodBeat.o(2403);
       return;
-      localStringBuffer.append("Length delimited (String or ByteString) value: ").append(this.UbS.readString());
+      localStringBuffer.append("Length delimited (String or ByteString) value: ").append(this.abFh.readString());
       AppMethodBeat.o(2403);
       return;
-      localStringBuffer.append("varint (long, int or boolean) value: ").append(this.UbS.zl());
+      localStringBuffer.append("varint (long, int or boolean) value: ").append(this.abFh.AN());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     g.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

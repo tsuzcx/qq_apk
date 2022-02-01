@@ -1,29 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.pay;
 
-import android.content.Intent;
-import com.tencent.luggage.h.f.c;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.s;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.MMActivity.a;
-import java.util.HashMap;
-import java.util.Map;
+import kotlin.l;
 
-public final class q
-  extends d<s>
-{
-  public static final int CTRL_INDEX = 285;
-  public static final String NAME = "requestVirtualPayment";
-  boolean mmw = false;
-  
-  public final boolean bEa()
-  {
-    return true;
-  }
-}
+@l(iBK={1, 1, 16})
+public final class q {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

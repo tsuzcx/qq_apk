@@ -4,20 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.game.report.a.a;
 import com.tencent.mm.game.report.api.c;
 import com.tencent.mm.kernel.b.f;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.h;
 
 public class PluginGameReport
   extends f
   implements c
 {
-  public void configure(com.tencent.mm.kernel.b.g paramg) {}
+  public void configure(g paramg) {}
   
-  public void execute(com.tencent.mm.kernel.b.g paramg)
+  public void execute(g paramg)
   {
     AppMethodBeat.i(108252);
-    if ((paramg.aBb()) || (paramg.FY(":tools")) || (paramg.FY(":toolsmp")))
+    if ((paramg.aIE()) || (paramg.MY(":tools")) || (paramg.MY(":toolsmp")))
     {
-      com.tencent.mm.game.report.api.a.hhr = new b();
-      com.tencent.mm.kernel.g.b(com.tencent.mm.game.report.a.b.class, new a());
+      com.tencent.mm.game.report.api.a.jTp = new b();
+      h.b(com.tencent.mm.game.report.a.b.class, new a());
     }
     AppMethodBeat.o(108252);
   }

@@ -19,9 +19,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class TinkerPatchService
   extends IntentService
 {
-  private static com.tencent.tinker.lib.c.a SjO = null;
-  private static Class<? extends AbstractResultService> SjP = null;
-  private static AtomicBoolean SjQ = new AtomicBoolean(false);
+  private static Class<? extends AbstractResultService> ZMA = null;
+  private static AtomicBoolean ZMB = new AtomicBoolean(false);
+  private static com.tencent.tinker.lib.c.a ZMz = null;
   private static int notificationId = -1119860829;
   
   public TinkerPatchService()
@@ -31,8 +31,8 @@ public class TinkerPatchService
   
   public static void a(com.tencent.tinker.lib.c.a parama, Class<? extends AbstractResultService> paramClass)
   {
-    SjO = parama;
-    SjP = paramClass;
+    ZMz = parama;
+    ZMA = paramClass;
     try
     {
       Class.forName(paramClass.getName());
@@ -44,7 +44,7 @@ public class TinkerPatchService
     }
   }
   
-  public static String bK(Intent paramIntent)
+  public static String bO(Intent paramIntent)
   {
     if (paramIntent == null) {
       throw new TinkerRuntimeException("getPatchPathExtra, but intent is null");
@@ -52,12 +52,12 @@ public class TinkerPatchService
     return ShareIntentUtil.getStringExtra(paramIntent, "patch_path_extra");
   }
   
-  public static void cX(Context paramContext, String paramString)
+  public static void di(Context paramContext, String paramString)
   {
     ShareTinkerLog.i("Tinker.TinkerPatchService", "run patch service...", new Object[0]);
     Intent localIntent = new Intent(paramContext, TinkerPatchService.class);
     localIntent.putExtra("patch_path_extra", paramString);
-    localIntent.putExtra("patch_result_class", SjP.getName());
+    localIntent.putExtra("patch_result_class", ZMA.getName());
     try
     {
       paramContext.startService(localIntent);
@@ -74,7 +74,7 @@ public class TinkerPatchService
     if (Build.VERSION.SDK_INT >= 26) {
       ShareTinkerLog.i("Tinker.TinkerPatchService", "for system version >= Android O, we just ignore increasingPriority job to avoid crash or toasts.", new Object[0]);
     }
-    while (!SjQ.compareAndSet(false, true))
+    while (!ZMB.compareAndSet(false, true))
     {
       ShareTinkerLog.w("Tinker.TinkerPatchService", "TinkerPatchService doApplyPatch is running by another runner.", new Object[0]);
       return;
@@ -103,14 +103,14 @@ public class TinkerPatchService
         startService(new Intent(this, InnerService.class));
       }
     }
-    com.tencent.tinker.lib.e.a locala = com.tencent.tinker.lib.e.a.lk(this);
-    locala.SjV.aE(paramIntent);
+    com.tencent.tinker.lib.e.a locala = com.tencent.tinker.lib.e.a.mi(this);
+    locala.ZMG.aC(paramIntent);
     if (paramIntent == null)
     {
       ShareTinkerLog.e("Tinker.TinkerPatchService", "TinkerPatchService received a null intent, ignoring.", new Object[0]);
       return;
     }
-    String str = bK(paramIntent);
+    String str = bO(paramIntent);
     if (str == null)
     {
       ShareTinkerLog.e("Tinker.TinkerPatchService", "TinkerPatchService can't get the path extra, ignoring.", new Object[0]);
@@ -122,19 +122,19 @@ public class TinkerPatchService
     a locala1 = new a();
     try
     {
-      if (SjO == null) {
+      if (ZMz == null) {
         throw new TinkerRuntimeException("upgradePatchProcessor is null.");
       }
     }
     catch (Throwable localThrowable2)
     {
-      locala.SjV.a(localFile, localThrowable2);
-      for (boolean bool = false;; bool = SjO.a(this, str, locala1))
+      locala.ZMG.a(localFile, localThrowable2);
+      for (boolean bool = false;; bool = ZMz.a(this, str, locala1))
       {
         l = SystemClock.elapsedRealtime() - l;
-        locala.SjV.a(localFile, bool, l);
+        locala.ZMG.a(localFile, bool, l);
         locala1.isSuccess = bool;
-        locala1.SjJ = str;
+        locala1.ZMu = str;
         locala1.costTime = l;
         locala1.e = localThrowable2;
         if (paramIntent != null) {
@@ -143,7 +143,7 @@ public class TinkerPatchService
         throw new TinkerRuntimeException("getPatchResultExtra, but intent is null");
       }
       AbstractResultService.a(this, locala1, ShareIntentUtil.getStringExtra(paramIntent, "patch_result_class"));
-      SjQ.set(false);
+      ZMB.set(false);
     }
   }
   
@@ -182,7 +182,7 @@ public class TinkerPatchService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.lib.service.TinkerPatchService
  * JD-Core Version:    0.7.0.1
  */

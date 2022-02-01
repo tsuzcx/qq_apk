@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.report.service;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.e.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.io.BufferedReader;
@@ -14,25 +15,25 @@ import java.util.Set;
 
 public final class c
 {
-  public static Set<Integer> Cyd;
+  public static Set<Integer> Izc;
   private static boolean hasInit;
   
   static
   {
-    AppMethodBeat.i(224154);
-    Cyd = new HashSet();
+    AppMethodBeat.i(195173);
+    Izc = new HashSet();
     hasInit = false;
-    AppMethodBeat.o(224154);
+    AppMethodBeat.o(195173);
   }
   
-  public static boolean Wj(int paramInt)
+  public static boolean acY(int paramInt)
   {
-    AppMethodBeat.i(224153);
-    synchronized (Cyd)
+    AppMethodBeat.i(195168);
+    synchronized (Izc)
     {
       if (!hasInit)
       {
-        Object localObject1 = MMApplicationContext.getContext().getResources().openRawResource(2131690966);
+        Object localObject1 = MMApplicationContext.getContext().getResources().openRawResource(e.a.invalid_idkey);
         try
         {
           localObject1 = new BufferedReader(new InputStreamReader((InputStream)localObject1));
@@ -43,7 +44,7 @@ public final class c
               break;
             }
             int i = Integer.parseInt(str);
-            Cyd.add(Integer.valueOf(i));
+            Izc.add(Integer.valueOf(i));
           }
         }
         catch (IOException localIOException)
@@ -52,19 +53,19 @@ public final class c
           hasInit = true;
         }
       }
-      if (Cyd.contains(Integer.valueOf(paramInt)))
+      if (Izc.contains(Integer.valueOf(paramInt)))
       {
-        AppMethodBeat.o(224153);
+        AppMethodBeat.o(195168);
         return true;
       }
     }
-    AppMethodBeat.o(224153);
+    AppMethodBeat.o(195168);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.report.service.c
  * JD-Core Version:    0.7.0.1
  */

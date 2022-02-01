@@ -5,17 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProcessProxyUI;
 import com.tencent.mm.plugin.appbrand.jsapi.ag;
-import com.tencent.mm.protocal.protobuf.dyq;
+import com.tencent.mm.protocal.protobuf.eiq;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.system.AndroidContextUtil;
 
 public final class a
   implements ag
 {
-  public final void a(Context paramContext, String paramString, dyq paramdyq)
+  public final void a(Context paramContext, String paramString, eiq parameiq)
   {
     AppMethodBeat.i(47476);
     if (TextUtils.isEmpty(paramString))
@@ -29,15 +29,15 @@ public final class a
     }
     for (;;)
     {
-      Object localObject = new Intent().putExtra("rawUrl", paramString).putExtra(AppBrandProcessProxyUI.lwe, paramString);
+      Object localObject = new Intent().putExtra("rawUrl", paramString).putExtra(AppBrandProcessProxyUI.oqN, paramString);
       ((Intent)localObject).putExtra("rawUrl", paramString);
       if (!(paramContext instanceof Activity)) {
         ((Intent)localObject).addFlags(268435456);
       }
-      if (paramdyq != null)
+      if (parameiq != null)
       {
-        ((Intent)localObject).putExtra("show_native_web_view", paramdyq.MYd);
-        ((Intent)localObject).putExtra("KRightBtn", paramdyq.MYe);
+        ((Intent)localObject).putExtra("show_native_web_view", parameiq.Ukv);
+        ((Intent)localObject).putExtra("KRightBtn", parameiq.Ukw);
       }
       c.b(paramContext, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
       AppMethodBeat.o(47476);

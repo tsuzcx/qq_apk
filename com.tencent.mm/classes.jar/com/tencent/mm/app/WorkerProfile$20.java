@@ -1,16 +1,16 @@
 package com.tencent.mm.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.uu;
+import com.tencent.mm.f.a.vy;
 import com.tencent.mm.sdk.event.IListener;
 
 final class WorkerProfile$20
-  extends IListener<uu>
+  extends IListener<vy>
 {
   WorkerProfile$20(WorkerProfile paramWorkerProfile)
   {
     AppMethodBeat.i(161249);
-    this.__eventId = uu.class.getName().hashCode();
+    this.__eventId = vy.class.getName().hashCode();
     AppMethodBeat.o(161249);
   }
 }

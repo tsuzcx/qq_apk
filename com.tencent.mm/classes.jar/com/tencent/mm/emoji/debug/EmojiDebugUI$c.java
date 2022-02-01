@@ -2,7 +2,7 @@ package com.tencent.mm.emoji.debug;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/debug/EmojiDebugUI$Companion;", "", "()V", "stopCDN", "", "getStopCDN", "()Z", "setStopCDN", "(Z)V", "stopCGI", "getStopCGI", "setStopCGI", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/debug/EmojiDebugUI$Companion;", "", "()V", "stopCDN", "", "getStopCDN", "()Z", "setStopCDN", "(Z)V", "stopCGI", "getStopCGI", "setStopCGI", "plugin-emojisdk_release"})
 public final class EmojiDebugUI$c {}
 
 

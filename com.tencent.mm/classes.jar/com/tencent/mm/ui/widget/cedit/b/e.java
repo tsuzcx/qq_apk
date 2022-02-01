@@ -8,11 +8,10 @@ import com.tencent.mm.ui.widget.cedit.edit.CustomTextView;
 
 public class e
   extends b
-  implements d
 {
   public void a(CustomTextView paramCustomTextView, Spannable paramSpannable, int paramInt)
   {
-    AppMethodBeat.i(206114);
+    AppMethodBeat.i(223798);
     paramSpannable = paramCustomTextView.getLayout();
     if ((paramSpannable != null) && ((paramInt & 0x2) != 0)) {
       paramCustomTextView.scrollTo(paramCustomTextView.getScrollX(), paramSpannable.getLineTop(0));
@@ -24,156 +23,116 @@ public class e
       int j = paramSpannable.getLineCount();
       paramCustomTextView.scrollTo(paramCustomTextView.getScrollX(), paramSpannable.getLineTop(j - 1 + 1) - (paramCustomTextView.getHeight() - (paramInt + i)));
     }
-    AppMethodBeat.o(206114);
+    AppMethodBeat.o(223798);
   }
   
   protected boolean a(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(206101);
+    AppMethodBeat.i(223754);
     boolean bool = b(paramCustomTextView, 1);
-    AppMethodBeat.o(206101);
+    AppMethodBeat.o(223754);
     return bool;
   }
   
   public boolean a(CustomTextView paramCustomTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(206113);
+    AppMethodBeat.i(223792);
     boolean bool = f.a(paramCustomTextView, paramSpannable, paramMotionEvent);
-    AppMethodBeat.o(206113);
+    AppMethodBeat.o(223792);
     return bool;
   }
   
   protected boolean b(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(206102);
+    AppMethodBeat.i(223757);
     boolean bool = c(paramCustomTextView, 1);
-    AppMethodBeat.o(206102);
+    AppMethodBeat.o(223757);
     return bool;
   }
   
   protected boolean c(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(206103);
+    AppMethodBeat.i(223760);
     boolean bool = d(paramCustomTextView, 1);
-    AppMethodBeat.o(206103);
+    AppMethodBeat.o(223760);
     return bool;
   }
   
   protected boolean d(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(206104);
+    AppMethodBeat.i(223765);
     boolean bool = e(paramCustomTextView, 1);
-    AppMethodBeat.o(206104);
+    AppMethodBeat.o(223765);
     return bool;
   }
   
   protected final boolean e(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(206105);
-    paramSpannable = paramCustomTextView.getLayout();
-    int i = paramSpannable.getLineForVertical(paramCustomTextView.getScrollY() - b.h(paramCustomTextView));
-    if (i >= 0)
-    {
-      f.a(paramCustomTextView, paramSpannable, paramCustomTextView.getScrollX(), paramSpannable.getLineTop(i));
-      AppMethodBeat.o(206105);
-      return true;
-    }
-    AppMethodBeat.o(206105);
-    return false;
+    AppMethodBeat.i(223768);
+    boolean bool = l(paramCustomTextView);
+    AppMethodBeat.o(223768);
+    return bool;
   }
   
   protected final boolean f(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(206106);
-    paramSpannable = paramCustomTextView.getLayout();
-    int i = b.h(paramCustomTextView);
-    int j = paramSpannable.getLineForVertical(paramCustomTextView.getScrollY() + i + i);
-    if (j <= paramSpannable.getLineCount() - 1)
-    {
-      f.a(paramCustomTextView, paramSpannable, paramCustomTextView.getScrollX(), paramSpannable.getLineTop(j + 1) - i);
-      AppMethodBeat.o(206106);
-      return true;
-    }
-    AppMethodBeat.o(206106);
-    return false;
+    AppMethodBeat.i(223771);
+    boolean bool = m(paramCustomTextView);
+    AppMethodBeat.o(223771);
+    return bool;
   }
   
   protected final boolean g(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(206107);
-    paramSpannable = paramCustomTextView.getLayout();
-    if (b.e(paramCustomTextView) >= 0)
-    {
-      f.a(paramCustomTextView, paramSpannable, paramCustomTextView.getScrollX(), paramSpannable.getLineTop(0));
-      AppMethodBeat.o(206107);
-      return true;
-    }
-    AppMethodBeat.o(206107);
-    return false;
+    AppMethodBeat.i(223774);
+    boolean bool = n(paramCustomTextView);
+    AppMethodBeat.o(223774);
+    return bool;
   }
   
   protected final boolean h(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(206108);
-    paramSpannable = paramCustomTextView.getLayout();
-    int i = paramSpannable.getLineCount();
-    if (b.f(paramCustomTextView) <= i - 1)
-    {
-      f.a(paramCustomTextView, paramSpannable, paramCustomTextView.getScrollX(), paramSpannable.getLineTop(i) - b.h(paramCustomTextView));
-      AppMethodBeat.o(206108);
-      return true;
-    }
-    AppMethodBeat.o(206108);
-    return false;
+    AppMethodBeat.i(223776);
+    boolean bool = o(paramCustomTextView);
+    AppMethodBeat.o(223776);
+    return bool;
   }
   
   protected final boolean i(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(206109);
-    int i = b.j(paramCustomTextView);
-    if (paramCustomTextView.getScrollX() > i)
-    {
-      paramCustomTextView.scrollTo(i, paramCustomTextView.getScrollY());
-      AppMethodBeat.o(206109);
-      return true;
-    }
-    AppMethodBeat.o(206109);
-    return false;
+    AppMethodBeat.i(223781);
+    boolean bool = p(paramCustomTextView);
+    AppMethodBeat.o(223781);
+    return bool;
   }
   
   protected final boolean j(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(206110);
-    int i = b.k(paramCustomTextView) - b.g(paramCustomTextView);
-    if (paramCustomTextView.getScrollX() < i)
-    {
-      paramCustomTextView.scrollTo(i, paramCustomTextView.getScrollY());
-      AppMethodBeat.o(206110);
-      return true;
-    }
-    AppMethodBeat.o(206110);
-    return false;
+    AppMethodBeat.i(223784);
+    boolean bool = q(paramCustomTextView);
+    AppMethodBeat.o(223784);
+    return bool;
   }
   
   protected final boolean k(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(206111);
-    boolean bool = g(paramCustomTextView, paramSpannable);
-    AppMethodBeat.o(206111);
+    AppMethodBeat.i(223787);
+    boolean bool = n(paramCustomTextView);
+    AppMethodBeat.o(223787);
     return bool;
   }
   
   protected final boolean l(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(206112);
-    boolean bool = h(paramCustomTextView, paramSpannable);
-    AppMethodBeat.o(206112);
+    AppMethodBeat.i(223789);
+    boolean bool = o(paramCustomTextView);
+    AppMethodBeat.o(223789);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cedit.b.e
  * JD-Core Version:    0.7.0.1
  */

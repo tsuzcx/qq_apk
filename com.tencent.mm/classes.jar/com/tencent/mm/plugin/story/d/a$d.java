@@ -4,14 +4,14 @@ import com.tencent.mm.plugin.story.i.j;
 import java.util.List;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavSelectView;", "", "onIsAll", "", "isAll", "", "onLoadFpFinish", "datas", "", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "checkedDatas", "onLoadNpFinish", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavSelectView;", "", "onIsAll", "", "isAll", "", "onLoadFpFinish", "datas", "", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "checkedDatas", "onLoadNpFinish", "plugin-story_release"})
 public abstract interface a$d
 {
-  public abstract void hr(List<j> paramList);
+  public abstract void ia(List<j> paramList);
   
-  public abstract void t(List<j> paramList1, List<j> paramList2);
+  public abstract void x(List<j> paramList1, List<j> paramList2);
   
-  public abstract void vK(boolean paramBoolean);
+  public abstract void zo(boolean paramBoolean);
 }
 
 

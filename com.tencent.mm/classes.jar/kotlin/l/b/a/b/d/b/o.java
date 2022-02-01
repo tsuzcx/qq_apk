@@ -8,12 +8,12 @@ public final class o
   public static final p a(n paramn, a parama)
   {
     AppMethodBeat.i(58224);
-    kotlin.g.b.p.h(paramn, "$this$findKotlinClass");
-    kotlin.g.b.p.h(parama, "classId");
+    kotlin.g.b.p.k(paramn, "$this$findKotlinClass");
+    kotlin.g.b.p.k(parama, "classId");
     paramn = paramn.c(parama);
     if (paramn != null)
     {
-      paramn = paramn.hEo();
+      paramn = paramn.iII();
       AppMethodBeat.o(58224);
       return paramn;
     }
@@ -23,7 +23,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.b.o
  * JD-Core Version:    0.7.0.1
  */

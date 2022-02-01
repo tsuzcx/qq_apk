@@ -1,9 +1,8 @@
 package com.tencent.mm.plugin.voip.video.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.media.g.d;
-import com.tencent.mm.media.j.b.e;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.nio.ByteBuffer;
@@ -12,21 +11,21 @@ import kotlin.x;
 
 public final class a
 {
-  public static boolean Hkk = true;
-  public static boolean Hkl = true;
-  public static float Hkm = 180.0F;
-  com.tencent.mm.media.j.b.a BXr;
-  private int Hkn = -1;
-  d Hko;
-  byte[] Hkp;
-  ByteBuffer Hkq = null;
-  int Hkr = 0;
-  volatile boolean bfY = false;
-  d hDm;
-  int hDn;
-  int hDo;
-  com.tencent.mm.plugin.xlabeffect.b hiH;
+  public static boolean OaZ = true;
+  public static boolean Oba = true;
+  public static float Obb = 180.0F;
+  com.tencent.mm.media.j.b.a HUf;
+  private int Obc = -1;
+  d Obd;
+  byte[] Obe;
+  ByteBuffer Obf = null;
+  int Obg = 0;
+  volatile boolean aPy = false;
   private boolean isInit = false;
+  com.tencent.mm.plugin.xlabeffect.e jUF;
+  d krf;
+  int krg;
+  int krh;
   
   public final void a(d paramd1, d paramd2, int paramInt)
   {
@@ -36,42 +35,43 @@ public final class a
       try
       {
         Log.i("MicroMsg.FilterProcessTex", "initial %s, %d, beauytParams:%s", new Object[] { this, Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(paramInt) });
-        if (this.hiH != null)
+        if (this.jUF != null)
         {
           Log.w("MicroMsg.FilterProcessTex", "initial xLabEffect: again");
-          this.hiH.destroy();
+          this.jUF.destroy();
         }
-        this.hiH = new com.tencent.mm.plugin.xlabeffect.b(0, 0);
-        this.hiH.zG(false);
-        int i = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rXh, 0);
-        int j = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rXi, -1);
-        int k = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rXj, -1);
-        int m = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rXk, -1);
-        int n = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rXl, -1);
-        int i1 = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rXm, -1);
+        this.jUF = new com.tencent.mm.plugin.xlabeffect.e(0, 0, 1);
+        this.jUF.DH(false);
+        this.jUF.QPZ.hjw = 4;
+        int i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vDY, 0);
+        int j = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vDZ, -1);
+        int k = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vEa, -1);
+        int m = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vEb, -1);
+        int n = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vEc, -1);
+        int i1 = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vEd, -1);
         Log.i("MicroMsg.FilterProcessTex", "Face beauty config: lutWeight: %d, skinSmooth: %d, skinBright: %d, eyeMorph: %d, eyeBright: %d, faceMorph: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1) });
-        this.hiH.l(j, m, i1, k, n);
+        this.jUF.o(j, m, i1, k, n);
         boolean bool1;
         if ((paramInt & 0x1) != 0)
         {
           bool1 = true;
-          break label477;
+          break label490;
           Log.i("MicroMsg.FilterProcessTex", "initial, needSkin:%s, needShape:%s, needFilter:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
           if (bool1) {
-            this.hiH.glh();
+            this.jUF.hfa();
           }
           if (bool2) {
-            this.hiH.glj();
+            this.jUF.DF(true);
           }
           if (bool3)
           {
-            this.hiH.gll();
-            this.hiH.aa(true, i);
+            this.jUF.hfb();
+            this.jUF.an(true, i);
           }
-          this.Hko = paramd1;
-          this.hDm = paramd2;
-          this.BXr = new e(this.hDn, this.hDo, this.hDn, this.hDo, 2, 1);
-          this.BXr.ijJ = new kotlin.g.a.b() {};
+          this.Obd = paramd1;
+          this.krf = paramd2;
+          this.HUf = new com.tencent.mm.media.j.b.e(this.krg, this.krh, this.krg, this.krh, 2, 1);
+          this.HUf.kYD = new kotlin.g.a.b() {};
           Log.d("MicroMsg.FilterProcessTex", "initial end %s", new Object[] { this });
           AppMethodBeat.o(115704);
         }
@@ -87,14 +87,14 @@ public final class a
         return;
       }
       boolean bool2 = false;
-      break label486;
+      break label499;
       boolean bool3 = false;
       continue;
-      label477:
+      label490:
       if ((paramInt & 0x2) != 0)
       {
         bool2 = true;
-        label486:
+        label499:
         if ((paramInt & 0x4) != 0) {
           bool3 = true;
         }
@@ -102,23 +102,23 @@ public final class a
     }
   }
   
-  public final ByteBuffer fLy()
+  public final ByteBuffer gDY()
   {
-    AppMethodBeat.i(235892);
-    if (!this.bfY)
+    AppMethodBeat.i(239796);
+    if (!this.aPy)
     {
       Log.i("MicroMsg.FilterProcessTex", "still not have data");
-      AppMethodBeat.o(235892);
+      AppMethodBeat.o(239796);
       return null;
     }
-    ByteBuffer localByteBuffer = this.Hkq;
-    AppMethodBeat.o(235892);
+    ByteBuffer localByteBuffer = this.Obf;
+    AppMethodBeat.o(239796);
     return localByteBuffer;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.a.a
  * JD-Core Version:    0.7.0.1
  */

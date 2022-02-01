@@ -1,90 +1,119 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.plugin.luckymoney.a.a;
+import com.tencent.mm.protocal.protobuf.dvj;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.io.IOException;
 
 public final class w
 {
-  private Object lock;
-  private Set<String> yWh;
+  public o EtY;
+  private h EyX;
   
   public w()
   {
-    AppMethodBeat.i(65225);
-    this.lock = new Object();
-    this.yWh = new HashSet();
-    Object localObject1 = (String)g.aAh().azQ().get(ar.a.Oac, "");
-    if (!Util.isNullOrNil((String)localObject1))
-    {
-      localObject1 = ((String)localObject1).split(",");
-      int j = localObject1.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject2 = localObject1[i];
-        this.yWh.add(localObject2);
-        i += 1;
-      }
-    }
-    AppMethodBeat.o(65225);
+    AppMethodBeat.i(277868);
+    init();
+    AppMethodBeat.o(277868);
   }
   
-  public final boolean aDu(String paramString)
+  private void init()
   {
-    AppMethodBeat.i(65226);
-    synchronized (this.lock)
+    AppMethodBeat.i(277869);
+    this.EtY = new o();
+    com.tencent.mm.kernel.h.aHH();
+    String str = (String)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Vhl, null);
+    if (Util.isNullOrNil(str))
     {
-      if (!this.yWh.contains(paramString))
-      {
-        StringBuilder localStringBuilder = new StringBuilder((String)g.aAh().azQ().get(ar.a.Oac, ""));
-        if (this.yWh.size() <= 0)
-        {
-          localStringBuilder.append(paramString);
-          g.aAh().azQ().set(ar.a.Oac, localStringBuilder.toString());
-          boolean bool = this.yWh.add(paramString);
-          AppMethodBeat.o(65226);
-          return bool;
-        }
-        localStringBuilder.append(",").append(paramString);
-      }
+      this.EtY.Etx = 2000.0D;
+      this.EtY.Etu = 100;
+      this.EtY.Ety = 200.0D;
+      this.EtY.Etw = 0.01D;
+      this.EtY.Etv = 200.0D;
     }
-    Log.i("MicroMsg.LuckyMoneyMsg", "has contains msg, %s", new Object[] { paramString });
-    AppMethodBeat.o(65226);
-    return false;
-  }
-  
-  public final void aDv(String paramString)
-  {
-    AppMethodBeat.i(65227);
-    synchronized (this.lock)
+    for (;;)
     {
-      this.yWh.remove(paramString);
-      paramString = new StringBuilder();
-      Iterator localIterator = this.yWh.iterator();
-      if (localIterator.hasNext()) {
-        paramString.append((String)localIterator.next()).append(",");
-      }
-    }
-    if (paramString.length() == 0) {}
-    for (paramString = paramString.toString();; paramString = paramString.substring(0, paramString.length() - 1))
-    {
-      g.aAh().azQ().set(ar.a.Oac, paramString);
-      AppMethodBeat.o(65227);
+      Log.i("MicroMsg.LuckyMoneyConfigManager", "LuckyMoneyConfig init maxTotalAmount:" + this.EtY.Etx + " maxTotalNum:" + this.EtY.Etu + " perGroupMaxValue:" + this.EtY.Ety + " perMinValue:" + this.EtY.Etw + " perPersonMaxValue:" + this.EtY.Etv);
+      AppMethodBeat.o(277869);
       return;
+      try
+      {
+        this.EtY.parseFrom(str.getBytes("ISO-8859-1"));
+        eOy();
+      }
+      catch (Exception localException)
+      {
+        Log.w("MicroMsg.LuckyMoneyConfigManager", "parseConfig exp, " + localException.getLocalizedMessage());
+        this.EtY.Etx = 2000.0D;
+        this.EtY.Etu = 100;
+        this.EtY.Ety = 200.0D;
+        this.EtY.Etw = 0.01D;
+        this.EtY.Etv = 200.0D;
+      }
     }
+  }
+  
+  public final h eOA()
+  {
+    AppMethodBeat.i(277872);
+    if (this.EyX == null) {
+      init();
+    }
+    h localh = this.EyX;
+    AppMethodBeat.o(277872);
+    return localh;
+  }
+  
+  public final void eOy()
+  {
+    AppMethodBeat.i(277870);
+    if (this.EtY != null)
+    {
+      this.EyX = h.aNC(this.EtY.EyT);
+      if ((this.EyX != null) && (this.EyX.Eyz != null))
+      {
+        ((a)com.tencent.mm.kernel.h.ae(a.class)).a(this.EyX.Eyz);
+        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vty, Integer.valueOf(1));
+        if (!Util.isNullOrNil(this.EtY.EyU))
+        {
+          Log.d("MicroMsg.LuckyMoneyConfigManager", "parse cover info");
+          try
+          {
+            dvj localdvj = (dvj)new dvj().parseFrom(Base64.decode(this.EtY.EyU, 0));
+            this.EyX.Eyz.llL = localdvj.llL;
+            AppMethodBeat.o(277870);
+            return;
+          }
+          catch (IOException localIOException)
+          {
+            Log.printErrStackTrace("MicroMsg.LuckyMoneyConfigManager", localIOException, "", new Object[0]);
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(277870);
+  }
+  
+  public final o eOz()
+  {
+    AppMethodBeat.i(277871);
+    if (this.EtY == null) {
+      init();
+    }
+    o localo = this.EtY;
+    AppMethodBeat.o(277871);
+    return localo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.w
  * JD-Core Version:    0.7.0.1
  */

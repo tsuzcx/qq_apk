@@ -3,13 +3,13 @@
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.tencent.mm.plugin.sns.ui.view.ImageIndicatorView android:id="@id/dvx" android:background="@color/c" android:paddingTop="@dimen/ct" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/c5" />
     <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <android.support.constraint.ConstraintLayout android:id="@id/d03" android:background="@color/c" android:paddingBottom="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/d03" android:background="@color/c" android:paddingBottom="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content"
           xmlns:android="http://schemas.android.com/apk/res/android">
             <ImageView android:id="@id/cka" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_marginLeft="@dimen/ct" android:layout_marginTop="@dimen/ct" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
             <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/d0q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:layout_marginRight="@dimen/ct" android:maxWidth="100.0dip" android:maxLines="1" app:layout_constraintBottom_toBottomOf="@id/cka" app:layout_constraintLeft_toRightOf="@id/cka" app:layout_constraintTop_toTopOf="@id/cka" />
             <ImageView android:id="@id/w0" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" app:layout_constraintBottom_toBottomOf="@id/cka" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintLeft_toRightOf="@id/d0q" app:layout_constraintTop_toTopOf="@id/cka" />
             <TextView android:textSize="@dimen/bd" android:textColor="@color/fo" android:ellipsize="end" android:id="@id/cl2" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_marginTop="@dimen/ct" android:layout_marginRight="@dimen/ct" android:text="试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试" android:maxLines="1" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toBottomOf="@id/cka" />
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <LinearLayout android:orientation="vertical" android:id="@id/gkw" android:background="@color/c" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="28.0dip" android:layout_alignParentBottom="true">
             <View android:layout_width="fill_parent" android:layout_height="@dimen/ct" />
             <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="20.0dip">

@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.Surface;
 import com.tencent.liteav.audio.TXCAudioEngine;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.module.Monitor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import com.tencent.trtc.TRTCCloudListener.TRTCSnapshotListener;
@@ -18,11 +19,13 @@ public class WXLivePlayer
   extends TXLivePlayer
   implements ITXLivePlayListener, WXTRTCCloud.ITXAudioVolumeEvaluationListener
 {
-  private static final String ADDRESS1 = "room://cloud.tencent.com/rtc";
-  private static final String ADDRESS2 = "room://rtc.tencent.com";
+  private static final String RTC_ADDRESS1 = "room://cloud.tencent.com/rtc";
+  private static final String RTC_ADDRESS2 = "room://rtc.tencent.com";
+  private static final String RTMP_PROXY_ADDRESS = "room://";
   private static final String TAG = "WXLivePlayer";
   private TXLivePlayer.ITXAudioVolumeEvaluationListener mAudioVolumeListener;
   private int mAudioVolumeNotifyInterval;
+  private boolean mIsRtmpProxy;
   private boolean mIsTRTC;
   private boolean mMuteAudio;
   private boolean mMuteVideo;
@@ -45,6 +48,7 @@ public class WXLivePlayer
     AppMethodBeat.i(14101);
     this.mIsTRTC = false;
     this.mTRTCPlaying = false;
+    this.mIsRtmpProxy = false;
     this.mTRTCCloud = null;
     this.mAudioVolumeListener = null;
     this.mPlayConfig = new WXLivePlayConfig();
@@ -62,6 +66,24 @@ public class WXLivePlayer
     this.mAudioVolumeNotifyInterval = 0;
     this.mTRTCCloud = WXTRTCCloud.sharedInstance(paramContext);
     AppMethodBeat.o(14101);
+  }
+  
+  private boolean isRtmpProxyUrl(String paramString)
+  {
+    AppMethodBeat.i(219275);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(219275);
+      return false;
+    }
+    if ((paramString.startsWith("room://cloud.tencent.com/rtc")) || (paramString.startsWith("room://rtc.tencent.com")))
+    {
+      AppMethodBeat.o(219275);
+      return false;
+    }
+    boolean bool = paramString.startsWith("room://");
+    AppMethodBeat.o(219275);
+    return bool;
   }
   
   private boolean isTRTCPlayerUrl(String paramString)
@@ -146,6 +168,24 @@ public class WXLivePlayer
     this.mStreamType = "";
   }
   
+  public void apiOnlineLog(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(219281);
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    paramString = "[API] WXLivePlayer(" + hashCode() + ") ";
+    if (paramBoolean)
+    {
+      Monitor.a(1, paramString + " " + str, "", 0, "");
+      AppMethodBeat.o(219281);
+      return;
+    }
+    TXCLog.i("WXLivePlayer", paramString + " " + str);
+    AppMethodBeat.o(219281);
+  }
+  
   public void enableAudioVolumeEvaluation(int paramInt)
   {
     AppMethodBeat.i(14115);
@@ -176,22 +216,36 @@ public class WXLivePlayer
   public void muteAudio(boolean paramBoolean)
   {
     AppMethodBeat.i(14109);
-    super.setMute(paramBoolean);
-    this.mMuteAudio = paramBoolean;
-    if ((this.mIsTRTC) && (this.mTRTCPlaying)) {
-      this.mTRTCCloud.muteRemoteAudio(this.mUserId, paramBoolean);
+    String str = "muteAudio mute: " + paramBoolean + ", userId: " + this.mUserId;
+    if ((this.mIsTRTC) || (this.mIsRtmpProxy)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      apiOnlineLog(str, bool);
+      super.setMute(paramBoolean);
+      this.mMuteAudio = paramBoolean;
+      if ((this.mIsTRTC) && (this.mTRTCPlaying)) {
+        this.mTRTCCloud.muteRemoteAudio(this.mUserId, paramBoolean);
+      }
+      AppMethodBeat.o(14109);
+      return;
     }
-    AppMethodBeat.o(14109);
   }
   
   public void muteVideo(boolean paramBoolean)
   {
     AppMethodBeat.i(14110);
-    this.mMuteVideo = paramBoolean;
-    if ((this.mIsTRTC) && (this.mTRTCPlaying)) {
-      this.mTRTCCloud.muteRemoteVideoStream(this.mUserId, paramBoolean);
+    String str = "muteVideo mute: " + paramBoolean + ", userId: " + this.mUserId;
+    if ((this.mIsTRTC) || (this.mIsRtmpProxy)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      apiOnlineLog(str, bool);
+      this.mMuteVideo = paramBoolean;
+      if ((this.mIsTRTC) && (this.mTRTCPlaying)) {
+        this.mTRTCCloud.muteRemoteVideoStream(this.mUserId, paramBoolean);
+      }
+      AppMethodBeat.o(14110);
+      return;
     }
-    AppMethodBeat.o(14110);
   }
   
   public void onAudioVolumeEvaluationNotify(int paramInt)
@@ -219,22 +273,35 @@ public class WXLivePlayer
   public void onPlayEvent(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(14120);
-    if (this.mPlayListener != null)
+    Object localObject = "onPlayEvent event: ".concat(String.valueOf(paramInt));
+    if ((this.mIsTRTC) || (this.mIsRtmpProxy)) {}
+    for (boolean bool = true;; bool = false)
     {
-      ITXLivePlayListener localITXLivePlayListener = (ITXLivePlayListener)this.mPlayListener.get();
-      if (localITXLivePlayListener != null) {
-        localITXLivePlayListener.onPlayEvent(paramInt, paramBundle);
+      apiOnlineLog((String)localObject, bool);
+      if (this.mPlayListener != null)
+      {
+        localObject = (ITXLivePlayListener)this.mPlayListener.get();
+        if (localObject != null) {
+          ((ITXLivePlayListener)localObject).onPlayEvent(paramInt, paramBundle);
+        }
       }
+      AppMethodBeat.o(14120);
+      return;
     }
-    AppMethodBeat.o(14120);
   }
   
   public void setAudioRoute(int paramInt)
   {
     AppMethodBeat.i(14113);
-    TXCLog.i("WXLivePlayer", "setAudioRoute audioRoute = ".concat(String.valueOf(paramInt)));
-    TXCAudioEngine.setAudioRoute(paramInt);
-    AppMethodBeat.o(14113);
+    String str = "setAudioRoute audioRoute: ".concat(String.valueOf(paramInt));
+    if ((this.mIsTRTC) || (this.mIsRtmpProxy)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      apiOnlineLog(str, bool);
+      TXCAudioEngine.setAudioRoute(paramInt);
+      AppMethodBeat.o(14113);
+      return;
+    }
   }
   
   public void setAudioVolumeEvaluationListener(TXLivePlayer.ITXAudioVolumeEvaluationListener paramITXAudioVolumeEvaluationListener)
@@ -248,9 +315,25 @@ public class WXLivePlayer
   public void setConfig(WXLivePlayConfig paramWXLivePlayConfig)
   {
     AppMethodBeat.i(14108);
-    super.setConfig(paramWXLivePlayConfig);
-    this.mPlayConfig = paramWXLivePlayConfig;
-    AppMethodBeat.o(14108);
+    String str;
+    if ("setConfig config: ".concat(String.valueOf(paramWXLivePlayConfig)) != null)
+    {
+      str = paramWXLivePlayConfig.toString();
+      if ((!this.mIsTRTC) && (!this.mIsRtmpProxy)) {
+        break label69;
+      }
+    }
+    label69:
+    for (boolean bool = true;; bool = false)
+    {
+      apiOnlineLog(str, bool);
+      super.setConfig(paramWXLivePlayConfig);
+      this.mPlayConfig = paramWXLivePlayConfig;
+      AppMethodBeat.o(14108);
+      return;
+      str = "";
+      break;
+    }
   }
   
   public void setPlayListener(ITXLivePlayListener paramITXLivePlayListener)
@@ -272,6 +355,7 @@ public class WXLivePlayer
   public void setRenderMode(int paramInt)
   {
     AppMethodBeat.i(14111);
+    apiOnlineLog("setRenderMode mode: " + paramInt + ", userId: " + this.mUserId, false);
     super.setRenderMode(paramInt);
     if (paramInt == 0) {
       this.mRenderMode = 0;
@@ -297,6 +381,7 @@ public class WXLivePlayer
   public void setRenderRotation(int paramInt)
   {
     AppMethodBeat.i(14112);
+    apiOnlineLog("setRenderRotation rotation: " + paramInt + ", userId: " + this.mUserId, false);
     super.setRenderRotation(paramInt);
     if (paramInt == 270) {
       this.mRenderRotation = 3;
@@ -324,6 +409,7 @@ public class WXLivePlayer
     AppMethodBeat.i(14104);
     super.setSurface(paramSurface);
     this.mSurface = paramSurface;
+    apiOnlineLog("setSurface userId: " + this.mUserId + ", surface: " + paramSurface, false);
     if ((this.mIsTRTC) && (this.mTRTCPlaying) && (!TextUtils.isEmpty(this.mUserId)) && (!TextUtils.isEmpty(this.mStreamType)))
     {
       if (this.mStreamType.equalsIgnoreCase("aux"))
@@ -343,6 +429,7 @@ public class WXLivePlayer
     super.setSurfaceSize(paramInt1, paramInt2);
     this.mSurfaceWidth = paramInt1;
     this.mSurfaceHeight = paramInt2;
+    apiOnlineLog("setSurfaceSize width: " + paramInt1 + ", height: " + paramInt2 + ", userId: " + this.mUserId, false);
     if ((this.mIsTRTC) && (this.mTRTCPlaying) && (!TextUtils.isEmpty(this.mUserId)) && (!TextUtils.isEmpty(this.mStreamType)))
     {
       if (this.mStreamType.equalsIgnoreCase("aux"))
@@ -423,41 +510,53 @@ public class WXLivePlayer
       AppMethodBeat.o(14118);
       return -1;
     }
+    this.mIsRtmpProxy = isRtmpProxyUrl(paramString);
     this.mIsTRTC = isTRTCPlayerUrl(paramString);
+    String str = "startPlay url:" + paramString + " type:" + paramInt + ", isTRTC: " + this.mIsTRTC + ", userId: " + this.mUserId;
     boolean bool;
-    if (this.mIsTRTC) {
-      if (parseTRTCParams(paramString))
-      {
-        this.mTRTCCloud.muteRemoteAudio(this.mUserId, this.mMuteAudio);
-        this.mTRTCCloud.muteRemoteVideoStream(this.mUserId, this.mMuteVideo);
-        if (this.mStreamType.equalsIgnoreCase("main"))
-        {
-          this.mTRTCCloud.setRemoteVideoStreamType(this.mUserId, 0);
-          this.mTRTCCloud.startRemoteView(this.mUserId, this.mVideoView);
-          this.mTRTCCloud.setRemoteSurface(this.mUserId, this.mSurface);
-          this.mTRTCCloud.setRemoteSurfaceSize(this.mUserId, this.mSurfaceWidth, this.mSurfaceHeight);
-          bool = false;
-        }
+    if ((this.mIsTRTC) || (this.mIsRtmpProxy))
+    {
+      bool = true;
+      apiOnlineLog(str, bool);
+      if (!this.mIsTRTC) {
+        break label518;
       }
+      if (!parseTRTCParams(paramString)) {
+        break label502;
+      }
+      this.mTRTCCloud.muteRemoteAudio(this.mUserId, this.mMuteAudio);
+      this.mTRTCCloud.muteRemoteVideoStream(this.mUserId, this.mMuteVideo);
+      if (!this.mStreamType.equalsIgnoreCase("main")) {
+        break label319;
+      }
+      this.mTRTCCloud.setRemoteVideoStreamType(this.mUserId, 0);
+      this.mTRTCCloud.startRemoteView(this.mUserId, this.mVideoView);
+      this.mTRTCCloud.setRemoteSurface(this.mUserId, this.mSurface);
+      this.mTRTCCloud.setRemoteSurfaceSize(this.mUserId, this.mSurfaceWidth, this.mSurfaceHeight);
+      bool = false;
     }
     for (;;)
     {
+      label237:
       if (bool)
       {
         this.mTRTCCloud.setRemoteSubStreamViewFillMode(this.mUserId, this.mRenderMode);
-        label170:
         if (!bool) {
-          break label392;
+          break label484;
         }
         this.mTRTCCloud.setRemoteSubStreamViewRotation(this.mUserId, this.mRenderRotation);
       }
       for (;;)
       {
+        label256:
         this.mTRTCCloud.registerAudioVolumeEvaluationListener(this.mUserId, bool, this);
         this.mTRTCCloud.registerPlayListener(this.mUserId, bool, this);
         this.mTRTCPlaying = true;
         AppMethodBeat.o(14118);
         return 0;
+        bool = false;
+        break;
+        label319:
         if (this.mStreamType.equalsIgnoreCase("small"))
         {
           this.mTRTCCloud.setRemoteVideoStreamType(this.mUserId, 1);
@@ -465,45 +564,56 @@ public class WXLivePlayer
           this.mTRTCCloud.setRemoteSurface(this.mUserId, this.mSurface);
           this.mTRTCCloud.setRemoteSurfaceSize(this.mUserId, this.mSurfaceWidth, this.mSurfaceHeight);
           bool = false;
-          break;
+          break label237;
         }
         if (!this.mStreamType.equalsIgnoreCase("aux")) {
-          break label449;
+          break label541;
         }
         this.mTRTCCloud.startRemoteSubStreamView(this.mUserId, this.mVideoView);
         this.mTRTCCloud.setRemoteSubStreamSurface(this.mUserId, this.mSurface);
         this.mTRTCCloud.setRemoteSubStreamSurfaceSize(this.mUserId, this.mSurfaceWidth, this.mSurfaceHeight);
         bool = true;
-        break;
+        break label237;
         this.mTRTCCloud.setRemoteViewFillMode(this.mUserId, this.mRenderMode);
-        break label170;
-        label392:
+        break label256;
+        label484:
         this.mTRTCCloud.setRemoteViewRotation(this.mUserId, this.mRenderRotation);
       }
+      label502:
       TXCLog.e("WXLivePlayer", "parse playUrl failed!!!");
       AppMethodBeat.o(14118);
       return -1;
+      label518:
       super.enableAudioVolumeEvaluation(this.mAudioVolumeNotifyInterval);
       paramInt = super.startPlay(paramString, paramInt);
       AppMethodBeat.o(14118);
       return paramInt;
-      label449:
+      label541:
       bool = false;
     }
   }
   
   public int stopPlay(boolean paramBoolean)
   {
+    boolean bool2 = true;
     AppMethodBeat.i(14119);
-    if ((paramBoolean) && (this.mVideoView != null)) {
-      this.mVideoView.setVisibility(8);
-    }
-    if (this.mIsTRTC) {
-      if (this.mStreamType.equalsIgnoreCase("main"))
-      {
-        this.mTRTCCloud.stopRemoteView(this.mUserId);
-        paramBoolean = false;
+    String str = "stopPlay isNeedClearLastImg: " + paramBoolean + ", isTRTC: " + this.mIsTRTC + ", userId: " + this.mUserId;
+    boolean bool1;
+    if ((this.mIsTRTC) || (this.mIsRtmpProxy))
+    {
+      bool1 = true;
+      apiOnlineLog(str, bool1);
+      if ((paramBoolean) && (this.mVideoView != null)) {
+        this.mVideoView.setVisibility(8);
       }
+      if (!this.mIsTRTC) {
+        break label228;
+      }
+      if (!this.mStreamType.equalsIgnoreCase("main")) {
+        break label169;
+      }
+      this.mTRTCCloud.stopRemoteView(this.mUserId);
+      paramBoolean = false;
     }
     for (;;)
     {
@@ -512,6 +622,9 @@ public class WXLivePlayer
       resetParams();
       AppMethodBeat.o(14119);
       return 0;
+      bool1 = false;
+      break;
+      label169:
       if (this.mStreamType.equalsIgnoreCase("small"))
       {
         this.mTRTCCloud.stopRemoteView(this.mUserId);
@@ -520,8 +633,9 @@ public class WXLivePlayer
       else if (this.mStreamType.equalsIgnoreCase("aux"))
       {
         this.mTRTCCloud.stopRemoteSubStreamView(this.mUserId);
-        paramBoolean = true;
+        paramBoolean = bool2;
         continue;
+        label228:
         resetParams();
         int i = super.stopPlay(paramBoolean);
         AppMethodBeat.o(14119);
@@ -536,7 +650,7 @@ public class WXLivePlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.rtmp.WXLivePlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,172 +1,213 @@
 package com.tencent.mm.plugin.finder.feed;
 
 import android.annotation.SuppressLint;
-import android.arch.lifecycle.ViewModelProvider;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.m;
-import android.support.v7.widget.RecyclerView.v;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.m;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.api.c.a;
-import com.tencent.mm.plugin.finder.cgi.bb;
-import com.tencent.mm.plugin.finder.cgi.bb.a;
+import com.tencent.mm.plugin.finder.api.d.a;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.i;
+import com.tencent.mm.plugin.finder.b.j;
 import com.tencent.mm.plugin.finder.event.a.b;
 import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
+import com.tencent.mm.plugin.finder.feed.ui.FinderPostPreviewUI;
 import com.tencent.mm.plugin.finder.feed.ui.FinderTopicTimelineUI;
-import com.tencent.mm.plugin.finder.feed.ui.OccupyFinderUI10;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.ag;
-import com.tencent.mm.plugin.finder.model.bo;
+import com.tencent.mm.plugin.finder.model.ai;
+import com.tencent.mm.plugin.finder.model.bs;
+import com.tencent.mm.plugin.finder.model.bu;
 import com.tencent.mm.plugin.finder.model.r;
+import com.tencent.mm.plugin.finder.report.am;
+import com.tencent.mm.plugin.finder.report.n;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.storage.data.e.a;
-import com.tencent.mm.plugin.finder.utils.s;
-import com.tencent.mm.plugin.finder.utils.s.a;
-import com.tencent.mm.plugin.finder.utils.w;
-import com.tencent.mm.plugin.finder.utils.y;
-import com.tencent.mm.plugin.finder.video.k.b;
+import com.tencent.mm.plugin.finder.utils.aa;
+import com.tencent.mm.plugin.finder.utils.ab;
+import com.tencent.mm.plugin.finder.utils.ac;
+import com.tencent.mm.plugin.finder.utils.ac.a;
+import com.tencent.mm.plugin.finder.utils.ag;
+import com.tencent.mm.plugin.finder.video.FinderThumbPlayerProxy;
+import com.tencent.mm.plugin.finder.video.FinderVideoLayout;
+import com.tencent.mm.plugin.finder.video.l.b;
 import com.tencent.mm.plugin.finder.view.FinderLikeDrawer;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
-import com.tencent.mm.plugin.i.a.ai;
-import com.tencent.mm.plugin.i.a.v;
+import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
+import com.tencent.mm.plugin.finder.viewmodel.component.al.a;
 import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
 import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
-import com.tencent.mm.protocal.protobuf.awe;
-import com.tencent.mm.protocal.protobuf.ayy;
-import com.tencent.mm.protocal.protobuf.azt;
-import com.tencent.mm.protocal.protobuf.azy;
-import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.protocal.protobuf.bac;
+import com.tencent.mm.protocal.protobuf.bet;
+import com.tencent.mm.protocal.protobuf.bfw;
+import com.tencent.mm.protocal.protobuf.bge;
+import com.tencent.mm.protocal.protobuf.bid;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.o.f;
-import com.tencent.mm.ui.base.o.g;
-import com.tencent.mm.ui.base.u;
-import com.tencent.mm.ui.base.u.b;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.az;
+import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.base.w.b;
+import com.tencent.mm.ui.component.g.a;
+import com.tencent.mm.ui.u;
 import com.tencent.mm.ui.widget.TouchMediaPreviewLayout;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
 import com.tencent.mm.view.RefreshLoadMoreLayout.c;
-import com.tencent.mm.view.recyclerview.h;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.CopyOnWriteArraySet;
 import kotlin.a.j;
 import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.o;
+import kotlin.g.b.q;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedContract;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "Lcom/tencent/mm/plugin/finder/feed/FinderProfileTimelineContract$IProfileTimelinePresenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "commentScene", "", "(Lcom/tencent/mm/ui/MMActivity;I)V", "MENU_ID_CANCEL_FAV_TO_FINDER", "getMENU_ID_CANCEL_FAV_TO_FINDER", "()I", "MENU_ID_CLOSE_COMMENT", "getMENU_ID_CLOSE_COMMENT", "MENU_ID_DELETE_FEED", "getMENU_ID_DELETE_FEED", "MENU_ID_EXPOSE", "getMENU_ID_EXPOSE", "MENU_ID_FAV_TO_FINDER", "getMENU_ID_FAV_TO_FINDER", "MENU_ID_FOLLOW_PAT", "getMENU_ID_FOLLOW_PAT", "MENU_ID_OPEN_COMMENT", "getMENU_ID_OPEN_COMMENT", "MENU_ID_OPEN_IN_FULL_WINDOW", "getMENU_ID_OPEN_IN_FULL_WINDOW", "MENU_ID_REPRINT", "getMENU_ID_REPRINT", "MENU_ID_SHARE_TO_CHAT", "getMENU_ID_SHARE_TO_CHAT", "MENU_ID_SHARE_TO_FAVORITE", "getMENU_ID_SHARE_TO_FAVORITE", "MENU_ID_SHARE_TO_TIMELINE", "getMENU_ID_SHARE_TO_TIMELINE", "MENU_ID_UNFOLLOW", "getMENU_ID_UNFOLLOW", "MENU_ID_UNINTEREST", "getMENU_ID_UNINTEREST", "TAG", "", "getTAG", "()Ljava/lang/String;", "getCommentScene", "getContext", "()Lcom/tencent/mm/ui/MMActivity;", "feedExposeInfoChangeListener", "com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter$feedExposeInfoChangeListener$1", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter$feedExposeInfoChangeListener$1;", "lifeCycleKeeperStore", "Ljava/util/concurrent/CopyOnWriteArraySet;", "mediaBannerViewPool", "Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "tabType", "getTabType", "setTabType", "(I)V", "videoCore", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "viewCallback", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "setViewCallback", "(Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "createFirstMenu", "", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "createSecondMenu", "dealMenuClick", "menuItem", "Landroid/view/MenuItem;", "index", "getActivity", "getCommentDrawer", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent;", "getCreateMoreMenuListener", "Lcom/tencent/mm/ui/base/MMMenuListener$OnCreateMMMenuListener;", "sheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "getCreateSecondMoreMenuListener", "getDataAt", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "getMediaBannerRecyclerViewPool", "getMediaBannerViewPool", "getMoreMenuItemSelectedListener", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "getVideoCore", "getVideoCoreInitializer", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore$Initializer;", "getVideoData", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "initVideoAbout", "initViewCallback", "isEnableFullScreenEnjoyByScene", "", "isFinderSelfScene", "keep", "p0", "loadMoreData", "onAttach", "callback", "onBackPressed", "onDetach", "onFavFeed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "isFav", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onFollow", "isFollow", "onLikeComment", "comment", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "isLike", "onLikeFeed", "private", "likeAction", "preIsPrivate", "onLoadMoreEnd", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "onRefreshEnd", "onUIPause", "onUIResume", "requestRefresh", "shareFeed", "shareFeedToSns", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedContract;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "Lcom/tencent/mm/plugin/finder/feed/FinderProfileTimelineContract$IProfileTimelinePresenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "commentScene", "", "(Lcom/tencent/mm/ui/MMActivity;I)V", "MENU_ID_CANCEL_FAV_TO_FINDER", "getMENU_ID_CANCEL_FAV_TO_FINDER", "()I", "MENU_ID_CLOSE_COMMENT", "getMENU_ID_CLOSE_COMMENT", "MENU_ID_DELETE_FEED", "getMENU_ID_DELETE_FEED", "MENU_ID_EXPOSE", "getMENU_ID_EXPOSE", "MENU_ID_FAV_TO_FINDER", "getMENU_ID_FAV_TO_FINDER", "MENU_ID_FLOAT_MINI_VIEW", "getMENU_ID_FLOAT_MINI_VIEW", "MENU_ID_FOLLOW_PAT", "getMENU_ID_FOLLOW_PAT", "MENU_ID_NOT_SHOW_AT_FEED", "getMENU_ID_NOT_SHOW_AT_FEED", "MENU_ID_OPEN_COMMENT", "getMENU_ID_OPEN_COMMENT", "MENU_ID_OPEN_IN_FULL_WINDOW", "getMENU_ID_OPEN_IN_FULL_WINDOW", "MENU_ID_POST_SAME_STYLE", "getMENU_ID_POST_SAME_STYLE", "MENU_ID_REPRINT", "getMENU_ID_REPRINT", "MENU_ID_SHARE_RINGTONE", "getMENU_ID_SHARE_RINGTONE", "MENU_ID_SHARE_TEXT_STATUS", "getMENU_ID_SHARE_TEXT_STATUS", "MENU_ID_SHARE_TO_CHAT", "getMENU_ID_SHARE_TO_CHAT", "MENU_ID_SHARE_TO_FAVORITE", "getMENU_ID_SHARE_TO_FAVORITE", "MENU_ID_SHARE_TO_TIMELINE", "getMENU_ID_SHARE_TO_TIMELINE", "MENU_ID_SHOW_AT_FEED", "getMENU_ID_SHOW_AT_FEED", "MENU_ID_SPEED_CTRL", "getMENU_ID_SPEED_CTRL", "MENU_ID_SPLIT_SCREEN", "getMENU_ID_SPLIT_SCREEN", "MENU_ID_UNFOLLOW", "getMENU_ID_UNFOLLOW", "MENU_ID_UNINTEREST", "getMENU_ID_UNINTEREST", "TAG", "", "getTAG", "()Ljava/lang/String;", "getCommentScene", "getContext", "()Lcom/tencent/mm/ui/MMActivity;", "feedExposeInfoChangeListener", "com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter$feedExposeInfoChangeListener$1", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter$feedExposeInfoChangeListener$1;", "lifeCycleKeeperStore", "Ljava/util/concurrent/CopyOnWriteArraySet;", "mediaBannerViewPool", "Landroidx/recyclerview/widget/RecyclerView$RecycledViewPool;", "tabType", "getTabType", "setTabType", "(I)V", "videoCore", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "viewCallback", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;", "setViewCallback", "(Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$ViewCallback;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "createFirstMenu", "", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "from", "createSecondMenu", "sheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "dealMenuClick", "menuItem", "Landroid/view/MenuItem;", "index", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "getActivity", "getCommentDrawer", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent;", "getCreateMoreMenuListener", "Lcom/tencent/mm/ui/base/MMMenuListener$OnCreateMMMenuListener;", "getCreateSecondMoreMenuListener", "getDataAt", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "getMediaBannerRecyclerViewPool", "getMediaBannerViewPool", "getMoreMenuItemSelectedListener", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "getVideoCore", "getVideoCoreInitializer", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore$Initializer;", "getVideoData", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "initVideoAbout", "initViewCallback", "isEnableFullScreenEnjoyByScene", "", "isFinderSelfScene", "keep", "p0", "loadMoreData", "onAttach", "callback", "onBackPressed", "onDetach", "onFavFeed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "isFav", "onFollow", "isFollow", "onLikeComment", "comment", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "isLike", "onLikeFeed", "private", "likeAction", "preIsPrivate", "onLoadMoreEnd", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "onRefreshEnd", "onUIPause", "onUIResume", "requestRefresh", "shareFeed", "shareFeedToSns", "plugin-finder_release"})
 public abstract class b$a
-  implements ab.a, i, com.tencent.mm.plugin.finder.presenter.base.a<b.b>, com.tencent.mm.vending.e.b<com.tencent.mm.vending.e.a>
+  implements ah.a, i, com.tencent.mm.plugin.finder.presenter.base.a<b.b>, com.tencent.mm.vending.e.b<com.tencent.mm.vending.e.a>
 {
   private final String TAG;
-  public int dLS;
-  public final MMActivity gte;
-  final int pLU;
-  final int pMa;
-  public final com.tencent.mm.plugin.finder.video.k tCD;
-  public final int tCE;
-  final int tLD;
-  private final int tLE;
-  private final int tLF;
-  final int tLG;
-  final int tLH;
-  final int tLI;
-  final int tLJ;
-  final int tLK;
-  final int tLL;
-  final int tLM;
-  public b.b tLN;
-  private RecyclerView.m tLO;
-  private final CopyOnWriteArraySet<com.tencent.mm.vending.e.a> tLP;
-  private final f tLQ;
-  final int tqv;
-  private final int tzW;
+  public int fEH;
+  public final MMActivity iXq;
+  private final int wXf;
+  private final int wXg;
+  private final int xhI;
+  public final com.tencent.mm.plugin.finder.video.l xkW;
+  public final int xkX;
+  private final int xvA;
+  private final int xvB;
+  public b.b xvC;
+  private RecyclerView.m xvD;
+  private final CopyOnWriteArraySet<com.tencent.mm.vending.e.a> xvE;
+  private final f xvF;
+  final int xvj;
+  final int xvk;
+  private final int xvl;
+  private final int xvm;
+  final int xvn;
+  final int xvo;
+  final int xvp;
+  final int xvq;
+  final int xvr;
+  final int xvs;
+  final int xvt;
+  private final int xvu;
+  private final int xvv;
+  private final int xvw;
+  private final int xvx;
+  private final int xvy;
+  private final int xvz;
   
   private b$a(MMActivity paramMMActivity, int paramInt)
   {
-    this.gte = paramMMActivity;
-    this.tCE = paramInt;
+    this.iXq = paramMMActivity;
+    this.xkX = paramInt;
     this.TAG = "Finder.FinderLoaderFeedUIContract.Presenter";
-    this.tLD = 99;
-    this.tzW = 100;
-    this.pMa = 101;
-    this.tqv = 102;
-    this.pLU = 103;
-    this.tLE = 104;
-    this.tLF = 105;
-    this.tLG = 106;
-    this.tLH = 107;
-    this.tLI = 108;
-    this.tLJ = 109;
-    this.tLK = 110;
-    this.tLL = 111;
-    this.tLM = 112;
-    this.tLP = new CopyOnWriteArraySet();
-    this.tLO = new RecyclerView.m();
-    this.tLO.aw(1, 10);
-    this.tLO.aw(2, 10);
-    this.tCD = new com.tencent.mm.plugin.finder.video.k();
-    this.tLQ = new f(this);
+    this.xvj = 99;
+    this.xhI = 100;
+    this.xvk = 101;
+    this.wXf = 102;
+    this.wXg = 103;
+    this.xvl = 104;
+    this.xvm = 105;
+    this.xvn = 106;
+    this.xvo = 107;
+    this.xvp = 108;
+    this.xvq = 109;
+    this.xvr = 110;
+    this.xvs = 111;
+    this.xvt = 112;
+    this.xvu = 113;
+    this.xvv = 114;
+    this.xvw = 115;
+    this.xvx = 116;
+    this.xvy = 117;
+    this.xvz = 118;
+    this.xvA = 119;
+    this.xvB = 200;
+    this.xvE = new CopyOnWriteArraySet();
+    this.xvD = new RecyclerView.m();
+    this.xvD.aJ(1, 10);
+    this.xvD.aJ(2, 10);
+    this.xkW = new com.tencent.mm.plugin.finder.video.l();
+    this.xvF = new f(this);
   }
   
-  public abstract bo IE(int paramInt);
+  public abstract bu Mv(int paramInt);
   
-  public final o.f a(final BaseFinderFeed paramBaseFinderFeed, com.tencent.mm.ui.widget.a.e parame)
+  public q.f a(final BaseFinderFeed paramBaseFinderFeed, final com.tencent.mm.ui.widget.a.e parame)
   {
-    p.h(paramBaseFinderFeed, "feed");
-    p.h(parame, "sheet");
-    return (o.f)new g(this, paramBaseFinderFeed);
+    p.k(paramBaseFinderFeed, "feed");
+    p.k(parame, "sheet");
+    return (q.f)new h(this, paramBaseFinderFeed, parame);
+  }
+  
+  public final q.f a(final BaseFinderFeed paramBaseFinderFeed, com.tencent.mm.ui.widget.a.e parame, final int paramInt)
+  {
+    p.k(paramBaseFinderFeed, "feed");
+    p.k(parame, "sheet");
+    return (q.f)new g(this, paramBaseFinderFeed, paramInt);
+  }
+  
+  public final q.g a(final BaseFinderFeed paramBaseFinderFeed, final int paramInt, final com.tencent.mm.view.recyclerview.i parami)
+  {
+    p.k(paramBaseFinderFeed, "feed");
+    p.k(parami, "holder");
+    return (q.g)new i(this, paramBaseFinderFeed, paramInt, parami);
   }
   
   public void a(b.b paramb)
   {
-    p.h(paramb, "callback");
-    this.tLN = paramb;
-    dcb();
-    EventCenter.instance.add((IListener)this.tLQ);
-    paramb = this.tCD;
-    b.b localb = this.tLN;
+    p.k(paramb, "callback");
+    this.xvC = paramb;
+    dsr();
+    EventCenter.instance.add((IListener)this.xvF);
+    paramb = this.xkW;
+    b.b localb = this.xvC;
     if (localb == null) {
-      p.hyc();
+      p.iCn();
     }
-    com.tencent.mm.plugin.finder.video.k.a(paramb, (AppCompatActivity)localb.gte, (k.b)new j(this), 4);
+    com.tencent.mm.plugin.finder.video.l.a(paramb, (AppCompatActivity)localb.iXq, (l.b)new j(this), 4);
   }
   
   @SuppressLint({"ResourceType"})
-  public void a(final BaseFinderFeed paramBaseFinderFeed, MenuItem paramMenuItem, int paramInt)
+  public void a(final BaseFinderFeed paramBaseFinderFeed, MenuItem paramMenuItem, int paramInt1, int paramInt2, com.tencent.mm.view.recyclerview.i parami)
   {
-    FinderObjectDesc localFinderObjectDesc = null;
-    Object localObject2 = null;
     Object localObject1 = null;
-    p.h(paramBaseFinderFeed, "feed");
-    p.h(paramMenuItem, "menuItem");
-    Log.i(getTAG(), "getMoreMenuItemSelectedListener feed " + paramBaseFinderFeed + ' ' + paramInt + " menuItem:" + paramMenuItem.getItemId());
-    paramInt = paramMenuItem.getItemId();
-    if (paramInt == this.tLD)
+    Object localObject2 = null;
+    Object localObject3 = null;
+    Object localObject4 = null;
+    p.k(paramBaseFinderFeed, "feed");
+    p.k(paramMenuItem, "menuItem");
+    p.k(parami, "holder");
+    Log.i(getTAG(), "getMoreMenuItemSelectedListener feed " + paramBaseFinderFeed + ' ' + paramInt1 + " menuItem:" + paramMenuItem.getItemId());
+    paramInt1 = paramMenuItem.getItemId();
+    if (paramInt1 == this.xvy)
     {
-      paramInt = l(paramBaseFinderFeed);
-      if (paramInt >= 0)
+      paramMenuItem = this.xvC;
+      if (paramMenuItem != null)
       {
-        paramMenuItem = com.tencent.mm.plugin.finder.feed.logic.c.tUx;
-        com.tencent.mm.plugin.finder.feed.logic.c.a((Context)this.gte, paramBaseFinderFeed.feedObject.getId(), paramBaseFinderFeed.feedObject.getObjectNonceId(), (kotlin.g.a.b)new a(this, paramBaseFinderFeed));
+        parami = com.tencent.mm.ui.component.g.Xox;
+        com.tencent.mm.plugin.finder.viewmodel.component.t.a((com.tencent.mm.plugin.finder.viewmodel.component.t)com.tencent.mm.ui.component.g.b((AppCompatActivity)this.iXq).i(com.tencent.mm.plugin.finder.viewmodel.component.t.class), new bs(paramBaseFinderFeed.feedObject.getFeedObject()), paramMenuItem.xvJ.getRecyclerView());
       }
     }
-    label335:
+    label539:
     do
     {
       do
@@ -175,90 +216,126 @@ public abstract class b$a
         {
           do
           {
-            return;
-            Log.i(getTAG(), "[UNINTEREST] pos error ".concat(String.valueOf(paramInt)));
-            return;
-          } while (paramInt == this.tzW);
-          if (paramInt == this.tqv)
+            do
+            {
+              return;
+              if (paramInt1 != this.xvz) {
+                break;
+              }
+            } while (this.xvC == null);
+            localObject1 = (List)new ArrayList();
+            paramBaseFinderFeed = parami.RD(b.f.finder_feed_full_footer_layout);
+            if (paramBaseFinderFeed != null) {
+              ((List)localObject1).add(paramBaseFinderFeed);
+            }
+            paramBaseFinderFeed = (FinderVideoLayout)parami.RD(b.f.finder_banner_video_layout);
+            if (paramBaseFinderFeed != null) {}
+            for (paramBaseFinderFeed = paramBaseFinderFeed.getVideoView();; paramBaseFinderFeed = null)
+            {
+              paramMenuItem = paramBaseFinderFeed;
+              if (!(paramBaseFinderFeed instanceof FinderThumbPlayerProxy)) {
+                paramMenuItem = null;
+              }
+              paramBaseFinderFeed = (FinderThumbPlayerProxy)paramMenuItem;
+              if (paramBaseFinderFeed == null) {
+                break;
+              }
+              paramMenuItem = com.tencent.mm.ui.component.g.Xox;
+              com.tencent.mm.plugin.finder.viewmodel.component.al.a((com.tencent.mm.plugin.finder.viewmodel.component.al)com.tencent.mm.ui.component.g.b((AppCompatActivity)this.iXq).i(com.tencent.mm.plugin.finder.viewmodel.component.al.class), (List)localObject1, paramBaseFinderFeed);
+              return;
+            }
+            if (paramInt1 == this.xvj)
+            {
+              paramInt1 = m(paramBaseFinderFeed);
+              if (paramInt1 >= 0)
+              {
+                paramMenuItem = com.tencent.mm.plugin.finder.feed.logic.c.xFs;
+                com.tencent.mm.plugin.finder.feed.logic.c.a((Context)this.iXq, paramBaseFinderFeed.feedObject.getId(), paramBaseFinderFeed.feedObject.getObjectNonceId(), (kotlin.g.a.b)new a(this, paramBaseFinderFeed));
+                return;
+              }
+              Log.i(getTAG(), "[UNINTEREST] pos error ".concat(String.valueOf(paramInt1)));
+              return;
+            }
+          } while (paramInt1 == this.xhI);
+          if (paramInt1 == this.wXf)
           {
             new Bundle();
-            s.a.a(s.vWt, (AppCompatActivity)this.gte, paramBaseFinderFeed.feedObject, 3, 4);
+            ac.a.a(ac.AEJ, (AppCompatActivity)this.iXq, paramBaseFinderFeed.feedObject, null, 3, null, 20);
             return;
           }
-          if (paramInt == this.pLU)
+          if (paramInt1 == this.wXg)
           {
-            paramMenuItem = s.vWt;
-            s.a.a((AppCompatActivity)this.gte, paramBaseFinderFeed, 0, 0, 28);
+            ac.a.a(ac.AEJ, (AppCompatActivity)this.iXq, paramBaseFinderFeed, 0, 0, 28);
             return;
           }
-          if (paramInt == this.tLE)
+          if (paramInt1 == this.xvl)
           {
-            paramMenuItem = com.tencent.mm.plugin.finder.utils.g.vVq;
-            com.tencent.mm.plugin.finder.utils.g.a(paramBaseFinderFeed, this.gte);
+            paramMenuItem = com.tencent.mm.plugin.finder.utils.i.ADk;
+            com.tencent.mm.plugin.finder.utils.i.a(paramBaseFinderFeed, this.iXq);
             return;
           }
-          if (paramInt != this.pMa) {
-            break label335;
+          if (paramInt1 != this.xvk) {
+            break label539;
           }
-          paramMenuItem = y.vXH;
-          if (!y.w(paramBaseFinderFeed)) {
+          paramMenuItem = com.tencent.mm.plugin.finder.utils.aj.AGc;
+          if (!com.tencent.mm.plugin.finder.utils.aj.w(paramBaseFinderFeed)) {
             break;
           }
           paramMenuItem = paramBaseFinderFeed.feedObject.getLiveInfo();
         } while (paramMenuItem == null);
         long l = paramMenuItem.liveId;
-        paramMenuItem = com.tencent.mm.plugin.finder.feed.logic.a.tUv;
-        com.tencent.mm.plugin.finder.feed.logic.a.b((Context)this.gte, l, paramBaseFinderFeed.feedObject.getUserName());
+        paramMenuItem = com.tencent.mm.plugin.finder.feed.logic.a.xFq;
+        com.tencent.mm.plugin.finder.feed.logic.a.d((Context)this.iXq, l, paramBaseFinderFeed.feedObject.getUserName());
         return;
-        paramMenuItem = com.tencent.mm.plugin.finder.feed.logic.a.tUv;
-        com.tencent.mm.plugin.finder.feed.logic.a.a((Context)this.gte, paramBaseFinderFeed.feedObject.field_id, 0L, 0, 12);
+        paramMenuItem = com.tencent.mm.plugin.finder.feed.logic.a.xFq;
+        com.tencent.mm.plugin.finder.feed.logic.a.a((Context)this.iXq, paramBaseFinderFeed.feedObject.field_id, 0L, 0, 12);
         return;
-        if (paramInt == this.tLF)
+        if (paramInt1 == this.xvm)
         {
-          localObject1 = new Intent();
-          paramMenuItem = paramBaseFinderFeed.feedObject.getFeedObject().objectDesc;
-          if (paramMenuItem != null) {}
-          for (paramMenuItem = paramMenuItem.toByteArray();; paramMenuItem = null)
-          {
-            ((Intent)localObject1).putExtra("postRefMediaList", paramMenuItem);
-            paramMenuItem = y.vXH;
-            ((Intent)localObject1).putExtra("postRefFeedInfo", y.u(paramBaseFinderFeed).toByteArray());
-            ((Intent)localObject1).putExtra("postType", paramBaseFinderFeed.feedObject.getMediaType());
-            ((Intent)localObject1).putExtra("key_finder_post_from", 5);
-            paramBaseFinderFeed = com.tencent.mm.plugin.finder.utils.a.vUU;
-            com.tencent.mm.plugin.finder.utils.a.enterFinderPostUI((Context)this.gte, (Intent)localObject1);
-            return;
+          parami = new Intent();
+          localObject1 = paramBaseFinderFeed.feedObject.getFeedObject().objectDesc;
+          paramMenuItem = localObject4;
+          if (localObject1 != null) {
+            paramMenuItem = ((FinderObjectDesc)localObject1).toByteArray();
           }
-        }
-        if (paramInt == this.tLH)
-        {
-          ((v)com.tencent.mm.kernel.g.af(v.class)).a(paramBaseFinderFeed.feedObject.getId(), paramBaseFinderFeed.feedObject.getFeedObject(), paramBaseFinderFeed.feedObject.getObjectNonceId(), true, (ai)new b(this));
+          parami.putExtra("postRefMediaList", paramMenuItem);
+          paramMenuItem = com.tencent.mm.plugin.finder.utils.aj.AGc;
+          parami.putExtra("postRefFeedInfo", com.tencent.mm.plugin.finder.utils.aj.u(paramBaseFinderFeed).toByteArray());
+          parami.putExtra("postType", paramBaseFinderFeed.feedObject.getMediaType());
+          parami.putExtra("key_finder_post_from", 5);
+          paramBaseFinderFeed = com.tencent.mm.plugin.finder.utils.a.ACH;
+          com.tencent.mm.plugin.finder.utils.a.enterFinderPostUI((Context)this.iXq, parami);
           return;
         }
-        if (paramInt == this.tLG)
+        if (paramInt1 == this.xvo)
         {
-          ((v)com.tencent.mm.kernel.g.af(v.class)).a(paramBaseFinderFeed.feedObject.getId(), paramBaseFinderFeed.feedObject.getFeedObject(), paramBaseFinderFeed.feedObject.getObjectNonceId(), false, (ai)new c(this));
+          ((com.tencent.mm.plugin.finder.service.l)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.finder.service.l.class)).a(paramBaseFinderFeed.feedObject.getId(), paramBaseFinderFeed.feedObject.getFeedObject(), paramBaseFinderFeed.feedObject.getObjectNonceId(), true, (com.tencent.mm.plugin.findersdk.a.aj)new b(this));
           return;
         }
-        if (paramInt != this.tLJ) {
+        if (paramInt1 == this.xvn)
+        {
+          ((com.tencent.mm.plugin.finder.service.l)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.finder.service.l.class)).a(paramBaseFinderFeed.feedObject.getId(), paramBaseFinderFeed.feedObject.getFeedObject(), paramBaseFinderFeed.feedObject.getObjectNonceId(), false, (com.tencent.mm.plugin.findersdk.a.aj)new c(this));
+          return;
+        }
+        if (paramInt1 != this.xvq) {
           break;
         }
       } while (!paramBaseFinderFeed.feedObject.isPostFinish());
-      paramMenuItem = FinderReporterUIC.wzC;
-      paramMenuItem = FinderReporterUIC.a.fH((Context)this.gte);
+      paramMenuItem = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
+      paramMenuItem = aj.a.fZ((Context)this.iXq);
       if (paramMenuItem != null) {
-        paramInt = paramMenuItem.tCE;
+        paramInt1 = paramMenuItem.xkX;
       }
       for (;;)
       {
-        if (paramInt == 52) {
-          if ((this.gte instanceof FinderTopicTimelineUI))
+        if (paramInt1 == 52) {
+          if ((this.iXq instanceof FinderTopicTimelineUI))
           {
-            paramMenuItem = this.gte;
+            paramMenuItem = this.iXq;
             if (paramMenuItem == null)
             {
               throw new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.feed.ui.FinderTopicTimelineUI");
-              paramInt = 0;
+              paramInt1 = 0;
               continue;
             }
             ((FinderTopicTimelineUI)paramMenuItem).onBackPressed();
@@ -267,236 +344,333 @@ public abstract class b$a
       }
       for (;;)
       {
-        paramMenuItem = com.tencent.mm.plugin.finder.report.k.vfA;
-        com.tencent.mm.plugin.finder.report.k.a((Context)this.gte, 1, 1, Integer.valueOf(paramBaseFinderFeed.feedObject.field_finderObject.follow_feed_count));
+        paramMenuItem = n.zWF;
+        n.a((Context)this.iXq, 1, 1, Integer.valueOf(paramBaseFinderFeed.feedObject.field_finderObject.follow_feed_count));
         return;
-        paramMenuItem = com.tencent.mm.plugin.finder.storage.data.e.vFX;
-        e.a.n(paramBaseFinderFeed.feedObject);
-        paramMenuItem = w.vXp;
-        localFinderObjectDesc = paramBaseFinderFeed.feedObject.getFeedObject().objectDesc;
+        paramMenuItem = com.tencent.mm.plugin.finder.storage.data.e.AmW;
+        e.a.o(paramBaseFinderFeed.feedObject);
+        paramMenuItem = ag.AFH;
+        parami = paramBaseFinderFeed.feedObject.getFeedObject().objectDesc;
         paramMenuItem = (MenuItem)localObject1;
-        if (localFinderObjectDesc != null) {
-          paramMenuItem = localFinderObjectDesc.feedBgmInfo;
+        if (parami != null) {
+          paramMenuItem = parami.feedBgmInfo;
         }
-        w.a(paramMenuItem, Long.valueOf(paramBaseFinderFeed.feedObject.field_id), 0);
+        ag.a(paramMenuItem, Long.valueOf(paramBaseFinderFeed.feedObject.field_id), 0);
       }
-      if (paramInt == this.tLK)
+      if (paramInt1 == this.xvr)
       {
-        paramMenuItem = com.tencent.mm.plugin.finder.report.aj.viU;
-        paramMenuItem = FinderReporterUIC.wzC;
-        localObject1 = FinderReporterUIC.a.fH((Context)this.gte);
-        paramMenuItem = localFinderObjectDesc;
-        if (localObject1 != null) {
-          paramMenuItem = ((FinderReporterUIC)localObject1).dIx();
-        }
-        com.tencent.mm.plugin.finder.report.aj.a(paramMenuItem, "fav_in_menu", false, paramBaseFinderFeed.lT());
-        u.a((Context)this.gte, this.gte.getResources().getString(2131759810), (u.b)new d(this, paramBaseFinderFeed));
-        return;
-      }
-      if (paramInt == this.tLL)
-      {
-        paramMenuItem = com.tencent.mm.plugin.finder.report.aj.viU;
-        paramMenuItem = FinderReporterUIC.wzC;
-        localObject1 = FinderReporterUIC.a.fH((Context)this.gte);
+        paramMenuItem = am.zZN;
+        paramMenuItem = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
+        parami = aj.a.fZ((Context)this.iXq);
         paramMenuItem = localObject2;
-        if (localObject1 != null) {
-          paramMenuItem = ((FinderReporterUIC)localObject1).dIx();
+        if (parami != null) {
+          paramMenuItem = parami.ekY();
         }
-        com.tencent.mm.plugin.finder.report.aj.a(paramMenuItem, "unfav_in_menu", false, paramBaseFinderFeed.lT());
-        u.a((Context)this.gte, this.gte.getResources().getString(2131759809), (u.b)new e(this, paramBaseFinderFeed));
+        am.a(paramMenuItem, "fav_in_menu", false, paramBaseFinderFeed.mf());
+        w.a((Context)this.iXq, this.iXq.getResources().getString(b.j.finder_has_fav_title), (w.b)new d(this, paramBaseFinderFeed));
         return;
       }
-    } while (paramInt != this.tLM);
-    paramMenuItem = new Intent();
-    paramMenuItem.putExtra("KEY_FROM_SCENE", 1);
-    paramMenuItem.putExtra("KEY_USERNAME", z.aUg());
-    paramMenuItem.putExtra("KEY_FINDER_SELF_FLAG", true);
-    localObject1 = OccupyFinderUI10.udX;
-    paramMenuItem.putExtra(OccupyFinderUI10.dez(), true);
-    localObject1 = OccupyFinderUI10.udX;
-    paramMenuItem.putExtra(OccupyFinderUI10.deA(), false);
-    localObject1 = y.vXH;
-    y.a(0, j.listOf(paramBaseFinderFeed), null, paramMenuItem);
-    paramBaseFinderFeed = com.tencent.mm.plugin.finder.utils.a.vUU;
-    com.tencent.mm.plugin.finder.utils.a.ac((Context)this.gte, paramMenuItem);
+      if (paramInt1 == this.xvs)
+      {
+        paramMenuItem = am.zZN;
+        paramMenuItem = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
+        parami = aj.a.fZ((Context)this.iXq);
+        paramMenuItem = localObject3;
+        if (parami != null) {
+          paramMenuItem = parami.ekY();
+        }
+        am.a(paramMenuItem, "unfav_in_menu", false, paramBaseFinderFeed.mf());
+        w.a((Context)this.iXq, this.iXq.getResources().getString(b.j.finder_has_cancel_fav_title), (w.b)new e(this, paramBaseFinderFeed));
+        return;
+      }
+      if (paramInt1 == this.xvt)
+      {
+        paramMenuItem = new Intent();
+        paramMenuItem.putExtra("KEY_FROM_SCENE", 1);
+        paramMenuItem.putExtra("KEY_USERNAME", z.bdh());
+        paramMenuItem.putExtra("KEY_FINDER_SELF_FLAG", true);
+        parami = FinderPostPreviewUI.xRF;
+        paramMenuItem.putExtra(FinderPostPreviewUI.dvS(), true);
+        parami = FinderPostPreviewUI.xRF;
+        paramMenuItem.putExtra(FinderPostPreviewUI.dvT(), false);
+        parami = com.tencent.mm.plugin.finder.utils.aj.AGc;
+        com.tencent.mm.plugin.finder.utils.aj.a(0, j.listOf(paramBaseFinderFeed), null, paramMenuItem);
+        paramBaseFinderFeed = com.tencent.mm.plugin.finder.utils.a.ACH;
+        com.tencent.mm.plugin.finder.utils.a.ac((Context)this.iXq, paramMenuItem);
+        return;
+      }
+      if (paramInt1 == this.xvu)
+      {
+        paramMenuItem = ac.AEJ;
+        ac.a.a((AppCompatActivity)this.iXq, paramBaseFinderFeed, null, 12);
+        return;
+      }
+      if (paramInt1 == this.xvx)
+      {
+        paramMenuItem = aa.AEn;
+        aa.a((AppCompatActivity)this.iXq, paramBaseFinderFeed);
+        return;
+      }
+      if (paramInt1 == this.xvB)
+      {
+        paramMenuItem = ab.AEA;
+        paramMenuItem = (Activity)this.iXq;
+        parami = com.tencent.mm.plugin.finder.storage.logic.g.AnT;
+        ab.a(paramBaseFinderFeed, paramMenuItem, com.tencent.mm.plugin.finder.storage.logic.g.aEW(paramBaseFinderFeed.feedObject.getFromAppId()));
+        return;
+      }
+    } while (paramInt1 != this.xvA);
+    if (ar.atR(this.iXq.getTaskId()))
+    {
+      az.a(az.hXf(), this.iXq.getTaskId(), 0);
+      u.a(u.hHB(), this.iXq.getTaskId(), 0);
+      return;
+    }
+    az.a(az.hXf(), this.iXq.getTaskId(), 2);
+    u.a(u.hHB(), this.iXq.getTaskId(), 2);
   }
   
-  public void a(BaseFinderFeed paramBaseFinderFeed, m paramm)
+  public void a(BaseFinderFeed paramBaseFinderFeed, com.tencent.mm.ui.base.o paramo, int paramInt)
   {
-    p.h(paramBaseFinderFeed, "feed");
-    p.h(paramm, "menu");
-    Object localObject = y.vXH;
-    boolean bool;
-    if (y.C(paramBaseFinderFeed.feedObject))
+    paramInt = 0;
+    p.k(paramBaseFinderFeed, "feed");
+    p.k(paramo, "menu");
+    Object localObject1 = this.iXq.getString(b.j.app_share_to_weixin);
+    p.j(localObject1, "context.getString(R.string.app_share_to_weixin)");
+    Object localObject2 = this.iXq.getString(b.j.finder_share_timeline);
+    p.j(localObject2, "context.getString(R.string.finder_share_timeline)");
+    p.j(this.iXq.getString(b.j.favorite), "context.getString(R.string.favorite)");
+    boolean bool2;
+    if ((paramBaseFinderFeed.feedObject.isOnlySelfSee()) || (paramBaseFinderFeed.feedObject.isNotShare()))
     {
-      int i = this.tLJ;
-      localObject = y.vXH;
-      localObject = (CharSequence)y.x(paramBaseFinderFeed);
-      if ((!paramBaseFinderFeed.feedObject.isPostFinish()) || (paramBaseFinderFeed.feedObject.isPostFailed()))
+      localObject1 = com.tencent.mm.plugin.finder.utils.aj.AGc;
+      localObject1 = com.tencent.mm.plugin.finder.utils.aj.el("FinderSafeSelfSeeForward", b.j.finder_self_see_tips_forward);
+      localObject2 = com.tencent.mm.plugin.finder.utils.aj.AGc;
+      localObject2 = com.tencent.mm.plugin.finder.utils.aj.el("FinderSafeSelfSeeShare", b.j.finder_self_see_tips_sns);
+      com.tencent.mm.plugin.finder.utils.aj localaj = com.tencent.mm.plugin.finder.utils.aj.AGc;
+      com.tencent.mm.plugin.finder.utils.aj.el("FinderSafeSelfSeeCollect", b.j.finder_self_see_tips_fav);
+      bool2 = true;
+    }
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      paramo.a(this.wXf, (CharSequence)localObject1, b.i.finder_icons_filled_share, this.iXq.getResources().getColor(b.c.Brand), bool1);
+      paramo.a(this.wXg, (CharSequence)localObject2, b.i.bottomsheet_icon_moment, 0, bool2);
+      localObject1 = com.tencent.mm.plugin.finder.utils.aj.AGc;
+      if (!com.tencent.mm.plugin.finder.utils.aj.z(paramBaseFinderFeed.feedObject.getFeedObject())) {
+        paramo.a(this.xvr, (CharSequence)this.iXq.getString(b.j.finder_self_see_tips_fav), b.i.finder_icons_filled_star2, this.iXq.getResources().getColor(b.c.orange_100), true);
+      }
+      for (;;)
       {
-        bool = true;
-        paramm.a(i, (CharSequence)localObject, 2131690227, bool);
+        localObject1 = com.tencent.mm.plugin.finder.storage.d.AjH;
+        if (((Number)com.tencent.mm.plugin.finder.storage.d.dXB().aSr()).intValue() == 1)
+        {
+          localObject1 = com.tencent.mm.plugin.finder.utils.aj.AGc;
+          if (com.tencent.mm.plugin.finder.utils.aj.D(paramBaseFinderFeed.feedObject.getFeedObject()))
+          {
+            localObject1 = n.zWF;
+            n.j((Context)this.iXq, paramBaseFinderFeed.mf());
+            paramo.a(this.xvu, (CharSequence)this.iXq.getString(b.j.finder_share_text_stauts_title), b.i.state_icon_main, this.iXq.getResources().getColor(b.c.Blue));
+          }
+        }
+        localObject1 = com.tencent.mm.plugin.finder.utils.aj.AGc;
+        if (com.tencent.mm.plugin.finder.utils.aj.C(paramBaseFinderFeed.feedObject.getFeedObject())) {
+          paramo.a(this.xvx, (CharSequence)this.iXq.getString(b.j.finder_share_ringtone_title), b.i.finder_icons_colorring, this.iXq.getResources().getColor(b.c.Yellow));
+        }
+        paramo = n.zWF;
+        n.O(paramBaseFinderFeed.mf(), this.xkX);
+        paramo = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
+        paramo = aj.a.fZ((Context)this.iXq);
+        if (paramo != null)
+        {
+          paramo = com.tencent.mm.plugin.finder.viewmodel.component.aj.b(paramo);
+          if (paramo != null) {
+            paramo.dpO().KL(paramBaseFinderFeed.mf());
+          }
+        }
+        return;
+        if (dsq())
+        {
+          localObject1 = com.tencent.mm.plugin.finder.upload.action.c.ABD;
+          if (!com.tencent.mm.plugin.finder.upload.action.c.ecy().p(paramBaseFinderFeed.feedObject.getFeedObject())) {
+            paramInt = 1;
+          }
+          if (paramInt != 0) {
+            paramo.a(this.xvr, (CharSequence)this.iXq.getString(b.j.favorite), b.i.finder_icons_filled_star2, this.iXq.getResources().getColor(b.c.orange_100));
+          } else {
+            paramo.a(this.xvs, (CharSequence)this.iXq.getString(b.j.finder_cancel_fav_title), b.i.finder_icons_filled_unstar2, this.iXq.getResources().getColor(b.c.orange_100));
+          }
+        }
+      }
+      bool2 = false;
+    }
+  }
+  
+  public void a(BaseFinderFeed paramBaseFinderFeed, com.tencent.mm.ui.base.o paramo, com.tencent.mm.ui.widget.a.e parame)
+  {
+    p.k(paramBaseFinderFeed, "feed");
+    p.k(paramo, "menu");
+    p.k(parame, "sheet");
+    label167:
+    boolean bool;
+    if (ar.hIH())
+    {
+      if (ar.atR(this.iXq.getTaskId())) {
+        paramo.b(this.xvA, (CharSequence)this.iXq.getString(b.j.close_split_screen), b.i.icons_outlined_merge);
       }
     }
     else
     {
-      localObject = y.vXH;
-      if (y.h(paramBaseFinderFeed)) {
-        break label128;
+      if (paramBaseFinderFeed.feedObject.isLongVideo())
+      {
+        paramo.b(this.xvy, (CharSequence)this.iXq.getString(b.j.finder_live_more_action_mini_window), b.i.icons_filled_mini_window_2);
+        localObject1 = this.xvC;
+        if (localObject1 != null)
+        {
+          localObject1 = ((b.b)localObject1).xvJ.getRecyclerView();
+          if (localObject1 != null)
+          {
+            Object localObject2 = com.tencent.mm.plugin.finder.viewmodel.component.al.Bou;
+            localObject2 = al.a.w((RecyclerView)localObject1);
+            localObject1 = localObject2;
+            if (localObject2 != null) {
+              break label167;
+            }
+          }
+        }
+        localObject1 = this.iXq.getString(b.j.mega_video_play_speed_text);
+        p.j(localObject1, "context.getString(R.stri…ga_video_play_speed_text)");
+        paramo.b(this.xvz, (CharSequence)localObject1, b.i.icons_outlined_play_control_2);
       }
-      paramm.b(this.pMa, (CharSequence)this.gte.getString(2131763159), 2131690898);
+      Object localObject1 = ab.AEA;
+      ab.a((Activity)this.iXq, paramBaseFinderFeed, paramo, parame, this.xvB);
+      parame = com.tencent.mm.plugin.finder.utils.aj.AGc;
+      if (com.tencent.mm.plugin.finder.utils.aj.D(paramBaseFinderFeed.feedObject))
+      {
+        int i = this.xvq;
+        parame = com.tencent.mm.plugin.finder.utils.aj.AGc;
+        parame = (CharSequence)com.tencent.mm.plugin.finder.utils.aj.x(paramBaseFinderFeed);
+        int j = b.i.icons_outlined_bgm_play;
+        if ((paramBaseFinderFeed.feedObject.isPostFinish()) && (!paramBaseFinderFeed.feedObject.isPostFailed())) {
+          break label343;
+        }
+        bool = true;
+        label266:
+        paramo.a(i, parame, j, bool);
+      }
+      parame = com.tencent.mm.plugin.finder.utils.aj.AGc;
+      if (com.tencent.mm.plugin.finder.utils.aj.j(paramBaseFinderFeed)) {
+        break label349;
+      }
+      paramo.b(this.xvk, (CharSequence)this.iXq.getString(b.j.more_menu_back), b.i.icons_outlined_report_problem);
     }
-    label128:
+    label343:
+    label349:
     do
     {
       do
       {
         return;
-        bool = false;
+        paramo.b(this.xvA, (CharSequence)this.iXq.getString(b.j.split_screen), b.i.icons_outlined_sperated);
         break;
-      } while (dca());
-      localObject = y.vXH;
-    } while ((!y.isAnyEnableFullScreenEnjoy()) || ((paramBaseFinderFeed.cxn() != 4) && (paramBaseFinderFeed.cxn() != 2)));
-    paramm.b(this.tLM, (CharSequence)this.gte.getString(2131759752), 2131690257);
+        bool = false;
+        break label266;
+      } while (dsq());
+      parame = com.tencent.mm.plugin.finder.utils.aj.AGc;
+    } while ((!com.tencent.mm.plugin.finder.utils.aj.isAnyEnableFullScreenEnjoy()) || ((paramBaseFinderFeed.bAQ() != 4) && (paramBaseFinderFeed.bAQ() != 2)));
+    paramo.b(this.xvt, (CharSequence)this.iXq.getString(b.j.finder_feed_open_in_full_window), b.i.finder_icons_outlined_max_window);
   }
   
   public final void a(BaseFinderFeed paramBaseFinderFeed, boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3)
   {
-    p.h(paramBaseFinderFeed, "feed");
-    Object localObject1 = com.tencent.mm.ui.component.a.PRN;
-    localObject1 = ((FinderReporterUIC)com.tencent.mm.ui.component.a.b((AppCompatActivity)this.gte).get(FinderReporterUIC.class)).dIx();
-    Object localObject2 = com.tencent.mm.plugin.finder.model.aj.uOw;
+    p.k(paramBaseFinderFeed, "feed");
+    Object localObject1 = com.tencent.mm.ui.component.g.Xox;
+    localObject1 = ((com.tencent.mm.plugin.finder.viewmodel.component.aj)com.tencent.mm.ui.component.g.b((AppCompatActivity)this.iXq).i(com.tencent.mm.plugin.finder.viewmodel.component.aj.class)).ekY();
+    Object localObject2 = com.tencent.mm.plugin.finder.model.al.zAN;
     localObject2 = paramBaseFinderFeed.feedObject;
     boolean bool = paramBaseFinderFeed.showLikeTips;
-    y localy = y.vXH;
-    com.tencent.mm.plugin.finder.model.aj.a((bbn)localObject1, paramInt, (FinderItem)localObject2, paramBoolean1, paramBoolean2, 2, bool, paramBoolean3, y.i(paramBaseFinderFeed.contact));
-  }
-  
-  public final void a(FinderItem paramFinderItem)
-  {
-    p.h(paramFinderItem, "feed");
-    s.a.a(s.vWt, (AppCompatActivity)this.gte, paramFinderItem, 0, 12);
+    com.tencent.mm.plugin.finder.utils.aj localaj = com.tencent.mm.plugin.finder.utils.aj.AGc;
+    com.tencent.mm.plugin.finder.model.al.a((bid)localObject1, paramInt, (FinderItem)localObject2, paramBoolean1, paramBoolean2, 2, bool, paramBoolean3, com.tencent.mm.plugin.finder.utils.aj.j(paramBaseFinderFeed.contact));
   }
   
   public final void a(FinderItem paramFinderItem, FinderCommentInfo paramFinderCommentInfo)
   {
-    p.h(paramFinderItem, "feed");
-    p.h(paramFinderCommentInfo, "comment");
+    p.k(paramFinderItem, "feed");
+    p.k(paramFinderCommentInfo, "comment");
   }
   
-  public final void a(FinderItem paramFinderItem, boolean paramBoolean, h paramh)
+  public final void a(FinderItem paramFinderItem, boolean paramBoolean, com.tencent.mm.view.recyclerview.i parami)
   {
-    p.h(paramFinderItem, "feed");
-    paramh = r.uNW;
-    r.a((AppCompatActivity)this.gte, paramFinderItem, paramBoolean);
+    p.k(paramFinderItem, "feed");
+    parami = r.zAk;
+    r.a((AppCompatActivity)this.iXq, paramFinderItem, paramBoolean);
   }
   
   public void a(RefreshLoadMoreLayout.c<Object> paramc)
   {
-    p.h(paramc, "reason");
+    p.k(paramc, "reason");
   }
   
-  public final void b(BaseFinderFeed paramBaseFinderFeed, boolean paramBoolean)
+  public final void b(FinderItem paramFinderItem)
   {
-    p.h(paramBaseFinderFeed, "feed");
-    Object localObject = com.tencent.mm.ui.component.a.PRN;
-    bbn localbbn = ((FinderReporterUIC)com.tencent.mm.ui.component.a.b((AppCompatActivity)this.gte).get(FinderReporterUIC.class)).dIx();
-    localObject = ag.uOs;
-    localObject = paramBaseFinderFeed.contact;
-    if (localObject != null)
-    {
-      localObject = ((com.tencent.mm.plugin.finder.api.g)localObject).getUsername();
-      if (localObject != null) {}
-    }
-    else
-    {
-      localObject = "";
-    }
-    for (;;)
-    {
-      bb.a locala;
-      int i;
-      if (paramBoolean)
-      {
-        locala = bb.tve;
-        i = bb.cYi();
-        localObject = ag.a(localbbn, (String)localObject, i);
-        com.tencent.mm.kernel.g.azz().b((com.tencent.mm.ak.q)localObject);
-        localObject = com.tencent.mm.plugin.finder.api.c.tsp;
-        paramBaseFinderFeed = paramBaseFinderFeed.contact;
-        if (paramBaseFinderFeed != null)
-        {
-          paramBaseFinderFeed = paramBaseFinderFeed.getUsername();
-          if (paramBaseFinderFeed != null) {
-            break label173;
-          }
-        }
-        paramBaseFinderFeed = "";
-      }
-      label173:
-      for (;;)
-      {
-        if (paramBoolean) {
-          localObject = com.tencent.mm.plugin.finder.api.g.tsD;
-        }
-        for (i = com.tencent.mm.plugin.finder.api.g.cXO();; i = com.tencent.mm.plugin.finder.api.g.cXP())
-        {
-          c.a.du(paramBaseFinderFeed, i);
-          return;
-          locala = bb.tve;
-          i = bb.cYj();
-          break;
-          localObject = com.tencent.mm.plugin.finder.api.g.tsD;
-        }
-      }
-    }
+    p.k(paramFinderItem, "feed");
+    ac.a.a(ac.AEJ, (AppCompatActivity)this.iXq, paramFinderItem, null, 0, null, 28);
   }
   
-  public abstract void boE();
+  public abstract void byN();
   
-  public boolean dbZ()
+  public final int dsn()
+  {
+    return this.xvv;
+  }
+  
+  public final int dso()
+  {
+    return this.xvw;
+  }
+  
+  public boolean dsp()
   {
     return false;
   }
   
-  public boolean dca()
+  public boolean dsq()
   {
-    y localy = y.vXH;
-    return y.gr(this.dLS, this.tCE);
+    com.tencent.mm.plugin.finder.utils.aj localaj = com.tencent.mm.plugin.finder.utils.aj.AGc;
+    return com.tencent.mm.plugin.finder.utils.aj.hd(this.fEH, this.xkX);
   }
   
-  public abstract void dcb();
+  public abstract void dsr();
   
-  public abstract DataBuffer<bo> dcc();
+  public abstract DataBuffer<bu> dss();
   
-  public void dcd() {}
+  public void dst() {}
   
-  public abstract com.tencent.mm.view.recyclerview.f dce();
+  public abstract com.tencent.mm.view.recyclerview.f dsu();
   
-  public final RecyclerView.m dcf()
+  public final RecyclerView.m dsv()
   {
-    return this.tLO;
+    return this.xvD;
   }
   
-  public final com.tencent.mm.plugin.finder.view.e dcg()
+  public final com.tencent.mm.plugin.finder.view.f dsw()
   {
-    Object localObject = this.tLN;
+    Object localObject = this.xvC;
     if (localObject != null)
     {
-      com.tencent.mm.plugin.finder.view.e locale = ((b.b)localObject).dcm();
-      localObject = locale;
-      if (locale != null) {}
+      com.tencent.mm.plugin.finder.view.f localf = ((b.b)localObject).dsC();
+      localObject = localf;
+      if (localf != null) {}
     }
     else
     {
-      localObject = new com.tencent.mm.plugin.finder.view.e();
+      localObject = new com.tencent.mm.plugin.finder.view.f();
     }
     return localObject;
   }
   
   public final MMActivity getActivity()
   {
-    return this.gte;
+    return this.iXq;
   }
   
   public String getTAG()
@@ -504,43 +678,65 @@ public abstract class b$a
     return this.TAG;
   }
   
-  public final com.tencent.mm.plugin.finder.video.k getVideoCore()
+  public final com.tencent.mm.plugin.finder.video.l getVideoCore()
   {
-    return this.tCD;
-  }
-  
-  public o.f i(final BaseFinderFeed paramBaseFinderFeed)
-  {
-    p.h(paramBaseFinderFeed, "feed");
-    return (o.f)new h(this, paramBaseFinderFeed);
-  }
-  
-  public final o.g j(final BaseFinderFeed paramBaseFinderFeed)
-  {
-    p.h(paramBaseFinderFeed, "feed");
-    return (o.g)new i(this, paramBaseFinderFeed);
+    return this.xkW;
   }
   
   public final void k(BaseFinderFeed paramBaseFinderFeed)
   {
-    p.h(paramBaseFinderFeed, "feed");
-    s.a locala = s.vWt;
-    s.a.a((AppCompatActivity)this.gte, paramBaseFinderFeed, 4, 0, 20);
+    p.k(paramBaseFinderFeed, "feed");
+    ac.a.a(ac.AEJ, (AppCompatActivity)this.iXq, paramBaseFinderFeed, 4, 0, 20);
   }
   
   public void keep(com.tencent.mm.vending.e.a parama)
   {
-    this.tLP.add(parama);
+    this.xvE.add(parama);
+  }
+  
+  public void l(BaseFinderFeed paramBaseFinderFeed)
+  {
+    p.k(paramBaseFinderFeed, "feed");
+    Object localObject1 = com.tencent.mm.ui.component.g.Xox;
+    bid localbid = ((com.tencent.mm.plugin.finder.viewmodel.component.aj)com.tencent.mm.ui.component.g.b((AppCompatActivity)this.iXq).i(com.tencent.mm.plugin.finder.viewmodel.component.aj.class)).ekY();
+    localObject1 = ai.zAJ;
+    localObject1 = paramBaseFinderFeed.contact;
+    if (localObject1 != null)
+    {
+      localObject2 = ((com.tencent.mm.plugin.finder.api.i)localObject1).getUsername();
+      localObject1 = localObject2;
+      if (localObject2 != null) {}
+    }
+    else
+    {
+      localObject1 = "";
+    }
+    Object localObject2 = com.tencent.mm.plugin.finder.cgi.o.xaR;
+    ai.a(localbid, (String)localObject1, com.tencent.mm.plugin.finder.cgi.o.dnA(), paramBaseFinderFeed.mf(), paramBaseFinderFeed.isDeepEnjoy, 96);
+    localObject1 = com.tencent.mm.plugin.finder.api.d.wZQ;
+    paramBaseFinderFeed = paramBaseFinderFeed.contact;
+    if (paramBaseFinderFeed != null)
+    {
+      localObject1 = paramBaseFinderFeed.getUsername();
+      paramBaseFinderFeed = (BaseFinderFeed)localObject1;
+      if (localObject1 != null) {}
+    }
+    else
+    {
+      paramBaseFinderFeed = "";
+    }
+    localObject1 = com.tencent.mm.plugin.finder.api.i.xai;
+    d.a.dP(paramBaseFinderFeed, com.tencent.mm.plugin.finder.api.i.dny());
   }
   
   public final void onBackPressed()
   {
-    Object localObject = this.tLN;
+    Object localObject = this.xvC;
     if (localObject != null)
     {
-      localObject = ((b.b)localObject).dcm();
-      if ((localObject != null) && (((com.tencent.mm.plugin.finder.view.e)localObject).dGs())) {
-        ((com.tencent.mm.plugin.finder.view.e)localObject).dGr();
+      localObject = ((b.b)localObject).dsC();
+      if ((localObject != null) && (((com.tencent.mm.plugin.finder.view.f)localObject).eis())) {
+        ((com.tencent.mm.plugin.finder.view.f)localObject).eir();
       }
     }
     do
@@ -548,88 +744,88 @@ public abstract class b$a
       do
       {
         return;
-        localObject = this.tLN;
+        localObject = this.xvC;
         if (localObject != null)
         {
-          localObject = ((b.b)localObject).tLW;
-          if ((localObject != null) && (((TouchMediaPreviewLayout)localObject).QFs))
+          localObject = ((b.b)localObject).xvN;
+          if ((localObject != null) && (((TouchMediaPreviewLayout)localObject).YdO))
           {
-            ((TouchMediaPreviewLayout)localObject).gZk();
+            ((TouchMediaPreviewLayout)localObject).iaa();
             return;
           }
         }
-        localObject = this.tLN;
+        localObject = this.xvC;
         if (localObject != null)
         {
-          localObject = ((b.b)localObject).dcn();
-          if ((localObject != null) && (((FinderLikeDrawer)localObject).dGs()))
+          localObject = ((b.b)localObject).dsD();
+          if ((localObject != null) && (((FinderLikeDrawer)localObject).eis()))
           {
-            ((FinderLikeDrawer)localObject).dGr();
+            ((FinderLikeDrawer)localObject).eir();
             return;
           }
         }
-        localObject = this.tLN;
+        localObject = this.xvC;
         if (localObject != null)
         {
-          localObject = ((b.b)localObject).dcj();
-          if ((localObject != null) && (((FinderLikeDrawer)localObject).dGs()))
+          localObject = ((b.b)localObject).dsz();
+          if ((localObject != null) && (((FinderLikeDrawer)localObject).eis()))
           {
-            ((FinderLikeDrawer)localObject).dGr();
+            ((FinderLikeDrawer)localObject).eir();
             return;
           }
         }
-        localObject = this.tLN;
+        localObject = this.xvC;
       } while (localObject == null);
-      localObject = ((b.b)localObject).gte;
+      localObject = ((b.b)localObject).iXq;
     } while (localObject == null);
     ((MMActivity)localObject).finish();
   }
   
   public void onDetach()
   {
-    com.tencent.mm.plugin.finder.storage.data.f.vGd.clearCache();
-    Object localObject = ((Iterable)this.tLP).iterator();
+    com.tencent.mm.plugin.finder.storage.data.f.Anc.clearCache();
+    Object localObject = ((Iterable)this.xvE).iterator();
     while (((Iterator)localObject).hasNext()) {
       ((com.tencent.mm.vending.e.a)((Iterator)localObject).next()).dead();
     }
-    this.tLP.clear();
-    EventCenter.instance.removeListener((IListener)this.tLQ);
-    this.tLN = null;
-    localObject = this.tLN;
+    this.xvE.clear();
+    EventCenter.instance.removeListener((IListener)this.xvF);
+    this.xvC = null;
+    localObject = this.xvC;
     if (localObject != null)
     {
-      localObject = ((b.b)localObject).dcm();
+      localObject = ((b.b)localObject).dsC();
       if (localObject != null) {
-        ((com.tencent.mm.plugin.finder.view.e)localObject).onDetach();
+        ((com.tencent.mm.plugin.finder.view.f)localObject).onDetach();
       }
     }
   }
   
   public final void onUIPause()
   {
-    b.b localb = this.tLN;
+    b.b localb = this.xvC;
     if (localb != null) {
-      localb.dcm();
+      localb.dsC();
     }
   }
   
   public final void onUIResume()
   {
-    Object localObject = this.tLN;
+    Object localObject = this.xvC;
     if (localObject != null)
     {
-      localObject = ((b.b)localObject).dcm();
+      localObject = ((b.b)localObject).dsC();
       if (localObject != null) {
-        ((com.tencent.mm.plugin.finder.view.e)localObject).onUIResume();
+        ((com.tencent.mm.plugin.finder.view.f)localObject).onUIResume();
       }
     }
   }
   
   public abstract void requestRefresh();
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Ljava/util/LinkedList;", "", "subType", "", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Ljava/util/LinkedList;", "", "subType", "", "invoke"})
   static final class a
-    extends kotlin.g.b.q
+    extends q
     implements kotlin.g.a.b<Integer, LinkedList<Long>>
   {
     a(b.a parama, BaseFinderFeed paramBaseFinderFeed)
@@ -638,85 +834,85 @@ public abstract class b$a
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter$dealMenuClick$3", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModFeedSetting;", "onModifyResult", "", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter$dealMenuClick$5", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModFeedSetting;", "onModifyResult", "", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "plugin-finder_release"})
   public static final class b
-    implements ai<ayy>
+    implements com.tencent.mm.plugin.findersdk.a.aj<bet>
   {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter$dealMenuClick$4", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModFeedSetting;", "onModifyResult", "", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter$dealMenuClick$6", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModFeedSetting;", "onModifyResult", "", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "plugin-finder_release"})
   public static final class c
-    implements ai<ayy>
+    implements com.tencent.mm.plugin.findersdk.a.aj<bet>
   {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onViewCustomize"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onViewCustomize"})
   static final class d
-    implements u.b
+    implements w.b
   {
     d(b.a parama, BaseFinderFeed paramBaseFinderFeed) {}
     
-    public final void dU(View paramView)
+    public final void eu(View paramView)
     {
-      AppMethodBeat.i(243674);
+      AppMethodBeat.i(289800);
       Object localObject;
       if (paramView != null)
       {
-        localObject = (TextView)paramView.findViewById(2131309260);
+        localObject = (TextView)paramView.findViewById(b.f.toast_text);
         if (localObject != null) {
           ((TextView)localObject).setTextSize(1, 14.0F);
         }
       }
       if (paramView != null)
       {
-        paramView = (WeImageView)paramView.findViewById(2131309259);
+        paramView = (WeImageView)paramView.findViewById(b.f.toast_img);
         if (paramView != null)
         {
-          paramView.setImageResource(2131690537);
+          paramView.setImageResource(b.i.icons_filled_done);
           localObject = paramView.getContext();
-          p.g(localObject, "context");
-          paramView.setIconColor(((Context)localObject).getResources().getColor(2131101426));
+          p.j(localObject, "context");
+          paramView.setIconColor(((Context)localObject).getResources().getColor(b.c.White));
         }
       }
-      this.tLR.a(paramBaseFinderFeed.feedObject, true, null);
-      AppMethodBeat.o(243674);
+      this.xvG.a(paramBaseFinderFeed.feedObject, true, null);
+      AppMethodBeat.o(289800);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onViewCustomize"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onViewCustomize"})
   static final class e
-    implements u.b
+    implements w.b
   {
     e(b.a parama, BaseFinderFeed paramBaseFinderFeed) {}
     
-    public final void dU(View paramView)
+    public final void eu(View paramView)
     {
-      AppMethodBeat.i(243675);
+      AppMethodBeat.i(287027);
       Object localObject;
       if (paramView != null)
       {
-        localObject = (TextView)paramView.findViewById(2131309260);
+        localObject = (TextView)paramView.findViewById(b.f.toast_text);
         if (localObject != null) {
           ((TextView)localObject).setTextSize(1, 14.0F);
         }
       }
       if (paramView != null)
       {
-        paramView = (WeImageView)paramView.findViewById(2131309259);
+        paramView = (WeImageView)paramView.findViewById(b.f.toast_img);
         if (paramView != null)
         {
-          paramView.setImageResource(2131690537);
+          paramView.setImageResource(b.i.icons_filled_done);
           localObject = paramView.getContext();
-          p.g(localObject, "context");
-          paramView.setIconColor(((Context)localObject).getResources().getColor(2131101426));
+          p.j(localObject, "context");
+          paramView.setIconColor(((Context)localObject).getResources().getColor(b.c.White));
         }
       }
-      this.tLR.a(paramBaseFinderFeed.feedObject, false, null);
-      AppMethodBeat.o(243675);
+      this.xvG.a(paramBaseFinderFeed.feedObject, false, null);
+      AppMethodBeat.o(287027);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter$feedExposeInfoChangeListener$1", "Lcom/tencent/mm/plugin/finder/view/FinderExposeChangedEventListener;", "tag", "", "getTag", "()Ljava/lang/String;", "setTag", "(Ljava/lang/String;)V", "getFeedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "feedId", "", "notifyAdapter", "", "exposeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderObjectExposeInfo;", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter$feedExposeInfoChangeListener$1", "Lcom/tencent/mm/plugin/finder/view/FinderExposeChangedEventListener;", "tag", "", "getTag", "()Ljava/lang/String;", "setTag", "(Ljava/lang/String;)V", "getFeedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "feedId", "", "notifyAdapter", "", "exposeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderObjectExposeInfo;", "plugin-finder_release"})
   public static final class f
-    extends com.tencent.mm.plugin.finder.view.f
+    extends com.tencent.mm.plugin.finder.view.g
   {
     private String tag;
     
@@ -727,32 +923,32 @@ public abstract class b$a
       AppMethodBeat.o(165612);
     }
     
-    public final FinderItem EB(long paramLong)
+    public final FinderItem KQ(long paramLong)
     {
       AppMethodBeat.i(165610);
-      Object localObject = this.tLR.tLN;
+      Object localObject = this.xvG.xvC;
       if (localObject != null)
       {
-        localObject = ((b.b)localObject).tLS.getRecyclerView();
+        localObject = ((b.b)localObject).xvJ.getRecyclerView();
         if (localObject != null)
         {
           localObject = ((RecyclerView)localObject).getAdapter();
           if (localObject == null)
           {
-            localObject = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.view.recyclerview.RecyclerViewAdapterEx<android.support.v7.widget.RecyclerView.ViewHolder!>");
+            localObject = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.view.recyclerview.RecyclerViewAdapterEx<androidx.recyclerview.widget.RecyclerView.ViewHolder!>");
             AppMethodBeat.o(165610);
             throw ((Throwable)localObject);
           }
-          localObject = com.tencent.mm.view.recyclerview.g.c((com.tencent.mm.view.recyclerview.g)localObject, paramLong);
+          localObject = com.tencent.mm.view.recyclerview.h.c((com.tencent.mm.view.recyclerview.h)localObject, paramLong);
           if (localObject != null)
           {
-            int i = ((RecyclerView.v)localObject).lR();
-            localObject = this.tLR.tLN;
+            int i = ((RecyclerView.v)localObject).md();
+            localObject = this.xvG.xvC;
             if (localObject == null) {
-              p.hyc();
+              p.iCn();
             }
-            int j = ((b.b)localObject).sHN;
-            localObject = this.tLR.IE(i - j);
+            int j = ((b.b)localObject).wnI;
+            localObject = this.xvG.Mv(i - j);
             if ((localObject instanceof BaseFinderFeed))
             {
               localObject = ((BaseFinderFeed)localObject).feedObject;
@@ -766,30 +962,30 @@ public abstract class b$a
       return null;
     }
     
-    public final void a(long paramLong, azt paramazt)
+    public final void a(long paramLong, bfw parambfw)
     {
       AppMethodBeat.i(165611);
-      Object localObject1 = this.tLR.tLN;
+      Object localObject1 = this.xvG.xvC;
       if (localObject1 != null)
       {
-        localObject1 = ((b.b)localObject1).tLS.getRecyclerView();
+        localObject1 = ((b.b)localObject1).xvJ.getRecyclerView();
         if (localObject1 != null)
         {
           Object localObject2 = ((RecyclerView)localObject1).getAdapter();
           if (localObject2 == null)
           {
-            paramazt = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.view.recyclerview.RecyclerViewAdapterEx<android.support.v7.widget.RecyclerView.ViewHolder!>");
+            parambfw = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.view.recyclerview.RecyclerViewAdapterEx<androidx.recyclerview.widget.RecyclerView.ViewHolder!>");
             AppMethodBeat.o(165611);
-            throw paramazt;
+            throw parambfw;
           }
-          localObject2 = com.tencent.mm.view.recyclerview.g.c((com.tencent.mm.view.recyclerview.g)localObject2, paramLong);
+          localObject2 = com.tencent.mm.view.recyclerview.h.c((com.tencent.mm.view.recyclerview.h)localObject2, paramLong);
           if (localObject2 != null)
           {
-            int i = ((RecyclerView.v)localObject2).lR();
+            int i = ((RecyclerView.v)localObject2).md();
             localObject1 = ((RecyclerView)localObject1).getAdapter();
             if (localObject1 != null)
             {
-              ((RecyclerView.a)localObject1).b(i, new o(Integer.valueOf(1), paramazt));
+              ((RecyclerView.a)localObject1).d(i, new kotlin.o(Integer.valueOf(1), parambfw));
               AppMethodBeat.o(165611);
               return;
             }
@@ -809,137 +1005,78 @@ public abstract class b$a
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
   static final class g
-    implements o.f
+    implements q.f
   {
-    g(b.a parama, BaseFinderFeed paramBaseFinderFeed) {}
+    g(b.a parama, BaseFinderFeed paramBaseFinderFeed, int paramInt) {}
     
-    public final void onCreateMMMenu(m paramm)
+    public final void onCreateMMMenu(com.tencent.mm.ui.base.o paramo)
     {
       AppMethodBeat.i(165613);
-      b.a locala = this.tLR;
+      b.a locala = this.xvG;
       BaseFinderFeed localBaseFinderFeed = paramBaseFinderFeed;
-      p.g(paramm, "menu");
-      p.h(localBaseFinderFeed, "feed");
-      p.h(paramm, "menu");
-      Object localObject1 = locala.gte.getString(2131755985);
-      p.g(localObject1, "context.getString(R.string.app_share_to_weixin)");
-      Object localObject2 = locala.gte.getString(2131760572);
-      p.g(localObject2, "context.getString(R.string.finder_share_timeline)");
-      p.g(locala.gte.getString(2131759168), "context.getString(R.string.favorite)");
-      boolean bool1 = false;
-      if ((localBaseFinderFeed.feedObject.isOnlySelfSee()) || (localBaseFinderFeed.feedObject.isNotShare()))
-      {
-        localObject1 = y.vXH;
-        localObject1 = y.dP("FinderSafeSelfSeeForward", 2131760540);
-        localObject2 = y.vXH;
-        localObject2 = y.dP("FinderSafeSelfSeeShare", 2131760541);
-        y localy = y.vXH;
-        y.dP("FinderSafeSelfSeeCollect", 2131760539);
-        bool1 = true;
-      }
-      for (boolean bool2 = true;; bool2 = false)
-      {
-        paramm.a(locala.tqv, (CharSequence)localObject1, 2131690251, locala.gte.getResources().getColor(2131099710), bool1);
-        paramm.a(locala.pLU, (CharSequence)localObject2, 2131689830, 0, bool2);
-        int i;
-        if (locala.dca())
-        {
-          localObject1 = com.tencent.mm.plugin.finder.upload.action.c.vUa;
-          if (com.tencent.mm.plugin.finder.upload.action.c.dBq().k(localBaseFinderFeed.feedObject.getFeedObject())) {
-            break label350;
-          }
-          i = 1;
-          if (i == 0) {
-            break label355;
-          }
-          paramm.a(locala.tLK, (CharSequence)locala.gte.getString(2131759168), 2131691821, locala.gte.getResources().getColor(2131100919));
-        }
-        for (;;)
-        {
-          paramm = com.tencent.mm.plugin.finder.report.k.vfA;
-          com.tencent.mm.plugin.finder.report.k.I(localBaseFinderFeed.lT(), locala.tCE);
-          paramm = FinderReporterUIC.wzC;
-          paramm = FinderReporterUIC.a.fH((Context)locala.gte);
-          if (paramm == null) {
-            break label396;
-          }
-          paramm = FinderReporterUIC.b(paramm);
-          if (paramm == null) {
-            break label396;
-          }
-          paramm.cZR().Ew(localBaseFinderFeed.lT());
-          AppMethodBeat.o(165613);
-          return;
-          label350:
-          i = 0;
-          break;
-          label355:
-          paramm.a(locala.tLL, (CharSequence)locala.gte.getString(2131759570), 2131691822, locala.gte.getResources().getColor(2131100919));
-        }
-        label396:
-        AppMethodBeat.o(165613);
-        return;
-      }
+      p.j(paramo, "menu");
+      locala.a(localBaseFinderFeed, paramo, paramInt);
+      AppMethodBeat.o(165613);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
   static final class h
-    implements o.f
+    implements q.f
   {
-    h(b.a parama, BaseFinderFeed paramBaseFinderFeed) {}
+    h(b.a parama, BaseFinderFeed paramBaseFinderFeed, com.tencent.mm.ui.widget.a.e parame) {}
     
-    public final void onCreateMMMenu(m paramm)
+    public final void onCreateMMMenu(com.tencent.mm.ui.base.o paramo)
     {
       AppMethodBeat.i(165614);
-      b.a locala = this.tLR;
+      b.a locala = this.xvG;
       BaseFinderFeed localBaseFinderFeed = paramBaseFinderFeed;
-      p.g(paramm, "menu");
-      locala.a(localBaseFinderFeed, paramm);
+      p.j(paramo, "menu");
+      locala.a(localBaseFinderFeed, paramo, parame);
       AppMethodBeat.o(165614);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
   static final class i
-    implements o.g
+    implements q.g
   {
-    i(b.a parama, BaseFinderFeed paramBaseFinderFeed) {}
+    i(b.a parama, BaseFinderFeed paramBaseFinderFeed, int paramInt, com.tencent.mm.view.recyclerview.i parami) {}
     
     public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
     {
       AppMethodBeat.i(165615);
-      b.a locala = this.tLR;
+      b.a locala = this.xvG;
       BaseFinderFeed localBaseFinderFeed = paramBaseFinderFeed;
-      p.g(paramMenuItem, "menuItem");
-      locala.a(localBaseFinderFeed, paramMenuItem, paramInt);
+      p.j(paramMenuItem, "menuItem");
+      locala.a(localBaseFinderFeed, paramMenuItem, paramInt, paramInt, parami);
       AppMethodBeat.o(165615);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter$getVideoCoreInitializer$1", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore$Initializer;", "getData", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "isUseAutoPlay", "", "isUsePreload", "onAttachRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter$getVideoCoreInitializer$1", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore$Initializer;", "getData", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "isUseAutoPlay", "", "isUsePreload", "onAttachRecyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"})
   public static final class j
-    implements k.b
+    implements l.b
   {
-    public final RecyclerView dch()
+    public final RecyclerView dsx()
     {
-      AppMethodBeat.i(165616);
-      Object localObject = this.tLR.tLN;
+      AppMethodBeat.i(280147);
+      Object localObject = this.xvG.xvC;
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
-      localObject = ((b.b)localObject).tLS.getRecyclerView();
-      AppMethodBeat.o(165616);
+      localObject = ((b.b)localObject).xvJ.getRecyclerView();
+      AppMethodBeat.o(280147);
       return localObject;
     }
     
-    public final DataBuffer<bo> dci()
+    public final DataBuffer<bu> dsy()
     {
-      AppMethodBeat.i(243676);
-      DataBuffer localDataBuffer = this.tLR.dcc();
-      AppMethodBeat.o(243676);
+      AppMethodBeat.i(280148);
+      DataBuffer localDataBuffer = this.xvG.dss();
+      AppMethodBeat.o(280148);
       return localDataBuffer;
     }
   }

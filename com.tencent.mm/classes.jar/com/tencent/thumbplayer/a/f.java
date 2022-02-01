@@ -9,38 +9,38 @@ import java.util.Map;
 
 public final class f
 {
-  public ParcelFileDescriptor RWn;
-  public Map<String, String> RWo;
-  ITPMediaAsset RWp;
-  e RWq;
+  public ParcelFileDescriptor ZyX;
+  public Map<String, String> ZyY;
+  ITPMediaAsset ZyZ;
+  e Zza;
   public int mType;
   public String mUrl;
   
   protected f()
   {
-    AppMethodBeat.i(188722);
-    this.RWo = new HashMap();
-    AppMethodBeat.o(188722);
+    AppMethodBeat.i(218865);
+    this.ZyY = new HashMap();
+    AppMethodBeat.o(218865);
   }
   
-  protected final void cn(Map<String, String> paramMap)
+  protected final void ct(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(188723);
-    this.RWo.clear();
-    Map localMap = this.RWo;
+    AppMethodBeat.i(218868);
+    this.ZyY.clear();
+    Map localMap = this.ZyY;
     Object localObject = paramMap;
     if (paramMap == null) {
       localObject = new HashMap(0);
     }
     localMap.putAll((Map)localObject);
-    AppMethodBeat.o(188723);
+    AppMethodBeat.o(218868);
   }
   
   protected final void setUrl(String paramString)
   {
     this.mUrl = paramString;
     this.mType = 0;
-    this.RWn = null;
+    this.ZyX = null;
   }
 }
 

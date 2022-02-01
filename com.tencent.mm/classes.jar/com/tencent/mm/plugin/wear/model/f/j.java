@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.wear.model.f;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.wear.model.e.r;
 import com.tencent.mm.plugin.wear.model.f;
 import com.tencent.mm.plugin.wear.model.g;
 import com.tencent.mm.plugin.wear.model.h;
-import com.tencent.mm.protocal.protobuf.ezd;
+import com.tencent.mm.protocal.protobuf.fju;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
 import com.tencent.mm.sdk.platformtools.WeChatLocaleUtil;
@@ -23,18 +23,18 @@ import java.util.List;
 public final class j
   extends b
 {
-  private int dCm;
-  private boolean dTG;
+  private boolean fNh;
+  private int fuP;
   private String talker;
   
   public j(String paramString, int paramInt, boolean paramBoolean)
   {
     this.talker = paramString;
-    this.dCm = paramInt;
-    this.dTG = paramBoolean;
+    this.fuP = paramInt;
+    this.fNh = paramBoolean;
   }
   
-  private static String aY(ArrayList<ca> paramArrayList)
+  private static String bm(ArrayList<ca> paramArrayList)
   {
     AppMethodBeat.i(30131);
     StringBuffer localStringBuffer = new StringBuffer();
@@ -53,7 +53,7 @@ public final class j
     return paramArrayList;
   }
   
-  private String n(String paramString, ArrayList<ca> paramArrayList)
+  private String p(String paramString, ArrayList<ca> paramArrayList)
   {
     AppMethodBeat.i(30130);
     Log.d("MicroMsg.WearNotificationCreateTask", "Talker: %s, MsgSize: %d", new Object[] { paramString, Integer.valueOf(paramArrayList.size()) });
@@ -70,30 +70,25 @@ public final class j
     return paramString;
   }
   
-  public final String getName()
-  {
-    return "WearNotificationCreateTask";
-  }
-  
-  protected final void send()
+  protected final void gOA()
   {
     AppMethodBeat.i(30132);
     Log.d("MicroMsg.WearNotificationCreateTask", "start to execute notification create task");
-    f localf = com.tencent.mm.plugin.wear.model.a.fVK().aWj(this.talker);
+    f localf = com.tencent.mm.plugin.wear.model.a.gOr().bhQ(this.talker);
     Object localObject1 = new ArrayList();
-    int j = this.dCm - localf.IxY;
+    int j = this.fuP - localf.Psd;
     int i = j;
     if (j < 0) {
       i = 0;
     }
     Log.d("MicroMsg.WearNotificationCreateTask", "limit=%d", new Object[] { Integer.valueOf(i) });
-    bg.aVF();
-    Object localObject2 = c.aSQ().ew(this.talker, i).iterator();
+    bh.beI();
+    Object localObject2 = c.bbO().eX(this.talker, i).iterator();
     label145:
     while (((Iterator)localObject2).hasNext())
     {
       ca localca = (ca)((Iterator)localObject2).next();
-      if (localca.isSystem()) {}
+      if (localca.hzz()) {}
       for (i = 0;; i = 1)
       {
         if (i == 0) {
@@ -109,7 +104,7 @@ public final class j
       AppMethodBeat.o(30132);
       return;
     }
-    localObject2 = aY((ArrayList)localObject1);
+    localObject2 = bm((ArrayList)localObject1);
     if (localf.md5.equals(localObject2))
     {
       Log.i("MicroMsg.WearNotificationCreateTask", "same md5, not to update");
@@ -117,35 +112,35 @@ public final class j
       return;
     }
     localf.md5 = ((String)localObject2);
-    localObject2 = new ezd();
-    ((ezd)localObject2).xNF = localf.id;
-    ((ezd)localObject2).MRZ = localf.talker;
-    ((ezd)localObject2).Title = h.aWo(localf.talker);
-    ((ezd)localObject2).iAc = n(localf.talker, (ArrayList)localObject1);
-    ((ezd)localObject2).MWA = this.dCm;
-    ((ezd)localObject2).NvG = this.dTG;
+    localObject2 = new fju();
+    ((fju)localObject2).CRP = localf.id;
+    ((fju)localObject2).Ueg = localf.talker;
+    ((fju)localObject2).fwr = h.bhV(localf.talker);
+    ((fju)localObject2).lpy = p(localf.talker, (ArrayList)localObject1);
+    ((fju)localObject2).UiV = this.fuP;
+    ((fju)localObject2).UIR = this.fNh;
     boolean bool;
     if (!WeChatLocaleUtil.isOverseasUserByWechatLanguage()) {
       bool = true;
     }
     for (;;)
     {
-      ((ezd)localObject2).NvF = bool;
-      localObject1 = h.aWn(localf.talker);
+      ((fju)localObject2).UIQ = bool;
+      localObject1 = h.bhU(localf.talker);
       if (localObject1 != null) {
-        ((ezd)localObject2).Nvo = new com.tencent.mm.bw.b(h.aF((Bitmap)localObject1));
+        ((fju)localObject2).UIy = new com.tencent.mm.cd.b(h.aC((Bitmap)localObject1));
       }
       Log.d("MicroMsg.WearNotificationCreateTask", "generate notification content and ready to send");
       try
       {
-        com.tencent.mm.plugin.wear.model.a.fVQ();
-        r.a(20003, ((ezd)localObject2).toByteArray(), true);
+        com.tencent.mm.plugin.wear.model.a.gOx();
+        r.a(20003, ((fju)localObject2).toByteArray(), true);
         label371:
         Log.d("MicroMsg.WearNotificationCreateTask", "start to update notification status");
-        com.tencent.mm.plugin.wear.model.a.fVK().a(localf);
-        com.tencent.mm.plugin.wear.model.a.fVK().aWm(this.talker);
-        com.tencent.mm.plugin.wear.model.c.a.jZ(6, 0);
-        com.tencent.mm.plugin.wear.model.c.a.aff(1);
+        com.tencent.mm.plugin.wear.model.a.gOr().a(localf);
+        com.tencent.mm.plugin.wear.model.a.gOr().bhT(this.talker);
+        com.tencent.mm.plugin.wear.model.c.a.lp(6, 0);
+        com.tencent.mm.plugin.wear.model.c.a.amT(1);
         AppMethodBeat.o(30132);
         return;
         bool = false;
@@ -156,10 +151,15 @@ public final class j
       }
     }
   }
+  
+  public final String getName()
+  {
+    return "WearNotificationCreateTask";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.j
  * JD-Core Version:    0.7.0.1
  */

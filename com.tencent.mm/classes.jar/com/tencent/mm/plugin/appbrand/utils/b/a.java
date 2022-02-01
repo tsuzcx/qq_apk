@@ -2,15 +2,46 @@ package com.tencent.mm.plugin.appbrand.utils.b;
 
 import android.os.Bundle;
 import com.tencent.luggage.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface a
   extends b
 {
-  public abstract void a(String paramString, a.b paramb, Bundle paramBundle);
+  public abstract void a(String paramString, b paramb, Bundle paramBundle);
   
-  public abstract boolean b(String paramString, a.b paramb, Bundle paramBundle);
+  public abstract boolean b(String paramString, b paramb, Bundle paramBundle);
   
-  public abstract boolean c(String paramString, a.b paramb, Bundle paramBundle);
+  public abstract boolean c(String paramString, b paramb, Bundle paramBundle);
+  
+  public static final class a
+  {
+    public double altitude;
+    public String buildingId;
+    public String floorName;
+    public double fqE;
+    public Object lCh;
+    public double latitude;
+    public double longitude;
+    public String provider;
+    public double rjO;
+    public int rjP;
+    public float rjQ;
+    public double rjR = 0.0D;
+    public String type;
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(143729);
+      String str = "Location{latitude=" + this.latitude + ", longitude=" + this.longitude + ", provider='" + this.provider + '\'' + ", speed=" + this.fqE + ", accuracy=" + this.rjO + ", altitude=" + this.altitude + ", buildingId='" + this.buildingId + '\'' + ", floorName='" + this.floorName + '\'' + ", extra=" + this.lCh + ", indoorLocationType=" + this.rjP + ", direction=" + this.rjQ + '}';
+      AppMethodBeat.o(143729);
+      return str;
+    }
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void a(int paramInt, String paramString, a.a parama);
+  }
 }
 
 

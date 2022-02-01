@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.setting.b.i;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 
 final class SettingsModifyAliasUI$8
@@ -13,13 +14,13 @@ final class SettingsModifyAliasUI$8
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(256560);
+    AppMethodBeat.i(263197);
     b localb = new b();
-    localb.bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsModifyAliasUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    com.tencent.mm.plugin.account.a.b.a.b(this.DcH, this.DcH.getString(2131765252, new Object[] { LocaleUtil.getApplicationLanguage() }), 0, true);
+    localb.bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/setting/ui/setting/SettingsModifyAliasUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    com.tencent.mm.plugin.account.sdk.b.a.b(this.Jii, this.Jii.getString(b.i.set_alias_term_url, new Object[] { LocaleUtil.getApplicationLanguage() }), 0, true);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsModifyAliasUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(256560);
+    AppMethodBeat.o(263197);
   }
 }
 

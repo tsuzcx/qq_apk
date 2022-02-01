@@ -1,108 +1,107 @@
 package com.tencent.mm.plugin.finder.model;
 
-import android.arch.lifecycle.ViewModelProvider;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.hn;
-import com.tencent.mm.g.b.a.bm;
+import com.tencent.mm.f.a.hu;
+import com.tencent.mm.f.b.a.cc;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.finder.event.a.b;
-import com.tencent.mm.plugin.finder.report.k;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.upload.action.c;
-import com.tencent.mm.plugin.finder.utils.w;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
+import com.tencent.mm.plugin.finder.utils.ag;
+import com.tencent.mm.plugin.finder.viewmodel.component.aj;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.protocal.protobuf.bid;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.component.g;
+import com.tencent.mm.ui.component.g.a;
 import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/FinderFavLogic;", "", "()V", "TAG", "", "favFeed", "", "context", "Landroid/support/v7/app/AppCompatActivity;", "finderObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "isFav", "", "scene", "", "favMegaVideo", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderFavLogic;", "", "()V", "TAG", "", "favFeed", "", "context", "Landroidx/appcompat/app/AppCompatActivity;", "finderObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "isFav", "", "scene", "", "favMegaVideo", "plugin-finder_release"})
 public final class r
 {
   private static final String TAG = "Finder.FinderFavLogic";
-  public static final r uNW;
+  public static final r zAk;
   
   static
   {
-    AppMethodBeat.i(248731);
-    uNW = new r();
+    AppMethodBeat.i(272293);
+    zAk = new r();
     TAG = "Finder.FinderFavLogic";
-    AppMethodBeat.o(248731);
+    AppMethodBeat.o(272293);
   }
   
   public static void a(AppCompatActivity paramAppCompatActivity, FinderItem paramFinderItem, boolean paramBoolean)
   {
-    AppMethodBeat.i(248730);
-    p.h(paramAppCompatActivity, "context");
-    p.h(paramFinderItem, "finderObject");
+    AppMethodBeat.i(272292);
+    p.k(paramAppCompatActivity, "context");
+    p.k(paramFinderItem, "finderObject");
     Log.i(TAG, "favFeed, id:" + paramFinderItem.getId() + ", pf:" + paramFinderItem.getFeedObject().permissionFlag);
-    Object localObject = com.tencent.mm.ui.component.a.PRN;
-    bbn localbbn = ((FinderReporterUIC)com.tencent.mm.ui.component.a.b(paramAppCompatActivity).get(FinderReporterUIC.class)).dIx();
+    Object localObject = g.Xox;
+    bid localbid = ((aj)g.b(paramAppCompatActivity).i(aj.class)).ekY();
     label137:
     long l1;
     if (paramBoolean)
     {
-      localObject = com.tencent.mm.ui.component.a.PRN;
-      paramAppCompatActivity = FinderReporterUIC.b((FinderReporterUIC)com.tencent.mm.ui.component.a.b(paramAppCompatActivity).get(FinderReporterUIC.class));
+      localObject = g.Xox;
+      paramAppCompatActivity = aj.b((aj)g.b(paramAppCompatActivity).i(aj.class));
       if (paramAppCompatActivity != null) {
-        paramAppCompatActivity.cZR().Er(paramFinderItem.getId());
+        paramAppCompatActivity.dpO().KG(paramFinderItem.getId());
       }
-      paramAppCompatActivity = k.vfA;
+      paramAppCompatActivity = com.tencent.mm.plugin.finder.report.n.zWF;
       long l2 = paramFinderItem.getId();
       if (!paramBoolean) {
         break label628;
       }
       i = 2;
-      p.h(localbbn, "contextObj");
-      paramAppCompatActivity = k.Fc(l2);
+      p.k(localbid, "contextObj");
+      paramAppCompatActivity = com.tencent.mm.plugin.finder.report.n.Hc(l2);
       if (paramAppCompatActivity != null)
       {
-        bm localbm = new bm();
-        localbm.jt(localbbn.sessionId);
-        localbm.ju("");
-        localbm.jv(k.Fg(l2));
-        localbm.jw(paramAppCompatActivity.getUserName());
-        localbm.dU(5L);
-        localbm.dV(i);
-        localbm.dW(0L);
-        localbm.jx("");
-        localbm.dX(2L);
-        localbm.dY(paramAppCompatActivity.getLikeCount());
-        localbm.dZ(paramAppCompatActivity.getCommentCount());
-        localbm.ea(paramAppCompatActivity.getFriendLikeCount());
-        localbm.eb(paramAppCompatActivity.getMediaType());
-        localObject = w.vXp;
-        localbm.jy(n.j(w.z(paramAppCompatActivity), ",", ";", false));
-        localbm.jz("");
-        localbm.ec(localbbn.tCE);
-        if (!p.j(paramAppCompatActivity.getUserName(), z.aUg())) {
+        cc localcc = new cc();
+        localcc.lD(localbid.sessionId);
+        localcc.lE("");
+        localcc.lF(com.tencent.mm.plugin.finder.report.n.Mp(l2));
+        localcc.lG(paramAppCompatActivity.getUserName());
+        localcc.eI(5L);
+        localcc.eJ(i);
+        localcc.eK(0L);
+        localcc.lH("");
+        localcc.eL(2L);
+        localcc.eM(paramAppCompatActivity.getLikeCount());
+        localcc.eN(paramAppCompatActivity.getCommentCount());
+        localcc.eO(paramAppCompatActivity.getFriendLikeCount());
+        localcc.eP(paramAppCompatActivity.getMediaType());
+        localObject = ag.AFH;
+        localcc.lI(kotlin.n.n.l(ag.A(paramAppCompatActivity), ",", ";", false));
+        localcc.lJ("");
+        localcc.eQ(localbid.xkX);
+        if (!p.h(paramAppCompatActivity.getUserName(), z.bdh())) {
           break label633;
         }
         l1 = 1L;
         label347:
-        localbm.ed(l1);
-        localObject = localbbn.sGQ;
+        localcc.eR(l1);
+        localObject = localbid.wmL;
         paramAppCompatActivity = (AppCompatActivity)localObject;
         if (localObject == null) {
           paramAppCompatActivity = "";
         }
-        localbm.jA(paramAppCompatActivity);
-        localObject = localbbn.sGE;
+        localcc.lK(paramAppCompatActivity);
+        localObject = localbid.wmz;
         paramAppCompatActivity = (AppCompatActivity)localObject;
         if (localObject == null) {
           paramAppCompatActivity = "";
         }
-        localbm.jB(paramAppCompatActivity);
-        localbm.jC(k.G(l2, localbbn.tCE));
-        paramAppCompatActivity = localbbn.extraInfo;
+        localcc.lL(paramAppCompatActivity);
+        localcc.lM(com.tencent.mm.plugin.finder.report.n.N(l2, localbid.xkX));
+        paramAppCompatActivity = localbid.extraInfo;
         if (paramAppCompatActivity != null)
         {
-          localObject = n.j(paramAppCompatActivity, ",", ";", false);
+          localObject = kotlin.n.n.l(paramAppCompatActivity, ",", ";", false);
           paramAppCompatActivity = (AppCompatActivity)localObject;
           if (localObject != null) {}
         }
@@ -110,11 +109,11 @@ public final class r
         {
           paramAppCompatActivity = "";
         }
-        localbm.jD(paramAppCompatActivity);
-        paramAppCompatActivity = localbbn.sGH;
+        localcc.lN(paramAppCompatActivity);
+        paramAppCompatActivity = localbid.wmC;
         if (paramAppCompatActivity != null)
         {
-          localObject = n.j(paramAppCompatActivity, ",", ";", false);
+          localObject = kotlin.n.n.l(paramAppCompatActivity, ",", ";", false);
           paramAppCompatActivity = (AppCompatActivity)localObject;
           if (localObject != null) {}
         }
@@ -122,15 +121,15 @@ public final class r
         {
           paramAppCompatActivity = "";
         }
-        localbm.jE(paramAppCompatActivity);
-        localbm.bfK();
-        k.a((com.tencent.mm.plugin.report.a)localbm);
+        localcc.lO(paramAppCompatActivity);
+        localcc.bpa();
+        com.tencent.mm.plugin.finder.report.n.a((com.tencent.mm.plugin.report.a)localcc);
       }
-      paramAppCompatActivity = c.vUa;
-      c.a(c.dBq(), paramFinderItem, paramBoolean, localbbn);
-      paramAppCompatActivity = new hn();
-      paramAppCompatActivity.dLW.id = paramFinderItem.getId();
-      paramFinderItem = paramAppCompatActivity.dLW;
+      paramAppCompatActivity = c.ABD;
+      c.a(c.ecy(), paramFinderItem, paramBoolean, localbid);
+      paramAppCompatActivity = new hu();
+      paramAppCompatActivity.fEL.id = paramFinderItem.getId();
+      paramFinderItem = paramAppCompatActivity.fEL;
       if (!paramBoolean) {
         break label639;
       }
@@ -140,17 +139,17 @@ public final class r
     label639:
     for (int i = 1;; i = 2)
     {
-      paramFinderItem.dLX = i;
-      paramAppCompatActivity.dLW.type = 5;
+      paramFinderItem.fEM = i;
+      paramAppCompatActivity.fEL.type = 5;
       EventCenter.instance.publish((IEvent)paramAppCompatActivity);
-      AppMethodBeat.o(248730);
+      AppMethodBeat.o(272292);
       return;
-      localObject = com.tencent.mm.ui.component.a.PRN;
-      paramAppCompatActivity = FinderReporterUIC.b((FinderReporterUIC)com.tencent.mm.ui.component.a.b(paramAppCompatActivity).get(FinderReporterUIC.class));
+      localObject = g.Xox;
+      paramAppCompatActivity = aj.b((aj)g.b(paramAppCompatActivity).i(aj.class));
       if (paramAppCompatActivity == null) {
         break;
       }
-      paramAppCompatActivity.cZR().Es(paramFinderItem.getId());
+      paramAppCompatActivity.dpO().KH(paramFinderItem.getId());
       break;
       i = 1;
       break label137;

@@ -6,6 +6,8 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.ArrayMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.ADXml;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -17,38 +19,38 @@ import java.util.Set;
 
 public final class d
 {
-  private static d DFf = null;
-  private ApkInstalledWatcher DFb;
-  private boolean DFc;
-  private final Map<String, e> DFd;
-  private final b DFe;
+  private static d JSa = null;
+  private ApkInstalledWatcher JRW;
+  private boolean JRX;
+  private final Map<String, e> JRY;
+  private final b JRZ;
   
   private d()
   {
-    AppMethodBeat.i(202650);
-    this.DFc = false;
-    this.DFd = new HashMap();
-    this.DFb = new a((byte)0);
-    this.DFe = new b((byte)0);
-    AppMethodBeat.o(202650);
+    AppMethodBeat.i(220601);
+    this.JRX = false;
+    this.JRY = new HashMap();
+    this.JRW = new a((byte)0);
+    this.JRZ = new b((byte)0);
+    AppMethodBeat.o(220601);
   }
   
   public static void a(e parame)
   {
     try
     {
-      AppMethodBeat.i(202648);
+      AppMethodBeat.i(220598);
       try
       {
-        eZD().b(parame);
-        AppMethodBeat.o(202648);
+        fNv().b(parame);
+        AppMethodBeat.o(220598);
       }
       catch (Throwable parame)
       {
         for (;;)
         {
           Log.e("ApkInstalledWatcherManager", "watchStatic: watch info failed!");
-          AppMethodBeat.o(202648);
+          AppMethodBeat.o(220598);
         }
       }
       return;
@@ -56,18 +58,18 @@ public final class d
     finally {}
   }
   
-  private e aOC(String paramString)
+  private e aZy(String paramString)
   {
-    AppMethodBeat.i(202654);
+    AppMethodBeat.i(220613);
     if (!TextUtils.isEmpty(paramString)) {
-      synchronized (this.DFd)
+      synchronized (this.JRY)
       {
-        paramString = (e)this.DFd.remove(paramString);
-        AppMethodBeat.o(202654);
+        paramString = (e)this.JRY.remove(paramString);
+        AppMethodBeat.o(220613);
         return paramString;
       }
     }
-    AppMethodBeat.o(202654);
+    AppMethodBeat.o(220613);
     return null;
   }
   
@@ -78,17 +80,17 @@ public final class d
     {
       try
       {
-        AppMethodBeat.i(202651);
+        AppMethodBeat.i(220604);
         Log.i("ApkInstalledWatcherManager", "watch is called");
         if (parame == null)
         {
           if (i != 0) {
             break label72;
           }
-          AppMethodBeat.o(202651);
+          AppMethodBeat.o(220604);
           return;
         }
-        if ((TextUtils.isEmpty(parame.DFh)) || (TextUtils.isEmpty(parame.DFi)))
+        if ((TextUtils.isEmpty(parame.JSc)) || (TextUtils.isEmpty(parame.JSd)))
         {
           Log.i("ApkInstalledWatcherManager", "checkWatchInfo is called, the input param is invalid");
           continue;
@@ -98,67 +100,65 @@ public final class d
       finally {}
       continue;
       label72:
-      eZE();
-      synchronized (this.DFd)
+      fNw();
+      synchronized (this.JRY)
       {
-        this.DFd.put(parame.DFh, parame);
-        eZG();
-        parame = this.DFe;
+        this.JRY.put(parame.JSc, parame);
+        fNy();
+        parame = this.JRZ;
         if (!parame.mStarted)
         {
           parame.mStarted = true;
           MMHandlerThread.postToMainThreadDelayed(parame, 300000L);
           Log.i("ApkInstalledWatcherManager", "startTimer is called, the timer is to start.");
-          AppMethodBeat.o(202651);
+          AppMethodBeat.o(220604);
         }
       }
-      Log.i("ApkInstalledWatcherManager", "startTimer is called, the timer is started!");
-      AppMethodBeat.o(202651);
     }
   }
   
-  private static d eZD()
+  private static d fNv()
   {
     try
     {
-      AppMethodBeat.i(202649);
-      if (DFf == null) {
-        DFf = new d();
+      AppMethodBeat.i(220599);
+      if (JSa == null) {
+        JSa = new d();
       }
-      d locald = DFf;
-      AppMethodBeat.o(202649);
+      d locald = JSa;
+      AppMethodBeat.o(220599);
       return locald;
     }
     finally {}
   }
   
-  private void eZE()
+  private void fNw()
   {
     try
     {
-      AppMethodBeat.i(202652);
+      AppMethodBeat.i(220609);
       try
       {
-        if (this.DFb == null) {
-          this.DFb = new a((byte)0);
+        if (this.JRW == null) {
+          this.JRW = new a((byte)0);
         }
-        if (!this.DFc)
+        if (!this.JRX)
         {
           Log.i("ApkInstalledWatcherManager", "registerWatcher: the watcher is to be registered");
           IntentFilter localIntentFilter = new IntentFilter();
           localIntentFilter.addAction("android.intent.action.PACKAGE_ADDED");
           localIntentFilter.addDataScheme("package");
-          MMApplicationContext.getContext().registerReceiver(this.DFb, localIntentFilter);
-          this.DFc = true;
+          MMApplicationContext.getContext().registerReceiver(this.JRW, localIntentFilter);
+          this.JRX = true;
         }
-        AppMethodBeat.o(202652);
+        AppMethodBeat.o(220609);
       }
       catch (Throwable localThrowable)
       {
         for (;;)
         {
           Log.e("ApkInstalledWatcherManager", "register ApkInstalledWatcher failed");
-          AppMethodBeat.o(202652);
+          AppMethodBeat.o(220609);
         }
       }
       return;
@@ -166,26 +166,26 @@ public final class d
     finally {}
   }
   
-  private void eZF()
+  private void fNx()
   {
     try
     {
-      AppMethodBeat.i(202653);
+      AppMethodBeat.i(220611);
       try
       {
-        if ((this.DFb != null) && (this.DFc))
+        if ((this.JRW != null) && (this.JRX))
         {
-          MMApplicationContext.getContext().unregisterReceiver(this.DFb);
-          this.DFc = false;
+          MMApplicationContext.getContext().unregisterReceiver(this.JRW);
+          this.JRX = false;
         }
-        AppMethodBeat.o(202653);
+        AppMethodBeat.o(220611);
       }
       catch (Throwable localThrowable)
       {
         for (;;)
         {
           Log.e("ApkInstalledWatcherManager", "unregister ApkInstalledWatcher failed");
-          AppMethodBeat.o(202653);
+          AppMethodBeat.o(220611);
         }
       }
       return;
@@ -193,38 +193,38 @@ public final class d
     finally {}
   }
   
-  private void eZG()
+  private void fNy()
   {
-    AppMethodBeat.i(202655);
-    synchronized (this.DFd)
+    AppMethodBeat.i(220619);
+    synchronized (this.JRY)
     {
-      Iterator localIterator = this.DFd.entrySet().iterator();
+      Iterator localIterator = this.JRY.entrySet().iterator();
       if (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
         if (localEntry.getValue() == null) {
           break label92;
         }
-        if (((e)localEntry.getValue()).DFk + 300000L < SystemClock.elapsedRealtime()) {
+        if (((e)localEntry.getValue()).JSf + 300000L < SystemClock.elapsedRealtime()) {
           localIterator.remove();
         }
       }
-      AppMethodBeat.o(202655);
+      AppMethodBeat.o(220619);
       return;
       label92:
       localIterator.remove();
     }
   }
   
-  private boolean eZH()
+  private boolean fNz()
   {
-    AppMethodBeat.i(202656);
-    synchronized (this.DFd)
+    AppMethodBeat.i(220622);
+    synchronized (this.JRY)
     {
-      if (!this.DFd.isEmpty())
+      if (!this.JRY.isEmpty())
       {
         bool = true;
-        AppMethodBeat.o(202656);
+        AppMethodBeat.o(220622);
         return bool;
       }
       boolean bool = false;
@@ -236,22 +236,28 @@ public final class d
   {
     private a() {}
     
-    protected final boolean aOB(String paramString)
+    protected final boolean aZx(String paramString)
     {
-      AppMethodBeat.i(202646);
+      AppMethodBeat.i(195533);
       paramString = d.a(d.this, paramString);
       if (paramString != null)
       {
-        ArrayMap localArrayMap = new ArrayMap();
-        if (paramString.DFj) {
-          localArrayMap.put("outSns", Integer.valueOf(1));
+        Object localObject = new ArrayMap();
+        if (paramString.JSe) {
+          ((Map)localObject).put("outSns", Integer.valueOf(1));
         }
-        a.a(paramString.DFi, paramString.uxInfo, paramString.adExtInfo, 3, "0", localArrayMap);
-        AppMethodBeat.o(202646);
+        a.a(paramString.JSd, paramString.uxInfo, paramString.adExtInfo, 3, "0", (Map)localObject);
+        if ((paramString.Jzk != null) && (paramString.Jzk.getAdXml() != null))
+        {
+          localObject = new com.tencent.mm.plugin.sns.data.b(paramString.Jzk.getUxinfo(), paramString.Jzk.getAdXml().adExtInfo, paramString.Jzk.getAid(), paramString.Jzk.getTraceid(), paramString.Jzk.getPid());
+          ((com.tencent.mm.plugin.sns.data.b)localObject).JPI = ((int)(System.currentTimeMillis() - paramString.JSg));
+          com.tencent.mm.plugin.sns.ad.d.b.c((com.tencent.mm.plugin.sns.data.b)localObject, 1);
+        }
+        AppMethodBeat.o(195533);
         return true;
       }
       Log.i("ApkInstalledWatcherManager", "onAppInstalled is called, but the pkg is not existed!");
-      AppMethodBeat.o(202646);
+      AppMethodBeat.o(195533);
       return false;
     }
   }
@@ -265,7 +271,7 @@ public final class d
     
     public final void run()
     {
-      AppMethodBeat.i(202647);
+      AppMethodBeat.i(266317);
       try
       {
         d.a(d.this);
@@ -273,26 +279,26 @@ public final class d
         {
           MMHandlerThread.postToMainThreadDelayed(this, 300000L);
           Log.i("ApkInstalledWatcherManager", "there are some watcher info, the timer is going on");
-          AppMethodBeat.o(202647);
+          AppMethodBeat.o(266317);
           return;
         }
         d.c(d.this);
         this.mStarted = false;
         Log.i("ApkInstalledWatcherManager", "the timer is end!");
-        AppMethodBeat.o(202647);
+        AppMethodBeat.o(266317);
         return;
       }
       catch (Throwable localThrowable)
       {
         Log.e("ApkInstalledWatcherManager", "there is something wrong in timer run function");
-        AppMethodBeat.o(202647);
+        AppMethodBeat.o(266317);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.device.appstore.d
  * JD-Core Version:    0.7.0.1
  */

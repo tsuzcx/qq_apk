@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.ui.e.a;
-import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.protocal.protobuf.vb;
 import com.tencent.mm.ui.MMActivity;
 
 public final class e
@@ -15,10 +15,22 @@ public final class e
     super(paramMMActivity);
   }
   
-  public final boolean cwE()
+  public final boolean cJY()
+  {
+    AppMethodBeat.i(113646);
+    if ((super.cJY()) && (this.tmU.cGn()) && (!cJq()) && (!cJV()) && (!cJW()))
+    {
+      AppMethodBeat.o(113646);
+      return true;
+    }
+    AppMethodBeat.o(113646);
+    return false;
+  }
+  
+  public final boolean cKh()
   {
     AppMethodBeat.i(113641);
-    if ((this.pQV.csx()) && (!l.EJ(this.pZU.gwE)) && (this.pQV.csM()) && (!this.qeD))
+    if ((this.tmU.cFY()) && (!l.Ik(this.tvQ.jaR)) && (this.tmU.cGn()) && (!cJq()))
     {
       AppMethodBeat.o(113641);
       return false;
@@ -27,10 +39,10 @@ public final class e
     return true;
   }
   
-  public final boolean cwI()
+  public final boolean cKl()
   {
     AppMethodBeat.i(113642);
-    if ((this.pQV.csx()) && (!l.EJ(this.pZU.gwE)) && (this.pQV.csM()) && (!this.qeD))
+    if ((this.tmU.cFY()) && (!l.Ik(this.tvQ.jaR)) && (this.tmU.cGn()) && (!cJq()))
     {
       AppMethodBeat.o(113642);
       return true;
@@ -39,15 +51,18 @@ public final class e
     return false;
   }
   
-  public final boolean cwJ()
+  public final boolean cKm()
   {
-    return this.qeD;
+    AppMethodBeat.i(250681);
+    boolean bool = cJq();
+    AppMethodBeat.o(250681);
+    return bool;
   }
   
-  public final boolean cwL()
+  public final boolean cKo()
   {
     AppMethodBeat.i(113647);
-    if ((this.pQV.csQ() != null) && (this.pQV.csQ().Lfg))
+    if ((this.tmU.cGs() != null) && (this.tmU.cGs().Sgu))
     {
       AppMethodBeat.o(113647);
       return true;
@@ -56,10 +71,10 @@ public final class e
     return false;
   }
   
-  public final boolean cwM()
+  public final boolean cKp()
   {
     AppMethodBeat.i(113643);
-    if ((super.cwM()) || ((this.pQV.csM()) && (!this.qeD) && ((cwt()) || (cwu()))))
+    if ((super.cKp()) || ((this.tmU.cGn()) && (!cJq()) && ((cJV()) || (cJW()))))
     {
       AppMethodBeat.o(113643);
       return true;
@@ -68,10 +83,10 @@ public final class e
     return false;
   }
   
-  public final boolean cwR()
+  public final boolean cKu()
   {
     AppMethodBeat.i(113645);
-    if ((this.pQV.csM()) && (super.cwR()) && (!cwL()))
+    if ((this.tmU.cGn()) && (super.cKu()) && (!cKo()))
     {
       AppMethodBeat.o(113645);
       return true;
@@ -80,27 +95,15 @@ public final class e
     return false;
   }
   
-  public final boolean cwV()
+  public final boolean cKy()
   {
     AppMethodBeat.i(113644);
-    if ((this.pQV.csx()) && (this.pQV.csQ().LeS != null) && (this.pQV.csM()) && (!this.qeD) && (!cwt()) && (!cwu()))
+    if ((this.tmU.cFY()) && (this.tmU.cGs().Sgg != null) && (this.tmU.cGn()) && (!cJq()) && (!cJV()) && (!cJW()))
     {
       AppMethodBeat.o(113644);
       return true;
     }
     AppMethodBeat.o(113644);
-    return false;
-  }
-  
-  public final boolean cww()
-  {
-    AppMethodBeat.i(113646);
-    if ((super.cww()) && (this.pQV.csM()) && (!this.qeD) && (!cwt()) && (!cwu()))
-    {
-      AppMethodBeat.o(113646);
-      return true;
-    }
-    AppMethodBeat.o(113646);
     return false;
   }
 }

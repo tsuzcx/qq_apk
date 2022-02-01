@@ -1,20 +1,22 @@
 package com.tencent.mm.ai;
 
-public final class a
+import com.tencent.mm.ab.f;
+
+public abstract interface a
 {
-  public String appId;
-  public boolean dtE = true;
-  public boolean iJC = true;
+  public abstract void a(f paramf);
   
-  public final void reset()
-  {
-    this.iJC = true;
-    this.dtE = true;
-  }
+  public abstract void aJe();
+  
+  public abstract void at(float paramFloat);
+  
+  public abstract void onHide();
+  
+  public abstract void onShow();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ai.a
  * JD-Core Version:    0.7.0.1
  */

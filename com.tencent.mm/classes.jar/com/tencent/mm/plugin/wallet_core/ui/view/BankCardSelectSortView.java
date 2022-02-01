@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.VerticalScrollBar;
@@ -17,7 +19,7 @@ import com.tencent.mm.ui.base.sortview.d;
 public class BankCardSelectSortView
   extends BaseSortView
 {
-  private ListView pqt;
+  private ListView szs;
   
   public BankCardSelectSortView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,9 +29,17 @@ public class BankCardSelectSortView
   public final boolean a(String paramString, d paramd)
   {
     AppMethodBeat.i(71473);
-    boolean bool = ((a)paramd.data).AOj.toUpperCase().contains(paramString.toUpperCase());
+    boolean bool = ((a)paramd.bnW).GHx.toUpperCase().contains(paramString.toUpperCase());
     AppMethodBeat.o(71473);
     return bool;
+  }
+  
+  public final View eI()
+  {
+    AppMethodBeat.i(71469);
+    View localView = View.inflate(getContext(), a.g.bank_remit_sort_view, this);
+    AppMethodBeat.o(71469);
+    return localView;
   }
   
   public c.a getItemViewCreator()
@@ -44,34 +54,34 @@ public class BankCardSelectSortView
         View localView = paramAnonymousView;
         if (paramAnonymousView == null)
         {
-          localView = LayoutInflater.from(localContext).inflate(2131493212, null);
+          localView = LayoutInflater.from(localContext).inflate(a.g.bank_remit_sort_item, null);
           paramAnonymousView = new BankCardSelectSortView.b((byte)0);
-          paramAnonymousView.ClO = ((TextView)localView.findViewById(2131298244));
-          paramAnonymousView.Cjs = ((TextView)localView.findViewById(2131297803));
-          paramAnonymousView.Cjq = ((CdnImageView)localView.findViewById(2131297802));
+          paramAnonymousView.IiH = ((TextView)localView.findViewById(a.f.catalogTV));
+          paramAnonymousView.Igl = ((TextView)localView.findViewById(a.f.brsb_item_title));
+          paramAnonymousView.Igj = ((CdnImageView)localView.findViewById(a.f.brsb_item_icon));
           localView.setTag(paramAnonymousView);
         }
         paramAnonymousView = (BankCardSelectSortView.b)localView.getTag();
-        if ((BankCardSelectSortView.this.OZW) && (paramAnonymousBoolean1))
+        if ((BankCardSelectSortView.this.Wtj) && (paramAnonymousBoolean1))
         {
-          paramAnonymousView.ClO.setText(paramAnonymousd.Pae);
-          paramAnonymousView.ClO.setVisibility(0);
-          paramAnonymousd = (BankCardSelectSortView.a)paramAnonymousd.data;
-          paramAnonymousView.Cjs.setText(paramAnonymousd.AOj);
+          paramAnonymousView.IiH.setText(paramAnonymousd.Wtr);
+          paramAnonymousView.IiH.setVisibility(0);
+          paramAnonymousd = (BankCardSelectSortView.a)paramAnonymousd.bnW;
+          paramAnonymousView.Igl.setText(paramAnonymousd.GHx);
           if (Util.isNullOrNil(paramAnonymousd.icon)) {
-            break label206;
+            break label210;
           }
-          paramAnonymousView.Cjq.setUseSdcardCache(true);
-          paramAnonymousView.Cjq.mB(paramAnonymousd.icon, paramAnonymousd.ImL);
+          paramAnonymousView.Igj.setUseSdcardCache(true);
+          paramAnonymousView.Igj.nr(paramAnonymousd.icon, paramAnonymousd.Pfd);
         }
         for (;;)
         {
           AppMethodBeat.o(71468);
           return localView;
-          paramAnonymousView.ClO.setVisibility(8);
+          paramAnonymousView.IiH.setVisibility(8);
           break;
-          label206:
-          paramAnonymousView.Cjq.setImageBitmap(null);
+          label210:
+          paramAnonymousView.Igj.setImageBitmap(null);
         }
       }
     };
@@ -82,8 +92,8 @@ public class BankCardSelectSortView
   public ListView getListView()
   {
     AppMethodBeat.i(71471);
-    this.pqt = ((ListView)findViewById(2131303242));
-    ListView localListView = this.pqt;
+    this.szs = ((ListView)findViewById(a.f.listview));
+    ListView localListView = this.szs;
     AppMethodBeat.o(71471);
     return localListView;
   }
@@ -91,7 +101,7 @@ public class BankCardSelectSortView
   public View getNoResultView()
   {
     AppMethodBeat.i(71472);
-    View localView = findViewById(2131297314);
+    View localView = findViewById(a.f.bankcard_no_result_tv);
     AppMethodBeat.o(71472);
     return localView;
   }
@@ -99,37 +109,29 @@ public class BankCardSelectSortView
   public VerticalScrollBar getScrollBar()
   {
     AppMethodBeat.i(71470);
-    VerticalScrollBar localVerticalScrollBar = (VerticalScrollBar)findViewById(2131307882);
+    VerticalScrollBar localVerticalScrollBar = (VerticalScrollBar)findViewById(a.f.sidrbar);
     AppMethodBeat.o(71470);
     return localVerticalScrollBar;
   }
   
-  public final View inflate()
-  {
-    AppMethodBeat.i(71469);
-    View localView = View.inflate(getContext(), 2131493213, this);
-    AppMethodBeat.o(71469);
-    return localView;
-  }
-  
   public static final class a
   {
-    public String AOj;
-    public String ImL;
+    public String GHx;
+    public String Pfd;
     public String icon;
     public String pinyin;
   }
   
   static final class b
   {
-    CdnImageView Cjq;
-    TextView Cjs;
-    TextView ClO;
+    CdnImageView Igj;
+    TextView Igl;
+    TextView IiH;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.BankCardSelectSortView
  * JD-Core Version:    0.7.0.1
  */

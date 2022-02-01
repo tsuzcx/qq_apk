@@ -18,12 +18,12 @@ final class LaunchAAUI$2
   
   public final void b(k paramk)
   {
-    AppMethodBeat.i(213022);
-    if ((LaunchAAUI.i(this.jXQ) != null) && (LaunchAAUI.i(this.jXQ).isShowing())) {
-      LaunchAAUI.i(this.jXQ).dismiss();
+    AppMethodBeat.i(220002);
+    if ((LaunchAAUI.j(this.mPg) != null) && (LaunchAAUI.j(this.mPg).isShowing())) {
+      LaunchAAUI.j(this.mPg).dismiss();
     }
-    LaunchAAUI.j(this.jXQ);
-    this.jXR.clear();
+    LaunchAAUI.k(this.mPg);
+    this.mPh.clear();
     switch (paramk.resultCode)
     {
     }
@@ -31,29 +31,29 @@ final class LaunchAAUI$2
     {
       do
       {
-        LaunchAAUI.a(this.jXQ, this.jXR);
-        AppMethodBeat.o(213022);
+        LaunchAAUI.a(this.mPg, this.mPh);
+        AppMethodBeat.o(220002);
         return;
-        Log.i("MicroMsg.Aa.LaunchAAUI", "search result %d", new Object[] { Integer.valueOf(paramk.wXb.size()) });
-        if ((this.jXS == null) || (!this.jXS.equals(paramk.wTn.query)))
+        Log.i("MicroMsg.Aa.LaunchAAUI", "search result %d", new Object[] { Integer.valueOf(paramk.BIW.size()) });
+        if ((this.mPi == null) || (!this.mPi.equals(paramk.BFk.query)))
         {
-          Log.i("MicroMsg.Aa.LaunchAAUI", "Native Search: Not Same query origin:%s current:%s", new Object[] { paramk.wTn.query, this.jXS });
-          AppMethodBeat.o(213022);
+          Log.i("MicroMsg.Aa.LaunchAAUI", "Native Search: Not Same query origin:%s current:%s", new Object[] { paramk.BFk.query, this.mPi });
+          AppMethodBeat.o(220002);
           return;
         }
-      } while ((paramk.wXb == null) || (paramk.wXb.size() <= 0));
-      paramk = paramk.wXb.iterator();
+      } while ((paramk.BIW == null) || (paramk.BIW.size() <= 0));
+      paramk = paramk.BIW.iterator();
       while (paramk.hasNext())
       {
         m localm = (m)paramk.next();
-        if (LaunchAAUI.SG(localm.wVX)) {
-          this.jXR.add(localm.wVX);
+        if (LaunchAAUI.aam(localm.BHS)) {
+          this.mPh.add(localm.BHS);
         }
       }
-      Log.i("MicroMsg.Aa.LaunchAAUI", "onSearchError: errorCode=%d | originQuery=%s", new Object[] { Integer.valueOf(paramk.resultCode), paramk.wTn.query });
-    } while (paramk.wTn.query.equals(this.jXS));
+      Log.i("MicroMsg.Aa.LaunchAAUI", "onSearchError: errorCode=%d | originQuery=%s", new Object[] { Integer.valueOf(paramk.resultCode), paramk.BFk.query });
+    } while (paramk.BFk.query.equals(this.mPi));
     Log.i("MicroMsg.Aa.LaunchAAUI", "Native Search: Not Same Query");
-    AppMethodBeat.o(213022);
+    AppMethodBeat.o(220002);
   }
 }
 

@@ -5,22 +5,22 @@ import org.json.JSONObject;
 
 public final class g
 {
-  private JSONObject csi;
-  private String csu;
-  int csv;
-  boolean csw;
+  int cqA;
+  boolean cqB;
+  private JSONObject cqn;
+  private String cqz;
   
   g(m paramm)
   {
     AppMethodBeat.i(140323);
-    paramm = paramm.KX();
-    this.csu = paramm.getString("method");
-    this.csi = paramm.optJSONObject("data");
-    if (this.csi == null) {
-      this.csi = new JSONObject();
+    paramm = paramm.NN();
+    this.cqz = paramm.getString("method");
+    this.cqn = paramm.optJSONObject("data");
+    if (this.cqn == null) {
+      this.cqn = new JSONObject();
     }
-    this.csv = paramm.optInt("callbackId", 0);
-    this.csw = paramm.optBoolean("keepCallback", false);
+    this.cqA = paramm.optInt("callbackId", 0);
+    this.cqB = paramm.optBoolean("keepCallback", false);
     AppMethodBeat.o(140323);
   }
 }

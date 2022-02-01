@@ -1,96 +1,112 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.Layout.Alignment;
-import android.text.SpannableString;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.util.Pair;
+import android.view.OrientationEventListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.o;
-import com.tencent.mm.ui.widget.a;
-import java.util.ArrayList;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.Log;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/utils/StringSpanHelper;", "", "()V", "Companion", "plugin-appbrand-integration_release"})
+@TargetApi(3)
 public final class af
+  extends OrientationEventListener
 {
-  public static final a ohG;
+  public int mze = 45;
+  private a rjm = a.rjo;
+  private b rjn;
   
-  static
+  public af(Context paramContext, b paramb)
   {
-    AppMethodBeat.i(229598);
-    ohG = new a((byte)0);
-    AppMethodBeat.o(229598);
+    super(paramContext);
+    this.rjn = paramb;
   }
   
-  public static final Pair<SpannableString, Integer> a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, ClickableSpan paramClickableSpan)
+  public final void disable()
   {
-    AppMethodBeat.i(229600);
-    paramContext = a.a(paramContext, paramInt1, 4, paramInt2, paramInt3, paramClickableSpan);
-    AppMethodBeat.o(229600);
-    return paramContext;
+    AppMethodBeat.i(137920);
+    super.disable();
+    this.rjm = a.rjo;
+    AppMethodBeat.o(137920);
   }
   
-  public static final List<Point> a(TextPaint paramTextPaint, CharSequence paramCharSequence, int paramInt)
+  public final void enable()
   {
-    AppMethodBeat.i(229599);
-    p.h(paramTextPaint, "tp");
-    p.h(paramCharSequence, "cs");
-    paramTextPaint = new StaticLayout(paramCharSequence, paramTextPaint, paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
-    int i = paramTextPaint.getLineCount();
-    paramCharSequence = (List)new ArrayList();
-    paramInt = 0;
-    while (paramInt < i)
+    AppMethodBeat.i(137919);
+    super.enable();
+    AppMethodBeat.o(137919);
+  }
+  
+  public final void onOrientationChanged(int paramInt)
+  {
+    AppMethodBeat.i(137921);
+    if (paramInt == -1)
     {
-      paramCharSequence.add(new Point(paramTextPaint.getLineStart(paramInt), paramTextPaint.getLineEnd(paramInt)));
-      paramInt += 1;
+      AppMethodBeat.o(137921);
+      return;
     }
-    AppMethodBeat.o(229599);
-    return paramCharSequence;
-  }
-  
-  public static final Pair<SpannableString, Integer> es(Context paramContext)
-  {
-    AppMethodBeat.i(229601);
-    p.h(paramContext, "context");
-    paramContext = a.a(paramContext, 2131232188, 1, 0, 0, (ClickableSpan)new af.a.a());
-    AppMethodBeat.o(229601);
-    return paramContext;
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/utils/StringSpanHelper$Companion;", "", "()V", "emptySpanIcon", "Landroid/util/Pair;", "Landroid/text/SpannableString;", "", "context", "Landroid/content/Context;", "getLineStartAndEnd", "", "Landroid/graphics/Point;", "tp", "Landroid/text/TextPaint;", "cs", "", "lineWidth", "makeSpanIcon", "iconResId", "leftMarginDp", "widthDp", "heightDp", "clickableSpan", "Landroid/text/style/ClickableSpan;", "plugin-appbrand-integration_release"})
-  public static final class a
-  {
-    public static Pair<SpannableString, Integer> a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ClickableSpan paramClickableSpan)
+    a locala2 = this.rjm;
+    a locala1;
+    if (((paramInt >= 360 - this.mze) && (paramInt < 360)) || ((paramInt >= 0) && (paramInt <= this.mze + 0))) {
+      locala1 = a.rjp;
+    }
+    for (;;)
     {
-      AppMethodBeat.i(229597);
-      p.h(paramContext, "context");
-      paramContext = paramContext.getResources().getDrawable(paramInt1);
-      p.g(paramContext, "context.resources.getDrawable(iconResId)");
-      paramContext.setBounds(o.zE(paramInt2), 0, o.zE(paramInt3 + paramInt2), o.zE(paramInt4));
-      a locala = new a(paramContext);
-      SpannableString localSpannableString = new SpannableString((CharSequence)"@");
-      localSpannableString.setSpan(locala, 0, 1, 33);
-      if (paramClickableSpan != null) {
-        localSpannableString.setSpan(paramClickableSpan, 0, 1, 33);
+      if (locala1 != this.rjm)
+      {
+        if ((this.rjn != null) && (this.rjm != a.rjo)) {
+          this.rjn.a(this.rjm, locala1);
+        }
+        this.rjm = locala1;
       }
-      paramContext = new Pair(localSpannableString, Integer.valueOf(paramContext.getBounds().right));
-      AppMethodBeat.o(229597);
-      return paramContext;
+      Log.v("MicroMsg.OrientationListenerHelper", "OrientationListener onOrientationChanged: %d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(137921);
+      return;
+      if ((paramInt >= 270 - this.mze) && (paramInt <= this.mze + 270))
+      {
+        locala1 = a.rjq;
+      }
+      else if ((paramInt >= 180 - this.mze) && (paramInt <= this.mze + 180))
+      {
+        locala1 = a.rjr;
+      }
+      else
+      {
+        locala1 = locala2;
+        if (paramInt >= 90 - this.mze)
+        {
+          locala1 = locala2;
+          if (paramInt <= this.mze + 90) {
+            locala1 = a.rjs;
+          }
+        }
+      }
     }
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(137918);
+      rjo = new a("NONE", 0);
+      rjp = new a("PORTRAIT", 1);
+      rjq = new a("LANDSCAPE", 2);
+      rjr = new a("REVERSE_PORTRAIT", 3);
+      rjs = new a("REVERSE_LANDSCAPE", 4);
+      rjt = new a[] { rjo, rjp, rjq, rjr, rjs };
+      AppMethodBeat.o(137918);
+    }
+    
+    private a() {}
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void a(af.a parama1, af.a parama2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.af
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.am;
-import com.tencent.mm.protocal.protobuf.an;
-import com.tencent.mm.protocal.protobuf.eck;
+import com.tencent.mm.protocal.protobuf.ak;
+import com.tencent.mm.protocal.protobuf.al;
+import com.tencent.mm.protocal.protobuf.eml;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class o
@@ -20,32 +20,32 @@ public final class o
   implements m
 {
   private i callback;
-  public String pTY;
-  public int pTZ;
-  public String pUa;
   private final d rr;
+  public String tpZ;
+  public int tqa;
+  public String tqb;
   
-  public o(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, int paramInt3, eck parameck)
+  public o(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, int paramInt3, eml parameml)
   {
     AppMethodBeat.i(112799);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new am();
-    ((d.a)localObject).iLO = new an();
+    ((d.a)localObject).lBU = new ak();
+    ((d.a)localObject).lBV = new al();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/acceptcarditem";
     ((d.a)localObject).funcId = 1037;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (am)this.rr.iLK.iLR;
-    ((am)localObject).eaO = paramString1;
-    ((am)localObject).pPy = paramString2;
-    ((am)localObject).eaQ = paramInt1;
-    ((am)localObject).eaP = paramString3;
-    ((am)localObject).KDg = paramString4;
-    ((am)localObject).KDf = paramString5;
-    ((am)localObject).KDh = paramInt2;
-    ((am)localObject).KDi = paramInt3;
-    ((am)localObject).KDj = parameck;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (ak)d.b.b(this.rr.lBR);
+    ((ak)localObject).fUL = paramString1;
+    ((ak)localObject).from_username = paramString2;
+    ((ak)localObject).fUN = paramInt1;
+    ((ak)localObject).fUM = paramString3;
+    ((ak)localObject).REx = paramString4;
+    ((ak)localObject).REw = paramString5;
+    ((ak)localObject).REy = paramInt2;
+    ((ak)localObject).REz = paramInt3;
+    ((ak)localObject).REA = parameml;
     AppMethodBeat.o(112799);
   }
   
@@ -69,12 +69,12 @@ public final class o
     Log.i("MicroMsg.NetSceneAcceptCardItem", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (an)this.rr.iLL.iLR;
+      params = (al)d.c.b(this.rr.lBS);
       if (params != null)
       {
-        this.pTY = params.pTY;
-        this.pTZ = params.pTZ;
-        this.pUa = params.pUa;
+        this.tpZ = params.tpZ;
+        this.tqa = params.tqa;
+        this.tqb = params.tqb;
       }
     }
     for (;;)
@@ -82,12 +82,12 @@ public final class o
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(112801);
       return;
-      params = (an)this.rr.iLL.iLR;
+      params = (al)d.c.b(this.rr.lBS);
       if (params != null)
       {
-        this.pTY = params.pTY;
-        this.pTZ = params.pTZ;
-        this.pUa = params.pUa;
+        this.tpZ = params.tpZ;
+        this.tqa = params.tqa;
+        this.tqb = params.tqb;
       }
     }
   }

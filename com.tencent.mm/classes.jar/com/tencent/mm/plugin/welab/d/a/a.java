@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.welab.d.a;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ec;
+import com.tencent.mm.f.c.eg;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -18,11 +18,11 @@ import java.util.List;
 import java.util.Map;
 
 public class a
-  extends ec
+  extends eg
 {
-  private static final List<String> JGd;
+  private static final List<String> QFp;
   public static IAutoDBItem.MAutoDBInfo info;
-  private Map<String, Field> JGc;
+  private Map<String, Field> QFo;
   
   static
   {
@@ -218,21 +218,21 @@ public class a
     localMAutoDBInfo.columns[46] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
     info = localMAutoDBInfo;
-    JGd = Arrays.asList(new String[] { "_cn", "_hk", "_tw", "_en" });
+    QFp = Arrays.asList(new String[] { "_cn", "_hk", "_tw", "_en" });
     AppMethodBeat.o(146269);
   }
   
   public a()
   {
     AppMethodBeat.i(146255);
-    this.JGc = new HashMap();
+    this.QFo = new HashMap();
     AppMethodBeat.o(146255);
   }
   
-  private String afQ(String paramString)
+  private String anv(String paramString)
   {
     AppMethodBeat.i(146265);
-    Object localObject = (Field)this.JGc.get(paramString);
+    Object localObject = (Field)this.QFo.get(paramString);
     if (localObject == null) {
       try
       {
@@ -246,7 +246,7 @@ public class a
         {
           try
           {
-            this.JGc.put(paramString, localObject);
+            this.QFo.put(paramString, localObject);
             if (localObject == null) {
               continue;
             }
@@ -274,14 +274,14 @@ public class a
     }
   }
   
-  private String bbI(String paramString)
+  private String bnI(String paramString)
   {
     AppMethodBeat.i(146264);
-    Iterator localIterator = JGd.iterator();
+    Iterator localIterator = QFp.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      str = afQ(paramString + str);
+      str = anv(paramString + str);
       if (!TextUtils.isEmpty(str))
       {
         AppMethodBeat.o(146264);
@@ -292,24 +292,24 @@ public class a
     return "";
   }
   
-  private String mo(String paramString1, String paramString2)
+  private String mQ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146263);
-    paramString2 = afQ(paramString1 + paramString2);
+    paramString2 = anv(paramString1 + paramString2);
     if (!TextUtils.isEmpty(paramString2))
     {
       AppMethodBeat.o(146263);
       return paramString2;
     }
-    paramString1 = bbI(paramString1);
+    paramString1 = bnI(paramString1);
     AppMethodBeat.o(146263);
     return paramString1;
   }
   
-  public final String bbH(String paramString)
+  public final String bnH(String paramString)
   {
     AppMethodBeat.i(146262);
-    String str1 = afQ(paramString + "Key_android");
+    String str1 = anv(paramString + "Key_android");
     if (!TextUtils.isEmpty(str1))
     {
       String str2 = MMApplicationContext.getPackageName();
@@ -324,23 +324,23 @@ public class a
     str1 = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
     if (LocaleUtil.isSimplifiedChineseAppLang())
     {
-      paramString = mo(paramString, "_cn");
+      paramString = mQ(paramString, "_cn");
       AppMethodBeat.o(146262);
       return paramString;
     }
     if ("zh_HK".equals(str1))
     {
-      paramString = mo(paramString, "_hk");
+      paramString = mQ(paramString, "_hk");
       AppMethodBeat.o(146262);
       return paramString;
     }
     if ("zh_TW".equals(str1))
     {
-      paramString = mo(paramString, "_tw");
+      paramString = mQ(paramString, "_tw");
       AppMethodBeat.o(146262);
       return paramString;
     }
-    paramString = mo(paramString, "_en");
+    paramString = mQ(paramString, "_en");
     AppMethodBeat.o(146262);
     return paramString;
   }
@@ -368,7 +368,15 @@ public class a
     return info;
   }
   
-  public final boolean gjo()
+  public int hashCode()
+  {
+    AppMethodBeat.i(146256);
+    int i = this.field_LabsAppId.hashCode();
+    AppMethodBeat.o(146256);
+    return i;
+  }
+  
+  public final boolean hdb()
   {
     AppMethodBeat.i(146267);
     if ((isRunning()) && ((this.field_Switch == 2) || (this.field_Switch == 1)))
@@ -380,22 +388,14 @@ public class a
     return false;
   }
   
-  public final boolean gjp()
+  public final boolean hdc()
   {
     return this.field_bItemFromXExpt == 1;
   }
   
-  public final boolean gjq()
+  public final boolean hdd()
   {
     return this.field_status == 1;
-  }
-  
-  public int hashCode()
-  {
-    AppMethodBeat.i(146256);
-    int i = this.field_LabsAppId.hashCode();
-    AppMethodBeat.o(146256);
-    return i;
   }
   
   public final boolean isExpired()
@@ -450,7 +450,7 @@ public class a
   {
     AppMethodBeat.i(146268);
     if ((this.field_idkey > 0) && (this.field_idkeyValue >= 0)) {
-      h.CyF.idkeyStat(this.field_idkey, this.field_idkeyValue, 1L, false);
+      h.IzE.idkeyStat(this.field_idkey, this.field_idkeyValue, 1L, false);
     }
     AppMethodBeat.o(146268);
   }
@@ -465,7 +465,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.d.a.a
  * JD-Core Version:    0.7.0.1
  */

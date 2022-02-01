@@ -6,18 +6,18 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
 final class FinderTimelineFeedLoader$f
   extends q
   implements a<x>
 {
-  public static final f tXH;
+  public static final f xJC;
   
   static
   {
-    AppMethodBeat.i(244893);
-    tXH = new f();
-    AppMethodBeat.o(244893);
+    AppMethodBeat.i(288820);
+    xJC = new f();
+    AppMethodBeat.o(288820);
   }
   
   FinderTimelineFeedLoader$f()

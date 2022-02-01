@@ -24,6 +24,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.i;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.wxpay.a.a;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.h;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
 import com.tencent.mm.pluginsdk.ui.chat.d;
@@ -40,30 +44,30 @@ import java.util.List;
 public class LuckyMoneyWishFooter
   extends BasePanelKeybordLayout
 {
-  private MMActivity gte;
-  private Button han;
-  ChatFooterPanel rum;
+  private ImageButton EOg;
+  MMEditText EOh;
+  boolean EOi;
+  public boolean EOj;
+  private boolean EOk;
+  boolean EOl;
+  private TextWatcher EOm;
+  private a EOn;
+  private c EOo;
+  private MMActivity iXq;
+  private Button jLo;
+  ChatFooterPanel jPN;
   private int state;
-  private ImageButton ziQ;
-  MMEditText ziR;
-  boolean ziS;
-  public boolean ziT;
-  private boolean ziU;
-  boolean ziV;
-  private TextWatcher ziW;
-  private a ziX;
-  private c ziY;
   
   public LuckyMoneyWishFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(65951);
     this.state = 0;
-    this.ziS = false;
-    this.ziT = false;
-    this.ziU = true;
-    this.ziV = true;
-    this.ziW = new TextWatcher()
+    this.EOi = false;
+    this.EOj = false;
+    this.EOk = true;
+    this.EOl = true;
+    this.EOm = new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -77,15 +81,15 @@ public class LuckyMoneyWishFooter
         if ((paramAnonymousEditable.length() > 0) && (paramAnonymousEditable.toString().trim().length() > 0)) {}
         for (int i = 1;; i = 0)
         {
-          if ((i != 0) && (LuckyMoneyWishFooter.this.ziV))
+          if ((i != 0) && (LuckyMoneyWishFooter.this.EOl))
           {
             LuckyMoneyWishFooter.a(LuckyMoneyWishFooter.this, true);
-            LuckyMoneyWishFooter.this.ziV = false;
+            LuckyMoneyWishFooter.this.EOl = false;
           }
           if (i == 0)
           {
             LuckyMoneyWishFooter.a(LuckyMoneyWishFooter.this, false);
-            LuckyMoneyWishFooter.this.ziV = true;
+            LuckyMoneyWishFooter.this.EOl = true;
           }
           AppMethodBeat.o(65945);
           return;
@@ -96,24 +100,24 @@ public class LuckyMoneyWishFooter
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     };
-    this.gte = ((MMActivity)paramContext);
-    paramContext = (ViewGroup)inflate(this.gte, 2131495387, this);
-    this.han = ((Button)paramContext.findViewById(2131304286));
-    qT(false);
-    this.ziQ = ((ImageButton)paramContext.findViewById(2131304285));
-    this.ziQ.setOnClickListener(new View.OnClickListener()
+    this.iXq = ((MMActivity)paramContext);
+    paramContext = (ViewGroup)inflate(this.iXq, a.g.lucky_money_wish_footer, this);
+    this.jLo = ((Button)paramContext.findViewById(a.f.lucky_money_wish_send_btn));
+    tV(false);
+    this.EOg = ((ImageButton)paramContext.findViewById(a.f.lucky_money_wish_mode_iv));
+    this.EOg.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(65946);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyWishFooter$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyWishFooter$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         Log.i("MicroMsg.SnsCommentFooter", "state onClick" + LuckyMoneyWishFooter.c(LuckyMoneyWishFooter.this));
         if (LuckyMoneyWishFooter.c(LuckyMoneyWishFooter.this) == 0)
         {
           LuckyMoneyWishFooter.this.setModeClick(true);
-          LuckyMoneyWishFooter.d(LuckyMoneyWishFooter.this).setImageResource(2131690793);
+          LuckyMoneyWishFooter.d(LuckyMoneyWishFooter.this).setImageResource(a.h.icons_outlined_emoji);
           LuckyMoneyWishFooter.a(LuckyMoneyWishFooter.this, 1);
           LuckyMoneyWishFooter.e(LuckyMoneyWishFooter.this);
         }
@@ -125,13 +129,13 @@ public class LuckyMoneyWishFooter
           return;
           LuckyMoneyWishFooter.this.setModeClick(false);
           LuckyMoneyWishFooter.e(LuckyMoneyWishFooter.this);
-          LuckyMoneyWishFooter.d(LuckyMoneyWishFooter.this).setImageResource(2131690793);
+          LuckyMoneyWishFooter.d(LuckyMoneyWishFooter.this).setImageResource(a.h.icons_outlined_emoji);
           LuckyMoneyWishFooter.a(LuckyMoneyWishFooter.this, 0);
         }
       }
     });
-    this.ziR = ((MMEditText)paramContext.findViewById(2131304283));
-    this.ziR.setOnTouchListener(new View.OnTouchListener()
+    this.EOh = ((MMEditText)paramContext.findViewById(a.f.lucky_money_wish_content_et));
+    this.EOh.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -139,7 +143,7 @@ public class LuckyMoneyWishFooter
         LuckyMoneyWishFooter.e(LuckyMoneyWishFooter.this);
         LuckyMoneyWishFooter.a(LuckyMoneyWishFooter.this).setVisibility(8);
         LuckyMoneyWishFooter.a(LuckyMoneyWishFooter.this).onPause();
-        LuckyMoneyWishFooter.d(LuckyMoneyWishFooter.this).setImageResource(2131690793);
+        LuckyMoneyWishFooter.d(LuckyMoneyWishFooter.this).setImageResource(a.h.icons_outlined_emoji);
         if (LuckyMoneyWishFooter.g(LuckyMoneyWishFooter.this) != null) {
           LuckyMoneyWishFooter.g(LuckyMoneyWishFooter.this);
         }
@@ -148,21 +152,23 @@ public class LuckyMoneyWishFooter
         return false;
       }
     });
-    if (e.Knc == null)
+    if (e.RnO == null)
     {
-      this.rum = new d(this.gte);
+      this.jPN = new d(this.iXq);
       AppMethodBeat.o(65951);
       return;
     }
-    this.rum = e.Knc.eZ(getContext());
-    this.rum.setEntranceScene(ChatFooterPanel.KbB);
-    this.rum.setVisibility(8);
-    ((LinearLayout)findViewById(2131307157)).addView(this.rum, -1, 0);
-    this.rum.goD();
-    this.rum.onResume();
-    this.rum.setOnTextOperationListener(new ChatFooterPanel.a()
+    this.jPN = e.RnO.fd(getContext());
+    this.jPN.setEntranceScene(ChatFooterPanel.Rcg);
+    this.jPN.setVisibility(8);
+    ((LinearLayout)findViewById(a.f.root)).addView(this.jPN, -1, 0);
+    this.jPN.hjp();
+    this.jPN.onResume();
+    this.jPN.setOnTextOperationListener(new ChatFooterPanel.a()
     {
-      public final void aHC()
+      public final void aDN() {}
+      
+      public final void aDO()
       {
         AppMethodBeat.i(65948);
         LuckyMoneyWishFooter.b(LuckyMoneyWishFooter.this).getInputConnection().sendKeyEvent(new KeyEvent(0, 67));
@@ -170,14 +176,12 @@ public class LuckyMoneyWishFooter
         AppMethodBeat.o(65948);
       }
       
-      public final void aHD() {}
-      
       public final void append(String paramAnonymousString)
       {
         AppMethodBeat.i(65949);
         try
         {
-          LuckyMoneyWishFooter.b(LuckyMoneyWishFooter.this).bol(paramAnonymousString);
+          LuckyMoneyWishFooter.b(LuckyMoneyWishFooter.this).bBa(paramAnonymousString);
           AppMethodBeat.o(65949);
           return;
         }
@@ -188,43 +192,20 @@ public class LuckyMoneyWishFooter
         }
       }
       
-      public final void eP(boolean paramAnonymousBoolean) {}
+      public final void eE(boolean paramAnonymousBoolean) {}
     });
     AppMethodBeat.o(65951);
   }
   
-  private void cbL()
-  {
-    AppMethodBeat.i(65954);
-    this.rum.onResume();
-    this.rum.postDelayed(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(65944);
-        LuckyMoneyWishFooter.a(LuckyMoneyWishFooter.this).setVisibility(0);
-        AppMethodBeat.o(65944);
-      }
-    }, 200L);
-    ViewGroup.LayoutParams localLayoutParams = this.rum.getLayoutParams();
-    if (((localLayoutParams != null) && (localLayoutParams.height <= 0)) || ((localLayoutParams != null) && (i.isPortOrientation(getContext())) && (this.ziU)))
-    {
-      localLayoutParams.height = i.getValidPanelHeight(getContext());
-      this.rum.setLayoutParams(localLayoutParams);
-      this.ziU = false;
-    }
-    AppMethodBeat.o(65954);
-  }
-  
-  private void egH()
+  private void eQn()
   {
     AppMethodBeat.i(65953);
     if (this.state == 0)
     {
-      this.ziR.requestFocus();
-      this.gte.getWindow().setSoftInputMode(16);
-      this.gte.showVKB();
-      this.rum.postDelayed(new Runnable()
+      this.EOh.requestFocus();
+      this.iXq.getWindow().setSoftInputMode(16);
+      this.iXq.showVKB();
+      this.jPN.postDelayed(new Runnable()
       {
         public final void run()
         {
@@ -236,59 +217,82 @@ public class LuckyMoneyWishFooter
       AppMethodBeat.o(65953);
       return;
     }
-    this.ziR.requestFocus();
-    this.gte.getWindow().setSoftInputMode(32);
-    this.gte.hideVKB();
-    cbL();
+    this.EOh.requestFocus();
+    this.iXq.getWindow().setSoftInputMode(32);
+    this.iXq.hideVKB();
+    eQo();
     AppMethodBeat.o(65953);
   }
   
-  private void qT(boolean paramBoolean)
+  private void eQo()
+  {
+    AppMethodBeat.i(65954);
+    this.jPN.onResume();
+    this.jPN.postDelayed(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(65944);
+        LuckyMoneyWishFooter.a(LuckyMoneyWishFooter.this).setVisibility(0);
+        AppMethodBeat.o(65944);
+      }
+    }, 200L);
+    ViewGroup.LayoutParams localLayoutParams = this.jPN.getLayoutParams();
+    if (((localLayoutParams != null) && (localLayoutParams.height <= 0)) || ((localLayoutParams != null) && (i.isPortOrientation(getContext())) && (this.EOk)))
+    {
+      localLayoutParams.height = i.getValidPanelHeight(getContext());
+      this.jPN.setLayoutParams(localLayoutParams);
+      this.EOk = false;
+    }
+    AppMethodBeat.o(65954);
+  }
+  
+  private void tV(boolean paramBoolean)
   {
     AppMethodBeat.i(65962);
-    Animation localAnimation1 = AnimationUtils.loadAnimation(getContext(), 2130772119);
-    Animation localAnimation2 = AnimationUtils.loadAnimation(getContext(), 2130772124);
+    Animation localAnimation1 = AnimationUtils.loadAnimation(getContext(), a.a.pop_in);
+    Animation localAnimation2 = AnimationUtils.loadAnimation(getContext(), a.a.pop_out);
     localAnimation1.setDuration(150L);
     localAnimation2.setDuration(150L);
-    if (this.han == null)
+    if (this.jLo == null)
     {
       AppMethodBeat.o(65962);
       return;
     }
     if (paramBoolean)
     {
-      if ((this.han.getVisibility() == 8) || (this.han.getVisibility() == 4))
+      if ((this.jLo.getVisibility() == 8) || (this.jLo.getVisibility() == 4))
       {
         AppMethodBeat.o(65962);
         return;
       }
-      this.han.startAnimation(localAnimation2);
-      this.han.setVisibility(8);
+      this.jLo.startAnimation(localAnimation2);
+      this.jLo.setVisibility(8);
       AppMethodBeat.o(65962);
       return;
     }
-    if ((this.han.getVisibility() == 0) || (this.han.getVisibility() == 0))
+    if ((this.jLo.getVisibility() == 0) || (this.jLo.getVisibility() == 0))
     {
       AppMethodBeat.o(65962);
       return;
     }
-    this.han.startAnimation(localAnimation1);
-    this.han.setVisibility(0);
+    this.jLo.startAnimation(localAnimation1);
+    this.jLo.setVisibility(0);
     AppMethodBeat.o(65962);
   }
   
-  public final void Ns(int paramInt)
+  public final void SG(int paramInt)
   {
     AppMethodBeat.i(65960);
-    super.Ns(paramInt);
+    super.SG(paramInt);
     switch (paramInt)
     {
     default: 
-      this.ziT = false;
+      this.EOj = false;
       AppMethodBeat.o(65960);
       return;
     }
-    this.ziT = true;
+    this.EOj = true;
     AppMethodBeat.o(65960);
   }
   
@@ -296,7 +300,7 @@ public class LuckyMoneyWishFooter
   {
     AppMethodBeat.i(65963);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.rum);
+    localArrayList.add(this.jPN);
     AppMethodBeat.o(65963);
     return localArrayList;
   }
@@ -304,44 +308,44 @@ public class LuckyMoneyWishFooter
   public void setHint(String paramString)
   {
     AppMethodBeat.i(65958);
-    this.ziR.setHint(paramString);
+    this.EOh.setHint(paramString);
     AppMethodBeat.o(65958);
   }
   
   public void setMaxLength(int paramInt)
   {
     AppMethodBeat.i(65955);
-    this.ziR.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
+    this.EOh.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
     AppMethodBeat.o(65955);
   }
   
   public void setModeClick(boolean paramBoolean)
   {
-    this.ziS = paramBoolean;
+    this.EOi = paramBoolean;
   }
   
   public void setOnEditTouchListener(a parama)
   {
-    this.ziX = parama;
+    this.EOn = parama;
   }
   
   public void setOnSmileyShowListener(c paramc)
   {
-    this.ziY = paramc;
+    this.EOo = paramc;
   }
   
   public void setOnWishSendImp(final b paramb)
   {
     AppMethodBeat.i(65959);
-    this.han.setOnClickListener(new View.OnClickListener()
+    this.jLo.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(65950);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyWishFooter$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        paramb.aDC(LuckyMoneyWishFooter.b(LuckyMoneyWishFooter.this).getText().toString());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyWishFooter$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        paramb.aNL(LuckyMoneyWishFooter.b(LuckyMoneyWishFooter.this).getText().toString());
         LuckyMoneyWishFooter.b(LuckyMoneyWishFooter.this).setText("");
         a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyWishFooter$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(65950);
@@ -353,10 +357,10 @@ public class LuckyMoneyWishFooter
   public void setText(String paramString)
   {
     AppMethodBeat.i(65957);
-    if (this.ziR != null)
+    if (this.EOh != null)
     {
-      this.ziR.setText("");
-      this.ziR.bol(paramString);
+      this.EOh.setText("");
+      this.EOh.bBa(paramString);
     }
     AppMethodBeat.o(65957);
   }
@@ -369,16 +373,16 @@ public class LuckyMoneyWishFooter
     if (paramInt == 0)
     {
       bool = true;
-      if (this.rum != null)
+      if (this.jPN != null)
       {
         Log.i("MicroMsg.SnsCommentFooter", "showState ".concat(String.valueOf(bool)));
         if (bool) {
           break label118;
         }
         Log.d("MicroMsg.SnsCommentFooter", Util.getStack());
-        this.rum.setVisibility(8);
-        this.ziQ.setImageResource(2131690793);
-        this.gte.hideVKB();
+        this.jPN.setVisibility(8);
+        this.EOg.setImageResource(a.h.icons_outlined_emoji);
+        this.iXq.hideVKB();
         setModeClick(true);
         requestLayout();
       }
@@ -391,8 +395,8 @@ public class LuckyMoneyWishFooter
       bool = false;
       break;
       label118:
-      egH();
-      this.ziU = false;
+      eQn();
+      this.EOk = false;
     }
   }
   
@@ -400,14 +404,14 @@ public class LuckyMoneyWishFooter
   
   public static abstract interface b
   {
-    public abstract void aDC(String paramString);
+    public abstract void aNL(String paramString);
   }
   
   static abstract interface c {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyWishFooter
  * JD-Core Version:    0.7.0.1
  */

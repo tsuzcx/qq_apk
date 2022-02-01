@@ -1,7 +1,6 @@
 package com.tencent.mm.sdk.platformtools;
 
 import android.os.Looper;
-import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Vector;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -57,17 +56,7 @@ public class QueueWorkerThread
         Log.i("QueueWorkerThread.QueueWorkerThread", "looper is null use MainLooper!");
       }
     }
-    this.onPostExc = new MMHandler(paramString)
-    {
-      public void handleMessage(Message paramAnonymousMessage)
-      {
-        AppMethodBeat.i(157792);
-        if ((paramAnonymousMessage != null) && (paramAnonymousMessage.obj != null)) {
-          ((QueueWorkerThread.ThreadObject)paramAnonymousMessage.obj).onPostExecute();
-        }
-        AppMethodBeat.o(157792);
-      }
-    };
+    this.onPostExc = new QueueWorkerThread.1(this, paramString);
     AppMethodBeat.o(157796);
   }
   
@@ -105,16 +94,16 @@ public class QueueWorkerThread
   
   public void clear()
   {
-    AppMethodBeat.i(230375);
+    AppMethodBeat.i(188956);
     this.queueToReq.clear();
-    AppMethodBeat.o(230375);
+    AppMethodBeat.o(188956);
   }
   
   public int getQueueSize()
   {
-    AppMethodBeat.i(230374);
+    AppMethodBeat.i(188954);
     int i = this.queueToReq.size();
-    AppMethodBeat.o(230374);
+    AppMethodBeat.o(188954);
     return i;
   }
   
@@ -289,14 +278,13 @@ public class QueueWorkerThread
       //   22	42	97	finally
       //   42	44	97	finally
       //   82	94	97	finally
-      //   98	100	97	finally
       //   44	64	107	java/lang/Exception
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.QueueWorkerThread
  * JD-Core Version:    0.7.0.1
  */

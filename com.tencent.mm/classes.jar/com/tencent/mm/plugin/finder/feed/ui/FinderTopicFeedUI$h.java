@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.a.e.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onDismiss"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onDismiss"})
 final class FinderTopicFeedUI$h
   implements e.b
 {
-  public static final h udy;
+  public static final h xTf;
   
   static
   {
-    AppMethodBeat.i(245584);
-    udy = new h();
-    AppMethodBeat.o(245584);
+    AppMethodBeat.i(285050);
+    xTf = new h();
+    AppMethodBeat.o(285050);
   }
   
   public final void onDismiss() {}

@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.account.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.xj;
-import com.tencent.mm.protocal.protobuf.xk;
+import com.tencent.mm.protocal.protobuf.xp;
+import com.tencent.mm.protocal.protobuf.xq;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class f
@@ -17,30 +17,30 @@ public final class f
   implements m
 {
   private i callback;
-  public String fMb;
-  private d iUB;
+  public String idS;
+  private d lKU;
   
   public f(String paramString)
   {
-    AppMethodBeat.i(196846);
+    AppMethodBeat.i(216037);
     d.a locala = new d.a();
-    xj localxj = new xj();
-    localxj.fMb = paramString;
-    this.fMb = paramString;
-    locala.iLN = localxj;
-    locala.iLO = new xk();
+    xp localxp = new xp();
+    localxp.idS = paramString;
+    this.idS = paramString;
+    locala.lBU = localxp;
+    locala.lBV = new xq();
     locala.uri = "/cgi-bin/micromsg-bin/checkaliasvalid";
     locala.funcId = getType();
-    this.iUB = locala.aXF();
-    AppMethodBeat.o(196846);
+    this.lKU = locala.bgN();
+    AppMethodBeat.o(216037);
   }
   
   public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(196847);
+    AppMethodBeat.i(216040);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
-    AppMethodBeat.o(196847);
+    int i = dispatch(paramg, this.lKU, this);
+    AppMethodBeat.o(216040);
     return i;
   }
   
@@ -51,10 +51,10 @@ public final class f
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(196848);
+    AppMethodBeat.i(216042);
     Log.i("MicroMsg.NetSceneCheckAliasValid", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(196848);
+    AppMethodBeat.o(216042);
   }
 }
 

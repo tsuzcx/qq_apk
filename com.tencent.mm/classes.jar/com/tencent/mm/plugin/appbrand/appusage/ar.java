@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.c;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.c;
 import com.tencent.mm.app.o.a;
-import com.tencent.mm.model.cj.a;
+import com.tencent.mm.model.ck.a;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.protocal.protobuf.db;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
@@ -20,51 +20,51 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaStarAndHistoryPushingReceiver;", "Lcom/tencent/mm/model/SysCmdMsgExtension$ISysCmdMsgListener;", "()V", "TAG", "", "THREAD_TAG", "appForegroundListener", "Lcom/tencent/mm/app/IAppForegroundListener$Impl;", "forcePendingUpdateHistoryAndStar", "Ljava/util/concurrent/atomic/AtomicBoolean;", "hasPendingFetchHistoryAndStarTask", "", "isAppBackground", "fetchStartAndHistory", "", "onDeleteMsg", "msg", "Lcom/tencent/mm/modelbase/IMessageExtension$DeleteMsgInfo;", "onRecieveMsg", "addMsgInfo", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgInfo;", "parseWxaInfo", "", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaInfo;", "values", "", "prefix", "process", "xml", "processPendingFetching", "register", "unregister", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaStarAndHistoryPushingReceiver;", "Lcom/tencent/mm/model/SysCmdMsgExtension$ISysCmdMsgListener;", "()V", "TAG", "", "THREAD_TAG", "appForegroundListener", "Lcom/tencent/mm/app/IAppForegroundListener$Impl;", "forcePendingUpdateHistoryAndStar", "Ljava/util/concurrent/atomic/AtomicBoolean;", "hasPendingFetchHistoryAndStarTask", "", "isAppBackground", "fetchStartAndHistory", "", "onDeleteMsg", "msg", "Lcom/tencent/mm/modelbase/IMessageExtension$DeleteMsgInfo;", "onRecieveMsg", "addMsgInfo", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgInfo;", "parseWxaInfo", "", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaInfo;", "values", "", "prefix", "process", "xml", "processPendingFetching", "register", "unregister", "plugin-appbrand-integration_release"})
 public final class ar
-  implements cj.a
+  implements ck.a
 {
+  private static final String THREAD_TAG;
   public static final o.a appForegroundListener;
-  private static final String kWD;
-  private static volatile boolean kWE;
-  private static volatile boolean kWF;
-  private static AtomicBoolean kWG;
-  public static final ar kWH;
+  private static volatile boolean nQQ;
+  private static volatile boolean nQR;
+  private static AtomicBoolean nQS;
+  public static final ar nQT;
   
   static
   {
-    AppMethodBeat.i(228147);
+    AppMethodBeat.i(268524);
     ar localar = new ar();
-    kWH = localar;
-    kWD = String.valueOf(localar.hashCode());
-    kWE = true;
-    kWG = new AtomicBoolean(true);
+    nQT = localar;
+    THREAD_TAG = String.valueOf(localar.hashCode());
+    nQQ = true;
+    nQS = new AtomicBoolean(true);
     appForegroundListener = (o.a)new a();
-    AppMethodBeat.o(228147);
+    AppMethodBeat.o(268524);
   }
   
-  public static void byx()
+  public static void bJL()
   {
-    AppMethodBeat.i(228143);
-    if (kWF)
+    AppMethodBeat.i(268518);
+    if (nQR)
     {
-      kWF = false;
-      d.c(kWD, (a)d.kWK);
+      nQR = false;
+      d.c(THREAD_TAG, (a)d.nQW);
     }
-    AppMethodBeat.o(228143);
+    AppMethodBeat.o(268518);
   }
   
-  private static void byy()
+  private static void bJM()
   {
-    AppMethodBeat.i(228145);
+    AppMethodBeat.i(268522);
     Log.i("MicroMsg.WxaStarAndHistoryPushingReceiver", "fetchStartAndHistory");
-    j.bxQ().a(Util.nowMilliSecond(), true, null, 4, 0);
-    AppMethodBeat.o(228145);
+    j.bJf().a(Util.nowMilliSecond(), true, null, 4, 0);
+    AppMethodBeat.o(268522);
   }
   
   private static List<aq> e(Map<String, String> paramMap, String paramString)
   {
-    AppMethodBeat.i(228146);
+    AppMethodBeat.i(268523);
     int k = Util.getInt((String)paramMap.get(paramString + ".DeleteCount"), 0);
     List localList = (List)new ArrayList();
     if (k > 0)
@@ -113,54 +113,54 @@ public final class ar
         }
       }
     }
-    AppMethodBeat.o(228146);
+    AppMethodBeat.o(268523);
     return localList;
   }
   
   public final void a(h.a parama)
   {
-    AppMethodBeat.i(228144);
-    p.h(parama, "addMsgInfo");
-    parama = z.a(parama.heO.KHn);
+    AppMethodBeat.i(268520);
+    p.k(parama, "addMsgInfo");
+    parama = z.a(parama.jQG.RIF);
     if (Util.isNullOrNil(parama))
     {
-      AppMethodBeat.o(228144);
+      AppMethodBeat.o(268520);
       return;
     }
-    d.c(kWD, (a)new b(parama));
-    AppMethodBeat.o(228144);
+    d.c(THREAD_TAG, (a)new b(parama));
+    AppMethodBeat.o(268520);
   }
   
   public final void a(h.c paramc) {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/appusage/WxaStarAndHistoryPushingReceiver$appForegroundListener$1", "Lcom/tencent/mm/app/IAppForegroundListener$Impl;", "onAppBackground", "", "activity", "", "onAppForeground", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/appusage/WxaStarAndHistoryPushingReceiver$appForegroundListener$1", "Lcom/tencent/mm/app/IAppForegroundListener$Impl;", "onAppBackground", "", "activity", "", "onAppForeground", "plugin-appbrand-integration_release"})
   public static final class a
     extends o.a
   {
     public final void onAppBackground(String paramString)
     {
-      AppMethodBeat.i(228137);
-      p.h(paramString, "activity");
+      AppMethodBeat.i(268274);
+      p.k(paramString, "activity");
       Log.i("MicroMsg.WxaStarAndHistoryPushingReceiver", "onAppBackground");
-      paramString = ar.kWH;
-      ar.gM(true);
-      AppMethodBeat.o(228137);
+      paramString = ar.nQT;
+      ar.hx(true);
+      AppMethodBeat.o(268274);
     }
     
     public final void onAppForeground(String paramString)
     {
-      AppMethodBeat.i(228136);
-      p.h(paramString, "activity");
+      AppMethodBeat.i(268271);
+      p.k(paramString, "activity");
       Log.i("MicroMsg.WxaStarAndHistoryPushingReceiver", "onAppForeground");
-      paramString = ar.kWH;
-      ar.gM(false);
-      paramString = ar.kWH;
-      ar.byx();
-      AppMethodBeat.o(228136);
+      paramString = ar.nQT;
+      ar.hx(false);
+      paramString = ar.nQT;
+      ar.bJL();
+      AppMethodBeat.o(268271);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class b
     extends q
     implements a<x>
@@ -171,18 +171,18 @@ public final class ar
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class c
     extends q
     implements a<x>
   {
-    public static final c kWJ;
+    public static final c nQV;
     
     static
     {
-      AppMethodBeat.i(228140);
-      kWJ = new c();
-      AppMethodBeat.o(228140);
+      AppMethodBeat.i(260110);
+      nQV = new c();
+      AppMethodBeat.o(260110);
     }
     
     c()
@@ -191,18 +191,18 @@ public final class ar
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class d
     extends q
     implements a<x>
   {
-    public static final d kWK;
+    public static final d nQW;
     
     static
     {
-      AppMethodBeat.i(228142);
-      kWK = new d();
-      AppMethodBeat.o(228142);
+      AppMethodBeat.i(284700);
+      nQW = new d();
+      AppMethodBeat.o(284700);
     }
     
     d()
@@ -213,7 +213,7 @@ public final class ar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.ar
  * JD-Core Version:    0.7.0.1
  */

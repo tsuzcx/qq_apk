@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.game.preload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.m;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
@@ -11,24 +11,24 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class b
 {
-  private static String ltO;
+  private static String ooO;
   
-  public static String bDt()
+  public static String bOR()
   {
     AppMethodBeat.i(45277);
     Object localObject;
-    if (!Util.isNullOrNil(ltO))
+    if (!Util.isNullOrNil(ooO))
     {
-      localObject = ltO;
+      localObject = ooO;
       AppMethodBeat.o(45277);
       return localObject;
     }
     try
     {
-      localObject = (IPCString)XIPCInvoker.a(MainProcessIPCService.dkO, IPCVoid.hnE, a.class);
+      localObject = (IPCString)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, a.class);
       if (localObject == null)
       {
-        String str2 = com.tencent.mm.loader.j.b.aKJ();
+        String str2 = com.tencent.mm.loader.j.b.aSL();
         localObject = str2;
         if (!str2.endsWith("/")) {
           localObject = str2 + "/";
@@ -46,14 +46,14 @@ public final class b
         str1 = null;
       }
       String str1 = str1.value;
-      ltO = str1;
+      ooO = str1;
       AppMethodBeat.o(45277);
       return str1;
     }
   }
   
   static final class a
-    implements k<IPCVoid, IPCString>
+    implements m<IPCVoid, IPCString>
   {}
 }
 

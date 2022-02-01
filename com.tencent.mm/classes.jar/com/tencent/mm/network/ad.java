@@ -6,17 +6,17 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class ad
 {
-  private static final byte[] jFy;
-  public o jFz;
+  private static final byte[] mwb;
+  public o mwc;
   
   static
   {
     AppMethodBeat.i(132892);
-    jFy = com.tencent.mm.b.o.iC(7);
+    mwb = com.tencent.mm.b.o.jO(7);
     AppMethodBeat.o(132892);
   }
   
-  public final void j(int paramInt, byte[] paramArrayOfByte)
+  public final void k(int paramInt, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(132891);
     StringBuilder localStringBuilder = new StringBuilder("onNotify, datalen=");
@@ -36,25 +36,25 @@ public final class ad
       i = paramArrayOfByte.length;
       break;
       Log.i("MicroMsg.MMNativeNetNotifyAdapter", "old notify");
-      this.jFz.f(138, jFy);
+      this.mwc.f(138, mwb);
       AppMethodBeat.o(132891);
       return;
       Log.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush new notify [%s]", new Object[] { Util.dumpHex(paramArrayOfByte) });
-      this.jFz.f(138, paramArrayOfByte);
+      this.mwc.f(138, paramArrayOfByte);
       AppMethodBeat.o(132891);
       return;
       Log.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush do synccheck");
-      this.jFz.f(39, null);
+      this.mwc.f(39, null);
       AppMethodBeat.o(132891);
       return;
       AppMethodBeat.o(132891);
       return;
-      this.jFz.f(174, paramArrayOfByte);
+      this.mwc.f(174, paramArrayOfByte);
       AppMethodBeat.o(132891);
       return;
       if (paramArrayOfByte.length > 0)
       {
-        this.jFz.f(10, paramArrayOfByte);
+        this.mwc.f(10, paramArrayOfByte);
         AppMethodBeat.o(132891);
         return;
         AppMethodBeat.o(132891);
@@ -62,49 +62,55 @@ public final class ad
         Log.i("MicroMsg.MMNativeNetNotifyAdapter", "MM_PKT_VOIP_REQ");
         if (paramArrayOfByte.length > 0)
         {
-          this.jFz.f(120, paramArrayOfByte);
+          this.mwc.f(120, paramArrayOfByte);
           AppMethodBeat.o(132891);
           return;
           Log.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush MM_PKT_PUSH_DATA_REQ");
           if (paramArrayOfByte.length > 0)
           {
-            this.jFz.f(268369921, paramArrayOfByte);
+            this.mwc.f(268369921, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
-            this.jFz.f(1000000205, paramArrayOfByte);
+            this.mwc.f(1000000205, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
-            this.jFz.f(192, paramArrayOfByte);
+            this.mwc.f(192, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
             Log.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush do oob do notify");
-            this.jFz.f(268369923, paramArrayOfByte);
+            this.mwc.f(268369923, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
             Log.i("MicroMsg.MMNativeNetNotifyAdapter", "jacks do voice notify PUSH");
-            this.jFz.f(241, paramArrayOfByte);
+            this.mwc.f(241, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
             Log.i("MicroMsg.MMNativeNetNotifyAdapter", "pandy do gamesync notify");
-            this.jFz.f(244, paramArrayOfByte);
+            this.mwc.f(244, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
             Log.i("MicroMsg.MMNativeNetNotifyAdapter", "on notify F2F data");
-            this.jFz.f(311, paramArrayOfByte);
+            this.mwc.f(311, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
             Log.i("MicroMsg.MMNativeNetNotifyAdapter", "summerbadcr on silence notify");
-            this.jFz.f(318, paramArrayOfByte);
+            this.mwc.f(318, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
             Log.i("MicroMsg.MMNativeNetNotifyAdapter", "summerbadcr on byp notify");
-            this.jFz.f(319, paramArrayOfByte);
+            this.mwc.f(319, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
-            this.jFz.f(271, paramArrayOfByte);
+            this.mwc.f(271, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
-            this.jFz.f(3941, paramArrayOfByte);
+            this.mwc.f(3941, paramArrayOfByte);
+            AppMethodBeat.o(132891);
+            return;
+            this.mwc.f(10098, paramArrayOfByte);
+            AppMethodBeat.o(132891);
+            return;
+            this.mwc.f(6238, paramArrayOfByte);
           }
         }
       }
@@ -113,7 +119,7 @@ public final class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.network.ad
  * JD-Core Version:    0.7.0.1
  */

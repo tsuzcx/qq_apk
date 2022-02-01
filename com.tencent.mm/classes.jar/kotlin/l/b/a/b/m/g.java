@@ -4,7 +4,6 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayDeque;
 import java.util.List;
 import java.util.Set;
-import kotlin.aa;
 import kotlin.g.b.p;
 import kotlin.l.b.a.b.m.c.h;
 import kotlin.l.b.a.b.m.c.j;
@@ -15,50 +14,51 @@ import kotlin.l.b.a.b.m.c.q;
 import kotlin.l.b.a.b.m.c.q.a;
 import kotlin.l.b.a.b.o.i;
 import kotlin.l.b.a.b.o.i.b;
+import kotlin.z;
 
 public abstract class g
   implements q
 {
-  int TNn;
-  private boolean TNo;
-  ArrayDeque<j> TNp;
-  Set<j> TNq;
+  int abpP;
+  private boolean abpQ;
+  ArrayDeque<j> abpR;
+  Set<j> abpS;
   
   public static Boolean a(h paramh1, h paramh2)
   {
-    p.h(paramh1, "subType");
-    p.h(paramh2, "superType");
+    p.k(paramh1, "subType");
+    p.k(paramh2, "superType");
     return null;
   }
   
   public int a(l paraml)
   {
-    p.h(paraml, "$this$size");
+    p.k(paraml, "$this$size");
     return q.a.a(this, paraml);
   }
   
   public List<j> a(j paramj, n paramn)
   {
-    p.h(paramj, "$this$fastCorrespondingSupertypes");
-    p.h(paramn, "constructor");
+    p.k(paramj, "$this$fastCorrespondingSupertypes");
+    p.k(paramn, "constructor");
     return q.a.b(paramj, paramn);
   }
   
   public h a(h paramh)
   {
-    p.h(paramh, "type");
+    p.k(paramh, "type");
     return paramh;
   }
   
   public m a(j paramj, int paramInt)
   {
-    p.h(paramj, "$this$getArgumentOrNull");
+    p.k(paramj, "$this$getArgumentOrNull");
     return q.a.a(this, paramj, paramInt);
   }
   
   public m a(l paraml, int paramInt)
   {
-    p.h(paraml, "$this$get");
+    p.k(paraml, "$this$get");
     return q.a.a(this, paraml, paramInt);
   }
   
@@ -66,12 +66,12 @@ public abstract class g
   
   public boolean a(j paramj1, j paramj2)
   {
-    p.h(paramj1, "a");
-    p.h(paramj2, "b");
-    p.h(paramj1, "a");
-    p.h(paramj2, "b");
-    p.h(paramj1, "a");
-    p.h(paramj2, "b");
+    p.k(paramj1, "a");
+    p.k(paramj2, "b");
+    p.k(paramj1, "a");
+    p.k(paramj2, "b");
+    p.k(paramj1, "a");
+    p.k(paramj2, "b");
     return false;
   }
   
@@ -79,13 +79,13 @@ public abstract class g
   
   public h b(h paramh)
   {
-    p.h(paramh, "type");
+    p.k(paramh, "type");
     return paramh;
   }
   
   public boolean b(j paramj)
   {
-    p.h(paramj, "$this$isClassType");
+    p.k(paramj, "$this$isClassType");
     return q.a.a(this, paramj);
   }
   
@@ -93,85 +93,85 @@ public abstract class g
   
   public boolean c(j paramj)
   {
-    p.h(paramj, "$this$isIntegerLiteralType");
+    p.k(paramj, "$this$isIntegerLiteralType");
     return q.a.b(this, paramj);
   }
   
   public final void clear()
   {
-    Object localObject = this.TNp;
+    Object localObject = this.abpR;
     if (localObject == null) {
-      p.hyc();
+      p.iCn();
     }
     ((ArrayDeque)localObject).clear();
-    localObject = this.TNq;
+    localObject = this.abpS;
     if (localObject == null) {
-      p.hyc();
+      p.iCn();
     }
     ((Set)localObject).clear();
-    this.TNo = false;
+    this.abpQ = false;
   }
   
   public n d(h paramh)
   {
-    p.h(paramh, "$this$typeConstructor");
+    p.k(paramh, "$this$typeConstructor");
     return q.a.f(this, paramh);
   }
   
   public j e(h paramh)
   {
-    p.h(paramh, "$this$lowerBoundIfFlexible");
+    p.k(paramh, "$this$lowerBoundIfFlexible");
     return q.a.a(this, paramh);
   }
   
   public j f(h paramh)
   {
-    p.h(paramh, "$this$upperBoundIfFlexible");
+    p.k(paramh, "$this$upperBoundIfFlexible");
     return q.a.b(this, paramh);
   }
   
   public boolean g(h paramh)
   {
-    p.h(paramh, "$this$isDynamic");
+    p.k(paramh, "$this$isDynamic");
     return q.a.c(this, paramh);
   }
   
   public boolean h(h paramh)
   {
-    p.h(paramh, "$this$isDefinitelyNotNullType");
+    p.k(paramh, "$this$isDefinitelyNotNullType");
     return q.a.d(this, paramh);
   }
   
-  public abstract boolean hLv();
-  
-  public abstract boolean hLw();
-  
   public boolean i(h paramh)
   {
-    p.h(paramh, "$this$hasFlexibleNullability");
+    p.k(paramh, "$this$hasFlexibleNullability");
     return q.a.e(this, paramh);
   }
   
+  public abstract boolean iPO();
+  
+  public abstract boolean iPP();
+  
   public final void initialize()
   {
-    if (!this.TNo) {}
-    for (int i = 1; (aa.SXc) && (i == 0); i = 0) {
+    if (!this.abpQ) {}
+    for (int i = 1; (z.aazO) && (i == 0); i = 0) {
       throw ((Throwable)new AssertionError("Assertion failed"));
     }
-    this.TNo = true;
-    if (this.TNp == null) {
-      this.TNp = new ArrayDeque(4);
+    this.abpQ = true;
+    if (this.abpR == null) {
+      this.abpR = new ArrayDeque(4);
     }
-    if (this.TNq == null)
+    if (this.abpS == null)
     {
-      i.b localb = i.TSf;
-      this.TNq = ((Set)i.b.hLZ());
+      i.b localb = i.abuE;
+      this.abpS = ((Set)i.b.iQq());
     }
   }
   
   public boolean j(h paramh)
   {
-    p.h(paramh, "$this$isNothing");
+    p.k(paramh, "$this$isNothing");
     return q.a.g(this, paramh);
   }
   
@@ -181,12 +181,12 @@ public abstract class g
     {
       AppMethodBeat.i(60590);
       a locala1 = new a("CHECK_ONLY_LOWER", 0);
-      TNr = locala1;
+      abpT = locala1;
       a locala2 = new a("CHECK_SUBTYPE_AND_LOWER", 1);
-      TNs = locala2;
+      abpU = locala2;
       a locala3 = new a("SKIP_LOWER", 2);
-      TNt = locala3;
-      TNu = new a[] { locala1, locala2, locala3 };
+      abpV = locala3;
+      abpW = new a[] { locala1, locala2, locala3 };
       AppMethodBeat.o(60590);
     }
     
@@ -209,12 +209,12 @@ public abstract class g
     public static final class b
       extends g.b
     {
-      public static final b TNv;
+      public static final b abpX;
       
       static
       {
         AppMethodBeat.i(60597);
-        TNv = new b();
+        abpX = new b();
         AppMethodBeat.o(60597);
       }
       
@@ -226,8 +226,8 @@ public abstract class g
       public final j b(g paramg, h paramh)
       {
         AppMethodBeat.i(60596);
-        p.h(paramg, "context");
-        p.h(paramh, "type");
+        p.k(paramg, "context");
+        p.k(paramh, "type");
         paramg = paramg.e(paramh);
         AppMethodBeat.o(60596);
         return paramg;
@@ -237,12 +237,12 @@ public abstract class g
     public static final class c
       extends g.b
     {
-      public static final c TNw;
+      public static final c abpY;
       
       static
       {
         AppMethodBeat.i(60599);
-        TNw = new c();
+        abpY = new c();
         AppMethodBeat.o(60599);
       }
       
@@ -255,12 +255,12 @@ public abstract class g
     public static final class d
       extends g.b
     {
-      public static final d TNx;
+      public static final d abpZ;
       
       static
       {
         AppMethodBeat.i(60601);
-        TNx = new d();
+        abpZ = new d();
         AppMethodBeat.o(60601);
       }
       
@@ -272,8 +272,8 @@ public abstract class g
       public final j b(g paramg, h paramh)
       {
         AppMethodBeat.i(60600);
-        p.h(paramg, "context");
-        p.h(paramh, "type");
+        p.k(paramg, "context");
+        p.k(paramh, "type");
         paramg = paramg.f(paramh);
         AppMethodBeat.o(60600);
         return paramg;
@@ -283,7 +283,7 @@ public abstract class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.g
  * JD-Core Version:    0.7.0.1
  */

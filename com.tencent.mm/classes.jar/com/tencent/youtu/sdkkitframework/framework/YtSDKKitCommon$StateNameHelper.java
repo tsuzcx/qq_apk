@@ -12,22 +12,22 @@ public class YtSDKKitCommon$StateNameHelper
   
   static
   {
-    AppMethodBeat.i(192662);
+    AppMethodBeat.i(256806);
     _stateNameMap = new HashMap() {};
-    AppMethodBeat.o(192662);
+    AppMethodBeat.o(256806);
   }
   
   public static String classNameOfState(StateClassName paramStateClassName)
   {
-    AppMethodBeat.i(192660);
+    AppMethodBeat.i(256802);
     paramStateClassName = (String)_stateNameMap.get(paramStateClassName);
-    AppMethodBeat.o(192660);
+    AppMethodBeat.o(256802);
     return paramStateClassName;
   }
   
   public static StateClassName typeOfClassName(String paramString)
   {
-    AppMethodBeat.i(192661);
+    AppMethodBeat.i(256804);
     Iterator localIterator = _stateNameMap.entrySet().iterator();
     while (localIterator.hasNext())
     {
@@ -35,12 +35,12 @@ public class YtSDKKitCommon$StateNameHelper
       if (((String)localEntry.getValue()).equals(paramString))
       {
         paramString = (StateClassName)localEntry.getKey();
-        AppMethodBeat.o(192661);
+        AppMethodBeat.o(256804);
         return paramString;
       }
     }
     paramString = StateClassName.UNKNOWN_STATE;
-    AppMethodBeat.o(192661);
+    AppMethodBeat.o(256804);
     return paramString;
   }
   
@@ -48,7 +48,7 @@ public class YtSDKKitCommon$StateNameHelper
   {
     static
     {
-      AppMethodBeat.i(192659);
+      AppMethodBeat.i(256795);
       UNKNOWN_STATE = new StateClassName("UNKNOWN_STATE", 0);
       TIMEOUT_STATE = new StateClassName("TIMEOUT_STATE", 1);
       IDLE_STATE = new StateClassName("IDLE_STATE", 2);
@@ -65,7 +65,7 @@ public class YtSDKKitCommon$StateNameHelper
       OCR_VIID_STATE = new StateClassName("OCR_VIID_STATE", 13);
       STATE_COUNT = new StateClassName("STATE_COUNT", 14);
       $VALUES = new StateClassName[] { UNKNOWN_STATE, TIMEOUT_STATE, IDLE_STATE, SILENT_STATE, ACTION_STATE, REFLECT_STATE, OCR_AUTO_DETECT_STATE, OCR_MANUAL_DETECT_STATE, NET_FETCH_STATE, NET_LIVENESS_REQ_RESULT_STATE, NET_OCR_REQ_RESULT_STATE, LIPREAD_STATE, DETECTONLY_STATE, OCR_VIID_STATE, STATE_COUNT };
-      AppMethodBeat.o(192659);
+      AppMethodBeat.o(256795);
     }
     
     private StateClassName() {}

@@ -1,14 +1,16 @@
 package com.tencent.mm.emoji.b.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.jx;
+import com.tencent.mm.emoji.b.k;
+import com.tencent.mm.f.b.a.mg;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.emoji.PluginEmoji;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.protocal.protobuf.ait;
-import com.tencent.mm.protocal.protobuf.cji;
-import com.tencent.mm.protocal.protobuf.dkt;
-import com.tencent.mm.protocal.protobuf.dlc;
-import com.tencent.mm.protocal.protobuf.dld;
+import com.tencent.mm.protocal.protobuf.aji;
+import com.tencent.mm.protocal.protobuf.csd;
+import com.tencent.mm.protocal.protobuf.dui;
+import com.tencent.mm.protocal.protobuf.dus;
+import com.tencent.mm.protocal.protobuf.dut;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.bj;
@@ -22,39 +24,39 @@ import java.util.List;
 import kotlin.a.v;
 import kotlin.g.b.p;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/model/search/EmojiSuggestRemote;", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest;", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "(Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;)V", "TAG", "", "getLifeCycleKeeper", "()Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "remoteShuffle", "", "getRemoteShuffle", "()Z", "setRemoteShuffle", "(Z)V", "sessionId", "username", "checkMatch", "desc", "checkPrefetch", "", "rsp", "Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiResponse;", "checkUpdate", "searchSuggest", "callback", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest$SuggestCallback;", "setRequestInfo", "chatId", "plugin-emojisdk_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/model/search/EmojiSuggestRemote;", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest;", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "(Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;)V", "TAG", "", "getLifeCycleKeeper", "()Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "remoteShuffle", "", "getRemoteShuffle", "()Z", "setRemoteShuffle", "(Z)V", "sessionId", "username", "checkMatch", "desc", "checkPrefetch", "", "rsp", "Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiResponse;", "checkUpdate", "searchSuggest", "callback", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest$SuggestCallback;", "setRequestInfo", "chatId", "plugin-emojisdk_release"})
 public final class f
   implements j
 {
   private final String TAG;
-  boolean gZB;
-  private final com.tencent.mm.vending.e.b<com.tencent.mm.vending.e.a> gZm;
+  boolean jKC;
+  private final com.tencent.mm.vending.e.b<com.tencent.mm.vending.e.a> jKn;
   public String sessionId;
   public String username;
   
   public f(com.tencent.mm.vending.e.b<com.tencent.mm.vending.e.a> paramb)
   {
-    this.gZm = paramb;
+    this.jKn = paramb;
     this.TAG = "MicroMsg.EmojiSuggestMatchWord";
   }
   
-  public static boolean ET(String paramString)
+  public static boolean LM(String paramString)
   {
-    AppMethodBeat.i(199944);
-    p.h(paramString, "desc");
-    g localg = g.gZH;
-    boolean bool = g.EV(paramString);
-    AppMethodBeat.o(199944);
+    AppMethodBeat.i(231957);
+    p.k(paramString, "desc");
+    g localg = g.jKI;
+    boolean bool = g.LO(paramString);
+    AppMethodBeat.o(231957);
     return bool;
   }
   
-  private void EU(final String paramString)
+  private void LN(final String paramString)
   {
-    AppMethodBeat.i(199946);
-    p.h(paramString, "desc");
-    Object localObject1 = bj.gCJ();
-    p.g(localObject1, "EmojiStorageMgr.getInstance()");
-    Object localObject2 = ((bj)localObject1).gCO().blp(paramString);
+    AppMethodBeat.i(231962);
+    p.k(paramString, "desc");
+    Object localObject1 = bj.hyV();
+    p.j(localObject1, "EmojiStorageMgr.getInstance()");
+    Object localObject2 = ((bj)localObject1).hzb().bxP(paramString);
     Object localObject3 = this.TAG;
     StringBuilder localStringBuilder = new StringBuilder("checkUpdate: ").append(paramString).append(", ");
     if (localObject2 != null)
@@ -64,7 +66,7 @@ public final class f
       if (localObject2 == null) {
         break label171;
       }
-      i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWA, 24);
+      i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vDf, 24);
       Log.i(c.TAG, "needUpdate: config ".concat(String.valueOf(i)));
       if (Util.secondsToNow(((c)localObject2).field_updateTime) <= 3600L * i) {
         break label166;
@@ -76,78 +78,78 @@ public final class f
       if (i != 0) {
         break label171;
       }
-      AppMethodBeat.o(199946);
+      AppMethodBeat.o(231962);
       return;
       localObject1 = null;
       break;
     }
     label171:
-    localObject1 = new cji();
-    if (this.gZB)
+    localObject1 = new csd();
+    if (this.jKC)
     {
-      localObject2 = com.tencent.mm.kernel.g.ah(PluginEmoji.class);
-      p.g(localObject2, "MMKernel.plugin(PluginEmoji::class.java)");
-      localObject2 = ((PluginEmoji)localObject2).getEmojiMgr().amr(paramString);
-      i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWD, 20);
+      localObject2 = h.ag(PluginEmoji.class);
+      p.j(localObject2, "MMKernel.plugin(PluginEmoji::class.java)");
+      localObject2 = ((PluginEmoji)localObject2).getEmojiMgr().auj(paramString);
+      i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vDi, 20);
       Log.i(this.TAG, "checkUpdate: shuffle " + i + ", local " + ((ArrayList)localObject2).size());
       int j = Math.min(i, ((ArrayList)localObject2).size());
       i = 0;
       while (i < j)
       {
-        ((cji)localObject1).MoI.add(((ArrayList)localObject2).get(i));
+        ((csd)localObject1).TzO.add(((ArrayList)localObject2).get(i));
         i += 1;
       }
     }
-    localObject2 = new dlc();
-    ((dlc)localObject2).KXA = paramString;
-    ((dlc)localObject2).MOZ = this.username;
-    ((dlc)localObject2).SessionId = this.sessionId;
-    ((dlc)localObject2).Scene = 4;
-    ((dlc)localObject2).MPa = new com.tencent.mm.bw.b(((cji)localObject1).toByteArray());
-    localObject1 = new jx();
-    ((jx)localObject1).xi(this.sessionId);
-    ((jx)localObject1).sZ(Util.nowMilliSecond());
-    localObject3 = d.gZA;
-    d.pl(40);
-    new com.tencent.mm.emoji.b.b((dlc)localObject2).aYI().g((com.tencent.mm.vending.c.a)new a(this, (jx)localObject1, paramString));
-    AppMethodBeat.o(199946);
+    localObject2 = new dus();
+    ((dus)localObject2).RYJ = paramString;
+    ((dus)localObject2).UaY = this.username;
+    ((dus)localObject2).SessionId = this.sessionId;
+    ((dus)localObject2).CPw = 4;
+    ((dus)localObject2).UaZ = new com.tencent.mm.cd.b(((csd)localObject1).toByteArray());
+    localObject1 = new mg();
+    ((mg)localObject1).CJ(this.sessionId);
+    ((mg)localObject1).xa(Util.nowMilliSecond());
+    localObject3 = d.jKB;
+    d.rE(40);
+    new com.tencent.mm.emoji.b.b((dus)localObject2).bhW().g((com.tencent.mm.vending.c.a)new a(this, (mg)localObject1, paramString));
+    AppMethodBeat.o(231962);
   }
   
   public final void a(String paramString, j.b paramb)
   {
-    AppMethodBeat.i(199945);
-    p.h(paramString, "desc");
-    boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWy, false);
+    AppMethodBeat.i(231959);
+    p.k(paramString, "desc");
+    boolean bool = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vDd, false);
     Log.i(this.TAG, "searchSuggest: remoteEnable ".concat(String.valueOf(bool)));
-    Object localObject1 = g.gZH;
-    long l = g.avK();
-    localObject1 = g.gZH;
-    int i = g.avJ();
-    localObject1 = g.gZH;
-    m localm = new m(l, i, g.avM().size(), null, 8);
+    Object localObject1 = g.jKI;
+    long l = g.aCG();
+    localObject1 = g.jKI;
+    int i = g.aCF();
+    localObject1 = g.jKI;
+    m localm = new m(l, i, g.aCI().size(), null, 8);
     if (!bool)
     {
       if (paramb != null)
       {
-        paramb.a((List)v.SXr, localm);
-        AppMethodBeat.o(199945);
+        paramb.a((List)v.aaAd, localm);
+        AppMethodBeat.o(231959);
         return;
       }
-      AppMethodBeat.o(199945);
+      AppMethodBeat.o(231959);
       return;
     }
-    localObject1 = bj.gCJ();
-    p.g(localObject1, "EmojiStorageMgr.getInstance()");
-    localObject1 = ((bj)localObject1).gCO().blp(paramString);
+    localObject1 = bj.hyV();
+    p.j(localObject1, "EmojiStorageMgr.getInstance()");
+    localObject1 = ((bj)localObject1).hzb().bxP(paramString);
     Object localObject2;
     Object localObject3;
     if (localObject1 != null)
     {
       Log.i(this.TAG, "searchSuggest: has cache " + ((c)localObject1).field_updateTime);
-      localObject2 = d.gZA;
-      d.pl(32);
-      localObject3 = new dld();
-      localObject2 = (com.tencent.mm.bw.a)localObject3;
+      localObject2 = d.jKB;
+      d.rE(32);
+      localObject3 = new dut();
+      localObject2 = (com.tencent.mm.cd.a)localObject3;
       localObject1 = ((c)localObject1).field_content;
     }
     label696:
@@ -155,18 +157,18 @@ public final class f
     {
       try
       {
-        ((com.tencent.mm.bw.a)localObject2).parseFrom((byte[])localObject1);
-        localObject2 = ((dld)localObject3).SessionId;
+        ((com.tencent.mm.cd.a)localObject2).parseFrom((byte[])localObject1);
+        localObject2 = ((dut)localObject3).SessionId;
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = "";
         }
-        p.h(localObject1, "<set-?>");
-        localm.gZQ = ((String)localObject1);
+        p.k(localObject1, "<set-?>");
+        localm.jKR = ((String)localObject1);
         if (paramb != null)
         {
-          localObject1 = ((dld)localObject3).LVc;
-          p.g(localObject1, "rsp.Emoji");
+          localObject1 = ((dut)localObject3).TdL;
+          p.j(localObject1, "rsp.Emoji");
           localObject1 = (Iterable)localObject1;
           localObject2 = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject1, 10));
           localObject3 = ((Iterable)localObject1).iterator();
@@ -175,22 +177,22 @@ public final class f
           {
             localObject1 = ((Iterator)localObject3).next();
             if (i < 0) {
-              kotlin.a.j.hxH();
+              kotlin.a.j.iBO();
             }
-            dkt localdkt = (dkt)localObject1;
-            localObject1 = bj.gCJ();
-            p.g(localObject1, "EmojiStorageMgr.getInstance()");
-            localObject1 = ((bj)localObject1).cgN().blk(localdkt.MOJ.Md5);
+            dui localdui = (dui)localObject1;
+            localObject1 = bj.hyV();
+            p.j(localObject1, "EmojiStorageMgr.getInstance()");
+            localObject1 = ((bj)localObject1).ctY().bxK(localdui.UaH.Md5);
             if (localObject1 != null) {
               break label696;
             }
             localObject1 = new EmojiInfo();
-            com.tencent.mm.plugin.emoji.h.b.a(localdkt.MOJ, (EmojiInfo)localObject1);
-            ((EmojiInfo)localObject1).field_catalog = EmojiInfo.Uup;
-            Object localObject4 = com.tencent.mm.emoji.b.j.auL();
-            p.g(localObject4, "EmojiStorageCache.getInstance()");
-            localObject4 = ((com.tencent.mm.emoji.b.j)localObject4).auP();
-            p.g(localObject4, "EmojiStorageCache.getInstance().emojiGroupInfoList");
+            com.tencent.mm.plugin.emoji.i.b.a(localdui.UaH, (EmojiInfo)localObject1);
+            ((EmojiInfo)localObject1).field_catalog = EmojiInfo.YCx;
+            Object localObject4 = k.aBH();
+            p.j(localObject4, "EmojiStorageCache.getInstance()");
+            localObject4 = ((k)localObject4).aBL();
+            p.j(localObject4, "EmojiStorageCache.getInstance().emojiGroupInfoList");
             localObject4 = (Iterable)localObject4;
             if ((!(localObject4 instanceof Collection)) || (!((Collection)localObject4).isEmpty()))
             {
@@ -198,12 +200,12 @@ public final class f
               if (((Iterator)localObject4).hasNext())
               {
                 EmojiGroupInfo localEmojiGroupInfo = (EmojiGroupInfo)((Iterator)localObject4).next();
-                p.g(localEmojiGroupInfo, "it");
-                if (!p.j(localEmojiGroupInfo.hRu(), ((EmojiInfo)localObject1).field_groupId)) {
+                p.j(localEmojiGroupInfo, "it");
+                if (!p.h(localEmojiGroupInfo.hBl(), ((EmojiInfo)localObject1).field_groupId)) {
                   continue;
                 }
                 j = 1;
-                if (localdkt.MOM != 1) {
+                if (localdui.emoji_from != 1) {
                   continue;
                 }
                 if (j == 0) {
@@ -231,27 +233,27 @@ public final class f
       }
       for (;;)
       {
-        EU(paramString);
-        AppMethodBeat.o(199945);
+        LN(paramString);
+        AppMethodBeat.o(231959);
         return;
         Log.i(this.TAG, "searchSuggest: no cache");
         if (paramb != null) {
-          paramb.a((List)v.SXr, localm);
+          paramb.a((List)v.aaAd, localm);
         }
       }
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiResponse;", "kotlin.jvm.PlatformType", "call"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiResponse;", "kotlin.jvm.PlatformType", "call"})
   static final class a<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
-    a(f paramf, jx paramjx, String paramString) {}
+    a(f paramf, mg parammg, String paramString) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.b.c.f
  * JD-Core Version:    0.7.0.1
  */

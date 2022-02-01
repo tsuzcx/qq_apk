@@ -21,21 +21,21 @@ public class TAVSourceImageGenerator
   
   public TAVSourceImageGenerator(TAVComposition paramTAVComposition, CGSize paramCGSize)
   {
-    AppMethodBeat.i(197418);
+    AppMethodBeat.i(211466);
     init(new TAVCompositionBuilder(paramTAVComposition).buildSource(), paramCGSize);
-    AppMethodBeat.o(197418);
+    AppMethodBeat.o(211466);
   }
   
   public TAVSourceImageGenerator(TAVSource paramTAVSource, CGSize paramCGSize)
   {
-    AppMethodBeat.i(197419);
+    AppMethodBeat.i(211468);
     init(paramTAVSource, paramCGSize);
-    AppMethodBeat.o(197419);
+    AppMethodBeat.o(211468);
   }
   
   private void checkRequestedTimes(List<CMTime> paramList)
   {
-    AppMethodBeat.i(197424);
+    AppMethodBeat.i(211477);
     Object localObject = paramList;
     if (paramList == null) {
       localObject = new ArrayList();
@@ -63,22 +63,22 @@ public class TAVSourceImageGenerator
     }
     ((List)localObject).clear();
     ((List)localObject).addAll(paramList);
-    AppMethodBeat.o(197424);
+    AppMethodBeat.o(211477);
   }
   
   private void init(TAVSource paramTAVSource, CGSize paramCGSize)
   {
-    AppMethodBeat.i(197420);
+    AppMethodBeat.i(211469);
     this.assetImageGenerator = new AssetImageGenerator(paramTAVSource.getAsset());
     this.assetImageGenerator.setMaximumSize(paramCGSize);
     this.assetImageGenerator.setAppliesPreferredTrackTransform(true);
     this.assetImageGenerator.setVideoComposition(paramTAVSource.getVideoComposition());
-    AppMethodBeat.o(197420);
+    AppMethodBeat.o(211469);
   }
   
   public void generateThumbnailAtTime(CMTime paramCMTime, AssetImageGenerator.ImageGeneratorListener paramImageGeneratorListener)
   {
-    AppMethodBeat.i(197421);
+    AppMethodBeat.i(211470);
     ArrayList localArrayList = new ArrayList();
     CMTime localCMTime;
     if (paramCMTime != null)
@@ -92,13 +92,13 @@ public class TAVSourceImageGenerator
     }
     localArrayList.add(localCMTime);
     generateThumbnailAtTimes(localArrayList, paramImageGeneratorListener);
-    AppMethodBeat.o(197421);
+    AppMethodBeat.o(211470);
   }
   
   public Bitmap generateThumbnailAtTimeSync(CMTime paramCMTime)
   {
     Object localObject = null;
-    AppMethodBeat.i(197423);
+    AppMethodBeat.i(211475);
     if (this.assetImageGenerator != null) {
       if (paramCMTime != null) {
         localObject = paramCMTime;
@@ -110,13 +110,13 @@ public class TAVSourceImageGenerator
         localObject = CMTime.CMTimeZero;
       }
       localObject = this.assetImageGenerator.copyCGImageAtTimeAndActualTime((CMTime)localObject, null);
-      AppMethodBeat.o(197423);
+      AppMethodBeat.o(211475);
       return localObject;
     }
     catch (Exception paramCMTime)
     {
       paramCMTime = new Exception(paramCMTime);
-      AppMethodBeat.o(197423);
+      AppMethodBeat.o(211475);
       throw paramCMTime;
     }
   }
@@ -179,7 +179,7 @@ public class TAVSourceImageGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tavkit.component.TAVSourceImageGenerator
  * JD-Core Version:    0.7.0.1
  */

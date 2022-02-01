@@ -17,11 +17,11 @@ public final class b
     int i = Math.round(100.0F * paramFloat);
     String str = i + "_" + paramInt;
     Log.d("MicroMsg.FileDownloadSP", "speedStr = ".concat(String.valueOf(str)));
-    o(paramLong, str);
+    q(paramLong, str);
     AppMethodBeat.o(89136);
   }
   
-  private static void o(long paramLong, String paramString)
+  private static void q(long paramLong, String paramString)
   {
     AppMethodBeat.i(89137);
     SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("download_pref", 0);

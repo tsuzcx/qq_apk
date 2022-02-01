@@ -13,10 +13,10 @@ import com.tencent.mars.stn.StnLogic.ICallBack;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.o;
 import com.tencent.mm.b.p;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.protocal.h;
 import com.tencent.mm.protocal.i;
-import com.tencent.mm.protocal.protobuf.wl;
+import com.tencent.mm.protocal.protobuf.wn;
 import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -30,47 +30,47 @@ import java.io.StringWriter;
 public final class al
   implements StnLogic.ICallBack
 {
-  private static WakerLock jGc = null;
-  private static int jGd = 1000000205;
-  private static int jGe = 205;
-  private static byte[] jGf;
-  private static byte[] jGg;
+  private static WakerLock mwF = null;
+  private static int mwG = 1000000205;
+  private static int mwH = 205;
+  private static byte[] mwI;
+  private static byte[] mwJ;
   
   private static int a(ByteArrayOutputStream paramByteArrayOutputStream1, ByteArrayOutputStream paramByteArrayOutputStream2)
   {
     AppMethodBeat.i(132958);
-    if (af.bkl() == null)
+    if (af.btU() == null)
     {
       AppMethodBeat.o(132958);
       return 0;
     }
     try
     {
-      byte[] arrayOfByte = af.bkl().bjM();
+      byte[] arrayOfByte = af.btU().btq();
       if (arrayOfByte != null)
       {
         paramByteArrayOutputStream1.write(arrayOfByte);
-        jGf = arrayOfByte;
+        mwI = arrayOfByte;
       }
-      arrayOfByte = af.bkl().hqn;
+      arrayOfByte = af.btU().kci;
       if (arrayOfByte != null)
       {
         paramByteArrayOutputStream2.write(arrayOfByte);
-        jGg = arrayOfByte;
+        mwJ = arrayOfByte;
       }
-      int i = af.bkl().jEj.getUin();
+      int i = af.btU().muM.getUin();
       AppMethodBeat.o(132958);
       return i;
     }
     catch (Exception localException)
     {
       Log.e("StnCallBack", exception2String(localException));
-      if ((jGf == null) || (jGg == null)) {}
+      if ((mwI == null) || (mwJ == null)) {}
     }
     try
     {
-      paramByteArrayOutputStream1.write(jGf);
-      paramByteArrayOutputStream2.write(jGg);
+      paramByteArrayOutputStream1.write(mwI);
+      paramByteArrayOutputStream2.write(mwJ);
       label111:
       AppMethodBeat.o(132958);
       return 0;
@@ -94,14 +94,14 @@ public final class al
   public final int buf2Resp(int paramInt1, Object paramObject, byte[] paramArrayOfByte, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt2)
   {
     AppMethodBeat.i(132953);
-    if (af.bkm() == null)
+    if (af.btV() == null)
     {
       AppMethodBeat.o(132953);
       return -1;
     }
     try
     {
-      paramInt1 = af.bkm().a(paramInt1, paramArrayOfByte, paramArrayOfInt1, paramArrayOfInt2);
+      paramInt1 = af.btV().a(paramInt1, paramArrayOfByte, paramArrayOfInt1, paramArrayOfInt2);
       AppMethodBeat.o(132953);
       return paramInt1;
     }
@@ -116,31 +116,31 @@ public final class al
   
   public final int getLongLinkIdentifyCheckBuffer(String paramString, ByteArrayOutputStream paramByteArrayOutputStream1, ByteArrayOutputStream paramByteArrayOutputStream2, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(197115);
-    paramArrayOfInt[0] = jGe;
-    paramArrayOfInt[1] = jGd;
+    AppMethodBeat.i(199943);
+    paramArrayOfInt[0] = mwH;
+    paramArrayOfInt[1] = mwG;
     if ((a(paramByteArrayOutputStream1, paramByteArrayOutputStream2) == 0) || (paramByteArrayOutputStream1.size() == 0) || (paramByteArrayOutputStream2.size() == 0))
     {
       i = StnLogic.ECHECK_NEXT;
-      AppMethodBeat.o(197115);
+      AppMethodBeat.o(199943);
       return i;
     }
     int i = StnLogic.ECHECK_NOW;
-    AppMethodBeat.o(197115);
+    AppMethodBeat.o(199943);
     return i;
   }
   
   public final boolean isLogoned()
   {
     AppMethodBeat.i(132960);
-    if (af.bkl() == null)
+    if (af.btU() == null)
     {
       AppMethodBeat.o(132960);
       return false;
     }
     try
     {
-      boolean bool = af.bkl().jEj.aZb();
+      boolean bool = af.btU().muM.biq();
       AppMethodBeat.o(132960);
       return bool;
     }
@@ -156,14 +156,14 @@ public final class al
   public final boolean makesureAuthed(String paramString)
   {
     AppMethodBeat.i(132950);
-    if (af.bkl() == null)
+    if (af.btU() == null)
     {
       AppMethodBeat.o(132950);
       return false;
     }
     try
     {
-      boolean bool = af.bkl().RT(paramString);
+      boolean bool = af.btU().Zt(paramString);
       AppMethodBeat.o(132950);
       return bool;
     }
@@ -182,7 +182,7 @@ public final class al
     Log.i("StnCallBack", "networkAnalysisCallBack: status:%d, stage:%d, isDetectEnd:%b, kvInfo:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean), paramString });
     try
     {
-      af.bkl().jEr.networkAnalysisCallBack(paramInt1, paramInt2, paramBoolean, paramString);
+      af.btU().muU.networkAnalysisCallBack(paramInt1, paramInt2, paramBoolean, paramString);
       AppMethodBeat.o(132961);
       return;
     }
@@ -196,7 +196,7 @@ public final class al
   
   public final boolean onLongLinkIdentifyResp(String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(197116);
+    AppMethodBeat.i(199948);
     ByteArrayOutputStream localByteArrayOutputStream;
     if ((paramArrayOfByte1 != null) && (paramArrayOfByte2 != null)) {
       localByteArrayOutputStream = new ByteArrayOutputStream();
@@ -206,11 +206,11 @@ public final class al
       localByteArrayOutputStream.write(paramArrayOfByte1);
       localByteArrayOutputStream.write(paramArrayOfByte2);
       label34:
-      onPush(paramString, jGd, 0, localByteArrayOutputStream.toByteArray());
+      onPush(paramString, mwG, 0, localByteArrayOutputStream.toByteArray());
       paramString = localByteArrayOutputStream.toByteArray();
-      af.bkl();
-      v.aA(paramString);
-      AppMethodBeat.o(197116);
+      af.btU();
+      v.aL(paramString);
+      AppMethodBeat.o(199948);
       return true;
     }
     catch (IOException paramArrayOfByte1)
@@ -230,24 +230,24 @@ public final class al
     // Byte code:
     //   0: ldc 232
     //   2: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 236	com/tencent/mm/network/af:bkn	()Lcom/tencent/mm/network/ad;
+    //   5: invokestatic 236	com/tencent/mm/network/af:btW	()Lcom/tencent/mm/network/ad;
     //   8: ifnonnull +9 -> 17
     //   11: ldc 232
     //   13: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   16: return
-    //   17: getstatic 24	com/tencent/mm/network/al:jGc	Lcom/tencent/mars/comm/WakerLock;
+    //   17: getstatic 24	com/tencent/mm/network/al:mwF	Lcom/tencent/mars/comm/WakerLock;
     //   20: ifnonnull +18 -> 38
     //   23: new 238	com/tencent/mars/comm/WakerLock
     //   26: dup
     //   27: invokestatic 242	com/tencent/mm/network/af:getContext	()Landroid/content/Context;
     //   30: ldc 86
     //   32: invokespecial 245	com/tencent/mars/comm/WakerLock:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   35: putstatic 24	com/tencent/mm/network/al:jGc	Lcom/tencent/mars/comm/WakerLock;
-    //   38: getstatic 24	com/tencent/mm/network/al:jGc	Lcom/tencent/mars/comm/WakerLock;
+    //   35: putstatic 24	com/tencent/mm/network/al:mwF	Lcom/tencent/mars/comm/WakerLock;
+    //   38: getstatic 24	com/tencent/mm/network/al:mwF	Lcom/tencent/mars/comm/WakerLock;
     //   41: ldc2_w 246
     //   44: ldc 249
     //   46: invokevirtual 253	com/tencent/mars/comm/WakerLock:lock	(JLjava/lang/String;)V
-    //   49: invokestatic 257	com/tencent/mm/network/af:bkj	()Lcom/tencent/mm/sdk/platformtools/MMHandler;
+    //   49: invokestatic 257	com/tencent/mm/network/af:btS	()Lcom/tencent/mm/sdk/platformtools/MMHandler;
     //   52: new 8	com/tencent/mm/network/al$1
     //   55: dup
     //   56: aload_0
@@ -256,9 +256,9 @@ public final class al
     //   60: invokespecial 260	com/tencent/mm/network/al$1:<init>	(Lcom/tencent/mm/network/al;I[B)V
     //   63: invokevirtual 266	com/tencent/mm/sdk/platformtools/MMHandler:post	(Ljava/lang/Runnable;)Z
     //   66: pop
-    //   67: invokestatic 270	com/tencent/mm/network/af:bkp	()Lcom/tencent/mm/network/af$a;
+    //   67: invokestatic 270	com/tencent/mm/network/af:btY	()Lcom/tencent/mm/network/af$a;
     //   70: ifnull +29 -> 99
-    //   73: invokestatic 270	com/tencent/mm/network/af:bkp	()Lcom/tencent/mm/network/af$a;
+    //   73: invokestatic 270	com/tencent/mm/network/af:btY	()Lcom/tencent/mm/network/af$a;
     //   76: astore_1
     //   77: aload 4
     //   79: ifnull +88 -> 167
@@ -341,24 +341,24 @@ public final class al
   
   public final int onTaskEnd(final int paramInt1, final Object paramObject, final int paramInt2, final int paramInt3, final StnLogic.CgiProfile paramCgiProfile)
   {
-    AppMethodBeat.i(197114);
-    if (af.bkm() == null)
+    AppMethodBeat.i(199940);
+    if (af.btV() == null)
     {
-      AppMethodBeat.o(197114);
+      AppMethodBeat.o(199940);
       return 0;
     }
     Log.d("StnCallBack", "onTaskEnd " + paramCgiProfile.startConnectTime + " " + paramCgiProfile.readPacketFinishedTime);
     i = 0;
     try
     {
-      j = af.bkm().uz(paramInt1);
+      j = af.btV().xC(paramInt1);
       i = j;
-      af.bkj().post(new Runnable()
+      af.btS().post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(132947);
-          ae localae = af.bkm();
+          ae localae = af.btV();
           int i1 = paramInt1;
           int j = paramInt2;
           int m = paramInt3;
@@ -378,9 +378,9 @@ public final class al
           int n;
           for (;;)
           {
-            synchronized (localae.jFA)
+            synchronized (localae.mwd)
             {
-              i2 = localae.uA(i1);
+              i2 = localae.xD(i1);
               if (-1 == i2)
               {
                 Log.e("MicroMsg.MMNativeNetTaskAdapter", "mmcgi onGYNetEnd GET FROM QUEUE failed. native:[%d,%d] taskId:%d ", new Object[] { Integer.valueOf(j), Integer.valueOf(m), Integer.valueOf(i1) });
@@ -395,7 +395,7 @@ public final class al
                 break;
                 k = i;
                 j = m;
-                if (!af.bkh().jFS)
+                if (!af.btQ().mwv)
                 {
                   k = i;
                   j = m;
@@ -406,20 +406,20 @@ public final class al
                     j = -1;
                   }
                 }
-                localt = localae.jFA[i2].jFE;
-                localn = localae.jFA[i2].jFF;
-                l = localae.jFA[i2].startTime;
-                localae.jFA[i2] = null;
-                localObject5 = new wl();
-                ((wl)localObject5).taskStartTime = ((StnLogic.CgiProfile)localObject1).taskStartTime;
-                ((wl)localObject5).startConnectTime = ((StnLogic.CgiProfile)localObject1).startConnectTime;
-                ((wl)localObject5).connectSuccessfulTime = ((StnLogic.CgiProfile)localObject1).connectSuccessfulTime;
-                ((wl)localObject5).startHandshakeTime = ((StnLogic.CgiProfile)localObject1).startHandshakeTime;
-                ((wl)localObject5).handshakeSuccessfulTime = ((StnLogic.CgiProfile)localObject1).handshakeSuccessfulTime;
-                ((wl)localObject5).startSendPacketTime = ((StnLogic.CgiProfile)localObject1).startSendPacketTime;
-                ((wl)localObject5).startReadPacketTime = ((StnLogic.CgiProfile)localObject1).startReadPacketTime;
-                ((wl)localObject5).readPacketFinishedTime = ((StnLogic.CgiProfile)localObject1).readPacketFinishedTime;
-                ((wl)localObject5).getData();
+                localt = localae.mwd[i2].mwh;
+                localn = localae.mwd[i2].mwi;
+                l = localae.mwd[i2].startTime;
+                localae.mwd[i2] = null;
+                localObject5 = new wn();
+                ((wn)localObject5).taskStartTime = ((StnLogic.CgiProfile)localObject1).taskStartTime;
+                ((wn)localObject5).startConnectTime = ((StnLogic.CgiProfile)localObject1).startConnectTime;
+                ((wn)localObject5).connectSuccessfulTime = ((StnLogic.CgiProfile)localObject1).connectSuccessfulTime;
+                ((wn)localObject5).startHandshakeTime = ((StnLogic.CgiProfile)localObject1).startHandshakeTime;
+                ((wn)localObject5).handshakeSuccessfulTime = ((StnLogic.CgiProfile)localObject1).handshakeSuccessfulTime;
+                ((wn)localObject5).startSendPacketTime = ((StnLogic.CgiProfile)localObject1).startSendPacketTime;
+                ((wn)localObject5).startReadPacketTime = ((StnLogic.CgiProfile)localObject1).startReadPacketTime;
+                ((wn)localObject5).readPacketFinishedTime = ((StnLogic.CgiProfile)localObject1).readPacketFinishedTime;
+                ((wn)localObject5).getData();
               case 0: 
               case 1: 
               case 2: 
@@ -432,22 +432,22 @@ public final class al
               case 9: 
                 try
                 {
-                  localt.aZp().ao(((wl)localObject5).toByteArray());
+                  localt.biF().ay(((wn)localObject5).toByteArray());
                   if (k != 0) {
                     break label2531;
                   }
                   i = k;
                   try
                   {
-                    if (ae.uy(localt.getType())) {
+                    if (ae.xB(localt.getType())) {
                       break label2531;
                     }
                     i = k;
-                    if (localt.aZp().getRetCode() == 0) {
+                    if (localt.biF().getRetCode() == 0) {
                       break label2531;
                     }
                     i = 4;
-                    k = localt.aZp().getRetCode();
+                    k = localt.biF().getRetCode();
                     j = 4;
                     i = k;
                   }
@@ -469,16 +469,16 @@ public final class al
                     k = localt.getType();
                     try
                     {
-                      localv = af.bkl();
-                      arrayOfByte = localt.aZp().aZa();
+                      localv = af.btU();
+                      arrayOfByte = localt.biF().bip();
                       try
                       {
-                        Log.d("MicroMsg.MMAutoAuth", "summerauth onGYNetEnd threadId: 0 errType: " + j + " errCode: " + i + " errMsg: " + null + " rr: " + localt + " type: " + localt.getType() + " netIdGetCertBeforeAutoAuth: " + localv.jEn);
+                        Log.d("MicroMsg.MMAutoAuth", "summerauth onGYNetEnd threadId: 0 errType: " + j + " errCode: " + i + " errMsg: " + null + " rr: " + localt + " type: " + localt.getType() + " netIdGetCertBeforeAutoAuth: " + localv.muQ);
                         if (i == 0) {
                           break label1012;
                         }
-                        localv.jEe += 1;
-                        locali = localt.aZp();
+                        localv.muH += 1;
+                        locali = localt.biF();
                         m = localt.getType();
                         switch (m)
                         {
@@ -495,7 +495,7 @@ public final class al
                       k = n;
                       Log.i("MicroMsg.MMNativeNetTaskAdapter", "mmcgi onTaskEnd type:%d time:%d hash[%d,%d] [%d,%d]", new Object[] { Integer.valueOf(i), Long.valueOf(Util.milliSecondsToNow(l)), Integer.valueOf(i1), Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(k) });
                       if ((4 == j) && ((-1 == k) || (-2 == k) || (-24 == k) || (-34 == k))) {
-                        af.bkj().post(new ae.1(localae, i, k));
+                        af.btS().post(new ae.1(localae, i, k));
                       }
                       if (localt != null) {
                         break label2233;
@@ -503,11 +503,11 @@ public final class al
                       Log.w("MicroMsg.MMNativeNetTaskAdapter", "rr is null");
                       try
                       {
-                        localObject1 = localt.aZp().getErrMsg();
+                        localObject1 = localt.biF().getErrMsg();
                         if ((localObject1 == null) || (((String)localObject1).length() <= 0)) {
                           break label2460;
                         }
-                        localn.a(i2, j, k, (String)localObject1, localt, localt.aZp().aZa());
+                        localn.a(i2, j, k, (String)localObject1, localt, localt.biF().bip());
                         AppMethodBeat.o(132947);
                         return;
                       }
@@ -581,7 +581,7 @@ public final class al
             if (localt.getType() == 10) {
               break label551;
             }
-            localv.jEe = 0;
+            localv.muH = 0;
             break label551;
             label1070:
             Log.e("MicroMsg.MMNativeNetTaskAdapter", "exception:%s taskid:%d", new Object[] { Util.stackTraceToString(localRemoteException2), Integer.valueOf(i1) });
@@ -603,32 +603,32 @@ public final class al
             if (i != -213) {
               break label2603;
             }
-            e.Cxv.idkeyStat(148L, 31L, 1L, false);
+            f.Iyx.idkeyStat(148L, 31L, 1L, false);
           }
           for (;;)
           {
             for (;;)
             {
-              e.Cxv.idkeyStat(148L, 32L, 1L, false);
+              f.Iyx.idkeyStat(148L, 32L, 1L, false);
               break;
               label1317:
               if (i != -205) {
                 break;
               }
-              e.Cxv.idkeyStat(148L, 33L, 1L, false);
+              f.Iyx.idkeyStat(148L, 33L, 1L, false);
               break;
               label1341:
-              m = localt.aZq();
-              Log.i("MicroMsg.MMAutoAuth", "summerauth accinfo doAuthEnd type:%d, ret:%d loginDecodeFailedTry:%d", new Object[] { Integer.valueOf(localt.getType()), Integer.valueOf(m), Integer.valueOf(localv.jjY) });
+              m = localt.biG();
+              Log.i("MicroMsg.MMAutoAuth", "summerauth accinfo doAuthEnd type:%d, ret:%d loginDecodeFailedTry:%d", new Object[] { Integer.valueOf(localt.getType()), Integer.valueOf(m), Integer.valueOf(localv.lZU) });
               Object localObject4;
               if (m == 2)
               {
                 if ((localt.getType() != 702) && (localt.getType() != 763)) {
                   break;
                 }
-                e.Cxv.idkeyStat(148L, 34L, 1L, false);
-                localv.jjY += 1;
-                if (localv.jjY > 1)
+                f.Iyx.idkeyStat(148L, 34L, 1L, false);
+                localv.lZU += 1;
+                if (localv.lZU > 1)
                 {
                   Log.w("MicroMsg.MMAutoAuth", "summerauth loginDecodeFailedTry beyond 1 no more try!");
                   localv.l(j, i, "auth_decode_failed_" + Util.nullAs(null, ""));
@@ -639,7 +639,7 @@ public final class al
                   try
                   {
                     m = locali.getUin();
-                    Object localObject3 = locali.aZs();
+                    Object localObject3 = locali.biI();
                     if (Util.isNullOrNil((byte[])localObject3))
                     {
                       localObject3 = "";
@@ -647,11 +647,11 @@ public final class al
                         break label1642;
                       }
                       localObject5 = "";
-                      if (!localv.o((String)localObject3, (String)localObject5, m)) {
+                      if (!localv.q((String)localObject3, (String)localObject5, m)) {
                         break label1652;
                       }
-                      localv.jEj.ees = arrayOfByte;
-                      localt.a(localv.jEk, 0, 0);
+                      localv.muM.fYH = arrayOfByte;
+                      localt.a(localv.muN, 0, 0);
                     }
                   }
                   catch (RemoteException localRemoteException3)
@@ -670,17 +670,17 @@ public final class al
                   Log.w("MicroMsg.MMAutoAuth", "summerauth save serverid aak failed 1");
                 }
               }
-              localv.jjY = 0;
-              h localh = localt.aZo();
+              localv.lZU = 0;
+              h localh = localt.biE();
               for (;;)
               {
                 try
                 {
                   for (;;)
                   {
-                    Log.i("MicroMsg.MMAutoAuth", "summerauth accinfo %d: username:%s, wxusername:%s, ticket:%s, single session: %s client session:%s, server session:%s uin:%d", new Object[] { Integer.valueOf(localt.getType()), localh.getUserName(), locali.aZd(), Util.secPrint(Util.dumpHex(locali.aZs())), Util.secPrint(Util.dumpHex(locali.qe(1))), Util.secPrint(Util.dumpHex(locali.qe(2))), Util.secPrint(Util.dumpHex(locali.qe(3))), Integer.valueOf(locali.getUin()) });
+                    Log.i("MicroMsg.MMAutoAuth", "summerauth accinfo %d: username:%s, wxusername:%s, ticket:%s, single session: %s client session:%s, server session:%s uin:%d", new Object[] { Integer.valueOf(localt.getType()), localh.getUserName(), locali.bis(), Util.secPrint(Util.dumpHex(locali.biI())), Util.secPrint(Util.dumpHex(locali.sE(1))), Util.secPrint(Util.dumpHex(locali.sE(2))), Util.secPrint(Util.dumpHex(locali.sE(3))), Integer.valueOf(locali.getUin()) });
                     m = locali.getUin();
-                    localObject4 = locali.aZs();
+                    localObject4 = locali.biI();
                     if (Util.isNullOrNil((byte[])localObject4))
                     {
                       localObject4 = "";
@@ -689,18 +689,18 @@ public final class al
                         break label2004;
                       }
                       localObject5 = "";
-                      if (!localv.o((String)localObject4, (String)localObject5, m)) {
+                      if (!localv.q((String)localObject4, (String)localObject5, m)) {
                         break label2074;
                       }
-                      localv.jEj.ees = arrayOfByte;
-                      localv.jEj.username = localh.getUserName();
-                      localv.jEj.dMW = locali.aZd();
-                      localv.jEj.a(locali.qe(1), locali.qe(2), locali.qe(3), locali.getUin());
-                      localv.jEj.jDs = locali.aZc();
+                      localv.muM.fYH = arrayOfByte;
+                      localv.muM.username = localh.getUserName();
+                      localv.muM.fGe = locali.bis();
+                      localv.muM.a(locali.sE(1), locali.sE(2), locali.sE(3), locali.getUin());
+                      localv.muM.mtV = locali.bir();
                     }
                     try
                     {
-                      localv.aB(locali.getAuthResponse());
+                      localv.aM(locali.getAuthResponse());
                       CrashReportFactory.setReportID(p.getString(locali.getUin()));
                       Log.i("MicroMsg.MMAutoAuth", "summerauth decode and save ok!");
                       break;
@@ -717,7 +717,7 @@ public final class al
                       }
                     }
                   }
-                  e.Cxv.idkeyStat(148L, 35L, 1L, false);
+                  f.Iyx.idkeyStat(148L, 35L, 1L, false);
                 }
                 catch (RemoteException localRemoteException4)
                 {
@@ -731,26 +731,26 @@ public final class al
               }
               if ((j == 0) && (i == 0))
               {
-                com.tencent.mm.protocal.ac.aq(localt.aZp().aZt(), localt.aZp().aZu(), localt.aZp().aZv());
-                localv.jEm = SystemClock.elapsedRealtime();
+                com.tencent.mm.protocal.ac.aA(localt.biF().biJ(), localt.biF().biK(), localt.biF().biL());
+                localv.muP = SystemClock.elapsedRealtime();
               }
-              if ((com.tencent.mm.platformtools.ac.jOC != 10003) || (com.tencent.mm.platformtools.ac.jOD <= 0)) {
+              if ((com.tencent.mm.platformtools.ac.mFM != 10003) || (com.tencent.mm.platformtools.ac.mFN <= 0)) {
                 break label2522;
               }
-              if (com.tencent.mm.platformtools.ac.jOD <= 1) {
-                com.tencent.mm.platformtools.ac.jOD = 0;
+              if (com.tencent.mm.platformtools.ac.mFN <= 1) {
+                com.tencent.mm.platformtools.ac.mFN = 0;
               }
               n = 4;
               m = 0;
-              com.tencent.mm.protocal.ac.aq("", "", 0);
+              com.tencent.mm.protocal.ac.aA("", "", 0);
               label2196:
-              if (localv.jEn == -1) {
+              if (localv.muQ == -1) {
                 break;
               }
               if ((n == 0) && (m == 0)) {
                 localv.a(localt, 0, 0);
               }
-              localv.jEn = -1;
+              localv.muQ = -1;
               break;
               try
               {
@@ -773,16 +773,16 @@ public final class al
             }
             break label767;
             label2390:
-            if (af.bkl() != null)
+            if (af.btU() != null)
             {
               Log.i("MicroMsg.MMNativeNetTaskAdapter", "save cgi key " + localException4.length() + " " + ((String)localObject5).length());
-              af.bkl().bK(localException4, (String)localObject5);
+              af.btU().bN(localException4, (String)localObject5);
               break label767;
             }
             Log.w("MicroMsg.MMNativeNetTaskAdapter", "MMPushCore.getAutoAuth() is null");
             break label767;
             label2460:
-            localn.a(i2, j, k, null, localt, localt.aZp().aZa());
+            localn.a(i2, j, k, null, localt, localt.biF().bip());
             AppMethodBeat.o(132947);
             return;
             label2522:
@@ -822,7 +822,7 @@ public final class al
         int j = i;
       }
     }
-    AppMethodBeat.o(197114);
+    AppMethodBeat.o(199940);
     return j;
   }
   
@@ -831,8 +831,8 @@ public final class al
     AppMethodBeat.i(132955);
     try
     {
-      af.bki().uC(paramInt1);
-      com.tencent.mm.ap.a.sY(paramInt1);
+      af.btR().networkChange(paramInt1);
+      com.tencent.mm.as.a.vX(paramInt1);
       AppMethodBeat.o(132955);
       return;
     }
@@ -846,14 +846,14 @@ public final class al
   public final boolean req2Buf(int paramInt1, Object paramObject, ByteArrayOutputStream paramByteArrayOutputStream, int[] paramArrayOfInt, int paramInt2, String paramString)
   {
     AppMethodBeat.i(132952);
-    if (af.bkm() == null)
+    if (af.btV() == null)
     {
       AppMethodBeat.o(132952);
       return false;
     }
     try
     {
-      boolean bool = af.bkm().a(paramInt1, paramByteArrayOutputStream, paramArrayOfInt, paramInt2, paramString);
+      boolean bool = af.btV().a(paramInt1, paramByteArrayOutputStream, paramArrayOfInt, paramInt2, paramString);
       AppMethodBeat.o(132952);
       return bool;
     }
@@ -869,19 +869,19 @@ public final class al
   public final void requestDoSync()
   {
     AppMethodBeat.i(132959);
-    if (af.bkn() == null)
+    if (af.btW() == null)
     {
       AppMethodBeat.o(132959);
       return;
     }
     try
     {
-      af.bkj().post(new Runnable()
+      af.btS().post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(132948);
-          af.bkn().j(24, o.iC(7));
+          af.btW().k(24, o.jO(7));
           AppMethodBeat.o(132948);
         }
       });
@@ -903,7 +903,7 @@ public final class al
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.network.al
  * JD-Core Version:    0.7.0.1
  */

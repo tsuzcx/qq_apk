@@ -1,44 +1,44 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.cd.b;
 
 public final class azf
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public b LCh;
+  public b SLc;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(169014);
+    AppMethodBeat.i(197252);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.LCh != null) {
-        paramVarArgs.c(1, this.LCh);
+      if (this.SLc != null) {
+        paramVarArgs.c(1, this.SLc);
       }
-      AppMethodBeat.o(169014);
+      AppMethodBeat.o(197252);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.LCh == null) {
+      if (this.SLc == null) {
         break label213;
       }
     }
     label213:
-    for (paramInt = g.a.a.b.b.a.b(1, this.LCh) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.b(1, this.SLc) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(169014);
+      AppMethodBeat.o(197252);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(169014);
+        AppMethodBeat.o(197252);
         return 0;
       }
       if (paramInt == 3)
@@ -48,14 +48,14 @@ public final class azf
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(169014);
+          AppMethodBeat.o(197252);
           return -1;
         }
-        localazf.LCh = locala.UbS.hPo();
-        AppMethodBeat.o(169014);
+        localazf.SLc = locala.abFh.iUw();
+        AppMethodBeat.o(197252);
         return 0;
       }
-      AppMethodBeat.o(169014);
+      AppMethodBeat.o(197252);
       return -1;
     }
   }

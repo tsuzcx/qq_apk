@@ -8,25 +8,25 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
   extends View
 {
-  public int HhA;
-  private int HhB;
-  private int HhC;
-  private int HhD;
-  private int HhE;
-  private boolean HhF;
-  private int HhG;
-  public int Hhy;
-  public int Hhz;
-  private Matrix mMatrix;
+  public int NYn;
+  public int NYo;
+  public int NYp;
+  private int NYq;
+  private int NYr;
+  private int NYs;
+  private int NYt;
+  private boolean NYu;
+  private int NYv;
+  private Matrix aqj;
+  public int bZ;
   private Paint mPaint;
-  private RectF nYV;
-  public int sT;
+  private RectF raG;
   
   public d(Context paramContext)
   {
@@ -36,11 +36,11 @@ public final class d
     this.mPaint.setStyle(Paint.Style.STROKE);
     this.mPaint.setColor(-65536);
     this.mPaint.setStrokeWidth(a.fromDPToPix(getContext(), 3));
-    this.mMatrix = new Matrix();
+    this.aqj = new Matrix();
     AppMethodBeat.o(115580);
   }
   
-  private static int di(int paramInt1, int paramInt2)
+  private static int kT(int paramInt1, int paramInt2)
   {
     if (paramInt1 < 0) {
       paramInt1 = 0;
@@ -57,11 +57,11 @@ public final class d
   protected final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(115582);
-    if (this.nYV != null)
+    if (this.raG != null)
     {
       paramCanvas.save();
       paramCanvas.rotate(0.0F);
-      paramCanvas.drawRect(this.nYV, this.mPaint);
+      paramCanvas.drawRect(this.raG, this.mPaint);
       paramCanvas.restore();
     }
     AppMethodBeat.o(115582);
@@ -78,21 +78,21 @@ public final class d
     int j;
     if (paramArrayOfInt != null)
     {
-      this.HhB = paramArrayOfInt[0];
-      this.HhC = paramArrayOfInt[1];
-      this.HhD = paramArrayOfInt[2];
-      this.HhE = paramArrayOfInt[3];
-      if ((this.Hhz != 0) && (this.HhA != 0) && (this.sT != 0) && (this.Hhy != 0))
+      this.NYq = paramArrayOfInt[0];
+      this.NYr = paramArrayOfInt[1];
+      this.NYs = paramArrayOfInt[2];
+      this.NYt = paramArrayOfInt[3];
+      if ((this.NYo != 0) && (this.NYp != 0) && (this.bZ != 0) && (this.NYn != 0))
       {
-        m = this.HhD;
-        n = this.HhB;
-        i1 = this.HhE;
-        i2 = this.HhC;
-        Log.d("MicroMsg.FaceRectView", "mLeftTopX:%d, mLeftTopY:%d, mRightBottomX:%d, mRightBottomY:%d", new Object[] { Integer.valueOf(this.HhB), Integer.valueOf(this.HhC), Integer.valueOf(this.HhD), Integer.valueOf(this.HhD) });
-        Log.d("MicroMsg.FaceRectView", "mPicWidth:%d, mPicHeight:%d, mirror:%b, angle:%d", new Object[] { Integer.valueOf(this.Hhz), Integer.valueOf(this.HhA), Boolean.valueOf(this.HhF), Integer.valueOf(this.HhG) });
-        i = (this.HhD + this.HhB) / 2;
-        j = (this.HhE + this.HhC) / 2;
-        if ((this.HhG != 90) && (this.HhG != 270)) {
+        m = this.NYs;
+        n = this.NYq;
+        i1 = this.NYt;
+        i2 = this.NYr;
+        Log.d("MicroMsg.FaceRectView", "mLeftTopX:%d, mLeftTopY:%d, mRightBottomX:%d, mRightBottomY:%d", new Object[] { Integer.valueOf(this.NYq), Integer.valueOf(this.NYr), Integer.valueOf(this.NYs), Integer.valueOf(this.NYs) });
+        Log.d("MicroMsg.FaceRectView", "mPicWidth:%d, mPicHeight:%d, mirror:%b, angle:%d", new Object[] { Integer.valueOf(this.NYo), Integer.valueOf(this.NYp), Boolean.valueOf(this.NYu), Integer.valueOf(this.NYv) });
+        i = (this.NYs + this.NYq) / 2;
+        j = (this.NYt + this.NYr) / 2;
+        if ((this.NYv != 90) && (this.NYv != 270)) {
           break label552;
         }
       }
@@ -101,25 +101,25 @@ public final class d
     {
       Log.d("MicroMsg.FaceRectView", "centerX:%d, centerY:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
       float f2;
-      if ((this.HhG == 90) || (this.HhG == 270)) {
-        f2 = this.sT / this.Hhz;
+      if ((this.NYv == 90) || (this.NYv == 270)) {
+        f2 = this.bZ / this.NYo;
       }
-      for (float f1 = this.Hhy / this.HhA;; f1 = this.sT / this.HhA)
+      for (float f1 = this.NYn / this.NYp;; f1 = this.bZ / this.NYp)
       {
         f1 = Math.max(f2, f1);
         f2 = (int)((m - n) * f1);
         float f3 = (int)((i1 - i2) * f1);
         j = (int)(j * f1);
         i = (int)(i * f1);
-        this.HhB = di((int)(j - f2 / 2.0F), this.Hhy);
-        this.HhC = di((int)(i - f3 / 2.0F), this.sT);
-        this.HhD = di((int)(j + f2 / 2.0F), this.Hhy);
-        this.HhE = di((int)(i + f3 / 2.0F), this.sT);
-        this.nYV = new RectF(this.HhB, this.HhC, this.HhD, this.HhE);
-        Log.d("MicroMsg.FaceRectView", "after translate, mLeftTopX:%.2f, mLeftTopY:%.2f, mRightBottomX:%.2f, mRightBottomY:%.2f", new Object[] { Float.valueOf(this.nYV.left), Float.valueOf(this.nYV.top), Float.valueOf(this.nYV.right), Float.valueOf(this.nYV.bottom) });
+        this.NYq = kT((int)(j - f2 / 2.0F), this.NYn);
+        this.NYr = kT((int)(i - f3 / 2.0F), this.bZ);
+        this.NYs = kT((int)(j + f2 / 2.0F), this.NYn);
+        this.NYt = kT((int)(i + f3 / 2.0F), this.bZ);
+        this.raG = new RectF(this.NYq, this.NYr, this.NYs, this.NYt);
+        Log.d("MicroMsg.FaceRectView", "after translate, mLeftTopX:%.2f, mLeftTopY:%.2f, mRightBottomX:%.2f, mRightBottomY:%.2f", new Object[] { Float.valueOf(this.raG.left), Float.valueOf(this.raG.top), Float.valueOf(this.raG.right), Float.valueOf(this.raG.bottom) });
         AppMethodBeat.o(115581);
         return;
-        f2 = this.Hhy / this.Hhz;
+        f2 = this.NYn / this.NYo;
       }
       label552:
       int k = i;
@@ -130,17 +130,17 @@ public final class d
   
   public final void setMirror(boolean paramBoolean)
   {
-    this.HhF = paramBoolean;
+    this.NYu = paramBoolean;
   }
   
   public final void setRotateAngle(int paramInt)
   {
-    this.HhG = paramInt;
+    this.NYv = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.d
  * JD-Core Version:    0.7.0.1
  */

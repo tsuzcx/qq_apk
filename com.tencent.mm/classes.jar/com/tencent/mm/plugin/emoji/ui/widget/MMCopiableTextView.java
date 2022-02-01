@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.emoji.i.h;
 import com.tencent.mm.sdk.platformtools.ClipboardHelper;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -18,8 +19,8 @@ public class MMCopiableTextView
   implements View.OnLongClickListener
 {
   private final String TAG;
-  private int owQ;
-  private int rnu;
+  private int rFF;
+  private int uQJ;
   
   public MMCopiableTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -58,13 +59,13 @@ public class MMCopiableTextView
   {
     AppMethodBeat.i(109432);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/emoji/ui/widget/MMCopiableTextView", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/emoji/ui/widget/MMCopiableTextView", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
     paramView = getEditableText().toString();
-    if ((!Util.isNullOrNil(paramView)) && (this.owQ > 0) && (this.rnu > 0) && (this.rnu > this.owQ))
+    if ((!Util.isNullOrNil(paramView)) && (this.rFF > 0) && (this.uQJ > 0) && (this.uQJ > this.rFF))
     {
-      ClipboardHelper.setText(paramView.substring(this.owQ, this.rnu).trim());
-      Toast.makeText(getContext(), 2131755773, 0).show();
+      ClipboardHelper.setText(paramView.substring(this.rFF, this.uQJ).trim());
+      Toast.makeText(getContext(), i.h.app_copy_ok, 0).show();
     }
     a.a(false, this, "com/tencent/mm/plugin/emoji/ui/widget/MMCopiableTextView", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
     AppMethodBeat.o(109432);
@@ -73,17 +74,17 @@ public class MMCopiableTextView
   
   public void setEndIndex(int paramInt)
   {
-    this.rnu = paramInt;
+    this.uQJ = paramInt;
   }
   
   public void setStartIndex(int paramInt)
   {
-    this.owQ = paramInt;
+    this.rFF = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.widget.MMCopiableTextView
  * JD-Core Version:    0.7.0.1
  */

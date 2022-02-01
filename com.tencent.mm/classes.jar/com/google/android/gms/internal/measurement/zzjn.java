@@ -17,6 +17,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class zzjn
   extends zzjq
 {
+  private byte _hellAccFlag_;
   private final zzem zzapy;
   private final AlarmManager zzyi;
   private Integer zzyj;
@@ -74,7 +75,12 @@ public final class zzjn
   {
     AppMethodBeat.i(1927);
     zzch();
-    this.zzyi.cancel(zzek());
+    AlarmManager localAlarmManager = this.zzyi;
+    Object localObject = zzek();
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(localAlarmManager, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/google/android/gms/internal/measurement/zzjn", "cancel", "()V", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
+    localAlarmManager.cancel((PendingIntent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localAlarmManager, "com/google/android/gms/internal/measurement/zzjn", "cancel", "()V", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
     this.zzapy.cancel();
     if (Build.VERSION.SDK_INT >= 24) {
       zzkl();
@@ -124,7 +130,12 @@ public final class zzjn
   protected final boolean zzhf()
   {
     AppMethodBeat.i(1923);
-    this.zzyi.cancel(zzek());
+    AlarmManager localAlarmManager = this.zzyi;
+    Object localObject = zzek();
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(localAlarmManager, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/google/android/gms/internal/measurement/zzjn", "zzhf", "()Z", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
+    localAlarmManager.cancel((PendingIntent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localAlarmManager, "com/google/android/gms/internal/measurement/zzjn", "zzhf", "()Z", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
     if (Build.VERSION.SDK_INT >= 24) {
       zzkl();
     }

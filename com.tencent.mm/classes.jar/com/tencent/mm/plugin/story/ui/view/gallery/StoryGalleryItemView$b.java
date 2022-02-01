@@ -5,7 +5,7 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "index", "", "isSelf", "", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "index", "", "isSelf", "", "invoke"})
 final class StoryGalleryItemView$b
   extends q
   implements m<Integer, Boolean, x>

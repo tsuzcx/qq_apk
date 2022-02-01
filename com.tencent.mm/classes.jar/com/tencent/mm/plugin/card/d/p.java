@@ -7,7 +7,7 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 final class p
 {
-  public static void TF(String paramString)
+  public static void abo(String paramString)
   {
     AppMethodBeat.i(113869);
     ((ClipboardManager)MMApplicationContext.getContext().getSystemService("clipboard")).setText(paramString);
@@ -16,7 +16,7 @@ final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.p
  * JD-Core Version:    0.7.0.1
  */

@@ -6,45 +6,45 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class i
 {
-  private static AtomicInteger nhX;
-  public HashMap<String, g> nhY;
+  private static AtomicInteger qiG;
+  public HashMap<String, g> qiH;
   
   static
   {
     AppMethodBeat.i(144363);
-    nhX = new AtomicInteger(1);
+    qiG = new AtomicInteger(1);
     AppMethodBeat.o(144363);
   }
   
   private i()
   {
     AppMethodBeat.i(144359);
-    this.nhY = new HashMap();
+    this.qiH = new HashMap();
     AppMethodBeat.o(144359);
   }
   
-  public static i bPC()
-  {
-    AppMethodBeat.i(144361);
-    i locali = a.bPD();
-    AppMethodBeat.o(144361);
-    return locali;
-  }
-  
-  public static int bPw()
+  public static int cbN()
   {
     AppMethodBeat.i(144360);
-    int i = nhX.incrementAndGet();
+    int i = qiG.incrementAndGet();
     AppMethodBeat.o(144360);
     return i;
   }
   
-  public final g adb(String paramString)
+  public static i cbT()
+  {
+    AppMethodBeat.i(144361);
+    i locali = a.cbU();
+    AppMethodBeat.o(144361);
+    return locali;
+  }
+  
+  public final g akV(String paramString)
   {
     AppMethodBeat.i(144362);
-    if (this.nhY.containsKey(paramString))
+    if (this.qiH.containsKey(paramString))
     {
-      paramString = (g)this.nhY.get(paramString);
+      paramString = (g)this.qiH.get(paramString);
       AppMethodBeat.o(144362);
       return paramString;
     }
@@ -54,19 +54,19 @@ public final class i
   
   static final class a
   {
-    private static i niJ;
+    private static i qju;
     
     static
     {
       AppMethodBeat.i(144358);
-      niJ = new i((byte)0);
+      qju = new i((byte)0);
       AppMethodBeat.o(144358);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.s.i
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import com.tencent.mm.plugin.sns.storage.SnsInfo;
 public final class b
   extends com.tencent.mm.plugin.sns.ad.timeline.a.b<a>
 {
-  private int DxM = 0;
+  private int JCO = 0;
   
   public b(Context paramContext)
   {
@@ -19,52 +19,52 @@ public final class b
   
   private a k(SnsInfo paramSnsInfo)
   {
-    AppMethodBeat.i(202114);
+    AppMethodBeat.i(237491);
     if (paramSnsInfo == null)
     {
-      AppMethodBeat.o(202114);
+      AppMethodBeat.o(237491);
       return null;
     }
     try
     {
-      paramSnsInfo = paramSnsInfo.getAdInfo(this.DxM);
+      paramSnsInfo = paramSnsInfo.getAdInfo(this.JCO);
       if (paramSnsInfo == null)
       {
-        AppMethodBeat.o(202114);
+        AppMethodBeat.o(237491);
         return null;
       }
       if (paramSnsInfo.adActionType == 10)
       {
         paramSnsInfo = new com.tencent.mm.plugin.sns.ad.timeline.a.c.a.b();
-        AppMethodBeat.o(202114);
+        AppMethodBeat.o(237491);
         return paramSnsInfo;
       }
       if (paramSnsInfo.adActionType == 11)
       {
         paramSnsInfo = new com.tencent.mm.plugin.sns.ad.timeline.a.c.a.a();
-        AppMethodBeat.o(202114);
+        AppMethodBeat.o(237491);
         return paramSnsInfo;
       }
     }
     catch (Throwable paramSnsInfo)
     {
-      AppMethodBeat.o(202114);
+      AppMethodBeat.o(237491);
     }
     return null;
   }
   
   public final boolean a(View paramView, int paramInt, SnsInfo paramSnsInfo, d paramd)
   {
-    AppMethodBeat.i(202113);
-    this.DxM = paramInt;
+    AppMethodBeat.i(237489);
+    this.JCO = paramInt;
     boolean bool = super.a(paramView, paramInt, paramSnsInfo, paramd);
-    AppMethodBeat.o(202113);
+    AppMethodBeat.o(237489);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.a.c.b
  * JD-Core Version:    0.7.0.1
  */

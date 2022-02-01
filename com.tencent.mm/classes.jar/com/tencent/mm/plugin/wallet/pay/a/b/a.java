@@ -1,18 +1,16 @@
 package com.tencent.mm.plugin.wallet.pay.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.network.g;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.tj;
-import com.tencent.mm.protocal.protobuf.tk;
+import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.protocal.protobuf.tl;
+import com.tencent.mm.protocal.protobuf.tm;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.c.w;
-import com.tencent.mm.wallet_core.ui.f;
 
 public class a
   extends w
@@ -24,23 +22,23 @@ public class a
   {
     AppMethodBeat.i(69276);
     d.a locala = new d.a();
-    tj localtj = new tj();
-    localtj.KKR = paramString;
-    localtj.LbX = paramInt1;
-    localtj.LbY = paramInt2;
-    locala.iLN = localtj;
-    locala.iLO = new tk();
+    tl localtl = new tl();
+    localtl.RLK = paramString;
+    localtl.Sdk = paramInt1;
+    localtl.Sdl = paramInt2;
+    locala.lBU = localtl;
+    locala.lBV = new tm();
     locala.uri = getUri();
     locala.funcId = getType();
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    locala.routeInfo = f.bpA(paramString);
-    this.rr = locala.aXF();
+    locala.routeInfo = com.tencent.mm.wallet_core.ui.g.bCx(paramString);
+    this.rr = locala.bgN();
     Log.i("MicroMsg.NetSceneCancelPay", "request uri: %s, reqKey: %s, payScene: %d, payChannel:%d", new Object[] { getUri(), paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(69276);
   }
   
-  public int doScene(g paramg, i parami)
+  public int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(69277);
     this.callback = parami;
@@ -74,8 +72,8 @@ public class a
     if ((paramInt2 == 0) && (paramInt3 == 0)) {}
     try
     {
-      params = (tk)((d)params).iLL.iLR;
-      Log.i("MicroMsg.NetSceneCancelPay", "NetSceneCancelPay BaseResponse.Ret is %d, BaseResponse.ErrMsg is %s", new Object[] { Integer.valueOf(params.BaseResponse.Ret), params.BaseResponse.ErrMsg });
+      params = (tm)d.c.b(((d)params).lBS);
+      Log.i("MicroMsg.NetSceneCancelPay", "NetSceneCancelPay BaseResponse.Ret is %d, BaseResponse.ErrMsg is %s", new Object[] { Integer.valueOf(params.BaseResponse.CqV), params.BaseResponse.Tef });
       if (this.callback != null) {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }

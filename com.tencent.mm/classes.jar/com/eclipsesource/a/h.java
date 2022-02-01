@@ -8,11 +8,11 @@ public abstract class h
   implements Serializable
 {
   @Deprecated
-  public static final h aZC = a.aZC;
+  public static final h aIY = a.aIY;
   @Deprecated
-  public static final h aZD = a.aZD;
+  public static final h aIZ = a.aIZ;
   @Deprecated
-  public static final h aZE = a.aZE;
+  public static final h aJa = a.aJa;
   
   public final String a(l paraml)
   {
@@ -70,49 +70,49 @@ public abstract class h
     return false;
   }
   
-  public String sG()
-  {
-    throw new UnsupportedOperationException("Not a string: " + toString());
-  }
-  
-  public b sd()
+  public b pR()
   {
     throw new UnsupportedOperationException("Not an array: " + toString());
   }
   
-  public boolean se()
+  public boolean pS()
   {
     throw new UnsupportedOperationException("Not a boolean: " + toString());
   }
   
-  public int sf()
+  public int pT()
   {
     throw new UnsupportedOperationException("Not a number: " + toString());
   }
   
-  public long sg()
+  public long pU()
   {
     throw new UnsupportedOperationException("Not a number: " + toString());
   }
   
-  public double sh()
+  public double pV()
   {
     throw new UnsupportedOperationException("Not a number: " + toString());
   }
   
-  public e si()
+  public e pW()
   {
     throw new UnsupportedOperationException("Not an object: " + toString());
   }
   
+  public String qu()
+  {
+    throw new UnsupportedOperationException("Not a string: " + toString());
+  }
+  
   public String toString()
   {
-    return a(l.baj);
+    return a(l.aJF);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.eclipsesource.a.h
  * JD-Core Version:    0.7.0.1
  */

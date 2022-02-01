@@ -8,7 +8,7 @@ import java.util.LinkedList;
 public abstract interface c
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract void EN(String paramString);
+  public abstract void LG(String paramString);
   
   public abstract long a(com.tencent.mm.plugin.downloader_app.a.a parama, a.b paramb);
   
@@ -22,17 +22,17 @@ public abstract interface c
   
   public abstract void b(e parame);
   
-  public abstract boolean cBP();
+  public abstract boolean cQt();
   
-  public abstract void cBQ();
+  public abstract void cQu();
   
-  public abstract LinkedList<DownloadWidgetTaskInfo> cBR();
+  public abstract LinkedList<DownloadWidgetTaskInfo> cQv();
   
-  public abstract void cBS();
+  public abstract void cQw();
   
-  public abstract boolean cBT();
+  public abstract boolean cQx();
   
-  public abstract void e(Context paramContext, Bundle paramBundle);
+  public abstract void f(Context paramContext, Bundle paramBundle);
 }
 
 

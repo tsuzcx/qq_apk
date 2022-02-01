@@ -9,20 +9,20 @@ public final class b
   public final void a(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(47580);
-    h.CyF.a(paramInt, paramVarArgs);
+    h.IzE.a(paramInt, paramVarArgs);
     AppMethodBeat.o(47580);
   }
   
   public final void kvStat(int paramInt, String paramString)
   {
     AppMethodBeat.i(47581);
-    h.CyF.kvStat(paramInt, paramString);
+    h.IzE.kvStat(paramInt, paramString);
     AppMethodBeat.o(47581);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.c.b
  * JD-Core Version:    0.7.0.1
  */

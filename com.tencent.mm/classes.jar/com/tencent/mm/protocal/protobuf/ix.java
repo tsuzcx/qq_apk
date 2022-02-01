@@ -3,97 +3,89 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ix
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String ANo;
-  public String HQc;
-  public String KNr;
-  public String KNs;
-  public String KNt;
-  public String KNu;
-  public String dDj;
-  public String ynT;
+  public String ROL;
+  public String ROM;
+  public String RON;
+  public String ROO;
+  public String ROP;
+  public String jump_url;
+  public String ufC;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91355);
+    AppMethodBeat.i(124392);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.KNr != null) {
-        paramVarArgs.e(1, this.KNr);
+      if (this.ROL != null) {
+        paramVarArgs.f(1, this.ROL);
       }
-      if (this.HQc != null) {
-        paramVarArgs.e(2, this.HQc);
+      if (this.ROM != null) {
+        paramVarArgs.f(2, this.ROM);
       }
-      if (this.dDj != null) {
-        paramVarArgs.e(3, this.dDj);
+      if (this.RON != null) {
+        paramVarArgs.f(3, this.RON);
       }
-      if (this.ANo != null) {
-        paramVarArgs.e(4, this.ANo);
+      if (this.ufC != null) {
+        paramVarArgs.f(4, this.ufC);
       }
-      if (this.ynT != null) {
-        paramVarArgs.e(5, this.ynT);
+      if (this.jump_url != null) {
+        paramVarArgs.f(5, this.jump_url);
       }
-      if (this.KNs != null) {
-        paramVarArgs.e(6, this.KNs);
+      if (this.ROO != null) {
+        paramVarArgs.f(6, this.ROO);
       }
-      if (this.KNt != null) {
-        paramVarArgs.e(7, this.KNt);
+      if (this.ROP != null) {
+        paramVarArgs.f(7, this.ROP);
       }
-      if (this.KNu != null) {
-        paramVarArgs.e(8, this.KNu);
-      }
-      AppMethodBeat.o(91355);
+      AppMethodBeat.o(124392);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.KNr == null) {
-        break label642;
+      if (this.ROL == null) {
+        break label578;
       }
     }
-    label642:
-    for (int i = g.a.a.b.b.a.f(1, this.KNr) + 0;; i = 0)
+    label578:
+    for (int i = g.a.a.b.b.a.g(1, this.ROL) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.HQc != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.HQc);
+      if (this.ROM != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.ROM);
       }
       i = paramInt;
-      if (this.dDj != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.dDj);
+      if (this.RON != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.RON);
       }
       paramInt = i;
-      if (this.ANo != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.ANo);
+      if (this.ufC != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.ufC);
       }
       i = paramInt;
-      if (this.ynT != null) {
-        i = paramInt + g.a.a.b.b.a.f(5, this.ynT);
+      if (this.jump_url != null) {
+        i = paramInt + g.a.a.b.b.a.g(5, this.jump_url);
       }
       paramInt = i;
-      if (this.KNs != null) {
-        paramInt = i + g.a.a.b.b.a.f(6, this.KNs);
+      if (this.ROO != null) {
+        paramInt = i + g.a.a.b.b.a.g(6, this.ROO);
       }
       i = paramInt;
-      if (this.KNt != null) {
-        i = paramInt + g.a.a.b.b.a.f(7, this.KNt);
+      if (this.ROP != null) {
+        i = paramInt + g.a.a.b.b.a.g(7, this.ROP);
       }
-      paramInt = i;
-      if (this.KNu != null) {
-        paramInt = i + g.a.a.b.b.a.f(8, this.KNu);
-      }
-      AppMethodBeat.o(91355);
-      return paramInt;
+      AppMethodBeat.o(124392);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(91355);
+        AppMethodBeat.o(124392);
         return 0;
       }
       if (paramInt == 3)
@@ -103,49 +95,45 @@ public final class ix
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(91355);
+          AppMethodBeat.o(124392);
           return -1;
         case 1: 
-          localix.KNr = locala.UbS.readString();
-          AppMethodBeat.o(91355);
+          localix.ROL = locala.abFh.readString();
+          AppMethodBeat.o(124392);
           return 0;
         case 2: 
-          localix.HQc = locala.UbS.readString();
-          AppMethodBeat.o(91355);
+          localix.ROM = locala.abFh.readString();
+          AppMethodBeat.o(124392);
           return 0;
         case 3: 
-          localix.dDj = locala.UbS.readString();
-          AppMethodBeat.o(91355);
+          localix.RON = locala.abFh.readString();
+          AppMethodBeat.o(124392);
           return 0;
         case 4: 
-          localix.ANo = locala.UbS.readString();
-          AppMethodBeat.o(91355);
+          localix.ufC = locala.abFh.readString();
+          AppMethodBeat.o(124392);
           return 0;
         case 5: 
-          localix.ynT = locala.UbS.readString();
-          AppMethodBeat.o(91355);
+          localix.jump_url = locala.abFh.readString();
+          AppMethodBeat.o(124392);
           return 0;
         case 6: 
-          localix.KNs = locala.UbS.readString();
-          AppMethodBeat.o(91355);
-          return 0;
-        case 7: 
-          localix.KNt = locala.UbS.readString();
-          AppMethodBeat.o(91355);
+          localix.ROO = locala.abFh.readString();
+          AppMethodBeat.o(124392);
           return 0;
         }
-        localix.KNu = locala.UbS.readString();
-        AppMethodBeat.o(91355);
+        localix.ROP = locala.abFh.readString();
+        AppMethodBeat.o(124392);
         return 0;
       }
-      AppMethodBeat.o(91355);
+      AppMethodBeat.o(124392);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ix
  * JD-Core Version:    0.7.0.1
  */

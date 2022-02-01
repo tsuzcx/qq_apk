@@ -6,11 +6,10 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
 import android.text.TextUtils;
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ps;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.a.qq;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.crash.CrashReportFactory;
@@ -26,37 +25,37 @@ import java.util.concurrent.TimeUnit;
 
 public final class JeVersion
 {
-  private static MultiProcessMMKV AUP;
-  private static final long AUQ;
-  private static final IListener<ps> AUR;
+  private static MultiProcessMMKV GOk;
+  private static final long GOl;
+  private static final IListener<qq> GOm;
   
   static
   {
-    AppMethodBeat.i(201116);
-    AUP = MultiProcessMMKV.getMMKV("diagnostic_storage");
-    AUQ = TimeUnit.DAYS.toMillis(1L);
-    AUR = new IListener()
+    AppMethodBeat.i(200783);
+    GOk = MultiProcessMMKV.getMMKV("diagnostic_storage");
+    GOl = TimeUnit.DAYS.toMillis(1L);
+    GOm = new IListener()
     {
-      private long AUS;
+      private long GOn;
       
-      private boolean bet()
+      private boolean bnS()
       {
-        AppMethodBeat.i(201102);
+        AppMethodBeat.i(201352);
         long l1 = System.currentTimeMillis();
-        long l2 = l1 - this.AUS;
+        long l2 = l1 - this.GOn;
         Log.i("MicroMsg.JeVersion", "currentMillis - mLastReportTimeMillis = %s", new Object[] { Long.valueOf(l2) });
-        if (l2 < JeVersion.AUQ)
+        if (l2 < JeVersion.GOl)
         {
           Log.i("MicroMsg.JeVersion", "not report");
-          AppMethodBeat.o(201102);
+          AppMethodBeat.o(201352);
           return false;
         }
-        this.AUS = l1;
-        JeVersion.ayo().encode("JV_KEY_LAST_REPORT_TIME_MILLIS_LONG", this.AUS);
+        this.GOn = l1;
+        JeVersion.aFH().encode("JV_KEY_LAST_REPORT_TIME_MILLIS_LONG", this.GOn);
         try
         {
-          JeVersion.eCw();
-          AppMethodBeat.o(201102);
+          JeVersion.foi();
+          AppMethodBeat.o(201352);
           return false;
         }
         catch (Throwable localThrowable)
@@ -68,12 +67,12 @@ public final class JeVersion
         }
       }
     };
-    AppMethodBeat.o(201116);
+    AppMethodBeat.o(200783);
   }
   
-  private static void aJY(String paramString)
+  private static void aUu(String paramString)
   {
-    AppMethodBeat.i(201113);
+    AppMethodBeat.i(200778);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new IDKey(1446, 20, 1));
     int i;
@@ -84,9 +83,9 @@ public final class JeVersion
     {
       Log.i("MicroMsg.JeVersion", "je version = %s", new Object[] { paramString });
       localArrayList.add(new IDKey(1446, i, 1));
-      com.tencent.mm.plugin.report.service.h.CyF.b(localArrayList, false);
+      com.tencent.mm.plugin.report.service.h.IzE.b(localArrayList, false);
       Log.i("MicroMsg.JeVersion", "report done");
-      AppMethodBeat.o(201113);
+      AppMethodBeat.o(200778);
       return;
       if (paramString.startsWith("5.0.1")) {
         i = 22;
@@ -110,71 +109,93 @@ public final class JeVersion
     }
   }
   
-  public static void eCv()
+  public static void fof()
   {
-    AppMethodBeat.i(201111);
+    AppMethodBeat.i(200768);
     if (BuildInfo.IS_ARM64)
     {
       Log.i("MicroMsg.JeVersion", "it's none of arm64's business");
-      AppMethodBeat.o(201111);
+      AppMethodBeat.o(200768);
       return;
     }
-    if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (WeChatEnvironment.hasDebugger()) || (((b)g.af(b.class)).a(b.a.smR, false))) {}
+    if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (WeChatEnvironment.hasDebugger()) || (((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vXR, true))) {}
     for (int i = 1; i == 0; i = 0)
     {
       Log.i("MicroMsg.JeVersion", "not enabled");
-      AppMethodBeat.o(201111);
+      AppMethodBeat.o(200768);
       return;
     }
-    AUR.alive();
+    GOm.alive();
     CrashReportFactory.addCrashReportExtraMessageGetter(new ICrashReporter.ICrashReportExtraMessageGetter()
     {
       public final String getCrashReportExtraMessage()
       {
-        AppMethodBeat.i(201104);
-        String str = JeVersion.ayo().decodeString("JV_KEY_LAST_JE_VERSION_STRING", "");
+        AppMethodBeat.i(200737);
+        String str = JeVersion.fog();
         if (TextUtils.isEmpty(str))
         {
-          AppMethodBeat.o(201104);
+          AppMethodBeat.o(200737);
           return "";
         }
         str = "jemalloc:".concat(String.valueOf(str));
-        AppMethodBeat.o(201104);
+        AppMethodBeat.o(200737);
         return str;
       }
     });
-    AppMethodBeat.o(201111);
+    AppMethodBeat.o(200768);
   }
   
-  public static void eCw()
+  public static String fog()
   {
-    AppMethodBeat.i(201112);
-    String str = AUP.decodeString("JV_KEY_LAST_FINGERPRINT_STRING", "");
+    AppMethodBeat.i(200769);
+    String str = GOk.decodeString("JV_KEY_LAST_JE_VERSION_STRING", "");
+    AppMethodBeat.o(200769);
+    return str;
+  }
+  
+  public static boolean foh()
+  {
+    AppMethodBeat.i(200772);
+    String str = fog();
+    if (TextUtils.isEmpty(str))
+    {
+      AppMethodBeat.o(200772);
+      return false;
+    }
+    boolean bool = str.startsWith("5.");
+    AppMethodBeat.o(200772);
+    return bool;
+  }
+  
+  public static void foi()
+  {
+    AppMethodBeat.i(200774);
+    String str = GOk.decodeString("JV_KEY_LAST_FINGERPRINT_STRING", "");
     if (Build.FINGERPRINT.equalsIgnoreCase(str))
     {
-      str = AUP.decodeString("JV_KEY_LAST_JE_VERSION_STRING", "");
+      str = GOk.decodeString("JV_KEY_LAST_JE_VERSION_STRING", "");
       if (TextUtils.isEmpty(str))
       {
         Log.i("MicroMsg.JeVersion", "lastVersion is empty");
-        eCx();
-        AppMethodBeat.o(201112);
+        foj();
+        AppMethodBeat.o(200774);
         return;
       }
-      aJY(str);
-      AppMethodBeat.o(201112);
+      aUu(str);
+      AppMethodBeat.o(200774);
       return;
     }
     Log.i("MicroMsg.JeVersion", "finger print changed");
-    eCx();
-    AppMethodBeat.o(201112);
+    foj();
+    AppMethodBeat.o(200774);
   }
   
-  private static void eCx()
+  private static void foj()
   {
-    AppMethodBeat.i(201114);
+    AppMethodBeat.i(200780);
     Log.i("MicroMsg.JeVersion", "reportJeVersionHard");
     MMApplicationContext.getContext().startService(new Intent(MMApplicationContext.getContext(), JeService.class));
-    AppMethodBeat.o(201114);
+    AppMethodBeat.o(200780);
   }
   
   public static class JeService
@@ -187,36 +208,36 @@ public final class JeVersion
     
     public void onDestroy()
     {
-      AppMethodBeat.i(201109);
+      AppMethodBeat.i(200866);
       super.onDestroy();
       Log.d("MicroMsg.JeVersion", "onDestroy");
-      com.tencent.f.h.RTc.o(new JeVersion.JeService.3(this), 60000L);
-      AppMethodBeat.o(201109);
+      com.tencent.e.h.ZvG.o(new JeVersion.JeService.3(this), 60000L);
+      AppMethodBeat.o(200866);
     }
     
     public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(201108);
-      com.tencent.f.h.RTc.aX(new Runnable()
+      AppMethodBeat.i(200864);
+      com.tencent.e.h.ZvG.be(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(201105);
+          AppMethodBeat.i(200567);
           JeVersion.JeService.a(JeVersion.JeService.this);
           JeVersion.access$300();
           JeVersion.JeService.this.stopSelf();
-          AppMethodBeat.o(201105);
+          AppMethodBeat.o(200567);
         }
       });
       paramInt1 = super.onStartCommand(paramIntent, paramInt1, paramInt2);
-      AppMethodBeat.o(201108);
+      AppMethodBeat.o(200864);
       return paramInt1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.jectl.JeVersion
  * JD-Core Version:    0.7.0.1
  */

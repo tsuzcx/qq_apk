@@ -17,15 +17,15 @@ import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 public class FrameAnimatorImageView
   extends ImageView
 {
-  private Runnable wEt;
-  private DrawFilter wEu;
+  private Runnable Bxq;
+  private DrawFilter Bxr;
   
   public FrameAnimatorImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(64218);
-    this.wEt = null;
-    this.wEu = new PaintFlagsDrawFilter(0, 3);
+    this.Bxq = null;
+    this.Bxr = new PaintFlagsDrawFilter(0, 3);
     AppMethodBeat.o(64218);
   }
   
@@ -33,8 +33,8 @@ public class FrameAnimatorImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(64219);
-    this.wEt = null;
-    this.wEu = new PaintFlagsDrawFilter(0, 3);
+    this.Bxq = null;
+    this.Bxr = new PaintFlagsDrawFilter(0, 3);
     AppMethodBeat.o(64219);
   }
   
@@ -58,7 +58,7 @@ public class FrameAnimatorImageView
         }
         if (parama != null)
         {
-          this.wEt = new Runnable()
+          this.Bxq = new Runnable()
           {
             public final void run()
             {
@@ -67,7 +67,7 @@ public class FrameAnimatorImageView
               AppMethodBeat.o(64217);
             }
           };
-          MMHandlerThread.postToMainThreadDelayed(this.wEt, paramInt);
+          MMHandlerThread.postToMainThreadDelayed(this.Bxq, paramInt);
         }
       }
     }
@@ -77,7 +77,7 @@ public class FrameAnimatorImageView
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(64224);
-    paramCanvas.setDrawFilter(this.wEu);
+    paramCanvas.setDrawFilter(this.Bxr);
     super.onDraw(paramCanvas);
     AppMethodBeat.o(64224);
   }
@@ -85,7 +85,7 @@ public class FrameAnimatorImageView
   public void setImageBitmap(Bitmap paramBitmap)
   {
     AppMethodBeat.i(64223);
-    MMHandlerThread.removeRunnable(this.wEt);
+    MMHandlerThread.removeRunnable(this.Bxq);
     super.setImageBitmap(paramBitmap);
     AppMethodBeat.o(64223);
   }
@@ -93,7 +93,7 @@ public class FrameAnimatorImageView
   public void setImageDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(64221);
-    MMHandlerThread.removeRunnable(this.wEt);
+    MMHandlerThread.removeRunnable(this.Bxq);
     super.setImageDrawable(paramDrawable);
     AppMethodBeat.o(64221);
   }
@@ -101,7 +101,7 @@ public class FrameAnimatorImageView
   public void setImageResource(int paramInt)
   {
     AppMethodBeat.i(64222);
-    MMHandlerThread.removeRunnable(this.wEt);
+    MMHandlerThread.removeRunnable(this.Bxq);
     super.setImageResource(paramInt);
     AppMethodBeat.o(64222);
   }
@@ -113,7 +113,7 @@ public class FrameAnimatorImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.faceid.auth.FrameAnimatorImageView
  * JD-Core Version:    0.7.0.1
  */

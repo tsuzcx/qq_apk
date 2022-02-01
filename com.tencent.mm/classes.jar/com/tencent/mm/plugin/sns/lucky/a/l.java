@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.sns.lucky.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.c;
-import com.tencent.mm.model.cj.a;
-import com.tencent.mm.modelsns.n;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.c;
+import com.tencent.mm.model.ck.a;
+import com.tencent.mm.modelsns.o;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.sns.ad.timeline.b.e;
-import com.tencent.mm.plugin.sns.data.k;
+import com.tencent.mm.plugin.sns.ad.timeline.b.f;
+import com.tencent.mm.plugin.sns.data.m;
 import com.tencent.mm.plugin.sns.model.a;
 import com.tencent.mm.plugin.sns.storage.ADXml;
 import com.tencent.mm.protocal.protobuf.SnsObject;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.adp;
-import com.tencent.mm.protocal.protobuf.cnb;
-import com.tencent.mm.protocal.protobuf.de;
-import com.tencent.mm.protocal.protobuf.dkg;
-import com.tencent.mm.protocal.protobuf.eaq;
+import com.tencent.mm.protocal.protobuf.adw;
+import com.tencent.mm.protocal.protobuf.cvt;
+import com.tencent.mm.protocal.protobuf.db;
+import com.tencent.mm.protocal.protobuf.dtv;
+import com.tencent.mm.protocal.protobuf.ekq;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.math.BigInteger;
 import java.util.LinkedList;
 
 public final class l
-  implements cj.a
+  implements ck.a
 {
-  private static String aK(String paramString1, String paramString2, String paramString3)
+  private static String aE(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(95188);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)) || (Util.isNullOrNil(paramString3)))
@@ -48,57 +48,57 @@ public final class l
   public final void a(h.a parama)
   {
     AppMethodBeat.i(95187);
-    if ((parama == null) || (parama.heO == null) || (parama.heO.KHn == null))
+    if ((parama == null) || (parama.jQG == null) || (parama.jQG.RIF == null))
     {
       Log.i("MicroMsg.SimpleExperimentLsn", "recv null msg");
       AppMethodBeat.o(95187);
       return;
     }
-    parama = z.a(parama.heO.KHn);
+    parama = z.a(parama.jQG.RIF);
     Log.d("MicroMsg.SimpleExperimentLsn", "recv addMsg ".concat(String.valueOf(parama)));
-    Object localObject1 = aK(parama, "<TimelineObject", "</TimelineObject>");
+    Object localObject1 = aE(parama, "<TimelineObject", "</TimelineObject>");
     if (Util.isNullOrNil((String)localObject1))
     {
       Log.i("MicroMsg.SimpleExperimentLsn", "recv addMsg has no  timelineObj tag");
       AppMethodBeat.o(95187);
       return;
     }
-    String str = aK(parama, "<RecXml", "</RecXml>");
+    String str = aE(parama, "<RecXml", "</RecXml>");
     if (Util.isNullOrNil(str))
     {
       Log.i("MicroMsg.SimpleExperimentLsn", "recv addMsg has no  RecXml tag");
       AppMethodBeat.o(95187);
       return;
     }
-    Object localObject2 = aK(parama, "<ADInfo", "</ADInfo>");
+    Object localObject2 = aE(parama, "<ADInfo", "</ADInfo>");
     if (Util.isNullOrNil((String)localObject2))
     {
       Log.i("MicroMsg.SimpleExperimentLsn", "recv addMsg has no  ADInfo tag");
       AppMethodBeat.o(95187);
       return;
     }
-    parama = n.PM((String)localObject1);
-    dkg localdkg = new dkg();
-    localdkg.MOg = z.Su((String)localObject2);
-    localObject2 = new eaq();
-    localdkg.MOf = ((eaq)localObject2);
-    ((eaq)localObject2).Nad = z.Su(str);
+    parama = o.Xk((String)localObject1);
+    dtv localdtv = new dtv();
+    localdtv.TZZ = z.ZW((String)localObject2);
+    localObject2 = new ekq();
+    localdtv.TZY = ((ekq)localObject2);
+    ((ekq)localObject2).Umx = z.ZW(str);
     SnsObject localSnsObject = new SnsObject();
     localSnsObject.Id = new BigInteger(parama.Id).longValue();
     localSnsObject.CreateTime = parama.CreateTime;
     localSnsObject.Username = parama.UserName;
-    localSnsObject.ObjectDesc = z.aC(((String)localObject1).getBytes());
-    ((eaq)localObject2).MYH = localSnsObject;
-    a.b(localdkg);
-    boolean bool = k.aOd(str);
+    localSnsObject.ObjectDesc = z.aN(((String)localObject1).getBytes());
+    ((ekq)localObject2).Ulb = localSnsObject;
+    a.b(localdtv);
+    boolean bool = m.aYV(str);
     localObject1 = new ADXml(str);
     Log.i("MicroMsg.SimpleExperimentLsn", "isUsePreferedInfo=" + bool + ", adXml.usePreferedInfo" + ((ADXml)localObject1).usePreferedInfo);
     try
     {
-      if ((parama.ContentObj.LoV != null) && (parama.ContentObj.LoV.size() > 0)) {
-        ((cnb)parama.ContentObj.LoV.get(0)).isAd = true;
+      if ((parama.ContentObj.Sqr != null) && (parama.ContentObj.Sqr.size() > 0)) {
+        ((cvt)parama.ContentObj.Sqr.get(0)).isAd = true;
       }
-      e.a(parama, (ADXml)localObject1, 2);
+      f.a(parama, (ADXml)localObject1, 2);
       AppMethodBeat.o(95187);
       return;
     }
@@ -115,7 +115,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.lucky.a.l
  * JD-Core Version:    0.7.0.1
  */

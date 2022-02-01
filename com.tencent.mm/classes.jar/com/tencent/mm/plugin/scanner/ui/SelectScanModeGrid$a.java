@@ -7,30 +7,32 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.scanner.l.f;
+import com.tencent.mm.plugin.scanner.l.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.List;
 
 public final class SelectScanModeGrid$a
   extends BaseAdapter
 {
-  int COe;
+  int ITG;
   private Context context;
-  private List<SelectScanModeGrid.b> jzm;
+  private List<SelectScanModeGrid.b> moS;
   
   public SelectScanModeGrid$a(Context paramContext, List<SelectScanModeGrid.b> paramList)
   {
     AppMethodBeat.i(51981);
-    this.COe = -1;
+    this.ITG = -1;
     this.context = paramContext;
-    this.jzm = paramList;
-    Log.d("MicroMsg.scanner.SelectScanModeGroupAdapter", "<init> list size = " + this.jzm.size());
+    this.moS = paramList;
+    Log.d("MicroMsg.scanner.SelectScanModeGroupAdapter", "<init> list size = " + this.moS.size());
     AppMethodBeat.o(51981);
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(51982);
-    int i = this.jzm.size();
+    int i = this.moS.size();
     AppMethodBeat.o(51982);
     return i;
   }
@@ -38,13 +40,13 @@ public final class SelectScanModeGrid$a
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(51983);
-    if ((paramInt < 0) || (paramInt >= this.jzm.size()))
+    if ((paramInt < 0) || (paramInt >= this.moS.size()))
     {
       Log.e("MicroMsg.scanner.SelectScanModeGroupAdapter", "getItem fail, invalid position = ".concat(String.valueOf(paramInt)));
       AppMethodBeat.o(51983);
       return null;
     }
-    Object localObject = this.jzm.get(paramInt);
+    Object localObject = this.moS.get(paramInt);
     AppMethodBeat.o(51983);
     return localObject;
   }
@@ -60,11 +62,11 @@ public final class SelectScanModeGrid$a
     a locala;
     if (paramView == null)
     {
-      paramView = View.inflate(this.context, 2131496218, null);
+      paramView = View.inflate(this.context, l.g.IEz, null);
       locala = new a();
-      locala.COf = ((TextView)paramView.findViewById(2131307555));
-      locala.BaI = ((TextView)paramView.findViewById(2131307560));
-      locala.xXF = ((ImageView)paramView.findViewById(2131307559));
+      locala.ITH = ((TextView)paramView.findViewById(l.f.IDE));
+      locala.zlv = ((TextView)paramView.findViewById(l.f.IDJ));
+      locala.Dck = ((ImageView)paramView.findViewById(l.f.IDI));
       paramView.setTag(locala);
     }
     while (paramInt == paramViewGroup.getChildCount())
@@ -79,40 +81,40 @@ public final class SelectScanModeGrid$a
       }
       else
       {
-        locala.BaI.setText(paramViewGroup.title);
-        if (paramInt != this.COe) {
-          break label188;
+        locala.zlv.setText(paramViewGroup.title);
+        if (paramInt != this.ITG) {
+          break label192;
         }
-        locala.COf.setBackgroundResource(paramViewGroup.COh);
-        paramViewGroup.COj = locala.COf;
-        if (!paramViewGroup.COk) {
-          break label203;
+        locala.ITH.setBackgroundResource(paramViewGroup.ITJ);
+        paramViewGroup.ITL = locala.ITH;
+        if (!paramViewGroup.ITM) {
+          break label207;
         }
-        locala.xXF.setVisibility(0);
+        locala.Dck.setVisibility(0);
       }
     }
     for (;;)
     {
       AppMethodBeat.o(51984);
       return paramView;
-      label188:
-      locala.COf.setBackgroundResource(paramViewGroup.COg);
+      label192:
+      locala.ITH.setBackgroundResource(paramViewGroup.ITI);
       break;
-      label203:
-      locala.xXF.setVisibility(4);
+      label207:
+      locala.Dck.setVisibility(4);
     }
   }
   
   static final class a
   {
-    public TextView BaI;
-    public TextView COf;
-    public ImageView xXF;
+    public ImageView Dck;
+    public TextView ITH;
+    public TextView zlv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.SelectScanModeGrid.a
  * JD-Core Version:    0.7.0.1
  */

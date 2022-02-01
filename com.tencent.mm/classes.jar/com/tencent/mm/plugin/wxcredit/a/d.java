@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public final class d
   extends m
 {
-  public k JPI;
+  public k QNZ;
   
   public d(String paramString1, String paramString2)
   {
@@ -48,23 +48,23 @@ public final class d
       String str;
       try
       {
-        this.JPI = new k();
-        this.JPI.JPM = paramJSONObject.optInt("credit_state");
-        this.JPI.JPH = (paramJSONObject.optInt("credit_amount") / 100.0D);
-        this.JPI.JPN = (paramJSONObject.optInt("credit_usable") / 100.0D);
-        this.JPI.JPO = (paramJSONObject.optInt("bill_amount") / 100.0D);
-        this.JPI.JPP = paramJSONObject.optInt("bill_date");
-        this.JPI.JPQ = (paramJSONObject.optInt("repay_amount") / 100.0D);
-        this.JPI.JPR = (paramJSONObject.optInt("repay_minimum") / 100.0D);
-        paramString = this.JPI;
+        this.QNZ = new k();
+        this.QNZ.QOd = paramJSONObject.optInt("credit_state");
+        this.QNZ.QNY = (paramJSONObject.optInt("credit_amount") / 100.0D);
+        this.QNZ.QOe = (paramJSONObject.optInt("credit_usable") / 100.0D);
+        this.QNZ.QOf = (paramJSONObject.optInt("bill_amount") / 100.0D);
+        this.QNZ.QOg = paramJSONObject.optInt("bill_date");
+        this.QNZ.QOh = (paramJSONObject.optInt("repay_amount") / 100.0D);
+        this.QNZ.QOi = (paramJSONObject.optInt("repay_minimum") / 100.0D);
+        paramString = this.QNZ;
         if (paramJSONObject.optInt("upgrade_amount") != 1) {
           break label525;
         }
-        paramString.JPS = bool;
-        this.JPI.JPT = paramJSONObject.optInt("bill_month");
-        this.JPI.JPU = paramJSONObject.optString("repay_url");
-        this.JPI.JPV = paramJSONObject.optString("repay_lasttime");
-        this.JPI.JPY = paramJSONObject.optString("lasttime");
+        paramString.QOj = bool;
+        this.QNZ.QOk = paramJSONObject.optInt("bill_month");
+        this.QNZ.QOl = paramJSONObject.optString("repay_url");
+        this.QNZ.QOm = paramJSONObject.optString("repay_lasttime");
+        this.QNZ.QOp = paramJSONObject.optString("lasttime");
         paramString = paramJSONObject.getJSONArray("jump_url_array");
         if ((paramString == null) || (paramString.length() <= 0)) {
           break label423;
@@ -77,9 +77,9 @@ public final class d
         localJSONObject = paramString.getJSONObject(paramInt);
         str = localJSONObject.getString("jump_name");
         if ("account_rights_url".equals(str)) {
-          this.JPI.JPX = localJSONObject.getString("jump_url");
+          this.QNZ.QOo = localJSONObject.getString("jump_url");
         } else if ("bill_url".equals(str)) {
-          this.JPI.Cpy = localJSONObject.getString("jump_url");
+          this.QNZ.ImN = localJSONObject.getString("jump_url");
         }
       }
       catch (Exception paramString)
@@ -90,21 +90,21 @@ public final class d
       }
       if ("card_detail_url".equals(str))
       {
-        this.JPI.JPW = localJSONObject.getString("jump_url");
+        this.QNZ.QOn = localJSONObject.getString("jump_url");
       }
       else if ("know_more_url".equals(str))
       {
-        this.JPI.JPZ = localJSONObject.getString("jump_url");
+        this.QNZ.QOq = localJSONObject.getString("jump_url");
         break label518;
         label423:
         paramString = paramJSONObject.getJSONObject("appservice");
         if (paramString != null)
         {
-          this.JPI.JQa = new j();
-          this.JPI.JQa.JPL = paramString.getString("app_telephone");
-          this.JPI.JQa.nickname = paramString.getString("nickname");
-          this.JPI.JQa.username = paramString.getString("username");
-          this.JPI.JQa.url = paramString.getString("jump_url");
+          this.QNZ.QOr = new j();
+          this.QNZ.QOr.QOc = paramString.getString("app_telephone");
+          this.QNZ.QOr.nickname = paramString.getString("nickname");
+          this.QNZ.QOr.username = paramString.getString("username");
+          this.QNZ.QOr.url = paramString.getString("jump_url");
         }
         AppMethodBeat.o(72304);
         return;

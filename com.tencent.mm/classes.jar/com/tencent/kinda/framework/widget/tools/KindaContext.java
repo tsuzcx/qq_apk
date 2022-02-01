@@ -48,7 +48,7 @@ public class KindaContext
               str1 = localComponentName.getClassName();
             }
             Log.w("KindaContext", "created activity: %s not in the top, top is %s, fullClassName: %s", new Object[] { paramAnonymousBundle, str2, str1 });
-            h.CyF.n(1589L, 2L, 1L);
+            h.IzE.p(1589L, 2L, 1L);
           }
           KindaContext.sContextStack.push(new WeakReference(paramAnonymousActivity));
           Log.i("KindaContext", "sContextStack.push：".concat(String.valueOf(paramAnonymousActivity)));
@@ -336,7 +336,7 @@ public class KindaContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.tools.KindaContext
  * JD-Core Version:    0.7.0.1
  */

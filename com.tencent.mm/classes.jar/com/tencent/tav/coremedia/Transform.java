@@ -22,34 +22,34 @@ public class Transform
   
   public static Transform instanceFromScale(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(199472);
+    AppMethodBeat.i(203151);
     Transform localTransform = new Transform(paramFloat1, paramFloat2, 0.0F, 0.0F, 0.0F);
-    AppMethodBeat.o(199472);
+    AppMethodBeat.o(203151);
     return localTransform;
   }
   
   public static Transform instanceFromTranslate(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(199473);
+    AppMethodBeat.i(203152);
     Transform localTransform = new Transform(1.0F, 1.0F, paramFloat1, paramFloat2, 0.0F);
-    AppMethodBeat.o(199473);
+    AppMethodBeat.o(203152);
     return localTransform;
   }
   
   public Matrix toMatrix()
   {
-    AppMethodBeat.i(199474);
+    AppMethodBeat.i(203155);
     Matrix localMatrix = new Matrix();
     localMatrix.postRotate(this.degrees);
     localMatrix.postScale(this.scaleX, this.scaleY);
     localMatrix.postTranslate(this.translateX, this.translateY);
-    AppMethodBeat.o(199474);
+    AppMethodBeat.o(203155);
     return localMatrix;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.coremedia.Transform
  * JD-Core Version:    0.7.0.1
  */

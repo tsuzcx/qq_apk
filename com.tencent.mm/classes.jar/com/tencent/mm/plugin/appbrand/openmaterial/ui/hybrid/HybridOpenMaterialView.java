@@ -8,14 +8,13 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.util.Size;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.view.ViewTreeObserver;
@@ -26,56 +25,59 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.appbrand.au.c;
+import com.tencent.mm.plugin.appbrand.au.d;
+import com.tencent.mm.plugin.appbrand.au.f;
+import com.tencent.mm.plugin.appbrand.au.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.at;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.mm.ui.widget.MMWebView.e;
-import com.tencent.mm.vending.e.a;
+import com.tencent.mm.ui.widget.MMWebView.f;
 import java.util.LinkedList;
 
 public class HybridOpenMaterialView
   extends RelativeLayout
-  implements a
+  implements com.tencent.mm.vending.e.a
 {
-  private static final int nmo;
-  private static final int nmp;
+  private static final int qnW;
+  private static final int qnX;
   private final VelocityTracker mVelocityTracker;
-  private float nmA;
-  private float nmB;
-  private float nmC;
-  private float nmD;
-  private float nmE;
-  private final LinkedList<Integer> nmF;
-  private int nmG;
-  private float nmH;
-  private boolean nmI;
-  private float nmJ;
-  private boolean nmK;
-  private boolean nmL;
-  private boolean nmM;
-  private boolean nmN;
-  private LinearLayout nmq;
-  private LinearLayout nmr;
-  private FrameLayout nms;
-  private MMWebView nmt;
-  private final boolean nmu;
-  private a nmv;
-  private boolean nmw;
-  private int nmx;
-  private int nmy;
-  private int nmz;
+  private LinearLayout qnY;
+  private LinearLayout qnZ;
+  private FrameLayout qoa;
+  private MMWebView qob;
+  private final boolean qoc;
+  private a qod;
+  private boolean qoe;
+  private int qof;
+  private int qog;
+  private int qoh;
+  private float qoi;
+  private float qoj;
+  private float qok;
+  private float qol;
+  private float qom;
+  private final LinkedList<Integer> qon;
+  private int qoo;
+  private float qop;
+  private boolean qoq;
+  private float qor;
+  private boolean qos;
+  private boolean qot;
+  private boolean qou;
+  private boolean qov;
   
   static
   {
-    AppMethodBeat.i(227258);
-    nmo = at.aH(MMApplicationContext.getContext(), 2131165312);
-    nmp = at.aH(MMApplicationContext.getContext(), 2131165299);
-    AppMethodBeat.o(227258);
+    AppMethodBeat.i(272753);
+    qnW = aw.aZ(MMApplicationContext.getContext(), au.d.Edge_8A);
+    qnX = aw.aZ(MMApplicationContext.getContext(), au.d.Edge_3A);
+    AppMethodBeat.o(272753);
   }
   
   public HybridOpenMaterialView(Context paramContext)
@@ -91,83 +93,109 @@ public class HybridOpenMaterialView
   public HybridOpenMaterialView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(227243);
+    AppMethodBeat.i(272727);
     this.mVelocityTracker = VelocityTracker.obtain();
-    this.nmv = null;
-    this.nmw = true;
-    this.nmx = 0;
-    this.nmy = 0;
-    this.nmz = 0;
-    this.nmA = 0.0F;
-    this.nmB = 0.0F;
-    this.nmC = 0.0F;
-    this.nmD = 0.0F;
-    this.nmE = 0.0F;
-    this.nmF = new LinkedList();
-    this.nmG = -1;
-    this.nmH = 0.0F;
-    this.nmI = false;
-    this.nmJ = 0.0F;
-    this.nmK = true;
-    this.nmL = false;
-    this.nmM = false;
-    this.nmN = false;
-    LayoutInflater.from(paramContext).inflate(2131495889, this, true);
-    paramContext = findViewById(2131305626);
-    this.nmq = ((LinearLayout)findViewById(2131305624));
-    this.nmr = ((LinearLayout)findViewById(2131305627));
-    this.nms = ((FrameLayout)findViewById(2131305625));
+    this.qod = null;
+    this.qoe = true;
+    this.qof = 0;
+    this.qog = 0;
+    this.qoh = 0;
+    this.qoi = 0.0F;
+    this.qoj = 0.0F;
+    this.qok = 0.0F;
+    this.qol = 0.0F;
+    this.qom = 0.0F;
+    this.qon = new LinkedList();
+    this.qoo = -1;
+    this.qop = 0.0F;
+    this.qoq = false;
+    this.qor = 0.0F;
+    this.qos = true;
+    this.qot = false;
+    this.qou = false;
+    this.qov = false;
+    LayoutInflater.from(paramContext).inflate(au.g.open_material_hybrid_view, this, true);
+    paramContext = findViewById(au.f.open_material_outside_area);
+    this.qnY = ((LinearLayout)findViewById(au.f.open_material_content_area));
+    this.qnZ = ((LinearLayout)findViewById(au.f.open_material_title_area));
+    this.qoa = ((FrameLayout)findViewById(au.f.open_material_content_container));
     setFitsSystemWindows(true);
-    this.nmu = isLandscape();
-    paramContext.setOnClickListener(new HybridOpenMaterialView.1(this));
-    this.nmr.setOnClickListener(new HybridOpenMaterialView.4(this));
+    this.qoc = isLandscape();
+    paramContext.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(261393);
+        b localb = new b();
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/openmaterial/ui/hybrid/HybridOpenMaterialView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "init, touch outside");
+        if (HybridOpenMaterialView.a(HybridOpenMaterialView.this)) {
+          HybridOpenMaterialView.this.hide();
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/openmaterial/ui/hybrid/HybridOpenMaterialView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(261393);
+      }
+    });
+    this.qnZ.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(271668);
+        b localb = new b();
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/openmaterial/ui/hybrid/HybridOpenMaterialView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/openmaterial/ui/hybrid/HybridOpenMaterialView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(271668);
+      }
+    });
     getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
       {
-        AppMethodBeat.i(227230);
+        AppMethodBeat.i(277333);
         HybridOpenMaterialView.this.getViewTreeObserver().removeOnGlobalLayoutListener(this);
         HybridOpenMaterialView.b(HybridOpenMaterialView.this);
-        AppMethodBeat.o(227230);
+        AppMethodBeat.o(277333);
       }
     });
-    AppMethodBeat.o(227243);
+    AppMethodBeat.o(272727);
   }
   
-  private void bQn()
+  private void cdd()
   {
-    AppMethodBeat.i(227252);
-    MMWebView localMMWebView = this.nmt;
+    AppMethodBeat.i(272743);
+    MMWebView localMMWebView = this.qob;
     if (localMMWebView == null)
     {
       Log.w("MicroMsg.AppBrand.HybridOpenMaterialView", "dispatchContentVisibleHeightChange, contentArea is null");
-      AppMethodBeat.o(227252);
+      AppMethodBeat.o(272743);
       return;
     }
-    int i = Math.max(0, (int)(localMMWebView.getHeight() - this.nmq.getTranslationY()));
-    Log.i("MicroMsg.AppBrand.HybridOpenMaterialView", "dispatchContentVisibleHeightChange, visibleHeight: ".concat(String.valueOf(i)));
-    if (this.nmv != null) {
-      this.nmv.yH(i);
+    int i = Math.max(0, (int)(localMMWebView.getHeight() - this.qnY.getTranslationY()));
+    Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "dispatchContentVisibleHeightChange, visibleHeight: ".concat(String.valueOf(i)));
+    if (this.qod != null) {
+      this.qod.Cm(i);
     }
-    AppMethodBeat.o(227252);
+    AppMethodBeat.o(272743);
   }
   
-  private void bQo()
+  private void cde()
   {
-    AppMethodBeat.i(227253);
+    AppMethodBeat.i(272745);
     Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "switch2FullScreen");
-    d(this.nmq.getTranslationY(), this.nmy, true);
-    AppMethodBeat.o(227253);
+    d(this.qnY.getTranslationY(), this.qog, true);
+    AppMethodBeat.o(272745);
   }
   
   private void d(float paramFloat1, float paramFloat2, final boolean paramBoolean)
   {
-    AppMethodBeat.i(227254);
+    AppMethodBeat.i(272746);
     if (paramFloat2 == paramFloat1)
     {
-      this.nmL = paramBoolean;
-      this.nmJ = paramFloat2;
-      AppMethodBeat.o(227254);
+      this.qot = paramBoolean;
+      this.qor = paramFloat2;
+      AppMethodBeat.o(272746);
       return;
     }
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2 });
@@ -177,57 +205,57 @@ public class HybridOpenMaterialView
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
-        AppMethodBeat.i(227225);
+        AppMethodBeat.i(275757);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
         HybridOpenMaterialView.e(HybridOpenMaterialView.this).setTranslationY(f);
         HybridOpenMaterialView.f(HybridOpenMaterialView.this);
-        AppMethodBeat.o(227225);
+        AppMethodBeat.o(275757);
       }
     });
     localValueAnimator.addListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(227228);
+        AppMethodBeat.i(280501);
         HybridOpenMaterialView.b(HybridOpenMaterialView.this, false);
-        AppMethodBeat.o(227228);
+        AppMethodBeat.o(280501);
       }
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(227227);
+        AppMethodBeat.i(280500);
         HybridOpenMaterialView.b(HybridOpenMaterialView.this, false);
         HybridOpenMaterialView.c(HybridOpenMaterialView.this, paramBoolean);
         HybridOpenMaterialView.a(HybridOpenMaterialView.this, HybridOpenMaterialView.e(HybridOpenMaterialView.this).getTranslationY());
         Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "animateSwitch, curWholeContentAreaTranslationY: " + HybridOpenMaterialView.g(HybridOpenMaterialView.this));
-        AppMethodBeat.o(227227);
+        AppMethodBeat.o(280500);
       }
       
       public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
       
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(227226);
+        AppMethodBeat.i(280499);
         HybridOpenMaterialView.b(HybridOpenMaterialView.this, true);
-        AppMethodBeat.o(227226);
+        AppMethodBeat.o(280499);
       }
     });
     localValueAnimator.start();
-    AppMethodBeat.o(227254);
+    AppMethodBeat.o(272746);
   }
   
   private int getFullScreenTopRemainPx()
   {
-    if (this.nmu) {
-      return nmp;
+    if (this.qoc) {
+      return qnX;
     }
-    return nmo;
+    return qnW;
   }
   
   private boolean isLandscape()
   {
     boolean bool = false;
-    AppMethodBeat.i(227255);
+    AppMethodBeat.i(272747);
     try
     {
       int i = getContext().getResources().getConfiguration().orientation;
@@ -243,108 +271,108 @@ public class HybridOpenMaterialView
       }
     }
     Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "isLandscape: ".concat(String.valueOf(bool)));
-    AppMethodBeat.o(227255);
+    AppMethodBeat.o(272747);
     return bool;
   }
   
-  public final ViewGroup.LayoutParams bQm()
+  public final ViewGroup.LayoutParams cdc()
   {
-    AppMethodBeat.i(227244);
-    if (this.nmu)
+    AppMethodBeat.i(272729);
+    if (this.qoc)
     {
       localObject = new Rect();
       getWindowVisibleDisplayFrame((Rect)localObject);
       Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "generateMyLayoutParams, windowVisibleRect: ".concat(String.valueOf(localObject)));
       localObject = new ViewGroup.LayoutParams((int)(((Rect)localObject).right * 1.0F / 2.0F), -1);
-      AppMethodBeat.o(227244);
+      AppMethodBeat.o(272729);
       return localObject;
     }
     Object localObject = new ViewGroup.LayoutParams(-1, -1);
-    AppMethodBeat.o(227244);
+    AppMethodBeat.o(272729);
     return localObject;
   }
   
   public void dead()
   {
-    AppMethodBeat.i(227249);
+    AppMethodBeat.i(272736);
     Log.i("MicroMsg.AppBrand.HybridOpenMaterialView", "dead");
-    if (this.nmt != null) {
-      this.nmt.destroy();
+    if (this.qob != null) {
+      this.qob.destroy();
     }
-    AppMethodBeat.o(227249);
+    AppMethodBeat.o(272736);
   }
   
   public final void hide()
   {
-    AppMethodBeat.i(227248);
-    Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "hide, from: %f, to: %d", new Object[] { Float.valueOf(this.nmq.getTranslationY()), Integer.valueOf(this.nmx) });
-    this.nmM = false;
-    ViewPropertyAnimator localViewPropertyAnimator = this.nmq.animate().translationY(this.nmx);
-    if (this.nmL) {}
+    AppMethodBeat.i(272733);
+    Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "hide, from: %f, to: %d", new Object[] { Float.valueOf(this.qnY.getTranslationY()), Integer.valueOf(this.qof) });
+    this.qou = false;
+    ViewPropertyAnimator localViewPropertyAnimator = this.qnY.animate().translationY(this.qof);
+    if (this.qot) {}
     for (long l = 500L;; l = 300L)
     {
       localViewPropertyAnimator.setDuration(l).setInterpolator(new AccelerateInterpolator()).setUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
-          AppMethodBeat.i(227240);
+          AppMethodBeat.i(275378);
           HybridOpenMaterialView.a(HybridOpenMaterialView.this, HybridOpenMaterialView.e(HybridOpenMaterialView.this).getTranslationY());
           Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "hide, curWholeContentAreaTranslationY: %f", new Object[] { Float.valueOf(HybridOpenMaterialView.g(HybridOpenMaterialView.this)) });
           HybridOpenMaterialView.f(HybridOpenMaterialView.this);
-          AppMethodBeat.o(227240);
+          AppMethodBeat.o(275378);
         }
       }).setListener(new Animator.AnimatorListener()
       {
         public final void onAnimationCancel(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(227239);
+          AppMethodBeat.i(281519);
           HybridOpenMaterialView.b(HybridOpenMaterialView.this, false);
-          AppMethodBeat.o(227239);
+          AppMethodBeat.o(281519);
         }
         
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(227238);
+          AppMethodBeat.i(281518);
           HybridOpenMaterialView.b(HybridOpenMaterialView.this, false);
           HybridOpenMaterialView.c(HybridOpenMaterialView.this, false);
           Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "hide, onAnimationEnd");
-          h.RTc.aV(new Runnable()
+          h.ZvG.bc(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(227236);
+              AppMethodBeat.i(276882);
               if (HybridOpenMaterialView.c(HybridOpenMaterialView.this) != null) {
-                HybridOpenMaterialView.c(HybridOpenMaterialView.this).bQd();
+                HybridOpenMaterialView.c(HybridOpenMaterialView.this).ccP();
               }
-              AppMethodBeat.o(227236);
+              AppMethodBeat.o(276882);
             }
           });
-          AppMethodBeat.o(227238);
+          AppMethodBeat.o(281518);
         }
         
         public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
         
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(227237);
+          AppMethodBeat.i(281517);
           HybridOpenMaterialView.b(HybridOpenMaterialView.this, true);
-          AppMethodBeat.o(227237);
+          AppMethodBeat.o(281517);
         }
       }).start();
-      AppMethodBeat.o(227248);
+      AppMethodBeat.o(272733);
       return;
     }
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(227250);
+    AppMethodBeat.i(272738);
     Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onInterceptTouchEvent, ev: " + paramMotionEvent.getAction());
     boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
     if (bool)
     {
       Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onInterceptTouchEvent, super intercept");
-      AppMethodBeat.o(227250);
+      AppMethodBeat.o(272738);
       return true;
     }
     this.mVelocityTracker.addMovement(paramMotionEvent);
@@ -356,15 +384,15 @@ public class HybridOpenMaterialView
       for (;;)
       {
         Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onInterceptTouchEvent, intercept: ".concat(String.valueOf(bool)));
-        AppMethodBeat.o(227250);
+        AppMethodBeat.o(272738);
         return bool;
-        this.nmF.addFirst(Integer.valueOf(0));
-        this.nmA = paramMotionEvent.getX();
-        this.nmB = paramMotionEvent.getY();
-        Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onInterceptTouchEvent, down, x: %f, y: %f, curTranslationY: %f", new Object[] { Float.valueOf(this.nmA), Float.valueOf(this.nmB), Float.valueOf(this.nmJ) });
+        this.qon.addFirst(Integer.valueOf(0));
+        this.qoi = paramMotionEvent.getX();
+        this.qoj = paramMotionEvent.getY();
+        Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onInterceptTouchEvent, down, x: %f, y: %f, curTranslationY: %f", new Object[] { Float.valueOf(this.qoi), Float.valueOf(this.qoj), Float.valueOf(this.qor) });
         continue;
         int i = 0;
-        if (this.nmF.isEmpty()) {
+        if (this.qon.isEmpty()) {
           Log.w("MicroMsg.AppBrand.HybridOpenMaterialView", "onInterceptTouchEvent, move, empty activePointerIds");
         }
         int j;
@@ -378,35 +406,35 @@ public class HybridOpenMaterialView
             j = 0;
           }
           Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onInterceptTouchEvent, move, activePointerId: %d, pointerIndex: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-          if (paramMotionEvent.getY(j) >= this.nmq.getTranslationY()) {
-            break label319;
+          if (paramMotionEvent.getY(j) >= this.qnY.getTranslationY()) {
+            break label329;
           }
           Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onInterceptTouchEvent, move, outside");
           bool = false;
           break;
-          i = ((Integer)this.nmF.getFirst()).intValue();
+          i = ((Integer)this.qon.getFirst()).intValue();
         }
-        label319:
-        float f1 = Math.abs(paramMotionEvent.getX(j) - this.nmA);
-        float f2 = paramMotionEvent.getY(j) - this.nmB;
+        label329:
+        float f1 = Math.abs(paramMotionEvent.getX(j) - this.qoi);
+        float f2 = paramMotionEvent.getY(j) - this.qoj;
         float f3 = Math.abs(f2);
         this.mVelocityTracker.computeCurrentVelocity(1000);
         float f4 = Math.abs(this.mVelocityTracker.getXVelocity());
         float f5 = Math.abs(this.mVelocityTracker.getYVelocity());
         Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onInterceptTouchEvent, move, disXFromDown: %f, rawDisYFromDown: %f, xVelocity: %f, yVelocity: %f", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(f4), Float.valueOf(f5) });
         if ((f3 < 5.0F) || (f3 <= f1) || (f5 <= 0.0F) || (f5 <= f4)) {
-          break label585;
+          break label597;
         }
-        Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onInterceptTouchEvent, move, vertical, isShown: %b, isFullScreenShown: %b, isWebViewScroll2Top: %b", new Object[] { Boolean.valueOf(this.nmM), Boolean.valueOf(this.nmL), Boolean.valueOf(this.nmK) });
-        if (!this.nmM) {
-          break label585;
+        Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onInterceptTouchEvent, move, vertical, isShown: %b, isFullScreenShown: %b, isWebViewScroll2Top: %b", new Object[] { Boolean.valueOf(this.qou), Boolean.valueOf(this.qot), Boolean.valueOf(this.qos) });
+        if (!this.qou) {
+          break label597;
         }
-        if (this.nmL)
+        if (this.qot)
         {
           if (0.0F > f2) {
             bool = false;
           } else {
-            bool = this.nmK;
+            bool = this.qos;
           }
         }
         else
@@ -417,17 +445,17 @@ public class HybridOpenMaterialView
           bool = true;
         }
       }
-      bool = this.nmK;
+      bool = this.qos;
     }
-    label585:
+    label597:
     for (;;)
     {
       break;
       bool = false;
-      this.nmF.clear();
-      this.nmG = -1;
-      this.nmH = 0.0F;
-      this.nmI = false;
+      this.qon.clear();
+      this.qoo = -1;
+      this.qop = 0.0F;
+      this.qoq = false;
       break;
     }
   }
@@ -437,7 +465,7 @@ public class HybridOpenMaterialView
   {
     int j = 1;
     int i = 1;
-    AppMethodBeat.i(227251);
+    AppMethodBeat.i(272741);
     Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onTouchEvent, event: " + paramMotionEvent.getAction());
     switch (paramMotionEvent.getActionMasked())
     {
@@ -451,25 +479,25 @@ public class HybridOpenMaterialView
       for (;;)
       {
         boolean bool = super.onTouchEvent(paramMotionEvent);
-        AppMethodBeat.o(227251);
+        AppMethodBeat.o(272741);
         return bool;
-        this.nmF.addFirst(Integer.valueOf(0));
-        this.nmC = paramMotionEvent.getX();
-        this.nmD = paramMotionEvent.getY();
-        Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onTouchEvent, down, x: %f, y: %f", new Object[] { Float.valueOf(this.nmC), Float.valueOf(this.nmD) });
-        AppMethodBeat.o(227251);
+        this.qon.addFirst(Integer.valueOf(0));
+        this.qok = paramMotionEvent.getX();
+        this.qol = paramMotionEvent.getY();
+        Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onTouchEvent, down, x: %f, y: %f", new Object[] { Float.valueOf(this.qok), Float.valueOf(this.qol) });
+        AppMethodBeat.o(272741);
         return true;
         i = paramMotionEvent.getActionIndex();
         j = paramMotionEvent.getPointerId(i);
-        this.nmF.addFirst(Integer.valueOf(j));
-        this.nmC = paramMotionEvent.getX(i);
-        this.nmD = paramMotionEvent.getY(i);
-        Log.i("MicroMsg.AppBrand.HybridOpenMaterialView", "onTouchEvent, pointer down, pointerId: %d, x: %f, y: %f", new Object[] { Integer.valueOf(j), Float.valueOf(this.nmC), Float.valueOf(this.nmD) });
+        this.qon.addFirst(Integer.valueOf(j));
+        this.qok = paramMotionEvent.getX(i);
+        this.qol = paramMotionEvent.getY(i);
+        Log.i("MicroMsg.AppBrand.HybridOpenMaterialView", "onTouchEvent, pointer down, pointerId: %d, x: %f, y: %f", new Object[] { Integer.valueOf(j), Float.valueOf(this.qok), Float.valueOf(this.qol) });
         continue;
-        if (this.nmF.isEmpty()) {
+        if (this.qon.isEmpty()) {
           Log.w("MicroMsg.AppBrand.HybridOpenMaterialView", "onTouchEvent, move, active pointerId not exist");
         }
-        for (i = 0;; i = ((Integer)this.nmF.getFirst()).intValue())
+        for (i = 0;; i = ((Integer)this.qon.getFirst()).intValue())
         {
           int k = paramMotionEvent.findPointerIndex(i);
           j = k;
@@ -479,282 +507,266 @@ public class HybridOpenMaterialView
             j = 0;
           }
           Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onTouchEvent, move, activePointerId: %d, pointerIndex: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-          if ((0.0F != this.nmC) || (0.0F != this.nmD)) {
-            break label403;
+          if ((0.0F != this.qok) || (0.0F != this.qol)) {
+            break label408;
           }
-          this.nmF.addFirst(Integer.valueOf(0));
-          this.nmC = paramMotionEvent.getX(j);
-          this.nmD = paramMotionEvent.getY(j);
+          this.qon.addFirst(Integer.valueOf(0));
+          this.qok = paramMotionEvent.getX(j);
+          this.qol = paramMotionEvent.getY(j);
           break;
         }
-        label403:
-        if ((-1 != this.nmG) && (this.nmG != i))
+        label408:
+        if ((-1 != this.qoo) && (this.qoo != i))
         {
-          this.nmH = this.nmE;
-          Log.i("MicroMsg.AppBrand.HybridOpenMaterialView", "onTouchEvent, move, active pointerId changed, disMoveFromDownExceptCurPointerId: " + this.nmH);
+          this.qop = this.qom;
+          Log.i("MicroMsg.AppBrand.HybridOpenMaterialView", "onTouchEvent, move, active pointerId changed, disMoveFromDownExceptCurPointerId: " + this.qop);
         }
-        float f2 = paramMotionEvent.getX(j) - this.nmC;
-        float f1 = paramMotionEvent.getY(j) - this.nmD + this.nmH;
+        float f2 = paramMotionEvent.getX(j) - this.qok;
+        float f1 = paramMotionEvent.getY(j) - this.qol + this.qop;
         Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onTouchEvent, move, rawDisXFromDown: %f, rawDisYFromDown: %f", new Object[] { Float.valueOf(f2), Float.valueOf(f1) });
         if (Math.abs(f1) > Math.abs(f2))
         {
-          if ((!this.nmI) || (0.0F <= f1)) {
-            break label595;
+          if ((!this.qoq) || (0.0F <= f1)) {
+            break label604;
           }
           Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onTouchEvent, move, dispatchTouchEvent2Child");
-          h.RTc.aV(new Runnable()
+          h.ZvG.bc(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(227241);
+              AppMethodBeat.i(281405);
               MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
               localMotionEvent.setAction(1);
               HybridOpenMaterialView.this.dispatchTouchEvent(localMotionEvent);
               localMotionEvent = MotionEvent.obtain(paramMotionEvent);
               localMotionEvent.setAction(0);
               HybridOpenMaterialView.this.dispatchTouchEvent(localMotionEvent);
-              AppMethodBeat.o(227241);
+              AppMethodBeat.o(281405);
             }
           });
         }
-        label595:
-        label766:
+        label780:
         for (;;)
         {
-          this.nmE = f1;
-          this.nmG = i;
-          Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onTouchEvent, move, lastActivePointerId: %d", new Object[] { Integer.valueOf(this.nmG) });
+          this.qom = f1;
+          this.qoo = i;
+          Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onTouchEvent, move, lastActivePointerId: %d", new Object[] { Integer.valueOf(this.qoo) });
           break;
-          if ((this.nmw) || (0.0F >= f1))
+          label604:
+          if ((this.qoe) || (0.0F >= f1))
           {
             Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "handleScroll");
-            if (this.nmN) {
+            if (this.qov) {
               Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "handleScroll, isAnimating");
             }
             for (;;)
             {
-              if (this.nmy < this.nmq.getTranslationY()) {
-                break label766;
+              if (this.qog < this.qnY.getTranslationY()) {
+                break label780;
               }
-              this.nmI = true;
+              this.qoq = true;
               Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onTouchEvent, move, scroll to top, mayDispatchTouchEvent2Child");
               break;
-              this.nmE = (0.68F * f1);
-              Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "handleScroll, disMoveFromDown: %f, curWholeContentAreaTranslationY: %f", new Object[] { Float.valueOf(this.nmE), Float.valueOf(this.nmJ) });
-              f2 = this.nmJ;
-              float f3 = this.nmE;
-              f2 = Math.max(this.nmy, f2 + f3);
-              f2 = Math.min(this.nmx, f2);
+              this.qom = (0.68F * f1);
+              Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "handleScroll, disMoveFromDown: %f, curWholeContentAreaTranslationY: %f", new Object[] { Float.valueOf(this.qom), Float.valueOf(this.qor) });
+              f2 = this.qor;
+              float f3 = this.qom;
+              f2 = Math.max(this.qog, f2 + f3);
+              f2 = Math.min(this.qof, f2);
               Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "handleScroll, newTranslationY: ".concat(String.valueOf(f2)));
-              this.nmq.setTranslationY(f2);
-              bQn();
+              this.qnY.setTranslationY(f2);
+              cdd();
             }
           }
         }
         i = paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex());
-        this.nmF.remove(Integer.valueOf(i));
+        this.qon.remove(Integer.valueOf(i));
         Log.i("MicroMsg.AppBrand.HybridOpenMaterialView", "onTouchEvent, pointer up, pointerId: %d", new Object[] { Integer.valueOf(i) });
       }
     }
-    Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "handleTouchUp, isFullScreenShown: " + this.nmL);
-    if (this.nmN) {
+    Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "handleTouchUp, isFullScreenShown: " + this.qot);
+    if (this.qov) {
       Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "handleTouchUp, isAnimating");
     }
     for (;;)
     {
-      this.nmC = 0.0F;
-      this.nmD = 0.0F;
-      this.nmF.clear();
-      this.nmG = -1;
-      this.nmH = 0.0F;
-      this.nmI = false;
+      this.qok = 0.0F;
+      this.qol = 0.0F;
+      this.qon.clear();
+      this.qoo = -1;
+      this.qop = 0.0F;
+      this.qoq = false;
       break;
-      if (this.nmL)
+      if (this.qot)
       {
-        if ((0.0F < this.nmE) && (0.15F * this.nmx <= Math.abs(this.nmE))) {}
+        if ((0.0F < this.qom) && (0.15F * this.qof <= Math.abs(this.qom))) {}
         for (;;)
         {
-          if ((i == 0) || (!this.nmw)) {
-            break label950;
+          if ((i == 0) || (!this.qoe)) {
+            break label967;
           }
           hide();
           break;
           i = 0;
         }
-        label950:
-        bQo();
+        label967:
+        cde();
       }
       else
       {
-        if ((0.0F < this.nmE) && (0.15F * this.nmx <= Math.abs(this.nmE))) {}
+        if ((0.0F < this.qom) && (0.15F * this.qof <= Math.abs(this.qom))) {}
         for (i = 1;; i = 0)
         {
-          if ((i == 0) || (!this.nmw)) {
-            break label1014;
+          if ((i == 0) || (!this.qoe)) {
+            break label1031;
           }
           hide();
           break;
         }
-        label1014:
-        if ((0.0F > this.nmE) && (0.05F * this.nmx <= Math.abs(this.nmE))) {}
+        label1031:
+        if ((0.0F > this.qom) && (0.05F * this.qof <= Math.abs(this.qom))) {}
         for (i = j;; i = 0)
         {
           if (i == 0) {
-            break label1065;
+            break label1082;
           }
-          bQo();
+          cde();
           break;
         }
-        label1065:
+        label1082:
         Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "switch2HalfScreen");
-        d(this.nmq.getTranslationY(), this.nmz, false);
+        d(this.qnY.getTranslationY(), this.qoh, false);
       }
     }
   }
   
   public void setAllowScroll2Hide(boolean paramBoolean)
   {
-    this.nmw = paramBoolean;
+    this.qoe = paramBoolean;
   }
   
   public void setContentView(MMWebView paramMMWebView)
   {
-    AppMethodBeat.i(227246);
+    AppMethodBeat.i(272731);
     Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "setContentView");
-    this.nms.addView(paramMMWebView, -1, -1);
-    paramMMWebView.a(new MMWebView.e()
+    this.qoa.addView(paramMMWebView, -1, -1);
+    paramMMWebView.a(new MMWebView.f()
     {
       public final void onWebViewScrollChanged(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4)
       {
         boolean bool = true;
-        AppMethodBeat.i(227231);
+        AppMethodBeat.i(272117);
         Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "onWebViewScrollChanged, l: %d, t: %d, oldl: %d, oldt: %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3), Integer.valueOf(paramAnonymousInt4) });
         HybridOpenMaterialView localHybridOpenMaterialView = HybridOpenMaterialView.this;
         if (paramAnonymousInt2 == 0) {}
         for (;;)
         {
           HybridOpenMaterialView.a(localHybridOpenMaterialView, bool);
-          AppMethodBeat.o(227231);
+          AppMethodBeat.o(272117);
           return;
           bool = false;
         }
       }
     });
-    this.nmt = paramMMWebView;
-    AppMethodBeat.o(227246);
+    this.qob = paramMMWebView;
+    AppMethodBeat.o(272731);
   }
   
   public void setListener(a parama)
   {
-    this.nmv = parama;
+    this.qod = parama;
   }
   
   public void setTitleView(View paramView)
   {
-    AppMethodBeat.i(227245);
+    AppMethodBeat.i(272730);
     Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "setTitleView");
-    this.nmr.addView(paramView, -1, -1);
-    AppMethodBeat.o(227245);
+    this.qnZ.addView(paramView, -1, -1);
+    AppMethodBeat.o(272730);
   }
   
   public final void show()
   {
-    AppMethodBeat.i(227247);
-    this.nmM = true;
-    if (this.nmu) {}
-    for (float f = this.nmy;; f = this.nmz)
+    AppMethodBeat.i(272732);
+    this.qou = true;
+    if (this.qoc) {}
+    for (float f = this.qog;; f = this.qoh)
     {
-      Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "show, from: %d, to: %d", new Object[] { Integer.valueOf(this.nmx), Integer.valueOf((int)f) });
-      if (this.nmt != null)
+      Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "show, from: %d, to: %d", new Object[] { Integer.valueOf(this.qof), Integer.valueOf((int)f) });
+      if (this.qob != null)
       {
-        FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.nmt.getLayoutParams();
+        FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.qob.getLayoutParams();
         if ((-1 != localLayoutParams.width) || (-1 != localLayoutParams.height))
         {
           localLayoutParams.width = -1;
           localLayoutParams.height = -1;
-          this.nmt.setLayoutParams(localLayoutParams);
+          this.qob.setLayoutParams(localLayoutParams);
         }
-        this.nmt.setBackgroundColor(getResources().getColor(2131099649));
+        this.qob.setBackgroundColor(getResources().getColor(au.c.BG_1));
       }
-      this.nmq.setTranslationY(this.nmx);
-      this.nmq.animate().translationY(f).setDuration(300L).setInterpolator(new DecelerateInterpolator()).setUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.qnY.setTranslationY(this.qof);
+      this.qnY.animate().translationY(f).setDuration(300L).setInterpolator(new DecelerateInterpolator()).setUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
-          AppMethodBeat.i(227235);
+          AppMethodBeat.i(260649);
           HybridOpenMaterialView.a(HybridOpenMaterialView.this, HybridOpenMaterialView.e(HybridOpenMaterialView.this).getTranslationY());
           HybridOpenMaterialView.f(HybridOpenMaterialView.this);
-          AppMethodBeat.o(227235);
+          AppMethodBeat.o(260649);
         }
       }).setListener(new Animator.AnimatorListener()
       {
         public final void onAnimationCancel(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(227234);
+          AppMethodBeat.i(264355);
           HybridOpenMaterialView.b(HybridOpenMaterialView.this, false);
-          AppMethodBeat.o(227234);
+          AppMethodBeat.o(264355);
         }
         
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(227233);
+          AppMethodBeat.i(264354);
           HybridOpenMaterialView.b(HybridOpenMaterialView.this, false);
           HybridOpenMaterialView.c(HybridOpenMaterialView.this, HybridOpenMaterialView.d(HybridOpenMaterialView.this));
-          AppMethodBeat.o(227233);
+          AppMethodBeat.o(264354);
         }
         
         public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
         
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(227232);
+          AppMethodBeat.i(264353);
           HybridOpenMaterialView.b(HybridOpenMaterialView.this, true);
           Log.d("MicroMsg.AppBrand.HybridOpenMaterialView", "show, onAnimationStart");
           if (HybridOpenMaterialView.c(HybridOpenMaterialView.this) != null) {
             HybridOpenMaterialView.c(HybridOpenMaterialView.this);
           }
-          AppMethodBeat.o(227232);
+          AppMethodBeat.o(264353);
         }
       }).start();
-      AppMethodBeat.o(227247);
+      AppMethodBeat.o(272732);
       return;
     }
   }
   
   public static abstract interface a
   {
-    public abstract void bQd();
+    public abstract void Cm(int paramInt);
     
-    public abstract void yH(int paramInt);
+    public abstract void ccP();
   }
   
   public static abstract class b
     implements HybridOpenMaterialView.a
   {
-    public void bQd() {}
+    public void Cm(int paramInt) {}
     
-    public void yH(int paramInt) {}
-  }
-  
-  static final class c
-  {
-    public final Size nmR;
-    public final int nmS;
-    
-    public c(Context paramContext)
-    {
-      AppMethodBeat.i(227242);
-      Point localPoint = au.az(paramContext);
-      this.nmR = new Size(localPoint.x, localPoint.y);
-      this.nmS = au.aD(paramContext);
-      Log.i("MicroMsg.AppBrand.HybridOpenMaterialView", "ScreenInfo#<init>, navigationBarHeight: " + this.nmS);
-      AppMethodBeat.o(227242);
-    }
+    public void ccP() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.openmaterial.ui.hybrid.HybridOpenMaterialView
  * JD-Core Version:    0.7.0.1
  */

@@ -4,20 +4,73 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelsns.SnsAdClick;
 import com.tencent.mm.plugin.expt.hellhound.a.b.b.c;
-import com.tencent.mm.plugin.sns.ad.a.f;
-import com.tencent.mm.plugin.sns.ad.e.h;
-import com.tencent.mm.plugin.sns.ad.i.j;
+import com.tencent.mm.plugin.sns.ad.adxml.f;
+import com.tencent.mm.plugin.sns.ad.d.l;
+import com.tencent.mm.plugin.sns.ad.i.k;
 import com.tencent.mm.plugin.sns.ad.timeline.a.d;
-import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.plugin.sns.storage.ADInfo;
 import com.tencent.mm.plugin.sns.storage.ADXml;
 import com.tencent.mm.plugin.sns.storage.SnsInfo;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
   implements com.tencent.mm.plugin.sns.ad.timeline.a.b.b
 {
-  public final void a(SnsInfo paramSnsInfo, d paramd)
+  public final boolean a(View paramView, int paramInt, SnsInfo paramSnsInfo, d paramd)
   {
-    AppMethodBeat.i(202108);
+    int i = 1;
+    AppMethodBeat.i(237632);
+    if ((paramView == null) || (paramSnsInfo == null) || (paramSnsInfo.getAdXml() == null))
+    {
+      AppMethodBeat.o(237632);
+      return false;
+    }
+    paramd = paramSnsInfo.getAdXml().adHeadFinderProfile;
+    if (paramd == null)
+    {
+      AppMethodBeat.o(237632);
+      return false;
+    }
+    try
+    {
+      paramView = paramView.getContext();
+      if ((paramView != null) && (paramSnsInfo.getAdInfo(paramInt) != null))
+      {
+        localObject = paramSnsInfo.getAdXml();
+        if ((localObject == null) || (((ADXml)localObject).headClickType != 4)) {
+          break label112;
+        }
+        localObject = ((ADXml)localObject).adHeadFinderProfile;
+        if (localObject == null) {
+          break label112;
+        }
+      }
+      while (i == 0)
+      {
+        AppMethodBeat.o(237632);
+        return false;
+        label112:
+        i = 0;
+      }
+      Object localObject = paramSnsInfo.getAdInfo(paramInt);
+      paramd = paramd.finderUsername;
+      paramSnsInfo = t.Qu(paramSnsInfo.field_snsId);
+      boolean bool = l.a(paramView, paramd, ((ADInfo)localObject).uxInfo, paramSnsInfo, 1);
+      AppMethodBeat.o(237632);
+      return bool;
+    }
+    catch (Throwable paramView)
+    {
+      Log.e("HABBYGE-MALI.AdFinderProfileAvatarAction", "doAction exp=" + paramView.toString());
+      AppMethodBeat.o(237632);
+    }
+    return false;
+  }
+  
+  public final void b(SnsInfo paramSnsInfo, d paramd)
+  {
+    AppMethodBeat.i(237635);
     if (paramSnsInfo != null) {}
     for (;;)
     {
@@ -33,47 +86,29 @@ public final class b
       {
         Object localObject1;
         Object localObject2;
-        com.tencent.mm.audio.mix.i.b.printErrStackTrace("HABBYGE-MALI.AdFinderProfileAvatarAction", paramSnsInfo, "reportAd crash: %s", new Object[] { paramSnsInfo.getMessage() });
+        com.tencent.mm.audio.mix.h.b.printErrStackTrace("HABBYGE-MALI.AdFinderProfileAvatarAction", paramSnsInfo, "reportAd crash: %s", new Object[] { paramSnsInfo.getMessage() });
         continue;
       }
       if (paramd != null)
       {
-        paramSnsInfo = (SnsAdClick)paramd.z("ext_sns_ad_click", null);
+        paramSnsInfo = (SnsAdClick)paramd.y("ext_sns_ad_click", null);
         if (paramSnsInfo != null)
         {
-          j.a(paramSnsInfo, 41);
-          r.a(paramSnsInfo);
+          k.a(paramSnsInfo, 41);
+          t.a(paramSnsInfo);
         }
       }
-      AppMethodBeat.o(202108);
+      AppMethodBeat.o(237635);
       return;
       localObject1 = ((ADXml)localObject1).adHeadFinderProfile.finderUsername;
-      localObject2 = r.Jb(paramSnsInfo.field_snsId);
-      c.gr(h.jU(paramSnsInfo.getUxinfo(), (String)localObject2), (String)localObject1);
+      localObject2 = t.Qu(paramSnsInfo.field_snsId);
+      c.gF(l.an(paramSnsInfo.getUxinfo(), (String)localObject2, 1), (String)localObject1);
     }
-  }
-  
-  public final boolean a(View paramView, int paramInt, SnsInfo paramSnsInfo, d paramd)
-  {
-    AppMethodBeat.i(202107);
-    if ((paramView == null) || (paramSnsInfo == null) || (paramSnsInfo.getAdXml() == null))
-    {
-      AppMethodBeat.o(202107);
-      return false;
-    }
-    if (paramSnsInfo.getAdXml().adHeadFinderProfile == null)
-    {
-      AppMethodBeat.o(202107);
-      return false;
-    }
-    boolean bool = h.a(paramView.getContext(), paramSnsInfo, paramInt);
-    AppMethodBeat.o(202107);
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.a.b.a.b
  * JD-Core Version:    0.7.0.1
  */

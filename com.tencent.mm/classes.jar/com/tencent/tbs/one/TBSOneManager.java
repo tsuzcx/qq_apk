@@ -58,9 +58,8 @@ public abstract class TBSOneManager
     //   from	to	target	type
     //   9	28	39	finally
     //   28	34	39	finally
-    //   40	42	39	finally
     //   3	9	44	finally
-    //   42	44	44	finally
+    //   40	44	44	finally
   }
   
   public static TBSOneManager getInstance(Context paramContext, String paramString)
@@ -134,7 +133,7 @@ public abstract class TBSOneManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tbs.one.TBSOneManager
  * JD-Core Version:    0.7.0.1
  */

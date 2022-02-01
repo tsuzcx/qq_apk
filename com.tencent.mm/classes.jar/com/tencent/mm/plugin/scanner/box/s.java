@@ -6,21 +6,21 @@ import com.tencent.mm.plugin.report.service.h;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/ScanShareReporter;", "", "()V", "TAG", "", "reportScanShareCancel", "", "data", "Landroid/os/Bundle;", "reportScanShareResult", "success", "", "isChatRoom", "ShareResult", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/ScanShareReporter;", "", "()V", "TAG", "", "reportScanShareCancel", "", "data", "Landroid/os/Bundle;", "reportScanShareResult", "success", "", "isChatRoom", "ShareResult", "plugin-scan_release"})
 public final class s
 {
-  public static final s CDz;
+  public static final s IHZ;
   
   static
   {
-    AppMethodBeat.i(240340);
-    CDz = new s();
-    AppMethodBeat.o(240340);
+    AppMethodBeat.i(217956);
+    IHZ = new s();
+    AppMethodBeat.o(217956);
   }
   
-  public static final void aw(Bundle paramBundle)
+  public static final void as(Bundle paramBundle)
   {
-    AppMethodBeat.i(240339);
+    AppMethodBeat.i(217951);
     Object localObject2;
     Object localObject1;
     if (paramBundle != null)
@@ -33,7 +33,7 @@ public final class s
     {
       localObject1 = "";
     }
-    p.g(localObject1, "data?.getString(ScanBoxM….KEY_ENTER_SESSION) ?: \"\"");
+    p.j(localObject1, "data?.getString(ScanBoxM….KEY_ENTER_SESSION) ?: \"\"");
     String str;
     if (paramBundle != null)
     {
@@ -45,7 +45,7 @@ public final class s
     {
       localObject2 = "";
     }
-    p.g(localObject2, "data?.getString(ScanBoxM…er.KEY_TAB_SESSION) ?: \"\"");
+    p.j(localObject2, "data?.getString(ScanBoxM…er.KEY_TAB_SESSION) ?: \"\"");
     if (paramBundle != null)
     {
       str = paramBundle.getString("scan_session");
@@ -56,14 +56,14 @@ public final class s
     {
       paramBundle = "";
     }
-    p.g(paramBundle, "data?.getString(ScanBoxM…r.KEY_SCAN_SESSION) ?: \"\"");
-    h.CyF.a(21537, new Object[] { localObject2, paramBundle, Integer.valueOf(3), localObject1 });
-    AppMethodBeat.o(240339);
+    p.j(paramBundle, "data?.getString(ScanBoxM…r.KEY_SCAN_SESSION) ?: \"\"");
+    h.IzE.a(21537, new Object[] { localObject2, paramBundle, Integer.valueOf(3), localObject1 });
+    AppMethodBeat.o(217951);
   }
   
   public static final void b(boolean paramBoolean1, boolean paramBoolean2, Bundle paramBundle)
   {
-    AppMethodBeat.i(240338);
+    AppMethodBeat.i(217949);
     Object localObject2;
     Object localObject1;
     if (paramBoolean1)
@@ -78,7 +78,7 @@ public final class s
       {
         localObject1 = "";
       }
-      p.g(localObject1, "data?.getString(ScanBoxM….KEY_ENTER_SESSION) ?: \"\"");
+      p.j(localObject1, "data?.getString(ScanBoxM….KEY_ENTER_SESSION) ?: \"\"");
       String str;
       if (paramBundle != null)
       {
@@ -90,7 +90,7 @@ public final class s
       {
         localObject2 = "";
       }
-      p.g(localObject2, "data?.getString(ScanBoxM…er.KEY_TAB_SESSION) ?: \"\"");
+      p.j(localObject2, "data?.getString(ScanBoxM…er.KEY_TAB_SESSION) ?: \"\"");
       if (paramBundle != null)
       {
         str = paramBundle.getString("scan_session");
@@ -101,7 +101,7 @@ public final class s
       {
         paramBundle = "";
       }
-      p.g(paramBundle, "data?.getString(ScanBoxM…r.KEY_SCAN_SESSION) ?: \"\"");
+      p.j(paramBundle, "data?.getString(ScanBoxM…r.KEY_SCAN_SESSION) ?: \"\"");
       if (!paramBoolean2) {
         break label148;
       }
@@ -109,8 +109,8 @@ public final class s
     label148:
     for (int i = 1;; i = 2)
     {
-      h.CyF.a(21537, new Object[] { localObject2, paramBundle, Integer.valueOf(i), localObject1 });
-      AppMethodBeat.o(240338);
+      h.IzE.a(21537, new Object[] { localObject2, paramBundle, Integer.valueOf(i), localObject1 });
+      AppMethodBeat.o(217949);
       return;
     }
   }

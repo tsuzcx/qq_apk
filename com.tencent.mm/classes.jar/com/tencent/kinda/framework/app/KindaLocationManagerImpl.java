@@ -3,7 +3,7 @@ package com.tencent.kinda.framework.app;
 import com.tencent.kinda.gen.KindaLocationManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.k;
-import com.tencent.mm.protocal.protobuf.bf;
+import com.tencent.mm.protocal.protobuf.bd;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class KindaLocationManagerImpl
@@ -15,9 +15,9 @@ public class KindaLocationManagerImpl
   {
     AppMethodBeat.i(18454);
     String str = "";
-    bf localbf = k.fQy();
-    if (localbf != null) {
-      str = localbf.KEH;
+    bd localbd = k.gJe();
+    if (localbd != null) {
+      str = localbd.RFZ;
     }
     Log.i("KindaLocationManagerImpl", "getCellInfo return: ".concat(String.valueOf(str)));
     AppMethodBeat.o(18454);
@@ -28,9 +28,9 @@ public class KindaLocationManagerImpl
   {
     AppMethodBeat.i(18453);
     String str = "";
-    bf localbf = k.fQy();
-    if (localbf != null) {
-      str = localbf.KEF;
+    bd localbd = k.gJe();
+    if (localbd != null) {
+      str = localbd.RFX;
     }
     Log.i("KindaLocationManagerImpl", "getEncryptInfo return: ".concat(String.valueOf(str)));
     AppMethodBeat.o(18453);
@@ -41,9 +41,9 @@ public class KindaLocationManagerImpl
   {
     AppMethodBeat.i(18455);
     String str = "";
-    bf localbf = k.fQy();
-    if (localbf != null) {
-      str = localbf.KEG;
+    bd localbd = k.gJe();
+    if (localbd != null) {
+      str = localbd.RFY;
     }
     Log.i("KindaLocationManagerImpl", "getEncryptKey return: ".concat(String.valueOf(str)));
     AppMethodBeat.o(18455);
@@ -52,7 +52,7 @@ public class KindaLocationManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaLocationManagerImpl
  * JD-Core Version:    0.7.0.1
  */

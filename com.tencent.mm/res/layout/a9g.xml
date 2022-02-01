@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:background="@drawable/asu" android:layout_width="fill_parent" android:layout_height="@dimen/cp"
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@drawable/asu" android:layout_width="fill_parent" android:layout_height="@dimen/cp"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView android:id="@id/cmm" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:layout_marginLeft="@dimen/cb" android:src="@raw/default_avatar" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
     <TextView android:ellipsize="end" android:gravity="left" android:id="@id/cmq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/cb" android:text="{nickname}" android:maxLines="1" android:singleLine="true" app:layout_constraintBottom_toBottomOf="@id/cmm" app:layout_constraintLeft_toRightOf="@id/cmm" app:layout_constraintTop_toTopOf="@id/cmm" style="@style/xn" />
     <View android:background="@drawable/a75" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cq" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

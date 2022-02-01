@@ -1,13 +1,15 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.ci;
-import com.tencent.mm.storage.ci.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.foundation.a.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.storage.cj;
+import com.tencent.mm.storage.cj.a;
 
 public final class ai
 {
-  public static ah Kb(String paramString)
+  public static ah Rt(String paramString)
   {
     AppMethodBeat.i(150163);
     paramString = new ah("@black.android", null, paramString, null, true, true);
@@ -15,21 +17,21 @@ public final class ai
     return paramString;
   }
   
-  public static ah Kc(String paramString)
+  public static ah Ru(String paramString)
   {
     AppMethodBeat.i(150164);
-    ci localci = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSW().aEY("@t.qq.com");
-    if (localci == null)
+    cj localcj = ((n)h.ae(n.class)).bbU().aPi("@t.qq.com");
+    if (localcj == null)
     {
       AppMethodBeat.o(150164);
       return null;
     }
-    paramString = new ah("@t.qq.com", null, paramString, null, localci.isEnable(), localci.gEp());
+    paramString = new ah("@t.qq.com", null, paramString, null, localcj.isEnable(), localcj.hAF());
     AppMethodBeat.o(150164);
     return paramString;
   }
   
-  private static String aM(String paramString1, String paramString2)
+  private static String aQ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(150165);
     String str = "";
@@ -44,7 +46,7 @@ public final class ai
     return paramString1;
   }
   
-  public static ah aN(String paramString1, String paramString2)
+  public static ah aR(String paramString1, String paramString2)
   {
     AppMethodBeat.i(150166);
     if ((paramString1 == null) || (paramString1.length() <= 0))
@@ -52,13 +54,13 @@ public final class ai
       AppMethodBeat.o(150166);
       return null;
     }
-    paramString1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSW().aEY(paramString1);
-    if ((paramString1 == null) || (!paramString1.gEq()))
+    paramString1 = ((n)h.ae(n.class)).bbU().aPi(paramString1);
+    if ((paramString1 == null) || (!paramString1.hAG()))
     {
       AppMethodBeat.o(150166);
       return null;
     }
-    paramString1 = new ah("@domain.android", paramString1.name, aM(paramString1.OrA.bkR(""), paramString2), paramString1.OrA.bkR(""), paramString1.isEnable(), true);
+    paramString1 = new ah("@domain.android", paramString1.name, aQ(paramString1.VHx.bxr(""), paramString2), paramString1.VHx.bxr(""), paramString1.isEnable(), true);
     AppMethodBeat.o(150166);
     return paramString1;
   }

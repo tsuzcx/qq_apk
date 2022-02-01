@@ -2,7 +2,7 @@ package com.tencent.mm.wallet_core.c;
 
 public abstract interface g
 {
-  public abstract void eeY();
+  public abstract void eOt();
 }
 
 

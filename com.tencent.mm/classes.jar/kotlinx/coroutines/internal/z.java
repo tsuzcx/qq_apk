@@ -1,306 +1,147 @@
 package kotlinx.coroutines.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.d.f;
+import kotlin.d.f.b;
+import kotlin.g.a.m;
 import kotlin.g.b.p;
+import kotlin.g.b.q;
 import kotlin.l;
-import kotlinx.coroutines.an;
+import kotlin.t;
+import kotlinx.coroutines.cu;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/internal/ThreadSafeHeap;", "Lkotlinx/coroutines/internal/ThreadSafeHeapNode;", "", "T", "<init>", "()V", "node", "", "addImpl", "(Lkotlinx/coroutines/internal/ThreadSafeHeapNode;)V", "addLast", "Lkotlin/Function1;", "", "cond", "addLastIf", "(Lkotlinx/coroutines/internal/ThreadSafeHeapNode;Lkotlin/jvm/functions/Function1;)Z", "clear", "firstImpl", "()Lkotlinx/coroutines/internal/ThreadSafeHeapNode;", "peek", "", "realloc", "()[Lkotlinx/coroutines/internal/ThreadSafeHeapNode;", "remove", "(Lkotlinx/coroutines/internal/ThreadSafeHeapNode;)Z", "", "index", "removeAtImpl", "(I)Lkotlinx/coroutines/internal/ThreadSafeHeapNode;", "predicate", "removeFirstIf", "(Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/internal/ThreadSafeHeapNode;", "removeFirstOrNull", "i", "siftDownFrom", "(I)V", "siftUpFrom", "j", "swap", "(II)V", "a", "[Lkotlinx/coroutines/internal/ThreadSafeHeapNode;", "isEmpty", "()Z", "value", "getSize", "()I", "setSize", "size", "kotlinx-coroutines-core", "", "Lkotlinx/coroutines/internal/SynchronizedObject;"})
-public class z<T extends aa,  extends Comparable<? super T>>
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"ZERO", "Lkotlinx/coroutines/internal/Symbol;", "countAll", "Lkotlin/Function2;", "", "Lkotlin/coroutines/CoroutineContext$Element;", "findOne", "Lkotlinx/coroutines/ThreadContextElement;", "restoreState", "Lkotlinx/coroutines/internal/ThreadState;", "updateState", "restoreThreadContext", "", "context", "Lkotlin/coroutines/CoroutineContext;", "oldState", "threadContextElements", "updateThreadContext", "countOrElement", "kotlinx-coroutines-core"})
+public final class z
 {
-  public T[] TWs;
-  public volatile int _size = 0;
+  private static final v abzA;
+  private static final m<Object, f.b, Object> abzB;
+  private static final m<cu<?>, f.b, cu<?>> abzC;
+  private static final m<ac, f.b, ac> abzD;
+  private static final m<ac, f.b, ac> abzE;
   
-  private final void avY(int paramInt)
+  static
   {
-    AppMethodBeat.i(118069);
-    for (int i = paramInt;; i = paramInt)
-    {
-      int j = i * 2 + 1;
-      if (j >= this._size)
-      {
-        AppMethodBeat.o(118069);
-        return;
-      }
-      Object localObject1 = this.TWs;
-      if (localObject1 == null) {
-        p.hyc();
-      }
-      paramInt = j;
-      if (j + 1 < this._size)
-      {
-        localComparable = localObject1[(j + 1)];
-        if (localComparable == null) {
-          p.hyc();
-        }
-        localComparable = (Comparable)localComparable;
-        Object localObject2 = localObject1[j];
-        if (localObject2 == null) {
-          p.hyc();
-        }
-        paramInt = j;
-        if (localComparable.compareTo(localObject2) < 0) {
-          paramInt = j + 1;
-        }
-      }
-      Comparable localComparable = localObject1[i];
-      if (localComparable == null) {
-        p.hyc();
-      }
-      localComparable = (Comparable)localComparable;
-      localObject1 = localObject1[paramInt];
-      if (localObject1 == null) {
-        p.hyc();
-      }
-      if (localComparable.compareTo(localObject1) <= 0)
-      {
-        AppMethodBeat.o(118069);
-        return;
-      }
-      nd(i, paramInt);
-    }
+    AppMethodBeat.i(118075);
+    abzA = new v("ZERO");
+    abzB = (m)z.a.abzF;
+    abzC = (m)z.b.abzG;
+    abzD = (m)d.abzI;
+    abzE = (m)c.abzH;
+    AppMethodBeat.o(118075);
   }
   
-  private final void nd(int paramInt1, int paramInt2)
+  public static final Object a(f paramf, Object paramObject)
   {
-    AppMethodBeat.i(118070);
-    aa[] arrayOfaa = this.TWs;
-    if (arrayOfaa == null) {
-      p.hyc();
+    AppMethodBeat.i(118073);
+    if (paramObject == null) {
+      paramObject = f(paramf);
     }
-    aa localaa1 = arrayOfaa[paramInt2];
-    if (localaa1 == null) {
-      p.hyc();
-    }
-    aa localaa2 = arrayOfaa[paramInt1];
-    if (localaa2 == null) {
-      p.hyc();
-    }
-    arrayOfaa[paramInt1] = localaa1;
-    arrayOfaa[paramInt2] = localaa2;
-    localaa1.setIndex(paramInt1);
-    localaa2.setIndex(paramInt2);
-    AppMethodBeat.o(118070);
-  }
-  
-  public final boolean a(T paramT)
-  {
-    int i = 0;
-    boolean bool = false;
-    AppMethodBeat.i(118066);
     for (;;)
     {
-      int j;
-      try
+      if (paramObject == Integer.valueOf(0))
       {
-        z localz = paramT.hNf();
-        if (localz == null) {
-          return bool;
-        }
-        j = paramT.getIndex();
-        if (an.hMK())
-        {
-          if (j >= 0) {
-            i = 1;
-          }
-          if (i == 0)
-          {
-            paramT = (Throwable)new AssertionError();
-            AppMethodBeat.o(118066);
-            throw paramT;
-          }
-        }
+        paramf = abzA;
+        AppMethodBeat.o(118073);
+        return paramf;
       }
-      finally
+      if ((paramObject instanceof Integer))
       {
-        AppMethodBeat.o(118066);
+        paramf = paramf.fold(new ac(paramf, ((Number)paramObject).intValue()), abzD);
+        AppMethodBeat.o(118073);
+        return paramf;
       }
-      avW(j);
-      bool = true;
+      if (paramObject == null)
+      {
+        paramf = new t("null cannot be cast to non-null type kotlinx.coroutines.ThreadContextElement<kotlin.Any?>");
+        AppMethodBeat.o(118073);
+        throw paramf;
+      }
+      paramf = ((cu)paramObject).b(paramf);
+      AppMethodBeat.o(118073);
+      return paramf;
     }
   }
   
-  public final T avW(int paramInt)
+  public static final void b(f paramf, Object paramObject)
   {
-    AppMethodBeat.i(118067);
-    int i;
-    if (an.hMK())
+    AppMethodBeat.i(118074);
+    if (paramObject == abzA)
     {
-      if (this._size > 0) {}
-      for (i = 1; i == 0; i = 0)
-      {
-        localObject1 = (Throwable)new AssertionError();
-        AppMethodBeat.o(118067);
-        throw ((Throwable)localObject1);
-      }
+      AppMethodBeat.o(118074);
+      return;
     }
-    Object localObject1 = this.TWs;
-    if (localObject1 == null) {
-      p.hyc();
-    }
-    this._size -= 1;
-    Comparable localComparable;
-    if (paramInt < this._size)
+    if ((paramObject instanceof ac))
     {
-      nd(paramInt, this._size);
-      i = (paramInt - 1) / 2;
-      if (paramInt > 0)
-      {
-        localComparable = localObject1[paramInt];
-        if (localComparable == null) {
-          p.hyc();
-        }
-        localComparable = (Comparable)localComparable;
-        Object localObject2 = localObject1[i];
-        if (localObject2 == null) {
-          p.hyc();
-        }
-        if (localComparable.compareTo(localObject2) < 0)
-        {
-          nd(paramInt, i);
-          avX(i);
-        }
-      }
+      ((ac)paramObject).i = 0;
+      paramf.fold(paramObject, abzE);
+      AppMethodBeat.o(118074);
+      return;
     }
-    else
+    paramf = paramf.fold(null, abzC);
+    if (paramf == null)
     {
-      localComparable = localObject1[this._size];
-      if (localComparable == null) {
-        p.hyc();
-      }
-      if (!an.hMK()) {
-        break label225;
-      }
-      if (localComparable.hNf() != (z)this) {
-        break label220;
-      }
+      paramf = new t("null cannot be cast to non-null type kotlinx.coroutines.ThreadContextElement<kotlin.Any?>");
+      AppMethodBeat.o(118074);
+      throw paramf;
     }
-    label220:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if (paramInt != 0) {
-        break label225;
-      }
-      localObject1 = (Throwable)new AssertionError();
-      AppMethodBeat.o(118067);
-      throw ((Throwable)localObject1);
-      avY(paramInt);
-      break;
-    }
-    label225:
-    localComparable.a(null);
-    localComparable.setIndex(-1);
-    localObject1[this._size] = null;
-    AppMethodBeat.o(118067);
-    return localComparable;
+    ((cu)paramf).gb(paramObject);
+    AppMethodBeat.o(118074);
   }
   
-  public final void avX(int paramInt)
+  public static final Object f(f paramf)
   {
-    AppMethodBeat.i(118068);
-    for (;;)
+    AppMethodBeat.i(118072);
+    paramf = paramf.fold(Integer.valueOf(0), abzB);
+    if (paramf == null) {
+      p.iCn();
+    }
+    AppMethodBeat.o(118072);
+    return paramf;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<no name provided>", "Lkotlinx/coroutines/internal/ThreadState;", "state", "element", "Lkotlin/coroutines/CoroutineContext$Element;", "invoke"})
+  static final class c
+    extends q
+    implements m<ac, f.b, ac>
+  {
+    public static final c abzH;
+    
+    static
     {
-      if (paramInt <= 0)
-      {
-        AppMethodBeat.o(118068);
-        return;
-      }
-      Object localObject = this.TWs;
-      if (localObject == null) {
-        p.hyc();
-      }
-      int i = (paramInt - 1) / 2;
-      Comparable localComparable = localObject[i];
-      if (localComparable == null) {
-        p.hyc();
-      }
-      localComparable = (Comparable)localComparable;
-      localObject = localObject[paramInt];
-      if (localObject == null) {
-        p.hyc();
-      }
-      if (localComparable.compareTo(localObject) <= 0)
-      {
-        AppMethodBeat.o(118068);
-        return;
-      }
-      nd(paramInt, i);
-      paramInt = i;
+      AppMethodBeat.i(118079);
+      abzH = new c();
+      AppMethodBeat.o(118079);
+    }
+    
+    c()
+    {
+      super();
     }
   }
   
-  public final T hNS()
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<no name provided>", "Lkotlinx/coroutines/internal/ThreadState;", "state", "element", "Lkotlin/coroutines/CoroutineContext$Element;", "invoke"})
+  static final class d
+    extends q
+    implements m<ac, f.b, ac>
   {
-    AppMethodBeat.i(118065);
-    try
+    public static final d abzI;
+    
+    static
     {
-      aa localaa = hNU();
-      return localaa;
+      AppMethodBeat.i(118110);
+      abzI = new d();
+      AppMethodBeat.o(118110);
     }
-    finally
+    
+    d()
     {
-      AppMethodBeat.o(118065);
+      super();
     }
-  }
-  
-  /* Error */
-  public final T hNT()
-  {
-    // Byte code:
-    //   0: ldc 145
-    //   2: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: monitorenter
-    //   7: aload_0
-    //   8: getfield 68	kotlinx/coroutines/internal/z:_size	I
-    //   11: ifle +18 -> 29
-    //   14: aload_0
-    //   15: iconst_0
-    //   16: invokevirtual 123	kotlinx/coroutines/internal/z:avW	(I)Lkotlinx/coroutines/internal/aa;
-    //   19: astore_1
-    //   20: aload_0
-    //   21: monitorexit
-    //   22: ldc 145
-    //   24: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   27: aload_1
-    //   28: areturn
-    //   29: aconst_null
-    //   30: astore_1
-    //   31: goto -11 -> 20
-    //   34: astore_1
-    //   35: aload_0
-    //   36: monitorexit
-    //   37: ldc 145
-    //   39: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   42: aload_1
-    //   43: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	44	0	this	z
-    //   19	12	1	localaa	aa
-    //   34	9	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   7	20	34	finally
-  }
-  
-  public final T hNU()
-  {
-    aa[] arrayOfaa = this.TWs;
-    if (arrayOfaa != null) {
-      return arrayOfaa[0];
-    }
-    return null;
-  }
-  
-  public final boolean isEmpty()
-  {
-    return this._size == 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlinx.coroutines.internal.z
  * JD-Core Version:    0.7.0.1
  */

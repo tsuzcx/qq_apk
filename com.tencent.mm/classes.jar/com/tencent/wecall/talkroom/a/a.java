@@ -1,10 +1,10 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.a.a.e;
+import com.google.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.b.a.a.a.ak;
-import com.tencent.pb.common.b.a.a.a.ap;
-import com.tencent.pb.common.b.a.a.a.bg;
+import com.tencent.pb.common.b.a.a.a.ao;
+import com.tencent.pb.common.b.a.a.a.bf;
 import com.tencent.pb.common.b.a.a.a.l;
 import com.tencent.pb.common.b.d;
 import com.tencent.pb.common.c.b;
@@ -12,38 +12,38 @@ import com.tencent.pb.common.c.b;
 public final class a
   extends d
 {
-  public long HgX;
-  public int RCJ;
-  public int SwS;
-  public String xOr;
-  public int yvK;
+  public String CSB;
+  public int DVO;
+  public long NXM;
+  public int ZXQ;
+  public int Zel;
   
   public a(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(62531);
-    this.xOr = null;
-    this.yvK = 0;
-    this.HgX = 0L;
+    this.CSB = null;
+    this.DVO = 0;
+    this.NXM = 0L;
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneAckVoiceGroup" });
     a.l locall = new a.l();
     try
     {
       locall.groupId = paramString;
-      this.xOr = paramString;
-      locall.GXO = paramInt1;
-      this.yvK = paramInt1;
-      locall.GXP = paramLong;
-      this.HgX = paramLong;
-      this.SwS = paramInt3;
-      this.RCJ = paramInt2;
-      paramString = new a.ap();
-      paramString.iLen = 0;
-      a.bg localbg = new a.bg();
-      localbg.type = 3;
-      localbg.RGJ = paramString;
-      locall.RDs = localbg;
-      this.mNetType = 3;
-      this.RCJ = paramInt2;
+      this.CSB = paramString;
+      locall.NOc = paramInt1;
+      this.DVO = paramInt1;
+      locall.NOd = paramLong;
+      this.NXM = paramLong;
+      this.ZXQ = paramInt3;
+      this.Zel = paramInt2;
+      paramString = new a.ao();
+      paramString.Ufv = 0;
+      a.bf localbf = new a.bf();
+      localbf.type = 3;
+      localbf.Zip = paramString;
+      locall.ZeU = localbf;
+      aAc(3);
+      aAd(paramInt2);
       c(189, locall);
       AppMethodBeat.o(62531);
       return;
@@ -57,7 +57,7 @@ public final class a
     }
   }
   
-  public final Object cO(byte[] paramArrayOfByte)
+  public final Object dn(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62532);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -85,7 +85,7 @@ public final class a
     return 206;
   }
   
-  public final String hiV()
+  public final String ikF()
   {
     return "CsCmd.Cmd_V_CSVoiceAckReq";
   }

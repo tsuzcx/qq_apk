@@ -1,75 +1,128 @@
 package com.tencent.mm.plugin.appbrand.luggage.b;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.f.b;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.model.ad.b;
+import com.tencent.mm.plugin.appbrand.jsapi.v.c;
+import com.tencent.mm.plugin.appbrand.widget.b.a;
+import com.tencent.mm.plugin.appbrand.widget.b.b;
+import com.tencent.mm.plugin.gif.MMAnimateView;
 
 public final class l
   implements b
 {
-  private final List<b> naf;
-  
-  public l(AppBrandRuntime paramAppBrandRuntime)
+  public final a ec(Context paramContext)
   {
-    AppMethodBeat.i(219341);
-    this.naf = new LinkedList();
-    this.naf.add(new p(paramAppBrandRuntime));
-    this.naf.add(new i());
-    this.naf.add(new j(paramAppBrandRuntime));
-    this.naf.add(new h(paramAppBrandRuntime));
-    AppMethodBeat.o(219341);
+    AppMethodBeat.i(47492);
+    paramContext = new a(paramContext);
+    AppMethodBeat.o(47492);
+    return paramContext;
   }
   
-  public final boolean a(f paramf, String paramString)
+  public final class a
+    extends FrameLayout
+    implements a
   {
-    AppMethodBeat.i(219342);
-    if ((paramf == null) || (paramString == null) || (paramString.length() == 0))
+    private c cFt;
+    private ImageView cJr;
+    private ad.b qaA;
+    private MMAnimateView qay;
+    private boolean qaz;
+    
+    public a(Context paramContext)
     {
-      AppMethodBeat.o(219342);
-      return false;
+      super();
+      AppMethodBeat.i(47486);
+      this.cFt = null;
+      this.qay = new MMAnimateView(paramContext);
+      addView(this.qay, new ViewGroup.LayoutParams(-1, -1));
+      this.qay.setVisibility(8);
+      this.cJr = new ImageView(paramContext);
+      addView(this.cJr, new ViewGroup.LayoutParams(-1, -1));
+      this.cJr.setVisibility(8);
+      AppMethodBeat.o(47486);
     }
-    Iterator localIterator = this.naf.iterator();
-    while (localIterator.hasNext()) {
-      if (((b)localIterator.next()).a(paramf, paramString))
-      {
-        AppMethodBeat.o(219342);
-        return true;
-      }
-    }
-    AppMethodBeat.o(219342);
-    return false;
-  }
-  
-  public final String b(f paramf, String paramString)
-  {
-    AppMethodBeat.i(219343);
-    if ((paramf == null) || (paramString == null) || (paramString.length() == 0))
+    
+    public final boolean bQC()
     {
-      AppMethodBeat.o(219343);
-      return paramString;
+      return this.qaz;
     }
-    Iterator localIterator = this.naf.iterator();
-    while (localIterator.hasNext())
+    
+    public final ad.b getKeyValueSet()
     {
-      b localb = (b)localIterator.next();
-      if (localb.a(paramf, paramString))
-      {
-        paramf = localb.b(paramf, paramString);
-        AppMethodBeat.o(219343);
-        return paramf;
-      }
+      return this.qaA;
     }
-    AppMethodBeat.o(219343);
-    return paramString;
+    
+    public final c getReferrerPolicy()
+    {
+      return this.cFt;
+    }
+    
+    public final View getView()
+    {
+      return this;
+    }
+    
+    public final void setImageBitmap(Bitmap paramBitmap)
+    {
+      AppMethodBeat.i(47489);
+      this.qay.setVisibility(8);
+      this.cJr.setVisibility(0);
+      this.cJr.setImageBitmap(paramBitmap);
+      AppMethodBeat.o(47489);
+    }
+    
+    public final void setImageByteArray(byte[] paramArrayOfByte)
+    {
+      AppMethodBeat.i(47488);
+      this.qay.setVisibility(0);
+      this.cJr.setVisibility(8);
+      this.qay.h(paramArrayOfByte, "");
+      AppMethodBeat.o(47488);
+    }
+    
+    public final void setImageFilePath(String paramString)
+    {
+      AppMethodBeat.i(47487);
+      this.qay.setVisibility(0);
+      this.cJr.setVisibility(8);
+      this.qay.setImageFilePath(paramString);
+      AppMethodBeat.o(47487);
+    }
+    
+    public final void setInterceptEvent(boolean paramBoolean)
+    {
+      this.qaz = paramBoolean;
+    }
+    
+    public final void setKeyValueSet(ad.b paramb)
+    {
+      this.qaA = paramb;
+    }
+    
+    public final void setReferrerPolicy(c paramc)
+    {
+      this.cFt = paramc;
+    }
+    
+    public final void setScaleType(ImageView.ScaleType paramScaleType)
+    {
+      AppMethodBeat.i(47490);
+      this.cJr.setScaleType(paramScaleType);
+      this.qay.setScaleType(paramScaleType);
+      AppMethodBeat.o(47490);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.l
  * JD-Core Version:    0.7.0.1
  */

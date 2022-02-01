@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.menu.a;
 
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
@@ -14,21 +14,21 @@ import java.util.List;
 public final class d$b
   extends RecyclerView.a<a>
 {
-  private final List<String> nfL;
-  private final d.a nfM;
+  private final List<String> qgv;
+  private final d.a qgw;
   
   public d$b(List<String> paramList, d.a parama)
   {
     AppMethodBeat.i(134923);
-    this.nfL = new ArrayList(paramList);
-    this.nfM = parama;
+    this.qgv = new ArrayList(paramList);
+    this.qgw = parama;
     AppMethodBeat.o(134923);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(134924);
-    int i = this.nfL.size();
+    int i = this.qgv.size();
     AppMethodBeat.o(134924);
     return i;
   }
@@ -46,7 +46,7 @@ public final class d$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.a.d.b
  * JD-Core Version:    0.7.0.1
  */

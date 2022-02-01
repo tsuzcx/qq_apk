@@ -12,15 +12,15 @@ public class TRTCCloudDef$TRTCSpeedTestResult
   
   public String toString()
   {
-    AppMethodBeat.i(222705);
+    AppMethodBeat.i(216244);
     String str = String.format("ip: %s, quality: %d, upLostRate: %.2f%%, downLostRate: %.2f%%, rtt: %d", new Object[] { this.ip, Integer.valueOf(this.quality), Float.valueOf(this.upLostRate * 100.0F), Float.valueOf(this.downLostRate * 100.0F), Integer.valueOf(this.rtt) });
-    AppMethodBeat.o(222705);
+    AppMethodBeat.o(216244);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.trtc.TRTCCloudDef.TRTCSpeedTestResult
  * JD-Core Version:    0.7.0.1
  */

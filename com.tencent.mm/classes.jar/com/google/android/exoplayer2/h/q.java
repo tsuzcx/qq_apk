@@ -9,8 +9,8 @@ import java.io.RandomAccessFile;
 public final class q
   implements g
 {
-  private final w<? super q> bEI;
-  private long bEJ;
+  private final w<? super q> bol;
+  private long bom;
   private RandomAccessFile file;
   private boolean opened;
   private Uri uri;
@@ -22,7 +22,7 @@ public final class q
   
   public q(w<? super q> paramw)
   {
-    this.bEI = paramw;
+    this.bol = paramw;
   }
   
   public final long a(j paramj)
@@ -35,11 +35,11 @@ public final class q
         this.uri = paramj.uri;
         this.file = new RandomAccessFile(paramj.uri.getPath(), "r");
         this.file.seek(paramj.position);
-        if (paramj.length == -1L)
+        if (paramj.aFL == -1L)
         {
           l = this.file.length() - paramj.position;
-          this.bEJ = l;
-          if (this.bEJ >= 0L) {
+          this.bom = l;
+          if (this.bom >= 0L) {
             break;
           }
           paramj = new EOFException();
@@ -53,13 +53,13 @@ public final class q
         AppMethodBeat.o(93079);
         throw paramj;
       }
-      l = paramj.length;
+      l = paramj.aFL;
     }
     this.opened = true;
-    if (this.bEI != null) {
-      this.bEI.a(this, paramj);
+    if (this.bol != null) {
+      this.bol.a(this, paramj);
     }
-    long l = this.bEJ;
+    long l = this.bom;
     AppMethodBeat.o(93079);
     return l;
   }
@@ -87,8 +87,8 @@ public final class q
       if (this.opened)
       {
         this.opened = false;
-        if (this.bEI != null) {
-          this.bEI.ai(this);
+        if (this.bol != null) {
+          this.bol.aa(this);
         }
       }
       AppMethodBeat.o(93081);
@@ -109,19 +109,19 @@ public final class q
       AppMethodBeat.o(93080);
       return 0;
     }
-    if (this.bEJ == 0L)
+    if (this.bom == 0L)
     {
       AppMethodBeat.o(93080);
       return -1;
     }
     try
     {
-      paramInt1 = this.file.read(paramArrayOfByte, paramInt1, (int)Math.min(this.bEJ, paramInt2));
+      paramInt1 = this.file.read(paramArrayOfByte, paramInt1, (int)Math.min(this.bom, paramInt2));
       if (paramInt1 > 0)
       {
-        this.bEJ -= paramInt1;
-        if (this.bEI != null) {
-          this.bEI.d(this, paramInt1);
+        this.bom -= paramInt1;
+        if (this.bol != null) {
+          this.bol.e(this, paramInt1);
         }
       }
       AppMethodBeat.o(93080);
@@ -146,7 +146,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.h.q
  * JD-Core Version:    0.7.0.1
  */

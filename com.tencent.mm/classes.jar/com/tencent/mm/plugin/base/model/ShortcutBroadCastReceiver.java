@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.comm.c.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.h;
 
@@ -19,7 +20,7 @@ public class ShortcutBroadCastReceiver
       AppMethodBeat.o(151431);
       return;
     }
-    h.cD(paramContext, paramContext.getString(2131755310));
+    h.cO(paramContext, paramContext.getString(c.h.app_added));
     AppMethodBeat.o(151431);
   }
 }

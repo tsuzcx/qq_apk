@@ -4,21 +4,21 @@ import com.tencent.mm.audio.mix.a.e;
 
 public abstract interface h
 {
-  public abstract void G(int paramInt1, int paramInt2, int paramInt3);
+  public abstract void J(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract byte[] X(byte[] paramArrayOfByte);
+  public abstract void adA();
   
-  public abstract void YR();
+  public abstract void ady();
   
-  public abstract e YS();
+  public abstract e adz();
   
-  public abstract void flushCache();
+  public abstract byte[] ae(byte[] paramArrayOfByte);
   
   public abstract void release();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.audio.mix.c.h
  * JD-Core Version:    0.7.0.1
  */

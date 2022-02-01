@@ -5,30 +5,30 @@ import android.view.View;
 
 public abstract class a
 {
-  protected boolean OZN;
-  protected Object data;
+  protected boolean Wta;
+  protected Object bnW;
   public int type;
   
   public a(int paramInt, Object paramObject)
   {
     this.type = paramInt;
-    this.data = paramObject;
+    this.bnW = paramObject;
   }
   
   public abstract void a(Context paramContext, a parama, Object... paramVarArgs);
   
-  public abstract b clS();
+  public abstract b czw();
   
-  public abstract a clT();
-  
-  public final boolean gLT()
-  {
-    return this.OZN;
-  }
+  public abstract a czx();
   
   public final Object getData()
   {
-    return this.data;
+    return this.bnW;
+  }
+  
+  public final boolean hLb()
+  {
+    return this.Wta;
   }
   
   public static abstract interface a {}
@@ -46,7 +46,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.base.sortview.a
  * JD-Core Version:    0.7.0.1
  */

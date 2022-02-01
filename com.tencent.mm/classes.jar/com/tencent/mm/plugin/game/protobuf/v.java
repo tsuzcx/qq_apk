@@ -3,57 +3,49 @@ package com.tencent.mm.plugin.game.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class v
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String xJI;
-  public String xJJ;
-  public String xJK;
+  public String CNP;
+  public String vhq;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41720);
+    AppMethodBeat.i(207279);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.xJI != null) {
-        paramVarArgs.e(1, this.xJI);
+      if (this.vhq != null) {
+        paramVarArgs.f(1, this.vhq);
       }
-      if (this.xJJ != null) {
-        paramVarArgs.e(2, this.xJJ);
+      if (this.CNP != null) {
+        paramVarArgs.f(2, this.CNP);
       }
-      if (this.xJK != null) {
-        paramVarArgs.e(3, this.xJK);
-      }
-      AppMethodBeat.o(41720);
+      AppMethodBeat.o(207279);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.xJI == null) {
-        break label334;
+      if (this.vhq == null) {
+        break label274;
       }
     }
-    label334:
-    for (int i = g.a.a.b.b.a.f(1, this.xJI) + 0;; i = 0)
+    label274:
+    for (paramInt = g.a.a.b.b.a.g(1, this.vhq) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.xJJ != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.xJJ);
+      int i = paramInt;
+      if (this.CNP != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.CNP);
       }
-      i = paramInt;
-      if (this.xJK != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.xJK);
-      }
-      AppMethodBeat.o(41720);
+      AppMethodBeat.o(207279);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(41720);
+        AppMethodBeat.o(207279);
         return 0;
       }
       if (paramInt == 3)
@@ -63,29 +55,25 @@ public final class v
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(41720);
+          AppMethodBeat.o(207279);
           return -1;
         case 1: 
-          localv.xJI = locala.UbS.readString();
-          AppMethodBeat.o(41720);
-          return 0;
-        case 2: 
-          localv.xJJ = locala.UbS.readString();
-          AppMethodBeat.o(41720);
+          localv.vhq = locala.abFh.readString();
+          AppMethodBeat.o(207279);
           return 0;
         }
-        localv.xJK = locala.UbS.readString();
-        AppMethodBeat.o(41720);
+        localv.CNP = locala.abFh.readString();
+        AppMethodBeat.o(207279);
         return 0;
       }
-      AppMethodBeat.o(41720);
+      AppMethodBeat.o(207279);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.v
  * JD-Core Version:    0.7.0.1
  */

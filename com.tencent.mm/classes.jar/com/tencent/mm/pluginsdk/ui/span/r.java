@@ -11,13 +11,15 @@ import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.ac;
+import com.tencent.mm.plugin.comm.c.c;
+import com.tencent.mm.plugin.comm.c.g;
 import com.tencent.mm.pluginsdk.ui.applet.u;
 import com.tencent.mm.pluginsdk.ui.applet.z;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -26,126 +28,203 @@ import java.util.regex.Pattern;
 
 final class r
 {
-  private static final com.tencent.mm.b.f<String, SpannableString> KrC;
-  private static Class<?>[] Ksc;
-  private ArrayList<u> KrD;
-  private ArrayList<a> KrE;
-  private ArrayList<z> KrF;
-  boolean KrG;
-  boolean KrH;
-  boolean KrI;
-  boolean KrJ;
-  boolean KrK;
-  boolean KrL;
-  boolean KrM;
-  boolean KrN;
-  boolean KrO;
-  boolean KrP;
-  boolean KrQ;
-  boolean KrR;
-  boolean KrS;
-  boolean KrT;
-  boolean KrU;
-  boolean KrV;
-  boolean KrW;
-  boolean KrX;
-  int KrY;
-  private int KrZ;
-  boolean Ksa;
-  Object Ksb;
-  private TextView Ws;
-  int gwE;
+  private static final com.tencent.mm.b.f<String, SpannableString> RsJ;
+  private static Class<?>[] Rtj;
+  private ArrayList<u> RsK;
+  private ArrayList<r.a> RsL;
+  private ArrayList<z> RsM;
+  boolean RsN;
+  boolean RsO;
+  boolean RsP;
+  boolean RsQ;
+  boolean RsR;
+  boolean RsS;
+  boolean RsT;
+  boolean RsU;
+  boolean RsV;
+  boolean RsW;
+  boolean RsX;
+  boolean RsY;
+  boolean RsZ;
+  boolean Rta;
+  boolean Rtb;
+  boolean Rtc;
+  boolean Rtd;
+  boolean Rte;
+  int Rtf;
+  private int Rtg;
+  boolean Rth;
+  Object Rti;
+  int jaR;
   a mAdTagClickCallback;
   int mAdTagClickScene;
   private Context mContext;
   String mSessionId;
+  private TextView rR;
   
   static
   {
     AppMethodBeat.i(152370);
-    KrC = new com.tencent.mm.memory.a.c(500);
-    Ksc = new Class[] { com.tencent.mm.ui.widget.a.class, p.class, ForegroundColorSpan.class };
+    RsJ = new com.tencent.mm.memory.a.c(500);
+    Rtj = new Class[] { com.tencent.mm.ui.widget.a.class, p.class, ForegroundColorSpan.class };
     AppMethodBeat.o(152370);
   }
   
   public r(Context paramContext)
   {
     AppMethodBeat.i(152345);
-    this.KrD = new ArrayList();
-    this.KrE = new ArrayList();
-    this.KrF = new ArrayList();
-    this.Ws = null;
-    this.KrG = false;
-    this.KrH = false;
-    this.KrI = true;
-    this.KrJ = false;
-    this.KrK = false;
-    this.KrL = true;
-    this.KrM = true;
-    this.KrN = false;
-    this.KrO = false;
-    this.KrP = false;
-    this.KrQ = false;
-    this.KrR = false;
-    this.KrS = false;
-    this.KrT = false;
-    this.KrU = true;
-    this.KrV = false;
-    this.KrW = false;
-    this.KrX = false;
-    this.KrY = 0;
-    this.KrZ = 0;
+    this.RsK = new ArrayList();
+    this.RsL = new ArrayList();
+    this.RsM = new ArrayList();
+    this.rR = null;
+    this.RsN = false;
+    this.RsO = false;
+    this.RsP = true;
+    this.RsQ = false;
+    this.RsR = false;
+    this.RsS = true;
+    this.RsT = true;
+    this.RsU = false;
+    this.RsV = false;
+    this.RsW = false;
+    this.RsX = false;
+    this.RsY = false;
+    this.RsZ = false;
+    this.Rta = false;
+    this.Rtb = true;
+    this.Rtc = false;
+    this.Rtd = false;
+    this.Rte = false;
+    this.Rtf = 0;
+    this.Rtg = 0;
     this.mContext = null;
-    this.Ksa = false;
-    this.gwE = 0;
-    this.KrD = new ArrayList();
-    this.KrE = new ArrayList();
-    this.KrF = new ArrayList();
+    this.Rth = false;
+    this.jaR = 0;
+    this.RsK = new ArrayList();
+    this.RsL = new ArrayList();
+    this.RsM = new ArrayList();
     this.mContext = paramContext;
     AppMethodBeat.o(152345);
   }
   
-  private String V(CharSequence paramCharSequence)
+  private void a(SpannableString paramSpannableString)
+  {
+    AppMethodBeat.i(152368);
+    if (this.rR != null)
+    {
+      paramSpannableString = new o();
+      paramSpannableString.mSessionId = this.mSessionId;
+      paramSpannableString.setAdTagClickCallback(this.mAdTagClickCallback, 0);
+      paramSpannableString.mAdTagClickScene = this.mAdTagClickScene;
+      this.rR.setOnTouchListener(paramSpannableString);
+      AppMethodBeat.o(152368);
+      return;
+    }
+    if (paramSpannableString != null)
+    {
+      paramSpannableString = (p[])paramSpannableString.getSpans(0, paramSpannableString.length(), p.class);
+      int j;
+      int i;
+      if ((paramSpannableString != null) && (paramSpannableString.length > 0) && (this.mSessionId != null))
+      {
+        j = paramSpannableString.length;
+        i = 0;
+        while (i < j)
+        {
+          paramSpannableString[i].setSessionId(this.mSessionId);
+          i += 1;
+        }
+      }
+      if ((paramSpannableString != null) && (paramSpannableString.length > 0))
+      {
+        j = paramSpannableString.length;
+        i = 0;
+        while (i < j)
+        {
+          Object localObject = paramSpannableString[i];
+          localObject.setAdTagClickCallback(this.mAdTagClickCallback, 0);
+          localObject.setAdTagClickScene(this.mAdTagClickScene);
+          i += 1;
+        }
+      }
+    }
+    AppMethodBeat.o(152368);
+  }
+  
+  private static boolean a(ArrayList<r.a> paramArrayList, r.a parama)
+  {
+    AppMethodBeat.i(152366);
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext()) {
+      if (((r.a)paramArrayList.next()).a(parama))
+      {
+        AppMethodBeat.o(152366);
+        return true;
+      }
+    }
+    AppMethodBeat.o(152366);
+    return false;
+  }
+  
+  private boolean aP(String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(152365);
+    paramString = b.b(this.mContext, paramString, paramInt1, paramInt2);
+    if (paramString != null)
+    {
+      if (this.Rti != null) {
+        paramString.bnW = this.Rti;
+      }
+      this.RsK.add(paramString);
+      this.RsL.add(new r.a(this, paramInt1, paramInt2));
+      AppMethodBeat.o(152365);
+      return true;
+    }
+    AppMethodBeat.o(152365);
+    return false;
+  }
+  
+  private String aj(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152347);
-    paramCharSequence = paramCharSequence + "@" + this.KrZ + "@" + this.KrG + "@" + this.KrH + "@" + this.KrK + "@" + this.KrL + "@" + this.KrM + "@" + this.KrY + "@" + this.Ksa + "@" + this.KrR + "@" + this.KrS + "@" + this.KrT + "@" + this.KrQ;
+    paramCharSequence = paramCharSequence + "@" + this.Rtg + "@" + this.RsN + "@" + this.RsO + "@" + this.RsR + "@" + this.RsS + "@" + this.RsT + "@" + this.Rtf + "@" + this.Rth + "@" + this.RsY + "@" + this.RsZ + "@" + this.Rta + "@" + this.RsX;
     AppMethodBeat.o(152347);
     return paramCharSequence;
   }
   
-  private SpannableString W(CharSequence paramCharSequence)
+  private SpannableString ak(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152350);
-    this.KrD = new ArrayList();
+    this.RsK = new ArrayList();
     Object localObject;
-    if (this.KrZ <= 0)
+    if (this.Rtg <= 0)
     {
-      if (this.Ws != null) {
-        this.KrZ = ((int)this.Ws.getTextSize());
+      if (this.rR != null) {
+        this.Rtg = ((int)this.rR.getTextSize());
       }
     }
     else
     {
-      if (this.KrD == null) {
-        this.KrD = new ArrayList();
+      if (this.RsK == null) {
+        this.RsK = new ArrayList();
       }
-      if (this.KrE == null) {
-        this.KrE = new ArrayList();
+      if (this.RsL == null) {
+        this.RsL = new ArrayList();
       }
-      this.KrD.clear();
-      this.KrE.clear();
+      this.RsK.clear();
+      this.RsL.clear();
       localObject = paramCharSequence;
-      if (com.tencent.mm.compatible.util.o.y(paramCharSequence))
+      if (com.tencent.mm.compatible.util.o.E(paramCharSequence))
       {
         localObject = paramCharSequence;
-        if (this.KrU)
+        if (this.Rtb)
         {
           localObject = paramCharSequence;
-          if (f.a.KqF != null) {
-            if (!f.a.KqF.N(paramCharSequence))
+          if (f.a.RrM != null) {
+            if (!f.a.RrM.W(paramCharSequence))
             {
               localObject = paramCharSequence;
-              if (!f.a.KqF.M(paramCharSequence)) {}
+              if (!f.a.RrM.V(paramCharSequence)) {}
             }
             else
             {
@@ -155,43 +234,43 @@ final class r
         }
       }
       paramCharSequence = (CharSequence)localObject;
-      if (this.KrG)
+      if (this.RsN)
       {
         if (!((CharSequence)localObject).toString().contains("data-miniprogram-appid")) {
-          break label299;
+          break label305;
         }
-        paramCharSequence = Z((CharSequence)localObject);
+        paramCharSequence = an((CharSequence)localObject);
       }
-      label187:
+      label191:
       localObject = paramCharSequence;
-      if (this.KrR) {
-        localObject = X(paramCharSequence);
+      if (this.RsY) {
+        localObject = al(paramCharSequence);
       }
       paramCharSequence = (CharSequence)localObject;
-      if (this.KrT) {
-        paramCharSequence = b((CharSequence)localObject, this.KrX);
+      if (this.Rta) {
+        paramCharSequence = e((CharSequence)localObject, this.Rte);
       }
-      if ((!this.KrU) || (f.a.KqF == null)) {
-        break label324;
+      if ((!this.Rtb) || (f.a.RrM == null)) {
+        break label331;
       }
-      paramCharSequence = f.a.KqF.b(this.mContext, paramCharSequence, this.KrZ);
+      paramCharSequence = f.a.RrM.a(this.mContext, paramCharSequence, this.Rtg);
     }
-    label299:
-    label324:
+    label305:
+    label331:
     for (;;)
     {
-      if (this.KrI) {
-        aa(paramCharSequence);
+      if (this.RsP) {
+        ao(paramCharSequence);
       }
-      if ((paramCharSequence instanceof Spannable))
+      if ((paramCharSequence instanceof SpannableString))
       {
         paramCharSequence = (SpannableString)paramCharSequence;
         AppMethodBeat.o(152350);
         return paramCharSequence;
-        this.KrZ = com.tencent.mm.cb.a.aG(this.mContext, 2131165535);
+        this.Rtg = com.tencent.mm.ci.a.aY(this.mContext, c.c.NormalTextSize);
         break;
-        paramCharSequence = Y((CharSequence)localObject);
-        break label187;
+        paramCharSequence = am((CharSequence)localObject);
+        break label191;
       }
       paramCharSequence = new SpannableString(paramCharSequence);
       AppMethodBeat.o(152350);
@@ -199,20 +278,20 @@ final class r
     }
   }
   
-  private CharSequence X(CharSequence paramCharSequence)
+  private CharSequence al(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152351);
-    Object localObject2 = k.a.KqN.matcher(paramCharSequence.toString());
+    Object localObject2 = k.a.RrU.matcher(paramCharSequence.toString());
     Object localObject1 = paramCharSequence;
     paramCharSequence = (CharSequence)localObject2;
     if (paramCharSequence.find())
     {
-      if (this.KrS) {
+      if (this.RsZ) {
         paramCharSequence = ((CharSequence)localObject1).toString().replace(paramCharSequence.group(0), "");
       }
       for (;;)
       {
-        localObject2 = k.a.KqI.matcher(paramCharSequence);
+        localObject2 = k.a.RrP.matcher(paramCharSequence);
         localObject1 = paramCharSequence;
         paramCharSequence = (CharSequence)localObject2;
         break;
@@ -228,7 +307,7 @@ final class r
             paramCharSequence.height = 15;
             paramCharSequence.width = 35;
           }
-          this.KrF.add(paramCharSequence);
+          this.RsM.add(paramCharSequence);
           paramCharSequence = (CharSequence)localObject1;
         }
         else
@@ -242,13 +321,13 @@ final class r
     return localObject1;
   }
   
-  private CharSequence Y(CharSequence paramCharSequence)
+  private CharSequence am(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152353);
     String str1 = paramCharSequence.toString();
     Matcher localMatcher;
     if (str1.length() < 1500) {
-      localMatcher = k.a.KqI.matcher(str1);
+      localMatcher = k.a.RrP.matcher(str1);
     }
     while (localMatcher.find())
     {
@@ -271,15 +350,15 @@ final class r
         {
           Log.e("MicroMsg.SpanProcessor", "parseHref error, start:%d, end:%d, source.length:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramCharSequence.length()) });
           continue;
-          localMatcher = k.a.KqH.matcher(str1);
+          localMatcher = k.a.RrO.matcher(str1);
         }
         else
         {
-          aN(str2, i, j);
+          aP(str2, i, j);
           if (str1.length() < 1500) {
-            localMatcher = k.a.KqI.matcher(str1);
+            localMatcher = k.a.RrP.matcher(str1);
           } else {
-            localMatcher = k.a.KqH.matcher(str1);
+            localMatcher = k.a.RrO.matcher(str1);
           }
         }
       }
@@ -288,13 +367,13 @@ final class r
     return str1;
   }
   
-  private CharSequence Z(CharSequence paramCharSequence)
+  private CharSequence an(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152354);
     Object localObject1 = paramCharSequence.toString();
     Object localObject2;
     if (((String)localObject1).length() < 1500) {
-      localObject2 = k.a.KqK.matcher((CharSequence)localObject1);
+      localObject2 = k.a.RrR.matcher((CharSequence)localObject1);
     }
     while (((Matcher)localObject2).find())
     {
@@ -306,7 +385,7 @@ final class r
       {
         Log.e("MicroMsg.SpanProcessor", "XmlParser parse return null, so continue");
         continue;
-        localObject2 = k.a.KqJ.matcher((CharSequence)localObject1);
+        localObject2 = k.a.RrQ.matcher((CharSequence)localObject1);
       }
       else
       {
@@ -343,18 +422,18 @@ final class r
               j = 0;
               continue;
             }
-            aN(str1, i, j);
+            aP(str1, i, j);
           }
         }
         for (;;)
         {
           if (((String)localObject1).length() < 1500)
           {
-            localObject2 = k.a.KqK.matcher((CharSequence)localObject1);
+            localObject2 = k.a.RrR.matcher((CharSequence)localObject1);
             break;
             if (j != 0)
             {
-              if (this.KrS)
+              if (this.RsZ)
               {
                 localObject1 = ((String)localObject1).toString().replace(str4, str3);
                 i = ((Matcher)localObject2).start(0);
@@ -362,7 +441,7 @@ final class r
                 localObject2 = new u(str1, 45, null);
                 ((u)localObject2).start = i;
                 ((u)localObject2).end = (j + i);
-                this.KrD.add(localObject2);
+                this.RsK.add(localObject2);
               }
               else
               {
@@ -370,14 +449,14 @@ final class r
                 str1 = ((String)localObject1).toString().replace(str4, str3);
                 i = ((Matcher)localObject2).start(0);
                 j = str3.length();
-                if (ao.isDarkMode()) {}
-                for (localObject1 = new z(i + 1, i + 3, 2131691573);; localObject1 = new z(i + 1, i + 3, 2131691572))
+                if (ar.isDarkMode()) {}
+                for (localObject1 = new z(i + 1, i + 3, c.g.spannable_app_brand_link_logo_dark);; localObject1 = new z(i + 1, i + 3, c.g.spannable_app_brand_link_logo))
                 {
-                  this.KrF.add(localObject1);
+                  this.RsM.add(localObject1);
                   localObject1 = new u(str2, 45, localObject3);
                   ((u)localObject1).start = (i + 4);
                   ((u)localObject1).end = (i + j);
-                  this.KrD.add(localObject1);
+                  this.RsK.add(localObject1);
                   localObject1 = str1;
                   break;
                 }
@@ -390,135 +469,58 @@ final class r
             }
           }
         }
-        localObject2 = k.a.KqJ.matcher((CharSequence)localObject1);
+        localObject2 = k.a.RrQ.matcher((CharSequence)localObject1);
       }
     }
     AppMethodBeat.o(152354);
     return localObject1;
   }
   
-  private void a(SpannableString paramSpannableString)
-  {
-    AppMethodBeat.i(152368);
-    if (this.Ws != null)
-    {
-      paramSpannableString = new o();
-      paramSpannableString.mSessionId = this.mSessionId;
-      paramSpannableString.setAdTagClickCallback(this.mAdTagClickCallback, 0);
-      paramSpannableString.mAdTagClickScene = this.mAdTagClickScene;
-      this.Ws.setOnTouchListener(paramSpannableString);
-      AppMethodBeat.o(152368);
-      return;
-    }
-    if (paramSpannableString != null)
-    {
-      paramSpannableString = (p[])paramSpannableString.getSpans(0, paramSpannableString.length(), p.class);
-      int j;
-      int i;
-      if ((paramSpannableString != null) && (paramSpannableString.length > 0) && (this.mSessionId != null))
-      {
-        j = paramSpannableString.length;
-        i = 0;
-        while (i < j)
-        {
-          paramSpannableString[i].setSessionId(this.mSessionId);
-          i += 1;
-        }
-      }
-      if ((paramSpannableString != null) && (paramSpannableString.length > 0))
-      {
-        j = paramSpannableString.length;
-        i = 0;
-        while (i < j)
-        {
-          Object localObject = paramSpannableString[i];
-          localObject.setAdTagClickCallback(this.mAdTagClickCallback, 0);
-          localObject.setAdTagClickScene(this.mAdTagClickScene);
-          i += 1;
-        }
-      }
-    }
-    AppMethodBeat.o(152368);
-  }
-  
-  private static boolean a(ArrayList<a> paramArrayList, a parama)
-  {
-    AppMethodBeat.i(152366);
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext()) {
-      if (((a)paramArrayList.next()).a(parama))
-      {
-        AppMethodBeat.o(152366);
-        return true;
-      }
-    }
-    AppMethodBeat.o(152366);
-    return false;
-  }
-  
-  private boolean aN(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(152365);
-    paramString = b.a(this.mContext, paramString, paramInt1, paramInt2);
-    if (paramString != null)
-    {
-      if (this.Ksb != null) {
-        paramString.data = this.Ksb;
-      }
-      this.KrD.add(paramString);
-      this.KrE.add(new a(paramInt1, paramInt2));
-      AppMethodBeat.o(152365);
-      return true;
-    }
-    AppMethodBeat.o(152365);
-    return false;
-  }
-  
-  private void aa(CharSequence paramCharSequence)
+  private void ao(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152355);
-    if (this.KrL) {
-      this.KrE.addAll(ab(paramCharSequence));
+    if (this.RsS) {
+      this.RsL.addAll(ap(paramCharSequence));
     }
-    if (this.KrH) {
-      this.KrE.addAll(ad(paramCharSequence));
+    if (this.RsO) {
+      this.RsL.addAll(ar(paramCharSequence));
     }
-    if (this.KrJ) {
-      this.KrE.addAll(ae(paramCharSequence));
+    if (this.RsQ) {
+      this.RsL.addAll(as(paramCharSequence));
     }
-    if (this.KrP) {
-      this.KrE.addAll(ak(paramCharSequence));
+    if (this.RsW) {
+      this.RsL.addAll(ay(paramCharSequence));
     }
-    if (this.KrM) {
-      this.KrE.addAll(af(paramCharSequence));
+    if (this.RsT) {
+      this.RsL.addAll(at(paramCharSequence));
     }
-    if (this.KrN) {
-      this.KrE.addAll(ag(paramCharSequence));
+    if (this.RsU) {
+      this.RsL.addAll(au(paramCharSequence));
     }
-    if (this.KrQ) {
-      this.KrE.addAll(ah(paramCharSequence));
+    if (this.RsX) {
+      this.RsL.addAll(av(paramCharSequence));
     }
-    if (this.KrK) {
-      this.KrE.addAll(ai(paramCharSequence));
+    if (this.RsR) {
+      this.RsL.addAll(aw(paramCharSequence));
     }
-    if (this.KrO) {
-      this.KrE.addAll(aj(paramCharSequence));
+    if (this.RsV) {
+      this.RsL.addAll(ax(paramCharSequence));
     }
-    if (this.KrW) {
-      this.KrE.addAll(ac(paramCharSequence));
+    if (this.Rtd) {
+      this.RsL.addAll(aq(paramCharSequence));
     }
-    if (this.KrV) {
-      this.KrE.addAll(al(paramCharSequence));
+    if (this.Rtc) {
+      this.RsL.addAll(az(paramCharSequence));
     }
     AppMethodBeat.o(152355);
   }
   
-  private ArrayList<a> ab(CharSequence paramCharSequence)
+  private ArrayList<r.a> ap(CharSequence paramCharSequence)
   {
     int i = 2000;
     AppMethodBeat.i(152356);
     ArrayList localArrayList = new ArrayList();
-    Object localObject = k.a.KqR;
+    Object localObject = k.a.RrY;
     if (paramCharSequence.length() > 2000) {}
     for (;;)
     {
@@ -530,10 +532,10 @@ final class r
         localObject = new u(paramCharSequence.group(), 24, null);
         ((u)localObject).start = i;
         ((u)localObject).end = j;
-        if (!a(this.KrE, new a(i, j)))
+        if (!a(this.RsL, new r.a(this, i, j)))
         {
-          this.KrD.add(localObject);
-          localArrayList.add(new a(i, j));
+          this.RsK.add(localObject);
+          localArrayList.add(new r.a(this, i, j));
         }
       }
       i = paramCharSequence.length();
@@ -542,12 +544,12 @@ final class r
     return localArrayList;
   }
   
-  private ArrayList<a> ac(CharSequence paramCharSequence)
+  private ArrayList<r.a> aq(CharSequence paramCharSequence)
   {
     int i = 2000;
     AppMethodBeat.i(152357);
     ArrayList localArrayList = new ArrayList();
-    Object localObject = k.a.KqS;
+    Object localObject = k.a.RrZ;
     if (paramCharSequence.length() > 2000) {}
     for (;;)
     {
@@ -559,10 +561,10 @@ final class r
         localObject = new u(paramCharSequence.group(), 48, null);
         ((u)localObject).start = i;
         ((u)localObject).end = j;
-        if (!a(this.KrE, new a(i, j)))
+        if (!a(this.RsL, new r.a(this, i, j)))
         {
-          this.KrD.add(localObject);
-          localArrayList.add(new a(i, j));
+          this.RsK.add(localObject);
+          localArrayList.add(new r.a(this, i, j));
         }
       }
       i = paramCharSequence.length();
@@ -571,19 +573,19 @@ final class r
     return localArrayList;
   }
   
-  private ArrayList<a> ad(CharSequence paramCharSequence)
+  private ArrayList<r.a> ar(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152358);
     ArrayList localArrayList = new ArrayList();
     String str = paramCharSequence.toString();
     if (str.length() > 500) {
-      paramCharSequence = k.a.KqQ.matcher(str.toLowerCase());
+      paramCharSequence = k.a.RrX.matcher(str.toLowerCase());
     }
     while (paramCharSequence.find())
     {
       int i = paramCharSequence.start();
       int j = paramCharSequence.end();
-      if ((!a(this.KrE, new a(i, j))) && (i >= 0) && (j <= str.length())) {
+      if ((!a(this.RsL, new r.a(this, i, j))) && (i >= 0) && (j <= str.length())) {
         if (j < str.length())
         {
           int k = str.charAt(j);
@@ -591,13 +593,13 @@ final class r
         }
         else
         {
-          u localu = new u(str.substring(i, j), 1, this.Ksb);
+          u localu = new u(str.substring(i, j), 1, this.Rti);
           localu.start = i;
           localu.end = j;
-          this.KrD.add(localu);
-          localArrayList.add(new a(i, j));
+          this.RsK.add(localu);
+          localArrayList.add(new r.a(this, i, j));
           continue;
-          paramCharSequence = k.a.KqP.matcher(str.toLowerCase());
+          paramCharSequence = k.a.RrW.matcher(str.toLowerCase());
         }
       }
     }
@@ -605,7 +607,7 @@ final class r
     return localArrayList;
   }
   
-  private ArrayList<a> ae(CharSequence paramCharSequence)
+  private ArrayList<r.a> as(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152359);
     ArrayList localArrayList = new ArrayList();
@@ -615,67 +617,67 @@ final class r
       AppMethodBeat.o(152359);
       return localArrayList;
     }
-    Matcher localMatcher = k.a.KqX.matcher(paramCharSequence);
+    Matcher localMatcher = k.a.Rse.matcher(paramCharSequence);
     while (localMatcher.find())
     {
       int i = localMatcher.start();
       int j = localMatcher.end();
-      if ((!a(this.KrE, new a(i, j))) && (i >= 0) && (j <= paramCharSequence.length()))
+      if ((!a(this.RsL, new r.a(this, i, j))) && (i >= 0) && (j <= paramCharSequence.length()))
       {
-        u localu = new u(paramCharSequence.substring(i, j), 44, this.Ksb);
+        u localu = new u(paramCharSequence.substring(i, j), 44, this.Rti);
         localu.start = i;
         localu.end = j;
-        this.KrD.add(localu);
-        localArrayList.add(new a(i, j));
+        this.RsK.add(localu);
+        localArrayList.add(new r.a(this, i, j));
       }
     }
     AppMethodBeat.o(152359);
     return localArrayList;
   }
   
-  private ArrayList<a> af(CharSequence paramCharSequence)
+  private ArrayList<r.a> at(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152360);
     ArrayList localArrayList = new ArrayList();
     String str = paramCharSequence.toString();
-    paramCharSequence = k.a.KqU.matcher(paramCharSequence);
+    paramCharSequence = k.a.Rsb.matcher(paramCharSequence);
     while (paramCharSequence.find())
     {
       int i = paramCharSequence.start();
       int j = paramCharSequence.end();
-      if ((!a(this.KrE, new a(i, j))) && (i >= 0) && (j <= str.length()))
+      if ((!a(this.RsL, new r.a(this, i, j))) && (i >= 0) && (j <= str.length()))
       {
         u localu = new u(str.substring(i, j), 28, null);
         localu.start = i;
         localu.end = j;
-        this.KrD.add(localu);
-        localArrayList.add(new a(i, j));
+        this.RsK.add(localu);
+        localArrayList.add(new r.a(this, i, j));
       }
     }
     AppMethodBeat.o(152360);
     return localArrayList;
   }
   
-  private ArrayList<a> ag(CharSequence paramCharSequence)
+  private ArrayList<r.a> au(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152361);
     ArrayList localArrayList = new ArrayList();
     String str = paramCharSequence.toString();
-    paramCharSequence = k.a.KqY.matcher(paramCharSequence);
+    paramCharSequence = k.a.Rsf.matcher(paramCharSequence);
     while (paramCharSequence.find())
     {
       Object localObject = paramCharSequence.group();
-      if (c.KqA.bfg((String)localObject))
+      if (c.RrH.brC((String)localObject))
       {
         int i = paramCharSequence.start();
         int j = paramCharSequence.end();
-        if ((!a(this.KrE, new a(i, j))) && (i >= 0) && (j <= str.length()))
+        if ((!a(this.RsL, new r.a(this, i, j))) && (i >= 0) && (j <= str.length()))
         {
-          localObject = new u(str.substring(i, j), 50, this.Ksb);
+          localObject = new u(str.substring(i, j), 50, this.Rti);
           ((u)localObject).start = i;
           ((u)localObject).end = j;
-          this.KrD.add(localObject);
-          localArrayList.add(new a(i, j));
+          this.RsK.add(localObject);
+          localArrayList.add(new r.a(this, i, j));
         }
       }
     }
@@ -683,35 +685,35 @@ final class r
     return localArrayList;
   }
   
-  private ArrayList<a> ah(CharSequence paramCharSequence)
+  private ArrayList<r.a> av(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(223868);
+    AppMethodBeat.i(198584);
     ArrayList localArrayList = new ArrayList();
     String str = paramCharSequence.toString();
-    paramCharSequence = k.a.Krb.matcher(paramCharSequence);
+    paramCharSequence = k.a.Rsi.matcher(paramCharSequence);
     while (paramCharSequence.find())
     {
       paramCharSequence.group();
       int i = paramCharSequence.start();
       int j = paramCharSequence.end();
-      if ((!a(this.KrE, new a(i, j))) && (i >= 0) && (j <= str.length()))
+      if ((!a(this.RsL, new r.a(this, i, j))) && (i >= 0) && (j <= str.length()))
       {
-        u localu = new u(str.substring(i, j), 58, this.Ksb);
+        u localu = new u(str.substring(i, j), 58, this.Rti);
         localu.start = i;
         localu.end = j;
-        this.KrD.add(localu);
-        localArrayList.add(new a(i, j));
+        this.RsK.add(localu);
+        localArrayList.add(new r.a(this, i, j));
       }
     }
-    AppMethodBeat.o(223868);
+    AppMethodBeat.o(198584);
     return localArrayList;
   }
   
-  private ArrayList<a> ai(CharSequence paramCharSequence)
+  private ArrayList<r.a> aw(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152362);
     ArrayList localArrayList = new ArrayList();
-    paramCharSequence = k.a.KqT.matcher(paramCharSequence);
+    paramCharSequence = k.a.Rsa.matcher(paramCharSequence);
     while (paramCharSequence.find())
     {
       int k = paramCharSequence.start();
@@ -722,31 +724,31 @@ final class r
       if (((String)localObject).startsWith("+")) {
         i = j - 1;
       }
-      if (((i != 6) && (i != 5)) || (("+12306+12110+12395+12121+12117+12119+95555+95566+95533+95588+95558+95599+95568+95595+95559+95508+95528+95501+95577+95561+10086+10010+10000+17951+17911+17900+118114+116114+950718+95598+12318+12315+12358+12365+12310+12369+12333+12366+95518+95519+95511+95500+95522+95567+95017".contains((CharSequence)localObject)) && (i < 100) && (!a(this.KrE, new a(k, m)))))
+      if (((i != 6) && (i != 5)) || (("+12306+12110+12395+12121+12117+12119+95555+95566+95533+95588+95558+95599+95568+95595+95559+95508+95528+95501+95577+95561+10086+10010+10000+17951+17911+17900+118114+116114+950718+95598+12318+12315+12358+12365+12310+12369+12333+12366+95518+95519+95511+95500+95522+95567+95017".contains((CharSequence)localObject)) && (i < 100) && (!a(this.RsL, new r.a(this, k, m)))))
       {
-        localObject = new u((String)localObject, 25, this.Ksb);
+        localObject = new u((String)localObject, 25, this.Rti);
         ((u)localObject).start = k;
         ((u)localObject).end = m;
-        this.KrD.add(localObject);
-        localArrayList.add(new a(k, m));
+        this.RsK.add(localObject);
+        localArrayList.add(new r.a(this, k, m));
       }
     }
     AppMethodBeat.o(152362);
     return localArrayList;
   }
   
-  private ArrayList<a> aj(CharSequence paramCharSequence)
+  private ArrayList<r.a> ax(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152363);
     ArrayList localArrayList = new ArrayList();
-    paramCharSequence = b.cn(this.mContext, paramCharSequence.toString()).iterator();
+    paramCharSequence = b.cz(this.mContext, paramCharSequence.toString()).iterator();
     while (paramCharSequence.hasNext())
     {
       u localu = (u)paramCharSequence.next();
-      a locala = new a(localu.start, localu.end);
-      if (!a(this.KrE, locala))
+      r.a locala = new r.a(this, localu.start, localu.end);
+      if (!a(this.RsL, locala))
       {
-        this.KrD.add(localu);
+        this.RsK.add(localu);
         localArrayList.add(locala);
       }
     }
@@ -754,44 +756,44 @@ final class r
     return localArrayList;
   }
   
-  private ArrayList<a> ak(CharSequence paramCharSequence)
+  private ArrayList<r.a> ay(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152364);
     ArrayList localArrayList = new ArrayList();
     paramCharSequence = paramCharSequence.toString();
-    Matcher localMatcher = k.a.KqW.matcher(paramCharSequence);
+    Matcher localMatcher = k.a.Rsd.matcher(paramCharSequence);
     int i;
     int j;
-    a locala;
+    r.a locala;
     u localu;
     while (localMatcher.find())
     {
       i = localMatcher.start();
       j = localMatcher.end();
-      locala = new a(i, j);
-      if ((!a(this.KrE, locala)) && (i >= 0) && (j <= paramCharSequence.length()))
+      locala = new r.a(this, i, j);
+      if ((!a(this.RsL, locala)) && (i >= 0) && (j <= paramCharSequence.length()))
       {
         localu = new u(paramCharSequence.substring(i, j), 30, null);
         localu.start = i;
         localu.end = j;
-        this.KrD.add(localu);
+        this.RsK.add(localu);
         localArrayList.add(locala);
       }
     }
     if (localArrayList.size() <= 0)
     {
-      localMatcher = k.a.KqV.matcher(paramCharSequence);
+      localMatcher = k.a.Rsc.matcher(paramCharSequence);
       while (localMatcher.find())
       {
         i = localMatcher.start();
         j = localMatcher.end();
-        locala = new a(i, j);
-        if ((!a(this.KrE, locala)) && (i >= 0) && (j <= paramCharSequence.length()))
+        locala = new r.a(this, i, j);
+        if ((!a(this.RsL, locala)) && (i >= 0) && (j <= paramCharSequence.length()))
         {
           localu = new u(paramCharSequence.substring(i, j), 30, null);
           localu.start = i;
           localu.end = j;
-          this.KrD.add(localu);
+          this.RsK.add(localu);
           localArrayList.add(locala);
         }
       }
@@ -800,35 +802,42 @@ final class r
     return localArrayList;
   }
   
-  private ArrayList<a> al(CharSequence paramCharSequence)
+  private ArrayList<r.a> az(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(223869);
+    AppMethodBeat.i(198592);
     ArrayList localArrayList = new ArrayList();
     paramCharSequence = paramCharSequence.toString();
-    Matcher localMatcher = k.a.Krc.matcher(paramCharSequence);
+    Matcher localMatcher = k.a.Rsj.matcher(paramCharSequence);
     while (localMatcher.find())
     {
       int i = localMatcher.start();
       int j = localMatcher.end();
-      a locala = new a(i, j);
-      if ((!a(this.KrE, locala)) && (i >= 0) && (j <= paramCharSequence.length()))
+      r.a locala = new r.a(this, i, j);
+      if ((!a(this.RsL, locala)) && (i >= 0) && (j <= paramCharSequence.length()))
       {
         u localu = new u(paramCharSequence.substring(i, j), 60, null);
         localu.start = i;
-        localu.data = this.Ksb;
+        localu.bnW = this.Rti;
         localu.end = j;
-        this.KrD.add(localu);
+        this.RsK.add(localu);
         localArrayList.add(locala);
       }
     }
-    AppMethodBeat.o(223869);
+    AppMethodBeat.o(198592);
     return localArrayList;
   }
   
-  private CharSequence b(CharSequence paramCharSequence, boolean paramBoolean)
+  public static void clearCache()
+  {
+    AppMethodBeat.i(152369);
+    RsJ.clear();
+    AppMethodBeat.o(152369);
+  }
+  
+  private CharSequence e(CharSequence paramCharSequence, boolean paramBoolean)
   {
     AppMethodBeat.i(152352);
-    Object localObject2 = k.a.KqL.matcher(paramCharSequence);
+    Object localObject2 = k.a.RrS.matcher(paramCharSequence);
     int i = 0;
     Object localObject1 = paramCharSequence;
     String str2;
@@ -863,9 +872,9 @@ final class r
           {
             localObject2 = new u(j, k);
             ((u)localObject2).linkColor = i;
-            this.KrD.add(localObject2);
-            this.KrE.add(new a(j, k));
-            localObject2 = k.a.KqL.matcher((CharSequence)localObject1);
+            this.RsK.add(localObject2);
+            this.RsL.add(new r.a(this, j, k));
+            localObject2 = k.a.RrS.matcher((CharSequence)localObject1);
             i = 1;
           }
         }
@@ -884,11 +893,11 @@ final class r
             localObject3 = b.a(this.mContext, str3, j, k, i, i & 0x99FFFFFF);
             if (localObject3 != null)
             {
-              if (this.Ksb != null) {
-                ((u)localObject3).data = this.Ksb;
+              if (this.Rti != null) {
+                ((u)localObject3).bnW = this.Rti;
               }
-              this.KrD.add(localObject3);
-              this.KrE.add(new a(j, k));
+              this.RsK.add(localObject3);
+              this.RsL.add(new r.a(this, j, k));
             }
           }
         }
@@ -897,7 +906,7 @@ final class r
     Object localObject4 = localObject1;
     if (i == 0)
     {
-      localObject3 = k.a.KqM.matcher(paramCharSequence);
+      localObject3 = k.a.RrT.matcher(paramCharSequence);
       for (;;)
       {
         localObject4 = localObject1;
@@ -922,34 +931,27 @@ final class r
           }
           else
           {
-            if ((!aN(str2, i, j)) && (paramBoolean))
+            if ((!aP(str2, i, j)) && (paramBoolean))
             {
               localObject3 = new u(str2, 2147483646, null);
-              if (this.Ksb != null) {
-                ((u)localObject3).data = this.Ksb;
+              if (this.Rti != null) {
+                ((u)localObject3).bnW = this.Rti;
               }
               ((u)localObject3).start = i;
               ((u)localObject3).end = j;
-              if (!a(this.KrE, new a(i, j)))
+              if (!a(this.RsL, new r.a(this, i, j)))
               {
-                this.KrD.add(localObject3);
-                this.KrE.add(new a(i, j));
+                this.RsK.add(localObject3);
+                this.RsL.add(new r.a(this, i, j));
               }
             }
-            localObject3 = k.a.KqL.matcher((CharSequence)localObject1);
+            localObject3 = k.a.RrS.matcher((CharSequence)localObject1);
           }
         }
       }
     }
     AppMethodBeat.o(152352);
     return localObject4;
-  }
-  
-  public static void clearCache()
-  {
-    AppMethodBeat.i(152369);
-    KrC.clear();
-    AppMethodBeat.o(152369);
   }
   
   private static void f(Spannable paramSpannable)
@@ -963,8 +965,8 @@ final class r
       Object localObject = arrayOfObject[i];
       int j = 0;
       label42:
-      if (j < Ksc.length) {
-        if (!Ksc[j].isInstance(localObject)) {}
+      if (j < Rtj.length) {
+        if (!Rtj[j].isInstance(localObject)) {}
       }
       for (j = 1;; j = 0)
       {
@@ -983,25 +985,25 @@ final class r
   private void g(Spannable paramSpannable)
   {
     AppMethodBeat.i(152367);
-    if ((this.Ws != null) && (!Util.isNullOrNil(paramSpannable.toString())))
+    if ((this.rR != null) && (!Util.isNullOrNil(paramSpannable.toString())))
     {
-      if (ac.jPd)
+      if (ac.mGn)
       {
-        this.Ws.setText(paramSpannable, TextView.BufferType.SPANNABLE);
+        this.rR.setText(paramSpannable, TextView.BufferType.SPANNABLE);
         AppMethodBeat.o(152367);
         return;
       }
-      this.Ws.setText(paramSpannable);
+      this.rR.setText(paramSpannable);
     }
     AppMethodBeat.o(152367);
   }
   
-  public final r C(TextView paramTextView)
+  public final r J(TextView paramTextView)
   {
     AppMethodBeat.i(152346);
-    this.Ws = paramTextView;
+    this.rR = paramTextView;
     if (paramTextView != null) {
-      this.mContext = this.Ws.getContext();
+      this.mContext = this.rR.getContext();
     }
     AppMethodBeat.o(152346);
     return this;
@@ -1016,11 +1018,11 @@ final class r
       AppMethodBeat.o(152348);
       return paramCharSequence;
     }
-    this.KrZ = paramInt;
-    Object localObject1 = V(paramCharSequence);
+    this.Rtg = paramInt;
+    Object localObject1 = aj(paramCharSequence);
     if (paramBoolean)
     {
-      localObject2 = (SpannableString)KrC.get(localObject1);
+      localObject2 = (SpannableString)RsJ.get(localObject1);
       if (localObject2 != null)
       {
         f((Spannable)localObject2);
@@ -1032,8 +1034,8 @@ final class r
         while (paramInt < i)
         {
           localObject1 = paramCharSequence[paramInt].getHrefInfo();
-          if ((localObject1 != null) && (((u)localObject1).type == 60) && (this.Ksb != null)) {
-            ((u)localObject1).data = this.Ksb;
+          if ((localObject1 != null) && ((((u)localObject1).type == 60) || (((u)localObject1).type == 58)) && (this.Rti != null)) {
+            ((u)localObject1).bnW = this.Rti;
           }
           paramInt += 1;
         }
@@ -1041,24 +1043,24 @@ final class r
         return localObject2;
       }
     }
-    paramCharSequence = W(paramCharSequence);
+    paramCharSequence = ak(paramCharSequence);
     Object localObject3;
-    if (this.Ksa)
+    if (this.Rth)
     {
-      localObject2 = this.KrD.iterator();
+      localObject2 = this.RsK.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (u)((Iterator)localObject2).next();
         ((u)localObject3).mSessionId = this.mSessionId;
-        ((u)localObject3).fromScene = this.gwE;
+        ((u)localObject3).fromScene = this.jaR;
         if (Util.isNullOrNil(((u)localObject3).url)) {
           paramCharSequence.setSpan(new ForegroundColorSpan(((u)localObject3).linkColor), ((u)localObject3).start, ((u)localObject3).end, 33);
         } else if ((((u)localObject3).start <= paramCharSequence.length()) && (((u)localObject3).end <= paramCharSequence.length())) {
-          paramCharSequence.setSpan(new p(this.KrY, (u)localObject3), ((u)localObject3).start, ((u)localObject3).end, 33);
+          paramCharSequence.setSpan(new p(this.Rtf, (u)localObject3), ((u)localObject3).start, ((u)localObject3).end, 33);
         }
       }
     }
-    Object localObject2 = this.KrF.iterator();
+    Object localObject2 = this.RsM.iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (z)((Iterator)localObject2).next();
@@ -1067,15 +1069,15 @@ final class r
         Object localObject4 = this.mContext.getResources().getDrawable(((z)localObject3).id);
         if ((((z)localObject3).width > 0) && (((z)localObject3).height > 0))
         {
-          ((Drawable)localObject4).setBounds(0, 0, com.tencent.mm.cb.a.fromDPToPix(this.mContext, ((z)localObject3).width), com.tencent.mm.cb.a.fromDPToPix(this.mContext, ((z)localObject3).height));
-          localObject4 = new com.tencent.mm.ui.widget.a((Drawable)localObject4);
-          ((com.tencent.mm.ui.widget.a)localObject4).QBM = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 2);
+          ((Drawable)localObject4).setBounds(0, 0, com.tencent.mm.ci.a.fromDPToPix(this.mContext, ((z)localObject3).width), com.tencent.mm.ci.a.fromDPToPix(this.mContext, ((z)localObject3).height));
+          localObject4 = new com.tencent.mm.ui.widget.a((Drawable)localObject4, 1);
+          ((com.tencent.mm.ui.widget.a)localObject4).Yal = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 2);
           paramCharSequence.setSpan(localObject4, ((z)localObject3).start, ((z)localObject3).start + 1, 18);
         }
         else
         {
-          if (this.Ws == null) {}
-          for (paramInt = (int)(this.KrZ * 1.3F);; paramInt = (int)(this.Ws.getTextSize() * 1.3F))
+          if (this.rR == null) {}
+          for (paramInt = (int)(this.Rtg * 1.3F);; paramInt = (int)(this.rR.getTextSize() * 1.3F))
           {
             ((Drawable)localObject4).setBounds(0, 0, paramInt, paramInt);
             break;
@@ -1086,32 +1088,15 @@ final class r
     g(paramCharSequence);
     a(paramCharSequence);
     if (paramBoolean) {
-      KrC.x(localObject1, new SpannableString(paramCharSequence));
+      RsJ.q(localObject1, new SpannableString(paramCharSequence));
     }
     AppMethodBeat.o(152348);
     return paramCharSequence;
   }
-  
-  final class a
-  {
-    private int end;
-    private int start;
-    
-    a(int paramInt1, int paramInt2)
-    {
-      this.start = paramInt1;
-      this.end = paramInt2;
-    }
-    
-    final boolean a(a parama)
-    {
-      return (this.end > parama.start) && (parama.end > this.start);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.span.r
  * JD-Core Version:    0.7.0.1
  */

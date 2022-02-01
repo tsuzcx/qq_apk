@@ -8,43 +8,43 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Map.Entry<TFieldDescriptorType;Ljava.lang.Object;>;
 
-public final class h<FieldDescriptorType extends a<FieldDescriptorType>>
+public final class h<FieldDescriptorType extends h.a<FieldDescriptorType>>
 {
-  private static final h TDz;
-  final v<FieldDescriptorType, Object> TDy;
-  private boolean bUC;
-  boolean bUD;
+  private static final h abgl;
+  final w<FieldDescriptorType, Object> abgk;
+  private boolean bWA;
+  boolean bWB;
   
   static
   {
     AppMethodBeat.i(59470);
-    TDz = new h((byte)0);
+    abgl = new h((byte)0);
     AppMethodBeat.o(59470);
   }
   
   private h()
   {
     AppMethodBeat.i(59448);
-    this.bUD = false;
-    this.TDy = v.avE(16);
+    this.bWB = false;
+    this.abgk = w.aFy(16);
     AppMethodBeat.o(59448);
   }
   
   private h(byte paramByte)
   {
     AppMethodBeat.i(59449);
-    this.bUD = false;
-    this.TDy = v.avE(0);
-    yK();
+    this.bWB = false;
+    this.abgk = w.aFy(0);
+    Al();
     AppMethodBeat.o(59449);
   }
   
-  private static int a(z.a parama, int paramInt, Object paramObject)
+  private static int a(aa.a parama, int paramInt, Object paramObject)
   {
     AppMethodBeat.i(59466);
-    int i = f.fS(paramInt);
+    int i = f.gL(paramInt);
     paramInt = i;
-    if (parama == z.a.TEx) {
+    if (parama == aa.a.abhb) {
       paramInt = i * 2;
     }
     i = b(parama, paramObject);
@@ -52,63 +52,63 @@ public final class h<FieldDescriptorType extends a<FieldDescriptorType>>
     return paramInt + i;
   }
   
-  static int a(z.a parama, boolean paramBoolean)
+  static int a(aa.a parama, boolean paramBoolean)
   {
     if (paramBoolean) {
       return 2;
     }
-    return parama.caV;
+    return parama.ccy;
   }
   
-  public static Object a(e parame, z.a parama)
+  public static Object a(e parame, aa.a parama)
   {
     AppMethodBeat.i(59461);
     long l;
     int i;
-    switch (h.1.bUG[parama.ordinal()])
+    switch (1.bWE[parama.ordinal()])
     {
     default: 
       parame = new RuntimeException("There is no way to get here, but the compiler thinks otherwise.");
       AppMethodBeat.o(59461);
       throw parame;
     case 1: 
-      double d = Double.longBitsToDouble(parame.zn());
+      double d = Double.longBitsToDouble(parame.AP());
       AppMethodBeat.o(59461);
       return Double.valueOf(d);
     case 2: 
-      float f = Float.intBitsToFloat(parame.zm());
+      float f = Float.intBitsToFloat(parame.AO());
       AppMethodBeat.o(59461);
       return Float.valueOf(f);
     case 3: 
-      l = parame.zl();
+      l = parame.AN();
       AppMethodBeat.o(59461);
       return Long.valueOf(l);
     case 4: 
-      l = parame.zl();
+      l = parame.AN();
       AppMethodBeat.o(59461);
       return Long.valueOf(l);
     case 5: 
-      i = parame.zi();
+      i = parame.AK();
       AppMethodBeat.o(59461);
       return Integer.valueOf(i);
     case 6: 
-      l = parame.zn();
+      l = parame.AP();
       AppMethodBeat.o(59461);
       return Long.valueOf(l);
     case 7: 
-      i = parame.zm();
+      i = parame.AO();
       AppMethodBeat.o(59461);
       return Integer.valueOf(i);
     case 8: 
-      boolean bool = parame.yZ();
+      boolean bool = parame.AB();
       AppMethodBeat.o(59461);
       return Boolean.valueOf(bool);
     case 9: 
-      i = parame.zi();
-      if ((i <= parame.bufferSize - parame.cbm) && (i > 0))
+      i = parame.AK();
+      if ((i <= parame.bufferSize - parame.ccP) && (i > 0))
       {
-        parama = new String(parame.buffer, parame.cbm, i, "UTF-8");
-        parame.cbm = (i + parame.cbm);
+        parama = new String(parame.buffer, parame.ccP, i, "UTF-8");
+        parame.ccP = (i + parame.ccP);
         AppMethodBeat.o(59461);
         return parama;
       }
@@ -117,32 +117,32 @@ public final class h<FieldDescriptorType extends a<FieldDescriptorType>>
         AppMethodBeat.o(59461);
         return "";
       }
-      parame = new String(parame.avz(i), "UTF-8");
+      parame = new String(parame.aFt(i), "UTF-8");
       AppMethodBeat.o(59461);
       return parame;
     case 10: 
-      parame = parame.hJt();
+      parame = parame.iNL();
       AppMethodBeat.o(59461);
       return parame;
     case 11: 
-      i = parame.zi();
+      i = parame.AK();
       AppMethodBeat.o(59461);
       return Integer.valueOf(i);
     case 12: 
-      i = parame.zm();
+      i = parame.AO();
       AppMethodBeat.o(59461);
       return Integer.valueOf(i);
     case 13: 
-      l = parame.zn();
+      l = parame.AP();
       AppMethodBeat.o(59461);
       return Long.valueOf(l);
     case 14: 
-      i = parame.zi();
+      i = parame.AK();
       int j = -(i & 0x1);
       AppMethodBeat.o(59461);
       return Integer.valueOf(j ^ i >>> 1);
     case 15: 
-      l = e.Ph(parame.zl());
+      l = e.Xx(parame.AN());
       AppMethodBeat.o(59461);
       return Long.valueOf(l);
     case 16: 
@@ -159,142 +159,7 @@ public final class h<FieldDescriptorType extends a<FieldDescriptorType>>
     throw parame;
   }
   
-  private static void a(f paramf, z.a parama, int paramInt, Object paramObject)
-  {
-    AppMethodBeat.i(59462);
-    if (parama == z.a.TEx)
-    {
-      parama = (q)paramObject;
-      paramf.br(paramInt, 3);
-      parama.a(paramf);
-      paramf.br(paramInt, 4);
-      AppMethodBeat.o(59462);
-      return;
-    }
-    paramf.br(paramInt, a(parama, false));
-    a(paramf, parama, paramObject);
-    AppMethodBeat.o(59462);
-  }
-  
-  private static void a(f paramf, z.a parama, Object paramObject)
-  {
-    AppMethodBeat.i(59463);
-    switch (h.1.bUG[parama.ordinal()])
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(59463);
-      return;
-      paramf.f(((Double)paramObject).doubleValue());
-      AppMethodBeat.o(59463);
-      return;
-      paramf.ad(((Float)paramObject).floatValue());
-      AppMethodBeat.o(59463);
-      return;
-      paramf.aJ(((Long)paramObject).longValue());
-      AppMethodBeat.o(59463);
-      return;
-      paramf.aJ(((Long)paramObject).longValue());
-      AppMethodBeat.o(59463);
-      return;
-      paramf.fK(((Integer)paramObject).intValue());
-      AppMethodBeat.o(59463);
-      return;
-      paramf.Pj(((Long)paramObject).longValue());
-      AppMethodBeat.o(59463);
-      return;
-      paramf.avB(((Integer)paramObject).intValue());
-      AppMethodBeat.o(59463);
-      return;
-      paramf.be(((Boolean)paramObject).booleanValue());
-      AppMethodBeat.o(59463);
-      return;
-      paramf.ca((String)paramObject);
-      AppMethodBeat.o(59463);
-      return;
-      ((q)paramObject).a(paramf);
-      AppMethodBeat.o(59463);
-      return;
-      paramf.b((q)paramObject);
-      AppMethodBeat.o(59463);
-      return;
-      if ((paramObject instanceof d))
-      {
-        paramf.b((d)paramObject);
-        AppMethodBeat.o(59463);
-        return;
-      }
-      paramf.dj((byte[])paramObject);
-      AppMethodBeat.o(59463);
-      return;
-      paramf.hc(((Integer)paramObject).intValue());
-      AppMethodBeat.o(59463);
-      return;
-      paramf.avB(((Integer)paramObject).intValue());
-      AppMethodBeat.o(59463);
-      return;
-      paramf.Pj(((Long)paramObject).longValue());
-      AppMethodBeat.o(59463);
-      return;
-      paramf.fM(((Integer)paramObject).intValue());
-      AppMethodBeat.o(59463);
-      return;
-      paramf.aw(((Long)paramObject).longValue());
-      AppMethodBeat.o(59463);
-      return;
-      if ((paramObject instanceof j.a))
-      {
-        paramf.fK(((j.a)paramObject).getNumber());
-        AppMethodBeat.o(59463);
-        return;
-      }
-      paramf.fK(((Integer)paramObject).intValue());
-    }
-  }
-  
-  public static void a(a<?> parama, Object paramObject, f paramf)
-  {
-    AppMethodBeat.i(59464);
-    z.a locala = parama.hJA();
-    int i = parama.getNumber();
-    if (parama.FJ())
-    {
-      paramObject = (List)paramObject;
-      if (parama.FK())
-      {
-        paramf.br(i, 2);
-        i = 0;
-        parama = paramObject.iterator();
-        while (parama.hasNext()) {
-          i += b(locala, parama.next());
-        }
-        paramf.hc(i);
-        parama = paramObject.iterator();
-        while (parama.hasNext()) {
-          a(paramf, locala, parama.next());
-        }
-        AppMethodBeat.o(59464);
-        return;
-      }
-      parama = paramObject.iterator();
-      while (parama.hasNext()) {
-        a(paramf, locala, i, parama.next());
-      }
-      AppMethodBeat.o(59464);
-      return;
-    }
-    if ((paramObject instanceof l))
-    {
-      a(paramf, locala, i, ((l)paramObject).hJL());
-      AppMethodBeat.o(59464);
-      return;
-    }
-    a(paramf, locala, i, paramObject);
-    AppMethodBeat.o(59464);
-  }
-  
-  private static void a(z.a parama, Object paramObject)
+  private static void a(aa.a parama, Object paramObject)
   {
     boolean bool = false;
     AppMethodBeat.i(59456);
@@ -304,7 +169,7 @@ public final class h<FieldDescriptorType extends a<FieldDescriptorType>>
       AppMethodBeat.o(59456);
       throw parama;
     }
-    switch (h.1.bUF[parama.TEG.ordinal()])
+    switch (1.bWD[parama.abhk.ordinal()])
     {
     }
     while (!bool)
@@ -328,11 +193,11 @@ public final class h<FieldDescriptorType extends a<FieldDescriptorType>>
       {
         bool = true;
         continue;
-        if (((paramObject instanceof Integer)) || ((paramObject instanceof j.a)))
+        if (((paramObject instanceof Integer)) || ((paramObject instanceof k.a)))
         {
           bool = true;
           continue;
-          if (((paramObject instanceof q)) || ((paramObject instanceof l))) {
+          if (((paramObject instanceof r)) || ((paramObject instanceof m))) {
             bool = true;
           }
         }
@@ -341,50 +206,141 @@ public final class h<FieldDescriptorType extends a<FieldDescriptorType>>
     AppMethodBeat.o(59456);
   }
   
-  private static boolean a(Map.Entry<FieldDescriptorType, Object> paramEntry)
+  private static void a(f paramf, aa.a parama, int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(59458);
-    a locala = (a)paramEntry.getKey();
-    if (locala.hJB() == z.b.TEQ)
+    AppMethodBeat.i(59462);
+    if (parama == aa.a.abhb)
     {
-      if (locala.FJ())
-      {
-        paramEntry = ((List)paramEntry.getValue()).iterator();
-        do
-        {
-          if (!paramEntry.hasNext()) {
-            break;
-          }
-        } while (((q)paramEntry.next()).isInitialized());
-        AppMethodBeat.o(59458);
-        return false;
-      }
-      paramEntry = paramEntry.getValue();
-      if ((paramEntry instanceof q))
-      {
-        if (!((q)paramEntry).isInitialized())
-        {
-          AppMethodBeat.o(59458);
-          return false;
-        }
-      }
-      else
-      {
-        if ((paramEntry instanceof l))
-        {
-          AppMethodBeat.o(59458);
-          return true;
-        }
-        paramEntry = new IllegalArgumentException("Wrong object type used with protocol message reflection.");
-        AppMethodBeat.o(59458);
-        throw paramEntry;
-      }
+      parama = (r)paramObject;
+      paramf.bI(paramInt, 3);
+      parama.a(paramf);
+      paramf.bI(paramInt, 4);
+      AppMethodBeat.o(59462);
+      return;
     }
-    AppMethodBeat.o(59458);
-    return true;
+    paramf.bI(paramInt, a(parama, false));
+    a(paramf, parama, paramObject);
+    AppMethodBeat.o(59462);
   }
   
-  private static Object aq(Object paramObject)
+  private static void a(f paramf, aa.a parama, Object paramObject)
+  {
+    AppMethodBeat.i(59463);
+    switch (1.bWE[parama.ordinal()])
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(59463);
+      return;
+      paramf.f(((Double)paramObject).doubleValue());
+      AppMethodBeat.o(59463);
+      return;
+      paramf.ac(((Float)paramObject).floatValue());
+      AppMethodBeat.o(59463);
+      return;
+      paramf.aN(((Long)paramObject).longValue());
+      AppMethodBeat.o(59463);
+      return;
+      paramf.aN(((Long)paramObject).longValue());
+      AppMethodBeat.o(59463);
+      return;
+      paramf.gD(((Integer)paramObject).intValue());
+      AppMethodBeat.o(59463);
+      return;
+      paramf.Xz(((Long)paramObject).longValue());
+      AppMethodBeat.o(59463);
+      return;
+      paramf.aFv(((Integer)paramObject).intValue());
+      AppMethodBeat.o(59463);
+      return;
+      paramf.br(((Boolean)paramObject).booleanValue());
+      AppMethodBeat.o(59463);
+      return;
+      paramf.cu((String)paramObject);
+      AppMethodBeat.o(59463);
+      return;
+      ((r)paramObject).a(paramf);
+      AppMethodBeat.o(59463);
+      return;
+      paramf.b((r)paramObject);
+      AppMethodBeat.o(59463);
+      return;
+      if ((paramObject instanceof d))
+      {
+        paramf.b((d)paramObject);
+        AppMethodBeat.o(59463);
+        return;
+      }
+      paramf.dH((byte[])paramObject);
+      AppMethodBeat.o(59463);
+      return;
+      paramf.hT(((Integer)paramObject).intValue());
+      AppMethodBeat.o(59463);
+      return;
+      paramf.aFv(((Integer)paramObject).intValue());
+      AppMethodBeat.o(59463);
+      return;
+      paramf.Xz(((Long)paramObject).longValue());
+      AppMethodBeat.o(59463);
+      return;
+      paramf.gF(((Integer)paramObject).intValue());
+      AppMethodBeat.o(59463);
+      return;
+      paramf.aB(((Long)paramObject).longValue());
+      AppMethodBeat.o(59463);
+      return;
+      if ((paramObject instanceof k.a))
+      {
+        paramf.gD(((k.a)paramObject).getNumber());
+        AppMethodBeat.o(59463);
+        return;
+      }
+      paramf.gD(((Integer)paramObject).intValue());
+    }
+  }
+  
+  public static void a(h.a<?> parama, Object paramObject, f paramf)
+  {
+    AppMethodBeat.i(59464);
+    aa.a locala = parama.iNS();
+    int i = parama.getNumber();
+    if (parama.Hp())
+    {
+      paramObject = (List)paramObject;
+      if (parama.Hq())
+      {
+        paramf.bI(i, 2);
+        i = 0;
+        parama = paramObject.iterator();
+        while (parama.hasNext()) {
+          i += b(locala, parama.next());
+        }
+        paramf.hT(i);
+        parama = paramObject.iterator();
+        while (parama.hasNext()) {
+          a(paramf, locala, parama.next());
+        }
+        AppMethodBeat.o(59464);
+        return;
+      }
+      parama = paramObject.iterator();
+      while (parama.hasNext()) {
+        a(paramf, locala, i, parama.next());
+      }
+      AppMethodBeat.o(59464);
+      return;
+    }
+    if ((paramObject instanceof m))
+    {
+      AppMethodBeat.o(59464);
+      throw null;
+    }
+    a(paramf, locala, i, paramObject);
+    AppMethodBeat.o(59464);
+  }
+  
+  private static Object an(Object paramObject)
   {
     AppMethodBeat.i(59459);
     if ((paramObject instanceof byte[]))
@@ -399,10 +355,10 @@ public final class h<FieldDescriptorType extends a<FieldDescriptorType>>
     return paramObject;
   }
   
-  private static int b(z.a parama, Object paramObject)
+  private static int b(aa.a parama, Object paramObject)
   {
     AppMethodBeat.i(59467);
-    switch (h.1.bUG[parama.ordinal()])
+    switch (1.bWE[parama.ordinal()])
     {
     default: 
       parama = new RuntimeException("There is no way to get here, but the compiler thinks otherwise.");
@@ -417,15 +373,15 @@ public final class h<FieldDescriptorType extends a<FieldDescriptorType>>
       AppMethodBeat.o(59467);
       return 4;
     case 3: 
-      i = f.aK(((Long)paramObject).longValue());
+      i = f.aO(((Long)paramObject).longValue());
       AppMethodBeat.o(59467);
       return i;
     case 4: 
-      i = f.aK(((Long)paramObject).longValue());
+      i = f.aO(((Long)paramObject).longValue());
       AppMethodBeat.o(59467);
       return i;
     case 5: 
-      i = f.fT(((Integer)paramObject).intValue());
+      i = f.gM(((Integer)paramObject).intValue());
       AppMethodBeat.o(59467);
       return i;
     case 6: 
@@ -441,11 +397,11 @@ public final class h<FieldDescriptorType extends a<FieldDescriptorType>>
       AppMethodBeat.o(59467);
       return 1;
     case 9: 
-      i = f.cb((String)paramObject);
+      i = f.cv((String)paramObject);
       AppMethodBeat.o(59467);
       return i;
     case 16: 
-      i = ((q)paramObject).yC();
+      i = ((r)paramObject).Ad();
       AppMethodBeat.o(59467);
       return i;
     case 10: 
@@ -455,11 +411,11 @@ public final class h<FieldDescriptorType extends a<FieldDescriptorType>>
         AppMethodBeat.o(59467);
         return i;
       }
-      i = f.D((byte[])paramObject);
+      i = f.B((byte[])paramObject);
       AppMethodBeat.o(59467);
       return i;
     case 11: 
-      i = f.fY(((Integer)paramObject).intValue());
+      i = f.gR(((Integer)paramObject).intValue());
       AppMethodBeat.o(59467);
       return i;
     case 12: 
@@ -471,52 +427,94 @@ public final class h<FieldDescriptorType extends a<FieldDescriptorType>>
       AppMethodBeat.o(59467);
       return 8;
     case 14: 
-      i = f.fY(f.fX(((Integer)paramObject).intValue()));
+      i = f.gR(f.gQ(((Integer)paramObject).intValue()));
       AppMethodBeat.o(59467);
       return i;
     case 15: 
-      i = f.aK(f.aC(((Long)paramObject).longValue()));
+      i = f.aO(f.aG(((Long)paramObject).longValue()));
       AppMethodBeat.o(59467);
       return i;
     case 17: 
-      if ((paramObject instanceof l))
+      if ((paramObject instanceof m))
       {
-        i = f.a((l)paramObject);
         AppMethodBeat.o(59467);
-        return i;
+        throw null;
       }
-      i = f.c((q)paramObject);
+      i = f.c((r)paramObject);
       AppMethodBeat.o(59467);
       return i;
     }
-    if ((paramObject instanceof j.a))
+    if ((paramObject instanceof k.a))
     {
-      i = f.fT(((j.a)paramObject).getNumber());
+      i = f.gM(((k.a)paramObject).getNumber());
       AppMethodBeat.o(59467);
       return i;
     }
-    int i = f.fT(((Integer)paramObject).intValue());
+    int i = f.gM(((Integer)paramObject).intValue());
     AppMethodBeat.o(59467);
     return i;
   }
   
-  private static int c(a<?> parama, Object paramObject)
+  private static boolean b(Map.Entry<FieldDescriptorType, Object> paramEntry)
+  {
+    AppMethodBeat.i(59458);
+    h.a locala = (h.a)paramEntry.getKey();
+    if (locala.iNT() == aa.b.abhu)
+    {
+      if (locala.Hp())
+      {
+        paramEntry = ((List)paramEntry.getValue()).iterator();
+        do
+        {
+          if (!paramEntry.hasNext()) {
+            break;
+          }
+        } while (((r)paramEntry.next()).isInitialized());
+        AppMethodBeat.o(59458);
+        return false;
+      }
+      paramEntry = paramEntry.getValue();
+      if ((paramEntry instanceof r))
+      {
+        if (!((r)paramEntry).isInitialized())
+        {
+          AppMethodBeat.o(59458);
+          return false;
+        }
+      }
+      else
+      {
+        if ((paramEntry instanceof m))
+        {
+          AppMethodBeat.o(59458);
+          return true;
+        }
+        paramEntry = new IllegalArgumentException("Wrong object type used with protocol message reflection.");
+        AppMethodBeat.o(59458);
+        throw paramEntry;
+      }
+    }
+    AppMethodBeat.o(59458);
+    return true;
+  }
+  
+  public static int c(h.a<?> parama, Object paramObject)
   {
     int j = 0;
     int i = 0;
     AppMethodBeat.i(59468);
-    z.a locala = parama.hJA();
+    aa.a locala = parama.iNS();
     int k = parama.getNumber();
-    if (parama.FJ())
+    if (parama.Hp())
     {
-      if (parama.FK())
+      if (parama.Hq())
       {
         parama = ((List)paramObject).iterator();
         while (parama.hasNext()) {
           i += b(locala, parama.next());
         }
-        j = f.fS(k);
-        k = f.fY(i);
+        j = f.gL(k);
+        k = f.gR(i);
         AppMethodBeat.o(59468);
         return k + (j + i);
       }
@@ -533,7 +531,7 @@ public final class h<FieldDescriptorType extends a<FieldDescriptorType>>
     return i;
   }
   
-  public static <T extends a<T>> h<T> hJx()
+  public static <T extends h.a<T>> h<T> iNP()
   {
     AppMethodBeat.i(59450);
     h localh = new h();
@@ -541,29 +539,28 @@ public final class h<FieldDescriptorType extends a<FieldDescriptorType>>
     return localh;
   }
   
-  public static <T extends a<T>> h<T> hJy()
+  public static <T extends h.a<T>> h<T> iNQ()
   {
-    return TDz;
+    return abgl;
   }
   
-  public final Object a(FieldDescriptorType paramFieldDescriptorType)
+  public final void Al()
   {
-    AppMethodBeat.i(59453);
-    paramFieldDescriptorType = this.TDy.get(paramFieldDescriptorType);
-    if ((paramFieldDescriptorType instanceof l))
+    AppMethodBeat.i(59451);
+    if (this.bWA)
     {
-      paramFieldDescriptorType = ((l)paramFieldDescriptorType).hJL();
-      AppMethodBeat.o(59453);
-      return paramFieldDescriptorType;
+      AppMethodBeat.o(59451);
+      return;
     }
-    AppMethodBeat.o(59453);
-    return paramFieldDescriptorType;
+    this.abgk.Al();
+    this.bWA = true;
+    AppMethodBeat.o(59451);
   }
   
   public final void a(FieldDescriptorType paramFieldDescriptorType, Object paramObject)
   {
     AppMethodBeat.i(59454);
-    if (paramFieldDescriptorType.FJ())
+    if (paramFieldDescriptorType.Hp())
     {
       if (!(paramObject instanceof List))
       {
@@ -577,81 +574,68 @@ public final class h<FieldDescriptorType extends a<FieldDescriptorType>>
       while (paramObject.hasNext())
       {
         Object localObject = paramObject.next();
-        a(paramFieldDescriptorType.hJA(), localObject);
+        a(paramFieldDescriptorType.iNS(), localObject);
       }
       paramObject = localArrayList;
     }
     for (;;)
     {
-      if ((paramObject instanceof l)) {
-        this.bUD = true;
+      if ((paramObject instanceof m)) {
+        this.bWB = true;
       }
-      this.TDy.a(paramFieldDescriptorType, paramObject);
+      this.abgk.a(paramFieldDescriptorType, paramObject);
       AppMethodBeat.o(59454);
       return;
-      a(paramFieldDescriptorType.hJA(), paramObject);
+      a(paramFieldDescriptorType.iNS(), paramObject);
     }
   }
   
-  final void b(Map.Entry<FieldDescriptorType, Object> paramEntry)
+  public final boolean a(FieldDescriptorType paramFieldDescriptorType)
   {
-    AppMethodBeat.i(59460);
-    a locala = (a)paramEntry.getKey();
-    Object localObject1 = paramEntry.getValue();
-    paramEntry = (Map.Entry<FieldDescriptorType, Object>)localObject1;
-    if ((localObject1 instanceof l)) {
-      paramEntry = ((l)localObject1).hJL();
-    }
-    if (locala.FJ())
+    AppMethodBeat.i(268039);
+    if (paramFieldDescriptorType.Hp())
     {
-      Object localObject2 = a(locala);
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new ArrayList();
-      }
-      paramEntry = ((List)paramEntry).iterator();
-      while (paramEntry.hasNext())
-      {
-        localObject2 = paramEntry.next();
-        ((List)localObject1).add(aq(localObject2));
-      }
-      this.TDy.a(locala, localObject1);
-      AppMethodBeat.o(59460);
-      return;
+      paramFieldDescriptorType = new IllegalArgumentException("hasField() can only be called on non-repeated fields.");
+      AppMethodBeat.o(268039);
+      throw paramFieldDescriptorType;
     }
-    if (locala.hJB() == z.b.TEQ)
+    if (this.abgk.get(paramFieldDescriptorType) != null)
     {
-      localObject1 = a(locala);
-      if (localObject1 == null)
-      {
-        this.TDy.a(locala, aq(paramEntry));
-        AppMethodBeat.o(59460);
-        return;
-      }
-      paramEntry = locala.a(((q)localObject1).hEw(), (q)paramEntry).hEG();
-      this.TDy.a(locala, paramEntry);
-      AppMethodBeat.o(59460);
-      return;
+      AppMethodBeat.o(268039);
+      return true;
     }
-    this.TDy.a(locala, aq(paramEntry));
-    AppMethodBeat.o(59460);
+    AppMethodBeat.o(268039);
+    return false;
+  }
+  
+  public final Object b(FieldDescriptorType paramFieldDescriptorType)
+  {
+    AppMethodBeat.i(59453);
+    paramFieldDescriptorType = this.abgk.get(paramFieldDescriptorType);
+    if ((paramFieldDescriptorType instanceof m))
+    {
+      AppMethodBeat.o(59453);
+      throw null;
+    }
+    AppMethodBeat.o(59453);
+    return paramFieldDescriptorType;
   }
   
   public final void b(FieldDescriptorType paramFieldDescriptorType, Object paramObject)
   {
     AppMethodBeat.i(59455);
-    if (!paramFieldDescriptorType.FJ())
+    if (!paramFieldDescriptorType.Hp())
     {
       paramFieldDescriptorType = new IllegalArgumentException("addRepeatedField() can only be called on repeated fields.");
       AppMethodBeat.o(59455);
       throw paramFieldDescriptorType;
     }
-    a(paramFieldDescriptorType.hJA(), paramObject);
-    Object localObject = a(paramFieldDescriptorType);
+    a(paramFieldDescriptorType.iNS(), paramObject);
+    Object localObject = b(paramFieldDescriptorType);
     if (localObject == null)
     {
       localObject = new ArrayList();
-      this.TDy.a(paramFieldDescriptorType, localObject);
+      this.abgk.a(paramFieldDescriptorType, localObject);
     }
     for (paramFieldDescriptorType = (TFieldDescriptorType)localObject;; paramFieldDescriptorType = (List)localObject)
     {
@@ -661,24 +645,69 @@ public final class h<FieldDescriptorType extends a<FieldDescriptorType>>
     }
   }
   
-  public final h<FieldDescriptorType> hJz()
+  final void c(Map.Entry<FieldDescriptorType, Object> paramEntry)
+  {
+    AppMethodBeat.i(59460);
+    h.a locala = (h.a)paramEntry.getKey();
+    Object localObject2 = paramEntry.getValue();
+    if ((localObject2 instanceof m))
+    {
+      AppMethodBeat.o(59460);
+      throw null;
+    }
+    if (locala.Hp())
+    {
+      Object localObject1 = b(locala);
+      paramEntry = (Map.Entry<FieldDescriptorType, Object>)localObject1;
+      if (localObject1 == null) {
+        paramEntry = new ArrayList();
+      }
+      localObject1 = ((List)localObject2).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = ((Iterator)localObject1).next();
+        ((List)paramEntry).add(an(localObject2));
+      }
+      this.abgk.a(locala, paramEntry);
+      AppMethodBeat.o(59460);
+      return;
+    }
+    if (locala.iNT() == aa.b.abhu)
+    {
+      paramEntry = b(locala);
+      if (paramEntry == null)
+      {
+        this.abgk.a(locala, an(localObject2));
+        AppMethodBeat.o(59460);
+        return;
+      }
+      paramEntry = locala.a(((r)paramEntry).iIP(), (r)localObject2).iJa();
+      this.abgk.a(locala, paramEntry);
+      AppMethodBeat.o(59460);
+      return;
+    }
+    this.abgk.a(locala, an(localObject2));
+    AppMethodBeat.o(59460);
+  }
+  
+  public final h<FieldDescriptorType> iNR()
   {
     AppMethodBeat.i(59452);
     h localh = new h();
     int i = 0;
-    while (i < this.TDy.Hx())
+    while (i < this.abgk.IX())
     {
-      localObject = this.TDy.gM(i);
-      localh.a((a)((Map.Entry)localObject).getKey(), ((Map.Entry)localObject).getValue());
+      localObject = this.abgk.hD(i);
+      localh.a((h.a)((Map.Entry)localObject).getKey(), ((Map.Entry)localObject).getValue());
       i += 1;
     }
-    Object localObject = this.TDy.Hy().iterator();
+    Object localObject = this.abgk.IY().iterator();
     while (((Iterator)localObject).hasNext())
     {
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-      localh.a((a)localEntry.getKey(), localEntry.getValue());
+      localh.a((h.a)localEntry.getKey(), localEntry.getValue());
     }
-    localh.bUD = this.bUD;
+    localh.bWB = this.bWB;
     AppMethodBeat.o(59452);
     return localh;
   }
@@ -687,18 +716,18 @@ public final class h<FieldDescriptorType extends a<FieldDescriptorType>>
   {
     AppMethodBeat.i(59457);
     int i = 0;
-    while (i < this.TDy.Hx())
+    while (i < this.abgk.IX())
     {
-      if (!a(this.TDy.gM(i)))
+      if (!b(this.abgk.hD(i)))
       {
         AppMethodBeat.o(59457);
         return false;
       }
       i += 1;
     }
-    Iterator localIterator = this.TDy.Hy().iterator();
+    Iterator localIterator = this.abgk.IY().iterator();
     while (localIterator.hasNext()) {
-      if (!a((Map.Entry)localIterator.next()))
+      if (!b((Map.Entry)localIterator.next()))
       {
         AppMethodBeat.o(59457);
         return false;
@@ -707,60 +736,10 @@ public final class h<FieldDescriptorType extends a<FieldDescriptorType>>
     AppMethodBeat.o(59457);
     return true;
   }
-  
-  public final int yC()
-  {
-    AppMethodBeat.i(59465);
-    int j = 0;
-    int i = 0;
-    while (j < this.TDy.Hx())
-    {
-      localObject = this.TDy.gM(j);
-      i += c((a)((Map.Entry)localObject).getKey(), ((Map.Entry)localObject).getValue());
-      j += 1;
-    }
-    Object localObject = this.TDy.Hy().iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-      i += c((a)localEntry.getKey(), localEntry.getValue());
-    }
-    AppMethodBeat.o(59465);
-    return i;
-  }
-  
-  public final void yK()
-  {
-    AppMethodBeat.i(59451);
-    if (this.bUC)
-    {
-      AppMethodBeat.o(59451);
-      return;
-    }
-    this.TDy.yK();
-    this.bUC = true;
-    AppMethodBeat.o(59451);
-  }
-  
-  public static abstract interface a<T extends a<T>>
-    extends Comparable<T>
-  {
-    public abstract boolean FJ();
-    
-    public abstract boolean FK();
-    
-    public abstract q.a a(q.a parama, q paramq);
-    
-    public abstract int getNumber();
-    
-    public abstract z.a hJA();
-    
-    public abstract z.b hJB();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     kotlin.l.b.a.b.h.h
  * JD-Core Version:    0.7.0.1
  */

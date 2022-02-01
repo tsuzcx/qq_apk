@@ -10,7 +10,7 @@ import com.tencent.mm.plugin.newtips.a.a;
 import com.tencent.mm.plugin.newtips.a.g;
 import com.tencent.mm.plugin.newtips.a.i;
 import com.tencent.mm.plugin.newtips.a.k;
-import com.tencent.mm.protocal.protobuf.ehv;
+import com.tencent.mm.protocal.protobuf.erx;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -20,10 +20,11 @@ public class NewTipPreference
   extends Preference
   implements a
 {
-  private WeakReference<f> ACF;
+  private WeakReference<f> GvI;
+  private boolean GvJ;
   private Context context;
-  private View gvQ;
-  private View hbJ;
+  private View jMT;
+  private View jac;
   private View mView;
   private String path;
   
@@ -36,14 +37,35 @@ public class NewTipPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(184011);
-    this.ACF = null;
+    this.GvI = null;
+    this.GvJ = false;
     this.context = paramContext;
-    setLayoutResource(2131495538);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, b.a.NormalIconNewTipPreference, paramInt, 0);
-    this.path = paramContext.getString(0);
+    setLayoutResource(b.d.mm_preference);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, b.f.NormalIconNewTipPreference, paramInt, 0);
+    this.path = paramContext.getString(b.f.NormalIconNewTipPreference_path);
     paramContext.recycle();
     Log.i("MicroMsg.NewTips.NewTipPreference", "NewTipPreference() path:%s", new Object[] { this.path });
     AppMethodBeat.o(184011);
+  }
+  
+  private boolean vG(boolean paramBoolean)
+  {
+    AppMethodBeat.i(186550);
+    if (this.jMT == null)
+    {
+      AppMethodBeat.o(186550);
+      return false;
+    }
+    Log.i("MicroMsg.NewTips.NewTipPreference", "hash:%d, showRedDot() show:%s", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(paramBoolean) });
+    if (paramBoolean) {
+      this.jMT.setVisibility(0);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(186550);
+      return true;
+      this.jMT.setVisibility(8);
+    }
   }
   
   public final void a(k paramk, boolean paramBoolean)
@@ -56,49 +78,49 @@ public class NewTipPreference
   public final void a(f paramf)
   {
     AppMethodBeat.i(184018);
-    this.ACF = new WeakReference(paramf);
+    this.GvI = new WeakReference(paramf);
     AppMethodBeat.o(184018);
   }
   
-  public final boolean a(boolean paramBoolean, ehv paramehv)
+  public final boolean a(boolean paramBoolean, erx paramerx)
   {
     return false;
   }
   
-  public final boolean b(boolean paramBoolean, ehv paramehv)
+  public final boolean b(boolean paramBoolean, erx paramerx)
   {
     return false;
   }
   
-  public final boolean c(boolean paramBoolean, ehv paramehv)
+  public final boolean c(boolean paramBoolean, erx paramerx)
   {
     return false;
   }
   
-  public final boolean d(boolean paramBoolean, ehv paramehv)
+  public final boolean d(boolean paramBoolean, erx paramerx)
   {
     return false;
   }
   
-  public final boolean ehp()
+  public final boolean eQW()
   {
     return false;
   }
   
-  public final boolean exi()
+  public final boolean fiL()
   {
-    AppMethodBeat.i(188555);
-    if (this.hbJ == null)
+    AppMethodBeat.i(186552);
+    if (this.jMT == null)
     {
-      AppMethodBeat.o(188555);
+      AppMethodBeat.o(186552);
       return false;
     }
-    if (this.hbJ.getVisibility() == 0)
+    if (this.jMT.getVisibility() == 0)
     {
-      AppMethodBeat.o(188555);
+      AppMethodBeat.o(186552);
       return true;
     }
-    AppMethodBeat.o(188555);
+    AppMethodBeat.o(186552);
     return false;
   }
   
@@ -110,10 +132,10 @@ public class NewTipPreference
   public final View getRoot()
   {
     AppMethodBeat.i(184014);
-    if (this.gvQ == null) {
-      this.gvQ = new View(this.context);
+    if (this.jac == null) {
+      this.jac = new View(this.context);
     }
-    View localView = this.gvQ;
+    View localView = this.jac;
     AppMethodBeat.o(184014);
     return localView;
   }
@@ -122,8 +144,9 @@ public class NewTipPreference
   {
     AppMethodBeat.i(184013);
     super.onBindView(paramView);
-    this.hbJ = paramView.findViewById(2131306759);
-    i.TD(g.aIB(this.path));
+    this.jMT = paramView.findViewById(b.c.red_dot);
+    vG(this.GvJ);
+    i.aaq(g.aSW(this.path));
     AppMethodBeat.o(184013);
   }
   
@@ -131,16 +154,16 @@ public class NewTipPreference
   {
     AppMethodBeat.i(184012);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(b.c.content);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2131495613, localViewGroup);
+    View.inflate(this.mContext, b.d.mm_preference_new_tips, localViewGroup);
     this.mView = paramViewGroup;
     paramViewGroup = this.mView;
     AppMethodBeat.o(184012);
     return paramViewGroup;
   }
   
-  public final boolean qV(boolean paramBoolean)
+  public final boolean tX(boolean paramBoolean)
   {
     AppMethodBeat.i(184016);
     paramBoolean = g.a(paramBoolean, this);
@@ -148,51 +171,35 @@ public class NewTipPreference
     return paramBoolean;
   }
   
-  public final boolean qW(boolean paramBoolean)
+  public final boolean tY(boolean paramBoolean)
   {
     AppMethodBeat.i(184017);
-    Log.d("MicroMsg.NewTips.NewTipPreference", "showRedPoint() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
-    int i;
-    if (this.hbJ == null)
+    Log.i("MicroMsg.NewTips.NewTipPreference", "hash:%d, showRedPoint() show:%s", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(paramBoolean) });
+    if (vG(paramBoolean))
     {
-      i = 0;
-      if (i != 0)
+      this.GvJ = paramBoolean;
+      if (this.GvI != null)
       {
-        if (this.ACF != null)
-        {
-          f localf = (f)this.ACF.get();
-          if (localf != null) {
-            localf.notifyDataSetChanged();
-          }
+        f localf = (f)this.GvI.get();
+        if (localf != null) {
+          localf.notifyDataSetChanged();
         }
-        AppMethodBeat.o(184017);
-        return true;
       }
-    }
-    else
-    {
-      if (paramBoolean) {
-        this.hbJ.setVisibility(0);
-      }
-      for (;;)
-      {
-        i = 1;
-        break;
-        this.hbJ.setVisibility(8);
-      }
+      AppMethodBeat.o(184017);
+      return true;
     }
     AppMethodBeat.o(184017);
     return false;
   }
   
-  public final boolean qX(boolean paramBoolean)
+  public final boolean tZ(boolean paramBoolean)
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.NewTipPreference
  * JD-Core Version:    0.7.0.1
  */

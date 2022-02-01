@@ -1,6 +1,6 @@
 package io.flutter.view;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import io.flutter.embedding.engine.FlutterJNI;
 

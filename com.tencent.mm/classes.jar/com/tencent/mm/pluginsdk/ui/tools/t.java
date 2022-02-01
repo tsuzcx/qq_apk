@@ -1,129 +1,87 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
-import android.content.ContentResolver;
 import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
-import android.webkit.MimeTypeMap;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.xweb.WebView;
 
 public final class t
 {
-  public Context context;
-  public String filePath;
-  public int fileType;
-  public Uri uri;
+  private static String RxN = null;
+  private static final String[] RxO = { "", "dynamic_config_recv", "trigger_download", "start_download", "stop_download", "download_finish", "install_finish", "use" };
   
-  public t(Context paramContext, Uri paramUri)
+  public static void gU(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(152425);
-    this.fileType = 0;
-    this.context = paramContext;
-    this.uri = paramUri;
-    if (paramUri == null)
+    AppMethodBeat.i(133688);
+    if ((paramInt1 <= 0) || (paramInt1 > 7))
     {
-      Log.e("MicroMsg.UriFileHelper", "initFileTypeAndPath uri == null");
-      AppMethodBeat.o(152425);
+      Log.e("MicroMsg.TBSReporter", "report invalid scene = %d", new Object[] { Integer.valueOf(paramInt1) });
+      AppMethodBeat.o(133688);
       return;
     }
-    if (this.context == null)
+    lY(paramInt1, paramInt2);
+    Object localObject = MMApplicationContext.getContext();
+    int i = WebView.getInstalledTbsCoreVersion((Context)localObject);
+    int j = WebView.getTbsSDKVersion((Context)localObject);
+    localObject = jG((Context)localObject);
+    h.IzE.a(11633, false, true, new Object[] { Integer.valueOf(paramInt1), Long.valueOf(System.currentTimeMillis() / 1000L), Integer.valueOf(i), Integer.valueOf(j), localObject, Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(133688);
+  }
+  
+  private static String jG(Context paramContext)
+  {
+    AppMethodBeat.i(133689);
+    if (RxN != null)
     {
-      Log.e("MicroMsg.UriFileHelper", "initFileTypeAndPath context == null");
-      AppMethodBeat.o(152425);
-      return;
+      paramContext = RxN;
+      AppMethodBeat.o(133689);
+      return paramContext;
     }
-    Object localObject2 = MimeTypeMap.getSingleton();
-    paramContext = this.context.getContentResolver().getType(paramUri);
-    int i;
-    if ((paramContext == null) || (paramContext.length() <= 0))
+    try
     {
-      if (paramUri.getPath() != null)
+      paramContext = paramContext.getPackageManager().getApplicationInfo(MMApplicationContext.getPackageName(), 128);
+      if ((paramContext != null) && (paramContext.metaData != null))
       {
-        localObject1 = new o(paramUri.getPath());
-        if (!((o)localObject1).exists())
+        paramContext = paramContext.metaData.getString("com.tencent.mtt.TBS_CODE");
+        if (!Util.isNullOrNil(paramContext))
         {
-          Log.e("MicroMsg.UriFileHelper", "File is null");
-          this.fileType = 0;
-          AppMethodBeat.o(152425);
-          return;
-        }
-        this.filePath = aa.z(((o)localObject1).her());
-        i = this.filePath.lastIndexOf(".");
-        if ((i == -1) || (i >= this.filePath.length() - 1)) {
-          this.fileType = 1;
-        }
-        while ((paramContext == null) || (this.filePath == null))
-        {
-          this.fileType = 0;
-          AppMethodBeat.o(152425);
-          return;
-          paramContext = ((MimeTypeMap)localObject2).getMimeTypeFromExtension(this.filePath.substring(i + 1));
+          RxN = paramContext;
+          AppMethodBeat.o(133689);
+          return paramContext;
         }
       }
     }
-    else
+    catch (Exception paramContext)
     {
-      if (this.context != null) {
-        break label247;
-      }
-      Log.e("MicroMsg.UriFileHelper", "getFilePath context == null");
+      Log.e("MicroMsg.TBSReporter", "getMetaTbsCode, ex = %s", new Object[] { paramContext.getMessage() });
+      AppMethodBeat.o(133689);
     }
-    for (;;)
-    {
-      this.filePath = ((String)localObject1);
-      break;
-      label247:
-      localObject2 = this.context.getContentResolver().query(paramUri, null, null, null, null);
-      if (localObject2 == null)
-      {
-        Log.e("MicroMsg.UriFileHelper", "getFilePath : fail, cursor is null");
-      }
-      else if ((((Cursor)localObject2).getCount() <= 0) || (!((Cursor)localObject2).moveToFirst()))
-      {
-        ((Cursor)localObject2).close();
-        Log.e("MicroMsg.UriFileHelper", "getFilePath : fail, cursor getCount is 0 or moveToFirst fail");
-      }
-      else
-      {
-        i = ((Cursor)localObject2).getColumnIndex("_data");
-        if (i == -1)
-        {
-          ((Cursor)localObject2).close();
-          Log.e("MicroMsg.UriFileHelper", "getFilePath : columnIdx is -1, column with columnName = _data does not exist");
-        }
-        else
-        {
-          localObject1 = ((Cursor)localObject2).getString(i);
-          ((Cursor)localObject2).close();
-        }
-      }
-    }
-    if (paramContext.contains("image")) {
-      this.fileType = 3;
-    }
-    for (;;)
-    {
-      Log.d("MicroMsg.UriFileHelper", "MimeType[%s], filePath = [%s], fileType = [%s], type = [%s], Uri[%s]", new Object[] { paramContext, this.filePath, Integer.valueOf(this.fileType), paramContext, paramUri.toString() });
-      AppMethodBeat.o(152425);
-      return;
-      if (paramContext.contains("video")) {
-        this.fileType = 4;
-      } else if (paramContext.contains("audio")) {
-        this.fileType = 5;
-      } else if (paramContext.contains("mm_item")) {
-        this.fileType = 2;
-      } else {
-        this.fileType = 1;
-      }
-    }
+    return null;
+  }
+  
+  private static void lY(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(133690);
+    Log.i("MicroMsg.TBSReporter", "logSceneDetail, scene = %d_%s, errcode = %d", new Object[] { Integer.valueOf(paramInt1), RxO[paramInt1], Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(133690);
+  }
+  
+  public static void rE(int paramInt)
+  {
+    AppMethodBeat.i(133687);
+    gU(paramInt, 0);
+    AppMethodBeat.o(133687);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.t
  * JD-Core Version:    0.7.0.1
  */

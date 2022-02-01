@@ -1,119 +1,70 @@
 package com.tencent.mars.comm;
 
 import android.content.Context;
-import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.os.Looper;
-import android.telephony.PhoneStateListener;
-import android.telephony.SignalStrength;
-import android.telephony.TelephonyManager;
-import com.tencent.mm.hellhoundlib.b.c;
+import com.tencent.mm.sdk.platformtools.ConnectivityCompat;
+import com.tencent.mm.sdk.platformtools.ConnectivityCompat.Companion;
+import com.tencent.mm.sdk.platformtools.ConnectivityCompat.MixedSignalStrength;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public class NetworkSignalUtil
 {
   public static final String TAG = "MicroMsg.NetworkSignalUtil";
-  private static Context context = null;
-  private static long strength = 10000L;
+  private static final int WIFI_STRENGTH_MAX_LEVEL = 10;
   
+  @Deprecated
   public static void InitNetworkSignalUtil(Context paramContext)
   {
-    context = paramContext;
-    new MMHandler(Looper.getMainLooper()).post(new Runnable()
-    {
-      private byte _hellAccFlag_;
-      
-      public final void run()
-      {
-        Log.i("MicroMsg.NetworkSignalUtil", "[InitNetworkSignalUtil] run.. %s", new Object[] { Looper.myLooper() });
-        TelephonyManager localTelephonyManager = (TelephonyManager)NetworkSignalUtil.context.getSystemService("phone");
-        Object localObject = new PhoneStateListener()
-        {
-          public void onSignalStrengthsChanged(SignalStrength paramAnonymous2SignalStrength)
-          {
-            super.onSignalStrengthsChanged(paramAnonymous2SignalStrength);
-            NetworkSignalUtil.calSignalStrength(paramAnonymous2SignalStrength);
-          }
-        };
-        localObject = c.a(256, new com.tencent.mm.hellhoundlib.b.a()).bl(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(localTelephonyManager, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mars/comm/NetworkSignalUtil$1", "run", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
-        localTelephonyManager.listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(1)).intValue());
-        com.tencent.mm.hellhoundlib.a.a.a(localTelephonyManager, "com/tencent/mars/comm/NetworkSignalUtil$1", "run", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
-      }
-    });
+    ConnectivityCompat.Companion.initSignalStrengthListener();
   }
   
-  private static void calSignalStrength(SignalStrength paramSignalStrength)
+  private static long calWifiStrengthInNum(int paramInt)
   {
-    int i;
-    long l;
-    if (paramSignalStrength.isGsm())
-    {
-      i = paramSignalStrength.getGsmSignalStrength();
-      if ((!paramSignalStrength.isGsm()) || (i != 99)) {
-        break label47;
-      }
-      l = -1L;
-    }
-    for (;;)
-    {
-      strength = l;
-      return;
-      i = (paramSignalStrength.getCdmaDbm() + 113) / 2;
-      break;
-      label47:
-      l = (i * 3.225807F);
-      strength = l;
-      if (l > 100L) {}
-      for (l = 100L;; l = strength)
-      {
-        strength = l;
-        if (l >= 0L) {
-          break label92;
-        }
-        l = 0L;
-        break;
-      }
-      label92:
-      l = strength;
-    }
+    paramInt = WifiManager.calculateSignalLevel(paramInt, 10);
+    Log.v("MicroMsg.NetworkSignalUtil", "Wifi Signal:".concat(String.valueOf(paramInt)));
+    return Math.max(Math.min(paramInt, 10), 0) * 10;
   }
   
   public static long getGSMSignalStrength()
   {
-    return strength;
-  }
-  
-  public static long getNetworkSignalStrength(boolean paramBoolean)
-  {
+    ConnectivityCompat.MixedSignalStrength localMixedSignalStrength = ConnectivityCompat.Companion.getSignalStrength();
+    int i;
+    long l2;
+    if (localMixedSignalStrength.isGsm())
+    {
+      i = localMixedSignalStrength.getGsmSignalStrength();
+      if ((!localMixedSignalStrength.isGsm()) || (i != 99)) {
+        break label56;
+      }
+      l2 = -1L;
+    }
+    label56:
+    long l1;
+    do
+    {
+      return l2;
+      i = (localMixedSignalStrength.getCdmaDbm() + 113) / 2;
+      break;
+      l2 = (i * 3.225807F);
+      l1 = l2;
+      if (l2 > 100L) {
+        l1 = 100L;
+      }
+      l2 = l1;
+    } while (l1 >= 0L);
     return 0L;
   }
   
   public static long getWifiSignalStrength()
   {
-    WifiInfo localWifiInfo = ((WifiManager)context.getSystemService("wifi")).getConnectionInfo();
-    if ((localWifiInfo != null) && (localWifiInfo.getBSSID() != null))
-    {
-      int j = WifiManager.calculateSignalLevel(localWifiInfo.getRssi(), 10);
-      Log.v("MicroMsg.NetworkSignalUtil", "Wifi Signal:" + j * 10);
-      int i = j;
-      if (j > 10) {
-        i = 10;
-      }
-      j = i;
-      if (i < 0) {
-        j = 0;
-      }
-      return j * 10;
-    }
-    Log.v("MicroMsg.NetworkSignalUtil", "Can Not Get Wifi Signal");
-    return 0L;
+    long l = calWifiStrengthInNum(ConnectivityCompat.Companion.getWiFiRssi());
+    Log.d("MicroMsg.NetworkSignalUtil", "getWifiSignalStrength ".concat(String.valueOf(l)));
+    return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mars.comm.NetworkSignalUtil
  * JD-Core Version:    0.7.0.1
  */

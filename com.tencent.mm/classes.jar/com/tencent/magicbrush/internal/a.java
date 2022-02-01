@@ -21,15 +21,15 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"logIfVerbose", "", "Lcom/tencent/magicbrush/MagicBrushBuilder;", "message", "", "processAndAbortIfNeeded", "", "processAssetManagerOrThrow", "processDprWidthHeightOrThrow", "processImageHandler", "lib-magicbrush-nano_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"logIfVerbose", "", "Lcom/tencent/magicbrush/MagicBrushBuilder;", "message", "", "processAndAbortIfNeeded", "", "processAssetManagerOrThrow", "processDprWidthHeightOrThrow", "processImageHandler", "lib-magicbrush-nano_release"})
 public final class a
 {
   private static void a(f paramf, String paramString)
   {
     AppMethodBeat.i(140200);
-    p.h(paramf, "$this$logIfVerbose");
-    p.h(paramString, "message");
-    if (paramf.cMe) {
+    p.k(paramf, "$this$logIfVerbose");
+    p.k(paramString, "message");
+    if (paramf.cMP) {
       c.c.i("MagicBrush", paramString, new Object[0]);
     }
     AppMethodBeat.o(140200);
@@ -38,27 +38,27 @@ public final class a
   private static void c(f paramf)
   {
     AppMethodBeat.i(140201);
-    p.h(paramf, "$this$processImageHandler");
-    if (!paramf.cLQ.cMt)
+    p.k(paramf, "$this$processImageHandler");
+    if (!paramf.cMB.cNg)
     {
-      if (paramf.cLQ.cMx == null)
+      if (paramf.cMB.cNk == null)
       {
         a(paramf, "ImageHandler invalid, BindingImage can not use. BE CAUTIOUS!");
-        paramf = x.SXb;
+        paramf = x.aazN;
       }
       AppMethodBeat.o(140201);
       return;
     }
     BaseImageDecodeService localBaseImageDecodeService = new BaseImageDecodeService();
     localBaseImageDecodeService.addImageStreamFetcher((com.github.henryye.nativeiv.b.b)new com.tencent.magicbrush.b.b(), false);
-    Object localObject1 = paramf.cLQ.cMu;
+    Object localObject1 = paramf.cMB.cNh;
     Iterator localIterator = ((Iterable)localObject1).iterator();
     int i = 0;
     if (localIterator.hasNext())
     {
       Object localObject2 = localIterator.next();
       if (i < 0) {
-        j.hxH();
+        j.iBO();
       }
       localObject2 = (com.github.henryye.nativeiv.b.b)localObject2;
       if (i == ((List)localObject1).size() - 1) {}
@@ -69,31 +69,31 @@ public final class a
         break;
       }
     }
-    if (paramf.cLQ.cMv != null) {
-      localBaseImageDecodeService.setKvReportDelegate(paramf.cLQ.cMv);
+    if (paramf.cMB.cNi != null) {
+      localBaseImageDecodeService.setKvReportDelegate(paramf.cMB.cNi);
     }
-    if (paramf.cLQ.cMw != null)
+    if (paramf.cMB.cNj != null)
     {
-      localObject1 = paramf.cLQ.cMw;
+      localObject1 = paramf.cMB.cNj;
       if (localObject1 == null) {
-        p.hyc();
+        p.iCn();
       }
       localBaseImageDecodeService.setBitmapDecodeSlave((IImageDecodeService.a)localObject1);
     }
-    paramf.cLQ.cMx = localBaseImageDecodeService;
+    paramf.cMB.cNk = localBaseImageDecodeService;
     AppMethodBeat.o(140201);
   }
   
   public static final boolean d(f paramf)
   {
     AppMethodBeat.i(140202);
-    p.h(paramf, "$this$processAndAbortIfNeeded");
+    p.k(paramf, "$this$processAndAbortIfNeeded");
     int i;
     for (;;)
     {
       try
       {
-        double d = paramf.Rr();
+        double d = paramf.Vb();
         if ((d < 0.0D) || (d > 1.0D)) {
           break label99;
         }
@@ -101,13 +101,13 @@ public final class a
         if (i != 0) {
           break;
         }
-        Throwable localThrowable = (Throwable)new IllegalStateException(("GcFactor must in [0, 1], but " + paramf.Rr()).toString());
+        Throwable localThrowable = (Throwable)new IllegalStateException(("GcFactor must in [0, 1], but " + paramf.Vb()).toString());
         AppMethodBeat.o(140202);
         throw localThrowable;
       }
       catch (Exception localException)
       {
-        if (!paramf.cMd) {
+        if (!paramf.cMO) {
           break label674;
         }
       }
@@ -123,20 +123,20 @@ public final class a
       AppMethodBeat.o(140202);
       throw ((Throwable)localObject1);
     }
-    if (paramf.cLJ == null)
+    if (paramf.cMu == null)
     {
       localObject1 = (Throwable)new IllegalStateException("JsThreadHandler invalid.".toString());
       AppMethodBeat.o(140202);
       throw ((Throwable)localObject1);
     }
-    if (paramf.cLK == null)
+    if (paramf.cMv == null)
     {
       localObject1 = (Throwable)new IllegalStateException("v8RawPointer invalid. Please define which JsEngine magicbrush should use.".toString());
       AppMethodBeat.o(140202);
       throw ((Throwable)localObject1);
     }
-    p.h(paramf, "$this$processAssetManagerOrThrow");
-    if (paramf.Rp() == null)
+    p.k(paramf, "$this$processAssetManagerOrThrow");
+    if (paramf.UZ() == null)
     {
       localObject1 = paramf.context;
       if (localObject1 == null) {
@@ -147,28 +147,28 @@ public final class a
     label681:
     for (Object localObject1 = ((Context)localObject1).getAssets();; localObject1 = null)
     {
-      paramf.cLP.a(g.cLI[4], localObject1);
-      if (paramf.Rp() == null)
+      paramf.cMA.a(g.cMt[4], localObject1);
+      if (paramf.UZ() == null)
       {
         localObject1 = (Throwable)new IllegalStateException("AssetManager invalid. Either assetManager or context should be provided.".toString());
         AppMethodBeat.o(140202);
         throw ((Throwable)localObject1);
       }
-      p.h(paramf, "$this$processDprWidthHeightOrThrow");
+      p.k(paramf, "$this$processDprWidthHeightOrThrow");
       if ((paramf.getDevicePixelRatio() <= 0.0F) && (paramf.context != null))
       {
         localObject1 = paramf.context;
         if (localObject1 == null) {
-          p.hyc();
+          p.iCn();
         }
-        paramf.ae(com.tencent.magicbrush.utils.b.getDensity((Context)localObject1));
+        paramf.ad(com.tencent.magicbrush.utils.b.getDensity((Context)localObject1));
       }
       localObject1 = (kotlin.g.a.a)new a(paramf);
       if (!((Boolean)((kotlin.g.a.a)localObject1).invoke()).booleanValue())
       {
         if (paramf.context == null)
         {
-          localObject1 = (Throwable)new IllegalStateException(("w/h invalid. context invalid. " + paramf.Rn() + '/' + paramf.Ro()).toString());
+          localObject1 = (Throwable)new IllegalStateException(("w/h invalid. context invalid. " + paramf.UX() + '/' + paramf.UY()).toString());
           AppMethodBeat.o(140202);
           throw ((Throwable)localObject1);
         }
@@ -176,31 +176,31 @@ public final class a
         {
           Object localObject2 = paramf.context;
           if (localObject2 == null) {
-            p.hyc();
+            p.iCn();
           }
-          localObject2 = com.tencent.magicbrush.utils.b.aV((Context)localObject2);
-          p.g(localObject2, "DisplayUtil.getDisplayLogicSize(context!!)");
+          localObject2 = com.tencent.magicbrush.utils.b.aS((Context)localObject2);
+          p.j(localObject2, "DisplayUtil.getDisplayLogicSize(context!!)");
           i = ((Point)localObject2).x;
-          paramf.cLM.a(g.cLI[1], Integer.valueOf(i));
+          paramf.cMx.a(g.cMt[1], Integer.valueOf(i));
           i = ((Point)localObject2).y;
-          paramf.cLN.a(g.cLI[2], Integer.valueOf(i));
-          a(paramf, "w/h invalid, use context automatically. " + paramf.Rn() + '/' + paramf.Ro());
+          paramf.cMy.a(g.cMt[2], Integer.valueOf(i));
+          a(paramf, "w/h invalid, use context automatically. " + paramf.UX() + '/' + paramf.UY());
         }
       }
       if (!((Boolean)((kotlin.g.a.a)localObject1).invoke()).booleanValue())
       {
-        localObject1 = (Throwable)new IllegalStateException(("dpr/w/h invalid. " + paramf.getDevicePixelRatio() + '/' + paramf.Rn() + '/' + paramf.Ro()).toString());
+        localObject1 = (Throwable)new IllegalStateException(("dpr/w/h invalid. " + paramf.getDevicePixelRatio() + '/' + paramf.UX() + '/' + paramf.UY()).toString());
         AppMethodBeat.o(140202);
         throw ((Throwable)localObject1);
       }
-      if ((IMBFileSystem)paramf.cLO.a(g.cLI[3]) == null)
+      if ((IMBFileSystem)paramf.cMz.a(g.cMt[3]) == null)
       {
         a(paramf, "FileSystem invalid, BindingFileSystem can not use. BE CAUTIOUS!");
-        localObject1 = x.SXb;
+        localObject1 = x.aazN;
       }
       c(paramf);
-      if (paramf.cLR == null) {
-        paramf.cLR = ((IMBFontHandler)new i());
+      if (paramf.cMC == null) {
+        paramf.cMC = ((IMBFontHandler)new i());
       }
       AppMethodBeat.o(140202);
       return true;
@@ -209,7 +209,7 @@ public final class a
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class a
     extends q
     implements kotlin.g.a.a<Boolean>
@@ -222,7 +222,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.magicbrush.internal.a
  * JD-Core Version:    0.7.0.1
  */

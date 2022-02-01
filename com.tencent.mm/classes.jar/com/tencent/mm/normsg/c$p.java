@@ -1,5 +1,6 @@
 package com.tencent.mm.normsg;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Process;
@@ -26,7 +27,7 @@ public final class c$p
       public final void run()
       {
         AppMethodBeat.i(62425);
-        System.loadLibrary(this.jGF);
+        System.loadLibrary(this.mxi);
         localCountDownLatch.countDown();
         AppMethodBeat.o(62425);
       }
@@ -66,6 +67,8 @@ public final class c$p
   static native void ak();
   
   public static native boolean al();
+  
+  public static native byte[] am(Intent paramIntent);
   
   static native String ba(int paramInt);
   
@@ -145,7 +148,7 @@ public final class c$p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.normsg.c.p
  * JD-Core Version:    0.7.0.1
  */

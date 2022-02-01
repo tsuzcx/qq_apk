@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.subapp.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cvk;
-import com.tencent.mm.protocal.protobuf.cvl;
-import com.tencent.mm.protocal.protobuf.esj;
+import com.tencent.mm.protocal.protobuf.deu;
+import com.tencent.mm.protocal.protobuf.dev;
+import com.tencent.mm.protocal.protobuf.fcu;
 import java.util.LinkedList;
 
 public final class a
@@ -21,21 +21,21 @@ public final class a
   private i callback;
   private d rr;
   
-  public a(LinkedList<esj> paramLinkedList, int paramInt)
+  public a(LinkedList<fcu> paramLinkedList, int paramInt)
   {
     AppMethodBeat.i(28926);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new cvk();
-    ((d.a)localObject).iLO = new cvl();
+    ((d.a)localObject).lBU = new deu();
+    ((d.a)localObject).lBV = new dev();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/opvoicereminder";
     ((d.a)localObject).funcId = 331;
-    ((d.a)localObject).iLP = 150;
+    ((d.a)localObject).lBW = 150;
     ((d.a)localObject).respCmdId = 1000000150;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (cvk)this.rr.iLK.iLR;
-    ((cvk)localObject).OpCode = 1;
-    ((cvk)localObject).MAM = paramLinkedList;
-    ((cvk)localObject).MAL = paramInt;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (deu)d.b.b(this.rr.lBR);
+    ((deu)localObject).RLe = 1;
+    ((deu)localObject).TMv = paramLinkedList;
+    ((deu)localObject).TMu = paramInt;
     AppMethodBeat.o(28926);
   }
   

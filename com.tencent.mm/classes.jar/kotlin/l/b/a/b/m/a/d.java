@@ -11,30 +11,30 @@ public final class d
   public static final t a(bh parambh)
   {
     AppMethodBeat.i(61044);
-    p.h(parambh, "$this$convertVariance");
-    switch (e.haE[parambh.ordinal()])
+    p.k(parambh, "$this$convertVariance");
+    switch (e.jLJ[parambh.ordinal()])
     {
     default: 
       parambh = new m();
       AppMethodBeat.o(61044);
       throw parambh;
     case 1: 
-      parambh = t.TPV;
+      parambh = t.absu;
       AppMethodBeat.o(61044);
       return parambh;
     case 2: 
-      parambh = t.TPT;
+      parambh = t.abss;
       AppMethodBeat.o(61044);
       return parambh;
     }
-    parambh = t.TPU;
+    parambh = t.abst;
     AppMethodBeat.o(61044);
     return parambh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.a.d
  * JD-Core Version:    0.7.0.1
  */

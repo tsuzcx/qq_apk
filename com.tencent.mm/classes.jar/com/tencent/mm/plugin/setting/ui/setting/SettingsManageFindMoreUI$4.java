@@ -14,13 +14,13 @@ final class SettingsManageFindMoreUI$4
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(256546);
+    AppMethodBeat.i(263712);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsManageFindMoreUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    this.Dcy.checkAvailable(paramView.getContext());
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/setting/ui/setting/SettingsManageFindMoreUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    this.JhZ.checkAvailable(paramView.getContext());
     a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsManageFindMoreUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(256546);
+    AppMethodBeat.o(263712);
   }
 }
 

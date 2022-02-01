@@ -18,7 +18,6 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.thumbplayer.core.common.TPNativeLog;
 import com.tencent.thumbplayer.core.common.TPUnitendCodecUtils;
 import com.tencent.tmediacodec.b.a;
-import com.tencent.tmediacodec.b.b;
 import com.tencent.tmediacodec.b.c;
 import com.tencent.tmediacodec.b.c;
 import java.io.PrintWriter;
@@ -75,10 +74,10 @@ public abstract class TPBaseMediaCodecDecoder
       {
         localObject = this.mCodec;
         i = localInteger.intValue();
-        if (((com.tencent.tmediacodec.b)localObject).Sll == null) {
+        if (((com.tencent.tmediacodec.b)localObject).ZNW == null) {
           break label176;
         }
-        localObject = ((com.tencent.tmediacodec.b)localObject).Sll.hps().getInputBuffer(i);
+        localObject = ((com.tencent.tmediacodec.b)localObject).ZNW.isY().getInputBuffer(i);
         if (localObject != null) {
           ((ByteBuffer)localObject).put(paramArrayOfByte);
         }
@@ -171,8 +170,8 @@ public abstract class TPBaseMediaCodecDecoder
     try
     {
       com.tencent.tmediacodec.b localb = this.mCodec;
-      if (localb.Sll != null) {
-        localb.Sll.flush();
+      if (localb.ZNW != null) {
+        localb.ZNW.flush();
       }
       return 0;
     }
@@ -197,12 +196,12 @@ public abstract class TPBaseMediaCodecDecoder
     try
     {
       com.tencent.tmediacodec.b localb = this.mCodec;
-      if (localb.Sll != null) {
-        localb.Sll.stop();
+      if (localb.ZNW != null) {
+        localb.ZNW.stop();
       }
       localb = this.mCodec;
-      if (localb.Sll != null) {
-        localb.Sll.release();
+      if (localb.ZNW != null) {
+        localb.ZNW.release();
       }
       return 0;
     }
@@ -251,10 +250,10 @@ public abstract class TPBaseMediaCodecDecoder
             if ((paramSurface.isValid()) && (Build.VERSION.SDK_INT >= 23) && (this.mEnableSetOutputSurfaceApi))
             {
               localObject = this.mCodec;
-              if (((com.tencent.tmediacodec.b)localObject).Sll == null) {
+              if (((com.tencent.tmediacodec.b)localObject).ZNW == null) {
                 continue;
               }
-              ((com.tencent.tmediacodec.b)localObject).Sll.setOutputSurface(paramSurface);
+              ((com.tencent.tmediacodec.b)localObject).ZNW.q(paramSurface);
               return 0;
             }
           }
@@ -332,28 +331,28 @@ public abstract class TPBaseMediaCodecDecoder
         localObject2 = ((MediaCodecInfo)localObject2).getName();
       }
     }
-    this.mCodec = new com.tencent.tmediacodec.b((String)localObject2, b.b.Slt);
+    this.mCodec = com.tencent.tmediacodec.b.bDL((String)localObject2);
     Object localObject3 = this.mCodec;
     if ((this.mEnableMediaCodecReuse) && (!this.mEnableAsyncMode)) {}
     for (boolean bool = true;; bool = false)
     {
-      ((com.tencent.tmediacodec.b)localObject3).Slo = bool;
-      this.mCodec.Slm = new com.tencent.tmediacodec.a.b()
+      ((com.tencent.tmediacodec.b)localObject3).ZNZ = bool;
+      this.mCodec.ZNX = new com.tencent.tmediacodec.a.b()
       {
         public void onReuseCodecAPIException(String paramAnonymousString, Throwable paramAnonymousThrowable)
         {
-          AppMethodBeat.i(189883);
+          AppMethodBeat.i(223352);
           super.onReuseCodecAPIException(paramAnonymousString, paramAnonymousThrowable);
           TPMediaCodecManager.onMediaCodecException(TPBaseMediaCodecDecoder.this.mCodecId, paramAnonymousString);
-          AppMethodBeat.o(189883);
+          AppMethodBeat.o(223352);
         }
         
         public void onStarted(Boolean paramAnonymousBoolean, String paramAnonymousString)
         {
-          AppMethodBeat.i(189882);
+          AppMethodBeat.i(223351);
           super.onStarted(paramAnonymousBoolean, paramAnonymousString);
           TPMediaCodecManager.onMediaCodecReady(TPBaseMediaCodecDecoder.this.mCodecId, paramAnonymousString);
-          AppMethodBeat.o(189882);
+          AppMethodBeat.o(223351);
         }
       };
       TPNativeLog.printLog(2, getLogTag(), "initMediaCodec codec name: ".concat(String.valueOf(localObject2)));
@@ -368,9 +367,9 @@ public abstract class TPBaseMediaCodecDecoder
         localObject3 = new BufferCallback(null);
         localAsyncDecodeHandler = this.mDecoderHandler;
         if (Build.VERSION.SDK_INT >= 23) {
-          break label479;
+          break label472;
         }
-        com.tencent.tmediacodec.g.b.bqS("TMediaCodec");
+        com.tencent.tmediacodec.g.b.bDR("TMediaCodec");
       }
       for (;;)
       {
@@ -378,10 +377,10 @@ public abstract class TPBaseMediaCodecDecoder
         this.mCodec.start();
         this.mStarted = true;
         return true;
-        label479:
-        if (((com.tencent.tmediacodec.b)localObject2).Sll != null)
+        label472:
+        if (((com.tencent.tmediacodec.b)localObject2).ZNW != null)
         {
-          MediaCodec localMediaCodec = ((com.tencent.tmediacodec.b)localObject2).Sll.hps();
+          MediaCodec localMediaCodec = ((com.tencent.tmediacodec.b)localObject2).ZNW.isY();
           if (localMediaCodec != null) {
             localMediaCodec.setCallback(new b.c((com.tencent.tmediacodec.b)localObject2, (b.a)localObject3), localAsyncDecodeHandler);
           }
@@ -433,9 +432,9 @@ public abstract class TPBaseMediaCodecDecoder
   private int queueInputBuffer(byte[] paramArrayOfByte, long paramLong, boolean paramBoolean)
   {
     Object localObject = this.mCodec;
-    if (((com.tencent.tmediacodec.b)localObject).Sll != null)
+    if (((com.tencent.tmediacodec.b)localObject).ZNW != null)
     {
-      localObject = ((com.tencent.tmediacodec.b)localObject).Sll.hps();
+      localObject = ((com.tencent.tmediacodec.b)localObject).ZNW.isY();
       if (localObject == null) {}
     }
     for (localObject = ((MediaCodec)localObject).getInputBuffers();; localObject = null)
@@ -443,7 +442,7 @@ public abstract class TPBaseMediaCodecDecoder
       int i;
       try
       {
-        i = this.mCodec.dequeueInputBuffer(MEDIA_CODEC_INPUT_TIMEOUT_US);
+        i = this.mCodec.EX(MEDIA_CODEC_INPUT_TIMEOUT_US);
         if (i >= 0)
         {
           localObject[i].put(paramArrayOfByte);
@@ -590,9 +589,9 @@ public abstract class TPBaseMediaCodecDecoder
       {
         com.tencent.tmediacodec.b localb = this.mCodec;
         long l = MEDIA_CODEC_OUTPUT_TIMEOUT_US;
-        if (localb.Sll != null)
+        if (localb.ZNW != null)
         {
-          i = localb.Sll.dequeueOutputBuffer(localBufferInfo, l);
+          i = localb.ZNW.a(localBufferInfo, l);
           if (i < 0) {
             break label244;
           }
@@ -637,9 +636,9 @@ public abstract class TPBaseMediaCodecDecoder
         if (i == -2)
         {
           localObject = this.mCodec;
-          if (((com.tencent.tmediacodec.b)localObject).Sll != null)
+          if (((com.tencent.tmediacodec.b)localObject).ZNW != null)
           {
-            localObject = ((com.tencent.tmediacodec.b)localObject).Sll.hps();
+            localObject = ((com.tencent.tmediacodec.b)localObject).ZNW.isY();
             if (localObject == null) {}
           }
           for (localObject = ((MediaCodec)localObject).getOutputFormat();; localObject = null)
@@ -741,10 +740,10 @@ public abstract class TPBaseMediaCodecDecoder
         Bundle localBundle = new Bundle();
         localBundle.putShort("priority", (short)0);
         localBundle.putFloat("operating-rate", paramFloat);
-        Object localObject = this.mCodec.Sll;
+        Object localObject = this.mCodec.ZNW;
         if (localObject != null)
         {
-          localObject = ((c)localObject).hps();
+          localObject = ((c)localObject).isY();
           if (localObject != null) {
             ((MediaCodec)localObject).setParameters(localBundle);
           }
@@ -833,7 +832,7 @@ public abstract class TPBaseMediaCodecDecoder
       if (this.mEnableAsyncMode) {
         return signalEndOfStreamAsync();
       }
-      i = this.mCodec.dequeueInputBuffer(MEDIA_CODEC_INPUT_TIMEOUT_US);
+      i = this.mCodec.EX(MEDIA_CODEC_INPUT_TIMEOUT_US);
       if (i >= 0) {
         return handleSignalEndOfStream(i);
       }
@@ -858,7 +857,7 @@ public abstract class TPBaseMediaCodecDecoder
     {
       boolean bool = false;
       int i = 0;
-      AppMethodBeat.i(189884);
+      AppMethodBeat.i(223362);
       for (;;)
       {
         synchronized (TPBaseMediaCodecDecoder.this.mThreadLock)
@@ -867,7 +866,7 @@ public abstract class TPBaseMediaCodecDecoder
           {
           case 1000: 
             TPBaseMediaCodecDecoder.this.handleMessageComplete(i);
-            AppMethodBeat.o(189884);
+            AppMethodBeat.o(223362);
             return;
             TPBaseMediaCodecDecoder localTPBaseMediaCodecDecoder = TPBaseMediaCodecDecoder.this;
             i = paramMessage.arg1;
@@ -897,31 +896,31 @@ public abstract class TPBaseMediaCodecDecoder
     
     public void onError(com.tencent.tmediacodec.b paramb, MediaCodec.CodecException paramCodecException)
     {
-      AppMethodBeat.i(189887);
+      AppMethodBeat.i(223385);
       TPNativeLog.printLog(4, TPBaseMediaCodecDecoder.this.getLogTag(), "onError: " + TPBaseMediaCodecDecoder.this.getStackTrace(paramCodecException));
       TPBaseMediaCodecDecoder.this.handleRelease();
-      AppMethodBeat.o(189887);
+      AppMethodBeat.o(223385);
     }
     
     public void onInputBufferAvailable(com.tencent.tmediacodec.b paramb, int paramInt)
     {
-      AppMethodBeat.i(189885);
+      AppMethodBeat.i(223374);
       try
       {
         TPBaseMediaCodecDecoder.this.mInputQueue.put(Integer.valueOf(paramInt));
-        AppMethodBeat.o(189885);
+        AppMethodBeat.o(223374);
         return;
       }
       catch (Exception paramb)
       {
         TPNativeLog.printLog(3, TPBaseMediaCodecDecoder.this.getLogTag(), TPBaseMediaCodecDecoder.this.getStackTrace(paramb));
-        AppMethodBeat.o(189885);
+        AppMethodBeat.o(223374);
       }
     }
     
     public void onOutputBufferAvailable(com.tencent.tmediacodec.b paramb, int paramInt, MediaCodec.BufferInfo paramBufferInfo)
     {
-      AppMethodBeat.i(189886);
+      AppMethodBeat.i(223382);
       try
       {
         TPFrameInfo localTPFrameInfo = new TPFrameInfo();
@@ -930,27 +929,27 @@ public abstract class TPBaseMediaCodecDecoder
         localTPFrameInfo.ptsUs = paramBufferInfo.presentationTimeUs;
         TPBaseMediaCodecDecoder.this.processOutputBuffer(paramb, paramInt, paramBufferInfo, localTPFrameInfo);
         TPBaseMediaCodecDecoder.this.mOutputQueue.put(localTPFrameInfo);
-        AppMethodBeat.o(189886);
+        AppMethodBeat.o(223382);
         return;
       }
       catch (Exception paramb)
       {
         TPNativeLog.printLog(3, TPBaseMediaCodecDecoder.this.getLogTag(), TPBaseMediaCodecDecoder.this.getStackTrace(paramb));
-        AppMethodBeat.o(189886);
+        AppMethodBeat.o(223382);
       }
     }
     
     public void onOutputFormatChanged(com.tencent.tmediacodec.b paramb, MediaFormat paramMediaFormat)
     {
-      AppMethodBeat.i(189888);
+      AppMethodBeat.i(223388);
       TPBaseMediaCodecDecoder.this.processOutputFormatChanged(paramMediaFormat);
-      AppMethodBeat.o(189888);
+      AppMethodBeat.o(223388);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.thumbplayer.core.decoder.TPBaseMediaCodecDecoder
  * JD-Core Version:    0.7.0.1
  */

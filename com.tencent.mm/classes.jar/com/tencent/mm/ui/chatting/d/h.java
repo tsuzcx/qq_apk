@@ -9,16 +9,16 @@ import java.util.List;
 
 public final class h
 {
-  private static Class[] PnN = { ad.class, x.class, c.class, aq.class, bf.class, g.class, be.class, ao.class, bc.class, t.class, e.class, az.class, al.class, bi.class, m.class, ae.class, z.class, bh.class, aw.class, ak.class, bd.class, b.class, ax.class, aj.class, r.class, o.class, ap.class, ay.class, s.class, bg.class, au.class, am.class, v.class, d.class, y.class, bb.class, as.class, ac.class, ab.class, w.class, f.class, aa.class, n.class, at.class, i.class, j.class, ar.class, av.class, q.class, u.class, an.class };
-  private static List<a> PnO;
+  private static Class[] WHZ = { ae.class, y.class, c.class, as.class, bi.class, g.class, bh.class, aq.class, bf.class, u.class, e.class, bc.class, an.class, bl.class, n.class, af.class, aa.class, bk.class, az.class, al.class, bg.class, b.class, ba.class, ak.class, s.class, p.class, ar.class, bb.class, t.class, bj.class, ax.class, ao.class, w.class, d.class, z.class, be.class, au.class, am.class, ad.class, ac.class, x.class, f.class, ab.class, o.class, aw.class, av.class, i.class, k.class, at.class, ay.class, r.class, v.class, ap.class, j.class };
+  private static List<a> WIa;
   
   public static List<a> getComponents()
   {
     AppMethodBeat.i(35178);
-    if (PnO == null)
+    if (WIa == null)
     {
-      PnO = new LinkedList();
-      localObject = PnN;
+      WIa = new LinkedList();
+      localObject = WHZ;
       int j = localObject.length;
       int i = 0;
       if (i < j)
@@ -28,44 +28,44 @@ public final class h
         if (localClass.isAnnotationPresent(a.class))
         {
           locala = (a)localClass.getAnnotation(a.class);
-          if (locala.gRF() == a.a.class) {
-            PnO.add(new a(localClass, localClass));
+          if (locala.hRc() == a.a.class) {
+            WIa.add(new a(localClass, localClass));
           }
         }
         for (;;)
         {
           i += 1;
           break;
-          PnO.add(new a(locala.gRF(), localClass));
+          WIa.add(new a(locala.hRc(), localClass));
           continue;
-          PnO.add(new a(localClass, localClass));
+          WIa.add(new a(localClass, localClass));
         }
       }
     }
-    Object localObject = PnO;
+    Object localObject = WIa;
     AppMethodBeat.o(35178);
     return localObject;
   }
   
   public static final class a
   {
-    public Class<? extends af> PnP;
-    public Class<? extends af> aWC;
+    public Class<? extends ag> WIb;
+    public Class<? extends ag> aFS;
     
-    public a(Class<? extends af> paramClass1, Class<? extends af> paramClass2)
+    public a(Class<? extends ag> paramClass1, Class<? extends ag> paramClass2)
     {
-      this.aWC = paramClass1;
-      this.PnP = paramClass2;
+      this.aFS = paramClass1;
+      this.WIb = paramClass2;
     }
     
-    public final af gPt()
+    public final ag hOJ()
     {
       AppMethodBeat.i(35177);
       try
       {
-        af localaf = (af)this.PnP.newInstance();
+        ag localag = (ag)this.WIb.newInstance();
         AppMethodBeat.o(35177);
-        return localaf;
+        return localag;
       }
       catch (InstantiationException localInstantiationException)
       {
@@ -85,7 +85,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.h
  * JD-Core Version:    0.7.0.1
  */

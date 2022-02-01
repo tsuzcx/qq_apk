@@ -7,9 +7,8 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.ak;
 import com.tencent.mm.plugin.appbrand.backgroundrunning.i;
 import com.tencent.mm.plugin.appbrand.backgroundrunning.j;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.i.s;
+import com.tencent.mm.plugin.appbrand.jsapi.j.t;
+import com.tencent.mm.plugin.appbrand.k;
 import com.tencent.mm.plugin.appbrand.media.music.AppBrandMusicClientService;
 import com.tencent.mm.plugin.appbrand.media.music.AppBrandMusicClientService.StopBackgroundMusicTask;
 import com.tencent.mm.plugin.appbrand.media.music.AppBrandMusicClientService.a;
@@ -20,11 +19,10 @@ import java.util.HashMap;
 abstract class f
   extends g
 {
-  private final AppBrandRuntime kEc;
-  int kRB = 0;
-  private final AppBrandMusicClientService.a kRC = new AppBrandMusicClientService.a()
+  int nLJ = 0;
+  private final AppBrandMusicClientService.a nLK = new AppBrandMusicClientService.a()
   {
-    public final void bxf()
+    public final void bIo()
     {
       AppMethodBeat.i(134742);
       f.a(f.this);
@@ -38,204 +36,210 @@ abstract class f
       AppMethodBeat.o(134743);
     }
   };
+  private final AppBrandRuntime nxs;
   
   f(h paramh, AppBrandRuntime paramAppBrandRuntime)
   {
     super(paramh);
-    this.kEc = paramAppBrandRuntime;
+    this.nxs = paramAppBrandRuntime;
   }
   
-  private int bxe()
+  private int bIm()
   {
-    this.kRB = 0;
-    Object localObject1 = this.kEc.mAppId;
-    Object localObject2 = (a)this.kEc.av(a.class);
+    this.nLJ = 0;
+    Object localObject1 = this.nxs.mAppId;
+    Object localObject2 = (a)this.nxs.au(a.class);
     int i;
     AppBrandMusicClientService.a locala;
-    if ((localObject2 != null) && (((a)localObject2).kQF))
+    if ((localObject2 != null) && (((a)localObject2).nKN))
     {
       i = 1;
       if (i == 0) {
         break label462;
       }
-      if (AppBrandMusicClientService.acC((String)localObject1))
+      if (AppBrandMusicClientService.akw((String)localObject1))
       {
-        dK(1);
-        localObject2 = AppBrandMusicClientService.ncV;
-        locala = this.kRC;
+        dY(1);
+        localObject2 = AppBrandMusicClientService.qdk;
+        locala = this.nLK;
         if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (locala != null)) {
           break label410;
         }
       }
       label81:
-      boolean bool = ((a)this.kEc.av(a.class)).kQG;
+      boolean bool = ((a)this.nxs.au(a.class)).nKO;
       Log.i("MicroMsg.MultipleConditionBackgroundState", "addKeepFlagLocationIfNeed, canKeepAliveLocation:%s", new Object[] { Boolean.valueOf(bool) });
       if (bool)
       {
-        localObject2 = (s)this.kEc.aw(s.class);
+        localObject2 = (t)this.nxs.av(t.class);
         if (localObject2 != null)
         {
-          if ((!((s)localObject2).lXu) || (!((s)localObject2).kYn)) {
+          if ((!((t)localObject2).oVh) || (!((t)localObject2).nSz)) {
             break label519;
           }
           i = 1;
           label156:
-          Log.i("MicroMsg.MultipleConditionBackgroundState", "addKeepFlagLocationIfNeed, isBackgroundMode:%s, isListening:%s", new Object[] { Boolean.valueOf(((s)localObject2).lXu), Boolean.valueOf(((s)localObject2).kYn) });
+          Log.i("MicroMsg.MultipleConditionBackgroundState", "addKeepFlagLocationIfNeed, isBackgroundMode:%s, isListening:%s", new Object[] { Boolean.valueOf(((t)localObject2).oVh), Boolean.valueOf(((t)localObject2).nSz) });
           if (i != 0) {
-            dK(32);
+            dY(32);
           }
         }
       }
-      localObject2 = (j)this.kEc.aw(j.class);
+      localObject2 = (j)this.nxs.av(j.class);
       if (localObject2 != null)
       {
-        bool = ((j)localObject2).bzd();
+        bool = ((j)localObject2).bKs();
         Log.i("MicroMsg.MultipleConditionBackgroundState", "addKeepFlagAppBrandLiveVOIPIfNeed, isVOIPing:%s", new Object[] { Boolean.valueOf(bool) });
         if (bool) {
-          dK(64);
+          dY(64);
         }
       }
-      localObject2 = (i)this.kEc.aw(i.class);
+      localObject2 = (i)this.nxs.av(i.class);
       if (localObject2 != null)
       {
-        bool = ((i)localObject2).bzc();
+        bool = ((i)localObject2).bKr();
         Log.i("MicroMsg.MultipleConditionBackgroundState", "addKeepFlagAppBrandAudioBackgroundPlayIfNeed, isNeedKeepAlive:%b", new Object[] { Boolean.valueOf(bool) });
         if (bool) {
-          dK(128);
+          dY(128);
         }
       }
-      localObject2 = (j)this.kEc.aw(j.class);
+      localObject2 = (j)this.nxs.av(j.class);
       if (localObject2 != null)
       {
-        bool = ((j)localObject2).bzd();
+        bool = ((j)localObject2).bKs();
         Log.i("MicroMsg.MultipleConditionBackgroundState", "addKeepFlagAppBrandLiveVOIPIfNeed, isVOIPing:%s", new Object[] { Boolean.valueOf(bool) });
         if (bool) {
-          dK(256);
+          dY(256);
         }
       }
-      localObject1 = com.tencent.mm.plugin.appbrand.h.Uc((String)localObject1);
-      switch (2.kRE[localObject1.ordinal()])
+      localObject1 = k.abM((String)localObject1);
+      switch (2.nLM[localObject1.ordinal()])
       {
       }
     }
     for (;;)
     {
-      return this.kRB;
+      return this.nLJ;
       i = 0;
       break;
       label410:
-      if (!((AppBrandMusicClientService)localObject2).ncU.containsKey(localObject1))
+      if (!((AppBrandMusicClientService)localObject2).qdj.containsKey(localObject1))
       {
-        ((AppBrandMusicClientService)localObject2).ncU.put(localObject1, locala);
+        ((AppBrandMusicClientService)localObject2).qdj.put(localObject1, locala);
         break label81;
       }
-      ((AppBrandMusicClientService)localObject2).ncU.remove(localObject1);
-      ((AppBrandMusicClientService)localObject2).ncU.put(localObject1, locala);
+      ((AppBrandMusicClientService)localObject2).qdj.remove(localObject1);
+      ((AppBrandMusicClientService)localObject2).qdj.put(localObject1, locala);
       break label81;
       label462:
-      localObject2 = AppBrandMusicClientService.ncV;
+      localObject2 = AppBrandMusicClientService.qdk;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         break label81;
       }
-      if (!((String)localObject1).equalsIgnoreCase(((AppBrandMusicClientService)localObject2).ncW))
+      if (!((String)localObject1).equalsIgnoreCase(((AppBrandMusicClientService)localObject2).qdl))
       {
         Log.e("MicroMsg.AppBrandMusicClientService", "appId is diff, can't stop music");
         break label81;
       }
       localObject2 = new AppBrandMusicClientService.StopBackgroundMusicTask();
       ((AppBrandMusicClientService.StopBackgroundMusicTask)localObject2).appId = ((String)localObject1);
-      AppBrandMainProcessService.a((MainProcessTask)localObject2);
+      ((AppBrandMusicClientService.StopBackgroundMusicTask)localObject2).bsM();
       break label81;
       label519:
       i = 0;
       break label156;
-      dK(16);
+      dY(16);
       continue;
-      dK(4);
+      dY(4);
       continue;
       try
       {
-        if ((this.kEc.kAl != null) && ((!this.kEc.kAl.getWindowAndroid().bsc()) || (this.kEc.brg() != null))) {
-          dK(8);
+        if ((this.nxs.ntu != null) && ((!this.nxs.ntu.getWindowAndroid().bCS()) || (this.nxs.bBW() != null))) {
+          dY(8);
         }
       }
       catch (IllegalAccessError localIllegalAccessError) {}
     }
   }
   
-  private void dK(int paramInt)
+  private void dY(int paramInt)
   {
-    this.kRB |= paramInt;
+    this.nLJ |= paramInt;
   }
   
-  abstract void bxb();
+  private void ze(int paramInt)
+  {
+    this.nLJ &= (paramInt ^ 0xFFFFFFFF);
+    if (this.nLJ == 0)
+    {
+      Log.i("MicroMsg.MultipleConditionBackgroundState", "onKeepFlagsCleared, appId:%s", new Object[] { this.nxs.mAppId });
+      bIj();
+    }
+  }
+  
+  abstract void bIj();
+  
+  final void bIn()
+  {
+    ze(16);
+  }
   
   public void enter()
   {
-    this.kRB = bxe();
+    this.nLJ = bIm();
     super.enter();
-    vT(0);
+    ze(0);
   }
   
   public void exit()
   {
     super.exit();
-    this.kRB = 0;
-    AppBrandMusicClientService localAppBrandMusicClientService = AppBrandMusicClientService.ncV;
-    String str = this.kEc.mAppId;
-    if ((!TextUtils.isEmpty(str)) && (localAppBrandMusicClientService.ncU.containsKey(str))) {
-      localAppBrandMusicClientService.ncU.remove(str);
+    this.nLJ = 0;
+    AppBrandMusicClientService localAppBrandMusicClientService = AppBrandMusicClientService.qdk;
+    String str = this.nxs.mAppId;
+    if ((!TextUtils.isEmpty(str)) && (localAppBrandMusicClientService.qdj.containsKey(str))) {
+      localAppBrandMusicClientService.qdj.remove(str);
     }
   }
   
   public boolean processMessage(Message paramMessage)
   {
-    if (d.a.vS(paramMessage.what) == d.a.kRo)
+    if (d.a.zd(paramMessage.what) == d.a.nLw)
     {
       Log.i("MicroMsg.MultipleConditionBackgroundState", "processMessage, ON_STOP_BACKGROUND_LOCATION_LISTENING");
-      vT(32);
+      ze(32);
       return true;
     }
-    if (d.a.vS(paramMessage.what) == d.a.kRp)
+    if (d.a.zd(paramMessage.what) == d.a.nLx)
     {
       Log.i("MicroMsg.MultipleConditionBackgroundState", "processMessage, ON_STOP_BACKGROUND_LIVE_VOIP");
-      vT(64);
+      ze(64);
       return true;
     }
-    if (d.a.vS(paramMessage.what) == d.a.kRq)
+    if (d.a.zd(paramMessage.what) == d.a.nLy)
     {
       Log.i("MicroMsg.MultipleConditionBackgroundState", "processMessage, ON_STOP_AUDIO_BACKGROUND_PLAY");
-      vT(128);
+      ze(128);
       return true;
     }
-    if (d.a.vS(paramMessage.what) == d.a.kRr)
+    if (d.a.zd(paramMessage.what) == d.a.nLz)
     {
       Log.i("MicroMsg.MultipleConditionBackgroundState", "processMessage, ON_STOP_BACKGROUND_LIVE_VOIP");
-      vT(256);
+      ze(256);
       return true;
     }
-    if (d.a.vS(paramMessage.what) == d.a.kRs)
+    if (d.a.zd(paramMessage.what) == d.a.nLA)
     {
-      Log.i("MicroMsg.MultipleConditionBackgroundState", "processMessage, ON_CONTAINER_FORCED_MOVE_TO_BACK, appId:%s", new Object[] { this.kEc.mAppId });
-      vT(4);
+      Log.i("MicroMsg.MultipleConditionBackgroundState", "processMessage, ON_CONTAINER_FORCED_MOVE_TO_BACK, appId:%s", new Object[] { this.nxs.mAppId });
+      ze(4);
       return true;
     }
     return super.processMessage(paramMessage);
   }
-  
-  final void vT(int paramInt)
-  {
-    this.kRB &= (paramInt ^ 0xFFFFFFFF);
-    if (this.kRB == 0)
-    {
-      Log.i("MicroMsg.MultipleConditionBackgroundState", "onKeepFlagsCleared, appId:%s", new Object[] { this.kEc.mAppId });
-      bxb();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.a.f
  * JD-Core Version:    0.7.0.1
  */

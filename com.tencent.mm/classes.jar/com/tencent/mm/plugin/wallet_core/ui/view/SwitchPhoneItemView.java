@@ -9,15 +9,17 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class SwitchPhoneItemView
   extends RelativeLayout
 {
-  private TextView ImZ;
-  private TextView Ina;
-  ImageView Inb;
-  private int Inc;
+  private TextView Pfr;
+  private TextView Pfs;
+  ImageView Pft;
+  private int Pfu;
   
   public SwitchPhoneItemView(Context paramContext)
   {
@@ -28,9 +30,9 @@ public class SwitchPhoneItemView
   {
     super(paramContext);
     AppMethodBeat.i(71489);
-    this.Inc = 0;
-    this.Inc = paramInt;
-    bh(paramContext);
+    this.Pfu = 0;
+    this.Pfu = paramInt;
+    bv(paramContext);
     AppMethodBeat.o(71489);
   }
   
@@ -38,8 +40,8 @@ public class SwitchPhoneItemView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(71490);
-    this.Inc = 0;
-    bh(paramContext);
+    this.Pfu = 0;
+    bv(paramContext);
     AppMethodBeat.o(71490);
   }
   
@@ -47,43 +49,43 @@ public class SwitchPhoneItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(71491);
-    this.Inc = 0;
-    bh(paramContext);
+    this.Pfu = 0;
+    bv(paramContext);
     AppMethodBeat.o(71491);
   }
   
-  private void bh(Context paramContext)
+  private void bv(Context paramContext)
   {
     AppMethodBeat.i(71492);
-    if (this.Inc > 0) {}
-    for (paramContext = inflate(paramContext, this.Inc, this);; paramContext = inflate(paramContext, 2131497013, this))
+    if (this.Pfu > 0) {}
+    for (paramContext = inflate(paramContext, this.Pfu, this);; paramContext = inflate(paramContext, a.g.wallet_switch_verify_phone_item, this))
     {
-      this.ImZ = ((TextView)paramContext.findViewById(2131305902));
-      this.Ina = ((TextView)paramContext.findViewById(2131305877));
-      this.Inb = ((ImageView)paramContext.findViewById(2131305876));
+      this.Pfr = ((TextView)paramContext.findViewById(a.f.phone_number_tv));
+      this.Pfs = ((TextView)paramContext.findViewById(a.f.phone_desc_tv));
+      this.Pft = ((ImageView)paramContext.findViewById(a.f.phone_check_iv));
       AppMethodBeat.o(71492);
       return;
     }
   }
   
-  public final void a(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
+  public final void c(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
   {
     AppMethodBeat.i(71493);
     if (!Util.isNullOrNil(paramCharSequence1)) {
-      this.ImZ.setText(paramCharSequence1);
+      this.Pfr.setText(paramCharSequence1);
     }
     while (!Util.isNullOrNil(paramCharSequence2))
     {
-      this.Ina.setMaxLines(2);
-      this.Ina.setSelected(true);
-      this.Ina.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-      this.Ina.setText(paramCharSequence2);
-      this.Ina.setMovementMethod(LinkMovementMethod.getInstance());
+      this.Pfs.setMaxLines(2);
+      this.Pfs.setSelected(true);
+      this.Pfs.setEllipsize(TextUtils.TruncateAt.MIDDLE);
+      this.Pfs.setText(paramCharSequence2);
+      this.Pfs.setMovementMethod(LinkMovementMethod.getInstance());
       AppMethodBeat.o(71493);
       return;
-      this.ImZ.setVisibility(8);
+      this.Pfr.setVisibility(8);
     }
-    this.Ina.setVisibility(8);
+    this.Pfs.setVisibility(8);
     AppMethodBeat.o(71493);
   }
 }

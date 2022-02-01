@@ -1,26 +1,13 @@
 package com.tencent.mm.audio.mix.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.mix.i.b;
+import com.tencent.mm.audio.mix.h.b;
 import java.nio.ByteOrder;
 import java.util.Arrays;
 
 public final class c
 {
-  public static boolean duu = false;
-  
-  public static void YP()
-  {
-    AppMethodBeat.i(136756);
-    if (ByteOrder.nativeOrder() == ByteOrder.BIG_ENDIAN)
-    {
-      duu = true;
-      AppMethodBeat.o(136756);
-      return;
-    }
-    duu = false;
-    AppMethodBeat.o(136756);
-  }
+  public static boolean fnc = false;
   
   public static void a(int paramInt, byte[] paramArrayOfByte, byte[][] paramArrayOfByte1)
   {
@@ -89,7 +76,7 @@ public final class c
         paramInt1 = 0;
         while (paramInt1 < j)
         {
-          byte[] arrayOfByte2 = a.getBytes((short)(paramArrayOfByte[paramInt1] * 256), duu);
+          byte[] arrayOfByte2 = a.getBytes((short)(paramArrayOfByte[paramInt1] * 256), fnc);
           arrayOfByte1[(paramInt1 * 2)] = arrayOfByte2[0];
           arrayOfByte1[(paramInt1 * 2 + 1)] = arrayOfByte2[1];
           paramInt1 += 1;
@@ -107,7 +94,7 @@ public final class c
     paramInt1 = i;
     while (paramInt1 < paramInt2)
     {
-      arrayOfByte1[paramInt1] = ((byte)(a.a(paramArrayOfByte[(paramInt1 * 2)], paramArrayOfByte[(paramInt1 * 2 + 1)], duu) / 256));
+      arrayOfByte1[paramInt1] = ((byte)(a.a(paramArrayOfByte[(paramInt1 * 2)], paramArrayOfByte[(paramInt1 * 2 + 1)], fnc) / 256));
       paramInt1 += 1;
     }
     AppMethodBeat.o(136757);
@@ -155,6 +142,19 @@ public final class c
         j += 2;
       }
     }
+  }
+  
+  public static void adw()
+  {
+    AppMethodBeat.i(136756);
+    if (ByteOrder.nativeOrder() == ByteOrder.BIG_ENDIAN)
+    {
+      fnc = true;
+      AppMethodBeat.o(136756);
+      return;
+    }
+    fnc = false;
+    AppMethodBeat.o(136756);
   }
   
   public static byte[] b(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
@@ -250,7 +250,7 @@ public final class c
         b2 = paramArrayOfByte[(paramInt1 * 2 + 1)];
         byte b3 = paramArrayOfByte[(paramInt1 * 2 + 2)];
         byte b4 = paramArrayOfByte[(paramInt1 * 2 + 3)];
-        boolean bool = duu;
+        boolean bool = fnc;
         paramInt3 = a.a(b1, b2, bool);
         i = a.a(b3, b4, bool);
         byte[] arrayOfByte2 = a.getBytes((short)(paramInt3 / 2 + i / 2), bool);
@@ -263,7 +263,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.audio.mix.c.c
  * JD-Core Version:    0.7.0.1
  */

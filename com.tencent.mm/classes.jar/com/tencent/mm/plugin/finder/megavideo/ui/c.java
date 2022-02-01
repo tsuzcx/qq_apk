@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.finder.megavideo.ui;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderLikeMegaVideoUIContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderLikeMegaVideoUIContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
 public final class c
 {
-  public static final c uLN;
+  public static final c zxo;
   
   static
   {
-    AppMethodBeat.i(248508);
-    uLN = new c();
-    AppMethodBeat.o(248508);
+    AppMethodBeat.i(287688);
+    zxo = new c();
+    AppMethodBeat.o(287688);
   }
 }
 

@@ -384,7 +384,7 @@ class MMSharedPreferences
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.openapi.MMSharedPreferences
  * JD-Core Version:    0.7.0.1
  */

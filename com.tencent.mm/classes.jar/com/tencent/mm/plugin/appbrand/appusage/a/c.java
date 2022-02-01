@@ -4,7 +4,7 @@ import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.modelgeo.d;
-import com.tencent.mm.plugin.appbrand.utils.f;
+import com.tencent.mm.plugin.appbrand.utils.h;
 import com.tencent.mm.pointers.PBool;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
@@ -14,21 +14,21 @@ import java.util.concurrent.TimeUnit;
 
 public final class c
 {
-  private static float kWL = 0.0F;
-  private static float kWM = 0.0F;
-  private static volatile long kWN = 0L;
-  private boolean kWO = false;
-  private a kWP;
+  private static float nQX = 0.0F;
+  private static float nQY = 0.0F;
+  private static volatile long nQZ = 0L;
+  private boolean nRa = false;
+  private a nRb;
   
-  public static boolean byF()
+  public static boolean bJT()
   {
     AppMethodBeat.i(44671);
-    if ((kWM == -85.0F) || (kWL == -1000.0F))
+    if ((nQY == -85.0F) || (nQX == -1000.0F))
     {
       AppMethodBeat.o(44671);
       return false;
     }
-    if (Util.nowMilliSecond() - kWN < 300000L) {}
+    if (Util.nowMilliSecond() - nQZ < 300000L) {}
     for (int i = 1; i == 0; i = 0)
     {
       AppMethodBeat.o(44671);
@@ -40,34 +40,34 @@ public final class c
   
   public static float getLatitude()
   {
-    return kWM;
+    return nQY;
   }
   
   public static float getLongitude()
   {
-    return kWL;
+    return nQX;
   }
   
   public final void a(a parama)
   {
-    this.kWP = parama;
+    this.nRb = parama;
   }
   
-  public final boolean byE()
+  public final boolean bJS()
   {
-    return this.kWP != null;
+    return this.nRb != null;
   }
   
-  public final void byG()
+  public final void bJU()
   {
     AppMethodBeat.i(44672);
-    if (this.kWO)
+    if (this.nRa)
     {
       AppMethodBeat.o(44672);
       return;
     }
     Log.i("MicroMsg.Recommend.AppBrandRecommendLocationGet", "startLocation");
-    this.kWO = true;
+    this.nRa = true;
     Object localObject = new PBool();
     final PBool localPBool = new PBool();
     ((PBool)localObject).value = false;
@@ -82,28 +82,28 @@ public final class c
           AppMethodBeat.o(44669);
           return false;
         }
-        this.kWR.value = true;
+        this.nRd.value = true;
         c.a(c.this);
         Log.i("MicroMsg.Recommend.AppBrandRecommendLocationGet", "onTimerExpired");
         if (c.b(c.this) != null) {
-          c.b(c.this).J(c.byH(), c.byI());
+          c.b(c.this).K(c.bJV(), c.bJW());
         }
         AppMethodBeat.o(44669);
         return false;
       }
     }, false).startTimer(TimeUnit.SECONDS.toMillis(20L));
-    localObject = (b.a)f.cP(new b.a()
+    localObject = (b.a)h.cQ(new b.a()
     {
-      private int kWT = 0;
+      private int nRf = 0;
       
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
         AppMethodBeat.i(44670);
-        f.bs(this);
-        d.bca().c(this);
-        paramAnonymousInt = this.kWT + 1;
-        this.kWT = paramAnonymousInt;
-        if ((paramAnonymousInt > 1) || (this.kWR.value))
+        h.bs(this);
+        d.blq().b(this);
+        paramAnonymousInt = this.nRf + 1;
+        this.nRf = paramAnonymousInt;
+        if ((paramAnonymousInt > 1) || (this.nRd.value))
         {
           AppMethodBeat.o(44670);
           return false;
@@ -114,7 +114,7 @@ public final class c
         {
           Log.i("MicroMsg.Recommend.AppBrandRecommendLocationGet", "onGetLocation, fail");
           if (c.b(c.this) != null) {
-            c.b(c.this).J(paramAnonymousFloat1, paramAnonymousFloat2);
+            c.b(c.this).K(paramAnonymousFloat1, paramAnonymousFloat2);
           }
           AppMethodBeat.o(44670);
           return false;
@@ -122,21 +122,21 @@ public final class c
         Log.i("MicroMsg.Recommend.AppBrandRecommendLocationGet", "onGetLocation, success");
         c.aE(paramAnonymousFloat2);
         c.aF(paramAnonymousFloat1);
-        c.AZ(Util.nowMilliSecond());
+        c.Hl(Util.nowMilliSecond());
         if (c.b(c.this) != null) {
-          c.b(c.this).J(paramAnonymousFloat1, paramAnonymousFloat2);
+          c.b(c.this).K(paramAnonymousFloat1, paramAnonymousFloat2);
         }
         AppMethodBeat.o(44670);
         return true;
       }
     });
-    d.bca().b((b.a)localObject, false);
+    d.blq().b((b.a)localObject, false);
     AppMethodBeat.o(44672);
   }
   
   public static abstract interface a
   {
-    public abstract void J(float paramFloat1, float paramFloat2);
+    public abstract void K(float paramFloat1, float paramFloat2);
   }
 }
 

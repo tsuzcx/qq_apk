@@ -1,6 +1,6 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.a.a.e;
+import com.google.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.b.a.a.a.ae;
 import com.tencent.pb.common.b.d;
@@ -9,9 +9,7 @@ import com.tencent.pb.common.c.b;
 public final class g
   extends d
 {
-  public String xOr;
-  
-  public final Object cO(byte[] paramArrayOfByte)
+  public final Object dn(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62535);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -39,7 +37,7 @@ public final class g
     return 209;
   }
   
-  public final String hiV()
+  public final String ikF()
   {
     return "CsCmd.Cmd_V_CSModifyVoiceGroupInfoReq";
   }

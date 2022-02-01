@@ -2,12 +2,6 @@ package com.tencent.mm.plugin.wallet.ui;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.design.widget.BottomSheetBehavior;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.b;
-import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -17,14 +11,23 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
+import androidx.recyclerview.widget.RecyclerView.v;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.n;
-import com.tencent.mm.ui.base.o.b;
-import com.tencent.mm.ui.base.o.c;
-import com.tencent.mm.ui.base.o.f;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.h;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.base.q.b;
+import com.tencent.mm.ui.base.q.c;
+import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.q.g;
 import com.tencent.mm.ui.widget.a.g;
 import com.tencent.mm.ui.widget.a.g.a;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
@@ -32,89 +35,89 @@ import java.util.List;
 
 public final class a
 {
-  public o.f HLX;
-  o.g HLY;
-  o.g HLZ;
-  o.b HMa;
-  o.c HMb;
-  m HMc;
-  m HMd;
-  a HMe;
-  public boolean HMf;
-  public boolean HMg;
-  private AdapterView.OnItemClickListener HMh;
-  public int jKz;
+  public q.f ODT;
+  q.g ODU;
+  q.g ODV;
+  q.b ODW;
+  q.c ODX;
+  o ODY;
+  o ODZ;
+  a OEa;
+  public boolean OEb;
+  public boolean OEc;
+  private AdapterView.OnItemClickListener OEd;
+  public int mBE;
   Context mContext;
   private RecyclerView mRecyclerView;
-  public final g qAx;
+  public final g tZx;
   
   public a(Context paramContext)
   {
-    AppMethodBeat.i(214106);
-    this.HMf = false;
-    this.HMg = false;
-    this.jKz = 0;
-    this.HMh = new AdapterView.OnItemClickListener()
+    AppMethodBeat.i(267717);
+    this.OEb = false;
+    this.OEc = false;
+    this.mBE = 0;
+    this.OEd = new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
-        AppMethodBeat.i(214099);
+        AppMethodBeat.i(274557);
         b localb = new b();
-        localb.bm(paramAnonymousAdapterView);
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.zo(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet/ui/BankCardListBottomSheetUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
-        if (paramAnonymousInt >= a.this.HMc.size() + a.this.HMd.size())
+        localb.bn(paramAnonymousAdapterView);
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.Fs(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet/ui/BankCardListBottomSheetUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+        if (paramAnonymousInt >= a.this.ODY.size() + a.this.ODZ.size())
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/ui/BankCardListBottomSheetUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-          AppMethodBeat.o(214099);
+          AppMethodBeat.o(274557);
           return;
         }
-        if (paramAnonymousInt < a.this.HMc.size())
+        if (paramAnonymousInt < a.this.ODY.size())
         {
-          paramAnonymousAdapterView = (n)a.this.HMc.ORD.get(paramAnonymousInt);
-          if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.neT))
+          paramAnonymousAdapterView = (p)a.this.ODY.WkP.get(paramAnonymousInt);
+          if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.qfB))
           {
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/ui/BankCardListBottomSheetUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-            AppMethodBeat.o(214099);
+            AppMethodBeat.o(274557);
             return;
           }
-          if (a.this.HLY != null)
+          if (a.this.ODU != null)
           {
-            a.this.HLY.onMMMenuItemSelected(paramAnonymousAdapterView, paramAnonymousInt);
-            a.this.jKz = paramAnonymousInt;
+            a.this.ODU.onMMMenuItemSelected(paramAnonymousAdapterView, paramAnonymousInt);
+            a.this.mBE = paramAnonymousInt;
           }
         }
         for (;;)
         {
-          a.this.HMe.atj.notifyChanged();
+          a.this.OEa.alc.notifyChanged();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/ui/BankCardListBottomSheetUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-          AppMethodBeat.o(214099);
+          AppMethodBeat.o(274557);
           return;
           paramAnonymousAdapterView.performClick();
           break;
-          if ((a.this.HMd.size() > 0) && (paramAnonymousInt < a.this.HMc.size() + a.this.HMd.size()))
+          if ((a.this.ODZ.size() > 0) && (paramAnonymousInt < a.this.ODY.size() + a.this.ODZ.size()))
           {
-            paramAnonymousAdapterView = (n)a.this.HMd.ORD.get(paramAnonymousInt - a.this.HMc.size());
-            if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.neT))
+            paramAnonymousAdapterView = (p)a.this.ODZ.WkP.get(paramAnonymousInt - a.this.ODY.size());
+            if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.qfB))
             {
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/ui/BankCardListBottomSheetUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-              AppMethodBeat.o(214099);
+              AppMethodBeat.o(274557);
               return;
             }
-            if (a.this.HLZ != null) {
-              a.this.HLZ.onMMMenuItemSelected(paramAnonymousAdapterView, paramAnonymousInt);
+            if (a.this.ODV != null) {
+              a.this.ODV.onMMMenuItemSelected(paramAnonymousAdapterView, paramAnonymousInt);
             }
           }
         }
       }
     };
     this.mContext = paramContext;
-    this.qAx = new g(paramContext, 2, 3);
+    this.tZx = new g(paramContext, 2, 3);
     paramContext = this.mContext;
-    this.HMc = new m(paramContext);
-    this.HMd = new m(paramContext);
+    this.ODY = new o(paramContext);
+    this.ODZ = new o(paramContext);
     this.mRecyclerView = new RecyclerView(this.mContext);
     paramContext = new ViewGroup.LayoutParams(-1, -1);
     this.mRecyclerView.setFocusable(false);
@@ -123,92 +126,92 @@ public final class a
     this.mRecyclerView.setLayoutManager(new LinearLayoutManager());
     this.mRecyclerView.setItemViewCacheSize(20);
     this.mRecyclerView.setPadding(0, 0, 0, 0);
-    this.HMe = new a();
-    this.HMe.HMj = this.HMc;
-    this.HMe.ars = this.HMh;
-    this.mRecyclerView.setAdapter(this.HMe);
-    if (this.qAx != null) {
-      this.qAx.setCustomView(this.mRecyclerView);
+    this.OEa = new a();
+    this.OEa.OEf = this.ODY;
+    this.OEa.tp = this.OEd;
+    this.mRecyclerView.setAdapter(this.OEa);
+    if (this.tZx != null) {
+      this.tZx.setCustomView(this.mRecyclerView);
     }
-    BottomSheetBehavior.l((View)this.qAx.lJI.getParent()).J(com.tencent.mm.cb.a.jo(this.mRecyclerView.getContext()));
-    AppMethodBeat.o(214106);
+    BottomSheetBehavior.cg((View)this.tZx.oFW.getParent()).D(com.tencent.mm.ci.a.ks(this.mRecyclerView.getContext()));
+    AppMethodBeat.o(267717);
   }
   
-  public final void T(CharSequence paramCharSequence)
+  public final void a(o paramo, q.g paramg)
   {
-    AppMethodBeat.i(214108);
-    this.qAx.T(paramCharSequence);
-    AppMethodBeat.o(214108);
-  }
-  
-  public final void a(m paramm, o.g paramg)
-  {
-    this.HMd = paramm;
-    this.HLZ = paramg;
+    this.ODZ = paramo;
+    this.ODV = paramg;
   }
   
   public final void a(g.a parama)
   {
-    this.qAx.QOT = parama;
+    this.tZx.YnF = parama;
   }
   
-  public final void dGm()
+  public final void ah(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(214110);
-    if (this.HLX != null) {
-      this.HLX.onCreateMMMenu(this.HMc);
+    AppMethodBeat.i(267719);
+    this.tZx.ah(paramCharSequence);
+    AppMethodBeat.o(267719);
+  }
+  
+  public final void eik()
+  {
+    AppMethodBeat.i(267721);
+    if (this.ODT != null) {
+      this.ODT.onCreateMMMenu(this.ODY);
     }
     this.mRecyclerView.setPadding(0, 0, 0, 0);
-    if ((this.HMd != null) && (this.HMe != null)) {
-      this.HMe.atj.notifyChanged();
+    if ((this.ODZ != null) && (this.OEa != null)) {
+      this.OEa.alc.notifyChanged();
     }
-    this.qAx.dGm();
-    AppMethodBeat.o(214110);
+    this.tZx.eik();
+    AppMethodBeat.o(267721);
   }
   
-  public final void fPw()
+  public final void gIa()
   {
-    AppMethodBeat.i(214109);
-    if (this.HMe != null) {
-      this.HMe.atj.notifyChanged();
+    AppMethodBeat.i(267720);
+    if (this.OEa != null) {
+      this.OEa.alc.notifyChanged();
     }
-    this.qAx.dGm();
-    AppMethodBeat.o(214109);
+    this.tZx.eik();
+    AppMethodBeat.o(267720);
   }
   
   public final void setTitleView(View paramView)
   {
-    AppMethodBeat.i(214107);
-    this.qAx.hv(paramView);
-    AppMethodBeat.o(214107);
+    AppMethodBeat.i(267718);
+    this.tZx.iL(paramView);
+    AppMethodBeat.o(267718);
   }
   
   public final class a
     extends RecyclerView.a<a>
   {
-    m HMj;
-    AdapterView.OnItemClickListener ars;
+    o OEf;
+    AdapterView.OnItemClickListener tp;
     
     public a() {}
     
     public final int getItemCount()
     {
-      AppMethodBeat.i(214103);
-      int i = this.HMj.size();
-      int j = a.this.HMd.size();
-      AppMethodBeat.o(214103);
+      AppMethodBeat.i(269708);
+      int i = this.OEf.size();
+      int j = a.this.ODZ.size();
+      AppMethodBeat.o(269708);
       return i + j;
     }
     
     public final int getItemViewType(int paramInt)
     {
-      AppMethodBeat.i(214102);
-      if (paramInt < this.HMj.size())
+      AppMethodBeat.i(269707);
+      if (paramInt < this.OEf.size())
       {
-        AppMethodBeat.o(214102);
+        AppMethodBeat.o(269707);
         return 0;
       }
-      AppMethodBeat.o(214102);
+      AppMethodBeat.o(269707);
       return 1;
     }
     
@@ -216,49 +219,49 @@ public final class a
       extends RecyclerView.v
       implements View.OnClickListener
     {
-      WeImageView HMk;
-      ImageView HMl;
-      LinearLayout HMm;
-      TextView hbb;
-      TextView jCB;
-      WeImageView uGm;
+      WeImageView OEg;
+      ImageView OEh;
+      LinearLayout OEi;
+      TextView jMg;
+      TextView msF;
+      WeImageView znz;
       
       public a(View paramView, int paramInt)
       {
         super();
-        AppMethodBeat.i(214100);
+        AppMethodBeat.i(272136);
         paramView.setOnClickListener(this);
-        this.hbb = ((TextView)paramView.findViewById(2131309195));
-        this.uGm = ((WeImageView)paramView.findViewById(2131302468));
-        this.HMm = ((LinearLayout)paramView.findViewById(2131307157));
-        if (a.this.HMf)
+        this.jMg = ((TextView)paramView.findViewById(a.f.title));
+        this.znz = ((WeImageView)paramView.findViewById(a.f.icon));
+        this.OEi = ((LinearLayout)paramView.findViewById(a.f.root));
+        if (a.this.OEb)
         {
-          this.HMk = ((WeImageView)paramView.findViewById(2131306483));
-          this.jCB = ((TextView)paramView.findViewById(2131299495));
-          this.HMl = ((ImageView)paramView.findViewById(2131299682));
+          this.OEg = ((WeImageView)paramView.findViewById(a.f.radio));
+          this.msF = ((TextView)paramView.findViewById(a.f.desc));
+          this.OEh = ((ImageView)paramView.findViewById(a.f.divider));
           if (paramInt == 1)
           {
-            paramView = (LinearLayout.LayoutParams)this.HMl.getLayoutParams();
+            paramView = (LinearLayout.LayoutParams)this.OEh.getLayoutParams();
             paramView.setMargins(0, 0, 0, 0);
-            this.HMl.setLayoutParams(paramView);
-            this.HMk.setImageResource(2131690737);
-            this.HMk.setIconColor(a.this.mContext.getResources().getColor(2131099749));
+            this.OEh.setLayoutParams(paramView);
+            this.OEg.setImageResource(a.h.icons_outlined_arrow);
+            this.OEg.setIconColor(a.this.mContext.getResources().getColor(a.c.FG_2));
           }
         }
-        AppMethodBeat.o(214100);
+        AppMethodBeat.o(272136);
       }
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(214101);
+        AppMethodBeat.i(272138);
         b localb = new b();
-        localb.bm(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet/ui/BankCardListBottomSheetUI$RecycleViewAdapter$ViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        if (a.a.this.ars != null) {
-          a.a.this.ars.onItemClick(null, paramView, getPosition(), getPosition());
+        localb.bn(paramView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet/ui/BankCardListBottomSheetUI$RecycleViewAdapter$ViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        if (a.a.this.tp != null) {
+          a.a.this.tp.onItemClick(null, paramView, getPosition(), getPosition());
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/ui/BankCardListBottomSheetUI$RecycleViewAdapter$ViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(214101);
+        AppMethodBeat.o(272138);
       }
     }
   }

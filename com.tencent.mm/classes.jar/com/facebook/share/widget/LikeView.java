@@ -9,7 +9,6 @@ import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.support.v4.content.d;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,7 +17,10 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import androidx.h.a.a;
 import com.facebook.FacebookException;
+import com.facebook.common.R.color;
+import com.facebook.common.R.dimen;
 import com.facebook.common.R.styleable;
 import com.facebook.internal.FragmentWrapper;
 import com.facebook.internal.NativeProtocol;
@@ -88,7 +90,7 @@ public class LikeView
     AppMethodBeat.i(8691);
     this.likeActionController = paramLikeActionController;
     this.broadcastReceiver = new LikeControllerBroadcastReceiver(null);
-    paramLikeActionController = d.W(getContext());
+    paramLikeActionController = a.V(getContext());
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("com.facebook.sdk.LikeActionController.UPDATED");
     localIntentFilter.addAction("com.facebook.sdk.LikeActionController.DID_ERROR");
@@ -128,10 +130,10 @@ public class LikeView
   private void initialize(Context paramContext)
   {
     AppMethodBeat.i(8683);
-    this.edgePadding = getResources().getDimensionPixelSize(2131166099);
-    this.internalPadding = getResources().getDimensionPixelSize(2131166100);
+    this.edgePadding = getResources().getDimensionPixelSize(R.dimen.com_facebook_likeview_edge_padding);
+    this.internalPadding = getResources().getDimensionPixelSize(R.dimen.com_facebook_likeview_internal_padding);
     if (this.foregroundColor == -1) {
-      this.foregroundColor = getResources().getColor(2131100210);
+      this.foregroundColor = getResources().getColor(R.color.com_facebook_likeview_text_color);
     }
     setBackgroundColor(0);
     this.containerView = new LinearLayout(paramContext);
@@ -185,7 +187,7 @@ public class LikeView
   {
     AppMethodBeat.i(8685);
     this.socialSentenceView = new TextView(paramContext);
-    this.socialSentenceView.setTextSize(0, getResources().getDimension(2131166101));
+    this.socialSentenceView.setTextSize(0, getResources().getDimension(R.dimen.com_facebook_likeview_text_size));
     this.socialSentenceView.setMaxLines(2);
     this.socialSentenceView.setTextColor(this.foregroundColor);
     this.socialSentenceView.setGravity(17);
@@ -208,30 +210,30 @@ public class LikeView
       AppMethodBeat.o(8682);
       return;
     }
-    this.objectId = Utility.coerceValueIfNullOrEmpty(paramAttributeSet.getString(3), null);
-    this.objectType = ObjectType.fromInt(paramAttributeSet.getInt(4, ObjectType.DEFAULT.getValue()));
-    this.likeViewStyle = Style.fromInt(paramAttributeSet.getInt(5, Style.access$000(Style.DEFAULT)));
+    this.objectId = Utility.coerceValueIfNullOrEmpty(paramAttributeSet.getString(R.styleable.com_facebook_like_view_com_facebook_object_id), null);
+    this.objectType = ObjectType.fromInt(paramAttributeSet.getInt(R.styleable.com_facebook_like_view_com_facebook_object_type, ObjectType.DEFAULT.getValue()));
+    this.likeViewStyle = Style.fromInt(paramAttributeSet.getInt(R.styleable.com_facebook_like_view_com_facebook_style, Style.access$000(Style.DEFAULT)));
     if (this.likeViewStyle == null)
     {
       paramAttributeSet = new IllegalArgumentException("Unsupported value for LikeView 'style'");
       AppMethodBeat.o(8682);
       throw paramAttributeSet;
     }
-    this.auxiliaryViewPosition = AuxiliaryViewPosition.fromInt(paramAttributeSet.getInt(0, AuxiliaryViewPosition.access$100(AuxiliaryViewPosition.DEFAULT)));
+    this.auxiliaryViewPosition = AuxiliaryViewPosition.fromInt(paramAttributeSet.getInt(R.styleable.com_facebook_like_view_com_facebook_auxiliary_view_position, AuxiliaryViewPosition.access$100(AuxiliaryViewPosition.DEFAULT)));
     if (this.auxiliaryViewPosition == null)
     {
       paramAttributeSet = new IllegalArgumentException("Unsupported value for LikeView 'auxiliary_view_position'");
       AppMethodBeat.o(8682);
       throw paramAttributeSet;
     }
-    this.horizontalAlignment = HorizontalAlignment.fromInt(paramAttributeSet.getInt(2, HorizontalAlignment.access$200(HorizontalAlignment.DEFAULT)));
+    this.horizontalAlignment = HorizontalAlignment.fromInt(paramAttributeSet.getInt(R.styleable.com_facebook_like_view_com_facebook_horizontal_alignment, HorizontalAlignment.access$200(HorizontalAlignment.DEFAULT)));
     if (this.horizontalAlignment == null)
     {
       paramAttributeSet = new IllegalArgumentException("Unsupported value for LikeView 'horizontal_alignment'");
       AppMethodBeat.o(8682);
       throw paramAttributeSet;
     }
-    this.foregroundColor = paramAttributeSet.getColor(1, -1);
+    this.foregroundColor = paramAttributeSet.getColor(R.styleable.com_facebook_like_view_com_facebook_foreground_color, -1);
     paramAttributeSet.recycle();
     AppMethodBeat.o(8682);
   }
@@ -259,7 +261,7 @@ public class LikeView
     AppMethodBeat.i(8692);
     if (this.broadcastReceiver != null)
     {
-      d.W(getContext()).unregisterReceiver(this.broadcastReceiver);
+      a.V(getContext()).unregisterReceiver(this.broadcastReceiver);
       this.broadcastReceiver = null;
     }
     if (this.creationCallback != null)
@@ -483,11 +485,11 @@ public class LikeView
   }
   
   @Deprecated
-  public void setFragment(android.support.v4.app.Fragment paramFragment)
+  public void setFragment(androidx.fragment.app.Fragment paramFragment)
   {
-    AppMethodBeat.i(8678);
+    AppMethodBeat.i(226326);
     this.parentFragment = new FragmentWrapper(paramFragment);
-    AppMethodBeat.o(8678);
+    AppMethodBeat.o(226326);
   }
   
   @Deprecated
@@ -867,7 +869,7 @@ public class LikeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.share.widget.LikeView
  * JD-Core Version:    0.7.0.1
  */

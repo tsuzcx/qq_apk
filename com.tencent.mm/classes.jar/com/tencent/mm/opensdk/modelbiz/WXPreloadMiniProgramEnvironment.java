@@ -15,9 +15,9 @@ public class WXPreloadMiniProgramEnvironment
     
     public Req()
     {
-      AppMethodBeat.i(190430);
+      AppMethodBeat.i(255241);
       this.extData = "";
-      AppMethodBeat.o(190430);
+      AppMethodBeat.o(255241);
     }
     
     public final boolean checkArgs()
@@ -32,10 +32,10 @@ public class WXPreloadMiniProgramEnvironment
     
     public final void toBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(190431);
+      AppMethodBeat.i(255243);
       super.toBundle(paramBundle);
       paramBundle.putString("_preload_wxminiprogram_environment_extData", this.extData);
-      AppMethodBeat.o(190431);
+      AppMethodBeat.o(255243);
     }
   }
   
@@ -46,9 +46,9 @@ public class WXPreloadMiniProgramEnvironment
     
     public Resp(Bundle paramBundle)
     {
-      AppMethodBeat.i(190404);
+      AppMethodBeat.i(255037);
       fromBundle(paramBundle);
-      AppMethodBeat.o(190404);
+      AppMethodBeat.o(255037);
     }
     
     public final boolean checkArgs()
@@ -58,9 +58,9 @@ public class WXPreloadMiniProgramEnvironment
     
     public final void fromBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(190405);
+      AppMethodBeat.i(255038);
       super.fromBundle(paramBundle);
-      AppMethodBeat.o(190405);
+      AppMethodBeat.o(255038);
     }
     
     public final int getType()
@@ -70,9 +70,9 @@ public class WXPreloadMiniProgramEnvironment
     
     public final void toBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(190406);
+      AppMethodBeat.i(255040);
       super.toBundle(paramBundle);
-      AppMethodBeat.o(190406);
+      AppMethodBeat.o(255040);
     }
   }
 }

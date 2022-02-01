@@ -3,24 +3,24 @@ package com.tencent.mm.plugin.appbrand.keylogger.base;
 public class g
   implements d
 {
-  private final String HP = null;
-  private final int mPB = 0;
-  private final int mPC = 0;
+  private final String IK = null;
   private final int mType = 2;
+  private final int pQu = 0;
+  private final int pQv = 0;
   
-  public final int bMY()
+  public final int bZp()
   {
-    return this.mPC;
+    return this.pQv;
   }
   
-  public final int bMZ()
+  public final int bZq()
   {
-    return this.mPB;
+    return this.pQu;
   }
   
-  public final String category()
+  public final String bZr()
   {
-    return this.HP;
+    return this.IK;
   }
   
   public final int getType()
@@ -30,7 +30,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.base.g
  * JD-Core Version:    0.7.0.1
  */

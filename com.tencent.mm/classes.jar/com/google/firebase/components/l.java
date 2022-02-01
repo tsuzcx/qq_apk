@@ -16,7 +16,7 @@ import java.util.Set;
 final class l
   implements m
 {
-  private static Bundle aq(Context paramContext)
+  private static Bundle am(Context paramContext)
   {
     AppMethodBeat.i(4085);
     try
@@ -44,10 +44,10 @@ final class l
     return null;
   }
   
-  public final List<String> ap(Context paramContext)
+  public final List<String> al(Context paramContext)
   {
     AppMethodBeat.i(4084);
-    paramContext = aq(paramContext);
+    paramContext = am(paramContext);
     if (paramContext == null)
     {
       paramContext = Collections.emptyList();
@@ -69,7 +69,7 @@ final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.components.l
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,69 @@
 package com.tencent.mm.plugin.finder.preload.tabPreload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.cm;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.concurrent.atomic.AtomicReference;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer;", "", "name", "", "(Ljava/lang/String;)V", "TAG", "getName", "()Ljava/lang/String;", "pauseRunnable", "Ljava/util/concurrent/atomic/AtomicReference;", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer$TimeRunnable;", "timer", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "pause", "", "runnable", "postDelayed", "delay", "", "tag", "resume", "", "stop", "TimeRunnable", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer;", "", "name", "", "(Ljava/lang/String;)V", "TAG", "getName", "()Ljava/lang/String;", "pauseRunnable", "Ljava/util/concurrent/atomic/AtomicReference;", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer$TimeRunnable;", "timer", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "pause", "", "runnable", "postDelayed", "delay", "", "tag", "resume", "", "stop", "TimeRunnable", "plugin-finder_release"})
 public final class a
 {
   final String TAG;
   private final String name;
-  final MMHandler uOI;
-  AtomicReference<a> uUM;
+  final MMHandler zBc;
+  AtomicReference<a> zLd;
   
   public a(String paramString)
   {
-    AppMethodBeat.i(249553);
+    AppMethodBeat.i(265885);
     this.name = paramString;
     this.TAG = ("Finder.ExpiredTimer#" + this.name);
     paramString = new MMHandler(this.name);
     paramString.setLogging(false);
-    this.uOI = paramString;
-    this.uUM = new AtomicReference();
-    AppMethodBeat.o(249553);
+    this.zBc = paramString;
+    this.zLd = new AtomicReference();
+    AppMethodBeat.o(265885);
   }
   
   public final void a(a parama, long paramLong, String paramString)
   {
-    AppMethodBeat.i(249551);
-    p.h(parama, "runnable");
-    p.h(paramString, "tag");
+    AppMethodBeat.i(265883);
+    p.k(parama, "runnable");
+    p.k(paramString, "tag");
     paramLong = Math.max(0L, paramLong);
-    this.uOI.removeCallbacksAndMessages(null);
-    parama.gY = paramLong;
-    parama.time = System.currentTimeMillis();
-    this.uOI.postDelayed((Runnable)parama, paramLong);
-    Log.i(this.TAG, "[postDelayed] delay=" + parama.gY + "ms hash=" + parama.hashCode() + " tag=" + paramString);
-    AppMethodBeat.o(249551);
+    this.zBc.removeCallbacksAndMessages(null);
+    parama.delay = paramLong;
+    parama.time = cm.bfE();
+    this.zBc.postDelayed((Runnable)parama, paramLong);
+    Log.i(this.TAG, "[postDelayed] delay=" + parama.delay + "ms hash=" + parama.hashCode() + " tag=" + paramString);
+    AppMethodBeat.o(265883);
   }
   
-  public final a aut(String paramString)
+  public final a aDJ(String paramString)
   {
-    AppMethodBeat.i(249552);
-    p.h(paramString, "tag");
-    this.uUM.set(null);
-    this.uOI.removeCallbacksAndMessages(null);
+    AppMethodBeat.i(265884);
+    p.k(paramString, "tag");
+    this.zLd.set(null);
+    this.zBc.removeCallbacksAndMessages(null);
     Log.i(this.TAG, "[stop] tag=" + paramString + ", null");
-    AppMethodBeat.o(249552);
+    AppMethodBeat.o(265884);
     return null;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer$TimeRunnable;", "Ljava/lang/Runnable;", "()V", "delay", "", "getDelay", "()J", "setDelay", "(J)V", "time", "getTime", "setTime", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer$TimeRunnable;", "Ljava/lang/Runnable;", "()V", "delay", "", "getDelay", "()J", "setDelay", "(J)V", "time", "getTime", "setTime", "plugin-finder_release"})
   public static abstract class a
     implements Runnable
   {
-    long gY;
-    long time = System.currentTimeMillis();
+    long delay;
+    long time = cm.bfE();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.preload.tabPreload.a
  * JD-Core Version:    0.7.0.1
  */

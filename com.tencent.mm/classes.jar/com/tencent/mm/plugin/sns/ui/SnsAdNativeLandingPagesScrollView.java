@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.content.Context;
-import android.support.v4.widget.NestedScrollView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import androidx.core.widget.NestedScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class SnsAdNativeLandingPagesScrollView
   extends NestedScrollView
 {
-  private int Exn;
-  private int Exo;
-  private int Exp;
-  private az Exq;
-  private long Exr;
-  private Runnable Exs;
+  private int KLg;
+  private int KLh;
+  private int KLi;
+  private bb KLj;
+  private long KLk;
+  private Runnable KLl;
   
   public SnsAdNativeLandingPagesScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98318);
-    this.Exn = 0;
-    this.Exo = 0;
-    this.Exp = 50;
-    this.Exq = null;
-    this.Exr = System.currentTimeMillis();
-    this.Exs = new Runnable()
+    this.KLg = 0;
+    this.KLh = 0;
+    this.KLi = 50;
+    this.KLj = null;
+    this.KLk = System.currentTimeMillis();
+    this.KLl = new Runnable()
     {
       public final void run()
       {
@@ -65,12 +65,12 @@ public class SnsAdNativeLandingPagesScrollView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(98317);
-    this.Exn = 0;
-    this.Exo = 0;
-    this.Exp = 50;
-    this.Exq = null;
-    this.Exr = System.currentTimeMillis();
-    this.Exs = new Runnable()
+    this.KLg = 0;
+    this.KLh = 0;
+    this.KLi = 50;
+    this.KLj = null;
+    this.KLk = System.currentTimeMillis();
+    this.KLl = new Runnable()
     {
       public final void run()
       {
@@ -105,10 +105,10 @@ public class SnsAdNativeLandingPagesScrollView
     AppMethodBeat.o(98317);
   }
   
-  public final void fling(int paramInt)
+  public final void bO(int paramInt)
   {
     AppMethodBeat.i(98322);
-    super.fling(paramInt / 3);
+    super.bO(paramInt / 3);
     AppMethodBeat.o(98322);
   }
   
@@ -142,14 +142,14 @@ public class SnsAdNativeLandingPagesScrollView
     AppMethodBeat.o(98320);
   }
   
-  public void setScrollViewListener(az paramaz)
+  public void setScrollViewListener(bb parambb)
   {
-    this.Exq = paramaz;
+    this.KLj = parambb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesScrollView
  * JD-Core Version:    0.7.0.1
  */

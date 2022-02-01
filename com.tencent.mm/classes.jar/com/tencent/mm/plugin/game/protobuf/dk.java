@@ -1,43 +1,56 @@
 package com.tencent.mm.plugin.game.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
 
 public final class dk
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String xMs;
+  public String CNL;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(256645);
+    AppMethodBeat.i(149417);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.xMs != null) {
-        paramVarArgs.e(1, this.xMs);
+      if (this.CNL == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: PkgId");
+        AppMethodBeat.o(149417);
+        throw paramVarArgs;
       }
-      AppMethodBeat.o(256645);
+      if (this.CNL != null) {
+        paramVarArgs.f(1, this.CNL);
+      }
+      AppMethodBeat.o(149417);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.xMs == null) {
-        break label213;
+      if (this.CNL == null) {
+        break label261;
       }
     }
-    label213:
-    for (paramInt = g.a.a.b.b.a.f(1, this.xMs) + 0;; paramInt = 0)
+    label261:
+    for (paramInt = g.a.a.b.b.a.g(1, this.CNL) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(256645);
+      AppMethodBeat.o(149417);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(256645);
+        if (this.CNL == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: PkgId");
+          AppMethodBeat.o(149417);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(149417);
         return 0;
       }
       if (paramInt == 3)
@@ -47,14 +60,14 @@ public final class dk
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(256645);
+          AppMethodBeat.o(149417);
           return -1;
         }
-        localdk.xMs = locala.UbS.readString();
-        AppMethodBeat.o(256645);
+        localdk.CNL = locala.abFh.readString();
+        AppMethodBeat.o(149417);
         return 0;
       }
-      AppMethodBeat.o(256645);
+      AppMethodBeat.o(149417);
       return -1;
     }
   }

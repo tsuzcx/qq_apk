@@ -9,30 +9,28 @@ import rx.j;
 public final class f
   implements j
 {
-  public static final int SIZE;
-  private static final c<Object> Unm;
-  public static final d<Queue<Object>> Uno;
-  public static final d<Queue<Object>> Unp;
-  static int xZa;
-  private final d<Queue<Object>> Unn;
-  private Queue<Object> dxk;
+  static int DdH;
+  private static final c<Object> abQI;
+  public static final int abQJ;
+  public static final d<Queue<Object>> abQK;
+  public static final d<Queue<Object>> abQL;
   
   static
   {
     AppMethodBeat.i(90197);
-    Unm = c.hQG();
-    xZa = 128;
+    abQI = c.iVP();
+    DdH = 128;
     if (e.isAndroid()) {
-      xZa = 16;
+      DdH = 16;
     }
     String str = System.getProperty("rx.ring-buffer.size");
     if (str != null) {}
     try
     {
-      xZa = Integer.parseInt(str);
-      SIZE = xZa;
-      Uno = new d() {};
-      Unp = new d() {};
+      DdH = Integer.parseInt(str);
+      abQJ = DdH;
+      abQK = new d() {};
+      abQL = new d() {};
       AppMethodBeat.o(90197);
       return;
     }
@@ -45,30 +43,21 @@ public final class f
     }
   }
   
-  public final void hQA()
+  public final void iVJ()
   {
     AppMethodBeat.i(90196);
-    Queue localQueue = this.dxk;
-    d locald = this.Unn;
-    if ((locald != null) && (localQueue != null))
-    {
-      localQueue.clear();
-      this.dxk = null;
-      if (localQueue != null) {
-        locald.aIT.offer(localQueue);
-      }
-    }
     AppMethodBeat.o(90196);
+    throw null;
   }
   
-  public final boolean hQB()
+  public final boolean iVK()
   {
-    return this.dxk == null;
+    throw null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.internal.util.f
  * JD-Core Version:    0.7.0.1
  */

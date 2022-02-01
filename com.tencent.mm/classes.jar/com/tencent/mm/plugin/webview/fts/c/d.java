@@ -9,51 +9,94 @@ import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class d
+public class d
   implements b.a
 {
-  private h IBw;
-  private b.b IQD;
-  FtsWebVideoView IQN;
-  public MTimerHandler mAM;
-  public int mAN;
+  private b.b PMS;
+  private FtsWebVideoView PNc;
+  private h PvJ;
+  public MTimerHandler pzi;
+  public int pzj;
   
   public d(FtsWebVideoView paramFtsWebVideoView, b.b paramb, h paramh)
   {
-    AppMethodBeat.i(210856);
-    this.IQN = paramFtsWebVideoView;
-    this.IQD = paramb;
-    this.IQD.a(this);
-    this.IBw = paramh;
-    AppMethodBeat.o(210856);
+    AppMethodBeat.i(267230);
+    this.PNc = paramFtsWebVideoView;
+    this.PMS = paramb;
+    this.PMS.a(this);
+    this.PvJ = paramh;
+    AppMethodBeat.o(267230);
   }
   
-  private JSONObject J(boolean paramBoolean, String paramString)
+  private JSONObject P(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(78171);
-    JSONObject localJSONObject = bKv();
+    JSONObject localJSONObject = bWg();
     localJSONObject.put("fullScreen", paramBoolean);
     localJSONObject.put("direction", paramString);
     AppMethodBeat.o(78171);
     return localJSONObject;
   }
   
-  private JSONObject gaQ()
+  private JSONObject bWg()
+  {
+    AppMethodBeat.i(78172);
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("data", this.PNc.getCookieData());
+    AppMethodBeat.o(78172);
+    return localJSONObject;
+  }
+  
+  private JSONObject gTI()
   {
     AppMethodBeat.i(78173);
-    JSONObject localJSONObject = bKv();
-    localJSONObject.put("currentTime", this.IQN.getCurrPosSec());
+    JSONObject localJSONObject = bWg();
+    localJSONObject.put("currentTime", this.PNc.getCurrPosSec());
     AppMethodBeat.o(78173);
     return localJSONObject;
   }
   
-  public final void Na() {}
+  public static JSONObject lw(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(267231);
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("errCode", paramInt1);
+    localJSONObject.put("errMsg", String.valueOf(paramInt2));
+    AppMethodBeat.o(267231);
+    return localJSONObject;
+  }
   
-  public final JSONObject b(int paramInt, JSONObject paramJSONObject)
+  public final void PS() {}
+  
+  public final void bWh()
+  {
+    AppMethodBeat.i(78174);
+    if (this.pzi != null) {
+      this.pzi.stopTimer();
+    }
+    AppMethodBeat.o(78174);
+  }
+  
+  public final void cj(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(78168);
+    this.PvJ.b("onVideoPlayerCallback", null, paramJSONObject);
+    AppMethodBeat.o(78168);
+  }
+  
+  public final void clean()
+  {
+    AppMethodBeat.i(78167);
+    Log.i("MicroMsg.JsApiVideoCallback", "clean %s", new Object[] { toString() });
+    bWh();
+    AppMethodBeat.o(78167);
+  }
+  
+  public final JSONObject d(int paramInt, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(78176);
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("playerId", this.IQN.getmVideoPlayerId());
+    localJSONObject.put("playerId", this.PNc.getmVideoPlayerId());
     localJSONObject.put("event", paramInt);
     if (paramJSONObject != null) {
       localJSONObject.put("detail", paramJSONObject);
@@ -62,46 +105,13 @@ public final class d
     return localJSONObject;
   }
   
-  final JSONObject bKv()
-  {
-    AppMethodBeat.i(78172);
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("data", this.IQN.getCookieData());
-    AppMethodBeat.o(78172);
-    return localJSONObject;
-  }
-  
-  public final void bKw()
-  {
-    AppMethodBeat.i(78174);
-    if (this.mAM != null) {
-      this.mAM.stopTimer();
-    }
-    AppMethodBeat.o(78174);
-  }
-  
-  public final void bY(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(78168);
-    this.IBw.b("onVideoPlayerCallback", null, paramJSONObject);
-    AppMethodBeat.o(78168);
-  }
-  
-  public final void clean()
-  {
-    AppMethodBeat.i(78167);
-    Log.i("MicroMsg.JsApiVideoCallback", "clean %s", new Object[] { toString() });
-    bKw();
-    AppMethodBeat.o(78167);
-  }
-  
   public final void d(int paramInt, boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(78169);
     try
     {
       Log.i("MicroMsg.JsApiVideoCallback", "onVideoFullScreenChange videoPlayerId=%d isFullScreen=%b direction:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramString });
-      bY(b(5, J(paramBoolean, paramString)));
+      cj(d(5, P(paramBoolean, paramString)));
       AppMethodBeat.o(78169);
       return;
     }
@@ -112,16 +122,16 @@ public final class d
     }
   }
   
-  public final void gaM() {}
+  public final void gTE() {}
   
-  public final void gaN() {}
+  public final void gTF() {}
   
-  public final void gaP()
+  public final void gTH()
   {
     AppMethodBeat.i(78170);
     try
     {
-      bY(b(6, gaQ()));
+      cj(d(6, gTI()));
       AppMethodBeat.o(78170);
       return;
     }
@@ -144,7 +154,7 @@ public final class d
     AppMethodBeat.i(78175);
     Log.d("MicroMsg.JsApiVideoCallback", "onDestroy clean");
     clean();
-    this.IQN.setCallback(null);
+    this.PNc.setCallback(null);
     AppMethodBeat.o(78175);
   }
   
@@ -152,7 +162,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.c.d
  * JD-Core Version:    0.7.0.1
  */

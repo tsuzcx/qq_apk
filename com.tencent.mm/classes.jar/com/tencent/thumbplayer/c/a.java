@@ -7,63 +7,63 @@ import java.io.Serializable;
 public final class a
   implements ITPMediaTrackClip, Serializable
 {
-  private int RYH;
-  private int RYI;
+  private int ZBr;
+  private int ZBs;
   private long mEndTime;
   private long mStartPosition;
   private long mStartTime;
   
   public a(int paramInt)
   {
-    AppMethodBeat.i(189103);
+    AppMethodBeat.i(220093);
     this.mStartTime = 0L;
     this.mEndTime = 0L;
-    this.RYH = paramInt;
-    this.RYI = c.arm(this.RYH);
-    AppMethodBeat.o(189103);
+    this.ZBr = paramInt;
+    this.ZBs = c.aAZ(this.ZBr);
+    AppMethodBeat.o(220093);
   }
   
   public final ITPMediaTrackClip clone(int paramInt)
   {
-    AppMethodBeat.i(189106);
+    AppMethodBeat.i(220102);
     if ((paramInt != 3) && (paramInt != 2) && (paramInt != 1))
     {
-      AppMethodBeat.o(189106);
+      AppMethodBeat.o(220102);
       return null;
     }
     a locala = new a(paramInt);
-    locala.RYI = c.arm(paramInt);
+    locala.ZBs = c.aAZ(paramInt);
     locala.mStartTime = this.mStartTime;
     locala.mEndTime = this.mEndTime;
-    AppMethodBeat.o(189106);
+    AppMethodBeat.o(220102);
     return locala;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(189105);
+    AppMethodBeat.i(220100);
     if (paramObject == null)
     {
-      AppMethodBeat.o(189105);
+      AppMethodBeat.o(220100);
       return false;
     }
     if (!(paramObject instanceof a))
     {
-      AppMethodBeat.o(189105);
+      AppMethodBeat.o(220100);
       return false;
     }
-    if ((this.RYI == ((a)paramObject).getClipId()) && (this.RYH == ((a)paramObject).getMediaType()))
+    if ((this.ZBs == ((a)paramObject).getClipId()) && (this.ZBr == ((a)paramObject).getMediaType()))
     {
-      AppMethodBeat.o(189105);
+      AppMethodBeat.o(220100);
       return true;
     }
-    AppMethodBeat.o(189105);
+    AppMethodBeat.o(220100);
     return false;
   }
   
   public final int getClipId()
   {
-    return this.RYI;
+    return this.ZBs;
   }
   
   public final long getEndTimeMs()
@@ -78,7 +78,7 @@ public final class a
   
   public final int getMediaType()
   {
-    return this.RYH;
+    return this.ZBr;
   }
   
   public final long getOriginalDurationMs()
@@ -103,7 +103,7 @@ public final class a
   
   public final void setCutTimeRange(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(189104);
+    AppMethodBeat.i(220096);
     long l = paramLong1;
     if (paramLong1 < 0L) {
       l = 0L;
@@ -111,12 +111,12 @@ public final class a
     if (l >= paramLong2)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("setCutTimeRange: Start time is greater than end time");
-      AppMethodBeat.o(189104);
+      AppMethodBeat.o(220096);
       throw localIllegalArgumentException;
     }
     this.mStartTime = l;
     this.mEndTime = paramLong2;
-    AppMethodBeat.o(189104);
+    AppMethodBeat.o(220096);
   }
   
   public final void setOriginalDurationMs(long paramLong) {}
@@ -128,7 +128,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.c.a
  * JD-Core Version:    0.7.0.1
  */

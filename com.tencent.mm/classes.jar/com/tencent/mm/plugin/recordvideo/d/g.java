@@ -2,150 +2,115 @@ package com.tencent.mm.plugin.recordvideo.d;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.i;
-import com.tencent.mm.g.b.a.if;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.f.b.a.km;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
-import com.tencent.mm.plugin.sight.base.a;
-import com.tencent.mm.plugin.sight.base.e;
+import com.tencent.mm.plugin.sight.base.b;
+import com.tencent.mm.plugin.sight.base.f;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/report/VideoWidgetReporter;", "", "()V", "TAG", "", "TYPE_FFMPEG4", "TYPE_MEDIACODEC", "TYPE_MP4V2", "TYPE_X264", "initRouterTimeStamp", "", "routeLogList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "videoLogStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/SightVideoLogStruct;", "doReport", "", "getRouteLog", "setABAPramsUseDaemon", "type", "", "setCameraDataJSON", "jsonObject", "Lcom/tencent/mm/json/JSONObject;", "setConfigProvider", "provider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "setCropVideoEndTime", "end", "setCropVideoStartTime", "start", "setEditElementList", "editMaterials", "", "setEnterScene", "setExitTypeAndSendType", "exitType", "sendType", "setFinishRecordTimeStamp", "timeStamp", "setInitRouterTimeStamp", "setJumpToThirdApp", "setMixVideoInfo", "videoPath", "setMuxEndTimeStamp", "setMuxResult", "setMuxStartTimeStamp", "setNetType", "setPhotoAlbumVideoInfo", "setRecordCameraRet", "", "setRecordCpuCrop", "setRecordDaemon", "setRecordHighBitrateVideo", "filePath", "setRecordLowBitrateVideo", "setRemuxMuxerType", "isUseFFmpeg", "setRouterLog", "time", "clazzName", "setRouterMap", "routeMap", "Landroid/util/SparseArray;", "Ljava/lang/Class;", "setSNSDoubleCheck", "setStartRecordTimeStamp", "setUseDaemon", "setUseSoftEncode", "isUse", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/report/VideoWidgetReporter;", "", "()V", "TAG", "", "TYPE_FFMPEG4", "TYPE_MEDIACODEC", "TYPE_MP4V2", "TYPE_X264", "initRouterTimeStamp", "", "routeLogList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "videoLogStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/SightVideoLogStruct;", "doReport", "", "getRouteLog", "setABAPramsUseDaemon", "type", "", "setCameraDataJSON", "jsonObject", "Lcom/tencent/mm/json/JSONObject;", "setCaptureHevcEncode", "hevc", "setConfigProvider", "provider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "setCropVideoEndTime", "end", "setCropVideoStartTime", "start", "setEditElementList", "editMaterials", "", "setEnterScene", "setExitTypeAndSendType", "exitType", "sendType", "setFinishRecordTimeStamp", "timeStamp", "setInitRouterTimeStamp", "setJumpToThirdApp", "setMixVideoInfo", "videoPath", "setMuxEndTimeStamp", "setMuxResult", "setMuxStartTimeStamp", "setNetType", "setPhotoAlbumVideoInfo", "setRecordCameraRet", "", "setRecordCpuCrop", "setRecordDaemon", "setRecordHighBitrateVideo", "filePath", "setRecordLowBitrateVideo", "setRemuxHevcEncode", "setRemuxMuxerType", "isUseFFmpeg", "setRouterLog", "time", "clazzName", "setRouterMap", "routeMap", "Landroid/util/SparseArray;", "Ljava/lang/Class;", "setSNSDoubleCheck", "setStartRecordTimeStamp", "setUseDaemon", "setUseSoftEncode", "isUse", "plugin-recordvideo_release"})
 public final class g
 {
-  public static if BXV;
-  public static long BXW;
-  public static final ArrayList<String> BXX;
-  public static final g BXY;
+  public static km HUJ;
+  public static long HUK;
+  public static final ArrayList<String> HUL;
+  public static final g HUM;
   
   static
   {
-    AppMethodBeat.i(237475);
-    BXY = new g();
-    BXV = new if();
-    BXX = new ArrayList();
-    AppMethodBeat.o(237475);
+    AppMethodBeat.i(221327);
+    HUM = new g();
+    HUJ = new km();
+    HUL = new ArrayList();
+    AppMethodBeat.o(221327);
   }
   
-  public static void F(long paramLong, String paramString)
+  public static void I(int... paramVarArgs)
   {
-    AppMethodBeat.i(237454);
-    p.h(paramString, "clazzName");
+    AppMethodBeat.i(221265);
+    p.k(paramVarArgs, "editMaterials");
     i locali = new i();
-    locali.v("time", paramLong - BXW);
-    locali.h("clazz", paramString);
-    BXX.add(locali.toString());
-    AppMethodBeat.o(237454);
-  }
-  
-  public static void Ia(long paramLong)
-  {
-    AppMethodBeat.i(237467);
-    BXV.rc(paramLong);
-    AppMethodBeat.o(237467);
-  }
-  
-  public static void Ib(long paramLong)
-  {
-    AppMethodBeat.i(237468);
-    BXV.rd(paramLong);
-    AppMethodBeat.o(237468);
-  }
-  
-  public static void Ic(long paramLong)
-  {
-    AppMethodBeat.i(237469);
-    BXV.re(paramLong);
-    AppMethodBeat.o(237469);
-  }
-  
-  public static void Id(long paramLong)
-  {
-    AppMethodBeat.i(237470);
-    BXV.rf(paramLong);
-    AppMethodBeat.o(237470);
-  }
-  
-  public static void Ie(long paramLong)
-  {
-    AppMethodBeat.i(237471);
-    BXV.rg(paramLong);
-    AppMethodBeat.o(237471);
-  }
-  
-  public static void If(long paramLong)
-  {
-    AppMethodBeat.i(237472);
-    BXV.rh(paramLong);
-    AppMethodBeat.o(237472);
-  }
-  
-  public static void J(int... paramVarArgs)
-  {
-    AppMethodBeat.i(237455);
-    p.h(paramVarArgs, "editMaterials");
-    i locali = new i();
-    locali.U("emoji", paramVarArgs[0]);
-    locali.U("text", paramVarArgs[1]);
-    locali.U("music", paramVarArgs[2]);
+    locali.al("emoji", paramVarArgs[0]);
+    locali.al("text", paramVarArgs[1]);
+    locali.al("music", paramVarArgs[2]);
     paramVarArgs = locali.toString();
-    p.g(paramVarArgs, "jsonObject.toString()");
-    BXV.vS(n.j(paramVarArgs, ",", ";", false));
-    AppMethodBeat.o(237455);
+    p.j(paramVarArgs, "jsonObject.toString()");
+    HUJ.Br(n.l(paramVarArgs, ",", ";", false));
+    AppMethodBeat.o(221265);
   }
   
-  public static void VL(int paramInt)
+  public static void N(long paramLong, String paramString)
   {
-    AppMethodBeat.i(237446);
-    BXV.lq(paramInt);
-    AppMethodBeat.o(237446);
+    AppMethodBeat.i(221258);
+    p.k(paramString, "clazzName");
+    i locali = new i();
+    locali.s("time", paramLong - HUK);
+    locali.g("clazz", paramString);
+    HUL.add(locali.toString());
+    AppMethodBeat.o(221258);
   }
   
-  public static void VM(int paramInt)
+  public static void Pu(long paramLong)
   {
-    AppMethodBeat.i(237447);
-    BXV.lr(paramInt);
-    AppMethodBeat.o(237447);
+    AppMethodBeat.i(221306);
+    HUJ.uU(paramLong);
+    AppMethodBeat.o(221306);
   }
   
-  public static void VN(int paramInt)
+  public static void Pv(long paramLong)
   {
-    AppMethodBeat.i(237456);
-    BXV.lw(paramInt);
-    AppMethodBeat.o(237456);
+    AppMethodBeat.i(221307);
+    HUJ.uV(paramLong);
+    AppMethodBeat.o(221307);
   }
   
-  public static void VO(int paramInt)
+  public static void Pw(long paramLong)
   {
-    AppMethodBeat.i(237457);
-    BXV.lx(paramInt);
-    AppMethodBeat.o(237457);
+    AppMethodBeat.i(221308);
+    HUJ.uW(paramLong);
+    AppMethodBeat.o(221308);
   }
   
-  public static void VP(int paramInt)
+  public static void Px(long paramLong)
   {
-    AppMethodBeat.i(237458);
-    BXV.lz(paramInt);
-    ax(1, 1L);
-    AppMethodBeat.o(237458);
+    AppMethodBeat.i(221310);
+    HUJ.uX(paramLong);
+    AppMethodBeat.o(221310);
   }
   
-  public static void VQ(int paramInt)
+  public static void Py(long paramLong)
   {
-    AppMethodBeat.i(237460);
-    BXV.lA(paramInt);
-    AppMethodBeat.o(237460);
+    AppMethodBeat.i(221312);
+    HUJ.uY(paramLong);
+    AppMethodBeat.o(221312);
   }
   
-  public static void aLA(String paramString)
+  public static void Pz(long paramLong)
   {
-    AppMethodBeat.i(237466);
-    p.h(paramString, "videoPath");
-    paramString = e.aNx(paramString);
-    if localif = BXV;
+    AppMethodBeat.i(221313);
+    HUJ.uZ(paramLong);
+    AppMethodBeat.o(221313);
+  }
+  
+  public static void aJ(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(221317);
+    HUJ.ny(paramInt);
+    HUJ.uP(paramLong);
+    AppMethodBeat.o(221317);
+  }
+  
+  public static void aWb(String paramString)
+  {
+    AppMethodBeat.i(221253);
+    paramString = f.aYg(paramString);
+    km localkm = HUJ;
     if (paramString != null)
     {
       String str = paramString.toString();
@@ -156,15 +121,15 @@ public final class g
     {
       paramString = "";
     }
-    localif.vY(paramString);
-    AppMethodBeat.o(237466);
+    localkm.Bn(paramString);
+    AppMethodBeat.o(221253);
   }
   
-  public static void aLx(String paramString)
+  public static void aWc(String paramString)
   {
-    AppMethodBeat.i(237452);
-    paramString = e.aNx(paramString);
-    if localif = BXV;
+    AppMethodBeat.i(221254);
+    paramString = f.aYg(paramString);
+    km localkm = HUJ;
     if (paramString != null)
     {
       String str = paramString.toString();
@@ -175,15 +140,16 @@ public final class g
     {
       paramString = "";
     }
-    localif.vO(paramString);
-    AppMethodBeat.o(237452);
+    localkm.Bo(paramString);
+    AppMethodBeat.o(221254);
   }
   
-  public static void aLy(String paramString)
+  public static void aWd(String paramString)
   {
-    AppMethodBeat.i(237453);
-    paramString = e.aNx(paramString);
-    if localif = BXV;
+    AppMethodBeat.i(221301);
+    p.k(paramString, "videoPath");
+    paramString = f.aYg(paramString);
+    km localkm = HUJ;
     if (paramString != null)
     {
       String str = paramString.toString();
@@ -194,16 +160,16 @@ public final class g
     {
       paramString = "";
     }
-    localif.vP(paramString);
-    AppMethodBeat.o(237453);
+    localkm.Bw(paramString);
+    AppMethodBeat.o(221301);
   }
   
-  public static void aLz(String paramString)
+  public static void aWe(String paramString)
   {
-    AppMethodBeat.i(237465);
-    p.h(paramString, "videoPath");
-    paramString = e.aNx(paramString);
-    if localif = BXV;
+    AppMethodBeat.i(221303);
+    p.k(paramString, "videoPath");
+    paramString = f.aYg(paramString);
+    km localkm = HUJ;
     if (paramString != null)
     {
       String str = paramString.toString();
@@ -214,59 +180,110 @@ public final class g
     {
       paramString = "";
     }
-    localif.vX(paramString);
-    AppMethodBeat.o(237465);
+    localkm.Bx(paramString);
+    AppMethodBeat.o(221303);
   }
   
-  public static void ax(int paramInt, long paramLong)
+  public static void acA(int paramInt)
   {
-    AppMethodBeat.i(237473);
-    BXV.lB(paramInt);
-    BXV.qX(paramLong);
-    AppMethodBeat.o(237473);
+    AppMethodBeat.i(221319);
+    Log.i("MicroMsg.VideoWidgetReporter", "setCaptureHevcEncode:".concat(String.valueOf(paramInt)));
+    HUJ.va(paramInt);
+    AppMethodBeat.o(221319);
+  }
+  
+  public static void acB(int paramInt)
+  {
+    AppMethodBeat.i(221320);
+    Log.i("MicroMsg.VideoWidgetReporter", "setRemuxHevcEncode:".concat(String.valueOf(paramInt)));
+    HUJ.vb(paramInt);
+    AppMethodBeat.o(221320);
+  }
+  
+  public static void acu(int paramInt)
+  {
+    AppMethodBeat.i(221231);
+    HUJ.nn(paramInt);
+    AppMethodBeat.o(221231);
+  }
+  
+  public static void acv(int paramInt)
+  {
+    AppMethodBeat.i(221234);
+    HUJ.no(paramInt);
+    AppMethodBeat.o(221234);
+  }
+  
+  public static void acw(int paramInt)
+  {
+    AppMethodBeat.i(221267);
+    HUJ.nt(paramInt);
+    AppMethodBeat.o(221267);
+  }
+  
+  public static void acx(int paramInt)
+  {
+    AppMethodBeat.i(221269);
+    HUJ.nu(paramInt);
+    AppMethodBeat.o(221269);
+  }
+  
+  public static void acy(int paramInt)
+  {
+    AppMethodBeat.i(221272);
+    HUJ.nw(paramInt);
+    aJ(1, 1L);
+    AppMethodBeat.o(221272);
+  }
+  
+  public static void acz(int paramInt)
+  {
+    AppMethodBeat.i(221276);
+    HUJ.nx(paramInt);
+    AppMethodBeat.o(221276);
   }
   
   public static void b(i parami)
   {
-    AppMethodBeat.i(237464);
+    AppMethodBeat.i(221299);
     if (parami == null)
     {
-      AppMethodBeat.o(237464);
+      AppMethodBeat.o(221299);
       return;
     }
-    Object localObject = BXV;
+    Object localObject = HUJ;
     int i;
     if (parami.optBoolean("isUseCamera2"))
     {
       i = 2;
-      ((if)localObject).lu(i);
-      BXV.lC(parami.optInt("CameraOpenCost"));
-      BXV.lD(parami.optInt("CameraFirstFrameCost"));
-      BXV.lE(parami.optInt("HighRecordStopWaitTime"));
-      BXV.lF(parami.optInt("LowRecordStopWaitTime"));
-      if localif = BXV;
+      ((km)localObject).nr(i);
+      HUJ.nz(parami.optInt("CameraOpenCost"));
+      HUJ.nA(parami.optInt("CameraFirstFrameCost"));
+      HUJ.nB(parami.optInt("HighRecordStopWaitTime"));
+      HUJ.nC(parami.optInt("LowRecordStopWaitTime"));
+      km localkm = HUJ;
       if (!parami.optBoolean("RecordMuxerType")) {
         break label224;
       }
       localObject = "ffmpeg";
       label117:
-      localif.vT((String)localObject);
-      localObject = BXV;
-      if (((if)localObject).ahd() == 0L) {
+      localkm.Bs((String)localObject);
+      localObject = HUJ;
+      if (((km)localObject).amx() == 0L) {
         break label232;
       }
-      l = BXV.ahd();
+      l = HUJ.amx();
       label147:
-      ((if)localObject).qZ(l);
-      localObject = BXV;
-      if (((if)localObject).ahe() == 0L) {
+      ((km)localObject).uR(l);
+      localObject = HUJ;
+      if (((km)localObject).amy() == 0L) {
         break label243;
       }
-      l = BXV.ahe();
+      l = HUJ.amy();
       label176:
-      ((if)localObject).ra(l);
-      localObject = BXV;
-      if (((if)localObject).ahf() == 0L) {
+      ((km)localObject).uS(l);
+      localObject = HUJ;
+      if (((km)localObject).amz() == 0L) {
         break label254;
       }
     }
@@ -274,10 +291,10 @@ public final class g
     label232:
     label243:
     label254:
-    for (long l = BXV.ahf();; l = parami.optLong("PreviewSuccessTImeStamp"))
+    for (long l = HUJ.amz();; l = parami.optLong("PreviewSuccessTImeStamp"))
     {
-      ((if)localObject).rb(l);
-      AppMethodBeat.o(237464);
+      ((km)localObject).uT(l);
+      AppMethodBeat.o(221299);
       return;
       i = 1;
       break;
@@ -290,32 +307,32 @@ public final class g
     }
   }
   
-  public static void eLf()
+  public static void fxy()
   {
-    AppMethodBeat.i(237459);
-    BXV.ahb();
-    AppMethodBeat.o(237459);
+    AppMethodBeat.i(221274);
+    HUJ.amv();
+    AppMethodBeat.o(221274);
   }
   
-  public static String eLg()
+  public static String fxz()
   {
-    AppMethodBeat.i(237474);
+    AppMethodBeat.i(221324);
     Object localObject = new StringBuilder();
-    Iterator localIterator = ((Iterable)BXX).iterator();
+    Iterator localIterator = ((Iterable)HUL).iterator();
     while (localIterator.hasNext()) {
       ((StringBuilder)localObject).append((String)localIterator.next()).append("#");
     }
     localObject = ((StringBuilder)localObject).toString();
-    p.g(localObject, "routeLog.toString()");
-    localObject = n.j((String)localObject, ",", ";", false);
-    AppMethodBeat.o(237474);
+    p.j(localObject, "routeLog.toString()");
+    localObject = n.l((String)localObject, ",", ";", false);
+    AppMethodBeat.o(221324);
     return localObject;
   }
   
   public static void g(SparseArray<Class<?>> paramSparseArray)
   {
-    AppMethodBeat.i(237448);
-    p.h(paramSparseArray, "routeMap");
+    AppMethodBeat.i(221242);
+    p.k(paramSparseArray, "routeMap");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{");
     int j = paramSparseArray.size();
@@ -323,26 +340,26 @@ public final class g
     while (i < j)
     {
       Object localObject = paramSparseArray.valueAt(i);
-      p.g(localObject, "routeMap.valueAt(index)");
+      p.j(localObject, "routeMap.valueAt(index)");
       localObject = ((Class)localObject).getSimpleName();
-      p.g(localObject, "routeMap.valueAt(index).simpleName");
+      p.j(localObject, "routeMap.valueAt(index).simpleName");
       localStringBuilder.append((String)localObject).append("#");
       i += 1;
     }
     localStringBuilder.append("}");
-    BXV.vN(localStringBuilder.toString());
-    AppMethodBeat.o(237448);
+    HUJ.Bm(localStringBuilder.toString());
+    AppMethodBeat.o(221242);
   }
   
   public static void setConfigProvider(RecordConfigProvider paramRecordConfigProvider)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(237461);
-    if localif = BXV;
+    AppMethodBeat.i(221289);
+    km localkm = HUJ;
     Object localObject1;
     if (paramRecordConfigProvider != null)
     {
-      localObject3 = paramRecordConfigProvider.BOz;
+      localObject3 = paramRecordConfigProvider.HLf;
       localObject1 = localObject3;
       if (localObject3 != null) {}
     }
@@ -350,105 +367,105 @@ public final class g
     {
       localObject1 = "";
     }
-    localif.vR((String)localObject1);
-    Object localObject3 = BXV;
+    localkm.Bq((String)localObject1);
+    Object localObject3 = HUJ;
     if (paramRecordConfigProvider != null)
     {
-      localObject1 = paramRecordConfigProvider.BOt;
-      if (!p.j(localObject1, Boolean.TRUE)) {
-        break label125;
+      localObject1 = paramRecordConfigProvider.HKZ;
+      if (!p.h(localObject1, Boolean.TRUE)) {
+        break label123;
       }
     }
-    label125:
+    label123:
     for (int i = 0;; i = 1)
     {
-      ((if)localObject3).ly(i);
-      localObject3 = BXV;
+      ((km)localObject3).nv(i);
+      localObject3 = HUJ;
       localObject1 = localObject2;
       if (paramRecordConfigProvider != null) {
-        localObject1 = paramRecordConfigProvider.BOm;
+        localObject1 = paramRecordConfigProvider.mfk;
       }
       localObject1 = String.valueOf(localObject1);
       paramRecordConfigProvider = (RecordConfigProvider)localObject1;
       if (localObject1 == null) {
         paramRecordConfigProvider = "";
       }
-      ((if)localObject3).vW(paramRecordConfigProvider);
-      AppMethodBeat.o(237461);
+      ((km)localObject3).Bv(paramRecordConfigProvider);
+      AppMethodBeat.o(221289);
       return;
       localObject1 = null;
       break;
     }
   }
   
-  public static void tp(boolean paramBoolean)
+  public static void wL(boolean paramBoolean)
   {
-    AppMethodBeat.i(237449);
-    if localif = BXV;
+    AppMethodBeat.i(221245);
+    km localkm = HUJ;
     if (paramBoolean) {}
     for (int i = 0;; i = 1)
     {
-      localif.ls(i);
-      AppMethodBeat.o(237449);
+      localkm.np(i);
+      AppMethodBeat.o(221245);
       return;
     }
   }
   
-  public static void tq(boolean paramBoolean)
+  public static void wM(boolean paramBoolean)
   {
-    AppMethodBeat.i(237450);
-    if localif = BXV;
+    AppMethodBeat.i(221247);
+    km localkm = HUJ;
     if (paramBoolean) {}
     for (int i = 0;; i = 1)
     {
-      localif.lt(i);
-      AppMethodBeat.o(237450);
+      localkm.nq(i);
+      AppMethodBeat.o(221247);
       return;
     }
   }
   
-  public static void tr(boolean paramBoolean)
+  public static void wN(boolean paramBoolean)
   {
-    AppMethodBeat.i(237451);
-    if localif = BXV;
+    AppMethodBeat.i(221249);
+    km localkm = HUJ;
     if (paramBoolean) {}
     for (int i = 0;; i = 1)
     {
-      localif.lv(i);
-      AppMethodBeat.o(237451);
+      localkm.ns(i);
+      AppMethodBeat.o(221249);
       return;
     }
   }
   
-  public static void ts(boolean paramBoolean)
+  public static void wO(boolean paramBoolean)
   {
-    AppMethodBeat.i(237462);
-    if localif = BXV;
+    AppMethodBeat.i(221293);
+    km localkm = HUJ;
     if (paramBoolean) {}
     for (String str = "x264";; str = "mediacodec")
     {
-      localif.vV(str);
-      AppMethodBeat.o(237462);
+      localkm.Bu(str);
+      AppMethodBeat.o(221293);
       return;
     }
   }
   
-  public static void tt(boolean paramBoolean)
+  public static void wP(boolean paramBoolean)
   {
-    AppMethodBeat.i(237463);
-    if localif = BXV;
+    AppMethodBeat.i(221295);
+    km localkm = HUJ;
     if (paramBoolean) {}
     for (String str = "ffmpeg";; str = "mp4v2")
     {
-      localif.vU(str);
-      AppMethodBeat.o(237463);
+      localkm.Bt(str);
+      AppMethodBeat.o(221295);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.d.g
  * JD-Core Version:    0.7.0.1
  */

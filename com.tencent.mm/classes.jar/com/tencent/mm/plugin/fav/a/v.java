@@ -1,17 +1,16 @@
 package com.tencent.mm.plugin.fav.a;
 
-import android.app.Activity;
-import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.ui.widget.snackbar.a.b;
+import com.tencent.mm.protocal.protobuf.cyi;
+import com.tencent.mm.protocal.protobuf.cyl;
+import java.util.LinkedList;
 
 public abstract interface v
-  extends a
 {
-  public abstract void a(int paramInt1, int paramInt2, Activity paramActivity, a.b paramb);
+  public abstract void a(long paramLong, LinkedList<cyi> paramLinkedList, LinkedList<cyl> paramLinkedList1, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.v
  * JD-Core Version:    0.7.0.1
  */

@@ -7,18 +7,20 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.R.l;
+import com.tencent.mm.R.o;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.account.bind.ui.BindLinkedInUI;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
 import com.tencent.mm.plugin.profile.b;
-import com.tencent.mm.pluginsdk.b.a;
+import com.tencent.mm.pluginsdk.c.a;
 import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.protocal.protobuf.dbw;
+import com.tencent.mm.protocal.protobuf.dlm;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
@@ -29,12 +31,13 @@ import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.f;
+import com.tencent.mm.ui.v;
 import junit.framework.Assert;
 
 public final class i
   implements a, MStorageEx.IOnStorageChange
 {
-  private HelperHeaderPreference.a Bfw;
+  private HelperHeaderPreference.a GZu;
   private as contact;
   private Context context;
   private f screen;
@@ -43,34 +46,34 @@ public final class i
   {
     AppMethodBeat.i(27154);
     this.context = paramContext;
-    this.Bfw = new s(paramContext);
+    this.GZu = new s(paramContext);
     AppMethodBeat.o(27154);
   }
   
-  public static void C(Context paramContext, final boolean paramBoolean)
+  public static void F(Context paramContext, final boolean paramBoolean)
   {
     AppMethodBeat.i(27159);
     if (paramBoolean) {}
-    for (String str = paramContext.getString(2131765544);; str = paramContext.getString(2131765552))
+    for (String str = paramContext.getString(R.l.settings_plugins_installing);; str = paramContext.getString(R.l.settings_plugins_uninstalling))
     {
-      paramContext.getString(2131755998);
+      paramContext.getString(R.l.app_tip);
       new MTimerHandler(new MTimerHandler.CallBack()
       {
         public final boolean onTimerExpired()
         {
           AppMethodBeat.i(27153);
-          if (this.qDa != null) {
-            this.qDa.dismiss();
+          if (this.ucb != null) {
+            this.ucb.dismiss();
           }
-          int i = z.aUl();
-          dbw localdbw;
+          int i = z.bdn();
+          dlm localdlm;
           if (paramBoolean)
           {
             i &= 0xFEFFFFFF;
-            bg.aVF();
-            c.azQ().set(34, Integer.valueOf(i));
-            localdbw = new dbw();
-            localdbw.KEc = 16777216;
+            bh.beI();
+            c.aHp().i(34, Integer.valueOf(i));
+            localdlm = new dlm();
+            localdlm.RFu = 16777216;
             if (!paramBoolean) {
               break label176;
             }
@@ -78,21 +81,21 @@ public final class i
           label176:
           for (i = 0;; i = 1)
           {
-            localdbw.MGK = i;
-            bg.aVF();
-            c.aSM().d(new k.a(39, localdbw));
-            if (this.znB != null) {
-              this.znB.onNotifyChange(null, null);
+            localdlm.TSy = i;
+            bh.beI();
+            c.bbK().d(new k.a(39, localdlm));
+            if (this.ESS != null) {
+              this.ESS.onNotifyChange(null, null);
             }
             AppMethodBeat.o(27153);
             return false;
             i |= 0x1000000;
-            bg.aVF();
-            c.azQ().set(286722, "");
-            bg.aVF();
-            c.azQ().set(286721, "");
-            bg.aVF();
-            c.azQ().set(286723, "");
+            bh.beI();
+            c.aHp().i(286722, "");
+            bh.beI();
+            c.aHp().i(286721, "");
+            bh.beI();
+            c.aHp().i(286723, "");
             break;
           }
         }
@@ -102,29 +105,29 @@ public final class i
     }
   }
   
-  private void cCt()
+  private void cQY()
   {
     AppMethodBeat.i(27158);
-    boolean bool = eEw();
+    boolean bool = fqo();
     this.screen.removeAll();
-    this.screen.addPreferencesFromResource(2132017181);
-    ((HelperHeaderPreference)this.screen.bmg("contact_info_header_helper")).a(this.contact, this.Bfw);
+    this.screen.auC(R.o.eXn);
+    ((HelperHeaderPreference)this.screen.byG("contact_info_header_helper")).a(this.contact, this.GZu);
     if (bool)
     {
-      this.screen.jdMethod_do("contact_info_linkedin_account", false);
-      this.screen.bmi("contact_info_linkedin_install");
+      this.screen.dz("contact_info_linkedin_account", false);
+      this.screen.byI("contact_info_linkedin_install");
       AppMethodBeat.o(27158);
       return;
     }
-    this.screen.jdMethod_do("contact_info_linkedin_account", true);
-    this.screen.bmi("contact_info_linkedin_uninstall");
+    this.screen.dz("contact_info_linkedin_account", true);
+    this.screen.byI("contact_info_linkedin_uninstall");
     AppMethodBeat.o(27158);
   }
   
-  private static boolean eEw()
+  private static boolean fqo()
   {
     AppMethodBeat.i(27155);
-    if ((z.aUl() & 0x1000000) == 0)
+    if ((z.bdn() & 0x1000000) == 0)
     {
       AppMethodBeat.o(27155);
       return true;
@@ -146,18 +149,18 @@ public final class i
         paramBoolean = true;
       }
       Assert.assertTrue(paramBoolean);
-      Assert.assertTrue(ab.Jo(paramas.field_username));
-      bg.aVF();
-      c.azQ().add(this);
+      Assert.assertTrue(ab.QH(paramas.field_username));
+      bh.beI();
+      c.aHp().add(this);
       this.contact = paramas;
       this.screen = paramf;
-      cCt();
+      cQY();
       AppMethodBeat.o(27157);
       return true;
     }
   }
   
-  public final boolean alD(String paramString)
+  public final boolean atw(String paramString)
   {
     AppMethodBeat.i(27156);
     Log.d("MicroMsg.ContactWidgetLinkedIn", "handleEvent : key = ".concat(String.valueOf(paramString)));
@@ -168,18 +171,18 @@ public final class i
     }
     if (paramString.equals("contact_info_linkedin_install"))
     {
-      C(this.context, true);
+      F(this.context, true);
       AppMethodBeat.o(27156);
       return true;
     }
     if (paramString.equals("contact_info_linkedin_uninstall"))
     {
-      h.c(this.context, this.context.getString(2131765548), "", this.context.getString(2131755764), this.context.getString(2131755761), new DialogInterface.OnClickListener()
+      h.c(this.context, this.context.getString(R.l.settings_plugins_uninstall_hint), "", this.context.getString(R.l.app_clear), this.context.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(27152);
-          i.C(i.a(i.this), false);
+          i.F(i.a(i.this), false);
           AppMethodBeat.o(27152);
         }
       }, null);
@@ -196,13 +199,13 @@ public final class i
     return false;
   }
   
-  public final boolean cCs()
+  public final boolean cQX()
   {
     AppMethodBeat.i(27160);
-    bg.aVF();
-    c.azQ().remove(this);
-    this.screen.bmg("contact_info_header_helper");
-    b.jRu.WZ();
+    bh.beI();
+    c.aHp().remove(this);
+    this.screen.byG("contact_info_header_helper");
+    b.mIH.abC();
     AppMethodBeat.o(27160);
     return true;
   }
@@ -211,7 +214,7 @@ public final class i
   {
     AppMethodBeat.i(27161);
     if ((paramInt1 == 1) && (paramInt2 == -1)) {
-      cCt();
+      cQY();
     }
     AppMethodBeat.o(27161);
   }
@@ -223,7 +226,7 @@ public final class i
     {
       paramInt = ((Integer)paramObject).intValue();
       if ((paramInt == 40) || (paramInt == 34)) {
-        cCt();
+        cQY();
       }
     }
     AppMethodBeat.o(27162);
@@ -231,7 +234,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.i
  * JD-Core Version:    0.7.0.1
  */

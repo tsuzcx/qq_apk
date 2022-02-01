@@ -1,142 +1,82 @@
 package com.tencent.mm.ad;
 
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.WeakHashMap;
-
-public final class a
-  implements Application.ActivityLifecycleCallbacks
+public abstract interface a
 {
-  private static final WeakHashMap<Activity, Integer> hvw;
+  public abstract a E(int paramInt, boolean paramBoolean);
   
-  static
-  {
-    AppMethodBeat.i(125087);
-    hvw = new WeakHashMap();
-    AppMethodBeat.o(125087);
-  }
+  public abstract a Ft(long paramLong);
   
-  public static String aBz()
-  {
-    AppMethodBeat.i(125080);
-    StringBuilder localStringBuilder;
-    Object localObject2;
-    synchronized (hvw)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(hvw.size());
-      localObject2 = new ArrayList();
-    }
-    try
-    {
-      ((List)localObject2).addAll(hvw.keySet());
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        Activity localActivity = (Activity)((Iterator)localObject2).next();
-        if (localActivity != null)
-        {
-          localStringBuilder.append("|");
-          localStringBuilder.append(localActivity.getClass().getSimpleName());
-          localStringBuilder.append(":");
-          localStringBuilder.append(hvw.get(localActivity));
-        }
-      }
-      localObject1 = finally;
-      AppMethodBeat.o(125080);
-      throw localObject1;
-    }
-    catch (ConcurrentModificationException localConcurrentModificationException)
-    {
-      for (;;)
-      {
-        Log.w("MicroMsg.ActivityRefDump", "ConcurrentModificationException occur.");
-        localObject1.append("concurrent modification exception");
-      }
-      String str = localObject1.toString();
-      AppMethodBeat.o(125080);
-      return str;
-    }
-  }
+  public abstract a bu(Object paramObject);
   
-  public final void onActivityCreated(Activity paramActivity, Bundle arg2)
-  {
-    AppMethodBeat.i(125081);
-    synchronized (hvw)
-    {
-      hvw.put(paramActivity, Integer.valueOf(0));
-      AppMethodBeat.o(125081);
-      return;
-    }
-  }
+  public abstract a c(int paramInt, double paramDouble);
   
-  public final void onActivityDestroyed(Activity paramActivity)
-  {
-    AppMethodBeat.i(125082);
-    synchronized (hvw)
-    {
-      hvw.put(paramActivity, Integer.valueOf(5));
-      AppMethodBeat.o(125082);
-      return;
-    }
-  }
+  public abstract a dn(int paramInt1, int paramInt2);
   
-  public final void onActivityPaused(Activity paramActivity)
-  {
-    AppMethodBeat.i(125085);
-    synchronized (hvw)
-    {
-      hvw.put(paramActivity, Integer.valueOf(3));
-      AppMethodBeat.o(125085);
-      return;
-    }
-  }
+  public abstract a eN(boolean paramBoolean);
   
-  public final void onActivityResumed(Activity paramActivity)
-  {
-    AppMethodBeat.i(125084);
-    synchronized (hvw)
-    {
-      hvw.put(paramActivity, Integer.valueOf(2));
-      AppMethodBeat.o(125084);
-      return;
-    }
-  }
+  public abstract Object get(int paramInt);
   
-  public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  public abstract boolean getBoolean(int paramInt);
   
-  public final void onActivityStarted(Activity paramActivity)
-  {
-    AppMethodBeat.i(125083);
-    synchronized (hvw)
-    {
-      hvw.put(paramActivity, Integer.valueOf(1));
-      AppMethodBeat.o(125083);
-      return;
-    }
-  }
+  public abstract double getDouble(int paramInt);
   
-  public final void onActivityStopped(Activity paramActivity)
-  {
-    AppMethodBeat.i(125086);
-    synchronized (hvw)
-    {
-      hvw.put(paramActivity, Integer.valueOf(4));
-      AppMethodBeat.o(125086);
-      return;
-    }
-  }
+  public abstract int getInt(int paramInt);
+  
+  public abstract long getLong(int paramInt);
+  
+  public abstract String getString(int paramInt);
+  
+  public abstract boolean isNull(int paramInt);
+  
+  public abstract a j(int paramInt, Object paramObject);
+  
+  public abstract a k(double paramDouble);
+  
+  public abstract int length();
+  
+  public abstract Object opt(int paramInt);
+  
+  public abstract boolean optBoolean(int paramInt);
+  
+  public abstract boolean optBoolean(int paramInt, boolean paramBoolean);
+  
+  public abstract double optDouble(int paramInt);
+  
+  public abstract double optDouble(int paramInt, double paramDouble);
+  
+  public abstract int optInt(int paramInt);
+  
+  public abstract int optInt(int paramInt1, int paramInt2);
+  
+  public abstract long optLong(int paramInt);
+  
+  public abstract long optLong(int paramInt, long paramLong);
+  
+  public abstract String optString(int paramInt);
+  
+  public abstract String optString(int paramInt, String paramString);
+  
+  public abstract Object remove(int paramInt);
+  
+  public abstract a sp(int paramInt);
+  
+  public abstract a sq(int paramInt);
+  
+  public abstract a sr(int paramInt);
+  
+  public abstract c ss(int paramInt);
+  
+  public abstract c st(int paramInt);
+  
+  public abstract String toString();
+  
+  public abstract String toString(int paramInt);
+  
+  public abstract a v(int paramInt, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ad.a
  * JD-Core Version:    0.7.0.1
  */

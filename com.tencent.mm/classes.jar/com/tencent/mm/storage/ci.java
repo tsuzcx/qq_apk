@@ -1,145 +1,92 @@
 package com.tencent.mm.storage;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.g.b.p;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/storage/RecMsgReportInfo;", "", "mid", "", "idx", "", "style", "recInfo", "", "extData", "bizUsername", "(JIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getBizUsername", "()Ljava/lang/String;", "getExtData", "getIdx", "()I", "getMid", "()J", "getRecInfo", "getStyle", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "", "other", "hashCode", "toString", "plugin-biz_release"})
 public final class ci
 {
-  public a OrA;
-  int OrB;
-  int cSx;
-  public String name;
-  int status;
+  final String VHs;
+  final String extData;
+  final String fOX;
+  final int idx;
+  final long lqo;
+  final int style;
   
-  public ci()
+  public ci(long paramLong, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
   {
-    this.cSx = 135;
-    this.name = "";
-    this.OrA = null;
-    this.OrA = null;
-    this.name = "";
-    this.status = 0;
-    this.OrB = 0;
+    this.lqo = paramLong;
+    this.idx = paramInt1;
+    this.style = paramInt2;
+    this.VHs = paramString1;
+    this.extData = paramString2;
+    this.fOX = paramString3;
   }
   
-  public ci(String paramString, boolean paramBoolean, int paramInt)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(43298);
-    this.cSx = 135;
-    this.name = "";
-    this.OrA = null;
-    this.OrA = new a(paramString);
-    this.name = paramString;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    AppMethodBeat.i(206851);
+    if (this != paramObject)
     {
-      this.status = (i | 0x2);
-      this.OrB = paramInt;
-      AppMethodBeat.o(43298);
-      return;
-    }
-  }
-  
-  public final void convertFrom(Cursor paramCursor)
-  {
-    AppMethodBeat.i(43299);
-    if ((this.cSx & 0x2) != 0)
-    {
-      this.name = paramCursor.getString(1);
-      if (this.OrA == null) {
-        this.OrA = new a(this.name);
-      }
-    }
-    if ((this.cSx & 0x4) != 0) {
-      this.status = paramCursor.getInt(2);
-    }
-    if ((this.cSx & 0x80) != 0) {
-      this.OrB = paramCursor.getInt(7);
-    }
-    AppMethodBeat.o(43299);
-  }
-  
-  public final ContentValues convertTo()
-  {
-    AppMethodBeat.i(43300);
-    ContentValues localContentValues = new ContentValues();
-    if ((this.cSx & 0x2) != 0) {
-      localContentValues.put("name", this.name);
-    }
-    if ((this.cSx & 0x4) != 0) {
-      localContentValues.put("status", Integer.valueOf(this.status));
-    }
-    if ((this.cSx & 0x80) != 0) {
-      localContentValues.put("int_reserved1", Integer.valueOf(this.OrB));
-    }
-    AppMethodBeat.o(43300);
-    return localContentValues;
-  }
-  
-  public final boolean gEp()
-  {
-    return (this.status & 0x2) != 0;
-  }
-  
-  public final boolean gEq()
-  {
-    return this.OrB == 1;
-  }
-  
-  public final boolean isEnable()
-  {
-    return (this.status & 0x1) != 0;
-  }
-  
-  public final void setEnable(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      int j = this.status;
-      if (paramBoolean) {}
-      for (int i = 1;; i = 0)
+      if ((paramObject instanceof ci))
       {
-        this.status = (i | j);
-        return;
+        paramObject = (ci)paramObject;
+        if ((this.lqo != paramObject.lqo) || (this.idx != paramObject.idx) || (this.style != paramObject.style) || (!p.h(this.VHs, paramObject.VHs)) || (!p.h(this.extData, paramObject.extData)) || (!p.h(this.fOX, paramObject.fOX))) {}
       }
     }
-    this.status &= 0xFFFFFFFE;
+    else
+    {
+      AppMethodBeat.o(206851);
+      return true;
+    }
+    AppMethodBeat.o(206851);
+    return false;
   }
   
-  public static final class a
+  public final int hashCode()
   {
-    private String dWq;
-    private String domain;
-    
-    public a(String paramString)
+    int k = 0;
+    AppMethodBeat.i(206850);
+    long l = this.lqo;
+    int m = (int)(l ^ l >>> 32);
+    int n = this.idx;
+    int i1 = this.style;
+    String str = this.VHs;
+    int i;
+    if (str != null)
     {
-      AppMethodBeat.i(43297);
-      int i = paramString.indexOf("@");
-      if (i >= 0)
-      {
-        this.dWq = paramString.substring(0, i);
-        this.domain = paramString.substring(i);
-        AppMethodBeat.o(43297);
-        return;
+      i = str.hashCode();
+      str = this.extData;
+      if (str == null) {
+        break label127;
       }
-      this.dWq = paramString;
-      this.domain = "";
-      AppMethodBeat.o(43297);
     }
-    
-    public final String bkR(String paramString)
+    label127:
+    for (int j = str.hashCode();; j = 0)
     {
-      if (this.domain != null) {
-        paramString = this.domain;
+      str = this.fOX;
+      if (str != null) {
+        k = str.hashCode();
       }
-      return paramString;
+      AppMethodBeat.o(206850);
+      return (j + (i + ((m * 31 + n) * 31 + i1) * 31) * 31) * 31 + k;
+      i = 0;
+      break;
     }
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(206849);
+    String str = "RecMsgReportInfo(mid=" + this.lqo + ", idx=" + this.idx + ", style=" + this.style + ", recInfo=" + this.VHs + ", extData=" + this.extData + ", bizUsername=" + this.fOX + ")";
+    AppMethodBeat.o(206849);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.storage.ci
  * JD-Core Version:    0.7.0.1
  */

@@ -9,21 +9,21 @@ import java.util.Arrays;
 public final class b
   implements f
 {
-  private static final byte[] bhJ = new byte[4096];
-  private final g bhK;
-  private final long bhL;
-  private byte[] bhM;
-  private int bhN;
-  private int bhO;
+  private static final byte[] aRn = new byte[4096];
+  private final g aRo;
+  private final long aRp;
+  private byte[] aRq;
+  private int aRr;
+  private int aRs;
   private long position;
   
   public b(g paramg, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(91957);
-    this.bhK = paramg;
+    this.aRo = paramg;
     this.position = paramLong1;
-    this.bhL = paramLong2;
-    this.bhM = new byte[65536];
+    this.aRp = paramLong2;
+    this.aRq = new byte[65536];
     AppMethodBeat.o(91957);
   }
   
@@ -36,7 +36,7 @@ public final class b
       AppMethodBeat.o(91971);
       throw paramArrayOfByte;
     }
-    paramInt1 = this.bhK.read(paramArrayOfByte, paramInt1 + paramInt3, paramInt2 - paramInt3);
+    paramInt1 = this.aRo.read(paramArrayOfByte, paramInt1 + paramInt3, paramInt2 - paramInt3);
     if (paramInt1 == -1)
     {
       if ((paramInt3 == 0) && (paramBoolean))
@@ -55,68 +55,68 @@ public final class b
   private int c(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(91969);
-    if (this.bhO == 0)
+    if (this.aRs == 0)
     {
       AppMethodBeat.o(91969);
       return 0;
     }
-    paramInt2 = Math.min(this.bhO, paramInt2);
-    System.arraycopy(this.bhM, 0, paramArrayOfByte, paramInt1, paramInt2);
-    dT(paramInt2);
+    paramInt2 = Math.min(this.aRs, paramInt2);
+    System.arraycopy(this.aRq, 0, paramArrayOfByte, paramInt1, paramInt2);
+    eh(paramInt2);
     AppMethodBeat.o(91969);
     return paramInt2;
   }
   
-  private void dR(int paramInt)
+  private void ef(int paramInt)
   {
     AppMethodBeat.i(91967);
-    paramInt = this.bhN + paramInt;
-    if (paramInt > this.bhM.length)
+    paramInt = this.aRr + paramInt;
+    if (paramInt > this.aRq.length)
     {
-      paramInt = x.s(this.bhM.length * 2, 65536 + paramInt, paramInt + 524288);
-      this.bhM = Arrays.copyOf(this.bhM, paramInt);
+      paramInt = x.r(this.aRq.length * 2, 65536 + paramInt, paramInt + 524288);
+      this.aRq = Arrays.copyOf(this.aRq, paramInt);
     }
     AppMethodBeat.o(91967);
   }
   
-  private int dS(int paramInt)
+  private int eg(int paramInt)
   {
     AppMethodBeat.i(91968);
-    paramInt = Math.min(this.bhO, paramInt);
-    dT(paramInt);
+    paramInt = Math.min(this.aRs, paramInt);
+    eh(paramInt);
     AppMethodBeat.o(91968);
     return paramInt;
   }
   
-  private void dT(int paramInt)
+  private void eh(int paramInt)
   {
     AppMethodBeat.i(91970);
-    this.bhO -= paramInt;
-    this.bhN = 0;
-    byte[] arrayOfByte = this.bhM;
-    if (this.bhO < this.bhM.length - 524288) {
-      arrayOfByte = new byte[this.bhO + 65536];
+    this.aRs -= paramInt;
+    this.aRr = 0;
+    byte[] arrayOfByte = this.aRq;
+    if (this.aRs < this.aRq.length - 524288) {
+      arrayOfByte = new byte[this.aRs + 65536];
     }
-    System.arraycopy(this.bhM, paramInt, arrayOfByte, 0, this.bhO);
-    this.bhM = arrayOfByte;
+    System.arraycopy(this.aRq, paramInt, arrayOfByte, 0, this.aRs);
+    this.aRq = arrayOfByte;
     AppMethodBeat.o(91970);
   }
   
-  private void dU(int paramInt)
+  private void ei(int paramInt)
   {
     if (paramInt != -1) {
       this.position += paramInt;
     }
   }
   
-  private boolean o(int paramInt, boolean paramBoolean)
+  private boolean n(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(91965);
-    dR(paramInt);
-    int i = Math.min(this.bhO - this.bhN, paramInt);
+    ef(paramInt);
+    int i = Math.min(this.aRs - this.aRr, paramInt);
     while (i < paramInt)
     {
-      int j = a(this.bhM, this.bhN, paramInt, i, paramBoolean);
+      int j = a(this.aRq, this.aRr, paramInt, i, paramBoolean);
       i = j;
       if (j == -1)
       {
@@ -124,8 +124,8 @@ public final class b
         return false;
       }
     }
-    this.bhN += paramInt;
-    this.bhO = Math.max(this.bhO, this.bhN);
+    this.aRr += paramInt;
+    this.aRs = Math.max(this.aRs, this.aRr);
     AppMethodBeat.o(91965);
     return true;
   }
@@ -134,7 +134,7 @@ public final class b
   {
     AppMethodBeat.i(91959);
     for (int i = c(paramArrayOfByte, paramInt1, paramInt2); (i < paramInt2) && (i != -1); i = a(paramArrayOfByte, paramInt1, paramInt2, i, paramBoolean)) {}
-    dU(i);
+    ei(i);
     if (i != -1)
     {
       AppMethodBeat.o(91959);
@@ -154,47 +154,42 @@ public final class b
   public final boolean b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     AppMethodBeat.i(91963);
-    if (!o(paramInt2, paramBoolean))
+    if (!n(paramInt2, paramBoolean))
     {
       AppMethodBeat.o(91963);
       return false;
     }
-    System.arraycopy(this.bhM, this.bhN - paramInt2, paramArrayOfByte, paramInt1, paramInt2);
+    System.arraycopy(this.aRq, this.aRr - paramInt2, paramArrayOfByte, paramInt1, paramInt2);
     AppMethodBeat.o(91963);
     return true;
   }
   
-  public final int dO(int paramInt)
+  public final int ec(int paramInt)
   {
     AppMethodBeat.i(91961);
-    int j = dS(paramInt);
+    int j = eg(paramInt);
     int i = j;
     if (j == 0) {
-      i = a(bhJ, 0, Math.min(paramInt, bhJ.length), 0, true);
+      i = a(aRn, 0, Math.min(paramInt, aRn.length), 0, true);
     }
-    dU(i);
+    ei(i);
     AppMethodBeat.o(91961);
     return i;
   }
   
-  public final void dP(int paramInt)
+  public final void ed(int paramInt)
   {
     AppMethodBeat.i(91962);
-    for (int i = dS(paramInt); (i < paramInt) && (i != -1); i = a(bhJ, -i, Math.min(paramInt, bhJ.length + i), i, false)) {}
-    dU(i);
+    for (int i = eg(paramInt); (i < paramInt) && (i != -1); i = a(aRn, -i, Math.min(paramInt, aRn.length + i), i, false)) {}
+    ei(i);
     AppMethodBeat.o(91962);
   }
   
-  public final void dQ(int paramInt)
+  public final void ee(int paramInt)
   {
     AppMethodBeat.i(91966);
-    o(paramInt, false);
+    n(paramInt, false);
     AppMethodBeat.o(91966);
-  }
-  
-  public final long getLength()
-  {
-    return this.bhL;
   }
   
   public final long getPosition()
@@ -210,7 +205,7 @@ public final class b
     if (j == 0) {
       i = a(paramArrayOfByte, paramInt1, paramInt2, 0, true);
     }
-    dU(i);
+    ei(i);
     AppMethodBeat.o(91958);
     return i;
   }
@@ -222,19 +217,24 @@ public final class b
     AppMethodBeat.o(91960);
   }
   
-  public final void uv()
+  public final void sp()
   {
-    this.bhN = 0;
+    this.aRr = 0;
   }
   
-  public final long uw()
+  public final long sq()
   {
-    return this.position + this.bhN;
+    return this.position + this.aRr;
+  }
+  
+  public final long sr()
+  {
+    return this.aRp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.c.b
  * JD-Core Version:    0.7.0.1
  */

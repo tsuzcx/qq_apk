@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.appbrand.appcache.predownload.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.co.f;
+import com.tencent.mm.cw.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.appcache.predownload.e.c;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vending.g.b;
 import kotlin.x;
 
 public enum j
 {
-  private volatile boolean kPT = false;
-  private volatile f<Void> kPU;
+  private volatile boolean nJY = false;
+  private volatile f<Void> nJZ;
   
   static
   {
     AppMethodBeat.i(44417);
-    kPS = new j("INSTANCE");
-    kPV = new j[] { kPS };
+    nJX = new j("INSTANCE");
+    nKa = new j[] { nJX };
     AppMethodBeat.o(44417);
   }
   
   private j() {}
   
-  public final void bwR()
+  public final void bHY()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(44414);
-        if (!com.tencent.mm.kernel.g.aAf().hpY)
+        if (!h.aHE().kbT)
         {
           Log.e("MicroMsg.AppBrand.Predownload.GetCodeRetryLogic", "triggerRetry, account not ready");
-          if (this.kPU != null) {
-            this.kPU.hdy();
+          if (this.nJZ != null) {
+            this.nJZ.ieF();
           }
-          this.kPT = false;
+          this.nJY = false;
           AppMethodBeat.o(44414);
           return;
         }
-        if (this.kPT)
+        if (this.nJY)
         {
           Log.d("MicroMsg.AppBrand.Predownload.GetCodeRetryLogic", "triggerRetry, queueRunning, skip");
           AppMethodBeat.o(44414);
@@ -48,11 +48,11 @@ public enum j
         Log.i("MicroMsg.AppBrand.Predownload.GetCodeRetryLogic", "triggerRetry, set flag queue running");
       }
       finally {}
-      this.kPT = true;
-      this.kPU = com.tencent.mm.co.g.hio();
-      this.kPU.i(new com.tencent.mm.vending.c.a()
+      this.nJY = true;
+      this.nJZ = com.tencent.mm.cw.g.ijP();
+      this.nJZ.i(new com.tencent.mm.vending.c.a()
       {
-        private Void buw()
+        private Void bFz()
         {
           AppMethodBeat.i(44404);
           try
@@ -66,7 +66,7 @@ public enum j
             for (;;)
             {
               Log.printErrStackTrace("MicroMsg.AppBrand.Predownload.GetCodeRetryLogic", localThrowable, "handleRetry()", new Object[0]);
-              com.tencent.mm.vending.g.g.hdx().ej(null);
+              com.tencent.mm.vending.g.g.ieE().eo(null);
               synchronized (j.this)
               {
                 j.b(j.this);
@@ -84,10 +84,10 @@ public enum j
     try
     {
       AppMethodBeat.i(44415);
-      if (this.kPU != null) {
-        this.kPU.hdy();
+      if (this.nJZ != null) {
+        this.nJZ.ieF();
       }
-      this.kPT = false;
+      this.nJY = false;
       AppMethodBeat.o(44415);
       return;
     }
@@ -96,7 +96,7 @@ public enum j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.predownload.b.j
  * JD-Core Version:    0.7.0.1
  */

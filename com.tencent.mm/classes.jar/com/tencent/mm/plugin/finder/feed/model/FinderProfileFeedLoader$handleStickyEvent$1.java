@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.finder.feed.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
-import com.tencent.mm.g.a.hm;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.f.a.ht;
 import kotlin.g.a.a;
 import kotlin.g.a.b;
 import kotlin.g.b.p;
@@ -10,18 +10,18 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "event", "Lcom/tencent/mm/autogen/events/FeedStickyEvent;", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "event", "Lcom/tencent/mm/autogen/events/FeedStickyEvent;", "invoke"})
 final class FinderProfileFeedLoader$handleStickyEvent$1
   extends q
-  implements b<hm, x>
+  implements b<ht, x>
 {
   public static final 1 INSTANCE;
   
   static
   {
-    AppMethodBeat.i(244809);
+    AppMethodBeat.i(286935);
     INSTANCE = new 1();
-    AppMethodBeat.o(244809);
+    AppMethodBeat.o(286935);
   }
   
   FinderProfileFeedLoader$handleStickyEvent$1()
@@ -29,12 +29,12 @@ final class FinderProfileFeedLoader$handleStickyEvent$1
     super(1);
   }
   
-  public final void invoke(hm paramhm)
+  public final void invoke(ht paramht)
   {
-    AppMethodBeat.i(244808);
-    p.h(paramhm, "event");
-    d.h((a)1.INSTANCE);
-    AppMethodBeat.o(244808);
+    AppMethodBeat.i(286934);
+    p.k(paramht, "event");
+    d.uiThread((a)1.INSTANCE);
+    AppMethodBeat.o(286934);
   }
 }
 

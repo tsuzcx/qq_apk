@@ -7,8 +7,10 @@ import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.widget.a.f.a;
 import com.tencent.mm.ui.widget.a.f.c;
@@ -18,9 +20,9 @@ public class RemittanceMsgAlertActivity
 {
   public Resources getResources()
   {
-    AppMethodBeat.i(213822);
+    AppMethodBeat.i(227108);
     Resources localResources = MMApplicationContext.getResources();
-    AppMethodBeat.o(213822);
+    AppMethodBeat.o(227108);
     return localResources;
   }
   
@@ -33,11 +35,11 @@ public class RemittanceMsgAlertActivity
     paramBundle = new f.a(this);
     Context localContext = MMApplicationContext.getContext();
     if (bool) {}
-    for (int i = 2131764556;; i = 2131764555)
+    for (int i = a.i.remittance_find_from_jsapi_failed_nocontact;; i = a.i.remittance_find_from_jsapi_failed_delete)
     {
-      paramBundle = paramBundle.bow(localContext.getString(i)).apb(MMApplicationContext.getContext().getResources().getColor(2131101414)).apa(2131761757).b(new f.c()
+      paramBundle = paramBundle.bBl(localContext.getString(i)).ayq(MMApplicationContext.getContext().getResources().getColor(a.c.wechat_green)).ayp(a.i.i_know_it).b(new f.c()
       {
-        public final void e(boolean paramAnonymousBoolean, String paramAnonymousString) {}
+        public final void g(boolean paramAnonymousBoolean, String paramAnonymousString) {}
       });
       paramBundle.b(new DialogInterface.OnDismissListener()
       {
@@ -70,7 +72,7 @@ public class RemittanceMsgAlertActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceMsgAlertActivity
  * JD-Core Version:    0.7.0.1
  */

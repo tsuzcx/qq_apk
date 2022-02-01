@@ -9,24 +9,24 @@ import com.tencent.mm.rabbiteye.a.b;
 public class AnrDetective
   extends a
 {
-  private static volatile AnrDetective NAN;
-  private static a.b NAO;
-  public static a.a NAP;
+  private static volatile AnrDetective UOq;
+  private static a.b UOr;
+  public static a.a UOs;
   
   static
   {
-    AppMethodBeat.i(186290);
-    NAN = new AnrDetective();
-    AppMethodBeat.o(186290);
+    AppMethodBeat.i(231738);
+    UOq = new AnrDetective();
+    AppMethodBeat.o(231738);
   }
   
   public static AnrDetective a(a.b paramb, a.a parama)
   {
     try
     {
-      NAO = paramb;
-      NAP = parama;
-      paramb = NAN;
+      UOr = paramb;
+      UOs = parama;
+      paramb = UOq;
       return paramb;
     }
     finally
@@ -38,28 +38,37 @@ public class AnrDetective
   
   public static void a()
   {
-    com.tencent.mm.rabbiteye.a.a locala = com.tencent.mm.rabbiteye.a.a.NAY;
+    com.tencent.mm.rabbiteye.a.a locala = com.tencent.mm.rabbiteye.a.a.UOB;
     if (!locala.e) {
       locala.e = true;
     }
   }
   
+  public static void hpL()
+  {
+    AppMethodBeat.i(231734);
+    nativePrintTrace();
+    AppMethodBeat.o(231734);
+  }
+  
   private static native void nativceProduceNativeCrash();
   
-  public static native void nativeInitAnr(String paramString);
+  public static native void nativeInitAnr(String paramString1, String paramString2);
+  
+  private static native void nativePrintTrace();
   
   @Keep
   private static void onANRDumped(int paramInt, String paramString)
   {
-    AppMethodBeat.i(186289);
-    paramString = b.gut();
-    NAO.gf(paramString);
-    AppMethodBeat.o(186289);
+    AppMethodBeat.i(231735);
+    paramString = b.hpR();
+    UOr.gP(paramString);
+    AppMethodBeat.o(231735);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.rabbiteye.detective.AnrDetective
  * JD-Core Version:    0.7.0.1
  */

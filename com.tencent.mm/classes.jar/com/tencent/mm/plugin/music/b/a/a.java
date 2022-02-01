@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.music.b.a;
 
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.mix.i.b;
+import com.tencent.mm.audio.mix.h.b;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class a
 {
-  static void M(ArrayList<IDKey> paramArrayList)
+  static void e(ArrayList<IDKey> paramArrayList)
   {
     AppMethodBeat.i(62939);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -25,7 +25,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.music.b.a.a
  * JD-Core Version:    0.7.0.1
  */

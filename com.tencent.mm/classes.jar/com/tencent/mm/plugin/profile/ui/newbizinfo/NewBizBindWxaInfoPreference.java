@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.h;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.modelappbrand.a.b.h;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaEntryInfo;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
@@ -25,29 +27,29 @@ import java.util.List;
 public class NewBizBindWxaInfoPreference
   extends Preference
 {
-  private static final int gCk;
-  private static final int gCl;
-  private static final int gCm;
-  private static int gCn;
-  private View.OnClickListener BcZ;
-  private com.tencent.mm.api.c Bdk;
+  private static final int jmq;
+  private static final int jmr;
+  private static final int jms;
+  private static int jmt;
+  private View.OnClickListener GWY;
+  private com.tencent.mm.api.c GXj;
   private Context context;
-  private b.h gCj;
+  private b.h jmp;
   private View mView;
-  private ThreeDotsLoadingView nNl;
-  private AppBrandNearbyShowcaseView ogf;
-  private View ogg;
-  private boolean ogh;
-  private List<WxaAttributes.WxaEntryInfo> olD;
-  private View.OnClickListener rID;
+  private ThreeDotsLoadingView qPG;
+  private AppBrandNearbyShowcaseView rhQ;
+  private View rhR;
+  private boolean rhS;
+  private List<WxaAttributes.WxaEntryInfo> rof;
+  private View.OnClickListener vol;
   
   static
   {
     AppMethodBeat.i(27491);
-    gCk = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 25);
-    gCl = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 20);
-    gCm = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 2);
-    gCn = -1;
+    jmq = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 25);
+    jmr = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 20);
+    jms = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 2);
+    jmt = -1;
     AppMethodBeat.o(27491);
   }
   
@@ -56,7 +58,7 @@ public class NewBizBindWxaInfoPreference
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27482);
     this.mView = null;
-    this.ogh = false;
+    this.rhS = false;
     this.context = paramContext;
     init();
     AppMethodBeat.o(27482);
@@ -67,89 +69,89 @@ public class NewBizBindWxaInfoPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27483);
     this.mView = null;
-    this.ogh = false;
+    this.rhS = false;
     this.context = paramContext;
     init();
     AppMethodBeat.o(27483);
   }
   
-  private void bBG()
+  private void bNc()
   {
     AppMethodBeat.i(27488);
-    if ((this.Bdk == null) || (this.olD == null))
+    if ((this.GXj == null) || (this.rof == null))
     {
       Log.w("MicroMsg.NewBizBindWxaInfoPreference", "mWxaEntryInfoList or bizInfo is null, return");
       AppMethodBeat.o(27488);
       return;
     }
-    this.nNl.gZi();
-    cH(this.nNl);
-    if (this.olD.size() > 0)
+    this.qPG.hZY();
+    db(this.qPG);
+    if (this.rof.size() > 0)
     {
-      this.ogf.setVisibility(0);
-      this.ogf.setIconLayerCount(Math.min(this.olD.size(), 4));
+      this.rhQ.setVisibility(0);
+      this.rhQ.setIconLayerCount(Math.min(this.rof.size(), 4));
       final boolean bool;
       int i;
       label141:
       com.tencent.mm.modelappbrand.a.b localb;
       ImageView localImageView;
-      if (this.ogg.getVisibility() != 0)
+      if (this.rhR.getVisibility() != 0)
       {
         bool = true;
         if (bool) {
-          this.ogf.bZV();
+          this.rhQ.cmQ();
         }
-        if (this.gCj == null) {
-          this.gCj = new com.tencent.mm.plugin.appbrand.ui.widget.a(gCk, gCm, gCn);
+        if (this.jmp == null) {
+          this.jmp = new com.tencent.mm.plugin.appbrand.ui.widget.a(jmq, jms, jmt);
         }
         i = 0;
-        if (i >= this.ogf.getChildCount()) {
+        if (i >= this.rhQ.getChildCount()) {
           break label230;
         }
-        localb = com.tencent.mm.modelappbrand.a.b.aXY();
-        localImageView = this.ogf.zK(i);
-        if (this.olD.size() <= i) {
+        localb = com.tencent.mm.modelappbrand.a.b.bhh();
+        localImageView = this.rhQ.Dt(i);
+        if (this.rof.size() <= i) {
           break label225;
         }
       }
       label225:
-      for (String str = ((WxaAttributes.WxaEntryInfo)this.olD.get(i)).iconUrl;; str = null)
+      for (String str = ((WxaAttributes.WxaEntryInfo)this.rof.get(i)).iconUrl;; str = null)
       {
-        localb.a(localImageView, str, com.tencent.mm.modelappbrand.a.a.aXX(), this.gCj);
+        localb.a(localImageView, str, com.tencent.mm.modelappbrand.a.a.bhg(), this.jmp);
         i += 1;
         break label141;
         bool = false;
         break;
       }
       label230:
-      g(this.ogg, new Runnable()
+      g(this.rhR, new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(27480);
           if ((bool) && (NewBizBindWxaInfoPreference.c(NewBizBindWxaInfoPreference.this) != null)) {
-            NewBizBindWxaInfoPreference.c(NewBizBindWxaInfoPreference.this).bZW();
+            NewBizBindWxaInfoPreference.c(NewBizBindWxaInfoPreference.this).cmR();
           }
           AppMethodBeat.o(27480);
         }
       });
-      if (this.olD.size() == 1)
+      if (this.rof.size() == 1)
       {
-        this.mView.setTag(((WxaAttributes.WxaEntryInfo)this.olD.get(0)).username);
-        this.mView.setOnClickListener(this.rID);
+        this.mView.setTag(((WxaAttributes.WxaEntryInfo)this.rof.get(0)).username);
+        this.mView.setOnClickListener(this.vol);
         AppMethodBeat.o(27488);
         return;
       }
       this.mView.setTag(null);
-      this.mView.setOnClickListener(this.BcZ);
+      this.mView.setOnClickListener(this.GWY);
       AppMethodBeat.o(27488);
       return;
     }
-    this.ogf.setVisibility(8);
+    this.rhQ.setVisibility(8);
     AppMethodBeat.o(27488);
   }
   
-  private void cH(final View paramView)
+  private void db(final View paramView)
   {
     AppMethodBeat.i(27490);
     if (paramView.getVisibility() == 0) {
@@ -181,14 +183,14 @@ public class NewBizBindWxaInfoPreference
   private void init()
   {
     AppMethodBeat.i(27484);
-    this.rID = new View.OnClickListener()
+    this.vol = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(27478);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizBindWxaInfoPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizBindWxaInfoPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
         paramAnonymousView = paramAnonymousView.getTag();
         if ((paramAnonymousView == null) || (!(paramAnonymousView instanceof String)))
         {
@@ -200,54 +202,54 @@ public class NewBizBindWxaInfoPreference
         Log.i("MicroMsg.NewBizBindWxaInfoPreference", "jump to wxa:%s", new Object[] { (String)paramAnonymousView });
         localObject = new AppBrandStatObject();
         ((AppBrandStatObject)localObject).scene = 1020;
-        ((AppBrandStatObject)localObject).dCw = NewBizBindWxaInfoPreference.a(NewBizBindWxaInfoPreference.this).field_username;
-        ((r)g.af(r.class)).a(NewBizBindWxaInfoPreference.this.mContext, (String)paramAnonymousView, null, 0, 0, null, (AppBrandStatObject)localObject, NewBizBindWxaInfoPreference.a(NewBizBindWxaInfoPreference.this).field_appId);
-        com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.I(NewBizBindWxaInfoPreference.a(NewBizBindWxaInfoPreference.this).field_username, 500, 0L);
+        ((AppBrandStatObject)localObject).fvd = NewBizBindWxaInfoPreference.a(NewBizBindWxaInfoPreference.this).field_username;
+        ((r)h.ae(r.class)).a(NewBizBindWxaInfoPreference.this.mContext, (String)paramAnonymousView, null, 0, 0, null, (AppBrandStatObject)localObject, NewBizBindWxaInfoPreference.a(NewBizBindWxaInfoPreference.this).field_appId);
+        com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.J(NewBizBindWxaInfoPreference.a(NewBizBindWxaInfoPreference.this).field_username, 500, 0L);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizBindWxaInfoPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(27478);
       }
     };
-    this.BcZ = new View.OnClickListener()
+    this.GWY = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(27479);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizBindWxaInfoPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        ((t)g.af(t.class)).a(NewBizBindWxaInfoPreference.this.mContext, NewBizBindWxaInfoPreference.a(NewBizBindWxaInfoPreference.this).field_username, NewBizBindWxaInfoPreference.a(NewBizBindWxaInfoPreference.this).field_appId, NewBizBindWxaInfoPreference.b(NewBizBindWxaInfoPreference.this));
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizBindWxaInfoPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        ((t)h.ae(t.class)).a(NewBizBindWxaInfoPreference.this.mContext, NewBizBindWxaInfoPreference.a(NewBizBindWxaInfoPreference.this).field_username, NewBizBindWxaInfoPreference.a(NewBizBindWxaInfoPreference.this).field_appId, NewBizBindWxaInfoPreference.b(NewBizBindWxaInfoPreference.this));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizBindWxaInfoPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(27479);
       }
     };
-    gCn = this.context.getResources().getColor(2131100633);
+    jmt = this.context.getResources().getColor(R.e.icon_border_color);
     AppMethodBeat.o(27484);
   }
   
-  private void rJ()
+  private void px()
   {
     AppMethodBeat.i(27487);
-    if (this.nNl == null)
+    if (this.qPG == null)
     {
       Log.i("MicroMsg.NewBizBindWxaInfoPreference", "startLoad or mLoadingView is null");
       AppMethodBeat.o(27487);
       return;
     }
-    if (this.ogh)
+    if (this.rhS)
     {
       Log.i("MicroMsg.NewBizBindWxaInfoPreference", "startLoad has load.");
       AppMethodBeat.o(27487);
       return;
     }
-    this.ogh = true;
-    cH(this.ogg);
-    g(this.nNl, null);
-    this.nNl.gZh();
-    bBG();
+    this.rhS = true;
+    db(this.rhR);
+    g(this.qPG, null);
+    this.qPG.hZX();
+    bNc();
     AppMethodBeat.o(27487);
   }
   
-  public final View getView(View paramView, ViewGroup paramViewGroup)
+  public final View c(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(27485);
     if (this.mView == null) {
@@ -263,18 +265,18 @@ public class NewBizBindWxaInfoPreference
   {
     AppMethodBeat.i(27486);
     super.onBindView(paramView);
-    this.ogg = paramView.findViewById(2131305290);
-    this.nNl = ((ThreeDotsLoadingView)paramView.findViewById(2131305292));
-    this.ogf = ((AppBrandNearbyShowcaseView)paramView.findViewById(2131305291));
-    this.ogf.setIconSize(gCk + gCm * 2);
-    this.ogf.setIconGap(gCl);
-    rJ();
+    this.rhR = paramView.findViewById(R.h.dNu);
+    this.qPG = ((ThreeDotsLoadingView)paramView.findViewById(R.h.dNw));
+    this.rhQ = ((AppBrandNearbyShowcaseView)paramView.findViewById(R.h.dNv));
+    this.rhQ.setIconSize(jmq + jms * 2);
+    this.rhQ.setIconGap(jmr);
+    px();
     AppMethodBeat.o(27486);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.NewBizBindWxaInfoPreference
  * JD-Core Version:    0.7.0.1
  */

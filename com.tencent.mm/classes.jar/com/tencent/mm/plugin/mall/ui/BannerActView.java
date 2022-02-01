@@ -8,35 +8,37 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.y;
+import com.tencent.mm.plugin.wallet_core.model.z;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.g;
 import java.util.List;
 
 public class BannerActView
   extends LinearLayout
 {
-  private List<com.tencent.mm.plugin.wallet_core.model.mall.a> zjK;
-  private y zjL;
-  private TextView zjM;
+  private List<com.tencent.mm.plugin.wallet_core.model.mall.a> EPb;
+  private z EPc;
+  private TextView EPd;
   
   public BannerActView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(66024);
-    this.zjM = ((TextView)LayoutInflater.from(getContext()).inflate(2131493214, this, true).findViewById(2131304346));
+    this.EPd = ((TextView)LayoutInflater.from(getContext()).inflate(a.g.banner_activity_view, this, true).findViewById(a.f.mall_banner_wording));
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(66023);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/mall/ui/BannerActView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mall/ui/BannerActView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         BannerActView.this.setVisibility(8);
-        com.tencent.mm.plugin.wallet_core.model.mall.b.ia(BannerActView.a(BannerActView.this));
+        com.tencent.mm.plugin.wallet_core.model.mall.b.iQ(BannerActView.a(BannerActView.this));
         if ((BannerActView.a(BannerActView.this) != null) && (BannerActView.a(BannerActView.this).size() > 0)) {
-          f.bn(BannerActView.this.getContext(), ((com.tencent.mm.plugin.wallet_core.model.mall.a)BannerActView.a(BannerActView.this).get(0)).Icc);
+          g.bA(BannerActView.this.getContext(), ((com.tencent.mm.plugin.wallet_core.model.mall.a)BannerActView.a(BannerActView.this).get(0)).OUo);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mall/ui/BannerActView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(66023);
@@ -48,28 +50,28 @@ public class BannerActView
   public void setActivityList(List<com.tencent.mm.plugin.wallet_core.model.mall.a> paramList)
   {
     AppMethodBeat.i(66026);
-    this.zjK = paramList;
-    if ((this.zjK == null) || (this.zjK.size() <= 0)) {
+    this.EPb = paramList;
+    if ((this.EPb == null) || (this.EPb.size() <= 0)) {
       Log.i("MicroMsg.BannerActivityView", "func[setActivityList] actList null");
     }
-    while (!com.tencent.mm.plugin.wallet_core.model.mall.b.hZ(this.zjK))
+    while (!com.tencent.mm.plugin.wallet_core.model.mall.b.iP(this.EPb))
     {
       setVisibility(8);
       AppMethodBeat.o(66026);
       return;
     }
-    this.zjM.setText(((com.tencent.mm.plugin.wallet_core.model.mall.a)this.zjK.get(0)).Icb);
+    this.EPd.setText(((com.tencent.mm.plugin.wallet_core.model.mall.a)this.EPb.get(0)).OUn);
     setVisibility(0);
     AppMethodBeat.o(66026);
   }
   
-  public void setData(y paramy)
+  public void setData(z paramz)
   {
     AppMethodBeat.i(66025);
-    this.zjL = paramy;
-    if (this.zjL != null)
+    this.EPc = paramz;
+    if (this.EPc != null)
     {
-      this.zjM.setText(this.zjL.field_bulletin_content);
+      this.EPd.setText(this.EPc.field_bulletin_content);
       setVisibility(0);
       AppMethodBeat.o(66025);
       return;

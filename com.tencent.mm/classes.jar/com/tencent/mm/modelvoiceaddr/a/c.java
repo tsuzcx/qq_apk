@@ -20,16 +20,16 @@ public class c
   public static SharedPreferences sp;
   private MMHandler handler;
   private boolean isReleased;
-  private boolean jxb;
-  private int jxc;
-  private boolean jxd;
-  private boolean jxe;
-  private long jxf;
-  private int jxg;
-  private a jxh;
-  private com.qq.wx.voice.vad.a jxi;
-  public a jxj;
-  private short[] jxk;
+  private boolean mmE;
+  private int mmF;
+  private boolean mmG;
+  private boolean mmH;
+  private long mmI;
+  private int mmJ;
+  private a mmK;
+  private com.qq.wx.voice.vad.a mmL;
+  public a mmM;
+  private short[] mmN;
   
   static
   {
@@ -42,12 +42,12 @@ public class c
   public c(int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(148606);
-    this.jxb = true;
-    this.jxc = 3;
-    this.jxd = false;
-    this.jxe = false;
-    this.jxf = 0L;
-    this.jxg = 3500;
+    this.mmE = true;
+    this.mmF = 3;
+    this.mmG = false;
+    this.mmH = false;
+    this.mmI = 0L;
+    this.mmJ = 3500;
     this.isReleased = false;
     this.handler = new MMHandler(Looper.getMainLooper())
     {
@@ -60,35 +60,35 @@ public class c
           return;
         }
         if (c.a(c.this) != null) {
-          c.a(c.this).Yh();
+          c.a(c.this).acN();
         }
         AppMethodBeat.o(148603);
       }
     };
-    this.jxh = null;
-    this.jxi = null;
-    this.jxg = paramInt1;
-    this.jxi = new com.qq.wx.voice.vad.a();
+    this.mmK = null;
+    this.mmL = null;
+    this.mmJ = paramInt1;
+    this.mmL = new com.qq.wx.voice.vad.a();
     int j = 0;
     int i = j;
     Object localObject;
     if (MMApplicationContext.isMMProcess())
     {
-      localObject = com.tencent.mm.model.c.d.aXu().Fu("100235");
+      localObject = com.tencent.mm.model.c.d.bgB().Mu("100235");
       i = j;
       if (((com.tencent.mm.storage.c)localObject).isValid()) {
-        i = Util.getInt((String)((com.tencent.mm.storage.c)localObject).gzz().get("MMVoipVadOn"), 0);
+        i = Util.getInt((String)((com.tencent.mm.storage.c)localObject).hvz().get("MMVoipVadOn"), 0);
       }
     }
     Log.i(TAG, "VoiceSilentDetectAPI: abTestFlag = [%s]", new Object[] { Integer.valueOf(i) });
     if (i == 0)
     {
-      com.qq.wx.voice.vad.a.bI(false);
-      localObject = this.jxi;
-      if (!com.qq.wx.voice.vad.a.cgx) {
+      com.qq.wx.voice.vad.a.bW(false);
+      localObject = this.mmL;
+      if (!com.qq.wx.voice.vad.a.ciy) {
         break label304;
       }
-      ((com.qq.wx.voice.vad.a)localObject).handle = ((com.qq.wx.voice.vad.a)localObject).cgw.Init(16000, paramInt2, paramFloat, paramInt3, paramInt4);
+      ((com.qq.wx.voice.vad.a)localObject).handle = ((com.qq.wx.voice.vad.a)localObject).cix.Init(16000, paramInt2, paramFloat, paramInt3, paramInt4);
       label206:
       if (com.qq.wx.voice.vad.a.DEBUG) {
         System.out.println("EVad Init handle = " + ((com.qq.wx.voice.vad.a)localObject).handle);
@@ -100,7 +100,7 @@ public class c
       label250:
       if (paramInt2 != 1)
       {
-        localObject = this.jxi;
+        localObject = this.mmL;
         if (((com.qq.wx.voice.vad.a)localObject).handle != 0L) {
           break label334;
         }
@@ -115,10 +115,10 @@ public class c
       localObject = new b("Init ERROR");
       AppMethodBeat.o(148606);
       throw ((Throwable)localObject);
-      com.qq.wx.voice.vad.a.bI(true);
+      com.qq.wx.voice.vad.a.bW(true);
       break;
       label304:
-      ((com.qq.wx.voice.vad.a)localObject).handle = ((com.qq.wx.voice.vad.a)localObject).cgv.Init(16000, paramInt2, paramFloat, paramInt3, paramInt4);
+      ((com.qq.wx.voice.vad.a)localObject).handle = ((com.qq.wx.voice.vad.a)localObject).ciw.Init(16000, paramInt2, paramFloat, paramInt3, paramInt4);
       break label206;
       label329:
       paramInt2 = 0;
@@ -127,19 +127,19 @@ public class c
       if (com.qq.wx.voice.vad.a.DEBUG) {
         System.out.println("EVad Reset handle = " + ((com.qq.wx.voice.vad.a)localObject).handle);
       }
-      if (com.qq.wx.voice.vad.a.cgx) {
-        paramInt2 = ((com.qq.wx.voice.vad.a)localObject).cgw.Reset(((com.qq.wx.voice.vad.a)localObject).handle);
+      if (com.qq.wx.voice.vad.a.ciy) {
+        paramInt2 = ((com.qq.wx.voice.vad.a)localObject).cix.Reset(((com.qq.wx.voice.vad.a)localObject).handle);
       } else {
-        paramInt2 = ((com.qq.wx.voice.vad.a)localObject).cgv.Reset(((com.qq.wx.voice.vad.a)localObject).handle);
+        paramInt2 = ((com.qq.wx.voice.vad.a)localObject).ciw.Reset(((com.qq.wx.voice.vad.a)localObject).handle);
       }
     }
     label406:
-    this.jxh = new a(paramInt5 * 16);
-    this.jxk = new short[4000];
+    this.mmK = new a(paramInt5 * 16);
+    this.mmN = new short[4000];
     this.handler.removeMessages(0);
     this.handler.sendEmptyMessageDelayed(0, paramInt1);
-    this.jxd = paramBoolean1;
-    this.jxe = paramBoolean2;
+    this.mmG = paramBoolean1;
+    this.mmH = paramBoolean2;
     AppMethodBeat.o(148606);
   }
   
@@ -150,7 +150,7 @@ public class c
     AppMethodBeat.o(148605);
   }
   
-  public static String biD()
+  public static String bsb()
   {
     AppMethodBeat.i(148604);
     String str = String.format(Locale.CHINA, "%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s", new Object[] { "sil_time", Integer.valueOf(sp.getInt("sil_time", 500)), "s_n_ration", Float.valueOf(sp.getFloat("s_n_ration", 2.5F)), "s_window", Integer.valueOf(sp.getInt("s_window", 500)), "s_length", Integer.valueOf(sp.getInt("s_length", 350)), "s_delay_time", Integer.valueOf(sp.getInt("s_delay_time", 550)) });
@@ -173,32 +173,32 @@ public class c
       AppMethodBeat.o(148607);
       return;
     }
-    if (this.jxh == null)
+    if (this.mmK == null)
     {
       Log.i(TAG, "input, circleBuffer is null.");
       AppMethodBeat.o(148607);
       return;
     }
-    int n = this.jxi.a(paramArrayOfShort, paramInt);
-    Log.d(TAG, "currState = %s,prevState = %s,directFirstStart = %s,directTempState = %s", new Object[] { Integer.valueOf(n), Integer.valueOf(this.jxc), Boolean.valueOf(this.jxd), Boolean.valueOf(this.jxe) });
+    int n = this.mmL.a(paramArrayOfShort, paramInt);
+    Log.d(TAG, "currState = %s,prevState = %s,directFirstStart = %s,directTempState = %s", new Object[] { Integer.valueOf(n), Integer.valueOf(this.mmF), Boolean.valueOf(this.mmG), Boolean.valueOf(this.mmH) });
     long l;
     int i;
     int k;
-    if (this.jxd) {
-      if (this.jxe)
+    if (this.mmG) {
+      if (this.mmH)
       {
         l = System.currentTimeMillis();
-        if (this.jxj != null) {
-          this.jxj.biy();
+        if (this.mmM != null) {
+          this.mmM.brW();
         }
-        this.jxf = l;
+        this.mmI = l;
         if (this.isReleased)
         {
           AppMethodBeat.o(148607);
           return;
         }
-        i = this.jxh.jwZ;
-        k = this.jxk.length;
+        i = this.mmK.mmC;
+        k = this.mmN.length;
         if (i > 0) {
           if (k <= i) {
             break label811;
@@ -210,53 +210,53 @@ public class c
     label811:
     for (int j = i;; j = k)
     {
-      this.jxh.c(this.jxk, j);
+      this.mmK.c(this.mmN, j);
       int m = i - j;
       i = m;
-      if (this.jxj == null) {
+      if (this.mmM == null) {
         break;
       }
-      this.jxj.b(this.jxk, j);
+      this.mmM.b(this.mmN, j);
       i = m;
       break;
-      this.jxe = false;
+      this.mmH = false;
       this.handler.removeMessages(0);
-      this.handler.sendEmptyMessageDelayed(0, this.jxg);
+      this.handler.sendEmptyMessageDelayed(0, this.mmJ);
       for (;;)
       {
-        this.jxb = false;
-        this.jxc = n;
+        this.mmE = false;
+        this.mmF = n;
         if (!this.isReleased) {
           break;
         }
         AppMethodBeat.o(148607);
         return;
-        if ((this.jxc == 3) && (n == 2)) {
-          this.jxd = false;
+        if ((this.mmF == 3) && (n == 2)) {
+          this.mmG = false;
         }
-        if ((this.jxc != 3) || (n != 3))
+        if ((this.mmF != 3) || (n != 3))
         {
           this.handler.removeMessages(0);
-          this.handler.sendEmptyMessageDelayed(0, this.jxg);
+          this.handler.sendEmptyMessageDelayed(0, this.mmJ);
         }
       }
-      if ((this.jxc == 3) && (n == 2))
+      if ((this.mmF == 3) && (n == 2))
       {
-        this.jxc = n;
+        this.mmF = n;
         this.handler.removeMessages(0);
-        this.handler.sendEmptyMessageDelayed(0, this.jxg);
+        this.handler.sendEmptyMessageDelayed(0, this.mmJ);
         l = System.currentTimeMillis();
-        if (this.jxj != null) {
-          this.jxj.biy();
+        if (this.mmM != null) {
+          this.mmM.brW();
         }
-        this.jxf = l;
+        this.mmI = l;
         if (this.isReleased)
         {
           AppMethodBeat.o(148607);
           return;
         }
-        i = this.jxh.jwZ;
-        k = this.jxk.length;
+        i = this.mmK.mmC;
+        k = this.mmN.length;
         label506:
         if (i > 0) {
           if (k <= i) {
@@ -266,55 +266,55 @@ public class c
       }
       for (j = i;; j = k)
       {
-        this.jxh.c(this.jxk, j);
+        this.mmK.c(this.mmN, j);
         m = i - j;
         i = m;
-        if (this.jxj == null) {
+        if (this.mmM == null) {
           break label506;
         }
-        this.jxj.b(this.jxk, j);
+        this.mmM.b(this.mmN, j);
         i = m;
         break label506;
-        this.jxb = false;
+        this.mmE = false;
         break;
-        if ((this.jxc == 2) && (n == 3))
+        if ((this.mmF == 2) && (n == 3))
         {
-          this.jxc = n;
-          this.jxb = true;
+          this.mmF = n;
+          this.mmE = true;
           this.handler.removeMessages(0);
-          this.handler.sendEmptyMessageDelayed(0, this.jxg);
+          this.handler.sendEmptyMessageDelayed(0, this.mmJ);
           l = System.currentTimeMillis();
-          if (this.jxj != null) {
-            this.jxj.bix();
+          if (this.mmM != null) {
+            this.mmM.brV();
           }
-          this.jxf = l;
+          this.mmI = l;
           if (!this.isReleased) {
             break;
           }
           AppMethodBeat.o(148607);
           return;
         }
-        if ((this.jxc == 3) && (n == 3))
+        if ((this.mmF == 3) && (n == 3))
         {
-          this.jxb = true;
+          this.mmE = true;
           break;
         }
-        if ((this.jxc != 2) || (n != 2)) {
+        if ((this.mmF != 2) || (n != 2)) {
           break;
         }
-        this.jxb = false;
+        this.mmE = false;
         this.handler.removeMessages(0);
-        this.handler.sendEmptyMessageDelayed(0, this.jxg);
+        this.handler.sendEmptyMessageDelayed(0, this.mmJ);
         break;
-        this.jxh.d(paramArrayOfShort, paramInt);
-        Log.d(TAG, "isSilent %s", new Object[] { Boolean.valueOf(this.jxb) });
-        if (this.jxb)
+        this.mmK.d(paramArrayOfShort, paramInt);
+        Log.d(TAG, "isSilent %s", new Object[] { Boolean.valueOf(this.mmE) });
+        if (this.mmE)
         {
           AppMethodBeat.o(148607);
           return;
         }
-        if (this.jxj != null) {
-          this.jxj.b(paramArrayOfShort, paramInt);
+        if (this.mmM != null) {
+          this.mmM.b(paramArrayOfShort, paramInt);
         }
         AppMethodBeat.o(148607);
         return;
@@ -327,43 +327,43 @@ public class c
     AppMethodBeat.i(148608);
     Log.d(TAG, "released");
     this.isReleased = true;
-    this.jxd = false;
-    this.jxe = false;
-    if (this.jxi != null)
+    this.mmG = false;
+    this.mmH = false;
+    if (this.mmL != null)
     {
-      if (this.jxi.IL() == 1)
+      if (this.mmL.Ko() == 1)
       {
         b localb = new b();
         AppMethodBeat.o(148608);
         throw localb;
       }
-      this.jxi = null;
+      this.mmL = null;
     }
-    this.jxh = null;
-    this.jxk = null;
+    this.mmK = null;
+    this.mmN = null;
     if (this.handler != null)
     {
       this.handler.removeMessages(0);
       this.handler = null;
     }
-    this.jxj = null;
+    this.mmM = null;
     AppMethodBeat.o(148608);
   }
   
   public static abstract interface a
   {
-    public abstract void Yh();
+    public abstract void acN();
     
     public abstract void b(short[] paramArrayOfShort, int paramInt);
     
-    public abstract void bix();
+    public abstract void brV();
     
-    public abstract void biy();
+    public abstract void brW();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.modelvoiceaddr.a.c
  * JD-Core Version:    0.7.0.1
  */

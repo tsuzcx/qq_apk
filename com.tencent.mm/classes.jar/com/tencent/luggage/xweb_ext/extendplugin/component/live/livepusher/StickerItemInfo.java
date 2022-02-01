@@ -4,65 +4,65 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo;", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IResInfo;", "id", "", "name", "", "frameCount", "triggerAction", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$TriggerAction;", "resPath", "resPathMd5", "pos", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$Position;", "type", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$StickerBackType;", "(ILjava/lang/String;ILcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$TriggerAction;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$Position;Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$StickerBackType;)V", "getFrameCount", "()I", "getId", "getName", "()Ljava/lang/String;", "getPos", "()Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$Position;", "getResPath", "getResPathMd5", "getTriggerAction", "()Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$TriggerAction;", "getType", "()Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$StickerBackType;", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "copy", "equals", "", "other", "", "getIdentityDesc", "hashCode", "toString", "Position", "StickerBackType", "TriggerAction", "luggage-xweb-ext_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo;", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IResInfo;", "id", "", "name", "", "frameCount", "triggerAction", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$TriggerAction;", "resPath", "resPathMd5", "pos", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$Position;", "type", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$StickerBackType;", "(ILjava/lang/String;ILcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$TriggerAction;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$Position;Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$StickerBackType;)V", "getFrameCount", "()I", "getId", "getName", "()Ljava/lang/String;", "getPos", "()Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$Position;", "getResPath", "getResPathMd5", "getTriggerAction", "()Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$TriggerAction;", "getType", "()Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$StickerBackType;", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "copy", "equals", "", "other", "", "getIdentityDesc", "hashCode", "toString", "Position", "StickerBackType", "TriggerAction", "luggage-xweb-ext_release"})
 public final class StickerItemInfo
   implements h
 {
-  public final StickerItemInfo.TriggerAction cHL;
-  public final String cHM;
-  private final String cHN;
-  public final a cHO;
-  public final StickerItemInfo.StickerBackType cHP;
+  public final StickerItemInfo.TriggerAction cIq;
+  public final String cIr;
+  private final String cIs;
+  public final a cIt;
+  public final StickerItemInfo.StickerBackType cIu;
   public final int frameCount;
   public final int id;
   public final String name;
   
   public StickerItemInfo(int paramInt1, String paramString1, int paramInt2, StickerItemInfo.TriggerAction paramTriggerAction, String paramString2, String paramString3, a parama, StickerItemInfo.StickerBackType paramStickerBackType)
   {
-    AppMethodBeat.i(215982);
+    AppMethodBeat.i(223748);
     this.id = paramInt1;
     this.name = paramString1;
     this.frameCount = paramInt2;
-    this.cHL = paramTriggerAction;
-    this.cHM = paramString2;
-    this.cHN = paramString3;
-    this.cHO = parama;
-    this.cHP = paramStickerBackType;
-    AppMethodBeat.o(215982);
+    this.cIq = paramTriggerAction;
+    this.cIr = paramString2;
+    this.cIs = paramString3;
+    this.cIt = parama;
+    this.cIu = paramStickerBackType;
+    AppMethodBeat.o(223748);
   }
   
-  public final String Qc()
+  public final String TD()
   {
-    AppMethodBeat.i(215981);
-    String str = "StickerItemInfo(resPath='" + this.cHM + "', resPathMd5='" + this.cHN + "')";
-    AppMethodBeat.o(215981);
+    AppMethodBeat.i(223739);
+    String str = "StickerItemInfo(resPath='" + this.cIr + "', resPathMd5='" + this.cIs + "')";
+    AppMethodBeat.o(223739);
     return str;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(215985);
+    AppMethodBeat.i(223796);
     if (this != paramObject)
     {
       if ((paramObject instanceof StickerItemInfo))
       {
         paramObject = (StickerItemInfo)paramObject;
-        if ((this.id != paramObject.id) || (!p.j(this.name, paramObject.name)) || (this.frameCount != paramObject.frameCount) || (!p.j(this.cHL, paramObject.cHL)) || (!p.j(this.cHM, paramObject.cHM)) || (!p.j(this.cHN, paramObject.cHN)) || (!p.j(this.cHO, paramObject.cHO)) || (!p.j(this.cHP, paramObject.cHP))) {}
+        if ((this.id != paramObject.id) || (!p.h(this.name, paramObject.name)) || (this.frameCount != paramObject.frameCount) || (!p.h(this.cIq, paramObject.cIq)) || (!p.h(this.cIr, paramObject.cIr)) || (!p.h(this.cIs, paramObject.cIs)) || (!p.h(this.cIt, paramObject.cIt)) || (!p.h(this.cIu, paramObject.cIu))) {}
       }
     }
     else
     {
-      AppMethodBeat.o(215985);
+      AppMethodBeat.o(223796);
       return true;
     }
-    AppMethodBeat.o(215985);
+    AppMethodBeat.o(223796);
     return false;
   }
   
   public final int hashCode()
   {
     int i1 = 0;
-    AppMethodBeat.i(215984);
+    AppMethodBeat.i(223785);
     int i2 = this.id;
     Object localObject = this.name;
     int i;
@@ -76,23 +76,23 @@ public final class StickerItemInfo
     {
       i = localObject.hashCode();
       i3 = this.frameCount;
-      localObject = this.cHL;
+      localObject = this.cIq;
       if (localObject == null) {
         break label177;
       }
       j = localObject.hashCode();
-      localObject = this.cHM;
+      localObject = this.cIr;
       if (localObject == null) {
         break label182;
       }
       k = localObject.hashCode();
-      localObject = this.cHN;
+      localObject = this.cIs;
       if (localObject == null) {
         break label187;
       }
       m = localObject.hashCode();
       label89:
-      localObject = this.cHO;
+      localObject = this.cIt;
       if (localObject == null) {
         break label193;
       }
@@ -103,11 +103,11 @@ public final class StickerItemInfo
     label193:
     for (int n = localObject.hashCode();; n = 0)
     {
-      localObject = this.cHP;
+      localObject = this.cIu;
       if (localObject != null) {
         i1 = localObject.hashCode();
       }
-      AppMethodBeat.o(215984);
+      AppMethodBeat.o(223785);
       return (n + (m + (k + (j + ((i + i2 * 31) * 31 + i3) * 31) * 31) * 31) * 31) * 31 + i1;
       i = 0;
       break;
@@ -122,75 +122,75 @@ public final class StickerItemInfo
   
   public final String toString()
   {
-    AppMethodBeat.i(215983);
-    String str = "StickerItemInfo(id=" + this.id + ", name=" + this.name + ", frameCount=" + this.frameCount + ", triggerAction=" + this.cHL + ", resPath=" + this.cHM + ", resPathMd5=" + this.cHN + ", pos=" + this.cHO + ", type=" + this.cHP + ")";
-    AppMethodBeat.o(215983);
+    AppMethodBeat.i(223758);
+    String str = "StickerItemInfo(id=" + this.id + ", name=" + this.name + ", frameCount=" + this.frameCount + ", triggerAction=" + this.cIq + ", resPath=" + this.cIr + ", resPathMd5=" + this.cIs + ", pos=" + this.cIt + ", type=" + this.cIu + ")";
+    AppMethodBeat.o(223758);
     return str;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$Position;", "", "x1", "", "y1", "x2", "y2", "(DDDD)V", "getX1", "()D", "getX2", "getY1", "getY2", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "", "toString", "", "luggage-xweb-ext_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo$Position;", "", "x1", "", "y1", "x2", "y2", "(DDDD)V", "getX1", "()D", "getX2", "getY1", "getY2", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "", "toString", "", "luggage-xweb-ext_release"})
   public static final class a
   {
-    public final double cHQ;
-    public final double cHR;
-    public final double cHS;
-    public final double cHT;
+    public final double cIv;
+    public final double cIw;
+    public final double cIx;
+    public final double cIy;
     
     public a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
     {
-      this.cHQ = paramDouble1;
-      this.cHR = paramDouble2;
-      this.cHS = paramDouble3;
-      this.cHT = paramDouble4;
+      this.cIv = paramDouble1;
+      this.cIw = paramDouble2;
+      this.cIx = paramDouble3;
+      this.cIy = paramDouble4;
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(215972);
+      AppMethodBeat.i(222832);
       if (this != paramObject)
       {
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((Double.compare(this.cHQ, paramObject.cHQ) != 0) || (Double.compare(this.cHR, paramObject.cHR) != 0) || (Double.compare(this.cHS, paramObject.cHS) != 0) || (Double.compare(this.cHT, paramObject.cHT) != 0)) {}
+          if ((Double.compare(this.cIv, paramObject.cIv) != 0) || (Double.compare(this.cIw, paramObject.cIw) != 0) || (Double.compare(this.cIx, paramObject.cIx) != 0) || (Double.compare(this.cIy, paramObject.cIy) != 0)) {}
         }
       }
       else
       {
-        AppMethodBeat.o(215972);
+        AppMethodBeat.o(222832);
         return true;
       }
-      AppMethodBeat.o(215972);
+      AppMethodBeat.o(222832);
       return false;
     }
     
     public final int hashCode()
     {
-      AppMethodBeat.i(215971);
-      long l = Double.doubleToLongBits(this.cHQ);
+      AppMethodBeat.i(222829);
+      long l = Double.doubleToLongBits(this.cIv);
       int i = (int)(l ^ l >>> 32);
-      l = Double.doubleToLongBits(this.cHR);
+      l = Double.doubleToLongBits(this.cIw);
       int j = (int)(l ^ l >>> 32);
-      l = Double.doubleToLongBits(this.cHS);
+      l = Double.doubleToLongBits(this.cIx);
       int k = (int)(l ^ l >>> 32);
-      l = Double.doubleToLongBits(this.cHT);
+      l = Double.doubleToLongBits(this.cIy);
       int m = (int)(l ^ l >>> 32);
-      AppMethodBeat.o(215971);
+      AppMethodBeat.o(222829);
       return ((i * 31 + j) * 31 + k) * 31 + m;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(215970);
-      String str = "Position(x1=" + this.cHQ + ", y1=" + this.cHR + ", x2=" + this.cHS + ", y2=" + this.cHT + ")";
-      AppMethodBeat.o(215970);
+      AppMethodBeat.i(222825);
+      String str = "Position(x1=" + this.cIv + ", y1=" + this.cIw + ", x2=" + this.cIx + ", y2=" + this.cIy + ")";
+      AppMethodBeat.o(222825);
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.StickerItemInfo
  * JD-Core Version:    0.7.0.1
  */

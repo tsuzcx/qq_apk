@@ -14,21 +14,19 @@ import java.lang.reflect.Method;
 
 public final class RemoteController
 {
-  private static Method juu;
-  private static Method juv;
-  private AudioManager jus;
-  private ComponentName jut;
+  private static Method mjW;
+  private static Method mjX;
   
   static
   {
     AppMethodBeat.i(148427);
     try
     {
-      if (juu == null) {
-        juu = AudioManager.class.getMethod("registerMediaButtonEventReceiver", new Class[] { ComponentName.class });
+      if (mjW == null) {
+        mjW = AudioManager.class.getMethod("registerMediaButtonEventReceiver", new Class[] { ComponentName.class });
       }
-      if (juv == null) {
-        juv = AudioManager.class.getMethod("unregisterMediaButtonEventReceiver", new Class[] { ComponentName.class });
+      if (mjX == null) {
+        mjX = AudioManager.class.getMethod("unregisterMediaButtonEventReceiver", new Class[] { ComponentName.class });
       }
       AppMethodBeat.o(148427);
       return;
@@ -42,56 +40,58 @@ public final class RemoteController
   protected final void finalize()
   {
     AppMethodBeat.i(148426);
-    for (;;)
+    try
     {
-      try
-      {
-        Method localMethod = juv;
-        if (localMethod == null)
-        {
-          super.finalize();
-          AppMethodBeat.o(148426);
-          return;
-        }
-        juv.invoke(this.jus, new Object[] { this.jut });
-        RemoteControlReceiver.bhR();
-      }
-      catch (InvocationTargetException localInvocationTargetException)
-      {
-        Throwable localThrowable = localInvocationTargetException.getCause();
-        if (!(localThrowable instanceof RuntimeException)) {
-          continue;
-        }
-        Object localObject = (RuntimeException)localThrowable;
-        AppMethodBeat.o(148426);
-        throw ((Throwable)localObject);
-        if (!(localThrowable instanceof Error)) {
-          continue;
-        }
-        localObject = (Error)localThrowable;
-        AppMethodBeat.o(148426);
-        throw ((Throwable)localObject);
-        localObject = new RuntimeException((Throwable)localObject);
-        AppMethodBeat.o(148426);
-        throw ((Throwable)localObject);
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        Log.e("MicroMsg.RemoteControlReceiver", "unexpected ".concat(String.valueOf(localIllegalAccessException)));
+      Method localMethod = mjX;
+      if (localMethod != null) {
+        break label23;
       }
     }
+    catch (InvocationTargetException localInvocationTargetException)
+    {
+      Throwable localThrowable = localInvocationTargetException.getCause();
+      if (!(localThrowable instanceof RuntimeException)) {
+        break label55;
+      }
+      Object localObject = (RuntimeException)localThrowable;
+      AppMethodBeat.o(148426);
+      throw ((Throwable)localObject);
+      if (!(localThrowable instanceof Error)) {
+        break label74;
+      }
+      localObject = (Error)localThrowable;
+      AppMethodBeat.o(148426);
+      throw ((Throwable)localObject);
+      localObject = new RuntimeException((Throwable)localObject);
+      AppMethodBeat.o(148426);
+      throw ((Throwable)localObject);
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.RemoteControlReceiver", "unexpected ".concat(String.valueOf(localIllegalAccessException)));
+        RemoteControlReceiver.brp();
+      }
+    }
+    super.finalize();
+    AppMethodBeat.o(148426);
+    return;
+    label23:
+    AppMethodBeat.o(148426);
+    throw null;
   }
   
   public static class RemoteControlReceiver
     extends BroadcastReceiver
   {
-    private static RemoteController.a juw;
+    private static RemoteController.a mjY;
     private static MTimerHandler timer;
     
-    public static void bhR()
+    public static void brp()
     {
       AppMethodBeat.i(148425);
-      juw = null;
+      mjY = null;
       if (timer != null)
       {
         timer.stopTimer();
@@ -114,7 +114,7 @@ public final class RemoteController
         AppMethodBeat.o(148424);
         return;
       }
-      if ((timer == null) && (juw != null))
+      if ((timer == null) && (mjY != null))
       {
         Log.d("MicroMsg.RemoteControlReceiver", "got remote key event down");
         timer = new MTimerHandler(new MTimerHandler.CallBack()
@@ -123,10 +123,10 @@ public final class RemoteController
           {
             AppMethodBeat.i(148423);
             Log.d("MicroMsg.RemoteControlReceiver", "got remote key event up");
-            if (RemoteController.RemoteControlReceiver.bhS() != null) {
-              RemoteController.RemoteControlReceiver.bhS();
+            if (RemoteController.RemoteControlReceiver.brq() != null) {
+              RemoteController.RemoteControlReceiver.brq();
             }
-            RemoteController.RemoteControlReceiver.bhT();
+            RemoteController.RemoteControlReceiver.brr();
             AppMethodBeat.o(148423);
             return false;
           }
@@ -143,7 +143,7 @@ public final class RemoteController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelvoice.RemoteController
  * JD-Core Version:    0.7.0.1
  */

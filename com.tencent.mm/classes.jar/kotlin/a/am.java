@@ -8,21 +8,21 @@ import java.util.Set;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"buildSet", "", "E", "capacity", "", "builderAction", "Lkotlin/Function1;", "", "", "Lkotlin/ExtensionFunctionType;", "emptySet", "T", "hashSetOf", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "elements", "", "([Ljava/lang/Object;)Ljava/util/HashSet;", "linkedSetOf", "Ljava/util/LinkedHashSet;", "Lkotlin/collections/LinkedHashSet;", "([Ljava/lang/Object;)Ljava/util/LinkedHashSet;", "mutableSetOf", "([Ljava/lang/Object;)Ljava/util/Set;", "setOf", "optimizeReadOnlySet", "orEmpty", "kotlin-stdlib"}, hxG=1)
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"buildSet", "", "E", "capacity", "", "builderAction", "Lkotlin/Function1;", "", "", "Lkotlin/ExtensionFunctionType;", "emptySet", "T", "hashSetOf", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "elements", "", "([Ljava/lang/Object;)Ljava/util/HashSet;", "linkedSetOf", "Ljava/util/LinkedHashSet;", "Lkotlin/collections/LinkedHashSet;", "([Ljava/lang/Object;)Ljava/util/LinkedHashSet;", "mutableSetOf", "([Ljava/lang/Object;)Ljava/util/Set;", "setOf", "optimizeReadOnlySet", "orEmpty", "kotlin-stdlib"}, iBN=1)
 public class am
   extends al
 {
-  public static final <T> Set<T> C(Set<? extends T> paramSet)
+  public static final <T> Set<T> B(Set<? extends T> paramSet)
   {
     AppMethodBeat.i(129118);
-    p.h(paramSet, "$this$optimizeReadOnlySet");
+    p.k(paramSet, "$this$optimizeReadOnlySet");
     switch (paramSet.size())
     {
     default: 
       AppMethodBeat.o(129118);
       return paramSet;
     case 0: 
-      paramSet = (Set)x.SXt;
+      paramSet = (Set)x.aaAf;
       AppMethodBeat.o(129118);
       return paramSet;
     }
@@ -31,26 +31,26 @@ public class am
     return paramSet;
   }
   
-  public static final <T> HashSet<T> ae(T... paramVarArgs)
+  public static final <T> HashSet<T> ai(T... paramVarArgs)
   {
-    AppMethodBeat.i(206263);
-    p.h(paramVarArgs, "elements");
-    paramVarArgs = (HashSet)e.b(paramVarArgs, (Collection)new HashSet(ae.atJ(paramVarArgs.length)));
-    AppMethodBeat.o(206263);
+    AppMethodBeat.i(218807);
+    p.k(paramVarArgs, "elements");
+    paramVarArgs = (HashSet)e.b(paramVarArgs, (Collection)new HashSet(ae.aDD(paramVarArgs.length)));
+    AppMethodBeat.o(218807);
     return paramVarArgs;
   }
   
   public static final <T> Set<T> setOf(T... paramVarArgs)
   {
     AppMethodBeat.i(129117);
-    p.h(paramVarArgs, "elements");
+    p.k(paramVarArgs, "elements");
     if (paramVarArgs.length > 0)
     {
-      paramVarArgs = e.Y(paramVarArgs);
+      paramVarArgs = e.ac(paramVarArgs);
       AppMethodBeat.o(129117);
       return paramVarArgs;
     }
-    paramVarArgs = (Set)x.SXt;
+    paramVarArgs = (Set)x.aaAf;
     AppMethodBeat.o(129117);
     return paramVarArgs;
   }

@@ -8,7 +8,7 @@ import com.tencent.mm.storage.emotion.EmojiInfo;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/loader/task/ProcessTask;", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "getTaskKey", "", "onResult", "", "success", "", "run", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/loader/task/ProcessTask;", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "getTaskKey", "", "onResult", "", "success", "", "run", "plugin-emojisdk_release"})
 public final class e
   extends c
 {
@@ -19,20 +19,20 @@ public final class e
     AppMethodBeat.o(105484);
   }
   
-  public final String auJ()
+  public final String aBF()
   {
     AppMethodBeat.i(105481);
-    String str = this.gWm.getMd5();
-    p.g(str, "emojiInfo.md5");
+    String str = this.jHh.getMd5();
+    p.j(str, "emojiInfo.md5");
     AppMethodBeat.o(105481);
     return str;
   }
   
-  public final void dQ(boolean paramBoolean)
+  public final void ep(boolean paramBoolean)
   {
     AppMethodBeat.i(105483);
-    super.dQ(paramBoolean);
-    Object localObject = EmojiLoaderProxy.gVR;
+    super.ep(paramBoolean);
+    Object localObject = EmojiLoaderProxy.jGN;
     EmojiLoaderProxy.access$setRequestCount$cp(EmojiLoaderProxy.access$getRequestCount$cp() - 1);
     if (EmojiLoaderProxy.access$getRequestCount$cp() <= 0)
     {
@@ -52,23 +52,23 @@ public final class e
   {
     AppMethodBeat.i(105482);
     super.run();
-    Object localObject = EmojiLoaderProxy.gVR;
+    Object localObject = EmojiLoaderProxy.jGN;
     EmojiLoaderProxy.access$setRequestCount$cp(EmojiLoaderProxy.access$getRequestCount$cp() + 1);
     if (EmojiLoaderProxy.access$getNeedCreate$cp())
     {
       EmojiLoaderProxy.access$setNeedCreate$cp(false);
       localObject = new EmojiLoaderProxy(new d(MMApplicationContext.getContext()));
-      p.h(localObject, "<set-?>");
+      p.k(localObject, "<set-?>");
       EmojiLoaderProxy.access$setInstance$cp((EmojiLoaderProxy)localObject);
     }
-    localObject = EmojiLoaderProxy.gVR;
-    EmojiLoaderProxy.access$getInstance$cp().load(this.gWm);
+    localObject = EmojiLoaderProxy.jGN;
+    EmojiLoaderProxy.access$getInstance$cp().load(this.jHh);
     AppMethodBeat.o(105482);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.e.e
  * JD-Core Version:    0.7.0.1
  */

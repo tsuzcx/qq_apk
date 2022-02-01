@@ -23,9 +23,9 @@ public class a
   
   static
   {
-    AppMethodBeat.i(221881);
+    AppMethodBeat.i(246413);
     a = new a();
-    AppMethodBeat.o(221881);
+    AppMethodBeat.o(246413);
   }
   
   private a()
@@ -66,10 +66,10 @@ public class a
   
   public void a(Context paramContext)
   {
-    AppMethodBeat.i(221878);
+    AppMethodBeat.i(246409);
     if (this.c != null)
     {
-      AppMethodBeat.o(221878);
+      AppMethodBeat.o(246409);
       return;
     }
     this.d = paramContext.getApplicationContext();
@@ -79,42 +79,42 @@ public class a
       
       public void run()
       {
-        AppMethodBeat.i(221898);
+        AppMethodBeat.i(246693);
         if (a.a(a.this) != null)
         {
-          AppMethodBeat.o(221898);
+          AppMethodBeat.o(246693);
           return;
         }
         a.a(a.this, new PhoneStateListener()
         {
           public void onCallStateChanged(int paramAnonymous2Int, String paramAnonymous2String)
           {
-            AppMethodBeat.i(221869);
+            AppMethodBeat.i(246669);
             super.onCallStateChanged(paramAnonymous2Int, paramAnonymous2String);
             TXCLog.i("AudioCenter:TXCTelephonyMgr", "onCallStateChanged:".concat(String.valueOf(paramAnonymous2Int)));
             a.a(a.this, paramAnonymous2Int);
-            AppMethodBeat.o(221869);
+            AppMethodBeat.o(246669);
           }
         });
         try
         {
           TelephonyManager localTelephonyManager = (TelephonyManager)a.b(a.this).getSystemService("phone");
           Object localObject = a.a(a.this);
-          localObject = c.a(32, new com.tencent.mm.hellhoundlib.b.a()).bl(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(localTelephonyManager, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/liteav/audio/impl/a$1", "run", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
-          localTelephonyManager.listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(1)).intValue());
-          com.tencent.mm.hellhoundlib.a.a.a(localTelephonyManager, "com/tencent/liteav/audio/impl/a$1", "run", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
-          AppMethodBeat.o(221898);
+          localObject = c.a(32, new com.tencent.mm.hellhoundlib.b.a()).bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(localTelephonyManager, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/liteav/audio/impl/a$1", "run", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+          localTelephonyManager.listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(1)).intValue());
+          com.tencent.mm.hellhoundlib.a.a.c(localTelephonyManager, "com/tencent/liteav/audio/impl/a$1", "run", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+          AppMethodBeat.o(246693);
           return;
         }
         catch (Exception localException)
         {
           TXCLog.e("AudioCenter:TXCTelephonyMgr", "TelephonyManager listen error ", localException);
-          AppMethodBeat.o(221898);
+          AppMethodBeat.o(246693);
         }
       }
     });
-    AppMethodBeat.o(221878);
+    AppMethodBeat.o(246409);
   }
   
   /* Error */
@@ -164,7 +164,7 @@ public class a
   
   protected void finalize()
   {
-    AppMethodBeat.i(221879);
+    AppMethodBeat.i(246410);
     super.finalize();
     if ((this.c != null) && (this.d != null)) {
       new Handler(Looper.getMainLooper()).post(new Runnable()
@@ -173,18 +173,18 @@ public class a
         
         public void run()
         {
-          AppMethodBeat.i(221932);
+          AppMethodBeat.i(246536);
           if ((a.a(a.this) != null) && (a.b(a.this) != null)) {}
           try
           {
             TelephonyManager localTelephonyManager = (TelephonyManager)a.b(a.this).getApplicationContext().getSystemService("phone");
             Object localObject = a.a(a.this);
-            localObject = c.a(0, new com.tencent.mm.hellhoundlib.b.a()).bl(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(localTelephonyManager, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/liteav/audio/impl/a$2", "run", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
-            localTelephonyManager.listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(1)).intValue());
-            com.tencent.mm.hellhoundlib.a.a.a(localTelephonyManager, "com/tencent/liteav/audio/impl/a$2", "run", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+            localObject = c.a(0, new com.tencent.mm.hellhoundlib.b.a()).bm(localObject);
+            com.tencent.mm.hellhoundlib.a.a.b(localTelephonyManager, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/liteav/audio/impl/a$2", "run", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+            localTelephonyManager.listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(1)).intValue());
+            com.tencent.mm.hellhoundlib.a.a.c(localTelephonyManager, "com/tencent/liteav/audio/impl/a$2", "run", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
             a.a(a.this, null);
-            AppMethodBeat.o(221932);
+            AppMethodBeat.o(246536);
             return;
           }
           catch (Exception localException)
@@ -197,12 +197,12 @@ public class a
         }
       });
     }
-    AppMethodBeat.o(221879);
+    AppMethodBeat.o(246410);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.impl.a
  * JD-Core Version:    0.7.0.1
  */

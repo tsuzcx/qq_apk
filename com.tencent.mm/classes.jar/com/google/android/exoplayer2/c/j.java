@@ -2,15 +2,15 @@ package com.google.android.exoplayer2.c;
 
 public final class j
 {
-  private static final String[] bhY = { "audio/mpeg-L1", "audio/mpeg-L2", "audio/mpeg" };
-  private static final int[] bhZ = { 44100, 48000, 32000 };
-  private static final int[] bia = { 32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448 };
-  private static final int[] bib = { 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256 };
-  private static final int[] bic = { 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384 };
-  private static final int[] bid = { 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 };
-  private static final int[] bie = { 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 };
-  public int beI;
-  public int bif;
+  private static final String[] aRC = { "audio/mpeg-L1", "audio/mpeg-L2", "audio/mpeg" };
+  private static final int[] aRD = { 44100, 48000, 32000 };
+  private static final int[] aRE = { 32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448 };
+  private static final int[] aRF = { 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256 };
+  private static final int[] aRG = { 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384 };
+  private static final int[] aRH = { 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 };
+  private static final int[] aRI = { 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 };
+  public int aOj;
+  public int aRJ;
   public int bitrate;
   public int channels;
   public String mimeType;
@@ -38,7 +38,7 @@ public final class j
     if (j == 3) {
       return false;
     }
-    j = bhZ[j];
+    j = aRD[j];
     if (i1 == 2) {
       j /= 2;
     }
@@ -53,24 +53,24 @@ public final class j
       if (i2 == 3)
       {
         if (i1 == 3) {}
-        for (i = bia[(i - 1)];; i = bib[(i - 1)])
+        for (i = aRE[(i - 1)];; i = aRF[(i - 1)])
         {
           m = (i * 12000 / j + n) * 4;
           n = 384;
           k = i;
           i = n;
-          String str = bhY[(3 - i2)];
+          String str = aRC[(3 - i2)];
           if ((paramInt >> 6 & 0x3) != 3) {
             break label335;
           }
           paramInt = 1;
           paramj.version = i1;
           paramj.mimeType = str;
-          paramj.beI = m;
+          paramj.aOj = m;
           paramj.sampleRate = j;
           paramj.channels = paramInt;
           paramj.bitrate = (k * 1000);
-          paramj.bif = i;
+          paramj.aRJ = i;
           return true;
           if (i1 != 0) {
             break label343;
@@ -82,7 +82,7 @@ public final class j
       if (i1 == 3) {
         if (i2 == 2)
         {
-          i = bic[(i - 1)];
+          i = aRG[(i - 1)];
           label255:
           m = 1152;
           k = i;
@@ -94,9 +94,9 @@ public final class j
         m = 144000;
         m = m * k / j + n;
         break;
-        i = bid[(i - 1)];
+        i = aRH[(i - 1)];
         break label255;
-        k = bie[(i - 1)];
+        k = aRI[(i - 1)];
         if (i2 == 1) {
           i = 576;
         }
@@ -116,7 +116,7 @@ public final class j
     }
   }
   
-  public static int dW(int paramInt)
+  public static int ek(int paramInt)
   {
     if ((paramInt & 0xFFE00000) != -2097152) {}
     int j;
@@ -139,7 +139,7 @@ public final class j
       } while ((n == 0) || (n == 15));
       i = paramInt >>> 10 & 0x3;
     } while (i == 3);
-    int i = bhZ[i];
+    int i = aRD[i];
     if (j == 2) {
       i /= 2;
     }
@@ -150,7 +150,7 @@ public final class j
       if (k == 3)
       {
         if (j == 3) {}
-        for (paramInt = bia[(n - 1)];; paramInt = bib[(n - 1)])
+        for (paramInt = aRE[(n - 1)];; paramInt = aRF[(n - 1)])
         {
           return (paramInt * 12000 / i + m) * 4;
           if (j != 0) {
@@ -162,15 +162,15 @@ public final class j
       }
       if (j == 3) {
         if (k == 2) {
-          paramInt = bic[(n - 1)];
+          paramInt = aRG[(n - 1)];
         }
       }
       while (j == 3)
       {
         return 144000 * paramInt / i + m;
-        paramInt = bid[(n - 1)];
+        paramInt = aRH[(n - 1)];
         continue;
-        paramInt = bie[(n - 1)];
+        paramInt = aRI[(n - 1)];
       }
       if (k == 1) {}
       for (j = 72000;; j = 144000) {
@@ -181,7 +181,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.c.j
  * JD-Core Version:    0.7.0.1
  */

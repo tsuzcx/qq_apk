@@ -10,48 +10,48 @@ public class MallFunction
   implements Parcelable
 {
   public static final Parcelable.Creator<MallFunction> CREATOR;
-  public String Icd;
-  public ArrayList<String> Ice;
-  public MallNews Icf;
-  public String Icg;
-  public int Ich;
-  public String edq;
-  public String egX;
+  public String EPJ;
+  public String EPK;
+  public String OUp;
+  public ArrayList<String> OUq;
+  public MallNews OUr;
+  public String OUs;
+  public int OUt;
+  public String fXz;
+  public String gbn;
   public String h5Url;
-  public String kHR;
+  public String nBK;
   public int type;
-  public String zkt;
-  public String zku;
   
   static
   {
     AppMethodBeat.i(70538);
-    CREATOR = new MallFunction.1();
+    CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(70538);
   }
   
   public MallFunction()
   {
-    this.Ich = 0;
+    this.OUt = 0;
   }
   
   public MallFunction(Parcel paramParcel)
   {
     AppMethodBeat.i(70536);
-    this.Ich = 0;
-    this.kHR = paramParcel.readString();
-    this.edq = paramParcel.readString();
-    this.Icd = paramParcel.readString();
-    this.zkt = paramParcel.readString();
-    this.zku = paramParcel.readString();
-    this.egX = paramParcel.readString();
+    this.OUt = 0;
+    this.nBK = paramParcel.readString();
+    this.fXz = paramParcel.readString();
+    this.OUp = paramParcel.readString();
+    this.EPJ = paramParcel.readString();
+    this.EPK = paramParcel.readString();
+    this.gbn = paramParcel.readString();
     this.h5Url = paramParcel.readString();
-    this.Ice = new ArrayList();
-    paramParcel.readStringList(this.Ice);
-    this.Icf = ((MallNews)paramParcel.readParcelable(MallNews.class.getClassLoader()));
+    this.OUq = new ArrayList();
+    paramParcel.readStringList(this.OUq);
+    this.OUr = ((MallNews)paramParcel.readParcelable(MallNews.class.getClassLoader()));
     this.type = paramParcel.readInt();
-    this.Icg = paramParcel.readString();
-    this.Ich = paramParcel.readInt();
+    this.OUs = paramParcel.readString();
+    this.OUt = paramParcel.readInt();
     AppMethodBeat.o(70536);
   }
   
@@ -63,18 +63,18 @@ public class MallFunction
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70537);
-    paramParcel.writeString(this.kHR);
-    paramParcel.writeString(this.edq);
-    paramParcel.writeString(this.Icd);
-    paramParcel.writeString(this.zkt);
-    paramParcel.writeString(this.zku);
-    paramParcel.writeString(this.egX);
+    paramParcel.writeString(this.nBK);
+    paramParcel.writeString(this.fXz);
+    paramParcel.writeString(this.OUp);
+    paramParcel.writeString(this.EPJ);
+    paramParcel.writeString(this.EPK);
+    paramParcel.writeString(this.gbn);
     paramParcel.writeString(this.h5Url);
-    paramParcel.writeStringList(this.Ice);
-    paramParcel.writeParcelable(this.Icf, paramInt);
+    paramParcel.writeStringList(this.OUq);
+    paramParcel.writeParcelable(this.OUr, paramInt);
     paramParcel.writeInt(this.type);
-    paramParcel.writeString(this.Icg);
-    paramParcel.writeInt(this.Ich);
+    paramParcel.writeString(this.OUs);
+    paramParcel.writeInt(this.OUt);
     AppMethodBeat.o(70537);
   }
 }

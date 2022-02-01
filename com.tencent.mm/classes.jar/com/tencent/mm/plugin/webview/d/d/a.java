@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.webview.d.d;
 
 public abstract interface a
 {
-  public abstract boolean aXJ(String paramString);
+  public abstract boolean bjE(String paramString);
   
-  public abstract boolean aXK(String paramString);
+  public abstract boolean bjF(String paramString);
 }
 
 

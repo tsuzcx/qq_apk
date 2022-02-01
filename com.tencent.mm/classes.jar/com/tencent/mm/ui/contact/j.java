@@ -4,18 +4,22 @@ import android.content.Context;
 import android.database.Cursor;
 import android.view.View;
 import android.widget.LinearLayout;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.ag;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.f.a;
-import com.tencent.mm.al.f.a.b;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.R.d;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.ao.af;
+import com.tencent.mm.ao.f;
+import com.tencent.mm.ao.f.a;
+import com.tencent.mm.ao.f.a.b;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.at;
+import com.tencent.mm.ui.aw;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,20 +29,20 @@ public final class j
   extends LinearLayout
   implements f.a
 {
-  private List<String> PVw;
-  private Map<String, View> PVx;
-  private List<String> PVy;
-  private a PVz;
+  private List<String> Xsl;
+  private Map<String, View> Xsm;
+  private List<String> Xsn;
+  private a Xso;
   private Context context;
-  private LinearLayout tmh;
+  private LinearLayout wSF;
   
   public j(Context paramContext, a parama)
   {
     super(paramContext);
     AppMethodBeat.i(37821);
-    this.tmh = null;
+    this.wSF = null;
     this.context = paramContext;
-    this.PVz = parama;
+    this.Xso = parama;
     reset();
     AppMethodBeat.o(37821);
   }
@@ -46,12 +50,12 @@ public final class j
   public final void a(f.a.b paramb)
   {
     AppMethodBeat.i(37824);
-    if (paramb.iOi == null)
+    if (paramb.lEz == null)
     {
       AppMethodBeat.o(37824);
       return;
     }
-    if (!paramb.iOi.UF())
+    if (!paramb.lEz.YX())
     {
       Log.i("MicroMsg.EnterpriseBizView", "onEvent, not enterprise father");
       AppMethodBeat.o(37824);
@@ -61,9 +65,9 @@ public final class j
     {
       public final void run()
       {
-        AppMethodBeat.i(233999);
+        AppMethodBeat.i(290603);
         j.this.reset();
-        AppMethodBeat.o(233999);
+        AppMethodBeat.o(290603);
       }
     });
     AppMethodBeat.o(37824);
@@ -72,34 +76,34 @@ public final class j
   public final int getEnterpriseFriendCount()
   {
     AppMethodBeat.i(37822);
-    if ((this.PVw == null) || (this.PVy == null))
+    if ((this.Xsl == null) || (this.Xsn == null))
     {
       AppMethodBeat.o(37822);
       return 0;
     }
-    int i = this.PVw.size();
-    int j = this.PVy.size();
+    int i = this.Xsl.size();
+    int j = this.Xsn.size();
     AppMethodBeat.o(37822);
     return i + j;
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(234000);
-    h.RTc.aX(new Runnable()
+    AppMethodBeat.i(197174);
+    h.ZvG.be(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(37820);
         j localj = j.this;
-        Object localObject1 = ag.bah();
+        Object localObject1 = af.bjv();
         ArrayList localArrayList = new ArrayList();
         Object localObject2 = new StringBuilder();
         f.a((StringBuilder)localObject2);
         f.c((StringBuilder)localObject2);
         ((StringBuilder)localObject2).append(" and bizinfo.type = 2 ");
         ((StringBuilder)localObject2).append(" order by ");
-        ((StringBuilder)localObject2).append(f.aZD());
+        ((StringBuilder)localObject2).append(f.biT());
         localObject2 = ((StringBuilder)localObject2).toString();
         Log.i("MicroMsg.BizInfoStorage", "getEnterpriseFatherBizLst sql %s", new Object[] { localObject2 });
         localObject1 = ((f)localObject1).rawQuery((String)localObject2, new String[0]);
@@ -115,13 +119,13 @@ public final class j
         }
         j.a(localj, localArrayList);
         localj = j.this;
-        bg.aVF();
-        j.b(localj, com.tencent.mm.model.c.aSN().gBY());
+        bh.beI();
+        j.b(localj, com.tencent.mm.model.c.bbL().hyk());
         j.this.post(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(233998);
+            AppMethodBeat.i(287449);
             if ((j.a(j.this) != null) && (j.a(j.this).contains("wework")))
             {
               j.a(j.this).clear();
@@ -132,8 +136,8 @@ public final class j
               Log.i("MicroMsg.EnterpriseBizView", "biz list size = %s", new Object[] { Integer.valueOf(j.b(j.this).size()) });
               if (j.c(j.this) == null)
               {
-                View.inflate(j.this.getContext(), 2131493992, j.this);
-                j.a(j.this, (LinearLayout)j.this.findViewById(2131299174));
+                View.inflate(j.this.getContext(), R.i.efW, j.this);
+                j.a(j.this, (LinearLayout)j.this.findViewById(R.h.container));
               }
               j.c(j.this).removeAllViews();
               int i;
@@ -145,22 +149,22 @@ public final class j
                 if (i < j.a(j.this).size())
                 {
                   localObject = (String)j.a(j.this).get(i);
-                  localObject = new z(j.this.getContext(), (String)localObject);
+                  localObject = new ab(j.this.getContext(), (String)localObject);
                   j.c(j.this).addView((View)localObject);
                   if ((i == j.a(j.this).size() - 1) && (j.b(j.this).size() == 0))
                   {
-                    localObject = ((z)localObject).findViewById(2131300138);
+                    localObject = ((ab)localObject).findViewById(R.h.dFD);
                     j = ((View)localObject).getPaddingLeft();
-                    ((View)localObject).setBackground(at.aN(j.d(j.this), 2130969285));
-                    ((View)localObject).findViewById(2131300140).setBackground(null);
+                    ((View)localObject).setBackground(aw.bf(j.d(j.this), R.d.list_item_divider));
+                    ((View)localObject).findViewById(R.h.dFF).setBackground(null);
                     ((View)localObject).setPadding(j, 0, 0, 0);
                   }
                   for (;;)
                   {
                     i += 1;
                     break;
-                    ((z)localObject).findViewById(2131300138).setBackground(null);
-                    ((z)localObject).findViewById(2131300138).findViewById(2131300140).setBackground(at.aN(j.d(j.this), 2130969285));
+                    ((ab)localObject).findViewById(R.h.dFD).setBackground(null);
+                    ((ab)localObject).findViewById(R.h.dFD).findViewById(R.h.dFF).setBackground(aw.bf(j.d(j.this), R.d.list_item_divider));
                   }
                 }
               }
@@ -176,43 +180,43 @@ public final class j
                   j.e(j.this).put(localObject, localk);
                   if (i == j.b(j.this).size() - 1)
                   {
-                    localObject = localk.findViewById(2131300138);
+                    localObject = localk.findViewById(R.h.dFD);
                     j = ((View)localObject).getPaddingLeft();
-                    ((View)localObject).setBackgroundResource(2131233327);
-                    ((View)localObject).findViewById(2131300139).setBackground(null);
+                    ((View)localObject).setBackgroundResource(R.g.list_item_normal);
+                    ((View)localObject).findViewById(R.h.dFE).setBackground(null);
                     ((View)localObject).setPadding(j, 0, 0, 0);
                   }
                   for (;;)
                   {
                     i += 1;
                     break;
-                    localk.findViewById(2131300138).setBackground(null);
-                    localObject = localk.findViewById(2131300138).findViewById(2131300139);
+                    localk.findViewById(R.h.dFD).setBackground(null);
+                    localObject = localk.findViewById(R.h.dFD).findViewById(R.h.dFE);
                     j = ((View)localObject).getPaddingRight();
-                    ((View)localObject).setBackgroundResource(2131233327);
+                    ((View)localObject).setBackgroundResource(R.g.list_item_normal);
                     ((View)localObject).setPadding(0, 0, j, 0);
                   }
                 }
               }
-              j.f(j.this).anF(j.this.getEnterpriseFriendCount());
+              j.f(j.this).awJ(j.this.getEnterpriseFriendCount());
             }
-            AppMethodBeat.o(233998);
+            AppMethodBeat.o(287449);
           }
         });
         AppMethodBeat.o(37820);
       }
     });
-    AppMethodBeat.o(234000);
+    AppMethodBeat.o(197174);
   }
   
   public static abstract interface a
   {
-    public abstract void anF(int paramInt);
+    public abstract void awJ(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.j
  * JD-Core Version:    0.7.0.1
  */

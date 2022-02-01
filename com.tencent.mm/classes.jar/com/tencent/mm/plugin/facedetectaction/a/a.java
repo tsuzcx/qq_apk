@@ -1,17 +1,18 @@
 package com.tencent.mm.plugin.facedetectaction.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bne;
-import com.tencent.mm.protocal.protobuf.bnf;
+import com.tencent.mm.protocal.protobuf.bus;
+import com.tencent.mm.protocal.protobuf.but;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
@@ -20,26 +21,35 @@ public final class a
 {
   private i callback;
   private d rr;
-  private bne sXf;
-  public bnf sXg;
+  private bus wDd;
+  public but wDe;
   
   public a(int paramInt, String paramString1, String paramString2)
   {
+    this(paramInt, paramString1, paramString2, 1, new byte[1]);
     AppMethodBeat.i(104195);
+    AppMethodBeat.o(104195);
+  }
+  
+  public a(int paramInt1, String paramString1, String paramString2, int paramInt2, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(194219);
     d.a locala = new d.a();
-    locala.iLN = new bne();
-    locala.iLO = new bnf();
+    locala.lBU = new bus();
+    locala.lBV = new but();
     locala.funcId = 2696;
     locala.uri = "/cgi-bin/mmpay-bin/getfacecheckaction";
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    this.sXf = ((bne)this.rr.iLK.iLR);
-    this.sXf.scene = paramInt;
-    this.sXf.qGp = paramString1;
-    this.sXf.LVM = paramString2;
-    Log.i("MicroMsg.NetSceneGetFaceCheckAction", "create GetFaceCheckAction, scene: %s, packageName: %s, packageSign: %s", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2 });
-    AppMethodBeat.o(104195);
+    this.rr = locala.bgN();
+    this.wDd = ((bus)d.b.b(this.rr.lBR));
+    this.wDd.scene = paramInt1;
+    this.wDd.ufq = paramString1;
+    this.wDd.TeR = paramString2;
+    this.wDd.live_type = paramInt2;
+    this.wDd.TeS = b.cU(paramArrayOfByte);
+    Log.i("MicroMsg.NetSceneGetFaceCheckAction", "create GetFaceCheckAction, scene: %s, packageName: %s, packageSign: %s", new Object[] { Integer.valueOf(paramInt1), paramString1, paramString2 });
+    AppMethodBeat.o(194219);
   }
   
   public final int doScene(g paramg, i parami)
@@ -60,7 +70,7 @@ public final class a
   {
     AppMethodBeat.i(104197);
     Log.i("MicroMsg.NetSceneGetFaceCheckAction", "onGYNetEnd, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.sXg = ((bnf)((d)params).iLL.iLR);
+    this.wDe = ((but)d.c.b(((d)params).lBS));
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(104197);
   }

@@ -9,7 +9,7 @@ import java.util.Arrays;
 public final class c
   implements Serializable
 {
-  public byte[] ADT;
+  public byte[] GwX;
   
   public c(byte[] paramArrayOfByte)
   {
@@ -21,12 +21,12 @@ public final class c
       throw paramArrayOfByte;
     }
     paramArrayOfByte = (byte[])paramArrayOfByte.clone();
-    bV(paramArrayOfByte);
-    this.ADT = paramArrayOfByte;
+    cl(paramArrayOfByte);
+    this.GwX = paramArrayOfByte;
     AppMethodBeat.o(26648);
   }
   
-  private static void bV(byte[] paramArrayOfByte)
+  private static void cl(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(26649);
     if (paramArrayOfByte.length < 2)
@@ -41,24 +41,24 @@ public final class c
   private void readObject(ObjectInputStream paramObjectInputStream)
   {
     AppMethodBeat.i(26655);
-    this.ADT = ((byte[])(byte[])paramObjectInputStream.readUnshared());
-    bV(this.ADT);
+    this.GwX = ((byte[])(byte[])paramObjectInputStream.readUnshared());
+    cl(this.GwX);
     AppMethodBeat.o(26655);
   }
   
   public final void a(c paramc)
   {
     AppMethodBeat.i(26652);
-    int j = this.ADT.length;
-    this.ADT = Arrays.copyOf(this.ADT, this.ADT.length + paramc.ADT.length - 2);
+    int j = this.GwX.length;
+    this.GwX = Arrays.copyOf(this.GwX, this.GwX.length + paramc.GwX.length - 2);
     j -= 2;
-    paramc = (byte[])paramc.ADT.clone();
+    paramc = (byte[])paramc.GwX.clone();
     int m = paramc.length;
     int k = 0;
     while (k < m)
     {
       int i = paramc[k];
-      this.ADT[j] = i;
+      this.GwX[j] = i;
       k += 1;
       j += 1;
     }
@@ -79,25 +79,25 @@ public final class c
       return false;
     }
     paramObject = (c)paramObject;
-    boolean bool = Arrays.equals(this.ADT, paramObject.ADT);
+    boolean bool = Arrays.equals(this.GwX, paramObject.GwX);
     AppMethodBeat.o(26653);
     return bool;
   }
   
-  public final short ext()
+  public final short fiW()
   {
-    return (short)(this.ADT[(this.ADT.length - 2)] & 0xFF);
+    return (short)(this.GwX[(this.GwX.length - 2)] & 0xFF);
   }
   
-  public final short exu()
+  public final short fiX()
   {
-    return (short)(this.ADT[(this.ADT.length - 1)] & 0xFF);
+    return (short)(this.GwX[(this.GwX.length - 1)] & 0xFF);
   }
   
-  public final boolean exv()
+  public final boolean fiY()
   {
     AppMethodBeat.i(26650);
-    if ((short)(ext() << 8 | exu()) == -28672)
+    if ((short)(fiW() << 8 | fiX()) == -28672)
     {
       AppMethodBeat.o(26650);
       return true;
@@ -109,7 +109,7 @@ public final class c
   public final int hashCode()
   {
     AppMethodBeat.i(26654);
-    int i = Arrays.hashCode(this.ADT);
+    int i = Arrays.hashCode(this.GwX);
     AppMethodBeat.o(26654);
     return i;
   }
@@ -117,7 +117,7 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(26651);
-    String str = a.byteArrayToHexString(this.ADT);
+    String str = a.byteArrayToHexString(this.GwX);
     AppMethodBeat.o(26651);
     return str;
   }

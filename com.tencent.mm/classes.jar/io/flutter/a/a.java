@@ -6,17 +6,17 @@ import java.io.File;
 
 public final class a
 {
-  public static String lO(Context paramContext)
+  public static String mL(Context paramContext)
   {
-    AppMethodBeat.i(214854);
+    AppMethodBeat.i(254291);
     paramContext = paramContext.getDir("flutter", 0).getPath();
-    AppMethodBeat.o(214854);
+    AppMethodBeat.o(254291);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.a.a
  * JD-Core Version:    0.7.0.1
  */

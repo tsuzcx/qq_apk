@@ -5,31 +5,31 @@ import com.tencent.xweb.internal.CookieInternal.ICookieManagerInternal;
 
 public final class c
 {
-  private static c SyM;
-  public CookieInternal.ICookieManagerInternal SyN;
+  private static c ZZD;
+  public CookieInternal.ICookieManagerInternal ZZE;
   
-  public static c hsp()
+  public static c ivX()
   {
     try
     {
       AppMethodBeat.i(156717);
-      if (SyM == null) {
-        SyM = new c();
+      if (ZZD == null) {
+        ZZD = new c();
       }
-      c localc = SyM;
+      c localc = ZZD;
       AppMethodBeat.o(156717);
       return localc;
     }
     finally {}
   }
   
-  public final void e(WebView paramWebView)
+  public final void f(WebView paramWebView)
   {
     try
     {
       AppMethodBeat.i(156722);
-      if (this.SyN != null) {
-        this.SyN.e(paramWebView);
+      if (this.ZZE != null) {
+        this.ZZE.f(paramWebView);
       }
       AppMethodBeat.o(156722);
       return;
@@ -40,18 +40,18 @@ public final class c
   public final String getCookie(String paramString)
   {
     AppMethodBeat.i(156719);
-    paramString = this.SyN.getCookie(paramString);
+    paramString = this.ZZE.getCookie(paramString);
     AppMethodBeat.o(156719);
     return paramString;
   }
   
-  public final void hsq()
+  public final void ivY()
   {
     try
     {
       AppMethodBeat.i(156721);
-      if (this.SyN != null) {
-        this.SyN.hsq();
+      if (this.ZZE != null) {
+        this.ZZE.ivY();
       }
       AppMethodBeat.o(156721);
       return;
@@ -62,7 +62,7 @@ public final class c
   public final void removeAllCookie()
   {
     AppMethodBeat.i(156718);
-    this.SyN.removeAllCookie();
+    this.ZZE.removeAllCookie();
     AppMethodBeat.o(156718);
   }
   
@@ -71,7 +71,7 @@ public final class c
     try
     {
       AppMethodBeat.i(156720);
-      this.SyN.setCookie(paramString1, paramString2);
+      this.ZZE.setCookie(paramString1, paramString2);
       AppMethodBeat.o(156720);
       return;
     }

@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.exdevice.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.aa;
-import com.tencent.mm.ak.aa.a;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.protocal.protobuf.byi;
-import com.tencent.mm.protocal.protobuf.byj;
+import com.tencent.mm.an.aa;
+import com.tencent.mm.an.aa.a;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.q;
+import com.tencent.mm.protocal.protobuf.cgc;
+import com.tencent.mm.protocal.protobuf.cgd;
 
 public final class a
   implements b
@@ -17,13 +17,13 @@ public final class a
   {
     AppMethodBeat.i(169753);
     d.a locala = new d.a();
-    locala.iLN = new byi();
-    locala.iLO = new byj();
+    locala.lBU = new cgc();
+    locala.lBV = new cgd();
     locala.uri = "/cgi-bin/mmoc-bin/hardware/getwerunuserstate";
     locala.funcId = 1926;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    aa.a(locala.aXF(), new aa.a()
+    aa.a(locala.bgN(), new aa.a()
     {
       public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd, q paramAnonymousq)
       {
@@ -37,15 +37,15 @@ public final class a
         boolean bool1;
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
         {
-          paramAnonymousString = (byj)paramAnonymousd.iLL.iLR;
-          if ((paramAnonymousString != null) && (paramAnonymousString.MdT)) {
+          paramAnonymousString = (cgd)d.c.b(paramAnonymousd.lBS);
+          if ((paramAnonymousString != null) && (paramAnonymousString.Tnu)) {
             bool1 = true;
           }
         }
         for (;;)
         {
           if (parama != null) {
-            parama.w(bool2, bool1);
+            parama.z(bool2, bool1);
           }
           AppMethodBeat.o(169752);
           return 0;

@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import g.a.a.b;
 
 public final class d
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public boolean Cyc;
-  public String Cyk;
-  public boolean Cyl;
-  public boolean Cym;
-  public int hii;
-  public int oUv;
+  public boolean Izb;
+  public String Izj;
+  public boolean Izk;
+  public boolean Izl;
+  public int jUg;
+  public int rWu;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -19,46 +19,46 @@ public final class d
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Cyk == null)
+      if (this.Izj == null)
       {
         paramVarArgs = new b("Not all required fields were included: Value");
         AppMethodBeat.o(143831);
         throw paramVarArgs;
       }
-      paramVarArgs.aM(1, this.hii);
-      if (this.Cyk != null) {
-        paramVarArgs.e(2, this.Cyk);
+      paramVarArgs.aY(1, this.jUg);
+      if (this.Izj != null) {
+        paramVarArgs.f(2, this.Izj);
       }
-      paramVarArgs.cc(3, this.Cyl);
-      paramVarArgs.cc(4, this.Cyc);
-      paramVarArgs.aM(5, this.oUv);
-      paramVarArgs.cc(6, this.Cym);
+      paramVarArgs.co(3, this.Izk);
+      paramVarArgs.co(4, this.Izb);
+      paramVarArgs.aY(5, this.rWu);
+      paramVarArgs.co(6, this.Izl);
       AppMethodBeat.o(143831);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bu(1, this.hii) + 0;
+      int i = g.a.a.b.b.a.bM(1, this.jUg) + 0;
       paramInt = i;
-      if (this.Cyk != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.Cyk);
+      if (this.Izj != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.Izj);
       }
-      i = g.a.a.b.b.a.fS(3);
-      int j = g.a.a.b.b.a.fS(4);
-      int k = g.a.a.b.b.a.bu(5, this.oUv);
-      int m = g.a.a.b.b.a.fS(6);
+      i = g.a.a.b.b.a.gL(3);
+      int j = g.a.a.b.b.a.gL(4);
+      int k = g.a.a.b.b.a.bM(5, this.rWu);
+      int m = g.a.a.b.b.a.gL(6);
       AppMethodBeat.o(143831);
       return paramInt + (i + 1) + (j + 1) + k + (m + 1);
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      if (this.Cyk == null)
+      if (this.Izj == null)
       {
         paramVarArgs = new b("Not all required fields were included: Value");
         AppMethodBeat.o(143831);
@@ -77,27 +77,27 @@ public final class d
         AppMethodBeat.o(143831);
         return -1;
       case 1: 
-        locald.hii = locala.UbS.zi();
+        locald.jUg = locala.abFh.AK();
         AppMethodBeat.o(143831);
         return 0;
       case 2: 
-        locald.Cyk = locala.UbS.readString();
+        locald.Izj = locala.abFh.readString();
         AppMethodBeat.o(143831);
         return 0;
       case 3: 
-        locald.Cyl = locala.UbS.yZ();
+        locald.Izk = locala.abFh.AB();
         AppMethodBeat.o(143831);
         return 0;
       case 4: 
-        locald.Cyc = locala.UbS.yZ();
+        locald.Izb = locala.abFh.AB();
         AppMethodBeat.o(143831);
         return 0;
       case 5: 
-        locald.oUv = locala.UbS.zi();
+        locald.rWu = locala.abFh.AK();
         AppMethodBeat.o(143831);
         return 0;
       }
-      locald.Cym = locala.UbS.yZ();
+      locald.Izl = locala.abFh.AB();
       AppMethodBeat.o(143831);
       return 0;
     }
@@ -107,7 +107,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.report.service.d
  * JD-Core Version:    0.7.0.1
  */

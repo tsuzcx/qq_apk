@@ -3,4 +3,6 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ListView android:id="@id/bcd" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <TextView android:layout_gravity="center_horizontal" android:id="@id/c35" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c8" style="@style/zy" />
+    <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/ip_" android:background="@color/ac_" android:visibility="gone" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/c8" android:indeterminateDrawable="@drawable/apb" />
+    <TextView android:layout_gravity="center_horizontal" android:id="@id/ipc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c8" android:text="@string/d0n" style="@style/zy" />
 </com.tencent.mm.view.TouchableLayout>

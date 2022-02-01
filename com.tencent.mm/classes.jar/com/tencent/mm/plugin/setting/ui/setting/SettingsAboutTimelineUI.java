@@ -8,37 +8,41 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.by.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.sns.b.o;
-import com.tencent.mm.protocal.protobuf.ebj;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.setting.b.i;
+import com.tencent.mm.plugin.setting.b.k;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.b.p;
+import com.tencent.mm.protocal.protobuf.elj;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
+import com.tencent.mm.ui.base.preference.f;
 
 public class SettingsAboutTimelineUI
   extends MMPreference
 {
-  private boolean DaS = false;
-  private boolean DaT = false;
-  private String gna = "";
-  private com.tencent.mm.ui.base.preference.f screen;
+  private boolean Jgt = false;
+  private boolean Jgu = false;
+  private String iRj = "";
+  private f screen;
   
   public int getResourceId()
   {
-    return 2132017261;
+    return b.k.settings_about_timeline;
   }
   
   public void initView()
   {
     AppMethodBeat.i(74073);
     this.screen = getPreferenceScreen();
-    setMMTitle(2131765530);
+    setMMTitle(b.i.settings_pirvate_timeline);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -50,7 +54,7 @@ public class SettingsAboutTimelineUI
         return true;
       }
     });
-    this.gna = z.aTY();
+    this.iRj = z.bcZ();
     AppMethodBeat.o(74073);
   }
   
@@ -66,21 +70,21 @@ public class SettingsAboutTimelineUI
   {
     AppMethodBeat.i(74072);
     super.onDestroy();
-    if ((this.DaS) && (o.DCN != null))
+    if ((this.Jgt) && (p.JPd != null))
     {
-      ebj localebj = o.DCN.cg(this.gna, this.DaT);
-      if (localebj == null)
+      elj localelj = p.JPd.ct(this.iRj, this.Jgu);
+      if (localelj == null)
       {
         AppMethodBeat.o(74072);
         return;
       }
-      Log.d("MicroMsg.SettingsAboutTimelineUI", "userinfo " + localebj.toString());
-      ((l)g.af(l.class)).aSM().d(new k.a(51, localebj));
+      Log.d("MicroMsg.SettingsAboutTimelineUI", "userinfo " + localelj.toString());
+      ((n)h.ae(n.class)).bbK().d(new k.a(51, localelj));
     }
     AppMethodBeat.o(74072);
   }
   
-  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(74071);
     paramf = paramPreference.mKey;
@@ -99,18 +103,18 @@ public class SettingsAboutTimelineUI
       c.b(this, "sns", ".ui.SnsTagDetailUI", paramPreference);
     }
     if (paramf.equals("timeline_stranger_show")) {
-      if (this.DaT) {
+      if (this.Jgu) {
         break label156;
       }
     }
     label156:
     for (boolean bool = true;; bool = false)
     {
-      this.DaT = bool;
-      if (o.DCN != null) {
-        o.DCN.cf(this.gna, this.DaT);
+      this.Jgu = bool;
+      if (p.JPd != null) {
+        p.JPd.cs(this.iRj, this.Jgu);
       }
-      this.DaS = true;
+      this.Jgt = true;
       AppMethodBeat.o(74071);
       return false;
     }
@@ -120,9 +124,9 @@ public class SettingsAboutTimelineUI
   {
     AppMethodBeat.i(74070);
     super.onResume();
-    Object localObject = new ebj();
-    if (o.DCN != null) {
-      localObject = o.DCN.aNV(this.gna);
+    Object localObject = new elj();
+    if (p.JPd != null) {
+      localObject = p.JPd.aYN(this.iRj);
     }
     if (localObject == null) {
       Log.e("MicroMsg.SettingsAboutTimelineUI", "userinfo is null");
@@ -132,17 +136,17 @@ public class SettingsAboutTimelineUI
       this.screen.notifyDataSetChanged();
       AppMethodBeat.o(74070);
       return;
-      int i = ((ebj)localObject).Nbc;
-      localObject = (CheckBoxPreference)this.screen.bmg("timeline_stranger_show");
+      int i = ((elj)localObject).Unw;
+      localObject = (CheckBoxPreference)this.screen.byG("timeline_stranger_show");
       if (localObject != null)
       {
         if ((i & 0x1) > 0) {}
         SharedPreferences localSharedPreferences;
         for (boolean bool = true;; bool = false)
         {
-          this.DaT = bool;
+          this.Jgu = bool;
           localSharedPreferences = getSharedPreferences(getPackageName() + "_preferences", 0);
-          if (this.DaT) {
+          if (this.Jgu) {
             break label169;
           }
           ((CheckBoxPreference)localObject).setChecked(true);

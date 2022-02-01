@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.account.security.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fv;
-import com.tencent.mm.protocal.protobuf.ckf;
+import com.tencent.mm.f.c.gc;
+import com.tencent.mm.protocal.protobuf.csz;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class d
-  extends fv
+  extends gc
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   
@@ -49,13 +49,13 @@ public final class d
     this.field_createtime = 0L;
   }
   
-  public d(ckf paramckf)
+  public d(csz paramcsz)
   {
     AppMethodBeat.i(125519);
-    this.field_uid = paramckf.uuid;
-    this.field_devicetype = paramckf.devicetype;
-    this.field_name = paramckf.devicename;
-    this.field_createtime = paramckf.MpC;
+    this.field_uid = paramcsz.uuid;
+    this.field_devicetype = paramcsz.devicetype;
+    this.field_name = paramcsz.devicename;
+    this.field_createtime = paramcsz.TAE;
     AppMethodBeat.o(125519);
   }
   
@@ -66,7 +66,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.a.d
  * JD-Core Version:    0.7.0.1
  */

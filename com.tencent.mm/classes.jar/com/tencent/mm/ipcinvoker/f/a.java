@@ -2,27 +2,28 @@ package com.tencent.mm.ipcinvoker.f;
 
 import android.os.IBinder.DeathRecipient;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.h.c;
 
 public final class a
   implements IBinder.DeathRecipient
 {
-  private final String process;
+  private final String jZi;
   
   public a(String paramString)
   {
-    this.process = paramString;
+    this.jZi = paramString;
   }
   
   public final void binderDied()
   {
     AppMethodBeat.i(158820);
-    com.tencent.mm.ipcinvoker.h.b.i("IPC.DeathRecipientImpl", "binderDied(%s)", new Object[] { this.process });
-    if ((this.process == null) || (this.process.length() == 0))
+    c.i("IPC.DeathRecipientImpl", "binderDied(%s)", new Object[] { this.jZi });
+    if ((this.jZi == null) || (this.jZi.length() == 0))
     {
       AppMethodBeat.o(158820);
       return;
     }
-    b.Ft(this.process);
+    b.Mt(this.jZi);
     AppMethodBeat.o(158820);
   }
 }

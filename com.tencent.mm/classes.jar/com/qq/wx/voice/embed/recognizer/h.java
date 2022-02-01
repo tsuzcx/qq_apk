@@ -21,11 +21,11 @@ final class h
       AppMethodBeat.o(76769);
       return;
       int i = paramMessage.getData().getInt("errorCode");
-      this.cgt.cgu.onGetError(i);
+      this.ciu.civ.onGetError(i);
       AppMethodBeat.o(76769);
       return;
       paramMessage = (a)paramMessage.obj;
-      this.cgt.cgu.a(paramMessage);
+      this.ciu.civ.a(paramMessage);
     }
   }
 }

@@ -1,31 +1,20 @@
 package kotlinx.coroutines.internal;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/internal/Removed;", "", "ref", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "Lkotlinx/coroutines/internal/Node;", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)V", "toString", "", "kotlinx-coroutines-core"})
-final class r
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/internal/OpDescriptor;", "", "()V", "atomicOp", "Lkotlinx/coroutines/internal/AtomicOp;", "getAtomicOp", "()Lkotlinx/coroutines/internal/AtomicOp;", "isEarlierThan", "", "that", "perform", "affected", "toString", "", "kotlinx-coroutines-core"})
+public abstract class r
 {
-  public final k TWe;
+  public abstract Object gw(Object paramObject);
   
-  public r(k paramk)
+  public String toString()
   {
-    AppMethodBeat.i(118077);
-    this.TWe = paramk;
-    AppMethodBeat.o(118077);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(118076);
-    String str = "Removed[" + this.TWe + ']';
-    AppMethodBeat.o(118076);
-    return str;
+    return getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlinx.coroutines.internal.r
  * JD-Core Version:    0.7.0.1
  */

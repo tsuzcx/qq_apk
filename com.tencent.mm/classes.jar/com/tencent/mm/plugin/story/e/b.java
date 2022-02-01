@@ -5,32 +5,32 @@ import java.math.BigInteger;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/data/StoryUtil;", "", "()V", "Companion", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/data/StoryUtil;", "", "()V", "Companion", "plugin-story_release"})
 public final class b
 {
-  private static final String DEI = "storyb";
-  public static final a FlA;
-  private static final String Flx = "Locall_path";
-  private static final float Fly = -1000.0F;
-  private static final String Flz = "story_respone_count";
+  private static final String JRD = "storyb";
+  private static final float LFA = -1000.0F;
+  private static final String LFB = "story_respone_count";
+  public static final a LFC;
+  private static final String LFz = "Locall_path";
   private static final String TAG = "MicroMsg.StoryUtil";
   
   static
   {
     AppMethodBeat.i(118627);
-    FlA = new a((byte)0);
+    LFC = new a((byte)0);
     TAG = "MicroMsg.StoryUtil";
-    Flx = "Locall_path";
-    Fly = -1000.0F;
-    DEI = "storyb";
-    Flz = "story_respone_count";
+    LFz = "Locall_path";
+    LFA = -1000.0F;
+    JRD = "storyb";
+    LFB = "story_respone_count";
     AppMethodBeat.o(118627);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/data/StoryUtil$Companion;", "", "()V", "B_PRE", "", "INVALID_GEO", "", "getINVALID_GEO", "()F", "LOCAL_PATH_PRE", "getLOCAL_PATH_PRE", "()Ljava/lang/String;", "RESPONE_COUNT", "TAG", "bitmapAvailable", "", "bm", "Landroid/graphics/Bitmap;", "dumpMedia", "media", "Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "exportVideo", "", "videoPath", "getFullStrSeq", "stringSeq", "getStoryResponeCount", "", "getVideoInfo", "Lcom/tencent/mm/plugin/story/data/StoryUtil$Companion$VideoInfo;", "path", "getVideoMIME", "longToFullString", "seq", "", "longToString", "VideoInfo", "plugin-story_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/data/StoryUtil$Companion;", "", "()V", "B_PRE", "", "INVALID_GEO", "", "getINVALID_GEO", "()F", "LOCAL_PATH_PRE", "getLOCAL_PATH_PRE", "()Ljava/lang/String;", "RESPONE_COUNT", "TAG", "bitmapAvailable", "", "bm", "Landroid/graphics/Bitmap;", "dumpMedia", "media", "Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "exportVideo", "", "videoPath", "getFullStrSeq", "stringSeq", "getStoryResponeCount", "", "getVideoInfo", "Lcom/tencent/mm/plugin/story/data/StoryUtil$Companion$VideoInfo;", "path", "getVideoMIME", "longToFullString", "seq", "", "longToString", "VideoInfo", "plugin-story_release"})
   public static final class a
   {
-    public static String Jc(long paramLong)
+    public static String Qv(long paramLong)
     {
       AppMethodBeat.i(118624);
       if (paramLong == 0L)
@@ -39,37 +39,37 @@ public final class b
         return "";
       }
       String str = Long.toBinaryString(paramLong);
-      p.g(str, "java.lang.Long.toBinaryString(seq)");
+      p.j(str, "java.lang.Long.toBinaryString(seq)");
       str = new BigInteger(str, 2).toString();
-      p.g(str, "big.toString()");
-      str = aOr(str);
+      p.j(str, "big.toString()");
+      str = aZn(str);
       AppMethodBeat.o(118624);
       return str;
     }
     
-    private static String aOr(String paramString)
+    private static String aZn(String paramString)
     {
       AppMethodBeat.i(118625);
-      p.h(paramString, "stringSeq");
+      p.k(paramString, "stringSeq");
       paramString = new StringBuffer(paramString);
       while (paramString.length() < 25) {
         paramString.insert(0, "0");
       }
       paramString = paramString.toString();
-      p.g(paramString, "sb.toString()");
+      p.j(paramString, "sb.toString()");
       AppMethodBeat.o(118625);
       return paramString;
     }
     
     /* Error */
-    public static String aRO(String paramString)
+    public static String bcS(String paramString)
     {
       // Byte code:
       //   0: ldc 119
       //   2: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
       //   6: ldc 120
-      //   8: invokestatic 97	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+      //   8: invokestatic 97	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
       //   11: aload_0
       //   12: invokestatic 126	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
       //   15: ifeq +11 -> 26
@@ -85,7 +85,7 @@ public final class b
       //   33: invokespecial 129	com/tencent/mm/media/f/a:<init>	(Ljava/lang/String;)V
       //   36: astore_0
       //   37: aload_0
-      //   38: invokevirtual 132	com/tencent/mm/media/f/a:aMs	()Ljava/lang/String;
+      //   38: invokevirtual 132	com/tencent/mm/media/f/a:aUI	()Ljava/lang/String;
       //   41: astore_2
       //   42: aload_2
       //   43: astore_1

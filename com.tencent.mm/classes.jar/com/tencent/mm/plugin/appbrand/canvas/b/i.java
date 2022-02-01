@@ -45,7 +45,7 @@ public final class i
     return bool;
   }
   
-  public final BasePathActionArg bzv()
+  public final BasePathActionArg bKK()
   {
     AppMethodBeat.i(145378);
     PathQuadraticCurveToActionArg localPathQuadraticCurveToActionArg = new PathQuadraticCurveToActionArg();
@@ -60,7 +60,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.b.i
  * JD-Core Version:    0.7.0.1
  */

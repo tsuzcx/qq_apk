@@ -13,31 +13,31 @@ import java.util.HashMap;
 
 public final class n
 {
-  private static HashMap<String, Integer> IUH;
+  private static HashMap<String, Integer> PQY;
   
   static
   {
     AppMethodBeat.i(78406);
-    IUH = new HashMap();
+    PQY = new HashMap();
     AppMethodBeat.o(78406);
   }
   
   public static int a(p paramp, c paramc)
   {
-    AppMethodBeat.i(210934);
+    AppMethodBeat.i(219188);
     int i = r.a(MMApplicationContext.getContext(), paramp).intValue();
     e.a(paramp.hashCode(), paramc);
-    AppMethodBeat.o(210934);
+    AppMethodBeat.o(219188);
     return i;
   }
   
   public static void remove(int paramInt)
   {
     AppMethodBeat.i(78405);
-    p localp = r.c(Integer.valueOf(paramInt));
+    p localp = r.d(Integer.valueOf(paramInt));
     if (localp != null)
     {
-      e.agf(localp.hashCode());
+      e.anU(localp.hashCode());
       if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) {
         try
         {
@@ -59,7 +59,7 @@ public final class n
           AppMethodBeat.i(78403);
           try
           {
-            this.xwm.destroy();
+            this.CAh.destroy();
             AppMethodBeat.o(78403);
             return;
           }

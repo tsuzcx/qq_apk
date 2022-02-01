@@ -4,8 +4,6 @@ import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
 import android.text.Html;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,8 +11,12 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.b.k;
+import com.tencent.mm.plugin.ball.a.c;
+import com.tencent.mm.plugin.ball.a.e;
 import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.ball.view.CircleAnimateView;
 import com.tencent.mm.plugin.ball.view.CircleImageView;
@@ -28,47 +30,47 @@ import java.util.List;
 public final class a
   extends RecyclerView.a<a>
 {
-  private static final int oVA;
-  private static final int oVB;
-  private static final int oVC;
-  private static final int oVD;
-  private static final int oVE;
-  private static final int oVF;
-  private static final int oVG;
-  private static final int oVH;
-  private static final int oVI;
-  private static final int oVu;
-  private static final int oVv;
-  private static final int oVw;
-  private static final int oVx;
-  private static final int oVy;
-  private static final int oVz;
+  private static final int rXA;
+  private static final int rXB;
+  private static final int rXC;
+  private static final int rXD;
+  private static final int rXE;
+  private static final int rXF;
+  private static final int rXG;
+  private static final int rXH;
+  private static final int rXt;
+  private static final int rXu;
+  private static final int rXv;
+  private static final int rXw;
+  private static final int rXx;
+  private static final int rXy;
+  private static final int rXz;
   private Context mContext;
-  public boolean oVo;
-  public boolean oVp;
-  public List<BallInfo> oVq;
-  public com.tencent.mm.plugin.ball.d.b oVr;
-  public boolean oVs;
-  public d.b oVt;
+  public boolean rXn;
+  public boolean rXo;
+  public List<BallInfo> rXp;
+  public com.tencent.mm.plugin.ball.d.b rXq;
+  public boolean rXr;
+  public d.b rXs;
   
   static
   {
     AppMethodBeat.i(106029);
-    oVu = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166474);
-    oVv = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166456);
-    oVw = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166475);
-    oVx = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166457);
-    oVy = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166471);
-    oVz = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166472);
-    oVA = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166470);
-    oVB = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166464);
-    oVC = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166466);
-    oVD = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166460);
-    oVE = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166462);
-    oVF = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166465);
-    oVG = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166467);
-    oVH = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166461);
-    oVI = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166463);
+    rXt = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_width_active);
+    rXu = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_height_active);
+    rXv = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_width_passive);
+    rXw = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_height_passive);
+    rXx = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_shadow_horizontal);
+    rXy = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_shadow_top);
+    rXz = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_shadow_bottom);
+    rXA = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_padding_start_left_active);
+    rXB = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_padding_start_right_active);
+    rXC = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_padding_end_left_active);
+    rXD = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_padding_end_right_active);
+    rXE = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_padding_start_left_passive);
+    rXF = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_padding_start_right_passive);
+    rXG = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_padding_end_left_passive);
+    rXH = com.tencent.mm.ci.a.aZ(MMApplicationContext.getContext(), a.c.float_menu_item_padding_end_right_passive);
     AppMethodBeat.o(106029);
   }
   
@@ -77,15 +79,15 @@ public final class a
     this.mContext = paramContext;
   }
   
-  private boolean BB(int paramInt)
+  private boolean Fc(int paramInt)
   {
-    AppMethodBeat.i(216964);
-    if ((paramInt >= 0) && (paramInt < this.oVq.size()))
+    AppMethodBeat.i(187748);
+    if ((paramInt >= 0) && (paramInt < this.rXp.size()))
     {
-      AppMethodBeat.o(216964);
+      AppMethodBeat.o(187748);
       return true;
     }
-    AppMethodBeat.o(216964);
+    AppMethodBeat.o(187748);
     return false;
   }
   
@@ -109,10 +111,10 @@ public final class a
     AppMethodBeat.i(106025);
     if (paramInt != -1) {
       if (ImgUtil.isGif(MMApplicationContext.getContext(), paramInt)) {
-        if (parama.oVZ != paramInt)
+        if (parama.rXY != paramInt)
         {
-          parama.oVP.setVisibility(8);
-          parama.oVQ.setVisibility(0);
+          parama.rXO.setVisibility(8);
+          parama.rXP.setVisibility(0);
         }
       }
     }
@@ -121,11 +123,11 @@ public final class a
       int i;
       try
       {
-        parama.oVQ.setImageResource(paramInt);
+        parama.rXP.setImageResource(paramInt);
         if (paramBallInfo.progress >= 0L)
         {
-          parama.oVQ.setProgress(paramBallInfo.progress);
-          parama.oVZ = paramInt;
+          parama.rXP.setProgress(paramBallInfo.progress);
+          parama.rXY = paramInt;
           AppMethodBeat.o(106025);
           return;
         }
@@ -133,22 +135,22 @@ public final class a
       catch (Exception localException1)
       {
         Log.printErrStackTrace("MicroMsg.FloatBallMenuAdapter", localException1, "setIconAnimateView exception:%s", new Object[] { localException1 });
-        i = com.tencent.mm.plugin.ball.f.d.BM(paramBallInfo.state);
-        parama.oVQ.setImageResource(i);
+        i = com.tencent.mm.plugin.ball.f.d.Fn(paramBallInfo.state);
+        parama.rXP.setImageResource(i);
         continue;
-        parama.oVQ.setProgress(-2147483648L);
+        parama.rXP.setProgress(-2147483648L);
         continue;
       }
-      if (parama.oVZ != paramInt)
+      if (parama.rXY != paramInt)
       {
-        parama.oVQ.setVisibility(8);
-        parama.oVP.setVisibility(0);
+        parama.rXP.setVisibility(8);
+        parama.rXO.setVisibility(0);
       }
       try
       {
-        parama.oVP.setImageResource(paramInt);
+        parama.rXO.setImageResource(paramInt);
         if (paramBallInfo.progress >= 0L) {
-          parama.oVP.setProgress(paramBallInfo.progress);
+          parama.rXO.setProgress(paramBallInfo.progress);
         }
       }
       catch (Exception localException2)
@@ -156,24 +158,24 @@ public final class a
         for (;;)
         {
           Log.printErrStackTrace("MicroMsg.FloatBallMenuAdapter", localException2, "setIconImageView exception:%s", new Object[] { localException2 });
-          i = com.tencent.mm.plugin.ball.f.d.BL(paramBallInfo.type);
-          parama.oVP.setImageResource(i);
-          paramBallInfo.noe = i;
+          i = com.tencent.mm.plugin.ball.f.d.Fm(paramBallInfo.type);
+          parama.rXO.setImageResource(i);
+          paramBallInfo.qpN = i;
         }
-        parama.oVP.setProgress(-2147483648L);
+        parama.rXO.setProgress(-2147483648L);
       }
       continue;
-      parama.oVP.setVisibility(4);
-      parama.oVQ.setVisibility(4);
+      parama.rXO.setVisibility(4);
+      parama.rXP.setVisibility(4);
     }
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(106022);
-    if (com.tencent.mm.plugin.ball.f.d.h(this.oVq))
+    if (com.tencent.mm.plugin.ball.f.d.checkListNotEmpty(this.rXp))
     {
-      int i = this.oVq.size();
+      int i = this.rXp.size();
       AppMethodBeat.o(106022);
       return i;
     }
@@ -184,9 +186,9 @@ public final class a
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(106023);
-    if ((com.tencent.mm.plugin.ball.f.d.h(this.oVq)) && (paramInt >= 0) && (paramInt < this.oVq.size()))
+    if ((com.tencent.mm.plugin.ball.f.d.checkListNotEmpty(this.rXp)) && (paramInt >= 0) && (paramInt < this.rXp.size()))
     {
-      if (((BallInfo)this.oVq.get(paramInt)).oWr)
+      if (((BallInfo)this.rXp.get(paramInt)).rYr)
       {
         AppMethodBeat.o(106023);
         return 2;
@@ -201,35 +203,35 @@ public final class a
   public final class a
     extends RecyclerView.v
   {
-    public BallInfo oVO;
-    public CircleImageView oVP;
-    public CircleAnimateView oVQ;
-    public ImageView oVR;
-    public FrameLayout oVS;
-    public TextView oVT;
-    public TextView oVU;
-    public LinearLayout oVV;
-    public ImageView oVW;
-    public LinearLayout oVX;
-    public LinearLayout oVY;
-    public int oVZ;
     public int position;
+    public BallInfo rXN;
+    public CircleImageView rXO;
+    public CircleAnimateView rXP;
+    public ImageView rXQ;
+    public FrameLayout rXR;
+    public TextView rXS;
+    public TextView rXT;
+    public LinearLayout rXU;
+    public ImageView rXV;
+    public LinearLayout rXW;
+    public LinearLayout rXX;
+    public int rXY;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(106021);
-      this.oVZ = -1;
-      this.oVP = ((CircleImageView)paramView.findViewById(2131302476));
-      this.oVQ = ((CircleAnimateView)paramView.findViewById(2131302473));
-      this.oVR = ((ImageView)paramView.findViewById(2131306941));
-      this.oVS = ((FrameLayout)paramView.findViewById(2131306940));
-      this.oVT = ((TextView)paramView.findViewById(2131305212));
-      this.oVU = ((TextView)paramView.findViewById(2131305211));
-      this.oVV = ((LinearLayout)paramView.findViewById(2131305209));
-      this.oVW = ((ImageView)paramView.findViewById(2131297044));
-      this.oVX = ((LinearLayout)paramView.findViewById(2131304607));
-      this.oVY = ((LinearLayout)paramView.findViewById(2131304609));
+      this.rXY = -1;
+      this.rXO = ((CircleImageView)paramView.findViewById(a.e.iconImageView));
+      this.rXP = ((CircleAnimateView)paramView.findViewById(a.e.iconAnimateView));
+      this.rXQ = ((ImageView)paramView.findViewById(a.e.removeImageView));
+      this.rXR = ((FrameLayout)paramView.findViewById(a.e.removeFrameLayout));
+      this.rXS = ((TextView)paramView.findViewById(a.e.nameTextView));
+      this.rXT = ((TextView)paramView.findViewById(a.e.nameTagTextView));
+      this.rXU = ((LinearLayout)paramView.findViewById(a.e.nameLayout));
+      this.rXV = ((ImageView)paramView.findViewById(a.e.arrowImageView));
+      this.rXW = ((LinearLayout)paramView.findViewById(a.e.menu_content_layout));
+      this.rXX = ((LinearLayout)paramView.findViewById(a.e.menu_custom_view_layout));
       AppMethodBeat.o(106021);
     }
   }

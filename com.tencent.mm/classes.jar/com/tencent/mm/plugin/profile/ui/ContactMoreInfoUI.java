@@ -5,27 +5,29 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
 import com.tencent.mm.b.p;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ap;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.model.aq;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.v;
 import com.tencent.mm.model.z;
 import com.tencent.mm.n.f;
-import com.tencent.mm.n.h;
+import com.tencent.mm.openim.a.a.a;
 import com.tencent.mm.plugin.account.friend.a.at;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.a.m;
-import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -42,46 +44,47 @@ public class ContactMoreInfoUI
   extends MMActivity
   implements View.OnClickListener, com.tencent.mm.plugin.fts.a.l
 {
-  private long BeA;
-  private String BeB;
-  String BeC;
-  private ProfileNormalItemView Beo;
-  private ProfileNormalItemView Bep;
-  private ProfileNormalItemView Beq;
-  private ProfileNormalItemView Ber;
-  private ProfileNormalItemView Bes;
-  private ProfileNormalItemView Bet;
-  private ProfileNormalItemView Beu;
-  private ProfileNormalItemView Bev;
-  private String Bew;
-  private String Bex;
-  private String Bey;
-  private String Bez;
-  private String goe;
-  ah gtd;
-  private String gwx;
-  boolean gxS;
+  private ProfileNormalItemView GYk;
+  private ProfileNormalItemView GYl;
+  private ProfileNormalItemView GYm;
+  private ProfileNormalItemView GYn;
+  private ProfileNormalItemView GYo;
+  private ProfileNormalItemView GYp;
+  private ProfileNormalItemView GYq;
+  private ProfileNormalItemView GYr;
+  private ProfileNormalItemView GYs;
+  private String GYt;
+  private String GYu;
+  private String GYv;
+  private String GYw;
+  private long GYx;
+  private String GYy;
+  String GYz;
   private MMHandler handler;
-  private com.tencent.mm.storage.as rjX;
+  private String iSn;
+  ah iXp;
+  private String jaK;
+  boolean jhU;
+  private com.tencent.mm.storage.as uNk;
   
   public ContactMoreInfoUI()
   {
     AppMethodBeat.i(27031);
-    this.BeC = null;
-    this.gxS = false;
+    this.GYz = null;
+    this.jhU = false;
     this.handler = new MMHandler(Looper.getMainLooper());
     AppMethodBeat.o(27031);
   }
   
-  private boolean Z(com.tencent.mm.storage.as paramas)
+  private boolean ag(com.tencent.mm.storage.as paramas)
   {
     AppMethodBeat.i(27034);
-    if (z.aTY().equals(paramas.field_username))
+    if (z.bcZ().equals(paramas.field_username))
     {
-      bg.aVF();
-      paramas = (String)c.azQ().get(ar.a.NVK, null);
+      bh.beI();
+      paramas = (String)c.aHp().get(ar.a.VjK, null);
       if (Util.isNullOrNil(paramas)) {
-        break label164;
+        break label165;
       }
     }
     for (;;)
@@ -89,17 +92,17 @@ public class ContactMoreInfoUI
       try
       {
         paramas = new JSONObject(paramas);
-        this.BeC = paramas.optString("ShopUrl");
+        this.GYz = paramas.optString("ShopUrl");
         paramas = paramas.optString("ShopName");
-        if (Util.isNullOrNil(this.BeC)) {
-          break label169;
+        if (Util.isNullOrNil(this.GYz)) {
+          break label170;
         }
-        this.Bet.setVisibility(0);
-        this.Bet.Bic = paramas;
-        this.Bet.UQ(getResources().getColor(2131100959));
-        paramas = this.Bet;
-        paramas.Bid = new ContactMoreInfoUI.2(this);
-        paramas.eEV();
+        this.GYp.setVisibility(0);
+        this.GYp.HbS = paramas;
+        this.GYp.abw(getResources().getColor(R.e.dkE));
+        paramas = this.GYp;
+        paramas.HbT = new ContactMoreInfoUI.2(this);
+        paramas.fqK();
         AppMethodBeat.o(27034);
         return true;
       }
@@ -107,13 +110,13 @@ public class ContactMoreInfoUI
       {
         Log.printErrStackTrace("MicroMsg.ContactMoreInfoUI", paramas, "", new Object[0]);
       }
-      paramas = paramas.fuW;
+      paramas = paramas.hDv;
       break;
-      label164:
+      label165:
       paramas = null;
     }
-    label169:
-    this.Bet.setVisibility(8);
+    label170:
+    this.GYp.setVisibility(8);
     AppMethodBeat.o(27034);
     return false;
   }
@@ -123,278 +126,282 @@ public class ContactMoreInfoUI
     AppMethodBeat.i(27035);
     if (paramk.resultCode == 0)
     {
-      int i = ((Integer)((m)paramk.wXb.get(0)).userData).intValue();
-      this.Bes.Bic = getString(2131757865, new Object[] { Integer.valueOf(i) });
-      this.Bes.Bid = new ContactMoreInfoUI.5(this, i);
+      int i = ((Integer)((m)paramk.BIW.get(0)).BJh).intValue();
+      this.GYo.HbS = getString(R.l.eyq, new Object[] { Integer.valueOf(i) });
+      this.GYo.HbT = new ContactMoreInfoUI.6(this, i);
     }
     for (;;)
     {
-      this.Bes.eEV();
+      this.GYo.fqK();
       AppMethodBeat.o(27035);
       return;
-      this.Bes.Bic = getString(2131757865, new Object[] { Integer.valueOf(0) });
+      this.GYo.HbS = getString(R.l.eyq, new Object[] { Integer.valueOf(0) });
     }
   }
   
   public int getLayoutId()
   {
-    return 2131493769;
+    return R.i.efp;
   }
   
   public void initView()
   {
     AppMethodBeat.i(27033);
     super.initView();
-    setMMTitle(2131755899);
+    setMMTitle(R.l.app_more);
     setBackBtn(new ContactMoreInfoUI.1(this));
-    this.Beo = ((ProfileNormalItemView)findViewById(2131303220));
-    this.Bep = ((ProfileNormalItemView)findViewById(2131302152));
-    this.Beq = ((ProfileNormalItemView)findViewById(2131306329));
-    this.Ber = ((ProfileNormalItemView)findViewById(2131299679));
-    this.Ber.setVisibility(8);
-    this.Ber.mTitle = getString(2131757872);
-    this.Beu = ((ProfileNormalItemView)findViewById(2131307905));
-    this.Beu.UO(2131758062);
-    this.Beu.Bau.setSingleLine(false);
-    this.Bev = ((ProfileNormalItemView)findViewById(2131301792));
-    this.Bev.UO(2131758114);
-    this.Bet = ((ProfileNormalItemView)findViewById(2131310465));
-    this.Bes = ((ProfileNormalItemView)findViewById(2131298977));
-    this.Bes.Bie.setVisibility(0);
-    Object localObject1 = h.aqJ().getValue("LinkedinPluginClose");
+    this.GYk = ((ProfileNormalItemView)findViewById(R.h.dLn));
+    this.GYl = ((ProfileNormalItemView)findViewById(R.h.dHU));
+    this.GYm = ((ProfileNormalItemView)findViewById(R.h.qq));
+    this.GYn = ((ProfileNormalItemView)findViewById(R.h.district));
+    this.GYn.setVisibility(8);
+    this.GYn.mTitle = getString(R.l.eyt);
+    this.GYq = ((ProfileNormalItemView)findViewById(R.h.dVn));
+    this.GYq.abu(R.l.ezr);
+    this.GYq.GUs.setSingleLine(false);
+    this.GYr = ((ProfileNormalItemView)findViewById(R.h.dHH));
+    this.GYr.abu(R.l.eAf);
+    this.GYp = ((ProfileNormalItemView)findViewById(R.h.eaS));
+    this.GYo = ((ProfileNormalItemView)findViewById(R.h.dAw));
+    this.GYo.fqJ();
+    this.GYs = ((ProfileNormalItemView)findViewById(R.h.from));
+    this.GYs.abu(R.l.eyv);
+    this.GYs.fqJ();
+    Object localObject1 = com.tencent.mm.n.h.axc().getValue("LinkedinPluginClose");
     int i;
-    label328:
+    label361:
     Object localObject2;
     if ((Util.isNullOrNil((String)localObject1)) || (Util.getInt((String)localObject1, 0) == 0))
     {
       i = 1;
-      if ((i == 0) || (Util.isNullOrNil(this.rjX.fuT))) {
-        break label926;
+      if ((i == 0) || (Util.isNullOrNil(this.uNk.hDs))) {
+        break label1092;
       }
-      this.Beo.setVisibility(0);
-      if (Util.isNullOrNil(this.Bew)) {
-        this.Bew = this.rjX.fuU;
+      this.GYk.setVisibility(0);
+      if (Util.isNullOrNil(this.GYt)) {
+        this.GYt = this.uNk.hDt;
       }
-      localObject1 = this.Beo;
-      ((ProfileNormalItemView)localObject1).Bic = this.Bew;
-      ((ProfileNormalItemView)localObject1).Bid = new ContactMoreInfoUI.3(this);
-      ((ProfileNormalItemView)localObject1).UQ(getResources().getColor(2131100959)).eEV();
-      this.Bep.setVisibility(0);
-      localObject1 = this.Bep;
-      ((ProfileNormalItemView)localObject1).Bic = this.Bey;
-      ((ProfileNormalItemView)localObject1).eEV();
-      bg.aVF();
-      i = Util.nullAsNil((Integer)c.azQ().get(9, null));
-      this.BeA = getIntent().getLongExtra("Contact_Uin", 0L);
-      this.BeB = getIntent().getStringExtra("Contact_QQNick");
-      if ((this.BeA == 0L) || (i == 0)) {
-        break label938;
+      localObject1 = this.GYk;
+      ((ProfileNormalItemView)localObject1).HbS = this.GYt;
+      ((ProfileNormalItemView)localObject1).HbT = new ContactMoreInfoUI.3(this);
+      ((ProfileNormalItemView)localObject1).abw(getResources().getColor(R.e.dkE)).fqK();
+      this.GYl.setVisibility(0);
+      localObject1 = this.GYl;
+      ((ProfileNormalItemView)localObject1).HbS = this.GYv;
+      ((ProfileNormalItemView)localObject1).fqK();
+      bh.beI();
+      i = Util.nullAsNil((Integer)c.aHp().b(9, null));
+      this.GYx = getIntent().getLongExtra("Contact_Uin", 0L);
+      this.GYy = getIntent().getStringExtra("Contact_QQNick");
+      if ((this.GYx == 0L) || (i == 0)) {
+        break label1104;
       }
-      if ((this.BeB == null) || (this.BeB.length() == 0))
+      if ((this.GYy == null) || (this.GYy.length() == 0))
       {
-        long l = this.BeA;
-        localObject2 = com.tencent.mm.plugin.account.a.getQQListStg().AT(l);
+        long l = this.GYx;
+        localObject2 = com.tencent.mm.plugin.account.b.getQQListStg().Hd(l);
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = null;
         }
         if (localObject1 != null) {
-          this.BeB = ((com.tencent.mm.plugin.account.friend.a.as)localObject1).getDisplayName();
+          this.GYy = ((com.tencent.mm.plugin.account.friend.a.as)localObject1).getDisplayName();
         }
       }
-      localObject1 = Util.nullAsNil(this.BeB);
-      localObject1 = (String)localObject1 + " " + new p(this.BeA).longValue();
-      this.Beq.setVisibility(0);
-      localObject2 = this.Beq;
-      ((ProfileNormalItemView)localObject2).Bic = ((CharSequence)localObject1);
-      ((ProfileNormalItemView)localObject2).Bid = new ContactMoreInfoUI.4(this);
-      ((ProfileNormalItemView)localObject2).eEV();
-      label565:
-      localObject1 = this.Beu;
-      ((ProfileNormalItemView)localObject1).Bic = com.tencent.mm.pluginsdk.ui.span.l.c(this, this.rjX.signature);
-      ((ProfileNormalItemView)localObject1).eEV();
-      Log.i("MicroMsg.ContactMoreInfoUI", "[initFriendSource] source:%s", new Object[] { Integer.valueOf(this.rjX.getSource()) });
-      switch (this.rjX.getSource())
+      localObject1 = Util.nullAsNil(this.GYy);
+      localObject1 = (String)localObject1 + " " + new p(this.GYx).longValue();
+      this.GYm.setVisibility(0);
+      localObject2 = this.GYm;
+      ((ProfileNormalItemView)localObject2).HbS = ((CharSequence)localObject1);
+      ((ProfileNormalItemView)localObject2).HbT = new ContactMoreInfoUI.4(this);
+      ((ProfileNormalItemView)localObject2).fqK();
+      label598:
+      localObject1 = this.GYq;
+      ((ProfileNormalItemView)localObject1).HbS = com.tencent.mm.pluginsdk.ui.span.l.c(this, this.uNk.signature);
+      ((ProfileNormalItemView)localObject1).fqK();
+      Log.i("MicroMsg.ContactMoreInfoUI", "[initFriendSource] source:%s", new Object[] { Integer.valueOf(this.uNk.getSource()) });
+      switch (this.uNk.getSource())
       {
       default: 
-        this.Bev.Bic = null;
+        this.GYr.HbS = null;
+        label884:
+        this.GYr.fqK();
+        ag(this.uNk);
+        localObject1 = this.uNk;
+        if ((com.tencent.mm.storage.as.bvK(((ax)localObject1).field_username)) && (((ax)localObject1).hDz != 0))
+        {
+          localObject2 = ((com.tencent.mm.openim.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.openim.a.a.class)).c(((ax)localObject1).field_openImAppid, "openim_intro_desc", a.a.mxX);
+          this.GYs.HbS = com.tencent.mm.pluginsdk.ui.span.l.c(getContext(), (CharSequence)localObject2);
+          String str = ((com.tencent.mm.openim.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.openim.a.a.class)).c(((ax)localObject1).field_openImAppid, "openim_intro_url", a.a.mxY);
+          if (!TextUtils.isEmpty(str))
+          {
+            ProfileNormalItemView localProfileNormalItemView = this.GYs;
+            localProfileNormalItemView.HbT = new ContactMoreInfoUI.5(this, str, (com.tencent.mm.storage.as)localObject1, (String)localObject2);
+            localProfileNormalItemView.fqK();
+          }
+        }
+        break;
       }
     }
     for (;;)
     {
-      this.Bev.eEV();
-      Z(this.rjX);
-      if (this.rjX.field_username.equals(z.aTY())) {
-        break label1740;
-      }
-      localObject1 = this.rjX;
-      if (!((ax)localObject1).field_username.equals(z.aTY())) {
-        break label1654;
-      }
-      this.Bes.setVisibility(8);
-      AppMethodBeat.o(27033);
-      return;
-      i = 0;
-      break;
-      label926:
-      this.Beo.setVisibility(8);
-      break label328;
-      label938:
-      this.Beq.setVisibility(8);
-      break label565;
-      this.Bev.UP(2131760782);
-      continue;
-      if (this.rjX.arL() > 1000000)
+      if (!this.uNk.field_username.equals(z.bcZ()))
       {
-        this.Bev.UP(2131758102);
-      }
-      else
-      {
-        this.Bev.UP(2131758101);
-        continue;
-        if (this.rjX.arL() > 1000000)
+        localObject1 = this.uNk;
+        if (((ax)localObject1).field_username.equals(z.bcZ()))
         {
-          this.Bev.UP(2131758105);
-        }
-        else
-        {
-          this.Bev.UP(2131758104);
+          this.GYo.setVisibility(8);
+          AppMethodBeat.o(27033);
+          return;
+          i = 0;
+          break;
+          label1092:
+          this.GYk.setVisibility(8);
+          break label361;
+          label1104:
+          this.GYm.setVisibility(8);
+          break label598;
+          this.GYr.abv(R.l.eFi);
+          break label884;
+          if (this.uNk.ayu() > 1000000)
+          {
+            this.GYr.abv(R.l.ezU);
+            break label884;
+          }
+          this.GYr.abv(R.l.ezT);
+          break label884;
+          if (this.uNk.ayu() > 1000000)
+          {
+            this.GYr.abv(R.l.ezX);
+            break label884;
+          }
+          this.GYr.abv(R.l.ezW);
+          break label884;
+          if (this.uNk.ayu() > 1000000)
+          {
+            this.GYr.abv(R.l.ezB);
+            break label884;
+          }
+          this.GYr.abv(R.l.ezy);
+          break label884;
+          if (this.uNk.ayu() > 1000000)
+          {
+            this.GYr.abv(R.l.ezJ);
+            break label884;
+          }
+          this.GYr.abv(R.l.ezI);
+          break label884;
+          if (this.uNk.ayu() > 1000000)
+          {
+            this.GYr.abv(R.l.ezN);
+            break label884;
+          }
+          this.GYr.abv(R.l.ezM);
+          break label884;
+          this.GYr.abv(R.l.ezP);
+          break label884;
+          localObject1 = this.uNk.field_sourceExtInfo;
+          localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().RG((String)localObject1);
+          if ((localObject1 == null) || (Util.isNullOrNil(((ax)localObject1).field_username)))
+          {
+            localObject1 = null;
+            label1400:
+            if (this.uNk.ayu() <= 1000000) {
+              break label1523;
+            }
+            if (Util.isNullOrNil((String)localObject1)) {
+              break label1511;
+            }
+          }
+          label1511:
+          for (localObject1 = getString(R.l.ezH, new Object[] { localObject1 });; localObject1 = getString(R.l.ezF))
+          {
+            localObject2 = this.GYr;
+            ((ProfileNormalItemView)localObject2).GUs.setMaxLines(5);
+            ((ProfileNormalItemView)localObject2).GUs.setEllipsize(TextUtils.TruncateAt.END);
+            this.GYr.HbS = ((CharSequence)localObject1);
+            break;
+            if (Util.isNullOrNil(((ax)localObject1).field_nickname))
+            {
+              localObject1 = v.Pl(((ax)localObject1).field_username);
+              break label1400;
+            }
+            localObject1 = ((ax)localObject1).field_nickname;
+            break label1400;
+          }
+          label1523:
+          if (!Util.isNullOrNil((String)localObject1)) {}
+          for (localObject1 = getString(R.l.ezG, new Object[] { localObject1 });; localObject1 = getString(R.l.ezE))
+          {
+            this.GYr.HbS = ((CharSequence)localObject1);
+            break;
+          }
+          if (this.uNk.ayu() > 1000000)
+          {
+            this.GYr.abv(R.l.eAa);
+            break label884;
+          }
+          this.GYr.abv(R.l.ezZ);
+          break label884;
+          this.GYr.abv(R.l.ezu);
+          break label884;
+          this.GYr.abv(R.l.gcontact_from_source);
+          break label884;
+          this.GYr.abv(R.l.ezL);
+          break label884;
+          if (this.uNk.ayu() > 1000000)
+          {
+            this.GYr.abv(R.l.eAd);
+            break label884;
+          }
+          this.GYr.abv(R.l.eAc);
+          break label884;
+          if (this.uNk.ayu() > 1000000)
+          {
+            this.GYr.abv(R.l.eAd);
+            break label884;
+          }
+          this.GYr.abv(R.l.eAc);
+          break label884;
+          if (this.uNk.ayu() > 1000000)
+          {
+            this.GYr.abv(R.l.ezw);
+            break label884;
+          }
+          this.GYr.abv(R.l.ezv);
+          break label884;
+          if (this.uNk.ayu() > 1000000)
+          {
+            this.GYr.abv(R.l.ezR);
+            break label884;
+          }
+          this.GYr.abv(R.l.ezQ);
+          break label884;
+          this.GYs.setVisibility(8);
           continue;
-          if (this.rjX.arL() > 1000000)
-          {
-            this.Bev.UP(2131758082);
-          }
-          else
-          {
-            this.Bev.UP(2131758079);
-            continue;
-            if (this.rjX.arL() > 1000000)
-            {
-              this.Bev.UP(2131758090);
-            }
-            else
-            {
-              this.Bev.UP(2131758089);
-              continue;
-              if (this.rjX.arL() > 1000000)
-              {
-                this.Bev.UP(2131758095);
-              }
-              else
-              {
-                this.Bev.UP(2131758094);
-                continue;
-                this.Bev.UP(2131758097);
-                continue;
-                localObject1 = this.rjX.field_sourceExtInfo;
-                localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn((String)localObject1);
-                if ((localObject1 == null) || (Util.isNullOrNil(((ax)localObject1).field_username)))
-                {
-                  localObject1 = null;
-                  label1234:
-                  if (this.rjX.arL() <= 1000000) {
-                    break label1357;
-                  }
-                  if (Util.isNullOrNil((String)localObject1)) {
-                    break label1345;
-                  }
-                }
-                label1345:
-                for (localObject1 = getString(2131758088, new Object[] { localObject1 });; localObject1 = getString(2131758086))
-                {
-                  localObject2 = this.Bev;
-                  ((ProfileNormalItemView)localObject2).Bau.setMaxLines(5);
-                  ((ProfileNormalItemView)localObject2).Bau.setEllipsize(TextUtils.TruncateAt.END);
-                  this.Bev.Bic = ((CharSequence)localObject1);
-                  break;
-                  if (Util.isNullOrNil(((ax)localObject1).field_nickname))
-                  {
-                    localObject1 = v.HV(((ax)localObject1).field_username);
-                    break label1234;
-                  }
-                  localObject1 = ((ax)localObject1).field_nickname;
-                  break label1234;
-                }
-                label1357:
-                if (!Util.isNullOrNil((String)localObject1)) {}
-                for (localObject1 = getString(2131758087, new Object[] { localObject1 });; localObject1 = getString(2131758085))
-                {
-                  this.Bev.Bic = ((CharSequence)localObject1);
-                  break;
-                }
-                if (this.rjX.arL() > 1000000)
-                {
-                  this.Bev.UP(2131758108);
-                }
-                else
-                {
-                  this.Bev.UP(2131758107);
-                  continue;
-                  this.Bev.UP(2131758074);
-                  continue;
-                  this.Bev.UP(2131761400);
-                  continue;
-                  this.Bev.UP(2131758092);
-                  continue;
-                  if (this.rjX.arL() > 1000000)
-                  {
-                    this.Bev.UP(2131758111);
-                  }
-                  else
-                  {
-                    this.Bev.UP(2131758110);
-                    continue;
-                    if (this.rjX.arL() > 1000000)
-                    {
-                      this.Bev.UP(2131758111);
-                    }
-                    else
-                    {
-                      this.Bev.UP(2131758110);
-                      continue;
-                      if (this.rjX.arL() > 1000000)
-                      {
-                        this.Bev.UP(2131758077);
-                      }
-                      else
-                      {
-                        this.Bev.UP(2131758076);
-                        continue;
-                        if (this.rjX.arL() > 1000000) {
-                          this.Bev.UP(2131758099);
-                        } else {
-                          this.Bev.UP(2131758098);
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
         }
+        if (((ax)localObject1).sex != 1) {
+          break label1925;
+        }
+        this.GYo.abu(R.l.eyp);
       }
-    }
-    label1654:
-    if (((ax)localObject1).fuA == 1) {
-      this.Bes.UO(2131757862);
     }
     for (;;)
     {
-      this.Bes.eEV();
+      this.GYo.fqK();
       localObject2 = new j();
       ((j)localObject2).query = ((ax)localObject1).field_username;
-      ((j)localObject2).wWZ = this;
+      ((j)localObject2).BIU = this;
       ((j)localObject2).handler = this.handler;
-      ((j)localObject2).kXb = 5;
-      ((n)g.ah(n.class)).search(2, (j)localObject2);
-      label1740:
+      ((j)localObject2).nRn = 5;
+      ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.fts.a.n.class)).search(2, (j)localObject2);
       AppMethodBeat.o(27033);
       return;
-      if (((ax)localObject1).fuA == 2) {
-        this.Bes.UO(2131757861);
+      label1925:
+      if (((ax)localObject1).sex == 2) {
+        this.GYo.abu(R.l.eyo);
       } else {
-        this.Bes.UO(2131757866);
+        this.GYo.abu(R.l.eyr);
       }
     }
   }
@@ -402,9 +409,9 @@ public class ContactMoreInfoUI
   public void onClick(View paramView)
   {
     AppMethodBeat.i(27036);
-    b localb = new b();
-    localb.bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/ContactMoreInfoUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/ContactMoreInfoUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/ContactMoreInfoUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(27036);
   }
@@ -413,19 +420,19 @@ public class ContactMoreInfoUI
   {
     AppMethodBeat.i(27032);
     super.onCreate(paramBundle);
-    this.gxS = getIntent().getBooleanExtra("Is_RoomOwner", false);
-    this.gwx = getIntent().getStringExtra("Contact_ChatRoomId");
-    this.goe = getIntent().getStringExtra("Contact_User");
-    bg.aVF();
-    this.rjX = c.aSN().Kn(this.goe);
-    this.Bew = getIntent().getStringExtra("KLinkedInAddFriendNickName");
-    this.Bex = getIntent().getStringExtra("KLinkedInAddFriendPubUrl");
-    this.Bey = getIntent().getStringExtra("verify_gmail");
-    this.Bez = getIntent().getStringExtra("profileName");
-    if (!Util.isNullOrNil(this.gwx))
+    this.jhU = getIntent().getBooleanExtra("Is_RoomOwner", false);
+    this.jaK = getIntent().getStringExtra("Contact_ChatRoomId");
+    this.iSn = getIntent().getStringExtra("Contact_User");
+    bh.beI();
+    this.uNk = c.bbL().RG(this.iSn);
+    this.GYt = getIntent().getStringExtra("KLinkedInAddFriendNickName");
+    this.GYu = getIntent().getStringExtra("KLinkedInAddFriendPubUrl");
+    this.GYv = getIntent().getStringExtra("verify_gmail");
+    this.GYw = getIntent().getStringExtra("profileName");
+    if (!Util.isNullOrNil(this.jaK))
     {
-      bg.aVF();
-      this.gtd = c.aSX().Kd(this.gwx);
+      bh.beI();
+      this.iXp = c.bbV().Rw(this.jaK);
     }
     initView();
     AppMethodBeat.o(27032);

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@drawable/a00" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/kot" android:layout_width="fill_parent" android:layout_height="@dimen/cr" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb">
+        <TextView android:textSize="@dimen/t" android:textColor="@color/BW_0" android:layout_gravity="center_vertical" android:id="@id/ktg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jxp" />
+        <TextView android:textSize="@dimen/h_" android:textColor="@color/BW_0" android:layout_gravity="center" android:id="@id/ktn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jxo" />
+        <TextView android:textSize="@dimen/k0" android:textColor="@color/am" android:gravity="center" android:layout_gravity="center|right" android:id="@id/ktl" android:background="@drawable/a21" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="wrap_content" android:layout_height="@dimen/ci" android:text="@string/jxr" />
+    </FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/ktm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/cr" android:layout_marginBottom="@dimen/cp" />
+    <FrameLayout android:layout_gravity="bottom" android:id="@id/ktf" android:background="@color/am" android:layout_width="fill_parent" android:layout_height="@dimen/cp">
+        <CheckBox android:layout_gravity="center_vertical" android:id="@id/kth" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginLeft="@dimen/cb" style="@style/jt" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/ajc" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/kti" android:padding="@dimen/c5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cl" android:text="@string/jxs" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/UN_BW_0_Alpha_0_2" android:ellipsize="end" android:gravity="center" android:layout_gravity="center|right" android:id="@id/ktk" android:padding="@dimen/cb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jxq" android:singleLine="true" />
+    </FrameLayout>
+</FrameLayout>

@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget.input;
 
 import android.content.Context;
-import android.support.v4.view.q;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.View;
@@ -15,18 +14,18 @@ import java.lang.ref.SoftReference;
 public class WebViewSmileyViewPager
   extends CustomViewPager
 {
-  private c JBa;
-  private a JBj;
-  private int oxk;
-  private int oxl;
+  private int QzE;
+  private int QzF;
+  private a QzG;
+  private c Qzm;
   
   public WebViewSmileyViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(82362);
-    this.oxk = 0;
-    this.oxl = 0;
-    if (d.oD(9)) {
+    this.QzE = 0;
+    this.QzF = 0;
+    if (d.qV(9)) {
       setOverScrollMode(2);
     }
     AppMethodBeat.o(82362);
@@ -36,50 +35,50 @@ public class WebViewSmileyViewPager
   {
     AppMethodBeat.i(82363);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.JBa != null) && (((paramInt1 > 0) && (paramInt3 != paramInt1)) || ((paramInt2 > 0) && (paramInt4 != paramInt2) && (((paramInt2 > 0) && (paramInt2 != this.oxk)) || ((paramInt1 > 0) && (paramInt1 != this.oxl))))))
+    if ((this.Qzm != null) && (((paramInt1 > 0) && (paramInt3 != paramInt1)) || ((paramInt2 > 0) && (paramInt4 != paramInt2) && (((paramInt2 > 0) && (paramInt2 != this.QzE)) || ((paramInt1 > 0) && (paramInt1 != this.QzF))))))
     {
-      this.JBa.oxh = paramInt2;
-      this.JBa.oxi = paramInt1;
-      if (this.JBj != null) {
-        this.JBj.ccj();
+      this.Qzm.QzB = paramInt2;
+      this.Qzm.QzC = paramInt1;
+      if (this.QzG != null) {
+        this.QzG.hcm();
       }
     }
     if (paramInt2 > 0) {
-      this.oxk = paramInt2;
+      this.QzE = paramInt2;
     }
     if (paramInt1 > 0) {
-      this.oxl = paramInt1;
+      this.QzF = paramInt1;
     }
     AppMethodBeat.o(82363);
   }
   
   public void setOnSizeChangedListener(a parama)
   {
-    this.JBj = parama;
+    this.QzG = parama;
   }
   
   public void setPanelManager(c paramc)
   {
-    this.JBa = paramc;
+    this.Qzm = paramc;
   }
   
   public static abstract interface a
   {
-    public abstract void ccj();
+    public abstract void hcm();
   }
   
   static final class b
-    extends q
+    extends androidx.viewpager.widget.a
   {
-    c JBa;
-    SparseArray<SoftReference<View>> oxn;
-    private boolean oxo;
+    SparseArray<SoftReference<View>> QzH;
+    private boolean QzI;
+    c Qzm;
     
     b()
     {
       AppMethodBeat.i(82356);
-      this.oxn = new SparseArray();
-      this.oxo = false;
+      this.QzH = new SparseArray();
+      this.QzI = false;
       AppMethodBeat.o(82356);
     }
     
@@ -93,7 +92,7 @@ public class WebViewSmileyViewPager
     public final int getCount()
     {
       AppMethodBeat.i(82359);
-      int i = this.JBa.giG().getPageCount();
+      int i = this.Qzm.hco().getPageCount();
       AppMethodBeat.o(82359);
       return i;
     }
@@ -101,7 +100,7 @@ public class WebViewSmileyViewPager
     public final int getItemPosition(Object paramObject)
     {
       AppMethodBeat.i(82357);
-      if (this.oxo)
+      if (this.QzI)
       {
         AppMethodBeat.o(82357);
         return -2;
@@ -115,16 +114,16 @@ public class WebViewSmileyViewPager
     {
       AppMethodBeat.i(82361);
       View localView = null;
-      if (this.oxn.get(paramInt) != null) {
-        localView = (View)((SoftReference)this.oxn.get(paramInt)).get();
+      if (this.QzH.get(paramInt) != null) {
+        localView = (View)((SoftReference)this.QzH.get(paramInt)).get();
       }
       if (localView == null)
       {
-        localView = this.JBa.giG().Ap(paramInt);
+        localView = this.Qzm.hco().apd(paramInt);
         if (localView != null)
         {
           paramViewGroup.addView(localView, 0);
-          this.oxn.put(paramInt, new SoftReference(localView));
+          this.QzH.put(paramInt, new SoftReference(localView));
         }
         for (;;)
         {
@@ -149,16 +148,16 @@ public class WebViewSmileyViewPager
     public final void notifyDataSetChanged()
     {
       AppMethodBeat.i(82358);
-      this.oxo = true;
+      this.QzI = true;
       super.notifyDataSetChanged();
-      this.oxo = false;
+      this.QzI = false;
       AppMethodBeat.o(82358);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewSmileyViewPager
  * JD-Core Version:    0.7.0.1
  */

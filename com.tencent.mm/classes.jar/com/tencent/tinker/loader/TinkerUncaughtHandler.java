@@ -150,7 +150,7 @@ public class TinkerUncaughtHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.loader.TinkerUncaughtHandler
  * JD-Core Version:    0.7.0.1
  */

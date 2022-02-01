@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ca;
+import com.tencent.mm.f.c.ca;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public final class j
@@ -12,11 +12,11 @@ public final class j
   static
   {
     AppMethodBeat.i(103405);
-    info = ca.ajs();
+    info = ca.aoY();
     AppMethodBeat.o(103405);
   }
   
-  public static int HV(int paramInt)
+  public static int LF(int paramInt)
   {
     return 1 << paramInt;
   }
@@ -28,7 +28,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.j
  * JD-Core Version:    0.7.0.1
  */

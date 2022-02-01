@@ -1,8 +1,8 @@
 package com.tencent.mm.ipcinvoker;
 
-public abstract interface m
+public abstract interface m<InputType, ResultType>
 {
-  public abstract void aye();
+  public abstract ResultType invoke(InputType paramInputType);
 }
 
 

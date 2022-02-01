@@ -4,9 +4,6 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.p;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMStack;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -16,24 +13,24 @@ import com.tenpay.ndk.MessageDigestUtil;
 
 public final class b
 {
-  private static b Rtl = null;
+  private static b YUJ = null;
   static boolean isInit = false;
-  private boolean Rtm;
-  private CertUtil.EventListener Rtn;
+  private boolean YUK;
+  private CertUtil.EventListener YUL;
   
   public b()
   {
     AppMethodBeat.i(72725);
-    this.Rtm = false;
-    this.Rtn = new CertUtil.EventListener()
+    this.YUK = false;
+    this.YUL = new CertUtil.EventListener()
     {
       public final String getUniqueID()
       {
         AppMethodBeat.i(72724);
-        String str = q.dr(false);
+        String str = q.dR(false);
         if (Util.isNullOrNil(str))
         {
-          str = q.aoG();
+          str = q.auM();
           AppMethodBeat.o(72724);
           return str;
         }
@@ -51,16 +48,16 @@ public final class b
     AppMethodBeat.o(72725);
   }
   
-  public static boolean F(String paramString1, String paramString2, boolean paramBoolean)
+  public static boolean I(String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(72734);
     Object localObject1 = "";
     if (paramBoolean)
     {
       localObject1 = new MessageDigestUtil();
-      g.aAi();
-      g.aAf();
-      Object localObject2 = p.getString(a.getUin());
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHE();
+      Object localObject2 = p.getString(com.tencent.mm.kernel.b.getUin());
       String str = (String)localObject2 + "_pUI6cNqzLt2Z3mQSrYuF09XSGsBtTIcUgp9jcWZ7F7BBs8/DFVFMKiwbtaRPOiLE";
       localObject2 = new byte[16];
       localObject1 = ((MessageDigestUtil)localObject1).getSHA256Hex(str.getBytes()).getBytes();
@@ -79,7 +76,7 @@ public final class b
     return paramBoolean;
   }
   
-  public static int bpl(String paramString)
+  public static int bCi(String paramString)
   {
     AppMethodBeat.i(72737);
     int i = CertUtil.getInstance().getTokenCount(paramString);
@@ -148,13 +145,13 @@ public final class b
     return paramString;
   }
   
-  public static b hhj()
+  public static b iiL()
   {
     AppMethodBeat.i(72726);
-    if (Rtl == null) {
-      Rtl = new b();
+    if (YUJ == null) {
+      YUJ = new b();
     }
-    b localb = Rtl;
+    b localb = YUJ;
     AppMethodBeat.o(72726);
     return localb;
   }
@@ -163,40 +160,25 @@ public final class b
   {
     AppMethodBeat.i(72731);
     Log.d("MicroMsg.CertUtilWx", "isCertExist stack %s", new Object[] { Util.getStack().toString() });
-    h.CyF.idkeyStat(414L, 5L, 1L, true);
+    com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(414L, 5L, 1L, true);
     boolean bool = CertUtil.getInstance().isCertExist(paramString);
-    h.CyF.idkeyStat(414L, 6L, 1L, true);
+    com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(414L, 6L, 1L, true);
     AppMethodBeat.o(72731);
     return bool;
   }
   
-  public final boolean hhk()
-  {
-    AppMethodBeat.i(72730);
-    Log.d("MicroMsg.CertUtilWx", "importCertNone");
-    try
-    {
-      this.Rtm = false;
-      return false;
-    }
-    finally
-    {
-      AppMethodBeat.o(72730);
-    }
-  }
-  
-  public final String hr(String paramString, int paramInt)
+  public final String ia(String paramString, int paramInt)
   {
     AppMethodBeat.i(72728);
     Log.i("MicroMsg.CertUtilWx", "getCertApplyCSR lock %s %s", new Object[] { Util.getStack().toString(), Integer.valueOf(paramInt) });
     try
     {
-      if (this.Rtm)
+      if (this.YUK)
       {
         Log.i("MicroMsg.CertUtilWx", "isCert_Wating");
         return "";
       }
-      this.Rtm = true;
+      this.YUK = true;
       paramString = CertUtil.getInstance().getCertApplyCSR(paramString, paramInt);
       return paramString;
     }
@@ -206,13 +188,28 @@ public final class b
     }
   }
   
+  public final boolean iiM()
+  {
+    AppMethodBeat.i(72730);
+    Log.d("MicroMsg.CertUtilWx", "importCertNone");
+    try
+    {
+      this.YUK = false;
+      return false;
+    }
+    finally
+    {
+      AppMethodBeat.o(72730);
+    }
+  }
+  
   public final boolean importCert(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72729);
     Log.i("MicroMsg.CertUtilWx", "importCert  cid %s cert %s stack %s", new Object[] { paramString1, paramString2, Util.getStack().toString() });
     try
     {
-      this.Rtm = false;
+      this.YUK = false;
       boolean bool = CertUtil.getInstance().importCert(paramString1, paramString2);
       Log.i("MicroMsg.CertUtilWx", "importCert %s", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(72729);
@@ -233,14 +230,14 @@ public final class b
       return;
     }
     Log.d("MicroMsg.CertUtilWx", "init  %s", new Object[] { Util.getStack().toString() });
-    CertUtil.getInstance().init(paramContext, this.Rtn);
+    CertUtil.getInstance().init(paramContext, this.YUL);
     isInit = true;
     AppMethodBeat.o(72727);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.b
  * JD-Core Version:    0.7.0.1
  */

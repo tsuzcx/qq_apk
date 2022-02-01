@@ -10,21 +10,21 @@ import com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetFillStyleActionRa
 public final class g
   extends a<BaseDrawActionArg>
 {
-  private static g lag;
+  private static g nUq;
   
   static
   {
     AppMethodBeat.i(145327);
-    lag = new g();
+    nUq = new g();
     AppMethodBeat.o(145327);
   }
   
-  public static g bzr()
+  public static g bKG()
   {
-    return lag;
+    return nUq;
   }
   
-  public final <T> T WE(String paramString)
+  public final <T> T aep(String paramString)
   {
     AppMethodBeat.i(145326);
     Object localObject = null;
@@ -48,7 +48,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.a.g
  * JD-Core Version:    0.7.0.1
  */

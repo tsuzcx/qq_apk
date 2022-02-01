@@ -15,32 +15,32 @@ public final class m<T>
     AppMethodBeat.i(90305);
     rx.i local1 = new rx.i()
     {
-      boolean completed;
       int count;
+      boolean jIH;
       
       public final void a(final f paramAnonymousf)
       {
         AppMethodBeat.i(90304);
         parami.a(new f()
         {
-          final AtomicLong Ula;
+          final AtomicLong abOw;
           
-          public final void Pw(long paramAnonymous2Long)
+          public final void XM(long paramAnonymous2Long)
           {
             AppMethodBeat.i(90300);
-            if ((paramAnonymous2Long > 0L) && (!m.1.this.completed))
+            if ((paramAnonymous2Long > 0L) && (!m.1.this.jIH))
             {
               long l1;
               long l2;
               do
               {
-                l1 = this.Ula.get();
+                l1 = this.abOw.get();
                 l2 = Math.min(paramAnonymous2Long, m.this.limit - l1);
                 if (l2 == 0L) {
                   break;
                 }
-              } while (!this.Ula.compareAndSet(l1, l1 + l2));
-              paramAnonymousf.Pw(l2);
+              } while (!this.abOw.compareAndSet(l1, l1 + l2));
+              paramAnonymousf.XM(l2);
               AppMethodBeat.o(90300);
               return;
             }
@@ -50,10 +50,41 @@ public final class m<T>
         AppMethodBeat.o(90304);
       }
       
-      public final void gL(T paramAnonymousT)
+      public final void c(Throwable paramAnonymousThrowable)
+      {
+        AppMethodBeat.i(90302);
+        if (!this.jIH)
+        {
+          this.jIH = true;
+          try
+          {
+            parami.c(paramAnonymousThrowable);
+            return;
+          }
+          finally
+          {
+            iVJ();
+            AppMethodBeat.o(90302);
+          }
+        }
+        AppMethodBeat.o(90302);
+      }
+      
+      public final void fUB()
+      {
+        AppMethodBeat.i(90301);
+        if (!this.jIH)
+        {
+          this.jIH = true;
+          parami.fUB();
+        }
+        AppMethodBeat.o(90301);
+      }
+      
+      public final void he(T paramAnonymousT)
       {
         AppMethodBeat.i(90303);
-        if (!this.Ukg.UnB)
+        if (!iVK())
         {
           int i = this.count;
           this.count = (i + 1);
@@ -62,61 +93,30 @@ public final class m<T>
             if (this.count == m.this.limit) {}
             for (i = 1;; i = 0)
             {
-              parami.gL(paramAnonymousT);
-              if ((i == 0) || (this.completed)) {
+              parami.he(paramAnonymousT);
+              if ((i == 0) || (this.jIH)) {
                 break;
               }
-              this.completed = true;
+              this.jIH = true;
               try
               {
-                parami.hQw();
+                parami.fUB();
                 return;
               }
               finally
               {
-                this.Ukg.hQA();
+                iVJ();
                 AppMethodBeat.o(90303);
               }
             }
           }
         }
       }
-      
-      public final void hQw()
-      {
-        AppMethodBeat.i(90301);
-        if (!this.completed)
-        {
-          this.completed = true;
-          parami.hQw();
-        }
-        AppMethodBeat.o(90301);
-      }
-      
-      public final void onError(Throwable paramAnonymousThrowable)
-      {
-        AppMethodBeat.i(90302);
-        if (!this.completed)
-        {
-          this.completed = true;
-          try
-          {
-            parami.onError(paramAnonymousThrowable);
-            return;
-          }
-          finally
-          {
-            this.Ukg.hQA();
-            AppMethodBeat.o(90302);
-          }
-        }
-        AppMethodBeat.o(90302);
-      }
     };
     if (this.limit == 0)
     {
-      parami.hQw();
-      local1.Ukg.hQA();
+      parami.fUB();
+      local1.abNB.iVJ();
     }
     parami.b(local1);
     AppMethodBeat.o(90305);
@@ -125,7 +125,7 @@ public final class m<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.internal.a.m
  * JD-Core Version:    0.7.0.1
  */

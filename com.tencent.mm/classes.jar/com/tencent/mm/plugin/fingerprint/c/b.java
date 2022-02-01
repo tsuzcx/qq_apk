@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.fingerprint.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.network.m;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.fingerprint.d.a;
-import com.tencent.mm.protocal.protobuf.ebs;
-import com.tencent.mm.protocal.protobuf.ebt;
+import com.tencent.mm.protocal.protobuf.els;
+import com.tencent.mm.protocal.protobuf.elt;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tenpay.android.wechat.TenpayUtil;
 
 public final class b
   extends com.tencent.mm.plugin.soter.b.d
-  implements m
 {
+  private int Bzf;
   private i callback;
-  public final com.tencent.mm.ak.d rr;
-  private int wGi;
+  public final com.tencent.mm.an.d rr;
   
   public b(String paramString1, String paramString2, String paramString3, int paramInt)
   {
     AppMethodBeat.i(64458);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new ebs();
-    ((d.a)localObject).iLO = new ebt();
+    ((d.a)localObject).lBU = new els();
+    ((d.a)localObject).lBV = new elt();
     ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/soteropenfppayment";
     ((d.a)localObject).funcId = 1638;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (ebs)this.rr.iLK.iLR;
-    ((ebs)localObject).MBA = paramString1;
-    ((ebs)localObject).signature = paramString2;
-    ((ebs)localObject).Nbu = paramString3;
-    ((ebs)localObject).dPr = TenpayUtil.signWith3Des("passwd=" + ((ebs)localObject).Nbu);
-    ((ebs)localObject).Nbr = paramInt;
-    ((ebs)localObject).Nbs = 1;
-    this.wGi = paramInt;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (els)d.b.b(this.rr.lBR);
+    ((els)localObject).TNh = paramString1;
+    ((els)localObject).signature = paramString2;
+    ((els)localObject).UnN = paramString3;
+    ((els)localObject).fIF = TenpayUtil.signWith3Des("passwd=" + ((els)localObject).UnN);
+    ((els)localObject).UnL = paramInt;
+    ((els)localObject).SZz = 1;
+    this.Bzf = paramInt;
     Log.i("MicroMsg.NetSceneSoterOpenTouchPay", "soter type: %s", new Object[] { Integer.valueOf(paramInt) });
     AppMethodBeat.o(64458);
   }
   
-  public final void MO(int paramInt)
+  public final void Sl(int paramInt)
   {
     AppMethodBeat.i(64461);
     Log.i("MicroMsg.NetSceneSoterOpenTouchPay", "hy: onError: errType: %d, errcode: %d", new Object[] { Integer.valueOf(3), Integer.valueOf(paramInt) });
@@ -60,10 +60,10 @@ public final class b
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       Log.i("MicroMsg.NetSceneSoterOpenTouchPay", "open fingerprintpay success");
-      if (this.wGi == 1)
+      if (this.Bzf == 1)
       {
-        ((a)com.tencent.mm.kernel.g.af(a.class)).pj(true);
-        ((a)com.tencent.mm.kernel.g.af(a.class)).pk(false);
+        ((a)h.ae(a.class)).rD(true);
+        ((a)h.ae(a.class)).rE(false);
       }
     }
     for (;;)
@@ -71,14 +71,23 @@ public final class b
       this.callback.onSceneEnd(paramInt1, paramInt2, "", this);
       AppMethodBeat.o(64459);
       return;
-      ((a)com.tencent.mm.kernel.g.af(a.class)).pk(true);
-      ((a)com.tencent.mm.kernel.g.af(a.class)).pj(false);
+      ((a)h.ae(a.class)).rE(true);
+      ((a)h.ae(a.class)).rD(false);
       continue;
       Log.e("MicroMsg.NetSceneSoterOpenTouchPay", "open fingerprintpay failed");
     }
   }
   
-  public final void dKB()
+  public final int doScene(g paramg, i parami)
+  {
+    AppMethodBeat.i(64462);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(64462);
+    return i;
+  }
+  
+  public final void epa()
   {
     AppMethodBeat.i(64460);
     Log.i("MicroMsg.NetSceneSoterOpenTouchPay", "hy: authkey required");
@@ -88,15 +97,6 @@ public final class b
     AppMethodBeat.o(64460);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
-  {
-    AppMethodBeat.i(64462);
-    this.callback = parami;
-    int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(64462);
-    return i;
-  }
-  
   public final int getType()
   {
     return 1638;
@@ -104,7 +104,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.c.b
  * JD-Core Version:    0.7.0.1
  */

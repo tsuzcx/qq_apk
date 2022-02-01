@@ -13,9 +13,9 @@ public final class a
     {
       paramSnsInfo.getTimeLine();
       if (paramInt == 2) {
-        m.w(paramSnsInfo);
+        m.x(paramSnsInfo);
       }
-      m.y(paramSnsInfo);
+      m.z(paramSnsInfo);
       System.currentTimeMillis();
     }
     AppMethodBeat.o(95196);
@@ -23,7 +23,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.lucky.b.a
  * JD-Core Version:    0.7.0.1
  */

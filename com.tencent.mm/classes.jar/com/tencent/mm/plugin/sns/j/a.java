@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.sns.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bzz;
-import com.tencent.mm.protocal.protobuf.cnb;
-import com.tencent.mm.protocal.protobuf.cnd;
+import com.tencent.mm.protocal.protobuf.chu;
+import com.tencent.mm.protocal.protobuf.cvt;
+import com.tencent.mm.protocal.protobuf.cvv;
 import com.tencent.mm.protocal.protobuf.dw;
-import com.tencent.mm.protocal.protobuf.he;
-import com.tencent.mm.protocal.protobuf.hf;
+import com.tencent.mm.protocal.protobuf.gs;
+import com.tencent.mm.protocal.protobuf.gt;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
@@ -15,7 +15,7 @@ import java.util.Map;
 
 public final class a
 {
-  private static cnd D(Map<String, String> paramMap, String paramString)
+  private static cvv N(Map<String, String> paramMap, String paramString)
   {
     AppMethodBeat.i(96148);
     String str2 = paramString + ".size.$width";
@@ -24,24 +24,24 @@ public final class a
     paramString = (String)paramMap.get(str2);
     str1 = (String)paramMap.get(str1);
     paramMap = (String)paramMap.get(localObject);
-    localObject = new cnd();
-    ((cnd)localObject).Mtp = 0.0F;
-    ((cnd)localObject).Mto = 0.0F;
-    ((cnd)localObject).Mtq = 0.0F;
+    localObject = new cvv();
+    ((cvv)localObject).TEv = 0.0F;
+    ((cvv)localObject).TEu = 0.0F;
+    ((cvv)localObject).TEw = 0.0F;
     if (paramString != null) {
-      ((cnd)localObject).Mto = PK(paramString);
+      ((cvv)localObject).TEu = Xi(paramString);
     }
     if (str1 != null) {
-      ((cnd)localObject).Mtp = PK(str1);
+      ((cvv)localObject).TEv = Xi(str1);
     }
     if (paramMap != null) {
-      ((cnd)localObject).Mtq = PK(paramMap);
+      ((cvv)localObject).TEw = Xi(paramMap);
     }
     AppMethodBeat.o(96148);
     return localObject;
   }
   
-  private static LinkedList<cnb> E(Map<String, String> paramMap, String paramString)
+  private static LinkedList<cvt> O(Map<String, String> paramMap, String paramString)
   {
     AppMethodBeat.i(96150);
     LinkedList localLinkedList = new LinkedList();
@@ -72,7 +72,7 @@ public final class a
       if ((str9 == null) || (str8 == null)) {
         break label789;
       }
-      localObject = D(paramMap, (String)localObject);
+      localObject = N(paramMap, (String)localObject);
       str9 = (String)paramMap.get(str9);
       str8 = (String)paramMap.get(str8);
       str7 = (String)paramMap.get(str7);
@@ -85,18 +85,18 @@ public final class a
       if ((str9 == null) || (str8 == null)) {
         break label789;
       }
-      cnb localcnb = new cnb();
-      localcnb.Id = PL(str9);
-      localcnb.oUv = aPN(str8);
-      localcnb.Title = PL(str7);
-      localcnb.Desc = PL(str6);
-      localcnb.Url = PL(str5);
-      localcnb.Mcw = aPN(str2);
-      localcnb.Msz = PL(str3);
-      localcnb.MsA = aPN(str1);
-      localcnb.Privated = aPN(str4);
-      localcnb.MsB = ((cnd)localObject);
-      localLinkedList.add(localcnb);
+      cvt localcvt = new cvt();
+      localcvt.Id = Xj(str9);
+      localcvt.rWu = baK(str8);
+      localcvt.fwr = Xj(str7);
+      localcvt.CMB = Xj(str6);
+      localcvt.Url = Xj(str5);
+      localcvt.TlV = baK(str2);
+      localcvt.TDF = Xj(str3);
+      localcvt.TDG = baK(str1);
+      localcvt.Privated = baK(str4);
+      localcvt.TDH = ((cvv)localObject);
+      localLinkedList.add(localcvt);
       i += 1;
       break;
       str9 = paramString + ".media.id";
@@ -114,7 +114,7 @@ public final class a
     return localLinkedList;
   }
   
-  private static float PK(String paramString)
+  private static float Xi(String paramString)
   {
     float f1 = 0.0F;
     AppMethodBeat.i(96144);
@@ -139,7 +139,7 @@ public final class a
     return f1;
   }
   
-  private static String PL(String paramString)
+  private static String Xj(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
@@ -151,22 +151,22 @@ public final class a
   private static dw a(Map<String, String> paramMap, dw paramdw)
   {
     AppMethodBeat.i(96146);
-    he localhe = new he();
-    localhe.Name = PL((String)paramMap.get(".albumList.album.author.name"));
-    localhe.Title = PL((String)paramMap.get(".albumList.album.author.title"));
-    localhe.KHk = PL((String)paramMap.get(".albumList.album.author.description"));
-    localhe.KKN = PL((String)paramMap.get(".albumList.album.author.quote"));
-    localhe.KKO = aN(paramMap);
-    paramdw.KHT = localhe;
+    gs localgs = new gs();
+    localgs.CMP = Xj((String)paramMap.get(".albumList.album.author.name"));
+    localgs.fwr = Xj((String)paramMap.get(".albumList.album.author.title"));
+    localgs.RIC = Xj((String)paramMap.get(".albumList.album.author.description"));
+    localgs.RLF = Xj((String)paramMap.get(".albumList.album.author.quote"));
+    localgs.RLG = aH(paramMap);
+    paramdw.RJn = localgs;
     AppMethodBeat.o(96146);
     return paramdw;
   }
   
-  private static hf aN(Map<String, String> paramMap)
+  private static gt aH(Map<String, String> paramMap)
   {
     AppMethodBeat.i(96147);
-    hf localhf = new hf();
-    cnd localcnd = D(paramMap, ".albumList.album.author.icon.media");
+    gt localgt = new gt();
+    cvv localcvv = N(paramMap, ".albumList.album.author.icon.media");
     String str1 = (String)paramMap.get(".albumList.album.author.icon.media.id");
     String str2 = (String)paramMap.get(".albumList.album.author.icon.media.type");
     String str3 = (String)paramMap.get(".albumList.album.author.icon.media.title");
@@ -176,23 +176,50 @@ public final class a
     String str7 = (String)paramMap.get(".albumList.album.author.icon.media.thumb");
     String str8 = (String)paramMap.get(".albumList.album.author.icon.media.url.$type");
     paramMap = (String)paramMap.get(".albumList.album.author.icon.media.thumb.$type");
-    cnb localcnb = new cnb();
-    localcnb.Id = PL(str1);
-    localcnb.oUv = aPN(str2);
-    localcnb.Title = PL(str3);
-    localcnb.Desc = PL(str4);
-    localcnb.Url = PL(str5);
-    localcnb.Mcw = aPN(str8);
-    localcnb.Msz = PL(str7);
-    localcnb.MsA = aPN(paramMap);
-    localcnb.Privated = aPN(str6);
-    localcnb.MsB = localcnd;
-    localhf.KKP = localcnb;
+    cvt localcvt = new cvt();
+    localcvt.Id = Xj(str1);
+    localcvt.rWu = baK(str2);
+    localcvt.fwr = Xj(str3);
+    localcvt.CMB = Xj(str4);
+    localcvt.Url = Xj(str5);
+    localcvt.TlV = baK(str8);
+    localcvt.TDF = Xj(str7);
+    localcvt.TDG = baK(paramMap);
+    localcvt.Privated = baK(str6);
+    localcvt.TDH = localcvv;
+    localgt.RLH = localcvt;
     AppMethodBeat.o(96147);
-    return localhf;
+    return localgt;
   }
   
-  private static int aPN(String paramString)
+  private static dw b(Map<String, String> paramMap, dw paramdw)
+  {
+    AppMethodBeat.i(96149);
+    int i = 0;
+    chu localchu = new chu();
+    String str2;
+    if (i == 0) {
+      str2 = ".albumList.album.groupList.group.name";
+    }
+    for (String str1 = ".albumList.album.groupList.group.mediaList";; str1 = ".albumList.album.groupList.group" + i + ".mediaList")
+    {
+      str2 = (String)paramMap.get(str2);
+      if (str2 == null) {
+        break label137;
+      }
+      localchu.CMP = Xj(str2);
+      localchu.Sqr = O(paramMap, str1);
+      paramdw.GroupList.add(localchu);
+      i += 1;
+      break;
+      str2 = ".albumList.album.groupList.group" + i + ".name";
+    }
+    label137:
+    AppMethodBeat.o(96149);
+    return paramdw;
+  }
+  
+  private static int baK(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(96143);
@@ -212,14 +239,14 @@ public final class a
     return i;
   }
   
-  public static dw aPO(String paramString)
+  public static dw baL(String paramString)
   {
     AppMethodBeat.i(96145);
     Map localMap = XmlParser.parseXml(paramString, "albumList", null);
     paramString = new dw();
     if (localMap != null)
     {
-      paramString.xLl = PL((String)localMap.get(".albumList.$lang"));
+      paramString.CPt = Xj((String)localMap.get(".albumList.$lang"));
       paramString = b(localMap, a(localMap, paramString));
     }
     for (;;)
@@ -228,37 +255,10 @@ public final class a
       return paramString;
     }
   }
-  
-  private static dw b(Map<String, String> paramMap, dw paramdw)
-  {
-    AppMethodBeat.i(96149);
-    int i = 0;
-    bzz localbzz = new bzz();
-    String str2;
-    if (i == 0) {
-      str2 = ".albumList.album.groupList.group.name";
-    }
-    for (String str1 = ".albumList.album.groupList.group.mediaList";; str1 = ".albumList.album.groupList.group" + i + ".mediaList")
-    {
-      str2 = (String)paramMap.get(str2);
-      if (str2 == null) {
-        break label137;
-      }
-      localbzz.Name = PL(str2);
-      localbzz.LoV = E(paramMap, str1);
-      paramdw.GroupList.add(localbzz);
-      i += 1;
-      break;
-      str2 = ".albumList.album.groupList.group" + i + ".name";
-    }
-    label137:
-    AppMethodBeat.o(96149);
-    return paramdw;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.j.a
  * JD-Core Version:    0.7.0.1
  */

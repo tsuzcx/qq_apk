@@ -16,12 +16,12 @@ public class m
   {
     AppMethodBeat.i(78545);
     Log.i("MicroMsg.JsApiCloseWindow", "invokeInOwn");
-    ((g)paramb.cta).gbL();
-    paramb.c("", null);
+    ((g)paramb.crg).gUG();
+    paramb.a("", null);
     AppMethodBeat.o(78545);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

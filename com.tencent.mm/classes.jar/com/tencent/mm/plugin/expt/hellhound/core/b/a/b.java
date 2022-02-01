@@ -8,14 +8,16 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.f.a.xv;
 import com.tencent.mm.plugin.expt.b.d.a;
 import com.tencent.mm.plugin.expt.hellhound.a.b.b.k;
 import com.tencent.mm.plugin.expt.hellhound.a.f.b.f;
 import com.tencent.mm.plugin.expt.hellhound.core.b.b.h;
-import com.tencent.mm.protocal.protobuf.bn;
-import com.tencent.mm.protocal.protobuf.cri;
-import com.tencent.mm.protocal.protobuf.eci;
-import com.tencent.mm.protocal.protobuf.eih;
+import com.tencent.mm.protocal.protobuf.bl;
+import com.tencent.mm.protocal.protobuf.czz;
+import com.tencent.mm.protocal.protobuf.emj;
+import com.tencent.mm.protocal.protobuf.esj;
+import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,29 +25,29 @@ import java.util.List;
 public final class b
   implements e, com.tencent.mm.plugin.expt.hellhound.core.c
 {
-  private d.a szF;
-  private d szG;
-  private c szH;
-  private boolean szI;
+  private d wfA;
+  private c wfB;
+  private boolean wfC;
+  private d.a wfz;
   
   public b()
   {
     AppMethodBeat.i(121919);
-    this.szG = new d(this);
-    this.szI = com.tencent.mm.plugin.expt.hellhound.a.cNt();
-    this.szH = new c();
+    this.wfA = new d(this);
+    this.wfC = com.tencent.mm.plugin.expt.hellhound.a.dcl();
+    this.wfB = new c();
     AppMethodBeat.o(121919);
   }
   
   @Deprecated
-  private static com.tencent.mm.vending.j.c<String, Integer> W(Activity paramActivity)
+  private static com.tencent.mm.vending.j.c<String, Integer> X(Activity paramActivity)
   {
     AppMethodBeat.i(121936);
     if (paramActivity == null) {
       try
       {
-        com.tencent.mm.plugin.expt.hellhound.core.stack.d.cNM();
-        paramActivity = com.tencent.mm.plugin.expt.hellhound.core.stack.d.cNN();
+        com.tencent.mm.plugin.expt.hellhound.core.stack.d.dcE();
+        paramActivity = com.tencent.mm.plugin.expt.hellhound.core.stack.d.dcF();
         Log.d("HABBYGE-MALI.ActivityMonitor", "getActivityOnFinish: %s, %s", new Object[] { paramActivity.get(0), paramActivity.get(1) });
         AppMethodBeat.o(121936);
         return paramActivity;
@@ -57,7 +59,7 @@ public final class b
         return null;
       }
     }
-    paramActivity = com.tencent.mm.vending.j.a.Q(paramActivity.getClass().getCanonicalName(), Integer.valueOf(paramActivity.hashCode()));
+    paramActivity = com.tencent.mm.vending.j.a.J(paramActivity.getClass().getCanonicalName(), Integer.valueOf(paramActivity.hashCode()));
     AppMethodBeat.o(121936);
     return paramActivity;
   }
@@ -65,39 +67,39 @@ public final class b
   @Deprecated
   private static void a(Activity paramActivity, Intent paramIntent, String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(220425);
-    com.tencent.mm.plugin.expt.hellhound.core.stack.d.cNM().a(paramActivity, paramIntent, paramString1, paramString2, paramInt);
-    AppMethodBeat.o(220425);
+    AppMethodBeat.i(250705);
+    com.tencent.mm.plugin.expt.hellhound.core.stack.d.dcE().a(paramActivity, paramIntent, paramString1, paramString2, paramInt);
+    AppMethodBeat.o(250705);
   }
   
   @Deprecated
   private static void a(String paramString, int paramInt, com.tencent.mm.plugin.expt.hellhound.core.stack.a parama)
   {
-    AppMethodBeat.i(220426);
-    com.tencent.mm.plugin.expt.hellhound.core.stack.d.cNM();
+    AppMethodBeat.i(250706);
+    com.tencent.mm.plugin.expt.hellhound.core.stack.d.dcE();
     com.tencent.mm.plugin.expt.hellhound.core.stack.d.a(paramString, paramInt, parama);
-    AppMethodBeat.o(220426);
+    AppMethodBeat.o(250706);
   }
   
   @Deprecated
-  private static void aX(String paramString, boolean paramBoolean)
+  private static void ba(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(121932);
-    a.GQ(1);
-    if ((!paramBoolean) && (com.tencent.mm.plugin.expt.hellhound.core.b.aoz(paramString)))
+    a.KA(1);
+    if ((!paramBoolean) && (com.tencent.mm.plugin.expt.hellhound.core.b.awy(paramString)))
     {
       Log.i("HABBYGE-MALI.ActivityMonitor", "_quiteActivity come frome: moveActivityTaskToBack");
       AppMethodBeat.o(121932);
       return;
     }
-    com.tencent.mm.plugin.expt.hellhound.core.stack.d.cNM();
-    bn localbn = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cNR();
+    com.tencent.mm.plugin.expt.hellhound.core.stack.d.dcE();
+    bl localbl = com.tencent.mm.plugin.expt.hellhound.core.stack.e.dcJ();
     String str = null;
-    if (localbn != null) {
-      str = localbn.KFh.activityName;
+    if (localbl != null) {
+      str = localbl.RGy.activityName;
     }
-    a.apg(paramString);
-    a.ape(str);
+    a.axg(paramString);
+    a.axe(str);
     Log.i("HABBYGE-MALI.ActivityMonitor", "_finish: from: %s, to: %s = ", new Object[] { paramString, str });
     AppMethodBeat.o(121932);
   }
@@ -108,101 +110,101 @@ public final class b
     AppMethodBeat.i(121933);
     String str = paramActivity.getClass().getCanonicalName();
     int i = paramActivity.hashCode();
-    com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.N(str, null, 104);
+    com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.R(str, null, 104);
     a(null, paramIntent, null, str, i);
-    a(str, i, com.tencent.mm.plugin.expt.hellhound.core.stack.a.szs);
+    a(str, i, com.tencent.mm.plugin.expt.hellhound.core.stack.a.wfo);
     AppMethodBeat.o(121933);
   }
   
-  public final void P(Activity paramActivity)
+  public final void Q(Activity paramActivity)
   {
     AppMethodBeat.i(121923);
     Object localObject;
-    if (this.szI)
+    if (this.wfC)
     {
-      localObject = new eih();
+      localObject = new esj();
       if (paramActivity == null) {}
       for (;;)
       {
-        k.f(paramActivity, ((eih)localObject).timestamp);
-        com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sER = ((eih)localObject).activityName;
-        com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().m(101, localObject);
-        com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
-        com.tencent.mm.plugin.expt.hellhound.a.f.b.e(paramActivity, 2);
+        k.f(paramActivity, ((esj)localObject).timestamp);
+        com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkM = ((esj)localObject).activityName;
+        com.tencent.mm.plugin.expt.hellhound.core.a.a.c.dcB().p(101, localObject);
+        com.tencent.mm.plugin.expt.hellhound.a.f.b.deI();
+        com.tencent.mm.plugin.expt.hellhound.a.f.b.f(paramActivity, 2);
         com.tencent.mm.plugin.expt.hellhound.a.b.a.a(paramActivity.getClass().getCanonicalName(), Integer.valueOf(paramActivity.hashCode()), 1);
         AppMethodBeat.o(121923);
         return;
-        ((eih)localObject).activityName = paramActivity.getClass().getCanonicalName();
-        ((eih)localObject).aHK = paramActivity.hashCode();
-        ((eih)localObject).timestamp = System.currentTimeMillis();
+        ((esj)localObject).activityName = paramActivity.getClass().getCanonicalName();
+        ((esj)localObject).aNf = paramActivity.hashCode();
+        ((esj)localObject).timestamp = System.currentTimeMillis();
       }
     }
-    paramActivity = W(paramActivity);
+    paramActivity = X(paramActivity);
     if (paramActivity != null)
     {
       localObject = (String)paramActivity.get(0);
       ((Integer)paramActivity.get(1)).intValue();
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.N((String)localObject, null, 102);
-        aX((String)localObject, true);
+        com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.R((String)localObject, null, 102);
+        ba((String)localObject, true);
       }
     }
     AppMethodBeat.o(121923);
   }
   
-  public final void Q(Activity paramActivity)
+  public final void R(Activity paramActivity)
   {
     AppMethodBeat.i(121926);
-    if (this.szI)
+    if (this.wfC)
     {
-      com.tencent.mm.plugin.expt.hellhound.core.a.cNx().df(paramActivity);
-      if ((paramActivity != null) && (com.tencent.mm.plugin.expt.hellhound.core.b.aoJ(paramActivity.getClass().getSimpleName())) && (f.af(paramActivity))) {
-        com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().m(222, "144");
+      com.tencent.mm.plugin.expt.hellhound.core.a.dcp().dc(paramActivity);
+      if ((paramActivity != null) && (com.tencent.mm.plugin.expt.hellhound.core.b.awI(paramActivity.getClass().getSimpleName())) && (f.ag(paramActivity))) {
+        com.tencent.mm.plugin.expt.hellhound.core.a.a.c.dcB().p(222, "144");
       }
       k.a(paramActivity, null, System.currentTimeMillis(), 5);
-      localObject = new eih();
-      ((eih)localObject).activityName = paramActivity.getClass().getCanonicalName();
-      ((eih)localObject).aHK = paramActivity.hashCode();
-      ((eih)localObject).timestamp = System.currentTimeMillis();
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().m(202, localObject);
-      com.tencent.mm.plugin.expt.hellhound.a.b.a.b localb = com.tencent.mm.plugin.expt.hellhound.a.b.a.b.sDe;
-      com.tencent.mm.plugin.expt.hellhound.a.b.a.b.c(((eih)localObject).activityName, paramActivity);
-      com.tencent.mm.plugin.expt.hellhound.a.g.e.cQV().a(0, ((eih)localObject).activityName, paramActivity);
-      com.tencent.mm.plugin.expt.hellhound.core.b.c.e.cOp();
-      k.apT(paramActivity.getClass().getSimpleName());
+      localObject = new esj();
+      ((esj)localObject).activityName = paramActivity.getClass().getCanonicalName();
+      ((esj)localObject).aNf = paramActivity.hashCode();
+      ((esj)localObject).timestamp = System.currentTimeMillis();
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.dcB().p(202, localObject);
+      com.tencent.mm.plugin.expt.hellhound.a.b.a.b localb = com.tencent.mm.plugin.expt.hellhound.a.b.a.b.wiY;
+      com.tencent.mm.plugin.expt.hellhound.a.b.a.b.c(((esj)localObject).activityName, paramActivity);
+      com.tencent.mm.plugin.expt.hellhound.a.g.e.dfQ().a(0, ((esj)localObject).activityName, paramActivity);
+      com.tencent.mm.plugin.expt.hellhound.core.b.c.e.ddh();
+      k.axT(paramActivity.getClass().getSimpleName());
       AppMethodBeat.o(121926);
       return;
     }
     Object localObject = paramActivity.getClass().getCanonicalName();
     int i = paramActivity.hashCode();
-    com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.N((String)localObject, null, 105);
-    com.tencent.mm.plugin.expt.hellhound.core.stack.d.cNM();
-    com.tencent.mm.plugin.expt.hellhound.core.stack.d.apb((String)localObject);
-    a((String)localObject, i, com.tencent.mm.plugin.expt.hellhound.core.stack.a.szt);
+    com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.R((String)localObject, null, 105);
+    com.tencent.mm.plugin.expt.hellhound.core.stack.d.dcE();
+    com.tencent.mm.plugin.expt.hellhound.core.stack.d.axb((String)localObject);
+    a((String)localObject, i, com.tencent.mm.plugin.expt.hellhound.core.stack.a.wfp);
     AppMethodBeat.o(121926);
   }
   
-  public final void R(Activity paramActivity)
+  public final void S(Activity paramActivity)
   {
     AppMethodBeat.i(121927);
-    if (this.szI)
+    if (this.wfC)
     {
       long l = System.currentTimeMillis();
       k.d(paramActivity, l);
-      Object localObject = com.tencent.mm.plugin.expt.hellhound.core.a.cNx();
+      Object localObject = com.tencent.mm.plugin.expt.hellhound.core.a.dcp();
       if (paramActivity != null) {
-        ((com.tencent.mm.plugin.expt.hellhound.core.a)localObject).syU.a(paramActivity, l);
+        ((com.tencent.mm.plugin.expt.hellhound.core.a)localObject).weQ.a(paramActivity, l);
       }
       localObject = c.c(paramActivity, l);
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().m(203, localObject);
-      com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
-      com.tencent.mm.plugin.expt.hellhound.a.f.b.e(paramActivity, 0);
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.dcB().p(203, localObject);
+      com.tencent.mm.plugin.expt.hellhound.a.f.b.deI();
+      com.tencent.mm.plugin.expt.hellhound.a.f.b.f(paramActivity, 0);
     }
     AppMethodBeat.o(121927);
   }
   
-  public final void S(Activity paramActivity)
+  public final void T(Activity paramActivity)
   {
     AppMethodBeat.i(121928);
     if (paramActivity == null)
@@ -210,48 +212,48 @@ public final class b
       AppMethodBeat.o(121928);
       return;
     }
-    if (this.szI)
+    if (this.wfC)
     {
-      localObject = new eih();
-      ((eih)localObject).aHK = paramActivity.hashCode();
-      ((eih)localObject).activityName = paramActivity.getClass().getCanonicalName();
-      ((eih)localObject).timestamp = System.currentTimeMillis();
-      com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sES = ((eih)localObject).activityName;
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().m(204, localObject);
-      com.tencent.mm.plugin.expt.hellhound.a.b.a.b localb = com.tencent.mm.plugin.expt.hellhound.a.b.a.b.sDe;
-      com.tencent.mm.plugin.expt.hellhound.a.b.a.b.d(((eih)localObject).activityName, paramActivity);
-      com.tencent.mm.plugin.expt.hellhound.a.g.e.cQV().a(1, ((eih)localObject).activityName, paramActivity);
-      com.tencent.mm.plugin.expt.hellhound.core.b.c.e.cOq();
-      k.apU(paramActivity.getClass().getSimpleName());
+      localObject = new esj();
+      ((esj)localObject).aNf = paramActivity.hashCode();
+      ((esj)localObject).activityName = paramActivity.getClass().getCanonicalName();
+      ((esj)localObject).timestamp = System.currentTimeMillis();
+      com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkN = ((esj)localObject).activityName;
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.dcB().p(204, localObject);
+      com.tencent.mm.plugin.expt.hellhound.a.b.a.b localb = com.tencent.mm.plugin.expt.hellhound.a.b.a.b.wiY;
+      com.tencent.mm.plugin.expt.hellhound.a.b.a.b.d(((esj)localObject).activityName, paramActivity);
+      com.tencent.mm.plugin.expt.hellhound.a.g.e.dfQ().a(1, ((esj)localObject).activityName, paramActivity);
+      com.tencent.mm.plugin.expt.hellhound.core.b.c.e.ddi();
+      k.axU(paramActivity.getClass().getSimpleName());
       AppMethodBeat.o(121928);
       return;
     }
     Object localObject = paramActivity.getClass().getCanonicalName();
     int i = paramActivity.hashCode();
-    com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.N((String)localObject, null, 106);
-    a((String)localObject, i, com.tencent.mm.plugin.expt.hellhound.core.stack.a.szu);
+    com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.R((String)localObject, null, 106);
+    a((String)localObject, i, com.tencent.mm.plugin.expt.hellhound.core.stack.a.wfq);
     AppMethodBeat.o(121928);
   }
   
-  public final void T(Activity paramActivity)
+  public final void U(Activity paramActivity)
   {
     AppMethodBeat.i(121929);
-    if (this.szI)
+    if (this.wfC)
     {
       long l = System.currentTimeMillis();
       k.b(paramActivity, null, l, 7);
       k.e(paramActivity, l);
       Object localObject = c.c(paramActivity, l);
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().m(205, localObject);
-      localObject = com.tencent.mm.plugin.expt.hellhound.core.a.cNx();
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.dcB().p(205, localObject);
+      localObject = com.tencent.mm.plugin.expt.hellhound.core.a.dcp();
       if (paramActivity != null) {
-        ((com.tencent.mm.plugin.expt.hellhound.core.a)localObject).syU.b(paramActivity, l);
+        ((com.tencent.mm.plugin.expt.hellhound.core.a)localObject).weQ.b(paramActivity, l);
       }
     }
     AppMethodBeat.o(121929);
   }
   
-  public final void U(Activity paramActivity)
+  public final void V(Activity paramActivity)
   {
     AppMethodBeat.i(121930);
     if (paramActivity == null)
@@ -259,27 +261,27 @@ public final class b
       AppMethodBeat.o(121930);
       return;
     }
-    if (this.szI)
+    if (this.wfC)
     {
-      localObject = new eih();
-      ((eih)localObject).aHK = paramActivity.hashCode();
-      ((eih)localObject).activityName = paramActivity.getClass().getCanonicalName();
-      ((eih)localObject).timestamp = System.currentTimeMillis();
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().m(206, localObject);
+      localObject = new esj();
+      ((esj)localObject).aNf = paramActivity.hashCode();
+      ((esj)localObject).activityName = paramActivity.getClass().getCanonicalName();
+      ((esj)localObject).timestamp = System.currentTimeMillis();
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.dcB().p(206, localObject);
       AppMethodBeat.o(121930);
       return;
     }
     Object localObject = paramActivity.getClass().getCanonicalName();
     int i = paramActivity.hashCode();
-    if (!com.tencent.mm.plugin.expt.hellhound.core.b.aoG((String)localObject))
+    if (!com.tencent.mm.plugin.expt.hellhound.core.b.awF((String)localObject))
     {
-      com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.N((String)localObject, null, 107);
-      a((String)localObject, i, com.tencent.mm.plugin.expt.hellhound.core.stack.a.szv);
+      com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.R((String)localObject, null, 107);
+      a((String)localObject, i, com.tencent.mm.plugin.expt.hellhound.core.stack.a.wfr);
     }
     AppMethodBeat.o(121930);
   }
   
-  public final void V(Activity paramActivity)
+  public final void W(Activity paramActivity)
   {
     AppMethodBeat.i(121931);
     if (paramActivity == null)
@@ -287,24 +289,24 @@ public final class b
       AppMethodBeat.o(121931);
       return;
     }
-    if (this.szI)
+    if (this.wfC)
     {
-      localObject = new eih();
-      ((eih)localObject).activityName = paramActivity.getClass().getCanonicalName();
-      ((eih)localObject).aHK = paramActivity.hashCode();
-      ((eih)localObject).timestamp = System.currentTimeMillis();
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().m(207, localObject);
-      com.tencent.mm.plugin.expt.hellhound.a.b.a.b localb = com.tencent.mm.plugin.expt.hellhound.a.b.a.b.sDe;
-      com.tencent.mm.plugin.expt.hellhound.a.b.a.b.e(((eih)localObject).activityName, paramActivity);
-      com.tencent.mm.plugin.expt.hellhound.a.g.e.cQV().a(2, ((eih)localObject).activityName, paramActivity);
-      k.apR(((eih)localObject).activityName);
+      localObject = new esj();
+      ((esj)localObject).activityName = paramActivity.getClass().getCanonicalName();
+      ((esj)localObject).aNf = paramActivity.hashCode();
+      ((esj)localObject).timestamp = System.currentTimeMillis();
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.dcB().p(207, localObject);
+      com.tencent.mm.plugin.expt.hellhound.a.b.a.b localb = com.tencent.mm.plugin.expt.hellhound.a.b.a.b.wiY;
+      com.tencent.mm.plugin.expt.hellhound.a.b.a.b.e(((esj)localObject).activityName, paramActivity);
+      com.tencent.mm.plugin.expt.hellhound.a.g.e.dfQ().a(2, ((esj)localObject).activityName, paramActivity);
+      k.axR(((esj)localObject).activityName);
       AppMethodBeat.o(121931);
       return;
     }
     Object localObject = paramActivity.getClass().getCanonicalName();
     int i = paramActivity.hashCode();
-    com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.N((String)localObject, null, 108);
-    a((String)localObject, i, com.tencent.mm.plugin.expt.hellhound.core.stack.a.szw);
+    com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.R((String)localObject, null, 108);
+    a((String)localObject, i, com.tencent.mm.plugin.expt.hellhound.core.stack.a.wfs);
     AppMethodBeat.o(121931);
   }
   
@@ -314,26 +316,26 @@ public final class b
     long l;
     Object localObject2;
     Object localObject1;
-    if (this.szI)
+    if (this.wfC)
     {
       l = System.currentTimeMillis();
-      localObject2 = new eci();
-      ((eci)localObject2).Mhd = new eih();
+      localObject2 = new emj();
+      ((emj)localObject2).TqR = new esj();
       if (paramActivity != null)
       {
         localObject1 = paramActivity.getClass().getCanonicalName();
-        ((eci)localObject2).Mhd.aHK = paramActivity.hashCode();
+        ((emj)localObject2).TqR.aNf = paramActivity.hashCode();
         Log.i("HABBYGE-MALI.AsyncActivityMonitor", "catchStartActivityBundle, fromActivityName: %s", new Object[] { localObject1 });
-        paramActivity = c.Y(paramActivity);
-        ((eci)localObject2).LOY = ((String)paramActivity.get(0));
-        ((eci)localObject2).LPb = ((Boolean)paramActivity.get(1)).booleanValue();
+        paramActivity = c.Z(paramActivity);
+        ((emj)localObject2).SXs = ((String)paramActivity.get(0));
+        ((emj)localObject2).SXv = ((Boolean)paramActivity.get(1)).booleanValue();
         paramActivity = (Activity)localObject1;
       }
     }
     for (;;)
     {
-      ((eci)localObject2).Mhd.activityName = paramActivity;
-      ((eci)localObject2).Mhd.timestamp = l;
+      ((emj)localObject2).TqR.activityName = paramActivity;
+      ((emj)localObject2).TqR.timestamp = l;
       if (paramIntent != null)
       {
         localObject1 = paramIntent.getComponent();
@@ -341,175 +343,191 @@ public final class b
       }
       for (localObject1 = ((ComponentName)localObject1).getClassName();; localObject1 = null)
       {
-        ((eci)localObject2).Mhe = new eih();
-        ((eci)localObject2).Mhe.activityName = ((String)localObject1);
-        ((eci)localObject2).Mhe.aHK = 0;
+        ((emj)localObject2).TqS = new esj();
+        ((emj)localObject2).TqS.activityName = ((String)localObject1);
+        ((emj)localObject2).TqS.aNf = 0;
         Log.i("HABBYGE-MALI.AsyncActivityMonitor", "catchStartActivityBundle, dstActivityName: %s", new Object[] { localObject1 });
-        ((eci)localObject2).Mhe.timestamp = l;
+        ((emj)localObject2).TqS.timestamp = l;
         int i;
         if (paramIntent != null)
         {
           localObject3 = paramIntent.getExtras();
           if (localObject3 != null)
           {
-            ((eci)localObject2).LPa = ((Bundle)localObject3).getString("Chat_User");
+            ((emj)localObject2).SXu = ((Bundle)localObject3).getString("Chat_User");
             i = ((Bundle)localObject3).getInt("minimize_secene", -1);
             localObject3 = ((Bundle)localObject3).getString("KPublisherId", null);
-            ((eci)localObject2).Mhf = String.valueOf(i);
-            ((eci)localObject2).Mhg = ((String)localObject3);
+            ((emj)localObject2).TqT = String.valueOf(i);
+            ((emj)localObject2).TqU = ((String)localObject3);
           }
-          ((eci)localObject2).flags = paramIntent.getFlags();
+          ((emj)localObject2).flags = paramIntent.getFlags();
         }
-        Object localObject3 = com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
+        Object localObject3 = com.tencent.mm.plugin.expt.hellhound.a.f.b.deI();
         Object localObject4;
-        if (com.tencent.mm.plugin.expt.hellhound.core.b.aoz(paramActivity))
+        if (com.tencent.mm.plugin.expt.hellhound.core.b.awy(paramActivity))
         {
-          localObject4 = h.apm(paramActivity);
+          localObject4 = h.axm(paramActivity);
           if (localObject4 == null)
           {
             label316:
-            if (!com.tencent.mm.plugin.expt.hellhound.core.b.aoT(paramActivity)) {
-              break label832;
+            if (!com.tencent.mm.plugin.expt.hellhound.core.b.awS(paramActivity)) {
+              break label898;
             }
-            paramActivity = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.gv(paramActivity, (String)localObject1);
+            paramActivity = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.gJ(paramActivity, (String)localObject1);
           }
         }
         for (;;)
         {
-          ((com.tencent.mm.plugin.expt.hellhound.a.f.b)localObject3).sIr = (paramActivity + "_" + l);
-          Log.i("HABBYGE-MALI.HellSessionMonitor", "setCurSessionIdLocal, sessionId: %s", new Object[] { ((com.tencent.mm.plugin.expt.hellhound.a.f.b)localObject3).sIr });
+          ((com.tencent.mm.plugin.expt.hellhound.a.f.b)localObject3).wom = (paramActivity + "_" + l);
+          Log.i("HABBYGE-MALI.HellSessionMonitor", "setCurSessionIdLocal, sessionId: %s", new Object[] { ((com.tencent.mm.plugin.expt.hellhound.a.f.b)localObject3).wom });
           do
           {
-            ((eci)localObject2).timestamp = l;
-            paramActivity = ((eci)localObject2).Mhe.activityName;
-            com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sEP = 4;
-            com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sEQ = paramActivity;
+            ((emj)localObject2).timestamp = l;
+            paramActivity = ((emj)localObject2).TqS.activityName;
+            com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkK = 4;
+            com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkL = paramActivity;
             com.tencent.mm.plugin.expt.hellhound.a.b.b.c.d(paramActivity, paramIntent);
-            k.apP(paramActivity);
-            k.apN(paramActivity);
-            k.apS(paramActivity);
-            com.tencent.mm.plugin.expt.hellhound.a.aov(paramActivity);
-            com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().m(100, localObject2);
-            com.tencent.mm.plugin.expt.hellhound.a.b.a.a(((eci)localObject2).Mhe.activityName, Integer.valueOf(-1), 0);
-            AppMethodBeat.o(121921);
-            return;
-            com.tencent.mm.plugin.expt.hellhound.core.stack.d.cNM();
-            paramActivity = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cNR();
-            if (paramActivity == null) {
-              break label845;
+            k.axP(paramActivity);
+            k.axN(paramActivity);
+            k.axS(paramActivity);
+            com.tencent.mm.plugin.expt.hellhound.a.awu(paramActivity);
+            com.tencent.mm.plugin.expt.hellhound.core.a.a.c.dcB().p(100, localObject2);
+            com.tencent.mm.plugin.expt.hellhound.a.b.a.a(((emj)localObject2).TqS.activityName, Integer.valueOf(-1), 0);
+            if (paramIntent != null) {}
+            try
+            {
+              if (paramIntent.getComponent() != null)
+              {
+                paramActivity = new xv();
+                paramActivity.fWL.fWM = paramIntent.getComponent().getClassName();
+                EventCenter.instance.publish(paramActivity);
+              }
+              AppMethodBeat.o(121921);
+              return;
             }
-            paramActivity = paramActivity.KFh.activityName;
+            catch (Throwable paramActivity)
+            {
+              Log.e("HABBYGE-MALI.AsyncActivityMonitor", "startActivity: ", new Object[] { paramActivity });
+              AppMethodBeat.o(121921);
+              return;
+            }
+            com.tencent.mm.plugin.expt.hellhound.core.stack.d.dcE();
+            paramActivity = com.tencent.mm.plugin.expt.hellhound.core.stack.e.dcJ();
+            if (paramActivity == null) {
+              break label911;
+            }
+            paramActivity = paramActivity.RGy.activityName;
             Log.i("HABBYGE-MALI.AsyncActivityMonitor", "catchStartActivityBundle, stackTop, fromActivityName: %s", new Object[] { paramActivity });
             break;
             paramActivity = localObject4.getClass().getCanonicalName();
             break label316;
-          } while (!com.tencent.mm.plugin.expt.hellhound.core.b.aoT(paramActivity));
-          paramActivity = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.gv(paramActivity, (String)localObject1);
+          } while (!com.tencent.mm.plugin.expt.hellhound.core.b.awS(paramActivity));
+          paramActivity = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.gJ(paramActivity, (String)localObject1);
           continue;
           if (paramActivity != null)
           {
             localObject1 = paramActivity.getClass().getCanonicalName();
             Log.i("HABBYGE-MALI.ActivityMonitor", "startActivity, srcActivity: %s", new Object[] { localObject1 });
-            com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cNY().szQ.Z(paramActivity);
+            com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.dcQ().wfK.aa(paramActivity);
           }
           for (;;)
           {
-            com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.N((String)localObject1, null, 100);
+            com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.R((String)localObject1, null, 100);
             localObject2 = paramIntent.getComponent();
             if (localObject2 != null) {}
             for (localObject2 = ((ComponentName)localObject2).getClassName();; localObject2 = null)
             {
               Log.i("HABBYGE-MALI.ActivityMonitor", "startActivity, dstActivityName: %s", new Object[] { localObject2 });
-              com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.N((String)localObject2, null, 101);
+              com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.R((String)localObject2, null, 101);
               localObject3 = paramIntent.getExtras();
               if (localObject3 != null)
               {
                 localObject4 = ((Bundle)localObject3).getString("Chat_User");
                 if (!TextUtils.isEmpty((CharSequence)localObject4)) {
-                  com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.go("Chat_User", (String)localObject4);
+                  com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.gC("Chat_User", (String)localObject4);
                 }
                 i = ((Bundle)localObject3).getInt("minimize_secene", -1);
                 localObject3 = ((Bundle)localObject3).getString("KPublisherId", null);
                 if ((i != 1) || (localObject3 == null) || (!"jd_store".equals(localObject3))) {
-                  break label799;
+                  break label865;
                 }
-                com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.go("minimize_secene", String.valueOf(i));
-                com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.go("KPublisherId", (String)localObject3);
+                com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.gC("minimize_secene", String.valueOf(i));
+                com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.gC("KPublisherId", (String)localObject3);
               }
               for (;;)
               {
                 a(paramActivity, paramIntent, (String)localObject1, (String)localObject2, 0);
-                a.apd((String)localObject2);
-                a.apf((String)localObject1);
-                a.GQ(0);
+                a.axd((String)localObject2);
+                a.axf((String)localObject1);
+                a.KA(0);
                 AppMethodBeat.o(121921);
                 return;
-                com.tencent.mm.plugin.expt.hellhound.core.stack.d.cNM();
-                localObject1 = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cNR();
+                com.tencent.mm.plugin.expt.hellhound.core.stack.d.dcE();
+                localObject1 = com.tencent.mm.plugin.expt.hellhound.core.stack.e.dcJ();
                 if (localObject1 == null) {
-                  break label826;
+                  break label892;
                 }
-                localObject1 = ((bn)localObject1).KFh.activityName;
+                localObject1 = ((bl)localObject1).RGy.activityName;
                 Log.i("HABBYGE-MALI.ActivityMonitor", "startActivity, srcActivityName: %s", new Object[] { localObject1 });
-                com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cNY().apj((String)localObject1);
+                com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.dcQ().axj((String)localObject1);
                 break;
-                label799:
-                com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.go("minimize_secene", "");
-                com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.go("KPublisherId", "");
+                label865:
+                com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.gC("minimize_secene", "");
+                com.tencent.mm.plugin.expt.hellhound.core.b.a.a.b.gC("KPublisherId", "");
               }
             }
-            label826:
+            label892:
             localObject1 = null;
           }
-          label832:
+          label898:
           paramActivity = "-1";
         }
       }
-      label845:
+      label911:
       paramActivity = null;
     }
   }
   
   public final void a(d.a parama)
   {
-    this.szF = parama;
-    this.szH.szF = parama;
+    this.wfz = parama;
+    this.wfB.wfz = parama;
   }
   
   public final void b(Activity paramActivity, boolean paramBoolean)
   {
     AppMethodBeat.i(121922);
     Object localObject;
-    if (this.szI)
+    if (this.wfC)
     {
-      localObject = new cri();
-      ((cri)localObject).LOX = new eih();
-      ((cri)localObject).timestamp = System.currentTimeMillis();
+      localObject = new czz();
+      ((czz)localObject).SXr = new esj();
+      ((czz)localObject).timestamp = System.currentTimeMillis();
       if (paramActivity != null)
       {
-        ((cri)localObject).LOX.activityName = paramActivity.getClass().getCanonicalName();
-        ((cri)localObject).LOX.aHK = paramActivity.hashCode();
-        ((cri)localObject).LOX.timestamp = ((cri)localObject).timestamp;
+        ((czz)localObject).SXr.activityName = paramActivity.getClass().getCanonicalName();
+        ((czz)localObject).SXr.aNf = paramActivity.hashCode();
+        ((czz)localObject).SXr.timestamp = ((czz)localObject).timestamp;
       }
-      ((cri)localObject).Mhi = paramBoolean;
-      k.f(paramActivity, ((cri)localObject).timestamp);
-      com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sER = ((cri)localObject).LOX.activityName;
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().m(102, localObject);
-      com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
-      com.tencent.mm.plugin.expt.hellhound.a.f.b.e(paramActivity, 2);
+      ((czz)localObject).TqW = paramBoolean;
+      k.f(paramActivity, ((czz)localObject).timestamp);
+      com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkM = ((czz)localObject).SXr.activityName;
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.dcB().p(102, localObject);
+      com.tencent.mm.plugin.expt.hellhound.a.f.b.deI();
+      com.tencent.mm.plugin.expt.hellhound.a.f.b.f(paramActivity, 2);
       com.tencent.mm.plugin.expt.hellhound.a.b.a.a(paramActivity.getClass().getCanonicalName(), Integer.valueOf(paramActivity.hashCode()), 1);
       AppMethodBeat.o(121922);
       return;
     }
-    paramActivity = W(paramActivity);
+    paramActivity = X(paramActivity);
     if (paramActivity != null)
     {
       localObject = (String)paramActivity.get(0);
       ((Integer)paramActivity.get(1)).intValue();
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.N((String)localObject, null, 103);
-        aX((String)localObject, false);
+        com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.R((String)localObject, null, 103);
+        ba((String)localObject, false);
       }
     }
     AppMethodBeat.o(121922);
@@ -518,11 +536,11 @@ public final class b
   public final void d(Intent paramIntent, Activity paramActivity)
   {
     AppMethodBeat.i(121924);
-    if (this.szI)
+    if (this.wfC)
     {
       paramIntent = c.g(paramIntent, paramActivity);
-      k.cPn();
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().m(200, paramIntent);
+      k.deh();
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.dcB().p(200, paramIntent);
       AppMethodBeat.o(121924);
       return;
     }
@@ -535,10 +553,10 @@ public final class b
   public final void e(Intent paramIntent, Activity paramActivity)
   {
     AppMethodBeat.i(121925);
-    if (this.szI)
+    if (this.wfC)
     {
       paramIntent = c.g(paramIntent, paramActivity);
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().m(201, paramIntent);
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.dcB().p(201, paramIntent);
       AppMethodBeat.o(121925);
       return;
     }
@@ -548,7 +566,7 @@ public final class b
     AppMethodBeat.o(121925);
   }
   
-  public final void l(Application paramApplication)
+  public final void o(Application paramApplication)
   {
     AppMethodBeat.i(121920);
     if (paramApplication == null)
@@ -556,26 +574,26 @@ public final class b
       AppMethodBeat.o(121920);
       return;
     }
-    if (!com.tencent.mm.plugin.expt.hellhound.a.cNo())
+    if (!com.tencent.mm.plugin.expt.hellhound.a.dcg())
     {
       AppMethodBeat.o(121920);
       return;
     }
-    paramApplication = this.szG;
-    com.tencent.mm.hellhoundlib.a.axP().hlG = paramApplication.szM;
+    paramApplication = this.wfA;
+    com.tencent.mm.hellhoundlib.a.aFg().jXp = paramApplication.wfG;
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new Pair("startActivity", "(Landroid/content/Intent;)V"));
     localArrayList.add(new Pair("startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V"));
     localArrayList.add(new Pair("startActivities", "([Landroid/content/Intent;)V"));
     localArrayList.add(new Pair("startActivities", "([Landroid/content/Intent;Landroid/os/Bundle;)V"));
-    com.tencent.mm.hellhoundlib.a.axP();
-    com.tencent.mm.hellhoundlib.a.a(localArrayList, paramApplication.szN);
+    com.tencent.mm.hellhoundlib.a.aFg();
+    com.tencent.mm.hellhoundlib.a.a(localArrayList, paramApplication.wfH);
     AppMethodBeat.o(121920);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.b.a.b
  * JD-Core Version:    0.7.0.1
  */

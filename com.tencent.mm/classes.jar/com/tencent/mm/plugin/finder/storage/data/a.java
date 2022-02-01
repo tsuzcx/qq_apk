@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.arb;
+import com.tencent.mm.protocal.protobuf.asx;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "", "type", "", "name", "", "page", "Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;", "read", "", "(ILjava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;Z)V", "getName", "()Ljava/lang/String;", "getPage", "()Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;", "setPage", "(Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;)V", "getRead", "()Z", "setRead", "(Z)V", "getType", "()I", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "", "type", "", "name", "", "page", "Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;", "read", "", "(ILjava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;Z)V", "getName", "()Ljava/lang/String;", "getPage", "()Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;", "setPage", "(Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;)V", "getRead", "()Z", "setRead", "(Z)V", "getType", "()I", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "plugin-finder_release"})
 public final class a
 {
-  boolean lNl;
+  public asx AmO;
   final String name;
+  boolean oJz;
   final int type;
-  public arb vFP;
   
-  private a(int paramInt, String paramString, arb paramarb)
+  private a(int paramInt, String paramString, asx paramasx)
   {
-    AppMethodBeat.i(251947);
+    AppMethodBeat.i(288244);
     this.type = paramInt;
     this.name = paramString;
-    this.vFP = paramarb;
-    this.lNl = false;
-    AppMethodBeat.o(251947);
+    this.AmO = paramasx;
+    this.oJz = false;
+    AppMethodBeat.o(288244);
   }
   
-  public final void a(arb paramarb)
+  public final void a(asx paramasx)
   {
-    AppMethodBeat.i(251946);
-    p.h(paramarb, "<set-?>");
-    this.vFP = paramarb;
-    AppMethodBeat.o(251946);
+    AppMethodBeat.i(288243);
+    p.k(paramasx, "<set-?>");
+    this.AmO = paramasx;
+    AppMethodBeat.o(288243);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(251950);
+    AppMethodBeat.i(288248);
     if (this != paramObject)
     {
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((this.type != paramObject.type) || (!p.j(this.name, paramObject.name)) || (!p.j(this.vFP, paramObject.vFP)) || (this.lNl != paramObject.lNl)) {}
+        if ((this.type != paramObject.type) || (!p.h(this.name, paramObject.name)) || (!p.h(this.AmO, paramObject.AmO)) || (this.oJz != paramObject.oJz)) {}
       }
     }
     else
     {
-      AppMethodBeat.o(251950);
+      AppMethodBeat.o(288248);
       return true;
     }
-    AppMethodBeat.o(251950);
+    AppMethodBeat.o(288248);
     return false;
   }
   
@@ -58,15 +58,15 @@ public final class a
   
   public final String toString()
   {
-    AppMethodBeat.i(251948);
-    String str = "CachePage(type=" + this.type + ", name=" + this.name + ", page=" + this.vFP + ", read=" + this.lNl + ")";
-    AppMethodBeat.o(251948);
+    AppMethodBeat.i(288245);
+    String str = "CachePage(type=" + this.type + ", name=" + this.name + ", page=" + this.AmO + ", read=" + this.oJz + ")";
+    AppMethodBeat.o(288245);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.data.a
  * JD-Core Version:    0.7.0.1
  */

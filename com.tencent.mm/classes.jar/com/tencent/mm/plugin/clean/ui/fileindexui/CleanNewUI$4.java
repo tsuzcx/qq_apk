@@ -6,7 +6,8 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.R.l;
+import com.tencent.mm.by.c;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -22,39 +23,39 @@ final class CleanNewUI$4
   {
     AppMethodBeat.i(22925);
     b localb = new b();
-    localb.bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/clean/ui/fileindexui/CleanNewUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    localb.bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/clean/ui/fileindexui/CleanNewUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
     Log.i("MicroMsg.CleanNewUI", "qq mgr btn click");
-    com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(714L, 3L, 1L, false);
-    if (!CleanNewUI.d(this.qrp))
+    com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(714L, 3L, 1L, false);
+    if (!CleanNewUI.d(this.tPX))
     {
-      if (!CleanNewUI.e(this.qrp)) {
-        break label158;
+      if (!CleanNewUI.e(this.tPX)) {
+        break label161;
       }
-      com.tencent.mm.ui.base.h.c(this.qrp, this.qrp.getString(2131757606, new Object[] { Util.getSizeMB(CleanNewUI.f(this.qrp)) }), "", this.qrp.getString(2131755785), this.qrp.getString(2131755761), new DialogInterface.OnClickListener()
+      com.tencent.mm.ui.base.h.c(this.tPX, this.tPX.getString(R.l.exz, new Object[] { Util.getSizeMB(CleanNewUI.f(this.tPX)) }), "", this.tPX.getString(R.l.app_download), this.tPX.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(22924);
           try
           {
-            Object localObject = new URL(CleanNewUI.g(CleanNewUI.4.this.qrp).getString("url"));
-            String str = CleanNewUI.g(CleanNewUI.4.this.qrp).getString("md5");
+            Object localObject = new URL(CleanNewUI.g(CleanNewUI.4.this.tPX).getString("url"));
+            String str = CleanNewUI.g(CleanNewUI.4.this.tPX).getString("md5");
             Log.i("MicroMsg.CleanNewUI", "download url:%s, md5:%s", new Object[] { localObject, str });
             paramAnonymousDialogInterface = new Intent();
-            paramAnonymousDialogInterface.setClassName(CleanNewUI.4.this.qrp.getContext(), "com.tencent.mm.plugin.webview.ui.tools.WebViewDownloadUI");
+            paramAnonymousDialogInterface.setClassName(CleanNewUI.4.this.tPX.getContext(), "com.tencent.mm.plugin.webview.ui.tools.WebViewDownloadUI");
             paramAnonymousDialogInterface.putExtra("task_name", "腾讯手机管家");
             paramAnonymousDialogInterface.putExtra("title", "腾讯手机管家");
             paramAnonymousDialogInterface.putExtra("task_url", ((URL)localObject).toString());
             paramAnonymousDialogInterface.putExtra("file_md5", str);
             paramAnonymousDialogInterface.putExtra("fileType", 1);
             paramAnonymousDialogInterface.putExtra("package_name", "com.tencent.qqpimsecure");
-            localObject = CleanNewUI.4.this.qrp;
-            paramAnonymousDialogInterface = new com.tencent.mm.hellhoundlib.b.a().bl(paramAnonymousDialogInterface);
-            com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousDialogInterface.axQ(), "com/tencent/mm/plugin/clean/ui/fileindexui/CleanNewUI$4$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            ((CleanNewUI)localObject).startActivity((Intent)paramAnonymousDialogInterface.pG(0));
-            com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/clean/ui/fileindexui/CleanNewUI$4$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(714L, 4L, 1L, false);
+            localObject = CleanNewUI.4.this.tPX;
+            paramAnonymousDialogInterface = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousDialogInterface);
+            com.tencent.mm.hellhoundlib.a.a.b(localObject, paramAnonymousDialogInterface.aFh(), "com/tencent/mm/plugin/clean/ui/fileindexui/CleanNewUI$4$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            ((CleanNewUI)localObject).startActivity((Intent)paramAnonymousDialogInterface.sf(0));
+            com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/clean/ui/fileindexui/CleanNewUI$4$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(714L, 4L, 1L, false);
             AppMethodBeat.o(22924);
             return;
           }
@@ -73,13 +74,13 @@ final class CleanNewUI$4
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/clean/ui/fileindexui/CleanNewUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(22925);
       return;
-      label158:
+      label161:
       paramView = new Intent();
-      paramView.putExtra("rawUrl", CleanNewUI.bUk());
+      paramView.putExtra("rawUrl", CleanNewUI.chp());
       paramView.putExtra("show_bottom", false);
       paramView.putExtra("showShare", false);
-      c.b(this.qrp.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(714L, 5L, 1L, false);
+      c.b(this.tPX.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(714L, 5L, 1L, false);
     }
   }
 }

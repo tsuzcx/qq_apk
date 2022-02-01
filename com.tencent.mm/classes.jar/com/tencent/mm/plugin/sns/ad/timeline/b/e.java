@@ -1,369 +1,352 @@
 package com.tencent.mm.plugin.sns.ad.timeline.b;
 
-import android.text.TextUtils;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.sns.ad.a.d;
-import com.tencent.mm.plugin.sns.ad.e.b;
-import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.plugin.sns.data.a;
+import com.tencent.mm.plugin.sns.data.m;
 import com.tencent.mm.plugin.sns.model.aj;
-import com.tencent.mm.plugin.sns.model.ar;
-import com.tencent.mm.plugin.sns.storage.ADXml;
-import com.tencent.mm.plugin.sns.storage.ADXml.b;
-import com.tencent.mm.plugin.sns.storage.ADXml.g;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.plugin.sns.ui.aw;
+import com.tencent.mm.plugin.sns.storage.ADInfo;
 import com.tencent.mm.protocal.protobuf.SnsObject;
-import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.adp;
-import com.tencent.mm.protocal.protobuf.cnb;
-import com.tencent.mm.protocal.protobuf.ds;
-import com.tencent.mm.protocal.protobuf.dzd;
+import com.tencent.mm.protocal.protobuf.cde;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.sdk.platformtools.NetStatusUtil;
-import com.tencent.mm.storage.bp;
-import com.tencent.mm.vfs.s;
-import java.util.Collections;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.bv;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public final class e
 {
-  private static Set<String> DyR;
+  private static Map<String, Long> JIW;
   
   static
   {
-    AppMethodBeat.i(202226);
-    DyR = Collections.synchronizedSet(new HashSet());
-    AppMethodBeat.o(202226);
+    AppMethodBeat.i(224325);
+    JIW = new ConcurrentHashMap();
+    AppMethodBeat.o(224325);
   }
   
-  public static void a(ADXml.b paramb, String paramString)
+  public static void a(TextView paramTextView, SnsObject paramSnsObject, ADInfo paramADInfo)
   {
-    AppMethodBeat.i(202222);
-    if (paramb != null)
+    AppMethodBeat.i(224323);
+    if ((paramTextView == null) || (paramSnsObject == null) || (paramADInfo == null))
     {
-      aG(paramb.DWj, paramString, "preloadScanRes bgImage");
-      aG(paramb.pSE, paramString, "preloadScanRes descIcon");
-      aG(paramb.DWk, paramString, "preloadScanRes succIcon");
-    }
-    AppMethodBeat.o(202222);
-  }
-  
-  private static void a(ADXml paramADXml, String paramString)
-  {
-    AppMethodBeat.i(202221);
-    if ((paramADXml == null) || (!paramADXml.isFullCardAd()) || (paramADXml.adFullCardInfo == null))
-    {
-      AppMethodBeat.o(202221);
+      AppMethodBeat.o(224323);
       return;
     }
-    if (paramADXml.adFullCardInfo.DWE != null)
-    {
-      aG(paramADXml.adFullCardInfo.DWE.EwR, paramString, "preloadFullCardImage fullcardEndView.titleImage");
-      aG(paramADXml.adFullCardInfo.DWE.coverImgUrl, paramString, "preloadFullCardImage fullcardEndView.coverImg");
-    }
-    aG(paramADXml.adFullCardInfo.DWA, paramString, "preloadFullCardImage fullcard.frontCover");
-    aG(paramADXml.adFullCardInfo.DWC, paramString, "preloadFullCardImage fullcard.endCover");
-    AppMethodBeat.o(202221);
-  }
-  
-  public static boolean a(TimeLineObject paramTimeLineObject, ADXml paramADXml, int paramInt)
-  {
-    AppMethodBeat.i(202214);
     try
     {
-      if (!eXV())
-      {
-        Log.w("TimeLineAdPreloadHelper", "checkPreloadAdResource, network is not wifi or 4G,5G");
-        AppMethodBeat.o(202214);
-        return false;
+      HashSet localHashSet = m.b(m.b(paramSnsObject), m.c(paramSnsObject));
+      if ((paramSnsObject != null) && (!Util.isNullOrNil(paramSnsObject.Username))) {
+        localHashSet.remove(paramSnsObject.Username);
       }
-      b(paramTimeLineObject, paramADXml, paramInt);
+      int i = Math.max(localHashSet.size(), paramADInfo.adExtTailWordingExchangeValue);
+      paramTextView.setText(String.format(paramADInfo.adExtTailWording, new Object[] { Integer.valueOf(i) }));
+      paramTextView.setVisibility(0);
+      if (paramADInfo.adExtTailWordingExchangeValue < localHashSet.size()) {
+        com.tencent.mm.plugin.report.service.h.IzE.el(1612, 51);
+      }
+      AppMethodBeat.o(224323);
+      return;
     }
-    catch (Throwable paramTimeLineObject)
+    catch (Throwable paramSnsObject)
     {
-      for (;;)
-      {
-        Log.e("TimeLineAdPreloadHelper", "checkPreloadAdResource, exp=" + paramTimeLineObject.toString());
-      }
+      paramTextView.setVisibility(8);
+      Log.e("DynamicDataReqHelper", paramSnsObject.toString());
+      AppMethodBeat.o(224323);
     }
-    AppMethodBeat.o(202214);
-    return false;
   }
   
-  private static boolean a(final cnb paramcnb, String paramString)
+  public static void a(String paramString, ADInfo paramADInfo, SnsObject paramSnsObject)
   {
-    AppMethodBeat.i(202219);
-    String str1 = ar.ki(aj.getAccSnsPath(), paramcnb.Id);
-    String str2 = r.j(paramcnb);
-    str1 = str1 + str2;
-    if (s.YS(str1))
+    AppMethodBeat.i(224306);
+    if ((paramADInfo == null) || (Util.isNullOrNil(paramString)))
     {
-      Log.w("TimeLineAdPreloadHelper", "startPreloadVideo, file Exists, snsId=" + paramString + ", mediaId=" + paramcnb.Id + ", filePath=" + str1);
-      AppMethodBeat.o(202219);
+      Log.e("DynamicDataReqHelper", "adInfo or snsId is null, snsId = ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(224306);
+      return;
+    }
+    if (paramSnsObject == null)
+    {
+      Log.e("DynamicDataReqHelper", "snsObject is null, snsId = ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(224306);
+      return;
+    }
+    if (paramADInfo.adChainType != 1)
+    {
+      Log.i("DynamicDataReqHelper", "adChainType is not 1, snsId = ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(224306);
+      return;
+    }
+    int i;
+    long l2;
+    if (paramADInfo.adChainTypeExpireTime == 0)
+    {
+      i = 60000;
+      l2 = System.currentTimeMillis();
+      localObject = (Long)JIW.get(paramString);
+      if (localObject != null) {
+        break label154;
+      }
+    }
+    label154:
+    for (long l1 = 0L;; l1 = ((Long)localObject).longValue())
+    {
+      if (l2 - l1 >= i) {
+        break label164;
+      }
+      AppMethodBeat.o(224306);
+      return;
+      i = paramADInfo.adChainTypeExpireTime * 1000;
+      break;
+    }
+    label164:
+    Object localObject = m.b(paramSnsObject);
+    paramSnsObject = m.c(paramSnsObject);
+    HashSet localHashSet = m.b((HashSet)localObject, paramSnsObject);
+    paramADInfo = new com.tencent.mm.plugin.sns.ad.f.i("", paramADInfo.aid, paramString, paramADInfo.uxInfo, localHashSet.size(), ((HashSet)localObject).size(), paramSnsObject.size());
+    com.tencent.mm.kernel.h.aGY().a(4342, new a(paramString));
+    com.tencent.mm.kernel.h.aHF().kcd.a(paramADInfo, 0);
+    JIW.put(paramString, Long.valueOf(l2));
+    com.tencent.mm.plugin.report.service.h.IzE.el(1612, 43);
+    AppMethodBeat.o(224306);
+  }
+  
+  public static boolean a(ADInfo paramADInfo)
+  {
+    boolean bool2 = true;
+    AppMethodBeat.i(224314);
+    if (paramADInfo == null)
+    {
+      AppMethodBeat.o(224314);
       return false;
     }
-    MMHandlerThread.postToMainThread(new Runnable()
+    boolean bool1;
+    if ((!Util.isNullOrNil(paramADInfo.adExtTailWording)) && (paramADInfo.adExtTailWordingExchangeValue > 0))
     {
-      public final void run()
-      {
-        AppMethodBeat.i(202210);
-        try
-        {
-          Log.i("TimeLineAdPreloadHelper", "startPreloadVideo, snsId=" + this.jrJ + ", mediaId=" + paramcnb.Id);
-          aj.faJ().a(paramcnb, 4, null, bp.Oqt);
-          AppMethodBeat.o(202210);
-          return;
-        }
-        catch (Throwable localThrowable)
-        {
-          Log.e("TimeLineAdPreloadHelper", "startPreloadVideo exp=" + localThrowable.toString());
-          AppMethodBeat.o(202210);
-        }
+      bool1 = true;
+      if (!bool1) {
+        break label101;
       }
-    });
-    AppMethodBeat.o(202219);
-    return true;
+      bool1 = paramADInfo.adExtTailWording.contains("%d");
+      int i = paramADInfo.adExtTailWording.indexOf("%");
+      int j = paramADInfo.adExtTailWording.lastIndexOf("%");
+      if ((!bool1) || (i != j)) {
+        break label96;
+      }
+      bool1 = bool2;
+    }
+    label96:
+    label101:
+    for (;;)
+    {
+      AppMethodBeat.o(224314);
+      return bool1;
+      bool1 = false;
+      break;
+      bool1 = false;
+    }
   }
   
-  public static boolean a(ds paramds)
+  public static boolean a(ADInfo paramADInfo, String paramString)
   {
-    AppMethodBeat.i(202215);
-    try
+    AppMethodBeat.i(224294);
+    if (((paramADInfo.adActionExtTailType == ADInfo.ADChainStrengthenUserInfoFormatWording) && (!Util.isNullOrNil(paramADInfo.adActionExtTailWording)) && (paramADInfo.adActionExtUserList.size() > 0)) || ((paramADInfo.adActionExtTailType == ADInfo.ADChainStrengthenDefaultWording) && (!Util.isNullOrNil(paramADInfo.adActionExtTailWording))))
     {
-      if (!eXV())
-      {
-        Log.w("TimeLineAdPreloadHelper", "checkPreloadAdResource, network is not wifi or 4G,5G");
-        AppMethodBeat.o(202215);
-        return false;
-      }
-      String str = z.b(paramds.KHG.MYH.ObjectDesc);
-      paramds = z.a(paramds.KHG.MYI);
-      b(com.tencent.mm.modelsns.n.PM(str), new ADXml(paramds), 1);
-    }
-    catch (Throwable paramds)
-    {
-      for (;;)
-      {
-        Log.e("TimeLineAdPreloadHelper", "checkPreloadAdResource, exp2=" + paramds.toString());
-      }
-    }
-    AppMethodBeat.o(202215);
-    return false;
-  }
-  
-  private static void aG(final String paramString1, final String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(202224);
-    if (TextUtils.isEmpty(paramString1))
-    {
-      Log.w("TimeLineAdPreloadHelper", paramString3 + " url is empty, snsid=" + paramString2);
-      AppMethodBeat.o(202224);
-      return;
-    }
-    String str = h.kz("adId", paramString1);
-    if ((!TextUtils.isEmpty(str)) && (s.YS(str)))
-    {
-      Log.i("TimeLineAdPreloadHelper", paramString3 + " file exists, snsid=" + paramString2);
-      AppMethodBeat.o(202224);
-      return;
-    }
-    if (DyR.contains(paramString1))
-    {
-      Log.w("TimeLineAdPreloadHelper", paramString3 + " is in downloading, snsid=" + paramString2);
-      AppMethodBeat.o(202224);
-      return;
-    }
-    DyR.add(paramString1);
-    h.a(paramString1, true, new f.a()
-    {
-      public final void aNH(String paramAnonymousString)
-      {
-        AppMethodBeat.i(202213);
-        Log.i("TimeLineAdPreloadHelper", this.myS + " succ, snsid=" + paramString2 + ", url=" + paramString1);
-        e.DyR.remove(paramString1);
-        AppMethodBeat.o(202213);
-      }
-      
-      public final void eWN() {}
-      
-      public final void eWO()
-      {
-        AppMethodBeat.i(202212);
-        Log.e("TimeLineAdPreloadHelper", this.myS + " failed, snsid=" + paramString2 + ", url=" + paramString1);
-        e.DyR.remove(paramString1);
-        AppMethodBeat.o(202212);
-      }
-    });
-    AppMethodBeat.o(202224);
-  }
-  
-  public static String aNR(String paramString)
-  {
-    AppMethodBeat.i(258594);
-    paramString = h.kz("adId", paramString);
-    AppMethodBeat.o(258594);
-    return paramString;
-  }
-  
-  private static void b(TimeLineObject paramTimeLineObject, ADXml paramADXml, int paramInt)
-  {
-    AppMethodBeat.i(202216);
-    Log.i("TimeLineAdPreloadHelper", "doPreload, scene=".concat(String.valueOf(paramInt)));
-    b(paramTimeLineObject, paramADXml);
-    a(paramADXml, paramTimeLineObject.Id);
-    if (paramADXml != null) {
-      a(paramADXml.adScanJumpInfo, paramTimeLineObject.Id);
-    }
-    AppMethodBeat.o(202216);
-  }
-  
-  private static boolean b(ADXml paramADXml, String paramString)
-  {
-    AppMethodBeat.i(202223);
-    if ((paramADXml == null) || (paramADXml.adFinderTopicInfo == null) || (TextUtils.isEmpty(paramString)))
-    {
-      AppMethodBeat.o(202223);
-      return false;
-    }
-    try
-    {
-      paramADXml = paramADXml.adFinderTopicInfo.DrS;
-      boolean bool = com.tencent.mm.plugin.sns.ad.i.c.isEmpty(paramADXml);
-      if (bool)
-      {
-        AppMethodBeat.o(202223);
-        return false;
-      }
-      paramADXml = paramADXml.iterator();
-      while (paramADXml.hasNext())
-      {
-        com.tencent.mm.plugin.sns.ad.a.e locale = (com.tencent.mm.plugin.sns.ad.a.e)paramADXml.next();
-        if ((locale != null) && (locale.eWB()))
-        {
-          a(locale.ebR, paramString);
-          b(locale.ebR, paramString);
-        }
-      }
-      Log.d("TimeLineAdPreloadHelper", "the topic card resource preloaded!");
-    }
-    catch (Throwable paramADXml)
-    {
-      Log.e("TimeLineAdPreloadHelper", "preloadTopicCardRes exp=" + paramADXml.toString());
-      AppMethodBeat.o(202223);
-      return false;
-    }
-    AppMethodBeat.o(202223);
-    return true;
-  }
-  
-  private static boolean b(TimeLineObject paramTimeLineObject, ADXml paramADXml)
-  {
-    AppMethodBeat.i(202218);
-    try
-    {
-      if (paramTimeLineObject.ContentObj.LoU != 15)
-      {
-        Log.w("TimeLineAdPreloadHelper", "preloadAdVideo, ContentStyle is not video, snsId=" + paramTimeLineObject.Id);
-        AppMethodBeat.o(202218);
-        return false;
-      }
-      if ((paramTimeLineObject.ContentObj.LoV == null) || (paramTimeLineObject.ContentObj.LoV.isEmpty()))
-      {
-        Log.w("TimeLineAdPreloadHelper", "preloadAdVideo, MediaObjList is empty, snsId=" + paramTimeLineObject.Id);
-        AppMethodBeat.o(202218);
-        return false;
-      }
-      if (b(paramADXml, paramTimeLineObject.Id))
-      {
-        Log.i("TimeLineAdPreloadHelper", "the sns info is topic card info, snsId=" + paramTimeLineObject.Id);
-        AppMethodBeat.o(202218);
-        return true;
-      }
-      cnb localcnb = (cnb)paramTimeLineObject.ContentObj.LoV.get(0);
-      boolean bool = a.a(paramTimeLineObject, paramADXml);
-      Log.i("TimeLineAdPreloadHelper", "AdH265Helper, preloadAdVideo, isOnlineVideo=".concat(String.valueOf(bool)));
-      b.a(paramADXml, localcnb, paramTimeLineObject.Id);
-      if (!bool) {
-        a(localcnb, paramTimeLineObject.Id);
-      }
-      b(localcnb, paramTimeLineObject.Id);
-      AppMethodBeat.o(202218);
+      Log.i("DynamicDataReqHelper", "use init adChainData");
+      JIW.put(paramString, Long.valueOf(System.currentTimeMillis()));
+      AppMethodBeat.o(224294);
       return true;
     }
-    catch (Throwable paramTimeLineObject)
-    {
-      Log.e("TimeLineAdPreloadHelper", "preloadAdVideo, doCheckVideo  Ad exp=" + paramTimeLineObject.toString());
-      AppMethodBeat.o(202218);
-    }
+    AppMethodBeat.o(224294);
     return false;
   }
   
-  private static boolean b(final cnb paramcnb, String paramString)
+  static final class a
+    implements com.tencent.mm.an.i
   {
-    AppMethodBeat.i(202220);
-    String str1 = ar.ki(aj.getAccSnsPath(), paramcnb.Id);
-    String str2 = r.e(paramcnb);
-    if (s.YS(str1 + str2))
+    private ADInfo JIX;
+    private int actionType = 1;
+    private String fLp;
+    
+    private a(int paramInt, String paramString)
     {
-      Log.w("TimeLineAdPreloadHelper", "startPreloadThumb, file Exists, snsId=" + paramString + ", mediaId=" + paramcnb.Id);
-      AppMethodBeat.o(202220);
-      return false;
+      this.fLp = paramString;
     }
-    MMHandlerThread.postToMainThread(new Runnable()
+    
+    public final void onSceneEnd(int paramInt1, int paramInt2, final String paramString, q paramq)
     {
-      public final void run()
-      {
-        int i = 1;
-        AppMethodBeat.i(202211);
+      AppMethodBeat.i(257309);
+      if ((paramq instanceof com.tencent.mm.plugin.sns.ad.f.i)) {
         try
         {
-          Log.i("TimeLineAdPreloadHelper", "startPreloadThumb, snsId=" + this.jrJ + ", mediaId=" + paramcnb.Id);
-          com.tencent.mm.plugin.sns.data.n localn = new com.tencent.mm.plugin.sns.data.n(paramcnb);
-          localn.DEs = 1;
-          localn.dPI = paramcnb.Id;
-          com.tencent.mm.plugin.sns.model.c localc = aj.faJ();
-          cnb localcnb = paramcnb;
-          if (paramcnb.oUv == 6) {
-            i = 5;
+          Object localObject = (cde)d.c.b(((com.tencent.mm.an.d)paramq.getReqResp()).lBS);
+          StringBuilder localStringBuilder = new StringBuilder("errType = ").append(paramInt1).append(", errCode = ").append(paramInt2).append(", snsId = ").append(this.fLp).append(", rsp.sns_ad_id = ");
+          if (localObject == null) {}
+          for (paramString = "";; paramString = ((cde)localObject).Tlb)
+          {
+            Log.i("DynamicDataReqHelper", paramString);
+            if ((paramInt1 == 0) && (paramInt2 == 0) && (localObject != null))
+            {
+              paramInt1 = ((cde)localObject).tpK;
+              paramString = ((cde)localObject).Tlb;
+              localObject = ((cde)localObject).Tle;
+              if ((this.actionType == 1) && (this.actionType == paramInt1)) {
+                if ((!Util.isNullOrNil(new String[] { this.fLp, localObject })) && (this.fLp.equals(paramString)))
+                {
+                  paramString = this.fLp;
+                  com.tencent.e.h.ZvG.be(new Runnable()
+                  {
+                    public final void run()
+                    {
+                      int j = 1;
+                      AppMethodBeat.i(267019);
+                      a locala;
+                      Object localObject1;
+                      try
+                      {
+                        e.a.a(e.a.this, paramString);
+                        if (e.a.a(e.a.this) == null)
+                        {
+                          Log.e("DynamicDataReqHelper", "adInfo is null, can not update AdInfo, snsId = " + paramString);
+                          AppMethodBeat.o(267019);
+                          return;
+                        }
+                        locala = new a();
+                        JSONObject localJSONObject = new JSONObject(this.ove);
+                        if (localJSONObject.has("WordingComplexString")) {
+                          locala.adExtTailWording = localJSONObject.optString("WordingComplexString");
+                        }
+                        if (localJSONObject.has("WordingComplexExchangeValue")) {
+                          locala.adExtTailWordingExchangeValue = localJSONObject.optInt("WordingComplexExchangeValue");
+                        }
+                        if (localJSONObject.has("WordingLink")) {}
+                        for (locala.adActionExtTailLink = localJSONObject.optString("WordingLink");; locala.adActionExtTailLink = null)
+                        {
+                          if (!localJSONObject.has("WordingType")) {
+                            break label630;
+                          }
+                          locala.adActionExtTailType = localJSONObject.optInt("WordingType");
+                          if (locala.adActionExtTailType != ADInfo.ADChainStrengthenUserInfoFormatWording) {
+                            break label586;
+                          }
+                          if (!localJSONObject.has("UserNameList")) {
+                            break;
+                          }
+                          localObject1 = localJSONObject.optJSONArray("UserNameList");
+                          locala.adActionExtUserList.clear();
+                          i = 0;
+                          while (i < ((JSONArray)localObject1).length())
+                          {
+                            locala.adActionExtUserList.add(((JSONArray)localObject1).optString(i));
+                            i += 1;
+                          }
+                        }
+                        locala.adActionExtUserList.clear();
+                      }
+                      catch (Throwable localThrowable)
+                      {
+                        Log.e("DynamicDataReqHelper", localThrowable.toString());
+                        AppMethodBeat.o(267019);
+                        return;
+                      }
+                      String str1;
+                      if (localThrowable.has("WordingRepAndroid"))
+                      {
+                        str1 = localThrowable.optString("WordingRepAndroid");
+                        if (str1.indexOf("%s") < 0) {
+                          break label641;
+                        }
+                      }
+                      label641:
+                      for (int i = j;; i = 0)
+                      {
+                        j = str1.indexOf("%");
+                        int k = str1.lastIndexOf("%");
+                        if ((!Util.isNullOrNil(str1)) && (i != 0) && (j == k)) {
+                          locala.adActionExtTailWording = str1;
+                        }
+                        if (!Util.isNullOrNil(locala.adActionExtTailWording))
+                        {
+                          localObject1 = locala.adActionExtUserList.iterator();
+                          str1 = "";
+                        }
+                        for (;;)
+                        {
+                          if (((Iterator)localObject1).hasNext())
+                          {
+                            String str2 = (String)((Iterator)localObject1).next();
+                            Object localObject2 = aj.fOw().bwh(str2);
+                            if (localObject2 != null)
+                            {
+                              localObject2 = ((com.tencent.mm.contact.d)localObject2).ays();
+                              if (!Util.isNullOrNil((String)localObject2)) {
+                                str1 = str1 + (String)localObject2;
+                              }
+                            }
+                            while (locala.adActionExtUserList.getLast() != str2)
+                            {
+                              str1 = str1 + ",";
+                              break;
+                              str1 = str1 + str2;
+                              continue;
+                              str1 = str1 + str2;
+                            }
+                          }
+                          locala.adActionExtTailUserDisplayName = str1;
+                          locala.adActionExtTailFormattedWording = String.format(locala.adActionExtTailWording, new Object[] { str1 });
+                          for (;;)
+                          {
+                            e.a.a(e.a.this, locala);
+                            AppMethodBeat.o(267019);
+                            return;
+                            e.a.a(locala);
+                            continue;
+                            label586:
+                            if ((locala.adActionExtTailType == ADInfo.ADChainStrengthenDefaultWording) && (str1.has("Wording")))
+                            {
+                              locala.adActionExtTailWording = str1.optString("Wording");
+                            }
+                            else
+                            {
+                              e.a.a(locala);
+                              continue;
+                              label630:
+                              e.a.a(locala);
+                            }
+                          }
+                        }
+                      }
+                    }
+                  });
+                }
+              }
+            }
+            com.tencent.mm.kernel.h.aGY().b(paramq.getType(), this);
+            AppMethodBeat.o(257309);
+            return;
           }
-          localc.a(localcnb, i, localn, bp.Oqt);
-          AppMethodBeat.o(202211);
-          return;
+          AppMethodBeat.o(257309);
         }
-        catch (Throwable localThrowable)
+        catch (Throwable paramString)
         {
-          Log.e("TimeLineAdPreloadHelper", "startPreloadThumb exp=" + localThrowable.toString());
-          AppMethodBeat.o(202211);
+          Log.e("DynamicDataReqHelper", "NetSceneDynamicAdDataUpdate onSceneEnd exp=" + paramString.toString() + ", snsId = " + this.fLp);
         }
       }
-    });
-    AppMethodBeat.o(202220);
-    return true;
-  }
-  
-  private static boolean eXV()
-  {
-    AppMethodBeat.i(202217);
-    if ((NetStatusUtil.isWifi(MMApplicationContext.getContext())) || (NetStatusUtil.is4G(MMApplicationContext.getContext())) || (NetStatusUtil.is5G(MMApplicationContext.getContext())))
-    {
-      AppMethodBeat.o(202217);
-      return true;
     }
-    AppMethodBeat.o(202217);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.b.e
  * JD-Core Version:    0.7.0.1
  */

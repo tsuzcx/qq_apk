@@ -5,19 +5,19 @@ import g.a.a.b;
 import java.util.LinkedList;
 
 public final class a
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public LinkedList<String> dTe;
+  public String Ejj;
+  public LinkedList<String> fMA;
   public double latitude;
   public double longitude;
   public long timestamp;
   public String username;
-  public String yFq;
   
   public a()
   {
     AppMethodBeat.i(55668);
-    this.dTe = new LinkedList();
+    this.fMA = new LinkedList();
     AppMethodBeat.o(55668);
   }
   
@@ -34,15 +34,15 @@ public final class a
         throw paramVarArgs;
       }
       if (this.username != null) {
-        paramVarArgs.e(1, this.username);
+        paramVarArgs.f(1, this.username);
       }
-      paramVarArgs.e(2, 1, this.dTe);
+      paramVarArgs.e(2, 1, this.fMA);
       paramVarArgs.e(3, this.longitude);
       paramVarArgs.e(4, this.latitude);
-      if (this.yFq != null) {
-        paramVarArgs.e(5, this.yFq);
+      if (this.Ejj != null) {
+        paramVarArgs.f(5, this.Ejj);
       }
-      paramVarArgs.bb(6, this.timestamp);
+      paramVarArgs.bm(6, this.timestamp);
       AppMethodBeat.o(55669);
       return 0;
     }
@@ -52,24 +52,24 @@ public final class a
       }
     }
     label516:
-    for (paramInt = g.a.a.b.b.a.f(1, this.username) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.username) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.a.c(2, 1, this.dTe) + (g.a.a.b.b.a.fS(3) + 8) + (g.a.a.b.b.a.fS(4) + 8);
+      int i = paramInt + g.a.a.a.c(2, 1, this.fMA) + (g.a.a.b.b.a.gL(3) + 8) + (g.a.a.b.b.a.gL(4) + 8);
       paramInt = i;
-      if (this.yFq != null) {
-        paramInt = i + g.a.a.b.b.a.f(5, this.yFq);
+      if (this.Ejj != null) {
+        paramInt = i + g.a.a.b.b.a.g(5, this.Ejj);
       }
-      i = g.a.a.b.b.a.r(6, this.timestamp);
+      i = g.a.a.b.b.a.p(6, this.timestamp);
       AppMethodBeat.o(55669);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.dTe.clear();
+        this.fMA.clear();
         paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         if (this.username == null)
@@ -91,27 +91,27 @@ public final class a
           AppMethodBeat.o(55669);
           return -1;
         case 1: 
-          locala1.username = locala.UbS.readString();
+          locala1.username = locala.abFh.readString();
           AppMethodBeat.o(55669);
           return 0;
         case 2: 
-          locala1.dTe.add(locala.UbS.readString());
+          locala1.fMA.add(locala.abFh.readString());
           AppMethodBeat.o(55669);
           return 0;
         case 3: 
-          locala1.longitude = Double.longBitsToDouble(locala.UbS.zn());
+          locala1.longitude = Double.longBitsToDouble(locala.abFh.AP());
           AppMethodBeat.o(55669);
           return 0;
         case 4: 
-          locala1.latitude = Double.longBitsToDouble(locala.UbS.zn());
+          locala1.latitude = Double.longBitsToDouble(locala.abFh.AP());
           AppMethodBeat.o(55669);
           return 0;
         case 5: 
-          locala1.yFq = locala.UbS.readString();
+          locala1.Ejj = locala.abFh.readString();
           AppMethodBeat.o(55669);
           return 0;
         }
-        locala1.timestamp = locala.UbS.zl();
+        locala1.timestamp = locala.abFh.AN();
         AppMethodBeat.o(55669);
         return 0;
       }
@@ -122,7 +122,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.location.a.a
  * JD-Core Version:    0.7.0.1
  */

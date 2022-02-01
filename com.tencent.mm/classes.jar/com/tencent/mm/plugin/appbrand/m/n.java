@@ -16,13 +16,13 @@ public abstract interface n
   
   public static final class b
   {
-    public long dqk;
-    public long dql;
+    public long fiR;
+    public long fiS;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.m.n
  * JD-Core Version:    0.7.0.1
  */

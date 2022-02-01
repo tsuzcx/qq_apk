@@ -18,11 +18,11 @@ public class RealSetStrokeStyleActionRadialArg
   extends RealSetStrokeStyleActionArg
 {
   public static final Parcelable.Creator<RealSetStrokeStyleActionRadialArg> CREATOR;
-  public float kZA;
-  public float kZB;
-  public int[] kZE;
-  public float[] kZF;
-  public float kZH;
+  public float nTL;
+  public float nTM;
+  public int[] nTP;
+  public float[] nTQ;
+  public float nTS;
   
   static
   {
@@ -41,13 +41,13 @@ public class RealSetStrokeStyleActionRadialArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145102);
-    if ((this.kZE == null) || (this.kZF == null))
+    if ((this.nTP == null) || (this.nTQ == null))
     {
       AppMethodBeat.o(145102);
       return false;
     }
-    paramCanvas = new RadialGradient(this.kZA, this.kZB, this.kZH, this.kZE, this.kZF, Shader.TileMode.CLAMP);
-    paramd.kZl.setShader(paramCanvas);
+    paramCanvas = new RadialGradient(this.nTL, this.nTM, this.nTS, this.nTP, this.nTQ, Shader.TileMode.CLAMP);
+    paramd.nTw.setShader(paramCanvas);
     AppMethodBeat.o(145102);
     return true;
   }
@@ -76,7 +76,7 @@ public class RealSetStrokeStyleActionRadialArg
       return false;
     }
     paramObject = (RealSetStrokeStyleActionRadialArg)paramObject;
-    if ((Float.compare(paramObject.kZA, this.kZA) == 0) && (Float.compare(paramObject.kZB, this.kZB) == 0) && (Float.compare(paramObject.kZH, this.kZH) == 0) && (Arrays.equals(this.kZE, paramObject.kZE)) && (Arrays.equals(this.kZF, paramObject.kZF)))
+    if ((Float.compare(paramObject.nTL, this.nTL) == 0) && (Float.compare(paramObject.nTM, this.nTM) == 0) && (Float.compare(paramObject.nTS, this.nTS) == 0) && (Arrays.equals(this.nTP, paramObject.nTP)) && (Arrays.equals(this.nTQ, paramObject.nTQ)))
     {
       AppMethodBeat.o(145103);
       return true;
@@ -100,20 +100,20 @@ public class RealSetStrokeStyleActionRadialArg
       AppMethodBeat.o(145107);
       return;
     }
-    this.kZA = g.f(localJSONArray, 1);
-    this.kZB = g.f(localJSONArray, 2);
-    this.kZH = g.f(localJSONArray, 3);
+    this.nTL = g.f(localJSONArray, 1);
+    this.nTM = g.f(localJSONArray, 2);
+    this.nTS = g.f(localJSONArray, 3);
     paramJSONArray = paramJSONArray.optJSONArray(2);
-    this.kZE = new int[paramJSONArray.length()];
-    this.kZF = new float[paramJSONArray.length()];
+    this.nTP = new int[paramJSONArray.length()];
+    this.nTQ = new float[paramJSONArray.length()];
     int i = 0;
     while (i < paramJSONArray.length())
     {
       localJSONArray = paramJSONArray.optJSONArray(i);
       if (localJSONArray.length() >= 2)
       {
-        this.kZF[i] = ((float)localJSONArray.optDouble(0));
-        this.kZE[i] = g.r(localJSONArray.optJSONArray(1));
+        this.nTQ[i] = ((float)localJSONArray.optDouble(0));
+        this.nTP[i] = g.r(localJSONArray.optJSONArray(1));
       }
       i += 1;
     }
@@ -123,9 +123,9 @@ public class RealSetStrokeStyleActionRadialArg
   public int hashCode()
   {
     AppMethodBeat.i(145104);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.kZA), Float.valueOf(this.kZB), Float.valueOf(this.kZH) });
-    int j = Arrays.hashCode(this.kZE);
-    int k = Arrays.hashCode(this.kZF);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.nTL), Float.valueOf(this.nTM), Float.valueOf(this.nTS) });
+    int j = Arrays.hashCode(this.nTP);
+    int k = Arrays.hashCode(this.nTQ);
     AppMethodBeat.o(145104);
     return (i * 31 + j) * 31 + k;
   }
@@ -134,20 +134,20 @@ public class RealSetStrokeStyleActionRadialArg
   {
     AppMethodBeat.i(145105);
     super.i(paramParcel);
-    this.kZA = paramParcel.readFloat();
-    this.kZB = paramParcel.readFloat();
-    this.kZH = paramParcel.readFloat();
+    this.nTL = paramParcel.readFloat();
+    this.nTM = paramParcel.readFloat();
+    this.nTS = paramParcel.readFloat();
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.kZE = new int[i];
-      paramParcel.readIntArray(this.kZE);
+      this.nTP = new int[i];
+      paramParcel.readIntArray(this.nTP);
     }
     i = paramParcel.readInt();
     if (i > 0)
     {
-      this.kZF = new float[i];
-      paramParcel.readFloatArray(this.kZF);
+      this.nTQ = new float[i];
+      paramParcel.readFloatArray(this.nTQ);
     }
     AppMethodBeat.o(145105);
   }
@@ -163,18 +163,18 @@ public class RealSetStrokeStyleActionRadialArg
   {
     AppMethodBeat.i(145106);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.kZA);
-    paramParcel.writeFloat(this.kZB);
-    paramParcel.writeFloat(this.kZH);
-    if (this.kZE != null)
+    paramParcel.writeFloat(this.nTL);
+    paramParcel.writeFloat(this.nTM);
+    paramParcel.writeFloat(this.nTS);
+    if (this.nTP != null)
     {
-      paramParcel.writeInt(this.kZE.length);
-      paramParcel.writeIntArray(this.kZE);
+      paramParcel.writeInt(this.nTP.length);
+      paramParcel.writeIntArray(this.nTP);
     }
-    while (this.kZF != null)
+    while (this.nTQ != null)
     {
-      paramParcel.writeInt(this.kZF.length);
-      paramParcel.writeFloatArray(this.kZF);
+      paramParcel.writeInt(this.nTQ.length);
+      paramParcel.writeFloatArray(this.nTQ);
       AppMethodBeat.o(145106);
       return;
       paramParcel.writeInt(0);
@@ -185,7 +185,7 @@ public class RealSetStrokeStyleActionRadialArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetStrokeStyleActionRadialArg
  * JD-Core Version:    0.7.0.1
  */

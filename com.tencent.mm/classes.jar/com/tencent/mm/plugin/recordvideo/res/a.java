@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.recordvideo.res;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.d.g;
-import com.tencent.mm.g.a.bp;
-import com.tencent.mm.g.a.bp.a;
+import com.tencent.mm.f.a.bu;
+import com.tencent.mm.f.a.bu.a;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.f;
+import com.tencent.mm.vfs.u;
 import java.util.Iterator;
 import kotlin.g.b.p;
 import kotlin.l;
@@ -15,21 +15,21 @@ import kotlin.x;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/res/BaseVideoResLogic;", "", "()V", "checkResUpdateCacheFileEventListener", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/CheckResUpdateCacheFileEvent;", "downloadFileSuccessCallback", "Lkotlin/Function0;", "", "getDownloadFileSuccessCallback", "()Lkotlin/jvm/functions/Function0;", "setDownloadFileSuccessCallback", "(Lkotlin/jvm/functions/Function0;)V", "<set-?>", "", "fileExist", "getFileExist", "()Z", "reporter", "Lcom/tencent/mm/plugin/recordvideo/res/IVideoResReport;", "getReporter", "()Lcom/tencent/mm/plugin/recordvideo/res/IVideoResReport;", "afterUnZipRes", "success", "checkFile", "checkRes", "getConfigJson", "Lorg/json/JSONArray;", "getFileDirName", "", "getFilePathKeys", "", "()[Ljava/lang/String;", "getResParentPath", "getResTmpPath", "getResType", "", "getSubType", "getTag", "init", "moveFileToTargetPath", "fileName", "reportEdit", "unInit", "unzipFolder", "zipFileString", "outPathString", "unzipRes", "filePath", "type", "subType", "version", "Companion", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/res/BaseVideoResLogic;", "", "()V", "checkResUpdateCacheFileEventListener", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/CheckResUpdateCacheFileEvent;", "downloadFileSuccessCallback", "Lkotlin/Function0;", "", "getDownloadFileSuccessCallback", "()Lkotlin/jvm/functions/Function0;", "setDownloadFileSuccessCallback", "(Lkotlin/jvm/functions/Function0;)V", "<set-?>", "", "fileExist", "getFileExist", "()Z", "reporter", "Lcom/tencent/mm/plugin/recordvideo/res/IVideoResReport;", "getReporter", "()Lcom/tencent/mm/plugin/recordvideo/res/IVideoResReport;", "afterUnZipRes", "success", "checkFile", "checkRes", "getConfigJson", "Lorg/json/JSONArray;", "getFileDirName", "", "getFilePathKeys", "", "()[Ljava/lang/String;", "getResParentPath", "getResTmpPath", "getResType", "", "getSubType", "getTag", "init", "moveFileToTargetPath", "fileName", "reportEdit", "unInit", "unzipFolder", "zipFileString", "outPathString", "unzipRes", "filePath", "type", "subType", "version", "Companion", "plugin-recordvideo_release"})
 public abstract class a
 {
-  public static final a.a BYb = new a.a((byte)0);
-  public boolean BXZ;
-  public kotlin.g.a.a<x> BYa;
-  final IListener<bp> iUx = (IListener)new b(this);
+  public static final a.a HUP = new a.a((byte)0);
+  public boolean HUN;
+  public kotlin.g.a.a<x> HUO;
+  final IListener<bu> lKQ = (IListener)new b(this);
   
-  private final boolean bbB()
+  private final boolean bkR()
   {
-    Object localObject = eLk() + "config.json";
+    Object localObject = fxD() + "config.json";
     Log.i(getTag(), "absConfigPath is:".concat(String.valueOf(localObject)));
-    if (s.YS((String)localObject))
+    if (u.agG((String)localObject))
     {
-      localObject = s.boY((String)localObject);
+      localObject = u.bBS((String)localObject);
       try
       {
         localObject = new JSONArray((String)localObject);
@@ -38,15 +38,15 @@ public abstract class a
         while (i < k)
         {
           JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-          String[] arrayOfString = eLj();
+          String[] arrayOfString = fxC();
           int m = arrayOfString.length;
           int j = 0;
           while (j < m)
           {
             String str = arrayOfString[j];
-            str = eLk() + localJSONObject.optString(str);
+            str = fxD() + localJSONObject.optString(str);
             Log.i(getTag(), "file index:" + i + " path:" + str);
-            if (!s.YS(str))
+            if (!u.agG(str))
             {
               Log.e(getTag(), "file not exist.path:".concat(String.valueOf(str)));
               return false;
@@ -67,19 +67,19 @@ public abstract class a
     return false;
   }
   
-  private final String eLm()
+  private final String fxF()
   {
-    return eLk() + "temp/";
+    return fxD() + "temp/";
   }
   
   /* Error */
-  private final int fW(String paramString1, String paramString2)
+  private final int gj(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: new 201	java/util/zip/ZipInputStream
     //   3: dup
     //   4: aload_1
-    //   5: invokestatic 205	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   5: invokestatic 205	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
     //   8: invokespecial 208	java/util/zip/ZipInputStream:<init>	(Ljava/io/InputStream;)V
     //   11: astore 4
     //   13: aconst_null
@@ -97,41 +97,41 @@ public abstract class a
     //   36: ifnull +350 -> 386
     //   39: aload_1
     //   40: ifnonnull +6 -> 46
-    //   43: invokestatic 217	kotlin/g/b/p:hyc	()V
+    //   43: invokestatic 217	kotlin/g/b/p:iCn	()V
     //   46: aload_1
     //   47: invokevirtual 222	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
     //   50: astore 5
     //   52: aload 5
     //   54: ldc 224
-    //   56: invokestatic 228	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   56: invokestatic 228	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
     //   59: aload 5
     //   61: checkcast 230	java/lang/CharSequence
     //   64: ldc 232
     //   66: checkcast 230	java/lang/CharSequence
-    //   69: invokestatic 237	kotlin/n/n:e	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   69: invokestatic 238	kotlin/n/n:g	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   72: ifne +361 -> 433
     //   75: aload 5
     //   77: checkcast 230	java/lang/CharSequence
-    //   80: ldc 239
+    //   80: ldc 240
     //   82: checkcast 230	java/lang/CharSequence
-    //   85: invokestatic 237	kotlin/n/n:e	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   85: invokestatic 238	kotlin/n/n:g	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   88: ifeq +6 -> 94
     //   91: goto +342 -> 433
     //   94: aload_1
     //   95: ifnonnull +6 -> 101
-    //   98: invokestatic 217	kotlin/g/b/p:hyc	()V
+    //   98: invokestatic 217	kotlin/g/b/p:iCn	()V
     //   101: aload_1
-    //   102: invokevirtual 242	java/util/zip/ZipEntry:isDirectory	()Z
+    //   102: invokevirtual 243	java/util/zip/ZipEntry:isDirectory	()Z
     //   105: ifeq +118 -> 223
     //   108: aload 5
-    //   110: invokevirtual 243	java/lang/String:length	()I
+    //   110: invokevirtual 244	java/lang/String:length	()I
     //   113: istore_3
     //   114: aload 5
     //   116: ifnonnull +49 -> 165
-    //   119: new 245	kotlin/t
+    //   119: new 246	kotlin/t
     //   122: dup
-    //   123: ldc 247
-    //   125: invokespecial 248	kotlin/t:<init>	(Ljava/lang/String;)V
+    //   123: ldc 248
+    //   125: invokespecial 249	kotlin/t:<init>	(Ljava/lang/String;)V
     //   128: athrow
     //   129: astore_1
     //   130: aload 4
@@ -144,13 +144,13 @@ public abstract class a
     //   139: invokevirtual 119	com/tencent/mm/plugin/recordvideo/res/a:getTag	()Ljava/lang/String;
     //   142: aload 4
     //   144: checkcast 182	java/lang/Throwable
-    //   147: ldc 249
+    //   147: ldc 250
     //   149: iconst_0
     //   150: anewarray 4	java/lang/Object
     //   153: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   156: aload_2
-    //   157: checkcast 251	java/io/Closeable
-    //   160: invokestatic 257	com/tencent/mm/vfs/aa:closeQuietly	(Ljava/io/Closeable;)V
+    //   157: checkcast 252	java/io/Closeable
+    //   160: invokestatic 258	com/tencent/mm/vfs/ad:closeQuietly	(Ljava/io/Closeable;)V
     //   163: iconst_m1
     //   164: ireturn
     //   165: aload 5
@@ -158,69 +158,69 @@ public abstract class a
     //   168: iload_3
     //   169: iconst_1
     //   170: isub
-    //   171: invokevirtual 261	java/lang/String:substring	(II)Ljava/lang/String;
+    //   171: invokevirtual 262	java/lang/String:substring	(II)Ljava/lang/String;
     //   174: astore 5
     //   176: aload 5
-    //   178: ldc_w 263
-    //   181: invokestatic 228	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   184: new 265	com/tencent/mm/vfs/o
+    //   178: ldc_w 264
+    //   181: invokestatic 228	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   184: new 266	com/tencent/mm/vfs/q
     //   187: dup
     //   188: new 103	java/lang/StringBuilder
     //   191: dup
     //   192: invokespecial 104	java/lang/StringBuilder:<init>	()V
     //   195: aload_2
     //   196: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   199: ldc_w 267
+    //   199: ldc_w 268
     //   202: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   205: aload 5
     //   207: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   210: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   213: invokespecial 268	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
-    //   216: invokevirtual 271	com/tencent/mm/vfs/o:mkdirs	()Z
+    //   213: invokespecial 269	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
+    //   216: invokevirtual 272	com/tencent/mm/vfs/q:ifL	()Z
     //   219: pop
     //   220: goto -205 -> 15
-    //   223: new 265	com/tencent/mm/vfs/o
+    //   223: new 266	com/tencent/mm/vfs/q
     //   226: dup
     //   227: new 103	java/lang/StringBuilder
     //   230: dup
     //   231: invokespecial 104	java/lang/StringBuilder:<init>	()V
     //   234: aload_2
     //   235: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   238: ldc_w 267
+    //   238: ldc_w 268
     //   241: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   244: aload 5
     //   246: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   249: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   252: invokespecial 268	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   252: invokespecial 269	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   255: astore 5
     //   257: aload 5
-    //   259: invokevirtual 275	com/tencent/mm/vfs/o:heq	()Lcom/tencent/mm/vfs/o;
+    //   259: invokevirtual 276	com/tencent/mm/vfs/q:ifB	()Lcom/tencent/mm/vfs/q;
     //   262: astore 6
     //   264: aload 6
     //   266: ifnull +9 -> 275
     //   269: aload 6
-    //   271: invokevirtual 271	com/tencent/mm/vfs/o:mkdirs	()Z
+    //   271: invokevirtual 272	com/tencent/mm/vfs/q:ifL	()Z
     //   274: pop
     //   275: aload 5
-    //   277: invokestatic 279	com/tencent/mm/vfs/s:ap	(Lcom/tencent/mm/vfs/o;)Ljava/io/OutputStream;
+    //   277: invokestatic 280	com/tencent/mm/vfs/u:an	(Lcom/tencent/mm/vfs/q;)Ljava/io/OutputStream;
     //   280: astore 5
     //   282: aload 5
-    //   284: ldc_w 281
-    //   287: invokestatic 228	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   290: new 283	kotlin/g/b/z$d
+    //   284: ldc_w 282
+    //   287: invokestatic 228	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   290: new 284	kotlin/g/b/aa$d
     //   293: dup
-    //   294: invokespecial 284	kotlin/g/b/z$d:<init>	()V
+    //   294: invokespecial 285	kotlin/g/b/aa$d:<init>	()V
     //   297: astore 6
     //   299: sipush 1024
     //   302: newarray byte
     //   304: astore 7
     //   306: aload 4
     //   308: aload 7
-    //   310: invokevirtual 288	java/util/zip/ZipInputStream:read	([B)I
+    //   310: invokevirtual 289	java/util/zip/ZipInputStream:read	([B)I
     //   313: istore_3
     //   314: aload 6
     //   316: iload_3
-    //   317: putfield 292	kotlin/g/b/z$d:SYE	I
+    //   317: putfield 293	kotlin/g/b/aa$d:aaBA	I
     //   320: iload_3
     //   321: iconst_m1
     //   322: if_icmpeq +56 -> 378
@@ -228,8 +228,8 @@ public abstract class a
     //   327: aload 7
     //   329: iconst_0
     //   330: aload 6
-    //   332: getfield 292	kotlin/g/b/z$d:SYE	I
-    //   335: invokevirtual 298	java/io/OutputStream:write	([BII)V
+    //   332: getfield 293	kotlin/g/b/aa$d:aaBA	I
+    //   335: invokevirtual 299	java/io/OutputStream:write	([BII)V
     //   338: goto -32 -> 306
     //   341: astore_1
     //   342: aload 4
@@ -242,29 +242,29 @@ public abstract class a
     //   351: invokevirtual 119	com/tencent/mm/plugin/recordvideo/res/a:getTag	()Ljava/lang/String;
     //   354: aload 4
     //   356: checkcast 182	java/lang/Throwable
-    //   359: ldc 249
+    //   359: ldc 250
     //   361: iconst_0
     //   362: anewarray 4	java/lang/Object
     //   365: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   368: aload_2
-    //   369: checkcast 251	java/io/Closeable
-    //   372: invokestatic 257	com/tencent/mm/vfs/aa:closeQuietly	(Ljava/io/Closeable;)V
+    //   369: checkcast 252	java/io/Closeable
+    //   372: invokestatic 258	com/tencent/mm/vfs/ad:closeQuietly	(Ljava/io/Closeable;)V
     //   375: bipush 254
     //   377: ireturn
     //   378: aload 5
-    //   380: invokevirtual 301	java/io/OutputStream:close	()V
+    //   380: invokevirtual 302	java/io/OutputStream:close	()V
     //   383: goto -368 -> 15
     //   386: aload 4
-    //   388: checkcast 251	java/io/Closeable
-    //   391: invokestatic 257	com/tencent/mm/vfs/aa:closeQuietly	(Ljava/io/Closeable;)V
+    //   388: checkcast 252	java/io/Closeable
+    //   391: invokestatic 258	com/tencent/mm/vfs/ad:closeQuietly	(Ljava/io/Closeable;)V
     //   394: iconst_0
     //   395: ireturn
     //   396: astore_2
     //   397: aconst_null
     //   398: astore_1
     //   399: aload_1
-    //   400: checkcast 251	java/io/Closeable
-    //   403: invokestatic 257	com/tencent/mm/vfs/aa:closeQuietly	(Ljava/io/Closeable;)V
+    //   400: checkcast 252	java/io/Closeable
+    //   403: invokestatic 258	com/tencent/mm/vfs/ad:closeQuietly	(Ljava/io/Closeable;)V
     //   406: aload_2
     //   407: athrow
     //   408: astore_2
@@ -345,27 +345,27 @@ public abstract class a
     //   0	13	426	java/io/FileNotFoundException
   }
   
-  private final void o(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  private final void r(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     int i;
     Object localObject;
     try
     {
       Log.i(getTag(), "unzipRes: %s", new Object[] { paramString });
-      if (!s.YS(paramString)) {
+      if (!u.agG(paramString)) {
         break label640;
       }
-      s.boN(eLm());
-      i = fW(paramString, eLm());
-      Log.i(getTag(), "unzip file ret:" + i + "  " + eLm());
-      paramString = s.dC(eLm() + eLl(), false);
+      u.bBD(fxF());
+      i = gj(paramString, fxF());
+      Log.i(getTag(), "unzip file ret:" + i + "  " + fxF());
+      paramString = u.dP(fxF() + fxE(), false);
       if (paramString != null)
       {
         paramString = paramString.iterator();
         while (paramString.hasNext())
         {
-          localObject = (e)paramString.next();
-          Log.i(getTag(), "unzip file path:" + ((e)localObject).NGP + " name:" + ((e)localObject).name + " size:" + ((e)localObject).size);
+          localObject = (f)paramString.next();
+          Log.i(getTag(), "unzip file path:" + ((f)localObject).UUr + " name:" + ((f)localObject).name + " size:" + ((f)localObject).size);
         }
       }
       bool = false;
@@ -378,10 +378,10 @@ public abstract class a
       int j;
       try
       {
-        if (!s.YS(eLm() + eLl() + "config.json")) {
+        if (!u.agG(fxF() + fxE() + "config.json")) {
           break label816;
         }
-        paramString = s.boY(eLm() + eLl() + "config.json");
+        paramString = u.bBS(fxF() + fxE() + "config.json");
         Log.i(getTag(), "meta json: %s", new Object[] { paramString });
         paramString = new JSONArray(paramString);
         i = 0;
@@ -390,27 +390,27 @@ public abstract class a
           break label732;
         }
         localObject = paramString.getJSONObject(i);
-        String[] arrayOfString = eLj();
+        String[] arrayOfString = fxC();
         int m = arrayOfString.length;
         j = 0;
         if (j >= m) {
           break label920;
         }
         str1 = ((JSONObject)localObject).optString(arrayOfString[j]);
-        p.g(str1, "item.optString(it)");
-        String str2 = eLm() + eLl() + str1;
-        String str3 = eLk() + str1;
+        p.j(str1, "item.optString(it)");
+        String str2 = fxF() + fxE() + str1;
+        String str3 = fxD() + str1;
         Log.i(getTag(), "file tmp:" + str2 + "  real:" + str3);
-        if (s.YS(str2)) {
-          if (!s.YS(str3))
+        if (u.agG(str2)) {
+          if (!u.agG(str3))
           {
             Log.i(getTag(), "move file ".concat(String.valueOf(str1)));
-            s.nx(str2, str3);
+            u.oo(str2, str3);
           }
-          else if ((p.j(g.getMD5(str2), g.getMD5(str3)) ^ true))
+          else if ((p.h(g.getMD5(str2), g.getMD5(str3)) ^ true))
           {
-            s.deleteFile(str3);
-            s.nx(str2, str3);
+            u.deleteFile(str3);
+            u.oo(str2, str3);
             Log.i(getTag(), "replace file ".concat(String.valueOf(str1)));
           }
         }
@@ -419,54 +419,54 @@ public abstract class a
       {
         String str1;
         Log.printErrStackTrace(getTag(), (Throwable)paramString, "unzipRes error: %s", new Object[] { paramString.getMessage() });
-        eLh().eLv();
+        fxA().fxO();
         Log.i(getTag(), "unzip failed");
-        paramString = this.BYa;
+        paramString = this.HUO;
         if (paramString != null) {
           paramString.invoke();
         }
-        s.dy(eLm(), true);
-        tu(false);
+        u.dK(fxF(), true);
+        wQ(false);
         label640:
         return;
         Log.i(getTag(), "already has file ".concat(String.valueOf(str1)));
       }
       finally
       {
-        eLh().eLv();
+        fxA().fxO();
         Log.i(getTag(), "unzip failed");
-        localObject = this.BYa;
+        localObject = this.HUO;
         if (localObject != null) {
           ((kotlin.g.a.a)localObject).invoke();
         }
-        s.dy(eLm(), true);
-        tu(false);
+        u.dK(fxF(), true);
+        wQ(false);
       }
       Log.e(getTag(), "fuck! config does not matching file list!!!!!!!!");
       break label911;
       label732:
-      s.deleteFile(eLk() + "config.json");
-      s.nx(eLm() + eLl() + "config.json", eLk() + "config.json");
+      u.deleteFile(fxD() + "config.json");
+      u.oo(fxF() + fxE() + "config.json", fxD() + "config.json");
       bool = true;
       label816:
       if (!bool)
       {
-        eLh().eLv();
+        fxA().fxO();
         Log.i(getTag(), "unzip failed");
       }
       for (;;)
       {
-        paramString = this.BYa;
+        paramString = this.HUO;
         if (paramString != null) {
           paramString.invoke();
         }
-        s.dy(eLm(), true);
-        tu(bool);
+        u.dK(fxF(), true);
+        wQ(bool);
         break;
-        eLh().eLu();
+        fxA().fxN();
         Log.i(getTag(), "unzip success");
-        com.tencent.mm.pluginsdk.j.a.a.b.gnC().aP(paramInt1, paramInt2, paramInt3);
-        this.BXZ = true;
+        com.tencent.mm.pluginsdk.k.a.a.b.hii().aT(paramInt1, paramInt2, paramInt3);
+        this.HUN = true;
       }
       label911:
       j += 1;
@@ -476,40 +476,40 @@ public abstract class a
     }
   }
   
-  public final void bbA()
+  public final void bkQ()
   {
-    Log.i(getTag(), "checkRes " + eLi());
-    com.tencent.mm.pluginsdk.j.a.a.b.gnC();
-    com.tencent.mm.pluginsdk.j.a.a.b.ahP(eLi());
-    eLh().bbA();
+    Log.i(getTag(), "checkRes " + fxB());
+    com.tencent.mm.pluginsdk.k.a.a.b.hii();
+    com.tencent.mm.pluginsdk.k.a.a.b.apP(fxB());
+    fxA().bkQ();
   }
   
-  public abstract b eLh();
+  public abstract b fxA();
   
-  public abstract int eLi();
+  public abstract int fxB();
   
-  public abstract String[] eLj();
+  public abstract String[] fxC();
   
-  public abstract String eLk();
+  public abstract String fxD();
   
-  public abstract String eLl();
+  public abstract String fxE();
   
-  public final JSONArray eLn()
+  public final JSONArray fxG()
   {
-    if (this.BXZ) {
-      return new JSONArray(s.boY(eLk() + "config.json"));
+    if (this.HUN) {
+      return new JSONArray(u.bBS(fxD() + "config.json"));
     }
     return null;
   }
   
-  public final void eLo()
+  public final void fxH()
   {
-    if (this.BXZ)
+    if (this.HUN)
     {
-      eLh().eLr();
+      fxA().fxK();
       return;
     }
-    eLh().eLs();
+    fxA().fxL();
   }
   
   public abstract String getTag();
@@ -517,53 +517,53 @@ public abstract class a
   public final void init()
   {
     Log.i(getTag(), "init");
-    this.iUx.alive();
-    if (bbB()) {
-      this.BXZ = true;
+    this.lKQ.alive();
+    if (bkR()) {
+      this.HUN = true;
     }
-    while (this.BXZ)
+    while (this.HUN)
     {
-      eLh().eLp();
+      fxA().fxI();
       return;
-      com.tencent.mm.pluginsdk.j.a.a.b.gnC();
-      String str = com.tencent.mm.pluginsdk.j.a.a.b.kC(eLi(), 1);
-      if (s.YS(str))
+      com.tencent.mm.pluginsdk.k.a.a.b.hii();
+      String str = com.tencent.mm.pluginsdk.k.a.a.b.lV(fxB(), 1);
+      if (u.agG(str))
       {
         Log.i(getTag(), "cache file exist %s", new Object[] { str });
-        p.g(str, "cacheFile");
-        o(str, eLi(), 1, 1);
+        p.j(str, "cacheFile");
+        r(str, fxB(), 1, 1);
       }
     }
-    eLh().eLq();
+    fxA().fxJ();
   }
   
-  public void tu(boolean paramBoolean) {}
+  public void wQ(boolean paramBoolean) {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/recordvideo/res/BaseVideoResLogic$checkResUpdateCacheFileEventListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/CheckResUpdateCacheFileEvent;", "callback", "", "event", "plugin-recordvideo_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/recordvideo/res/BaseVideoResLogic$checkResUpdateCacheFileEventListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/CheckResUpdateCacheFileEvent;", "callback", "", "event", "plugin-recordvideo_release"})
   public static final class b
-    extends IListener<bp>
+    extends IListener<bu>
   {
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
-      a(a.b paramb, bp parambp) {}
+      a(a.b paramb, bu parambu) {}
       
       public final void run()
       {
-        AppMethodBeat.i(237476);
-        a locala = this.BYd.BYc;
-        String str = this.BYe.dEN.filePath;
-        p.g(str, "event.data.filePath");
-        a.a(locala, str, this.BYe.dEN.dEO, this.BYe.dEN.subType, this.BYe.dEN.dEP);
-        AppMethodBeat.o(237476);
+        AppMethodBeat.i(225114);
+        a locala = this.HUR.HUQ;
+        String str = this.HUS.fxB.filePath;
+        p.j(str, "event.data.filePath");
+        a.a(locala, str, this.HUS.fxB.fxC, this.HUS.fxB.subType, this.HUS.fxB.fxD);
+        AppMethodBeat.o(225114);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.res.a
  * JD-Core Version:    0.7.0.1
  */

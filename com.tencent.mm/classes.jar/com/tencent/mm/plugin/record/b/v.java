@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.record.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
+import com.tencent.mm.model.be;
 import com.tencent.mm.plugin.record.a.e;
-import com.tencent.mm.plugin.record.a.h;
+import com.tencent.mm.plugin.record.a.g;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class v
-  implements bd
+  implements be
 {
   private static HashMap<Integer, h.b> baseDBFactories;
   
@@ -21,7 +21,7 @@ public final class v
     {
       public final String[] getSQLs()
       {
-        return h.SQL_CREATE;
+        return com.tencent.mm.plugin.record.a.h.SQL_CREATE;
       }
     });
     baseDBFactories.put(Integer.valueOf("RECORD_MSG_CDN_TABLE".hashCode()), new h.b()
@@ -44,7 +44,7 @@ public final class v
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(27826);
-    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.record.a.g.class, new m());
+    com.tencent.mm.kernel.h.b(g.class, new m());
     AppMethodBeat.o(27826);
   }
   
@@ -54,7 +54,7 @@ public final class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.record.b.v
  * JD-Core Version:    0.7.0.1
  */

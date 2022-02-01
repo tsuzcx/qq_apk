@@ -2,13 +2,12 @@ package com.tencent.mm.plugin.qqmail.c;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.qqmail.d.ak;
 import com.tencent.mm.plugin.qqmail.d.am;
 import com.tencent.mm.plugin.qqmail.d.au;
@@ -20,42 +19,42 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public class h
-  implements i, b<IPCString, Bundle>
+  implements i, com.tencent.mm.ipcinvoker.d<IPCString, Bundle>
 {
-  private String BqZ;
-  private com.tencent.mm.ipcinvoker.d<Bundle> hny;
+  private String Hls;
+  private f<Bundle> jZn;
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    AppMethodBeat.i(198586);
+    AppMethodBeat.i(249715);
     Log.i("MicroMsg.ReadMailTask", "read mail, errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (!((c)paramq).BqZ.equals(this.BqZ))
+    if (!((c)paramq).Hls.equals(this.Hls))
     {
       Log.w("MicroMsg.ReadMailTask", "not my scene, ignore");
-      AppMethodBeat.o(198586);
+      AppMethodBeat.o(249715);
       return;
     }
-    g.azz().b(11312, this);
-    if (this.hny != null)
+    com.tencent.mm.kernel.h.aGY().b(11312, this);
+    if (this.jZn != null)
     {
       Bundle localBundle1 = new Bundle();
       localBundle1.putInt("err_type", paramInt1);
       localBundle1.putInt("err_code", paramInt2);
       localBundle1.putString("err_msg", paramString);
-      localBundle1.putString("mail_id", this.BqZ);
+      localBundle1.putString("mail_id", this.Hls);
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = ((au)((c)paramq).iUB.iLL.iLR).Bth;
+        paramString = ((au)d.c.b(((c)paramq).lKU.lBS)).HnB;
         if (paramString != null)
         {
           localBundle1.putString("mail_content", paramString.content);
           ArrayList localArrayList;
           Object localObject1;
           Object localObject2;
-          if (!paramString.BsS.isEmpty())
+          if (!paramString.Hnm.isEmpty())
           {
             localArrayList = new ArrayList();
-            localObject1 = paramString.BsS.iterator();
+            localObject1 = paramString.Hnm.iterator();
             while (((Iterator)localObject1).hasNext())
             {
               localObject2 = (ak)((Iterator)localObject1).next();
@@ -65,15 +64,15 @@ public class h
               localBundle2.putString("attach_name", ((ak)localObject2).name);
               localBundle2.putString("attach_type", ((ak)localObject2).type);
               localBundle2.putInt("attach_size", ((ak)localObject2).size);
-              localBundle2.putString("attach_download_url", ((ak)localObject2).BsJ);
+              localBundle2.putString("attach_download_url", ((ak)localObject2).Hnd);
               localArrayList.add(localBundle2);
             }
             localBundle1.putParcelableArrayList("mail_normal_attach", localArrayList);
           }
-          if (!paramString.BsT.isEmpty())
+          if (!paramString.Hnn.isEmpty())
           {
             localArrayList = new ArrayList();
-            paramString = paramString.BsT.iterator();
+            paramString = paramString.Hnn.iterator();
             while (paramString.hasNext())
             {
               localObject1 = (ak)paramString.next();
@@ -83,30 +82,30 @@ public class h
               ((Bundle)localObject2).putString("attach_name", ((ak)localObject1).name);
               ((Bundle)localObject2).putString("attach_type", ((ak)localObject1).type);
               ((Bundle)localObject2).putInt("attach_size", ((ak)localObject1).size);
-              ((Bundle)localObject2).putString("attach_download_url", ((ak)localObject1).BsJ);
+              ((Bundle)localObject2).putString("attach_download_url", ((ak)localObject1).Hnd);
               localArrayList.add(localObject2);
             }
             localBundle1.putParcelableArrayList("mail_big_attach", localArrayList);
           }
         }
-        paramString = ((au)((c)paramq).iUB.iLL.iLR).Bti;
+        paramString = ((au)d.c.b(((c)paramq).lKU.lBS)).HnC;
         if (paramString != null)
         {
           paramq = new Bundle();
-          paramq.putLong("cookie_xmail_uin", paramString.Btl);
-          paramq.putString("cookie_xmail_skey", paramString.Btn);
-          paramq.putString("cookie_xmail_sid", paramString.Btm);
+          paramq.putLong("cookie_xmail_uin", paramString.HnF);
+          paramq.putString("cookie_xmail_skey", paramString.HnH);
+          paramq.putString("cookie_xmail_sid", paramString.HnG);
           localBundle1.putParcelable("mail_cookie", paramq);
         }
       }
-      this.hny.bn(localBundle1);
+      this.jZn.aH(localBundle1);
     }
-    AppMethodBeat.o(198586);
+    AppMethodBeat.o(249715);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.c.h
  * JD-Core Version:    0.7.0.1
  */

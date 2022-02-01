@@ -1,67 +1,66 @@
 package com.b.a.a;
 
-import android.os.Handler;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.b.a.k;
+import java.io.File;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-abstract class e
+public abstract class e
+  implements a
 {
-  private a chy;
-  long chz;
-  final Handler handler;
+  private final ExecutorService aFO = Executors.newSingleThreadExecutor();
   
-  e(Handler paramHandler)
+  final void m(List<File> paramList)
   {
-    if (paramHandler != null) {}
-    for (;;)
+    Object localObject = paramList.iterator();
+    for (long l1 = 0L; ((Iterator)localObject).hasNext(); l1 = ((File)((Iterator)localObject).next()).length() + l1) {}
+    paramList.size();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      this.handler = paramHandler;
-      return;
-      paramHandler = new Handler();
+      localObject = (File)paramList.next();
+      if (!t(l1))
+      {
+        long l2 = ((File)localObject).length();
+        if (((File)localObject).delete())
+        {
+          l1 -= l2;
+          new StringBuilder("Cache file ").append(localObject).append(" is deleted because it exceeds cache limit");
+          k.po();
+        }
+        else
+        {
+          new StringBuilder("Error deleting file ").append(localObject).append(" for trimming cache");
+          k.pq();
+        }
+      }
     }
   }
   
-  abstract void IZ();
-  
-  final void n(long paramLong1, long paramLong2)
+  public final void q(File paramFile)
   {
-    stop();
-    this.chz = paramLong1;
-    this.chy = new a((byte)0);
-    a.a(this.chy, paramLong2);
+    this.aFO.submit(new a(paramFile));
   }
   
-  final void stop()
-  {
-    if (this.chy != null) {
-      a.a(this.chy);
-    }
-  }
+  protected abstract boolean t(long paramLong);
   
   final class a
-    implements Runnable
+    implements Callable<Void>
   {
-    private boolean chA;
-    private boolean started;
+    private final File file;
     
-    private a() {}
-    
-    public final void run()
+    public a(File paramFile)
     {
-      AppMethodBeat.i(87957);
-      if (this.chA)
-      {
-        AppMethodBeat.o(87957);
-        return;
-      }
-      e.this.IZ();
-      e.this.handler.postDelayed(this, e.this.chz);
-      AppMethodBeat.o(87957);
+      this.file = paramFile;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.b.a.a.e
  * JD-Core Version:    0.7.0.1
  */

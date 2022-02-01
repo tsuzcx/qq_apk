@@ -1,7 +1,7 @@
 package com.tencent.mm.modelcontrol;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.n.f;
 import com.tencent.mm.plugin.zero.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -12,7 +12,7 @@ import java.util.TimeZone;
 
 public final class b
 {
-  private static boolean N(int paramInt1, int paramInt2, int paramInt3)
+  private static boolean Q(int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt1 < paramInt2) {
       if ((paramInt3 >= paramInt2) || (paramInt3 < paramInt1)) {}
@@ -25,7 +25,7 @@ public final class b
     return false;
   }
   
-  public static boolean Of(String paramString)
+  public static boolean VC(String paramString)
   {
     AppMethodBeat.i(150445);
     if (Util.isNullOrNil(paramString))
@@ -35,7 +35,7 @@ public final class b
     }
     try
     {
-      int j = baT();
+      int j = bkj();
       paramString = paramString.split(";");
       int i = 0;
       while (i < paramString.length)
@@ -46,7 +46,7 @@ public final class b
         int m = Util.safeParseInt(arrayOfString2[1]);
         arrayOfString1 = arrayOfString1[1].split(":");
         int n = Util.safeParseInt(arrayOfString1[0]);
-        boolean bool = N(m + k * 60, Util.safeParseInt(arrayOfString1[1]) + n * 60, j);
+        boolean bool = Q(m + k * 60, Util.safeParseInt(arrayOfString1[1]) + n * 60, j);
         if (bool)
         {
           AppMethodBeat.o(150445);
@@ -64,7 +64,7 @@ public final class b
     }
   }
   
-  public static boolean ar(String paramString, int paramInt)
+  public static boolean aJ(String paramString, int paramInt)
   {
     AppMethodBeat.i(150446);
     if (Util.isNullOrNil(paramString))
@@ -74,7 +74,7 @@ public final class b
     }
     try
     {
-      int j = baT();
+      int j = bkj();
       paramString = paramString.split(";");
       int i = 0;
       while (i < paramString.length)
@@ -85,7 +85,7 @@ public final class b
         int m = Util.safeParseInt(arrayOfString2[1]);
         arrayOfString1 = arrayOfString1[1].split(":");
         int n = Util.safeParseInt(arrayOfString1[0]);
-        boolean bool = N(m + k * 60, Util.safeParseInt(arrayOfString1[1]) + n * 60 + paramInt, j);
+        boolean bool = Q(m + k * 60, Util.safeParseInt(arrayOfString1[1]) + n * 60 + paramInt, j);
         if (bool)
         {
           AppMethodBeat.o(150446);
@@ -103,22 +103,22 @@ public final class b
     }
   }
   
-  public static boolean baS()
+  public static boolean bki()
   {
     AppMethodBeat.i(150444);
-    String str = ((a)g.af(a.class)).aqJ().getValue("C2CImgNotAutoDownloadTimeRange");
+    String str = ((a)h.ae(a.class)).axc().getValue("C2CImgNotAutoDownloadTimeRange");
     Log.i("MicroMsg.BusyTimeControlLogic", "C2CImgNotAutoDownloadTimeRange value: ".concat(String.valueOf(str)));
-    boolean bool = Of(str);
+    boolean bool = VC(str);
     AppMethodBeat.o(150444);
     return bool;
   }
   
-  private static int baT()
+  private static int bkj()
   {
     AppMethodBeat.i(150447);
     String[] arrayOfString = new SimpleDateFormat("HH:mm").format(new Date()).split(":");
     int i = Util.safeParseInt(arrayOfString[0]);
-    int j = Util.safeParseInt(arrayOfString[1]) + i * 60 - ((int)baU() - 8) * 60;
+    int j = Util.safeParseInt(arrayOfString[1]) + i * 60 - ((int)bkk() - 8) * 60;
     if (j < 0) {
       i = j + 1440;
     }
@@ -133,7 +133,7 @@ public final class b
     }
   }
   
-  public static long baU()
+  public static long bkk()
   {
     AppMethodBeat.i(150448);
     long l = (int)(TimeZone.getDefault().getRawOffset() / 60000L) / 60L;
@@ -143,7 +143,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelcontrol.b
  * JD-Core Version:    0.7.0.1
  */

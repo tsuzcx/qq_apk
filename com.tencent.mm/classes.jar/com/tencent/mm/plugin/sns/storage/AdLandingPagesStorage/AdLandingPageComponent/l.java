@@ -1,17 +1,15 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
 public final class l
-  extends q
+  extends r
 {
-  public String DYd;
-  public String DYe;
-  public int DYf;
-  public int DYg;
-  public int DYh;
+  public int Jxz;
+  public String fWP;
+  public String username;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.l
  * JD-Core Version:    0.7.0.1
  */

@@ -6,65 +6,65 @@ import java.util.HashMap;
 import java.util.Map;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/model/panel/ExternalPanelRegister;", "", "()V", "externalPanelGroupMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/emoji/model/panel/ExternalPanelGroupViewProvider;", "Lkotlin/collections/HashMap;", "externalPanelItemList", "Landroid/util/SparseArray;", "Lcom/tencent/mm/emoji/model/panel/ExternalPanelItemViewProvider;", "addPanelGroup", "", "panelGroup", "addPanelItem", "externalPanelViewProvider", "findPanelGroup", "groupId", "findPanelItem", "viewType", "", "removePanelItem", "itemViewType", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/model/panel/ExternalPanelRegister;", "", "()V", "externalPanelGroupMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/emoji/model/panel/ExternalPanelGroupViewProvider;", "Lkotlin/collections/HashMap;", "externalPanelItemList", "Landroid/util/SparseArray;", "Lcom/tencent/mm/emoji/model/panel/ExternalPanelItemViewProvider;", "addPanelGroup", "", "panelGroup", "addPanelItem", "externalPanelViewProvider", "findPanelGroup", "groupId", "findPanelItem", "viewType", "", "removePanelItem", "itemViewType", "plugin-emojisdk_release"})
 public final class q
 {
-  private static final SparseArray<p> gYI;
-  private static final HashMap<String, o> gYJ;
-  public static final q gYK;
+  private static final SparseArray<p> jJI;
+  private static final HashMap<String, o> jJJ;
+  public static final q jJK;
   
   static
   {
-    AppMethodBeat.i(199922);
-    gYK = new q();
-    gYI = new SparseArray();
-    gYJ = new HashMap();
-    AppMethodBeat.o(199922);
+    AppMethodBeat.i(233948);
+    jJK = new q();
+    jJI = new SparseArray();
+    jJJ = new HashMap();
+    AppMethodBeat.o(233948);
   }
   
-  public static o ES(String paramString)
+  public static o LL(String paramString)
   {
-    AppMethodBeat.i(199921);
-    kotlin.g.b.p.h(paramString, "groupId");
-    paramString = (o)gYJ.get(paramString);
-    AppMethodBeat.o(199921);
+    AppMethodBeat.i(233944);
+    kotlin.g.b.p.k(paramString, "groupId");
+    paramString = (o)jJJ.get(paramString);
+    AppMethodBeat.o(233944);
     return paramString;
   }
   
   public static void a(o paramo)
   {
-    AppMethodBeat.i(199920);
-    kotlin.g.b.p.h(paramo, "panelGroup");
-    ((Map)gYJ).put(paramo.avy(), paramo);
-    AppMethodBeat.o(199920);
+    AppMethodBeat.i(233943);
+    kotlin.g.b.p.k(paramo, "panelGroup");
+    ((Map)jJJ).put(paramo.aCt(), paramo);
+    AppMethodBeat.o(233943);
   }
   
   public static void a(p paramp)
   {
-    AppMethodBeat.i(199917);
-    kotlin.g.b.p.h(paramp, "externalPanelViewProvider");
-    gYI.put(paramp.lU(), paramp);
-    AppMethodBeat.o(199917);
+    AppMethodBeat.i(233936);
+    kotlin.g.b.p.k(paramp, "externalPanelViewProvider");
+    jJI.put(paramp.mg(), paramp);
+    AppMethodBeat.o(233936);
   }
   
-  public static void pj(int paramInt)
+  public static void rC(int paramInt)
   {
-    AppMethodBeat.i(199918);
-    gYI.remove(paramInt);
-    AppMethodBeat.o(199918);
+    AppMethodBeat.i(233937);
+    jJI.remove(paramInt);
+    AppMethodBeat.o(233937);
   }
   
-  public static p pk(int paramInt)
+  public static p rD(int paramInt)
   {
-    AppMethodBeat.i(199919);
-    p localp = (p)gYI.get(paramInt);
-    AppMethodBeat.o(199919);
+    AppMethodBeat.i(233941);
+    p localp = (p)jJI.get(paramInt);
+    AppMethodBeat.o(233941);
     return localp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.b.b.q
  * JD-Core Version:    0.7.0.1
  */

@@ -212,7 +212,7 @@ public final class CameraPosition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.CameraPosition
  * JD-Core Version:    0.7.0.1
  */

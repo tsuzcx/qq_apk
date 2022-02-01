@@ -7,26 +7,26 @@ public enum f
   static
   {
     AppMethodBeat.i(56847);
-    The = new f("CLASS", 0);
-    Thf = new f("INTERFACE", 1);
-    Thg = new f("ENUM_CLASS", 2);
-    Thh = new f("ENUM_ENTRY", 3);
-    Thi = new f("ANNOTATION_CLASS", 4);
-    Thj = new f("OBJECT", 5);
-    Thk = new f[] { The, Thf, Thg, Thh, Thi, Thj };
+    aaJY = new f("CLASS", 0);
+    aaJZ = new f("INTERFACE", 1);
+    aaKa = new f("ENUM_CLASS", 2);
+    aaKb = new f("ENUM_ENTRY", 3);
+    aaKc = new f("ANNOTATION_CLASS", 4);
+    aaKd = new f("OBJECT", 5);
+    aaKe = new f[] { aaJY, aaJZ, aaKa, aaKb, aaKc, aaKd };
     AppMethodBeat.o(56847);
   }
   
   private f() {}
   
-  public final boolean hAQ()
+  public final boolean iFd()
   {
-    return (this == Thj) || (this == Thh);
+    return (this == aaKd) || (this == aaKb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.f
  * JD-Core Version:    0.7.0.1
  */

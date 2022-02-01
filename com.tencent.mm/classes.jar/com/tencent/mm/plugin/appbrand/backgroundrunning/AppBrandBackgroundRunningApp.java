@@ -10,14 +10,14 @@ public class AppBrandBackgroundRunningApp
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandBackgroundRunningApp> CREATOR;
+  public int aOm;
   public String appId;
-  public int beL;
-  public int iOo;
+  public int cBU;
   public String icon;
-  public String kYe;
-  public String kYf;
+  public String jZi;
+  public String nSq;
+  public String nSr;
   public String name;
-  public String process;
   public String username;
   
   static
@@ -33,14 +33,14 @@ public class AppBrandBackgroundRunningApp
   {
     AppMethodBeat.i(153204);
     this.appId = paramParcel.readString();
-    this.iOo = paramParcel.readInt();
-    this.beL = paramParcel.readInt();
+    this.cBU = paramParcel.readInt();
+    this.aOm = paramParcel.readInt();
     this.icon = paramParcel.readString();
     this.name = paramParcel.readString();
     this.username = paramParcel.readString();
-    this.kYe = paramParcel.readString();
-    this.process = paramParcel.readString();
-    this.kYf = paramParcel.readString();
+    this.nSq = paramParcel.readString();
+    this.jZi = paramParcel.readString();
+    this.nSr = paramParcel.readString();
     AppMethodBeat.o(153204);
   }
   
@@ -79,7 +79,7 @@ public class AppBrandBackgroundRunningApp
   public String toString()
   {
     AppMethodBeat.i(153203);
-    String str = "AppBrandBackgroundRunningApp{appId='" + this.appId + '\'' + ", versionType=" + this.iOo + ", usage=" + this.beL + ", icon='" + this.icon + '\'' + ", name='" + this.name + '\'' + ", username='" + this.username + '\'' + ", uiclass='" + this.kYe + '\'' + ", process='" + this.process + '\'' + ", customNotificationLogicClassName='" + this.kYf + '\'' + '}';
+    String str = "AppBrandBackgroundRunningApp{appId='" + this.appId + '\'' + ", versionType=" + this.cBU + ", usage=" + this.aOm + ", icon='" + this.icon + '\'' + ", name='" + this.name + '\'' + ", username='" + this.username + '\'' + ", uiclass='" + this.nSq + '\'' + ", process='" + this.jZi + '\'' + ", customNotificationLogicClassName='" + this.nSr + '\'' + '}';
     AppMethodBeat.o(153203);
     return str;
   }
@@ -88,20 +88,20 @@ public class AppBrandBackgroundRunningApp
   {
     AppMethodBeat.i(153207);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.iOo);
-    paramParcel.writeInt(this.beL);
+    paramParcel.writeInt(this.cBU);
+    paramParcel.writeInt(this.aOm);
     paramParcel.writeString(this.icon);
     paramParcel.writeString(this.name);
     paramParcel.writeString(this.username);
-    paramParcel.writeString(this.kYe);
-    paramParcel.writeString(this.process);
-    paramParcel.writeString(this.kYf);
+    paramParcel.writeString(this.nSq);
+    paramParcel.writeString(this.jZi);
+    paramParcel.writeString(this.nSr);
     AppMethodBeat.o(153207);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundrunning.AppBrandBackgroundRunningApp
  * JD-Core Version:    0.7.0.1
  */

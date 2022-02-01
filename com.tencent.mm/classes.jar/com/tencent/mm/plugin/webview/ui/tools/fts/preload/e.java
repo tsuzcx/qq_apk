@@ -7,7 +7,7 @@ import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.websearch.webview.WebSearchWebView;
 import com.tencent.mm.plugin.websearch.webview.f;
-import com.tencent.mm.pluginsdk.ui.tools.z;
+import com.tencent.mm.pluginsdk.ui.tools.ab;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -28,42 +28,42 @@ import kotlin.x;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/fts/preload/WebSearchPreloadTask;", "", "biz", "", "url", "", "(ILjava/lang/String;)V", "beginTimestamp", "", "getBeginTimestamp", "()J", "setBeginTimestamp", "(J)V", "getBiz", "()I", "getUrl", "()Ljava/lang/String;", "webSearchPreloadObj", "Lcom/tencent/mm/plugin/webview/ui/tools/fts/preload/WebSearchPreloadObj;", "getWebSearchPreloadObj", "()Lcom/tencent/mm/plugin/webview/ui/tools/fts/preload/WebSearchPreloadObj;", "setWebSearchPreloadObj", "(Lcom/tencent/mm/plugin/webview/ui/tools/fts/preload/WebSearchPreloadObj;)V", "buildDefaultParams", "", "getRunOn3rdApis", "loadJavaScript", "", "webView", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchWebView;", "reportPreloadCompleted", "", "start", "Builder", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/fts/preload/WebSearchPreloadTask;", "", "biz", "", "url", "", "(ILjava/lang/String;)V", "beginTimestamp", "", "getBeginTimestamp", "()J", "setBeginTimestamp", "(J)V", "getBiz", "()I", "getUrl", "()Ljava/lang/String;", "webSearchPreloadObj", "Lcom/tencent/mm/plugin/webview/ui/tools/fts/preload/WebSearchPreloadObj;", "getWebSearchPreloadObj", "()Lcom/tencent/mm/plugin/webview/ui/tools/fts/preload/WebSearchPreloadObj;", "setWebSearchPreloadObj", "(Lcom/tencent/mm/plugin/webview/ui/tools/fts/preload/WebSearchPreloadObj;)V", "buildDefaultParams", "", "getRunOn3rdApis", "loadJavaScript", "", "webView", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchWebView;", "reportPreloadCompleted", "", "start", "Builder", "plugin-webview_release"})
 public final class e
 {
-  long JpD;
-  d JpE;
-  final int mrG;
+  long QmY;
+  d QmZ;
+  final int ppO;
   final String url;
   
   public e(int paramInt, String paramString)
   {
-    AppMethodBeat.i(210546);
-    this.mrG = paramInt;
+    AppMethodBeat.i(214476);
+    this.ppO = paramInt;
     this.url = paramString;
-    AppMethodBeat.o(210546);
+    AppMethodBeat.o(214476);
   }
   
   final boolean a(WebSearchWebView paramWebSearchWebView)
   {
-    AppMethodBeat.i(210545);
+    AppMethodBeat.i(214473);
     Log.i(c.getTAG(), "loadJavaScript");
     try
     {
       Object localObject1 = Util.convertStreamToString(MMApplicationContext.getContext().getAssets().open("jsapi/wxjs.js"));
       paramWebSearchWebView.evaluateJavascript("javascript:".concat(String.valueOf(localObject1)), (ValueCallback)new b(this));
       localObject1 = new StringBuilder("javascript:WeixinJSBridge._handleMessageFromWeixin(");
-      Object localObject3 = a.JpF;
+      Object localObject3 = a.Qna;
       localObject3 = (Map)new HashMap();
       ((Map)localObject3).put("webview_type", "1");
       ((Map)localObject3).put("init_url", this.url);
       ((Map)localObject3).put("init_font_size", "1");
-      paramWebSearchWebView.evaluateJavascript(e.a.a.R("sys:init", (Map)localObject3) + ")", (ValueCallback)new c(this));
+      paramWebSearchWebView.evaluateJavascript(e.a.a.T("sys:init", (Map)localObject3) + ")", (ValueCallback)new c(this));
       localObject1 = new StringBuilder("javascript:WeixinJSBridge._handleMessageFromWeixin(");
-      localObject3 = a.JpF;
-      paramWebSearchWebView.evaluateJavascript(e.a.a.R("sys:bridged", null) + ")", (ValueCallback)new d(this));
+      localObject3 = a.Qna;
+      paramWebSearchWebView.evaluateJavascript(e.a.a.T("sys:bridged", null) + ")", (ValueCallback)new d(this));
       localObject1 = new StringBuilder("javascript:WeixinJSBridge._handleMessageFromWeixin(");
-      localObject3 = a.JpF;
+      localObject3 = a.Qna;
       localObject3 = (Map)new HashMap();
       List localList = (List)new LinkedList();
       localList.add("menu:share:timeline");
@@ -150,8 +150,8 @@ public final class e
       localList.add("onNetWorkChange");
       localList.add("onBackgroundAudioStateChange");
       ((Map)localObject3).put("__runOn3rd_apis", new JSONArray((Collection)localList));
-      paramWebSearchWebView.evaluateJavascript(e.a.a.R("sys:attach_runOn3rd_apis", (Map)localObject3) + ")", (ValueCallback)new e(this));
-      AppMethodBeat.o(210545);
+      paramWebSearchWebView.evaluateJavascript(e.a.a.T("sys:attach_runOn3rd_apis", (Map)localObject3) + ")", (ValueCallback)new e(this));
+      AppMethodBeat.o(214473);
       return true;
     }
     catch (Exception localException)
@@ -164,25 +164,25 @@ public final class e
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/fts/preload/WebSearchPreloadTask$Builder;", "", "()V", "Companion", "plugin-webview_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/fts/preload/WebSearchPreloadTask$Builder;", "", "()V", "Companion", "plugin-webview_release"})
   public static final class a
   {
-    public static final a JpF;
+    public static final a Qna;
     
     static
     {
-      AppMethodBeat.i(210535);
-      JpF = new a((byte)0);
-      AppMethodBeat.o(210535);
+      AppMethodBeat.i(267936);
+      Qna = new a((byte)0);
+      AppMethodBeat.o(267936);
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/fts/preload/WebSearchPreloadTask$Builder$Companion;", "", "()V", "EVENT_ID", "", "MSG_PARAMS", "MSG_TYPE", "TYPE_EVENT", "convertMapToJSON", "Lorg/json/JSONObject;", "map", "", "eventToString", "eventId", "params", "plugin-webview_release"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/fts/preload/WebSearchPreloadTask$Builder$Companion;", "", "()V", "EVENT_ID", "", "MSG_PARAMS", "MSG_TYPE", "TYPE_EVENT", "convertMapToJSON", "Lorg/json/JSONObject;", "map", "", "eventToString", "eventId", "params", "plugin-webview_release"})
     public static final class a
     {
-      public static String R(String paramString, Map<String, ? extends Object> paramMap)
+      public static String T(String paramString, Map<String, ? extends Object> paramMap)
       {
-        AppMethodBeat.i(210533);
-        p.h(paramString, "eventId");
+        AppMethodBeat.i(248391);
+        p.k(paramString, "eventId");
         JSONObject localJSONObject = new JSONObject();
         try
         {
@@ -190,8 +190,8 @@ public final class e
           localJSONObject.put("__event_id", paramString);
           if (paramMap != null)
           {
-            paramString = e.a.JpF;
-            localJSONObject.put("__params", be(paramMap));
+            paramString = e.a.Qna;
+            localJSONObject.put("__params", aY(paramMap));
           }
         }
         catch (Exception paramString)
@@ -200,15 +200,15 @@ public final class e
           break label55;
         }
         paramString = localJSONObject.toString();
-        p.g(paramString, "json.toString()");
-        AppMethodBeat.o(210533);
+        p.j(paramString, "json.toString()");
+        AppMethodBeat.o(248391);
         return paramString;
       }
       
-      private static JSONObject be(Map<String, ? extends Object> paramMap)
+      private static JSONObject aY(Map<String, ? extends Object> paramMap)
       {
-        AppMethodBeat.i(210534);
-        p.h(paramMap, "map");
+        AppMethodBeat.i(248392);
+        p.k(paramMap, "map");
         JSONObject localJSONObject = new JSONObject();
         paramMap = paramMap.entrySet().iterator();
         while (paramMap.hasNext())
@@ -220,41 +220,41 @@ public final class e
           }
           catch (Exception localException) {}
         }
-        AppMethodBeat.o(210534);
+        AppMethodBeat.o(248392);
         return localJSONObject;
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "value", "", "kotlin.jvm.PlatformType", "onReceiveValue"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "value", "", "kotlin.jvm.PlatformType", "onReceiveValue"})
   static final class b<T>
     implements ValueCallback<String>
   {
     b(e parame) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "value", "", "kotlin.jvm.PlatformType", "onReceiveValue"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "value", "", "kotlin.jvm.PlatformType", "onReceiveValue"})
   static final class c<T>
     implements ValueCallback<String>
   {
     c(e parame) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "value", "", "kotlin.jvm.PlatformType", "onReceiveValue"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "value", "", "kotlin.jvm.PlatformType", "onReceiveValue"})
   static final class d<T>
     implements ValueCallback<String>
   {
     d(e parame) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "value", "", "kotlin.jvm.PlatformType", "onReceiveValue"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "value", "", "kotlin.jvm.PlatformType", "onReceiveValue"})
   static final class e<T>
     implements ValueCallback<String>
   {
     e(e parame) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class f
     extends q
     implements a<x>
@@ -267,7 +267,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.preload.e
  * JD-Core Version:    0.7.0.1
  */

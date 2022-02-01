@@ -5,11 +5,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.a;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.plugin.fav.a.w;
 import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.protocal.protobuf.aml;
-import com.tencent.mm.protocal.protobuf.anb;
-import com.tencent.mm.protocal.protobuf.anh;
+import com.tencent.mm.plugin.fav.a.y;
+import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.protocal.protobuf.aoc;
+import com.tencent.mm.protocal.protobuf.aoi;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
@@ -24,15 +24,15 @@ import junit.framework.Assert;
 
 public final class d
   extends MAutoStorage<g>
-  implements x
+  implements y
 {
-  private static final String tcv;
+  private static final String wIA;
   private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(101719);
-    tcv = "xml,edittime,ext,favProto" + ",flag,fromUser,id,itemStatus" + ",localId,localSeq,realChatName,sourceCreateTime" + ",sourceId,sourceType,toUser,type" + ",updateSeq,updateTime,tagProto,sessionId" + ",datatotalsize,rowid";
+    wIA = "xml,edittime,ext,favProto" + ",flag,fromUser,id,itemStatus" + ",localId,localSeq,realChatName,sourceCreateTime" + ",sourceId,sourceType,toUser,type" + ",updateSeq,updateTime,tagProto,sessionId" + ",datatotalsize,rowid";
     AppMethodBeat.o(101719);
   }
   
@@ -42,10 +42,10 @@ public final class d
     this.db = paramISQLiteDatabase;
   }
   
-  private static boolean HY(int paramInt)
+  private static boolean LI(int paramInt)
   {
     boolean bool2 = false;
-    int[] arrayOfInt = a.sZP;
+    int[] arrayOfInt = a.wFT;
     int j = arrayOfInt.length;
     int i = 0;
     for (;;)
@@ -64,7 +64,43 @@ public final class d
     }
   }
   
-  public final long A(long paramLong, int paramInt)
+  public final void A(g paramg)
+  {
+    AppMethodBeat.i(101706);
+    String str = "delete from FavItemInfo where localId = " + paramg.field_localId;
+    Log.i("MicroMsg.Fav.FavItemInfoStorage", "delete sql: ".concat(String.valueOf(str)));
+    this.db.execSQL("FavItemInfo", str);
+    doNotify(paramg.field_localId, 5, Long.valueOf(paramg.field_localId));
+    AppMethodBeat.o(101706);
+  }
+  
+  public final boolean B(long paramLong, int paramInt)
+  {
+    AppMethodBeat.i(101697);
+    String str = "select count(updateTime) from FavItemInfo where updateTime < ".concat(String.valueOf(paramLong));
+    Object localObject = str;
+    if (paramInt != -1) {
+      localObject = str + " and type = " + paramInt;
+    }
+    localObject = this.db.rawQuery((String)localObject, null, 2);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(101697);
+      return true;
+    }
+    ((Cursor)localObject).moveToFirst();
+    if (((Cursor)localObject).getInt(0) == 0)
+    {
+      ((Cursor)localObject).close();
+      AppMethodBeat.o(101697);
+      return true;
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(101697);
+    return false;
+  }
+  
+  public final long C(long paramLong, int paramInt)
   {
     AppMethodBeat.i(101698);
     if (this.db == null)
@@ -121,17 +157,7 @@ public final class d
     }
   }
   
-  public final void A(g paramg)
-  {
-    AppMethodBeat.i(101706);
-    String str = "delete from FavItemInfo where localId = " + paramg.field_localId;
-    Log.i("MicroMsg.Fav.FavItemInfoStorage", "delete sql: ".concat(String.valueOf(str)));
-    this.db.execSQL("FavItemInfo", str);
-    doNotify(paramg.field_localId, 5, Long.valueOf(paramg.field_localId));
-    AppMethodBeat.o(101706);
-  }
-  
-  public final LinkedList<Integer> B(long paramLong, int paramInt)
+  public final LinkedList<Integer> D(long paramLong, int paramInt)
   {
     AppMethodBeat.i(101700);
     LinkedList localLinkedList = new LinkedList();
@@ -156,7 +182,7 @@ public final class d
     return localLinkedList;
   }
   
-  public final long C(long paramLong, int paramInt)
+  public final long E(long paramLong, int paramInt)
   {
     AppMethodBeat.i(101701);
     if (this.db == null)
@@ -217,7 +243,7 @@ public final class d
     return paramLong;
   }
   
-  public final g DY(long paramLong)
+  public final g Km(long paramLong)
   {
     AppMethodBeat.i(101691);
     if (this.db == null)
@@ -251,7 +277,7 @@ public final class d
     return null;
   }
   
-  public final g DZ(long paramLong)
+  public final g Kn(long paramLong)
   {
     AppMethodBeat.i(101692);
     Object localObject = "Select * from FavItemInfo where id = ".concat(String.valueOf(paramLong));
@@ -282,7 +308,7 @@ public final class d
     return null;
   }
   
-  public final int HX(int paramInt)
+  public final int LH(int paramInt)
   {
     AppMethodBeat.i(101716);
     Object localObject = "select count(*) from FavItemInfo where id>".concat(String.valueOf(paramInt));
@@ -314,7 +340,7 @@ public final class d
     return -1;
   }
   
-  public final ArrayList<g> a(List<Long> paramList, List<g> paramList1, Set<Integer> paramSet, w paramw)
+  public final ArrayList<g> a(List<Long> paramList, List<g> paramList1, Set<Integer> paramSet, x paramx)
   {
     AppMethodBeat.i(101710);
     if ((paramList == null) || (paramList.size() == 0) || (paramList.size() > 20))
@@ -323,7 +349,7 @@ public final class d
       return null;
     }
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("select ").append(tcv).append(" from FavItemInfo where ");
+    ((StringBuffer)localObject).append("select ").append(wIA).append(" from FavItemInfo where ");
     if ((paramSet != null) && (paramSet.size() > 0))
     {
       ((StringBuffer)localObject).append("( 1=1");
@@ -369,7 +395,7 @@ public final class d
         paramList = new g();
         label344:
         paramList.convertFrom((Cursor)localObject);
-        if ((paramw == null) || (!paramw.u(paramList))) {
+        if ((paramx == null) || (!paramx.u(paramList))) {
           break label439;
         }
         Log.w("MicroMsg.Fav.FavItemInfoStorage", "id[%d] type[%d] match filter", new Object[] { Integer.valueOf(paramList.field_id), Integer.valueOf(paramList.field_type) });
@@ -394,7 +420,7 @@ public final class d
     }
   }
   
-  public final List<g> a(int paramInt, Set<Integer> paramSet, w paramw)
+  public final List<g> a(int paramInt, Set<Integer> paramSet, x paramx)
   {
     AppMethodBeat.i(101699);
     if ((paramSet != null) && (paramSet.contains(Integer.valueOf(paramInt))))
@@ -404,7 +430,7 @@ public final class d
       return null;
     }
     ArrayList localArrayList = new ArrayList();
-    Object localObject = "select " + tcv + " from FavItemInfo where itemStatus > 0";
+    Object localObject = "select " + wIA + " from FavItemInfo where itemStatus > 0";
     if (paramInt != -1) {
       paramSet = (String)localObject + " and type = " + paramInt;
     }
@@ -436,7 +462,7 @@ public final class d
         {
           localObject = new g();
           ((g)localObject).convertFrom(paramSet);
-          if ((paramw != null) && (paramw.u((g)localObject))) {
+          if ((paramx != null) && (paramx.u((g)localObject))) {
             Log.w("MicroMsg.Fav.FavItemInfoStorage", "id[%d] type[%d] match filter", new Object[] { Integer.valueOf(((g)localObject).field_id), Integer.valueOf(((g)localObject).field_type) });
           } else {
             localArrayList.add(localObject);
@@ -453,15 +479,15 @@ public final class d
   public final boolean a(g paramg, String... paramVarArgs)
   {
     AppMethodBeat.i(101696);
-    anh localanh;
-    if (paramg.field_favProto.Lya != null)
+    aoi localaoi;
+    if (paramg.field_favProto.SAB != null)
     {
-      localanh = paramg.field_favProto.Lya;
-      if (localanh.sourceType > 0) {
+      localaoi = paramg.field_favProto.SAB;
+      if (localaoi.sourceType > 0) {
         break label166;
       }
-      Log.w("MicroMsg.Fav.FavItemInfoStorage", "update::favid %d favlocalid %d type %d, sourceTypeError %d", new Object[] { Integer.valueOf(paramg.field_id), Long.valueOf(paramg.field_localId), Integer.valueOf(paramg.field_type), Integer.valueOf(localanh.sourceType) });
-      localanh.ajm(1);
+      Log.w("MicroMsg.Fav.FavItemInfoStorage", "update::favid %d favlocalid %d type %d, sourceTypeError %d", new Object[] { Integer.valueOf(paramg.field_id), Long.valueOf(paramg.field_localId), Integer.valueOf(paramg.field_type), Integer.valueOf(localaoi.sourceType) });
+      localaoi.arz(1);
     }
     for (;;)
     {
@@ -474,21 +500,11 @@ public final class d
       AppMethodBeat.o(101696);
       return bool;
       label166:
-      localanh.ajm(localanh.sourceType);
+      localaoi.arz(localaoi.sourceType);
     }
   }
   
-  public final void af(int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(101705);
-    Log.d("MicroMsg.Fav.FavItemInfoStorage", "setStatus status:%d,localId:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
-    String str = "update FavItemInfo set itemStatus = " + paramInt + " where localId = " + paramLong;
-    this.db.execSQL("FavItemInfo", str);
-    doNotify(String.valueOf(paramLong));
-    AppMethodBeat.o(101705);
-  }
-  
-  public final g asb(String paramString)
+  public final g aAc(String paramString)
   {
     AppMethodBeat.i(101694);
     Cursor localCursor = this.db.query("FavItemInfo", null, "sourceId=?", new String[] { String.valueOf(paramString) }, null, null, null, 2);
@@ -506,40 +522,50 @@ public final class d
     return null;
   }
   
+  public final void ag(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(101705);
+    Log.d("MicroMsg.Fav.FavItemInfoStorage", "setStatus status:%d,localId:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    String str = "update FavItemInfo set itemStatus = " + paramInt + " where localId = " + paramLong;
+    this.db.execSQL("FavItemInfo", str);
+    doNotify(String.valueOf(paramLong));
+    AppMethodBeat.o(101705);
+  }
+  
   /* Error */
-  public final List<g> b(long paramLong, int paramInt, Set<Integer> paramSet, w paramw)
+  public final List<g> b(long paramLong, int paramInt, Set<Integer> paramSet, x paramx)
   {
     // Byte code:
-    //   0: ldc_w 437
+    //   0: ldc_w 443
     //   3: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload 4
     //   8: ifnull +33 -> 41
     //   11: aload 4
     //   13: iload_3
-    //   14: invokestatic 193	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   17: invokeinterface 368 2 0
+    //   14: invokestatic 202	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   17: invokeinterface 374 2 0
     //   22: ifeq +19 -> 41
-    //   25: ldc 79
-    //   27: ldc_w 439
-    //   30: invokestatic 276	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   33: ldc_w 437
+    //   25: ldc 88
+    //   27: ldc_w 445
+    //   30: invokestatic 282	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   33: ldc_w 443
     //   36: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   39: aconst_null
     //   40: areturn
-    //   41: new 339	java/util/ArrayList
+    //   41: new 345	java/util/ArrayList
     //   44: dup
-    //   45: invokespecial 340	java/util/ArrayList:<init>	()V
+    //   45: invokespecial 346	java/util/ArrayList:<init>	()V
     //   48: astore 7
     //   50: new 22	java/lang/StringBuilder
     //   53: dup
-    //   54: ldc_w 289
+    //   54: ldc_w 295
     //   57: invokespecial 28	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   60: getstatic 48	com/tencent/mm/plugin/fav/b/f/d:tcv	Ljava/lang/String;
+    //   60: getstatic 48	com/tencent/mm/plugin/fav/b/f/d:wIA	Ljava/lang/String;
     //   63: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   66: ldc_w 441
+    //   66: ldc_w 447
     //   69: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   72: lload_1
-    //   73: invokevirtual 146	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   73: invokevirtual 86	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   76: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   79: astore 6
     //   81: iload_3
@@ -547,30 +573,30 @@ public final class d
     //   83: if_icmpeq +102 -> 185
     //   86: new 22	java/lang/StringBuilder
     //   89: dup
-    //   90: invokespecial 91	java/lang/StringBuilder:<init>	()V
+    //   90: invokespecial 113	java/lang/StringBuilder:<init>	()V
     //   93: aload 6
     //   95: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   98: ldc 93
+    //   98: ldc 132
     //   100: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   103: iload_3
-    //   104: invokevirtual 96	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   104: invokevirtual 135	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   107: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   110: astore 4
     //   112: new 22	java/lang/StringBuilder
     //   115: dup
-    //   116: invokespecial 91	java/lang/StringBuilder:<init>	()V
+    //   116: invokespecial 113	java/lang/StringBuilder:<init>	()V
     //   119: aload 4
     //   121: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   124: ldc 135
+    //   124: ldc 182
     //   126: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   129: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   132: astore 4
     //   134: new 22	java/lang/StringBuilder
     //   137: dup
-    //   138: invokespecial 91	java/lang/StringBuilder:<init>	()V
+    //   138: invokespecial 113	java/lang/StringBuilder:<init>	()V
     //   141: aload 4
     //   143: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   146: ldc 178
+    //   146: ldc 194
     //   148: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   151: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   154: astore 4
@@ -579,69 +605,69 @@ public final class d
     //   160: aload 4
     //   162: aconst_null
     //   163: iconst_2
-    //   164: invokeinterface 181 4 0
+    //   164: invokeinterface 139 4 0
     //   169: astore 4
     //   171: aload 4
     //   173: ifnonnull +94 -> 267
-    //   176: ldc_w 437
+    //   176: ldc_w 443
     //   179: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   182: aload 7
     //   184: areturn
     //   185: aload 4
     //   187: ifnull +152 -> 339
     //   190: aload 4
-    //   192: invokeinterface 303 1 0
+    //   192: invokeinterface 309 1 0
     //   197: astore 8
     //   199: aload 6
     //   201: astore 4
     //   203: aload 8
-    //   205: invokeinterface 308 1 0
+    //   205: invokeinterface 314 1 0
     //   210: ifeq -98 -> 112
     //   213: aload 8
-    //   215: invokeinterface 312 1 0
-    //   220: checkcast 190	java/lang/Integer
-    //   223: invokevirtual 375	java/lang/Integer:intValue	()I
+    //   215: invokeinterface 318 1 0
+    //   220: checkcast 199	java/lang/Integer
+    //   223: invokevirtual 381	java/lang/Integer:intValue	()I
     //   226: istore_3
     //   227: new 22	java/lang/StringBuilder
     //   230: dup
-    //   231: invokespecial 91	java/lang/StringBuilder:<init>	()V
+    //   231: invokespecial 113	java/lang/StringBuilder:<init>	()V
     //   234: aload 6
     //   236: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   239: ldc_w 314
+    //   239: ldc_w 320
     //   242: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   245: iload_3
-    //   246: invokevirtual 96	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   246: invokevirtual 135	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   249: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   252: astore 6
     //   254: goto -55 -> 199
     //   257: astore 6
-    //   259: ldc 79
-    //   261: ldc_w 443
-    //   264: invokestatic 87	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   259: ldc 88
+    //   261: ldc_w 449
+    //   264: invokestatic 160	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   267: aload 4
-    //   269: invokeinterface 184 1 0
+    //   269: invokeinterface 197 1 0
     //   274: ifeq +49 -> 323
     //   277: new 55	com/tencent/mm/plugin/fav/a/g
     //   280: dup
-    //   281: invokespecial 230	com/tencent/mm/plugin/fav/a/g:<init>	()V
+    //   281: invokespecial 236	com/tencent/mm/plugin/fav/a/g:<init>	()V
     //   284: astore 6
     //   286: aload 6
     //   288: aload 4
-    //   290: invokevirtual 234	com/tencent/mm/plugin/fav/a/g:convertFrom	(Landroid/database/Cursor;)V
+    //   290: invokevirtual 240	com/tencent/mm/plugin/fav/a/g:convertFrom	(Landroid/database/Cursor;)V
     //   293: aload 5
     //   295: ifnull +15 -> 310
     //   298: aload 5
     //   300: aload 6
-    //   302: invokeinterface 349 2 0
+    //   302: invokeinterface 355 2 0
     //   307: ifne -40 -> 267
     //   310: aload 7
     //   312: aload 6
-    //   314: invokeinterface 376 2 0
+    //   314: invokeinterface 382 2 0
     //   319: pop
     //   320: goto -53 -> 267
     //   323: aload 4
-    //   325: invokeinterface 113 1 0
-    //   330: ldc_w 437
+    //   325: invokeinterface 152 1 0
+    //   330: ldc_w 443
     //   333: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   336: aload 7
     //   338: areturn
@@ -654,7 +680,7 @@ public final class d
     //   0	346	1	paramLong	long
     //   0	346	3	paramInt	int
     //   0	346	4	paramSet	Set<Integer>
-    //   0	346	5	paramw	w
+    //   0	346	5	paramx	x
     //   79	174	6	str	String
     //   257	1	6	localException	Exception
     //   284	56	6	localg	g
@@ -668,15 +694,15 @@ public final class d
   public final boolean b(g paramg, String... paramVarArgs)
   {
     AppMethodBeat.i(101711);
-    anh localanh;
-    if (paramg.field_favProto.Lya != null)
+    aoi localaoi;
+    if (paramg.field_favProto.SAB != null)
     {
-      localanh = paramg.field_favProto.Lya;
-      if (localanh.sourceType > 0) {
+      localaoi = paramg.field_favProto.SAB;
+      if (localaoi.sourceType > 0) {
         break label109;
       }
-      Log.w("MicroMsg.Fav.FavItemInfoStorage", "update::favid %d favlocalid %d type %d, sourceTypeError %d", new Object[] { Integer.valueOf(paramg.field_id), Long.valueOf(paramg.field_localId), Integer.valueOf(paramg.field_type), Integer.valueOf(localanh.sourceType) });
-      localanh.ajm(1);
+      Log.w("MicroMsg.Fav.FavItemInfoStorage", "update::favid %d favlocalid %d type %d, sourceTypeError %d", new Object[] { Integer.valueOf(paramg.field_id), Long.valueOf(paramg.field_localId), Integer.valueOf(paramg.field_type), Integer.valueOf(localaoi.sourceType) });
+      localaoi.arz(1);
     }
     for (;;)
     {
@@ -684,16 +710,16 @@ public final class d
       AppMethodBeat.o(101711);
       return bool;
       label109:
-      localanh.ajm(localanh.sourceType);
+      localaoi.arz(localaoi.sourceType);
     }
   }
   
-  public final ISQLiteDatabase cUP()
+  public final ISQLiteDatabase djV()
   {
     return this.db;
   }
   
-  public final int cUQ()
+  public final int djW()
   {
     AppMethodBeat.i(101693);
     Cursor localCursor = rawQuery("select count(*) from FavItemInfo where type = 2", new String[0]);
@@ -709,10 +735,10 @@ public final class d
     return 0;
   }
   
-  public final List<g> cUR()
+  public final List<g> djX()
   {
     AppMethodBeat.i(101703);
-    Object localObject = "select " + tcv + " from FavItemInfo where itemStatus=3";
+    Object localObject = "select " + wIA + " from FavItemInfo where itemStatus=3";
     localObject = this.db.rawQuery((String)localObject, null);
     if (localObject == null)
     {
@@ -737,11 +763,11 @@ public final class d
     return localLinkedList;
   }
   
-  public final List<g> cUS()
+  public final List<g> djY()
   {
     LinkedList localLinkedList = null;
     AppMethodBeat.i(101704);
-    Object localObject = "select " + tcv + " from FavItemInfo where itemStatus=1";
+    Object localObject = "select " + wIA + " from FavItemInfo where itemStatus=1";
     localObject = this.db.rawQuery((String)localObject, null, 2);
     if (localObject == null)
     {
@@ -763,11 +789,11 @@ public final class d
     return localLinkedList;
   }
   
-  public final List<g> cUT()
+  public final List<g> djZ()
   {
     ArrayList localArrayList = null;
     AppMethodBeat.i(101707);
-    Object localObject = "select " + tcv + " from FavItemInfo where (itemStatus=9 or itemStatus" + "=12)";
+    Object localObject = "select " + wIA + " from FavItemInfo where (itemStatus=9 or itemStatus" + "=12)";
     localObject = this.db.rawQuery((String)localObject, null, 2);
     if (localObject == null)
     {
@@ -789,11 +815,11 @@ public final class d
     return localArrayList;
   }
   
-  public final List<g> cUU()
+  public final List<g> dka()
   {
     ArrayList localArrayList = null;
     AppMethodBeat.i(101708);
-    Object localObject = "select " + tcv + " from FavItemInfo where itemStatus=17";
+    Object localObject = "select " + wIA + " from FavItemInfo where itemStatus=17";
     localObject = this.db.rawQuery((String)localObject, null, 2);
     if (localObject == null)
     {
@@ -815,11 +841,11 @@ public final class d
     return localArrayList;
   }
   
-  public final List<g> cUV()
+  public final List<g> dkb()
   {
     ArrayList localArrayList = null;
     AppMethodBeat.i(101709);
-    Object localObject = "select " + tcv + " from FavItemInfo where itemStatus=3 or itemStatus" + "=6 or itemStatus=11 or itemStatus" + "=14 or itemStatus=16 or itemStatus" + "=18";
+    Object localObject = "select " + wIA + " from FavItemInfo where itemStatus=3 or itemStatus" + "=6 or itemStatus=11 or itemStatus" + "=14 or itemStatus=16 or itemStatus" + "=18";
     localObject = this.db.rawQuery((String)localObject, null, 2);
     if (localObject == null)
     {
@@ -841,11 +867,11 @@ public final class d
     return localArrayList;
   }
   
-  public final List<g> cUW()
+  public final List<g> dkc()
   {
     ArrayList localArrayList = null;
     AppMethodBeat.i(101712);
-    Object localObject = "select " + tcv + " from FavItemInfo where flag =  -1 and itemStatus = 0 ";
+    Object localObject = "select " + wIA + " from FavItemInfo where flag =  -1 and itemStatus = 0 ";
     localObject = this.db.rawQuery((String)localObject, null, 2);
     if (localObject == null)
     {
@@ -867,13 +893,13 @@ public final class d
     return localArrayList;
   }
   
-  public final List<Long> cUX()
+  public final List<Long> dkd()
   {
     AppMethodBeat.i(101713);
     long l1 = System.currentTimeMillis();
     ArrayList localArrayList = new ArrayList();
     Object localObject1 = "";
-    Object localObject2 = a.sZP;
+    Object localObject2 = a.wFT;
     int j = localObject2.length;
     int i = 0;
     int k;
@@ -890,7 +916,7 @@ public final class d
     localObject1 = "select localId from FavItemInfo where " + " itemStatus in (" + (String)localObject2 + ")";
     String str = (String)localObject1 + " and datatotalsize > 0 ";
     localObject1 = "";
-    localObject2 = a.sZO;
+    localObject2 = a.wFS;
     j = localObject2.length;
     i = 0;
     while (i < j)
@@ -927,13 +953,13 @@ public final class d
     return localArrayList;
   }
   
-  public final void cUY()
+  public final void dke()
   {
     AppMethodBeat.i(101714);
     Log.i("MicroMsg.Fav.FavItemInfoStorage", "calDataBaseDataTotalLength");
-    Object localObject3 = "select " + tcv + " from FavItemInfo where ";
+    Object localObject3 = "select " + wIA + " from FavItemInfo where ";
     Object localObject1 = "";
-    Object localObject2 = a.sZP;
+    Object localObject2 = a.wFT;
     int j = localObject2.length;
     int i = 0;
     int k;
@@ -949,7 +975,7 @@ public final class d
     }
     localObject3 = (String)localObject3 + "itemStatus in (" + (String)localObject2 + ")";
     localObject1 = "";
-    localObject2 = a.sZO;
+    localObject2 = a.wFS;
     j = localObject2.length;
     i = 0;
     while (i < j)
@@ -988,12 +1014,12 @@ public final class d
       {
         localObject2 = new g();
         ((g)localObject2).convertFrom((Cursor)localObject1);
-        if (HY(((g)localObject2).field_itemStatus))
+        if (LI(((g)localObject2).field_itemStatus))
         {
           if (((g)localObject2).field_favProto != null)
           {
-            localObject3 = ((g)localObject2).field_favProto.ppH.iterator();
-            for (long l1 = 0L;; l1 = ((aml)((Iterator)localObject3).next()).LvI + l1)
+            localObject3 = ((g)localObject2).field_favProto.syG.iterator();
+            for (long l1 = 0L;; l1 = ((anm)((Iterator)localObject3).next()).Syi + l1)
             {
               l3 = l1;
               if (!((Iterator)localObject3).hasNext()) {
@@ -1020,7 +1046,7 @@ public final class d
     }
   }
   
-  public final List<Long> cUZ()
+  public final List<Long> dkf()
   {
     AppMethodBeat.i(101715);
     ArrayList localArrayList = new ArrayList();
@@ -1045,11 +1071,11 @@ public final class d
     return localArrayList;
   }
   
-  public final List<g> fT(int paramInt1, int paramInt2)
+  public final List<g> gq(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(198781);
+    AppMethodBeat.i(217184);
     ArrayList localArrayList = new ArrayList();
-    Object localObject = "SELECT " + tcv + " FROM FavItemInfo WHERE itemStatus > 0";
+    Object localObject = "SELECT " + wIA + " FROM FavItemInfo WHERE itemStatus > 0";
     localObject = (String)localObject + " AND (type = 8";
     localObject = (String)localObject + " OR type = 14";
     localObject = (String)localObject + " OR type = 18)";
@@ -1057,7 +1083,7 @@ public final class d
     localObject = this.db.rawQuery((String)localObject, null, 2);
     if (localObject == null)
     {
-      AppMethodBeat.o(198781);
+      AppMethodBeat.o(217184);
       return localArrayList;
     }
     while (((Cursor)localObject).moveToNext())
@@ -1067,53 +1093,27 @@ public final class d
       localArrayList.add(localg);
     }
     ((Cursor)localObject).close();
-    AppMethodBeat.o(198781);
+    AppMethodBeat.o(217184);
     return localArrayList;
-  }
-  
-  public final boolean z(long paramLong, int paramInt)
-  {
-    AppMethodBeat.i(101697);
-    String str = "select count(updateTime) from FavItemInfo where updateTime < ".concat(String.valueOf(paramLong));
-    Object localObject = str;
-    if (paramInt != -1) {
-      localObject = str + " and type = " + paramInt;
-    }
-    localObject = this.db.rawQuery((String)localObject, null, 2);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(101697);
-      return true;
-    }
-    ((Cursor)localObject).moveToFirst();
-    if (((Cursor)localObject).getInt(0) == 0)
-    {
-      ((Cursor)localObject).close();
-      AppMethodBeat.o(101697);
-      return true;
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(101697);
-    return false;
   }
   
   public final boolean z(g paramg)
   {
     AppMethodBeat.i(101695);
     boolean bool;
-    anh localanh;
+    aoi localaoi;
     if (paramg.field_localId > 0L)
     {
       bool = true;
       Assert.assertTrue(bool);
-      if (paramg.field_favProto.Lya != null)
+      if (paramg.field_favProto.SAB != null)
       {
-        localanh = paramg.field_favProto.Lya;
-        if (localanh.sourceType > 0) {
+        localaoi = paramg.field_favProto.SAB;
+        if (localaoi.sourceType > 0) {
           break label162;
         }
-        Log.w("MicroMsg.Fav.FavItemInfoStorage", "insert::favid %d favlocalid %d type %d, sourceTypeError %d", new Object[] { Integer.valueOf(paramg.field_id), Long.valueOf(paramg.field_localId), Integer.valueOf(paramg.field_type), Integer.valueOf(localanh.sourceType) });
-        localanh.ajm(1);
+        Log.w("MicroMsg.Fav.FavItemInfoStorage", "insert::favid %d favlocalid %d type %d, sourceTypeError %d", new Object[] { Integer.valueOf(paramg.field_id), Long.valueOf(paramg.field_localId), Integer.valueOf(paramg.field_type), Integer.valueOf(localaoi.sourceType) });
+        localaoi.arz(1);
       }
     }
     for (;;)
@@ -1128,7 +1128,7 @@ public final class d
       bool = false;
       break;
       label162:
-      localanh.ajm(localanh.sourceType);
+      localaoi.arz(localaoi.sourceType);
     }
   }
 }

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.ext.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ya;
-import com.tencent.mm.protocal.protobuf.yb;
+import com.tencent.mm.protocal.protobuf.yg;
+import com.tencent.mm.protocal.protobuf.yh;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
@@ -21,27 +21,27 @@ public final class a
   public i callback;
   public String mUrl;
   private d rr;
-  public int sOj;
+  public int wue;
   
   public a(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(24508);
-    this.sOj = -1;
+    this.wue = -1;
     this.mUrl = null;
     this.mUrl = paramString;
     d.a locala = new d.a();
-    locala.iLN = new ya();
-    locala.iLO = new yb();
+    locala.lBU = new yg();
+    locala.lBV = new yh();
     locala.uri = "/cgi-bin/micromsg-bin/checkcamerascan";
     locala.funcId = 782;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
+    this.rr = locala.bgN();
     Log.i("MicroMsg.NetSceneCheckUrlAvailableInWx", "hy: checking url: %s", new Object[] { paramString });
-    paramString = (ya)this.rr.iLK.iLR;
+    paramString = (yg)d.b.b(this.rr.lBR);
     paramString.URL = this.mUrl;
-    paramString.Ljb = paramInt1;
-    paramString.Ljc = paramInt2;
+    paramString.Sks = paramInt1;
+    paramString.Skt = paramInt2;
     AppMethodBeat.o(24508);
   }
   
@@ -63,9 +63,9 @@ public final class a
   {
     AppMethodBeat.i(24510);
     Log.d("MicroMsg.NetSceneCheckUrlAvailableInWx", "hy: on get camera url end. errType; %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    params = (yb)((d)params).iLL.iLR;
+    params = (yh)d.c.b(((d)params).lBS);
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.sOj = params.oUv;
+      this.wue = params.rWu;
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(24510);

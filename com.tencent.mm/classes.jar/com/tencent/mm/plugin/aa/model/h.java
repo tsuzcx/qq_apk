@@ -9,8 +9,8 @@ import com.tencent.mm.vending.j.f;
 public final class h
   implements b<g>
 {
-  protected g jSB;
-  public final a jSC;
+  protected g mJO;
+  public final a mJP;
   
   public h()
   {
@@ -22,14 +22,14 @@ public final class h
   private h(g paramg)
   {
     AppMethodBeat.i(63337);
-    this.jSC = new a();
-    this.jSB = paramg;
+    this.mJP = new a();
+    this.mJO = paramg;
     AppMethodBeat.o(63337);
   }
   
-  public final g bmk()
+  public final g bws()
   {
-    return this.jSB;
+    return this.mJO;
   }
   
   public final class a
@@ -37,7 +37,7 @@ public final class h
   {
     public a() {}
     
-    public final String akn()
+    public final String aqj()
     {
       return "Vending.LOGIC";
     }
@@ -45,7 +45,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.h
  * JD-Core Version:    0.7.0.1
  */

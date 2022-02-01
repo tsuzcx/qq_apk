@@ -1,516 +1,296 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.f.b.a.ol;
+import com.tencent.mm.plugin.appbrand.app.m;
+import com.tencent.mm.plugin.appbrand.appcache.aj;
+import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
+import com.tencent.mm.plugin.appbrand.jsapi.file.av;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import kotlin.a.v;
-import kotlin.g.a.b;
-import kotlin.g.a.m;
-import kotlin.g.b.q;
-import kotlin.g.b.z.d;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.concurrent.TimeUnit;
+import kotlin.g.b.p;
+import kotlin.h.a;
 import kotlin.l;
-import kotlin.n.k;
-import kotlin.n.n;
-import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage;", "Lcom/tencent/mm/plugin/appbrand/appstorage/IAppBrandKVStorage;", "uin", "", "(J)V", "MMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getter", "Lkotlin/Function1;", "", "setter", "Lkotlin/Function2;", "", "appendTotalDataSize", "", "storageId", "appId", "size", "clear", "clearAll", "generateValue", "data", "dataType", "get", "", "", "key", "(ILjava/lang/String;Ljava/lang/String;)[Ljava/lang/Object;", "getAllStorageId", "", "getDataSize", "recordKey", "getQuota", "getTotalDataSize", "getTotalDataSizeAll", "info", "(ILjava/lang/String;)[Ljava/lang/Object;", "keys", "block", "keysSize", "remove", "Lcom/tencent/mm/plugin/appbrand/appstorage/IAppBrandKVStorage$ErrorType;", "set", "setTotalDataSize", "splitValue", "Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage$StorageInfo;", "str", "willReachQuota", "", "Companion", "StorageInfo", "luggage-wechat-full-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandTempFileCleaner;", "", "()V", "Companion", "plugin-appbrand-integration_release"})
 public final class h
-  implements p
 {
-  private static final Map<Long, h> kSk;
-  public static final a kSl;
-  private final b<String, String> kRJ;
-  private final m<String, String, x> kRK;
-  private MultiProcessMMKV kSj;
+  private static final long nMG;
+  private static final s nMH;
+  public static final a nMI;
   
   static
   {
-    AppMethodBeat.i(147886);
-    kSl = new a((byte)0);
-    kSk = (Map)new LinkedHashMap();
-    AppMethodBeat.o(147886);
+    AppMethodBeat.i(270123);
+    nMI = new a((byte)0);
+    nMG = TimeUnit.DAYS.toMillis(1L);
+    nMH = (s)h.b.nMJ;
+    AppMethodBeat.o(270123);
   }
   
-  private h(long paramLong)
+  public static final void bIC()
   {
-    AppMethodBeat.i(147885);
-    Log.i("AppBrandMMKVStorage", "getMMKV uin:".concat(String.valueOf(paramLong)));
-    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("AppBrandMMKVStorage".concat(String.valueOf(paramLong)));
-    kotlin.g.b.p.g(localMultiProcessMMKV, "MultiProcessMMKV.getMMKV(NAME + uin)");
-    this.kSj = localMultiProcessMMKV;
-    this.kRJ = ((b)new d(this));
-    this.kRK = ((m)new f(this));
-    AppMethodBeat.o(147885);
-  }
-  
-  private int[] VK(String paramString)
-  {
-    AppMethodBeat.i(147884);
-    kotlin.g.b.p.h(paramString, "appId");
-    paramString = t.a(paramString, this.kRJ, this.kRK);
-    AppMethodBeat.o(147884);
-    return paramString;
-  }
-  
-  private final int VM(String paramString)
-  {
-    AppMethodBeat.i(147872);
-    String str = this.kSj.getString(paramString, "");
-    paramString = str;
-    if (str == null) {
-      paramString = "";
-    }
-    try
+    AppMethodBeat.i(270124);
+    long l = AppBrandGlobalSystemConfig.bLe().nWU * 1048576L;
+    Log.i("MicroMsg.AppBrandTempFileCleaner", "checkTotalTempFileLimitSync limit:".concat(String.valueOf(l)));
+    if (l > 0L)
     {
-      i = Integer.parseInt(VT(paramString).kSm);
-      AppMethodBeat.o(147872);
-      return i;
-    }
-    catch (NumberFormatException paramString)
-    {
-      for (;;)
-      {
-        int i = 0;
+      ol localol = new ol();
+      a.a(l, localol);
+      if (localol.aoA() > 0L) {
+        com.tencent.mm.plugin.report.service.h.IzE.el(358, 248);
       }
     }
+    AppMethodBeat.o(270124);
   }
   
-  private static b VT(String paramString)
-  {
-    AppMethodBeat.i(147874);
-    paramString = (CharSequence)paramString;
-    paramString = ((Collection)new k("#").q(paramString, 3)).toArray(new String[0]);
-    if (paramString == null)
-    {
-      paramString = new kotlin.t("null cannot be cast to non-null type kotlin.Array<T>");
-      AppMethodBeat.o(147874);
-      throw paramString;
-    }
-    paramString = (String[])paramString;
-    if (paramString.length == 3)
-    {
-      paramString = new b(paramString[2], paramString[0], paramString[1]);
-      AppMethodBeat.o(147874);
-      return paramString;
-    }
-    paramString = new b("", "", "");
-    AppMethodBeat.o(147874);
-    return paramString;
-  }
-  
-  private final int aa(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(147879);
-    paramString = t.c(paramInt, paramString, "@@@TOTAL@DATA@SIZE@@@", "++");
-    paramInt = Util.getInt(this.kSj.getString(paramString, ""), 0);
-    AppMethodBeat.o(147879);
-    return paramInt;
-  }
-  
-  private void d(String paramString, b<? super String, x> paramb)
-  {
-    AppMethodBeat.i(147880);
-    kotlin.g.b.p.h(paramString, "appId");
-    kotlin.g.b.p.h(paramb, "block");
-    k localk = new k("^([1-9]\\d*__)?" + paramString + "__.+$");
-    paramString = this.kSj.allKeys();
-    if (paramString == null) {
-      paramString = new String[0];
-    }
-    for (;;)
-    {
-      int j = paramString.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = paramString[i];
-        kotlin.g.b.p.g(localObject, "key");
-        if (localk.aJ((CharSequence)localObject)) {
-          paramb.invoke(localObject);
-        }
-        i += 1;
-      }
-      AppMethodBeat.o(147880);
-      return;
-    }
-  }
-  
-  private final void g(int paramInt1, String paramString, int paramInt2)
-  {
-    AppMethodBeat.i(147870);
-    paramString = t.c(paramInt1, paramString, "@@@TOTAL@DATA@SIZE@@@", "++");
-    this.kSj.putString(paramString, String.valueOf(paramInt2));
-    AppMethodBeat.o(147870);
-  }
-  
-  private final int h(int paramInt1, String paramString, int paramInt2)
-  {
-    AppMethodBeat.i(147871);
-    paramInt2 = Math.max(0, aa(paramInt1, paramString) + paramInt2);
-    g(paramInt1, paramString, paramInt2);
-    AppMethodBeat.o(147871);
-    return paramInt2;
-  }
-  
-  private final boolean i(int paramInt1, String paramString, int paramInt2)
-  {
-    AppMethodBeat.i(147883);
-    if (aa(paramInt1, paramString) + paramInt2 >= t.ab(paramInt1, paramString))
-    {
-      AppMethodBeat.o(147883);
-      return true;
-    }
-    AppMethodBeat.o(147883);
-    return false;
-  }
-  
-  private static String s(String paramString1, String paramString2, int paramInt)
-  {
-    AppMethodBeat.i(147873);
-    paramString1 = paramString2 + "#" + paramInt + "#" + paramString1;
-    AppMethodBeat.o(147873);
-    return paramString1;
-  }
-  
-  public final void VJ(String paramString)
-  {
-    AppMethodBeat.i(147877);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(147877);
-      return;
-    }
-    if (paramString == null) {
-      kotlin.g.b.p.hyc();
-    }
-    int[] arrayOfInt = VK(paramString);
-    int j = arrayOfInt.length;
-    int i = 0;
-    while (i < j)
-    {
-      g(arrayOfInt[i], paramString, 0);
-      i += 1;
-    }
-    d(paramString, (b)new c(this));
-    t.b(paramString, this.kRJ, this.kRK);
-    AppMethodBeat.o(147877);
-  }
-  
-  public final int VL(String paramString)
-  {
-    AppMethodBeat.i(147882);
-    kotlin.g.b.p.h(paramString, "appId");
-    int[] arrayOfInt = t.a(paramString, this.kRJ, this.kRK);
-    int k = arrayOfInt.length;
-    int j = 0;
-    int m;
-    for (int i = 0; j < k; i = m + i)
-    {
-      m = aa(arrayOfInt[j], paramString);
-      j += 1;
-    }
-    AppMethodBeat.o(147882);
-    return i;
-  }
-  
-  public final int VU(String paramString)
-  {
-    AppMethodBeat.i(147881);
-    kotlin.g.b.p.h(paramString, "appId");
-    z.d locald = new z.d();
-    locald.SYE = 0;
-    d(paramString, (b)new h.e(locald));
-    int i = locald.SYE;
-    AppMethodBeat.o(147881);
-    return i;
-  }
-  
-  public final void Y(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(147876);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(147876);
-      return;
-    }
-    if (paramInt == 0) {}
-    for (String str = kotlin.g.b.p.I(paramString, "__");; str = String.valueOf(paramInt) + "__" + paramString + "__")
-    {
-      String[] arrayOfString2 = this.kSj.allKeys();
-      String[] arrayOfString1 = arrayOfString2;
-      if (arrayOfString2 == null) {
-        arrayOfString1 = new String[0];
-      }
-      int j = arrayOfString1.length;
-      int i = 0;
-      while (i < j)
-      {
-        arrayOfString2 = arrayOfString1[i];
-        kotlin.g.b.p.g(arrayOfString2, "key");
-        if (n.J(arrayOfString2, str, false)) {
-          this.kSj.remove(arrayOfString2);
-        }
-        i += 1;
-      }
-    }
-    if (paramString == null) {
-      kotlin.g.b.p.hyc();
-    }
-    g(paramInt, paramString, 0);
-    t.b(paramString, paramInt, this.kRJ, this.kRK);
-    AppMethodBeat.o(147876);
-  }
-  
-  public final Object[] Z(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(147878);
-    if (paramString == null)
-    {
-      paramString = (List)v.SXr;
-      AppMethodBeat.o(147878);
-      return new Object[] { paramString, Integer.valueOf(0), Integer.valueOf(0) };
-    }
-    List localList = (List)new ArrayList();
-    if (paramInt == 0) {}
-    for (String str = paramString + "__";; str = String.valueOf(paramInt) + "__" + paramString + "__")
-    {
-      String[] arrayOfString2 = this.kSj.allKeys();
-      String[] arrayOfString1 = arrayOfString2;
-      if (arrayOfString2 == null) {
-        arrayOfString1 = new String[0];
-      }
-      int j = arrayOfString1.length;
-      i = 0;
-      while (i < j)
-      {
-        arrayOfString2 = arrayOfString1[i];
-        kotlin.g.b.p.g(arrayOfString2, "key");
-        if (n.J(arrayOfString2, str, false)) {
-          localList.add(n.j(arrayOfString2, str, "", false));
-        }
-        i += 1;
-      }
-    }
-    int i = aa(paramInt, paramString);
-    paramInt = t.ab(paramInt, paramString);
-    AppMethodBeat.o(147878);
-    return new Object[] { localList, Integer.valueOf(i), Integer.valueOf(paramInt) };
-  }
-  
-  public final p.a c(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    AppMethodBeat.i(147869);
-    kotlin.g.b.p.h(paramString4, "dataType");
-    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
-    {
-      paramString1 = p.a.kSR;
-      AppMethodBeat.o(147869);
-      return paramString1;
-    }
-    if (paramString1 == null) {
-      kotlin.g.b.p.hyc();
-    }
-    if (paramString2 == null) {
-      kotlin.g.b.p.hyc();
-    }
-    String str = t.c(paramInt, paramString1, paramString2, "__");
-    int j = VM(str);
-    int i = t.cF(paramString2, paramString3);
-    j = i - j;
-    if (i(paramInt, paramString1, j))
-    {
-      paramString1 = p.a.kST;
-      AppMethodBeat.o(147869);
-      return paramString1;
-    }
-    this.kSj.putString(str, s(paramString3, paramString4, i));
-    h(paramInt, paramString1, j);
-    t.a(paramString1, paramInt, this.kRJ, this.kRK);
-    paramString1 = p.a.kSP;
-    AppMethodBeat.o(147869);
-    return paramString1;
-  }
-  
-  public final Object[] l(int paramInt, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(147868);
-    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
-    {
-      paramString1 = p.a.kSR;
-      AppMethodBeat.o(147868);
-      return new Object[] { paramString1 };
-    }
-    if (paramString1 == null) {
-      kotlin.g.b.p.hyc();
-    }
-    if (paramString2 == null) {
-      kotlin.g.b.p.hyc();
-    }
-    paramString1 = t.c(paramInt, paramString1, paramString2, "__");
-    paramString2 = this.kSj.getString(paramString1, "");
-    paramString1 = paramString2;
-    if (paramString2 == null) {
-      paramString1 = "";
-    }
-    Object localObject = VT(paramString1);
-    if (((CharSequence)((b)localObject).data).length() == 0)
-    {
-      paramInt = 1;
-      if (paramInt == 0) {
-        break label217;
-      }
-      if (((CharSequence)((b)localObject).type).length() != 0) {
-        break label207;
-      }
-      paramInt = 1;
-      label129:
-      if (paramInt == 0) {
-        break label217;
-      }
-      if (((CharSequence)((b)localObject).kSm).length() != 0) {
-        break label212;
-      }
-      paramInt = 1;
-      label151:
-      if (paramInt == 0) {
-        break label217;
-      }
-    }
-    label207:
-    label212:
-    label217:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if (paramInt != 0) {
-        break label222;
-      }
-      paramString1 = p.a.kSP;
-      paramString2 = ((b)localObject).data;
-      localObject = ((b)localObject).type;
-      AppMethodBeat.o(147868);
-      return new Object[] { paramString1, paramString2, localObject };
-      paramInt = 0;
-      break;
-      paramInt = 0;
-      break label129;
-      paramInt = 0;
-      break label151;
-    }
-    label222:
-    paramString1 = t.kSW;
-    AppMethodBeat.o(147868);
-    return paramString1;
-  }
-  
-  public final p.a m(int paramInt, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(147875);
-    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
-    {
-      paramString1 = p.a.kSR;
-      AppMethodBeat.o(147875);
-      return paramString1;
-    }
-    if (paramString1 == null) {
-      kotlin.g.b.p.hyc();
-    }
-    if (paramString2 == null) {
-      kotlin.g.b.p.hyc();
-    }
-    paramString2 = t.c(paramInt, paramString1, paramString2, "__");
-    int i = h(paramInt, paramString1, -VM(paramString2));
-    this.kSj.remove(paramString2);
-    if (i <= 0) {
-      t.b(paramString1, paramInt, this.kRJ, this.kRK);
-    }
-    paramString1 = p.a.kSP;
-    AppMethodBeat.o(147875);
-    return paramString1;
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage$Companion;", "", "()V", "CACHE", "", "", "Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage;", "NAME", "", "NORMAL_VALUE_TYPE_SEPARATOR", "TAG", "obtain", "uin", "onAccountRelease", "", "luggage-wechat-full-sdk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandTempFileCleaner$Companion;", "", "()V", "LOCK_GAP", "", "TAG", "", "TEMP_FILES_FILTER", "Lcom/tencent/mm/vfs/VFSFileFilter;", "getTEMP_FILES_FILTER", "()Lcom/tencent/mm/vfs/VFSFileFilter;", "calculateTotalAppDirTempFileSize", "checkAppDirHasLocked", "", "path", "checkAppDirTempFileLimit", "", "appId", "minTempSize", "maxTempSize", "storageKey2Path", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "reportStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppFileSystemTempFileLastOccupationStatStruct;", "checkTotalTempFileLimit", "maxTotalTempSize", "checkTotalTempFileLimitSync", "clearAllTempFileAsync", "lruPruneAllAppDirTempFiles", "currentSize", "targetSize", "lruPruneAppDirTempFiles", "pruneAppDirTempFiles", "dir", "Lcom/tencent/mm/vfs/VFSFile;", "plugin-appbrand-integration_release"})
   public static final class a
   {
-    public static h AY(long paramLong)
+    private static long G(long paramLong1, long paramLong2)
     {
-      AppMethodBeat.i(147862);
-      synchronized (h.bxp())
+      AppMethodBeat.i(271051);
+      paramLong1 -= paramLong2;
+      Object localObject1 = (aj)m.W(aj.class);
+      if (localObject1 != null) {}
+      Object localObject2;
+      Object localObject3;
+      for (localObject1 = ((aj)localObject1).bGW();; localObject1 = null)
       {
-        if (!h.bxp().keySet().contains(Long.valueOf(paramLong))) {
-          h.bxp().put(Long.valueOf(paramLong), new h(paramLong, (byte)0));
+        if (localObject1 == null) {
+          p.iCn();
         }
-        x localx = x.SXb;
-        ??? = h.bxp().get(Long.valueOf(paramLong));
-        if (??? == null) {
-          kotlin.g.b.p.hyc();
+        localObject2 = new q(av.bSa()).ifJ();
+        if (localObject2 == null) {
+          break;
         }
-        ??? = (h)???;
-        AppMethodBeat.o(147862);
-        return ???;
+        int j = localObject2.length;
+        int i = 0;
+        while (i < j)
+        {
+          localObject3 = localObject2[i];
+          p.j(localObject3, "appDir");
+          if (!((LinkedList)localObject1).contains(((q)localObject3).getName())) {
+            ((LinkedList)localObject1).addFirst(((q)localObject3).getName());
+          }
+          i += 1;
+        }
+      }
+      localObject1 = ((LinkedList)localObject1).iterator();
+      if (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (String)((Iterator)localObject1).next();
+        localObject3 = AppBrandStorageQuotaManager.nMv;
+        p.j(localObject2, "appId");
+        long l = AppBrandStorageQuotaManager.cL((String)localObject2, "temp");
+        if (l > 0L)
+        {
+          localObject3 = h.nMI;
+          d(new q(av.bSa() + (String)localObject2 + '/'), (String)localObject2);
+          paramLong1 -= l;
+          label231:
+          if (paramLong1 > 0L) {}
+        }
+      }
+      for (;;)
+      {
+        Log.i("MicroMsg.AppBrandTempFileCleaner", "allAppDir lru clean done, nowSize:" + (paramLong2 + paramLong1));
+        AppMethodBeat.o(271051);
+        return paramLong1 + paramLong2;
+        break;
+        break label231;
       }
     }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage$StorageInfo;", "", "data", "", "type", "size", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getData", "()Ljava/lang/String;", "getSize", "getType", "isEmpty", "", "luggage-wechat-full-sdk_release"})
-  public static final class b
-  {
-    final String data;
-    final String kSm;
-    final String type;
     
-    public b(String paramString1, String paramString2, String paramString3)
+    public static void a(long paramLong, ol paramol)
     {
-      AppMethodBeat.i(147863);
-      this.data = paramString1;
-      this.type = paramString2;
-      this.kSm = paramString3;
-      AppMethodBeat.o(147863);
+      AppMethodBeat.i(271048);
+      long l1 = System.currentTimeMillis();
+      long l2 = bID();
+      Log.i("MicroMsg.AppBrandTempFileCleaner", "checkTotalTempFileLimit current: " + l2 + " max: " + paramLong + " cost:" + (System.currentTimeMillis() - l1));
+      if (paramol != null) {
+        paramol.AW(a.N(l2 / 1024.0D));
+      }
+      if (l2 <= paramLong)
+      {
+        AppMethodBeat.o(271048);
+        return;
+      }
+      if (paramol != null) {
+        paramol.aoz();
+      }
+      G(l2, paramLong / 2L);
+      Log.i("MicroMsg.AppBrandTempFileCleaner", "checkTotalTempFileLimit cost " + (System.currentTimeMillis() - l1));
+      AppMethodBeat.o(271048);
     }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "key", "", "invoke"})
-  static final class c
-    extends q
-    implements b<String, x>
-  {
-    c(h paramh)
+    
+    static boolean adH(String paramString)
     {
-      super();
+      AppMethodBeat.i(271050);
+      if (u.agG(paramString + "/dir.lock"))
+      {
+        if (Util.nowMilliSecond() - new q(paramString + "/dir.lock").lastModified() < h.bIA())
+        {
+          Log.i("MicroMsg.AppBrandTempFileCleaner", "checkAppDirHasLocked path %s, locked", new Object[] { paramString });
+          AppMethodBeat.o(271050);
+          return true;
+        }
+        Log.e("MicroMsg.AppBrandTempFileCleaner", "checkAppDirHasLocked path %s, lock expired", new Object[] { paramString });
+      }
+      Log.i("MicroMsg.AppBrandTempFileCleaner", "checkAppDirHasLocked path %s, lock free", new Object[] { paramString });
+      AppMethodBeat.o(271050);
+      return false;
     }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "key", "invoke"})
-  static final class d
-    extends q
-    implements b<String, String>
-  {
-    d(h paramh)
+    
+    private static long bID()
     {
-      super();
+      AppMethodBeat.i(271049);
+      q[] arrayOfq = new q(av.bSa()).ifJ();
+      long l1 = 0L;
+      if (arrayOfq != null)
+      {
+        int j = arrayOfq.length;
+        int i = 0;
+        l1 = 0L;
+        if (i < j)
+        {
+          Object localObject1 = arrayOfq[i];
+          Object localObject2 = AppBrandStorageQuotaManager.nMv;
+          p.j(localObject1, "it");
+          localObject2 = ((q)localObject1).getName();
+          p.j(localObject2, "it.name");
+          if (AppBrandStorageQuotaManager.cK((String)localObject2, "temp"))
+          {
+            localObject2 = AppBrandStorageQuotaManager.nMv;
+            localObject1 = ((q)localObject1).getName();
+            p.j(localObject1, "it.name");
+          }
+          for (long l2 = AppBrandStorageQuotaManager.cL((String)localObject1, "temp");; l2 = AppBrandStorageQuotaManager.a((String)localObject2, "temp", (q)localObject1))
+          {
+            l1 += l2;
+            i += 1;
+            break;
+            localObject2 = AppBrandStorageQuotaManager.nMv;
+            localObject2 = ((q)localObject1).getName();
+            p.j(localObject2, "it.name");
+          }
+        }
+      }
+      AppMethodBeat.o(271049);
+      return l1;
     }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<no name provided>", "", "key", "", "value", "invoke"})
-  static final class f
-    extends q
-    implements m<String, String, x>
-  {
-    f(h paramh)
+    
+    static void d(q paramq, String paramString)
     {
-      super();
+      AppMethodBeat.i(271054);
+      Log.i("MicroMsg.AppBrandTempFileCleaner", "pruneAppDirTempFiles " + paramq.bOF());
+      String str;
+      if ((paramq.ifE()) && (paramq.isDirectory()))
+      {
+        str = paramq.bOF();
+        p.j(str, "dir.absolutePath");
+        if (!adH(str)) {}
+      }
+      else
+      {
+        AppMethodBeat.o(271054);
+        return;
+      }
+      paramq = paramq.a(h.bIB());
+      if (paramq != null)
+      {
+        int j = paramq.length;
+        int i = 0;
+        while (i < j)
+        {
+          str = paramq[i];
+          p.j(str, "it");
+          u.deleteFile(str.bOF());
+          i += 1;
+        }
+      }
+      if (paramString != null)
+      {
+        paramq = AppBrandStorageQuotaManager.nMv;
+        AppBrandStorageQuotaManager.a(paramString, "temp", 0L, true);
+        AppMethodBeat.o(271054);
+        return;
+      }
+      AppMethodBeat.o(271054);
+    }
+    
+    static long n(String paramString, long paramLong1, long paramLong2)
+    {
+      AppMethodBeat.i(271056);
+      Log.i("MicroMsg.AppBrandTempFileCleaner", "lruPruneAppDirAsync %s %d %d", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+      Object localObject1 = av.bSa() + paramString + '/';
+      if ((TextUtils.isEmpty((CharSequence)paramString)) || (paramLong1 <= paramLong2) || (adH((String)localObject1)))
+      {
+        AppMethodBeat.o(271056);
+        return -1L;
+      }
+      localObject1 = new q((String)localObject1);
+      if ((!((q)localObject1).ifE()) || (!((q)localObject1).isDirectory()))
+      {
+        Log.i("MicroMsg.AppBrandTempFileCleaner", "appDir not exist");
+        AppMethodBeat.o(271056);
+        return -1L;
+      }
+      localObject1 = ((q)localObject1).a(h.bIB());
+      if (localObject1 != null) {
+        if (localObject1.length != 0) {
+          break label189;
+        }
+      }
+      label189:
+      for (int i = 1; i != 0; i = 0)
+      {
+        Log.i("MicroMsg.AppBrandTempFileCleaner", "no temp file");
+        AppMethodBeat.o(271056);
+        return -1L;
+      }
+      Arrays.sort((Object[])localObject1, (Comparator)h.a.b.nML);
+      int j = localObject1.length;
+      paramLong1 -= paramLong2;
+      i = 0;
+      long l2;
+      for (;;)
+      {
+        l2 = paramLong1;
+        if (i >= j) {
+          break;
+        }
+        Object localObject2 = localObject1[i];
+        p.j(localObject2, "file");
+        long l1 = paramLong1;
+        if (u.deleteFile(localObject2.bOF())) {
+          l1 = paramLong1 - localObject2.length();
+        }
+        l2 = l1;
+        if (l1 <= 0L) {
+          break;
+        }
+        i += 1;
+        paramLong1 = l1;
+      }
+      Log.i("MicroMsg.AppBrandTempFileCleaner", "%s lru clean done, current: %d", new Object[] { paramString, Long.valueOf(paramLong2 + l2) });
+      AppMethodBeat.o(271056);
+      return l2 + paramLong2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.h
  * JD-Core Version:    0.7.0.1
  */

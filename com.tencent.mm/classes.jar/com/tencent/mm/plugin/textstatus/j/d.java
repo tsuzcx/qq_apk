@@ -1,59 +1,92 @@
 package com.tencent.mm.plugin.textstatus.j;
 
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.drawable.Drawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.plugin.textstatus.a.i;
+import com.tencent.mm.plugin.textstatus.a.m;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.HashMap;
+import java.util.Map;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/textstatus/util/TextStatusIconSpan;", "Lcom/tencent/mm/ui/widget/FixImageSpan;", "d", "Landroid/graphics/drawable/Drawable;", "verticalAlignment", "", "(Landroid/graphics/drawable/Drawable;I)V", "draw", "", "canvas", "Landroid/graphics/Canvas;", "text", "", "start", "end", "x", "", "top", "y", "bottom", "paint", "Landroid/graphics/Paint;", "getSize", "fontMetricsInt", "Landroid/graphics/Paint$FontMetricsInt;", "Companion", "plugin-textstatus_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/third/StatusThirdShareManager;", "", "()V", "TAG", "", "services", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/textstatus/api/IStatusThirdShareService;", "Lkotlin/collections/HashMap;", "contains", "", "jumpType", "get", "getCustomParts", "Lcom/tencent/mm/plugin/textstatus/api/IStatusCustomParts;", "getMixCustomParts", "Lcom/tencent/mm/plugin/textstatus/api/IMixStatusCustomParts;", "register", "", "service", "unregister", "plugin-textstatus_release"})
 public final class d
-  extends com.tencent.mm.ui.widget.a
 {
-  private static final int Ggg;
-  public static final a Ggh;
+  public static final HashMap<String, m> MIV;
+  public static final d MIW;
   
   static
   {
-    AppMethodBeat.i(216697);
-    Ggh = new a((byte)0);
-    Ggg = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 4);
-    AppMethodBeat.o(216697);
+    AppMethodBeat.i(234772);
+    MIW = new d();
+    MIV = new HashMap();
+    AppMethodBeat.o(234772);
   }
   
-  public d(Drawable paramDrawable)
+  public static void b(String paramString, m paramm)
   {
-    super(paramDrawable);
+    AppMethodBeat.i(234764);
+    p.k(paramString, "jumpType");
+    p.k(paramm, "service");
+    ((Map)MIV).put(paramString, paramm);
+    AppMethodBeat.o(234764);
   }
   
-  public final void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  public static m beD(String paramString)
   {
-    AppMethodBeat.i(216696);
-    p.h(paramCanvas, "canvas");
-    p.h(paramPaint, "paint");
-    super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat + Ggg, paramInt3, paramInt4, paramInt5, paramPaint);
-    AppMethodBeat.o(216696);
+    AppMethodBeat.i(234765);
+    paramString = (m)MIV.get(paramString);
+    AppMethodBeat.o(234765);
+    return paramString;
   }
   
-  public final int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  public static i beE(String paramString)
   {
-    AppMethodBeat.i(216695);
-    p.h(paramPaint, "paint");
-    paramInt1 = super.getSize(paramPaint, paramCharSequence, paramInt1, paramInt2, paramFontMetricsInt);
-    paramInt2 = Ggg;
-    AppMethodBeat.o(216695);
-    return paramInt1 + paramInt2;
+    localObject = null;
+    AppMethodBeat.i(234768);
+    try
+    {
+      m localm = beD(paramString);
+      paramString = localObject;
+      if (localm != null) {
+        paramString = localm.dDF();
+      }
+    }
+    catch (Throwable paramString)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.TextStatus.StatusThirdShareManager", paramString, "customps err", new Object[0]);
+        paramString = localObject;
+      }
+    }
+    AppMethodBeat.o(234768);
+    return paramString;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/textstatus/util/TextStatusIconSpan$Companion;", "", "()V", "PADDING", "", "plugin-textstatus_release"})
-  public static final class a {}
+  public static boolean contains(String paramString)
+  {
+    AppMethodBeat.i(234767);
+    if (MIV.get(paramString) != null)
+    {
+      AppMethodBeat.o(234767);
+      return true;
+    }
+    AppMethodBeat.o(234767);
+    return false;
+  }
+  
+  public static com.tencent.mm.plugin.textstatus.a.c gmo()
+  {
+    AppMethodBeat.i(234770);
+    com.tencent.mm.plugin.textstatus.a.c localc = (com.tencent.mm.plugin.textstatus.a.c)new c();
+    AppMethodBeat.o(234770);
+    return localc;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.j.d
  * JD-Core Version:    0.7.0.1
  */

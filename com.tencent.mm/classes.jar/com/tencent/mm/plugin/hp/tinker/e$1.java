@@ -9,9 +9,9 @@ final class e$1
 {
   public final void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(196796);
+    AppMethodBeat.i(194993);
     Log.d(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(196796);
+    AppMethodBeat.o(194993);
   }
   
   public final void e(String paramString1, String paramString2, Object... paramVarArgs)
@@ -37,9 +37,9 @@ final class e$1
   
   public final void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(196795);
+    AppMethodBeat.i(194990);
     Log.v(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(196795);
+    AppMethodBeat.o(194990);
   }
   
   public final void w(String paramString1, String paramString2, Object... paramVarArgs)

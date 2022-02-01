@@ -1,12 +1,6 @@
-package com.tencent.mm.plugin.appbrand.page;
-
-public abstract interface ap
-{
-  public abstract void c(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.ap
  * JD-Core Version:    0.7.0.1
  */

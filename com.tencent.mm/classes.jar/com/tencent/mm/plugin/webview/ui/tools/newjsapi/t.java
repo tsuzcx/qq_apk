@@ -5,65 +5,63 @@ import com.tencent.mm.plugin.webview.d.c.a;
 import com.tencent.mm.plugin.webview.d.f;
 import com.tencent.mm.plugin.webview.d.h;
 import com.tencent.mm.plugin.webview.d.n;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.HashMap;
+import com.tencent.mm.plugin.webview.h.e;
+import com.tencent.mm.plugin.webview.h.e.a;
 import java.util.Map;
 import kotlin.g.b.p;
 import kotlin.l;
-import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiSaveWaid;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiRequest;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class t
   extends a
 {
-  private static final int CDJ = 363;
-  public static final t JxK;
-  private static final String TAG = "MicroMsg.JsApiSaveWaid";
-  private static final String edq = "saveWaid";
+  private static final int IIl = 331;
+  public static final t QvA;
+  private static final String TAG = "MicroMsg.JsApiRequest";
+  private static final String fXz = "request";
   
   static
   {
-    AppMethodBeat.i(175689);
-    JxK = new t();
-    TAG = "MicroMsg.JsApiSaveWaid";
-    CDJ = 363;
-    edq = "saveWaid";
-    AppMethodBeat.o(175689);
+    AppMethodBeat.i(175687);
+    QvA = new t();
+    TAG = "MicroMsg.JsApiRequest";
+    IIl = 331;
+    fXz = "request";
+    AppMethodBeat.o(175687);
   }
   
   public final boolean a(f paramf, n paramn)
   {
-    AppMethodBeat.i(210666);
-    p.h(paramf, "env");
-    p.h(paramn, "msg");
-    HashMap localHashMap = new HashMap();
-    try
-    {
-      Log.i(TAG, "h5 JsApiSaveWaid");
-      p.g(paramn.ISf.toString(), "msg.rawParams.toString()");
-      localHashMap.put("result", "0");
-      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":ok", (Map)localHashMap);
-      AppMethodBeat.o(210666);
-      return true;
-    }
-    catch (Exception localException)
-    {
-      Log.e(TAG, "h5 JsApiSaveWaid exp=".concat(String.valueOf(localException)));
-      localHashMap.put("result", "0");
-      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail", (Map)localHashMap);
-      AppMethodBeat.o(210666);
-    }
-    return false;
+    AppMethodBeat.i(266656);
+    p.k(paramf, "env");
+    p.k(paramn, "msg");
+    boolean bool = e.a(paramn, (e.a)new a(paramf));
+    AppMethodBeat.o(266656);
+    return bool;
   }
   
-  public final int ePA()
+  public final String fCm()
   {
-    return CDJ;
+    return fXz;
   }
   
-  public final String ePz()
+  public final int fCn()
   {
-    return edq;
+    return IIl;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "kotlin.jvm.PlatformType", "ret", "", "retValue", "", "", "", "callback"})
+  static final class a
+    implements e.a
+  {
+    a(f paramf) {}
+    
+    public final void a(n paramn, String paramString, Map<String, Object> paramMap)
+    {
+      AppMethodBeat.i(227611);
+      this.IIg.PNo.h(paramn.POu, paramString, paramMap);
+      AppMethodBeat.o(227611);
+    }
   }
 }
 

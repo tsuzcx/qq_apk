@@ -2,6 +2,6 @@
 <LinearLayout android:gravity="top" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView android:textSize="16.0dip" android:id="@id/ixt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <android.support.v7.widget.AppCompatImageView android:layout_gravity="top" android:id="@id/e4p" android:padding="5.0dip" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/a95" android:scaleType="fitCenter" android:adjustViewBounds="true" app:tint="@color/l4" />
+    <androidx.appcompat.widget.AppCompatImageView android:layout_gravity="top" android:id="@id/e4p" android:padding="5.0dip" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/a95" android:scaleType="fitCenter" android:adjustViewBounds="true" app:tint="@color/l4" />
     <TextView android:textSize="16.0dip" android:gravity="center_vertical" android:id="@id/iyc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginStart="1.0dip" />
 </LinearLayout>

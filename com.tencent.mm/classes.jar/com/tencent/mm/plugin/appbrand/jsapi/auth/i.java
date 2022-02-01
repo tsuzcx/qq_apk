@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
 import android.app.Activity;
-import com.tencent.mm.plugin.appbrand.jsapi.k;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.plugin.appbrand.jsapi.j;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.plugin.appbrand.widget.dialog.c.c;
-import com.tencent.mm.protocal.protobuf.drb;
+import com.tencent.mm.protocal.protobuf.eax;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.system.AndroidContextUtil;
 import java.util.ArrayList;
@@ -15,11 +16,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public abstract class i
-  extends com.tencent.mm.plugin.appbrand.jsapi.d<com.tencent.mm.plugin.appbrand.d>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<g>
 {
-  protected boolean iLM = false;
+  protected boolean lBT = false;
   
-  protected static <T> LinkedList<T> A(ArrayList<T> paramArrayList)
+  protected static <T> LinkedList<T> B(ArrayList<T> paramArrayList)
   {
     if (paramArrayList == null) {
       return null;
@@ -29,38 +30,38 @@ public abstract class i
     return localLinkedList;
   }
   
-  protected static Activity b(k paramk)
+  protected static Activity b(j paramj)
   {
-    if ((paramk instanceof s)) {}
-    for (paramk = ((s)paramk).ay(Activity.class); paramk == null; paramk = paramk.getContext()) {
+    if ((paramj instanceof v)) {}
+    for (paramj = ((v)paramj).ax(Activity.class); paramj == null; paramj = paramj.getContext()) {
       return null;
     }
-    return AndroidContextUtil.castActivityOrNull(paramk);
+    return AndroidContextUtil.castActivityOrNull(paramj);
   }
   
-  protected static LinkedList<c.c> y(LinkedList<drb> paramLinkedList)
+  protected static LinkedList<c.c> z(LinkedList<eax> paramLinkedList)
   {
     LinkedList localLinkedList = new LinkedList();
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext())
     {
-      drb localdrb = (drb)paramLinkedList.next();
+      eax localeax = (eax)paramLinkedList.next();
       c.c localc = new c.c();
-      localc.scope = localdrb.KWK;
-      localc.desc = localdrb.Desc;
-      localc.state = localdrb.MTI;
+      localc.scope = localeax.RXY;
+      localc.desc = localeax.CMB;
+      localc.state = localeax.UfR;
       localLinkedList.add(localc);
     }
     return localLinkedList;
   }
   
-  public void a(com.tencent.mm.plugin.appbrand.d paramd, JSONObject paramJSONObject, int paramInt)
+  public void a(g paramg, JSONObject paramJSONObject, int paramInt)
   {
-    this.iLM = paramJSONObject.optBoolean("keepAlive", false);
+    this.lBT = paramJSONObject.optBoolean("keepAlive", false);
     boolean bool = paramJSONObject.optBoolean("requestInQueue", true);
     if ("adOperateWXData".equalsIgnoreCase(getName()))
     {
-      a(paramd, paramJSONObject, paramInt, null);
+      a(paramg, paramJSONObject, paramInt, null);
       return;
     }
     try
@@ -69,10 +70,10 @@ public abstract class i
       label51:
       if (!bool)
       {
-        b.U(paramd.getRuntime()).a(this, paramd, paramJSONObject, paramInt);
+        b.V(paramg.getRuntime()).a(this, paramg, paramJSONObject, paramInt);
         return;
       }
-      d.V(paramd.getRuntime()).a(this, paramd, paramJSONObject, paramInt);
+      d.W(paramg.getRuntime()).a(this, paramg, paramJSONObject, paramInt);
       return;
     }
     catch (JSONException localJSONException)
@@ -81,12 +82,12 @@ public abstract class i
     }
   }
   
-  protected abstract void a(com.tencent.mm.plugin.appbrand.d paramd, JSONObject paramJSONObject, int paramInt, e parame);
+  protected abstract void a(g paramg, JSONObject paramJSONObject, int paramInt, e parame);
   
   @Deprecated
-  final void b(k paramk, int paramInt, String paramString)
+  final void b(j paramj, int paramInt, String paramString)
   {
-    paramk.i(paramInt, h(paramString, null));
+    paramj.j(paramInt, h(paramString, null));
   }
 }
 

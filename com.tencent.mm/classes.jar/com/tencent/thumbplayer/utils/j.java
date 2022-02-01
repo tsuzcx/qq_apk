@@ -7,22 +7,22 @@ import java.util.concurrent.ScheduledExecutorService;
 
 public class j
 {
-  private static volatile j.a Sfv;
   public static ExecutorService THREAD_POOL_EXECUTOR;
+  private static volatile j.a ZIg;
   private static volatile ScheduledExecutorService mScheduler;
   
   static
   {
-    AppMethodBeat.i(189668);
+    AppMethodBeat.i(222311);
     THREAD_POOL_EXECUTOR = Executors.newCachedThreadPool();
     mScheduler = null;
-    Sfv = null;
-    AppMethodBeat.o(189668);
+    ZIg = null;
+    AppMethodBeat.o(222311);
   }
   
   public static ScheduledExecutorService getScheduledExecutorServiceInstance()
   {
-    AppMethodBeat.i(189667);
+    AppMethodBeat.i(222310);
     if (mScheduler == null) {}
     try
     {
@@ -30,18 +30,18 @@ public class j
         mScheduler = Executors.newScheduledThreadPool(4);
       }
       ScheduledExecutorService localScheduledExecutorService = mScheduler;
-      AppMethodBeat.o(189667);
+      AppMethodBeat.o(222310);
       return localScheduledExecutorService;
     }
     finally
     {
-      AppMethodBeat.o(189667);
+      AppMethodBeat.o(222310);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.KeyboardLinearLayout android:orientation="vertical" android:id="@id/ju3" android:background="@color/e" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.base.MMPullDownView android:id="@id/k76" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <com.tencent.mm.plugin.game.chatroom.view.GameChatListView android:id="@id/kps" android:scrollbars="none" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollingCache="false" android:overScrollMode="never" />
+        </com.tencent.mm.ui.base.MMPullDownView>
+        <com.tencent.mm.plugin.game.chatroom.view.GameChatCommentFooter android:id="@id/b8y" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </com.tencent.mm.ui.KeyboardLinearLayout>
+</LinearLayout>

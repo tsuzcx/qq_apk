@@ -9,12 +9,12 @@ import java.util.Locale;
 
 public final class a
 {
-  private static final DateFormat RSf;
+  private static final DateFormat abTr;
   
   static
   {
     AppMethodBeat.i(174261);
-    RSf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.CHINA);
+    abTr = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.CHINA);
     AppMethodBeat.o(174261);
   }
   
@@ -26,14 +26,14 @@ public final class a
       AppMethodBeat.o(174260);
       return "";
     }
-    paramb = RSf.format(new Date(paramb.a)) + " " + Process.myPid() + "-" + Process.myTid() + " " + c.a(paramb.RSg) + "/" + paramb.c + ": " + paramb.d + "\n";
+    paramb = abTr.format(new Date(paramb.a)) + " " + Process.myPid() + "-" + Process.myTid() + " " + c.a(paramb.abTs) + "/" + paramb.c + ": " + paramb.d + "\n";
     AppMethodBeat.o(174260);
     return paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tbs.a.a
  * JD-Core Version:    0.7.0.1
  */

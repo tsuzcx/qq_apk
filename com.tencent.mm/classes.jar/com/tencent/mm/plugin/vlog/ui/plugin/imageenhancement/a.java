@@ -4,12 +4,12 @@ import android.graphics.Bitmap;
 import android.opengl.EGL14;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.media.k.c;
+import com.tencent.mm.media.k.c.a;
 import com.tencent.mm.media.k.c.b;
-import com.tencent.mm.plugin.vlog.model.ac;
-import com.tencent.mm.plugin.vlog.model.ad;
-import com.tencent.mm.plugin.vlog.model.v;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.videocomposition.j;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,43 +18,42 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import kotlin.a.e;
 import kotlin.g.a.m;
+import kotlin.g.b.aa.d;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
-import kotlin.g.b.z.d;
-import kotlin.k.g;
+import kotlin.k.f;
+import kotlin.k.h;
 import kotlin.k.i;
-import kotlin.k.j;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/imageenhancement/CompositionLabelRetriever;", "", "()V", "isCancel", "", "cancel", "", "getImageLabel", "Landroid/util/Pair;", "", "", "path", "", "xLabEffect", "Lcom/tencent/mm/plugin/xlabeffect/XLabEffect;", "getTrackLabel", "track", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "getVideoLabel", "multiMedia", "Lcom/tencent/mm/plugin/vlog/model/MultiMediaModel;", "isAllImage", "callback", "Lkotlin/Function1;", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "Companion", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/imageenhancement/CompositionLabelRetriever;", "", "()V", "isCancel", "", "cancel", "", "getImageLabel", "Landroid/util/Pair;", "", "", "path", "", "xLabEffect", "Lcom/tencent/mm/plugin/xlabeffect/XLabEffect;", "getImageLable", "pathList", "", "callback", "Lkotlin/Function1;", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "getTrackLabel", "track", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "getVideoLabel", "composition", "Lcom/tencent/mm/videocomposition/VideoComposition;", "Companion", "plugin-vlog_release"})
 public final class a
 {
-  public static final a GLn;
-  private volatile boolean ifz;
+  public static final a NyN;
+  private volatile boolean kUn;
   
   static
   {
-    AppMethodBeat.i(191750);
-    GLn = new a((byte)0);
-    AppMethodBeat.o(191750);
+    AppMethodBeat.i(237788);
+    NyN = new a((byte)0);
+    AppMethodBeat.o(237788);
   }
   
-  private static Pair<Integer, Long> a(final ad paramad, com.tencent.mm.plugin.xlabeffect.b paramb)
+  private static Pair<Integer, Long> a(final com.tencent.mm.videocomposition.b paramb, com.tencent.mm.plugin.xlabeffect.e parame)
   {
-    AppMethodBeat.i(191749);
+    AppMethodBeat.i(237784);
     long l3 = Util.currentTicks();
     final Object localObject1 = new Object();
-    Object localObject2 = com.tencent.mm.videocomposition.c.RgU;
-    Object localObject3 = com.tencent.mm.videocomposition.c.a.b(paramad.GzA);
-    ((com.tencent.mm.videocomposition.c)localObject3).setSize(100, 100);
+    Object localObject2 = com.tencent.mm.videocomposition.a.YHM;
+    Object localObject3 = com.tencent.mm.videocomposition.a.a.d(paramb);
+    ((com.tencent.mm.videocomposition.a)localObject3).setSize(100, 100);
     final ArrayList localArrayList = new ArrayList();
-    paramad = j.a((g)new i(0L, paramad.getDurationMs()), 1000L);
-    long l2 = paramad.first;
-    long l4 = paramad.SZc;
-    long l5 = paramad.BMh;
+    paramb = i.a((f)new h(0L, paramb.getDurationMs()), 1000L);
+    long l2 = paramb.first;
+    long l4 = paramb.aaBW;
+    long l5 = paramb.HIt;
     long l1;
     if (l5 >= 0L)
     {
@@ -76,38 +75,38 @@ public final class a
         l1 = l2;
       } while (l2 >= l4);
     }
-    localObject2 = new z.d();
-    ((z.d)localObject2).SYE = 0;
-    paramad = new int[13];
-    ((com.tencent.mm.videocomposition.c)localObject3).b((List)localArrayList, (m)new b(paramb, (z.d)localObject2, paramad, localArrayList, localObject1));
+    localObject2 = new aa.d();
+    ((aa.d)localObject2).aaBA = 0;
+    paramb = new int[13];
+    ((com.tencent.mm.videocomposition.a)localObject3).b((List)localArrayList, (m)new c(parame, (aa.d)localObject2, paramb, localArrayList, localObject1));
     for (;;)
     {
       try
       {
         localObject1.wait();
-        localObject3 = x.SXb;
-        if (((z.d)localObject2).SYE < 10)
+        localObject3 = x.aazN;
+        if (((aa.d)localObject2).aaBA < 10)
         {
-          i = paramb.glg();
+          i = parame.heZ();
           if (i >= 0) {
-            paramad[i] += 1;
+            paramb[i] += 1;
           }
         }
-        paramb = e.aa(paramad);
-        if (paramb != null)
+        parame = kotlin.a.e.Z(paramb);
+        if (parame != null)
         {
-          i = paramb.intValue();
-          i = e.n(paramad, i);
+          i = parame.intValue();
+          i = kotlin.a.e.n(paramb, i);
           l1 = Util.ticksToNow(l3);
-          paramb = com.tencent.mm.plugin.vlog.model.report.a.GBa;
-          com.tencent.mm.plugin.vlog.model.report.a.KS(l1);
-          paramb = new StringBuilder("getTrackLabel finish, cost:").append(l1).append(", trackFrameCount:").append(((z.d)localObject2).SYE).append(", videoLabelScore:");
-          paramad = Arrays.toString(paramad);
-          p.g(paramad, "java.util.Arrays.toString(this)");
-          Log.i("MicroMsg.CompositionLabelRetriever", paramad + ", videoLabel:" + i);
-          paramad = new Pair(Integer.valueOf(i), Long.valueOf(l1));
-          AppMethodBeat.o(191749);
-          return paramad;
+          parame = com.tencent.mm.plugin.vlog.model.report.a.NoJ;
+          com.tencent.mm.plugin.vlog.model.report.a.Sp(l1);
+          parame = new StringBuilder("getTrackLabel finish, cost:").append(l1).append(", trackFrameCount:").append(((aa.d)localObject2).aaBA).append(", videoLabelScore:");
+          paramb = Arrays.toString(paramb);
+          p.j(paramb, "java.util.Arrays.toString(this)");
+          Log.i("MicroMsg.CompositionLabelRetriever", paramb + ", videoLabel:" + i);
+          paramb = new Pair(Integer.valueOf(i), Long.valueOf(l1));
+          AppMethodBeat.o(237784);
+          return paramb;
         }
       }
       catch (Exception localException)
@@ -117,7 +116,7 @@ public final class a
       }
       finally
       {
-        AppMethodBeat.o(191749);
+        AppMethodBeat.o(237784);
       }
       int i = -1;
     }
@@ -125,86 +124,57 @@ public final class a
   
   public final void cancel()
   {
-    AppMethodBeat.i(191748);
-    this.ifz = true;
+    AppMethodBeat.i(237780);
+    this.kUn = true;
     Log.i("MicroMsg.CompositionLabelRetriever", "cancel get label");
-    AppMethodBeat.o(191748);
+    AppMethodBeat.o(237780);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/imageenhancement/CompositionLabelRetriever$Companion;", "", "()V", "TAG", "", "maxTrackFrameCount", "", "thumbSize", "timeStep", "", "plugin-vlog_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/imageenhancement/CompositionLabelRetriever$Companion;", "", "()V", "TAG", "", "maxTrackFrameCount", "", "thumbSize", "timeStep", "", "plugin-vlog_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "timeMs", "", "bitmap", "Landroid/graphics/Bitmap;", "invoke"})
-  static final class b
-    extends q
-    implements m<Long, Bitmap, x>
-  {
-    b(com.tencent.mm.plugin.xlabeffect.b paramb, z.d paramd, int[] paramArrayOfInt, ArrayList paramArrayList, Object paramObject)
-    {
-      super();
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  public static final class c
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  public static final class b
     implements Runnable
   {
-    public c(a parama, boolean paramBoolean, v paramv, kotlin.g.a.b paramb) {}
+    public b(a parama, List paramList, kotlin.g.a.b paramb) {}
     
     public final void run()
     {
-      AppMethodBeat.i(191747);
-      Object localObject1 = com.tencent.mm.media.k.c.ilt;
-      localObject1 = com.tencent.mm.media.k.c.a.aNa();
-      if (p.j(((c.b)localObject1).ilv, EGL14.EGL_NO_CONTEXT))
+      int j = 1;
+      AppMethodBeat.i(231245);
+      Object localObject1 = c.lar;
+      localObject1 = c.a.aVD();
+      if (p.h(((c.b)localObject1).lau, EGL14.EGL_NO_CONTEXT))
       {
         Log.e("MicroMsg.CompositionLabelRetriever", "create EGLContext failed");
-        AppMethodBeat.o(191747);
+        AppMethodBeat.o(231245);
         return;
       }
-      if (a.a(this.GLt))
+      if (a.a(this.NyO))
       {
         Log.i("MicroMsg.CompositionLabelRetriever", "getVideoLabel cancel!");
-        AppMethodBeat.o(191747);
+        AppMethodBeat.o(231245);
         return;
       }
-      Object localObject2 = com.tencent.mm.plugin.vlog.model.local.a.GAD;
-      com.tencent.mm.plugin.vlog.model.local.a.fBX();
-      com.tencent.mm.plugin.xlabeffect.b localb = new com.tencent.mm.plugin.xlabeffect.b();
+      Object localObject2 = com.tencent.mm.plugin.vlog.model.local.a.Nol;
+      com.tencent.mm.plugin.vlog.model.local.a.gtV();
+      com.tencent.mm.plugin.xlabeffect.e locale = new com.tencent.mm.plugin.xlabeffect.e(0, 0, 0, true, false, 23);
       localObject2 = new HashMap();
-      Object localObject3 = com.tencent.mm.plugin.vlog.model.report.a.GBa;
-      com.tencent.mm.plugin.vlog.model.report.a.fCh();
-      Object localObject4;
-      Pair localPair;
-      if (!this.GJS)
-      {
-        localObject3 = ((Iterable)this.GLu.GxA.Gzn).iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          localObject4 = (ad)((Iterator)localObject3).next();
-          if (a.a(this.GLt))
-          {
-            Log.i("MicroMsg.CompositionLabelRetriever", "getVideoLabel cancel!");
-          }
-          else
-          {
-            localPair = a.b((ad)localObject4, localb);
-            ((Map)localObject2).put(((ad)localObject4).path, localPair);
-          }
-        }
-      }
-      localObject3 = ((Iterable)this.GLu.Gyv).iterator();
+      Object localObject3 = com.tencent.mm.plugin.vlog.model.report.a.NoJ;
+      com.tencent.mm.plugin.vlog.model.report.a.guf();
+      localObject3 = ((Iterable)this.NyP).iterator();
       while (((Iterator)localObject3).hasNext())
       {
-        localObject4 = (String)((Iterator)localObject3).next();
-        if (a.a(this.GLt))
+        String str = (String)((Iterator)localObject3).next();
+        if (a.a(this.NyO))
         {
           Log.i("MicroMsg.CompositionLabelRetriever", "getVideoLabel cancel!");
         }
         else
         {
-          localPair = a.a((String)localObject4, localb);
-          ((Map)localObject2).put(localObject4, localPair);
+          Pair localPair = a.a(str, locale);
+          ((Map)localObject2).put(str, localPair);
         }
       }
       localObject3 = (Map)localObject2;
@@ -216,56 +186,167 @@ public final class a
           if (p.compare(((Number)((Pair)((Map.Entry)((Iterator)localObject3).next()).getValue()).first).intValue(), 0) < 0)
           {
             i = 1;
-            label356:
+            label265:
             if (i == 0) {
-              break label494;
+              break label406;
             }
-            i = 1;
-            label362:
+            i = j;
+            label271:
             if (i == 0) {
-              break label501;
+              break label413;
             }
-            localObject3 = com.tencent.mm.plugin.vlog.model.report.a.GBa;
-            com.tencent.mm.plugin.vlog.model.report.a.fCj();
+            localObject3 = com.tencent.mm.plugin.vlog.model.report.a.NoJ;
+            com.tencent.mm.plugin.vlog.model.report.a.guh();
           }
         }
       }
       for (;;)
       {
-        localb.destroy();
-        if ((p.j(((c.b)localObject1).eglSurface, EGL14.EGL_NO_SURFACE) ^ true)) {
-          EGL14.eglDestroySurface(((c.b)localObject1).ilu, ((c.b)localObject1).eglSurface);
+        locale.destroy();
+        if ((p.h(((c.b)localObject1).eglSurface, EGL14.EGL_NO_SURFACE) ^ true)) {
+          EGL14.eglDestroySurface(((c.b)localObject1).las, ((c.b)localObject1).eglSurface);
         }
-        EGL14.eglDestroyContext(((c.b)localObject1).ilu, ((c.b)localObject1).ilv);
-        Log.i("MicroMsg.CompositionLabelRetriever", "all track list label:" + localObject2 + ", isCancel:" + a.a(this.GLt));
-        if (a.a(this.GLt)) {
+        EGL14.eglDestroyContext(((c.b)localObject1).las, ((c.b)localObject1).lau);
+        Log.i("MicroMsg.CompositionLabelRetriever", "all track list label:" + localObject2 + ", isCancel:" + a.a(this.NyO));
+        if (a.a(this.NyO)) {
           ((HashMap)localObject2).clear();
         }
-        localObject1 = this.gWe;
+        localObject1 = this.jFa;
         if (localObject1 == null) {
-          break label512;
+          break label424;
         }
         ((kotlin.g.a.b)localObject1).invoke(localObject2);
-        AppMethodBeat.o(191747);
+        AppMethodBeat.o(231245);
         return;
         i = 0;
-        break label356;
-        label494:
+        break label265;
+        label406:
         break;
         i = 0;
-        break label362;
-        label501:
-        localObject3 = com.tencent.mm.plugin.vlog.model.report.a.GBa;
-        com.tencent.mm.plugin.vlog.model.report.a.fCi();
+        break label271;
+        label413:
+        localObject3 = com.tencent.mm.plugin.vlog.model.report.a.NoJ;
+        com.tencent.mm.plugin.vlog.model.report.a.gug();
       }
-      label512:
-      AppMethodBeat.o(191747);
+      label424:
+      AppMethodBeat.o(231245);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "timeMs", "", "bitmap", "Landroid/graphics/Bitmap;", "invoke"})
+  static final class c
+    extends q
+    implements m<Long, Bitmap, x>
+  {
+    c(com.tencent.mm.plugin.xlabeffect.e parame, aa.d paramd, int[] paramArrayOfInt, ArrayList paramArrayList, Object paramObject)
+    {
+      super();
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  public static final class d
+    implements Runnable
+  {
+    public d(a parama, j paramj, kotlin.g.a.b paramb) {}
+    
+    public final void run()
+    {
+      int j = 1;
+      AppMethodBeat.i(229772);
+      Object localObject1 = c.lar;
+      localObject1 = c.a.aVD();
+      if (p.h(((c.b)localObject1).lau, EGL14.EGL_NO_CONTEXT))
+      {
+        Log.e("MicroMsg.CompositionLabelRetriever", "create EGLContext failed");
+        AppMethodBeat.o(229772);
+        return;
+      }
+      if (a.a(this.NyO))
+      {
+        Log.i("MicroMsg.CompositionLabelRetriever", "getVideoLabel cancel!");
+        AppMethodBeat.o(229772);
+        return;
+      }
+      Object localObject2 = com.tencent.mm.plugin.vlog.model.local.a.Nol;
+      com.tencent.mm.plugin.vlog.model.local.a.gtV();
+      com.tencent.mm.plugin.xlabeffect.e locale = new com.tencent.mm.plugin.xlabeffect.e(0, 0, 0, true, false, 23);
+      localObject2 = new HashMap();
+      Object localObject3 = com.tencent.mm.plugin.vlog.model.report.a.NoJ;
+      com.tencent.mm.plugin.vlog.model.report.a.guf();
+      localObject3 = ((Iterable)this.Nku.MQY).iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        com.tencent.mm.videocomposition.b localb = (com.tencent.mm.videocomposition.b)((Iterator)localObject3).next();
+        if (a.a(this.NyO))
+        {
+          Log.i("MicroMsg.CompositionLabelRetriever", "getVideoLabel cancel!");
+        }
+        else
+        {
+          Pair localPair = a.b(localb, locale);
+          ((Map)localObject2).put(localb.path, localPair);
+        }
+      }
+      localObject3 = (Map)localObject2;
+      int i;
+      if (!((Map)localObject3).isEmpty())
+      {
+        localObject3 = ((Map)localObject3).entrySet().iterator();
+        if (((Iterator)localObject3).hasNext()) {
+          if (p.compare(((Number)((Pair)((Map.Entry)((Iterator)localObject3).next()).getValue()).first).intValue(), 0) < 0)
+          {
+            i = 1;
+            label274:
+            if (i == 0) {
+              break label415;
+            }
+            i = j;
+            label280:
+            if (i == 0) {
+              break label422;
+            }
+            localObject3 = com.tencent.mm.plugin.vlog.model.report.a.NoJ;
+            com.tencent.mm.plugin.vlog.model.report.a.guh();
+          }
+        }
+      }
+      for (;;)
+      {
+        locale.destroy();
+        if ((p.h(((c.b)localObject1).eglSurface, EGL14.EGL_NO_SURFACE) ^ true)) {
+          EGL14.eglDestroySurface(((c.b)localObject1).las, ((c.b)localObject1).eglSurface);
+        }
+        EGL14.eglDestroyContext(((c.b)localObject1).las, ((c.b)localObject1).lau);
+        Log.i("MicroMsg.CompositionLabelRetriever", "all track list label:" + localObject2 + ", isCancel:" + a.a(this.NyO));
+        if (a.a(this.NyO)) {
+          ((HashMap)localObject2).clear();
+        }
+        localObject1 = this.jFa;
+        if (localObject1 == null) {
+          break label433;
+        }
+        ((kotlin.g.a.b)localObject1).invoke(localObject2);
+        AppMethodBeat.o(229772);
+        return;
+        i = 0;
+        break label274;
+        label415:
+        break;
+        i = 0;
+        break label280;
+        label422:
+        localObject3 = com.tencent.mm.plugin.vlog.model.report.a.NoJ;
+        com.tencent.mm.plugin.vlog.model.report.a.gug();
+      }
+      label433:
+      AppMethodBeat.o(229772);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.imageenhancement.a
  * JD-Core Version:    0.7.0.1
  */

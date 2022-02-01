@@ -1,47 +1,50 @@
 package com.tencent.mm.ui.base;
 
 import android.content.Context;
-import android.support.v4.view.q;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import androidx.viewpager.widget.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public abstract class d
-  extends q
+  extends a
 {
-  private Queue<View> ONZ;
-  private int OOa = 0;
+  private Queue<View> Whk;
+  private int Whl = 0;
   public Context context;
   
   public d(Context paramContext)
   {
     this.context = paramContext;
-    this.ONZ = new LinkedList();
+    this.Whk = new LinkedList();
   }
   
-  public abstract void Te(int paramInt);
-  
   public abstract View a(View paramView, ViewGroup paramViewGroup, int paramInt);
+  
+  public abstract int bAR();
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     paramObject = (View)paramObject;
     paramViewGroup.removeView(paramObject);
-    this.ONZ.add(paramObject);
-    Te(paramInt);
-    Log.d("MicroMsg.CustomPagerAdapter", "recycle queue size %d", new Object[] { Integer.valueOf(this.ONZ.size()) });
+    this.Whk.add(paramObject);
+    yy(paramInt);
+    Log.d("MicroMsg.CustomPagerAdapter", "recycle queue size %d", new Object[] { Integer.valueOf(this.Whk.size()) });
   }
   
-  public abstract int evg();
+  public final Context getContext()
+  {
+    return this.context;
+  }
   
   public int getItemPosition(Object paramObject)
   {
-    if (this.OOa > 0)
+    if (this.Whl > 0)
     {
-      this.OOa -= 1;
+      this.Whl -= 1;
       return -2;
     }
     return super.getItemPosition(paramObject);
@@ -50,7 +53,7 @@ public abstract class d
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
     long l = System.currentTimeMillis();
-    View localView = a((View)this.ONZ.poll(), paramViewGroup, paramInt);
+    View localView = a((View)this.Whk.poll(), paramViewGroup, paramInt);
     if (localView.getLayoutParams() == null) {
       localView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     }
@@ -66,9 +69,11 @@ public abstract class d
   
   public void notifyDataSetChanged()
   {
-    this.OOa = evg();
+    this.Whl = bAR();
     super.notifyDataSetChanged();
   }
+  
+  public abstract void yy(int paramInt);
 }
 
 

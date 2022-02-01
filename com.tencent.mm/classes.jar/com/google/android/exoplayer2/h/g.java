@@ -14,12 +14,12 @@ public abstract interface g
   
   public static abstract interface a
   {
-    public abstract g wG();
+    public abstract g uH();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.h.g
  * JD-Core Version:    0.7.0.1
  */

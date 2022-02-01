@@ -15,24 +15,21 @@ final class VoipVoiceFragment$6
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(115466);
+    AppMethodBeat.i(115468);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/voip/ui/VoipVoiceFragment$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    h.CyF.a(11618, new Object[] { Integer.valueOf(3), Integer.valueOf(1) });
-    if ((this.Hgj.Hen != null) && (this.Hgj.Hen.get() != null)) {
-      ((c)this.Hgj.Hen.get()).wX(true);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/voip/ui/VoipVoiceFragment$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    h.IzE.a(11619, new Object[] { Integer.valueOf(3) });
+    if ((this.NWW.NVe != null) && (this.NWW.NVe.get() != null)) {
+      ((c)this.NWW.NVe.get()).gyk();
     }
-    if (this.Hgj.HeG != null) {
-      this.Hgj.HeG.aI(false, true);
-    }
-    a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVoiceFragment$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(115466);
+    a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVoiceFragment$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(115468);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.VoipVoiceFragment.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,26 @@
 package com.tencent.mm.plugin.ai.b.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.b.a.c;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 
 public final class b
 {
-  public com.tencent.mm.g.b.a.b kvI;
+  public c nnT;
   
   public b()
   {
-    AppMethodBeat.i(238857);
-    this.kvI = new com.tencent.mm.g.b.a.b(g.aAh().azQ().a(ar.a.Onf, ""));
-    AppMethodBeat.o(238857);
+    AppMethodBeat.i(239422);
+    this.nnT = new c(h.aHG().aHp().a(ar.a.VCl, ""));
+    AppMethodBeat.o(239422);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.ai.b.a.a.b
  * JD-Core Version:    0.7.0.1
  */

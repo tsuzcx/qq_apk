@@ -1,118 +1,62 @@
 package com.tencent.mm.plugin.finder.live.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.finder.cgi.am;
-import com.tencent.mm.plugin.finder.cgi.ax;
-import com.tencent.mm.protocal.protobuf.asx;
-import com.tencent.mm.protocal.protobuf.asy;
-import com.tencent.mm.protocal.protobuf.axa;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.plugin.finder.cgi.ao;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.b;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.c;
+import com.tencent.mm.protocal.protobuf.azv;
+import com.tencent.mm.protocal.protobuf.azw;
+import com.tencent.mm.protocal.protobuf.bac;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.jh;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.LinkedList;
-import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/model/cgi/NetSceneFinderGetLiveReward;", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderBase;", "liveId", "", "objectId", "objectNonceId", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "(JJLjava/lang/String;Lcom/tencent/mm/protobuf/ByteString;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getLiveWecoinHotInfoList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveRewardGainsInfo;", "getTotalWecoinHot", "getType", "onCgiEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveGetProductDetail;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetShopProductDetailResponse;", "liveData", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "productId", "", "callback", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveGetProductDetail$CallBack;", "(Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;JLcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveGetProductDetail$CallBack;)V", "TAG", "", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetShopProductDetailRequest;", "initReqResp", "", "onCgiEnd", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder_release"})
 public final class z
-  extends ax
+  extends n<azw>
 {
-  public static final a ulw;
-  private i callback;
-  public d rr;
+  private final String TAG;
+  private a yjG;
+  private azv yjH;
   
-  static
+  public z(com.tencent.mm.plugin.finder.live.model.context.a parama, long paramLong, a parama1)
   {
-    AppMethodBeat.i(246353);
-    ulw = new a((byte)0);
-    AppMethodBeat.o(246353);
+    AppMethodBeat.i(291706);
+    this.TAG = "Finder.CgiFinderLiveGetProductDetail";
+    this.yjG = parama1;
+    this.yjH = new azv();
+    this.yjH.klE = ((c)parama.business(c.class)).liveInfo.liveId;
+    this.yjH.object_id = ((c)parama.business(c.class)).xbk;
+    this.yjH.object_nonce_id = ((c)parama.business(c.class)).nonceId;
+    this.yjH.zaO = paramLong;
+    this.yjH.SLt = ((b)parama.business(b.class)).fIY;
+    parama = this.yjH;
+    parama1 = ao.xcj;
+    parama.SDi = ao.dnO();
+    parama = new d.a();
+    parama.c((com.tencent.mm.cd.a)this.yjH);
+    parama1 = new azw();
+    parama1.setBaseResponse(new jh());
+    parama1.getBaseResponse().Tef = new eaf();
+    parama.d((com.tencent.mm.cd.a)parama1);
+    parama.TW("/cgi-bin/micromsg-bin/finderlivegetshopproductdetail");
+    parama.vD(6211);
+    c(parama.bgN());
+    Log.i(this.TAG, "CgiFinderLiveGetProductDetail init " + this.yjH.klE + ',' + this.yjH.zaO + ',' + this.yjH.SLt);
+    AppMethodBeat.o(291706);
   }
   
-  public z(long paramLong1, long paramLong2, String paramString, b paramb)
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveGetProductDetail$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetShopProductDetailResponse;", "plugin-finder_release"})
+  public static abstract interface a
   {
-    AppMethodBeat.i(246352);
-    Object localObject = new d.a();
-    ((d.a)localObject).sG(getType());
-    asx localasx = new asx();
-    am localam = am.tuw;
-    localasx.LBM = am.cXY();
-    localasx.LAt = com.tencent.mm.model.z.aUg();
-    localasx.hyH = paramLong1;
-    localasx.object_id = paramLong2;
-    localasx.LDs = paramb;
-    localasx.object_nonce_id = paramString;
-    ((d.a)localObject).c((a)localasx);
-    ((d.a)localObject).d((a)new asy());
-    ((d.a)localObject).MB("/cgi-bin/micromsg-bin/findergetliverewardgains");
-    localObject = ((d.a)localObject).aXF();
-    p.g(localObject, "builder.buildInstance()");
-    this.rr = ((d)localObject);
-    Log.i("Finder.NetSceneFinderGetLiveReward", "NetSceneFinderGetLiveReward init, finderUsername = " + localasx.LAt + ", liveId = " + paramLong1 + ", objectId = " + paramLong2 + ", objectNonceId = " + paramString + ",  lastBuffer = " + paramb);
-    AppMethodBeat.o(246352);
+    public abstract void a(int paramInt1, int paramInt2, azw paramazw);
   }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, s params)
-  {
-    AppMethodBeat.i(246350);
-    Log.i("Finder.NetSceneFinderGetLiveReward", "onGYNetEnd, errType:" + paramInt2 + ", errCode:" + paramInt3 + ", errMsg:" + paramString);
-    if (this.callback != null)
-    {
-      params = this.callback;
-      if (params == null) {
-        p.hyc();
-      }
-      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
-    }
-    AppMethodBeat.o(246350);
-  }
-  
-  public final LinkedList<axa> dgH()
-  {
-    AppMethodBeat.i(246351);
-    Object localObject = this.rr.aYK();
-    if (localObject == null)
-    {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetLiveRewardGainsResponse");
-      AppMethodBeat.o(246351);
-      throw ((Throwable)localObject);
-    }
-    LinkedList localLinkedList = ((asy)localObject).LAj;
-    localObject = localLinkedList;
-    if (localLinkedList == null) {
-      localObject = new LinkedList();
-    }
-    AppMethodBeat.o(246351);
-    return localObject;
-  }
-  
-  public final int doScene(g paramg, i parami)
-  {
-    AppMethodBeat.i(246349);
-    this.callback = parami;
-    int i = dispatch(paramg, (s)this.rr, (m)this);
-    AppMethodBeat.o(246349);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 4168;
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/model/cgi/NetSceneFinderGetLiveReward$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.cgi.z
  * JD-Core Version:    0.7.0.1
  */

@@ -5,19 +5,19 @@ import com.tencent.mm.ui.MMActivity;
 
 public abstract class b
 {
-  protected b.a ETY;
+  protected b.a Lia;
   protected MMActivity activity;
   
-  public abstract void JW(long paramLong);
+  public abstract void Rq(long paramLong);
   
   public final void a(b.a parama)
   {
-    this.ETY = parama;
+    this.Lia = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.b.a.b
  * JD-Core Version:    0.7.0.1
  */

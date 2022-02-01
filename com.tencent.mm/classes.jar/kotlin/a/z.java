@@ -4,23 +4,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/collections/IndexingIterable;", "T", "", "Lkotlin/collections/IndexedValue;", "iteratorFactory", "Lkotlin/Function0;", "", "(Lkotlin/jvm/functions/Function0;)V", "iterator", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/collections/IndexingIterable;", "T", "", "Lkotlin/collections/IndexedValue;", "iteratorFactory", "Lkotlin/Function0;", "", "(Lkotlin/jvm/functions/Function0;)V", "iterator", "kotlin-stdlib"})
 public final class z<T>
   implements Iterable<y<? extends T>>, kotlin.g.b.a.a
 {
-  private final kotlin.g.a.a<Iterator<T>> SXu;
+  private final kotlin.g.a.a<Iterator<T>> aaAg;
   
   public z(kotlin.g.a.a<? extends Iterator<? extends T>> parama)
   {
     AppMethodBeat.i(129116);
-    this.SXu = parama;
+    this.aaAg = parama;
     AppMethodBeat.o(129116);
   }
   
   public final Iterator<y<T>> iterator()
   {
     AppMethodBeat.i(129115);
-    Iterator localIterator = (Iterator)new aa((Iterator)this.SXu.invoke());
+    Iterator localIterator = (Iterator)new aa((Iterator)this.aaAg.invoke());
     AppMethodBeat.o(129115);
     return localIterator;
   }

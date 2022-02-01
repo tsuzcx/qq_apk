@@ -8,10 +8,10 @@ public enum aa
   {
     AppMethodBeat.i(58008);
     aa localaa1 = new aa("SOURCE", 0);
-    TtD = localaa1;
+    aaWx = localaa1;
     aa localaa2 = new aa("BINARY", 1);
-    TtE = localaa2;
-    TtF = new aa[] { localaa1, localaa2 };
+    aaWy = localaa2;
+    aaWz = new aa[] { localaa1, localaa2 };
     AppMethodBeat.o(58008);
   }
   
@@ -19,7 +19,7 @@ public enum aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.e.aa
  * JD-Core Version:    0.7.0.1
  */

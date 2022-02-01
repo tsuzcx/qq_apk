@@ -1,119 +1,97 @@
 package com.tencent.mm.plugin.recordvideo.e;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
+import android.net.Uri;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.aq.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.security.MessageDigest;
 import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.t;
+import kotlin.n.d;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/util/WeSeeUtil;", "", "()V", "TAG", "", "buildCameraEntranceSessionId", "timestamp", "", "bytesToHexString", "bArray", "", "checkWeishiInstalled", "", "context", "Landroid/content/Context;", "doCpatureWeSeeSight", "", "videoPath", "doDownloadWeSee", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/util/SecondCutUtil;", "", "()V", "APPID_SECONDCUT", "", "DOWNLOAD_FROM_SIMPLE_STYLE", "DOWNLOAD_FROM_SNS_HOME", "DOWNLOAD_FROM_VIDEO_CORP", "DOWNLOAD_SECONDCUT_URL", "PACKAGE_NAME_SECONDCUT", "PRE_SCHEMA_SECONDCUT", "PUBLIC_KEY_SECONDCUT", "SCENE_MOMENTS", "TAG", "getSecondCutEditIntent", "Landroid/content/Intent;", "scene", "videoPath", "duration", "", "videoBitrate", "width", "height", "getSecondCutHomeIntent", "getSecondCutSimpleStyleIntent", "extInfo", "takeSecondCutSigh", "", "activity", "Landroid/content/Context;", "intent", "plugin-recordvideo_release"})
 public final class i
 {
-  public static final i Ciy;
+  public static final i Ifo;
   
   static
   {
-    AppMethodBeat.i(76229);
-    Ciy = new i();
-    AppMethodBeat.o(76229);
+    AppMethodBeat.i(216208);
+    Ifo = new i();
+    AppMethodBeat.o(216208);
   }
   
-  public static String Io(long paramLong)
+  public static Intent am(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(76228);
-    Object localObject = new StringBuilder();
-    p.g(g.aAf(), "MMKernel.account()");
-    localObject = a.ayV() + "_" + paramLong;
-    p.g(localObject, "sb.append(MMKernel.accou…end(timestamp).toString()");
-    AppMethodBeat.o(76228);
-    return localObject;
+    AppMethodBeat.i(216207);
+    p.k(paramString1, "scene");
+    p.k(paramString2, "extInfo");
+    Intent localIntent = new Intent();
+    localIntent.setData(Uri.parse("miaojian://createvideo?scene=" + paramString1 + "&miaojianExtInfo=" + paramString2 + "&maxDuration=" + paramInt + "&from=3"));
+    localIntent.setPackage("com.tencent.phoenix");
+    localIntent.setAction("android.intent.action.VIEW");
+    localIntent.setFlags(268435456);
+    AppMethodBeat.o(216207);
+    return localIntent;
   }
   
-  public static boolean gQ(Context paramContext)
+  public static void ax(Context paramContext, Intent paramIntent)
   {
-    bool1 = true;
-    AppMethodBeat.i(76226);
-    p.h(paramContext, "context");
+    AppMethodBeat.i(216202);
+    p.k(paramContext, "activity");
+    p.k(paramIntent, "intent");
     try
     {
-      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.weishi", 64);
-      if (paramContext == null) {
-        break label189;
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramIntent.aFh(), "com/tencent/mm/plugin/recordvideo/util/SecondCutUtil", "takeSecondCutSigh", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/recordvideo/util/SecondCutUtil", "takeSecondCutSigh", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      if ((paramContext instanceof Activity))
+      {
+        ((Activity)paramContext).overridePendingTransition(a.a.sight_slide_bottom_in, -1);
+        AppMethodBeat.o(216202);
+        return;
       }
-      paramContext = paramContext.signatures[0].toByteArray();
-      localObject = MessageDigest.getInstance("MD5");
-      if (localObject == null) {
-        p.hyc();
-      }
-      ((MessageDigest)localObject).update(paramContext);
-      paramContext = ((MessageDigest)localObject).digest();
-      if (paramContext != null) {
-        break label92;
-      }
-      paramContext = null;
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        Object localObject;
-        boolean bool2;
-        int j;
-        int i;
-        Log.w("MicroMsg.WeSeeUtil", "checkWeishiInstalled Exception: %s", new Object[] { paramContext.getMessage() });
-        bool1 = false;
-        continue;
-        String str = str.toUpperCase();
-        p.g(str, "(this as java.lang.String).toUpperCase()");
-        ((StringBuffer)localObject).append(str);
-        i += 1;
-        continue;
-        paramContext = ((StringBuffer)localObject).toString();
-      }
-    }
-    bool2 = Util.isEqual(paramContext, "2A281593D71DF33374E6124E9106DF08");
-    if (bool2)
-    {
-      AppMethodBeat.o(76226);
-      return bool1;
-      label92:
-      localObject = new StringBuffer(paramContext.length);
-      j = paramContext.length;
-      i = 0;
-      if (i >= j) {
-        break label223;
-      }
-      str = Integer.toHexString(paramContext[i] & 0xFF);
-      p.g(str, "Integer.toHexString(0xFF and bArray[i].toInt())");
-      if (str.length() < 2) {
-        ((StringBuffer)localObject).append(0);
-      }
-      if (str != null) {
-        break label194;
-      }
-      paramContext = new t("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(76226);
-      throw paramContext;
+      Log.e("MicroMsg.SecondCutUtil", "takeSecondCutSigh: error " + paramContext.getMessage());
+      AppMethodBeat.o(216202);
     }
   }
   
-  public static void gR(Context paramContext)
+  public static Intent b(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(76227);
-    p.h(paramContext, "context");
+    AppMethodBeat.i(216205);
+    p.k(paramString1, "scene");
+    p.k(paramString2, "videoPath");
+    Log.i("MicroMsg.SecondCutUtil", "getSecondCutEditIntent >>>videoPath: " + paramString2 + " >>>width: " + paramInt3 + " >>>height: " + paramInt4 + " >>>duration: " + paramInt1 + " >>> videoBitrate: " + paramInt2);
+    paramString2 = paramString2.getBytes(d.UTF_8);
+    p.j(paramString2, "(this as java.lang.String).getBytes(charset)");
+    paramString2 = Base64.encodeToString(paramString2, 10);
     Intent localIntent = new Intent();
-    localIntent.putExtra("rawUrl", "https://isee.weishi.qq.com/static/release/group_10/528a4494-9ce7-4ac8-a763-247d84d07dae.html?_wwv=4096&chid=205000000&attach=cp_reserves3_2230000000");
-    c.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
-    AppMethodBeat.o(76227);
+    localIntent.setData(Uri.parse("miaojian://createvideo?scene=" + paramString1 + "&assetPaths=" + paramString2 + "&maxDuration=" + paramInt1 + "&bitrate=" + paramInt2 + "&resolution=" + paramInt3 + ',' + paramInt4 + "&from=2"));
+    localIntent.setPackage("com.tencent.phoenix");
+    localIntent.setAction("android.intent.action.VIEW");
+    localIntent.setFlags(268435456);
+    AppMethodBeat.o(216205);
+    return localIntent;
+  }
+  
+  public static Intent fO(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(216206);
+    p.k(paramString, "scene");
+    Intent localIntent = new Intent();
+    localIntent.setData(Uri.parse("miaojian://createvideo?scene=" + paramString + "&maxDuration=" + paramInt + "&from=1"));
+    localIntent.setPackage("com.tencent.phoenix");
+    localIntent.setAction("android.intent.action.VIEW");
+    localIntent.setFlags(268435456);
+    AppMethodBeat.o(216206);
+    return localIntent;
   }
 }
 

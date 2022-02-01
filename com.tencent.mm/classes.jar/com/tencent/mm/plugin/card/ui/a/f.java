@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.card.ui.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.protocal.protobuf.ty;
+import com.tencent.mm.protocal.protobuf.ua;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 
@@ -14,15 +14,18 @@ public final class f
     super(paramMMActivity);
   }
   
-  public final boolean cwJ()
+  public final boolean cKm()
   {
-    return this.qeD;
+    AppMethodBeat.i(252229);
+    boolean bool = cJq();
+    AppMethodBeat.o(252229);
+    return bool;
   }
   
-  public final boolean cwK()
+  public final boolean cKn()
   {
     AppMethodBeat.i(113648);
-    if ((this.pQV.csM()) && (super.cwK()) && ((this.pQV.csK()) || (!Util.isNullOrNil(this.pQV.csR().code))))
+    if ((this.tmU.cGn()) && (super.cKn()) && ((this.tmU.cGl()) || (!Util.isNullOrNil(this.tmU.cGt().code))))
     {
       AppMethodBeat.o(113648);
       return true;
@@ -31,15 +34,15 @@ public final class f
     return false;
   }
   
-  public final boolean cwL()
+  public final boolean cKo()
   {
     return true;
   }
   
-  public final boolean cwO()
+  public final boolean cKr()
   {
     AppMethodBeat.i(113649);
-    if ((this.pQV.csM()) && (super.cwO()))
+    if ((this.tmU.cGn()) && (super.cKr()))
     {
       AppMethodBeat.o(113649);
       return true;

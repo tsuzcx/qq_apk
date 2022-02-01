@@ -28,7 +28,7 @@ final class a
     AppMethodBeat.o(88152);
   }
   
-  private static long C(byte[] paramArrayOfByte, int paramInt)
+  private static long H(byte[] paramArrayOfByte, int paramInt)
   {
     long l = 0L;
     int i = paramInt;
@@ -48,12 +48,12 @@ final class a
     int i = 16;
     try
     {
-      long l2 = C(paramArrayOfByte, 0);
-      long l1 = C(paramArrayOfByte, 4);
-      long l4 = C(this.key, 0);
-      long l5 = C(this.key, 4);
-      long l6 = C(this.key, 8);
-      long l7 = C(this.key, 12);
+      long l2 = H(paramArrayOfByte, 0);
+      long l1 = H(paramArrayOfByte, 4);
+      long l4 = H(this.key, 0);
+      long l5 = H(this.key, 4);
+      long l6 = H(this.key, 8);
+      long l7 = H(this.key, 12);
       long l3 = 0L;
       for (;;)
       {
@@ -88,7 +88,7 @@ final class a
     {
       if (this.pos >= 8)
       {
-        this.prePlain = aQ(this.prePlain);
+        this.prePlain = bd(this.prePlain);
         if (this.prePlain != null) {
           break;
         }
@@ -111,18 +111,18 @@ final class a
     return true;
   }
   
-  final byte[] aQ(byte[] paramArrayOfByte)
+  final byte[] bd(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88154);
     int i = 16;
     try
     {
-      long l1 = C(paramArrayOfByte, 0);
-      long l3 = C(paramArrayOfByte, 4);
-      long l4 = C(this.key, 0);
-      long l5 = C(this.key, 4);
-      long l6 = C(this.key, 8);
-      long l7 = C(this.key, 12);
+      long l1 = H(paramArrayOfByte, 0);
+      long l3 = H(paramArrayOfByte, 4);
+      long l4 = H(this.key, 0);
+      long l5 = H(this.key, 4);
+      long l6 = H(this.key, 8);
+      long l7 = H(this.key, 12);
       long l2 = 3816266640L;
       for (;;)
       {
@@ -191,7 +191,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     oicq.wlogin_sdk.tools.a
  * JD-Core Version:    0.7.0.1
  */

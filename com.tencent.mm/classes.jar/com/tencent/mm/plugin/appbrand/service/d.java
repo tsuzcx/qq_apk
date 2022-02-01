@@ -6,18 +6,18 @@ import com.tencent.mm.sdk.event.IEvent;
 public final class d
   extends IEvent
 {
-  public a nMq;
+  public a qOI;
   
   public d()
   {
     AppMethodBeat.i(153228);
-    this.nMq = new a();
+    this.qOI = new a();
     AppMethodBeat.o(153228);
   }
   
   public static final class a
   {
-    public String nMr;
+    public String qOJ;
   }
 }
 

@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.address.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.j.a.b;
+import com.tencent.mm.plugin.o.a.b;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class a
 {
-  public com.tencent.mm.plugin.j.a.a ksN;
+  public com.tencent.mm.plugin.o.a.a nkw;
   
   public a()
   {
     AppMethodBeat.i(20762);
-    this.ksN = new com.tencent.mm.plugin.j.a.a();
+    this.nkw = new com.tencent.mm.plugin.o.a.a();
     AppMethodBeat.o(20762);
   }
   
-  public final b vo(int paramInt)
+  public final b ys(int paramInt)
   {
     AppMethodBeat.i(20763);
-    Iterator localIterator = this.ksN.ynO.iterator();
+    Iterator localIterator = this.nkw.DNQ.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (localb.ynP == paramInt)
+      if (localb.DNR == paramInt)
       {
         AppMethodBeat.o(20763);
         return localb;

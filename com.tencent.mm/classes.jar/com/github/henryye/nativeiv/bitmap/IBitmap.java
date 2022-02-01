@@ -1,6 +1,6 @@
 package com.github.henryye.nativeiv.bitmap;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.github.henryye.nativeiv.ImageDecodeConfig;
 import java.io.InputStream;
 
@@ -19,7 +19,7 @@ public abstract interface IBitmap<Type>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.github.henryye.nativeiv.bitmap.IBitmap
  * JD-Core Version:    0.7.0.1
  */

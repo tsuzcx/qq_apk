@@ -1,17 +1,17 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.emu;
-import com.tencent.mm.protocal.protobuf.emv;
+import com.tencent.mm.protocal.protobuf.exc;
+import com.tencent.mm.protocal.protobuf.exd;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -20,34 +20,34 @@ public final class w
   implements m
 {
   private i callback;
-  public String dOe;
   private String errMsg;
-  public emv gsu;
+  public String fHp;
+  public exd iWF;
   private final d rr;
   
   public w(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(194032);
+    AppMethodBeat.i(186540);
     Log.i("MicroMsg.NetSceneUpgradeAssociateChatRoom", "NetSceneUpgradeAssociateChatRoom roomname:%s", new Object[] { Util.nullAs(paramString1, "") });
     Object localObject = new d.a();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/upgradeassociatechatroom";
     ((d.a)localObject).funcId = 3927;
-    ((d.a)localObject).iLN = new emu();
-    ((d.a)localObject).iLO = new emv();
-    this.rr = ((d.a)localObject).aXF();
-    this.dOe = paramString1;
-    localObject = (emu)this.rr.iLK.iLR;
-    ((emu)localObject).dOe = paramString1;
-    ((emu)localObject).dHx = paramString2;
-    ((emu)localObject).scene = paramInt;
-    AppMethodBeat.o(194032);
+    ((d.a)localObject).lBU = new exc();
+    ((d.a)localObject).lBV = new exd();
+    this.rr = ((d.a)localObject).bgN();
+    this.fHp = paramString1;
+    localObject = (exc)d.b.b(this.rr.lBR);
+    ((exc)localObject).fHp = paramString1;
+    ((exc)localObject).fAo = paramString2;
+    ((exc)localObject).scene = paramInt;
+    AppMethodBeat.o(186540);
   }
   
   public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(182095);
     this.callback = parami;
-    this.gsu = ((emv)this.rr.iLL.iLR);
+    this.iWF = ((exd)d.c.b(this.rr.lBS));
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(182095);
     return i;
@@ -69,7 +69,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.chatroom.d.w
  * JD-Core Version:    0.7.0.1
  */

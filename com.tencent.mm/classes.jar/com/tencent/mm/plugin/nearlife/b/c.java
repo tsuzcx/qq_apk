@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.nearlife.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ael;
-import com.tencent.mm.protocal.protobuf.aem;
-import com.tencent.mm.protocal.protobuf.chk;
-import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.protocal.protobuf.aes;
+import com.tencent.mm.protocal.protobuf.aet;
+import com.tencent.mm.protocal.protobuf.cqg;
+import com.tencent.mm.protocal.protobuf.eaf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
@@ -22,43 +22,43 @@ public final class c
   extends q
   implements m
 {
-  private i AAQ;
-  public String AAR;
-  private d iLF;
+  private i GtS;
+  public String GtT;
+  private d lBM;
   
-  public c(String paramString1, String paramString2, String paramString3, chk paramchk, int paramInt, LinkedList<dqi> paramLinkedList, String paramString4)
+  public c(String paramString1, String paramString2, String paramString3, cqg paramcqg, int paramInt, LinkedList<eaf> paramLinkedList, String paramString4)
   {
     AppMethodBeat.i(26548);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new ael();
-    ((d.a)localObject).iLO = new aem();
+    ((d.a)localObject).lBU = new aes();
+    ((d.a)localObject).lBV = new aet();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/createpoi";
     ((d.a)localObject).funcId = 650;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.iLF = ((d.a)localObject).aXF();
+    this.lBM = ((d.a)localObject).bgN();
     paramString4 = Util.nullAs(paramString4, "");
     localObject = Util.nullAs(null, "");
-    ael localael = (ael)this.iLF.iLK.iLR;
-    localael.Name = paramString1;
-    localael.LpJ = paramString2;
-    localael.LpL = paramchk;
-    localael.oTz = paramInt;
+    aes localaes = (aes)d.b.b(this.lBM.lBR);
+    localaes.CMP = paramString1;
+    localaes.Srf = paramString2;
+    localaes.Srh = paramcqg;
+    localaes.rVx = paramInt;
     if (paramLinkedList != null) {
-      localael.LpM = paramLinkedList;
+      localaes.Sri = paramLinkedList;
     }
-    localael.LpN = paramString4;
-    localael.LpO = ((String)localObject);
-    localael.LpK = paramString3;
-    Log.d("MicroMsg.NetSceneCreatePoi", "[req] name:%s, district:%s, Street: %s lat:%f, long:%f, count:%d, tel:%s, url:%s", new Object[] { paramString1, paramString2, paramString3, Float.valueOf(paramchk.LbD), Float.valueOf(paramchk.LbC), Integer.valueOf(paramInt), paramString4, localObject });
+    localaes.Srj = paramString4;
+    localaes.Srk = ((String)localObject);
+    localaes.Srg = paramString3;
+    Log.d("MicroMsg.NetSceneCreatePoi", "[req] name:%s, district:%s, Street: %s lat:%f, long:%f, count:%d, tel:%s, url:%s", new Object[] { paramString1, paramString2, paramString3, Float.valueOf(paramcqg.ScP), Float.valueOf(paramcqg.ScO), Integer.valueOf(paramInt), paramString4, localObject });
     AppMethodBeat.o(26548);
   }
   
   public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(26549);
-    this.AAQ = parami;
-    int i = dispatch(paramg, this.iLF, this);
+    this.GtS = parami;
+    int i = dispatch(paramg, this.lBM, this);
     AppMethodBeat.o(26549);
     return i;
   }
@@ -72,22 +72,22 @@ public final class c
   {
     AppMethodBeat.i(26550);
     Log.d("MicroMsg.NetSceneCreatePoi", "netId:%d, errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    params = (aem)this.iLF.iLL.iLR;
-    if (this.iLF.iLL.getRetCode() != 0)
+    params = (aet)d.c.b(this.lBM.lBS);
+    if (this.lBM.lBS.getRetCode() != 0)
     {
-      this.AAQ.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      this.GtS.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(26550);
       return;
     }
-    this.AAR = params.LpP;
-    Log.d("MicroMsg.NetSceneCreatePoi", "poi:" + this.AAR);
-    this.AAQ.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    this.GtT = params.Srl;
+    Log.d("MicroMsg.NetSceneCreatePoi", "poi:" + this.GtT);
+    this.GtS.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(26550);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.b.c
  * JD-Core Version:    0.7.0.1
  */

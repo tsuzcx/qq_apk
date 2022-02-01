@@ -1,7 +1,7 @@
 package com.tencent.mm.modelvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.m.a;
+import com.tencent.mm.an.m.a;
 import com.tencent.mm.audio.b.a;
 import com.tencent.mm.audio.b.b;
 import com.tencent.mm.audio.b.b.a;
@@ -14,34 +14,39 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class v
   implements a
 {
-  private static int dAR = 100;
-  private b dAP;
+  private static int ftG = 100;
   String fileName;
-  private m.a jvI;
+  private b ftE;
+  private m.a mll;
   private int status;
   
   public v(c.a parama)
   {
     AppMethodBeat.i(148500);
     this.fileName = "";
-    this.jvI = null;
+    this.mll = null;
     this.status = 0;
-    this.dAP = new b(parama);
+    this.ftE = new b(parama);
     AppMethodBeat.o(148500);
   }
   
-  public final boolean ZZ()
+  public final void a(m.a parama)
+  {
+    this.mll = parama;
+  }
+  
+  public final boolean aeJ()
   {
     AppMethodBeat.i(148502);
-    if (this.dAP == null)
+    if (this.ftE == null)
     {
       AppMethodBeat.o(148502);
       return true;
     }
     try
     {
-      this.dAP.Qt();
-      this.dAP.release();
+      this.ftE.TV();
+      this.ftE.release();
       this.fileName = "";
       this.status = 0;
       AppMethodBeat.o(148502);
@@ -56,30 +61,16 @@ public final class v
     return false;
   }
   
-  public final void a(m.a parama)
-  {
-    this.jvI = parama;
-  }
-  
-  public final int aaa()
-  {
-    b localb = this.dAP;
-    if (((localb.dyJ == c.a.gCM) || (localb.dyJ == c.a.gCO)) && (localb.dyI != null)) {
-      return localb.dyI.dzA;
-    }
-    return 1;
-  }
-  
-  public final int getMaxAmplitude()
+  public final int aeK()
   {
     AppMethodBeat.i(148503);
     if (this.status == 1)
     {
-      int i = this.dAP.getMaxAmplitude();
-      if (i > dAR) {
-        dAR = i;
+      int i = this.ftE.aeK();
+      if (i > ftG) {
+        ftG = i;
       }
-      i = i * 100 / dAR;
+      i = i * 100 / ftG;
       AppMethodBeat.o(148503);
       return i;
     }
@@ -87,12 +78,21 @@ public final class v
     return 0;
   }
   
+  public final int aeL()
+  {
+    b localb = this.ftE;
+    if (((localb.fry == c.a.jmS) || (localb.fry == c.a.jmU)) && (localb.frx != null)) {
+      return localb.frx.fsp;
+    }
+    return 1;
+  }
+  
   public final int getStatus()
   {
     return this.status;
   }
   
-  public final boolean hw(String paramString)
+  public final boolean ik(String paramString)
   {
     AppMethodBeat.i(148501);
     if (Util.isNullOrNil(paramString)) {}
@@ -111,7 +111,7 @@ public final class v
     this.fileName = paramString;
     try
     {
-      this.dAP.a(new b.a()
+      this.ftE.a(new b.a()
       {
         public final void onError()
         {
@@ -133,14 +133,14 @@ public final class v
           }
         }
       });
-      this.dAP.aac();
-      this.dAP.aad();
-      this.dAP.aab();
-      this.dAP.setOutputFile(this.fileName);
-      this.dAP.setMaxDuration(70000);
-      this.dAP.prepare();
-      this.dAP.start();
-      Log.d("VoiceRecorder", "StartRecord File[" + this.fileName + "] start time:" + locala.apr());
+      this.ftE.aeN();
+      this.ftE.aeO();
+      this.ftE.aeM();
+      this.ftE.setOutputFile(this.fileName);
+      this.ftE.kC(70000);
+      this.ftE.prepare();
+      this.ftE.start();
+      Log.d("VoiceRecorder", "StartRecord File[" + this.fileName + "] start time:" + locala.avE());
       this.status = 1;
       AppMethodBeat.o(148501);
       return true;
@@ -156,7 +156,7 @@ public final class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.modelvoice.v
  * JD-Core Version:    0.7.0.1
  */

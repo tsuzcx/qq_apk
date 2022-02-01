@@ -12,14 +12,14 @@ final class JeVersion$JeService$3
   
   public final void run()
   {
-    AppMethodBeat.i(201107);
+    AppMethodBeat.i(201748);
     Log.i("MicroMsg.JeVersion", "onDestroy: kill self");
     com.tencent.mm.hellhoundlib.b.a locala = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
     Object localObject = new Object();
-    com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.axQ(), "com/tencent/mm/plugin/performance/jectl/JeVersion$JeService$3", "run", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-    Process.killProcess(((Integer)locala.pG(0)).intValue());
-    com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/performance/jectl/JeVersion$JeService$3", "run", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-    AppMethodBeat.o(201107);
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aFh(), "com/tencent/mm/plugin/performance/jectl/JeVersion$JeService$3", "run", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+    Process.killProcess(((Integer)locala.sf(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/performance/jectl/JeVersion$JeService$3", "run", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+    AppMethodBeat.o(201748);
   }
 }
 

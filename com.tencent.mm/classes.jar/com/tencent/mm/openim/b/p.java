@@ -1,16 +1,16 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cpy;
-import com.tencent.mm.protocal.protobuf.cpz;
-import com.tencent.mm.protocal.protobuf.cvt;
+import com.tencent.mm.protocal.protobuf.cyp;
+import com.tencent.mm.protocal.protobuf.cyq;
+import com.tencent.mm.protocal.protobuf.dfd;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class p
@@ -26,15 +26,15 @@ public final class p
     AppMethodBeat.i(151222);
     d.a locala = new d.a();
     this.username = paramString2;
-    cpy localcpy = new cpy();
-    localcpy.jHa = paramString1;
-    localcpy.MvS = new cvt();
-    localcpy.MvS.userName = paramString2;
-    locala.iLN = localcpy;
-    locala.iLO = new cpz();
+    cyp localcyp = new cyp();
+    localcyp.mye = paramString1;
+    localcyp.TGQ = new dfd();
+    localcyp.TGQ.userName = paramString2;
+    locala.lBU = localcyp;
+    locala.lBV = new cyq();
     locala.uri = "/cgi-bin/micromsg-bin/modopenimchatroomowner";
     locala.funcId = 811;
-    this.rr = locala.aXF();
+    this.rr = locala.bgN();
     AppMethodBeat.o(151222);
   }
   

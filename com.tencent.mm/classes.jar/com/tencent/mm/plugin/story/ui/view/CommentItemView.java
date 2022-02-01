@@ -5,40 +5,39 @@ import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
-import android.graphics.PointF;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.story.a.d;
+import kotlin.g.b.aa.f;
 import kotlin.g.b.p;
-import kotlin.g.b.z.f;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/CommentItemView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "animEndHeight", "animEndWidth", "animStartSize", "appeared", "", "avatarView", "Landroid/widget/ImageView;", "getAvatarView", "()Landroid/widget/ImageView;", "setAvatarView", "(Landroid/widget/ImageView;)V", "comment", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "getComment", "()Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "setComment", "(Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;)V", "contentLayout", "Landroid/view/ViewGroup;", "getContentLayout", "()Landroid/view/ViewGroup;", "setContentLayout", "(Landroid/view/ViewGroup;)V", "maskView", "Landroid/view/View;", "getMaskView", "()Landroid/view/View;", "setMaskView", "(Landroid/view/View;)V", "normalAnimator", "Landroid/animation/ValueAnimator;", "getNormalAnimator", "()Landroid/animation/ValueAnimator;", "setNormalAnimator", "(Landroid/animation/ValueAnimator;)V", "normalBgAnimator", "getNormalBgAnimator", "setNormalBgAnimator", "backgroundAnimation", "", "contentAnimation", "enterListAnimation", "order", "isAppearAnimEnd", "normalAnimation", "duration", "", "transStart", "transEnd", "onAppear", "Lkotlin/Function0;", "onAnimateEnd", "onFinishInflate", "shakeAnimation", "stopAnimation", "ArgbEvaluator", "Companion", "TwoLineInterpolator", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/CommentItemView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "animEndHeight", "animEndWidth", "animStartSize", "appeared", "", "avatarView", "Landroid/widget/ImageView;", "getAvatarView", "()Landroid/widget/ImageView;", "setAvatarView", "(Landroid/widget/ImageView;)V", "comment", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "getComment", "()Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "setComment", "(Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;)V", "contentLayout", "Landroid/view/ViewGroup;", "getContentLayout", "()Landroid/view/ViewGroup;", "setContentLayout", "(Landroid/view/ViewGroup;)V", "maskView", "Landroid/view/View;", "getMaskView", "()Landroid/view/View;", "setMaskView", "(Landroid/view/View;)V", "normalAnimator", "Landroid/animation/ValueAnimator;", "getNormalAnimator", "()Landroid/animation/ValueAnimator;", "setNormalAnimator", "(Landroid/animation/ValueAnimator;)V", "normalBgAnimator", "getNormalBgAnimator", "setNormalBgAnimator", "backgroundAnimation", "", "contentAnimation", "enterListAnimation", "order", "isAppearAnimEnd", "normalAnimation", "duration", "", "transStart", "transEnd", "onAppear", "Lkotlin/Function0;", "onAnimateEnd", "onFinishInflate", "shakeAnimation", "stopAnimation", "ArgbEvaluator", "Companion", "TwoLineInterpolator", "plugin-story_release"})
 public final class CommentItemView
   extends LinearLayout
 {
-  public static final b FAM;
-  ValueAnimator FAF;
-  private ValueAnimator FAG;
-  com.tencent.mm.plugin.story.f.b.a FAH;
-  private boolean FAI;
-  int FAJ;
-  int FAK;
-  int FAL;
-  public ImageView jWS;
+  public static final b LUQ;
+  public ViewGroup EMs;
+  ValueAnimator LUJ;
+  private ValueAnimator LUK;
+  com.tencent.mm.plugin.story.f.b.a LUL;
+  private boolean LUM;
+  int LUN;
+  int LUO;
+  int LUP;
+  public ImageView mOe;
   public View maskView;
-  public ViewGroup zhm;
   
   static
   {
     AppMethodBeat.i(120036);
-    FAM = new b((byte)0);
+    LUQ = new b((byte)0);
     AppMethodBeat.o(120036);
   }
   
@@ -53,17 +52,17 @@ public final class CommentItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120034);
-    this.FAH = new com.tencent.mm.plugin.story.f.b.a();
-    this.FAJ = com.tencent.mm.cb.a.fromDPToPix(paramContext, 48);
+    this.LUL = new com.tencent.mm.plugin.story.f.b.a();
+    this.LUN = com.tencent.mm.ci.a.fromDPToPix(paramContext, 48);
     AppMethodBeat.o(120034);
   }
   
   public final ImageView getAvatarView()
   {
     AppMethodBeat.i(120028);
-    ImageView localImageView = this.jWS;
+    ImageView localImageView = this.mOe;
     if (localImageView == null) {
-      p.btv("avatarView");
+      p.bGy("avatarView");
     }
     AppMethodBeat.o(120028);
     return localImageView;
@@ -71,15 +70,15 @@ public final class CommentItemView
   
   public final com.tencent.mm.plugin.story.f.b.a getComment()
   {
-    return this.FAH;
+    return this.LUL;
   }
   
   public final ViewGroup getContentLayout()
   {
     AppMethodBeat.i(120030);
-    ViewGroup localViewGroup = this.zhm;
+    ViewGroup localViewGroup = this.EMs;
     if (localViewGroup == null) {
-      p.btv("contentLayout");
+      p.bGy("contentLayout");
     }
     AppMethodBeat.o(120030);
     return localViewGroup;
@@ -90,7 +89,7 @@ public final class CommentItemView
     AppMethodBeat.i(120026);
     View localView = this.maskView;
     if (localView == null) {
-      p.btv("maskView");
+      p.bGy("maskView");
     }
     AppMethodBeat.o(120026);
     return localView;
@@ -98,32 +97,32 @@ public final class CommentItemView
   
   public final ValueAnimator getNormalAnimator()
   {
-    return this.FAF;
+    return this.LUJ;
   }
   
   public final ValueAnimator getNormalBgAnimator()
   {
-    return this.FAG;
+    return this.LUK;
   }
   
   protected final void onFinishInflate()
   {
     AppMethodBeat.i(120033);
     super.onFinishInflate();
-    View localView2 = findViewById(2131308493);
+    View localView2 = findViewById(a.d.LAw);
     View localView1 = localView2;
     if (localView2 == null) {
-      localView1 = findViewById(2131308500);
+      localView1 = findViewById(a.d.LAD);
     }
     if (localView1 == null) {}
     for (this.maskView = ((View)this);; this.maskView = localView1)
     {
-      localView1 = findViewById(2131308514);
-      p.g(localView1, "findViewById(R.id.story_comment_item_avatar)");
-      this.jWS = ((ImageView)localView1);
-      localView1 = findViewById(2131308518);
-      p.g(localView1, "findViewById(R.id.story_…ment_item_content_layout)");
-      this.zhm = ((ViewGroup)localView1);
+      localView1 = findViewById(a.d.LAQ);
+      p.j(localView1, "findViewById(R.id.story_comment_item_avatar)");
+      this.mOe = ((ImageView)localView1);
+      localView1 = findViewById(a.d.LAU);
+      p.j(localView1, "findViewById(R.id.story_…ment_item_content_layout)");
+      this.EMs = ((ViewGroup)localView1);
       AppMethodBeat.o(120033);
       return;
     }
@@ -132,54 +131,54 @@ public final class CommentItemView
   public final void setAvatarView(ImageView paramImageView)
   {
     AppMethodBeat.i(120029);
-    p.h(paramImageView, "<set-?>");
-    this.jWS = paramImageView;
+    p.k(paramImageView, "<set-?>");
+    this.mOe = paramImageView;
     AppMethodBeat.o(120029);
   }
   
   public final void setComment(com.tencent.mm.plugin.story.f.b.a parama)
   {
     AppMethodBeat.i(120032);
-    p.h(parama, "<set-?>");
-    this.FAH = parama;
+    p.k(parama, "<set-?>");
+    this.LUL = parama;
     AppMethodBeat.o(120032);
   }
   
   public final void setContentLayout(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(120031);
-    p.h(paramViewGroup, "<set-?>");
-    this.zhm = paramViewGroup;
+    p.k(paramViewGroup, "<set-?>");
+    this.EMs = paramViewGroup;
     AppMethodBeat.o(120031);
   }
   
   public final void setMaskView(View paramView)
   {
     AppMethodBeat.i(120027);
-    p.h(paramView, "<set-?>");
+    p.k(paramView, "<set-?>");
     this.maskView = paramView;
     AppMethodBeat.o(120027);
   }
   
   public final void setNormalAnimator(ValueAnimator paramValueAnimator)
   {
-    this.FAF = paramValueAnimator;
+    this.LUJ = paramValueAnimator;
   }
   
   public final void setNormalBgAnimator(ValueAnimator paramValueAnimator)
   {
-    this.FAG = paramValueAnimator;
+    this.LUK = paramValueAnimator;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/CommentItemView$ArgbEvaluator;", "Landroid/animation/TypeEvaluator;", "", "()V", "evaluate", "fraction", "", "startValue", "endValue", "plugin-story_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/CommentItemView$ArgbEvaluator;", "Landroid/animation/TypeEvaluator;", "", "()V", "evaluate", "fraction", "", "startValue", "endValue", "plugin-story_release"})
   public static final class a
     implements TypeEvaluator<Object>
   {
     public final Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
     {
       AppMethodBeat.i(120022);
-      p.h(paramObject1, "startValue");
-      p.h(paramObject2, "endValue");
+      p.k(paramObject1, "startValue");
+      p.k(paramObject2, "endValue");
       int i = ((Integer)paramObject1).intValue();
       float f1 = (i >> 24 & 0xFF) / 255.0F;
       float f4 = (i >> 16 & 0xFF) / 255.0F;
@@ -208,41 +207,10 @@ public final class CommentItemView
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/CommentItemView$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/CommentItemView$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
   public static final class b {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/CommentItemView$TwoLineInterpolator;", "Landroid/view/animation/Interpolator;", "divide", "Landroid/graphics/PointF;", "(Landroid/graphics/PointF;)V", "getDivide", "()Landroid/graphics/PointF;", "smooth", "", "smoothEnd", "smoothStart", "getInterpolation", "input", "plugin-story_release"})
-  public static final class c
-    implements Interpolator
-  {
-    private final float FAN;
-    private final PointF FAO;
-    private final PointF FAP;
-    private final PointF FAQ;
-    
-    public c(PointF paramPointF)
-    {
-      AppMethodBeat.i(120023);
-      this.FAQ = paramPointF;
-      this.FAN = 0.2F;
-      this.FAO = new PointF(this.FAQ.x * (1.0F - this.FAN), this.FAQ.y * (1.0F - this.FAN));
-      this.FAP = new PointF(this.FAQ.x + (1.0F - this.FAQ.x) * this.FAN, this.FAQ.y + (1.0F - this.FAQ.y) * this.FAN);
-      AppMethodBeat.o(120023);
-    }
-    
-    public final float getInterpolation(float paramFloat)
-    {
-      if (paramFloat < this.FAO.x) {
-        return this.FAQ.y * paramFloat / this.FAQ.x;
-      }
-      if (paramFloat < this.FAP.x) {
-        return this.FAO.y + (paramFloat - this.FAO.x) / (this.FAP.x - this.FAO.x) * (this.FAP.y - this.FAO.y);
-      }
-      return this.FAQ.y + (paramFloat - this.FAQ.x) / (1.0F - this.FAQ.x) * (1.0F - this.FAQ.y);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
   static final class d
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -251,7 +219,7 @@ public final class CommentItemView
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
       AppMethodBeat.i(120024);
-      p.g(paramValueAnimator, "it");
+      p.j(paramValueAnimator, "it");
       paramValueAnimator = paramValueAnimator.getAnimatedValue();
       if (paramValueAnimator == null)
       {
@@ -260,25 +228,25 @@ public final class CommentItemView
         throw paramValueAnimator;
       }
       float f = ((Float)paramValueAnimator).floatValue();
-      paramValueAnimator = this.FAS.getLayoutParams();
-      paramValueAnimator.width = (CommentItemView.c(this.FAS) + (int)((CommentItemView.d(this.FAS) - CommentItemView.c(this.FAS)) * f));
-      int i = CommentItemView.c(this.FAS);
-      paramValueAnimator.height = ((int)(f * (CommentItemView.e(this.FAS) - CommentItemView.c(this.FAS))) + i);
-      this.FAS.setLayoutParams(paramValueAnimator);
+      paramValueAnimator = this.LUV.getLayoutParams();
+      paramValueAnimator.width = (CommentItemView.c(this.LUV) + (int)((CommentItemView.d(this.LUV) - CommentItemView.c(this.LUV)) * f));
+      int i = CommentItemView.c(this.LUV);
+      paramValueAnimator.height = ((int)(f * (CommentItemView.e(this.LUV) - CommentItemView.c(this.LUV))) + i);
+      this.LUV.setLayoutParams(paramValueAnimator);
       AppMethodBeat.o(120024);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
   static final class e
     implements ValueAnimator.AnimatorUpdateListener
   {
-    e(CommentItemView paramCommentItemView, int paramInt1, int paramInt2, z.f paramf, kotlin.g.a.a parama) {}
+    e(CommentItemView paramCommentItemView, int paramInt1, int paramInt2, aa.f paramf, kotlin.g.a.a parama) {}
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
       AppMethodBeat.i(120025);
-      p.g(paramValueAnimator, "it");
+      p.j(paramValueAnimator, "it");
       paramValueAnimator = paramValueAnimator.getAnimatedValue();
       if (paramValueAnimator == null)
       {
@@ -287,80 +255,80 @@ public final class CommentItemView
         throw paramValueAnimator;
       }
       float f = ((Float)paramValueAnimator).floatValue();
-      int i = (int)((this.FAT - this.FAU) * (1.0F - f));
-      this.FAS.setTranslationY(i);
-      if (f < this.FAV)
+      int i = (int)((this.LUW - this.LUX) * (1.0F - f));
+      this.LUV.setTranslationY(i);
+      if (f < this.LUY)
       {
-        this.FAS.setScaleX(f / this.FAV);
-        this.FAS.setScaleY(f / this.FAV);
-        this.FAS.setAlpha(f / this.FAV * 0.5F + 0.5F);
+        this.LUV.setScaleX(f / this.LUY);
+        this.LUV.setScaleY(f / this.LUY);
+        this.LUV.setAlpha(f / this.LUY * 0.5F + 0.5F);
       }
       do
       {
         if (i < 100) {
-          this.FAS.setAlpha(i / 100.0F);
+          this.LUV.setAlpha(i / 100.0F);
         }
-        if (this.FAS.getAlpha() >= 0.05F) {
+        if (this.LUV.getAlpha() >= 0.05F) {
           break;
         }
-        paramValueAnimator = this.FAS.getNormalAnimator();
+        paramValueAnimator = this.LUV.getNormalAnimator();
         if (paramValueAnimator != null) {
           paramValueAnimator.removeAllUpdateListeners();
         }
-        paramValueAnimator = this.FAX;
+        paramValueAnimator = this.LVa;
         if (paramValueAnimator == null) {
           break;
         }
         paramValueAnimator.invoke();
         AppMethodBeat.o(120025);
         return;
-        this.FAS.setScaleX(1.0F);
-        this.FAS.setScaleY(1.0F);
-        this.FAS.setAlpha(1.0F);
-        paramValueAnimator = (kotlin.g.a.a)this.FAW.SYG;
+        this.LUV.setScaleX(1.0F);
+        this.LUV.setScaleY(1.0F);
+        this.LUV.setAlpha(1.0F);
+        paramValueAnimator = (kotlin.g.a.a)this.LUZ.aaBC;
         if (paramValueAnimator != null) {
           paramValueAnimator.invoke();
         }
-        this.FAW.SYG = null;
-      } while (CommentItemView.a(this.FAS));
-      CommentItemView.b(this.FAS);
-      paramValueAnimator = this.FAS;
+        this.LUZ.aaBC = null;
+      } while (CommentItemView.a(this.LUV));
+      CommentItemView.b(this.LUV);
+      paramValueAnimator = this.LUV;
       long l = 0L;
       Object localObject;
-      if (!paramValueAnimator.FAH.FnX)
+      if (!paramValueAnimator.LUL.LHY)
       {
         localObject = ObjectAnimator.ofFloat(new float[] { 0.0F, 1.0F });
         ((ValueAnimator)localObject).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new CommentItemView.d(paramValueAnimator));
-        p.g(localObject, "sizeAnimator");
+        p.j(localObject, "sizeAnimator");
         ((ValueAnimator)localObject).setDuration(300L);
         ((ValueAnimator)localObject).start();
         l = 300L;
       }
       for (;;)
       {
-        localObject = paramValueAnimator.zhm;
+        localObject = paramValueAnimator.EMs;
         if (localObject == null) {
-          p.btv("contentLayout");
+          p.bGy("contentLayout");
         }
         ((ViewGroup)localObject).setVisibility(0);
-        localObject = paramValueAnimator.zhm;
+        localObject = paramValueAnimator.EMs;
         if (localObject == null) {
-          p.btv("contentLayout");
+          p.bGy("contentLayout");
         }
         ((ViewGroup)localObject).setAlpha(0.0F);
-        paramValueAnimator = paramValueAnimator.zhm;
+        paramValueAnimator = paramValueAnimator.EMs;
         if (paramValueAnimator == null) {
-          p.btv("contentLayout");
+          p.bGy("contentLayout");
         }
         paramValueAnimator = ObjectAnimator.ofFloat(paramValueAnimator, "alpha", new float[] { 0.0F, 1.0F });
-        p.g(paramValueAnimator, "contentLayoutAnim");
+        p.j(paramValueAnimator, "contentLayoutAnim");
         paramValueAnimator.setStartDelay(l);
         paramValueAnimator.setDuration(100L);
         paramValueAnimator.start();
         break;
         localObject = paramValueAnimator.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).width = paramValueAnimator.FAL;
-        ((ViewGroup.LayoutParams)localObject).height = paramValueAnimator.FAK;
+        ((ViewGroup.LayoutParams)localObject).width = paramValueAnimator.LUP;
+        ((ViewGroup.LayoutParams)localObject).height = paramValueAnimator.LUO;
         paramValueAnimator.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
       AppMethodBeat.o(120025);
@@ -369,7 +337,7 @@ public final class CommentItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.CommentItemView
  * JD-Core Version:    0.7.0.1
  */

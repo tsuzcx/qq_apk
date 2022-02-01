@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class a
 {
-  private static a lks;
+  private static a ofd;
   
-  public static a bBu()
+  public static a bMP()
   {
     AppMethodBeat.i(158949);
-    if (lks == null) {}
+    if (ofd == null) {}
     try
     {
-      if (lks == null) {
-        lks = new a();
+      if (ofd == null) {
+        ofd = new a();
       }
-      a locala = lks;
+      a locala = ofd;
       AppMethodBeat.o(158949);
       return locala;
     }
@@ -27,7 +27,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.c.a
  * JD-Core Version:    0.7.0.1
  */

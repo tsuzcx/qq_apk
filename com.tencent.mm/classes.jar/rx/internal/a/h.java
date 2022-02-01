@@ -4,47 +4,72 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import rx.a.b;
 import rx.b.e;
 import rx.d.b;
+import rx.i;
 import rx.internal.b.a;
 
 public final class h<T>
   implements d.b<Boolean, T>
 {
-  final e<? super T, Boolean> UkO;
-  final boolean UkP;
+  final e<? super T, Boolean> abOk;
+  final boolean abOl;
   
   public h(e<? super T, Boolean> parame)
   {
-    this.UkO = parame;
-    this.UkP = true;
+    this.abOk = parame;
+    this.abOl = true;
   }
   
-  private rx.i<? super T> b(final rx.i<? super Boolean> parami)
+  private i<? super T> b(final i<? super Boolean> parami)
   {
     AppMethodBeat.i(90262);
     final a locala = new a(parami);
-    rx.i local1 = new rx.i()
+    i local1 = new i()
     {
-      boolean UkQ;
+      boolean abOm;
       boolean done;
       
-      public final void gL(T paramAnonymousT)
+      public final void c(Throwable paramAnonymousThrowable)
+      {
+        AppMethodBeat.i(90260);
+        parami.c(paramAnonymousThrowable);
+        AppMethodBeat.o(90260);
+      }
+      
+      public final void fUB()
+      {
+        AppMethodBeat.i(90261);
+        if (!this.done)
+        {
+          this.done = true;
+          if (this.abOm)
+          {
+            locala.setValue(Boolean.FALSE);
+            AppMethodBeat.o(90261);
+            return;
+          }
+          locala.setValue(Boolean.valueOf(h.this.abOl));
+        }
+        AppMethodBeat.o(90261);
+      }
+      
+      public final void he(T paramAnonymousT)
       {
         AppMethodBeat.i(90259);
-        this.UkQ = true;
+        this.abOm = true;
         for (;;)
         {
           try
           {
-            bool = ((Boolean)h.this.UkO.call(paramAnonymousT)).booleanValue();
+            bool = ((Boolean)h.this.abOk.call(paramAnonymousT)).booleanValue();
             if ((bool) && (!this.done))
             {
               this.done = true;
               paramAnonymousT = locala;
-              if (!h.this.UkP)
+              if (!h.this.abOl)
               {
                 bool = true;
                 paramAnonymousT.setValue(Boolean.valueOf(bool));
-                this.Ukg.hQA();
+                iVJ();
               }
             }
             else
@@ -62,30 +87,6 @@ public final class h<T>
           boolean bool = false;
         }
       }
-      
-      public final void hQw()
-      {
-        AppMethodBeat.i(90261);
-        if (!this.done)
-        {
-          this.done = true;
-          if (this.UkQ)
-          {
-            locala.setValue(Boolean.FALSE);
-            AppMethodBeat.o(90261);
-            return;
-          }
-          locala.setValue(Boolean.valueOf(h.this.UkP));
-        }
-        AppMethodBeat.o(90261);
-      }
-      
-      public final void onError(Throwable paramAnonymousThrowable)
-      {
-        AppMethodBeat.i(90260);
-        parami.onError(paramAnonymousThrowable);
-        AppMethodBeat.o(90260);
-      }
     };
     parami.b(local1);
     parami.a(locala);
@@ -95,7 +96,7 @@ public final class h<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.internal.a.h
  * JD-Core Version:    0.7.0.1
  */

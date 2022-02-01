@@ -1,8 +1,8 @@
 package com.tencent.mm.modelmulti;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.o;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.o;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.protocal.d;
@@ -13,51 +13,51 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class g
-  extends com.tencent.mm.ak.q
+  extends com.tencent.mm.an.q
   implements m
 {
   private i callback;
-  private s iMO;
-  private byte[] jcK;
-  public long jcg = -1L;
+  private s lCW;
+  public long lSG = -1L;
+  private byte[] lTj;
   private int uin = 0;
   
   public g(long paramLong, byte[] paramArrayOfByte)
   {
-    this.jcg = paramLong;
-    this.jcK = paramArrayOfByte;
+    this.lSG = paramLong;
+    this.lTj = paramArrayOfByte;
   }
   
   public g(long paramLong, byte[] paramArrayOfByte, int paramInt)
   {
-    this.jcg = paramLong;
-    this.jcK = paramArrayOfByte;
+    this.lSG = paramLong;
+    this.lTj = paramArrayOfByte;
     this.uin = paramInt;
   }
   
   public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(132563);
-    if (Util.isNullOrNil(this.jcK))
+    if (Util.isNullOrNil(this.lTj))
     {
       Log.e("MicroMsg.NetSceneNotifyData", "dkpush %s", new Object[] { "get keyBuf failed" });
       AppMethodBeat.o(132563);
       return -1;
     }
     if (this.uin == 0) {
-      this.iMO = new a();
+      this.lCW = new a();
     }
     for (;;)
     {
-      Log.i("MicroMsg.NetSceneNotifyData", "doScene now:%d buf:%s", new Object[] { Long.valueOf(this.jcg), Util.dumpHexBuf(this.jcK) });
-      ((w.a)this.iMO.getReqObj()).iUm = this.jcg;
-      ((w.a)this.iMO.getReqObj()).dLi = this.jcK;
+      Log.i("MicroMsg.NetSceneNotifyData", "doScene now:%d buf:%s", new Object[] { Long.valueOf(this.lSG), Util.dumpHexBuf(this.lTj) });
+      ((w.a)this.lCW.getReqObj()).lKF = this.lSG;
+      ((w.a)this.lCW.getReqObj()).fDX = this.lTj;
       this.callback = parami;
-      int i = dispatch(paramg, this.iMO, this);
+      int i = dispatch(paramg, this.lCW, this);
       AppMethodBeat.o(132563);
       return i;
-      this.iMO = new b();
-      ((b)this.iMO).uin = this.uin;
+      this.lCW = new b();
+      ((b)this.lCW).uin = this.uin;
     }
   }
   
@@ -77,14 +77,14 @@ public final class g
   public static final class a
     extends o
   {
-    private final w.a jcL;
-    private final w.b jcM;
+    private final w.a lTk;
+    private final w.b lTl;
     
     public a()
     {
       AppMethodBeat.i(132560);
-      this.jcL = new w.a();
-      this.jcM = new w.b();
+      this.lTk = new w.a();
+      this.lTl = new w.b();
       AppMethodBeat.o(132560);
     }
     
@@ -107,15 +107,15 @@ public final class g
   public static final class b
     implements s
   {
-    private final w.a jcL;
-    private final w.b jcM;
+    private final w.a lTk;
+    private final w.b lTl;
     int uin;
     
     public b()
     {
       AppMethodBeat.i(132561);
-      this.jcL = new w.a();
-      this.jcM = new w.b();
+      this.lTk = new w.a();
+      this.lTl = new w.b();
       AppMethodBeat.o(132561);
     }
     
@@ -147,11 +147,11 @@ public final class g
     public final l.d getReqObj()
     {
       AppMethodBeat.i(132562);
-      this.jcL.setDeviceID(com.tencent.mm.compatible.deviceinfo.q.aoG());
-      this.jcL.setDeviceType(d.ics);
-      this.jcL.setClientVersion(d.KyO);
-      this.jcL.setUin(this.uin);
-      w.a locala = this.jcL;
+      this.lTk.setDeviceID(com.tencent.mm.compatible.deviceinfo.q.auM());
+      this.lTk.setDeviceType(d.kQZ);
+      this.lTk.setClientVersion(d.RAD);
+      this.lTk.setUin(this.uin);
+      w.a locala = this.lTk;
       AppMethodBeat.o(132562);
       return locala;
     }
@@ -191,7 +191,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelmulti.g
  * JD-Core Version:    0.7.0.1
  */

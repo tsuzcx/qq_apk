@@ -1,69 +1,76 @@
 package com.tencent.mm.plugin.appbrand.ipc;
 
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.plugin.appbrand.utils.k;
-import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.p;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandRuntimeLaunchConditionForMainProcessIPC;", "", "()V", "connect", "", "waitFor", "block", "Lkotlin/Function0;", "IPCInvokerConnector", "plugin-appbrand-integration_release"})
 public final class b
 {
-  public static final b lwB;
+  private static boolean oqE;
   
   static
   {
-    AppMethodBeat.i(228221);
-    lwB = new b();
-    AppMethodBeat.o(228221);
+    AppMethodBeat.i(140616);
+    oqE = false;
+    AppMethodBeat.o(140616);
   }
   
-  public static final void connect()
+  public static void bPe()
   {
-    AppMethodBeat.i(228219);
-    w((a)b.b.lwC);
-    AppMethodBeat.o(228219);
-  }
-  
-  public static final void w(a<x> parama)
-  {
-    AppMethodBeat.i(228220);
-    p.h(parama, "block");
-    parama = new k((Runnable)new b.e(parama), 2);
-    AppBrandMainProcessService.Y((Runnable)new c(parama));
-    XIPCInvoker.a(MainProcessIPCService.dkO, IPCVoid.hnE, b.a.class, (d)new d(parama));
-    AppMethodBeat.o(228220);
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
-  {
-    c(k paramk) {}
-    
-    public final void run()
+    AppMethodBeat.i(140604);
+    if (!MMHandlerThread.isMainThread())
     {
-      AppMethodBeat.i(228216);
-      this.lwD.countDown();
-      AppMethodBeat.o(228216);
+      h.ZvG.bc(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(208892);
+          b.bPe();
+          AppMethodBeat.o(208892);
+        }
+      });
+      AppMethodBeat.o(140604);
+      return;
     }
+    Log.v("MicroMsg.AppBrandMainProcessService", "tryBind: ");
+    if (!oqE)
+    {
+      j.b(MMApplicationContext.getMainProcessName(), new a((byte)0));
+      oqE = true;
+    }
+    k.Mq(MMApplicationContext.getMainProcessName());
+    AppMethodBeat.o(140604);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class d<T>
-    implements d<ResultType>
+  public static boolean isLive()
   {
-    d(k paramk) {}
+    AppMethodBeat.i(209084);
+    boolean bool = j.Mp(MMApplicationContext.getMainProcessName());
+    AppMethodBeat.o(209084);
+    return bool;
+  }
+  
+  static final class a
+    implements p
+  {
+    public final void aFw()
+    {
+      AppMethodBeat.i(208499);
+      Log.i("MicroMsg.AppBrandMainProcessService", "onDisconnect: [%s] disconnected, reconnect immediately", new Object[] { MMApplicationContext.getMainProcessName() });
+      b.bPe();
+      AppMethodBeat.o(208499);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.b
  * JD-Core Version:    0.7.0.1
  */

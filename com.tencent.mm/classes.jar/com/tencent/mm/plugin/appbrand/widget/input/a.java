@@ -11,22 +11,22 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.t;
 import java.lang.reflect.Method;
 
 public final class a
 {
-  public static final boolean orx;
+  public static final boolean rtG;
   public final Activity activity;
-  public boolean ory = false;
-  public int orz = 0;
+  public boolean rtH = false;
+  public int rtI = 0;
   
   static
   {
     if (Build.VERSION.SDK_INT < 20) {}
     for (boolean bool = true;; bool = false)
     {
-      orx = bool;
+      rtG = bool;
       return;
     }
   }
@@ -36,7 +36,7 @@ public final class a
     this.activity = paramActivity;
   }
   
-  private boolean caP()
+  private boolean cnW()
   {
     AppMethodBeat.i(136300);
     if ((this.activity.getWindow() != null) && ((this.activity.getWindow().getAttributes().flags & 0x400) > 0))
@@ -48,12 +48,12 @@ public final class a
     return false;
   }
   
-  public static boolean caQ()
+  public static boolean cnX()
   {
     AppMethodBeat.i(136302);
     try
     {
-      boolean bool = ((Boolean)org.a.a.gG(org.a.a.bF(org.a.a.forName("android.view.WindowManagerGlobal")).bvt("getWindowManagerService").object).bvt("hasNavigationBar").object).booleanValue();
+      boolean bool = ((Boolean)org.a.a.gY(org.a.a.ce(org.a.a.bIA("android.view.WindowManagerGlobal")).bIz("getWindowManagerService").object).bIz("hasNavigationBar").object).booleanValue();
       AppMethodBeat.o(136302);
       return bool;
     }
@@ -100,15 +100,15 @@ public final class a
     }
   }
   
-  public final void caN()
+  public final void cnU()
   {
     AppMethodBeat.i(136298);
-    if ((!this.ory) || (this.activity.isFinishing()))
+    if ((!this.rtH) || (this.activity.isFinishing()))
     {
       AppMethodBeat.o(136298);
       return;
     }
-    if (orx)
+    if (rtG)
     {
       if (n.I(this.activity) == null)
       {
@@ -116,20 +116,20 @@ public final class a
         AppMethodBeat.o(136298);
         return;
       }
-      caO();
+      cnV();
     }
     AppMethodBeat.o(136298);
   }
   
-  public final void caO()
+  public final void cnV()
   {
     AppMethodBeat.i(183096);
     n localn = n.I(this.activity);
     Point localPoint = new Point();
     this.activity.getWindowManager().getDefaultDisplay().getSize(localPoint);
-    int i = r.jJ(this.activity);
+    int i = t.kI(this.activity);
     int j = localPoint.y;
-    if (caP()) {
+    if (cnW()) {
       i = 0;
     }
     i = j - i;
@@ -140,7 +140,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.a
  * JD-Core Version:    0.7.0.1
  */

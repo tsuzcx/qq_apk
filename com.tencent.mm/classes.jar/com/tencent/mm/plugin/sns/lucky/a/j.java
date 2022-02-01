@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.sns.lucky.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.c;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cj.a;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.c;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.model.ck.a;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.protocal.protobuf.db;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
@@ -17,7 +16,7 @@ import java.util.LinkedList;
 import java.util.Map;
 
 public final class j
-  implements cj.a
+  implements ck.a
 {
   public static String TAG = "MicroMsg.NewYearSnsTips2016NotifyLsn";
   
@@ -25,30 +24,30 @@ public final class j
   {
     AppMethodBeat.i(95185);
     Log.i(TAG, "receivemsg NewYearSnsTips2016NotifyLsn");
-    b.pl(74);
-    if ((parama == null) || (parama.heO == null))
+    b.rE(74);
+    if ((parama == null) || (parama.jQG == null))
     {
       Log.e(TAG, "onPreAddMessage cmdAM is null");
       AppMethodBeat.o(95185);
       return;
     }
     i locali = new i();
-    String str1 = z.a(parama.heO.KHn);
+    String str1 = z.a(parama.jQG.RIF);
     locali.sb = new StringBuffer();
     Map localMap = XmlParser.parseXml(str1, "sysmsg", null);
-    locali.DGb.clear();
+    locali.JSX.clear();
     if (localMap == null)
     {
       Log.i("MicroMsg.NewYearSnsTips", "errr for paser %s", new Object[] { str1 });
-      b.pl(75);
+      b.rE(75);
     }
     for (;;)
     {
       Log.i("MicroMsg.NewYearSnsTips", "dump NewYearSnsTips " + locali.sb.toString());
-      g.aAi();
-      g.aAh().azQ().set(ar.a.NWG, str1);
-      g.aAi();
-      g.aAh().azQ().gBI();
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VkG, str1);
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHG().aHp().hxT();
       AppMethodBeat.o(95185);
       return;
       int i = 0;
@@ -90,11 +89,11 @@ public final class j
         parama = Util.nullAs((String)localMap.get(String.format(".sysmsg.NewYearSNSTips2016.Tips%s.%s", new Object[] { parama, "TipsMessage" })), "");
         locali.sb.append("TipsMessage:" + parama + ";\n");
         h localh = new h();
-        localh.DFY = str2;
-        localh.jfo = l1;
-        localh.oUH = l2;
-        localh.DFZ = parama;
-        locali.DGb.add(localh);
+        localh.JSU = str2;
+        localh.lVM = l1;
+        localh.rWG = l2;
+        localh.JSV = parama;
+        locali.JSX.add(localh);
         i += 1;
         break;
         parama = String.valueOf(i);
@@ -105,8 +104,8 @@ public final class j
         break label334;
       }
       label564:
-      if (locali.DGb.size() == 0) {
-        b.pl(76);
+      if (locali.JSX.size() == 0) {
+        b.rE(76);
       }
     }
   }
@@ -115,7 +114,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.lucky.a.j
  * JD-Core Version:    0.7.0.1
  */

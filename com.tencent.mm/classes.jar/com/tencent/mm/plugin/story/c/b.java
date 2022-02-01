@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.story.c;
 import com.tencent.mm.media.b.c;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "T", "", "Lcom/tencent/mm/media/config/SimpleElementConfig;", "()V", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "getModuleName", "", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "T", "", "Lcom/tencent/mm/media/config/SimpleElementConfig;", "()V", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "getModuleName", "", "plugin-story_release"})
 public abstract class b<T>
   extends c<T>
 {}

@@ -6,56 +6,60 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.am.d;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.ui.contact.SelectContactUI;
-import com.tencent.mm.ui.contact.u;
+import com.tencent.mm.ui.contact.w;
 import java.lang.ref.WeakReference;
 
 public final class f
   extends com.tencent.mm.pluginsdk.ui.b.b
 {
-  String PdV;
-  String QhV;
+  String HDR;
+  String XFg;
   
   public f(Context paramContext, String paramString1, String paramString2)
   {
     super(paramContext);
     AppMethodBeat.i(38778);
-    this.PdV = null;
-    this.QhV = null;
-    this.PdV = paramString1;
-    this.QhV = paramString2;
+    this.HDR = null;
+    this.XFg = null;
+    this.HDR = paramString1;
+    this.XFg = paramString2;
     if (this.view != null)
     {
-      paramContext = (ImageView)this.view.findViewById(2131298405);
+      paramContext = (ImageView)this.view.findViewById(R.h.dwW);
       this.view.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(38777);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/ChattingRecommendBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-          localObject = new Intent((Context)f.this.Kgr.get(), SelectContactUI.class);
-          ((Intent)localObject).putExtra("list_attr", u.ll(u.PWR, 256));
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/conversation/banner/ChattingRecommendBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          localObject = new Intent((Context)f.this.Rhc.get(), SelectContactUI.class);
+          ((Intent)localObject).putExtra("list_attr", w.mC(w.XtJ, 256));
           ((Intent)localObject).putExtra("list_type", 10);
-          ((Intent)localObject).putExtra("received_card_name", f.this.PdV);
+          ((Intent)localObject).putExtra("received_card_name", f.this.HDR);
           ((Intent)localObject).putExtra("recommend_friends", true);
-          ((Intent)localObject).putExtra("titile", ((Context)f.this.Kgr.get()).getString(2131755268));
-          paramAnonymousView = (Context)f.this.Kgr.get();
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/ui/conversation/banner/ChattingRecommendBanner$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/ui/conversation/banner/ChattingRecommendBanner$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          bg.aVF().aTm().KY(f.this.PdV);
-          bg.aVF().aTm().KY(f.this.QhV);
-          h.CyF.a(11003, new Object[] { f.this.PdV, Integer.valueOf(2), Integer.valueOf(0) });
+          ((Intent)localObject).putExtra("titile", ((Context)f.this.Rhc.get()).getString(R.l.address_title_select_contact));
+          paramAnonymousView = (Context)f.this.Rhc.get();
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/ui/conversation/banner/ChattingRecommendBanner$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/ui/conversation/banner/ChattingRecommendBanner$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          bh.beI().bck().Sr(f.this.HDR);
+          bh.beI().bck().Sr(f.this.XFg);
+          h.IzE.a(11003, new Object[] { f.this.HDR, Integer.valueOf(2), Integer.valueOf(0) });
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/ChattingRecommendBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(38777);
         }
       });
-      paramContext.setImageBitmap(com.tencent.mm.aj.c.a(this.PdV, true, -1, null));
+      paramContext.setImageBitmap(d.a(this.HDR, true, -1, null));
     }
     AppMethodBeat.o(38778);
   }
@@ -64,7 +68,7 @@ public final class f
   
   public final int getLayoutId()
   {
-    return 2131493629;
+    return R.i.eeF;
   }
 }
 

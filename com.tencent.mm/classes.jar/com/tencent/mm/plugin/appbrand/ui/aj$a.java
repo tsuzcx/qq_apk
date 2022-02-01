@@ -8,7 +8,7 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/appbrand/ui/SimplifiedActionBarForPluginSplash$1$1"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/appbrand/ui/SimplifiedActionBarForPluginSplash$1$1"})
 final class aj$a
   implements View.OnClickListener
 {
@@ -18,9 +18,9 @@ final class aj$a
   {
     AppMethodBeat.i(148209);
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    a.b("com/tencent/mm/plugin/appbrand/ui/SimplifiedActionBarForPluginSplash$$special$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
-    localObject = aj.a(this.nZd);
+    ((b)localObject).bn(paramView);
+    a.c("com/tencent/mm/plugin/appbrand/ui/SimplifiedActionBarForPluginSplash$$special$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+    localObject = aj.a(this.raO);
     if (localObject != null) {
       ((View.OnClickListener)localObject).onClick(paramView);
     }
@@ -30,7 +30,7 @@ final class aj$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.aj.a
  * JD-Core Version:    0.7.0.1
  */

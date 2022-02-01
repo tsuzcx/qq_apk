@@ -22,7 +22,7 @@ public abstract class l
   
   public final String i(t paramt)
   {
-    p.h(paramt, "functionDescriptor");
+    p.k(paramt, "functionDescriptor");
     return b.a.a(this, paramt);
   }
   
@@ -36,8 +36,8 @@ public abstract class l
     public final boolean h(t paramt)
     {
       AppMethodBeat.i(61329);
-      p.h(paramt, "functionDescriptor");
-      if (paramt.hAw().size() >= this.n)
+      p.k(paramt, "functionDescriptor");
+      if (paramt.iEJ().size() >= this.n)
       {
         AppMethodBeat.o(61329);
         return true;
@@ -55,16 +55,16 @@ public abstract class l
     public b()
     {
       super((byte)0);
-      AppMethodBeat.i(186278);
+      AppMethodBeat.i(270680);
       this.n = 2;
-      AppMethodBeat.o(186278);
+      AppMethodBeat.o(270680);
     }
     
     public final boolean h(t paramt)
     {
       AppMethodBeat.i(61331);
-      p.h(paramt, "functionDescriptor");
-      if (paramt.hAw().size() == this.n)
+      p.k(paramt, "functionDescriptor");
+      if (paramt.iEJ().size() == this.n)
       {
         AppMethodBeat.o(61331);
         return true;
@@ -77,12 +77,12 @@ public abstract class l
   public static final class c
     extends l
   {
-    public static final c TRt;
+    public static final c abtS;
     
     static
     {
       AppMethodBeat.i(61333);
-      TRt = new c();
+      abtS = new c();
       AppMethodBeat.o(61333);
     }
     
@@ -94,8 +94,8 @@ public abstract class l
     public final boolean h(t paramt)
     {
       AppMethodBeat.i(61332);
-      p.h(paramt, "functionDescriptor");
-      boolean bool = paramt.hAw().isEmpty();
+      p.k(paramt, "functionDescriptor");
+      boolean bool = paramt.iEJ().isEmpty();
       AppMethodBeat.o(61332);
       return bool;
     }
@@ -104,12 +104,12 @@ public abstract class l
   public static final class d
     extends l
   {
-    public static final d TRu;
+    public static final d abtT;
     
     static
     {
       AppMethodBeat.i(61335);
-      TRu = new d();
+      abtT = new d();
       AppMethodBeat.o(61335);
     }
     
@@ -121,8 +121,8 @@ public abstract class l
     public final boolean h(t paramt)
     {
       AppMethodBeat.i(61334);
-      p.h(paramt, "functionDescriptor");
-      if (paramt.hAw().size() == 1)
+      p.k(paramt, "functionDescriptor");
+      if (paramt.iEJ().size() == 1)
       {
         AppMethodBeat.o(61334);
         return true;
@@ -134,7 +134,7 @@ public abstract class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.n.l
  * JD-Core Version:    0.7.0.1
  */

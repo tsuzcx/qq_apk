@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
+import com.tencent.mm.plugin.scanner.l.f;
+import com.tencent.mm.plugin.scanner.l.g;
 import com.tencent.mm.plugin.scanner.util.q;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -22,10 +24,10 @@ public final class CategoryWithTitlePreference
   implements u.a
 {
   private Context context;
-  private ImageView gBZ;
   private int iconHeight;
   private String iconUrl;
   private int iconWidth;
+  private ImageView jmf;
   private f screen;
   private String title;
   private TextView titleTv;
@@ -47,7 +49,7 @@ public final class CategoryWithTitlePreference
     this.title = "";
     this.iconWidth = 34;
     this.iconHeight = 34;
-    setLayoutResource(2131495544);
+    setLayoutResource(l.g.IEe);
     this.context = paramContext;
     u.a(this);
     AppMethodBeat.o(51780);
@@ -57,7 +59,7 @@ public final class CategoryWithTitlePreference
   {
     AppMethodBeat.i(51784);
     Log.d("MicroMsg.scanner.CategoryWithTitlePreference", "get pic:" + paramString + ", iconurl:" + this.iconUrl);
-    if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.iconUrl)) && (paramBitmap != null) && (!paramBitmap.isRecycled()) && (this.gBZ != null)) {
+    if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.iconUrl)) && (paramBitmap != null) && (!paramBitmap.isRecycled()) && (this.jmf != null)) {
       MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
@@ -80,11 +82,11 @@ public final class CategoryWithTitlePreference
     AppMethodBeat.i(51783);
     super.onBindView(paramView);
     this.titleTv = ((TextView)paramView.findViewById(16908310));
-    this.gBZ = ((ImageView)paramView.findViewById(2131302468));
-    paramView = this.gBZ.getLayoutParams();
+    this.jmf = ((ImageView)paramView.findViewById(l.f.icon));
+    paramView = this.jmf.getLayoutParams();
     paramView.width = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, this.iconWidth / 2);
     paramView.height = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, this.iconHeight / 2);
-    this.gBZ.setLayoutParams(paramView);
+    this.jmf.setLayoutParams(paramView);
     if ((this.title != null) && (this.title.length() > 0) && (this.titleTv != null))
     {
       this.titleTv.setVisibility(0);
@@ -96,8 +98,8 @@ public final class CategoryWithTitlePreference
       paramView = u.a(new q(this.iconUrl));
       if ((paramView != null) && (!paramView.isRecycled()))
       {
-        this.gBZ.setImageBitmap(paramView);
-        this.gBZ.setVisibility(0);
+        this.jmf.setImageBitmap(paramView);
+        this.jmf.setVisibility(0);
       }
     }
     AppMethodBeat.o(51783);
@@ -153,7 +155,7 @@ public final class CategoryWithTitlePreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.CategoryWithTitlePreference
  * JD-Core Version:    0.7.0.1
  */

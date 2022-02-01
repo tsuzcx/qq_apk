@@ -10,7 +10,7 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/coroutines/jvm/internal/BaseContinuationImpl;", "Lkotlin/coroutines/Continuation;", "", "Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "Ljava/io/Serializable;", "completion", "(Lkotlin/coroutines/Continuation;)V", "callerFrame", "getCallerFrame", "()Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "getCompletion", "()Lkotlin/coroutines/Continuation;", "create", "", "value", "getStackTraceElement", "Ljava/lang/StackTraceElement;", "invokeSuspend", "result", "Lkotlin/Result;", "(Ljava/lang/Object;)Ljava/lang/Object;", "releaseIntercepted", "resumeWith", "(Ljava/lang/Object;)V", "toString", "", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/coroutines/jvm/internal/BaseContinuationImpl;", "Lkotlin/coroutines/Continuation;", "", "Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "Ljava/io/Serializable;", "completion", "(Lkotlin/coroutines/Continuation;)V", "callerFrame", "getCallerFrame", "()Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "getCompletion", "()Lkotlin/coroutines/Continuation;", "create", "", "value", "getStackTraceElement", "Ljava/lang/StackTraceElement;", "invokeSuspend", "result", "Lkotlin/Result;", "(Ljava/lang/Object;)Ljava/lang/Object;", "releaseIntercepted", "resumeWith", "(Ljava/lang/Object;)V", "toString", "", "kotlin-stdlib"})
 public abstract class a
   implements Serializable, e, d<Object>
 {
@@ -23,13 +23,13 @@ public abstract class a
   
   public d<x> create(Object paramObject, d<?> paramd)
   {
-    p.h(paramd, "completion");
+    p.k(paramd, "completion");
     throw ((Throwable)new UnsupportedOperationException("create(Any?;Continuation) has not been overridden"));
   }
   
   public d<x> create(d<?> paramd)
   {
-    p.h(paramd, "completion");
+    p.k(paramd, "completion");
     throw ((Throwable)new UnsupportedOperationException("create(Continuation) has not been overridden"));
   }
   
@@ -51,12 +51,12 @@ public abstract class a
   public StackTraceElement getStackTraceElement()
   {
     Object localObject3 = null;
-    p.h(this, "$this$getStackTraceElementImpl");
+    p.k(this, "$this$getStackTraceElementImpl");
     f localf = (f)getClass().getAnnotation(f.class);
     if (localf == null) {
       return null;
     }
-    int i = localf.hxL();
+    int i = localf.iBT();
     if (i > 1) {
       throw ((Throwable)new IllegalStateException(("Debug metadata version mismatch. Expected: 1, got " + i + ". Please update the Kotlin standard library.").toString()));
     }
@@ -65,14 +65,14 @@ public abstract class a
     if (i < 0)
     {
       i = -1;
-      localObject1 = h.SXZ;
-      p.h(this, "continuation");
-      localObject2 = h.SXY;
+      localObject1 = h.aaAL;
+      p.k(this, "continuation");
+      localObject2 = h.aaAK;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = h.b(this);
       }
-      if (localObject1 != h.SXX) {
+      if (localObject1 != h.aaAJ) {
         break label173;
       }
       localObject2 = localObject3;
@@ -85,10 +85,10 @@ public abstract class a
     for (Object localObject1 = localf.c();; localObject1 = (String)localObject2 + '/' + localf.c())
     {
       return new StackTraceElement((String)localObject1, localf.m(), localf.f(), i);
-      i = localf.hxM()[i];
+      i = localf.iBU()[i];
       break;
       label173:
-      Object localObject4 = ((h.a)localObject1).SYa;
+      Object localObject4 = ((h.a)localObject1).aaAM;
       localObject2 = localObject3;
       if (localObject4 == null) {
         break label124;
@@ -98,7 +98,7 @@ public abstract class a
       if (localObject4 == null) {
         break label124;
       }
-      Method localMethod = ((h.a)localObject1).SYb;
+      Method localMethod = ((h.a)localObject1).aaAN;
       localObject2 = localObject3;
       if (localMethod == null) {
         break label124;
@@ -108,7 +108,7 @@ public abstract class a
       if (localObject4 == null) {
         break label124;
       }
-      localObject1 = ((h.a)localObject1).SYc;
+      localObject1 = ((h.a)localObject1).aaAO;
       if (localObject1 != null) {}
       for (localObject1 = ((Method)localObject1).invoke(localObject4, new Object[0]);; localObject1 = null)
       {
@@ -131,15 +131,15 @@ public abstract class a
     d locald;
     for (a locala = (a)this;; locala = (a)locald)
     {
-      p.h((d)locala, "frame");
+      p.k((d)locala, "frame");
       locald = locala.completion;
       if (locald == null) {
-        p.hyc();
+        p.iCn();
       }
       try
       {
         paramObject = locala.invokeSuspend(paramObject);
-        if (paramObject == kotlin.d.a.a.SXO) {
+        if (paramObject == kotlin.d.a.a.aaAA) {
           return;
         }
         localCompanion = Result.Companion;
@@ -173,7 +173,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.d.b.a.a
  * JD-Core Version:    0.7.0.1
  */

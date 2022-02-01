@@ -1,167 +1,149 @@
 package com.tencent.mm.plugin.finder.report;
 
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
-import com.tencent.mm.g.b.a.cl;
-import com.tencent.mm.g.b.a.cm;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.c;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.o;
-import com.tencent.mm.plugin.finder.storage.z;
-import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.protocal.protobuf.axt;
-import com.tencent.mm.protocal.protobuf.bbn;
-import com.tencent.mm.protocal.protobuf.bcc;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMFragmentActivity;
-import com.tencent.mm.view.recyclerview.b;
+import com.tencent.mm.plugin.gallery.a.d;
+import com.tencent.mm.plugin.sight.base.b;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import kotlin.a.j;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/report/LbsCardFlowReporter;", "Lcom/tencent/mm/plugin/finder/report/FinderFeedFlowReporter;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "fillCardInfo", "T", "Lcom/tencent/mm/plugin/report/AbsReportStruct;", "struct", "lbsItem", "Lcom/tencent/mm/plugin/finder/storage/FinderLbsItem;", "(Lcom/tencent/mm/plugin/report/AbsReportStruct;Lcom/tencent/mm/plugin/finder/storage/FinderLbsItem;)Lcom/tencent/mm/plugin/report/AbsReportStruct;", "fillCommonInfo", "(Lcom/tencent/mm/plugin/report/AbsReportStruct;)Lcom/tencent/mm/plugin/report/AbsReportStruct;", "fillFeedInfo", "baseFinderFeed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "(Lcom/tencent/mm/plugin/report/AbsReportStruct;Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;)Lcom/tencent/mm/plugin/report/AbsReportStruct;", "reportClick", "", "Lcom/tencent/mm/autogen/mmdata/rpt/FinderLbsCardActionReportStruct;", "feedIndex", "", "reportExpose", "dataList", "", "Lcom/tencent/mm/view/recyclerview/ExposeTimeRecord;", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "refreshTime", "", "reportExposeInternal", "cardStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/FinderLbsCardExposeReportStruct;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/IDKey1371;", "", "()V", "CAPTURE_PHOTO", "", "CAPTURE_PHOTO_BACK", "CAPTURE_PHOTO_FRONT", "CAPTURE_PHOTO_WITH_BEAUTY", "ID", "SINGLE_VIDEO_BACK", "SINGLE_VIDEO_BEAUTY", "SINGLE_VIDEO_FRONT", "SINGLE_VIDEO_LENGTH_0_5", "SINGLE_VIDEO_LENGTH_10_15", "SINGLE_VIDEO_LENGTH_15_20", "SINGLE_VIDEO_LENGTH_20_30", "SINGLE_VIDEO_LENGTH_30_40", "SINGLE_VIDEO_LENGTH_40_50", "SINGLE_VIDEO_LENGTH_50_60", "SINGLE_VIDEO_LENGTH_5_10", "SINGLE_VIDEO_LENGTH_TOTAL", "SINGLE_VIDEO_NOT_ENOUGH", "SINGLE_VIDEO_SUCCESS", "SINGLE_VIDEO_TIME", "SUBVIDEO_AUTO_FINISH", "SUBVIDEO_CLICK_FINISH", "SUBVIDEO_NUM_0_3", "SUBVIDEO_NUM_10_15", "SUBVIDEO_NUM_15_20", "SUBVIDEO_NUM_3_6", "SUBVIDEO_NUM_6_10", "SUBVIDEO_PREPARE_DELETE", "SUBVIDEO_PRERARE_EXIT", "SUBVIDEO_SINGLE_LENGTH_0_5", "SUBVIDEO_SINGLE_LENGTH_10_15", "SUBVIDEO_SINGLE_LENGTH_15_20", "SUBVIDEO_SINGLE_LENGTH_20_30", "SUBVIDEO_SINGLE_LENGTH_30_40", "SUBVIDEO_SINGLE_LENGTH_40_50", "SUBVIDEO_SINGLE_LENGTH_50_60", "SUBVIDEO_SINGLE_LENGTH_5_10", "SUBVIDEO_SURE_DELETE", "SUBVIDEO_SURE_EXIT", "SUBVIDEO_TIME", "SUBVIDEO_TIME_NOT_ENOUGH", "SUBVIDEO_TIME_SUCCESS", "SUBVIDEO_TIME_TOTAL_DURATION", "SUBVIDEO_TOTAL_LENGTH_0_5", "SUBVIDEO_TOTAL_LENGTH_10_15", "SUBVIDEO_TOTAL_LENGTH_15_20", "SUBVIDEO_TOTAL_LENGTH_20_30", "SUBVIDEO_TOTAL_LENGTH_30_40", "SUBVIDEO_TOTAL_LENGTH_40_50", "SUBVIDEO_TOTAL_LENGTH_50_60", "SUBVIDEO_TOTAL_LENGTH_5_10", "SUBVIDEO_TOTAL_NUM", "capturePhoto", "", "capturePhotoBack", "capturePhotoCamera", "isBack", "", "capturePhotoFront", "capturePhotoWithBeauty", "captureSingleVideo", "captureSingleVideoBack", "captureSingleVideoBeauty", "captureSingleVideoCamera", "captureSingleVideoDuration", "durationMs", "captureSingleVideoFront", "captureSingleVideoNotEnough", "captureSingleVideoSuccess", "captureSingleVideoTotal", "report", "key", "value", "subVideoAutoFinish", "subVideoClickFinish", "subVideoDuration", "fileList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "subVideoNotEnough", "subVideoNum", "num", "subVideoPrepareDelete", "subVideoPrepareExit", "subVideoSingleTime", "subVideoSuccess", "subVideoSureDelete", "subVideoSureExit", "subVideoTime", "subVideoTotalTime", "plugin-finder_release"})
 public final class ac
-  extends e
 {
-  public ac(MMActivity paramMMActivity, bbn parambbn)
+  public static final ac zZo;
+  
+  static
   {
-    super((MMFragmentActivity)paramMMActivity, parambbn);
-    AppMethodBeat.i(250832);
-    AppMethodBeat.o(250832);
+    AppMethodBeat.i(283282);
+    zZo = new ac();
+    AppMethodBeat.o(283282);
   }
   
-  public static <T extends a> T a(T paramT, BaseFinderFeed paramBaseFinderFeed)
+  public static void Mx(long paramLong)
   {
-    AppMethodBeat.i(250831);
-    if ((paramT instanceof cm))
+    AppMethodBeat.i(283278);
+    V(218L, paramLong);
+    if (paramLong < 5000L)
     {
-      ((cm)paramT).mt(d.zs(paramBaseFinderFeed.lT()));
-      ((cm)paramT).mu(paramBaseFinderFeed.getSessionBuffer());
-      ((cm)paramT).mw(String.valueOf(paramBaseFinderFeed.feedObject.getLocation().dTj));
-      ((cm)paramT).mv(String.valueOf(paramBaseFinderFeed.feedObject.getLocation().latitude));
+      V(220L, 1L);
+      AppMethodBeat.o(283278);
+      return;
     }
-    for (;;)
+    if (paramLong < 10000L)
     {
-      AppMethodBeat.o(250831);
-      return paramT;
-      if ((paramT instanceof cl))
-      {
-        ((cl)paramT).mk(d.zs(paramBaseFinderFeed.lT()));
-        ((cl)paramT).ml(paramBaseFinderFeed.getSessionBuffer());
-      }
+      V(221L, 1L);
+      AppMethodBeat.o(283278);
+      return;
     }
+    if (paramLong < 15000L)
+    {
+      V(222L, 1L);
+      AppMethodBeat.o(283278);
+      return;
+    }
+    if (paramLong < 20000L)
+    {
+      V(223L, 1L);
+      AppMethodBeat.o(283278);
+      return;
+    }
+    if (paramLong < 30000L)
+    {
+      V(224L, 1L);
+      AppMethodBeat.o(283278);
+      return;
+    }
+    if (paramLong < 40000L)
+    {
+      V(225L, 1L);
+      AppMethodBeat.o(283278);
+      return;
+    }
+    if (paramLong < 50000L)
+    {
+      V(226L, 1L);
+      AppMethodBeat.o(283278);
+      return;
+    }
+    V(227L, 1L);
+    AppMethodBeat.o(283278);
   }
   
-  public static <T extends a> T a(T paramT, o paramo)
+  public static void V(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(250830);
-    if ((paramT instanceof cm))
-    {
-      ((cm)paramT).mq(paramo.dxF());
-      ((cm)paramT).gB(paramo.dxE().jjN);
-      ((cm)paramT).mr(paramo.cxc());
-      ((cm)paramT).ms(paramo.dxH());
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(250830);
-      return paramT;
-      if ((paramT instanceof cl))
-      {
-        ((cl)paramT).mi(paramo.dxF());
-        ((cl)paramT).gy(paramo.dxE().jjN);
-        ((cl)paramT).mj(paramo.cxc());
-      }
-    }
+    AppMethodBeat.i(283280);
+    com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1371L, paramLong1, paramLong2, false);
+    AppMethodBeat.o(283280);
   }
   
-  public final <T extends a> T b(T paramT)
+  public static void ao(ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(250829);
-    if ((paramT instanceof cm))
-    {
-      ((cm)paramT).mm(this.ttO.sessionId);
-      ((cm)paramT).mn(this.ttO.sGQ);
-      ((cm)paramT).mo(this.ttO.sGE);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(250829);
-      return paramT;
-      if ((paramT instanceof cl))
-      {
-        ((cl)paramT).mf(this.ttO.sessionId);
-        ((cl)paramT).mg(this.ttO.sGQ);
-        ((cl)paramT).mh(this.ttO.sGE);
-      }
-    }
+    AppMethodBeat.i(283279);
+    p.k(paramArrayList, "fileList");
+    com.tencent.e.h.ZvG.be((Runnable)new a(paramArrayList));
+    AppMethodBeat.o(283279);
   }
   
-  public final void e(List<b<c>> paramList, long paramLong)
+  public static void qD(boolean paramBoolean)
   {
-    AppMethodBeat.i(250828);
-    p.h(paramList, "dataList");
-    paramList = ((Iterable)paramList).iterator();
-    for (;;)
+    AppMethodBeat.i(283276);
+    if (paramBoolean)
     {
-      Object localObject1;
-      Object localObject2;
-      cm localcm;
-      int i;
-      if (paramList.hasNext())
+      V(202L, 1L);
+      AppMethodBeat.o(283276);
+      return;
+    }
+    V(201L, 1L);
+    AppMethodBeat.o(283276);
+  }
+  
+  public static void qE(boolean paramBoolean)
+  {
+    AppMethodBeat.i(283277);
+    if (paramBoolean)
+    {
+      V(214L, 1L);
+      AppMethodBeat.o(283277);
+      return;
+    }
+    V(213L, 1L);
+    AppMethodBeat.o(283277);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  static final class a
+    implements Runnable
+  {
+    a(ArrayList paramArrayList) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(282710);
+      long l1 = 0L;
+      Object localObject1 = ((Iterable)this.zZp).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject1 = (b)paramList.next();
-        localObject2 = ((c)((b)localObject1).RqA).uNJ.vEF;
-        if (localObject2 != null)
-        {
-          localcm = (cm)a((a)b((a)new cm()), (o)localObject2);
-          localcm.mp(d.zs(paramLong));
-          localcm.adi();
-          localcm.gA(((b)localObject1).Qgj);
-          localcm.gC(((b)localObject1).wVY);
-          localcm.gD(((b)localObject1).startTime);
-          localcm.gE(((b)localObject1).endTime);
-          localcm.gG(((b)localObject1).wVY);
-          localcm.gH(((b)localObject1).startTime);
-          localcm.gI(((b)localObject1).endTime);
-          localObject1 = ((Iterable)((o)localObject2).vDZ).iterator();
-          i = 0;
-        }
+        Object localObject2 = (String)((Iterator)localObject1).next();
+        Object localObject3 = d.CeY;
+        localObject2 = d.aFG((String)localObject2);
+        long l2 = ((b)localObject2).videoDuration;
+        localObject3 = ac.zZo;
+        ac.Mz(((b)localObject2).videoDuration);
+        l1 = l2 + l1;
       }
-      else
-      {
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = ((Iterator)localObject1).next();
-          int j = i + 1;
-          if (i < 0) {
-            j.hxH();
-          }
-          localObject2 = (BaseFinderFeed)localObject2;
-          if (i < 3)
-          {
-            localObject2 = (cm)a((a)new cm(localcm.abV()), (BaseFinderFeed)localObject2);
-            ((cm)localObject2).gF(i);
-            ((cm)localObject2).bfK();
-            i = j;
-            continue;
-            AppMethodBeat.o(250828);
-          }
-          else
-          {
-            i = j;
-          }
-        }
-      }
+      localObject1 = ac.zZo;
+      ac.MA(l1);
+      localObject1 = ac.zZo;
+      ac.MB(this.zZp.size());
+      AppMethodBeat.o(282710);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.ac
  * JD-Core Version:    0.7.0.1
  */

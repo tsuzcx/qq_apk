@@ -1,124 +1,177 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
-import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.luckymoney.a.a;
-import com.tencent.mm.protocal.protobuf.dlr;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import java.io.IOException;
 
 public final class ae
+  extends com.tencent.mm.cd.a
 {
-  o yPZ;
-  private h yVa;
+  public String EAG;
+  public String EAH;
+  public String EAI;
+  public String EAJ;
+  public String EAK;
+  public String EAL;
+  public boolean EAM;
+  public long EAr;
+  public String EAs;
+  public String Ezh;
+  public String userName;
   
-  public ae()
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(213307);
-    init();
-    AppMethodBeat.o(213307);
-  }
-  
-  private void init()
-  {
-    AppMethodBeat.i(213308);
-    this.yPZ = new o();
-    g.aAi();
-    String str = (String)g.aAh().azQ().get(ar.a.NTl, null);
-    if (Util.isNullOrNil(str))
+    AppMethodBeat.i(91258);
+    if (paramInt == 0)
     {
-      this.yPZ.yPy = 2000.0D;
-      this.yPZ.yPv = 100;
-      this.yPZ.yPz = 200.0D;
-      this.yPZ.yPx = 0.01D;
-      this.yPZ.yPw = 200.0D;
-    }
-    for (;;)
-    {
-      Log.i("MicroMsg.LuckyMoneyUnionConfigManager", "LuckyMoneyConfig init maxTotalAmount:" + this.yPZ.yPy + " maxTotalNum:" + this.yPZ.yPv + " perGroupMaxValue:" + this.yPZ.yPz + " perMinValue:" + this.yPZ.yPx + " perPersonMaxValue:" + this.yPZ.yPw);
-      AppMethodBeat.o(213308);
-      return;
-      try
-      {
-        this.yPZ.parseFrom(str.getBytes("ISO-8859-1"));
-        efd();
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.EAG != null) {
+        paramVarArgs.f(1, this.EAG);
       }
-      catch (Exception localException)
-      {
-        Log.w("MicroMsg.LuckyMoneyUnionConfigManager", "parseConfig exp, " + localException.getLocalizedMessage());
-        this.yPZ.yPy = 2000.0D;
-        this.yPZ.yPv = 100;
-        this.yPZ.yPz = 200.0D;
-        this.yPZ.yPx = 0.01D;
-        this.yPZ.yPw = 200.0D;
+      if (this.EAH != null) {
+        paramVarArgs.f(2, this.EAH);
+      }
+      paramVarArgs.bm(3, this.EAr);
+      if (this.EAs != null) {
+        paramVarArgs.f(4, this.EAs);
+      }
+      if (this.EAI != null) {
+        paramVarArgs.f(5, this.EAI);
+      }
+      if (this.Ezh != null) {
+        paramVarArgs.f(6, this.Ezh);
+      }
+      if (this.EAJ != null) {
+        paramVarArgs.f(7, this.EAJ);
+      }
+      if (this.userName != null) {
+        paramVarArgs.f(8, this.userName);
+      }
+      if (this.EAK != null) {
+        paramVarArgs.f(9, this.EAK);
+      }
+      if (this.EAL != null) {
+        paramVarArgs.f(10, this.EAL);
+      }
+      paramVarArgs.co(11, this.EAM);
+      AppMethodBeat.o(91258);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.EAG == null) {
+        break label794;
       }
     }
-  }
-  
-  final void efd()
-  {
-    AppMethodBeat.i(213309);
-    if (this.yPZ != null)
+    label794:
+    for (paramInt = g.a.a.b.b.a.g(1, this.EAG) + 0;; paramInt = 0)
     {
-      this.yVa = h.aDt(this.yPZ.yUW);
-      if ((this.yVa != null) && (this.yVa.yUC != null))
+      int i = paramInt;
+      if (this.EAH != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.EAH);
+      }
+      i += g.a.a.b.b.a.p(3, this.EAr);
+      paramInt = i;
+      if (this.EAs != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.EAs);
+      }
+      i = paramInt;
+      if (this.EAI != null) {
+        i = paramInt + g.a.a.b.b.a.g(5, this.EAI);
+      }
+      paramInt = i;
+      if (this.Ezh != null) {
+        paramInt = i + g.a.a.b.b.a.g(6, this.Ezh);
+      }
+      i = paramInt;
+      if (this.EAJ != null) {
+        i = paramInt + g.a.a.b.b.a.g(7, this.EAJ);
+      }
+      paramInt = i;
+      if (this.userName != null) {
+        paramInt = i + g.a.a.b.b.a.g(8, this.userName);
+      }
+      i = paramInt;
+      if (this.EAK != null) {
+        i = paramInt + g.a.a.b.b.a.g(9, this.EAK);
+      }
+      paramInt = i;
+      if (this.EAL != null) {
+        paramInt = i + g.a.a.b.b.a.g(10, this.EAL);
+      }
+      i = g.a.a.b.b.a.gL(11);
+      AppMethodBeat.o(91258);
+      return paramInt + (i + 1);
+      if (paramInt == 2)
       {
-        ((a)g.af(a.class)).a(this.yVa.yUC);
-        g.aAh().azQ().set(ar.a.Ofn, Integer.valueOf(1));
-        if (Util.isNullOrNil(this.yPZ.yUX)) {
-          break label179;
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
         }
-        Log.d("MicroMsg.LuckyMoneyUnionConfigManager", "parse cover info");
-        try
+        AppMethodBeat.o(91258);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        ae localae = (ae)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
-          dlr localdlr = (dlr)new dlr().parseFrom(Base64.decode(this.yPZ.yUX, 0));
-          this.yVa.yUC.iwy = localdlr.iwy;
-          AppMethodBeat.o(213309);
-          return;
+        default: 
+          AppMethodBeat.o(91258);
+          return -1;
+        case 1: 
+          localae.EAG = locala.abFh.readString();
+          AppMethodBeat.o(91258);
+          return 0;
+        case 2: 
+          localae.EAH = locala.abFh.readString();
+          AppMethodBeat.o(91258);
+          return 0;
+        case 3: 
+          localae.EAr = locala.abFh.AN();
+          AppMethodBeat.o(91258);
+          return 0;
+        case 4: 
+          localae.EAs = locala.abFh.readString();
+          AppMethodBeat.o(91258);
+          return 0;
+        case 5: 
+          localae.EAI = locala.abFh.readString();
+          AppMethodBeat.o(91258);
+          return 0;
+        case 6: 
+          localae.Ezh = locala.abFh.readString();
+          AppMethodBeat.o(91258);
+          return 0;
+        case 7: 
+          localae.EAJ = locala.abFh.readString();
+          AppMethodBeat.o(91258);
+          return 0;
+        case 8: 
+          localae.userName = locala.abFh.readString();
+          AppMethodBeat.o(91258);
+          return 0;
+        case 9: 
+          localae.EAK = locala.abFh.readString();
+          AppMethodBeat.o(91258);
+          return 0;
+        case 10: 
+          localae.EAL = locala.abFh.readString();
+          AppMethodBeat.o(91258);
+          return 0;
         }
-        catch (IOException localIOException)
-        {
-          Log.printErrStackTrace("MicroMsg.LuckyMoneyUnionConfigManager", localIOException, "", new Object[0]);
-          AppMethodBeat.o(213309);
-          return;
-        }
+        localae.EAM = locala.abFh.AB();
+        AppMethodBeat.o(91258);
+        return 0;
       }
-      g.aAh().azQ().set(ar.a.Ofn, Integer.valueOf(0));
+      AppMethodBeat.o(91258);
+      return -1;
     }
-    label179:
-    AppMethodBeat.o(213309);
-  }
-  
-  public final o efe()
-  {
-    AppMethodBeat.i(213310);
-    if (this.yPZ == null) {
-      init();
-    }
-    o localo = this.yPZ;
-    AppMethodBeat.o(213310);
-    return localo;
-  }
-  
-  public final h eff()
-  {
-    AppMethodBeat.i(213311);
-    if (this.yVa == null) {
-      init();
-    }
-    h localh = this.yVa;
-    AppMethodBeat.o(213311);
-    return localh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.ae
  * JD-Core Version:    0.7.0.1
  */

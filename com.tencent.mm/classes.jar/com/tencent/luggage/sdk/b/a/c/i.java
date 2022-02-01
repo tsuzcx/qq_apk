@@ -3,9 +3,10 @@ package com.tencent.luggage.sdk.b.a.c;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.appcache.aq;
+import com.tencent.mm.plugin.appbrand.appcache.ar;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.mm.plugin.appbrand.g;
 import com.tencent.mm.plugin.appbrand.m.t;
 
 public class i<SERVICE extends d>
@@ -16,7 +17,7 @@ public class i<SERVICE extends d>
     super(paramSERVICE, paramt);
   }
   
-  protected final String MK()
+  protected final String PC()
   {
     return "WASubContext.js";
   }
@@ -33,15 +34,15 @@ public class i<SERVICE extends d>
       }
     }
     label62:
-    for (paramSERVICE = com.tencent.mm.plugin.appbrand.ac.d.afA("wxa_library/native/WASubContext.js");; paramSERVICE = paramSERVICE.bqZ().UM("WASubContext.js"))
+    for (paramSERVICE = com.tencent.mm.plugin.appbrand.ac.d.anc("wxa_library/native/WASubContext.js");; paramSERVICE = paramSERVICE.bBP().acw("WASubContext.js"))
     {
       if (!TextUtils.isEmpty(paramSERVICE)) {
         break label77;
       }
-      paramSERVICE = new aq("WASubContext.js");
+      paramSERVICE = new ar("WASubContext.js");
       AppMethodBeat.o(146851);
       throw paramSERVICE;
-      bool = paramSERVICE.getRuntime().OU().ldK;
+      bool = paramSERVICE.getRuntime().Sq().nXY;
       break;
     }
     label77:
@@ -51,7 +52,7 @@ public class i<SERVICE extends d>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.c.i
  * JD-Core Version:    0.7.0.1
  */

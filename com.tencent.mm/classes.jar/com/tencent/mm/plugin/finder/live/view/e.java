@@ -1,886 +1,405 @@
 package com.tencent.mm.plugin.finder.live.view;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
+import android.os.Message;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.b.u.a;
-import com.tencent.mm.live.c.as;
-import com.tencent.mm.live.c.b.b;
-import com.tencent.mm.live.c.b.c;
-import com.tencent.mm.live.core.core.c;
-import com.tencent.mm.live.core.core.c.a.a;
-import com.tencent.mm.model.cl;
-import com.tencent.mm.plugin.finder.live.plugin.ac;
-import com.tencent.mm.plugin.finder.live.plugin.ae;
-import com.tencent.mm.plugin.finder.live.plugin.aj;
-import com.tencent.mm.plugin.finder.live.plugin.al;
-import com.tencent.mm.plugin.finder.live.plugin.ap;
-import com.tencent.mm.plugin.finder.live.plugin.ar;
-import com.tencent.mm.plugin.finder.live.plugin.at;
-import com.tencent.mm.plugin.finder.live.plugin.ay;
-import com.tencent.mm.plugin.finder.live.plugin.bd;
-import com.tencent.mm.plugin.finder.live.plugin.bf;
-import com.tencent.mm.plugin.finder.live.plugin.bh;
-import com.tencent.mm.plugin.finder.live.plugin.bj;
-import com.tencent.mm.plugin.finder.live.plugin.bk;
-import com.tencent.mm.plugin.finder.live.plugin.h;
-import com.tencent.mm.plugin.finder.live.plugin.j;
-import com.tencent.mm.plugin.finder.live.plugin.k.a;
-import com.tencent.mm.plugin.finder.live.plugin.n;
-import com.tencent.mm.plugin.finder.live.plugin.n.b;
-import com.tencent.mm.plugin.finder.live.plugin.n.c;
-import com.tencent.mm.plugin.finder.live.plugin.n.d;
-import com.tencent.mm.plugin.finder.live.plugin.r;
-import com.tencent.mm.plugin.finder.live.plugin.t;
-import com.tencent.mm.plugin.finder.live.plugin.v;
-import com.tencent.mm.plugin.finder.live.plugin.y;
-import com.tencent.mm.plugin.finder.live.widget.f;
-import com.tencent.mm.plugin.finder.live.widget.f.c;
-import com.tencent.mm.plugin.finder.report.live.s.a;
-import com.tencent.mm.plugin.finder.report.live.s.ad;
-import com.tencent.mm.plugin.finder.report.live.s.ap;
-import com.tencent.mm.plugin.finder.report.live.s.o;
-import com.tencent.mm.plugin.finder.utils.m;
-import com.tencent.mm.protocal.protobuf.ape;
-import com.tencent.mm.protocal.protobuf.aqd;
-import com.tencent.mm.protocal.protobuf.avr;
-import com.tencent.mm.protocal.protobuf.awe;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.c;
+import com.tencent.mm.plugin.finder.report.n;
+import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
+import com.tencent.mm.protocal.protobuf.FinderAuthInfo;
+import com.tencent.mm.protocal.protobuf.FinderContact;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
+import com.tencent.mm.protocal.protobuf.bac;
+import com.tencent.mm.protocal.protobuf.bbf;
+import com.tencent.mm.protocal.protobuf.dar;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandler.Callback;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
+import kotlin.f;
+import kotlin.g;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
 import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveBaseAnchorPluginLayout;", "Lcom/tencent/mm/plugin/finder/live/view/FinderBaseLivePluginLayout;", "context", "Lcom/tencent/mm/ui/MMActivity;", "attrs", "Landroid/util/AttributeSet;", "(Lcom/tencent/mm/ui/MMActivity;Landroid/util/AttributeSet;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "bottomOptionPlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorBottomOptionPlugin;", "getBottomOptionPlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorBottomOptionPlugin;", "setBottomOptionPlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorBottomOptionPlugin;)V", "cameraOptPanelPlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorCameraOptPanelPlugin;", "getCameraOptPanelPlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorCameraOptPanelPlugin;", "setCameraOptPanelPlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorCameraOptPanelPlugin;)V", "cameraOptPlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorCameraOptPlugin;", "getCameraOptPlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorCameraOptPlugin;", "setCameraOptPlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorCameraOptPlugin;)V", "closePlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorClosePlugin;", "getClosePlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorClosePlugin;", "setClosePlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorClosePlugin;)V", "commentPlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveCommentPlugin;", "getCommentPlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveCommentPlugin;", "setCommentPlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveCommentPlugin;)V", "commonInfoPlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveCommonInfoPlugin;", "getCommonInfoPlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveCommonInfoPlugin;", "setCommonInfoPlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveCommonInfoPlugin;)V", "confettiPlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveLikeConfettiPlugin;", "getConfettiPlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveLikeConfettiPlugin;", "setConfettiPlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveLikeConfettiPlugin;)V", "exceptionPlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorExceptionPlugin;", "getExceptionPlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorExceptionPlugin;", "setExceptionPlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorExceptionPlugin;)V", "finderLiveAfterPlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorAfterPlugin;", "getFinderLiveAfterPlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorAfterPlugin;", "setFinderLiveAfterPlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorAfterPlugin;)V", "finderLiveBeforePlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveBeforePlugin;", "getFinderLiveBeforePlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveBeforePlugin;", "setFinderLiveBeforePlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveBeforePlugin;)V", "giftPlayPlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftPlayPlugin;", "getGiftPlayPlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftPlayPlugin;", "setGiftPlayPlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftPlayPlugin;)V", "giftQueuePlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin;", "getGiftQueuePlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin;", "setGiftQueuePlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin;)V", "linkApplyListPlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorLinkListPlugin;", "getLinkApplyListPlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorLinkListPlugin;", "setLinkApplyListPlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorLinkListPlugin;)V", "linkStatePlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorLinkMicStatePlugin;", "getLinkStatePlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorLinkMicStatePlugin;", "setLinkStatePlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorLinkMicStatePlugin;)V", "liveCore", "Lcom/tencent/mm/live/core/core/trtc/AbsLiveTRTCCore;", "getLiveCore", "()Lcom/tencent/mm/live/core/core/trtc/AbsLiveTRTCCore;", "setLiveCore", "(Lcom/tencent/mm/live/core/core/trtc/AbsLiveTRTCCore;)V", "liveMessageCallback", "Lkotlin/Function0;", "", "getLiveMessageCallback", "()Lkotlin/jvm/functions/Function0;", "setLiveMessageCallback", "(Lkotlin/jvm/functions/Function0;)V", "lotteryBubblePlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveLotteryBubblePlugin;", "getLotteryBubblePlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveLotteryBubblePlugin;", "setLotteryBubblePlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveLotteryBubblePlugin;)V", "lotteryCardPlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorLotteryCardPlugin;", "getLotteryCardPlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorLotteryCardPlugin;", "setLotteryCardPlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorLotteryCardPlugin;)V", "memberListPlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveMemberListPlugin;", "getMemberListPlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveMemberListPlugin;", "setMemberListPlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveMemberListPlugin;)V", "moreActionPlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveMoreActionPlugin;", "getMoreActionPlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveMoreActionPlugin;", "setMoreActionPlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveMoreActionPlugin;)V", "previewPlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorPreviewPlugin;", "getPreviewPlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorPreviewPlugin;", "setPreviewPlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorPreviewPlugin;)V", "profilePlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveMemberProfilePlugin;", "getProfilePlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveMemberProfilePlugin;", "setProfilePlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveMemberProfilePlugin;)V", "readyPlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveReadyPlugin;", "getReadyPlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveReadyPlugin;", "setReadyPlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveReadyPlugin;)V", "shadowPlugin", "Lcom/tencent/mm/live/plugin/LiveShadowPlugin;", "getShadowPlugin", "()Lcom/tencent/mm/live/plugin/LiveShadowPlugin;", "setShadowPlugin", "(Lcom/tencent/mm/live/plugin/LiveShadowPlugin;)V", "shoppingBubblePlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveShoppingBubblePlugin;", "getShoppingBubblePlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveShoppingBubblePlugin;", "setShoppingBubblePlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveShoppingBubblePlugin;)V", "shoppingListPlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveShoppingListPlugin;", "getShoppingListPlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveShoppingListPlugin;", "setShoppingListPlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveShoppingListPlugin;)V", "timerThread", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "getTimerThread", "()Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "setTimerThread", "(Lcom/tencent/mm/sdk/platformtools/MTimerHandler;)V", "titleInfoPlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveTitlePlugin;", "getTitleInfoPlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveTitlePlugin;", "setTitleInfoPlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveTitlePlugin;)V", "topCommentPlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveTopCommentPlugin;", "getTopCommentPlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveTopCommentPlugin;", "setTopCommentPlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveTopCommentPlugin;)V", "videoLinkBottomBarPlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveVideoLinkBottomBarPlugin;", "getVideoLinkBottomBarPlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveVideoLinkBottomBarPlugin;", "setVideoLinkBottomBarPlugin", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveVideoLinkBottomBarPlugin;)V", "createLive", "genLiveCore", "handleLiveErr", "errType", "", "errCode", "errMsg", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderCreateLiveResp;", "startTimer", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "stopLive", "stopTimer", "plugin-finder_release"})
-public abstract class e
-  extends FinderBaseLivePluginLayout
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveMultiTaskManager;", "", "activity", "Landroid/app/Activity;", "byteArray", "", "(Landroid/app/Activity;[B)V", "manager", "(Landroid/app/Activity;Lcom/tencent/mm/plugin/finder/live/view/FinderLiveMultiTaskManager;)V", "mainHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getMainHandler", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "mainHandler$delegate", "Lkotlin/Lazy;", "multiTaskDataMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/protocal/protobuf/FinderLiveMultiTaskData;", "Lkotlin/collections/HashMap;", "multiTaskHelper", "Lcom/tencent/mm/plugin/finder/live/view/FinderLiveMultiTaskHelper;", "addToHistory", "", "checkAddToHistory", "closeNotify", "generateMultiTaskMap", "originData", "release", "updateCurrentMultiTaskInfo", "Companion", "plugin-finder_release"})
+public final class e
 {
-  private String TAG = "FinderLiveBaseAnchorPluginLayout";
-  private HashMap _$_findViewCache;
-  private v commentPlugin;
-  private y commonInfoPlugin;
-  private aj confettiPlugin;
-  private ac giftPlayPlugin;
-  private ae giftQueuePlugin;
-  private com.tencent.mm.live.core.core.trtc.a hSS = dip();
-  private kotlin.g.a.a<x> liveMessageCallback;
-  private al lotteryBubblePlugin;
-  private ap memberListPlugin;
-  private at moreActionPlugin;
-  private ar profilePlugin;
-  private bd shoppingBubblePlugin;
-  private bf shoppingListPlugin;
-  MTimerHandler timerThread;
-  private bh titleInfoPlugin;
-  private bj topCommentPlugin;
-  private n uxT;
-  private t uxU;
-  private r uxV;
-  private com.tencent.mm.plugin.finder.live.plugin.e uxW;
-  private as uxX;
-  private ay uxY;
-  private com.tencent.mm.plugin.finder.live.plugin.l uxZ;
-  private com.tencent.mm.plugin.finder.live.plugin.k uya;
-  private j uyb;
-  private com.tencent.mm.plugin.finder.live.plugin.q uyc;
-  private com.tencent.mm.plugin.finder.live.plugin.p uyd;
-  private com.tencent.mm.plugin.finder.live.plugin.o uye;
-  private h uyf;
-  private bk videoLinkBottomBarPlugin;
+  private static final f yVs;
+  public static final a yVt;
+  public d yVp;
+  public HashMap<Long, bbf> yVq;
+  private final f yVr;
   
-  public e(final MMActivity paramMMActivity)
+  static
   {
-    super((Context)paramMMActivity, null);
-    this.liveMessageCallback = ((kotlin.g.a.a)new b(this, paramMMActivity));
-    this.timerThread = new MTimerHandler("LiveCommonInfoPlugin::Timer", (MTimerHandler.CallBack)new e(this), true);
+    AppMethodBeat.i(290062);
+    yVt = new a((byte)0);
+    yVs = g.ar((kotlin.g.a.a)b.yVu);
+    AppMethodBeat.o(290062);
   }
   
-  public void _$_clearFindViewByIdCache()
+  public e(Activity paramActivity, e parame)
   {
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-  }
-  
-  public View _$_findCachedViewById(int paramInt)
-  {
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
+    AppMethodBeat.i(290061);
+    this.yVq = new HashMap();
+    this.yVr = g.ar((kotlin.g.a.a)new d(this));
+    this.yVq = parame.yVq;
+    this.yVp = new d((Context)paramActivity, (com.tencent.mm.plugin.multitask.a.a)new com.tencent.mm.plugin.multitask.a.b(paramActivity));
+    paramActivity = com.tencent.mm.plugin.finder.live.model.context.a.ykr;
+    paramActivity = com.tencent.mm.plugin.finder.live.model.context.a.dAc();
+    if (paramActivity != null)
     {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    return localView1;
-  }
-  
-  protected final void aJm()
-  {
-    this.hSS.b((c)new d());
-  }
-  
-  public final void b(int paramInt1, int paramInt2, String paramString, aqd paramaqd)
-  {
-    Object localObject = null;
-    kotlin.g.b.p.h(paramString, "errMsg");
-    Log.i(getTAG(), "handleLiveErr errCode:" + paramInt2 + " errMsg:" + paramString);
-    paramString = com.tencent.mm.plugin.finder.report.live.k.vkd;
-    com.tencent.mm.plugin.finder.report.live.k.q(s.a.vmx.hlf, String.valueOf(s.ap.vrb.type));
-    paramString = com.tencent.mm.plugin.finder.report.live.k.vkd;
-    com.tencent.mm.plugin.finder.report.live.k.setErrorCode(paramInt2);
-    paramString = com.tencent.mm.plugin.finder.report.live.k.vkd;
-    com.tencent.mm.plugin.finder.report.live.k.b(s.o.vov);
-    paramString = com.tencent.mm.plugin.finder.spam.a.vwk;
-    if (paramaqd != null)
-    {
-      paramString = paramaqd.LCg;
-      if (!com.tencent.mm.plugin.finder.spam.a.a(paramInt1, paramInt2, paramString)) {
-        break label121;
-      }
-      b.b.a(this, b.c.hLy);
-    }
-    label121:
-    do
-    {
-      do
+      paramActivity = (com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)paramActivity.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class);
+      if (paramActivity != null)
       {
+        paramActivity = (bbf)this.yVq.get(Long.valueOf(((c)paramActivity.business(c.class)).liveInfo.liveId));
+        if (paramActivity != null) {
+          paramActivity = paramActivity.key;
+        }
+      }
+    }
+    for (;;)
+    {
+      d locald = this.yVp;
+      parame = paramActivity;
+      if (paramActivity == null)
+      {
+        paramActivity = n.zWF;
+        parame = n.dPD();
+      }
+      locald.I(21, parame);
+      AppMethodBeat.o(290061);
+      return;
+      paramActivity = null;
+      continue;
+      paramActivity = null;
+    }
+  }
+  
+  public e(Activity paramActivity, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(290060);
+    this.yVq = new HashMap();
+    this.yVr = g.ar((kotlin.g.a.a)new d(this));
+    Object localObject = new bbf();
+    if (paramArrayOfByte != null) {}
+    try
+    {
+      ((bbf)localObject).parseFrom(paramArrayOfByte);
+      a((bbf)localObject);
+      paramArrayOfByte = ((bbf)localObject).key;
+      this.yVp = new d((Context)paramActivity, (com.tencent.mm.plugin.multitask.a.a)new com.tencent.mm.plugin.multitask.a.b(paramActivity));
+      localObject = this.yVp;
+      if (paramArrayOfByte == null)
+      {
+        paramActivity = n.zWF;
+        paramActivity = n.dPD();
+        ((d)localObject).I(21, paramActivity);
+        AppMethodBeat.o(290060);
         return;
-        paramString = null;
-        break;
-        paramString = com.tencent.mm.plugin.finder.spam.a.vwk;
-        paramString = localObject;
-        if (paramaqd != null) {
-          paramString = paramaqd.LCg;
-        }
-        if (!com.tencent.mm.plugin.finder.spam.a.b(paramInt1, paramInt2, paramString)) {
-          break label203;
-        }
-      } while (paramaqd == null);
-      paramString = paramaqd.LCg;
-    } while (paramString == null);
-    paramaqd = new Bundle();
-    paramaqd.putByteArray("PARAM_FINDER_LIVE_ERROR_PAGE", paramString.toByteArray());
-    paramaqd.putInt("PARAM_FINDER_LIVE_ERROR_CODE", paramInt2);
-    statusChange(b.c.hNz, paramaqd);
-    return;
-    switch (paramInt2)
+      }
+    }
+    catch (Throwable paramArrayOfByte)
     {
-    default: 
-      paramString = getContext();
-      paramaqd = getContext();
-      kotlin.g.b.p.g(paramaqd, "context");
-      com.tencent.mm.ui.base.u.makeText(paramString, (CharSequence)paramaqd.getResources().getString(2131759538), 0).show();
-      b.b.a(this, b.c.hLy);
-      return;
-    case -100038: 
-      b.b.a(this, b.c.hLV);
-      return;
-    case -200012: 
-    case -200011: 
-      paramString = getContext();
-      paramaqd = getContext();
-      kotlin.g.b.p.g(paramaqd, "context");
-      com.tencent.mm.ui.base.u.makeText(paramString, (CharSequence)paramaqd.getResources().getString(2131759916), 0).show();
-      b.b.a(this, b.c.hLV);
-      return;
-    case -200018: 
-    case -200017: 
-    case -200013: 
-      b.b.a(this, b.c.hNg);
-      return;
-    case -200009: 
-      label203:
-      paramString = getContext();
-      paramaqd = getContext();
-      kotlin.g.b.p.g(paramaqd, "context");
-      com.tencent.mm.ui.base.u.makeText(paramString, (CharSequence)paramaqd.getResources().getString(2131759539), 0).show();
-      b.b.a(this, b.c.hLy);
-      return;
-    }
-    paramString = getContext();
-    paramaqd = getContext();
-    kotlin.g.b.p.g(paramaqd, "context");
-    com.tencent.mm.ui.base.u.makeText(paramString, (CharSequence)paramaqd.getResources().getString(2131759871), 0).show();
-    b.b.a(this, b.c.hLy);
-  }
-  
-  public abstract com.tencent.mm.live.core.core.trtc.a dip();
-  
-  public final void dis()
-  {
-    com.tencent.mm.plugin.finder.live.model.s locals = getFinderLiveAssistant();
-    if (locals != null) {
-      locals.a((kotlin.g.a.u)new a(this));
-    }
-  }
-  
-  protected final h getBottomOptionPlugin()
-  {
-    return this.uyf;
-  }
-  
-  protected final j getCameraOptPanelPlugin()
-  {
-    return this.uyb;
-  }
-  
-  protected final com.tencent.mm.plugin.finder.live.plugin.k getCameraOptPlugin()
-  {
-    return this.uya;
-  }
-  
-  protected final com.tencent.mm.plugin.finder.live.plugin.l getClosePlugin()
-  {
-    return this.uxZ;
-  }
-  
-  protected final v getCommentPlugin()
-  {
-    return this.commentPlugin;
-  }
-  
-  protected final y getCommonInfoPlugin()
-  {
-    return this.commonInfoPlugin;
-  }
-  
-  protected final aj getConfettiPlugin()
-  {
-    return this.confettiPlugin;
-  }
-  
-  public n getExceptionPlugin()
-  {
-    return this.uxT;
-  }
-  
-  protected final com.tencent.mm.plugin.finder.live.plugin.e getFinderLiveAfterPlugin()
-  {
-    return this.uxW;
-  }
-  
-  public t getFinderLiveBeforePlugin()
-  {
-    return this.uxU;
-  }
-  
-  protected final ac getGiftPlayPlugin()
-  {
-    return this.giftPlayPlugin;
-  }
-  
-  protected final ae getGiftQueuePlugin()
-  {
-    return this.giftQueuePlugin;
-  }
-  
-  protected final com.tencent.mm.plugin.finder.live.plugin.o getLinkApplyListPlugin()
-  {
-    return this.uye;
-  }
-  
-  protected final com.tencent.mm.plugin.finder.live.plugin.p getLinkStatePlugin()
-  {
-    return this.uyd;
-  }
-  
-  protected final com.tencent.mm.live.core.core.trtc.a getLiveCore()
-  {
-    return this.hSS;
-  }
-  
-  protected final kotlin.g.a.a<x> getLiveMessageCallback()
-  {
-    return this.liveMessageCallback;
-  }
-  
-  protected final al getLotteryBubblePlugin()
-  {
-    return this.lotteryBubblePlugin;
-  }
-  
-  protected final com.tencent.mm.plugin.finder.live.plugin.q getLotteryCardPlugin()
-  {
-    return this.uyc;
-  }
-  
-  protected final ap getMemberListPlugin()
-  {
-    return this.memberListPlugin;
-  }
-  
-  protected final at getMoreActionPlugin()
-  {
-    return this.moreActionPlugin;
-  }
-  
-  protected final r getPreviewPlugin()
-  {
-    return this.uxV;
-  }
-  
-  protected final ar getProfilePlugin()
-  {
-    return this.profilePlugin;
-  }
-  
-  protected final ay getReadyPlugin()
-  {
-    return this.uxY;
-  }
-  
-  protected final as getShadowPlugin()
-  {
-    return this.uxX;
-  }
-  
-  protected final bd getShoppingBubblePlugin()
-  {
-    return this.shoppingBubblePlugin;
-  }
-  
-  protected final bf getShoppingListPlugin()
-  {
-    return this.shoppingListPlugin;
-  }
-  
-  public String getTAG()
-  {
-    return this.TAG;
-  }
-  
-  protected final MTimerHandler getTimerThread()
-  {
-    return this.timerThread;
-  }
-  
-  protected final bh getTitleInfoPlugin()
-  {
-    return this.titleInfoPlugin;
-  }
-  
-  protected final bj getTopCommentPlugin()
-  {
-    return this.topCommentPlugin;
-  }
-  
-  protected final bk getVideoLinkBottomBarPlugin()
-  {
-    return this.videoLinkBottomBarPlugin;
-  }
-  
-  protected final void setBottomOptionPlugin(h paramh)
-  {
-    this.uyf = paramh;
-  }
-  
-  protected final void setCameraOptPanelPlugin(j paramj)
-  {
-    this.uyb = paramj;
-  }
-  
-  protected final void setCameraOptPlugin(com.tencent.mm.plugin.finder.live.plugin.k paramk)
-  {
-    this.uya = paramk;
-  }
-  
-  protected final void setClosePlugin(com.tencent.mm.plugin.finder.live.plugin.l paraml)
-  {
-    this.uxZ = paraml;
-  }
-  
-  protected final void setCommentPlugin(v paramv)
-  {
-    this.commentPlugin = paramv;
-  }
-  
-  protected final void setCommonInfoPlugin(y paramy)
-  {
-    this.commonInfoPlugin = paramy;
-  }
-  
-  protected final void setConfettiPlugin(aj paramaj)
-  {
-    this.confettiPlugin = paramaj;
-  }
-  
-  public void setExceptionPlugin(n paramn)
-  {
-    this.uxT = paramn;
-  }
-  
-  protected final void setFinderLiveAfterPlugin(com.tencent.mm.plugin.finder.live.plugin.e parame)
-  {
-    this.uxW = parame;
-  }
-  
-  public void setFinderLiveBeforePlugin(t paramt)
-  {
-    this.uxU = paramt;
-  }
-  
-  protected final void setGiftPlayPlugin(ac paramac)
-  {
-    this.giftPlayPlugin = paramac;
-  }
-  
-  protected final void setGiftQueuePlugin(ae paramae)
-  {
-    this.giftQueuePlugin = paramae;
-  }
-  
-  protected final void setLinkApplyListPlugin(com.tencent.mm.plugin.finder.live.plugin.o paramo)
-  {
-    this.uye = paramo;
-  }
-  
-  protected final void setLinkStatePlugin(com.tencent.mm.plugin.finder.live.plugin.p paramp)
-  {
-    this.uyd = paramp;
-  }
-  
-  protected final void setLiveCore(com.tencent.mm.live.core.core.trtc.a parama)
-  {
-    kotlin.g.b.p.h(parama, "<set-?>");
-    this.hSS = parama;
-  }
-  
-  protected final void setLiveMessageCallback(kotlin.g.a.a<x> parama)
-  {
-    kotlin.g.b.p.h(parama, "<set-?>");
-    this.liveMessageCallback = parama;
-  }
-  
-  protected final void setLotteryBubblePlugin(al paramal)
-  {
-    this.lotteryBubblePlugin = paramal;
-  }
-  
-  protected final void setLotteryCardPlugin(com.tencent.mm.plugin.finder.live.plugin.q paramq)
-  {
-    this.uyc = paramq;
-  }
-  
-  protected final void setMemberListPlugin(ap paramap)
-  {
-    this.memberListPlugin = paramap;
-  }
-  
-  protected final void setMoreActionPlugin(at paramat)
-  {
-    this.moreActionPlugin = paramat;
-  }
-  
-  protected final void setPreviewPlugin(r paramr)
-  {
-    this.uxV = paramr;
-  }
-  
-  protected final void setProfilePlugin(ar paramar)
-  {
-    this.profilePlugin = paramar;
-  }
-  
-  protected final void setReadyPlugin(ay paramay)
-  {
-    this.uxY = paramay;
-  }
-  
-  protected final void setShadowPlugin(as paramas)
-  {
-    this.uxX = paramas;
-  }
-  
-  protected final void setShoppingBubblePlugin(bd parambd)
-  {
-    this.shoppingBubblePlugin = parambd;
-  }
-  
-  protected final void setShoppingListPlugin(bf parambf)
-  {
-    this.shoppingListPlugin = parambf;
-  }
-  
-  public void setTAG(String paramString)
-  {
-    kotlin.g.b.p.h(paramString, "<set-?>");
-    this.TAG = paramString;
-  }
-  
-  protected final void setTimerThread(MTimerHandler paramMTimerHandler)
-  {
-    kotlin.g.b.p.h(paramMTimerHandler, "<set-?>");
-    this.timerThread = paramMTimerHandler;
-  }
-  
-  protected final void setTitleInfoPlugin(bh parambh)
-  {
-    this.titleInfoPlugin = parambh;
-  }
-  
-  protected final void setTopCommentPlugin(bj parambj)
-  {
-    this.topCommentPlugin = parambj;
-  }
-  
-  protected final void setVideoLinkBottomBarPlugin(bk parambk)
-  {
-    this.videoLinkBottomBarPlugin = parambk;
-  }
-  
-  protected final void startTimer()
-  {
-    y localy = this.commonInfoPlugin;
-    if ((localy != null) && (localy.hwr.getVisibility() == 0))
-    {
-      this.timerThread.stopTimer();
-      this.timerThread.startTimer(1000L);
-    }
-  }
-  
-  public void statusChange(b.c paramc, Bundle paramBundle)
-  {
-    Object localObject2 = null;
-    kotlin.g.b.p.h(paramc, "status");
-    super.statusChange(paramc, paramBundle);
-    Object localObject3;
-    if (paramBundle != null)
-    {
-      localObject3 = paramBundle.getByteArray("PARAM_FINDER_LIVE_ERROR_PAGE");
-      if (localObject3 == null) {}
-    }
-    Object localObject1;
-    for (avr localavr = new avr();; localObject1 = null) {
-      try
-      {
-        localavr.parseFrom((byte[])localObject3);
-        switch (f.$EnumSwitchMapping$0[paramc.ordinal()])
-        {
-        default: 
-          return;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          Log.e(getTAG(), "statusChange:", new Object[] { localThrowable });
-          localObject1 = null;
-        }
-      }
-    }
-    if (paramBundle != null) {}
-    for (paramc = paramBundle.getString("PARAM_FINDER_LIVE_FACE_VERIFY_URL");; paramc = null)
-    {
-      if (paramBundle != null) {
-        localObject2 = paramBundle.getString("PARAM_FINDER_LIVE_USERNAME");
-      }
-      paramBundle = getExceptionPlugin();
-      if (paramBundle != null)
-      {
-        Log.i(paramBundle.TAG, "showFaceVerify:".concat(String.valueOf(paramc)));
-        localObject3 = com.tencent.mm.plugin.finder.report.live.k.vkd;
-        com.tencent.mm.plugin.finder.report.live.k.a(s.ad.vqe, (String)localObject2);
-        paramBundle.atI("");
-        localObject3 = paramBundle.umS;
-        if (localObject3 != null)
-        {
-          f.c localc = f.uGx;
-          f.a((f)localObject3, f.djF(), (avr)localObject1, (kotlin.g.a.b)new n.d(paramBundle, paramc, (String)localObject2), 4);
-        }
-      }
-      paramc = getExceptionPlugin();
-      if (paramc != null) {
-        paramc.rg(0);
-      }
-      paramc = getFinderLiveBeforePlugin();
-      if (paramc == null) {
-        break;
-      }
-      paramc.rg(8);
-      return;
-    }
-    localObject2 = getFinderLiveBeforePlugin();
-    if (localObject2 != null) {
-      ((t)localObject2).rg(8);
-    }
-    hideLoadingLayer();
-    localObject2 = this.uxX;
-    if (localObject2 != null) {
-      ((as)localObject2).rg(8);
-    }
-    localObject2 = this.uxV;
-    if (localObject2 != null) {
-      ((r)localObject2).rg(8);
-    }
-    localObject2 = this.titleInfoPlugin;
-    if (localObject2 != null) {
-      ((bh)localObject2).rg(8);
-    }
-    localObject2 = this.commonInfoPlugin;
-    if (localObject2 != null) {
-      ((y)localObject2).rg(8);
-    }
-    localObject2 = this.uxY;
-    if (localObject2 != null) {
-      ((ay)localObject2).rg(8);
-    }
-    localObject2 = this.commentPlugin;
-    if (localObject2 != null) {
-      ((v)localObject2).rg(8);
-    }
-    localObject2 = this.uxZ;
-    if (localObject2 != null) {
-      ((com.tencent.mm.plugin.finder.live.plugin.l)localObject2).rg(8);
-    }
-    localObject2 = this.uxW;
-    if (localObject2 != null) {
-      ((com.tencent.mm.plugin.finder.live.plugin.e)localObject2).rg(8);
-    }
-    localObject2 = this.memberListPlugin;
-    if (localObject2 != null) {
-      ((ap)localObject2).rg(8);
-    }
-    localObject2 = this.profilePlugin;
-    if (localObject2 != null) {
-      ((ar)localObject2).rg(8);
-    }
-    localObject2 = this.confettiPlugin;
-    if (localObject2 != null) {
-      ((aj)localObject2).rg(8);
-    }
-    localObject2 = this.moreActionPlugin;
-    if (localObject2 != null) {
-      ((at)localObject2).rg(8);
-    }
-    localObject2 = this.topCommentPlugin;
-    if (localObject2 != null) {
-      ((bj)localObject2).rg(8);
-    }
-    localObject2 = this.uya;
-    if (localObject2 != null) {
-      ((com.tencent.mm.plugin.finder.live.plugin.k)localObject2).rg(8);
-    }
-    localObject2 = this.shoppingBubblePlugin;
-    if (localObject2 != null) {
-      ((bd)localObject2).rg(8);
-    }
-    localObject2 = this.shoppingListPlugin;
-    if (localObject2 != null) {
-      ((bf)localObject2).rg(8);
-    }
-    localObject2 = this.uyd;
-    if (localObject2 != null) {
-      ((com.tencent.mm.plugin.finder.live.plugin.p)localObject2).rg(8);
-    }
-    localObject2 = this.uye;
-    if (localObject2 != null) {
-      ((com.tencent.mm.plugin.finder.live.plugin.o)localObject2).rg(8);
-    }
-    localObject2 = this.videoLinkBottomBarPlugin;
-    if (localObject2 != null) {
-      ((bk)localObject2).rg(8);
-    }
-    localObject2 = this.uyb;
-    if (localObject2 != null) {
-      ((j)localObject2).rg(8);
-    }
-    localObject2 = this.giftPlayPlugin;
-    if (localObject2 != null) {
-      ((ac)localObject2).rg(8);
-    }
-    localObject2 = this.giftQueuePlugin;
-    if (localObject2 != null) {
-      ((ae)localObject2).rg(8);
-    }
-    localObject2 = this.uyf;
-    if (localObject2 != null) {
-      ((h)localObject2).rg(8);
-    }
-    if (paramc == b.c.hNg)
-    {
-      paramc = getExceptionPlugin();
-      if (paramc != null)
-      {
-        paramBundle = getLiveData().hwd;
-        kotlin.g.b.p.h(paramBundle, "anchorUserName");
-        Log.i(paramc.TAG, "showAnchorForceQuit anchorUserName:".concat(String.valueOf(paramBundle)));
-        paramc.atI(paramBundle);
-        paramBundle = paramc.umS;
-        if (paramBundle != null)
-        {
-          localObject1 = f.uGx;
-          f.a(paramBundle, f.djG(), null, (kotlin.g.a.b)new n.b(paramc), 6);
-        }
-      }
-      paramc = getExceptionPlugin();
-      if (paramc != null) {
-        paramc.rg(0);
-      }
-      this.hSS.a(com.tencent.mm.live.core.mini.d.hCX);
-      if ((this.hSS instanceof com.tencent.mm.live.core.core.a.b))
-      {
-        paramc = getFinderLiveAssistant();
-        if (paramc != null) {
-          paramc.a(1, (kotlin.g.a.s)new c(this));
-        }
-      }
-      paramc = getFinderLiveAssistant();
-      if (paramc != null) {
-        paramc.dfk();
-      }
-      paramc = com.tencent.mm.plugin.finder.live.model.q.ukd;
-      com.tencent.mm.plugin.finder.live.model.q.dgC();
-      paramc = com.tencent.mm.plugin.finder.live.model.o.ujN;
-      com.tencent.mm.plugin.finder.live.model.o.aHh();
-      aJm();
-      return;
-    }
-    if (paramBundle != null) {}
-    for (int i = paramBundle.getInt("PARAM_FINDER_LIVE_ERROR_CODE");; i = 0)
-    {
-      paramc = getExceptionPlugin();
-      if (paramc == null) {
-        break;
-      }
-      paramBundle = getLiveData().hwd;
-      kotlin.g.b.p.h(paramBundle, "anchorUserName");
-      Log.i(paramc.TAG, "showCreateLiveDynamicErrPage anchorUserName:".concat(String.valueOf(paramBundle)));
-      paramc.atI(paramBundle);
-      paramBundle = paramc.umS;
-      if (paramBundle == null) {
-        break;
-      }
-      localObject2 = f.uGx;
-      paramBundle.a(f.djJ(), (avr)localObject1, i, (kotlin.g.a.b)new n.c(paramc));
-      break;
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "success", "", "needFaceVerify", "verifyUrl", "", "errType", "", "errCode", "errMsg", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderCreateLiveResp;", "invoke"})
-  static final class a
-    extends kotlin.g.b.q
-    implements kotlin.g.a.u<Boolean, Boolean, String, Integer, Integer, String, aqd, x>
-  {
-    a(e parame)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
-  static final class b
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    b(e parame, MMActivity paramMMActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "success", "", "errCode", "", "errType", "errMsg", "", "errresp", "Lcom/tencent/mm/protocal/protobuf/FinderCloseLiveResp;", "invoke"})
-  static final class c
-    extends kotlin.g.b.q
-    implements kotlin.g.a.s<Boolean, Integer, Integer, String, ape, x>
-  {
-    c(e parame)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/live/view/FinderLiveBaseAnchorPluginLayout$stopLive$1", "Lcom/tencent/mm/live/core/core/LiveCallback;", "callback", "", "errorCode", "", "param", "Landroid/os/Bundle;", "plugin-finder_release"})
-  public static final class d
-    implements c
-  {
-    public final void callback(int paramInt, Bundle paramBundle) {}
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onTimerExpired"})
-  static final class e
-    implements MTimerHandler.CallBack
-  {
-    e(e parame) {}
-    
-    public final boolean onTimerExpired()
-    {
-      AppMethodBeat.i(247433);
-      Object localObject1 = this.uyg.getCommonInfoPlugin();
-      int i;
-      Object localObject2;
-      long l;
-      if ((localObject1 != null) && (((com.tencent.mm.live.c.a)localObject1).hwr.getVisibility() == 0))
-      {
-        localObject1 = this.uyg.getCommonInfoPlugin();
-        if (localObject1 != null)
-        {
-          i = this.uyg.getLiveData().liveInfo.dvv;
-          if (com.tencent.mm.kernel.g.aAf().azp())
-          {
-            int j = cl.aWB();
-            localObject2 = com.tencent.mm.live.b.u.hIn;
-            ((y)localObject1).hPQ = u.a.a(j - i, ":", false, false, false, 28);
-            i = j - i;
-            if (i <= 0) {
-              break label308;
-            }
-            l = i;
-            ((y)localObject1).duration = l;
-          }
-        }
-        localObject1 = this.uyg.getCommonInfoPlugin();
-        if (localObject1 != null)
-        {
-          if (!((y)localObject1).dMz) {
-            break label340;
-          }
-          localObject2 = m.vVH;
-          if (!m.i(((y)localObject1).getLiveData())) {
-            break label313;
-          }
-          localObject2 = com.tencent.mm.live.core.core.c.a.hAj;
-          ((com.tencent.mm.live.c.a)localObject1).hwr.getContext();
-          i = a.a.aDw().hAz.hzL;
-        }
-      }
       for (;;)
       {
-        ((y)localObject1).hPP = i;
-        localObject1 = this.uyg.getCommonInfoPlugin();
-        if (localObject1 != null) {
-          ((y)localObject1).ae(this.uyg.getLiveData().liveInfo.uBn, this.uyg.getLiveData().liveInfo.wBG, this.uyg.getLiveData().uDV);
-        }
-        localObject1 = this.uyg.getCameraOptPlugin();
-        if ((localObject1 != null) && (((com.tencent.mm.live.c.a)localObject1).hwr.getVisibility() == 0))
+        Log.e("FinderLiveMultiTaskManager", "initMultiTaskData", new Object[] { paramArrayOfByte });
+        continue;
+        paramActivity = paramArrayOfByte;
+      }
+    }
+  }
+  
+  private final void a(bbf parambbf)
+  {
+    AppMethodBeat.i(290058);
+    if (parambbf.SMS.isEmpty())
+    {
+      if (parambbf.liveId != 0L)
+      {
+        ((Map)this.yVq).put(Long.valueOf(parambbf.liveId), parambbf);
+        AppMethodBeat.o(290058);
+      }
+    }
+    else
+    {
+      parambbf = parambbf.SMS;
+      p.j(parambbf, "originData.allHistoryFinderObjectList");
+      Iterator localIterator = ((Iterable)parambbf).iterator();
+      while (localIterator.hasNext())
+      {
+        FinderObject localFinderObject = (FinderObject)localIterator.next();
+        parambbf = localFinderObject.liveInfo;
+        if (parambbf != null)
         {
-          localObject1 = this.uyg.getCameraOptPlugin();
-          if (localObject1 != null) {
-            com.tencent.mm.ac.d.h((kotlin.g.a.a)new k.a((com.tencent.mm.plugin.finder.live.plugin.k)localObject1, this.uyg.getLiveData().liveInfo.wBG));
+          Map localMap = (Map)this.yVq;
+          long l = parambbf.liveId;
+          bbf localbbf = new bbf();
+          localbbf.key = com.tencent.mm.ae.d.Fw(parambbf.liveId);
+          localbbf.liveId = parambbf.liveId;
+          localbbf.nonceId = localFinderObject.objectNonceId;
+          localbbf.kik = localFinderObject.id;
+          String str = localFinderObject.username;
+          parambbf = str;
+          if (str == null) {
+            parambbf = "";
+          }
+          localbbf.kig = parambbf;
+          parambbf = localFinderObject.objectDesc;
+          if (parambbf != null)
+          {
+            str = parambbf.description;
+            parambbf = str;
+            if (str != null) {}
+          }
+          else
+          {
+            parambbf = "";
+          }
+          localbbf.desc = parambbf;
+          localbbf.sessionBuffer = localFinderObject.sessionBuffer;
+          localbbf.xcx = localFinderObject;
+          localMap.put(Long.valueOf(l), localbbf);
+        }
+      }
+    }
+    AppMethodBeat.o(290058);
+  }
+  
+  public final void dFj()
+  {
+    Object localObject3 = null;
+    AppMethodBeat.i(290059);
+    Object localObject1 = com.tencent.mm.plugin.finder.live.model.context.a.ykr;
+    localObject1 = com.tencent.mm.plugin.finder.live.model.context.a.dAc();
+    if (localObject1 != null)
+    {
+      Object localObject2 = (com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)((com.tencent.mm.plugin.finder.live.model.context.a)localObject1).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class);
+      if (localObject2 != null)
+      {
+        bbf localbbf = (bbf)this.yVq.get(Long.valueOf(((c)((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)localObject2).business(c.class)).liveInfo.liveId));
+        if (localbbf == null)
+        {
+          AppMethodBeat.o(290059);
+          return;
+        }
+        p.j(localbbf, "multiTaskDataMap[it.busi…iveInfo.liveId] ?: return");
+        MultiTaskInfo localMultiTaskInfo = this.yVp.FHd;
+        if (localMultiTaskInfo != null)
+        {
+          localObject1 = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)localObject2).zeZ;
+          if (localObject1 != null)
+          {
+            localObject1 = ((FinderObject)localObject1).contact;
+            localMultiTaskInfo.field_id = com.tencent.mm.ae.d.Fw(((c)((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)localObject2).business(c.class)).liveInfo.liveId);
+            localbbf.key = localMultiTaskInfo.field_id;
+            dar localdar = localMultiTaskInfo.fbc();
+            if (localObject1 != null)
+            {
+              String str = ((FinderContact)localObject1).headUrl;
+              localObject2 = str;
+              if (str != null) {}
+            }
+            else
+            {
+              localObject2 = "";
+            }
+            localdar.TIg = ((String)localObject2);
+            localMultiTaskInfo.field_data = localbbf.toByteArray();
+            if (localObject1 == null) {
+              break label286;
+            }
+            localMultiTaskInfo.fbc().nickname = ((FinderContact)localObject1).nickname;
+            localObject2 = ((FinderContact)localObject1).authInfo;
+            if (localObject2 == null) {
+              break label279;
+            }
+            if (((FinderAuthInfo)localObject2).authIconType <= 0) {
+              break label274;
+            }
+          }
+          label274:
+          for (int i = 1;; i = 0)
+          {
+            localObject1 = localObject3;
+            if (i != 0) {
+              localObject1 = localObject2;
+            }
+            if (localObject1 == null) {
+              break label279;
+            }
+            localMultiTaskInfo.fbc().TIh = ((FinderAuthInfo)localObject1).authIconType;
+            localMultiTaskInfo.fbc().TIf = ((FinderAuthInfo)localObject1).authIconUrl;
+            AppMethodBeat.o(290059);
+            return;
+            localObject1 = null;
+            break;
+          }
+          label279:
+          AppMethodBeat.o(290059);
+          return;
+          label286:
+          AppMethodBeat.o(290059);
+          return;
+        }
+        AppMethodBeat.o(290059);
+        return;
+      }
+    }
+    AppMethodBeat.o(290059);
+  }
+  
+  public final MMHandler getMainHandler()
+  {
+    AppMethodBeat.i(290057);
+    MMHandler localMMHandler = (MMHandler)this.yVr.getValue();
+    AppMethodBeat.o(290057);
+    return localMMHandler;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveMultiTaskManager$Companion;", "", "()V", "ADD_TO_HISTORY_DELAY", "", "getADD_TO_HISTORY_DELAY", "()J", "ADD_TO_HISTORY_DELAY$delegate", "Lkotlin/Lazy;", "MSG_ADD_TO_HISTORY", "", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class b
+    extends q
+    implements kotlin.g.a.a<Long>
+  {
+    public static final b yVu;
+    
+    static
+    {
+      AppMethodBeat.i(276909);
+      yVu = new b();
+      AppMethodBeat.o(276909);
+    }
+    
+    b()
+    {
+      super();
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/finder/live/view/FinderLiveMultiTaskManager$addToHistory$1$1"})
+  static final class c
+    implements Runnable
+  {
+    c(e parame) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(290483);
+      e.b(this.yVv).dJO();
+      AppMethodBeat.o(290483);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "invoke"})
+  static final class d
+    extends q
+    implements kotlin.g.a.a<MMHandler>
+  {
+    d(e parame)
+    {
+      super();
+    }
+    
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
+    static final class a
+      implements MMHandler.Callback
+    {
+      a(e.d paramd) {}
+      
+      public final boolean handleMessage(Message paramMessage)
+      {
+        boolean bool3 = false;
+        AppMethodBeat.i(267881);
+        switch (paramMessage.what)
+        {
+        default: 
+          AppMethodBeat.o(267881);
+          return true;
+        }
+        e locale = this.yVw.yVv;
+        paramMessage = com.tencent.mm.plugin.finder.live.model.context.a.ykr;
+        paramMessage = com.tencent.mm.plugin.finder.live.model.context.a.dAc();
+        com.tencent.mm.plugin.finder.live.viewmodel.data.business.b localb;
+        if (paramMessage != null)
+        {
+          localb = (com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)paramMessage.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class);
+          if (localb != null)
+          {
+            paramMessage = (bbf)locale.yVq.get(Long.valueOf(((c)localb.business(c.class)).liveInfo.liveId));
+            if (paramMessage != null) {
+              break label482;
+            }
+            paramMessage = new bbf();
           }
         }
-        AppMethodBeat.o(247433);
-        return true;
-        label308:
-        l = 0L;
-        break;
-        label313:
-        localObject2 = com.tencent.mm.live.core.core.a.b.hyv;
-        ((com.tencent.mm.live.c.a)localObject1).hwr.getContext();
-        i = com.tencent.mm.live.core.core.a.b.a.aDo().hAz.hzL;
-        continue;
-        label340:
-        localObject2 = com.tencent.mm.live.core.core.d.b.hCo;
-        ((com.tencent.mm.live.c.a)localObject1).hwr.getContext();
-        i = com.tencent.mm.live.core.core.d.b.a.aEf().hAz.hzL;
+        label151:
+        label477:
+        label482:
+        for (;;)
+        {
+          p.j(paramMessage, "multiTaskDataMap[it.busi…FinderLiveMultiTaskData()");
+          Object localObject = (CharSequence)paramMessage.key;
+          int i;
+          if ((localObject == null) || (((CharSequence)localObject).length() == 0))
+          {
+            i = 1;
+            if (i != 0) {
+              break label477;
+            }
+          }
+          for (boolean bool1 = true;; bool1 = false)
+          {
+            localObject = com.tencent.mm.plugin.finder.live.model.context.a.ykr;
+            localObject = com.tencent.mm.plugin.finder.live.model.context.a.dAc();
+            boolean bool2 = bool3;
+            if (localObject != null)
+            {
+              localObject = (com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)((com.tencent.mm.plugin.finder.live.model.context.a)localObject).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class);
+              bool2 = bool3;
+              if (localObject != null)
+              {
+                bool2 = bool3;
+                if (((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)localObject).dGN() == true) {
+                  bool2 = true;
+                }
+              }
+            }
+            Log.i("FinderLiveMultiTaskManager", "addToHistory: has added = " + bool1 + ", is live finished = " + bool2 + ", liveId = " + ((c)localb.business(c.class)).liveInfo.liveId + ", objectId = " + ((c)localb.business(c.class)).xbk);
+            if ((bool1) || (bool2)) {
+              break;
+            }
+            paramMessage.liveId = ((c)localb.business(c.class)).liveInfo.liveId;
+            paramMessage.nonceId = ((c)localb.business(c.class)).nonceId;
+            paramMessage.kik = ((c)localb.business(c.class)).xbk;
+            paramMessage.kig = localb.kig;
+            paramMessage.desc = localb.desc;
+            paramMessage.sessionBuffer = ((c)localb.business(c.class)).sessionBuffer;
+            paramMessage.xcx = localb.zeZ;
+            ((Map)locale.yVq).put(Long.valueOf(((c)localb.business(c.class)).liveInfo.liveId), paramMessage);
+            locale.dFj();
+            if (h.ZvG.bf((Runnable)new e.c(locale)) != null) {
+              break;
+            }
+            Log.e("FinderLiveMultiTaskManager", "addToHistory: curLiveRoomData is null");
+            paramMessage = x.aazN;
+            break;
+            i = 0;
+            break label151;
+          }
+        }
       }
     }
   }

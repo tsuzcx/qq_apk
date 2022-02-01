@@ -1,8 +1,6 @@
 package com.tencent.mm.plugin.appbrand.ipc;
 
 import android.app.Activity;
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.LifecycleObserver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,42 +14,43 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.ResultReceiver;
+import android.support.v4.os.ResultReceiver;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
-import com.tencent.luggage.h.f;
-import com.tencent.luggage.h.f.e;
+import androidx.lifecycle.k;
+import com.tencent.luggage.k.f;
+import com.tencent.luggage.k.f.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.plugin.appbrand.au.j;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandUI;
-import com.tencent.mm.plugin.appbrand.ui.y;
+import com.tencent.mm.plugin.appbrand.ui.x;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.widget.a.d;
 
 @com.tencent.mm.ui.base.a(7)
 public class AppBrandProcessProxyUI
   extends MMActivity
-  implements f.e, c
+  implements f.e, d
 {
-  public static String lwe = "appbrand_report_key_target_url";
-  public static String lwf = "appbrand_report_key_target_activity";
-  private int lvW = 0;
-  private AppBrandProxyUIProcessTask lvX;
-  private AppBrandProxyUIProcessTask.ProcessRequest lvY;
-  private boolean lvZ = false;
-  private volatile boolean lwa = false;
-  private volatile boolean lwb = false;
-  private d lwc;
-  private a lwd;
+  public static String oqN = "appbrand_report_key_target_url";
+  public static String oqO = "appbrand_report_key_target_activity";
+  private int oqF = 0;
+  private AppBrandProxyUIProcessTask oqG;
+  private AppBrandProxyUIProcessTask.ProcessRequest oqH;
+  private boolean oqI = false;
+  private volatile boolean oqJ = false;
+  private volatile boolean oqK = false;
+  private com.tencent.mm.ui.widget.a.d oqL;
+  private a oqM;
   
-  public static boolean B(Intent paramIntent)
+  public static boolean C(Intent paramIntent)
   {
     AppMethodBeat.i(45393);
     if (paramIntent != null) {}
@@ -72,27 +71,27 @@ public class AppBrandProcessProxyUI
     return false;
   }
   
-  static <_Req extends AppBrandProxyUIProcessTask.ProcessRequest, _Result extends AppBrandProxyUIProcessTask.ProcessResult> void a(final Context paramContext, Class<? extends AppBrandProcessProxyUI> paramClass, final _Req param_Req, final AppBrandProxyUIProcessTask.b<_Result> paramb, Intent paramIntent)
+  static <_Req extends AppBrandProxyUIProcessTask.ProcessRequest, _Result extends AppBrandProxyUIProcessTask.ProcessResult> void a(Context paramContext, Class<? extends AppBrandProcessProxyUI> paramClass, _Req param_Req, final AppBrandProxyUIProcessTask.b<_Result> paramb)
   {
-    AppMethodBeat.i(45395);
+    AppMethodBeat.i(284179);
     if (paramContext == null) {
       paramContext = MMApplicationContext.getContext();
     }
     for (;;)
     {
-      String str = param_Req.bCJ().getName();
+      String str = param_Req.bOe().getName();
       if (paramClass == null)
       {
         localObject = AppBrandProcessProxyUI.class;
         localObject = new Intent(paramContext, (Class)localObject).putExtra("key_model_class_name", str);
         if (paramb != null) {
-          break label143;
+          break label128;
         }
       }
-      label143:
-      for (paramb = null;; paramb = new ResultReceiver(MMHandler.createFreeHandler(Looper.getMainLooper()))
+      label128:
+      for (paramb = null;; paramb = ResultReceiverFixLeak.a(new ResultReceiver(MMHandler.createFreeHandler(Looper.getMainLooper()))
           {
-            protected final void onReceiveResult(int paramAnonymousInt, Bundle paramAnonymousBundle)
+            public final void onReceiveResult(int paramAnonymousInt, Bundle paramAnonymousBundle)
             {
               AppMethodBeat.i(45385);
               if (paramAnonymousBundle == null)
@@ -106,43 +105,21 @@ public class AppBrandProcessProxyUI
               paramb.a(paramAnonymousBundle);
               AppMethodBeat.o(45385);
             }
-          })
+          }, paramContext))
       {
-        paramb = ((Intent)localObject).putExtra("key_result_receiver", paramb).putExtra(lwf, param_Req.bDO()).putExtra("key_running_mode", 1);
+        paramb = ((Intent)localObject).putExtra("key_result_receiver", paramb).putExtra(oqO, param_Req.bPo()).putExtra("key_running_mode", 1);
         paramb.putExtra("key_request_parcel", param_Req);
         if ((paramContext instanceof Activity)) {
-          break label161;
+          break label150;
         }
         paramb.addFlags(268435456);
-        if (paramIntent != null) {
-          paramb.addFlags(paramIntent.getFlags());
-        }
-        MMHandlerThread.postToMainThread(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(45386);
-            if ((AppBrandProcessProxyUI.class != this.lwh) && ((paramContext instanceof Activity)))
-            {
-              ((Activity)paramContext).startActivityForResult(paramb, param_Req.bDP());
-              AppMethodBeat.o(45386);
-              return;
-            }
-            Context localContext = paramContext;
-            Object localObject = paramb;
-            localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI$2", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-            com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI$2", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            AppMethodBeat.o(45386);
-          }
-        });
-        AppMethodBeat.o(45395);
+        MMHandlerThread.postToMainThread(new AppBrandProcessProxyUI.2(paramClass, paramContext, paramb, param_Req));
+        AppMethodBeat.o(284179);
         return;
         localObject = paramClass;
         break;
       }
-      label161:
+      label150:
       Object localObject = ((Activity)paramContext).getWindow();
       boolean bool;
       if ((localObject == null) || (((Window)localObject).getDecorView() == null)) {
@@ -169,9 +146,9 @@ public class AppBrandProcessProxyUI
     }
     for (;;)
     {
-      paramClass = new Intent(paramContext, paramClass).putExtra("key_running_mode", 2).putExtra("key_result_receiver", new ResultReceiver(MMHandler.createFreeHandler(Looper.getMainLooper()))
+      paramClass = new Intent(paramContext, paramClass).putExtra("key_running_mode", 2).putExtra("key_result_receiver", ResultReceiverFixLeak.a(new ResultReceiver(MMHandler.createFreeHandler(Looper.getMainLooper()))
       {
-        protected final void onReceiveResult(int paramAnonymousInt, Bundle paramAnonymousBundle)
+        public final void onReceiveResult(int paramAnonymousInt, Bundle paramAnonymousBundle)
         {
           AppMethodBeat.i(45387);
           if ((-1 == paramAnonymousInt) && (paramOnClickListener1 != null)) {
@@ -185,16 +162,16 @@ public class AppBrandProcessProxyUI
           }
           AppMethodBeat.o(45387);
         }
-      }).putExtra("key_alert_message", paramString1).putExtra("key_alert_title", paramString2).putExtra("key_alert_confirm", paramString3).putExtra("key_alert_deny", paramString4);
+      }, paramContext)).putExtra("key_alert_message", paramString1).putExtra("key_alert_title", paramString2).putExtra("key_alert_confirm", paramString3).putExtra("key_alert_deny", paramString4);
       if (!(paramContext instanceof Activity)) {
         paramClass.addFlags(268435456);
       }
       try
       {
-        paramClass = new com.tencent.mm.hellhoundlib.b.a().bl(paramClass);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramClass.axQ(), "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "showAlert", "(Landroid/content/Context;Ljava/lang/Class;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)paramClass.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "showAlert", "(Landroid/content/Context;Ljava/lang/Class;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramClass = new com.tencent.mm.hellhoundlib.b.a().bm(paramClass);
+        com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramClass.aFh(), "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "showAlert", "(Landroid/content/Context;Ljava/lang/Class;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)paramClass.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "showAlert", "(Landroid/content/Context;Ljava/lang/Class;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(45396);
         return;
       }
@@ -207,7 +184,7 @@ public class AppBrandProcessProxyUI
     }
   }
   
-  private static String dl(String paramString1, String paramString2)
+  private static String du(String paramString1, String paramString2)
   {
     AppMethodBeat.i(45399);
     if (Util.isNullOrNil(paramString1))
@@ -224,31 +201,35 @@ public class AppBrandProcessProxyUI
     AppMethodBeat.i(45394);
     if ((!(paramContext instanceof AppBrandUI)) || ((paramContext instanceof AppBrandPluginUI)))
     {
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.axQ(), "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "proxyLaunchByAppBrandUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "proxyLaunchByAppBrandUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramIntent.aFh(), "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "proxyLaunchByAppBrandUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "proxyLaunchByAppBrandUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(45394);
       return;
     }
     paramIntent = new Intent(paramContext, AppBrandProcessProxyUI.class).putExtra("key_running_mode", 10000).putExtra("key_proxy_launch_target_intent", paramIntent).putExtra("key_proxy_launch_appbrand_ui_class", paramContext.getClass()).addFlags(268435456);
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.axQ(), "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "proxyLaunchByAppBrandUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "proxyLaunchByAppBrandUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramIntent.aFh(), "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "proxyLaunchByAppBrandUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramIntent.sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "proxyLaunchByAppBrandUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(45394);
   }
   
   public final void b(final AppBrandProxyUIProcessTask.ProcessResult paramProcessResult)
   {
     AppMethodBeat.i(45404);
-    this.lwa = true;
+    this.oqJ = true;
     runOnUiThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(45389);
-        AppBrandProcessProxyUI.this.finish();
+        if (AppBrandProcessProxyUI.c(AppBrandProcessProxyUI.this) != null)
+        {
+          AppBrandProcessProxyUI.c(AppBrandProcessProxyUI.this);
+          AppBrandProcessProxyUI.this.finish();
+        }
         AppBrandProcessProxyUI.this.c(paramProcessResult);
         AppMethodBeat.o(45389);
       }
@@ -256,15 +237,15 @@ public class AppBrandProcessProxyUI
     AppMethodBeat.o(45404);
   }
   
-  public final MMActivity bDF()
+  public final MMActivity bPf()
   {
     return this;
   }
   
-  public final boolean bDG()
+  public final boolean bPg()
   {
     AppMethodBeat.i(45405);
-    if ((activityHasDestroyed()) || (isFinishing()) || (this.lwa))
+    if ((activityHasDestroyed()) || (isFinishing()) || (this.oqJ))
     {
       AppMethodBeat.o(45405);
       return true;
@@ -276,13 +257,13 @@ public class AppBrandProcessProxyUI
   public final void c(AppBrandProxyUIProcessTask.ProcessResult paramProcessResult)
   {
     AppMethodBeat.i(45406);
-    this.lwb = true;
+    this.oqK = true;
     ResultReceiver localResultReceiver = (ResultReceiver)getIntent().getParcelableExtra("key_result_receiver");
     if ((localResultReceiver != null) && (paramProcessResult != null))
     {
       Bundle localBundle = new Bundle(2);
       localBundle.putParcelable("key_result_parcel", paramProcessResult);
-      localResultReceiver.send(0, localBundle);
+      localResultReceiver.c(0, localBundle);
     }
     AppMethodBeat.o(45406);
   }
@@ -292,8 +273,8 @@ public class AppBrandProcessProxyUI
     AppMethodBeat.i(45403);
     super.finish();
     overridePendingTransition(0, 0);
-    if (this.lvX != null) {
-      this.lvX.bDM();
+    if (this.oqG != null) {
+      this.oqG.bPm();
     }
     AppMethodBeat.o(45403);
   }
@@ -309,16 +290,16 @@ public class AppBrandProcessProxyUI
   {
     AppMethodBeat.i(45402);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    f.aK(this).onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (this.lvY == null)
+    f.aI(this).onActivityResult(paramInt1, paramInt2, paramIntent);
+    if (this.oqH == null)
     {
       Log.e("MicroMsg.AppBrandProcessProxyUI", "onActivityResult, NULL mRequest");
       finish();
       AppMethodBeat.o(45402);
       return;
     }
-    Log.d("MicroMsg.AppBrandProcessProxyUI", "onActivityResult, requestCode = %d, resultCode = %d, request = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), this.lvY.getClass().getName() });
-    this.lvZ = false;
+    Log.d("MicroMsg.AppBrandProcessProxyUI", "onActivityResult, requestCode = %d, resultCode = %d, request = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), this.oqH.getClass().getName() });
+    this.oqI = false;
     AppMethodBeat.o(45402);
   }
   
@@ -326,11 +307,11 @@ public class AppBrandProcessProxyUI
   {
     int i = 0;
     AppMethodBeat.i(45398);
-    setTheme(2131821178);
+    setTheme(au.j.MMTheme_NoTitleTranslucent);
     super.onCreate(paramBundle);
     overridePendingTransition(0, 0);
-    y.e(getWindow());
-    y.d(getWindow(), getIntent().getBooleanExtra("key_need_light_status", false));
+    x.e(getWindow());
+    x.d(getWindow(), getIntent().getBooleanExtra("key_need_light_status", false));
     getWindow().setBackgroundDrawable(new ColorDrawable(0));
     if (getIntent() == null)
     {
@@ -355,8 +336,8 @@ public class AppBrandProcessProxyUI
         finish();
         AppMethodBeat.o(45398);
         return;
-        this.lvX = AppBrandProxyUIProcessTask.a.YX(paramBundle);
-        if (this.lvX == null)
+        this.oqG = AppBrandProxyUIProcessTask.a.agI(paramBundle);
+        if (this.oqG == null)
         {
           Log.e("MicroMsg.AppBrandProcessProxyUI", "onCreate unknown model class = %s", new Object[] { paramBundle });
         }
@@ -364,34 +345,34 @@ public class AppBrandProcessProxyUI
         {
           if (getIntent().getBooleanExtra("key_request_need_params", true))
           {
-            this.lvY = ((AppBrandProxyUIProcessTask.ProcessRequest)getIntent().getParcelableExtra("key_request_parcel"));
-            if (this.lvY == null) {
+            this.oqH = ((AppBrandProxyUIProcessTask.ProcessRequest)getIntent().getParcelableExtra("key_request_parcel"));
+            if (this.oqH == null) {
               Log.e("MicroMsg.AppBrandProcessProxyUI", "onCreate unknown request class = %s", new Object[] { paramBundle });
             }
           }
           else
           {
-            this.lvY = null;
+            this.oqH = null;
             continue;
           }
-          paramBundle = this.lvX;
-          paramBundle.lwz = this;
-          if ((paramBundle instanceof LifecycleObserver)) {
-            paramBundle.bDF().getLifecycle().addObserver((LifecycleObserver)paramBundle);
+          paramBundle = this.oqG;
+          paramBundle.orj = this;
+          if ((paramBundle instanceof k)) {
+            paramBundle.bPf().getLifecycle().a((k)paramBundle);
           }
-          this.lvX.a(this.lvY);
+          this.oqG.a(this.oqH);
           i = 1;
         }
       }
     case 2: 
-      paramBundle = dl(getIntent().getStringExtra("key_alert_title"), "");
-      localObject = dl(getIntent().getStringExtra("key_alert_message"), getString(2131755998));
-      String str1 = dl(getIntent().getStringExtra("key_alert_confirm"), "");
-      final String str2 = dl(getIntent().getStringExtra("key_alert_deny"), "");
-      this.lwd = new a((byte)0);
-      this.lwc = h.a(this, (String)localObject, paramBundle, str1, str2, false, this.lwd, this.lwd);
-      this.lwc.setOnDismissListener(this.lwd);
-      this.lwc.setOnKeyListener(new DialogInterface.OnKeyListener()
+      paramBundle = du(getIntent().getStringExtra("key_alert_title"), "");
+      localObject = du(getIntent().getStringExtra("key_alert_message"), getString(au.i.app_tip));
+      String str1 = du(getIntent().getStringExtra("key_alert_confirm"), "");
+      final String str2 = du(getIntent().getStringExtra("key_alert_deny"), "");
+      this.oqM = new a((byte)0);
+      this.oqL = com.tencent.mm.ui.base.h.a(this, (String)localObject, paramBundle, str1, str2, false, this.oqM, this.oqM);
+      this.oqL.setOnDismissListener(this.oqM);
+      this.oqL.setOnKeyListener(new DialogInterface.OnKeyListener()
       {
         public final boolean onKey(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
         {
@@ -426,10 +407,10 @@ public class AppBrandProcessProxyUI
         {
           try
           {
-            localObject = new com.tencent.mm.hellhoundlib.b.a().bl(paramBundle);
-            com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            localObject = new com.tencent.mm.hellhoundlib.b.a().bm(paramBundle);
+            com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+            com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             AppMethodBeat.o(45398);
             return;
           }
@@ -468,20 +449,20 @@ public class AppBrandProcessProxyUI
   {
     AppMethodBeat.i(45401);
     super.onDestroy();
-    if (!this.lwb)
+    if (!this.oqK)
     {
       Log.i("MicroMsg.AppBrandProcessProxyUI", "has result not be called when destory");
       ResultReceiver localResultReceiver = (ResultReceiver)getIntent().getParcelableExtra("key_result_receiver");
       if (localResultReceiver != null) {
-        localResultReceiver.send(0, null);
+        localResultReceiver.c(0, null);
       }
     }
-    f.aL(this);
-    if ((this.lwc != null) && (this.lwc.isShowing()))
+    f.aJ(this);
+    if ((this.oqL != null) && (this.oqL.isShowing()))
     {
-      this.lwc.dismiss();
-      this.lwc = null;
-      this.lwd = null;
+      this.oqL.dismiss();
+      this.oqL = null;
+      this.oqM = null;
     }
     AppMethodBeat.o(45401);
   }
@@ -490,8 +471,8 @@ public class AppBrandProcessProxyUI
   {
     AppMethodBeat.i(180200);
     super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-    if (this.lvX != null) {
-      this.lvX.u(paramArrayOfInt);
+    if (this.oqG != null) {
+      this.oqG.u(paramArrayOfInt);
     }
     AppMethodBeat.o(180200);
   }
@@ -503,8 +484,8 @@ public class AppBrandProcessProxyUI
     int i = getIntent().getIntExtra("key_running_mode", 0);
     if (i == 10000)
     {
-      i = this.lvW + 1;
-      this.lvW = i;
+      i = this.oqF + 1;
+      this.oqF = i;
       if (i > 1) {
         try
         {
@@ -516,10 +497,10 @@ public class AppBrandProcessProxyUI
             return;
           }
           localObject = new Intent(this, (Class)localObject).putExtra("key_appbrand_bring_ui_to_front", true).addFlags(268435456);
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "onResume", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "onResume", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "onResume", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/appbrand/ipc/AppBrandProcessProxyUI", "onResume", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           finish();
           AppMethodBeat.o(45400);
           return;
@@ -538,12 +519,12 @@ public class AppBrandProcessProxyUI
       AppMethodBeat.o(45400);
       return;
     }
-    boolean bool = bDG();
-    Log.d("MicroMsg.AppBrandProcessProxyUI", "onResume, mFinishOnNextResume = %b, finishing = %b, request = %s", new Object[] { Boolean.valueOf(this.lvZ), Boolean.valueOf(bool), this.lvY.getClass().getName() });
-    if ((this.lvZ) && (this.lvY.bDN()) && (!bool)) {
+    boolean bool = bPg();
+    Log.d("MicroMsg.AppBrandProcessProxyUI", "onResume, mFinishOnNextResume = %b, finishing = %b, request = %s", new Object[] { Boolean.valueOf(this.oqI), Boolean.valueOf(bool), this.oqH.getClass().getName() });
+    if ((this.oqI) && (this.oqH.bPn()) && (!bool)) {
       b(null);
     }
-    this.lvZ = true;
+    this.oqI = true;
     AppMethodBeat.o(45400);
   }
   
@@ -556,22 +537,22 @@ public class AppBrandProcessProxyUI
   final class a
     implements DialogInterface.OnClickListener, DialogInterface.OnDismissListener
   {
-    private boolean lwr = false;
+    private boolean ora = false;
     
     private a() {}
     
-    private void wB(int paramInt)
+    private void zQ(int paramInt)
     {
       AppMethodBeat.i(45392);
-      if (this.lwr)
+      if (this.ora)
       {
         AppMethodBeat.o(45392);
         return;
       }
-      this.lwr = true;
+      this.ora = true;
       ResultReceiver localResultReceiver = (ResultReceiver)AppBrandProcessProxyUI.this.getIntent().getParcelableExtra("key_result_receiver");
       if (localResultReceiver != null) {
-        localResultReceiver.send(paramInt, null);
+        localResultReceiver.c(paramInt, null);
       }
       AppMethodBeat.o(45392);
     }
@@ -579,14 +560,14 @@ public class AppBrandProcessProxyUI
     public final void onClick(DialogInterface paramDialogInterface, int paramInt)
     {
       AppMethodBeat.i(45390);
-      wB(paramInt);
+      zQ(paramInt);
       AppMethodBeat.o(45390);
     }
     
     public final void onDismiss(DialogInterface paramDialogInterface)
     {
       AppMethodBeat.i(45391);
-      wB(-2);
+      zQ(-2);
       AppBrandProcessProxyUI.this.b(null);
       AppMethodBeat.o(45391);
     }
@@ -594,7 +575,7 @@ public class AppBrandProcessProxyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.AppBrandProcessProxyUI
  * JD-Core Version:    0.7.0.1
  */

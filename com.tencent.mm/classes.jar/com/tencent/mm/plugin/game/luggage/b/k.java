@@ -2,15 +2,18 @@ package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
 import android.os.Bundle;
+import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.c.a;
 import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.game.luggage.g.i;
 import com.tencent.mm.plugin.webview.luggage.jsapi.br;
 import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
-import com.tencent.mm.plugin.webview.ui.tools.game.g;
+import com.tencent.mm.plugin.webview.ui.tools.game.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONException;
@@ -25,15 +28,15 @@ public class k
     AppMethodBeat.o(83066);
   }
   
-  public final void b(final com.tencent.luggage.d.b<i>.a paramb)
+  public final void b(final b<i>.a paramb)
   {
     AppMethodBeat.i(180134);
     Log.i("MicroMsg.JsApiGetGameCommInfo", "invoke");
-    Object localObject = paramb.ctb.csi;
+    Object localObject = paramb.crh.cqn;
     if (localObject == null)
     {
       Log.e("MicroMsg.JsApiGetGameCommInfo", "data is null");
-      paramb.c("null_data", null);
+      paramb.a("null_data", null);
       AppMethodBeat.o(180134);
       return;
     }
@@ -46,30 +49,30 @@ public class k
     if (i == 10008) {
       try
       {
-        localJSONObject.put("page_start_time", ((i)paramb.cta).xyM.JqU);
-        paramb.c("", localJSONObject);
+        localJSONObject.put("page_start_time", ((i)paramb.crg).CCU.Qor);
+        paramb.a("", localJSONObject);
         AppMethodBeat.o(180134);
         return;
       }
       catch (JSONException localJSONException)
       {
-        paramb.c("", null);
+        paramb.a("", null);
         AppMethodBeat.o(180134);
         return;
       }
     }
     if (i == 10009)
     {
-      ((i)paramb.cta).xyN = Util.getLong(localJSONException, System.currentTimeMillis());
-      paramb.c("", null);
+      ((i)paramb.crg).CCV = Util.getLong(localJSONException, System.currentTimeMillis());
+      paramb.a("", null);
       AppMethodBeat.o(180134);
       return;
     }
-    h.a(MainProcessIPCService.dkO, localBundle, a.class, new d() {});
+    j.a(MainProcessIPCService.PROCESS_NAME, localBundle, a.class, new f() {});
     AppMethodBeat.o(180134);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }
@@ -79,8 +82,9 @@ public class k
     return "getGameCommInfo";
   }
   
+  @a
   static class a
-    implements com.tencent.mm.ipcinvoker.b<Bundle, Bundle>
+    implements d<Bundle, Bundle>
   {}
 }
 

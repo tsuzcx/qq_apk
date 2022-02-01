@@ -1,38 +1,37 @@
 package com.tencent.mm.ui.component;
 
 import android.app.Activity;
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.Lifecycle.Event;
-import android.arch.lifecycle.LifecycleObserver;
-import android.arch.lifecycle.OnLifecycleEvent;
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelStore;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.g;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.e;
+import androidx.lifecycle.aa;
+import androidx.lifecycle.h;
+import androidx.lifecycle.h.a;
+import androidx.lifecycle.k;
+import androidx.lifecycle.x;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Field;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import kotlin.a.j;
 import kotlin.g.a.b;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
 import kotlin.l;
-import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/component/UIComponentActivity;", "Landroid/support/v7/app/AppCompatActivity;", "()V", "layoutUIC", "Lcom/tencent/mm/ui/component/UIComponent;", "getLayoutUIC", "()Lcom/tencent/mm/ui/component/UIComponent;", "setLayoutUIC", "(Lcom/tencent/mm/ui/component/UIComponent;)V", "modelStore", "Landroid/arch/lifecycle/ViewModelStore;", "savedInstanceState", "Landroid/os/Bundle;", "uiComponents", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "component", "T", "Landroid/arch/lifecycle/ViewModel;", "modelClass", "Ljava/lang/Class;", "(Ljava/lang/Class;)Landroid/arch/lifecycle/ViewModel;", "containUIC", "", "finish", "", "getViewModelStore", "importUIComponents", "", "initializeUIC", "mapStoreTo", "src", "dest", "isStore", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "any", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "onDestroy", "onKeyDown", "keyCode", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onNewIntent", "intent", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onRestoreInstanceState", "onResume", "onSaveInstanceState", "outState", "onStart", "onStop", "onWindowFocusChanged", "hasFocus", "startActivityForResult", "options", "Companion", "libmmui_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/component/UIComponentActivity;", "Landroidx/appcompat/app/AppCompatActivity;", "()V", "layoutUIC", "Lcom/tencent/mm/ui/component/UIComponent;", "getLayoutUIC", "()Lcom/tencent/mm/ui/component/UIComponent;", "setLayoutUIC", "(Lcom/tencent/mm/ui/component/UIComponent;)V", "modelStore", "Landroidx/lifecycle/ViewModelStore;", "savedInstanceState", "Landroid/os/Bundle;", "uiComponents", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "component", "T", "Landroidx/lifecycle/ViewModel;", "modelClass", "Ljava/lang/Class;", "(Ljava/lang/Class;)Landroidx/lifecycle/ViewModel;", "containUIC", "", "finish", "", "getViewModelStore", "importUIComponents", "", "set", "initializeUIC", "mapStoreTo", "src", "dest", "isStore", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "any", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "onDestroy", "onKeyDown", "keyCode", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onNewIntent", "intent", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onRestoreInstanceState", "onResume", "onSaveInstanceState", "outState", "onStart", "onStop", "onWindowFocusChanged", "hasFocus", "startActivityForResult", "options", "Companion", "plugin-uic_release"})
 public abstract class UIComponentActivity
   extends AppCompatActivity
 {
@@ -40,35 +39,35 @@ public abstract class UIComponentActivity
   private static final String TAG = "MicroMsg.UIComponentActivity";
   private HashMap _$_findViewCache;
   private UIComponent layoutUIC;
-  private ViewModelStore modelStore;
+  private aa modelStore;
   private Bundle savedInstanceState;
   private final HashSet<UIComponent> uiComponents = new HashSet();
   
-  private final void mapStoreTo(ViewModelStore paramViewModelStore1, ViewModelStore paramViewModelStore2, b<Object, Boolean> paramb)
+  private final void mapStoreTo(aa paramaa1, aa paramaa2, b<Object, Boolean> paramb)
   {
-    if (paramViewModelStore1 == null) {}
+    if (paramaa1 == null) {}
     for (;;)
     {
       return;
-      Object localObject = ViewModelStore.class.getDeclaredField("mMap");
-      p.g(localObject, "ViewModelStore::class.ja….getDeclaredField(\"mMap\")");
+      Object localObject = aa.class.getDeclaredField("aaP");
+      p.j(localObject, "ViewModelStore::class.ja….getDeclaredField(\"mMap\")");
       ((Field)localObject).setAccessible(true);
-      paramViewModelStore1 = ((Field)localObject).get(paramViewModelStore1);
-      if (paramViewModelStore1 == null) {
-        throw new t("null cannot be cast to non-null type kotlin.collections.HashMap<kotlin.Any, kotlin.Any> /* = java.util.HashMap<kotlin.Any, kotlin.Any> */");
+      paramaa1 = ((Field)localObject).get(paramaa1);
+      if (paramaa1 == null) {
+        throw new kotlin.t("null cannot be cast to non-null type kotlin.collections.HashMap<kotlin.Any, kotlin.Any> /* = java.util.HashMap<kotlin.Any, kotlin.Any> */");
       }
-      paramViewModelStore1 = (HashMap)paramViewModelStore1;
-      paramViewModelStore2 = ((Field)localObject).get(paramViewModelStore2);
-      if (paramViewModelStore2 == null) {
-        throw new t("null cannot be cast to non-null type kotlin.collections.HashMap<kotlin.Any, kotlin.Any> /* = java.util.HashMap<kotlin.Any, kotlin.Any> */");
+      paramaa1 = (HashMap)paramaa1;
+      paramaa2 = ((Field)localObject).get(paramaa2);
+      if (paramaa2 == null) {
+        throw new kotlin.t("null cannot be cast to non-null type kotlin.collections.HashMap<kotlin.Any, kotlin.Any> /* = java.util.HashMap<kotlin.Any, kotlin.Any> */");
       }
-      paramViewModelStore2 = (HashMap)paramViewModelStore2;
-      paramViewModelStore1 = ((Map)paramViewModelStore1).entrySet().iterator();
-      while (paramViewModelStore1.hasNext())
+      paramaa2 = (HashMap)paramaa2;
+      paramaa1 = ((Map)paramaa1).entrySet().iterator();
+      while (paramaa1.hasNext())
       {
-        localObject = (Map.Entry)paramViewModelStore1.next();
+        localObject = (Map.Entry)paramaa1.next();
         if (((Boolean)paramb.invoke(((Map.Entry)localObject).getValue())).booleanValue()) {
-          ((Map)paramViewModelStore2).put(((Map.Entry)localObject).getKey(), ((Map.Entry)localObject).getValue());
+          ((Map)paramaa2).put(((Map.Entry)localObject).getKey(), ((Map.Entry)localObject).getValue());
         }
       }
     }
@@ -96,21 +95,21 @@ public abstract class UIComponentActivity
     return localView1;
   }
   
-  public final <T extends ViewModel> T component(Class<T> paramClass)
+  public final <T extends x> T component(Class<T> paramClass)
   {
-    p.h(paramClass, "modelClass");
-    a locala = a.PRN;
-    paramClass = a.b((AppCompatActivity)this).get(paramClass);
-    p.g(paramClass, "UICProvider.of(this).get(modelClass)");
+    p.k(paramClass, "modelClass");
+    g localg = g.Xox;
+    paramClass = g.b((AppCompatActivity)this).i(paramClass);
+    p.j(paramClass, "UICProvider.of(this).get(modelClass)");
     return paramClass;
   }
   
   public final boolean containUIC(Class<? extends UIComponent> paramClass)
   {
-    p.h(paramClass, "modelClass");
+    p.k(paramClass, "modelClass");
     Iterator localIterator = ((Iterable)this.uiComponents).iterator();
     while (localIterator.hasNext()) {
-      if (p.j(((UIComponent)localIterator.next()).getClass(), paramClass)) {
+      if (p.h(((UIComponent)localIterator.next()).getClass(), paramClass)) {
         return true;
       }
     }
@@ -123,7 +122,7 @@ public abstract class UIComponentActivity
     try
     {
       localObject1 = Activity.class.getDeclaredField("mResultData");
-      p.g(localObject1, "it");
+      p.j(localObject1, "it");
       ((Field)localObject1).setAccessible(true);
       localObject4 = ((Field)localObject1).get(this);
       localObject1 = localObject4;
@@ -146,9 +145,9 @@ public abstract class UIComponentActivity
       ((UIComponent)((Iterator)localObject3).next()).onBeforeFinish((Intent)localObject1);
     }
     localObject3 = getSupportFragmentManager();
-    p.g(localObject3, "supportFragmentManager");
-    localObject3 = ((g)localObject3).getFragments();
-    p.g(localObject3, "supportFragmentManager.fragments");
+    p.j(localObject3, "supportFragmentManager");
+    localObject3 = ((e)localObject3).getFragments();
+    p.j(localObject3, "supportFragmentManager.fragments");
     localObject3 = ((Iterable)localObject3).iterator();
     while (((Iterator)localObject3).hasNext())
     {
@@ -167,9 +166,9 @@ public abstract class UIComponentActivity
       ((UIComponent)((Iterator)localObject1).next()).onFinished();
     }
     localObject1 = getSupportFragmentManager();
-    p.g(localObject1, "supportFragmentManager");
-    localObject1 = ((g)localObject1).getFragments();
-    p.g(localObject1, "supportFragmentManager.fragments");
+    p.j(localObject1, "supportFragmentManager");
+    localObject1 = ((e)localObject1).getFragments();
+    p.j(localObject1, "supportFragmentManager.fragments");
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
@@ -189,46 +188,56 @@ public abstract class UIComponentActivity
     return this.layoutUIC;
   }
   
-  public ViewModelStore getViewModelStore()
+  public aa getViewModelStore()
   {
-    ViewModelStore localViewModelStore2 = this.modelStore;
-    ViewModelStore localViewModelStore1 = localViewModelStore2;
-    if (localViewModelStore2 == null)
+    aa localaa2 = this.modelStore;
+    aa localaa1 = localaa2;
+    if (localaa2 == null)
     {
-      localViewModelStore1 = new ViewModelStore();
-      mapStoreTo$default(this, super.getViewModelStore(), localViewModelStore1, null, 4, null);
-      this.modelStore = localViewModelStore1;
+      localaa1 = new aa();
+      mapStoreTo$default(this, super.getViewModelStore(), localaa1, null, 4, null);
+      this.modelStore = localaa1;
     }
-    return localViewModelStore1;
+    return localaa1;
   }
   
-  public abstract Set<Class<? extends UIComponent>> importUIComponents();
+  public Set<Class<? extends UIComponent>> importUIComponents()
+  {
+    return null;
+  }
+  
+  public void importUIComponents(HashSet<Class<? extends UIComponent>> paramHashSet)
+  {
+    p.k(paramHashSet, "set");
+    Set localSet = importUIComponents();
+    if (localSet != null) {
+      paramHashSet.addAll((Collection)j.o((Iterable)localSet));
+    }
+  }
   
   protected void initializeUIC(HashSet<UIComponent> paramHashSet)
   {
-    p.h(paramHashSet, "uiComponents");
-    Object localObject1 = importUIComponents();
-    if (localObject1 != null)
+    p.k(paramHashSet, "uiComponents");
+    Object localObject1 = new HashSet();
+    importUIComponents((HashSet)localObject1);
+    localObject1 = ((Iterable)localObject1).iterator();
+    int i = 0;
+    if (((Iterator)localObject1).hasNext())
     {
-      localObject1 = ((Iterable)localObject1).iterator();
-      int i = 0;
-      if (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (Class)((Iterator)localObject1).next();
-        a locala = a.PRN;
-        localObject2 = (UIComponent)a.b((AppCompatActivity)this).get((Class)localObject2);
-        paramHashSet.add(localObject2);
-        if (((UIComponent)localObject2).getLayoutId() == 0) {
-          break label138;
-        }
-        this.layoutUIC = ((UIComponent)localObject2);
-        if (i != 0) {
-          throw ((Throwable)new RuntimeException("already layout uic[" + this.layoutUIC + "], no more than one layout uic."));
-        }
-        i = 1;
+      Object localObject2 = (Class)((Iterator)localObject1).next();
+      g localg = g.Xox;
+      localObject2 = (UIComponent)g.b((AppCompatActivity)this).i((Class)localObject2);
+      paramHashSet.add(localObject2);
+      if (((UIComponent)localObject2).getLayoutId() == 0) {
+        break label142;
       }
+      this.layoutUIC = ((UIComponent)localObject2);
+      if (i != 0) {
+        throw ((Throwable)new RuntimeException("already layout uic[" + this.layoutUIC + "], no more than one layout uic."));
+      }
+      i = 1;
     }
-    label138:
+    label142:
     for (;;)
     {
       break;
@@ -243,9 +252,9 @@ public abstract class UIComponentActivity
       ((UIComponent)((Iterator)localObject1).next()).onActivityResult(paramInt1, paramInt2, paramIntent);
     }
     localObject1 = getSupportFragmentManager();
-    p.g(localObject1, "supportFragmentManager");
-    localObject1 = ((g)localObject1).getFragments();
-    p.g(localObject1, "supportFragmentManager.fragments");
+    p.j(localObject1, "supportFragmentManager");
+    localObject1 = ((e)localObject1).getFragments();
+    p.j(localObject1, "supportFragmentManager.fragments");
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
@@ -270,9 +279,9 @@ public abstract class UIComponentActivity
       }
     }
     localObject1 = getSupportFragmentManager();
-    p.g(localObject1, "supportFragmentManager");
-    localObject1 = ((g)localObject1).getFragments();
-    p.g(localObject1, "supportFragmentManager.fragments");
+    p.j(localObject1, "supportFragmentManager");
+    localObject1 = ((e)localObject1).getFragments();
+    p.j(localObject1, "supportFragmentManager.fragments");
     Object localObject2;
     do
     {
@@ -295,7 +304,7 @@ public abstract class UIComponentActivity
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    p.h(paramConfiguration, "newConfig");
+    p.k(paramConfiguration, "newConfig");
     super.onConfigurationChanged(paramConfiguration);
     Iterator localIterator = ((Iterable)this.uiComponents).iterator();
     while (localIterator.hasNext()) {
@@ -312,31 +321,31 @@ public abstract class UIComponentActivity
       ((UIComponent)localIterator.next()).onCreateBefore(paramBundle);
     }
     super.onCreate(paramBundle);
-    getLifecycle().addObserver((LifecycleObserver)new LifecycleObserver()
+    getLifecycle().a((k)new k()
     {
-      @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+      @androidx.lifecycle.t(jl=h.a.ON_CREATE)
       public final void onCreate()
       {
-        AppMethodBeat.i(204838);
-        Iterator localIterator = ((Iterable)UIComponentActivity.access$getUiComponents$p(this.PRT)).iterator();
+        AppMethodBeat.i(231580);
+        Iterator localIterator = ((Iterable)UIComponentActivity.access$getUiComponents$p(this.XoF)).iterator();
         while (localIterator.hasNext())
         {
           UIComponent localUIComponent = (UIComponent)localIterator.next();
-          Object localObject = this.PRT.getWindow();
-          p.g(localObject, "window");
+          Object localObject = this.XoF.getWindow();
+          p.j(localObject, "window");
           localObject = ((Window)localObject).getDecorView();
-          p.g(localObject, "window.decorView");
+          p.j(localObject, "window.decorView");
           localUIComponent.setRootView((View)localObject);
         }
-        localIterator = ((Iterable)UIComponentActivity.access$getUiComponents$p(this.PRT)).iterator();
+        localIterator = ((Iterable)UIComponentActivity.access$getUiComponents$p(this.XoF)).iterator();
         while (localIterator.hasNext()) {
           ((UIComponent)localIterator.next()).onCreate(paramBundle);
         }
-        localIterator = ((Iterable)UIComponentActivity.access$getUiComponents$p(this.PRT)).iterator();
+        localIterator = ((Iterable)UIComponentActivity.access$getUiComponents$p(this.XoF)).iterator();
         while (localIterator.hasNext()) {
           ((UIComponent)localIterator.next()).onCreateAfter(paramBundle);
         }
-        AppMethodBeat.o(204838);
+        AppMethodBeat.o(231580);
       }
     });
   }
@@ -348,15 +357,15 @@ public abstract class UIComponentActivity
       ((UIComponent)((Iterator)localObject).next()).onDestroy();
     }
     localObject = this.modelStore;
-    ViewModelStore localViewModelStore = super.getViewModelStore();
-    p.g(localViewModelStore, "super.getViewModelStore()");
-    mapStoreTo((ViewModelStore)localObject, localViewModelStore, (b)c.PRV);
+    aa localaa = super.getViewModelStore();
+    p.j(localaa, "super.getViewModelStore()");
+    mapStoreTo((aa)localObject, localaa, (b)c.XoH);
     super.onDestroy();
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    p.h(paramKeyEvent, "event");
+    p.k(paramKeyEvent, "event");
     Object localObject1 = ((Iterable)this.uiComponents).iterator();
     while (((Iterator)localObject1).hasNext()) {
       if (((UIComponent)((Iterator)localObject1).next()).onKeyDown(paramInt, paramKeyEvent)) {
@@ -364,9 +373,9 @@ public abstract class UIComponentActivity
       }
     }
     localObject1 = getSupportFragmentManager();
-    p.g(localObject1, "supportFragmentManager");
-    localObject1 = ((g)localObject1).getFragments();
-    p.g(localObject1, "supportFragmentManager.fragments");
+    p.j(localObject1, "supportFragmentManager");
+    localObject1 = ((e)localObject1).getFragments();
+    p.j(localObject1, "supportFragmentManager.fragments");
     Object localObject2;
     do
     {
@@ -389,7 +398,7 @@ public abstract class UIComponentActivity
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    p.h(paramKeyEvent, "event");
+    p.k(paramKeyEvent, "event");
     Object localObject1 = ((Iterable)this.uiComponents).iterator();
     while (((Iterator)localObject1).hasNext()) {
       if (((UIComponent)((Iterator)localObject1).next()).onKeyUp(paramInt, paramKeyEvent)) {
@@ -397,9 +406,9 @@ public abstract class UIComponentActivity
       }
     }
     localObject1 = getSupportFragmentManager();
-    p.g(localObject1, "supportFragmentManager");
-    localObject1 = ((g)localObject1).getFragments();
-    p.g(localObject1, "supportFragmentManager.fragments");
+    p.j(localObject1, "supportFragmentManager");
+    localObject1 = ((e)localObject1).getFragments();
+    p.j(localObject1, "supportFragmentManager.fragments");
     Object localObject2;
     do
     {
@@ -428,9 +437,9 @@ public abstract class UIComponentActivity
       ((UIComponent)((Iterator)localObject1).next()).onNewIntent(paramIntent);
     }
     localObject1 = getSupportFragmentManager();
-    p.g(localObject1, "supportFragmentManager");
-    localObject1 = ((g)localObject1).getFragments();
-    p.g(localObject1, "supportFragmentManager.fragments");
+    p.j(localObject1, "supportFragmentManager");
+    localObject1 = ((e)localObject1).getFragments();
+    p.j(localObject1, "supportFragmentManager.fragments");
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
@@ -456,16 +465,16 @@ public abstract class UIComponentActivity
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    p.h(paramArrayOfString, "permissions");
-    p.h(paramArrayOfInt, "grantResults");
+    p.k(paramArrayOfString, "permissions");
+    p.k(paramArrayOfInt, "grantResults");
     Object localObject1 = ((Iterable)this.uiComponents).iterator();
     while (((Iterator)localObject1).hasNext()) {
       ((UIComponent)((Iterator)localObject1).next()).onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     }
     localObject1 = getSupportFragmentManager();
-    p.g(localObject1, "supportFragmentManager");
-    localObject1 = ((g)localObject1).getFragments();
-    p.g(localObject1, "supportFragmentManager.fragments");
+    p.j(localObject1, "supportFragmentManager");
+    localObject1 = ((e)localObject1).getFragments();
+    p.j(localObject1, "supportFragmentManager.fragments");
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
@@ -501,6 +510,7 @@ public abstract class UIComponentActivity
   
   public void onSaveInstanceState(Bundle paramBundle)
   {
+    p.k(paramBundle, "outState");
     super.onSaveInstanceState(paramBundle);
     Iterator localIterator = ((Iterable)this.uiComponents).iterator();
     while (localIterator.hasNext()) {
@@ -559,41 +569,21 @@ public abstract class UIComponentActivity
     super.startActivityForResult(paramIntent, paramInt, paramBundle);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/component/UIComponentActivity$Companion;", "", "()V", "TAG", "", "libmmui_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/component/UIComponentActivity$Companion;", "", "()V", "TAG", "", "plugin-uic_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
-  static final class b
-    extends q
-    implements b<Object, Boolean>
-  {
-    public static final b PRS;
-    
-    static
-    {
-      AppMethodBeat.i(204837);
-      PRS = new b();
-      AppMethodBeat.o(204837);
-    }
-    
-    b()
-    {
-      super();
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "model", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "model", "", "invoke"})
   static final class c
     extends q
     implements b<Object, Boolean>
   {
-    public static final c PRV;
+    public static final c XoH;
     
     static
     {
-      AppMethodBeat.i(204840);
-      PRV = new c();
-      AppMethodBeat.o(204840);
+      AppMethodBeat.i(231657);
+      XoH = new c();
+      AppMethodBeat.o(231657);
     }
     
     c()
@@ -604,7 +594,7 @@ public abstract class UIComponentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.component.UIComponentActivity
  * JD-Core Version:    0.7.0.1
  */

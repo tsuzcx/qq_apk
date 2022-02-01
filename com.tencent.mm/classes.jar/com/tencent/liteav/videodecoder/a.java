@@ -9,22 +9,22 @@ class a
   
   public a(int paramInt)
   {
-    AppMethodBeat.i(222642);
+    AppMethodBeat.i(230773);
     this.a = new char[paramInt];
-    AppMethodBeat.o(222642);
+    AppMethodBeat.o(230773);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(222643);
+    AppMethodBeat.i(230774);
     String str = new String(this.a, 0, this.b);
-    AppMethodBeat.o(222643);
+    AppMethodBeat.o(230774);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.videodecoder.a
  * JD-Core Version:    0.7.0.1
  */

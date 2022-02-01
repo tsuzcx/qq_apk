@@ -4,17 +4,16 @@ import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.model.am;
-import com.tencent.mm.plugin.card.model.c;
+import com.tencent.mm.plugin.card.model.g;
 import com.tencent.mm.plugin.card.sharecard.a.a;
 import com.tencent.mm.plugin.card.sharecard.model.ShareCardInfo;
 import com.tencent.mm.plugin.card.sharecard.model.k;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.ty;
+import com.tencent.mm.protocal.protobuf.ua;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -24,32 +23,32 @@ import java.util.List;
 public final class d
   implements i, k.a, com.tencent.mm.plugin.card.base.d
 {
+  public List<WeakReference<a>> cSF;
   public WeakReference<Context> mContextRef;
-  public List<WeakReference<a>> pQG;
-  public HashMap<a, Boolean> pQS;
-  public HashMap<String, Boolean> pQT;
-  public HashMap<String, Boolean> pQU;
-  public com.tencent.mm.plugin.card.base.b pQV;
-  public boolean pQW;
-  public String pQX;
+  public HashMap<a, Boolean> tmR;
+  public HashMap<String, Boolean> tmS;
+  public HashMap<String, Boolean> tmT;
+  public com.tencent.mm.plugin.card.base.b tmU;
+  public boolean tmV;
+  public String tmW;
   
   public d()
   {
     AppMethodBeat.i(112598);
-    this.pQG = new ArrayList();
-    this.pQS = new HashMap();
-    this.pQT = new HashMap();
-    this.pQU = new HashMap();
-    this.pQV = null;
-    this.pQW = false;
+    this.cSF = new ArrayList();
+    this.tmR = new HashMap();
+    this.tmS = new HashMap();
+    this.tmT = new HashMap();
+    this.tmU = null;
+    this.tmV = false;
     AppMethodBeat.o(112598);
   }
   
-  private void ajb(String paramString)
+  private void aqO(String paramString)
   {
     AppMethodBeat.i(112609);
     Log.i("MicroMsg.CardConsumedMgr", "startConsumedSuccUI()");
-    if (this.pQG == null)
+    if (this.cSF == null)
     {
       AppMethodBeat.o(112609);
       return;
@@ -57,18 +56,18 @@ public final class d
     int j = 0;
     int i = 0;
     Object localObject;
-    if (j < this.pQG.size())
+    if (j < this.cSF.size())
     {
-      localObject = (WeakReference)this.pQG.get(j);
+      localObject = (WeakReference)this.cSF.get(j);
       if (localObject == null) {
         break label216;
       }
       localObject = (a)((WeakReference)localObject).get();
-      Boolean localBoolean = (Boolean)this.pQS.get(localObject);
+      Boolean localBoolean = (Boolean)this.tmR.get(localObject);
       if ((localObject == null) || (localBoolean == null) || (!localBoolean.booleanValue())) {
         break label216;
       }
-      ((a)localObject).ajc(paramString);
+      ((a)localObject).aqP(paramString);
       i = 1;
     }
     label216:
@@ -76,19 +75,19 @@ public final class d
     {
       j += 1;
       break;
-      localObject = (Boolean)this.pQT.get(this.pQV.csU());
+      localObject = (Boolean)this.tmS.get(this.tmU.cGw());
       if (i != 0)
       {
         Log.i("MicroMsg.CardConsumedMgr", "onStartConsumedSuccUI is handled!");
-        this.pQX = "";
+        this.tmW = "";
         AppMethodBeat.o(112609);
         return;
       }
       if ((localObject != null) && (((Boolean)localObject).booleanValue()))
       {
         Log.i("MicroMsg.CardConsumedMgr", "add to launch pending list!");
-        this.pQX = paramString;
-        this.pQU.put(this.pQV.csU(), Boolean.TRUE);
+        this.tmW = paramString;
+        this.tmT.put(this.tmU.cGw(), Boolean.TRUE);
       }
       AppMethodBeat.o(112609);
       return;
@@ -99,15 +98,15 @@ public final class d
   {
     AppMethodBeat.i(112610);
     Log.i("MicroMsg.CardConsumedMgr", "doUpdateCardInfo()");
-    if (this.pQG == null)
+    if (this.cSF == null)
     {
       AppMethodBeat.o(112610);
       return;
     }
     int i = 0;
-    while (i < this.pQG.size())
+    while (i < this.cSF.size())
     {
-      Object localObject = (WeakReference)this.pQG.get(i);
+      Object localObject = (WeakReference)this.cSF.get(i);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();
@@ -120,24 +119,24 @@ public final class d
     AppMethodBeat.o(112610);
   }
   
-  private void ctl()
+  private void cGN()
   {
     AppMethodBeat.i(112611);
     Log.i("MicroMsg.CardConsumedMgr", "doVibrate()");
-    if (this.pQG == null)
+    if (this.cSF == null)
     {
       AppMethodBeat.o(112611);
       return;
     }
     int i = 0;
-    while (i < this.pQG.size())
+    while (i < this.cSF.size())
     {
-      Object localObject = (WeakReference)this.pQG.get(i);
+      Object localObject = (WeakReference)this.cSF.get(i);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();
         if (localObject != null) {
-          ((a)localObject).ctp();
+          ((a)localObject).cGR();
         }
       }
       i += 1;
@@ -145,24 +144,24 @@ public final class d
     AppMethodBeat.o(112611);
   }
   
-  private void ctm()
+  private void cGO()
   {
     AppMethodBeat.i(112612);
     Log.i("MicroMsg.CardConsumedMgr", "doFinishUI()");
-    if (this.pQG == null)
+    if (this.cSF == null)
     {
       AppMethodBeat.o(112612);
       return;
     }
     int i = 0;
-    while (i < this.pQG.size())
+    while (i < this.cSF.size())
     {
-      Object localObject = (WeakReference)this.pQG.get(i);
+      Object localObject = (WeakReference)this.cSF.get(i);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();
         if (localObject != null) {
-          ((a)localObject).ctq();
+          ((a)localObject).cGS();
         }
       }
       i += 1;
@@ -170,16 +169,16 @@ public final class d
     AppMethodBeat.o(112612);
   }
   
-  private void ctn()
+  private void cGP()
   {
     AppMethodBeat.i(112613);
     Log.i("MicroMsg.CardConsumedMgr", "needDoConsumedInfo(), need to do NetSceneGetShareCardConsumedInfo. ");
-    cto();
+    cGQ();
     AppMethodBeat.o(112613);
   }
   
   /* Error */
-  private void cto()
+  private void cGQ()
   {
     // Byte code:
     //   0: aload_0
@@ -187,7 +186,7 @@ public final class d
     //   2: ldc 155
     //   4: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 60	com/tencent/mm/plugin/card/b/d:pQW	Z
+    //   8: getfield 60	com/tencent/mm/plugin/card/b/d:tmV	Z
     //   11: ifeq +18 -> 29
     //   14: ldc 69
     //   16: ldc 157
@@ -202,21 +201,21 @@ public final class d
     //   33: invokestatic 76	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   36: aload_0
     //   37: iconst_1
-    //   38: putfield 60	com/tencent/mm/plugin/card/b/d:pQW	Z
+    //   38: putfield 60	com/tencent/mm/plugin/card/b/d:tmV	Z
     //   41: new 161	com/tencent/mm/plugin/card/sharecard/model/d
     //   44: dup
     //   45: aload_0
-    //   46: getfield 58	com/tencent/mm/plugin/card/b/d:pQV	Lcom/tencent/mm/plugin/card/base/b;
+    //   46: getfield 58	com/tencent/mm/plugin/card/b/d:tmU	Lcom/tencent/mm/plugin/card/base/b;
     //   49: invokeinterface 109 1 0
     //   54: ldc 113
     //   56: ldc 113
     //   58: invokespecial 164	com/tencent/mm/plugin/card/sharecard/model/d:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   61: astore_1
-    //   62: invokestatic 170	com/tencent/mm/kernel/g:aAg	()Lcom/tencent/mm/kernel/b;
-    //   65: getfield 176	com/tencent/mm/kernel/b:hqi	Lcom/tencent/mm/ak/t;
+    //   62: invokestatic 170	com/tencent/mm/kernel/h:aHF	()Lcom/tencent/mm/kernel/c;
+    //   65: getfield 176	com/tencent/mm/kernel/c:kcd	Lcom/tencent/mm/an/t;
     //   68: aload_1
     //   69: iconst_0
-    //   70: invokevirtual 181	com/tencent/mm/ak/t:a	(Lcom/tencent/mm/ak/q;I)Z
+    //   70: invokevirtual 181	com/tencent/mm/an/t:a	(Lcom/tencent/mm/an/q;I)Z
     //   73: pop
     //   74: ldc 155
     //   76: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -240,78 +239,78 @@ public final class d
   public final void a(a parama)
   {
     AppMethodBeat.i(112600);
-    if (this.pQG == null) {
-      this.pQG = new ArrayList();
+    if (this.cSF == null) {
+      this.cSF = new ArrayList();
     }
-    this.pQG.add(new WeakReference(parama));
+    this.cSF.add(new WeakReference(parama));
     AppMethodBeat.o(112600);
   }
   
   public final void a(a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(112603);
-    if (this.pQS == null) {
-      this.pQS = new HashMap();
+    if (this.tmR == null) {
+      this.tmR = new HashMap();
     }
-    this.pQS.put(parama, Boolean.valueOf(paramBoolean));
+    this.tmR.put(parama, Boolean.valueOf(paramBoolean));
     AppMethodBeat.o(112603);
   }
   
-  public final void a(com.tencent.mm.plugin.card.model.g paramg)
+  public final void a(g paramg)
   {
     AppMethodBeat.i(112607);
     Log.i("MicroMsg.CardConsumedMgr", "onChange()");
     Log.i("MicroMsg.CardConsumedMgr", "card msg card id is " + paramg.field_card_id);
-    if (this.pQV == null)
+    if (this.tmU == null)
     {
       Log.e("MicroMsg.CardConsumedMgr", "onChange(), do nothing, mCardInfo == null");
-      ctm();
+      cGO();
       AppMethodBeat.o(112607);
       return;
     }
     Log.i("MicroMsg.CardConsumedMgr", "card msg card id is " + paramg.field_card_id);
-    if ((this.pQV.csv()) && (paramg.field_card_id != null) && (paramg.field_card_id.equals(this.pQV.csU())) && (paramg.pTF == 3))
+    if ((this.tmU.cFW()) && (paramg.field_card_id != null) && (paramg.field_card_id.equals(this.tmU.cGw())) && (paramg.tpG == 3))
     {
       Log.i("MicroMsg.CardConsumedMgr", "it is card type, don't do NetSceneGetShareCardConsumedInfo! finish UI");
-      ctm();
+      cGO();
       AppMethodBeat.o(112607);
       return;
     }
-    if (!this.pQV.csw())
+    if (!this.tmU.cFX())
     {
       Log.i("MicroMsg.CardConsumedMgr", "it is not card type, don't update share card data!");
-      ctm();
+      cGO();
       AppMethodBeat.o(112607);
       return;
     }
     int i;
     Object localObject;
-    if ((paramg.pTF == 3) || ((paramg.field_card_id != null) && (paramg.field_card_id.equals(this.pQV.csU())) && (!TextUtils.isEmpty(paramg.field_consumed_box_id))))
+    if ((paramg.tpG == 3) || ((paramg.field_card_id != null) && (paramg.field_card_id.equals(this.tmU.cGw())) && (!TextUtils.isEmpty(paramg.field_consumed_box_id))))
     {
       long l1 = System.currentTimeMillis();
       Log.i("MicroMsg.CardConsumedMgr", "consumed share card msg,  update share card data!");
-      if ((paramg.field_card_id == null) || (!paramg.field_card_id.equals(this.pQV.csU()))) {
+      if ((paramg.field_card_id == null) || (!paramg.field_card_id.equals(this.tmU.cGw()))) {
         break label652;
       }
-      paramg = am.ctY().ajA(this.pQV.csU());
-      if ((paramg != null) && (paramg.csR() != null))
+      paramg = am.cHA().arn(this.tmU.cGw());
+      if ((paramg != null) && (paramg.cGt() != null))
       {
-        i = this.pQV.csR().status;
-        Log.d("MicroMsg.CardConsumedMgr", "onChange() current oldState %s, newStatus %s, shareCardStatus %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramg.csR().status), Integer.valueOf(((ShareCardInfo)this.pQV).field_status) });
-        if (paramg.csR().status == i) {
+        i = this.tmU.cGt().status;
+        Log.d("MicroMsg.CardConsumedMgr", "onChange() current oldState %s, newStatus %s, shareCardStatus %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramg.cGt().status), Integer.valueOf(((ShareCardInfo)this.tmU).field_status) });
+        if (paramg.cGt().status == i) {
           break label585;
         }
-        ctl();
+        cGN();
       }
-      c(this.pQV);
-      paramg = (Boolean)this.pQT.get(this.pQV.csU());
+      c(this.tmU);
+      paramg = (Boolean)this.tmS.get(this.tmU.cGw());
       if ((paramg != null) && (paramg.booleanValue())) {
         break label769;
       }
       paramg = (Context)this.mContextRef.get();
-      Log.i("MicroMsg.CardConsumedMgr", "consume share card, card id is " + this.pQV.csU());
-      com.tencent.mm.plugin.card.sharecard.a.b.a(paramg, this.pQV);
-      this.pQT.put(this.pQV.csU(), Boolean.TRUE);
+      Log.i("MicroMsg.CardConsumedMgr", "consume share card, card id is " + this.tmU.cGw());
+      com.tencent.mm.plugin.card.sharecard.a.b.a(paramg, this.tmU);
+      this.tmS.put(this.tmU.cGw(), Boolean.TRUE);
       long l2 = System.currentTimeMillis();
       paramg = new ArrayList();
       localObject = new IDKey();
@@ -324,11 +323,11 @@ public final class d
       localIDKey.SetValue((int)(l2 - l1));
       paramg.add(localObject);
       paramg.add(localIDKey);
-      h.CyF.b(paramg, true);
+      com.tencent.mm.plugin.report.service.h.IzE.b(paramg, true);
     }
     for (;;)
     {
-      ctn();
+      cGP();
       AppMethodBeat.o(112607);
       return;
       label585:
@@ -336,27 +335,27 @@ public final class d
         break;
       }
       Log.i("MicroMsg.CardConsumedMgr", "share card oldState status is ".concat(String.valueOf(i)));
-      paramg = this.pQV.csR();
+      paramg = this.tmU.cGt();
       paramg.status = 1;
-      ((ShareCardInfo)this.pQV).field_status = 1;
-      this.pQV.a(paramg);
-      l.h(this.pQV);
+      ((ShareCardInfo)this.tmU).field_status = 1;
+      this.tmU.a(paramg);
+      l.h(this.tmU);
       break;
       label652:
       if (paramg.field_card_id == null) {
         break;
       }
-      paramg = am.ctY().ajA(paramg.field_card_id);
-      if ((paramg != null) && (paramg.csR() != null))
+      paramg = am.cHA().arn(paramg.field_card_id);
+      if ((paramg != null) && (paramg.cGt() != null))
       {
-        Log.d("MicroMsg.CardConsumedMgr", "onChange() not current oldState %s,shareCardStatus %s", new Object[] { Integer.valueOf(paramg.csR().status), Integer.valueOf(paramg.field_status) });
-        if (paramg.csR().status == 1) {
+        Log.d("MicroMsg.CardConsumedMgr", "onChange() not current oldState %s,shareCardStatus %s", new Object[] { Integer.valueOf(paramg.cGt().status), Integer.valueOf(paramg.field_status) });
+        if (paramg.cGt().status == 1) {
           break;
         }
-        localObject = paramg.csR();
-        ((ty)localObject).status = 1;
+        localObject = paramg.cGt();
+        ((ua)localObject).status = 1;
         paramg.field_status = 1;
-        paramg.a((ty)localObject);
+        paramg.a((ua)localObject);
         l.h(paramg);
         break;
       }
@@ -370,21 +369,21 @@ public final class d
   public final void b(a parama)
   {
     AppMethodBeat.i(112601);
-    if (this.pQG == null)
+    if (this.cSF == null)
     {
       AppMethodBeat.o(112601);
       return;
     }
     int i = 0;
-    while (i < this.pQG.size())
+    while (i < this.cSF.size())
     {
-      WeakReference localWeakReference = (WeakReference)this.pQG.get(i);
+      WeakReference localWeakReference = (WeakReference)this.cSF.get(i);
       if (localWeakReference != null)
       {
         a locala = (a)localWeakReference.get();
         if ((locala != null) && (locala.equals(parama)))
         {
-          this.pQG.remove(localWeakReference);
+          this.cSF.remove(localWeakReference);
           AppMethodBeat.o(112601);
           return;
         }
@@ -397,23 +396,23 @@ public final class d
   public final void b(com.tencent.mm.plugin.card.base.b paramb)
   {
     AppMethodBeat.i(112602);
-    this.pQV = paramb;
-    if ((this.pQW) && (this.pQV != null) && (paramb.csU() != null) && (!paramb.csU().equals(this.pQV.csU()))) {
-      this.pQW = false;
+    this.tmU = paramb;
+    if ((this.tmV) && (this.tmU != null) && (paramb.cGw() != null) && (!paramb.cGw().equals(this.tmU.cGw()))) {
+      this.tmV = false;
     }
-    if (this.pQG == null)
+    if (this.cSF == null)
     {
       AppMethodBeat.o(112602);
       return;
     }
     int i = 0;
-    while (i < this.pQG.size())
+    while (i < this.cSF.size())
     {
-      Object localObject = (WeakReference)this.pQG.get(i);
+      Object localObject = (WeakReference)this.cSF.get(i);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();
-        Boolean localBoolean = (Boolean)this.pQS.get(localObject);
+        Boolean localBoolean = (Boolean)this.tmR.get(localObject);
         if ((localObject != null) && (localBoolean != null) && (!localBoolean.booleanValue())) {
           ((a)localObject).d(paramb);
         }
@@ -426,18 +425,18 @@ public final class d
   public final void c(a parama)
   {
     AppMethodBeat.i(112604);
-    if (this.pQS == null) {
-      this.pQS = new HashMap();
+    if (this.tmR == null) {
+      this.tmR = new HashMap();
     }
-    this.pQS.remove(parama);
+    this.tmR.remove(parama);
     AppMethodBeat.o(112604);
   }
   
-  public final void ctb()
+  public final void cGD()
   {
     AppMethodBeat.i(112605);
     Log.i("MicroMsg.CardConsumedMgr", "onDBchange()");
-    if (this.pQV == null)
+    if (this.tmU == null)
     {
       Log.e("MicroMsg.CardConsumedMgr", "onDBchange(), do nothing, mCardInfo == null");
       AppMethodBeat.o(112605);
@@ -446,34 +445,34 @@ public final class d
     Object localObject1;
     label222:
     Object localObject2;
-    if (this.pQV.csw())
+    if (this.tmU.cFX())
     {
-      localObject1 = am.ctY().ajA(this.pQV.csU());
-      if ((localObject1 != null) && (((com.tencent.mm.plugin.card.base.b)localObject1).csR() != null) && (this.pQV != null) && (this.pQV.csR() != null))
+      localObject1 = am.cHA().arn(this.tmU.cGw());
+      if ((localObject1 != null) && (((com.tencent.mm.plugin.card.base.b)localObject1).cGt() != null) && (this.tmU != null) && (this.tmU.cGt() != null))
       {
-        int i = this.pQV.csR().status;
-        Log.d("MicroMsg.CardConsumedMgr", "onDBchange() oldState %s, newStatus %s, isDoingConsumedInfo %s, isShareCard %s", new Object[] { Integer.valueOf(i), Integer.valueOf(((com.tencent.mm.plugin.card.base.b)localObject1).csR().status), Boolean.valueOf(this.pQW), Boolean.valueOf(this.pQV.csw()) });
-        if ((!this.pQV.csw()) || (!(this.pQV instanceof ShareCardInfo))) {
+        int i = this.tmU.cGt().status;
+        Log.d("MicroMsg.CardConsumedMgr", "onDBchange() oldState %s, newStatus %s, isDoingConsumedInfo %s, isShareCard %s", new Object[] { Integer.valueOf(i), Integer.valueOf(((com.tencent.mm.plugin.card.base.b)localObject1).cGt().status), Boolean.valueOf(this.tmV), Boolean.valueOf(this.tmU.cFX()) });
+        if ((!this.tmU.cFX()) || (!(this.tmU instanceof ShareCardInfo))) {
           break label555;
         }
-        Log.d("MicroMsg.CardConsumedMgr", "onDBchange() shareCardState %s", new Object[] { Integer.valueOf(((ShareCardInfo)this.pQV).field_status) });
-        if (((com.tencent.mm.plugin.card.base.b)localObject1).csR().status != i)
+        Log.d("MicroMsg.CardConsumedMgr", "onDBchange() shareCardState %s", new Object[] { Integer.valueOf(((ShareCardInfo)this.tmU).field_status) });
+        if (((com.tencent.mm.plugin.card.base.b)localObject1).cGt().status != i)
         {
-          ctl();
-          if ((!this.pQV.csw()) || (this.pQW) || (((com.tencent.mm.plugin.card.base.b)localObject1).csR().status != 1)) {
+          cGN();
+          if ((!this.tmU.cFX()) || (this.tmV) || (((com.tencent.mm.plugin.card.base.b)localObject1).cGt().status != 1)) {
             break label607;
           }
           Log.i("MicroMsg.CardConsumedMgr", "onDBchange(), need to get the consumedinfo , don't finish UI!");
-          localObject2 = (Boolean)this.pQT.get(this.pQV.csU());
+          localObject2 = (Boolean)this.tmS.get(this.tmU.cGw());
           if ((localObject2 != null) && (((Boolean)localObject2).booleanValue())) {
             break label578;
           }
           Log.i("MicroMsg.CardConsumedMgr", "consumed is null or consumed is false!");
           long l1 = System.currentTimeMillis();
           localObject2 = (Context)this.mContextRef.get();
-          Log.i("MicroMsg.CardConsumedMgr", "consume share card, card id is " + this.pQV.csU());
-          com.tencent.mm.plugin.card.sharecard.a.b.a((Context)localObject2, this.pQV);
-          this.pQT.put(this.pQV.csU(), Boolean.TRUE);
+          Log.i("MicroMsg.CardConsumedMgr", "consume share card, card id is " + this.tmU.cGw());
+          com.tencent.mm.plugin.card.sharecard.a.b.a((Context)localObject2, this.tmU);
+          this.tmS.put(this.tmU.cGw(), Boolean.TRUE);
           long l2 = System.currentTimeMillis();
           localObject2 = new ArrayList();
           IDKey localIDKey1 = new IDKey();
@@ -486,23 +485,23 @@ public final class d
           localIDKey2.SetValue((int)(l2 - l1));
           ((ArrayList)localObject2).add(localIDKey1);
           ((ArrayList)localObject2).add(localIDKey2);
-          h.CyF.b((ArrayList)localObject2, true);
+          com.tencent.mm.plugin.report.service.h.IzE.b((ArrayList)localObject2, true);
           label502:
-          ctn();
+          cGP();
         }
       }
     }
     for (;;)
     {
       Log.i("MicroMsg.CardConsumedMgr", "onDBchange(),card coupon is consumde success!");
-      this.pQV = ((com.tencent.mm.plugin.card.base.b)localObject1);
-      c(this.pQV);
+      this.tmU = ((com.tencent.mm.plugin.card.base.b)localObject1);
+      c(this.tmU);
       AppMethodBeat.o(112605);
       return;
-      localObject1 = am.ctQ().ajk(this.pQV.csU());
+      localObject1 = am.cHs().aqX(this.tmU.cGw());
       break;
       label555:
-      if (!this.pQV.csw()) {
+      if (!this.tmU.cFX()) {
         break label222;
       }
       Log.e("MicroMsg.CardConsumedMgr", "onDBchange() mCardInfo is ShareCard, but not the ShareCardInfo instance!");
@@ -511,14 +510,14 @@ public final class d
       Log.i("MicroMsg.CardConsumedMgr", "consumed:" + ((Boolean)localObject2).booleanValue());
       break label502;
       label607:
-      if ((this.pQV.csw()) && (this.pQW))
+      if ((this.tmU.cFX()) && (this.tmV))
       {
         Log.i("MicroMsg.CardConsumedMgr", "onDBchange(), is getting the consumedinfo!");
       }
       else
       {
         Log.i("MicroMsg.CardConsumedMgr", "onDBchange(),finish CardConsumeCodeUI!");
-        ctm();
+        cGO();
       }
     }
   }
@@ -526,7 +525,7 @@ public final class d
   public final void onChange()
   {
     AppMethodBeat.i(112606);
-    ctl();
+    cGN();
     AppMethodBeat.o(112606);
   }
   
@@ -539,14 +538,14 @@ public final class d
       if ((paramq instanceof com.tencent.mm.plugin.card.sharecard.model.d))
       {
         paramString = (com.tencent.mm.plugin.card.sharecard.model.d)paramq;
-        if (!TextUtils.isEmpty(paramString.pTY)) {
-          ajb(paramString.pTY);
+        if (!TextUtils.isEmpty(paramString.tpZ)) {
+          aqO(paramString.tpZ);
         }
         for (;;)
         {
-          this.pQW = false;
+          this.tmV = false;
           Log.e("MicroMsg.CardConsumedMgr", "do NetSceneGetShareCardConsumedInfo ok! finish UI!");
-          ctm();
+          cGO();
           AppMethodBeat.o(112608);
           return;
           Log.e("MicroMsg.CardConsumedMgr", "consumed return json is empty!");
@@ -555,9 +554,9 @@ public final class d
     }
     else if ((paramq instanceof com.tencent.mm.plugin.card.sharecard.model.d))
     {
-      this.pQW = false;
+      this.tmV = false;
       Log.e("MicroMsg.CardConsumedMgr", "do NetSceneGetShareCardConsumedInfo failed! finish UI!");
-      ctm();
+      cGO();
       AppMethodBeat.o(112608);
       return;
     }
@@ -567,32 +566,32 @@ public final class d
   public final void release()
   {
     AppMethodBeat.i(112599);
-    com.tencent.mm.kernel.g.aAg().hqi.b(910, this);
-    am.ctX().b(this);
-    b localb = am.ctP();
+    com.tencent.mm.kernel.h.aHF().kcd.b(910, this);
+    am.cHz().b(this);
+    b localb = am.cHr();
     int i;
-    if (localb.pQG != null) {
+    if (localb.cSF != null) {
       i = 0;
     }
     for (;;)
     {
-      if (i < localb.pQG.size())
+      if (i < localb.cSF.size())
       {
-        WeakReference localWeakReference = (WeakReference)localb.pQG.get(i);
+        WeakReference localWeakReference = (WeakReference)localb.cSF.get(i);
         if (localWeakReference != null)
         {
           com.tencent.mm.plugin.card.base.d locald = (com.tencent.mm.plugin.card.base.d)localWeakReference.get();
           if ((locald != null) && (locald.equals(this))) {
-            localb.pQG.remove(localWeakReference);
+            localb.cSF.remove(localWeakReference);
           }
         }
       }
       else
       {
-        this.pQG.clear();
-        this.pQS.clear();
-        this.pQU.clear();
-        this.pQW = false;
+        this.cSF.clear();
+        this.tmR.clear();
+        this.tmT.clear();
+        this.tmV = false;
         AppMethodBeat.o(112599);
         return;
       }
@@ -602,11 +601,11 @@ public final class d
   
   public static abstract interface a
   {
-    public abstract void ajc(String paramString);
+    public abstract void aqP(String paramString);
     
-    public abstract void ctp();
+    public abstract void cGR();
     
-    public abstract void ctq();
+    public abstract void cGS();
     
     public abstract void d(com.tencent.mm.plugin.card.base.b paramb);
   }

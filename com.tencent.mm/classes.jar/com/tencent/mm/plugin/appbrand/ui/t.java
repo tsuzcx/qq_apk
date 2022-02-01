@@ -1,106 +1,120 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.content.ComponentName;
+import android.app.Activity;
+import android.app.Application;
+import android.app.Application.ActivityLifecycleCallbacks;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
-import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import java.lang.ref.WeakReference;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import kotlin.g.b.p;
-import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIMoveTaskToBackGuardIPCHelper;", "", "()V", "TAG", "", "register", "", "activity", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI;", "unregister", "makeKey", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIMoveTaskToBackGuardLogic;", "", "()V", "TAG", "", "onMMTaskToFrontListeners", "Ljava/util/concurrent/ConcurrentHashMap;", "Lkotlin/Function0;", "", "install", "application", "Landroid/app/Application;", "registerOnMMTaskToFrontListener", "key", "block", "unregisterOnMMTaskToFrontListener", "plugin-appbrand-integration_release"})
 public final class t
 {
-  public static final t nXI;
+  private static final ConcurrentHashMap<String, kotlin.g.a.a<x>> qZt;
+  public static final t qZu;
   
   static
   {
-    AppMethodBeat.i(229521);
-    nXI = new t();
-    AppMethodBeat.o(229521);
+    AppMethodBeat.i(270424);
+    qZu = new t();
+    qZt = new ConcurrentHashMap();
+    AppMethodBeat.o(270424);
   }
   
-  private static String j(AppBrandUI paramAppBrandUI)
+  public static void amU(String paramString)
   {
-    AppMethodBeat.i(229518);
-    StringBuilder localStringBuilder = new StringBuilder();
-    ComponentName localComponentName = paramAppBrandUI.getComponentName();
-    p.g(localComponentName, "this.componentName");
-    paramAppBrandUI = localComponentName.getShortClassName() + '@' + paramAppBrandUI.hashCode();
-    AppMethodBeat.o(229518);
-    return paramAppBrandUI;
+    AppMethodBeat.i(270423);
+    p.k(paramString, "key");
+    qZt.remove(paramString);
+    AppMethodBeat.o(270423);
   }
   
-  public static final void k(AppBrandUI paramAppBrandUI)
+  public static void i(String paramString, kotlin.g.a.a<x> parama)
   {
-    AppMethodBeat.i(229519);
-    p.h(paramAppBrandUI, "activity");
-    if ((paramAppBrandUI instanceof AppBrandPluginUI))
+    AppMethodBeat.i(270421);
+    p.k(paramString, "key");
+    p.k(parama, "block");
+    ((Map)qZt).put(paramString, parama);
+    AppMethodBeat.o(270421);
+  }
+  
+  public static final void install(Application paramApplication)
+  {
+    AppMethodBeat.i(270419);
+    p.k(paramApplication, "application");
+    paramApplication.registerActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)new a());
+    AppMethodBeat.o(270419);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/ui/AppBrandUIMoveTaskToBackGuardLogic$install$1", "Lcom/tencent/mm/plugin/appbrand/util/ActivityLifecycleCallbacksAdapter;", "onActivityPostStarted", "", "activity", "Landroid/app/Activity;", "plugin-appbrand-integration_release"})
+  public static final class a
+    extends com.tencent.mm.plugin.appbrand.ac.a
+  {
+    public final void onActivityPostStarted(Activity paramActivity)
     {
-      AppMethodBeat.o(229519);
+      AppMethodBeat.i(274713);
+      p.k(paramActivity, "activity");
+      Object localObject = t.qZu;
+      if (t.ckn().size() > 0)
+      {
+        int i = paramActivity.getTaskId();
+        localObject = (com.tencent.mm.ui.l.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.ui.l.a.class);
+        if (localObject == null) {
+          break label108;
+        }
+        localObject = ((com.tencent.mm.ui.l.a)localObject).hHi();
+        if (localObject == null) {
+          break label108;
+        }
+        if (i == ((Activity)localObject).getTaskId())
+        {
+          Log.i("MicroMsg.AppBrandUIMoveTaskToBackGuardLogic", "onActivityPostStarted " + paramActivity + ", invoke onMMTaskToFront");
+          com.tencent.e.h.ZvG.bg((Runnable)a.qZv);
+        }
+      }
+      AppMethodBeat.o(274713);
       return;
+      label108:
+      AppMethodBeat.o(274713);
     }
-    final WeakReference localWeakReference = new WeakReference(paramAppBrandUI);
-    paramAppBrandUI = j(paramAppBrandUI);
-    com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new IPCString(paramAppBrandUI), (b)a.nXJ, (d)new b(paramAppBrandUI, localWeakReference));
-    AppMethodBeat.o(229519);
-  }
-  
-  public static final void l(AppBrandUI paramAppBrandUI)
-  {
-    AppMethodBeat.i(229520);
-    p.h(paramAppBrandUI, "activity");
-    if ((paramAppBrandUI instanceof AppBrandPluginUI))
-    {
-      AppMethodBeat.o(229520);
-      return;
-    }
-    com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new IPCString(j(paramAppBrandUI)), (b)c.nXK, null);
-    AppMethodBeat.o(229520);
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "data", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
-  static final class a<InputType, ResultType>
-    implements b<IPCString, IPCVoid>
-  {
-    public static final a nXJ;
     
-    static
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+    static final class a
+      implements Runnable
     {
-      AppMethodBeat.i(229514);
-      nXJ = new a();
-      AppMethodBeat.o(229514);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class b<T>
-    implements d<IPCVoid>
-  {
-    b(String paramString, WeakReference paramWeakReference) {}
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "data", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
-  static final class c<InputType, ResultType>
-    implements b<IPCString, IPCVoid>
-  {
-    public static final c nXK;
-    
-    static
-    {
-      AppMethodBeat.i(229517);
-      nXK = new c();
-      AppMethodBeat.o(229517);
+      public static final a qZv;
+      
+      static
+      {
+        AppMethodBeat.i(271998);
+        qZv = new a();
+        AppMethodBeat.o(271998);
+      }
+      
+      public final void run()
+      {
+        AppMethodBeat.i(271996);
+        Object localObject = t.qZu;
+        localObject = ((Map)t.ckn()).entrySet().iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((kotlin.g.a.a)((Map.Entry)((Iterator)localObject).next()).getValue()).invoke();
+        }
+        AppMethodBeat.o(271996);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.t
  * JD-Core Version:    0.7.0.1
  */

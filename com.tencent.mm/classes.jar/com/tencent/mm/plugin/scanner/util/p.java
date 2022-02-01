@@ -1,135 +1,113 @@
 package com.tencent.mm.plugin.scanner.util;
 
+import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.b;
-import com.tencent.mm.an.f;
-import com.tencent.mm.i.a;
-import com.tencent.mm.i.c;
-import com.tencent.mm.i.d;
-import com.tencent.mm.i.g;
-import com.tencent.mm.i.g.a;
-import com.tencent.mm.model.z;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.io.ByteArrayOutputStream;
-import java.util.HashMap;
-import java.util.Map;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/util/ScanYuvUtils;", "", "()V", "encodeYUV420SP", "", "yuv420sp", "", "argb", "", "width", "", "height", "getNV21", "inputWidth", "inputHeight", "scaled", "Landroid/graphics/Bitmap;", "plugin-scan_release"})
 public final class p
 {
-  private g.a iZc;
-  private Map<String, a> oPn;
+  public static final p IZV;
   
-  public p()
+  static
   {
-    AppMethodBeat.i(91081);
-    this.oPn = new HashMap();
-    this.iZc = new g.a()
+    AppMethodBeat.i(161063);
+    IZV = new p();
+    AppMethodBeat.o(161063);
+  }
+  
+  public static final byte[] getNV21(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(161062);
+    if (paramBitmap == null)
     {
-      public final int a(String paramAnonymousString, int paramAnonymousInt, c paramAnonymousc, d paramAnonymousd, boolean paramAnonymousBoolean)
+      AppMethodBeat.o(161062);
+      return null;
+    }
+    int[] arrayOfInt = new int[paramInt1 * paramInt2];
+    paramBitmap.getPixels(arrayOfInt, 0, paramInt1, 0, 0, paramInt1, paramInt2);
+    byte[] arrayOfByte = new byte[paramInt1 * paramInt2 * 3 / 2];
+    int k = paramInt1 * paramInt2;
+    int i = 0;
+    int j = 0;
+    int n = 0;
+    int i1;
+    label68:
+    int m;
+    int i4;
+    int i3;
+    int i2;
+    if (n < paramInt2)
+    {
+      i1 = 0;
+      if (i1 < paramInt1)
       {
-        AppMethodBeat.i(91078);
-        if (paramAnonymousc == null)
+        m = (arrayOfInt[j] & 0xFF0000) >> 16;
+        i4 = (arrayOfInt[j] & 0xFF00) >> 8;
+        int i5 = (arrayOfInt[j] & 0xFF) >> 0;
+        i3 = (m * 66 + i4 * 129 + i5 * 25 + 128 >> 8) + 16;
+        i2 = (m * -38 - i4 * 74 + i5 * 112 + 128 >> 8) + 128;
+        i4 = (m * 112 - i4 * 94 - i5 * 18 + 128 >> 8) + 128;
+        if (i3 < 0)
         {
-          paramAnonymousc = "null";
-          if (paramAnonymousd != null) {
-            break label119;
+          m = 0;
+          label211:
+          arrayOfByte[i] = ((byte)m);
+          if ((n % 2 != 0) || (j % 2 != 0)) {
+            break label382;
           }
-        }
-        label119:
-        for (String str = "null";; str = paramAnonymousd.toString())
-        {
-          Log.i("MicroMsg.ScannerCdnService", "on cdn callback mediaId = %s, startRet = %d, keep_ProgressInfo = %s, keep_SceneResult = %s", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramAnonymousc, str });
-          paramAnonymousc = new p.b(p.this);
-          if (paramAnonymousInt == 0) {
-            break label129;
+          i3 = k + 1;
+          if (i4 >= 0) {
+            break label315;
           }
-          Log.e("MicroMsg.ScannerCdnService", "start failed : %d, media id is :%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
-          paramAnonymousc.errCode = paramAnonymousInt;
-          p.a(p.this, paramAnonymousString, paramAnonymousc);
-          AppMethodBeat.o(91078);
-          return 0;
-          paramAnonymousc = paramAnonymousc.toString();
-          break;
-        }
-        label129:
-        if (paramAnonymousd != null)
-        {
-          paramAnonymousc.errCode = paramAnonymousd.field_retCode;
-          if (paramAnonymousd.field_retCode == 0) {
-            break label198;
+          m = 0;
+          label246:
+          arrayOfByte[k] = ((byte)m);
+          if (i2 >= 0) {
+            break label338;
           }
-          Log.e("MicroMsg.ScannerCdnService", "cdntra clientid:%s sceneResult.retCode:%d sceneResult[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousd.field_retCode), paramAnonymousd });
-        }
-        for (;;)
-        {
-          p.a(p.this, paramAnonymousString, paramAnonymousc);
-          AppMethodBeat.o(91078);
-          return 0;
-          label198:
-          Log.i("MicroMsg.ScannerCdnService", "cdn trans suceess, media id : %s", new Object[] { paramAnonymousString });
-          paramAnonymousc.fileId = paramAnonymousd.field_fileId;
-          paramAnonymousc.aeskey = paramAnonymousd.field_aesKey;
+          k = 0;
+          label262:
+          arrayOfByte[i3] = ((byte)k);
+          k = i3 + 1;
         }
       }
-      
-      public final void a(String paramAnonymousString, ByteArrayOutputStream paramAnonymousByteArrayOutputStream)
-      {
-        AppMethodBeat.i(91079);
-        Log.i("MicroMsg.ScannerCdnService", "getCdnAuthInfo, mediaId = %s", new Object[] { paramAnonymousString });
-        AppMethodBeat.o(91079);
+    }
+    label315:
+    label338:
+    label382:
+    for (;;)
+    {
+      i1 += 1;
+      j += 1;
+      i += 1;
+      break label68;
+      m = i3;
+      if (i3 <= 255) {
+        break label211;
       }
-      
-      public final byte[] f(String paramAnonymousString, byte[] paramAnonymousArrayOfByte)
+      m = 255;
+      break label211;
+      if (i4 > 255)
       {
-        AppMethodBeat.i(91080);
-        Log.i("MicroMsg.ScannerCdnService", "decodePrepareResponse, mediaId = %s", new Object[] { paramAnonymousString });
-        AppMethodBeat.o(91080);
-        return null;
+        m = 255;
+        break label246;
       }
-    };
-    AppMethodBeat.o(91081);
-  }
-  
-  public static String aMv(String paramString)
-  {
-    AppMethodBeat.i(91082);
-    paramString = z.aTY() + "_" + paramString + "_" + System.currentTimeMillis();
-    AppMethodBeat.o(91082);
-    return paramString;
-  }
-  
-  public final void a(String paramString1, String paramString2, int paramInt, a parama)
-  {
-    AppMethodBeat.i(91083);
-    g localg = new g();
-    localg.taskName = "task_ScannerCdnService";
-    localg.gqy = this.iZc;
-    localg.field_mediaId = paramString1;
-    localg.field_fullpath = paramString2;
-    localg.field_fileType = paramInt;
-    localg.field_priority = a.gpM;
-    localg.field_needStorage = false;
-    localg.field_needCompressImage = true;
-    localg.field_isStreamMedia = false;
-    localg.field_force_aeskeycdn = true;
-    localg.field_trysafecdn = false;
-    this.oPn.put(paramString1, parama);
-    f.baQ().f(localg);
-    AppMethodBeat.o(91083);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void a(String paramString, p.b paramb);
-  }
-  
-  public final class b
-  {
-    public String aeskey;
-    public int errCode;
-    public String fileId;
-    
-    public b() {}
+      m = i4;
+      break label246;
+      if (i2 > 255)
+      {
+        k = 255;
+        break label262;
+      }
+      k = i2;
+      break label262;
+      n += 1;
+      break;
+      paramBitmap.recycle();
+      AppMethodBeat.o(161062);
+      return arrayOfByte;
+    }
   }
 }
 

@@ -11,7 +11,9 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.R.a;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.n;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.pluginsdk.model.app.ao;
 import com.tencent.mm.pluginsdk.model.app.g;
@@ -23,15 +25,15 @@ import java.util.List;
 public class ServicePreference
   extends Preference
 {
-  List<g> Dcn;
-  b FML;
-  AdapterView.OnItemClickListener FMs;
-  private AdapterView.OnItemClickListener FMt;
-  private View.OnClickListener FMu;
-  private int FMv;
-  private int FMw;
+  private boolean ELO;
+  List<g> JhO;
+  b MgN;
+  AdapterView.OnItemClickListener Mgu;
+  private AdapterView.OnItemClickListener Mgv;
+  private View.OnClickListener Mgw;
+  private int Mgx;
+  private int Mgy;
   private Context context;
-  private boolean zgH;
   
   public ServicePreference(Context paramContext)
   {
@@ -47,30 +49,30 @@ public class ServicePreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29177);
-    this.FMs = null;
-    this.FMt = null;
-    this.FMu = null;
-    this.zgH = false;
-    this.FMw = 0;
+    this.Mgu = null;
+    this.Mgv = null;
+    this.Mgw = null;
+    this.ELO = false;
+    this.Mgy = 0;
     this.context = paramContext;
-    setLayoutResource(2131493129);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.a.AppPreference);
-    this.FMv = paramContext.getInt(0, 8);
-    this.zgH = paramContext.getBoolean(1, false);
-    this.FMw = paramContext.getResourceId(2, 0);
+    setLayoutResource(R.i.ebC);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.n.eWw);
+    this.Mgx = paramContext.getInt(R.n.eWx, 8);
+    this.ELO = paramContext.getBoolean(R.n.eWy, false);
+    this.Mgy = paramContext.getResourceId(R.n.eWz, 0);
     paramContext.recycle();
     AppMethodBeat.o(29177);
   }
   
-  public final g abn(int paramInt)
+  public final g aiJ(int paramInt)
   {
     AppMethodBeat.i(29179);
-    if ((paramInt < 0) || (paramInt >= this.FML.getCount()))
+    if ((paramInt < 0) || (paramInt >= this.MgN.getCount()))
     {
       AppMethodBeat.o(29179);
       return null;
     }
-    g localg = (g)this.FML.getItem(paramInt);
+    g localg = (g)this.MgN.getItem(paramInt);
     AppMethodBeat.o(29179);
     return localg;
   }
@@ -79,35 +81,35 @@ public class ServicePreference
   {
     AppMethodBeat.i(29178);
     super.onBindView(paramView);
-    MMGridView localMMGridView = (MMGridView)paramView.findViewById(2131302175);
+    MMGridView localMMGridView = (MMGridView)paramView.findViewById(R.h.dHZ);
     if (localMMGridView == null)
     {
       AppMethodBeat.o(29178);
       return;
     }
-    this.FML = new b(this.context, this.Dcn);
-    ao.eAS().remove(this.FML);
-    ao.eAS().add(this.FML);
-    localMMGridView.setAdapter(this.FML);
+    this.MgN = new b(this.context, this.JhO);
+    ao.fmz().remove(this.MgN);
+    ao.fmz().add(this.MgN);
+    localMMGridView.setAdapter(this.MgN);
     localMMGridView.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(29175);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousAdapterView);
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.zo(paramAnonymousLong);
-        a.b("com/tencent/mm/plugin/subapp/ui/openapi/ServicePreference$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
-        if (ServicePreference.a(ServicePreference.this).Ox(paramAnonymousInt))
+        localb.bn(paramAnonymousAdapterView);
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.Fs(paramAnonymousLong);
+        a.c("com/tencent/mm/plugin/subapp/ui/openapi/ServicePreference$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+        if (ServicePreference.a(ServicePreference.this).TR(paramAnonymousInt))
         {
-          ServicePreference.a(ServicePreference.this).we(false);
+          ServicePreference.a(ServicePreference.this).zK(false);
           a.a(this, "com/tencent/mm/plugin/subapp/ui/openapi/ServicePreference$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(29175);
           return;
         }
-        if (ServicePreference.a(ServicePreference.this).FMo) {
+        if (ServicePreference.a(ServicePreference.this).Mgq) {
           if (ServicePreference.b(ServicePreference.this) != null) {
             ServicePreference.b(ServicePreference.this).onItemClick(paramAnonymousAdapterView, paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
           }
@@ -123,42 +125,42 @@ public class ServicePreference
         }
       }
     });
-    if (this.zgH) {
+    if (this.ELO) {
       localMMGridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
       {
         public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(29176);
           paramAnonymousAdapterView = ServicePreference.this;
-          if (paramAnonymousAdapterView.FML != null)
+          if (paramAnonymousAdapterView.MgN != null)
           {
-            paramAnonymousView = paramAnonymousAdapterView.FML;
-            if (paramAnonymousAdapterView.FML.FMo) {
+            paramAnonymousView = paramAnonymousAdapterView.MgN;
+            if (paramAnonymousAdapterView.MgN.Mgq) {
               break label50;
             }
           }
           label50:
           for (boolean bool = true;; bool = false)
           {
-            paramAnonymousView.we(bool);
+            paramAnonymousView.zK(bool);
             AppMethodBeat.o(29176);
             return true;
           }
         }
       });
     }
-    TextView localTextView = (TextView)paramView.findViewById(2131300110);
-    if (this.FML.getCount() == 0)
+    TextView localTextView = (TextView)paramView.findViewById(R.h.empty_tv);
+    if (this.MgN.getCount() == 0)
     {
       localTextView.setVisibility(0);
-      localTextView.setText(this.FMw);
+      localTextView.setText(this.Mgy);
       localMMGridView.setVisibility(8);
     }
     for (;;)
     {
-      paramView = (Button)paramView.findViewById(2131297813);
-      paramView.setVisibility(this.FMv);
-      paramView.setOnClickListener(this.FMu);
+      paramView = (Button)paramView.findViewById(R.h.btn);
+      paramView.setVisibility(this.Mgx);
+      paramView.setOnClickListener(this.Mgw);
       AppMethodBeat.o(29178);
       return;
       localTextView.setVisibility(8);
@@ -169,8 +171,8 @@ public class ServicePreference
   public final void onPause()
   {
     AppMethodBeat.i(29181);
-    if (this.FML != null) {
-      ao.eAS().remove(this.FML);
+    if (this.MgN != null) {
+      ao.fmz().remove(this.MgN);
     }
     AppMethodBeat.o(29181);
   }
@@ -178,15 +180,15 @@ public class ServicePreference
   public final void onResume()
   {
     AppMethodBeat.i(29180);
-    if (this.FML != null) {
-      ao.eAS().add(this.FML);
+    if (this.MgN != null) {
+      ao.fmz().add(this.MgN);
     }
     AppMethodBeat.o(29180);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.openapi.ServicePreference
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.msgsubscription.d;
 
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
@@ -9,49 +9,49 @@ import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgStorageTaskManager;", "", "()V", "LOOP_TAG_PREFIX", "", "MANAGER_THREAD_LOOP_TAG", "TAG", "TASK_TYPE_GET_ALL_SUBSCRIBE_MSG_LIST", "", "TASK_TYPE_GET_SUBSCRIBE_MSG_LIST_FOR_DIALOG", "TASK_TYPE_GET_SUBSCRIBE_MSG_UI_STATUS", "TASK_TYPE_LOAD_LOCAL_SUBSCRIBE_MSG_LIST", "TASK_TYPE_SAVE_SUBSCRIBE_MSG_UI_STATUS", "TASK_TYPE_UPDATE_SUBSCRIBE_MSG_LIST", "loopTagMap", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "taskMap", "", "Lcom/tencent/mm/msgsubscription/task/BaseSubscribeMsgTask;", "addTask", "", "task", "finishTask", "getLoopTag", "key", "onTaskRunAfter", "onTaskRunBefore", "removeTask", "runTask", "storageManager", "Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;", "plugin-comm_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgStorageTaskManager;", "", "()V", "LOOP_TAG_PREFIX", "", "MANAGER_THREAD_LOOP_TAG", "TAG", "TASK_TYPE_GET_ALL_SUBSCRIBE_MSG_LIST", "", "TASK_TYPE_GET_SUBSCRIBE_MSG_LIST_FOR_DIALOG", "TASK_TYPE_GET_SUBSCRIBE_MSG_UI_STATUS", "TASK_TYPE_LOAD_LOCAL_SUBSCRIBE_MSG_LIST", "TASK_TYPE_SAVE_SUBSCRIBE_MSG_UI_STATUS", "TASK_TYPE_UPDATE_SUBSCRIBE_MSG_LIST", "loopTagMap", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "taskMap", "", "Lcom/tencent/mm/msgsubscription/task/BaseSubscribeMsgTask;", "addTask", "", "task", "finishTask", "getLoopTag", "key", "onTaskRunAfter", "onTaskRunBefore", "removeTask", "runTask", "storageManager", "Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;", "plugin-comm_release"})
 public final class d
 {
-  private static final HashMap<String, List<com.tencent.mm.msgsubscription.e.a>> gVI;
-  private static final HashMap<String, String> jAQ;
-  public static final d jAR;
+  private static final HashMap<String, List<com.tencent.mm.msgsubscription.e.a>> jGE;
+  private static final HashMap<String, String> mqy;
+  public static final d mqz;
   
   static
   {
     AppMethodBeat.i(149659);
-    jAR = new d();
-    jAQ = new HashMap();
-    gVI = new HashMap();
+    mqz = new d();
+    mqy = new HashMap();
+    jGE = new HashMap();
     AppMethodBeat.o(149659);
   }
   
   public static void a(a parama, final com.tencent.mm.msgsubscription.e.a parama1)
   {
     AppMethodBeat.i(149657);
-    p.h(parama, "storageManager");
-    p.h(parama1, "task");
-    Log.i("MicroMsg.SubscribeMsgStorageTaskManager", "alvinluo runTask storageManager: %s, task className: %s, async: %b", new Object[] { Integer.valueOf(parama.hashCode()), parama1.getClass().getSimpleName(), Boolean.valueOf(parama1.jzf) });
-    if (!parama1.jzf)
+    p.k(parama, "storageManager");
+    p.k(parama1, "task");
+    Log.i("MicroMsg.SubscribeMsgStorageTaskManager", "alvinluo runTask storageManager: %s, task className: %s, async: %b", new Object[] { Integer.valueOf(parama.hashCode()), parama1.getClass().getSimpleName(), Boolean.valueOf(parama1.moL) });
+    if (!parama1.moL)
     {
       parama1.run();
       AppMethodBeat.o(149657);
       return;
     }
-    h.RTc.b((Runnable)new b(parama, parama1), "manager_thread");
+    h.ZvG.d((Runnable)new b(parama, parama1), "manager_thread");
     AppMethodBeat.o(149657);
   }
   
   public static void a(com.tencent.mm.msgsubscription.e.a parama)
   {
     AppMethodBeat.i(149658);
-    p.h(parama, "task");
-    if (parama.jzf) {
-      h.RTc.b((Runnable)new a(parama), "manager_thread");
+    p.k(parama, "task");
+    if (parama.moL) {
+      h.ZvG.d((Runnable)new a(parama), "manager_thread");
     }
     AppMethodBeat.o(149658);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -60,14 +60,14 @@ public final class d
     public final void run()
     {
       AppMethodBeat.i(149654);
-      Log.d("MicroMsg.SubscribeMsgStorageTaskManager", "alvinluo onTaskAfter removeTask: %s", new Object[] { Integer.valueOf(this.jAS.hashCode()) });
-      d locald = d.jAR;
-      d.c(this.jAS);
+      Log.d("MicroMsg.SubscribeMsgStorageTaskManager", "alvinluo onTaskAfter removeTask: %s", new Object[] { Integer.valueOf(this.mqA.hashCode()) });
+      d locald = d.mqz;
+      d.c(this.mqA);
       AppMethodBeat.o(149654);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -76,23 +76,23 @@ public final class d
     public final void run()
     {
       AppMethodBeat.i(149656);
-      int i = this.jAT.hashCode();
-      Object localObject = d.jAR;
-      localObject = d.RC(String.valueOf(i));
-      d locald = d.jAR;
+      int i = this.mqB.hashCode();
+      Object localObject = d.mqz;
+      localObject = d.Zb(String.valueOf(i));
+      d locald = d.mqz;
       d.b(parama1);
-      h.RTc.b((Runnable)new Runnable()
+      h.ZvG.d((Runnable)new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(149655);
-          if (!this.jAU.jAS.cancelled)
+          if (!this.mqC.mqA.cancelled)
           {
-            this.jAU.jAS.run();
+            this.mqC.mqA.run();
             AppMethodBeat.o(149655);
             return;
           }
-          Log.i("MicroMsg.SubscribeMsgStorageTaskManager", "alvinluo task %s has cancelled", new Object[] { this.jAU.jAS.getKey() });
+          Log.i("MicroMsg.SubscribeMsgStorageTaskManager", "alvinluo task %s has cancelled", new Object[] { this.mqC.mqA.getKey() });
           AppMethodBeat.o(149655);
         }
       }, (String)localObject);

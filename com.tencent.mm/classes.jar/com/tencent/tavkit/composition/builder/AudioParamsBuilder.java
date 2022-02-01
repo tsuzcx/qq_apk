@@ -19,15 +19,15 @@ class AudioParamsBuilder
   
   AudioParamsBuilder(BuilderModel paramBuilderModel)
   {
-    AppMethodBeat.i(197506);
+    AppMethodBeat.i(211919);
     this.audioMixInputParametersHashMap = new HashMap();
     this.builderModel = paramBuilderModel;
-    AppMethodBeat.o(197506);
+    AppMethodBeat.o(211919);
   }
   
   private void buildAudioParametersByTrackInfo(AudioParamsInfo paramAudioParamsInfo)
   {
-    AppMethodBeat.i(197510);
+    AppMethodBeat.i(211928);
     Iterator localIterator = paramAudioParamsInfo.audioInfos.iterator();
     while (localIterator.hasNext())
     {
@@ -43,12 +43,12 @@ class AudioParamsBuilder
       paramAudioParamsInfo.addAudioConfiguration(new CMTimeRange(localAudioInfo.audio.getStartTime(), localAudioInfo.audio.getDuration()), localAudioInfo.audio.getAudioConfiguration());
       paramAudioParamsInfo.setAudioTapProcessor(new TAVAudioTapProcessor(paramAudioParamsInfo.getAudioConfigurationSegmentList()));
     }
-    AppMethodBeat.o(197510);
+    AppMethodBeat.o(211928);
   }
   
   private void buildBgAudioInputParameters()
   {
-    AppMethodBeat.i(197508);
+    AppMethodBeat.i(211924);
     Iterator localIterator = this.builderModel.getAudioTrackInfo().iterator();
     while (localIterator.hasNext())
     {
@@ -64,12 +64,12 @@ class AudioParamsBuilder
       localTAVAudioMixInputParameters1.addAudioConfiguration(new CMTimeRange(localAudioMixInfo.audio.getStartTime(), localAudioMixInfo.audio.getDuration()), localAudioMixInfo.audio.getAudioConfiguration());
       localTAVAudioMixInputParameters1.setAudioTapProcessor(new TAVAudioTapProcessor(localTAVAudioMixInputParameters1.getAudioConfigurationSegmentList()));
     }
-    AppMethodBeat.o(197508);
+    AppMethodBeat.o(211924);
   }
   
   private void buildMainAudioInputParameters()
   {
-    AppMethodBeat.i(197509);
+    AppMethodBeat.i(211926);
     List localList = this.builderModel.getMainAudioTrackInfo();
     int i = 0;
     while (i < localList.size())
@@ -77,22 +77,22 @@ class AudioParamsBuilder
       buildAudioParametersByTrackInfo((AudioParamsInfo)localList.get(i));
       i += 1;
     }
-    AppMethodBeat.o(197509);
+    AppMethodBeat.o(211926);
   }
   
   List<TAVAudioMixInputParameters> build()
   {
-    AppMethodBeat.i(197507);
+    AppMethodBeat.i(211921);
     buildMainAudioInputParameters();
     buildBgAudioInputParameters();
     ArrayList localArrayList = new ArrayList(this.audioMixInputParametersHashMap.values());
-    AppMethodBeat.o(197507);
+    AppMethodBeat.o(211921);
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tavkit.composition.builder.AudioParamsBuilder
  * JD-Core Version:    0.7.0.1
  */

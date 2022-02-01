@@ -10,6 +10,7 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.scanlib.a.a;
 import com.tencent.scanlib.model.DetectCode;
 import java.util.Iterator;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
 public class DetectCodeView
   extends View
 {
-  private List<DetectCode> ROM;
+  private List<DetectCode> Zrs;
   private Paint paint;
   
   public DetectCodeView(Context paramContext)
@@ -48,9 +49,9 @@ public class DetectCodeView
   {
     AppMethodBeat.i(3571);
     super.onDraw(paramCanvas);
-    if ((this.ROM != null) && (!this.ROM.isEmpty()))
+    if ((this.Zrs != null) && (!this.Zrs.isEmpty()))
     {
-      Iterator localIterator = this.ROM.iterator();
+      Iterator localIterator = this.Zrs.iterator();
       while (localIterator.hasNext())
       {
         DetectCode localDetectCode = (DetectCode)localIterator.next();
@@ -65,14 +66,14 @@ public class DetectCodeView
   public void setDetectedCodes(List<DetectCode> paramList)
   {
     AppMethodBeat.i(3570);
-    this.ROM = paramList;
+    this.Zrs = paramList;
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       this.paint.reset();
       this.paint.setColor(-65536);
       this.paint.setStyle(Paint.Style.STROKE);
       this.paint.setAntiAlias(true);
-      this.paint.setStrokeWidth(getResources().getDimension(2131166883));
+      this.paint.setStrokeWidth(getResources().getDimension(a.a.scan_code_stroke_width));
     }
     postInvalidate();
     AppMethodBeat.o(3570);
@@ -80,7 +81,7 @@ public class DetectCodeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.scanlib.ui.DetectCodeView
  * JD-Core Version:    0.7.0.1
  */

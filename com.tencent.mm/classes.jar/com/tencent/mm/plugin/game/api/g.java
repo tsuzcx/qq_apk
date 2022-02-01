@@ -15,16 +15,11 @@ public abstract interface g
   
   public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, Bundle paramBundle);
   
-  public abstract void ap(String paramString1, String paramString2, String paramString3);
-  
-  public static abstract interface a
-  {
-    public abstract void an(String paramString, int paramInt1, int paramInt2);
-  }
+  public abstract void aj(String paramString1, String paramString2, String paramString3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.api.g
  * JD-Core Version:    0.7.0.1
  */

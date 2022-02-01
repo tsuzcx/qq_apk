@@ -5,17 +5,19 @@ import android.graphics.Bitmap;
 import android.util.Base64;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.ay.a.a;
+import com.tencent.mm.ay.a.a.c.a;
+import com.tencent.mm.ay.a.c.k;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.emoji.model.EmojiLogic;
+import com.tencent.mm.plugin.emoji.model.p;
 import com.tencent.mm.sdk.platformtools.ImgUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.bj;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import org.json.JSONObject;
 
 public class b
@@ -24,34 +26,33 @@ public class b
   private static void a(Context paramContext, String paramString1, String paramString2, br.a parama)
   {
     AppMethodBeat.i(78515);
-    Object localObject = com.tencent.mm.emoji.e.a.hdT;
-    String str = EmojiLogic.W(com.tencent.mm.emoji.e.a.awt(), "", paramString1);
-    EmojiInfo localEmojiInfo = com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().OpN.blk(paramString1);
-    localObject = localEmojiInfo;
-    if (localEmojiInfo == null)
+    String str = EmojiLogic.T(com.tencent.mm.plugin.emoji.i.b.bcb(), "", paramString1);
+    EmojiInfo localEmojiInfo2 = p.getEmojiStorageMgr().VFH.bxK(paramString1);
+    EmojiInfo localEmojiInfo1 = localEmojiInfo2;
+    if (localEmojiInfo2 == null)
     {
-      localObject = localEmojiInfo;
-      if (s.YS(str)) {
+      localEmojiInfo1 = localEmojiInfo2;
+      if (u.agG(str)) {
         if (!ImgUtil.isGif(str)) {
-          break label189;
+          break label184;
         }
       }
     }
-    label189:
-    for (int i = EmojiInfo.Uux;; i = EmojiInfo.Uuw)
+    label184:
+    for (int i = EmojiInfo.YCF;; i = EmojiInfo.YCE)
     {
-      localObject = new EmojiInfo();
-      ((EmojiInfo)localObject).field_md5 = paramString1;
-      ((EmojiInfo)localObject).field_catalog = EmojiInfo.Uup;
-      ((EmojiInfo)localObject).field_type = i;
-      ((EmojiInfo)localObject).field_size = ((int)s.boW(str));
-      ((EmojiInfo)localObject).field_temp = 1;
-      ((EmojiInfo)localObject).field_thumbUrl = paramString2;
-      com.tencent.mm.plugin.emoji.model.k.getEmojiStorageMgr().OpN.J((EmojiInfo)localObject);
-      if (localObject == null) {
-        break label210;
+      localEmojiInfo1 = new EmojiInfo();
+      localEmojiInfo1.field_md5 = paramString1;
+      localEmojiInfo1.field_catalog = EmojiInfo.YCx;
+      localEmojiInfo1.field_type = i;
+      localEmojiInfo1.field_size = ((int)u.bBQ(str));
+      localEmojiInfo1.field_temp = 1;
+      localEmojiInfo1.field_thumbUrl = paramString2;
+      p.getEmojiStorageMgr().VFH.K(localEmojiInfo1);
+      if (localEmojiInfo1 == null) {
+        break label205;
       }
-      boolean bool = com.tencent.mm.plugin.emoji.model.k.cGf().a(paramContext, (EmojiInfo)localObject, 18, z.aTY());
+      boolean bool = p.cUO().a(paramContext, localEmojiInfo1, 18, z.bcZ());
       Log.i("MicroMsg.JsApiAddToEmotion", "doAddAction %b", new Object[] { Boolean.valueOf(bool) });
       if (!bool) {
         break;
@@ -63,16 +64,16 @@ public class b
     parama.i("fail", null);
     AppMethodBeat.o(78515);
     return;
-    label210:
+    label205:
     parama.i("fail", null);
     AppMethodBeat.o(78515);
   }
   
-  public final void a(final Context paramContext, String paramString, final br.a parama)
+  public final void a(final Context paramContext, final String paramString, final br.a parama)
   {
     AppMethodBeat.i(78514);
     Log.i("MicroMsg.JsApiAddToEmotion", "invoke");
-    paramString = com.tencent.mm.plugin.webview.luggage.c.b.Zc(paramString);
+    paramString = com.tencent.mm.plugin.webview.luggage.c.c.agO(paramString);
     if (paramString == null)
     {
       Log.e("MicroMsg.JsApiAddToEmotion", "bundle is null");
@@ -82,7 +83,8 @@ public class b
     }
     Object localObject1 = paramString.optString("base64DataString");
     final String str = paramString.optString("thumbUrl");
-    Object localObject2 = paramString.optString("url");
+    paramString = paramString.optString("url");
+    Object localObject2;
     if (!Util.isNullOrNil((String)localObject1))
     {
       Log.i("MicroMsg.JsApiAddToEmotion", "doAddToEmoticon use base64DataString");
@@ -109,51 +111,48 @@ public class b
         return;
       }
       localObject1 = com.tencent.mm.b.g.getMessageDigest(paramString);
-      localObject2 = com.tencent.mm.emoji.e.a.hdT;
-      localObject2 = EmojiLogic.W(com.tencent.mm.emoji.e.a.awt(), "", (String)localObject1);
-      if ((!s.YS((String)localObject2)) || (!s.bhK((String)localObject2).equalsIgnoreCase((String)localObject1))) {
-        s.f((String)localObject2, paramString, paramString.length);
+      localObject2 = EmojiLogic.T(com.tencent.mm.plugin.emoji.i.b.bcb(), "", (String)localObject1);
+      if ((!u.agG((String)localObject2)) || (!u.buc((String)localObject2).equalsIgnoreCase((String)localObject1))) {
+        u.f((String)localObject2, paramString, paramString.length);
       }
       a(paramContext, (String)localObject1, str, parama);
       AppMethodBeat.o(78514);
       return;
     }
-    if (!Util.isNullOrNil((String)localObject2))
+    if (!Util.isNullOrNil(paramString))
     {
-      Log.i("MicroMsg.JsApiAddToEmotion", "doAddToEmoticon use url:%s", new Object[] { localObject2 });
-      paramString = new o(paramContext.getCacheDir(), com.tencent.mm.b.g.getMessageDigest(((String)localObject2).getBytes()));
-      if (paramString.exists())
+      Log.i("MicroMsg.JsApiAddToEmotion", "doAddToEmoticon use url:%s", new Object[] { paramString });
+      localObject1 = new q(paramContext.getCacheDir(), com.tencent.mm.b.g.getMessageDigest(paramString.getBytes()));
+      if (((q)localObject1).ifE())
       {
-        localObject1 = s.bhK(aa.z(paramString.mUri));
-        localObject2 = com.tencent.mm.emoji.e.a.hdT;
-        localObject2 = EmojiLogic.W(com.tencent.mm.emoji.e.a.awt(), "", (String)localObject1);
-        if (!s.YS((String)localObject2)) {
-          s.nw(aa.z(paramString.her()), (String)localObject2);
+        paramString = u.buc(((q)localObject1).getPath());
+        localObject2 = EmojiLogic.T(com.tencent.mm.plugin.emoji.i.b.bcb(), "", paramString);
+        if (!u.agG((String)localObject2)) {
+          u.on(((q)localObject1).bOF(), (String)localObject2);
         }
-        a(paramContext, (String)localObject1, str, parama);
+        a(paramContext, paramString, str, parama);
         AppMethodBeat.o(78514);
         return;
       }
-      localObject1 = new c.a();
-      ((c.a)localObject1).jbf = true;
-      ((c.a)localObject1).fullPath = aa.z(paramString.her());
-      ((c.a)localObject1).jbE = new Object[] { aa.z(paramString.her()) };
-      paramString = ((c.a)localObject1).bdv();
-      com.tencent.mm.plugin.emoji.model.k.cGc().a((String)localObject2, null, paramString, new com.tencent.mm.av.a.c.k()
+      localObject2 = new c.a();
+      ((c.a)localObject2).lRD = true;
+      ((c.a)localObject2).fullPath = ((q)localObject1).bOF();
+      ((c.a)localObject2).lSd = new Object[] { ((q)localObject1).bOF() };
+      localObject1 = ((c.a)localObject2).bmL();
+      p.cUL().a(paramString, null, (com.tencent.mm.ay.a.a.c)localObject1, new k()
       {
         public final void a(String paramAnonymousString, View paramAnonymousView, Bitmap paramAnonymousBitmap, Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(78513);
           Log.i("MicroMsg.JsApiAddToEmotion", "imageLoaderListener onImageLoadComplete %s", new Object[] { paramAnonymousString });
-          if ((paramAnonymousBitmap != null) && (paramAnonymousVarArgs != null) && (paramAnonymousVarArgs.length > 0) && (paramAnonymousVarArgs[0] != null) && ((paramAnonymousVarArgs[0] instanceof String)) && (paramAnonymousString.equals(this.IVB)))
+          if ((paramAnonymousBitmap != null) && (paramAnonymousVarArgs != null) && (paramAnonymousVarArgs.length > 0) && (paramAnonymousVarArgs[0] != null) && ((paramAnonymousVarArgs[0] instanceof String)) && (paramAnonymousString.equals(paramString)))
           {
-            paramAnonymousString = new o(paramAnonymousVarArgs[0].toString());
-            if (paramAnonymousString.exists())
+            paramAnonymousString = new q(paramAnonymousVarArgs[0].toString());
+            if (paramAnonymousString.ifE())
             {
-              paramAnonymousView = s.bhK(aa.z(paramAnonymousString.mUri));
-              paramAnonymousBitmap = com.tencent.mm.emoji.e.a.hdT;
-              paramAnonymousBitmap = EmojiLogic.W(com.tencent.mm.emoji.e.a.awt(), "", paramAnonymousView);
-              s.nw(aa.z(paramAnonymousString.her()), paramAnonymousBitmap);
+              paramAnonymousView = u.buc(paramAnonymousString.getPath());
+              paramAnonymousBitmap = EmojiLogic.T(com.tencent.mm.plugin.emoji.i.b.bcb(), "", paramAnonymousView);
+              u.on(paramAnonymousString.bOF(), paramAnonymousBitmap);
               b.b(paramContext, paramAnonymousView, str, parama);
               AppMethodBeat.o(78513);
               return;
@@ -173,7 +172,7 @@ public class b
   
   public final void b(com.tencent.luggage.d.b<com.tencent.mm.plugin.webview.luggage.g>.a paramb) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 2;
   }

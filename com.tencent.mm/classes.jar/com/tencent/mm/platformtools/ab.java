@@ -1,28 +1,26 @@
 package com.tencent.mm.platformtools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storagebase.f;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class ab
 {
-  private static final ab jNL;
-  public static AtomicBoolean jNM;
-  public f jNN;
+  private static final ab mET;
+  public static AtomicBoolean mEU;
+  public com.tencent.mm.storagebase.f mEV;
   
   static
   {
-    AppMethodBeat.i(197123);
-    jNL = new ab();
-    jNM = new AtomicBoolean(true);
-    AppMethodBeat.o(197123);
+    AppMethodBeat.i(196833);
+    mET = new ab();
+    mEU = new AtomicBoolean(true);
+    AppMethodBeat.o(196833);
   }
   
   /* Error */
-  public static int a(f paramf)
+  public static int a(com.tencent.mm.storagebase.f paramf)
   {
     // Byte code:
     //   0: aconst_null
@@ -78,7 +76,7 @@ public final class ab
     //   97: goto -40 -> 57
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	100	0	paramf	f
+    //   0	100	0	paramf	com.tencent.mm.storagebase.f
     //   30	17	1	i	int
     //   1	1	2	localObject	Object
     //   48	32	2	localThrowable1	java.lang.Throwable
@@ -92,27 +90,9 @@ public final class ab
     //   16	31	96	finally
   }
   
-  public static String a(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2)
+  public static boolean a(com.tencent.mm.storagebase.f paramf, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(197117);
-    int i = 0;
-    while (i < 2)
-    {
-      if (paramArrayOfString1[i].equalsIgnoreCase(paramString))
-      {
-        paramString = paramArrayOfString2[i];
-        AppMethodBeat.o(197117);
-        return paramString;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(197117);
-    return "";
-  }
-  
-  public static boolean a(f paramf, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(197119);
+    AppMethodBeat.i(196818);
     Object localObject = null;
     try
     {
@@ -124,29 +104,29 @@ public final class ab
       for (;;)
       {
         Log.e("TableIndexFixer", "DROP INDEX, failure! indexName=%s %s", new Object[] { paramString1, paramf });
-        e.Cxv.idkeyStat(1457L, 0L, 1L, true);
-        e.Cxv.a(20708, new Object[] { "1", Integer.valueOf(0), paramf.getMessage() + " indexName=" + paramString1 });
+        com.tencent.mm.plugin.report.f.Iyx.idkeyStat(1457L, 0L, 1L, true);
+        com.tencent.mm.plugin.report.f.Iyx.a(20708, new Object[] { "1", Integer.valueOf(0), paramf.getMessage() + " indexName=" + paramString1 });
       }
-      AppMethodBeat.o(197119);
+      AppMethodBeat.o(196818);
     }
     if (paramf == null) {
       Log.i("TableIndexFixer", "DROP INDEX, successfully! indexName=%s, tblName=%s", new Object[] { paramString1, paramString2 });
     }
     if (paramf == null)
     {
-      AppMethodBeat.o(197119);
+      AppMethodBeat.o(196818);
       return true;
     }
     return false;
   }
   
-  public static boolean a(f paramf, String paramString1, String paramString2, String paramString3)
+  public static boolean a(com.tencent.mm.storagebase.f paramf, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(197120);
+    AppMethodBeat.i(196824);
     if (Util.isNullOrNil(paramString1))
     {
       Log.e("TableIndexFixer", "[createIndex] rightTblName is wrong.");
-      AppMethodBeat.o(197120);
+      AppMethodBeat.o(196824);
       return false;
     }
     Object localObject = null;
@@ -161,17 +141,17 @@ public final class ab
       for (;;)
       {
         Log.e("TableIndexFixer", "CREATE INDEX, failure! sql=%s %s", new Object[] { paramString1, paramf });
-        e.Cxv.idkeyStat(1457L, 5L, 1L, true);
-        e.Cxv.a(20708, new Object[] { "1", Integer.valueOf(4), paramf.getMessage() + "sql=" + paramString1 });
+        com.tencent.mm.plugin.report.f.Iyx.idkeyStat(1457L, 5L, 1L, true);
+        com.tencent.mm.plugin.report.f.Iyx.a(20708, new Object[] { "1", Integer.valueOf(4), paramf.getMessage() + "sql=" + paramString1 });
       }
-      AppMethodBeat.o(197120);
+      AppMethodBeat.o(196824);
     }
     if (paramf == null) {
       Log.i("TableIndexFixer", "CREATE INDEX, successfully! %s => %s", new Object[] { paramString3, paramString1 });
     }
     if (paramf == null)
     {
-      AppMethodBeat.o(197120);
+      AppMethodBeat.o(196824);
       return true;
     }
     return false;
@@ -179,20 +159,20 @@ public final class ab
   
   public static boolean a(String[] paramArrayOfString, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(197118);
+    AppMethodBeat.i(196815);
     if (paramString1.startsWith("sqlite_"))
     {
-      AppMethodBeat.o(197118);
+      AppMethodBeat.o(196815);
       return false;
     }
     if (paramString1.equals(paramString2))
     {
-      AppMethodBeat.o(197118);
+      AppMethodBeat.o(196815);
       return false;
     }
     if (paramString1.startsWith(paramString2))
     {
-      AppMethodBeat.o(197118);
+      AppMethodBeat.o(196815);
       return false;
     }
     int i = 0;
@@ -200,25 +180,25 @@ public final class ab
     {
       if (paramString2.equalsIgnoreCase(paramArrayOfString[i]))
       {
-        AppMethodBeat.o(197118);
+        AppMethodBeat.o(196815);
         return true;
       }
       i += 1;
     }
-    AppMethodBeat.o(197118);
+    AppMethodBeat.o(196815);
     return false;
   }
   
   /* Error */
-  public static int b(f paramf)
+  public static int b(com.tencent.mm.storagebase.f paramf)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore_2
-    //   2: ldc 185
+    //   2: ldc 181
     //   4: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: ldc 187
+    //   8: ldc 183
     //   10: aconst_null
     //   11: iconst_0
     //   12: invokevirtual 51	com/tencent/mm/storagebase/f:rawQuery	(Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
@@ -234,12 +214,12 @@ public final class ab
     //   32: ifnull +9 -> 41
     //   35: aload_3
     //   36: invokeinterface 64 1 0
-    //   41: ldc 185
+    //   41: ldc 181
     //   43: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   46: iload_1
     //   47: ireturn
     //   48: astore_2
-    //   49: ldc 185
+    //   49: ldc 181
     //   51: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   54: aload_2
     //   55: athrow
@@ -250,7 +230,7 @@ public final class ab
     //   62: ifnull +25 -> 87
     //   65: aload_3
     //   66: invokeinterface 64 1 0
-    //   71: ldc 185
+    //   71: ldc 181
     //   73: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   76: aload_0
     //   77: athrow
@@ -266,7 +246,7 @@ public final class ab
     //   97: goto -40 -> 57
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	100	0	paramf	f
+    //   0	100	0	paramf	com.tencent.mm.storagebase.f
     //   30	17	1	i	int
     //   1	1	2	localObject	Object
     //   48	32	2	localThrowable1	java.lang.Throwable
@@ -280,9 +260,27 @@ public final class ab
     //   16	31	96	finally
   }
   
-  public static ab blL()
+  public static ab bvB()
   {
-    return jNL;
+    return mET;
+  }
+  
+  public static String d(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2)
+  {
+    AppMethodBeat.i(196810);
+    int i = 0;
+    while (i < 2)
+    {
+      if (paramArrayOfString1[i].equalsIgnoreCase(paramString))
+      {
+        paramString = paramArrayOfString2[i];
+        AppMethodBeat.o(196810);
+        return paramString;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(196810);
+    return "";
   }
   
   public final class a
@@ -299,7 +297,7 @@ public final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.platformtools.ab
  * JD-Core Version:    0.7.0.1
  */

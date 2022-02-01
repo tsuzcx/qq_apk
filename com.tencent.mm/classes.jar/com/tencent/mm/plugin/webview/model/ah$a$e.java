@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.webview.model;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.d;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "invoke"})
 final class ah$a$e<InputType, ResultType>
-  implements b<Bundle, Bundle>
+  implements d<Bundle, Bundle>
 {
-  public static final e IYM;
+  public static final e PVe;
   
   static
   {
     AppMethodBeat.i(182614);
-    IYM = new e();
+    PVe = new e();
     AppMethodBeat.o(182614);
   }
 }

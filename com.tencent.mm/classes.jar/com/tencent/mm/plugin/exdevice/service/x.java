@@ -7,20 +7,20 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class x
   implements m
 {
-  private h rDX;
+  private h vjH;
   
   public x(h paramh)
   {
-    this.rDX = paramh;
+    this.vjH = paramh;
   }
   
-  public final boolean De(long paramLong)
+  public final boolean Js(long paramLong)
   {
     AppMethodBeat.i(23705);
-    u.cLx().Db(paramLong);
+    u.dak().Jp(paramLong);
     try
     {
-      boolean bool = this.rDX.De(paramLong);
+      boolean bool = this.vjH.Js(paramLong);
       AppMethodBeat.o(23705);
       return bool;
     }
@@ -33,12 +33,12 @@ public final class x
     return false;
   }
   
-  public final boolean Dh(long paramLong)
+  public final boolean Jv(long paramLong)
   {
     AppMethodBeat.i(23714);
     try
     {
-      boolean bool = this.rDX.Dh(paramLong);
+      boolean bool = this.vjH.Jv(paramLong);
       AppMethodBeat.o(23714);
       return bool;
     }
@@ -55,7 +55,7 @@ public final class x
     AppMethodBeat.i(23706);
     try
     {
-      long l = this.rDX.a(paramp);
+      long l = this.vjH.a(paramp);
       AppMethodBeat.o(23706);
       return l;
     }
@@ -71,10 +71,10 @@ public final class x
   public final boolean a(long paramLong, int paramInt, k paramk)
   {
     AppMethodBeat.i(23704);
-    u.cLx().Db(paramLong);
+    u.dak().Jp(paramLong);
     try
     {
-      boolean bool = this.rDX.a(paramLong, paramInt, paramk);
+      boolean bool = this.vjH.a(paramLong, paramInt, paramk);
       AppMethodBeat.o(23704);
       return bool;
     }
@@ -92,7 +92,7 @@ public final class x
     AppMethodBeat.i(23713);
     try
     {
-      boolean bool = this.rDX.b(paramLong, 0, paramk);
+      boolean bool = this.vjH.b(paramLong, 0, paramk);
       AppMethodBeat.o(23713);
       return bool;
     }
@@ -109,7 +109,7 @@ public final class x
     AppMethodBeat.i(23707);
     try
     {
-      boolean bool = this.rDX.a(parami);
+      boolean bool = this.vjH.a(parami);
       AppMethodBeat.o(23707);
       return bool;
     }
@@ -127,7 +127,7 @@ public final class x
     AppMethodBeat.i(23711);
     try
     {
-      boolean bool = this.rDX.d(0, paramj);
+      boolean bool = this.vjH.d(0, paramj);
       AppMethodBeat.o(23711);
       return bool;
     }
@@ -144,7 +144,7 @@ public final class x
     AppMethodBeat.i(23715);
     try
     {
-      boolean bool = this.rDX.a(params);
+      boolean bool = this.vjH.a(params);
       AppMethodBeat.o(23715);
       return bool;
     }
@@ -162,7 +162,7 @@ public final class x
     Log.i("MicroMsg.exdevice.RDeviceTaskDispatcher", "ranging, uuid = %s, op = %s", new Object[] { paramString, String.valueOf(paramBoolean) });
     try
     {
-      paramBoolean = this.rDX.a(paramString, paramBoolean, paramq);
+      paramBoolean = this.vjH.a(paramString, paramBoolean, paramq);
       AppMethodBeat.o(23709);
       return paramBoolean;
     }
@@ -180,7 +180,7 @@ public final class x
     AppMethodBeat.i(23701);
     try
     {
-      boolean bool = this.rDX.b(paramInt, paramj);
+      boolean bool = this.vjH.b(paramInt, paramj);
       AppMethodBeat.o(23701);
       return bool;
     }
@@ -198,7 +198,7 @@ public final class x
     AppMethodBeat.i(23716);
     try
     {
-      boolean bool = this.rDX.b(paramLong, paramArrayOfByte, paramt);
+      boolean bool = this.vjH.b(paramLong, paramArrayOfByte, paramt);
       AppMethodBeat.o(23716);
       return bool;
     }
@@ -215,7 +215,7 @@ public final class x
     AppMethodBeat.i(23712);
     try
     {
-      boolean bool = this.rDX.e(0, paramj);
+      boolean bool = this.vjH.e(0, paramj);
       AppMethodBeat.o(23712);
       return bool;
     }
@@ -232,7 +232,7 @@ public final class x
     AppMethodBeat.i(23710);
     try
     {
-      this.rDX.a(paramn);
+      this.vjH.a(paramn);
       AppMethodBeat.o(23710);
       return true;
     }
@@ -250,7 +250,7 @@ public final class x
     AppMethodBeat.i(23702);
     try
     {
-      boolean bool = this.rDX.c(paramInt, paramj);
+      boolean bool = this.vjH.c(paramInt, paramj);
       AppMethodBeat.o(23702);
       return bool;
     }
@@ -263,12 +263,12 @@ public final class x
     return false;
   }
   
-  public final long[] cLa()
+  public final long[] cZN()
   {
     AppMethodBeat.i(23703);
     try
     {
-      long[] arrayOfLong = this.rDX.cLa();
+      long[] arrayOfLong = this.vjH.cZN();
       AppMethodBeat.o(23703);
       return arrayOfLong;
     }
@@ -287,7 +287,7 @@ public final class x
     Log.i("MicroMsg.exdevice.RDeviceTaskDispatcher", "------setChannelSessionKey------ deviceId = %d", new Object[] { Long.valueOf(paramLong) });
     try
     {
-      this.rDX.setChannelSessionKey(paramLong, paramArrayOfByte);
+      this.vjH.setChannelSessionKey(paramLong, paramArrayOfByte);
       AppMethodBeat.o(23708);
       return;
     }
@@ -300,7 +300,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.x
  * JD-Core Version:    0.7.0.1
  */

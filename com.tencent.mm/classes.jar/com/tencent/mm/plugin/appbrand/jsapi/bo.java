@@ -1,12 +1,15 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.os.Bundle;
+import android.content.Intent;
+import com.tencent.luggage.k.f.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.v;
 
 public final class bo
-  extends d<k>
+  extends c<v>
 {
-  public static final int CTRL_INDEX = 868;
-  public static final String NAME = "requestQueryCashier";
+  public static final int CTRL_INDEX = 102;
+  public static final String NAME = "makePhoneCall";
 }
 
 

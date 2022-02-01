@@ -2,13 +2,13 @@ package com.tencent.xweb;
 
 public abstract interface u
 {
-  public abstract void F(double paramDouble);
+  public abstract void H(double paramDouble);
   
-  public abstract void fDd();
+  public abstract void gvc();
   
-  public abstract boolean hsA();
+  public abstract void iwh();
   
-  public abstract void hsz();
+  public abstract boolean iwi();
 }
 
 

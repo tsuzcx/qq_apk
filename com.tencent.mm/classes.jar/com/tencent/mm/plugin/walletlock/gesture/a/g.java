@@ -11,17 +11,17 @@ import java.io.OutputStream;
 
 public final class g
 {
-  public long IvB = -1L;
-  public long IvC = 0L;
+  public long PpG = -1L;
+  public long PpH = 0L;
   
-  public final g cu(byte[] paramArrayOfByte)
+  public final g cL(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(129790);
     paramArrayOfByte = new DataInputStream(new ByteArrayInputStream(paramArrayOfByte));
     try
     {
-      this.IvB = paramArrayOfByte.readLong();
-      this.IvC = paramArrayOfByte.readLong();
+      this.PpG = paramArrayOfByte.readLong();
+      this.PpH = paramArrayOfByte.readLong();
       paramArrayOfByte.close();
       AppMethodBeat.o(129790);
       return this;
@@ -42,8 +42,8 @@ public final class g
     DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
     try
     {
-      localDataOutputStream.writeLong(this.IvB);
-      localDataOutputStream.writeLong(this.IvC);
+      localDataOutputStream.writeLong(this.PpG);
+      localDataOutputStream.writeLong(this.PpH);
       localDataOutputStream.close();
       localObject = ((ByteArrayOutputStream)localObject).toByteArray();
       AppMethodBeat.o(129789);
@@ -60,7 +60,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.gesture.a.g
  * JD-Core Version:    0.7.0.1
  */

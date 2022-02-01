@@ -1,77 +1,100 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.vo;
-import com.tencent.mm.protocal.protobuf.vp;
+import com.tencent.mm.protocal.protobuf.ds;
+import com.tencent.mm.protocal.protobuf.esi;
+import com.tencent.mm.protocal.protobuf.rg;
+import com.tencent.mm.protocal.protobuf.rh;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.c.r;
-import java.net.URLDecoder;
+import com.tencent.mm.wallet_core.c.j;
 
 public final class n
-  extends r
+  extends q
+  implements m, j, com.tencent.mm.wallet_core.d.d
 {
-  public vp CoK;
-  private final String TAG;
+  public rh IlI;
+  private rg IlJ;
+  private i callback;
+  public String fwv;
+  public boolean hasRetried;
+  private com.tencent.mm.an.d kwO;
+  public boolean uTW;
   
-  public n(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
+  public n(esi paramesi, ds paramds, String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(67863);
-    this.TAG = "MicroMsg.NetSceneF2fDynamicCode";
-    Object localObject = new d.a();
-    ((d.a)localObject).iLN = new vo();
-    ((d.a)localObject).iLO = new vp();
-    ((d.a)localObject).funcId = 2736;
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/f2fdynamiccode";
-    ((d.a)localObject).iLP = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (vo)this.rr.iLK.iLR;
-    ((vo)localObject).yRL = paramInt;
-    ((vo)localObject).pWm = paramString1;
-    ((vo)localObject).CpJ = paramString2;
-    ((vo)localObject).LgC = URLDecoder.decode(paramString3);
-    ((vo)localObject).Cpr = paramString4;
-    ((vo)localObject).Cps = paramString5;
-    ((vo)localObject).CpM = paramString6;
-    ((vo)localObject).nickname = paramString7;
-    ((vo)localObject).Cpg = paramString8;
-    Log.i("MicroMsg.NetSceneF2fDynamicCode", "amount: %s, username: %s, transfer_code_id: %s", new Object[] { Integer.valueOf(paramInt), paramString1, URLDecoder.decode(paramString3) });
-    AppMethodBeat.o(67863);
+    AppMethodBeat.i(67860);
+    this.uTW = false;
+    this.hasRetried = false;
+    d.a locala = new d.a();
+    locala.lBU = new rg();
+    locala.lBV = new rh();
+    locala.funcId = 2682;
+    locala.uri = "/cgi-bin/mmpay-bin/busif2fzerocallback";
+    locala.lBW = 0;
+    locala.respCmdId = 0;
+    this.kwO = locala.bgN();
+    this.IlJ = ((rg)d.b.b(this.kwO.lBR));
+    this.IlJ.RZn = paramds;
+    this.IlJ.RZJ = paramesi;
+    this.IlJ.RZK = paramString1;
+    this.IlJ.Sah = paramInt;
+    this.IlJ.token = paramString2;
+    this.fwv = paramString3;
+    Log.i("MicroMsg.NetSceneBusiF2fZeroCallback", "NetSceneBusiF2fZeroCallback, token %s AfterPlaceOrderCommReq %s zero_pay_extend: %s", new Object[] { paramString2, a.a(paramds), paramString1 });
+    AppMethodBeat.o(67860);
   }
   
-  public final void b(int paramInt1, int paramInt2, String paramString, s params)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(67864);
-    Log.i("MicroMsg.NetSceneF2fDynamicCode", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.CoK = ((vp)((d)params).iLL.iLR);
-    Log.i("MicroMsg.NetSceneF2fDynamicCode", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.CoK.dDN), this.CoK.qwn });
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
-    }
-    AppMethodBeat.o(67864);
+    AppMethodBeat.i(67861);
+    this.callback = parami;
+    int i = dispatch(paramg, this.kwO, this);
+    AppMethodBeat.o(67861);
+    return i;
   }
   
-  public final void e(s params)
+  public final boolean getHasRetried()
   {
-    params = (vp)((d)params).iLL.iLR;
-    this.RtZ = params.dDN;
-    this.Rua = params.qwn;
+    return this.hasRetried;
   }
   
   public final int getType()
   {
-    return 2736;
+    return 2682;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(67862);
+    Log.i("MicroMsg.NetSceneBusiF2fZeroCallback", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.IlI = ((rh)d.c.b(((com.tencent.mm.an.d)params).lBS));
+    Log.i("MicroMsg.NetSceneBusiF2fZeroCallback", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.IlI.tqa), this.IlI.tqb });
+    if (this.callback != null) {
+      if (this.IlI.Sai != 1) {
+        break label134;
+      }
+    }
+    label134:
+    for (boolean bool = true;; bool = false)
+    {
+      this.uTW = bool;
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(67862);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.model.n
  * JD-Core Version:    0.7.0.1
  */

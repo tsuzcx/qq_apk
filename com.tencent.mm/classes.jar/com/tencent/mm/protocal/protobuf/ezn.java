@@ -2,158 +2,109 @@ package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import g.a.a.b;
+import java.util.LinkedList;
 
 public final class ezn
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String KTg;
-  public String KZu;
-  public String MD5;
-  public String MRZ;
-  public int Scene;
+  public fbs UzO;
+  public int previewHeight;
+  public int previewWidth;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32557);
+    AppMethodBeat.i(110915);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.MRZ == null)
+      if (this.UzO == null)
       {
-        paramVarArgs = new b("Not all required fields were included: Talker");
-        AppMethodBeat.o(32557);
+        paramVarArgs = new b("Not all required fields were included: materialResp");
+        AppMethodBeat.o(110915);
         throw paramVarArgs;
       }
-      if (this.KTg == null)
+      if (this.UzO != null)
       {
-        paramVarArgs = new b("Not all required fields were included: Text");
-        AppMethodBeat.o(32557);
-        throw paramVarArgs;
+        paramVarArgs.oE(1, this.UzO.computeSize());
+        this.UzO.writeFields(paramVarArgs);
       }
-      if (this.MD5 == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: MD5");
-        AppMethodBeat.o(32557);
-        throw paramVarArgs;
-      }
-      if (this.KZu == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: ProductId");
-        AppMethodBeat.o(32557);
-        throw paramVarArgs;
-      }
-      if (this.MRZ != null) {
-        paramVarArgs.e(1, this.MRZ);
-      }
-      if (this.KTg != null) {
-        paramVarArgs.e(2, this.KTg);
-      }
-      if (this.MD5 != null) {
-        paramVarArgs.e(3, this.MD5);
-      }
-      if (this.KZu != null) {
-        paramVarArgs.e(4, this.KZu);
-      }
-      paramVarArgs.aM(5, this.Scene);
-      AppMethodBeat.o(32557);
+      paramVarArgs.aY(2, this.previewWidth);
+      paramVarArgs.aY(3, this.previewHeight);
+      AppMethodBeat.o(110915);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.MRZ == null) {
-        break label649;
+      if (this.UzO == null) {
+        break label428;
       }
     }
-    label649:
-    for (int i = g.a.a.b.b.a.f(1, this.MRZ) + 0;; i = 0)
+    label428:
+    for (paramInt = g.a.a.a.oD(1, this.UzO.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.KTg != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.KTg);
-      }
-      i = paramInt;
-      if (this.MD5 != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.MD5);
-      }
-      paramInt = i;
-      if (this.KZu != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.KZu);
-      }
-      i = g.a.a.b.b.a.bu(5, this.Scene);
-      AppMethodBeat.o(32557);
-      return paramInt + i;
+      int i = g.a.a.b.b.a.bM(2, this.previewWidth);
+      int j = g.a.a.b.b.a.bM(3, this.previewHeight);
+      AppMethodBeat.o(110915);
+      return paramInt + i + j;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.MRZ == null)
+        if (this.UzO == null)
         {
-          paramVarArgs = new b("Not all required fields were included: Talker");
-          AppMethodBeat.o(32557);
+          paramVarArgs = new b("Not all required fields were included: materialResp");
+          AppMethodBeat.o(110915);
           throw paramVarArgs;
         }
-        if (this.KTg == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Text");
-          AppMethodBeat.o(32557);
-          throw paramVarArgs;
-        }
-        if (this.MD5 == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: MD5");
-          AppMethodBeat.o(32557);
-          throw paramVarArgs;
-        }
-        if (this.KZu == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: ProductId");
-          AppMethodBeat.o(32557);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(32557);
+        AppMethodBeat.o(110915);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         ezn localezn = (ezn)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32557);
+          AppMethodBeat.o(110915);
           return -1;
         case 1: 
-          localezn.MRZ = locala.UbS.readString();
-          AppMethodBeat.o(32557);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            fbs localfbs = new fbs();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localfbs.parseFrom((byte[])localObject);
+            }
+            localezn.UzO = localfbs;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(110915);
           return 0;
         case 2: 
-          localezn.KTg = locala.UbS.readString();
-          AppMethodBeat.o(32557);
-          return 0;
-        case 3: 
-          localezn.MD5 = locala.UbS.readString();
-          AppMethodBeat.o(32557);
-          return 0;
-        case 4: 
-          localezn.KZu = locala.UbS.readString();
-          AppMethodBeat.o(32557);
+          localezn.previewWidth = ((g.a.a.a.a)localObject).abFh.AK();
+          AppMethodBeat.o(110915);
           return 0;
         }
-        localezn.Scene = locala.UbS.zi();
-        AppMethodBeat.o(32557);
+        localezn.previewHeight = ((g.a.a.a.a)localObject).abFh.AK();
+        AppMethodBeat.o(110915);
         return 0;
       }
-      AppMethodBeat.o(32557);
+      AppMethodBeat.o(110915);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ezn
  * JD-Core Version:    0.7.0.1
  */

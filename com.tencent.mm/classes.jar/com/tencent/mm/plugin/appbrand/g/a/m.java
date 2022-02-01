@@ -14,26 +14,26 @@ public final class m
   {
     super(paramString1, "");
     AppMethodBeat.i(158900);
-    a(e.a.ljD);
-    cV("Nt", "upnp:event");
-    cV("Timeout", "Second-10800");
-    cV("Callback", "<" + paramString2 + ">");
+    a(e.a.oem);
+    de("Nt", "upnp:event");
+    de("Timeout", "Second-10800");
+    de("Callback", "<" + paramString2 + ">");
     AppMethodBeat.o(158900);
   }
   
-  public final String bBg()
+  public final String bMB()
   {
     return "SUBSCRIBE";
   }
   
-  public final String bBh()
+  public final String bMC()
   {
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.a.m
  * JD-Core Version:    0.7.0.1
  */

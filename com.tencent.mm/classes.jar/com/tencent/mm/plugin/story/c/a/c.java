@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.story.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
-import com.tencent.mm.compatible.deviceinfo.x;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.media.k.f.a;
+import com.tencent.mm.compatible.deviceinfo.af;
+import com.tencent.mm.compatible.deviceinfo.y;
+import com.tencent.mm.media.k.h.a;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
-import com.tencent.mm.plugin.story.c.b;
+import com.tencent.mm.plugin.zero.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -17,23 +16,23 @@ import com.tencent.mm.storage.ar.a;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEncodeElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEncodeElementConfig$EncodeConfig;", "()V", "RECORDER_TYPE_FFMPEG", "", "RECORDER_TYPE_MEDIACODEC", "TAG", "", "getTAG", "()Ljava/lang/String;", "findVideoFps", "path", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "EncodeConfig", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEncodeElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEncodeElementConfig$EncodeConfig;", "()V", "RECORDER_TYPE_FFMPEG", "", "RECORDER_TYPE_MEDIACODEC", "TAG", "", "getTAG", "()Ljava/lang/String;", "findVideoFps", "path", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "EncodeConfig", "plugin-story_release"})
 public final class c
-  extends b<a>
+  extends com.tencent.mm.plugin.story.c.b<a>
 {
-  public static final c FkZ;
+  public static final c LFb;
   private static final String TAG = "MicroMsg.StoryEncodeElementConfig";
   
   static
   {
     AppMethodBeat.i(118594);
-    FkZ = new c();
+    LFb = new c();
     TAG = "MicroMsg.StoryEncodeElementConfig";
     AppMethodBeat.o(118594);
   }
   
   /* Error */
-  private static int aRH(String paramString)
+  private static int bcL(String paramString)
   {
     // Byte code:
     //   0: ldc 65
@@ -67,7 +66,7 @@ public final class c
     //   51: astore_3
     //   52: aload_0
     //   53: ldc 82
-    //   55: invokestatic 88	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   55: invokestatic 88	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
     //   58: aload 4
     //   60: astore_3
     //   61: aload_0
@@ -103,13 +102,13 @@ public final class c
     //   121: astore_3
     //   122: aload 5
     //   124: ldc 90
-    //   126: invokestatic 88	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   126: invokestatic 88	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
     //   129: aload 4
     //   131: astore_3
     //   132: aload 5
     //   134: ldc 116
     //   136: iconst_0
-    //   137: invokestatic 122	kotlin/n/n:J	(Ljava/lang/String;Ljava/lang/String;Z)Z
+    //   137: invokestatic 122	kotlin/n/n:M	(Ljava/lang/String;Ljava/lang/String;Z)Z
     //   140: ifeq +120 -> 260
     //   143: aload 4
     //   145: astore_3
@@ -221,81 +220,81 @@ public final class c
     //   156	175	247	java/lang/Exception
   }
   
-  public final void aLS()
+  public final void aTZ()
   {
     AppMethodBeat.i(118592);
-    Object localObject1 = (a)aLQ();
-    Object localObject2 = com.tencent.mm.plugin.story.proxy.c.Ftv;
-    com.tencent.mm.plugin.story.proxy.c.fpL();
+    Object localObject1 = (a)aTX();
+    Object localObject2 = com.tencent.mm.plugin.story.proxy.c.LNy;
+    com.tencent.mm.plugin.story.proxy.c.gef();
     localObject2 = com.tencent.mm.plugin.story.proxy.c.getVideoPara();
-    p.h(localObject2, "<set-?>");
-    ((a)localObject1).BOm = ((VideoTransPara)localObject2);
-    localObject1 = ((a)aLQ()).BOm;
-    ((a)aLQ()).targetWidth = ((VideoTransPara)localObject1).width;
-    localObject2 = (a)aLQ();
-    f.a locala = com.tencent.mm.media.k.f.ilG;
-    ((a)localObject2).targetHeight = f.a.ro(((VideoTransPara)localObject1).width);
-    if (((a)aLQ()).targetHeight % 16 != 0) {
-      ((a)aLQ()).targetHeight = com.tencent.mm.plugin.mmsight.d.QH(((a)aLQ()).targetHeight);
+    p.k(localObject2, "<set-?>");
+    ((a)localObject1).mfk = ((VideoTransPara)localObject2);
+    localObject1 = ((a)aTX()).mfk;
+    ((a)aTX()).targetWidth = ((VideoTransPara)localObject1).width;
+    localObject2 = (a)aTX();
+    h.a locala = com.tencent.mm.media.k.h.laG;
+    ((a)localObject2).targetHeight = h.a.ug(((VideoTransPara)localObject1).width);
+    if (((a)aTX()).targetHeight % 16 != 0) {
+      ((a)aTX()).targetHeight = com.tencent.mm.plugin.mmsight.d.WV(((a)aTX()).targetHeight);
     }
-    if (((a)aLQ()).targetWidth % 16 != 0) {
-      ((a)aLQ()).targetWidth = com.tencent.mm.plugin.mmsight.d.QH(((a)aLQ()).targetWidth);
+    if (((a)aTX()).targetWidth % 16 != 0) {
+      ((a)aTX()).targetWidth = com.tencent.mm.plugin.mmsight.d.WV(((a)aTX()).targetWidth);
     }
-    ((a)aLQ()).BOm.width = ((a)aLQ()).targetWidth;
-    ((a)aLQ()).BOm.height = ((a)aLQ()).targetHeight;
-    ((a)aLQ()).videoBitrate = ((VideoTransPara)localObject1).videoBitrate;
-    ((a)aLQ()).audioBitrate = ((VideoTransPara)localObject1).audioBitrate;
-    ((a)aLQ()).frameRate = ((VideoTransPara)localObject1).fps;
-    ((a)aLQ()).iiH = ((VideoTransPara)localObject1).iiH;
-    ((a)aLQ()).duration = ((VideoTransPara)localObject1).duration;
-    ((a)aLQ()).iSV = ((VideoTransPara)localObject1).iSV;
-    ((a)aLQ()).iSU = ((VideoTransPara)localObject1).iSU;
-    ((a)aLQ()).isDefault = ((VideoTransPara)localObject1).isDefault;
-    ((a)aLQ()).iTf = ((VideoTransPara)localObject1).iTf;
-    ((a)aLQ()).audioSampleRate = ((VideoTransPara)localObject1).audioSampleRate;
-    localObject1 = (a)aLQ();
-    p.h("StoryCheckSendVideoBitrateLimit", "key");
+    ((a)aTX()).mfk.width = ((a)aTX()).targetWidth;
+    ((a)aTX()).mfk.height = ((a)aTX()).targetHeight;
+    ((a)aTX()).videoBitrate = ((VideoTransPara)localObject1).videoBitrate;
+    ((a)aTX()).audioBitrate = ((VideoTransPara)localObject1).audioBitrate;
+    ((a)aTX()).frameRate = ((VideoTransPara)localObject1).fps;
+    ((a)aTX()).kXt = ((VideoTransPara)localObject1).kXt;
+    ((a)aTX()).duration = ((VideoTransPara)localObject1).duration;
+    ((a)aTX()).lJn = ((VideoTransPara)localObject1).lJn;
+    ((a)aTX()).lJm = ((VideoTransPara)localObject1).lJm;
+    ((a)aTX()).lJx = ((VideoTransPara)localObject1).lJx;
+    ((a)aTX()).lJy = ((VideoTransPara)localObject1).lJy;
+    ((a)aTX()).audioSampleRate = ((VideoTransPara)localObject1).audioSampleRate;
+    localObject1 = (a)aTX();
+    p.k("StoryCheckSendVideoBitrateLimit", "key");
     if (MMApplicationContext.isMMProcess())
     {
-      localObject2 = g.af(com.tencent.mm.plugin.zero.b.a.class);
-      p.g(localObject2, "MMKernel.service<IConfig…onfigService::class.java)");
+      localObject2 = com.tencent.mm.kernel.h.ae(a.class);
+      p.j(localObject2, "MMKernel.service<IConfig…onfigService::class.java)");
     }
-    for (float f = Util.getFloat(((com.tencent.mm.plugin.zero.b.a)localObject2).aqJ().getValue("StoryCheckSendVideoBitrateLimit"), 1.3F);; f = Util.getFloat(CaptureMMProxy.getInstance().getDynamicConfig("StoryCheckSendVideoBitrateLimit"), 1.3F))
+    for (float f = Util.getFloat(((a)localObject2).axc().getValue("StoryCheckSendVideoBitrateLimit"), 1.3F);; f = Util.getFloat(CaptureMMProxy.getInstance().getDynamicConfig("StoryCheckSendVideoBitrateLimit"), 1.3F))
     {
-      ((a)localObject1).Fla = f;
-      if (ae.gKB.gIP != -1) {
-        ((a)aLQ()).gIP = ae.gKB.gIP;
+      ((a)localObject1).LFc = f;
+      if (af.juP.jth != -1) {
+        ((a)aTX()).jth = af.juP.jth;
       }
       if (WeChatEnvironment.hasDebugger())
       {
-        localObject1 = (a)aLQ();
-        localObject2 = g.aAh();
-        p.g(localObject2, "MMKernel.storage()");
-        ((a)localObject1).gIP = ((com.tencent.mm.kernel.e)localObject2).azQ().getInt(ar.a.OfZ, 2);
+        localObject1 = (a)aTX();
+        localObject2 = com.tencent.mm.kernel.h.aHG();
+        p.j(localObject2, "MMKernel.storage()");
+        ((a)localObject1).jth = ((com.tencent.mm.kernel.f)localObject2).aHp().getInt(ar.a.Vup, 2);
       }
-      Log.i(TAG, "loadConfigFromVideoParam: " + (a)aLQ());
+      Log.i(TAG, "loadConfigFromVideoParam: " + (a)aTX());
       AppMethodBeat.o(118592);
       return;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEncodeElementConfig$EncodeConfig;", "", "targetWidth", "", "targetHeight", "videoBitrate", "audioBitrate", "frameRate", "videoRotate", "duration", "iFrame", "profileIndex", "presetIndex", "isDefault", "", "thumbSize", "audioSampleRate", "recorderType", "exceedVideoBitrateTolerance", "", "(IIIIIIIIIIZIIIF)V", "getAudioBitrate", "()I", "setAudioBitrate", "(I)V", "getAudioSampleRate", "setAudioSampleRate", "getDuration", "setDuration", "getExceedVideoBitrateTolerance", "()F", "setExceedVideoBitrateTolerance", "(F)V", "getFrameRate", "setFrameRate", "getIFrame", "setIFrame", "()Z", "setDefault", "(Z)V", "getPresetIndex", "setPresetIndex", "getProfileIndex", "setProfileIndex", "getRecorderType", "setRecorderType", "getTargetHeight", "setTargetHeight", "getTargetWidth", "setTargetWidth", "getThumbSize", "setThumbSize", "getVideoBitrate", "setVideoBitrate", "videoParam", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "getVideoParam", "()Lcom/tencent/mm/modelcontrol/VideoTransPara;", "setVideoParam", "(Lcom/tencent/mm/modelcontrol/VideoTransPara;)V", "getVideoRotate", "setVideoRotate", "checkExceedConfigBitrate", "path", "", "component1", "component10", "component11", "component12", "component13", "component14", "component15", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "videoConfigForLocalFile", "", "Companion", "plugin-story_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEncodeElementConfig$EncodeConfig;", "", "targetWidth", "", "targetHeight", "videoBitrate", "audioBitrate", "frameRate", "videoRotate", "duration", "iFrame", "profileIndex", "presetIndex", "isDefault", "", "thumbSize", "audioSampleRate", "recorderType", "exceedVideoBitrateTolerance", "", "(IIIIIIIIIIZIIIF)V", "getAudioBitrate", "()I", "setAudioBitrate", "(I)V", "getAudioSampleRate", "setAudioSampleRate", "getDuration", "setDuration", "getExceedVideoBitrateTolerance", "()F", "setExceedVideoBitrateTolerance", "(F)V", "getFrameRate", "setFrameRate", "getIFrame", "setIFrame", "()Z", "setDefault", "(Z)V", "getPresetIndex", "setPresetIndex", "getProfileIndex", "setProfileIndex", "getRecorderType", "setRecorderType", "getTargetHeight", "setTargetHeight", "getTargetWidth", "setTargetWidth", "getThumbSize", "setThumbSize", "getVideoBitrate", "setVideoBitrate", "videoParam", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "getVideoParam", "()Lcom/tencent/mm/modelcontrol/VideoTransPara;", "setVideoParam", "(Lcom/tencent/mm/modelcontrol/VideoTransPara;)V", "getVideoRotate", "setVideoRotate", "checkExceedConfigBitrate", "path", "", "component1", "component10", "component11", "component12", "component13", "component14", "component15", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "videoConfigForLocalFile", "", "Companion", "plugin-story_release"})
   public static final class a
   {
-    public static final a Flb;
-    public VideoTransPara BOm;
-    float Fla;
+    public static final a LFd;
+    float LFc;
     int audioBitrate;
     int audioSampleRate;
     public int duration;
     public int frameRate;
-    int gIP;
-    int iSU;
-    int iSV;
-    int iTf;
-    public int ihS;
-    int iiH;
-    boolean isDefault;
+    int jth;
+    public int kWG;
+    int kXt;
+    int lJm;
+    int lJn;
+    boolean lJx;
+    int lJy;
+    public VideoTransPara mfk;
     public int targetHeight;
     public int targetWidth;
     public int videoBitrate;
@@ -303,7 +302,7 @@ public final class c
     static
     {
       AppMethodBeat.i(118587);
-      Flb = new a((byte)0);
+      LFd = new a((byte)0);
       AppMethodBeat.o(118587);
     }
     
@@ -315,36 +314,36 @@ public final class c
       this.videoBitrate = 0;
       this.audioBitrate = 0;
       this.frameRate = 0;
-      this.ihS = 0;
+      this.kWG = 0;
       this.duration = 0;
-      this.iiH = 0;
-      this.iSU = 0;
-      this.iSV = 0;
-      this.isDefault = false;
-      this.iTf = 0;
+      this.kXt = 0;
+      this.lJm = 0;
+      this.lJn = 0;
+      this.lJx = false;
+      this.lJy = 0;
       this.audioSampleRate = 0;
-      this.gIP = 2;
-      this.Fla = 1.3F;
-      this.BOm = new VideoTransPara();
+      this.jth = 2;
+      this.LFc = 1.3F;
+      this.mfk = new VideoTransPara();
       AppMethodBeat.o(118586);
     }
     
-    public final boolean aRJ(String paramString)
+    public final boolean bcN(String paramString)
     {
       AppMethodBeat.i(118585);
-      p.h(paramString, "path");
+      p.k(paramString, "path");
       if (Log.getLogLevel() >= 0)
       {
-        localObject = com.tencent.mm.plugin.recordvideo.b.e.BNm;
-        if (com.tencent.mm.plugin.recordvideo.b.e.eJu())
+        localObject = com.tencent.mm.plugin.recordvideo.b.f.HJU;
+        if (com.tencent.mm.plugin.recordvideo.b.f.fvD())
         {
           AppMethodBeat.o(118585);
           return true;
         }
       }
-      Object localObject = com.tencent.mm.plugin.sight.base.e.aNx(paramString);
+      Object localObject = com.tencent.mm.plugin.sight.base.f.aYg(paramString);
       if (localObject != null) {}
-      for (int i = ((com.tencent.mm.plugin.sight.base.a)localObject).videoBitrate;; i = 0)
+      for (int i = ((com.tencent.mm.plugin.sight.base.b)localObject).videoBitrate;; i = 0)
       {
         int j = i;
         if (i <= 0) {
@@ -366,8 +365,8 @@ public final class c
           label100:
           break label100;
         }
-        Log.i("MicroMsg.IEncodeConfig", "checkExceedConfigBitrate, path:" + paramString + ", bitrate:" + j + ", videoBitrate:" + this.videoBitrate + ", exceedVideoBitrateTolerance:" + this.Fla);
-        if (j > this.videoBitrate * this.Fla)
+        Log.i("MicroMsg.IEncodeConfig", "checkExceedConfigBitrate, path:" + paramString + ", bitrate:" + j + ", videoBitrate:" + this.videoBitrate + ", exceedVideoBitrateTolerance:" + this.LFc);
+        if (j > this.videoBitrate * this.LFc)
         {
           AppMethodBeat.o(118585);
           return true;
@@ -385,7 +384,7 @@ public final class c
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((this.targetWidth != paramObject.targetWidth) || (this.targetHeight != paramObject.targetHeight) || (this.videoBitrate != paramObject.videoBitrate) || (this.audioBitrate != paramObject.audioBitrate) || (this.frameRate != paramObject.frameRate) || (this.ihS != paramObject.ihS) || (this.duration != paramObject.duration) || (this.iiH != paramObject.iiH) || (this.iSU != paramObject.iSU) || (this.iSV != paramObject.iSV) || (this.isDefault != paramObject.isDefault) || (this.iTf != paramObject.iTf) || (this.audioSampleRate != paramObject.audioSampleRate) || (this.gIP != paramObject.gIP) || (Float.compare(this.Fla, paramObject.Fla) != 0)) {}
+          if ((this.targetWidth != paramObject.targetWidth) || (this.targetHeight != paramObject.targetHeight) || (this.videoBitrate != paramObject.videoBitrate) || (this.audioBitrate != paramObject.audioBitrate) || (this.frameRate != paramObject.frameRate) || (this.kWG != paramObject.kWG) || (this.duration != paramObject.duration) || (this.kXt != paramObject.kXt) || (this.lJm != paramObject.lJm) || (this.lJn != paramObject.lJn) || (this.lJx != paramObject.lJx) || (this.lJy != paramObject.lJy) || (this.audioSampleRate != paramObject.audioSampleRate) || (this.jth != paramObject.jth) || (Float.compare(this.LFc, paramObject.LFc) != 0)) {}
         }
       }
       else
@@ -405,12 +404,12 @@ public final class c
     public final String toString()
     {
       AppMethodBeat.i(118588);
-      String str = "EncodeConfig(targetWidth=" + this.targetWidth + ", targetHeight=" + this.targetHeight + ", videoBitrate=" + this.videoBitrate + ", audioBitrate=" + this.audioBitrate + ", frameRate=" + this.frameRate + ", videoRotate=" + this.ihS + ", duration=" + this.duration + ", iFrame=" + this.iiH + ", profileIndex=" + this.iSU + ", presetIndex=" + this.iSV + ", isDefault=" + this.isDefault + ", thumbSize=" + this.iTf + ", audioSampleRate=" + this.audioSampleRate + ", recorderType=" + this.gIP + ", exceedVideoBitrateTolerance=" + this.Fla + ")";
+      String str = "EncodeConfig(targetWidth=" + this.targetWidth + ", targetHeight=" + this.targetHeight + ", videoBitrate=" + this.videoBitrate + ", audioBitrate=" + this.audioBitrate + ", frameRate=" + this.frameRate + ", videoRotate=" + this.kWG + ", duration=" + this.duration + ", iFrame=" + this.kXt + ", profileIndex=" + this.lJm + ", presetIndex=" + this.lJn + ", isDefault=" + this.lJx + ", thumbSize=" + this.lJy + ", audioSampleRate=" + this.audioSampleRate + ", recorderType=" + this.jth + ", exceedVideoBitrateTolerance=" + this.LFc + ")";
       AppMethodBeat.o(118588);
       return str;
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEncodeElementConfig$EncodeConfig$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEncodeElementConfig$EncodeConfig$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
     public static final class a {}
   }
 }

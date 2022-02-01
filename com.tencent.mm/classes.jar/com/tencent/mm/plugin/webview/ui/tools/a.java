@@ -5,19 +5,19 @@ import java.lang.ref.WeakReference;
 
 public class a
 {
-  WeakReference<WebViewUI> Jbp;
+  WeakReference<WebViewUI> PXH;
   
   public a(WebViewUI paramWebViewUI)
   {
     AppMethodBeat.i(79534);
-    this.Jbp = new WeakReference(paramWebViewUI);
+    this.PXH = new WeakReference(paramWebViewUI);
     AppMethodBeat.o(79534);
   }
   
-  public final boolean gcd()
+  public final boolean elX()
   {
     AppMethodBeat.i(79535);
-    if ((geo() == null) || (geo().isFinishing()))
+    if ((gXq() == null) || (gXq().isFinishing()))
     {
       AppMethodBeat.o(79535);
       return true;
@@ -26,10 +26,10 @@ public class a
     return false;
   }
   
-  public final WebViewUI geo()
+  public final WebViewUI gXq()
   {
     AppMethodBeat.i(79536);
-    WebViewUI localWebViewUI = (WebViewUI)this.Jbp.get();
+    WebViewUI localWebViewUI = (WebViewUI)this.PXH.get();
     AppMethodBeat.o(79536);
     return localWebViewUI;
   }

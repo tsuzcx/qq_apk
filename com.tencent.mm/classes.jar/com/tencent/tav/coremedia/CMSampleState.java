@@ -4,6 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class CMSampleState
 {
+  private int exportCode;
   private boolean isNewFrame;
   private String msg;
   private long stateCode;
@@ -17,50 +18,66 @@ public class CMSampleState
   
   public CMSampleState(long paramLong, String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(199407);
+    AppMethodBeat.i(202916);
     this.isNewFrame = true;
     this.stateCode = 0L;
+    this.exportCode = 0;
     this.time = new CMTime(paramLong);
     this.stateCode = paramLong;
     this.msg = paramString;
     this.throwable = paramThrowable;
-    AppMethodBeat.o(199407);
+    AppMethodBeat.o(202916);
   }
   
   public CMSampleState(CMTime paramCMTime)
   {
-    AppMethodBeat.i(199406);
+    AppMethodBeat.i(202915);
     this.isNewFrame = true;
     this.stateCode = 0L;
+    this.exportCode = 0;
     this.time = paramCMTime;
     if (paramCMTime.value < 0L) {
       this.stateCode = paramCMTime.value;
     }
-    AppMethodBeat.o(199406);
+    AppMethodBeat.o(202915);
   }
   
   public static CMSampleState fromError(long paramLong)
   {
-    AppMethodBeat.i(199403);
+    AppMethodBeat.i(202909);
     CMSampleState localCMSampleState = fromError(paramLong, "state:".concat(String.valueOf(paramLong)));
-    AppMethodBeat.o(199403);
+    AppMethodBeat.o(202909);
     return localCMSampleState;
   }
   
   public static CMSampleState fromError(long paramLong, String paramString)
   {
-    AppMethodBeat.i(199404);
+    AppMethodBeat.i(202910);
     paramString = fromError(paramLong, paramString, new RuntimeException(paramString));
-    AppMethodBeat.o(199404);
+    AppMethodBeat.o(202910);
     return paramString;
   }
   
   public static CMSampleState fromError(long paramLong, String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(199405);
+    AppMethodBeat.i(202911);
     paramString = new CMSampleState(paramLong, paramString, paramThrowable);
-    AppMethodBeat.o(199405);
+    AppMethodBeat.o(202911);
     return paramString;
+  }
+  
+  public static CMSampleState fromExportError(long paramLong, int paramInt, String paramString, Throwable paramThrowable)
+  {
+    AppMethodBeat.i(202912);
+    paramString = new CMSampleState(paramLong, paramString, paramThrowable);
+    paramString.exportCode = paramInt;
+    AppMethodBeat.o(202912);
+    return paramString;
+  }
+  
+  public int getExportCode()
+  {
+    return this.exportCode;
   }
   
   public String getMsg()
@@ -123,15 +140,15 @@ public class CMSampleState
   
   public String toString()
   {
-    AppMethodBeat.i(199408);
+    AppMethodBeat.i(202921);
     String str = "CMSampleState{time=" + this.time + ", isNewFrame=" + this.isNewFrame + ", stateCode=" + this.stateCode + ", throwable=" + this.throwable + ", msg='" + this.msg + '\'' + '}';
-    AppMethodBeat.o(199408);
+    AppMethodBeat.o(202921);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.coremedia.CMSampleState
  * JD-Core Version:    0.7.0.1
  */

@@ -18,9 +18,9 @@ import java.util.List;
 public class MMKVContentProvider
   extends ContentProvider
 {
-  private static Uri Rzw;
+  private static Uri Zbd;
   
-  protected static String aT(Context paramContext, int paramInt)
+  protected static String bm(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(13531);
     paramContext = (ActivityManager)paramContext.getSystemService("activity");
@@ -42,12 +42,12 @@ public class MMKVContentProvider
     return "";
   }
   
-  protected static Uri kU(Context paramContext)
+  protected static Uri lR(Context paramContext)
   {
     AppMethodBeat.i(13528);
-    if (Rzw != null)
+    if (Zbd != null)
     {
-      paramContext = Rzw;
+      paramContext = Zbd;
       AppMethodBeat.o(13528);
       return paramContext;
     }
@@ -63,7 +63,7 @@ public class MMKVContentProvider
       return null;
     }
     paramContext = Uri.parse("content://".concat(String.valueOf(paramContext)));
-    Rzw = paramContext;
+    Zbd = paramContext;
     AppMethodBeat.o(13528);
     return paramContext;
   }
@@ -154,8 +154,8 @@ public class MMKVContentProvider
       AppMethodBeat.o(13530);
       return false;
     }
-    if (Rzw == null) {
-      Rzw = Uri.parse("content://".concat(String.valueOf(localObject)));
+    if (Zbd == null) {
+      Zbd = Uri.parse("content://".concat(String.valueOf(localObject)));
     }
     AppMethodBeat.o(13530);
     return true;
@@ -179,7 +179,7 @@ public class MMKVContentProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mmkv.MMKVContentProvider
  * JD-Core Version:    0.7.0.1
  */

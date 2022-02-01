@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.masssend.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
   public int begin;
   public int end;
@@ -14,24 +14,24 @@ public final class d
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.begin);
-      paramVarArgs.aM(2, this.end);
+      paramVarArgs.aY(1, this.begin);
+      paramVarArgs.aY(2, this.end);
       AppMethodBeat.o(26357);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bu(1, this.begin);
-      int i = g.a.a.b.b.a.bu(2, this.end);
+      paramInt = g.a.a.b.b.a.bM(1, this.begin);
+      int i = g.a.a.b.b.a.bM(2, this.end);
       AppMethodBeat.o(26357);
       return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
       AppMethodBeat.o(26357);
@@ -47,11 +47,11 @@ public final class d
         AppMethodBeat.o(26357);
         return -1;
       case 1: 
-        locald.begin = locala.UbS.zi();
+        locald.begin = locala.abFh.AK();
         AppMethodBeat.o(26357);
         return 0;
       }
-      locald.end = locala.UbS.zi();
+      locald.end = locala.abFh.AK();
       AppMethodBeat.o(26357);
       return 0;
     }
@@ -61,7 +61,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.a.d
  * JD-Core Version:    0.7.0.1
  */

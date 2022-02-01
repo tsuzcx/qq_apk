@@ -2,16 +2,17 @@ package com.tencent.mm.live.ui;
 
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.live.b.f;
 import com.tencent.mm.ui.MMActivity;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/ui/LiveUIE;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "getLayoutId", "", "plugin-logic_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/ui/LiveUIE;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "getLayoutId", "", "plugin-logic_release"})
 public final class LiveUIE
   extends MMActivity
 {
   public final int getLayoutId()
   {
-    return 2131493171;
+    return b.f.background_transparent;
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

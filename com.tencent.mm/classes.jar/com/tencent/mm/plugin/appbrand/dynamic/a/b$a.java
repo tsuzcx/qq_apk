@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.dynamic.a;
 
 import android.os.Bundle;
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.d;
 
 class b$a
-  implements b<Bundle, Bundle>
+  implements d<Bundle, Bundle>
 {}
 
 

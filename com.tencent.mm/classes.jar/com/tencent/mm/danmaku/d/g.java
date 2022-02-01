@@ -5,59 +5,59 @@ import java.util.Comparator;
 
 public final class g<T>
 {
-  public final a<T> gQB;
-  public final b gQC;
+  public final a<T> jAU;
+  public final b jAV;
   public final Comparator<T> mComparator;
   public int mSize;
   
   public g(Comparator<T> paramComparator, b<T> paramb)
   {
-    AppMethodBeat.i(241753);
+    AppMethodBeat.i(267391);
     this.mSize = 0;
-    this.gQC = paramb;
-    this.gQB = new a();
+    this.jAV = paramb;
+    this.jAU = new a();
     this.mComparator = paramComparator;
-    AppMethodBeat.o(241753);
+    AppMethodBeat.o(267391);
+  }
+  
+  public final T aAb()
+  {
+    return this.jAU.jAW.mData;
   }
   
   public final void clear()
   {
-    this.gQB.gQD = this.gQB;
-    this.gQB.gQE = this.gQB;
+    this.jAU.jAW = this.jAU;
+    this.jAU.jAX = this.jAU;
     this.mSize = 0;
-  }
-  
-  public final T peekFirst()
-  {
-    return this.gQB.gQD.mData;
   }
   
   public static final class a<T>
   {
-    public a<T> gQD;
-    public a<T> gQE;
+    public a<T> jAW;
+    public a<T> jAX;
     public final T mData;
     
     public a()
     {
-      AppMethodBeat.i(241752);
+      AppMethodBeat.i(275797);
       this.mData = null;
-      this.gQD = this;
-      this.gQE = this;
-      AppMethodBeat.o(241752);
+      this.jAW = this;
+      this.jAX = this;
+      AppMethodBeat.o(275797);
     }
     
     public a(T paramT, a<T> parama1, a<T> parama2)
     {
       this.mData = paramT;
-      this.gQD = parama1;
-      this.gQE = parama2;
+      this.jAW = parama1;
+      this.jAX = parama2;
     }
   }
   
   public static abstract interface b<T>
   {
-    public abstract int m(T paramT, long paramLong);
+    public abstract int j(T paramT, long paramLong);
   }
 }
 

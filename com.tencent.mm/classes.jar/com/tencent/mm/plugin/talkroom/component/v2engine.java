@@ -13,7 +13,7 @@ public class v2engine
   
   public native int IsSilenceFrame();
   
-  public native int Open(b paramb, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4, byte[] paramArrayOfByte, int paramInt5);
+  public native int Open(ILiveConEngineCallback_AIDL paramILiveConEngineCallback_AIDL, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4, byte[] paramArrayOfByte, int paramInt5);
   
   public native int Send(byte[] paramArrayOfByte, short paramShort);
   
@@ -25,7 +25,7 @@ public class v2engine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.component.v2engine
  * JD-Core Version:    0.7.0.1
  */

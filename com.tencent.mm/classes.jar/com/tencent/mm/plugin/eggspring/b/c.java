@@ -1,33 +1,38 @@
 package com.tencent.mm.plugin.eggspring.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.bw.a;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.jh;
 import com.tencent.mm.t.a.e;
 import com.tencent.mm.t.a.f;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/eggspring/cgi/GetInteractionMaterialCgi;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/eggspring/model/GetInteractionMaterialResp;", "keyword", "", "uxinfo", "source", "", "traceId", "(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V", "plugin-eggspring_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/eggspring/cgi/GetInteractionADCgi;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/eggspring/model/GetInteractionADResp;", "keyword", "", "uxinfo", "source", "", "(Ljava/lang/String;Ljava/lang/String;I)V", "plugin-eggspring_release"})
 public final class c
-  extends com.tencent.mm.ak.c<f>
+  extends com.tencent.mm.an.c<f>
 {
-  public c(String paramString1, String paramString2, String paramString3)
+  public c(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(194566);
-    e locale = new e();
-    locale.dDv = paramString1;
-    locale.gTk = paramString2;
-    locale.source = 0;
-    locale.gTl = paramString3;
+    AppMethodBeat.i(249307);
+    Object localObject = new e();
+    ((e)localObject).fwe = paramString1;
+    ((e)localObject).jDL = paramString2;
+    ((e)localObject).source = 1;
     paramString1 = new d.a();
-    paramString1.c((a)locale);
-    paramString1.d((a)new f());
-    paramString1.sI(0);
-    paramString1.sJ(0);
-    paramString1.MB("/cgi-bin/mmoc-bin/interaction/get_interaction_material");
-    paramString1.sG(4310);
-    c(paramString1.aXF());
-    AppMethodBeat.o(194566);
+    paramString1.c((a)localObject);
+    paramString2 = new f();
+    localObject = new jh();
+    ((jh)localObject).Tef = new eaf();
+    paramString2.setBaseResponse((jh)localObject);
+    paramString1.d((a)paramString2);
+    paramString1.vF(0);
+    paramString1.vG(0);
+    paramString1.TW("/cgi-bin/mmoc-bin/interaction/get_interaction_ad");
+    paramString1.vD(4947);
+    c(paramString1.bgN());
+    AppMethodBeat.o(249307);
   }
 }
 

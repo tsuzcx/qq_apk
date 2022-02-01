@@ -26,6 +26,7 @@ public class TPDownloadParamData
   public String flowId;
   private Map<String, Integer> formatInfo;
   private int fp2p;
+  private List<Map<String, String>> headersList;
   private boolean isCharge;
   private boolean isOffline = false;
   private String linkVid;
@@ -159,6 +160,11 @@ public class TPDownloadParamData
   public int getFp2p()
   {
     return this.fp2p;
+  }
+  
+  public List<Map<String, String>> getHeadersList()
+  {
+    return this.headersList;
   }
   
   public String getLinkVid()
@@ -376,6 +382,11 @@ public class TPDownloadParamData
     this.fp2p = paramInt;
   }
   
+  public void setHeadersList(List<Map<String, String>> paramList)
+  {
+    this.headersList = paramList;
+  }
+  
   public void setLinkVid(String paramString)
   {
     this.linkVid = paramString;
@@ -478,7 +489,7 @@ public class TPDownloadParamData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.api.proxy.TPDownloadParamData
  * JD-Core Version:    0.7.0.1
  */

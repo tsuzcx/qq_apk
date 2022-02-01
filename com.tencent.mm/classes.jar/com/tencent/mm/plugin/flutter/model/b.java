@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.flutter.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import io.flutter.embedding.engine.plugins.a;
 import io.flutter.embedding.engine.plugins.a.b;
@@ -13,15 +13,15 @@ import io.flutter.plugin.a.k.d;
 public final class b
   implements a, k.c
 {
-  private k wJr;
+  private k BCG;
   
   public final void a(a.b paramb)
   {
-    AppMethodBeat.i(240944);
+    AppMethodBeat.i(221113);
     Log.i("MicroMsg.Flutter.FlutterDataReportPlugin", "onAttachedToEngine FlutterDataReportPlugin CHANNEL%s", new Object[] { "com.tencent.mm.flutter.datareport" });
-    this.wJr = new k(paramb.SOH, "com.tencent.mm.flutter.datareport");
-    this.wJr.a(this);
-    AppMethodBeat.o(240944);
+    this.BCG = new k(paramb.aaqF, "com.tencent.mm.flutter.datareport");
+    this.BCG.a(this);
+    AppMethodBeat.o(221113);
   }
   
   public final void a(j paramj, k.d paramd)
@@ -51,30 +51,30 @@ public final class b
       }
       i = 1;
       break;
-      i = ((Integer)paramj.btq("id")).intValue();
-      paramj = (String)paramj.btq("value");
-      e.Cxv.kvStat(i, paramj);
+      i = ((Integer)paramj.bGt("id")).intValue();
+      paramj = (String)paramj.bGt("value");
+      f.Iyx.kvStat(i, paramj);
       AppMethodBeat.o(148872);
       return;
-      i = ((Integer)paramj.btq("id")).intValue();
-      int j = ((Integer)paramj.btq("key")).intValue();
-      int k = ((Integer)paramj.btq("value")).intValue();
-      e.Cxv.idkeyStat(i, j, k, false);
+      i = ((Integer)paramj.bGt("id")).intValue();
+      int j = ((Integer)paramj.bGt("key")).intValue();
+      int k = ((Integer)paramj.bGt("value")).intValue();
+      f.Iyx.idkeyStat(i, j, k, false);
     }
   }
   
   public final void b(a.b paramb)
   {
-    AppMethodBeat.i(240945);
-    if (this.wJr != null) {
-      this.wJr.a(null);
+    AppMethodBeat.i(221114);
+    if (this.BCG != null) {
+      this.BCG.a(null);
     }
-    AppMethodBeat.o(240945);
+    AppMethodBeat.o(221114);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.model.b
  * JD-Core Version:    0.7.0.1
  */

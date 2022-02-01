@@ -1,34 +1,35 @@
 package com.tencent.mm.audio.mix.g;
 
-import com.tencent.mm.g.a.y;
-
-public abstract interface b
+public class b
+  implements c
 {
-  public abstract void b(y paramy);
+  public com.tencent.mm.al.b aeD()
+  {
+    return null;
+  }
   
-  public abstract void c(y paramy);
+  public String aeE()
+  {
+    return null;
+  }
   
-  public abstract void d(y paramy);
+  public void connect() {}
   
-  public abstract void e(y paramy);
+  public void disconnect() {}
   
-  public abstract void f(y paramy);
+  public long getSize()
+  {
+    return -1L;
+  }
   
-  public abstract void g(y paramy);
-  
-  public abstract void h(y paramy);
-  
-  public abstract void i(y paramy);
-  
-  public abstract void j(y paramy);
-  
-  public abstract void k(y paramy);
-  
-  public abstract void l(y paramy);
+  public int readAt(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    return -1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.g.b
  * JD-Core Version:    0.7.0.1
  */

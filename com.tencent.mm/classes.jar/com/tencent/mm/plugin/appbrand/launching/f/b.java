@@ -2,32 +2,32 @@ package com.tencent.mm.plugin.appbrand.launching.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.appusage.ag;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/launching/teenmode/AppBrandTeenModeUtils;", "", "()V", "TAG", "", "canAddCollection", "", "isTeenMode", "miniProgramOption", "", "canLaunchAppBrand", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "scene", "username", "versionType", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;Ljava/lang/Integer;Ljava/lang/String;I)Z", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/launching/teenmode/AppBrandTeenModeUtils;", "", "()V", "TAG", "", "canAddCollection", "", "isTeenMode", "miniProgramOption", "", "canLaunchAppBrand", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "scene", "username", "versionType", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;Ljava/lang/Integer;Ljava/lang/String;I)Z", "plugin-appbrand-integration_release"})
 public final class b
 {
-  public static final b mZB;
+  public static final b pZZ;
   
   static
   {
-    AppMethodBeat.i(228796);
-    mZB = new b();
-    AppMethodBeat.o(228796);
+    AppMethodBeat.i(283965);
+    pZZ = new b();
+    AppMethodBeat.o(283965);
   }
   
   public static final boolean a(AppBrandInitConfigWC paramAppBrandInitConfigWC, Integer paramInteger, String paramString, int paramInt)
   {
-    AppMethodBeat.i(228794);
-    p.h(paramAppBrandInitConfigWC, "config");
+    AppMethodBeat.i(283963);
+    p.k(paramAppBrandInitConfigWC, "config");
     if (paramInt != 0)
     {
-      AppMethodBeat.o(228794);
+      AppMethodBeat.o(283963);
       return true;
     }
     if (paramInteger == null) {}
@@ -68,15 +68,15 @@ public final class b
       if (paramInteger != null) {
         break label206;
       }
-      if ((paramAppBrandInitConfigWC.cyo != 7) && (!paramAppBrandInitConfigWC.ldN)) {
+      if ((paramAppBrandInitConfigWC.cwR != 7) && (!paramAppBrandInitConfigWC.nYb)) {
         break label219;
       }
-      AppMethodBeat.o(228794);
+      AppMethodBeat.o(283963);
       return true;
     }
     for (;;)
     {
-      AppMethodBeat.o(228794);
+      AppMethodBeat.o(283963);
       return true;
       label128:
       label141:
@@ -123,52 +123,52 @@ public final class b
       }
     }
     label219:
-    paramInteger = g.af(com.tencent.mm.plugin.teenmode.a.b.class);
-    p.g(paramInteger, "MMKernel.service(ITeenModeService::class.java)");
-    boolean bool = ((com.tencent.mm.plugin.teenmode.a.b)paramInteger).Vt();
+    paramInteger = h.ae(com.tencent.mm.plugin.teenmode.a.b.class);
+    p.j(paramInteger, "MMKernel.service(ITeenModeService::class.java)");
+    boolean bool = ((com.tencent.mm.plugin.teenmode.a.b)paramInteger).ZM();
     if (!bool)
     {
-      AppMethodBeat.o(228794);
+      AppMethodBeat.o(283963);
       return true;
     }
-    paramInteger = g.af(com.tencent.mm.plugin.teenmode.a.b.class);
-    p.g(paramInteger, "MMKernel.service(ITeenModeService::class.java)");
-    int i = ((com.tencent.mm.plugin.teenmode.a.b)paramInteger).fvp();
-    Log.i("MicroMsg.AppBrandTeenModeUtils", "canLaunchAppBrand isTeenMode: %b, miniProgramOption: %d, serviceType: %d, isPluginApp: %b", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(paramAppBrandInitConfigWC.cyo), Boolean.valueOf(paramAppBrandInitConfigWC.ldN) });
+    paramInteger = h.ae(com.tencent.mm.plugin.teenmode.a.b.class);
+    p.j(paramInteger, "MMKernel.service(ITeenModeService::class.java)");
+    int i = ((com.tencent.mm.plugin.teenmode.a.b)paramInteger).gks();
+    Log.i("MicroMsg.AppBrandTeenModeUtils", "canLaunchAppBrand isTeenMode: %b, miniProgramOption: %d, serviceType: %d, isPluginApp: %b", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(paramAppBrandInitConfigWC.cwR), Boolean.valueOf(paramAppBrandInitConfigWC.nYb) });
     if (i == 0)
     {
-      paramInteger = (ag)g.af(ag.class);
+      paramInteger = (ag)h.ae(ag.class);
       paramAppBrandInitConfigWC = paramString;
       if (paramString == null) {
         paramAppBrandInitConfigWC = "";
       }
-      bool = paramInteger.bf(paramAppBrandInitConfigWC, paramInt);
-      AppMethodBeat.o(228794);
+      bool = paramInteger.by(paramAppBrandInitConfigWC, paramInt);
+      AppMethodBeat.o(283963);
       return bool;
     }
     if (i == 2)
     {
-      AppMethodBeat.o(228794);
+      AppMethodBeat.o(283963);
       return false;
     }
-    AppMethodBeat.o(228794);
+    AppMethodBeat.o(283963);
     return true;
   }
   
-  public static final boolean bOn()
+  public static final boolean caH()
   {
-    AppMethodBeat.i(228795);
-    a locala = g.af(com.tencent.mm.plugin.teenmode.a.b.class);
-    p.g(locala, "MMKernel.service(ITeenModeService::class.java)");
-    boolean bool = ((com.tencent.mm.plugin.teenmode.a.b)locala).Vt();
-    locala = g.af(com.tencent.mm.plugin.teenmode.a.b.class);
-    p.g(locala, "MMKernel.service(ITeenModeService::class.java)");
-    bool = t(bool, ((com.tencent.mm.plugin.teenmode.a.b)locala).fvp());
-    AppMethodBeat.o(228795);
+    AppMethodBeat.i(283964);
+    a locala = h.ae(com.tencent.mm.plugin.teenmode.a.b.class);
+    p.j(locala, "MMKernel.service(ITeenModeService::class.java)");
+    boolean bool = ((com.tencent.mm.plugin.teenmode.a.b)locala).ZM();
+    locala = h.ae(com.tencent.mm.plugin.teenmode.a.b.class);
+    p.j(locala, "MMKernel.service(ITeenModeService::class.java)");
+    bool = w(bool, ((com.tencent.mm.plugin.teenmode.a.b)locala).gks());
+    AppMethodBeat.o(283964);
     return bool;
   }
   
-  public static final boolean t(boolean paramBoolean, int paramInt)
+  public static final boolean w(boolean paramBoolean, int paramInt)
   {
     if (!paramBoolean) {}
     while (paramInt == 1) {
@@ -179,7 +179,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.f.b
  * JD-Core Version:    0.7.0.1
  */

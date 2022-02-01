@@ -2,19 +2,18 @@ package com.tencent.mm.ui.chatting;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.aa;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.ag.u;
-import com.tencent.mm.ag.v;
-import com.tencent.mm.aj.j;
-import com.tencent.mm.aj.p;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.aj.aa;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.aj.u;
+import com.tencent.mm.aj.v;
+import com.tencent.mm.am.j;
+import com.tencent.mm.am.q;
+import com.tencent.mm.f.c.et;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.modelappbrand.a.b;
 import com.tencent.mm.modelappbrand.a.b.k;
-import com.tencent.mm.modelappbrand.k;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -31,29 +30,29 @@ public final class m
     AppMethodBeat.i(34458);
     k.b localb = new k.b();
     localb.title = paramv.title;
-    localb.description = paramv.iAq;
+    localb.description = paramv.lpM;
     localb.type = 33;
-    localb.izi = paramv.iAt;
-    localb.izh = paramv.weappPath;
-    localb.izj = paramv.iAv;
-    localb.izz = paramv.iAu;
-    localb.izA = paramv.weappVersion;
-    localb.izl = "";
-    localb.izk = 2;
+    localb.loA = paramv.lpP;
+    localb.loz = paramv.lpQ;
+    localb.loB = paramv.lpT;
+    localb.loT = paramv.lpS;
+    localb.loU = paramv.lpR;
+    localb.loD = "";
+    localb.loC = 2;
     localb.url = paramv.url;
-    localb.izB = paramv.iAx;
-    localb.eam = ("wxapp_" + paramv.iAv + paramv.weappPath);
-    localb.eag = paramv.iAt;
-    localb.eah = paramv.iAy;
-    paramv = new com.tencent.mm.ag.a();
-    paramv.iuQ = false;
-    paramv.iuR = "";
+    localb.loV = paramv.lpV;
+    localb.fUj = ("wxapp_" + paramv.lpT + paramv.lpQ);
+    localb.fUd = paramv.lpP;
+    localb.fUe = paramv.lpW;
+    paramv = new com.tencent.mm.aj.a();
+    paramv.ljZ = false;
+    paramv.lka = "";
     localb.a(paramv);
     if (Util.isNullOrNil(localb.thumburl))
     {
-      paramString = p.aYB().Mx(paramString);
+      paramString = q.bhP().TS(paramString);
       if (paramString != null) {
-        localb.thumburl = paramString.aYt();
+        localb.thumburl = paramString.bhH();
       }
     }
     AppMethodBeat.o(34458);
@@ -78,7 +77,7 @@ public final class m
           }
           else
           {
-            localObject1 = b.aXY().a(paramString2, null);
+            localObject1 = b.bhh().a(paramString2, null);
           }
         }
         if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
@@ -87,12 +86,12 @@ public final class m
           paramString2 = new ByteArrayOutputStream();
           ((Bitmap)localObject1).compress(Bitmap.CompressFormat.PNG, 100, paramString2);
           paramString2 = paramString2.toByteArray();
-          if (ab.Eq(paramString1))
+          if (ab.Lj(paramString1))
           {
             i = 1;
-            com.tencent.mm.pluginsdk.model.app.m.a(paramb, paramb.izj, paramb.title, paramString1, null, paramString2);
-            paramString2 = paramb.izn;
-            com.tencent.mm.plugin.report.service.h.CyF.a(14127, new Object[] { paramb.izj, paramb.izi, paramb.izh, paramb.title, paramb.description, "", paramb.url, Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(i), paramString1, Integer.valueOf(1), paramString2, "" });
+            com.tencent.mm.pluginsdk.model.app.m.a(paramb, paramb.loB, paramb.title, paramString1, null, paramString2);
+            paramString2 = paramb.loF;
+            com.tencent.mm.plugin.report.service.h.IzE.a(14127, new Object[] { paramb.loB, paramb.loA, paramb.loz, paramb.title, paramb.description, "", paramb.url, Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(i), paramString1, Integer.valueOf(1), paramString2, "" });
             AppMethodBeat.o(34457);
           }
         }
@@ -114,7 +113,7 @@ public final class m
     }
   }
   
-  public static boolean f(ca paramca, int paramInt)
+  public static boolean i(ca paramca, int paramInt)
   {
     AppMethodBeat.i(34459);
     if (paramca == null)
@@ -122,12 +121,12 @@ public final class m
       AppMethodBeat.o(34459);
       return false;
     }
-    if (!paramca.gAt())
+    if (!paramca.hwA())
     {
       AppMethodBeat.o(34459);
       return false;
     }
-    paramca = ((com.tencent.mm.plugin.biz.a.a)g.af(com.tencent.mm.plugin.biz.a.a.class)).a(paramca.field_msgId, paramca.field_content).iAd;
+    paramca = ((com.tencent.mm.plugin.biz.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.biz.a.a.class)).b(paramca.field_msgId, paramca.field_content).lpz;
     if (!Util.isNullOrNil(paramca))
     {
       int i;
@@ -140,7 +139,7 @@ public final class m
       {
         i = 0;
       }
-      if (com.tencent.mm.ag.m.HF(((v)paramca.get(i)).iAt))
+      if (com.tencent.mm.aj.m.OS(((v)paramca.get(i)).lpP))
       {
         AppMethodBeat.o(34459);
         return true;
@@ -150,15 +149,15 @@ public final class m
     return false;
   }
   
-  static void jl(List<ca> paramList)
+  static void kd(List<ca> paramList)
   {
     AppMethodBeat.i(34460);
-    com.tencent.f.h.RTc.b(new Runnable()
+    com.tencent.e.h.ZvG.d(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(34454);
-        Object localObject1 = this.hjk;
+        Object localObject1 = this.pzd;
         if (!Util.isNullOrNil((List)localObject1))
         {
           localObject1 = ((List)localObject1).iterator();
@@ -166,27 +165,27 @@ public final class m
           {
             Object localObject2 = (ca)((Iterator)localObject1).next();
             Object localObject3;
-            if (((ca)localObject2).dOQ())
+            if (((ca)localObject2).erk())
             {
-              localObject3 = k.b.HD(((eo)localObject2).field_content);
-              if ((localObject3 != null) && (((k.b)localObject3).as(com.tencent.mm.ag.a.class) != null))
+              localObject3 = k.b.OQ(((et)localObject2).field_content);
+              if ((localObject3 != null) && (((k.b)localObject3).ar(com.tencent.mm.aj.a.class) != null))
               {
                 aa localaa = new aa();
-                localaa.iAX = ((k.b)localObject3);
+                localaa.lqv = ((k.b)localObject3);
                 EventCenter.instance.publish(localaa);
               }
             }
-            if (((ca)localObject2).gAt())
+            if (((ca)localObject2).hwA())
             {
-              localObject2 = ((com.tencent.mm.plugin.biz.a.a)g.af(com.tencent.mm.plugin.biz.a.a.class)).a(((eo)localObject2).field_msgId, ((eo)localObject2).field_content).iAd;
+              localObject2 = ((com.tencent.mm.plugin.biz.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.biz.a.a.class)).b(((et)localObject2).field_msgId, ((et)localObject2).field_content).lpz;
               if (localObject2 != null)
               {
                 localObject2 = ((List)localObject2).iterator();
                 while (((Iterator)localObject2).hasNext())
                 {
                   localObject3 = (v)((Iterator)localObject2).next();
-                  if ((!Util.isNullOrNil(((v)localObject3).iAw)) && (com.tencent.mm.ag.m.HF(((v)localObject3).iAt))) {
-                    b.aXY().a(new m.2((v)localObject3), ((v)localObject3).iAw, null, ((k)g.af(k.class)).jdMethod_do(112, 90));
+                  if ((!Util.isNullOrNil(((v)localObject3).lpU)) && (com.tencent.mm.aj.m.OS(((v)localObject3).lpP))) {
+                    b.bhh().a(new m.2((v)localObject3), ((v)localObject3).lpU, null, ((com.tencent.mm.modelappbrand.k)com.tencent.mm.kernel.h.ae(com.tencent.mm.modelappbrand.k.class)).dK(112, 90));
                   }
                 }
               }
@@ -201,7 +200,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,212 +1,796 @@
 package com.tencent.mm.plugin.webview;
 
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.yb;
-import com.tencent.mm.plugin.appbrand.ac.m;
-import com.tencent.mm.plugin.webview.model.j;
-import com.tencent.mm.plugin.webview.model.r;
-import com.tencent.mm.protocal.protobuf.ekr;
-import com.tencent.mm.sdk.event.IListener;
-import com.tencent.mm.sdk.platformtools.LocaleUtil;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.q;
-import com.tencent.mm.vending.c.a;
-import com.tencent.xweb.WebView;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Set;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-
 public final class c
 {
-  public int IJA;
-  public int IJB;
-  public CountDownLatch IJC;
-  public IListener IJD;
-  private final int IJt;
-  private final int IJu;
-  private final int IJv;
-  WebView IJw;
-  public LinkedList<String> IJx;
-  public String IJy;
-  public String IJz;
-  public q tipDialog;
-  
-  public c()
+  public static final class a
   {
-    AppMethodBeat.i(77820);
-    this.IJt = 0;
-    this.IJu = 1;
-    this.IJv = 2;
-    this.IJw = null;
-    this.IJx = null;
-    this.IJy = null;
-    this.IJz = null;
-    this.IJA = 0;
-    this.IJB = 0;
-    this.IJC = new CountDownLatch(1);
-    this.IJD = new IListener() {};
-    AppMethodBeat.o(77820);
+    public static final int anim_not_change = 2130771986;
+    public static final int fast_faded_in = 2130772057;
+    public static final int font_fade_in = 2130772069;
+    public static final int font_fade_out = 2130772070;
+    public static final int pop_in = 2130772117;
+    public static final int pop_out = 2130772122;
+    public static final int push_down_out = 2130772128;
+    public static final int slide_left_out = 2130772163;
+    public static final int slide_right_in = 2130772166;
   }
   
-  public static boolean a(WebView paramWebView)
+  public static final class c
   {
-    AppMethodBeat.i(77821);
-    if ((paramWebView == null) || (paramWebView.isSysKernel()))
-    {
-      AppMethodBeat.o(77821);
-      return false;
-    }
-    try
-    {
-      paramWebView = paramWebView.invokeMiscMethod("supportTranslateWebSite", null);
-      if (paramWebView == null) {
-        break label86;
-      }
-      bool = paramWebView.getBoolean("result");
-    }
-    catch (Exception paramWebView)
-    {
-      for (;;)
-      {
-        Log.e("MicroMsg.WebViewTranslateHelper", "supportTranslateWebSite error %s", new Object[] { paramWebView.getMessage() });
-        boolean bool = false;
-      }
-    }
-    Log.i("MicroMsg.WebViewTranslateHelper", "supportTranslate %b", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(77821);
-    return bool;
+    public static final int BG_2 = 2131099650;
+    public static final int BW_0_Alpha_0_3 = 2131099663;
+    public static final int BW_93 = 2131099692;
+    public static final int BW_97 = 2131099695;
+    public static final int Brand = 2131099713;
+    public static final int FG_0 = 2131099749;
+    public static final int FG_2 = 2131099752;
+    public static final int Indigo = 2131099765;
+    public static final int Link = 2131099786;
+    public static final int Red_100 = 2131099822;
+    public static final int UN_BW_0_Alpha_0_1 = 2131099845;
+    public static final int White = 2131099858;
+    public static final int Yellow = 2131099859;
+    public static final int action_bar_color = 2131099905;
+    public static final int action_bar_tittle_color = 2131099906;
+    public static final int actionbar_bg_color = 2131099911;
+    public static final int btn_green_color_normal = 2131100095;
+    public static final int chatting_item_biz_default_bg = 2131100188;
+    public static final int divider_line_color = 2131100302;
+    public static final int hint_text_color = 2131100633;
+    public static final int link_color = 2131100759;
+    public static final int normal_text_color = 2131100978;
+    public static final int status_bar_color = 2131101246;
+    public static final int transparent = 2131101363;
+    public static final int websearch_bg = 2131101478;
+    public static final int webview_actionbar_color = 2131101480;
+    public static final int webview_bag_bg_angry_color = 2131101481;
+    public static final int webview_bag_bg_color = 2131101482;
+    public static final int webview_logo_bg_color = 2131101484;
+    public static final int webview_mp_actionbar_color = 2131101486;
+    public static final int webview_x5logo_text_color = 2131101487;
+    public static final int wechat_green = 2131101490;
+    public static final int white = 2131101500;
+    public static final int white_transparent_color = 2131101507;
   }
   
-  private int k(WebView paramWebView, String paramString)
+  public static final class d
   {
-    AppMethodBeat.i(77824);
-    Log.i("MicroMsg.WebViewTranslateHelper", "xWalkNeedTranslate in");
-    this.IJw = paramWebView;
-    try
-    {
-      paramWebView = new int[1];
-      paramWebView[0] = 2;
-      this.IJC = new CountDownLatch(1);
-      try
-      {
-        m.runOnUiThread(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(77817);
-            c.this.IJw.invokeMiscMethod("getTranslateSampleString", null);
-            AppMethodBeat.o(77817);
-          }
-        });
-        Log.i("MicroMsg.WebViewTranslateHelper", "invokeMiscMethod getTranslateSampleString begin");
-        this.IJC.await(500L, TimeUnit.MILLISECONDS);
-        Log.i("MicroMsg.WebViewTranslateHelper", "xWalkNeedTranslate end");
-        paramWebView[0] = new j().h(this.IJx, paramString);
-        Log.i("MicroMsg.WebViewTranslateHelper", "xWalkNeedTranslate doScene end ret[0] = " + paramWebView[0]);
-        int i = paramWebView[0];
-        AppMethodBeat.o(77824);
-        return i;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          Log.w("MicroMsg.WebViewTranslateHelper", localInterruptedException.getMessage());
-          Log.printErrStackTrace("MicroMsg.WebViewTranslateHelper", localInterruptedException, "", new Object[0]);
-        }
-      }
-      return 2;
-    }
-    catch (Exception paramWebView)
-    {
-      Log.e("MicroMsg.WebViewTranslateHelper", "xWalkNeedTranslate failed");
-      AppMethodBeat.o(77824);
-    }
+    public static final int BiggerPadding = 2131165201;
+    public static final int BodyTextSize = 2131165203;
+    public static final int DefaultActionbarHeightLand = 2131165255;
+    public static final int DefaultActionbarHeightPort = 2131165256;
+    public static final int Edge_14A = 2131165285;
+    public static final int Edge_18A = 2131165290;
+    public static final int Edge_2A = 2131165299;
+    public static final int Edge_3A = 2131165304;
+    public static final int Edge_3_5_A = 2131165305;
+    public static final int Edge_8A = 2131165318;
+    public static final int Edge_A = 2131165320;
+    public static final int LittlePadding = 2131165514;
+    public static final int MiddlePadding = 2131165524;
+    public static final int NormalTextSize = 2131165541;
+    public static final int emoji_panel_tab_height = 2131166354;
+    public static final int game_menu_button_margin = 2131166564;
+    public static final int game_menu_button_size = 2131166565;
+    public static final int game_menu_landscape_item_size = 2131166566;
+    public static final int game_menu_portrait_item_size = 2131166567;
+    public static final int game_menu_sheet_margin = 2131166568;
+    public static final int sdk_oauth_avatar_corners_size = 2131167078;
+    public static final int sdk_oauth_header_corners_size = 2131167079;
+    public static final int webview_bag_canceller_container_size = 2131167331;
+    public static final int webview_bag_canceller_size = 2131167332;
+    public static final int webview_bag_indicator_container_size = 2131167335;
+    public static final int webview_bag_indicator_size = 2131167336;
+    public static final int webview_bag_init_top_margin = 2131167337;
+    public static final int webview_bag_margin = 2131167338;
+    public static final int webview_bag_size = 2131167339;
+    public static final int webview_browser_item_icon_width = 2131167342;
+    public static final int wechat_abc_action_bar_default_height = 2131167346;
   }
   
-  public final int a(WebView paramWebView, boolean paramBoolean)
+  public static final class e
   {
-    AppMethodBeat.i(77822);
-    if ((paramWebView == null) || (paramWebView.isSysKernel()))
-    {
-      AppMethodBeat.o(77822);
-      return 2;
-    }
-    Bundle localBundle = new Bundle();
-    String str = LocaleUtil.getApplicationLanguage();
-    localBundle.putString("destLanguage", str);
-    if (paramBoolean) {
-      localBundle.putBoolean("isFastOpen", true);
-    }
-    try
-    {
-      if (paramWebView.isXWalkKernel()) {}
-      for (i = k(paramWebView, str);; i = paramWebView.getInt("errorCode", 2))
-      {
-        Log.i("MicroMsg.WebViewTranslateHelper", "needTranslate errCode %d,languageCode %s", new Object[] { Integer.valueOf(i), str });
-        AppMethodBeat.o(77822);
-        return i;
-        localBundle.putBoolean("isFastOpen", false);
-        break;
-        paramWebView = paramWebView.invokeMiscMethod("detectTranslateWebSiteIsNeeded", localBundle);
-        if (paramWebView == null) {
-          break label161;
-        }
-      }
-    }
-    catch (Exception paramWebView)
-    {
-      for (;;)
-      {
-        Log.e("MicroMsg.WebViewTranslateHelper", "detectTranslateWebSiteIsNeeded error %s", new Object[] { paramWebView.getMessage() });
-        label161:
-        int i = 2;
-      }
-    }
+    public static final int app_brand_show_toast_success = 2131231057;
+    public static final int biz_video_btn_solid_yellow_small = 2131231361;
+    public static final int brand_default_head = 2131231411;
+    public static final int chatting_setmode_biaoqing_btn = 2131231781;
+    public static final int checkbox_unselected_small = 2131231837;
+    public static final int default_avatar = 2131231969;
+    public static final int del_btn = 2131231980;
+    public static final int font_chooser_slider = 2131232860;
+    public static final int fts_video_replay_btn = 2131232916;
+    public static final int game_menu_btn_icon = 2131232983;
+    public static final int search_show_toast_fail = 2131234899;
+    public static final int sos_round_corner = 2131235175;
+    public static final int webview_inputer_edit_bg = 2131235869;
+    public static final int webview_pulldown_refresh = 2131235872;
+    public static final int webview_top_bar_live_bg = 2131236206;
+    public static final int white_list_top_line_selector = 2131235943;
   }
   
-  public final void a(WebView paramWebView, HashMap<String, String> paramHashMap)
+  public static final class f
   {
-    AppMethodBeat.i(182684);
-    this.IJw = paramWebView;
-    paramWebView = new LinkedList();
-    Iterator localIterator = paramHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramHashMap.get(str1);
-      ekr localekr = new ekr();
-      localekr.NjV = Util.safeParseInt(str1);
-      localekr.NjW = str2;
-      localekr.Scene = 8;
-      paramWebView.add(localekr);
-    }
-    if (!new r().d(paramWebView, this.IJA, this.IJB))
-    {
-      fZn();
-      Log.d("MicroMsg.WebViewTranslateHelper", "translate: BatchGetTranslateString err !!!!");
-    }
-    AppMethodBeat.o(182684);
+    public static final int action_bar_container = 2131296375;
+    public static final int actionbar_back = 2131296431;
+    public static final int actionbar_option_btn = 2131296449;
+    public static final int actionbar_option_layout = 2131296450;
+    public static final int actionbar_option_text = 2131296451;
+    public static final int adjust_content = 2131296597;
+    public static final int adjust_icon = 2131296599;
+    public static final int adjust_info_layout = 2131296600;
+    public static final int adjust_percent_indicator = 2131296601;
+    public static final int album_comment_mode_iv = 2131296656;
+    public static final int app_auth_desc = 2131296793;
+    public static final int app_auth_state = 2131296794;
+    public static final int app_icon_iv = 2131296968;
+    public static final int app_info_extra = 2131296970;
+    public static final int app_name_tv = 2131296982;
+    public static final int art_emoji_icon_iv = 2131297073;
+    public static final int auth_content = 2131297113;
+    public static final int auth_content_detail = 2131297114;
+    public static final int auth_content_friendpage = 2131297115;
+    public static final int auth_content_list = 2131297116;
+    public static final int auth_content_list_otherpage = 2131297117;
+    public static final int auth_content_otherpage = 2131297118;
+    public static final int avatar_comment = 2131297152;
+    public static final int avatar_icon = 2131297157;
+    public static final int avatar_list = 2131297165;
+    public static final int avatar_name = 2131297166;
+    public static final int avatar_profile = 2131297167;
+    public static final int avatar_state = 2131297169;
+    public static final int back_btn = 2131297190;
+    public static final int back_title_tv = 2131297196;
+    public static final int bg = 2131297384;
+    public static final int biz_comment_delete_split = 2131297468;
+    public static final int biz_comment_like_thumb = 2131297470;
+    public static final int biz_comment_not_chosen = 2131297471;
+    public static final int biz_comment_reply = 2131297472;
+    public static final int biz_comment_reply_delete = 2131297473;
+    public static final int biz_reply_prefix = 2131297537;
+    public static final int biz_same_reply_prefix = 2131297538;
+    public static final int biz_video_avatar_iv = 2131297626;
+    public static final int biz_video_comment_content_layout = 2131297629;
+    public static final int biz_video_comment_content_tv = 2131297630;
+    public static final int biz_video_comment_delete_tv = 2131297631;
+    public static final int biz_video_comment_like_tv = 2131297633;
+    public static final int biz_video_comment_nickname_tv = 2131297634;
+    public static final int biz_video_fans_comment_layout = 2131297641;
+    public static final int biz_video_my_comment_list = 2131297646;
+    public static final int biz_video_my_comment_tv = 2131297647;
+    public static final int biz_video_reply_tip = 2131297653;
+    public static final int browser_dialog_close_btn = 2131297821;
+    public static final int browser_dialog_more_btn = 2131297824;
+    public static final int browser_dialog_setting_cancel = 2131297825;
+    public static final int browser_dialog_setting_confirm = 2131297826;
+    public static final int browser_dialog_title = 2131297827;
+    public static final int browser_icon = 2131297828;
+    public static final int browser_item_container = 2131297829;
+    public static final int browser_list = 2131297830;
+    public static final int browser_not_setting = 2131297831;
+    public static final int browser_selected_icon = 2131297832;
+    public static final int browser_title = 2131297833;
+    public static final int button_group = 2131297951;
+    public static final int button_i_known = 2131297952;
+    public static final int choose_avatar_profile = 2131298712;
+    public static final int close_btn = 2131298832;
+    public static final int container = 2131299244;
+    public static final int content = 2131299250;
+    public static final int content_layout = 2131299276;
+    public static final int cover = 2131299350;
+    public static final int cover_area_play_btn = 2131299353;
+    public static final int cover_replay = 2131299367;
+    public static final int create_avatar = 2131299391;
+    public static final int create_avatar_btn_save = 2131299392;
+    public static final int create_avatar_entry = 2131299393;
+    public static final int create_progress_bar = 2131299397;
+    public static final int desc_text = 2131299587;
+    public static final int divider = 2131299763;
+    public static final int download_cancel_btn = 2131299835;
+    public static final int download_developer = 2131299841;
+    public static final int download_name = 2131299853;
+    public static final int download_op_btn = 2131299854;
+    public static final int download_thumb = 2131299869;
+    public static final int download_tips = 2131299871;
+    public static final int download_version = 2131299874;
+    public static final int edittext = 2131299997;
+    public static final int emoji_panel_layout = 2131300113;
+    public static final int end_line_layout = 2131300230;
+    public static final int exit_fullscreen_btn = 2131300335;
+    public static final int font_chooser_close = 2131301925;
+    public static final int font_chooser_view = 2131301926;
+    public static final int full_screen_menu = 2131302106;
+    public static final int game_menu_first_line = 2131302312;
+    public static final int game_menu_layout = 2131302313;
+    public static final int game_menu_second_line = 2131302314;
+    public static final int game_webview_keyboard_ll = 2131302392;
+    public static final int hide_search_bar_title_tv = 2131302619;
+    public static final int icon = 2131302767;
+    public static final int index_tv = 2131302950;
+    public static final int info_txt = 2131302968;
+    public static final int input_footer_container = 2131302991;
+    public static final int iv_head_img = 2131303214;
+    public static final int iv_icon = 2131303215;
+    public static final int leftClose = 2131303463;
+    public static final int listen_model_notify_btn = 2131303573;
+    public static final int listen_model_notify_imageview = 2131303574;
+    public static final int listen_model_notify_text = 2131303575;
+    public static final int live_tipsbar_title_icon = 2131311997;
+    public static final int login_btn = 2131304141;
+    public static final int login_btn_agree_friendpage = 2131304142;
+    public static final int login_btn_agree_new = 2131304143;
+    public static final int login_btn_agree_otherpage = 2131304144;
+    public static final int login_btn_disagree_friendpage = 2131304145;
+    public static final int login_btn_disagree_new = 2131304146;
+    public static final int login_btn_disagree_otherpage = 2131304147;
+    public static final int logo_web_view_wrapper = 2131304177;
+    public static final int logo_wv_container = 2131304178;
+    public static final int luggage_action_bar = 2131304658;
+    public static final int margin_view = 2131304864;
+    public static final int menu_sheet_bottom_container = 2131304998;
+    public static final int menu_sheet_right_container = 2131305000;
+    public static final int mm_alert_dialog_cb = 2131305071;
+    public static final int mm_alert_dialog_cb_txt = 2131305072;
+    public static final int mm_alert_dialog_info = 2131305073;
+    public static final int mode_root = 2131305198;
+    public static final int mp_info_layout = 2131305293;
+    public static final int mp_smiley_footer = 2131305295;
+    public static final int mp_video_avatar_iv = 2131305296;
+    public static final int mp_video_avatar_layout = 2131305297;
+    public static final int mp_video_comment_action_layout = 2131305300;
+    public static final int mp_video_comment_cancel = 2131305301;
+    public static final int mp_video_comment_et = 2131305302;
+    public static final int mp_video_comment_ok = 2131305303;
+    public static final int mp_video_my_comment_title = 2131305306;
+    public static final int mp_video_nickname_tv = 2131305307;
+    public static final int mp_video_title_tv = 2131305312;
+    public static final int mp_video_view_article_layout = 2131305313;
+    public static final int mp_video_write_comment_scroll_view = 2131305316;
+    public static final int mp_write_comment_root = 2131305317;
+    public static final int new_app_icon_iv = 2131305651;
+    public static final int new_app_icon_iv_friendpage = 2131305652;
+    public static final int new_app_icon_iv_otherpage = 2131305653;
+    public static final int new_app_name_tv = 2131305654;
+    public static final int new_app_name_tv_friendpage = 2131305655;
+    public static final int new_app_name_tv_otherpage = 2131305656;
+    public static final int new_root = 2131305744;
+    public static final int next_word_v = 2131305804;
+    public static final int nickname_edit = 2131305817;
+    public static final int nickname_tv = 2131305821;
+    public static final int phone_number_manager_dialog_item_phone = 2131306293;
+    public static final int phone_number_manager_dialog_item_remark = 2131306294;
+    public static final int play_btn = 2131306352;
+    public static final int pre_word_v = 2131306486;
+    public static final int progress = 2131306706;
+    public static final int refresh_icon = 2131307215;
+    public static final int refresh_mask = 2131307217;
+    public static final int refresh_text = 2131307220;
+    public static final int request_cancel = 2131307401;
+    public static final int request_icon = 2131307406;
+    public static final int request_name = 2131307408;
+    public static final int request_ok = 2131307409;
+    public static final int right_arrow_iv = 2131307520;
+    public static final int root = 2131307600;
+    public static final int root_container = 2131307603;
+    public static final int search_content_input_footer = 2131307926;
+    public static final int search_input_layout = 2131307951;
+    public static final int showIcon = 2131312088;
+    public static final int showText = 2131312089;
+    public static final int show_toast_view_container = 2131308431;
+    public static final int smiley_panel_dot = 2131308512;
+    public static final int smiley_panel_view_pager = 2131308515;
+    public static final int smiley_root = 2131308517;
+    public static final int sos_edittext = 2131308852;
+    public static final int sos_home_actionbar_mask = 2131308853;
+    public static final int sos_shadow_view = 2131308854;
+    public static final int tip_cover_area = 2131309757;
+    public static final int tip_cover_cancel = 2131309758;
+    public static final int tip_cover_paly = 2131309759;
+    public static final int tip_cover_warning = 2131309761;
+    public static final int tips_container = 2131309784;
+    public static final int tips_container_op = 2131309785;
+    public static final int title = 2131309804;
+    public static final int title_container = 2131309823;
+    public static final int title_container_bg = 2131309824;
+    public static final int title_view = 2131309861;
+    public static final int tool_bar_mask = 2131309891;
+    public static final int touch_outside = 2131309979;
+    public static final int transBtn = 2131312137;
+    public static final int trans_tips = 2131312138;
+    public static final int trans_tips_loading = 2131312139;
+    public static final int trans_tips_text = 2131312140;
+    public static final int tv_nick_name = 2131310122;
+    public static final int upper_bound_hint = 2131310238;
+    public static final int upper_bound_hint_line = 2131310239;
+    public static final int video_container_layout = 2131310364;
+    public static final int video_loading = 2131310410;
+    public static final int video_play_op_layout = 2131310427;
+    public static final int video_play_root_layout = 2131310429;
+    public static final int video_player_close = 2131310432;
+    public static final int video_player_footer = 2131310433;
+    public static final int video_player_more_iv = 2131310434;
+    public static final int video_player_progressbar = 2131310435;
+    public static final int video_player_seek_bar = 2131310436;
+    public static final int video_player_share_iv = 2131310437;
+    public static final int video_touch_layout = 2131310471;
+    public static final int video_view = 2131310473;
+    public static final int video_wait_play_btn = 2131310476;
+    public static final int web_back = 2131311016;
+    public static final int web_container = 2131311017;
+    public static final int web_falseprogress = 2131311018;
+    public static final int web_forward = 2131311019;
+    public static final int web_navigator = 2131311020;
+    public static final int web_navigator_layout = 2131311021;
+    public static final int websearchview = 2131311029;
+    public static final int webview_input_alert_toast = 2131311034;
+    public static final int webview_input_container = 2131311035;
+    public static final int webview_input_content_edit = 2131311036;
+    public static final int webview_input_footer = 2131311037;
+    public static final int webview_input_green_send_btn = 2131311038;
+    public static final int webview_input_send_btn = 2131311039;
+    public static final int webview_input_send_button_container = 2131311040;
+    public static final int webview_input_shadow = 2131311041;
+    public static final int webview_input_smiley_image = 2131311042;
+    public static final int webview_keyboard_ll = 2131311043;
+    public static final int webview_logo_container = 2131311044;
+    public static final int webview_logo_refresh_iv = 2131311045;
+    public static final int webview_shadow_view = 2131311049;
+    public static final int webview_top_bar_bg_view = 2131312339;
+    public static final int webview_top_bar_click_view = 2131311051;
+    public static final int webview_top_bar_padding_view = 2131312340;
+    public static final int webview_tv_word_count_remind = 2131311052;
+    public static final int wordcount = 2131311178;
+    public static final int x5_logo = 2131311310;
+    public static final int x5_logo_img = 2131311311;
+    public static final int x5_logo_url = 2131311312;
   }
   
-  public final void fZn()
+  public static final class g
   {
-    AppMethodBeat.i(77823);
-    if ((this.tipDialog != null) && (this.tipDialog.isShowing()))
-    {
-      this.tipDialog.dismiss();
-      this.tipDialog = null;
-    }
-    AppMethodBeat.o(77823);
+    public static final int avatar_item = 2131493171;
+    public static final int create_avatar_ui = 2131493809;
+    public static final int edit_share_qqweibo = 2131493879;
+    public static final int emoji_webview_ui = 2131493993;
+    public static final int fts_web_video_container = 2131494839;
+    public static final int fts_webview_ui = 2131494842;
+    public static final int game_menu_item_view = 2131494967;
+    public static final int game_menu_layout_landscape = 2131494968;
+    public static final int game_menu_layout_portrait = 2131494969;
+    public static final int game_menu_sheet_dialog = 2131494970;
+    public static final int game_menu_split_style_landscape = 2131494971;
+    public static final int game_menu_split_style_portrait = 2131494972;
+    public static final int layout_browser_choose_dialog_item_view = 2131495265;
+    public static final int layout_browser_choose_dialog_view = 2131495266;
+    public static final int layout_browser_setting_dialog_item_view = 2131495267;
+    public static final int layout_browser_setting_dialog_view = 2131495268;
+    public static final int layout_empty_activity = 2131495270;
+    public static final int loading_toast = 2131495404;
+    public static final int luggage_mm_page = 2131495503;
+    public static final int mm_alert_checkbox = 2131495602;
+    public static final int mm_webview_ui_bottom_sheet_title_brand = 2131495760;
+    public static final int mm_webview_ui_bottom_sheet_title_text = 2131495761;
+    public static final int mp_comment_content_item = 2131495797;
+    public static final int mp_comment_view_item = 2131495798;
+    public static final int mp_smiley_footer = 2131495802;
+    public static final int mp_video_play_fullscreen_layout = 2131495806;
+    public static final int mp_video_write_comment_view = 2131495810;
+    public static final int sdk_authorize_scope_item = 2131496296;
+    public static final int sdk_authorize_scope_item_new = 2131496297;
+    public static final int sdk_oauth = 2131496298;
+    public static final int sdkoauth_friend_ui = 2131496300;
+    public static final int sdkoauth_other_ui = 2131496301;
+    public static final int search_loading_dialog_layout = 2131496310;
+    public static final int sos_home_webview_ui = 2131496659;
+    public static final int sos_more_webview_ui = 2131496660;
+    public static final int web_view_font_chooser = 2131497188;
+    public static final int webview = 2131497194;
+    public static final int webview_action_bar = 2131497195;
+    public static final int webview_bag = 2131497196;
+    public static final int webview_bag_canceller = 2131497197;
+    public static final int webview_download_ui_new = 2131497200;
+    public static final int webview_input_footer = 2131497201;
+    public static final int webview_jsapi_requrest_get_bind_phone = 2131497202;
+    public static final int webview_logo_layout = 2131497204;
+    public static final int webview_redesign_input_footer = 2131497206;
+    public static final int webview_search_content_input_footer = 2131497207;
+    public static final int webview_smiley_grid_item = 2131497208;
+    public static final int webview_smiley_panel = 2131497209;
+    public static final int webview_smiley_panel_page = 2131497210;
+    public static final int webview_top_bar_layout = 2131497211;
+    public static final int webview_top_bar_trans_help_entry = 2131497493;
+  }
+  
+  public static final class h
+  {
+    public static final int actionbar_icon_dark_back = 2131689492;
+    public static final int actionbar_icon_dark_close = 2131689494;
+    public static final int actionbar_icon_dark_more = 2131689495;
+    public static final int actionbar_icon_dark_search = 2131689496;
+    public static final int actionbar_icon_light_more = 2131689502;
+    public static final int actionbar_quit_webview_icon = 2131689510;
+    public static final int approve_default = 2131689714;
+    public static final int approve_highlight = 2131689715;
+    public static final int bottomsheet_icon_addtag = 2131689807;
+    public static final int bottomsheet_icon_brower = 2131689811;
+    public static final int bottomsheet_icon_cancel_hao_kan = 2131689812;
+    public static final int bottomsheet_icon_copy = 2131689814;
+    public static final int bottomsheet_icon_del = 2131689816;
+    public static final int bottomsheet_icon_enterprise = 2131689820;
+    public static final int bottomsheet_icon_exit = 2131689821;
+    public static final int bottomsheet_icon_fav = 2131689823;
+    public static final int bottomsheet_icon_hao_kan = 2131689826;
+    public static final int bottomsheet_icon_jd_cart = 2131689827;
+    public static final int bottomsheet_icon_jd_collect_list = 2131689828;
+    public static final int bottomsheet_icon_jd_index = 2131689829;
+    public static final int bottomsheet_icon_jd_member = 2131689830;
+    public static final int bottomsheet_icon_moment = 2131689832;
+    public static final int bottomsheet_icon_other_mode = 2131689834;
+    public static final int bottomsheet_icon_profile = 2131689835;
+    public static final int bottomsheet_icon_qq = 2131689836;
+    public static final int bottomsheet_icon_qzone = 2131689837;
+    public static final int bottomsheet_icon_refresh = 2131689840;
+    public static final int bottomsheet_icon_search = 2131689842;
+    public static final int bottomsheet_icon_transmit = 2131689846;
+    public static final int bottomsheet_icon_weread = 2131689849;
+    public static final int bottomsheet_icon_wework = 2131689850;
+    public static final int bottomsheet_icon_wework_local = 2131689851;
+    public static final int checkbox_selected_grey_dark_small = 2131689959;
+    public static final int checkbox_selected_grey_small = 2131689960;
+    public static final int checkbox_selected_small = 2131689965;
+    public static final int default_avatar = 2131690045;
+    public static final int default_avatar_round = 2131690046;
+    public static final int default_facebookapp = 2131690052;
+    public static final int download_default = 2131690096;
+    public static final int download_default_dark = 2131690097;
+    public static final int download_install = 2131690103;
+    public static final int download_install_dark = 2131690104;
+    public static final int download_pause = 2131690109;
+    public static final int download_pause_dark = 2131690110;
+    public static final int fix_tools_entry = 2131690305;
+    public static final int fts_web_video_brightness_icon = 2131690371;
+    public static final int fts_web_video_volume_icon = 2131690379;
+    public static final int icon_outlined_stoptalking = 2131690469;
+    public static final int icon_outlined_talk = 2131690470;
+    public static final int icons_filled_email = 2131690561;
+    public static final int icons_filled_share = 2131690693;
+    public static final int icons_outlined_close = 2131690781;
+    public static final int icons_outlined_colorful_handoff = 2131690791;
+    public static final int icons_outlined_emoji = 2131690814;
+    public static final int icons_outlined_font = 2131690832;
+    public static final int icons_outlined_link = 2131690847;
+    public static final int icons_outlined_merge = 2131690855;
+    public static final int icons_outlined_more = 2131690867;
+    public static final int icons_outlined_multitask = 2131690870;
+    public static final int icons_outlined_official_accounts = 2131690881;
+    public static final int icons_outlined_refresh = 2131690919;
+    public static final int icons_outlined_report_problem = 2131690922;
+    public static final int icons_outlined_sperated = 2131690934;
+    public static final int icons_outlined_stoptranslate = 2131691944;
+    public static final int icons_outlined_translate = 2131690949;
+    public static final int icons_outlined_wechat_search_one_search = 2131690962;
+    public static final int login_auth_state_default_select = 2131691079;
+    public static final int login_auth_state_must_select = 2131691080;
+    public static final int login_auth_state_not_selected = 2131691081;
+    public static final int mm_title_btn_jd = 2131691153;
+    public static final int native_oauth_default_head_img = 2131691269;
+    public static final int net_warn_icon = 2131691284;
+    public static final int websearch_icon_acount = 2131691817;
+    public static final int websearch_icon_article = 2131691818;
+    public static final int websearch_icon_baike = 2131691819;
+    public static final int websearch_icon_emoji = 2131691820;
+    public static final int websearch_icon_moment = 2131691821;
+    public static final int websearch_icon_movie = 2131691822;
+    public static final int websearch_icon_music = 2131691823;
+    public static final int websearch_icon_novel = 2131691824;
+    public static final int websearch_icon_product = 2131691825;
+    public static final int websearch_icon_question = 2131691826;
+    public static final int websearch_icon_weapp = 2131691828;
+    public static final int websearch_icon_webpage = 2131691829;
+    public static final int webview_add_shortcut = 2131691832;
+    public static final int webview_bag_default_icon = 2131691834;
+    public static final int webview_download_thumb_unknown = 2131691837;
+    public static final int webview_logo_qqbrowser_light = 2131691841;
+    public static final int webview_menu_enable_debug = 2131691842;
+  }
+  
+  public static final class i
+  {
+    public static final int account_not_login = 2131755190;
+    public static final int add_emoji_to_emoji_board = 2131755206;
+    public static final int address_title_select_contact = 2131755319;
+    public static final int app_agree = 2131755362;
+    public static final int app_back = 2131755367;
+    public static final int app_brand_entrance = 2131755491;
+    public static final int app_cancel = 2131755823;
+    public static final int app_continue = 2131755833;
+    public static final int app_delete = 2131755841;
+    public static final int app_delete_tips = 2131755843;
+    public static final int app_disagree = 2131755845;
+    public static final int app_field_mmsight = 2131755885;
+    public static final int app_field_select_new_pic = 2131755894;
+    public static final int app_i_known = 2131755937;
+    public static final int app_more = 2131755962;
+    public static final int app_name = 2131755971;
+    public static final int app_ok = 2131755984;
+    public static final int app_saved = 2131756035;
+    public static final int app_search = 2131756036;
+    public static final int app_send = 2131756040;
+    public static final int app_sending = 2131756042;
+    public static final int app_sent = 2131756043;
+    public static final int app_share = 2131756047;
+    public static final int app_shared = 2131756050;
+    public static final int app_tip = 2131756062;
+    public static final int app_waiting = 2131756093;
+    public static final int appbrand_authorize_item_decs_personal_information = 2131756108;
+    public static final int appbrand_request_accept = 2131756215;
+    public static final int appbrand_request_reject = 2131756216;
+    public static final int biz_comment_delete_reply_confirm = 2131756771;
+    public static final int biz_comment_reply_hint = 2131756773;
+    public static final int biz_comment_reply_personal = 2131756774;
+    public static final int biz_comment_write_reply = 2131756775;
+    public static final int biz_report_text = 2131756801;
+    public static final int biz_time_line_finder_live_title = 2131761302;
+    public static final int biz_video_commit_comment = 2131756871;
+    public static final int biz_video_delete_comment_confirm = 2131756872;
+    public static final int biz_video_delete_comment_fail = 2131756873;
+    public static final int biz_video_share_to_wow = 2131756879;
+    public static final int biz_video_share_to_wow_hint = 2131756881;
+    public static final int biz_video_shared_tips = 2131756882;
+    public static final int biz_video_write_comment = 2131756889;
+    public static final int biz_video_write_comment_fail = 2131756890;
+    public static final int biz_video_write_comment_hint = 2131756891;
+    public static final int biz_video_write_comment_sucess = 2131756892;
+    public static final int biz_video_write_reply_sucess = 2131756893;
+    public static final int button_cancel = 2131756984;
+    public static final int close_split_screen = 2131757728;
+    public static final int confirm_dialog_back_app = 2131757864;
+    public static final int confirm_dialog_sent = 2131757868;
+    public static final int confirm_dialog_stay_in_weixin = 2131757871;
+    public static final int contact_info_dial = 2131757951;
+    public static final int contact_info_medianote_sync_to_qqmail_alert_tip = 2131758036;
+    public static final int create_avatar_add_failed = 2131758303;
+    public static final int create_avatar_getrandom_failed = 2131758305;
+    public static final int create_avatar_saving = 2131758310;
+    public static final int create_avatar_title = 2131758311;
+    public static final int created_chatroom = 2131758313;
+    public static final int delete_btn = 2131758387;
+    public static final int download_other_open = 2131758487;
+    public static final int emoji_custom_gif_max_size_limit_cannot_send = 2131758640;
+    public static final int emoji_search_hit = 2131758694;
+    public static final int favorite_add_tag_tips = 2131759278;
+    public static final int favorite_fail_argument_error = 2131759318;
+    public static final int favorite_fail_nonsupport = 2131759326;
+    public static final int favorite_ok = 2131759369;
+    public static final int find_friends_search = 2131759607;
+    public static final int fmt_self_qrcode_getting_err = 2131761241;
+    public static final int fts_header_emoji = 2131761375;
+    public static final int fts_header_emoji_product = 2131761376;
+    public static final int fts_header_music = 2131761384;
+    public static final int fts_header_novel = 2131761385;
+    public static final int fts_header_poi = 2131761386;
+    public static final int fts_header_timeline = 2131761388;
+    public static final int fts_header_timeline_publisher = 2131761389;
+    public static final int fts_on_suggest_sns_title = 2131761408;
+    public static final int fts_web_video_brightness = 2131761431;
+    public static final int fts_web_video_volume = 2131761434;
+    public static final int game_download_network_unavailable = 2131761570;
+    public static final int game_download_not_enough_space = 2131761571;
+    public static final int game_download_sdcard_unavailable = 2131761574;
+    public static final int game_menu_add_to_desktop = 2131761645;
+    public static final int game_menu_collect = 2131761646;
+    public static final int game_menu_complaint = 2131761647;
+    public static final int game_menu_exit = 2131761648;
+    public static final int game_menu_refresh = 2131761649;
+    public static final int game_menu_share_to_friend = 2131761650;
+    public static final int gps_disable_tip = 2131761832;
+    public static final int group_blacklist = 2131761834;
+    public static final int host_game_weixin_qq_com = 2131762079;
+    public static final int host_hksupport_weixin_qq_com = 2131762082;
+    public static final int host_mlsupport_weixin_qq_com = 2131762094;
+    public static final int host_mp_weixin_qq_com = 2131762098;
+    public static final int host_open_weixin_qq_com = 2131762100;
+    public static final int host_pay_weixin_qq_com = 2131762103;
+    public static final int host_payapp_weixin_qq_com = 2131762104;
+    public static final int host_support_wechat_com = 2131762113;
+    public static final int host_support_weixin_qq_com = 2131762114;
+    public static final int host_szsupport_weixin_qq_com = 2131762115;
+    public static final int host_weixin110_qq_com = 2131762120;
+    public static final int i_know_it = 2131762129;
+    public static final int invalid_input_character_toast = 2131762289;
+    public static final int joined_chatroom = 2131762516;
+    public static final int js_oauth_no = 2131762520;
+    public static final int js_oauth_yes = 2131762521;
+    public static final int jsapi_choose_image_processing = 2131762524;
+    public static final int jump_to_settings = 2131762537;
+    public static final int login_accept_button = 2131763027;
+    public static final int login_auth_non_userinfo = 2131763038;
+    public static final int login_auth_snsapi_userinfo = 2131763040;
+    public static final int login_reject_button = 2131763083;
+    public static final int mp_author = 2131763715;
+    public static final int net_warn_no_network = 2131764058;
+    public static final int new_sdk_oauth_login_delavatar = 2131764080;
+    public static final int new_sdk_oauth_login_delavatar_failed = 2131764081;
+    public static final int new_sdk_oauth_login_third_scope_auth_content = 2131764089;
+    public static final int nfc_mmsetting_off_title = 2131764118;
+    public static final int nfc_off_tips = 2131764122;
+    public static final int nfc_open_title = 2131764123;
+    public static final int oauth_logining = 2131764307;
+    public static final int permission_camera_request_again_msg = 2131764428;
+    public static final int permission_tips_title = 2131764454;
+    public static final int plugin_favorite_opt = 2131764511;
+    public static final int plugin_soso_opt = 2131764571;
+    public static final int qrcode_copy = 2131764710;
+    public static final int qrcode_introduction_share = 2131764713;
+    public static final int qrcode_load_url = 2131764714;
+    public static final int readerapp_add_shortcut = 2131764750;
+    public static final int readerapp_alert_font = 2131764751;
+    public static final int readerapp_alert_retransmit = 2131764752;
+    public static final int readerapp_alert_share_to_timeline = 2131764753;
+    public static final int readerapp_cancel_haokan = 2131764754;
+    public static final int readerapp_finish_webview = 2131764761;
+    public static final int readerapp_haokan = 2131764762;
+    public static final int readerapp_minimize = 2131764767;
+    public static final int readerapp_send_to_enterprise = 2131764769;
+    public static final int readerapp_send_to_wework = 2131764770;
+    public static final int save_to_local = 2131765443;
+    public static final int scan_choose_from_album = 2131765467;
+    public static final int scan_entry_id_card_for_pay_auth = 2131765476;
+    public static final int search_contact_tag_city = 2131765641;
+    public static final int search_contact_tag_description = 2131765642;
+    public static final int search_contact_tag_mobile = 2131765646;
+    public static final int search_contact_tag_nickname = 2131765647;
+    public static final int search_contact_tag_province = 2131765648;
+    public static final int search_contact_tag_tag = 2131765651;
+    public static final int search_contact_tag_wxid = 2131765652;
+    public static final int search_detail_page_hint = 2131765654;
+    public static final int search_education_article = 2131765655;
+    public static final int search_education_biz_contact = 2131765656;
+    public static final int search_emoji_header = 2131765660;
+    public static final int search_home_page_hint = 2131765669;
+    public static final int search_recommend_hint = 2131765680;
+    public static final int search_recommend_hint_history = 2131765681;
+    public static final int settings_feedbackui_title = 2131765982;
+    public static final int settings_modify_name_invalid_less = 2131766055;
+    public static final int settings_modify_name_invalid_more = 2131766056;
+    public static final int settings_modify_name_title = 2131766058;
+    public static final int settings_private_blacklist = 2131766140;
+    public static final int settings_system_notice = 2131766216;
+    public static final int settings_system_notice_url = 2131766217;
+    public static final int settings_tweibo_notfind = 2131766240;
+    public static final int share_err = 2131766420;
+    public static final int share_to_tencent_microblog = 2131766426;
+    public static final int sns_post_to = 2131766777;
+    public static final int sos_similar_emoji_title = 2131766912;
+    public static final int split_screen = 2131766960;
+    public static final int url_handler_sms_no_body_number = 2131767602;
+    public static final int url_handler_sms_no_body_with_number = 2131767603;
+    public static final int url_handler_sms_with_body_number = 2131767604;
+    public static final int video_cancel = 2131767679;
+    public static final int video_continue_play = 2131767691;
+    public static final int video_error_warnning = 2131767705;
+    public static final int video_export_file_too_big = 2131767708;
+    public static final int video_net_disable_warnning = 2131767732;
+    public static final int video_net_warnning = 2131767733;
+    public static final int video_net_warnning_no_size = 2131767734;
+    public static final int video_retry_play = 2131767748;
+    public static final int webview_bag_no_float_window_permission_alert = 2131769192;
+    public static final int webview_bottomsheet_refresh = 2131769193;
+    public static final int webview_browser_no_browser_app = 2131769195;
+    public static final int webview_browser_open_title = 2131769196;
+    public static final int webview_browser_setting_browser_item_selected_desc = 2131769789;
+    public static final int webview_browser_setting_dialog_not_set_title = 2131769197;
+    public static final int webview_download_ui_app_developer = 2131769199;
+    public static final int webview_download_ui_app_permission_detail = 2131769200;
+    public static final int webview_download_ui_app_privacy_detail = 2131769201;
+    public static final int webview_download_ui_app_version = 2131769202;
+    public static final int webview_download_ui_btn_state_to_download = 2131769206;
+    public static final int webview_download_ui_btn_state_to_download_size = 2131769207;
+    public static final int webview_download_ui_cancel_failed = 2131769208;
+    public static final int webview_download_ui_canceled = 2131769209;
+    public static final int webview_download_ui_download_failed = 2131769210;
+    public static final int webview_download_ui_download_not_in_wifi_tips = 2131769211;
+    public static final int webview_download_ui_download_not_in_wifi_title = 2131769212;
+    public static final int webview_download_ui_downloaded_suc = 2131769213;
+    public static final int webview_download_ui_not_missing_element = 2131769216;
+    public static final int webview_input_reach_max_input_count = 2131769224;
+    public static final int webview_input_reach_max_input_len = 2131769225;
+    public static final int webview_jd_menu_title_cart = 2131769226;
+    public static final int webview_jd_menu_title_categories = 2131769227;
+    public static final int webview_jd_menu_title_index = 2131769228;
+    public static final int webview_jd_menu_title_member = 2131769229;
+    public static final int webview_jd_menu_title_profile = 2131769230;
+    public static final int webview_jsapi_not_bind_phone_number = 2131769231;
+    public static final int webview_jssdk_choose_video_compressing = 2131769232;
+    public static final int webview_jssdk_choose_video_exceed_20M = 2131769233;
+    public static final int webview_jssdk_choose_video_type_not_support = 2131769234;
+    public static final int webview_jssdk_link = 2131769236;
+    public static final int webview_jssdk_take_photo = 2131769239;
+    public static final int webview_jssdk_upload_video_cancel = 2131769242;
+    public static final int webview_jssdk_upload_video_continue = 2131769243;
+    public static final int webview_jssdk_upload_video_gprs_confirm = 2131769244;
+    public static final int webview_jssdk_video_uploading_tips = 2131769246;
+    public static final int webview_logo_url = 2131769247;
+    public static final int webview_memory_check_message = 2131769249;
+    public static final int webview_menu_disable_debug = 2131769250;
+    public static final int webview_menu_enable_debug = 2131769251;
+    public static final int webview_menu_hao_kan_dialog_firt_tips = 2131769252;
+    public static final int webview_menu_hao_kan_dialog_tips = 2131769253;
+    public static final int webview_menu_hao_kan_dialog_title = 2131769254;
+    public static final int webview_menu_no_need_to_tranlate = 2131769255;
+    public static final int webview_menu_tranlate = 2131769256;
+    public static final int webview_menu_tranlate_bad_network = 2131770100;
+    public static final int webview_menu_tranlate_fail = 2131769257;
+    public static final int webview_menu_tranlate_finish = 2131769258;
+    public static final int webview_menu_tranlate_revert = 2131770101;
+    public static final int webview_menu_tranlate_security_tips = 2131769259;
+    public static final int webview_menu_tranlate_security_title = 2131769260;
+    public static final int webview_menu_tranlate_tips = 2131769261;
+    public static final int webview_menu_tranlate_tips_brand = 2131769262;
+    public static final int webview_menu_tranlate_tips_no_trans = 2131770102;
+    public static final int webview_menu_tranlate_waiting_tips = 2131769263;
+    public static final int webview_open_in_computer = 2131769265;
+    public static final int webview_recording = 2131769266;
+    public static final int webview_report_screenshot_alert = 2131769268;
+    public static final int webview_text_size_large = 2131769278;
+    public static final int webview_text_size_normal = 2131769279;
+    public static final int webview_text_size_super = 2131769280;
+    public static final int webview_tts_pause = 2131769281;
+    public static final int webview_tts_resume = 2131769282;
+    public static final int webview_tts_start = 2131769283;
+    public static final int wechat_auth_create_avatar = 2131769313;
+    public static final int wechat_auth_failed = 2131769314;
+    public static final int wechat_auth_network_failed = 2131769315;
+    public static final int wechat_auth_scope_can_only_authorized_separately = 2131769316;
+    public static final int wechat_authenticate_safely = 2131769318;
+    public static final int wechat_login_title = 2131769327;
+    public static final int wechat_securiy_center_path = 2131769329;
+    public static final int wechat_wx_safe_login = 2131769331;
+    public static final int wecom_name = 2131769364;
+    public static final int wv_add_shortcut_fail = 2131769414;
+    public static final int wv_add_shortcut_success = 2131769415;
+    public static final int wv_alert_certificate_err = 2131769416;
+    public static final int wv_alert_certificate_err_title = 2131769417;
+    public static final int wv_alert_copy_link = 2131769418;
+    public static final int wv_alert_copy_link_toast = 2131769419;
+    public static final int wv_alert_input_tips = 2131769421;
+    public static final int wv_alert_no_weibo = 2131769422;
+    public static final int wv_alert_open_in_browser = 2131769423;
+    public static final int wv_alert_qq_not_bind = 2131769424;
+    public static final int wv_alert_send_mail = 2131769425;
+    public static final int wv_alert_show_biz_info = 2131769429;
+    public static final int wv_alert_show_subbiz_info = 2131769430;
+    public static final int wv_allow_camera_and_record_audio_permission = 2131770114;
+    public static final int wv_allow_camera_permission = 2131770115;
+    public static final int wv_allow_record_audio_permission = 2131770118;
+    public static final int wv_block_shared_tips = 2131769431;
+    public static final int wv_close_webview = 2131769432;
+    public static final int wv_contact_info_qq_view_qzone = 2131769433;
+    public static final int wv_downloading = 2131769434;
+    public static final int wv_get_clipboard = 2131770121;
+    public static final int wv_get_location_msg = 2131769439;
+    public static final int wv_launch_shortcut_fail = 2131769445;
+    public static final int wv_location_info_send_tip = 2131769447;
+    public static final int wv_search_content = 2131769453;
+    public static final int wv_select_file_alert_title = 2131769454;
+    public static final int wv_send_to_we_read = 2131769456;
+    public static final int wv_sending = 2131769457;
+    public static final int wv_set_clipboard = 2131770125;
+    public static final int wv_setting_zone_getting_location = 2131769458;
+    public static final int wv_share_to_facebook = 2131769459;
+    public static final int wv_share_to_qq = 2131769460;
+    public static final int wv_share_to_qzone = 2131769461;
+    public static final int wv_translating = 2131769463;
+    public static final int wv_uploading = 2131769465;
+  }
+  
+  public static final class j
+  {
+    public static final int BottomToTopAnimation = 2131820792;
+    public static final int BottomToTopSlowAnimation = 2131820793;
+    public static final int BrowserDialog = 2131820796;
+    public static final int CommentPanel = 2131820851;
+    public static final int EmojiPanel = 2131820879;
+    public static final int GameMenuSheetStyle = 2131820981;
+    public static final int RightToLeftAnimation = 2131821289;
   }
 }
 

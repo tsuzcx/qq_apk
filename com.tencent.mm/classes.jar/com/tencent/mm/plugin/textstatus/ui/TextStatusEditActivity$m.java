@@ -1,27 +1,45 @@
 package com.tencent.mm.plugin.textstatus.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
 final class TextStatusEditActivity$m
-  implements MenuItem.OnMenuItemClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  TextStatusEditActivity$m(TextStatusEditActivity paramTextStatusEditActivity) {}
+  TextStatusEditActivity$m(TextStatusEditActivity paramTextStatusEditActivity, int paramInt) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    AppMethodBeat.i(216502);
-    this.GeQ.finish();
-    AppMethodBeat.o(216502);
-    return false;
+    AppMethodBeat.i(235884);
+    if (paramValueAnimator != null)
+    {
+      paramValueAnimator = paramValueAnimator.getAnimatedValue();
+      ValueAnimator localValueAnimator = paramValueAnimator;
+      if (!(paramValueAnimator instanceof Float)) {
+        localValueAnimator = null;
+      }
+      paramValueAnimator = (Float)localValueAnimator;
+      if (paramValueAnimator == null) {
+        break label66;
+      }
+    }
+    label66:
+    for (float f = paramValueAnimator.floatValue();; f = 0.0F)
+    {
+      this.MMz.A((int)(this.cLq - f), false);
+      AppMethodBeat.o(235884);
+      return;
+      paramValueAnimator = null;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.ui.TextStatusEditActivity.m
  * JD-Core Version:    0.7.0.1
  */

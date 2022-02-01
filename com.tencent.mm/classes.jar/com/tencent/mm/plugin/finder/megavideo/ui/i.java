@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.finder.megavideo.ui;
 
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.ak;
 import android.view.View;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.LayoutParams;
+import androidx.recyclerview.widget.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.a.b;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/megavideo/ui/MegaVideoPagerSnapHelper;", "Landroid/support/v7/widget/PagerSnapHelper;", "()V", "onPageSelectedListener", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "position", "", "getOnPageSelectedListener", "()Lkotlin/jvm/functions/Function1;", "setOnPageSelectedListener", "(Lkotlin/jvm/functions/Function1;)V", "targetSnapPos", "findSnapView", "Landroid/view/View;", "layoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "findTargetSnapPosition", "velocityX", "velocityY", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/ui/MegaVideoPagerSnapHelper;", "Landroidx/recyclerview/widget/PagerSnapHelper;", "()V", "onPageSelectedListener", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "position", "", "getOnPageSelectedListener", "()Lkotlin/jvm/functions/Function1;", "setOnPageSelectedListener", "(Lkotlin/jvm/functions/Function1;)V", "targetSnapPos", "findSnapView", "Landroid/view/View;", "layoutManager", "Landroidx/recyclerview/widget/RecyclerView$LayoutManager;", "findTargetSnapPosition", "velocityX", "velocityY", "Companion", "plugin-finder_release"})
 public final class i
-  extends ak
+  extends v
 {
-  public static final i.a uMC;
-  private int uMA = -1;
-  b<? super Integer, x> uMB;
+  public static final a zyC;
+  private int zyA = -1;
+  b<? super Integer, x> zyB;
   
   static
   {
-    AppMethodBeat.i(248601);
-    uMC = new i.a((byte)0);
-    AppMethodBeat.o(248601);
+    AppMethodBeat.i(266459);
+    zyC = new a((byte)0);
+    AppMethodBeat.o(266459);
   }
   
   public final int a(RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(248599);
+    AppMethodBeat.i(266455);
     paramInt1 = super.a(paramLayoutManager, paramInt1, paramInt2);
-    this.uMA = paramInt1;
-    paramLayoutManager = this.uMB;
+    this.zyA = paramInt1;
+    paramLayoutManager = this.zyB;
     if (paramLayoutManager != null) {
       paramLayoutManager.invoke(Integer.valueOf(paramInt1));
     }
-    Log.i("MegaVideoPagerSnapHelper", "findTargetSnapPosition: targetSnapPos = " + this.uMA);
-    AppMethodBeat.o(248599);
+    Log.i("MegaVideoPagerSnapHelper", "findTargetSnapPosition: targetSnapPos = " + this.zyA);
+    AppMethodBeat.o(266455);
     return paramInt1;
   }
   
   public final View a(RecyclerView.LayoutManager paramLayoutManager)
   {
-    AppMethodBeat.i(248600);
+    AppMethodBeat.i(266457);
     View localView = super.a(paramLayoutManager);
     if (localView != null)
     {
@@ -56,27 +56,30 @@ public final class i
       }
     }
     label108:
-    for (int i = paramLayoutManager.lG();; i = -1)
+    for (int i = paramLayoutManager.lS();; i = -1)
     {
       Log.i("MegaVideoPagerSnapHelper", "findSnapView: targetPos = ".concat(String.valueOf(i)));
-      if (this.uMA == -1)
+      if (this.zyA == -1)
       {
-        paramLayoutManager = this.uMB;
+        paramLayoutManager = this.zyB;
         if (paramLayoutManager != null) {
           paramLayoutManager.invoke(Integer.valueOf(i));
         }
       }
-      this.uMA = -1;
-      AppMethodBeat.o(248600);
+      this.zyA = -1;
+      AppMethodBeat.o(266457);
       return localView;
       paramLayoutManager = null;
       break;
     }
   }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/ui/MegaVideoPagerSnapHelper$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.megavideo.ui.i
  * JD-Core Version:    0.7.0.1
  */

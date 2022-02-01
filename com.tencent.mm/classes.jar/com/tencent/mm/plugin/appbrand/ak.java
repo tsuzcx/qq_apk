@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.appbrand.platform.window.c;
 
 public abstract interface ak
 {
-  public abstract void A(AppBrandRuntime paramAppBrandRuntime);
+  public abstract void C(AppBrandRuntime paramAppBrandRuntime);
   
   public abstract void a(AppBrandRuntime paramAppBrandRuntime, AppBrandInitConfig paramAppBrandInitConfig);
   
@@ -20,15 +20,15 @@ public abstract interface ak
   
   public abstract c getWindowAndroid();
   
-  public abstract AppBrandRuntime u(AppBrandRuntime paramAppBrandRuntime);
+  public abstract AppBrandRuntime w(AppBrandRuntime paramAppBrandRuntime);
   
-  public abstract boolean v(AppBrandRuntime paramAppBrandRuntime);
+  public abstract boolean x(AppBrandRuntime paramAppBrandRuntime);
   
-  public abstract void w(AppBrandRuntime paramAppBrandRuntime);
+  public abstract void y(AppBrandRuntime paramAppBrandRuntime);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ak
  * JD-Core Version:    0.7.0.1
  */

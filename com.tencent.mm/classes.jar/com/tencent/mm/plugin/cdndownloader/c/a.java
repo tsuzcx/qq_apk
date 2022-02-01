@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.cdndownloader.c;
 import android.content.Context;
 import com.tencent.mars.cdn.CdnLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.f;
+import com.tencent.mm.aq.f;
 import com.tencent.mm.i.b.a;
 import com.tencent.mm.i.d;
 import com.tencent.mm.i.g;
@@ -14,7 +14,7 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.ByteArrayOutputStream;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -25,77 +25,77 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class a
   implements b.a
 {
-  private static a qmr = null;
-  Map<String, g> iRA;
-  private Map<String, Integer> iRB;
-  private String iRC;
-  private long iRD;
-  public HashSet<String> iRE;
-  Queue<String> iRy;
-  Map<String, g> iRz;
-  private MMHandler qmq;
-  private com.tencent.mm.an.a qms;
+  private static a tLi = null;
+  Queue<String> lHQ;
+  Map<String, g> lHR;
+  Map<String, g> lHS;
+  private Map<String, Integer> lHT;
+  private String lHU;
+  private long lHV;
+  public HashSet<String> lHW;
+  private MMHandler tLh;
+  private com.tencent.mm.aq.a tLj;
   
   public a()
   {
     AppMethodBeat.i(120711);
-    this.iRy = new LinkedList();
-    this.iRz = new ConcurrentHashMap();
-    this.iRA = new ConcurrentHashMap();
-    this.iRB = new ConcurrentHashMap();
-    this.qmq = new MMHandler("CdnDownloadNativeService#" + hashCode());
-    this.qms = null;
-    this.iRC = "";
-    this.iRD = 0L;
-    this.iRE = new HashSet();
+    this.lHQ = new LinkedList();
+    this.lHR = new ConcurrentHashMap();
+    this.lHS = new ConcurrentHashMap();
+    this.lHT = new ConcurrentHashMap();
+    this.tLh = new MMHandler("CdnDownloadNativeService#" + hashCode());
+    this.tLj = null;
+    this.lHU = "";
+    this.lHV = 0L;
+    this.lHW = new HashSet();
     AppMethodBeat.o(120711);
   }
   
-  public static a cxZ()
+  public static a cMu()
   {
     try
     {
       AppMethodBeat.i(120712);
-      if (qmr == null) {
-        qmr = new a();
+      if (tLi == null) {
+        tLi = new a();
       }
-      a locala = qmr;
+      a locala = tLi;
       AppMethodBeat.o(120712);
       return locala;
     }
     finally {}
   }
   
-  public final boolean Oc(String paramString)
+  public final boolean Vz(String paramString)
   {
     AppMethodBeat.i(120715);
-    g localg = (g)this.iRA.remove(paramString);
+    g localg = (g)this.lHS.remove(paramString);
     if (localg != null)
     {
-      if ((localg.field_fileType != com.tencent.mm.i.a.gqa) && (localg.field_fileType != com.tencent.mm.i.a.gqc)) {
+      if ((localg.field_fileType != com.tencent.mm.i.a.iUi) && (localg.field_fileType != com.tencent.mm.i.a.iUk)) {
         break label154;
       }
-      baR();
-      com.tencent.mm.an.a.NY(paramString);
+      bkh();
+      com.tencent.mm.aq.a.Vv(paramString);
     }
     for (;;)
     {
-      com.tencent.mm.plugin.report.service.h.CyF.a(10769, new Object[] { Integer.valueOf(com.tencent.mm.an.c.iSb), Integer.valueOf(localg.field_fileType), Long.valueOf(Util.nowMilliSecond() - localg.field_startTime) });
-      this.iRz.remove(paramString);
-      this.iRB.remove(paramString);
+      com.tencent.mm.plugin.report.service.h.IzE.a(10769, new Object[] { Integer.valueOf(com.tencent.mm.aq.c.lIt), Integer.valueOf(localg.field_fileType), Long.valueOf(Util.nowMilliSecond() - localg.field_startTime) });
+      this.lHR.remove(paramString);
+      this.lHT.remove(paramString);
       Log.i("MicroMsg.CdnDownloadNativeService", "summersafecdn cdntra cancelRecvTask mediaid:%s mapremove:%s engine ret:%d", new Object[] { paramString, localg, Integer.valueOf(0) });
       AppMethodBeat.o(120715);
       return true;
       label154:
-      if (localg.gqH)
+      if (localg.iUP)
       {
-        baR();
-        com.tencent.mm.an.a.NZ(paramString);
+        bkh();
+        com.tencent.mm.aq.a.Vw(paramString);
       }
       else
       {
-        baR();
-        com.tencent.mm.an.a.NU(paramString);
+        bkh();
+        com.tencent.mm.aq.a.Vr(paramString);
       }
     }
   }
@@ -121,9 +121,9 @@ public final class a
     if (paramc != null) {}
     for (final boolean bool = paramc.field_isUploadTask;; bool = false)
     {
-      this.iRD = Util.nowMilliSecond();
-      this.iRC = paramString;
-      this.qmq.postToWorker(new Runnable()
+      this.lHV = Util.nowMilliSecond();
+      this.lHU = paramString;
+      this.tLh.postToWorker(new Runnable()
       {
         public final void run()
         {
@@ -138,8 +138,8 @@ public final class a
           if (paramc != null)
           {
             paramc.mediaId = paramString;
-            Log.i("MicroMsg.CdnDownloadNativeService", "MTL: total:%d, cur:%d, mtl:%b, isSend:%b, isUploadTask:%b(%b)", new Object[] { Long.valueOf(paramc.field_toltalLength), Long.valueOf(paramc.field_finishedLength), Boolean.valueOf(paramc.field_mtlnotify), Boolean.valueOf(localg.ehd), Boolean.valueOf(paramc.field_isUploadTask), Boolean.valueOf(bool) });
-            if (bool != localg.ehd)
+            Log.i("MicroMsg.CdnDownloadNativeService", "MTL: total:%d, cur:%d, mtl:%b, isSend:%b, isUploadTask:%b(%b)", new Object[] { Long.valueOf(paramc.field_toltalLength), Long.valueOf(paramc.field_finishedLength), Boolean.valueOf(paramc.field_mtlnotify), Boolean.valueOf(localg.gbt), Boolean.valueOf(paramc.field_isUploadTask), Boolean.valueOf(bool) });
+            if (bool != localg.gbt)
             {
               AppMethodBeat.o(120708);
               return;
@@ -148,7 +148,7 @@ public final class a
           if (paramd != null) {
             paramd.mediaId = paramString;
           }
-          if (localg.gqy != null)
+          if (localg.iUG != null)
           {
             long l = Util.nowMilliSecond();
             if ((paramd == null) && (paramc != null) && (!paramc.field_mtlnotify) && (NetStatusUtil.getNetWorkType(MMApplicationContext.getContext()) == -1))
@@ -157,7 +157,7 @@ public final class a
               return;
             }
             localg.field_lastProgressCallbackTime = l;
-            localg.gqy.a(paramString, 0, paramc, paramd, localg.field_onlycheckexist);
+            localg.iUG.a(paramString, 0, paramc, paramd, localg.field_onlycheckexist);
           }
           if (a.b(paramc)) {
             a.a(a.this).remove(paramString);
@@ -168,8 +168,8 @@ public final class a
             if (paramd.field_retCode == -5103011)
             {
               Log.i("MicroMsg.CdnDownloadNativeService", "summersafecdn ERR_VALIDATE_AUTHKEY");
-              com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(546L, 4L, 1L, true);
-              a.e(a.this).keep_OnRequestDoGetCdnDnsInfo(999);
+              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(546L, 4L, 1L, true);
+              a.this.bkh().keep_OnRequestDoGetCdnDnsInfo(999);
             }
           }
           AppMethodBeat.o(120708);
@@ -190,13 +190,13 @@ public final class a
   
   public final int a(final String paramString, final d paramd)
   {
-    AppMethodBeat.i(226022);
+    AppMethodBeat.i(216524);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(226022);
+      AppMethodBeat.o(216524);
       return 0;
     }
-    this.qmq.postToWorker(new Runnable()
+    this.tLh.postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -208,13 +208,13 @@ public final class a
           AppMethodBeat.o(120710);
           return;
         }
-        if (localg.gqQ != null) {
-          localg.gqQ.b(paramString, paramd);
+        if (localg.iUY != null) {
+          localg.iUY.b(paramString, paramd);
         }
         AppMethodBeat.o(120710);
       }
     });
-    AppMethodBeat.o(226022);
+    AppMethodBeat.o(216524);
     return 0;
   }
   
@@ -227,16 +227,16 @@ public final class a
       AppMethodBeat.o(120719);
       return;
     }
-    g localg = (g)this.iRA.get(paramString);
+    g localg = (g)this.lHS.get(paramString);
     if (localg == null)
     {
       Log.e("MicroMsg.CdnDownloadNativeService", " getauthbuf task in jni get info failed mediaid:%s", new Object[] { paramString });
       AppMethodBeat.o(120719);
       return;
     }
-    if (localg.gqy != null)
+    if (localg.iUG != null)
     {
-      localg.gqy.a(paramString, paramByteArrayOutputStream);
+      localg.iUG.a(paramString, paramByteArrayOutputStream);
       AppMethodBeat.o(120719);
       return;
     }
@@ -244,33 +244,33 @@ public final class a
     AppMethodBeat.o(120719);
   }
   
-  public final boolean aku(String paramString)
+  public final boolean asi(String paramString)
   {
-    AppMethodBeat.i(226021);
-    g localg = (g)this.iRA.get(paramString);
-    Oc(paramString);
+    AppMethodBeat.i(216520);
+    g localg = (g)this.lHS.get(paramString);
+    Vz(paramString);
     if ((localg != null) && (localg.field_fullpath != null))
     {
       Log.i("MicroMsg.CdnDownloadNativeService", "cancelGameRecvTask, delete file:" + localg.field_fullpath);
-      s.deleteFile(localg.field_fullpath);
+      u.deleteFile(localg.field_fullpath);
     }
-    AppMethodBeat.o(226021);
+    AppMethodBeat.o(216520);
     return true;
   }
   
-  final com.tencent.mm.an.a baR()
+  public final com.tencent.mm.aq.a bkh()
   {
     AppMethodBeat.i(120713);
-    if (this.qms == null)
+    if (this.tLj == null)
     {
       if (!MMApplicationContext.isMMProcess()) {
         break label47;
       }
       Log.i("MicroMsg.CdnDownloadNativeService", "use mm process cdn engine.");
     }
-    for (this.qms = f.baR();; this.qms = new com.tencent.mm.an.a(MMApplicationContext.getContext().getFilesDir() + "/NativeCDNInfo", this))
+    for (this.tLj = f.bkh();; this.tLj = new com.tencent.mm.aq.a(MMApplicationContext.getContext().getFilesDir() + "/NativeCDNInfo", this))
     {
-      com.tencent.mm.an.a locala = this.qms;
+      com.tencent.mm.aq.a locala = this.tLj;
       AppMethodBeat.o(120713);
       return locala;
       label47:
@@ -287,16 +287,16 @@ public final class a
       AppMethodBeat.o(120720);
       return null;
     }
-    g localg = (g)this.iRA.get(paramString);
+    g localg = (g)this.lHS.get(paramString);
     if (localg == null)
     {
       Log.e("MicroMsg.CdnDownloadNativeService", " decodePrepareResponse task in jni get info failed mediaid:%s", new Object[] { paramString });
       AppMethodBeat.o(120720);
       return null;
     }
-    if (localg.gqy != null)
+    if (localg.iUG != null)
     {
-      paramString = localg.gqy.f(paramString, paramArrayOfByte);
+      paramString = localg.iUG.f(paramString, paramArrayOfByte);
       AppMethodBeat.o(120720);
       return paramString;
     }
@@ -326,47 +326,47 @@ public final class a
     if (paramg.field_aesKey == null) {
       paramg.field_aesKey = "";
     }
-    if (this.iRy.contains(paramg.field_fileId))
+    if (this.lHQ.contains(paramg.field_fileId))
     {
       Log.e("MicroMsg.CdnDownloadNativeService", "addRecvTask mediaId  exists in queueTask");
       AppMethodBeat.o(120714);
       return -2;
     }
-    if (this.iRz.containsKey(paramg.field_fileId))
+    if (this.lHR.containsKey(paramg.field_fileId))
     {
       Log.e("MicroMsg.CdnDownloadNativeService", "addRecvTask mediaId  exists in mapWaitTask");
       AppMethodBeat.o(120714);
       return -2;
     }
-    if (this.iRA.containsKey(paramg.field_fileId))
+    if (this.lHS.containsKey(paramg.field_fileId))
     {
       Log.e("MicroMsg.CdnDownloadNativeService", "addRecvTask mediaId  exists in mapTaskInJni");
       AppMethodBeat.o(120714);
       return -2;
     }
-    paramg.ehd = false;
-    this.qmq.postToWorker(new Runnable()
+    paramg.gbt = false;
+    this.tLh.postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(120706);
-        if (this.iRM != -1) {
-          a.a(a.this).put(paramg.field_mediaId, Integer.valueOf(this.iRM));
+        if (this.lIe != -1) {
+          a.a(a.this).put(paramg.field_mediaId, Integer.valueOf(this.lIe));
         }
         a.b(a.this).add(paramg.field_mediaId);
         a.c(a.this).put(paramg.field_mediaId, paramg);
         a locala = a.this;
-        Log.i("MicroMsg.CdnDownloadNativeService", "summersafecdn tryStart queue:%d", new Object[] { Integer.valueOf(locala.iRy.size()) });
+        Log.i("MicroMsg.CdnDownloadNativeService", "summersafecdn tryStart queue:%d", new Object[] { Integer.valueOf(locala.lHQ.size()) });
         Object localObject;
         g localg;
         label247:
         int j;
         for (;;)
         {
-          if (!locala.iRy.isEmpty())
+          if (!locala.lHQ.isEmpty())
           {
-            localObject = (String)locala.iRy.poll();
-            localg = (g)locala.iRz.remove(localObject);
+            localObject = (String)locala.lHQ.poll();
+            localg = (g)locala.lHR.remove(localObject);
             if (localg == null)
             {
               Log.e("MicroMsg.CdnDownloadNativeService", "summersafecdn task queue is empty , maybe bug here");
@@ -375,7 +375,7 @@ public final class a
             }
             Log.i("MicroMsg.CdnDownloadNativeService", "summersafecdn id:%s cdnautostart :%s chatroom:%s", new Object[] { localg.field_mediaId, Boolean.valueOf(localg.field_autostart), Integer.valueOf(localg.field_chattype) });
             localg.field_startTime = Util.nowMilliSecond();
-            if (localg.ehd)
+            if (localg.gbt)
             {
               if (localg.field_fullpath == null)
               {
@@ -394,27 +394,27 @@ public final class a
                 if (localg.field_thumbpath == null) {
                   localg.field_thumbpath = "";
                 }
-                i = locala.baR().b(localg);
+                i = locala.bkh().b(localg);
                 if (i == 0) {
                   break label466;
                 }
                 Log.e("MicroMsg.CdnDownloadNativeService", "summersafecdn startupUploadMedia error:%d clientid:%s", new Object[] { Integer.valueOf(i), localg.field_mediaId });
-                if (localg.gqy == null) {
+                if (localg.iUG == null) {
                   break;
                 }
-                localg.gqy.a(localg.field_mediaId, i, null, null, localg.field_onlycheckexist);
+                localg.iUG.a(localg.field_mediaId, i, null, null, localg.field_onlycheckexist);
                 break;
                 i = localg.field_fullpath.length();
                 break label247;
               }
               label466:
               Log.i("MicroMsg.CdnDownloadNativeService", "summersafecdn startupUploadMedia ok, field_mediaId[%s]", new Object[] { localg.field_mediaId });
-              locala.iRA.put(localg.field_mediaId, localg);
+              locala.lHS.put(localg.field_mediaId, localg);
             }
             else
             {
               j = -1;
-              if ((localg.field_fileType == com.tencent.mm.i.a.gqa) || (localg.field_fileType == com.tencent.mm.i.a.gqc) || (localg.field_fileType == com.tencent.mm.i.a.gqd) || (localg.field_fileType == com.tencent.mm.i.a.gqe) || (localg.field_fileType == com.tencent.mm.i.a.gqf) || (localg.field_fileType == com.tencent.mm.i.a.gqh)) {
+              if ((localg.field_fileType == com.tencent.mm.i.a.iUi) || (localg.field_fileType == com.tencent.mm.i.a.iUk) || (localg.field_fileType == com.tencent.mm.i.a.iUl) || (localg.field_fileType == com.tencent.mm.i.a.iUm) || (localg.field_fileType == com.tencent.mm.i.a.iUn) || (localg.field_fileType == com.tencent.mm.i.a.iUp)) {
                 if ((localg.field_fullpath == null) || (localg.field_fullpath.isEmpty())) {
                   break label1219;
                 }
@@ -425,39 +425,39 @@ public final class a
         label662:
         label962:
         label1219:
-        for (int i = locala.baR().a(localg.field_mediaId, localg.gqB, localg.field_fullpath, localg.field_fileType, localg.gqC, localg.gqD, localg.gqE, localg.gqF, localg.gqM, localg.gqN);; i = -1)
+        for (int i = locala.bkh().a(localg.field_mediaId, localg.iUJ, localg.field_fullpath, localg.field_fileType, localg.iUK, localg.iUL, localg.iUM, localg.iUN, localg.iUU, localg.iUV);; i = -1)
         {
           if (localg.field_fullpath == null)
           {
             j = -1;
-            Log.i("MicroMsg.CdnDownloadNativeService", "url download tryStart recv file:%d field_mediaId[%s], download_url[%s], filetype:[%d], ret:%d", new Object[] { Integer.valueOf(j), localg.field_mediaId, localg.gqB, Integer.valueOf(localg.field_fileType), Integer.valueOf(i) });
+            Log.i("MicroMsg.CdnDownloadNativeService", "url download tryStart recv file:%d field_mediaId[%s], download_url[%s], filetype:[%d], ret:%d", new Object[] { Integer.valueOf(j), localg.field_mediaId, localg.iUJ, Integer.valueOf(localg.field_fileType), Integer.valueOf(i) });
           }
           for (;;)
           {
             if (i != 0)
             {
               Log.e("MicroMsg.CdnDownloadNativeService", "summersafecdn startupDownloadMedia error:%d clientid:%s", new Object[] { Integer.valueOf(i), localg.field_mediaId });
-              if (localg.gqy == null) {
+              if (localg.iUG == null) {
                 break;
               }
-              localg.gqy.a(localg.field_mediaId, i, null, null, localg.field_onlycheckexist);
+              localg.iUG.a(localg.field_mediaId, i, null, null, localg.field_onlycheckexist);
               break;
               j = localg.field_fullpath.length();
               break label662;
-              if (localg.gqH)
+              if (localg.iUP)
               {
                 i = j;
                 if (localg.field_fullpath != null)
                 {
                   i = j;
                   if (!localg.field_fullpath.isEmpty()) {
-                    i = locala.baR().a(localg.field_mediaId, localg.field_fullpath, localg.gqB, localg.gqI, localg.gqJ, localg.allow_mobile_net_download, localg.gqC, localg.gqD, localg.is_resume_task, localg.gqG, localg.gqE);
+                    i = locala.bkh().a(localg.field_mediaId, localg.field_fullpath, localg.iUJ, localg.iUQ, localg.iUR, localg.allow_mobile_net_download, localg.iUK, localg.iUL, localg.is_resume_task, localg.iUO, localg.iUM);
                   }
                 }
                 if (localg.field_fullpath == null) {}
                 for (localObject = "";; localObject = localg.field_fullpath)
                 {
-                  Log.i("MicroMsg.CdnDownloadNativeService", "game package download tryStart recv file:%s field_mediaId[%s], download_url[%s] https url[%s]", new Object[] { localObject, localg.field_mediaId, localg.gqB, localg.gqI });
+                  Log.i("MicroMsg.CdnDownloadNativeService", "game package download tryStart recv file:%s field_mediaId[%s], download_url[%s] https url[%s]", new Object[] { localObject, localg.field_mediaId, localg.iUJ, localg.iUQ });
                   break;
                 }
               }
@@ -472,35 +472,35 @@ public final class a
               for (int k = -1;; k = localg.field_thumbpath.length())
               {
                 Log.i("MicroMsg.CdnDownloadNativeService", "summersafecdn tryStart recv file:%d thumb:%d, field_svr_signature[%s], field_aesKey[%s], field_fileType[%d], field_mediaId[%s], onlycheckexist[%b]", new Object[] { Integer.valueOf(i), Integer.valueOf(k), localg.field_svr_signature, localg.field_aesKey, Integer.valueOf(localg.field_fileType), localg.field_mediaId, Boolean.valueOf(localg.field_onlycheckexist) });
-                if (localg.gqO != 2) {
+                if (localg.iUW != 2) {
                   break label1153;
                 }
                 if (!(localg instanceof com.tencent.mm.i.h)) {
                   break label1214;
                 }
                 localObject = (com.tencent.mm.i.h)localg;
-                if (!((com.tencent.mm.i.h)localObject).alQ()) {
+                if (!((com.tencent.mm.i.h)localObject).arP()) {
                   break label1117;
                 }
-                i = locala.baR().a(localg, 2);
+                i = locala.bkh().a(localg, 2);
                 break;
                 i = localg.field_fullpath.length();
                 break label962;
               }
               label1117:
               i = j;
-              if (((com.tencent.mm.i.h)localObject).alO())
+              if (((com.tencent.mm.i.h)localObject).arN())
               {
                 ((com.tencent.mm.i.h)localObject).connectionCount = 1;
                 ((com.tencent.mm.i.h)localObject).concurrentCount = 1;
-                i = locala.baR().a((com.tencent.mm.i.h)localObject);
+                i = locala.bkh().a((com.tencent.mm.i.h)localObject);
               }
               continue;
-              i = locala.baR().c(localg);
+              i = locala.bkh().c(localg);
               continue;
             }
             Log.i("MicroMsg.CdnDownloadNativeService", "summersafecdn startupDownloadMedia ok, field_mediaId[%s]", new Object[] { localg.field_mediaId });
-            locala.iRA.put(localg.field_mediaId, localg);
+            locala.lHS.put(localg.field_mediaId, localg);
             break;
             AppMethodBeat.o(120706);
             return;
@@ -524,7 +524,7 @@ public final class a
   public final int i(g paramg)
   {
     AppMethodBeat.i(120716);
-    if (this.iRA.containsKey(paramg.field_mediaId))
+    if (this.lHS.containsKey(paramg.field_mediaId))
     {
       i = CdnLogic.resumeHttpMultiSocketDownloadTask(paramg.field_mediaId);
       Log.i("MicroMsg.CdnDownloadNativeService", "summersafecdn cdntra resumeRecvTask task resume mediaid:%s, ret:%d", new Object[] { paramg.field_mediaId, Integer.valueOf(i) });

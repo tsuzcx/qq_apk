@@ -12,19 +12,19 @@ import java.util.List;
 @SuppressLint({"DefaultLocale"})
 public final class c
 {
-  private static long dkt;
-  private static final List<a> nwO;
+  private static long fcc;
+  private static final List<a> qyQ;
   
   static
   {
     AppMethodBeat.i(139903);
-    nwO = Collections.synchronizedList(new LinkedList());
+    qyQ = Collections.synchronizedList(new LinkedList());
     AppMethodBeat.o(139903);
   }
   
-  public static void Bo(long paramLong)
+  public static void HC(long paramLong)
   {
-    dkt = paramLong;
+    fcc = paramLong;
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, double paramDouble)
@@ -48,45 +48,45 @@ public final class c
     a locala = new a();
     locala.appId = paramString1;
     locala.name = paramString3;
-    locala.category = paramString2;
-    locala.nwP = paramString4;
+    locala.idV = paramString2;
+    locala.qyR = paramString4;
     locala.start = paramLong1;
-    locala.boX = paramLong2;
+    locala.aYz = paramLong2;
     if (paramString5 != null) {}
     for (paramString1 = URLEncoder.encode(paramString5);; paramString1 = "")
     {
-      locala.nbc = paramString1;
-      if (nwO.size() < 10000) {
-        nwO.add(locala);
+      locala.qbr = paramString1;
+      if (qyQ.size() < 10000) {
+        qyQ.add(locala);
       }
       AppMethodBeat.o(139900);
       return;
     }
   }
   
-  static boolean ael(String paramString)
+  static boolean amf(String paramString)
   {
     AppMethodBeat.i(139901);
     StringBuilder localStringBuilder = new StringBuilder();
-    synchronized (nwO)
+    synchronized (qyQ)
     {
-      if (nwO.size() == 0)
+      if (qyQ.size() == 0)
       {
         AppMethodBeat.o(139901);
         return true;
       }
-      Log.d("MicroMsg.AppBrandPerformanceTracer", "dumpTrace events size: %d", new Object[] { Integer.valueOf(nwO.size()) });
-      Iterator localIterator = nwO.iterator();
+      Log.d("MicroMsg.AppBrandPerformanceTracer", "dumpTrace events size: %d", new Object[] { Integer.valueOf(qyQ.size()) });
+      Iterator localIterator = qyQ.iterator();
       while (localIterator.hasNext())
       {
         a locala = (a)localIterator.next();
-        if ((locala.appId.equals(paramString)) && (locala.start >= dkt)) {
+        if ((locala.appId.equals(paramString)) && (locala.start >= fcc)) {
           localStringBuilder.append(locala.toString()).append("\n");
         }
       }
     }
-    nwO.clear();
-    boolean bool = eu(paramString, localStringBuilder.toString());
+    qyQ.clear();
+    boolean bool = eI(paramString, localStringBuilder.toString());
     AppMethodBeat.o(139901);
     return bool;
   }
@@ -99,14 +99,14 @@ public final class c
   }
   
   /* Error */
-  private static final boolean eu(String paramString1, String paramString2)
+  private static final boolean eI(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: iconst_1
     //   1: istore_2
     //   2: ldc 185
     //   4: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: invokestatic 190	com/tencent/mm/compatible/util/e:apn	()Z
+    //   7: invokestatic 190	com/tencent/mm/compatible/util/e:avA	()Z
     //   10: ifne +17 -> 27
     //   13: ldc 126
     //   15: ldc 192
@@ -121,7 +121,7 @@ public final class c
     //   31: astore 4
     //   33: aload 5
     //   35: astore_3
-    //   36: new 198	com/tencent/mm/vfs/o
+    //   36: new 198	com/tencent/mm/vfs/q
     //   39: dup
     //   40: new 123	java/lang/StringBuilder
     //   43: dup
@@ -132,23 +132,23 @@ public final class c
     //   56: ldc 211
     //   58: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   61: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   64: invokespecial 214	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   64: invokespecial 214	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   67: astore 6
     //   69: aload 5
     //   71: astore_3
     //   72: aload 6
-    //   74: invokevirtual 217	com/tencent/mm/vfs/o:exists	()Z
+    //   74: invokevirtual 217	com/tencent/mm/vfs/q:ifE	()Z
     //   77: ifne +12 -> 89
     //   80: aload 5
     //   82: astore_3
     //   83: aload 6
-    //   85: invokevirtual 220	com/tencent/mm/vfs/o:mkdirs	()Z
+    //   85: invokevirtual 220	com/tencent/mm/vfs/q:ifL	()Z
     //   88: pop
     //   89: aload 5
     //   91: astore_3
-    //   92: new 222	com/tencent/mm/vfs/v
+    //   92: new 222	com/tencent/mm/vfs/y
     //   95: dup
-    //   96: new 198	com/tencent/mm/vfs/o
+    //   96: new 198	com/tencent/mm/vfs/q
     //   99: dup
     //   100: aload 6
     //   102: ldc 224
@@ -160,19 +160,19 @@ public final class c
     //   111: aastore
     //   112: dup
     //   113: iconst_1
-    //   114: getstatic 45	com/tencent/mm/plugin/appbrand/performance/c:dkt	J
+    //   114: getstatic 45	com/tencent/mm/plugin/appbrand/performance/c:fcc	J
     //   117: invokestatic 229	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   120: aastore
     //   121: invokestatic 69	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   124: invokespecial 232	com/tencent/mm/vfs/o:<init>	(Lcom/tencent/mm/vfs/o;Ljava/lang/String;)V
+    //   124: invokespecial 232	com/tencent/mm/vfs/q:<init>	(Lcom/tencent/mm/vfs/q;Ljava/lang/String;)V
     //   127: iconst_1
-    //   128: invokespecial 235	com/tencent/mm/vfs/v:<init>	(Lcom/tencent/mm/vfs/o;Z)V
+    //   128: invokespecial 235	com/tencent/mm/vfs/y:<init>	(Lcom/tencent/mm/vfs/q;Z)V
     //   131: astore_0
     //   132: aload_0
     //   133: aload_1
-    //   134: invokevirtual 238	com/tencent/mm/vfs/v:write	(Ljava/lang/String;)V
+    //   134: invokevirtual 238	com/tencent/mm/vfs/y:write	(Ljava/lang/String;)V
     //   137: aload_0
-    //   138: invokevirtual 241	com/tencent/mm/vfs/v:close	()V
+    //   138: invokevirtual 241	com/tencent/mm/vfs/y:close	()V
     //   141: ldc 185
     //   143: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   146: iload_2
@@ -191,7 +191,7 @@ public final class c
     //   168: aload_0
     //   169: ifnull +54 -> 223
     //   172: aload_0
-    //   173: invokevirtual 241	com/tencent/mm/vfs/v:close	()V
+    //   173: invokevirtual 241	com/tencent/mm/vfs/y:close	()V
     //   176: iconst_0
     //   177: istore_2
     //   178: goto -37 -> 141
@@ -203,7 +203,7 @@ public final class c
     //   188: aload_3
     //   189: ifnull +7 -> 196
     //   192: aload_3
-    //   193: invokevirtual 241	com/tencent/mm/vfs/v:close	()V
+    //   193: invokevirtual 241	com/tencent/mm/vfs/y:close	()V
     //   196: ldc 185
     //   198: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   201: aload_0
@@ -231,7 +231,7 @@ public final class c
     //   35	179	3	localObject1	Object
     //   31	119	4	localObject2	Object
     //   28	62	5	localObject3	Object
-    //   67	34	6	localo	com.tencent.mm.vfs.o
+    //   67	34	6	localq	com.tencent.mm.vfs.q
     // Exception table:
     //   from	to	target	type
     //   36	69	148	java/lang/Exception
@@ -252,18 +252,18 @@ public final class c
   
   public static final class a
   {
+    long aYz;
     String appId;
-    long boX;
-    String category;
+    String idV;
     String name;
-    String nbc;
-    String nwP;
+    String qbr;
+    String qyR;
     long start;
     
     public final String toString()
     {
       AppMethodBeat.i(139896);
-      String str = this.name + "," + this.category + "," + this.nwP + "," + (this.start - c.bST()) + "," + (this.boX - c.bST()) + "," + this.nbc;
+      String str = this.name + "," + this.idV + "," + this.qyR + "," + (this.start - c.cfW()) + "," + (this.aYz - c.cfW()) + "," + this.qbr;
       AppMethodBeat.o(139896);
       return str;
     }
@@ -271,7 +271,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.performance.c
  * JD-Core Version:    0.7.0.1
  */

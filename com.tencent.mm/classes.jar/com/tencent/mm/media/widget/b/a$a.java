@@ -2,7 +2,7 @@ package com.tencent.mm.media.widget.b;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/camera2/Camera2ImageSaver$Companion;", "", "()V", "TAG", "", "getOutputMediaFile", "Lcom/tencent/mm/vfs/VFSFile;", "type", "", "index", "saveBitmapToSdCardStorage", "", "bmp", "Landroid/graphics/Bitmap;", "saveYuvToSdCardStorage", "imageData", "", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/widget/camera2/Camera2ImageSaver$Companion;", "", "()V", "TAG", "", "getOutputMediaFile", "Lcom/tencent/mm/vfs/VFSFile;", "type", "", "index", "saveBitmapToSdCardStorage", "", "bmp", "Landroid/graphics/Bitmap;", "saveYuvToSdCardStorage", "imageData", "", "plugin-mediaeditor_release"})
 public final class a$a {}
 
 

@@ -11,19 +11,19 @@ import rx.i;
 public final class f
   implements d.a<Long>
 {
-  final TimeUnit UkI;
-  final g UkJ;
+  final TimeUnit abOe;
+  final g abOf;
   final long time = 10L;
   
   public f(TimeUnit paramTimeUnit, g paramg)
   {
-    this.UkI = paramTimeUnit;
-    this.UkJ = paramg;
+    this.abOe = paramTimeUnit;
+    this.abOf = paramg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.internal.a.f
  * JD-Core Version:    0.7.0.1
  */

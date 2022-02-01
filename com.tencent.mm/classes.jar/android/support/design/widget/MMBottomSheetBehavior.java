@@ -7,12 +7,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.ClassLoaderCreator;
 import android.os.Parcelable.Creator;
-import android.support.design.a.a;
-import android.support.v4.b.a;
-import android.support.v4.view.AbsSavedState;
-import android.support.v4.view.u;
-import android.support.v4.widget.t;
-import android.support.v4.widget.t.a;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.MotionEvent;
@@ -21,44 +15,58 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout.Behavior;
+import androidx.coordinatorlayout.widget.CoordinatorLayout.d;
+import androidx.core.b.a;
+import androidx.core.g.w;
+import androidx.customview.a.c;
+import androidx.customview.a.c.a;
+import androidx.customview.view.AbsSavedState;
+import com.tencent.mm.plugin.transvoice.a.b;
+import com.tencent.mm.plugin.transvoice.a.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 
 public class MMBottomSheetBehavior<V extends View>
   extends CoordinatorLayout.Behavior<V>
 {
-  int mActivePointerId;
-  int mState = 4;
-  private VelocityTracker mVelocityTracker;
-  WeakReference<V> mViewRef;
-  private float sH;
-  private int sI;
-  private boolean sJ;
-  private int sK;
-  int sL;
-  int sM;
-  boolean sN;
-  private boolean sO;
-  t sP;
-  private boolean sQ;
-  private int sR;
-  private boolean sS;
-  int sT;
-  WeakReference<View> sU;
-  private MMBottomSheetBehavior.a sV;
-  private boolean sW;
-  private boolean sX;
-  private int sY;
-  private int sZ;
-  boolean ta;
-  private boolean tb = false;
-  private final t.a tc = new t.a()
+  private float bN;
+  private int bO;
+  private boolean bP;
+  private int bQ;
+  int bR;
+  int bS;
+  boolean bT;
+  private boolean bU;
+  c bV;
+  private boolean bW;
+  private int bX;
+  private boolean bY;
+  int bZ;
+  WeakReference<View> ca;
+  private MMBottomSheetBehavior.a cb;
+  private boolean cc;
+  private boolean cd;
+  private int ce;
+  private int cf;
+  boolean cg;
+  private boolean ch = false;
+  private final c.a ci = new c.a()
   {
-    public final void L(int paramAnonymousInt)
+    public final void G(int paramAnonymousInt)
     {
       if (paramAnonymousInt == 1) {
-        MMBottomSheetBehavior.this.K(1);
+        MMBottomSheetBehavior.this.E(1);
       }
+    }
+    
+    public final int U()
+    {
+      if (MMBottomSheetBehavior.this.bT) {
+        return MMBottomSheetBehavior.this.bZ - MMBottomSheetBehavior.this.bR;
+      }
+      return MMBottomSheetBehavior.this.bS - MMBottomSheetBehavior.this.bR;
     }
     
     public final void a(View paramAnonymousView, float paramAnonymousFloat1, float paramAnonymousFloat2)
@@ -66,56 +74,56 @@ public class MMBottomSheetBehavior<V extends View>
       int j = 3;
       int i;
       if (paramAnonymousFloat2 < 0.0F) {
-        i = MMBottomSheetBehavior.this.sL;
+        i = MMBottomSheetBehavior.this.bR;
       }
-      while (MMBottomSheetBehavior.this.sP.H(paramAnonymousView.getLeft(), i))
+      while (MMBottomSheetBehavior.this.bV.I(paramAnonymousView.getLeft(), i))
       {
-        MMBottomSheetBehavior.this.K(2);
-        u.b(paramAnonymousView, new MMBottomSheetBehavior.c(MMBottomSheetBehavior.this, paramAnonymousView, j));
+        MMBottomSheetBehavior.this.E(2);
+        w.a(paramAnonymousView, new MMBottomSheetBehavior.c(MMBottomSheetBehavior.this, paramAnonymousView, j));
         return;
-        if ((MMBottomSheetBehavior.this.sN) && (MMBottomSheetBehavior.this.a(paramAnonymousView, paramAnonymousFloat2)))
+        if ((MMBottomSheetBehavior.this.bT) && (MMBottomSheetBehavior.this.a(paramAnonymousView, paramAnonymousFloat2)))
         {
-          i = MMBottomSheetBehavior.this.sT;
+          i = MMBottomSheetBehavior.this.bZ;
           j = 5;
         }
         else if (paramAnonymousFloat2 == 0.0F)
         {
           i = paramAnonymousView.getTop();
-          if (Math.abs(i - MMBottomSheetBehavior.this.sL) < Math.abs(i - MMBottomSheetBehavior.this.sM))
+          if (Math.abs(i - MMBottomSheetBehavior.this.bR) < Math.abs(i - MMBottomSheetBehavior.this.bS))
           {
-            i = MMBottomSheetBehavior.this.sL;
+            i = MMBottomSheetBehavior.this.bR;
           }
           else
           {
-            i = MMBottomSheetBehavior.this.sM;
+            i = MMBottomSheetBehavior.this.bS;
             j = 4;
           }
         }
         else
         {
-          i = MMBottomSheetBehavior.this.sM;
+          i = MMBottomSheetBehavior.this.bS;
           j = 4;
         }
       }
-      MMBottomSheetBehavior.this.K(j);
+      MMBottomSheetBehavior.this.E(j);
     }
     
-    public final void b(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
+    public final void a(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
     {
-      MMBottomSheetBehavior.this.Z(paramAnonymousInt2);
+      MMBottomSheetBehavior.this.F(paramAnonymousInt2);
     }
     
-    public final boolean c(View paramAnonymousView, int paramAnonymousInt)
+    public final boolean b(View paramAnonymousView, int paramAnonymousInt)
     {
       if (MMBottomSheetBehavior.this.mState == 1) {
         return false;
       }
-      if (MMBottomSheetBehavior.this.ta) {
+      if (MMBottomSheetBehavior.this.cg) {
         return false;
       }
       if ((MMBottomSheetBehavior.this.mState == 3) && (MMBottomSheetBehavior.this.mActivePointerId == paramAnonymousInt))
       {
-        View localView = (View)MMBottomSheetBehavior.this.sU.get();
+        View localView = (View)MMBottomSheetBehavior.this.ca.get();
         if ((localView != null) && (localView.canScrollVertically(-1))) {
           return false;
         }
@@ -123,60 +131,56 @@ public class MMBottomSheetBehavior<V extends View>
       return (MMBottomSheetBehavior.this.mViewRef != null) && (MMBottomSheetBehavior.this.mViewRef.get() == paramAnonymousView);
     }
     
-    public final int cg()
+    public final int c(View paramAnonymousView, int paramAnonymousInt)
     {
-      if (MMBottomSheetBehavior.this.sN) {
-        return MMBottomSheetBehavior.this.sT - MMBottomSheetBehavior.this.sL;
-      }
-      return MMBottomSheetBehavior.this.sM - MMBottomSheetBehavior.this.sL;
-    }
-    
-    public final int d(View paramAnonymousView, int paramAnonymousInt)
-    {
-      int j = MMBottomSheetBehavior.this.sL;
-      if (MMBottomSheetBehavior.this.sN) {}
-      for (int i = MMBottomSheetBehavior.this.sT;; i = MMBottomSheetBehavior.this.sM) {
+      int j = MMBottomSheetBehavior.this.bR;
+      if (MMBottomSheetBehavior.this.bT) {}
+      for (int i = MMBottomSheetBehavior.this.bZ;; i = MMBottomSheetBehavior.this.bS) {
         return a.clamp(paramAnonymousInt, j, i);
       }
     }
     
-    public final int e(View paramAnonymousView, int paramAnonymousInt)
+    public final int d(View paramAnonymousView, int paramAnonymousInt)
     {
       return paramAnonymousView.getLeft();
     }
   };
-  private MMBottomSheetBehavior.b td;
+  private MMBottomSheetBehavior.b cj;
+  int mActivePointerId;
+  int mState = 4;
+  private VelocityTracker mVelocityTracker;
+  WeakReference<V> mViewRef;
   
   public MMBottomSheetBehavior() {}
   
   public MMBottomSheetBehavior(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.BottomSheetBehavior_Layout);
-    TypedValue localTypedValue = paramAttributeSet.peekValue(2);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.h.BottomSheetBehavior_Layout);
+    TypedValue localTypedValue = paramAttributeSet.peekValue(a.h.BottomSheetBehavior_Layout_behavior_peekHeight);
     if ((localTypedValue != null) && (localTypedValue.data == -1)) {
-      J(localTypedValue.data);
+      D(localTypedValue.data);
     }
     for (;;)
     {
-      this.sN = paramAttributeSet.getBoolean(1, false);
-      this.sO = paramAttributeSet.getBoolean(3, false);
+      this.bT = paramAttributeSet.getBoolean(a.h.BottomSheetBehavior_Layout_behavior_hideable, false);
+      this.bU = paramAttributeSet.getBoolean(a.h.BottomSheetBehavior_Layout_behavior_skipCollapsed, false);
       paramAttributeSet.recycle();
-      this.sH = ViewConfiguration.get(paramContext).getScaledMaximumFlingVelocity();
+      this.bN = ViewConfiguration.get(paramContext).getScaledMaximumFlingVelocity();
       return;
-      J(paramAttributeSet.getDimensionPixelSize(2, -1));
+      D(paramAttributeSet.getDimensionPixelSize(a.h.BottomSheetBehavior_Layout_behavior_peekHeight, -1));
     }
   }
   
-  private void J(int paramInt)
+  private void D(int paramInt)
   {
     int i = 1;
     if (paramInt == -1)
     {
-      if (this.sJ) {
+      if (this.bP) {
         break label104;
       }
-      this.sJ = true;
+      this.bP = true;
       paramInt = i;
     }
     for (;;)
@@ -189,11 +193,11 @@ public class MMBottomSheetBehavior<V extends View>
         }
       }
       return;
-      if ((this.sJ) || (this.sI != paramInt))
+      if ((this.bP) || (this.bO != paramInt))
       {
-        this.sJ = false;
-        this.sI = Math.max(0, paramInt);
-        this.sM = (this.sT - paramInt);
+        this.bP = false;
+        this.bO = Math.max(0, paramInt);
+        this.bS = (this.bZ - paramInt);
         paramInt = i;
       }
       else
@@ -204,9 +208,9 @@ public class MMBottomSheetBehavior<V extends View>
     }
   }
   
-  private View k(View paramView)
+  private View b(View paramView)
   {
-    if (u.aw(paramView)) {
+    if (w.ae(paramView)) {
       return paramView;
     }
     if ((paramView instanceof ViewGroup))
@@ -216,7 +220,7 @@ public class MMBottomSheetBehavior<V extends View>
       int i = 0;
       while (i < j)
       {
-        View localView = k(paramView.getChildAt(i));
+        View localView = b(paramView.getChildAt(i));
         if (localView != null) {
           return localView;
         }
@@ -224,6 +228,19 @@ public class MMBottomSheetBehavior<V extends View>
       }
     }
     return null;
+  }
+  
+  public static <V extends View> MMBottomSheetBehavior<V> c(V paramV)
+  {
+    paramV = paramV.getLayoutParams();
+    if (!(paramV instanceof CoordinatorLayout.d)) {
+      throw new IllegalArgumentException("The view is not a child of CoordinatorLayout");
+    }
+    paramV = ((CoordinatorLayout.d)paramV).Hq;
+    if (!(paramV instanceof MMBottomSheetBehavior)) {
+      throw new IllegalArgumentException("The view is not associated with BottomSheetBehavior");
+    }
+    return (MMBottomSheetBehavior)paramV;
   }
   
   private void reset()
@@ -236,31 +253,18 @@ public class MMBottomSheetBehavior<V extends View>
     }
   }
   
-  public static <V extends View> MMBottomSheetBehavior<V> x(V paramV)
-  {
-    paramV = paramV.getLayoutParams();
-    if (!(paramV instanceof CoordinatorLayout.d)) {
-      throw new IllegalArgumentException("The view is not a child of CoordinatorLayout");
-    }
-    paramV = ((CoordinatorLayout.d)paramV).qC;
-    if (!(paramV instanceof MMBottomSheetBehavior)) {
-      throw new IllegalArgumentException("The view is not associated with BottomSheetBehavior");
-    }
-    return (MMBottomSheetBehavior)paramV;
-  }
-  
-  public final boolean B(int paramInt)
+  public final boolean C(int paramInt)
   {
     boolean bool = false;
-    this.sR = 0;
-    this.sS = false;
+    this.bX = 0;
+    this.bY = false;
     if ((paramInt & 0x2) != 0) {
       bool = true;
     }
     return bool;
   }
   
-  final void K(int paramInt)
+  final void E(int paramInt)
   {
     if (this.mState == paramInt) {}
     View localView;
@@ -269,364 +273,26 @@ public class MMBottomSheetBehavior<V extends View>
       return;
       this.mState = paramInt;
       localView = (View)this.mViewRef.get();
-    } while ((localView == null) || (this.sV == null));
-    this.sV.f(localView, paramInt);
+    } while ((localView == null) || (this.cb == null));
+    this.cb.e(localView, paramInt);
   }
   
-  final void Z(int paramInt)
+  final void F(int paramInt)
   {
     View localView = (View)this.mViewRef.get();
-    if ((localView != null) && (this.sV != null))
+    if ((localView != null) && (this.cb != null))
     {
-      if (paramInt > this.sM) {
-        this.sV.b(localView, (this.sM - paramInt) / (this.sT - this.sM));
+      if (paramInt > this.bS) {
+        this.cb.b(localView, (this.bS - paramInt) / (this.bZ - this.bS));
       }
     }
     else {
       return;
     }
-    this.sV.b(localView, (this.sM - paramInt) / (this.sM - this.sL));
+    this.cb.b(localView, (this.bS - paramInt) / (this.bS - this.bR));
   }
   
-  public final void a(CoordinatorLayout paramCoordinatorLayout, V paramV, Parcelable paramParcelable)
-  {
-    paramParcelable = (SavedState)paramParcelable;
-    super.a(paramCoordinatorLayout, paramV, paramParcelable.Pm);
-    if ((paramParcelable.state == 1) || (paramParcelable.state == 2))
-    {
-      this.mState = 4;
-      return;
-    }
-    this.mState = paramParcelable.state;
-  }
-  
-  public final void a(MMBottomSheetBehavior.a parama)
-  {
-    this.sV = parama;
-  }
-  
-  public final void a(MMBottomSheetBehavior.b paramb)
-  {
-    this.td = paramb;
-  }
-  
-  public final void a(V paramV, View paramView, int paramInt, int[] paramArrayOfInt)
-  {
-    if (paramView != (View)this.sU.get()) {
-      return;
-    }
-    int i = paramV.getTop();
-    int j = i - paramInt;
-    if (paramInt > 0) {
-      if (j < this.sL)
-      {
-        paramArrayOfInt[1] = (i - this.sL);
-        u.s(paramV, -paramArrayOfInt[1]);
-        K(3);
-      }
-    }
-    for (;;)
-    {
-      Z(paramV.getTop());
-      this.sR = paramInt;
-      this.sS = true;
-      return;
-      paramArrayOfInt[1] = paramInt;
-      u.s(paramV, -paramInt);
-      K(1);
-      continue;
-      if ((paramInt < 0) && (!paramView.canScrollVertically(-1))) {
-        if ((j <= this.sM) || (this.sN))
-        {
-          paramArrayOfInt[1] = paramInt;
-          u.s(paramV, -paramInt);
-          K(1);
-        }
-        else
-        {
-          paramArrayOfInt[1] = (i - this.sM);
-          u.s(paramV, -paramArrayOfInt[1]);
-          K(4);
-        }
-      }
-    }
-  }
-  
-  public final boolean a(CoordinatorLayout paramCoordinatorLayout, V paramV, int paramInt)
-  {
-    if ((u.aq(paramCoordinatorLayout)) && (!u.aq(paramV))) {
-      u.e(paramV, true);
-    }
-    int i = paramV.getTop();
-    paramCoordinatorLayout.g(paramV, paramInt);
-    this.sT = paramCoordinatorLayout.getHeight();
-    if (this.sJ)
-    {
-      if (this.sK == 0) {
-        this.sK = paramCoordinatorLayout.getResources().getDimensionPixelSize(2131166146);
-      }
-      paramInt = Math.max(this.sK, this.sT - paramCoordinatorLayout.getWidth() * 9 / 16);
-      this.sL = Math.max(0, this.sT - paramV.getHeight());
-      this.sM = Math.max(this.sT - paramInt, this.sL);
-      if (this.mState != 3) {
-        break label197;
-      }
-      u.s(paramV, this.sL);
-    }
-    for (;;)
-    {
-      if (this.sP == null) {
-        this.sP = t.a(paramCoordinatorLayout, this.tc);
-      }
-      this.mViewRef = new WeakReference(paramV);
-      this.sU = new WeakReference(k(paramV));
-      return true;
-      paramInt = this.sI;
-      break;
-      label197:
-      if ((this.sN) && (this.mState == 5)) {
-        u.s(paramV, this.sT);
-      } else if (this.mState == 4) {
-        u.s(paramV, this.sM);
-      } else if ((this.mState == 1) || (this.mState == 2)) {
-        u.s(paramV, i - paramV.getTop());
-      }
-    }
-  }
-  
-  public final boolean a(CoordinatorLayout paramCoordinatorLayout, V paramV, MotionEvent paramMotionEvent)
-  {
-    Log.d("microMsg.MMBottomSheetBehavior", "onTouchEvent action: %d, x: %f, y: %f, rawX: %f, rawY: %f.", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Float.valueOf(paramMotionEvent.getX()), Float.valueOf(paramMotionEvent.getY()), Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()) });
-    if (!paramV.isShown()) {}
-    do
-    {
-      return false;
-      int i = paramMotionEvent.getActionMasked();
-      if ((this.mState == 1) && (i == 0)) {
-        return true;
-      }
-      if (this.sP != null) {
-        this.sP.k(paramMotionEvent);
-      }
-      if (i == 0) {
-        reset();
-      }
-      if (this.mVelocityTracker == null) {
-        this.mVelocityTracker = VelocityTracker.obtain();
-      }
-      this.mVelocityTracker.addMovement(paramMotionEvent);
-      if ((i == 2) && (!this.sQ) && (Math.abs(this.sZ - paramMotionEvent.getY()) > this.sP.mTouchSlop)) {
-        this.sP.y(paramV, paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
-      }
-    } while (this.sQ);
-    return true;
-  }
-  
-  public final boolean a(CoordinatorLayout paramCoordinatorLayout, V paramV, View paramView, float paramFloat1, float paramFloat2)
-  {
-    return (paramView == this.sU.get()) && ((this.mState != 3) || (super.a(paramCoordinatorLayout, paramV, paramView, paramFloat1, paramFloat2)));
-  }
-  
-  final boolean a(View paramView, float paramFloat)
-  {
-    if (this.sO) {}
-    do
-    {
-      return true;
-      if (paramView.getTop() < this.sM) {
-        return false;
-      }
-    } while (Math.abs(paramView.getTop() + 0.1F * paramFloat - this.sM) / this.sI > 0.5F);
-    return false;
-  }
-  
-  public final Parcelable b(CoordinatorLayout paramCoordinatorLayout, V paramV)
-  {
-    return new SavedState(super.b(paramCoordinatorLayout, paramV), this.mState);
-  }
-  
-  final void b(View paramView, int paramInt)
-  {
-    int i;
-    if (paramInt == 4) {
-      i = this.sM;
-    }
-    while (this.sP.h(paramView, paramView.getLeft(), i))
-    {
-      K(2);
-      u.b(paramView, new c(paramView, paramInt));
-      return;
-      if (paramInt == 3) {
-        i = this.sL;
-      } else if ((this.sN) && (paramInt == 5)) {
-        i = this.sT;
-      } else {
-        throw new IllegalArgumentException("Illegal state argument: ".concat(String.valueOf(paramInt)));
-      }
-    }
-    K(paramInt);
-  }
-  
-  public final void b(V paramV, View paramView)
-  {
-    int j = 3;
-    if (paramV.getTop() == this.sL) {
-      K(3);
-    }
-    while ((this.sU == null) || (paramView != this.sU.get()) || (!this.sS)) {
-      return;
-    }
-    int i;
-    if (this.sR > 0)
-    {
-      i = this.sL;
-      if (!this.sP.h(paramV, paramV.getLeft(), i)) {
-        break label213;
-      }
-      K(2);
-      u.b(paramV, new c(paramV, j));
-    }
-    for (;;)
-    {
-      this.sS = false;
-      return;
-      if (this.sN)
-      {
-        this.mVelocityTracker.computeCurrentVelocity(1000, this.sH);
-        if (a(paramV, this.mVelocityTracker.getYVelocity(this.mActivePointerId)))
-        {
-          i = this.sT;
-          j = 5;
-          break;
-        }
-      }
-      if (this.sR == 0)
-      {
-        i = paramV.getTop();
-        if (Math.abs(i - this.sL) < Math.abs(i - this.sM))
-        {
-          i = this.sL;
-          break;
-        }
-        i = this.sM;
-        j = 4;
-        break;
-      }
-      i = this.sM;
-      j = 4;
-      break;
-      label213:
-      K(j);
-    }
-  }
-  
-  public final boolean b(CoordinatorLayout paramCoordinatorLayout, V paramV, MotionEvent paramMotionEvent)
-  {
-    Log.d("microMsg.MMBottomSheetBehavior", "onInterceptTouchEvent action: %d, x: %f, y: %f, rawX: %f, rawY: %f.", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Float.valueOf(paramMotionEvent.getX()), Float.valueOf(paramMotionEvent.getY()), Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()) });
-    if (paramMotionEvent.getAction() == 0) {
-      this.tb = false;
-    }
-    if (this.tb) {
-      Log.d("microMsg.MMBottomSheetBehavior", "external deal with, continue.");
-    }
-    int i;
-    label310:
-    label469:
-    do
-    {
-      return false;
-      if ((this.td != null) && (this.td.onInterceptTouchEvent(paramMotionEvent)))
-      {
-        Log.d("microMsg.MMBottomSheetBehavior", "external deal with.");
-        this.tb = true;
-        return false;
-      }
-      if (!paramV.isShown())
-      {
-        this.sQ = true;
-        return false;
-      }
-      i = paramMotionEvent.getActionMasked();
-      if (i == 0) {
-        reset();
-      }
-      if (this.mVelocityTracker == null) {
-        this.mVelocityTracker = VelocityTracker.obtain();
-      }
-      this.mVelocityTracker.addMovement(paramMotionEvent);
-      switch (i)
-      {
-      }
-      while ((!this.sQ) && (this.sP.j(paramMotionEvent)) && (this.sX))
-      {
-        return true;
-        this.ta = false;
-        this.mActivePointerId = -1;
-        if (this.sQ)
-        {
-          this.sQ = false;
-          return false;
-          this.sW = false;
-          this.sX = false;
-          this.sY = ((int)paramMotionEvent.getX());
-          this.sZ = ((int)paramMotionEvent.getY());
-          View localView;
-          if (this.sU != null)
-          {
-            localView = (View)this.sU.get();
-            if ((localView != null) && (paramCoordinatorLayout.d(localView, this.sY, this.sZ)))
-            {
-              this.mActivePointerId = paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex());
-              this.ta = true;
-            }
-            if ((this.mActivePointerId != -1) || (paramCoordinatorLayout.d(paramV, this.sY, this.sZ))) {
-              break label391;
-            }
-          }
-          for (boolean bool = true;; bool = false)
-          {
-            this.sQ = bool;
-            break;
-            localView = null;
-            break label310;
-          }
-          int k = (int)paramMotionEvent.getX();
-          int j = (int)paramMotionEvent.getY();
-          k -= this.sY;
-          j -= this.sZ;
-          if (!this.sW)
-          {
-            if ((Math.abs(k) > this.sP.mTouchSlop) || (Math.abs(j) > this.sP.mTouchSlop))
-            {
-              bool = true;
-              this.sW = bool;
-            }
-          }
-          else
-          {
-            if (!this.sW) {
-              continue;
-            }
-            if (Math.abs(j) <= Math.abs(k)) {
-              break label513;
-            }
-          }
-          for (bool = true;; bool = false)
-          {
-            this.sX = bool;
-            break;
-            bool = false;
-            break label469;
-          }
-        }
-      }
-      paramV = (View)this.sU.get();
-    } while ((i != 2) || (paramV == null) || (this.sQ) || (this.mState == 1) || (paramCoordinatorLayout.d(paramV, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())) || (Math.abs(this.sZ - paramMotionEvent.getY()) <= this.sP.mTouchSlop) || (!this.sX));
-    label391:
-    return true;
-  }
-  
-  public final void cU()
+  public final void T()
   {
     if (3 == this.mState) {}
     final View localView;
@@ -641,18 +307,356 @@ public class MMBottomSheetBehavior<V extends View>
       localView = (View)this.mViewRef.get();
     } while (localView == null);
     ViewParent localViewParent = localView.getParent();
-    if ((localViewParent != null) && (localViewParent.isLayoutRequested()) && (u.aD(localView)))
+    if ((localViewParent != null) && (localViewParent.isLayoutRequested()) && (w.al(localView)))
     {
       localView.post(new Runnable()
       {
         public final void run()
         {
-          MMBottomSheetBehavior.this.b(localView, this.te);
+          MMBottomSheetBehavior.this.a(localView, this.cl);
         }
       });
       return;
     }
-    b(localView, 3);
+    a(localView, 3);
+  }
+  
+  public final Parcelable a(CoordinatorLayout paramCoordinatorLayout, V paramV)
+  {
+    return new SavedState(super.a(paramCoordinatorLayout, paramV), this.mState);
+  }
+  
+  public final void a(MMBottomSheetBehavior.a parama)
+  {
+    this.cb = parama;
+  }
+  
+  public final void a(MMBottomSheetBehavior.b paramb)
+  {
+    this.cj = paramb;
+  }
+  
+  final void a(View paramView, int paramInt)
+  {
+    int i;
+    if (paramInt == 4) {
+      i = this.bS;
+    }
+    while (this.bV.f(paramView, paramView.getLeft(), i))
+    {
+      E(2);
+      w.a(paramView, new c(paramView, paramInt));
+      return;
+      if (paramInt == 3) {
+        i = this.bR;
+      } else if ((this.bT) && (paramInt == 5)) {
+        i = this.bZ;
+      } else {
+        throw new IllegalArgumentException("Illegal state argument: ".concat(String.valueOf(paramInt)));
+      }
+    }
+    E(paramInt);
+  }
+  
+  public final void a(V paramV, View paramView)
+  {
+    int j = 3;
+    if (paramV.getTop() == this.bR) {
+      E(3);
+    }
+    while ((this.ca == null) || (paramView != this.ca.get()) || (!this.bY)) {
+      return;
+    }
+    int i;
+    if (this.bX > 0)
+    {
+      i = this.bR;
+      if (!this.bV.f(paramV, paramV.getLeft(), i)) {
+        break label213;
+      }
+      E(2);
+      w.a(paramV, new c(paramV, j));
+    }
+    for (;;)
+    {
+      this.bY = false;
+      return;
+      if (this.bT)
+      {
+        this.mVelocityTracker.computeCurrentVelocity(1000, this.bN);
+        if (a(paramV, this.mVelocityTracker.getYVelocity(this.mActivePointerId)))
+        {
+          i = this.bZ;
+          j = 5;
+          break;
+        }
+      }
+      if (this.bX == 0)
+      {
+        i = paramV.getTop();
+        if (Math.abs(i - this.bR) < Math.abs(i - this.bS))
+        {
+          i = this.bR;
+          break;
+        }
+        i = this.bS;
+        j = 4;
+        break;
+      }
+      i = this.bS;
+      j = 4;
+      break;
+      label213:
+      E(j);
+    }
+  }
+  
+  public final void a(V paramV, View paramView, int paramInt, int[] paramArrayOfInt)
+  {
+    if (paramView != (View)this.ca.get()) {
+      return;
+    }
+    int i = paramV.getTop();
+    int j = i - paramInt;
+    if (paramInt > 0) {
+      if (j < this.bR)
+      {
+        paramArrayOfInt[1] = (i - this.bR);
+        w.s(paramV, -paramArrayOfInt[1]);
+        E(3);
+      }
+    }
+    for (;;)
+    {
+      F(paramV.getTop());
+      this.bX = paramInt;
+      this.bY = true;
+      return;
+      paramArrayOfInt[1] = paramInt;
+      w.s(paramV, -paramInt);
+      E(1);
+      continue;
+      if ((paramInt < 0) && (!paramView.canScrollVertically(-1))) {
+        if ((j <= this.bS) || (this.bT))
+        {
+          paramArrayOfInt[1] = paramInt;
+          w.s(paramV, -paramInt);
+          E(1);
+        }
+        else
+        {
+          paramArrayOfInt[1] = (i - this.bS);
+          w.s(paramV, -paramArrayOfInt[1]);
+          E(4);
+        }
+      }
+    }
+  }
+  
+  public final void a(CoordinatorLayout paramCoordinatorLayout, V paramV, Parcelable paramParcelable)
+  {
+    paramParcelable = (SavedState)paramParcelable;
+    super.a(paramCoordinatorLayout, paramV, paramParcelable.Rb);
+    if ((paramParcelable.state == 1) || (paramParcelable.state == 2))
+    {
+      this.mState = 4;
+      return;
+    }
+    this.mState = paramParcelable.state;
+  }
+  
+  final boolean a(View paramView, float paramFloat)
+  {
+    if (this.bU) {}
+    do
+    {
+      return true;
+      if (paramView.getTop() < this.bS) {
+        return false;
+      }
+    } while (Math.abs(paramView.getTop() + 0.1F * paramFloat - this.bS) / this.bO > 0.5F);
+    return false;
+  }
+  
+  public final boolean a(CoordinatorLayout paramCoordinatorLayout, V paramV, int paramInt)
+  {
+    if ((w.Z(paramCoordinatorLayout)) && (!w.Z(paramV))) {
+      w.c(paramV, true);
+    }
+    int i = paramV.getTop();
+    paramCoordinatorLayout.h(paramV, paramInt);
+    this.bZ = paramCoordinatorLayout.getHeight();
+    if (this.bP)
+    {
+      if (this.bQ == 0) {
+        this.bQ = paramCoordinatorLayout.getResources().getDimensionPixelSize(a.b.design_bottom_sheet_peek_height_min);
+      }
+      paramInt = Math.max(this.bQ, this.bZ - paramCoordinatorLayout.getWidth() * 9 / 16);
+      this.bR = Math.max(0, this.bZ - paramV.getHeight());
+      this.bS = Math.max(this.bZ - paramInt, this.bR);
+      if (this.mState != 3) {
+        break label197;
+      }
+      w.s(paramV, this.bR);
+    }
+    for (;;)
+    {
+      if (this.bV == null) {
+        this.bV = c.a(paramCoordinatorLayout, this.ci);
+      }
+      this.mViewRef = new WeakReference(paramV);
+      this.ca = new WeakReference(b(paramV));
+      return true;
+      paramInt = this.bO;
+      break;
+      label197:
+      if ((this.bT) && (this.mState == 5)) {
+        w.s(paramV, this.bZ);
+      } else if (this.mState == 4) {
+        w.s(paramV, this.bS);
+      } else if ((this.mState == 1) || (this.mState == 2)) {
+        w.s(paramV, i - paramV.getTop());
+      }
+    }
+  }
+  
+  public final boolean a(CoordinatorLayout paramCoordinatorLayout, V paramV, MotionEvent paramMotionEvent)
+  {
+    Log.d("microMsg.MMBottomSheetBehavior", "onInterceptTouchEvent action: %d, x: %f, y: %f, rawX: %f, rawY: %f.", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Float.valueOf(paramMotionEvent.getX()), Float.valueOf(paramMotionEvent.getY()), Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()) });
+    if (paramMotionEvent.getAction() == 0) {
+      this.ch = false;
+    }
+    if (this.ch) {
+      Log.d("microMsg.MMBottomSheetBehavior", "external deal with, continue.");
+    }
+    int i;
+    label310:
+    label469:
+    do
+    {
+      return false;
+      if ((this.cj != null) && (this.cj.onInterceptTouchEvent(paramMotionEvent)))
+      {
+        Log.d("microMsg.MMBottomSheetBehavior", "external deal with.");
+        this.ch = true;
+        return false;
+      }
+      if (!paramV.isShown())
+      {
+        this.bW = true;
+        return false;
+      }
+      i = paramMotionEvent.getActionMasked();
+      if (i == 0) {
+        reset();
+      }
+      if (this.mVelocityTracker == null) {
+        this.mVelocityTracker = VelocityTracker.obtain();
+      }
+      this.mVelocityTracker.addMovement(paramMotionEvent);
+      switch (i)
+      {
+      }
+      while ((!this.bW) && (this.bV.i(paramMotionEvent)) && (this.cd))
+      {
+        return true;
+        this.cg = false;
+        this.mActivePointerId = -1;
+        if (this.bW)
+        {
+          this.bW = false;
+          return false;
+          this.cc = false;
+          this.cd = false;
+          this.ce = ((int)paramMotionEvent.getX());
+          this.cf = ((int)paramMotionEvent.getY());
+          View localView;
+          if (this.ca != null)
+          {
+            localView = (View)this.ca.get();
+            if ((localView != null) && (paramCoordinatorLayout.d(localView, this.ce, this.cf)))
+            {
+              this.mActivePointerId = paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex());
+              this.cg = true;
+            }
+            if ((this.mActivePointerId != -1) || (paramCoordinatorLayout.d(paramV, this.ce, this.cf))) {
+              break label391;
+            }
+          }
+          for (boolean bool = true;; bool = false)
+          {
+            this.bW = bool;
+            break;
+            localView = null;
+            break label310;
+          }
+          int k = (int)paramMotionEvent.getX();
+          int j = (int)paramMotionEvent.getY();
+          k -= this.ce;
+          j -= this.cf;
+          if (!this.cc)
+          {
+            if ((Math.abs(k) > this.bV.mTouchSlop) || (Math.abs(j) > this.bV.mTouchSlop))
+            {
+              bool = true;
+              this.cc = bool;
+            }
+          }
+          else
+          {
+            if (!this.cc) {
+              continue;
+            }
+            if (Math.abs(j) <= Math.abs(k)) {
+              break label513;
+            }
+          }
+          for (bool = true;; bool = false)
+          {
+            this.cd = bool;
+            break;
+            bool = false;
+            break label469;
+          }
+        }
+      }
+      paramV = (View)this.ca.get();
+    } while ((i != 2) || (paramV == null) || (this.bW) || (this.mState == 1) || (paramCoordinatorLayout.d(paramV, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())) || (Math.abs(this.cf - paramMotionEvent.getY()) <= this.bV.mTouchSlop) || (!this.cd));
+    label391:
+    return true;
+  }
+  
+  public final boolean a(CoordinatorLayout paramCoordinatorLayout, V paramV, View paramView, float paramFloat1, float paramFloat2)
+  {
+    return (paramView == this.ca.get()) && ((this.mState != 3) || (super.a(paramCoordinatorLayout, paramV, paramView, paramFloat1, paramFloat2)));
+  }
+  
+  public final boolean b(CoordinatorLayout paramCoordinatorLayout, V paramV, MotionEvent paramMotionEvent)
+  {
+    Log.d("microMsg.MMBottomSheetBehavior", "onTouchEvent action: %d, x: %f, y: %f, rawX: %f, rawY: %f.", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Float.valueOf(paramMotionEvent.getX()), Float.valueOf(paramMotionEvent.getY()), Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()) });
+    if (!paramV.isShown()) {}
+    do
+    {
+      return false;
+      int i = paramMotionEvent.getActionMasked();
+      if ((this.mState == 1) && (i == 0)) {
+        return true;
+      }
+      if (this.bV != null) {
+        this.bV.j(paramMotionEvent);
+      }
+      if (i == 0) {
+        reset();
+      }
+      if (this.mVelocityTracker == null) {
+        this.mVelocityTracker = VelocityTracker.obtain();
+      }
+      this.mVelocityTracker.addMovement(paramMotionEvent);
+      if ((i == 2) && (!this.bW) && (Math.abs(this.cf - paramMotionEvent.getY()) > this.bV.mTouchSlop)) {
+        this.bV.x(paramV, paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
+      }
+    } while (this.bW);
+    return true;
   }
   
   public final int getState()
@@ -688,29 +692,29 @@ public class MMBottomSheetBehavior<V extends View>
   final class c
     implements Runnable
   {
+    private final int cn;
     private final View mView;
-    private final int tg;
     
     c(View paramView, int paramInt)
     {
       this.mView = paramView;
-      this.tg = paramInt;
+      this.cn = paramInt;
     }
     
     public final void run()
     {
-      if ((MMBottomSheetBehavior.this.sP != null) && (MMBottomSheetBehavior.this.sP.go()))
+      if ((MMBottomSheetBehavior.this.bV != null) && (MMBottomSheetBehavior.this.bV.hM()))
       {
-        u.b(this.mView, this);
+        w.a(this.mView, this);
         return;
       }
-      MMBottomSheetBehavior.this.K(this.tg);
+      MMBottomSheetBehavior.this.E(this.cn);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.design.widget.MMBottomSheetBehavior
  * JD-Core Version:    0.7.0.1
  */

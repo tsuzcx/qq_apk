@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.finder.live.fragment;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderLiveVisitorUIC;
+import com.tencent.mm.plugin.finder.live.viewmodel.component.g;
+import com.tencent.mm.plugin.finder.ui.fragment.MMFinderFragment;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.component.UIComponentFragment;
 import java.util.HashMap;
 import java.util.Set;
 import kotlin.a.ak;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveVisitorFragment;", "Lcom/tencent/mm/ui/component/UIComponentFragment;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveVisitorFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/MMFinderFragment;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "plugin-finder_release"})
 public final class FinderLiveVisitorFragment
-  extends UIComponentFragment
+  extends MMFinderFragment
 {
   private HashMap _$_findViewCache;
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(245987);
+    AppMethodBeat.i(276557);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(245987);
+    AppMethodBeat.o(276557);
   }
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(245986);
-    Set localSet = ak.setOf(FinderLiveVisitorUIC.class);
-    AppMethodBeat.o(245986);
+    AppMethodBeat.i(276556);
+    Set localSet = ak.setOf(g.class);
+    AppMethodBeat.o(276556);
     return localSet;
   }
 }

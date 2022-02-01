@@ -55,21 +55,21 @@ public class TinkerLoader
       ShareIntentUtil.setIntentReturnCode(paramIntent, -2);
       return;
     }
-    Object localObject4 = ((File)localObject1).getAbsolutePath();
+    String str2 = ((File)localObject1).getAbsolutePath();
     if (!((File)localObject1).exists())
     {
-      ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:patch dir not exist:".concat(String.valueOf(localObject4)), new Object[0]);
+      ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:patch dir not exist:".concat(String.valueOf(str2)), new Object[0]);
       ShareIntentUtil.setIntentReturnCode(paramIntent, -2);
       return;
     }
-    File localFile1 = SharePatchFileUtil.getPatchInfoFile((String)localObject4);
+    File localFile1 = SharePatchFileUtil.getPatchInfoFile(str2);
     if (!localFile1.exists())
     {
       ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:patch info not exist:" + localFile1.getAbsolutePath(), new Object[0]);
       ShareIntentUtil.setIntentReturnCode(paramIntent, -3);
       return;
     }
-    File localFile2 = SharePatchFileUtil.getPatchInfoLockFile((String)localObject4);
+    File localFile2 = SharePatchFileUtil.getPatchInfoLockFile(str2);
     this.patchInfo = SharePatchInfo.readAndCheckPropertyWithLock(localFile1, localFile2);
     if (this.patchInfo == null)
     {
@@ -80,8 +80,8 @@ public class TinkerLoader
     paramIntent.putExtra("intent_is_protected_app", bool8);
     Object localObject3 = this.patchInfo.oldVersion;
     String str1 = this.patchInfo.newVersion;
-    String str2 = this.patchInfo.oatDir;
-    if ((localObject3 == null) || (str1 == null) || (str2 == null))
+    String str3 = this.patchInfo.oatDir;
+    if ((localObject3 == null) || (str1 == null) || (str3 == null))
     {
       ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:onPatchInfoCorrupted", new Object[0]);
       ShareIntentUtil.setIntentReturnCode(paramIntent, -4);
@@ -91,16 +91,16 @@ public class TinkerLoader
     boolean bool1 = this.patchInfo.isRemoveNewVersion;
     Object localObject2 = localObject3;
     localObject1 = str1;
-    String str3;
+    Object localObject4;
     if (bool3)
     {
-      str3 = SharePatchFileUtil.getPatchVersionDirectory(str1);
+      localObject4 = SharePatchFileUtil.getPatchVersionDirectory(str1);
       if (!bool1) {
-        break label1517;
+        break label1609;
       }
       ShareTinkerLog.w("Tinker.TinkerLoader", "found clean patch mark and we are in main process, delete patch file now.", new Object[0]);
-      if (str3 == null) {
-        break label1517;
+      if (localObject4 == null) {
+        break label1609;
       }
       bool1 = ((String)localObject3).equals(str1);
       localObject1 = localObject3;
@@ -111,7 +111,7 @@ public class TinkerLoader
       this.patchInfo.newVersion = ((String)localObject1);
       this.patchInfo.isRemoveNewVersion = false;
       SharePatchInfo.rewritePatchInfoFileWithLock(localFile1, this.patchInfo, localFile2);
-      SharePatchFileUtil.deleteDir((String)localObject4 + "/" + str3);
+      SharePatchFileUtil.deleteDir(str2 + "/" + (String)localObject4);
       if (bool1)
       {
         ShareTinkerInternals.killProcessExceptMain(paramTinkerApplication);
@@ -129,7 +129,7 @@ public class TinkerLoader
         this.patchInfo.isRemoveInterpretOATDir = false;
         SharePatchInfo.rewritePatchInfoFileWithLock(localFile1, this.patchInfo, localFile2);
         ShareTinkerInternals.killProcessExceptMain(paramTinkerApplication);
-        localObject3 = (String)localObject4 + "/" + str3;
+        localObject3 = str2 + "/" + (String)localObject4;
         SharePatchFileUtil.deleteDir((String)localObject3 + "/interpet");
       }
       paramIntent.putExtra("intent_patch_old_version", (String)localObject2);
@@ -137,8 +137,8 @@ public class TinkerLoader
       if (!((String)localObject2).equals(localObject1)) {}
       for (int i = 1;; i = 0)
       {
-        bool1 = str2.equals("changing");
-        str1 = ShareTinkerInternals.getCurrentOatMode(paramTinkerApplication, str2);
+        bool1 = str3.equals("changing");
+        str1 = ShareTinkerInternals.getCurrentOatMode(paramTinkerApplication, str3);
         paramIntent.putExtra("intent_patch_oat_dir", str1);
         localObject3 = localObject2;
         if (i != 0)
@@ -155,14 +155,14 @@ public class TinkerLoader
         ShareIntentUtil.setIntentReturnCode(paramIntent, -5);
         return;
       }
-      localObject1 = SharePatchFileUtil.getPatchVersionDirectory((String)localObject3);
-      if (localObject1 == null)
+      str3 = SharePatchFileUtil.getPatchVersionDirectory((String)localObject3);
+      if (str3 == null)
       {
         ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:patchName is null", new Object[0]);
         ShareIntentUtil.setIntentReturnCode(paramIntent, -6);
         return;
       }
-      localObject2 = (String)localObject4 + "/" + (String)localObject1;
+      localObject2 = str2 + "/" + str3;
       localObject1 = new File((String)localObject2);
       if (!((File)localObject1).exists())
       {
@@ -229,18 +229,30 @@ public class TinkerLoader
           }
         }
         if (checkSafeModeCount(paramTinkerApplication)) {
+          break label1290;
+        }
+        if (!bool3) {
           break;
         }
+        this.patchInfo.oldVersion = "";
+        this.patchInfo.newVersion = "";
+        this.patchInfo.isRemoveNewVersion = false;
+        SharePatchInfo.rewritePatchInfoFileWithLock(localFile1, this.patchInfo, localFile2);
+        ShareTinkerInternals.killProcessExceptMain(paramTinkerApplication);
+        SharePatchFileUtil.deleteDir(str2 + "/" + str3);
         paramIntent.putExtra("intent_patch_exception", new TinkerRuntimeException("checkSafeModeCount fail"));
         ShareIntentUtil.setIntentReturnCode(paramIntent, -25);
-        ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:checkSafeModeCount fail", new Object[0]);
+        ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:checkSafeModeCount fail, patch was deleted.", new Object[0]);
         return;
       }
+      ShareTinkerLog.w("Tinker.TinkerLoader", "tryLoadPatchFiles:checkSafeModeCount fail, but we are not in main process, mark the patch to be deleted and continue load patch.", new Object[0]);
+      ShareTinkerInternals.cleanPatch(paramTinkerApplication);
+      label1290:
       if ((!bool5) && (bool4))
       {
         bool8 = TinkerDexLoader.loadTinkerJars(paramTinkerApplication, (String)localObject2, str1, paramIntent, bool2, bool8);
         if (!bool2) {
-          break label1514;
+          break label1606;
         }
         this.patchInfo.fingerPrint = Build.FINGERPRINT;
         localObject3 = this.patchInfo;
@@ -258,7 +270,7 @@ public class TinkerLoader
         }
         paramIntent.putExtra("intent_patch_oat_dir", this.patchInfo.oatDir);
       }
-      label1514:
+      label1606:
       for (;;)
       {
         if (!bool8)
@@ -299,7 +311,7 @@ public class TinkerLoader
         ShareTinkerLog.i("Tinker.TinkerLoader", "tryLoadPatchFiles: load end, ok!", new Object[0]);
         return;
       }
-      label1517:
+      label1609:
       localObject2 = localObject3;
     }
   }
@@ -316,7 +328,7 @@ public class TinkerLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.loader.TinkerLoader
  * JD-Core Version:    0.7.0.1
  */

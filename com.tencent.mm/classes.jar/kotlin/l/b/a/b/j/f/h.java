@@ -12,42 +12,42 @@ import kotlin.l.b.a.b.f.f;
 public abstract interface h
   extends j
 {
-  public static final h.a TJW = h.a.TJY;
+  public static final h.a abmy = h.a.abmA;
   
   public abstract Collection<? extends ah> a(f paramf, a parama);
   
   public abstract Collection<? extends am> b(f paramf, a parama);
   
-  public abstract Set<f> hCa();
+  public abstract Set<f> iGp();
   
-  public abstract Set<f> hCb();
+  public abstract Set<f> iGq();
   
   public static final class b
     extends i
   {
-    public static final b TKa;
+    public static final b abmC;
     
     static
     {
       AppMethodBeat.i(60216);
-      TKa = new b();
+      abmC = new b();
       AppMethodBeat.o(60216);
     }
     
-    public final Set<f> hCa()
+    public final Set<f> iGp()
     {
-      return (Set)x.SXt;
+      return (Set)x.aaAf;
     }
     
-    public final Set<f> hCb()
+    public final Set<f> iGq()
     {
-      return (Set)x.SXt;
+      return (Set)x.aaAf;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.j.f.h
  * JD-Core Version:    0.7.0.1
  */

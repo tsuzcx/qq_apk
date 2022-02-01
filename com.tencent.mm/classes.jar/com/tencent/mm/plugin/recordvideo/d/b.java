@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.recordvideo.d;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.gd;
+import com.tencent.mm.f.b.a.hy;
 import com.tencent.mm.plugin.recordvideo.jumper.MediaEditReportInfo.EditItem;
+import com.tencent.mm.plugin.xlabeffect.XEffectConfig;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
@@ -17,36 +18,49 @@ import kotlin.l;
 import kotlin.n.n;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/report/MultiMediaEditReport;", "", "()V", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;", "setStruct", "(Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;)V", "report", "", "reset", "setEditItemList", "editList", "", "Lcom/tencent/mm/plugin/recordvideo/jumper/MediaEditReportInfo$EditItem;", "isAllImage", "", "setVideoLabel", "enable", "labelMap", "Ljava/util/HashMap;", "", "Landroid/util/Pair;", "", "", "Lkotlin/collections/HashMap;", "Companion", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/report/MultiMediaEditReport;", "", "()V", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;", "setStruct", "(Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;)V", "report", "", "reset", "setBeautyConfig", "config", "Lcom/tencent/mm/plugin/xlabeffect/XEffectConfig;", "setEditItemList", "editList", "", "Lcom/tencent/mm/plugin/recordvideo/jumper/MediaEditReportInfo$EditItem;", "isAllImage", "", "setVideoLabel", "enable", "labelMap", "Ljava/util/HashMap;", "", "Landroid/util/Pair;", "", "", "Lkotlin/collections/HashMap;", "Companion", "plugin-recordvideo_release"})
 public final class b
 {
-  public static final b.a BXy;
-  public gd BXx;
+  public static final a HUm;
+  public hy HUl;
   
   static
   {
-    AppMethodBeat.i(237439);
-    BXy = new b.a((byte)0);
-    AppMethodBeat.o(237439);
+    AppMethodBeat.i(220969);
+    HUm = new a((byte)0);
+    AppMethodBeat.o(220969);
   }
   
   public b()
   {
-    AppMethodBeat.i(237438);
-    this.BXx = new gd();
+    AppMethodBeat.i(220967);
+    this.HUl = new hy();
     reset();
-    AppMethodBeat.o(237438);
+    AppMethodBeat.o(220967);
+  }
+  
+  public final void a(XEffectConfig paramXEffectConfig)
+  {
+    AppMethodBeat.i(220950);
+    hy localhy = this.HUl;
+    if (paramXEffectConfig != null) {}
+    for (paramXEffectConfig = paramXEffectConfig.jXW;; paramXEffectConfig = null)
+    {
+      localhy.xy(paramXEffectConfig);
+      AppMethodBeat.o(220950);
+      return;
+    }
   }
   
   public final void a(boolean paramBoolean, HashMap<String, Pair<Integer, Long>> paramHashMap)
   {
-    AppMethodBeat.i(237435);
-    p.h(paramHashMap, "labelMap");
+    AppMethodBeat.i(220948);
+    p.k(paramHashMap, "labelMap");
     Object localObject = new JSONObject();
     ((JSONObject)localObject).put("count", paramHashMap.size());
     StringBuffer localStringBuffer = new StringBuffer();
     paramHashMap = paramHashMap.values();
-    p.g(paramHashMap, "labelMap.values");
+    p.j(paramHashMap, "labelMap.values");
     paramHashMap = ((Iterable)paramHashMap).iterator();
     while (paramHashMap.hasNext())
     {
@@ -58,20 +72,20 @@ public final class b
     for (int i = 1;; i = 0)
     {
       ((JSONObject)localObject).put("enable", i);
-      paramHashMap = this.BXx;
+      paramHashMap = this.HUl;
       localObject = ((JSONObject)localObject).toString();
-      p.g(localObject, "json.toString()");
-      paramHashMap.tG(n.j((String)localObject, ",", ";", false));
-      Log.i("MicroMsg.MultiMediaEditReport", "filterInfo:" + this.BXx.agL());
-      AppMethodBeat.o(237435);
+      p.j(localObject, "json.toString()");
+      paramHashMap.xx(n.l((String)localObject, ",", ";", false));
+      Log.i("MicroMsg.MultiMediaEditReport", "filterInfo:" + this.HUl.alN());
+      AppMethodBeat.o(220948);
       return;
     }
   }
   
-  public final void l(List<? extends MediaEditReportInfo.EditItem> paramList, boolean paramBoolean)
+  public final void m(List<? extends MediaEditReportInfo.EditItem> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(237434);
-    p.h(paramList, "editList");
+    AppMethodBeat.i(220942);
+    p.k(paramList, "editList");
     Object localObject2 = (Iterable)paramList;
     Object localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
@@ -170,38 +184,42 @@ public final class b
       paramList.add(Integer.valueOf(((MediaEditReportInfo.EditItem)((Iterator)localObject10).next()).type));
     }
     paramList = j.a((Iterable)paramList, (CharSequence)"#", null, null, 0, null, null, 62);
-    this.BXx.tq((String)localObject1);
-    this.BXx.tr((String)localObject2);
-    this.BXx.ts((String)localObject3);
-    this.BXx.tu((String)localObject4);
-    this.BXx.tv((String)localObject5);
-    this.BXx.tw((String)localObject6);
-    this.BXx.tx((String)localObject7);
-    this.BXx.ty((String)localObject8);
-    this.BXx.tz((String)localObject9);
-    this.BXx.tA(paramList);
-    AppMethodBeat.o(237434);
+    this.HUl.xh((String)localObject1);
+    this.HUl.xi((String)localObject2);
+    this.HUl.xj((String)localObject3);
+    this.HUl.xl((String)localObject4);
+    this.HUl.xm((String)localObject5);
+    this.HUl.xn((String)localObject6);
+    this.HUl.xo((String)localObject7);
+    this.HUl.xp((String)localObject8);
+    this.HUl.xq((String)localObject9);
+    this.HUl.xr(paramList);
+    this.HUl.sd(101L);
+    AppMethodBeat.o(220942);
   }
   
   public final void report()
   {
-    AppMethodBeat.i(237436);
-    this.BXx.bfK();
-    AppMethodBeat.o(237436);
+    AppMethodBeat.i(220953);
+    this.HUl.bpa();
+    AppMethodBeat.o(220953);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(237437);
-    this.BXx = new gd();
-    this.BXx.tt("");
-    this.BXx.tp("");
-    AppMethodBeat.o(237437);
+    AppMethodBeat.i(220959);
+    this.HUl = new hy();
+    this.HUl.xk("");
+    this.HUl.xg("");
+    AppMethodBeat.o(220959);
   }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/report/MultiMediaEditReport$Companion;", "", "()V", "ExitBack", "", "ExitNextStep", "TAG", "", "TypeImage", "", "TypeVideo", "beautyConfigToJson", "config", "Lcom/tencent/mm/plugin/xlabeffect/XEffectConfig;", "plugin-recordvideo_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.d.b
  * JD-Core Version:    0.7.0.1
  */

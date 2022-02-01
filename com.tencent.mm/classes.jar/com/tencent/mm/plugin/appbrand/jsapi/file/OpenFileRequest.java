@@ -1,10 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
+import android.app.Activity;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.type.IPCInteger;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.plugin.appbrand.au.i;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
+import com.tencent.mm.ui.widget.snackbar.b;
 
 public final class OpenFileRequest
   extends AppBrandProxyUIProcessTask.ProcessRequest
@@ -12,8 +19,8 @@ public final class OpenFileRequest
   public static final Parcelable.Creator<OpenFileRequest> CREATOR;
   public String appId;
   public String filePath;
-  public String gCr;
-  public boolean lwF;
+  public String jmx;
+  public boolean orn;
   
   static
   {
@@ -29,12 +36,12 @@ public final class OpenFileRequest
     super(paramParcel);
   }
   
-  public final Class<? extends AppBrandProxyUIProcessTask> bCJ()
+  public final Class<? extends AppBrandProxyUIProcessTask> bOe()
   {
     return OpenFileRequest.a.class;
   }
   
-  public final String bDO()
+  public final String bPo()
   {
     return "QbDocumentReader";
   }
@@ -50,12 +57,12 @@ public final class OpenFileRequest
     AppMethodBeat.i(174834);
     super.k(paramParcel);
     this.filePath = paramParcel.readString();
-    this.gCr = paramParcel.readString();
+    this.jmx = paramParcel.readString();
     this.appId = paramParcel.readString();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.lwF = bool;
+      this.orn = bool;
       AppMethodBeat.o(174834);
       return;
       bool = false;
@@ -67,9 +74,9 @@ public final class OpenFileRequest
     AppMethodBeat.i(174835);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeString(this.filePath);
-    paramParcel.writeString(this.gCr);
+    paramParcel.writeString(this.jmx);
     paramParcel.writeString(this.appId);
-    if (this.lwF) {}
+    if (this.orn) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
@@ -77,10 +84,14 @@ public final class OpenFileRequest
       return;
     }
   }
+  
+  static final class a$a
+    implements d<IPCString, IPCInteger>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.OpenFileRequest
  * JD-Core Version:    0.7.0.1
  */

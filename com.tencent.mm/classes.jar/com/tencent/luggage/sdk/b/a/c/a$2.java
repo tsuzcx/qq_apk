@@ -9,23 +9,16 @@ final class a$2
 {
   public final void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(229847);
+    AppMethodBeat.i(236211);
     Log.e(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(229847);
+    AppMethodBeat.o(236211);
   }
   
   public final void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(229845);
+    AppMethodBeat.i(236209);
     Log.i(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(229845);
-  }
-  
-  public final void w(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(229846);
-    Log.w(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(229846);
+    AppMethodBeat.o(236209);
   }
 }
 

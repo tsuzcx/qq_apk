@@ -836,7 +836,7 @@ public class SafeParcelReader
     AppMethodBeat.i(4812);
     if (paramParcel.dataPosition() != paramInt)
     {
-      paramParcel = new ParseException(37 + "Overread allowed size end=" + paramInt, paramParcel);
+      paramParcel = new SafeParcelReader.ParseException(37 + "Overread allowed size end=" + paramInt, paramParcel);
       AppMethodBeat.o(4812);
       throw paramParcel;
     }
@@ -1073,7 +1073,7 @@ public class SafeParcelReader
       if (str.length() != 0) {}
       for (str = "Expected object header. Got 0x".concat(str);; str = new String("Expected object header. Got 0x"))
       {
-        paramParcel = new ParseException(str, paramParcel);
+        paramParcel = new SafeParcelReader.ParseException(str, paramParcel);
         AppMethodBeat.o(4757);
         throw paramParcel;
       }
@@ -1081,7 +1081,7 @@ public class SafeParcelReader
     j = i + k;
     if ((j < i) || (j > paramParcel.dataSize()))
     {
-      paramParcel = new ParseException(54 + "Size read is invalid start=" + i + " end=" + j, paramParcel);
+      paramParcel = new SafeParcelReader.ParseException(54 + "Size read is invalid start=" + i + " end=" + j, paramParcel);
       AppMethodBeat.o(4757);
       throw paramParcel;
     }
@@ -1096,7 +1096,7 @@ public class SafeParcelReader
     if (paramInt1 != paramInt2)
     {
       String str = Integer.toHexString(paramInt1);
-      paramParcel = new ParseException(String.valueOf(str).length() + 46 + "Expected size " + paramInt2 + " got " + paramInt1 + " (0x" + str + ")", paramParcel);
+      paramParcel = new SafeParcelReader.ParseException(String.valueOf(str).length() + 46 + "Expected size " + paramInt2 + " got " + paramInt1 + " (0x" + str + ")", paramParcel);
       AppMethodBeat.o(4755);
       throw paramParcel;
     }
@@ -1109,27 +1109,16 @@ public class SafeParcelReader
     if (paramInt2 != paramInt3)
     {
       String str = Integer.toHexString(paramInt2);
-      paramParcel = new ParseException(String.valueOf(str).length() + 46 + "Expected size " + paramInt3 + " got " + paramInt2 + " (0x" + str + ")", paramParcel);
+      paramParcel = new SafeParcelReader.ParseException(String.valueOf(str).length() + 46 + "Expected size " + paramInt3 + " got " + paramInt2 + " (0x" + str + ")", paramParcel);
       AppMethodBeat.o(4756);
       throw paramParcel;
     }
     AppMethodBeat.o(4756);
   }
-  
-  public static class ParseException
-    extends RuntimeException
-  {
-    public ParseException(String paramString, Parcel paramParcel)
-    {
-      super();
-      AppMethodBeat.i(4751);
-      AppMethodBeat.o(4751);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.gms.common.internal.safeparcel.SafeParcelReader
  * JD-Core Version:    0.7.0.1
  */

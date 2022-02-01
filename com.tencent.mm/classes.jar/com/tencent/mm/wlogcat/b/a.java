@@ -2,7 +2,7 @@ package com.tencent.mm.wlogcat.b;
 
 import com.tencent.mars.xlog.Xlog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -10,20 +10,20 @@ import com.tencent.mm.xlog.app.XLogSetup;
 
 public final class a
 {
-  private static a RwC;
-  private Runnable RwD;
+  private static a YYd;
+  private Runnable YYe;
   
   static
   {
-    AppMethodBeat.i(224054);
-    RwC = new a();
-    AppMethodBeat.o(224054);
+    AppMethodBeat.i(189315);
+    YYd = new a();
+    AppMethodBeat.o(189315);
   }
   
   private a()
   {
-    AppMethodBeat.i(224052);
-    this.RwD = new Runnable()
+    AppMethodBeat.i(189309);
+    this.YYe = new Runnable()
     {
       /* Error */
       public final void run()
@@ -250,43 +250,43 @@ public final class a
         //   43	53	313	java/lang/Exception
       }
     };
-    AppMethodBeat.o(224052);
+    AppMethodBeat.o(189309);
   }
   
-  public static a hig()
+  public static a ijH()
   {
-    return RwC;
+    return YYd;
   }
   
-  public final void hih()
+  public final void ijI()
   {
-    AppMethodBeat.i(224053);
+    AppMethodBeat.i(189314);
     if (Log.getImpl().getClass() != Xlog.class)
     {
       Log.e("MicroMsg.CrashLogcatCatcher", "impl is not xlog!");
-      AppMethodBeat.o(224053);
+      AppMethodBeat.o(189314);
       return;
     }
     Log.i("MicroMsg.CrashLogcatCatcher", "Log.consoleLogOpen:" + XLogSetup.isLogcatOpen);
     if (XLogSetup.isLogcatOpen.booleanValue())
     {
-      AppMethodBeat.o(224053);
+      AppMethodBeat.o(189314);
       return;
     }
-    int i = ((b)g.af(b.class)).a(b.a.rNQ, 0);
+    int i = ((b)h.ae(b.class)).a(b.a.vtK, 0);
     Log.i("MicroMsg.CrashLogcatCatcher", "is need work :".concat(String.valueOf(i)));
     if (i == 0)
     {
-      AppMethodBeat.o(224053);
+      AppMethodBeat.o(189314);
       return;
     }
-    this.RwD.run();
-    AppMethodBeat.o(224053);
+    this.YYe.run();
+    AppMethodBeat.o(189314);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wlogcat.b.a
  * JD-Core Version:    0.7.0.1
  */

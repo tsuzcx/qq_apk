@@ -9,33 +9,33 @@ public class NotifyFreqLimit
   extends BroadcastReceiver
 {
   private static long beginTime;
-  private static a jdp;
-  private static m jdq;
-  private static int jdr;
-  private static long[] jds;
-  private static LinkedList<Object> jdt;
-  private static int jdu;
-  private static Boolean jdv;
-  private static Boolean jdw;
-  private static long jdx;
-  private static PendingIntent jdy;
+  private static a lTO;
+  private static m lTP;
+  private static int lTQ;
+  private static long[] lTR;
+  private static LinkedList<Object> lTS;
+  private static int lTT;
+  private static Boolean lTU;
+  private static Boolean lTV;
+  private static long lTW;
+  private static PendingIntent lTX;
   private static byte[] lock;
   
   static
   {
     AppMethodBeat.i(20550);
     lock = new byte[0];
-    jdp = null;
-    jdq = null;
-    jdr = 0;
-    jds = null;
-    jdt = new LinkedList();
-    jdu = 0;
+    lTO = null;
+    lTP = null;
+    lTQ = 0;
+    lTR = null;
+    lTS = new LinkedList();
+    lTT = 0;
     beginTime = 0L;
-    jdv = null;
-    jdw = null;
-    jdx = 0L;
-    jdy = null;
+    lTU = null;
+    lTV = null;
+    lTW = 0L;
+    lTX = null;
     AppMethodBeat.o(20550);
   }
   
@@ -140,16 +140,16 @@ public class NotifyFreqLimit
     //   176: aastore
     //   177: dup
     //   178: bipush 6
-    //   180: getstatic 66	com/tencent/mm/modelmulti/NotifyFreqLimit:jdy	Landroid/app/PendingIntent;
+    //   180: getstatic 66	com/tencent/mm/modelmulti/NotifyFreqLimit:lTX	Landroid/app/PendingIntent;
     //   183: aastore
     //   184: dup
     //   185: bipush 7
-    //   187: getstatic 41	com/tencent/mm/modelmulti/NotifyFreqLimit:jdp	Lcom/tencent/mm/modelmulti/NotifyFreqLimit$a;
+    //   187: getstatic 41	com/tencent/mm/modelmulti/NotifyFreqLimit:lTO	Lcom/tencent/mm/modelmulti/NotifyFreqLimit$a;
     //   190: aastore
     //   191: invokestatic 155	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   194: getstatic 66	com/tencent/mm/modelmulti/NotifyFreqLimit:jdy	Landroid/app/PendingIntent;
+    //   194: getstatic 66	com/tencent/mm/modelmulti/NotifyFreqLimit:lTX	Landroid/app/PendingIntent;
     //   197: ifnonnull +100 -> 297
-    //   200: getstatic 161	com/tencent/mm/plugin/report/service/h:CyF	Lcom/tencent/mm/plugin/report/service/h;
+    //   200: getstatic 161	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
     //   203: ldc2_w 162
     //   206: ldc2_w 164
     //   209: lconst_1
@@ -191,11 +191,11 @@ public class NotifyFreqLimit
     //   269: aastore
     //   270: dup
     //   271: bipush 6
-    //   273: getstatic 66	com/tencent/mm/modelmulti/NotifyFreqLimit:jdy	Landroid/app/PendingIntent;
+    //   273: getstatic 66	com/tencent/mm/modelmulti/NotifyFreqLimit:lTX	Landroid/app/PendingIntent;
     //   276: aastore
     //   277: dup
     //   278: bipush 7
-    //   280: getstatic 41	com/tencent/mm/modelmulti/NotifyFreqLimit:jdp	Lcom/tencent/mm/modelmulti/NotifyFreqLimit$a;
+    //   280: getstatic 41	com/tencent/mm/modelmulti/NotifyFreqLimit:lTO	Lcom/tencent/mm/modelmulti/NotifyFreqLimit$a;
     //   283: aastore
     //   284: invokestatic 103	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   287: aload 13
@@ -204,11 +204,11 @@ public class NotifyFreqLimit
     //   293: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   296: return
     //   297: aconst_null
-    //   298: putstatic 66	com/tencent/mm/modelmulti/NotifyFreqLimit:jdy	Landroid/app/PendingIntent;
+    //   298: putstatic 66	com/tencent/mm/modelmulti/NotifyFreqLimit:lTX	Landroid/app/PendingIntent;
     //   301: iload 4
     //   303: iload_3
     //   304: if_icmpeq +100 -> 404
-    //   307: getstatic 161	com/tencent/mm/plugin/report/service/h:CyF	Lcom/tencent/mm/plugin/report/service/h;
+    //   307: getstatic 161	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
     //   310: ldc2_w 162
     //   313: ldc2_w 172
     //   316: lconst_1
@@ -250,11 +250,11 @@ public class NotifyFreqLimit
     //   376: aastore
     //   377: dup
     //   378: bipush 6
-    //   380: getstatic 66	com/tencent/mm/modelmulti/NotifyFreqLimit:jdy	Landroid/app/PendingIntent;
+    //   380: getstatic 66	com/tencent/mm/modelmulti/NotifyFreqLimit:lTX	Landroid/app/PendingIntent;
     //   383: aastore
     //   384: dup
     //   385: bipush 7
-    //   387: getstatic 41	com/tencent/mm/modelmulti/NotifyFreqLimit:jdp	Lcom/tencent/mm/modelmulti/NotifyFreqLimit$a;
+    //   387: getstatic 41	com/tencent/mm/modelmulti/NotifyFreqLimit:lTO	Lcom/tencent/mm/modelmulti/NotifyFreqLimit$a;
     //   390: aastore
     //   391: invokestatic 103	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   394: aload 13
@@ -310,15 +310,15 @@ public class NotifyFreqLimit
     //   483: aastore
     //   484: dup
     //   485: bipush 6
-    //   487: getstatic 66	com/tencent/mm/modelmulti/NotifyFreqLimit:jdy	Landroid/app/PendingIntent;
+    //   487: getstatic 66	com/tencent/mm/modelmulti/NotifyFreqLimit:lTX	Landroid/app/PendingIntent;
     //   490: aastore
     //   491: dup
     //   492: bipush 7
-    //   494: getstatic 41	com/tencent/mm/modelmulti/NotifyFreqLimit:jdp	Lcom/tencent/mm/modelmulti/NotifyFreqLimit$a;
+    //   494: getstatic 41	com/tencent/mm/modelmulti/NotifyFreqLimit:lTO	Lcom/tencent/mm/modelmulti/NotifyFreqLimit$a;
     //   497: aastore
     //   498: invokestatic 103	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   501: getstatic 186	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   504: putstatic 62	com/tencent/mm/modelmulti/NotifyFreqLimit:jdw	Ljava/lang/Boolean;
+    //   504: putstatic 62	com/tencent/mm/modelmulti/NotifyFreqLimit:lTV	Ljava/lang/Boolean;
     //   507: invokestatic 192	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
     //   510: ldc 194
     //   512: iconst_0
@@ -353,7 +353,7 @@ public class NotifyFreqLimit
     //   579: aload_1
     //   580: invokestatic 247	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   583: ifeq +25 -> 608
-    //   586: getstatic 161	com/tencent/mm/plugin/report/service/h:CyF	Lcom/tencent/mm/plugin/report/service/h;
+    //   586: getstatic 161	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
     //   589: sipush 11098
     //   592: iconst_1
     //   593: anewarray 97	java/lang/Object
@@ -369,16 +369,16 @@ public class NotifyFreqLimit
     //   613: anewarray 97	java/lang/Object
     //   616: dup
     //   617: iconst_0
-    //   618: getstatic 62	com/tencent/mm/modelmulti/NotifyFreqLimit:jdw	Ljava/lang/Boolean;
+    //   618: getstatic 62	com/tencent/mm/modelmulti/NotifyFreqLimit:lTV	Ljava/lang/Boolean;
     //   621: aastore
     //   622: dup
     //   623: iconst_1
     //   624: aload_1
     //   625: aastore
     //   626: invokestatic 155	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   629: getstatic 41	com/tencent/mm/modelmulti/NotifyFreqLimit:jdp	Lcom/tencent/mm/modelmulti/NotifyFreqLimit$a;
+    //   629: getstatic 41	com/tencent/mm/modelmulti/NotifyFreqLimit:lTO	Lcom/tencent/mm/modelmulti/NotifyFreqLimit$a;
     //   632: ifnonnull +91 -> 723
-    //   635: getstatic 161	com/tencent/mm/plugin/report/service/h:CyF	Lcom/tencent/mm/plugin/report/service/h;
+    //   635: getstatic 161	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
     //   638: ldc2_w 162
     //   641: ldc2_w 253
     //   644: lconst_1
@@ -420,11 +420,11 @@ public class NotifyFreqLimit
     //   705: aastore
     //   706: dup
     //   707: bipush 6
-    //   709: getstatic 66	com/tencent/mm/modelmulti/NotifyFreqLimit:jdy	Landroid/app/PendingIntent;
+    //   709: getstatic 66	com/tencent/mm/modelmulti/NotifyFreqLimit:lTX	Landroid/app/PendingIntent;
     //   712: aastore
     //   713: dup
     //   714: bipush 7
-    //   716: getstatic 41	com/tencent/mm/modelmulti/NotifyFreqLimit:jdp	Lcom/tencent/mm/modelmulti/NotifyFreqLimit$a;
+    //   716: getstatic 41	com/tencent/mm/modelmulti/NotifyFreqLimit:lTO	Lcom/tencent/mm/modelmulti/NotifyFreqLimit$a;
     //   719: aastore
     //   720: invokestatic 103	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   723: aload 13
@@ -434,8 +434,8 @@ public class NotifyFreqLimit
     //   732: return
     //   733: astore_1
     //   734: aconst_null
-    //   735: putstatic 66	com/tencent/mm/modelmulti/NotifyFreqLimit:jdy	Landroid/app/PendingIntent;
-    //   738: getstatic 161	com/tencent/mm/plugin/report/service/h:CyF	Lcom/tencent/mm/plugin/report/service/h;
+    //   735: putstatic 66	com/tencent/mm/modelmulti/NotifyFreqLimit:lTX	Landroid/app/PendingIntent;
+    //   738: getstatic 161	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
     //   741: ldc2_w 162
     //   744: ldc2_w 257
     //   747: lconst_1
@@ -477,7 +477,7 @@ public class NotifyFreqLimit
     //   from	to	target	type
     //   6	14	733	java/lang/Throwable
     //   726	732	733	java/lang/Throwable
-    //   782	790	733	java/lang/Throwable
+    //   779	790	733	java/lang/Throwable
     //   18	30	778	finally
     //   37	55	778	finally
     //   62	67	778	finally
@@ -488,7 +488,6 @@ public class NotifyFreqLimit
     //   608	629	778	finally
     //   629	723	778	finally
     //   723	726	778	finally
-    //   779	782	778	finally
   }
   
   public static abstract interface a {}

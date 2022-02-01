@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.s;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.thread.ThreadPool;
 import java.util.ArrayList;
@@ -16,34 +16,34 @@ public final class b
 {
   public static int FAILED = -1;
   public static int SUCCESS = 0;
-  public f lqg;
-  public final String mGo;
-  public boolean mgB;
-  public int nhP;
-  public String nhQ;
-  public SSLContext nhR;
-  protected final ArrayList<String> nhS;
-  public final Map<String, ConcurrentLinkedQueue<Runnable>> nhT;
-  public final ArrayList<com.tencent.mm.plugin.appbrand.s.a.b> nhU;
+  public e okQ;
+  public final String pFt;
+  public boolean peH;
+  public SSLContext qiA;
+  protected final ArrayList<String> qiB;
+  public final Map<String, ConcurrentLinkedQueue<Runnable>> qiC;
+  public final ArrayList<com.tencent.mm.plugin.appbrand.s.a.b> qiD;
+  public int qiy;
+  public String qiz;
   
-  public b(f paramf, boolean paramBoolean)
+  public b(e parame, boolean paramBoolean)
   {
     AppMethodBeat.i(144302);
-    this.nhQ = (com.tencent.mm.loader.j.b.aKM() + "appbrand/");
-    this.mgB = false;
-    this.nhS = new ArrayList();
-    this.nhU = new ArrayList();
-    this.lqg = paramf;
-    paramf = (a)paramf.av(a.class);
-    this.nhP = paramf.cyM;
-    this.mGo = paramf.nhM;
-    this.nhR = j.a(paramf);
-    this.nhT = new Hashtable(10);
-    this.mgB = paramBoolean;
+    this.qiz = (com.tencent.mm.loader.j.b.aSO() + "appbrand/");
+    this.peH = false;
+    this.qiB = new ArrayList();
+    this.qiD = new ArrayList();
+    this.okQ = parame;
+    parame = (a)parame.au(a.class);
+    this.qiy = parame.cxr;
+    this.pFt = parame.qiv;
+    this.qiA = j.a(parame);
+    this.qiC = new Hashtable(10);
+    this.peH = paramBoolean;
     AppMethodBeat.o(144302);
   }
   
-  private void EN(String paramString)
+  private void LG(String paramString)
   {
     AppMethodBeat.i(144304);
     if (paramString == null)
@@ -51,14 +51,14 @@ public final class b
       AppMethodBeat.o(144304);
       return;
     }
-    synchronized (this.nhU)
+    synchronized (this.qiD)
     {
-      Iterator localIterator = this.nhU.iterator();
+      Iterator localIterator = this.qiD.iterator();
       while (localIterator.hasNext())
       {
         com.tencent.mm.plugin.appbrand.s.a.b localb = (com.tencent.mm.plugin.appbrand.s.a.b)localIterator.next();
-        if (paramString.equals(localb.jEY)) {
-          this.nhU.remove(localb);
+        if (paramString.equals(localb.mvB)) {
+          this.qiD.remove(localb);
         }
       }
       AppMethodBeat.o(144304);
@@ -74,13 +74,13 @@ public final class b
       AppMethodBeat.o(144306);
       return;
     }
-    this.nhS.add(paramb.jEY);
-    EN(paramb.jEY);
-    paramb.bPN();
+    this.qiB.add(paramb.mvB);
+    LG(paramb.mvB);
+    paramb.cce();
     AppMethodBeat.o(144306);
   }
   
-  public final void acR(final String paramString)
+  public final void akL(final String paramString)
   {
     AppMethodBeat.i(144303);
     ThreadPool.post(new Runnable()
@@ -111,7 +111,7 @@ public final class b
     AppMethodBeat.o(144303);
   }
   
-  public final com.tencent.mm.plugin.appbrand.s.a.b acS(String paramString)
+  public final com.tencent.mm.plugin.appbrand.s.a.b akM(String paramString)
   {
     AppMethodBeat.i(144305);
     if (paramString == null)
@@ -119,13 +119,13 @@ public final class b
       AppMethodBeat.o(144305);
       return null;
     }
-    synchronized (this.nhU)
+    synchronized (this.qiD)
     {
-      Iterator localIterator = this.nhU.iterator();
+      Iterator localIterator = this.qiD.iterator();
       while (localIterator.hasNext())
       {
         com.tencent.mm.plugin.appbrand.s.a.b localb = (com.tencent.mm.plugin.appbrand.s.a.b)localIterator.next();
-        if (paramString.equals(localb.jEY))
+        if (paramString.equals(localb.mvB))
         {
           AppMethodBeat.o(144305);
           return localb;
@@ -136,33 +136,33 @@ public final class b
     }
   }
   
-  public final boolean acT(String paramString)
+  public final boolean akN(String paramString)
   {
     AppMethodBeat.i(144307);
-    boolean bool = this.nhS.contains(paramString);
+    boolean bool = this.qiB.contains(paramString);
     AppMethodBeat.o(144307);
     return bool;
   }
   
   public static abstract interface a
   {
-    public abstract void J(JSONObject paramJSONObject);
+    public abstract void M(JSONObject paramJSONObject);
     
     public abstract void a(int paramInt1, String paramString1, String paramString2, int paramInt2, long paramLong, Map paramMap);
     
-    public abstract void ah(int paramInt, String paramString);
+    public abstract void aj(int paramInt, String paramString);
     
-    public abstract void h(int paramInt, long paramLong1, long paramLong2);
+    public abstract void j(int paramInt, long paramLong1, long paramLong2);
   }
   
   public static abstract interface b
   {
-    public abstract boolean btA();
+    public abstract boolean bEx();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.s.b
  * JD-Core Version:    0.7.0.1
  */

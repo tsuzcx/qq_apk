@@ -5,19 +5,33 @@ import android.view.View.OnTouchListener;
 
 public abstract interface d
 {
-  public abstract void a(d.a parama);
+  public abstract void a(a parama);
   
-  public abstract void a(d.b paramb);
+  public abstract void a(b paramb);
   
-  public abstract float atd();
+  public abstract Canvas azQ();
   
-  public abstract Canvas lockCanvas();
+  public abstract float azR();
+  
+  public abstract void o(Canvas paramCanvas);
   
   public abstract void setOnTouchListener(View.OnTouchListener paramOnTouchListener);
   
   public abstract void unlock();
   
-  public abstract void unlockCanvasAndPost(Canvas paramCanvas);
+  public static abstract interface a
+  {
+    public abstract void ayT();
+    
+    public abstract void ayU();
+    
+    public abstract void ayV();
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void m(Canvas paramCanvas);
+  }
 }
 
 

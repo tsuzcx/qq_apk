@@ -19,7 +19,13 @@ import java.util.Set;
 
 public class CronetLogic
 {
+  private static List<CronetTaskNetworkStateCallback> cronetTaskNetworkStateCallbackList = new ArrayList();
   private static boolean useHttpdns = false;
+  
+  public static void addCronetTaskNetworkStateCallback(CronetTaskNetworkStateCallback paramCronetTaskNetworkStateCallback)
+  {
+    cronetTaskNetworkStateCallbackList.add(paramCronetTaskNetworkStateCallback);
+  }
   
   public static native void cancelCronetTask(String paramString);
   
@@ -32,7 +38,7 @@ public class CronetLogic
     return localCertVerifyResult;
   }
   
-  public static Map<String, List<String>> getHeaderList(ResponseHeader paramResponseHeader)
+  public static Map<String, List<String>> getHeaderList(CronetLogic.ResponseHeader paramResponseHeader)
   {
     HashMap localHashMap = new HashMap();
     Iterator localIterator = getHeaderMap(paramResponseHeader).entrySet().iterator();
@@ -55,7 +61,7 @@ public class CronetLogic
     return localHashMap;
   }
   
-  public static Map<String, String> getHeaderMap(ResponseHeader paramResponseHeader)
+  public static Map<String, String> getHeaderMap(CronetLogic.ResponseHeader paramResponseHeader)
   {
     IdentityHashMap localIdentityHashMap = new IdentityHashMap();
     if ((paramResponseHeader != null) && (paramResponseHeader.headers != null))
@@ -89,7 +95,31 @@ public class CronetLogic
   
   public static native CronetLogic.WebPageProfile getWebPagePerformanceWithURL(String paramString);
   
+  public static void notifyCronetWeaknet(boolean paramBoolean)
+  {
+    Object localObject = new StringBuilder("receive weaknet notify ");
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      Log.i("cronet", i);
+      if ((cronetTaskNetworkStateCallbackList == null) || (cronetTaskNetworkStateCallbackList.size() <= 0)) {
+        break;
+      }
+      localObject = cronetTaskNetworkStateCallbackList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((CronetTaskNetworkStateCallback)((Iterator)localObject).next()).onNetWeakChange(paramBoolean);
+      }
+    }
+  }
+  
+  public static void removeCronetTaskNetworkStateCallback(CronetTaskNetworkStateCallback paramCronetTaskNetworkStateCallback)
+  {
+    cronetTaskNetworkStateCallbackList.remove(paramCronetTaskNetworkStateCallback);
+  }
+  
   public static native void removeUserCert();
+  
+  public static native void setGoodNetNotifyInterval(int paramInt);
   
   public static void setUseHttpdns(boolean paramBoolean)
   {
@@ -99,18 +129,18 @@ public class CronetLogic
   
   public static native void setUserCertVerify(boolean paramBoolean);
   
-  public static native CronetHttpsCreateResult startCronetDefaultHttpTask(CronetRequestParams paramCronetRequestParams, CronetTaskCallback paramCronetTaskCallback);
+  public static native CronetLogic.CronetHttpsCreateResult startCronetDefaultHttpTask(CronetLogic.CronetRequestParams paramCronetRequestParams, CronetLogic.CronetTaskCallback paramCronetTaskCallback);
   
-  public static native CronetHttpsCreateResult startCronetDownloadTask(CronetRequestParams paramCronetRequestParams, CronetTaskCallback paramCronetTaskCallback);
+  public static native CronetLogic.CronetHttpsCreateResult startCronetDownloadTask(CronetLogic.CronetRequestParams paramCronetRequestParams, CronetLogic.CronetTaskCallback paramCronetTaskCallback);
   
-  public static native CronetHttpsCreateResult startCronetHttpTask(CronetRequestParams paramCronetRequestParams, CronetTaskCallback paramCronetTaskCallback);
+  public static native CronetLogic.CronetHttpsCreateResult startCronetHttpTask(CronetLogic.CronetRequestParams paramCronetRequestParams, CronetLogic.CronetTaskCallback paramCronetTaskCallback);
   
   public static CertVerifyResult verifyCertWithUserCA(byte[][] paramArrayOfByte)
   {
     int j = 0;
-    label435:
-    label438:
-    label441:
+    label436:
+    label439:
+    label442:
     for (;;)
     {
       try
@@ -160,12 +190,12 @@ public class CronetLogic
           paramArrayOfByte = ((List)localObject2).iterator();
           i = j;
           if (!paramArrayOfByte.hasNext()) {
-            break label435;
+            break label436;
           }
           localObject2 = (X509Certificate)localKeyStore.getCertificate((String)paramArrayOfByte.next());
           localObject3 = ((List)localObject1).iterator();
           if (!((Iterator)localObject3).hasNext()) {
-            break label441;
+            break label442;
           }
           localX509Certificate = (X509Certificate)((Iterator)localObject3).next();
           try
@@ -174,7 +204,7 @@ public class CronetLogic
             Log.i("cronet", "do user verify success");
             i = 1;
             if (i == 0) {
-              break label438;
+              break label439;
             }
             if (i == 0) {
               continue;
@@ -216,147 +246,9 @@ public class CronetLogic
     public int status = 0;
   }
   
-  public static class CronetHttpsCreateResult
+  public static abstract interface CronetTaskNetworkStateCallback
   {
-    public int createRet = 0;
-    public String taskId = "";
-  }
-  
-  public static class CronetRequestParams
-  {
-    public byte[] bodyData = null;
-    public boolean cachePerformance = false;
-    public CronetLogic.DefaultHttpTaskParams defaultHttpTaskParams = null;
-    public boolean followRedirect = false;
-    public String header = "";
-    public CronetLogic.HeaderMap[] headers = null;
-    public CronetLogic.HostIPHint hostIPHint = null;
-    public int maxRedirectCount = 2;
-    public String method = "";
-    public boolean needGenerateId = true;
-    public boolean needWirteCache = false;
-    public String savePath = "";
-    public String taskId = "";
-    public int taskType = 0;
-    public String url = "";
-    public boolean useHttp2 = false;
-    public boolean useMemoryCache = false;
-    public boolean useNewdns = false;
-    public boolean useQuic = false;
-    
-    public void makeRequestHeader(Map<String, String> paramMap)
-    {
-      if ((paramMap != null) && (paramMap.isEmpty())) {}
-      label120:
-      for (;;)
-      {
-        return;
-        int j = paramMap.size();
-        this.headers = new CronetLogic.HeaderMap[j];
-        paramMap = paramMap.entrySet().iterator();
-        int i = 0;
-        for (;;)
-        {
-          if (!paramMap.hasNext()) {
-            break label120;
-          }
-          Map.Entry localEntry = (Map.Entry)paramMap.next();
-          CronetLogic.HeaderMap localHeaderMap = new CronetLogic.HeaderMap();
-          localHeaderMap.key = ((String)localEntry.getKey());
-          localHeaderMap.value = ((String)localEntry.getValue());
-          this.headers[i] = localHeaderMap;
-          i += 1;
-          if (i > j) {
-            break;
-          }
-        }
-      }
-    }
-  }
-  
-  public static abstract interface CronetTaskCallback
-  {
-    public abstract int onCronetReceiveHeader(CronetLogic.ResponseHeader paramResponseHeader, int paramInt);
-    
-    public abstract void onCronetTaskCompleted(String paramString, CronetLogic.CronetTaskResult paramCronetTaskResult);
-    
-    public abstract void onDownloadProgressChanged(String paramString, CronetLogic.CronetDownloadProgress paramCronetDownloadProgress);
-  }
-  
-  public static class CronetTaskResult
-  {
-    public byte[] data = null;
-    public int errorCode = 0;
-    public String errorMsg = "";
-    public CronetLogic.HeaderMap[] headers = null;
-    public String newLocation = "";
-    public String originTaskId = "";
-    public int quicErrorCode = 0;
-    public String rawHeader = "";
-    public int statusCode = 0;
-    public String statusText = "";
-    public long totalReceiveByte = 0L;
-    public long totalWriteByte = 0L;
-    public CronetLogic.WebPageProfile webPageProfile;
-    
-    public String getDataString()
-    {
-      try
-      {
-        String str = new String(this.data, "UTF-8");
-        return str;
-      }
-      catch (Exception localException) {}
-      return "";
-    }
-    
-    public Map<String, String> getHeaderMap()
-    {
-      IdentityHashMap localIdentityHashMap = new IdentityHashMap();
-      if (this.headers != null)
-      {
-        CronetLogic.HeaderMap[] arrayOfHeaderMap = this.headers;
-        int j = arrayOfHeaderMap.length;
-        int i = 0;
-        while (i < j)
-        {
-          CronetLogic.HeaderMap localHeaderMap = arrayOfHeaderMap[i];
-          if ((localHeaderMap != null) && (localHeaderMap.key != null) && (localHeaderMap.value != null)) {
-            localIdentityHashMap.put(new String(localHeaderMap.key), localHeaderMap.value);
-          }
-          i += 1;
-        }
-      }
-      return localIdentityHashMap;
-    }
-    
-    public Map<String, List<String>> getHeaderMapList()
-    {
-      HashMap localHashMap = new HashMap();
-      Iterator localIterator = getHeaderMap().entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (Map.Entry)localIterator.next();
-        String str1 = (String)((Map.Entry)localObject).getKey();
-        if ((str1 != null) && (!str1.isEmpty()))
-        {
-          String str2 = (String)((Map.Entry)localObject).getValue();
-          List localList = (List)localHashMap.get(str1);
-          localObject = localList;
-          if (localList == null) {
-            localObject = new ArrayList();
-          }
-          ((List)localObject).add(str2);
-          localHashMap.put(str1, localObject);
-        }
-      }
-      return localHashMap;
-    }
-  }
-  
-  public static class DefaultHttpTaskParams
-  {
-    public int reportId = 0;
+    public abstract void onNetWeakChange(boolean paramBoolean);
   }
   
   public static class HeaderMap
@@ -364,15 +256,10 @@ public class CronetLogic
     public String key = "";
     public String value = "";
   }
-  
-  public static class ResponseHeader
-  {
-    public CronetLogic.HeaderMap[] headers = null;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mars.cdn.CronetLogic
  * JD-Core Version:    0.7.0.1
  */

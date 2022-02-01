@@ -12,7 +12,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class a
   implements com.tencent.mm.plugin.walletlock.a.b
 {
-  protected static int aS(Activity paramActivity)
+  protected static int aX(Activity paramActivity)
   {
     AppMethodBeat.i(129888);
     Log.i("MicroMsg.BaseWalletLockImpl", "alvinluo activity %s", new Object[] { paramActivity.getClass().getSimpleName() });
@@ -37,9 +37,9 @@ public class a
     return false;
   }
   
-  public void aQ(Activity paramActivity) {}
+  public void aV(Activity paramActivity) {}
   
-  public void aeZ(int paramInt) {}
+  public void amN(int paramInt) {}
   
   public void b(Activity paramActivity, int paramInt1, int paramInt2)
   {
@@ -57,7 +57,7 @@ public class a
     AppMethodBeat.o(129891);
   }
   
-  public void c(Activity paramActivity, Intent paramIntent, int paramInt)
+  public void e(Activity paramActivity, Intent paramIntent, int paramInt)
   {
     AppMethodBeat.i(129893);
     paramIntent.setClass(paramActivity, WalletLockSettingUI.class);
@@ -65,17 +65,17 @@ public class a
     AppMethodBeat.o(129893);
   }
   
-  public b.b fUE()
+  public b.b gNk()
   {
     return null;
   }
   
-  public boolean fUF()
+  public boolean gNl()
   {
     return false;
   }
   
-  public boolean fUG()
+  public boolean gNm()
   {
     return false;
   }
@@ -83,42 +83,42 @@ public class a
   public void init()
   {
     AppMethodBeat.i(129889);
-    g.IwU.afe(0);
+    g.PqZ.amS(0);
     AppMethodBeat.o(129889);
   }
   
-  public void j(Activity paramActivity, Intent paramIntent)
-  {
-    AppMethodBeat.i(129892);
-    paramIntent.setClass(paramActivity, WalletLockSettingUI.class);
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramIntent.axQ(), "com/tencent/mm/plugin/walletlock/model/BaseWalletLockImpl", "startWalletLockManagerUI", "(Landroid/app/Activity;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramActivity.startActivity((Intent)paramIntent.pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/walletlock/model/BaseWalletLockImpl", "startWalletLockManagerUI", "(Landroid/app/Activity;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(129892);
-  }
-  
-  public void l(Activity paramActivity, int paramInt)
+  public void m(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(129890);
     Log.i("MicroMsg.BaseWalletLockImpl", "alvinluo enterNewWalletLockProcess walletLockType: %d", new Object[] { Integer.valueOf(paramInt) });
     if (paramInt == 1)
     {
-      new c().l(paramActivity, paramInt);
+      new c().m(paramActivity, paramInt);
       AppMethodBeat.o(129890);
       return;
     }
     if (paramInt == 2) {
-      new com.tencent.mm.plugin.walletlock.fingerprint.a.b().l(paramActivity, paramInt);
+      new com.tencent.mm.plugin.walletlock.fingerprint.a.b().m(paramActivity, paramInt);
     }
     AppMethodBeat.o(129890);
   }
   
-  public void m(Activity paramActivity, int paramInt) {}
+  public void n(Activity paramActivity, int paramInt) {}
+  
+  public void n(Activity paramActivity, Intent paramIntent)
+  {
+    AppMethodBeat.i(129892);
+    paramIntent.setClass(paramActivity, WalletLockSettingUI.class);
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(paramActivity, paramIntent.aFh(), "com/tencent/mm/plugin/walletlock/model/BaseWalletLockImpl", "startWalletLockManagerUI", "(Landroid/app/Activity;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramActivity.startActivity((Intent)paramIntent.sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramActivity, "com/tencent/mm/plugin/walletlock/model/BaseWalletLockImpl", "startWalletLockManagerUI", "(Landroid/app/Activity;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(129892);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_emoji_unicode" android:persistent="false" android:title="@string/jii" />
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_ilink_login" android:persistent="false" android:title="@string/jio" />
+    <Preference android:defaultValue="false" android:key="show_dict_info" android:layout="@layout/b8j" android:persistent="false" android:title="@string/jit" />
+    <Preference android:defaultValue="false" android:key="force_fetch_dict" android:layout="@layout/b8j" android:persistent="false" android:title="@string/jiq" />
+    <Preference android:defaultValue="false" android:key="clear_active_process" android:layout="@layout/b8j" android:persistent="false" android:title="@string/jie" />
+    <Preference android:defaultValue="false" android:key="refresh_contact_data" android:layout="@layout/b8j" android:persistent="false" android:title="@string/jis" />
+    <Preference android:defaultValue="false" android:key="delete_dict_data" android:layout="@layout/b8j" android:persistent="false" android:title="@string/jif" />
+    <CheckBoxPreference android:defaultValue="false" android:key="can_print_click_data" android:persistent="false" android:title="@string/jic" />
+    <CheckBoxPreference android:defaultValue="false" android:key="can_print_engine_log" android:persistent="false" android:title="@string/jid" />
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_pre_input" android:persistent="false" android:title="@string/jip" />
+    <Preference android:defaultValue="false" android:key="config_delete_key" android:layout="@layout/b8j" android:persistent="false" android:title="@string/jz9" />
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_selfdraw_keyboard" android:persistent="false" android:title="@string/k6g" />
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_move_cursor" android:persistent="false" android:title="@string/k6f" />
+    <Preference android:defaultValue="false" android:key="enable_emoji_config_clear" android:layout="@layout/b8j" android:persistent="false" android:title="@string/jih" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_fault" android:persistent="false" android:title="@string/jij" />
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_fault_exchange" android:persistent="false" android:title="@string/jik" />
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_fault_insert_at_middle" android:persistent="false" android:title="@string/jil" />
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_fault_skip" android:persistent="false" android:title="@string/jim" />
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_fuzzy_syllables" android:persistent="false" android:title="@string/jin" />
+    <Preference android:defaultValue="false" android:key="op_req_one" android:layout="@layout/b8j" android:persistent="false" android:title="@string/jm9" />
+    <Preference android:defaultValue="false" android:key="op_req_two" android:layout="@layout/b8j" android:persistent="false" android:title="@string/jma" />
+    <Preference android:defaultValue="false" android:key="op_req_three" android:layout="@layout/b8j" android:persistent="false" android:title="@string/jm_" />
+</PreferenceScreen>

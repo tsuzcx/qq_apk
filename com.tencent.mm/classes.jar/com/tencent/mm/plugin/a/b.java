@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.a;
 
 public final class b
 {
-  public long jPW = -1L;
-  public long jPX = -1L;
-  public long jPY = -1L;
-  public a jPZ = null;
+  public long mHg = -1L;
+  public long mHh = -1L;
+  public long mHi = -1L;
+  public a mHj = null;
   
   /* Error */
-  private a z(java.io.InputStream paramInputStream)
+  private a x(java.io.InputStream paramInputStream)
   {
     // Byte code:
     //   0: ldc 30
@@ -75,11 +75,11 @@ public final class b
     //   109: bipush 8
     //   111: if_icmplt +188 -> 299
     //   114: aload 10
-    //   116: invokestatic 69	com/tencent/mm/plugin/a/c:aE	([B)J
+    //   116: invokestatic 69	com/tencent/mm/plugin/a/c:aP	([B)J
     //   119: lstore 6
     //   121: aload_0
     //   122: aload 8
-    //   124: putfield 24	com/tencent/mm/plugin/a/b:jPZ	Lcom/tencent/mm/plugin/a/a;
+    //   124: putfield 24	com/tencent/mm/plugin/a/b:mHj	Lcom/tencent/mm/plugin/a/a;
     //   127: new 71	com/tencent/mm/plugin/a/a
     //   130: dup
     //   131: iload_2
@@ -91,12 +91,12 @@ public final class b
     //   142: aload 9
     //   144: astore 8
     //   146: aload 9
-    //   148: invokevirtual 78	com/tencent/mm/plugin/a/a:blO	()Z
+    //   148: invokevirtual 78	com/tencent/mm/plugin/a/a:bvE	()Z
     //   151: ifne +120 -> 271
     //   154: aload 9
     //   156: astore 8
     //   158: aload 9
-    //   160: invokevirtual 81	com/tencent/mm/plugin/a/a:blP	()Z
+    //   160: invokevirtual 81	com/tencent/mm/plugin/a/a:bvF	()Z
     //   163: ifne +108 -> 271
     //   166: iload_2
     //   167: iconst_1
@@ -200,7 +200,7 @@ public final class b
   }
   
   /* Error */
-  public final long Sw(java.lang.String paramString)
+  public final long ZY(java.lang.String paramString)
   {
     // Byte code:
     //   0: ldc 94
@@ -215,25 +215,25 @@ public final class b
     //   21: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   24: ldc2_w 15
     //   27: lreturn
-    //   28: new 102	com/tencent/mm/vfs/o
+    //   28: new 102	com/tencent/mm/vfs/q
     //   31: dup
     //   32: aload_1
-    //   33: invokespecial 105	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   33: invokespecial 105	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   36: astore 12
     //   38: aconst_null
     //   39: astore 10
     //   41: aload_1
-    //   42: invokestatic 111	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   42: invokestatic 111	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
     //   45: astore 11
     //   47: aload 11
     //   49: astore 10
     //   51: aload_0
     //   52: aload 12
-    //   54: invokevirtual 115	com/tencent/mm/vfs/o:length	()J
-    //   57: putfield 22	com/tencent/mm/plugin/a/b:jPY	J
+    //   54: invokevirtual 115	com/tencent/mm/vfs/q:length	()J
+    //   57: putfield 22	com/tencent/mm/plugin/a/b:mHi	J
     //   60: aload_0
     //   61: aload 10
-    //   63: invokespecial 117	com/tencent/mm/plugin/a/b:z	(Ljava/io/InputStream;)Lcom/tencent/mm/plugin/a/a;
+    //   63: invokespecial 117	com/tencent/mm/plugin/a/b:x	(Ljava/io/InputStream;)Lcom/tencent/mm/plugin/a/a;
     //   66: astore 11
     //   68: aload 11
     //   70: ifnonnull +123 -> 193
@@ -258,10 +258,10 @@ public final class b
     //   111: lstore 6
     //   113: aload_0
     //   114: lload 8
-    //   116: putfield 18	com/tencent/mm/plugin/a/b:jPW	J
+    //   116: putfield 18	com/tencent/mm/plugin/a/b:mHg	J
     //   119: aload_0
     //   120: lload 6
-    //   122: putfield 20	com/tencent/mm/plugin/a/b:jPX	J
+    //   122: putfield 20	com/tencent/mm/plugin/a/b:mHh	J
     //   125: ldc 38
     //   127: new 124	java/lang/StringBuilder
     //   130: dup
@@ -272,12 +272,12 @@ public final class b
     //   141: ldc 133
     //   143: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   146: aload_0
-    //   147: getfield 20	com/tencent/mm/plugin/a/b:jPX	J
+    //   147: getfield 20	com/tencent/mm/plugin/a/b:mHh	J
     //   150: invokevirtual 131	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   153: ldc 138
     //   155: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   158: aload 12
-    //   160: invokevirtual 115	com/tencent/mm/vfs/o:length	()J
+    //   160: invokevirtual 115	com/tencent/mm/vfs/q:length	()J
     //   163: ldc2_w 139
     //   166: ldiv
     //   167: invokevirtual 131	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
@@ -292,17 +292,17 @@ public final class b
     //   190: lload 8
     //   192: lreturn
     //   193: aload 11
-    //   195: invokevirtual 78	com/tencent/mm/plugin/a/a:blO	()Z
+    //   195: invokevirtual 78	com/tencent/mm/plugin/a/a:bvE	()Z
     //   198: ifeq +19 -> 217
     //   201: aload 11
-    //   203: getfield 151	com/tencent/mm/plugin/a/a:jPV	J
+    //   203: getfield 151	com/tencent/mm/plugin/a/a:mHf	J
     //   206: lstore 4
     //   208: aload 11
     //   210: invokevirtual 154	com/tencent/mm/plugin/a/a:getSize	()J
     //   213: lstore_2
     //   214: goto -125 -> 89
     //   217: aload 11
-    //   219: invokevirtual 81	com/tencent/mm/plugin/a/a:blP	()Z
+    //   219: invokevirtual 81	com/tencent/mm/plugin/a/a:bvF	()Z
     //   222: ifeq +22 -> 244
     //   225: ldc 38
     //   227: ldc 156
@@ -423,7 +423,7 @@ public final class b
     //   293	9	11	localException1	java.lang.Exception
     //   406	1	11	localException2	java.lang.Exception
     //   415	1	11	localException3	java.lang.Exception
-    //   36	123	12	localo	com.tencent.mm.vfs.o
+    //   36	123	12	localq	com.tencent.mm.vfs.q
     // Exception table:
     //   from	to	target	type
     //   101	106	268	java/io/IOException
@@ -448,7 +448,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.a.b
  * JD-Core Version:    0.7.0.1
  */

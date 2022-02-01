@@ -8,14 +8,14 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class i
 {
-  public static void aB(String paramString, int paramInt1, int paramInt2)
+  public static void aE(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(145968);
-    ((b)e.N(b.class)).a(13711, new Object[] { Integer.valueOf(0), paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ((b)e.L(b.class)).a(13711, new Object[] { Integer.valueOf(0), paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(145968);
   }
   
-  public static void jb(int paramInt1, int paramInt2)
+  public static void kl(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(145969);
     switch (paramInt2)
@@ -28,7 +28,7 @@ public final class i
       if (paramInt1 != -1)
       {
         Log.i("SoterLuggageReportManager", "luggage soter idkey report id: %d, key: %d, value: %d", new Object[] { Integer.valueOf(672), Integer.valueOf(paramInt1), Long.valueOf(1L) });
-        ((a)e.N(a.class)).idkeyStat(672L, paramInt1, 1L, false);
+        ((a)e.L(a.class)).idkeyStat(672L, paramInt1, 1L, false);
       }
       AppMethodBeat.o(145969);
       return;

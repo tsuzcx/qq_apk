@@ -6,37 +6,37 @@ import org.json.JSONObject;
 
 public final class c
 {
-  String IqA;
-  public String IqB;
-  long IqC;
-  int IqD;
-  public String IqE;
-  public String IqF;
-  public String IqG;
+  String Pjj;
+  public String Pjk;
+  long Pjl;
+  int Pjm;
+  public String Pjn;
+  public String Pjo;
+  public String Pjp;
   public String mOriginalJson;
   String mPackageName;
   public String mSignature;
   public String mToken;
-  public String rcD;
+  public String uFI;
   
   public c(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(71806);
-    this.IqA = paramString1;
+    this.Pjj = paramString1;
     this.mOriginalJson = paramString2;
     paramString1 = new JSONObject(this.mOriginalJson);
-    this.IqB = paramString1.optString("orderId");
+    this.Pjk = paramString1.optString("orderId");
     this.mPackageName = paramString1.optString("packageName");
-    this.rcD = paramString1.optString("productId");
-    this.IqC = paramString1.optLong("purchaseTime");
-    this.IqD = paramString1.optInt("purchaseState");
+    this.uFI = paramString1.optString("productId");
+    this.Pjl = paramString1.optLong("purchaseTime");
+    this.Pjm = paramString1.optInt("purchaseState");
     paramString2 = paramString1.optString("developerPayload");
-    ArrayList localArrayList = aVY(paramString2);
+    ArrayList localArrayList = bhH(paramString2);
     if (localArrayList.size() == 3)
     {
-      this.IqE = ((String)localArrayList.get(0));
-      this.IqG = ((String)localArrayList.get(1));
-      this.IqF = ((String)localArrayList.get(2));
+      this.Pjn = ((String)localArrayList.get(0));
+      this.Pjp = ((String)localArrayList.get(1));
+      this.Pjo = ((String)localArrayList.get(2));
     }
     for (;;)
     {
@@ -44,19 +44,19 @@ public final class c
       this.mSignature = paramString3;
       AppMethodBeat.o(71806);
       return;
-      this.IqE = paramString2;
+      this.Pjn = paramString2;
     }
   }
   
   public c(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.rcD = paramString1;
-    this.IqE = paramString2;
-    this.IqF = paramString3;
-    this.IqG = paramString4;
+    this.uFI = paramString1;
+    this.Pjn = paramString2;
+    this.Pjo = paramString3;
+    this.Pjp = paramString4;
   }
   
-  private static ArrayList<String> aVY(String paramString)
+  private static ArrayList<String> bhH(String paramString)
   {
     AppMethodBeat.i(71807);
     ArrayList localArrayList = new ArrayList();
@@ -74,7 +74,7 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(71808);
-    String str = "PurchaseInfo(type:" + this.IqA + "):" + this.mOriginalJson;
+    String str = "PurchaseInfo(type:" + this.Pjj + "):" + this.mOriginalJson;
     AppMethodBeat.o(71808);
     return str;
   }

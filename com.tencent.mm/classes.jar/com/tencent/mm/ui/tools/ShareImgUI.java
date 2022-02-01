@@ -15,23 +15,23 @@ import android.os.Parcelable;
 import android.widget.Toast;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.br.c;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.R.l;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.t;
+import com.tencent.mm.by.c;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.modelsimple.ac;
-import com.tencent.mm.n.f;
+import com.tencent.mm.modelsimple.g;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXTextObject;
 import com.tencent.mm.plugin.account.ui.SimpleLoginUI;
-import com.tencent.mm.pluginsdk.l.e;
+import com.tencent.mm.pluginsdk.m.e;
 import com.tencent.mm.pluginsdk.ui.AutoLoginActivity;
 import com.tencent.mm.pluginsdk.ui.AutoLoginActivity.a;
-import com.tencent.mm.protocal.protobuf.zk;
+import com.tencent.mm.protocal.protobuf.zo;
 import com.tencent.mm.sdk.platformtools.FileProviderHelper;
 import com.tencent.mm.sdk.platformtools.ImgUtil;
 import com.tencent.mm.sdk.platformtools.IntentUtil;
@@ -43,7 +43,7 @@ import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.b;
 import com.tencent.mm.ui.transmit.SelectConversationUI;
 import com.tencent.mm.ui.transmit.SendAppMessageWrapperUI;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.u;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -57,27 +57,28 @@ public class ShareImgUI
   extends AutoLoginActivity
   implements i
 {
-  private DialogInterface.OnCancelListener CJj;
-  ArrayList<String> Qpb;
-  private ArrayList<q> Qwz;
+  private DialogInterface.OnCancelListener IOJ;
+  ArrayList<String> XNo;
+  private ArrayList<com.tencent.mm.an.q> XUE;
+  private Boolean XUF;
   String filePath;
-  private ProgressDialog gtM;
   private MMHandler handler;
+  private ProgressDialog iXX;
   private Intent intent;
-  Intent nUx;
+  Intent qVX;
   Uri uri;
   
   public ShareImgUI()
   {
     AppMethodBeat.i(39140);
-    this.gtM = null;
-    this.CJj = null;
+    this.iXX = null;
+    this.IOJ = null;
     this.intent = null;
-    this.Qwz = new ArrayList();
+    this.XUE = new ArrayList();
     this.filePath = null;
     this.uri = null;
-    this.Qpb = null;
-    this.nUx = null;
+    this.XNo = null;
+    this.qVX = null;
     this.handler = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
@@ -95,6 +96,7 @@ public class ShareImgUI
         AppMethodBeat.o(39133);
       }
     };
+    this.XUF = null;
     AppMethodBeat.o(39140);
   }
   
@@ -102,15 +104,15 @@ public class ShareImgUI
   private String a(Uri paramUri, android.database.Cursor paramCursor)
   {
     // Byte code:
-    //   0: ldc 106
-    //   2: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 112
+    //   2: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
     //   6: ifnull +351 -> 357
-    //   9: ldc 108
+    //   9: ldc 114
     //   11: astore 4
     //   13: aload_2
-    //   14: ldc 110
-    //   16: invokeinterface 116 2 0
+    //   14: ldc 116
+    //   16: invokeinterface 122 2 0
     //   21: istore_3
     //   22: aload 4
     //   24: astore 5
@@ -119,7 +121,7 @@ public class ShareImgUI
     //   28: if_icmpeq +60 -> 88
     //   31: aload_2
     //   32: iload_3
-    //   33: invokeinterface 120 2 0
+    //   33: invokeinterface 126 2 0
     //   38: astore 5
     //   40: aload 5
     //   42: astore 4
@@ -132,76 +134,76 @@ public class ShareImgUI
     //   57: aload 4
     //   59: ifnull +14 -> 73
     //   62: aload 4
-    //   64: ldc 122
-    //   66: ldc 124
-    //   68: invokevirtual 130	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   64: ldc 128
+    //   66: ldc 130
+    //   68: invokevirtual 136	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   71: astore 5
-    //   73: ldc 132
-    //   75: ldc 134
+    //   73: ldc 138
+    //   75: ldc 140
     //   77: aload 5
-    //   79: invokestatic 138	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   82: invokevirtual 142	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   85: invokestatic 147	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   79: invokestatic 144	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   82: invokevirtual 148	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   85: invokestatic 153	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   88: aload_2
-    //   89: invokeinterface 150 1 0
+    //   89: invokeinterface 156 1 0
     //   94: aload_0
-    //   95: invokevirtual 154	com/tencent/mm/ui/tools/ShareImgUI:getContentResolver	()Landroid/content/ContentResolver;
+    //   95: invokevirtual 160	com/tencent/mm/ui/tools/ShareImgUI:getContentResolver	()Landroid/content/ContentResolver;
     //   98: aload_1
-    //   99: ldc 156
-    //   101: invokevirtual 162	android/content/ContentResolver:openAssetFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+    //   99: ldc 162
+    //   101: invokevirtual 168	android/content/ContentResolver:openAssetFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
     //   104: astore_1
     //   105: aload_1
-    //   106: invokevirtual 168	android/content/res/AssetFileDescriptor:createInputStream	()Ljava/io/FileInputStream;
+    //   106: invokevirtual 174	android/content/res/AssetFileDescriptor:createInputStream	()Ljava/io/FileInputStream;
     //   109: astore_2
-    //   110: invokestatic 174	com/tencent/mm/model/bg:aVF	()Lcom/tencent/mm/model/c;
+    //   110: invokestatic 180	com/tencent/mm/model/bh:beI	()Lcom/tencent/mm/model/c;
     //   113: pop
-    //   114: invokestatic 180	com/tencent/mm/model/c:isSDCardAvailable	()Z
+    //   114: invokestatic 186	com/tencent/mm/model/c:isSDCardAvailable	()Z
     //   117: ifeq +271 -> 388
-    //   120: new 182	java/lang/StringBuilder
+    //   120: new 188	java/lang/StringBuilder
     //   123: dup
-    //   124: invokespecial 183	java/lang/StringBuilder:<init>	()V
-    //   127: invokestatic 189	com/tencent/mm/loader/j/b:aKJ	()Ljava/lang/String;
-    //   130: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: ldc 195
-    //   135: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   138: invokevirtual 198	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   124: invokespecial 189	java/lang/StringBuilder:<init>	()V
+    //   127: invokestatic 195	com/tencent/mm/loader/j/b:aSL	()Ljava/lang/String;
+    //   130: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   133: ldc 201
+    //   135: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   141: astore 4
-    //   143: new 182	java/lang/StringBuilder
+    //   143: new 188	java/lang/StringBuilder
     //   146: dup
-    //   147: invokespecial 183	java/lang/StringBuilder:<init>	()V
-    //   150: invokestatic 189	com/tencent/mm/loader/j/b:aKJ	()Ljava/lang/String;
-    //   153: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   156: ldc 200
-    //   158: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   147: invokespecial 189	java/lang/StringBuilder:<init>	()V
+    //   150: invokestatic 195	com/tencent/mm/loader/j/b:aSL	()Ljava/lang/String;
+    //   153: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   156: ldc 206
+    //   158: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   161: aload 5
-    //   163: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   166: invokevirtual 198	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   163: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   166: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   169: astore 8
-    //   171: new 202	com/tencent/mm/vfs/o
+    //   171: new 208	com/tencent/mm/vfs/q
     //   174: dup
     //   175: aload 4
-    //   177: invokespecial 205	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   177: invokespecial 211	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   180: astore 4
     //   182: aload 4
-    //   184: invokevirtual 208	com/tencent/mm/vfs/o:exists	()Z
+    //   184: invokevirtual 214	com/tencent/mm/vfs/q:ifE	()Z
     //   187: ifne +9 -> 196
     //   190: aload 4
-    //   192: invokevirtual 211	com/tencent/mm/vfs/o:mkdirs	()Z
+    //   192: invokevirtual 217	com/tencent/mm/vfs/q:ifK	()Z
     //   195: pop
-    //   196: new 202	com/tencent/mm/vfs/o
+    //   196: new 208	com/tencent/mm/vfs/q
     //   199: dup
     //   200: aload 8
-    //   202: invokespecial 205	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   202: invokespecial 211	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   205: astore 4
     //   207: aload 4
-    //   209: invokevirtual 208	com/tencent/mm/vfs/o:exists	()Z
+    //   209: invokevirtual 214	com/tencent/mm/vfs/q:ifE	()Z
     //   212: ifne +9 -> 221
     //   215: aload 4
-    //   217: invokevirtual 214	com/tencent/mm/vfs/o:createNewFile	()Z
+    //   217: invokevirtual 220	com/tencent/mm/vfs/q:ifM	()Z
     //   220: pop
     //   221: aload 8
     //   223: iconst_0
-    //   224: invokestatic 220	com/tencent/mm/vfs/s:dw	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   224: invokestatic 226	com/tencent/mm/vfs/u:dI	(Ljava/lang/String;Z)Ljava/io/OutputStream;
     //   227: astore 4
     //   229: aload 4
     //   231: astore 7
@@ -222,7 +224,7 @@ public class ShareImgUI
     //   257: aload 9
     //   259: iconst_0
     //   260: sipush 5120
-    //   263: invokevirtual 226	java/io/InputStream:read	([BII)I
+    //   263: invokevirtual 232	java/io/InputStream:read	([BII)I
     //   266: istore_3
     //   267: iload_3
     //   268: iconst_m1
@@ -237,7 +239,7 @@ public class ShareImgUI
     //   284: aload 9
     //   286: iconst_0
     //   287: iload_3
-    //   288: invokevirtual 232	java/io/OutputStream:write	([BII)V
+    //   288: invokevirtual 238	java/io/OutputStream:write	([BII)V
     //   291: goto -45 -> 246
     //   294: astore 8
     //   296: aload 4
@@ -246,65 +248,65 @@ public class ShareImgUI
     //   301: astore 6
     //   303: aload_2
     //   304: astore 5
-    //   306: ldc 132
-    //   308: new 182	java/lang/StringBuilder
+    //   306: ldc 138
+    //   308: new 188	java/lang/StringBuilder
     //   311: dup
-    //   312: ldc 234
-    //   314: invokespecial 235	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   312: ldc 240
+    //   314: invokespecial 241	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   317: aload 8
-    //   319: invokevirtual 238	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
-    //   322: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   325: invokevirtual 198	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   328: invokestatic 241	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   319: invokevirtual 244	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
+    //   322: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   325: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   328: invokestatic 247	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   331: aload_2
     //   332: ifnull +7 -> 339
     //   335: aload_2
-    //   336: invokevirtual 242	java/io/InputStream:close	()V
+    //   336: invokevirtual 248	java/io/InputStream:close	()V
     //   339: aload_1
     //   340: ifnull +7 -> 347
     //   343: aload_1
-    //   344: invokevirtual 243	android/content/res/AssetFileDescriptor:close	()V
+    //   344: invokevirtual 249	android/content/res/AssetFileDescriptor:close	()V
     //   347: aload 4
     //   349: ifnull +8 -> 357
     //   352: aload 4
-    //   354: invokevirtual 244	java/io/OutputStream:close	()V
-    //   357: ldc 106
-    //   359: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   354: invokevirtual 250	java/io/OutputStream:close	()V
+    //   357: ldc 112
+    //   359: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   362: aconst_null
     //   363: areturn
     //   364: astore 5
-    //   366: ldc 132
-    //   368: ldc 246
+    //   366: ldc 138
+    //   368: ldc 252
     //   370: iconst_1
-    //   371: anewarray 248	java/lang/Object
+    //   371: anewarray 254	java/lang/Object
     //   374: dup
     //   375: iconst_0
     //   376: aload 5
-    //   378: invokevirtual 249	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   378: invokevirtual 255	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   381: aastore
-    //   382: invokestatic 253	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   382: invokestatic 259	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   385: goto -341 -> 44
     //   388: aload_0
     //   389: aload 5
-    //   391: invokevirtual 257	com/tencent/mm/ui/tools/ShareImgUI:deleteFile	(Ljava/lang/String;)Z
+    //   391: invokevirtual 263	com/tencent/mm/ui/tools/ShareImgUI:deleteFile	(Ljava/lang/String;)Z
     //   394: pop
-    //   395: new 182	java/lang/StringBuilder
+    //   395: new 188	java/lang/StringBuilder
     //   398: dup
-    //   399: invokespecial 183	java/lang/StringBuilder:<init>	()V
+    //   399: invokespecial 189	java/lang/StringBuilder:<init>	()V
     //   402: aload_0
-    //   403: invokevirtual 261	com/tencent/mm/ui/tools/ShareImgUI:getFilesDir	()Ljava/io/File;
-    //   406: invokevirtual 266	java/io/File:getPath	()Ljava/lang/String;
-    //   409: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   412: ldc_w 268
-    //   415: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   403: invokevirtual 267	com/tencent/mm/ui/tools/ShareImgUI:getFilesDir	()Ljava/io/File;
+    //   406: invokevirtual 272	java/io/File:getPath	()Ljava/lang/String;
+    //   409: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   412: ldc_w 274
+    //   415: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   418: aload 5
-    //   420: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   423: invokevirtual 198	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   420: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   423: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   426: astore 8
     //   428: aload_0
     //   429: aload 5
     //   431: iconst_0
-    //   432: invokevirtual 272	com/tencent/mm/ui/tools/ShareImgUI:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
+    //   432: invokevirtual 278	com/tencent/mm/ui/tools/ShareImgUI:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
     //   435: astore 4
     //   437: goto -208 -> 229
     //   440: aload 4
@@ -314,7 +316,7 @@ public class ShareImgUI
     //   447: aload_2
     //   448: astore 5
     //   450: aload 4
-    //   452: invokevirtual 275	java/io/OutputStream:flush	()V
+    //   452: invokevirtual 281	java/io/OutputStream:flush	()V
     //   455: aload 4
     //   457: astore 7
     //   459: aload_1
@@ -322,21 +324,21 @@ public class ShareImgUI
     //   462: aload_2
     //   463: astore 5
     //   465: aload 4
-    //   467: invokevirtual 244	java/io/OutputStream:close	()V
+    //   467: invokevirtual 250	java/io/OutputStream:close	()V
     //   470: aload_2
     //   471: ifnull +7 -> 478
     //   474: aload_2
-    //   475: invokevirtual 242	java/io/InputStream:close	()V
+    //   475: invokevirtual 248	java/io/InputStream:close	()V
     //   478: aload_1
     //   479: ifnull +7 -> 486
     //   482: aload_1
-    //   483: invokevirtual 243	android/content/res/AssetFileDescriptor:close	()V
+    //   483: invokevirtual 249	android/content/res/AssetFileDescriptor:close	()V
     //   486: aload 4
     //   488: ifnull +8 -> 496
     //   491: aload 4
-    //   493: invokevirtual 244	java/io/OutputStream:close	()V
-    //   496: ldc 106
-    //   498: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   493: invokevirtual 250	java/io/OutputStream:close	()V
+    //   496: ldc 112
+    //   498: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   501: aload 8
     //   503: areturn
     //   504: astore 8
@@ -352,28 +354,28 @@ public class ShareImgUI
     //   518: astore 6
     //   520: aload_2
     //   521: astore 5
-    //   523: ldc 132
-    //   525: new 182	java/lang/StringBuilder
+    //   523: ldc 138
+    //   525: new 188	java/lang/StringBuilder
     //   528: dup
-    //   529: ldc_w 277
-    //   532: invokespecial 235	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   529: ldc_w 283
+    //   532: invokespecial 241	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   535: aload 8
-    //   537: invokevirtual 278	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   540: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   543: invokevirtual 198	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   546: invokestatic 241	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   537: invokevirtual 284	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   540: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   543: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   546: invokestatic 247	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   549: aload_2
     //   550: ifnull +7 -> 557
     //   553: aload_2
-    //   554: invokevirtual 242	java/io/InputStream:close	()V
+    //   554: invokevirtual 248	java/io/InputStream:close	()V
     //   557: aload_1
     //   558: ifnull +7 -> 565
     //   561: aload_1
-    //   562: invokevirtual 243	android/content/res/AssetFileDescriptor:close	()V
+    //   562: invokevirtual 249	android/content/res/AssetFileDescriptor:close	()V
     //   565: aload 4
     //   567: ifnull -210 -> 357
     //   570: aload 4
-    //   572: invokevirtual 244	java/io/OutputStream:close	()V
+    //   572: invokevirtual 250	java/io/OutputStream:close	()V
     //   575: goto -218 -> 357
     //   578: astore_1
     //   579: goto -222 -> 357
@@ -390,38 +392,38 @@ public class ShareImgUI
     //   596: astore 6
     //   598: aload_2
     //   599: astore 5
-    //   601: ldc 132
-    //   603: new 182	java/lang/StringBuilder
+    //   601: ldc 138
+    //   603: new 188	java/lang/StringBuilder
     //   606: dup
-    //   607: ldc_w 280
-    //   610: invokespecial 235	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   607: ldc_w 286
+    //   610: invokespecial 241	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   613: aload 8
-    //   615: invokevirtual 249	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   618: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   621: invokevirtual 198	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   624: invokestatic 241	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   615: invokevirtual 255	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   618: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   621: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   624: invokestatic 247	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   627: aload 4
     //   629: astore 7
     //   631: aload_1
     //   632: astore 6
     //   634: aload_2
     //   635: astore 5
-    //   637: ldc 132
+    //   637: ldc 138
     //   639: aload 8
-    //   641: invokevirtual 281	java/lang/Exception:toString	()Ljava/lang/String;
-    //   644: invokestatic 241	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   641: invokevirtual 287	java/lang/Exception:toString	()Ljava/lang/String;
+    //   644: invokestatic 247	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   647: aload_2
     //   648: ifnull +7 -> 655
     //   651: aload_2
-    //   652: invokevirtual 242	java/io/InputStream:close	()V
+    //   652: invokevirtual 248	java/io/InputStream:close	()V
     //   655: aload_1
     //   656: ifnull +7 -> 663
     //   659: aload_1
-    //   660: invokevirtual 243	android/content/res/AssetFileDescriptor:close	()V
+    //   660: invokevirtual 249	android/content/res/AssetFileDescriptor:close	()V
     //   663: aload 4
     //   665: ifnull -308 -> 357
     //   668: aload 4
-    //   670: invokevirtual 244	java/io/OutputStream:close	()V
+    //   670: invokevirtual 250	java/io/OutputStream:close	()V
     //   673: goto -316 -> 357
     //   676: astore_1
     //   677: goto -320 -> 357
@@ -435,17 +437,17 @@ public class ShareImgUI
     //   689: aload_2
     //   690: ifnull +7 -> 697
     //   693: aload_2
-    //   694: invokevirtual 242	java/io/InputStream:close	()V
+    //   694: invokevirtual 248	java/io/InputStream:close	()V
     //   697: aload_1
     //   698: ifnull +7 -> 705
     //   701: aload_1
-    //   702: invokevirtual 243	android/content/res/AssetFileDescriptor:close	()V
+    //   702: invokevirtual 249	android/content/res/AssetFileDescriptor:close	()V
     //   705: aload 7
     //   707: ifnull +8 -> 715
     //   710: aload 7
-    //   712: invokevirtual 244	java/io/OutputStream:close	()V
-    //   715: ldc 106
-    //   717: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   712: invokevirtual 250	java/io/OutputStream:close	()V
+    //   715: ldc 112
+    //   717: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   720: aload 4
     //   722: athrow
     //   723: astore_1
@@ -612,6 +614,328 @@ public class ShareImgUI
     //   491	496	836	java/lang/Exception
   }
   
+  /* Error */
+  private String a(String paramString, Uri paramUri)
+  {
+    // Byte code:
+    //   0: ldc_w 394
+    //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: getfield 99	com/tencent/mm/ui/tools/ShareImgUI:XUF	Ljava/lang/Boolean;
+    //   10: ifnonnull +55 -> 65
+    //   13: ldc_w 396
+    //   16: invokestatic 402	com/tencent/mm/kernel/h:ae	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+    //   19: checkcast 396	com/tencent/mm/plugin/expt/b/b
+    //   22: getstatic 408	com/tencent/mm/plugin/expt/b/b$a:vGR	Lcom/tencent/mm/plugin/expt/b/b$a;
+    //   25: iconst_1
+    //   26: invokeinterface 411 3 0
+    //   31: iconst_1
+    //   32: if_icmpeq +21 -> 53
+    //   35: getstatic 417	com/tencent/mm/sdk/platformtools/BuildInfo:IS_FLAVOR_RED	Z
+    //   38: ifne +15 -> 53
+    //   41: getstatic 420	com/tencent/mm/sdk/platformtools/BuildInfo:DEBUG	Z
+    //   44: ifne +9 -> 53
+    //   47: invokestatic 425	com/tencent/mm/sdk/platformtools/WeChatEnvironment:hasDebugger	()Z
+    //   50: ifeq +63 -> 113
+    //   53: iconst_1
+    //   54: istore 4
+    //   56: aload_0
+    //   57: iload 4
+    //   59: invokestatic 430	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   62: putfield 99	com/tencent/mm/ui/tools/ShareImgUI:XUF	Ljava/lang/Boolean;
+    //   65: ldc 138
+    //   67: new 188	java/lang/StringBuilder
+    //   70: dup
+    //   71: ldc_w 432
+    //   74: invokespecial 241	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   77: aload_0
+    //   78: getfield 99	com/tencent/mm/ui/tools/ShareImgUI:XUF	Ljava/lang/Boolean;
+    //   81: invokevirtual 435	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   84: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   87: invokestatic 153	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   90: aload_0
+    //   91: getfield 99	com/tencent/mm/ui/tools/ShareImgUI:XUF	Ljava/lang/Boolean;
+    //   94: invokevirtual 438	java/lang/Boolean:booleanValue	()Z
+    //   97: ifne +22 -> 119
+    //   100: bipush 10
+    //   102: invokestatic 443	com/tencent/mm/plugin/base/stub/f:Gi	(I)V
+    //   105: ldc_w 394
+    //   108: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   111: aload_1
+    //   112: areturn
+    //   113: iconst_0
+    //   114: istore 4
+    //   116: goto -60 -> 56
+    //   119: aload_1
+    //   120: invokestatic 301	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   123: ifne +57 -> 180
+    //   126: new 208	com/tencent/mm/vfs/q
+    //   129: dup
+    //   130: aload_1
+    //   131: invokespecial 211	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
+    //   134: astore 9
+    //   136: aload 9
+    //   138: invokevirtual 214	com/tencent/mm/vfs/q:ifE	()Z
+    //   141: ifeq +39 -> 180
+    //   144: aload 9
+    //   146: invokevirtual 446	com/tencent/mm/vfs/q:ifC	()Z
+    //   149: ifeq +31 -> 180
+    //   152: bipush 17
+    //   154: invokestatic 443	com/tencent/mm/plugin/base/stub/f:Gi	(I)V
+    //   157: ldc 138
+    //   159: ldc_w 448
+    //   162: aload_1
+    //   163: invokestatic 144	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   166: invokevirtual 148	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   169: invokestatic 153	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   172: ldc_w 394
+    //   175: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   178: aload_1
+    //   179: areturn
+    //   180: bipush 11
+    //   182: invokestatic 443	com/tencent/mm/plugin/base/stub/f:Gi	(I)V
+    //   185: aload_0
+    //   186: invokevirtual 160	com/tencent/mm/ui/tools/ShareImgUI:getContentResolver	()Landroid/content/ContentResolver;
+    //   189: aload_2
+    //   190: invokevirtual 452	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
+    //   193: astore 9
+    //   195: aload 9
+    //   197: ifnull +350 -> 547
+    //   200: invokestatic 458	java/lang/System:currentTimeMillis	()J
+    //   203: lstore 7
+    //   205: aload_1
+    //   206: invokestatic 301	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   209: ifeq +53 -> 262
+    //   212: ldc_w 460
+    //   215: astore 10
+    //   217: aload 10
+    //   219: invokestatic 301	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   222: ifeq +68 -> 290
+    //   225: ldc 138
+    //   227: ldc_w 462
+    //   230: aload_1
+    //   231: invokestatic 144	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   234: invokevirtual 148	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   237: invokestatic 247	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   240: bipush 12
+    //   242: invokestatic 443	com/tencent/mm/plugin/base/stub/f:Gi	(I)V
+    //   245: aload 9
+    //   247: invokestatic 466	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   250: aconst_null
+    //   251: invokestatic 466	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   254: ldc_w 394
+    //   257: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   260: aload_1
+    //   261: areturn
+    //   262: new 188	java/lang/StringBuilder
+    //   265: dup
+    //   266: invokespecial 189	java/lang/StringBuilder:<init>	()V
+    //   269: invokestatic 471	com/tencent/mm/plugin/ab/a:fmv	()Ljava/lang/String;
+    //   272: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   275: aload_1
+    //   276: invokestatic 476	com/tencent/mm/sdk/platformtools/MD5Util:getMD5String	(Ljava/lang/String;)Ljava/lang/String;
+    //   279: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   282: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   285: astore 10
+    //   287: goto -70 -> 217
+    //   290: aload 10
+    //   292: invokestatic 479	com/tencent/mm/vfs/u:agG	(Ljava/lang/String;)Z
+    //   295: ifeq +25 -> 320
+    //   298: ldc 138
+    //   300: ldc_w 481
+    //   303: aload 10
+    //   305: invokestatic 144	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   308: invokevirtual 148	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   311: invokestatic 153	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   314: aload 10
+    //   316: invokestatic 482	com/tencent/mm/vfs/u:deleteFile	(Ljava/lang/String;)Z
+    //   319: pop
+    //   320: aload 10
+    //   322: invokestatic 486	com/tencent/mm/vfs/u:Te	(Ljava/lang/String;)Ljava/io/OutputStream;
+    //   325: astore_2
+    //   326: sipush 4096
+    //   329: newarray byte
+    //   331: astore 11
+    //   333: lconst_0
+    //   334: lstore 5
+    //   336: aload 9
+    //   338: aload 11
+    //   340: invokevirtual 489	java/io/InputStream:read	([B)I
+    //   343: istore_3
+    //   344: iload_3
+    //   345: iconst_m1
+    //   346: if_icmpeq +19 -> 365
+    //   349: aload_2
+    //   350: aload 11
+    //   352: invokevirtual 492	java/io/OutputStream:write	([B)V
+    //   355: lload 5
+    //   357: iload_3
+    //   358: i2l
+    //   359: ladd
+    //   360: lstore 5
+    //   362: goto -26 -> 336
+    //   365: ldc 138
+    //   367: new 188	java/lang/StringBuilder
+    //   370: dup
+    //   371: ldc_w 494
+    //   374: invokespecial 241	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   377: invokestatic 458	java/lang/System:currentTimeMillis	()J
+    //   380: lload 7
+    //   382: lsub
+    //   383: invokevirtual 497	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   386: ldc_w 499
+    //   389: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   392: lload 5
+    //   394: l2f
+    //   395: ldc_w 500
+    //   398: fdiv
+    //   399: invokevirtual 503	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   402: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   405: invokestatic 153	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   408: new 208	com/tencent/mm/vfs/q
+    //   411: dup
+    //   412: aload 10
+    //   414: invokespecial 211	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
+    //   417: astore 11
+    //   419: aload 11
+    //   421: invokevirtual 214	com/tencent/mm/vfs/q:ifE	()Z
+    //   424: ifeq +52 -> 476
+    //   427: aload 11
+    //   429: invokevirtual 446	com/tencent/mm/vfs/q:ifC	()Z
+    //   432: ifeq +44 -> 476
+    //   435: ldc 138
+    //   437: ldc_w 505
+    //   440: aload 10
+    //   442: invokestatic 144	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   445: invokevirtual 148	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   448: invokestatic 153	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   451: bipush 13
+    //   453: invokestatic 443	com/tencent/mm/plugin/base/stub/f:Gi	(I)V
+    //   456: aload 10
+    //   458: astore_1
+    //   459: aload 9
+    //   461: invokestatic 466	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   464: aload_2
+    //   465: invokestatic 466	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   468: ldc_w 394
+    //   471: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   474: aload_1
+    //   475: areturn
+    //   476: ldc 138
+    //   478: ldc_w 507
+    //   481: aload_1
+    //   482: invokestatic 144	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   485: invokevirtual 148	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   488: invokestatic 509	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   491: bipush 14
+    //   493: invokestatic 443	com/tencent/mm/plugin/base/stub/f:Gi	(I)V
+    //   496: goto -37 -> 459
+    //   499: astore 10
+    //   501: ldc 138
+    //   503: aload 10
+    //   505: ldc_w 460
+    //   508: iconst_0
+    //   509: anewarray 254	java/lang/Object
+    //   512: invokestatic 513	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   515: ldc 138
+    //   517: ldc_w 515
+    //   520: aload_1
+    //   521: invokestatic 144	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   524: invokevirtual 148	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   527: invokestatic 247	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   530: bipush 16
+    //   532: invokestatic 443	com/tencent/mm/plugin/base/stub/f:Gi	(I)V
+    //   535: aload 9
+    //   537: invokestatic 466	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   540: aload_2
+    //   541: invokestatic 466	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   544: goto -76 -> 468
+    //   547: ldc 138
+    //   549: ldc_w 517
+    //   552: aload_1
+    //   553: invokestatic 144	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   556: invokevirtual 148	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   559: invokestatic 509	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   562: bipush 15
+    //   564: invokestatic 443	com/tencent/mm/plugin/base/stub/f:Gi	(I)V
+    //   567: aconst_null
+    //   568: astore_2
+    //   569: goto -110 -> 459
+    //   572: astore_1
+    //   573: aconst_null
+    //   574: astore_2
+    //   575: aconst_null
+    //   576: astore 9
+    //   578: aload 9
+    //   580: invokestatic 466	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   583: aload_2
+    //   584: invokestatic 466	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   587: ldc_w 394
+    //   590: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   593: aload_1
+    //   594: athrow
+    //   595: astore_1
+    //   596: aconst_null
+    //   597: astore_2
+    //   598: goto -20 -> 578
+    //   601: astore_1
+    //   602: goto -24 -> 578
+    //   605: astore_1
+    //   606: goto -28 -> 578
+    //   609: astore 10
+    //   611: aconst_null
+    //   612: astore_2
+    //   613: aconst_null
+    //   614: astore 9
+    //   616: goto -115 -> 501
+    //   619: astore 10
+    //   621: aconst_null
+    //   622: astore_2
+    //   623: goto -122 -> 501
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	626	0	this	ShareImgUI
+    //   0	626	1	paramString	String
+    //   0	626	2	paramUri	Uri
+    //   343	15	3	i	int
+    //   54	61	4	bool	boolean
+    //   334	59	5	l1	long
+    //   203	178	7	l2	long
+    //   134	481	9	localObject1	Object
+    //   215	242	10	str	String
+    //   499	5	10	localException1	java.lang.Exception
+    //   609	1	10	localException2	java.lang.Exception
+    //   619	1	10	localException3	java.lang.Exception
+    //   331	97	11	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   326	333	499	java/lang/Exception
+    //   336	344	499	java/lang/Exception
+    //   349	355	499	java/lang/Exception
+    //   365	456	499	java/lang/Exception
+    //   476	496	499	java/lang/Exception
+    //   185	195	572	finally
+    //   200	212	595	finally
+    //   217	245	595	finally
+    //   262	287	595	finally
+    //   290	320	595	finally
+    //   320	326	595	finally
+    //   547	567	595	finally
+    //   326	333	601	finally
+    //   336	344	601	finally
+    //   349	355	601	finally
+    //   365	456	601	finally
+    //   476	496	601	finally
+    //   501	535	605	finally
+    //   185	195	609	java/lang/Exception
+    //   200	212	619	java/lang/Exception
+    //   217	245	619	java/lang/Exception
+    //   262	287	619	java/lang/Exception
+    //   290	320	619	java/lang/Exception
+    //   320	326	619	java/lang/Exception
+    //   547	567	619	java/lang/Exception
+  }
+  
   private void a(final Bundle paramBundle, final b paramb)
   {
     AppMethodBeat.i(39146);
@@ -650,10 +974,10 @@ public class ShareImgUI
             public final void run()
             {
               AppMethodBeat.i(39134);
-              if (!ShareImgUI.a(ShareImgUI.this, this.QwD, localParcelable)) {
-                this.QwF[0] = true;
+              if (!ShareImgUI.a(ShareImgUI.this, this.XUJ, localParcelable)) {
+                this.XUL[0] = true;
               }
-              this.QwG.countDown();
+              this.XUM.countDown();
               AppMethodBeat.o(39134);
             }
           }, "getMultiSendFilePathListItem".concat(String.valueOf(localObject1)));
@@ -680,7 +1004,7 @@ public class ShareImgUI
               Log.printErrStackTrace("MicroMsg.ShareImgUI", localInterruptedException, "hy: timeout when getmulti", new Object[0]);
               ShareImgUI.a(ShareImgUI.this, paramb, null);
               continue;
-              Log.i("MicroMsg.ShareImgUI", "hy: getMultiSendFilePathList done. using: %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.QwC) });
+              Log.i("MicroMsg.ShareImgUI", "hy: getMultiSendFilePathList done. using: %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.XUI) });
               localObject4 = ShareImgUI.this;
               localObject5 = paramb;
               localObject2 = localObject5;
@@ -703,72 +1027,21 @@ public class ShareImgUI
     AppMethodBeat.o(39146);
   }
   
-  private void aon(int paramInt)
+  private void axt(int paramInt)
   {
     AppMethodBeat.i(39150);
     switch (paramInt)
     {
     default: 
-      Toast.makeText(this, 2131765848, 1).show();
+      Toast.makeText(this, R.l.eTt, 1).show();
       AppMethodBeat.o(39150);
       return;
     }
-    Toast.makeText(this, 2131765844, 1).show();
+    Toast.makeText(this, R.l.eTq, 1).show();
     AppMethodBeat.o(39150);
   }
   
-  private boolean bG(Intent paramIntent)
-  {
-    AppMethodBeat.i(39147);
-    if (paramIntent == null)
-    {
-      Log.e("MicroMsg.ShareImgUI", "intent is null");
-      AppMethodBeat.o(39147);
-      return false;
-    }
-    String str = IntentUtil.getStringExtra(paramIntent, "android.intent.extra.TEXT");
-    paramIntent = IntentUtil.getStringExtra(paramIntent, "android.intent.extra.SUBJECT");
-    if ((str == null) || (str.length() == 0))
-    {
-      Log.i("MicroMsg.ShareImgUI", "text is null");
-      AppMethodBeat.o(39147);
-      return false;
-    }
-    Object localObject2 = new WXMediaMessage(new WXTextObject(str));
-    ((WXMediaMessage)localObject2).description = str;
-    Object localObject1 = new SendMessageToWX.Req();
-    ((SendMessageToWX.Req)localObject1).transaction = null;
-    ((SendMessageToWX.Req)localObject1).message = ((WXMediaMessage)localObject2);
-    localObject2 = new Bundle();
-    ((SendMessageToWX.Req)localObject1).toBundle((Bundle)localObject2);
-    ((Bundle)localObject2).putInt("_mmessage_sdkVersion", 637928960);
-    ((Bundle)localObject2).putString("_mmessage_appPackage", "com.tencent.mm.openapi");
-    ((Bundle)localObject2).putString("SendAppMessageWrapper_AppId", "wx4310bbd51be7d979");
-    localObject1 = new Intent();
-    ((Intent)localObject1).setClass(this, SelectConversationUI.class);
-    ((Intent)localObject1).putExtra("Select_Conv_NextStep", new Intent(this, SendAppMessageWrapperUI.class).putExtras((Bundle)localObject2).putExtra("animation_pop_in", true));
-    if ((bg.aVG()) && (!bg.azj()))
-    {
-      bg.azz().b(837, this);
-      bg.azz().a(837, this);
-      localObject2 = new ArrayList();
-      ((ArrayList)localObject2).add(paramIntent + "|" + str);
-      paramIntent = new com.tencent.mm.modelsimple.g(5, (List)localObject2, getCallerPackage());
-      com.tencent.mm.kernel.g.azz().a(paramIntent, 0);
-      this.Qwz.add(paramIntent);
-      showDialog();
-      this.nUx = ((Intent)localObject1);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(39147);
-      return true;
-      Log.w("MicroMsg.ShareImgUI", "not logged in, jump to simple login");
-      MMWizardActivity.b(this, new Intent(this, SimpleLoginUI.class), getIntent().addFlags(67108864));
-    }
-  }
-  
-  private static int bnM(String paramString)
+  private static int bAy(String paramString)
   {
     AppMethodBeat.i(39149);
     if ((paramString == null) || (paramString.length() == 0))
@@ -798,13 +1071,13 @@ public class ShareImgUI
     return 3;
   }
   
-  private void brd()
+  private void bBT()
   {
     AppMethodBeat.i(39144);
     if (this.intent == null)
     {
       Log.e("MicroMsg.ShareImgUI", "launch : fail, intent is null");
-      aon(0);
+      axt(0);
       finish();
       AppMethodBeat.o(39144);
       return;
@@ -814,7 +1087,7 @@ public class ShareImgUI
     if (Util.isNullOrNil(str))
     {
       Log.e("MicroMsg.ShareImgUI", "launch : fail, action is null");
-      aon(0);
+      axt(0);
       finish();
       AppMethodBeat.o(39144);
       return;
@@ -828,24 +1101,24 @@ public class ShareImgUI
         if (!Util.isUriSafeToBeCopySrc(this.uri))
         {
           Log.e("MicroMsg.ShareImgUI", "launch : fail, not accepted: %s", new Object[] { this.uri });
-          aon(0);
+          axt(0);
           finish();
           AppMethodBeat.o(39144);
           return;
         }
       }
     }
-    showDialog();
+    elK();
     if (str.equals("android.intent.action.SEND"))
     {
       Log.i("MicroMsg.ShareImgUI", "send signal: ".concat(String.valueOf(str)));
       if (this.uri == null)
       {
-        boolean bool = bG(getIntent());
+        boolean bool = bK(getIntent());
         Log.i("MicroMsg.ShareImgUI", "dealWithText: %b", new Object[] { Boolean.valueOf(bool) });
         if (!bool)
         {
-          aon(0);
+          axt(0);
           finish();
         }
         AppMethodBeat.o(39144);
@@ -853,7 +1126,7 @@ public class ShareImgUI
       }
       ThreadPool.post(new a(this.uri, new c()
       {
-        public final void gXx()
+        public final void hYj()
         {
           AppMethodBeat.i(39131);
           ShareImgUI.a(ShareImgUI.this).sendEmptyMessage(0);
@@ -868,11 +1141,11 @@ public class ShareImgUI
       Log.i("MicroMsg.ShareImgUI", "send multi: ".concat(String.valueOf(str)));
       a(localBundle, new b()
       {
-        public final void br(ArrayList<String> paramAnonymousArrayList)
+        public final void bG(ArrayList<String> paramAnonymousArrayList)
         {
           AppMethodBeat.i(39132);
-          ShareImgUI.this.Qpb = paramAnonymousArrayList;
-          if ((ShareImgUI.this.Qpb == null) || (ShareImgUI.this.Qpb.size() == 0))
+          ShareImgUI.this.XNo = paramAnonymousArrayList;
+          if ((ShareImgUI.this.XNo == null) || (ShareImgUI.this.XNo.size() == 0))
           {
             Log.e("MicroMsg.ShareImgUI", "launch : fail, filePathList is null");
             ShareImgUI.b(ShareImgUI.this);
@@ -880,7 +1153,7 @@ public class ShareImgUI
             AppMethodBeat.o(39132);
             return;
           }
-          paramAnonymousArrayList = ShareImgUI.this.Qpb.iterator();
+          paramAnonymousArrayList = ShareImgUI.this.XNo.iterator();
           while (paramAnonymousArrayList.hasNext())
           {
             String str = (String)paramAnonymousArrayList.next();
@@ -907,28 +1180,104 @@ public class ShareImgUI
       return;
     }
     Log.e("MicroMsg.ShareImgUI", "launch : fail, uri is null");
-    aon(0);
+    axt(0);
     finish();
     AppMethodBeat.o(39144);
+  }
+  
+  private boolean bK(Intent paramIntent)
+  {
+    AppMethodBeat.i(39147);
+    if (paramIntent == null)
+    {
+      Log.e("MicroMsg.ShareImgUI", "intent is null");
+      AppMethodBeat.o(39147);
+      return false;
+    }
+    String str = IntentUtil.getStringExtra(paramIntent, "android.intent.extra.TEXT");
+    paramIntent = IntentUtil.getStringExtra(paramIntent, "android.intent.extra.SUBJECT");
+    if ((str == null) || (str.length() == 0))
+    {
+      Log.i("MicroMsg.ShareImgUI", "text is null");
+      AppMethodBeat.o(39147);
+      return false;
+    }
+    Object localObject2 = new WXMediaMessage(new WXTextObject(str));
+    ((WXMediaMessage)localObject2).description = str;
+    Object localObject1 = new SendMessageToWX.Req();
+    ((SendMessageToWX.Req)localObject1).transaction = null;
+    ((SendMessageToWX.Req)localObject1).message = ((WXMediaMessage)localObject2);
+    localObject2 = new Bundle();
+    ((SendMessageToWX.Req)localObject1).toBundle((Bundle)localObject2);
+    ((Bundle)localObject2).putInt("_mmessage_sdkVersion", 637992960);
+    ((Bundle)localObject2).putString("_mmessage_appPackage", "com.tencent.mm.openapi");
+    ((Bundle)localObject2).putString("SendAppMessageWrapper_AppId", "wx4310bbd51be7d979");
+    localObject1 = new Intent();
+    ((Intent)localObject1).setClass(this, SelectConversationUI.class);
+    ((Intent)localObject1).putExtra("Select_Conv_NextStep", new Intent(this, SendAppMessageWrapperUI.class).putExtras((Bundle)localObject2).putExtra("animation_pop_in", true));
+    if ((bh.beJ()) && (!bh.aGE()))
+    {
+      bh.aGY().b(837, this);
+      bh.aGY().a(837, this);
+      localObject2 = new ArrayList();
+      ((ArrayList)localObject2).add(paramIntent + "|" + str);
+      paramIntent = new g(5, (List)localObject2, getCallerPackage());
+      com.tencent.mm.kernel.h.aGY().a(paramIntent, 0);
+      this.XUE.add(paramIntent);
+      elK();
+      this.qVX = ((Intent)localObject1);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(39147);
+      return true;
+      Log.w("MicroMsg.ShareImgUI", "not logged in, jump to simple login");
+      MMWizardActivity.b(this, new Intent(this, SimpleLoginUI.class), getIntent().addFlags(67108864));
+    }
   }
   
   private void dismissDialog()
   {
     AppMethodBeat.i(39153);
-    if ((this.gtM != null) && (this.gtM.isShowing())) {
-      this.gtM.dismiss();
+    if ((this.iXX != null) && (this.iXX.isShowing())) {
+      this.iXX.dismiss();
     }
     AppMethodBeat.o(39153);
   }
   
-  private boolean gXR()
+  private void elK()
+  {
+    AppMethodBeat.i(39152);
+    if ((this.iXX != null) && (this.iXX.isShowing()))
+    {
+      AppMethodBeat.o(39152);
+      return;
+    }
+    if (this.IOJ == null) {
+      this.IOJ = new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(39137);
+          ShareImgUI.e(ShareImgUI.this);
+          ShareImgUI.this.finish();
+          AppMethodBeat.o(39137);
+        }
+      };
+    }
+    getString(R.l.app_tip);
+    this.iXX = com.tencent.mm.ui.base.h.a(this, getString(R.l.app_waiting), true, this.IOJ);
+    AppMethodBeat.o(39152);
+  }
+  
+  private boolean hYC()
   {
     AppMethodBeat.i(39145);
     Intent localIntent = new Intent(this, ShareImgUI.class);
     if ("android.intent.action.SEND".equals(getIntent().getAction())) {
       if (!Util.isNullOrNil(this.filePath))
       {
-        localIntent.putExtra("android.intent.extra.STREAM", FileProviderHelper.getUriForFile(this, new o(this.filePath)));
+        localIntent.putExtra("android.intent.extra.STREAM", FileProviderHelper.getUriForFile(this, new com.tencent.mm.vfs.q(this.filePath)));
         localIntent.setAction("android.intent.action.SEND");
         localIntent.setType(getIntent().getType());
       }
@@ -944,13 +1293,13 @@ public class ShareImgUI
       if (!"android.intent.action.SEND_MULTIPLE".equals(getIntent().getAction())) {
         break label264;
       }
-      if (Util.isNullOrNil(this.Qpb)) {
+      if (Util.isNullOrNil(this.XNo)) {
         break;
       }
-      ArrayList localArrayList = new ArrayList(this.Qpb.size());
-      Iterator localIterator = this.Qpb.iterator();
+      ArrayList localArrayList = new ArrayList(this.XNo.size());
+      Iterator localIterator = this.XNo.iterator();
       while (localIterator.hasNext()) {
-        localArrayList.add(FileProviderHelper.getUriForFile(this, new o((String)localIterator.next())));
+        localArrayList.add(FileProviderHelper.getUriForFile(this, new com.tencent.mm.vfs.q((String)localIterator.next())));
       }
       localIntent.putParcelableArrayListExtra("android.intent.extra.STREAM", localArrayList);
       localIntent.setAction("android.intent.action.SEND_MULTIPLE");
@@ -963,52 +1312,32 @@ public class ShareImgUI
     return false;
   }
   
-  private void gXS()
+  private void hYD()
   {
     AppMethodBeat.i(39151);
-    Toast.makeText(this, 2131758534, 1).show();
+    Toast.makeText(this, R.l.emoji_custom_gif_max_size_limit_cannot_send, 1).show();
     finish();
     AppMethodBeat.o(39151);
   }
   
-  private void showDialog()
+  public final boolean Z(Intent paramIntent)
   {
-    AppMethodBeat.i(39152);
-    if ((this.gtM != null) && (this.gtM.isShowing()))
-    {
-      AppMethodBeat.o(39152);
-      return;
-    }
-    if (this.CJj == null) {
-      this.CJj = new DialogInterface.OnCancelListener()
-      {
-        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-        {
-          AppMethodBeat.i(39137);
-          ShareImgUI.e(ShareImgUI.this);
-          ShareImgUI.this.finish();
-          AppMethodBeat.o(39137);
-        }
-      };
-    }
-    getString(2131755998);
-    this.gtM = com.tencent.mm.ui.base.h.a(this, getString(2131756029), true, this.CJj);
-    AppMethodBeat.o(39152);
+    return true;
   }
   
   public final void a(AutoLoginActivity.a parama, Intent paramIntent)
   {
     AppMethodBeat.i(39142);
-    switch (ShareImgUI.7.pdF[parama.ordinal()])
+    switch (7.sfH[parama.ordinal()])
     {
     default: 
       finish();
-      b.kd(this);
+      b.lb(this);
       AppMethodBeat.o(39142);
       return;
     }
     this.intent = paramIntent;
-    int i = Util.getInt(com.tencent.mm.n.h.aqJ().getValue("SystemShareControlBitset"), 0);
+    int i = Util.getInt(com.tencent.mm.n.h.axc().getValue("SystemShareControlBitset"), 0);
     Log.i("MicroMsg.ShareImgUI", "now permission = %d", new Object[] { Integer.valueOf(i) });
     if ((i & 0x1) > 0)
     {
@@ -1022,32 +1351,27 @@ public class ShareImgUI
     if (!Util.isNullOrNil(parama))
     {
       parama = String.format("weixin://dl/business/systemshare/?txt=%s", new Object[] { URLEncoder.encode(parama) });
-      showDialog();
-      bg.azz().b(1200, this);
-      bg.azz().a(1200, this);
+      elK();
+      bh.aGY().b(1200, this);
+      bh.aGY().a(1200, this);
       parama = new ac(parama, 15, null);
-      bg.azz().a(parama, 0);
-      this.Qwz.add(parama);
+      bh.aGY().a(parama, 0);
+      this.XUE.add(parama);
       AppMethodBeat.o(39142);
       return;
     }
-    brd();
+    bBT();
     AppMethodBeat.o(39142);
   }
   
-  public final boolean ab(Intent paramIntent)
-  {
-    return true;
-  }
-  
-  public final boolean exA()
+  public final boolean fje()
   {
     AppMethodBeat.i(39141);
-    if ((!bg.aVG()) || (bg.azj()))
+    if ((!bh.beJ()) || (bh.aGE()))
     {
       Log.w("MicroMsg.ShareImgUI", "not login");
       this.intent = getIntent();
-      brd();
+      bBT();
       AppMethodBeat.o(39141);
       return true;
     }
@@ -1057,17 +1381,17 @@ public class ShareImgUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(234466);
+    AppMethodBeat.i(230886);
     super.onCreate(paramBundle);
     Log.i("MicroMsg.ShareImgUI", "ShareImgUI onCreate %d", new Object[] { Integer.valueOf(hashCode()) });
-    AppMethodBeat.o(234466);
+    AppMethodBeat.o(230886);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(39143);
-    bg.azz().b(1200, this);
-    bg.azz().b(837, this);
+    bh.aGY().b(1200, this);
+    bh.aGY().b(837, this);
     dismissDialog();
     super.onDestroy();
     AppMethodBeat.o(39143);
@@ -1075,21 +1399,21 @@ public class ShareImgUI
   
   public void onPause()
   {
-    AppMethodBeat.i(234468);
+    AppMethodBeat.i(230895);
     super.onPause();
     Log.i("MicroMsg.ShareImgUI", "ShareImgUI onPause %d", new Object[] { Integer.valueOf(hashCode()) });
-    AppMethodBeat.o(234468);
+    AppMethodBeat.o(230895);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(234467);
+    AppMethodBeat.i(230891);
     super.onResume();
     Log.i("MicroMsg.ShareImgUI", "ShareImgUI onResume %d", new Object[] { Integer.valueOf(hashCode()) });
-    AppMethodBeat.o(234467);
+    AppMethodBeat.o(230891);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
   {
     AppMethodBeat.i(39154);
     int i;
@@ -1098,7 +1422,7 @@ public class ShareImgUI
       i = paramq.getType();
       Log.i("MicroMsg.ShareImgUI", "onSceneEnd, errType = %d, errCode = %d, errMsg = %s, type: %d, hashCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(i), Integer.valueOf(hashCode()) });
       if (paramq != null) {
-        this.Qwz.remove(paramq);
+        this.XUE.remove(paramq);
       }
       dismissDialog();
       if ((paramq instanceof ac))
@@ -1106,19 +1430,19 @@ public class ShareImgUI
         if ((paramInt1 != 0) || (paramInt2 != 0)) {
           break label215;
         }
-        brd();
+        bBT();
       }
       label105:
-      if ((paramq instanceof com.tencent.mm.modelsimple.g))
+      if ((paramq instanceof g))
       {
         if ((paramInt1 != 0) || (paramInt2 != 0)) {
           break label222;
         }
-        paramString = this.nUx;
-        paramString = new com.tencent.mm.hellhoundlib.b.a().bl(paramString);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramString.axQ(), "com/tencent/mm/ui/tools/ShareImgUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramString.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/tools/ShareImgUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramString = this.qVX;
+        paramString = new com.tencent.mm.hellhoundlib.b.a().bm(paramString);
+        com.tencent.mm.hellhoundlib.a.a.b(this, paramString.aFh(), "com/tencent/mm/ui/tools/ShareImgUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramString.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/ui/tools/ShareImgUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
     }
     for (;;)
@@ -1134,11 +1458,11 @@ public class ShareImgUI
       label222:
       if (paramq.getReqResp() != null)
       {
-        paramString = (zk)((d)paramq.getReqResp()).iLL.iLR;
-        if ((paramString != null) && (!Util.isNullOrNil(paramString.LkJ)))
+        paramString = (zo)d.c.b(((d)paramq.getReqResp()).lBS);
+        if ((paramString != null) && (!Util.isNullOrNil(paramString.SlS)))
         {
           paramq = new Intent();
-          paramq.putExtra("rawUrl", paramString.LkJ);
+          paramq.putExtra("rawUrl", paramString.SlS);
           paramq.putExtra("showShare", false);
           paramq.putExtra("show_bottom", false);
           paramq.putExtra("needRedirect", false);
@@ -1146,11 +1470,11 @@ public class ShareImgUI
         }
         else
         {
-          paramString = this.nUx;
-          paramString = new com.tencent.mm.hellhoundlib.b.a().bl(paramString);
-          com.tencent.mm.hellhoundlib.a.a.a(this, paramString.axQ(), "com/tencent/mm/ui/tools/ShareImgUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          startActivity((Intent)paramString.pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/tools/ShareImgUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramString = this.qVX;
+          paramString = new com.tencent.mm.hellhoundlib.b.a().bm(paramString);
+          com.tencent.mm.hellhoundlib.a.a.b(this, paramString.aFh(), "com/tencent/mm/ui/tools/ShareImgUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          startActivity((Intent)paramString.sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/ui/tools/ShareImgUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
       }
     }
@@ -1165,73 +1489,95 @@ public class ShareImgUI
   final class a
     implements Runnable
   {
-    private ShareImgUI.c QwJ;
+    private ShareImgUI.c XUP;
     private Uri mUri;
     
     public a(Uri paramUri, ShareImgUI.c paramc)
     {
       this.mUri = paramUri;
-      this.QwJ = paramc;
+      this.XUP = paramc;
     }
     
     public final void run()
     {
       AppMethodBeat.i(39139);
-      try
+      for (;;)
       {
-        ShareImgUI.this.filePath = ShareImgUI.a(ShareImgUI.this, this.mUri);
-        if ((Util.isNullOrNil(ShareImgUI.this.filePath)) || (!new o(ShareImgUI.this.filePath).exists()) || ((Build.VERSION.SDK_INT >= 30) && (!new o(ShareImgUI.this.filePath).canRead()))) {
-          if (ShareImgUI.bnT(ShareImgUI.this.getContentResolver().getType(this.mUri)) != 3) {
-            break label148;
+        try
+        {
+          ShareImgUI.this.filePath = ShareImgUI.a(ShareImgUI.this, this.mUri);
+          if ((Util.isNullOrNil(ShareImgUI.this.filePath)) || (!new com.tencent.mm.vfs.q(ShareImgUI.this.filePath).ifE()) || ((Build.VERSION.SDK_INT >= 30) && (!new com.tencent.mm.vfs.q(ShareImgUI.this.filePath).ifC())))
+          {
+            if (ShareImgUI.bAG(ShareImgUI.this.getContentResolver().getType(this.mUri)) != 3) {
+              continue;
+            }
+            ShareImgUI.this.filePath = e.b(ShareImgUI.this.getContentResolver(), this.mUri);
           }
         }
-        label148:
-        for (ShareImgUI.this.filePath = e.b(ShareImgUI.this.getContentResolver(), this.mUri);; ShareImgUI.this.filePath = e.a(ShareImgUI.this.getContentResolver(), this.mUri, 1)) {
+        catch (NullPointerException localNullPointerException)
+        {
+          String str1;
+          String str2;
+          Log.printErrStackTrace("MicroMsg.ShareImgUI", localNullPointerException, "", new Object[0]);
+          ShareImgUI.this.filePath = null;
+          return;
+          Log.i("MicroMsg.ShareImgUI", "GetFilePathRunnable getShareFilePath is Success: " + ShareImgUI.this.filePath);
+          continue;
+        }
+        catch (SQLiteDiskIOException localSQLiteDiskIOException)
+        {
+          Log.printErrStackTrace("MicroMsg.ShareImgUI", localSQLiteDiskIOException, "", new Object[0]);
+          ShareImgUI.this.filePath = null;
           return;
         }
-        AppMethodBeat.o(39139);
-      }
-      catch (NullPointerException localNullPointerException)
-      {
-        Log.printErrStackTrace("MicroMsg.ShareImgUI", localNullPointerException, "", new Object[0]);
-        ShareImgUI.this.filePath = null;
-        return;
-      }
-      catch (SQLiteDiskIOException localSQLiteDiskIOException)
-      {
-        Log.printErrStackTrace("MicroMsg.ShareImgUI", localSQLiteDiskIOException, "", new Object[0]);
-        ShareImgUI.this.filePath = null;
-        return;
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        Log.printErrStackTrace("MicroMsg.ShareImgUI", localIllegalAccessException, "", new Object[0]);
-        ShareImgUI.this.filePath = null;
-        return;
-      }
-      finally
-      {
-        if (this.QwJ != null) {
-          this.QwJ.gXx();
+        catch (IllegalAccessException localIllegalAccessException)
+        {
+          Log.printErrStackTrace("MicroMsg.ShareImgUI", localIllegalAccessException, "", new Object[0]);
+          ShareImgUI.this.filePath = null;
+          return;
         }
+        finally
+        {
+          if (this.XUP == null) {
+            continue;
+          }
+          this.XUP.hYj();
+          AppMethodBeat.o(39139);
+        }
+        if (this.XUP == null) {
+          break label464;
+        }
+        this.XUP.hYj();
         AppMethodBeat.o(39139);
+        return;
+        str1 = ShareImgUI.this.filePath;
+        ShareImgUI.this.filePath = ShareImgUI.a(ShareImgUI.this, ShareImgUI.this.filePath, this.mUri);
+        if ((u.agG(ShareImgUI.this.filePath)) && (new com.tencent.mm.vfs.q(ShareImgUI.this.filePath).ifC())) {
+          continue;
+        }
+        str2 = ShareImgUI.this.filePath;
+        ShareImgUI.this.filePath = e.a(ShareImgUI.this.getContentResolver(), this.mUri, 1);
+        com.tencent.mm.plugin.base.stub.f.Gi(18);
+        Log.e("MicroMsg.ShareImgUI", "GetFilePathRunnable getShareFilePath is not Success，use backup ShareUtil copyImg, path: %s , path2:%s , filePath: %s", new Object[] { str1, str2, ShareImgUI.this.filePath });
       }
+      label464:
+      AppMethodBeat.o(39139);
     }
   }
   
   static abstract interface b
   {
-    public abstract void br(ArrayList<String> paramArrayList);
+    public abstract void bG(ArrayList<String> paramArrayList);
   }
   
   public static abstract interface c
   {
-    public abstract void gXx();
+    public abstract void hYj();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.tools.ShareImgUI
  * JD-Core Version:    0.7.0.1
  */

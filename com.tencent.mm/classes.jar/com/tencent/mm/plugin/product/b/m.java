@@ -21,26 +21,26 @@ import org.json.JSONObject;
 
 public final class m
 {
-  public int AZA;
-  public c AZB;
-  public n AZC;
-  public LinkedList<l> AZD;
-  public f AZE;
-  public String AZF;
-  public String AZG;
-  public String AZx;
-  public int AZy;
-  public int AZz;
-  public String eby;
+  public n GTA;
+  public LinkedList<l> GTB;
+  public f GTC;
+  public String GTD;
+  public String GTE;
+  public String GTv;
+  public int GTw;
+  public int GTx;
+  public int GTy;
+  public c GTz;
+  public String fVx;
   public int status;
   
   public m()
   {
     AppMethodBeat.i(66909);
-    this.AZz = 2147483647;
-    this.AZA = 2147483647;
+    this.GTx = 2147483647;
+    this.GTy = 2147483647;
     this.status = 6;
-    this.AZD = new LinkedList();
+    this.GTB = new LinkedList();
     AppMethodBeat.o(66909);
   }
   
@@ -64,23 +64,23 @@ public final class m
       try
       {
         paramString = new JSONObject(paramString);
-        paramm.AZx = paramString.getString("product_id");
-        paramm.AZy = paramString.getInt("product_type");
-        paramm.AZz = paramString.optInt("quantity", 2147483647);
-        paramm.AZA = paramString.optInt("left_buy_quantity", 2147483647);
+        paramm.GTv = paramString.getString("product_id");
+        paramm.GTw = paramString.getInt("product_type");
+        paramm.GTx = paramString.optInt("quantity", 2147483647);
+        paramm.GTy = paramString.optInt("left_buy_quantity", 2147483647);
         paramm.status = paramString.optInt("status", 6);
         localObject1 = paramString.optJSONObject("ext_attr");
         if (localObject1 != null)
         {
-          paramm.AZE = new f();
+          paramm.GTC = new f();
           localObject1 = ((JSONObject)localObject1).optJSONObject("product_ext");
           if (localObject1 == null) {
             break label302;
           }
-          localObject2 = paramm.AZE;
+          localObject2 = paramm.GTC;
           localObject3 = new j();
-          ((j)localObject3).cSx = ((JSONObject)localObject1).getInt("flag");
-          ((f)localObject2).AZY = ((j)localObject3);
+          ((j)localObject3).cUP = ((JSONObject)localObject1).getInt("flag");
+          ((f)localObject2).GTW = ((j)localObject3);
         }
         for (;;)
         {
@@ -88,12 +88,12 @@ public final class m
           if (localObject1 == null) {
             break label874;
           }
-          paramm.AZB = new c();
-          paramm.AZB.name = ((JSONObject)localObject1).getString("name");
-          paramm.AZB.AZL = ((JSONObject)localObject1).getInt("ori_price");
-          paramm.AZB.AZM = ((JSONObject)localObject1).getInt("up_price");
-          paramm.AZB.AZN = ((JSONObject)localObject1).getInt("low_price");
-          paramm.AZB.AZO = new LinkedList();
+          paramm.GTz = new c();
+          paramm.GTz.name = ((JSONObject)localObject1).getString("name");
+          paramm.GTz.GTJ = ((JSONObject)localObject1).getInt("ori_price");
+          paramm.GTz.GTK = ((JSONObject)localObject1).getInt("up_price");
+          paramm.GTz.GTL = ((JSONObject)localObject1).getInt("low_price");
+          paramm.GTz.GTM = new LinkedList();
           localObject2 = ((JSONObject)localObject1).getJSONArray("img_info");
           j = ((JSONArray)localObject2).length();
           i = 0;
@@ -104,11 +104,11 @@ public final class m
           if (Util.isNullOrNil((String)localObject3)) {
             break label1250;
           }
-          paramm.AZB.AZO.add(localObject3);
+          paramm.GTz.GTM.add(localObject3);
           break label1250;
-          paramm.AZE.AZZ = paramString.optString("ext_attr");
+          paramm.GTC.GTX = paramString.optString("ext_attr");
         }
-        paramm.AZB.iAq = ((JSONObject)localObject1).getString("digest");
+        paramm.GTz.lpM = ((JSONObject)localObject1).getString("digest");
       }
       catch (JSONException paramString)
       {
@@ -116,28 +116,28 @@ public final class m
         AppMethodBeat.o(66910);
         return paramm;
       }
-      paramm.AZB.AOl = ((JSONObject)localObject1).getString("fee_type");
-      paramm.AZB.detail = ((JSONObject)localObject1).getString("detail");
+      paramm.GTz.GHz = ((JSONObject)localObject1).getString("fee_type");
+      paramm.GTz.detail = ((JSONObject)localObject1).getString("detail");
       localObject2 = ((JSONObject)localObject1).optJSONObject("share_info");
       if (localObject2 != null)
       {
-        paramm.AZB.AZW = new k();
-        paramm.AZB.AZW.qGB = ((JSONObject)localObject2).optString("icon_url");
-        paramm.AZB.AZW.url = ((JSONObject)localObject2).optString("url");
+        paramm.GTz.GTU = new k();
+        paramm.GTz.GTU.ufC = ((JSONObject)localObject2).optString("icon_url");
+        paramm.GTz.GTU.url = ((JSONObject)localObject2).optString("url");
       }
       localObject2 = ((JSONObject)localObject1).optJSONArray("sku_table");
       if (localObject2 != null)
       {
-        paramm.AZB.AZU = new LinkedList();
+        paramm.GTz.GTS = new LinkedList();
         k = ((JSONArray)localObject2).length();
         i = 0;
         while (i < k)
         {
           localObject4 = ((JSONArray)localObject2).getJSONObject(i);
           localObject3 = new com.tencent.mm.plugin.product.c.m();
-          ((com.tencent.mm.plugin.product.c.m)localObject3).Bae = ((JSONObject)localObject4).getString("id");
-          ((com.tencent.mm.plugin.product.c.m)localObject3).Baf = ((JSONObject)localObject4).getString("name");
-          ((com.tencent.mm.plugin.product.c.m)localObject3).Bag = new LinkedList();
+          ((com.tencent.mm.plugin.product.c.m)localObject3).GUc = ((JSONObject)localObject4).getString("id");
+          ((com.tencent.mm.plugin.product.c.m)localObject3).GUd = ((JSONObject)localObject4).getString("name");
+          ((com.tencent.mm.plugin.product.c.m)localObject3).GUe = new LinkedList();
           localObject4 = ((JSONObject)localObject4).getJSONArray("value_list");
           m = ((JSONArray)localObject4).length();
           j = 0;
@@ -147,18 +147,18 @@ public final class m
             h localh = new h();
             localh.id = ((JSONObject)localObject5).getString("id");
             localh.name = ((JSONObject)localObject5).getString("name");
-            localh.iJ = true;
-            ((com.tencent.mm.plugin.product.c.m)localObject3).Bag.add(localh);
+            localh.bzb = true;
+            ((com.tencent.mm.plugin.product.c.m)localObject3).GUe.add(localh);
             j += 1;
           }
-          paramm.AZB.AZU.add(localObject3);
+          paramm.GTz.GTS.add(localObject3);
           i += 1;
         }
       }
       localObject1 = ((JSONObject)localObject1).optJSONArray("actiongroup_attr");
       if (localObject1 != null)
       {
-        paramm.AZB.AZV = new LinkedList();
+        paramm.GTz.GTT = new LinkedList();
         k = ((JSONArray)localObject1).length();
         i = 0;
       }
@@ -169,10 +169,10 @@ public final class m
       {
         localObject2 = ((JSONArray)localObject1).getJSONObject(i);
         localObject3 = new a();
-        ((a)localObject3).Name = ((JSONObject)localObject2).getString("name");
-        ((a)localObject3).oUv = 0;
-        if (!Util.isNullOrNil(((a)localObject3).Name)) {
-          paramm.AZB.AZV.add(localObject3);
+        ((a)localObject3).CMP = ((JSONObject)localObject2).getString("name");
+        ((a)localObject3).rWu = 0;
+        if (!Util.isNullOrNil(((a)localObject3).CMP)) {
+          paramm.GTz.GTT.add(localObject3);
         }
         localObject2 = ((JSONObject)localObject2).getJSONArray("action_list");
         m = ((JSONArray)localObject2).length();
@@ -181,12 +181,12 @@ public final class m
         {
           localObject3 = ((JSONArray)localObject2).getJSONObject(j);
           localObject4 = new a();
-          ((a)localObject4).Name = ((JSONObject)localObject3).getString("name");
-          ((a)localObject4).AZI = ((JSONObject)localObject3).getString("tips");
-          ((a)localObject4).oUv = ((JSONObject)localObject3).getInt("type");
-          ((a)localObject4).iAc = ((JSONObject)localObject3).getString("content");
-          ((a)localObject4).IconUrl = ((JSONObject)localObject3).getString("icon_url");
-          paramm.AZB.AZV.add(localObject4);
+          ((a)localObject4).CMP = ((JSONObject)localObject3).getString("name");
+          ((a)localObject4).GTG = ((JSONObject)localObject3).getString("tips");
+          ((a)localObject4).rWu = ((JSONObject)localObject3).getInt("type");
+          ((a)localObject4).lpy = ((JSONObject)localObject3).getString("content");
+          ((a)localObject4).CNj = ((JSONObject)localObject3).getString("icon_url");
+          paramm.GTz.GTT.add(localObject4);
           j += 1;
         }
       }
@@ -195,19 +195,19 @@ public final class m
       if (localObject1 != null)
       {
         k = ((JSONArray)localObject1).length();
-        paramm.AZD = new LinkedList();
+        paramm.GTB = new LinkedList();
         i = 0;
         while (i < k)
         {
           localObject3 = ((JSONArray)localObject1).getJSONObject(i);
           localObject2 = new l();
-          ((l)localObject2).Bab = ((JSONObject)localObject3).getString("id_info");
-          ((l)localObject2).Bac = ((JSONObject)localObject3).getInt("price");
-          ((l)localObject2).AZz = ((JSONObject)localObject3).getInt("quantity");
+          ((l)localObject2).GTZ = ((JSONObject)localObject3).getString("id_info");
+          ((l)localObject2).GUa = ((JSONObject)localObject3).getInt("price");
+          ((l)localObject2).GTx = ((JSONObject)localObject3).getInt("quantity");
           ((l)localObject2).url = ((JSONObject)localObject3).getString("icon_url");
           localObject3 = ((JSONObject)localObject3).getJSONArray("express_fee");
           m = ((JSONArray)localObject3).length();
-          ((l)localObject2).Bad = new LinkedList();
+          ((l)localObject2).GUb = new LinkedList();
           j = 0;
           while (j < m)
           {
@@ -216,28 +216,28 @@ public final class m
             ((e)localObject5).id = ((JSONObject)localObject4).getInt("id");
             ((e)localObject5).name = ((JSONObject)localObject4).getString("name");
             ((e)localObject5).value = ((JSONObject)localObject4).getInt("price");
-            ((l)localObject2).Bad.add(localObject5);
+            ((l)localObject2).GUb.add(localObject5);
             j += 1;
           }
-          paramm.AZD.add(localObject2);
+          paramm.GTB.add(localObject2);
           i += 1;
         }
       }
       localObject1 = paramString.optJSONObject("seller_attr");
       if (localObject1 != null)
       {
-        paramm.AZC = new n();
-        paramm.AZC.dNI = ((JSONObject)localObject1).getString("appid");
-        paramm.AZC.name = ((JSONObject)localObject1).getString("name");
-        paramm.AZC.username = ((JSONObject)localObject1).getString("username");
-        paramm.AZC.Bah = ((JSONObject)localObject1).optString("logo");
-        paramm.AZC.cSx = ((JSONObject)localObject1).optInt("flag", 0);
+        paramm.GTA = new n();
+        paramm.GTA.appid = ((JSONObject)localObject1).getString("appid");
+        paramm.GTA.name = ((JSONObject)localObject1).getString("name");
+        paramm.GTA.username = ((JSONObject)localObject1).getString("username");
+        paramm.GTA.GUf = ((JSONObject)localObject1).optString("logo");
+        paramm.GTA.cUP = ((JSONObject)localObject1).optInt("flag", 0);
       }
       paramString = paramString.optJSONObject("oss_info");
       if (paramString != null)
       {
-        paramm.AZF = paramString.optString("self_buy_button_word");
-        paramm.AZG = paramString.optString("product_mixed_h5_html");
+        paramm.GTD = paramString.optString("self_buy_button_word");
+        paramm.GTE = paramString.optString("product_mixed_h5_html");
       }
       AppMethodBeat.o(66910);
       return paramm;
@@ -263,56 +263,56 @@ public final class m
       AppMethodBeat.o(66911);
       return null;
     }
-    localm.AZx = Util.nullAsNil((String)paramString.get(".mallProductInfo.id"));
-    localm.AZy = Util.getInt((String)paramString.get(".mallProductInfo.type"), 0);
-    localm.AZB = new c();
-    localm.AZB.name = Util.nullAsNil((String)paramString.get(".mallProductInfo.name"));
-    localm.AZB.iAq = Util.nullAsNil((String)paramString.get(".mallProductInfo.digest"));
-    localm.AZB.AZM = Util.getInt((String)paramString.get(".mallProductInfo.highPrice"), 0);
-    localm.AZB.AZN = Util.getInt((String)paramString.get(".mallProductInfo.lowPrice"), 0);
-    localm.AZB.AZL = Util.getInt((String)paramString.get(".mallProductInfo.originPrice"), 0);
-    localm.eby = Util.nullAsNil((String)paramString.get(".mallProductInfo.sourceUrl"));
+    localm.GTv = Util.nullAsNil((String)paramString.get(".mallProductInfo.id"));
+    localm.GTw = Util.getInt((String)paramString.get(".mallProductInfo.type"), 0);
+    localm.GTz = new c();
+    localm.GTz.name = Util.nullAsNil((String)paramString.get(".mallProductInfo.name"));
+    localm.GTz.lpM = Util.nullAsNil((String)paramString.get(".mallProductInfo.digest"));
+    localm.GTz.GTK = Util.getInt((String)paramString.get(".mallProductInfo.highPrice"), 0);
+    localm.GTz.GTL = Util.getInt((String)paramString.get(".mallProductInfo.lowPrice"), 0);
+    localm.GTz.GTJ = Util.getInt((String)paramString.get(".mallProductInfo.originPrice"), 0);
+    localm.fVx = Util.nullAsNil((String)paramString.get(".mallProductInfo.sourceUrl"));
     int j = Util.getInt((String)paramString.get(".mallProductInfo.imgCount"), 0);
     if (j > 0)
     {
-      localm.AZB.AZO = new LinkedList();
+      localm.GTz.GTM = new LinkedList();
       if (i < j)
       {
         if (i == 0) {}
         for (paramm = Util.nullAsNil((String)paramString.get(".mallProductInfo.imgList.imgUrl"));; paramm = Util.nullAsNil((String)paramString.get(".mallProductInfo.imgList.imgUrl".concat(String.valueOf(i)))))
         {
           if (!Util.isNullOrNil(paramm)) {
-            localm.AZB.AZO.add(paramm);
+            localm.GTz.GTM.add(paramm);
           }
           i += 1;
           break;
         }
       }
     }
-    localm.AZB.AZW = new k();
-    localm.AZB.AZW.url = Util.nullAsNil((String)paramString.get(".mallProductInfo.shareInfo.shareUrl"));
-    localm.AZB.AZW.qGB = Util.nullAsNil((String)paramString.get(".mallProductInfo.shareInfo.shareThumbUrl"));
-    localm.AZC = new n();
-    localm.AZC.dNI = Util.nullAsNil((String)paramString.get(".mallProductInfo.sellerInfo.appID"));
-    localm.AZC.name = Util.nullAsNil((String)paramString.get(".mallProductInfo.sellerInfo.appName"));
-    localm.AZC.username = Util.nullAsNil((String)paramString.get(".mallProductInfo.sellerInfo.usrName"));
+    localm.GTz.GTU = new k();
+    localm.GTz.GTU.url = Util.nullAsNil((String)paramString.get(".mallProductInfo.shareInfo.shareUrl"));
+    localm.GTz.GTU.ufC = Util.nullAsNil((String)paramString.get(".mallProductInfo.shareInfo.shareThumbUrl"));
+    localm.GTA = new n();
+    localm.GTA.appid = Util.nullAsNil((String)paramString.get(".mallProductInfo.sellerInfo.appID"));
+    localm.GTA.name = Util.nullAsNil((String)paramString.get(".mallProductInfo.sellerInfo.appName"));
+    localm.GTA.username = Util.nullAsNil((String)paramString.get(".mallProductInfo.sellerInfo.usrName"));
     AppMethodBeat.o(66911);
     return localm;
   }
   
-  public final String eDx()
+  public final String fpq()
   {
     AppMethodBeat.i(66912);
     String str;
-    if ((this.AZB != null) && (this.AZB.AZW != null) && (!Util.isNullOrNil(this.AZB.AZW.qGB)))
+    if ((this.GTz != null) && (this.GTz.GTU != null) && (!Util.isNullOrNil(this.GTz.GTU.ufC)))
     {
-      str = this.AZB.AZW.qGB;
+      str = this.GTz.GTU.ufC;
       AppMethodBeat.o(66912);
       return str;
     }
-    if ((this.AZB != null) && (this.AZB.AZO != null) && (this.AZB.AZO.size() > 0))
+    if ((this.GTz != null) && (this.GTz.GTM != null) && (this.GTz.GTM.size() > 0))
     {
-      str = (String)this.AZB.AZO.get(0);
+      str = (String)this.GTz.GTM.get(0);
       AppMethodBeat.o(66912);
       return str;
     }
@@ -322,7 +322,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.product.b.m
  * JD-Core Version:    0.7.0.1
  */

@@ -48,19 +48,19 @@ public final class ListenerInstanceMonitor
     {
       private void doMonitorWorks()
       {
-        AppMethodBeat.i(200890);
+        AppMethodBeat.i(249195);
         synchronized (ListenerInstanceMonitor.sMapGuard)
         {
           if (ListenerInstanceMonitor.sMarkedInstanceToHeldObjMap.isEmpty())
           {
             Log.d("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: no listener or cb was added, skip rest logic.");
-            AppMethodBeat.o(200890);
+            AppMethodBeat.o(249195);
             return;
           }
           if (Debug.isDebuggerConnected())
           {
             Log.w("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: found debugger connected, disable monitor works in case of misreport.");
-            AppMethodBeat.o(200890);
+            AppMethodBeat.o(249195);
             return;
           }
         }
@@ -109,7 +109,7 @@ public final class ListenerInstanceMonitor
                 localObject3 = new ListenerInstanceMonitor.ListenerLeakedException(((ListenerInstanceMonitor.HeldUIInfo)localObject3).describe(), ((ListenerInstanceMonitor.HeldUIInfo)localObject3).stacktrace);
                 if (i != 0)
                 {
-                  AppMethodBeat.o(200890);
+                  AppMethodBeat.o(249195);
                   throw ((Throwable)localObject3);
                 }
                 Log.printErrStackTrace("MicroMsg.ListenerInstanceMonitor", (Throwable)localObject3, "", new Object[0]);
@@ -121,7 +121,7 @@ public final class ListenerInstanceMonitor
               }
             }
           }
-          AppMethodBeat.o(200890);
+          AppMethodBeat.o(249195);
           return;
         }
         catch (Throwable localThrowable)
@@ -141,11 +141,11 @@ public final class ListenerInstanceMonitor
       private boolean isUIActuallyDestroyed(Activity paramAnonymousActivity)
       {
         boolean bool1 = false;
-        AppMethodBeat.i(200891);
+        AppMethodBeat.i(249197);
         boolean bool2 = paramAnonymousActivity.isDestroyed();
         if (!bool2)
         {
-          AppMethodBeat.o(200891);
+          AppMethodBeat.o(249197);
           return false;
         }
         paramAnonymousActivity = Looper.getMainLooper().getThread().getStackTrace();
@@ -158,7 +158,7 @@ public final class ListenerInstanceMonitor
         }
         for (;;)
         {
-          AppMethodBeat.o(200891);
+          AppMethodBeat.o(249197);
           return bool1;
           i += 1;
           break;
@@ -246,16 +246,15 @@ public final class ListenerInstanceMonitor
               localClass = paramActivity.getClass();
               ??? = (Class[])sMehtod_value.invoke(???, new Object[0]);
               if ((??? == null) || (???.length <= 0)) {
-                break label361;
+                break label357;
               }
               j = ???.length;
               i = 0;
               if (i >= j) {
-                break label387;
+                break label383;
               }
-              boolean bool = localClass.equals(???[i]);
-              if (bool) {
-                break label361;
+              if (localClass.equals(???[i])) {
+                break label357;
               }
               i += 1;
             }
@@ -284,7 +283,7 @@ public final class ListenerInstanceMonitor
             }
             localObject2 = ???[i];
             if (!((Method)localObject2).isAnnotationPresent(sClass_DoNotCheckLeakForActivities)) {
-              break label378;
+              break label374;
             }
             localObject2 = ((Method)localObject2).getAnnotation(sClass_DoNotCheckLeakForActivities);
             break;
@@ -304,11 +303,11 @@ public final class ListenerInstanceMonitor
     {
       Set localSet;
       Object localObject2;
-      label361:
-      label378:
+      label357:
+      label374:
       i += 1;
       continue;
-      label387:
+      label383:
       i = 0;
     }
   }
@@ -491,7 +490,7 @@ public final class ListenerInstanceMonitor
   
   public static void stopMonitor()
   {
-    AppMethodBeat.i(200893);
+    AppMethodBeat.i(248772);
     synchronized (sMonitorTask)
     {
       if (sIsMonitorRunning)
@@ -501,7 +500,7 @@ public final class ListenerInstanceMonitor
         sMonitorThreadHandler = null;
         sIsMonitorRunning = false;
       }
-      AppMethodBeat.o(200893);
+      AppMethodBeat.o(248772);
       return;
     }
   }
@@ -586,27 +585,27 @@ public final class ListenerInstanceMonitor
     
     public String describe()
     {
-      AppMethodBeat.i(200892);
+      AppMethodBeat.i(249242);
       if (this.heldUIRef.get() == null)
       {
         if (this.holderField != null)
         {
           str = "ui of class [" + this.heldUIClazz.getName() + "] held by\n [" + getHolderFieldDesc() + "] is recycled";
-          AppMethodBeat.o(200892);
+          AppMethodBeat.o(249242);
           return str;
         }
         str = "ui of class [" + this.heldUIClazz.getName() + "] which is subclass of\n listener or callback and held by other 'Manager' class is recycled";
-        AppMethodBeat.o(200892);
+        AppMethodBeat.o(249242);
         return str;
       }
       if (this.holderField != null)
       {
         str = "ui of class [" + this.heldUIClazz.getName() + "] held by\n [" + getHolderFieldDesc() + "] is leaked.\n Perhaps you should remove the holder from any 'Manager' class when the leaked ui was destroyed.";
-        AppMethodBeat.o(200892);
+        AppMethodBeat.o(249242);
         return str;
       }
       String str = "ui of class [" + this.heldUIClazz.getName() + "] which is subclass of\n listener or callback and held by other 'Manager' class is leaked.\n Perhaps you should remove any instance of this class from any 'Manager'";
-      AppMethodBeat.o(200892);
+      AppMethodBeat.o(249242);
       return str;
     }
     
@@ -702,27 +701,10 @@ public final class ListenerInstanceMonitor
       return str;
     }
   }
-  
-  static final class ListenerLeakedException
-    extends RuntimeException
-  {
-    ListenerLeakedException(String paramString, Throwable paramThrowable)
-    {
-      super();
-      AppMethodBeat.i(125246);
-      setStackTrace(paramThrowable.getStackTrace());
-      AppMethodBeat.o(125246);
-    }
-    
-    public final Throwable fillInStackTrace()
-    {
-      return this;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.ListenerInstanceMonitor
  * JD-Core Version:    0.7.0.1
  */

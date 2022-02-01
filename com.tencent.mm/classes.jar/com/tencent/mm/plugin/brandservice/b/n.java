@@ -1,92 +1,87 @@
 package com.tencent.mm.plugin.brandservice.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.brandservice.b;
-import com.tencent.mm.protocal.protobuf.al;
-import com.tencent.mm.protocal.protobuf.dvq;
-import com.tencent.mm.protocal.protobuf.dvr;
-import com.tencent.mm.protocal.protobuf.qw;
+import com.tencent.mm.protocal.protobuf.ece;
+import com.tencent.mm.protocal.protobuf.ecf;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class n
   extends q
   implements m
 {
   private i callback;
-  private final d rr;
+  private String fwe;
+  private int scene;
+  private d swF;
+  private long swH;
+  public ecf swI;
   
-  public n(List<qw> paramList)
+  public n(String paramString, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(5593);
-    Object localObject = new d.a();
-    ((d.a)localObject).iLN = new dvq();
-    ((d.a)localObject).iLO = new dvr();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/setapplist";
-    ((d.a)localObject).funcId = 386;
-    ((d.a)localObject).iLP = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (dvq)this.rr.iLK.iLR;
-    LinkedList localLinkedList = new LinkedList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      qw localqw = (qw)paramList.next();
-      al localal = new al();
-      localal.UserName = localqw.userName;
-      localLinkedList.add(localal);
-    }
-    ((dvq)localObject).oTz = localLinkedList.size();
-    ((dvq)localObject).oTA = localLinkedList;
-    Log.i("MicroMsg.BrandService.NetSceneSetAppList", "info: upload size %d, toString %s", new Object[] { Integer.valueOf(localLinkedList.size()), localLinkedList.toString() });
-    AppMethodBeat.o(5593);
+    AppMethodBeat.i(5590);
+    this.fwe = paramString;
+    this.swH = paramLong;
+    this.scene = paramInt;
+    Log.i("MicroMsg.NetSceneSearchHomePageNew", "Constructors: keyword (%s) , businessType (%d), scene (%d)", new Object[] { paramString, Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+    AppMethodBeat.o(5590);
   }
   
   public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(5595);
+    AppMethodBeat.i(5592);
+    Log.i("MicroMsg.NetSceneSearchHomePageNew", "doScene");
     this.callback = parami;
-    Log.i("MicroMsg.BrandService.NetSceneSetAppList", "do scene");
-    int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(5595);
-    return i;
+    if (!Util.isNullOrNil(this.fwe))
+    {
+      parami = new d.a();
+      parami.funcId = 1070;
+      parami.uri = "/cgi-bin/mmbiz-bin/bizsearch/homepage";
+      parami.lBU = new ece();
+      parami.lBV = new ecf();
+      parami.lBW = 0;
+      parami.respCmdId = 0;
+      this.swF = parami.bgN();
+      parami = (ece)d.b.b(this.swF.lBR);
+      parami.TdI = this.fwe;
+      parami.TwK = f.czn();
+      parami.Sap = this.swH;
+      parami.UgA = this.scene;
+      Log.i("MicroMsg.NetSceneSearchHomePageNew", "businessTypeList is %d", new Object[] { Long.valueOf(this.swH) });
+      int i = dispatch(paramg, this.swF, this);
+      AppMethodBeat.o(5592);
+      return i;
+    }
+    Log.e("MicroMsg.NetSceneSearchHomePageNew", "keyword is unavailable");
+    AppMethodBeat.o(5592);
+    return -1;
   }
   
   public final int getType()
   {
-    return 386;
+    return 1070;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(5594);
-    Log.i("MicroMsg.BrandService.NetSceneSetAppList", "on scene end code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      params = (dvr)this.rr.iLL.iLR;
-      Log.i("MicroMsg.BrandService.NetSceneSetAppList", "ok, hash code is %d", new Object[] { Integer.valueOf(params.LSe) });
-      b.k(196610, Integer.valueOf(params.LSe));
-      b.k(196611, Boolean.FALSE);
+    AppMethodBeat.i(5591);
+    Log.i("MicroMsg.NetSceneSearchHomePageNew", "netId (%d) , errType (%d) , errCode (%d) , errMsg (%s)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 == 0) && (paramInt3 == 0) && (this.swF != null)) {
+      this.swI = ((ecf)d.c.b(this.swF.lBS));
     }
-    for (;;)
-    {
+    if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(5594);
-      return;
-      b.k(196611, Boolean.TRUE);
     }
+    AppMethodBeat.o(5591);
   }
 }
 

@@ -1,65 +1,109 @@
 package com.tencent.mm.plugin.finder.live.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.plugin.finder.cgi.am;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.axb;
-import com.tencent.mm.protocal.protobuf.axc;
-import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.finder.cgi.ao;
+import com.tencent.mm.plugin.findersdk.b.a.b;
+import com.tencent.mm.protocal.protobuf.azb;
+import com.tencent.mm.protocal.protobuf.azc;
+import com.tencent.mm.protocal.protobuf.baj;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.jh;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveReward;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveRewardResponse;", "liveId", "", "objectId", "rewardProductId", "", "rewardProductCount", "", "username", "wecoin", "requestId", "comboId", "callback", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveReward$CallBack;", "(JJLjava/lang/String;ILjava/lang/String;ILjava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveReward$CallBack;)V", "TAG", "getCallback", "()Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveReward$CallBack;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveRewardRequest;", "initReqResp", "", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveCreateLottery;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveCreateLotteryResponse;", "liveId", "", "objectId", "nonceId", "", "durationMin", "", "desc", "attendType", "attendWording", "opType", "winnerCnt", "callback", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveCreateLottery$CallBack;", "(JJLjava/lang/String;ILjava/lang/String;ILjava/lang/String;IILcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveCreateLottery$CallBack;)V", "TAG", "getTAG", "()Ljava/lang/String;", "getCallback", "()Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveCreateLottery$CallBack;", "setCallback", "(Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveCreateLottery$CallBack;)V", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveCreateLotteryRequest;", "initReqResp", "", "isEnableReport", "Lcom/tencent/mm/plugin/findersdk/cgi/report/EnableValue;", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "Companion", "plugin-finder_release"})
 public final class v
-  extends k<axc>
+  extends n<azc>
 {
+  private static final int yjx = 0;
+  private static final int yjy = 1;
+  public static final b yjz;
   private final String TAG;
-  private axb ulp;
-  private final a ulq;
+  private azb yjv;
+  private a yjw;
   
-  public v(long paramLong1, long paramLong2, String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, a parama)
+  static
   {
-    super((byte)0);
-    AppMethodBeat.i(246342);
-    this.ulq = parama;
-    this.TAG = "Finder.CgiFinderLiveReward";
-    this.ulp = new axb();
-    int i = paramInt2 * paramInt1;
-    parama = this.ulp;
-    am localam = am.tuw;
-    parama.LBM = am.cXY();
-    this.ulp.hyH = paramLong1;
-    this.ulp.object_id = paramLong2;
-    this.ulp.LFM = paramString1;
-    this.ulp.LFQ = paramInt1;
-    this.ulp.LFR = i;
-    this.ulp.LAt = paramString2;
-    this.ulp.request_id = paramString3;
-    this.ulp.LFP = paramString4;
-    Log.i(this.TAG, "liveId:" + paramLong1 + " objectId:" + paramLong2 + " rewardProductId:" + paramString1 + " rewardProductCount:" + paramInt1 + " to:" + paramString2 + " requestId:" + paramString3 + " wecoin:" + paramInt2 + ",amountPrice:" + i);
-    paramString1 = new d.a();
-    paramString1.c((a)this.ulp);
-    paramString2 = new axc();
-    paramString2.setBaseResponse(new BaseResponse());
-    paramString2.getBaseResponse().ErrMsg = new dqi();
-    paramString1.d((a)paramString2);
-    paramString1.MB("/cgi-bin/micromsg-bin/finderlivereward");
-    paramString1.sG(5891);
-    c(paramString1.aXF());
-    AppMethodBeat.o(246342);
+    AppMethodBeat.i(272752);
+    yjz = new b((byte)0);
+    yjy = 1;
+    AppMethodBeat.o(272752);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveReward$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveRewardResponse;", "plugin-finder_release"})
+  public v(long paramLong1, long paramLong2, String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, int paramInt3, int paramInt4, a parama)
+  {
+    AppMethodBeat.i(272751);
+    this.yjw = parama;
+    this.TAG = "CgiFinderLiveCreateLottery";
+    this.yjv = new azb();
+    this.yjv.liveId = paramLong1;
+    this.yjv.xbk = paramLong2;
+    this.yjv.SKW = d.Nb(paramString1);
+    this.yjv.SKX = (paramInt1 * 60);
+    this.yjv.SKY = paramString2;
+    paramString2 = this.yjv;
+    parama = new baj();
+    parama.SMp = paramInt2;
+    parama.SMq = paramString3;
+    paramString2.SKZ = parama;
+    this.yjv.SLa = paramInt4;
+    this.yjv.opType = paramInt3;
+    paramString2 = this.yjv;
+    paramString3 = ao.xcj;
+    paramString2.SDi = ao.dnO();
+    this.yjv.nonceId = paramString1;
+    paramString1 = new d.a();
+    paramString1.c((a)this.yjv);
+    paramString2 = new azc();
+    paramString2.setBaseResponse(new jh());
+    paramString2.getBaseResponse().Tef = new eaf();
+    paramString1.d((a)paramString2);
+    paramString1.TW("/cgi-bin/micromsg-bin/finderlivecreatelottery");
+    paramString1.vD(6645);
+    c(paramString1.bgN());
+    paramString2 = this.TAG;
+    paramString3 = new StringBuilder("FinderLiveLottery,init liveId:").append(this.yjv.liveId).append(",objectId:").append(this.yjv.xbk).append(",nonceId:").append(this.yjv.nonceId).append(",lotteryDuration:").append(this.yjv.SKX).append(",lotteryDescription:").append(this.yjv.SKY).append(",lotteryAttendType:");
+    paramString1 = this.yjv.SKZ;
+    if (paramString1 != null)
+    {
+      paramString1 = Integer.valueOf(paramString1.SMp);
+      paramString3 = paramString3.append(paramString1).append(",attendWording:");
+      paramString1 = this.yjv.SKZ;
+      if (paramString1 == null) {
+        break label493;
+      }
+    }
+    label493:
+    for (paramString1 = paramString1.SMq;; paramString1 = null)
+    {
+      Log.i(paramString2, paramString1 + ",lotteryWinnerCnt:" + this.yjv.SLa + ",opType:" + this.yjv.opType);
+      AppMethodBeat.o(272751);
+      return;
+      paramString1 = null;
+      break;
+    }
+  }
+  
+  public final b dnF()
+  {
+    return b.BvU;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveCreateLottery$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveCreateLotteryResponse;", "plugin-finder_release"})
   public static abstract interface a
   {
-    public abstract void a(int paramInt1, int paramInt2, String paramString, axc paramaxc);
+    public abstract void a(int paramInt1, int paramInt2, String paramString, azc paramazc);
   }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveCreateLottery$Companion;", "", "()V", "CANCEL_LOTERRY", "", "getCANCEL_LOTERRY", "()I", "CREATE_LOTERRY", "getCREATE_LOTERRY", "plugin-finder_release"})
+  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.cgi.v
  * JD-Core Version:    0.7.0.1
  */

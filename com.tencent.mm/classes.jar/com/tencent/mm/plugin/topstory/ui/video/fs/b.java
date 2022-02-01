@@ -2,52 +2,52 @@ package com.tencent.mm.plugin.topstory.ui.video.fs;
 
 import android.content.Context;
 import android.graphics.PointF;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.r.a;
-import android.support.v7.widget.RecyclerView.r.b;
-import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.ae;
-import android.support.v7.widget.aj;
 import android.util.DisplayMetrics;
 import android.view.View;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.r.a;
+import androidx.recyclerview.widget.RecyclerView.r.b;
+import androidx.recyclerview.widget.RecyclerView.s;
+import androidx.recyclerview.widget.p;
+import androidx.recyclerview.widget.u;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.widget.f;
 
 public final class b
   extends f
 {
-  private aj aqX;
-  private aj aqY;
+  private u ajA;
+  private u ajz;
   
-  private static int a(RecyclerView.LayoutManager paramLayoutManager, View paramView, aj paramaj)
+  private static int a(RecyclerView.LayoutManager paramLayoutManager, View paramView, u paramu)
   {
-    AppMethodBeat.i(126240);
-    int j = paramaj.bo(paramView);
-    int k = paramaj.bs(paramView) / 2;
+    AppMethodBeat.i(205941);
+    int j = paramu.aZ(paramView);
+    int k = paramu.bd(paramView) / 2;
     if (paramLayoutManager.getClipToPadding()) {}
-    for (int i = paramaj.kH() + paramaj.kJ() / 2;; i = paramaj.getEnd() / 2)
+    for (int i = paramu.kT() + paramu.kV() / 2;; i = paramu.getEnd() / 2)
     {
-      AppMethodBeat.o(126240);
+      AppMethodBeat.o(205941);
       return k + j - i;
     }
   }
   
-  private static View a(RecyclerView.LayoutManager paramLayoutManager, aj paramaj)
+  private static View a(RecyclerView.LayoutManager paramLayoutManager, u paramu)
   {
     Object localObject = null;
-    AppMethodBeat.i(126241);
+    AppMethodBeat.i(205942);
     int n = paramLayoutManager.getChildCount();
     if (n == 0)
     {
-      AppMethodBeat.o(126241);
+      AppMethodBeat.o(205942);
       return null;
     }
     int j;
     int k;
     if (paramLayoutManager.getClipToPadding())
     {
-      j = paramaj.kH() + paramaj.kJ() / 2;
+      j = paramu.kT() + paramu.kV() / 2;
       int i = 2147483647;
       k = 0;
       label51:
@@ -55,7 +55,7 @@ public final class b
         break label120;
       }
       View localView = paramLayoutManager.getChildAt(k);
-      int m = Math.abs(paramaj.bo(localView) + paramaj.bs(localView) / 2 - j);
+      int m = Math.abs(paramu.aZ(localView) + paramu.bd(localView) / 2 - j);
       if (m >= i) {
         break label128;
       }
@@ -67,44 +67,33 @@ public final class b
     {
       k += 1;
       break label51;
-      j = paramaj.getEnd() / 2;
+      j = paramu.getEnd() / 2;
       break;
       label120:
-      AppMethodBeat.o(126241);
+      AppMethodBeat.o(205942);
       return localObject;
     }
   }
   
-  private aj b(RecyclerView.LayoutManager paramLayoutManager)
+  private u b(RecyclerView.LayoutManager paramLayoutManager)
   {
-    AppMethodBeat.i(126243);
-    if ((this.aqX == null) || (this.aqX.getLayoutManager() != paramLayoutManager)) {
-      this.aqX = aj.e(paramLayoutManager);
+    AppMethodBeat.i(205944);
+    if ((this.ajz == null) || (this.ajz.getLayoutManager() != paramLayoutManager)) {
+      this.ajz = u.e(paramLayoutManager);
     }
-    paramLayoutManager = this.aqX;
-    AppMethodBeat.o(126243);
+    paramLayoutManager = this.ajz;
+    AppMethodBeat.o(205944);
     return paramLayoutManager;
   }
   
-  private aj c(RecyclerView.LayoutManager paramLayoutManager)
-  {
-    AppMethodBeat.i(126244);
-    if ((this.aqY == null) || (this.aqY.getLayoutManager() != paramLayoutManager)) {
-      this.aqY = aj.d(paramLayoutManager);
-    }
-    paramLayoutManager = this.aqY;
-    AppMethodBeat.o(126244);
-    return paramLayoutManager;
-  }
-  
-  private static View c(RecyclerView.LayoutManager paramLayoutManager, aj paramaj)
+  private static View c(RecyclerView.LayoutManager paramLayoutManager, u paramu)
   {
     Object localObject = null;
-    AppMethodBeat.i(126242);
+    AppMethodBeat.i(205943);
     int m = paramLayoutManager.getChildCount();
     if (m == 0)
     {
-      AppMethodBeat.o(126242);
+      AppMethodBeat.o(205943);
       return null;
     }
     int i = 2147483647;
@@ -112,7 +101,7 @@ public final class b
     if (j < m)
     {
       View localView = paramLayoutManager.getChildAt(j);
-      int k = paramaj.bo(localView);
+      int k = paramu.aZ(localView);
       if (k >= i) {
         break label80;
       }
@@ -124,24 +113,35 @@ public final class b
     {
       j += 1;
       break;
-      AppMethodBeat.o(126242);
+      AppMethodBeat.o(205943);
       return localObject;
     }
+  }
+  
+  private u c(RecyclerView.LayoutManager paramLayoutManager)
+  {
+    AppMethodBeat.i(205945);
+    if ((this.ajA == null) || (this.ajA.getLayoutManager() != paramLayoutManager)) {
+      this.ajA = u.d(paramLayoutManager);
+    }
+    paramLayoutManager = this.ajA;
+    AppMethodBeat.o(205945);
+    return paramLayoutManager;
   }
   
   public final int a(RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2)
   {
     int i = 0;
-    AppMethodBeat.i(126238);
+    AppMethodBeat.i(205939);
     if ((Math.abs(paramInt2) <= 500) || (Math.abs(paramInt1) >= Math.abs(paramInt2)))
     {
-      AppMethodBeat.o(126238);
+      AppMethodBeat.o(205939);
       return -1;
     }
     int k = paramLayoutManager.getItemCount();
     if (k == 0)
     {
-      AppMethodBeat.o(126238);
+      AppMethodBeat.o(205939);
       return -1;
     }
     View localView = null;
@@ -150,7 +150,7 @@ public final class b
     }
     while (localView == null)
     {
-      AppMethodBeat.o(126238);
+      AppMethodBeat.o(205939);
       return -1;
       if (paramLayoutManager.canScrollHorizontally()) {
         localView = c(paramLayoutManager, c(paramLayoutManager));
@@ -159,7 +159,7 @@ public final class b
     int j = paramLayoutManager.getPosition(localView);
     if (j == -1)
     {
-      AppMethodBeat.o(126238);
+      AppMethodBeat.o(205939);
       return -1;
     }
     if (paramLayoutManager.canScrollHorizontally()) {
@@ -172,7 +172,7 @@ public final class b
       paramInt2 = i;
       if ((paramLayoutManager instanceof RecyclerView.r.b))
       {
-        paramLayoutManager = ((RecyclerView.r.b)paramLayoutManager).bZ(k - 1);
+        paramLayoutManager = ((RecyclerView.r.b)paramLayoutManager).cB(k - 1);
         paramInt2 = i;
         if (paramLayoutManager != null) {
           if (paramLayoutManager.x >= 0.0F)
@@ -192,7 +192,7 @@ public final class b
       if (paramInt1 == 0) {
         break;
       }
-      AppMethodBeat.o(126238);
+      AppMethodBeat.o(205939);
       return j - 1;
       paramInt1 = 0;
       continue;
@@ -202,40 +202,40 @@ public final class b
         paramInt1 = 0;
       }
     }
-    AppMethodBeat.o(126238);
+    AppMethodBeat.o(205939);
     return j;
     label241:
     if (paramInt1 != 0)
     {
-      AppMethodBeat.o(126238);
+      AppMethodBeat.o(205939);
       return j + 1;
     }
-    AppMethodBeat.o(126238);
+    AppMethodBeat.o(205939);
     return j;
   }
   
   public final View a(RecyclerView.LayoutManager paramLayoutManager)
   {
-    AppMethodBeat.i(126237);
+    AppMethodBeat.i(205938);
     if (paramLayoutManager.canScrollVertically())
     {
       paramLayoutManager = a(paramLayoutManager, b(paramLayoutManager));
-      AppMethodBeat.o(126237);
+      AppMethodBeat.o(205938);
       return paramLayoutManager;
     }
     if (paramLayoutManager.canScrollHorizontally())
     {
       paramLayoutManager = a(paramLayoutManager, c(paramLayoutManager));
-      AppMethodBeat.o(126237);
+      AppMethodBeat.o(205938);
       return paramLayoutManager;
     }
-    AppMethodBeat.o(126237);
+    AppMethodBeat.o(205938);
     return null;
   }
   
   public final int[] a(RecyclerView.LayoutManager paramLayoutManager, View paramView)
   {
-    AppMethodBeat.i(126236);
+    AppMethodBeat.i(205937);
     int[] arrayOfInt = new int[2];
     if (paramLayoutManager.canScrollHorizontally())
     {
@@ -247,7 +247,7 @@ public final class b
     }
     for (;;)
     {
-      AppMethodBeat.o(126236);
+      AppMethodBeat.o(205937);
       return arrayOfInt;
       arrayOfInt[0] = 0;
       break;
@@ -256,15 +256,15 @@ public final class b
     }
   }
   
-  public final ae f(RecyclerView.LayoutManager paramLayoutManager)
+  public final p f(RecyclerView.LayoutManager paramLayoutManager)
   {
-    AppMethodBeat.i(126239);
+    AppMethodBeat.i(205940);
     if (!(paramLayoutManager instanceof RecyclerView.r.b))
     {
-      AppMethodBeat.o(126239);
+      AppMethodBeat.o(205940);
       return null;
     }
-    paramLayoutManager = new ae(this.mRecyclerView.getContext())
+    paramLayoutManager = new p(this.mRecyclerView.getContext())
     {
       public final float a(DisplayMetrics paramAnonymousDisplayMetrics)
       {
@@ -273,32 +273,32 @@ public final class b
       
       public final void a(View paramAnonymousView, RecyclerView.s paramAnonymouss, RecyclerView.r.a paramAnonymousa)
       {
-        AppMethodBeat.i(126234);
-        paramAnonymousView = b.this.a(b.this.mRecyclerView.getLayoutManager(), paramAnonymousView);
+        AppMethodBeat.i(204808);
+        paramAnonymousView = b.this.a(b.a(b.this).getLayoutManager(), paramAnonymousView);
         int i = paramAnonymousView[0];
         int j = paramAnonymousView[1];
-        int k = cc(Math.max(Math.abs(i), Math.abs(j)));
+        int k = cE(Math.max(Math.abs(i), Math.abs(j)));
         if (k > 0) {
-          paramAnonymousa.a(i, j, k, this.VQ);
+          paramAnonymousa.a(i, j, k, this.aju);
         }
-        AppMethodBeat.o(126234);
+        AppMethodBeat.o(204808);
       }
       
-      public final int cd(int paramAnonymousInt)
+      public final int cF(int paramAnonymousInt)
       {
         AppMethodBeat.i(126235);
-        paramAnonymousInt = Math.min(100, super.cd(paramAnonymousInt));
+        paramAnonymousInt = Math.min(100, super.cF(paramAnonymousInt));
         AppMethodBeat.o(126235);
         return paramAnonymousInt;
       }
     };
-    AppMethodBeat.o(126239);
+    AppMethodBeat.o(205940);
     return paramLayoutManager;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.b
  * JD-Core Version:    0.7.0.1
  */

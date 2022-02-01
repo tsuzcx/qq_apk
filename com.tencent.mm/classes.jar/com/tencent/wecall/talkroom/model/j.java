@@ -1,56 +1,141 @@
 package com.tencent.wecall.talkroom.model;
 
-import android.text.TextUtils;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.c.b;
+import com.tencent.pb.common.c.c;
+import java.io.BufferedOutputStream;
 
 public final class j
 {
-  public static boolean bru(String paramString)
-  {
-    AppMethodBeat.i(62717);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(62717);
-      return false;
-    }
-    boolean bool = paramString.startsWith("client_");
-    AppMethodBeat.o(62717);
-    return bool;
-  }
+  public static boolean NXK = false;
+  static BufferedOutputStream mOutputStream = null;
   
-  public static int hrA()
+  private static int getNetType(Context paramContext)
   {
-    AppMethodBeat.i(62718);
+    AppMethodBeat.i(62690);
     try
     {
-      int i = a.hqJ().yvK;
-      AppMethodBeat.o(62718);
-      return i;
+      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      if (paramContext == null)
+      {
+        AppMethodBeat.o(62690);
+        return 0;
+      }
+      int i = paramContext.getType();
+      if (i == 1)
+      {
+        AppMethodBeat.o(62690);
+        return 4;
+      }
+      i = paramContext.getSubtype();
+      if (i == 3)
+      {
+        AppMethodBeat.o(62690);
+        return 3;
+      }
+      if (paramContext.getSubtype() > 0)
+      {
+        i = paramContext.getSubtype();
+        if (i < 5)
+        {
+          AppMethodBeat.o(62690);
+          return 1;
+        }
+      }
+      if (paramContext.getSubtype() >= 5)
+      {
+        i = paramContext.getSubtype();
+        if (i < 13)
+        {
+          AppMethodBeat.o(62690);
+          return 3;
+        }
+      }
+      i = paramContext.getSubtype();
+      if (i >= 13)
+      {
+        AppMethodBeat.o(62690);
+        return 5;
+      }
+      AppMethodBeat.o(62690);
+      return 2;
     }
-    catch (Exception localException)
+    catch (Exception paramContext)
     {
-      b.w("tagorewang:VoiceGroupUtil", new Object[] { "getActiveRoomId err: ", localException });
-      AppMethodBeat.o(62718);
+      AppMethodBeat.o(62690);
     }
-    return 0;
+    return 2;
   }
   
-  public static long hrB()
+  public static boolean ivk()
   {
-    AppMethodBeat.i(62719);
+    AppMethodBeat.i(62691);
+    if (getNetType(c.NYh) == 4)
+    {
+      AppMethodBeat.o(62691);
+      return true;
+    }
+    AppMethodBeat.o(62691);
+    return false;
+  }
+  
+  public static int mv(Context paramContext)
+  {
+    AppMethodBeat.i(62689);
     try
     {
-      long l = a.hqJ().HgX;
-      AppMethodBeat.o(62719);
-      return l;
+      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      if (paramContext == null)
+      {
+        AppMethodBeat.o(62689);
+        return 0;
+      }
+      int i = paramContext.getType();
+      if (i == 1)
+      {
+        AppMethodBeat.o(62689);
+        return 4;
+      }
+      i = paramContext.getSubtype();
+      if (i == 3)
+      {
+        AppMethodBeat.o(62689);
+        return 3;
+      }
+      if (paramContext.getSubtype() > 0)
+      {
+        i = paramContext.getSubtype();
+        if (i < 5)
+        {
+          AppMethodBeat.o(62689);
+          return 1;
+        }
+      }
+      if (paramContext.getSubtype() >= 5)
+      {
+        i = paramContext.getSubtype();
+        if (i < 13)
+        {
+          AppMethodBeat.o(62689);
+          return 3;
+        }
+      }
+      i = paramContext.getSubtype();
+      if (i >= 13)
+      {
+        AppMethodBeat.o(62689);
+        return 5;
+      }
+      AppMethodBeat.o(62689);
+      return 2;
     }
-    catch (Exception localException)
+    catch (Exception paramContext)
     {
-      b.w("tagorewang:VoiceGroupUtil", new Object[] { "getActiveRoomKey err: ", localException });
-      AppMethodBeat.o(62719);
+      AppMethodBeat.o(62689);
     }
-    return 0L;
+    return 2;
   }
 }
 

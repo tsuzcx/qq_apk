@@ -6,7 +6,7 @@ import android.graphics.Point;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import io.flutter.embedding.engine.plugins.a;
 import io.flutter.embedding.engine.plugins.a.b;
 import io.flutter.plugin.a.j;
@@ -19,17 +19,17 @@ import org.json.JSONObject;
 public final class c
   implements a, k.c
 {
+  private k BCG;
   private Context context;
-  private k wJr;
   
   public final void a(a.b paramb)
   {
-    AppMethodBeat.i(240946);
+    AppMethodBeat.i(220614);
     Log.i("MicroMsg.Flutter.FlutterLvCppHandler", "onAttachedToEngine FlutterLvCppHandler CHANNEL%s", new Object[] { "com.tencent.mm.mmflutter.lvcppmethod" });
-    this.wJr = new k(paramb.SOH, "com.tencent.mm.mmflutter.lvcppmethod");
-    this.wJr.a(this);
+    this.BCG = new k(paramb.aaqF, "com.tencent.mm.mmflutter.lvcppmethod");
+    this.BCG.a(this);
     this.context = paramb.applicationContext;
-    AppMethodBeat.o(240946);
+    AppMethodBeat.o(220614);
   }
   
   public final void a(j paramj, k.d paramd)
@@ -41,12 +41,12 @@ public final class c
       try
       {
         DisplayMetrics localDisplayMetrics = this.context.getResources().getDisplayMetrics();
-        Point localPoint = ao.az(this.context);
+        Point localPoint = ar.au(this.context);
         paramj.put("screenWidth", localPoint.x);
         paramj.put("screenHeight", localPoint.y);
         paramj.put("densityDpi", localDisplayMetrics.densityDpi);
         paramj.put("density", localDisplayMetrics.density);
-        paramd.ba(paramj.toString());
+        paramd.bb(paramj.toString());
         AppMethodBeat.o(148873);
         return;
       }
@@ -58,20 +58,20 @@ public final class c
         }
       }
     }
-    paramd.dLv();
+    paramd.epZ();
     AppMethodBeat.o(148873);
   }
   
   public final void b(a.b paramb)
   {
-    AppMethodBeat.i(240947);
-    this.wJr.a(null);
-    AppMethodBeat.o(240947);
+    AppMethodBeat.i(220616);
+    this.BCG.a(null);
+    AppMethodBeat.o(220616);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.model.c
  * JD-Core Version:    0.7.0.1
  */

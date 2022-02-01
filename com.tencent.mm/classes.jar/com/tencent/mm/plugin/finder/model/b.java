@@ -1,56 +1,56 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.i;
-import com.tencent.mm.plugin.finder.storage.aa;
-import com.tencent.mm.protocal.protobuf.ays;
+import com.tencent.mm.plugin.finder.feed.model.internal.k;
+import com.tencent.mm.plugin.finder.storage.x;
+import com.tencent.mm.protocal.protobuf.ben;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/BaseLocalFeed;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "localItem", "Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;)V", "getLocalItem", "()Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "toString", "", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/BaseLocalFeed;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "localItem", "Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;)V", "getLocalItem", "()Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "toString", "", "plugin-finder_release"})
 public final class b
-  implements bo
+  implements bu
 {
-  private final aa uNH;
+  private final x zzV;
   
-  public b(aa paramaa)
+  public b(x paramx)
   {
-    AppMethodBeat.i(248692);
-    this.uNH = paramaa;
-    AppMethodBeat.o(248692);
+    AppMethodBeat.i(284598);
+    this.zzV = paramx;
+    AppMethodBeat.o(284598);
   }
   
-  public final int a(i parami)
+  public final int a(k paramk)
   {
-    AppMethodBeat.i(248690);
-    p.h(parami, "obj");
-    if (((parami instanceof b)) && (((b)parami).uNH.a(this.uNH)))
+    AppMethodBeat.i(284596);
+    p.k(paramk, "obj");
+    if (((paramk instanceof b)) && (((b)paramk).zzV.a(this.zzV)))
     {
-      AppMethodBeat.o(248690);
+      AppMethodBeat.o(284596);
       return 0;
     }
-    AppMethodBeat.o(248690);
+    AppMethodBeat.o(284596);
     return -1;
   }
   
-  public final int cxn()
+  public final int bAQ()
   {
-    return this.uNH.vEN.LIS;
+    return this.zzV.Amb.SPE;
   }
   
-  public final long lT()
+  public final long mf()
   {
-    AppMethodBeat.i(248689);
-    long l = this.uNH.getId();
-    AppMethodBeat.o(248689);
+    AppMethodBeat.i(284593);
+    long l = this.zzV.getId();
+    AppMethodBeat.o(284593);
     return l;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(248691);
-    String str = "ItemId=" + this.uNH.getId() + ",ItemType=" + cxn() + ' ';
-    AppMethodBeat.o(248691);
+    AppMethodBeat.i(284597);
+    String str = "ItemId=" + this.zzV.getId() + ",ItemType=" + bAQ() + ' ';
+    AppMethodBeat.o(284597);
     return str;
   }
 }

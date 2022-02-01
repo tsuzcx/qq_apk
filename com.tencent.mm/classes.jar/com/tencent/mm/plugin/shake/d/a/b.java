@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.shake.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.q.b;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.q.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bvx;
-import com.tencent.mm.protocal.protobuf.bvy;
+import com.tencent.mm.protocal.protobuf.cdp;
+import com.tencent.mm.protocal.protobuf.cdq;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
   extends q
   implements m
 {
-  private String DiK;
+  private String Joq;
   private i callback;
   public d rr;
   private int scene;
   
   public b(String paramString, int paramInt)
   {
-    this.DiK = paramString;
+    this.Joq = paramString;
     this.scene = paramInt;
   }
   
@@ -34,16 +34,16 @@ public final class b
     AppMethodBeat.i(28274);
     this.callback = parami;
     parami = new d.a();
-    parami.iLN = new bvx();
-    parami.iLO = new bvy();
+    parami.lBU = new cdp();
+    parami.lBV = new cdq();
     parami.uri = "/cgi-bin/micromsg-bin/gettvinfo";
     parami.funcId = 552;
-    parami.iLP = 0;
+    parami.lBW = 0;
     parami.respCmdId = 0;
-    this.rr = parami.aXF();
-    parami = (bvx)this.rr.iLK.iLR;
-    parami.MbU = this.DiK;
-    parami.Scene = this.scene;
+    this.rr = parami.bgN();
+    parami = (cdp)d.b.b(this.rr.lBR);
+    parami.Tlw = this.Joq;
+    parami.CPw = this.scene;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(28274);
     return i;
@@ -65,15 +65,15 @@ public final class b
   public final q.b securityVerificationChecked(s params)
   {
     AppMethodBeat.i(28275);
-    params = (bvx)((d)params).iLK.iLR;
-    if ((params.Scene < 0) || (params.MbU == null) || (params.MbU.length() <= 0))
+    params = (cdp)d.b.b(((d)params).lBR);
+    if ((params.CPw < 0) || (params.Tlw == null) || (params.Tlw.length() <= 0))
     {
-      Log.e("MicroMsg.scanner.NetSceneGetTVInfo", "ERR: Security Check Failed, Scene = %s", new Object[] { Integer.valueOf(params.Scene) });
-      params = q.b.iMr;
+      Log.e("MicroMsg.scanner.NetSceneGetTVInfo", "ERR: Security Check Failed, Scene = %s", new Object[] { Integer.valueOf(params.CPw) });
+      params = q.b.lCy;
       AppMethodBeat.o(28275);
       return params;
     }
-    params = q.b.iMq;
+    params = q.b.lCx;
     AppMethodBeat.o(28275);
     return params;
   }

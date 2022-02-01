@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.expansions;
 import android.util.Pair;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.api.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -10,39 +12,39 @@ import java.util.List;
 
 final class c
 {
-  static final ArrayList<IDKey> rNE;
-  static final List<Pair<String, Object>> rNF;
+  static final ArrayList<IDKey> vto;
+  static final List<Pair<String, Object>> vtp;
   
   static
   {
     AppMethodBeat.i(152978);
-    rNE = new ArrayList();
-    rNF = new ArrayList();
+    vto = new ArrayList();
+    vtp = new ArrayList();
     AppMethodBeat.o(152978);
   }
   
-  public static void cMv()
+  public static void dbj()
   {
     AppMethodBeat.i(152974);
-    com.tencent.mm.kernel.g.aAi().a(new com.tencent.mm.kernel.api.g()
+    h.aHH().a(new g()
     {
-      public final void WY()
+      public final void abB()
       {
         AppMethodBeat.i(152973);
-        com.tencent.mm.kernel.g.aAi().b(this);
+        h.aHH().b(this);
         c.access$000();
         AppMethodBeat.o(152973);
       }
       
-      public final void cQ(boolean paramAnonymousBoolean) {}
+      public final void dn(boolean paramAnonymousBoolean) {}
     });
     AppMethodBeat.o(152974);
   }
   
-  public static void cMw()
+  public static void dbk()
   {
     AppMethodBeat.i(152976);
-    Iterator localIterator = rNF.iterator();
+    Iterator localIterator = vtp.iterator();
     while (localIterator.hasNext())
     {
       Pair localPair = (Pair)localIterator.next();
@@ -53,20 +55,20 @@ final class c
         Log.printErrStackTrace((String)localPair.first, (Throwable)localPair.second, "pending exception", new Object[0]);
       }
     }
-    rNF.clear();
+    vtp.clear();
     AppMethodBeat.o(152976);
   }
   
-  public static void gj(String paramString1, String paramString2)
+  public static void gx(String paramString1, String paramString2)
   {
     AppMethodBeat.i(152975);
-    rNF.add(new Pair(paramString1, paramString2));
+    vtp.add(new Pair(paramString1, paramString2));
     AppMethodBeat.o(152975);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.expansions.c
  * JD-Core Version:    0.7.0.1
  */

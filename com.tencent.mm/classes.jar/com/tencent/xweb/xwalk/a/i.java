@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class i
 {
   /* Error */
-  public static java.util.List<a> ao(java.io.File paramFile)
+  public static java.util.List<a> ah(java.io.File paramFile)
   {
     // Byte code:
     //   0: ldc 12
@@ -85,7 +85,7 @@ public final class i
     //   145: astore_0
     //   146: aload 8
     //   148: aload 7
-    //   150: putfield 65	com/tencent/xweb/xwalk/a/i$a:originalFileName	Ljava/lang/String;
+    //   150: putfield 65	com/tencent/xweb/xwalk/a/i$a:aajo	Ljava/lang/String;
     //   153: aload 5
     //   155: astore_0
     //   156: aload 8
@@ -101,12 +101,12 @@ public final class i
     //   175: dup
     //   176: invokespecial 72	java/lang/StringBuilder:<init>	()V
     //   179: aload 8
-    //   181: getfield 65	com/tencent/xweb/xwalk/a/i$a:originalFileName	Ljava/lang/String;
+    //   181: getfield 65	com/tencent/xweb/xwalk/a/i$a:aajo	Ljava/lang/String;
     //   184: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   187: ldc 78
     //   189: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   192: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   195: putfield 84	com/tencent/xweb/xwalk/a/i$a:patchFileName	Ljava/lang/String;
+    //   195: putfield 84	com/tencent/xweb/xwalk/a/i$a:aajl	Ljava/lang/String;
     //   198: aload 5
     //   200: astore_0
     //   201: ldc 86
@@ -278,14 +278,14 @@ public final class i
   
   public static final class a
   {
-    public String originalFileName;
-    public String patchFileName;
+    public String aajl;
+    public String aajo;
     public int type;
     
     public final String toString()
     {
       AppMethodBeat.i(157196);
-      String str = "PluginPatchConfig type:" + this.type + ",originalFileName:" + this.originalFileName + ",patchFileName:" + this.patchFileName;
+      String str = "PluginPatchConfig type:" + this.type + ",originalFileName:" + this.aajo + ",patchFileName:" + this.aajl;
       AppMethodBeat.o(157196);
       return str;
     }
@@ -293,7 +293,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.xwalk.a.i
  * JD-Core Version:    0.7.0.1
  */

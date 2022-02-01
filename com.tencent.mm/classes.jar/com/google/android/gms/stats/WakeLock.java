@@ -17,6 +17,7 @@ import com.google.android.gms.common.util.PlatformVersion;
 import com.google.android.gms.common.util.Strings;
 import com.google.android.gms.common.util.WorkSourceUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.c;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -36,6 +37,7 @@ public class WakeLock
 {
   private static ScheduledExecutorService zzaeg;
   private static Configuration zzaeh;
+  private byte _hellAccFlag_;
   private final PowerManager.WakeLock zzadv;
   private WorkSource zzadw;
   private String zzadx;
@@ -168,7 +170,7 @@ public class WakeLock
           {
             this.zzaed.put(paramString, new Integer[] { Integer.valueOf(1) });
             i = 1;
-            break label304;
+            break label350;
           }
         }
         else
@@ -178,7 +180,10 @@ public class WakeLock
             WakeLockTracker.getInstance().registerEvent(this.zzjp, StatsUtils.getEventKey(this.zzadv, paramString), 7, this.zzadz, paramString, this.zzaeb, this.zzady, zzdo(), paramLong);
             this.zzaee += 1;
           }
-          this.zzadv.acquire();
+          paramString = this.zzadv;
+          com.tencent.mm.hellhoundlib.a.a.b(paramString, "com/google/android/gms/stats/WakeLock", "zza", "(Ljava/lang/String;J)V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "()V");
+          paramString.acquire();
+          com.tencent.mm.hellhoundlib.a.a.c(paramString, "com/google/android/gms/stats/WakeLock", "zza", "(Ljava/lang/String;J)V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "()V");
           if (paramLong > 0L)
           {
             zzaeg.schedule(new zzb(this), paramLong, TimeUnit.MILLISECONDS);
@@ -186,7 +191,7 @@ public class WakeLock
             {
               paramString = String.valueOf(this.zzadz);
               if (paramString.length() == 0) {
-                break label290;
+                break label336;
               }
               paramString = "Do not acquire with timeout on reference counted wakeLocks before ICS. wakelock: ".concat(paramString);
               Log.wtf("WakeLock", paramString);
@@ -202,10 +207,10 @@ public class WakeLock
       {
         AppMethodBeat.o(73455);
       }
-      label290:
+      label336:
       paramString = new String("Do not acquire with timeout on reference counted wakeLocks before ICS. wakelock: ");
       continue;
-      label304:
+      label350:
       if (i != 0) {}
     }
   }
@@ -310,11 +315,18 @@ public class WakeLock
       {
         if ((Build.VERSION.SDK_INT >= 21) && (paramInt > 0))
         {
-          this.zzadv.release(paramInt);
+          localWakeLock = this.zzadv;
+          com.tencent.mm.hellhoundlib.b.a locala = c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
+          com.tencent.mm.hellhoundlib.a.a.b(localWakeLock, locala.aFh(), "com/google/android/gms/stats/WakeLock", "zzn", "(I)V", "android/os/PowerManager$WakeLock_EXEC_", "release", "(I)V");
+          localWakeLock.release(((Integer)locala.sf(0)).intValue());
+          com.tencent.mm.hellhoundlib.a.a.c(localWakeLock, "com/google/android/gms/stats/WakeLock", "zzn", "(I)V", "android/os/PowerManager$WakeLock_EXEC_", "release", "(I)V");
           AppMethodBeat.o(73463);
           return;
         }
-        this.zzadv.release();
+        PowerManager.WakeLock localWakeLock = this.zzadv;
+        com.tencent.mm.hellhoundlib.a.a.b(localWakeLock, "com/google/android/gms/stats/WakeLock", "zzn", "(I)V", "android/os/PowerManager$WakeLock_EXEC_", "release", "()V");
+        localWakeLock.release();
+        com.tencent.mm.hellhoundlib.a.a.c(localWakeLock, "com/google/android/gms/stats/WakeLock", "zzn", "(I)V", "android/os/PowerManager$WakeLock_EXEC_", "release", "()V");
         AppMethodBeat.o(73463);
         return;
       }
@@ -581,7 +593,7 @@ public class WakeLock
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.stats.WakeLock
  * JD-Core Version:    0.7.0.1
  */

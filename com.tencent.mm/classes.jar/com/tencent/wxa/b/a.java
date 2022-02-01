@@ -9,73 +9,73 @@ import java.util.Map;
 public final class a
   implements c
 {
-  private b SxZ;
+  private b ZZg;
   
   public a(b paramb)
   {
-    this.SxZ = paramb;
+    this.ZZg = paramb;
   }
   
-  private Map hrM()
+  private Map ivy()
   {
-    AppMethodBeat.i(206316);
+    AppMethodBeat.i(224824);
     HashMap localHashMap = new HashMap();
-    String str1 = this.SxZ.KQ();
-    String str2 = this.SxZ.KR();
-    Map localMap = this.SxZ.KS();
+    String str1 = this.ZZg.NE();
+    String str2 = this.ZZg.NF();
+    Map localMap = this.ZZg.NG();
     localHashMap.put("activityId", str1);
     localHashMap.put("name", str2);
     localHashMap.put("params", localMap);
-    AppMethodBeat.o(206316);
+    AppMethodBeat.o(224824);
     return localHashMap;
   }
   
-  public final void a(k.d paramd)
+  public final void a(boolean paramBoolean, k.d paramd)
   {
-    AppMethodBeat.i(206321);
+    AppMethodBeat.i(224832);
     com.tencent.wxa.c.a.d("WxaRouter.DefaultFlutterViewLifecycle", "onBackPressed", new Object[0]);
-    d.a("onBackPressed", paramd);
-    AppMethodBeat.o(206321);
+    com.tencent.wxa.c.ivt().ZYM.ZYW.a("onBackPressed", Boolean.valueOf(paramBoolean), paramd);
+    AppMethodBeat.o(224832);
   }
   
-  public final void hrN()
+  public final void ivz()
   {
-    AppMethodBeat.i(206322);
-    d.G("closeView", hrM());
-    AppMethodBeat.o(206322);
+    AppMethodBeat.i(224834);
+    com.tencent.wxa.c.ivt().ZYM.G("closeView", ivy());
+    AppMethodBeat.o(224834);
   }
   
   public final void onCreateView()
   {
-    AppMethodBeat.i(206317);
-    d.G("onCreateView", hrM());
-    AppMethodBeat.o(206317);
+    AppMethodBeat.i(224826);
+    com.tencent.wxa.c.ivt().ZYM.G("onCreateView", ivy());
+    AppMethodBeat.o(224826);
   }
   
   public final void onDestroyView()
   {
-    AppMethodBeat.i(206320);
-    d.G("onDestroyView", hrM());
-    AppMethodBeat.o(206320);
+    AppMethodBeat.i(224831);
+    com.tencent.wxa.c.ivt().ZYM.G("onDestroyView", ivy());
+    AppMethodBeat.o(224831);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(206319);
-    d.G("onPauseView", hrM());
-    AppMethodBeat.o(206319);
+    AppMethodBeat.i(224829);
+    com.tencent.wxa.c.ivt().ZYM.G("onPauseView", ivy());
+    AppMethodBeat.o(224829);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(206318);
-    d.G("onResumeView", hrM());
-    AppMethodBeat.o(206318);
+    AppMethodBeat.i(224828);
+    com.tencent.wxa.c.ivt().ZYM.G("onResumeView", ivy());
+    AppMethodBeat.o(224828);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wxa.b.a
  * JD-Core Version:    0.7.0.1
  */

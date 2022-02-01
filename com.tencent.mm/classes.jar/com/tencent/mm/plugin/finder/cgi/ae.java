@@ -1,29 +1,56 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.protocal.protobuf.aru;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.findersdk.b.c;
+import com.tencent.mm.protocal.protobuf.blh;
+import com.tencent.mm.protocal.protobuf.bli;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiGetFinderContact;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetContactListResp;", "()V", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderUtils;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderUtilsResp;", "type", "", "url", "", "(ILjava/lang/String;)V", "TAG", "request", "Lcom/tencent/mm/protocal/protobuf/FinderUtilsReq;", "getType", "()I", "getUrl", "()Ljava/lang/String;", "onCgiEnd", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
 public final class ae
-  extends c<aru>
+  extends c<bli>
 {
-  public static final a tue;
+  private final String TAG;
+  private final int type;
+  private final String url;
+  private blh xbN;
   
-  static
+  public ae(String paramString)
   {
-    AppMethodBeat.i(242298);
-    tue = new a((byte)0);
-    AppMethodBeat.o(242298);
+    super(null);
+    AppMethodBeat.i(289370);
+    this.type = 1;
+    this.url = paramString;
+    this.TAG = "Finder.CgiFinderUtils";
+    this.xbN = new blh();
+    paramString = this.xbN;
+    Object localObject = ao.xcj;
+    paramString.SDi = ao.a(this.xbu);
+    this.xbN.username = z.bdh();
+    this.xbN.type = this.type;
+    this.xbN.url = this.url;
+    paramString = new d.a();
+    paramString.c((a)this.xbN);
+    localObject = new bli();
+    ((bli)localObject).setBaseResponse(new jh());
+    ((bli)localObject).getBaseResponse().Tef = new eaf();
+    paramString.d((a)localObject);
+    paramString.TW("/cgi-bin/micromsg-bin/finderutils");
+    paramString.vD(4046);
+    c(paramString.bgN());
+    Log.i(this.TAG, "init type:" + this.type + ", url:" + this.url);
+    AppMethodBeat.o(289370);
   }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiGetFinderContact$Companion;", "", "()V", "CONTACT_TYPE_COMMENT", "", "CONTACT_TYPE_FANS", "CONTACT_TYPE_FINDER_USERNAME", "CONTACT_TYPE_PERSONAL_MSG", "TAG", "", "create", "Lcom/tencent/mm/plugin/finder/cgi/CgiGetFinderContact;", "usernameList", "", "create2", "Lcom/tencent/mm/protocal/protobuf/FinderContactMsgInfo;", "create3", "Lcom/tencent/mm/protocal/protobuf/FinderContactCommentInfo;", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.ae
  * JD-Core Version:    0.7.0.1
  */

@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ball.f.f;
+import com.tencent.mm.plugin.gallery.b.i;
+import com.tencent.mm.plugin.game.g.i;
 import com.tencent.mm.pluginsdk.permission.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -20,23 +22,23 @@ import org.json.JSONException;
 public class GameTabGalleryUI
   extends MMActivity
 {
-  private static final int xBB;
-  private m xBC;
+  private static final int CFC;
+  private m CFD;
   
   static
   {
     AppMethodBeat.i(41075);
-    xBB = "GameTabGalleryUI".hashCode() & 0xFFFF;
+    CFC = "GameTabGalleryUI".hashCode() & 0xFFFF;
     AppMethodBeat.o(41075);
   }
   
   private void init()
   {
-    AppMethodBeat.i(204129);
-    this.xBC = new m(getContext(), xBB);
+    AppMethodBeat.i(203566);
+    this.CFD = new m(getContext(), CFC);
     boolean bool = getIntent().getBooleanExtra("game_haowan_ignore_video_preview", true);
     int i = getIntent().getIntExtra("game_haowan_source_scene_id", 0);
-    this.xBC.J(bool, i);
+    this.CFD.U(bool, i);
     Object localObject2 = getIntent().getStringExtra("game_haowan_local_albums_info");
     Object localObject1 = new JSONArray();
     if (!Util.isNullOrNil((String)localObject2)) {}
@@ -48,11 +50,11 @@ public class GameTabGalleryUI
         localObject1 = localObject2;
         localObject2 = localObject1;
         if (((JSONArray)localObject1).length() == 0) {
-          localObject2 = com.tencent.mm.plugin.game.commlib.a.dTc();
+          localObject2 = com.tencent.mm.plugin.game.commlib.a.ewl();
         }
-        this.xBC.setLocalAlbumInfos((JSONArray)localObject2);
-        setContentView(this.xBC);
-        setMMTitle(2131761218);
+        this.CFD.setLocalAlbumInfos((JSONArray)localObject2);
+        setContentView(this.CFD);
+        setMMTitle(g.i.Cjj);
         setBackBtn(new MenuItem.OnMenuItemClickListener()
         {
           public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -63,7 +65,7 @@ public class GameTabGalleryUI
             return false;
           }
         });
-        AppMethodBeat.o(204129);
+        AppMethodBeat.o(203566);
         return;
       }
       catch (JSONException localJSONException) {}
@@ -79,7 +81,7 @@ public class GameTabGalleryUI
   {
     AppMethodBeat.i(41074);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if ((paramInt1 == xBB) && (paramInt2 == -1))
+    if ((paramInt1 == CFC) && (paramInt2 == -1))
     {
       setResult(paramInt2, paramIntent);
       finish();
@@ -91,8 +93,8 @@ public class GameTabGalleryUI
   {
     AppMethodBeat.i(41070);
     super.onCreate(paramBundle);
-    paramBundle = getString(2131763890);
-    String str = getString(2131761221);
+    paramBundle = getString(b.i.permission_tips_title);
+    String str = getString(g.i.CoQ);
     if (b.a(this, new String[] { "android.permission.READ_EXTERNAL_STORAGE" }, 145, paramBundle, str)) {
       init();
     }
@@ -110,17 +112,17 @@ public class GameTabGalleryUI
   {
     AppMethodBeat.i(41072);
     super.onPause();
-    f.e(false, true, true);
+    f.d(false, true, true);
     AppMethodBeat.o(41072);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(204130);
+    AppMethodBeat.i(203568);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
       Log.i("MicroMsg.GameTabGalleryUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
-      AppMethodBeat.o(204130);
+      AppMethodBeat.o(203568);
       return;
     }
     Log.i("MicroMsg.GameTabGalleryUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
@@ -129,35 +131,35 @@ public class GameTabGalleryUI
     }
     for (;;)
     {
-      AppMethodBeat.o(204130);
+      AppMethodBeat.o(203568);
       return;
       if (paramArrayOfInt[0] == 0)
       {
         init();
-        AppMethodBeat.o(204130);
+        AppMethodBeat.o(203568);
         return;
       }
-      h.a(this, getString(2131761322), getString(2131763890), getString(2131762043), getString(2131761084), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      h.a(this, getString(g.i.CpA), getString(g.i.permission_tips_title), getString(g.i.jump_to_settings), getString(g.i.gallery_cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(204127);
+          AppMethodBeat.i(197154);
           paramAnonymousDialogInterface = GameTabGalleryUI.this;
           Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/game/media/GameTabGalleryUI$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/game/media/GameTabGalleryUI$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/game/media/GameTabGalleryUI$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousDialogInterface, "com/tencent/mm/plugin/game/media/GameTabGalleryUI$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           GameTabGalleryUI.this.finish();
-          AppMethodBeat.o(204127);
+          AppMethodBeat.o(197154);
         }
       }, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(204128);
+          AppMethodBeat.i(194033);
           GameTabGalleryUI.this.finish();
-          AppMethodBeat.o(204128);
+          AppMethodBeat.o(194033);
         }
       });
     }
@@ -167,7 +169,7 @@ public class GameTabGalleryUI
   {
     AppMethodBeat.i(41071);
     super.onResume();
-    f.e(true, true, true);
+    f.d(true, true, true);
     AppMethodBeat.o(41071);
   }
   
@@ -179,7 +181,7 @@ public class GameTabGalleryUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.GameTabGalleryUI
  * JD-Core Version:    0.7.0.1
  */

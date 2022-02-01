@@ -5,11 +5,11 @@ import g.a.a.b;
 import java.util.LinkedList;
 
 public final class dw
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public LinkedList<bzz> GroupList;
-  public he KHT;
-  public String xLl;
+  public String CPt;
+  public LinkedList<chu> GroupList;
+  public gs RJn;
   
   public dw()
   {
@@ -24,36 +24,36 @@ public final class dw
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.KHT == null)
+      if (this.RJn == null)
       {
         paramVarArgs = new b("Not all required fields were included: ArtisAuthor");
         AppMethodBeat.o(125707);
         throw paramVarArgs;
       }
-      if (this.KHT != null)
+      if (this.RJn != null)
       {
-        paramVarArgs.ni(1, this.KHT.computeSize());
-        this.KHT.writeFields(paramVarArgs);
+        paramVarArgs.oE(1, this.RJn.computeSize());
+        this.RJn.writeFields(paramVarArgs);
       }
       paramVarArgs.e(2, 8, this.GroupList);
-      if (this.xLl != null) {
-        paramVarArgs.e(3, this.xLl);
+      if (this.CPt != null) {
+        paramVarArgs.f(3, this.CPt);
       }
       AppMethodBeat.o(125707);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.KHT == null) {
-        break label558;
+      if (this.RJn == null) {
+        break label514;
       }
     }
-    label558:
-    for (paramInt = g.a.a.a.nh(1, this.KHT.computeSize()) + 0;; paramInt = 0)
+    label514:
+    for (paramInt = g.a.a.a.oD(1, this.RJn.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt + g.a.a.a.c(2, 8, this.GroupList);
       paramInt = i;
-      if (this.xLl != null) {
-        paramInt = i + g.a.a.b.b.a.f(3, this.xLl);
+      if (this.CPt != null) {
+        paramInt = i + g.a.a.b.b.a.g(3, this.CPt);
       }
       AppMethodBeat.o(125707);
       return paramInt;
@@ -62,12 +62,12 @@ public final class dw
         paramVarArgs = (byte[])paramVarArgs[0];
         this.GroupList.clear();
         paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.KHT == null)
+        if (this.RJn == null)
         {
           paramVarArgs = new b("Not all required fields were included: ArtisAuthor");
           AppMethodBeat.o(125707);
@@ -82,44 +82,45 @@ public final class dw
         dw localdw = (dw)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         Object localObject2;
-        boolean bool;
         switch (paramInt)
         {
         default: 
           AppMethodBeat.o(125707);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new he();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((he)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localdw.KHT = ((he)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new gs();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((gs)localObject2).parseFrom((byte[])localObject1);
+            }
+            localdw.RJn = ((gs)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(125707);
           return 0;
         case 2: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new bzz();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((bzz)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localdw.GroupList.add(localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new chu();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((chu)localObject2).parseFrom((byte[])localObject1);
+            }
+            localdw.GroupList.add(localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(125707);
           return 0;
         }
-        localdw.xLl = ((g.a.a.a.a)localObject1).UbS.readString();
+        localdw.CPt = ((g.a.a.a.a)localObject1).abFh.readString();
         AppMethodBeat.o(125707);
         return 0;
       }
@@ -130,7 +131,7 @@ public final class dw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dw
  * JD-Core Version:    0.7.0.1
  */

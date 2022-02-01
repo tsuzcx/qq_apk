@@ -5,108 +5,108 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.tools.b.c.a;
-import com.tencent.mm.ui.tools.f;
+import com.tencent.mm.ui.tools.g;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 public final class d
   extends com.tencent.mm.ui.tools.b.c
 {
-  protected WeakReference<c> QFO;
+  protected WeakReference<c> YeD;
   
   private d(WeakReference<c> paramWeakReference)
   {
     super("");
-    this.QFO = paramWeakReference;
+    this.YeD = paramWeakReference;
   }
   
   public static d a(c paramc)
   {
-    AppMethodBeat.i(205446);
+    AppMethodBeat.i(210078);
     paramc = new d(new WeakReference(paramc));
-    AppMethodBeat.o(205446);
+    AppMethodBeat.o(210078);
     return paramc;
   }
   
-  public final int bCj()
+  public final int bNF()
   {
-    AppMethodBeat.i(205448);
+    AppMethodBeat.i(210082);
     if (Util.isNullOrNil(this.mText))
     {
-      if (this.QFO == null)
+      if (this.YeD == null)
       {
-        AppMethodBeat.o(205448);
+        AppMethodBeat.o(210082);
         return 1;
       }
-      this.mText = ((c)this.QFO.get()).getText().toString().trim();
+      this.mText = ((c)this.YeD.get()).getText().toString().trim();
     }
-    int j = f.a(this.mText, this.ots);
+    int j = g.a(this.mText, this.rvC);
     if (j < 0) {}
     for (int i = 1; i != 0; i = 0)
     {
       Log.w("MicroMsg.InputIEdtBoundaryCheck", "you are crazy =.=!that is 2 GB character!");
-      AppMethodBeat.o(205448);
+      AppMethodBeat.o(210082);
       return 2;
     }
-    if (j < this.QxN)
+    if (j < this.XVS)
     {
-      AppMethodBeat.o(205448);
+      AppMethodBeat.o(210082);
       return 1;
     }
-    if (j > this.QxM)
+    if (j > this.XVR)
     {
-      AppMethodBeat.o(205448);
+      AppMethodBeat.o(210082);
       return 2;
     }
-    AppMethodBeat.o(205448);
+    AppMethodBeat.o(210082);
     return 0;
   }
   
-  public final void dSw()
+  public final void euX()
   {
-    AppMethodBeat.i(205447);
+    AppMethodBeat.i(210080);
     Object localObject;
-    if (!this.QxK)
+    if (!this.XVP)
     {
-      if (this.QFO == null)
+      if (this.YeD == null)
       {
         Log.w("MicroMsg.InputIEdtBoundaryCheck", "edit text view is null");
-        AppMethodBeat.o(205447);
+        AppMethodBeat.o(210080);
         return;
       }
-      if (Util.isNullOrNil(this.QxO))
+      if (Util.isNullOrNil(this.XVT))
       {
-        localObject = a(this.QxM, this.ots);
-        ((c)this.QFO.get()).setFilters(new InputFilter[] { localObject });
+        localObject = a(this.XVR, this.rvC);
+        ((c)this.YeD.get()).setFilters(new InputFilter[] { localObject });
       }
     }
-    else if (this.QxP != null)
+    else if (this.XVU != null)
     {
-      switch (bCj())
+      switch (bNF())
       {
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(205447);
+      AppMethodBeat.o(210080);
       return;
-      this.QxO.add(a(this.QxM, this.ots));
-      localObject = (InputFilter[])this.QxO.toArray(new InputFilter[this.QxO.size()]);
-      ((c)this.QFO.get()).setFilters((InputFilter[])localObject);
+      this.XVT.add(a(this.XVR, this.rvC));
+      localObject = (InputFilter[])this.XVT.toArray(new InputFilter[this.XVT.size()]);
+      ((c)this.YeD.get()).setFilters((InputFilter[])localObject);
       break;
-      this.QxP.Tw(this.mText);
-      AppMethodBeat.o(205447);
+      this.XVU.abc(this.mText);
+      AppMethodBeat.o(210080);
       return;
-      this.QxP.Tx(this.mText);
-      AppMethodBeat.o(205447);
+      this.XVU.abd(this.mText);
+      AppMethodBeat.o(210080);
       return;
-      this.QxP.dv(this.mText);
+      this.XVU.dN(this.mText);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cedit.api.d
  * JD-Core Version:    0.7.0.1
  */

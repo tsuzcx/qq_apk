@@ -10,30 +10,15 @@ import com.tencent.wework.api.util.SessionProvider;
 
 public abstract class BaseMessage
 {
-  protected static SessionProvider Sxr = null;
-  public String Sxp;
-  public String Sxq;
-  protected String Sxs;
+  protected static SessionProvider ZYr = null;
+  protected String EsO = "";
+  public String ZYp;
+  public String ZYq;
+  protected String ZYs;
   public String appName;
   protected Context mContext = null;
   public int sdkVer;
   public String transaction;
-  protected String yOQ = "";
-  
-  public static BaseMessage A(Uri paramUri)
-  {
-    try
-    {
-      paramUri = paramUri.getQueryParameter("wwoid");
-      if (!TextUtils.isEmpty(paramUri))
-      {
-        paramUri = (BaseMessage)ReflecterHelper.newInstance(paramUri);
-        return paramUri;
-      }
-    }
-    catch (Throwable paramUri) {}
-    return null;
-  }
   
   public static Bundle a(BaseMessage paramBaseMessage)
   {
@@ -46,7 +31,7 @@ public abstract class BaseMessage
     return localBundle;
   }
   
-  public static BaseMessage bB(Bundle paramBundle)
+  public static BaseMessage by(Bundle paramBundle)
   {
     try
     {
@@ -62,14 +47,29 @@ public abstract class BaseMessage
     return null;
   }
   
-  public void brA(String paramString)
+  public static BaseMessage t(Uri paramUri)
   {
-    this.Sxs = paramString;
+    try
+    {
+      paramUri = paramUri.getQueryParameter("wwoid");
+      if (!TextUtils.isEmpty(paramUri))
+      {
+        paramUri = (BaseMessage)ReflecterHelper.newInstance(paramUri);
+        return paramUri;
+      }
+    }
+    catch (Throwable paramUri) {}
+    return null;
   }
   
-  public final void brz(String paramString)
+  public final void bEy(String paramString)
   {
-    this.yOQ = paramString;
+    this.EsO = paramString;
+  }
+  
+  public void bEz(String paramString)
+  {
+    this.ZYs = paramString;
   }
   
   public abstract boolean checkArgs();
@@ -83,11 +83,11 @@ public abstract class BaseMessage
   
   public abstract void toBundle(Bundle paramBundle);
   
-  public void v(Intent paramIntent, String paramString) {}
+  public void u(Intent paramIntent, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wework.api.model.BaseMessage
  * JD-Core Version:    0.7.0.1
  */

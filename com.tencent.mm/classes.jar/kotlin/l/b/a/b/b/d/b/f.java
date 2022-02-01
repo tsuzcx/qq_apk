@@ -11,14 +11,14 @@ import kotlin.l.b.a.b.f.b;
 public abstract interface f
   extends d
 {
-  public abstract AnnotatedElement hCG();
+  public abstract AnnotatedElement iGX();
   
   public static final class a
   {
     public static List<c> a(f paramf)
     {
       AppMethodBeat.i(57418);
-      paramf = paramf.hCG();
+      paramf = paramf.iGX();
       if (paramf != null)
       {
         paramf = paramf.getDeclaredAnnotations();
@@ -29,7 +29,7 @@ public abstract interface f
           return paramf;
         }
       }
-      paramf = (List)v.SXr;
+      paramf = (List)v.aaAd;
       AppMethodBeat.o(57418);
       return paramf;
     }
@@ -37,8 +37,8 @@ public abstract interface f
     public static c a(f paramf, b paramb)
     {
       AppMethodBeat.i(57419);
-      p.h(paramb, "fqName");
-      paramf = paramf.hCG();
+      p.k(paramb, "fqName");
+      paramf = paramf.iGX();
       if (paramf != null)
       {
         paramf = paramf.getDeclaredAnnotations();
@@ -56,7 +56,7 @@ public abstract interface f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d.b.f
  * JD-Core Version:    0.7.0.1
  */

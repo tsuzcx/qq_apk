@@ -1,22 +1,23 @@
 package com.tencent.mm.plugin.trafficmonitor;
 
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
 import java.util.TimerTask;
 
 public final class d
   extends e
 {
+  private TimerTask Nfn = null;
   public final String TAG = "MicroMsg.NsmTrafficStatsInspector";
-  private Timer dfh = null;
-  private TimerTask dfi = null;
+  private com.tencent.e.i.d<?> mkC = null;
   private boolean started;
   
-  public final void fAh()
+  public final void gsi()
   {
     AppMethodBeat.i(123899);
     if (this.started)
@@ -26,9 +27,9 @@ public final class d
     }
     this.currentIndex = 0;
     c.init(this.id);
-    c.reset(this.id);
+    c.fs(this.id);
     c.update(this.id);
-    this.dfi = new TimerTask()
+    this.Nfn = new TimerTask()
     {
       public final void run()
       {
@@ -44,7 +45,7 @@ public final class d
         long l3;
         if (i == 0)
         {
-          l2 = c.acm(d.this.id) + c.acl(d.this.id);
+          l2 = c.ajS(d.this.id) + c.ajR(d.this.id);
           l1 = l2;
           long l4 = 0L;
           l3 = l2;
@@ -61,7 +62,7 @@ public final class d
           return;
           if (i == 1)
           {
-            l2 = c.ack(d.this.id) + c.acj(d.this.id);
+            l2 = c.ajQ(d.this.id) + c.ajP(d.this.id);
             l1 = l2;
             l3 = 0L;
           }
@@ -70,8 +71,8 @@ public final class d
             if (i != 2) {
               break;
             }
-            l3 = c.acm(d.this.id) + c.acl(d.this.id);
-            l2 = c.ack(d.this.id) + c.acj(d.this.id);
+            l3 = c.ajS(d.this.id) + c.ajR(d.this.id);
+            l2 = c.ajQ(d.this.id) + c.ajP(d.this.id);
             l1 = l2 + l3;
           }
         }
@@ -79,19 +80,19 @@ public final class d
         return;
         label282:
         d.this.currentIndex = i;
-        if (d.KL(l6))
+        if (d.Si(l6))
         {
           Log.i("MicroMsg.NsmTrafficStatsInspector", "isDownloadAndNormal");
-          d.this.fAj();
+          d.this.gsk();
           AppMethodBeat.o(123898);
           return;
         }
         Log.i("MicroMsg.NsmTrafficStatsInspector", "wxTotalTraffic : %d , interval : %d", new Object[] { Long.valueOf(l1), Long.valueOf(d.this.interval) });
         String str;
         int j;
-        if (d.this.GsO.a((List)localObject, l1, d.this.interval, l5 - l6))
+        if (d.this.NfA.a((List)localObject, l1, d.this.interval, l5 - l6))
         {
-          Double localDouble = Double.valueOf(d.this.GsO.GsU);
+          Double localDouble = Double.valueOf(d.this.NfA.NfG);
           str = String.valueOf(localDouble);
           j = (int)Math.round(localDouble.doubleValue());
           i = 0;
@@ -103,9 +104,9 @@ public final class d
         for (;;)
         {
           Log.i("MicroMsg.NsmTrafficStatsInspector", "Traffic Execced ExceedIndex : %s", new Object[] { str });
-          com.tencent.mm.plugin.report.e.Cxv.idkeyStat(877L, i, 1L, true);
-          com.tencent.mm.plugin.report.e.Cxv.a(15856, new Object[] { Long.valueOf(d.this.interval), localObject.toString(), Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(d.this.GsO.GsT), str, Integer.valueOf(j) });
-          d.this.fAj();
+          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(877L, i, 1L, true);
+          com.tencent.mm.plugin.report.f.Iyx.a(15856, new Object[] { Long.valueOf(d.this.interval), localObject.toString(), Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(d.this.NfA.NfF), str, Integer.valueOf(j) });
+          d.this.gsk();
           AppMethodBeat.o(123898);
           return;
           label554:
@@ -121,10 +122,9 @@ public final class d
         }
       }
     };
-    this.dfh = new Timer();
     try
     {
-      this.dfh.schedule(this.dfi, 0L, this.interval);
+      this.mkC = h.ZvG.b(this.Nfn, 0L, this.interval);
       this.started = true;
       AppMethodBeat.o(123899);
       return;
@@ -140,7 +140,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.trafficmonitor.d
  * JD-Core Version:    0.7.0.1
  */

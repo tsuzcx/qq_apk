@@ -4,8 +4,11 @@ import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a;
-import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.ay.a.a;
+import com.tencent.mm.ay.a.a.c.a;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.plugin.wxpaysdk.api.ResendMsgInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.widget.MMNeat7extView;
@@ -30,25 +33,25 @@ public final class d
       AppMethodBeat.o(67942);
       return;
     }
-    View localView = View.inflate(this.mContext, 2131496092, null);
-    Object localObject = (ImageView)localView.findViewById(2131306840);
-    MMNeat7extView localMMNeat7extView = (MMNeat7extView)localView.findViewById(2131299180);
-    a locala = a.bdb();
-    String str = paramResendMsgInfo.JQW;
+    View localView = View.inflate(this.mContext, a.g.remind_collection_dialog, null);
+    Object localObject = (ImageView)localView.findViewById(a.f.remind_img);
+    MMNeat7extView localMMNeat7extView = (MMNeat7extView)localView.findViewById(a.f.content);
+    a locala = a.bms();
+    String str = paramResendMsgInfo.QPn;
     c.a locala1 = new c.a();
-    locala1.jbq = 2131234657;
-    locala.a(str, (ImageView)localObject, locala1.bdv());
-    localMMNeat7extView.aw(paramResendMsgInfo.description);
+    locala1.lRP = a.e.remittance_remind_collection_default;
+    locala.a(str, (ImageView)localObject, locala1.bmL());
+    localMMNeat7extView.aL(paramResendMsgInfo.description);
     localObject = new f.a(this.mContext);
-    ((f.a)localObject).aC(paramResendMsgInfo.title).hu(localView).boB(paramResendMsgInfo.lHA).boA(paramResendMsgInfo.lHB);
+    ((f.a)localObject).aR(paramResendMsgInfo.title).iK(localView).bBq(paramResendMsgInfo.oDJ).bBp(paramResendMsgInfo.oDK);
     ((f.a)localObject).c(new f.c()
     {
-      public final void e(boolean paramAnonymousBoolean, String paramAnonymousString)
+      public final void g(boolean paramAnonymousBoolean, String paramAnonymousString)
       {
         AppMethodBeat.i(67941);
         Log.i("MicroMsg.RemindCollectionDialog", "onDialogClick() bOk:%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
         if (paramc != null) {
-          paramc.e(paramAnonymousBoolean, paramAnonymousString);
+          paramc.g(paramAnonymousBoolean, paramAnonymousString);
         }
         AppMethodBeat.o(67941);
       }

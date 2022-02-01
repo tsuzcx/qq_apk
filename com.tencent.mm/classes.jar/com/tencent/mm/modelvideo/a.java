@@ -6,46 +6,47 @@ import com.tencent.mm.plugin.a.c;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.u;
 
 public final class a
 {
-  public static void a(s params, int paramInt)
+  public static void a(w paramw, int paramInt)
   {
     AppMethodBeat.i(126778);
-    if (params == null)
+    if (paramw == null)
     {
       Log.w("MicroMsg.AtomStatUtil", "report moov location, but video info is null.");
       AppMethodBeat.o(126778);
       return;
     }
     long l3 = Util.currentTicks();
-    o.bhj();
-    String str = t.Qw(params.getFileName());
+    s.bqB();
+    String str = x.XT(paramw.getFileName());
     long l2 = 0L;
     long l1 = 0L;
     int i;
-    if (c.Sx(str))
+    if (c.ZZ(str))
     {
       i = 1;
       b localb = new b();
-      l2 = localb.Sw(str);
-      if (localb.jPZ != null) {
-        l1 = localb.jPZ.jPV;
+      l2 = localb.ZY(str);
+      if (localb.mHj != null) {
+        l1 = localb.mHj.mHf;
       }
     }
     for (;;)
     {
-      long l4 = params.dTS;
-      str = s.Qn(params.bhv());
-      long l5 = params.iKP;
-      params = new StringBuilder();
-      params.append(l4).append(";").append(str).append(";");
-      params.append(l5).append(";");
-      params.append(i).append(";").append(l2).append(";");
-      params.append(l1).append(";").append(paramInt);
-      params = params.toString();
-      Log.d("MicroMsg.AtomStatUtil", "report moov content : " + params + " cost time: " + Util.ticksToNow(l3));
-      h.CyF.a(11098, new Object[] { Integer.valueOf(8000), params });
+      long l4 = paramw.fNu;
+      str = w.XK(paramw.bqO());
+      long l5 = paramw.lAW;
+      paramw = new StringBuilder();
+      paramw.append(l4).append(";").append(str).append(";");
+      paramw.append(l5).append(";");
+      paramw.append(i).append(";").append(l2).append(";");
+      paramw.append(l1).append(";").append(paramInt);
+      paramw = paramw.toString();
+      Log.d("MicroMsg.AtomStatUtil", "report moov content : " + paramw + " cost time: " + Util.ticksToNow(l3));
+      h.IzE.a(11098, new Object[] { Integer.valueOf(8000), paramw });
       AppMethodBeat.o(126778);
       return;
       l1 = 0L;
@@ -66,15 +67,15 @@ public final class a
     }
     try
     {
-      long l1 = com.tencent.mm.vfs.s.boW(paramString1);
-      long l2 = com.tencent.mm.vfs.s.boW(paramString2);
+      long l1 = u.bBQ(paramString1);
+      long l2 = u.bBQ(paramString2);
       int i = (int)(100L * l2 / l1);
       paramString1 = new StringBuilder();
       paramString1.append(paramInt).append(";").append(l1).append(";");
       paramString1.append(l2).append(";").append(i);
       paramString1 = paramString1.toString();
       Log.d("MicroMsg.AtomStatUtil", "report video remuxing : ".concat(String.valueOf(paramString1)));
-      h.CyF.a(11098, new Object[] { Integer.valueOf(8001), paramString1 });
+      h.IzE.a(11098, new Object[] { Integer.valueOf(8001), paramString1 });
       AppMethodBeat.o(126779);
       return;
     }
@@ -88,7 +89,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelvideo.a
  * JD-Core Version:    0.7.0.1
  */

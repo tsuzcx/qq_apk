@@ -10,5 +10,5 @@
             <TextView android:textSize="@dimen/bd" android:textColor="@color/fx" android:gravity="center" android:layout_gravity="center" android:id="@id/ixn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/au0" />
         </FrameLayout>
     </FrameLayout>
-    <android.support.v7.widget.RecyclerView android:gravity="center" android:id="@id/ab7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="always" />
+    <androidx.recyclerview.widget.RecyclerView android:gravity="center" android:id="@id/ab7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="always" />
 </LinearLayout>

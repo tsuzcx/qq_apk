@@ -60,14 +60,14 @@ class c
   
   private String a(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(222374);
+    AppMethodBeat.i(244424);
     StringBuffer localStringBuffer = new StringBuffer("");
     try
     {
       paramString1 = b(paramString1, paramInt, paramString2);
       if (paramString1 == null)
       {
-        AppMethodBeat.o(222374);
+        AppMethodBeat.o(244424);
         return "";
       }
       paramString1 = new BufferedReader(new InputStreamReader(paramString1));
@@ -85,7 +85,7 @@ class c
     {
       TXCLog.e("TXCIntelligentRoute", "get json string from url failed.", paramString1);
       paramString1 = localStringBuffer.toString();
-      AppMethodBeat.o(222374);
+      AppMethodBeat.o(244424);
     }
   }
   
@@ -270,7 +270,7 @@ class c
   
   private InputStream b(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(222375);
+    AppMethodBeat.i(244425);
     paramString2 = new URL(paramString2).openConnection();
     for (;;)
     {
@@ -304,7 +304,7 @@ class c
         continue;
       }
       paramString1 = paramString2.getInputStream();
-      AppMethodBeat.o(222375);
+      AppMethodBeat.o(244425);
       return paramString1;
       if (paramInt != 2) {
         continue;
@@ -354,9 +354,9 @@ class c
   
   private boolean d(String paramString)
   {
-    AppMethodBeat.i(222376);
+    AppMethodBeat.i(244430);
     boolean bool = Pattern.compile("[0-9]*").matcher(paramString).matches();
-    AppMethodBeat.o(222376);
+    AppMethodBeat.o(244430);
     return bool;
   }
   
@@ -442,7 +442,7 @@ class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.network.c
  * JD-Core Version:    0.7.0.1
  */

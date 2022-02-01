@@ -4,32 +4,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum b
 {
-  private final int nlQ;
+  public final String qnt;
+  private final int qnu;
   
   static
   {
-    AppMethodBeat.i(194365);
-    nlM = new b("WEB_VIEW", 0, 1);
-    nlN = new b("IMAGE", 1, 2);
-    nlO = new b("VIDEO", 2, 2);
-    nlP = new b("ATTACH", 3, 4);
-    nlR = new b[] { nlM, nlN, nlO, nlP };
-    AppMethodBeat.o(194365);
+    AppMethodBeat.i(192454);
+    qnp = new b("WEB_VIEW", 0, "webview", 1);
+    qnq = new b("IMAGE", 1, "image", 2);
+    qnr = new b("VIDEO", 2, "video", 2);
+    qns = new b("ATTACH", 3, "attach", 4);
+    qnv = new b[] { qnp, qnq, qnr, qns };
+    AppMethodBeat.o(192454);
   }
   
-  private b(int paramInt)
+  private b(String paramString, int paramInt)
   {
-    this.nlQ = paramInt;
+    this.qnt = paramString;
+    this.qnu = paramInt;
   }
   
   public final boolean isEnabled(int paramInt)
   {
-    return (this.nlQ & paramInt) != 0;
+    return (this.qnu & paramInt) != 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.openmaterial.model.b
  * JD-Core Version:    0.7.0.1
  */

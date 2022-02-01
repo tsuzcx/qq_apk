@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.fingerprint.b.a;
 
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.fingerprint.b.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
@@ -10,26 +10,26 @@ import com.tencent.mm.storage.ar.a;
 public abstract class a
   implements i
 {
-  public final boolean dKn()
+  public final boolean eoM()
   {
-    return d.dKh();
+    return d.eoG();
   }
   
-  public final boolean dKo()
+  public final boolean eoN()
   {
-    return ((Boolean)g.aAh().azQ().get(ar.a.Ohd, Boolean.FALSE)).booleanValue();
+    return ((Boolean)h.aHG().aHp().get(ar.a.Vvt, Boolean.FALSE)).booleanValue();
   }
   
-  public final void pp(boolean paramBoolean)
+  public final void rJ(boolean paramBoolean)
   {
     Log.i("MicroMsg.AbstractBiometricPayManager", "hy: set isOpenFp: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    d.pl(paramBoolean);
+    d.rF(paramBoolean);
   }
   
-  public final void pq(boolean paramBoolean)
+  public final void rK(boolean paramBoolean)
   {
     Log.i("MicroMsg.AbstractBiometricPayManager", "set is open faceid: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    g.aAh().azQ().set(ar.a.Ohd, Boolean.valueOf(paramBoolean));
+    h.aHG().aHp().set(ar.a.Vvt, Boolean.valueOf(paramBoolean));
   }
 }
 

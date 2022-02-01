@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.luckymoney.story.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ej;
-import com.tencent.mm.protocal.protobuf.edn;
+import com.tencent.mm.f.c.eo;
+import com.tencent.mm.protocal.protobuf.eno;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class c
-  extends ej
+  extends eo
 {
   public static IAutoDBItem.MAutoDBInfo info;
   
@@ -56,38 +56,38 @@ public final class c
     AppMethodBeat.o(163696);
   }
   
-  public static c a(edn paramedn, String paramString)
+  public static c a(eno parameno, String paramString)
   {
     AppMethodBeat.i(163694);
     c localc = new c();
-    if (paramedn != null)
+    if (parameno != null)
     {
       localc.field_packet_id = paramString;
-      localc.field_height = paramedn.height;
-      localc.field_width = paramedn.width;
-      localc.field_media_type = paramedn.Gat;
-      localc.field_media_md5 = paramedn.NdO;
-      localc.field_media_url = paramedn.Gav;
-      localc.field_media_fuzzy_thumbnail_url = paramedn.NdP;
-      localc.field_media_fuzzy_thumbnail_md5 = paramedn.NdQ;
+      localc.field_height = parameno.height;
+      localc.field_width = parameno.width;
+      localc.field_media_type = parameno.Uql;
+      localc.field_media_md5 = parameno.Uqn;
+      localc.field_media_url = parameno.Uqm;
+      localc.field_media_fuzzy_thumbnail_url = parameno.Uqo;
+      localc.field_media_fuzzy_thumbnail_md5 = parameno.Uqp;
     }
     AppMethodBeat.o(163694);
     return localc;
   }
   
-  public static edn a(c paramc)
+  public static eno a(c paramc)
   {
     AppMethodBeat.i(163695);
-    edn localedn = new edn();
-    localedn.height = paramc.field_height;
-    localedn.width = paramc.field_width;
-    localedn.Gat = paramc.field_media_type;
-    localedn.Gav = paramc.field_media_url;
-    localedn.NdO = paramc.field_media_md5;
-    localedn.NdP = paramc.field_media_fuzzy_thumbnail_url;
-    localedn.NdQ = paramc.field_media_fuzzy_thumbnail_md5;
+    eno localeno = new eno();
+    localeno.height = paramc.field_height;
+    localeno.width = paramc.field_width;
+    localeno.Uql = paramc.field_media_type;
+    localeno.Uqm = paramc.field_media_url;
+    localeno.Uqn = paramc.field_media_md5;
+    localeno.Uqo = paramc.field_media_fuzzy_thumbnail_url;
+    localeno.Uqp = paramc.field_media_fuzzy_thumbnail_md5;
     AppMethodBeat.o(163695);
-    return localedn;
+    return localeno;
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()

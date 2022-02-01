@@ -1,16 +1,18 @@
 package com.tencent.mm.plugin.fav.b.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
 import com.tencent.mm.compatible.util.f.a;
+import com.tencent.mm.kernel.c;
 import com.tencent.mm.network.p;
 import com.tencent.mm.network.p.a;
-import com.tencent.mm.plugin.fav.a.af;
-import com.tencent.mm.plugin.fav.a.aj;
-import com.tencent.mm.plugin.fav.a.r;
-import com.tencent.mm.plugin.fav.a.x;
+import com.tencent.mm.plugin.fav.a.ag;
+import com.tencent.mm.plugin.fav.a.ak;
+import com.tencent.mm.plugin.fav.a.g;
+import com.tencent.mm.plugin.fav.a.s;
+import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -24,22 +26,22 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-public final class b
-  implements i, r
+public class b
+  implements i, s
 {
-  private static Map<Long, f.a> dAC;
-  private Queue<com.tencent.mm.plugin.fav.a.g> dAA;
-  private boolean dAE;
-  private long dAG;
-  public MTimerHandler dAJ;
-  public p iRt;
+  private static Map<Long, f.a> ftr;
+  private Queue<g> ftp;
+  private boolean ftt;
+  private long ftv;
+  public MTimerHandler fty;
+  public p lHL;
   private boolean running;
-  private boolean tcf;
+  private boolean wIk;
   
   static
   {
     AppMethodBeat.i(101621);
-    dAC = new HashMap();
+    ftr = new HashMap();
     AppMethodBeat.o(101621);
   }
   
@@ -47,10 +49,10 @@ public final class b
   {
     AppMethodBeat.i(101616);
     this.running = false;
-    this.dAG = 0L;
-    this.dAE = false;
-    this.dAA = new LinkedList();
-    this.iRt = new p.a()
+    this.ftv = 0L;
+    this.ftt = false;
+    this.ftp = new LinkedList();
+    this.lHL = new p.a()
     {
       public final void onNetworkChange(int paramAnonymousInt)
       {
@@ -69,7 +71,7 @@ public final class b
           if ((!b.c(b.this)) && (bool))
           {
             b localb = b.this;
-            Object localObject = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().cUR();
+            Object localObject = ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().djX();
             if ((localObject == null) || (((List)localObject).size() <= 0)) {
               break label271;
             }
@@ -77,11 +79,11 @@ public final class b
             localObject = ((List)localObject).iterator();
             while (((Iterator)localObject).hasNext())
             {
-              com.tencent.mm.plugin.fav.a.g localg = (com.tencent.mm.plugin.fav.a.g)((Iterator)localObject).next();
+              g localg = (g)((Iterator)localObject).next();
               if (localg.field_itemStatus == 3)
               {
                 localg.field_itemStatus = 1;
-                ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().a(localg, new String[] { "localId" });
+                ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().a(localg, new String[] { "localId" });
               }
             }
             localException.run();
@@ -103,7 +105,7 @@ public final class b
         }
       }
     };
-    this.dAJ = new MTimerHandler(com.tencent.mm.kernel.g.aAk().getLooper(), new MTimerHandler.CallBack()
+    this.fty = new MTimerHandler(com.tencent.mm.kernel.h.aHJ().getLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -131,26 +133,26 @@ public final class b
         return str;
       }
     }, false);
-    this.tcf = NetStatusUtil.isWifi(MMApplicationContext.getContext());
-    com.tencent.mm.kernel.g.aAg().a(this.iRt);
-    com.tencent.mm.kernel.g.azz().a(404, this);
+    this.wIk = NetStatusUtil.isWifi(MMApplicationContext.getContext());
+    com.tencent.mm.kernel.h.aHF().a(this.lHL);
+    com.tencent.mm.kernel.h.aGY().a(404, this);
     AppMethodBeat.o(101616);
   }
   
-  public final void aax()
+  public final void afk()
   {
     AppMethodBeat.i(101619);
-    this.dAA.clear();
-    dAC.clear();
+    this.ftp.clear();
+    ftr.clear();
     this.running = false;
-    this.dAE = false;
+    this.ftt = false;
     AppMethodBeat.o(101619);
   }
   
-  public final void onSceneEnd(final int paramInt1, int paramInt2, String paramString, final q paramq)
+  public void onSceneEnd(final int paramInt1, int paramInt2, String paramString, final q paramq)
   {
     AppMethodBeat.i(101617);
-    com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
+    com.tencent.mm.kernel.h.aHJ().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -160,20 +162,20 @@ public final class b
           AppMethodBeat.o(101609);
           return;
         }
-        if (!(paramq instanceof aj))
+        if (!(paramq instanceof ak))
         {
           AppMethodBeat.o(101609);
           return;
         }
         b.a(b.this);
-        long l = ((aj)paramq).tbr.field_localId;
-        com.tencent.mm.plugin.fav.a.g localg = ((aj)paramq).tbr;
-        b.apb().remove(Long.valueOf(l));
+        long l = ((ak)paramq).wHw.field_localId;
+        g localg = ((ak)paramq).wHw;
+        b.avo().remove(Long.valueOf(l));
         if (paramInt1 != 0)
         {
           Log.e("MicroMsg.Fav.FavCheckCdnService", "achieved retry limit, set error, localId:%d", new Object[] { Long.valueOf(l) });
-          com.tencent.mm.plugin.report.service.h.CyF.a(10659, new Object[] { Integer.valueOf(0), Integer.valueOf(localg.field_type), Integer.valueOf(-2), Long.valueOf(com.tencent.mm.plugin.fav.a.b.b(localg)), Long.valueOf(com.tencent.mm.plugin.fav.a.h.DR(localg.field_localId)) });
-          ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().af(3, l);
+          com.tencent.mm.plugin.report.service.h.IzE.a(10659, new Object[] { Integer.valueOf(0), Integer.valueOf(localg.field_type), Integer.valueOf(-2), Long.valueOf(com.tencent.mm.plugin.fav.a.b.b(localg)), Long.valueOf(com.tencent.mm.plugin.fav.a.h.Kf(localg.field_localId)) });
+          ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().ag(3, l);
         }
         b.b(b.this);
         AppMethodBeat.o(101609);
@@ -193,7 +195,7 @@ public final class b
   public final void run()
   {
     AppMethodBeat.i(101618);
-    com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
+    com.tencent.mm.kernel.h.aHJ().postToWorker(new Runnable()
     {
       public final void run()
       {

@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -17,29 +17,29 @@ import javax.crypto.spec.IvParameterSpec;
 
 public final class j
 {
-  public static int Brw = 100;
-  public String Brx;
-  private int maxCount;
+  public static int HlP = 100;
+  public String HlQ;
+  private int iWH;
   
   public j(String paramString, int paramInt)
   {
     AppMethodBeat.i(122667);
-    this.Brx = null;
-    this.maxCount = Brw;
+    this.HlQ = null;
+    this.iWH = HlP;
     Log.i("Msg.Plugin.HttpRequestCache", "HttpRequestCache constructor, path = " + paramString + ", maxCount = " + paramInt);
-    this.Brx = paramString;
-    s.boN(this.Brx);
+    this.HlQ = paramString;
+    u.bBD(this.HlQ);
     if (paramInt > 0) {}
     for (;;)
     {
-      this.maxCount = paramInt;
+      this.iWH = paramInt;
       AppMethodBeat.o(122667);
       return;
-      paramInt = Brw;
+      paramInt = HlP;
     }
   }
   
-  static String J(String paramString, Map<String, String> paramMap)
+  static String L(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(122670);
     StringBuffer localStringBuffer = new StringBuffer();
@@ -61,7 +61,7 @@ public final class j
     return paramString;
   }
   
-  static byte[] aKC(String paramString)
+  static byte[] aVd(String paramString)
   {
     AppMethodBeat.i(122671);
     paramString = g.getMessageDigest(paramString.toString().getBytes()).substring(8, 16).getBytes();
@@ -118,7 +118,7 @@ public final class j
   public static byte[] readFromFile(String paramString)
   {
     AppMethodBeat.i(185979);
-    paramString = s.aW(paramString, 0, -1);
+    paramString = u.aY(paramString, 0, -1);
     AppMethodBeat.o(185979);
     return paramString;
   }
@@ -126,7 +126,7 @@ public final class j
   public static boolean writeToFile(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(122677);
-    if (Util.isEqual(s.f(paramString, paramArrayOfByte, paramArrayOfByte.length), 0))
+    if (Util.isEqual(u.H(paramString, paramArrayOfByte), 0))
     {
       AppMethodBeat.o(122677);
       return true;
@@ -135,36 +135,36 @@ public final class j
     return false;
   }
   
-  public final void eGm()
+  public final void fsn()
   {
     int j = 0;
     AppMethodBeat.i(122673);
-    Object localObject = new o(this.Brx).list();
+    Object localObject = new q(this.HlQ).ifI();
     if (localObject != null) {}
-    for (int i = localObject.length; i < this.maxCount; i = 0)
+    for (int i = localObject.length; i < this.iWH; i = 0)
     {
       AppMethodBeat.o(122673);
       return;
     }
-    String[] arrayOfString = new o(this.Brx).list();
+    String[] arrayOfString = new q(this.HlQ).ifI();
     localObject = null;
     int k = arrayOfString.length;
     i = j;
     while (i < k)
     {
-      localObject = new o(arrayOfString[i]);
-      ((o)localObject).lastModified();
+      localObject = new q(arrayOfString[i]);
+      ((q)localObject).lastModified();
       i += 1;
     }
-    if (((o)localObject).exists()) {
-      ((o)localObject).delete();
+    if (((q)localObject).ifE()) {
+      ((q)localObject).cFq();
     }
     AppMethodBeat.o(122673);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.d.j
  * JD-Core Version:    0.7.0.1
  */

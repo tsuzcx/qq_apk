@@ -15,65 +15,70 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.Scroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.d;
+import com.tencent.mm.ah.a.f;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.tools.k;
-import com.tencent.mm.ui.tools.k.a;
+import com.tencent.mm.ui.tools.l;
+import com.tencent.mm.ui.tools.l.a;
 
 public class MMPullDownView
   extends FrameLayout
   implements GestureDetector.OnGestureListener
 {
-  private static int OSv;
-  private static final int OSy;
-  public View GEr;
-  private int OPU;
-  private int OPi;
-  private g ORV;
-  private e ORW;
-  private int ORX;
-  private int ORY;
-  private boolean ORZ;
-  private int OSA;
-  private b OSB;
-  private boolean OSa;
-  private boolean OSb;
-  protected boolean OSc;
-  private boolean OSd;
-  private boolean OSe;
-  private boolean OSf;
-  private c OSg;
-  private d OSh;
-  public View OSi;
-  private int OSj;
-  private int OSk;
-  private int OSl;
-  private boolean OSm;
-  private f OSn;
-  private boolean OSo;
-  private boolean OSp;
-  public boolean OSq;
-  private k OSr;
-  private boolean OSs;
-  private a OSt;
-  private int OSu;
-  private MMHandler OSw;
-  boolean OSx;
-  private boolean OSz;
+  private static int WlI;
+  private static final int WlL;
+  public View Nsh;
+  private int Wip;
+  private int Wjb;
+  private f WlA;
+  private boolean WlB;
+  public boolean WlC;
+  private boolean WlD;
+  private l WlE;
+  private boolean WlF;
+  private MMPullDownView.a WlG;
+  private int WlH;
+  private MMHandler WlJ;
+  boolean WlK;
+  private boolean WlM;
+  private int WlN;
+  private b WlO;
+  private g Wli;
+  private e Wlj;
+  private int Wlk;
+  private int Wll;
+  private boolean Wlm;
+  private boolean Wln;
+  private boolean Wlo;
+  protected boolean Wlp;
+  private boolean Wlq;
+  private boolean Wlr;
+  private boolean Wls;
+  private c Wlt;
+  private d Wlu;
+  public View Wlv;
+  private int Wlw;
+  private int Wlx;
+  private int Wly;
+  private boolean Wlz;
   private int bgColor;
   protected Context context;
-  private GestureDetector jKk;
+  private GestureDetector mBn;
   private Scroller mScroller;
-  private boolean onY;
+  private boolean rpV;
+  private boolean yiG;
   
   static
   {
     AppMethodBeat.i(142100);
-    OSv = 400;
-    OSy = Color.parseColor("#00000000");
+    WlI = 400;
+    WlL = Color.parseColor("#00000000");
     AppMethodBeat.o(142100);
   }
   
@@ -86,25 +91,26 @@ public class MMPullDownView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142077);
-    this.OPU = 1;
-    this.ORZ = false;
-    this.OSa = false;
-    this.onY = false;
-    this.OSb = false;
-    this.OSc = true;
-    this.OSd = false;
-    this.OSe = true;
-    this.OSf = true;
-    this.OSk = 4;
-    this.OSl = 4;
-    this.OSm = false;
-    this.OSo = true;
-    this.OSp = true;
-    this.OSq = false;
-    this.OSs = false;
-    this.bgColor = MMApplicationContext.getContext().getResources().getColor(2131101424);
-    this.OSu = this.bgColor;
-    this.OSw = new MMHandler()
+    this.Wjb = 1;
+    this.Wlm = false;
+    this.Wln = false;
+    this.rpV = false;
+    this.Wlo = false;
+    this.Wlp = true;
+    this.Wlq = false;
+    this.Wlr = true;
+    this.Wls = true;
+    this.Wlx = 4;
+    this.Wly = 4;
+    this.Wlz = false;
+    this.WlB = true;
+    this.yiG = true;
+    this.WlC = false;
+    this.WlD = false;
+    this.WlF = false;
+    this.bgColor = MMApplicationContext.getContext().getResources().getColor(a.d.white);
+    this.WlH = this.bgColor;
+    this.WlJ = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -115,120 +121,120 @@ public class MMPullDownView
         }
         for (;;)
         {
-          Log.i("MicroMsg.MMPullDownView", "updateDelayHandler handleMessage loadDataType[%d] loadDataEnd[%b]", new Object[] { Integer.valueOf(MMPullDownView.a(MMPullDownView.this)), Boolean.valueOf(MMPullDownView.this.OSc) });
+          Log.i("MicroMsg.MMPullDownView", "updateDelayHandler handleMessage loadDataType[%d] loadDataEnd[%b]", new Object[] { Integer.valueOf(MMPullDownView.a(MMPullDownView.this)), Boolean.valueOf(MMPullDownView.this.Wlp) });
           AppMethodBeat.o(142076);
           return;
           if (MMPullDownView.b(MMPullDownView.this) != null) {
-            MMPullDownView.this.OSc = MMPullDownView.b(MMPullDownView.this).cAm();
+            MMPullDownView.this.Wlp = MMPullDownView.b(MMPullDownView.this).cOM();
           }
-          if ((MMPullDownView.this.OSc) && (MMPullDownView.c(MMPullDownView.this).getVisibility() == 0))
+          if ((MMPullDownView.this.Wlp) && (MMPullDownView.c(MMPullDownView.this).getVisibility() == 0))
           {
             MMPullDownView.this.scrollTo(0, MMPullDownView.d(MMPullDownView.this));
             continue;
             if (MMPullDownView.e(MMPullDownView.this) != null) {
-              MMPullDownView.this.OSc = MMPullDownView.e(MMPullDownView.this).cAj();
+              MMPullDownView.this.Wlp = MMPullDownView.e(MMPullDownView.this).cOJ();
             }
-            if ((MMPullDownView.this.OSc) && (MMPullDownView.f(MMPullDownView.this).getVisibility() == 0)) {
+            if ((MMPullDownView.this.Wlp) && (MMPullDownView.f(MMPullDownView.this).getVisibility() == 0)) {
               MMPullDownView.this.scrollTo(0, MMPullDownView.d(MMPullDownView.this));
             }
           }
         }
       }
     };
-    this.OSx = false;
-    this.OSz = false;
-    this.OSA = -2147483648;
+    this.WlK = false;
+    this.WlM = false;
+    this.WlN = -2147483648;
     this.mScroller = new Scroller(paramContext, new AccelerateInterpolator());
-    this.OPi = this.OPU;
-    this.jKk = new GestureDetector(paramContext, this);
-    this.OSr = new k(paramContext);
+    this.Wip = this.Wjb;
+    this.mBn = new GestureDetector(paramContext, this);
+    this.WlE = new l(paramContext);
     this.context = paramContext;
-    this.bgColor = paramContext.getResources().getColor(2131101424);
-    this.OSu = this.bgColor;
+    this.bgColor = paramContext.getResources().getColor(a.d.white);
+    this.WlH = this.bgColor;
     AppMethodBeat.o(142077);
   }
   
-  private void gKT()
+  private void hJR()
   {
     AppMethodBeat.i(142086);
-    n((ViewGroup)this.OSi, 0);
-    n((ViewGroup)this.GEr, 0);
+    o((ViewGroup)this.Wlv, 0);
+    o((ViewGroup)this.Nsh, 0);
     AppMethodBeat.o(142086);
   }
   
-  private void gKU()
+  private void hJS()
   {
     AppMethodBeat.i(142095);
-    if (this.OSn != null) {
-      this.OSn.fjr();
+    if (this.WlA != null) {
+      this.WlA.fXE();
     }
     Scroller localScroller;
     int i;
     int j;
-    if (getScrollY() - this.ORX < 0)
+    if (getScrollY() - this.Wlk < 0)
     {
-      if (this.OSe)
+      if (this.Wlr)
       {
         localScroller = this.mScroller;
         i = getScrollY();
         j = -getScrollY();
-        localScroller.startScroll(0, i, 0, this.ORX + j, 200);
+        localScroller.startScroll(0, i, 0, this.Wlk + j, 200);
         postInvalidate();
       }
     }
-    else if (getScrollY() > this.ORY)
+    else if (getScrollY() > this.Wll)
     {
-      if (!this.OSf) {
+      if (!this.Wls) {
         break label230;
       }
-      this.mScroller.startScroll(0, getScrollY(), 0, this.ORY - getScrollY(), 200);
+      this.mScroller.startScroll(0, getScrollY(), 0, this.Wll - getScrollY(), 200);
     }
     for (;;)
     {
       postInvalidate();
-      this.onY = false;
+      this.rpV = false;
       AppMethodBeat.o(142095);
       return;
-      if (this.OSi.getVisibility() == 4)
+      if (this.Wlv.getVisibility() == 4)
       {
         localScroller = this.mScroller;
         i = getScrollY();
         j = -getScrollY();
-        localScroller.startScroll(0, i, 0, this.ORX + j, 200);
+        localScroller.startScroll(0, i, 0, this.Wlk + j, 200);
       }
-      if (this.OSi.getVisibility() == 0) {
+      if (this.Wlv.getVisibility() == 0) {
         this.mScroller.startScroll(0, getScrollY(), 0, -getScrollY(), 200);
       }
-      this.OSj = 0;
-      this.OSb = true;
-      this.OSc = false;
+      this.Wlw = 0;
+      this.Wlo = true;
+      this.Wlp = false;
       break;
       label230:
-      if (this.GEr.getVisibility() == 4) {
-        this.mScroller.startScroll(0, getScrollY(), 0, this.ORY - getScrollY(), 200);
+      if (this.Nsh.getVisibility() == 4) {
+        this.mScroller.startScroll(0, getScrollY(), 0, this.Wll - getScrollY(), 200);
       }
-      if (this.GEr.getVisibility() == 0)
+      if (this.Nsh.getVisibility() == 0)
       {
         localScroller = this.mScroller;
         i = getScrollY();
-        j = this.ORY;
+        j = this.Wll;
         int k = getScrollY();
-        localScroller.startScroll(0, i, 0, this.ORY + (j - k), 200);
+        localScroller.startScroll(0, i, 0, this.Wll + (j - k), 200);
       }
-      this.OSj = 1;
-      this.OSb = true;
-      this.OSc = false;
+      this.Wlw = 1;
+      this.Wlo = true;
+      this.Wlp = false;
     }
   }
   
-  public static void n(ViewGroup paramViewGroup, int paramInt)
+  public static void o(ViewGroup paramViewGroup, int paramInt)
   {
     AppMethodBeat.i(142085);
     Log.i("MicroMsg.MMPullDownView", "fix android O progress bar bug. visibility=".concat(String.valueOf(paramInt)));
     if ((paramViewGroup != null) && (paramViewGroup.getVisibility() == 0))
     {
       if (paramViewGroup.getTag() == null) {
-        paramViewGroup.setTag(paramViewGroup.findViewById(2131298501));
+        paramViewGroup.setTag(paramViewGroup.findViewById(a.g.chatting_load_progress));
       }
       paramViewGroup = (View)paramViewGroup.getTag();
       if (paramViewGroup != null) {
@@ -238,116 +244,123 @@ public class MMPullDownView
     AppMethodBeat.o(142085);
   }
   
-  public void Bx(boolean paramBoolean)
+  public final void FP(boolean paramBoolean)
   {
     AppMethodBeat.i(142093);
-    Log.i("MicroMsg.MMPullDownView", "forceTopLoadData start[%b] loadDataBegin[%b], loadDataEnd[%b], isTopShowAll[%b], getScrollY[%d]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.OSb), Boolean.valueOf(this.OSc), Boolean.valueOf(this.OSe), Integer.valueOf(getScrollY()) });
-    Scroller localScroller;
-    int i;
-    int j;
-    if (paramBoolean)
-    {
-      if (this.OSi != null) {
-        this.OSi.setVisibility(this.OSl);
-      }
-      if (this.OSe)
-      {
-        localScroller = this.mScroller;
-        i = getScrollY();
-        j = -getScrollY();
-        localScroller.startScroll(0, i, 0, this.ORX + j, 200);
-        postInvalidate();
-      }
-    }
-    for (;;)
-    {
-      if (!this.OSe) {
-        gKT();
-      }
-      AppMethodBeat.o(142093);
-      return;
-      if ((this.OSi != null) && (this.OSi.getVisibility() == 4))
-      {
-        localScroller = this.mScroller;
-        i = getScrollY();
-        j = -getScrollY();
-        localScroller.startScroll(0, i, 0, this.ORX + j, 200);
-      }
-      if ((this.OSi != null) && (this.OSi.getVisibility() == 0)) {
-        this.mScroller.startScroll(0, getScrollY(), 0, -getScrollY(), 200);
-      }
-      this.OSj = 0;
-      this.OSb = true;
-      this.OSc = false;
-      break;
-      if (!this.OSc)
-      {
-        this.OSc = true;
-        this.OSb = false;
-        if ((this.OSi != null) && (this.OSi.getVisibility() == 0)) {
-          scrollTo(0, this.ORX);
-        }
-      }
-      if ((this.OSi != null) && (this.OSi.getVisibility() == 0)) {
-        this.OSi.setVisibility(8);
-      }
-    }
+    am(paramBoolean, 200);
+    AppMethodBeat.o(142093);
   }
   
-  public final void By(boolean paramBoolean)
+  public final void FQ(boolean paramBoolean)
   {
     AppMethodBeat.i(142094);
-    Log.i("MicroMsg.MMPullDownView", "forceBottomLoadData start[%b] loadDataBegin[%b] loadDataEnd[%b], isBottomShowAll[%b], getScrollY[%d]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.OSb), Boolean.valueOf(this.OSc), Boolean.valueOf(this.OSf), Integer.valueOf(getScrollY()) });
+    Log.i("MicroMsg.MMPullDownView", "forceBottomLoadData start[%b] loadDataBegin[%b] loadDataEnd[%b], isBottomShowAll[%b], getScrollY[%d]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.Wlo), Boolean.valueOf(this.Wlp), Boolean.valueOf(this.Wls), Integer.valueOf(getScrollY()) });
     if (paramBoolean)
     {
-      if (this.GEr != null) {
-        this.GEr.setVisibility(this.OSl);
+      if (this.Nsh != null) {
+        this.Nsh.setVisibility(this.Wly);
       }
-      if (this.OSf) {
-        this.mScroller.startScroll(0, getScrollY(), 0, this.ORY - getScrollY(), 200);
+      if (this.Wls) {
+        this.mScroller.startScroll(0, getScrollY(), 0, this.Wll - getScrollY(), 200);
       }
       for (;;)
       {
         postInvalidate();
         AppMethodBeat.o(142094);
         return;
-        if ((this.GEr != null) && (this.GEr.getVisibility() == 4)) {
-          this.mScroller.startScroll(0, getScrollY(), 0, this.ORY - getScrollY(), 200);
+        if ((this.Nsh != null) && (this.Nsh.getVisibility() == 4)) {
+          this.mScroller.startScroll(0, getScrollY(), 0, this.Wll - getScrollY(), 200);
         }
-        if ((this.GEr != null) && (this.GEr.getVisibility() == 0))
+        if ((this.Nsh != null) && (this.Nsh.getVisibility() == 0))
         {
           Scroller localScroller = this.mScroller;
           int i = getScrollY();
-          int j = this.ORY;
+          int j = this.Wll;
           int k = getScrollY();
-          localScroller.startScroll(0, i, 0, this.ORY + (j - k), 200);
+          localScroller.startScroll(0, i, 0, this.Wll + (j - k), 200);
         }
-        this.OSj = 1;
-        this.OSb = true;
-        this.OSc = false;
+        this.Wlw = 1;
+        this.Wlo = true;
+        this.Wlp = false;
       }
     }
-    if (!this.OSc)
+    if (!this.Wlp)
     {
-      this.OSc = true;
-      this.OSb = false;
+      this.Wlp = true;
+      this.Wlo = false;
     }
-    if ((this.GEr != null) && (this.GEr.getVisibility() == 0))
+    if ((this.Nsh != null) && (this.Nsh.getVisibility() == 0))
     {
       Log.i("MicroMsg.MMPullDownView", "forceBottomLoadData false bottomView VISIBLE scroll to 0");
-      scrollTo(0, this.ORX);
+      scrollTo(0, this.Wlk);
     }
-    if ((this.GEr != null) && (this.GEr.getVisibility() == 0)) {
-      this.GEr.setVisibility(8);
+    if ((this.Nsh != null) && (this.Nsh.getVisibility() == 0)) {
+      this.Nsh.setVisibility(8);
     }
     AppMethodBeat.o(142094);
   }
   
-  protected void cAG()
+  public void am(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(293083);
+    Log.i("MicroMsg.MMPullDownView", "forceTopLoadData start[%b] loadDataBegin[%b], loadDataEnd[%b], isTopShowAll[%b], getScrollY[%d]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.Wlo), Boolean.valueOf(this.Wlp), Boolean.valueOf(this.Wlr), Integer.valueOf(getScrollY()) });
+    Scroller localScroller;
+    int i;
+    int j;
+    if (paramBoolean)
+    {
+      if (this.Wlv != null) {
+        this.Wlv.setVisibility(this.Wly);
+      }
+      if (this.Wlr)
+      {
+        localScroller = this.mScroller;
+        i = getScrollY();
+        j = -getScrollY();
+        localScroller.startScroll(0, i, 0, this.Wlk + j, paramInt);
+        postInvalidate();
+      }
+    }
+    for (;;)
+    {
+      if (!this.Wlr) {
+        hJR();
+      }
+      AppMethodBeat.o(293083);
+      return;
+      if ((this.Wlv != null) && (this.Wlv.getVisibility() == 4))
+      {
+        localScroller = this.mScroller;
+        i = getScrollY();
+        j = -getScrollY();
+        localScroller.startScroll(0, i, 0, this.Wlk + j, paramInt);
+      }
+      if ((this.Wlv != null) && (this.Wlv.getVisibility() == 0)) {
+        this.mScroller.startScroll(0, getScrollY(), 0, -getScrollY(), paramInt);
+      }
+      this.Wlw = 0;
+      this.Wlo = true;
+      this.Wlp = false;
+      break;
+      if (!this.Wlp)
+      {
+        this.Wlp = true;
+        this.Wlo = false;
+        if ((this.Wlv != null) && (this.Wlv.getVisibility() == 0)) {
+          scrollTo(0, this.Wlk);
+        }
+      }
+      if ((this.Wlv != null) && (this.Wlv.getVisibility() == 0)) {
+        this.Wlv.setVisibility(8);
+      }
+    }
+  }
+  
+  protected void cPg()
   {
     AppMethodBeat.i(142078);
-    View localView1 = inflate(this.context, 2131495305, null);
-    View localView2 = inflate(this.context, 2131495305, null);
+    View localView1 = inflate(this.context, a.h.loading_view, null);
+    View localView2 = inflate(this.context, a.h.loading_view, null);
     addView(localView1, 0, new FrameLayout.LayoutParams(-1, -2));
     addView(localView2, new FrameLayout.LayoutParams(-1, -2));
     AppMethodBeat.o(142078);
@@ -366,12 +379,12 @@ public class MMPullDownView
       this.mScroller.isFinished();
       AppMethodBeat.o(142089);
       return;
-      if (this.OSb)
+      if (this.Wlo)
       {
         Log.i("MicroMsg.MMPullDownView", "computeScroll loadDataBegin true UPDATE_DELAY");
-        this.OSb = false;
-        this.OSw.sendEmptyMessageDelayed(0, OSv);
-        gKT();
+        this.Wlo = false;
+        this.WlJ.sendEmptyMessageDelayed(0, WlI);
+        hJR();
       }
     }
   }
@@ -380,54 +393,54 @@ public class MMPullDownView
   {
     AppMethodBeat.i(142092);
     boolean bool;
-    if (!this.OSp)
+    if (!this.yiG)
     {
       bool = super.dispatchTouchEvent(paramMotionEvent);
       AppMethodBeat.o(142092);
       return bool;
     }
-    if ((this.OSq) && (paramMotionEvent.getAction() == 2))
+    if ((this.WlC) && (paramMotionEvent.getAction() == 2))
     {
       bool = super.dispatchTouchEvent(paramMotionEvent);
       AppMethodBeat.o(142092);
       return bool;
     }
-    this.OSq = false;
-    Object localObject = this.OSr;
-    if (((k)localObject).Quy != null)
+    this.WlC = false;
+    Object localObject = this.WlE;
+    if (((l)localObject).XSA != null)
     {
-      localObject = ((k)localObject).aYg;
-      locala = new com.tencent.mm.hellhoundlib.b.a().bl(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.axQ(), "com/tencent/mm/ui/tools/MMGestureDetector", "onTouchEvent", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-      com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)locala.pG(0)), "com/tencent/mm/ui/tools/MMGestureDetector", "onTouchEvent", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      localObject = ((l)localObject).aHB;
+      locala = new com.tencent.mm.hellhoundlib.b.a().bm(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aFh(), "com/tencent/mm/ui/tools/MMGestureDetector", "onTouchEvent", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)locala.sf(0)), "com/tencent/mm/ui/tools/MMGestureDetector", "onTouchEvent", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     }
-    if (!this.OSc)
+    if (!this.Wlp)
     {
       AppMethodBeat.o(142092);
       return true;
     }
-    if (this.OSh == null)
+    if (this.Wlu == null)
     {
-      this.ORZ = false;
-      if (this.OSg != null) {
+      this.Wlm = false;
+      if (this.Wlt != null) {
         break label279;
       }
-      this.OSa = false;
+      this.Wln = false;
       label193:
-      if (this.OSl == 0)
+      if (this.Wly == 0)
       {
-        if (!this.OSe) {
+        if (!this.Wlr) {
           break label295;
         }
-        this.OSi.setVisibility(4);
+        this.Wlv.setVisibility(4);
       }
       label215:
-      if (this.OSk == 0)
+      if (this.Wlx == 0)
       {
-        if (!this.OSf) {
+        if (!this.Wls) {
           break label306;
         }
-        this.GEr.setVisibility(4);
+        this.Nsh.setVisibility(4);
       }
     }
     for (;;)
@@ -435,26 +448,26 @@ public class MMPullDownView
       if (paramMotionEvent.getAction() != 1) {
         break label317;
       }
-      gKU();
+      hJS();
       bool = super.dispatchTouchEvent(paramMotionEvent);
       AppMethodBeat.o(142092);
       return bool;
-      this.ORZ = this.OSh.cAk();
+      this.Wlm = this.Wlu.cOK();
       break;
       label279:
-      this.OSa = this.OSg.cAl();
+      this.Wln = this.Wlt.cOL();
       break label193;
       label295:
-      this.OSi.setVisibility(0);
+      this.Wlv.setVisibility(0);
       break label215;
       label306:
-      this.GEr.setVisibility(0);
+      this.Nsh.setVisibility(0);
     }
     label317:
     if (paramMotionEvent.getAction() == 3)
     {
-      gKU();
-      if (this.OSs)
+      hJS();
+      if (this.WlF)
       {
         bool = super.dispatchTouchEvent(paramMotionEvent);
         AppMethodBeat.o(142092);
@@ -463,13 +476,13 @@ public class MMPullDownView
       AppMethodBeat.o(142092);
       return false;
     }
-    localObject = this.jKk;
-    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bl(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.axQ(), "com/tencent/mm/ui/base/MMPullDownView", "dispatchTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    if (com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)locala.pG(0)), "com/tencent/mm/ui/base/MMPullDownView", "dispatchTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z"))
+    localObject = this.mBn;
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bm(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aFh(), "com/tencent/mm/ui/base/MMPullDownView", "dispatchTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    if (com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)locala.sf(0)), "com/tencent/mm/ui/base/MMPullDownView", "dispatchTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z"))
     {
       paramMotionEvent.setAction(3);
-      this.OSx = true;
+      this.WlK = true;
       bool = super.dispatchTouchEvent(paramMotionEvent);
       AppMethodBeat.o(142092);
       return bool;
@@ -490,17 +503,17 @@ public class MMPullDownView
   
   public int getBottomHeight()
   {
-    return this.ORY;
+    return this.Wll;
   }
   
   public int getCurScreen()
   {
-    return this.OPi;
+    return this.Wip;
   }
   
   public int getTopHeight()
   {
-    return this.ORX;
+    return this.Wlk;
   }
   
   public boolean onDown(MotionEvent paramMotionEvent)
@@ -524,8 +537,8 @@ public class MMPullDownView
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(142090);
-    if (this.OSt != null) {
-      this.OSt.onInterceptTouchEvent(paramMotionEvent);
+    if (this.WlG != null) {
+      this.WlG.onInterceptTouchEvent(paramMotionEvent);
     }
     boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
     AppMethodBeat.o(142090);
@@ -563,38 +576,38 @@ public class MMPullDownView
         }
       }
     }
-    this.OSi = getChildAt(0);
-    this.GEr = getChildAt(getChildCount() - 1);
-    this.OSi.setVisibility(this.OSl);
-    this.GEr.setVisibility(this.OSk);
-    this.ORX = this.OSi.getHeight();
-    this.ORY = this.GEr.getHeight();
-    this.OSA = this.ORX;
-    if ((!this.OSd) && (this.ORX != 0))
+    this.Wlv = getChildAt(0);
+    this.Nsh = getChildAt(getChildCount() - 1);
+    this.Wlv.setVisibility(this.Wly);
+    this.Nsh.setVisibility(this.Wlx);
+    this.Wlk = this.Wlv.getHeight();
+    this.Wll = this.Nsh.getHeight();
+    this.WlN = this.Wlk;
+    if ((!this.Wlq) && (this.Wlk != 0))
     {
-      this.OSd = true;
-      scrollTo(0, this.ORX);
+      this.Wlq = true;
+      scrollTo(0, this.Wlk);
     }
     AppMethodBeat.o(142088);
   }
   
   public void onLongPress(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(205238);
+    AppMethodBeat.i(187249);
     b localb = new b();
-    localb.bm(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMPullDownView", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.axR());
+    localb.bn(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/MMPullDownView", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/base/MMPullDownView", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-    AppMethodBeat.o(205238);
+    AppMethodBeat.o(187249);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(142087);
-    if (!this.OSm)
+    if (!this.Wlz)
     {
-      cAG();
-      this.OSm = true;
+      cPg();
+      this.Wlz = true;
     }
     super.onMeasure(paramInt1, paramInt2);
     AppMethodBeat.o(142087);
@@ -605,29 +618,35 @@ public class MMPullDownView
     AppMethodBeat.i(142098);
     if (paramFloat2 > 0.0F)
     {
-      this.onY = true;
+      this.rpV = true;
       if (Math.abs(paramFloat2) <= Math.abs(paramFloat1)) {
-        break label141;
+        break label148;
       }
     }
-    label141:
+    label148:
     for (int i = 1;; i = 0)
     {
-      if ((i != 0) && (this.OSn != null)) {
-        this.OSn.bY(paramFloat2);
+      if ((i != 0) && (this.WlA != null)) {
+        this.WlA.cg(paramFloat2);
       }
-      if ((!this.OSa) || ((!this.onY) && (getScrollY() - this.ORX <= 0)) || (i == 0)) {
-        break label324;
+      if ((!this.Wln) || ((!this.rpV) && (getScrollY() - this.Wlk <= 0)) || (i == 0)) {
+        break label339;
       }
-      if ((this.OSo) || ((this.GEr.getVisibility() == 0) && ((!this.onY) || (getScrollY() < this.ORX * 2)))) {
-        break label147;
+      if ((this.WlB) || ((this.Nsh.getVisibility() == 0) && ((!this.rpV) || (getScrollY() < this.Wlk * 2)))) {
+        break label162;
+      }
+      if (!this.WlD) {
+        break label154;
       }
       AppMethodBeat.o(142098);
-      return true;
-      this.onY = false;
+      return false;
+      this.rpV = false;
       break;
     }
-    label147:
+    label154:
+    AppMethodBeat.o(142098);
+    return true;
+    label162:
     int j = (int)(paramFloat2 * 0.5D);
     i = j;
     if (j == 0)
@@ -639,10 +658,10 @@ public class MMPullDownView
     else
     {
       Log.v("check", "moveUp:" + i + " distanceY:" + paramFloat2 + " scrollY:" + getScrollY());
-      if ((getScrollY() + i >= this.ORX) || (this.onY)) {
-        break label277;
+      if ((getScrollY() + i >= this.Wlk) || (this.rpV)) {
+        break label292;
       }
-      j = this.ORX - getScrollY();
+      j = this.Wlk - getScrollY();
     }
     for (;;)
     {
@@ -651,21 +670,26 @@ public class MMPullDownView
       return true;
       i = -1;
       break;
-      label277:
+      label292:
       j = i;
-      if (!this.OSo)
+      if (!this.WlB)
       {
         j = i;
-        if (getScrollY() + i >= this.ORX * 2) {
-          j = this.ORX * 2 - getScrollY();
+        if (getScrollY() + i >= this.Wlk * 2) {
+          j = this.Wlk * 2 - getScrollY();
         }
       }
     }
-    label324:
-    if ((this.ORZ) && ((!this.onY) || (getScrollY() - this.ORX < 0)) && (i != 0))
+    label339:
+    if ((this.Wlm) && ((!this.rpV) || (getScrollY() - this.Wlk < 0)) && (i != 0))
     {
-      if ((!this.OSo) && ((this.OSi.getVisibility() != 0) || ((!this.onY) && (getScrollY() <= 0))))
+      if ((!this.WlB) && ((this.Wlv.getVisibility() != 0) || ((!this.rpV) && (getScrollY() <= 0))))
       {
+        if (this.WlD)
+        {
+          AppMethodBeat.o(142098);
+          return false;
+        }
         AppMethodBeat.o(142098);
         return true;
       }
@@ -679,10 +703,10 @@ public class MMPullDownView
       }
       else
       {
-        if (getScrollY() + i <= this.ORX) {
-          break label469;
+        if (getScrollY() + i <= this.Wlk) {
+          break label499;
         }
-        j = this.ORX - getScrollY();
+        j = this.Wlk - getScrollY();
       }
       for (;;)
       {
@@ -691,9 +715,9 @@ public class MMPullDownView
         return true;
         i = -1;
         break;
-        label469:
+        label499:
         j = i;
-        if (!this.OSo)
+        if (!this.WlB)
         {
           j = i;
           if (getScrollY() + i < 0) {
@@ -710,32 +734,32 @@ public class MMPullDownView
   {
     AppMethodBeat.i(142099);
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.OSB != null) {
-      this.OSB.cLT();
+    if (this.WlO != null) {
+      this.WlO.daG();
     }
-    if (!this.OSz)
+    if (!this.WlM)
     {
       AppMethodBeat.o(142099);
       return;
     }
-    if (this.OSA == -2147483648)
+    if (this.WlN == -2147483648)
     {
-      this.OSA = this.ORX;
-      Log.d("MicroMsg.MMPullDownView", "onScrollChanged static y:" + this.OSA);
+      this.WlN = this.Wlk;
+      Log.d("MicroMsg.MMPullDownView", "onScrollChanged static y:" + this.WlN);
     }
-    if ((paramInt2 <= this.OSA) && (this.OSu != OSy))
+    if ((paramInt2 <= this.WlN) && (this.WlH != WlL))
     {
-      setBackgroundResource(2131233974);
-      this.OSu = OSy;
+      setBackgroundResource(a.f.mm_trans);
+      this.WlH = WlL;
       Log.d("MicroMsg.MMPullDownView", "onScrollChanged full");
       AppMethodBeat.o(142099);
       return;
     }
-    if ((paramInt2 > this.OSA) && (this.OSu != this.bgColor))
+    if ((paramInt2 > this.WlN) && (this.WlH != this.bgColor))
     {
       Log.d("MicroMsg.MMPullDownView", "onScrollChanged white");
       setBackgroundColor(this.bgColor);
-      this.OSu = this.bgColor;
+      this.WlH = this.bgColor;
     }
     AppMethodBeat.o(142099);
   }
@@ -744,12 +768,12 @@ public class MMPullDownView
   
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(205239);
+    AppMethodBeat.i(187255);
     b localb = new b();
-    localb.bm(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMPullDownView", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+    localb.bn(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/MMPullDownView", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
     com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/base/MMPullDownView", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(205239);
+    AppMethodBeat.o(187255);
     return false;
   }
   
@@ -763,30 +787,30 @@ public class MMPullDownView
     {
       AppMethodBeat.o(142091);
       return true;
-      if (getScrollY() - this.ORX < 0) {
-        this.ORZ = true;
+      if (getScrollY() - this.Wlk < 0) {
+        this.Wlm = true;
       }
-      if (getScrollY() > this.ORY) {
-        this.OSa = true;
+      if (getScrollY() > this.Wll) {
+        this.Wln = true;
       }
-      gKU();
+      hJS();
     }
   }
   
   public void setAtBottomCallBack(c paramc)
   {
-    this.OSg = paramc;
+    this.Wlt = paramc;
   }
   
   public void setAtTopCallBack(d paramd)
   {
-    this.OSh = paramd;
+    this.Wlu = paramd;
   }
   
   public void setBgColor(int paramInt)
   {
     this.bgColor = paramInt;
-    this.OSu = this.bgColor;
+    this.WlH = this.bgColor;
   }
   
   public void setBottomView(View paramView)
@@ -794,21 +818,21 @@ public class MMPullDownView
     AppMethodBeat.i(142082);
     if (paramView == null)
     {
-      this.OSk = 4;
-      if (this.GEr != null)
+      this.Wlx = 4;
+      if (this.Nsh != null)
       {
-        this.GEr.setVisibility(4);
+        this.Nsh.setVisibility(4);
         AppMethodBeat.o(142082);
       }
     }
     else
     {
-      this.GEr = paramView;
-      this.GEr.setVisibility(0);
-      this.OSk = 0;
+      this.Nsh = paramView;
+      this.Nsh.setVisibility(0);
+      this.Wlx = 0;
       removeViewAt(getChildCount() - 1);
-      addView(this.GEr, new FrameLayout.LayoutParams(-1, -2));
-      this.ORY = 0;
+      addView(this.Nsh, new FrameLayout.LayoutParams(-1, -2));
+      this.Wll = 0;
     }
     AppMethodBeat.o(142082);
   }
@@ -819,9 +843,9 @@ public class MMPullDownView
     if (paramBoolean) {}
     for (int i = 0;; i = 4)
     {
-      this.OSk = i;
-      if (this.GEr != null) {
-        this.GEr.setVisibility(this.OSk);
+      this.Wlx = i;
+      if (this.Nsh != null) {
+        this.Nsh.setVisibility(this.Wlx);
       }
       Log.i("MicroMsg.MMPullDownView", "setBottomViewVisible visible[%b], stack[%s]", new Object[] { Boolean.valueOf(paramBoolean), Util.getStack() });
       AppMethodBeat.o(142083);
@@ -831,68 +855,73 @@ public class MMPullDownView
   
   public void setCanOverScrool(boolean paramBoolean)
   {
-    this.OSo = paramBoolean;
+    this.WlB = paramBoolean;
   }
   
   public void setEnableGesture(boolean paramBoolean)
   {
-    this.OSp = paramBoolean;
+    this.yiG = paramBoolean;
   }
   
   public void setIsBottomShowAll(boolean paramBoolean)
   {
     AppMethodBeat.i(142080);
-    Log.i("MicroMsg.MMPullDownView", "setIsBottomShowAll showAll[%b], isBottomShowAll[%b], stack[%s]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.OSf), Util.getStack() });
-    this.OSf = paramBoolean;
+    Log.i("MicroMsg.MMPullDownView", "setIsBottomShowAll showAll[%b], isBottomShowAll[%b], stack[%s]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.Wls), Util.getStack() });
+    this.Wls = paramBoolean;
     AppMethodBeat.o(142080);
   }
   
   public void setIsReturnSuperDispatchWhenCancel(boolean paramBoolean)
   {
-    this.OSs = paramBoolean;
+    this.WlF = paramBoolean;
   }
   
   public void setIsTopShowAll(boolean paramBoolean)
   {
     AppMethodBeat.i(142079);
-    Log.i("MicroMsg.MMPullDownView", "setIsTopShowAll showAll[%b], isTopShowAll[%b], stack[%s]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.OSe), Util.getStack() });
-    this.OSe = paramBoolean;
+    Log.i("MicroMsg.MMPullDownView", "setIsTopShowAll showAll[%b], isTopShowAll[%b], stack[%s]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.Wlr), Util.getStack() });
+    this.Wlr = paramBoolean;
     AppMethodBeat.o(142079);
+  }
+  
+  public void setNestedOverScrollEnabled(boolean paramBoolean)
+  {
+    this.WlD = paramBoolean;
   }
   
   public void setOnBottomLoadDataListener(e parame)
   {
-    this.ORW = parame;
+    this.Wlj = parame;
   }
   
-  public void setOnInterceptTouchEventListener(a parama)
+  public void setOnInterceptTouchEventListener(MMPullDownView.a parama)
   {
-    this.OSt = parama;
+    this.WlG = parama;
   }
   
-  public void setOnMMFlingListener(k.a parama)
+  public void setOnMMFlingListener(l.a parama)
   {
-    this.OSr.Quy = parama;
+    this.WlE.XSA = parama;
   }
   
   public void setOnScrollChangedListener(b paramb)
   {
-    this.OSB = paramb;
+    this.WlO = paramb;
   }
   
   public void setOnSrcollDistance(f paramf)
   {
-    this.OSn = paramf;
+    this.WlA = paramf;
   }
   
   public void setOnTopLoadDataListener(g paramg)
   {
-    this.ORV = paramg;
+    this.Wli = paramg;
   }
   
   public void setShowBackground(boolean paramBoolean)
   {
-    this.OSz = paramBoolean;
+    this.WlM = paramBoolean;
   }
   
   public void setTopView(View paramView)
@@ -900,21 +929,21 @@ public class MMPullDownView
     AppMethodBeat.i(142081);
     if (paramView == null)
     {
-      this.OSl = 4;
-      if (this.OSi != null)
+      this.Wly = 4;
+      if (this.Wlv != null)
       {
-        this.OSi.setVisibility(4);
+        this.Wlv.setVisibility(4);
         AppMethodBeat.o(142081);
       }
     }
     else
     {
       removeViewAt(0);
-      this.OSi = paramView;
-      this.OSi.setVisibility(0);
-      this.OSl = 0;
-      addView(this.OSi, 0, new FrameLayout.LayoutParams(-1, -2));
-      this.ORX = 0;
+      this.Wlv = paramView;
+      this.Wlv.setVisibility(0);
+      this.Wly = 0;
+      addView(this.Wlv, 0, new FrameLayout.LayoutParams(-1, -2));
+      this.Wlk = 0;
     }
     AppMethodBeat.o(142081);
   }
@@ -925,9 +954,9 @@ public class MMPullDownView
     if (paramBoolean) {}
     for (int i = 0;; i = 4)
     {
-      this.OSl = i;
-      if (this.OSi != null) {
-        this.OSi.setVisibility(this.OSl);
+      this.Wly = i;
+      if (this.Wlv != null) {
+        this.Wlv.setVisibility(this.Wly);
       }
       Log.i("MicroMsg.MMPullDownView", "setTopViewVisible visible[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
       AppMethodBeat.o(142084);
@@ -935,46 +964,41 @@ public class MMPullDownView
     }
   }
   
-  public static abstract interface a
-  {
-    public abstract boolean onInterceptTouchEvent(MotionEvent paramMotionEvent);
-  }
-  
   public static abstract interface b
   {
-    public abstract void cLT();
+    public abstract void daG();
   }
   
   public static abstract interface c
   {
-    public abstract boolean cAl();
+    public abstract boolean cOL();
   }
   
   public static abstract interface d
   {
-    public abstract boolean cAk();
+    public abstract boolean cOK();
   }
   
   public static abstract interface e
   {
-    public abstract boolean cAj();
+    public abstract boolean cOJ();
   }
   
   public static abstract interface f
   {
-    public abstract void bY(float paramFloat);
+    public abstract void cg(float paramFloat);
     
-    public abstract void fjr();
+    public abstract void fXE();
   }
   
   public static abstract interface g
   {
-    public abstract boolean cAm();
+    public abstract boolean cOM();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMPullDownView
  * JD-Core Version:    0.7.0.1
  */

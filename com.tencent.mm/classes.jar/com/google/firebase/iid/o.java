@@ -6,9 +6,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.ServiceInfo;
-import android.support.v4.content.WakefulBroadcastReceiver;
-import android.support.v4.e.n;
 import android.util.Log;
+import androidx.b.g;
+import androidx.legacy.content.WakefulBroadcastReceiver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -16,20 +16,20 @@ import javax.annotation.concurrent.GuardedBy;
 
 public final class o
 {
-  private static o bLL;
+  private static o bJq;
   @GuardedBy("serviceClassNames")
-  private final n<String, String> bLM;
-  private Boolean bLN;
-  final Queue<Intent> bLO;
-  public final Queue<Intent> bLP;
+  private final g<String, String> bJr;
+  private Boolean bJs;
+  final Queue<Intent> bJt;
+  public final Queue<Intent> bJu;
   
   private o()
   {
     AppMethodBeat.i(4181);
-    this.bLM = new n();
-    this.bLN = null;
-    this.bLO = new ArrayDeque();
-    this.bLP = new ArrayDeque();
+    this.bJr = new g();
+    this.bJs = null;
+    this.bJt = new ArrayDeque();
+    this.bJu = new ArrayDeque();
     AppMethodBeat.o(4181);
   }
   
@@ -47,9 +47,9 @@ public final class o
   private final int b(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(4184);
-    synchronized (this.bLM)
+    synchronized (this.bJr)
     {
-      ??? = (String)this.bLM.get(paramIntent.getAction());
+      ??? = (String)this.bJr.get(paramIntent.getAction());
       ??? = ???;
       if (??? == null)
       {
@@ -64,17 +64,17 @@ public final class o
     try
     {
       boolean bool;
-      if (this.bLN == null)
+      if (this.bJs == null)
       {
         if (paramContext.checkCallingOrSelfPermission("android.permission.WAKE_LOCK") == 0)
         {
           bool = true;
           label85:
-          this.bLN = Boolean.valueOf(bool);
+          this.bJs = Boolean.valueOf(bool);
         }
       }
       else {
-        if (!this.bLN.booleanValue()) {
+        if (!this.bJs.booleanValue()) {
           break label400;
         }
       }
@@ -82,38 +82,38 @@ public final class o
       label400:
       for (paramContext = WakefulBroadcastReceiver.startWakefulService(paramContext, paramIntent);; paramContext = paramContext.startService(paramIntent))
       {
-        if (paramContext != null) {
-          break label409;
-        }
-        AppMethodBeat.o(4184);
-        return 404;
-        paramContext = finally;
-        AppMethodBeat.o(4184);
-        throw paramContext;
-        ??? = ((ResolveInfo)???).serviceInfo;
-        if ((!paramContext.getPackageName().equals(((ServiceInfo)???).packageName)) || (((ServiceInfo)???).name == null))
-        {
-          ??? = ((ServiceInfo)???).packageName;
-          ??? = ((ServiceInfo)???).name;
-          new StringBuilder(String.valueOf(???).length() + 94 + String.valueOf(???).length()).append("Error resolving target intent service, skipping classname enforcement. Resolved service was: ").append((String)???).append("/").append((String)???);
-          break;
-        }
-        ??? = ((ServiceInfo)???).name;
-        ??? = ???;
-        if (((String)???).startsWith("."))
-        {
-          ??? = String.valueOf(paramContext.getPackageName());
-          ??? = String.valueOf(???);
-          if (((String)???).length() == 0) {
-            break label356;
-          }
-          ??? = ((String)???).concat((String)???);
-        }
         for (;;)
         {
-          synchronized (this.bLM)
+          if (paramContext != null) {
+            break label409;
+          }
+          AppMethodBeat.o(4184);
+          return 404;
+          paramContext = finally;
+          AppMethodBeat.o(4184);
+          throw paramContext;
+          ??? = ((ResolveInfo)???).serviceInfo;
+          if ((!paramContext.getPackageName().equals(((ServiceInfo)???).packageName)) || (((ServiceInfo)???).name == null))
           {
-            this.bLM.put(paramIntent.getAction(), ???);
+            ??? = ((ServiceInfo)???).packageName;
+            ??? = ((ServiceInfo)???).name;
+            new StringBuilder(String.valueOf(???).length() + 94 + String.valueOf(???).length()).append("Error resolving target intent service, skipping classname enforcement. Resolved service was: ").append((String)???).append("/").append((String)???);
+            break;
+          }
+          ??? = ((ServiceInfo)???).name;
+          ??? = ???;
+          if (((String)???).startsWith("."))
+          {
+            ??? = String.valueOf(paramContext.getPackageName());
+            ??? = String.valueOf(???);
+            if (((String)???).length() == 0) {
+              break label356;
+            }
+            ??? = ((String)???).concat((String)???);
+          }
+          synchronized (this.bJr)
+          {
+            this.bJr.put(paramIntent.getAction(), ???);
             if (Log.isLoggable("FirebaseInstanceId", 3))
             {
               ??? = String.valueOf(???);
@@ -129,7 +129,6 @@ public final class o
               ??? = new String((String)???);
             }
           }
-          new String("Restricting intent to a specific service: ");
         }
         bool = false;
         break label85;
@@ -152,15 +151,15 @@ public final class o
     return 402;
   }
   
-  public static o yr()
+  public static o yL()
   {
     try
     {
       AppMethodBeat.i(4180);
-      if (bLL == null) {
-        bLL = new o();
+      if (bJq == null) {
+        bJq = new o();
       }
-      o localo = bLL;
+      o localo = bJq;
       AppMethodBeat.o(4180);
       return localo;
     }
@@ -199,7 +198,7 @@ public final class o
       }
       i = 1;
       break;
-      this.bLO.offer(paramIntent);
+      this.bJt.offer(paramIntent);
       for (;;)
       {
         paramString = new Intent(paramString);
@@ -207,7 +206,7 @@ public final class o
         i = b(paramContext, paramString);
         AppMethodBeat.o(4183);
         return i;
-        this.bLP.offer(paramIntent);
+        this.bJu.offer(paramIntent);
       }
       new String("Unknown service action: ");
     }
@@ -215,7 +214,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.o
  * JD-Core Version:    0.7.0.1
  */

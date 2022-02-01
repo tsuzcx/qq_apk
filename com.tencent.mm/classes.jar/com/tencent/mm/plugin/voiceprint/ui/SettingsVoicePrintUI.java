@@ -7,16 +7,20 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.model.bf;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.l;
+import com.tencent.mm.R.o;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
 import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.z;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -30,55 +34,55 @@ import com.tencent.mm.ui.base.preference.f;
 
 public class SettingsVoicePrintUI
   extends MMPreference
-  implements com.tencent.mm.ak.i
+  implements com.tencent.mm.an.i
 {
-  private VoiceHeaderPreference GRQ;
-  private ProgressDialog gtM = null;
-  private View lJI;
-  private boolean sUn = false;
+  private VoiceHeaderPreference NIb;
+  private ProgressDialog iXX = null;
+  private View oFW;
   private f screen;
+  private boolean wAk = false;
   
-  private void fEP()
+  private void gxc()
   {
     AppMethodBeat.i(29837);
-    com.tencent.mm.plugin.report.service.h.CyF.a(11390, new Object[] { Integer.valueOf(3) });
+    com.tencent.mm.plugin.report.service.h.IzE.a(11390, new Object[] { Integer.valueOf(3) });
     Intent localIntent = new Intent();
     localIntent.setClass(this, VoiceCreateUI.class);
     localIntent.putExtra("kscene_type", 71);
     localIntent.putExtra("createVoicePrint", true);
     startActivityForResult(localIntent, 1);
-    this.sUn = false;
+    this.wAk = false;
     AppMethodBeat.o(29837);
   }
   
   public int getResourceId()
   {
-    return 2132017285;
+    return R.o.eXP;
   }
   
   public void initView()
   {
     AppMethodBeat.i(29834);
-    bg.aVF();
-    int i = Util.nullAsInt(c.azQ().get(40, Integer.valueOf(0)), 0);
+    bh.beI();
+    int i = Util.nullAsInt(c.aHp().b(40, Integer.valueOf(0)), 0);
     Log.i("MicroMsg.VoiceSettingsUI", "plugSwitch " + i + " " + (i & 0x20000));
     this.screen = getPreferenceScreen();
-    this.GRQ = ((VoiceHeaderPreference)this.screen.bmg("settings_voiceprint_header"));
-    ((CheckBoxPreference)this.screen.bmg("settings_voiceprint_title")).xZ(true);
+    this.NIb = ((VoiceHeaderPreference)this.screen.byG("settings_voiceprint_header"));
+    ((CheckBoxPreference)this.screen.byG("settings_voiceprint_title")).BT(true);
     this.screen.notifyDataSetChanged();
-    if ((this.gtM != null) && (this.gtM.isShowing())) {
-      this.gtM.dismiss();
+    if ((this.iXX != null) && (this.iXX.isShowing())) {
+      this.iXX.dismiss();
     }
     AppCompatActivity localAppCompatActivity = getContext();
-    getString(2131755998);
-    this.gtM = com.tencent.mm.ui.base.h.a(localAppCompatActivity, getString(2131756029), true, new DialogInterface.OnCancelListener()
+    getString(R.l.app_tip);
+    this.iXX = com.tencent.mm.ui.base.h.a(localAppCompatActivity, getString(R.l.app_waiting), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
-    bg.azz().a(new com.tencent.mm.plugin.voiceprint.model.i(0), 0);
-    this.screen.jdMethod_do("settings_voiceprint_unlock", true);
-    this.screen.jdMethod_do("settings_voiceprint_reset", true);
-    this.screen.jdMethod_do("settings_voiceprint_create", true);
+    bh.aGY().a(new com.tencent.mm.plugin.voiceprint.model.i(0), 0);
+    this.screen.dz("settings_voiceprint_unlock", true);
+    this.screen.dz("settings_voiceprint_reset", true);
+    this.screen.dz("settings_voiceprint_create", true);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -97,7 +101,7 @@ public class SettingsVoicePrintUI
     AppMethodBeat.i(29838);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt1 == 1) && (paramIntent != null)) {
-      this.sUn = paramIntent.getBooleanExtra("KIsCreateSuccess", false);
+      this.wAk = paramIntent.getBooleanExtra("KIsCreateSuccess", false);
     }
     AppMethodBeat.o(29838);
   }
@@ -106,19 +110,19 @@ public class SettingsVoicePrintUI
   {
     AppMethodBeat.i(29831);
     super.onCreate(paramBundle);
-    setMMTitle(2131765680);
-    bg.azz().a(615, this);
-    this.lJI = findViewById(2131304719);
+    setMMTitle(R.l.settings_voiceprint);
+    bh.aGY().a(615, this);
+    this.oFW = findViewById(R.h.mm_preference_list_content);
     initView();
-    this.lJI.setBackgroundResource(2131101424);
-    bg.aVF();
-    c.azQ().set(ar.a.NTp, Boolean.FALSE);
-    bg.aVF();
-    c.azQ().set(ar.a.NTq, Boolean.FALSE);
-    bg.aVF();
-    c.azQ().set(ar.a.NTr, Boolean.FALSE);
-    bg.aVF();
-    c.azQ().set(ar.a.NTs, Boolean.FALSE);
+    this.oFW.setBackgroundResource(R.e.white);
+    bh.beI();
+    c.aHp().set(ar.a.Vhp, Boolean.FALSE);
+    bh.beI();
+    c.aHp().set(ar.a.Vhq, Boolean.FALSE);
+    bh.beI();
+    c.aHp().set(ar.a.Vhr, Boolean.FALSE);
+    bh.beI();
+    c.aHp().set(ar.a.Vhs, Boolean.FALSE);
     Log.i("MicroMsg.VoiceSettingsUI", "unset all voiceprint config");
     AppMethodBeat.o(29831);
   }
@@ -127,9 +131,9 @@ public class SettingsVoicePrintUI
   {
     AppMethodBeat.i(29833);
     super.onDestroy();
-    bg.azz().b(615, this);
-    if (this.gtM != null) {
-      this.gtM.dismiss();
+    bh.aGY().b(615, this);
+    if (this.iXX != null) {
+      this.iXX.dismiss();
     }
     AppMethodBeat.o(29833);
   }
@@ -141,35 +145,35 @@ public class SettingsVoicePrintUI
     Intent localIntent = new Intent();
     if (paramPreference.equals("settings_voiceprint_title"))
     {
-      paramf = (CheckBoxPreference)paramf.bmg("settings_voiceprint_title");
+      paramf = (CheckBoxPreference)paramf.byG("settings_voiceprint_title");
       Log.d("MicroMsg.VoiceSettingsUI", "checkPref.isChecked() " + paramf.isChecked());
-      if ((this.gtM != null) && (this.gtM.isShowing())) {
-        this.gtM.dismiss();
+      if ((this.iXX != null) && (this.iXX.isShowing())) {
+        this.iXX.dismiss();
       }
       paramPreference = getContext();
-      getString(2131755998);
-      this.gtM = com.tencent.mm.ui.base.h.a(paramPreference, getString(2131756029), true, new DialogInterface.OnCancelListener()
+      getString(R.l.app_tip);
+      this.iXX = com.tencent.mm.ui.base.h.a(paramPreference, getString(R.l.app_waiting), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
       });
       if (paramf.isChecked()) {
-        bg.azz().a(new com.tencent.mm.plugin.voiceprint.model.i(1), 0);
+        bh.aGY().a(new com.tencent.mm.plugin.voiceprint.model.i(1), 0);
       }
       for (;;)
       {
         AppMethodBeat.o(29835);
         return true;
-        bg.azz().a(new com.tencent.mm.plugin.voiceprint.model.i(2), 0);
+        bh.aGY().a(new com.tencent.mm.plugin.voiceprint.model.i(2), 0);
       }
     }
     if (paramPreference.equals("settings_voiceprint_unlock"))
     {
       localIntent.setClass(this, VoiceUnLockUI.class);
       localIntent.putExtra("kscene_type", 73);
-      paramf = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/voiceprint/ui/SettingsVoicePrintUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramf.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voiceprint/ui/SettingsVoicePrintUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aFh(), "com/tencent/mm/plugin/voiceprint/ui/SettingsVoicePrintUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/voiceprint/ui/SettingsVoicePrintUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(29835);
       return true;
     }
@@ -205,11 +209,11 @@ public class SettingsVoicePrintUI
       return;
       if (paramArrayOfInt[0] == 0)
       {
-        fEP();
+        gxc();
         AppMethodBeat.o(29839);
         return;
       }
-      com.tencent.mm.ui.base.h.a(this, getString(2131763876), getString(2131763890), getString(2131762043), getString(2131756929), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      com.tencent.mm.ui.base.h.a(this, getString(R.l.permission_microphone_request_again_msg), getString(R.l.permission_tips_title), getString(R.l.jump_to_settings), getString(R.l.cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -217,10 +221,10 @@ public class SettingsVoicePrintUI
           paramAnonymousDialogInterface.dismiss();
           paramAnonymousDialogInterface = SettingsVoicePrintUI.this;
           Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/voiceprint/ui/SettingsVoicePrintUI$6", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/voiceprint/ui/SettingsVoicePrintUI$6", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/voiceprint/ui/SettingsVoicePrintUI$6", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousDialogInterface, "com/tencent/mm/plugin/voiceprint/ui/SettingsVoicePrintUI$6", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(29829);
         }
       }, new DialogInterface.OnClickListener()
@@ -239,20 +243,20 @@ public class SettingsVoicePrintUI
   {
     AppMethodBeat.i(29832);
     super.onResume();
-    if (this.sUn)
+    if (this.wAk)
     {
-      this.sUn = false;
-      if ((this.gtM != null) && (this.gtM.isShowing())) {
-        this.gtM.dismiss();
+      this.wAk = false;
+      if ((this.iXX != null) && (this.iXX.isShowing())) {
+        this.iXX.dismiss();
       }
       AppCompatActivity localAppCompatActivity = getContext();
-      getString(2131755998);
-      this.gtM = com.tencent.mm.ui.base.h.a(localAppCompatActivity, getString(2131756029), true, new DialogInterface.OnCancelListener()
+      getString(R.l.app_tip);
+      this.iXX = com.tencent.mm.ui.base.h.a(localAppCompatActivity, getString(R.l.app_waiting), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
       });
       Log.d("MicroMsg.VoiceSettingsUI", "resume after create voiceprint, get switch status");
-      bg.azz().a(new com.tencent.mm.plugin.voiceprint.model.i(1), 0);
+      bh.aGY().a(new com.tencent.mm.plugin.voiceprint.model.i(1), 0);
     }
     AppMethodBeat.o(29832);
   }
@@ -263,14 +267,14 @@ public class SettingsVoicePrintUI
     Log.d("MicroMsg.VoiceSettingsUI", "onSceneEnd, errType:%d, errCode:%d, sceneType:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramq.getType()) });
     if ((paramInt1 != 0) && (paramInt2 != 0))
     {
-      this.screen.jdMethod_do("settings_voiceprint_unlock", true);
-      this.screen.jdMethod_do("settings_voiceprint_reset", true);
-      this.screen.jdMethod_do("settings_voiceprint_create", true);
-      ((CheckBoxPreference)this.screen.bmg("settings_voiceprint_title")).xZ(false);
-      this.GRQ.gD(getString(2131767205), "");
+      this.screen.dz("settings_voiceprint_unlock", true);
+      this.screen.dz("settings_voiceprint_reset", true);
+      this.screen.dz("settings_voiceprint_create", true);
+      ((CheckBoxPreference)this.screen.byG("settings_voiceprint_title")).BT(false);
+      this.NIb.gR(getString(R.l.eVp), "");
       this.screen.notifyDataSetChanged();
-      if (this.gtM != null) {
-        this.gtM.dismiss();
+      if (this.iXX != null) {
+        this.iXX.dismiss();
       }
       AppMethodBeat.o(29836);
       return;
@@ -282,60 +286,60 @@ public class SettingsVoicePrintUI
         break label499;
       }
       Log.d("MicroMsg.VoiceSettingsUI", "voiceprint exist");
-      this.screen.jdMethod_do("settings_voiceprint_unlock", false);
+      this.screen.dz("settings_voiceprint_unlock", false);
       this.screen.notifyDataSetChanged();
-      paramInt1 = z.aUe();
-      paramq = (CheckBoxPreference)this.screen.bmg("settings_voiceprint_title");
-      Log.d("MicroMsg.VoiceSettingsUI", "opScene.getSwitch:%d", new Object[] { Integer.valueOf(paramString.GQZ) });
-      if (paramString.GQZ <= 0) {
+      paramInt1 = z.bdf();
+      paramq = (CheckBoxPreference)this.screen.byG("settings_voiceprint_title");
+      Log.d("MicroMsg.VoiceSettingsUI", "opScene.getSwitch:%d", new Object[] { Integer.valueOf(paramString.NHk) });
+      if (paramString.NHk <= 0) {
         break label433;
       }
       Log.d("MicroMsg.VoiceSettingsUI", "voiceprint open");
-      paramq.xZ(true);
-      this.screen.jdMethod_do("settings_voiceprint_reset", false);
-      this.screen.jdMethod_do("settings_voiceprint_unlock", false);
+      paramq.BT(true);
+      this.screen.dz("settings_voiceprint_reset", false);
+      this.screen.dz("settings_voiceprint_unlock", false);
       paramInt1 = 0x20000 | paramInt1;
-      this.GRQ.gD(getString(2131767207), "");
+      this.NIb.gR(getString(R.l.eVq), "");
       Log.i("MicroMsg.VoiceSettingsUI", "scene end plugSwitch %d", new Object[] { Integer.valueOf(paramInt1) });
-      bf.iDu.aO("last_login_use_voice", String.valueOf(paramInt1));
-      bg.aVF();
-      c.azQ().set(40, Integer.valueOf(paramInt1));
-      this.screen.jdMethod_do("settings_voiceprint_create", true);
-      this.screen.jdMethod_do("settings_voiceprint_title", false);
-      this.GRQ.b(null);
+      bg.ltv.aS("last_login_use_voice", String.valueOf(paramInt1));
+      bh.beI();
+      c.aHp().i(40, Integer.valueOf(paramInt1));
+      this.screen.dz("settings_voiceprint_create", true);
+      this.screen.dz("settings_voiceprint_title", false);
+      this.NIb.c(null);
       this.screen.notifyDataSetChanged();
     }
     for (;;)
     {
-      if (this.gtM != null) {
-        this.gtM.dismiss();
+      if (this.iXX != null) {
+        this.iXX.dismiss();
       }
       AppMethodBeat.o(29836);
       return;
       label433:
       Log.d("MicroMsg.VoiceSettingsUI", "voiceprint close");
-      paramq.xZ(false);
-      this.screen.jdMethod_do("settings_voiceprint_reset", true);
-      this.screen.jdMethod_do("settings_voiceprint_unlock", true);
+      paramq.BT(false);
+      this.screen.dz("settings_voiceprint_reset", true);
+      this.screen.dz("settings_voiceprint_unlock", true);
       paramInt1 = 0xFFFDFFFF & paramInt1;
-      this.GRQ.gD(getString(2131767205), "");
+      this.NIb.gR(getString(R.l.eVp), "");
       break;
       label499:
       Log.d("MicroMsg.VoiceSettingsUI", "voiceprint not exist");
-      com.tencent.mm.plugin.report.service.h.CyF.a(11390, new Object[] { Integer.valueOf(2) });
-      this.screen.jdMethod_do("settings_voiceprint_unlock", true);
-      this.screen.jdMethod_do("settings_voiceprint_reset", true);
-      this.screen.jdMethod_do("settings_voiceprint_create", true);
-      this.screen.jdMethod_do("settings_voiceprint_title", true);
-      this.GRQ.gD(getString(2131767209), getString(2131767208));
-      this.GRQ.b(new View.OnClickListener()
+      com.tencent.mm.plugin.report.service.h.IzE.a(11390, new Object[] { Integer.valueOf(2) });
+      this.screen.dz("settings_voiceprint_unlock", true);
+      this.screen.dz("settings_voiceprint_reset", true);
+      this.screen.dz("settings_voiceprint_create", true);
+      this.screen.dz("settings_voiceprint_title", true);
+      this.NIb.gR(getString(R.l.eVs), getString(R.l.eVr));
+      this.NIb.c(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(29828);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voiceprint/ui/SettingsVoicePrintUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/voiceprint/ui/SettingsVoicePrintUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           boolean bool = com.tencent.mm.pluginsdk.permission.b.a(SettingsVoicePrintUI.this, "android.permission.RECORD_AUDIO", 80, "", "");
           Log.i("MicroMsg.VoiceSettingsUI", "summerper checkPermission checkmicrophone[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack(), SettingsVoicePrintUI.this });
           if (!bool)

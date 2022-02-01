@@ -2,28 +2,28 @@ package com.tencent.mm.audio.b;
 
 public abstract class f
 {
-  protected a dzD;
-  protected int dzZ = 0;
-  protected int dzk = -123456789;
+  protected int frZ = -123456789;
+  protected int fsO = 0;
+  protected a fss;
   protected boolean mIsPause = false;
   
   public final void a(a parama)
   {
-    this.dzD = parama;
+    this.fss = parama;
   }
   
-  public abstract boolean aai();
+  public abstract boolean aeU();
   
-  public final int aal()
+  public final int aeX()
   {
-    return this.dzZ;
+    return this.fsO;
   }
   
-  public abstract void de(boolean paramBoolean);
+  public abstract void dE(boolean paramBoolean);
   
-  public final void jl(int paramInt)
+  public final void kF(int paramInt)
   {
-    this.dzk = paramInt;
+    this.frZ = paramInt;
   }
   
   public abstract void stopRecord();
@@ -35,7 +35,7 @@ public abstract class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.audio.b.f
  * JD-Core Version:    0.7.0.1
  */

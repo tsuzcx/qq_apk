@@ -16,6 +16,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.f;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.pointers.PIntArray;
@@ -31,23 +34,23 @@ import java.lang.reflect.Array;
 public class FilterImageView
   extends LinearLayout
 {
-  static c[] QqF;
-  private int DEz;
-  Bitmap QqA;
-  private MMHorList QqB;
-  private a QqC;
-  private Runnable QqD;
-  private Runnable QqE;
-  int[] Qqw;
-  private View Qqx;
-  private ImageView Qqy;
-  CropImageView Qqz;
-  private Activity dKq;
+  static c[] XOS;
+  private int JRu;
+  int[] XOJ;
+  private View XOK;
+  private ImageView XOL;
+  CropImageView XOM;
+  Bitmap XON;
+  private MMHorList XOO;
+  private a XOP;
+  private Runnable XOQ;
+  private Runnable XOR;
+  private Activity fDf;
   
   static
   {
     AppMethodBeat.i(143078);
-    QqF = new c[] { new c(new b("原图", "原圖", "Normal"), "icon.png", 0, 0, "MatteOrigin.jpg", 0), new c(new b("LOMO", "LOMO", "LOMO"), "nuowei_mask%02d.jpg", 2, 1, "0004.jpg", 2), new c(new b("麦田", "麥田", "Wheat"), "0062_%02d.jpg", 2, 2, "0062.jpg", 20), new c(new b("玻璃镜", "玻璃鏡", "Glossy"), "habi_mask%02d.jpg", 1, 3, "0005.jpg", 4), new c(new b("拍立得", "拍立得", "Polaroid"), "0063_%02d.jpg", 2, 4, "0063.jpg", 21), new c(new b("湖水", "湖水", "Lake"), "0061_%02d.jpg", 1, 5, "0061.jpg", 19), new c(new b("黄昏", "黃昏", "Twilight"), "0030_mask%01d.jpg", 1, 6, "0030.jpg", 7), new c(new b("黑白", "黑白", "B&W"), "0065_%02d.jpg", 1, 7, "0065.jpg", 22), new c(new b("铜版画", "銅版畫", "Aquatint"), "0032_mask%01d.jpg", 1, 8, "0032.jpg", 9), new c(new b("圆珠笔", "圓珠筆", "Pen"), "0035_mask%01d.jpg", 1, 9, "0035.jpg", 18), new c(new b("海报", "海報", "Poster"), "0036_mask%01d.jpg", 0, 10, "0036.jpg", 17), new c(new b("素描", "素描", "Portrait"), "icon.jpg", 0, 11, "0040.jpg", 12) };
+    XOS = new c[] { new c(new b("原图", "原圖", "Normal"), "icon.png", 0, 0, "MatteOrigin.jpg", 0), new c(new b("LOMO", "LOMO", "LOMO"), "nuowei_mask%02d.jpg", 2, 1, "0004.jpg", 2), new c(new b("麦田", "麥田", "Wheat"), "0062_%02d.jpg", 2, 2, "0062.jpg", 20), new c(new b("玻璃镜", "玻璃鏡", "Glossy"), "habi_mask%02d.jpg", 1, 3, "0005.jpg", 4), new c(new b("拍立得", "拍立得", "Polaroid"), "0063_%02d.jpg", 2, 4, "0063.jpg", 21), new c(new b("湖水", "湖水", "Lake"), "0061_%02d.jpg", 1, 5, "0061.jpg", 19), new c(new b("黄昏", "黃昏", "Twilight"), "0030_mask%01d.jpg", 1, 6, "0030.jpg", 7), new c(new b("黑白", "黑白", "B&W"), "0065_%02d.jpg", 1, 7, "0065.jpg", 22), new c(new b("铜版画", "銅版畫", "Aquatint"), "0032_mask%01d.jpg", 1, 8, "0032.jpg", 9), new c(new b("圆珠笔", "圓珠筆", "Pen"), "0035_mask%01d.jpg", 1, 9, "0035.jpg", 18), new c(new b("海报", "海報", "Poster"), "0036_mask%01d.jpg", 0, 10, "0036.jpg", 17), new c(new b("素描", "素描", "Portrait"), "icon.jpg", 0, 11, "0040.jpg", 12) };
     AppMethodBeat.o(143078);
   }
   
@@ -55,35 +58,35 @@ public class FilterImageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143069);
-    this.DEz = 0;
-    this.dKq = ((Activity)paramContext);
-    paramContext = View.inflate(this.dKq, 2131493806, this);
-    this.Qqz = ((CropImageView)paramContext.findViewById(2131299345));
-    this.Qqy = ((ImageView)paramContext.findViewById(2131299354));
-    this.Qqx = paramContext.findViewById(2131299349);
-    this.Qqz.setOnTouchListener(null);
-    this.QqB = ((MMHorList)paramContext.findViewById(2131299342));
-    this.QqC = new a();
-    this.QqB.setAdapter(this.QqC);
-    this.QqB.invalidate();
-    this.QqB.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.JRu = 0;
+    this.fDf = ((Activity)paramContext);
+    paramContext = View.inflate(this.fDf, a.h.crop_image_filter, this);
+    this.XOM = ((CropImageView)paramContext.findViewById(a.g.cropimage_filter_show_iv));
+    this.XOL = ((ImageView)paramContext.findViewById(a.g.cropimage_iv));
+    this.XOK = paramContext.findViewById(a.g.cropimage_frame);
+    this.XOM.setOnTouchListener(null);
+    this.XOO = ((MMHorList)paramContext.findViewById(a.g.cropimage_filter_gallery));
+    this.XOP = new a();
+    this.XOO.setAdapter(this.XOP);
+    this.XOO.invalidate();
+    this.XOO.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(143067);
         b localb = new b();
-        localb.bm(paramAnonymousAdapterView);
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.zo(paramAnonymousLong);
-        a.b("com/tencent/mm/ui/tools/FilterImageView$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+        localb.bn(paramAnonymousAdapterView);
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.Fs(paramAnonymousLong);
+        a.c("com/tencent/mm/ui/tools/FilterImageView$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
         paramAnonymousAdapterView = FilterImageView.a(FilterImageView.this);
-        paramAnonymousAdapterView.va = paramAnonymousInt;
+        paramAnonymousAdapterView.bFx = paramAnonymousInt;
         paramAnonymousAdapterView.notifyDataSetChanged();
         try
         {
-          FilterImageView.a(FilterImageView.this, FilterImageView.QqF[paramAnonymousInt].QqQ);
-          FilterImageView.a(FilterImageView.this, FilterImageView.QqF[paramAnonymousInt].QqN, FilterImageView.QqF[paramAnonymousInt].QqO, FilterImageView.QqF[paramAnonymousInt].QqP);
+          FilterImageView.a(FilterImageView.this, FilterImageView.XOS[paramAnonymousInt].XPd);
+          FilterImageView.a(FilterImageView.this, FilterImageView.XOS[paramAnonymousInt].XPa, FilterImageView.XOS[paramAnonymousInt].XPb, FilterImageView.XOS[paramAnonymousInt].XPc);
           a.a(this, "com/tencent/mm/ui/tools/FilterImageView$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(143067);
           return;
@@ -109,17 +112,17 @@ public class FilterImageView
     AppMethodBeat.o(143069);
   }
   
-  private boolean aV(String paramString, int paramInt1, int paramInt2)
+  private boolean aX(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(143076);
     if (paramInt2 == 0)
     {
-      this.QqA.setPixels(this.Qqw, 0, this.QqA.getWidth(), 0, 0, this.QqA.getWidth(), this.QqA.getHeight());
-      this.Qqz.invalidate();
+      this.XON.setPixels(this.XOJ, 0, this.XON.getWidth(), 0, 0, this.XON.getWidth(), this.XON.getHeight());
+      this.XOM.invalidate();
       AppMethodBeat.o(143076);
       return true;
     }
-    int j = this.QqA.getWidth() * this.QqA.getHeight();
+    int j = this.XON.getWidth() * this.XON.getHeight();
     Log.d("MicroMsg.FilterView", "len:" + j + "  maskCount:" + paramInt1);
     int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { paramInt1, j });
     int i = 0;
@@ -131,7 +134,7 @@ public class FilterImageView
       Object localObject4;
       try
       {
-        localObject3 = this.dKq.getAssets().open("filter/".concat(String.valueOf(localObject3)));
+        localObject3 = this.fDf.getAssets().open("filter/".concat(String.valueOf(localObject3)));
         localObject1 = localObject3;
         localObject2 = localObject3;
         localObject4 = new byte[j];
@@ -167,7 +170,7 @@ public class FilterImageView
         }
         AppMethodBeat.o(143076);
       }
-      localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject4, this.QqA.getWidth(), this.QqA.getHeight(), true);
+      localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject4, this.XON.getWidth(), this.XON.getHeight(), true);
       if (localObject4 != localObject1)
       {
         Log.i("MicroMsg.FilterView", "recycle bitmap:%s", new Object[] { localObject4.toString() });
@@ -184,7 +187,7 @@ public class FilterImageView
       i += 1;
     }
     paramString = new PIntArray();
-    Log.e("MicroMsg.FilterView", "src.len:" + this.Qqw.length);
+    Log.e("MicroMsg.FilterView", "src.len:" + this.XOJ.length);
     i = 0;
     while (i < arrayOfInt.length)
     {
@@ -192,53 +195,53 @@ public class FilterImageView
       i += 1;
     }
     Log.e("MicroMsg.FilterView", "before filter");
-    ImgFilter.FilterInt(paramInt2, this.Qqw, arrayOfInt, paramInt1, this.QqA.getWidth(), this.QqA.getHeight(), paramString);
+    ImgFilter.FilterInt(paramInt2, this.XOJ, arrayOfInt, paramInt1, this.XON.getWidth(), this.XON.getHeight(), paramString);
     Log.e("MicroMsg.FilterView", "after filter");
-    this.QqA.setPixels(paramString.value, 0, this.QqA.getWidth(), 0, 0, this.QqA.getWidth(), this.QqA.getHeight());
-    this.Qqz.invalidate();
+    this.XON.setPixels(paramString.value, 0, this.XON.getWidth(), 0, 0, this.XON.getWidth(), this.XON.getHeight());
+    this.XOM.invalidate();
     AppMethodBeat.o(143076);
     return true;
   }
   
   public View getCropAreaView()
   {
-    return this.Qqx;
+    return this.XOK;
   }
   
   public CropImageView getCropImageIV()
   {
-    return this.Qqz;
+    return this.XOM;
   }
   
   public Bitmap getFilterBmp()
   {
-    return this.QqA;
+    return this.XON;
   }
   
   public int getFilterId()
   {
-    return this.DEz;
+    return this.JRu;
   }
   
-  public final void hl(String paramString, int paramInt)
+  public final void hU(String paramString, int paramInt)
   {
     AppMethodBeat.i(143074);
     Log.i("MicroMsg.FilterView", "filePath before fiterBmp:".concat(String.valueOf(paramString)));
-    if ((this.QqA == null) || (this.QqA.isRecycled())) {
-      this.QqA = BitmapUtil.rotate(BitmapUtil.extractThumbNail(paramString, 480, 480, false), paramInt);
+    if ((this.XON == null) || (this.XON.isRecycled())) {
+      this.XON = BitmapUtil.rotate(BitmapUtil.extractThumbNail(paramString, 480, 480, false), paramInt);
     }
-    Log.d("MicroMsg.FilterView", "filterBmp w:" + this.QqA.getWidth() + " h:" + this.QqA.getHeight());
-    this.Qqw = new int[this.QqA.getWidth() * this.QqA.getHeight()];
-    this.QqA.getPixels(this.Qqw, 0, this.QqA.getWidth(), 0, 0, this.QqA.getWidth(), this.QqA.getHeight());
-    this.Qqz.setImageBitmap(this.QqA);
+    Log.d("MicroMsg.FilterView", "filterBmp w:" + this.XON.getWidth() + " h:" + this.XON.getHeight());
+    this.XOJ = new int[this.XON.getWidth() * this.XON.getHeight()];
+    this.XON.getPixels(this.XOJ, 0, this.XON.getWidth(), 0, 0, this.XON.getWidth(), this.XON.getHeight());
+    this.XOM.setImageBitmap(this.XON);
     AppMethodBeat.o(143074);
   }
   
   public void setCropMaskBackground(int paramInt)
   {
     AppMethodBeat.i(143073);
-    if (this.Qqy != null) {
-      this.Qqy.setBackgroundResource(paramInt);
+    if (this.XOL != null) {
+      this.XOL.setBackgroundResource(paramInt);
     }
     AppMethodBeat.o(143073);
   }
@@ -246,22 +249,22 @@ public class FilterImageView
   public void setCropMaskVisible(int paramInt)
   {
     AppMethodBeat.i(143072);
-    if (this.Qqy != null) {
-      this.Qqy.setVisibility(paramInt);
+    if (this.XOL != null) {
+      this.XOL.setVisibility(paramInt);
     }
     AppMethodBeat.o(143072);
   }
   
   public void setImage(Bitmap paramBitmap)
   {
-    this.QqA = paramBitmap;
+    this.XON = paramBitmap;
   }
   
   public void setLimitZoomIn(boolean paramBoolean)
   {
     AppMethodBeat.i(143070);
-    if (this.Qqz != null) {
-      this.Qqz.setLimitZoomIn(paramBoolean);
+    if (this.XOM != null) {
+      this.XOM.setLimitZoomIn(paramBoolean);
     }
     AppMethodBeat.o(143070);
   }
@@ -269,20 +272,20 @@ public class FilterImageView
   public void setMatrix(Matrix paramMatrix)
   {
     AppMethodBeat.i(143071);
-    if (this.Qqz != null) {
-      this.Qqz.setImageMatrix(paramMatrix);
+    if (this.XOM != null) {
+      this.XOM.setImageMatrix(paramMatrix);
     }
     AppMethodBeat.o(143071);
   }
   
   public void setOnConfirmImp(Runnable paramRunnable)
   {
-    this.QqD = paramRunnable;
+    this.XOQ = paramRunnable;
   }
   
   public void setOnExitImp(Runnable paramRunnable)
   {
-    this.QqE = paramRunnable;
+    this.XOR = paramRunnable;
   }
   
   public void setVisibility(int paramInt)
@@ -290,8 +293,8 @@ public class FilterImageView
     AppMethodBeat.i(143075);
     if (paramInt == 0)
     {
-      this.QqC.notifyDataSetChanged();
-      this.QqB.invalidate();
+      this.XOP.notifyDataSetChanged();
+      this.XOO.invalidate();
     }
     super.setVisibility(paramInt);
     AppMethodBeat.o(143075);
@@ -300,18 +303,18 @@ public class FilterImageView
   final class a
     extends BaseAdapter
   {
-    int va = 0;
+    int bFx = 0;
     
     a() {}
     
     public final int getCount()
     {
-      return FilterImageView.QqF.length;
+      return FilterImageView.XOS.length;
     }
     
     public final Object getItem(int paramInt)
     {
-      return FilterImageView.QqF[paramInt];
+      return FilterImageView.XOS[paramInt];
     }
     
     public final long getItemId(int paramInt)
@@ -326,52 +329,52 @@ public class FilterImageView
       Object localObject1;
       if ((paramView == null) || (!(paramView.getTag() instanceof a)))
       {
-        paramViewGroup = View.inflate(FilterImageView.b(FilterImageView.this), 2131494185, null);
+        paramViewGroup = View.inflate(FilterImageView.b(FilterImageView.this), a.h.filter_selecter_item, null);
         localObject1 = new a();
-        ((a)localObject1).vr = ((TextView)paramViewGroup.findViewById(2131300721));
-        ((a)localObject1).QqH = ((ImageView)paramViewGroup.findViewById(2131300720));
+        ((a)localObject1).bFR = ((TextView)paramViewGroup.findViewById(a.g.filter_selecter_tv));
+        ((a)localObject1).XOU = ((ImageView)paramViewGroup.findViewById(a.g.filter_selecter_img));
         paramViewGroup.setTag(localObject1);
       }
       for (;;)
       {
-        Object localObject2 = ((a)localObject1).vr;
-        paramView = localc.QqM;
+        Object localObject2 = ((a)localObject1).bFR;
+        paramView = localc.XOZ;
         String str = LocaleUtil.getApplicationLanguage();
         if (str.equals("zh_CN"))
         {
-          paramView = paramView.zGG;
-          label120:
+          paramView = paramView.FlQ;
+          label123:
           ((TextView)localObject2).setText(paramView);
         }
         try
         {
           paramView = FilterImageView.b(FilterImageView.this).getAssets().open("filter/" + localc.icon);
-          ((a)localObject1).QqI = BackwardSupportUtil.BitmapFactory.decodeStream(paramView);
+          ((a)localObject1).XOV = BackwardSupportUtil.BitmapFactory.decodeStream(paramView);
           paramView.close();
-          ((a)localObject1).QqH.setImageBitmap(((a)localObject1).QqI);
+          ((a)localObject1).XOU.setImageBitmap(((a)localObject1).XOV);
           paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-          if (paramInt == this.va)
+          if (paramInt == this.bFx)
           {
-            paramViewGroup.findViewById(2131300720).setBackgroundResource(2131231482);
+            paramViewGroup.findViewById(a.g.filter_selecter_img).setBackgroundResource(a.f.camera_filter_reviewbox_checked);
             AppMethodBeat.o(143068);
             return paramViewGroup;
             localObject2 = (a)paramView.getTag();
             localObject1 = localObject2;
             paramViewGroup = paramView;
-            if (((a)localObject2).QqI == null) {
+            if (((a)localObject2).XOV == null) {
               continue;
             }
-            Log.i("MicroMsg.FilterView", "recycle bitmap:%s", new Object[] { ((a)localObject2).QqI.toString() });
-            ((a)localObject2).QqI.recycle();
+            Log.i("MicroMsg.FilterView", "recycle bitmap:%s", new Object[] { ((a)localObject2).XOV.toString() });
+            ((a)localObject2).XOV.recycle();
             localObject1 = localObject2;
             paramViewGroup = paramView;
             continue;
             if ((str.equals("zh_TW")) || (str.equals("zh_HK")))
             {
-              paramView = paramView.QqK;
-              break label120;
+              paramView = paramView.XOX;
+              break label123;
             }
-            paramView = paramView.QqL;
+            paramView = paramView.XOY;
           }
         }
         catch (IOException paramView)
@@ -380,7 +383,7 @@ public class FilterImageView
           {
             Log.printErrStackTrace("MicroMsg.FilterView", paramView, "", new Object[0]);
             continue;
-            paramViewGroup.findViewById(2131300720).setBackgroundResource(2131231483);
+            paramViewGroup.findViewById(a.g.filter_selecter_img).setBackgroundResource(a.f.camera_filter_reviewbox_normal);
           }
         }
       }
@@ -388,9 +391,9 @@ public class FilterImageView
     
     final class a
     {
-      ImageView QqH;
-      Bitmap QqI;
-      TextView vr;
+      ImageView XOU;
+      Bitmap XOV;
+      TextView bFR;
       
       a() {}
     }
@@ -398,35 +401,35 @@ public class FilterImageView
   
   static final class b
   {
-    String QqK;
-    String QqL;
-    String zGG;
+    String FlQ;
+    String XOX;
+    String XOY;
     
     b(String paramString1, String paramString2, String paramString3)
     {
-      this.zGG = paramString1;
-      this.QqK = paramString2;
-      this.QqL = paramString3;
+      this.FlQ = paramString1;
+      this.XOX = paramString2;
+      this.XOY = paramString3;
     }
   }
   
   static final class c
   {
-    FilterImageView.b QqM;
-    String QqN;
-    int QqO;
-    int QqP;
-    int QqQ;
+    FilterImageView.b XOZ;
+    String XPa;
+    int XPb;
+    int XPc;
+    int XPd;
     String icon;
     
     c(FilterImageView.b paramb, String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3)
     {
-      this.QqM = paramb;
-      this.QqN = paramString1;
-      this.QqO = paramInt1;
-      this.QqP = paramInt2;
+      this.XOZ = paramb;
+      this.XPa = paramString1;
+      this.XPb = paramInt1;
+      this.XPc = paramInt2;
       this.icon = paramString2;
-      this.QqQ = paramInt3;
+      this.XPd = paramInt3;
     }
   }
 }

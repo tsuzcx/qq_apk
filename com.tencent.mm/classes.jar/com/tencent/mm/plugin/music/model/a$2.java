@@ -11,14 +11,14 @@ final class a$2
   
   public final void run()
   {
-    AppMethodBeat.i(219819);
-    Toast.makeText(MMApplicationContext.getContext(), this.mIS, 0).show();
-    AppMethodBeat.o(219819);
+    AppMethodBeat.i(259657);
+    Toast.makeText(MMApplicationContext.getContext(), this.pJK, 0).show();
+    AppMethodBeat.o(259657);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.a.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,20 +11,16 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
-import com.tencent.mm.g.c.bb;
+import com.tencent.mm.f.c.bb;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ab;
 import com.tencent.mm.model.ac;
-import com.tencent.mm.plugin.brandservice.a.c;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
 import com.tencent.mm.plugin.fts.ui.a.j;
 import com.tencent.mm.plugin.fts.ui.a.m;
 import com.tencent.mm.plugin.fts.ui.a.q;
 import com.tencent.mm.plugin.fts.ui.a.r;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.bw;
@@ -35,49 +31,49 @@ public abstract class d
   extends BaseAdapter
   implements AbsListView.OnScrollListener, AdapterView.OnItemClickListener
 {
+  private e BMG;
+  private SparseArray<com.tencent.mm.plugin.fts.a.d.a.a> BMH;
+  private long BMI;
+  a BMJ;
   private int count;
-  private AbsListView.OnScrollListener qqo;
-  String query;
-  private HashMap<String, Boolean> vtH = new HashMap();
-  e xaG;
-  private SparseArray<com.tencent.mm.plugin.fts.a.d.a.a> xaH;
-  long xaI;
-  a xaJ;
+  private String query;
+  private AbsListView.OnScrollListener tOW;
+  private HashMap<String, Boolean> zZV = new HashMap();
   
   public d(e parame)
   {
     Log.i("MicroMsg.FTS.FTSBaseAdapter", "Create FTSBaseAdapter");
-    this.xaG = parame;
-    this.xaH = new SparseArray();
+    this.BMG = parame;
+    this.BMH = new SparseArray();
   }
   
-  private com.tencent.mm.plugin.fts.a.d.a.a Nq(int paramInt)
+  private com.tencent.mm.plugin.fts.a.d.a.a SE(int paramInt)
   {
     Object localObject2 = null;
-    if (this.xaH.indexOfKey(paramInt) >= 0) {
-      return (com.tencent.mm.plugin.fts.a.d.a.a)this.xaH.get(paramInt);
+    if (this.BMH.indexOfKey(paramInt) >= 0) {
+      return (com.tencent.mm.plugin.fts.a.d.a.a)this.BMH.get(paramInt);
     }
     Object localObject1 = localObject2;
     if (paramInt >= 0)
     {
       localObject1 = localObject2;
       if (paramInt < getCount()) {
-        localObject1 = No(paramInt);
+        localObject1 = SC(paramInt);
       }
     }
     if (localObject1 == null) {
-      return (com.tencent.mm.plugin.fts.a.d.a.a)this.xaH.get(0);
+      return (com.tencent.mm.plugin.fts.a.d.a.a)this.BMH.get(0);
     }
-    this.xaH.put(paramInt, localObject1);
+    this.BMH.put(paramInt, localObject1);
     return localObject1;
   }
   
-  protected abstract com.tencent.mm.plugin.fts.a.d.a.a No(int paramInt);
+  protected abstract com.tencent.mm.plugin.fts.a.d.a.a SC(int paramInt);
   
   protected void a(Context paramContext, com.tencent.mm.plugin.fts.a.d.a.a parama)
   {
     if ((parama instanceof r)) {
-      this.vtH.put(((r)parama).username, Boolean.TRUE);
+      this.zZV.put(((r)parama).username, Boolean.TRUE);
     }
     do
     {
@@ -87,108 +83,121 @@ public abstract class d
         return;
         if ((parama instanceof q))
         {
-          this.vtH.put(((q)parama).username, Boolean.TRUE);
+          this.zZV.put(((q)parama).username, Boolean.TRUE);
           return;
         }
         if ((parama instanceof m))
         {
-          this.vtH.put(((m)parama).username, Boolean.TRUE);
+          this.zZV.put(((m)parama).username, Boolean.TRUE);
           return;
         }
         if (!(parama instanceof j)) {
           break;
         }
-        i = ((j)parama).xdl.field_featureId;
+        i = ((j)parama).BPj.field_featureId;
         if (i == 23)
         {
-          this.vtH.put("qqmail", Boolean.TRUE);
+          this.zZV.put("qqmail", Boolean.TRUE);
           return;
         }
         if (i == 27)
         {
-          this.vtH.put("masssendapp", Boolean.TRUE);
+          this.zZV.put("masssendapp", Boolean.TRUE);
           return;
         }
         if (i == 28)
         {
-          this.vtH.put("newsapp", Boolean.TRUE);
+          this.zZV.put("newsapp", Boolean.TRUE);
           return;
         }
         if (i == 39)
         {
-          this.vtH.put("filehelper", Boolean.TRUE);
+          this.zZV.put("filehelper", Boolean.TRUE);
           return;
         }
         if (i == 43)
         {
-          this.vtH.put("gh_43f2581f6fd6", Boolean.TRUE);
+          this.zZV.put("gh_43f2581f6fd6", Boolean.TRUE);
           return;
         }
         if (i == 71)
         {
-          this.vtH.put("appbrand_notify_message", Boolean.TRUE);
+          this.zZV.put("appbrand_notify_message", Boolean.TRUE);
           return;
         }
         if (i == 69)
         {
-          this.vtH.put("appbrandcustomerservicemsg", Boolean.TRUE);
+          this.zZV.put("appbrandcustomerservicemsg", Boolean.TRUE);
           return;
         }
       } while ((i != 50) && (i != 63) && (i != 67));
-      this.vtH.put("officialaccounts", Boolean.TRUE);
+      this.zZV.put("officialaccounts", Boolean.TRUE);
       return;
-    } while (!(parama instanceof c));
-    this.vtH.put(((c)parama).getUserName(), Boolean.TRUE);
+    } while (!(parama instanceof com.tencent.mm.plugin.brandservice.a.d));
+    this.zZV.put(((com.tencent.mm.plugin.brandservice.a.d)parama).getUserName(), Boolean.TRUE);
   }
   
   protected abstract boolean a(View paramView, com.tencent.mm.plugin.fts.a.d.a.a parama, boolean paramBoolean);
   
-  public final void auV(String paramString)
+  protected final void aB(int paramInt, boolean paramBoolean)
   {
-    stopSearch();
-    this.xaI = System.currentTimeMillis();
-    this.query = paramString;
-    Log.i("MicroMsg.FTS.FTSBaseAdapter", "start search query=%s", new Object[] { paramString });
-    dPb();
+    if (this.BMJ != null) {
+      this.BMJ.aC(paramInt, paramBoolean);
+    }
   }
   
-  protected final void ax(int paramInt, boolean paramBoolean)
+  public final void aEi(String paramString)
   {
-    if (this.xaJ != null) {
-      this.xaJ.ay(paramInt, paramBoolean);
-    }
+    erx();
+    this.BMI = System.currentTimeMillis();
+    this.query = paramString;
+    Log.i("MicroMsg.FTS.FTSBaseAdapter", "start search query=%s", new Object[] { paramString });
+    erv();
   }
   
   protected void clearCache()
   {
-    this.xaH.clear();
+    this.BMH.clear();
   }
   
-  protected int dOI()
+  public final e erB()
+  {
+    return this.BMG;
+  }
+  
+  protected final long erC()
+  {
+    return this.BMI;
+  }
+  
+  protected int erb()
   {
     return getCount();
   }
   
-  protected abstract void dPb();
+  protected abstract void erv();
   
-  public final e dPg()
+  public void erx()
   {
-    return this.xaG;
+    this.count = 0;
+    this.query = "";
+    clearCache();
+    notifyDataSetChanged();
   }
   
   public void finish()
   {
-    stopSearch();
+    erx();
     Object localObject = new ArrayList();
-    ((ArrayList)localObject).addAll(this.vtH.keySet());
-    localObject = ((l)g.af(l.class)).aST().a((ArrayList)localObject, ab.iCF, null, "hidden_conv_parent");
+    ((ArrayList)localObject).addAll(this.zZV.keySet());
+    localObject = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().b((ArrayList)localObject, null, "hidden_conv_parent");
     if (localObject != null)
     {
       while (((Cursor)localObject).moveToNext())
       {
         az localaz = new az();
         localaz.convertFrom((Cursor)localObject);
-        h.CyF.a(21170, new Object[] { Integer.valueOf(1), localaz.field_username, Integer.valueOf(ac.JT(localaz.field_username)) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(21170, new Object[] { Integer.valueOf(1), localaz.field_username, Integer.valueOf(ac.Rl(localaz.field_username)) });
       }
       ((Cursor)localObject).close();
     }
@@ -196,7 +205,7 @@ public abstract class d
   
   public final Context getContext()
   {
-    return this.xaG.getContext();
+    return this.BMG.getContext();
   }
   
   public int getCount()
@@ -211,8 +220,8 @@ public abstract class d
   
   public int getItemViewType(int paramInt)
   {
-    if (Nq(paramInt) != null) {
-      return Nq(paramInt).qcr;
+    if (SE(paramInt) != null) {
+      return SE(paramInt).viewType;
     }
     Log.e("MicroMsg.FTS.FTSBaseAdapter", "getItemViewType: get data item fail, return unknown Type, count=%d | position = %s", new Object[] { Integer.valueOf(getCount()), Integer.valueOf(paramInt) });
     return -1;
@@ -225,19 +234,19 @@ public abstract class d
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    com.tencent.mm.plugin.fts.a.d.a.a locala = Nq(paramInt);
+    com.tencent.mm.plugin.fts.a.d.a.a locala = SE(paramInt);
     View localView = paramView;
     if (paramView == null) {
-      localView = locala.axc().a(getContext(), paramViewGroup);
+      localView = locala.aEw().a(getContext(), paramViewGroup);
     }
     paramView = (a.a)localView.getTag();
-    if (!locala.wXJ)
+    if (!locala.BJF)
     {
       locala.a(getContext(), paramView, new Object[0]);
       a(getContext(), locala);
-      locala.wXJ = true;
+      locala.BJF = true;
     }
-    locala.axc().a(getContext(), paramView, locala, new Object[0]);
+    locala.aEw().a(getContext(), paramView, locala, new Object[0]);
     return localView;
   }
   
@@ -249,32 +258,32 @@ public abstract class d
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     b localb = new b();
-    localb.bm(paramAdapterView);
-    localb.bm(paramView);
-    localb.pH(paramInt);
-    localb.zo(paramLong);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fts/ui/FTSBaseAdapter", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
-    this.xaG.hideVKB();
-    paramAdapterView = Nq(paramInt - this.xaG.getListView().getHeaderViewsCount());
+    localb.bn(paramAdapterView);
+    localb.bn(paramView);
+    localb.sg(paramInt);
+    localb.Fs(paramLong);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/fts/ui/FTSBaseAdapter", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+    this.BMG.hideVKB();
+    paramAdapterView = SE(paramInt - this.BMG.getListView().getHeaderViewsCount());
     if (paramAdapterView != null)
     {
-      boolean bool = a(paramView, paramAdapterView, paramAdapterView.axc().a(getContext(), paramView, paramAdapterView));
-      this.xaG.a(paramAdapterView, bool);
+      boolean bool = a(paramView, paramAdapterView, paramAdapterView.aEw().a(getContext(), paramView, paramAdapterView));
+      this.BMG.a(paramAdapterView, bool);
     }
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fts/ui/FTSBaseAdapter", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.qqo != null) {
-      this.qqo.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (this.tOW != null) {
+      this.tOW.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.qqo != null) {
-      this.qqo.onScrollStateChanged(paramAbsListView, paramInt);
+    if (this.tOW != null) {
+      this.tOW.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
   
@@ -284,22 +293,14 @@ public abstract class d
     this.count = paramInt;
   }
   
-  public void stopSearch()
-  {
-    this.count = 0;
-    this.query = "";
-    clearCache();
-    notifyDataSetChanged();
-  }
-  
   public static abstract interface a
   {
-    public abstract void ay(int paramInt, boolean paramBoolean);
+    public abstract void aC(int paramInt, boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.d
  * JD-Core Version:    0.7.0.1
  */

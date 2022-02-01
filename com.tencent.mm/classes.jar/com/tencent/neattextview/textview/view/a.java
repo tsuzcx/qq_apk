@@ -10,11 +10,11 @@ public abstract interface a
   
   public abstract float getVerticalOffset();
   
-  public abstract boolean hiS();
+  public abstract boolean ikB();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.neattextview.textview.view.a
  * JD-Core Version:    0.7.0.1
  */

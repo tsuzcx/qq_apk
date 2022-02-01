@@ -3,45 +3,47 @@ package com.tencent.mm.plugin.finder.ui;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.ae.a;
-import com.tencent.mm.plugin.finder.feed.ae.b;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.feed.ak.a;
+import com.tencent.mm.plugin.finder.feed.ak.b;
 import com.tencent.mm.ui.MMActivity;
 import java.util.HashMap;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderSelectActivityUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "selectPresenter", "Lcom/tencent/mm/plugin/finder/feed/FinderSelectContract$SelectPresenter;", "viewCallback", "Lcom/tencent/mm/plugin/finder/feed/FinderSelectContract$SelectViewCallback;", "getLayoutId", "", "initContentView", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderSelectActivityUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "selectPresenter", "Lcom/tencent/mm/plugin/finder/feed/FinderSelectContract$SelectPresenter;", "viewCallback", "Lcom/tencent/mm/plugin/finder/feed/FinderSelectContract$SelectViewCallback;", "getLayoutId", "", "initContentView", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-finder_release"})
 public final class FinderSelectActivityUI
   extends MMFinderUI
 {
   private HashMap _$_findViewCache;
-  private ae.b tQm;
-  private final ae.a vaq;
+  private ak.b xBc;
+  private final ak.a zQw;
   
   public FinderSelectActivityUI()
   {
-    AppMethodBeat.i(252607);
-    this.vaq = new ae.a();
-    AppMethodBeat.o(252607);
+    AppMethodBeat.i(290723);
+    this.zQw = new ak.a();
+    AppMethodBeat.o(290723);
   }
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(252609);
+    AppMethodBeat.i(290725);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(252609);
+    AppMethodBeat.o(290725);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(252608);
+    AppMethodBeat.i(290724);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -52,45 +54,45 @@ public final class FinderSelectActivityUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(252608);
+    AppMethodBeat.o(290724);
     return localView1;
   }
   
   public final int getLayoutId()
   {
-    return 2131494613;
+    return b.g.finder_select_activity_ui;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(252605);
+    AppMethodBeat.i(290721);
     super.onCreate(paramBundle);
-    setMMTitle(getResources().getString(2131759521));
+    setMMTitle(getResources().getString(b.j.finder_activity_select_title));
     setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
     paramBundle = (MMActivity)this;
     Object localObject = getContentView();
-    p.g(localObject, "contentView");
-    this.tQm = new ae.b(paramBundle, (View)localObject, this.vaq, true);
-    paramBundle = this.vaq;
-    localObject = this.tQm;
+    p.j(localObject, "contentView");
+    this.xBc = new ak.b(paramBundle, (View)localObject, this.zQw, true);
+    paramBundle = this.zQw;
+    localObject = this.xBc;
     if (localObject == null) {
-      p.btv("viewCallback");
+      p.bGy("viewCallback");
     }
-    paramBundle.a((ae.b)localObject);
-    paramBundle = this.tQm;
+    paramBundle.a((ak.b)localObject);
+    paramBundle = this.xBc;
     if (paramBundle == null) {
-      p.btv("viewCallback");
+      p.bGy("viewCallback");
     }
     paramBundle.initView();
-    AppMethodBeat.o(252605);
+    AppMethodBeat.o(290721);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(252606);
+    AppMethodBeat.i(290722);
     super.onDestroy();
-    this.vaq.onDetach();
-    AppMethodBeat.o(252606);
+    this.zQw.onDetach();
+    AppMethodBeat.o(290722);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -99,7 +101,7 @@ public final class FinderSelectActivityUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -107,11 +109,11 @@ public final class FinderSelectActivityUI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(252604);
-      if (!this.vNf.isFinishing()) {
-        this.vNf.finish();
+      AppMethodBeat.i(287126);
+      if (!this.AtX.isFinishing()) {
+        this.AtX.finish();
       }
-      AppMethodBeat.o(252604);
+      AppMethodBeat.o(287126);
       return true;
     }
   }

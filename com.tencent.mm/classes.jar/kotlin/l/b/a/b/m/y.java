@@ -10,8 +10,8 @@ public final class y
   public static final boolean al(ab paramab)
   {
     AppMethodBeat.i(60747);
-    p.h(paramab, "$this$isFlexible");
-    boolean bool = paramab.hLF() instanceof v;
+    p.k(paramab, "$this$isFlexible");
+    boolean bool = paramab.iPX() instanceof v;
     AppMethodBeat.o(60747);
     return bool;
   }
@@ -19,8 +19,8 @@ public final class y
   public static final v am(ab paramab)
   {
     AppMethodBeat.i(60748);
-    p.h(paramab, "$this$asFlexibleType");
-    paramab = paramab.hLF();
+    p.k(paramab, "$this$asFlexibleType");
+    paramab = paramab.iPX();
     if (paramab == null)
     {
       paramab = new t("null cannot be cast to non-null type org.jetbrains.kotlin.types.FlexibleType");
@@ -35,11 +35,11 @@ public final class y
   public static final aj an(ab paramab)
   {
     AppMethodBeat.i(60749);
-    p.h(paramab, "$this$lowerIfFlexible");
-    paramab = paramab.hLF();
+    p.k(paramab, "$this$lowerIfFlexible");
+    paramab = paramab.iPX();
     if ((paramab instanceof v))
     {
-      paramab = ((v)paramab).TNV;
+      paramab = ((v)paramab).abqv;
       AppMethodBeat.o(60749);
       return paramab;
     }
@@ -57,11 +57,11 @@ public final class y
   public static final aj ao(ab paramab)
   {
     AppMethodBeat.i(60750);
-    p.h(paramab, "$this$upperIfFlexible");
-    paramab = paramab.hLF();
+    p.k(paramab, "$this$upperIfFlexible");
+    paramab = paramab.iPX();
     if ((paramab instanceof v))
     {
-      paramab = ((v)paramab).TNW;
+      paramab = ((v)paramab).abqw;
       AppMethodBeat.o(60750);
       return paramab;
     }
@@ -78,7 +78,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.y
  * JD-Core Version:    0.7.0.1
  */

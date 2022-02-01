@@ -4,7 +4,7 @@ import com.tencent.thumbplayer.api.resourceloader.ITPAssetResourceLoaderListener
 
 public abstract interface a
 {
-  public abstract String Mf(int paramInt);
+  public abstract String Rv(int paramInt);
   
   public abstract void a(ITPAssetResourceLoaderListener paramITPAssetResourceLoaderListener);
   
@@ -12,9 +12,9 @@ public abstract interface a
   
   public abstract long getDataTotalSize(int paramInt, String paramString);
   
-  public abstract void hnB();
+  public abstract void irc();
   
-  public abstract int k(int paramInt, long paramLong1, long paramLong2);
+  public abstract int n(int paramInt, long paramLong1, long paramLong2);
   
   public abstract int onStartReadData(int paramInt, String paramString, long paramLong1, long paramLong2);
   

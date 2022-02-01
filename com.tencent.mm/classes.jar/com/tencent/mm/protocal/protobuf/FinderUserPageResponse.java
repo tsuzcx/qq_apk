@@ -4,27 +4,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class FinderUserPageResponse
-  extends dpc
+  extends dyy
 {
-  public aoy biz_info;
+  public String acct_detail_entrance;
+  public aqh biz_info;
   public FinderContact contact;
   public int continueFlag;
-  public cxs entranceInfo;
+  public dhc entranceInfo;
+  public LinkedList<asg> eventInfoList;
   public int fansCount;
   public int feedsCount;
   public String firstPageMD5;
   public int friendFollowCount;
-  public com.tencent.mm.bw.b lastBuffer;
-  public awt liveNoticeInfo;
+  public com.tencent.mm.cd.b lastBuffer;
+  public bbh liveNoticeInfo;
   public LinkedList<FinderObject> liveObjects;
+  public String loggingout_wording;
+  public int logout_lock;
+  public String logout_url;
   public LinkedList<FinderObject> object;
   public int originalEntranceFlag;
-  public baw preloadInfo;
+  public bky poi_info;
+  public bhh preloadInfo;
   public int privateLock;
   public LinkedList<String> userTags;
-  public LinkedList<bds> usualTopics;
-  public azn verifyInfo;
-  public bel wxaShopInfo;
+  public LinkedList<bkr> usualTopics;
+  public bfm verifyInfo;
+  public bln wxaShopInfo;
   
   public FinderUserPageResponse()
   {
@@ -33,6 +39,7 @@ public class FinderUserPageResponse
     this.userTags = new LinkedList();
     this.liveObjects = new LinkedList();
     this.usualTopics = new LinkedList();
+    this.eventInfoList = new LinkedList();
     AppMethodBeat.o(169071);
   }
   
@@ -50,115 +57,148 @@ public class FinderUserPageResponse
       }
       if (this.BaseResponse != null)
       {
-        paramVarArgs.ni(1, this.BaseResponse.computeSize());
+        paramVarArgs.oE(1, this.BaseResponse.computeSize());
         this.BaseResponse.writeFields(paramVarArgs);
       }
       paramVarArgs.e(2, 8, this.object);
       if (this.firstPageMD5 != null) {
-        paramVarArgs.e(3, this.firstPageMD5);
+        paramVarArgs.f(3, this.firstPageMD5);
       }
       if (this.contact != null)
       {
-        paramVarArgs.ni(5, this.contact.computeSize());
+        paramVarArgs.oE(5, this.contact.computeSize());
         this.contact.writeFields(paramVarArgs);
       }
-      paramVarArgs.aM(6, this.feedsCount);
-      paramVarArgs.aM(7, this.continueFlag);
+      paramVarArgs.aY(6, this.feedsCount);
+      paramVarArgs.aY(7, this.continueFlag);
       if (this.verifyInfo != null)
       {
-        paramVarArgs.ni(8, this.verifyInfo.computeSize());
+        paramVarArgs.oE(8, this.verifyInfo.computeSize());
         this.verifyInfo.writeFields(paramVarArgs);
       }
-      paramVarArgs.aM(9, this.fansCount);
+      paramVarArgs.aY(9, this.fansCount);
       if (this.lastBuffer != null) {
         paramVarArgs.c(10, this.lastBuffer);
       }
-      paramVarArgs.aM(11, this.friendFollowCount);
+      paramVarArgs.aY(11, this.friendFollowCount);
       paramVarArgs.e(12, 1, this.userTags);
-      paramVarArgs.aM(13, this.originalEntranceFlag);
+      paramVarArgs.aY(13, this.originalEntranceFlag);
       if (this.entranceInfo != null)
       {
-        paramVarArgs.ni(14, this.entranceInfo.computeSize());
+        paramVarArgs.oE(14, this.entranceInfo.computeSize());
         this.entranceInfo.writeFields(paramVarArgs);
       }
       if (this.preloadInfo != null)
       {
-        paramVarArgs.ni(15, this.preloadInfo.computeSize());
+        paramVarArgs.oE(15, this.preloadInfo.computeSize());
         this.preloadInfo.writeFields(paramVarArgs);
       }
       paramVarArgs.e(16, 8, this.liveObjects);
-      paramVarArgs.aM(17, this.privateLock);
+      paramVarArgs.aY(17, this.privateLock);
       if (this.wxaShopInfo != null)
       {
-        paramVarArgs.ni(18, this.wxaShopInfo.computeSize());
+        paramVarArgs.oE(18, this.wxaShopInfo.computeSize());
         this.wxaShopInfo.writeFields(paramVarArgs);
       }
       if (this.liveNoticeInfo != null)
       {
-        paramVarArgs.ni(19, this.liveNoticeInfo.computeSize());
+        paramVarArgs.oE(19, this.liveNoticeInfo.computeSize());
         this.liveNoticeInfo.writeFields(paramVarArgs);
       }
       paramVarArgs.e(20, 8, this.usualTopics);
+      paramVarArgs.aY(22, this.logout_lock);
+      if (this.acct_detail_entrance != null) {
+        paramVarArgs.f(23, this.acct_detail_entrance);
+      }
+      if (this.loggingout_wording != null) {
+        paramVarArgs.f(24, this.loggingout_wording);
+      }
+      if (this.poi_info != null)
+      {
+        paramVarArgs.oE(25, this.poi_info.computeSize());
+        this.poi_info.writeFields(paramVarArgs);
+      }
+      if (this.logout_url != null) {
+        paramVarArgs.f(26, this.logout_url);
+      }
       if (this.biz_info != null)
       {
-        paramVarArgs.ni(27, this.biz_info.computeSize());
+        paramVarArgs.oE(27, this.biz_info.computeSize());
         this.biz_info.writeFields(paramVarArgs);
       }
+      paramVarArgs.e(28, 8, this.eventInfoList);
       AppMethodBeat.o(169072);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseResponse == null) {
-        break label2350;
+        break label2568;
       }
     }
-    label2350:
-    for (paramInt = g.a.a.a.nh(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label2568:
+    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt + g.a.a.a.c(2, 8, this.object);
       paramInt = i;
       if (this.firstPageMD5 != null) {
-        paramInt = i + g.a.a.b.b.a.f(3, this.firstPageMD5);
+        paramInt = i + g.a.a.b.b.a.g(3, this.firstPageMD5);
       }
       i = paramInt;
       if (this.contact != null) {
-        i = paramInt + g.a.a.a.nh(5, this.contact.computeSize());
+        i = paramInt + g.a.a.a.oD(5, this.contact.computeSize());
       }
-      i = i + g.a.a.b.b.a.bu(6, this.feedsCount) + g.a.a.b.b.a.bu(7, this.continueFlag);
+      i = i + g.a.a.b.b.a.bM(6, this.feedsCount) + g.a.a.b.b.a.bM(7, this.continueFlag);
       paramInt = i;
       if (this.verifyInfo != null) {
-        paramInt = i + g.a.a.a.nh(8, this.verifyInfo.computeSize());
+        paramInt = i + g.a.a.a.oD(8, this.verifyInfo.computeSize());
       }
-      i = paramInt + g.a.a.b.b.a.bu(9, this.fansCount);
+      i = paramInt + g.a.a.b.b.a.bM(9, this.fansCount);
       paramInt = i;
       if (this.lastBuffer != null) {
         paramInt = i + g.a.a.b.b.a.b(10, this.lastBuffer);
       }
-      i = paramInt + g.a.a.b.b.a.bu(11, this.friendFollowCount) + g.a.a.a.c(12, 1, this.userTags) + g.a.a.b.b.a.bu(13, this.originalEntranceFlag);
+      i = paramInt + g.a.a.b.b.a.bM(11, this.friendFollowCount) + g.a.a.a.c(12, 1, this.userTags) + g.a.a.b.b.a.bM(13, this.originalEntranceFlag);
       paramInt = i;
       if (this.entranceInfo != null) {
-        paramInt = i + g.a.a.a.nh(14, this.entranceInfo.computeSize());
+        paramInt = i + g.a.a.a.oD(14, this.entranceInfo.computeSize());
       }
       i = paramInt;
       if (this.preloadInfo != null) {
-        i = paramInt + g.a.a.a.nh(15, this.preloadInfo.computeSize());
+        i = paramInt + g.a.a.a.oD(15, this.preloadInfo.computeSize());
       }
-      i = i + g.a.a.a.c(16, 8, this.liveObjects) + g.a.a.b.b.a.bu(17, this.privateLock);
+      i = i + g.a.a.a.c(16, 8, this.liveObjects) + g.a.a.b.b.a.bM(17, this.privateLock);
       paramInt = i;
       if (this.wxaShopInfo != null) {
-        paramInt = i + g.a.a.a.nh(18, this.wxaShopInfo.computeSize());
+        paramInt = i + g.a.a.a.oD(18, this.wxaShopInfo.computeSize());
       }
       i = paramInt;
       if (this.liveNoticeInfo != null) {
-        i = paramInt + g.a.a.a.nh(19, this.liveNoticeInfo.computeSize());
+        i = paramInt + g.a.a.a.oD(19, this.liveNoticeInfo.computeSize());
       }
-      i += g.a.a.a.c(20, 8, this.usualTopics);
+      i = i + g.a.a.a.c(20, 8, this.usualTopics) + g.a.a.b.b.a.bM(22, this.logout_lock);
+      paramInt = i;
+      if (this.acct_detail_entrance != null) {
+        paramInt = i + g.a.a.b.b.a.g(23, this.acct_detail_entrance);
+      }
+      i = paramInt;
+      if (this.loggingout_wording != null) {
+        i = paramInt + g.a.a.b.b.a.g(24, this.loggingout_wording);
+      }
+      paramInt = i;
+      if (this.poi_info != null) {
+        paramInt = i + g.a.a.a.oD(25, this.poi_info.computeSize());
+      }
+      i = paramInt;
+      if (this.logout_url != null) {
+        i = paramInt + g.a.a.b.b.a.g(26, this.logout_url);
+      }
       paramInt = i;
       if (this.biz_info != null) {
-        paramInt = i + g.a.a.a.nh(27, this.biz_info.computeSize());
+        paramInt = i + g.a.a.a.oD(27, this.biz_info.computeSize());
       }
+      i = g.a.a.a.c(28, 8, this.eventInfoList);
       AppMethodBeat.o(169072);
-      return paramInt;
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
@@ -166,10 +206,11 @@ public class FinderUserPageResponse
         this.userTags.clear();
         this.liveObjects.clear();
         this.usualTopics.clear();
+        this.eventInfoList.clear();
         paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = dpc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dpc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         if (this.BaseResponse == null)
@@ -187,216 +228,269 @@ public class FinderUserPageResponse
         FinderUserPageResponse localFinderUserPageResponse = (FinderUserPageResponse)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         Object localObject2;
-        boolean bool;
         switch (paramInt)
         {
         case 4: 
         case 21: 
-        case 22: 
-        case 23: 
-        case 24: 
-        case 25: 
-        case 26: 
         default: 
           AppMethodBeat.o(169072);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localFinderUserPageResponse.BaseResponse = ((BaseResponse)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new jh();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((jh)localObject2).parseFrom((byte[])localObject1);
+            }
+            localFinderUserPageResponse.BaseResponse = ((jh)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(169072);
           return 0;
         case 2: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new FinderObject();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((FinderObject)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localFinderUserPageResponse.object.add(localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new FinderObject();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((FinderObject)localObject2).parseFrom((byte[])localObject1);
+            }
+            localFinderUserPageResponse.object.add(localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(169072);
           return 0;
         case 3: 
-          localFinderUserPageResponse.firstPageMD5 = ((g.a.a.a.a)localObject1).UbS.readString();
+          localFinderUserPageResponse.firstPageMD5 = ((g.a.a.a.a)localObject1).abFh.readString();
           AppMethodBeat.o(169072);
           return 0;
         case 5: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new FinderContact();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((FinderContact)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localFinderUserPageResponse.contact = ((FinderContact)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new FinderContact();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((FinderContact)localObject2).parseFrom((byte[])localObject1);
+            }
+            localFinderUserPageResponse.contact = ((FinderContact)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(169072);
           return 0;
         case 6: 
-          localFinderUserPageResponse.feedsCount = ((g.a.a.a.a)localObject1).UbS.zi();
+          localFinderUserPageResponse.feedsCount = ((g.a.a.a.a)localObject1).abFh.AK();
           AppMethodBeat.o(169072);
           return 0;
         case 7: 
-          localFinderUserPageResponse.continueFlag = ((g.a.a.a.a)localObject1).UbS.zi();
+          localFinderUserPageResponse.continueFlag = ((g.a.a.a.a)localObject1).abFh.AK();
           AppMethodBeat.o(169072);
           return 0;
         case 8: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new azn();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((azn)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localFinderUserPageResponse.verifyInfo = ((azn)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new bfm();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((bfm)localObject2).parseFrom((byte[])localObject1);
+            }
+            localFinderUserPageResponse.verifyInfo = ((bfm)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(169072);
           return 0;
         case 9: 
-          localFinderUserPageResponse.fansCount = ((g.a.a.a.a)localObject1).UbS.zi();
+          localFinderUserPageResponse.fansCount = ((g.a.a.a.a)localObject1).abFh.AK();
           AppMethodBeat.o(169072);
           return 0;
         case 10: 
-          localFinderUserPageResponse.lastBuffer = ((g.a.a.a.a)localObject1).UbS.hPo();
+          localFinderUserPageResponse.lastBuffer = ((g.a.a.a.a)localObject1).abFh.iUw();
           AppMethodBeat.o(169072);
           return 0;
         case 11: 
-          localFinderUserPageResponse.friendFollowCount = ((g.a.a.a.a)localObject1).UbS.zi();
+          localFinderUserPageResponse.friendFollowCount = ((g.a.a.a.a)localObject1).abFh.AK();
           AppMethodBeat.o(169072);
           return 0;
         case 12: 
-          localFinderUserPageResponse.userTags.add(((g.a.a.a.a)localObject1).UbS.readString());
+          localFinderUserPageResponse.userTags.add(((g.a.a.a.a)localObject1).abFh.readString());
           AppMethodBeat.o(169072);
           return 0;
         case 13: 
-          localFinderUserPageResponse.originalEntranceFlag = ((g.a.a.a.a)localObject1).UbS.zi();
+          localFinderUserPageResponse.originalEntranceFlag = ((g.a.a.a.a)localObject1).abFh.AK();
           AppMethodBeat.o(169072);
           return 0;
         case 14: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new cxs();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((cxs)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localFinderUserPageResponse.entranceInfo = ((cxs)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new dhc();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((dhc)localObject2).parseFrom((byte[])localObject1);
+            }
+            localFinderUserPageResponse.entranceInfo = ((dhc)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(169072);
           return 0;
         case 15: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new baw();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((baw)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localFinderUserPageResponse.preloadInfo = ((baw)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new bhh();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((bhh)localObject2).parseFrom((byte[])localObject1);
+            }
+            localFinderUserPageResponse.preloadInfo = ((bhh)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(169072);
           return 0;
         case 16: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new FinderObject();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((FinderObject)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localFinderUserPageResponse.liveObjects.add(localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new FinderObject();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((FinderObject)localObject2).parseFrom((byte[])localObject1);
+            }
+            localFinderUserPageResponse.liveObjects.add(localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(169072);
           return 0;
         case 17: 
-          localFinderUserPageResponse.privateLock = ((g.a.a.a.a)localObject1).UbS.zi();
+          localFinderUserPageResponse.privateLock = ((g.a.a.a.a)localObject1).abFh.AK();
           AppMethodBeat.o(169072);
           return 0;
         case 18: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new bel();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((bel)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localFinderUserPageResponse.wxaShopInfo = ((bel)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new bln();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((bln)localObject2).parseFrom((byte[])localObject1);
+            }
+            localFinderUserPageResponse.wxaShopInfo = ((bln)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(169072);
           return 0;
         case 19: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new awt();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((awt)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localFinderUserPageResponse.liveNoticeInfo = ((awt)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new bbh();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((bbh)localObject2).parseFrom((byte[])localObject1);
+            }
+            localFinderUserPageResponse.liveNoticeInfo = ((bbh)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(169072);
           return 0;
         case 20: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new bds();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((bds)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localFinderUserPageResponse.usualTopics.add(localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new bkr();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((bkr)localObject2).parseFrom((byte[])localObject1);
+            }
+            localFinderUserPageResponse.usualTopics.add(localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(169072);
+          return 0;
+        case 22: 
+          localFinderUserPageResponse.logout_lock = ((g.a.a.a.a)localObject1).abFh.AK();
+          AppMethodBeat.o(169072);
+          return 0;
+        case 23: 
+          localFinderUserPageResponse.acct_detail_entrance = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(169072);
+          return 0;
+        case 24: 
+          localFinderUserPageResponse.loggingout_wording = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(169072);
+          return 0;
+        case 25: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new bky();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((bky)localObject2).parseFrom((byte[])localObject1);
+            }
+            localFinderUserPageResponse.poi_info = ((bky)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(169072);
+          return 0;
+        case 26: 
+          localFinderUserPageResponse.logout_url = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(169072);
+          return 0;
+        case 27: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new aqh();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((aqh)localObject2).parseFrom((byte[])localObject1);
+            }
+            localFinderUserPageResponse.biz_info = ((aqh)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(169072);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new aoy();
-          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((aoy)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-          localFinderUserPageResponse.biz_info = ((aoy)localObject1);
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new asg();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((asg)localObject2).parseFrom((byte[])localObject1);
+          }
+          localFinderUserPageResponse.eventInfoList.add(localObject2);
           paramInt += 1;
         }
         AppMethodBeat.o(169072);

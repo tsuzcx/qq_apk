@@ -37,14 +37,14 @@ public abstract interface p
     
     public static p getDefaultImpl()
     {
-      return a.jDX;
+      return a.muA;
     }
     
     public static boolean setDefaultImpl(p paramp)
     {
-      if ((a.jDX == null) && (paramp != null))
+      if ((a.muA == null) && (paramp != null))
       {
-        a.jDX = paramp;
+        a.muA = paramp;
         return true;
       }
       return false;
@@ -74,7 +74,7 @@ public abstract interface p
     static final class a
       implements p
     {
-      public static p jDX;
+      public static p muA;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -116,7 +116,7 @@ public abstract interface p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.network.p
  * JD-Core Version:    0.7.0.1
  */

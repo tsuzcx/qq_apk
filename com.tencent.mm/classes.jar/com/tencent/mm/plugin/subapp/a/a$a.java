@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.subapp.a;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/subapp/audio/VoiceRemindRecordAudioManager$Companion;", "", "()V", "TAG", "", "app_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/subapp/audio/VoiceRemindRecordAudioManager$Companion;", "", "()V", "TAG", "", "app_release"})
 public final class a$a {}
 
 

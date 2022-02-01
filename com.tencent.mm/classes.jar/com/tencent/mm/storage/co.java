@@ -1,89 +1,108 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.a.n;
-import com.tencent.mm.plugin.messenger.foundation.a.a.n.a;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.sdk.storage.MStorageEvent;
+import com.tencent.mm.f.c.hc;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class co
-  extends MAutoStorage<cn>
-  implements n
+  extends hc
 {
-  public static final String[] SQL_CREATE;
-  private final MStorageEvent<n.a, cn> NQt;
-  private ISQLiteDatabase db;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(117352);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(cn.info, "Stranger") };
-    AppMethodBeat.o(117352);
+    AppMethodBeat.i(43306);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[5];
+    localMAutoDBInfo.columns = new String[6];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localMAutoDBInfo.columns[0] = "encryptUsername";
+    localMAutoDBInfo.colsMap.put("encryptUsername", "TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(" encryptUsername TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.primaryKey = "encryptUsername";
+    localMAutoDBInfo.columns[1] = "conRemark";
+    localMAutoDBInfo.colsMap.put("conRemark", "TEXT default '' ");
+    localStringBuilder.append(" conRemark TEXT default '' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[2] = "contactLabels";
+    localMAutoDBInfo.colsMap.put("contactLabels", "TEXT default '' ");
+    localStringBuilder.append(" contactLabels TEXT default '' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[3] = "conDescription";
+    localMAutoDBInfo.colsMap.put("conDescription", "TEXT default '' ");
+    localStringBuilder.append(" conDescription TEXT default '' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[4] = "conPhone";
+    localMAutoDBInfo.colsMap.put("conPhone", "TEXT default '' ");
+    localStringBuilder.append(" conPhone TEXT default '' ");
+    localMAutoDBInfo.columns[5] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
+    AppMethodBeat.o(43306);
   }
   
-  public co(ISQLiteDatabase paramISQLiteDatabase)
+  public co()
   {
-    super(paramISQLiteDatabase, cn.info, "Stranger", null);
-    AppMethodBeat.i(117347);
-    this.NQt = new MStorageEvent() {};
-    this.db = paramISQLiteDatabase;
-    AppMethodBeat.o(117347);
+    AppMethodBeat.i(43304);
+    this.field_encryptUsername = "";
+    this.field_conRemark = "";
+    AppMethodBeat.o(43304);
   }
   
-  private void b(cn paramcn)
+  public co(String paramString)
   {
-    AppMethodBeat.i(117344);
-    if (this.NQt.event(paramcn)) {
-      this.NQt.doNotify();
+    this();
+    AppMethodBeat.i(43302);
+    this.field_conRemark = "";
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    AppMethodBeat.o(117344);
+    this.field_encryptUsername = str;
+    AppMethodBeat.o(43302);
   }
   
-  public final void a(n.a parama)
+  public co(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(117345);
-    this.NQt.add(parama, null);
-    AppMethodBeat.o(117345);
-  }
-  
-  public final cn aEZ(String paramString)
-  {
-    AppMethodBeat.i(117348);
-    if ((paramString == null) || (paramString.length() <= 0))
-    {
-      AppMethodBeat.o(117348);
-      return null;
+    this();
+    AppMethodBeat.i(43303);
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = "";
     }
-    cn localcn = new cn();
-    paramString = this.db.query("Stranger", null, "encryptUsername = ?", new String[] { paramString }, null, null, null, 2);
-    if (paramString.moveToFirst()) {
-      localcn.convertFrom(paramString);
+    this.field_encryptUsername = str;
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
     }
-    paramString.close();
-    AppMethodBeat.o(117348);
-    return localcn;
+    this.field_conRemark = paramString1;
+    AppMethodBeat.o(43303);
   }
   
-  public final int aFa(String paramString)
+  public final String apg()
   {
-    AppMethodBeat.i(117349);
-    int i = this.db.delete("Stranger", "(encryptUsername=?)", new String[] { String.valueOf(paramString) });
-    if (i > 0) {
-      doNotify();
-    }
-    Log.i("MicroMsg.StrangerStorage", "delByEncryptUsername:" + paramString + " result:" + i);
-    AppMethodBeat.o(117349);
-    return i;
+    return this.field_conRemark;
   }
   
-  public final void b(n.a parama)
+  public final String apn()
   {
-    AppMethodBeat.i(117346);
-    this.NQt.remove(parama);
-    AppMethodBeat.o(117346);
+    return this.field_encryptUsername;
+  }
+  
+  protected final Object clone()
+  {
+    AppMethodBeat.i(43305);
+    Object localObject = super.clone();
+    AppMethodBeat.o(43305);
+    return localObject;
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return info;
   }
 }
 

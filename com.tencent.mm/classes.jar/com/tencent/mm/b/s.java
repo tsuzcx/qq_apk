@@ -7,7 +7,7 @@ import java.util.zip.Inflater;
 
 public final class s
 {
-  public static byte[] T(byte[] paramArrayOfByte)
+  public static byte[] aa(byte[] paramArrayOfByte)
   {
     Inflater localInflater = new Inflater();
     localInflater.reset();
@@ -248,7 +248,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.b.s
  * JD-Core Version:    0.7.0.1
  */

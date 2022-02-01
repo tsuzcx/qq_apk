@@ -1,22 +1,23 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.chatroom.plugin.PluginChatroomUI;
 import com.tencent.mm.chatroom.storage.a;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.ap;
+import com.tencent.mm.model.aq;
 import com.tencent.mm.model.v;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.protocal.protobuf.bky;
-import com.tencent.mm.protocal.protobuf.bkz;
-import com.tencent.mm.protocal.protobuf.dps;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.protocal.protobuf.bsh;
+import com.tencent.mm.protocal.protobuf.bsi;
+import com.tencent.mm.protocal.protobuf.dzo;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMStack;
@@ -25,17 +26,16 @@ import com.tencent.mm.sdk.storage.IAutoDBItem;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.storage.ah;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.storagebase.h;
 
 public final class l
   extends q
   implements m
 {
   private i callback;
-  public String gsb;
-  public int gsc;
-  public String gsd;
-  public int gse;
+  public String iWm;
+  public int iWn;
+  public String iWo;
+  public int iWp;
   private String roomId;
   private final d rr;
   
@@ -45,20 +45,20 @@ public final class l
     this.roomId = "";
     d.a locala = new d.a();
     this.roomId = paramString;
-    bky localbky = new bky();
-    localbky.KGO = paramString;
-    locala.iLN = localbky;
-    locala.iLO = new bkz();
+    bsh localbsh = new bsh();
+    localbsh.RIi = paramString;
+    locala.lBU = localbsh;
+    locala.lBV = new bsi();
     locala.uri = "/cgi-bin/micromsg-bin/getchatroominfodetail";
     locala.funcId = 223;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
+    this.rr = locala.bgN();
     Log.i("MicroMsg.NetSceneGetChatRoomInfoDetail", "chatRoomName:%s stack:%s", new Object[] { Util.nullAs(paramString, ""), Util.getStack().toString() });
     AppMethodBeat.o(12470);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(12472);
     this.callback = parami;
@@ -82,11 +82,11 @@ public final class l
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
       Log.d("MicroMsg.NetSceneGetChatRoomInfoDetail", "OK");
-      paramArrayOfByte = (bkz)this.rr.iLL.iLR;
+      paramArrayOfByte = (bsi)d.c.b(this.rr.lBS);
       if (paramArrayOfByte.isIncludeUnKnownField())
       {
-        params = ((c)com.tencent.mm.kernel.g.af(c.class)).aSX();
-        localObject1 = params.Kd(this.roomId);
+        params = ((com.tencent.mm.plugin.chatroom.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.chatroom.a.b.class)).bbV();
+        localObject1 = params.Rw(this.roomId);
         boolean bool = false;
         if (localObject1 != null)
         {
@@ -101,33 +101,33 @@ public final class l
         params = "null";
         Log.i("MicroMsg.NetSceneGetChatRoomInfoDetail", "save response byte result:%s, member:%s", new Object[] { Boolean.valueOf(bool), params });
       }
-      this.gsb = paramArrayOfByte.LTP;
-      this.gsc = paramArrayOfByte.gsc;
-      this.gsd = paramArrayOfByte.gsd;
-      this.gse = paramArrayOfByte.gse;
-      localObject1 = paramArrayOfByte.LTT;
-      paramInt1 = paramArrayOfByte.LTQ;
-      params = this.gsb;
-      int i = this.gsc;
-      Log.i("MicroMsg.NetSceneGetChatRoomInfoDetail", "dz[onSceneEnd : get announcement successfully!] roomId:%s newVersion:%s AnnouncementPublishTime:%s chatRoomStatus:%s associateOpenIMRoomName:%s isIncludeUnKnownField:%s", new Object[] { this.roomId, Integer.valueOf(i), Integer.valueOf(this.gse), Integer.valueOf(paramInt1), Util.nullAs((String)localObject1, ""), Boolean.valueOf(paramArrayOfByte.isIncludeUnKnownField()) });
-      v.a(this.roomId, Util.nullAsNil(params), this.gsd, this.gse, i, paramInt1);
-      if (ab.Eq(this.roomId))
+      this.iWm = paramArrayOfByte.Tcy;
+      this.iWn = paramArrayOfByte.iWn;
+      this.iWo = paramArrayOfByte.iWo;
+      this.iWp = paramArrayOfByte.iWp;
+      localObject1 = paramArrayOfByte.TcB;
+      paramInt1 = paramArrayOfByte.Tcz;
+      params = this.iWm;
+      int i = this.iWn;
+      Log.i("MicroMsg.NetSceneGetChatRoomInfoDetail", "dz[onSceneEnd : get announcement successfully!] roomId:%s newVersion:%s AnnouncementPublishTime:%s chatRoomStatus:%s associateOpenIMRoomName:%s isIncludeUnKnownField:%s", new Object[] { this.roomId, Integer.valueOf(i), Integer.valueOf(this.iWp), Integer.valueOf(paramInt1), Util.nullAs((String)localObject1, ""), Boolean.valueOf(paramArrayOfByte.isIncludeUnKnownField()) });
+      v.a(this.roomId, Util.nullAsNil(params), this.iWo, this.iWp, i, paramInt1);
+      if (ab.Lj(this.roomId))
       {
-        ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().ce(this.roomId, paramArrayOfByte.fvd);
+        ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().cl(this.roomId, paramArrayOfByte.hDC);
         aa.a(this.roomId, paramArrayOfByte);
-        if (ab.JO(this.roomId))
+        if (ab.Rh(this.roomId))
         {
-          localObject2 = ((PluginChatroomUI)com.tencent.mm.kernel.g.ah(PluginChatroomUI.class)).getGroupBindAppStorage();
+          localObject2 = ((PluginChatroomUI)com.tencent.mm.kernel.h.ag(PluginChatroomUI.class)).getGroupBindAppStorage();
           localObject3 = this.roomId;
-          paramArrayOfByte = paramArrayOfByte.LTU;
-          if (!(((com.tencent.mm.chatroom.storage.b)localObject2).db instanceof h)) {
+          paramArrayOfByte = paramArrayOfByte.TcC;
+          if (!(((com.tencent.mm.chatroom.storage.b)localObject2).db instanceof com.tencent.mm.storagebase.h)) {
             break label992;
           }
         }
       }
     }
     label992:
-    for (params = (h)((com.tencent.mm.chatroom.storage.b)localObject2).db;; params = null)
+    for (params = (com.tencent.mm.storagebase.h)((com.tencent.mm.chatroom.storage.b)localObject2).db;; params = null)
     {
       long l = -1L;
       if (params != null) {}
@@ -154,9 +154,9 @@ public final class l
           Object localObject4;
           Log.i("MicroMsg.GroupBindAppStorage", params.getMessage());
           continue;
-          params = Boolean.valueOf(((ah)localObject2).gBC());
+          params = Boolean.valueOf(((ah)localObject2).hxN());
           continue;
-          paramArrayOfByte = Boolean.valueOf(((ah)localObject3).gBC());
+          paramArrayOfByte = Boolean.valueOf(((ah)localObject3).hxN());
           continue;
           ((ah)localObject2).field_openIMRoomMigrateStatus = 3;
           continue;
@@ -169,13 +169,13 @@ public final class l
           paramInt1 = 0;
         }
       }
-      if ((ab.Ix(this.roomId)) && (!Util.isNullOrNil((String)localObject1)))
+      if ((ab.PP(this.roomId)) && (!Util.isNullOrNil((String)localObject1)))
       {
-        localObject2 = ((c)com.tencent.mm.kernel.g.af(c.class)).aSX().Kd(this.roomId);
+        localObject2 = ((com.tencent.mm.plugin.chatroom.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.chatroom.a.b.class)).bbV().Rw(this.roomId);
         if ((localObject2 == null) || (!Util.isNullOrNil(((ah)localObject2).field_associateOpenIMRoomName))) {
           continue;
         }
-        localObject3 = ((c)com.tencent.mm.kernel.g.af(c.class)).aSX().Kd((String)localObject1);
+        localObject3 = ((com.tencent.mm.plugin.chatroom.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.chatroom.a.b.class)).bbV().Rw((String)localObject1);
         localObject4 = this.roomId;
         if (localObject2 != null) {
           continue;
@@ -186,21 +186,21 @@ public final class l
         }
         paramArrayOfByte = "null";
         Log.i("MicroMsg.NetSceneGetChatRoomInfoDetail", "roomId %s finish %s, associateOpenIMRoomName %s finish %s", new Object[] { localObject4, params, localObject1, paramArrayOfByte });
-        if ((localObject3 == null) || (((ah)localObject3).gBC())) {
+        if ((localObject3 == null) || (((ah)localObject3).hxN())) {
           continue;
         }
         paramInt1 = 1;
         ((ah)localObject3).field_openIMRoomMigrateStatus = 2;
         ((ah)localObject3).field_associateOpenIMRoomName = this.roomId;
-        ((c)com.tencent.mm.kernel.g.af(c.class)).aSX().replace((IAutoDBItem)localObject3);
+        ((com.tencent.mm.plugin.chatroom.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.chatroom.a.b.class)).bbV().replace((IAutoDBItem)localObject3);
         if (paramInt1 == 0) {
           continue;
         }
         ((ah)localObject2).field_openIMRoomMigrateStatus = 1;
         ((ah)localObject2).field_associateOpenIMRoomName = ((String)localObject1);
-        ((c)com.tencent.mm.kernel.g.af(c.class)).aSX().replace((IAutoDBItem)localObject2);
+        ((com.tencent.mm.plugin.chatroom.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.chatroom.a.b.class)).bbV().replace((IAutoDBItem)localObject2);
         if (paramInt1 != 0) {
-          ((PluginChatroomUI)com.tencent.mm.kernel.g.ah(PluginChatroomUI.class)).getOpenImMigrateService().ae(this.roomId, (String)localObject1);
+          ((PluginChatroomUI)com.tencent.mm.kernel.h.ag(PluginChatroomUI.class)).getOpenImMigrateService().ai(this.roomId, (String)localObject1);
         }
       }
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
@@ -214,7 +214,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.chatroom.d.l
  * JD-Core Version:    0.7.0.1
  */

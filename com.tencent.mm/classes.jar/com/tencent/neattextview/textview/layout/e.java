@@ -6,32 +6,32 @@ import java.lang.reflect.Array;
 
 public final class e<E>
 {
-  private final Class<? extends E> RBJ;
-  public int RBK;
-  public E[] RBL;
-  public int[] RBM;
-  public int[] RBN;
-  public int[] RBO;
+  private final Class<? extends E> Zdl;
+  public int Zdm;
+  public E[] Zdn;
+  public int[] Zdo;
+  public int[] Zdp;
+  public int[] Zdq;
   
   e(Class<? extends E> paramClass)
   {
-    this.RBJ = paramClass;
-    this.RBK = 0;
+    this.Zdl = paramClass;
+    this.Zdm = 0;
   }
   
   public final void a(Spanned paramSpanned, int paramInt)
   {
     AppMethodBeat.i(39760);
-    Object[] arrayOfObject = paramSpanned.getSpans(0, paramInt, this.RBJ);
+    Object[] arrayOfObject = paramSpanned.getSpans(0, paramInt, this.Zdl);
     int i = arrayOfObject.length;
-    if ((i > 0) && ((this.RBL == null) || (this.RBL.length < i)))
+    if ((i > 0) && ((this.Zdn == null) || (this.Zdn.length < i)))
     {
-      this.RBL = ((Object[])Array.newInstance(this.RBJ, i));
-      this.RBM = new int[i];
-      this.RBN = new int[i];
-      this.RBO = new int[i];
+      this.Zdn = ((Object[])Array.newInstance(this.Zdl, i));
+      this.Zdo = new int[i];
+      this.Zdp = new int[i];
+      this.Zdq = new int[i];
     }
-    this.RBK = 0;
+    this.Zdm = 0;
     paramInt = 0;
     while (paramInt < i)
     {
@@ -41,24 +41,24 @@ public final class e<E>
       if (j != k)
       {
         int m = paramSpanned.getSpanFlags(localObject);
-        this.RBL[this.RBK] = localObject;
-        this.RBM[this.RBK] = j;
-        this.RBN[this.RBK] = k;
-        this.RBO[this.RBK] = m;
-        this.RBK += 1;
+        this.Zdn[this.Zdm] = localObject;
+        this.Zdo[this.Zdm] = j;
+        this.Zdp[this.Zdm] = k;
+        this.Zdq[this.Zdm] = m;
+        this.Zdm += 1;
       }
       paramInt += 1;
     }
     AppMethodBeat.o(39760);
   }
   
-  public final E mp(int paramInt1, int paramInt2)
+  public final E nG(int paramInt1, int paramInt2)
   {
     int i = 0;
-    while (i < this.RBK)
+    while (i < this.Zdm)
     {
-      if ((this.RBM[i] < paramInt2) && (this.RBN[i] > paramInt1)) {
-        return this.RBL[i];
+      if ((this.Zdo[i] < paramInt2) && (this.Zdp[i] > paramInt1)) {
+        return this.Zdn[i];
       }
       i += 1;
     }
@@ -67,7 +67,7 @@ public final class e<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.neattextview.textview.layout.e
  * JD-Core Version:    0.7.0.1
  */

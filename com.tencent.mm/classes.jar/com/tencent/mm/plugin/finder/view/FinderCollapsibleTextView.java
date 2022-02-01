@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.finder.view;
 
 import android.annotation.SuppressLint;
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.SpannableString;
@@ -26,50 +25,54 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.report.k;
-import com.tencent.mm.plugin.finder.viewmodel.FinderHomeTabStateVM;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.b.d;
+import com.tencent.mm.plugin.finder.b.e;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.report.n;
 import com.tencent.mm.pluginsdk.ui.span.h;
-import com.tencent.mm.pluginsdk.ui.span.o;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.ClipboardHelper;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.aa;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.component.g.a;
 import com.tencent.mm.view.TouchableLayout;
 import com.tencent.mm.view.TouchableLayout.a;
 import com.tencent.neattextview.textview.view.NeatTextView;
 import kotlin.f;
-import kotlin.g;
+import kotlin.g.b.aa.d;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
-import kotlin.g.b.z.d;
-import kotlin.k.j;
+import kotlin.k.i;
 import kotlin.t;
 import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderCollapsibleTextView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "collapseTextView", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "getCollapseTextView", "()Landroid/widget/TextView;", "collapseTextView$delegate", "Lkotlin/Lazy;", "collapseTextViewRight", "", "getCollapseTextViewRight", "()F", "setCollapseTextViewRight", "(F)V", "collapseTextWidth", "contentTextView", "Lcom/tencent/neattextview/textview/view/NeatTextView;", "getContentTextView", "()Lcom/tencent/neattextview/textview/view/NeatTextView;", "contentTextView$delegate", "expanText", "getExpanText", "()I", "setExpanText", "(I)V", "extraView", "Landroid/view/View;", "getExtraView", "()Landroid/view/View;", "setExtraView", "(Landroid/view/View;)V", "value", "", "isCollapse", "()Z", "setCollapse", "(Z)V", "isTopicExpand", "setTopicExpand", "limitLine", "getLimitLine", "setLimitLine", "onCollapse", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "", "getOnCollapse", "()Lkotlin/jvm/functions/Function1;", "setOnCollapse", "(Lkotlin/jvm/functions/Function1;)V", "realContent", "", "getRealContent", "()Ljava/lang/CharSequence;", "setRealContent", "(Ljava/lang/CharSequence;)V", "text", "getText", "setText", "textColor", "getTextColor", "setTextColor", "_setText", "content", "callBack", "backToDefaultLogic", "source", "", "checkCollapseVisible", "checkCollapseVisibleSync", "checkIfAllRestTextTopic", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "enableContentTextViewClick", "enable", "onClickFun", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "refreshCollapseText", "tryExpand", "Companion", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderCollapsibleTextView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "collapseTextView", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "getCollapseTextView", "()Landroid/widget/TextView;", "collapseTextView$delegate", "Lkotlin/Lazy;", "collapseTextViewRight", "", "getCollapseTextViewRight", "()F", "setCollapseTextViewRight", "(F)V", "collapseTextWidth", "contentTextView", "Lcom/tencent/neattextview/textview/view/NeatTextView;", "getContentTextView", "()Lcom/tencent/neattextview/textview/view/NeatTextView;", "contentTextView$delegate", "expanText", "getExpanText", "()I", "setExpanText", "(I)V", "extraView", "Landroid/view/View;", "getExtraView", "()Landroid/view/View;", "setExtraView", "(Landroid/view/View;)V", "value", "", "isCollapse", "()Z", "setCollapse", "(Z)V", "isTopicExpand", "setTopicExpand", "limitLine", "getLimitLine", "setLimitLine", "onCollapse", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "", "getOnCollapse", "()Lkotlin/jvm/functions/Function1;", "setOnCollapse", "(Lkotlin/jvm/functions/Function1;)V", "realContent", "", "getRealContent", "()Ljava/lang/CharSequence;", "setRealContent", "(Ljava/lang/CharSequence;)V", "text", "getText", "setText", "textColor", "getTextColor", "setTextColor", "textSize", "getTextSize", "setTextSize", "_setText", "content", "callBack", "backToDefaultLogic", "source", "", "checkCollapseVisible", "checkCollapseVisibleSync", "checkIfAllRestTextTopic", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "enableContentTextViewClick", "enable", "onClickFun", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "refreshCollapseText", "tryExpand", "Companion", "plugin-finder_release"})
 @SuppressLint({"ClickableViewAccessibility"})
 public final class FinderCollapsibleTextView
   extends RelativeLayout
 {
-  public static final FinderCollapsibleTextView.a wkj;
-  private CharSequence text;
-  private final f wjY;
-  private final f wjZ;
-  private float wka;
-  private int wkb;
-  private View wkc;
-  boolean wkd;
-  boolean wke;
-  private float wkf;
-  private kotlin.g.a.b<? super Boolean, x> wkg;
-  private int wkh;
-  private CharSequence wki;
+  public static final FinderCollapsibleTextView.a AVd;
+  private final f AUS;
+  private final f AUT;
+  private float AUU;
+  private int AUV;
+  private View AUW;
+  boolean AUX;
+  boolean AUY;
+  private float AUZ;
+  private kotlin.g.a.b<? super Boolean, x> AVa;
+  private int AVb;
+  private CharSequence AVc;
+  private CharSequence LV;
   
   static
   {
     AppMethodBeat.i(168229);
-    wkj = new FinderCollapsibleTextView.a((byte)0);
+    AVd = new FinderCollapsibleTextView.a((byte)0);
     AppMethodBeat.o(168229);
   }
   
@@ -77,34 +80,34 @@ public final class FinderCollapsibleTextView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(168241);
-    this.wjY = g.ah((kotlin.g.a.a)new e(this));
-    this.wjZ = g.ah((kotlin.g.a.a)new d(this));
-    this.wkb = 2131759536;
-    aa.jQ(getContext()).inflate(2131494217, (ViewGroup)this, true);
-    getContentTextView().setSpacingAdd((int)getResources().getDimension(2131165277));
+    this.AUS = kotlin.g.ar((kotlin.g.a.a)new f(this));
+    this.AUT = kotlin.g.ar((kotlin.g.a.a)new e(this));
+    this.AUV = b.j.finder_all_text;
+    ad.kS(getContext()).inflate(b.g.finder_collapsible_layout, (ViewGroup)this, true);
+    getContentTextView().setSpacingAdd((int)getResources().getDimension(b.d.Edge_0_5_A));
     getContentTextView().a(TextUtils.TruncateAt.END, 0.0F);
-    getCollapseTextView().setLineSpacing(getResources().getDimension(2131165277), 1.0F);
-    getContentTextView().setOnTouchListener((View.OnTouchListener)new h(getContentTextView(), (View.OnTouchListener)new o()));
-    oV(true);
+    getCollapseTextView().setLineSpacing(getResources().getDimension(b.d.Edge_0_5_A), 1.0F);
+    getContentTextView().setOnTouchListener((View.OnTouchListener)new h(getContentTextView(), (View.OnTouchListener)new com.tencent.mm.pluginsdk.ui.span.o()));
+    rp(true);
     getCollapseTextView().setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(168223);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderCollapsibleTextView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        FinderCollapsibleTextView.c(this.wkk);
-        paramAnonymousView = k.vfA;
-        paramAnonymousView = this.wkk.getContext();
-        p.g(paramAnonymousView, "context");
-        k.a(paramAnonymousView, false, 1, this.wkk.wke, this.wkk.wkd);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderCollapsibleTextView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        FinderCollapsibleTextView.c(this.AVe);
+        paramAnonymousView = n.zWF;
+        paramAnonymousView = this.AVe.getContext();
+        p.j(paramAnonymousView, "context");
+        n.a(paramAnonymousView, false, 1, this.AVe.AUY, this.AVe.AUX);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderCollapsibleTextView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(168223);
       }
     });
-    this.wke = true;
-    this.wkh = 3;
+    this.AUY = true;
+    this.AVb = 3;
     AppMethodBeat.o(168241);
   }
   
@@ -112,99 +115,99 @@ public final class FinderCollapsibleTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(168242);
-    this.wjY = g.ah((kotlin.g.a.a)new e(this));
-    this.wjZ = g.ah((kotlin.g.a.a)new d(this));
-    this.wkb = 2131759536;
-    aa.jQ(getContext()).inflate(2131494217, (ViewGroup)this, true);
-    getContentTextView().setSpacingAdd((int)getResources().getDimension(2131165277));
+    this.AUS = kotlin.g.ar((kotlin.g.a.a)new f(this));
+    this.AUT = kotlin.g.ar((kotlin.g.a.a)new e(this));
+    this.AUV = b.j.finder_all_text;
+    ad.kS(getContext()).inflate(b.g.finder_collapsible_layout, (ViewGroup)this, true);
+    getContentTextView().setSpacingAdd((int)getResources().getDimension(b.d.Edge_0_5_A));
     getContentTextView().a(TextUtils.TruncateAt.END, 0.0F);
-    getCollapseTextView().setLineSpacing(getResources().getDimension(2131165277), 1.0F);
-    getContentTextView().setOnTouchListener((View.OnTouchListener)new h(getContentTextView(), (View.OnTouchListener)new o()));
-    oV(true);
+    getCollapseTextView().setLineSpacing(getResources().getDimension(b.d.Edge_0_5_A), 1.0F);
+    getContentTextView().setOnTouchListener((View.OnTouchListener)new h(getContentTextView(), (View.OnTouchListener)new com.tencent.mm.pluginsdk.ui.span.o()));
+    rp(true);
     getCollapseTextView().setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(168223);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderCollapsibleTextView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        FinderCollapsibleTextView.c(this.wkk);
-        paramAnonymousView = k.vfA;
-        paramAnonymousView = this.wkk.getContext();
-        p.g(paramAnonymousView, "context");
-        k.a(paramAnonymousView, false, 1, this.wkk.wke, this.wkk.wkd);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderCollapsibleTextView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        FinderCollapsibleTextView.c(this.AVe);
+        paramAnonymousView = n.zWF;
+        paramAnonymousView = this.AVe.getContext();
+        p.j(paramAnonymousView, "context");
+        n.a(paramAnonymousView, false, 1, this.AVe.AUY, this.AVe.AUX);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderCollapsibleTextView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(168223);
       }
     });
-    this.wke = true;
-    this.wkh = 3;
+    this.AUY = true;
+    this.AVb = 3;
     AppMethodBeat.o(168242);
   }
   
-  private final void dGn()
+  private final void ein()
   {
-    AppMethodBeat.i(254699);
-    if (!this.wke) {}
+    AppMethodBeat.i(271379);
+    if (!this.AUY) {}
     for (boolean bool = true;; bool = false)
     {
       setCollapse(bool);
-      if (!this.wke)
+      if (!this.AUY)
       {
-        localObject = com.tencent.mm.ui.component.a.PRN;
-        com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderHomeTabStateVM.class);
-        FinderHomeTabStateVM.dHS();
+        localObject = com.tencent.mm.ui.component.g.Xox;
+        com.tencent.mm.ui.component.g.bD(PluginFinder.class).i(com.tencent.mm.plugin.finder.viewmodel.b.class);
+        com.tencent.mm.plugin.finder.viewmodel.b.ekc();
       }
-      oU(this.wke);
-      Object localObject = this.wkg;
+      ro(this.AUY);
+      Object localObject = this.AVa;
       if (localObject == null) {
         break;
       }
-      ((kotlin.g.a.b)localObject).invoke(Boolean.valueOf(this.wke));
-      AppMethodBeat.o(254699);
+      ((kotlin.g.a.b)localObject).invoke(Boolean.valueOf(this.AUY));
+      AppMethodBeat.o(271379);
       return;
     }
-    AppMethodBeat.o(254699);
+    AppMethodBeat.o(271379);
   }
   
-  private final void dGo()
+  private final void eio()
   {
-    AppMethodBeat.i(254701);
-    CharSequence localCharSequence = this.text;
+    AppMethodBeat.i(271381);
+    CharSequence localCharSequence = this.LV;
     if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(254701);
+      AppMethodBeat.o(271381);
       return;
     }
-    localCharSequence = this.text;
+    localCharSequence = this.LV;
     if (localCharSequence != null)
     {
-      post((Runnable)new c(localCharSequence, this));
-      AppMethodBeat.o(254701);
+      post((Runnable)new d(localCharSequence, this));
+      AppMethodBeat.o(271381);
       return;
     }
-    AppMethodBeat.o(254701);
+    AppMethodBeat.o(271381);
   }
   
-  private boolean dGp()
+  private boolean eip()
   {
     AppMethodBeat.i(168240);
     Object localObject = getContentTextView();
-    p.g(localObject, "contentTextView");
+    p.j(localObject, "contentTextView");
     localObject = ((NeatTextView)localObject).getLayout();
     for (;;)
     {
       try
       {
-        i = this.wkh;
-        p.g(localObject, "layout");
-        i = j.na(i, ((com.tencent.neattextview.textview.layout.a)localObject).hiG()) - 1;
+        i = this.AVb;
+        p.j(localObject, "layout");
+        i = i.ow(i, ((com.tencent.neattextview.textview.layout.a)localObject).ikp()) - 1;
         if (i < 0) {
           continue;
         }
-        i = ((com.tencent.neattextview.textview.layout.a)localObject).getOffsetForHorizontal(i, 10000.0F);
+        i = ((com.tencent.neattextview.textview.layout.a)localObject).E(i, 10000.0F);
       }
       catch (Exception localException)
       {
@@ -219,22 +222,22 @@ public final class FinderCollapsibleTextView
         int i = 0;
         continue;
         localObject = getCollapseTextView();
-        p.g(localObject, "collapseTextView");
+        p.j(localObject, "collapseTextView");
         ((TextView)localObject).setVisibility(8);
         continue;
         AppMethodBeat.o(168240);
       }
       localTextView = getCollapseTextView();
-      p.g(localTextView, "collapseTextView");
+      p.j(localTextView, "collapseTextView");
       j = localTextView.getVisibility();
-      if ((localObject == null) || (i <= 0) || (i >= getContentTextView().hiT().length())) {
+      if ((localObject == null) || (i <= 0) || (i >= getContentTextView().ikC().length())) {
         continue;
       }
       localObject = getCollapseTextView();
-      p.g(localObject, "collapseTextView");
+      p.j(localObject, "collapseTextView");
       ((TextView)localObject).setVisibility(0);
       localObject = getCollapseTextView();
-      p.g(localObject, "collapseTextView");
+      p.j(localObject, "collapseTextView");
       if (j == ((TextView)localObject).getVisibility()) {
         continue;
       }
@@ -245,98 +248,113 @@ public final class FinderCollapsibleTextView
     return false;
   }
   
-  private final void oU(boolean paramBoolean)
+  private final void ro(boolean paramBoolean)
   {
-    AppMethodBeat.i(254700);
+    AppMethodBeat.i(271380);
     Object localObject1 = getCollapseTextView();
-    p.g(localObject1, "collapseTextView");
+    p.j(localObject1, "collapseTextView");
     if (((TextView)localObject1).getVisibility() == 0)
     {
       if (paramBoolean)
       {
         localObject1 = getCollapseTextView();
-        p.g(localObject1, "collapseTextView");
+        p.j(localObject1, "collapseTextView");
         localObject1 = ((TextView)localObject1).getLayoutParams();
         if (localObject1 == null)
         {
           localObject1 = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-          AppMethodBeat.o(254700);
+          AppMethodBeat.o(271380);
           throw ((Throwable)localObject1);
         }
         localObject1 = (RelativeLayout.LayoutParams)localObject1;
         ((RelativeLayout.LayoutParams)localObject1).addRule(11);
-        ((RelativeLayout.LayoutParams)localObject1).addRule(8, 2131298828);
+        ((RelativeLayout.LayoutParams)localObject1).addRule(8, b.f.collapse_content_tv);
         ((RelativeLayout.LayoutParams)localObject1).removeRule(3);
         ((RelativeLayout.LayoutParams)localObject1).removeRule(5);
-        ((RelativeLayout.LayoutParams)localObject1).setMarginEnd((int)this.wka);
+        ((RelativeLayout.LayoutParams)localObject1).setMarginEnd((int)this.AUU);
         localObject2 = getCollapseTextView();
-        p.g(localObject2, "collapseTextView");
+        p.j(localObject2, "collapseTextView");
         ((TextView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
         localObject1 = getCollapseTextView();
         localObject2 = getContentTextView();
-        p.g(localObject2, "contentTextView");
+        p.j(localObject2, "contentTextView");
         ((TextView)localObject1).setTextSize(0, ((NeatTextView)localObject2).getTextSize());
         localObject1 = new StringBuilder("isSpecialText:");
         localObject2 = getContentTextView();
-        p.g(localObject2, "contentTextView");
-        Log.i("Finder.CollapsibleTextView", ((NeatTextView)localObject2).hiS());
-        post((Runnable)new h(this));
-        AppMethodBeat.o(254700);
+        p.j(localObject2, "contentTextView");
+        Log.i("Finder.CollapsibleTextView", ((NeatTextView)localObject2).ikB());
+        post((Runnable)new i(this));
+        AppMethodBeat.o(271380);
         return;
       }
       getContentTextView().a(TextUtils.TruncateAt.END, 0.0F);
       localObject1 = getCollapseTextView();
-      p.g(localObject1, "collapseTextView");
+      p.j(localObject1, "collapseTextView");
       localObject1 = ((TextView)localObject1).getLayoutParams();
       if (localObject1 == null)
       {
         localObject1 = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-        AppMethodBeat.o(254700);
+        AppMethodBeat.o(271380);
         throw ((Throwable)localObject1);
       }
       localObject1 = (RelativeLayout.LayoutParams)localObject1;
       ((RelativeLayout.LayoutParams)localObject1).removeRule(11);
       ((RelativeLayout.LayoutParams)localObject1).removeRule(8);
-      ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131298828);
-      ((RelativeLayout.LayoutParams)localObject1).addRule(5, 2131298828);
+      ((RelativeLayout.LayoutParams)localObject1).addRule(3, b.f.collapse_content_tv);
+      ((RelativeLayout.LayoutParams)localObject1).addRule(5, b.f.collapse_content_tv);
       ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(0);
       Object localObject2 = getCollapseTextView();
-      p.g(localObject2, "collapseTextView");
+      p.j(localObject2, "collapseTextView");
       ((TextView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      AppMethodBeat.o(254700);
+      AppMethodBeat.o(271380);
       return;
     }
-    getContentTextView().aw(this.text);
+    getContentTextView().aL(this.LV);
     getContentTextView().a(TextUtils.TruncateAt.END, 0.0F);
-    AppMethodBeat.o(254700);
+    AppMethodBeat.o(271380);
   }
   
   public final void a(final CharSequence paramCharSequence, final View paramView, final kotlin.g.a.b<? super Boolean, x> paramb)
   {
-    AppMethodBeat.i(254702);
-    p.h(paramb, "callBack");
+    AppMethodBeat.i(271382);
+    p.k(paramb, "callBack");
     setText(paramCharSequence);
     if (paramView != null)
     {
-      paramView.post((Runnable)new b(this, paramView, paramCharSequence, paramb));
-      AppMethodBeat.o(254702);
+      paramView.post((Runnable)new c(this, paramView, paramCharSequence, paramb));
+      AppMethodBeat.o(271382);
       return;
     }
-    AppMethodBeat.o(254702);
+    AppMethodBeat.o(271382);
   }
   
-  public final boolean dGq()
+  public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(254704);
+    AppMethodBeat.i(168232);
+    p.k(paramMotionEvent, "event");
+    if (paramMotionEvent.getAction() == 0)
+    {
+      int i = (int)paramMotionEvent.getRawX();
+      int j = (int)paramMotionEvent.getRawY();
+      getContentTextView().setTag(b.f.touch_loc, new int[] { i, j });
+    }
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(168232);
+    return bool;
+  }
+  
+  public final boolean eiq()
+  {
+    AppMethodBeat.i(271390);
     try
     {
       NeatTextView localNeatTextView = getContentTextView();
-      p.g(localNeatTextView, "contentTextView");
-      i = localNeatTextView.getLayout().getEllipsisCount(this.wkh - 1);
-      if ((this.wke) && (i > 0))
+      p.j(localNeatTextView, "contentTextView");
+      i = localNeatTextView.getLayout().aAa(this.AVb - 1);
+      if ((this.AUY) && (i > 0))
       {
-        dGn();
-        AppMethodBeat.o(254704);
+        ein();
+        AppMethodBeat.o(271390);
         return true;
       }
     }
@@ -346,202 +364,197 @@ public final class FinderCollapsibleTextView
       {
         int i = -1;
       }
-      AppMethodBeat.o(254704);
+      AppMethodBeat.o(271390);
     }
     return false;
-  }
-  
-  public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(168232);
-    p.h(paramMotionEvent, "event");
-    if (paramMotionEvent.getAction() == 0)
-    {
-      int i = (int)paramMotionEvent.getRawX();
-      int j = (int)paramMotionEvent.getRawY();
-      getContentTextView().setTag(2131309367, new int[] { i, j });
-    }
-    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(168232);
-    return bool;
   }
   
   public final TextView getCollapseTextView()
   {
     AppMethodBeat.i(168231);
-    TextView localTextView = (TextView)this.wjZ.getValue();
+    TextView localTextView = (TextView)this.AUT.getValue();
     AppMethodBeat.o(168231);
     return localTextView;
   }
   
   public final float getCollapseTextViewRight()
   {
-    return this.wka;
+    return this.AUU;
   }
   
   public final NeatTextView getContentTextView()
   {
     AppMethodBeat.i(168230);
-    NeatTextView localNeatTextView = (NeatTextView)this.wjY.getValue();
+    NeatTextView localNeatTextView = (NeatTextView)this.AUS.getValue();
     AppMethodBeat.o(168230);
     return localNeatTextView;
   }
   
   public final int getExpanText()
   {
-    return this.wkb;
+    return this.AUV;
   }
   
   public final View getExtraView()
   {
-    return this.wkc;
+    return this.AUW;
   }
   
   public final int getLimitLine()
   {
-    return this.wkh;
+    return this.AVb;
   }
   
   public final kotlin.g.a.b<Boolean, x> getOnCollapse()
   {
-    return this.wkg;
+    return this.AVa;
   }
   
   public final CharSequence getRealContent()
   {
-    return this.wki;
+    return this.AVc;
   }
   
   public final CharSequence getText()
   {
-    return this.text;
+    return this.LV;
   }
   
   public final int getTextColor()
   {
     AppMethodBeat.i(168237);
     NeatTextView localNeatTextView = getContentTextView();
-    p.g(localNeatTextView, "contentTextView");
+    p.j(localNeatTextView, "contentTextView");
     int i = localNeatTextView.getCurrentTextColor();
     AppMethodBeat.o(168237);
     return i;
   }
   
-  public final void oV(boolean paramBoolean)
+  public final float getTextSize()
   {
-    AppMethodBeat.i(168239);
-    if (paramBoolean)
-    {
-      getContentTextView().setOnLongClickListener((View.OnLongClickListener)new f(this));
-      getContentTextView().setOnClickListener((View.OnClickListener)new g(this));
-      getContentTextView().setBackgroundResource(2131101287);
-      localNeatTextView = getContentTextView();
-      p.g(localNeatTextView, "contentTextView");
-      localNeatTextView.setClickable(true);
-      localNeatTextView = getContentTextView();
-      p.g(localNeatTextView, "contentTextView");
-      localNeatTextView.setLongClickable(true);
-      AppMethodBeat.o(168239);
-      return;
-    }
-    getContentTextView().setOnLongClickListener(null);
-    getContentTextView().setOnClickListener(null);
-    getContentTextView().setBackgroundResource(2131235359);
+    AppMethodBeat.i(271388);
     NeatTextView localNeatTextView = getContentTextView();
-    p.g(localNeatTextView, "contentTextView");
-    localNeatTextView.setClickable(false);
-    localNeatTextView = getContentTextView();
-    p.g(localNeatTextView, "contentTextView");
-    localNeatTextView.setLongClickable(false);
-    AppMethodBeat.o(168239);
+    p.j(localNeatTextView, "contentTextView");
+    float f = localNeatTextView.getTextSize();
+    AppMethodBeat.o(271388);
+    return f;
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(168234);
     super.onMeasure(paramInt1, paramInt2);
-    if (dGp()) {
+    if (eip()) {
       super.onMeasure(paramInt1, paramInt2);
     }
     AppMethodBeat.o(168234);
   }
   
+  public final void rp(boolean paramBoolean)
+  {
+    AppMethodBeat.i(168239);
+    if (paramBoolean)
+    {
+      getContentTextView().setOnLongClickListener((View.OnLongClickListener)new g(this));
+      getContentTextView().setOnClickListener((View.OnClickListener)new h(this));
+      getContentTextView().setBackgroundResource(b.c.transparent);
+      localNeatTextView = getContentTextView();
+      p.j(localNeatTextView, "contentTextView");
+      localNeatTextView.setClickable(true);
+      localNeatTextView = getContentTextView();
+      p.j(localNeatTextView, "contentTextView");
+      localNeatTextView.setLongClickable(true);
+      AppMethodBeat.o(168239);
+      return;
+    }
+    getContentTextView().setOnLongClickListener(null);
+    getContentTextView().setOnClickListener(null);
+    getContentTextView().setBackgroundResource(b.e.transparent_background);
+    NeatTextView localNeatTextView = getContentTextView();
+    p.j(localNeatTextView, "contentTextView");
+    localNeatTextView.setClickable(false);
+    localNeatTextView = getContentTextView();
+    p.j(localNeatTextView, "contentTextView");
+    localNeatTextView.setLongClickable(false);
+    AppMethodBeat.o(168239);
+  }
+  
   public final void setCollapse(boolean paramBoolean)
   {
     AppMethodBeat.i(168233);
-    this.wke = paramBoolean;
+    this.AUY = paramBoolean;
     if (paramBoolean)
     {
       localNeatTextView = getContentTextView();
-      p.g(localNeatTextView, "contentTextView");
-      if (localNeatTextView.getMaxLines() != this.wkh)
+      p.j(localNeatTextView, "contentTextView");
+      if (localNeatTextView.getMaxLines() != this.AVb)
       {
         localNeatTextView = getContentTextView();
-        p.g(localNeatTextView, "contentTextView");
-        localNeatTextView.setMaxLines(this.wkh);
+        p.j(localNeatTextView, "contentTextView");
+        localNeatTextView.setMaxLines(this.AVb);
       }
-      getCollapseTextView().setText(this.wkb);
+      getCollapseTextView().setText(this.AUV);
       AppMethodBeat.o(168233);
       return;
     }
     NeatTextView localNeatTextView = getContentTextView();
-    p.g(localNeatTextView, "contentTextView");
+    p.j(localNeatTextView, "contentTextView");
     if (localNeatTextView.getMaxLines() != 2147483647)
     {
       localNeatTextView = getContentTextView();
-      p.g(localNeatTextView, "contentTextView");
+      p.j(localNeatTextView, "contentTextView");
       localNeatTextView.setMaxLines(2147483647);
     }
-    getCollapseTextView().setText(2131757650);
+    getCollapseTextView().setText(b.j.collapse);
     AppMethodBeat.o(168233);
   }
   
   public final void setCollapseTextViewRight(float paramFloat)
   {
-    this.wka = paramFloat;
+    this.AUU = paramFloat;
   }
   
   public final void setExpanText(int paramInt)
   {
-    this.wkb = paramInt;
+    this.AUV = paramInt;
   }
   
   public final void setExtraView(View paramView)
   {
-    this.wkc = paramView;
+    this.AUW = paramView;
   }
   
   public final void setLimitLine(int paramInt)
   {
-    AppMethodBeat.i(254703);
-    this.wkh = paramInt;
+    AppMethodBeat.i(271385);
+    this.AVb = paramInt;
     NeatTextView localNeatTextView = getContentTextView();
-    p.g(localNeatTextView, "contentTextView");
+    p.j(localNeatTextView, "contentTextView");
     if (localNeatTextView.getMaxLines() != paramInt)
     {
       localNeatTextView = getContentTextView();
-      p.g(localNeatTextView, "contentTextView");
+      p.j(localNeatTextView, "contentTextView");
       localNeatTextView.setMaxLines(paramInt);
     }
-    AppMethodBeat.o(254703);
+    AppMethodBeat.o(271385);
   }
   
   public final void setOnCollapse(kotlin.g.a.b<? super Boolean, x> paramb)
   {
-    this.wkg = paramb;
+    this.AVa = paramb;
   }
   
   public final void setRealContent(CharSequence paramCharSequence)
   {
-    this.wki = paramCharSequence;
+    this.AVc = paramCharSequence;
   }
   
   public final void setText(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(168236);
-    this.text = paramCharSequence;
-    getContentTextView().aw(paramCharSequence);
-    post((Runnable)new i(this));
+    this.LV = paramCharSequence;
+    getContentTextView().aL(paramCharSequence);
+    post((Runnable)new j(this));
     AppMethodBeat.o(168236);
   }
   
@@ -552,57 +565,65 @@ public final class FinderCollapsibleTextView
     AppMethodBeat.o(168238);
   }
   
+  public final void setTextSize(float paramFloat)
+  {
+    AppMethodBeat.i(271389);
+    NeatTextView localNeatTextView = getContentTextView();
+    p.j(localNeatTextView, "contentTextView");
+    localNeatTextView.setTextSize(paramFloat);
+    AppMethodBeat.o(271389);
+  }
+  
   public final void setTopicExpand(boolean paramBoolean)
   {
-    this.wkd = paramBoolean;
+    this.AUX = paramBoolean;
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(FinderCollapsibleTextView paramFinderCollapsibleTextView, View paramView, CharSequence paramCharSequence, kotlin.g.a.b paramb) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(254689);
-      int i = paramView.getWidth();
-      if (i > 0) {
-        this.wkk.getContentTextView().setLineEndExtraWidths(new float[] { i });
-      }
-      this.wkk.setText(paramCharSequence);
-      Object localObject = paramb;
-      NeatTextView localNeatTextView = this.wkk.getContentTextView();
-      p.g(localNeatTextView, "contentTextView");
-      ((kotlin.g.a.b)localObject).invoke(Boolean.valueOf(localNeatTextView.hiS()));
-      localObject = k.vfA;
-      localObject = this.wkk.getContext();
-      p.g(localObject, "context");
-      k.a((Context)localObject, true, 0, this.wkk.wke, this.wkk.wkd);
-      AppMethodBeat.o(254689);
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run", "com/tencent/mm/plugin/finder/view/FinderCollapsibleTextView$checkIfAllRestTextTopic$1$1"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
-    c(CharSequence paramCharSequence, FinderCollapsibleTextView paramFinderCollapsibleTextView) {}
+    c(FinderCollapsibleTextView paramFinderCollapsibleTextView, View paramView, CharSequence paramCharSequence, kotlin.g.a.b paramb) {}
     
     public final void run()
     {
-      boolean bool2 = true;
-      AppMethodBeat.i(254690);
+      AppMethodBeat.i(282497);
+      int i = paramView.getWidth();
+      if (i > 0) {
+        this.AVe.getContentTextView().setLineEndExtraWidths(new float[] { i });
+      }
+      this.AVe.setText(paramCharSequence);
+      Object localObject = paramb;
+      NeatTextView localNeatTextView = this.AVe.getContentTextView();
+      p.j(localNeatTextView, "contentTextView");
+      ((kotlin.g.a.b)localObject).invoke(Boolean.valueOf(localNeatTextView.ikB()));
+      localObject = n.zWF;
+      localObject = this.AVe.getContext();
+      p.j(localObject, "context");
+      n.a((Context)localObject, true, 0, this.AVe.AUY, this.AVe.AUX);
+      AppMethodBeat.o(282497);
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/finder/view/FinderCollapsibleTextView$checkIfAllRestTextTopic$1$1"})
+  static final class d
+    implements Runnable
+  {
+    d(CharSequence paramCharSequence, FinderCollapsibleTextView paramFinderCollapsibleTextView) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(281470);
       Log.i("Finder.CollapsibleTextView", "[checkIfAllRestTextTopic] start timeStamp:" + System.currentTimeMillis());
-      boolean bool1;
+      boolean bool2;
       try
       {
         NeatTextView localNeatTextView = jdField_this.getContentTextView();
-        p.g(localNeatTextView, "contentTextView");
-        i = localNeatTextView.getLayout().getLineStart(jdField_this.getLimitLine() - 1);
+        p.j(localNeatTextView, "contentTextView");
+        i = localNeatTextView.getLayout().azW(jdField_this.getLimitLine() - 1);
         localNeatTextView = jdField_this.getContentTextView();
-        p.g(localNeatTextView, "contentTextView");
-        j = localNeatTextView.getLayout().getEllipsisStart(jdField_this.getLimitLine() - 1);
+        p.j(localNeatTextView, "contentTextView");
+        j = localNeatTextView.getLayout().azZ(jdField_this.getLimitLine() - 1);
         i = i + j + 2;
       }
       catch (Exception localException)
@@ -613,20 +634,19 @@ public final class FinderCollapsibleTextView
           Log.i("Finder.CollapsibleTextView", "[checkIfAllRestTextTopic] " + localException.getMessage());
           i = -1;
         }
-        Object localObject1 = this.wkn;
+        Object localObject1 = this.AVj;
         localObject1 = ((CharSequence)localObject1).subSequence(i, ((CharSequence)localObject1).length());
-        bool1 = bool2;
-        if (!(this.wkn instanceof SpannableString)) {
-          break label431;
-        }
-        bool1 = bool2;
-        if (i <= 0) {
-          break label431;
+        if ((!(this.AVj instanceof SpannableString)) || (i <= 0)) {
+          break label424;
         }
         int k = 0;
         int j = 0;
-        for (bool1 = true; k < ((CharSequence)localObject1).length(); bool1 = bool2)
+        for (boolean bool1 = true;; bool1 = bool2)
         {
+          bool2 = bool1;
+          if (k >= ((CharSequence)localObject1).length()) {
+            break;
+          }
           int m = ((CharSequence)localObject1).charAt(k);
           bool2 = bool1;
           if (m != 32)
@@ -634,14 +654,14 @@ public final class FinderCollapsibleTextView
             bool2 = bool1;
             if (m != 10)
             {
-              Object localObject2 = (l[])((SpannableString)this.wkn).getSpans(j + i, j + i, l.class);
+              Object localObject2 = (o[])((SpannableString)this.AVj).getSpans(j + i, j + i, o.class);
               if (localObject2 != null)
               {
                 if (localObject2.length == 0)
                 {
                   m = 1;
                   if (m == 0) {
-                    break label395;
+                    break label388;
                   }
                 }
               }
@@ -656,67 +676,57 @@ public final class FinderCollapsibleTextView
                   if (localObject2 == null)
                   {
                     localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.view.FinderTextClickSpan");
-                    AppMethodBeat.o(254690);
+                    AppMethodBeat.o(281470);
                     throw ((Throwable)localObject1);
                     m = 0;
                     break;
+                    label388:
                     m = 0;
                     continue;
                   }
                   bool2 = bool1;
-                  if (((l)localObject2).wpF) {
-                    break label416;
+                  if (((o)localObject2).BaS) {
+                    break label409;
                   }
                 }
               }
               bool2 = false;
             }
           }
+          label409:
           k += 1;
           j += 1;
         }
-        if (!bool1) {
-          break label500;
+        label424:
+        bool2 = false;
+        if (!bool2) {
+          break label497;
         }
       }
-      if ((i < 0) || (i > this.wkn.length()))
+      if ((i < 0) || (i > this.AVj.length()))
       {
-        Log.i("Finder.CollapsibleTextView", "[checkIfAllRestTextTopic] offset:" + i + " , length:" + this.wkn.length() + ",text:" + this.wkn);
-        AppMethodBeat.o(254690);
+        Log.i("Finder.CollapsibleTextView", "[checkIfAllRestTextTopic] offset:" + i + " , length:" + this.AVj.length() + ",text:" + this.AVj);
+        AppMethodBeat.o(281470);
         return;
       }
-      label395:
-      label416:
-      label431:
-      jdField_this.setExpanText(2131759588);
+      jdField_this.setExpanText(b.j.finder_collpase_topic);
       for (;;)
       {
         jdField_this.getCollapseTextView().setText(jdField_this.getExpanText());
-        jdField_this.setTopicExpand(bool1);
+        jdField_this.setTopicExpand(bool2);
         Log.i("Finder.CollapsibleTextView", "[checkIfAllRestTextTopic] end timeStamp:" + System.currentTimeMillis());
-        AppMethodBeat.o(254690);
+        AppMethodBeat.o(281470);
         return;
-        label500:
-        jdField_this.setExpanText(2131759536);
+        label497:
+        jdField_this.setExpanText(b.j.finder_all_text);
       }
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class d
-    extends q
-    implements kotlin.g.a.a<TextView>
-  {
-    d(FinderCollapsibleTextView paramFinderCollapsibleTextView)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/neattextview/textview/view/NeatTextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class e
     extends q
-    implements kotlin.g.a.a<NeatTextView>
+    implements kotlin.g.a.a<TextView>
   {
     e(FinderCollapsibleTextView paramFinderCollapsibleTextView)
     {
@@ -724,74 +734,85 @@ public final class FinderCollapsibleTextView
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/neattextview/textview/view/NeatTextView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class f
+    extends q
+    implements kotlin.g.a.a<NeatTextView>
+  {
+    f(FinderCollapsibleTextView paramFinderCollapsibleTextView)
+    {
+      super();
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
+  static final class g
     implements View.OnLongClickListener
   {
-    f(FinderCollapsibleTextView paramFinderCollapsibleTextView) {}
+    g(FinderCollapsibleTextView paramFinderCollapsibleTextView) {}
     
     public final boolean onLongClick(View paramView)
     {
       AppMethodBeat.i(168228);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderCollapsibleTextView$enableContentTextViewClick$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderCollapsibleTextView$enableContentTextViewClick$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
       try
       {
-        paramView = new com.tencent.mm.ui.widget.b.a(this.wkk.getContext());
-        paramView.a((o.g)new o.g()
+        paramView = new com.tencent.mm.ui.widget.b.a(this.AVe.getContext());
+        paramView.a((q.g)new q.g()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
           {
-            AppMethodBeat.i(254691);
+            AppMethodBeat.i(289166);
             if (paramAnonymousInt == 0) {
-              ClipboardHelper.setText(this.wko.wkk.getContentTextView().hiT());
+              ClipboardHelper.setText(this.AVk.AVe.getContentTextView().ikC());
             }
-            AppMethodBeat.o(254691);
+            AppMethodBeat.o(289166);
           }
         });
         paramView.setOnDismissListener((PopupWindow.OnDismissListener)new PopupWindow.OnDismissListener()
         {
           public final void onDismiss()
           {
-            AppMethodBeat.i(254692);
-            this.wko.wkk.getContentTextView().setBackgroundResource(2131101287);
-            AppMethodBeat.o(254692);
+            AppMethodBeat.i(288168);
+            this.AVk.AVe.getContentTextView().setBackgroundResource(b.c.transparent);
+            AppMethodBeat.o(288168);
           }
         });
-        this.wkk.getContentTextView().setBackgroundResource(2131100690);
-        localObject = (View)this.wkk.getContentTextView();
+        this.AVe.getContentTextView().setBackgroundResource(b.c.list_devider_color);
+        localObject = (View)this.AVe.getContentTextView();
         View.OnCreateContextMenuListener localOnCreateContextMenuListener = (View.OnCreateContextMenuListener)new View.OnCreateContextMenuListener()
         {
           public final void onCreateContextMenu(ContextMenu paramAnonymousContextMenu, View paramAnonymousView, ContextMenu.ContextMenuInfo paramAnonymousContextMenuInfo)
           {
-            AppMethodBeat.i(254693);
-            paramAnonymousContextMenu.add(0, 0, 0, (CharSequence)this.wko.wkk.getContext().getString(2131755772));
-            AppMethodBeat.o(254693);
+            AppMethodBeat.i(282246);
+            paramAnonymousContextMenu.add(0, 0, 0, (CharSequence)this.AVk.AVe.getContext().getString(b.j.app_copy));
+            AppMethodBeat.o(282246);
           }
         };
-        o.g localg = (o.g)new o.g()
+        q.g localg = (q.g)new q.g()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
           {
-            AppMethodBeat.i(254694);
+            AppMethodBeat.i(279523);
             if (paramAnonymousInt == 0)
             {
-              if (this.wko.wkk.getRealContent() == null)
+              if (this.AVk.AVe.getRealContent() == null)
               {
-                ClipboardHelper.setText(this.wko.wkk.getContentTextView().hiT());
-                AppMethodBeat.o(254694);
+                ClipboardHelper.setText(this.AVk.AVe.getContentTextView().ikC());
+                AppMethodBeat.o(279523);
                 return;
               }
-              ClipboardHelper.setText(this.wko.wkk.getRealContent());
+              ClipboardHelper.setText(this.AVk.AVe.getRealContent());
             }
-            AppMethodBeat.o(254694);
+            AppMethodBeat.o(279523);
           }
         };
-        TouchableLayout.a locala = TouchableLayout.Rni;
-        int i = TouchableLayout.hfC();
-        locala = TouchableLayout.Rni;
-        paramView.a((View)localObject, localOnCreateContextMenuListener, localg, i, TouchableLayout.hfD());
+        TouchableLayout.a locala = TouchableLayout.YOD;
+        int i = TouchableLayout.igZ();
+        locala = TouchableLayout.YOD;
+        paramView.a((View)localObject, localOnCreateContextMenuListener, localg, i, TouchableLayout.iha());
         com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/finder/view/FinderCollapsibleTextView$enableContentTextViewClick$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
         AppMethodBeat.o(168228);
         return true;
@@ -806,37 +827,37 @@ public final class FinderCollapsibleTextView
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class g
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class h
     implements View.OnClickListener
   {
-    g(FinderCollapsibleTextView paramFinderCollapsibleTextView) {}
+    h(FinderCollapsibleTextView paramFinderCollapsibleTextView) {}
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(254695);
+      AppMethodBeat.i(281831);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderCollapsibleTextView$enableContentTextViewClick$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderCollapsibleTextView$enableContentTextViewClick$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
       if (paramView == null)
       {
         paramView = new t("null cannot be cast to non-null type com.tencent.neattextview.textview.view.NeatTextView");
-        AppMethodBeat.o(254695);
+        AppMethodBeat.o(281831);
         throw paramView;
       }
       try
       {
-        i = ((NeatTextView)paramView).getLayout().getEllipsisCount(this.wkk.getLimitLine() - 1);
-        if (((this.wkk.wke) && (i > 0)) || (!this.wkk.wke))
+        i = ((NeatTextView)paramView).getLayout().aAa(this.AVe.getLimitLine() - 1);
+        if (((this.AVe.AUY) && (i > 0)) || (!this.AVe.AUY))
         {
-          FinderCollapsibleTextView.c(this.wkk);
-          paramView = k.vfA;
-          paramView = this.wkk.getContext();
-          p.g(paramView, "context");
-          k.a(paramView, false, 2, this.wkk.wke, this.wkk.wkd);
+          FinderCollapsibleTextView.c(this.AVe);
+          paramView = n.zWF;
+          paramView = this.AVe.getContext();
+          p.j(paramView, "context");
+          n.a(paramView, false, 2, this.AVe.AUY, this.AVe.AUX);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderCollapsibleTextView$enableContentTextViewClick$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(254695);
+        AppMethodBeat.o(281831);
         return;
       }
       catch (ArrayIndexOutOfBoundsException paramView)
@@ -849,112 +870,7 @@ public final class FinderCollapsibleTextView
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  static final class h
-    implements Runnable
-  {
-    h(FinderCollapsibleTextView paramFinderCollapsibleTextView) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(254697);
-      try
-      {
-        final z.d locald = new z.d();
-        Object localObject1 = this.wkk.getContentTextView();
-        p.g(localObject1, "contentTextView");
-        localObject1 = ((NeatTextView)localObject1).getLayout();
-        final int i = this.wkk.getLimitLine();
-        Object localObject2 = kotlin.g.b.l.SYx;
-        locald.SYE = ((com.tencent.neattextview.textview.layout.a)localObject1).getOffsetForHorizontal(i - 1, kotlin.g.b.l.hxZ());
-        localObject1 = this.wkk.getContentTextView();
-        p.g(localObject1, "contentTextView");
-        float f1 = ((NeatTextView)localObject1).getLayout().getPrimaryHorizontal(locald.SYE);
-        localObject1 = this.wkk.getContentTextView();
-        p.g(localObject1, "contentTextView");
-        i = ((NeatTextView)localObject1).getWidth();
-        if (FinderCollapsibleTextView.a(this.wkk) == 0.0F)
-        {
-          localObject1 = this.wkk;
-          localObject2 = this.wkk.getCollapseTextView();
-          p.g(localObject2, "collapseTextView");
-          localObject2 = ((TextView)localObject2).getPaint();
-          Context localContext = this.wkk.getContext();
-          p.g(localContext, "context");
-          FinderCollapsibleTextView.a((FinderCollapsibleTextView)localObject1, ((TextPaint)localObject2).measureText(localContext.getResources().getString(2131759536)));
-        }
-        final float f2 = FinderCollapsibleTextView.a(this.wkk) + 3.0F;
-        localObject1 = this.wkk.getContentTextView();
-        p.g(localObject1, "contentTextView");
-        if ((((NeatTextView)localObject1).hiS()) && (i - f1 <= f2))
-        {
-          FinderCollapsibleTextView.a(this.wkk, "#1");
-          AppMethodBeat.o(254697);
-          return;
-        }
-        if (f1 + f2 > i) {
-          this.wkk.getContentTextView().a(TextUtils.TruncateAt.END, f2);
-        }
-        for (;;)
-        {
-          this.wkk.post((Runnable)new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(254696);
-              Object localObject1 = locald;
-              Object localObject2 = this.wkp.wkk.getContentTextView();
-              p.g(localObject2, "contentTextView");
-              localObject2 = ((NeatTextView)localObject2).getLayout();
-              int i = this.wkp.wkk.getLimitLine();
-              kotlin.g.b.l locall = kotlin.g.b.l.SYx;
-              ((z.d)localObject1).SYE = ((com.tencent.neattextview.textview.layout.a)localObject2).getOffsetForHorizontal(i - 1, kotlin.g.b.l.hxZ());
-              localObject1 = this.wkp.wkk.getContentTextView();
-              p.g(localObject1, "contentTextView");
-              float f1 = ((NeatTextView)localObject1).getLayout().getPrimaryHorizontal(locald.SYE);
-              float f2 = f2;
-              localObject1 = this.wkp.wkk.getCollapseTextView();
-              p.g(localObject1, "collapseTextView");
-              float f3 = ((TextView)localObject1).getPaint().measureText("…");
-              this.wkp.wkk.setCollapseTextViewRight(i - (f1 + f2 + f3));
-              this.wkp.wkk.setCollapseTextViewRight(j.aI(0.0F, this.wkp.wkk.getCollapseTextViewRight()));
-              localObject1 = this.wkp.wkk.getCollapseTextView();
-              p.g(localObject1, "collapseTextView");
-              localObject1 = ((TextView)localObject1).getLayoutParams();
-              if (localObject1 == null)
-              {
-                localObject1 = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-                AppMethodBeat.o(254696);
-                throw ((Throwable)localObject1);
-              }
-              localObject1 = (RelativeLayout.LayoutParams)localObject1;
-              ((RelativeLayout.LayoutParams)localObject1).setMarginEnd((int)this.wkp.wkk.getCollapseTextViewRight());
-              localObject2 = this.wkp.wkk.getCollapseTextView();
-              p.g(localObject2, "collapseTextView");
-              ((TextView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-              FinderCollapsibleTextView.b(this.wkp.wkk);
-              AppMethodBeat.o(254696);
-            }
-          });
-          AppMethodBeat.o(254697);
-          return;
-          localObject1 = this.wkk.getContentTextView();
-          p.g(localObject1, "contentTextView");
-          if (((NeatTextView)localObject1).getExtraEllipsizeWidth() <= 0.0F) {
-            this.wkk.getContentTextView().a(TextUtils.TruncateAt.END, 0.0F);
-          }
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        FinderCollapsibleTextView.a(this.wkk, "#2:Exception:" + localException.getMessage());
-        AppMethodBeat.o(254697);
-      }
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class i
     implements Runnable
   {
@@ -962,9 +878,114 @@ public final class FinderCollapsibleTextView
     
     public final void run()
     {
-      AppMethodBeat.i(254698);
-      FinderCollapsibleTextView.a(this.wkk, this.wkk.wke);
-      AppMethodBeat.o(254698);
+      AppMethodBeat.i(221558);
+      try
+      {
+        final aa.d locald = new aa.d();
+        Object localObject1 = this.AVe.getContentTextView();
+        p.j(localObject1, "contentTextView");
+        localObject1 = ((NeatTextView)localObject1).getLayout();
+        final int i = this.AVe.getLimitLine();
+        Object localObject2 = kotlin.g.b.l.aaBt;
+        locald.aaBA = ((com.tencent.neattextview.textview.layout.a)localObject1).E(i - 1, kotlin.g.b.l.iCk());
+        localObject1 = this.AVe.getContentTextView();
+        p.j(localObject1, "contentTextView");
+        float f1 = ((NeatTextView)localObject1).getLayout().azU(locald.aaBA);
+        localObject1 = this.AVe.getContentTextView();
+        p.j(localObject1, "contentTextView");
+        i = ((NeatTextView)localObject1).getWidth();
+        if (FinderCollapsibleTextView.a(this.AVe) == 0.0F)
+        {
+          localObject1 = this.AVe;
+          localObject2 = this.AVe.getCollapseTextView();
+          p.j(localObject2, "collapseTextView");
+          localObject2 = ((TextView)localObject2).getPaint();
+          Context localContext = this.AVe.getContext();
+          p.j(localContext, "context");
+          FinderCollapsibleTextView.a((FinderCollapsibleTextView)localObject1, ((TextPaint)localObject2).measureText(localContext.getResources().getString(b.j.finder_all_text)));
+        }
+        final float f2 = FinderCollapsibleTextView.a(this.AVe) + 3.0F;
+        localObject1 = this.AVe.getContentTextView();
+        p.j(localObject1, "contentTextView");
+        if ((((NeatTextView)localObject1).ikB()) && (i - f1 <= f2))
+        {
+          FinderCollapsibleTextView.a(this.AVe, "#1");
+          AppMethodBeat.o(221558);
+          return;
+        }
+        if (f1 + f2 > i) {
+          this.AVe.getContentTextView().a(TextUtils.TruncateAt.END, f2);
+        }
+        for (;;)
+        {
+          this.AVe.post((Runnable)new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(272604);
+              Object localObject1 = locald;
+              Object localObject2 = this.AVl.AVe.getContentTextView();
+              p.j(localObject2, "contentTextView");
+              localObject2 = ((NeatTextView)localObject2).getLayout();
+              int i = this.AVl.AVe.getLimitLine();
+              kotlin.g.b.l locall = kotlin.g.b.l.aaBt;
+              ((aa.d)localObject1).aaBA = ((com.tencent.neattextview.textview.layout.a)localObject2).E(i - 1, kotlin.g.b.l.iCk());
+              localObject1 = this.AVl.AVe.getContentTextView();
+              p.j(localObject1, "contentTextView");
+              float f1 = ((NeatTextView)localObject1).getLayout().azU(locald.aaBA);
+              float f2 = f2;
+              localObject1 = this.AVl.AVe.getCollapseTextView();
+              p.j(localObject1, "collapseTextView");
+              float f3 = ((TextView)localObject1).getPaint().measureText("…");
+              this.AVl.AVe.setCollapseTextViewRight(i - (f1 + f2 + f3));
+              this.AVl.AVe.setCollapseTextViewRight(i.aP(0.0F, this.AVl.AVe.getCollapseTextViewRight()));
+              localObject1 = this.AVl.AVe.getCollapseTextView();
+              p.j(localObject1, "collapseTextView");
+              localObject1 = ((TextView)localObject1).getLayoutParams();
+              if (localObject1 == null)
+              {
+                localObject1 = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+                AppMethodBeat.o(272604);
+                throw ((Throwable)localObject1);
+              }
+              localObject1 = (RelativeLayout.LayoutParams)localObject1;
+              ((RelativeLayout.LayoutParams)localObject1).setMarginEnd((int)this.AVl.AVe.getCollapseTextViewRight());
+              localObject2 = this.AVl.AVe.getCollapseTextView();
+              p.j(localObject2, "collapseTextView");
+              ((TextView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
+              FinderCollapsibleTextView.b(this.AVl.AVe);
+              AppMethodBeat.o(272604);
+            }
+          });
+          AppMethodBeat.o(221558);
+          return;
+          localObject1 = this.AVe.getContentTextView();
+          p.j(localObject1, "contentTextView");
+          if (((NeatTextView)localObject1).getExtraEllipsizeWidth() <= 0.0F) {
+            this.AVe.getContentTextView().a(TextUtils.TruncateAt.END, 0.0F);
+          }
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        FinderCollapsibleTextView.a(this.AVe, "#2:Exception:" + localException.getMessage());
+        AppMethodBeat.o(221558);
+      }
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  static final class j
+    implements Runnable
+  {
+    j(FinderCollapsibleTextView paramFinderCollapsibleTextView) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(267595);
+      FinderCollapsibleTextView.a(this.AVe, this.AVe.AUY);
+      AppMethodBeat.o(267595);
     }
   }
 }

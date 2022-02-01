@@ -7,15 +7,15 @@ public class CMTimeUtils
 {
   public static long CMTimeConvertToUs(CMTime paramCMTime)
   {
-    AppMethodBeat.i(217872);
+    AppMethodBeat.i(189147);
     long l = (paramCMTime.getTimeSeconds() * 1000.0F * 1000.0F);
-    AppMethodBeat.o(217872);
+    AppMethodBeat.o(189147);
     return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.core.CMTimeUtils
  * JD-Core Version:    0.7.0.1
  */

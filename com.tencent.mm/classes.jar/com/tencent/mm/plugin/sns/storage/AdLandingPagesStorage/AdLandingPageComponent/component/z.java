@@ -3,98 +3,145 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.text.TextUtils;
 import android.view.ViewGroup;
+import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ch.a;
+import com.tencent.mm.by.c;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g.a;
-import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.m;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r;
 import com.tencent.mm.sdk.platformtools.Util;
+import org.json.JSONObject;
 
 public final class z
   extends q
 {
-  public z(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.q paramq, ViewGroup paramViewGroup)
+  public z(Context paramContext, m paramm, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramq, paramViewGroup);
-    AppMethodBeat.i(96657);
-    paramContext = h.o(paramq.DYs, true, false);
-    paramViewGroup = this.Edn;
-    if (paramContext == null) {}
-    for (paramContext = "";; paramContext = paramContext.field_packageName)
-    {
-      paramViewGroup.kv("pkg", paramContext);
-      this.Edn.kv("appid", paramq.DYs);
-      AppMethodBeat.o(96657);
-      return;
-    }
+    super(paramContext, paramm, paramViewGroup);
+    AppMethodBeat.i(96660);
+    this.KqQ.kQ("canvasId", paramm.Klw);
+    this.KqQ.kQ("canvasExt", paramm.Klx);
+    AppMethodBeat.o(96660);
   }
   
-  private boolean I(Context paramContext, final String paramString1, final String paramString2)
+  private boolean fRx()
   {
-    AppMethodBeat.i(96659);
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)))
+    AppMethodBeat.i(96662);
+    if (((m)this.KqB).Klz == 1)
     {
-      AppMethodBeat.o(96659);
-      return false;
+      AppMethodBeat.o(96662);
+      return true;
     }
-    try
-    {
-      final Intent localIntent = paramContext.getPackageManager().getLaunchIntentForPackage(paramString1);
-      if (localIntent != null)
-      {
-        paramString1 = paramContext;
-        if (!(paramContext instanceof Activity)) {
-          paramString1 = this.context;
-        }
-        a.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(96656);
-            h.b(paramString1, localIntent, paramString2);
-            AppMethodBeat.o(96656);
-          }
-        });
-        AppMethodBeat.o(96659);
-        return true;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      Log.e("AdLandingPageOpenAppBtnComp", Util.stackTraceToString(paramContext));
-      AppMethodBeat.o(96659);
-    }
+    AppMethodBeat.o(96662);
     return false;
   }
   
-  protected final void fde()
+  private boolean fRy()
   {
-    AppMethodBeat.i(96658);
-    Object localObject = fdx();
-    if (h.s(this.context, ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.q)localObject).DYs))
+    AppMethodBeat.i(96663);
+    if (((m)this.KqB).KlA == 1)
     {
-      localObject = h.o(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.q)localObject).DYs, true, false);
-      if ((localObject != null) && (!TextUtils.isEmpty(((g)localObject).field_packageName)) && (I(this.context, ((g)localObject).field_packageName, h.a(this.context, (g)localObject, null))))
-      {
-        fdf();
-        AppMethodBeat.o(96658);
-        return;
-      }
-      super.fde();
-      AppMethodBeat.o(96658);
-      return;
+      AppMethodBeat.o(96663);
+      return true;
     }
-    super.fde();
-    AppMethodBeat.o(96658);
+    AppMethodBeat.o(96663);
+    return false;
+  }
+  
+  protected final void fRb()
+  {
+    AppMethodBeat.i(96661);
+    Object localObject2 = (m)this.KqB;
+    if (this.KqU) {}
+    for (int i = 20;; i = 14)
+    {
+      Context localContext = this.context;
+      Object localObject1 = ((m)localObject2).Klw;
+      String str1 = ((m)localObject2).Klx;
+      int j = ((m)localObject2).Kly;
+      localObject2 = new Intent();
+      ((Intent)localObject2).putExtra("sns_landig_pages_from_source", i);
+      ((Intent)localObject2).putExtra("sns_landig_pages_origin_from_source", fRp().Knp);
+      ((Intent)localObject2).putExtra("sns_landing_pages_xml", "");
+      String str3;
+      String str2;
+      JSONObject localJSONObject;
+      if (fRy())
+      {
+        ((Intent)localObject2).putExtra("sns_landing_pages_canvasid", (String)localObject1);
+        ((Intent)localObject2).putExtra("sns_landing_pages_canvas_ext", str1);
+        if (fRx())
+        {
+          localObject1 = new int[2];
+          this.KqS.getLocationOnScreen((int[])localObject1);
+          ((Intent)localObject2).putExtra("img_gallery_top", localObject1[1]);
+          ((Intent)localObject2).putExtra("img_gallery_left", localObject1[0]);
+          ((Intent)localObject2).putExtra("img_gallery_width", this.KqS.getWidth());
+          ((Intent)localObject2).putExtra("img_gallery_height", this.KqS.getHeight());
+        }
+        ((Intent)localObject2).putExtra("sns_landing_pages_need_enter_and_exit_animation", fRx());
+        ((Intent)localObject2).putExtra("sns_landing_pages_extra", "");
+        ((Intent)localObject2).putExtra("sns_landing_pages_no_store", j);
+        ((Intent)localObject2).putExtra("sns_landing_pages_ux_info", fRp().uxInfo);
+        ((Intent)localObject2).putExtra("sns_landing_is_native_sight_ad", fRp().Knq);
+        if (((localContext instanceof Activity)) && (fRy()) && (fRp().bizId == 2))
+        {
+          str3 = ((Activity)localContext).getIntent().getStringExtra("sns_landing_pages_sessionId");
+          str1 = ((Activity)localContext).getIntent().getStringExtra("sns_landing_pages_ad_buffer");
+          if (!Util.isNullOrNil(str3))
+          {
+            str2 = String.valueOf(System.currentTimeMillis() / 1000L);
+            localJSONObject = new JSONObject();
+          }
+        }
+      }
+      for (;;)
+      {
+        try
+        {
+          localJSONObject.put("sessionId", str2);
+          localJSONObject.put("cid", ((r)this.KqB).KmB);
+          if (Util.isNullOrNil(str1)) {
+            continue;
+          }
+          localObject1 = str1;
+          localJSONObject.put("adBuffer", localObject1);
+          localJSONObject.put("preSessionId", str3);
+        }
+        catch (Exception localException)
+        {
+          continue;
+        }
+        ((Intent)localObject2).putExtra("sns_landing_pages_search_extra", localJSONObject.toString());
+        ((Intent)localObject2).putExtra("sns_landing_pages_sessionId", str2);
+        ((Intent)localObject2).putExtra("sns_landing_pages_ad_buffer", str1);
+        if ((localContext instanceof Activity))
+        {
+          localObject1 = ((Activity)localContext).getIntent().getStringExtra("sns_landing_pages_rawSnsId");
+          str1 = ((Activity)localContext).getIntent().getStringExtra("sns_landing_pages_share_sns_id");
+          ((Intent)localObject2).putExtra("sns_landing_pages_rawSnsId", (String)localObject1);
+          ((Intent)localObject2).putExtra("sns_landing_pages_share_sns_id", str1);
+        }
+        if ((this.KqV) && ((localContext instanceof Activity))) {
+          ((Intent)localObject2).putExtra("sns_landing_page_from_bonus", 1);
+        }
+        c.b(localContext, "sns", ".ui.SnsAdNativeLandingPagesPreviewUI", (Intent)localObject2);
+        fRu();
+        fRc();
+        AppMethodBeat.o(96661);
+        return;
+        ((Intent)localObject2).putExtra("sns_landing_pages_pageid", Util.safeParseLong((String)localObject1));
+        break;
+        localObject1 = "";
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.z
  * JD-Core Version:    0.7.0.1
  */

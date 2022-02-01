@@ -5,14 +5,14 @@ import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"kvCommand", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getKvCommand", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "toast", "", "", "plugin-brandservice_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"kvCommand", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getKvCommand", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "toast", "", "", "plugin-brandservice_release"})
 public final class k
 {
-  public static final MultiProcessMMKV cdi()
+  public static final MultiProcessMMKV cqu()
   {
     AppMethodBeat.i(6634);
     MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("_webview_tmpl_command");
-    p.g(localMultiProcessMMKV, "MultiProcessMMKV.getMMKV…MKV_WEBVIEW_TMPL_COMMAND)");
+    p.j(localMultiProcessMMKV, "MultiProcessMMKV.getMMKV…MKV_WEBVIEW_TMPL_COMMAND)");
     AppMethodBeat.o(6634);
     return localMultiProcessMMKV;
   }

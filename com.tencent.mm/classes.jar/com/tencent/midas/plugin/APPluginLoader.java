@@ -16,19 +16,19 @@ public class APPluginLoader
   
   static
   {
-    AppMethodBeat.i(193029);
+    AppMethodBeat.i(252435);
     sClassLoaderMap = new HashMap();
     parentClassLoader = null;
-    AppMethodBeat.o(193029);
+    AppMethodBeat.o(252435);
   }
   
   public static ClassLoader getClassLoader(String paramString1, String paramString2)
   {
     try
     {
-      AppMethodBeat.i(193024);
+      AppMethodBeat.i(252425);
       paramString1 = (ClassLoader)sClassLoaderMap.get(paramString1 + "_" + paramString2);
-      AppMethodBeat.o(193024);
+      AppMethodBeat.o(252425);
       return paramString1;
     }
     finally
@@ -42,10 +42,10 @@ public class APPluginLoader
   {
     try
     {
-      AppMethodBeat.i(193025);
+      AppMethodBeat.i(252426);
       paramContext = getOrCreateClassLoaderByPath(paramContext, paramString, APPluginInstallerAndUpdater.getInstallPath(paramContext, paramString).getCanonicalPath());
       APLog.d("APPluginStatic", "getClassLoader getOrCreateClassLoader midasClassLoader: " + paramContext.hashCode());
-      AppMethodBeat.o(193025);
+      AppMethodBeat.o(252426);
       return paramContext;
     }
     finally
@@ -61,14 +61,14 @@ public class APPluginLoader
     {
       try
       {
-        AppMethodBeat.i(193027);
+        AppMethodBeat.i(252429);
         String str2 = APPluginUtils.getMD5FromPath(paramString2);
         String str1 = paramString1 + "_" + str2;
         paramString1 = (DexClassLoader)sClassLoaderMap.get(str1);
         APLog.d("APPluginStatic", "getOrCreateClassLoader apkFilePath: " + paramString2 + ", MD5: " + str2 + ", key: " + str1 + ", dexClassLoader: " + paramString1);
         if (paramString1 != null)
         {
-          AppMethodBeat.o(193027);
+          AppMethodBeat.o(252429);
           paramContext = paramString1;
           return paramContext;
         }
@@ -82,7 +82,7 @@ public class APPluginLoader
           paramContext = new DexClassLoader(paramString2, paramString1, str2, parentClassLoader);
           APLog.d("APPluginStatic", "getOrCreateClassLoader new DexClassLoader cache: " + paramString1 + " libDir: " + str2);
           sClassLoaderMap.put(str1, paramContext);
-          AppMethodBeat.o(193027);
+          AppMethodBeat.o(252429);
         }
         else
         {
@@ -190,9 +190,9 @@ public class APPluginLoader
   
   static void release()
   {
-    AppMethodBeat.i(193026);
+    AppMethodBeat.i(252427);
     sClassLoaderMap.clear();
-    AppMethodBeat.o(193026);
+    AppMethodBeat.o(252427);
   }
   
   public static void setParentClassLoader(DexClassLoader paramDexClassLoader)
@@ -202,7 +202,7 @@ public class APPluginLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.plugin.APPluginLoader
  * JD-Core Version:    0.7.0.1
  */

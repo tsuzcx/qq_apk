@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.taskbar;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/taskbar/PluginTaskBar$Companion;", "", "()V", "ADD_TYPE_ADD", "", "ADD_TYPE_UPDATE", "plugin-taskbar_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/taskbar/PluginTaskBar$Companion;", "", "()V", "ADD_TYPE_ADD", "", "ADD_TYPE_UPDATE", "plugin-taskbar_release"})
 public final class PluginTaskBar$a {}
 
 

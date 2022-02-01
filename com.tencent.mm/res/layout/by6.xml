@@ -8,4 +8,6 @@
     <ProgressBar android:layout_gravity="center" android:id="@id/j59" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a62" />
     <ImageView android:id="@id/j7_" android:background="@raw/shortvideo_play_btn" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:alpha="0.0" />
     <TextView android:textColor="@color/a5c" android:id="@id/j6r" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ImageView android:id="@id/ken" android:background="@drawable/cz4" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="120.0dip" android:layout_alignParentBottom="true" />
+    <com.tencent.mm.pluginsdk.ui.seekbar.HeroSeekBarView android:gravity="center" android:id="@id/kj0" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/cj" android:layout_marginBottom="@dimen/cb" android:layout_alignParentBottom="true" />
 </RelativeLayout>

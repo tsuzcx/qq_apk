@@ -3,7 +3,7 @@ package com.google.android.gms.common.internal;
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import com.google.android.gms.common.api.internal.LifecycleFragment;
 
 public abstract class DialogRedirect
@@ -59,7 +59,7 @@ public abstract class DialogRedirect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.common.internal.DialogRedirect
  * JD-Core Version:    0.7.0.1
  */

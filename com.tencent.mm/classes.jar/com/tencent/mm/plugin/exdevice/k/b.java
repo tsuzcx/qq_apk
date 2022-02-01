@@ -19,7 +19,7 @@ import java.util.UUID;
 
 public final class b
 {
-  public static int D(Context paramContext, int paramInt)
+  public static int F(Context paramContext, int paramInt)
   {
     int i = 0;
     AppMethodBeat.i(24332);
@@ -56,7 +56,7 @@ public final class b
     }
   }
   
-  public static String Dj(long paramLong)
+  public static String Jx(long paramLong)
   {
     int j = 0;
     AppMethodBeat.i(24318);
@@ -86,7 +86,7 @@ public final class b
     return localObject;
   }
   
-  public static String Dk(long paramLong)
+  public static String Jy(long paramLong)
   {
     int j = 0;
     AppMethodBeat.i(24322);
@@ -113,7 +113,7 @@ public final class b
     return localObject;
   }
   
-  public static String V(byte[] paramArrayOfByte, int paramInt)
+  public static String Y(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(24320);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
@@ -143,7 +143,7 @@ public final class b
     return paramArrayOfByte;
   }
   
-  public static long anY(String paramString)
+  public static long avW(String paramString)
   {
     int n = 0;
     AppMethodBeat.i(24317);
@@ -200,7 +200,7 @@ public final class b
     return l;
   }
   
-  public static String anZ(String paramString)
+  public static String avX(String paramString)
   {
     AppMethodBeat.i(24323);
     if ((paramString == null) || (12 != paramString.length()))
@@ -225,7 +225,7 @@ public final class b
     return paramString;
   }
   
-  public static String bw(byte[] paramArrayOfByte)
+  public static String bK(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(24319);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
@@ -233,12 +233,12 @@ public final class b
       AppMethodBeat.o(24319);
       return null;
     }
-    paramArrayOfByte = V(paramArrayOfByte, paramArrayOfByte.length);
+    paramArrayOfByte = Y(paramArrayOfByte, paramArrayOfByte.length);
     AppMethodBeat.o(24319);
     return paramArrayOfByte;
   }
   
-  public static long bx(byte[] paramArrayOfByte)
+  public static long bL(byte[] paramArrayOfByte)
   {
     long l = 0L;
     int i = 0;
@@ -250,10 +250,10 @@ public final class b
     return l;
   }
   
-  public static UUID by(byte[] paramArrayOfByte)
+  public static UUID bM(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(24328);
-    Log.d("MicroMsg.exdevice.Util", "parseUUIDFromByteArray, uuid byte array = %s", new Object[] { bw(paramArrayOfByte) });
+    Log.d("MicroMsg.exdevice.Util", "parseUUIDFromByteArray, uuid byte array = %s", new Object[] { bK(paramArrayOfByte) });
     if (Util.isNullOrNil(paramArrayOfByte))
     {
       Log.e("MicroMsg.exdevice.Util", "aUUIDByteArray is null or nil");
@@ -288,7 +288,7 @@ public final class b
   }
   
   /* Error */
-  public static Object bz(byte[] paramArrayOfByte)
+  public static Object bN(byte[] paramArrayOfByte)
   {
     // Byte code:
     //   0: aconst_null
@@ -596,7 +596,7 @@ public final class b
     return true;
   }
   
-  public static String cMi()
+  public static String daW()
   {
     i = 7;
     AppMethodBeat.i(24321);
@@ -625,10 +625,10 @@ public final class b
     }
   }
   
-  public static long cMj()
+  public static long daX()
   {
     AppMethodBeat.i(24324);
-    String str = h.aqJ().getValue("DeviceAutoSyncDuration");
+    String str = h.axc().getValue("DeviceAutoSyncDuration");
     if (!Util.isNullOrNil(str)) {}
     for (;;)
     {
@@ -656,7 +656,7 @@ public final class b
   }
   
   /* Error */
-  public static byte[] de(Object paramObject)
+  public static byte[] db(Object paramObject)
   {
     // Byte code:
     //   0: sipush 24330
@@ -842,7 +842,7 @@ public final class b
     //   52	60	274	java/io/IOException
   }
   
-  public static boolean gg(String paramString1, String paramString2)
+  public static boolean gu(String paramString1, String paramString2)
   {
     AppMethodBeat.i(24325);
     Log.i("MicroMsg.exdevice.Util", "isDeviceInDeviceList, device = %s, device list = %s", new Object[] { paramString1, paramString2 });
@@ -882,7 +882,7 @@ public final class b
     return false;
   }
   
-  public static String gh(String paramString1, String paramString2)
+  public static String gv(String paramString1, String paramString2)
   {
     AppMethodBeat.i(24326);
     Log.i("MicroMsg.exdevice.Util", "addDeviceToDeviceList, device = %s, device list = %s", new Object[] { paramString1, paramString2 });
@@ -901,7 +901,7 @@ public final class b
     return paramString1;
   }
   
-  public static String gi(String paramString1, String paramString2)
+  public static String gw(String paramString1, String paramString2)
   {
     AppMethodBeat.i(24327);
     Log.i("MicroMsg.exdevice.Util", "moveDevicefromDeviceList, device = %s, device list = %s", new Object[] { paramString1, paramString2 });
@@ -960,7 +960,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.k.b
  * JD-Core Version:    0.7.0.1
  */

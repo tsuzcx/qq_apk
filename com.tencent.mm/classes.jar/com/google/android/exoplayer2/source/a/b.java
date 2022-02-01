@@ -4,13 +4,13 @@ import com.google.android.exoplayer2.h.s.e;
 
 public final class b
 {
-  public static boolean f(Exception paramException)
+  public static boolean d(Exception paramException)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
     if ((paramException instanceof s.e))
     {
-      int i = ((s.e)paramException).responseCode;
+      int i = ((s.e)paramException).bpg;
       if (i != 404)
       {
         bool1 = bool2;
@@ -26,7 +26,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.source.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -40,10 +40,10 @@ public class TextureInfo
   
   public TextureInfo clone()
   {
-    AppMethodBeat.i(199462);
+    AppMethodBeat.i(203109);
     TextureInfo localTextureInfo = new TextureInfo(this.textureID, this.textureType, this.width, this.height, this.textureMatrix, this.preferRotation);
     localTextureInfo.needRelease = true;
-    AppMethodBeat.o(199462);
+    AppMethodBeat.o(203109);
     return localTextureInfo;
   }
   
@@ -79,7 +79,7 @@ public class TextureInfo
   
   public void release()
   {
-    AppMethodBeat.i(199463);
+    AppMethodBeat.i(203113);
     this.released = true;
     if (this.frameBuffer != -1)
     {
@@ -87,7 +87,7 @@ public class TextureInfo
       this.frameBuffer = -1;
     }
     GLES20.glDeleteTextures(1, new int[] { this.textureID }, 0);
-    AppMethodBeat.o(199463);
+    AppMethodBeat.o(203113);
   }
   
   public void setFormat(int paramInt)
@@ -112,15 +112,15 @@ public class TextureInfo
   
   public String toString()
   {
-    AppMethodBeat.i(199464);
+    AppMethodBeat.i(203126);
     String str = "TextureInfo{textureID=" + this.textureID + ", textureType=" + this.textureType + ", width=" + this.width + ", height=" + this.height + ", preferRotation=" + this.preferRotation + ", textureMatrix=" + this.textureMatrix + ", frameBuffer=" + this.frameBuffer + ", needRelease=" + this.needRelease + ", mixAlpha=" + this.mixAlpha + ", format=" + this.format + '}';
-    AppMethodBeat.o(199464);
+    AppMethodBeat.o(203126);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.coremedia.TextureInfo
  * JD-Core Version:    0.7.0.1
  */

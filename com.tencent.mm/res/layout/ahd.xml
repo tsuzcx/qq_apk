@@ -4,13 +4,13 @@
     <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <LinearLayout android:id="@id/e2a" android:paddingTop="@dimen/c5" android:paddingBottom="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mz">
             <ImageView android:id="@id/x1" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/bca" />
-            <android.support.constraint.ConstraintLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
                 <LinearLayout android:id="@id/ftc" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m">
                     <TextView android:textColor="@color/fo" android:ellipsize="end" android:id="@id/fzg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:singleLine="true" android:layout_weight="1.0" style="@style/hv" />
                 </LinearLayout>
                 <TextView android:ellipsize="end" android:id="@id/fmb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_marginTop="@dimen/bt" android:singleLine="true" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toBottomOf="@id/ftc" style="@style/xn" />
                 <TextView android:textSize="12.0dip" android:id="@id/in3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_marginTop="@dimen/ct" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toBottomOf="@id/fmb" style="@style/hv" />
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
             <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
                 <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/ime" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" android:scaleType="centerCrop" app:roundHeight="1.0dip" app:roundWidth="1.0dip" />
                 <TextView android:textSize="@dimen/kc" android:gravity="center" android:id="@id/ik6" android:visibility="gone" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" />

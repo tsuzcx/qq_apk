@@ -13,9 +13,9 @@ public class FilterChainReportSession
   
   public FilterChainReportSession()
   {
-    AppMethodBeat.i(197643);
+    AppMethodBeat.i(212823);
     this.timeConsumerMap = new HashMap();
-    AppMethodBeat.o(197643);
+    AppMethodBeat.o(212823);
   }
   
   public static void setReporter(IReporter paramIReporter)
@@ -34,7 +34,7 @@ public class FilterChainReportSession
   
   public void commit()
   {
-    AppMethodBeat.i(197645);
+    AppMethodBeat.i(212827);
     HashMap localHashMap = new HashMap();
     Iterator localIterator = this.timeConsumerMap.values().iterator();
     while (localIterator.hasNext())
@@ -53,13 +53,13 @@ public class FilterChainReportSession
     }
     finally
     {
-      AppMethodBeat.o(197645);
+      AppMethodBeat.o(212827);
     }
   }
   
   public void tick(String paramString, long paramLong)
   {
-    AppMethodBeat.i(197644);
+    AppMethodBeat.i(212825);
     TimeConsumer localTimeConsumer2 = (TimeConsumer)this.timeConsumerMap.get(paramString);
     TimeConsumer localTimeConsumer1 = localTimeConsumer2;
     if (localTimeConsumer2 == null)
@@ -68,7 +68,7 @@ public class FilterChainReportSession
       this.timeConsumerMap.put(localTimeConsumer1.key, localTimeConsumer1);
     }
     TimeConsumer.access$100(localTimeConsumer1, paramLong / 1000L);
-    AppMethodBeat.o(197644);
+    AppMethodBeat.o(212825);
   }
   
   public static abstract interface IReporter
@@ -104,7 +104,7 @@ public class FilterChainReportSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tavkit.report.FilterChainReportSession
  * JD-Core Version:    0.7.0.1
  */

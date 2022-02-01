@@ -5,17 +5,17 @@ import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
 final class FinderFriendBlackListUI$d
   implements DialogInterface.OnCancelListener
 {
-  public static final d uaq;
+  public static final d xMS;
   
   static
   {
-    AppMethodBeat.i(245191);
-    uaq = new d();
-    AppMethodBeat.o(245191);
+    AppMethodBeat.i(274224);
+    xMS = new d();
+    AppMethodBeat.o(274224);
   }
   
   public final void onCancel(DialogInterface paramDialogInterface) {}

@@ -6,7 +6,7 @@ import com.tencent.soter.core.c.g;
 public abstract class e<T>
   extends f
 {
-  public T RQu = null;
+  public T ZsY = null;
   
   e()
   {
@@ -34,7 +34,7 @@ public abstract class e<T>
       if (!g.isNullOrNil(paramString)) {
         this.errMsg = paramString;
       }
-      this.RQu = paramT;
+      this.ZsY = paramT;
       return;
       this.errMsg = "get support soter failed remotely";
       continue;
@@ -61,15 +61,15 @@ public abstract class e<T>
   
   public String toString()
   {
-    if (this.RQu == null) {
+    if (this.ZsY == null) {
       return super.toString();
     }
-    return String.format("total: %s, extData: %s", new Object[] { super.toString(), this.RQu.toString() });
+    return String.format("total: %s, extData: %s", new Object[] { super.toString(), this.ZsY.toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.soter.a.b.e
  * JD-Core Version:    0.7.0.1
  */

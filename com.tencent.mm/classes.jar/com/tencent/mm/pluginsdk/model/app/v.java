@@ -1,11 +1,11 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import android.os.Bundle;
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 
 public class v
-  implements b<Bundle, IPCBoolean>
+  implements d<Bundle, IPCBoolean>
 {}
 
 

@@ -11,9 +11,9 @@ final class BizTimeLineUI$6
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(194938);
-    this.ptt.finish();
-    AppMethodBeat.o(194938);
+    AppMethodBeat.i(264349);
+    this.sCH.finish();
+    AppMethodBeat.o(264349);
     return true;
   }
 }

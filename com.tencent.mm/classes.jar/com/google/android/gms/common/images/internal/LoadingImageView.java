@@ -59,9 +59,9 @@ public final class LoadingImageView
     this.zzqs = 0;
     this.zzqt = 1.0F;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.LoadingImageView);
-    this.zzqs = paramContext.getInt(2, 0);
-    this.zzqt = paramContext.getFloat(1, 1.0F);
-    setCircleCropEnabled(paramContext.getBoolean(0, false));
+    this.zzqs = paramContext.getInt(R.styleable.LoadingImageView_imageAspectRatioAdjust, 0);
+    this.zzqt = paramContext.getFloat(R.styleable.LoadingImageView_imageAspectRatio, 1.0F);
+    setCircleCropEnabled(paramContext.getBoolean(R.styleable.LoadingImageView_circleCrop, false));
     paramContext.recycle();
     AppMethodBeat.o(11774);
   }
@@ -327,7 +327,7 @@ public final class LoadingImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.gms.common.images.internal.LoadingImageView
  * JD-Core Version:    0.7.0.1
  */

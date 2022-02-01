@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aqk;
+import com.tencent.mm.protocal.protobuf.asg;
 import com.tencent.mm.view.recyclerview.a;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/FinderActivityInfoData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "eventInfo", "Lcom/tencent/mm/protocal/protobuf/FinderEventInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderEventInfo;)V", "getEventInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderEventInfo;", "getItemId", "", "getItemType", "", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderActivityInfoData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "eventInfo", "Lcom/tencent/mm/protocal/protobuf/FinderEventInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderEventInfo;)V", "getEventInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderEventInfo;", "getItemId", "", "getItemType", "", "plugin-finder_release"})
 public final class l
   implements a
 {
-  public final aqk tqo;
+  public final asg wWV;
   
-  public l(aqk paramaqk)
+  public l(asg paramasg)
   {
-    AppMethodBeat.i(248718);
-    this.tqo = paramaqk;
-    AppMethodBeat.o(248718);
+    AppMethodBeat.i(277573);
+    this.wWV = paramasg;
+    AppMethodBeat.o(277573);
   }
   
-  public final int cxn()
+  public final int bAQ()
   {
-    AppMethodBeat.i(248717);
+    AppMethodBeat.i(277572);
     int i = l.class.getName().hashCode();
-    AppMethodBeat.o(248717);
+    AppMethodBeat.o(277572);
     return i;
   }
   
-  public final long lT()
+  public final long mf()
   {
     return 0L;
   }

@@ -6,46 +6,41 @@ import com.tencent.mm.pluginsdk.model.app.g;
 public final class a$a
   extends g
 {
-  public String KhQ;
-  public int KhR;
-  public String KhS;
-  public String KhT;
-  public int KhU;
-  public String KhV;
-  public String KhW;
-  public a.b KhX;
-  public a.b KhY;
-  public a.b KhZ;
-  public a.b Kia;
-  public String Kib;
-  public int Kic;
-  public int Kid;
-  public long Kie;
-  public int Kif;
-  public a Kig;
+  public String RiB;
+  public String RiC;
+  public String RiD;
+  public int RiE;
+  public String RiF;
+  public String RiG;
+  public a.b RiH;
+  public a.b RiI;
+  public a.b RiJ;
+  public a.b RiK;
+  public String RiL;
+  public int RiM;
+  public int RiN;
+  public long RiO;
+  public int RiP;
+  public a.a.a RiQ;
+  public String fWY;
   public String iconUrl;
-  public String kHG;
-  public String nnB;
-  public int uSc;
+  public int jump_type;
+  public String qpi;
+  public int red_dot;
   
   public a$a()
   {
     AppMethodBeat.i(163209);
-    this.KhX = new a.b();
-    this.KhY = new a.b();
-    this.KhZ = new a.b();
-    this.Kia = new a.b();
+    this.RiH = new a.b();
+    this.RiI = new a.b();
+    this.RiJ = new a.b();
+    this.RiK = new a.b();
     AppMethodBeat.o(163209);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract String gqg();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.a.a
  * JD-Core Version:    0.7.0.1
  */

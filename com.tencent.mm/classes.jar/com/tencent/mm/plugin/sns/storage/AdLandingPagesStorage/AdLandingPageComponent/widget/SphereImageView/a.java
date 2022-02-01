@@ -8,19 +8,19 @@ import android.text.TextUtils;
 import android.view.TextureView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.MMBitmapFactory;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ap;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ao;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.OutputStream;
 
 public final class a
 {
-  protected d EjP;
+  protected d KwY;
   protected int mScreenHeight;
   protected int mScreenWidth;
   
@@ -31,7 +31,7 @@ public final class a
     this.mScreenHeight = 1280;
     try
     {
-      int[] arrayOfInt = ap.ha(MMApplicationContext.getContext());
+      int[] arrayOfInt = ao.ib(MMApplicationContext.getContext());
       if ((arrayOfInt[0] > 0) && (arrayOfInt[1] > 0))
       {
         this.mScreenWidth = Math.min(arrayOfInt[0], arrayOfInt[1]);
@@ -235,11 +235,11 @@ public final class a
         localObject2 = localObject4;
         localObject3 = localObject5;
         localObject1 = localObject6;
-        str = ky(paramString2, paramString1);
+        str = kT(paramString2, paramString1);
         localObject2 = localObject4;
         localObject3 = localObject5;
         localObject1 = localObject6;
-        paramString1 = s.ap(new o(str));
+        paramString1 = u.an(new q(str));
         localObject2 = paramString1;
         localObject3 = paramString1;
         localObject1 = paramString1;
@@ -355,7 +355,7 @@ public final class a
     return false;
   }
   
-  private static String aQe(String paramString)
+  private static String bbd(String paramString)
   {
     AppMethodBeat.i(97244);
     if (TextUtils.isEmpty(paramString))
@@ -365,10 +365,10 @@ public final class a
     }
     try
     {
-      paramString = h.kz("adId", paramString);
+      paramString = h.kU("adId", paramString);
       if (!TextUtils.isEmpty(paramString))
       {
-        boolean bool = s.YS(paramString);
+        boolean bool = u.agG(paramString);
         if (bool)
         {
           AppMethodBeat.o(97244);
@@ -384,7 +384,7 @@ public final class a
     return "";
   }
   
-  public static Bitmap kw(String paramString1, String paramString2)
+  public static Bitmap kR(String paramString1, String paramString2)
   {
     boolean bool = false;
     AppMethodBeat.i(97247);
@@ -398,8 +398,8 @@ public final class a
     {
       try
       {
-        paramString1 = ky(paramString2, paramString1);
-        if ((TextUtils.isEmpty(paramString1)) || (!s.YS(paramString1))) {
+        paramString1 = kT(paramString2, paramString1);
+        if ((TextUtils.isEmpty(paramString1)) || (!u.agG(paramString1))) {
           continue;
         }
         l1 = System.currentTimeMillis();
@@ -446,7 +446,7 @@ public final class a
     return null;
   }
   
-  public static boolean kx(String paramString1, String paramString2)
+  public static boolean kS(String paramString1, String paramString2)
   {
     AppMethodBeat.i(97248);
     if (TextUtils.isEmpty(paramString1))
@@ -457,8 +457,8 @@ public final class a
     }
     try
     {
-      paramString1 = ky(paramString2, paramString1);
-      if ((!TextUtils.isEmpty(paramString1)) && (s.YS(paramString1))) {}
+      paramString1 = kT(paramString2, paramString1);
+      if ((!TextUtils.isEmpty(paramString1)) && (u.agG(paramString1))) {}
       for (boolean bool = true;; bool = false)
       {
         Log.i("SphereImageView.SphereImageLoader", "hasSphereImageViewFrameShot, ret=" + bool + ", scene=" + paramString2);
@@ -474,20 +474,20 @@ public final class a
     }
   }
   
-  private static String ky(String paramString1, String paramString2)
+  private static String kT(String paramString1, String paramString2)
   {
     AppMethodBeat.i(97249);
-    paramString1 = h.kz("sphere_shot_".concat(String.valueOf(paramString1)), paramString2);
+    paramString1 = h.kU("sphere_shot_".concat(String.valueOf(paramString1)), paramString2);
     AppMethodBeat.o(97249);
     return paramString1;
   }
   
   public final void a(d paramd)
   {
-    this.EjP = paramd;
+    this.KwY = paramd;
   }
   
-  public final void l(final String paramString1, final int paramInt1, final int paramInt2, final String paramString2)
+  public final void n(final String paramString1, final int paramInt1, final int paramInt2, final String paramString2)
   {
     AppMethodBeat.i(97243);
     Log.i("SphereImageView.SphereImageLoader", "loadImage, view.w=" + paramInt1 + ", view.h=" + paramInt2 + ", scene=" + paramString2);
@@ -496,10 +496,10 @@ public final class a
       AppMethodBeat.o(97243);
       return;
     }
-    if (this.EjP != null) {
-      this.EjP.onStart(paramString1);
+    if (this.KwY != null) {
+      this.KwY.aRh(paramString1);
     }
-    String str = aQe(paramString1);
+    String str = bbd(paramString1);
     if (!TextUtils.isEmpty(str))
     {
       Log.i("SphereImageView.SphereImageLoader", "hit disk cache, path=".concat(String.valueOf(str)));
@@ -508,9 +508,9 @@ public final class a
       return;
     }
     Log.i("SphereImageView.SphereImageLoader", "no cache, download");
-    h.a(paramString1, 133, new f.a()
+    h.a("adId", paramString1, new f.a()
     {
-      public final void aNH(String paramAnonymousString)
+      public final void aYs(String paramAnonymousString)
       {
         AppMethodBeat.i(97234);
         Log.i("SphereImageView.SphereImageLoader", "loadImage onDownloaded, path=".concat(String.valueOf(paramAnonymousString)));
@@ -518,14 +518,14 @@ public final class a
         AppMethodBeat.o(97234);
       }
       
-      public final void eWN()
+      public final void fJU()
       {
         AppMethodBeat.i(97232);
         Log.i("SphereImageView.SphereImageLoader", "onStartDownload");
         AppMethodBeat.o(97232);
       }
       
-      public final void eWO()
+      public final void fJV()
       {
         AppMethodBeat.i(97233);
         Log.e("SphereImageView.SphereImageLoader", "onDownloadError");
@@ -534,8 +534,8 @@ public final class a
           public final void run()
           {
             AppMethodBeat.i(97231);
-            if (a.this.EjP != null) {
-              a.this.EjP.a(false, "onDownloadError", null, a.1.this.DzZ);
+            if (a.this.KwY != null) {
+              a.this.KwY.a(false, "onDownloadError", null, a.1.this.JLq);
             }
             AppMethodBeat.o(97231);
           }
@@ -549,8 +549,8 @@ public final class a
   protected final class a
     extends AsyncTask<String, Void, Bitmap>
   {
-    int EjS;
-    int EjT;
+    int Kxb;
+    int Kxc;
     String errorInfo = "";
     String scene;
     String url;
@@ -558,12 +558,12 @@ public final class a
     public a(String paramString1, int paramInt1, int paramInt2, String paramString2)
     {
       this.url = paramString1;
-      this.EjS = paramInt1;
-      this.EjT = paramInt2;
+      this.Kxb = paramInt1;
+      this.Kxc = paramInt2;
       this.scene = paramString2;
     }
     
-    private Bitmap N(String... paramVarArgs)
+    private Bitmap O(String... paramVarArgs)
     {
       int n = 1;
       int m = 1;
@@ -644,7 +644,7 @@ public final class a
           continue;
         }
         j = i;
-        Log.i("SphereImageView.SphereImageLoader", "decode, bmp.w=" + i1 + ", bmp.h=" + i2 + ", screen.w=" + a.this.mScreenWidth + ", screen.h=" + a.this.mScreenHeight + ", view.w=" + this.EjS + ", view.h=" + this.EjT + ", inSampleSize=" + i);
+        Log.i("SphereImageView.SphereImageLoader", "decode, bmp.w=" + i1 + ", bmp.h=" + i2 + ", screen.w=" + a.this.mScreenWidth + ", screen.h=" + a.this.mScreenHeight + ", view.w=" + this.Kxb + ", view.h=" + this.Kxc + ", inSampleSize=" + i);
         j = i;
         paramVarArgs.inJustDecodeBounds = false;
         j = i;
@@ -712,7 +712,7 @@ public final class a
   public static final class c
     extends AsyncTask<Void, Void, Bitmap>
   {
-    a.d EjU;
+    a.d Kxd;
     String imageUrl;
     String scene;
     String thumbUrl;
@@ -722,13 +722,13 @@ public final class a
       this.imageUrl = paramString1;
       this.thumbUrl = paramString2;
       this.scene = paramString3;
-      this.EjU = paramd;
+      this.Kxd = paramd;
     }
     
-    private Bitmap rL()
+    private Bitmap pz()
     {
       AppMethodBeat.i(97239);
-      Bitmap localBitmap = a.kw(this.imageUrl, this.scene);
+      Bitmap localBitmap = a.kR(this.imageUrl, this.scene);
       Object localObject;
       if (localBitmap != null)
       {
@@ -746,7 +746,7 @@ public final class a
             break label109;
           }
           localObject = localBitmap;
-          localBitmap = h.kD("adId", this.thumbUrl);
+          localBitmap = h.kZ("adId", this.thumbUrl);
           localObject = localBitmap;
           if (localBitmap == null) {
             continue;
@@ -772,12 +772,12 @@ public final class a
   {
     public abstract void a(boolean paramBoolean, String paramString1, Bitmap paramBitmap, String paramString2);
     
-    public abstract void onStart(String paramString);
+    public abstract void aRh(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.widget.SphereImageView.a
  * JD-Core Version:    0.7.0.1
  */

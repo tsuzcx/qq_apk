@@ -17,7 +17,7 @@ public abstract interface b
     public static String a(b paramb, t paramt)
     {
       AppMethodBeat.i(61278);
-      p.h(paramt, "functionDescriptor");
+      p.k(paramt, "functionDescriptor");
       if (!paramb.h(paramt))
       {
         paramb = paramb.getDescription();
@@ -31,7 +31,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.n.b
  * JD-Core Version:    0.7.0.1
  */

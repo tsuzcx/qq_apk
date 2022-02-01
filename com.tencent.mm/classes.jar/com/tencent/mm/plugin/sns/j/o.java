@@ -10,23 +10,24 @@ import com.tencent.mm.modelsns.f;
 import com.tencent.mm.modelsns.g;
 import com.tencent.mm.modelsns.h;
 import com.tencent.mm.modelsns.i;
-import com.tencent.mm.plugin.i.a.ak;
-import com.tencent.mm.plugin.i.a.l;
+import com.tencent.mm.modelsns.j;
+import com.tencent.mm.plugin.findersdk.a.am;
+import com.tencent.mm.plugin.findersdk.a.k;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.adp;
+import com.tencent.mm.protocal.protobuf.adw;
+import com.tencent.mm.protocal.protobuf.ba;
 import com.tencent.mm.protocal.protobuf.bc;
-import com.tencent.mm.protocal.protobuf.be;
-import com.tencent.mm.protocal.protobuf.cio;
-import com.tencent.mm.protocal.protobuf.cjy;
-import com.tencent.mm.protocal.protobuf.cli;
-import com.tencent.mm.protocal.protobuf.cnb;
-import com.tencent.mm.protocal.protobuf.cnd;
-import com.tencent.mm.protocal.protobuf.ecm;
-import com.tencent.mm.protocal.protobuf.eco;
-import com.tencent.mm.protocal.protobuf.eep;
-import com.tencent.mm.protocal.protobuf.eyd;
-import com.tencent.mm.protocal.protobuf.fa;
-import com.tencent.mm.protocal.protobuf.fat;
+import com.tencent.mm.protocal.protobuf.crk;
+import com.tencent.mm.protocal.protobuf.cst;
+import com.tencent.mm.protocal.protobuf.cuf;
+import com.tencent.mm.protocal.protobuf.cvt;
+import com.tencent.mm.protocal.protobuf.cvv;
+import com.tencent.mm.protocal.protobuf.emn;
+import com.tencent.mm.protocal.protobuf.emp;
+import com.tencent.mm.protocal.protobuf.eoq;
+import com.tencent.mm.protocal.protobuf.ex;
+import com.tencent.mm.protocal.protobuf.fiu;
+import com.tencent.mm.protocal.protobuf.flm;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
@@ -40,8 +41,8 @@ import java.util.Set;
 public final class o
 {
   public static String INVALID_TAG = "]]>";
-  public static String oJw = "<TimelineObject>";
-  public static String oJx = "</TimelineObject>";
+  public static String rLm = "<TimelineObject>";
+  public static String rLn = "</TimelineObject>";
   
   public static String e(TimeLineObject paramTimeLineObject)
   {
@@ -85,104 +86,104 @@ public final class o
         locala.setText(filterNull(paramTimeLineObject.AppInfo.Version));
         locala.endTag("version");
         locala.startTag("appName");
-        locala.setText(filterNull(paramTimeLineObject.AppInfo.xMq));
+        locala.setText(filterNull(paramTimeLineObject.AppInfo.CQz));
         locala.endTag("appName");
         locala.startTag("installUrl");
-        locala.setText(filterNull(paramTimeLineObject.AppInfo.KIq));
+        locala.setText(filterNull(paramTimeLineObject.AppInfo.RJH));
         locala.endTag("installUrl");
         locala.startTag("fromUrl");
-        locala.setText(filterNull(paramTimeLineObject.AppInfo.KIr));
+        locala.setText(filterNull(paramTimeLineObject.AppInfo.RJI));
         locala.endTag("fromUrl");
         locala.endTag("appInfo");
       }
-      if ((paramTimeLineObject.streamvideo != null) && (!Util.isNullOrNil(paramTimeLineObject.streamvideo.iyZ)))
+      if ((paramTimeLineObject.streamvideo != null) && (!Util.isNullOrNil(paramTimeLineObject.streamvideo.lor)))
       {
         locala.startTag("streamvideo");
         locala.startTag("streamvideourl");
-        locala.setText(filterNull(paramTimeLineObject.streamvideo.iyZ));
+        locala.setText(filterNull(paramTimeLineObject.streamvideo.lor));
         locala.endTag("streamvideourl");
         locala.startTag("streamvideototaltime");
-        locala.setText(paramTimeLineObject.streamvideo.iza);
+        locala.setText(paramTimeLineObject.streamvideo.los);
         locala.endTag("streamvideototaltime");
         locala.startTag("streamvideotitle");
-        locala.setText(filterNull(paramTimeLineObject.streamvideo.izb));
+        locala.setText(filterNull(paramTimeLineObject.streamvideo.lot));
         locala.endTag("streamvideotitle");
         locala.startTag("streamvideowording");
-        locala.setText(filterNull(paramTimeLineObject.streamvideo.izc));
+        locala.setText(filterNull(paramTimeLineObject.streamvideo.lou));
         locala.endTag("streamvideowording");
         locala.startTag("streamvideoweburl");
-        locala.setText(filterNull(paramTimeLineObject.streamvideo.izd));
+        locala.setText(filterNull(paramTimeLineObject.streamvideo.lov));
         locala.endTag("streamvideoweburl");
         locala.startTag("streamvideothumburl");
-        locala.setText(filterNull(paramTimeLineObject.streamvideo.ize));
+        locala.setText(filterNull(paramTimeLineObject.streamvideo.low));
         locala.endTag("streamvideothumburl");
         locala.startTag("streamvideoaduxinfo");
-        locala.setText(filterNull(paramTimeLineObject.streamvideo.izf));
+        locala.setText(filterNull(paramTimeLineObject.streamvideo.lox));
         locala.endTag("streamvideoaduxinfo");
         locala.startTag("streamvideopublishid");
-        locala.setText(filterNull(paramTimeLineObject.streamvideo.izg));
+        locala.setText(filterNull(paramTimeLineObject.streamvideo.loy));
         locala.endTag("streamvideopublishid");
         locala.endTag("streamvideo");
       }
-      if ((paramTimeLineObject.webSearchInfo != null) && (!Util.isNullOrNil(paramTimeLineObject.webSearchInfo.IEy)))
+      if ((paramTimeLineObject.webSearchInfo != null) && (!Util.isNullOrNil(paramTimeLineObject.webSearchInfo.PyQ)))
       {
         locala.startTag("websearch");
         locala.startTag("relevant_vid");
-        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.IEy));
+        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.PyQ));
         locala.endTag("relevant_vid");
         locala.startTag("relevant_expand");
-        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.IEz));
+        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.PyR));
         locala.endTag("relevant_expand");
         locala.startTag("relevant_pre_searchid");
-        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.IEA));
+        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.PyS));
         locala.endTag("relevant_pre_searchid");
         locala.startTag("relevant_shared_openid");
-        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.IEB));
+        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.PyT));
         locala.endTag("relevant_shared_openid");
         locala.startTag("rec_category");
-        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.IEC));
+        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.PyU));
         locala.endTag("rec_category");
         locala.startTag("shareUrl");
-        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.rCq));
+        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.vhY));
         locala.endTag("shareUrl");
         locala.startTag("shareTitle");
-        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.msN));
+        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.pqW));
         locala.endTag("shareTitle");
         locala.startTag("shareDesc");
-        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.xDQ));
+        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.CHR));
         locala.endTag("shareDesc");
         locala.startTag("shareImgUrl");
-        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.IED));
+        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.PyV));
         locala.endTag("shareImgUrl");
         locala.startTag("shareString");
-        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.IEE));
+        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.PyW));
         locala.endTag("shareString");
         locala.startTag("shareStringUrl");
-        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.IEF));
+        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.PyX));
         locala.endTag("shareStringUrl");
         locala.startTag("source");
         locala.setText(filterNull(paramTimeLineObject.webSearchInfo.source));
         locala.endTag("source");
         locala.startTag("strPlayCount");
-        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.IEG));
+        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.PyY));
         locala.endTag("strPlayCount");
         locala.startTag("titleUrl");
-        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.IEH));
+        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.PyZ));
         locala.endTag("titleUrl");
         locala.startTag("extReqParams");
-        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.IEI));
+        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.Pza));
         locala.endTag("extReqParams");
         locala.startTag("tagList");
-        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.IEJ));
+        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.Pzb));
         locala.endTag("tagList");
         locala.startTag("channelId");
-        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.IEK));
+        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.Pzc));
         locala.endTag("channelId");
         locala.startTag("thumbUrl");
         locala.setText(filterNull(paramTimeLineObject.webSearchInfo.thumbUrl));
         locala.endTag("thumbUrl");
         locala.startTag("shareTag");
-        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.IEL));
+        locala.setText(filterNull(paramTimeLineObject.webSearchInfo.Pzd));
         locala.endTag("shareTag");
         locala.endTag("websearch");
       }
@@ -212,22 +213,22 @@ public final class o
       locala.setText(filterNull(paramTimeLineObject.weappInfo.version));
       locala.endTag("version");
       locala.startTag("debugMode");
-      locala.setText(filterNull(paramTimeLineObject.weappInfo.nbf));
+      locala.setText(filterNull(paramTimeLineObject.weappInfo.qbu));
       locala.endTag("debugMode");
       locala.startTag("shareActionId");
-      locala.setText(filterNull(paramTimeLineObject.weappInfo.dCC));
+      locala.setText(filterNull(paramTimeLineObject.weappInfo.fvj));
       locala.endTag("shareActionId");
       locala.startTag("isGame");
-      locala.setText(filterNull(paramTimeLineObject.weappInfo.isGame));
+      locala.setText(filterNull(paramTimeLineObject.weappInfo.UIv));
       locala.endTag("isGame");
       locala.startTag("messageExtraData");
-      locala.setText(filterNull(paramTimeLineObject.weappInfo.eda));
+      locala.setText(filterNull(paramTimeLineObject.weappInfo.fXg));
       locala.endTag("messageExtraData");
       locala.startTag("subType");
       locala.setText(filterNull(paramTimeLineObject.weappInfo.subType));
       locala.endTag("subType");
       locala.startTag("preloadResources");
-      locala.setText(filterNull(paramTimeLineObject.weappInfo.Nvm));
+      locala.setText(filterNull(paramTimeLineObject.weappInfo.UIw));
       locala.endTag("preloadResources");
       locala.endTag("weappInfo");
       locala.startTag("canvasInfoXml");
@@ -235,52 +236,52 @@ public final class o
       locala.endTag("canvasInfoXml");
       if (paramTimeLineObject.Location != null)
       {
-        float f1 = paramTimeLineObject.Location.LbC;
-        float f2 = paramTimeLineObject.Location.LbD;
+        float f1 = paramTimeLineObject.Location.ScO;
+        float f2 = paramTimeLineObject.Location.ScP;
         if ((f1 != -1000.0F) && (f2 != -1000.0F))
         {
           ((Map)localObject1).clear();
-          ((Map)localObject1).put("longitude", paramTimeLineObject.Location.LbC);
-          ((Map)localObject1).put("latitude", paramTimeLineObject.Location.LbD);
-          ((Map)localObject1).put("city", Util.escapeStringForXml(filterNull(paramTimeLineObject.Location.kea)));
-          ((Map)localObject1).put("poiName", Util.escapeStringForXml(filterNull(paramTimeLineObject.Location.kHV)));
-          ((Map)localObject1).put("poiAddress", Util.escapeStringForXml(filterNull(paramTimeLineObject.Location.ErZ)));
-          ((Map)localObject1).put("poiScale", paramTimeLineObject.Location.Mpu);
-          ((Map)localObject1).put("poiClassifyId", filterNull(paramTimeLineObject.Location.LIb));
-          ((Map)localObject1).put("poiClassifyType", paramTimeLineObject.Location.Esb);
-          ((Map)localObject1).put("poiClickableStatus", paramTimeLineObject.Location.Mpv);
+          ((Map)localObject1).put("longitude", paramTimeLineObject.Location.ScO);
+          ((Map)localObject1).put("latitude", paramTimeLineObject.Location.ScP);
+          ((Map)localObject1).put("city", Util.escapeStringForXml(filterNull(paramTimeLineObject.Location.mVA)));
+          ((Map)localObject1).put("poiName", Util.escapeStringForXml(filterNull(paramTimeLineObject.Location.poiName)));
+          ((Map)localObject1).put("poiAddress", Util.escapeStringForXml(filterNull(paramTimeLineObject.Location.KFu)));
+          ((Map)localObject1).put("poiScale", paramTimeLineObject.Location.TAz);
+          ((Map)localObject1).put("poiClassifyId", filterNull(paramTimeLineObject.Location.SOz));
+          ((Map)localObject1).put("poiClassifyType", paramTimeLineObject.Location.KFw);
+          ((Map)localObject1).put("poiClickableStatus", paramTimeLineObject.Location.TAA);
           locala.startTag("location", (Map)localObject1);
           locala.endTag("location");
         }
       }
       locala.startTag("ContentObject");
       locala.startTag("contentStyle");
-      locala.setText(paramTimeLineObject.ContentObj.LoU);
+      locala.setText(paramTimeLineObject.ContentObj.Sqq);
       locala.endTag("contentStyle");
       locala.startTag("contentSubStyle");
-      locala.setText(paramTimeLineObject.ContentObj.LoW);
+      locala.setText(paramTimeLineObject.ContentObj.Sqs);
       locala.endTag("contentSubStyle");
       locala.startTag("title");
-      locala.setText(filterNull(paramTimeLineObject.ContentObj.Title));
+      locala.setText(filterNull(paramTimeLineObject.ContentObj.fwr));
       locala.endTag("title");
       locala.startTag("description");
-      locala.setText(filterNull(paramTimeLineObject.ContentObj.Desc));
+      locala.setText(filterNull(paramTimeLineObject.ContentObj.CMB));
       locala.endTag("description");
       locala.startTag("contentUrl");
       locala.setText(filterNull(paramTimeLineObject.ContentObj.Url));
       locala.endTag("contentUrl");
-      if (paramTimeLineObject.ContentObj.LoV.size() <= 0) {
+      if (paramTimeLineObject.ContentObj.Sqr.size() <= 0) {
         break label3289;
       }
       locala.startTag("mediaList");
-      localObject2 = paramTimeLineObject.ContentObj.LoV.iterator();
+      localObject2 = paramTimeLineObject.ContentObj.Sqr.iterator();
       if (!((Iterator)localObject2).hasNext()) {
         break label3281;
       }
-      localObject3 = (cnb)((Iterator)localObject2).next();
+      localObject3 = (cvt)((Iterator)localObject2).next();
       locala.startTag("media");
       locala.startTag("id");
-      if (!filterId(((cnb)localObject3).Id).equals("")) {
+      if (!filterId(((cvt)localObject3).Id).equals("")) {
         break label3265;
       }
       locala.setText("0");
@@ -289,82 +290,82 @@ public final class o
     {
       locala.endTag("id");
       locala.startTag("type");
-      locala.setText(((cnb)localObject3).oUv);
+      locala.setText(((cvt)localObject3).rWu);
       locala.endTag("type");
       locala.startTag("title");
-      locala.setText(filterNull(((cnb)localObject3).Title));
+      locala.setText(filterNull(((cvt)localObject3).fwr));
       locala.endTag("title");
       locala.startTag("description");
-      locala.setText(filterNull(((cnb)localObject3).Desc));
+      locala.setText(filterNull(((cvt)localObject3).CMB));
       locala.endTag("description");
       locala.startTag("private");
-      locala.setText(((cnb)localObject3).Privated);
+      locala.setText(((cvt)localObject3).Privated);
       locala.endTag("private");
-      if (!Util.isNullOrNil(((cnb)localObject3).songAlbumUrl))
+      if (!Util.isNullOrNil(((cvt)localObject3).songAlbumUrl))
       {
         locala.startTag("songalbumurl");
-        locala.setText(((cnb)localObject3).songAlbumUrl);
+        locala.setText(((cvt)localObject3).songAlbumUrl);
         locala.endTag("songalbumurl");
       }
-      if (!Util.isNullOrNil(((cnb)localObject3).songLyric))
+      if (!Util.isNullOrNil(((cvt)localObject3).songLyric))
       {
         locala.startTag("songlyric");
-        locala.setText(((cnb)localObject3).songLyric);
+        locala.setText(((cvt)localObject3).songLyric);
         locala.endTag("songlyric");
       }
       ((Map)localObject1).clear();
-      ((Map)localObject1).put("type", ((cnb)localObject3).Mcw);
-      if (!Util.isNullOrNil(((cnb)localObject3).md5)) {
-        ((Map)localObject1).put("md5", ((cnb)localObject3).md5);
+      ((Map)localObject1).put("type", ((cvt)localObject3).TlV);
+      if (!Util.isNullOrNil(((cvt)localObject3).md5)) {
+        ((Map)localObject1).put("md5", ((cvt)localObject3).md5);
       }
-      if (!Util.isNullOrNil(((cnb)localObject3).MsS)) {
-        ((Map)localObject1).put("videomd5", ((cnb)localObject3).MsS);
+      if (!Util.isNullOrNil(((cvt)localObject3).TDY)) {
+        ((Map)localObject1).put("videomd5", ((cvt)localObject3).TDY);
       }
       locala.startTag("url", (Map)localObject1);
-      locala.setText(filterNull(((cnb)localObject3).Url));
+      locala.setText(filterNull(((cvt)localObject3).Url));
       locala.endTag("url");
-      if ((((cnb)localObject3).Msz != null) && (!((cnb)localObject3).Msz.equals("")))
+      if ((((cvt)localObject3).TDF != null) && (!((cvt)localObject3).TDF.equals("")))
       {
         ((Map)localObject1).clear();
-        ((Map)localObject1).put("type", ((cnb)localObject3).MsA);
+        ((Map)localObject1).put("type", ((cvt)localObject3).TDG);
         locala.startTag("thumb", (Map)localObject1);
-        locala.setText(filterNull(((cnb)localObject3).Msz));
+        locala.setText(filterNull(((cvt)localObject3).TDF));
         locala.endTag("thumb");
       }
       locala.startTag("videoDuration");
-      locala.setText(((cnb)localObject3).MsT);
+      locala.setText(((cvt)localObject3).TDZ);
       locala.endTag("videoDuration");
-      if (((cnb)localObject3).subType > 0)
+      if (((cvt)localObject3).subType > 0)
       {
         locala.startTag("subType");
-        locala.setText(((cnb)localObject3).subType);
+        locala.setText(((cvt)localObject3).subType);
         locala.endTag("subType");
       }
-      if (!Util.isNullOrNil(((cnb)localObject3).EpK))
+      if (!Util.isNullOrNil(((cvt)localObject3).KCT))
       {
         locala.startTag("userData");
-        locala.setText(((cnb)localObject3).EpK);
+        locala.setText(((cvt)localObject3).KCT);
         locala.endTag("userData");
       }
-      if ((((cnb)localObject3).MsC != null) && (!((cnb)localObject3).MsC.equals("")))
+      if ((((cvt)localObject3).TDI != null) && (!((cvt)localObject3).TDI.equals("")))
       {
         ((Map)localObject1).clear();
-        ((Map)localObject1).put("type", ((cnb)localObject3).MsD);
+        ((Map)localObject1).put("type", ((cvt)localObject3).TDJ);
         locala.startTag("lowBandUrl", (Map)localObject1);
-        locala.setText(filterNull(((cnb)localObject3).MsC));
+        locala.setText(filterNull(((cvt)localObject3).TDI));
         locala.endTag("lowBandUrl");
       }
-      if (((cnb)localObject3).MsB != null)
+      if (((cvt)localObject3).TDH != null)
       {
         ((Map)localObject1).clear();
-        if (((cnb)localObject3).MsB.Mto > 0.0F) {
-          ((Map)localObject1).put("width", ((cnb)localObject3).MsB.Mto);
+        if (((cvt)localObject3).TDH.TEu > 0.0F) {
+          ((Map)localObject1).put("width", ((cvt)localObject3).TDH.TEu);
         }
-        if (((cnb)localObject3).MsB.Mtp > 0.0F) {
-          ((Map)localObject1).put("height", ((cnb)localObject3).MsB.Mtp);
+        if (((cvt)localObject3).TDH.TEv > 0.0F) {
+          ((Map)localObject1).put("height", ((cvt)localObject3).TDH.TEv);
         }
-        if (((cnb)localObject3).MsB.Mtq > 0.0F) {
-          ((Map)localObject1).put("totalSize", ((cnb)localObject3).MsB.Mtq);
+        if (((cvt)localObject3).TDH.TEw > 0.0F) {
+          ((Map)localObject1).put("totalSize", ((cvt)localObject3).TDH.TEw);
         }
         locala.startTag("size", (Map)localObject1);
         locala.endTag("size");
@@ -374,119 +375,125 @@ public final class o
       locala.setText(paramTimeLineObject.Id);
       break;
       label3265:
-      locala.setText(filterId(((cnb)localObject3).Id));
+      locala.setText(filterId(((cvt)localObject3).Id));
     }
     label3281:
     locala.endTag("mediaList");
     label3289:
-    locala.sb.append(filterNull(paramTimeLineObject.ContentObj.LoX));
-    if ((paramTimeLineObject.ContentObj.LoY != null) && (paramTimeLineObject.ContentObj.LoY.iAb != -1))
+    locala.sb.append(filterNull(paramTimeLineObject.ContentObj.Sqt));
+    if ((paramTimeLineObject.ContentObj.Squ != null) && (paramTimeLineObject.ContentObj.Squ.lpx != -1))
     {
       locala.startTag("mmreadershare");
       locala.startTag("itemshowtype");
-      locala.setText(paramTimeLineObject.ContentObj.LoY.iAb);
+      locala.setText(paramTimeLineObject.ContentObj.Squ.lpx);
       locala.endTag("itemshowtype");
       locala.startTag("ispaysubscribe");
-      locala.setText(paramTimeLineObject.ContentObj.LoY.iwf);
+      locala.setText(paramTimeLineObject.ContentObj.Squ.lls);
       locala.endTag("ispaysubscribe");
-      if (paramTimeLineObject.ContentObj.LoY.iAb == 5)
+      if (paramTimeLineObject.ContentObj.Squ.lpx == 5)
       {
         locala.startTag("pubtime");
-        locala.setText(paramTimeLineObject.ContentObj.LoY.iwd);
+        locala.setText(paramTimeLineObject.ContentObj.Squ.llq);
         locala.endTag("pubtime");
         locala.startTag("vid");
-        locala.setText(paramTimeLineObject.ContentObj.LoY.vid);
+        locala.setText(paramTimeLineObject.ContentObj.Squ.vid);
         locala.endTag("vid");
         locala.startTag("funcflag");
-        locala.setText(paramTimeLineObject.ContentObj.LoY.iwg);
+        locala.setText(paramTimeLineObject.ContentObj.Squ.llt);
         locala.endTag("funcflag");
         locala.startTag("duration");
-        locala.setText(paramTimeLineObject.ContentObj.LoY.duration);
+        locala.setText(paramTimeLineObject.ContentObj.Squ.duration);
         locala.endTag("duration");
         locala.startTag("digest");
-        locala.setText(paramTimeLineObject.ContentObj.LoY.desc);
+        locala.setText(paramTimeLineObject.ContentObj.Squ.desc);
         locala.endTag("digest");
         locala.startTag("cover");
-        locala.setText(paramTimeLineObject.ContentObj.LoY.coverUrl);
+        locala.setText(paramTimeLineObject.ContentObj.Squ.coverUrl);
         locala.endTag("cover");
-        if (!Util.isNullOrNil(paramTimeLineObject.ContentObj.LoY.vid))
+        if (!Util.isNullOrNil(paramTimeLineObject.ContentObj.Squ.vid))
         {
           locala.startTag("nativepage");
           locala.setText(1);
           locala.endTag("nativepage");
         }
         locala.startTag("width");
-        locala.setText(paramTimeLineObject.ContentObj.LoY.videoWidth);
+        locala.setText(paramTimeLineObject.ContentObj.Squ.videoWidth);
         locala.endTag("width");
         locala.startTag("height");
-        locala.setText(paramTimeLineObject.ContentObj.LoY.videoHeight);
+        locala.setText(paramTimeLineObject.ContentObj.Squ.videoHeight);
         locala.endTag("height");
       }
       locala.endTag("mmreadershare");
     }
-    if (paramTimeLineObject.ContentObj.dME != null)
+    if (paramTimeLineObject.ContentObj.fFJ != null)
     {
       localObject1 = new e();
-      ((e)localObject1).jlg = paramTimeLineObject.ContentObj.dME;
-      locala.append(l.b(((e)localObject1).jlg));
+      ((e)localObject1).mbi = paramTimeLineObject.ContentObj.fFJ;
+      locala.append(k.b(((e)localObject1).mbi));
     }
-    if (paramTimeLineObject.ContentObj.jfy != null)
+    if (paramTimeLineObject.ContentObj.lVY != null)
     {
-      localObject1 = new i();
-      ((i)localObject1).jlj = paramTimeLineObject.ContentObj.jfy;
-      locala.append(ak.a(((i)localObject1).jlj));
+      localObject1 = new j();
+      ((j)localObject1).mbm = paramTimeLineObject.ContentObj.lVY;
+      locala.append(am.a(((j)localObject1).mbm));
     }
-    if (paramTimeLineObject.ContentObj.Lpd != null)
-    {
-      localObject1 = new g();
-      ((g)localObject1).jlh = paramTimeLineObject.ContentObj.Lpd;
-      locala.append(l.a(((g)localObject1).jlh));
-    }
-    if (paramTimeLineObject.ContentObj.LoZ != null)
-    {
-      localObject1 = new f();
-      ((f)localObject1).jld = paramTimeLineObject.ContentObj.LoZ;
-      locala.append(l.b(((f)localObject1).jld));
-    }
-    if (paramTimeLineObject.ContentObj.Lpe != null)
-    {
-      localObject1 = new b();
-      ((b)localObject1).jld = paramTimeLineObject.ContentObj.Lpe;
-      locala.append(((b)localObject1).bfF());
-    }
-    if (paramTimeLineObject.ContentObj.Lpa != null)
+    if (paramTimeLineObject.ContentObj.Sqy != null)
     {
       localObject1 = new h();
-      ((h)localObject1).jli = paramTimeLineObject.ContentObj.Lpa;
-      locala.append(h.b(((h)localObject1).jli));
+      ((h)localObject1).mbk = paramTimeLineObject.ContentObj.Sqy;
+      locala.append(k.a(((h)localObject1).mbk));
     }
-    if (paramTimeLineObject.ContentObj.Lpc != null)
+    if (paramTimeLineObject.ContentObj.Sqv != null)
+    {
+      localObject1 = new g();
+      ((g)localObject1).mbf = paramTimeLineObject.ContentObj.Sqv;
+      locala.append(k.b(((g)localObject1).mbf));
+    }
+    if (paramTimeLineObject.ContentObj.Sqz != null)
+    {
+      localObject1 = new b();
+      ((b)localObject1).mbf = paramTimeLineObject.ContentObj.Sqz;
+      locala.append(((b)localObject1).boV());
+    }
+    if (paramTimeLineObject.ContentObj.Sqw != null)
+    {
+      localObject1 = new i();
+      ((i)localObject1).mbl = paramTimeLineObject.ContentObj.Sqw;
+      locala.append(i.b(((i)localObject1).mbl));
+    }
+    if (paramTimeLineObject.ContentObj.yNL != null)
     {
       localObject1 = new d();
-      ((d)localObject1).a(paramTimeLineObject.ContentObj.Lpc);
-      locala.append(((d)localObject1).bfF());
+      ((d)localObject1).a(paramTimeLineObject.ContentObj.yNL);
+      locala.append(((d)localObject1).boV());
     }
-    if (paramTimeLineObject.ContentObj.Lpb != null)
+    if (paramTimeLineObject.ContentObj.Sqx != null)
     {
       localObject1 = new c();
-      ((c)localObject1).jle = paramTimeLineObject.ContentObj.Lpb;
-      locala.append(l.a(((c)localObject1).jle));
+      ((c)localObject1).mbg = paramTimeLineObject.ContentObj.Sqx;
+      locala.append(k.a(((c)localObject1).mbg));
+    }
+    if (paramTimeLineObject.ContentObj.SqA != null)
+    {
+      localObject1 = new f();
+      ((f)localObject1).mbj = paramTimeLineObject.ContentObj.SqA;
+      locala.append(((f)localObject1).boV());
     }
     locala.endTag("ContentObject");
     if (paramTimeLineObject.actionInfo != null)
     {
       locala.startTag("actionInfo");
-      if (paramTimeLineObject.actionInfo.KEw != null)
+      if (paramTimeLineObject.actionInfo.RFO != null)
       {
         locala.startTag("appMsg");
         locala.startTag("mediaTagName");
-        locala.setText(paramTimeLineObject.actionInfo.KEw.KEq);
+        locala.setText(paramTimeLineObject.actionInfo.RFO.RFI);
         locala.endTag("mediaTagName");
         locala.startTag("messageExt");
-        locala.setText(paramTimeLineObject.actionInfo.KEw.KEr);
+        locala.setText(paramTimeLineObject.actionInfo.RFO.RFJ);
         locala.endTag("messageExt");
         locala.startTag("messageAction");
-        locala.setText(paramTimeLineObject.actionInfo.KEw.KEs);
+        locala.setText(paramTimeLineObject.actionInfo.RFO.RFK);
         locala.endTag("messageAction");
         locala.endTag("appMsg");
       }
@@ -495,20 +502,20 @@ public final class o
     if ((paramTimeLineObject.AppInfo != null) && (!Util.isNullOrNil(paramTimeLineObject.AppInfo.Id)))
     {
       localObject1 = paramTimeLineObject.statExtStr;
-      localObject2 = new eco();
+      localObject2 = new emp();
       if (localObject1 != null) {
         localObject3 = Base64.decode((String)localObject1, 0);
       }
     }
     try
     {
-      ((eco)localObject2).parseFrom((byte[])localObject3);
-      label4235:
-      ((eco)localObject2).NcJ = new ecm();
-      ((eco)localObject2).NcJ.xEN = paramTimeLineObject.AppInfo.Id;
+      ((emp)localObject2).parseFrom((byte[])localObject3);
+      label4273:
+      ((emp)localObject2).Upg = new emn();
+      ((emp)localObject2).Upg.CIO = paramTimeLineObject.AppInfo.Id;
       try
       {
-        localObject2 = Base64.encodeToString(((eco)localObject2).toByteArray(), 0);
+        localObject2 = Base64.encodeToString(((emp)localObject2).toByteArray(), 0);
         localObject1 = localObject2;
         localObject2 = ((String)localObject2).replace("\n", "");
         localObject1 = localObject2;
@@ -555,7 +562,7 @@ public final class o
     }
     catch (Exception localException)
     {
-      break label4235;
+      break label4273;
     }
   }
   
@@ -664,7 +671,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.j.o
  * JD-Core Version:    0.7.0.1
  */

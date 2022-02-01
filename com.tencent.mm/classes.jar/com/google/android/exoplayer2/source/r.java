@@ -5,22 +5,22 @@ import java.util.Arrays;
 
 public final class r
 {
-  public static final r bxh;
-  private int aHK;
-  public final q[] bxi;
+  public static final r bgJ;
+  private int aNf;
+  public final q[] bgK;
   public final int length;
   
   static
   {
     AppMethodBeat.i(92726);
-    bxh = new r(new q[0]);
+    bgJ = new r(new q[0]);
     AppMethodBeat.o(92726);
   }
   
   public r(q... paramVarArgs)
   {
     AppMethodBeat.i(92723);
-    this.bxi = paramVarArgs;
+    this.bgK = paramVarArgs;
     this.length = paramVarArgs.length;
     AppMethodBeat.o(92723);
   }
@@ -30,7 +30,7 @@ public final class r
     int i = 0;
     while (i < this.length)
     {
-      if (this.bxi[i] == paramq) {
+      if (this.bgK[i] == paramq) {
         return i;
       }
       i += 1;
@@ -52,7 +52,7 @@ public final class r
       return false;
     }
     paramObject = (r)paramObject;
-    if ((this.length == paramObject.length) && (Arrays.equals(this.bxi, paramObject.bxi)))
+    if ((this.length == paramObject.length) && (Arrays.equals(this.bgK, paramObject.bgK)))
     {
       AppMethodBeat.o(92725);
       return true;
@@ -64,17 +64,17 @@ public final class r
   public final int hashCode()
   {
     AppMethodBeat.i(92724);
-    if (this.aHK == 0) {
-      this.aHK = Arrays.hashCode(this.bxi);
+    if (this.aNf == 0) {
+      this.aNf = Arrays.hashCode(this.bgK);
     }
-    int i = this.aHK;
+    int i = this.aNf;
     AppMethodBeat.o(92724);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.source.r
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,14 @@
 package com.tencent.rtmp;
 
 import android.content.Context;
+import com.tencent.liteav.TXLiteAVExternalDecoderFactoryInterface;
+import com.tencent.liteav.basic.a;
 import com.tencent.liteav.basic.datareport.TXCDRApi;
 import com.tencent.liteav.basic.license.LicenceCheck;
+import com.tencent.liteav.basic.license.f;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
+import com.tencent.liteav.basic.util.h;
 import com.tencent.liteav.p;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
@@ -251,10 +255,18 @@ public class TXLiveBase
     AppMethodBeat.o(14229);
   }
   
+  public static void setExternalDecoderFactory(TXLiteAVExternalDecoderFactoryInterface paramTXLiteAVExternalDecoderFactoryInterface)
+  {
+    AppMethodBeat.i(218975);
+    TXCLog.i("TXLiveBase", "setExternalDecoderFactory decoderFactory = ".concat(String.valueOf(paramTXLiteAVExternalDecoderFactoryInterface)));
+    a.a(paramTXLiteAVExternalDecoderFactoryInterface);
+    AppMethodBeat.o(218975);
+  }
+  
   public static void setLibraryPath(String paramString)
   {
     AppMethodBeat.i(14231);
-    com.tencent.liteav.basic.util.f.b(paramString);
+    h.b(paramString);
     AppMethodBeat.o(14231);
   }
   
@@ -282,15 +294,15 @@ public class TXLiveBase
   
   public static void setUserId(String paramString)
   {
-    AppMethodBeat.i(222653);
+    AppMethodBeat.i(218985);
     TXCCommonUtil.setUserId(paramString);
-    AppMethodBeat.o(222653);
+    AppMethodBeat.o(218985);
   }
   
   public String getLicenceInfo(Context paramContext)
   {
     AppMethodBeat.i(14226);
-    com.tencent.liteav.basic.license.f localf = new com.tencent.liteav.basic.license.f();
+    f localf = new f();
     LicenceCheck.a().a(localf, paramContext);
     paramContext = localf.a;
     AppMethodBeat.o(14226);
@@ -306,7 +318,7 @@ public class TXLiveBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.rtmp.TXLiveBase
  * JD-Core Version:    0.7.0.1
  */

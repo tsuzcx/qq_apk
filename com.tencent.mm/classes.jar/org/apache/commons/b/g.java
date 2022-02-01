@@ -31,22 +31,22 @@ public final class g
     Object localObject = paramIterator.next();
     if (!paramIterator.hasNext())
     {
-      paramIterator = e.toString(localObject);
+      paramIterator = e.cG(localObject);
       AppMethodBeat.o(40748);
       return paramIterator;
     }
     a locala = new a(256);
     if (localObject != null) {
-      locala.gF(localObject);
+      locala.gX(localObject);
     }
     while (paramIterator.hasNext())
     {
       if (paramString != null) {
-        locala.bvo(paramString);
+        locala.bIt(paramString);
       }
       localObject = paramIterator.next();
       if (localObject != null) {
-        locala.gF(localObject);
+        locala.gX(localObject);
       }
     }
     paramIterator = locala.toString();
@@ -56,9 +56,9 @@ public final class g
   
   public static String a(Object[] paramArrayOfObject, char paramChar)
   {
-    AppMethodBeat.i(258592);
+    AppMethodBeat.i(292865);
     paramArrayOfObject = a(paramArrayOfObject, paramChar, paramArrayOfObject.length);
-    AppMethodBeat.o(258592);
+    AppMethodBeat.o(292865);
     return paramArrayOfObject;
   }
   
@@ -85,10 +85,10 @@ public final class g
       while (i < paramInt)
       {
         if (i > 0) {
-          locala.J(paramChar);
+          locala.V(paramChar);
         }
         if (paramArrayOfObject[i] != null) {
-          locala.gF(paramArrayOfObject[i]);
+          locala.gX(paramArrayOfObject[i]);
         }
         i += 1;
       }
@@ -137,10 +137,10 @@ public final class g
       while (i < paramInt)
       {
         if (i > 0) {
-          paramString.bvo(str);
+          paramString.bIt(str);
         }
         if (paramArrayOfObject[i] != null) {
-          paramString.gF(paramArrayOfObject[i]);
+          paramString.gX(paramArrayOfObject[i]);
         }
         i += 1;
       }
@@ -150,103 +150,202 @@ public final class g
     return paramArrayOfObject;
   }
   
-  public static String bC(String paramString1, String paramString2, String paramString3)
+  public static String b(int paramInt, char paramChar)
   {
-    AppMethodBeat.i(193647);
-    paramString1 = k(paramString1, paramString2, paramString3, -1);
-    AppMethodBeat.o(193647);
+    AppMethodBeat.i(218564);
+    if (paramInt < 0)
+    {
+      localObject = new IndexOutOfBoundsException("Cannot pad a negative amount: ".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(218564);
+      throw ((Throwable)localObject);
+    }
+    Object localObject = new char[paramInt];
+    paramInt = 0;
+    while (paramInt < localObject.length)
+    {
+      localObject[paramInt] = paramChar;
+      paramInt += 1;
+    }
+    localObject = new String((char[])localObject);
+    AppMethodBeat.o(218564);
+    return localObject;
+  }
+  
+  public static String b(String paramString, int paramInt, char paramChar)
+  {
+    AppMethodBeat.i(218566);
+    int i;
+    int j;
+    for (;;)
+    {
+      if (paramString == null)
+      {
+        AppMethodBeat.o(218566);
+        return null;
+      }
+      i = paramInt - paramString.length();
+      if (i <= 0)
+      {
+        AppMethodBeat.o(218566);
+        return paramString;
+      }
+      if (i <= 8192) {
+        break label228;
+      }
+      localObject2 = String.valueOf(paramChar);
+      if (paramString == null)
+      {
+        AppMethodBeat.o(218566);
+        return null;
+      }
+      localObject1 = localObject2;
+      if (fK((String)localObject2)) {
+        localObject1 = " ";
+      }
+      i = ((String)localObject1).length();
+      j = paramInt - paramString.length();
+      if (j <= 0)
+      {
+        AppMethodBeat.o(218566);
+        return paramString;
+      }
+      if ((i != 1) || (j > 8192)) {
+        break;
+      }
+      paramChar = ((String)localObject1).charAt(0);
+    }
+    if (j == i)
+    {
+      paramString = ((String)localObject1).concat(paramString);
+      AppMethodBeat.o(218566);
+      return paramString;
+    }
+    if (j < i)
+    {
+      paramString = ((String)localObject1).substring(0, j).concat(paramString);
+      AppMethodBeat.o(218566);
+      return paramString;
+    }
+    Object localObject2 = new char[j];
+    Object localObject1 = ((String)localObject1).toCharArray();
+    paramInt = 0;
+    while (paramInt < j)
+    {
+      localObject2[paramInt] = localObject1[(paramInt % i)];
+      paramInt += 1;
+    }
+    paramString = new String((char[])localObject2).concat(paramString);
+    AppMethodBeat.o(218566);
+    return paramString;
+    label228:
+    paramString = b(i, paramChar).concat(paramString);
+    AppMethodBeat.o(218566);
+    return paramString;
+  }
+  
+  public static String bB(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(218559);
+    paramString1 = j(paramString1, paramString2, paramString3, -1);
+    AppMethodBeat.o(218559);
     return paramString1;
   }
   
-  public static boolean eH(String paramString1, String paramString2)
+  public static String bIn(String paramString)
   {
-    AppMethodBeat.i(193644);
+    AppMethodBeat.i(218567);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(218567);
+      return null;
+    }
+    paramString = paramString.toLowerCase();
+    AppMethodBeat.o(218567);
+    return paramString;
+  }
+  
+  public static String bh(String paramString, int paramInt1, int paramInt2)
+  {
+    int j = 0;
+    AppMethodBeat.i(218553);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(218553);
+      return null;
+    }
+    if (paramInt2 < 0) {}
+    for (int i = paramString.length() + paramInt2;; i = paramInt2)
+    {
+      paramInt2 = paramInt1;
+      if (paramInt1 < 0) {
+        paramInt2 = paramInt1 + paramString.length();
+      }
+      paramInt1 = i;
+      if (i > paramString.length()) {
+        paramInt1 = paramString.length();
+      }
+      if (paramInt2 > paramInt1)
+      {
+        AppMethodBeat.o(218553);
+        return "";
+      }
+      i = paramInt2;
+      if (paramInt2 < 0) {
+        i = 0;
+      }
+      if (paramInt1 < 0) {
+        paramInt1 = j;
+      }
+      for (;;)
+      {
+        paramString = paramString.substring(i, paramInt1);
+        AppMethodBeat.o(218553);
+        return paramString;
+      }
+    }
+  }
+  
+  public static boolean eV(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(218550);
     if (paramString1 == null)
     {
-      AppMethodBeat.o(193644);
+      AppMethodBeat.o(218550);
       return false;
     }
     if (paramString1.indexOf(paramString2) >= 0)
     {
-      AppMethodBeat.o(193644);
+      AppMethodBeat.o(218550);
       return true;
     }
-    AppMethodBeat.o(193644);
+    AppMethodBeat.o(218550);
     return false;
   }
   
-  public static boolean eP(String paramString)
+  public static boolean fK(String paramString)
   {
-    AppMethodBeat.i(193642);
+    AppMethodBeat.i(218548);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      AppMethodBeat.o(193642);
+      AppMethodBeat.o(218548);
       return true;
     }
-    AppMethodBeat.o(193642);
+    AppMethodBeat.o(218548);
     return false;
   }
   
-  public static boolean equals(String paramString1, String paramString2)
+  private static String j(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    AppMethodBeat.i(193643);
-    if (paramString1 == null)
+    AppMethodBeat.i(218562);
+    if ((fK(paramString1)) || (fK(paramString2)) || (paramString3 == null))
     {
-      if (paramString2 == null)
-      {
-        AppMethodBeat.o(193643);
-        return true;
-      }
-      AppMethodBeat.o(193643);
-      return false;
-    }
-    boolean bool = paramString1.equals(paramString2);
-    AppMethodBeat.o(193643);
-    return bool;
-  }
-  
-  public static String id(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(193645);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(193645);
-      return null;
-    }
-    int i = paramInt;
-    if (paramInt < 0) {
-      i = paramInt + paramString.length();
-    }
-    if (i > paramString.length()) {}
-    for (paramInt = paramString.length();; paramInt = i)
-    {
-      if (paramInt < 0)
-      {
-        AppMethodBeat.o(193645);
-        return "";
-      }
-      i = paramInt;
-      if (paramInt < 0) {
-        i = 0;
-      }
-      paramString = paramString.substring(0, i);
-      AppMethodBeat.o(193645);
-      return paramString;
-    }
-  }
-  
-  private static String k(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    AppMethodBeat.i(193648);
-    if ((eP(paramString1)) || (eP(paramString2)) || (paramString3 == null))
-    {
-      AppMethodBeat.o(193648);
+      AppMethodBeat.o(218562);
       return paramString1;
     }
     int j = paramString1.indexOf(paramString2, 0);
     if (j == -1)
     {
-      AppMethodBeat.o(193648);
+      AppMethodBeat.o(218562);
       return paramString1;
     }
     int m = paramString2.length();
@@ -265,7 +364,7 @@ public final class g
       if (j == -1) {
         break;
       }
-      locala.bvo(paramString1.substring(paramInt, j)).bvo(paramString3);
+      locala.bIt(paramString1.substring(paramInt, j)).bIt(paramString3);
       paramInt = j + m;
       i -= 1;
       k = paramInt;
@@ -274,15 +373,33 @@ public final class g
       }
       j = paramString1.indexOf(paramString2, paramInt);
     }
-    locala.bvo(paramString1.substring(k));
+    locala.bIt(paramString1.substring(k));
     paramString1 = locala.toString();
-    AppMethodBeat.o(193648);
+    AppMethodBeat.o(218562);
     return paramString1;
+  }
+  
+  public static boolean oC(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(218549);
+    if (paramString1 == null)
+    {
+      if (paramString2 == null)
+      {
+        AppMethodBeat.o(218549);
+        return true;
+      }
+      AppMethodBeat.o(218549);
+      return false;
+    }
+    boolean bool = paramString1.equals(paramString2);
+    AppMethodBeat.o(218549);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.apache.commons.b.g
  * JD-Core Version:    0.7.0.1
  */

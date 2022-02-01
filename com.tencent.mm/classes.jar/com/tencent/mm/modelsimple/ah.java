@@ -1,46 +1,46 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.m;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.am.n;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 
 public final class ah
 {
   private static i callback = null;
-  private static boolean jkK = false;
-  private static int jkL = 3;
-  private static long jkM = 0L;
+  private static boolean maL = false;
+  private static int maM = 3;
+  private static long maN = 0L;
   
   public static void run()
   {
     AppMethodBeat.i(130965);
-    if (jkK)
+    if (maL)
     {
       Log.i("MicroMsg.PostTaskUploadHDHeadImg", "is uploading hdHeadImg now!");
       AppMethodBeat.o(130965);
       return;
     }
-    if ((jkM == 0L) || (Util.ticksToNow(jkM) > 180000L))
+    if ((maN == 0L) || (Util.ticksToNow(maN) > 180000L))
     {
-      jkM = Util.currentTicks();
-      jkL = 3;
+      maN = Util.currentTicks();
+      maM = 3;
     }
-    if (jkL <= 0)
+    if (maM <= 0)
     {
       Log.i("MicroMsg.PostTaskUploadHDHeadImg", "frequency limit");
       AppMethodBeat.o(130965);
       return;
     }
-    jkL -= 1;
-    Object localObject = b.aKR() + "temp.avatar.hd";
-    if (!s.YS((String)localObject))
+    maM -= 1;
+    Object localObject = b.aST() + "temp.avatar.hd";
+    if (!u.agG((String)localObject))
     {
       Log.d("MicroMsg.PostTaskUploadHDHeadImg", "has uploaded HDHeadImg and delete it");
       AppMethodBeat.o(130965);
@@ -54,24 +54,24 @@ public final class ah
           AppMethodBeat.i(130964);
           Log.i("MicroMsg.PostTaskUploadHDHeadImg", "onSceneEnd errType:%d, erCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0)) {
-            s.deleteFile(this.jkN);
+            u.deleteFile(this.maO);
           }
-          ah.TT();
-          g.azz().b(157, ah.bfE());
+          ah.Yy();
+          h.aGY().b(157, ah.boU());
           AppMethodBeat.o(130964);
         }
       };
     }
-    g.azz().a(157, callback);
-    localObject = new m(1, (String)localObject);
-    g.azz().a((q)localObject, 0);
-    jkK = true;
+    h.aGY().a(157, callback);
+    localObject = new n(1, (String)localObject);
+    h.aGY().a((q)localObject, 0);
+    maL = true;
     AppMethodBeat.o(130965);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelsimple.ah
  * JD-Core Version:    0.7.0.1
  */

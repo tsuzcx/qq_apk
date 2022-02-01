@@ -19,12 +19,12 @@ public final class b
   
   public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    this(paramISQLiteDatabase, a.info, "CanvasInfo");
+    this(paramISQLiteDatabase, a.info, "CanvasInfo", null);
   }
   
-  private b(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString)
+  public b(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
   {
-    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, null);
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
   }
   
   public final void a(a parama)
@@ -44,7 +44,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.b
  * JD-Core Version:    0.7.0.1
  */

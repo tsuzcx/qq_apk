@@ -2,10 +2,12 @@ package com.tencent.mm.msgsubscription.presenter;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/msgsubscription/presenter/ISubscribeMsgSettingView;", "", "getUserName", "", "plugin-comm_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/presenter/ISubscribeMsgSettingView;", "", "getUserName", "", "notifyItemChange", "", "item", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "position", "", "plugin-comm_release"})
 public abstract interface c
 {
   public abstract String getUserName();
+  
+  public abstract void xq(int paramInt);
 }
 
 

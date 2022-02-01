@@ -13,13 +13,13 @@ final class WalletBalanceManagerUI$5
   {
     AppMethodBeat.i(163859);
     paramDialogInterface.dismiss();
-    WalletBalanceManagerUI.f(this.Hwm);
+    WalletBalanceManagerUI.f(this.OnZ);
     AppMethodBeat.o(163859);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceManagerUI.5
  * JD-Core Version:    0.7.0.1
  */

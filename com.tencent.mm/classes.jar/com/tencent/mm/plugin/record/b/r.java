@@ -2,37 +2,38 @@ package com.tencent.mm.plugin.record.b;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.g;
 import com.tencent.mm.b.g;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.graphics.MMBitmapFactory;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 
 final class r
   implements s
 {
   private int height;
-  private String tev;
   private String url;
+  private String wKH;
   private int width;
   
   public r(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(27813);
-    this.tev = paramString1;
+    this.wKH = paramString1;
     this.url = paramString2;
     this.width = paramInt1;
     this.height = paramInt2;
     paramString1 = new StringBuilder();
-    bg.aVF();
-    paramString1 = new o(c.aTi() + "web/");
-    if (!paramString1.exists()) {
-      paramString1.mkdirs();
+    bh.beI();
+    paramString1 = new q(c.bcg() + "web/");
+    if (!paramString1.ifE()) {
+      paramString1.ifL();
     }
     AppMethodBeat.o(27813);
   }
@@ -45,7 +46,7 @@ final class r
     //   3: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
     //   7: astore_3
-    //   8: getstatic 83	com/tencent/mm/platformtools/s$a:jNh	Lcom/tencent/mm/platformtools/s$a;
+    //   8: getstatic 83	com/tencent/mm/platformtools/s$a:mEp	Lcom/tencent/mm/platformtools/s$a;
     //   11: aload_2
     //   12: if_acmpne +143 -> 155
     //   15: aload_1
@@ -86,23 +87,23 @@ final class r
     //   72: astore_2
     //   73: aload_2
     //   74: astore_3
-    //   75: new 42	com/tencent/mm/vfs/o
+    //   75: new 42	com/tencent/mm/vfs/q
     //   78: dup
     //   79: aload_0
-    //   80: invokevirtual 102	com/tencent/mm/plugin/record/b/r:blA	()Ljava/lang/String;
-    //   83: invokespecial 60	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   80: invokevirtual 102	com/tencent/mm/plugin/record/b/r:bvq	()Ljava/lang/String;
+    //   83: invokespecial 60	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   86: astore 5
     //   88: aload_2
     //   89: astore_3
     //   90: aload 5
-    //   92: invokevirtual 105	com/tencent/mm/vfs/o:createNewFile	()Z
+    //   92: invokevirtual 105	com/tencent/mm/vfs/q:ifM	()Z
     //   95: pop
     //   96: aconst_null
     //   97: astore 4
     //   99: aconst_null
     //   100: astore_1
     //   101: aload 5
-    //   103: invokestatic 111	com/tencent/mm/vfs/s:ap	(Lcom/tencent/mm/vfs/o;)Ljava/io/OutputStream;
+    //   103: invokestatic 111	com/tencent/mm/vfs/u:an	(Lcom/tencent/mm/vfs/q;)Ljava/io/OutputStream;
     //   106: astore 5
     //   108: aload 5
     //   110: astore_1
@@ -207,58 +208,53 @@ final class r
     //   167	179	212	finally
   }
   
-  public final void a(s.a parama, String paramString) {}
+  public final void a(s.a parama) {}
   
-  public final void ad(String paramString, boolean paramBoolean) {}
-  
-  public final String blA()
-  {
-    AppMethodBeat.i(27814);
-    Object localObject = new StringBuilder();
-    bg.aVF();
-    localObject = c.aTi() + "web/" + g.getMessageDigest(this.url.getBytes());
-    AppMethodBeat.o(27814);
-    return localObject;
-  }
-  
-  public final String blB()
-  {
-    return this.url;
-  }
-  
-  public final String blC()
-  {
-    return this.tev;
-  }
-  
-  public final boolean blD()
-  {
-    return true;
-  }
-  
-  public final boolean blE()
-  {
-    return false;
-  }
-  
-  public final Bitmap blF()
-  {
-    AppMethodBeat.i(27815);
-    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), 2131234281);
-    AppMethodBeat.o(27815);
-    return localBitmap;
-  }
-  
-  public final void blG() {}
-  
-  public final s.b blz()
+  public final s.b bvp()
   {
     return null;
   }
   
+  public final String bvq()
+  {
+    AppMethodBeat.i(27814);
+    Object localObject = new StringBuilder();
+    bh.beI();
+    localObject = c.bcg() + "web/" + g.getMessageDigest(this.url.getBytes());
+    AppMethodBeat.o(27814);
+    return localObject;
+  }
+  
+  public final String bvr()
+  {
+    return this.url;
+  }
+  
+  public final String bvs()
+  {
+    return this.wKH;
+  }
+  
+  public final boolean bvt()
+  {
+    return true;
+  }
+  
+  public final Bitmap bvu()
+  {
+    AppMethodBeat.i(27815);
+    Bitmap localBitmap = MMBitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), R.g.nosdcard_headimg);
+    AppMethodBeat.o(27815);
+    return localBitmap;
+  }
+  
+  public final void bvv() {}
+  
+  public final void bvw() {}
+  
   public final String getCacheKey()
   {
-    return this.tev;
+    return this.wKH;
   }
 }
 

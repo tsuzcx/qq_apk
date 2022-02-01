@@ -1,87 +1,74 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.utils.b;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.sq;
+import com.tencent.mm.protocal.protobuf.sr;
+import com.tencent.mm.protocal.protobuf.ss;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.tenpay.model.m;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
 
 public final class v
-  extends m
+  extends q
+  implements m
 {
-  public String CoU;
-  public b yXE;
-  public String yXG;
-  public String yXI;
-  public b zdG;
+  private sr IlV;
+  private ss IlW;
+  private i callback;
+  private final d rr;
   
-  public v(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2)
+  public v(String paramString1, String paramString2, long paramLong, String paramString3)
   {
-    this(paramString1, paramString2, paramInt1, paramString3, paramString4, paramInt2, "");
-    AppMethodBeat.i(67883);
-    AppMethodBeat.o(67883);
+    AppMethodBeat.i(271411);
+    Log.i("MicroMsg.NetScenePersonalPayCancelPay", "personalpay_order_id = %s ,trans_id = %s ,total_amount = %s，placeorder_ext = %s", new Object[] { paramString1, paramString2, Long.valueOf(paramLong), paramString3 });
+    Object localObject = new d.a();
+    ((d.a)localObject).lBU = new sr();
+    ((d.a)localObject).lBV = new ss();
+    ((d.a)localObject).funcId = 5003;
+    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/personalpaycancelpay";
+    this.rr = ((d.a)localObject).bgN();
+    this.IlV = ((sr)d.b.b(this.rr.lBR));
+    localObject = new sq();
+    ((sq)localObject).InU = paramString1;
+    ((sq)localObject).InV = paramString2;
+    ((sq)localObject).InT = paramLong;
+    ((sq)localObject).InW = paramString3;
+    this.IlV.Scb = ((sq)localObject);
+    AppMethodBeat.o(271411);
   }
   
-  public v(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, String paramString5)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(213733);
-    this.CoU = null;
-    this.yXI = "";
-    this.yXG = "";
-    this.CoU = paramString3;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("trans_id", paramString2);
-    localHashMap.put("transaction_id", paramString1);
-    localHashMap.put("op", paramString3);
-    localHashMap.put("username", paramString4);
-    localHashMap.put("invalid_time", String.valueOf(paramInt2));
-    localHashMap.put("total_fee", String.valueOf(paramInt1));
-    localHashMap.put("left_button_continue", paramString5);
-    Log.i("Micromsg.NetSceneTenpayRemittanceQuery", "trans_id=" + paramString2 + ";transaction_id=" + paramString1 + ";total_fee=" + paramInt1);
-    setRequestData(localHashMap);
-    AppMethodBeat.o(213733);
+    AppMethodBeat.i(271415);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(271415);
+    return i;
   }
   
-  public final int getFuncId()
+  public final int getType()
   {
-    return 1691;
+    return 5003;
   }
   
-  public final int getTenpayCgicmd()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    return 0;
-  }
-  
-  public final String getUri()
-  {
-    return "/cgi-bin/mmpay-bin/transferoperation";
-  }
-  
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(67884);
-    Log.d("Micromsg.NetSceneTenpayRemittanceQuery", "errCode " + paramInt + " errMsg: " + paramString);
-    if (paramInt != 0)
-    {
-      AppMethodBeat.o(67884);
-      return;
+    AppMethodBeat.i(271417);
+    Log.i("MicroMsg.NetScenePersonalPayCancelPay", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      this.IlW = ((ss)d.c.b(((d)params).lBS));
     }
-    paramString = paramJSONObject.optJSONObject("real_name_info");
-    if (paramString != null) {
-      this.yXI = paramString.optString("guide_flag", "0");
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    if (paramJSONObject.has("intercept_win")) {
-      this.yXE = b.bV(paramJSONObject.optJSONObject("intercept_win"));
-    }
-    if (paramJSONObject.has("intercept_win_after")) {
-      this.zdG = b.bV(paramJSONObject.optJSONObject("intercept_win_after"));
-    }
-    if (paramJSONObject.has("left_button_continue")) {
-      this.yXG = paramJSONObject.optString("left_button_continue");
-    }
-    AppMethodBeat.o(67884);
+    AppMethodBeat.o(271417);
   }
 }
 

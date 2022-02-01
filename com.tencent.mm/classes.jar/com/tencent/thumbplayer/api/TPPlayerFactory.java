@@ -10,49 +10,49 @@ public class TPPlayerFactory
 {
   public static ITPPlayer createTPPlayer(Context paramContext)
   {
-    AppMethodBeat.i(189021);
+    AppMethodBeat.i(219815);
     paramContext = new com.tencent.thumbplayer.g.b(paramContext);
-    AppMethodBeat.o(189021);
+    AppMethodBeat.o(219815);
     return paramContext;
   }
   
   public static ITPPlayer createTPPlayer(Context paramContext, Looper paramLooper)
   {
-    AppMethodBeat.i(189023);
+    AppMethodBeat.i(219818);
     paramContext = new com.tencent.thumbplayer.g.b(paramContext, paramLooper);
-    AppMethodBeat.o(189023);
+    AppMethodBeat.o(219818);
     return paramContext;
   }
   
   public static ITPPlayer createTPPlayer(Context paramContext, Looper paramLooper1, Looper paramLooper2)
   {
-    AppMethodBeat.i(189024);
+    AppMethodBeat.i(219819);
     paramContext = new com.tencent.thumbplayer.g.b(paramContext, paramLooper1, paramLooper2);
-    AppMethodBeat.o(189024);
+    AppMethodBeat.o(219819);
     return paramContext;
   }
   
   public static ITPPlayer createTPPlayer(Context paramContext, Looper paramLooper1, Looper paramLooper2, com.tencent.thumbplayer.f.b paramb)
   {
-    AppMethodBeat.i(189025);
+    AppMethodBeat.i(219820);
     paramContext = new com.tencent.thumbplayer.g.b(paramContext, paramLooper1, paramLooper2, paramb);
-    AppMethodBeat.o(189025);
+    AppMethodBeat.o(219820);
     return paramContext;
   }
   
   public static ITPPlayer createTPPlayer(Context paramContext, com.tencent.thumbplayer.f.b paramb)
   {
-    AppMethodBeat.i(189022);
+    AppMethodBeat.i(219817);
     paramContext = new com.tencent.thumbplayer.g.b(paramContext, null, null, paramb);
-    AppMethodBeat.o(189022);
+    AppMethodBeat.o(219817);
     return paramContext;
   }
   
   public static ITPSurface createTPSurface(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(189026);
+    AppMethodBeat.i(219822);
     paramSurfaceTexture = new e(paramSurfaceTexture);
-    AppMethodBeat.o(189026);
+    AppMethodBeat.o(219822);
     return paramSurfaceTexture;
   }
 }

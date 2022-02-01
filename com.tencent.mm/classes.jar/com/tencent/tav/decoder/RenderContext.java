@@ -2,6 +2,7 @@ package com.tencent.tav.decoder;
 
 import android.graphics.PointF;
 import android.opengl.EGL14;
+import android.opengl.EGLConfig;
 import android.opengl.EGLContext;
 import android.opengl.EGLDisplay;
 import android.opengl.EGLSurface;
@@ -27,6 +28,7 @@ public class RenderContext
   private static final String TAG = "RenderContext";
   private EGLContext _eglContext;
   private HashMap<Surface, String> activeSurfaceCache;
+  private EGLConfig eglConfig;
   private EGLDisplay eglDisplay;
   private EGLSurface eglSurface;
   private HashMap<String, Surface> freeSurfaceCache;
@@ -54,7 +56,8 @@ public class RenderContext
   
   public RenderContext(int paramInt1, int paramInt2, Surface paramSurface, EGLContext paramEGLContext)
   {
-    AppMethodBeat.i(218260);
+    AppMethodBeat.i(191187);
+    this.eglSurface = EGL14.EGL_NO_SURFACE;
     this.isSharedContext = false;
     this.released = false;
     this.threadId = -1L;
@@ -68,12 +71,12 @@ public class RenderContext
     this.height = paramInt2;
     eglSetup(paramEGLContext);
     makeCurrent();
-    AppMethodBeat.o(218260);
+    AppMethodBeat.o(191187);
   }
   
   public static boolean checkEglActionSuccess(String paramString)
   {
-    AppMethodBeat.i(218270);
+    AppMethodBeat.i(191240);
     StringBuilder localStringBuilder = new StringBuilder("");
     for (int i = 0;; i = 1)
     {
@@ -89,32 +92,52 @@ public class RenderContext
     }
     if (i == 0)
     {
-      AppMethodBeat.o(218270);
+      AppMethodBeat.o(191240);
       return true;
     }
-    AppMethodBeat.o(218270);
+    AppMethodBeat.o(191240);
     return false;
   }
   
   public static void checkEglError(String paramString)
   {
-    AppMethodBeat.i(218269);
+    AppMethodBeat.i(191236);
     checkEglActionSuccess(paramString);
-    AppMethodBeat.o(218269);
+    AppMethodBeat.o(191236);
   }
   
   private void checkThread()
   {
-    AppMethodBeat.i(218264);
+    AppMethodBeat.i(191218);
     if (this.threadId != Thread.currentThread().getId()) {
       Logger.e("RenderContext", "线程不对，注意EGL相关的泄露问题！threadId = " + this.threadId + ", Thread.currentThread() name = " + Thread.currentThread().getName(), new RuntimeException());
     }
-    AppMethodBeat.o(218264);
+    AppMethodBeat.o(191218);
+  }
+  
+  private void createEGLSurface()
+  {
+    AppMethodBeat.i(191214);
+    if (this.eglSurface != EGL14.EGL_NO_SURFACE)
+    {
+      EGL14.eglDestroySurface(this.eglDisplay, this.eglSurface);
+      this.eglSurface = EGL14.EGL_NO_SURFACE;
+    }
+    if (this.surface != null)
+    {
+      this.eglSurface = EGL14.eglCreateWindowSurface(this.eglDisplay, this.eglConfig, this.surface, new int[] { 12344 }, 0);
+      AppMethodBeat.o(191214);
+      return;
+    }
+    int i = this.width;
+    int j = this.height;
+    this.eglSurface = EGL14.eglCreatePbufferSurface(this.eglDisplay, this.eglConfig, new int[] { 12375, i, 12374, j, 12344 }, 0);
+    AppMethodBeat.o(191214);
   }
   
   public static int createTexture(int paramInt)
   {
-    AppMethodBeat.i(218278);
+    AppMethodBeat.i(191259);
     int[] arrayOfInt = new int[1];
     GLES20.glGenTextures(1, arrayOfInt, 0);
     int i = arrayOfInt[0];
@@ -125,7 +148,7 @@ public class RenderContext
     GLES20.glTexParameteri(paramInt, 10242, 33071);
     GLES20.glTexParameteri(paramInt, 10243, 33071);
     checkEglError("glTexParameter");
-    AppMethodBeat.o(218278);
+    AppMethodBeat.o(191259);
     return i;
   }
   
@@ -135,35 +158,35 @@ public class RenderContext
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 211
-    //   4: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc 236
+    //   4: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: invokestatic 160	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   11: invokevirtual 164	java/lang/Thread:getId	()J
-    //   14: putfield 72	com/tencent/tav/decoder/RenderContext:threadId	J
+    //   8: invokestatic 167	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   11: invokevirtual 171	java/lang/Thread:getId	()J
+    //   14: putfield 81	com/tencent/tav/decoder/RenderContext:threadId	J
     //   17: aload_0
-    //   18: getfield 68	com/tencent/tav/decoder/RenderContext:released	Z
+    //   18: getfield 77	com/tencent/tav/decoder/RenderContext:released	Z
     //   21: ifeq +11 -> 32
-    //   24: ldc 211
-    //   26: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   24: ldc 236
+    //   26: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   29: aload_0
     //   30: monitorexit
     //   31: return
     //   32: aload_0
     //   33: iconst_0
-    //   34: invokestatic 215	android/opengl/EGL14:eglGetDisplay	(I)Landroid/opengl/EGLDisplay;
-    //   37: putfield 217	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
+    //   34: invokestatic 240	android/opengl/EGL14:eglGetDisplay	(I)Landroid/opengl/EGLDisplay;
+    //   37: putfield 189	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
     //   40: aload_0
-    //   41: getfield 217	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
-    //   44: getstatic 220	android/opengl/EGL14:EGL_NO_DISPLAY	Landroid/opengl/EGLDisplay;
+    //   41: getfield 189	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
+    //   44: getstatic 243	android/opengl/EGL14:EGL_NO_DISPLAY	Landroid/opengl/EGLDisplay;
     //   47: if_acmpne +26 -> 73
-    //   50: new 145	java/lang/RuntimeException
+    //   50: new 152	java/lang/RuntimeException
     //   53: dup
-    //   54: ldc 222
-    //   56: invokespecial 148	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   54: ldc 245
+    //   56: invokespecial 155	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
     //   59: pop
-    //   60: ldc 211
-    //   62: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   60: ldc 236
+    //   62: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   65: goto -36 -> 29
     //   68: astore_1
     //   69: aload_0
@@ -172,295 +195,237 @@ public class RenderContext
     //   72: athrow
     //   73: iconst_2
     //   74: newarray int
-    //   76: astore 4
-    //   78: aload_0
-    //   79: getfield 217	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
-    //   82: aload 4
-    //   84: iconst_0
-    //   85: aload 4
-    //   87: iconst_1
-    //   88: invokestatic 226	android/opengl/EGL14:eglInitialize	(Landroid/opengl/EGLDisplay;[II[II)Z
-    //   91: ifne +26 -> 117
-    //   94: aload_0
-    //   95: aconst_null
-    //   96: putfield 217	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
-    //   99: new 145	java/lang/RuntimeException
-    //   102: dup
-    //   103: ldc 228
-    //   105: invokespecial 148	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
-    //   108: pop
-    //   109: ldc 211
-    //   111: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   114: goto -85 -> 29
-    //   117: iconst_1
-    //   118: anewarray 230	android/opengl/EGLConfig
-    //   121: astore 4
-    //   123: iconst_1
-    //   124: newarray int
-    //   126: astore 5
-    //   128: aload_0
-    //   129: getfield 217	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
-    //   132: bipush 11
-    //   134: newarray int
-    //   136: dup
-    //   137: iconst_0
-    //   138: sipush 12324
+    //   76: astore_2
+    //   77: aload_0
+    //   78: getfield 189	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
+    //   81: aload_2
+    //   82: iconst_0
+    //   83: aload_2
+    //   84: iconst_1
+    //   85: invokestatic 249	android/opengl/EGL14:eglInitialize	(Landroid/opengl/EGLDisplay;[II[II)Z
+    //   88: ifne +26 -> 114
+    //   91: aload_0
+    //   92: aconst_null
+    //   93: putfield 189	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
+    //   96: new 152	java/lang/RuntimeException
+    //   99: dup
+    //   100: ldc 251
+    //   102: invokespecial 155	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   105: pop
+    //   106: ldc 236
+    //   108: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   111: goto -82 -> 29
+    //   114: iconst_1
+    //   115: anewarray 253	android/opengl/EGLConfig
+    //   118: astore_2
+    //   119: iconst_1
+    //   120: newarray int
+    //   122: astore_3
+    //   123: aload_0
+    //   124: getfield 189	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
+    //   127: bipush 11
+    //   129: newarray int
+    //   131: dup
+    //   132: iconst_0
+    //   133: sipush 12324
+    //   136: iastore
+    //   137: dup
+    //   138: iconst_1
+    //   139: bipush 8
     //   141: iastore
     //   142: dup
-    //   143: iconst_1
-    //   144: bipush 8
-    //   146: iastore
-    //   147: dup
-    //   148: iconst_2
-    //   149: sipush 12323
+    //   143: iconst_2
+    //   144: sipush 12323
+    //   147: iastore
+    //   148: dup
+    //   149: iconst_3
+    //   150: bipush 8
     //   152: iastore
     //   153: dup
-    //   154: iconst_3
-    //   155: bipush 8
-    //   157: iastore
-    //   158: dup
-    //   159: iconst_4
-    //   160: sipush 12322
+    //   154: iconst_4
+    //   155: sipush 12322
+    //   158: iastore
+    //   159: dup
+    //   160: iconst_5
+    //   161: bipush 8
     //   163: iastore
     //   164: dup
-    //   165: iconst_5
-    //   166: bipush 8
-    //   168: iastore
-    //   169: dup
-    //   170: bipush 6
-    //   172: sipush 12352
+    //   165: bipush 6
+    //   167: sipush 12352
+    //   170: iastore
+    //   171: dup
+    //   172: bipush 7
+    //   174: iconst_4
     //   175: iastore
     //   176: dup
-    //   177: bipush 7
-    //   179: iconst_4
-    //   180: iastore
-    //   181: dup
-    //   182: bipush 8
-    //   184: sipush 12610
+    //   177: bipush 8
+    //   179: sipush 12610
+    //   182: iastore
+    //   183: dup
+    //   184: bipush 9
+    //   186: iconst_1
     //   187: iastore
     //   188: dup
-    //   189: bipush 9
-    //   191: iconst_1
-    //   192: iastore
-    //   193: dup
-    //   194: bipush 10
-    //   196: sipush 12344
-    //   199: iastore
+    //   189: bipush 10
+    //   191: sipush 12344
+    //   194: iastore
+    //   195: iconst_0
+    //   196: aload_2
+    //   197: iconst_0
+    //   198: iconst_1
+    //   199: aload_3
     //   200: iconst_0
-    //   201: aload 4
-    //   203: iconst_0
-    //   204: iconst_1
-    //   205: aload 5
-    //   207: iconst_0
-    //   208: invokestatic 234	android/opengl/EGL14:eglChooseConfig	(Landroid/opengl/EGLDisplay;[II[Landroid/opengl/EGLConfig;II[II)Z
-    //   211: ifne +21 -> 232
-    //   214: new 145	java/lang/RuntimeException
-    //   217: dup
+    //   201: invokestatic 257	android/opengl/EGL14:eglChooseConfig	(Landroid/opengl/EGLDisplay;[II[Landroid/opengl/EGLConfig;II[II)Z
+    //   204: ifne +22 -> 226
+    //   207: new 152	java/lang/RuntimeException
+    //   210: dup
+    //   211: ldc_w 259
+    //   214: invokespecial 155	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   217: pop
     //   218: ldc 236
-    //   220: invokespecial 148	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
-    //   223: pop
-    //   224: ldc 211
-    //   226: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   229: goto -200 -> 29
-    //   232: iconst_3
-    //   233: newarray int
-    //   235: astore 5
-    //   237: aload 5
-    //   239: dup
-    //   240: iconst_0
-    //   241: sipush 12440
-    //   244: iastore
-    //   245: dup
-    //   246: iconst_1
-    //   247: iconst_2
-    //   248: iastore
-    //   249: dup
-    //   250: iconst_2
-    //   251: sipush 12344
-    //   254: iastore
-    //   255: pop
-    //   256: aload_1
-    //   257: ifnull +57 -> 314
-    //   260: aload_0
-    //   261: iconst_1
-    //   262: putfield 66	com/tencent/tav/decoder/RenderContext:isSharedContext	Z
-    //   265: aload_0
-    //   266: aload_0
-    //   267: getfield 217	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
-    //   270: aload 4
-    //   272: iconst_0
-    //   273: aaload
-    //   274: aload_1
-    //   275: aload 5
-    //   277: iconst_0
-    //   278: invokestatic 240	android/opengl/EGL14:eglCreateContext	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLConfig;Landroid/opengl/EGLContext;[II)Landroid/opengl/EGLContext;
-    //   281: putfield 242	com/tencent/tav/decoder/RenderContext:_eglContext	Landroid/opengl/EGLContext;
-    //   284: ldc 243
-    //   286: invokestatic 194	com/tencent/tav/decoder/RenderContext:checkEglError	(Ljava/lang/String;)V
-    //   289: aload_0
-    //   290: getfield 242	com/tencent/tav/decoder/RenderContext:_eglContext	Landroid/opengl/EGLContext;
-    //   293: ifnonnull +72 -> 365
-    //   296: new 145	java/lang/RuntimeException
-    //   299: dup
-    //   300: ldc 245
-    //   302: invokespecial 148	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
-    //   305: pop
-    //   306: ldc 211
-    //   308: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   311: goto -282 -> 29
-    //   314: aload_0
-    //   315: aload_0
-    //   316: getfield 217	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
-    //   319: aload 4
-    //   321: iconst_0
-    //   322: aaload
-    //   323: getstatic 248	android/opengl/EGL14:EGL_NO_CONTEXT	Landroid/opengl/EGLContext;
-    //   326: aload 5
-    //   328: iconst_0
-    //   329: invokestatic 240	android/opengl/EGL14:eglCreateContext	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLConfig;Landroid/opengl/EGLContext;[II)Landroid/opengl/EGLContext;
-    //   332: putfield 242	com/tencent/tav/decoder/RenderContext:_eglContext	Landroid/opengl/EGLContext;
-    //   335: ldc 243
-    //   337: invokestatic 194	com/tencent/tav/decoder/RenderContext:checkEglError	(Ljava/lang/String;)V
-    //   340: aload_0
-    //   341: getfield 242	com/tencent/tav/decoder/RenderContext:_eglContext	Landroid/opengl/EGLContext;
-    //   344: ifnonnull +21 -> 365
-    //   347: new 145	java/lang/RuntimeException
-    //   350: dup
-    //   351: ldc 245
-    //   353: invokespecial 148	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
-    //   356: pop
-    //   357: ldc 211
-    //   359: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   362: goto -333 -> 29
-    //   365: aload_0
-    //   366: getfield 90	com/tencent/tav/decoder/RenderContext:surface	Landroid/view/Surface;
-    //   369: ifnull +71 -> 440
-    //   372: aload_0
-    //   373: aload_0
-    //   374: getfield 217	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
-    //   377: aload 4
-    //   379: iconst_0
-    //   380: aaload
-    //   381: aload_0
-    //   382: getfield 90	com/tencent/tav/decoder/RenderContext:surface	Landroid/view/Surface;
-    //   385: iconst_1
-    //   386: newarray int
-    //   388: dup
-    //   389: iconst_0
-    //   390: sipush 12344
-    //   393: iastore
-    //   394: iconst_0
-    //   395: invokestatic 252	android/opengl/EGL14:eglCreateWindowSurface	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLConfig;Ljava/lang/Object;[II)Landroid/opengl/EGLSurface;
-    //   398: putfield 254	com/tencent/tav/decoder/RenderContext:eglSurface	Landroid/opengl/EGLSurface;
-    //   401: ldc 255
-    //   403: invokestatic 152	com/tencent/tav/decoder/RenderContext:checkEglActionSuccess	(Ljava/lang/String;)Z
-    //   406: ifeq +8 -> 414
-    //   409: aload_0
-    //   410: iconst_1
-    //   411: putfield 74	com/tencent/tav/decoder/RenderContext:pBufferEnable	Z
-    //   414: aload_0
-    //   415: getfield 254	com/tencent/tav/decoder/RenderContext:eglSurface	Landroid/opengl/EGLSurface;
-    //   418: ifnonnull +14 -> 432
-    //   421: new 145	java/lang/RuntimeException
-    //   424: dup
-    //   425: ldc_w 257
-    //   428: invokespecial 148	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
-    //   431: pop
-    //   432: ldc 211
-    //   434: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   437: goto -408 -> 29
-    //   440: aload_0
-    //   441: getfield 92	com/tencent/tav/decoder/RenderContext:width	I
-    //   444: istore_2
-    //   445: aload_0
-    //   446: getfield 94	com/tencent/tav/decoder/RenderContext:height	I
-    //   449: istore_3
-    //   450: aload_0
-    //   451: aload_0
-    //   452: getfield 217	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
-    //   455: aload 4
-    //   457: iconst_0
-    //   458: aaload
-    //   459: iconst_5
-    //   460: newarray int
-    //   462: dup
-    //   463: iconst_0
-    //   464: sipush 12375
-    //   467: iastore
-    //   468: dup
-    //   469: iconst_1
-    //   470: iload_2
-    //   471: iastore
-    //   472: dup
-    //   473: iconst_2
-    //   474: sipush 12374
-    //   477: iastore
-    //   478: dup
-    //   479: iconst_3
-    //   480: iload_3
-    //   481: iastore
-    //   482: dup
-    //   483: iconst_4
-    //   484: sipush 12344
-    //   487: iastore
-    //   488: iconst_0
-    //   489: invokestatic 261	android/opengl/EGL14:eglCreatePbufferSurface	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLConfig;[II)Landroid/opengl/EGLSurface;
-    //   492: putfield 254	com/tencent/tav/decoder/RenderContext:eglSurface	Landroid/opengl/EGLSurface;
-    //   495: goto -94 -> 401
-    //   498: astore_1
-    //   499: ldc 211
-    //   501: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   504: goto -475 -> 29
-    //   507: astore_1
-    //   508: goto -9 -> 499
+    //   220: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   223: goto -194 -> 29
+    //   226: iconst_3
+    //   227: newarray int
+    //   229: astore_3
+    //   230: aload_3
+    //   231: dup
+    //   232: iconst_0
+    //   233: sipush 12440
+    //   236: iastore
+    //   237: dup
+    //   238: iconst_1
+    //   239: iconst_2
+    //   240: iastore
+    //   241: dup
+    //   242: iconst_2
+    //   243: sipush 12344
+    //   246: iastore
+    //   247: pop
+    //   248: aload_1
+    //   249: ifnull +57 -> 306
+    //   252: aload_0
+    //   253: iconst_1
+    //   254: putfield 75	com/tencent/tav/decoder/RenderContext:isSharedContext	Z
+    //   257: aload_0
+    //   258: aload_0
+    //   259: getfield 189	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
+    //   262: aload_2
+    //   263: iconst_0
+    //   264: aaload
+    //   265: aload_1
+    //   266: aload_3
+    //   267: iconst_0
+    //   268: invokestatic 263	android/opengl/EGL14:eglCreateContext	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLConfig;Landroid/opengl/EGLContext;[II)Landroid/opengl/EGLContext;
+    //   271: putfield 265	com/tencent/tav/decoder/RenderContext:_eglContext	Landroid/opengl/EGLContext;
+    //   274: ldc_w 266
+    //   277: invokestatic 219	com/tencent/tav/decoder/RenderContext:checkEglError	(Ljava/lang/String;)V
+    //   280: aload_0
+    //   281: getfield 265	com/tencent/tav/decoder/RenderContext:_eglContext	Landroid/opengl/EGLContext;
+    //   284: ifnonnull +73 -> 357
+    //   287: new 152	java/lang/RuntimeException
+    //   290: dup
+    //   291: ldc_w 268
+    //   294: invokespecial 155	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   297: pop
+    //   298: ldc 236
+    //   300: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   303: goto -274 -> 29
+    //   306: aload_0
+    //   307: aload_0
+    //   308: getfield 189	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
+    //   311: aload_2
+    //   312: iconst_0
+    //   313: aaload
+    //   314: getstatic 271	android/opengl/EGL14:EGL_NO_CONTEXT	Landroid/opengl/EGLContext;
+    //   317: aload_3
+    //   318: iconst_0
+    //   319: invokestatic 263	android/opengl/EGL14:eglCreateContext	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLConfig;Landroid/opengl/EGLContext;[II)Landroid/opengl/EGLContext;
+    //   322: putfield 265	com/tencent/tav/decoder/RenderContext:_eglContext	Landroid/opengl/EGLContext;
+    //   325: ldc_w 266
+    //   328: invokestatic 219	com/tencent/tav/decoder/RenderContext:checkEglError	(Ljava/lang/String;)V
+    //   331: aload_0
+    //   332: getfield 265	com/tencent/tav/decoder/RenderContext:_eglContext	Landroid/opengl/EGLContext;
+    //   335: ifnonnull +22 -> 357
+    //   338: new 152	java/lang/RuntimeException
+    //   341: dup
+    //   342: ldc_w 268
+    //   345: invokespecial 155	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   348: pop
+    //   349: ldc 236
+    //   351: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   354: goto -325 -> 29
+    //   357: aload_0
+    //   358: aload_2
+    //   359: iconst_0
+    //   360: aaload
+    //   361: putfield 195	com/tencent/tav/decoder/RenderContext:eglConfig	Landroid/opengl/EGLConfig;
+    //   364: aload_0
+    //   365: invokespecial 273	com/tencent/tav/decoder/RenderContext:createEGLSurface	()V
+    //   368: ldc_w 274
+    //   371: invokestatic 159	com/tencent/tav/decoder/RenderContext:checkEglActionSuccess	(Ljava/lang/String;)Z
+    //   374: ifeq +8 -> 382
+    //   377: aload_0
+    //   378: iconst_1
+    //   379: putfield 83	com/tencent/tav/decoder/RenderContext:pBufferEnable	Z
+    //   382: aload_0
+    //   383: getfield 73	com/tencent/tav/decoder/RenderContext:eglSurface	Landroid/opengl/EGLSurface;
+    //   386: ifnonnull +14 -> 400
+    //   389: new 152	java/lang/RuntimeException
+    //   392: dup
+    //   393: ldc_w 276
+    //   396: invokespecial 155	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   399: pop
+    //   400: ldc 236
+    //   402: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   405: goto -376 -> 29
+    //   408: ldc 236
+    //   410: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   413: goto -384 -> 29
+    //   416: astore_1
+    //   417: goto -9 -> 408
+    //   420: astore_1
+    //   421: goto -13 -> 408
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	511	0	this	RenderContext
-    //   0	511	1	paramEGLContext	EGLContext
-    //   444	27	2	i	int
-    //   449	32	3	j	int
-    //   76	380	4	localObject	Object
-    //   126	201	5	arrayOfInt	int[]
+    //   0	424	0	this	RenderContext
+    //   0	424	1	paramEGLContext	EGLContext
+    //   76	283	2	localObject	Object
+    //   122	196	3	arrayOfInt	int[]
     // Exception table:
     //   from	to	target	type
     //   2	29	68	finally
     //   32	60	68	finally
     //   60	65	68	finally
-    //   73	109	68	finally
-    //   109	114	68	finally
-    //   117	224	68	finally
-    //   224	229	68	finally
-    //   232	256	68	finally
-    //   260	306	68	finally
-    //   306	311	68	finally
-    //   314	357	68	finally
-    //   357	362	68	finally
-    //   365	401	68	finally
-    //   401	414	68	finally
-    //   414	432	68	finally
-    //   432	437	68	finally
-    //   440	495	68	finally
-    //   499	504	68	finally
-    //   32	60	498	java/lang/Exception
-    //   73	109	498	java/lang/Exception
-    //   117	224	498	java/lang/Exception
-    //   232	256	498	java/lang/Exception
-    //   260	306	498	java/lang/Exception
-    //   314	357	498	java/lang/Exception
-    //   365	401	498	java/lang/Exception
-    //   401	414	498	java/lang/Exception
-    //   414	432	498	java/lang/Exception
-    //   440	495	498	java/lang/Exception
-    //   32	60	507	java/lang/Error
-    //   73	109	507	java/lang/Error
-    //   117	224	507	java/lang/Error
-    //   232	256	507	java/lang/Error
-    //   260	306	507	java/lang/Error
-    //   314	357	507	java/lang/Error
-    //   365	401	507	java/lang/Error
-    //   401	414	507	java/lang/Error
-    //   414	432	507	java/lang/Error
-    //   440	495	507	java/lang/Error
+    //   73	106	68	finally
+    //   106	111	68	finally
+    //   114	218	68	finally
+    //   218	223	68	finally
+    //   226	248	68	finally
+    //   252	298	68	finally
+    //   298	303	68	finally
+    //   306	349	68	finally
+    //   349	354	68	finally
+    //   357	382	68	finally
+    //   382	400	68	finally
+    //   400	405	68	finally
+    //   408	413	68	finally
+    //   32	60	416	java/lang/Error
+    //   73	106	416	java/lang/Error
+    //   114	218	416	java/lang/Error
+    //   226	248	416	java/lang/Error
+    //   252	298	416	java/lang/Error
+    //   306	349	416	java/lang/Error
+    //   357	382	416	java/lang/Error
+    //   382	400	416	java/lang/Error
+    //   32	60	420	java/lang/Exception
+    //   73	106	420	java/lang/Exception
+    //   114	218	420	java/lang/Exception
+    //   226	248	420	java/lang/Exception
+    //   252	298	420	java/lang/Exception
+    //   306	349	420	java/lang/Exception
+    //   357	382	420	java/lang/Exception
+    //   382	400	420	java/lang/Exception
   }
   
   private int loadShader(int paramInt, String paramString)
@@ -471,10 +436,10 @@ public class RenderContext
     {
       try
       {
-        AppMethodBeat.i(218271);
+        AppMethodBeat.i(191244);
         if (this.released)
         {
-          AppMethodBeat.o(218271);
+          AppMethodBeat.o(191244);
           paramInt = j;
           return paramInt;
         }
@@ -490,7 +455,7 @@ public class RenderContext
           Logger.e("RenderContext", " " + GLES20.glGetShaderInfoLog(j));
           GLES20.glDeleteShader(j);
           paramInt = i;
-          AppMethodBeat.o(218271);
+          AppMethodBeat.o(191244);
         }
         else
         {
@@ -507,32 +472,32 @@ public class RenderContext
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 308
-    //   5: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 323
+    //   5: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: invokespecial 310	com/tencent/tav/decoder/RenderContext:checkThread	()V
+    //   9: invokespecial 325	com/tencent/tav/decoder/RenderContext:checkThread	()V
     //   12: aload_1
     //   13: ifnonnull +12 -> 25
-    //   16: ldc_w 308
-    //   19: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   16: ldc_w 323
+    //   19: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   22: aload_0
     //   23: monitorexit
     //   24: return
     //   25: aload_0
-    //   26: getfield 79	com/tencent/tav/decoder/RenderContext:videoTextureMap	Ljava/util/HashMap;
+    //   26: getfield 88	com/tencent/tav/decoder/RenderContext:videoTextureMap	Ljava/util/HashMap;
     //   29: aload_1
-    //   30: invokevirtual 314	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   30: invokevirtual 329	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   33: ifeq +17 -> 50
     //   36: aload_0
-    //   37: getfield 79	com/tencent/tav/decoder/RenderContext:videoTextureMap	Ljava/util/HashMap;
+    //   37: getfield 88	com/tencent/tav/decoder/RenderContext:videoTextureMap	Ljava/util/HashMap;
     //   40: aload_1
-    //   41: invokevirtual 318	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   44: checkcast 320	com/tencent/tav/decoder/VideoTexture
-    //   47: invokevirtual 322	com/tencent/tav/decoder/VideoTexture:release	()V
+    //   41: invokevirtual 333	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   44: checkcast 335	com/tencent/tav/decoder/VideoTexture
+    //   47: invokevirtual 337	com/tencent/tav/decoder/VideoTexture:release	()V
     //   50: aload_1
-    //   51: invokevirtual 325	android/view/Surface:release	()V
-    //   54: ldc_w 308
-    //   57: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   51: invokevirtual 340	android/view/Surface:release	()V
+    //   54: ldc_w 323
+    //   57: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   60: goto -38 -> 22
     //   63: astore_1
     //   64: aload_0
@@ -553,7 +518,7 @@ public class RenderContext
   
   private void releaseReleadingSurface()
   {
-    AppMethodBeat.i(218273);
+    AppMethodBeat.i(191251);
     checkThread();
     int i = 0;
     while (i < this.releasingSurfaceCache.size())
@@ -561,7 +526,7 @@ public class RenderContext
       release((Surface)this.releasingSurfaceCache.remove(i));
       i += 1;
     }
-    AppMethodBeat.o(218273);
+    AppMethodBeat.o(191251);
   }
   
   public Surface createOutputSurface(int paramInt1, int paramInt2, int paramInt3)
@@ -571,12 +536,12 @@ public class RenderContext
       String str;
       try
       {
-        AppMethodBeat.i(218272);
+        AppMethodBeat.i(191248);
         Surface localSurface1;
         if (this.released)
         {
           localSurface1 = null;
-          AppMethodBeat.o(218272);
+          AppMethodBeat.o(191248);
           return localSurface1;
         }
         checkThread();
@@ -588,7 +553,7 @@ public class RenderContext
           if (localSurface1 != null)
           {
             this.activeSurfaceCache.put(localSurface1, str);
-            AppMethodBeat.o(218272);
+            AppMethodBeat.o(191248);
             continue;
           }
         }
@@ -600,7 +565,7 @@ public class RenderContext
       Surface localSurface2 = new Surface(localVideoTexture.surfaceTexture());
       this.videoTextureMap.put(localSurface2, localVideoTexture);
       this.activeSurfaceCache.put(localSurface2, str);
-      AppMethodBeat.o(218272);
+      AppMethodBeat.o(191248);
     }
   }
   
@@ -615,46 +580,46 @@ public class RenderContext
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 369
-    //   5: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 384
+    //   5: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: ldc 15
-    //   10: new 109	java/lang/StringBuilder
+    //   10: new 118	java/lang/StringBuilder
     //   13: dup
-    //   14: ldc_w 371
-    //   17: invokespecial 114	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   20: invokestatic 160	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   23: invokevirtual 164	java/lang/Thread:getId	()J
-    //   26: invokevirtual 169	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   29: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokestatic 373	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   14: ldc_w 386
+    //   17: invokespecial 123	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   20: invokestatic 167	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   23: invokevirtual 171	java/lang/Thread:getId	()J
+    //   26: invokevirtual 176	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   29: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   32: invokestatic 388	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   35: aload_1
     //   36: ifnonnull +12 -> 48
-    //   39: ldc_w 369
-    //   42: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   39: ldc_w 384
+    //   42: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   45: aload_0
     //   46: monitorexit
     //   47: return
     //   48: aload_0
-    //   49: getfield 81	com/tencent/tav/decoder/RenderContext:activeSurfaceCache	Ljava/util/HashMap;
+    //   49: getfield 90	com/tencent/tav/decoder/RenderContext:activeSurfaceCache	Ljava/util/HashMap;
     //   52: aload_1
-    //   53: invokevirtual 318	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   56: checkcast 271	java/lang/String
+    //   53: invokevirtual 333	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   56: checkcast 286	java/lang/String
     //   59: astore_2
     //   60: aload_2
-    //   61: invokestatic 379	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   61: invokestatic 394	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   64: ifne +12 -> 76
     //   67: aload_0
-    //   68: getfield 83	com/tencent/tav/decoder/RenderContext:freeSurfaceCache	Ljava/util/HashMap;
+    //   68: getfield 92	com/tencent/tav/decoder/RenderContext:freeSurfaceCache	Ljava/util/HashMap;
     //   71: aload_2
-    //   72: invokevirtual 314	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   72: invokevirtual 329	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   75: pop
     //   76: aload_0
-    //   77: getfield 88	com/tencent/tav/decoder/RenderContext:releasingSurfaceCache	Ljava/util/List;
+    //   77: getfield 97	com/tencent/tav/decoder/RenderContext:releasingSurfaceCache	Ljava/util/List;
     //   80: aload_1
-    //   81: invokeinterface 382 2 0
+    //   81: invokeinterface 397 2 0
     //   86: pop
-    //   87: ldc_w 369
-    //   90: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   87: ldc_w 384
+    //   90: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   93: goto -48 -> 45
     //   96: astore_1
     //   97: aload_0
@@ -676,20 +641,20 @@ public class RenderContext
   
   public long getEglSurfaceHandle()
   {
-    AppMethodBeat.i(218265);
+    AppMethodBeat.i(191223);
     if (this.eglSurface != null)
     {
       if (Build.VERSION.SDK_INT >= 21)
       {
         l = this.eglSurface.getNativeHandle();
-        AppMethodBeat.o(218265);
+        AppMethodBeat.o(191223);
         return l;
       }
       long l = this.eglSurface.getHandle();
-      AppMethodBeat.o(218265);
+      AppMethodBeat.o(191223);
       return l;
     }
-    AppMethodBeat.o(218265);
+    AppMethodBeat.o(191223);
     return 0L;
   }
   
@@ -719,32 +684,32 @@ public class RenderContext
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 408
-    //   5: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 423
+    //   5: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: invokespecial 310	com/tencent/tav/decoder/RenderContext:checkThread	()V
+    //   9: invokespecial 325	com/tencent/tav/decoder/RenderContext:checkThread	()V
     //   12: aload_0
-    //   13: getfield 68	com/tencent/tav/decoder/RenderContext:released	Z
+    //   13: getfield 77	com/tencent/tav/decoder/RenderContext:released	Z
     //   16: ifeq +12 -> 28
-    //   19: ldc_w 408
-    //   22: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   19: ldc_w 423
+    //   22: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   25: aload_0
     //   26: monitorexit
     //   27: return
     //   28: aload_0
-    //   29: getfield 217	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
+    //   29: getfield 189	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
     //   32: aload_0
-    //   33: getfield 254	com/tencent/tav/decoder/RenderContext:eglSurface	Landroid/opengl/EGLSurface;
+    //   33: getfield 73	com/tencent/tav/decoder/RenderContext:eglSurface	Landroid/opengl/EGLSurface;
     //   36: aload_0
-    //   37: getfield 254	com/tencent/tav/decoder/RenderContext:eglSurface	Landroid/opengl/EGLSurface;
+    //   37: getfield 73	com/tencent/tav/decoder/RenderContext:eglSurface	Landroid/opengl/EGLSurface;
     //   40: aload_0
-    //   41: getfield 242	com/tencent/tav/decoder/RenderContext:_eglContext	Landroid/opengl/EGLContext;
-    //   44: invokestatic 412	android/opengl/EGL14:eglMakeCurrent	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;Landroid/opengl/EGLSurface;Landroid/opengl/EGLContext;)Z
+    //   41: getfield 265	com/tencent/tav/decoder/RenderContext:_eglContext	Landroid/opengl/EGLContext;
+    //   44: invokestatic 427	android/opengl/EGL14:eglMakeCurrent	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;Landroid/opengl/EGLSurface;Landroid/opengl/EGLContext;)Z
     //   47: ifne +9 -> 56
-    //   50: ldc_w 414
-    //   53: invokestatic 194	com/tencent/tav/decoder/RenderContext:checkEglError	(Ljava/lang/String;)V
-    //   56: ldc_w 408
-    //   59: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   50: ldc_w 429
+    //   53: invokestatic 219	com/tencent/tav/decoder/RenderContext:checkEglError	(Ljava/lang/String;)V
+    //   56: ldc_w 423
+    //   59: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   62: goto -37 -> 25
     //   65: astore_1
     //   66: aload_0
@@ -768,11 +733,11 @@ public class RenderContext
     {
       try
       {
-        AppMethodBeat.i(218277);
+        AppMethodBeat.i(191258);
         checkThread();
         if (this.released)
         {
-          AppMethodBeat.o(218277);
+          AppMethodBeat.o(191258);
           return;
         }
         makeCurrent();
@@ -823,7 +788,7 @@ public class RenderContext
       this._eglContext = null;
       this.eglSurface = null;
       this.surface = null;
-      AppMethodBeat.o(218277);
+      AppMethodBeat.o(191258);
     }
   }
   
@@ -843,30 +808,30 @@ public class RenderContext
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 470
-    //   5: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 478
+    //   5: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 68	com/tencent/tav/decoder/RenderContext:released	Z
+    //   9: getfield 77	com/tencent/tav/decoder/RenderContext:released	Z
     //   12: ifeq +12 -> 24
-    //   15: ldc_w 470
-    //   18: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   15: ldc_w 478
+    //   18: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: aload_0
     //   22: monitorexit
     //   23: return
     //   24: aload_0
-    //   25: getfield 90	com/tencent/tav/decoder/RenderContext:surface	Landroid/view/Surface;
+    //   25: getfield 99	com/tencent/tav/decoder/RenderContext:surface	Landroid/view/Surface;
     //   28: ifnull +20 -> 48
     //   31: aload_0
-    //   32: getfield 217	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
+    //   32: getfield 189	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
     //   35: aload_0
-    //   36: getfield 254	com/tencent/tav/decoder/RenderContext:eglSurface	Landroid/opengl/EGLSurface;
-    //   39: ldc2_w 471
+    //   36: getfield 73	com/tencent/tav/decoder/RenderContext:eglSurface	Landroid/opengl/EGLSurface;
+    //   39: ldc2_w 479
     //   42: lload_1
     //   43: lmul
-    //   44: invokestatic 478	android/opengl/EGLExt:eglPresentationTimeANDROID	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;J)Z
+    //   44: invokestatic 486	android/opengl/EGLExt:eglPresentationTimeANDROID	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;J)Z
     //   47: pop
-    //   48: ldc_w 470
-    //   51: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   48: ldc_w 478
+    //   51: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   54: goto -33 -> 21
     //   57: astore_3
     //   58: aload_0
@@ -885,6 +850,15 @@ public class RenderContext
     //   48	54	57	finally
   }
   
+  public void setSurface(Surface paramSurface)
+  {
+    AppMethodBeat.i(191190);
+    this.surface = paramSurface;
+    createEGLSurface();
+    makeCurrent();
+    AppMethodBeat.o(191190);
+  }
+  
   public void setWidth(int paramInt)
   {
     this.width = paramInt;
@@ -896,29 +870,29 @@ public class RenderContext
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 481
-    //   5: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 491
+    //   5: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: invokespecial 310	com/tencent/tav/decoder/RenderContext:checkThread	()V
+    //   9: invokespecial 325	com/tencent/tav/decoder/RenderContext:checkThread	()V
     //   12: aload_0
-    //   13: getfield 68	com/tencent/tav/decoder/RenderContext:released	Z
+    //   13: getfield 77	com/tencent/tav/decoder/RenderContext:released	Z
     //   16: ifeq +15 -> 31
     //   19: iconst_0
     //   20: istore_1
-    //   21: ldc_w 481
-    //   24: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   21: ldc_w 491
+    //   24: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   27: aload_0
     //   28: monitorexit
     //   29: iload_1
     //   30: ireturn
     //   31: aload_0
-    //   32: getfield 217	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
+    //   32: getfield 189	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
     //   35: aload_0
-    //   36: getfield 254	com/tencent/tav/decoder/RenderContext:eglSurface	Landroid/opengl/EGLSurface;
-    //   39: invokestatic 484	android/opengl/EGL14:eglSwapBuffers	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;)Z
+    //   36: getfield 73	com/tencent/tav/decoder/RenderContext:eglSurface	Landroid/opengl/EGLSurface;
+    //   39: invokestatic 494	android/opengl/EGL14:eglSwapBuffers	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;)Z
     //   42: istore_1
-    //   43: ldc_w 481
-    //   46: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   43: ldc_w 491
+    //   46: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   49: goto -22 -> 27
     //   52: astore_2
     //   53: aload_0
@@ -939,40 +913,40 @@ public class RenderContext
   
   public String toString()
   {
-    AppMethodBeat.i(218279);
+    AppMethodBeat.i(191260);
     String str = "RenderContext{_eglContext=" + this._eglContext + ", isSharedContext=" + this.isSharedContext + ", released=" + this.released + '}';
-    AppMethodBeat.o(218279);
+    AppMethodBeat.o(191260);
     return str;
   }
   
   public void updateViewport(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(218262);
+    AppMethodBeat.i(191200);
     makeCurrent();
     GLES20.glViewport(paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(218262);
+    AppMethodBeat.o(191200);
   }
   
   public void updateViewport(CGRect paramCGRect)
   {
-    AppMethodBeat.i(218261);
+    AppMethodBeat.i(191198);
     if ((paramCGRect == null) || (paramCGRect.origin == null) || (paramCGRect.size == null))
     {
-      AppMethodBeat.o(218261);
+      AppMethodBeat.o(191198);
       return;
     }
     this.glViewportRect = paramCGRect;
     updateViewport((int)paramCGRect.origin.x, (int)paramCGRect.origin.y, (int)paramCGRect.size.width, (int)paramCGRect.size.height);
-    AppMethodBeat.o(218261);
+    AppMethodBeat.o(191198);
   }
   
   public VideoTexture videoTextureForSurface(Surface paramSurface)
   {
     try
     {
-      AppMethodBeat.i(218276);
+      AppMethodBeat.i(191256);
       paramSurface = (VideoTexture)this.videoTextureMap.get(paramSurface);
-      AppMethodBeat.o(218276);
+      AppMethodBeat.o(191256);
       return paramSurface;
     }
     finally
@@ -989,7 +963,7 @@ public class RenderContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.decoder.RenderContext
  * JD-Core Version:    0.7.0.1
  */

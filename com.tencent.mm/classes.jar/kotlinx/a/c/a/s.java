@@ -10,55 +10,55 @@ import kotlinx.a.w.b;
 import kotlinx.a.w.c;
 import kotlinx.a.x.c;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"selectMapMode", "T", "R1", "R2", "Lkotlinx/serialization/json/Json;", "mapDescriptor", "Lkotlinx/serialization/SerialDescriptor;", "ifMap", "Lkotlin/Function0;", "ifList", "(Lkotlinx/serialization/json/Json;Lkotlinx/serialization/SerialDescriptor;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "switchMode", "Lkotlinx/serialization/json/internal/WriteMode;", "desc", "kotlinx-serialization-runtime"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"selectMapMode", "T", "R1", "R2", "Lkotlinx/serialization/json/Json;", "mapDescriptor", "Lkotlinx/serialization/SerialDescriptor;", "ifMap", "Lkotlin/Function0;", "ifList", "(Lkotlinx/serialization/json/Json;Lkotlinx/serialization/SerialDescriptor;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "switchMode", "Lkotlinx/serialization/json/internal/WriteMode;", "desc", "kotlinx-serialization-runtime"})
 public final class s
 {
   public static final r a(a parama, n paramn)
   {
-    AppMethodBeat.i(225711);
-    p.h(parama, "$this$switchMode");
-    p.h(paramn, "desc");
-    kotlinx.a.s locals = paramn.hOA();
+    AppMethodBeat.i(256132);
+    p.k(parama, "$this$switchMode");
+    p.k(paramn, "desc");
+    kotlinx.a.s locals = paramn.iTG();
     if ((locals instanceof j))
     {
-      parama = r.UaC;
-      AppMethodBeat.o(225711);
+      parama = r.abDQ;
+      AppMethodBeat.o(256132);
       return parama;
     }
-    if (p.j(locals, w.b.TXT))
+    if (p.h(locals, w.b.abBi))
     {
-      parama = r.UaA;
-      AppMethodBeat.o(225711);
+      parama = r.abDO;
+      AppMethodBeat.o(256132);
       return parama;
     }
-    if (p.j(locals, w.c.TXU))
+    if (p.h(locals, w.c.abBj))
     {
-      paramn = paramn.awd(0);
-      locals = paramn.hOA();
-      if (((locals instanceof kotlinx.a.l)) || (p.j(locals, x.c.TXZ)))
+      paramn = paramn.aFY(0);
+      locals = paramn.iTG();
+      if (((locals instanceof kotlinx.a.l)) || (p.h(locals, x.c.abBo)))
       {
-        parama = r.UaB;
-        AppMethodBeat.o(225711);
+        parama = r.abDP;
+        AppMethodBeat.o(256132);
         return parama;
       }
-      if (parama.TZf.TZu)
+      if (parama.abCv.abCJ)
       {
-        parama = r.UaA;
-        AppMethodBeat.o(225711);
+        parama = r.abDO;
+        AppMethodBeat.o(256132);
         return parama;
       }
       parama = (Throwable)kotlinx.a.c.l.f(paramn);
-      AppMethodBeat.o(225711);
+      AppMethodBeat.o(256132);
       throw parama;
     }
-    parama = r.Uaz;
-    AppMethodBeat.o(225711);
+    parama = r.abDN;
+    AppMethodBeat.o(256132);
     return parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlinx.a.c.a.s
  * JD-Core Version:    0.7.0.1
  */

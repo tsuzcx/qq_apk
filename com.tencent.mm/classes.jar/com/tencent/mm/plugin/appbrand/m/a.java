@@ -4,22 +4,21 @@ import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.appbrand.v8.IJSRuntime;
 import com.tencent.mm.appbrand.v8.IJSRuntime.Config;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public abstract class a
   extends d
-  implements i, k, m, p, t, u, v
+  implements m, p, t
 {
-  public final IJSRuntime dqn = g(paramConfig);
-  public final com.tencent.mm.appbrand.v8.m mNC;
-  private final e mND;
-  private ArrayList<m.a> mNE = new ArrayList();
-  private final Object mNF = new byte[0];
-  private ArrayList<p.a> mNG = new ArrayList();
-  private final boolean mNH;
+  private final IJSRuntime fiU = g(paramConfig);
+  private ArrayList<p.a> pOA = new ArrayList();
+  private final boolean pOB;
+  public final com.tencent.mm.appbrand.v8.m pOw;
+  private final e pOx;
+  private ArrayList<m.a> pOy = new ArrayList();
+  private final Object pOz = new byte[0];
   
   public a()
   {
@@ -33,12 +32,12 @@ public abstract class a
   
   public a(IJSRuntime.Config paramConfig)
   {
-    if ((paramConfig != null) && (paramConfig.dpm)) {}
+    if ((paramConfig != null) && (paramConfig.fhS)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.mNH = bool;
-      this.mNC = a(this.dqn, e.bMG());
-      this.dqn.r(new Runnable()
+      this.pOB = bool;
+      this.pOw = a(this.fiU, e.bYX());
+      this.fiU.q(new Runnable()
       {
         public final void run()
         {
@@ -53,32 +52,51 @@ public abstract class a
               ((p.a)((Iterator)???).next()).onInitialized();
             }
           }
-          AppMethodBeat.o(144154);
         }
       });
-      this.mND = new e(new e.a()
+      this.pOx = new e(new e.a()
       {
-        public final com.tencent.mm.appbrand.v8.m yc(int paramAnonymousInt)
+        public final com.tencent.mm.appbrand.v8.m BC(int paramAnonymousInt)
         {
           AppMethodBeat.i(144155);
-          com.tencent.mm.appbrand.v8.m localm = a.d(a.this).iP(paramAnonymousInt);
+          com.tencent.mm.appbrand.v8.m localm = a.d(a.this).kf(paramAnonymousInt);
           AppMethodBeat.o(144155);
           return localm;
         }
       });
-      paramConfig = this.mND;
+      paramConfig = this.pOx;
       Log.i("MicroMsg.AppBrandJ2V8ContextMgr", "setMainContext id:%d", new Object[] { Integer.valueOf(1) });
-      paramConfig.mNS.put(1, this);
+      paramConfig.pOK.put(1, this);
       return;
     }
   }
   
-  public final <T extends j> T R(Class<T> paramClass)
+  public final g Bx(int paramInt)
   {
-    if ((paramClass == n.class) && (!this.mNH)) {
+    return this.pOx.Bx(paramInt);
+  }
+  
+  public final void By(int paramInt)
+  {
+    e locale = this.pOx;
+    Log.i("MicroMsg.AppBrandJ2V8ContextMgr", "destroyJsContext id:%d", new Object[] { Integer.valueOf(paramInt) });
+    synchronized (locale.pOK)
+    {
+      d locald = (d)locale.pOK.get(paramInt);
+      locale.pOK.delete(paramInt);
+      if (locald != null) {
+        locald.destroy();
+      }
+      return;
+    }
+  }
+  
+  public final <T extends j> T Q(Class<T> paramClass)
+  {
+    if ((paramClass == n.class) && (!this.pOB)) {
       return null;
     }
-    return super.R(paramClass);
+    return super.Q(paramClass);
   }
   
   protected abstract com.tencent.mm.appbrand.v8.m a(IJSRuntime paramIJSRuntime, int paramInt);
@@ -87,7 +105,7 @@ public abstract class a
   {
     try
     {
-      this.mNE.add(parama);
+      this.pOy.add(parama);
       return;
     }
     finally
@@ -99,48 +117,48 @@ public abstract class a
   
   public final void a(p.a parama)
   {
-    synchronized (this.mNF)
+    synchronized (this.pOz)
     {
-      if (this.mNG != null) {
-        this.mNG.add(parama);
+      if (this.pOA != null) {
+        this.pOA.add(parama);
       }
       return;
     }
   }
   
-  public final com.tencent.mm.appbrand.v8.m bMA()
+  public final IJSRuntime bYQ()
   {
-    return this.mNC;
+    return this.fiU;
   }
   
-  public final boolean bMB()
+  public final com.tencent.mm.appbrand.v8.m bYR()
+  {
+    return this.pOw;
+  }
+  
+  public final boolean bYS()
   {
     return true;
   }
   
-  public final int bMC()
+  public final int bYT()
   {
-    return e.bMG();
+    return e.bYX();
   }
   
-  public final g bMD()
+  public final g bYU()
   {
-    return this.mND.xX(1);
+    return this.pOx.Bx(1);
   }
   
-  public final g bME()
+  public final g bYV()
   {
-    return this.mND.bME();
-  }
-  
-  public final IJSRuntime bMz()
-  {
-    return this.dqn;
+    return this.pOx.bYV();
   }
   
   public void destroy()
   {
-    this.mNC.dpQ.t(new Runnable()
+    this.pOw.fiy.s(new Runnable()
     {
       public final void run()
       {
@@ -159,50 +177,47 @@ public abstract class a
             i += 1;
           }
         }
-        if (BuildInfo.IS_FLAVOR_RED)
+        synchronized (a.this)
         {
-          synchronized (a.this)
+          if (a.e(a.this).size() != 0)
           {
-            if (a.e(a.this).size() != 0)
-            {
-              IllegalStateException localIllegalStateException = new IllegalStateException("OnDestroyListener execute failed. Add Destroy listener recursively is forbidden.");
-              AppMethodBeat.o(144156);
-              throw localIllegalStateException;
-            }
+            IllegalStateException localIllegalStateException = new IllegalStateException("OnDestroyListener execute failed. Add Destroy listener recursively is forbidden.");
+            AppMethodBeat.o(144156);
+            throw localIllegalStateException;
           }
-          AppMethodBeat.o(144156);
-          return;
         }
+        AppMethodBeat.o(144156);
+        return;
         AppMethodBeat.o(144156);
       }
     });
-    e locale = this.mND;
-    SparseArray localSparseArray = locale.mNS;
+    e locale = this.pOx;
+    SparseArray localSparseArray = locale.pOK;
     int i = 0;
     for (;;)
     {
       try
       {
-        if (i < locale.mNS.size())
+        if (i < locale.pOK.size())
         {
-          int j = locale.mNS.keyAt(i);
+          int j = locale.pOK.keyAt(i);
           if (j == 1) {
-            break label163;
+            break label164;
           }
           Log.i("MicroMsg.AppBrandJ2V8ContextMgr", "destroyRestButNotMainContext contextId:%d", new Object[] { Integer.valueOf(j) });
-          if (locale.mNS.get(j) == null) {
+          if (locale.pOK.get(j) == null) {
             Log.w("MicroMsg.AppBrandJ2V8ContextMgr", "destroyRestButNotMainContext contextId:%d null", new Object[] { Integer.valueOf(j) });
           } else {
-            ((d)locale.mNS.get(j)).destroy();
+            ((d)locale.pOK.get(j)).destroy();
           }
         }
       }
       finally {}
-      localObject.mNS.clear();
+      localObject.pOK.clear();
       super.destroy();
-      this.dqn.quit();
+      this.fiU.quit();
       return;
-      label163:
+      label164:
       i += 1;
     }
   }
@@ -211,32 +226,12 @@ public abstract class a
   
   public void setJsExceptionHandler(h paramh)
   {
-    this.mNC.a(e.bMG(), paramh);
-  }
-  
-  public final g xX(int paramInt)
-  {
-    return this.mND.xX(paramInt);
-  }
-  
-  public final void xY(int paramInt)
-  {
-    e locale = this.mND;
-    Log.i("MicroMsg.AppBrandJ2V8ContextMgr", "destroyJsContext id:%d", new Object[] { Integer.valueOf(paramInt) });
-    synchronized (locale.mNS)
-    {
-      d locald = (d)locale.mNS.get(paramInt);
-      locale.mNS.delete(paramInt);
-      if (locald != null) {
-        locald.destroy();
-      }
-      return;
-    }
+    this.pOw.a(e.bYX(), paramh);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.m.a
  * JD-Core Version:    0.7.0.1
  */

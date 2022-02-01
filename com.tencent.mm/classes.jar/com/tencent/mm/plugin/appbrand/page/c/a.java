@@ -6,7 +6,7 @@ import android.os.Build.VERSION;
 import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.ac;
+import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.sdk.system.AndroidContextUtil;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -14,20 +14,20 @@ import java.util.concurrent.atomic.AtomicReference;
 public class a
   extends b
 {
-  private int hIX = 0;
+  private int kwr = 0;
   
-  protected a(ac paramac)
+  protected a(ad paramad)
   {
-    super(paramac);
+    super(paramad);
   }
   
-  private void bSF()
+  private void cfI()
   {
     AppMethodBeat.i(135310);
-    this.nvY.set(c.b.nvZ);
-    if ((this.cxn.getContext() instanceof Activity))
+    this.qya.set(c.b.qyb);
+    if ((this.cvV.getContext() instanceof Activity))
     {
-      Window localWindow = ((Activity)this.cxn.getContext()).getWindow();
+      Window localWindow = ((Activity)this.cvV.getContext()).getWindow();
       if (localWindow == null)
       {
         AppMethodBeat.o(135310);
@@ -40,36 +40,36 @@ public class a
     AppMethodBeat.o(135310);
   }
   
-  public void MV()
+  public void PN()
   {
     AppMethodBeat.i(135312);
-    super.MV();
-    switch (1.cxp[((c.b)this.nvY.get()).ordinal()])
+    super.PN();
+    switch (1.cvX[((c.b)this.qya.get()).ordinal()])
     {
     default: 
       AppMethodBeat.o(135312);
       return;
     case 1: 
-      bSF();
+      cfI();
       AppMethodBeat.o(135312);
       return;
     }
-    Nk();
+    Qc();
     AppMethodBeat.o(135312);
   }
   
-  public void Nj()
+  public void Qb()
   {
     AppMethodBeat.i(135309);
-    bSF();
+    cfI();
     AppMethodBeat.o(135309);
   }
   
-  public void Nk()
+  public void Qc()
   {
     AppMethodBeat.i(135311);
-    this.nvY.set(c.b.nwa);
-    Object localObject = AndroidContextUtil.castActivityOrNull(this.cxn.getContext());
+    this.qya.set(c.b.qyc);
+    Object localObject = AndroidContextUtil.castActivityOrNull(this.cvV.getContext());
     if ((localObject != null) && (!((Activity)localObject).isFinishing()) && (!((Activity)localObject).isDestroyed()))
     {
       localObject = ((Activity)localObject).getWindow();
@@ -85,38 +85,38 @@ public class a
     AppMethodBeat.o(135311);
   }
   
-  public void u(boolean paramBoolean, int paramInt)
+  public void x(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(219489);
-    if (paramInt != this.hIX) {}
+    AppMethodBeat.i(245565);
+    if (paramInt != this.kwr) {}
     for (int i = 1;; i = 0)
     {
-      this.hIX = paramInt;
+      this.kwr = paramInt;
       if (2 != paramInt) {
         break label89;
       }
-      Activity localActivity = this.cxn.getActivity();
+      Activity localActivity = this.cvV.getActivity();
       if ((localActivity == null) || (Build.VERSION.SDK_INT < 24) || (!localActivity.isInMultiWindowMode()) || (localActivity.getRequestedOrientation() != 1)) {
         break;
       }
-      AppMethodBeat.o(219489);
+      AppMethodBeat.o(245565);
       return;
     }
     if (!paramBoolean) {
-      Nk();
+      Qc();
     }
-    AppMethodBeat.o(219489);
+    AppMethodBeat.o(245565);
     return;
     label89:
-    if (((i != 0) || (this.nvY.get() == c.b.nvZ)) && (!paramBoolean)) {
-      Nj();
+    if (((i != 0) || (this.qya.get() == c.b.qyb)) && (!paramBoolean)) {
+      Qb();
     }
-    AppMethodBeat.o(219489);
+    AppMethodBeat.o(245565);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.c.a
  * JD-Core Version:    0.7.0.1
  */

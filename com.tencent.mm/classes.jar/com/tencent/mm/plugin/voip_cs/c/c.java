@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.voip_cs.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bd;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.be;
 import com.tencent.mm.model.y;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
@@ -11,58 +12,58 @@ import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class c
-  implements bd
+  implements be
 {
-  private static c HqF = null;
-  private com.tencent.mm.plugin.voip_cs.c.b.a HqG;
-  private e HqH;
-  private d HqI;
-  private com.tencent.mm.plugin.voip_cs.b.a HqJ;
-  private IListener HqK;
+  private static c Oiq = null;
+  private com.tencent.mm.plugin.voip_cs.c.b.a Oir;
+  private e Ois;
+  private d Oit;
+  private com.tencent.mm.plugin.voip_cs.b.a Oiu;
+  private IListener Oiv;
   
   public c()
   {
     AppMethodBeat.i(125342);
-    this.HqG = new com.tencent.mm.plugin.voip_cs.c.b.a();
-    this.HqH = new e();
-    this.HqI = new d();
-    this.HqJ = new com.tencent.mm.plugin.voip_cs.b.a();
-    this.HqK = new c.1(this);
+    this.Oir = new com.tencent.mm.plugin.voip_cs.c.b.a();
+    this.Ois = new e();
+    this.Oit = new d();
+    this.Oiu = new com.tencent.mm.plugin.voip_cs.b.a();
+    this.Oiv = new c.1(this);
     AppMethodBeat.o(125342);
   }
   
-  private static c fMq()
+  private static c gEU()
   {
     AppMethodBeat.i(125343);
-    c localc = (c)y.at(c.class);
+    c localc = (c)y.as(c.class);
     AppMethodBeat.o(125343);
     return localc;
   }
   
-  public static com.tencent.mm.plugin.voip_cs.c.b.a fMr()
+  public static com.tencent.mm.plugin.voip_cs.c.b.a gEV()
   {
     AppMethodBeat.i(125344);
-    com.tencent.mm.plugin.voip_cs.c.b.a locala = fMq().HqG;
+    com.tencent.mm.plugin.voip_cs.c.b.a locala = gEU().Oir;
     AppMethodBeat.o(125344);
     return locala;
   }
   
-  public static e fMs()
+  public static e gEW()
   {
     AppMethodBeat.i(125345);
-    g.aAf().azk();
-    if (fMq().HqH == null) {
-      fMq().HqH = new e();
+    h.aHE().aGH();
+    if (gEU().Ois == null) {
+      gEU().Ois = new e();
     }
-    e locale = fMq().HqH;
+    e locale = gEU().Ois;
     AppMethodBeat.o(125345);
     return locale;
   }
   
-  public static d fMt()
+  public static d gEX()
   {
     AppMethodBeat.i(125346);
-    d locald = fMq().HqI;
+    d locald = gEU().Oit;
     AppMethodBeat.o(125346);
     return locald;
   }
@@ -78,16 +79,16 @@ public class c
   {
     AppMethodBeat.i(125347);
     Log.d("MicroMsg.SubCoreVoipCS", "now account reset!");
-    EventCenter.instance.addListener(this.HqJ);
-    EventCenter.instance.addListener(this.HqK);
+    EventCenter.instance.addListener(this.Oiu);
+    EventCenter.instance.addListener(this.Oiv);
     AppMethodBeat.o(125347);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(125348);
-    EventCenter.instance.removeListener(this.HqJ);
-    EventCenter.instance.removeListener(this.HqK);
+    EventCenter.instance.removeListener(this.Oiu);
+    EventCenter.instance.removeListener(this.Oiv);
     AppMethodBeat.o(125348);
   }
   
@@ -95,7 +96,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.c.c
  * JD-Core Version:    0.7.0.1
  */

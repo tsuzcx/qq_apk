@@ -1,7 +1,7 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.f.c.aw;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -13,7 +13,7 @@ public final class al
   
   static
   {
-    AppMethodBeat.i(197169);
+    AppMethodBeat.i(195662);
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
     localMAutoDBInfo.fields = new Field[7];
     localMAutoDBInfo.columns = new String[8];
@@ -48,7 +48,7 @@ public final class al
     localMAutoDBInfo.columns[7] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
     info = localMAutoDBInfo;
-    AppMethodBeat.o(197169);
+    AppMethodBeat.o(195662);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
@@ -58,7 +58,7 @@ public final class al
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.al
  * JD-Core Version:    0.7.0.1
  */

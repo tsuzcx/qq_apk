@@ -1,228 +1,161 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class css
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int Alz;
-  public String BPc;
-  public String EsK;
-  public String Ktn;
-  public String Kto;
-  public String Ktp;
-  public String Ktq;
-  public String albumName;
-  public String extraInfo;
-  public String identification;
-  public long issueDate;
-  public String jfz;
-  public String musicGenre;
-  public String singerName;
-  public String songLyric;
+  public fbq TAv;
+  public blk TAw;
+  public fbq TAx;
+  public int endTime;
+  public int fod;
+  public int height;
+  public int retryCount;
+  public int width;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(196100);
+    AppMethodBeat.i(169087);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Ktn != null) {
-        paramVarArgs.e(1, this.Ktn);
+      if (this.TAv != null)
+      {
+        paramVarArgs.oE(1, this.TAv.computeSize());
+        this.TAv.writeFields(paramVarArgs);
       }
-      if (this.Kto != null) {
-        paramVarArgs.e(2, this.Kto);
+      if (this.TAw != null)
+      {
+        paramVarArgs.oE(2, this.TAw.computeSize());
+        this.TAw.writeFields(paramVarArgs);
       }
-      if (this.Ktp != null) {
-        paramVarArgs.e(3, this.Ktp);
+      paramVarArgs.aY(3, this.fod);
+      paramVarArgs.aY(4, this.endTime);
+      paramVarArgs.aY(5, this.width);
+      paramVarArgs.aY(6, this.height);
+      if (this.TAx != null)
+      {
+        paramVarArgs.oE(7, this.TAx.computeSize());
+        this.TAx.writeFields(paramVarArgs);
       }
-      if (this.Ktq != null) {
-        paramVarArgs.e(4, this.Ktq);
-      }
-      if (this.singerName != null) {
-        paramVarArgs.e(5, this.singerName);
-      }
-      if (this.albumName != null) {
-        paramVarArgs.e(6, this.albumName);
-      }
-      if (this.extraInfo != null) {
-        paramVarArgs.e(7, this.extraInfo);
-      }
-      if (this.musicGenre != null) {
-        paramVarArgs.e(8, this.musicGenre);
-      }
-      paramVarArgs.bb(9, this.issueDate);
-      if (this.identification != null) {
-        paramVarArgs.e(10, this.identification);
-      }
-      paramVarArgs.aM(11, this.Alz);
-      if (this.jfz != null) {
-        paramVarArgs.e(21, this.jfz);
-      }
-      if (this.BPc != null) {
-        paramVarArgs.e(22, this.BPc);
-      }
-      if (this.songLyric != null) {
-        paramVarArgs.e(23, this.songLyric);
-      }
-      if (this.EsK != null) {
-        paramVarArgs.e(25, this.EsK);
-      }
-      AppMethodBeat.o(196100);
+      paramVarArgs.aY(8, this.retryCount);
+      AppMethodBeat.o(169087);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Ktn == null) {
-        break label1082;
+      if (this.TAv == null) {
+        break label772;
       }
     }
-    label1082:
-    for (int i = g.a.a.b.b.a.f(1, this.Ktn) + 0;; i = 0)
+    label772:
+    for (paramInt = g.a.a.a.oD(1, this.TAv.computeSize()) + 0;; paramInt = 0)
     {
+      int i = paramInt;
+      if (this.TAw != null) {
+        i = paramInt + g.a.a.a.oD(2, this.TAw.computeSize());
+      }
+      i = i + g.a.a.b.b.a.bM(3, this.fod) + g.a.a.b.b.a.bM(4, this.endTime) + g.a.a.b.b.a.bM(5, this.width) + g.a.a.b.b.a.bM(6, this.height);
       paramInt = i;
-      if (this.Kto != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.Kto);
+      if (this.TAx != null) {
+        paramInt = i + g.a.a.a.oD(7, this.TAx.computeSize());
       }
-      i = paramInt;
-      if (this.Ktp != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.Ktp);
-      }
-      paramInt = i;
-      if (this.Ktq != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.Ktq);
-      }
-      i = paramInt;
-      if (this.singerName != null) {
-        i = paramInt + g.a.a.b.b.a.f(5, this.singerName);
-      }
-      paramInt = i;
-      if (this.albumName != null) {
-        paramInt = i + g.a.a.b.b.a.f(6, this.albumName);
-      }
-      i = paramInt;
-      if (this.extraInfo != null) {
-        i = paramInt + g.a.a.b.b.a.f(7, this.extraInfo);
-      }
-      paramInt = i;
-      if (this.musicGenre != null) {
-        paramInt = i + g.a.a.b.b.a.f(8, this.musicGenre);
-      }
-      i = paramInt + g.a.a.b.b.a.r(9, this.issueDate);
-      paramInt = i;
-      if (this.identification != null) {
-        paramInt = i + g.a.a.b.b.a.f(10, this.identification);
-      }
-      i = paramInt + g.a.a.b.b.a.bu(11, this.Alz);
-      paramInt = i;
-      if (this.jfz != null) {
-        paramInt = i + g.a.a.b.b.a.f(21, this.jfz);
-      }
-      i = paramInt;
-      if (this.BPc != null) {
-        i = paramInt + g.a.a.b.b.a.f(22, this.BPc);
-      }
-      paramInt = i;
-      if (this.songLyric != null) {
-        paramInt = i + g.a.a.b.b.a.f(23, this.songLyric);
-      }
-      i = paramInt;
-      if (this.EsK != null) {
-        i = paramInt + g.a.a.b.b.a.f(25, this.EsK);
-      }
-      AppMethodBeat.o(196100);
-      return i;
+      i = g.a.a.b.b.a.bM(8, this.retryCount);
+      AppMethodBeat.o(169087);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(196100);
+        AppMethodBeat.o(169087);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         css localcss = (css)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
         {
-        case 12: 
-        case 13: 
-        case 14: 
-        case 15: 
-        case 16: 
-        case 17: 
-        case 18: 
-        case 19: 
-        case 20: 
-        case 24: 
         default: 
-          AppMethodBeat.o(196100);
+          AppMethodBeat.o(169087);
           return -1;
         case 1: 
-          localcss.Ktn = locala.UbS.readString();
-          AppMethodBeat.o(196100);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new fbq();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((fbq)localObject2).parseFrom((byte[])localObject1);
+            }
+            localcss.TAv = ((fbq)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(169087);
           return 0;
         case 2: 
-          localcss.Kto = locala.UbS.readString();
-          AppMethodBeat.o(196100);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new blk();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((blk)localObject2).parseFrom((byte[])localObject1);
+            }
+            localcss.TAw = ((blk)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(169087);
           return 0;
         case 3: 
-          localcss.Ktp = locala.UbS.readString();
-          AppMethodBeat.o(196100);
+          localcss.fod = ((g.a.a.a.a)localObject1).abFh.AK();
+          AppMethodBeat.o(169087);
           return 0;
         case 4: 
-          localcss.Ktq = locala.UbS.readString();
-          AppMethodBeat.o(196100);
+          localcss.endTime = ((g.a.a.a.a)localObject1).abFh.AK();
+          AppMethodBeat.o(169087);
           return 0;
         case 5: 
-          localcss.singerName = locala.UbS.readString();
-          AppMethodBeat.o(196100);
+          localcss.width = ((g.a.a.a.a)localObject1).abFh.AK();
+          AppMethodBeat.o(169087);
           return 0;
         case 6: 
-          localcss.albumName = locala.UbS.readString();
-          AppMethodBeat.o(196100);
+          localcss.height = ((g.a.a.a.a)localObject1).abFh.AK();
+          AppMethodBeat.o(169087);
           return 0;
         case 7: 
-          localcss.extraInfo = locala.UbS.readString();
-          AppMethodBeat.o(196100);
-          return 0;
-        case 8: 
-          localcss.musicGenre = locala.UbS.readString();
-          AppMethodBeat.o(196100);
-          return 0;
-        case 9: 
-          localcss.issueDate = locala.UbS.zl();
-          AppMethodBeat.o(196100);
-          return 0;
-        case 10: 
-          localcss.identification = locala.UbS.readString();
-          AppMethodBeat.o(196100);
-          return 0;
-        case 11: 
-          localcss.Alz = locala.UbS.zi();
-          AppMethodBeat.o(196100);
-          return 0;
-        case 21: 
-          localcss.jfz = locala.UbS.readString();
-          AppMethodBeat.o(196100);
-          return 0;
-        case 22: 
-          localcss.BPc = locala.UbS.readString();
-          AppMethodBeat.o(196100);
-          return 0;
-        case 23: 
-          localcss.songLyric = locala.UbS.readString();
-          AppMethodBeat.o(196100);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new fbq();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((fbq)localObject2).parseFrom((byte[])localObject1);
+            }
+            localcss.TAx = ((fbq)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(169087);
           return 0;
         }
-        localcss.EsK = locala.UbS.readString();
-        AppMethodBeat.o(196100);
+        localcss.retryCount = ((g.a.a.a.a)localObject1).abFh.AK();
+        AppMethodBeat.o(169087);
         return 0;
       }
-      AppMethodBeat.o(196100);
+      AppMethodBeat.o(169087);
       return -1;
     }
   }

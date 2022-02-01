@@ -4,11 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.v;
 
 public final class JsApiFinderEndorsementFinished
-  extends d<s>
+  extends c<v>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "endorsementFinished";
@@ -38,7 +38,7 @@ public final class JsApiFinderEndorsementFinished
       this.username = paramString;
     }
     
-    public final void bjj()
+    public final void RW()
     {
       AppMethodBeat.i(163943);
       AppMethodBeat.o(163943);

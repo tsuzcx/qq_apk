@@ -6,10 +6,10 @@ import android.media.MediaCodec.BufferInfo;
 import android.media.MediaCodecInfo;
 import android.media.MediaCodecList;
 import android.media.MediaFormat;
-import com.tencent.liteav.audio.e;
+import com.tencent.liteav.audio.g;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
@@ -23,7 +23,7 @@ public class b
   private MediaFormat c;
   private MediaCodec d;
   private Vector<byte[]> e;
-  private WeakReference<e> f;
+  private WeakReference<g> f;
   private volatile boolean g;
   private volatile boolean h;
   private final Object i;
@@ -35,16 +35,16 @@ public class b
   
   static
   {
-    AppMethodBeat.i(221926);
-    f.f();
-    AppMethodBeat.o(221926);
+    AppMethodBeat.i(246498);
+    h.f();
+    AppMethodBeat.o(246498);
   }
   
   @TargetApi(16)
   public b()
   {
     super("TXAudioRecordThread");
-    AppMethodBeat.i(221914);
+    AppMethodBeat.i(246484);
     this.g = false;
     this.h = false;
     this.i = new Object();
@@ -52,12 +52,12 @@ public class b
     this.k = 48000;
     this.l = 1;
     this.m = 16;
-    AppMethodBeat.o(221914);
+    AppMethodBeat.o(246484);
   }
   
   private static final MediaCodecInfo a(String paramString)
   {
-    AppMethodBeat.i(221924);
+    AppMethodBeat.i(246496);
     TXCLog.v("AudioCenter:TXCAudioHWEncoder", "selectAudioCodec:");
     int i3 = MediaCodecList.getCodecCount();
     int i1 = 0;
@@ -80,7 +80,7 @@ public class b
     }
     for (paramString = localMediaCodecInfo;; paramString = null)
     {
-      AppMethodBeat.o(221924);
+      AppMethodBeat.o(246496);
       return paramString;
       i2 += 1;
       break label46;
@@ -91,10 +91,10 @@ public class b
   
   private void a(ByteBuffer paramByteBuffer, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(221922);
+    AppMethodBeat.i(246494);
     if (this.h)
     {
-      AppMethodBeat.o(221922);
+      AppMethodBeat.o(246494);
       return;
     }
     Object localObject = this.d.getInputBuffers();
@@ -132,7 +132,7 @@ public class b
       if (paramInt >= 0) {
         break label100;
       }
-      AppMethodBeat.o(221922);
+      AppMethodBeat.o(246494);
       return;
       this.d.queueInputBuffer(i1, 0, paramInt, paramLong, 0);
       break;
@@ -171,12 +171,12 @@ public class b
   private void b()
   {
     int i1 = 32000;
-    AppMethodBeat.i(221918);
+    AppMethodBeat.i(246490);
     this.b = a("audio/mp4a-latm");
     if (this.b == null)
     {
       TXCLog.e("AudioCenter:TXCAudioHWEncoder", "Unable to find an appropriate codec for audio/mp4a-latm");
-      AppMethodBeat.o(221918);
+      AppMethodBeat.o(246490);
       return;
     }
     TXCLog.i("AudioCenter:TXCAudioHWEncoder", "selected codec: " + this.b.getName());
@@ -193,7 +193,7 @@ public class b
     {
       d();
       start();
-      AppMethodBeat.o(221918);
+      AppMethodBeat.o(246490);
       return;
     }
     catch (Exception localException)
@@ -207,15 +207,15 @@ public class b
   
   private void b(byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(221925);
+    AppMethodBeat.i(246497);
     if (this.f != null)
     {
-      e locale = (e)this.f.get();
-      if (locale != null) {
-        locale.onRecordEncData(paramArrayOfByte, paramLong, this.k, this.l, this.m);
+      g localg = (g)this.f.get();
+      if (localg != null) {
+        localg.onRecordEncData(paramArrayOfByte, paramLong, this.k, this.l, this.m);
       }
     }
-    AppMethodBeat.o(221925);
+    AppMethodBeat.o(246497);
   }
   
   private void c()
@@ -226,10 +226,10 @@ public class b
   @TargetApi(16)
   private void d()
   {
-    AppMethodBeat.i(221919);
+    AppMethodBeat.i(246491);
     if (this.d != null)
     {
-      AppMethodBeat.o(221919);
+      AppMethodBeat.o(246491);
       return;
     }
     this.d = MediaCodec.createEncoderByType("audio/mp4a-latm");
@@ -237,12 +237,12 @@ public class b
     this.d.start();
     TXCLog.i("AudioCenter:TXCAudioHWEncoder", "prepare finishing");
     this.g = true;
-    AppMethodBeat.o(221919);
+    AppMethodBeat.o(246491);
   }
   
   private void e()
   {
-    AppMethodBeat.i(221920);
+    AppMethodBeat.i(246492);
     if (this.d != null)
     {
       this.d.stop();
@@ -250,31 +250,31 @@ public class b
       this.d = null;
     }
     this.g = false;
-    AppMethodBeat.o(221920);
+    AppMethodBeat.o(246492);
   }
   
   private long f()
   {
-    AppMethodBeat.i(221923);
+    AppMethodBeat.i(246495);
     long l2 = TXCTimeUtil.getTimeTick();
     long l1 = l2;
     if (l2 < this.j) {
       l1 = l2 + (this.j - l2);
     }
-    AppMethodBeat.o(221923);
+    AppMethodBeat.o(246495);
     return l1;
   }
   
   public void a()
   {
-    AppMethodBeat.i(221917);
+    AppMethodBeat.i(246487);
     c();
-    AppMethodBeat.o(221917);
+    AppMethodBeat.o(246487);
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, WeakReference<e> paramWeakReference)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, WeakReference<g> paramWeakReference)
   {
-    AppMethodBeat.i(221915);
+    AppMethodBeat.i(246485);
     this.f = paramWeakReference;
     this.a = new MediaCodec.BufferInfo();
     this.e = new Vector();
@@ -282,18 +282,18 @@ public class b
     this.l = paramInt3;
     this.m = paramInt4;
     b();
-    AppMethodBeat.o(221915);
+    AppMethodBeat.o(246485);
   }
   
   public void a(byte[] arg1, long paramLong)
   {
-    AppMethodBeat.i(221916);
+    AppMethodBeat.i(246486);
     if ((this.e != null) && (??? != null)) {
       synchronized (this.e)
       {
         if (this.e == null)
         {
-          AppMethodBeat.o(221916);
+          AppMethodBeat.o(246486);
           return;
         }
         this.e.add(???);
@@ -302,17 +302,17 @@ public class b
     synchronized (this.i)
     {
       this.i.notify();
-      AppMethodBeat.o(221916);
+      AppMethodBeat.o(246486);
       return;
       ??? = finally;
-      AppMethodBeat.o(221916);
+      AppMethodBeat.o(246486);
       throw ???;
     }
   }
   
   public void run()
   {
-    AppMethodBeat.i(221921);
+    AppMethodBeat.i(246493);
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(1024);
     for (;;)
     {
@@ -379,7 +379,7 @@ public class b
           this.i.wait();
         }
         e();
-        AppMethodBeat.o(221921);
+        AppMethodBeat.o(246493);
         return;
       }
       catch (InterruptedException localInterruptedException2)
@@ -391,7 +391,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.impl.Record.b
  * JD-Core Version:    0.7.0.1
  */

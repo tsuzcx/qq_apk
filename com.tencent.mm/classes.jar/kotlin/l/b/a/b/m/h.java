@@ -15,47 +15,47 @@ import kotlin.x;
 public abstract class h
   implements at
 {
-  private final f<a> TNy;
+  private final f<a> abqa;
   
   public h(kotlin.l.b.a.b.l.j paramj)
   {
-    this.TNy = paramj.a((a)new b(this), (b)c.TNC, (b)new d(this));
-  }
-  
-  protected Collection<ab> EU(boolean paramBoolean)
-  {
-    return (Collection)v.SXr;
+    this.abqa = paramj.a((a)new b(this), (b)c.abqe, (b)new d(this));
   }
   
   protected void H(ab paramab)
   {
-    p.h(paramab, "type");
+    p.k(paramab, "type");
   }
   
-  protected ab hBX()
+  protected Collection<ab> JB(boolean paramBoolean)
+  {
+    return (Collection)v.aaAd;
+  }
+  
+  protected abstract Collection<ab> iEe();
+  
+  protected abstract aq iEi();
+  
+  protected ab iGm()
   {
     return null;
   }
   
-  public final List<ab> hLx()
+  public final List<ab> iPQ()
   {
-    return ((a)this.TNy.invoke()).TNz;
+    return ((a)this.abqa.invoke()).abqb;
   }
-  
-  protected abstract Collection<ab> hzR();
-  
-  protected abstract aq hzV();
   
   static final class a
   {
-    final Collection<ab> TNA;
-    List<? extends ab> TNz;
+    List<? extends ab> abqb;
+    final Collection<ab> abqc;
     
     public a(Collection<? extends ab> paramCollection)
     {
       AppMethodBeat.i(60602);
-      this.TNA = paramCollection;
-      this.TNz = kotlin.a.j.listOf(u.TNN);
+      this.abqc = paramCollection;
+      this.abqb = kotlin.a.j.listOf(u.abqp);
       AppMethodBeat.o(60602);
     }
   }
@@ -74,12 +74,12 @@ public abstract class h
     extends q
     implements b<Boolean, h.a>
   {
-    public static final c TNC;
+    public static final c abqe;
     
     static
     {
       AppMethodBeat.i(60605);
-      TNC = new c();
+      abqe = new c();
       AppMethodBeat.o(60605);
     }
     
@@ -121,7 +121,7 @@ public abstract class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.h
  * JD-Core Version:    0.7.0.1
  */

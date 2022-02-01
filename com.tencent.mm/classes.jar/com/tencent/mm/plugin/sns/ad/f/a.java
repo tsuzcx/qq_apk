@@ -1,16 +1,15 @@
 package com.tencent.mm.plugin.sns.ad.f;
 
-public abstract interface a
+public final class a
 {
-  public abstract void a(int paramInt, Object... paramVarArgs);
-  
-  public abstract int getKey();
-  
-  public abstract void v(Object... paramVarArgs);
+  public int JDN;
+  public int JDO;
+  public int JDP;
+  public int mbe;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.f.a
  * JD-Core Version:    0.7.0.1
  */

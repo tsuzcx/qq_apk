@@ -21,7 +21,7 @@ public class Xlog
     return paramString;
   }
   
-  public static native void logWrite(Xlog.XLoggerInfo paramXLoggerInfo, String paramString);
+  public static native void logWrite(XLoggerInfo paramXLoggerInfo, String paramString);
   
   public static native void logWrite2(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString4);
   
@@ -82,10 +82,22 @@ public class Xlog
   {
     logWrite2(3, decryptTag(paramString1), paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, paramString4);
   }
+  
+  static class XLoggerInfo
+  {
+    public String filename;
+    public String funcname;
+    public int level;
+    public int line;
+    public long maintid;
+    public long pid;
+    public String tag;
+    public long tid;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mars.ilink.xlog.Xlog
  * JD-Core Version:    0.7.0.1
  */

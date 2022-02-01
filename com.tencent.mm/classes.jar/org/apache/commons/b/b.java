@@ -9,150 +9,167 @@ import org.apache.commons.b.c.a;
 
 public final class b
 {
-  public static final String UeV;
-  public static final String UeW;
-  private static final Map UeX;
-  private static final Map UeY;
-  private static final Map UeZ;
-  private static final Map Ufa;
-  static Class Ufb;
-  static Class Ufc;
-  static Class Ufd;
-  static Class Ufe;
-  static Class Uff;
-  static Class Ufg;
-  static Class Ufh;
-  static Class Ufi;
+  public static final String abIj;
+  public static final String abIk;
+  private static final Map abIl;
+  private static final Map abIm;
+  private static final Map abIn;
+  private static final Map abIo;
+  static Class abIp;
+  static Class abIq;
+  static Class abIr;
+  static Class abIs;
+  static Class abIt;
+  static Class abIu;
+  static Class abIv;
+  static Class abIw;
   
   static
   {
     AppMethodBeat.i(40703);
-    UeV = ".";
-    UeW = "$";
+    abIj = ".";
+    abIk = "$";
     Object localObject2 = new HashMap();
-    UeX = (Map)localObject2;
+    abIl = (Map)localObject2;
     Class localClass = Boolean.TYPE;
     Object localObject1;
-    if (Ufb == null)
+    if (abIp == null)
     {
-      localObject1 = bvc("java.lang.Boolean");
-      Ufb = (Class)localObject1;
+      localObject1 = bIg("java.lang.Boolean");
+      abIp = (Class)localObject1;
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = UeX;
+      localObject2 = abIl;
       localClass = Byte.TYPE;
-      if (Ufc != null) {
+      if (abIq != null) {
         break label389;
       }
-      localObject1 = bvc("java.lang.Byte");
-      Ufc = (Class)localObject1;
+      localObject1 = bIg("java.lang.Byte");
+      abIq = (Class)localObject1;
       label80:
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = UeX;
+      localObject2 = abIl;
       localClass = Character.TYPE;
-      if (Ufd != null) {
+      if (abIr != null) {
         break label396;
       }
-      localObject1 = bvc("java.lang.Character");
-      Ufd = (Class)localObject1;
+      localObject1 = bIg("java.lang.Character");
+      abIr = (Class)localObject1;
       label113:
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = UeX;
+      localObject2 = abIl;
       localClass = Short.TYPE;
-      if (Ufe != null) {
+      if (abIs != null) {
         break label403;
       }
-      localObject1 = bvc("java.lang.Short");
-      Ufe = (Class)localObject1;
+      localObject1 = bIg("java.lang.Short");
+      abIs = (Class)localObject1;
       label146:
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = UeX;
+      localObject2 = abIl;
       localClass = Integer.TYPE;
-      if (Uff != null) {
+      if (abIt != null) {
         break label410;
       }
-      localObject1 = bvc("java.lang.Integer");
-      Uff = (Class)localObject1;
+      localObject1 = bIg("java.lang.Integer");
+      abIt = (Class)localObject1;
       label179:
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = UeX;
+      localObject2 = abIl;
       localClass = Long.TYPE;
-      if (Ufg != null) {
+      if (abIu != null) {
         break label417;
       }
-      localObject1 = bvc("java.lang.Long");
-      Ufg = (Class)localObject1;
+      localObject1 = bIg("java.lang.Long");
+      abIu = (Class)localObject1;
       label212:
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = UeX;
+      localObject2 = abIl;
       localClass = Double.TYPE;
-      if (Ufh != null) {
+      if (abIv != null) {
         break label424;
       }
-      localObject1 = bvc("java.lang.Double");
-      Ufh = (Class)localObject1;
+      localObject1 = bIg("java.lang.Double");
+      abIv = (Class)localObject1;
       label245:
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = UeX;
+      localObject2 = abIl;
       localClass = Float.TYPE;
-      if (Ufi != null) {
+      if (abIw != null) {
         break label431;
       }
-      localObject1 = bvc("java.lang.Float");
-      Ufi = (Class)localObject1;
+      localObject1 = bIg("java.lang.Float");
+      abIw = (Class)localObject1;
     }
     for (;;)
     {
       ((Map)localObject2).put(localClass, localObject1);
-      localObject1 = UeX;
+      localObject1 = abIl;
       localObject2 = Void.TYPE;
       ((Map)localObject1).put(localObject2, localObject2);
-      UeY = new HashMap();
-      localObject1 = UeX.keySet().iterator();
+      abIm = new HashMap();
+      localObject1 = abIl.keySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (Class)((Iterator)localObject1).next();
-        localClass = (Class)UeX.get(localObject2);
+        localClass = (Class)abIl.get(localObject2);
         if (!localObject2.equals(localClass)) {
-          UeY.put(localClass, localObject2);
+          abIm.put(localClass, localObject2);
         }
       }
-      localObject1 = Ufb;
+      localObject1 = abIp;
       break;
       label389:
-      localObject1 = Ufc;
+      localObject1 = abIq;
       break label80;
       label396:
-      localObject1 = Ufd;
+      localObject1 = abIr;
       break label113;
       label403:
-      localObject1 = Ufe;
+      localObject1 = abIs;
       break label146;
       label410:
-      localObject1 = Uff;
+      localObject1 = abIt;
       break label179;
       label417:
-      localObject1 = Ufg;
+      localObject1 = abIu;
       break label212;
       label424:
-      localObject1 = Ufh;
+      localObject1 = abIv;
       break label245;
       label431:
-      localObject1 = Ufi;
+      localObject1 = abIw;
     }
-    UeZ = new HashMap();
-    Ufa = new HashMap();
-    oI("int", "I");
-    oI("boolean", "Z");
-    oI("float", "F");
-    oI("long", "J");
-    oI("short", "S");
-    oI("byte", "B");
-    oI("double", "D");
-    oI("char", "C");
+    abIn = new HashMap();
+    abIo = new HashMap();
+    pE("int", "I");
+    pE("boolean", "Z");
+    pE("float", "F");
+    pE("long", "J");
+    pE("short", "S");
+    pE("byte", "B");
+    pE("double", "D");
+    pE("char", "C");
     AppMethodBeat.o(40703);
   }
   
-  public static String bE(Class paramClass)
+  private static Class bIg(String paramString)
+  {
+    AppMethodBeat.i(40702);
+    try
+    {
+      paramString = Class.forName(paramString);
+      AppMethodBeat.o(40702);
+      return paramString;
+    }
+    catch (ClassNotFoundException paramString)
+    {
+      paramString = new NoClassDefFoundError(paramString.getMessage());
+      AppMethodBeat.o(40702);
+      throw paramString;
+    }
+  }
+  
+  public static String cd(Class paramClass)
   {
     int i = 0;
     AppMethodBeat.i(40701);
@@ -179,7 +196,7 @@ public final class b
       while (((String)localObject).charAt(0) == '[')
       {
         localObject = ((String)localObject).substring(1);
-        locala.bvo("[]");
+        locala.bIt("[]");
       }
       paramClass = (Class)localObject;
       if (((String)localObject).charAt(0) == 'L')
@@ -191,8 +208,8 @@ public final class b
       }
     }
     localObject = paramClass;
-    if (Ufa.containsKey(paramClass)) {
-      localObject = (String)Ufa.get(paramClass);
+    if (abIo.containsKey(paramClass)) {
+      localObject = (String)abIo.get(paramClass);
     }
     int j = ((String)localObject).lastIndexOf('.');
     if (j == -1) {}
@@ -211,34 +228,17 @@ public final class b
     }
   }
   
-  private static Class bvc(String paramString)
-  {
-    AppMethodBeat.i(40702);
-    try
-    {
-      paramString = Class.forName(paramString);
-      AppMethodBeat.o(40702);
-      return paramString;
-    }
-    catch (ClassNotFoundException paramString)
-    {
-      paramString = new NoClassDefFoundError(paramString.getMessage());
-      AppMethodBeat.o(40702);
-      throw paramString;
-    }
-  }
-  
-  private static void oI(String paramString1, String paramString2)
+  private static void pE(String paramString1, String paramString2)
   {
     AppMethodBeat.i(40700);
-    UeZ.put(paramString1, paramString2);
-    Ufa.put(paramString2, paramString1);
+    abIn.put(paramString1, paramString2);
+    abIo.put(paramString2, paramString1);
     AppMethodBeat.o(40700);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.apache.commons.b.b
  * JD-Core Version:    0.7.0.1
  */

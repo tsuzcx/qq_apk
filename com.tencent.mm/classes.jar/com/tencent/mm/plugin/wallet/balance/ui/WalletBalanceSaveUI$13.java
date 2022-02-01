@@ -13,7 +13,7 @@ final class WalletBalanceSaveUI$13
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(68704);
-    h.CyF.a(17084, new Object[] { Integer.valueOf(7) });
+    h.IzE.a(17084, new Object[] { Integer.valueOf(7) });
     paramDialogInterface.dismiss();
     AppMethodBeat.o(68704);
   }

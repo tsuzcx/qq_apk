@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import g.a.a.b;
 
 public final class g
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String oTx;
-  public int oTy;
+  public String rVv;
+  public int rVw;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,39 +15,39 @@ public final class g
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.oTx == null)
+      if (this.rVv == null)
       {
         paramVarArgs = new b("Not all required fields were included: BakChatName");
         AppMethodBeat.o(22107);
         throw paramVarArgs;
       }
-      if (this.oTx != null) {
-        paramVarArgs.e(1, this.oTx);
+      if (this.rVv != null) {
+        paramVarArgs.f(1, this.rVv);
       }
-      paramVarArgs.aM(2, this.oTy);
+      paramVarArgs.aY(2, this.rVw);
       AppMethodBeat.o(22107);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.oTx == null) {
+      if (this.rVv == null) {
         break label318;
       }
     }
     label318:
-    for (paramInt = g.a.a.b.b.a.f(1, this.oTx) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.rVv) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bu(2, this.oTy);
+      int i = g.a.a.b.b.a.bM(2, this.rVw);
       AppMethodBeat.o(22107);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.oTx == null)
+        if (this.rVv == null)
         {
           paramVarArgs = new b("Not all required fields were included: BakChatName");
           AppMethodBeat.o(22107);
@@ -66,11 +66,11 @@ public final class g
           AppMethodBeat.o(22107);
           return -1;
         case 1: 
-          localg.oTx = locala.UbS.readString();
+          localg.rVv = locala.abFh.readString();
           AppMethodBeat.o(22107);
           return 0;
         }
-        localg.oTy = locala.UbS.zi();
+        localg.rVw = locala.abFh.AK();
         AppMethodBeat.o(22107);
         return 0;
       }

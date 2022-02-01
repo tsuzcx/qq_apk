@@ -20,23 +20,23 @@ public class z
   {
     AppMethodBeat.i(78561);
     Log.i("MicroMsg.JsApiHideMenuItems", "invokeInOwn");
-    JSONArray localJSONArray = paramb.ctb.csi.optJSONArray("menuList");
+    JSONArray localJSONArray = paramb.crh.cqn.optJSONArray("menuList");
     if (localJSONArray == null)
     {
       Log.i("MicroMsg.JsApiHideMenuItems", "data is null");
-      paramb.c("invalid_data", null);
+      paramb.a("invalid_data", null);
       AppMethodBeat.o(78561);
       return;
     }
-    m localm = ((g)paramb.cta).gbC();
+    m localm = ((g)paramb.crg).gUx();
     if (localm != null) {
-      localm.T(localJSONArray);
+      localm.V(localJSONArray);
     }
-    paramb.c("", null);
+    paramb.a("", null);
     AppMethodBeat.o(78561);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

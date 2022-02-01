@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/Atom/MvhdAtom;", "Lcom/tencent/mm/plugin/Atom/Atom;", "atomSize", "", "beginPos", "", "type", "atomLargeSize", "(IJIJ)V", "duration", "getDuration", "()J", "setDuration", "(J)V", "timeScale", "getTimeScale", "setTimeScale", "parser", "", "source", "Ljava/io/RandomAccessFile;", "atomHead", "", "Companion", "plugin-playvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/Atom/MvhdAtom;", "Lcom/tencent/mm/plugin/Atom/Atom;", "atomSize", "", "beginPos", "", "type", "atomLargeSize", "(IJIJ)V", "duration", "getDuration", "()J", "setDuration", "(J)V", "timeScale", "getTimeScale", "setTimeScale", "parser", "", "source", "Ljava/io/RandomAccessFile;", "atomHead", "", "Companion", "plugin-playvideo_release"})
 public final class m
   extends a
 {
-  public static final m.a jQO;
+  public static final m.a mHY;
   long duration;
-  public long jQs;
+  public long mHC;
   
   static
   {
     AppMethodBeat.i(134106);
-    jQO = new m.a((byte)0);
+    mHY = new m.a((byte)0);
     AppMethodBeat.o(134106);
   }
   
@@ -25,7 +25,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.a.m
  * JD-Core Version:    0.7.0.1
  */

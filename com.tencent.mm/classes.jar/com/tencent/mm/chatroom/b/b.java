@@ -6,14 +6,14 @@ import com.tencent.mm.chatroom.d.y;
 import com.tencent.mm.chatroom.plugin.PluginChatroomUI;
 import com.tencent.mm.chatroom.storage.c;
 import com.tencent.mm.chatroom.storage.d;
-import com.tencent.mm.g.a.nt;
-import com.tencent.mm.g.b.a.hp;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.a.oq;
+import com.tencent.mm.f.b.a.jv;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.messenger.foundation.a.t;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.messenger.foundation.a.w;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -23,28 +23,28 @@ import java.util.Iterator;
 import java.util.List;
 
 public final class b
-  implements t
+  implements w
 {
-  public final void ad(String paramString1, String paramString2)
+  public final void ah(String paramString1, String paramString2)
   {
     AppMethodBeat.i(182076);
-    c localc = ((PluginChatroomUI)g.ah(PluginChatroomUI.class)).getGroupTodoStorage().ai(paramString1, paramString2);
+    c localc = ((PluginChatroomUI)h.ag(PluginChatroomUI.class)).getGroupTodoStorage().am(paramString1, paramString2);
     boolean bool;
     if (localc != null)
     {
       bool = y.c(localc);
-      Object localObject1 = localc.gts.iterator();
+      Object localObject1 = localc.iXE.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (Long)((Iterator)localObject1).next();
-        localObject2 = ((l)g.af(l.class)).eiy().aJ(paramString1, ((Long)localObject2).longValue());
-        ((ca)localObject2).CK("");
-        ((l)g.af(l.class)).eiy().a(((eo)localObject2).field_msgId, (ca)localObject2);
+        localObject2 = ((n)h.ae(n.class)).eSe().aL(paramString1, ((Long)localObject2).longValue());
+        ((ca)localObject2).Jy("");
+        ((n)h.ae(n.class)).eSe().a(((et)localObject2).field_msgId, (ca)localObject2);
       }
-      localObject1 = new nt();
-      ((nt)localObject1).dTT.op = 1;
-      ((nt)localObject1).dTT.dTU = paramString2;
-      ((nt)localObject1).dTT.dOe = paramString1;
+      localObject1 = new oq();
+      ((oq)localObject1).fNv.op = 1;
+      ((oq)localObject1).fNv.fNw = paramString2;
+      ((oq)localObject1).fNv.fHp = paramString1;
       EventCenter.instance.asyncPublish((IEvent)localObject1, Looper.getMainLooper());
     }
     for (;;)
@@ -60,10 +60,10 @@ public final class b
     }
   }
   
-  public final boolean ama()
+  public final boolean asb()
   {
     AppMethodBeat.i(182077);
-    boolean bool = y.ama();
+    boolean bool = y.asb();
     AppMethodBeat.o(182077);
     return bool;
   }
@@ -73,64 +73,64 @@ public final class b
     int i = 2;
     AppMethodBeat.i(184780);
     Log.d("MicroMsg.roomTodo.RoomTodoService", "shareDialogOperateReport %s %s %s %s %s %s", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    if (!y.ama())
+    if (!y.asb())
     {
       AppMethodBeat.o(184780);
       return;
     }
-    if (!ab.Ix(paramString1))
+    if (!ab.PP(paramString1))
     {
       AppMethodBeat.o(184780);
       return;
     }
-    if (!ab.JN(paramString1))
+    if (!ab.Rg(paramString1))
     {
       AppMethodBeat.o(184780);
       return;
     }
-    if (ab.JO(paramString1)) {}
+    if (ab.Rh(paramString1)) {}
     for (;;)
     {
-      hp localhp = new hp();
-      localhp.eFc = localhp.x("roomid", paramString1, true);
-      localhp.enM = i;
-      localhp.enR = localhp.x("appid", paramString2, true);
-      localhp.enS = localhp.x("appname", paramString3, true);
-      localhp.eMg = paramInt1;
-      localhp.eMf = paramInt2;
-      localhp.eMc = paramInt3;
-      localhp.bfK();
+      jv localjv = new jv();
+      localjv.gDw = localjv.z("roomid", paramString1, true);
+      localjv.giO = i;
+      localjv.giT = localjv.z("appid", paramString2, true);
+      localjv.giU = localjv.z("appname", paramString3, true);
+      localjv.gLV = paramInt1;
+      localjv.gLU = paramInt2;
+      localjv.gLR = paramInt3;
+      localjv.bpa();
       AppMethodBeat.o(184780);
       return;
       i = 1;
     }
   }
   
-  public final void r(String paramString, long paramLong)
+  public final void o(String paramString, long paramLong)
   {
-    AppMethodBeat.i(194009);
-    Object localObject = ((l)g.af(l.class)).eiy().Hb(paramLong);
+    AppMethodBeat.i(187296);
+    Object localObject = ((n)h.ae(n.class)).eSe().Oq(paramLong);
     boolean bool;
-    if (((eo)localObject).field_msgId == paramLong)
+    if (((et)localObject).field_msgId == paramLong)
     {
-      if (!Util.isNullOrNil(((eo)localObject).fRe))
+      if (!Util.isNullOrNil(((et)localObject).ilu))
       {
-        ((t)g.af(t.class)).ad(paramString, ((eo)localObject).fRe);
-        AppMethodBeat.o(194009);
+        ((w)h.ae(w.class)).ah(paramString, ((et)localObject).ilu);
+        AppMethodBeat.o(187296);
       }
     }
     else
     {
-      localObject = ((PluginChatroomUI)g.ah(PluginChatroomUI.class)).getGroupTodoStorage().DB(paramString);
+      localObject = ((PluginChatroomUI)h.ag(PluginChatroomUI.class)).getGroupTodoStorage().Ks(paramString);
       if (localObject == null) {
         break label205;
       }
       bool = y.c((c)localObject);
-      nt localnt = new nt();
-      localnt.dTT.op = 1;
-      localnt.dTT.dTU = ((c)localObject).field_todoid;
-      localnt.dTT.dOe = paramString;
-      EventCenter.instance.asyncPublish(localnt, Looper.getMainLooper());
+      oq localoq = new oq();
+      localoq.fNv.op = 1;
+      localoq.fNv.fNw = ((c)localObject).field_todoid;
+      localoq.fNv.fHp = paramString;
+      EventCenter.instance.asyncPublish(localoq, Looper.getMainLooper());
     }
     for (;;)
     {
@@ -138,7 +138,7 @@ public final class b
       for (localObject = "null";; localObject = ((c)localObject).field_todoid)
       {
         Log.i("MicroMsg.roomTodo.RoomTodoService", "deleteChatroomAtAllTodo delete(%s) roomname:%s result:%s", new Object[] { localObject, paramString, Boolean.valueOf(bool) });
-        AppMethodBeat.o(194009);
+        AppMethodBeat.o(187296);
         return;
       }
       label205:
@@ -148,7 +148,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.b.b
  * JD-Core Version:    0.7.0.1
  */

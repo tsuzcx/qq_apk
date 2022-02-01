@@ -2,11 +2,11 @@ package com.tencent.tencentmap.mapsdk.map;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.fragment.app.Fragment;
 import com.tencent.mapsdk.rastercore.LogHelper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
@@ -116,7 +116,7 @@ public class QSupportMapFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.map.QSupportMapFragment
  * JD-Core Version:    0.7.0.1
  */

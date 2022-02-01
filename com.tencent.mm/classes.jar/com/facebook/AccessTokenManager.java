@@ -7,10 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v4.content.d;
 import com.facebook.internal.Utility;
 import com.facebook.internal.Validate;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.c;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
@@ -32,22 +32,23 @@ public final class AccessTokenManager
   private static final int TOKEN_EXTEND_RETRY_SECONDS = 3600;
   private static final int TOKEN_EXTEND_THRESHOLD_SECONDS = 86400;
   private static volatile AccessTokenManager instance;
+  private byte _hellAccFlag_;
   private final AccessTokenCache accessTokenCache;
   private AccessToken currentAccessToken;
   private Date lastAttemptedTokenExtendDate;
-  private final d localBroadcastManager;
+  private final androidx.h.a.a localBroadcastManager;
   private AtomicBoolean tokenRefreshInProgress;
   
-  AccessTokenManager(d paramd, AccessTokenCache paramAccessTokenCache)
+  AccessTokenManager(androidx.h.a.a parama, AccessTokenCache paramAccessTokenCache)
   {
-    AppMethodBeat.i(16990);
+    AppMethodBeat.i(257030);
     this.tokenRefreshInProgress = new AtomicBoolean(false);
     this.lastAttemptedTokenExtendDate = new Date(0L);
-    Validate.notNull(paramd, "localBroadcastManager");
+    Validate.notNull(parama, "localBroadcastManager");
     Validate.notNull(paramAccessTokenCache, "accessTokenCache");
-    this.localBroadcastManager = paramd;
+    this.localBroadcastManager = parama;
     this.accessTokenCache = paramAccessTokenCache;
-    AppMethodBeat.o(16990);
+    AppMethodBeat.o(257030);
   }
   
   private static GraphRequest createExtendAccessTokenRequest(AccessToken paramAccessToken, GraphRequest.Callback paramCallback)
@@ -75,7 +76,7 @@ public final class AccessTokenManager
     try
     {
       if (instance == null) {
-        instance = new AccessTokenManager(d.W(FacebookSdk.getApplicationContext()), new AccessTokenCache());
+        instance = new AccessTokenManager(androidx.h.a.a.V(FacebookSdk.getApplicationContext()), new AccessTokenCache());
       }
       AccessTokenManager localAccessTokenManager = instance;
       AppMethodBeat.o(16991);
@@ -284,7 +285,7 @@ public final class AccessTokenManager
     localIntent.setAction("com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED");
     localIntent.putExtra("com.facebook.sdk.EXTRA_OLD_ACCESS_TOKEN", paramAccessToken1);
     localIntent.putExtra("com.facebook.sdk.EXTRA_NEW_ACCESS_TOKEN", paramAccessToken2);
-    this.localBroadcastManager.b(localIntent);
+    this.localBroadcastManager.c(localIntent);
     AppMethodBeat.o(16996);
   }
   
@@ -320,18 +321,21 @@ public final class AccessTokenManager
   private void setTokenExpirationBroadcastAlarm()
   {
     AppMethodBeat.i(16997);
-    Object localObject = FacebookSdk.getApplicationContext();
-    AccessToken localAccessToken = AccessToken.getCurrentAccessToken();
-    AlarmManager localAlarmManager = (AlarmManager)((Context)localObject).getSystemService("alarm");
-    if ((!AccessToken.isCurrentAccessTokenActive()) || (localAccessToken.getExpires() == null) || (localAlarmManager == null))
+    Object localObject2 = FacebookSdk.getApplicationContext();
+    Object localObject1 = AccessToken.getCurrentAccessToken();
+    AlarmManager localAlarmManager = (AlarmManager)((Context)localObject2).getSystemService("alarm");
+    if ((!AccessToken.isCurrentAccessTokenActive()) || (((AccessToken)localObject1).getExpires() == null) || (localAlarmManager == null))
     {
       AppMethodBeat.o(16997);
       return;
     }
-    Intent localIntent = new Intent((Context)localObject, CurrentAccessTokenExpirationBroadcastReceiver.class);
+    Intent localIntent = new Intent((Context)localObject2, CurrentAccessTokenExpirationBroadcastReceiver.class);
     localIntent.setAction("com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED");
-    localObject = PendingIntent.getBroadcast((Context)localObject, 0, localIntent, 0);
-    localAlarmManager.set(1, localAccessToken.getExpires().getTime(), (PendingIntent)localObject);
+    localObject2 = PendingIntent.getBroadcast((Context)localObject2, 0, localIntent, 0);
+    localObject1 = c.a(1, c.a(((AccessToken)localObject1).getExpires().getTime(), new com.tencent.mm.hellhoundlib.b.a().bm(localObject2)));
+    com.tencent.mm.hellhoundlib.a.a.b(localAlarmManager, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/facebook/AccessTokenManager", "setTokenExpirationBroadcastAlarm", "()V", "android/app/AlarmManager_EXEC_", "set", "(IJLandroid/app/PendingIntent;)V");
+    localAlarmManager.set(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0)).intValue(), ((Long)c.a((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(1)).longValue(), (PendingIntent)c.aFj().sf(2));
+    com.tencent.mm.hellhoundlib.a.a.c(localAlarmManager, "com/facebook/AccessTokenManager", "setTokenExpirationBroadcastAlarm", "()V", "android/app/AlarmManager_EXEC_", "set", "(IJLandroid/app/PendingIntent;)V");
     AppMethodBeat.o(16997);
   }
   
@@ -428,7 +432,7 @@ public final class AccessTokenManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.AccessTokenManager
  * JD-Core Version:    0.7.0.1
  */

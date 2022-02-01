@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public abstract interface a
   extends d
 {
-  public abstract void Bl(long paramLong);
+  public abstract void Hz(long paramLong);
   
   public abstract void b(ArrayList<IDKey> paramArrayList, boolean paramBoolean);
   
@@ -15,7 +15,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.w.a
  * JD-Core Version:    0.7.0.1
  */

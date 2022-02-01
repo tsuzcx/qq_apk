@@ -7,25 +7,25 @@ import kotlin.g.b.p;
 
 public abstract interface u
 {
-  public abstract List<String> btQ(String paramString);
+  public abstract List<String> bGT(String paramString);
   
   public static final class a
     implements u
   {
-    public static final a TvR;
+    public static final a aaYH;
     
     static
     {
       AppMethodBeat.i(58248);
-      TvR = new a();
+      aaYH = new a();
       AppMethodBeat.o(58248);
     }
     
-    public final List<String> btQ(String paramString)
+    public final List<String> bGT(String paramString)
     {
       AppMethodBeat.i(58247);
-      p.h(paramString, "packageFqName");
-      paramString = (List)v.SXr;
+      p.k(paramString, "packageFqName");
+      paramString = (List)v.aaAd;
       AppMethodBeat.o(58247);
       return paramString;
     }

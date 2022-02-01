@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
@@ -18,15 +21,15 @@ import com.tencent.mm.ui.MMActivity;
 public class VoicePrintFinishUI
   extends MMActivity
 {
-  private TextView BgP;
-  private int Fex;
-  private Button GSc;
-  private ImageView GSd;
-  private TextView mPa;
+  private TextView Haz;
+  private int Ltc;
+  private Button NIn;
+  private ImageView NIo;
+  private TextView pPT;
   
   public int getLayoutId()
   {
-    return 2131496842;
+    return R.i.elQ;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -35,35 +38,35 @@ public class VoicePrintFinishUI
     Log.i("MicroMsg.VoicePrintFinishUI", "VoicePrintFinishUI");
     super.onCreate(paramBundle);
     hideTitleView();
-    this.Fex = getIntent().getIntExtra("kscene_type", 73);
-    Log.d("MicroMsg.VoicePrintFinishUI", "onCreate, sceneType:%d", new Object[] { Integer.valueOf(this.Fex) });
-    this.mPa = ((TextView)findViewById(2131309974));
-    this.BgP = ((TextView)findViewById(2131309976));
-    this.GSc = ((Button)findViewById(2131307087));
-    this.GSd = ((ImageView)findViewById(2131309973));
-    switch (this.Fex)
+    this.Ltc = getIntent().getIntExtra("kscene_type", 73);
+    Log.d("MicroMsg.VoicePrintFinishUI", "onCreate, sceneType:%d", new Object[] { Integer.valueOf(this.Ltc) });
+    this.pPT = ((TextView)findViewById(R.h.eag));
+    this.Haz = ((TextView)findViewById(R.h.voice_print_title_tip));
+    this.NIn = ((Button)findViewById(R.h.right_btn));
+    this.NIo = ((ImageView)findViewById(R.h.voice_print_sucesss_icon));
+    switch (this.Ltc)
     {
     }
     for (;;)
     {
-      this.GSc.setOnClickListener(new View.OnClickListener()
+      this.NIn.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(29887);
           Object localObject = new b();
-          ((b)localObject).bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voiceprint/ui/VoicePrintFinishUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+          ((b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/voiceprint/ui/VoicePrintFinishUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
           if (VoicePrintFinishUI.a(VoicePrintFinishUI.this) == 72)
           {
             localObject = new Intent();
             ((Intent)localObject).setClass(VoicePrintFinishUI.this, VoiceUnLockUI.class);
             ((Intent)localObject).putExtra("kscene_type", 73);
             paramAnonymousView = VoicePrintFinishUI.this;
-            localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/voiceprint/ui/VoicePrintFinishUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/voiceprint/ui/VoicePrintFinishUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+            com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/voiceprint/ui/VoicePrintFinishUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+            com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/voiceprint/ui/VoicePrintFinishUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           }
           VoicePrintFinishUI.this.finish();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voiceprint/ui/VoicePrintFinishUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -82,15 +85,15 @@ public class VoicePrintFinishUI
       });
       AppMethodBeat.o(29889);
       return;
-      this.mPa.setText(2131767190);
-      this.BgP.setText(2131767191);
-      this.GSd.setVisibility(0);
-      this.GSc.setText(2131765686);
+      this.pPT.setText(R.l.eVi);
+      this.Haz.setText(R.l.eVj);
+      this.NIo.setVisibility(0);
+      this.NIn.setText(R.l.eSp);
       continue;
-      this.mPa.setVisibility(8);
-      this.BgP.setText(2131767216);
-      this.GSd.setVisibility(0);
-      this.GSc.setText(2131765687);
+      this.pPT.setVisibility(8);
+      this.Haz.setText(R.l.eVv);
+      this.NIo.setVisibility(0);
+      this.NIn.setText(R.l.eSq);
     }
   }
   

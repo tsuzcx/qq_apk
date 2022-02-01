@@ -2,14 +2,16 @@ package com.tencent.mm.plugin.sns.ui.album;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.i;
 import com.tencent.mm.ui.widget.QDisFadeImageView;
 import com.tencent.mm.ui.widget.QImageView.a;
 import java.util.ArrayList;
@@ -18,51 +20,56 @@ import java.util.List;
 public final class c
   extends RecyclerView.a<b>
 {
-  List<a.d> ETw;
-  c.a ETx;
+  List<a.d> Lhy;
+  a Lhz;
   
   public c()
   {
     AppMethodBeat.i(99872);
-    this.ETw = new ArrayList();
-    this.ETx = null;
+    this.Lhy = new ArrayList();
+    this.Lhz = null;
     AppMethodBeat.o(99872);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(99873);
-    int i = this.ETw.size();
+    int i = this.Lhy.size();
     AppMethodBeat.o(99873);
     return i;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void cx(int paramInt, String paramString);
   }
   
   final class b
     extends RecyclerView.v
   {
-    public QDisFadeImageView ETy;
-    public ImageView kc;
+    public QDisFadeImageView LhA;
+    public ImageView bwJ;
     
     public b(View paramView)
     {
       super();
       AppMethodBeat.i(99871);
-      this.ETy = null;
-      this.kc = null;
-      this.ETy = ((QDisFadeImageView)paramView.findViewById(2131308070));
-      this.kc = ((ImageView)paramView.findViewById(2131308071));
-      this.kc.setImageDrawable(this.kc.getContext().getResources().getDrawable(2131691480));
-      this.ETy.setScaleType(QImageView.a.QEL);
-      this.ETy.setOnClickListener(new View.OnClickListener()
+      this.LhA = null;
+      this.bwJ = null;
+      this.LhA = ((QDisFadeImageView)paramView.findViewById(i.f.sns_album_item_media_img));
+      this.bwJ = ((ImageView)paramView.findViewById(i.f.sns_album_item_media_play_icon));
+      this.bwJ.setImageDrawable(this.bwJ.getContext().getResources().getDrawable(i.i.shortvideo_play_btn));
+      this.LhA.setScaleType(QImageView.a.Ydm);
+      this.LhA.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(99870);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/sns/ui/album/SnsAlbumItemAdapter$SnsAlbumItemViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/sns/ui/album/SnsAlbumItemAdapter$SnsAlbumItemViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           if ((paramAnonymousView.getTag() != null) && ((paramAnonymousView.getTag() instanceof c.c)) && (c.a(c.this) != null)) {
-            c.a(c.this).cw(((c.c)paramAnonymousView.getTag()).ecf, ((c.c)paramAnonymousView.getTag()).mediaId);
+            c.a(c.this).cx(((c.c)paramAnonymousView.getTag()).fWh, ((c.c)paramAnonymousView.getTag()).mediaId);
           }
           a.a(this, "com/tencent/mm/plugin/sns/ui/album/SnsAlbumItemAdapter$SnsAlbumItemViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(99870);
@@ -74,7 +81,7 @@ public final class c
   
   final class c
   {
-    public int ecf;
+    public int fWh;
     public String mediaId;
     
     c() {}
@@ -82,7 +89,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.album.c
  * JD-Core Version:    0.7.0.1
  */

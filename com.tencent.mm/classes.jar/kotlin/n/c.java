@@ -3,10 +3,19 @@ package kotlin.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"equals", "", "", "other", "ignoreCase", "isSurrogate", "plus", "", "kotlin-stdlib"}, hxG=1)
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"equals", "", "", "other", "ignoreCase", "isSurrogate", "plus", "", "kotlin-stdlib"}, iBN=1)
 public class c
   extends b
 {
+  public static final boolean P(char paramChar)
+  {
+    if (55296 > paramChar) {}
+    while (57343 < paramChar) {
+      return false;
+    }
+    return true;
+  }
+  
   public static final boolean a(char paramChar1, char paramChar2, boolean paramBoolean)
   {
     AppMethodBeat.i(129450);
@@ -32,15 +41,6 @@ public class c
     }
     AppMethodBeat.o(129450);
     return false;
-  }
-  
-  public static final boolean isSurrogate(char paramChar)
-  {
-    if (55296 > paramChar) {}
-    while (57343 < paramChar) {
-      return false;
-    }
-    return true;
   }
 }
 

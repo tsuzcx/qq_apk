@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.appbrand.b;
 public final class a
 {
   public String appId;
-  public String dJX;
-  public long jPY;
-  public String laR;
-  public String laS;
-  public a laT;
-  public boolean laU;
-  public boolean laV = true;
-  public boolean laW = true;
+  public String fCM;
+  public long mHi;
   public String mediaId;
   public int mediaType;
+  public String nVa;
+  public String nVb;
+  public a nVc;
+  public boolean nVd;
+  public boolean nVe = true;
+  public boolean nVf = true;
   
   public static final class a
   {

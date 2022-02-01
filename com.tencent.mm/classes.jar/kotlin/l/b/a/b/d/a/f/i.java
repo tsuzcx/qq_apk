@@ -9,66 +9,66 @@ import kotlin.x;
 
 public final class i
 {
-  private static final d TtZ;
-  private static final d Tua;
-  private static final d Tub;
-  private static final Map<String, j> Tuc;
+  private static final d aaWT;
+  private static final d aaWU;
+  private static final d aaWV;
+  private static final Map<String, j> aaWW;
   
   static
   {
     AppMethodBeat.i(58074);
-    TtZ = new d(g.TtT, null, false);
-    Tua = new d(g.TtU, null, false);
-    Tub = new d(g.TtU, null, true);
-    v localv = v.TvS;
-    final String str1 = v.btR("Object");
-    final String str2 = v.btT("Predicate");
-    final String str3 = v.btT("Function");
-    final String str4 = v.btT("Consumer");
-    final String str5 = v.btT("BiFunction");
-    final String str6 = v.btT("BiConsumer");
-    final String str7 = v.btT("UnaryOperator");
-    final String str8 = v.btS("stream/Stream");
-    final String str9 = v.btS("Optional");
+    aaWT = new d(g.aaWN, null, false);
+    aaWU = new d(g.aaWO, null, false);
+    aaWV = new d(g.aaWO, null, true);
+    v localv = v.aaYI;
+    final String str1 = v.bGU("Object");
+    final String str2 = v.bGW("Predicate");
+    final String str3 = v.bGW("Function");
+    final String str4 = v.bGW("Consumer");
+    final String str5 = v.bGW("BiFunction");
+    final String str6 = v.bGW("BiConsumer");
+    final String str7 = v.bGW("UnaryOperator");
+    final String str8 = v.bGV("stream/Stream");
+    final String str9 = v.bGV("Optional");
     m localm = new m();
-    new m.a(localm, v.btS("Iterator")).p("forEachRemaining", (b)new a(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, v.btR("Iterable")).p("spliterator", (b)new l(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    m.a locala = new m.a(localm, v.btS("Collection"));
-    locala.p("removeIf", (b)new v(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.p("stream", (b)new w(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.p("parallelStream", (b)new x(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, v.btS("List")).p("replaceAll", (b)new y(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala = new m.a(localm, v.btS("Map"));
-    locala.p("forEach", (b)new z(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.p("putIfAbsent", (b)new aa(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.p("replace", (b)new ab(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.p("replace", (b)new b(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.p("replaceAll", (b)new c(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.p("compute", (b)new d(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.p("computeIfAbsent", (b)new e(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.p("computeIfPresent", (b)new f(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.p("merge", (b)new g(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, v.bGV("Iterator")).r("forEachRemaining", (b)new a(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, v.bGU("Iterable")).r("spliterator", (b)new l(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    m.a locala = new m.a(localm, v.bGV("Collection"));
+    locala.r("removeIf", (b)new v(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.r("stream", (b)new w(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.r("parallelStream", (b)new x(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, v.bGV("List")).r("replaceAll", (b)new y(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala = new m.a(localm, v.bGV("Map"));
+    locala.r("forEach", (b)new z(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.r("putIfAbsent", (b)new aa(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.r("replace", (b)new ab(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.r("replace", (b)new b(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.r("replaceAll", (b)new c(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.r("compute", (b)new d(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.r("computeIfAbsent", (b)new e(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.r("computeIfPresent", (b)new f(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.r("merge", (b)new g(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
     locala = new m.a(localm, str9);
-    locala.p("empty", (b)new h(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.p("of", (b)new i(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.p("ofNullable", (b)new j(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.p("get", (b)new k(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.p("ifPresent", (b)new m(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, v.btR("ref/Reference")).p("get", (b)new n(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, str2).p("test", (b)new o(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, v.btT("BiPredicate")).p("test", (b)new p(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, str4).p("accept", (b)new q(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, str6).p("accept", (b)new r(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, str3).p("apply", (b)new s(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, str5).p("apply", (b)new t(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, v.btT("Supplier")).p("get", (b)new u(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    Tuc = localm.TuJ;
+    locala.r("empty", (b)new h(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.r("of", (b)new i(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.r("ofNullable", (b)new j(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.r("get", (b)new k(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.r("ifPresent", (b)new m(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, v.bGU("ref/Reference")).r("get", (b)new n(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, str2).r("test", (b)new o(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, v.bGW("BiPredicate")).r("test", (b)new p(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, str4).r("accept", (b)new q(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, str6).r("accept", (b)new r(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, str3).r("apply", (b)new s(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, str5).r("apply", (b)new t(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, v.bGW("Supplier")).r("get", (b)new u(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    aaWW = localm.aaXD;
     AppMethodBeat.o(58074);
   }
   
-  public static final Map<String, j> hEb()
+  public static final Map<String, j> iIv()
   {
-    return Tuc;
+    return aaWW;
   }
   
   static final class a
@@ -353,7 +353,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.f.i
  * JD-Core Version:    0.7.0.1
  */

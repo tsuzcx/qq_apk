@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.a;
 import com.tencent.luggage.d.b;
@@ -13,15 +13,16 @@ import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
 import com.tencent.mm.plugin.wepkg.model.WepkgVersion;
 import com.tencent.mm.plugin.wepkg.model.g;
 import com.tencent.mm.plugin.wepkg.model.j;
-import com.tencent.mm.protocal.protobuf.aod;
-import com.tencent.mm.protocal.protobuf.eya;
+import com.tencent.mm.protocal.protobuf.ape;
+import com.tencent.mm.protocal.protobuf.fiq;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.o;
-import java.util.ArrayList;
+import com.tencent.mm.vfs.q;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,14 +30,14 @@ import org.json.JSONObject;
 public class p
   extends br<a>
 {
-  private static JSONObject x(String paramString, List paramList)
+  private static JSONObject D(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(186860);
-    Object localObject1 = j.bcI(paramString);
+    AppMethodBeat.i(230986);
+    Object localObject1 = j.boH(paramString);
     if (localObject1 == null)
     {
       Log.i("MicroMsg.JsApiGetWepkgFileInfo", "not exist wepkg[%s]", new Object[] { paramString });
-      AppMethodBeat.o(186860);
+      AppMethodBeat.o(230986);
       return null;
     }
     paramString = new JSONObject();
@@ -44,43 +45,44 @@ public class p
     try
     {
       paramString.put("version", ((WepkgVersion)localObject1).version);
-      localObject1 = new o(((WepkgVersion)localObject1).pkgPath);
-      boolean bool = ((o)localObject1).exists();
+      localObject1 = new q(((WepkgVersion)localObject1).pkgPath);
+      boolean bool = ((q)localObject1).ifE();
       if (!bool)
       {
-        AppMethodBeat.o(186860);
+        AppMethodBeat.o(230986);
         return null;
       }
-      localObject1 = new g((o)localObject1);
-      Object localObject2 = ((g)localObject1).JNe;
+      localObject1 = new g((q)localObject1);
+      Object localObject2 = ((g)localObject1).QMx;
       if (localObject2 == null)
       {
-        AppMethodBeat.o(186860);
+        AppMethodBeat.o(230986);
         return null;
       }
-      if (((eya)localObject2).Nvh != null)
+      if (((fiq)localObject2).UIq != null)
       {
         localJSONArray = new JSONArray();
-        localObject2 = ((eya)localObject2).Nvh.iterator();
+        localObject2 = ((fiq)localObject2).UIq.iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          aod localaod = (aod)((Iterator)localObject2).next();
-          if (paramList.contains(localaod.LzG))
+          ape localape = (ape)((Iterator)localObject2).next();
+          if (paramMap.keySet().contains(localape.SCg))
           {
+            String str = (String)paramMap.get(localape.SCg);
             JSONObject localJSONObject = new JSONObject();
-            localJSONObject.put("rid", localaod.LzG);
-            localJSONObject.put("size", localaod.oUq);
-            localJSONObject.put("mimeType", localaod.LzI);
-            localJSONObject.put("data", ((g)localObject1).bcD(localaod.LzG));
+            localJSONObject.put("rid", localape.SCg);
+            localJSONObject.put("size", localape.rWo);
+            localJSONObject.put("mimeType", localape.SCi);
+            localJSONObject.put("data", ((g)localObject1).mW(localape.SCg, str));
             localJSONArray.put(localJSONObject);
           }
         }
       }
-      AppMethodBeat.o(186860);
+      AppMethodBeat.o(230986);
     }
-    catch (JSONException paramList)
+    catch (JSONException paramMap)
     {
-      Log.e("MicroMsg.JsApiGetWepkgFileInfo", "errMsg:%s", new Object[] { paramList.getMessage() });
+      Log.e("MicroMsg.JsApiGetWepkgFileInfo", "errMsg:%s", new Object[] { paramMap.getMessage() });
     }
     for (;;)
     {
@@ -94,44 +96,45 @@ public class p
   public final void b(final b<a>.a paramb)
   {
     int i = 0;
-    AppMethodBeat.i(186859);
+    AppMethodBeat.i(230982);
     Log.i("MicroMsg.JsApiGetWepkgFileInfo", "invokeInOwn");
-    Object localObject = paramb.ctb.csi;
+    Object localObject = paramb.crh.cqn;
     if (localObject == null)
     {
-      paramb.c("invalid_params", null);
-      AppMethodBeat.o(186859);
+      paramb.a("invalid_params", null);
+      AppMethodBeat.o(230982);
       return;
     }
     final String str = ((JSONObject)localObject).optString("wepkgId");
     localObject = ((JSONObject)localObject).optJSONArray("files");
     if ((Util.isNullOrNil(str)) || (localObject == null) || (((JSONArray)localObject).length() == 0))
     {
-      paramb.c("null_data", null);
-      AppMethodBeat.o(186859);
+      paramb.a("null_data", null);
+      AppMethodBeat.o(230982);
       return;
     }
     Log.i("MicroMsg.JsApiGetWepkgFileInfo", "wepkgId:[%s] files:[%s]", new Object[] { str, ((JSONArray)localObject).toString() });
-    final ArrayList localArrayList = new ArrayList();
+    final HashMap localHashMap = new HashMap();
     for (;;)
     {
       if (i < ((JSONArray)localObject).length()) {}
       try
       {
-        localArrayList.add(((JSONArray)localObject).getString(i));
-        label146:
+        JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
+        localHashMap.put(localJSONObject.optString("rid"), localJSONObject.optString("format"));
+        label162:
         i += 1;
         continue;
-        h.RTc.aX(new Runnable()
+        h.ZvG.be(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(186858);
-            JSONObject localJSONObject2 = p.y(str, localArrayList);
+            AppMethodBeat.i(231120);
+            JSONObject localJSONObject2 = p.E(str, localHashMap);
             if (localJSONObject2 == null)
             {
-              paramb.c("fail", null);
-              AppMethodBeat.o(186858);
+              paramb.a("fail", null);
+              AppMethodBeat.o(231120);
               return;
             }
             JSONObject localJSONObject1 = new JSONObject();
@@ -139,8 +142,8 @@ public class p
             {
               localJSONObject1.put("data", localJSONObject2);
               label53:
-              paramb.c("", localJSONObject1);
-              AppMethodBeat.o(186858);
+              paramb.a("", localJSONObject1);
+              AppMethodBeat.o(231120);
               return;
             }
             catch (JSONException localJSONException)
@@ -149,17 +152,17 @@ public class p
             }
           }
         });
-        AppMethodBeat.o(186859);
+        AppMethodBeat.o(230982);
         return;
       }
       catch (JSONException localJSONException)
       {
-        break label146;
+        break label162;
       }
     }
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

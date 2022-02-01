@@ -1,107 +1,72 @@
 package com.tencent.mm.plugin.appbrand.jsapi.j;
 
-import android.app.Activity;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.jsapi.q;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.s;
-import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.plugin.luckymoney.appbrand.a;
+import com.tencent.mm.plugin.appbrand.jsapi.az;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.utils.b.a.a;
+import com.tencent.mm.plugin.appbrand.utils.b.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
-import org.json.JSONArray;
+import java.util.Map;
 import org.json.JSONObject;
 
-public final class b
-  extends d<c>
+final class b
+  extends az
+  implements a.b
 {
-  private static final int CTRL_INDEX = 423;
-  private static final String NAME = "sendRedPacket";
+  private static final int CTRL_INDEX = 341;
+  private static final String NAME = "onLocationChange";
+  private final e oUF;
   
-  public static final class a
-    extends q
+  b(e parame)
   {
-    public a(p paramp, s params, ac paramac, JSONObject paramJSONObject, int paramInt)
+    this.oUF = parame;
+  }
+  
+  public final void a(int paramInt, String paramString, a.a parama)
+  {
+    AppMethodBeat.i(143626);
+    if (paramInt != 0)
     {
-      super(params, paramac, paramJSONObject, paramInt);
+      Log.e("MicroMsg.AppBrand.EventOnLocationChange", "errCode:%d, errStr:%s", new Object[] { Integer.valueOf(paramInt), paramString });
+      AppMethodBeat.o(143626);
+      return;
     }
-    
-    public final void C(Intent paramIntent)
+    paramString = new HashMap(7);
+    paramString.put("longitude", Double.valueOf(parama.longitude));
+    paramString.put("latitude", Double.valueOf(parama.latitude));
+    paramString.put("speed", Double.valueOf(parama.fqE));
+    paramString.put("accuracy", Double.valueOf(parama.rjO));
+    paramString.put("altitude", Double.valueOf(parama.altitude));
+    paramString.put("verticalAccuracy", Float.valueOf(0.0F));
+    paramString.put("horizontalAccuracy", Double.valueOf(parama.rjO));
+    if (!Util.isNullOrNil(parama.buildingId))
     {
-      AppMethodBeat.i(46393);
-      Log.i("MicroMsg.JsApiSendRedPacket", "PrepareLuckyMoneyRequest.onResult ");
-      if ((paramIntent == null) || (paramIntent.getStringExtra("sendId") == null))
-      {
-        Log.e("MicroMsg.JsApiSendRedPacket", "onResult data = [%s]", new Object[] { paramIntent });
-        onError(-1, "fail:system error {{result data error or sendId is null}}");
-        AppMethodBeat.o(46393);
-        return;
-      }
-      String str = paramIntent.getStringExtra("sendId");
-      Log.i("MicroMsg.JsApiSendRedPacket", "PrepareLuckyMoneyRequest.onResult sendId = %s,share = %b", new Object[] { str, Boolean.valueOf(paramIntent.getBooleanExtra("result_share_msg", false)) });
-      Log.i("MicroMsg.JsApiSendRedPacket", "GetLuckMoneyRequest.onResult");
-      paramIntent = new HashMap();
-      paramIntent.put("errCode", Integer.valueOf(0));
-      paramIntent.put("redPacketId", str);
-      J(paramIntent);
-      AppMethodBeat.o(46393);
+      paramString.put("buildingId", parama.buildingId);
+      paramString.put("floorName", parama.floorName);
     }
-    
-    public final boolean a(Activity paramActivity, JSONObject paramJSONObject, int paramInt)
+    paramString.put("provider", parama.provider);
+    paramString.put("indoorLocationType", Integer.valueOf(parama.rjP));
+    paramString.put("direction", Float.valueOf(parama.rjQ));
+    paramString.put("steps", Double.valueOf(parama.rjR));
+    paramString.put("type", parama.type);
+    paramString = new JSONObject(paramString).toString();
+    Log.v("MicroMsg.AppBrand.EventOnLocationChange", "onLocationChanged %s, %s, %s", new Object[] { this.oUF.getAppId(), parama.provider, paramString });
+    try
     {
-      int j = 0;
-      AppMethodBeat.i(174840);
-      String str = paramJSONObject.optString("defaultWishingWord", null);
-      paramJSONObject = paramJSONObject.optJSONArray("scope");
-      boolean bool1;
-      boolean bool2;
-      if (paramJSONObject != null)
-      {
-        bool1 = paramJSONObject.toString().contains("friend");
-        bool2 = paramJSONObject.toString().contains("public");
-        if ((bool1) && (!bool2)) {
-          break label127;
-        }
-      }
-      label127:
-      for (int i = 1;; i = 0)
-      {
-        j = i;
-        if (bool2)
-        {
-          j = i;
-          if (bool1) {
-            j = 2;
-          }
-        }
-        for (;;)
-        {
-          ((a)g.af(a.class)).a(paramActivity, NY().getAppId(), j, str, paramInt);
-          AppMethodBeat.o(174840);
-          return true;
-          Log.i("MicroMsg.JsApiSendRedPacket", "launch scope is nil");
-        }
-      }
+      j(this.oUF).agU(paramString).bPO();
+      return;
     }
-    
-    public final void onError(int paramInt, String paramString)
+    finally
     {
-      AppMethodBeat.i(46394);
-      Log.i("MicroMsg.JsApiSendRedPacket", "onError errCode: %d,errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("errCode", Integer.valueOf(paramInt));
-      o(paramString, localHashMap);
-      AppMethodBeat.o(46394);
+      AppMethodBeat.o(143626);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.j.b
  * JD-Core Version:    0.7.0.1
  */

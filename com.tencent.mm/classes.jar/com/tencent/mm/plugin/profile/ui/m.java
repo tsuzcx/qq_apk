@@ -5,10 +5,11 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.R.l;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.pluginsdk.b.a;
+import com.tencent.mm.pluginsdk.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.MStorageEx;
@@ -22,7 +23,7 @@ import junit.framework.Assert;
 abstract class m
   implements a, MStorageEx.IOnStorageChange
 {
-  protected HelperHeaderPreference.a BfU;
+  protected HelperHeaderPreference.a GZD;
   protected as contact;
   protected Context context;
   protected f screen;
@@ -30,26 +31,26 @@ abstract class m
   public m(Context paramContext, HelperHeaderPreference.a parama)
   {
     this.context = paramContext;
-    this.BfU = parama;
+    this.GZD = parama;
   }
   
-  private void cCt()
+  private void cQY()
   {
     this.screen.removeAll();
-    this.screen.addPreferencesFromResource(2132017177);
-    boolean bool = eEv();
-    HelperHeaderPreference localHelperHeaderPreference = (HelperHeaderPreference)this.screen.bmg("contact_info_header_helper");
+    this.screen.auC(getResourceId());
+    boolean bool = fqn();
+    HelperHeaderPreference localHelperHeaderPreference = (HelperHeaderPreference)this.screen.byG("contact_info_header_helper");
     if (localHelperHeaderPreference != null) {
-      localHelperHeaderPreference.a(this.contact, this.BfU);
+      localHelperHeaderPreference.a(this.contact, this.GZD);
     }
     if (!bool)
     {
-      this.screen.bmi("contact_info_plugin_view");
-      this.screen.bmi("contact_info_plugin_clear_data");
-      this.screen.bmi("contact_info_plugin_uninstall");
+      this.screen.byI("contact_info_plugin_view");
+      this.screen.byI("contact_info_plugin_clear_data");
+      this.screen.byI("contact_info_plugin_uninstall");
       return;
     }
-    this.screen.bmi("contact_info_plugin_install");
+    this.screen.byI("contact_info_plugin_install");
   }
   
   public boolean a(f paramf, as paramas, boolean paramBoolean, int paramInt)
@@ -72,22 +73,22 @@ abstract class m
         paramBoolean = true;
       }
       Assert.assertTrue(paramBoolean);
-      bg.aVF();
-      c.azQ().add(this);
+      bh.beI();
+      c.aHp().add(this);
       this.contact = paramas;
       this.screen = paramf;
-      cCt();
+      cQY();
       return true;
       paramBoolean = false;
       break;
     }
   }
   
-  public boolean alD(String paramString)
+  public boolean atw(String paramString)
   {
     if ("contact_info_plugin_clear_data".equals(paramString))
     {
-      h.c(this.context, this.context.getString(2131757858), "", this.context.getString(2131755764), this.context.getString(2131755761), new DialogInterface.OnClickListener()
+      h.c(this.context, this.context.getString(R.l.contact_info_clear_data), "", this.context.getString(R.l.app_clear), this.context.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -100,17 +101,17 @@ abstract class m
     }
     if (paramString.equals("contact_info_plugin_install"))
     {
-      sH(true);
+      vY(true);
       return true;
     }
     if (paramString.equals("contact_info_plugin_uninstall"))
     {
-      h.c(this.context, this.context.getString(2131765548), "", this.context.getString(2131755764), this.context.getString(2131755761), new DialogInterface.OnClickListener()
+      h.c(this.context, this.context.getString(R.l.settings_plugins_uninstall_hint), "", this.context.getString(R.l.app_clear), this.context.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(27205);
-          m.this.sH(false);
+          m.this.vY(false);
           AppMethodBeat.o(27205);
         }
       }, null);
@@ -120,17 +121,19 @@ abstract class m
     return false;
   }
   
-  public boolean cCs()
+  public boolean cQX()
   {
-    bg.aVF();
-    c.azQ().remove(this);
-    this.screen.bmg("contact_info_header_helper");
+    bh.beI();
+    c.aHp().remove(this);
+    this.screen.byG("contact_info_header_helper");
     return true;
   }
   
   protected abstract void clear();
   
-  protected abstract boolean eEv();
+  protected abstract boolean fqn();
+  
+  protected abstract int getResourceId();
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
@@ -138,17 +141,17 @@ abstract class m
   {
     int i = Util.nullAsInt(paramObject, 0);
     Log.d("MicroMsg.ContactWidgetPlugin", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramMStorageEx });
-    bg.aVF();
-    if ((paramMStorageEx != c.azQ()) || (i <= 0)) {
+    bh.beI();
+    if ((paramMStorageEx != c.aHp()) || (i <= 0)) {
       Log.e("MicroMsg.ContactWidgetPlugin", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramMStorageEx });
     }
     while ((i != 40) && (i != 34) && (i != 7)) {
       return;
     }
-    cCt();
+    cQY();
   }
   
-  protected abstract void sH(boolean paramBoolean);
+  protected abstract void vY(boolean paramBoolean);
 }
 
 

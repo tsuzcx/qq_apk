@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.offline;
 
 public abstract interface b
 {
-  public abstract void ctk();
+  public abstract void cGM();
 }
 
 

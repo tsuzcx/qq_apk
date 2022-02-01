@@ -3,8 +3,7 @@ package com.tencent.mm.plugin.lite.jsapi.a;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.os.Bundle;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.liteapp.storage.WxaLiteAppInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.lite.LiteAppCenter;
@@ -26,16 +25,17 @@ import org.json.JSONObject;
 public class b
   extends com.tencent.mm.plugin.lite.jsapi.b
 {
-  public final void a(final String paramString, JSONObject paramJSONObject)
+  public final void a(final String paramString, JSONObject paramJSONObject, final boolean paramBoolean)
   {
-    AppMethodBeat.i(198840);
-    f.ecC();
-    WxaLiteAppInfo localWxaLiteAppInfo = f.aCT(paramString);
+    AppMethodBeat.i(233580);
+    f.eLH();
+    WxaLiteAppInfo localWxaLiteAppInfo = f.cY(paramString);
     if (localWxaLiteAppInfo == null)
     {
       Log.w("LiteAppJsApiLogin", "get LiteAppInfo fail");
-      this.yEn.aCS("can not find liteApp from local storage");
-      AppMethodBeat.o(198840);
+      com.tencent.mm.plugin.report.service.h.IzE.p(1293L, 124L, 1L);
+      this.Ega.aNa("can not find liteApp from local storage");
+      AppMethodBeat.o(233580);
       return;
     }
     final boolean[] arrayOfBoolean = new boolean[1];
@@ -48,33 +48,33 @@ public class b
         arrayOfString[0] = paramJSONObject.getString("url");
       }
       if (arrayOfString[0] == null) {
-        arrayOfString[0] = LiteAppCenter.getAuthUrl(localWxaLiteAppInfo.path, localWxaLiteAppInfo.appId, localWxaLiteAppInfo.crh);
+        arrayOfString[0] = LiteAppCenter.getAuthUrl(localWxaLiteAppInfo.path, localWxaLiteAppInfo.appId, localWxaLiteAppInfo.coX);
       }
       if ((arrayOfString[0] == null) || (arrayOfString[0].isEmpty()))
       {
         Log.w("LiteAppJsApiLogin", "get authurl fail");
-        this.yEn.aCS("get authUrl fail, please make sure config authUrl in config file");
-        AppMethodBeat.o(198840);
+        this.Ega.aNa("get authUrl fail, please make sure config authUrl in config file");
+        AppMethodBeat.o(233580);
         return;
       }
       long l = 60000L;
       if (paramJSONObject.has("timeout")) {
         l = paramJSONObject.getLong("timeout");
       }
-      h.RTc.o(new Runnable()
+      com.tencent.e.h.ZvG.o(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(198837);
+          AppMethodBeat.i(233837);
           synchronized (arrayOfBoolean)
           {
             if (arrayOfBoolean[0] == 0)
             {
               Log.w("LiteAppJsApiLogin", "geta8key timeout");
               arrayOfBoolean[0] = true;
-              b.a(b.this).aCS("getA8Key timeout");
+              b.a(b.this).aNa("getA8Key timeout");
             }
-            AppMethodBeat.o(198837);
+            AppMethodBeat.o(233837);
             return;
           }
         }
@@ -84,14 +84,14 @@ public class b
     {
       for (;;)
       {
-        this.yEn.aCS("json exception");
+        this.Ega.aNa("json exception");
       }
     }
-    a.yEf.a(arrayOfString[0], new a.b()
+    a.EfS.a(arrayOfString[0], new a.b()
     {
       public final void a(a.a paramAnonymousa)
       {
-        AppMethodBeat.i(198839);
+        AppMethodBeat.i(233673);
         synchronized (arrayOfBoolean)
         {
           com.tencent.mm.plugin.lite.storage.c localc;
@@ -100,16 +100,16 @@ public class b
           {
             Log.i("LiteAppJsApiLogin", "geta8key:" + paramString);
             arrayOfBoolean[0] = true;
-            if ((paramString != null) && (com.tencent.mm.plugin.lite.c.yDV.contains(paramString))) {
+            if ((paramString != null) && (com.tencent.mm.plugin.lite.c.EfI.contains(paramString))) {
               paramAnonymousa.mHeaders.put("referer", "https://game.weixin.qq.com/");
             }
-            LiteAppCenter.setAuthInfo(paramString, paramAnonymousa.yEk, paramAnonymousa.mHeaders, paramAnonymousa.yEl);
+            LiteAppCenter.setAuthInfo(paramString, paramAnonymousa.EfX, paramAnonymousa.mHeaders, paramAnonymousa.EfY, paramBoolean);
             localc = new com.tencent.mm.plugin.lite.storage.c();
             localc.field_host = arrayOfString[0];
             localJSONObject = new JSONObject();
-            if (paramAnonymousa.yEl != null)
+            if (paramAnonymousa.EfY != null)
             {
-              Iterator localIterator = paramAnonymousa.yEl.entrySet().iterator();
+              Iterator localIterator = paramAnonymousa.EfY.entrySet().iterator();
               while (localIterator.hasNext())
               {
                 Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -120,11 +120,11 @@ public class b
                 catch (JSONException localJSONException) {}
               }
             }
-            localc.field_param = paramAnonymousa.yEk;
+            localc.field_param = paramAnonymousa.EfX;
             localc.field_paramMap = localJSONObject.toString();
             localc.field_updateTime = (System.currentTimeMillis() / 1000L);
             localc.field_headerMap = new JSONObject(paramAnonymousa.mHeaders).toString();
-            f.ecC();
+            f.eLH();
             paramAnonymousa = new Bundle();
             paramAnonymousa.putString("host", localc.field_host);
             paramAnonymousa.putString("param", localc.field_param);
@@ -135,8 +135,8 @@ public class b
           try
           {
             MMApplicationContext.getContext().getContentResolver().call(f.getUri(), "insertLiteAppAuthInfo", localc.field_host, paramAnonymousa);
-            b.c(b.this).aW(localJSONObject);
-            AppMethodBeat.o(198839);
+            b.c(b.this).bd(localJSONObject);
+            AppMethodBeat.o(233673);
             return;
           }
           catch (Exception paramAnonymousa)
@@ -151,21 +151,21 @@ public class b
       
       public final void onError()
       {
-        AppMethodBeat.i(198838);
+        AppMethodBeat.i(233672);
         synchronized (arrayOfBoolean)
         {
           if (arrayOfBoolean[0] == 0)
           {
             Log.w("LiteAppJsApiLogin", "geta8key fail");
             arrayOfBoolean[0] = true;
-            b.b(b.this).aCS("getA8Key fail");
+            b.b(b.this).aNa("getA8Key fail");
           }
-          AppMethodBeat.o(198838);
+          AppMethodBeat.o(233672);
           return;
         }
       }
     });
-    AppMethodBeat.o(198840);
+    AppMethodBeat.o(233580);
   }
 }
 

@@ -3,8 +3,7 @@ package com.tencent.kinda.framework.module.impl;
 import com.tencent.kinda.gen.KGenDigitalCrtReq;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.p;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
@@ -30,9 +29,9 @@ public class NetSceneKindaGenDigitalCert
     baseRequset(localHashMap1);
     if (paramKGenDigitalCrtReq.mType == 1)
     {
-      localHashMap1.put("type", com.tencent.mm.compatible.util.q.encode("1"));
-      localHashMap1.put("id_no", com.tencent.mm.compatible.util.q.encode(paramKGenDigitalCrtReq.getIdNo()));
-      localHashMap1.put("id_type", com.tencent.mm.compatible.util.q.encode(paramKGenDigitalCrtReq.getIdType()));
+      localHashMap1.put("type", com.tencent.mm.compatible.util.q.aT("1"));
+      localHashMap1.put("id_no", com.tencent.mm.compatible.util.q.aT(paramKGenDigitalCrtReq.getIdNo()));
+      localHashMap1.put("id_type", com.tencent.mm.compatible.util.q.aT(paramKGenDigitalCrtReq.getIdType()));
     }
     for (;;)
     {
@@ -42,21 +41,21 @@ public class NetSceneKindaGenDigitalCert
       return;
       if (paramKGenDigitalCrtReq.mType == 2)
       {
-        localHashMap1.put("type", com.tencent.mm.compatible.util.q.encode("2"));
-        localHashMap1.put("crt_sms", com.tencent.mm.compatible.util.q.encode(paramKGenDigitalCrtReq.getVerifyCode()));
-        localHashMap1.put("reqkey", com.tencent.mm.compatible.util.q.encode(paramKGenDigitalCrtReq.getReqKey()));
+        localHashMap1.put("type", com.tencent.mm.compatible.util.q.aT("2"));
+        localHashMap1.put("crt_sms", com.tencent.mm.compatible.util.q.aT(paramKGenDigitalCrtReq.getVerifyCode()));
+        localHashMap1.put("reqkey", com.tencent.mm.compatible.util.q.aT(paramKGenDigitalCrtReq.getReqKey()));
       }
       else if (paramKGenDigitalCrtReq.mType == 3)
       {
-        localHashMap1.put("type", com.tencent.mm.compatible.util.q.encode("3"));
-        localHashMap1.put("crt_token", com.tencent.mm.compatible.util.q.encode(paramKGenDigitalCrtReq.getToken()));
+        localHashMap1.put("type", com.tencent.mm.compatible.util.q.aT("3"));
+        localHashMap1.put("crt_token", com.tencent.mm.compatible.util.q.aT(paramKGenDigitalCrtReq.getToken()));
       }
       else if (paramKGenDigitalCrtReq.mType == 4)
       {
-        localHashMap1.put("type", com.tencent.mm.compatible.util.q.encode("4"));
-        localHashMap1.put("id_type", com.tencent.mm.compatible.util.q.encode(paramKGenDigitalCrtReq.getIdType()));
-        localHashMap1.put("cre_tail", com.tencent.mm.compatible.util.q.encode(paramKGenDigitalCrtReq.getCreTail()));
-        localHashMap1.put("reqkey", com.tencent.mm.compatible.util.q.encode(paramKGenDigitalCrtReq.getReqKey()));
+        localHashMap1.put("type", com.tencent.mm.compatible.util.q.aT("4"));
+        localHashMap1.put("id_type", com.tencent.mm.compatible.util.q.aT(paramKGenDigitalCrtReq.getIdType()));
+        localHashMap1.put("cre_tail", com.tencent.mm.compatible.util.q.aT(paramKGenDigitalCrtReq.getCreTail()));
+        localHashMap1.put("reqkey", com.tencent.mm.compatible.util.q.aT(paramKGenDigitalCrtReq.getReqKey()));
       }
       else
       {
@@ -69,12 +68,12 @@ public class NetSceneKindaGenDigitalCert
   {
     int k = 0;
     AppMethodBeat.i(18666);
-    g.aAi();
-    g.aAf();
-    Object localObject3 = p.getString(a.getUin());
-    String str1 = com.tencent.mm.compatible.deviceinfo.q.dr(false);
+    h.aHH();
+    h.aHE();
+    Object localObject3 = p.getString(com.tencent.mm.kernel.b.getUin());
+    String str1 = com.tencent.mm.compatible.deviceinfo.q.dR(false);
     byte[] arrayOfByte = new byte[16];
-    Object localObject2 = y.hhp().getBytes();
+    Object localObject2 = y.iiR().getBytes();
     if (localObject2 != null)
     {
       localObject1 = localObject2;
@@ -104,20 +103,20 @@ public class NetSceneKindaGenDigitalCert
     String str2 = MD5Util.getMD5String((String)localObject3 + (String)localObject2 + new String(arrayOfByte));
     Log.i("kinda.NetSceneKindaGenDigitalCert", "salt " + new String(arrayOfByte));
     Log.i("kinda.NetSceneKindaGenDigitalCert", "crt_csr uin: %s: devideid: %s crt: %s", new Object[] { localObject3, str1, str2 });
-    localObject3 = com.tencent.mm.wallet_core.c.b.hhj();
-    com.tencent.mm.wallet_core.b.hgC();
+    localObject3 = com.tencent.mm.wallet_core.c.b.iiL();
+    com.tencent.mm.wallet_core.b.iie();
     i = k;
-    if (com.tencent.mm.wallet_core.b.hgF()) {
+    if (com.tencent.mm.wallet_core.b.iih()) {
       i = 1;
     }
-    localObject3 = ((com.tencent.mm.wallet_core.c.b)localObject3).hr(str2, i);
+    localObject3 = ((com.tencent.mm.wallet_core.c.b)localObject3).ia(str2, i);
     try
     {
-      paramMap.put("sn_salt", com.tencent.mm.compatible.util.q.encode((String)localObject1));
-      paramMap.put("crt_csr", com.tencent.mm.compatible.util.q.encode((String)localObject3));
+      paramMap.put("sn_salt", com.tencent.mm.compatible.util.q.aT((String)localObject1));
+      paramMap.put("crt_csr", com.tencent.mm.compatible.util.q.aT((String)localObject3));
       paramMap.put("crt_device_id", localObject2);
-      paramMap.put("device_os", d.ics);
-      paramMap.put("device_name", d.KyL);
+      paramMap.put("device_os", d.kQZ);
+      paramMap.put("device_name", d.RAz);
       AppMethodBeat.o(18666);
       return;
     }
@@ -162,8 +161,8 @@ public class NetSceneKindaGenDigitalCert
         paramJSONObject = paramJSONObject.optString("crt_no");
         if (parame.errCode == 0)
         {
-          boolean bool = com.tencent.mm.wallet_core.c.b.hhj().importCert(paramJSONObject, str);
-          ad.bpn(paramJSONObject);
+          boolean bool = com.tencent.mm.wallet_core.c.b.iiL().importCert(paramJSONObject, str);
+          ad.bCk(paramJSONObject);
           if (bool)
           {
             Log.i("kinda.NetSceneKindaGenDigitalCert", "importCert crt_crt success");
@@ -174,7 +173,7 @@ public class NetSceneKindaGenDigitalCert
           Log.e("kinda.NetSceneKindaGenDigitalCert", "importCert crt_crt fail");
           continue;
         }
-        com.tencent.mm.wallet_core.c.b.hhj().hhk();
+        com.tencent.mm.wallet_core.c.b.iiL().iiM();
       }
       catch (Exception parame)
       {

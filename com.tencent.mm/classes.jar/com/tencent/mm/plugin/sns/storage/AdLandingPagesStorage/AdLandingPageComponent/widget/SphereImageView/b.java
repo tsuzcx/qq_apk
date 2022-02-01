@@ -13,20 +13,20 @@ import java.util.ArrayList;
 public final class b
   implements GLTextureView.m
 {
-  private int EkA;
-  private int EkB;
-  private final float[] EkC;
-  private FloatBuffer EkD;
-  private FloatBuffer EkE;
-  int EkF;
-  public float EkG;
-  public float EkH;
-  public float EkI;
-  final float[] EkJ;
-  protected float EkK;
-  protected float EkL;
-  protected float EkM;
-  private int Ekz;
+  private int KxI;
+  private int KxJ;
+  private int KxK;
+  private final float[] KxL;
+  private FloatBuffer KxM;
+  private FloatBuffer KxN;
+  int KxO;
+  public float KxP;
+  public float KxQ;
+  public float KxR;
+  final float[] KxS;
+  protected float KxT;
+  protected float KxU;
+  protected float KxV;
   protected Context mContext;
   final float[] mMVPMatrix;
   private int mProgram;
@@ -35,14 +35,14 @@ public final class b
   public b(Context paramContext)
   {
     AppMethodBeat.i(97272);
-    this.EkC = new float[16];
-    this.EkG = 0.0F;
-    this.EkH = 90.0F;
-    this.EkJ = new float[16];
+    this.KxL = new float[16];
+    this.KxP = 0.0F;
+    this.KxQ = 90.0F;
+    this.KxS = new float[16];
     this.mMVPMatrix = new float[16];
-    this.EkK = 1.0F;
-    this.EkL = 20.0F;
-    this.EkM = 0.0F;
+    this.KxT = 1.0F;
+    this.KxU = 20.0F;
+    this.KxV = 0.0F;
     this.mContext = paramContext;
     init();
     AppMethodBeat.o(97272);
@@ -150,9 +150,9 @@ public final class b
         arrayOfFloat[i] = ((Float)((ArrayList)localObject).get(i)).floatValue();
         i += 1;
       }
-      this.EkE = ByteBuffer.allocateDirect(arrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-      this.EkE.put(arrayOfFloat);
-      this.EkE.position(0);
+      this.KxN = ByteBuffer.allocateDirect(arrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+      this.KxN.put(arrayOfFloat);
+      this.KxN.position(0);
       localObject = new float[this.mSize * 3];
       i = 0;
       while (i < localObject.length)
@@ -160,9 +160,9 @@ public final class b
         localObject[i] = ((Float)localArrayList.get(i)).floatValue();
         i += 1;
       }
-      this.EkD = ByteBuffer.allocateDirect(localObject.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-      this.EkD.put((float[])localObject);
-      this.EkD.position(0);
+      this.KxM = ByteBuffer.allocateDirect(localObject.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+      this.KxM.put((float[])localObject);
+      this.KxM.position(0);
       Log.i("SphereImageView.SphereRender", "init, timeCost=" + (System.currentTimeMillis() - l));
       AppMethodBeat.o(97273);
       return;
@@ -178,7 +178,7 @@ public final class b
     }
   }
   
-  public final void an(float paramFloat1, float paramFloat2)
+  public final void ap(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(97274);
     Log.i("SphereImageView.SphereRender", "setScaleParams, near=" + paramFloat1 + ", far=30.0, z=" + paramFloat2);
@@ -187,34 +187,34 @@ public final class b
       AppMethodBeat.o(97274);
       return;
     }
-    this.EkK = paramFloat1;
-    this.EkL = 30.0F;
-    this.EkM = paramFloat2;
+    this.KxT = paramFloat1;
+    this.KxU = 30.0F;
+    this.KxV = paramFloat2;
     AppMethodBeat.o(97274);
   }
   
-  public final void fes()
+  public final void fSm()
   {
     AppMethodBeat.i(97277);
     Log.i("SphereImageView.SphereRender", "onSurfaceCreated");
     AppMethodBeat.o(97277);
   }
   
-  public final void fet()
+  public final void fSn()
   {
     AppMethodBeat.i(97275);
     try
     {
-      Matrix.rotateM(this.EkJ, 0, -this.EkG, 1.0F, 0.0F, 0.0F);
-      Matrix.rotateM(this.EkJ, 0, -this.EkH, 0.0F, 1.0F, 0.0F);
-      Matrix.rotateM(this.EkJ, 0, -this.EkI, 0.0F, 0.0F, 1.0F);
+      Matrix.rotateM(this.KxS, 0, -this.KxP, 1.0F, 0.0F, 0.0F);
+      Matrix.rotateM(this.KxS, 0, -this.KxQ, 0.0F, 1.0F, 0.0F);
+      Matrix.rotateM(this.KxS, 0, -this.KxR, 0.0F, 0.0F, 1.0F);
       GLES20.glClearColor(1.0F, 1.0F, 1.0F, 1.0F);
       GLES20.glClear(16640);
       GLES20.glActiveTexture(33984);
-      GLES20.glBindTexture(3553, this.EkF);
-      int i = this.EkA;
-      Matrix.multiplyMM(this.mMVPMatrix, 0, this.EkC, 0, this.EkJ, 0);
-      Matrix.setIdentityM(this.EkJ, 0);
+      GLES20.glBindTexture(3553, this.KxO);
+      int i = this.KxJ;
+      Matrix.multiplyMM(this.mMVPMatrix, 0, this.KxL, 0, this.KxS, 0);
+      Matrix.setIdentityM(this.KxS, 0);
       GLES20.glUniformMatrix4fv(i, 1, false, this.mMVPMatrix, 0);
       GLES20.glDrawArrays(4, 0, this.mSize);
       AppMethodBeat.o(97275);
@@ -227,12 +227,12 @@ public final class b
     }
   }
   
-  public final void iF(int paramInt1, int paramInt2)
+  public final void jO(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(97276);
     try
     {
-      Log.i("SphereImageView.SphereRender", "onSurfaceChanged, w=" + paramInt1 + ", h=" + paramInt2 + "， textureID=" + this.EkF + ", near=" + this.EkK + ", far=" + this.EkL + ", z=" + this.EkM);
+      Log.i("SphereImageView.SphereRender", "onSurfaceChanged, w=" + paramInt1 + ", h=" + paramInt2 + "， textureID=" + this.KxO + ", near=" + this.KxT + ", far=" + this.KxU + ", z=" + this.KxV);
       long l1 = System.currentTimeMillis();
       if (paramInt2 == 0)
       {
@@ -242,11 +242,11 @@ public final class b
       GLES20.glViewport(0, 0, paramInt1, paramInt2);
       GLES20.glEnable(2884);
       float f = paramInt1 / paramInt2;
-      Matrix.frustumM(this.EkC, 0, -f, f, -1.0F, 1.0F, this.EkK, this.EkL);
-      Matrix.setIdentityM(this.EkJ, 0);
+      Matrix.frustumM(this.KxL, 0, -f, f, -1.0F, 1.0F, this.KxT, this.KxU);
+      Matrix.setIdentityM(this.KxS, 0);
       Matrix.setIdentityM(this.mMVPMatrix, 0);
-      Matrix.translateM(this.EkC, 0, 0.0F, 0.0F, this.EkM);
-      Matrix.scaleM(this.EkC, 0, 4.0F, 4.0F, 4.0F);
+      Matrix.translateM(this.KxL, 0, 0.0F, 0.0F, this.KxV);
+      Matrix.scaleM(this.KxL, 0, 4.0F, 4.0F, 4.0F);
       paramInt1 = GLES20.glCreateProgram();
       paramInt2 = GLES20.glCreateShader(35632);
       int i = GLES20.glCreateShader(35633);
@@ -259,16 +259,16 @@ public final class b
       GLES20.glLinkProgram(paramInt1);
       this.mProgram = paramInt1;
       GLES20.glUseProgram(this.mProgram);
-      this.Ekz = GLES20.glGetAttribLocation(this.mProgram, "aPosition");
-      this.EkA = GLES20.glGetUniformLocation(this.mProgram, "uProjectMatrix");
-      this.EkB = GLES20.glGetAttribLocation(this.mProgram, "aTextureCoord");
-      Log.i("SphereImageView.SphereRender", "aPosition:" + this.Ekz);
-      Log.i("SphereImageView.SphereRender", "uProjectMatrix:" + this.EkA);
-      Log.i("SphereImageView.SphereRender", "aTextureCoord:" + this.EkB);
-      GLES20.glVertexAttribPointer(this.Ekz, 3, 5126, false, 0, this.EkD);
-      GLES20.glVertexAttribPointer(this.EkB, 2, 5126, false, 0, this.EkE);
-      GLES20.glEnableVertexAttribArray(this.Ekz);
-      GLES20.glEnableVertexAttribArray(this.EkB);
+      this.KxI = GLES20.glGetAttribLocation(this.mProgram, "aPosition");
+      this.KxJ = GLES20.glGetUniformLocation(this.mProgram, "uProjectMatrix");
+      this.KxK = GLES20.glGetAttribLocation(this.mProgram, "aTextureCoord");
+      Log.i("SphereImageView.SphereRender", "aPosition:" + this.KxI);
+      Log.i("SphereImageView.SphereRender", "uProjectMatrix:" + this.KxJ);
+      Log.i("SphereImageView.SphereRender", "aTextureCoord:" + this.KxK);
+      GLES20.glVertexAttribPointer(this.KxI, 3, 5126, false, 0, this.KxM);
+      GLES20.glVertexAttribPointer(this.KxK, 2, 5126, false, 0, this.KxN);
+      GLES20.glEnableVertexAttribArray(this.KxI);
+      GLES20.glEnableVertexAttribArray(this.KxK);
       long l2 = System.currentTimeMillis();
       Log.i("SphereImageView.SphereRender", "onSurfaceChanged, timeCost=" + (l2 - l1));
       AppMethodBeat.o(97276);
@@ -283,7 +283,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.widget.SphereImageView.b
  * JD-Core Version:    0.7.0.1
  */

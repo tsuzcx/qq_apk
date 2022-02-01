@@ -34,20 +34,20 @@ public abstract class d
   extends k
   implements ar
 {
-  protected List<? extends as> Tka;
-  private final c Tkb;
-  protected final kotlin.l.b.a.b.b.ba Tkc;
+  private List<? extends as> aaMU;
+  private final c aaMV;
+  private final kotlin.l.b.a.b.b.ba aaMW;
   
   public d(l paraml, kotlin.l.b.a.b.b.a.g paramg, f paramf, an paraman, kotlin.l.b.a.b.b.ba paramba)
   {
     super(paraml, paramg, paramf, paraman);
-    this.Tkc = paramba;
-    this.Tkb = new c(this);
+    this.aaMW = paramba;
+    this.aaMV = new c(this);
   }
   
-  private ar hBS()
+  private ar iGh()
   {
-    o localo = super.hBT();
+    o localo = super.iGi();
     if (localo == null) {
       throw new kotlin.t("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.TypeAliasDescriptor");
     }
@@ -56,33 +56,77 @@ public abstract class d
   
   public final <R, D> R a(n<R, D> paramn, D paramD)
   {
-    kotlin.g.b.p.h(paramn, "visitor");
+    kotlin.g.b.p.k(paramn, "visitor");
     return paramn.a((ar)this, paramD);
   }
   
-  protected abstract j hAI();
-  
-  public final Collection<ag> hBR()
+  public final at iDL()
   {
-    Object localObject1 = hBx();
-    if (localObject1 == null) {
-      return (Collection)v.SXr;
+    return (at)this.aaMV;
+  }
+  
+  public final w iDO()
+  {
+    return w.aaKi;
+  }
+  
+  public final kotlin.l.b.a.b.b.ba iDQ()
+  {
+    return this.aaMW;
+  }
+  
+  public final boolean iDS()
+  {
+    return bc.b((ab)iFK(), (kotlin.g.a.b)new b(this));
+  }
+  
+  public final boolean iDV()
+  {
+    return false;
+  }
+  
+  public final boolean iDW()
+  {
+    return false;
+  }
+  
+  public final boolean iDX()
+  {
+    return false;
+  }
+  
+  protected abstract j iEV();
+  
+  public final List<as> iEb()
+  {
+    List localList = this.aaMU;
+    if (localList == null) {
+      kotlin.g.b.p.bGy("declaredTypeParametersImpl");
     }
-    localObject1 = ((e)localObject1).hxW();
-    kotlin.g.b.p.g(localObject1, "classDescriptor.constructors");
+    return localList;
+  }
+  
+  public final Collection<ag> iGg()
+  {
+    Object localObject1 = iFM();
+    if (localObject1 == null) {
+      return (Collection)v.aaAd;
+    }
+    localObject1 = ((e)localObject1).iCg();
+    kotlin.g.b.p.j(localObject1, "classDescriptor.constructors");
     localObject1 = (Iterable)localObject1;
     Collection localCollection = (Collection)new ArrayList();
     Iterator localIterator = ((Iterable)localObject1).iterator();
     if (localIterator.hasNext())
     {
       Object localObject3 = (kotlin.l.b.a.b.b.d)localIterator.next();
-      localObject1 = ah.Tmo;
-      Object localObject2 = hAI();
+      localObject1 = ah.aaPi;
+      Object localObject2 = iEV();
       ar localar = (ar)this;
-      kotlin.g.b.p.g(localObject3, "it");
-      kotlin.g.b.p.h(localObject2, "storageManager");
-      kotlin.g.b.p.h(localar, "typeAliasDescriptor");
-      kotlin.g.b.p.h(localObject3, "constructor");
+      kotlin.g.b.p.j(localObject3, "it");
+      kotlin.g.b.p.k(localObject2, "storageManager");
+      kotlin.g.b.p.k(localar, "typeAliasDescriptor");
+      kotlin.g.b.p.k(localObject3, "constructor");
       localObject1 = ah.a.a(localar);
       if (localObject1 == null) {
         localObject1 = null;
@@ -103,19 +147,19 @@ public abstract class d
           }
           else
           {
-            localObject4 = ((kotlin.l.b.a.b.b.d)localObject3).hzL();
-            Object localObject6 = ((kotlin.l.b.a.b.b.d)localObject3).hAA();
-            kotlin.g.b.p.g(localObject6, "constructor.kind");
-            an localan = localar.hzM();
-            kotlin.g.b.p.g(localan, "typeAliasDescriptor.source");
+            localObject4 = ((kotlin.l.b.a.b.b.d)localObject3).iDY();
+            Object localObject6 = ((kotlin.l.b.a.b.b.d)localObject3).iEN();
+            kotlin.g.b.p.j(localObject6, "constructor.kind");
+            an localan = localar.iDZ();
+            kotlin.g.b.p.j(localan, "typeAliasDescriptor.source");
             localObject2 = new ah((j)localObject2, localar, (kotlin.l.b.a.b.b.d)localObject5, null, (kotlin.l.b.a.b.b.a.g)localObject4, (b.a)localObject6, localan, (byte)0);
             localObject4 = (kotlin.l.b.a.b.b.t)localObject2;
-            localObject6 = ((kotlin.l.b.a.b.b.d)localObject3).hAw();
+            localObject6 = ((kotlin.l.b.a.b.b.d)localObject3).iEJ();
             if (localObject6 == null) {
-              p.atM(26);
+              p.aDG(26);
             }
             if (localObject1 == null) {
-              p.atM(27);
+              p.aDG(27);
             }
             localObject4 = p.a((kotlin.l.b.a.b.b.t)localObject4, (List)localObject6, (kotlin.l.b.a.b.m.ba)localObject1, false, false, null);
             if (localObject4 == null)
@@ -124,27 +168,27 @@ public abstract class d
             }
             else
             {
-              kotlin.g.b.p.g(localObject4, "FunctionDescriptorImpl.g…         ) ?: return null");
-              localObject5 = y.an((ab)((kotlin.l.b.a.b.b.d)localObject5).hAu().hLF());
-              localObject6 = localar.hAG();
-              kotlin.g.b.p.g(localObject6, "typeAliasDescriptor.defaultType");
+              kotlin.g.b.p.j(localObject4, "FunctionDescriptorImpl.g…         ) ?: return null");
+              localObject5 = y.an((ab)((kotlin.l.b.a.b.b.d)localObject5).iEH().iPX());
+              localObject6 = localar.iET();
+              kotlin.g.b.p.j(localObject6, "typeAliasDescriptor.defaultType");
               localObject5 = am.b((aj)localObject5, (aj)localObject6);
-              localObject6 = ((kotlin.l.b.a.b.b.d)localObject3).hAs();
+              localObject6 = ((kotlin.l.b.a.b.b.d)localObject3).iEF();
               if (localObject6 == null) {
-                break label437;
+                break label438;
               }
               localObject3 = (kotlin.l.b.a.b.b.a)localObject2;
-              kotlin.g.b.p.g(localObject6, "it");
-              localObject1 = ((kotlin.l.b.a.b.m.ba)localObject1).b(((ak)localObject6).hBy(), bh.TOQ);
-              localObject6 = kotlin.l.b.a.b.b.a.g.TiC;
+              kotlin.g.b.p.j(localObject6, "it");
+              localObject1 = ((kotlin.l.b.a.b.m.ba)localObject1).b(((ak)localObject6).iFN(), bh.abrp);
+              localObject6 = kotlin.l.b.a.b.b.a.g.aaLw;
             }
           }
         }
       }
-      label437:
-      for (localObject1 = kotlin.l.b.a.b.j.b.a((kotlin.l.b.a.b.b.a)localObject3, (ab)localObject1, g.a.hBP());; localObject1 = null)
+      label438:
+      for (localObject1 = kotlin.l.b.a.b.j.b.a((kotlin.l.b.a.b.b.a)localObject3, (ab)localObject1, g.a.iGe());; localObject1 = null)
       {
-        ((ah)localObject2).a((ak)localObject1, null, localar.hzO(), (List)localObject4, (ab)localObject5, w.Tho, localar.hzE());
+        ((ah)localObject2).a((ak)localObject1, null, localar.iEb(), (List)localObject4, (ab)localObject5, w.aaKi, localar.iDQ());
         localObject1 = (ag)localObject2;
         break label131;
         break;
@@ -153,55 +197,17 @@ public abstract class d
     return (Collection)localCollection;
   }
   
-  protected abstract List<as> hBU();
+  protected abstract List<as> iGj();
   
-  public final w hzC()
+  public final void lx(List<? extends as> paramList)
   {
-    return w.Tho;
-  }
-  
-  public final kotlin.l.b.a.b.b.ba hzE()
-  {
-    return this.Tkc;
-  }
-  
-  public final boolean hzG()
-  {
-    return bc.b((ab)hBv(), (kotlin.g.a.b)new b(this));
-  }
-  
-  public final boolean hzJ()
-  {
-    return false;
-  }
-  
-  public final boolean hzK()
-  {
-    return false;
-  }
-  
-  public final List<as> hzO()
-  {
-    List localList = this.Tka;
-    if (localList == null) {
-      kotlin.g.b.p.btv("declaredTypeParametersImpl");
-    }
-    return localList;
-  }
-  
-  public final at hzz()
-  {
-    return (at)this.Tkb;
-  }
-  
-  public final boolean isExternal()
-  {
-    return false;
+    kotlin.g.b.p.k(paramList, "declaredTypeParameters");
+    this.aaMU = paramList;
   }
   
   public String toString()
   {
-    return "typealias " + hAH().sG();
+    return "typealias " + iEU().qu();
   }
   
   public static final class a
@@ -227,40 +233,40 @@ public abstract class d
   public static final class c
     implements at
   {
-    public final List<as> getParameters()
+    public final List<as> iCb()
     {
       AppMethodBeat.i(56998);
-      List localList = this.Tkd.hBU();
+      List localList = this.aaMX.iGj();
       AppMethodBeat.o(56998);
       return localList;
     }
     
-    public final Collection<ab> hBV()
+    public final boolean iEh()
     {
-      AppMethodBeat.i(56999);
-      Collection localCollection = ((ar)this.Tkd).hBv().hKE().hBV();
-      kotlin.g.b.p.g(localCollection, "declarationDescriptor.un…pe.constructor.supertypes");
-      AppMethodBeat.o(56999);
-      return localCollection;
+      return true;
     }
     
-    public final kotlin.l.b.a.b.a.g hBh()
+    public final kotlin.l.b.a.b.a.g iFv()
     {
       AppMethodBeat.i(57000);
-      kotlin.l.b.a.b.a.g localg = kotlin.l.b.a.b.j.d.a.G((l)this.Tkd);
+      kotlin.l.b.a.b.a.g localg = kotlin.l.b.a.b.j.d.a.G((l)this.aaMX);
       AppMethodBeat.o(57000);
       return localg;
     }
     
-    public final boolean hzU()
+    public final Collection<ab> iGk()
     {
-      return true;
+      AppMethodBeat.i(56999);
+      Collection localCollection = ((ar)this.aaMX).iFK().iOU().iGk();
+      kotlin.g.b.p.j(localCollection, "declarationDescriptor.un…pe.constructor.supertypes");
+      AppMethodBeat.o(56999);
+      return localCollection;
     }
     
     public final String toString()
     {
       AppMethodBeat.i(57001);
-      String str = "[typealias " + ((ar)this.Tkd).hAH().sG() + ']';
+      String str = "[typealias " + ((ar)this.aaMX).iEU().qu() + ']';
       AppMethodBeat.o(57001);
       return str;
     }
@@ -268,7 +274,7 @@ public abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.c.d
  * JD-Core Version:    0.7.0.1
  */

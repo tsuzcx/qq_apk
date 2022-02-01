@@ -4,24 +4,24 @@ import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.g.a.tg;
-import com.tencent.mm.g.b.a.la;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.f.a.uh;
+import com.tencent.mm.f.b.a.nw;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.scanner.f.e;
-import com.tencent.mm.plugin.scanner.f.e.a;
-import com.tencent.mm.plugin.scanner.f.e.b;
+import com.tencent.mm.plugin.scanner.g.e;
+import com.tencent.mm.plugin.scanner.g.e.a;
+import com.tencent.mm.plugin.scanner.g.e.b;
 import com.tencent.mm.plugin.scanner.ui.ConfirmScanBankCardResultUI;
-import com.tencent.mm.protocal.protobuf.adt;
-import com.tencent.mm.protocal.protobuf.cui;
-import com.tencent.mm.protocal.protobuf.ddh;
-import com.tencent.mm.protocal.protobuf.jb;
-import com.tencent.mm.protocal.protobuf.pc;
+import com.tencent.mm.protocal.protobuf.aea;
+import com.tencent.mm.protocal.protobuf.ddq;
+import com.tencent.mm.protocal.protobuf.dmx;
+import com.tencent.mm.protocal.protobuf.iq;
+import com.tencent.mm.protocal.protobuf.oy;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
@@ -34,22 +34,22 @@ public final class a
   extends e
   implements i, e.a
 {
-  public boolean CEf;
-  private la CEg;
+  public boolean IIH;
+  private nw III;
   private int count;
-  private String dRM;
-  private Bitmap dZM;
+  private String fLj;
+  private Bitmap fTG;
   
-  public a(int paramInt, ScanView paramScanView, e.b paramb, la paramla)
+  public a(int paramInt, ScanView paramScanView, e.b paramb, nw paramnw)
   {
     AppMethodBeat.i(118336);
     this.mode = paramInt;
-    this.CIW = paramScanView;
-    this.CIX = paramb;
-    this.CEg = paramla;
+    this.IOw = paramScanView;
+    this.IOx = paramb;
+    this.III = paramnw;
     this.context = paramScanView.getContext();
-    this.dRM = MD5Util.getMD5String(z.aTY() + System.currentTimeMillis());
-    g.azz().a(2693, this);
+    this.fLj = MD5Util.getMD5String(z.bcZ() + System.currentTimeMillis());
+    h.aGY().a(2693, this);
     AppMethodBeat.o(118336);
   }
   
@@ -58,19 +58,19 @@ public final class a
     AppMethodBeat.i(118337);
     if (paramBundle != null)
     {
-      this.dZM = ((Bitmap)paramBundle.getParcelable("param_card_bitmap"));
-      if (this.dZM != null)
+      this.fTG = ((Bitmap)paramBundle.getParcelable("param_card_bitmap"));
+      if (this.fTG != null)
       {
-        paramBundle = this.dRM;
-        byte[] arrayOfByte = BitmapUtil.Bitmap2Bytes(this.dZM);
+        paramBundle = this.fLj;
+        byte[] arrayOfByte = BitmapUtil.Bitmap2Bytes(this.fTG);
         int i = this.count;
         this.count = (i + 1);
         paramBundle = new com.tencent.mm.plugin.scanner.b.b.a(paramBundle, arrayOfByte, i);
-        g.azz().a(paramBundle, 0);
+        h.aGY().a(paramBundle, 0);
         AppMethodBeat.o(118337);
         return;
       }
-      r(2, null);
+      t(2, null);
     }
     AppMethodBeat.o(118337);
   }
@@ -78,7 +78,7 @@ public final class a
   public final void destroy()
   {
     AppMethodBeat.i(118338);
-    g.azz().b(2693, this);
+    h.aGY().b(2693, this);
     AppMethodBeat.o(118338);
   }
   
@@ -88,21 +88,21 @@ public final class a
     Log.i("MicroMsg.BankCardHandler", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (this.dRM.equals(((com.tencent.mm.plugin.scanner.b.b.a)paramq).dRM))
+      if (this.fLj.equals(((com.tencent.mm.plugin.scanner.b.b.a)paramq).fLj))
       {
         paramString = (com.tencent.mm.plugin.scanner.b.b.a)paramq;
         Object localObject;
-        if (paramString.rr.iLL.iLR != null)
+        if (d.c.b(paramString.rr.lBS) != null)
         {
-          paramString = ((pc)paramString.rr.iLL.iLR).KVW;
+          paramString = ((oy)d.c.b(paramString.rr.lBS)).RXk;
           if (paramString == null) {
             break label389;
           }
-          paramq = paramString.KNx.text;
+          paramq = paramString.ROr.text;
           Log.d("MicroMsg.BankCardHandler", "cardNumber %s", new Object[] { paramq });
-          paramString = new Rect((int)paramString.KNx.MzB.MIr.x, (int)paramString.KNx.MzB.MIr.y, (int)paramString.KNx.MzB.MIt.x, (int)paramString.KNx.MzB.MIt.y);
+          paramString = new Rect((int)paramString.ROr.TLh.TUf.rBr, (int)paramString.ROr.TLh.TUf.rBs, (int)paramString.ROr.TLh.TUh.rBr, (int)paramString.ROr.TLh.TUh.rBs);
           Log.i("MicroMsg.BankCardHandler", "cropRect %s", new Object[] { paramString });
-          localObject = this.dZM;
+          localObject = this.fTG;
           if ((paramString.left < 0) || (paramString.top < 0) || (paramString.width() <= 0) || (paramString.width() > ((Bitmap)localObject).getWidth()) || (paramString.height() <= 0) || (paramString.height() > ((Bitmap)localObject).getHeight())) {
             break label344;
           }
@@ -111,19 +111,19 @@ public final class a
           if (paramInt1 == 0) {
             break label389;
           }
-          paramString = Bitmap.createBitmap(this.dZM, paramString.left, paramString.top, paramString.width(), paramString.height());
+          paramString = Bitmap.createBitmap(this.fTG, paramString.left, paramString.top, paramString.width(), paramString.height());
           if ((paramString == null) || (Util.isNullOrNil(paramq))) {
             break label389;
           }
-          if (!this.CEf) {
+          if (!this.IIH) {
             break label349;
           }
           ConfirmScanBankCardResultUI.c(paramString, paramq);
         }
         for (;;)
         {
-          this.CEg.erW = 3L;
-          r(3, null);
+          this.III.gnP = 3L;
+          t(3, null);
           AppMethodBeat.o(118340);
           return;
           paramString = null;
@@ -132,22 +132,22 @@ public final class a
           paramInt1 = 0;
           break label264;
           label349:
-          localObject = new tg();
-          ((tg)localObject).dZH.cardId = paramq;
-          ((tg)localObject).dZH.dZI = paramString;
+          localObject = new uh();
+          ((uh)localObject).fTB.cardId = paramq;
+          ((uh)localObject).fTB.fTC = paramString;
           EventCenter.instance.publish((IEvent)localObject);
         }
       }
       label389:
-      r(2, null);
+      t(2, null);
       AppMethodBeat.o(118340);
       return;
     }
-    r(2, null);
+    t(2, null);
     AppMethodBeat.o(118340);
   }
   
-  public final void r(int paramInt, Bundle paramBundle)
+  public final void t(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(118339);
     Log.i("MicroMsg.BankCardHandler", "notify Event: %d", new Object[] { Integer.valueOf(paramInt) });
@@ -160,19 +160,19 @@ public final class a
       return;
       AppMethodBeat.o(118339);
       return;
-      this.CIW.onResume();
+      this.IOw.onResume();
       AppMethodBeat.o(118339);
       return;
-      this.CIX.cvn();
+      this.IOx.cIP();
       AppMethodBeat.o(118339);
       return;
-      this.CIW.onPause();
+      this.IOw.onPause();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.b.c.a
  * JD-Core Version:    0.7.0.1
  */

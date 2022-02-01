@@ -1,11 +1,6 @@
 package com.tencent.mm.plugin.facedetect.b;
 
-public abstract interface e
-{
-  public abstract boolean cSO();
-  
-  public abstract String cSP();
-}
+public abstract interface e {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar

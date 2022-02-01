@@ -2,17 +2,17 @@ package com.tencent.mm.ui.base.sortview;
 
 public final class d
 {
-  public String Pae;
-  public Object data;
-  
-  public final String gLX()
-  {
-    return this.Pae;
-  }
+  public String Wtr;
+  public Object bnW;
   
   public final Object getData()
   {
-    return this.data;
+    return this.bnW;
+  }
+  
+  public final String hLf()
+  {
+    return this.Wtr;
   }
 }
 

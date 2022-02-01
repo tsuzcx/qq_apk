@@ -2,7 +2,7 @@ package com.tencent.mm.appbrand.v8;
 
 import android.content.ComponentCallbacks2;
 import android.content.res.Configuration;
-import com.eclipsesource.v8.MultiContextV8;
+import com.eclipsesource.mmv8.MultiContextV8;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -10,13 +10,13 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 public final class aa
 {
   private static final String TAG;
-  private final MultiContextV8 doQ;
-  private final int drC;
-  private Integer drD;
-  private boolean drE;
-  private int drF;
-  private final Runnable drG;
-  private final ComponentCallbacks2 drH;
+  private final MultiContextV8 fhw;
+  private final int fko;
+  private Integer fkp;
+  private boolean fkq;
+  private int fkr;
+  private final Runnable fks;
+  private final ComponentCallbacks2 fkt;
   
   static
   {
@@ -28,10 +28,10 @@ public final class aa
   public aa(MultiContextV8 paramMultiContextV8)
   {
     AppMethodBeat.i(144147);
-    this.drC = 1000;
-    this.drD = null;
-    this.drF = 0;
-    this.drG = new Runnable()
+    this.fko = 1000;
+    this.fkp = null;
+    this.fkr = 0;
+    this.fks = new Runnable()
     {
       public final void run()
       {
@@ -40,8 +40,8 @@ public final class aa
         AppMethodBeat.o(144144);
       }
     };
-    this.doQ = paramMultiContextV8;
-    this.drH = new ComponentCallbacks2()
+    this.fhw = paramMultiContextV8;
+    this.fkt = new ComponentCallbacks2()
     {
       public final void onConfigurationChanged(Configuration paramAnonymousConfiguration) {}
       
@@ -49,7 +49,7 @@ public final class aa
       {
         AppMethodBeat.i(144146);
         Log.i(aa.TAG, "onLowMemory");
-        aa.this.iV(2);
+        aa.this.kl(2);
         Log.i(aa.TAG, "onLowMemory notification with CRITICAL end");
         AppMethodBeat.o(144146);
       }
@@ -58,9 +58,9 @@ public final class aa
       {
         AppMethodBeat.i(144145);
         Log.i(aa.TAG, "onTrimMemory level = [%d]", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        Integer localInteger = aa.iX(paramAnonymousInt);
+        Integer localInteger = aa.kn(paramAnonymousInt);
         if (localInteger != null) {
-          aa.this.iV(localInteger.intValue());
+          aa.this.kl(localInteger.intValue());
         }
         AppMethodBeat.o(144145);
       }
@@ -68,18 +68,18 @@ public final class aa
     AppMethodBeat.o(144147);
   }
   
-  private static void XR()
+  private static void acx()
   {
     AppMethodBeat.i(144150);
     Log.i(TAG, "startThrottlingInterval");
     AppMethodBeat.o(144150);
   }
   
-  private void iW(int paramInt)
+  private void km(int paramInt)
   {
     AppMethodBeat.i(144149);
-    XR();
-    this.drF = paramInt;
+    acx();
+    this.fkr = paramInt;
     String str;
     if (paramInt == 2) {
       str = "CRITICAL";
@@ -87,7 +87,7 @@ public final class aa
     for (;;)
     {
       Log.i(TAG, "reportPressure [%s]", new Object[] { str });
-      this.doQ.memoryPressureNotification(paramInt);
+      this.fhw.memoryPressureNotification(paramInt);
       AppMethodBeat.o(144149);
       return;
       if (paramInt == 1) {
@@ -98,23 +98,23 @@ public final class aa
     }
   }
   
-  public final void iV(int paramInt)
+  public final void kl(int paramInt)
   {
     AppMethodBeat.i(144148);
-    if (this.drE)
+    if (this.fkq)
     {
       Log.i(TAG, "notifyPressure but throttle");
-      this.drD = Integer.valueOf(paramInt);
+      this.fkp = Integer.valueOf(paramInt);
       AppMethodBeat.o(144148);
       return;
     }
-    iW(paramInt);
+    km(paramInt);
     AppMethodBeat.o(144148);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.aa
  * JD-Core Version:    0.7.0.1
  */

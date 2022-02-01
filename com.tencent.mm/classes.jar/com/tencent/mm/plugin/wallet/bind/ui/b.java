@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.wallet.bind.ui;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.storage.ao;
 
@@ -17,8 +17,8 @@ public final class b
       AppMethodBeat.o(69076);
       return false;
     }
-    g.aAi();
-    Object localObject1 = (String)g.aAh().azQ().get(196659, null);
+    h.aHH();
+    Object localObject1 = (String)h.aHG().aHp().b(196659, null);
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
       AppMethodBeat.o(69076);
@@ -47,7 +47,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.bind.ui.b
  * JD-Core Version:    0.7.0.1
  */
